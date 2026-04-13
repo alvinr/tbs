@@ -1,0 +1,63 @@
+site_name: "Giant Pinhole Camera — Research & Build"
+site_description: "A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera."
+site_url: "https://alvinr.github.io/tbs"
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: black
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.integrate
+
+markdown_extensions:
+  - tables
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - "Pinhole Optics Report": pinhole-optics-report.md
+  - "Option B — Container Optics": pinhole-option-b-optics.md
+  - "Construction Guide": pinhole-camera-construction.md
+  - "Lens Options": lens-options.md
+  - "Lens vs Pinhole — Exposure Physics": lens-vs-pinhole-exposure.md
+  - "Photosensitive Materials": photosensitive-plane-options.md
+  - "Chemistry Shopping List": chemistry-shopping-list.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/tbs
+
+copyright: "Giant Pinhole Camera Project"

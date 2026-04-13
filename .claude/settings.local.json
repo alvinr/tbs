@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(/usr/local/opt/python@3.9/bin/python3.9:*)",
+      "Bash(python3:*)",
+      "Bash(mkdocs --version)"
+    ]
+  }
+}

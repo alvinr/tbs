@@ -1,0 +1,2241 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/chemistry-shopping-list/">
+      
+      
+        <link rel="prev" href="../photosensitive-plane-options/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Chemistry Shopping List - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemistry-shopping-lists-50-prints" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chemistry Shopping List
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Option B — Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole — Exposure Physics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chemistry Shopping List
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B — Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole — Exposure Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Shopping List
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#giant-pinhole-camera-raw-material-procurement-by-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giant Pinhole Camera: Raw Material Procurement by Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executive Cost Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-item-substrate-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Item: Substrate Fabric
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-1-cyanotype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 1: Cyanotype
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 1: Cyanotype">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-quantities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mike-ware-improved-formula-recommended-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mike Ware Improved Formula (recommended upgrade)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-2-gum-bichromate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 2: Gum Bichromate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 2: Gum Bichromate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-quantities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-3-van-dyke-brown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 3: Van Dyke Brown
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 3: Van Dyke Brown">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-quantities_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-4-salt-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 4: Salt Print
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 4: Salt Print">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chemistry-quantities_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chemistry quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-5-ilford-multigrade-rc-paper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 5: Ilford Multigrade RC Paper
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 5: Ilford Multigrade RC Paper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-quantities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-6-rockland-liquid-light-on-custom-substrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Process 6: Rockland Liquid Light on Custom Substrate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process 6: Rockland Liquid Light on Custom Substrate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#material-quantities_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Material quantities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shopping-list_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping list
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-chemistry-developer-and-fixer-silver-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Chemistry: Developer and Fixer (Silver Processes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared Chemistry: Developer and Fixer (Silver Processes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dektol-developer-750-l-working-solution-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dektol developer — 750 L working solution total
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixer-1000-l-working-solution-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixer — 1,000 L working solution total
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparative-summary-table-50-prints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparative Summary Table — 50 Prints
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-procurement-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Procurement Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Procurement Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-silver-nitrate-dea-registration-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Silver nitrate — DEA registration required
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ammonium-dichromate-hazmat-shipping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Ammonium dichromate — hazmat shipping
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-silver-nitrate-price-volatility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Silver nitrate price volatility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-liquid-light-contact-rockland-before-ordering-retail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Liquid Light — contact Rockland before ordering retail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-cyanotype-fac-green-grade-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Cyanotype FAC — green grade only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-muslin-pre-treatment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Muslin pre-treatment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-bulk-muslin-ordering-consider-width-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Bulk muslin ordering — consider width carefully
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supplier-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplier Directory
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chemistry-shopping-lists-50-prints">Chemistry Shopping Lists — 50 Prints<a class="headerlink" href="#chemistry-shopping-lists-50-prints" title="Permanent link">&para;</a></h1>
+<h2 id="giant-pinhole-camera-raw-material-procurement-by-process">Giant Pinhole Camera: Raw Material Procurement by Process<a class="headerlink" href="#giant-pinhole-camera-raw-material-procurement-by-process" title="Permanent link">&para;</a></h2>
+<p><strong>Image plane per print:</strong> 5,893 × 2,388 mm (140 sq ft)<br />
+<strong>Run size:</strong> 50 prints<br />
+<strong>Total substrate area:</strong> 7,000 sq ft<br />
+<strong>Pricing basis:</strong> April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.</p>
+<hr />
+<h2 id="executive-cost-summary">Executive Cost Summary<a class="headerlink" href="#executive-cost-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Chemistry total</th>
+<th>Substrate total</th>
+<th><strong>50-print total</strong></th>
+<th><strong>Per print</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cyanotype</strong></td>
+<td>~$1,100</td>
+<td>~$1,980</td>
+<td><strong>~$2,842</strong></td>
+<td><strong>~$57</strong></td>
+</tr>
+<tr>
+<td><strong>Gum bichromate</strong></td>
+<td>~$2,300</td>
+<td>~$1,980</td>
+<td><strong>~$4,578</strong></td>
+<td><strong>~$92</strong></td>
+</tr>
+<tr>
+<td><strong>Van Dyke Brown</strong></td>
+<td>~$7,800</td>
+<td>~$1,980</td>
+<td><strong>~$9,782</strong></td>
+<td><strong>~$196</strong></td>
+</tr>
+<tr>
+<td><strong>Ilford RC paper</strong></td>
+<td>~$1,220 (chemistry)</td>
+<td>~$18,750 (paper)</td>
+<td><strong>~$19,970</strong></td>
+<td><strong>~$399</strong></td>
+</tr>
+<tr>
+<td><strong>Liquid Light</strong></td>
+<td>~$1,220 (chemistry)</td>
+<td>~$18,150 (emulsion+substrate)</td>
+<td><strong>~$19,370</strong></td>
+<td><strong>~$387</strong></td>
+</tr>
+<tr>
+<td><strong>Salt print</strong></td>
+<td>~$21,940</td>
+<td>~$1,985</td>
+<td><strong>~$23,925</strong></td>
+<td><strong>~$478</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype and gum bichromate are the only processes where 50 prints can be made for under $5,000 total.</p>
+<hr />
+<h2 id="shared-item-substrate-fabric">Shared Item: Substrate Fabric<a class="headerlink" href="#shared-item-substrate-fabric" title="Permanent link">&para;</a></h2>
+<p>All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at 140 sq ft each, plus 15% waste, = approximately <strong>1,650 linear yards</strong> of 60-inch (152 cm) wide fabric.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit</th>
+<th>Units needed</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unbleached cotton muslin, 60" wide</td>
+<td>1,650 yd</td>
+<td><strong>Fabric Direct</strong></td>
+<td>150-yd roll</td>
+<td>11 rolls</td>
+<td>~$100/roll</td>
+<td>~$1,100</td>
+</tr>
+<tr>
+<td>OR by the yard</td>
+<td>1,650 yd</td>
+<td><strong>Fabric Wholesale Direct</strong></td>
+<td>per yard</td>
+<td>1,650</td>
+<td>~<span class="arithmatex">\(0.80–\)</span>1.20/yd</td>
+<td>~<span class="arithmatex">\(1,320–\)</span>1,980</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fabric Direct</strong> — 150-yard rolls of 60" unbleached muslin, medium weight<br />
+URL: <a href="https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/">fabricdirect.com</a></p>
+<p><strong>Fabric Wholesale Direct</strong> — 60" wide unbleached cotton muslin, sold by the yard or bolt<br />
+URL: <a href="https://fabricwholesaledirect.com/products/cotton-muslin-fabric-60-inches">fabricwholesaledirect.com</a></p>
+<p><strong>Preparation required:</strong> Pre-wash all fabric twice in hot water, no detergent. This removes sizing (starch filler) that repels sensitiser. Dry fully before coating.</p>
+<hr />
+<h2 id="process-1-cyanotype">Process 1: Cyanotype<a class="headerlink" href="#process-1-cyanotype" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(2,842 | Per print: ~\)</span>57</strong></p>
+<h3 id="chemistry-quantities">Chemistry quantities<a class="headerlink" href="#chemistry-quantities" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Reagent</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric ammonium citrate (green)</td>
+<td>224 g</td>
+<td><strong>11.2 kg</strong></td>
+<td>12 kg</td>
+</tr>
+<tr>
+<td>Potassium ferricyanide</td>
+<td>91 g</td>
+<td><strong>4.55 kg</strong></td>
+<td>5 kg</td>
+</tr>
+<tr>
+<td>Distilled water</td>
+<td>~2 L</td>
+<td>~100 L</td>
+<td>Tap water + DI filter adequate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list">Shopping list<a class="headerlink" href="#shopping-list" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>SKU / URL</th>
+<th>Unit size</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric Ammonium Citrate, green, 1 lb</td>
+<td><strong>Photographers' Formulary</strong></td>
+<td><a href="https://stores.photoformulary.com/ferric-ammonium-citrate-green/">stores.photoformulary.com/ferric-ammonium-citrate-green</a></td>
+<td>454 g (1 lb)</td>
+<td>27</td>
+<td>~$30†</td>
+<td>~$810</td>
+</tr>
+<tr>
+<td>OR Ferric Ammonium Citrate, 1 kg</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/123829-REG/Photographers_Formulary_10_0500_1LB_Ferric_Ammonium_Citrate.html">bhphotovideo.com — Photographers Formulary</a></td>
+<td>454 g</td>
+<td>27</td>
+<td>~$30</td>
+<td>~$810</td>
+</tr>
+<tr>
+<td>Potassium Ferricyanide, 1 kg</td>
+<td><strong>Bostick &amp; Sullivan</strong></td>
+<td><a href="https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/">bostick-sullivan.com/product/potassium-ferricyanide</a></td>
+<td>1,000 g</td>
+<td>5</td>
+<td><strong>$24.29†</strong></td>
+<td><strong>$121</strong></td>
+</tr>
+<tr>
+<td>Unbleached muslin, 60" wide</td>
+<td><strong>Fabric Direct</strong></td>
+<td><a href="https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/">fabricdirect.com — 150-yd roll</a></td>
+<td>150-yd roll</td>
+<td>11</td>
+<td>~$100</td>
+<td>~$1,100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Process total: ~$2,031 chemistry + substrate</strong></p>
+<p><em>Note: No fixer required. Development in plain cold water. No darkroom required for processing.</em></p>
+<h3 id="mike-ware-improved-formula-recommended-upgrade">Mike Ware Improved Formula (recommended upgrade)<a class="headerlink" href="#mike-ware-improved-formula-recommended-upgrade" title="Permanent link">&para;</a></h3>
+<p>Replaces FAC with ferric ammonium oxalate. Faster (ISO ~2–4 vs 1–2), denser shadows, smoother gradation.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric Ammonium Oxalate, 1 lb</td>
+<td><strong>Photographers' Formulary</strong> via Adorama</td>
+<td><a href="https://www.adorama.com/pyfao1lb.html">adorama.com/pyfao1lb</a></td>
+<td>454 g</td>
+<td>27</td>
+<td>~$35 ea</td>
+</tr>
+<tr>
+<td>Potassium Ferricyanide</td>
+<td>Same as above</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="process-2-gum-bichromate">Process 2: Gum Bichromate<a class="headerlink" href="#process-2-gum-bichromate" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(4,578 | Per print: ~\)</span>92</strong></p>
+<h3 id="chemistry-quantities_1">Chemistry quantities<a class="headerlink" href="#chemistry-quantities_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Reagent</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ammonium dichromate</td>
+<td>225 g</td>
+<td><strong>11.25 kg</strong></td>
+<td>12 kg</td>
+</tr>
+<tr>
+<td>Gum arabic powder</td>
+<td>700 g</td>
+<td><strong>35 kg</strong></td>
+<td>40 kg</td>
+</tr>
+<tr>
+<td>Dry watercolour pigment</td>
+<td>50 g</td>
+<td><strong>2.5 kg</strong></td>
+<td>3 kg</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list_1">Shopping list<a class="headerlink" href="#shopping-list_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit size</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ammonium Dichromate, 1 kg</td>
+<td><strong>Chem-Impex</strong></td>
+<td><a href="https://www.chemimpex.com/products/37420">chemimpex.com/products/37420</a></td>
+<td>1 kg</td>
+<td>12</td>
+<td><strong>$142.41†</strong></td>
+<td><strong>$1,709</strong></td>
+</tr>
+<tr>
+<td>Ammonium Dichromate (alt.)</td>
+<td><strong>Photographers' Formulary</strong></td>
+<td><a href="https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/">stores.photoformulary.com/ammonium-dichromate</a></td>
+<td>100 g</td>
+<td>113</td>
+<td>~$12</td>
+<td>~$1,356</td>
+</tr>
+<tr>
+<td>Gum Arabic Powder, bulk</td>
+<td><strong>Gum Arabic USA</strong></td>
+<td><a href="https://www.gumarabicusa.com/gum-arabic-bulk">gumarabicusa.com/gum-arabic-bulk</a></td>
+<td>Contact for 40 kg quote</td>
+<td>—</td>
+<td>~$18–22/kg</td>
+<td>~$720–880</td>
+</tr>
+<tr>
+<td>Gum Arabic Powder (alt.)</td>
+<td><strong>Jedwards International</strong></td>
+<td><a href="https://bulknaturaloils.com/acacia-gum-seyal-organic.html">bulknaturaloils.com/acacia-gum-seyal-organic</a></td>
+<td>Bulk kg</td>
+<td>40</td>
+<td>~$20/kg</td>
+<td>~$800</td>
+</tr>
+<tr>
+<td>Dry pigment — raw umber or lamp black</td>
+<td><strong>Kremer Pigments</strong></td>
+<td>kremer-pigmente.com</td>
+<td>1 kg</td>
+<td>3</td>
+<td>~$20–40/kg</td>
+<td>~$60–120</td>
+</tr>
+<tr>
+<td>Unbleached muslin</td>
+<td>Fabric Direct</td>
+<td>As above</td>
+<td>150-yd roll</td>
+<td>11</td>
+<td>~$100</td>
+<td>~$1,100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Process total: ~<span class="arithmatex">\(4,289–\)</span>4,609</strong></p>
+<p><strong>Hazard:</strong> Ammonium dichromate is classified as an <strong>oxidiser (UN Class 5.1)</strong> and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.</p>
+<p><em>Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$14,000.</em></p>
+<hr />
+<h2 id="process-3-van-dyke-brown">Process 3: Van Dyke Brown<a class="headerlink" href="#process-3-van-dyke-brown" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(9,782 | Per print: ~\)</span>196</strong></p>
+<h3 id="chemistry-quantities_2">Chemistry quantities<a class="headerlink" href="#chemistry-quantities_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Reagent</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver nitrate (AgNO₃)</td>
+<td>56 g</td>
+<td><strong>2.80 kg</strong></td>
+<td>3 kg</td>
+</tr>
+<tr>
+<td>Ferric ammonium citrate (green)</td>
+<td>140 g</td>
+<td><strong>7.0 kg</strong></td>
+<td>8 kg</td>
+</tr>
+<tr>
+<td>Tartaric acid</td>
+<td>14 g</td>
+<td><strong>700 g</strong></td>
+<td>1 kg</td>
+</tr>
+<tr>
+<td>Sodium thiosulfate (fixer)</td>
+<td>500 g</td>
+<td><strong>25 kg</strong></td>
+<td>25 kg</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list_2">Shopping list<a class="headerlink" href="#shopping-list_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit size</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver Nitrate, 1 lb (453 g)</td>
+<td><strong>Photographers' Formulary</strong></td>
+<td><a href="https://stores.photoformulary.com/silver-nitrate-class-5-1-ground-ups-only-dea-form-required-choose-ups-ground-shipping-at-checkout/">stores.photoformulary.com/silver-nitrate</a></td>
+<td>453 g</td>
+<td>7</td>
+<td>~$300–350 est.</td>
+<td>~$2,100–2,450</td>
+</tr>
+<tr>
+<td>Silver Nitrate, 100 g</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/124010-REG/Photographers_Formulary_10_1140_100G_Silver_Nitrate_100.html">bhphotovideo.com — Photographers Formulary</a></td>
+<td>100 g</td>
+<td>30</td>
+<td>~$110–130 est.</td>
+<td>~$3,300–3,900</td>
+</tr>
+<tr>
+<td>Silver Nitrate (bulk, lab grade)</td>
+<td><strong>Chem-Impex</strong></td>
+<td><a href="https://www.chemimpex.com/products/00265">chemimpex.com/products/00265</a></td>
+<td>100 g / 500 g</td>
+<td>Contact for 3 kg quote</td>
+<td>~$260/100g est.</td>
+<td>~$7,800</td>
+</tr>
+<tr>
+<td>Silver Nitrate (bulk)</td>
+<td><strong>Lab Alley</strong></td>
+<td><a href="https://www.laballey.com/products/silver-nitrate-lab">laballey.com/products/silver-nitrate-lab</a></td>
+<td>Various</td>
+<td>Contact for bulk</td>
+<td>Market rate</td>
+<td>Contact</td>
+</tr>
+<tr>
+<td>Ferric Ammonium Citrate, 1 lb</td>
+<td><strong>Photographers' Formulary</strong></td>
+<td>As cyanotype above</td>
+<td>454 g</td>
+<td>18</td>
+<td>~$30</td>
+<td>~$540</td>
+</tr>
+<tr>
+<td>Tartaric Acid, 1 kg</td>
+<td><strong>Lab Alley</strong></td>
+<td><a href="https://www.laballey.com/products/tartaric-acid-nf-fcc">laballey.com/products/tartaric-acid-nf-fcc</a></td>
+<td>1 kg</td>
+<td>1</td>
+<td>~$15–20</td>
+<td>~$20</td>
+</tr>
+<tr>
+<td>Tartaric Acid (winemaking grade)</td>
+<td><strong>Enartis USA</strong></td>
+<td><a href="https://shop-usa.enartis.com/tartaric-acid-food-grade-3">shop-usa.enartis.com/tartaric-acid-food-grade-3</a></td>
+<td>Various</td>
+<td>1 kg adequate</td>
+<td>~$15</td>
+<td>~$15</td>
+</tr>
+<tr>
+<td>Sodium Thiosulfate, 25 kg</td>
+<td><strong>Ingredient Depot</strong></td>
+<td><a href="https://ingredientdepot.com/products/sodium-thiosulphate-25-kgs">ingredientdepot.com/products/sodium-thiosulphate-25-kgs</a></td>
+<td>25 kg bag</td>
+<td>1</td>
+<td>~$40–55</td>
+<td>~$50</td>
+</tr>
+<tr>
+<td>Unbleached muslin</td>
+<td>Fabric Direct</td>
+<td>As above</td>
+<td>150-yd roll</td>
+<td>11</td>
+<td>~$100</td>
+<td>~$1,100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Process total: ~<span class="arithmatex">\(8,000–\)</span>10,000 depending on AgNO₃ source</strong></p>
+<p><strong>Critical procurement note — silver nitrate:</strong>
+- Silver nitrate is a DEA List I Chemical (used in drug synthesis). US purchases require a <strong>DEA Form 224 registration</strong> for quantities above threshold (typically &gt;400g). Photographers' Formulary explicitly states "DEA Form Required" on their listing.
+- Silver price is volatile. AgNO₃ is ~68% silver by weight; the silver market price directly affects the cost. Verify current pricing before ordering — it can shift 20–30% within weeks.
+- Silver nitrate permanently and irreversibly stains skin, clothing, and surfaces black. Nitrile gloves, lab coat, and eye protection mandatory for all handling.
+- Ships UPS Ground only (UN hazmat). No air freight.</p>
+<hr />
+<h2 id="process-4-salt-print">Process 4: Salt Print<a class="headerlink" href="#process-4-salt-print" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(23,925 | Per print: ~\)</span>478</strong></p>
+<h3 id="chemistry-quantities_3">Chemistry quantities<a class="headerlink" href="#chemistry-quantities_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Reagent</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver nitrate (AgNO₃)</td>
+<td>168 g</td>
+<td><strong>8.4 kg</strong></td>
+<td>9 kg</td>
+<td>DEA form required; see above</td>
+</tr>
+<tr>
+<td>Sodium chloride</td>
+<td>20 g</td>
+<td>1 kg</td>
+<td>1 kg</td>
+<td>Table salt adequate</td>
+</tr>
+<tr>
+<td>Sodium thiosulfate</td>
+<td>1,000 g</td>
+<td><strong>50 kg</strong></td>
+<td>50 kg</td>
+<td>Cheap bulk chemical</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list_3">Shopping list<a class="headerlink" href="#shopping-list_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver Nitrate — contact for 9 kg quote</td>
+<td><strong>Ames Goldsmith</strong></td>
+<td><a href="https://www.amesgoldsmith.com/products-services/silver-nitrate/">amesgoldsmith.com/products-services/silver-nitrate</a></td>
+<td>Custom bulk</td>
+<td>—</td>
+<td>Market rate</td>
+<td>Contact for quote</td>
+</tr>
+<tr>
+<td>Silver Nitrate 1 lb</td>
+<td><strong>Photographers' Formulary</strong></td>
+<td>As above</td>
+<td>453 g</td>
+<td>20</td>
+<td>~$300–350</td>
+<td>~$6,000–7,000</td>
+</tr>
+<tr>
+<td>Sodium Chloride</td>
+<td>Grocery / bulk food store</td>
+<td>—</td>
+<td>1 kg</td>
+<td>1</td>
+<td>~$2</td>
+<td>~$2</td>
+</tr>
+<tr>
+<td>Sodium Thiosulfate, 25 kg × 2</td>
+<td><strong>Ingredient Depot</strong></td>
+<td><a href="https://ingredientdepot.com/collections/sodium-thiosulphate">ingredientdepot.com — sodium thiosulphate</a></td>
+<td>25 kg bag</td>
+<td>2</td>
+<td>~$40–55</td>
+<td>~$90</td>
+</tr>
+<tr>
+<td>Sodium Thiosulfate (alternative)</td>
+<td><strong>Alliance Chemical</strong></td>
+<td><a href="https://alliancechemical.com/products/sodium-thiosulfate">alliancechemical.com/products/sodium-thiosulfate</a></td>
+<td>25 lb</td>
+<td>4+</td>
+<td>~$35 per 25 lb</td>
+<td>~$140</td>
+</tr>
+<tr>
+<td>Unbleached muslin</td>
+<td>Fabric Direct</td>
+<td>As above</td>
+<td>150-yd roll</td>
+<td>11</td>
+<td>~$100</td>
+<td>~$1,100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The silver nitrate cost at 9 kg dominates entirely.</strong> At $260/100g, this is $23,400 in AgNO₃ alone. Salt print is included here for completeness but is not recommended for a 50-print run at this scale. <strong>Van Dyke Brown delivers a comparable aesthetic at roughly one-third the silver consumption.</strong></p>
+<hr />
+<h2 id="process-5-ilford-multigrade-rc-paper">Process 5: Ilford Multigrade RC Paper<a class="headerlink" href="#process-5-ilford-multigrade-rc-paper" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(19,970 | Per print: ~\)</span>399</strong></p>
+<h3 id="material-quantities">Material quantities<a class="headerlink" href="#material-quantities" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ilford MGRC 50"×100' roll</td>
+<td>0.5 roll (2 prints/roll)</td>
+<td><strong>25 rolls</strong></td>
+<td>25 rolls</td>
+</tr>
+<tr>
+<td>Kodak Dektol developer (working)</td>
+<td>15 L</td>
+<td>750 L</td>
+<td>14 × 5-gal packets</td>
+</tr>
+<tr>
+<td>Ilford Rapid Fixer concentrate</td>
+<td>4 L (makes 20 L working)</td>
+<td>200 L concentrate</td>
+<td>40 × 5L bottles</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list_4">Shopping list<a class="headerlink" href="#shopping-list_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ilford MGRC Pearl, 50"×98' roll</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/1527390-REG/ilford_1179457_multigrade_rc_deluxe_paper.html">bhphotovideo.com — ILMG50981P</a></td>
+<td>50"×98' roll</td>
+<td>25</td>
+<td>~$700–800 est.</td>
+<td>~$17,500–20,000</td>
+</tr>
+<tr>
+<td>Kodak Dektol, 5-gal powder</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/1493200-REG/kodak_1058296_professional_dektol_developer_powder.html">bhphotovideo.com — Kodak Dektol</a></td>
+<td>Makes 5 gal stock</td>
+<td>14</td>
+<td>~$28–35</td>
+<td>~$420</td>
+</tr>
+<tr>
+<td>Kodak Dektol, 5-gal (alt.)</td>
+<td><strong>Adorama</strong></td>
+<td><a href="https://www.adorama.com/kkdekpd.html">adorama.com/kkdekpd.html</a></td>
+<td>Makes 1 gal stock</td>
+<td>66</td>
+<td>~$10–14</td>
+<td>~$660–924</td>
+</tr>
+<tr>
+<td>Ilford Rapid Fixer 5L</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/107521-REG/Ilford_1980276_Rapid_Fixer_5_Liter.html">bhphotovideo.com — Ilford Rapid Fixer</a></td>
+<td>5 L concentrate</td>
+<td>40</td>
+<td>~$18–22</td>
+<td>~$720–880</td>
+</tr>
+<tr>
+<td>Ilford Ilfostop (stop bath) 1L</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td>bhphotovideo.com</td>
+<td>1 L</td>
+<td>10</td>
+<td>~$10</td>
+<td>~$100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes on paper rolls:</strong>
+- Ilford MGRC 50"×98' confirmed listed at B&amp;H Photo (product #ILMG50981P). Price is not shown publicly — call B&amp;H at 800-606-6969 or log in for current pricing.
+- 50" width × 98' length yields exactly 5 strips of 50" × 96" per print (5 × 1,270 mm = 6,350 mm, covers the 5,893 mm image width with 229 mm spare). Each roll yields 2 complete prints with minimal waste.
+- Paper must be cut and handled in <strong>complete darkness</strong>. A changing tent large enough for an 8-foot wide roll is required, or a light-tight room.</p>
+<hr />
+<h2 id="process-6-rockland-liquid-light-on-custom-substrate">Process 6: Rockland Liquid Light on Custom Substrate<a class="headerlink" href="#process-6-rockland-liquid-light-on-custom-substrate" title="Permanent link">&para;</a></h2>
+<p><strong>50-print total: ~<span class="arithmatex">\(19,370 | Per print: ~\)</span>387</strong></p>
+<h3 id="material-quantities_1">Material quantities<a class="headerlink" href="#material-quantities_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Per print</th>
+<th>× 50 prints</th>
+<th>Order qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rockland Liquid Light</td>
+<td>188 oz (double coat)</td>
+<td><strong>9,400 oz</strong></td>
+<td>294 × 32oz OR contact Rockland for bulk</td>
+</tr>
+<tr>
+<td>Developer (Dektol)</td>
+<td>15 L</td>
+<td>750 L</td>
+<td>As above</td>
+</tr>
+<tr>
+<td>Fixer</td>
+<td>20 L</td>
+<td>1,000 L</td>
+<td>As above</td>
+</tr>
+<tr>
+<td>Substrate (muslin)</td>
+<td>~140 sq ft</td>
+<td>7,000 sq ft</td>
+<td>1,650 yd of 60" muslin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="shopping-list_5">Shopping list<a class="headerlink" href="#shopping-list_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rockland Liquid Light 32 oz</td>
+<td><strong>Adorama</strong></td>
+<td><a href="https://www.adorama.com/chll32.html">adorama.com/chll32.html</a></td>
+<td>32 oz</td>
+<td>294</td>
+<td>~$50–60</td>
+<td>~$14,700–17,640</td>
+</tr>
+<tr>
+<td>Rockland Liquid Light 32 oz</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/45028-REG/Rockland_LLE8_Liquid_Light_Photo_Emulsion.html">bhphotovideo.com — Rockland LLE8</a></td>
+<td>8 oz</td>
+<td>1,175</td>
+<td>~$25</td>
+<td>~$29,375</td>
+</tr>
+<tr>
+<td><strong>Rockland direct (bulk quote)</strong></td>
+<td><strong>Rockland Colloid</strong></td>
+<td><a href="https://www.rockaloid.com/">rockaloid.com</a></td>
+<td>Custom bulk</td>
+<td>Contact</td>
+<td>—</td>
+<td><strong>Recommended for 50-print volume</strong></td>
+</tr>
+<tr>
+<td>Developer, Fixer</td>
+<td>As Ilford section</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>~$1,220</td>
+</tr>
+<tr>
+<td>Muslin substrate</td>
+<td>Fabric Direct</td>
+<td>As above</td>
+<td>150-yd roll</td>
+<td>11</td>
+<td>~$100</td>
+<td>~$1,100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Procurement note:</strong> At 9,400 oz (277 litres / 73 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 294 bottles at $55 each. <strong>Contact Rockland Colloid directly</strong> (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.</p>
+<hr />
+<h2 id="shared-chemistry-developer-and-fixer-silver-processes">Shared Chemistry: Developer and Fixer (Silver Processes)<a class="headerlink" href="#shared-chemistry-developer-and-fixer-silver-processes" title="Permanent link">&para;</a></h2>
+<p>Applies to Ilford RC paper and Liquid Light. Both use standard silver gelatin processing chemistry.</p>
+<h3 id="dektol-developer-750-l-working-solution-total">Dektol developer — 750 L working solution total<a class="headerlink" href="#dektol-developer-750-l-working-solution-total" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kodak Dektol, 5-gal powder</td>
+<td><strong>Amazon</strong></td>
+<td><a href="https://www.amazon.com/KODAK-Dektol-Developer-Powder-Gallons/dp/B00009R76F">amazon.com — Kodak Dektol 5 gal</a></td>
+<td>Makes 5 gal (18.9 L) stock</td>
+<td>14</td>
+<td>~$28</td>
+<td>~$392</td>
+</tr>
+<tr>
+<td>Kodak Dektol, 1-gal powder</td>
+<td><strong>B&amp;H</strong></td>
+<td>As above</td>
+<td>Makes 1 gal (3.78 L) stock</td>
+<td>66</td>
+<td>~$12</td>
+<td>~$792</td>
+</tr>
+</tbody>
+</table>
+<p>At 1:2 dilution: 1 gallon stock → 3 gallons working. 5-gal packet → 15 gal (56.7 L) working. 14 packets × 56.7 L = 794 L working. Sufficient.</p>
+<h3 id="fixer-1000-l-working-solution-total">Fixer — 1,000 L working solution total<a class="headerlink" href="#fixer-1000-l-working-solution-total" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Supplier</th>
+<th>URL</th>
+<th>Unit</th>
+<th>Units</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ilford Rapid Fixer, 5 L</td>
+<td><strong>B&amp;H Photo</strong></td>
+<td><a href="https://www.bhphotovideo.com/c/product/107521-REG/Ilford_1980276_Rapid_Fixer_5_Liter.html">bhphotovideo.com — Ilford Rapid Fixer</a></td>
+<td>5 L concentrate</td>
+<td>40</td>
+<td>~$20</td>
+<td>~$800</td>
+</tr>
+</tbody>
+</table>
+<p>At 1:4 dilution: 5 L concentrate → 25 L working. 40 bottles × 25 L = 1,000 L working. Exact.</p>
+<hr />
+<h2 id="comparative-summary-table-50-prints">Comparative Summary Table — 50 Prints<a class="headerlink" href="#comparative-summary-table-50-prints" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>FAC</th>
+<th>KFe</th>
+<th>AgNO₃</th>
+<th>Amm. dichromate</th>
+<th>Gum arabic</th>
+<th>Na thiosulfate</th>
+<th>Fabric/paper</th>
+<th>Chemistry</th>
+<th><strong>Total</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cyanotype</td>
+<td>11.2 kg</td>
+<td>4.5 kg</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>1,650 yd muslin</td>
+<td>~$862</td>
+<td><strong>~$2,842</strong></td>
+</tr>
+<tr>
+<td>Gum bichromate</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>11.25 kg</td>
+<td>35 kg</td>
+<td>—</td>
+<td>1,650 yd muslin</td>
+<td>~$2,509</td>
+<td><strong>~$4,578</strong></td>
+</tr>
+<tr>
+<td>Van Dyke Brown</td>
+<td>7 kg</td>
+<td>—</td>
+<td>2.8 kg</td>
+<td>—</td>
+<td>—</td>
+<td>25 kg</td>
+<td>1,650 yd muslin</td>
+<td>~$7,800</td>
+<td><strong>~$9,782</strong></td>
+</tr>
+<tr>
+<td>Salt print</td>
+<td>—</td>
+<td>—</td>
+<td>8.4 kg</td>
+<td>—</td>
+<td>—</td>
+<td>50 kg</td>
+<td>1,650 yd muslin</td>
+<td>~$21,940</td>
+<td><strong>~$23,925</strong></td>
+</tr>
+<tr>
+<td>Ilford RC paper</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>25 rolls paper</td>
+<td>~$1,220 (chem)</td>
+<td><strong>~$19,970</strong></td>
+</tr>
+<tr>
+<td>Liquid Light</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>1,650 yd + emulsion</td>
+<td>~$1,220 (chem)</td>
+<td><strong>~$19,370</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="key-procurement-notes">Key Procurement Notes<a class="headerlink" href="#key-procurement-notes" title="Permanent link">&para;</a></h2>
+<h3 id="1-silver-nitrate-dea-registration-required">1. Silver nitrate — DEA registration required<a class="headerlink" href="#1-silver-nitrate-dea-registration-required" title="Permanent link">&para;</a></h3>
+<p>Any US purchase of silver nitrate above certain thresholds requires completion of a <strong>DEA Form 224</strong> (New Application for Registration). Silver nitrate is listed as a DEA List I Chemical due to its use in methamphetamine precursor chemistry. Photographers' Formulary states this explicitly on their product page. Allow 2–4 weeks for DEA registration approval before ordering. Form available at dea.gov.</p>
+<h3 id="2-ammonium-dichromate-hazmat-shipping">2. Ammonium dichromate — hazmat shipping<a class="headerlink" href="#2-ammonium-dichromate-hazmat-shipping" title="Permanent link">&para;</a></h3>
+<p>Ammonium dichromate is a UN Class 5.1 oxidiser. Cannot be shipped by air. UPS Ground only within the continental US. Both Photographers' Formulary and Chem-Impex state ground-only shipping at checkout. It is also a Category 1A human carcinogen. Proper storage away from flammables is required; the material is capable of self-sustaining decomposition if ignited.</p>
+<h3 id="3-silver-nitrate-price-volatility">3. Silver nitrate price volatility<a class="headerlink" href="#3-silver-nitrate-price-volatility" title="Permanent link">&para;</a></h3>
+<p>Silver nitrate is 63–68% silver by weight. The silver spot price (approximately $30–35/troy oz as of early 2026) directly sets the floor for AgNO₃ cost. A 20% increase in silver price increases salt print chemistry cost by approximately $4,400 on a 50-print run. Lock in pricing before committing to this process.</p>
+<h3 id="4-liquid-light-contact-rockland-before-ordering-retail">4. Liquid Light — contact Rockland before ordering retail<a class="headerlink" href="#4-liquid-light-contact-rockland-before-ordering-retail" title="Permanent link">&para;</a></h3>
+<p>At the volume required for 50 prints (9,400 oz), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.</p>
+<h3 id="5-cyanotype-fac-green-grade-only">5. Cyanotype FAC — green grade only<a class="headerlink" href="#5-cyanotype-fac-green-grade-only" title="Permanent link">&para;</a></h3>
+<p>There are two grades of ferric ammonium citrate: green (Fe³⁺, light-sensitive) and brown (Fe²⁺, not light-sensitive for cyanotype). Only the <strong>green grade</strong> is used in cyanotype. All Photographers' Formulary and Bostick &amp; Sullivan listings specify green grade. Verify before ordering from non-photographic suppliers.</p>
+<h3 id="6-muslin-pre-treatment">6. Muslin pre-treatment<a class="headerlink" href="#6-muslin-pre-treatment" title="Permanent link">&para;</a></h3>
+<p>Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitisers. If not removed, the sensitiser will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.</p>
+<h3 id="7-bulk-muslin-ordering-consider-width-carefully">7. Bulk muslin ordering — consider width carefully<a class="headerlink" href="#7-bulk-muslin-ordering-consider-width-carefully" title="Permanent link">&para;</a></h3>
+<p>The image plane is 7'10" (2,388 mm) tall. 60" (1,524 mm) muslin requires the fabric to be oriented with multiple widths in the height direction, or run lengthwise. For the 19'4" × 7'10" plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 5 strips of 60"×96" are cut and joined to cover the full width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print. This eliminates vertical seams.</p>
+<hr />
+<h2 id="supplier-directory">Supplier Directory<a class="headerlink" href="#supplier-directory" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Supplier</th>
+<th>Speciality</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Photographers' Formulary</strong></td>
+<td>Full range of darkroom and alternative process chemicals</td>
+<td><a href="https://stores.photoformulary.com">stores.photoformulary.com</a></td>
+</tr>
+<tr>
+<td><strong>Bostick &amp; Sullivan</strong></td>
+<td>Cyanotype, platinum/palladium, VDB, salt chemistry</td>
+<td><a href="https://www.bostick-sullivan.com">bostick-sullivan.com</a></td>
+</tr>
+<tr>
+<td><strong>Chem-Impex</strong></td>
+<td>Reagent and lab-grade bulk chemicals incl. AgNO₃, dichromate</td>
+<td><a href="https://www.chemimpex.com">chemimpex.com</a></td>
+</tr>
+<tr>
+<td><strong>Lab Alley</strong></td>
+<td>Lab-grade chemicals, tartaric acid, silver nitrate</td>
+<td><a href="https://www.laballey.com">laballey.com</a></td>
+</tr>
+<tr>
+<td><strong>Ingredient Depot</strong></td>
+<td>Bulk food/industrial chemicals incl. sodium thiosulfate 25 kg</td>
+<td><a href="https://ingredientdepot.com">ingredientdepot.com</a></td>
+</tr>
+<tr>
+<td><strong>Alliance Chemical</strong></td>
+<td>Sodium thiosulfate and industrial chemicals, same-day ship</td>
+<td><a href="https://alliancechemical.com">alliancechemical.com</a></td>
+</tr>
+<tr>
+<td><strong>Ames Goldsmith</strong></td>
+<td>Photographic-grade silver nitrate, bulk supply</td>
+<td><a href="https://www.amesgoldsmith.com">amesgoldsmith.com</a></td>
+</tr>
+<tr>
+<td><strong>Gum Arabic USA</strong></td>
+<td>Bulk gum arabic in kg and larger quantities</td>
+<td><a href="https://www.gumarabicusa.com">gumarabicusa.com</a></td>
+</tr>
+<tr>
+<td><strong>Jedwards International</strong></td>
+<td>Bulk acacia gum / gum arabic wholesale</td>
+<td><a href="https://bulknaturaloils.com">bulknaturaloils.com</a></td>
+</tr>
+<tr>
+<td><strong>Fabric Direct</strong></td>
+<td>60" muslin in 150-yard rolls</td>
+<td><a href="https://www.fabricdirect.com">fabricdirect.com</a></td>
+</tr>
+<tr>
+<td><strong>Fabric Wholesale Direct</strong></td>
+<td>60" muslin by the yard or bolt</td>
+<td><a href="https://fabricwholesaledirect.com">fabricwholesaledirect.com</a></td>
+</tr>
+<tr>
+<td><strong>B&amp;H Photo Video</strong></td>
+<td>Ilford paper rolls, Rockland Liquid Light, Dektol, Ilford fixer</td>
+<td><a href="https://www.bhphotovideo.com">bhphotovideo.com</a></td>
+</tr>
+<tr>
+<td><strong>Adorama</strong></td>
+<td>Ilford paper rolls, Rockland Liquid Light, Dektol</td>
+<td><a href="https://www.adorama.com">adorama.com</a></td>
+</tr>
+<tr>
+<td><strong>Rockland Colloid</strong></td>
+<td>Liquid Light emulsion — contact for bulk pricing</td>
+<td><a href="https://www.rockaloid.com">rockaloid.com</a></td>
+</tr>
+<tr>
+<td><strong>Freestyle Photo</strong></td>
+<td>Alternative process chemicals, Arista developer</td>
+<td><a href="https://www.freestylephoto.biz">freestylephoto.biz</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

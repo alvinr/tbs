@@ -1,0 +1,2161 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/lens-options/">
+      
+      
+        <link rel="prev" href="../pinhole-camera-construction/">
+      
+      
+        <link rel="next" href="../lens-vs-pinhole-exposure/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lens Options - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lens-options-for-the-giant-pinhole-camera" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lens Options
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Option B — Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole — Exposure Physics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chemistry Shopping List
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B — Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-technical-analysis-of-image-quality-depth-of-field-and-exposure-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-fundamental-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Fundamental Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-1-the-optics-specifying-a-lens-for-this-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 1: The Optics — Specifying a Lens for This Camera
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 1: The Optics — Specifying a Lens for This Camera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-thin-lens-equation-and-focus-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Thin Lens Equation and Focus Distance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-adjustable-focus-the-lens-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Adjustable Focus: The Lens Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-magnification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Magnification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-bellows-extension-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Bellows Extension Factor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-2-impact-on-exposure-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 2: Impact on Exposure Time
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-3-depth-of-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 3: Depth of Field
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-4-image-sharpness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 4: Image Sharpness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 4: Image Sharpness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-theoretical-limit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Theoretical Limit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-what-the-improvement-looks-like-on-a-5893-mm-wide-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 What the Improvement Looks Like on a 5,893 mm Wide Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-5-lens-options-specification-coverage-and-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 5: Lens Options — Specification, Coverage, and Character
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 5: Lens Options — Specification, Coverage, and Character">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5a-large-format-process-repro-lens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5A: Large-Format Process / Repro Lens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5b-telescope-achromat-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5B: Telescope Achromat Objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5c-fresnel-lens-full-coverage-aberrant-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5C: Fresnel Lens — Full Coverage, Aberrant Character
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5d-custom-single-element-optic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5D: Custom Single-Element Optic
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-6-the-field-geometry-problem-why-no-lens-covers-the-full-plane-well" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 6: The Field Geometry Problem — Why No Lens Covers the Full Plane Well
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 6: The Field Geometry Problem — Why No Lens Covers the Full Plane Well">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-illumination-falloff-cos4-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Illumination Falloff — cos⁴ Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-the-curved-image-plane-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 The Curved Image Plane Option
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-7-distortion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 7: Distortion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-8-chromatic-aberration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 8: Chromatic Aberration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-9-the-hybrid-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 9: The Hybrid Approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 9: The Hybrid Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#9a-central-lens-peripheral-pinhole-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9A: Central Lens, Peripheral Pinhole Array
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9b-sequential-exposure-sharp-portrait-pinhole-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9B: Sequential Exposure — Sharp Portrait + Pinhole Landscape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9c-zone-focus-grid-lens-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9C: Zone-Focus Grid Lens Array
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-10-summary-and-recommendation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section 10: Summary and Recommendation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 10: Summary and Recommendation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-changes-when-you-add-a-lens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Changes When You Add a Lens
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-lens-specification-for-portrait-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Lens Specification for Portrait Work
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-fundamental-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Fundamental Trade-Off
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole — Exposure Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="lens-options-for-the-giant-pinhole-camera">Lens Options for the Giant Pinhole Camera<a class="headerlink" href="#lens-options-for-the-giant-pinhole-camera" title="Permanent link">&para;</a></h1>
+<h2 id="a-technical-analysis-of-image-quality-depth-of-field-and-exposure-impact">A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact<a class="headerlink" href="#a-technical-analysis-of-image-quality-depth-of-field-and-exposure-impact" title="Permanent link">&para;</a></h2>
+<p><strong>Camera configuration:</strong> Option B (side-to-side), container interior depth f = 2,362 mm<br />
+<strong>Image plane:</strong> 5,893 × 2,388 mm (19′ 4″ × 7′ 10″), diagonal = 6,358 mm<br />
+<strong>Current pinhole:</strong> Ø 2.17 mm, f/1088<br />
+<strong>Baseline exposure (ISO 6 paper, f/1088, full sun, Schwarzschild corrected):</strong> ~43 minutes</p>
+<hr />
+<h2 id="the-fundamental-problem">The Fundamental Problem<a class="headerlink" href="#the-fundamental-problem" title="Permanent link">&para;</a></h2>
+<p>Before specifying any lens, one geometric fact must be understood: <strong>no commercially available photographic lens covers the full 5,893 × 2,388 mm image plane.</strong> The image circle required to cover this format fully is 6,358 mm in diameter. For comparison, the largest format commonly served by photographic lenses is 8×10 inch (203 × 254 mm, diagonal 325 mm). Our image plane diagonal is <strong>20 times larger</strong>.</p>
+<p>This does not mean a lens is useless here. It means the lens choice determines <em>which portion</em> of the image plane receives focused, optically sharp light. The decision matrix is:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Image area covered</th>
+<th>Quality</th>
+<th>Practical availability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large-format process lens</td>
+<td>Central circle, Ø 300–600 mm</td>
+<td>Excellent within circle</td>
+<td>Commercial (used market)</td>
+</tr>
+<tr>
+<td>Telescope objective (achromat)</td>
+<td>Central circle, Ø 100–300 mm</td>
+<td>Very good within circle</td>
+<td>Commercial, new and used</td>
+</tr>
+<tr>
+<td>Custom single-element optic</td>
+<td>Up to full coverage</td>
+<td>Moderate — significant aberrations</td>
+<td>Custom fabrication</td>
+</tr>
+<tr>
+<td>Large Fresnel lens</td>
+<td>Full or partial coverage</td>
+<td>Low — artistic/aberrant character</td>
+<td>Commercial (lighting/solar industry)</td>
+</tr>
+<tr>
+<td>Hybrid: lens + pinholes</td>
+<td>Central sharp + full-plane soft</td>
+<td>Intentionally mixed</td>
+<td>DIY</td>
+</tr>
+</tbody>
+</table>
+<p>Each is analysed in detail below. All share a common optical framework.</p>
+<hr />
+<h2 id="section-1-the-optics-specifying-a-lens-for-this-camera">Section 1: The Optics — Specifying a Lens for This Camera<a class="headerlink" href="#section-1-the-optics-specifying-a-lens-for-this-camera" title="Permanent link">&para;</a></h2>
+<h3 id="11-thin-lens-equation-and-focus-distance">1.1 Thin Lens Equation and Focus Distance<a class="headerlink" href="#11-thin-lens-equation-and-focus-distance" title="Permanent link">&para;</a></h3>
+<p>The image plane is fixed at 2,362 mm from the lens position (the pinhole wall). Using the thin lens equation:</p>
+<div class="highlight"><pre><span></span><code>1/f_L = 1/d_i + 1/d_o
+</code></pre></div>
+<p>Where d_i = 2,362 mm (fixed), d_o = subject distance, f_L = lens focal length.</p>
+<p>Solving for d_o: <strong>d_o = d_i × f_L / (d_i − f_L)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lens focal length (f_L)</th>
+<th>Sharp focus distance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,200 mm</td>
+<td>2.4 m</td>
+</tr>
+<tr>
+<td>1,321 mm</td>
+<td><strong>3.0 m</strong></td>
+</tr>
+<tr>
+<td>1,400 mm</td>
+<td>3.4 m</td>
+</tr>
+<tr>
+<td>1,500 mm</td>
+<td>4.1 m</td>
+</tr>
+<tr>
+<td>1,604 mm</td>
+<td><strong>5.0 m</strong></td>
+</tr>
+<tr>
+<td>1,800 mm</td>
+<td>7.6 m</td>
+</tr>
+<tr>
+<td>2,000 mm</td>
+<td>13.1 m</td>
+</tr>
+<tr>
+<td>2,362 mm</td>
+<td>∞ (infinity)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For portrait work at 3–5 m: the required lens focal length is 1,300–1,600 mm.</strong> This is the working specification. No standard photographic lens, enlarger lens, or projector lens operates in this focal length range at the diameters needed for this camera. The sources that do are discussed under each option below.</p>
+<h3 id="12-adjustable-focus-the-lens-board">1.2 Adjustable Focus: The Lens Board<a class="headerlink" href="#12-adjustable-focus-the-lens-board" title="Permanent link">&para;</a></h3>
+<p>A lens mounted rigidly in the pinhole wall can only focus at one fixed distance (set by its focal length). To focus at different distances, the lens is mounted on a sliding board — a simple wooden or aluminium panel that moves forward and backward in the wall aperture, exactly as a view camera bellows extends and contracts.</p>
+<p>Moving the lens 1 mm toward the subject (increasing d_i by 1 mm) shifts focus significantly closer. The sensitivity:</p>
+<div class="highlight"><pre><span></span><code>Δd_o / Δd_i = −(d_o / d_i)² = −(d_o / 2,362)²
+</code></pre></div>
+<p>At 3.4 m subject distance (d_o = 3,438 mm): moving the lens 1 mm toward subject shifts focus by −(3,438/2,362)² = −2.12 m. Focus is extremely sensitive to lens position at these distances. A fine-thread adjustment screw is essential.</p>
+<h3 id="13-magnification">1.3 Magnification<a class="headerlink" href="#13-magnification" title="Permanent link">&para;</a></h3>
+<p><strong>Adding a lens does not change image magnification.</strong> Magnification depends only on image distance and object distance:</p>
+<div class="highlight"><pre><span></span><code>M = d_i / d_o = 2,362 / d_o
+</code></pre></div>
+<p>This is identical to the pinhole case. A subject at 3.4 m produces an image 0.687× their actual size, regardless of whether the camera uses a pinhole or a lens. The lens determines <em>sharpness</em>; geometry determines <em>size</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Subject distance</th>
+<th>Magnification</th>
+<th>Image height of 1,780 mm person</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.0 m</td>
+<td>1.18×</td>
+<td>2,102 mm (larger than life)</td>
+</tr>
+<tr>
+<td>2.4 m</td>
+<td>0.98×</td>
+<td>1,752 mm (near life-size)</td>
+</tr>
+<tr>
+<td>3.0 m</td>
+<td>0.79×</td>
+<td>1,401 mm</td>
+</tr>
+<tr>
+<td>3.4 m</td>
+<td>0.69×</td>
+<td>1,237 mm</td>
+</tr>
+<tr>
+<td>5.0 m</td>
+<td>0.47×</td>
+<td>841 mm</td>
+</tr>
+<tr>
+<td>7.6 m</td>
+<td>0.31×</td>
+<td>553 mm</td>
+</tr>
+<tr>
+<td>10.0 m</td>
+<td>0.24×</td>
+<td>420 mm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-bellows-extension-factor">1.4 Bellows Extension Factor<a class="headerlink" href="#14-bellows-extension-factor" title="Permanent link">&para;</a></h3>
+<p>At portrait distances, the lens-to-image-plane distance (2,362 mm) is comparable in magnitude to the object distance. This ratio matters for exposure: the closer the subject, the more the effective f-number increases relative to the lens's rated value.</p>
+<div class="highlight"><pre><span></span><code>Effective f-number = rated f-number × (1 + M)
+Exposure correction factor = (1 + M)²
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Subject distance</th>
+<th>Magnification M</th>
+<th>Bellows factor (1+M)²</th>
+<th>Exposure increase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.0 m</td>
+<td>0.787</td>
+<td>3.20×</td>
+<td>+1.7 stops</td>
+</tr>
+<tr>
+<td>3.4 m</td>
+<td>0.695</td>
+<td>2.87×</td>
+<td>+1.5 stops</td>
+</tr>
+<tr>
+<td>5.0 m</td>
+<td>0.472</td>
+<td>2.17×</td>
+<td>+1.1 stops</td>
+</tr>
+<tr>
+<td>7.6 m</td>
+<td>0.311</td>
+<td>1.72×</td>
+<td>+0.8 stops</td>
+</tr>
+<tr>
+<td>∞</td>
+<td>0</td>
+<td>1.00×</td>
+<td>0 stops</td>
+</tr>
+</tbody>
+</table>
+<p>A lens rated f/16 at portrait distance (3.4 m) has an effective f-number of f/16 × 1.695 = f/27. All exposure calculations below include this correction.</p>
+<hr />
+<h2 id="section-2-impact-on-exposure-time">Section 2: Impact on Exposure Time<a class="headerlink" href="#section-2-impact-on-exposure-time" title="Permanent link">&para;</a></h2>
+<p>The improvement over the pinhole is the most operationally significant quality of any lens. The pinhole at f/1088 requires 43 corrected minutes on ISO 6 paper in full sun. A lens of any practical aperture reduces this to seconds or fractions of a second.</p>
+<p>Baseline: Sunny-16 at ISO 6 = 1/6 second at f/16. All times below include bellows extension correction for a subject at 3.4 m (factor 2.87×) and Schwarzschild reciprocity correction (p = 0.85) where applicable.</p>
+<table>
+<thead>
+<tr>
+<th>Aperture</th>
+<th>Effective f-number (3.4m)</th>
+<th>Calculated t</th>
+<th>Corrected t</th>
+<th>Practical description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f/8</td>
+<td>f/13.6</td>
+<td>0.12 sec</td>
+<td><strong>0.12 sec</strong></td>
+<td>Shutter-speed territory — requires a shutter</td>
+</tr>
+<tr>
+<td>f/11</td>
+<td>f/18.7</td>
+<td>0.22 sec</td>
+<td><strong>0.22 sec</strong></td>
+<td>Requires a shutter</td>
+</tr>
+<tr>
+<td>f/16</td>
+<td>f/27.2</td>
+<td>0.47 sec</td>
+<td><strong>0.47 sec</strong></td>
+<td>Requires a shutter</td>
+</tr>
+<tr>
+<td>f/22</td>
+<td>f/37.3</td>
+<td>0.90 sec</td>
+<td><strong>0.90 sec</strong></td>
+<td>Hand-operated shutter (hat/card) just possible</td>
+</tr>
+<tr>
+<td>f/32</td>
+<td>f/54.3</td>
+<td>1.90 sec</td>
+<td><strong>2.1 sec</strong></td>
+<td>Hand-operated shutter</td>
+</tr>
+<tr>
+<td>f/45</td>
+<td>f/76.4</td>
+<td>3.75 sec</td>
+<td><strong>4.7 sec</strong></td>
+<td>Hand-operated shutter, comfortable</td>
+</tr>
+<tr>
+<td>f/64</td>
+<td>f/108.5</td>
+<td>7.6 sec</td>
+<td><strong>10.8 sec</strong></td>
+<td>Comfortable hand operation</td>
+</tr>
+<tr>
+<td>f/128</td>
+<td>f/217</td>
+<td>30.4 sec</td>
+<td><strong>55 sec</strong></td>
+<td>Manageable for standing subject</td>
+</tr>
+<tr>
+<td>f/256</td>
+<td>f/434</td>
+<td>121 sec</td>
+<td><strong>4.7 min</strong></td>
+<td>Getting difficult; approaches pinhole aesthetics</td>
+</tr>
+<tr>
+<td>f/512</td>
+<td>f/869</td>
+<td>486 sec</td>
+<td><strong>24 min</strong></td>
+<td>Near-pinhole behaviour</td>
+</tr>
+<tr>
+<td>f/1088</td>
+<td>f/1844</td>
+<td>2,193 sec</td>
+<td><strong>~2.4 hr</strong></td>
+<td>Pinhole equivalent (extremely stopped-down lens)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key threshold:</strong> At f/32–f/64, exposures of 2–11 seconds allow subjects to stand still reliably. At f/8–f/22, a mechanical shutter is required — easily fabricated as a sliding black panel operated by hand.</p>
+<p><strong>ISO 6 is the binding constraint.</strong> All times above are for silver gelatin paper or equivalent. For orthochromatic X-ray film at ISO 400 (66× faster), multiply all times by 1/66 — reducing a 10-second exposure to 0.15 seconds, and a 4.7-minute exposure to 4 seconds.</p>
+<hr />
+<h2 id="section-3-depth-of-field">Section 3: Depth of Field<a class="headerlink" href="#section-3-depth-of-field" title="Permanent link">&para;</a></h2>
+<p>With a pinhole, depth of field is effectively unlimited — the blur circle grows slowly with distance from the optimum, and the variation is small compared to the pinhole's already-modest resolution. With a lens, depth of field is sharply defined and depends on aperture.</p>
+<p>The following uses:
+- f_L = 1,400 mm (focused at 3.44 m)
+- Circle of confusion c = 3 mm (appropriate for a 5,893 mm wide image viewed from 8–10 m)
+- Hyperfocal distance H = f_L² / (N × c)</p>
+<table>
+<thead>
+<tr>
+<th>Aperture</th>
+<th>Hyperfocal dist.</th>
+<th>Near limit</th>
+<th>Far limit</th>
+<th>DoF span</th>
+<th>Portrait suitability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f/8</td>
+<td>81.7 m</td>
+<td>3.30 m</td>
+<td>3.59 m</td>
+<td><strong>0.29 m</strong></td>
+<td>Group must be in a single plane</td>
+</tr>
+<tr>
+<td>f/11</td>
+<td>59.4 m</td>
+<td>3.25 m</td>
+<td>3.65 m</td>
+<td>0.40 m</td>
+<td>Tight — single row, still subject</td>
+</tr>
+<tr>
+<td>f/16</td>
+<td>40.8 m</td>
+<td>3.17 m</td>
+<td>3.75 m</td>
+<td>0.58 m</td>
+<td>Acceptable for single subject</td>
+</tr>
+<tr>
+<td>f/22</td>
+<td>29.7 m</td>
+<td>3.08 m</td>
+<td>3.89 m</td>
+<td>0.81 m</td>
+<td>Good for single portrait</td>
+</tr>
+<tr>
+<td>f/32</td>
+<td>20.4 m</td>
+<td>2.94 m</td>
+<td>4.13 m</td>
+<td>1.19 m</td>
+<td><strong>Good — small group</strong></td>
+</tr>
+<tr>
+<td>f/45</td>
+<td>14.5 m</td>
+<td>2.78 m</td>
+<td>4.50 m</td>
+<td>1.72 m</td>
+<td>Small group, moderate depth</td>
+</tr>
+<tr>
+<td>f/64</td>
+<td>10.2 m</td>
+<td>2.57 m</td>
+<td>5.18 m</td>
+<td><strong>2.61 m</strong></td>
+<td>Excellent — full group in depth</td>
+</tr>
+<tr>
+<td>f/128</td>
+<td>5.1 m</td>
+<td>2.05 m</td>
+<td>10.53 m</td>
+<td>8.48 m</td>
+<td>Very deep — near-pinhole DoF</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Working aperture recommendation for portraiture: f/32–f/64.</strong> This range gives 1.2–2.6 m of depth (enough for a group of people standing at varying distances from the camera), with exposure times of 2–11 seconds that subjects can hold without assistance.</p>
+<p><strong>The f/8–f/22 range</strong> is appropriate for a single subject in a controlled studio-style setup where precise placement is possible. The extremely shallow depth of field at f/8 (29 cm) would throw background and any secondary subjects sharply out of focus — a dramatic aesthetic, but unforgiving of focus errors.</p>
+<hr />
+<h2 id="section-4-image-sharpness">Section 4: Image Sharpness<a class="headerlink" href="#section-4-image-sharpness" title="Permanent link">&para;</a></h2>
+<h3 id="41-theoretical-limit">4.1 Theoretical Limit<a class="headerlink" href="#41-theoretical-limit" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Blur disk size</th>
+<th>Resolution (theoretical)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pinhole (f/1088)</td>
+<td>2.17 mm geometric</td>
+<td>~0.23 lp/mm</td>
+<td>Diffraction-limited</td>
+</tr>
+<tr>
+<td>Lens f/8</td>
+<td>0.011 mm Airy</td>
+<td>~47 lp/mm</td>
+<td>Diffraction limit only</td>
+</tr>
+<tr>
+<td>Lens f/16</td>
+<td>0.021 mm Airy</td>
+<td>~23 lp/mm</td>
+<td>100× better than pinhole</td>
+</tr>
+<tr>
+<td>Lens f/32</td>
+<td>0.043 mm Airy</td>
+<td>~12 lp/mm</td>
+<td>50× better</td>
+</tr>
+<tr>
+<td>Lens f/64</td>
+<td>0.086 mm Airy</td>
+<td>~6 lp/mm</td>
+<td>26× better</td>
+</tr>
+<tr>
+<td>Lens f/128</td>
+<td>0.172 mm Airy</td>
+<td>~3 lp/mm</td>
+<td>13× better</td>
+</tr>
+<tr>
+<td>Lens f/256</td>
+<td>0.344 mm Airy</td>
+<td>~1.5 lp/mm</td>
+<td>6× better</td>
+</tr>
+<tr>
+<td>Lens f/512</td>
+<td>0.688 mm Airy</td>
+<td>~0.7 lp/mm</td>
+<td>3× better</td>
+</tr>
+</tbody>
+</table>
+<p>These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 65–110× better than the pinhole). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 20–43× better.</p>
+<h3 id="42-what-the-improvement-looks-like-on-a-5893-mm-wide-image">4.2 What the Improvement Looks Like on a 5,893 mm Wide Image<a class="headerlink" href="#42-what-the-improvement-looks-like-on-a-5893-mm-wide-image" title="Permanent link">&para;</a></h3>
+<p>The pinhole resolves features of ~2.17 mm on the image plane. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1 mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.</p>
+<p>A lens at f/32 resolves ~0.043 mm on the image plane — <strong>50× finer</strong>. At the same subject distance this resolves 0.062 mm features. On an image viewed from 5 m, the pinhole is already acceptably sharp to the naked eye; the lens at f/32 would appear dramatically, noticeably sharper even at long viewing distances. Individual hairs, fabric texture, and skin pores would be rendered.</p>
+<p>However: <strong>sharpness is only real within the image circle of the lens</strong> (see Section 5). Outside that circle, there is no image at all (or the image plane receives no light, or stray light only, depending on construction).</p>
+<hr />
+<h2 id="section-5-lens-options-specification-coverage-and-character">Section 5: Lens Options — Specification, Coverage, and Character<a class="headerlink" href="#section-5-lens-options-specification-coverage-and-character" title="Permanent link">&para;</a></h2>
+<h3 id="5a-large-format-process-repro-lens">5A: Large-Format Process / Repro Lens<a class="headerlink" href="#5a-large-format-process-repro-lens" title="Permanent link">&para;</a></h3>
+<p>These are the highest-quality option within their coverage area. Process lenses (Rodenstock Apo-Ronar, Schneider G-Claron, Nikkor AM-ED) were designed for the commercial printing industry to produce flat-field, low-distortion, high-resolution reproductions. They are optimised for the reproduction ratios (1:1 to 1:10) that coincide with portrait distances at this camera's scale.</p>
+<p><strong>Commercially available examples:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lens</th>
+<th>Focal length</th>
+<th>Max aperture</th>
+<th>Image circle (@ infinity)</th>
+<th>Typical used price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rodenstock Apo-Ronar 1200mm</td>
+<td>1,200 mm</td>
+<td>f/14</td>
+<td>~400 mm</td>
+<td><span class="arithmatex">\(400–\)</span>1,200</td>
+</tr>
+<tr>
+<td>Nikkor T 1200mm f/11</td>
+<td>1,200 mm</td>
+<td>f/11</td>
+<td>~450 mm</td>
+<td><span class="arithmatex">\(600–\)</span>1,500</td>
+</tr>
+<tr>
+<td>Schneider Apo-Symmar 800mm</td>
+<td>800 mm</td>
+<td>f/14</td>
+<td>~500 mm</td>
+<td><span class="arithmatex">\(300–\)</span>800</td>
+</tr>
+<tr>
+<td>Rodenstock Apo-Ronar 600mm</td>
+<td>600 mm</td>
+<td>f/9</td>
+<td>~350 mm</td>
+<td><span class="arithmatex">\(150–\)</span>400</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For this camera</strong>, the most practical option is the <strong>Rodenstock Apo-Ronar 1200mm or Nikkor T 1200mm</strong> — both focus sharply near 2.4 m (d_i = 2,362 mm) with a single fixed lens. A 1,400 mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.</p>
+<p><strong>What the image looks like:</strong> A sharp circular disk in the centre of the photosensitive surface, approximately 400–500 mm in diameter. The remaining ~5,400 mm width of the image plane receives no light. The entire portrait must be composed within this central medallion.</p>
+<p><strong>Coverage as percentage of image plane:</strong> 400mm circle / 5,893mm width = <strong>6.8% of image width</strong>. The circular image is a small fraction of the full 140 sq ft plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).</p>
+<p><strong>Distortion:</strong> Designed for &lt;0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.</p>
+<p><strong>Chromatic aberration:</strong> Apochromatic design (three-wavelength correction). Negligible colour fringing in normal use.</p>
+<p><strong>Exposure at portrait distance (f/14 nominal, bellows factor 2.87):</strong>
+Effective f-number = f/14 × 1.695 = f/24
+t = (1/6) × (24/16)² = (1/6) × 2.25 = 0.375 sec — a hand-operated shutter is practical.</p>
+<hr />
+<h3 id="5b-telescope-achromat-objective">5B: Telescope Achromat Objective<a class="headerlink" href="#5b-telescope-achromat-objective" title="Permanent link">&para;</a></h3>
+<p>Telescope refractor objectives are commercially produced as high-quality achromatic doublets in the 80–200 mm aperture range at focal lengths of 500–2,000 mm. They are designed to form sharp star images — the most demanding test of on-axis sharpness — and perform excellently as camera lenses on axis.</p>
+<p><strong>Useful examples for this camera:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Optic</th>
+<th>Focal length</th>
+<th>Aperture</th>
+<th>f-number</th>
+<th>Image circle</th>
+<th>Price (approx)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sky-Watcher 120mm f/8.3 Doublet Apo</td>
+<td>1,000 mm</td>
+<td>120 mm</td>
+<td>f/8.3</td>
+<td>~100–150 mm</td>
+<td>~$700</td>
+</tr>
+<tr>
+<td>William Optics GT102</td>
+<td>714 mm</td>
+<td>102 mm</td>
+<td>f/7</td>
+<td>~80–100 mm</td>
+<td>~$900</td>
+</tr>
+<tr>
+<td>Explore Scientific ED127</td>
+<td>952 mm</td>
+<td>127 mm</td>
+<td>f/7.5</td>
+<td>~120–150 mm</td>
+<td>~$800</td>
+</tr>
+<tr>
+<td>Takahashi FSQ-130ED</td>
+<td>1,000 mm</td>
+<td>130 mm</td>
+<td>f/7.7</td>
+<td>~180 mm</td>
+<td>~$4,500</td>
+</tr>
+<tr>
+<td>Custom telescope doublet (150mm f/10)</td>
+<td>1,500 mm</td>
+<td>150 mm</td>
+<td>f/10</td>
+<td>~200–250 mm</td>
+<td>~<span class="arithmatex">\(500–\)</span>2,000 (used)</td>
+</tr>
+</tbody>
+</table>
+<p>A 150 mm aperture f/10 refractor objective at 1,500 mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250 mm image circle — still a small central medallion (200/5,893 = 3.4% of image width) but of extremely high quality.</p>
+<p>These can be sourced as surplus telescope objectives from astronomy retailers (OPT Telescopes, High Point Scientific, Agena Astro) at prices that are far below commercial photographic process lenses of similar quality.</p>
+<p><strong>Key advantage:</strong> Designed for visual and photographic use; straightforward to mount. The objective lens sits in its tube; the tube can be mounted directly in the camera wall with appropriate flanges.</p>
+<p><strong>Distortion:</strong> Minimal — telescope objectives are designed for accurate star-field astrometry, which requires very low geometric distortion. Performance is excellent.</p>
+<p><strong>Chromatic aberration:</strong> Achromatic doublet = corrected for two wavelengths. Residual secondary spectrum. Apochromatic triplet (ED glass) = corrected for three wavelengths, essentially invisible CA. APO models cost more but are recommended for portrait work where skin tone rendering matters.</p>
+<hr />
+<h3 id="5c-fresnel-lens-full-coverage-aberrant-character">5C: Fresnel Lens — Full Coverage, Aberrant Character<a class="headerlink" href="#5c-fresnel-lens-full-coverage-aberrant-character" title="Permanent link">&para;</a></h3>
+<p>Large Fresnel lenses are the only commercially available single elements that could physically cover the full image plane. Fresnel lenses are flat optical elements embossed with concentric prism rings that approximate the focusing power of a conventional curved lens. They are used in overhead projectors, solar concentrators, lighthouse optics, and large theatrical lighting.</p>
+<p><strong>Available specifications:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Source / product</th>
+<th>Aperture</th>
+<th>Focal length</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anchor Optics / Edmund Optics (acrylic)</td>
+<td>280 mm × 280 mm</td>
+<td>500–2,500 mm</td>
+<td><span class="arithmatex">\(40–\)</span>200</td>
+</tr>
+<tr>
+<td>Plastic focal lens (solar/Fresnel)</td>
+<td>600 mm × 600 mm</td>
+<td>700–1,500 mm</td>
+<td><span class="arithmatex">\(30–\)</span>80</td>
+</tr>
+<tr>
+<td>Fresnel Technologies surplus acrylic</td>
+<td>Up to 1,200 mm × 900 mm</td>
+<td>Custom</td>
+<td><span class="arithmatex">\(200–\)</span>500</td>
+</tr>
+<tr>
+<td>Glass Fresnel (lighthouse type, antique)</td>
+<td>500–1,000 mm dia</td>
+<td>300–1,000 mm</td>
+<td><span class="arithmatex">\(500–\)</span>5,000</td>
+</tr>
+</tbody>
+</table>
+<p>For this camera: a 600 × 600 mm Fresnel lens at 1,400 mm focal length would cover a 600 mm square within the 5,893 × 2,388 mm image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600 mm each) in a 1,200 × 600 mm assembly would cover about 20% of the image width.</p>
+<p>A full-width solution would require a 5,893 mm × 2,388 mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.</p>
+<p><strong>Optical qualities of Fresnel lenses:</strong></p>
+<ol>
+<li>
+<p><strong>Chromatic aberration — severe.</strong> A single-element Fresnel has no colour correction. The focal point for blue light is shorter than for red by approximately f_L / V where V = Abbe number of acrylic (~57): Δf = 1,400 / 57 ≈ 25 mm. Visible as colour fringing — a rainbow halo on high-contrast edges, most prominent at the image periphery. On silver gelatin paper (blue/green sensitive), this manifests as softer blue channel focus vs. green, producing a slightly warm-tinted blur. On panchromatic film, coloured fringes would be fully visible.</p>
+</li>
+<li>
+<p><strong>Zone diffraction artifacts.</strong> The stepped Fresnel ring structure creates diffraction rings around point sources. In a portrait, this appears as a soft halo or glow around specular highlights (eyes, jewellery, white clothing). Can be aesthetically pleasant or distracting.</p>
+</li>
+<li>
+<p><strong>Edge image quality.</strong> Fresnel lenses perform best on-axis and deteriorate rapidly toward the edges due to zone spacing errors and oblique incidence effects. A 600 mm Fresnel covering a 600 mm field: the centre 200 mm may be acceptable; the outer zone will be softer and more aberrant.</p>
+</li>
+<li>
+<p><strong>Scatter and flare.</strong> The stepped surface scatters more light than a smooth lens, reducing contrast and producing a slight veiling flare across the image. Characteristic of the aesthetic.</p>
+</li>
+</ol>
+<p><strong>Aesthetic character:</strong> A Fresnel lens portrait would have a soft, glowing, impressionistic quality — sharp in the centre, dissolving to aberrant chromatic softness toward the edges, with subtle diffraction haloes. This is a strong, distinctive look — reminiscent of early 20th-century soft-focus portrait lenses or Pictorialist photography. Whether it is desirable is an artistic decision, not a technical one.</p>
+<p><strong>Exposure:</strong> At a Fresnel lens aperture of f/7 (600 mm lens / ~85 mm working aperture at f/7):
+Effective at 3.4 m: f/7 × 1.695 = f/12
+t = (1/6) × (12/16)² = 0.047 sec ≈ 1/21 sec — requires a mechanical shutter.</p>
+<hr />
+<h3 id="5d-custom-single-element-optic">5D: Custom Single-Element Optic<a class="headerlink" href="#5d-custom-single-element-optic" title="Permanent link">&para;</a></h3>
+<p>A biconvex or plano-convex glass or acrylic lens of approximately 1,400 mm focal length can be custom-fabricated by specialist optical workshops. This is the route for larger image coverage with more controlled quality than a Fresnel.</p>
+<p><strong>Specification for a custom singlet covering ~1,000 mm image circle:</strong></p>
+<p>For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
+- Focal length 1,400 mm → radius of curvature each surface: R = 2(n−1)f = 2 × 0.52 × 1,400 = <strong>1,456 mm</strong>
+- Aperture required: at f/16, d = 1,400/16 = 87.5 mm. At f/8: 175 mm.
+- Physical diameter: 200–300 mm is practical for fabrication; covers ~250–400 mm image circle</p>
+<p><strong>To cover the full 5,893 mm image plane</strong> as a single element, the lens would need to be at least 1,000 mm in diameter — a single glass element of 1 metre diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments (telescope mirrors of this size are fabricated) but the cost is extreme (<span class="arithmatex">\(50,000–\)</span>300,000+). Acrylic is cheaper to fabricate at large size but optically inferior.</p>
+<p><strong>Realistic custom singlet:</strong> A 200–300 mm diameter, 1,400 mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately <strong><span class="arithmatex">\(2,000–\)</span>8,000</strong> depending on surface quality specification. This covers a ~300–500 mm circle.</p>
+<p><strong>Aberrations of a singlet at f/8:</strong>
+- Spherical aberration: significant — a biconvex singlet at f/8 has a spherical aberration blur of approximately f_L × (d/f_L)³ / (8(n−1)) ≈ several mm. This degrades the image significantly.
+- Stopping down to f/22–f/32 reduces spherical aberration dramatically; quality at f/32 is acceptable for portrait work.
+- Chromatic aberration: same as Fresnel (~25 mm longitudinal CA for crown glass). Achromatic doublet (cemented two-element) eliminates this; cost approximately 2–3× more than singlet.</p>
+<hr />
+<h2 id="section-6-the-field-geometry-problem-why-no-lens-covers-the-full-plane-well">Section 6: The Field Geometry Problem — Why No Lens Covers the Full Plane Well<a class="headerlink" href="#section-6-the-field-geometry-problem-why-no-lens-covers-the-full-plane-well" title="Permanent link">&para;</a></h2>
+<p>This is the fundamental optical constraint of this camera that no lens choice can fully resolve.</p>
+<p>The image plane is flat and very wide (5,893 mm) relative to the camera depth (2,362 mm). The distance from the lens to the centre of the image plane is 2,362 mm. The distance from the lens to the far corners of the image plane is:</p>
+<div class="highlight"><pre><span></span><code>d_corner = √(2,362² + 3,179²) = 3,961 mm
+</code></pre></div>
+<p>The corner is <strong>1,599 mm further from the lens than the centre.</strong> The left/right mid-edge point is 3,776 mm from the lens (1,414 mm further than centre). This means:</p>
+<p><strong>A lens focused on the centre (d_i = 2,362 mm) is focused on a subject at ~3.4 m. At the left/right edges of the image plane, the equivalent focused subject distance would be ~3.4 × (3,776/2,362) = 5.4 m. At the corners, ~3.4 × (3,961/2,362) = 5.7 m.</strong></p>
+<p>This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the centre of the camera would be rendered sharply in the centre and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:</p>
+<ol>
+<li>Stop down to a very small aperture (deep depth of focus on the image side)</li>
+<li>Curve the image plane to match the focal surface (discussed below)</li>
+<li>Use a telephoto lens design that manages field curvature over this extreme angular range</li>
+</ol>
+<p><strong>This is not a problem unique to adding a lens.</strong> The cos⁴ illumination falloff and field geometry are intrinsic to the camera's 102° × 45° field of view. The pinhole avoids the focus problem entirely because its resolution is low enough that the field geometry doesn't create a <em>visible</em> focus variation — the centre and corners are both equally soft. A lens makes the focus variation visible precisely because it is sharp in the first place.</p>
+<h3 id="61-illumination-falloff-cos4-law">6.1 Illumination Falloff — cos⁴ Law<a class="headerlink" href="#61-illumination-falloff-cos4-law" title="Permanent link">&para;</a></h3>
+<p>Both the pinhole and any lens suffer the same physical law: illumination falls as the fourth power of the cosine of the off-axis angle.</p>
+<table>
+<thead>
+<tr>
+<th>Image position</th>
+<th>Angle from axis</th>
+<th>cos⁴ factor</th>
+<th>Illumination vs. centre</th>
+<th>Stops darker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Centre</td>
+<td>0°</td>
+<td>1.000</td>
+<td>100%</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Mid-height edge</td>
+<td>26.8°</td>
+<td>0.634</td>
+<td>63%</td>
+<td>0.7 stops</td>
+</tr>
+<tr>
+<td>Mid-width edge</td>
+<td>51.3°</td>
+<td>0.153</td>
+<td>15%</td>
+<td>2.7 stops</td>
+</tr>
+<tr>
+<td>Corner</td>
+<td>53.4°</td>
+<td>0.126</td>
+<td>13%</td>
+<td>3.0 stops</td>
+</tr>
+</tbody>
+</table>
+<p>The corners of the image receive only 13% of the light falling on the centre — approximately <strong>3 stops less exposure</strong>. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. The effect on the final image: a natural vignette, darkening significantly from centre to corners. At 43 minutes or at 2 seconds, the corner of the image is always 3 stops darker than the centre.</p>
+<p>On silver gelatin paper, 3 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed centre. Exposure must account for this — either the centre will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centred in the frame, may be desirable — a natural vignette framing the subject).</p>
+<h3 id="62-the-curved-image-plane-option">6.2 The Curved Image Plane Option<a class="headerlink" href="#62-the-curved-image-plane-option" title="Permanent link">&para;</a></h3>
+<p>If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2,362 mm centred on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:</p>
+<div class="highlight"><pre><span></span><code>Δz at mid-width edge = 3,776 − 2,362 = 1,414 mm
+Δz at corner = 3,961 − 2,362 = 1,599 mm
+</code></pre></div>
+<p>This is a very deep curvature — the image plane would bow forward at the sides by 1.4 metres. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2,362 mm radius sphere section.</p>
+<p>For a process lens or telescope objective (covering only a 300–600 mm circle in the centre), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.</p>
+<hr />
+<h2 id="section-7-distortion">Section 7: Distortion<a class="headerlink" href="#section-7-distortion" title="Permanent link">&para;</a></h2>
+<p><strong>Pinhole:</strong> Zero geometric distortion by definition. The pinhole is a mathematical point and projects a perfect central perspective. Straight lines in the subject are rendered as straight lines in the image. This is a significant aesthetic quality of pinhole photography.</p>
+<p><strong>Lens distortion depends on design:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lens type</th>
+<th>Distortion character</th>
+<th>Magnitude</th>
+<th>Practical appearance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large-format process lens (Apo-Ronar, G-Claron)</td>
+<td>Essentially zero</td>
+<td>&lt;0.1%</td>
+<td>Indistinguishable from pinhole</td>
+</tr>
+<tr>
+<td>Telescope achromat objective</td>
+<td>Very low</td>
+<td>0.1–0.3%</td>
+<td>Negligible in portraits</td>
+</tr>
+<tr>
+<td>Custom singlet, symmetric biconvex</td>
+<td>Low (symmetric design nulls distortion)</td>
+<td>0.2–0.5%</td>
+<td>Negligible</td>
+</tr>
+<tr>
+<td>Fresnel lens</td>
+<td>Barrel distortion at edges</td>
+<td>1–5% at margins</td>
+<td>Visible but not severe</td>
+</tr>
+<tr>
+<td>Simple plano-convex singlet (stop offset)</td>
+<td>Barrel or pincushion</td>
+<td>1–3%</td>
+<td>Visible</td>
+</tr>
+</tbody>
+</table>
+<p>For the image areas covered by each option (central circle, 300–600 mm diameter), even moderate distortion percentages produce very small absolute pixel displacements. A 1% barrel distortion on a 500 mm image circle shifts the edge by 5 mm — visible in architectural photography, invisible in a portrait.</p>
+<hr />
+<h2 id="section-8-chromatic-aberration">Section 8: Chromatic Aberration<a class="headerlink" href="#section-8-chromatic-aberration" title="Permanent link">&para;</a></h2>
+<p><strong>Pinhole:</strong> Zero chromatic aberration. All wavelengths focus at the same point (the pinhole) and arrive at the image plane with identical geometry. This is not a small advantage — it is fundamental. The pinhole is the only optical element with perfect colour rendering.</p>
+<p><strong>Lens chromatic aberration by type:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Lens type</th>
+<th>Longitudinal CA</th>
+<th>Lateral CA</th>
+<th>On image</th>
+<th>Remedy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Singlet crown glass, f_L = 1,400 mm</td>
+<td>~25 mm</td>
+<td>Significant</td>
+<td>Colour fringing on edges</td>
+<td>Achromatic doublet</td>
+</tr>
+<tr>
+<td>Singlet flint glass</td>
+<td>~18 mm</td>
+<td>Significant</td>
+<td>Less than crown</td>
+<td>Achromatic doublet</td>
+</tr>
+<tr>
+<td>Achromatic doublet (crown + flint)</td>
+<td>~1–3 mm</td>
+<td>Minimal</td>
+<td>Very slight colour fringing</td>
+<td>— or APO</td>
+</tr>
+<tr>
+<td>Apochromatic triplet (telescope APO)</td>
+<td>&lt;0.5 mm</td>
+<td>Negligible</td>
+<td>Invisible in practice</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Process lens (Apo-Ronar, G-Claron)</td>
+<td>&lt;0.3 mm</td>
+<td>Negligible</td>
+<td>Invisible</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>For silver gelatin paper (blue + green sensitive), longitudinal chromatic aberration manifests as a slight softening of the focus in the blue channel relative to green. The paper does not record red, so the red focal shift does not contribute. On panchromatic film, full RGB CA is visible as coloured halos around high-contrast edges.</p>
+<p>For portrait work, an apochromatic lens (telescope APO objective or process lens) eliminates chromatic aberration as a concern. A singlet is workable but noticeably colour-fringed at the edges of the covered image circle.</p>
+<hr />
+<h2 id="section-9-the-hybrid-approach">Section 9: The Hybrid Approach<a class="headerlink" href="#section-9-the-hybrid-approach" title="Permanent link">&para;</a></h2>
+<p>The most interesting option for this camera may be to combine a lens with the pinhole rather than replace it. Several configurations are possible:</p>
+<h3 id="9a-central-lens-peripheral-pinhole-array">9A: Central Lens, Peripheral Pinhole Array<a class="headerlink" href="#9a-central-lens-peripheral-pinhole-array" title="Permanent link">&para;</a></h3>
+<p>Mount a 300 mm process lens in the centre of the pinhole wall. Drill a series of 2.17 mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1,000 mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.</p>
+<p>Result: a central sharp-focus portrait medallion surrounded by a web of overlapping, offset soft pinhole images — a unique artefact that could not be produced any other way.</p>
+<h3 id="9b-sequential-exposure-sharp-portrait-pinhole-landscape">9B: Sequential Exposure — Sharp Portrait + Pinhole Landscape<a class="headerlink" href="#9b-sequential-exposure-sharp-portrait-pinhole-landscape" title="Permanent link">&para;</a></h3>
+<p>Make two exposures on the same piece of paper. First: lens exposed for 2–5 seconds with subject present. Second: switch to pinhole (block the lens, unblock the pinhole), expose for 20–40 minutes with subject having left the scene. The result is a sharp portrait superimposed over a soft, long-exposed landscape. The portrait would appear as a sharp ghost within the broader pinhole context.</p>
+<h3 id="9c-zone-focus-grid-lens-array">9C: Zone-Focus Grid Lens Array<a class="headerlink" href="#9c-zone-focus-grid-lens-array" title="Permanent link">&para;</a></h3>
+<p>Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300 mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000 mm² — still only about 7.7% of the 14,069,484 mm² total image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.</p>
+<hr />
+<h2 id="section-10-summary-and-recommendation">Section 10: Summary and Recommendation<a class="headerlink" href="#section-10-summary-and-recommendation" title="Permanent link">&para;</a></h2>
+<h3 id="what-changes-when-you-add-a-lens">What Changes When You Add a Lens<a class="headerlink" href="#what-changes-when-you-add-a-lens" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Quality</th>
+<th>Pinhole</th>
+<th>Process lens</th>
+<th>Telescope APO</th>
+<th>Fresnel lens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coverage of image plane</td>
+<td>Full 140 sq ft</td>
+<td>Ø ~400 mm circle</td>
+<td>Ø ~150–200 mm circle</td>
+<td>Ø ~600 mm circle</td>
+</tr>
+<tr>
+<td>Sharpness (within covered area)</td>
+<td>0.23 lp/mm</td>
+<td>15–25 lp/mm</td>
+<td>20–40 lp/mm</td>
+<td>2–8 lp/mm</td>
+</tr>
+<tr>
+<td>Depth of field</td>
+<td>Unlimited (all soft)</td>
+<td>f/32: 1.2 m span</td>
+<td>f/32: 1.2 m span</td>
+<td>Shallow (soft)</td>
+</tr>
+<tr>
+<td>Exposure time (ISO 6 paper)</td>
+<td>~43 min</td>
+<td>~0.4 sec</td>
+<td>~0.5 sec</td>
+<td>~0.05 sec</td>
+</tr>
+<tr>
+<td>Geometric distortion</td>
+<td>Zero</td>
+<td>&lt;0.1%</td>
+<td>~0.2%</td>
+<td>1–3%</td>
+</tr>
+<tr>
+<td>Chromatic aberration</td>
+<td>Zero</td>
+<td>&lt;0.3 mm (APO)</td>
+<td>&lt;0.5 mm (APO)</td>
+<td>~25 mm (severe)</td>
+</tr>
+<tr>
+<td>Image magnification</td>
+<td>M = d_i/d_o</td>
+<td>M = d_i/d_o (same)</td>
+<td>M = d_i/d_o (same)</td>
+<td>M = d_i/d_o (same)</td>
+</tr>
+<tr>
+<td>Cost (lens only)</td>
+<td>—</td>
+<td><span class="arithmatex">\(400–\)</span>1,500</td>
+<td><span class="arithmatex">\(700–\)</span>4,500</td>
+<td><span class="arithmatex">\(30–\)</span>200</td>
+</tr>
+<tr>
+<td>Aesthetic character</td>
+<td>Soft, unlimited DoF, perfect geometry</td>
+<td>Sharp medallion, exact perspective</td>
+<td>Very sharp medallion</td>
+<td>Soft, chromatic, glowing</td>
+</tr>
+<tr>
+<td>Shutter required</td>
+<td>No</td>
+<td>Yes (hand shutter adequate)</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommended-lens-specification-for-portrait-work">Recommended Lens Specification for Portrait Work<a class="headerlink" href="#recommended-lens-specification-for-portrait-work" title="Permanent link">&para;</a></h3>
+<p>If a lens is added for portrait work with the goal of maximising image quality:</p>
+<p><strong>Primary choice:</strong> A <strong>Rodenstock Apo-Ronar 1200mm f/14</strong> or <strong>Nikkor T 1200mm f/11</strong> mounted on an adjustable focus board in the pinhole wall. Both are available on the used market for <span class="arithmatex">\(400–\)</span>1,500. The 1,200 mm focal length focuses at 2.4 m from the wall — slightly close for comfortable portrait work; extending the lens board ~80 mm forward (toward the subject) re-focuses the system to approximately 3.4 m. These lenses provide:</p>
+<ul>
+<li>f/14 maximum aperture → effective f/24 at 3.4 m → 0.4 second exposure on ISO 6 paper</li>
+<li>&lt;0.1% distortion (designed for reprographic work)</li>
+<li>Apochromatic correction — no visible colour fringing</li>
+<li>Ø ~400 mm image circle — a large, centred medallion portrait</li>
+<li>Extremely well-documented optical performance</li>
+</ul>
+<p><strong>For broader coverage at the cost of aberrant character:</strong> A <strong>600 × 600 mm acrylic Fresnel lens at 1,400 mm focal length</strong> (available from Edmund Optics or solar optics suppliers for <span class="arithmatex">\(40–\)</span>120). Covers a 600 mm circle with characteristic soft-centre/chromatic-edge quality. Interesting artistic choice; very cheap to test.</p>
+<p><strong>For maximum sharpness in the smallest area:</strong> A <strong>150 mm aperture apochromatic telescope doublet</strong> (1,200–1,500 mm focal length). Sky-Watcher or William Optics 150mm f/8–f/10 APO objectives, purchased as bare objectives without focuser from surplus telescope suppliers. These deliver the finest image quality available at this price point (<span class="arithmatex">\(800–\)</span>2,000) and can be experimentally swapped with the pinhole plate.</p>
+<h3 id="the-fundamental-trade-off">The Fundamental Trade-Off<a class="headerlink" href="#the-fundamental-trade-off" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pinhole</th>
+<th>Lens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image area</td>
+<td>Full 140 sq ft</td>
+<td>0.7–4% of total (within image circle)</td>
+</tr>
+<tr>
+<td>Subject holds still</td>
+<td>43 minutes</td>
+<td>0.5–10 seconds</td>
+</tr>
+<tr>
+<td>Geometric character</td>
+<td>Perfect perspective, unlimited DoF</td>
+<td>Sharp focus zone, controllable DoF</td>
+</tr>
+<tr>
+<td>Background</td>
+<td>Soft but rendered</td>
+<td>Sharp (at working aperture) or shallow-DoF blur</td>
+</tr>
+<tr>
+<td>Aesthetic</td>
+<td>Documentary/impressionistic</td>
+<td>Conventional photographic</td>
+</tr>
+<tr>
+<td>Cost to try</td>
+<td>$0 (already built)</td>
+<td><span class="arithmatex">\(400–\)</span>1,500 for quality option</td>
+</tr>
+</tbody>
+</table>
+<p>The pinhole gives the whole image, slowly. The lens gives a sharp central circle, quickly. The most complete approach is to build the camera as a pinhole camera first — which is the current plan — and provision the pinhole wall with a <strong>removable plate</strong> system: the Ø 2.17 mm pinhole drilled in one plate, the lens mount in a second plate of identical dimensions. Swapping plates converts the camera between modes without any other modification. This is structurally trivial to implement during construction and preserves all options.</p>
+<hr />
+<h2 id="sources">Sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hecht, E., <em>Optics</em>, 5th ed., Pearson, 2017, §6.3–6.6</td>
+<td>Thin lens equation, aberration theory, DoF formulas</td>
+</tr>
+<tr>
+<td>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge UP, 1999, §8.6</td>
+<td>Airy disk, diffraction limits, cos⁴ law derivation</td>
+</tr>
+<tr>
+<td>Stroebel, L., <em>View Camera Technique</em>, 7th ed., Focal Press, 1999</td>
+<td>Bellows extension factor, large-format lens practice</td>
+</tr>
+<tr>
+<td>Renner, E., <em>Pinhole Photography</em>, 4th ed., Focal Press, 2009</td>
+<td>Pinhole-to-lens comparison; practical exposure guidance</td>
+</tr>
+<tr>
+<td>Rodenstock product data sheets (rodenstock-photo.de)</td>
+<td>Apo-Ronar focal length / image circle specifications</td>
+</tr>
+<tr>
+<td>Nikon / Nikkor large format lens specifications</td>
+<td>T-ED series 1200mm data</td>
+</tr>
+<tr>
+<td>Edmund Optics (edmundoptics.com)</td>
+<td>Fresnel lens specifications, acrylic singlet availability</td>
+</tr>
+<tr>
+<td>Sky-Watcher / William Optics product pages</td>
+<td>APO refractor objective specifications</td>
+</tr>
+<tr>
+<td>Ray, S., <em>Applied Photographic Optics</em>, 3rd ed., Focal Press, 2002, §15</td>
+<td>Field curvature, cos⁴ falloff, large-format lens design</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

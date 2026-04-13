@@ -1,0 +1,2122 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/pinhole-optics-report/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../pinhole-option-b-optics/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Pinhole Optics Report - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pinhole-camera-optics-a-complete-technical-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pinhole Optics Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Option B — Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole — Exposure Physics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chemistry Shopping List
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#from-810-inches-to-407-feet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From 8×10 Inches to 40×7 Feet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-this-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Read This Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-the-physics-of-pinhole-photography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: The Physics of Pinhole Photography
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: The Physics of Pinhole Photography">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-a-pinhole-forms-an-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a Pinhole Forms an Image
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-the-competing-forces-that-determine-sharpness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: The Competing Forces That Determine Sharpness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: The Competing Forces That Determine Sharpness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effect-1-geometric-blur-too-large-a-hole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect 1: Geometric Blur (Too Large a Hole)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effect-2-diffraction-too-small-a-hole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect 2: Diffraction (Too Small a Hole)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-the-optimal-pinhole-diameter-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: The Optimal Pinhole Diameter Formulas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: The Optimal Pinhole Diameter Formulas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-lord-rayleigh-formula-1891" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Lord Rayleigh Formula (1891)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-geometric-minimization-formula-petzval-criterion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Geometric Minimization Formula (Petzval Criterion)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-formula-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which Formula to Use?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-f-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: F-Number
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-exposure-time-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Exposure Time Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Exposure Time Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sunny-16-rule-reference-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Sunny-16 Rule (Reference Baseline)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-to-any-f-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling to Any F-Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#photographic-paper-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Photographic Paper Speed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-6-reciprocity-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 6: Reciprocity Failure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 6: Reciprocity Failure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-it-is" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What It Is
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-schwarzschild-law" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Schwarzschild Law
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correction-multiplier-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correction Multiplier Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reciprocity-failure-by-process-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reciprocity Failure by Process Type
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-7-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 7: Resolution
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 7: Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rayleigh-resolution-criterion-for-pinholes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rayleigh Resolution Criterion for Pinholes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-8-field-of-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 8: Field of View
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-9-calculation-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 9: Calculation Tables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 9: Calculation Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notes-on-the-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notes on the Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-1-small-and-medium-format-810-to-3040" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 1: Small and Medium Format (8"×10" to 30"×40")
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-2-large-format-45-to-107" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 2: Large Format (4'×5' to 10'×7')
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-3-very-large-format-207-to-407" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 3: Very Large Format (20'×7' to 40'×7')
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-4-alternative-focal-lengths-for-very-large-format-cameras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 4: Alternative Focal Lengths for Very Large Format Cameras
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-10-resolving-power-vs-viewing-distance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 10: Resolving Power vs. Viewing Distance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-11-summary-key-design-numbers-for-the-20-7-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 11: Summary — Key Design Numbers for the 20' × 7' Camera
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-12-citations-and-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 12: Citations and Sources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-a-quick-reference-formulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix A: Quick-Reference Formulas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-b-glossary-for-non-technical-readers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix B: Glossary for Non-Technical Readers
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B — Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole — Exposure Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pinhole-camera-optics-a-complete-technical-reference">Pinhole Camera Optics: A Complete Technical Reference<a class="headerlink" href="#pinhole-camera-optics-a-complete-technical-reference" title="Permanent link">&para;</a></h1>
+<h3 id="from-810-inches-to-407-feet">From 8×10 Inches to 40×7 Feet<a class="headerlink" href="#from-810-inches-to-407-feet" title="Permanent link">&para;</a></h3>
+<p><strong>Prepared for:</strong> Giant Pinhole Camera Project<br />
+<strong>Date:</strong> April 2026<br />
+<strong>Status:</strong> Working Document — Sources Being Verified</p>
+<hr />
+<h2 id="how-to-read-this-document">How to Read This Document<a class="headerlink" href="#how-to-read-this-document" title="Permanent link">&para;</a></h2>
+<p>This report is structured in two layers. Each section opens with a plain-language explanation, followed by the underlying mathematics and citations. Skip or read the math sections based on your need. Every formula used in the calculation tables traces to a cited source.</p>
+<hr />
+<h2 id="part-1-the-physics-of-pinhole-photography">Part 1: The Physics of Pinhole Photography<a class="headerlink" href="#part-1-the-physics-of-pinhole-photography" title="Permanent link">&para;</a></h2>
+<h3 id="how-a-pinhole-forms-an-image">How a Pinhole Forms an Image<a class="headerlink" href="#how-a-pinhole-forms-an-image" title="Permanent link">&para;</a></h3>
+<p>A pinhole camera works on a simple optical principle: light travels in straight lines. When light from a scene passes through a very small hole in an opaque wall, each point in the scene sends a narrow cone of light through the hole, projecting a small circle of light onto the opposite wall. Because each point in the scene projects to a different location on the wall, an image forms — inverted and reversed, but geometrically faithful.</p>
+<p>There is no lens. The pinhole does not bend or focus light. The image forms purely by geometry.</p>
+<p><strong>Plain language:</strong> Think of light as millions of tiny flashlights, each aimed in a different direction from every point in the scene. The pinhole lets through only the one beam from each flashlight that travels directly through the hole. The wall behind collects those beams into a picture.</p>
+<p><strong>Source:</strong> Young, M., "Pinhole Optics," <em>Applied Optics</em>, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: <a href="https://doi.org/10.1364/AO.10.002763">10.1364/AO.10.002763</a><br />
+Young describes the pinhole as "a useful and practical device which offers freedom from distortion and virtually infinite depth of field."</p>
+<hr />
+<h2 id="part-2-the-competing-forces-that-determine-sharpness">Part 2: The Competing Forces That Determine Sharpness<a class="headerlink" href="#part-2-the-competing-forces-that-determine-sharpness" title="Permanent link">&para;</a></h2>
+<p>There are two physical effects working against each other. Understanding them leads directly to the design equations.</p>
+<h3 id="effect-1-geometric-blur-too-large-a-hole">Effect 1: Geometric Blur (Too Large a Hole)<a class="headerlink" href="#effect-1-geometric-blur-too-large-a-hole" title="Permanent link">&para;</a></h3>
+<p>If the pinhole is very large, each point in the scene projects a circle of light roughly the same diameter as the hole itself. The image becomes blurry because multiple points in the scene overlap. Making the hole smaller tightens this circle and sharpens the image.</p>
+<p><strong>The geometric blur disk diameter ≈ d</strong> (the pinhole diameter)</p>
+<h3 id="effect-2-diffraction-too-small-a-hole">Effect 2: Diffraction (Too Small a Hole)<a class="headerlink" href="#effect-2-diffraction-too-small-a-hole" title="Permanent link">&para;</a></h3>
+<p>Light is not only a particle — it is also a wave. When a wave passes through a very small opening, it bends and spreads (this is called diffraction). The smaller the hole, the more the light spreads. Below a certain size, making the pinhole smaller actually makes the image <em>blurrier</em>, not sharper.</p>
+<p>The spread due to diffraction is described by the Airy disk:</p>
+<div class="highlight"><pre><span></span><code>B_diffraction = 2.44 × λ × f / d
+</code></pre></div>
+<p>Where:
+- <code>λ</code> = wavelength of light (0.00055 mm for green light at 550 nm)
+- <code>f</code> = focal length (distance from pinhole to image plane, mm)
+- <code>d</code> = pinhole diameter (mm)</p>
+<p><strong>Plain language:</strong> Light waves bend around the edges of the hole. Very small holes cause the most bending. There's a sweet spot where the two blurs are balanced.</p>
+<p><strong>Source:</strong> Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th edition, Cambridge University Press, 1999, §8.6. This textbook is the most authoritative modern treatment of diffraction and aperture theory.</p>
+<hr />
+<h2 id="part-3-the-optimal-pinhole-diameter-formulas">Part 3: The Optimal Pinhole Diameter Formulas<a class="headerlink" href="#part-3-the-optimal-pinhole-diameter-formulas" title="Permanent link">&para;</a></h2>
+<h3 id="the-lord-rayleigh-formula-1891">The Lord Rayleigh Formula (1891)<a class="headerlink" href="#the-lord-rayleigh-formula-1891" title="Permanent link">&para;</a></h3>
+<p>Lord Rayleigh (John William Strutt, 3rd Baron Rayleigh) used Fresnel zone analysis — a mathematical method for counting how many concentric waves of light fit inside the aperture — to derive the optimal pinhole size. His criterion: a pinhole containing approximately 1.8 Fresnel half-zones yields the best balance between geometric and diffraction blur.</p>
+<p><strong>Rayleigh Formula:</strong>
+<div class="highlight"><pre><span></span><code>d = 1.9 × √(f × λ)
+</code></pre></div></p>
+<p><strong>Source:</strong> Lord Rayleigh (J.W. Strutt), "On Pin-hole Photography," <em>Philosophical Magazine</em>, Series 5, Vol. 31, 1891, pp. 87–99. Published by Taylor &amp; Francis. DOI search: Philosophical Magazine Series 5, Volume 31, Issue 189.</p>
+<h3 id="the-geometric-minimization-formula-petzval-criterion">The Geometric Minimization Formula (Petzval Criterion)<a class="headerlink" href="#the-geometric-minimization-formula-petzval-criterion" title="Permanent link">&para;</a></h3>
+<p>A different approach: instead of Fresnel zones, simply find the pinhole diameter where the total blur disk (geometric + diffraction combined in quadrature) is minimized mathematically:</p>
+<div class="highlight"><pre><span></span><code>B_total = √(d² + (2.44 × λ × f / d)²)
+</code></pre></div>
+<p>Setting dB/dd = 0 and solving:</p>
+<div class="highlight"><pre><span></span><code>d = 1.56 × √(f × λ)
+</code></pre></div>
+<p><strong>Source:</strong> Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., §8.6. The derivation showing the two criteria (Rayleigh and Petzval) answer slightly different questions is treated rigorously here.</p>
+<h3 id="which-formula-to-use">Which Formula to Use?<a class="headerlink" href="#which-formula-to-use" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Formula</th>
+<th>Coefficient</th>
+<th>Approach</th>
+<th>Tends to favor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rayleigh</td>
+<td>1.9</td>
+<td>Fresnel zone analysis</td>
+<td>Slightly larger holes — marginally better resolution</td>
+</tr>
+<tr>
+<td>Petzval / Geometric</td>
+<td>1.56</td>
+<td>Minimize total blur</td>
+<td>Slightly smaller holes — marginally tighter geometry</td>
+</tr>
+<tr>
+<td>Practical range</td>
+<td>1.2–2.0</td>
+<td>Various</td>
+<td>Both are valid</td>
+</tr>
+</tbody>
+</table>
+<p>For this project, the <strong>Rayleigh formula (d = 1.9√fλ)</strong> is used as the primary design target, with the Petzval value shown as a lower bound. The true optimum lies between them and will depend on the specific emulsion grain structure of the chosen photosensitive material.</p>
+<p><strong>Source:</strong> Renner, E., <em>Pinhole Photography: Rediscovering a Historic Technique</em>, 4th edition, Focal Press, 2009. Renner discusses the range of valid coefficients and the practical effect of choosing within the 1.2–2.0 range.</p>
+<hr />
+<h2 id="part-4-f-number">Part 4: F-Number<a class="headerlink" href="#part-4-f-number" title="Permanent link">&para;</a></h2>
+<p>The f-number (also called f-stop) describes how much light the pinhole admits relative to the focal length. It is defined as:</p>
+<div class="highlight"><pre><span></span><code>f-number = f / d
+</code></pre></div>
+<p>A lower f-number means more light enters, and exposures are shorter. A higher f-number means less light and longer exposures.</p>
+<p><strong>For comparison:</strong> A typical camera lens operates between f/1.4 and f/22. Pinhole cameras at the sizes covered here operate between f/400 and f/2500 — between 25 and 150 times dimmer than even the smallest conventional aperture.</p>
+<p>Each doubling of f-number requires <strong>4× longer exposure</strong> (because area scales as the square of the diameter):</p>
+<div class="highlight"><pre><span></span><code>t₂ = t₁ × (f-number₂ / f-number₁)²
+</code></pre></div>
+<p><strong>Source:</strong> Hecht, E., <em>Optics</em>, 5th edition, Pearson Education, 2017, Chapter 5. The relationship between aperture, f-number, and exposure is derived in §5.2.</p>
+<hr />
+<h2 id="part-5-exposure-time-calculation">Part 5: Exposure Time Calculation<a class="headerlink" href="#part-5-exposure-time-calculation" title="Permanent link">&para;</a></h2>
+<h3 id="the-sunny-16-rule-reference-baseline">The Sunny-16 Rule (Reference Baseline)<a class="headerlink" href="#the-sunny-16-rule-reference-baseline" title="Permanent link">&para;</a></h3>
+<p>In bright, full sunshine, a correctly exposed photograph at f/16 requires an exposure of approximately 1/ISO seconds. For ISO 100 film: 1/100 second at f/16.</p>
+<p><strong>Source:</strong> Peterson, B., <em>Understanding Exposure</em>, 4th edition, Amphoto Books, 2016. The Sunny-16 rule is a well-established field estimation tool for photographic exposure.</p>
+<h3 id="scaling-to-any-f-number">Scaling to Any F-Number<a class="headerlink" href="#scaling-to-any-f-number" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>t_pinhole = t_reference × (f-number_pinhole / f-number_reference)²
+</code></pre></div>
+<p>Using ISO 100 film at f/16, 1/100 sec as the reference:</p>
+<div class="highlight"><pre><span></span><code>t_pinhole (seconds) = (1/100) × (f-number / 16)²
+</code></pre></div>
+<h3 id="photographic-paper-speed">Photographic Paper Speed<a class="headerlink" href="#photographic-paper-speed" title="Permanent link">&para;</a></h3>
+<p>Photographic printing paper is much less sensitive to light than film. Silver gelatin enlarging paper (e.g., Ilford Multigrade RC) has an effective speed of approximately ISO 6 in daylight (green-yellow light sensitivity), compared to ISO 100 film. To correct:</p>
+<div class="highlight"><pre><span></span><code>t_paper = t_film × (ISO_film / ISO_paper) = t_film × (100 / 6) ≈ t_film × 16.7
+</code></pre></div>
+<p><strong>Source:</strong> Stroebel, L., Compton, J., Current, I., Zakia, R., <em>Basic Photographic Materials and Processes</em>, 3rd edition, Focal Press, 2009, Chapter 8. ISO-equivalent speeds for photographic papers are discussed in the context of exposure and sensitometry.</p>
+<hr />
+<h2 id="part-6-reciprocity-failure">Part 6: Reciprocity Failure<a class="headerlink" href="#part-6-reciprocity-failure" title="Permanent link">&para;</a></h2>
+<h3 id="what-it-is">What It Is<a class="headerlink" href="#what-it-is" title="Permanent link">&para;</a></h3>
+<p>The reciprocity law states that the same photographic result is produced by any combination of light intensity (I) and time (t) that gives the same product: H = I × t. In theory, a 60-second exposure at half the light intensity gives the same result as a 30-second exposure at full intensity.</p>
+<p>In practice, photographic materials violate this law at extreme exposure times. This is called <strong>reciprocity failure</strong> (also known as the <strong>Schwarzschild effect</strong>). At long exposures — typically anything over 1–10 seconds — the material becomes progressively less sensitive, requiring even more exposure than the calculation predicts.</p>
+<p><strong>Plain language:</strong> The longer you wait, the less efficiently the paper collects light. If the formula says 30 minutes, you may actually need 60–90 minutes.</p>
+<p><strong>Source:</strong> Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," <em>The Astrophysical Journal</em>, Vol. 11, 1900, pp. 89–91. The original discovery and formulation.</p>
+<h3 id="the-schwarzschild-law">The Schwarzschild Law<a class="headerlink" href="#the-schwarzschild-law" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>H = E × t^p
+</code></pre></div>
+<p>Where:
+- <code>H</code> = effective photographic exposure
+- <code>E</code> = illuminance (intensity of light on the surface)
+- <code>t</code> = exposure time (seconds)
+- <code>p</code> = Schwarzschild exponent (dimensionless, specific to each material)</p>
+<p>For ideal reciprocity: p = 1.0<br />
+For real photographic materials at long exposures: p ≈ 0.75–0.90</p>
+<p><strong>Corrected exposure time:</strong>
+<div class="highlight"><pre><span></span><code>t_actual = t_calculated^(1/p)
+</code></pre></div></p>
+<p>For p = 0.85 (a representative value for variable-contrast RC paper):
+<div class="highlight"><pre><span></span><code>t_actual = t_calculated^1.176
+</code></pre></div></p>
+<h3 id="correction-multiplier-table">Correction Multiplier Table<a class="headerlink" href="#correction-multiplier-table" title="Permanent link">&para;</a></h3>
+<p>The correction multiplier = t_actual / t_calculated = t_calculated^(0.176)</p>
+<table>
+<thead>
+<tr>
+<th>Calculated Exposure</th>
+<th>Multiplier (p=0.85)</th>
+<th>Actual Exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 sec</td>
+<td>1.50×</td>
+<td>15 sec</td>
+</tr>
+<tr>
+<td>30 sec</td>
+<td>1.74×</td>
+<td>52 sec</td>
+</tr>
+<tr>
+<td>60 sec</td>
+<td>1.87×</td>
+<td>1 min 52 sec</td>
+</tr>
+<tr>
+<td>2 min</td>
+<td>2.00×</td>
+<td>4 min</td>
+</tr>
+<tr>
+<td>5 min</td>
+<td>2.16×</td>
+<td>10 min 48 sec</td>
+</tr>
+<tr>
+<td>10 min</td>
+<td>2.31×</td>
+<td>23 min</td>
+</tr>
+<tr>
+<td>20 min</td>
+<td>2.48×</td>
+<td>50 min</td>
+</tr>
+<tr>
+<td>35 min</td>
+<td>2.61×</td>
+<td>1 hr 31 min</td>
+</tr>
+<tr>
+<td>1 hr</td>
+<td>2.73×</td>
+<td>2 hr 44 min</td>
+</tr>
+<tr>
+<td>2 hr</td>
+<td>2.93×</td>
+<td>5 hr 52 min</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Critical caveat:</strong> The Schwarzschild exponent <code>p</code> varies significantly between photographic products and cannot be reliably predicted without empirical testing. The value p = 0.85 is used here as a starting estimate. Before any large-format exposure, the specific paper lot must be tested at the relevant exposure range and the actual correction determined.</p>
+<p><strong>Source:</strong> Stroebel et al., <em>Basic Photographic Materials and Processes</em>, 3rd ed., Chapter 8. The variability of the Schwarzschild exponent is addressed here in detail.</p>
+</blockquote>
+<h3 id="reciprocity-failure-by-process-type">Reciprocity Failure by Process Type<a class="headerlink" href="#reciprocity-failure-by-process-type" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Reciprocity Failure</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver gelatin RC paper</td>
+<td>Moderate</td>
+<td>p ≈ 0.80–0.90; test required</td>
+</tr>
+<tr>
+<td>Silver gelatin FB paper</td>
+<td>Moderate to severe</td>
+<td>Generally worse than RC at long exposures</td>
+</tr>
+<tr>
+<td>Cyanotype</td>
+<td>Minimal</td>
+<td>Iron-based process — does not exhibit classical Schwarzschild failure; response is more linear at long exposures</td>
+</tr>
+<tr>
+<td>Digital (CMOS sensor)</td>
+<td>None</td>
+<td>No reciprocity failure; linear response at any exposure</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-7-resolution">Part 7: Resolution<a class="headerlink" href="#part-7-resolution" title="Permanent link">&para;</a></h2>
+<h3 id="rayleigh-resolution-criterion-for-pinholes">Rayleigh Resolution Criterion for Pinholes<a class="headerlink" href="#rayleigh-resolution-criterion-for-pinholes" title="Permanent link">&para;</a></h3>
+<p>The minimum resolvable separation on the image plane is determined by the Airy disk radius:</p>
+<div class="highlight"><pre><span></span><code>r_min = 1.22 × λ × f / d
+</code></pre></div>
+<p>Converting to line pairs per millimeter (lp/mm):</p>
+<div class="highlight"><pre><span></span><code>Resolution (lp/mm) = d / (2 × 1.22 × λ × f)
+</code></pre></div>
+<p>This is the physical diffraction limit — the sharpest image the pinhole can produce regardless of how well it is manufactured.</p>
+<p><strong>For context:</strong>
+- Human vision at 25 cm (comfortable reading distance): ~8–10 lp/mm
+- Human vision at 3 m (across a room): ~0.5–1 lp/mm<br />
+- Human vision at 10 ft: ~0.3 lp/mm
+- Human vision at 20 ft: ~0.15 lp/mm</p>
+<p>Large-format pinhole images are viewed from large distances. A 20-foot-wide print is not examined at arm's length. The required resolution for comfortable large-format viewing is much lower than for a small print, and the physical diffraction limit is sufficient.</p>
+<p><strong>Source:</strong> Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., §8.8. Young, M., <em>Applied Optics</em>, Vol. 10, No. 12, 1971.</p>
+<hr />
+<h2 id="part-8-field-of-view">Part 8: Field of View<a class="headerlink" href="#part-8-field-of-view" title="Permanent link">&para;</a></h2>
+<p>The angle of view depends on the ratio of the image dimension to the focal length:</p>
+<div class="highlight"><pre><span></span><code>Angle of view (horizontal) = 2 × arctan(image_width / (2 × f))
+</code></pre></div>
+<p>When focal length ≈ image diagonal, the angle of view is approximately the same as normal human vision (~50–53° diagonal) — this is the "normal" perspective.  </p>
+<p>When focal length &lt; diagonal: wide-angle (more of the scene visible)<br />
+When focal length &gt; diagonal: telephoto (narrower field, magnified)</p>
+<p><strong>Practical note for large cameras:</strong> A focal length equal to the image diagonal requires a camera depth equal to that diagonal. For a 40' × 7' image, this means a camera approximately 40 feet deep — impractical. Using a shorter focal length (e.g., equal to the image height of 7 feet) creates a wide-angle view in a much more manageable structure, with the trade-off of a larger optimal pinhole and shorter exposure times.</p>
+<hr />
+<h2 id="part-9-calculation-tables">Part 9: Calculation Tables<a class="headerlink" href="#part-9-calculation-tables" title="Permanent link">&para;</a></h2>
+<h3 id="notes-on-the-tables">Notes on the Tables<a class="headerlink" href="#notes-on-the-tables" title="Permanent link">&para;</a></h3>
+<p><strong>Focal length assumption:</strong> All calculations below use focal length = image diagonal, which produces a "normal" (approximately 53°) angle of view. For large formats, alternative focal lengths may be more practical — see the discussion at the end of this section.</p>
+<p><strong>Light condition:</strong> "Bright sun" = Sunny-16 rule conditions; "Overcast" = approx. 3–4 stops less light (4–8× longer exposure, approximately).</p>
+<p><strong>Schwarzschild correction:</strong> Tables show both the calculated exposure (no correction) and the estimated actual exposure with p = 0.85. These corrected values are estimates and must be verified by testing with the actual material used.</p>
+<p><strong>Abbreviations:</strong>
+- d = pinhole diameter (mm)
+- f = focal length (mm)
+- f/N = f-number
+- lp/mm = line pairs per millimeter (resolution)
+- ISO 100 = standard photographic film
+- Paper = silver gelatin enlarging paper (~ISO 6)</p>
+<hr />
+<h3 id="table-1-small-and-medium-format-810-to-3040">Table 1: Small and Medium Format (8"×10" to 30"×40")<a class="headerlink" href="#table-1-small-and-medium-format-810-to-3040" title="Permanent link">&para;</a></h3>
+<p>These sizes represent conventional large-format photography through oversized darkroom work. At these scales, Ilford roll paper handles each size within a single sheet.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Dimensions (mm)</th>
+<th>Focal Length (mm)</th>
+<th>Rayleigh d (mm)</th>
+<th>Petzval d (mm)</th>
+<th>f-number</th>
+<th>Resolution (lp/mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 × 10 in</td>
+<td>203 × 254</td>
+<td>325</td>
+<td><strong>0.80 mm</strong></td>
+<td>0.66 mm</td>
+<td>f/406</td>
+<td>1.84</td>
+</tr>
+<tr>
+<td>11 × 14 in</td>
+<td>279 × 356</td>
+<td>452</td>
+<td><strong>0.95 mm</strong></td>
+<td>0.78 mm</td>
+<td>f/476</td>
+<td>1.57</td>
+</tr>
+<tr>
+<td>16 × 20 in</td>
+<td>406 × 508</td>
+<td>651</td>
+<td><strong>1.14 mm</strong></td>
+<td>0.94 mm</td>
+<td>f/571</td>
+<td>1.31</td>
+</tr>
+<tr>
+<td>20 × 24 in</td>
+<td>508 × 610</td>
+<td>794</td>
+<td><strong>1.26 mm</strong></td>
+<td>1.03 mm</td>
+<td>f/630</td>
+<td>1.19</td>
+</tr>
+<tr>
+<td>24 × 30 in</td>
+<td>610 × 762</td>
+<td>976</td>
+<td><strong>1.40 mm</strong></td>
+<td>1.15 mm</td>
+<td>f/697</td>
+<td>1.07</td>
+</tr>
+<tr>
+<td>30 × 40 in</td>
+<td>762 × 1016</td>
+<td>1270</td>
+<td><strong>1.59 mm</strong></td>
+<td>1.31 mm</td>
+<td>f/799</td>
+<td>0.94</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>f-number</th>
+<th>ISO 100 film, bright sun</th>
+<th>Photo paper calculated</th>
+<th>Photo paper corrected (p=0.85)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 × 10 in</td>
+<td>f/406</td>
+<td>6.4 sec</td>
+<td>1 min 47 sec</td>
+<td><strong>4 min 4 sec</strong></td>
+</tr>
+<tr>
+<td>11 × 14 in</td>
+<td>f/476</td>
+<td>8.9 sec</td>
+<td>2 min 28 sec</td>
+<td><strong>6 min</strong></td>
+</tr>
+<tr>
+<td>16 × 20 in</td>
+<td>f/571</td>
+<td>12.8 sec</td>
+<td>3 min 34 sec</td>
+<td><strong>9 min 12 sec</strong></td>
+</tr>
+<tr>
+<td>20 × 24 in</td>
+<td>f/630</td>
+<td>15.6 sec</td>
+<td>4 min 20 sec</td>
+<td><strong>11 min 34 sec</strong></td>
+</tr>
+<tr>
+<td>24 × 30 in</td>
+<td>f/697</td>
+<td>19.1 sec</td>
+<td>5 min 19 sec</td>
+<td><strong>14 min 30 sec</strong></td>
+</tr>
+<tr>
+<td>30 × 40 in</td>
+<td>f/799</td>
+<td>25.0 sec</td>
+<td>6 min 57 sec</td>
+<td><strong>20 min 9 sec</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="table-2-large-format-45-to-107">Table 2: Large Format (4'×5' to 10'×7')<a class="headerlink" href="#table-2-large-format-45-to-107" title="Permanent link">&para;</a></h3>
+<p>At these scales, a single sheet of photographic paper cannot cover the image plane. Multiple panels are required, or liquid emulsion must be applied to a continuous substrate. Exposures lengthen significantly; reciprocity failure becomes a major design factor.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Dimensions (mm)</th>
+<th>Focal Length</th>
+<th>Rayleigh d</th>
+<th>f-number</th>
+<th>Resolution (lp/mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 × 5 ft</td>
+<td>1219 × 1524</td>
+<td>1952 mm (6.4 ft)</td>
+<td><strong>1.97 mm</strong></td>
+<td>f/991</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>5 × 7 ft</td>
+<td>1524 × 2134</td>
+<td>2625 mm (8.6 ft)</td>
+<td><strong>2.28 mm</strong></td>
+<td>f/1152</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>8 × 7 ft</td>
+<td>2438 × 2134</td>
+<td>3250 mm (10.7 ft)</td>
+<td><strong>2.54 mm</strong></td>
+<td>f/1280</td>
+<td>0.58</td>
+</tr>
+<tr>
+<td>10 × 7 ft</td>
+<td>3048 × 2134</td>
+<td>3721 mm (12.2 ft)</td>
+<td><strong>2.72 mm</strong></td>
+<td>f/1369</td>
+<td>0.55</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>f-number</th>
+<th>ISO 100 film, bright sun</th>
+<th>Photo paper calculated</th>
+<th>Photo paper corrected (p=0.85)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 × 5 ft</td>
+<td>f/991</td>
+<td>38 sec</td>
+<td>10 min 39 sec</td>
+<td><strong>33 min 20 sec</strong></td>
+</tr>
+<tr>
+<td>5 × 7 ft</td>
+<td>f/1152</td>
+<td>51 sec</td>
+<td>14 min 14 sec</td>
+<td><strong>46 min</strong></td>
+</tr>
+<tr>
+<td>8 × 7 ft</td>
+<td>f/1280</td>
+<td>64 sec</td>
+<td>17 min 47 sec</td>
+<td><strong>59 min</strong></td>
+</tr>
+<tr>
+<td>10 × 7 ft</td>
+<td>f/1369</td>
+<td>73 sec</td>
+<td>20 min 24 sec</td>
+<td><strong>1 hr 11 min</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="table-3-very-large-format-207-to-407">Table 3: Very Large Format (20'×7' to 40'×7')<a class="headerlink" href="#table-3-very-large-format-207-to-407" title="Permanent link">&para;</a></h3>
+<p>At this scale, the calculated focal length (= image diagonal) requires an impractically deep camera structure. See the alternative focal length options below.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Dimensions (mm)</th>
+<th>Focal Length (diagonal)</th>
+<th>Rayleigh d</th>
+<th>f-number</th>
+<th>Resolution (lp/mm)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 × 7 ft</td>
+<td>6096 × 2134</td>
+<td>6459 mm (21.2 ft)</td>
+<td><strong>3.58 mm</strong></td>
+<td>f/1804</td>
+<td>0.41</td>
+</tr>
+<tr>
+<td>30 × 7 ft</td>
+<td>9144 × 2134</td>
+<td>9389 mm (30.8 ft)</td>
+<td><strong>4.31 mm</strong></td>
+<td>f/2181</td>
+<td>0.34</td>
+</tr>
+<tr>
+<td>40 × 7 ft</td>
+<td>12192 × 2134</td>
+<td>12377 mm (40.6 ft)</td>
+<td><strong>4.96 mm</strong></td>
+<td>f/2497</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>f-number</th>
+<th>ISO 100 film, bright sun</th>
+<th>Photo paper calculated</th>
+<th>Photo paper corrected (p=0.85)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 × 7 ft</td>
+<td>f/1804</td>
+<td>2 min 7 sec</td>
+<td>35 min 18 sec</td>
+<td><strong>1 hr 32 min</strong></td>
+</tr>
+<tr>
+<td>30 × 7 ft</td>
+<td>f/2181</td>
+<td>3 min 6 sec</td>
+<td>51 min 48 sec</td>
+<td><strong>2 hr 21 min</strong></td>
+</tr>
+<tr>
+<td>40 × 7 ft</td>
+<td>f/2497</td>
+<td>4 min 3 sec</td>
+<td>1 hr 7 min</td>
+<td><strong>4 hr 52 min</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on 40' × 7' at f/2497:</strong> A ~5-hour corrected paper exposure in a single outdoor session is at the outer edge of practical feasibility. This argues strongly for either: (a) using a shorter focal length (wider angle) to increase the f-number down to f/1000–f/1500, or (b) using a faster medium such as liquid emulsion on a custom substrate with higher effective ISO, or (c) using digital capture.</p>
+</blockquote>
+<hr />
+<h3 id="table-4-alternative-focal-lengths-for-very-large-format-cameras">Table 4: Alternative Focal Lengths for Very Large Format Cameras<a class="headerlink" href="#table-4-alternative-focal-lengths-for-very-large-format-cameras" title="Permanent link">&para;</a></h3>
+<p>The tables above use focal length = image diagonal for a "normal" angle of view. For large structures, a shorter focal length is often more practical. This table shows the same image plane (20' × 7') at different focal length choices — demonstrating the design trade-off between field of view, camera depth, and exposure time.</p>
+<p><strong>Image plane fixed at 20' × 7' (6096 × 2134 mm)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Focal Length</th>
+<th>Camera Depth</th>
+<th>Angle of View (horizontal)</th>
+<th>Rayleigh d</th>
+<th>f-number</th>
+<th>Paper exposure, calculated</th>
+<th>Paper exposure, corrected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6459 mm (21.2 ft)</td>
+<td>~22 ft</td>
+<td>53° (normal)</td>
+<td>3.58 mm</td>
+<td>f/1804</td>
+<td>35 min</td>
+<td><strong>1 hr 32 min</strong></td>
+</tr>
+<tr>
+<td>4572 mm (15 ft)</td>
+<td>~15 ft</td>
+<td>70° (wide)</td>
+<td>3.01 mm</td>
+<td>f/1519</td>
+<td>25 min</td>
+<td><strong>1 hr 1 min</strong></td>
+</tr>
+<tr>
+<td>3048 mm (10 ft)</td>
+<td>~10 ft</td>
+<td>90° (ultra-wide)</td>
+<td>2.46 mm</td>
+<td>f/1239</td>
+<td>16 min</td>
+<td><strong>37 min</strong></td>
+</tr>
+<tr>
+<td>2134 mm (7 ft)</td>
+<td>~7 ft</td>
+<td>110° (extreme wide)</td>
+<td>2.06 mm</td>
+<td>f/1036</td>
+<td>11 min</td>
+<td><strong>23 min</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight:</strong> Choosing a 7-foot focal length instead of a 21-foot focal length reduces the corrected paper exposure from ~1.5 hours to ~23 minutes — a 4× improvement — by shortening the camera depth from 22 feet to 7 feet. The trade-off is a dramatically wider, more distorted perspective (110° horizontal angle of view vs. 53°).</p>
+<hr />
+<h2 id="part-10-resolving-power-vs-viewing-distance">Part 10: Resolving Power vs. Viewing Distance<a class="headerlink" href="#part-10-resolving-power-vs-viewing-distance" title="Permanent link">&para;</a></h2>
+<p>To determine whether the calculated resolution is adequate, compare the diffraction-limited resolution against the minimum required for the intended viewing distance.</p>
+<p><strong>Minimum required resolution:</strong>
+<div class="highlight"><pre><span></span><code>Required lp/mm = (viewing distance in mm) / (image width in mm × 3438)
+</code></pre></div></p>
+<p><em>Note: 3438 is 1 radian in arcminutes × (1/tan of 1 arcminute) — this simplifies to the formula above for comfortable visual acuity.</em></p>
+<p>Or more practically, the minimum required resolution depends on viewing distance:</p>
+<table>
+<thead>
+<tr>
+<th>Viewing Distance</th>
+<th>Min. Required Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 cm (reading distance)</td>
+<td>8–10 lp/mm</td>
+</tr>
+<tr>
+<td>1 m (close inspection)</td>
+<td>2–3 lp/mm</td>
+</tr>
+<tr>
+<td>3 m (gallery distance)</td>
+<td>0.7–1 lp/mm</td>
+</tr>
+<tr>
+<td>5 m</td>
+<td>0.4–0.6 lp/mm</td>
+</tr>
+<tr>
+<td>10 m</td>
+<td>0.2–0.3 lp/mm</td>
+</tr>
+</tbody>
+</table>
+<p>Comparing against our calculated resolutions:</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Resolution (lp/mm)</th>
+<th>Adequate for viewing at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 × 10 in</td>
+<td>1.84 lp/mm</td>
+<td>≥ 2 m viewing distance</td>
+</tr>
+<tr>
+<td>16 × 20 in</td>
+<td>1.31 lp/mm</td>
+<td>≥ 2–3 m viewing distance</td>
+</tr>
+<tr>
+<td>4 × 5 ft</td>
+<td>0.76 lp/mm</td>
+<td>≥ 3–4 m viewing distance</td>
+</tr>
+<tr>
+<td>10 × 7 ft</td>
+<td>0.55 lp/mm</td>
+<td>≥ 4–5 m viewing distance</td>
+</tr>
+<tr>
+<td>20 × 7 ft</td>
+<td>0.41 lp/mm</td>
+<td>≥ 5–6 m viewing distance</td>
+</tr>
+<tr>
+<td>40 × 7 ft</td>
+<td>0.30 lp/mm</td>
+<td>≥ 7–8 m viewing distance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion:</strong> The diffraction limit is not the constraint for large-scale pinhole work. A 20-foot print displayed in a large space will be viewed from 5–10 meters or more, and the theoretical resolution is sufficient. The limiting factors in practice are: pinhole manufacturing precision, vibration during exposure, and emulsion evenness.</p>
+<hr />
+<h2 id="part-11-summary-key-design-numbers-for-the-20-7-camera">Part 11: Summary — Key Design Numbers for the 20' × 7' Camera<a class="headerlink" href="#part-11-summary-key-design-numbers-for-the-20-7-camera" title="Permanent link">&para;</a></h2>
+<p>Based on the analysis above, the following parameters are recommended as design targets for a 20' × 7' pinhole camera, with sources cited for each.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Recommended Value</th>
+<th>Formula / Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image plane dimensions</td>
+<td>6096 × 2134 mm (20' × 7')</td>
+<td>Project spec</td>
+</tr>
+<tr>
+<td>Focal length (normal perspective)</td>
+<td>6459 mm (21.2 ft)</td>
+<td>f = image diagonal; Renner (2009)</td>
+</tr>
+<tr>
+<td>Focal length (practical wide-angle)</td>
+<td>2134–3048 mm (7–10 ft)</td>
+<td>Chosen to minimize camera depth</td>
+</tr>
+<tr>
+<td><strong>Optimal pinhole diameter</strong></td>
+<td><strong>2.5–3.6 mm</strong></td>
+<td>d = 1.9√(fλ), Rayleigh (1891); d = 1.56√(fλ), Born &amp; Wolf (1999)</td>
+</tr>
+<tr>
+<td>Pinhole manufacturing tolerance</td>
+<td>±0.05 mm</td>
+<td>Sufficient at 3 mm scale; Lenox Laser standard spec</td>
+</tr>
+<tr>
+<td>Pinhole material</td>
+<td>Blackened SS-302/304</td>
+<td>Lenox Laser product spec</td>
+</tr>
+<tr>
+<td>f-number (7-ft camera depth)</td>
+<td>f/1036</td>
+<td>f = 2134 mm, d = 2.06 mm</td>
+</tr>
+<tr>
+<td>f-number (21-ft camera depth)</td>
+<td>f/1804</td>
+<td>f = 6459 mm, d = 3.58 mm</td>
+</tr>
+<tr>
+<td><strong>Exposure on photo paper, calculated</strong></td>
+<td><strong>11–35 min</strong> (depending on focal length choice)</td>
+<td>Sunny-16 × (f/N ÷ 16)² ÷ 6; Stroebel (2009)</td>
+</tr>
+<tr>
+<td><strong>Exposure corrected for reciprocity</strong></td>
+<td><strong>23 min–1.5 hr</strong></td>
+<td>Schwarzschild p=0.85; test empirically</td>
+</tr>
+<tr>
+<td>Resolution at optimal pinhole</td>
+<td>0.41–0.55 lp/mm</td>
+<td>Young (1971); Born &amp; Wolf (1999)</td>
+</tr>
+<tr>
+<td>Max Ilford paper roll width</td>
+<td>127 cm (50 in)</td>
+<td>Ilford product page (verified 2026)</td>
+</tr>
+<tr>
+<td>Panels needed to cover 20' width</td>
+<td>5 panels (seamed)</td>
+<td>6096 mm ÷ 1270 mm</td>
+</tr>
+<tr>
+<td>Liquid Light coverage (140 sq ft)</td>
+<td>~94 oz, single coat</td>
+<td>Rockland Colloid product spec (~1.5 sq ft/oz)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-12-citations-and-sources">Part 12: Citations and Sources<a class="headerlink" href="#part-12-citations-and-sources" title="Permanent link">&para;</a></h2>
+<p>All claims in this document trace to the following sources. Where source content has been verified by direct web fetch or manufacturer document, this is noted.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Citation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rayleigh, J.W.S. (Lord Rayleigh), "On Pin-hole Photography," <em>Philosophical Magazine</em>, Ser. 5, Vol. 31, 1891, pp. 87–99. Published by Taylor &amp; Francis.</td>
+<td>Not yet fetched; access via JSTOR or <a href="https://www.tandfonline.com/loi/tphm18">tandfonline.com</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Young, M., "Pinhole Optics," <em>Applied Optics</em>, Vol. 10, No. 12, 1971, pp. 2763–2767. DOI: <a href="https://doi.org/10.1364/AO.10.002763">10.1364/AO.10.002763</a></td>
+<td><strong>Verified</strong> — fetched directly. Abstract confirmed.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge University Press, 1999. §8.6 "The Pinhole Camera."</td>
+<td>Not yet fetched; widely cited authoritative text</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Hecht, E., <em>Optics</em>, 5th ed., Pearson Education, 2017.</td>
+<td>Not yet fetched; standard graduate optics textbook</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," <em>The Astrophysical Journal</em>, Vol. 11, 1900, pp. 89–91.</td>
+<td>Not yet fetched; original Schwarzschild formulation</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Stroebel, L., Compton, J., Current, I., Zakia, R., <em>Basic Photographic Materials and Processes</em>, 3rd ed., Focal Press, 2009.</td>
+<td>Not yet fetched; standard photographic science textbook</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Renner, E., <em>Pinhole Photography: Rediscovering a Historic Technique</em>, 4th ed., Focal Press, 2009.</td>
+<td>Not yet fetched; authoritative practitioner reference</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Peterson, B., <em>Understanding Exposure</em>, 4th ed., Amphoto Books, 2016.</td>
+<td>Not yet fetched; source for Sunny-16 rule</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Ilford Photographic Paper product page. <a href="https://www.ilfordphoto.com/photographic-paper">ilfordphoto.com/photographic-paper</a></td>
+<td><strong>Verified</strong> — fetched directly. Max roll: 127 cm × 30 m confirmed.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Rockland Colloid Liquid Light product page. <a href="https://rockaloid.com/Liquid-Light-emulsion-half-pint">rockaloid.com/Liquid-Light-emulsion-half-pint</a></td>
+<td>Partially verified — site refused connection. Spec (~1.5 sq ft/oz) confirmed via B&amp;H listing.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Lenox Laser Pinholes &amp; Apertures. <a href="https://lenoxlaser.com/blog/pinholes-and-apertures/">lenoxlaser.com/blog/pinholes-and-apertures/</a></td>
+<td>Verified via WebSearch — product descriptions and material specs returned.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>"The Great Picture" (world's largest pinhole camera), Wikipedia. <a href="https://en.wikipedia.org/wiki/The_Great_Picture">en.wikipedia.org/wiki/The_Great_Picture</a></td>
+<td><strong>Verified</strong> — confirmed via WebSearch; all dimensions and materials cited match.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-a-quick-reference-formulas">Appendix A: Quick-Reference Formulas<a class="headerlink" href="#appendix-a-quick-reference-formulas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Formula</th>
+<th>Units</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimal pinhole (Rayleigh)</td>
+<td>d = 1.9 × √(f × 0.00055)</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>Optimal pinhole (Petzval)</td>
+<td>d = 1.56 × √(f × 0.00055)</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>f-number</td>
+<td>N = f / d</td>
+<td>dimensionless</td>
+</tr>
+<tr>
+<td>Exposure, ISO 100, bright sun</td>
+<td>t = (f_number / 16)² / 100</td>
+<td>seconds</td>
+</tr>
+<tr>
+<td>Exposure, photo paper (~ISO 6)</td>
+<td>t = above × 16.7</td>
+<td>seconds</td>
+</tr>
+<tr>
+<td>Reciprocity-corrected exposure</td>
+<td>t_actual = t_calculated^(1/0.85)</td>
+<td>seconds</td>
+</tr>
+<tr>
+<td>Resolution limit</td>
+<td>R = d / (2 × 1.22 × 0.00055 × f)</td>
+<td>lp/mm</td>
+</tr>
+<tr>
+<td>Airy disk radius</td>
+<td>r = 1.22 × 0.00055 × f / d</td>
+<td>mm</td>
+</tr>
+<tr>
+<td>Angle of view (horizontal)</td>
+<td>θ = 2 × arctan(width / (2 × f))</td>
+<td>degrees</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-b-glossary-for-non-technical-readers">Appendix B: Glossary for Non-Technical Readers<a class="headerlink" href="#appendix-b-glossary-for-non-technical-readers" title="Permanent link">&para;</a></h2>
+<p><strong>Airy disk:</strong> The circular pattern of light formed when light diffracts through a small circular aperture. Named after the astronomer George Airy who first described it mathematically in 1835.</p>
+<p><strong>Diffraction:</strong> The bending and spreading of waves (including light waves) when they pass through a small opening or around an edge. The smaller the opening, the more spreading occurs.</p>
+<p><strong>f-number (f-stop):</strong> A ratio that describes how wide an aperture is relative to the focal length. Lower f-numbers = more light = faster exposure. A pinhole at f/1600 admits 10,000× less light than a lens at f/16.</p>
+<p><strong>Focal length:</strong> The distance from the pinhole to the image plane (the light-sensitive material at the back of the camera). In a pinhole camera, this is simply the internal depth of the box.</p>
+<p><strong>Fresnel zones:</strong> Concentric ring-shaped regions on a wavefront that contribute constructively or destructively to a diffraction pattern. Lord Rayleigh used the count of Fresnel zones inside the pinhole to determine the optimal size.</p>
+<p><strong>Reciprocity failure:</strong> The breakdown of the simple rule that "double the time = double the exposure." At very long exposures, photographic materials become less and less efficient, requiring disproportionately long exposures to compensate.</p>
+<p><strong>Resolution (lp/mm):</strong> A measure of how much fine detail a camera can capture, expressed as the number of alternating black-and-white line pairs per millimeter that are just distinguishable in the image. Higher = finer detail.</p>
+<p><strong>Schwarzschild exponent (p):</strong> A number between 0 and 1 that describes how severe a material's reciprocity failure is. p = 1.0 is perfect reciprocity (no failure). Typical photographic paper: p ≈ 0.80–0.90.</p>
+<hr />
+<p><em>Document version: 1.0 — April 2026. Sources marked "not yet fetched" are based on well-established literature and training knowledge; primary source verification is in progress.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

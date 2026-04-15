@@ -217,7 +217,7 @@ def haring_inverted(ax, cx, cy, sc):
 haring_inverted(ax, IP_X+WT*1.0, CY, sc=0.72)
 
 # ── Light rays inside container: subject→pinhole→image plane ─────────────────
-SUBJ_X = 13.0
+SUBJ_X = 18.0   # clear of sprocket strip (right edge ≈ 9.8 + arm reach 5.2 = needs ≥16)
 SUBJ_H = 9.0   # subject half-height for ray origin points (spans ~2/3 container height)
 
 # Three source points on subject, three inverted destination points on image plane
@@ -419,14 +419,17 @@ ax.text(50, 88.2,
         color=CYAN_LITE, fontsize=6.0, ha="center", va="center",
         fontfamily="monospace", zorder=8)
 
-# Spec bar
-ax.add_patch(Rectangle((12,6.5),76,6.2, fc=PRU_INK,ec=PAPER,lw=1.8,zorder=8))
-ax.add_patch(Rectangle((12,12.5),76,0.6, fc=PAPER,ec="none",zorder=9))
-ax.add_patch(Rectangle((12,11.8),76,0.4, fc=CYAN_MID,ec="none",zorder=9))
-ax.text(50, 9.5,
-        "f = 2,362 mm   ·   d = 2.17 mm   ·   f/1088   ·   "
-        "IMAGE  PLANE  5,893 × 2,388 mm   ·   λ = 550 nm",
-        color=PAPER, fontsize=6.0, ha="center", va="center",
+# Spec bar — two lines to fit all specs
+ax.add_patch(Rectangle((12,5.5),76,7.5, fc=PRU_INK,ec=PAPER,lw=1.8,zorder=8))
+ax.add_patch(Rectangle((12,12.8),76,0.6, fc=PAPER,ec="none",zorder=9))
+ax.add_patch(Rectangle((12,12.1),76,0.4, fc=CYAN_MID,ec="none",zorder=9))
+ax.text(50, 10.6,
+        "f = 2,362 mm   ·   d = 2.17 mm   ·   f/1088   ·   λ = 550 nm",
+        color=PAPER, fontsize=5.8, ha="center", va="center",
+        fontfamily="monospace", fontweight="bold", zorder=9)
+ax.text(50, 7.5,
+        "IMAGE  PLANE  5,893 × 2,388 mm   ·   MIN. FOCUS DIST.  5,000 mm",
+        color=CYAN_LITE, fontsize=5.8, ha="center", va="center",
         fontfamily="monospace", fontweight="bold", zorder=9)
 
 # Side strips

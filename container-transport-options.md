@@ -56,7 +56,40 @@ A truck with a hydraulically tilting bed delivers the container and slides it of
 
 **Sources:** [Midstate Containers — Transport Cost 2026](https://midstatecontainers.com/blogs/news/shipping-container-transport-cost-calculator-pricing-chart) · [ContainerOne — Delivery FAQ](https://containerone.net/pages/shipping-container-delivery-costs-and-frequently-asked-questions) · [Tuff Shipping — Tilt-Bed vs Flatbed](https://tuffshippingcontainers.com/tilt-bed-vs-flatbed-which-container-delivery-method-costs-less/) · [Cascade Container — 20' Tilt-Bed](https://www.cascadecontainer.com/pages/20-tilt-bed-truck-deliveries)
 
-### Licence requirement
+### Purchasing a tilt-bed truck
+
+If you anticipate moving the container frequently, purchasing is worth comparing against repeated hire costs. Break-even against hire (at ~$600/move) is roughly **60–80 moves** for a used unit.
+
+#### Truck classes and price ranges (2026)
+
+| Class | Example chassis | Tilt-bed body | Typical use | Used price | New price |
+|-------|----------------|---------------|-------------|------------|-----------|
+| Class 5–6 (GVWR 16,001–26,000 lb) | Ford F-550, Isuzu NPR | Light-duty rollback / tilt-bed | Empty 20 ft containers; light cargo | $35,000–$70,000 | $80,000–$110,000 |
+| Class 7 (GVWR 26,001–33,000 lb) | Kenworth T270, Hino L6 | Standard container handler | Empty 20 ft; moderate payload | $65,000–$100,000 | $110,000–$150,000 |
+| Class 8 (GVWR 33,001+ lb) | Freightliner M2-106, Kenworth T280 | Galbreath SLCH or equivalent | Loaded containers; heavy service | $85,000–$130,000 | $150,000–$220,000+ |
+
+*Example confirmed listing: 2021 Kenworth T270 with 8,000 lb American container handler — **$99,900** (Commercial Truck Trader, 2025).*
+
+#### Bed-only option (mount on your own truck)
+
+If you already own a suitable Class 5+ truck, a tilt-bed body can be installed without buying a complete vehicle:
+
+| Product | Capacity | Approximate price | Notes |
+|---------|----------|------------------|-------|
+| [QuickLoadz 20k Super Bed](https://quickloadz.com/quickloadz-20-ft-container-moving-trucks-and-beds/) | 20,000 lb | ~$30,000–$45,000 (bed only) | Hydraulic, self-loading, remote-controlled; mounts on Class 5–6 truck |
+| [ChassisKing hydraulic tilt-bed trailer](http://www.chassisking.com/products/self-loading-container-delivery-trailers/hydraulic-tilt-bed-container-delivery-trailers/) | 20 ft container | ~$15,000–$30,000 | Trailer unit, pulled by semi or HD pickup |
+| Standard rollback body (aftermarket) | Varies | ~$12,000–$25,000 | Fabricated/fitted by local body shop; not container-specific |
+
+*QuickLoadz complete truck packages (bed pre-installed on used International chassis) were offered from ~$75,000 in 2022; current pricing requires direct quote from QuickLoadz at (888) 304-3946.*
+
+#### Licence requirement for ownership/operation
+Owning and operating a tilt-bed truck requires **CDL Class B or Class A** depending on GVWR:
+- Class 5–6 (GVWR ≤26,000 lb): standard driver's licence (non-commercial, personal use) — **no CDL**
+- Class 7+ (GVWR >26,001 lb): **CDL Class B** minimum; Class A if towing an additional trailer
+
+**Sources:** [Commercial Truck Trader — Rollback listings](https://www.commercialtrucktrader.com/Rollback-Tow/trucks-for-sale?category=Rollback+Tow+Truck%7C2009720) · [TruckPaper — Rollback Tow Trucks](https://www.truckpaper.com/listings/for-sale/rollback-tow-trucks/16061) · [QuickLoadz — 20 ft Trucks & Beds](https://quickloadz.com/quickloadz-20-ft-container-moving-trucks-and-beds/) · [ChassisKing — Hydraulic Tilt-Bed Trailers](http://www.chassisking.com/products/self-loading-container-delivery-trailers/hydraulic-tilt-bed-container-delivery-trailers/) · [Custom Truck One Source — Container Handlers](https://www.customtruck.com/container-handlers/)
+
+### Licence requirement (hire)
 **None** for the customer. The carrier holds the CDL. You need only to be present to direct placement.
 
 ### Site requirements
@@ -231,7 +264,202 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 
 ---
 
-## 9. Recommended Approach by Use Case
+## 9. CDL Class A and Class B — Full Requirements, Training, and Southern California Schools
+
+### 9.1 Which licence do you need?
+
+| Licence | Triggers when… | Typical vehicle |
+|---------|---------------|----------------|
+| **Class A** | Combination vehicles with GVWR >26,001 lb AND the towed unit weighs >10,000 lb | Semi-tractor + container chassis; tractor-trailer |
+| **Class B** | Single vehicle GVWR >26,001 lb, OR towing a unit ≤10,000 lb | Straight truck, tilt-bed container truck (Class 7–8), large bus, dump truck |
+| No CDL | Total rig GVWR ≤26,001 lb (personal, non-commercial use) | HD pickup + empty container on light trailer (if weight allows) |
+
+For this project: **Class B** covers owning and operating a Class 7–8 tilt-bed truck. **Class A** is required if you also want to tow a container chassis behind a semi tractor.
+
+---
+
+### 9.2 Prerequisites (both classes)
+
+These must be satisfied before enrolling in skills training or sitting any DMV test:
+
+| Requirement | Details |
+|-------------|---------|
+| **Age** | 18+ for intrastate (within California only); **21+ for interstate** (crossing state lines) |
+| **Existing driver's licence** | Valid California Class C (standard) driver's licence |
+| **DOT medical examination** | Physical exam by a FMCSA-certified Medical Examiner; produces a Medical Examiner's Certificate (MEC). Cost: ~$75–$150 at most clinics. Valid 2 years (or less if a medical condition requires it). As of January 10, 2026, paper MEC waivers have expired — results are submitted electronically to the FMCSA. |
+| **Social Security Number** | Required for DMV identity verification |
+| **Proof of California residency** | Two documents (utility bill, bank statement, lease, etc.) if no existing CA DL/ID |
+| **10-Year History Record Check (DL 939)** | Required if you held a licence in any other US state or jurisdiction in the last 10 years |
+| **No disqualifying record** | DUI convictions, certain drug offences, or prior CDL disqualifications may prevent issuance |
+| **FMCSA ELDT registration** | Your training provider must be listed on the FMCSA Training Provider Registry (TPR). Verify at [tpr.fmcsa.dot.gov](https://tpr.fmcsa.dot.gov) |
+
+**Sources:** [California DMV — CDL Overview](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/) · [Certified Safe Driver — CA CDL Requirements](https://certifiedsafedriver.com/california-cdl-license-requirements/) · [ELDT Nation — Class A in California](https://www.eldtnation.com/blog/class-a-eldt-in-california-clp-eldt-hours-road-test-steps)
+
+---
+
+### 9.3 The licensing process — step by step
+
+1. **Get DOT medical exam** — find a certified examiner at [nationalregistry.fmcsa.dot.gov](https://nationalregistry.fmcsa.dot.gov)
+2. **Study the California Commercial Driver Handbook** — available free at [dmv.ca.gov](https://www.dmv.ca.gov)
+3. **Pass the knowledge test(s) at a CA DMV office** → issued a **Commercial Learner's Permit (CLP)**
+4. **Complete ELDT theory training** — from an FMCSA-registered provider (online or in-person)
+5. **Complete behind-the-wheel (BTW) training** — minimum hours required by California (see below)
+6. **Wait 14 days** after CLP issuance before booking skills test
+7. **Pass the three-part skills test** at the DMV
+8. **Submit DL 1236** — California's Behind-the-Wheel Training Certification, completed by your training provider
+9. **Pay DMV fees** (~$170 total) and receive CDL
+
+---
+
+### 9.4 Knowledge tests (written — at DMV)
+
+All tests are multiple choice, drawn from the California Commercial Driver Handbook. Pass mark is **80% (40/50 questions)**. Maximum **3 attempts** per test; if all 3 fail, you must wait and re-apply.
+
+| Test | Required for | Questions | Notes |
+|------|-------------|-----------|-------|
+| **General Knowledge** | Class A and B | 50 | Mandatory for all CDL applicants |
+| **Combination Vehicles** | Class A only | 20 | Covers coupling/uncoupling, doubles, rollovers |
+| **Air Brakes** | If vehicle has air brakes | 25 | Required for most Class A and B trucks; failing limits you to vehicles without air brakes |
+| Hazmat (H endorsement) | Optional | 30 | Background check required; TSA security threat assessment |
+| Tanker (N endorsement) | Optional | 20 | For liquid cargo tankers |
+| Passenger (P endorsement) | Optional | 20 | For buses, shuttles |
+| Doubles/Triples (T endorsement) | Optional | 20 | Class A only |
+
+**Topics covered in General Knowledge test:**
+- Vehicle inspection procedures
+- Basic vehicle control and shifting
+- Backing and turning
+- Space management and speed management
+- Night driving, adverse weather, mountain driving
+- Cargo securing and weight distribution
+- Accident procedures and vehicle fires
+- Hazardous materials awareness
+- Pre-trip inspection procedure
+
+**Sources:** [CA DMV — CDL Classes & Certifications](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/commercial-driver-license-classes-certifications/) · [Driving-Tests.org — CA CDL Practice Tests 2026](https://driving-tests.org/california/cdl/)
+
+---
+
+### 9.5 Training hours required
+
+#### Federal ELDT (mandatory since February 2022)
+The FMCSA mandates **theory training** from a registered provider — there is no federally specified minimum hour count, but specific topic domains must be covered and reported to the Training Provider Registry before DMV will schedule your skills test.
+
+#### California state minimum — behind the wheel
+California imposes its own BTW minimums on top of federal ELDT:
+
+| Class | Min BTW hours | Of which on public roads |
+|-------|--------------|------------------------|
+| Class A | **15 hours** | At least 10 hours |
+| Class B | **15 hours** | At least 10 hours |
+
+*Most accredited schools far exceed this minimum. Industry standard for adequate preparation is 60–100 hours BTW (see school programmes below).*
+
+Your school must complete **Form DL 1236** (California Commercial Driver Behind-the-Wheel Training Certification) and you must submit it to the DMV before your CDL is issued.
+
+**Source:** [ELDT Nation — Class A ELDT California](https://www.eldtnation.com/blog/class-a-eldt-in-california-clp-eldt-hours-road-test-steps) · [FMCSA — ELDT](https://www.fmcsa.dot.gov/registration/commercial-drivers-license/entry-level-driver-training-eldt)
+
+---
+
+### 9.6 Skills test (three-part — at DMV or third-party examiner)
+
+The skills test is conducted in the vehicle class you are testing for. For Class A, you must use a combination vehicle (tractor + trailer). For Class B, a straight truck meeting the GVWR requirement.
+
+#### Part 1 — Pre-trip vehicle inspection (~30 minutes)
+Walk-around of the vehicle while verbally identifying and explaining each system. Examiners score on whether you correctly identify:
+- Engine compartment (oil, coolant, belts, hoses)
+- Steering and suspension
+- Brakes (air or hydraulic), lines, chambers, slack adjusters
+- Wheels, tyres, rims, lugs
+- Lights and reflectors
+- Fuel system
+- Coupling system (Class A only — fifth wheel, kingpin, landing gear)
+- Cargo securement areas
+
+#### Part 2 — Basic vehicle control (closed course/parking area)
+Manoeuvres in a controlled environment. Graded on accuracy and number of pull-ups (corrections):
+- Straight-line backing
+- Offset alley docking (backing into a marked space offset left or right)
+- Parallel parking (sight-side and blind-side)
+- Straight-line forward
+
+#### Part 3 — On-road driving (~30 minutes)
+Scored on observation, lane control, intersections, turns, and speed management:
+- Turns (left and right)
+- Intersections (signal compliance, right-of-way)
+- Railroad crossings
+- Curves, grades, bridges
+- Freeway/highway merging and lane changes (if applicable)
+- Stopping and start-up on a grade
+
+**Source:** [California DMV — Commercial Driver's Licenses](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/) · [CDL Driving Academy — ELDT Training](https://www.cdldrivingacademy.com/blog/what-is-eldt-training/)
+
+---
+
+### 9.7 California DMV fees
+
+| Fee | Amount |
+|-----|--------|
+| CLP (Learner's Permit) application | ~$74 |
+| CDL licence fee | ~$82 |
+| Knowledge test fee | ~$12 per test |
+| Skills test fee | ~$37 |
+| **Estimated total DMV fees** | **~$170–$220** |
+
+*Fees are subject to change; verify current amounts at [dmv.ca.gov](https://www.dmv.ca.gov).*
+
+---
+
+### 9.8 Training schools — Southern California
+
+#### Private schools
+
+| School | Location | Class A cost | Class B cost | Duration | Notes |
+|--------|----------|-------------|-------------|---------|-------|
+| [SPCDL Truck Driving School](https://spcdl.com/) | Ontario, CA (Inland Empire) | ~$4,800 | ~$3,200 | 3–4 weeks | $2,400 online theory + $2,400 BTW; ~90% first-time pass rate; 10% discount for military/veterans |
+| [LA Truck Driving School](https://latruckdriving.com/class-a-driving-school/) | Van Nuys, CA (San Fernando Valley) | ~$1,799 | N/A quoted | Varies | Budget option; verify BTW hours meet CA minimums |
+| [Toro School of Truck Driving](https://www.toroschool.net/) | Santa Ana, CA (Orange County) | Quote required | Quote required | Varies | Veteran-friendly; modern facilities; call 714-617-4275 |
+| [TGA Truck Driving School](https://www.truckdriversed.com/) | Multiple SoCal locations | Quote required | Quote required | Varies | Multiple locations across Southern California |
+| [United Truck Driving School](https://drivetrucks.com/locations/san-diego-campus/) | Riverside & San Diego, CA | Quote required | Quote required | 3–5 weeks | Two campuses; Riverside serves LA/IE area |
+| [America Truck Driving](https://www.americatruckdriving.com/) | Compton & Orange County, CA | Quote required | Quote required | Varies | Multiple SoCal locations |
+| [Sergio School of Trucking](https://www.sergioschooloftrucking.com/) | Los Angeles area | Quote required | Quote required | 3–5 weeks | Covers LA and surrounding counties |
+
+#### Community colleges (lower cost, WIOA financial aid eligible)
+
+| School | Location | Class A cost | Duration | Notes |
+|--------|----------|-------------|---------|-------|
+| [El Camino College](https://www.elcamino.edu/academics/community/rapid-job-training/truck-driver.php) | Torrance, CA (South Bay) | **$5,995 all-inclusive** | 168 hours / ~10.5 weeks | Includes truck use, materials, DMV permit and licence fees; financial aid available |
+| [Victor Valley College](https://www.vvc.edu/cdl) | Victorville, CA (High Desert) | ~$3,500–$4,500 | ~3 weeks | Community college pricing; serves High Desert / Inland Empire |
+
+*Community colleges may qualify for WIOA (Workforce Innovation and Opportunity Act) funding, which can cover **full tuition** for eligible adults — unemployed workers, veterans, and career changers. Contact the school's financial aid office.*
+
+#### Cost summary
+
+| Programme type | Total cost range (tuition + DMV fees) | Duration |
+|---------------|--------------------------------------|---------|
+| Budget private school | $2,000–$3,000 | 2–3 weeks |
+| Mid-range private school | $4,000–$6,000 | 3–4 weeks |
+| Community college | $3,500–$6,200 | 3–10 weeks |
+| DOT medical exam (additional) | $75–$150 | One appointment |
+| **Total all-in (mid-range)** | **~$4,500–$6,500** | **3–5 weeks** |
+
+---
+
+### 9.9 Class A vs Class B — which to get for this project?
+
+| Scenario | Licence needed |
+|----------|---------------|
+| Operating a Class 7–8 tilt-bed container truck (Option A purchase) | **Class B** |
+| Driving a semi tractor + container chassis (Option C) | **Class A** |
+| Class A always covers Class B vehicles | Get **Class A** if budget allows — it opens both options |
+
+**Recommendation:** If the budget runs to it, obtain **Class A** — it costs roughly the same as Class B to train for (same schools, similar duration), and it gives full flexibility to operate semi tractors as well as straight trucks. The additional test is the Combination Vehicles knowledge exam (20 questions) and the Class A skills test uses a combination vehicle.
+
+**Sources:** [California DMV — CDL Classes](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/commercial-driver-license-classes-certifications/) · [FindCDLSchools — Class B California 2026](https://findcdlschools.com/blog/california-class-b-license-guide) · [SPCDL — CDL Training Cost](https://spcdl.com/cdl-training-cost/) · [El Camino College — Truck Driver Training](https://www.elcamino.edu/academics/community/rapid-job-training/truck-driver.php) · [Logrock — CDL Requirements 2026](https://www.logrock.com/fmcsa-and-dot-compliance/cdl-requirements/)
+
+---
+
+## 10. Recommended Approach by Use Case
 
 | Use case | Recommended option | Estimated cost |
 |----------|--------------------|---------------|
@@ -265,3 +493,17 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 - [QuickLoadz — 20 ft Container Trailers](https://www.quickloadz.com/quickloadz-20-ft-container-moving-trailers-and-beds/)
 - [ShippingContainerTrailers.com — DynaDolly](https://shippingcontainertrailers.com/)
 - [ContainGo — Mobilizer](https://www.containgo.com/mobilizer-shipping-container-trailer)
+- [California DMV — Commercial Driver's Licenses](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/)
+- [California DMV — CDL Classes & Certifications](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/commercial-driver-license-classes-certifications/)
+- [Certified Safe Driver — CA CDL Requirements](https://certifiedsafedriver.com/california-cdl-license-requirements/)
+- [ELDT Nation — Class A ELDT in California](https://www.eldtnation.com/blog/class-a-eldt-in-california-clp-eldt-hours-road-test-steps)
+- [FMCSA — Entry-Level Driver Training (ELDT)](https://www.fmcsa.dot.gov/registration/commercial-drivers-license/entry-level-driver-training-eldt)
+- [FindCDLSchools — Class B California 2026](https://findcdlschools.com/blog/california-class-b-license-guide)
+- [Driving-Tests.org — California CDL Practice Tests 2026](https://driving-tests.org/california/cdl/)
+- [CDL Driving Academy — What is ELDT Training](https://www.cdldrivingacademy.com/blog/what-is-eldt-training/)
+- [SPCDL — CDL Training Cost](https://spcdl.com/cdl-training-cost/)
+- [El Camino College — Truck Driver Training Program](https://www.elcamino.edu/academics/community/rapid-job-training/truck-driver.php)
+- [Victor Valley College — CDL Program](https://www.vvc.edu/cdl)
+- [United Truck Driving School — San Diego](https://drivetrucks.com/locations/san-diego-campus/)
+- [TGA Truck Driving School — Southern California](https://www.truckdriversed.com/)
+- [Toro School of Truck Driving](https://www.toroschool.net/)

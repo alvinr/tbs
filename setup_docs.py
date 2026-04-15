@@ -46,6 +46,8 @@ MD_FILES = [
     ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole — Exposure Physics")),
     ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
     ("chemistry-shopping-list.md",       (".",           "Chemistry Shopping List")),
+    ("container-transport-options.md",   (".",           "Container Transport Options")),
+    ("water-system-report.md",           (".",           "Water Processing System")),
 ]
 
 # Images to copy into assets/
@@ -55,6 +57,8 @@ IMAGE_FILES = [
     "portrait-camera-schematic.png",
     "portrait-optimal-3m.png",
     "portrait-scale-comparison.png",
+    "water-system-sheet1.png",
+    "water-system-sheet2.png",
 ]
 
 MKDOCS_YML = """\

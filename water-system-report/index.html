@@ -13,6 +13,8 @@
         <link rel="canonical" href="https://alvinr.github.io/tbs/water-system-report/">
       
       
+        <link rel="prev" href="../container-transport-options/">
+      
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>Cyanotype Processing Water System - Giant Pinhole Camera — Research & Build</title>
+        <title>Water Processing System - Giant Pinhole Camera — Research & Build</title>
       
     
     
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cyanotype Processing Water System
+              Water Processing System
             
           </span>
         </div>
@@ -349,6 +351,46 @@
     
   
   Chemistry Shopping List
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Container Transport Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Water Processing System
 
       </a>
     </li>
@@ -602,6 +644,517 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Transport Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Water Processing System
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Water Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#remote-operation-design-for-the-giant-pinhole-camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remote-Operation Design for the Giant Pinhole Camera
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executive Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-cyanotype-wash-water-chemistry-and-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Cyanotype Wash Water — Chemistry and Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Cyanotype Wash Water — Chemistry and Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-in-the-wash-water" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What is in the wash water?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-filtration-can-and-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What filtration can and cannot do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-water-volume-calculations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Water Volume Calculations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Water Volume Calculations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-print-water-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-print water requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-capacity-vs-print-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage capacity vs. print count
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. System Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. System Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-blue-system-clean-water-supply" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Blue System — Clean Water Supply
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-brown-system-used-water-recycling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Brown System — Used Water Recycling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-black-system-waste-containment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Black System — Waste Containment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-processing-procedure-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Processing Procedure — Step by Step
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Processing Procedure — Step by Step">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-each-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before each session
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#print-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Print processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valve-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valve matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-plumbing-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Plumbing Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Plumbing Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipe-sizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipe sizing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fittings-and-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fittings and connections
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-electrical-12v-dc-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Electrical — 12V DC Power
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-equipment-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Equipment Layout
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-parts-list-and-shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Parts List and Shopping List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Parts List and Shopping List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-water-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Water storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-pumps-and-pressure-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Pumps and pressure management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-filter-skid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Filter skid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-valves-and-fittings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Valves and fittings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Pipe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-electrical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Electrical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-processing-consumables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 Processing consumables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88-total-cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.8 Total cost summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-maintenance-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Maintenance Schedule
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-safety-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Safety Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-schematic-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Schematic Diagrams
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-sources-and-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Sources and References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 

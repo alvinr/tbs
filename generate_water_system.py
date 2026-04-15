@@ -1,0 +1,621 @@
+#!/usr/bin/env python3
+"""
+generate_water_system.py
+Generates two engineering diagrams for the cyanotype processing water system:
+  Sheet 1 — System flow schematic (three-system P&ID overview)
+  Sheet 2 — Tank & filter skid layout plan (dimensioned arrangement)
+
+Output:
+  water-system-sheet1.png  (1800 x 1200 px, 150 dpi)
+  water-system-sheet2.png  (1800 x 1200 px, 150 dpi)
+"""
+
+import math
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
+from matplotlib.lines import Line2D
+
+# ── Colour palette ────────────────────────────────────────────────────────────
+C_BLUE   = "#2979B8"   # clean water — Blue system
+C_BROWN  = "#8B5E3C"   # used / grey water — Brown system
+C_BLACK  = "#222222"   # waste water — Black system
+C_BLUE_L = "#D6E9F8"   # blue system fill (light)
+C_BROWN_L= "#F0E0CC"   # brown system fill (light)
+C_BLACK_L= "#DDDDDD"   # black system fill (light)
+C_PROC   = "#E8F5E9"   # processing area fill
+C_FILT   = "#FFF9C4"   # filter skid fill
+C_FRAME  = "#444444"   # drawing frame
+C_DIM    = "#888888"   # dimension lines
+C_TEXT   = "#111111"
+C_TITLE  = "#1A237E"
+
+LW_PIPE  = 2.8         # pipe linewidth
+LW_THIN  = 1.2
+
+# ── Helper: draw a pipe segment ───────────────────────────────────────────────
+def pipe(ax, x1, y1, x2, y2, color=C_BLUE, lw=LW_PIPE, style="-", zorder=3):
+    ax.plot([x1, x2], [y1, y2], color=color, lw=lw, ls=style,
+            solid_capstyle="round", zorder=zorder)
+
+def arrow_pipe(ax, x1, y1, x2, y2, color=C_BLUE, lw=LW_PIPE, zorder=4):
+    ax.annotate("", xy=(x2, y2), xytext=(x1, y1),
+                arrowprops=dict(arrowstyle="-|>", color=color,
+                                lw=lw, mutation_scale=14),
+                zorder=zorder)
+
+def box(ax, x, y, w, h, fc="white", ec=C_FRAME, lw=1.2, zorder=2, radius=0.02):
+    r = FancyBboxPatch((x - w/2, y - h/2), w, h,
+                       boxstyle=f"round,pad={radius}",
+                       fc=fc, ec=ec, lw=lw, zorder=zorder)
+    ax.add_patch(r)
+
+def tank(ax, x, y, w, h, fc="white", ec=C_FRAME, label="", sublabel="",
+         lw=1.4, zorder=2):
+    """Draw an IBC-tote-style tank (rectangle with fill level indicator)."""
+    rect = plt.Rectangle((x - w/2, y - h/2), w, h, fc=fc, ec=ec, lw=lw, zorder=zorder)
+    ax.add_patch(rect)
+    # legs
+    leg_h = 0.03
+    for dx in [-w/2 + 0.02, w/2 - 0.02]:
+        ax.plot([x + dx, x + dx], [y - h/2 - leg_h, y - h/2],
+                color=ec, lw=lw, zorder=zorder)
+    # label
+    if label:
+        ax.text(x, y + 0.03, label, ha="center", va="center",
+                fontsize=7.5, fontweight="bold", color=C_TEXT, zorder=zorder + 1)
+    if sublabel:
+        ax.text(x, y - 0.06, sublabel, ha="center", va="center",
+                fontsize=6.5, color="#555555", zorder=zorder + 1)
+
+def drum(ax, x, y, r=0.07, fc="white", ec=C_FRAME, label="", lw=1.4, zorder=2):
+    """Draw a 55-gal drum (circle)."""
+    circ = plt.Circle((x, y), r, fc=fc, ec=ec, lw=lw, zorder=zorder)
+    ax.add_patch(circ)
+    if label:
+        ax.text(x, y, label, ha="center", va="center",
+                fontsize=6.5, fontweight="bold", color=C_TEXT, zorder=zorder + 1,
+                multialignment="center")
+
+def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.05):
+    """Draw a centrifugal pump symbol (circle with triangle arrow)."""
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=1.8, zorder=zorder)
+    ax.add_patch(circ)
+    # Triangle inside
+    tri = plt.Polygon([(x - r*0.55, y - r*0.55),
+                       (x - r*0.55, y + r*0.55),
+                       (x + r*0.65, y)],
+                      fc=color, ec=color, zorder=zorder + 1)
+    ax.add_patch(tri)
+
+def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.04, label="V"):
+    """Draw a ball valve symbol (bowtie)."""
+    tri1 = plt.Polygon([(x - size, y - size),
+                        (x - size, y + size),
+                        (x, y)],
+                       fc=color, ec=color, alpha=0.85, zorder=zorder)
+    tri2 = plt.Polygon([(x + size, y - size),
+                        (x + size, y + size),
+                        (x, y)],
+                       fc=color, ec=color, alpha=0.85, zorder=zorder)
+    ax.add_patch(tri1)
+    ax.add_patch(tri2)
+
+def filter_sym(ax, x, y, color=C_FILT, zorder=4, label="F"):
+    """Draw a filter symbol (pentagon/diamond)."""
+    size = 0.07
+    h    = 0.09
+    pts  = [(x, y + h*0.6),
+            (x + size*0.7, y + h*0.2),
+            (x + size*0.5, y - h*0.5),
+            (x - size*0.5, y - h*0.5),
+            (x - size*0.7, y + h*0.2)]
+    poly = plt.Polygon(pts, fc=color, ec=C_FRAME, lw=1.2, zorder=zorder)
+    ax.add_patch(poly)
+    ax.text(x, y, label, ha="center", va="center", fontsize=6, zorder=zorder + 1,
+            fontweight="bold")
+
+def note(ax, x, y, txt, fs=6.5, color=C_TEXT):
+    ax.text(x, y, txt, ha="left", va="center", fontsize=fs, color=color,
+            zorder=10)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 1 — SYSTEM FLOW SCHEMATIC (P&ID overview)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+fig1, ax1 = plt.subplots(figsize=(18, 12))
+ax1.set_xlim(0, 18)
+ax1.set_ylim(0, 12)
+ax1.set_aspect("equal")
+ax1.axis("off")
+ax1.set_facecolor("#F5F5F0")
+fig1.patch.set_facecolor("#F5F5F0")
+
+# ── Title block ───────────────────────────────────────────────────────────────
+ax1.add_patch(plt.Rectangle((0, 0), 18, 12, fc="#F5F5F0", ec=C_FRAME, lw=2))
+ax1.add_patch(plt.Rectangle((0, 0), 18, 1.1, fc="white", ec=C_FRAME, lw=1.5))
+ax1.text(9, 0.65, "GIANT PINHOLE CAMERA — CYANOTYPE PROCESSING WATER SYSTEM",
+         ha="center", va="center", fontsize=13, fontweight="bold", color=C_TITLE)
+ax1.text(9, 0.25, "SHEET 1 OF 2 — SYSTEM FLOW SCHEMATIC (P&ID)   |   "
+         "SCALE: NOT TO SCALE   |   REV 1.0",
+         ha="center", va="center", fontsize=8.5, color="#444444")
+
+# ── Zone fills ────────────────────────────────────────────────────────────────
+# Blue zone
+ax1.add_patch(plt.Rectangle((0.3, 1.3), 4.5, 9.4, fc=C_BLUE_L, ec=C_BLUE,
+                             lw=1.5, alpha=0.45, zorder=1))
+ax1.text(2.55, 10.5, "BLUE SYSTEM — CLEAN WATER", ha="center", fontsize=8,
+         fontweight="bold", color=C_BLUE, zorder=5)
+
+# Brown zone
+ax1.add_patch(plt.Rectangle((5.1, 1.3), 4.5, 9.4, fc=C_BROWN_L, ec=C_BROWN,
+                             lw=1.5, alpha=0.45, zorder=1))
+ax1.text(7.35, 10.5, "BROWN SYSTEM — USED WATER (RECYCLABLE)",
+         ha="center", fontsize=8, fontweight="bold", color=C_BROWN, zorder=5)
+
+# Black zone
+ax1.add_patch(plt.Rectangle((9.9, 1.3), 3.5, 9.4, fc=C_BLACK_L, ec=C_BLACK,
+                             lw=1.5, alpha=0.35, zorder=1))
+ax1.text(11.65, 10.5, "BLACK SYSTEM — WASTE WATER",
+         ha="center", fontsize=8, fontweight="bold", color=C_BLACK, zorder=5)
+
+# Processing area
+ax1.add_patch(plt.Rectangle((13.6, 1.3), 4.1, 9.4, fc=C_PROC, ec="#388E3C",
+                             lw=1.5, alpha=0.6, zorder=1))
+ax1.text(15.65, 10.5, "PROCESSING AREA",
+         ha="center", fontsize=8, fontweight="bold", color="#2E7D32", zorder=5)
+
+# ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
+# IBC1 Clean water A
+tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
+     label="IBC-1", sublabel="275 gal\nCLEAN A")
+# IBC2 Clean water B
+tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
+     label="IBC-2", sublabel="275 gal\nCLEAN B")
+
+# Manifold joining two tanks
+pipe(ax1, 1.5, 7.48, 1.5, 7.0, C_BLUE)
+pipe(ax1, 3.3, 7.48, 3.3, 7.0, C_BLUE)
+pipe(ax1, 1.5, 7.0, 3.3, 7.0, C_BLUE)  # crossmember
+
+# Valve on outlet
+valve(ax1, 2.4, 7.0, color=C_BLUE)
+ax1.text(2.4, 6.82, "BV-01", ha="center", fontsize=6, color=C_BLUE)
+
+# Pump P1
+pipe(ax1, 2.4, 7.0, 2.4, 6.5, C_BLUE)
+pump(ax1, 2.4, 6.3, color=C_BLUE)
+ax1.text(2.75, 6.3, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BLUE)
+
+# Pressure accumulator
+pipe(ax1, 2.4, 6.1, 2.4, 5.6, C_BLUE)
+box(ax1, 2.4, 5.35, 0.8, 0.45, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
+ax1.text(2.4, 5.35, "ACC-01\n1 GAL", ha="center", va="center",
+         fontsize=6, color=C_BLUE)
+
+# Valve + run to processing
+pipe(ax1, 2.4, 5.12, 2.4, 4.5, C_BLUE)
+valve(ax1, 2.4, 4.5, color=C_BLUE)
+ax1.text(2.4, 4.32, "BV-02", ha="center", fontsize=6, color=C_BLUE)
+pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
+# Run east to processing zone
+pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
+arrow_pipe(ax1, 14.6, 3.8, 15.5, 3.8, color=C_BLUE)
+ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
+         fontsize=7, color=C_BLUE)
+
+# Refill inlet (top of IBC-1)
+pipe(ax1, 1.5, 8.9, 1.5, 9.6, C_BLUE, style="--")
+ax1.text(1.5, 9.75, "FILL\nINLET", ha="center", fontsize=6,
+         color=C_BLUE, style="italic")
+
+# Water level sensor labels
+ax1.text(4.8, 8.2, "LOW-LEVEL\nFLOAT SW.", ha="center",
+         fontsize=5.5, color=C_BLUE, alpha=0.8)
+ax1.plot([4.5, 3.95], [8.2, 8.2], color=C_BLUE, lw=0.8, ls=":")
+
+# ── BROWN SYSTEM ──────────────────────────────────────────────────────────────
+# IBC3 — used water buffer
+tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN, lw=2,
+     label="IBC-3", sublabel="275 gal\nUSED BUFFER")
+
+# Inlet from processing floor drain
+pipe(ax1, 6.4, 7.48, 6.4, 7.0, C_BROWN)
+valve(ax1, 6.4, 7.0, color=C_BROWN)
+ax1.text(6.4, 6.82, "BV-03", ha="center", fontsize=6, color=C_BROWN)
+pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
+# Arrow from processing area
+pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
+arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
+ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
+         fontsize=7, color=C_BROWN)
+
+# Brown pump P2
+pipe(ax1, 6.4, 7.48, 6.4, 9.0, C_BROWN)  # outlet from bottom of IBC
+pipe(ax1, 6.4, 7.48, 6.4, 5.6, C_BROWN)
+pump(ax1, 6.4, 5.4, color=C_BROWN)
+ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BROWN)
+
+pipe(ax1, 6.4, 5.2, 6.4, 4.8, C_BROWN)
+
+# ── FILTER SKID ───────────────────────────────────────────────────────────────
+ax1.add_patch(plt.Rectangle((5.2, 3.0), 3.8, 2.0, fc=C_FILT, ec="#F57F17",
+                             lw=1.5, alpha=0.8, zorder=1))
+ax1.text(7.1, 4.88, "FILTER SKID", ha="center", fontsize=7.5,
+         fontweight="bold", color="#E65100")
+
+# Filter 1 — 50 micron sediment
+filter_sym(ax1, 6.0, 3.9, label="F1")
+ax1.text(6.0, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
+pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
+pipe(ax1, 6.0, 4.6, 6.0, 4.0, C_BROWN)
+pipe(ax1, 6.0, 3.8, 6.0, 3.55, C_BROWN)
+
+# Filter 2 — 5 micron sediment
+filter_sym(ax1, 7.1, 3.9, label="F2")
+ax1.text(7.1, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
+pipe(ax1, 6.0, 3.55, 6.0, 3.25, C_BROWN)
+pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
+pipe(ax1, 7.1, 3.25, 7.1, 3.55, C_BROWN)
+pipe(ax1, 7.1, 3.8, 7.1, 4.6, C_BROWN)
+
+# Filter 3 — GAC carbon
+filter_sym(ax1, 8.2, 3.9, label="F3")
+ax1.text(8.2, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
+pipe(ax1, 7.1, 4.6, 7.1, 4.6, C_BROWN)
+pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
+pipe(ax1, 8.2, 4.6, 8.2, 4.0, C_BROWN)
+pipe(ax1, 8.2, 3.8, 8.2, 3.25, C_BROWN)
+
+# pH test point
+pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)
+box(ax1, 9.15, 3.25, 0.45, 0.35, fc="#FFF176", ec="#F9A825", lw=1.5)
+ax1.text(9.15, 3.25, "pH\nTEST", ha="center", va="center", fontsize=5.5,
+         color="#E65100")
+
+# ── DIVERTER VALVE after filter — back to Blue OR forward to Black ─────────────
+pipe(ax1, 9.4, 3.25, 9.7, 3.25, C_BROWN)
+valve(ax1, 9.7, 3.25, color="#777777", size=0.05)
+ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
+
+# Path back to Blue IBC
+pipe(ax1, 9.7, 3.5, 9.7, 9.0, C_BLUE, style="--")
+pipe(ax1, 9.7, 9.0, 3.3, 9.0, C_BLUE, style="--")
+pipe(ax1, 3.3, 9.0, 3.3, 8.9, C_BLUE, style="--")
+ax1.text(6.5, 9.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
+         ha="center", fontsize=6, color=C_BLUE, style="italic")
+
+# Path to Black system
+pipe(ax1, 9.7, 3.0, 9.7, 2.5, C_BLACK)
+pipe(ax1, 9.7, 2.5, 11.2, 2.5, C_BLACK)
+arrow_pipe(ax1, 11.0, 2.5, 11.65, 2.5, color=C_BLACK)
+
+# ── BLACK SYSTEM ──────────────────────────────────────────────────────────────
+# Drum D1
+drum(ax1, 11.65, 6.5, r=0.42, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+     label="DRUM-1\n55 GAL\nWASTE")
+# Drum D2
+drum(ax1, 12.95, 6.5, r=0.42, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+     label="DRUM-2\n55 GAL\nWASTE")
+
+# Direct drain from processing (heavy contamination bypass)
+pipe(ax1, 15.65, 5.0, 11.65, 5.0, C_BLACK, style="-.")
+pipe(ax1, 11.65, 5.0, 11.65, 6.08, C_BLACK)
+ax1.text(13.5, 4.82, "HEAVY CONTAM. BYPASS (BV-04)", ha="center",
+         fontsize=6, color=C_BLACK, style="italic")
+
+# Fill drum from diverter
+pipe(ax1, 11.65, 2.5, 11.65, 6.08, C_BLACK)
+pipe(ax1, 11.65, 7.0, 11.65, 7.5, C_BLACK, style="--")
+pipe(ax1, 11.65, 7.5, 12.95, 7.5, C_BLACK, style="--")
+pipe(ax1, 12.95, 7.5, 12.95, 6.92, C_BLACK, style="--")
+ax1.text(12.3, 7.65, "OVERFLOW →\nDRUM-2", ha="center", fontsize=6, color=C_BLACK)
+
+# Disposal arrow
+pipe(ax1, 12.95, 6.08, 12.95, 5.5, C_BLACK)
+pipe(ax1, 12.95, 5.5, 13.5, 5.5, C_BLACK)
+ax1.annotate("", xy=(13.5, 5.5), xytext=(13.2, 5.5),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=2,
+                             mutation_scale=14), zorder=4)
+ax1.text(13.55, 5.5, "TO APPROVED\nDISPOSAL SITE", ha="left",
+         fontsize=6.5, color=C_BLACK, fontweight="bold", va="center")
+
+# ── PROCESSING AREA ───────────────────────────────────────────────────────────
+ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C",
+                             lw=1.5, zorder=2))
+ax1.text(15.6, 8.8, "PRINT PROCESSING FLOOR", ha="center", fontsize=7.5,
+         fontweight="bold", color="#2E7D32")
+ax1.text(15.6, 8.5, "(140 sq ft containment zone)", ha="center",
+         fontsize=6.5, color="#388E3C")
+
+# Print on floor representation
+ax1.add_patch(plt.Rectangle((14.1, 5.0), 3.0, 3.1, fc="white", ec="#66BB6A",
+                             lw=1.2, ls="--", alpha=0.8, zorder=3))
+ax1.text(15.6, 6.55, "PRINT\n(5893 × 2388 mm)", ha="center", va="center",
+         fontsize=7, color="#388E3C", style="italic", zorder=4)
+
+# Supply inlet
+ax1.annotate("", xy=(15.5, 3.85), xytext=(15.2, 3.85),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=2.5,
+                             mutation_scale=14), zorder=5)
+ax1.text(14.6, 3.65, "SUPPLY\n(Blue)", ha="center", fontsize=6.5, color=C_BLUE)
+
+# Floor drain
+circle_drain = plt.Circle((15.6, 4.15), 0.15, fc="white", ec="#388E3C", lw=1.5,
+                            zorder=4)
+ax1.add_patch(circle_drain)
+ax1.plot([15.45, 15.75], [4.15, 4.15], color="#388E3C", lw=1.2, zorder=5)
+ax1.plot([15.6, 15.6], [4.0, 4.3], color="#388E3C", lw=1.2, zorder=5)
+ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
+         fontsize=6, color="#388E3C")
+
+# 3-way valve at drain
+valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
+ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
+# to brown
+pipe(ax1, 15.1, 3.6, 9.8, 6.3, C_BROWN, lw=1.8)
+# to black
+pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
+pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)
+
+# Spray bar / flood hose symbol
+pipe(ax1, 14.5, 8.0, 16.8, 8.0, C_BLUE, lw=2.5)
+for xd in [14.7, 15.2, 15.7, 16.2, 16.7]:
+    ax1.annotate("", xy=(xd, 7.7), xytext=(xd, 7.95),
+                 arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.5,
+                                 mutation_scale=10), zorder=5)
+ax1.text(15.65, 8.2, "FLOOD/SPRAY BAR (3/4\" HDPE)",
+         ha="center", fontsize=6.5, color=C_BLUE)
+
+# ── Legend ────────────────────────────────────────────────────────────────────
+lx, ly = 0.4, 2.8
+ax1.add_patch(plt.Rectangle((lx - 0.1, ly - 1.25), 4.6, 1.5,
+                             fc="white", ec=C_FRAME, lw=1, zorder=6))
+ax1.text(lx + 2.1, ly + 0.1, "LEGEND", ha="center", fontsize=8,
+         fontweight="bold", color=C_TITLE, zorder=7)
+legend_items = [
+    (C_BLUE,  "-",  "Blue  — Clean water supply (1\" HDPE)"),
+    (C_BROWN, "-",  "Brown — Used/recyclable water (1\" HDPE)"),
+    (C_BLACK, "-",  "Black — Waste water (1\" HDPE)"),
+    (C_BLUE,  "--", "Dashed — Return / fill lines"),
+]
+for i, (col, ls, lbl) in enumerate(legend_items):
+    yy = ly - 0.15 - i * 0.27
+    ax1.plot([lx, lx + 0.5], [yy, yy], color=col, lw=2.2, ls=ls, zorder=7)
+    ax1.text(lx + 0.62, yy, lbl, va="center", fontsize=6.5, color=C_TEXT, zorder=7)
+
+# Symbol legend
+syms = [
+    ("P-xx", "Pump (12V DC diaphragm)"),
+    ("BV-xx", "Ball valve (manual)"),
+    ("3W-DV", "3-way diverter valve"),
+    ("F1/F2/F3", "Filter cartridge"),
+    ("ACC", "Pressure accumulator"),
+]
+ax1.text(lx, ly - 1.55, "SYMBOLS:", fontsize=7, fontweight="bold",
+         color=C_TITLE, zorder=7)
+for i, (sym, desc) in enumerate(syms):
+    ax1.text(lx, ly - 1.8 - i * 0.22,
+             f"  {sym} — {desc}", fontsize=6.2, color=C_TEXT, zorder=7)
+
+plt.tight_layout(pad=0.3)
+fig1.savefig("water-system-sheet1.png", dpi=150, bbox_inches="tight",
+             facecolor=fig1.get_facecolor())
+plt.close(fig1)
+print("Sheet 1 written → water-system-sheet1.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 2 — TANK & FILTER SKID LAYOUT (PLAN VIEW — inside container)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+fig2, axes = plt.subplots(1, 2, figsize=(18, 12),
+                           gridspec_kw={"width_ratios": [2, 1]})
+fig2.patch.set_facecolor("#F5F5F0")
+
+ax2 = axes[0]  # plan view
+ax3 = axes[1]  # parts list / notes
+
+for a in [ax2, ax3]:
+    a.set_facecolor("#F5F5F0")
+    a.axis("off")
+
+# ── Title block ───────────────────────────────────────────────────────────────
+fig2.text(0.5, 0.97, "GIANT PINHOLE CAMERA — WATER SYSTEM EQUIPMENT LAYOUT",
+          ha="center", fontsize=13, fontweight="bold", color=C_TITLE)
+fig2.text(0.5, 0.94, "SHEET 2 OF 2 — PLAN VIEW (INSIDE CONTAINER)  |  "
+          "SCALE: 1:25 (APPROX)  |  ALL DIMS IN MILLIMETRES",
+          ha="center", fontsize=9, color="#444444")
+
+# ── Plan view ─────────────────────────────────────────────────────────────────
+ax2.set_xlim(-0.5, 12.5)
+ax2.set_ylim(-0.5, 10)
+ax2.set_aspect("equal")
+
+# Container outline (20ft = 6096 mm; 8ft = 2438 mm → scaled ×1/25)
+# At 1:25: 6096/25 = 243.8 → use 12 units; 2438/25 = 97.5 → use 5 units
+CW = 12.0   # container width in drawing units
+CH = 5.0    # container depth in drawing units
+ax2.add_patch(plt.Rectangle((0, 0), CW, CH, fc="white", ec=C_FRAME, lw=3,
+                             zorder=1))
+ax2.text(6.0, -0.35, "CONTAINER INTERIOR — PLAN VIEW  (6,096 × 2,438 mm interior)",
+         ha="center", fontsize=8, color=C_FRAME)
+
+# Wall thickness (container wall ~75mm → 0.075 at 1:25, round to 0.1)
+WT = 0.1
+ax2.add_patch(plt.Rectangle((-WT, -WT), CW + 2*WT, CH + 2*WT,
+                             fc="none", ec="#777", lw=1.2, ls="--", zorder=0))
+
+# ── Equipment placement ───────────────────────────────────────────────────────
+# Left wall: IBC totes (1200×1000mm footprint → 48×40 at 1:25 = 1.92×1.6)
+IBC_W = 1.92
+IBC_D = 1.6
+
+def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
+    ax.add_patch(plt.Rectangle((x, y), IBC_W, IBC_D, fc=fc, ec=ec, lw=1.8, zorder=2))
+    # cage lines
+    for xi in [x + IBC_W/3, x + 2*IBC_W/3]:
+        ax.plot([xi, xi], [y, y + IBC_D], color=ec, lw=0.6, alpha=0.5)
+    for yi in [y + IBC_D/3, y + 2*IBC_D/3]:
+        ax.plot([x, x + IBC_W], [yi, yi], color=ec, lw=0.6, alpha=0.5)
+    ax.text(x + IBC_W/2, y + IBC_D/2 + 0.1, label, ha="center", va="center",
+            fontsize=7.5, fontweight="bold", color="#111", zorder=3)
+    ax.text(x + IBC_W/2, y + IBC_D/2 - 0.2, sublabel, ha="center", va="center",
+            fontsize=6.5, color="#555", zorder=3)
+
+# IBC-1 Blue A — rear left corner
+ibc_plan(ax2, 0.15, 3.1, "#BBDEFB", C_BLUE, "IBC-1", "275 gal BLUE-A")
+# IBC-2 Blue B — next to it
+ibc_plan(ax2, 0.15, 1.2, "#BBDEFB", C_BLUE, "IBC-2", "275 gal BLUE-B")
+# IBC-3 Brown — right of blue tanks
+ibc_plan(ax2, 2.3, 2.15, "#D7CCC8", C_BROWN, "IBC-3", "275 gal BROWN")
+
+# Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
+FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9
+ax2.add_patch(plt.Rectangle((FS_X, FS_Y), FS_W, FS_D, fc=C_FILT, ec="#F57F17",
+                             lw=2, zorder=2))
+ax2.text(FS_X + FS_W/2, FS_Y + FS_D/2 + 0.1, "FILTER SKID",
+         ha="center", fontsize=7, fontweight="bold", color="#E65100", zorder=3)
+ax2.text(FS_X + FS_W/2, FS_Y + FS_D/2 - 0.15, "F1 → F2 → F3 (pH)",
+         ha="center", fontsize=6.5, color="#E65100", zorder=3)
+
+# Pump P1 (blue) — wall-mounted, left side
+pump(ax2, 0.55, 0.6, color=C_BLUE, r=0.2)
+ax2.text(0.55, 0.25, "P-01\nBLUE SUPPLY", ha="center", fontsize=6, color=C_BLUE)
+
+# Pump P2 (brown) — near filter skid
+pump(ax2, 2.05, 0.6, color=C_BROWN, r=0.2)
+ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BROWN)
+
+# ACC accumulator
+box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
+ax2.text(1.3, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
+
+# Black drums D1, D2 — right end wall
+DRUM_R = 0.44  # 55gal drum ≈ 580mm dia → 23.2 units @ 1:25
+for xi, lbl in [(10.0, "D-1\n55gal\nWASTE"), (11.0, "D-2\n55gal\nWASTE")]:
+    c = plt.Circle((xi, 0.65), DRUM_R, fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
+    ax2.add_patch(c)
+    ax2.text(xi, 0.65, lbl, ha="center", va="center",
+             fontsize=6.5, fontweight="bold", color=C_BLACK, zorder=3,
+             multialignment="center")
+
+# Spray bar along top wall
+pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)
+ax2.text(8.25, 4.88, "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
+         ha="center", fontsize=7, color=C_BLUE)
+
+# Processing area berm
+ax2.add_patch(plt.Rectangle((4.8, 0.3), 6.9, 4.3, fc=C_PROC, ec="#388E3C",
+                             lw=2, ls="--", zorder=1, alpha=0.5))
+ax2.text(8.25, 4.45, "PROCESSING CONTAINMENT ZONE (~22 sq m)",
+         ha="center", fontsize=7, color="#2E7D32")
+
+# Floor drain
+fd = plt.Circle((8.25, 0.5), 0.18, fc="white", ec="#388E3C", lw=1.8, zorder=4)
+ax2.add_patch(fd)
+ax2.plot([8.07, 8.43], [0.5, 0.5], color="#388E3C", lw=1.2, zorder=5)
+ax2.plot([8.25, 8.25], [0.32, 0.68], color="#388E3C", lw=1.2, zorder=5)
+ax2.text(8.25, 0.18, "FLOOR DRAIN\n3W-DV-02", ha="center",
+         fontsize=6, color="#388E3C")
+
+# Pinhole/lens wall (left end)
+ax2.add_patch(plt.Rectangle((-0.15, 0.0), 0.15, CH, fc="#BDBDBD", ec=C_FRAME,
+                             lw=2, zorder=5))
+ax2.text(-0.08, CH/2, "FRONT\nWALL\n(PINHOLE)", ha="center", va="center",
+         fontsize=6, color="#333", rotation=90, zorder=6)
+
+# Dimensions
+def dim_h(ax, x1, x2, y, label, color=C_DIM, offset=0.25):
+    yy = y - offset
+    ax.annotate("", xy=(x2, yy), xytext=(x1, yy),
+                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
+                                mutation_scale=8))
+    ax.text((x1+x2)/2, yy - 0.12, label, ha="center", fontsize=6.5, color=color)
+
+def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
+    xx = x - offset
+    ax.annotate("", xy=(xx, y2), xytext=(xx, y1),
+                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
+                                mutation_scale=8))
+    ax.text(xx - 0.1, (y1+y2)/2, label, ha="right", va="center",
+            fontsize=6.5, color=color, rotation=90)
+
+dim_h(ax2, 0, CW, -0.1, "6,096 mm (CONTAINER INTERIOR)")
+dim_v(ax2, 0, 0, CH, "2,438 mm")
+dim_h(ax2, 0.15, 0.15 + IBC_W, 5.2, "IBC: 1,200 mm")
+dim_h(ax2, 4.8, 11.7, 5.2, "PROCESSING ZONE: ~4,375 mm")
+
+# North arrow
+ax2.annotate("", xy=(12.2, 9.8), xytext=(12.2, 9.2),
+             arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.5,
+                             mutation_scale=12))
+ax2.text(12.2, 9.0, "FRONT\n(PINHOLE END)", ha="center", fontsize=6,
+         color=C_FRAME)
+
+# ── Parts list ────────────────────────────────────────────────────────────────
+ax3.set_xlim(0, 10)
+ax3.set_ylim(0, 12)
+
+ax3.add_patch(plt.Rectangle((0.1, 0.2), 9.8, 11.6, fc="white", ec=C_FRAME,
+                              lw=1.5, zorder=1))
+ax3.text(5.0, 11.5, "PARTS LIST — WATER SYSTEM", ha="center", fontsize=10,
+         fontweight="bold", color=C_TITLE, zorder=2)
+
+headers = ["ITEM", "TAG", "DESCRIPTION", "QTY"]
+col_x = [0.3, 1.4, 2.5, 9.1]
+header_y = 11.1
+for hdr, cx in zip(headers, col_x):
+    ax3.text(cx, header_y, hdr, fontsize=7.5, fontweight="bold", color=C_TITLE)
+ax3.plot([0.2, 9.9], [header_y - 0.18, header_y - 0.18], color=C_FRAME, lw=1)
+
+parts = [
+    # (item, tag, description, qty)
+    ("1",  "IBC-1/2",  "IBC tote 275 gal food-grade HDPE, 2\" bottom valve", "2"),
+    ("2",  "IBC-3",    "IBC tote 275 gal HDPE, used/rinsed (brown system)", "1"),
+    ("3",  "D-1/2",    "55 gal closed-head HDPE drum, UN-rated (black system)", "2"),
+    ("4",  "P-01",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),
+    ("5",  "P-02",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),
+    ("6",  "ACC-01",   "1-gal pressure accumulator tank, 125 PSI rated", "1"),
+    ("7",  "F1",       "Big Blue 4.5\"×10\" housing + 50-micron poly sediment cart.", "1"),
+    ("8",  "F2",       "Big Blue 4.5\"×10\" housing + 5-micron poly sediment cart.", "1"),
+    ("9",  "F3",       "Big Blue 4.5\"×10\" housing + GAC carbon block cartridge", "1"),
+    ("10", "BV-01–06", "Ball valve 1\" FNPT, HDPE-compatible (manual)", "8"),
+    ("11", "3W-DV-01", "3-way diverter valve 1\" FNPT (filter outlet)", "1"),
+    ("12", "3W-DV-02", "3-way diverter valve 1\" FNPT (floor drain)", "1"),
+    ("13", "—",        "1\" HDPE pipe (Sch 40 or SDR-11), total run ~25 m", "1 lot"),
+    ("14", "—",        "3/4\" HDPE pipe, spray bar, total run ~8 m", "1 lot"),
+    ("15", "—",        "1\" FNPT elbows, tees, unions — HDPE", "1 lot"),
+    ("16", "—",        "2\" camlock fittings for IBC connections (M+F pairs)", "6"),
+    ("17", "—",        "pH meter / test strips (0–14 range)", "1"),
+    ("18", "—",        "Citric acid 5 lb (pH adjustment, food grade)", "2"),
+    ("19", "—",        "12V fuse block + wiring harness (10A per pump)", "1"),
+    ("20", "—",        "Containment liner: 20' × 10' 6-mil black LDPE sheet", "4"),
+]
+
+row_y = header_y - 0.38
+for item in parts:
+    for txt, cx in zip(item, col_x):
+        ax3.text(cx, row_y, txt, fontsize=6.8, color=C_TEXT, va="center")
+    ax3.plot([0.2, 9.9], [row_y - 0.17, row_y - 0.17],
+             color="#CCCCCC", lw=0.5)
+    row_y -= 0.34
+
+ax3.text(0.3, row_y - 0.1,
+         "NOTES:\n"
+         "1. All pipes in contact with chemistry shall be HDPE or CPVC (not PVC).\n"
+         "2. Filter cartridges rated for use with low-concentration iron compounds.\n"
+         "3. Pumps powered from 12VDC house battery / solar system.\n"
+         "4. Brown→Blue recycling permitted max 3 cycles; test pH before returning.\n"
+         "5. Black drums: do not pour on ground; transport to licensed disposal.\n"
+         "6. All IBC totes and drums to be labelled per OSHA HazCom GHS standard.",
+         fontsize=6.5, color="#333", va="top", linespacing=1.6)
+
+plt.tight_layout(pad=0.5)
+fig2.savefig("water-system-sheet2.png", dpi=150, bbox_inches="tight",
+             facecolor=fig2.get_facecolor())
+plt.close(fig2)
+print("Sheet 2 written → water-system-sheet2.png")
+print("Done.")

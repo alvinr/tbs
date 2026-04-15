@@ -51,6 +51,8 @@ MD_FILES=(
     "lens-vs-pinhole-exposure.md"
     "photosensitive-plane-options.md"
     "chemistry-shopping-list.md"
+    "container-transport-options.md"
+    "water-system-report.md"
 )
 
 CHANGED=0
@@ -80,6 +82,8 @@ IMG_FILES=(
     "portrait-camera-schematic.png"
     "portrait-optimal-3m.png"
     "portrait-scale-comparison.png"
+    "water-system-sheet1.png"
+    "water-system-sheet2.png"
 )
 
 for f in "${IMG_FILES[@]}"; do

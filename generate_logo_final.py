@@ -83,30 +83,40 @@ ax.add_patch(plt.Polygon([(12,8),(30,8),(21,24)],
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONTAINER CROSS-SECTION — the camera
-# Long axis horizontal: pinhole in left end wall, image on right end wall
+# Viewed looking ALONG the 20ft length from one end.
+# Left/right walls = the 20ft × 8.5ft LONG SIDES (pinhole + image plane).
+# Top/bottom bands = floor/ceiling panels. Width C_L→C_R = focal length (~8ft).
 # ═══════════════════════════════════════════════════════════════════════════════
-C_L  = 30      # interior left (pinhole wall inner face)
-C_R  = 72      # interior right (image plane wall inner face)
-C_B  = 43      # interior bottom
-C_T  = 62      # interior top
+C_L  = 36      # interior left  (pinhole wall = 20ft long side, seen edge-on)
+C_R  = 62      # interior right (image plane  = 20ft long side, seen edge-on)
+C_B  = 36      # interior bottom (floor)
+C_T  = 64      # interior top   (ceiling)
+# Interior: 26 units wide ≈ 2,362 mm focal length
+#           28 units tall ≈ 2,388 mm container internal height
 WT   = 2.5     # wall thickness
-CY   = (C_B + C_T) / 2   # centre Y = 52.5
-PH_X = C_L                # pinhole x (left inner wall face)
-IP_X = C_R                # image plane x (right inner wall face)
+CY   = (C_B + C_T) / 2   # centre Y = 50
+CX   = (C_L + C_R) / 2   # centre X = 49
+PH_X = C_L                # pinhole x (left long-side wall inner face)
+IP_X = C_R                # image plane x (right long-side wall inner face)
 
 # ── Exterior silhouette (container hull) ──────────────────────────────────────
-EX_L = C_L - WT*2
-EX_R = C_R + WT*2
-EX_B = C_B - WT*1.5
-EX_T = C_T + WT*1.5
+EX_L = C_L - WT*2    # = 31
+EX_R = C_R + WT*2    # = 67
+EX_B = C_B - WT*1.5  # ≈ 32.25
+EX_T = C_T + WT*1.5  # ≈ 67.75
 
 ax.add_patch(Rectangle((EX_L, EX_B), EX_R-EX_L, EX_T-EX_B,
                         fc=PRU_MID, ec=PAPER, lw=2.8, zorder=4))
 
-# Corrugation ribs on top and bottom hull surfaces
+# Corrugation ribs on top/bottom hull bands (floor/ceiling, run into page)
 for rx in np.arange(EX_L+2, EX_R, 2.8):
     ax.plot([rx,rx],[C_T, EX_T], color=PRU_LIGHT, lw=0.9, alpha=0.65, zorder=5)
     ax.plot([rx,rx],[C_B, EX_B], color=PRU_LIGHT, lw=0.9, alpha=0.65, zorder=5)
+
+# Corrugation detail on left/right exterior wall faces (the 20ft long-side panels)
+for ry in np.arange(EX_B+3, EX_T, 3.5):
+    ax.plot([EX_L, C_L],[ry, ry], color=PRU_LIGHT, lw=0.8, alpha=0.50, zorder=5)
+    ax.plot([C_R, EX_R],[ry, ry], color=PRU_LIGHT, lw=0.8, alpha=0.50, zorder=5)
 
 # Corner castings (ISO container)
 for cx_, cy_, cw, ch in [
@@ -126,7 +136,7 @@ ax.text((EX_L+EX_R)/2, EX_T-0.7, "GPC-001  ·  20FT  ISO  CAMERA",
 ax.add_patch(Rectangle((C_L, C_B), C_R-C_L, C_T-C_B,
                         fc=PRU_INK, ec="none", zorder=5))
 
-# ── Left end wall (pinhole wall) ──────────────────────────────────────────────
+# ── Left wall (pinhole wall = 20ft long side, seen edge-on) ──────────────────
 ax.add_patch(Rectangle((EX_L, C_B), WT*2, C_T-C_B,
                         fc=PRU_MID, ec="none", zorder=5))
 ax.add_patch(Rectangle((EX_L, C_B), WT*2, C_T-C_B,
@@ -152,7 +162,7 @@ ax.text(PH_X, C_B-1.5, "Ø 2.17 mm",
         color=CYAN_LITE, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace", zorder=7)
 
-# ── Right end wall (image plane) ──────────────────────────────────────────────
+# ── Right wall (image plane = 20ft long side, seen edge-on) ──────────────────
 # Image plane wall — lighter to suggest exposed/printing-out surface
 ax.add_patch(Rectangle((C_R, C_B), WT*2, C_T-C_B,
                         fc=CYAN_LITE, ec=PAPER, lw=1.8, zorder=5, alpha=0.75))
@@ -208,7 +218,7 @@ haring_inverted(ax, IP_X+WT*1.0, CY, sc=0.72)
 
 # ── Light rays inside container: subject→pinhole→image plane ─────────────────
 SUBJ_X = 13.0
-SUBJ_H = 7.5   # subject half-height for ray origin points
+SUBJ_H = 9.0   # subject half-height for ray origin points (spans ~2/3 container height)
 
 # Three source points on subject, three inverted destination points on image plane
 ray_pairs = [
@@ -235,10 +245,10 @@ for ang in np.linspace(-45, 45, 7):
             color=PAPER_W, lw=0.7, alpha=0.25, zorder=6,
             solid_capstyle="round")
 
-# Camera tripod
-for tx,ty in [(44,32),(51,31),(58,32)]:
-    ax.plot([51,tx],[EX_B,ty], color=PAPER, lw=LW_D*1.4, solid_capstyle="round", zorder=5)
-ax.plot([41,61],[31.5,31.5], color=PAPER, lw=LW_D, zorder=5)
+# Camera tripod — centred under container at CX=49
+for tx,ty in [(43,22),(49,21),(55,22)]:
+    ax.plot([CX,tx],[EX_B,ty], color=PAPER, lw=LW_D*1.4, solid_capstyle="round", zorder=5)
+ax.plot([40,58],[21.5,21.5], color=PAPER, lw=LW_D, zorder=5)
 
 # Focal length arrow inside container
 fl_y = C_B+1.5
@@ -249,12 +259,12 @@ ax.text((C_L+C_R)/2, fl_y+1.2, "FOCAL LENGTH  2,362 mm",
         color=CYAN_MID, fontsize=5.0, ha="center", va="bottom",
         fontfamily="monospace", zorder=7)
 
-# ── GPC BADGE — lower centre, outside container ───────────────────────────────
-ax.add_patch(Circle((51, 23), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
-ax.add_patch(Circle((51, 23), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
-ax.text(51, 23.5, "GPC", color=PAPER, fontsize=8.5, ha="center", va="center",
+# ── GPC BADGE — lower centre, below tripod ────────────────────────────────────
+ax.add_patch(Circle((CX, 13), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
+ax.add_patch(Circle((CX, 13), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
+ax.text(CX, 13.5, "GPC", color=PAPER, fontsize=8.5, ha="center", va="center",
         fontweight="bold", fontfamily="monospace", zorder=10)
-ax.text(51, 20.8, "No.1", color=CYAN_LITE, fontsize=4.8, ha="center", va="center",
+ax.text(CX, 10.8, "No.1", color=CYAN_LITE, fontsize=4.8, ha="center", va="center",
         fontfamily="monospace", zorder=10)
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -295,7 +305,7 @@ def haring_upright(ax, cx, cy, sc, col=PAPER):
                 color=col, lw=1.2, alpha=0.8, solid_capstyle="round", zorder=7)
 
 haring_upright(ax, SUBJ_X, CY, sc=1.15, col=PAPER)
-ax.text(SUBJ_X, CY-15, "SUBJECT\n3,440 mm",
+ax.text(SUBJ_X, CY-22, "SUBJECT\n3,440 mm",
         color=CYAN_LITE, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace")
 

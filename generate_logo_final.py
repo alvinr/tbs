@@ -169,32 +169,39 @@ ax.text(IP_X+WT*1.0, C_B-1.5, "IMAGE PLANE",
 # ── INVERTED FIGURE on image plane ────────────────────────────────────────────
 # Drawn upside-down in PRU_INK against the lighter wall — clearly visible
 def haring_inverted(ax, cx, cy, sc):
-    """Clearly inverted upside-down Haring figure on image plane."""
+    """True upside-down mirror of haring_upright: every dy → -dy, every dx → -dx."""
     lw = 2.8*sc
     col = PRU_INK
-    # Head at BOTTOM (inverted)
+    # Head at BOTTOM  (was cy+6 → cy-6)
     ax.add_patch(Circle((cx, cy-6*sc), 2.5*sc,
                          fc=col, ec=PAPER, lw=lw*0.7, zorder=11))
-    # Body
-    ax.plot([cx,cx],[cy-3.2*sc, cy+3.5*sc],
+    # Body  (was cy+3 → cy-3.5  →  now cy-3 → cy+3.5)
+    ax.plot([cx, cx], [cy-3.0*sc, cy+3.5*sc],
             color=PAPER, lw=lw*2.0, solid_capstyle="round", zorder=10)
-    ax.plot([cx,cx],[cy-3.2*sc, cy+3.5*sc],
+    ax.plot([cx, cx], [cy-3.0*sc, cy+3.5*sc],
             color=col, lw=lw*1.3, solid_capstyle="round", zorder=11)
-    # Arms raised (at top = FEET side since inverted — so arms go DOWN visually)
-    ax.plot([cx-3.8*sc, cx, cx+3.8*sc],
-            [cy+2.0*sc, cy+4.0*sc, cy+2.0*sc],
+    # Arms — Λ shape pointing DOWN  (upright has V pointing up at cy+1.5→cy+3.5)
+    ax.plot([cx-4.5*sc, cx, cx+4.5*sc],
+            [cy-1.5*sc, cy-3.5*sc, cy-1.5*sc],
             color=PAPER, lw=lw*2.0, solid_capstyle="round",
             solid_joinstyle="round", zorder=10)
-    ax.plot([cx-3.8*sc, cx, cx+3.8*sc],
-            [cy+2.0*sc, cy+4.0*sc, cy+2.0*sc],
+    ax.plot([cx-4.5*sc, cx, cx+4.5*sc],
+            [cy-1.5*sc, cy-3.5*sc, cy-1.5*sc],
             color=col, lw=lw*1.3, solid_capstyle="round",
             solid_joinstyle="round", zorder=11)
-    # Legs (at top — pointing upward since inverted)
-    for lx in [-1.8*sc, 1.8*sc]:
-        ax.plot([cx+lx, cx+lx*1.6],[cy+3.5*sc, cy+8.0*sc],
+    # Legs pointing UP  (was pointing down to cy-8.5 → now up to cy+8.5)
+    for lx in [-2*sc, 2*sc]:
+        ax.plot([cx+lx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
                 color=PAPER, lw=lw*2.0, solid_capstyle="round", zorder=10)
-        ax.plot([cx+lx, cx+lx*1.6],[cy+3.5*sc, cy+8.0*sc],
+        ax.plot([cx+lx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
                 color=col, lw=lw*1.3, solid_capstyle="round", zorder=11)
+    # Radiant marks below head (was above: 30–155° → now below: 210–335°)
+    for ang in np.linspace(210, 335, 5):
+        rad_ = np.radians(ang)
+        r0, r1 = 3.0*sc, 5.0*sc
+        ax.plot([cx+r0*np.cos(rad_), cx+r1*np.cos(rad_)],
+                [cy-6*sc+r0*np.sin(rad_), cy-6*sc+r1*np.sin(rad_)],
+                color=PAPER, lw=1.0, alpha=0.6, solid_capstyle="round", zorder=11)
 
 haring_inverted(ax, IP_X+WT*1.0, CY, sc=0.72)
 

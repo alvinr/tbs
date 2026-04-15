@@ -1,4 +1,4 @@
-# Option B — Depth of Field, Magnification & Minimum Focal Distance
+# Depth of Field, Magnification & Minimum Focal Distance
 ### 20-foot Standard Container, Side-to-Side Orientation
 
 **Preceding documents:** pinhole-optics-report.md, pinhole-camera-construction.md  

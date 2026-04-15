@@ -4,7 +4,12 @@
       "WebSearch",
       "Bash(/usr/local/opt/python@3.9/bin/python3.9:*)",
       "Bash(python3:*)",
-      "Bash(mkdocs --version)"
+      "Bash(mkdocs --version)",
+      "Bash(/usr/bin/python3:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(bash publish.sh)"
     ]
   }
 }

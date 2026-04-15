@@ -1,4 +1,4 @@
-# Lens Options for the Giant Pinhole Camera
+# Lens Options
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = 2,362 mm  

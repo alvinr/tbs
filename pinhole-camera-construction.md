@@ -1,4 +1,4 @@
-# Giant Pinhole Camera — Container Selection & Construction Proposals
+# Container Selection & Construction Proposals
 
 **Document Status:** Working Draft v1.0 — April 2026  
 **Preceding documents:** pinhole-optics-report.md  

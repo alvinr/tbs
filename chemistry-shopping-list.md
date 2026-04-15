@@ -1,4 +1,4 @@
-# Chemistry Shopping Lists — 50 Prints
+# Chemistry Shopping Lists
 ## Giant Pinhole Camera: Raw Material Procurement by Process
 
 **Image plane per print:** 5,893 × 2,388 mm (140 sq ft)  

@@ -1,4 +1,4 @@
-# Pinhole Camera Optics: A Complete Technical Reference
+# Optics: Technical Reference
 ### From 8×10 Inches to 40×7 Feet
 
 **Prepared for:** Giant Pinhole Camera Project  

@@ -1,4 +1,4 @@
-# Photosensitive Plane Options
+# Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
 **Image plane dimensions:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″)  

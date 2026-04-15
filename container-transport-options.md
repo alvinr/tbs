@@ -1,4 +1,4 @@
-# Shipping Container Transportation Options
+# Transportation Options
 ## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, Licence Requirements, and Pricing
 
 *For the Giant Pinhole Camera project. Containers in this context are used as the camera body and transported empty or with lightweight interior fittings.*

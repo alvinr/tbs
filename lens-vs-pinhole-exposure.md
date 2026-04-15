@@ -1,4 +1,4 @@
-# Why a Lens Changes Exposure Time So Dramatically
+# Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
 **Camera:** Option B, f = 2,362 mm, pinhole Ø 2.17 mm (f/1088)  

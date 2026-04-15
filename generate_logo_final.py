@@ -385,12 +385,6 @@ def scientist(ax, cx, cy, sc, reach_x, reach_y, clipboard=False):
                 [cy+9*sc+r0*np.sin(rad_),cy+9*sc+r1*np.sin(rad_)],
                 color=PAPER,lw=1.2,alpha=0.72,solid_capstyle="round",zorder=5)
 
-# Operator A — left of container, reaching to pinhole
-scientist(ax, 21, CY, sc=0.88, reach_x=PH_X-0.5, reach_y=CY, clipboard=False)
-ax.text(21, CY-32, "OPERATOR  A",
-        color=CYAN_LITE, fontsize=5.2, ha="center",
-        fontfamily="monospace", fontweight="bold")
-
 # Operator B — right of container, pointing at image plane, clipboard raised
 scientist(ax, 82, CY, sc=0.88, reach_x=IP_X+WT*2+0.5, reach_y=CY, clipboard=True)
 ax.text(82, CY-32, "OPERATOR  B",

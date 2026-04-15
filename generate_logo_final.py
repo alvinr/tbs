@@ -190,10 +190,11 @@ def haring_inverted(ax, cx, cy, sc):
             color=col, lw=lw*1.3, solid_capstyle="round",
             solid_joinstyle="round", zorder=11)
     # Legs pointing UP  (was pointing down to cy-8.5 → now up to cy+8.5)
+    # Both legs start at body centre cx — same as upright figure hip point
     for lx in [-2*sc, 2*sc]:
-        ax.plot([cx+lx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
+        ax.plot([cx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
                 color=PAPER, lw=lw*2.0, solid_capstyle="round", zorder=10)
-        ax.plot([cx+lx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
+        ax.plot([cx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
                 color=col, lw=lw*1.3, solid_capstyle="round", zorder=11)
     # Radiant marks below head (was above: 30–155° → now below: 210–335°)
     for ang in np.linspace(210, 335, 5):

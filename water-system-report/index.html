@@ -1,0 +1,1750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/water-system-report/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Cyanotype Processing Water System - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cyanotype-processing-water-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Cyanotype Processing Water System
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Option B — Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole — Exposure Physics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chemistry Shopping List
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Option B — Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole — Exposure Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cyanotype-processing-water-system">Cyanotype Processing Water System<a class="headerlink" href="#cyanotype-processing-water-system" title="Permanent link">&para;</a></h1>
+<h2 id="remote-operation-design-for-the-giant-pinhole-camera">Remote-Operation Design for the Giant Pinhole Camera<a class="headerlink" href="#remote-operation-design-for-the-giant-pinhole-camera" title="Permanent link">&para;</a></h2>
+<p><em>For a camera deployed off-grid without access to running water or mains drainage.</em>
+<em>Image plane: 5,893 × 2,388 mm (~140 sq ft). Container: 20 ft standard ISO shipping container.</em></p>
+<hr />
+<h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
+<p>The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system that:</p>
+<ul>
+<li>Stores sufficient clean water for 8–10 full-size prints between resupply runs</li>
+<li>Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%</li>
+<li>Contains all waste water in closed, transportable drums for proper off-site disposal</li>
+<li>Runs entirely on 12V DC, compatible with a solar/battery off-grid power system</li>
+</ul>
+<p><strong>Three circuits:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Colour code</th>
+<th>Purpose</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Blue</strong></td>
+<td>Blue — clean</td>
+<td>Fresh water supply for processing</td>
+<td>2× 275 gal IBC totes (550 gal total)</td>
+</tr>
+<tr>
+<td><strong>Brown</strong></td>
+<td>Brown — used</td>
+<td>Collected wash water; filtered and recycled back to Blue</td>
+<td>1× 275 gal IBC tote</td>
+</tr>
+<tr>
+<td><strong>Black</strong></td>
+<td>Black — waste</td>
+<td>Heavily contaminated water; sealed drums for off-site disposal</td>
+<td>2× 55 gal HDPE drums (110 gal)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-cyanotype-wash-water-chemistry-and-constraints">1. Cyanotype Wash Water — Chemistry and Constraints<a class="headerlink" href="#1-cyanotype-wash-water-chemistry-and-constraints" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-in-the-wash-water">What is in the wash water?<a class="headerlink" href="#what-is-in-the-wash-water" title="Permanent link">&para;</a></h3>
+<p>When a cyanotype print is washed, the water picks up:</p>
+<table>
+<thead>
+<tr>
+<th>Compound</th>
+<th>Source</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric ammonium citrate (FAC)</td>
+<td>Unexposed sensitiser</td>
+<td>Water-soluble, pale yellow; low toxicity</td>
+</tr>
+<tr>
+<td>Potassium ferricyanide</td>
+<td>Sensitiser component</td>
+<td>Water-soluble, yellow-orange; low acute toxicity</td>
+</tr>
+<tr>
+<td>Prussian blue particles</td>
+<td>Exposed image pigment wash-off</td>
+<td>Fine blue solid particles, ~1–10 micron</td>
+</tr>
+<tr>
+<td>Iron(III) compounds</td>
+<td>Oxidation products</td>
+<td>Colour the water blue-grey</td>
+</tr>
+</tbody>
+</table>
+<p><strong>pH:</strong> Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH &gt;8) must be avoided — they accelerate slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.</p>
+<p><strong>Environmental note:</strong> Cyanotype wash water is low-toxicity and is generally accepted to the municipal sewer in dilute volumes (Photrio forum consensus; corroborated by Safety Data Sheets for FAC and potassium ferricyanide). <strong>However, for remote field use with no sewer access, it must be contained and transported for disposal.</strong> Do not pour on soil or into waterways.</p>
+<p><strong>Source:</strong> <a href="https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/">Photrio — Cyanotype wash water composition</a> · <a href="https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water">Ask MetaFilter — Disposing of cyanotyping water</a></p>
+<h3 id="what-filtration-can-and-cannot-do">What filtration can and cannot do<a class="headerlink" href="#what-filtration-can-and-cannot-do" title="Permanent link">&para;</a></h3>
+<p>A sediment + activated carbon filter train will:
+- Remove Prussian blue particle load (sediment stages)
+- Reduce some dissolved organics and iron-complex colour (carbon stage)
+- Restore water to a usable secondary-wash quality after 1–3 passes</p>
+<p>It will <strong>not</strong>:
+- Completely restore water to fresh-water quality
+- Remove dissolved iron salts fully without iron-specific media
+- Make the water safe for discharge to ground</p>
+<p><strong>Rule of thumb:</strong> Recycled Brown water may be reused for the <strong>first wash</strong> of each print (roughest wash). The <strong>final wash</strong> must always use Blue (clean) water to avoid re-depositing iron compounds onto the print. After 3 recycle passes, water goes to Black.</p>
+<hr />
+<h2 id="2-water-volume-calculations">2. Water Volume Calculations<a class="headerlink" href="#2-water-volume-calculations" title="Permanent link">&para;</a></h2>
+<h3 id="per-print-water-requirement">Per-print water requirement<a class="headerlink" href="#per-print-water-requirement" title="Permanent link">&para;</a></h3>
+<p>Processing a 140 sq ft print on the container floor, flooded to 6 mm (¼ inch) depth:</p>
+<div class="highlight"><pre><span></span><code>Volume per flood = 140 sq ft × (6 mm / 304.8) = 140 × 0.0197 ft = 2.76 cu ft
+                 = 2.76 × 7.48 = 20.6 gallons ≈ 21 gallons per wash cycle
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Wash cycle</th>
+<th>Water source</th>
+<th>Volume</th>
+<th>Drain to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wash 1 — 5 min</td>
+<td>Blue (clean)</td>
+<td>21 gal</td>
+<td>Brown tank</td>
+</tr>
+<tr>
+<td>Wash 2 — 5 min</td>
+<td>Brown (recycled)</td>
+<td>21 gal</td>
+<td>Brown tank</td>
+</tr>
+<tr>
+<td>Wash 3 — 5 min</td>
+<td>Blue (clean)</td>
+<td>21 gal</td>
+<td>Brown tank → Black if &gt;3 recycles</td>
+</tr>
+<tr>
+<td><strong>Total per print</strong></td>
+<td></td>
+<td><strong>~42 gal net Blue consumed</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="storage-capacity-vs-print-count">Storage capacity vs. print count<a class="headerlink" href="#storage-capacity-vs-print-count" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Blue consumed per print</th>
+<th>Prints from 550 gal Blue</th>
+<th>Brown recycled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No recycling</td>
+<td>63 gal (3 × 21)</td>
+<td>~8 prints</td>
+<td>0</td>
+</tr>
+<tr>
+<td>With recycling (wash 2 from Brown)</td>
+<td>42 gal (2 × 21)</td>
+<td><strong>~13 prints</strong></td>
+<td>~168 gal reused</td>
+</tr>
+<tr>
+<td>Brown recycle limit (3 passes)</td>
+<td>—</td>
+<td>—</td>
+<td>110 gal max before going to Black</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Design target: 10 prints per resupply run</strong> — comfortably achievable with the 550-gallon Blue supply.</p>
+<hr />
+<h2 id="3-system-architecture">3. System Architecture<a class="headerlink" href="#3-system-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="31-blue-system-clean-water-supply">3.1 Blue System — Clean Water Supply<a class="headerlink" href="#31-blue-system-clean-water-supply" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>IBC-1 (275 gal) ──┐
+                   ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
+IBC-2 (275 gal) ──┘                                                      │
+                                                                          ↓
+                                                              FLOOD/SPRAY BAR
+                                                              (Processing floor)
+</code></pre></div>
+<ul>
+<li>Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves</li>
+<li>P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming</li>
+<li>ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
+<li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
+<li>Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution</li>
+<li>Fill inlet (top of IBC-1): 2" camlock connection for resupply from water bowser or tanker</li>
+</ul>
+<h3 id="32-brown-system-used-water-recycling">3.2 Brown System — Used Water Recycling<a class="headerlink" href="#32-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Processing floor drain
+        │
+   3W-DV-02 ──────────────────────────────────────────→ (to Black drums if heavily loaded)
+        │
+        ↓
+   IBC-3 (275 gal buffer)
+        │
+       P-02
+        │
+       F-1 (50-micron sediment)
+        │
+       F-2 (5-micron sediment)
+        │
+       F-3 (GAC carbon block)
+        │
+     pH TEST POINT (manual meter check before returning)
+        │
+   3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-2 (Blue)
+        │
+        └──→ pH drift / discoloured: FORWARD TO Black drums
+</code></pre></div>
+<p><strong>Filter train sizing:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Housing</th>
+<th>Cartridge</th>
+<th>Removes</th>
+<th>Replace interval</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F-1</td>
+<td>Big Blue 4.5"×10"</td>
+<td>50-micron poly depth</td>
+<td>Gross sediment, Prussian blue particles</td>
+<td>Every 20 prints</td>
+</tr>
+<tr>
+<td>F-2</td>
+<td>Big Blue 4.5"×10"</td>
+<td>5-micron poly sediment</td>
+<td>Fine particles, residual blue</td>
+<td>Every 10 prints</td>
+</tr>
+<tr>
+<td>F-3</td>
+<td>Big Blue 4.5"×10"</td>
+<td>GAC carbon block</td>
+<td>Organics, colour, taste</td>
+<td>Every 15 prints</td>
+</tr>
+</tbody>
+</table>
+<p><strong>pH management:</strong> If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
+<h3 id="33-black-system-waste-containment">3.3 Black System — Waste Containment<a class="headerlink" href="#33-black-system-waste-containment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output)
+FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
+        │
+   DRUM-1 (55 gal) → OVERFLOW → DRUM-2 (55 gal)
+        │
+   Sealed, labelled per GHS/OSHA
+        │
+   TRANSPORT to licensed liquid waste disposal facility
+</code></pre></div>
+<ul>
+<li>Drums are DOT-compliant UN-rated 55-gallon HDPE closed-head drums</li>
+<li>Bungs sealed with drum wrench before transport</li>
+<li>Label each drum: contents, date, location, UN numbers for ferricyanide/iron compounds</li>
+<li><strong>Do not leave drums open</strong> — evaporation and UV exposure can drive ferricyanide chemistry</li>
+</ul>
+<hr />
+<h2 id="4-processing-procedure-step-by-step">4. Processing Procedure — Step by Step<a class="headerlink" href="#4-processing-procedure-step-by-step" title="Permanent link">&para;</a></h2>
+<h3 id="before-each-session">Before each session<a class="headerlink" href="#before-each-session" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Check Blue IBC levels — minimum 100 gal required per print session</li>
+<li>Check Black drums — must have at least 55 gal headroom before starting</li>
+<li>Run Brown recycle pump for 2 minutes to verify filter flow and check pH</li>
+<li>Lay fresh 6-mil black LDPE containment sheet on processing floor, overlap 300mm up walls</li>
+<li>Verify all valves in correct position (see valve matrix below)</li>
+</ol>
+<h3 id="print-processing">Print processing<a class="headerlink" href="#print-processing" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Expose print in camera (no water involved)</li>
+<li>Transfer print to processing area in subdued light — lay face-up on containment sheet</li>
+<li>Open BV-02 (Blue supply) → flood print with 21 gal via spray bar — 5 minutes</li>
+<li>Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain</li>
+<li>If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown</li>
+<li>Wash 3: open BV-02 → 21 gal clean Blue water → 5 minutes → drain</li>
+<li>Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse</li>
+<li>Hang print to dry — use internal or external line</li>
+<li>Drain residual water from floor to Brown or Black as appropriate</li>
+</ol>
+<h3 id="valve-matrix">Valve matrix<a class="headerlink" href="#valve-matrix" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Valve</th>
+<th>Default</th>
+<th>Wash 1</th>
+<th>Drain 1→Brown</th>
+<th>Wash 2 (recycled)</th>
+<th>Drain 2→Brown</th>
+<th>Wash 3</th>
+<th>Drain 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BV-01 (Blue manifold)</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>BV-02 (Blue to floor)</td>
+<td>Closed</td>
+<td><strong>Open</strong></td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td><strong>Open</strong></td>
+<td>Closed</td>
+</tr>
+<tr>
+<td>3W-DV-02 (floor drain)</td>
+<td>Brown</td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+</tr>
+<tr>
+<td>P-02 (Brown pump)</td>
+<td>Off</td>
+<td>Off</td>
+<td>Off</td>
+<td><strong>On</strong></td>
+<td>Off</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>3W-DV-01 (filter out)</td>
+<td>Blue return</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
+<h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Pipe</th>
+<th>Size</th>
+<th>Pressure rating</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blue supply main</td>
+<td>Sch 40 / SDR-11</td>
+<td>1" nominal</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Brown recycle</td>
+<td>Sch 40 / SDR-11</td>
+<td>1" nominal</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Spray bar</td>
+<td>SDR-11</td>
+<td>3/4" nominal</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Filter inlet/outlet</td>
+<td>Sch 40</td>
+<td>1" nominal</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Black waste gravity drain</td>
+<td>Sch 40</td>
+<td>1" nominal</td>
+<td>50 PSI min</td>
+<td>HDPE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why HDPE, not PVC?</strong> Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanised fittings — iron compounds in the wash water will react.</p>
+<h3 id="fittings-and-connections">Fittings and connections<a class="headerlink" href="#fittings-and-connections" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Connection type</th>
+<th>Use</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2" camlock (type A+B)</td>
+<td>IBC tote inlet/outlet</td>
+<td>Aluminium or polypropylene</td>
+</tr>
+<tr>
+<td>1" NPT threaded</td>
+<td>Pump inlet/outlet, valve connections</td>
+<td>HDPE or brass</td>
+</tr>
+<tr>
+<td>2" NPT bung</td>
+<td>Drum fill/drain</td>
+<td>HDPE bung plug</td>
+</tr>
+<tr>
+<td>Push-fit / compression</td>
+<td>Secondary connections</td>
+<td>John Guest / Speedfit style</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-electrical-12v-dc-power">6. Electrical — 12V DC Power<a class="headerlink" href="#6-electrical-12v-dc-power" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Current draw</th>
+<th>Hours/print</th>
+<th>Wh/print</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-01 Blue pump (Shurflo 2088)</td>
+<td>7.5 A @ 12V</td>
+<td>0.25 hr (15 min run)</td>
+<td>22.5 Wh</td>
+</tr>
+<tr>
+<td>P-02 Brown pump (Shurflo 2088)</td>
+<td>7.5 A @ 12V</td>
+<td>0.17 hr (10 min run)</td>
+<td>15.2 Wh</td>
+</tr>
+<tr>
+<td>pH meter</td>
+<td>&lt;0.1 A</td>
+<td>—</td>
+<td>&lt;1 Wh</td>
+</tr>
+<tr>
+<td><strong>Total per print</strong></td>
+<td></td>
+<td></td>
+<td><strong>~38 Wh</strong></td>
+</tr>
+</tbody>
+</table>
+<p>A 100 Ah 12V lithium battery (1,200 Wh usable) provides <strong>&gt;30 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
+<hr />
+<h2 id="7-equipment-layout">7. Equipment Layout<a class="headerlink" href="#7-equipment-layout" title="Permanent link">&para;</a></h2>
+<p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>).</p>
+<p>The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft length, leaving 16 ft for the camera and processing floor.</p>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Contents</th>
+<th>Footprint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left wall (rear)</td>
+<td>IBC-1, IBC-2 (Blue), IBC-3 (Brown)</td>
+<td>1,200 × 3,600 mm</td>
+</tr>
+<tr>
+<td>Floor-left</td>
+<td>P-01, P-02, ACC-01, filter skid</td>
+<td>600 × 900 mm</td>
+</tr>
+<tr>
+<td>Right wall (rear)</td>
+<td>DRUM-1, DRUM-2 (Black)</td>
+<td>1,200 × 600 mm</td>
+</tr>
+<tr>
+<td>Floor centre</td>
+<td>Processing containment zone</td>
+<td>4,375 × 2,200 mm</td>
+</tr>
+<tr>
+<td>Top wall</td>
+<td>Spray bar</td>
+<td>6,000 mm run</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-parts-list-and-shopping-list">8. Parts List and Shopping List<a class="headerlink" href="#8-parts-list-and-shopping-list" title="Permanent link">&para;</a></h2>
+<h3 id="81-water-storage">8.1 Water storage<a class="headerlink" href="#81-water-storage" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IBC tote 275 gal, food-grade, used/rinsed</td>
+<td>HDPE cage tote, 2" ball valve</td>
+<td>3</td>
+<td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger — CA listings</a></td>
+<td><span class="arithmatex">\(80–\)</span>150</td>
+<td><strong><span class="arithmatex">\(240–\)</span>450</strong></td>
+</tr>
+<tr>
+<td>55 gal HDPE drum, closed-head, UN-rated</td>
+<td>Blue, 2" NPS + 2" buttress bungs</td>
+<td>2</td>
+<td><a href="https://bascousa.com/55-gallon-closed-head-plastic-drum-blue.html">BASCO USA</a> · <a href="https://www.thecarycompany.com/55-gallon-un-blue-hdpe-tight-head-drum-2-npt-2-buttress-fittings-un-rated">The Cary Company</a></td>
+<td><span class="arithmatex">\(55–\)</span>75</td>
+<td><strong><span class="arithmatex">\(110–\)</span>150</strong></td>
+</tr>
+<tr>
+<td>Drum bung wrench (2" NPT + 2" buttress)</td>
+<td>Polypropylene</td>
+<td>1</td>
+<td>Amazon / BASCO</td>
+<td><span class="arithmatex">\(12–\)</span>20</td>
+<td><strong>$15</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Storage subtotal: ~<span class="arithmatex">\(365–\)</span>615</strong></p>
+<h3 id="82-pumps-and-pressure-management">8.2 Pumps and pressure management<a class="headerlink" href="#82-pumps-and-pressure-management" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shurflo 2088-554-144 pump</td>
+<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
+<td>2</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td><span class="arithmatex">\(55–\)</span>70</td>
+<td><strong><span class="arithmatex">\(110–\)</span>140</strong></td>
+</tr>
+<tr>
+<td>SeaFlo / Kohree pressure accumulator</td>
+<td>1 gal, 125 PSI, 1/2" NPT</td>
+<td>1</td>
+<td><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">Amazon — SeaFlo accumulator system</a></td>
+<td><span class="arithmatex">\(25–\)</span>45</td>
+<td><strong>$35</strong></td>
+</tr>
+<tr>
+<td>Pump mounting bracket (stainless)</td>
+<td>For 2088 series</td>
+<td>2</td>
+<td>Amazon</td>
+<td><span class="arithmatex">\(8–\)</span>12</td>
+<td><strong>$20</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pump subtotal: ~<span class="arithmatex">\(165–\)</span>195</strong></p>
+<h3 id="83-filter-skid">8.3 Filter skid<a class="headerlink" href="#83-filter-skid" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big Blue filter housing 4.5"×10"</td>
+<td>1" NPT brass ports, pressure relief, wrench included</td>
+<td>3</td>
+<td><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Amazon — Geekpure Big Blue 10"</a> · <a href="https://www.bluonics.com/products/big-blue-10-inch-two-whole-house-water-filter-carbon-sediment-solid-housing">Bluonics two-pack</a></td>
+<td><span class="arithmatex">\(28–\)</span>45 each</td>
+<td><strong><span class="arithmatex">\(85–\)</span>135</strong></td>
+</tr>
+<tr>
+<td>50-micron sediment cartridge 4.5"×10"</td>
+<td>Polypropylene depth filter</td>
+<td>4 (+ spares)</td>
+<td><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Amazon — Pentair Pentek DGD-5005</a></td>
+<td><span class="arithmatex">\(8–\)</span>12 each</td>
+<td><strong><span class="arithmatex">\(35–\)</span>50</strong></td>
+</tr>
+<tr>
+<td>5-micron sediment cartridge 4.5"×10"</td>
+<td>Polypropylene wound/pleated</td>
+<td>4 (+ spares)</td>
+<td><a href="https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ">Amazon — Pentair Pentek RFC-BB</a></td>
+<td><span class="arithmatex">\(10–\)</span>15 each</td>
+<td><strong><span class="arithmatex">\(45–\)</span>60</strong></td>
+</tr>
+<tr>
+<td>GAC carbon block 4.5"×10"</td>
+<td>Granular activated carbon, 25-micron</td>
+<td>4 (+ spares)</td>
+<td><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Amazon — Ronaqua Big Blue GAC</a></td>
+<td><span class="arithmatex">\(15–\)</span>22 each</td>
+<td><strong><span class="arithmatex">\(65–\)</span>90</strong></td>
+</tr>
+<tr>
+<td>Filter skid frame</td>
+<td>600×900mm slotted steel angle, DIY</td>
+<td>1</td>
+<td>Home Depot / Lowe's (steel angle iron)</td>
+<td><span class="arithmatex">\(25–\)</span>40</td>
+<td><strong>$35</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Filter subtotal: ~<span class="arithmatex">\(265–\)</span>370</strong></p>
+<h3 id="84-valves-and-fittings">8.4 Valves and fittings<a class="headerlink" href="#84-valves-and-fittings" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ball valve 1" FNPT, full-bore</td>
+<td>HDPE-body or brass, lever handle</td>
+<td>8</td>
+<td>Amazon / Home Depot / Ferguson Plumbing</td>
+<td><span class="arithmatex">\(8–\)</span>14</td>
+<td><strong><span class="arithmatex">\(65–\)</span>110</strong></td>
+</tr>
+<tr>
+<td>3-way diverter valve 1" FNPT</td>
+<td>L-port or T-port, HDPE compatible</td>
+<td>2</td>
+<td><a href="https://www.amazon.com/3-way-ball-valve/s?k=1+inch+3+way+ball+valve">Amazon — 1" 3-way ball valve</a></td>
+<td><span class="arithmatex">\(18–\)</span>30</td>
+<td><strong><span class="arithmatex">\(40–\)</span>60</strong></td>
+</tr>
+<tr>
+<td>2" camlock fitting pairs (M+F)</td>
+<td>Polypropylene, 2"</td>
+<td>6 pairs</td>
+<td>Amazon / Grainger</td>
+<td><span class="arithmatex">\(5–\)</span>8/pair</td>
+<td><strong><span class="arithmatex">\(35–\)</span>50</strong></td>
+</tr>
+<tr>
+<td>1" NPT elbows (HDPE)</td>
+<td>90° street elbow</td>
+<td>12</td>
+<td>Home Depot / Ferguson</td>
+<td><span class="arithmatex">\(3–\)</span>5</td>
+<td><strong><span class="arithmatex">\(40–\)</span>60</strong></td>
+</tr>
+<tr>
+<td>1" NPT tees (HDPE)</td>
+<td>Equal tee</td>
+<td>8</td>
+<td>Home Depot / Ferguson</td>
+<td><span class="arithmatex">\(4–\)</span>6</td>
+<td><strong><span class="arithmatex">\(35–\)</span>50</strong></td>
+</tr>
+<tr>
+<td>1" NPT unions</td>
+<td>For maintenance disconnects</td>
+<td>6</td>
+<td>Ferguson / Amazon</td>
+<td><span class="arithmatex">\(6–\)</span>10</td>
+<td><strong><span class="arithmatex">\(40–\)</span>60</strong></td>
+</tr>
+<tr>
+<td>Thread seal tape (PTFE)</td>
+<td>1/2" wide, 260" roll</td>
+<td>4</td>
+<td>Home Depot</td>
+<td>$2</td>
+<td><strong>$8</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Valves &amp; fittings subtotal: ~<span class="arithmatex">\(263–\)</span>398</strong></p>
+<h3 id="85-pipe">8.5 Pipe<a class="headerlink" href="#85-pipe" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1" SDR-11 HDPE pipe</td>
+<td>Food-safe, blue-stripe, 20 ft sticks</td>
+<td>5 sticks (100 ft)</td>
+<td><a href="https://www.ferguson.com">Ferguson Plumbing Supply</a> · Winsupply</td>
+<td><span class="arithmatex">\(12–\)</span>18/stick</td>
+<td><strong><span class="arithmatex">\(60–\)</span>90</strong></td>
+</tr>
+<tr>
+<td>3/4" SDR-11 HDPE pipe</td>
+<td>Spray bar run, 20 ft sticks</td>
+<td>2 sticks (40 ft)</td>
+<td>Ferguson / Winsupply</td>
+<td><span class="arithmatex">\(9–\)</span>14/stick</td>
+<td><strong><span class="arithmatex">\(20–\)</span>30</strong></td>
+</tr>
+<tr>
+<td>1/2" ID reinforced braided PVC hose</td>
+<td>Pump inlet flexible connection, 6 ft per pump</td>
+<td>2 lengths</td>
+<td>Home Depot / Amazon</td>
+<td><span class="arithmatex">\(8–\)</span>12/length</td>
+<td><strong>$20</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pipe subtotal: ~<span class="arithmatex">\(100–\)</span>140</strong></p>
+<h3 id="86-electrical">8.6 Electrical<a class="headerlink" href="#86-electrical" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12V fuse block (6-way)</td>
+<td>Blade fuse, 10A per channel</td>
+<td>1</td>
+<td>Amazon</td>
+<td><span class="arithmatex">\(12–\)</span>20</td>
+<td><strong>$15</strong></td>
+</tr>
+<tr>
+<td>14 AWG duplex marine wire</td>
+<td>Tinned copper, 25 ft</td>
+<td>1 roll</td>
+<td>West Marine / Amazon</td>
+<td><span class="arithmatex">\(18–\)</span>28</td>
+<td><strong>$22</strong></td>
+</tr>
+<tr>
+<td>Anderson Powerpole connectors</td>
+<td>30A, for pump connections</td>
+<td>4 pairs</td>
+<td>Amazon</td>
+<td>$1.50/pair</td>
+<td><strong>$8</strong></td>
+</tr>
+<tr>
+<td>10A blade fuses (pack)</td>
+<td>For pump circuits</td>
+<td>10</td>
+<td>Amazon / AutoZone</td>
+<td>$5/pack</td>
+<td><strong>$5</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Electrical subtotal: ~$50</strong></p>
+<h3 id="87-processing-consumables">8.7 Processing consumables<a class="headerlink" href="#87-processing-consumables" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6-mil black LDPE sheeting</td>
+<td>20 ft × 100 ft roll</td>
+<td>1</td>
+<td>Home Depot / Uline</td>
+<td><span class="arithmatex">\(80–\)</span>120</td>
+<td><strong>$100</strong></td>
+</tr>
+<tr>
+<td>pH meter (waterproof)</td>
+<td>0–14 range, ±0.1 accuracy</td>
+<td>1</td>
+<td><a href="https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX">Amazon — Apera Instruments PH20</a></td>
+<td><span class="arithmatex">\(35–\)</span>55</td>
+<td><strong>$45</strong></td>
+</tr>
+<tr>
+<td>pH calibration solution set</td>
+<td>pH 4 + pH 7 buffer sachets</td>
+<td>1 set</td>
+<td>Amazon</td>
+<td><span class="arithmatex">\(8–\)</span>12</td>
+<td><strong>$10</strong></td>
+</tr>
+<tr>
+<td>Citric acid, food grade, 5 lb</td>
+<td>pH adjustment (acidifier)</td>
+<td>2 bags</td>
+<td>Amazon / bulk food supplier</td>
+<td><span class="arithmatex">\(12–\)</span>18</td>
+<td><strong>$28</strong></td>
+</tr>
+<tr>
+<td>Chemical-resistant labels (GHS)</td>
+<td>For drums and totes</td>
+<td>1 pack</td>
+<td>Amazon / Labelmaster</td>
+<td><span class="arithmatex">\(15–\)</span>25</td>
+<td><strong>$20</strong></td>
+</tr>
+<tr>
+<td>Funnel with filter screen (2")</td>
+<td>For drum filling</td>
+<td>2</td>
+<td>Amazon / Grainger</td>
+<td><span class="arithmatex">\(8–\)</span>12</td>
+<td><strong>$18</strong></td>
+</tr>
+<tr>
+<td>Nitrile gloves, box of 100</td>
+<td>Size M/L</td>
+<td>2 boxes</td>
+<td>Amazon / Home Depot</td>
+<td><span class="arithmatex">\(12–\)</span>18</td>
+<td><strong>$28</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Consumables subtotal: ~<span class="arithmatex">\(249–\)</span>304</strong></p>
+<hr />
+<h3 id="88-total-cost-summary">8.8 Total cost summary<a class="headerlink" href="#88-total-cost-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low estimate</th>
+<th>High estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water storage (IBC totes + drums)</td>
+<td>$365</td>
+<td>$615</td>
+</tr>
+<tr>
+<td>Pumps and accumulator</td>
+<td>$165</td>
+<td>$195</td>
+</tr>
+<tr>
+<td>Filter skid (housings + cartridges)</td>
+<td>$265</td>
+<td>$370</td>
+</tr>
+<tr>
+<td>Valves and fittings</td>
+<td>$263</td>
+<td>$398</td>
+</tr>
+<tr>
+<td>Pipe</td>
+<td>$100</td>
+<td>$140</td>
+</tr>
+<tr>
+<td>Electrical</td>
+<td>$50</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>Processing consumables</td>
+<td>$249</td>
+<td>$304</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>$1,457</strong></td>
+<td><strong>$2,072</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.</em></p>
+<hr />
+<h2 id="9-maintenance-schedule">9. Maintenance Schedule<a class="headerlink" href="#9-maintenance-schedule" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Frequency</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Replace F-1 (50-micron cartridge)</td>
+<td>Every 20 prints</td>
+<td>Visually inspect — replace sooner if heavily discoloured</td>
+</tr>
+<tr>
+<td>Replace F-2 (5-micron cartridge)</td>
+<td>Every 10 prints</td>
+<td>Replace sooner if flow rate drops</td>
+</tr>
+<tr>
+<td>Replace F-3 (GAC carbon)</td>
+<td>Every 15 prints</td>
+<td>Replace if taste/odour test fails</td>
+</tr>
+<tr>
+<td>Flush Brown IBC-3</td>
+<td>Every 5 prints</td>
+<td>Rinse with clean water, inspect for sediment buildup</td>
+</tr>
+<tr>
+<td>pH check of filtered output</td>
+<td>Every session</td>
+<td>Before returning Brown water to Blue system</td>
+</tr>
+<tr>
+<td>Drain and rinse Blue IBCs</td>
+<td>Annually (or before long storage)</td>
+<td>Prevent biofilm formation</td>
+</tr>
+<tr>
+<td>Inspect drum bungs</td>
+<td>Before every transport</td>
+<td>Check for leaks</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-safety-notes">10. Safety Notes<a class="headerlink" href="#10-safety-notes" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Ferricyanide in alkaline conditions:</strong> Do not allow Black drum water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH &lt; 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.</p>
+</li>
+<li>
+<p><strong>Prussian blue is non-toxic</strong> — it is approved as a human antidote medication in some contexts — but the fine particles are a skin/eye irritant. Wear nitrile gloves and eye protection when handling wash trays.</p>
+</li>
+<li>
+<p><strong>Citric acid dosing:</strong> Always dissolve before adding to tank. Adding dry acid to iron-rich water can cause a brief exothermic reaction and bubbling. Mix in a separate container first.</p>
+</li>
+<li>
+<p><strong>Black drum transport:</strong> Ensure drums are sealed with bung wrench (≥20 Nm torque). Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright.</p>
+</li>
+<li>
+<p><strong>Electrical:</strong> Both pumps draw 7.5A each at 12V. The fuse block must be rated to handle simultaneous operation. Do not run pumps from the same fused circuit.</p>
+</li>
+</ol>
+<hr />
+<h2 id="11-schematic-diagrams">11. Schematic Diagrams<a class="headerlink" href="#11-schematic-diagrams" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Drawing</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sheet 1 — System flow schematic (P&amp;ID)</td>
+<td><code>water-system-sheet1.png</code></td>
+</tr>
+<tr>
+<td>Sheet 2 — Equipment layout plan + parts list</td>
+<td><code>water-system-sheet2.png</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-sources-and-references">12. Sources and References<a class="headerlink" href="#12-sources-and-references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/">Photrio — Composition of cyanotype wash water</a></li>
+<li><a href="https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water">Ask MetaFilter — Disposing of cyanotyping water</a></li>
+<li><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger — IBC totes for sale, California</a></li>
+<li><a href="https://bascousa.com/55-gallon-closed-head-plastic-drum-blue.html">BASCO USA — 55 gal closed-head HDPE drums</a></li>
+<li><a href="https://www.thecarycompany.com/55-gallon-un-blue-hdpe-tight-head-drum-2-npt-2-buttress-fittings-un-rated">The Cary Company — 55 gal UN-rated blue drum</a></li>
+<li><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088-554-144 pump</a></li>
+<li><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">Amazon — SeaFlo pump + accumulator system</a></li>
+<li><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Amazon — Geekpure Big Blue 10" filter housing</a></li>
+<li><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Amazon — Pentair Pentek DGD-5005 sediment cartridge</a></li>
+<li><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Ronaqua — Big Blue GAC carbon cartridge</a></li>
+<li><a href="https://www.repackify.com/buy-ibc-totes/california">Repackify — IBC totes for sale in California</a></li>
+<li><a href="https://tpr.fmcsa.dot.gov/content/Resources/ELDT-Curriculum-Summary.pdf">FMCSA ELDT curriculum (HDPE chemical resistance reference)</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

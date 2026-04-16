@@ -1,0 +1,1612 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/film-plane-mechanism-report/">
+      
+      
+        <link rel="prev" href="../water-system-report/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Film Plane Mechanism - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#moveable-film-plane-mechanism-design-optical-distortion-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Film Plane Mechanism
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chem Shopping List
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Transportation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../water-system-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Processing System
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Film Plane Mechanism
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chem Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water-system-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-reference-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Container Reference Geometry
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movement-axes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movement Axes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanism-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mechanism Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mechanism Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#four-post-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four-Post Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actuation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-geometry-accommodation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable Geometry Accommodation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-sealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light Sealing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tilt-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tilt Configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optical-distortion-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optical Distortion Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optical Distortion Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physics-of-tilted-plane-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physics of Tilted-Plane Projection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distortion-effects-by-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distortion Effects by Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engineering-drawings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engineering Drawings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shopping List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural-rails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural &amp; Rails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#film-plane-frame" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Film Plane Frame
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-electric-actuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional Electric Actuation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-socal-metal-sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local SoCal Metal Sourcing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="moveable-film-plane-mechanism-design-optical-distortion-analysis">Moveable Film Plane — Mechanism Design &amp; Optical Distortion Analysis<a class="headerlink" href="#moveable-film-plane-mechanism-design-optical-distortion-analysis" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a <strong>view-camera-style moveable film plane</strong> — a mechanism that lets the top and bottom edges of the film plane travel independently along the optical axis, enabling controlled perspective distortions comparable to those produced by a large-format view camera's rear standard.</p>
+<hr />
+<h2 id="container-reference-geometry">Container Reference Geometry<a class="headerlink" href="#container-reference-geometry" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interior length</td>
+<td>5,893 mm (19 ft 4 in)</td>
+<td>Film plane spans this direction</td>
+</tr>
+<tr>
+<td>Interior width</td>
+<td>2,362 mm (7 ft 9 in)</td>
+<td><strong>Optical axis = focal length</strong></td>
+</tr>
+<tr>
+<td>Interior height</td>
+<td>2,388 mm (7 ft 10 in)</td>
+<td>Film plane height</td>
+</tr>
+<tr>
+<td>Pinhole position</td>
+<td>Centre of one 20ft long-side wall</td>
+<td></td>
+</tr>
+<tr>
+<td>Nominal film plane</td>
+<td>Opposite 20ft long-side wall</td>
+<td>flush to wall</td>
+</tr>
+<tr>
+<td>Structural ribs</td>
+<td>Every 457 mm (18 in) along length</td>
+<td>Rail mounting points</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="movement-axes">Movement Axes<a class="headerlink" href="#movement-axes" title="Permanent link">&para;</a></h2>
+<p>The mechanism supports five movement modes, using view-camera terminology:</p>
+<table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Description</th>
+<th>Max Travel</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tilt (top)</strong></td>
+<td>Top edge moves along optical axis</td>
+<td>100–2,262 mm</td>
+<td>Perspective convergence, keystone</td>
+</tr>
+<tr>
+<td><strong>Tilt (bottom)</strong></td>
+<td>Bottom edge moves along optical axis</td>
+<td>100–2,262 mm</td>
+<td>Perspective convergence, keystone</td>
+</tr>
+<tr>
+<td><strong>Back focus</strong></td>
+<td>Both edges move together</td>
+<td>100–2,262 mm</td>
+<td>Uniform magnification change</td>
+</tr>
+<tr>
+<td><strong>Rise / Fall</strong></td>
+<td>Plane translates vertically</td>
+<td>±200 mm</td>
+<td>Horizon shift, rise/fall perspective</td>
+</tr>
+<tr>
+<td><strong>Shift</strong></td>
+<td>Plane translates horizontally</td>
+<td>±300 mm</td>
+<td>Left/right perspective offset</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Maximum tilt angle:</strong> arctan((2,262 − 100) / 2,388) ≈ <strong>42°</strong></p>
+<p>When tilted at maximum, the film plane's physical length increases from 2,268 mm to approximately <strong>3,180 mm</strong> — 40% longer than when flat. The backing panel must accommodate this elongation (see Variable Geometry section below).</p>
+<hr />
+<h2 id="mechanism-design">Mechanism Design<a class="headerlink" href="#mechanism-design" title="Permanent link">&para;</a></h2>
+<h3 id="four-post-frame">Four-Post Frame<a class="headerlink" href="#four-post-frame" title="Permanent link">&para;</a></h3>
+<p>The film plane frame is supported by four carriages riding on four linear rails:</p>
+<div class="highlight"><pre><span></span><code>CEILING ─────────────────────────────────────────────
+        [CEIL RAIL ×2 — 200mm from each end wall]
+        carriage TL ─── TOP BEAM (5,893mm) ─── carriage TR
+             │                                      │
+             │          FILM PLANE FRAME            │
+             │    5,893mm wide × 2,388mm tall        │
+             │         PIN JOINT each corner         │
+        carriage BL ─── BOT BEAM (5,893mm) ─── carriage BR
+        [FLOOR RAIL ×2 — 200mm from each end wall]
+FLOOR ──────────────────────────────────────────────
+</code></pre></div>
+<ul>
+<li><strong>4 linear rails</strong> — HiWin HGR20 profile, 2,200 mm length, mounted to ceiling and floor at the left and right ends of the container interior. Rails run along the 2,362 mm optical axis direction.</li>
+<li><strong>8 carriages</strong> — HGH20CA flanged blocks, 2 per rail. Each carriage pair is joined by a horizontal cross-beam.</li>
+<li><strong>2 horizontal beams</strong> — 80×80 mm aluminium T-slot extrusion (80/20 10-4080 or equivalent), 5,893 mm span. The top beam carries the top edge of the film frame; the bottom beam carries the bottom edge. Each beam is driven by an independent leadscrew.</li>
+<li><strong>Film plane frame</strong> — welded 2"×2"×3/16" aluminium angle, 5,893 mm × 2,388 mm. Pin-jointed to the top and bottom beams so it can rotate freely as the tilt angle changes.</li>
+</ul>
+<h3 id="actuation">Actuation<a class="headerlink" href="#actuation" title="Permanent link">&para;</a></h3>
+<p>Each beam is driven by a <strong>¾"-6 Acme leadscrew</strong> (8 ft / 2,438 mm length), turning in a bronze Acme nut fixed to the beam. One turn of the ¾"-6 screw = 6/1" pitch = <strong>4.2 mm travel per turn</strong>. An 8" handwheel gives comfortable torque for the beam load. A locking collar on each screw holds position during exposure.</p>
+<p><strong>Optional electric actuation:</strong> replace the handwheels with <strong>Progressive Automations PA-14</strong> 12V linear actuators (20" / 508 mm stroke, 150 lb force rating). Two actuators, one per beam, controlled by panel-mount DPDT momentary switches. This allows the film plane to be repositioned without entering the camera.</p>
+<h3 id="variable-geometry-accommodation">Variable Geometry Accommodation<a class="headerlink" href="#variable-geometry-accommodation" title="Permanent link">&para;</a></h3>
+<p>As the film plane tilts, its along-plane height grows from 2,268 mm (flat) to up to ~3,180 mm at maximum 42° tilt. The backing panel must cover this elongated surface.</p>
+<p><strong>Recommended solution — hinged two-panel system:</strong></p>
+<p>The ACM (aluminium composite material) backing is cut in two equal panels, each ~1,600 mm × 2,388 mm. They are joined along the horizontal centreline with a full-width 2" aluminium piano hinge. When the film plane is flat, the two panels lie flush. As the plane tilts, the hinge allows the upper panel to fold back, maintaining full coverage of the film frame at any tilt angle up to the maximum.</p>
+<p>Film/paper is attached to the ACM surface with black photo tape or push-pins. For a tilted exposure, the film sheet must be pre-cut to the elongated length or joined from multiple sheets.</p>
+<h3 id="light-sealing">Light Sealing<a class="headerlink" href="#light-sealing" title="Permanent link">&para;</a></h3>
+<p>The tilted film plane creates triangular voids at the top and bottom of the container where it no longer contacts the walls. These are sealed with:</p>
+<ul>
+<li><strong>Primary seal:</strong> 1"×½" black EPDM foam strip bonded to all four edges of the film frame — compresses against walls at low tilt angles</li>
+<li><strong>Secondary seal:</strong> Rosco Duvetyne (professional blackout fabric) curtains attached to the film frame perimeter, hanging freely and weighted at the bottom — drapes against the walls and floor for large tilt angles</li>
+<li><strong>Rail light traps:</strong> Three overlapping strips of black felt across each rail opening in the ceiling and floor panels — prevent light leakage along the rail slots</li>
+</ul>
+<hr />
+<h2 id="tilt-configurations">Tilt Configurations<a class="headerlink" href="#tilt-configurations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Name</th>
+<th>Top Edge</th>
+<th>Bottom Edge</th>
+<th>Tilt Angle</th>
+<th>Film Length</th>
+<th>Area Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C0</td>
+<td>Flat</td>
+<td>2,262 mm</td>
+<td>2,262 mm</td>
+<td>0°</td>
+<td>2,268 mm</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Mild tilt up</td>
+<td>1,800 mm</td>
+<td>2,262 mm</td>
+<td>5.6°</td>
+<td>2,315 mm</td>
+<td>+2%</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Strong tilt up</td>
+<td>800 mm</td>
+<td>2,262 mm</td>
+<td>17.5°</td>
+<td>2,598 mm</td>
+<td>+15%</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Max tilt up</td>
+<td>100 mm</td>
+<td>2,262 mm</td>
+<td>41.6°</td>
+<td>3,121 mm</td>
+<td>+38%</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Max tilt down</td>
+<td>2,262 mm</td>
+<td>100 mm</td>
+<td>41.6°</td>
+<td>3,121 mm</td>
+<td>+38%</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Both near</td>
+<td>100 mm</td>
+<td>100 mm</td>
+<td>0°</td>
+<td>2,268 mm</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Compound</td>
+<td>100 mm</td>
+<td>2,262 mm</td>
+<td>41.6° + 15° swing</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><em>Top/bottom edge depths measured from the pinhole wall.</em></p>
+<hr />
+<h2 id="optical-distortion-analysis">Optical Distortion Analysis<a class="headerlink" href="#optical-distortion-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="physics-of-tilted-plane-projection">Physics of Tilted-Plane Projection<a class="headerlink" href="#physics-of-tilted-plane-projection" title="Permanent link">&para;</a></h3>
+<p>In a pinhole camera, every scene point projects through the pinhole aperture onto the film plane regardless of its distance. When the film plane is flat and perpendicular to the optical axis, the projection is a standard central perspective: a scene point at world coordinates (X, Y) and distance D from the pinhole maps to film coordinates:</p>
+<div class="highlight"><pre><span></span><code>film_x = −X · f / D
+film_y = −Y · f / D
+</code></pre></div>
+<p>where f is the perpendicular distance from pinhole to film plane. The negative signs give the inverted image.</p>
+<p>When the film plane is <strong>tilted</strong> (top edge at depth d_top, bottom edge at d_bot), the perpendicular distance from the pinhole to the film varies continuously from d_bot (at the bottom edge) to d_top (at the top). A point at height parameter v on the film (v=0 bottom, v=1 top) is at depth:</p>
+<div class="highlight"><pre><span></span><code>f(v) = d_bot + (d_top − d_bot) · v
+</code></pre></div>
+<p>This varying effective focal length is the source of all the distortions below.</p>
+<h3 id="distortion-effects-by-configuration">Distortion Effects by Configuration<a class="headerlink" href="#distortion-effects-by-configuration" title="Permanent link">&para;</a></h3>
+<p><strong>C0 — Flat (reference):</strong>
+Standard central projection. Vertical lines in the scene remain vertical. Horizontal scale is uniform across the full film height. The checker pattern is a regular perspective view; the horizon is a straight line through the image centre.</p>
+<p><img alt="C0 flat reference" src="../assets/film-plane-distortion-c0.png" /></p>
+<p><strong>C1 — Mild tilt 5.6°:</strong>
+Subtle keystone. The top quarter of the image is slightly compressed horizontally (effective focal length 462 mm shorter at top). The horizon appears marginally raised. Useful for compensating naturally converging verticals when photographing tall subjects close to the camera.</p>
+<p><img alt="C1 mild tilt" src="../assets/film-plane-distortion-c1.png" /></p>
+<p><strong>C2 — Strong tilt 17.5°:</strong>
+Dramatic keystone. The top of the image has f ≈ 800 mm (one-third nominal) — three times more magnification per unit scene height than the bottom. Buildings appear to flare outward toward the base. Wide horizontal bands at the bottom compress many floors of a building into a small vertical distance at the top. The horizon line curves subtly.</p>
+<p><img alt="C2 strong tilt" src="../assets/film-plane-distortion-c2.png" /></p>
+<p><strong>C3 — Maximum tilt up 41.6°:</strong>
+Extreme effect. Top edge is only 100 mm from the pinhole wall — a 22× difference in effective focal length between top (f=100) and bottom (f=2,262). The top of the image captures a vast compressed panorama; the bottom captures a narrow, highly magnified strip. The checkerboard transforms from squares at the bottom to near-horizontal slivers at the top. In a landscape scene, the ground rushes toward the viewer and the sky is squeezed into a narrow band.</p>
+<p><strong>Recommended for:</strong> wide open landscapes, aerial-perspective scenes, dramatic urban canyons. Produces a result unlike any conventional photographic technique.</p>
+<p><img alt="C3 max tilt up" src="../assets/film-plane-distortion-c3.png" /></p>
+<p><strong>C4 — Maximum tilt down (reverse) 41.6°:</strong>
+The inverse of C3 — bottom edge 100 mm from pinhole. The ground plane is compressed and the sky dominates. Standing subjects at the centre appear to elongate dramatically toward the bottom of the frame. Objects on the ground are rendered as thin horizontal lines. Surreal inversion of spatial intuition.</p>
+<p><img alt="C4 reverse tilt" src="../assets/film-plane-distortion-c4.png" /></p>
+<p><strong>C5 — Both edges near (uniform close):</strong>
+The entire film plane is pushed 2,162 mm closer to the pinhole, leaving only 100 mm clearance. The effective focal length drops from 2,362 mm to ~100 mm — a magnification of 2,362/100 = <strong>23.6× reduction in image scale</strong>. The camera now captures a scene 23× wider and taller than normal. The distortion is zero (no tilt) but the field of view is enormous. Useful for cramped spaces where the subject cannot be far from the camera.</p>
+<p><img alt="C5 both near" src="../assets/film-plane-distortion-c5.png" /></p>
+<p><strong>C6 — Compound tilt + swing:</strong>
+Maximum vertical tilt (41.6°) combined with 15° horizontal swing. The left edge of the film plane is pushed forward while the right edge recedes, simultaneous with the top-bottom tilt. No line in the scene remains parallel to any edge of the film — there are no rectilinear references anywhere in the image. The checker pattern becomes a complex curved mesh. This is the most disorienting configuration and the most likely to produce images that appear to be drawings or paintings rather than photographs.</p>
+<p><strong>Recommended for artistic use.</strong> The compound distortion cannot be easily reversed or predicted without simulation — each exposure will be a unique geometric artefact.</p>
+<p><img alt="C6 compound" src="../assets/film-plane-distortion-c6.png" /></p>
+<h3 id="summary-comparison">Summary Comparison<a class="headerlink" href="#summary-comparison" title="Permanent link">&para;</a></h3>
+<p>All seven configurations on a checker grid (D = 8,000 mm):</p>
+<p><img alt="Distortion summary" src="../assets/film-plane-distortion-summary.png" /></p>
+<hr />
+<h2 id="engineering-drawings">Engineering Drawings<a class="headerlink" href="#engineering-drawings" title="Permanent link">&para;</a></h2>
+<p>Four drawing sheets accompany this report:</p>
+<table>
+<thead>
+<tr>
+<th>Sheet</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sheet 1 — Plan view</td>
+<td>Top-down view: container footprint, rail layout, top/bottom beam positions for each tilt config</td>
+</tr>
+<tr>
+<td>Sheet 2 — Side elevation</td>
+<td>Cross-section through container centreline: all four tilt configs, tilt angles, carriage and rail positions</td>
+</tr>
+<tr>
+<td>Sheet 3 — Hardware detail</td>
+<td>Beam cross-section (80×80 T-slot), HGR20 rail + HGH20CA carriage profile, pivot joint detail, ACM panel hinge arrangement</td>
+</tr>
+<tr>
+<td>Sheet 4 — Specification table</td>
+<td>Movement axis summary, all tilt config dimensions, full bill of materials</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Sheet 1 — Plan view" src="../assets/film-plane-sheet1.png" /></p>
+<p><img alt="Sheet 2 — Side elevation" src="../assets/film-plane-sheet2.png" /></p>
+<p><img alt="Sheet 3 — Hardware detail" src="../assets/film-plane-sheet3.png" /></p>
+<p><img alt="Sheet 4 — Specification table" src="../assets/film-plane-sheet4.png" /></p>
+<hr />
+<h2 id="shopping-list">Shopping List<a class="headerlink" href="#shopping-list" title="Permanent link">&para;</a></h2>
+<p>All items ship within the United States. Local Southern California pickup noted where available.</p>
+<h3 id="structural-rails">Structural &amp; Rails<a class="headerlink" href="#structural-rails" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Source A</th>
+<th>Source B</th>
+<th>Est. Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear guide rail HGR20</td>
+<td>2,200 mm</td>
+<td>4</td>
+<td>Automation Overstock, Gardena CA</td>
+<td>McMaster-Carr #5901T777</td>
+<td>$45</td>
+</tr>
+<tr>
+<td>Rail carriage HGH20CA</td>
+<td>Flanged block</td>
+<td>8</td>
+<td>Automation Overstock / Amazon</td>
+<td>McMaster-Carr</td>
+<td>$18</td>
+</tr>
+<tr>
+<td>Aluminium T-slot beam</td>
+<td>80/20 10-4080, 8 ft</td>
+<td>4</td>
+<td>8020.net</td>
+<td>MiSUMi USA</td>
+<td>$52</td>
+</tr>
+<tr>
+<td>Acme leadscrew ¾"-6</td>
+<td>8 ft length</td>
+<td>2</td>
+<td>Roton Products (LA area)</td>
+<td>McMaster-Carr #6289K36</td>
+<td>$95</td>
+</tr>
+<tr>
+<td>Acme nut bronze ¾"-6</td>
+<td>—</td>
+<td>4</td>
+<td>Roton Products</td>
+<td>McMaster-Carr #6289K512</td>
+<td>$12</td>
+</tr>
+<tr>
+<td>Handwheel 8" dia</td>
+<td>¾" bore, cast aluminium</td>
+<td>4</td>
+<td>Grainger (Anaheim / LA / SD)</td>
+<td>McMaster-Carr #6440K64</td>
+<td>$35</td>
+</tr>
+<tr>
+<td>Pivot pin SS316</td>
+<td>1" dia × 8" long</td>
+<td>8</td>
+<td>McMaster-Carr #98173A150</td>
+<td>Fastenal (SoCal branches)</td>
+<td>$8</td>
+</tr>
+<tr>
+<td>Igus drylin bearing</td>
+<td>RJUM-01-25</td>
+<td>8</td>
+<td>igus.com (ships overnight)</td>
+<td>Amazon</td>
+<td>$14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="film-plane-frame">Film Plane Frame<a class="headerlink" href="#film-plane-frame" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Source A</th>
+<th>Source B</th>
+<th>Est. Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aluminium angle 2"×2"×3/16"</td>
+<td>8 ft lengths</td>
+<td>10</td>
+<td>Metal Supermarkets SoCal</td>
+<td>Online Metals</td>
+<td>$22</td>
+</tr>
+<tr>
+<td>Dibond ACM panel 4 mm</td>
+<td>4 ft × 8 ft sheets</td>
+<td>6</td>
+<td>Grimco, City of Industry CA</td>
+<td>Signwarehouse</td>
+<td>$85</td>
+</tr>
+<tr>
+<td>Black EPDM foam tape 1"×½"</td>
+<td>50 ft rolls</td>
+<td>3</td>
+<td>McMaster-Carr #8614K84</td>
+<td>Grainger</td>
+<td>$28</td>
+</tr>
+<tr>
+<td>Rosco Duvetyne</td>
+<td>60" wide, 10 yd</td>
+<td>1</td>
+<td>B&amp;H Photo</td>
+<td>Rosco direct</td>
+<td>$95</td>
+</tr>
+<tr>
+<td>Aluminium piano hinge 72"</td>
+<td>2" wide, 1/16" leaf</td>
+<td>2</td>
+<td>McMaster-Carr #1580A51</td>
+<td>Grainger</td>
+<td>$28</td>
+</tr>
+<tr>
+<td>6-mil black poly sheeting</td>
+<td>10 ft × 100 ft</td>
+<td>1</td>
+<td>Home Depot (local, all SoCal)</td>
+<td>Uline</td>
+<td>$65</td>
+</tr>
+<tr>
+<td>2" black Gorilla Tape</td>
+<td>35 yd rolls</td>
+<td>6</td>
+<td>Home Depot / Target (local)</td>
+<td>Amazon</td>
+<td>$12</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-electric-actuation">Optional Electric Actuation<a class="headerlink" href="#optional-electric-actuation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Source A</th>
+<th>Source B</th>
+<th>Est. Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA-14 linear actuator</td>
+<td>12V, 20" stroke, 150 lb</td>
+<td>2</td>
+<td>Progressive Automations</td>
+<td>Amazon</td>
+<td>$185</td>
+</tr>
+<tr>
+<td>12V 30A power supply</td>
+<td>Enclosed</td>
+<td>1</td>
+<td>Mouser</td>
+<td>Digi-Key</td>
+<td>$55</td>
+</tr>
+<tr>
+<td>DPDT momentary rocker</td>
+<td>Panel-mount, 20A</td>
+<td>2</td>
+<td>Mouser</td>
+<td>Grainger</td>
+<td>$8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Estimated materials total (manual actuation): ~$2,100</strong>
+<em>Excludes fasteners, fabrication labour, and electric actuation option.</em></p>
+<h3 id="local-socal-metal-sourcing">Local SoCal Metal Sourcing<a class="headerlink" href="#local-socal-metal-sourcing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Metal Supermarkets</strong> — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Will cut to length on-site, no minimum order.</li>
+<li><strong>Grimco</strong> — City of Industry, CA. Sign-industry ACM panel supplier, large sheet stock.</li>
+<li><strong>Automation Overstock</strong> — Gardena, CA. Industrial surplus linear motion components; walk-in available.</li>
+<li><strong>Grainger</strong> — branches throughout LA, Orange County, San Diego. Same-day local pickup.</li>
+<li><strong>Roton Products</strong> — ships from the LA area; Acme screw stock cut to length.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

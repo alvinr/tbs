@@ -14,12 +14,12 @@ or manufacturer data sheets.
 | Document | Description |
 |----------|-------------|
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
-| [Option B — Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
+| [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
 | [Lens Options](lens-options.md) | Coverage problem, thin lens equations, DoF, distortion, recommendations |
-| [Lens vs Pinhole — Exposure Physics](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
+| [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
-| [Chemistry Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
+| [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 
 ---
 

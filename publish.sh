@@ -53,6 +53,7 @@ MD_FILES=(
     "chemistry-shopping-list.md"
     "container-transport-options.md"
     "water-system-report.md"
+    "film-plane-mechanism-report.md"
 )
 
 CHANGED=0
@@ -84,6 +85,19 @@ IMG_FILES=(
     "portrait-scale-comparison.png"
     "water-system-sheet1.png"
     "water-system-sheet2.png"
+    "logo-final.png"
+    "film-plane-sheet1.png"
+    "film-plane-sheet2.png"
+    "film-plane-sheet3.png"
+    "film-plane-sheet4.png"
+    "film-plane-distortion-c0.png"
+    "film-plane-distortion-c1.png"
+    "film-plane-distortion-c2.png"
+    "film-plane-distortion-c3.png"
+    "film-plane-distortion-c4.png"
+    "film-plane-distortion-c5.png"
+    "film-plane-distortion-c6.png"
+    "film-plane-distortion-summary.png"
 )
 
 for f in "${IMG_FILES[@]}"; do

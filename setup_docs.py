@@ -40,14 +40,15 @@ SITE_URL = "https://alvinr.github.io/tbs"
 # Order here controls the sidebar navigation order.
 MD_FILES = [
     ("pinhole-optics-report.md",         (".",           "Pinhole Optics Report")),
-    ("pinhole-option-b-optics.md",       (".",           "Option B — Container Optics")),
+    ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
     ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("lens-options.md",                  (".",           "Lens Options")),
-    ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole — Exposure Physics")),
+    ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole")),
     ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
-    ("chemistry-shopping-list.md",       (".",           "Chemistry Shopping List")),
-    ("container-transport-options.md",   (".",           "Container Transport Options")),
-    ("water-system-report.md",           (".",           "Water Processing System")),
+    ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
+    ("container-transport-options.md",   (".",           "Transportation")),
+    ("water-system-report.md",           (".",           "Processing System")),
+    ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
 ]
 
 # Images to copy into assets/
@@ -59,6 +60,19 @@ IMAGE_FILES = [
     "portrait-scale-comparison.png",
     "water-system-sheet1.png",
     "water-system-sheet2.png",
+    "logo-final.png",
+    "film-plane-sheet1.png",
+    "film-plane-sheet2.png",
+    "film-plane-sheet3.png",
+    "film-plane-sheet4.png",
+    "film-plane-distortion-c0.png",
+    "film-plane-distortion-c1.png",
+    "film-plane-distortion-c2.png",
+    "film-plane-distortion-c3.png",
+    "film-plane-distortion-c4.png",
+    "film-plane-distortion-c5.png",
+    "film-plane-distortion-c6.png",
+    "film-plane-distortion-summary.png",
 ]
 
 MKDOCS_YML = """\
@@ -138,12 +152,12 @@ or manufacturer data sheets.
 | Document | Description |
 |----------|-------------|
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
-| [Option B — Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
+| [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
 | [Lens Options](lens-options.md) | Coverage problem, thin lens equations, DoF, distortion, recommendations |
-| [Lens vs Pinhole — Exposure Physics](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
+| [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
-| [Chemistry Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
+| [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 
 ---
 

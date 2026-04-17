@@ -89,8 +89,8 @@ ax.add_patch(plt.Polygon([(12,8),(30,8),(21,24)],
 # ═══════════════════════════════════════════════════════════════════════════════
 C_L  = 36      # interior left  (pinhole wall = 20ft long side, seen edge-on)
 C_R  = 62      # interior right (image plane  = 20ft long side, seen edge-on)
-C_B  = 36      # interior bottom (floor)
-C_T  = 64      # interior top   (ceiling)
+C_B  = 44      # interior bottom (floor)  — shifted +8 to clear spec bar
+C_T  = 72      # interior top   (ceiling) — shifted +8
 # Interior: 26 units wide ≈ 2,362 mm focal length
 #           28 units tall ≈ 2,388 mm container internal height
 WT   = 2.5     # wall thickness
@@ -246,9 +246,9 @@ for ang in np.linspace(-45, 45, 7):
             solid_capstyle="round")
 
 # Camera tripod — centred under container at CX=49
-for tx,ty in [(43,22),(49,21),(55,22)]:
+for tx,ty in [(43,30),(49,29),(55,30)]:
     ax.plot([CX,tx],[EX_B,ty], color=PAPER, lw=LW_D*1.4, solid_capstyle="round", zorder=5)
-ax.plot([40,58],[21.5,21.5], color=PAPER, lw=LW_D, zorder=5)
+ax.plot([40,58],[29.5,29.5], color=PAPER, lw=LW_D, zorder=5)
 
 # Focal length arrow inside container
 fl_y = C_B+1.5
@@ -260,11 +260,11 @@ ax.text((C_L+C_R)/2, fl_y+1.2, "FOCAL LENGTH  2,362 mm",
         fontfamily="monospace", zorder=7)
 
 # ── GPC BADGE — lower centre, below tripod ────────────────────────────────────
-ax.add_patch(Circle((CX, 13), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
-ax.add_patch(Circle((CX, 13), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
-ax.text(CX, 13.5, "GPC", color=PAPER, fontsize=8.5, ha="center", va="center",
+ax.add_patch(Circle((CX, 21), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
+ax.add_patch(Circle((CX, 21), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
+ax.text(CX, 21.5, "GPC", color=PAPER, fontsize=8.5, ha="center", va="center",
         fontweight="bold", fontfamily="monospace", zorder=10)
-ax.text(CX, 10.8, "No.1", color=CYAN_LITE, fontsize=4.8, ha="center", va="center",
+ax.text(CX, 18.8, "No.1", color=CYAN_LITE, fontsize=4.8, ha="center", va="center",
         fontfamily="monospace", zorder=10)
 
 # ═══════════════════════════════════════════════════════════════════════════════

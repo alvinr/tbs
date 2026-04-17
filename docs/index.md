@@ -1,6 +1,6 @@
 # Giant Pinhole Camera — Research & Build
 
-![Giant Pinhole Camera](assets/logo-final.png)
+<img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
 
 A rigorous, source-backed guide to designing and building a very large pinhole camera
 targeting a **20 ft × 7 ft (6 m × 2.1 m) image plane**, housed in a standard 20-foot

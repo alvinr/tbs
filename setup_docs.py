@@ -49,6 +49,7 @@ MD_FILES = [
     ("container-transport-options.md",   (".",           "Transportation")),
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
+    ("project-cost-breakdown.md",        (".",           "Project Cost Breakdown")),
 ]
 
 # Images to copy into assets/

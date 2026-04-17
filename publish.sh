@@ -54,6 +54,7 @@ MD_FILES=(
     "container-transport-options.md"
     "water-system-report.md"
     "film-plane-mechanism-report.md"
+    "project-cost-breakdown.md"
 )
 
 CHANGED=0

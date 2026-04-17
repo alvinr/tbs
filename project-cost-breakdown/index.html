@@ -1,0 +1,2813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/project-cost-breakdown/">
+      
+      
+        <link rel="prev" href="../film-plane-mechanism-report/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Project Cost Breakdown - Giant Pinhole Camera — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#giant-pinhole-camera-complete-project-cost-breakdown" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-header__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Giant Pinhole Camera — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Project Cost Breakdown
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chem Shopping List
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Transportation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../water-system-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Processing System
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../film-plane-mechanism-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Film Plane Mechanism
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Project Cost Breakdown
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Giant Pinhole Camera — Research &amp; Build" class="md-nav__button md-logo" aria-label="Giant Pinhole Camera — Research & Build" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Giant Pinhole Camera — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chem Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water-system-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../film-plane-mechanism-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Cost Breakdown
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Cost Breakdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary-total-project-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary — Total Project Cost
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-container-purchase-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Container Purchase &amp; Delivery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interior-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Interior Conversion
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Interior Conversion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-light-sealing-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Light-sealing materials
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-interior-paint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Interior paint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-image-plane-flat-backing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Image-plane flat backing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-ventilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ventilation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-door-access-upgrades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Door &amp; access upgrades
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-miscellaneous-conversion-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Miscellaneous conversion hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-total" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section total
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-optics-pinhole-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Optics — Pinhole Plate
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Optics — Pinhole Plate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-pinhole-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Pinhole plate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-optional-lens-alternative-to-or-supplement-with-pinhole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Optional lens (alternative to or supplement with pinhole)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-film-plane-mechanism-4-corner-independent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Film Plane Mechanism (4-Corner Independent)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Film Plane Mechanism (4-Corner Independent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-structural-rails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Structural &amp; rails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-film-plane-frame-backing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Film plane frame &amp; backing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-optional-electric-actuation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Optional electric actuation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-total_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Section total
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-processing-water-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Processing Water System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-printmaking-50-prints-cyanotype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Printmaking — 50 Prints (Cyanotype)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Printmaking — 50 Prints (Cyanotype)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-chemistry-and-substrate-50-prints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Chemistry and substrate (50 prints)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-per-print-cost-cyanotype-50-print-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Per-print cost (cyanotype, 50-print run)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-alternative-process-cost-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Alternative process cost comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-transportation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Transportation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Transportation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-commercial-hire-no-cdl-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Commercial hire (no CDL required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-self-haul-capital-investment-requires-cdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Self-haul (capital investment, requires CDL)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-chassis-semi-rental-frequent-repositioning-cdl-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Chassis + semi rental (frequent repositioning, CDL required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-licences-permits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Licences &amp; Permits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Licences &amp; Permits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-cdl-if-self-hauling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 CDL (if self-hauling)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-location-filming-permits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Location / filming permits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-permits-summary-per-deployment-non-commercial-art-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Permits summary (per deployment, non-commercial art use)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ongoing-operating-costs-after-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Ongoing Operating Costs (After Build)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Ongoing Operating Costs (After Build)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-print-cyanotype-after-initial-capital-spent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per print (cyanotype, after initial capital spent)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#per-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-complete-budget-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Complete Budget Scenarios
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Complete Budget Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-a-minimum-viable-build-local-use-commercial-hire-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario A — Minimum viable build, local use, commercial hire transport
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-b-recommended-build-regional-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario B — Recommended build, regional deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-c-full-production-own-transport-cdl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scenario C — Full production, own transport, CDL
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-research-gaps-cost-verification-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Research Gaps &amp; Cost Verification Required
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="giant-pinhole-camera-complete-project-cost-breakdown">Giant Pinhole Camera — Complete Project Cost Breakdown<a class="headerlink" href="#giant-pinhole-camera-complete-project-cost-breakdown" title="Permanent link">&para;</a></h1>
+<p><strong>Date:</strong> April 2026<br />
+<strong>Basis:</strong> 20 ft standard shipping container, Orientation B (pinhole on 20ft long side), Proposal 1 configuration. All USD. Ranges given where source documents provide them; midpoints used for totals. Costs marked † are from detailed procurement research in supporting documents; others are estimates.</p>
+<hr />
+<h2 id="summary-total-project-cost">Summary — Total Project Cost<a class="headerlink" href="#summary-total-project-cost" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Container purchase &amp; delivery</strong></td>
+<td>$2,300</td>
+<td>$3,150</td>
+<td>$4,300</td>
+</tr>
+<tr>
+<td><strong>2. Interior conversion</strong></td>
+<td>$970</td>
+<td>$1,140</td>
+<td>$1,310</td>
+</tr>
+<tr>
+<td><strong>3. Optics — pinhole plate</strong></td>
+<td>$80</td>
+<td>$150</td>
+<td>$280</td>
+</tr>
+<tr>
+<td><strong>4. Film plane mechanism (4-corner)</strong></td>
+<td>$2,200</td>
+<td>$2,400</td>
+<td>$2,700</td>
+</tr>
+<tr>
+<td><strong>5. Processing water system</strong></td>
+<td>$1,457</td>
+<td>$1,765</td>
+<td>$2,072</td>
+</tr>
+<tr>
+<td><strong>6. Printmaking — 50 prints (cyanotype)</strong></td>
+<td>$2,500</td>
+<td>$2,842</td>
+<td>$3,200</td>
+</tr>
+<tr>
+<td><strong>7. Transportation (per deployment)</strong></td>
+<td>$300</td>
+<td>$750</td>
+<td>$2,000</td>
+</tr>
+<tr>
+<td><strong>8. Licences &amp; permits</strong></td>
+<td>$220</td>
+<td>$790</td>
+<td>$1,620</td>
+</tr>
+<tr>
+<td><strong>TOTAL (excl. own transport, CDL, lens)</strong></td>
+<td><strong>$10,027</strong></td>
+<td><strong>$12,987</strong></td>
+<td><strong>$17,482</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Optional additions that may apply — see individual sections:</em></p>
+<table>
+<thead>
+<tr>
+<th>Optional item</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lens (Rodenstock / Nikkor, used)</td>
+<td>$400</td>
+<td>$800</td>
+<td>$1,500</td>
+</tr>
+<tr>
+<td>CDL training + DOT medical + DMV fees</td>
+<td>$2,345</td>
+<td>$4,570</td>
+<td>$6,870</td>
+</tr>
+<tr>
+<td>Own transport vehicle (QuickLoadz trailer)</td>
+<td>$30,000</td>
+<td>$35,000</td>
+<td>$40,000</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-container-purchase-delivery">1. Container Purchase &amp; Delivery<a class="headerlink" href="#1-container-purchase-delivery" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>pinhole-camera-construction.md</code></p>
+<p>The 20 ft standard container is the camera body. Minimum acceptable grade is Wind &amp; Watertight (WWT); Cargo Worthy (CW) is recommended.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 ft container — CW grade</td>
+<td>$2,000</td>
+<td>$2,750</td>
+<td>$3,500</td>
+<td>From containermgt.com</td>
+</tr>
+<tr>
+<td>Delivery — short haul (&lt;50 miles)</td>
+<td>$300</td>
+<td>$550</td>
+<td>$800</td>
+<td>Commercial tilt-bed hire</td>
+</tr>
+<tr>
+<td><strong>Section total</strong></td>
+<td><strong>$2,300</strong></td>
+<td><strong>$3,300</strong></td>
+<td><strong>$4,300</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Grade comparison:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Price range</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WWT (minimum viable)</td>
+<td><span class="arithmatex">\(1,500–\)</span>3,000</td>
+<td>No holes; may need extensive light-sealing</td>
+</tr>
+<tr>
+<td>Cargo Worthy (recommended)</td>
+<td><span class="arithmatex">\(2,000–\)</span>3,500</td>
+<td>CSC-certified; fewest surprises</td>
+</tr>
+<tr>
+<td>One-Trip (premium)</td>
+<td><span class="arithmatex">\(3,500–\)</span>5,000</td>
+<td>Near-new condition; easiest light-sealing</td>
+</tr>
+</tbody>
+</table>
+<p><strong>If a long-distance delivery is required</strong> (100–300 miles, semi flatbed): add <span class="arithmatex">\(1,200–\)</span>2,500.</p>
+<hr />
+<h2 id="2-interior-conversion">2. Interior Conversion<a class="headerlink" href="#2-interior-conversion" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>pinhole-camera-construction.md</code></p>
+<p>Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, flat image-plane backing, door upgrades, and ventilation.</p>
+<h3 id="21-light-sealing-materials">2.1 Light-sealing materials<a class="headerlink" href="#21-light-sealing-materials" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D-profile foam weatherstripping, 1"×⅜"</td>
+<td>50 ft</td>
+<td>$0.50/ft</td>
+<td>$25</td>
+<td>Door perimeter seals</td>
+</tr>
+<tr>
+<td>Black silicone sealant (11 oz cartridges)</td>
+<td>5</td>
+<td>$8</td>
+<td>$40</td>
+<td>Weld seam gaps, corner posts</td>
+</tr>
+<tr>
+<td>6-mil black polyethylene sheeting (10'×100')</td>
+<td>1 roll</td>
+<td>$65†</td>
+<td>$65</td>
+<td>Interior lining over persistent seams</td>
+</tr>
+<tr>
+<td>2" black Gorilla Tape (35 yd rolls)</td>
+<td>4</td>
+<td>$12†</td>
+<td>$48</td>
+<td>Secondary sealing</td>
+</tr>
+<tr>
+<td><strong>Light-seal subtotal</strong></td>
+<td></td>
+<td></td>
+<td><strong>$178</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-interior-paint">2.2 Interior paint<a class="headerlink" href="#22-interior-paint" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flat black latex paint (zero sheen)</td>
+<td>3 gal</td>
+<td>$25</td>
+<td>$75</td>
+<td>Two long walls, two short walls, ceiling (~755 sq ft)</td>
+</tr>
+<tr>
+<td>Primer (if bare steel)</td>
+<td>1 gal</td>
+<td>$30</td>
+<td>$30</td>
+<td>One coat on new welds/repairs</td>
+</tr>
+<tr>
+<td>Rollers, brushes, trays</td>
+<td>1 kit</td>
+<td>$25</td>
+<td>$25</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Paint subtotal</strong></td>
+<td></td>
+<td></td>
+<td><strong>$130</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-image-plane-flat-backing">2.3 Image-plane flat backing<a class="headerlink" href="#23-image-plane-flat-backing" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dibond ACM 4mm panel (4'×8' sheets)</td>
+<td>6</td>
+<td>$85†</td>
+<td>$510</td>
+<td>Grimco, City of Industry CA — flat backing surface</td>
+</tr>
+<tr>
+<td>Through-bolts + hardware</td>
+<td>1 lot</td>
+<td>$40</td>
+<td>$40</td>
+<td>Into structural ribs every 18"</td>
+</tr>
+<tr>
+<td><strong>Backing subtotal</strong></td>
+<td></td>
+<td></td>
+<td><strong>$550</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-ventilation">2.4 Ventilation<a class="headerlink" href="#24-ventilation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4" inline duct fan (reversible)</td>
+<td>2</td>
+<td>$35</td>
+<td>$70</td>
+<td>One intake / one exhaust, short walls</td>
+</tr>
+<tr>
+<td>4" light-trap baffle (steel angle, DIY)</td>
+<td>2</td>
+<td>$15</td>
+<td>$30</td>
+<td>Blocks direct light while allowing airflow</td>
+</tr>
+<tr>
+<td><strong>Ventilation subtotal</strong></td>
+<td></td>
+<td></td>
+<td><strong>$100</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-door-access-upgrades">2.5 Door &amp; access upgrades<a class="headerlink" href="#25-door-access-upgrades" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh door gasket set</td>
+<td>1</td>
+<td>$45</td>
+<td>$45</td>
+<td>OEM-style rubber seal for container doors</td>
+</tr>
+<tr>
+<td>Red LED safelight (battery)</td>
+<td>1</td>
+<td>$25</td>
+<td>$25</td>
+<td>Loading operations</td>
+</tr>
+<tr>
+<td><strong>Door subtotal</strong></td>
+<td></td>
+<td></td>
+<td><strong>$70</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="26-miscellaneous-conversion-hardware">2.6 Miscellaneous conversion hardware<a class="headerlink" href="#26-miscellaneous-conversion-hardware" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Est. total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fasteners, angles, misc. steel</td>
+<td>$60</td>
+</tr>
+<tr>
+<td>Black spray paint for touchup</td>
+<td>$20</td>
+</tr>
+<tr>
+<td>Weld repair (if needed, DIY)</td>
+<td>$30</td>
+</tr>
+<tr>
+<td><strong>Misc. subtotal</strong></td>
+<td><strong>$110</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-total">Section total<a class="headerlink" href="#section-total" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Light-sealing</td>
+<td>$150</td>
+<td>$178</td>
+<td>$210</td>
+</tr>
+<tr>
+<td>Interior paint</td>
+<td>$100</td>
+<td>$130</td>
+<td>$160</td>
+</tr>
+<tr>
+<td>Image-plane backing</td>
+<td>$490</td>
+<td>$550</td>
+<td>$620</td>
+</tr>
+<tr>
+<td>Ventilation</td>
+<td>$80</td>
+<td>$100</td>
+<td>$130</td>
+</tr>
+<tr>
+<td>Door &amp; access</td>
+<td>$50</td>
+<td>$70</td>
+<td>$100</td>
+</tr>
+<tr>
+<td>Misc. hardware</td>
+<td>$80</td>
+<td>$110</td>
+<td>$130</td>
+</tr>
+<tr>
+<td><strong>Interior conversion total</strong></td>
+<td><strong>$950</strong></td>
+<td><strong>$1,138</strong></td>
+<td><strong>$1,350</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-optics-pinhole-plate">3. Optics — Pinhole Plate<a class="headerlink" href="#3-optics-pinhole-plate" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>pinhole-camera-construction.md</code>, <code>pinhole-optics-report.md</code></p>
+<p>The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: <strong>2.17 mm</strong> (Rayleigh formula, λ = 550 nm).</p>
+<h3 id="31-pinhole-plate">3.1 Pinhole plate<a class="headerlink" href="#31-pinhole-plate" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom laser-drilled pinhole, SS-302/304 shim, 3"×3"</td>
+<td>$50</td>
+<td>$100</td>
+<td>$150</td>
+<td>Lenox Laser, lenoxlaser.com — ±0.025 mm tolerance, SEM-verified</td>
+</tr>
+<tr>
+<td>Steel backing plate 6"×6"×⅛", welded frame</td>
+<td>$20</td>
+<td>$30</td>
+<td>$40</td>
+<td>Houses the precision insert</td>
+</tr>
+<tr>
+<td>Shutter plate (⅛" steel, 10"×8") + slide channel</td>
+<td>$25</td>
+<td>$35</td>
+<td>$50</td>
+<td>Simple sliding shutter, operated from outside</td>
+</tr>
+<tr>
+<td><strong>Pinhole plate total</strong></td>
+<td><strong>$95</strong></td>
+<td><strong>$165</strong></td>
+<td><strong>$240</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-optional-lens-alternative-to-or-supplement-with-pinhole">3.2 Optional lens (alternative to or supplement with pinhole)<a class="headerlink" href="#32-optional-lens-alternative-to-or-supplement-with-pinhole" title="Permanent link">&para;</a></h3>
+<p><strong>Source document:</strong> <code>lens-options.md</code></p>
+<p>The pinhole plate is interchangeable. A lens plate can be swapped in for portrait or shorter-exposure work.</p>
+<table>
+<thead>
+<tr>
+<th>Lens</th>
+<th>f</th>
+<th>Image circle</th>
+<th>Used price</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rodenstock Apo-Ronar 1200mm</td>
+<td>f/14</td>
+<td>~400 mm</td>
+<td><span class="arithmatex">\(400–\)</span>1,200</td>
+<td>Primary recommendation — excellent on flat field</td>
+</tr>
+<tr>
+<td>Nikkor T 1200mm f/11</td>
+<td>f/11</td>
+<td>~450 mm</td>
+<td><span class="arithmatex">\(600–\)</span>1,500</td>
+<td>One stop faster than Rodenstock</td>
+</tr>
+<tr>
+<td>Schneider Apo-Symmar 800mm</td>
+<td>f/14</td>
+<td>~500 mm</td>
+<td><span class="arithmatex">\(300–\)</span>800</td>
+<td>Shorter focal length; needs separate focus board</td>
+</tr>
+<tr>
+<td>Acrylic Fresnel 600×600mm @ 1,400mm</td>
+<td>f/2.3</td>
+<td>~600 mm</td>
+<td><span class="arithmatex">\(40–\)</span>120</td>
+<td>Cheap artistic option; significant aberrations</td>
+</tr>
+</tbody>
+</table>
+<p><em>Lens is an optional upgrade — not required for pinhole operation. Not included in base total.</em></p>
+<hr />
+<h2 id="4-film-plane-mechanism-4-corner-independent">4. Film Plane Mechanism (4-Corner Independent)<a class="headerlink" href="#4-film-plane-mechanism-4-corner-independent" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>film-plane-mechanism-report.md</code></p>
+<p>View-camera-style moveable film plane with four independently actuated corners (TL, TR, BL, BR), enabling full tilt (42°), swing (20°), and compound movements.</p>
+<h3 id="41-structural-rails">4.1 Structural &amp; rails<a class="headerlink" href="#41-structural-rails" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linear guide rail HGR20</td>
+<td>2,200 mm</td>
+<td>4</td>
+<td>$45†</td>
+<td>$180</td>
+</tr>
+<tr>
+<td>Rail carriage HGH20CA</td>
+<td>Flanged block</td>
+<td>8</td>
+<td>$18†</td>
+<td>$144</td>
+</tr>
+<tr>
+<td>Acme leadscrew ¾"-6</td>
+<td>8 ft length</td>
+<td>4</td>
+<td>$95†</td>
+<td>$380</td>
+</tr>
+<tr>
+<td>Acme nut bronze ¾"-6</td>
+<td>—</td>
+<td>4</td>
+<td>$12†</td>
+<td>$48</td>
+</tr>
+<tr>
+<td>Handwheel 8" dia</td>
+<td>¾" bore, cast alum.</td>
+<td>4</td>
+<td>$35†</td>
+<td>$140</td>
+</tr>
+<tr>
+<td>Locking collar SS316</td>
+<td>¾" bore</td>
+<td>4</td>
+<td>$12†</td>
+<td>$48</td>
+</tr>
+<tr>
+<td>Corner bracket L-plate</td>
+<td>¼" alum., 6"×8"</td>
+<td>4</td>
+<td>$20†</td>
+<td>$80</td>
+</tr>
+<tr>
+<td>Rod-end spherical bearing</td>
+<td>GIR25-DO, 25 mm</td>
+<td>8</td>
+<td>$22†</td>
+<td>$176</td>
+</tr>
+<tr>
+<td>Pivot pin SS316</td>
+<td>1" dia × 8"</td>
+<td>8</td>
+<td>$8†</td>
+<td>$64</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-film-plane-frame-backing">4.2 Film plane frame &amp; backing<a class="headerlink" href="#42-film-plane-frame-backing" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aluminium angle 2"×2"×3/16"</td>
+<td>8 ft lengths</td>
+<td>10</td>
+<td>$22†</td>
+<td>$220</td>
+</tr>
+<tr>
+<td>Dibond ACM panel 4mm</td>
+<td>4'×8' sheets</td>
+<td>6</td>
+<td>$85†</td>
+<td>$510</td>
+</tr>
+<tr>
+<td>Black EPDM foam tape</td>
+<td>1"×½", 50 ft rolls</td>
+<td>3</td>
+<td>$28†</td>
+<td>$84</td>
+</tr>
+<tr>
+<td>Rosco Duvetyne (light seal)</td>
+<td>60" wide, 10 yd</td>
+<td>1</td>
+<td>$95†</td>
+<td>$95</td>
+</tr>
+<tr>
+<td>Aluminium piano hinge</td>
+<td>2" wide, 72"</td>
+<td>2</td>
+<td>$28†</td>
+<td>$56</td>
+</tr>
+<tr>
+<td>6-mil black poly sheeting</td>
+<td>10'×100' roll</td>
+<td>1</td>
+<td>$65†</td>
+<td>$65</td>
+</tr>
+<tr>
+<td>2" black Gorilla Tape</td>
+<td>35 yd rolls</td>
+<td>6</td>
+<td>$12†</td>
+<td>$72</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-optional-electric-actuation">4.3 Optional electric actuation<a class="headerlink" href="#43-optional-electric-actuation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Unit</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PA-14 linear actuator</td>
+<td>12V, 20" stroke, 150 lb</td>
+<td>4</td>
+<td>$185†</td>
+<td>$740</td>
+</tr>
+<tr>
+<td>12V 30A power supply</td>
+<td>Enclosed</td>
+<td>1</td>
+<td>$55†</td>
+<td>$55</td>
+</tr>
+<tr>
+<td>DPDT momentary rocker</td>
+<td>Panel-mount, 20A</td>
+<td>4</td>
+<td>$8†</td>
+<td>$32</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-total_1">Section total<a class="headerlink" href="#section-total_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Structural &amp; rails</td>
+<td>$1,260</td>
+</tr>
+<tr>
+<td>Film frame &amp; backing</td>
+<td>$1,102</td>
+</tr>
+<tr>
+<td><strong>Film plane mechanism (manual)</strong></td>
+<td><strong>~$2,400</strong></td>
+</tr>
+<tr>
+<td>Electric actuation (optional add-on)</td>
+<td>+$827</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source documents quote the materials total at ~$2,400 for manual actuation, excluding fabrication and fasteners.</em></p>
+<hr />
+<h2 id="5-processing-water-system">5. Processing Water System<a class="headerlink" href="#5-processing-water-system" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>water-system-report.md</code></p>
+<p>Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides 10 full-size prints (140 sq ft each) between water resupply runs, with recycling.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low†</th>
+<th>High†</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Water storage (3× IBC totes + 2× 55-gal drums)</td>
+<td>$365</td>
+<td>$615</td>
+</tr>
+<tr>
+<td>Pumps and pressure accumulator</td>
+<td>$165</td>
+<td>$195</td>
+</tr>
+<tr>
+<td>Filter skid (3× Big Blue housings + cartridges)</td>
+<td>$265</td>
+<td>$370</td>
+</tr>
+<tr>
+<td>Valves and fittings</td>
+<td>$263</td>
+<td>$398</td>
+</tr>
+<tr>
+<td>Pipe (HDPE, spray bar)</td>
+<td>$100</td>
+<td>$140</td>
+</tr>
+<tr>
+<td>Electrical (12V fuse block, wiring)</td>
+<td>$50</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>Processing consumables (6-mil poly, pH meter, citric acid)</td>
+<td>$249</td>
+<td>$304</td>
+</tr>
+<tr>
+<td><strong>Water system total</strong></td>
+<td><strong>$1,457</strong></td>
+<td><strong>$2,072</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Used IBC totes (available locally, ~<span class="arithmatex">\(80–\)</span>150 each from Container Exchanger CA) drive significant savings vs. new.</em></p>
+<hr />
+<h2 id="6-printmaking-50-prints-cyanotype">6. Printmaking — 50 Prints (Cyanotype)<a class="headerlink" href="#6-printmaking-50-prints-cyanotype" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>chemistry-shopping-list.md</code></p>
+<p>Cyanotype is the recommended starting process: no silver, no DEA registration, no hazmat shipping, processing in plain water. Cost is lowest of all processes evaluated at this scale.</p>
+<h3 id="61-chemistry-and-substrate-50-prints">6.1 Chemistry and substrate (50 prints)<a class="headerlink" href="#61-chemistry-and-substrate-50-prints" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Qty needed</th>
+<th>Source</th>
+<th>Total†</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric ammonium citrate (green), 1 lb</td>
+<td>27 units (12.2 kg)</td>
+<td>Photographers' Formulary</td>
+<td>~$810</td>
+</tr>
+<tr>
+<td>Potassium ferricyanide, 1 kg</td>
+<td>5 units (5 kg)</td>
+<td>Bostick &amp; Sullivan ($24.29/kg)</td>
+<td>~$121</td>
+</tr>
+<tr>
+<td>Unbleached cotton muslin, 60" wide (150-yd rolls)</td>
+<td>11 rolls</td>
+<td>Fabric Direct</td>
+<td>~$1,100</td>
+</tr>
+<tr>
+<td><strong>Cyanotype total — 50 prints</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$2,031</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: development requires only plain cold water — no darkroom chemistry needed. The water system in Section 5 provides all wash water required.</em></p>
+<h3 id="62-per-print-cost-cyanotype-50-print-run">6.2 Per-print cost (cyanotype, 50-print run)<a class="headerlink" href="#62-per-print-cost-cyanotype-50-print-run" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Cost per print</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferric ammonium citrate</td>
+<td>~$16.20</td>
+</tr>
+<tr>
+<td>Potassium ferricyanide</td>
+<td>~$2.42</td>
+</tr>
+<tr>
+<td>Muslin substrate (140 sq ft @ $1.20/yd, 5-strip layout)</td>
+<td>~$38</td>
+</tr>
+<tr>
+<td>Water &amp; consumables (6-mil liner, gloves)</td>
+<td>~$3</td>
+</tr>
+<tr>
+<td><strong>Total per print</strong></td>
+<td><strong>~$57</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-alternative-process-cost-comparison">6.3 Alternative process cost comparison<a class="headerlink" href="#63-alternative-process-cost-comparison" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>50-print total†</th>
+<th>Per print</th>
+<th>Key constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cyanotype (recommended)</strong></td>
+<td><strong>~$2,842</strong></td>
+<td><strong>~$57</strong></td>
+<td>None — easiest</td>
+</tr>
+<tr>
+<td>Gum bichromate</td>
+<td>~$4,578</td>
+<td>~$92</td>
+<td>Hazmat shipping (dichromate)</td>
+</tr>
+<tr>
+<td>Van Dyke Brown</td>
+<td>~$9,782</td>
+<td>~$196</td>
+<td>DEA form; AgNO₃ price volatility</td>
+</tr>
+<tr>
+<td>Ilford RC paper</td>
+<td>~$19,970</td>
+<td>~$399</td>
+<td>Paper rolls very expensive at this size</td>
+</tr>
+<tr>
+<td>Liquid Light on muslin</td>
+<td>~$19,370</td>
+<td>~$387</td>
+<td>Contact Rockland for bulk pricing</td>
+</tr>
+<tr>
+<td>Salt print</td>
+<td>~$23,925</td>
+<td>~$478</td>
+<td>3× more silver than Van Dyke — not recommended</td>
+</tr>
+</tbody>
+</table>
+<p><em>Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.</em></p>
+<hr />
+<h2 id="7-transportation">7. Transportation<a class="headerlink" href="#7-transportation" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>container-transport-options.md</code></p>
+<p>Costs are <strong>per deployment</strong> (one move). The container requires no oversize/overweight permit when empty on Interstate highways.</p>
+<h3 id="71-commercial-hire-no-cdl-required">7.1 Commercial hire (no CDL required)<a class="headerlink" href="#71-commercial-hire-no-cdl-required" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Move type</th>
+<th>Option</th>
+<th>Per-move cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local (&lt;30 miles)</td>
+<td>Tilt-bed delivery truck</td>
+<td><span class="arithmatex">\(300–\)</span>500†</td>
+</tr>
+<tr>
+<td>Short haul (30–100 miles)</td>
+<td>Tilt-bed delivery truck</td>
+<td><span class="arithmatex">\(500–\)</span>1,200†</td>
+</tr>
+<tr>
+<td>Long distance (100–300 miles)</td>
+<td>Semi flatbed</td>
+<td><span class="arithmatex">\(1,200–\)</span>2,500†</td>
+</tr>
+<tr>
+<td>Cross-country (&gt;1,000 miles)</td>
+<td>Semi flatbed</td>
+<td><span class="arithmatex">\(3,500–\)</span>6,000†</td>
+</tr>
+</tbody>
+</table>
+<p><em>If no forklift at destination: add <span class="arithmatex">\(200–\)</span>1,200 for crane truck or forklift rental.</em></p>
+<h3 id="72-self-haul-capital-investment-requires-cdl">7.2 Self-haul (capital investment, requires CDL)<a class="headerlink" href="#72-self-haul-capital-investment-requires-cdl" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Equipment</th>
+<th>Purchase cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QuickLoadz 20k trailer (self-loading, no crane needed)</td>
+<td><span class="arithmatex">\(30,000–\)</span>40,000†</td>
+<td>F-250+ pickup required</td>
+</tr>
+<tr>
+<td>Container chassis 20 ft (used gooseneck)</td>
+<td><span class="arithmatex">\(5,000–\)</span>15,000†</td>
+<td>Requires crane/forklift at destination</td>
+</tr>
+<tr>
+<td>Used Class 7 tilt-bed truck</td>
+<td><span class="arithmatex">\(65,000–\)</span>100,000†</td>
+<td>Class B CDL required</td>
+</tr>
+</tbody>
+</table>
+<p><em>Self-haul only makes economic sense if the container will be moved 60–80+ times (break-even vs. hire at ~$600/move).</em></p>
+<h3 id="73-chassis-semi-rental-frequent-repositioning-cdl-required">7.3 Chassis + semi rental (frequent repositioning, CDL required)<a class="headerlink" href="#73-chassis-semi-rental-frequent-repositioning-cdl-required" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Day rate†</th>
+<th>Week rate†</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container chassis (FlexiVan FlexiDay)</td>
+<td><span class="arithmatex">\(30–\)</span>60</td>
+<td><span class="arithmatex">\(175–\)</span>350</td>
+</tr>
+<tr>
+<td>Semi tractor (Penske/Ryder)</td>
+<td><span class="arithmatex">\(200–\)</span>400</td>
+<td><span class="arithmatex">\(1,000–\)</span>1,800</td>
+</tr>
+<tr>
+<td><strong>Combined</strong></td>
+<td><strong><span class="arithmatex">\(230–\)</span>460/day</strong></td>
+<td><strong><span class="arithmatex">\(1,175–\)</span>2,150/wk</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-licences-permits">8. Licences &amp; Permits<a class="headerlink" href="#8-licences-permits" title="Permanent link">&para;</a></h2>
+<p><strong>Source document:</strong> <code>container-transport-options.md</code>; location permit costs are estimates not covered by existing research.</p>
+<h3 id="81-cdl-if-self-hauling">8.1 CDL (if self-hauling)<a class="headerlink" href="#81-cdl-if-self-hauling" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost†</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOT medical examination</td>
+<td><span class="arithmatex">\(75–\)</span>150</td>
+</tr>
+<tr>
+<td>DMV fees (CLP + CDL + tests)</td>
+<td><span class="arithmatex">\(170–\)</span>220</td>
+</tr>
+<tr>
+<td>CDL training — budget private school (Class A)</td>
+<td><span class="arithmatex">\(2,000–\)</span>3,000</td>
+</tr>
+<tr>
+<td>CDL training — mid-range / community college (Class A)</td>
+<td><span class="arithmatex">\(4,000–\)</span>6,200</td>
+</tr>
+<tr>
+<td><strong>CDL all-in (mid-range + medical + DMV)</strong></td>
+<td><strong>~<span class="arithmatex">\(4,345–\)</span>6,570</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>CDL Class A is recommended — covers both tilt-bed truck operation (Class B) and semi tractor operation (Class A). El Camino College Torrance: $5,995 all-inclusive including DMV fees. WIOA funding may cover full tuition for eligible applicants.</em></p>
+<p><em>CDL is only required if self-hauling. Commercial hire (Sections 7.1) requires no licence from the customer.</em></p>
+<h3 id="82-location-filming-permits">8.2 Location / filming permits<a class="headerlink" href="#82-location-filming-permits" title="Permanent link">&para;</a></h3>
+<p>Permit requirements vary by jurisdiction. Estimates below are based on general knowledge — no specific research document covers this.</p>
+<table>
+<thead>
+<tr>
+<th>Location type</th>
+<th>Permit</th>
+<th>Typical cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public road / street (California)</td>
+<td>City/county film permit</td>
+<td><span class="arithmatex">\(0–\)</span>500/day</td>
+<td>Many small cities waive fees for non-commercial art</td>
+</tr>
+<tr>
+<td>LA County parks</td>
+<td>Parks filming permit</td>
+<td><span class="arithmatex">\(250–\)</span>500/day</td>
+<td>Recreation &amp; Parks Dept</td>
+</tr>
+<tr>
+<td>California State Parks</td>
+<td>State filming permit</td>
+<td><span class="arithmatex">\(200–\)</span>500/day</td>
+<td>CDPR Film Office</td>
+</tr>
+<tr>
+<td>Private land</td>
+<td>Negotiated with landowner</td>
+<td><span class="arithmatex">\(0–\)</span>2,000/day</td>
+<td>Most affordable for rural locations</td>
+</tr>
+<tr>
+<td>Federal land (BLM, Forest Service)</td>
+<td>Special Use Permit</td>
+<td><span class="arithmatex">\(50–\)</span>150 processing fee + <span class="arithmatex">\(150–\)</span>1,500/day</td>
+<td>Site-specific</td>
+</tr>
+<tr>
+<td>Commercial operation (selling prints)</td>
+<td>Business licence</td>
+<td><span class="arithmatex">\(50–\)</span>200/year</td>
+<td>City of operation</td>
+</tr>
+</tbody>
+</table>
+<p><em>For a non-commercial art/documentary deployment at a single location: budget <span class="arithmatex">\(0–\)</span>500 for permit costs. For regular commercial touring: budget <span class="arithmatex">\(500–\)</span>2,000/deployment.</em></p>
+<h3 id="83-permits-summary-per-deployment-non-commercial-art-use">8.3 Permits summary (per deployment, non-commercial art use)<a class="headerlink" href="#83-permits-summary-per-deployment-non-commercial-art-use" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Low</th>
+<th>Mid</th>
+<th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location permit</td>
+<td>$0</td>
+<td>$200</td>
+<td>$500</td>
+</tr>
+<tr>
+<td>Business licence (annual, prorated)</td>
+<td>$10</td>
+<td>$25</td>
+<td>$50</td>
+</tr>
+<tr>
+<td>Misc. (insurance certificate, site access)</td>
+<td>$0</td>
+<td>$75</td>
+<td>$200</td>
+</tr>
+<tr>
+<td><strong>Licences &amp; permits per deployment</strong></td>
+<td><strong>$10</strong></td>
+<td><strong>$300</strong></td>
+<td><strong>$750</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>CDL costs are one-time and listed separately above. If CDL is obtained, add <span class="arithmatex">\(4,345–\)</span>6,570 to the project total.</em></p>
+<hr />
+<h2 id="9-ongoing-operating-costs-after-build">9. Ongoing Operating Costs (After Build)<a class="headerlink" href="#9-ongoing-operating-costs-after-build" title="Permanent link">&para;</a></h2>
+<h3 id="per-print-cyanotype-after-initial-capital-spent">Per print (cyanotype, after initial capital spent)<a class="headerlink" href="#per-print-cyanotype-after-initial-capital-spent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muslin substrate</td>
+<td>~$38</td>
+</tr>
+<tr>
+<td>Sensitiser chemistry</td>
+<td>~$18</td>
+</tr>
+<tr>
+<td>Water (42 gal Blue circuit)</td>
+<td>~<span class="arithmatex">\(0.50 (if resupplied by tanker at ~\)</span>0.01/gal)</td>
+</tr>
+<tr>
+<td>Containment poly &amp; consumables</td>
+<td>~$2</td>
+</tr>
+<tr>
+<td>Filter cartridge amortised (replace every 10–20 prints)</td>
+<td>~$5</td>
+</tr>
+<tr>
+<td><strong>Per-print running cost</strong></td>
+<td><strong>~$63</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="per-deployment">Per deployment<a class="headerlink" href="#per-deployment" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transport (short haul, commercial hire)</td>
+<td><span class="arithmatex">\(300–\)</span>800</td>
+</tr>
+<tr>
+<td>Water resupply (550 gal / 10 prints ≈ <span class="arithmatex">\(25–\)</span>50)</td>
+<td><span class="arithmatex">\(25–\)</span>50</td>
+</tr>
+<tr>
+<td>Location permit</td>
+<td><span class="arithmatex">\(0–\)</span>500</td>
+</tr>
+<tr>
+<td><strong>Per-deployment overhead</strong></td>
+<td><strong>~<span class="arithmatex">\(325–\)</span>1,350</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-complete-budget-scenarios">10. Complete Budget Scenarios<a class="headerlink" href="#10-complete-budget-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="scenario-a-minimum-viable-build-local-use-commercial-hire-transport">Scenario A — Minimum viable build, local use, commercial hire transport<a class="headerlink" href="#scenario-a-minimum-viable-build-local-use-commercial-hire-transport" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container (WWT) + delivery</td>
+<td>$1,800</td>
+</tr>
+<tr>
+<td>Interior conversion (minimal)</td>
+<td>$950</td>
+</tr>
+<tr>
+<td>Pinhole plate</td>
+<td>$95</td>
+</tr>
+<tr>
+<td>Film plane mechanism (manual)</td>
+<td>$2,200</td>
+</tr>
+<tr>
+<td>Water system</td>
+<td>$1,457</td>
+</tr>
+<tr>
+<td>Cyanotype chemistry + substrate (50 prints)</td>
+<td>$2,842</td>
+</tr>
+<tr>
+<td>Transport per deployment (local)</td>
+<td>$400</td>
+</tr>
+<tr>
+<td>Permits (minimal)</td>
+<td>$50</td>
+</tr>
+<tr>
+<td><strong>Scenario A total</strong></td>
+<td><strong>~$9,794</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="scenario-b-recommended-build-regional-deployment">Scenario B — Recommended build, regional deployment<a class="headerlink" href="#scenario-b-recommended-build-regional-deployment" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Container (CW) + delivery</td>
+<td>$3,150</td>
+</tr>
+<tr>
+<td>Interior conversion (full)</td>
+<td>$1,140</td>
+</tr>
+<tr>
+<td>Pinhole plate</td>
+<td>$150</td>
+</tr>
+<tr>
+<td>Film plane mechanism (manual + electric actuation)</td>
+<td>$3,227</td>
+</tr>
+<tr>
+<td>Water system</td>
+<td>$1,765</td>
+</tr>
+<tr>
+<td>Cyanotype chemistry + substrate (50 prints)</td>
+<td>$2,842</td>
+</tr>
+<tr>
+<td>Rodenstock Apo-Ronar 1200mm lens</td>
+<td>$800</td>
+</tr>
+<tr>
+<td>Transport per deployment (50–100 miles)</td>
+<td>$900</td>
+</tr>
+<tr>
+<td>Permits (typical public land)</td>
+<td>$300</td>
+</tr>
+<tr>
+<td><strong>Scenario B total (excl. CDL)</strong></td>
+<td><strong>~$14,274</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="scenario-c-full-production-own-transport-cdl">Scenario C — Full production, own transport, CDL<a class="headerlink" href="#scenario-c-full-production-own-transport-cdl" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scenario B build</td>
+<td>$14,274</td>
+</tr>
+<tr>
+<td>CDL Class A training + medical + DMV</td>
+<td>$4,500</td>
+</tr>
+<tr>
+<td>QuickLoadz self-loading trailer</td>
+<td>$35,000</td>
+</tr>
+<tr>
+<td>Ford F-350+ pickup (if needed)</td>
+<td><span class="arithmatex">\(50,000–\)</span>80,000 (new)</td>
+</tr>
+<tr>
+<td><strong>Scenario C total</strong></td>
+<td><strong>~<span class="arithmatex">\(103,774–\)</span>133,774</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.</em></p>
+<hr />
+<h2 id="11-research-gaps-cost-verification-required">11. Research Gaps &amp; Cost Verification Required<a class="headerlink" href="#11-research-gaps-cost-verification-required" title="Permanent link">&para;</a></h2>
+<p>The following costs are not covered by existing research documents and should be verified before committing:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lenox Laser pinhole fabrication price</td>
+<td>Estimated</td>
+<td>Request quote at lenoxlaser.com — specify 2.17 mm ±0.025 mm in SS-302 shim, 75 mm × 75 mm</td>
+</tr>
+<tr>
+<td>Grimco ACM panel pricing</td>
+<td>Listed at ~$85†</td>
+<td>Confirm current price; Grimco City of Industry: 626-912-9600</td>
+</tr>
+<tr>
+<td>Rockland Liquid Light bulk pricing</td>
+<td>Unconfirmed</td>
+<td>Contact rockaloid.com before committing to that process</td>
+</tr>
+<tr>
+<td>Silver nitrate bulk pricing</td>
+<td>Volatile</td>
+<td>Get quote within 2 weeks of ordering — AgNO₃ price can shift 20–30%/month</td>
+</tr>
+<tr>
+<td>Location permit fees</td>
+<td>Estimated</td>
+<td>Check specific jurisdiction's film permit office before site selection</td>
+</tr>
+<tr>
+<td>Commercial photography insurance</td>
+<td>Not researched</td>
+<td>General liability + inland marine for equipment; estimate <span class="arithmatex">\(800–\)</span>2,000/year</td>
+</tr>
+<tr>
+<td>Site preparation (levelling, power, fencing)</td>
+<td>Not researched</td>
+<td>Highly site-specific; budget <span class="arithmatex">\(0–\)</span>5,000 depending on location</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Giant Pinhole Camera Project
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

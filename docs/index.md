@@ -1,6 +1,8 @@
 # Giant Pinhole Camera — Research & Build
 
-<img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
+<div style="text-align:center;">
+  <img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
+</div>
 
 A rigorous, source-backed guide to designing and building a very large pinhole camera
 targeting a **20 ft × 7 ft (6 m × 2.1 m) image plane**, housed in a standard 20-foot
@@ -22,6 +24,7 @@ or manufacturer data sheets.
 | [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
+| [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 
 ---
 
@@ -37,12 +40,3 @@ or manufacturer data sheets.
 | f-number | f/1088 |
 | Baseline exposure | ~43 min (ISO 6 paper, full sun, Schwarzschild corrected) |
 
----
-
-## Fabrication Drawings
-
-Interchangeable plate system — wall frame, pinhole plate, and lens plate:
-
-![Sheet 1 — Front views](assets/plate-drawing-sheet1.png)
-
-![Sheet 2 — Sections and details](assets/plate-drawing-sheet2.png)

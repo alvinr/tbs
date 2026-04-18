@@ -1,0 +1,20 @@
+# Fabrication Drawings
+
+Interchangeable plate system for the pinhole-end wall of the shipping container.
+The frame is fixed; the pinhole plate and lens plate swap in and out without tools.
+
+---
+
+## Sheet 1 — Front Views
+
+Plan and elevation of the wall frame, pinhole plate, and lens plate.
+
+![Sheet 1 — Front views](assets/plate-drawing-sheet1.png)
+
+---
+
+## Sheet 2 — Sections and Details
+
+Cross-sections, fastener details, and light-seal arrangement.
+
+![Sheet 2 — Sections and details](assets/plate-drawing-sheet2.png)

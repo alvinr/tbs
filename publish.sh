@@ -55,6 +55,7 @@ MD_FILES=(
     "water-system-report.md"
     "film-plane-mechanism-report.md"
     "project-cost-breakdown.md"
+    "fabrication-drawings.md"
 )
 
 CHANGED=0

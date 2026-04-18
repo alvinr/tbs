@@ -411,8 +411,8 @@ def scientist(ax, cx, cy, sc, reach_x, reach_y, clipboard=False):
 ax.add_patch(Rectangle((12,91),76,6.8, fc=PRU_INK,ec=PAPER,lw=2.2,zorder=8))
 ax.add_patch(Rectangle((12,90.2),76,0.7, fc=PAPER,ec="none",zorder=8))
 ax.add_patch(Rectangle((12,89.5),76,0.4, fc=CYAN_MID,ec="none",zorder=8))
-ax.text(50, 94.5, "GIANT  PINHOLE  CAMERA",
-        color=PAPER, fontsize=14.5, ha="center", va="center",
+ax.text(50, 94.5, "THE  BIG  SHOEBOX  PROJECT",
+        color=PAPER, fontsize=13.0, ha="center", va="center",
         fontweight="bold", fontfamily="monospace", zorder=9)
 ax.text(50, 88.2,
         "CAMERA  RESEARCH  DIVISION  ·  FIELD  UNIT  No.1  ·  CYANOTYPE  PROCESS",
@@ -436,7 +436,7 @@ ax.text(50, 7.5,
 ax.text(4.8, 50, "CYANOTYPE  PROCESS",
         color=PAPER, fontsize=5.0, ha="center", va="center",
         rotation=90, fontfamily="monospace", alpha=0.75, zorder=5)
-ax.text(95.2, 50, "GIANT  PINHOLE  CAMERA",
+ax.text(95.2, 50, "THE  BIG  SHOEBOX  PROJECT",
         color=PAPER, fontsize=5.0, ha="center", va="center",
         rotation=270, fontfamily="monospace", alpha=0.75, zorder=5)
 

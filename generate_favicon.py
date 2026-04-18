@@ -83,7 +83,7 @@ for tx, ty in [(CX-6, rect_y-7), (CX, rect_y-8), (CX+6, rect_y-7)]:
 ax.plot([CX-10, CX+10], [rect_y-7.5, rect_y-7.5], color=PAPER, lw=1.2, zorder=4)
 
 # ── Text ──────────────────────────────────────────────────────────────────────
-ax.text(CX, 18, "GPC", color=PAPER, fontsize=22, ha="center", va="center",
+ax.text(CX, 18, "TBS", color=PAPER, fontsize=22, ha="center", va="center",
         fontweight="bold", fontfamily="monospace", zorder=6)
 ax.text(CX, 12, "No.1", color=CYAN_LITE, fontsize=11, ha="center", va="center",
         fontfamily="monospace", zorder=6)

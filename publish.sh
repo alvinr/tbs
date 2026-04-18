@@ -87,6 +87,7 @@ IMG_FILES=(
     "water-system-sheet1.png"
     "water-system-sheet2.png"
     "logo-final.png"
+    "favicon.png"
     "film-plane-sheet1.png"
     "film-plane-sheet2.png"
     "film-plane-sheet3.png"

@@ -62,6 +62,7 @@ IMAGE_FILES = [
     "water-system-sheet1.png",
     "water-system-sheet2.png",
     "logo-final.png",
+    "favicon.png",
     "film-plane-sheet1.png",
     "film-plane-sheet2.png",
     "film-plane-sheet3.png",
@@ -83,6 +84,8 @@ site_url: "{site_url}"
 
 theme:
   name: material
+  favicon: assets/favicon.png
+  logo: assets/favicon.png
   palette:
     - scheme: default
       primary: black
@@ -139,7 +142,9 @@ copyright: "Giant Pinhole Camera Project"
 INDEX_MD = """\
 # Giant Pinhole Camera — Research & Build
 
-<img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
+<div style="text-align:center;">
+  <img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
+</div>
 
 A rigorous, source-backed guide to designing and building a very large pinhole camera
 targeting a **20 ft × 7 ft (6 m × 2.1 m) image plane**, housed in a standard 20-foot

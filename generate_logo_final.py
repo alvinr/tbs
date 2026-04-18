@@ -128,7 +128,7 @@ for cx_, cy_, cw, ch in [
                           fc=PRU_INK, ec=PAPER, lw=0.6, zorder=7))
 
 # Container ID tag
-ax.text((EX_L+EX_R)/2, EX_T-0.7, "GPC-001  ·  20FT  ISO  CAMERA",
+ax.text((EX_L+EX_R)/2, EX_T-0.7, "TBS-001  ·  20FT  ISO  CAMERA",
         color=PAPER, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace", alpha=0.85, zorder=7)
 
@@ -262,7 +262,7 @@ ax.text((C_L+C_R)/2, fl_y+1.2, "FOCAL LENGTH  2,362 mm",
 # ── GPC BADGE — lower centre, below tripod ────────────────────────────────────
 ax.add_patch(Circle((CX, 21), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
 ax.add_patch(Circle((CX, 21), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
-ax.text(CX, 21.5, "GPC", color=PAPER, fontsize=8.5, ha="center", va="center",
+ax.text(CX, 21.5, "TBS", color=PAPER, fontsize=8.5, ha="center", va="center",
         fontweight="bold", fontfamily="monospace", zorder=10)
 ax.text(CX, 18.8, "No.1", color=CYAN_LITE, fontsize=4.8, ha="center", va="center",
         fontfamily="monospace", zorder=10)

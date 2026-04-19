@@ -14,7 +14,7 @@
       
       
       
-        <link rel="next" href="project-summary/">
+        <link rel="next" href="project-cost-breakdown/">
       
       
         
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-big-shoebox-research-build" class="md-skip">
+        <a href="#the-big-shoebox-project-summary" class="md-skip">
           Skip to content
         </a>
       
@@ -219,25 +219,6 @@
     
   
   Home
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="project-summary/" class="md-tabs__link">
-        
-  
-  
-    
-  
-  Project Summary
 
       </a>
     </li>
@@ -611,6 +592,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-is-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Is It
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Scale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Technology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#documents" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -621,48 +646,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#camera-specification-summary" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Camera Specification Summary
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="project-summary/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Project Summary
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1062,16 +1049,76 @@
 
 
 
-<h1 id="the-big-shoebox-research-build">The Big Shoebox — Research &amp; Build<a class="headerlink" href="#the-big-shoebox-research-build" title="Permanent link">&para;</a></h1>
+<h1 id="the-big-shoebox-project-summary">The Big Shoebox — Project Summary<a class="headerlink" href="#the-big-shoebox-project-summary" title="Permanent link">&para;</a></h1>
 <div style="text-align:center;">
-  <img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
+  <img src="assets/logo-final.png" alt="The Big Shoebox Project" style="width:40%">
 </div>
 
-<p>A rigorous, source-backed guide to designing and building a very large pinhole camera
-targeting a <strong>20 ft × 7 ft (6 m × 2.1 m) image plane</strong>, housed in a standard 20-foot
-shipping container.</p>
-<p>Every design decision traces to a citable source — peer-reviewed papers, textbooks,
-or manufacturer data sheets.</p>
+<hr />
+<h2 id="what-is-it">What Is It<a class="headerlink" href="#what-is-it" title="Permanent link">&para;</a></h2>
+<p>A fully operational pinhole camera built inside a standard 20-foot ISO shipping container. It makes photographs — real, large-format photographs — on contact-scale cyanotype prints measuring nearly 20 feet wide by 8 feet tall. It is transportable, deployable in remote locations, and self-sufficient for water and processing. It is not an installation that resembles a camera. It is a camera.</p>
+<hr />
+<h2 id="the-scale">The Scale<a class="headerlink" href="#the-scale" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image plane</td>
+<td>5,893 × 2,388 mm (~19'4" × 7'10")</td>
+</tr>
+<tr>
+<td>Image area</td>
+<td>~140 sq ft</td>
+</tr>
+<tr>
+<td>Focal length</td>
+<td>2,362 mm (container interior depth)</td>
+</tr>
+<tr>
+<td>Optimal pinhole</td>
+<td>Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm)</td>
+</tr>
+<tr>
+<td>f-number</td>
+<td>f/1088</td>
+</tr>
+<tr>
+<td>Baseline exposure</td>
+<td>~43 min (ISO 6 paper, full sun, Schwarzschild-corrected)</td>
+</tr>
+<tr>
+<td>Process</td>
+<td>Cyanotype — water-based, non-toxic, no silver</td>
+</tr>
+<tr>
+<td>Per-print cost</td>
+<td>~$57</td>
+</tr>
+<tr>
+<td>50-print run</td>
+<td>~$2,842</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-technology">The Technology<a class="headerlink" href="#the-technology" title="Permanent link">&para;</a></h2>
+<p>Two independent movement systems work in series, stacking their effects non-linearly:</p>
+<p><strong>Front board — tilt and swing (±5°)</strong>
+The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207 mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.</p>
+<p><strong>Film plane — 4-corner independent actuation (±42° tilt, ±20° swing)</strong>
+Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.</p>
+<p><strong>Combined:</strong> the two systems interact non-linearly. Their compound optical projections — modelled and documented in the <a href="tilt-swing-board-report/">distortion renders</a> — produce images that no other camera type can make.</p>
+<p>Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.</p>
+<p><strong>Off-grid capable:</strong> a self-contained three-circuit water system supports 8–10 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without mains connection.</p>
+<hr />
+<h2 id="the-process">The Process<a class="headerlink" href="#the-process" title="Permanent link">&para;</a></h2>
+<p>Cyanotype on cotton muslin. The sensitiser (ferric ammonium citrate + potassium ferricyanide) is coated onto fabric, exposed by contact with the image-plane, and developed in plain cold water. No silver, no hazardous chemistry, no darkroom registration required.</p>
+<p>The container travels by commercial hire truck. No CDL required for the operator. No oversize permits required for an empty 20ft standard container on Interstate highways.</p>
 <hr />
 <h2 id="documents">Documents<a class="headerlink" href="#documents" title="Permanent link">&para;</a></h2>
 <table>
@@ -1082,10 +1129,6 @@ or manufacturer data sheets.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="project-summary/">Project Summary</a></td>
-<td>One-page overview — scale, technology, process</td>
-</tr>
 <tr>
 <td><a href="pinhole-optics-report/">Pinhole Optics Report</a></td>
 <td>Lord Rayleigh formula, f-numbers, exposure calculations</td>
@@ -1111,60 +1154,36 @@ or manufacturer data sheets.</p>
 <td>All process options, ISO equivalents, spectral response, per-image costs</td>
 </tr>
 <tr>
-<td><a href="chemistry-shopping-list/">Chem Shopping List</a></td>
-<td>50-print quantities with supplier URLs and confirmed prices</td>
+<td><a href="water-system-report/">Processing System</a></td>
+<td>Off-grid three-circuit water system design and Bill of Materials</td>
+</tr>
+<tr>
+<td><a href="film-plane-mechanism-report/">Film Plane Mechanism</a></td>
+<td>4-corner independent actuation — design, drawings, shopping list</td>
 </tr>
 <tr>
 <td><a href="fabrication-drawings/">Fabrication Drawings</a></td>
 <td>Interchangeable plate system — wall frame, pinhole plate, lens plate</td>
 </tr>
 <tr>
+<td><a href="tilt-swing-board-report/">Tilt-Swing Front Board</a></td>
+<td>Spherical-pivot mechanism — design, drawings, combined distortion renders</td>
+</tr>
+<tr>
+<td><a href="project-cost-breakdown/">Cost Breakdown</a></td>
+<td>Full itemised build cost — three scenarios, all sources cited</td>
+</tr>
+<tr>
+<td><a href="chemistry-shopping-list/">Chem Shopping List</a></td>
+<td>50-print quantities with supplier URLs and confirmed prices</td>
+</tr>
+<tr>
+<td><a href="container-transport-options/">Transportation</a></td>
+<td>Commercial hire vs. self-haul analysis</td>
+</tr>
+<tr>
 <td><a href="funding-proposal/">Funding Proposal</a></td>
 <td>Structured pitch outline for arts foundations, MFA boards, residency programs</td>
-</tr>
-<tr>
-<td><a href="tilt-swing-board-report/">Tilt-Swing Front Board</a></td>
-<td>Mechanism design, drawings, and combined distortion renders</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="camera-specification-summary">Camera Specification Summary<a class="headerlink" href="#camera-specification-summary" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Container</td>
-<td>20 ft standard shipping container</td>
-</tr>
-<tr>
-<td>Focal length (f)</td>
-<td>2,362 mm (container interior depth)</td>
-</tr>
-<tr>
-<td>Image plane</td>
-<td>5,893 × 2,388 mm (~19'4" × 7'10")</td>
-</tr>
-<tr>
-<td>Image area</td>
-<td>~140 sq ft</td>
-</tr>
-<tr>
-<td>Optimal pinhole Ø</td>
-<td>2.17 mm (Rayleigh formula, λ = 550 nm)</td>
-</tr>
-<tr>
-<td>f-number</td>
-<td>f/1088</td>
-</tr>
-<tr>
-<td>Baseline exposure</td>
-<td>~43 min (ISO 6 paper, full sun, Schwarzschild corrected)</td>
 </tr>
 </tbody>
 </table>

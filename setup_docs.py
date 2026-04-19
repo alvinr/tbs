@@ -28,7 +28,7 @@ PROJECT_ROOT = Path(__file__).parent.resolve()
 DOCS_DIR = PROJECT_ROOT / "docs"
 ASSETS_DIR = DOCS_DIR / "assets"
 
-SITE_NAME = "Giant Pinhole Camera — Research & Build"
+SITE_NAME = "The Big Shoebox — Research & Build"
 SITE_DESCRIPTION = (
     "A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera."
 )
@@ -39,18 +39,20 @@ SITE_URL = "https://alvinr.github.io/tbs"
 # Map source filename → (docs subdirectory, nav title)
 # Order here controls the sidebar navigation order.
 MD_FILES = [
+    ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
     ("pinhole-optics-report.md",         (".",           "Pinhole Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
-    ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("lens-options.md",                  (".",           "Lens Options")),
     ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole")),
-    ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
-    ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("container-transport-options.md",   (".",           "Transportation")),
+    ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
-    ("project-cost-breakdown.md",        (".",           "Project Cost Breakdown")),
-    ("fabrication-drawings.md",          (".",           "Fabrication Drawings")),
+    ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
+    ("fabrication-drawings.md",          (".",           "Pinehole Fab")),
+    ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
+    ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
+
 ]
 
 # Images to copy into assets/
@@ -76,6 +78,19 @@ IMAGE_FILES = [
     "film-plane-distortion-c5.png",
     "film-plane-distortion-c6.png",
     "film-plane-distortion-summary.png",
+    "tilt-swing-board-sheet1.png",
+    "tilt-swing-board-sheet2.png",
+    "tilt-swing-board-sheet3.png",
+    "tilt-swing-combined-c0.png",
+    "tilt-swing-combined-c1.png",
+    "tilt-swing-combined-c2.png",
+    "tilt-swing-combined-c3.png",
+    "tilt-swing-combined-c4.png",
+    "tilt-swing-combined-c5.png",
+    "tilt-swing-combined-c6.png",
+    "tilt-swing-combined-c7.png",
+    "tilt-swing-combined-c8.png",
+    "tilt-swing-combined-summary.png",
 ]
 
 MKDOCS_YML = """\
@@ -137,11 +152,11 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "Giant Pinhole Camera Project"
+copyright: "The Big Shoebox Project (c) 2025 Alvin Richards"
 """
 
 INDEX_MD = """\
-# Giant Pinhole Camera — Research & Build
+# The Big Shoebox — Research & Build
 
 <div style="text-align:center;">
   <img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
@@ -168,6 +183,7 @@ or manufacturer data sheets.
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Tilt-Swing Front Board](tilt-swing-board-report.md) | Mechanism design, drawings, and combined distortion renders |
 
 ---
 

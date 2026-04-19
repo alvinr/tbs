@@ -56,6 +56,7 @@ MD_FILES=(
     "film-plane-mechanism-report.md"
     "project-cost-breakdown.md"
     "fabrication-drawings.md"
+    "tilt-swing-board-report.md"
 )
 
 CHANGED=0
@@ -101,6 +102,19 @@ IMG_FILES=(
     "film-plane-distortion-c5.png"
     "film-plane-distortion-c6.png"
     "film-plane-distortion-summary.png"
+    "tilt-swing-board-sheet1.png"
+    "tilt-swing-board-sheet2.png"
+    "tilt-swing-board-sheet3.png"
+    "tilt-swing-combined-c0.png"
+    "tilt-swing-combined-c1.png"
+    "tilt-swing-combined-c2.png"
+    "tilt-swing-combined-c3.png"
+    "tilt-swing-combined-c4.png"
+    "tilt-swing-combined-c5.png"
+    "tilt-swing-combined-c6.png"
+    "tilt-swing-combined-c7.png"
+    "tilt-swing-combined-c8.png"
+    "tilt-swing-combined-summary.png"
 )
 
 for f in "${IMG_FILES[@]}"; do

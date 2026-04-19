@@ -57,9 +57,19 @@ MD_FILES=(
     "project-cost-breakdown.md"
     "fabrication-drawings.md"
     "tilt-swing-board-report.md"
-    "project-summary.md"
     "funding-proposal.md"
 )
+
+# ── Home page: sync project-summary.md → docs/index.md ───────────────────────
+info "Syncing home page (project-summary.md → docs/index.md)..."
+SUMMARY_SRC="$SCRIPT_DIR/project-summary.md"
+INDEX_DST="$DOCS_DIR/index.md"
+if [[ ! -f "$SUMMARY_SRC" ]]; then
+    warn "project-summary.md not found — home page not updated"
+elif [[ ! -f "$INDEX_DST" ]] || [[ "$SUMMARY_SRC" -nt "$INDEX_DST" ]]; then
+    cp "$SUMMARY_SRC" "$INDEX_DST"
+    echo "    updated: docs/index.md"
+fi
 
 CHANGED=0
 for f in "${MD_FILES[@]}"; do

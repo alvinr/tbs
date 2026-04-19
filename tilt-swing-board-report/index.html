@@ -1,0 +1,1995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/tilt-swing-board-report/">
+      
+      
+        <link rel="prev" href="../fabrication-drawings/">
+      
+      
+        <link rel="next" href="../chemistry-shopping-list/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tilt-Swing Front Board - The Big Shoebox — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tilt-and-swing-front-board-mechanism" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The Big Shoebox — Research &amp; Build" class="md-header__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Big Shoebox — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tilt-Swing Front Board
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project-cost-breakdown/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cost Breakdown
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Transportation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../water-system-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Processing System
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../film-plane-mechanism-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Film Plane Mechanism
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fabrication-drawings/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinehole Fab
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tilt-Swing Front Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chem Shopping List
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The Big Shoebox — Research &amp; Build" class="md-nav__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    The Big Shoebox — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-cost-breakdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Breakdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water-system-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../film-plane-mechanism-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabrication-drawings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinehole Fab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt-Swing Front Board
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt-Swing Front Board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#optical-effect-front-board-vs-film-plane-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optical Effect: Front-Board vs Film-Plane Movement
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optical Effect: Front-Board vs Film-Plane Movement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-front-board-tiltswing-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What front-board tilt/swing does
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-to-film-plane-movement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison to film-plane movement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combined-movements-the-interesting-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combined movements: the interesting case
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mechanism-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mechanism Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#movement-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Movement Specification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pivot-bearing-ge50-do-2rs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pivot Bearing: GE50-DO-2RS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adjustment-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjustment Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-sealing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light Sealing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locking-for-long-exposures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Locking for Long Exposures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plate-swap-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plate Swap Procedure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combined-distortion-renders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Combined Distortion Renders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Combined Distortion Renders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c0-reference-all-flat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C0 — Reference (all flat)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c1-board-tilt-3-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C1 — Board tilt +3° only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c2-film-tilt-20-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C2 — Film tilt +20° only
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c3-board-tilt-3-film-tilt-20-amplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C3 — Board tilt +3° + film tilt +20° (amplified)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c4-board-tilt-3-film-tilt-20-opposing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C4 — Board tilt +3° + film tilt −20° (opposing)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c5-board-swing-3-film-swing-15-lateral-amplification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C5 — Board swing +3° + film swing +15° (lateral amplification)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c6-compound-board-tilt-3-swing-3-flat-film" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C6 — Compound board (tilt +3° + swing +3°), flat film
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c7-full-compound-both-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C7 — Full compound both systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c8-opposing-compound-surrealist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C8 — Opposing compound (surrealist)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommended-starting-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended Starting Configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machining-tolerances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Machining Tolerances
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shopping List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shopping List">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structural" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structural
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#light-seal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Light Seal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finishing-fabrication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finishing &amp; Fabrication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cost Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chem Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tilt-and-swing-front-board-mechanism">Tilt-and-Swing Front Board Mechanism<a class="headerlink" href="#tilt-and-swing-front-board-mechanism" title="Permanent link">&para;</a></h1>
+<p><strong>Drawing series TBS-TSB | The Big Shoebox Project</strong></p>
+<p>The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report specifies a new plate — the <strong>Tilt-Swing Board (TSB)</strong> — that replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.</p>
+<hr />
+<h2 id="optical-effect-front-board-vs-film-plane-movement">Optical Effect: Front-Board vs Film-Plane Movement<a class="headerlink" href="#optical-effect-front-board-vs-film-plane-movement" title="Permanent link">&para;</a></h2>
+<p>In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox has both: this mechanism controls the <strong>front board</strong>, and the <a href="../film-plane-mechanism-report/">Film Plane Mechanism</a> controls the rear.</p>
+<h3 id="what-front-board-tiltswing-does">What front-board tilt/swing does<a class="headerlink" href="#what-front-board-tiltswing-does" title="Permanent link">&para;</a></h3>
+<p>The pinhole is a geometric projector — it has no focal length in the lens sense. Tilting the front board <strong>rotates the pinhole's pointing direction</strong>. The effect on the recorded image:</p>
+<table>
+<thead>
+<tr>
+<th>Movement</th>
+<th>Effect on image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Board tilt up (+α)</td>
+<td>Image shifts upward on film (~207 mm per 5°)</td>
+</tr>
+<tr>
+<td>Board swing right (+β)</td>
+<td>Image shifts right on film (~207 mm per 5°)</td>
+</tr>
+<tr>
+<td>Compound tilt + swing</td>
+<td>Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5°</td>
+</tr>
+</tbody>
+</table>
+<p>At f = 2,362 mm, a 5° board tilt shifts the image <strong>2,362 × tan(5°) = 207 mm</strong> on the film plane. On a 2,388 mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.</p>
+<p><strong>No Scheimpflug effect</strong>: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.</p>
+<h3 id="comparison-to-film-plane-movement">Comparison to film-plane movement<a class="headerlink" href="#comparison-to-film-plane-movement" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Front board tilt</th>
+<th>Film plane tilt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image shift</td>
+<td>Yes — 207 mm per 5°</td>
+<td>No (film moves, not image centre)</td>
+</tr>
+<tr>
+<td>Keystone</td>
+<td>Gentle (~1.5% at 5°)</td>
+<td>Dramatic (Scheimpflug-style)</td>
+</tr>
+<tr>
+<td>Scale gradient</td>
+<td>Uniform across field</td>
+<td>Non-uniform (near edge stretched)</td>
+</tr>
+<tr>
+<td>Focus</td>
+<td>Constant (pinhole)</td>
+<td>Constant (pinhole)</td>
+</tr>
+<tr>
+<td>Primary use</td>
+<td>Image placement, diagonal shift</td>
+<td>Perspective distortion, extreme stretch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="combined-movements-the-interesting-case">Combined movements: the interesting case<a class="headerlink" href="#combined-movements-the-interesting-case" title="Permanent link">&para;</a></h3>
+<p>When both systems operate simultaneously, the effects <strong>stack non-linearly</strong>. The combined projection model (see distortion renders) shows:</p>
+<ul>
+<li><strong>Same-direction tilt (amplified):</strong> board tilt + film tilt in the same direction amplifies the image shift and adds Scheimpflug-style keystone on top of the board-shift offset</li>
+<li><strong>Opposing tilt:</strong> the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone</li>
+<li><strong>Full compound (both axes, both systems):</strong> produces an image where no lines are parallel in any axis — the most complex projection the camera can make</li>
+</ul>
+<p>See the <a href="#combined-distortion-renders">Combined Distortion Renders</a> section below.</p>
+<hr />
+<h2 id="mechanism-overview">Mechanism Overview<a class="headerlink" href="#mechanism-overview" title="Permanent link">&para;</a></h2>
+<p>The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:</p>
+<div class="highlight"><pre><span></span><code>WALL FRAME (fixed, welded to container)
+│
+├── TSB-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
+│    ├── Identical M12/540PCD/Ø8 dowel interface as all other plates
+│    ├── Ø380mm central bore (passes TSB-02 carrier + 135mm clearance margin)
+│    ├── Ø80 H7 × 50mm deep bearing seat pocket (interior face)
+│    ├── 4× M8×1.0 fine-pitch adjustment screws with Delrin guide bushings
+│    ├── 4× M6 nylon-tip locking set screws (cross-lock each adj screw)
+│    ├── 6× M6 bellows outer flange attachment on Ø375mm PCD
+│    └── 3-step labyrinth bore (Ø382/390/400mm) — secondary light seal
+│
+├── TSB-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
+│    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
+│    ├── Ø52×3mm counterbore — identical to standard plate
+│    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
+│    ├── 4× 440C SS hemispherical ball-socket inserts on Ø260mm PCD
+│    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
+│
+├── TSB-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
+│    ├── SKF/INA/Kaydon GE50-DO-2RS (same bearing family as film plane)
+│    ├── Bore Ø50mm | OD Ø80mm | Width 46mm | Misalignment ±15°
+│    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
+│
+└── TSB-10  BELLOWS (matte black neoprene/nylon)
+     ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
+     └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
+</code></pre></div>
+<hr />
+<h2 id="movement-specification">Movement Specification<a class="headerlink" href="#movement-specification" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Control</th>
+<th>Travel</th>
+<th>Resolution</th>
+<th>Image effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tilt</td>
+<td>Top + bottom M8 screws (black knobs)</td>
+<td>±5.3°</td>
+<td>0.012°/click</td>
+<td>±222mm vertical image shift</td>
+</tr>
+<tr>
+<td>Swing</td>
+<td>Left + right M8 screws (silver knobs)</td>
+<td>±5.3°</td>
+<td>0.012°/click</td>
+<td>±222mm horizontal image shift</td>
+</tr>
+<tr>
+<td>Compound</td>
+<td>All 4 screws</td>
+<td>±3.7° per axis simultaneously</td>
+<td>0.012°/click</td>
+<td>Diagonal shift + keystone</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Image shift formula:</strong> shift (mm) = f × tan(θ) = 2,362 × tan(θ)</p>
+<table>
+<thead>
+<tr>
+<th>Board angle</th>
+<th>Tilt image shift</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1°</td>
+<td>41 mm</td>
+<td>Very subtle — useful for fine composition</td>
+</tr>
+<tr>
+<td>2°</td>
+<td>83 mm</td>
+<td>~3.5% of frame height</td>
+</tr>
+<tr>
+<td>3°</td>
+<td>124 mm</td>
+<td>~5.2% — clearly visible on print</td>
+</tr>
+<tr>
+<td>5°</td>
+<td>207 mm</td>
+<td>~8.7% — dramatic compositional shift</td>
+</tr>
+<tr>
+<td>5.3° (max)</td>
+<td>220 mm</td>
+<td>Mechanical hard stop</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pivot-bearing-ge50-do-2rs">Pivot Bearing: GE50-DO-2RS<a class="headerlink" href="#pivot-bearing-ge50-do-2rs" title="Permanent link">&para;</a></h2>
+<p>The GE50-DO-2RS was chosen over cross-flexure and Cardan arrangements:</p>
+<ul>
+<li><strong>Cross-flexure</strong>: two stacked stages needed for tilt + swing simultaneously; combined depth of ~60mm exceeds the 40mm plate budget; parasitic translation at compound angles</li>
+<li><strong>Cardan joint</strong>: cross-spider projects beyond Ø350mm aperture; gimbal-lock risk near cross-axis; shaft seals at 4 points</li>
+<li><strong>GE50-DO-2RS (chosen)</strong>: single component handles both axes about a true pivot point; ±15° misalignment capacity (well above ±5.3° required); PTFE sliding surface is sealed, maintenance-free, and impervious to photographic chemistry; zero backlash under preload from opposing screw pairs</li>
+</ul>
+<p>The pivot is located at the plane of the pinhole disc face (40mm forward of the bearing housing), so tilt rotates the image cone about the pinhole itself — no parallax error from pivot offset.</p>
+<hr />
+<h2 id="adjustment-mechanism">Adjustment Mechanism<a class="headerlink" href="#adjustment-mechanism" title="Permanent link">&para;</a></h2>
+<p>Four M8 × 1.0 fine-pitch stainless screws, each terminating in a Grade-25 Ø8mm chrome steel ball seated in a hardened 440C SS hemispherical insert pressed into the carrier plate rim.</p>
+<p><strong>Angular resolution:</strong></p>
+<div class="highlight"><pre><span></span><code>Arm radius (pivot → ball contact):  130 mm
+Screw pitch:                          1.0 mm per turn
+Linear travel ÷ arm radius:      1/130 rad/mm = 0.0077°/mm
+Resolution per full turn:             arctan(1.0/130) = 0.44°
+Detents per turn (36-detent knob):    36
+Resolution per click:                 0.44° / 36 = 0.012° per click
+Full ±5° range from centre:          ~410 clicks (11.4 turns)
+Mechanical hard stop:                ±12mm travel = ±5.3°
+</code></pre></div>
+<p><strong>Knob identification:</strong>
+- Top and bottom screws → <strong>TILT</strong> axis → <strong>black anodised</strong> knobs, engraved TILT+ / TILT−
+- Left and right screws → <strong>SWING</strong> axis → <strong>natural/silver anodised</strong> knobs, engraved SWING+ / SWING−</p>
+<p><strong>Operation:</strong> To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centred on the bearing at all times.</p>
+<hr />
+<h2 id="light-sealing">Light Sealing<a class="headerlink" href="#light-sealing" title="Permanent link">&para;</a></h2>
+<p>The bellows (TSB-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
+<ul>
+<li>4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)</li>
+<li>Inner and outer attachment flanges are sealed with Ø4mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates</li>
+<li>The TSB-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles</li>
+</ul>
+<p><strong>Why bellows over EPDM wiper seal:</strong> A wiper seal pressed against the tilting disc edge creates variable friction at different angles, giving inconsistent feel. Bellows are zero-friction, standard photographic practice, and self-certify light-tightness by construction.</p>
+<hr />
+<h2 id="locking-for-long-exposures">Locking for Long Exposures<a class="headerlink" href="#locking-for-long-exposures" title="Permanent link">&para;</a></h2>
+<p>After setting the desired angle, tighten the 4 × M6 nylon-tip set screws (one per adjustment screw, accessed with a 3mm hex key from the exterior face). The nylon tip binds against the M8 shank without marring the threads.</p>
+<p>The combined stiction of:
+1. M6 lock screws binding M8 adjustment screws
+2. Opposite screw pair compressive preload
+3. PTFE bearing surface stiction</p>
+<p>provides robust position-holding for exposures of 20–90 minutes under ambient wind loads.</p>
+<hr />
+<h2 id="plate-swap-procedure">Plate Swap Procedure<a class="headerlink" href="#plate-swap-procedure" title="Permanent link">&para;</a></h2>
+<p>The TSB assembly swaps in/out of the same wall frame as the standard pinhole plate. No special tooling required beyond an M12 socket and 3mm hex key.</p>
+<ol>
+<li><strong>Loosen</strong> 4× M6 locking set screws (3mm hex key)</li>
+<li><strong>Zero</strong> all 4 adjustment knobs to 0° using the calibration scales</li>
+<li><strong>Remove</strong> 8× M12×45 SHCS bolts</li>
+<li><strong>Pull</strong> TSB assembly from wall frame (dowel pins release with light pull)</li>
+<li><strong>Fit</strong> standard flat pinhole plate — locate on same Ø8mm dowel pins, torque M12 bolts to 65 Nm</li>
+</ol>
+<p>Swap time: approximately 10 minutes.</p>
+<hr />
+<h2 id="combined-distortion-renders">Combined Distortion Renders<a class="headerlink" href="#combined-distortion-renders" title="Permanent link">&para;</a></h2>
+<p>The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.</p>
+<p>The projection model applies two sequential transformations:</p>
+<p><strong>Step 1 — Front board rotation:</strong><br />
+Board tilt α and swing β rotate the effective world coordinate system:<br />
+<code>W' = Ry(−β) · Rx(−α) · W_world</code></p>
+<p><strong>Step 2 — Film plane intersection:</strong><br />
+The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:<br />
+<code>t = (n·r₀)/(n·d);  F = t × d</code></p>
+<p>The red cross (+) marks the projected image centre; grey cross marks the nominal centre.</p>
+<h3 id="c0-reference-all-flat">C0 — Reference (all flat)<a class="headerlink" href="#c0-reference-all-flat" title="Permanent link">&para;</a></h3>
+<p><img alt="C0" src="../assets/tilt-swing-combined-c0.png" /></p>
+<p>Undistorted reference. Both systems at 0°. Grid is symmetric, image centre on nominal.</p>
+<hr />
+<h3 id="c1-board-tilt-3-only">C1 — Board tilt +3° only<a class="headerlink" href="#c1-board-tilt-3-only" title="Permanent link">&para;</a></h3>
+<p><img alt="C1" src="../assets/tilt-swing-combined-c1.png" /></p>
+<p>The pinhole points 3° upward. The entire image shifts up ~124mm on the film. Grid lines remain parallel (no keystone from board tilt alone). The effect is equivalent to pointing the camera upward — useful for including more sky or adjusting horizon placement.</p>
+<hr />
+<h3 id="c2-film-tilt-20-only">C2 — Film tilt +20° only<a class="headerlink" href="#c2-film-tilt-20-only" title="Permanent link">&para;</a></h3>
+<p><img alt="C2" src="../assets/tilt-swing-combined-c2.png" /></p>
+<p>Film plane tilts 20° (top edge moves toward pinhole). The near grid is compressed vertically near the top of frame; the bottom of frame is stretched. Classic Scheimpflug-style distortion without any board movement.</p>
+<hr />
+<h3 id="c3-board-tilt-3-film-tilt-20-amplified">C3 — Board tilt +3° + film tilt +20° (amplified)<a class="headerlink" href="#c3-board-tilt-3-film-tilt-20-amplified" title="Permanent link">&para;</a></h3>
+<p><img alt="C3" src="../assets/tilt-swing-combined-c3.png" /></p>
+<p>Both tilt in the same direction. The board shift (+124mm) lands on an already-compressed region of the film plane — the upper image is dramatically compressed AND shifted. The lower frame is expanded. This is the strongest single-axis distortion this camera can produce.</p>
+<hr />
+<h3 id="c4-board-tilt-3-film-tilt-20-opposing">C4 — Board tilt +3° + film tilt −20° (opposing)<a class="headerlink" href="#c4-board-tilt-3-film-tilt-20-opposing" title="Permanent link">&para;</a></h3>
+<p><img alt="C4" src="../assets/tilt-swing-combined-c4.png" /></p>
+<p>The board tilts up but the film tilts in the opposite direction. The two effects partially cancel: the image shift is reduced, and the keystone is inverted relative to the shift direction. A nearly flat image results, with a subtle S-curve distortion at the midpoint — invisible with either system alone.</p>
+<hr />
+<h3 id="c5-board-swing-3-film-swing-15-lateral-amplification">C5 — Board swing +3° + film swing +15° (lateral amplification)<a class="headerlink" href="#c5-board-swing-3-film-swing-15-lateral-amplification" title="Permanent link">&para;</a></h3>
+<p><img alt="C5" src="../assets/tilt-swing-combined-c5.png" /></p>
+<p>Both systems swing right. The image shifts laterally and develops a horizontal keystone. Useful for photographing asymmetric subjects — the camera can be placed centrally in the container but the image framed toward one side.</p>
+<hr />
+<h3 id="c6-compound-board-tilt-3-swing-3-flat-film">C6 — Compound board (tilt +3° + swing +3°), flat film<a class="headerlink" href="#c6-compound-board-tilt-3-swing-3-flat-film" title="Permanent link">&para;</a></h3>
+<p><img alt="C6" src="../assets/tilt-swing-combined-c6.png" /></p>
+<p>The board points diagonally (both up and right simultaneously). The image shifts diagonally on the film plane. The film plane is flat, so no Scheimpflug effect — a clean diagonal translation of the image with minimal keystone.</p>
+<hr />
+<h3 id="c7-full-compound-both-systems">C7 — Full compound both systems<a class="headerlink" href="#c7-full-compound-both-systems" title="Permanent link">&para;</a></h3>
+<p><img alt="C7" src="../assets/tilt-swing-combined-c7.png" /></p>
+<p>Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image centre shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.</p>
+<hr />
+<h3 id="c8-opposing-compound-surrealist">C8 — Opposing compound (surrealist)<a class="headerlink" href="#c8-opposing-compound-surrealist" title="Permanent link">&para;</a></h3>
+<p><img alt="C8" src="../assets/tilt-swing-combined-c8.png" /></p>
+<p>Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and swing are opposed in both axes simultaneously. The result is a "folding" distortion — the image appears to rotate in opposite directions about orthogonal axes. No precedent in conventional camera movements. A uniquely novel optical configuration.</p>
+<hr />
+<h3 id="summary-grid">Summary grid<a class="headerlink" href="#summary-grid" title="Permanent link">&para;</a></h3>
+<p><img alt="All configurations" src="../assets/tilt-swing-combined-summary.png" /></p>
+<hr />
+<h2 id="recommended-starting-configurations">Recommended Starting Configurations<a class="headerlink" href="#recommended-starting-configurations" title="Permanent link">&para;</a></h2>
+<p>For a first shoot with the TSB mechanism, the following settings offer the clearest demonstration of each effect:</p>
+<table>
+<thead>
+<tr>
+<th>Session</th>
+<th>Board tilt</th>
+<th>Board swing</th>
+<th>Film tilt</th>
+<th>Film swing</th>
+<th>What to observe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 — Baseline</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>Flat reference for comparison</td>
+</tr>
+<tr>
+<td>2 — Board only</td>
+<td>2°</td>
+<td>0°</td>
+<td>0°</td>
+<td>0°</td>
+<td>Image shifts up 83mm — subtle, elegant</td>
+</tr>
+<tr>
+<td>3 — Film only</td>
+<td>0°</td>
+<td>0°</td>
+<td>15°</td>
+<td>0°</td>
+<td>Scheimpflug compression at top</td>
+</tr>
+<tr>
+<td>4 — Amplified</td>
+<td>2°</td>
+<td>0°</td>
+<td>15°</td>
+<td>0°</td>
+<td>Clear stacking effect</td>
+</tr>
+<tr>
+<td>5 — Opposing</td>
+<td>2°</td>
+<td>0°</td>
+<td>−15°</td>
+<td>0°</td>
+<td>Near-cancellation with S-curve residual</td>
+</tr>
+<tr>
+<td>6 — Full compound</td>
+<td>3°</td>
+<td>3°</td>
+<td>20°</td>
+<td>15°</td>
+<td>Maximum compound — one 90-min exposure</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="machining-tolerances">Machining Tolerances<a class="headerlink" href="#machining-tolerances" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Nominal</th>
+<th>Tolerance</th>
+<th>Importance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSB-01 bearing seat bore Ø80</td>
+<td>Ø80.000</td>
+<td>H7: +0.030/0.000</td>
+<td>Bearing outer ring press-fit</td>
+</tr>
+<tr>
+<td>TSB-02 bearing shank Ø50</td>
+<td>Ø50.000</td>
+<td>k5: +0.013/+0.002</td>
+<td>Bearing inner ring fit</td>
+</tr>
+<tr>
+<td>TSB-02 counterbore Ø52</td>
+<td>Ø52.000</td>
+<td>H7: +0.030/0.000</td>
+<td>Concentric with shank to 0.05mm</td>
+</tr>
+<tr>
+<td>TSB-02 shank perpendicularity</td>
+<td>—</td>
+<td>0.05mm/100mm</td>
+<td>Sets optical zero</td>
+</tr>
+<tr>
+<td>TSB-08 hemispherical socket Ra</td>
+<td>—</td>
+<td>Ra 0.4 (ground)</td>
+<td>Ball articulation smoothness</td>
+</tr>
+<tr>
+<td>TSB-01 bolt holes M12 PCD</td>
+<td>Ø540.000</td>
+<td>±0.1mm positional</td>
+<td>Must match wall frame exactly</td>
+</tr>
+<tr>
+<td>TSB-01 dowel holes Ø8</td>
+<td>Ø8.000</td>
+<td>H7: +0.015/0.000</td>
+<td>Plate registration repeatability</td>
+</tr>
+<tr>
+<td>Adj screw arm radius</td>
+<td>130.000</td>
+<td>±0.25mm</td>
+<td>Calibration scale accuracy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="shopping-list">Shopping List<a class="headerlink" href="#shopping-list" title="Permanent link">&para;</a></h2>
+<h3 id="structural">Structural<a class="headerlink" href="#structural" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Source A</th>
+<th>Source B</th>
+<th>Est. cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GE50-DO-2RS bearing</td>
+<td>SKF, 50mm bore</td>
+<td>Bearing Headquarters, Buena Park CA (bearingheadquarters.com)</td>
+<td>Applied Industrial, Los Angeles</td>
+<td>~$90</td>
+</tr>
+<tr>
+<td>Al 6061-T651 plate (TSB-01)</td>
+<td>620×620×45mm (24"×24"×1.75")</td>
+<td>Online Metals (onlinemetals.com)</td>
+<td>Metal Supermarkets, Chatsworth CA</td>
+<td>~$125</td>
+</tr>
+<tr>
+<td>Al 6061-T6 round bar (TSB-02)</td>
+<td>Ø340mm×35mm (13.5"OD×1.5")</td>
+<td>Metal Supermarkets, Chatsworth CA</td>
+<td>Online Metals</td>
+<td>~$100</td>
+</tr>
+<tr>
+<td>M8×1.0 SS A4 SHCS</td>
+<td>M8×1.0×80mm</td>
+<td>Bolt Depot (boltdepot.com)</td>
+<td>Pacific Coast Bolt, Anaheim CA</td>
+<td>~$3 ea</td>
+</tr>
+<tr>
+<td>Delrin/POM rod (bushings)</td>
+<td>Ø30mm×200mm</td>
+<td>McMaster-Carr, Santa Fe Springs CA (#8573K75)</td>
+<td>Amazon Industrial</td>
+<td>~$20</td>
+</tr>
+<tr>
+<td>Ø8mm Grade 25 chrome steel balls</td>
+<td>52100 bearing steel, 10-pack</td>
+<td>McMaster-Carr (#9528K22)</td>
+<td>Precision Balls Inc.</td>
+<td>~$14/pack</td>
+</tr>
+<tr>
+<td>M6×1.0 nylon-tip set screws</td>
+<td>SS316, M6×20mm</td>
+<td>McMaster-Carr (#91375A187)</td>
+<td>Fastenal (SoCal branches)</td>
+<td>~$14/pack-10</td>
+</tr>
+<tr>
+<td>440C SS round bar (socket inserts)</td>
+<td>Ø20mm×100mm</td>
+<td>McMaster-Carr (#1765T17)</td>
+<td>Metal Supermarkets</td>
+<td>~$28</td>
+</tr>
+<tr>
+<td>M12×45 SHCS SS A4</td>
+<td>8 off</td>
+<td>McMaster-Carr (#92290A198)</td>
+<td>Bolt Depot</td>
+<td>~$20/pack-5</td>
+</tr>
+<tr>
+<td>M16×55 SHCS SS A4</td>
+<td>1 off</td>
+<td>McMaster-Carr (#92290A254)</td>
+<td>Bolt Depot</td>
+<td>~$5</td>
+</tr>
+<tr>
+<td>Ø8 m6 SS303 dowel pins</td>
+<td>Ø8×40mm</td>
+<td>McMaster-Carr (#97395A437)</td>
+<td>Fastenal</td>
+<td>~$9 ea</td>
+</tr>
+<tr>
+<td>Loctite 638 retaining compound</td>
+<td>10mL</td>
+<td>McMaster-Carr (#1832A1)</td>
+<td>Home Depot (local)</td>
+<td>~$22</td>
+</tr>
+</tbody>
+</table>
+<h3 id="light-seal">Light Seal<a class="headerlink" href="#light-seal" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Source A</th>
+<th>Source B</th>
+<th>Est. cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Photographic bellows (custom)</td>
+<td>Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene</td>
+<td>Micro-Tools (microtools.com) — custom order</td>
+<td>Ames Camera Repair (custom bellows)</td>
+<td>~$80–150</td>
+</tr>
+<tr>
+<td>Neoprene cord seal Ø4mm</td>
+<td>70 Shore, 1.5m (for Ø420 loop + flange gaskets)</td>
+<td>McMaster-Carr (#1834K22)</td>
+<td>Grainger (LA branches)</td>
+<td>~$18</td>
+</tr>
+</tbody>
+</table>
+<h3 id="finishing-fabrication">Finishing &amp; Fabrication<a class="headerlink" href="#finishing-fabrication" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Source</th>
+<th>Est. cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hard anodise (TSB-01 exterior)</td>
+<td>MIL-A-8625 Type III, 0.025mm</td>
+<td>Pac-Nor Anodizing, Chatsworth CA</td>
+<td>~$80–120</td>
+</tr>
+<tr>
+<td>Black anodise (TSB-02, knobs)</td>
+<td>Type II</td>
+<td>Aero Finishing, Burbank CA</td>
+<td>~$60–90</td>
+</tr>
+<tr>
+<td>CNC machining (TSB-01 + TSB-02)</td>
+<td>All Al parts</td>
+<td>Fictiv (fictiv.com) / ProtoLabs</td>
+<td>~$800–1,500</td>
+</tr>
+<tr>
+<td>Knurled knob stock Ø40mm</td>
+<td>Al, 4 off</td>
+<td>Jergens (#49525) or machine from bar</td>
+<td>~$15 ea</td>
+</tr>
+<tr>
+<td>Angular scale engraving</td>
+<td>Al 80×15×2mm, 2 off</td>
+<td>LaserPros, Chatsworth CA</td>
+<td>~$35–50</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cost-summary">Cost Summary<a class="headerlink" href="#cost-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low estimate</th>
+<th>High estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hardware + bearings + seals</td>
+<td>$420</td>
+<td>$580</td>
+</tr>
+<tr>
+<td>CNC machining</td>
+<td>$800</td>
+<td>$1,500</td>
+</tr>
+<tr>
+<td>Anodising</td>
+<td>$140</td>
+<td>$210</td>
+</tr>
+<tr>
+<td>Knobs + scales</td>
+<td>$110</td>
+<td>$150</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~$1,470</strong></td>
+<td><strong>~$2,440</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Big Shoebox Project (c) 2025 Alvin Richards
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

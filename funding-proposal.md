@@ -187,7 +187,13 @@ This is intentional. The project is as much a contribution to the field as it is
 
 ## 9. Artist Statement / Bio
 
-*[To be completed by the applicant. Recommended length: 150–250 words. Suggested content: relationship to photography and large-format process; interest in scale, materiality, and site-specificity; connection to photographic history; relevant exhibition history or institutional context. The statement should be personal and specific — the proposal's technical sections carry the rigour; this section carries the voice.]*
+Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had seen was real. That interval, between exposure and knowledge, was the first version of what this project is.
+
+At Nottingham Trent University I encountered the pinhole camera and understood immediately that something both maddening and transformative was possible with it. I graduated with a First in Photography in 1998 — my dissertation, *Deeds of War*, was acquired by the NTU library, and my photographs were selected for exhibition by the Royal Photographic Society.
+
+Through the 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format portraits made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see.
+
+My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 43 minutes of sun, to stretch time, distort it, and make it visible.
 
 ---
 

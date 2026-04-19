@@ -1,4 +1,4 @@
-# Giant Pinhole Camera — Research & Build
+# The Big Shoebox — Research & Build
 
 <div style="text-align:center;">
   <img src="assets/logo-final.png" alt="Giant Pinhole Camera" style="width:50%">
@@ -25,6 +25,7 @@ or manufacturer data sheets.
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Tilt-Swing Front Board](tilt-swing-board-report.md) | Mechanism design, drawings, and combined distortion renders |
 
 ---
 

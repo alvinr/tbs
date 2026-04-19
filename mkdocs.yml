@@ -1,4 +1,4 @@
-site_name: "Giant Pinhole Camera — Research & Build"
+site_name: "The Big Shoebox — Research & Build"
 site_description: "A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera."
 site_url: "https://alvinr.github.io/tbs"
 
@@ -49,22 +49,23 @@ extra_javascript:
 
 nav:
   - Home: index.md
+  - "Cost Breakdown": project-cost-breakdown.md
   - "Pinhole Optics Report": pinhole-optics-report.md
   - "Container Optics": pinhole-option-b-optics.md
-  - "Construction Guide": pinhole-camera-construction.md
   - "Lens Options": lens-options.md
   - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
-  - "Photosensitive Materials": photosensitive-plane-options.md
-  - "Chem Shopping List": chemistry-shopping-list.md
   - "Transportation": container-transport-options.md
+  - "Photosensitive Materials": photosensitive-plane-options.md
   - "Processing System": water-system-report.md
   - "Film Plane Mechanism": film-plane-mechanism-report.md
-  - "Project Cost Breakdown": project-cost-breakdown.md
-  - "Fabrication Drawings": fabrication-drawings.md
+  - "Construction Guide": pinhole-camera-construction.md
+  - "Pinehole Fab": fabrication-drawings.md
+  - "Tilt-Swing Front Board": tilt-swing-board-report.md
+  - "Chem Shopping List": chemistry-shopping-list.md
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "Giant Pinhole Camera Project"
+copyright: "The Big Shoebox Project (c) 2025 Alvin Richards"

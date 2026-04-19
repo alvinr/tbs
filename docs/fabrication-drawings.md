@@ -18,3 +18,9 @@ Plan and elevation of the wall frame, pinhole plate, and lens plate.
 Cross-sections, fastener details, and light-seal arrangement.
 
 ![Sheet 2 — Sections and details](assets/plate-drawing-sheet2.png)
+
+---
+
+## See Also
+
+- [Tilt-Swing Front Board](tilt-swing-board-report.md) — spherical-pivot adapter that replaces the vanilla pinhole plate, adding ±5° tilt and swing adjustment

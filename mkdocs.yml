@@ -49,7 +49,6 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - "Project Summary": project-summary.md
   - "Cost Breakdown": project-cost-breakdown.md
   - "Pinhole Optics Report": pinhole-optics-report.md
   - "Container Optics": pinhole-option-b-optics.md
@@ -70,4 +69,4 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "The Big Shoebox Project (c) 2025 Alvin Richards"
+copyright: "The Big Shoebox Project (c) 2026 Alvin Richards"

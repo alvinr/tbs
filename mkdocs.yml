@@ -49,6 +49,7 @@ extra_javascript:
 
 nav:
   - Home: index.md
+  - "Project Summary": project-summary.md
   - "Cost Breakdown": project-cost-breakdown.md
   - "Pinhole Optics Report": pinhole-optics-report.md
   - "Container Optics": pinhole-option-b-optics.md
@@ -59,9 +60,10 @@ nav:
   - "Processing System": water-system-report.md
   - "Film Plane Mechanism": film-plane-mechanism-report.md
   - "Construction Guide": pinhole-camera-construction.md
-  - "Pinehole Fab": fabrication-drawings.md
+  - "Pinhole Fab": fabrication-drawings.md
   - "Tilt-Swing Front Board": tilt-swing-board-report.md
   - "Chem Shopping List": chemistry-shopping-list.md
+  - "Funding Proposal": funding-proposal.md
 
 extra:
   social:

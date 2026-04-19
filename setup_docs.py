@@ -39,6 +39,7 @@ SITE_URL = "https://alvinr.github.io/tbs"
 # Map source filename → (docs subdirectory, nav title)
 # Order here controls the sidebar navigation order.
 MD_FILES = [
+    ("project-summary.md",               (".",           "Project Summary")),
     ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
     ("pinhole-optics-report.md",         (".",           "Pinhole Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
@@ -49,9 +50,10 @@ MD_FILES = [
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
     ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
-    ("fabrication-drawings.md",          (".",           "Pinehole Fab")),
+    ("fabrication-drawings.md",          (".",           "Pinhole Fab")),
     ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
+    ("funding-proposal.md",              (".",           "Funding Proposal")),
 
 ]
 
@@ -175,6 +177,7 @@ or manufacturer data sheets.
 
 | Document | Description |
 |----------|-------------|
+| [Project Summary](project-summary.md) | One-page overview — scale, technology, process |
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
 | [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
@@ -183,6 +186,7 @@ or manufacturer data sheets.
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Funding Proposal](funding-proposal.md) | Structured pitch outline for arts foundations, MFA boards, residency programs |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Mechanism design, drawings, and combined distortion renders |
 
 ---

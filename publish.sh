@@ -57,6 +57,8 @@ MD_FILES=(
     "project-cost-breakdown.md"
     "fabrication-drawings.md"
     "tilt-swing-board-report.md"
+    "project-summary.md"
+    "funding-proposal.md"
 )
 
 CHANGED=0

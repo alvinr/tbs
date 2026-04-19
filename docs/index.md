@@ -17,6 +17,7 @@ or manufacturer data sheets.
 
 | Document | Description |
 |----------|-------------|
+| [Project Summary](project-summary.md) | One-page overview — scale, technology, process |
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
 | [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
@@ -26,6 +27,7 @@ or manufacturer data sheets.
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Mechanism design, drawings, and combined distortion renders |
+| [Funding Proposal](funding-proposal.md) | Structured pitch outline for arts foundations, MFA boards, residency programs |
 
 ---
 

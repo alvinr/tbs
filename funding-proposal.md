@@ -100,9 +100,9 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 
 ## 6. Budget and Use of Funds
 
-All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Three funding tiers are presented to allow partial or phased support.
+All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Three funding levels are presented to allow partial or phased support.
 
-### Tier 1 — Core Build (~$13,000–$14,500)
+### Level 1 — Core Build (~$13,000–14,500)
 
 Everything required to operate the camera for a first deployment:
 
@@ -116,31 +116,31 @@ Everything required to operate the camera for a first deployment:
 | Processing water system | $1,765 |
 | Cyanotype chemistry + muslin substrate (50-print run) | $2,842 |
 | Contingency (10%) | ~$1,300 |
-| **Tier 1 total** | **~$14,200** |
+| **Level 1 total** | **~$14,200** |
 
-### Tier 2 — First Deployment (+$1,350–$2,800)
+### Level 2 — First Deployment (+$1,350–2,800)
 
 Transport, permits, and water resupply for a single public deployment:
 
 | Item | Cost |
 |------|------|
-| Commercial transport (short haul, 30–100 miles, round trip) | $1,000–$2,400 |
-| Location permit (public land, non-commercial art use) | $0–$300 |
-| Water resupply (550 gal ≈ 10 prints) | $25–$50 |
-| **Tier 2 total** | **~$1,350–$2,800** |
+| Commercial transport (short haul, 30–100 miles, round trip) | $1,000–2,400 |
+| Location permit (public land, non-commercial art use) | $0–300 |
+| Water resupply (550 gal ≈ 10 prints) | $25–50 |
+| **Level 2 total** | **~$1,350–2,800** |
 
-### Tier 3 — Documentation (+$2,000–$4,000)
+### Level 3 — Documentation (+$2,000–4,000)
 
 Video documentation, process photography, and initial publication:
 
 | Item | Cost |
 |------|------|
-| Videography (1–2 deployment days) | $1,000–$2,500 |
-| Photography (behind-the-scenes, prints) | $500–$1,000 |
-| Publication design (zine or catalogue, print run) | $500–$1,500 |
-| **Tier 3 total** | **~$2,000–$4,000** |
+| Videography (1–2 deployment days) | $1,000–2,500 |
+| Photography (behind-the-scenes, prints) | $500–1,000 |
+| Publication design (zine or catalogue, print run) | $500–1,500 |
+| **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Tiers 1+2+3):** ~$17,550–$21,000 for a complete first-year programme with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$17,550–21,000 for a complete first-year programme with three public deployments, 50-print edition, and full documentation.
 
 ---
 

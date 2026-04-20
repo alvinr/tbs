@@ -61,6 +61,7 @@ MD_FILES=(
     "operating-manual.md"
     "electrical-report.md"
     "master-shopping-list.md"
+    "license.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────

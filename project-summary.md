@@ -25,6 +25,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Process | Cyanotype — water-based, non-toxic, no silver |
 | Per-print cost | ~$57 |
 | 50-print run | ~$2,842 |
+| License | [GNU AGPLv3](license.md) — © 2026 Alvin Richards |
 
 ---
 
@@ -74,3 +75,4 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
+| [License](license.md) | GNU AGPLv3 — © 2026 Alvin Richards |

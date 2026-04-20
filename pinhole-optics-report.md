@@ -424,7 +424,8 @@ Based on the analysis above, the following parameters are recommended as design 
 | f-number (7-ft camera depth) | f/1036 | f = 2134 mm, d = 2.06 mm |
 | f-number (21-ft camera depth) | f/1804 | f = 6459 mm, d = 3.58 mm |
 | **Exposure on photo paper, calculated** | **11–35 min** (depending on focal length choice) | Sunny-16 × (f/N ÷ 16)² ÷ 6; Stroebel (2009) |
-| **Exposure corrected for reciprocity** | **23 min–1.5 hr** | Schwarzschild p=0.85; test empirically |
+| **RC paper (ISO 6) — reciprocity-corrected** | **23 min–1.5 hr** | Schwarzschild p=0.85; test empirically |
+| **Cyanotype on muslin (ISO ~0.5–2) — no correction** | **~1.5–4 hours** | Iron-based process; no Schwarzschild failure (see Part 5) |
 | Resolution at optimal pinhole | 0.41–0.55 lp/mm | Young (1971); Born & Wolf (1999) |
 | Max Ilford paper roll width | 127 cm (50 in) | Ilford product page (verified 2026) |
 | Panels needed to cover 20' width | 5 panels (seamed) | 6096 mm ÷ 1270 mm |
@@ -462,7 +463,8 @@ All claims in this document trace to the following sources. Where source content
 | f-number | N = f / d | dimensionless |
 | Exposure, ISO 100, bright sun | t = (f_number / 16)² / 100 | seconds |
 | Exposure, photo paper (~ISO 6) | t = above × 16.7 | seconds |
-| Reciprocity-corrected exposure | t_actual = t_calculated^(1/0.85) | seconds |
+| Reciprocity-corrected exposure (silver gelatin) | t_actual = t_calculated^(1/0.85) | seconds |
+| Exposure, cyanotype on muslin (Herschel, ISO ~1) | t = above × 100 (no Schwarzschild correction) | seconds |
 | Resolution limit | R = d / (2 × 1.22 × 0.00055 × f) | lp/mm |
 | Airy disk radius | r = 1.22 × 0.00055 × f / d | mm |
 | Angle of view (horizontal) | θ = 2 × arctan(width / (2 × f)) | degrees |

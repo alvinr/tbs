@@ -14,12 +14,12 @@ Single-operator workflow for cyanotype on cotton muslin.
 | 0 | Pre-deployment setup | ~2 hours |
 | 1 | Chemistry preparation | ~30 min |
 | 2 | Load image plane (darkness) | ~45 min |
-| 3 | Exposure | ~43 min (baseline) |
+| 3 | Exposure | ~2 hr (baseline) |
 | 4 | Development | ~20 min |
 | 5 | Cleanup and close-down | ~30 min |
-| **Total** | **First print, ideal conditions** | **~4 hours** |
+| **Total** | **First print, ideal conditions** | **~5–6 hours** |
 
-Baseline exposure is 43 minutes under direct full sun (ISO 6 cyanotype paper equivalent). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
+Baseline exposure is 2 hours under direct full sun (cyanotype Herschel formula on cotton muslin, ISO equivalent ~1–2; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
 ---
 
@@ -221,11 +221,11 @@ Work efficiently — aim to complete coating within 20 minutes of opening the tr
 
 ## Phase 3 — Exposure
 
-**Time: 43 minutes baseline + adjustment. Shutter operated entirely from outside.**
+**Time: ~2 hours baseline + adjustment. Shutter operated entirely from outside.**
 
 ### 3.1 Exposure Calculation
 
-Baseline exposure: **43 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer.
+Baseline exposure: **2 hours** in direct unobstructed sun, mid-morning to mid-afternoon, summer.
 
 **Exposure Adjustment Table**
 
@@ -240,7 +240,7 @@ Baseline exposure: **43 minutes** in direct unobstructed sun, mid-morning to mid
 
 *For compound conditions (e.g. thin haze + early morning), multiply the factors: 1.5 × 2.0 = × 3.0.*
 
-These factors are approximations based on the Schwarzschild reciprocity failure model for cyanotype (n ≈ 0.85). For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in 10-minute intervals using a card mask, develop immediately, and compare zones.
+These factors are EV-based estimates for light level changes. Cyanotype is an iron-based process and does not exhibit Schwarzschild reciprocity failure — no additional reciprocity correction is required beyond the factors above. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in 20-minute intervals using a card mask, develop immediately, and compare zones.
 
 ### 3.2 Opening the Shutter
 
@@ -337,14 +337,14 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 *Full reference table for use in Phase 3.*
 
-| Baseline | 43 min | Direct full sun, summer, 10:00–14:00 |
-|----------|--------|-------------------------------------|
-| Thin haze | 65 min | |
-| Broken cloud | 86 min | |
-| Heavy overcast | 172 min | |
-| Early/late sun | 86 min | |
-| Winter mid-latitude | 65 min | |
-| Thin haze + early sun | 129 min | Multiply factors: 1.5 × 2.0 |
+| Baseline | 120 min | Direct full sun, summer, 10:00–14:00 |
+|----------|---------|-------------------------------------|
+| Thin haze | 180 min | |
+| Broken cloud | 240 min | |
+| Heavy overcast | 480 min | |
+| Early/late sun | 240 min | |
+| Winter mid-latitude | 180 min | |
+| Thin haze + early sun | 360 min | Multiply factors: 1.5 × 2.0 |
 
 ---
 

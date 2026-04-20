@@ -390,7 +390,8 @@ For operations involving darkroom chemistry inside the container:
 | Optimal pinhole | 2.17 mm | 2.17 mm | 4.87 mm | 2.17 mm |
 | F-number | f/1088 | f/1088 | f/2467 | f/1088 |
 | Horizontal FOV | 102° | 102°–137° | 11° | 102° |
-| Paper exposure (corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
+| RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
+| Cyanotype on muslin exp. (no correction) | **~2–3 hr** | **~2–3 hr** | ~13 hr | **~2–3 hr** |
 | Transport permit | None | None | None | None (2 loads) |
 | Purchase price range | $1,800–$3,800 | $2,200–$5,700 | $2,200–$5,700 | $3,600–$7,600 |
 | Darkroom included | No | No | No | **Yes** |
@@ -455,7 +456,7 @@ The following order minimizes rework and avoids modifying a container that fails
 8. **Build and test shutter mechanism** — confirm full seal when closed
 9. **Install ventilation** — cut vent penetrations, install fans and light-trap baffles
 10. **Install safelight and door light-trap** — for loading operations
-11. **Test exposure** — small-format test using RC paper patch over image plane center; expose, develop, verify image formation and correct exposure time
+11. **Test exposure** — cut a 200 mm × full-height strip of sensitised muslin, pin over the image plane centre; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
 12. **Full-format test** — load full image plane, expose, develop
 
 ---

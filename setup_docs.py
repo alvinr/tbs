@@ -39,21 +39,22 @@ SITE_URL = "https://alvinr.github.io/tbs"
 # Map source filename → (docs subdirectory, nav title)
 # Order here controls the sidebar navigation order.
 MD_FILES = [
+    ("funding-proposal.md",              (".",           "Proposal")),
     ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
-    ("pinhole-optics-report.md",         (".",           "Pinhole Optics Report")),
+    ("pinhole-optics-report.md",         (".",           "Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
-    ("lens-options.md",                  (".",           "Lens Options")),
     ("lens-vs-pinhole-exposure.md",      (".",           "Lens vs Pinhole")),
+    ("lens-options.md",                  (".",           "Lens Options")),
     ("container-transport-options.md",   (".",           "Transportation")),
+    ("fabrication-drawings.md",          (".",           "Pinhole Fab")),
     ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
-    ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
-    ("fabrication-drawings.md",          (".",           "Pinhole Fab")),
     ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
+    ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
-    ("funding-proposal.md",              (".",           "Funding Proposal")),
-
+    ("operating-manual.md",             (".",           "Operating Manual")),
+    ("electrical-report.md",            (".",           "Electrical & Systems")),
 ]
 
 # Images to copy into assets/
@@ -92,6 +93,8 @@ IMAGE_FILES = [
     "tilt-swing-combined-c7.png",
     "tilt-swing-combined-c8.png",
     "tilt-swing-combined-summary.png",
+    "electrical-sheet1.png",
+    "electrical-sheet2.png",
 ]
 
 MKDOCS_YML = """\
@@ -217,20 +220,24 @@ The container travels by commercial hire truck. No CDL required for the operator
 
 | Document | Description |
 |----------|-------------|
+| [Proposal](funding-proposal.md) | Structured pitch outline for arts foundations, MFA boards, residency programs |
 | [Pinhole Optics Report](pinhole-optics-report.md) | Lord Rayleigh formula, f-numbers, exposure calculations |
 | [Container Optics](pinhole-option-b-optics.md) | Detailed optics for the shipping container configuration |
-| [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
+| [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Lens Options](lens-options.md) | Coverage problem, thin lens equations, DoF, distortion, recommendations |
 | [Lens vs Pinhole](lens-vs-pinhole-exposure.md) | Why the exposure difference is ~5,500× — full derivation |
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
-| [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
+| [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
+| [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
+| [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemised build cost — three scenarios, all sources cited |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
-| [Funding Proposal](funding-proposal.md) | Structured pitch outline for arts foundations, MFA boards, residency programs |
+| [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
+| [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |
 
 """
 

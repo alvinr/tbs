@@ -58,6 +58,8 @@ MD_FILES=(
     "fabrication-drawings.md"
     "tilt-swing-board-report.md"
     "funding-proposal.md"
+    "operating-manual.md"
+    "electrical-report.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────
@@ -127,6 +129,8 @@ IMG_FILES=(
     "tilt-swing-combined-c7.png"
     "tilt-swing-combined-c8.png"
     "tilt-swing-combined-summary.png"
+    "electrical-sheet1.png"
+    "electrical-sheet2.png"
 )
 
 for f in "${IMG_FILES[@]}"; do

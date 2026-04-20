@@ -71,3 +71,5 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemised build cost — three scenarios, all sources cited |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
+| [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
+| [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |

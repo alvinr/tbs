@@ -1,0 +1,2264 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/electrical-report/">
+      
+      
+        <link rel="prev" href="../operating-manual/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Electrical & Systems - The Big Shoebox — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#electrical-systems-report-tbs-001" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="The Big Shoebox — Research &amp; Build" class="md-header__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Big Shoebox — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Electrical & Systems
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../funding-proposal/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Proposal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../project-cost-breakdown/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cost Breakdown
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-optics-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Optics Report
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-option-b-optics/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Container Optics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens vs Pinhole
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../lens-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Lens Options
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Transportation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fabrication-drawings/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Pinhole Fab
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../photosensitive-plane-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Photosensitive Materials
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../water-system-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Processing System
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../film-plane-mechanism-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Film Plane Mechanism
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tilt-swing-board-report/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Tilt-Swing Front Board
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pinhole-camera-construction/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Construction Guide
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../chemistry-shopping-list/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Chem Shopping List
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../operating-manual/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operating Manual
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Electrical & Systems
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="The Big Shoebox — Research &amp; Build" class="md-nav__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../assets/favicon.png" alt="logo">
+
+    </a>
+    The Big Shoebox — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../funding-proposal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-cost-breakdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Breakdown
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fabrication-drawings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Fab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../water-system-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../film-plane-mechanism-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tilt-swing-board-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt-Swing Front Board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chem Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operating-manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operating Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical & Systems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical & Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. System Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-power-budget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Power Budget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-solar-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Solar Array
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-charge-controller-and-battery-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Charge Controller and Battery Bank
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Charge Controller and Battery Bank">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-charge-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Charge Controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-battery-bank" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Battery Bank
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-shore-power-backup-charger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Shore Power Backup Charger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-light-trap-vestibule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Light Trap Vestibule
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Light Trap Vestibule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-construction-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Construction Sequence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-light-leak-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Light-Leak Test
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-impact-on-existing-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Impact on Existing Design
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cooling-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Cooling System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Cooling System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 The Problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-evaporative-cooler-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Evaporative Cooler Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-light-safe-cooler-intake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Light-Safe Cooler Intake
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ventilation-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Ventilation Upgrade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-wiring-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Wiring Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Wiring Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-main-enclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Main Enclosure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-circuit-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Circuit List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-wiring-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Wiring Construction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-electrical-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Electrical Diagrams
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Shopping List
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-impact-on-existing-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Impact on Existing Design
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="electrical-systems-report-tbs-001">Electrical &amp; Systems Report — TBS-001<a class="headerlink" href="#electrical-systems-report-tbs-001" title="Permanent link">&para;</a></h1>
+<p><strong>Covers:</strong> solar power architecture, battery bank, light trap vestibule, cooling, ventilation upgrade, wiring specification, and electrical diagrams.</p>
+<p>See also: <a href="../operating-manual/">Operating Manual</a> for step-by-step operational procedures.</p>
+<hr />
+<h2 id="1-system-overview">1. System Overview<a class="headerlink" href="#1-system-overview" title="Permanent link">&para;</a></h2>
+<p>TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (mains) is accommodated as an optional backup charging input only — the system operates identically without it.</p>
+<p>All loads run at <strong>12V DC</strong>. There is no mains AC distribution inside the container.</p>
+<div class="highlight"><pre><span></span><code>Solar panels (3 × 200W)
+  → Victron SmartSolar MPPT 100/50 charge controller
+  → 12V / 200Ah LiFePO4 battery bank ←── Victron IP65 12/15 shore charger (optional)
+  → Blue Sea 5026 fuse block
+  → Circuits A–F (ventilation, pump, safelight, cooling, actuators)
+</code></pre></div>
+<p>Electrical diagrams: <a href="../assets/electrical-sheet1.png">Sheet 1 — System One-Line</a> | <a href="../assets/electrical-sheet2.png">Sheet 2 — Container Wiring Layout</a></p>
+<hr />
+<h2 id="2-power-budget">2. Power Budget<a class="headerlink" href="#2-power-budget" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Device</th>
+<th>Peak draw</th>
+<th>Duty cycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Ventilation fan — intake (6")</td>
+<td>60W</td>
+<td>Continuous during processing</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Ventilation fan — exhaust (6")</td>
+<td>60W</td>
+<td>Continuous during processing</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Water pump (12V DC)</td>
+<td>100W</td>
+<td>Intermittent (~30 min/print)</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Safelight — interior + vestibule</td>
+<td>15W</td>
+<td>Loading phase only (~45 min)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Evaporative cooler (12V DC)</td>
+<td>80W</td>
+<td>Continuous during operation</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Film plane actuators (optional)</td>
+<td>100W peak</td>
+<td>Intermittent</td>
+</tr>
+<tr>
+<td><strong>Total peak (all on)</strong></td>
+<td></td>
+<td><strong>415W</strong></td>
+<td>Not all simultaneous</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Energy per session (one print):</strong> ~3.5 hours active → approximately 1.5–1.8 kWh consumed.</p>
+<p><strong>Battery bank capacity:</strong> 200Ah × 12V = 2,400 Wh (LiFePO4 usable to 100% DoD) → supports 1.3–1.6 full printing sessions from a full charge, with margin.</p>
+<p><strong>Solar recharge:</strong> 600W array × 5.5 peak sun hours (Palm Springs) = 3,300 Wh/day generated → full recharge from flat within one day; maintains charge with daily single-print use.</p>
+<hr />
+<h2 id="3-solar-array">3. Solar Array<a class="headerlink" href="#3-solar-array" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Panels</td>
+<td>3 × 200W monocrystalline, 12V nominal</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>3 panels in parallel (12V, 30A combined Isc)</td>
+</tr>
+<tr>
+<td>Mounting</td>
+<td>Ground-mounted tilt frame (30° from horizontal) or roof rack</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Due south (azimuth 180°)</td>
+</tr>
+<tr>
+<td>Cable</td>
+<td>10 AWG PV cable, MC4 connectors</td>
+</tr>
+<tr>
+<td>Combiner</td>
+<td>3-way MC4 branch connector + 30A inline fuse per string</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~<span class="arithmatex">\(400 (panels) + ~\)</span>80 (mounting hardware)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Siting:</strong> deploy panels on south-facing ground adjacent the container. A 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.</p>
+<hr />
+<h2 id="4-charge-controller-and-battery-bank">4. Charge Controller and Battery Bank<a class="headerlink" href="#4-charge-controller-and-battery-bank" title="Permanent link">&para;</a></h2>
+<h3 id="41-charge-controller">4.1 Charge Controller<a class="headerlink" href="#41-charge-controller" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>Victron SmartSolar MPPT 100/50</td>
+</tr>
+<tr>
+<td>Max PV input</td>
+<td>100V OC, 50A charge current</td>
+</tr>
+<tr>
+<td>Battery voltage</td>
+<td>12V auto-detect</td>
+</tr>
+<tr>
+<td>Communication</td>
+<td>Bluetooth (Victron Connect app)</td>
+</tr>
+<tr>
+<td>Mounting</td>
+<td>Interior short wall, adjacent main enclosure</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~$200</td>
+</tr>
+</tbody>
+</table>
+<p>The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).</p>
+<h3 id="42-battery-bank">4.2 Battery Bank<a class="headerlink" href="#42-battery-bank" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chemistry</td>
+<td>LiFePO4 (lithium iron phosphate)</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>2 × 100Ah 12V in parallel (200Ah total)</td>
+</tr>
+<tr>
+<td>Usable energy</td>
+<td>2,400 Wh (100% DoD — LiFePO4 does not require 50% reserve like lead-acid)</td>
+</tr>
+<tr>
+<td>Temperature rating</td>
+<td>−20°C to +60°C operating — suitable for interior of steel container in summer</td>
+</tr>
+<tr>
+<td>Cycle life</td>
+<td>3,000–5,000 cycles to 80% capacity</td>
+</tr>
+<tr>
+<td>BMS</td>
+<td>Internal per-cell BMS (standard on Battle Born, Renogy LiFePO4 units)</td>
+</tr>
+<tr>
+<td>Recommended brands</td>
+<td>Battle Born 100Ah, Renogy 100Ah Smart Lithium</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~$700 (two units)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why LiFePO4 and not NMC or lead-acid:</strong>
+- LiFePO4 does not exhibit thermal runaway — safe in an enclosed steel container that may reach 60°C interior
+- Full 100% depth of discharge usable (vs. 50% for lead-acid, 80% for NMC)
+- 3,000+ cycle life supports frequent deployments without degradation
+- No outgassing — can be used in an enclosed space without ventilation dedicated to the battery</p>
+<h3 id="43-shore-power-backup-charger">4.3 Shore Power Backup Charger<a class="headerlink" href="#43-shore-power-backup-charger" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>Victron Blue Smart IP65 12/15</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>100–240V AC, NEMA 5-15 (standard US outlet)</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>12V DC, 15A (180W)</td>
+</tr>
+<tr>
+<td>Full charge time from flat</td>
+<td>~14 hours (200Ah ÷ 15A)</td>
+</tr>
+<tr>
+<td>Inlet</td>
+<td>NEMA 5-15R weatherproof outlet on exterior short wall</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~$150</td>
+</tr>
+</tbody>
+</table>
+<p>Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.</p>
+<hr />
+<h2 id="5-light-trap-vestibule">5. Light Trap Vestibule<a class="headerlink" href="#5-light-trap-vestibule" title="Permanent link">&para;</a></h2>
+<h3 id="51-function">5.1 Function<a class="headerlink" href="#51-function" title="Permanent link">&para;</a></h3>
+<p>The vestibule allows a single operator to enter and exit the camera in full daylight during loading and development, without admitting any UV or visible light to the interior. It replaces the "fabric anteroom" approach noted in the construction guide with a permanent, structurally attached enclosure.</p>
+<h3 id="52-specification">5.2 Specification<a class="headerlink" href="#52-specification" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Footprint (external)</td>
+<td>1,200mm deep × 2,400mm wide × 2,500mm tall</td>
+</tr>
+<tr>
+<td>Frame</td>
+<td>40 × 40mm RHS steel, hot-dip galvanised</td>
+</tr>
+<tr>
+<td>Attachment</td>
+<td>8 × M10 bolts to container corner castings — no welding, fully removable</td>
+</tr>
+<tr>
+<td>Wall/roof cladding</td>
+<td>18mm exterior-grade plywood, painted flat black interior, weatherproof exterior</td>
+</tr>
+<tr>
+<td>Exterior door</td>
+<td>900 × 2,000mm, outward-opening, compression latch, weatherstripped</td>
+</tr>
+<tr>
+<td>Interior light seal</td>
+<td>3 layers Rosco Duvetyne (100% blackout, same spec as film plane seal), hung on Velcro tabs — minimum 200mm overlap per layer</td>
+</tr>
+<tr>
+<td>S-path baffles</td>
+<td>2 × floor-to-ceiling sheet steel baffles (300mm projection from each side wall), painted flat black. Baffles offset so no direct line of sight exists from exterior to container at any angle</td>
+</tr>
+<tr>
+<td>Safelight</td>
+<td>12V red LED strip (circuit D), 200mm above door frame, switched from inside</td>
+</tr>
+<tr>
+<td>Ventilation stub</td>
+<td>4" duct stub with weatherproof cap on exterior wall — connects to container ventilation circuit during processing phases; capped during loading</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-construction-sequence">5.3 Construction Sequence<a class="headerlink" href="#53-construction-sequence" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Weld the RHS steel frame (or have it pre-fabricated) — four vertical posts, top plate, cross-bracing. Galvanise before installation.</li>
+<li>Bolt frame to container corner castings using M10 × 50mm hex bolts with flat washers and spring washers.</li>
+<li>Fix plywood cladding to frame with self-tapping TEK screws. Seal all exterior joints with weatherproof sealant.</li>
+<li>Paint all interior surfaces flat black (zero-sheen). Two coats.</li>
+<li>Fit the exterior door with piano hinge (full-length) and compression latch.</li>
+<li>Install the two internal S-path baffles on opposite walls.</li>
+<li>Hang Duvetyne blackout curtains on Velcro rails — three layers, each offset 200mm.</li>
+<li>Wire safelight strip (circuit D branch) — run conduit from main panel through a sealed penetration in the container short wall.</li>
+</ol>
+<h3 id="54-light-leak-test">5.4 Light-Leak Test<a class="headerlink" href="#54-light-leak-test" title="Permanent link">&para;</a></h3>
+<p>After installation, perform the inspection in Phase 0.7 of the Operating Manual. <strong>Target: zero light visible after 15-minute dark adaptation with outer door closed and container door open.</strong></p>
+<h3 id="55-impact-on-existing-design">5.5 Impact on Existing Design<a class="headerlink" href="#55-impact-on-existing-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The vestibule attaches to existing ISO corner castings — no modification to the container structure required.</li>
+<li>Container cargo doors and seals are unchanged.</li>
+<li>The vestibule adds 1,200mm to the container footprint at the door end — confirm this fits the deployment site.</li>
+<li>When transporting, remove the vestibule (8 bolts) and carry flat inside the container or on a separate vehicle.</li>
+</ul>
+<hr />
+<h2 id="6-cooling-system">6. Cooling System<a class="headerlink" href="#6-cooling-system" title="Permanent link">&para;</a></h2>
+<h3 id="61-the-problem">6.1 The Problem<a class="headerlink" href="#61-the-problem" title="Permanent link">&para;</a></h3>
+<p>A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. An operator cannot safely work above 40°C interior. Chemistry coating is impaired above 35°C.</p>
+<h3 id="62-strategy">6.2 Strategy<a class="headerlink" href="#62-strategy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Interior ΔT</th>
+<th>Cost</th>
+<th>Power</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80% shade cloth canopy over container</td>
+<td>−15 to −20°C</td>
+<td>~$300</td>
+<td>None</td>
+<td><strong>Yes — always</strong></td>
+</tr>
+<tr>
+<td>Scheduling (shoot before 09:00 / after 18:00 in summer)</td>
+<td>−10 to −15°C effective</td>
+<td>$0</td>
+<td>None</td>
+<td>Recommended</td>
+</tr>
+<tr>
+<td>12V DC evaporative cooler (swamp cooler)</td>
+<td>−10 to −15°C additional</td>
+<td>~$300</td>
+<td>80W</td>
+<td><strong>Yes — in temperatures above 30°C ambient</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.</p>
+<blockquote>
+<p><strong>Why evaporative cooling works in Palm Springs:</strong> Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's 80W — an 11× power saving.</p>
+</blockquote>
+<h3 id="63-evaporative-cooler-specification">6.3 Evaporative Cooler Specification<a class="headerlink" href="#63-evaporative-cooler-specification" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>Portacool Jetstream 110 (12V DC version) or equivalent</td>
+</tr>
+<tr>
+<td>Power draw</td>
+<td>~80W at 12V DC</td>
+</tr>
+<tr>
+<td>Airflow</td>
+<td>~300 CFM</td>
+</tr>
+<tr>
+<td>Water consumption</td>
+<td>~3 litres/hour</td>
+</tr>
+<tr>
+<td>Circuit</td>
+<td>E (10A fuse, 14 AWG)</td>
+</tr>
+<tr>
+<td>Intake</td>
+<td>Light-safe baffle (see 6.4)</td>
+</tr>
+<tr>
+<td>Water source</td>
+<td>Dedicated 20-litre reservoir, refilled from Blue circuit IBC tote</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-light-safe-cooler-intake">6.4 Light-Safe Cooler Intake<a class="headerlink" href="#64-light-safe-cooler-intake" title="Permanent link">&para;</a></h3>
+<p>The cooler intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:</p>
+<ul>
+<li><strong>Duct size:</strong> 6" (150mm) — matches cooler inlet</li>
+<li><strong>Penetration:</strong> through the container short wall opposite the vestibule end, positioned 800mm above floor level</li>
+<li><strong>Interior baffles:</strong> two 150 × 150mm flat steel baffles, offset 75mm, mounted inside a 250mm duct stub — breaks the direct light path while allowing unrestricted airflow at 300 CFM</li>
+<li><strong>Exterior:</strong> weatherproof louvre with mesh screen to exclude insects</li>
+</ul>
+<hr />
+<h2 id="7-ventilation-upgrade">7. Ventilation Upgrade<a class="headerlink" href="#7-ventilation-upgrade" title="Permanent link">&para;</a></h2>
+<p>The original construction guide specifies 2 × 4" (100mm) inline fans. For operator comfort during processing in warm conditions, upgrade to 6" (150mm):</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Original</th>
+<th>Upgraded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fan diameter</td>
+<td>4" (100mm)</td>
+<td>6" (150mm)</td>
+</tr>
+<tr>
+<td>Airflow per fan</td>
+<td>~100 CFM</td>
+<td>~200 CFM</td>
+</tr>
+<tr>
+<td>Total airflow</td>
+<td>~200 CFM</td>
+<td>~400 CFM</td>
+</tr>
+<tr>
+<td>Power draw (each)</td>
+<td>~30W</td>
+<td>~60W</td>
+</tr>
+<tr>
+<td>Circuit fuse</td>
+<td>3A</td>
+<td>5A</td>
+</tr>
+<tr>
+<td>Additional cost</td>
+<td>—</td>
+<td>~$60</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Installation:</strong> Same light-baffle design as original — L-shaped offset baffles inside a duct stub. Intake fan is low on the vestibule-end short wall (draws in cooler air near floor level). Exhaust fan is high on the far short wall (expels hot air near ceiling). Cross-flow ventilation.</p>
+<p><strong>Operating modes:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Intake</th>
+<th>Exhaust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exposure</td>
+<td>OFF</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>Loading / development</td>
+<td>Low speed</td>
+<td>Low speed</td>
+</tr>
+<tr>
+<td>Post-session ventilation</td>
+<td>Full speed</td>
+<td>Full speed</td>
+</tr>
+<tr>
+<td>Pre-cooling (before entry)</td>
+<td>Full speed</td>
+<td>Full speed</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-wiring-specification">8. Wiring Specification<a class="headerlink" href="#8-wiring-specification" title="Permanent link">&para;</a></h2>
+<h3 id="81-main-enclosure">8.1 Main Enclosure<a class="headerlink" href="#81-main-enclosure" title="Permanent link">&para;</a></h3>
+<p>IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior short wall adjacent to the vestibule door. Contains:
+- Victron MPPT controller (or external, hardwired)
+- Blue Sea 5026 12-circuit fuse block with busbars
+- Battery positive and negative busbars with 200A main fuse
+- Shore charger output terminals</p>
+<h3 id="82-circuit-list">8.2 Circuit List<a class="headerlink" href="#82-circuit-list" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Device</th>
+<th>Fuse</th>
+<th>Wire gauge</th>
+<th>Run length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Ventilation fan — intake</td>
+<td>5A</td>
+<td>16 AWG</td>
+<td>~3m</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Ventilation fan — exhaust</td>
+<td>5A</td>
+<td>16 AWG</td>
+<td>~8m</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Water pump</td>
+<td>15A</td>
+<td>14 AWG</td>
+<td>~5m</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Safelight (interior + vestibule)</td>
+<td>5A</td>
+<td>18 AWG</td>
+<td>~10m (incl. vestibule branch)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Evaporative cooler</td>
+<td>10A</td>
+<td>14 AWG</td>
+<td>~4m</td>
+</tr>
+<tr>
+<td>F</td>
+<td>Film plane actuators (optional)</td>
+<td>20A</td>
+<td>12 AWG</td>
+<td>~6m</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Main battery fuse</td>
+<td>200A</td>
+<td>2/0 AWG</td>
+<td>~0.5m (battery to busbar)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-wiring-construction">8.3 Wiring Construction<a class="headerlink" href="#83-wiring-construction" title="Permanent link">&para;</a></h3>
+<p><strong>Conduit:</strong> All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilised).</p>
+<p><strong>Connectors:</strong>
+- Interior connections: Anderson Powerpole 30A (red/black) — tool-free, re-mateable, industry standard for 12V DC
+- Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated</p>
+<p><strong>Grounding:</strong> Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.</p>
+<p><strong>Labelling:</strong> Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F) plus device description. Re-label after any wiring change.</p>
+<h3 id="84-electrical-diagrams">8.4 Electrical Diagrams<a class="headerlink" href="#84-electrical-diagrams" title="Permanent link">&para;</a></h3>
+<p>See the Python-generated diagrams linked at the top of this document:</p>
+<ul>
+<li><strong>Sheet 1 — System One-Line Diagram:</strong> complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labelled.</li>
+<li><strong>Sheet 2 — Container Wiring Layout:</strong> top-down floor plan showing all component positions, conduit routes, penetrations, and connection points.</li>
+</ul>
+<hr />
+<h2 id="9-shopping-list">9. Shopping List<a class="headerlink" href="#9-shopping-list" title="Permanent link">&para;</a></h2>
+<p>All US/SoCal sources. Prices approximate as of 2026.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Source</th>
+<th>Est. cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solar panels</td>
+<td>200W mono × 3</td>
+<td>Renogy (renogy.com), Amazon</td>
+<td>~$400</td>
+</tr>
+<tr>
+<td>MPPT charge controller</td>
+<td>Victron SmartSolar MPPT 100/50</td>
+<td>altE Store (altestore.com)</td>
+<td>~$200</td>
+</tr>
+<tr>
+<td>LiFePO4 battery × 2</td>
+<td>100Ah 12V (Battle Born or Renogy)</td>
+<td>battleborncotteries.com / renogy.com</td>
+<td>~$700</td>
+</tr>
+<tr>
+<td>Shore backup charger</td>
+<td>Victron Blue Smart IP65 12/15</td>
+<td>altE Store</td>
+<td>~$150</td>
+</tr>
+<tr>
+<td>Fuse block</td>
+<td>Blue Sea 5026 ST Blade 12-circuit</td>
+<td>West Marine (Torrance CA) / Amazon</td>
+<td>~$55</td>
+</tr>
+<tr>
+<td>200A main fuse + holder</td>
+<td>Blue Sea ANL fuse block</td>
+<td>Amazon</td>
+<td>~$30</td>
+</tr>
+<tr>
+<td>Wiring kit</td>
+<td>14/16/18 AWG, 50ft each colour</td>
+<td>Amazon / Waytek Wire (waytekwire.com)</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td>Anderson Powerpole connectors</td>
+<td>30A kit, 50 pairs</td>
+<td>Powerwerx (powerwerx.com)</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>Deutsch DT connectors</td>
+<td>DT 2-pin, 10 sets</td>
+<td>Waytek Wire</td>
+<td>~$30</td>
+</tr>
+<tr>
+<td>Cable trunking</td>
+<td>40 × 25mm PVC, 5m lengths × 4</td>
+<td>Lowe's / McMaster-Carr</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>Corrugated conduit</td>
+<td>Grey, 10mm ID, 10m</td>
+<td>McMaster-Carr 7828K48</td>
+<td>~$30</td>
+</tr>
+<tr>
+<td>IP65 enclosure</td>
+<td>300 × 200 × 130mm</td>
+<td>Polycase / Amazon</td>
+<td>~$60</td>
+</tr>
+<tr>
+<td>Brady label kit</td>
+<td>M210 with wire label cartridge</td>
+<td>McMaster-Carr / Amazon</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td>NEMA 5-15R inlet</td>
+<td>Weatherproof outlet box</td>
+<td>Leviton / Amazon</td>
+<td>~$25</td>
+</tr>
+<tr>
+<td>Copper ground stake</td>
+<td>8ft × 5/8" diameter</td>
+<td>Home Depot</td>
+<td>~$20</td>
+</tr>
+<tr>
+<td>4 AWG ground wire</td>
+<td>Green/yellow, 3m</td>
+<td>AutoZone / Amazon</td>
+<td>~$15</td>
+</tr>
+<tr>
+<td>Evaporative cooler</td>
+<td>12V DC, ~300 CFM</td>
+<td>Portacool / Amazon</td>
+<td>~$280</td>
+</tr>
+<tr>
+<td>Shade canopy</td>
+<td>80% shade cloth, 20 × 10ft</td>
+<td>Amazon / Farm supply</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td>Canopy frame</td>
+<td>1.5" EMT conduit + fittings</td>
+<td>Home Depot</td>
+<td>~$120</td>
+</tr>
+<tr>
+<td>6" inline fans × 2</td>
+<td>12V DC, ~200 CFM each</td>
+<td>Amazon (AC Infinity S6)</td>
+<td>~$120</td>
+</tr>
+<tr>
+<td>RHS steel 40×40mm</td>
+<td>3m lengths for vestibule frame</td>
+<td>Metal Supermarkets (Gardena CA)</td>
+<td>~$200</td>
+</tr>
+<tr>
+<td>Exterior-grade plywood</td>
+<td>18mm, 4'×8' sheets × 6</td>
+<td>Home Depot</td>
+<td>~$240</td>
+</tr>
+<tr>
+<td>Rosco Duvetyne</td>
+<td>60" wide × 5 yards per layer × 3</td>
+<td>Rose Brand (rosebrand.com, Burbank CA)</td>
+<td>~$180</td>
+</tr>
+<tr>
+<td>Compression latch</td>
+<td>Heavy-duty exterior</td>
+<td>McMaster-Carr 1765A12</td>
+<td>~$45</td>
+</tr>
+<tr>
+<td><strong>Electrical system total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$1,740</strong></td>
+</tr>
+<tr>
+<td><strong>Light trap vestibule total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$780</strong></td>
+</tr>
+<tr>
+<td><strong>Shade canopy total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$200</strong></td>
+</tr>
+<tr>
+<td><strong>Cooling (evap cooler)</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$280</strong></td>
+</tr>
+<tr>
+<td><strong>Systems grand total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~$3,000</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-impact-on-existing-design">10. Impact on Existing Design<a class="headerlink" href="#10-impact-on-existing-design" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Existing element</th>
+<th>Change required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ventilation fans (4")</td>
+<td>Replace with 6" units — same baffle design, same penetration locations</td>
+</tr>
+<tr>
+<td>12V fuse block ($50 item in water system BOM)</td>
+<td>Superseded by Blue Sea 5026 — consolidates all circuits in one panel</td>
+</tr>
+<tr>
+<td>Battery-powered safelight</td>
+<td>Wired to circuit D — no separate battery required</td>
+</tr>
+<tr>
+<td>Water pump power</td>
+<td>Now circuit C on main fuse block — remove standalone 12V supply listed in water report</td>
+</tr>
+<tr>
+<td>Container doors</td>
+<td>Unchanged — vestibule attaches externally</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Big Shoebox Project (c) 2026 Alvin Richards
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

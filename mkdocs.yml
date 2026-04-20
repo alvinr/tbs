@@ -66,11 +66,11 @@ nav:
   - "Operating Manual": operating-manual.md
   - "Electrical & Systems": electrical-report.md
   - "Master Shopping List": master-shopping-list.md
-  - "License": license.md
+  - "License": licensing.md
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "© 2026 Alvin Richards — Released under <a href=\"../license/\">GNU AGPLv3</a>"
+copyright: "© 2026 Alvin Richards — Released under <a href=\"../licensing/\">GNU AGPLv3</a>"

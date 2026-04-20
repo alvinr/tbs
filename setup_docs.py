@@ -56,7 +56,7 @@ MD_FILES = [
     ("operating-manual.md",             (".",           "Operating Manual")),
     ("electrical-report.md",            (".",           "Electrical & Systems")),
     ("master-shopping-list.md",         (".",           "Master Shopping List")),
-    ("license.md",                      (".",           "License")),
+    ("licensing.md",                      (".",           "License")),
 ]
 
 # Images to copy into assets/
@@ -160,7 +160,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "© 2026 Alvin Richards — Released under <a href=\"../license/\">GNU AGPLv3</a>"
+copyright: "© 2026 Alvin Richards — Released under <a href=\"../licensing/\">GNU AGPLv3</a>"
 """
 
 INDEX_MD = """\
@@ -243,7 +243,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
-| [License](license.md) | GNU AGPLv3 — © 2026 Alvin Richards |
+| [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 
 """
 

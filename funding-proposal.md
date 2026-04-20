@@ -26,7 +26,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 
 ### How
 
-The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 43 minutes in direct sunlight. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
+The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 2 hours in direct sunlight using cyanotype on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
 
 The camera is transportable by commercial hire truck (no CDL required) and operates off-grid via a self-contained water system that supports 8–10 full-size prints between resupply runs.
 
@@ -193,7 +193,7 @@ At Nottingham Trent University I encountered the pinhole camera and understood i
 
 Through the 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format portraits made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see.
 
-My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 43 minutes of sun, to stretch time, distort it, and make it visible.
+My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 2 hours of sun, to stretch time, distort it, and make it visible.
 
 ---
 
@@ -209,7 +209,7 @@ My practice since has moved between classical portraiture and abstract colour in
 | Image area | ~140 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
-| Baseline exposure | ~43 min (ISO 6 paper, full sun, Schwarzschild-corrected) |
+| Baseline exposure | ~2–3 hr (cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Film plane movement | ±42° tilt, ±20° swing, 4-corner independent |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype on cotton muslin |

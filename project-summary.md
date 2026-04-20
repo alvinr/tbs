@@ -21,7 +21,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Focal length | 2,362 mm (container interior depth) |
 | Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |
-| Baseline exposure | ~43 min (ISO 6 paper, full sun, Schwarzschild-corrected) |
+| Baseline exposure | ~2–3 hr (cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Process | Cyanotype — water-based, non-toxic, no silver |
 | Per-print cost | ~$57 |
 | 50-print run | ~$2,842 |

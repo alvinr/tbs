@@ -151,6 +151,16 @@ After installation, perform the inspection in Phase 0.7 of the Operating Manual.
 - The vestibule adds 1,200mm to the container footprint at the door end — confirm this fits the deployment site.
 - When transporting, remove the vestibule (8 bolts) and carry flat inside the container or on a separate vehicle.
 
+### 5.6 Light Trap & Ventilation Diagrams
+
+**Sheet 1 — Vestibule Plan (1:100) and S-Path Detail**
+![TBS-001 Light Trap — Sheet 1: Vestibule Plan](assets/lighttrap-sheet1.png)
+
+---
+
+**Sheet 2 — Container Ventilation Section and Fan Baffle Detail**
+![TBS-001 Light Trap — Sheet 2: Ventilation Section](assets/lighttrap-sheet2.png)
+
 ---
 
 ## 6. Cooling System

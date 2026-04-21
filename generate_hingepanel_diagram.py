@@ -233,8 +233,24 @@ def sheet1():
     ax.text(-HINGE_W - 90, -180, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
             color=C_DIM, fontsize=6, ha="right", va="top", **FONT)
 
+    # ── Section A-A cut indicator (at H=1000mm — corresponds to Sheet 2 plan cut)
+    AA_H = 1000   # height of plan section cut
+    ax.plot([-PAD_L, PW + PAD_R], [AA_H, AA_H],
+            color=C_CL, lw=0.8, ls=(0, (10, 4, 2, 4)), zorder=4, alpha=0.7)
+    ax.text(-PAD_L + 20, AA_H + 40, "A", color=C_CL, fontsize=9,
+            fontweight="bold", ha="left", va="bottom", **FONT)
+    ax.text(-PAD_L + 20, AA_H - 40, "A", color=C_CL, fontsize=9,
+            fontweight="bold", ha="left", va="top", **FONT)
+    ax.text(PW + PAD_R - 20, AA_H + 40, "A", color=C_CL, fontsize=9,
+            fontweight="bold", ha="right", va="bottom", **FONT)
+    ax.text(PW + PAD_R - 20, AA_H - 40, "A", color=C_CL, fontsize=9,
+            fontweight="bold", ha="right", va="top", **FONT)
+    ax.text(PW / 2, AA_H + 80,
+            "SECTION A-A  (Plan cross-section — Sheet 2)",
+            color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8)
+
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 2", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
+    title_block(ax, "SHEET 1 OF 3", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
 
     fig.savefig("hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -495,9 +511,28 @@ def sheet2():
             "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT)
 
+    # ── Orientation clarification box ─────────────────────────────────────────
+    # Small inset box top-right, making the viewing direction explicit
+    OB_X = D_XR + 30
+    OB_Y = D_YT - 160
+    OB_W = 550
+    OB_H = 280
+    import matplotlib.patches as mpatches
+    ax.add_patch(mpatches.FancyBboxPatch((OB_X, OB_Y), OB_W, OB_H,
+                 boxstyle="round,pad=8",
+                 facecolor="#FFFBF0", edgecolor="#806010", linewidth=1.0, zorder=12))
+    ax.text(OB_X + OB_W / 2, OB_Y + OB_H - 25,
+            "ORIENTATION NOTE",
+            ha="center", va="top", fontsize=7, color="#806010",
+            fontweight="bold", **FONT, zorder=13)
+    ax.text(OB_X + OB_W / 2, OB_Y + OB_H * 0.5,
+            "DRUM AXIS IS VERTICAL.\nPERSONNEL WALK THROUGH\nIN AN UPRIGHT POSITION.\nSee Sheet 3 for elevation view.",
+            ha="center", va="center", fontsize=6.5, color="#403000",
+            **FONT, zorder=13)
+
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 2",
-                "PLAN CROSS-SECTION — DRUM ZONE DETAIL, BAFFLES & S-PATH LIGHT ROUTE",
+    title_block(ax, "SHEET 2 OF 3",
+                "PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 "EQUAL ASPECT  ·  SCALE 1:10 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -505,9 +540,264 @@ def sheet2():
     print("  hingepanel-sheet2.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 3  —  Drum Vertical Section (Section A-A, looking along panel width)
+#
+# This view shows the drum in ELEVATION — makes clear it is a VERTICAL cylinder
+# 2000mm tall that personnel walk through upright.
+#
+# Horizontal axis = DEPTH direction (exterior → interior, same as Sheet 2 Y axis)
+# Vertical axis   = HEIGHT (0 → 2200mm, floor → top bearing)
+#
+# ASPECT RATIO: figsize derived from data limits. set_aspect("equal") always set.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet3():
+    # ── Key dimensions (re-use Sheet 2 depth constants) ──────────────────────
+    WALL_T  = 40    # container end-wall steel thickness
+    PLY_T   = 18    # ply skin thickness each face
+    PT      = 120   # panel overall thickness
+    FRAME_T = PT - 2 * PLY_T   # = 84mm
+
+    # Depth positions (horizontal axis in this view)
+    Y0_W   = 0           # exterior face of container wall
+    Y1_W   = WALL_T      # = 40
+    Y0_PL  = Y1_W        # outer ply
+    Y1_PL  = Y1_W + PLY_T  # = 58
+    Y0_FR  = Y1_PL       # frame start = 58
+    Y1_FR  = Y0_FR + FRAME_T  # = 142
+    Y0_PL2 = Y1_FR       # inner ply = 142
+    Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel interior face)
+
+    # Drum geometry in this view
+    D_CX_DEPTH = (Y0_W + Y1_PL2) / 2   # drum centre in depth = 80mm
+    D_HALF_W   = DRUM_R                 # drum radius = 375mm (in depth axis)
+
+    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = 80 - 375 = -295mm (exterior overhang)
+    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = 80 + 375 = 455mm  (interior overhang)
+
+    # Height positions (vertical axis in this view)
+    H_FLOOR    = 0
+    H_BRG_BOT  = 100          # lower bearing base
+    H_BRG_HT   = 45           # bearing housing height
+    H_DRUM_BOT = H_BRG_BOT + H_BRG_HT   # = 145mm (drum body starts)
+    H_DRUM_TOP = H_DRUM_BOT + (DRUM_H - 2 * H_BRG_HT)  # = 145 + 1910 = 2055mm
+    H_BRG_TOP  = H_DRUM_TOP + H_BRG_HT  # = 2100mm
+    H_HANDLE   = H_BRG_BOT + DRUM_H * 0.45  # handle height = ~1000mm
+
+    # ── Data range → figure size ──────────────────────────────────────────────
+    PAD_L, PAD_R = 300, 700   # depth-axis margins
+    PAD_B, PAD_T = 150, 350   # height-axis margins
+
+    X_LO = D_DEPTH_L - PAD_L   # = -595mm
+    X_HI = D_DEPTH_R + PAD_R   # = 1155mm  → width 1750mm
+    Y_LO = H_FLOOR - PAD_B     # = -150mm
+    Y_HI = H_BRG_TOP + PAD_T   # = 2450mm  → height 2600mm
+
+    # Data ratio: 1750 : 2600 = 0.673 : 1
+    FIG_H = 14.0
+    FIG_W = FIG_H * (X_HI - X_LO) / (Y_HI - Y_LO)  # = 14 * 1750/2600 = 9.42in
+
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=130)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_aspect("equal")   # MANDATORY
+    ax.axis("off")
+
+    # ── Background zones ──────────────────────────────────────────────────────
+    # Exterior zone (depth < 0)
+    ax.add_patch(plt.Rectangle((X_LO, Y_LO), Y0_W - X_LO, Y_HI - Y_LO,
+                                fc="#EEF2F8", ec="none", zorder=1))
+    ax.text((X_LO + Y0_W) / 2, Y_HI - 80, "EXTERIOR",
+            color="#5060A0", fontsize=9, ha="center", va="top", **FONT,
+            fontweight="bold", alpha=0.55, zorder=2)
+
+    # Interior zone (depth > panel interior face)
+    ax.add_patch(plt.Rectangle((Y1_PL2, Y_LO), X_HI - Y1_PL2, Y_HI - Y_LO,
+                                fc="#EEF6EE", ec="none", zorder=1))
+    ax.text((Y1_PL2 + X_HI) / 2, Y_HI - 80, "INTERIOR\n(DARKROOM)",
+            color="#407040", fontsize=9, ha="center", va="top", **FONT,
+            fontweight="bold", alpha=0.55, zorder=2)
+
+    # ── Container end wall (depth 0→40, full height) ──────────────────────────
+    ax.add_patch(plt.Rectangle((Y0_W, H_FLOOR), WALL_T, H_BRG_TOP + 100,
+                                fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="///", zorder=3))
+    ax.text(Y0_W + WALL_T / 2, H_BRG_TOP + 150,
+            f"{WALL_T}mm\nWALL", ha="center", va="bottom",
+            fontsize=6, color=C_DIM, **FONT, zorder=5)
+
+    # ── Panel outer ply (depth 40→58) ────────────────────────────────────────
+    ax.add_patch(plt.Rectangle((Y0_PL, H_FLOOR), PLY_T, H_BRG_TOP + 80,
+                                fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
+
+    # ── Panel RHS frame (depth 58→142) ────────────────────────────────────────
+    ax.add_patch(plt.Rectangle((Y0_FR, H_FLOOR), FRAME_T, H_BRG_TOP + 80,
+                                fc=C_STEEL, ec=C_OUT, lw=0.6, hatch="\\\\", zorder=3))
+
+    # ── Panel inner ply (depth 142→160) ───────────────────────────────────────
+    ax.add_patch(plt.Rectangle((Y0_PL2, H_FLOOR), PLY_T, H_BRG_TOP + 80,
+                                fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
+
+    # ── Floor (ground plane) ──────────────────────────────────────────────────
+    ax.add_patch(plt.Rectangle((X_LO, H_FLOOR - PAD_B), X_HI - X_LO, PAD_B,
+                                fc="#D8D0C0", ec="none", zorder=2))
+    ax.plot([X_LO, X_HI], [H_FLOOR, H_FLOOR], color=C_OUT, lw=1.5, zorder=4)
+    ax.text(X_LO + 30, H_FLOOR - PAD_B * 0.5, "FLOOR LEVEL",
+            ha="left", va="center", fontsize=7, color=C_DIM, **FONT)
+
+    # ── Lower bearing housing ─────────────────────────────────────────────────
+    ax.add_patch(plt.Rectangle((D_DEPTH_L - 35, H_BRG_BOT),
+                                DRUM_D + 70, H_BRG_HT,
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
+    ax.text(D_CX_DEPTH, H_BRG_BOT + H_BRG_HT / 2,
+            "SKF 6215  LOWER BEARING", ha="center", va="center",
+            fontsize=5.5, color=C_OUT, **FONT, zorder=7)
+
+    # ── Upper bearing housing ─────────────────────────────────────────────────
+    ax.add_patch(plt.Rectangle((D_DEPTH_L - 35, H_DRUM_TOP),
+                                DRUM_D + 70, H_BRG_HT,
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
+    ax.text(D_CX_DEPTH, H_DRUM_TOP + H_BRG_HT / 2,
+            "SKF 6215  UPPER BEARING", ha="center", va="center",
+            fontsize=5.5, color=C_OUT, **FONT, zorder=7)
+
+    # ── Drum body (tall rectangle, depth D_DEPTH_L→D_DEPTH_R, H_DRUM_BOT→H_DRUM_TOP)
+    # This is the key visual: a tall vertical rectangle showing the drum is vertical
+    ax.add_patch(plt.Rectangle((D_DEPTH_L, H_DRUM_BOT),
+                                DRUM_D, H_DRUM_TOP - H_DRUM_BOT,
+                                fc="#F5F0E8", ec=C_OUT, lw=2.0, zorder=5))
+
+    # Drum wall thickness lines (3mm each side)
+    DRUM_WALL_T = 3
+    ax.plot([D_DEPTH_L + DRUM_WALL_T, D_DEPTH_L + DRUM_WALL_T],
+            [H_DRUM_BOT, H_DRUM_TOP], color=C_DIM, lw=0.6, ls="--", zorder=6)
+    ax.plot([D_DEPTH_R - DRUM_WALL_T, D_DEPTH_R - DRUM_WALL_T],
+            [H_DRUM_BOT, H_DRUM_TOP], color=C_DIM, lw=0.6, ls="--", zorder=6)
+
+    # ── 4 baffles (radial fins — shown as dashed lines at mid-depth in elevation)
+    # Baffles run full height inside the drum.  In this elevation view they
+    # appear as vertical dashed lines at their mid-chord depth positions.
+    # Baffles are at 0°, 90°, 180°, 270° from horizontal (plan view).
+    # In this elevation (looking along panel width = X axis in plan), the fins
+    # at 0° and 180° appear at the drum wall, and 90° and 270° at drum centre.
+    for fin_depth in [D_DEPTH_L, D_CX_DEPTH, D_DEPTH_R]:
+        ax.plot([fin_depth, fin_depth], [H_DRUM_BOT + 20, H_DRUM_TOP - 20],
+                color=C_OUT, lw=1.2, ls=(0, (5, 3)), zorder=7, alpha=0.7)
+
+    ax.text(D_CX_DEPTH, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
+            "4 × INTERNAL BAFFLES\n(FULL HEIGHT)\nFlat black powder coat",
+            ha="center", va="center", fontsize=6.5, color=C_DIM,
+            **FONT, alpha=0.7, zorder=8)
+
+    # ── Handle bars (at H_HANDLE, on exterior and interior face) ──────────────
+    HH = 42
+    for hx, label in [(D_DEPTH_L - 110, "EXT.\nHANDLE"), (D_DEPTH_R, "INT.\nHANDLE")]:
+        ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
+                                    fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
+        ax.text(hx + 55, H_HANDLE - HH / 2 - 40, label,
+                ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT)
+
+    # ── Person silhouette (simplified — 1750mm height line) ──────────────────
+    PERSON_H = 1750   # mm
+    PERSON_X = D_DEPTH_R + 120  # just to the right, inside container
+    ax.plot([PERSON_X, PERSON_X], [H_FLOOR, H_FLOOR + PERSON_H],
+            color="#A0A0A0", lw=2.5, zorder=4, solid_capstyle="round")
+    ax.add_patch(plt.Circle((PERSON_X, H_FLOOR + PERSON_H + 80), 80,
+                             fc="#C0C0C0", ec="#808080", lw=1.0, zorder=4))
+    ax.text(PERSON_X + 120, H_FLOOR + PERSON_H / 2,
+            "1750mm\nperson\n(reference)",
+            ha="left", va="center", fontsize=6, color="#808080", **FONT)
+
+    # ── Clearance headroom line ────────────────────────────────────────────────
+    ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
+            color="#20A020", lw=1.2, ls="--", zorder=6)
+    ax.text(D_DEPTH_L - 60, H_DRUM_TOP + 30,
+            f"DRUM TOP  H={H_BRG_BOT + DRUM_H}mm — 250mm HEADROOM CLEARANCE",
+            ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT)
+
+    # ── Section A-A indicator ─────────────────────────────────────────────────
+    ax.text(X_LO + 20, Y_HI - 60,
+            "SECTION A-A\n(looking along panel width direction)",
+            ha="left", va="top", fontsize=7, color=C_CL, **FONT,
+            fontweight="bold")
+
+    # ── Centre line (vertical drum axis) ──────────────────────────────────────
+    ax.plot([D_CX_DEPTH, D_CX_DEPTH], [H_FLOOR - 80, H_BRG_TOP + 120],
+            color=C_CL, lw=0.9, ls="--", zorder=6)
+    ax.text(D_CX_DEPTH, H_BRG_TOP + 140, "CL\nDRUM AXIS\n(VERTICAL)",
+            ha="center", va="bottom", fontsize=6.5, color=C_CL, **FONT)
+
+    # ── Entry / exit arrows ───────────────────────────────────────────────────
+    # Person enters from EXTERIOR, pushes drum, exits to INTERIOR
+    EAR_Y = H_FLOOR + DRUM_H * 0.4
+    ax.annotate("", xy=(D_DEPTH_L - 20, EAR_Y),
+                xytext=(X_LO + 60, EAR_Y),
+                arrowprops=dict(arrowstyle="->", color="#C06010", lw=1.5,
+                                mutation_scale=10))
+    ax.text(X_LO + 60, EAR_Y + 50, "ENTER\n(from exterior)",
+            ha="left", va="bottom", fontsize=7, color="#C06010", **FONT)
+
+    ax.annotate("", xy=(D_DEPTH_R + 60, EAR_Y),
+                xytext=(D_DEPTH_R + 20, EAR_Y),
+                arrowprops=dict(arrowstyle="->", color="#20A060", lw=1.5,
+                                mutation_scale=10))
+    ax.text(D_DEPTH_R + 80, EAR_Y + 50, "EXIT\n(to interior / darkroom)",
+            ha="left", va="bottom", fontsize=7, color="#20A060", **FONT)
+
+    ax.text(D_CX_DEPTH, H_FLOOR + DRUM_H * 0.2,
+            "DRUM ROTATES\nARROUND VERTICAL\nAXIS — PUSH WALL\nTO ENTER/EXIT",
+            ha="center", va="center", fontsize=6.5, color=C_DIM,
+            **FONT, alpha=0.75, zorder=8)
+
+    # ── Dimension callouts ────────────────────────────────────────────────────
+    DIM_R = D_DEPTH_R + PAD_R * 0.55
+
+    # Drum height
+    dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
+          f"{DRUM_H} mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
+
+    # Drum diameter (horizontal)
+    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 160,
+          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=40, fs=7)
+
+    # Panel thickness (horizontal)
+    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 180,
+          f"{PT}mm PANEL", offset=35, fs=6.5)
+
+    # Wall thickness (horizontal)
+    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 130,
+          f"{WALL_T}mm WALL", offset=35, fs=6.5)
+
+    # Exterior overhang (horizontal)
+    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 60,
+          f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=35, fs=6)
+
+    # Interior overhang (horizontal)
+    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR - 60,
+          f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=35, fs=6)
+
+    # Handle height
+    ax.plot([D_DEPTH_L - 145, D_DEPTH_L - 260], [H_HANDLE, H_HANDLE],
+            color=C_DIM, lw=0.6, ls="--", zorder=3)
+    ax.text(D_DEPTH_L - 270, H_HANDLE,
+            f"{int(H_HANDLE)}mm\nHANDLE HT",
+            ha="right", va="center", fontsize=6, color=C_DIM, **FONT)
+
+    # ── Title block ────────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 3 OF 3",
+                "DRUM ELEVATION — SECTION A-A (VIEW ALONG PANEL WIDTH): VERTICAL DRUM, WALKING HEIGHT",
+                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
+
+    fig.savefig("hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  hingepanel-sheet3.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
     sheet1()
     sheet2()
+    sheet3()
     print("Done.")

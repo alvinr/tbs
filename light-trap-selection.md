@@ -17,7 +17,10 @@ Personnel access during operation is via a revolving light trap drum built into 
 **Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and S-Path Light Route**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
-Full drawings also appear in the [Electrical & Systems Report](electrical-report.md) Section 5.7.
+**Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation**
+![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
+
+Full drawings also appear in the [Engineering Diagrams](engineering-diagrams.md) §12.
 
 ---
 

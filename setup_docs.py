@@ -59,6 +59,7 @@ MD_FILES = [
     ("licensing.md",                      (".",           "License")),
     ("light-trap-selection.md",           (".",           "Light Trap Selection")),
     ("engineering-diagrams.md",           (".",           "Engineering Diagrams")),
+    ("distortion-renders.md",             (".",           "Distortion Renders")),
 ]
 
 # Images to copy into assets/
@@ -107,6 +108,8 @@ IMAGE_FILES = [
     "assembly-overview.png",
     "assembly-fab-sheet1.png",
     "assembly-fab-sheet2.png",
+    "hingepanel-sheet3.png",
+    "line-of-sight.png",
 ]
 
 MKDOCS_YML = """\
@@ -254,6 +257,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
+| [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 
 """
 

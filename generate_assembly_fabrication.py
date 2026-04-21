@@ -205,12 +205,21 @@ def sheet1():
     ax.add_patch(mpatches.Rectangle((0, 0), 120, CH,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.8,
                  alpha=0.8, zorder=4))
-    # Drum circle (Ø750 centred at X=0, H=PH_H)
-    drum_c = plt.Circle((0, PH_H), DRUM_R,
-                         facecolor="white", edgecolor=C_OUT,
-                         linewidth=0.8, alpha=0.9, zorder=5)
-    ax.add_patch(drum_c)
-    draw_cl_v(ax, 0, PH_H - DRUM_R - 100, PH_H + DRUM_R + 100)
+    # Revolving drum — VERTICAL AXIS.  In this long-section elevation (looking
+    # along +Y), the drum appears as a RECTANGLE: width = Ø750mm (X direction),
+    # height = 2000mm (walking clearance).  The drum straddles X=0 (panel face):
+    # -DRUM_R to +DRUM_R horizontally, floor (0) to 2000mm vertically.
+    DRUM_H_ELV = 2000   # drum height for elevation views
+    ax.add_patch(mpatches.Rectangle((-DRUM_R, 0), DRUM_D, DRUM_H_ELV,
+                 facecolor=C_ALUM, edgecolor=C_OUT,
+                 linewidth=1.0, alpha=0.7, zorder=5))
+    # Vertical centre-line of drum axis
+    draw_cl_v(ax, 0, 0, DRUM_H_ELV + 150)
+    # Label
+    ax.text(0, DRUM_H_ELV / 2,
+            f"REVOLVING DRUM\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
+            ha="center", va="center", fontsize=FS_SM - 1, color=C_OUT,
+            style="italic", zorder=6)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
     FAN_W_FAB = 200
@@ -219,44 +228,64 @@ def sheet1():
     # Exhaust (right end, high)
     hatch_rect(ax, CL, CH - FAN_W_FAB - 200, WALL_T, FAN_W_FAB, C_ALUM, "xx", alpha=0.6)
 
-    # ── Equipment blocks (simplified cross-section fills) ─────────────────────
-    # Equipment appears at their long-axis positions, heights per spec.
-    IBC_H_EQ = 1163
+    # ── Equipment blocks — PINHOLE WALL COLONNADE positions ──────────────────
+    # Heights per spec: 600L IBC=1010mm; 2× stacked=2020mm; drum×2 stacked=1740mm
+    IBC_H_600 = 1010   # 600L IBC height
+    IBC_H_STK = 2020   # 2× stacked 600L IBC
     DRUM_H_EQ = 870
-    DRUM_W_EQ = 585
+    DRUM_H_STK = 1740  # 2× stacked drums
+    DRUM_W_EQ = 580
 
-    # Blue IBCs (×2 stacked in depth — single block in this elevation)
-    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1219, IBC_H_EQ,
+    # Blue IBCs ×2 stacked (600L): X=100–1319, H=0–2020
+    # Drum is repositioned to Y=1600mm — no drum-IBC overlap in plan view.
+    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1219, IBC_H_STK,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6,
                  alpha=0.7, zorder=3))
+    # Stacking interface dashed line at H=1010mm
+    ax.plot([100, 100 + 1219], [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
+            color=C_OUT, lw=0.7, ls="--", dashes=(6, 3), alpha=0.6, zorder=4)
+    ax.text(100 + 1219 / 2, RAIL_OFF + IBC_H_STK / 2,
+            "BLUE IBC ×2\n(STACKED 2×600L)\nH=2020mm",
+            ha="center", va="center", fontsize=FS_SM - 1.5, color=C_OUT, zorder=4)
 
-    # Brown IBC
-    ax.add_patch(mpatches.Rectangle((1380, RAIL_OFF), 1219, IBC_H_EQ,
-                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
-                 alpha=0.7, zorder=3))
-
-    # Drums ×2
-    ax.add_patch(mpatches.Rectangle((1438, RAIL_OFF), DRUM_W_EQ, DRUM_H_EQ,
-                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
-                 alpha=0.6, zorder=3))
-    ax.add_patch(mpatches.Rectangle((2028, RAIL_OFF), DRUM_W_EQ, DRUM_H_EQ,
-                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
-                 alpha=0.6, zorder=3))
-
-    # Evap cooler
-    ax.add_patch(mpatches.Rectangle((1380, 1300), 600, 750,
+    # Evap cooler: X=1380–1980, H=0–800 (at pinhole wall side)
+    ax.add_patch(mpatches.Rectangle((1380, RAIL_OFF), 600, 800,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6,
                  alpha=0.7, zorder=3))
+    ax.text(1680, RAIL_OFF + 400, "EVAP\nCOOLER", ha="center", va="center",
+            fontsize=FS_SM - 1.5, color=C_OUT, zorder=4)
 
-    # Pump manifold
-    ax.add_patch(mpatches.Rectangle((2100, RAIL_OFF), 400, 500,
+    # Pump manifold: X=1980–2380, H=0–500
+    ax.add_patch(mpatches.Rectangle((1980, RAIL_OFF), 400, 500,
                  facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
                  alpha=0.6, zorder=3))
+    ax.text(2180, RAIL_OFF + 250, "PUMP\nMANIFOLD", ha="center", va="center",
+            fontsize=FS_SM - 1.5, color=C_OUT, zorder=4)
 
-    # Electrical panel (wall-mounted)
-    ax.add_patch(mpatches.Rectangle((2400, 900), 80, 600,
+    # Electrical panel (wall-mounted on pinhole long wall face)
+    ax.add_patch(mpatches.Rectangle((2050, 900), 80, 600,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6,
                  alpha=0.8, zorder=4))
+    ax.text(2090, 1200, "ELEC\nPANEL", ha="center", va="center",
+            fontsize=FS_SM - 2, color=C_OUT, zorder=5)
+
+    # 55-gal drums ×2 stacked: X=3900–4480, H=0–1740
+    ax.add_patch(mpatches.Rectangle((3900, RAIL_OFF), DRUM_W_EQ, DRUM_H_STK,
+                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
+                 alpha=0.6, zorder=3))
+    ax.plot([3900, 3900 + DRUM_W_EQ], [RAIL_OFF + DRUM_H_EQ, RAIL_OFF + DRUM_H_EQ],
+            color=C_OUT, lw=0.7, ls="--", dashes=(6, 3), alpha=0.6, zorder=4)
+    ax.text(3900 + DRUM_W_EQ / 2, RAIL_OFF + DRUM_H_STK / 2,
+            "DRUMS ×2\nSTACKED", ha="center", va="center",
+            fontsize=FS_SM - 1.5, color=C_OUT, zorder=4)
+
+    # Brown IBC ×1 (600L): X=4674–5893, H=0–1010
+    ax.add_patch(mpatches.Rectangle((4674, RAIL_OFF), 1219, IBC_H_600,
+                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.6,
+                 alpha=0.7, zorder=3))
+    ax.text(4674 + 1219 / 2, RAIL_OFF + IBC_H_600 / 2,
+            "BROWN IBC ×1\n(600L)\nH=1010mm",
+            ha="center", va="center", fontsize=FS_SM - 1.5, color=C_OUT, zorder=4)
 
     # ── Film-plane rails (dashed lines at rail height) ────────────────────────
     ax.plot([EQ_X, CL], [RAIL_OFF, RAIL_OFF],
@@ -270,10 +299,10 @@ def sheet1():
         (PH_X,      PH_H + 300, "1"),    # Pinhole aperture plate
         (CL - 200,  RAIL_OFF,   "2"),    # Film plane rails (lower)
         (CL - 400,  1194,       "3"),    # Film plane mechanism (centre)
-        (700,       IBC_H_EQ / 2 + RAIL_OFF, "4"),  # IBC cluster
-        (1800,      DRUM_H_EQ / 2 + RAIL_OFF, "5"),  # Drums
-        (2440,      900 + 300,  "6"),    # Electrical enclosure
-        (1680,      1300 + 375, "7"),    # Evap cooler
+        (710,       IBC_H_STK / 2 + RAIL_OFF, "4"),  # IBC cluster (X=100–1319 centre=710)
+        (4190,      DRUM_H_STK / 2 + RAIL_OFF, "5"),  # Drums (X=3900–4480 centre=4190)
+        (2090,      1200,        "6"),    # Electrical enclosure
+        (1680,      RAIL_OFF + 400, "7"),  # Evap cooler
         (60,        PH_H + DRUM_R + 150, "8"),  # Hinged panel + drum
         (-WALL_T / 2, 300,      "9"),    # Fan intake
         (CL + WALL_T / 2, CH - 300, "10"),  # Fan exhaust
@@ -430,34 +459,40 @@ def sheet2():
     ax.text(CW * 0.15, CH * 0.92, "HINGED PANEL\n2362 × 2388 mm\n120mm thick, 50×50 RHS frame",
             ha="left", va="top", fontsize=FS_SM, color=C_DIM, zorder=6)
 
-    # ── Revolving drum (Ø750 mm, centred in panel) ───────────────────────────
-    # Centre of panel: X = CW/2 = 1181, H = CH/2 = 1194
-    DRUM_CX = CW // 2   # = 1181
-    DRUM_CY = CH // 2   # = 1194
+    # ── Revolving drum (Ø750 mm, vertical axis) ─────────────────────────────
+    # Drum has a VERTICAL axis — person walks through it upright.
+    # In this end elevation (looking into the container from X=0), the drum
+    # appears as a RECTANGLE: 750mm wide × 2000mm tall.
+    # Centre at Y=1600mm (offset from CW/2=1181mm toward far wall).
+    # This keeps the drum footprint (Y=1225–1975mm) clear of equipment colonnade.
+    DRUM_CX = 1600      # drum centre — offset from container centreline for IBC clearance
+    DRUM_H_ELV = 2000   # walking height of drum
+    DRUM_LEFT = DRUM_CX - DRUM_R   # = 1225mm
+    DRUM_RIGHT = DRUM_CX + DRUM_R  # = 1975mm
 
-    # Drum circle — must appear as a true circle (equal aspect guarantees this)
-    drum_circ = plt.Circle((DRUM_CX, DRUM_CY), DRUM_R,
-                             facecolor="white", edgecolor=C_OUT,
-                             linewidth=1.2, zorder=6)
-    ax.add_patch(drum_circ)
+    drum_rect = mpatches.Rectangle((DRUM_LEFT, 0), DRUM_D, DRUM_H_ELV,
+                                    facecolor=C_ALUM, edgecolor=C_OUT,
+                                    linewidth=1.2, alpha=0.7, zorder=6)
+    ax.add_patch(drum_rect)
 
-    # Drum centre lines
-    draw_cl_h(ax, DRUM_CX - DRUM_R - 200, DRUM_CX + DRUM_R + 200, DRUM_CY)
-    draw_cl_v(ax, DRUM_CX, DRUM_CY - DRUM_R - 200, DRUM_CY + DRUM_R + 200)
+    # Vertical centre-line (drum axis)
+    draw_cl_v(ax, DRUM_CX, 0, DRUM_H_ELV + 150)
 
-    # Drum baffles (4 × radial fins at 22.5°, 112.5°, 202.5°, 292.5°)
-    for angle_deg in [22.5, 112.5, 202.5, 292.5]:
-        rad = math.radians(angle_deg)
-        fx = DRUM_CX + DRUM_R * math.cos(rad)
-        fy = DRUM_CY + DRUM_R * math.sin(rad)
-        ax.plot([DRUM_CX, fx], [DRUM_CY, fy],
-                color=C_OUT, lw=0.8, zorder=7)
+    # Horizontal baffle slot lines (plan view baffles project as horizontal
+    # dashes across the drum in elevation — indicate the 4-baffle internal structure)
+    for h_baff in [500, 1000, 1500]:
+        ax.plot([DRUM_LEFT + 40, DRUM_RIGHT - 40], [h_baff, h_baff],
+                color=C_OUT, lw=0.6, ls="--", alpha=0.5, zorder=7)
 
-    # Grab handle symbol (horizontal bar inside drum)
-    ax.plot([DRUM_CX - 180, DRUM_CX + 180], [DRUM_CY - 80, DRUM_CY - 80],
+    # Entry threshold bar at floor level
+    ax.plot([DRUM_LEFT, DRUM_RIGHT], [0, 0],
             color=C_OUT, lw=1.5, zorder=7)
-    ax.plot([DRUM_CX - 180, DRUM_CX + 180], [DRUM_CY + 80, DRUM_CY + 80],
-            color=C_OUT, lw=1.5, zorder=7)
+
+    # Label
+    ax.text(DRUM_CX, DRUM_H_ELV / 2,
+            f"REVOLVING DRUM\nVERTICAL AXIS\nØ{DRUM_D} × {DRUM_H_ELV}mm H",
+            ha="center", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
+            style="italic", zorder=7)
 
     # ── Film plane (dashed rectangle at depth 2262 mm into page) ─────────────
     # Cannot be shown as a true projection in 2D end view.
@@ -490,35 +525,31 @@ def sheet2():
     ax.text(RAIL_X2 + 50, RAIL_Y2, "Rail\n②", ha="left", va="center",
             fontsize=FS_SM - 0.5, color=C_DIM, zorder=6)
 
-    # ── IBC / drum dashed projections (plan footprints, depth direction) ──────
-    # Shown as dashed rectangles indicating where equipment sits behind this wall.
-    # Footprint centres (from floor plan, Y depth = their long-axis band):
-    #   Blue IBCs:  horiz spans X=100–1319 (floor plan)
-    #   Brown IBC:  horiz spans X=1380–2599
-    # In end view (width=CW=2362mm), floor-plan X → this view X is NOT the same.
-    # Floor plan X (long axis) is the DEPTH direction in this end elevation.
-    # Floor plan Y (optical depth, 0–2362mm) → the HORIZONTAL axis in this view.
-    # Heights are actual heights (0–CH).
-    # Equipment Y (depth) in floor plan: IBCs at Y=100–1116, drums at Y=1600.
+    # ── Equipment projections (colonnade layout — depth into page) ───────────
+    # In end elevation (horizontal = container width CW=2362mm = floor-plan Y axis,
+    # vertical = height H). Floor-plan Y_depth → horizontal here; heights = actual.
+    # Equipment colonnade: all at Y_depth=100–1116mm from pinhole wall.
+    # Only items with Y_depth range visible in this view are drawn.
 
-    # Blue IBCs (floor plan Y_depth = 100–1116, height 1163mm)
-    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1016, 1163,
+    # Blue IBCs ×2 stacked (colonnade Y_depth=100–1116, H=0–2020mm)
+    # Appear at horizontal span matching their floor-plan Y_depth.
+    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1016, 2020,
                  facecolor="#4A90D9", edgecolor="#2060A0",
-                 linewidth=0.7, linestyle="--", alpha=0.25, zorder=2))
-    ax.text(100 + 508, RAIL_OFF + 582, "Blue IBC\n×2", ha="center", va="center",
-            fontsize=FS_SM - 1, color="#2060A0", alpha=0.7, zorder=3)
+                 linewidth=0.7, linestyle="--", alpha=0.2, zorder=2))
+    ax.text(100 + 508, RAIL_OFF + 1010, "Blue IBC\n×2 stacked\n(2×600L)", ha="center", va="center",
+            fontsize=FS_SM - 1.5, color="#2060A0", alpha=0.8, zorder=3)
 
-    # Brown IBC (floor plan Y_depth = 100–1116, height 1163mm)
-    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1016, 1163,
-                 facecolor="#9C7A3C", edgecolor="#7A5A1C",
-                 linewidth=0.7, linestyle=":", alpha=0.15, zorder=2))
-
-    # Drums (floor plan Y_depth = 1310–1890 i.e. cx=1600±290, height 870mm)
-    ax.add_patch(mpatches.Rectangle((1310, RAIL_OFF), 580, 870,
+    # Drums ×2 stacked (floor-plan Y_depth=100–680, H=0–1740mm)
+    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 580, 1740,
                  facecolor="#7A6B5A", edgecolor="#5A4B3A",
-                 linewidth=0.7, linestyle="--", alpha=0.25, zorder=2))
-    ax.text(1600, RAIL_OFF + 435, "Drums\n×2", ha="center", va="center",
-            fontsize=FS_SM - 1, color="#5A4B3A", alpha=0.7, zorder=3)
+                 linewidth=0.7, linestyle=":", alpha=0.15, zorder=2))
+    ax.text(100 + 290, RAIL_OFF + 870, "Drums\n×2", ha="center", va="center",
+            fontsize=FS_SM - 1.5, color="#5A4B3A", alpha=0.7, zorder=3)
+
+    # Brown IBC ×1 (floor-plan Y_depth=100–1116, H=0–1010mm)
+    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 1016, 1010,
+                 facecolor="#9C7A3C", edgecolor="#7A5A1C",
+                 linewidth=0.7, linestyle="--", alpha=0.15, zorder=2))
 
     # ── Overhead safelight ────────────────────────────────────────────────────
     ax.plot([100, CW - 100], [CH - 100, CH - 100],
@@ -547,20 +578,20 @@ def sheet2():
     draw_dim_h(ax, 0, CW, DIM_TOP, f"Panel / container width  {CW} mm",
                ext=80, gap=30, fs=FS_SM)
 
-    # Drum diameter (horizontal)
-    draw_dim_h(ax, DRUM_CX - DRUM_R, DRUM_CX + DRUM_R, DRUM_CY - DRUM_R - 200,
+    # Drum width (horizontal)
+    draw_dim_h(ax, DRUM_LEFT, DRUM_RIGHT, -200,
                f"Drum Ø {DRUM_D} mm", ext=60, gap=20, fs=FS_SM)
 
-    # Drum centre X
+    # Drum horizontal centre (offset from container centreline for IBC clearance)
     draw_dim_h(ax, 0, DRUM_CX, DIM_TOP - 250,
-               f"Drum centre  {DRUM_CX} mm", ext=60, gap=20, fs=FS_SM)
+               f"Drum centre  {DRUM_CX} mm  (offset — clears colonnade)", ext=60, gap=20, fs=FS_SM)
 
     # Container height
     draw_dim_v(ax, DIM_R, 0, CH, f"H = {CH} mm", ext=80, gap=20, fs=FS_SM)
 
-    # Drum centre height
-    draw_dim_v(ax, DIM_R + 300, 0, DRUM_CY,
-               f"Drum centre  {DRUM_CY} mm", ext=60, gap=20, fs=FS_SM)
+    # Drum height
+    draw_dim_v(ax, DIM_R + 300, 0, DRUM_H_ELV,
+               f"Drum H  {DRUM_H_ELV} mm", ext=60, gap=20, fs=FS_SM)
 
     # Rail offset top
     draw_dim_v(ax, DIM_LEFT, 0, RAIL_OFF,

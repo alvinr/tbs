@@ -140,16 +140,18 @@ Source report: [Electrical & Systems](electrical-report.md).
 
 ---
 
-## 11. Light Trap Vestibule
+## 11. Light Trap Vestibule — Revolving Drum (Current Design)
 
-S-path revolving light trap (alternative vestibule design, pre-drum).
-Source report: [Electrical & Systems](electrical-report.md) §5.7.
+The TBS-001 light trap is a **revolving drum with a vertical axis** — a person
+walks through it upright, like a commercial revolving door. The drum is
+Ø750mm × 2000mm tall, integrated into the cargo-door hinged panel.
 
-**Sheet 1 — Vestibule plan and section**
-![TBS-001 Light Trap Vestibule — Sheet 1](assets/lighttrap-sheet1.png)
+This design supersedes an earlier S-path vestibule concept. The full selection
+analysis — including the S-path alternative, revolving drum specification, and
+fabrication drawings — is in [Light Trap Selection](light-trap-selection.md).
 
-**Sheet 2 — S-path detail**
-![TBS-001 Light Trap Vestibule — Sheet 2](assets/lighttrap-sheet2.png)
+For construction drawings of the hinged panel and drum, see
+[§12 — Hinged Panel & Revolving Drum](#12-hinged-panel-revolving-drum) below.
 
 ---
 

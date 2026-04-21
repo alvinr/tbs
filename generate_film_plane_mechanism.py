@@ -19,21 +19,21 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import matplotlib.patheffects as pe
 
-# ── Palette (blueprint dark style) ───────────────────────────────────────────
-BG      = "#08152A"
-GRID    = "#122040"
-STRUCT  = "#1D4E89"
-STRUCT2 = "#2A72BA"
-DIM     = "#6BBCD4"
-ANNO    = "#A8D8EA"
-WHITE   = "#E8F4FD"
-C_FLAT  = "#90C8E0"
-C_T1    = "#72CC72"
-C_T2    = "#E8B840"
-C_T3    = "#E85050"
-RAIL    = "#C8A040"
-MECH    = "#A0D0A0"
-PINHOLE = "#F0E060"
+# ── Palette (white engineering style) ────────────────────────────────────────
+BG      = "#FFFFFF"   # white background
+GRID    = "#F0F4F8"   # container interior (very light blue-grey)
+STRUCT  = "#B0B0B8"   # steel section fill (walls)
+STRUCT2 = "#C8D8E8"   # aluminium / secondary structure
+DIM     = "#404040"   # dimension lines and text (dark grey)
+ANNO    = "#1A1A1A"   # annotation text (near black)
+WHITE   = "#1A1A1A"   # outlines / text (was white-on-dark; now dark-on-white)
+C_FLAT  = "#2060A0"   # flat position line (blue)
+C_T1    = "#1A7A1A"   # tilt config (dark green)
+C_T2    = "#B07010"   # swing config (amber)
+C_T3    = "#CC2020"   # compound config (red)
+RAIL    = "#5A3E00"   # rail (dark brown-gold — dark enough for white text labels)
+MECH    = "#2A6B2A"   # mechanism/carriage (dark green — dark enough for white text)
+PINHOLE = "#CC6600"   # pinhole aperture (orange, visible on white)
 
 # ── Container dimensions (mm) ─────────────────────────────────────────────────
 L = 5893   # interior length (film plane spans this direction)

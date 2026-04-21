@@ -242,186 +242,263 @@ def sheet1():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2  —  Plan Cross-Section  (horizontal cut at drum mid-height)
-# Looking DOWN through the panel — shows drum interior, 4 baffles, S-path.
-# Different scales: 1:10 horizontal (panel width), 1:1 vertical (panel depth).
-# Horizontal axis: panel width direction (0 → 2362 mm → drawn as 0 → 236.2 units)
-# Vertical axis: depth through panel (real mm, 0=exterior, downward into container)
+# SHEET 2  —  Plan Cross-Section at drum mid-height (looking down)
+# Equal aspect — all coordinates in real mm.
+# X = panel width direction.
+# Y = depth direction (0 = container exterior face, positive into container).
+#
+# The drum (Ø750mm) is much larger than the panel depth (120mm + 40mm wall).
+# In plan, the drum circle overhangs both panel faces — this is physically
+# correct: the drum is secured by top/bottom bearings, not by the panel depth.
+# The plan section shows this clearly.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-    # Scale functions
-    def sx(mm): return mm / 10.0   # 1:10 horizontal
-    def sy(mm): return mm * 1.0    # 1:1  vertical (depth, exaggerated for clarity)
+    # ── Key dimensions (mm) ──────────────────────────────────────────────────
+    WALL_T = 40     # container end-wall steel thickness
+    PLY_T  = 18     # ply skin thickness (each face)
+    PT     = 120    # panel overall thickness (frame + 2 × ply)
+    FRAME_T = PT - 2 * PLY_T   # = 84mm RHS frame depth
 
-    # Key depth positions (mm, from exterior face of container wall)
-    WALL_T  = 40    # container end-wall steel thickness
-    SEAL_T  = 20    # EPDM gasket compressed thickness
-    PANEL_T = 120   # panel overall thickness (frame + skins)
-    # Exterior face of container at y_depth=0
-    # Container wall: 0 → WALL_T = 40
-    # Panel outer face against wall: WALL_T = 40
-    # Panel inner face: WALL_T + PANEL_T = 160
-    # Container interior: > 160
+    # Y positions (from exterior face of container wall)
+    Y0_W  = 0            # exterior face
+    Y1_W  = WALL_T       # = 40  (inner face of wall / outer face of panel)
+    Y0_PL = Y1_W         # outer ply starts
+    Y1_PL = Y1_W + PLY_T # = 58
+    Y0_FR = Y1_PL        # frame starts = 58
+    Y1_FR = Y0_FR + FRAME_T  # = 142
+    Y0_PL2 = Y1_FR       # inner ply = 142
+    Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel inner face)
 
-    Y_EXT  = 0                    # exterior face
-    Y_WI   = WALL_T               # container wall inner face / panel outer face
-    Y_PI   = WALL_T + PANEL_T     # panel inner face = 160
-    Y_INT  = Y_PI + 50            # container interior start (50mm shown)
+    Y_EXT = Y0_W         # exterior face = 0
+    Y_INT = Y1_PL2       # interior face = 160
 
-    total_depth = Y_PI + 120      # total drawing depth range
-    DRUM_CX_D = sx(PW / 2)        # drum centre in drawing X units
+    # Drum geometry — axis is vertical; plan section shows horizontal circle
+    D_CX = PW / 2        # drum centre X: centred in panel width = 1181mm
+    D_CY = (Y_EXT + Y_INT) / 2   # drum centre Y: centre of wall+panel depth = 80mm
+    DR   = DRUM_R        # = 375mm
 
-    fig, ax = plt.subplots(figsize=(18, 8))
+    # Drum Y extents
+    D_YB = D_CY - DR     # exterior overhang bottom = 80 - 375 = -295mm
+    D_YT = D_CY + DR     # interior overhang top    = 80 + 375 = 455mm
+
+    # Drum X extents
+    D_XL = D_CX - DR    # = 806mm
+    D_XR = D_CX + DR    # = 1556mm
+
+    # ── Crop window (zoomed to drum zone + margin) ────────────────────────────
+    PAD_X  = 320   # horizontal margin each side
+    PAD_YB = 150   # bottom margin (exterior zone)
+    PAD_YT = 180   # top margin (interior zone)
+
+    X_LO = D_XL - PAD_X          # = 486mm
+    X_HI = D_XR + PAD_X + 580    # extra right for labels
+    Y_LO = D_YB - PAD_YB         # = -445mm
+    Y_HI = D_YT + PAD_YT         # = 635mm
+
+    # Content range: ~2166 × 1080mm → ratio 2.0 : 1
+    # Figure: (16, 8), ratio 2.0 : 1  → fills well with equal aspect
+
+    fig, ax = plt.subplots(figsize=(16, 8))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-
-    PAD_L = sx(500); PAD_R = sx(400); PAD_B = 50; PAD_T = 120
-    ax.set_xlim(-PAD_L, sx(PW) + PAD_R)
-    ax.set_ylim(-PAD_B, total_depth + PAD_T)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_aspect("equal")
     ax.axis("off")
-    # Note: NO equal aspect — horizontal is 1:10, vertical is 1:1
 
-    # ── Container end wall (exterior left) ────────────────────────────────────
-    hatch_rect(ax, 0, Y_EXT, sx(PW), WALL_T, C_STEEL, zorder=3)
-    ax.text(sx(PW / 2), WALL_T / 2, "CONTAINER END-WALL STEEL  (40mm)",
-            color=C_OUT, fontsize=7, ha="center", va="center", **FONT, zorder=4)
+    # ── Background zones ──────────────────────────────────────────────────────
+    # Exterior zone (Y < 0)
+    ax.add_patch(Rectangle((X_LO, Y_LO), X_HI - X_LO, Y_EXT - Y_LO,
+                            fc="#EEF2F8", ec="none", zorder=1))
+    ax.text(D_CX - PAD_X / 2, (Y_LO + Y_EXT) / 2,
+            "EXTERIOR", color="#5060A0", fontsize=9, ha="center", va="center",
+            **FONT, fontweight="bold", alpha=0.55, zorder=2)
 
-    # ── Panel body (inside container end-wall) ────────────────────────────────
-    # Outer ply skin
-    PLY_T = 18
-    ax.add_patch(Rectangle((0, Y_WI), sx(PW), PLY_T,
-                            fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(PW / 2), Y_WI + PLY_T / 2, "18mm PLY SKIN",
-            color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
+    # Interior zone (Y > Y_INT)
+    ax.add_patch(Rectangle((X_LO, Y_INT), X_HI - X_LO, Y_HI - Y_INT,
+                            fc="#EEF6EE", ec="none", zorder=1))
+    ax.text(D_CX - PAD_X / 2, (Y_INT + Y_HI) / 2,
+            "INTERIOR", color="#407040", fontsize=9, ha="center", va="center",
+            **FONT, fontweight="bold", alpha=0.55, zorder=2)
 
-    # 50×50 RHS steel frame members (schematic positions)
-    FRAME_T = sy(50)
-    FRAME_Y = Y_WI + PLY_T
-    # Frame: one wide band representing cross-section through frame
-    ax.add_patch(Rectangle((0, FRAME_Y), sx(PW), FRAME_T,
-                            fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(PW / 2), FRAME_Y + FRAME_T / 2,
-            "50×50 RHS STEEL FRAME (WELDED, HOT-DIP GALVANISED)",
-            color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
+    # ── Container end-wall cross-section (Y=0→40) ─────────────────────────────
+    # Left of drum opening
+    ax.add_patch(Rectangle((X_LO, Y0_W), D_XL - X_LO, WALL_T,
+                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+    # Right of drum opening
+    ax.add_patch(Rectangle((D_XR, Y0_W), X_HI - D_XR, WALL_T,
+                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+    ax.text(X_LO + 20, Y0_W + WALL_T / 2,
+            f"CONTAINER END WALL  ({WALL_T}mm STEEL)",
+            color=C_OUT, fontsize=6.5, ha="left", va="center", **FONT, zorder=5)
 
-    # Inner ply skin
-    PLY_Y2 = FRAME_Y + FRAME_T
-    ax.add_patch(Rectangle((0, PLY_Y2), sx(PW), PLY_T,
-                            fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(PW / 2), PLY_Y2 + PLY_T / 2, "18mm PLY SKIN (FLAT BLACK INTERIOR)",
-            color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
+    # ── Panel outer ply (Y=40→58) ─────────────────────────────────────────────
+    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
+        ax.add_patch(Rectangle((x, Y0_PL), w, PLY_T,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+    ax.text(X_LO + 20, Y0_PL + PLY_T / 2,
+            f"OUTER PLY  ({PLY_T}mm)",
+            color=C_OUT, fontsize=6.5, ha="left", va="center", **FONT, zorder=5)
 
-    Y_PI_actual = PLY_Y2 + PLY_T   # panel inner face
+    # ── Panel RHS frame (Y=58→142) ────────────────────────────────────────────
+    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
+        ax.add_patch(Rectangle((x, Y0_FR), w, FRAME_T,
+                                fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="\\\\", zorder=3))
+    ax.text(X_LO + 20, Y0_FR + FRAME_T / 2,
+            f"50×50mm RHS STEEL FRAME  ({FRAME_T}mm)",
+            color=C_OUT, fontsize=6.5, ha="left", va="center", **FONT, zorder=5)
 
-    # ── EPDM gasket strip (at panel left and right edges, both sides) ─────────
-    GASKT_W = sx(SEAL_T)
-    for edge_x in [0, sx(PW) - GASKT_W]:
-        ax.add_patch(Rectangle((edge_x, Y_WI), GASKT_W, Y_PI_actual - Y_WI,
-                                fc=C_GASKT, ec=C_OUT, lw=0.8, zorder=5, alpha=0.8))
-    leader(ax, (0 + GASKT_W / 2, Y_WI + (Y_PI_actual - Y_WI) / 2),
-           (sx(-280), Y_WI + 25),
-           "20mm EPDM GASKET\n(BOTH EDGES)", fs=6.5)
+    # ── Panel inner ply (Y=142→160) ───────────────────────────────────────────
+    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
+        ax.add_patch(Rectangle((x, Y0_PL2), w, PLY_T,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+    ax.text(X_LO + 20, Y0_PL2 + PLY_T / 2,
+            f"INNER PLY — FLAT BLACK  ({PLY_T}mm)",
+            color=C_OUT, fontsize=6.5, ha="left", va="center", **FONT, zorder=5)
 
-    # ── Drum cross-section (circle in plan view) ──────────────────────────────
-    DRUM_R_D = sx(DRUM_R)  # drum radius in drawing units
-    drum_centre_y = (Y_WI + Y_PI_actual) / 2  # centre vertically in panel depth
+    # ── EPDM seal strip at panel left edge ────────────────────────────────────
+    SEAL_W = 20
+    ax.add_patch(Rectangle((X_LO, Y0_PL), SEAL_W, PT,
+                            fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
+    leader(ax, (X_LO + SEAL_W / 2, Y0_PL + PT / 2),
+           (X_LO - 160, Y0_PL + PT / 2 + 100),
+           "20mm EPDM GASKET\n(PERIMETER SEAL)", fs=6.5)
 
-    # Drum opening through container wall
-    ax.add_patch(Rectangle((DRUM_CX_D - DRUM_R_D, Y_EXT), 2 * DRUM_R_D, WALL_T,
-                            fc=BG, ec=C_OUT, lw=1.0, zorder=6))
+    # ── Drum: draw filled circle on top to cut out the drum hole ─────────────
+    # First stamp BG colour over wall/panel where drum sits, then draw drum ring
+    drum_bg = Circle((D_CX, D_CY), DR, fc=BG, ec="none", zorder=7)
+    ax.add_patch(drum_bg)
 
-    # Drum circle (cross-section)
-    drum_circle = Circle((DRUM_CX_D, drum_centre_y), DRUM_R_D,
-                          fc="#F8F4EC", ec=C_OUT, lw=2.0, zorder=6)
-    ax.add_patch(drum_circle)
-    ax.text(DRUM_CX_D, drum_centre_y, f"Ø{DRUM_D}mm DRUM",
-            color=C_DIM, fontsize=7, ha="center", va="center", **FONT, zorder=8)
+    # Drum wall ring (3mm thick steel)
+    drum_ring = Circle((D_CX, D_CY), DR, fc="none", ec=C_OUT, lw=2.5, zorder=9)
+    ax.add_patch(drum_ring)
+    drum_inner = Circle((D_CX, D_CY), DR - 3,
+                         fc="#F8F4EC", ec=C_DIM, lw=0.6, ls="--", zorder=8)
+    ax.add_patch(drum_inner)
 
-    # ── 4 internal baffles (fins at 45° rotation from cardinal) ──────────────
-    # Fins at 22.5°, 112.5°, 202.5°, 292.5° from horizontal
-    FIN_ANGLES = [22.5, 112.5, 202.5, 292.5]
-    for ang in FIN_ANGLES:
-        rad = np.radians(ang)
-        fx = DRUM_CX_D + DRUM_R_D * np.cos(rad)
-        fy = drum_centre_y + DRUM_R_D * np.sin(rad)
-        ax.plot([DRUM_CX_D, fx], [drum_centre_y, fy],
-                color=C_OUT, lw=2.2, zorder=8)
+    # ── Drum label ────────────────────────────────────────────────────────────
+    ax.text(D_CX, D_CY + 55,
+            f"Ø{DRUM_D}mm REVOLVING DRUM",
+            color=C_OUT, fontsize=8, ha="center", va="center",
+            **FONT, fontweight="bold", zorder=11)
+    ax.text(D_CX, D_CY - 35,
+            "3mm MILD STEEL  ·  FLAT BLACK POWDER COAT",
+            color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=11)
 
-    # Fin label
-    leader(ax, (DRUM_CX_D + DRUM_R_D * np.cos(np.radians(22.5)) * 0.65,
-                drum_centre_y + DRUM_R_D * np.sin(np.radians(22.5)) * 0.65),
-           (DRUM_CX_D + DRUM_R_D + sx(180), drum_centre_y - 30),
-           "4 × INTERNAL BAFFLES\n(45° OFFSET)\nFLAT BLACK PAINT", fs=6.5)
+    # ── 4 internal baffles (fins at 0°, 90°, 180°, 270°) ─────────────────────
+    # 4 fins at cardinal angles → 4 quarter-circle sectors
+    # Openings between sectors at 45°, 135°, 225°, 315°
+    FIN_ANGLES_DEG = [0, 90, 180, 270]
+    for ang_deg in FIN_ANGLES_DEG:
+        rad = np.radians(ang_deg)
+        fx  = D_CX + DR * np.cos(rad)
+        fy  = D_CY + DR * np.sin(rad)
+        # Draw fin (solid bar, 4mm wide)
+        ax.plot([D_CX, fx], [D_CY, fy], color=C_OUT, lw=3.0, zorder=10,
+                solid_capstyle="round")
 
-    # ── S-shaped light path through drum ─────────────────────────────────────
-    # Exterior opening: bottom of drum facing exterior (Y=0)
-    # Interior opening: top of drum facing interior
-    # Light tries to enter at exterior bottom, curves around a fin, exits at interior top.
-    # In cross-section: show dashed S-curved arrow from outside → drum entry →
-    # around baffle → drum exit → inside.
-    EXT_ENTRY = DRUM_CX_D - DRUM_R_D * 0.45   # offset entry point
-    INT_EXIT  = DRUM_CX_D + DRUM_R_D * 0.45   # offset exit point
+    # Sector labels (two visible sectors)
+    for ang_deg, lbl in [(45, "SECTOR\n(ENTRY)"), (225, "SECTOR\n(TRANSIT)")]:
+        rad = np.radians(ang_deg)
+        tx = D_CX + DR * 0.55 * np.cos(rad)
+        ty = D_CY + DR * 0.55 * np.sin(rad)
+        ax.text(tx, ty, lbl, color=C_DIM, fontsize=6, ha="center", va="center",
+                **FONT, alpha=0.75, zorder=11)
 
-    # Light path arrow (curved, dashed)
-    arrow_xs = [DRUM_CX_D - DRUM_R_D * 0.4,
-                DRUM_CX_D - DRUM_R_D * 0.25,
-                DRUM_CX_D + DRUM_R_D * 0.1,
-                DRUM_CX_D + DRUM_R_D * 0.4]
-    arrow_ys = [Y_EXT - 25,
-                drum_centre_y - DRUM_R_D * 0.5,
-                drum_centre_y + DRUM_R_D * 0.5,
-                Y_PI_actual + 25]
-    ax.plot(arrow_xs, arrow_ys, color=C_LIGHT, lw=2.5, ls="--", zorder=9, alpha=0.85)
-    ax.annotate("", xy=(arrow_xs[-1], arrow_ys[-1]),
-                xytext=(arrow_xs[-2], arrow_ys[-2]),
-                arrowprops=dict(arrowstyle="->", color=C_LIGHT, lw=2.0, mutation_scale=9))
-    ax.text(DRUM_CX_D + DRUM_R_D + sx(170), drum_centre_y + DRUM_R_D * 0.6,
-            "LIGHT PATH — NO STRAIGHT LINE\nOF SIGHT POSSIBLE",
-            color="#B07010", fontsize=6.5, ha="left", va="center", **FONT, zorder=9)
+    # Fin label with leader
+    fin_pt_x = D_CX + DR * np.cos(np.radians(0)) * 0.55
+    fin_pt_y = D_CY + DR * np.sin(np.radians(0)) * 0.55
+    leader(ax, (fin_pt_x, fin_pt_y),
+           (D_XR + 250, D_CY + DR * 0.5),
+           "4 × INTERNAL BAFFLES\n(90° SECTORS)\n3mm STEEL · FLAT BLACK", fs=6.5)
 
-    # ── Container interior zone ───────────────────────────────────────────────
-    INT_H = 55
-    ax.add_patch(Rectangle((0, Y_PI_actual), sx(PW), INT_H,
-                            fc="#F0F4F8", ec=C_OUT, lw=0.8, ls="--", zorder=3))
-    ax.text(sx(PW / 2), Y_PI_actual + INT_H / 2, "← CONTAINER INTERIOR →",
-            color=C_DIM, fontsize=7, ha="center", va="center", **FONT, zorder=4)
+    # ── Centre lines ──────────────────────────────────────────────────────────
+    CL_EXT = 55
+    ax.plot([D_CX - DR - CL_EXT, D_CX + DR + CL_EXT], [D_CY, D_CY],
+            color=C_CL, lw=0.8, ls="--", zorder=7, alpha=0.6)
+    ax.plot([D_CX, D_CX], [D_CY - DR - CL_EXT, D_CY + DR + CL_EXT],
+            color=C_CL, lw=0.8, ls="--", zorder=7, alpha=0.6)
+    ax.text(D_CX + DR + CL_EXT + 15, D_CY, "CL",
+            color=C_CL, fontsize=7, ha="left", va="center", **FONT)
+
+    # ── S-path light route ────────────────────────────────────────────────────
+    # Fins at 0° and 90° block any direct exterior→interior path.
+    # The route navigates one sector: enters at ~315° gap (lower-right),
+    # curves around the 0° fin, exits at ~135° gap (upper-left) into interior.
+    C_PATH = "#C08010"
+    path_x = np.array([
+        D_CX + DR * 0.42,    # exterior start (right of centre)
+        D_CX + DR * 0.60,    # approach lower-right gap (315°)
+        D_CX + DR * 0.68,    # inside drum, right of fin-0°
+        D_CX + DR * 0.30,    # curving left around fin-0°
+        D_CX - DR * 0.25,    # crossing to left half
+        D_CX - DR * 0.62,    # approaching upper-left gap (135°)
+        D_CX - DR * 0.42,    # interior exit (left of centre)
+    ])
+    path_y = np.array([
+        D_YB - 90,           # exterior start
+        D_CY - DR * 0.72,    # lower-right drum entry
+        D_CY - DR * 0.22,    # inside lower-right sector
+        D_CY + DR * 0.10,    # mid drum
+        D_CY + DR * 0.35,    # upper-left sector
+        D_CY + DR * 0.72,    # upper-left drum exit
+        D_YT + 90,           # interior exit
+    ])
+    ax.plot(path_x, path_y, color=C_PATH, lw=2.5, ls="--", zorder=12, alpha=0.9)
+    ax.annotate("", xy=(path_x[-1], path_y[-1]),
+                xytext=(path_x[-2], path_y[-2]),
+                arrowprops=dict(arrowstyle="->", color=C_PATH, lw=2.2, mutation_scale=10))
+    # Entry / exit tags
+    ax.text(path_x[0] + 35, path_y[0],
+            "ENTRY (FROM EXTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT)
+    ax.text(path_x[-1] + 35, path_y[-1],
+            "EXIT (TO INTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT)
+    # Route label
+    ax.text(D_XR + 250, D_CY - DR * 0.4,
+            "S-ROUTE — NO STRAIGHT-LINE\nSIGHT FROM EXTERIOR\nTO INTERIOR POSSIBLE",
+            color=C_PATH, fontsize=7, ha="left", va="center", **FONT, zorder=12)
 
     # ── Dimension lines ────────────────────────────────────────────────────────
-    # Container wall thickness
-    dim_v(ax, sx(PW) + sx(120), Y_EXT, WALL_T, f"{WALL_T}mm WALL", offset=sx(30), fs=6.5)
-    # Panel thickness
-    dim_v(ax, sx(PW) + sx(120), Y_WI, Y_PI_actual,
-          f"{PANEL_T}mm PANEL", offset=sx(30), fs=6.5)
+    DIM_X_R = D_XR + PAD_X * 0.35   # right-side dim column
+
     # Drum diameter (horizontal)
-    dim_h(ax, DRUM_CX_D - DRUM_R_D, DRUM_CX_D + DRUM_R_D,
-          -PAD_B + 12, f"Ø{DRUM_D} mm", offset=10, fs=7)
-    # Panel width
-    dim_h(ax, 0, sx(PW), total_depth + 60, f"{PW} mm PANEL WIDTH", offset=15, fs=7)
-    # Drum centre from left
-    dim_h(ax, 0, DRUM_CX_D, -PAD_B + 12 + 40,
-          f"{int(DRUM_CX_D * 10)} mm → DRUM CL", offset=10, fs=6.5)
+    dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
+          f"Ø{DRUM_D} mm  DRUM DIAMETER", fs=7)
 
-    # ── Scale annotation ───────────────────────────────────────────────────────
-    ax.text(sx(PW / 2), total_depth + 90,
-            "HORIZONTAL SCALE 1:10  /  VERTICAL (DEPTH) SCALE 1:1 — depth exaggerated for clarity",
-            color=C_DIM, fontsize=6.5, ha="center", va="bottom", **FONT)
+    # Container wall thickness
+    dim_v(ax, DIM_X_R, Y0_W, Y1_W,
+          f"  {WALL_T}mm\n  WALL", offset=20, fs=6.5)
 
-    # ── Direction labels ───────────────────────────────────────────────────────
-    ax.text(sx(-380), (Y_WI + Y_PI_actual) / 2 - 10,
-            "EXTERIOR\n←", color=C_DIM, fontsize=7, ha="right", va="center", **FONT)
-    ax.text(sx(PW) + sx(280), (Y_WI + Y_PI_actual) / 2 - 10,
-            "EXTERIOR\n→", color=C_DIM, fontsize=7, ha="left", va="center", **FONT)
-    ax.text(sx(-380), Y_PI_actual + INT_H / 2,
-            "INTERIOR →", color=C_DIM, fontsize=7, ha="right", va="center", **FONT)
-    ax.text(sx(PW) + sx(280), Y_PI_actual + INT_H / 2,
-            "← INTERIOR", color=C_DIM, fontsize=7, ha="left", va="center", **FONT)
-    ax.text(sx(-50), Y_EXT + WALL_T / 2,
-            "CONTAINER\nWALL", color=C_DIM, fontsize=6.5, ha="right", va="center", **FONT)
+    # Panel overall thickness
+    dim_v(ax, DIM_X_R, Y1_W, Y1_PL2,
+          f"  {PT}mm\n  PANEL", offset=20, fs=6.5)
+
+    # Exterior drum overhang
+    dim_v(ax, D_XL - 180, D_YB, Y0_W,
+          f"  {int(Y0_W - D_YB)}mm\n  EXT. OVERHANG", offset=25, fs=6)
+
+    # Interior drum overhang
+    dim_v(ax, D_XL - 180, Y1_PL2, D_YT,
+          f"  {int(D_YT - Y1_PL2)}mm\n  INT. OVERHANG", offset=25, fs=6)
+
+    # ── Panel extent note ─────────────────────────────────────────────────────
+    ax.annotate("", xy=(D_XL, Y0_FR + FRAME_T / 2),
+                xytext=(X_LO + 10, Y0_FR + FRAME_T / 2),
+                arrowprops=dict(arrowstyle="<-", color=C_DIM, lw=0.8, mutation_scale=6))
+    ax.text(X_LO + 15, Y0_FR + FRAME_T / 2 - 30,
+            f"← PANEL CONTINUES {int(D_XL)}mm TO LEFT EDGE",
+            color=C_DIM, fontsize=6, ha="left", va="center", **FONT)
+
+    # ── Scale and note ────────────────────────────────────────────────────────
+    ax.text((X_LO + X_HI) / 2, Y_HI - 20,
+            "EQUAL ASPECT — ALL DIMENSIONS IN mm  ·  VIEW CROPPED TO DRUM ZONE  ·  "
+            "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
+            color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT)
 
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 2",
-                "PLAN SECTION AT DRUM MID-HEIGHT — DRUM CROSS-SECTION + LIGHT PATH",
-                "HORIZ 1:10  /  VERT 1:1 (DEPTH EXAGGERATED)")
+                "PLAN CROSS-SECTION — DRUM ZONE DETAIL, BAFFLES & S-PATH LIGHT ROUTE",
+                "EQUAL ASPECT  ·  SCALE 1:10 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)

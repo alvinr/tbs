@@ -58,6 +58,7 @@ MD_FILES = [
     ("master-shopping-list.md",         (".",           "Master Shopping List")),
     ("licensing.md",                      (".",           "License")),
     ("light-trap-selection.md",           (".",           "Light Trap Selection")),
+    ("engineering-diagrams.md",           (".",           "Engineering Diagrams")),
 ]
 
 # Images to copy into assets/
@@ -103,6 +104,9 @@ IMAGE_FILES = [
     "hingepanel-sheet1.png",
     "hingepanel-sheet2.png",
     "container-floorplan.png",
+    "assembly-overview.png",
+    "assembly-fab-sheet1.png",
+    "assembly-fab-sheet2.png",
 ]
 
 MKDOCS_YML = """\
@@ -249,6 +253,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
+| [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 
 """
 

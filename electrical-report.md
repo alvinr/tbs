@@ -161,6 +161,51 @@ After installation, perform the inspection in Phase 0.7 of the Operating Manual.
 **Sheet 2 — Container Ventilation Section and Fan Baffle Detail**
 ![TBS-001 Light Trap — Sheet 2: Ventilation Section](assets/lighttrap-sheet2.png)
 
+### 5.7 Hinged Panel & Commercial Light Trap Options
+
+The S-path vestibule described in Sections 5.1–5.6 provides a fixed personnel entry. An improved design replaces it with a **hinged panel incorporating a revolving light trap drum** — allowing the full cargo door opening to be cleared for equipment loading, while retaining light-tight personnel access when the panel is closed.
+
+**Hinged panel design:**
+The panel (2,362mm × 2,388mm, 50×50mm RHS steel frame, 18mm ply skins, 120mm overall thickness) is hung on three 200mm stainless ball-bearing piano hinges at the left edge of the door opening. Four Southco C2-33 cam compression latches seal the perimeter. A 20mm EPDM compression gasket in a machined aluminium channel provides zero-gap light-seal when the latches are engaged. The panel swings 180° outward to fully clear the opening for IBC tote loading.
+
+A 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 sealed bearings top and bottom) is built into the panel centre. Operators push the drum wall to enter, traverse one baffle sector, and exit into the container interior — no tools, no light admission.
+
+**Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
+
+---
+
+**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and Light Path**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+---
+
+**Commercial revolving light trap options** are documented and costed in the [Light Trap Selection Report](light-trap-selection.md):
+
+| Option | Diameter | Price (USD) | Recommended? |
+|--------|----------|------------|--------------|
+| Vario LT-800 / Octanorm type | 800mm | $2,500–$3,500 | No — no weatherproofing, not panel-mount compatible |
+| Porta-Fab DK series | 750–900mm | $3,000–$4,500 | No — requires panel-bay frame, cost premium |
+| **Custom fabrication (3mm steel, SKF 6215)** | **750mm** | **$950–$1,450** | **Yes — field-rated, IP44, panel bolt-in** |
+
+Custom fabrication is the recommended approach. Full raw material supplier list, bearing specification, and seal specification are in the [Light Trap Selection Report](light-trap-selection.md).
+
+### 5.8 Container Floor Plan — All Systems
+
+Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment clusters at the cargo door short end (X=0–2,700mm). The optical clear zone (X=2,700–5,893mm) is unobstructed.
+
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
+
+**Equipment zone (X=0–2,700mm):**
+- 2 × Blue IBC totes (1,000L each) — wash water, side-by-side in container width
+- 1 × Brown IBC tote (1,000L) — waste water / fix recovery
+- 2 × 55-gal HDPE drums — concentrate chemistry / overflow
+- 12V evaporative cooler — near cooler intake penetration on far long wall
+- Pump manifold — 12V DC, three-circuit water system
+- Electrical enclosure + LiFePO4 battery bank — wall-mounted on left short end
+
+**Note:** Equipment in the X=0–2,700mm zone is within the image plane frame but shadows the lower portion of the far wall at those X positions — producing known corner vignetting on the image. This is a compositional characteristic, not a defect, and is documented in the technical reports.
+
 ---
 
 ## 6. Cooling System

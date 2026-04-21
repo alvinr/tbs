@@ -57,6 +57,7 @@ MD_FILES = [
     ("electrical-report.md",            (".",           "Electrical & Systems")),
     ("master-shopping-list.md",         (".",           "Master Shopping List")),
     ("licensing.md",                      (".",           "License")),
+    ("light-trap-selection.md",           (".",           "Light Trap Selection")),
 ]
 
 # Images to copy into assets/
@@ -99,6 +100,9 @@ IMAGE_FILES = [
     "electrical-sheet2.png",
     "lighttrap-sheet1.png",
     "lighttrap-sheet2.png",
+    "hingepanel-sheet1.png",
+    "hingepanel-sheet2.png",
+    "container-floorplan.png",
 ]
 
 MKDOCS_YML = """\
@@ -244,6 +248,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
+| [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 
 """
 

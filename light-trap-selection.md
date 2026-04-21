@@ -11,7 +11,13 @@ The cargo door end of TBS-001 is sealed by a hinged panel (2,362mm wide × 2,388
 
 Personnel access during operation is via a revolving light trap drum built into the panel. The drum replaces a fixed S-path vestibule — operators can enter or exit at any time without opening the full panel or admitting daylight.
 
-**Design drawings:** See [Electrical & Systems Report](electrical-report.md) Section 5.7 — Sheet 1 (front elevation) and Sheet 2 (plan cross-section with drum baffle detail).
+**Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
+
+**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and S-Path Light Route**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+Full drawings also appear in the [Electrical & Systems Report](electrical-report.md) Section 5.7.
 
 ---
 

@@ -352,14 +352,25 @@ The pinhole goes in the center of the opposite long wall.
 
 ---
 
-### Step 5: Access Door — Light-Seal Upgrade
+### Step 5: Access Door — Hinged Light-Trap Panel
 
-The container's original end doors are used for loading photosensitive material. These doors require upgraded light sealing:
+TBS-001 replaces the original cargo doors with a purpose-built hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
-1. Replace or supplement existing rubber door seals with fresh D-profile foam weatherstripping
-2. Apply Gorilla Tape seam to the door gap after closing (remove before opening)
-3. Install a red LED safelight inside (battery-powered or wired) for loading operations
-4. Consider a light-trap vestibule: a small anteroom (even a black fabric enclosure) at the door allows opening and closing without a complete blackout exterior
+**Panel design (see engineering drawings below):**
+- 2,362 × 2,388mm panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins, 120mm overall thickness
+- 3 × 200mm stainless ball-bearing piano hinges at left edge — 180° outward swing clears the full door opening
+- 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket to zero-gap seal
+- 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
+
+**Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
+
+**Sheet 1 — Front Elevation (1:20):**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
+
+**Sheet 2 — Plan Cross-Section showing drum baffles and S-path light route (1:10 horiz / 1:1 depth):**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+**Interior safelight:** Install a red LED safelight (Circuit D, per [Electrical Report](electrical-report.md)) inside the container for loading operations. This also illuminates the drum interior so operators can orient themselves in darkness.
 
 ---
 

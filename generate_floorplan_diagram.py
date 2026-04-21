@@ -78,7 +78,9 @@ IBC_L = 1219   # IBC long footprint dim  (X direction)
 
 # ── LEFT WING (X=0–2380mm, Y=0–1220mm) ───────────────────────────────────────
 # Blue IBCs ×2 stacked (600L each): X=100–1319, Y=100–1116.
-#   Cone left at Y=1116: X_left=1494mm. Right edge 1319mm < 1494mm ✓ CLEAR.
+#   Optical cone: right edge 1319mm < X_left(1116)=1494mm ✓ CLEAR.
+#   NOTE: drum center is repositioned to Y=1600mm (see §10 of equipment-layout-report)
+#   so drum footprint (Y=1225–1975mm) does not overlap with IBC (Y=100–1116mm).
 BLUE_STACK = dict(x=100, y=100, w=IBC_L, h=IBC_S, label="BLUE IBC ×2\n(STACKED)\n2×600L", col=C_BLUE_IBC)
 
 # Evap cooler: X=1380–1980, Y=100–450.
@@ -306,6 +308,25 @@ def floor_plan():
             "HINGED PANEL\n+ REVOLVING\nDRUM INLET",
             color=C_PINHOLE, fontsize=6.5, ha="right", va="center",
             **FONT, zorder=5)
+
+    # ── Revolving drum footprint (plan view = circle) ─────────────────────────
+    # Drum: vertical axis, Ø750mm.
+    # Centre positioned at Y=1600mm (offset from container centreline Y=1181mm
+    # toward far wall) so drum footprint (Y=1225–1975mm) is OUTSIDE the equipment
+    # colonnade (Y=0–1116mm IBC zone). This clears the drum from the Blue IBCs.
+    # Drum protrudes from X=0 to X=375mm inside the container.
+    DRUM_FP_R = 375    # drum radius (mm)
+    DRUM_FP_CX = 0     # drum centre X (at panel face)
+    DRUM_FP_CY = 1600  # drum centre Y — offset toward far wall for colonnade clearance
+    # Drum footprint circle (dashed, inside container)
+    drum_fp = Circle((DRUM_FP_CX, DRUM_FP_CY), DRUM_FP_R,
+                     fc="#FFE8D0", ec=C_PINHOLE, lw=1.2,
+                     ls=(0, (4, 3)), alpha=0.5, zorder=5)
+    ax.add_patch(drum_fp)
+    ax.text(DRUM_FP_CX + DRUM_FP_R + 80, DRUM_FP_CY,
+            f"DRUM FOOTPRINT (plan — Ø750mm)\nCENTRE Y=1600mm\n(lower edge Y=1225 > IBC max Y=1116 ✓)",
+            color=C_PINHOLE, fontsize=5.5, ha="left", va="center",
+            **FONT, zorder=6)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Cooler intake duct — moved to pinhole wall (Y=0), X aligned with new cooler position

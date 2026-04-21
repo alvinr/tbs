@@ -270,7 +270,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                   D_scene=8000, swing=0.0):
     """Render a single config — two scenes side by side."""
     fig, axes = plt.subplots(1, 2, figsize=(16, 5))
-    fig.patch.set_facecolor(PRU_INK)
+    fig.patch.set_facecolor("white")
 
     scenes = [
         (checker_scene, "CHECKER GRID  ·  600mm cells  ·  rings @ 1m intervals"),
@@ -285,17 +285,17 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
         ax.imshow(img, origin="upper", aspect="auto",
                   extent=[-FILM_L/2, FILM_L/2, -FILM_H/2, FILM_H/2])
         annotate_render(ax, label, name, d_top, d_bot, desc, D_scene, swing_angle)
-        ax.set_title(scene_name, color=CYAN_LITE, fontsize=8,
+        ax.set_title(scene_name, color="#222222", fontsize=8,
                      fontfamily="monospace", pad=4)
 
-    fig.suptitle(f"GPC-001 FILM PLANE DISTORTION  ·  {label}: {name}",
-                 color=PAPER_W, fontsize=11, fontfamily="monospace",
+    fig.suptitle(f"TBS-001 FILM PLANE DISTORTION  ·  {label}: {name}",
+                 color="#111111", fontsize=11, fontfamily="monospace",
                  fontweight="bold", y=1.01)
     fig.tight_layout(pad=0.6)
 
     fname = f"film-plane-distortion-{label.lower()}.png"
     fig.savefig(fname, dpi=120, bbox_inches="tight",
-                facecolor=PRU_INK)
+                facecolor="white")
     plt.close(fig)
     print(f"  → {fname}")
 
@@ -306,7 +306,7 @@ def render_summary():
     ncols = 4
     nrows = 2
     fig, axes = plt.subplots(nrows, ncols, figsize=(20, 10))
-    fig.patch.set_facecolor(PRU_INK)
+    fig.patch.set_facecolor("white")
 
     for i, (label, name, d_top, d_bot, desc) in enumerate(CONFIGS):
         row, col = divmod(i, ncols)
@@ -316,7 +316,7 @@ def render_summary():
                                         out_w=560, out_h=373,
                                         swing_deg=swing)
         ax.imshow(img, origin="upper", aspect="auto")
-        ax.set_title(f"{label} · {name}", color=CYAN_LITE,
+        ax.set_title(f"{label} · {name}", color="#111111",
                      fontsize=8.5, fontfamily="monospace", pad=3)
         ax.text(0.01, 0.03, f"T={d_top} B={d_bot}",
                 transform=ax.transAxes, color=PAPER_W * 0.8,
@@ -328,15 +328,15 @@ def render_summary():
     for j in range(n, nrows * ncols):
         r, c = divmod(j, ncols)
         axes[r][c].axis("off")
-        axes[r][c].set_facecolor(PRU_INK)
+        axes[r][c].set_facecolor("white")
 
     fig.suptitle(
-        "GPC-001  ·  FILM PLANE DISTORTION SUMMARY  ·  CHECKER SCENE  ·  D = 8,000 mm",
-        color=PAPER_W, fontsize=13, fontfamily="monospace",
+        "TBS-001  ·  FILM PLANE DISTORTION SUMMARY  ·  CHECKER SCENE  ·  D = 8,000 mm",
+        color="#111111", fontsize=13, fontfamily="monospace",
         fontweight="bold", y=1.005)
     fig.tight_layout(pad=0.5)
     fig.savefig("film-plane-distortion-summary.png", dpi=120,
-                bbox_inches="tight", facecolor=PRU_INK)
+                bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → film-plane-distortion-summary.png")
 

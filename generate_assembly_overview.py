@@ -174,15 +174,16 @@ panel_rect = mpatches.Rectangle((0, 0), 80, CH,
                                   facecolor=C_DOOR, edgecolor=C_OUT,
                                   linewidth=0.8, alpha=0.9, zorder=4)
 ax.add_patch(panel_rect)
-drum_circ = plt.Circle((0, PH_H), DRUM_R,
-                         facecolor="#E8E8D0", edgecolor=C_OUT,
-                         linewidth=0.8, alpha=0.9, zorder=5)
-ax.add_patch(drum_circ)
-ax.text(0, PH_H, f"⊕", ha="center", va="center",
-        fontsize=9, color=C_OUT, zorder=6)
+# Revolving drum — VERTICAL AXIS. In this side elevation (looking along Y)
+# the drum appears as a RECTANGLE: Ø750mm wide × 2000mm tall.
+# It straddles the panel face at X=0.
+DRUM_H_ELV = 2000
+ax.add_patch(mpatches.Rectangle((-DRUM_R, 0), DRUM_D, DRUM_H_ELV,
+                                  facecolor="#E8E8D0", edgecolor=C_OUT,
+                                  linewidth=0.8, alpha=0.9, zorder=5))
 
-leader(ax, 0, PH_H + DRUM_R + 100, -200, PH_H + 600,
-       f"Hinged panel\n+ revolving drum\nØ{DRUM_D}mm",
+leader(ax, 0, DRUM_H_ELV + 80, -200, PH_H + 600,
+       f"Hinged panel\n+ revolving drum\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 
 
@@ -201,6 +202,7 @@ DRUM_H_STK = 1740  # 2× stacked drum height
 
 # -- LEFT WING --
 # Blue IBC stack ×2 (600L each, stacked vertical): X=100–1319, H=0–2020
+# Drum is repositioned to Y=1600mm centre (far-wall side) → no drum-IBC conflict.
 equip_rect(ax, 100, 100, IBC_W, IBC_H_STK, C_IBC_BLUE)
 ax.text(100 + IBC_W / 2, 100 + IBC_H_STK / 2,
         "Blue IBC\n×2 stacked\n(2×600L)", ha="center", va="center",

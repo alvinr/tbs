@@ -69,7 +69,7 @@ shows zero obstructions.
 
 | Item | X (mm) | Yd (mm) | H (mm) | Cone clearance |
 |------|--------|---------|--------|---------------|
-| Blue IBC stack ×2 (600L each) | 100–1,319 | 100–1,116 | 0–2,020 | Right edge 1,319 < X_left(1,116)=1,494 ✓ |
+| Blue IBC stack ×2 (600L each) | 100–1,319 | 100–1,116 | 0–2,020 | Right edge 1,319 < X_left(1,116)=1,494mm ✓ CLEAR (drum repositioned to Y=1,600mm) |
 | Evaporative cooler | 1,380–1,980 | 100–450 | 0–800 | Right edge 1,980 < X_left(450)=2,360 ✓ |
 | Pump manifold | 1,980–2,380 | 100–400 | 0–500 | Right edge 2,380 < X_left(400)=2,424 ✓ |
 | Electrical panel | 2,050–2,350 | 0–80 | 900–1,500 | Wall-mounted (Yd=0) — no cone risk ✓ |
@@ -234,12 +234,103 @@ IBC to the right wing at X=4,674–5,893mm, stacked on the Brown IBC) restores f
 
 ---
 
-## 10. Summary of Changes
+## 10. Brown IBC Floor Runner — Transport Counterbalance System
+
+### 10.0 Drum–IBC Clearance — Drum Centre Repositioned
+
+**Problem:** If the revolving drum centre is at Y=1,181mm (container centreline),
+its plan-view footprint spans Y=806–1,556mm. This overlaps with the Blue IBC at
+Y=100–1,116mm and X=0–375mm (drum protrusion), creating a physical conflict.
+
+**Fix:** The drum centre is repositioned to **Y=1,600mm** (toward the far wall,
+419mm from the container centreline). This shifts the drum footprint to
+Y=1,225–1,975mm — entirely outside the equipment colonnade (IBC max Y=1,116mm).
+Clearance = 1,225−1,116 = **109mm** ✓.
+
+At this position, occupants enter the container at Y=1,600mm depth from the
+pinhole wall — in the optical clear zone (Y>1,220mm). This keeps foot traffic
+out of the equipment colonnade and away from the optical zone equipment.
+
+**Impact on panel drawings:** The drum centre shifts from CW/2=1,181mm to
+1,600mm on the hinged panel (Sheet 1 and Sheet 2). The drum's horizontal
+dimension lines on those sheets need to be updated.
+
+---
+
+### 10.1 The Problem — Weight Asymmetry During Transport
+
+The LEFT WING carries the Blue IBC stack (2× 600L = 1,200L capacity; loaded:
+~1,200 kg) at X=380–1,599mm. The RIGHT WING carries the Brown IBC (600L = ~600 kg)
+at X=4,674–5,893mm and the drum stack (2× 55-gal = ~416L = ~416 kg) at
+X=3,900–4,480mm.
+
+With both sides fully loaded, the weight distribution is roughly balanced along
+the long axis. However, during transit with tanks partially filled or one wing
+empty, significant lateral weight imbalance can occur.
+
+More importantly, the Brown IBC (RIGHT WING, X=4,674mm) is at the far end of the
+container. To improve lateral balance during road transport, the Brown IBC should
+be moved to the LEFT WING side — counterbalancing the Blue IBC stack.
+
+### 10.2 Solution — Floor Slide Rail System
+
+The Brown IBC sits on a **welded steel floor runner / slide rail** that allows it
+to be slid from its operational position (RIGHT WING, X=4,674mm) to a transport
+position (LEFT WING, X≈1,600mm), where it counterbalances the Blue IBCs.
+
+| Position | X range | Use case |
+|----------|---------|----------|
+| Operational | 4,674–5,893mm (RIGHT WING) | During operation — optical clearance maintained |
+| Transport | ~1,600–2,819mm (centre-left) | During road transport — weight balance |
+
+**Operational constraint:** In the operational position (X=4,674mm) the Brown IBC
+clears the optical cone: Yd_max(left_edge=4,674) = 2,262 × (4,674−2,946)/2,947
+= 2,262 × 0.586 = 1,328mm > 1,016mm (IBC depth) ✓
+
+**Transport constraint:** In transport position (X≈1,600mm), all tanks are drained
+or filled to ≤25%. The IBC footprint (1,219mm L) does not interfere with the
+Blue IBC stacking frame (right edge at X=1,599mm) when positioned at X≥1,620mm.
+
+### 10.3 Runner Specification
+
+| Item | Specification |
+|------|--------------|
+| Rail type | 2× cold-drawn steel channel (100×50×5mm PFC), floor-bolted |
+| Rail span | X=380–5,893mm (full usable length of container floor) |
+| Rail gauge | 1,016mm (matching IBC cage outer footprint) |
+| IBC slide frame | Welded 50×50×3mm RHS base pallet with UHMWPE slider pads |
+| Locking pins | 20mm dia. spring-loaded locking pin (operational) + transport position |
+| Locking holes | 2× positions: X=4,674mm (operational) + X=1,620mm (transport) |
+| UHMWPE pads | 200×50mm × 10mm thick, 4× per corner = 16 pads total |
+| Load rating | 750kg (full 600L IBC) — PFC channel rated at 1,200 kg/m continuous |
+| Approx. cost | USD $300–$450 (steel channel + fabrication, local) |
+
+**Suppliers:**
+
+| Item | Supplier | Notes |
+|------|----------|-------|
+| 100×50×5mm PFC channel | Pacific Coast Steel, Santa Fe Springs CA | A36; ~$6/linear foot |
+| UHMWPE slider pads | McMaster-Carr #8685K22 | 10mm thick, 200×100mm sheet, cut to size |
+| 20mm spring pin (×2) | McMaster-Carr #90272A150 | 20mm dia., 80mm length |
+
+### 10.4 Transport Protocol — Brown IBC
+
+1. Drain Brown IBC to ≤25% (≤150L) before transport
+2. Release operational locking pin (X=4,674mm position)
+3. Slide Brown IBC left along rail to transport position (X=1,620mm)
+4. Engage transport locking pin
+5. Lash IBC to container floor D-rings with 32mm polyester strap
+6. Confirm total centre-of-gravity: Blue IBCs (X≈990mm centroid) + Brown IBC
+   (X≈2,229mm centroid) + Drums (X≈4,190mm centroid) — acceptable for road transport
+
+---
+
+## 11. Summary of Changes
 
 | System | Before | After |
 |--------|--------|-------|
 | Equipment zone concept | X=0–2,700mm (by long axis) | Yd=0–1,220mm (by depth from pinhole wall) |
-| Blue IBCs | 2× 1,000L, side by side in Yd | 2× 600L, stacked vertical, LEFT WING |
+| Blue IBCs | 2× 1,000L, side by side in Yd | 2× 600L, stacked vertical, LEFT WING X=100–1,319mm |
 | Brown IBC | 1× 1,000L, X=1,380mm | 1× 600L, RIGHT WING X=4,674mm |
 | 55-gal drums | 2× floor-standing, Yd=1,310mm | 2× stacked, RIGHT WING X=3,900mm |
 | Evap cooler | X=1,380mm, Yd=1,980mm | X=1,380mm, Yd=100mm (pinhole side) |

@@ -170,10 +170,10 @@ ax1.text(15.65, 10.5, "PROCESSING AREA",
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
 # IBC1 Clean water A
 tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
-     label="IBC-1", sublabel="275 gal\nCLEAN A")
+     label="IBC-1", sublabel="159 gal (600L)\nCLEAN A")
 # IBC2 Clean water B
 tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
-     label="IBC-2", sublabel="275 gal\nCLEAN B")
+     label="IBC-2", sublabel="159 gal (600L)\nCLEAN B")
 
 # Manifold joining two tanks
 pipe(ax1, 1.5, 7.48, 1.5, 7.0, C_BLUE)
@@ -219,7 +219,7 @@ ax1.plot([4.5, 3.95], [8.2, 8.2], color=C_BLUE, lw=0.8, ls=":")
 # ── BROWN SYSTEM ──────────────────────────────────────────────────────────────
 # IBC3 — used water buffer
 tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN, lw=2,
-     label="IBC-3", sublabel="275 gal\nUSED BUFFER")
+     label="IBC-3", sublabel="159 gal (600L)\nUSED BUFFER")
 
 # Inlet from processing floor drain
 pipe(ax1, 6.4, 7.48, 6.4, 7.0, C_BROWN)
@@ -466,11 +466,11 @@ def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
             fontsize=6.5, color="#555", zorder=3)
 
 # IBC-1 Blue A — rear left corner
-ibc_plan(ax2, 0.15, 3.1, "#BBDEFB", C_BLUE, "IBC-1", "275 gal BLUE-A")
+ibc_plan(ax2, 0.15, 3.1, "#BBDEFB", C_BLUE, "IBC-1", "159 gal (600L) BLUE-A")
 # IBC-2 Blue B — next to it
-ibc_plan(ax2, 0.15, 1.2, "#BBDEFB", C_BLUE, "IBC-2", "275 gal BLUE-B")
+ibc_plan(ax2, 0.15, 1.2, "#BBDEFB", C_BLUE, "IBC-2", "159 gal (600L) BLUE-B")
 # IBC-3 Brown — right of blue tanks
-ibc_plan(ax2, 2.3, 2.15, "#D7CCC8", C_BROWN, "IBC-3", "275 gal BROWN")
+ibc_plan(ax2, 2.3, 2.15, "#D7CCC8", C_BROWN, "IBC-3", "159 gal (600L) BROWN")
 
 # Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
 FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9
@@ -573,8 +573,8 @@ ax3.plot([0.2, 9.9], [header_y - 0.18, header_y - 0.18], color=C_FRAME, lw=1)
 
 parts = [
     # (item, tag, description, qty)
-    ("1",  "IBC-1/2",  "IBC tote 275 gal food-grade HDPE, 2\" bottom valve", "2"),
-    ("2",  "IBC-3",    "IBC tote 275 gal HDPE, used/rinsed (brown system)", "1"),
+    ("1",  "IBC-1/2",  "IBC tote 600L (159 gal) food-grade HDPE, 2\" bottom valve", "2"),
+    ("2",  "IBC-3",    "IBC tote 600L (159 gal) HDPE, used/rinsed (brown system)", "1"),
     ("3",  "D-1/2",    "55 gal closed-head HDPE drum, UN-rated (black system)", "2"),
     ("4",  "P-01",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),
     ("5",  "P-02",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),

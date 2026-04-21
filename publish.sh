@@ -63,6 +63,7 @@ MD_FILES=(
     "master-shopping-list.md"
     "licensing.md"
     "light-trap-selection.md"
+    "engineering-diagrams.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────
@@ -139,6 +140,9 @@ IMG_FILES=(
     "hingepanel-sheet1.png"
     "hingepanel-sheet2.png"
     "container-floorplan.png"
+    "assembly-overview.png"
+    "assembly-fab-sheet1.png"
+    "assembly-fab-sheet2.png"
 )
 
 for f in "${IMG_FILES[@]}"; do

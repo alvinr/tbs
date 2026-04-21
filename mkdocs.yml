@@ -49,25 +49,29 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - "Proposal": funding-proposal.md
+  - Proposal: funding-proposal.md
   - "Cost Breakdown": project-cost-breakdown.md
-  - "Optics Report": pinhole-optics-report.md
-  - "Container Optics": pinhole-option-b-optics.md
-  - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
-  - "Lens Options": lens-options.md
-  - "Transportation": container-transport-options.md
-  - "Pinhole Fab": fabrication-drawings.md
-  - "Photosensitive Materials": photosensitive-plane-options.md
-  - "Processing System": water-system-report.md
-  - "Film Plane Mechanism": film-plane-mechanism-report.md
-  - "Tilt-Swing Front Board": tilt-swing-board-report.md
-  - "Construction Guide": pinhole-camera-construction.md
-  - "Chem Shopping List": chemistry-shopping-list.md
-  - "Operating Manual": operating-manual.md
-  - "Electrical & Systems": electrical-report.md
-  - "Master Shopping List": master-shopping-list.md
-  - "License": licensing.md
-  - "Light Trap Selection": light-trap-selection.md
+  - Construction:
+    - "Engineering Diagrams": engineering-diagrams.md
+    - "Construction Guide": pinhole-camera-construction.md
+    - "Pinhole Fab": fabrication-drawings.md
+    - "Processing System": water-system-report.md
+    - "Film Plane Mechanism": film-plane-mechanism-report.md
+    - "Tilt-Swing Front Board": tilt-swing-board-report.md
+    - "Electrical & Systems": electrical-report.md
+    - "Light Trap Selection": light-trap-selection.md
+    - "Operating Manual": operating-manual.md
+  - Shopping:
+    - "Chem Shopping List": chemistry-shopping-list.md
+    - "Master Shopping List": master-shopping-list.md
+  - Appendix:
+    - "Optics Report": pinhole-optics-report.md
+    - "Container Optics": pinhole-option-b-optics.md
+    - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
+    - "Lens Options": lens-options.md
+    - "Photosensitive Materials": photosensitive-plane-options.md
+    - "Transportation": container-transport-options.md
+  - License: licensing.md
 
 extra:
   social:

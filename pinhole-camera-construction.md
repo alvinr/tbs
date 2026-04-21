@@ -106,6 +106,29 @@ Container doors (for loading) are on the SHORT ENDS — completely separate from
 
 ---
 
+## Part 4A: Container Interior Layout — Top Elevation
+
+The floor plan below shows the container interior from above (top-down view) with all
+major systems in their installed positions. The optical axis runs left-right in this view
+(from the pinhole on the near long wall to the film plane on the far long wall at 2262mm depth).
+The equipment zone occupies the left third of the container (X = 0–2700mm); the right two-thirds
+is the clear optical zone.
+
+![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
+
+| Zone | Long-axis span | Contents |
+|------|---------------|----------|
+| Equipment zone | X = 0–2700mm | IBC totes (×3), 55-gal drums (×2), evap cooler, pump manifold, electrical panel |
+| Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
+| Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
+| Pinhole wall | X = 2946mm (centre) | Aperture Ø2.17mm at Y_depth=0 |
+| Film plane | Y_depth = 2262mm | Muslin sensitised surface, spanning full 5893mm × 2388mm |
+
+See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
+and §13 for the optical line-of-sight clearance analysis.
+
+---
+
 ## Part 5: Container Proposals
 
 ### Proposal 1 — 20-foot Standard Container (The Entry Camera)

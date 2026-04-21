@@ -84,20 +84,7 @@ Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 Ray-traced distortion renders showing projected image geometry for each film-plane
 configuration. Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 
-**Summary grid — all 7 configurations**
-![Film Plane Distortion — Summary Grid](assets/film-plane-distortion-summary.png)
-
-Individual configurations:
-
-| Config | Render |
-|--------|--------|
-| C0 — Flat | ![C0](assets/film-plane-distortion-c0.png) |
-| C1 — Tilt +42° | ![C1](assets/film-plane-distortion-c1.png) |
-| C2 — Tilt −42° | ![C2](assets/film-plane-distortion-c2.png) |
-| C3 — Swing +20° | ![C3](assets/film-plane-distortion-c3.png) |
-| C4 — Swing −20° | ![C4](assets/film-plane-distortion-c4.png) |
-| C5 — Twisted (tilt+swing) | ![C5](assets/film-plane-distortion-c5.png) |
-| C6 — Full compound | ![C6](assets/film-plane-distortion-c6.png) |
+All renders are collected in the [Distortion Renders](distortion-renders.md) document.
 
 ---
 
@@ -123,22 +110,7 @@ Compound optical projections when both the film plane mechanism and the tilt-swi
 front board are active simultaneously.
 Source report: [Tilt-Swing Front Board](tilt-swing-board-report.md).
 
-**Summary grid — all 9 configurations**
-![Tilt-Swing Combined Distortion — Summary Grid](assets/tilt-swing-combined-summary.png)
-
-Individual configurations:
-
-| Config | Render |
-|--------|--------|
-| C0 — Both flat | ![C0](assets/tilt-swing-combined-c0.png) |
-| C1 | ![C1](assets/tilt-swing-combined-c1.png) |
-| C2 | ![C2](assets/tilt-swing-combined-c2.png) |
-| C3 | ![C3](assets/tilt-swing-combined-c3.png) |
-| C4 | ![C4](assets/tilt-swing-combined-c4.png) |
-| C5 | ![C5](assets/tilt-swing-combined-c5.png) |
-| C6 | ![C6](assets/tilt-swing-combined-c6.png) |
-| C7 | ![C7](assets/tilt-swing-combined-c7.png) |
-| C8 — Full compound | ![C8](assets/tilt-swing-combined-c8.png) |
+All renders are collected in the [Distortion Renders](distortion-renders.md) document.
 
 ---
 
@@ -191,3 +163,17 @@ Source report: [Light Trap Selection](light-trap-selection.md).
 
 **Sheet 2 — Plan cross-section (1:10 horiz / 1:1 depth): Drum baffles and S-path light route**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+**Sheet 3 — Drum vertical section elevation (Section A-A): Confirms walking-height vertical drum orientation**
+![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
+
+---
+
+## 13. Optical Line-of-Sight Clearance
+
+Two-panel optical clearance diagram. Confirms which equipment items fall within the
+optical cone from the pinhole (X=2946mm, H=1194mm) to the film plane (depth=2262mm).
+Equipment items intersecting the cone are highlighted as potential shadow sources.
+See [Construction Guide](pinhole-camera-construction.md) §4 for layout context.
+
+![TBS-001 — Optical Line-of-Sight Clearance](assets/line-of-sight.png)

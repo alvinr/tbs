@@ -65,6 +65,7 @@ MD_FILES=(
     "light-trap-selection.md"
     "engineering-diagrams.md"
     "distortion-renders.md"
+    "equipment-layout-report.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────

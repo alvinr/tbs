@@ -45,24 +45,23 @@ PH_H  = 1194   # pinhole height
 EQ_X  = 2700   # equipment zone boundary (long axis)
 
 # ── Equipment footprints in plan (X, Yd, width, depth) ───────────────────────
-# Positions match generate_floorplan_diagram.py
+# PINHOLE WALL COLONNADE — all equipment Yd ≤ 1220mm.
+# Matches positions in generate_floorplan_diagram.py
 EQUIPMENT = [
-    dict(name="Blue IBC ×2 (front)",  x=100,  yd=100,  w=1219, d=1016,
-         color="#4A90D9", h_bot=0, h_top=1163),
-    dict(name="Blue IBC ×2 (rear)",   x=100,  yd=1246, w=1219, d=1016,
-         color="#2A70B9", h_bot=0, h_top=1163),
-    dict(name="Brown IBC ×1",         x=1380, yd=100,  w=1219, d=1016,
-         color="#9C7A3C", h_bot=0, h_top=1163),
-    dict(name="55-gal Drum 1",        x=1440, yd=1310, w=580,  d=580,
-         color="#7A6B5A", h_bot=0, h_top=870),
-    dict(name="55-gal Drum 2",        x=2030, yd=1310, w=580,  d=580,
-         color="#7A6B5A", h_bot=0, h_top=870),
-    dict(name="Evap cooler",          x=1380, yd=1980, w=600,  d=350,
+    # LEFT WING
+    dict(name="Blue IBC stack (×2)",  x=100,  yd=100, w=1219, d=1016,
+         color="#4A90D9", h_bot=0, h_top=2020),   # 2×600L stacked = 2020mm
+    dict(name="Evap cooler",          x=1380, yd=100, w=600,  d=350,
          color="#3DAA96", h_bot=0, h_top=800),
-    dict(name="Pump manifold",        x=2050, yd=1980, w=400,  d=300,
+    dict(name="Pump manifold",        x=1980, yd=100, w=400,  d=300,
          color="#E8884A", h_bot=0, h_top=500),
-    dict(name="Electrical panel",     x=2400, yd=0,    w=80,   d=60,
-         color="#F5C518", h_bot=900, h_top=1500),
+    dict(name="Electrical panel",     x=2050, yd=0,   w=300,  d=80,
+         color="#F5C518", h_bot=900, h_top=1500),  # wall-mounted on pinhole wall
+    # RIGHT WING
+    dict(name="55-gal Drum stack",    x=3900, yd=100, w=580,  d=580,
+         color="#7A6B5A", h_bot=0, h_top=1740),   # 2× stacked = 1740mm
+    dict(name="Brown IBC ×1",        x=4674, yd=100, w=1219, d=1016,
+         color="#9C7A3C", h_bot=0, h_top=1010),
 ]
 
 # ── Optical cone geometry ─────────────────────────────────────────────────────

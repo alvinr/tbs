@@ -61,9 +61,10 @@ nav:
     - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - "Electrical & Systems": electrical-report.md
     - "Light Trap Selection": light-trap-selection.md
+    - "Equipment Layout": equipment-layout-report.md
   - Shopping:
-    - "Chem Shopping List": chemistry-shopping-list.md
     - "Master Shopping List": master-shopping-list.md
+    - "Chem Shopping List": chemistry-shopping-list.md
   - Research:
     - "Optics Report": pinhole-optics-report.md
     - "Container Optics": pinhole-option-b-optics.md

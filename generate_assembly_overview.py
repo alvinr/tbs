@@ -160,7 +160,7 @@ ax.plot([EQ_X, EQ_X], [0, CH],
 ax.text(EQ_X + 60, CH - 150, "OPTICAL ZONE",
         ha="left", va="top", fontsize=FS_SM, color="#2060A0",
         style="italic", zorder=5)
-ax.text(EQ_X - 60, CH - 150, "EQUIPMENT ZONE",
+ax.text(EQ_X - 60, CH - 150, "EQUIPMENT\n(COLONNADE ZONE)",
         ha="right", va="top", fontsize=FS_SM, color="#804020",
         style="italic", zorder=5)
 
@@ -186,68 +186,78 @@ leader(ax, 0, PH_H + DRUM_R + 100, -200, PH_H + 600,
        ha="right", fs=FS_SM)
 
 
-# ── Equipment blocks ──────────────────────────────────────────────────────────
-# Heights:  IBC 1000L = 1163mm tall; 55-gal drum = 870mm tall.
-IBC_H = 1163   # IBC height mm
-IBC_W = 1219   # IBC footprint (long axis) mm
-DRUM_H_EQ = 870   # 55-gal drum height mm
-DRUM_W_EQ = 585   # 55-gal drum diameter mm
+# ── Equipment blocks — PINHOLE WALL COLONNADE ─────────────────────────────────
+# All equipment sits adjacent to the pinhole long wall (near-wall, optical depth 0–1220mm).
+# Side elevation: depth is into the page.  Equipment is close to this near wall face.
+# Heights: 600L IBC = 1010mm; 2× stacked 600L = 2020mm; 55-gal drum = 870mm;
+#          2× stacked drums = 1740mm.
 
-# -- Blue IBC pair (×2 stacked in depth, same long-axis position) --
-equip_rect(ax, 100, 100, IBC_W, IBC_H, C_IBC_BLUE)
-ax.text(100 + IBC_W / 2, 100 + IBC_H / 2,
-        "Blue IBC\n×2", ha="center", va="center",
+IBC_H_600 = 1010   # 600L IBC height
+IBC_H_STK = 2020   # 2× stacked 600L IBC height
+IBC_W = 1219       # IBC footprint long axis
+DRUM_H_EQ = 870
+DRUM_W_EQ = 580
+DRUM_H_STK = 1740  # 2× stacked drum height
+
+# -- LEFT WING --
+# Blue IBC stack ×2 (600L each, stacked vertical): X=100–1319, H=0–2020
+equip_rect(ax, 100, 100, IBC_W, IBC_H_STK, C_IBC_BLUE)
+ax.text(100 + IBC_W / 2, 100 + IBC_H_STK / 2,
+        "Blue IBC\n×2 stacked\n(2×600L)", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
+# Stacking bracket indicator
+ax.plot([100, 100 + IBC_W], [100 + IBC_H_600, 100 + IBC_H_600],
+        color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
+ax.text(100 + IBC_W + 40, 100 + IBC_H_600, "stacking\ninterface",
+        color=C_IBC_BLUE, fontsize=FS_SM - 1, ha="left", va="center", zorder=7)
 
-# -- Brown IBC (×1) --
-equip_rect(ax, 1380, 100, IBC_W, IBC_H, C_IBC_BROWN)
-ax.text(1380 + IBC_W / 2, 100 + IBC_H / 2,
-        "Brown IBC\n×1", ha="center", va="center",
-        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
-
-# -- 55-gal drums (×2, side by side along long axis) --
-DRM1_X = 1438   # cx - r = 1730 - 292
-DRM2_X = 2028   # cx - r = 2320 - 292
-equip_rect(ax, DRM1_X, 100, DRUM_W_EQ, DRUM_H_EQ, C_DRUM)
-equip_rect(ax, DRM2_X, 100, DRUM_W_EQ, DRUM_H_EQ, C_DRUM)
-ax.text(DRM1_X + DRUM_W_EQ / 2, 100 + DRUM_H_EQ / 2,
-        "55-gal\ndrum", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
-ax.text(DRM2_X + DRUM_W_EQ / 2, 100 + DRUM_H_EQ / 2,
-        "55-gal\ndrum", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
-leader(ax, DRM2_X + DRUM_W_EQ, 100 + DRUM_H_EQ * 0.5, 2750, 800,
-       "55-gal drums ×2\n(Ø585 × 870mm)", ha="left", fs=FS_SM)
-
-# -- Evaporative cooler (wall-mounted or floor-mounted above IBCs) --
-EVAP_X, EVAP_Y, EVAP_W, EVAP_HH = 1380, 1300, 600, 750
+# Evap cooler: X=1380–1980, H=0–800 (in this elevation, depth is into page)
+EVAP_X, EVAP_Y, EVAP_W, EVAP_HH = 1380, 100, 600, 800
 equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_HH, C_EVAP)
 ax.text(EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH / 2,
         "Evap\ncooler", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
 
-# -- Pump manifold --
-PUMP_X, PUMP_Y, PUMP_W, PUMP_HH = 2100, 100, 400, 500
+# Pump manifold: X=1980–2380, H=0–500
+PUMP_X, PUMP_Y, PUMP_W, PUMP_HH = 1980, 100, 400, 500
 equip_rect(ax, PUMP_X, PUMP_Y, PUMP_W, PUMP_HH, C_PUMP)
 ax.text(PUMP_X + PUMP_W / 2, PUMP_Y + PUMP_HH / 2,
         "Pump\nmanifold", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
 
-# -- Electrical panel (wall-mounted, thin, on near long wall) --
-ELEC_X, ELEC_Y, ELEC_W, ELEC_HH = 2400, 900, 80, 600
-equip_rect(ax, ELEC_X, ELEC_Y, ELEC_W, ELEC_HH, C_ELEC, ec=C_OUT)
-leader(ax, ELEC_X, ELEC_Y + ELEC_HH * 0.5, 2600, 1700,
-       "Electrical\npanel", ha="left", fs=FS_SM)
+# Electrical panel: wall-mounted on near long wall face (X=2050–2350, H=900–1500)
+ELEC_X, ELEC_Y, ELEC_W, ELEC_HH = 2050, 900, 300, 600
+equip_rect(ax, ELEC_X, ELEC_Y, ELEC_W, ELEC_HH, C_ELEC, ec=C_OUT, lw=1.0)
+leader(ax, ELEC_X + ELEC_W, ELEC_Y + ELEC_HH * 0.5, ELEC_X + 700, 1700,
+       "Electrical panel\n+ battery bank\n(pinhole wall, flush-mount)", ha="left", fs=FS_SM)
 
-# -- Leader for evap cooler --
-leader(ax, EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH, 1000, 2300,
-       "Evaporative cooler", ha="left", fs=FS_SM)
-leader(ax, PUMP_X + PUMP_W, PUMP_Y + PUMP_HH / 2, 2750, 650,
+# -- RIGHT WING --
+# 55-gal drum stack ×2: X=3900–4480, H=0–1740
+DRM_X = 3900
+equip_rect(ax, DRM_X, 100, DRUM_W_EQ, DRUM_H_STK, C_DRUM)
+ax.text(DRM_X + DRUM_W_EQ / 2, 100 + DRUM_H_STK / 2,
+        "55-gal\ndrums\n×2 stacked", ha="center", va="center",
+        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
+ax.plot([DRM_X, DRM_X + DRUM_W_EQ], [100 + DRUM_H_EQ, 100 + DRUM_H_EQ],
+        color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
+
+# Brown IBC ×1 (600L): X=4674–5893, H=0–1010
+equip_rect(ax, 4674, 100, IBC_W, IBC_H_600, C_IBC_BROWN)
+ax.text(4674 + IBC_W / 2, 100 + IBC_H_600 / 2,
+        "Brown IBC\n×1 (600L)", ha="center", va="center",
+        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
+
+# -- Leader labels --
+leader(ax, 100 + IBC_W / 2, 100 + IBC_H_STK, 400, 2400,
+       "Blue IBC ×2 stacked\n(2×600L = 1,200L)\nH=2,020mm", ha="left", fs=FS_SM)
+leader(ax, DRM_X + DRUM_W_EQ, 100 + DRUM_H_STK * 0.5, DRM_X + 700, 1600,
+       "55-gal drums ×2 stacked\n(2×208L = 416L)\nH=1,740mm", ha="left", fs=FS_SM)
+leader(ax, 4674 + IBC_W / 2, 100 + IBC_H_600, 4800, 1400,
+       "Brown IBC ×1\n(600L = waste/fix)\nH=1,010mm", ha="left", fs=FS_SM)
+leader(ax, EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH, 1600, 2200,
+       "Evap cooler", ha="left", fs=FS_SM)
+leader(ax, PUMP_X + PUMP_W / 2, PUMP_Y + PUMP_HH, 2200, 1600,
        "Pump manifold", ha="left", fs=FS_SM)
-leader(ax, 100 + IBC_W / 2, 100 + IBC_H, 300, 1600,
-       "Blue IBC totes ×2\n(1219×1016×1163mm ea.)", ha="left", fs=FS_SM)
-leader(ax, 1380 + IBC_W / 2, 100 + IBC_H, 1750, 1600,
-       "Brown IBC tote ×1", ha="left", fs=FS_SM)
 
 
 # ── Film plane (far long wall, optical depth 2262 mm) ─────────────────────────
@@ -330,13 +340,10 @@ DIM_X_RIGHT = CL + 320  # right of container
 draw_dim_h(ax, 0, CL, DIM_Y_TOP, f"Container length  5893 mm",
            offset=100, fs=FS_SM)
 
-# Equipment zone
-draw_dim_h(ax, 0, EQ_X, DIM_Y_BOT, f"Equipment zone  {EQ_X} mm",
-           offset=100, fs=FS_SM)
-
-# Optical zone (pinhole-to-far-wall)
-draw_dim_h(ax, EQ_X, CL, DIM_Y_BOT, f"Optical zone  {CL - EQ_X} mm",
-           offset=100, fs=FS_SM)
+# Colonnade label (equipment is near-wall, all depths ≤1220mm — shown in plan, not elevation)
+ax.text(CL / 4, DIM_Y_BOT - 60,
+        "Equipment colonnade: all items Yd ≤ 1,220mm from pinhole wall (depth into page)",
+        ha="center", va="top", fontsize=FS_SM, color="#804020", style="italic")
 
 # Container height
 draw_dim_v(ax, DIM_X_RIGHT, 0, CH, f"H = {CH} mm", offset=100, fs=FS_SM)

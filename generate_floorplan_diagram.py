@@ -13,8 +13,11 @@ Coordinate system (all mm):
            Y=0:    pinhole long wall
            Y=2362: far long wall (image plane / film fabric)
 
-Equipment clusters at X=0–2700 (cargo door end).
-Optical clear zone: X=2700–5893.
+Equipment layout — "pinhole wall colonnade":
+  All equipment within Y=0–1220mm of the pinhole wall.
+  Two wings flank the pinhole in X: LEFT (X=0–2380) and RIGHT (X=3900–5893).
+  Central zone X=2380–3900 is clear at all depths.
+  Optical clear zone: Y=1220–2362mm (full container width).
 Image plane (muslin): at Y≈2262, spanning full X.
 Development/washing area shown OUTSIDE container (below Y=0 long wall).
 """
@@ -26,6 +29,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Polygon
 from matplotlib.lines import Line2D
 import matplotlib.patheffects as pe
+import matplotlib.patches
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG       = "#FFFFFF"
@@ -60,33 +64,42 @@ WALL  = 40     # wall thickness (shown in cross-section)
 D_FAR  = W - 100   # film plane position (muslin) = 2262mm from pinhole wall
 PINHOLE_X = L / 2  # pinhole centred on long wall (X = 2946.5mm)
 
-EQUIP_ZONE = 2700   # X boundary: equipment zone / optical clear zone
+COLONNADE_Y = 1220  # equipment depth limit (Y from pinhole wall) — colonnade layout
 
-# ── Equipment footprints (all mm, from container interior corner X=0, Y=0) ───
-# IBC tote standard: 1016mm (short) × 1219mm (long) footprint, 1168mm tall
-IBC_S = 1016   # short dimension, runs along Y (container width)
-IBC_L = 1219   # long dimension, runs along X (container length)
+# ── Equipment footprints — PINHOLE WALL COLONNADE (all mm, X=0 cargo door end) ─
+# All equipment within Y=0–1220mm of the pinhole wall (Y=0).
+# Optical cone is narrow near Y=0; equipment clears the cone at these positions.
+# Cone left  boundary at depth Y: X_left(Y)  = PINHOLE_X*(1 - Y/D_FAR)
+# Cone right boundary at depth Y: X_right(Y) = PINHOLE_X + (L-PINHOLE_X)*(Y/D_FAR)
 
-# 2 × Blue IBC totes — wash water (side by side in Y at X=100)
-BLUE1 = dict(x=100,   y=100,  w=IBC_L, h=IBC_S,   label="BLUE IBC\n(WASH 1)",  col=C_BLUE_IBC)
-BLUE2 = dict(x=100,   y=1246, w=IBC_L, h=IBC_S,   label="BLUE IBC\n(WASH 2)",  col=C_BLUE_IBC)
+IBC_S = 1016   # IBC short footprint dim (Y direction)
+IBC_L = 1219   # IBC long footprint dim  (X direction)
+# 600L IBC: same footprint, h=1010mm. Two stacked: 2020mm (368mm ceiling clearance).
 
-# 1 × Brown IBC tote — fix / waste (next X column)
-BROWN = dict(x=1380,  y=100,  w=IBC_L, h=IBC_S,   label="BROWN IBC\n(WASTE)",  col=C_BROWN_IBC)
+# ── LEFT WING (X=0–2380mm, Y=0–1220mm) ───────────────────────────────────────
+# Blue IBCs ×2 stacked (600L each): X=100–1319, Y=100–1116.
+#   Cone left at Y=1116: X_left=1494mm. Right edge 1319mm < 1494mm ✓ CLEAR.
+BLUE_STACK = dict(x=100, y=100, w=IBC_L, h=IBC_S, label="BLUE IBC ×2\n(STACKED)\n2×600L", col=C_BLUE_IBC)
 
-# 2 × 55-gal HDPE drums (Ø580mm ≈ R=290mm)
-DRUM_R = 290
-DRUM1 = dict(cx=1730, cy=1600, r=DRUM_R, label="55gal\nDRUM 1", col=C_DRUM)
-DRUM2 = dict(cx=2320, cy=1600, r=DRUM_R, label="55gal\nDRUM 2", col=C_DRUM)
+# Evap cooler: X=1380–1980, Y=100–450.
+#   Cone left at Y=450: X_left=2360mm. Right edge 1980mm < 2360mm ✓ CLEAR.
+COOLER = dict(x=1380, y=100, w=600, h=350, label="EVAP\nCOOLER", col=C_COOLER)
 
-# Evaporative cooler (600×600mm) — near far wall, cargo door end
-COOLER = dict(x=1380, y=1980, w=600, h=350, label="EVAP\nCOOLER", col=C_COOLER)
+# Pump manifold: X=1980–2380, Y=100–400.
+#   Cone left at Y=400: X_left=2424mm. Right edge 2380mm < 2424mm ✓ CLEAR.
+PUMP = dict(x=1980, y=100, w=400, h=300, label="PUMP\nMANIFOLD", col=C_PUMP)
 
-# Pump manifold (400×300mm)
-PUMP = dict(x=2050, y=1980, w=400, h=300, label="PUMP\nMANIFOLD", col=C_PUMP)
+# Electrical enclosure + battery bank — mounted ON pinhole wall face (Y=0–80).
+ELEC = dict(x=2050, y=0, w=300, h=80, label="ELEC +\nBATT.", col=C_ELEC)
 
-# Electrical enclosure + battery bank (600×400mm, wall-mounted)
-ELEC = dict(x=0, y=900, w=80, h=600, label="ELEC +\nBATT.", col=C_ELEC)
+# ── RIGHT WING (X=3900–5893mm, Y=0–1220mm) ───────────────────────────────────
+# 55-gal drums ×2 stacked: X=3900–4480, Y=100–680.
+#   Cone right at Y=680: X_right=3831mm. Left edge 3900mm > 3831mm ✓ CLEAR.
+DRUM_STACK = dict(x=3900, y=100, w=580, h=580, label="55gal DRUM\n×2 STACKED", col=C_DRUM)
+
+# Brown IBC ×1 (600L): X=4674–5893, Y=100–1116.
+#   Cone right at Y=1116: X_right=4400mm. Left edge 4674mm > 4400mm ✓ CLEAR.
+BROWN = dict(x=4674, y=100, w=IBC_L, h=IBC_S, label="BROWN IBC\n×1\n600L", col=C_BROWN_IBC)
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -133,7 +146,7 @@ def penetration(ax, x, y, r=60, col=C_OUT, label="", label_offset=(0, 80)):
 def title_block(ax):
     ax.text(0.01, 0.022, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
             transform=ax.transAxes, color=C_DIM, fontsize=7, **FONT)
-    ax.text(0.01, 0.010, "CONTAINER FLOOR PLAN — ALL SYSTEMS (TOP-DOWN VIEW)",
+    ax.text(0.01, 0.010, "CONTAINER FLOOR PLAN — PINHOLE WALL COLONNADE LAYOUT (TOP-DOWN VIEW)",
             transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", **FONT)
     ax.text(0.99, 0.022, "SCALE 1:75 (APPROX)  ·  SHEET 1 OF 1",
             transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
@@ -158,19 +171,37 @@ def floor_plan():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── Equipment zone highlight ───────────────────────────────────────────────
-    ax.add_patch(Rectangle((0, 0), EQUIP_ZONE, W,
+    # ── Zone highlights — PINHOLE WALL COLONNADE layout ───────────────────────
+    # Equipment wing zone (Y=0 to COLONNADE_Y) — shallow strip near pinhole wall
+    ax.add_patch(Rectangle((0, 0), L, COLONNADE_Y,
                             fc=C_EQUIP_ZONE, ec="none", zorder=1))
-    ax.text(EQUIP_ZONE / 2, W / 2, "EQUIPMENT\nZONE",
-            color="#C0A060", fontsize=9, ha="center", va="center",
+    ax.text(L / 2, COLONNADE_Y / 2, "EQUIPMENT COLONNADE  (Y = 0–1220mm, PINHOLE WALL SIDE)",
+            color="#C0A060", fontsize=8, ha="center", va="center",
+            **FONT, alpha=0.6, fontweight="bold", zorder=2)
+
+    # Optical clear zone (Y=COLONNADE_Y to D_FAR)
+    ax.add_patch(Rectangle((0, COLONNADE_Y), L, D_FAR - COLONNADE_Y,
+                            fc=C_OPT_ZONE, ec="none", zorder=1))
+    ax.text(L / 2, COLONNADE_Y + (D_FAR - COLONNADE_Y) / 2,
+            "OPTICAL CLEAR ZONE  (Y = 1220–2262mm)",
+            color="#4A8040", fontsize=8, ha="center", va="center",
             **FONT, alpha=0.5, fontweight="bold", zorder=2)
 
-    # ── Optical clear zone highlight ───────────────────────────────────────────
-    ax.add_patch(Rectangle((EQUIP_ZONE, 0), L - EQUIP_ZONE, W,
-                            fc=C_OPT_ZONE, ec="none", zorder=1))
-    ax.text((EQUIP_ZONE + L) / 2, W / 2, "OPTICAL\nCLEAR ZONE",
-            color="#4A8040", fontsize=9, ha="center", va="center",
-            **FONT, alpha=0.5, fontweight="bold", zorder=2)
+    # Colonnade depth boundary line
+    ax.plot([0, L], [COLONNADE_Y, COLONNADE_Y],
+            color="#C08040", lw=1.5, ls="--", zorder=4, alpha=0.9)
+    ax.text(L + 30, COLONNADE_Y, f"COLONNADE LIMIT\nY={COLONNADE_Y}mm",
+            color="#C08040", fontsize=6.5, ha="left", va="center", **FONT)
+
+    # ── Optical cone boundary lines (plan view) ───────────────────────────────
+    # Left ray: pinhole (PINHOLE_X, 0) → left-wall corner (0, D_FAR)
+    ax.plot([PINHOLE_X, 0], [0, D_FAR],
+            color="#C07000", lw=1.0, ls=(0, (4, 3)), zorder=4, alpha=0.7)
+    # Right ray: pinhole (PINHOLE_X, 0) → right-wall corner (L, D_FAR)
+    ax.plot([PINHOLE_X, L], [0, D_FAR],
+            color="#C07000", lw=1.0, ls=(0, (4, 3)), zorder=4, alpha=0.7)
+    ax.text(PINHOLE_X - 200, D_FAR * 0.55, "OPTICAL CONE\n(dashed boundary)",
+            color="#C07000", fontsize=6, ha="right", va="center", **FONT, alpha=0.8)
 
     # ── Container interior floor ───────────────────────────────────────────────
     ax.add_patch(Rectangle((0, 0), L, W,
@@ -218,7 +249,7 @@ def floor_plan():
     for hx in np.arange(200, L, 300):
         ax.plot([hx, hx + 80], [D_FAR, D_FAR], color=C_FILM, lw=1.5, zorder=5, alpha=0.5)
 
-    ax.text(EQUIP_ZONE + 200, D_FAR + 120,
+    ax.text(200, D_FAR + 120,
             f"COTTON MUSLIN IMAGE PLANE  (Y = {D_FAR}mm)",
             color=C_FILM, fontsize=7, ha="left", va="bottom", **FONT)
 
@@ -234,12 +265,16 @@ def floor_plan():
     ax.text(PINHOLE_X + 80, W / 2, f"OPTICAL AXIS\n{W}mm",
             color=C_OPT, fontsize=7, ha="left", va="center", **FONT)
 
-    # ── Equipment zone boundary line ───────────────────────────────────────────
-    ax.plot([EQUIP_ZONE, EQUIP_ZONE], [0, W],
-            color="#C08040", lw=1.5, ls="--", zorder=4, alpha=0.8)
-    ax.text(EQUIP_ZONE, -120,
-            f"EQUIPMENT\nZONE LIMIT\nX={EQUIP_ZONE}mm",
-            color="#C08040", fontsize=6.5, ha="center", va="top", **FONT)
+    # ── No-go zone annotation (central forbidden band near pinhole) ──────────
+    # At COLONNADE_Y depth, cone spans X_left to X_right — mark this in dim line
+    x_left_col = PINHOLE_X * (1 - COLONNADE_Y / D_FAR)   # ≈ 1494mm
+    x_right_col = PINHOLE_X + (L - PINHOLE_X) * (COLONNADE_Y / D_FAR)  # ≈ 4398mm
+    ax.annotate("", xy=(x_right_col, COLONNADE_Y + 60),
+                xytext=(x_left_col, COLONNADE_Y + 60),
+                arrowprops=dict(arrowstyle="<->", color="#C07000", lw=0.8, mutation_scale=7))
+    ax.text((x_left_col + x_right_col) / 2, COLONNADE_Y + 140,
+            f"CONE WIDTH AT Y={COLONNADE_Y}mm\n({int(x_right_col - x_left_col)}mm — NO EQUIP. AT THIS DEPTH)",
+            color="#C07000", fontsize=6, ha="center", va="bottom", **FONT)
 
     # ── Hinged panel (at X=0 short wall) ─────────────────────────────────────
     # Closed position: panel is against X=0 wall (shown as thicker left wall)
@@ -273,9 +308,9 @@ def floor_plan():
             **FONT, zorder=5)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
-    # Cooler intake duct (far long wall, Y=W)
-    penetration(ax, 1680, W, r=75, col=C_COOLER, label="COOLER\nINTAKE",
-                label_offset=(0, 95))
+    # Cooler intake duct — moved to pinhole wall (Y=0), X aligned with new cooler position
+    penetration(ax, 1680, 0, r=75, col=C_COOLER, label="COOLER\nINTAKE",
+                label_offset=(0, -110))
     # Fan intake (left short wall, low position)
     penetration(ax, 0, 300, r=55, col=C_DIM, label="FAN IN\n(LOW)",
                 label_offset=(-140, 0))
@@ -283,15 +318,22 @@ def floor_plan():
     penetration(ax, L, 2000, r=55, col=C_DIM, label="FAN OUT\n(HIGH)",
                 label_offset=(140, 0))
 
-    # ── Equipment ─────────────────────────────────────────────────────────────
-    draw_equip_rect(ax, BLUE1, zorder=6)
-    draw_equip_rect(ax, BLUE2, zorder=6)
-    draw_equip_rect(ax, BROWN, zorder=6)
-    draw_equip_circle(ax, DRUM1, zorder=6)
-    draw_equip_circle(ax, DRUM2, zorder=6)
-    draw_equip_rect(ax, COOLER, zorder=6)
-    draw_equip_rect(ax, PUMP, zorder=6)
-    draw_equip_rect(ax, ELEC, zorder=7)
+    # ── Equipment — PINHOLE WALL COLONNADE ────────────────────────────────────
+    draw_equip_rect(ax, BLUE_STACK, zorder=6)
+    draw_equip_rect(ax, COOLER,     zorder=6)
+    draw_equip_rect(ax, PUMP,       zorder=6)
+    draw_equip_rect(ax, ELEC,       zorder=7)   # wall-mounted (thin strip)
+    draw_equip_rect(ax, DRUM_STACK, zorder=6)
+    draw_equip_rect(ax, BROWN,      zorder=6)
+    # Stacking annotations
+    ax.text(BLUE_STACK["x"] + BLUE_STACK["w"] / 2,
+            BLUE_STACK["y"] + BLUE_STACK["h"] + 60,
+            "▲ 2020mm tall (stacked)", color=C_BLUE_IBC, fontsize=5.5,
+            ha="center", va="bottom", **FONT, zorder=7)
+    ax.text(DRUM_STACK["x"] + DRUM_STACK["w"] / 2,
+            DRUM_STACK["y"] + DRUM_STACK["h"] + 60,
+            "▲ 1740mm tall (stacked)", color=C_DRUM, fontsize=5.5,
+            ha="center", va="bottom", **FONT, zorder=7)
 
     # ── Development / washing area (OUTSIDE container, below Y=0 wall) ────────
     DEV_X0 = 800; DEV_X1 = 4500; DEV_Y0 = -DEV_DEPTH; DEV_Y1 = -WALL - 60
@@ -316,30 +358,35 @@ def floor_plan():
     # ── Dimension annotations ─────────────────────────────────────────────────
     # Container length
     dim_h(ax, 0, L, W + 300, f"{L} mm  ({L/304.8:.1f}ft)  INTERIOR LENGTH")
-    # Container width
+    # Container width (= focal length)
     dim_v(ax, L + 200, 0, W, f"{W} mm\nINTERIOR\nWIDTH\n(= FOCAL LENGTH)", offset=55)
-    # Equipment zone
-    dim_h(ax, 0, EQUIP_ZONE, -WALL - 280, f"{EQUIP_ZONE}mm  EQUIPMENT ZONE")
-    # Optical zone
-    dim_h(ax, EQUIP_ZONE, L, -WALL - 280, f"{L - EQUIP_ZONE}mm  OPTICAL CLEAR ZONE")
+    # Equipment colonnade depth
+    dim_v(ax, -PAD_L + 100, 0, COLONNADE_Y, f"{COLONNADE_Y}mm", offset=55)
+    ax.text(-PAD_L + 100 + 60, COLONNADE_Y / 2, "EQUIPMENT\nCOLONNADE\nDEPTH",
+            color="#C08040", fontsize=6.5, ha="left", va="center", **FONT)
+    # Optical clear zone depth
+    dim_v(ax, -PAD_L + 100, COLONNADE_Y, D_FAR, f"{D_FAR - COLONNADE_Y}mm", offset=55)
+    ax.text(-PAD_L + 100 + 60, COLONNADE_Y + (D_FAR - COLONNADE_Y) / 2,
+            "OPTICAL\nCLEAR\nDEPTH",
+            color="#4A8040", fontsize=6.5, ha="left", va="center", **FONT)
     # Film plane position
-    dim_v(ax, -PAD_L + 100, 0, D_FAR, f"{D_FAR}mm", offset=55)
-    ax.text(-PAD_L + 100 + 60, D_FAR / 2 - 150, "FILM PLANE\nDEPTH",
-            color=C_DIM, fontsize=6.5, ha="left", va="center", **FONT)
+    dim_v(ax, -PAD_L + 100, 0, D_FAR, f"", offset=55)
+    ax.text(-PAD_L + 100 + 60, D_FAR - 80, "FILM PLANE\nY=2262mm",
+            color=C_DIM, fontsize=6.5, ha="left", va="top", **FONT)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     LEG_X = L + 60; LEG_Y_TOP = W - 20
     legend_items = [
-        (C_BLUE_IBC, "Blue IBC tote — wash water (2 × 1,000L)"),
-        (C_BROWN_IBC, "Brown IBC tote — waste / fix (1 × 1,000L)"),
-        (C_DRUM,     "55-gal HDPE drum × 2"),
-        (C_COOLER,   "12V evaporative cooler (600×600mm)"),
-        (C_PUMP,     "Pump manifold (400×300mm)"),
-        (C_ELEC,     "Electrical enclosure + LiFePO4 battery bank (wall-mount)"),
-        (C_FILM,     "Cotton muslin image plane (D_FAR = 2262mm)"),
+        (C_BLUE_IBC, "Blue IBC totes ×2 stacked (2×600L = 1,200L) — LEFT WING"),
+        (C_BROWN_IBC,"Brown IBC tote ×1 (600L) — RIGHT WING"),
+        (C_DRUM,     "55-gal HDPE drums ×2 stacked (2×208L) — RIGHT WING"),
+        (C_COOLER,   "12V evaporative cooler — LEFT WING"),
+        (C_PUMP,     "Pump manifold — LEFT WING"),
+        (C_ELEC,     "Electrical enclosure + LiFePO4 battery (pinhole wall, wall-mount)"),
+        (C_FILM,     "Cotton muslin image plane (Y = 2262mm)"),
         (C_PINHOLE,  "Pinhole Ø2.17mm (centred on long wall)"),
         (C_OPT,      "Optical axis (2362mm focal length)"),
-        (C_PINHOLE,  "Drum / light-trap inlet (revolving)"),
+        (C_PINHOLE,  "Revolving light-trap drum inlet"),
         (C_DEV_ZONE, "Development area (outside container)"),
     ]
     box_w = PAD_R - 60; box_h = len(legend_items) * 52 + 40

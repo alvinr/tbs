@@ -237,17 +237,23 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`).
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. The overall container floor plan below shows all water storage positions in the context of the full TBS-001 interior — equipment zone, optical clear zone, film plane rails, and development area.
 
-The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft length, leaving 16 ft for the camera and processing floor.
+**Container floor plan — all systems (top-down, 1:75):**
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
+
+The equipment occupies approximately 2,700mm of the container's 5,893mm interior length (X=0–2,700mm), leaving the remaining 3,193mm as optical clear zone. The full floor plan is also available in [Electrical & Systems Report](electrical-report.md) Section 5.8.
 
 | Zone | Contents | Footprint |
 |------|----------|-----------|
-| Left wall (rear) | IBC-1, IBC-2 (Blue), IBC-3 (Brown) | 1,200 × 3,600 mm |
-| Floor-left | P-01, P-02, ACC-01, filter skid | 600 × 900 mm |
-| Right wall (rear) | DRUM-1, DRUM-2 (Black) | 1,200 × 600 mm |
-| Floor centre | Processing containment zone | 4,375 × 2,200 mm |
-| Top wall | Spray bar | 6,000 mm run |
+| X=100–1,319mm, Y=100–1,116mm | IBC-1 Blue (wash water) | 1,219 × 1,016 mm |
+| X=100–1,319mm, Y=1,246–2,262mm | IBC-2 Blue (wash water) | 1,219 × 1,016 mm |
+| X=1,380–2,599mm, Y=100–1,116mm | IBC-3 Brown (waste/recycle) | 1,219 × 1,016 mm |
+| X=1,590–2,270mm, Y=1,310–1,890mm | DRUM-1, DRUM-2 (55 gal, waste) | Ø580mm each |
+| X=1,380–1,980mm, Y=1,980–2,330mm | Evaporative cooler (12V DC) | 600 × 350 mm |
+| X=2,050–2,450mm, Y=1,980–2,280mm | Pump manifold | 400 × 300 mm |
+| X=0–80mm, Y=900–1,500mm (wall) | Electrical enclosure + battery bank | wall-mounted |
+| X=2,700–5,893mm | Optical clear zone — no equipment | — |
 
 ---
 
@@ -387,6 +393,15 @@ The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft lengt
 |---------|------|
 | Sheet 1 — System flow schematic (P&ID) | `water-system-sheet1.png` |
 | Sheet 2 — Equipment layout plan + parts list | `water-system-sheet2.png` |
+| Container floor plan — all systems | See [Electrical & Systems Report](electrical-report.md) Section 5.8 |
+
+**Sheet 1 — System Flow Schematic (P&ID)**
+![Water System — Sheet 1: P&ID Flow Schematic](assets/water-system-sheet1.png)
+
+---
+
+**Sheet 2 — Equipment Layout Plan**
+![Water System — Sheet 2: Equipment Layout](assets/water-system-sheet2.png)
 
 ---
 

@@ -226,6 +226,11 @@ All seven configurations on a checker grid (D = 8,000 mm):
 
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
 
+**System context — container floor plan:**
+The floor plan below shows the film plane rail positions (at Y=2,262mm, spanning the full 5,893mm interior length) in the context of the complete TBS-001 interior, including equipment zone and optical clear zone.
+
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
+
 ---
 
 ## Shopping List

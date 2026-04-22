@@ -536,7 +536,7 @@ def draw_sheet2():
 
     # Right wing (X=3,374–5,893mm, near far end)
     equip(3374, 100, 1160,  580, "DRUMS ×2",  C_STEEL,  "2×55 gal")
-    equip(4674, 100, 1219, 1016, "BROWN IBC", "#D7CCC8", "1×600L")
+    equip(4559, 100, 1219, 1016, "BROWN IBC", "#D7CCC8", "1×600L")
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
     EP_X_MM, EP_W_MM = 2050, 300
@@ -602,7 +602,7 @@ def draw_sheet2():
         (OX + 1680*S,        OY+wt + 350*S),    # evap cooler
         (OX + 2180*S,        OY+wt + 300*S),    # pump
         (OX + 3954*S,        OY+wt + 580*S),    # drums centre
-        (OX + 5283*S,        OY+wt + 1016*S),   # brown IBC centre
+        (OX + 5169*S,        OY+wt + 1016*S),   # brown IBC centre
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),

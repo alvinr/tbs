@@ -370,12 +370,16 @@ def draw_sheet1():
 # ─────────────────────────────────────────────────────────────────────────────
 # SHEET 2 — Container Floor Plan + Wiring Layout  (scale 1:500)
 #
-# ORIENTATION (corrected):
-#   Container long axis (5,898mm) = HORIZONTAL (left–right)
-#   Optical depth (2,362mm)       = VERTICAL (bottom–top)
-#   Pinhole: on BOTTOM long wall at X=2,946mm (mid-point)
+# ORIENTATION:
+#   Container long axis (5,898mm) = HORIZONTAL (left–right in plan)
+#   Optical depth (2,362mm)       = VERTICAL (bottom–top in plan)
+#   LEFT short wall  = X=0   = CARGO DOOR end (hinged panel / light trap)
+#   RIGHT short wall = X=5898= FAR END
+#   BOTTOM long wall = Y=0   = PINHOLE WALL  (Yd=0)
+#   TOP long wall    = Y=2362= IMAGE PLANE WALL
+#   Pinhole: on BOTTOM long wall at X=2,946mm (midpoint)
 #   Image plane: on TOP long wall
-#   Cargo door / vestibule: RIGHT short-end wall
+#   NO vestibule shown — light trap is part of hinged-panel drawing
 #   All equipment in colonnade strip Yd ≤ 1,220mm (near bottom/pinhole wall)
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -399,210 +403,186 @@ def draw_sheet2():
             color=TITLE_COL)
     ax.text(FW / 2, FH - 0.72,
             "Top-down plan view  ·  Scale 1:500  ·  All dimensions in mm  "
-            "·  Pinhole on long wall — optical axis crosses container width (2,362mm)",
+            "·  Pinhole on bottom long wall — optical axis crosses container width (2,362mm)",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
-    # ── Scale constants ───────────────────────────────────────────────────────
-    S      = 1.0 / 500.0   # 1 drawing unit = 500mm
-    OX     = 1.2           # container left edge (far end from cargo door)
-    OY     = 3.6           # container bottom edge = PINHOLE WALL (Yd=0)
+    # ── Scale / geometry constants ────────────────────────────────────────────
+    # 1 drawing unit = 500 mm
+    S     = 1.0 / 500.0
 
-    C_LEN  = 5898          # mm interior length (horizontal in plan)
-    C_WID  = 2362          # mm interior width  = optical depth (vertical in plan)
-    WT_MM  = 120           # schematic wall thickness
+    # Container placement in figure space
+    # LEFT  short wall = X=0    = CARGO DOOR end  (hinged panel, light trap)
+    # RIGHT short wall = X=5898 = far end
+    # BOTTOM long wall = Y=0    = PINHOLE WALL  (Yd=0, optical origin)
+    # TOP   long wall  = Y=2362 = IMAGE PLANE WALL
+    OX = 2.5   # drawing x of container left edge (cargo door side)
+    OY = 4.5   # drawing y of container bottom edge (pinhole wall)
 
-    PH_X_MM    = 2946      # pinhole X along long axis (midpoint)
-    FP_Y_MM    = 2262      # film-plane depth from pinhole wall
-    COLN_MM    = 1220      # colonnade boundary depth
-    DRUM_CY_MM = 1600      # drum centre — offset toward far wall for IBC clearance
+    C_LEN   = 5898   # mm  container interior length  (horizontal in plan)
+    C_WID   = 2362   # mm  container interior width = optical depth (vertical)
+    WT_MM   = 120    # mm  schematic wall thickness
 
-    clen    = C_LEN  * S   # 11.796
-    cwid    = C_WID  * S   # 4.724
-    wt      = WT_MM  * S   # 0.24
-    ph_x    = OX + PH_X_MM  * S   # 7.092
-    fp_y    = OY + FP_Y_MM  * S
-    coln_y  = OY + COLN_MM  * S   # colonnade boundary in drawing
-    drum_cy = OY + DRUM_CY_MM * S
+    PH_X_MM = 2946   # mm  pinhole X along long axis (centred on container)
+    COLN_MM = 1220   # mm  colonnade boundary depth from pinhole wall
 
-    VD_MM   = 1200
-    vd      = VD_MM * S    # 2.4 units — vestibule depth
-    VX      = OX + clen    # cargo-door short wall X position
+    clen   = C_LEN * S          # 11.796 drawing units
+    cwid   = C_WID * S          # 4.724  drawing units
+    wt     = WT_MM * S          # 0.24   drawing units
+    ph_x   = OX + PH_X_MM * S  # 8.392  drawing units (pinhole x)
+    coln_y = OY + COLN_MM * S  # colonnade boundary y in drawing
 
     # ── Container shell ───────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((OX, OY), clen, cwid,
                  fc="#F8F8F4", ec=C_OUT, lw=2.5, zorder=2))
     for rx, ry, rw, rh in [
-        (OX,          OY,         clen, wt),         # BOTTOM long wall — PINHOLE WALL
-        (OX,          OY+cwid-wt, clen, wt),         # TOP long wall — IMAGE PLANE WALL
-        (OX,          OY+wt,      wt,   cwid-2*wt),  # LEFT short wall (far end)
-        (OX+clen-wt,  OY+wt,      wt,   cwid-2*wt),  # RIGHT short wall — CARGO DOOR
+        (OX,          OY,          clen, wt),          # BOTTOM  — PINHOLE WALL
+        (OX,          OY+cwid-wt,  clen, wt),          # TOP     — IMAGE PLANE WALL
+        (OX,          OY+wt,       wt,   cwid-2*wt),   # LEFT    — CARGO DOOR end
+        (OX+clen-wt,  OY+wt,       wt,   cwid-2*wt),   # RIGHT   — far end
     ]:
         ax.add_patch(mpatches.Rectangle((rx, ry), rw, rh,
                      fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=3))
+
+    # Wall labels on exterior faces
+    ax.text(OX - 0.12, OY + cwid/2,
+            "CARGO DOOR\n(X=0)",
+            fontsize=7.0, color=C_OUT, ha="right", va="center",
+            fontweight="bold")
+    ax.text(OX + clen + 0.12, OY + cwid/2,
+            "FAR END\n(X=5,898mm)",
+            fontsize=7.0, color=C_DIM, ha="left", va="center")
     ax.text(OX + clen/2, OY + cwid - wt - 0.22,
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
             fontsize=8.0, ha="center", va="top", color=C_DIM, style="italic")
 
-    # ── Optical cone (pinhole → image plane, in plan view) ────────────────────
-    # Cone expands from the pinhole point on the bottom wall to the full
-    # image-plane width on the top wall.
+    # ── Optical cone — pinhole to image plane ─────────────────────────────────
+    # In plan view the cone is a triangle: apex at pinhole (bottom wall),
+    # base spanning the full image plane width (top wall).
     cone_verts = [
-        (ph_x,        OY + wt),         # pinhole (bottom long wall)
-        (OX + wt,     OY + cwid - wt),  # top-left interior corner
-        (OX+clen-wt,  OY + cwid - wt),  # top-right interior corner
+        (ph_x,        OY + wt),          # pinhole point on bottom long wall
+        (OX + wt,     OY + cwid - wt),   # top-left interior corner
+        (OX+clen-wt,  OY + cwid - wt),   # top-right interior corner
     ]
     ax.add_patch(MplPolygon(cone_verts, closed=True,
-                fc="#FFE8C0", ec="none", alpha=0.28, zorder=4))
-    ax.text(ph_x, OY + cwid * 0.64,
-            "OPTICAL CONE\n(shadow zone — keep entirely clear)",
+                fc="#FFE8C0", ec="none", alpha=0.30, zorder=4))
+    ax.text(ph_x, OY + cwid * 0.65,
+            "OPTICAL CONE — keep clear",
             ha="center", va="center", fontsize=8.0,
-            color="#8B5A00", style="italic", alpha=0.75, zorder=5)
+            color="#8B5A00", style="italic", alpha=0.80, zorder=5)
 
     # ── Colonnade safe zone (near pinhole wall) ───────────────────────────────
-    ax.add_patch(mpatches.Rectangle((OX+wt, OY+wt), clen-2*wt, COLN_MM*S - wt,
-                 fc="#E0F0E0", ec="none", alpha=0.40, zorder=4))
+    ax.add_patch(mpatches.Rectangle(
+                 (OX+wt, OY+wt), clen-2*wt, COLN_MM*S - wt,
+                 fc="#E0F0E0", ec="none", alpha=0.45, zorder=4))
     ax.plot([OX+wt, OX+clen-wt], [coln_y, coln_y],
             color="#1A7A1A", lw=1.5, ls="--", zorder=7)
-    ax.text(OX+clen-wt + 0.10, coln_y,
-            "Colonnade limit  Yd=1,220mm ▲",
-            fontsize=7.0, color="#1A7A1A", va="center", ha="left")
+    ax.text(OX+clen - wt - 0.10, coln_y + 0.08,
+            "Colonnade limit  Yd=1,220mm",
+            fontsize=7.0, color="#1A7A1A", va="bottom", ha="right")
 
-    # ── Image plane — TOP long wall ───────────────────────────────────────────
-    ax.add_patch(mpatches.Rectangle((OX+wt, OY+cwid-wt-0.14), clen-2*wt, 0.14,
+    # ── Image plane strip — top long wall interior face ───────────────────────
+    ax.add_patch(mpatches.Rectangle(
+                 (OX+wt, OY+cwid-wt-0.15), clen-2*wt, 0.15,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=5))
-    ax.text(OX + clen/2, OY + cwid - wt - 0.07,
+    ax.text(OX + clen/2, OY + cwid - wt - 0.075,
             "IMAGE PLANE  —  5,893 × 2,388 mm",
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=6)
 
-    # ── Pinhole — BOTTOM long wall at X=2,946mm ───────────────────────────────
+    # ── Pinhole — bottom long wall at X=2,946mm ───────────────────────────────
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     ax.annotate("PINHOLE  Ø2.17mm\nX=2,946mm  f/1088",
                 xy=(ph_x, OY + wt/2),
-                xytext=(ph_x, OY - 0.52),
+                xytext=(ph_x, OY - 0.50),
                 fontsize=7.5, color=C_OUT, ha="center", va="top",
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
                 bbox=dict(fc="white", ec="none", pad=1.5))
 
-    # ── Vestibule — right of container (cargo-door end) ───────────────────────
-    ax.add_patch(mpatches.Rectangle((VX, OY), vd, cwid,
-                 fc="#F0F5F0", ec=C_OUT, lw=1.5, ls="--", zorder=2))
-    ax.text(VX + vd/2, OY + cwid * 0.30,
-            "LIGHT TRAP\nVESTIBULE",
-            ha="center", va="center", fontsize=8.5,
-            fontweight="bold", color="#2D6A2D", rotation=90, zorder=5)
-
-    # Revolving drum — Ø750mm vertical axis (plan footprint = circle)
-    DRUM_R_MM = 375
-    drum_r  = DRUM_R_MM * S      # 0.75 drawing units
-    drum_cx = VX + drum_r + 0.08
-    ax.add_patch(plt.Circle((drum_cx, drum_cy), drum_r,
-                 fc="#E8E8D8", ec=C_OUT, lw=1.5, alpha=0.9, zorder=6))
-    # Entry gap — dashed line where drum meets container wall
-    ax.plot([VX, VX], [drum_cy - drum_r, drum_cy + drum_r],
-            color=C_CL, lw=1.8, ls=(0, (4, 2)), zorder=7)
-    ax.text(drum_cx, drum_cy,
-            "DRUM\nØ750mm\nVERT.AXIS",
-            ha="center", va="center", fontsize=6.0, color=C_OUT, zorder=7)
-    ax.annotate(f"Centre Yd={DRUM_CY_MM}mm",
-                xy=(VX, drum_cy),
-                xytext=(VX + vd + 0.30, drum_cy + 0.40),
-                fontsize=6.5, color=C_DIM, ha="left", va="center",
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.7))
-
-    # Cargo-door symbol
-    ax.add_patch(mpatches.Rectangle((VX+vd-wt*0.5, OY+cwid*0.20),
-                 wt*0.5, cwid*0.60,
-                 fc="white", ec=C_OUT, lw=1.2, zorder=5))
-    ax.text(VX+vd+0.10, OY+cwid*0.12,
-            "CARGO DOOR\n(entrance)", fontsize=7.0, color=C_DIM,
-            ha="left", va="center")
-
-    # Safelight strip in vestibule
-    ax.add_patch(mpatches.Rectangle((VX+0.15, OY+cwid-wt-0.12), vd-0.30, 0.10,
-                 fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
-    ax.text(VX+vd/2, OY+cwid-wt-0.06, "D",
-            ha="center", va="center", fontsize=7.0, fontweight="bold",
-            color=C_OUT)
-
-    # NEMA inlet — exterior right of vestibule
-    NM_X = VX + vd + 0.10
-    NM_Y = OY + cwid * 0.68
+    # ── NEMA inlet — exterior, cargo door short wall (left face) ─────────────
+    NM_X = OX - 0.55
+    NM_Y = OY + cwid * 0.60
     ax.add_patch(mpatches.Rectangle((NM_X, NM_Y), 0.45, 0.45,
                  fc="#FFF0CC", ec=C_OUT, lw=1.2, zorder=5))
     ax.text(NM_X+0.225, NM_Y+0.225, "AC\nIN",
             ha="center", va="center", fontsize=7.0,
             fontweight="bold", color=C_OUT, zorder=6)
 
-    # ── Helper: colonnade equipment rectangle ─────────────────────────────────
+    # ── Colonnade equipment ───────────────────────────────────────────────────
+    # x_mm  = TBS X along long axis (0 = cargo door end = LEFT in plan)
+    # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
-        """
-        x_mm  — TBS X from left end of container (long axis), mm
-        yd_mm — depth from pinhole wall, mm
-        w_mm  — width along long axis, mm
-        d_mm  — depth (into container from pinhole wall), mm
-        """
-        ex = OX + wt + x_mm * S
+        ex = OX + wt + x_mm  * S
         ey = OY + wt + yd_mm * S
         ew = w_mm * S
         ed = d_mm * S
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
                      fc=col, ec=C_OUT, lw=1.0, zorder=5, alpha=0.88))
         cy_e = ey + ed / 2
-        ax.text(ex + ew/2, cy_e + (0.10 if sublabel else 0), label,
+        ax.text(ex+ew/2, cy_e + (0.10 if sublabel else 0), label,
                 ha="center", va="center", fontsize=6.5, fontweight="bold",
                 color=C_OUT, zorder=6)
         if sublabel:
-            ax.text(ex + ew/2, cy_e - 0.12, sublabel,
+            ax.text(ex+ew/2, cy_e - 0.12, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # ── LEFT WING — X=0–2,380mm ───────────────────────────────────────────────
+    # Left wing  (X=0–2,380mm, near cargo door end)
     equip(100,  100, 1219, 1016, "BLUE IBC ×2",  "#C8E8FF", "2×600L stacked")
-    equip(1380, 100,  600,  350, "EVAP\nCOOLER", C_SOLAR,   "80W 12V  (E)")
-    equip(1980, 100,  400,  300, "PUMP\nMFD",    C_BATT,    "100W 12V  (C)")
+    equip(1380, 100,  600,  350, "EVAP\nCOOLER", C_SOLAR,  "80W 12V  (E)")
+    equip(1980, 100,  400,  300, "PUMP\nMFD",    C_BATT,   "100W 12V  (C)")
 
-    # ── RIGHT WING — X=3,374–5,893mm ─────────────────────────────────────────
-    equip(3374, 100, 1160,  580, "DRUMS ×2",  C_STEEL,   "2×55 gal")
+    # Right wing (X=3,374–5,893mm, near far end)
+    equip(3374, 100, 1160,  580, "DRUMS ×2",  C_STEEL,  "2×55 gal")
     equip(4674, 100, 1219, 1016, "BROWN IBC", "#D7CCC8", "1×600L")
 
-    # ── Electrical panel + battery — on pinhole wall face (Yd=0) ─────────────
+    # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
     EP_X_MM, EP_W_MM = 2050, 300
     EP_DX = OX + wt + EP_X_MM * S
     EP_DW = EP_W_MM * S
-    ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.18), EP_DW, wt*0.64,
+    ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.15), EP_DW, wt*0.70,
                  fc=C_ELEC, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(EP_DX + EP_DW/2, OY + wt/2, "EP",
+    ax.text(EP_DX+EP_DW/2, OY+wt*0.50, "EP",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     BA_X_MM, BA_W_MM = 100, 500
     BA_DX = OX + wt + BA_X_MM * S
     BA_DW = BA_W_MM * S
-    ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.18), BA_DW, wt*0.64,
+    ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.15), BA_DW, wt*0.70,
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(BA_DX + BA_DW/2, OY + wt/2, "BAT",
+    ax.text(BA_DX+BA_DW/2, OY+wt*0.50, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
-    # Fan A — intake, left short wall (far end from cargo door)
+    # Fan A — intake, LEFT short wall = cargo door end
     FA_X = OX + wt/2
-    FA_Y = OY + cwid * 0.50
+    FA_Y = OY + cwid * 0.35
     ax.add_patch(plt.Circle((FA_X, FA_Y), 0.22,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FA_X, FA_Y, "A",
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Fan B — exhaust, right short wall (cargo-door end)
+    # Fan B — exhaust, RIGHT short wall = far end
     FB_X = OX + clen - wt/2
-    FB_Y = OY + cwid * 0.70
+    FB_Y = OY + cwid * 0.65
     ax.add_patch(plt.Circle((FB_X, FB_Y), 0.22,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FB_X, FB_Y, "B",
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # ── Cable trunking — pinhole wall face (Yd=0, outside optical cone) ───────
+    # Safelight D — vertical strip on inner face of cargo door wall (left)
+    SL_X  = OX + wt + 0.05
+    SL_W  = 0.10
+    SL_Y1 = OY + wt + 0.15
+    SL_Y2 = OY + cwid - wt - 0.15
+    ax.add_patch(mpatches.Rectangle((SL_X, SL_Y1), SL_W, SL_Y2-SL_Y1,
+                 fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
+    ax.text(SL_X + SL_W + 0.08, (SL_Y1+SL_Y2)/2, "D",
+            ha="left", va="center", fontsize=7.0, fontweight="bold", color=C_OUT)
+
+    # ── Cable trunking — pinhole wall face, full interior length ──────────────
+    # Runs at Yd=0 on pinhole wall — physically on the wall, outside optical cone
     TK_Y  = OY + wt - 0.07
     TK_X1 = OX + wt + 0.05
     TK_X2 = OX + clen - wt - 0.05
@@ -612,49 +592,50 @@ def draw_sheet2():
             "40×25mm PVC cable trunking — pinhole wall face (Yd=0) — outside optical cone",
             ha="center", va="top", fontsize=7.0, color=C_PIPE, fontweight="bold")
 
-    # Short drop conduits from trunking to each device
+    # Drop conduits from trunking to devices
     for ddx, ddy in [
-        (EP_DX + EP_DW/2,             OY + wt),
-        (BA_DX + BA_DW/2,             OY + wt),
-        (OX + wt + 1680*S,            OY + wt + 350*S),   # evap cooler
-        (OX + wt + 2180*S,            OY + wt + 300*S),   # pump
-        (OX + wt + 3954*S,            OY + wt + 580*S),   # drums centre
-        (OX + wt + 5283*S,            OY + wt + 1016*S),  # brown IBC centre
-        (FA_X,                         FA_Y - 0.22),
-        (FB_X,                         FB_Y - 0.22),
+        (BA_DX + BA_DW/2,    OY + wt),
+        (EP_DX + EP_DW/2,    OY + wt),
+        (OX+wt + 1680*S,     OY+wt + 350*S),    # evap cooler
+        (OX+wt + 2180*S,     OY+wt + 300*S),    # pump
+        (OX+wt + 3954*S,     OY+wt + 580*S),    # drums centre
+        (OX+wt + 5283*S,     OY+wt + 1016*S),   # brown IBC centre
+        (FA_X,               FA_Y - 0.22),
+        (FB_X,               FB_Y - 0.22),
+        (SL_X + SL_W/2,      SL_Y1),
     ]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
                 color=C_PIPE, lw=1.0, ls=":", zorder=4)
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
-    SP_Y2 = OY - 1.80
+    SP_Y2 = OY - 1.75
     SP_W2 = clen * 0.50
-    SP_H2 = 0.65
+    SP_H2 = 0.60
     ax.add_patch(FancyBboxPatch((SP_X2, SP_Y2), SP_W2, SP_H2,
                  boxstyle="round,pad=0.04", fc=C_SOLAR, ec=C_OUT, lw=1.8, zorder=3))
     ax.text(SP_X2+SP_W2/2, SP_Y2+SP_H2/2,
-            "SOLAR PANELS  (3 × 200W)  —  EXTERIOR GROUND MOUNT, SOUTH-FACING",
+            "SOLAR PANELS  (3×200W)  —  EXTERIOR, SOUTH-FACING",
             ha="center", va="center", fontsize=8.5, fontweight="bold",
             color=C_OUT, zorder=4)
-    ax.annotate("", xy=(EP_DX + EP_DW/2, OY),
-                xytext=(SP_X2 + SP_W2*0.72, SP_Y2 + SP_H2),
+    ax.annotate("", xy=(EP_DX+EP_DW/2, OY),
+                xytext=(SP_X2+SP_W2*0.65, SP_Y2+SP_H2),
                 arrowprops=dict(arrowstyle="-|>", color="#2D7A2D", lw=1.8,
-                                connectionstyle="arc3,rad=0.25"), zorder=4)
-    ax.text(SP_X2+SP_W2*0.80, SP_Y2+SP_H2*0.5 + 0.40,
-            "PV cable  10 AWG\nMC4 / sealed penetration",
-            fontsize=7.0, color="#2D7A2D", ha="center", va="center")
+                                connectionstyle="arc3,rad=0.2"), zorder=4)
+    ax.text(SP_X2+SP_W2*0.78, SP_Y2+0.55,
+            "PV cable  10 AWG  /  MC4  /  sealed penetration",
+            fontsize=7.0, color="#2D7A2D", ha="center", va="bottom")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    DIM_Y = OY - 0.92
-    DIM_X = OX - 0.52
+    DIM_Y = OY - 0.82
+    DIM_X = OX - 0.42
 
     def dim_h(x1, x2, dy, text):
         ax.annotate("", xy=(x2, dy), xytext=(x1, dy),
                     arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
         ax.plot([x1, x1], [OY, dy], color=C_DIM, lw=0.5, ls=":")
         ax.plot([x2, x2], [OY, dy], color=C_DIM, lw=0.5, ls=":")
-        ax.text((x1+x2)/2, dy - 0.18, text,
+        ax.text((x1+x2)/2, dy - 0.17, text,
                 ha="center", va="top", fontsize=7.5, color=C_DIM)
 
     def dim_v(dx, y1, y2, text):
@@ -662,21 +643,18 @@ def draw_sheet2():
                     arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
         ax.plot([OX, dx], [y1, y1], color=C_DIM, lw=0.5, ls=":")
         ax.plot([OX, dx], [y2, y2], color=C_DIM, lw=0.5, ls=":")
-        ax.text(dx - 0.18, (y1+y2)/2, text,
-                ha="right", va="center", fontsize=7.5,
-                color=C_DIM, rotation=90)
+        ax.text(dx - 0.17, (y1+y2)/2, text,
+                ha="right", va="center", fontsize=7.5, color=C_DIM, rotation=90)
 
-    dim_h(OX,  OX+clen, DIM_Y, "5,898 mm  (container interior length)")
-    dim_h(VX,  VX+vd,   DIM_Y, "1,200 mm  (vestibule)")
+    dim_h(OX, OX+clen, DIM_Y, "5,898 mm  (container interior length)")
     dim_v(DIM_X, OY, OY+cwid,  "2,362 mm  (optical depth / interior width)")
     dim_v(DIM_X, OY, coln_y,   "1,220 mm\n(colonnade)")
 
-    # ── Component key ─────────────────────────────────────────────────────────
-    KX = VX + vd + 0.80
+    # ── Component key (right of container) ───────────────────────────────────
+    KX = OX + clen + 0.70
     KY = OY + cwid - 0.05
     ax.text(KX, KY + 0.28, "COMPONENT KEY",
-            ha="left", va="center", fontsize=9.5,
-            fontweight="bold", color=C_OUT)
+            ha="left", va="center", fontsize=9.5, fontweight="bold", color=C_OUT)
     ax.plot([KX, KX + 5.8], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
 
     key_rows = [
@@ -685,54 +663,54 @@ def draw_sheet2():
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          "2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X=100mm"),
         ("A",     C_ALUM,    "INTAKE FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door wall (left)"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door wall"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (right)"),
         ("C",     C_BATT,    "WATER PUMP — Cct C",
-         "12V DC pump  |  15A / 14 AWG / 100W  |  Colonnade left wing"),
+         "12V DC  |  15A / 14 AWG / 100W  |  Colonnade left wing"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
-         "Red LED strip  |  5A / 18 AWG / 15W  |  Vestibule ceiling"),
+         "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_SOLAR,   "EVAP COOLER — Cct E",
          "12V DC 80W  |  10A / 14 AWG  |  Colonnade left wing"),
-        ("AC\nIN","#FFF0CC", "NEMA 5-15R INLET (exterior)",
-         "Shore power backup  |  → shore charger inside EP"),
+        ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
+         "Shore power backup  |  Exterior face, cargo door wall"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
         ky = KY - 0.28 - j * 0.60
-        ax.add_patch(mpatches.Rectangle((KX, ky - 0.20), 0.50, 0.44,
+        ax.add_patch(mpatches.Rectangle((KX, ky-0.20), 0.50, 0.44,
                      fc=bc, ec=C_OUT, lw=0.9, zorder=4))
-        ax.text(KX+0.25, ky + 0.01, badge,
+        ax.text(KX+0.25, ky+0.01, badge,
                 ha="center", va="center", fontsize=8.0,
                 fontweight="bold", color=C_OUT, zorder=5)
-        ax.text(KX+0.65, ky + 0.04, title_k,
+        ax.text(KX+0.65, ky+0.04, title_k,
                 ha="left", va="center", fontsize=8.5,
                 fontweight="bold", color=C_OUT)
-        ax.text(KX+0.65, ky - 0.12, spec,
+        ax.text(KX+0.65, ky-0.12, spec,
                 ha="left", va="center", fontsize=7.5, color=C_DIM)
 
     # ── Drawing notes ─────────────────────────────────────────────────────────
-    NX, NY = OX, 1.35
-    ax.add_patch(FancyBboxPatch((NX-0.10, NY-0.15), 14.0, 1.30,
+    NX = OX
+    NY = 1.45
+    ax.add_patch(FancyBboxPatch((NX-0.10, NY-0.15), 14.5, 1.25,
                  boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(NX+0.10, NY+0.95, "DRAWING NOTES:",
+    ax.text(NX+0.10, NY+0.90, "DRAWING NOTES:",
             ha="left", va="center", fontsize=8.5,
             fontweight="bold", color=C_OUT)
     notes = [
-        "1.  Pinhole on bottom long wall (front face) at X=2,946mm. Image plane on opposite long wall. "
-        "Optical axis perpendicular to container length.",
-        "2.  All equipment in colonnade zone (Yd≤1,220mm from pinhole wall). "
-        "Amber shaded area = optical shadow cone — keep entirely clear.",
-        "3.  Cable trunking (40×25mm PVC) runs along pinhole wall face at Yd=0 — outside optical cone. "
-        "Drop conduits (10mm corrugated) connect to each device.",
-        "4.  Solar panels mounted externally (south-facing, 30° tilt). "
-        "PV cable enters through sealed IP67 penetration on pinhole wall face.",
+        "1.  Pinhole at X=2,946mm on bottom long wall. Image plane on top long wall. "
+        "Optical axis runs across container width (2,362mm), not along its length.",
+        "2.  All equipment in colonnade zone (Yd ≤ 1,220mm from pinhole wall). "
+        "Amber shading = optical shadow cone — keep entirely clear.",
+        "3.  Cable trunking (40×25mm PVC) on pinhole wall face (Yd=0) — outside optical cone. "
+        "Drop conduits (10mm corrugated) to each device.",
+        "4.  Light trap (revolving drum, Ø750mm vertical axis) is integral to cargo-door "
+        "hinged panel — see Hinged Panel drawings (§12). Not shown on this plan.",
     ]
     for ni, note in enumerate(notes):
-        ax.text(NX+0.10 + (ni >= 2)*7.0, NY + 0.70 - (ni % 2)*0.33,
-                note, ha="left", va="center", fontsize=7.5, color=C_DIM,
-                wrap=True)
+        ax.text(NX+0.10 + (ni >= 2)*7.2, NY + 0.65 - (ni % 2)*0.32,
+                note, ha="left", va="center", fontsize=7.5, color=C_DIM)
 
-    # ── Title block ──────────────────────────────────────────────────────────
+    # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, FW, 2, 2,
                 "CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 "Top-down plan  ·  Colonnade layout  ·  Optical cone clear  ·  Scale 1:500",
@@ -742,6 +720,7 @@ def draw_sheet2():
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────

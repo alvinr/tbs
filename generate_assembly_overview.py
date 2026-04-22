@@ -178,11 +178,12 @@ ax.add_patch(panel_rect)
 # the drum appears as a RECTANGLE: Ø750mm wide × 2000mm tall.
 # It straddles the panel face at X=0.
 DRUM_H_ELV = 2000
-ax.add_patch(mpatches.Rectangle((-DRUM_R, 0), DRUM_D, DRUM_H_ELV,
+# Drum sits fully inside the container, starting at the cargo door wall face (X=0)
+ax.add_patch(mpatches.Rectangle((0, 0), DRUM_D, DRUM_H_ELV,
                                   facecolor="#E8E8D0", edgecolor=C_OUT,
                                   linewidth=0.8, alpha=0.9, zorder=5))
 
-leader(ax, 0, DRUM_H_ELV + 80, -200, PH_H + 600,
+leader(ax, DRUM_D / 2, DRUM_H_ELV + 60, -200, PH_H + 600,
        f"Hinged panel\n+ revolving drum\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 
@@ -243,9 +244,9 @@ ax.text(DRM_X + DRUM_W_EQ / 2, 100 + DRUM_H_STK / 2,
 ax.plot([DRM_X, DRM_X + DRUM_W_EQ], [100 + DRUM_H_EQ, 100 + DRUM_H_EQ],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-# Brown IBC ×1 (600L): X=4674–5893, H=0–1010
-equip_rect(ax, 4674, 100, IBC_W, IBC_H_600, C_IBC_BROWN)
-ax.text(4674 + IBC_W / 2, 100 + IBC_H_600 / 2,
+# Brown IBC ×1 (600L): X=4559–5778, H=0–1010
+equip_rect(ax, 4559, 100, IBC_W, IBC_H_600, C_IBC_BROWN)
+ax.text(4559 + IBC_W / 2, 100 + IBC_H_600 / 2,
         "Brown IBC\n×1 (600L)", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
 
@@ -254,7 +255,7 @@ leader(ax, 100 + IBC_W / 2, 100 + IBC_H_STK, 400, 2400,
        "Blue IBC ×2 stacked\n(2×600L = 1,200L)\nH=2,020mm", ha="left", fs=FS_SM)
 leader(ax, DRM_X + DRUM_W_EQ, 100 + DRUM_H_STK * 0.5, DRM_X + 700, 1600,
        "55-gal drums ×2 stacked\n(2×208L = 416L)\nH=1,740mm", ha="left", fs=FS_SM)
-leader(ax, 4674 + IBC_W / 2, 100 + IBC_H_600, 4800, 1400,
+leader(ax, 4559 + IBC_W / 2, 100 + IBC_H_600, 4800, 1400,
        "Brown IBC ×1\n(600L = waste/fix)\nH=1,010mm", ha="left", fs=FS_SM)
 leader(ax, EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH, 1600, 2200,
        "Evap cooler", ha="left", fs=FS_SM)

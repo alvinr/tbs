@@ -510,10 +510,13 @@ def draw_sheet2():
 
     # ── Colonnade equipment ───────────────────────────────────────────────────
     # x_mm  = TBS X along long axis (0 = cargo door end = LEFT in plan)
+    #          TBS coords run 0–5,893mm interior-to-interior (real wall ~3mm).
+    #          Map directly to drawing: ex = OX + x_mm*S.
+    #          The schematic 120mm wall fill is a visual overlay only.
     # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
-        ex = OX + wt + x_mm  * S
-        ey = OY + wt + yd_mm * S
+        ex = OX + x_mm  * S          # TBS X maps directly to drawing X
+        ey = OY + wt + yd_mm * S     # depth from interior face of pinhole wall
         ew = w_mm * S
         ed = d_mm * S
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
@@ -537,7 +540,7 @@ def draw_sheet2():
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
     EP_X_MM, EP_W_MM = 2050, 300
-    EP_DX = OX + wt + EP_X_MM * S
+    EP_DX = OX + EP_X_MM * S
     EP_DW = EP_W_MM * S
     ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.15), EP_DW, wt*0.70,
                  fc=C_ELEC, ec=C_OUT, lw=1.0, zorder=7))
@@ -545,7 +548,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     BA_X_MM, BA_W_MM = 100, 500
-    BA_DX = OX + wt + BA_X_MM * S
+    BA_DX = OX + BA_X_MM * S
     BA_DW = BA_W_MM * S
     ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.15), BA_DW, wt*0.70,
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
@@ -596,10 +599,10 @@ def draw_sheet2():
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
-        (OX+wt + 1680*S,     OY+wt + 350*S),    # evap cooler
-        (OX+wt + 2180*S,     OY+wt + 300*S),    # pump
-        (OX+wt + 3954*S,     OY+wt + 580*S),    # drums centre
-        (OX+wt + 5283*S,     OY+wt + 1016*S),   # brown IBC centre
+        (OX + 1680*S,        OY+wt + 350*S),    # evap cooler
+        (OX + 2180*S,        OY+wt + 300*S),    # pump
+        (OX + 3954*S,        OY+wt + 580*S),    # drums centre
+        (OX + 5283*S,        OY+wt + 1016*S),   # brown IBC centre
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),

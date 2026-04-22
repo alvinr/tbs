@@ -487,7 +487,7 @@ ax2.text(587, 53, 'GIANT PINHOLE CAMERA — OPTION B', ha='center', fontsize=9,
 ax2.text(587, 46, 'INTERCHANGEABLE OPTICAL PLATE SYSTEM', ha='center', fontsize=7.5)
 ax2.text(587, 39, 'SHEET 2 OF 2 — SECTION A-A & DETAILS', ha='center', fontsize=7)
 ax2.text(490, 31, 'SECTION SCALE: 1:4', fontsize=6)
-ax2.text(490, 24, 'DETAIL B SCALE: 5:1', fontsize=6)
+ax2.text(490, 24, 'DETAIL B SCALE: 2:1', fontsize=6)
 ax2.text(490, 17, 'DETAIL C SCALE: 2:1', fontsize=6)
 ax2.text(490, 10, 'UNITS: mm', fontsize=6, fontweight='bold')
 
@@ -501,7 +501,7 @@ SC4 = 1/4   # 1:4 scale
 def ss(mm): return mm * SC4
 
 # Section origin: centre of section at (220, 310)
-scx, scy = 220, 310
+scx, scy = 160, 310
 
 ax2.text(scx, 465, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
          fontsize=9, fontweight='bold', color='black')
@@ -700,14 +700,14 @@ ax2.text(scx, scy - pl_half - 24, '1:4 scale  —  Pinhole Plate (Item 2) instal
 # ──────────────────────────────────────────────────────────────────────────────
 # DETAIL B: Pinhole disc seat  (5:1 scale)
 # ──────────────────────────────────────────────────────────────────────────────
-SC5 = 5/1   # 5:1 detail
+SC5 = 2.0   # 2:1 detail (was 5:1; reduced so plate fits within canvas height)
 def sb(mm): return mm * SC5
 
-dbx, dby = 490, 350  # centre of detail view
+dbx, dby = 490, 360  # centre of detail view
 
 ax2.text(dbx, 465, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
          fontsize=8, fontweight='bold')
-ax2.text(dbx, 458, '5:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
+ax2.text(dbx, 458, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
 
 # Draw 5:1 cross-section of the counterbore region
 # Show: plate interior face (right face), counterbore Ø52×3, disc, retaining ring groove
@@ -786,7 +786,7 @@ ax2.text(face_x - sb(PH_CB_DEP)/2, dby - cb_show_half - 8,
          '√ Ra 0.8', ha='center', fontsize=5.5, color='black')
 
 ax2.text(dbx, dby - sb(PH_CB_D/2 + 10) - 12,
-         'DETAIL B — DISC SEAT (5:1)', ha='center', fontsize=6.5,
+         'DETAIL B — DISC SEAT (2:1)', ha='center', fontsize=6.5,
          fontweight='bold', color=C_RED)
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -870,11 +870,11 @@ ax2.text(dcx, dcy - 38, 'DETAIL C — LIGHT TRAP (10:1)', ha='center', fontsize=
 SC2 = 1/2
 def sd(mm): return mm * SC2
 
-ddx, ddy = 155, 230   # centre
+ddx, ddy = 340, 200   # centre — moved right to avoid Section A-A overlap
 
-ax2.text(ddx, 395, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
+ax2.text(ddx, ddy + 130, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
          fontsize=8, fontweight='bold')
-ax2.text(ddx, 388, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
+ax2.text(ddx, ddy + 123, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
 
 # Lens plate cross-section (showing the Ø175 H7 bore with lens tube)
 pl_left_d = ddx - sd(PL_THICK/2)

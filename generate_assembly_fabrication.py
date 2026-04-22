@@ -207,16 +207,17 @@ def sheet1():
                  alpha=0.8, zorder=4))
     # Revolving drum — VERTICAL AXIS.  In this long-section elevation (looking
     # along +Y), the drum appears as a RECTANGLE: width = Ø750mm (X direction),
-    # height = 2000mm (walking clearance).  The drum straddles X=0 (panel face):
-    # -DRUM_R to +DRUM_R horizontally, floor (0) to 2000mm vertically.
+    # height = 2000mm (walking clearance).  Centre of drum aligns with outside
+    # edge of container (X=0, panel affixed here): -DRUM_R to +DRUM_R horizontally.
+    # Bottom aligns with other equipment at RAIL_OFF (100mm).
     DRUM_H_ELV = 2000   # drum height for elevation views
-    ax.add_patch(mpatches.Rectangle((-DRUM_R, 0), DRUM_D, DRUM_H_ELV,
+    ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
                  facecolor=C_ALUM, edgecolor=C_OUT,
                  linewidth=1.0, alpha=0.7, zorder=5))
     # Vertical centre-line of drum axis
-    draw_cl_v(ax, 0, 0, DRUM_H_ELV + 150)
+    draw_cl_v(ax, 0, RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 150)
     # Label
-    ax.text(0, DRUM_H_ELV / 2,
+    ax.text(0, RAIL_OFF + DRUM_H_ELV / 2,
             f"REVOLVING DRUM\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
             ha="center", va="center", fontsize=FS_SM - 1, color=C_OUT,
             style="italic", zorder=6)
@@ -470,26 +471,26 @@ def sheet2():
     DRUM_LEFT = DRUM_CX - DRUM_R   # = 1225mm
     DRUM_RIGHT = DRUM_CX + DRUM_R  # = 1975mm
 
-    drum_rect = mpatches.Rectangle((DRUM_LEFT, 0), DRUM_D, DRUM_H_ELV,
+    drum_rect = mpatches.Rectangle((DRUM_LEFT, RAIL_OFF), DRUM_D, DRUM_H_ELV,
                                     facecolor=C_ALUM, edgecolor=C_OUT,
                                     linewidth=1.2, alpha=0.7, zorder=6)
     ax.add_patch(drum_rect)
 
     # Vertical centre-line (drum axis)
-    draw_cl_v(ax, DRUM_CX, 0, DRUM_H_ELV + 150)
+    draw_cl_v(ax, DRUM_CX, RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 150)
 
     # Horizontal baffle slot lines (plan view baffles project as horizontal
     # dashes across the drum in elevation — indicate the 4-baffle internal structure)
-    for h_baff in [500, 1000, 1500]:
+    for h_baff in [RAIL_OFF + 500, RAIL_OFF + 1000, RAIL_OFF + 1500]:
         ax.plot([DRUM_LEFT + 40, DRUM_RIGHT - 40], [h_baff, h_baff],
                 color=C_OUT, lw=0.6, ls="--", alpha=0.5, zorder=7)
 
-    # Entry threshold bar at floor level
-    ax.plot([DRUM_LEFT, DRUM_RIGHT], [0, 0],
+    # Entry threshold bar at equipment floor level
+    ax.plot([DRUM_LEFT, DRUM_RIGHT], [RAIL_OFF, RAIL_OFF],
             color=C_OUT, lw=1.5, zorder=7)
 
     # Label
-    ax.text(DRUM_CX, DRUM_H_ELV / 2,
+    ax.text(DRUM_CX, RAIL_OFF + DRUM_H_ELV / 2,
             f"REVOLVING DRUM\nVERTICAL AXIS\nØ{DRUM_D} × {DRUM_H_ELV}mm H",
             ha="center", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
             style="italic", zorder=7)
@@ -589,8 +590,8 @@ def sheet2():
     # Container height
     draw_dim_v(ax, DIM_R, 0, CH, f"H = {CH} mm", ext=80, gap=20, fs=FS_SM)
 
-    # Drum height
-    draw_dim_v(ax, DIM_R + 300, 0, DRUM_H_ELV,
+    # Drum height (from equipment floor level RAIL_OFF to top)
+    draw_dim_v(ax, DIM_R + 300, RAIL_OFF, RAIL_OFF + DRUM_H_ELV,
                f"Drum H  {DRUM_H_ELV} mm", ext=60, gap=20, fs=FS_SM)
 
     # Rail offset top

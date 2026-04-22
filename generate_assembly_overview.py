@@ -178,12 +178,12 @@ ax.add_patch(panel_rect)
 # the drum appears as a RECTANGLE: Ø750mm wide × 2000mm tall.
 # It straddles the panel face at X=0.
 DRUM_H_ELV = 2000
-# Drum sits fully inside the container, starting at the cargo door wall face (X=0)
-ax.add_patch(mpatches.Rectangle((0, 0), DRUM_D, DRUM_H_ELV,
+# Drum centre aligns with outside edge of container (X=0); bottom matches other equipment (Y=100)
+ax.add_patch(mpatches.Rectangle((-DRUM_R, 100), DRUM_D, DRUM_H_ELV,
                                   facecolor="#E8E8D0", edgecolor=C_OUT,
                                   linewidth=0.8, alpha=0.9, zorder=5))
 
-leader(ax, DRUM_D / 2, DRUM_H_ELV + 60, -200, PH_H + 600,
+leader(ax, 0, 100 + DRUM_H_ELV + 60, -200, PH_H + 600,
        f"Hinged panel\n+ revolving drum\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 

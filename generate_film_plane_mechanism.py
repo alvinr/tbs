@@ -21,7 +21,7 @@ import matplotlib.patheffects as pe
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
-GRID    = "#F0F4F8"   # container interior (very light blue-grey)
+GRID    = "#FFFFFF"   # container interior (white)
 STRUCT  = "#B0B0B8"   # steel section fill (walls)
 STRUCT2 = "#C8D8E8"   # aluminium / secondary structure
 DIM     = "#404040"   # dimension lines and text (dark grey)

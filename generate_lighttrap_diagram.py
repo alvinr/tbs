@@ -358,10 +358,10 @@ def draw_sheet1():
                 "S-path baffle layout  ·  Materials  ·  Installation notes",
                 "1:100  (1 unit = 100 mm)")
 
-    plt.savefig("lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
+    plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → lighttrap-sheet1.png  Done.")
+    print("  → diagrams/lighttrap-sheet1.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -673,10 +673,10 @@ def draw_sheet2():
                 "Cross-ventilation layout  ·  Fan positions  ·  Light-safe baffle geometry",
                 "Section: not to scale  ·  Detail: 1:20")
 
-    plt.savefig("lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
+    plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
-    print("  → lighttrap-sheet2.png  Done.")
+    print("  → diagrams/lighttrap-sheet2.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

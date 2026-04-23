@@ -19,6 +19,11 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import matplotlib.patheffects as pe
 
+from tbs_constants import (
+    FP_X_L, FP_X_R, PH_X as PH_X_C, PH_H as PH_H_C,
+    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR,
+)
+
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
 GRID    = "#FFFFFF"   # container interior (white)
@@ -57,12 +62,12 @@ CONFIGS = [
 FONT = {"fontfamily": "monospace"}
 
 # ── Geometry helpers ──────────────────────────────────────────────────────────
-RAIL_X_L = 200          # left rail X position (from left end wall)
-RAIL_X_R = L - 200      # right rail X position
+RAIL_X_L = FP_X_L       # left rail X position = 1100mm (was 200mm)
+RAIL_X_R = FP_X_R       # right rail X position = 4019mm (was 5693mm)
 RAIL_W   = 60           # rail width in plan view
 
 def title_block(ax, sheet_no, title, scale_note=""):
-    ax.text(0.01, 0.012, "GIANT PINHOLE CAMERA  ·  GPC-001",
+    ax.text(0.01, 0.012, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
             transform=ax.transAxes, color=DIM, fontsize=7, **FONT)
     ax.text(0.01, 0.004, f"MOVEABLE FILM PLANE (4-CORNER) — SHEET {sheet_no}: {title}",
             transform=ax.transAxes, color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
@@ -129,11 +134,11 @@ def sheet1():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole
-    ph_x = L / 2
+    # Pinhole (X=2560mm in new layout, recentred on new film plane)
+    ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
-    ax.text(ph_x + 180, -250, "PINHOLE  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
+    ax.text(ph_x + 180, -250, f"PINHOLE  X={ph_x}mm  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
 
     # ── 4 INDEPENDENT RAILS — one at each corner ──────────────────────────────
     # Left rails: at X=RAIL_X_L (ceiling = label TL/BL, floor = label TL/BL)
@@ -231,8 +236,9 @@ def sheet1():
                offset=0, col=DIM, fs=7.5)
     dim_line_v(ax, L+1250, 0, W, f"OPTICAL AXIS  {W} mm  (7 ft 9 in)",
                offset=20, col=DIM)
-    dim_line_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm", col=DIM, fs=6.5)
-    dim_line_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R} mm", col=DIM, fs=6.5)
+    dim_line_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm\n(left end zone)", col=DIM, fs=6.5)
+    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L} mm", col=RAIL, fs=6.5)
+    dim_line_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R} mm\n(right end zone)", col=DIM, fs=6.5)
 
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -258,9 +264,9 @@ def sheet1():
     title_block(ax, "1 / 4", "PLAN VIEW — 4-CORNER RAIL LAYOUT",
                 "SCALE: PROPORTIONAL (mm)")
     fig.tight_layout(pad=0.3)
-    fig.savefig("film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → film-plane-sheet1.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet1.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -421,9 +427,9 @@ def sheet2():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole
-    ax.add_patch(Circle((L/2, 0), 55, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
-    ax.add_patch(Circle((L/2, 0), 18, fc=BG, ec=WHITE, lw=1.0, zorder=7))
+    # Pinhole (recentred at X=2560 on new film plane)
+    ax.add_patch(Circle((PH_X_C, 0), 55, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
+    ax.add_patch(Circle((PH_X_C, 0), 18, fc=BG, ec=WHITE, lw=1.0, zorder=7))
 
     # Rails (plan view — ceiling rails projected down)
     RAIL_W_P = 50
@@ -494,9 +500,9 @@ def sheet2():
     for ax_ in [ax_tilt, ax_swing]:
         title_block(ax_, "2 / 4", "TILT & SWING ELEVATIONS", "SCALE: PROPORTIONAL (mm)")
 
-    fig.savefig("film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → film-plane-sheet2.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet2.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -715,9 +721,9 @@ def sheet3():
     for a in axes:
         title_block(a, "3 / 4", "HARDWARE DETAILS — 4-CORNER DESIGN")
 
-    fig.savefig("film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → film-plane-sheet3.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet3.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -732,7 +738,7 @@ def sheet4():
     ax.text(0.5, 0.965, "SHEET 4 — MOVEMENT SPECIFICATION  &  BILL OF MATERIALS",
             transform=ax.transAxes, color=WHITE, fontsize=13, ha="center",
             fontweight="bold", **FONT)
-    ax.text(0.5, 0.928, "GPC-001  ·  MOVEABLE FILM PLANE (4-CORNER)  ·  CONTAINER: 5,893 × 2,362 × 2,388 mm",
+    ax.text(0.5, 0.928, f"TBS-001  ·  MOVEABLE FILM PLANE (4-CORNER)  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
             transform=ax.transAxes, color=DIM, fontsize=8.5, ha="center", **FONT)
 
     def draw_table(ax, x0, y0, headers, rows, col_widths, row_h=0.046,
@@ -773,8 +779,8 @@ def sheet4():
         ["SWING (right)", "Both right corners move equally",    "TR + BR together", "0–2,262 mm", "2× leadscrew — turn both", "2 locking collars"],
         ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   "0–2,262 mm", "4× leadscrews independently","4 locking collars"],
         ["BACK FOCUS",    "All 4 corners together",             "All",              "100–2,262mm","All 4 leadscrews together", "All 4 locks"],
-        ["MAX TILT",      "Top=100mm, Bot=2,262mm (or rev.)",  "TL=TR, BL=BR",     "42°",        "Top+top / Bot+bot",        "All 4 locks"],
-        ["MAX SWING",     "Left=100mm, Right=2,262mm (or rev.)","TL=BL, TR=BR",    "42°",        "Left+left / Right+right",  "All 4 locks"],
+        ["MAX TILT",      "Top=100mm, Bot=2,262mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
+        ["MAX SWING",     "Left=100mm, Right=2,262mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
     ]
     draw_table(ax, 0.05, 0.840, axes_headers, axes_rows,
                [0.12, 0.22, 0.15, 0.10, 0.22, 0.14])
@@ -796,10 +802,10 @@ def sheet4():
         ("Tilt mild",         1800,   1800,   D_FAR,  D_FAR,  "5.6° tilt, subtle keystone"),
         ("Tilt strong",       800,    800,    D_FAR,  D_FAR,  "17.5° tilt, strong keystone"),
         ("Tilt max",          D_NEAR, D_NEAR, D_FAR,  D_FAR,  "41.6° tilt, extreme"),
-        ("Swing mild",        D_FAR,  1800,   D_FAR,  1800,   "5.6° swing, diagonal slant"),
-        ("Swing strong",      D_FAR,  800,    D_FAR,  800,    "17.5° swing"),
-        ("Swing max",         D_FAR,  D_NEAR, D_FAR,  D_NEAR, "41.6° swing, extreme diagonal"),
-        ("Compound tilt+sw.", D_NEAR, D_FAR,  D_FAR,  D_NEAR, "Both 41.6° — twisted plane"),
+        ("Swing mild",        D_FAR,  1800,   D_FAR,  1800,   "swing, diagonal slant"),
+        ("Swing strong",      D_FAR,  800,    D_FAR,  800,    "swing (short span = larger angle)"),
+        ("Swing max",         D_FAR,  D_NEAR, D_FAR,  D_NEAR, f"{MAX_SWING_DEG:.1f}deg max swing"),
+        ("Compound tilt+sw.", D_NEAR, D_FAR,  D_FAR,  D_NEAR, "Both max — twisted plane"),
     ]
 
     cfg_headers = ["CONFIG", "TL mm", "TR mm", "BL mm", "BR mm",
@@ -807,7 +813,7 @@ def sheet4():
     cfg_rows = []
     for (name, d_TL, d_TR, d_BL, d_BR, effect) in config_defs:
         tilt = tilt_angle(d_TL, d_BL, eff_H)  # top vs bottom on same side
-        swing = tilt_angle(d_TL, d_TR, L)      # left vs right at same height
+        swing = tilt_angle(d_TL, d_TR, RAIL_X_R - RAIL_X_L)  # left vs right — use rail span
         cfg_rows.append([name, d_TL, d_TR, d_BL, d_BR,
                          f"{tilt:.1f}°", f"{swing:.1f}°", effect])
 
@@ -861,9 +867,9 @@ def sheet4():
             transform=ax.transAxes, color=DIM, fontsize=7, ha="right", **FONT)
 
     title_block(ax, "4 / 4", "MOVEMENT SPECS & BILL OF MATERIALS")
-    fig.savefig("film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  → film-plane-sheet4.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
 
 
 # ── Run all sheets ─────────────────────────────────────────────────────────────

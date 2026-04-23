@@ -192,19 +192,27 @@ Custom fabrication is the recommended approach. Full raw material supplier list,
 
 ### 5.8 Container Floor Plan — All Systems
 
-Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment clusters at the cargo door short end (X=0–2,700mm). The optical clear zone (X=2,700–5,893mm) is unobstructed.
+Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=1,100–4,019mm) is completely clear.
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-**Equipment zone (X=0–2,700mm):**
-- 2 × Blue IBC totes (1,000L each) — wash water, side-by-side in container width
-- 1 × Brown IBC tote (1,000L) — waste water / fix recovery
-- 2 × 55-gal HDPE drums — concentrate chemistry / overflow
-- 12V evaporative cooler — near cooler intake penetration on far long wall
-- Pump manifold — 12V DC, three-circuit water system
-- Electrical enclosure + LiFePO4 battery bank — wall-mounted on left short end
+**Left end zone (X=0–1,100mm) — shadow-free at all depths:**
+- Light trap drum (Ø750mm, centred at X=0)
+- 12V evaporative cooler (X=400–1,000mm, Yd=100–450mm)
 
-**Note:** Equipment in the X=0–2,700mm zone is within the image plane frame but shadows the lower portion of the far wall at those X positions — producing known corner vignetting on the image. This is a compositional characteristic, not a defect, and is documented in the technical reports.
+**Pinhole wall face (Y=0):**
+- Electrical enclosure (X=2,050–2,350mm, H=900–1,500mm) — wall-mounted
+- LiFePO4 battery bank (X=2,050–2,550mm, H=0–500mm) — wall-mounted
+- Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
+
+**Optical zone (X=1,100–4,019mm):** Nothing at floor level. Rails only.
+
+**Right end zone (X=4,019–5,893mm) — shadow-free at all depths:**
+- 2 × Blue IBC totes (600L each), Y-stacked (front), X=4,044mm
+- 1 × Brown IBC tote (600L), Y-stacked (rear), X=4,044mm
+- 2 × 55-gal HDPE drums, side-by-side in Y, X=5,288mm
+
+All equipment clears the optical cone at every depth — no vignetting. See [Equipment Layout Report](equipment-layout-report.md) for the shadow-free proof.
 
 ---
 
@@ -240,10 +248,11 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ### 6.4 Light-Safe Cooler Intake
 
-The cooler intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
+The cooler is positioned in the left end zone (X=400–1,000mm, Yd=100–450mm). Its
+intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
 
 - **Duct size:** 6" (150mm) — matches cooler inlet
-- **Penetration:** through the container short wall opposite the vestibule end, positioned 800mm above floor level
+- **Penetration:** through the container left short end wall (X=0 face), positioned 400mm above floor level (within left end zone)
 - **Interior baffles:** two 150 × 150mm flat steel baffles, offset 75mm, mounted inside a 250mm duct stub — breaks the direct light path while allowing unrestricted airflow at 300 CFM
 - **Exterior:** weatherproof louvre with mesh screen to exclude insects
 

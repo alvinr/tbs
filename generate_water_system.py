@@ -17,6 +17,11 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
+from tbs_constants import (
+    IBC_COL_X, ZONE_R_START,
+    DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H, DRUM_STACKED_H,
+    DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+)
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -449,7 +454,7 @@ ax2.add_patch(plt.Rectangle((-WT, -WT), CW + 2*WT, CH + 2*WT,
                              fc="none", ec="#777", lw=1.2, ls="--", zorder=0))
 
 # ── Equipment placement ───────────────────────────────────────────────────────
-# All IBCs and drums in RIGHT END ZONE (X=4,019–5,893mm).
+# IBCs in RIGHT END ZONE (X=4,649–5,893mm); drums in LEFT END ZONE (X=0–1,100mm).
 # Scale: CW=12 units = 5893mm interior → 1mm = 12/5893 units
 #        CH=5  units = 2362mm interior → 1mm = 5/2362 units
 SX = 12.0 / 5893.0   # mm to drawing unit (X direction)
@@ -459,8 +464,8 @@ SY = 5.0  / 2362.0   # mm to drawing unit (Y direction)
 IBC_W = 1219 * SX    # ≈ 2.48 drawing units
 IBC_D = 1016 * SY    # ≈ 2.15 drawing units
 
-# IBC column X in drawing: IBC_COL_X = 4044mm
-IBC_COL_DX = 4044 * SX  # ≈ 8.22
+# IBC column X in drawing: IBC_COL_X = 4674mm (right-justified to end wall)
+IBC_COL_DX = IBC_COL_X * SX  # ≈ 9.52
 
 def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
     ax.add_patch(plt.Rectangle((x, y), IBC_W, IBC_D, fc=fc, ec=ec, lw=1.8, zorder=2))
@@ -504,19 +509,19 @@ ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BRO
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
 ax2.text(1.3, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
 
-# 55-gal drums D1, D2 — right end zone, Y-stacked column (DRUM_COL_X=5288mm)
-# At 1:drawing_scale: radius=580/2mm → DRUM_R in drawing units
-DRUM_COL_DX = 5288 * SX   # ≈ 10.77
-DRUM1_DY = 100 * SY + 580/2 * SY   # centre of drum 1 y
-DRUM2_DY = 705 * SY + 580/2 * SY   # centre of drum 2 y (start=705mm)
-DRUM_R = 580/2 * SY  # radius in drawing units ≈ 0.61
-for drum_dy, lbl in [(DRUM1_DY, "D-1\n55gal"), (DRUM2_DY, "D-2\n55gal")]:
-    drum_cx = DRUM_COL_DX + DRUM_R  # centre x of drum column
-    c = plt.Circle((drum_cx, drum_dy), DRUM_R, fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
-    ax2.add_patch(c)
-    ax2.text(drum_cx, drum_dy, lbl, ha="center", va="center",
-             fontsize=6.5, fontweight="bold", color=C_BLACK, zorder=3,
-             multialignment="center")
+# 55-gal drums D1, D2 — LEFT end zone, Z-stacked (same floor footprint)
+# CX=700mm, Yd_centre=765mm — shown as single circle footprint labelled ×2 stacked
+DRUM_LZ_DX = DRUM_LZ_CX * SX   # ≈ 1.42 (centre X in drawing)
+DRUM_LZ_DY = DRUM_LZ_YD * SY   # ≈ 1.62 (centre Y in drawing)
+DRUM_R_DU  = DRUM_EQ_R * SY    # radius in drawing units ≈ 0.61
+c = plt.Circle((DRUM_LZ_DX, DRUM_LZ_DY), DRUM_R_DU,
+               fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
+ax2.add_patch(c)
+ax2.text(DRUM_LZ_DX, DRUM_LZ_DY + 0.12, "D-1/2", ha="center", va="center",
+         fontsize=6.5, fontweight="bold", color=C_BLACK, zorder=3)
+ax2.text(DRUM_LZ_DX, DRUM_LZ_DY - 0.15, "55gal×2\nstacked",
+         ha="center", va="center", fontsize=5.5, color=C_BLACK, zorder=3,
+         multialignment="center")
 
 # Spray bar along top wall
 pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)
@@ -537,14 +542,14 @@ ax2.plot([8.25, 8.25], [0.32, 0.68], color="#388E3C", lw=1.2, zorder=5)
 ax2.text(8.25, 0.18, "FLOOR DRAIN\n3W-DV-02", ha="center",
          fontsize=6, color="#388E3C")
 
-# Right end zone shading (X=4019–5893mm = 8.18–12.0 in drawing)
-ZONE_R_DX = 4019 * SX   # ≈ 8.18
+# Right end zone shading (X=4649–5893mm in drawing)
+ZONE_R_DX = ZONE_R_START * SX   # ≈ 9.45
 ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
               fc="#E8F0FF", ec="none", alpha=0.45, zorder=0))
 ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
          zorder=6)
 ax2.text(ZONE_R_DX + 0.05, CH - 0.15,
-         "RIGHT END ZONE\nX=4,019–5,893mm\n(shadow-free)",
+         f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(shadow-free, IBCs only)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
 # Pinhole/lens wall (left end)
@@ -572,7 +577,7 @@ def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
 dim_h(ax2, 0, CW, -0.1, "5,893 mm (CONTAINER INTERIOR)")
 dim_v(ax2, 0, 0, CH, "2,362 mm")
 dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
-dim_h(ax2, ZONE_R_DX, CW, 5.5, "RIGHT END ZONE: 1,874 mm")
+dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm")
 
 # North arrow
 ax2.annotate("", xy=(12.2, 9.8), xytext=(12.2, 9.2),

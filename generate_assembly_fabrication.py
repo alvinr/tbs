@@ -37,7 +37,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_COL_X, DRUM_EQ_D, DRUM_EQ_H,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_STACKED_H, DRUM_LZ_CX,
     RAIL_X_L, RAIL_X_R,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
@@ -231,6 +231,14 @@ def sheet1():
             "EVAP\nCOOLER", ha="center", va="center",
             fontsize=FS_SM-1.5, color="white", zorder=5)
 
+    # 55-gal drums x2 stacked — left zone, behind evap cooler in depth (Yd=475-1055mm)
+    # In this side elevation they appear at same X as evap cooler; draw dimmer behind.
+    _dlx0 = DRUM_LZ_CX - DRUM_EQ_D // 2
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_STACKED_H, C_DRUM_EQ, alpha=0.70, zorder=3)
+    ax.text(_dlx0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H/2,
+            "WASTE\nDRUMS x2\nSTACKED\n(behind\nevap cooler)",
+            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=4)
+
     # ── PINHOLE WALL EQUIPMENT (flush on near long wall) ──────────────────────
     # Electrical panel
     equip_blk(ax, EP_X, EP_H_LO, EP_W, EP_H_HI-EP_H_LO, C_ELEC, lw=0.8, zorder=4)
@@ -259,11 +267,7 @@ def sheet1():
     equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600,
               C_IBC_BROWN, alpha=0.45, zorder=3)
 
-    # 55-gal drum column (Y-stacked, appear at same elevation)
-    equip_blk(ax, DRUM_COL_X, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, zorder=5)
-    ax.text(DRUM_COL_X+DRUM_EQ_D/2, RAIL_OFF+DRUM_EQ_H/2,
-            "DRUMS x2\n(Y-STACKED)",
-            ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
+    # (drums relocated to left zone — no drum column in right zone)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
     FAN_W_FAB = 200
@@ -280,7 +284,7 @@ def sheet1():
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
         (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # Blue IBCs
-        (DRUM_COL_X+DRUM_EQ_D/2, RAIL_OFF+DRUM_EQ_H/2,  "8"),  # 55-gal drums
+        (DRUM_LZ_CX,              RAIL_OFF+DRUM_STACKED_H/2, "8"),  # 55-gal drums (left zone)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "9"),  # Pump
         (-WALL_T/2, 300,          "10"),  # Fan intake
         (C_LEN+WALL_T/2, C_HGT-300, "11"),  # Fan exhaust
@@ -327,8 +331,8 @@ def sheet1():
         ("4",  "Evaporative cooler",                 "TBS-EL01"),
         ("5",  "Electrical panel + battery bank",    "TBS-EL01"),
         ("6",  "Hinged panel + revolving drum",      "TBS-LT01"),
-        ("7",  "Blue IBC stack x2 (front) + Brown x1 (behind)","TBS-WS01"),
-        ("8",  "55-gal drums x2 (Y-stacked)",        "TBS-WS01"),
+        ("7",  "Blue IBC stack x2 (front) + Brown x1 (behind, right zone)","TBS-WS01"),
+        ("8",  "55-gal drums x2 stacked (left zone, behind evap cooler)","TBS-WS01"),
         ("9",  "Pump manifold",                      "TBS-WS01"),
         ("10", "Intake fan",                         "TBS-EL01"),
         ("11", "Exhaust fan",                        "TBS-EL01"),
@@ -434,7 +438,7 @@ def sheet2():
             ha="center", va="center", fontsize=FS_SM-0.5, color=C_OUT,
             style="italic", zorder=7)
 
-    # ── Film plane (dashed inset — behind this view, at X=1100–4019 depth) ────
+    # ── Film plane (dashed inset — behind this view, at X=1100–4649 depth) ────
     # In this end elevation the film plane spans the full container height but
     # only the range Y=0–CW in the horizontal axis here. Indicate with dashed rect.
     ax.add_patch(mpatches.Rectangle((50, 50), C_WID-100, C_HGT-100,

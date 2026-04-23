@@ -19,9 +19,9 @@ The camera operates in remote locations with no mains water or drainage. This do
 
 | Circuit | Colour code | Purpose | Storage |
 |---------|-------------|---------|---------|
-| **Blue** | Blue — clean | Fresh water supply for processing | 2× 275 gal IBC totes (550 gal total) |
-| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 275 gal IBC tote |
-| **Black** | Black — waste | Heavily contaminated water; sealed drums for off-site disposal | 2× 55 gal HDPE drums (110 gal) |
+| **Blue** | Blue — clean | Fresh water supply for processing | 2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone |
+| **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 600L IBC tote, Y-stacked behind Blue IBCs |
+| **Black** | Black — waste | Heavily contaminated water; sealed drums for off-site disposal | 2× 55 gal HDPE drums (110 gal), side-by-side in right end zone |
 
 ---
 
@@ -237,17 +237,24 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`).
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm); waste drums are in the **left end zone** (X=0–1,100mm, Z-stacked). The optical zone (X=1,100–4,649mm) is completely clear.
 
-The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft length, leaving 16 ft for the camera and processing floor.
+**Container floor plan — all systems (top-down, 1:75):**
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-| Zone | Contents | Footprint |
-|------|----------|-----------|
-| Left wall (rear) | IBC-1, IBC-2 (Blue), IBC-3 (Brown) | 1,200 × 3,600 mm |
-| Floor-left | P-01, P-02, ACC-01, filter skid | 600 × 900 mm |
-| Right wall (rear) | DRUM-1, DRUM-2 (Black) | 1,200 × 600 mm |
-| Floor centre | Processing containment zone | 4,375 × 2,200 mm |
-| Top wall | Spray bar | 6,000 mm run |
+IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are **Z-stacked** (vertically) in the left end zone at X=700mm CX, behind the evap cooler.
+
+| Zone | Contents | X (mm) | Yd (mm) | H (mm) |
+|------|----------|--------|---------|--------|
+| Right end zone | IBC-1 + IBC-2 Blue (600L each, stacked) | 4,674–5,893 | 100–1,116 | 0–2,020 |
+| Right end zone | IBC-3 Brown (600L) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
+| Left end zone | DRUM-1/2 (55 gal each, Z-stacked) | 410–990 | 475–1,055 | 0–1,740 |
+| Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
+| Optical zone | No equipment | 1,100–4,649 | — | — |
+
+All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
+
+**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to Brown IBC rear at Yd=1,141mm). Waste hose from manifold to drums runs to the left end zone — maximum run ~3m.
 
 ---
 
@@ -387,6 +394,15 @@ The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft lengt
 |---------|------|
 | Sheet 1 — System flow schematic (P&ID) | `water-system-sheet1.png` |
 | Sheet 2 — Equipment layout plan + parts list | `water-system-sheet2.png` |
+| Container floor plan — all systems | See [Electrical & Systems Report](electrical-report.md) Section 5.8 |
+
+**Sheet 1 — System Flow Schematic (P&ID)**
+![Water System — Sheet 1: P&ID Flow Schematic](assets/water-system-sheet1.png)
+
+---
+
+**Sheet 2 — Equipment Layout Plan**
+![Water System — Sheet 2: Equipment Layout](assets/water-system-sheet2.png)
 
 ---
 

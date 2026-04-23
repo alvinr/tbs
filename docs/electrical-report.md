@@ -151,6 +151,69 @@ After installation, perform the inspection in Phase 0.7 of the Operating Manual.
 - The vestibule adds 1,200mm to the container footprint at the door end — confirm this fits the deployment site.
 - When transporting, remove the vestibule (8 bolts) and carry flat inside the container or on a separate vehicle.
 
+### 5.6 Light Trap & Ventilation Diagrams
+
+**Sheet 1 — Vestibule Plan (1:100) and S-Path Detail**
+![TBS-001 Light Trap — Sheet 1: Vestibule Plan](assets/lighttrap-sheet1.png)
+
+---
+
+**Sheet 2 — Container Ventilation Section and Fan Baffle Detail**
+![TBS-001 Light Trap — Sheet 2: Ventilation Section](assets/lighttrap-sheet2.png)
+
+### 5.7 Hinged Panel & Commercial Light Trap Options
+
+The S-path vestibule described in Sections 5.1–5.6 provides a fixed personnel entry. An improved design replaces it with a **hinged panel incorporating a revolving light trap drum** — allowing the full cargo door opening to be cleared for equipment loading, while retaining light-tight personnel access when the panel is closed.
+
+**Hinged panel design:**
+The panel (2,362mm × 2,388mm, 50×50mm RHS steel frame, 18mm ply skins, 120mm overall thickness) is hung on three 200mm stainless ball-bearing piano hinges at the left edge of the door opening. Four Southco C2-33 cam compression latches seal the perimeter. A 20mm EPDM compression gasket in a machined aluminium channel provides zero-gap light-seal when the latches are engaged. The panel swings 180° outward to fully clear the opening for IBC tote loading.
+
+A 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 sealed bearings top and bottom) is built into the panel centre. Operators push the drum wall to enter, traverse one baffle sector, and exit into the container interior — no tools, no light admission.
+
+**Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
+
+---
+
+**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and Light Path**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+---
+
+**Commercial revolving light trap options** are documented and costed in the [Light Trap Selection Report](light-trap-selection.md):
+
+| Option | Diameter | Price (USD) | Recommended? |
+|--------|----------|------------|--------------|
+| Vario LT-800 / Octanorm type | 800mm | $2,500–$3,500 | No — no weatherproofing, not panel-mount compatible |
+| Porta-Fab DK series | 750–900mm | $3,000–$4,500 | No — requires panel-bay frame, cost premium |
+| **Custom fabrication (3mm steel, SKF 6215)** | **750mm** | **$950–$1,450** | **Yes — field-rated, IP44, panel bolt-in** |
+
+Custom fabrication is the recommended approach. Full raw material supplier list, bearing specification, and seal specification are in the [Light Trap Selection Report](light-trap-selection.md).
+
+### 5.8 Container Floor Plan — All Systems
+
+Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=1,100–4,649mm) is completely clear.
+
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
+
+**Left end zone (X=0–1,100mm) — shadow-free at all depths:**
+- Light trap drum (Ø750mm, centred at X=0)
+- 12V evaporative cooler (X=400–1,000mm, Yd=100–450mm)
+- 2 × 55-gal HDPE drums, Z-stacked, X=700mm CX, Yd=475–1,055mm
+
+**Pinhole wall face (Y=0):**
+- Electrical enclosure (X=2,050–2,350mm, H=900–1,500mm) — wall-mounted
+- LiFePO4 battery bank (X=2,050–2,550mm, H=0–500mm) — wall-mounted
+- Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
+
+**Optical zone (X=1,100–4,649mm):** Nothing at floor level. Rails only.
+
+**Right end zone (X=4,649–5,893mm) — shadow-free at all depths:**
+- 2 × Blue IBC totes (600L each), Y-stacked (front), X=4,674mm
+- 1 × Brown IBC tote (600L), Y-stacked (rear), X=4,674mm
+
+All equipment clears the optical cone at every depth — no vignetting. See [Equipment Layout Report](equipment-layout-report.md) for the shadow-free proof.
+
 ---
 
 ## 6. Cooling System
@@ -185,10 +248,11 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ### 6.4 Light-Safe Cooler Intake
 
-The cooler intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
+The cooler is positioned in the left end zone (X=400–1,000mm, Yd=100–450mm). Its
+intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
 
 - **Duct size:** 6" (150mm) — matches cooler inlet
-- **Penetration:** through the container short wall opposite the vestibule end, positioned 800mm above floor level
+- **Penetration:** through the container left short end wall (X=0 face), positioned 400mm above floor level (within left end zone)
 - **Interior baffles:** two 150 × 150mm flat steel baffles, offset 75mm, mounted inside a 250mm duct stub — breaks the direct light path while allowing unrestricted airflow at 300 CFM
 - **Exterior:** weatherproof louvre with mesh screen to exclude insects
 

@@ -6,9 +6,9 @@ Generates diagrams/line-of-sight.png — two-panel optical clearance diagram
 for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):
-  Shows the optical cone from the pinhole (X=2560, Yd=0) expanding to the
-  new film plane edges (X=1100–4019 at Yd=2262mm).
-  Equipment in shadow-free end zones (X<1100 or X>4019) is always clear.
+  Shows the optical cone from the pinhole (X=2874, Yd=0) expanding to the
+  new film plane edges (X=1100–4649 at Yd=2262mm).
+  Equipment in shadow-free end zones (X<1100 or X>4649) is always clear.
   Equipment on the pinhole wall (Yd=0) is also always clear.
 
 Panel B — Side elevation:
@@ -43,7 +43,8 @@ from tbs_constants import (
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
-    DRUM_COL_X, DRUM_EQ_D, DRUM_EQ_H, DRUM1_Y, DRUM2_Y,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R, DRUM_STACKED_H,
+    DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DIAGRAMS_DIR,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
@@ -81,6 +82,13 @@ EQUIPMENT = [
          h_bot=0, h_top=EVAP_H,
          color="#3DAA96", zone="left"),
 
+    # Black-water drums relocated to left end zone (stacked behind evap cooler)
+    dict(name="55-gal drums ×2 (stacked)",
+         x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
+         w=DRUM_EQ_D, d=DRUM_EQ_D,
+         h_bot=0, h_top=DRUM_STACKED_H,
+         color="#7A6B5A", zone="left"),
+
     # PINHOLE WALL — Yd=0 face (always shadow-free)
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,
@@ -97,7 +105,7 @@ EQUIPMENT = [
          h_bot=PUMP_H_LO, h_top=PUMP_H_HI,
          color="#E8884A", zone="wall"),
 
-    # RIGHT END ZONE — X=4019–5893 (shadow-free at all depths)
+    # RIGHT END ZONE — IBCs only, right-justified to end wall
     dict(name="Blue IBC stack (×2)",
          x=IBC_COL_X, yd=BLUE_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_STK,
@@ -107,16 +115,6 @@ EQUIPMENT = [
          x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_600,
          color="#9C7A3C", zone="right"),
-
-    dict(name="55-gal drum 1",
-         x=DRUM_COL_X, yd=DRUM1_Y, w=DRUM_EQ_D, d=DRUM_EQ_D,
-         h_bot=0, h_top=DRUM_EQ_H,
-         color="#7A6B5A", zone="right"),
-
-    dict(name="55-gal drum 2",
-         x=DRUM_COL_X, yd=DRUM2_Y, w=DRUM_EQ_D, d=DRUM_EQ_D,
-         h_bot=0, h_top=DRUM_EQ_H,
-         color="#7A6B5A", zone="right"),
 ]
 
 # ── Cone check functions ──────────────────────────────────────────────────────

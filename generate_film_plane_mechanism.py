@@ -54,8 +54,8 @@ D_FAR  = W - 100   # = 2262
 # TL=top-left, TR=top-right, BL=bottom-left, BR=bottom-right
 CONFIGS = [
     ("Flat  0°",         D_FAR,  D_FAR,  D_FAR,  D_FAR,  C_FLAT, "-"),
-    ("Tilt  17.5°",      800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
-    ("Swing  17.5°",     800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
+    ("Tilt  31.5°",      800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
+    ("Swing  22.4°",     800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
     ("Compound  tilt+swing", D_NEAR, D_FAR, D_FAR, D_NEAR, C_T3, ":"),
 ]
 
@@ -63,7 +63,7 @@ FONT = {"fontfamily": "monospace"}
 
 # ── Geometry helpers ──────────────────────────────────────────────────────────
 RAIL_X_L = FP_X_L       # left rail X position = 1100mm (was 200mm)
-RAIL_X_R = FP_X_R       # right rail X position = 4019mm (was 5693mm)
+RAIL_X_R = FP_X_R       # right rail X position = 4649mm (was 4019mm → was 5693mm)
 RAIL_W   = 60           # rail width in plan view
 
 def title_block(ax, sheet_no, title, scale_note=""):
@@ -134,7 +134,7 @@ def sheet1():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (X=2560mm in new layout, recentred on new film plane)
+    # Pinhole (X=2874mm in new layout, recentred on new film plane)
     ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
@@ -329,8 +329,8 @@ def sheet2():
     # Tilt configs: use TL for top, BL for bottom (left-side section)
     tilt_configs = [
         ("Flat  0°",    D_FAR,  D_FAR,  C_FLAT, "-"),
-        ("Tilt  17.5°", 800,    D_FAR,  C_T1,   "--"),
-        ("Tilt  41.6°", D_NEAR, D_FAR,  C_T3,   ":"),
+        ("Tilt  31.5°", 800,    D_FAR,  C_T1,   "--"),
+        ("Tilt  42.1°", D_NEAR, D_FAR,  C_T3,   ":"),
     ]
 
     for i, (name, d_top, d_bot, col, ls) in enumerate(tilt_configs):
@@ -427,7 +427,7 @@ def sheet2():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (recentred at X=2560 on new film plane)
+    # Pinhole (recentred at X=2874 on new film plane)
     ax.add_patch(Circle((PH_X_C, 0), 55, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((PH_X_C, 0), 18, fc=BG, ec=WHITE, lw=1.0, zorder=7))
 
@@ -446,8 +446,8 @@ def sheet2():
     # Swing configs (using ceiling level: TL and TR)
     swing_configs = [
         ("Flat  0°",         D_FAR,  D_FAR,  C_FLAT, "-"),
-        ("Swing  17.5°",     800,    D_FAR,  C_T2,   "-."),
-        ("Swing  41.6°",     D_NEAR, D_FAR,  C_T3,   ":"),
+        ("Swing  22.4°",     800,    D_FAR,  C_T2,   "-."),
+        ("Swing  31.3°",     D_NEAR, D_FAR,  C_T3,   ":"),
         ("Swing  symmetric", D_NEAR, D_NEAR, C_T1,   "--"),
     ]
 
@@ -800,8 +800,8 @@ def sheet4():
     config_defs = [
         ("Flat",              D_FAR,  D_FAR,  D_FAR,  D_FAR,  "Reference"),
         ("Tilt mild",         1800,   1800,   D_FAR,  D_FAR,  "5.6° tilt, subtle keystone"),
-        ("Tilt strong",       800,    800,    D_FAR,  D_FAR,  "17.5° tilt, strong keystone"),
-        ("Tilt max",          D_NEAR, D_NEAR, D_FAR,  D_FAR,  "41.6° tilt, extreme"),
+        ("Tilt strong",       800,    800,    D_FAR,  D_FAR,  "31.5° tilt, strong keystone"),
+        ("Tilt max",          D_NEAR, D_NEAR, D_FAR,  D_FAR,  "42.1° tilt, extreme"),
         ("Swing mild",        D_FAR,  1800,   D_FAR,  1800,   "swing, diagonal slant"),
         ("Swing strong",      D_FAR,  800,    D_FAR,  800,    "swing (short span = larger angle)"),
         ("Swing max",         D_FAR,  D_NEAR, D_FAR,  D_NEAR, f"{MAX_SWING_DEG:.1f}deg max swing"),

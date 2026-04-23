@@ -394,7 +394,8 @@ def draw_sheet2():
         EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
         IBC_COL_X, IBC_W, IBC_D,
         BLUE_IBC_Y, BROWN_IBC_Y,
-        DRUM_COL_X, DRUM_EQ_D,
+        DRUM_EQ_D, DRUM_EQ_R, DRUM_STACKED_H,
+        DRUM_LZ_CX, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
         DRUM_CX, DRUM_D, DRUM_R,
         DIAGRAMS_DIR,
     )
@@ -435,11 +436,11 @@ def draw_sheet2():
     C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
     WT_MM   = 120           # mm schematic wall thickness
 
-    PH_X_MM = TBS_PH_X     # 2560 mm — recentred on new film plane (was 2946)
+    PH_X_MM = TBS_PH_X     # 2874 mm — recentred on new film plane (was 2560, was 2946)
 
     # Zone boundaries
     ZONE_L  = ZONE_L_END   # 1100 mm — left end zone right boundary
-    ZONE_R  = ZONE_R_START  # 4019 mm — right end zone left boundary
+    ZONE_R  = ZONE_R_START  # 4649 mm — right end zone left boundary
 
     clen   = C_LEN * S     # drawing units
     cwid   = C_WID * S     # drawing units
@@ -515,7 +516,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=8.0,
             color="#8B5A00", style="italic", alpha=0.85, zorder=6)
 
-    # ── Image plane strip — new width X=1100–4019mm ───────────────────────────
+    # ── Image plane strip — new width X=1100–4649mm ───────────────────────────
     ax.add_patch(mpatches.Rectangle(
                  (fp_l_x, OY+cwid-wt-0.15), (FP_X_R-FP_X_L)*S, 0.15,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
@@ -524,7 +525,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=7)
 
-    # ── Pinhole — bottom long wall at X=2,560mm (recentred on new film plane) ─
+    # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     ax.annotate(f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
@@ -579,9 +580,9 @@ def draw_sheet2():
     # Brown IBC (rear, Y=1141–2157mm)
     equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
           "#D7CCC8", "1×600L  Yd=1141–2157")
-    # 55-gal drums column (X=5288–5868, Y-stacked)
-    equip(DRUM_COL_X, 100, DRUM_EQ_D, DRUM_EQ_D*2+25,
-          "DRUMS ×2\n(Y-stack)", C_STEEL, "2×55 gal")
+    # 55-gal drums — left end zone, Y-stacked behind evap cooler
+    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_STACKED_H,
+          "DRUMS ×2\n(stacked)", C_STEEL, "2×55 gal  left zone")
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
     EP_DX = OX + EP_X * S
@@ -642,14 +643,14 @@ def draw_sheet2():
     EVAP_CX = OX + (EVAP_X + EVAP_W/2) * S
     PUMP_CX = OX + (PUMP_X + PUMP_W/2) * S
     IBC_CX  = OX + (IBC_COL_X + IBC_W/2) * S
-    DRUM_CX_E = OX + (DRUM_COL_X + DRUM_EQ_D/2) * S
+    DRUM_CX_E = OX + DRUM_LZ_CX * S
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
-        (EVAP_CX,            OY+wt + EVAP_Y*S),       # evap cooler
-        (PUMP_CX,            OY+wt + 80*S),            # pump manifold
-        (IBC_CX,             OY+wt + BLUE_IBC_Y*S),   # IBC column centre
-        (DRUM_CX_E,          OY+wt + 100*S),           # drum column
+        (EVAP_CX,            OY+wt + EVAP_Y*S),           # evap cooler
+        (PUMP_CX,            OY+wt + 80*S),                # pump manifold
+        (IBC_CX,             OY+wt + BLUE_IBC_Y*S),       # IBC column centre
+        (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S),   # drums (left zone)
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),
@@ -751,8 +752,8 @@ def draw_sheet2():
             fontweight="bold", color=C_OUT)
     notes = [
         f"1.  Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
-        "Film plane X=1,100–4,019mm (2,920mm wide) at Yd=2,262mm depth. f/1088.",
-        "2.  Shadow-free end zones: Left X=0–1,100mm (drum+evap), Right X=4,019–5,893mm (IBCs+drums). "
+        f"Film plane X={FP_X_L}–{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm depth. f/1088.",
+        f"2.  Shadow-free end zones: Left X=0–{FP_X_L}mm (drum+evap+55-gal×2), Right X={FP_X_R}–5,893mm (IBCs only). "
         "Amber cone — keep entirely clear.",
         "3.  Cable trunking (40×25mm PVC) on pinhole wall face (Yd=0) — outside optical cone. "
         "Drop conduits (10mm corrugated) to each device.",

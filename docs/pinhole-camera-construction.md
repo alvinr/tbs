@@ -1,4 +1,4 @@
-# Giant Pinhole Camera — Container Selection & Construction Proposals
+# Container Selection & Construction Proposals
 
 **Document Status:** Working Draft v1.0 — April 2026  
 **Preceding documents:** pinhole-optics-report.md  
@@ -103,6 +103,29 @@ Container doors (for loading) are on the SHORT ENDS — completely separate from
 - Result: large panoramic image, practical exposure times
 
 **Orientation B is the recommended approach for all proposals in this document.** It produces images in the 20'+ range, uses the container length as image width, and keeps the access doors operationally separate from the camera.
+
+---
+
+## Part 4A: Container Interior Layout — Top Elevation
+
+The floor plan below shows the container interior from above (top-down view) with all
+major systems in their installed positions. The optical axis runs left-right in this view
+(from the pinhole on the near long wall to the film plane on the far long wall at 2262mm depth).
+The equipment zone occupies the left third of the container (X = 0–2700mm); the right two-thirds
+is the clear optical zone.
+
+![TBS-001 — Container Floor Plan (Top Elevation)](assets/container-floorplan.png)
+
+| Zone | Long-axis span | Contents |
+|------|---------------|----------|
+| Equipment zone | X = 0–2700mm | IBC totes (×3), 55-gal drums (×2), evap cooler, pump manifold, electrical panel |
+| Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
+| Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
+| Pinhole wall | X = 2946mm (centre) | Aperture Ø2.17mm at Y_depth=0 |
+| Film plane | Y_depth = 2262mm | Muslin sensitised surface, spanning full 5893mm × 2388mm |
+
+See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
+and §13 for the optical line-of-sight clearance analysis.
 
 ---
 
@@ -352,14 +375,25 @@ The pinhole goes in the center of the opposite long wall.
 
 ---
 
-### Step 5: Access Door — Light-Seal Upgrade
+### Step 5: Access Door — Hinged Light-Trap Panel
 
-The container's original end doors are used for loading photosensitive material. These doors require upgraded light sealing:
+TBS-001 replaces the original cargo doors with a purpose-built hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
-1. Replace or supplement existing rubber door seals with fresh D-profile foam weatherstripping
-2. Apply Gorilla Tape seam to the door gap after closing (remove before opening)
-3. Install a red LED safelight inside (battery-powered or wired) for loading operations
-4. Consider a light-trap vestibule: a small anteroom (even a black fabric enclosure) at the door allows opening and closing without a complete blackout exterior
+**Panel design (see engineering drawings below):**
+- 2,362 × 2,388mm panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins, 120mm overall thickness
+- 3 × 200mm stainless ball-bearing piano hinges at left edge — 180° outward swing clears the full door opening
+- 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket to zero-gap seal
+- 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
+
+**Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
+
+**Sheet 1 — Front Elevation (1:20):**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
+
+**Sheet 2 — Plan Cross-Section showing drum baffles and S-path light route (1:10 horiz / 1:1 depth):**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
+
+**Interior safelight:** Install a red LED safelight (Circuit D, per [Electrical Report](electrical-report.md)) inside the container for loading operations. This also illuminates the drum interior so operators can orient themselves in darkness.
 
 ---
 
@@ -390,7 +424,8 @@ For operations involving darkroom chemistry inside the container:
 | Optimal pinhole | 2.17 mm | 2.17 mm | 4.87 mm | 2.17 mm |
 | F-number | f/1088 | f/1088 | f/2467 | f/1088 |
 | Horizontal FOV | 102° | 102°–137° | 11° | 102° |
-| Paper exposure (corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
+| RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
+| Cyanotype on muslin exp. (no correction) | **~2–3 hr** | **~2–3 hr** | ~13 hr | **~2–3 hr** |
 | Transport permit | None | None | None | None (2 loads) |
 | Purchase price range | $1,800–$3,800 | $2,200–$5,700 | $2,200–$5,700 | $3,600–$7,600 |
 | Darkroom included | No | No | No | **Yes** |
@@ -455,7 +490,7 @@ The following order minimizes rework and avoids modifying a container that fails
 8. **Build and test shutter mechanism** — confirm full seal when closed
 9. **Install ventilation** — cut vent penetrations, install fans and light-trap baffles
 10. **Install safelight and door light-trap** — for loading operations
-11. **Test exposure** — small-format test using RC paper patch over image plane center; expose, develop, verify image formation and correct exposure time
+11. **Test exposure** — cut a 200 mm × full-height strip of sensitised muslin, pin over the image plane centre; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
 12. **Full-format test** — load full image plane, expose, develop
 
 ---

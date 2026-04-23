@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_floorplan_diagram.py  —  TBS-001 Container Floor Plan (redesigned 2026-04-23)
+generate_floorplan_diagram.py  —  TBS-001 Container Floor Plan (redesigned 2026-04-23 rev 2)
 
 Top-down schematic of the full container interior, showing all systems
 in their real positions with space constraints respected.
@@ -13,15 +13,15 @@ Coordinate system (all mm):
            Y=0:    pinhole long wall
            Y=2362: far long wall (image plane / film fabric)
 
-Equipment layout — end-zone design (supersedes colonnade layout):
-  Left end zone  (X=0–1100):   light trap drum + evap cooler
-  Optical zone   (X=1100–4019): film plane rails only — floor clear
-  Right end zone (X=4019–5893): all fluid tanks (IBCs Y-stacked, drums)
+Equipment layout — end-zone design rev 2 (drums relocated to left zone):
+  Left end zone  (X=0–1100):   light trap drum + evap cooler + 55-gal drums (stacked)
+  Optical zone   (X=1100–4649): film plane rails only — floor clear
+  Right end zone (X=4649–5893): IBC tanks only (Y-stacked, right-justified to end wall)
   Pinhole wall (Y=0 face): electrical panel, pump manifold (wall-mounted)
 
   Every item in the end zones is provably shadow-free at all depths:
     cone left boundary  >= 1100mm  at any Y <= 2262  ✓
-    cone right boundary <= 4019mm  at any Y <= 2262  ✓
+    cone right boundary <= 4649mm  at any Y <= 2262  ✓
 """
 
 import numpy as np
@@ -122,7 +122,7 @@ def floor_plan():
     ax.add_patch(Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
                             fc=C_ZONE_OPT, ec="none", zorder=1))
     ax.text((ZONE_L_END + ZONE_R_START)/2, C_WID*0.5,
-            "OPTICAL ZONE  (X=1100–4019mm)\nFILM PLANE RAILS ONLY — FLOOR CLEAR",
+            f"OPTICAL ZONE  (X={ZONE_L_END}–{ZONE_R_START}mm)\nFILM PLANE RAILS ONLY — FLOOR CLEAR",
             color="#4A8040", fontsize=8, ha="center", va="center",
             **FONT, alpha=0.45, fontweight="bold", zorder=2)
 
@@ -130,7 +130,7 @@ def floor_plan():
     ax.add_patch(Rectangle((ZONE_R_START, 0), C_LEN - ZONE_R_START, C_WID,
                             fc=C_ZONE_R, ec="none", zorder=1))
     ax.text(ZONE_R_START + (C_LEN - ZONE_R_START)/2, C_WID*0.5,
-            "RIGHT END ZONE\nX=4019–5893mm\n(shadow-free,\nall depths)",
+            f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm\n(shadow-free,\nall depths)",
             color="#3060A0", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
 
@@ -226,11 +226,25 @@ def floor_plan():
     penetration(ax, 0, DRUM_FP_CY, r=80,
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
 
-    # Evap cooler (new position: X=400–1000, Y=100–450)
+    # Evap cooler (X=400–1000, Yd=100–450)
     equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_COOLER,
                f"EVAP\nCOOLER\n{EVAP_W}×{EVAP_D}", zorder=6)
     ax.text(EVAP_X + EVAP_W/2, EVAP_Y + EVAP_D + 55,
             "▲ 800mm tall", color=C_COOLER, fontsize=5.5,
+            ha="center", va="bottom", **FONT, zorder=7)
+
+    # Black-water drums — 2× 55-gal, vertically stacked, behind evap cooler
+    drum_cx = DRUM_LZ_CX
+    drum_cy = DRUM_LZ_YD
+    ax.add_patch(Circle((drum_cx, drum_cy), DRUM_EQ_R,
+                        fc=C_DRUM_EQ, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
+    ax.plot(drum_cx, drum_cy, '+', color="#FFFFFF", ms=6, mew=1.0, zorder=7)
+    ax.text(drum_cx, drum_cy,
+            f"DRUMS\n×2 stacked\n2×208L",
+            color="#FFFFFF", fontsize=5.5, ha="center", va="center",
+            **FONT, fontweight="bold", zorder=7)
+    ax.text(drum_cx, drum_cy + DRUM_EQ_R + 55,
+            f"▲ {DRUM_STACKED_H}mm stacked", color=C_DRUM_EQ, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
@@ -257,14 +271,7 @@ def floor_plan():
             "▲ 1010mm tall", color=C_BROWN_IBC, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    # Drum column — two drums side by side in Y
-    equip_rect(ax, DRUM_COL_X, DRUM1_Y, DRUM_EQ_D, DRUM_EQ_D, C_DRUM_EQ,
-               f"DRUM1\n55gal\n208L", zorder=6)
-    equip_rect(ax, DRUM_COL_X, DRUM2_Y, DRUM_EQ_D, DRUM_EQ_D, C_DRUM_EQ,
-               f"DRUM2\n55gal\n208L", zorder=6)
-    ax.text(DRUM_COL_X + DRUM_EQ_D/2, DRUM2_Y + DRUM_EQ_D + 55,
-            "▲ 870mm ea.", color=C_DRUM_EQ, fontsize=5.5,
-            ha="center", va="bottom", **FONT, zorder=7)
+    # (drums relocated to left end zone — no drum column in right zone)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Fan intake (left short wall)
@@ -313,8 +320,8 @@ def floor_plan():
     proof_x = C_LEN/2
     proof_y = -DEV_DEPTH + 80
     ax.text(proof_x, proof_y,
-            "SHADOW-FREE PROOF:  cone left ≥ 1,100mm at all Y  ✓     "
-            "cone right ≤ 4,019mm at all Y  ✓     "
+            f"SHADOW-FREE PROOF:  cone left ≥ {FP_X_L}mm at all Y  ✓     "
+            f"cone right ≤ {FP_X_R}mm at all Y  ✓     "
             "pinhole wall Y=0: outside cone ✓",
             color="#204020", fontsize=6.5, ha="center", va="bottom",
             **FONT, style="italic",
@@ -324,10 +331,10 @@ def floor_plan():
     # ── Legend ────────────────────────────────────────────────────────────────
     LEG_X = C_LEN + 60; LEG_Y_TOP = C_WID - 20
     legend_items = [
-        (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L) — Y-stacked front of right zone"),
-        (C_BROWN_IBC, "Brown IBC ×1 (600L) — Y-stacked rear of right zone"),
-        (C_DRUM_EQ,   "55-gal HDPE drums ×2 (2×208L) — drum column, side-by-side Y"),
-        (C_COOLER,    "Evap cooler — left end zone"),
+        (C_BLUE_IBC,  f"Blue IBC ×2 stacked (2×600L) — Y-stacked, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
+        (C_BROWN_IBC, f"Brown IBC ×1 (600L) — Y-stacked rear, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
+        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 stacked (2×208L) — left zone, X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
+        (C_COOLER,    f"Evap cooler — left end zone, X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         (C_ELEC_COL,  "Electrical panel + LiFePO4 battery (pinhole wall, wall-mount)"),
         (C_PUMP_COL,  "Pump manifold (pinhole wall, wall-mount)"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm at Y={FP_Y}mm)"),

@@ -19,7 +19,7 @@ from matplotlib.patches import Rectangle
 
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = 2362          # focal length (container interior width, mm)
-FP_W = 2920       # film plane width (mm)  [redesigned: was 5893]
+FP_W = 3549       # film plane width (mm)  [rev 2: was 2920, was 5893]
 FP_H = 2388       # film plane height (mm)
 
 # ── Cyanotype palette (dark background — matches film-plane distortion renders) ─

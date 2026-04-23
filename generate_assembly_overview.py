@@ -11,9 +11,9 @@ View direction: looking at the near long wall (Y=0 face) from outside.
   Yd (into page) = 0–2362 mm  (optical depth; not a diagram axis)
 
 Zones (shadow-free proof):
-  Left end zone:   X = 0–1,100 mm   (drum + evap cooler)
-  Optical zone:    X = 1,100–4,019 mm  (film plane only)
-  Right end zone:  X = 4,019–5,893 mm  (IBCs + drums)
+  Left end zone:   X = 0–1,100 mm   (drum + evap cooler + 55-gal drums stacked)
+  Optical zone:    X = 1,100–4,649 mm  (film plane only)
+  Right end zone:  X = 4,649–5,893 mm  (IBCs only, right-justified)
   Pinhole wall:    Yd = 0 face  (electrical + battery + pump; flush-mount)
 
 ASPECT RATIO RULE: FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
@@ -38,7 +38,8 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_COL_X, DRUM_EQ_D, DRUM_EQ_H,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_STACKED_H,
+    DRUM_LZ_CX,
     RAIL_X_L, RAIL_X_R,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
@@ -190,6 +191,18 @@ ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
 leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 600, 1900,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
+# Black-water drums — 2× 55-gal stacked, behind evap cooler in depth (same X in elevation)
+# In this side elevation (X axis = container long axis), drums appear at X=DRUM_LZ_CX ± DRUM_EQ_R
+_drum_x0 = DRUM_LZ_CX - DRUM_EQ_D // 2
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_STACKED_H, C_DRUM_EQ, alpha=0.80, zorder=4)
+ax.text(_drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H/2,
+        "Waste\ndrums\n×2 stacked", ha="center", va="center",
+        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
+leader(ax, _drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H, 800, 2200,
+       f"55-gal drums x2 stacked\n(left zone, behind evap cooler in depth)\n"
+       f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_STACKED_H}mm total",
+       ha="left", fs=FS_SM)
+
 
 # ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────
 
@@ -249,19 +262,7 @@ leader(ax, IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, 4300, 2550,
        f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
        ha="left", fs=FS_SM)
 
-# Drum column: two 55-gal drums, Y-stacked (one in front of the other in depth)
-# Both appear at X=5288-5868, H=100-970 in this elevation.
-# Draw as single block labelled "x2 drums (Y-stacked)"
-equip_rect(ax, DRUM_COL_X, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=5)
-ax.text(DRUM_COL_X + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
-        "55-gal\ndrums x2\n(Y-stacked)",
-        ha="center", va="center", fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
-
-leader(ax, DRUM_COL_X + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H,
-       DRUM_COL_X - 100, 1700,
-       f"55-gal drums x2\nY-stacked (one behind other)\n"
-       f"X={DRUM_COL_X}–{DRUM_COL_X+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm ea.",
-       ha="right", fs=FS_SM)
+# (drums relocated to left end zone — right zone has IBCs only)
 
 
 # ── Film plane (symbolic band at floor and ceiling) ───────────────────────────
@@ -339,7 +340,7 @@ draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT - 80,
            f"R zone\n{C_LEN-ZONE_R_START}mm", offset=60, fs=FS_SM - 0.5, color="#004080")
 
 ax.text(C_LEN/2, DIM_BOT - 300,
-        "All equipment in shadow-free end zones (X<1100 or X>4019) or on pinhole wall (Yd=0)",
+        f"All equipment in shadow-free end zones (X<{ZONE_L_END} or X>{ZONE_R_START}) or on pinhole wall (Yd=0)",
         ha="center", va="top", fontsize=FS_SM, color="#004020", style="italic")
 
 

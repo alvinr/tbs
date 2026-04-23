@@ -63,17 +63,21 @@ MD_FILES = [
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
 ]
 
-# Images to copy into assets/
-IMAGE_FILES = [
+# Root-only images (not generated into diagrams/)
+ROOT_IMAGE_FILES = [
     "plate-drawing-sheet1.png",
     "plate-drawing-sheet2.png",
+    "logo-final.png",
+    "favicon.png",
+]
+
+# Generated diagram images (all live in diagrams/)
+DIAG_IMAGE_FILES = [
     "portrait-camera-schematic.png",
     "portrait-optimal-3m.png",
     "portrait-scale-comparison.png",
     "water-system-sheet1.png",
     "water-system-sheet2.png",
-    "logo-final.png",
-    "favicon.png",
     "film-plane-sheet1.png",
     "film-plane-sheet2.png",
     "film-plane-sheet3.png",
@@ -105,11 +109,11 @@ IMAGE_FILES = [
     "lighttrap-sheet2.png",
     "hingepanel-sheet1.png",
     "hingepanel-sheet2.png",
+    "hingepanel-sheet3.png",
     "container-floorplan.png",
     "assembly-overview.png",
     "assembly-fab-sheet1.png",
     "assembly-fab-sheet2.png",
-    "hingepanel-sheet3.png",
     "line-of-sight.png",
 ]
 
@@ -259,7 +263,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
-| [Equipment Layout](equipment-layout-report.md) | Optical clearance analysis, pinhole wall colonnade layout, IBC stacking system |
+| [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
 
 """
 
@@ -328,13 +332,20 @@ def main():
 
     # 4. Copy image assets
     print("\n[4/5] Copying image assets...")
-    for img_name in IMAGE_FILES:
+    for img_name in ROOT_IMAGE_FILES:
         src = PROJECT_ROOT / img_name
         if src.exists():
             shutil.copy2(src, ASSETS_DIR / img_name)
             print(f"  {img_name} → docs/assets/{img_name}")
         else:
             print(f"  WARNING: {img_name} not found — skipping")
+    for img_name in DIAG_IMAGE_FILES:
+        src = PROJECT_ROOT / "diagrams" / img_name
+        if src.exists():
+            shutil.copy2(src, ASSETS_DIR / img_name)
+            print(f"  diagrams/{img_name} → docs/assets/{img_name}")
+        else:
+            print(f"  WARNING: diagrams/{img_name} not found — skipping")
 
     # 5. Write mkdocs.yml
     print("\n[5/5] Writing mkdocs.yml and docs/index.md...")

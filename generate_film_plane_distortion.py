@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
-FILM_L = 5893    # film plane width  (container length)
+FILM_L = 2920    # film plane width (mm) [redesigned: was 5893]
 FILM_H = 2388    # film plane height (container height)
 F_NOM  = 2362    # nominal focal length (container width = optical axis)
 D_NEAR = 100     # closest carriage position
@@ -293,7 +293,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                  fontweight="bold", y=1.01)
     fig.tight_layout(pad=0.6)
 
-    fname = f"film-plane-distortion-{label.lower()}.png"
+    fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
     plt.close(fig)
@@ -335,10 +335,10 @@ def render_summary():
         color="#111111", fontsize=13, fontfamily="monospace",
         fontweight="bold", y=1.005)
     fig.tight_layout(pad=0.5)
-    fig.savefig("film-plane-distortion-summary.png", dpi=120,
+    fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  → film-plane-distortion-summary.png")
+    print("  → diagrams/film-plane-distortion-summary.png")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

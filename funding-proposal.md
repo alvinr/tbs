@@ -46,7 +46,7 @@ A spherical-pivot adapter plate mounts in the same wall-frame interface as the v
 
 Effect: every 5° of board tilt steers the projected image 207mm across the film plane (2,362 × tan 5°). Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
-### Film Plane: 4-Corner Independent Actuation (±42° tilt, ±20° swing)
+### Film Plane: 4-Corner Independent Actuation (±42° tilt, ±36.5° swing)
 
 Four independently-driven corners allow the image plane to be tilted, swung, twisted, or warped into any compound configuration. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; rod-end spherical bearings (GIR25-DO) connect the leadscrews to the image plane frame.
 
@@ -187,13 +187,13 @@ This is intentional. The project is as much a contribution to the field as it is
 
 ## 9. Artist Statement / Bio
 
-Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had seen was real. That interval, between exposure and knowledge, was the first version of what this project is.
+Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had materialzed. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
 
 At Nottingham Trent University I encountered the pinhole camera and understood immediately that something both maddening and transformative was possible with it. I graduated with a First in Photography in 1998 — my dissertation, *Deeds of War*, was acquired by the NTU library, and my photographs were selected for exhibition by the Royal Photographic Society.
 
 Through the 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format photographs made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see. It put a thought deep in the the back on y mind, why I had not taken the 5x4 camera i had constructed into that same environment.
 
-My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 2 hours of sun, to stretch time, distort it, and make it visible.
+My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 2 hours of sun, to stretch time, distort it, and make it visible. This is modern analog slow photography.
 
 ---
 
@@ -210,7 +210,7 @@ My practice since has moved between classical portraiture and abstract colour in
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~2–3 hr (cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
-| Film plane movement | ±42° tilt, ±20° swing, 4-corner independent |
+| Film plane movement | ±42° tilt, ±36.5° swing, 4-corner independent |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype on cotton muslin |
 | Water system | Self-contained, 8–10 prints per resupply, off-grid capable |

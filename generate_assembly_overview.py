@@ -2,21 +2,22 @@
 """
 generate_assembly_overview.py
 
-Generates assembly-overview.png — a high-level schematic side-elevation of the
-TBS-001 container interior showing how all systems relate spatially.
+Generates diagrams/assembly-overview.png — high-level schematic side-elevation
+of the TBS-001 container interior (redesigned film-plane-reduction layout).
 
-View direction: looking at the near LONG WALL (Y=0 face) from outside.
+View direction: looking at the near long wall (Y=0 face) from outside.
   X (horizontal) = 0–5893 mm  (container long axis; left=cargo door, right=far end)
-  Y (vertical)   = 0–2388 mm  (container height)
-  Z (into page)  = 0–2362 mm  (optical depth; not a diagram axis)
+  H (vertical)   = 0–2388 mm  (container height)
+  Yd (into page) = 0–2362 mm  (optical depth; not a diagram axis)
 
-The pinhole is at (X=2946, H=1194) on the near long wall.
-The film plane is on the opposite long wall at optical depth 2262 mm — shown
-symbolically as a hatched band, since depth cannot be represented in 2D.
+Zones (shadow-free proof):
+  Left end zone:   X = 0–1,100 mm   (drum + evap cooler)
+  Optical zone:    X = 1,100–4,019 mm  (film plane only)
+  Right end zone:  X = 4,019–5,893 mm  (IBCs + drums)
+  Pinhole wall:    Yd = 0 face  (electrical + battery + pump; flush-mount)
 
-ASPECT RATIO RULE: figsize is always derived from data limits.
-  FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
-  ax.set_aspect("equal") is always set.
+ASPECT RATIO RULE: FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
+                   ax.set_aspect("equal") always set.
 """
 
 import math
@@ -24,354 +25,341 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyArrowPatch
+import os
 
-# ── Container geometry ────────────────────────────────────────────────────────
-CL   = 5893   # container interior length (long axis, mm)
-CH   = 2388   # container interior height (mm)
-CW   = 2362   # container interior width  (optical depth, mm)
-D_FAR = 2262  # film-plane depth from pinhole wall (mm)
-EQ_X  = 2700  # equipment zone / optical zone boundary (mm)
-PH_X  = 2946  # pinhole long-axis position (centre of long wall, mm)
-PH_H  = 1194  # pinhole height (mm)
-WALL_T = 60   # container wall thickness (symbolic, mm)
+from tbs_constants import (
+    C_LEN, C_WID, C_HGT,
+    FP_X_L, FP_X_R, FP_Y,
+    PH_X, PH_H,
+    ZONE_L_END, ZONE_R_START,
+    DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
+    EVAP_X, EVAP_W, EVAP_H,
+    EP_X, EP_W, EP_H_LO, EP_H_HI,
+    BA_X, BA_W, BA_H_LO, BA_H_HI,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
+    DRUM_COL_X, DRUM_EQ_D, DRUM_EQ_H,
+    RAIL_X_L, RAIL_X_R,
+    DIAGRAMS_DIR,
+    C_OUT, C_CL, C_DIM,
+)
+
+os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+
+# ── Constants shared with previous session ────────────────────────────────────
+RAIL_OFF   = 100    # floor offset for all floor-standing equipment (mm)
+DRUM_H_ELV = DRUM_H_LT   # 2000mm — revolving drum height in elevation view
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG        = "#FFFFFF"
-C_OUT     = "#1A1A1A"
-C_DIM     = "#404040"
-C_CL      = "#2060A0"
-C_INTERIOR = "#F0F0F0"   # container interior fill
-C_WALL    = "#B0B0B8"    # container wall
-C_EQ_ZONE = "#FFF8EE"    # equipment zone tint
+C_INTERIOR = "#F4F4F4"
+C_WALL    = "#B0B0B8"
+C_ZONE_L  = "#FFF0E0"   # left end zone (orange tint)
+C_ZONE_O  = "#F0FFF0"   # optical zone (green tint)
+C_ZONE_R  = "#E8F0FF"   # right end zone (blue tint)
 
-# Equipment colours
 C_IBC_BLUE  = "#4A90D9"
 C_IBC_BROWN = "#9C7A3C"
-C_DRUM      = "#7A6B5A"
+C_DRUM_EQ   = "#7A6B5A"
 C_EVAP      = "#3DAA96"
 C_PUMP      = "#E8884A"
 C_ELEC      = "#F5C518"
-C_FILM_PLN  = "#B8D4E8"   # film plane
-C_PINHOLE   = "#CC2020"   # pinhole symbol
-C_DOOR      = "#C8C8C0"   # hinged panel
-C_FAN       = "#A0A0A8"   # ventilation fans
+C_BATT      = "#6A5ACD"
+C_FILM_PLN  = "#B8D4E8"
+C_PINHOLE   = "#CC2020"
+C_DOOR      = "#C8C8C0"
+C_FAN       = "#A0A0A8"
+C_DRUM_LT   = "#E8E8D0"   # revolving light-trap drum fill
 
-# ── Data coordinate range → figure size ──────────────────────────────────────
-# Container spans X=0–5893, Y=0–2388.  Add margins for dim lines and labels.
-X_LO, X_HI = -400, 6700    # 7100 mm wide
-Y_LO, Y_HI = -600, 3000    # 3600 mm tall
+FS_SM = 7.5
+FS_MD = 8.5
+FS_LG = 10.0
 
-FIG_W = 24.0                                           # inches, target width
-FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)       # = 24 * 3600/7100 ≈ 12.17 in
-# Derived figsize guarantees set_aspect("equal") will not squeeze anything.
+# ── Data range → figure size ──────────────────────────────────────────────────
+X_LO, X_HI = -500, 6900
+Y_LO, Y_HI = -650, 3100
 
-DPI = 150
+FIG_W = 24.0
+FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
+DPI   = 150
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-FS_SM = 7.5   # small label font size (pt)
-FS_MD = 8.5   # medium
-FS_LG = 10.0  # large / title
-
-
 def draw_dim_h(ax, x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):
-    """Horizontal dimension line between x1 and x2 at height y."""
     ax.annotate("", xy=(x2, y), xytext=(x1, y),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x1, x1], [y - offset * 0.3, y + offset * 0.3], color=color, lw=0.6)
-    ax.plot([x2, x2], [y - offset * 0.3, y + offset * 0.3], color=color, lw=0.6)
-    mx = (x1 + x2) / 2
-    ax.text(mx, y + offset * 0.55, label, ha="center", va="bottom",
+    ax.plot([x1, x1], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
+    ax.plot([x2, x2], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
+    ax.text((x1+x2)/2, y + offset*0.55, label, ha="center", va="bottom",
             fontsize=fs, color=color)
 
-
 def draw_dim_v(ax, x, y1, y2, label, offset=80, fs=FS_SM, color=C_DIM):
-    """Vertical dimension line between y1 and y2 at position x."""
     ax.annotate("", xy=(x, y2), xytext=(x, y1),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x - offset * 0.3, x + offset * 0.3], [y1, y1], color=color, lw=0.6)
-    ax.plot([x - offset * 0.3, x + offset * 0.3], [y2, y2], color=color, lw=0.6)
-    mx = (y1 + y2) / 2
-    ax.text(x - offset * 0.6, mx, label, ha="right", va="center",
+    ax.plot([x-offset*0.3, x+offset*0.3], [y1, y1], color=color, lw=0.6)
+    ax.plot([x-offset*0.3, x+offset*0.3], [y2, y2], color=color, lw=0.6)
+    ax.text(x - offset*0.6, (y1+y2)/2, label, ha="right", va="center",
             fontsize=fs, color=color, rotation=90)
 
-
 def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
-    """Leader line from tip to text."""
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
                 fontsize=fs, color=color, ha=ha, va="center",
                 arrowprops=dict(arrowstyle="-", color=color, lw=0.7,
                                 connectionstyle="arc3,rad=0.0"))
 
-
-def equip_rect(ax, x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8):
-    """Filled rectangle for equipment block."""
-    rect = mpatches.FancyBboxPatch((x, y), w, h,
-                                    boxstyle="square,pad=0",
-                                    facecolor=color, edgecolor=ec,
-                                    linewidth=lw, alpha=alpha, zorder=3)
-    ax.add_patch(rect)
-
+def equip_rect(ax, x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):
+    ax.add_patch(mpatches.FancyBboxPatch(
+        (x, y), w, h, boxstyle="square,pad=0",
+        facecolor=color, edgecolor=ec, linewidth=lw, alpha=alpha, zorder=zorder))
 
 def corrugation_marks(ax, y, x_start, x_end, step=600, color="#B0B0B0"):
-    """Tick marks on floor or ceiling to suggest corrugated wall texture."""
     x = x_start
     while x <= x_end:
-        ax.plot([x, x], [y, y + 60 if y == 0 else y - 60],
+        ax.plot([x, x], [y, y + (60 if y == 0 else -60)],
                 color=color, lw=0.5, zorder=1)
         x += step
 
 
-# ── Figure setup ─────────────────────────────────────────────────────────────
+# ── Figure setup ──────────────────────────────────────────────────────────────
 fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=DPI)
 fig.patch.set_facecolor(BG)
 ax.set_facecolor(BG)
-
 ax.set_xlim(X_LO, X_HI)
 ax.set_ylim(Y_LO, Y_HI)
-ax.set_aspect("equal")   # MANDATORY — never omit
+ax.set_aspect("equal")
 ax.axis("off")
 
 
-# ── Container interior fill ───────────────────────────────────────────────────
-# Equipment zone tint
-ax.add_patch(mpatches.Rectangle((0, 0), EQ_X, CH,
-             facecolor=C_EQ_ZONE, edgecolor="none", alpha=0.5, zorder=0))
+# ── Zone fills ────────────────────────────────────────────────────────────────
+ax.add_patch(mpatches.Rectangle((0, 0), ZONE_L_END, C_HGT,
+             facecolor=C_ZONE_L, edgecolor="none", alpha=0.6, zorder=0))
+ax.add_patch(mpatches.Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_HGT,
+             facecolor=C_ZONE_O, edgecolor="none", alpha=0.5, zorder=0))
+ax.add_patch(mpatches.Rectangle((ZONE_R_START, 0), C_LEN - ZONE_R_START, C_HGT,
+             facecolor=C_ZONE_R, edgecolor="none", alpha=0.6, zorder=0))
 
-# Optical zone fill (slightly cooler)
-ax.add_patch(mpatches.Rectangle((EQ_X, 0), CL - EQ_X, CH,
-             facecolor="#EEF4FA", edgecolor="none", alpha=0.5, zorder=0))
+# Zone boundary dashed lines
+for xb in [ZONE_L_END, ZONE_R_START]:
+    ax.plot([xb, xb], [0, C_HGT], color=C_DIM, lw=1.0, ls="--",
+            dashes=(8, 4), zorder=4)
 
-
-# ── Container outline ─────────────────────────────────────────────────────────
-cont = mpatches.Rectangle((0, 0), CL, CH,
-                            facecolor="none", edgecolor=C_OUT,
-                            linewidth=1.6, zorder=5)
-ax.add_patch(cont)
-
-# Floor and ceiling corrugation marks
-corrugation_marks(ax, 0,    0, CL, step=600)
-corrugation_marks(ax, CH,   0, CL, step=600)
-
-
-# ── Equipment zone / optical zone boundary ────────────────────────────────────
-ax.plot([EQ_X, EQ_X], [0, CH],
-        color=C_DIM, lw=0.9, ls="--", dashes=(6, 4), zorder=4)
-ax.text(EQ_X + 60, CH - 150, "OPTICAL ZONE",
-        ha="left", va="top", fontsize=FS_SM, color="#2060A0",
-        style="italic", zorder=5)
-ax.text(EQ_X - 60, CH - 150, "EQUIPMENT\n(COLONNADE ZONE)",
-        ha="right", va="top", fontsize=FS_SM, color="#804020",
-        style="italic", zorder=5)
+# Zone labels (inside, at top)
+ax.text(ZONE_L_END / 2, C_HGT - 100,
+        f"LEFT END ZONE\nX=0–{ZONE_L_END}mm",
+        ha="center", va="top", fontsize=FS_SM - 0.5, color="#805000",
+        fontweight="bold", zorder=5)
+ax.text((ZONE_L_END + ZONE_R_START) / 2, C_HGT - 100,
+        f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
+        ha="center", va="top", fontsize=FS_SM - 0.5, color="#006000",
+        fontweight="bold", zorder=5)
+ax.text((ZONE_R_START + C_LEN) / 2, C_HGT - 100,
+        f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm",
+        ha="center", va="top", fontsize=FS_SM - 0.5, color="#004080",
+        fontweight="bold", zorder=5)
 
 
-# ── Cargo door end — hinged panel + drum ─────────────────────────────────────
-# The short end wall (X=0) is indicated by the container outline.
-# Draw the hinged panel as a filled rect, and drum as a circle on its face.
-DRUM_D = 750
-DRUM_R = DRUM_D / 2
-panel_rect = mpatches.Rectangle((0, 0), 80, CH,
-                                  facecolor=C_DOOR, edgecolor=C_OUT,
-                                  linewidth=0.8, alpha=0.9, zorder=4)
-ax.add_patch(panel_rect)
-# Revolving drum — VERTICAL AXIS. In this side elevation (looking along Y)
-# the drum appears as a RECTANGLE: Ø750mm wide × 2000mm tall.
-# It straddles the panel face at X=0.
-DRUM_H_ELV = 2000
-# Drum centre aligns with outside edge of container (X=0); bottom matches other equipment (Y=100)
-ax.add_patch(mpatches.Rectangle((-DRUM_R, 100), DRUM_D, DRUM_H_ELV,
-                                  facecolor="#E8E8D0", edgecolor=C_OUT,
-                                  linewidth=0.8, alpha=0.9, zorder=5))
+# ── Container outline + corrugation ──────────────────────────────────────────
+ax.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_HGT,
+             facecolor="none", edgecolor=C_OUT, linewidth=1.8, zorder=5))
+corrugation_marks(ax, 0,    0, C_LEN, step=600)
+corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 
-leader(ax, 0, 100 + DRUM_H_ELV + 60, -200, PH_H + 600,
-       f"Hinged panel\n+ revolving drum\nVERTICAL AXIS\nØ{DRUM_D}×{DRUM_H_ELV}mm H",
+
+# ── LEFT END ZONE — revolving drum + evap cooler ──────────────────────────────
+
+# Hinged panel (symbolic thin rect on near long wall face)
+ax.add_patch(mpatches.Rectangle((0, 0), 80, C_HGT,
+             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
+
+# Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
+# In this side elevation appears as a rectangle Ø750mm wide × 2000mm tall.
+ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
+             facecolor=C_DRUM_LT, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
+# Centre line through drum
+ax.plot([DRUM_CX, DRUM_CX], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
+        color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
+leader(ax, DRUM_CX, RAIL_OFF + DRUM_H_ELV + 60, -200, PH_H + 650,
+       f"Hinged panel +\nRevolving drum  VERTICAL AXIS\nO{DRUM_D}mm x {DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 
-
-# ── Equipment blocks — PINHOLE WALL COLONNADE ─────────────────────────────────
-# All equipment sits adjacent to the pinhole long wall (near-wall, optical depth 0–1220mm).
-# Side elevation: depth is into the page.  Equipment is close to this near wall face.
-# Heights: 600L IBC = 1010mm; 2× stacked 600L = 2020mm; 55-gal drum = 870mm;
-#          2× stacked drums = 1740mm.
-
-IBC_H_600 = 1010   # 600L IBC height
-IBC_H_STK = 2020   # 2× stacked 600L IBC height
-IBC_W = 1219       # IBC footprint long axis
-DRUM_H_EQ = 870
-DRUM_W_EQ = 580
-DRUM_H_STK = 1740  # 2× stacked drum height
-
-# -- LEFT WING --
-# Blue IBC stack ×2 (600L each, stacked vertical): X=100–1319, H=0–2020
-# Drum is repositioned to Y=1600mm centre (far-wall side) → no drum-IBC conflict.
-equip_rect(ax, 100, 100, IBC_W, IBC_H_STK, C_IBC_BLUE)
-ax.text(100 + IBC_W / 2, 100 + IBC_H_STK / 2,
-        "Blue IBC\n×2 stacked\n(2×600L)", ha="center", va="center",
-        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
-# Stacking bracket indicator
-ax.plot([100, 100 + IBC_W], [100 + IBC_H_600, 100 + IBC_H_600],
-        color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
-ax.text(100 + IBC_W + 40, 100 + IBC_H_600, "stacking\ninterface",
-        color=C_IBC_BLUE, fontsize=FS_SM - 1, ha="left", va="center", zorder=7)
-
-# Evap cooler: X=1380–1980, H=0–800 (in this elevation, depth is into page)
-EVAP_X, EVAP_Y, EVAP_W, EVAP_HH = 1380, 100, 600, 800
-equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_HH, C_EVAP)
-ax.text(EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH / 2,
+# Evap cooler: X=400-1000, bottom at RAIL_OFF, height EVAP_H=800
+equip_rect(ax, EVAP_X, RAIL_OFF, EVAP_W, EVAP_H, C_EVAP, zorder=4)
+ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
         "Evap\ncooler", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
 
-# Pump manifold: X=1980–2380, H=0–500
-PUMP_X, PUMP_Y, PUMP_W, PUMP_HH = 1980, 100, 400, 500
-equip_rect(ax, PUMP_X, PUMP_Y, PUMP_W, PUMP_HH, C_PUMP)
-ax.text(PUMP_X + PUMP_W / 2, PUMP_Y + PUMP_HH / 2,
-        "Pump\nmanifold", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
+leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 600, 1900,
+       f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
-# Electrical panel: wall-mounted on near long wall face (X=2050–2350, H=900–1500)
-ELEC_X, ELEC_Y, ELEC_W, ELEC_HH = 2050, 900, 300, 600
-equip_rect(ax, ELEC_X, ELEC_Y, ELEC_W, ELEC_HH, C_ELEC, ec=C_OUT, lw=1.0)
-leader(ax, ELEC_X + ELEC_W, ELEC_Y + ELEC_HH * 0.5, ELEC_X + 700, 1700,
-       "Electrical panel\n+ battery bank\n(pinhole wall, flush-mount)", ha="left", fs=FS_SM)
 
-# -- RIGHT WING --
-# 55-gal drum stack ×2: X=3900–4480, H=0–1740
-DRM_X = 3900
-equip_rect(ax, DRM_X, 100, DRUM_W_EQ, DRUM_H_STK, C_DRUM)
-ax.text(DRM_X + DRUM_W_EQ / 2, 100 + DRUM_H_STK / 2,
-        "55-gal\ndrums\n×2 stacked", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
-ax.plot([DRM_X, DRM_X + DRUM_W_EQ], [100 + DRUM_H_EQ, 100 + DRUM_H_EQ],
+# ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────
+
+# Electrical panel: X=2050-2350, H=900-1500
+equip_rect(ax, EP_X, EP_H_LO, EP_W, EP_H_HI - EP_H_LO, C_ELEC, ec=C_OUT, lw=1.0, zorder=4)
+ax.text(EP_X + EP_W/2, (EP_H_LO + EP_H_HI)/2,
+        "Elec\npanel", ha="center", va="center",
+        fontsize=FS_SM - 1, color=C_OUT, zorder=6)
+
+# Battery bank: X=2050-2550, H=0-500
+equip_rect(ax, BA_X, BA_H_LO, BA_W, BA_H_HI - BA_H_LO, C_BATT, zorder=4)
+ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
+        "Battery\nbank", ha="center", va="center",
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+
+# Pump manifold: X=2400-2700, H=200-600
+equip_rect(ax, PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP, zorder=4)
+ax.text(PUMP_X + PUMP_W/2, (PUMP_H_LO + PUMP_H_HI)/2,
+        "Pump", ha="center", va="center",
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+
+leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 700, 2000,
+       f"Electrical panel\n(wall-mount, Yd=0 face)\nX={EP_X}–{EP_X+EP_W}mm",
+       ha="left", fs=FS_SM)
+leader(ax, BA_X + BA_W, (BA_H_LO + BA_H_HI)/2, BA_X + 800, 650,
+       f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
+leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 1100,
+       f"Pump manifold\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
+
+
+# ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────────
+
+# IBC column: Blue (front, Y-stacked) and Brown (rear, Y-stacked behind Blue)
+# In this side elevation (depth into page) both occupy X=4044–5263.
+# Blue IBC stack ×2 (2020mm tall) at front; Brown IBC ×1 (1010mm tall) behind.
+# Draw Brown first (slightly dimmer / different alpha), then Blue on top.
+
+# Brown IBC ×1 (behind Blue, dimmer)
+equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=3)
+ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_600/2,
+        "Brown IBC x1\n(600L, behind)",
+        ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=4)
+
+# Blue IBC stack ×2 (front, on top)
+equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, alpha=0.80, zorder=5)
+ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK/2,
+        "Blue IBC x2\nstacked (front)\n2x600L",
+        ha="center", va="center", fontsize=FS_SM, color="#FFFFFF",
+        fontweight="bold", zorder=6)
+# Stacking line
+ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-# Brown IBC ×1 (600L): X=4559–5778, H=0–1010
-equip_rect(ax, 4559, 100, IBC_W, IBC_H_600, C_IBC_BROWN)
-ax.text(4559 + IBC_W / 2, 100 + IBC_H_600 / 2,
-        "Brown IBC\n×1 (600L)", ha="center", va="center",
-        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
+leader(ax, IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, 4300, 2550,
+       f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
+       f"Blue: 2x600L stacked H={IBC_H_STK}mm (front)\n"
+       f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
+       ha="left", fs=FS_SM)
 
-# -- Leader labels --
-leader(ax, 100 + IBC_W / 2, 100 + IBC_H_STK, 400, 2400,
-       "Blue IBC ×2 stacked\n(2×600L = 1,200L)\nH=2,020mm", ha="left", fs=FS_SM)
-leader(ax, DRM_X + DRUM_W_EQ, 100 + DRUM_H_STK * 0.5, DRM_X + 700, 1600,
-       "55-gal drums ×2 stacked\n(2×208L = 416L)\nH=1,740mm", ha="left", fs=FS_SM)
-leader(ax, 4559 + IBC_W / 2, 100 + IBC_H_600, 4800, 1400,
-       "Brown IBC ×1\n(600L = waste/fix)\nH=1,010mm", ha="left", fs=FS_SM)
-leader(ax, EVAP_X + EVAP_W / 2, EVAP_Y + EVAP_HH, 1600, 2200,
-       "Evap cooler", ha="left", fs=FS_SM)
-leader(ax, PUMP_X + PUMP_W / 2, PUMP_Y + PUMP_HH, 2200, 1600,
-       "Pump manifold", ha="left", fs=FS_SM)
+# Drum column: two 55-gal drums, Y-stacked (one in front of the other in depth)
+# Both appear at X=5288-5868, H=100-970 in this elevation.
+# Draw as single block labelled "x2 drums (Y-stacked)"
+equip_rect(ax, DRUM_COL_X, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=5)
+ax.text(DRUM_COL_X + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+        "55-gal\ndrums x2\n(Y-stacked)",
+        ha="center", va="center", fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
+
+leader(ax, DRUM_COL_X + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H,
+       DRUM_COL_X - 100, 1700,
+       f"55-gal drums x2\nY-stacked (one behind other)\n"
+       f"X={DRUM_COL_X}–{DRUM_COL_X+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm ea.",
+       ha="right", fs=FS_SM)
 
 
-# ── Film plane (far long wall, optical depth 2262 mm) ─────────────────────────
-# In this side elevation, the film plane is PERPENDICULAR to the view direction
-# and cannot be shown as a projection.  Represent symbolically as a hatched band
-# across the full container width, and annotate clearly.
-FP_BAND = 80   # symbolic thickness of hatched band
-film_rect = mpatches.Rectangle((0, 0), CL, FP_BAND,
-                                 facecolor=C_FILM_PLN, edgecolor="#2060A0",
-                                 linewidth=0.8, linestyle="--", alpha=0.8, zorder=2)
-ax.add_patch(film_rect)
-ax.text(CL / 2, FP_BAND / 2,
-        f"Film plane / image surface — 5893 × 2388 mm muslin  (optical depth {D_FAR} mm from pinhole wall)",
-        ha="center", va="center", fontsize=FS_SM, color="#2060A0",
+# ── Film plane (symbolic band at floor and ceiling) ───────────────────────────
+# The film plane at Yd=2262mm spans X=FP_X_L–FP_X_R in this elevation.
+FP_BAND = 80
+ax.add_patch(mpatches.Rectangle((FP_X_L, 0), FP_X_R - FP_X_L, FP_BAND,
+             facecolor=C_FILM_PLN, edgecolor=C_CL, linewidth=0.8,
+             linestyle="--", alpha=0.8, zorder=2))
+ax.text((FP_X_L + FP_X_R)/2, FP_BAND/2,
+        f"Film plane  X={FP_X_L}–{FP_X_R}mm  "
+        f"({FP_X_R-FP_X_L}mm wide x {C_HGT}mm H)  at Yd={FP_Y}mm",
+        ha="center", va="center", fontsize=FS_SM, color=C_CL,
         style="italic", zorder=6)
+ax.add_patch(mpatches.Rectangle((FP_X_L, C_HGT - FP_BAND), FP_X_R - FP_X_L, FP_BAND,
+             facecolor=C_FILM_PLN, edgecolor=C_CL, linewidth=0.8,
+             linestyle="--", alpha=0.5, zorder=2))
 
-# Film plane repeats at top (ceiling equivalent — muslin draped full height)
-film_top = mpatches.Rectangle((0, CH - FP_BAND), CL, FP_BAND,
-                                facecolor=C_FILM_PLN, edgecolor="#2060A0",
-                                linewidth=0.8, linestyle="--", alpha=0.5, zorder=2)
-ax.add_patch(film_top)
+# Rail slot indicators at X=RAIL_X_L and X=RAIL_X_R
+for rx in [RAIL_X_L, RAIL_X_R]:
+    ax.plot([rx, rx], [0, 80], color=C_CL, lw=1.5, zorder=4)
+    ax.plot([rx, rx], [C_HGT - 80, C_HGT], color=C_CL, lw=1.5, zorder=4)
 
 
 # ── Pinhole ───────────────────────────────────────────────────────────────────
-# The pinhole is ON the near long wall (Y=0 face), at X=2946, H=1194.
-# In this side elevation it appears as a symbol at (PH_X, PH_H).
-PINHOLE_SYM_R = 60   # symbolic radius for visibility
-ph_circle = plt.Circle((PH_X, PH_H), PINHOLE_SYM_R,
-                         facecolor=C_PINHOLE, edgecolor=C_OUT,
-                         linewidth=0.8, zorder=7)
-ax.add_patch(ph_circle)
-# Crosshairs
-ax.plot([PH_X - 160, PH_X + 160], [PH_H, PH_H],
-        color=C_PINHOLE, lw=0.8, zorder=8)
-ax.plot([PH_X, PH_X], [PH_H - 160, PH_H + 160],
-        color=C_PINHOLE, lw=0.8, zorder=8)
-
-leader(ax, PH_X + PINHOLE_SYM_R + 40, PH_H, PH_X + 600, PH_H + 400,
-       f"Pinhole  Ø2.17 mm\n(X={PH_X}, H={PH_H} mm)\nf/1088",
+PINHOLE_SYM_R = 60
+ph = plt.Circle((PH_X, PH_H), PINHOLE_SYM_R,
+                 facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=7)
+ax.add_patch(ph)
+ax.plot([PH_X - 160, PH_X + 160], [PH_H, PH_H], color=C_PINHOLE, lw=0.8, zorder=8)
+ax.plot([PH_X, PH_X], [PH_H - 160, PH_H + 160], color=C_PINHOLE, lw=0.8, zorder=8)
+leader(ax, PH_X + PINHOLE_SYM_R + 40, PH_H, PH_X + 600, PH_H + 450,
+       f"Pinhole  O2.17mm\n(X={PH_X}, H={PH_H}mm)\nf/1088",
        ha="left", fs=FS_SM, color=C_PINHOLE)
-
-# Optical axis annotation: "⊗" symbol = into page, centered on pinhole
-ax.text(PH_X, PH_H - 280, "⊗ Optical axis (⊥ this view)\nFocal length 2362 mm",
+ax.text(PH_X, PH_H - 300, "Optical axis (into page)\nFocal length 2362mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CL, style="italic")
 
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
-# Low intake on left short wall, high exhaust on right short wall
 FAN_W = 200
-# Intake fan (low, at X=0 end — on end wall, shown at left edge)
-fan_in = mpatches.Rectangle((0, 200), 60, FAN_W,
-                              facecolor=C_FAN, edgecolor=C_OUT,
-                              linewidth=0.6, alpha=0.7, zorder=4)
-ax.add_patch(fan_in)
-ax.text(30, 200 + FAN_W / 2, "FAN\nIN", ha="center", va="center",
-        fontsize=FS_SM - 1.5, color=C_OUT, rotation=0, zorder=5)
+ax.add_patch(mpatches.Rectangle((0, 200), 60, FAN_W,
+             facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
+ax.text(30, 200 + FAN_W/2, "FAN\nIN", ha="center", va="center",
+        fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
-# Exhaust fan (high, at X=5893 end)
-fan_out = mpatches.Rectangle((CL - 60, CH - FAN_W - 200), 60, FAN_W,
-                               facecolor=C_FAN, edgecolor=C_OUT,
-                               linewidth=0.6, alpha=0.7, zorder=4)
-ax.add_patch(fan_out)
-ax.text(CL - 30, CH - FAN_W / 2 - 200, "FAN\nOUT", ha="center", va="center",
-        fontsize=FS_SM - 1.5, color=C_OUT, rotation=0, zorder=5)
+ax.add_patch(mpatches.Rectangle((C_LEN - 60, C_HGT - FAN_W - 200), 60, FAN_W,
+             facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
+ax.text(C_LEN - 30, C_HGT - FAN_W/2 - 200, "FAN\nOUT", ha="center", va="center",
+        fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
 
-# ── Safelight / overhead lighting (symbolic dashed line) ─────────────────────
-ax.plot([100, CL - 100], [CH - 100, CH - 100],
+# ── Safelight strip ───────────────────────────────────────────────────────────
+ax.plot([100, C_LEN - 100], [C_HGT - 100, C_HGT - 100],
         color="#FFD700", lw=2, ls="--", dashes=(8, 5), alpha=0.7, zorder=4)
-ax.text(CL / 2, CH - 60, "Overhead safelight strip (Circuit D)",
+ax.text(C_LEN/2, C_HGT - 60, "Overhead safelight strip (Circuit D)",
         ha="center", va="bottom", fontsize=FS_SM - 1, color="#B8960A")
 
 
-# ── Dimension callouts ────────────────────────────────────────────────────────
-DIM_Y_TOP = CH + 250    # above container
-DIM_Y_BOT = -250        # below container
-DIM_X_RIGHT = CL + 320  # right of container
+# ── Dimensions ────────────────────────────────────────────────────────────────
+DIM_TOP   = C_HGT + 250
+DIM_BOT   = -250
+DIM_RIGHT = C_LEN + 350
 
-# Container total length
-draw_dim_h(ax, 0, CL, DIM_Y_TOP, f"Container length  5893 mm",
-           offset=100, fs=FS_SM)
+draw_dim_h(ax, 0, C_LEN, DIM_TOP, f"Container length  {C_LEN}mm", offset=100)
+draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP + 200,
+           f"Optical zone  {ZONE_R_START-ZONE_L_END}mm", offset=80, color=C_CL)
+draw_dim_h(ax, FP_X_L, FP_X_R, DIM_TOP + 360,
+           f"Film plane  {FP_X_R-FP_X_L}mm", offset=80, color=C_CL)
+draw_dim_v(ax, DIM_RIGHT,        0, C_HGT, f"H={C_HGT}mm",     offset=100)
+draw_dim_v(ax, DIM_RIGHT + 300,  0, PH_H,  f"PH H={PH_H}mm",   offset=100)
 
-# Colonnade label (equipment is near-wall, all depths ≤1220mm — shown in plan, not elevation)
-ax.text(CL / 4, DIM_Y_BOT - 60,
-        "Equipment colonnade: all items Yd ≤ 1,220mm from pinhole wall (depth into page)",
-        ha="center", va="top", fontsize=FS_SM, color="#804020", style="italic")
+# Left / right zone widths
+draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT - 80,
+           f"L zone\n{ZONE_L_END}mm", offset=60, fs=FS_SM - 0.5, color="#805000")
+draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT - 80,
+           f"R zone\n{C_LEN-ZONE_R_START}mm", offset=60, fs=FS_SM - 0.5, color="#004080")
 
-# Container height
-draw_dim_v(ax, DIM_X_RIGHT, 0, CH, f"H = {CH} mm", offset=100, fs=FS_SM)
-
-# Pinhole height
-draw_dim_v(ax, DIM_X_RIGHT + 300, 0, PH_H,
-           f"Pinhole centre\n{PH_H} mm", offset=100, fs=FS_SM)
+ax.text(C_LEN/2, DIM_BOT - 300,
+        "All equipment in shadow-free end zones (X<1100 or X>4019) or on pinhole wall (Yd=0)",
+        ha="center", va="top", fontsize=FS_SM, color="#004020", style="italic")
 
 
 # ── Legend ────────────────────────────────────────────────────────────────────
-LEG_X = CL + 400
-LEG_Y = 2100
-LEG_W = 600
-LEG_H = 60
-LEG_GAP = 80
+LEG_X   = C_LEN + 420
+LEG_Y   = 2200
+LEG_W   = 600
+LEG_H   = 60
+LEG_GAP = 82
 
 legend_items = [
-    (C_IBC_BLUE,  "Blue IBC tote ×2"),
-    (C_IBC_BROWN, "Brown IBC tote ×1"),
-    (C_DRUM,      "55-gal drums ×2"),
+    (C_IBC_BLUE,  "Blue IBC stack x2 (2x600L)"),
+    (C_IBC_BROWN, "Brown IBC x1 (600L)"),
+    (C_DRUM_EQ,   "55-gal drums x2"),
     (C_EVAP,      "Evaporative cooler"),
     (C_PUMP,      "Pump manifold"),
-    (C_ELEC,      "Electrical enclosure"),
-    (C_FILM_PLN,  "Film plane / image surface"),
-    (C_PINHOLE,   "Pinhole Ø2.17 mm"),
+    (C_ELEC,      "Electrical panel"),
+    (C_BATT,      "Battery bank"),
+    (C_FILM_PLN,  "Film plane (symbolic band)"),
+    (C_PINHOLE,   "Pinhole O2.17mm"),
     (C_DOOR,      "Hinged panel + drum"),
     (C_FAN,       "Ventilation fan"),
 ]
@@ -380,45 +368,44 @@ ax.text(LEG_X, LEG_Y + LEG_H + 30, "LEGEND", ha="left", va="bottom",
         fontsize=FS_MD, color=C_OUT, fontweight="bold")
 for i, (col, lbl) in enumerate(legend_items):
     yy = LEG_Y - i * LEG_GAP
-    ax.add_patch(mpatches.Rectangle((LEG_X, yy - LEG_H * 0.5), LEG_W * 0.3, LEG_H * 0.7,
-                                     facecolor=col, edgecolor=C_OUT, linewidth=0.6))
-    ax.text(LEG_X + LEG_W * 0.35, yy, lbl,
-            ha="left", va="center", fontsize=FS_SM, color=C_OUT)
+    ax.add_patch(mpatches.Rectangle((LEG_X, yy - LEG_H*0.5), LEG_W*0.28, LEG_H*0.7,
+                 facecolor=col, edgecolor=C_OUT, linewidth=0.6, zorder=6))
+    ax.text(LEG_X + LEG_W*0.34, yy, lbl, ha="left", va="center",
+            fontsize=FS_SM, color=C_OUT)
 
 
 # ── Title block ───────────────────────────────────────────────────────────────
-TB_X = CL + 400
-TB_Y = 500
-TB_W = 1450
+TB_X = C_LEN + 420
+TB_Y = 450
+TB_W = 1380
 TB_H = 420
 
 ax.add_patch(mpatches.Rectangle((TB_X, TB_Y), TB_W, TB_H,
              facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
 ax.add_patch(mpatches.Rectangle((TB_X, TB_Y + 280), TB_W, TB_H - 280,
              facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
-
-ax.text(TB_X + TB_W / 2, TB_Y + 350, "TBS-001",
-        ha="center", va="center", fontsize=FS_LG + 2,
-        color=C_OUT, fontweight="bold")
-ax.text(TB_X + TB_W / 2, TB_Y + 295, "ASSEMBLY — SIDE ELEVATION",
+ax.text(TB_X + TB_W/2, TB_Y + 350, "TBS-001",
+        ha="center", va="center", fontsize=FS_LG + 2, color=C_OUT, fontweight="bold")
+ax.text(TB_X + TB_W/2, TB_Y + 295, "ASSEMBLY — SIDE ELEVATION",
         ha="center", va="center", fontsize=FS_MD, color=C_OUT)
 ax.text(TB_X + 20, TB_Y + 230, "Scale: 1:75 (approx)",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 170, f"Container: {CL}L × {CW}W × {CH}H (mm interior)",
+ax.text(TB_X + 20, TB_Y + 170,
+        f"Container: {C_LEN}L x {C_WID}W x {C_HGT}H (mm interior)",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 110, f"Focal length: {CW} mm   f/1088",
+ax.text(TB_X + 20, TB_Y + 110,
+        f"Pinhole: X={PH_X}mm  H={PH_H}mm  f/1088  Focal length {C_WID}mm",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
 ax.text(TB_X + 20, TB_Y + 50,
-        "View: looking at near long wall (+Y direction)\nOptical axis perpendicular to page",
+        "View: near long wall (+Y direction). Optical axis perpendicular to page.",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_DIM)
-ax.text(TB_X + TB_W - 20, TB_Y + 50, "© 2026 Alvin Richards — GNU AGPLv3",
-        ha="right", va="center", fontsize=FS_SM - 1, color=C_DIM, style="italic")
+ax.text(TB_X + TB_W - 20, TB_Y + 15, "© 2026 Alvin Richards — GNU AGPLv3",
+        ha="right", va="bottom", fontsize=FS_SM - 1, color=C_DIM, style="italic")
 
 
 # ── Save ──────────────────────────────────────────────────────────────────────
+out = f"{DIAGRAMS_DIR}/assembly-overview.png"
 fig.tight_layout(pad=0)
-plt.savefig("assembly-overview.png",
-            dpi=DPI, bbox_inches="tight",
-            facecolor=BG, edgecolor="none")
+plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
 plt.close(fig)
-print("Saved: assembly-overview.png")
+print(f"Saved: {out}")

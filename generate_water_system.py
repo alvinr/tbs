@@ -401,10 +401,10 @@ for i, (sym, desc) in enumerate(syms):
              f"  {sym} — {desc}", fontsize=6.2, color=C_TEXT, zorder=7)
 
 plt.tight_layout(pad=0.3)
-fig1.savefig("water-system-sheet1.png", dpi=150, bbox_inches="tight",
+fig1.savefig("diagrams/water-system-sheet1.png", dpi=150, bbox_inches="tight",
              facecolor=fig1.get_facecolor())
 plt.close(fig1)
-print("Sheet 1 written → water-system-sheet1.png")
+print("Sheet 1 written → diagrams/water-system-sheet1.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -423,7 +423,7 @@ for a in [ax2, ax3]:
     a.axis("off")
 
 # ── Title block ───────────────────────────────────────────────────────────────
-fig2.text(0.5, 0.97, "GIANT PINHOLE CAMERA — WATER SYSTEM EQUIPMENT LAYOUT",
+fig2.text(0.5, 0.97, "TBS-001 — WATER SYSTEM EQUIPMENT LAYOUT",
           ha="center", fontsize=13, fontweight="bold", color=C_TITLE)
 fig2.text(0.5, 0.94, "SHEET 2 OF 2 — PLAN VIEW (INSIDE CONTAINER)  |  "
           "SCALE: 1:25 (APPROX)  |  ALL DIMS IN MILLIMETRES",
@@ -449,9 +449,18 @@ ax2.add_patch(plt.Rectangle((-WT, -WT), CW + 2*WT, CH + 2*WT,
                              fc="none", ec="#777", lw=1.2, ls="--", zorder=0))
 
 # ── Equipment placement ───────────────────────────────────────────────────────
-# Left wall: IBC totes (1200×1000mm footprint → 48×40 at 1:25 = 1.92×1.6)
-IBC_W = 1.92
-IBC_D = 1.6
+# All IBCs and drums in RIGHT END ZONE (X=4,019–5,893mm).
+# Scale: CW=12 units = 5893mm interior → 1mm = 12/5893 units
+#        CH=5  units = 2362mm interior → 1mm = 5/2362 units
+SX = 12.0 / 5893.0   # mm to drawing unit (X direction)
+SY = 5.0  / 2362.0   # mm to drawing unit (Y direction)
+
+# IBC footprint in drawing units:
+IBC_W = 1219 * SX    # ≈ 2.48 drawing units
+IBC_D = 1016 * SY    # ≈ 2.15 drawing units
+
+# IBC column X in drawing: IBC_COL_X = 4044mm
+IBC_COL_DX = 4044 * SX  # ≈ 8.22
 
 def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
     ax.add_patch(plt.Rectangle((x, y), IBC_W, IBC_D, fc=fc, ec=ec, lw=1.8, zorder=2))
@@ -465,12 +474,14 @@ def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
     ax.text(x + IBC_W/2, y + IBC_D/2 - 0.2, sublabel, ha="center", va="center",
             fontsize=6.5, color="#555", zorder=3)
 
-# IBC-1 Blue A — rear left corner
-ibc_plan(ax2, 0.15, 3.1, "#BBDEFB", C_BLUE, "IBC-1", "159 gal (600L) BLUE-A")
-# IBC-2 Blue B — next to it
-ibc_plan(ax2, 0.15, 1.2, "#BBDEFB", C_BLUE, "IBC-2", "159 gal (600L) BLUE-B")
-# IBC-3 Brown — right of blue tanks
-ibc_plan(ax2, 2.3, 2.15, "#D7CCC8", C_BROWN, "IBC-3", "159 gal (600L) BROWN")
+# Right end zone: Blue IBC stack x2 — Y-stacked FRONT (Yd=100–1116mm)
+BLUE_IBC_DY = 100 * SY   # ≈ 0.21
+ibc_plan(ax2, IBC_COL_DX, BLUE_IBC_DY, "#BBDEFB", C_BLUE,
+         "IBC-1/2 BLUE x2", "2x159 gal (2x600L)\nYd=100–1116mm (front)")
+# Brown IBC x1 — Y-stacked REAR (Yd=1141–2157mm)
+BROWN_IBC_DY = 1141 * SY  # ≈ 2.42
+ibc_plan(ax2, IBC_COL_DX, BROWN_IBC_DY, "#D7CCC8", C_BROWN,
+         "IBC-3 BROWN", "159 gal (600L)\nYd=1141–2157mm (rear)")
 
 # Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
 FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9
@@ -493,12 +504,17 @@ ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BRO
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
 ax2.text(1.3, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
 
-# Black drums D1, D2 — right end wall
-DRUM_R = 0.44  # 55gal drum ≈ 580mm dia → 23.2 units @ 1:25
-for xi, lbl in [(10.0, "D-1\n55gal\nWASTE"), (11.0, "D-2\n55gal\nWASTE")]:
-    c = plt.Circle((xi, 0.65), DRUM_R, fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
+# 55-gal drums D1, D2 — right end zone, Y-stacked column (DRUM_COL_X=5288mm)
+# At 1:drawing_scale: radius=580/2mm → DRUM_R in drawing units
+DRUM_COL_DX = 5288 * SX   # ≈ 10.77
+DRUM1_DY = 100 * SY + 580/2 * SY   # centre of drum 1 y
+DRUM2_DY = 705 * SY + 580/2 * SY   # centre of drum 2 y (start=705mm)
+DRUM_R = 580/2 * SY  # radius in drawing units ≈ 0.61
+for drum_dy, lbl in [(DRUM1_DY, "D-1\n55gal"), (DRUM2_DY, "D-2\n55gal")]:
+    drum_cx = DRUM_COL_DX + DRUM_R  # centre x of drum column
+    c = plt.Circle((drum_cx, drum_dy), DRUM_R, fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
     ax2.add_patch(c)
-    ax2.text(xi, 0.65, lbl, ha="center", va="center",
+    ax2.text(drum_cx, drum_dy, lbl, ha="center", va="center",
              fontsize=6.5, fontweight="bold", color=C_BLACK, zorder=3,
              multialignment="center")
 
@@ -520,6 +536,16 @@ ax2.plot([8.07, 8.43], [0.5, 0.5], color="#388E3C", lw=1.2, zorder=5)
 ax2.plot([8.25, 8.25], [0.32, 0.68], color="#388E3C", lw=1.2, zorder=5)
 ax2.text(8.25, 0.18, "FLOOR DRAIN\n3W-DV-02", ha="center",
          fontsize=6, color="#388E3C")
+
+# Right end zone shading (X=4019–5893mm = 8.18–12.0 in drawing)
+ZONE_R_DX = 4019 * SX   # ≈ 8.18
+ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
+              fc="#E8F0FF", ec="none", alpha=0.45, zorder=0))
+ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
+         zorder=6)
+ax2.text(ZONE_R_DX + 0.05, CH - 0.15,
+         "RIGHT END ZONE\nX=4,019–5,893mm\n(shadow-free)",
+         ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
 # Pinhole/lens wall (left end)
 ax2.add_patch(plt.Rectangle((-0.15, 0.0), 0.15, CH, fc="#BDBDBD", ec=C_FRAME,
@@ -543,10 +569,10 @@ def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
     ax.text(xx - 0.1, (y1+y2)/2, label, ha="right", va="center",
             fontsize=6.5, color=color, rotation=90)
 
-dim_h(ax2, 0, CW, -0.1, "6,096 mm (CONTAINER INTERIOR)")
-dim_v(ax2, 0, 0, CH, "2,438 mm")
-dim_h(ax2, 0.15, 0.15 + IBC_W, 5.2, "IBC: 1,200 mm")
-dim_h(ax2, 4.8, 11.7, 5.2, "PROCESSING ZONE: ~4,375 mm")
+dim_h(ax2, 0, CW, -0.1, "5,893 mm (CONTAINER INTERIOR)")
+dim_v(ax2, 0, 0, CH, "2,362 mm")
+dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
+dim_h(ax2, ZONE_R_DX, CW, 5.5, "RIGHT END ZONE: 1,874 mm")
 
 # North arrow
 ax2.annotate("", xy=(12.2, 9.8), xytext=(12.2, 9.2),
@@ -614,8 +640,8 @@ ax3.text(0.3, row_y - 0.1,
          fontsize=6.5, color="#333", va="top", linespacing=1.6)
 
 plt.tight_layout(pad=0.5)
-fig2.savefig("water-system-sheet2.png", dpi=150, bbox_inches="tight",
+fig2.savefig("diagrams/water-system-sheet2.png", dpi=150, bbox_inches="tight",
              facecolor=fig2.get_facecolor())
 plt.close(fig2)
-print("Sheet 2 written → water-system-sheet2.png")
+print("Sheet 2 written → diagrams/water-system-sheet2.png")
 print("Done.")

@@ -238,7 +238,7 @@ ax.set_aspect('equal')
 ax.axis('off')
 
 plt.tight_layout(pad=0.3)
-out1 = '/Users/alvinrichards/dev/tbs/portrait-scale-comparison.png'
+out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
@@ -351,7 +351,7 @@ ax2.text(CONT_L_MM/2, CONT_W_MM + max_dist_mm + 250,
          ha='center', fontsize=9, color='#777', zorder=10)
 
 plt.tight_layout(pad=0.3)
-out2 = '/Users/alvinrichards/dev/tbs/portrait-camera-schematic.png'
+out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
@@ -464,7 +464,7 @@ ax3.set_aspect('equal')
 ax3.axis('off')
 
 plt.tight_layout(pad=0.3)
-out3 = '/Users/alvinrichards/dev/tbs/portrait-optimal-3m.png'
+out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
 plt.savefig(out3, dpi=150, bbox_inches='tight', facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')

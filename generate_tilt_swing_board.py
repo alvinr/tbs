@@ -597,7 +597,7 @@ ax1.text(cx_d, carrier_y_bot - 20, '← SCENE (EXTERIOR)    INTERIOR (CONTAINER)
 ax1.text(cx_d, frame_y_top + 25, 'SECTION A-A  (HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
-out1 = 'tilt-swing-board-sheet1.png'
+out1 = 'diagrams/tilt-swing-board-sheet1.png'
 fig1.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close(fig1)
 print(f'  → {out1}  Done.')
@@ -938,7 +938,7 @@ for i, (k, v) in enumerate(rows):
     ax2.text(tbl_x, ry, k, fontsize=4.5, color='black')
     ax2.text(tbl_x + 68, ry, v, fontsize=4.5, color='black', fontweight='bold')
 
-out2 = 'tilt-swing-board-sheet2.png'
+out2 = 'diagrams/tilt-swing-board-sheet2.png'
 fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close(fig2)
 print(f'  → {out2}  Done.')
@@ -1211,7 +1211,7 @@ for i, (num, title, note) in enumerate(steps):
 ax3.text(695/2, 15, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic')
 
-out3 = 'tilt-swing-board-sheet3.png'
+out3 = 'diagrams/tilt-swing-board-sheet3.png'
 fig3.savefig(out3, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close(fig3)
 print(f'  → {out3}  Done.')

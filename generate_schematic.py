@@ -206,7 +206,7 @@ ax.set_aspect('equal')
 ax.axis('off')
 
 plt.tight_layout(pad=0.3)
-out = '/Users/alvinrichards/dev/tbs/portrait-camera-schematic.png'
+out = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out, dpi=150, bbox_inches='tight', facecolor='#0D0D0D')
 plt.close()
 print(f'Saved: {out}')

@@ -19,8 +19,9 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from tbs_constants import (
     IBC_COL_X, ZONE_R_START,
-    DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H, DRUM_STACKED_H,
+    DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+    DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
 )
 
 # ── Colour palette ────────────────────────────────────────────────────────────
@@ -509,19 +510,19 @@ ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BRO
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
 ax2.text(1.3, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
 
-# 55-gal drums D1, D2 — LEFT end zone, Z-stacked (same floor footprint)
-# CX=700mm, Yd_centre=765mm — shown as single circle footprint labelled ×2 stacked
-DRUM_LZ_DX = DRUM_LZ_CX * SX   # ≈ 1.42 (centre X in drawing)
-DRUM_LZ_DY = DRUM_LZ_YD * SY   # ≈ 1.62 (centre Y in drawing)
-DRUM_R_DU  = DRUM_EQ_R * SY    # radius in drawing units ≈ 0.61
-c = plt.Circle((DRUM_LZ_DX, DRUM_LZ_DY), DRUM_R_DU,
-               fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2)
-ax2.add_patch(c)
-ax2.text(DRUM_LZ_DX, DRUM_LZ_DY + 0.12, "D-1/2", ha="center", va="center",
-         fontsize=6.5, fontweight="bold", color=C_BLACK, zorder=3)
-ax2.text(DRUM_LZ_DX, DRUM_LZ_DY - 0.15, "55gal×2\nstacked",
-         ha="center", va="center", fontsize=5.5, color=C_BLACK, zorder=3,
-         multialignment="center")
+# 55-gal drums D-1, D-2 — LEFT end zone, one per Yd corner (rev 4: unstacked)
+DRUM_R_DU = DRUM_EQ_R * SY    # radius in drawing units
+for drum_cx, drum_cy, label in [
+    (DRUM_LZ_CX, DRUM_LZ_YD, "D-1\nnear"),   # near corner (pinhole wall side)
+    (DRUM_FZ_CX, DRUM_FZ_YD, "D-2\nfar"),    # far corner (far wall side)
+]:
+    dx = drum_cx * SX
+    dy = drum_cy * SY
+    ax2.add_patch(plt.Circle((dx, dy), DRUM_R_DU,
+                             fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2))
+    ax2.text(dx, dy, label, ha="center", va="center",
+             fontsize=5.5, fontweight="bold", color=C_BLACK, zorder=3,
+             multialignment="center")
 
 # Spray bar along top wall
 pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)

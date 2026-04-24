@@ -43,8 +43,9 @@ from tbs_constants import (
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R, DRUM_STACKED_H,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+    DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
     DIAGRAMS_DIR,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
@@ -77,11 +78,16 @@ EQUIPMENT = [
          h_bot=0, h_top=DRUM_H_LT,
          color="#8B6F47", zone="left"),
 
-    # Black-water drums — near cargo door end wall, Yd=25–605mm (below light trap Yd band)
-    dict(name="55-gal drums ×2 (stacked)",
+    # Black-water drums — one per Yd corner, both at CX=310mm (rev 4: unstacked)
+    dict(name="55-gal drum D-1 (near, pinhole wall corner)",
          x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
          w=DRUM_EQ_D, d=DRUM_EQ_D,
-         h_bot=0, h_top=DRUM_STACKED_H,
+         h_bot=0, h_top=DRUM_EQ_H,
+         color="#7A6B5A", zone="left"),
+    dict(name="55-gal drum D-2 (far, film plane corner)",
+         x=DRUM_FZ_CX - DRUM_EQ_R, yd=DRUM_FZ_YD_LO,
+         w=DRUM_EQ_D, d=DRUM_EQ_D,
+         h_bot=0, h_top=DRUM_EQ_H,
          color="#7A6B5A", zone="left"),
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)

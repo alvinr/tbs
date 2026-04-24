@@ -16,8 +16,8 @@ to a 4,024 mm span (X=625–4,649mm). This creates two **provably shadow-free en
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.
 
-The black-water drums (2× 55-gal) are relocated to the left end zone (Y-stacked
-behind the evap cooler), which frees the right end zone for IBCs only and allows the
+The black-water drums (2× 55-gal) are relocated to the left end zone (one per Yd
+corner, D-1 near pinhole wall and D-2 near far wall), which frees the right end zone for IBCs only and allows the
 right zone boundary to move inward from X=4,019mm to X=4,649mm — widening the film
 plane by 630mm (rev 2, 2026-04-23).
 
@@ -38,7 +38,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Zone | X range | Shadow-free? | Equipment assigned |
 |------|---------|--------------|--------------------|
-| **Left end zone** | 0–625mm | YES at all depths | Light trap drum, 55-gal drums ×2 (Yd=25–605mm) |
+| **Left end zone** | 0–625mm | YES at all depths | Light trap drum, 55-gal drum D-1 (Yd=25–605mm), 55-gal drum D-2 (Yd=1,757–2,337mm) |
 | **Optical zone** | 625–4,649mm | NO | Film plane, rails only |
 | **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks only |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
@@ -59,7 +59,8 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Light trap drum | −375–375 | 806–1,556 (centred at CW/2=1,181mm) | 0–2,000 | Centred at X=0 (spans container wall); rotary drum entry |
-| 55-gal drums ×2 (stacked) | 20–600 | 25–605 | 0–1,740 | Z-stacked; CX=310mm, Yd below light trap drum Yd band (806mm+) |
+| 55-gal drum D-1 (near) | 20–600 | 25–605 | 0–870 | CX=310mm; pinhole wall corner; gap to light trap = 201mm |
+| 55-gal drum D-2 (far) | 20–600 | 1,757–2,337 | 0–870 | CX=310mm; far wall corner; gap to light trap = 201mm; 25mm from far wall |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
 
@@ -165,27 +166,29 @@ for road transport with full load.
 
 ## 6. 55-Gallon Drum Left-Zone Placement
 
-The two 55-gal drums are Z-stacked (one above the other) in the left end zone,
-near the cargo door end wall. The Yd position (25–605mm) is entirely below the
-light trap drum's Yd band (≈806–1,556mm), so there is no X-clearance conflict
-regardless of how close the drums are to the light trap in the X direction.
+The two 55-gal drums are placed one per Yd corner of the left end zone — D-1 near
+the pinhole wall and D-2 near the far wall. The light trap drum (Yd=806–1,556mm)
+naturally divides the zone into two clear 201mm-gap corners. Both drums share
+CX=310mm and have identical X footprints.
 
-| Parameter | Value |
-|-----------|-------|
-| Centre X | 310mm (20mm clearance from cargo door end wall) |
-| Centre Yd | 315mm (25mm near edge + 290mm drum radius) |
-| Footprint | Ø580mm circle (X=20–600mm, Yd=25–605mm) |
-| Stacked height | 1,740mm (2× 870mm drums) |
-| Ceiling clearance | 2,388 − 1,740 = 648mm ✓ |
-| X zone check | X_right = 310 + 290 = 600mm < 625mm zone boundary ✓ |
-| Yd vs light trap | Drum Yd_hi=605mm < light trap Yd_lo≈806mm — no conflict ✓ |
+| Parameter | D-1 (near, pinhole wall corner) | D-2 (far, film plane corner) |
+|-----------|--------------------------------|------------------------------|
+| Centre X | 310mm | 310mm |
+| Centre Yd | 315mm | 2,047mm |
+| Footprint | Ø580mm (X=20–600mm, Yd=25–605mm) | Ø580mm (X=20–600mm, Yd=1,757–2,337mm) |
+| Height | 870mm | 870mm |
+| Ceiling clearance | 2,388 − 870 = 1,518mm ✓ | 2,388 − 870 = 1,518mm ✓ |
+| X zone check | X_right=600mm < 625mm boundary ✓ | X_right=600mm < 625mm boundary ✓ |
+| Yd vs light trap | Yd_hi=605mm; gap=201mm ✓ | Yd_lo=1,757mm; gap=201mm ✓ |
+| Yd vs far wall | — | Yd_hi=2,337mm; 25mm clearance ✓ |
 
-Stacking requires a welded steel drum cradle or 870mm platform. Access is from
-the Yd direction (side of drums) with ~350mm of open floor between drum far edge
-(Yd=605mm) and the light trap drum centre area (Yd≈1,181mm).
+Neither drum requires a stacking cradle. Access to each drum is from the side (Yd
+direction). D-1 has ~1.5m of clear floor between it and the light trap drum. D-2
+sits against the far wall with 25mm clearance.
 
 **Lashing:** 25mm polyester strap (WLL ≥ 1,600kg) × 2 per drum, crossed diagonally
-over the drum top and anchored to D-rings in the container floor or cargo door end wall.
+over the drum top and anchored to D-rings in the container floor — one lash set per
+drum (4 straps total).
 
 ---
 
@@ -236,7 +239,7 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 | Max swing angle | 20.3° | **28.3°** |
 | Blue IBCs | Left side, X=100–1,319mm | Right end zone, X=4,674mm, Y-stacked |
 | Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, Y behind Blue |
-| 55-gal drums | Right side, X=3,900mm | **Left end zone, CX=310mm, Yd=25–605mm** |
+| 55-gal drums | Right side, X=3,900mm | **Left end zone, CX=310mm, D-1 Yd=25–605mm, D-2 Yd=1,757–2,337mm** |
 | Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=700–1,300mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |

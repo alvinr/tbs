@@ -233,19 +233,20 @@ def floor_plan():
             "▲ 800mm tall", color=C_COOLER, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    # Black-water drums — 2× 55-gal, Z-stacked, near cargo door end wall
-    drum_cx = DRUM_LZ_CX
-    drum_cy = DRUM_LZ_YD
-    ax.add_patch(Circle((drum_cx, drum_cy), DRUM_EQ_R,
-                        fc=C_DRUM_EQ, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
-    ax.plot(drum_cx, drum_cy, '+', color="#FFFFFF", ms=6, mew=1.0, zorder=7)
-    ax.text(drum_cx, drum_cy,
-            f"DRUMS\n×2 stacked\n2×208L",
-            color="#FFFFFF", fontsize=5.5, ha="center", va="center",
-            **FONT, fontweight="bold", zorder=7)
-    ax.text(drum_cx, drum_cy + DRUM_EQ_R + 55,
-            f"▲ {DRUM_STACKED_H}mm stacked", color=C_DRUM_EQ, fontsize=5.5,
-            ha="center", va="bottom", **FONT, zorder=7)
+    # Black-water drums — 2× 55-gal, one per Yd corner (unstacked, rev 4)
+    for drum_cy, label, ann_dir in [
+        (DRUM_LZ_YD, "DRUM D-1\n208L", +1),   # near corner (pinhole wall side)
+        (DRUM_FZ_YD, "DRUM D-2\n208L", -1),   # far corner (far wall side)
+    ]:
+        ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
+                            fc=C_DRUM_EQ, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
+        ax.plot(DRUM_LZ_CX, drum_cy, '+', color="#FFFFFF", ms=6, mew=1.0, zorder=7)
+        ax.text(DRUM_LZ_CX, drum_cy,
+                label, color="#FFFFFF", fontsize=5.5, ha="center", va="center",
+                **FONT, fontweight="bold", zorder=7)
+        ax.text(DRUM_LZ_CX, drum_cy + ann_dir * (DRUM_EQ_R + 55),
+                f"▲ {DRUM_EQ_H}mm H", color=C_DRUM_EQ, fontsize=5.5,
+                ha="center", va="bottom" if ann_dir > 0 else "top", **FONT, zorder=7)
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
     # Electrical panel + battery (thin strip at Y=0)
@@ -333,7 +334,7 @@ def floor_plan():
     legend_items = [
         (C_BLUE_IBC,  f"Blue IBC ×2 stacked (2×600L) — Y-stacked, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
         (C_BROWN_IBC, f"Brown IBC ×1 (600L) — Y-stacked rear, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
-        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 stacked (2×208L) — left zone, X={DRUM_LZ_CX-DRUM_EQ_R}–{DRUM_LZ_CX+DRUM_EQ_R}mm, Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}mm"),
+        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 (D-1 near Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}mm, D-2 far Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}mm) — left zone X={DRUM_LZ_CX-DRUM_EQ_R}–{DRUM_LZ_CX+DRUM_EQ_R}mm"),
         (C_COOLER,    f"Evap cooler — pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         (C_ELEC_COL,  "Electrical panel + LiFePO4 battery (pinhole wall, wall-mount)"),
         (C_PUMP_COL,  "Pump manifold (pinhole wall, wall-mount)"),

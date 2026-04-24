@@ -22,7 +22,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 
 ### What
 
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one end of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
 
 ### How
 

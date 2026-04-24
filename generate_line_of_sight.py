@@ -7,8 +7,8 @@ for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):
   Shows the optical cone from the pinhole (X=2874, Yd=0) expanding to the
-  new film plane edges (X=1100–4649 at Yd=2262mm).
-  Equipment in shadow-free end zones (X<1100 or X>4649) is always clear.
+  new film plane edges (X=625–4649 at Yd=2262mm).
+  Equipment in shadow-free end zones (X<625 or X>4649) is always clear.
   Equipment on the pinhole wall (Yd=0) is also always clear.
 
 Panel B — Side elevation:
@@ -71,18 +71,13 @@ FS_LG = 10.0
 # zone: "left", "wall", "right" — used to assign expected clearance status
 
 EQUIPMENT = [
-    # LEFT END ZONE — X=0–1100 (shadow-free at all depths)
+    # LEFT END ZONE — X=0–625mm (shadow-free at all depths)
     dict(name="Light trap drum",
          x=DRUM_CX - DRUM_R, yd=0, w=DRUM_D, d=C_WID,   # drum spans full depth in plan
          h_bot=0, h_top=DRUM_H_LT,
          color="#8B6F47", zone="left"),
 
-    dict(name="Evap cooler",
-         x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
-         h_bot=0, h_top=EVAP_H,
-         color="#3DAA96", zone="left"),
-
-    # Black-water drums relocated to left end zone (stacked behind evap cooler)
+    # Black-water drums — near cargo door end wall, Yd=25–605mm (below light trap Yd band)
     dict(name="55-gal drums ×2 (stacked)",
          x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
          w=DRUM_EQ_D, d=DRUM_EQ_D,
@@ -90,6 +85,11 @@ EQUIPMENT = [
          color="#7A6B5A", zone="left"),
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)
+    # Evap cooler relocated here (rev 3) — X=700–1300mm, Yd=0 (pinhole wall face)
+    dict(name="Evap cooler",
+         x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
+         h_bot=0, h_top=EVAP_H,
+         color="#3DAA96", zone="wall"),
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,
          h_bot=EP_H_LO, h_top=EP_H_HI,

@@ -237,20 +237,20 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm); waste drums are in the **left end zone** (X=0–1,100mm, Z-stacked). The optical zone (X=1,100–4,649mm) is completely clear.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm); waste drums are in the **left end zone** (X=0–625mm, Z-stacked at Yd=25–605mm). The optical zone (X=625–4,649mm) is completely clear.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are **Z-stacked** (vertically) in the left end zone at X=700mm CX, behind the evap cooler.
+IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are **Z-stacked** (vertically) in the left end zone at CX=310mm, Yd=25–605mm — entirely below the light trap drum's Yd band (≈806–1,556mm), so no X-clearance conflict with the light trap.
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
 | Right end zone | IBC-1 + IBC-2 Blue (600L each, stacked) | 4,674–5,893 | 100–1,116 | 0–2,020 |
 | Right end zone | IBC-3 Brown (600L) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
-| Left end zone | DRUM-1/2 (55 gal each, Z-stacked) | 410–990 | 475–1,055 | 0–1,740 |
+| Left end zone | DRUM-1/2 (55 gal each, Z-stacked) | 20–600 | 25–605 | 0–1,740 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
-| Optical zone | No equipment | 1,100–4,649 | — | — |
+| Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 

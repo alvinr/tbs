@@ -13,14 +13,14 @@ Coordinate system (all mm):
            Y=0:    pinhole long wall
            Y=2362: far long wall (image plane / film fabric)
 
-Equipment layout — end-zone design rev 2 (drums relocated to left zone):
-  Left end zone  (X=0–1100):   light trap drum + evap cooler + 55-gal drums (stacked)
-  Optical zone   (X=1100–4649): film plane rails only — floor clear
+Equipment layout — end-zone design rev 3 (evap cooler to pinhole wall, drums near end wall):
+  Left end zone  (X=0–625):    light trap drum + 55-gal drums (stacked, Yd=25–605mm)
+  Pinhole wall   (Yd=0 face):  evap cooler (X=700–1300) + electrical panel + pump manifold
+  Optical zone   (X=625–4649): film plane rails only — floor clear
   Right end zone (X=4649–5893): IBC tanks only (Y-stacked, right-justified to end wall)
-  Pinhole wall (Y=0 face): electrical panel, pump manifold (wall-mounted)
 
   Every item in the end zones is provably shadow-free at all depths:
-    cone left boundary  >= 1100mm  at any Y <= 2262  ✓
+    cone left boundary  >= 625mm  at any Y <= 2262  ✓
     cone right boundary <= 4649mm  at any Y <= 2262  ✓
 """
 
@@ -114,7 +114,7 @@ def floor_plan():
     ax.add_patch(Rectangle((0, 0), ZONE_L_END, C_WID,
                             fc=C_ZONE_L, ec="none", zorder=1))
     ax.text(ZONE_L_END/2, C_WID*0.5,
-            "LEFT END ZONE\nX=0–1100mm\n(shadow-free,\nall depths)",
+            f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\n(shadow-free,\nall depths)",
             color="#C07030", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
 
@@ -226,14 +226,14 @@ def floor_plan():
     penetration(ax, 0, DRUM_FP_CY, r=80,
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
 
-    # Evap cooler (X=400–1000, Yd=100–450)
+    # Evap cooler — on pinhole wall face (Yd=0), X=700–1300mm
     equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_COOLER,
                f"EVAP\nCOOLER\n{EVAP_W}×{EVAP_D}", zorder=6)
     ax.text(EVAP_X + EVAP_W/2, EVAP_Y + EVAP_D + 55,
             "▲ 800mm tall", color=C_COOLER, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    # Black-water drums — 2× 55-gal, vertically stacked, behind evap cooler
+    # Black-water drums — 2× 55-gal, Z-stacked, near cargo door end wall
     drum_cx = DRUM_LZ_CX
     drum_cy = DRUM_LZ_YD
     ax.add_patch(Circle((drum_cx, drum_cy), DRUM_EQ_R,
@@ -333,8 +333,8 @@ def floor_plan():
     legend_items = [
         (C_BLUE_IBC,  f"Blue IBC ×2 stacked (2×600L) — Y-stacked, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
         (C_BROWN_IBC, f"Brown IBC ×1 (600L) — Y-stacked rear, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
-        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 stacked (2×208L) — left zone, X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
-        (C_COOLER,    f"Evap cooler — left end zone, X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
+        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 stacked (2×208L) — left zone, X={DRUM_LZ_CX-DRUM_EQ_R}–{DRUM_LZ_CX+DRUM_EQ_R}mm, Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}mm"),
+        (C_COOLER,    f"Evap cooler — pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         (C_ELEC_COL,  "Electrical panel + LiFePO4 battery (pinhole wall, wall-mount)"),
         (C_PUMP_COL,  "Pump manifold (pinhole wall, wall-mount)"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm at Y={FP_Y}mm)"),

@@ -192,21 +192,21 @@ Custom fabrication is the recommended approach. Full raw material supplier list,
 
 ### 5.8 Container Floor Plan — All Systems
 
-Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=1,100–4,649mm) is completely clear.
+Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=625–4,649mm) is completely clear.
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-**Left end zone (X=0–1,100mm) — shadow-free at all depths:**
+**Left end zone (X=0–625mm) — shadow-free at all depths:**
 - Light trap drum (Ø750mm, centred at X=0)
-- 12V evaporative cooler (X=400–1,000mm, Yd=100–450mm)
-- 2 × 55-gal HDPE drums, Z-stacked, X=700mm CX, Yd=475–1,055mm
+- 2 × 55-gal HDPE drums, Z-stacked, CX=310mm, Yd=25–605mm
 
 **Pinhole wall face (Y=0):**
+- 12V evaporative cooler (X=700–1,300mm, Yd=0–350mm) — shadow-free at Y=0
 - Electrical enclosure (X=2,050–2,350mm, H=900–1,500mm) — wall-mounted
 - LiFePO4 battery bank (X=2,050–2,550mm, H=0–500mm) — wall-mounted
 - Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
 
-**Optical zone (X=1,100–4,649mm):** Nothing at floor level. Rails only.
+**Optical zone (X=625–4,649mm):** Nothing at floor level. Rails only.
 
 **Right end zone (X=4,649–5,893mm) — shadow-free at all depths:**
 - 2 × Blue IBC totes (600L each), Y-stacked (front), X=4,674mm
@@ -248,8 +248,7 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ### 6.4 Light-Safe Cooler Intake
 
-The cooler is positioned in the left end zone (X=400–1,000mm, Yd=100–450mm). Its
-intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
+The cooler is positioned on the pinhole wall face (Yd=0, X=700–1,300mm) — shadow-free at any X position because the optical cone collapses to a point at Y=0. Its intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
 
 - **Duct size:** 6" (150mm) — matches cooler inlet
 - **Penetration:** through the container left short end wall (X=0 face), positioned 400mm above floor level (within left end zone)

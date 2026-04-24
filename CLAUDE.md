@@ -97,14 +97,14 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 | Optimal pinhole Ø | 2.17 mm | Rayleigh: d = 1.9√(fλ), λ=550nm |
 | f-number | f/1088 | f / d |
 | Container interior | 5,893 × 2,388 mm | Full interior face |
-| Film plane (active) | 3,549 × 2,388 mm | X=1,100–4,649mm (shadow-free zone) |
-| Pinhole X position | 2,874 mm | Centre of active film plane (1,100 + 3,549/2) |
-| Rail left X | 1,100 mm | Left rail / film plane left edge |
+| Film plane (active) | 4,024 × 2,388 mm | X=625–4,649mm (shadow-free zone) |
+| Pinhole X position | 2,637 mm | Centre of active film plane (625 + 4,024/2) |
+| Rail left X | 625 mm | Left rail / film plane left edge |
 | Rail right X | 4,649 mm | Right rail / film plane right edge |
-| Rail span | 3,549 mm | RAIL_X_R − RAIL_X_L |
+| Rail span | 4,024 mm | RAIL_X_R − RAIL_X_L |
 | Board tilt 5° → image shift | 207 mm | 2362 × tan(5°) |
 | Film plane max tilt | ±42° | 4-corner mechanism hard stop |
-| Film plane max swing | ±31.4° | arctan(2162/3549) — wider rail span vs same Y travel |
+| Film plane max swing | ±28.3° | arctan(2162/4024) — wider rail span vs same Y travel |
 | Tilt-swing board max | ±5.3° | Screw shoulder hard stop |
 
 ---

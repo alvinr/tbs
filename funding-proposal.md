@@ -188,7 +188,7 @@ This is intentional. The project is as much a contribution to the field as it is
 
 ## 9. Artist Statement / Bio
 
-Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had materialzed. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
+Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had imagined, had indeed materialzed. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
 
 At Nottingham Trent University I encountered the pinhole camera and understood immediately that something both maddening and transformative was possible with it. I graduated with a First in Photography in 1998 — my dissertation, *Deeds of War*, was acquired by the NTU library, and my photographs were selected for exhibition by the Royal Photographic Society.
 

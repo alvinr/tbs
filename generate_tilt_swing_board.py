@@ -1182,8 +1182,8 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(15, 100, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold')
-ax3.plot([15, 695], [97, 97], color='black', lw=0.7)
+ax3.text(15, 155, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold')
+ax3.plot([15, 695], [152, 152], color='black', lw=0.7)
 
 steps = [
     ('①', 'LOOSEN 4×\nLOCK SCREWS', '3 mm hex key\nM6 set screws'),
@@ -1194,9 +1194,10 @@ steps = [
 ]
 
 step_w = 120
+step_gap = 15
 for i, (num, title, note) in enumerate(steps):
-    sx = 30 + i * (step_w + 20)
-    sy = 35
+    sx = 20 + i * (step_w + step_gap)
+    sy = 90
     draw_rect(ax3, sx, sy, step_w, 55, lw=1.0, color='black', fc='#F0F0F0')
     ax3.text(sx + step_w/2, sy + 48, num, ha='center', fontsize=14,
              fontweight='bold', color='black')
@@ -1205,10 +1206,10 @@ for i, (num, title, note) in enumerate(steps):
     ax3.text(sx + step_w/2, sy + 12, note, ha='center', fontsize=5.5,
              color='#555555', style='italic')
     if i < 4:
-        ax3.annotate('', xy=(sx + step_w + 18, sy + 27), xytext=(sx + step_w + 2, sy + 27),
+        ax3.annotate('', xy=(sx + step_w + 13, sy + 27), xytext=(sx + step_w + 2, sy + 27),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
-ax3.text(695/2, 15, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
+ax3.text(695/2, 75, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic')
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'

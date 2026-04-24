@@ -1,15 +1,16 @@
 # Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
-**Image plane dimensions:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″)  
-**Image plane area:** ~140 sq ft (13.0 m²)  
+**Image plane dimensions (active):** 4,024 × 2,388 mm (~13′ 3″ × 7′ 10″)  
+**Container interior:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
+**Image plane area:** ~103 sq ft (9.6 m²)  
 **Camera configuration:** Option B (side-to-side), f = 2,362 mm, f/1088, pinhole Ø 2.17 mm
 
 ---
 
 ## Executive Summary
 
-Eight photosensitive processes were evaluated for a 140 sq ft (5,893 × 2,388 mm) image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~103 sq ft (4,024 × 2,388 mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 
@@ -128,7 +129,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 | Heavyweight cartridge/watercolour paper | ~$1.50–2.50 | $210–350 | Requires taping joins; difficult to handle at this scale |
 | Hanji/Japanese tissue on backing | ~$2.00–4.00 | $280–560 | Exceptional tonal range; fragile at scale |
 
-**Recommended substrate: unbleached muslin.** This matches the documented approach used in The Great Picture (2006) for their gelatin emulsion application; muslin absorbs cyanotype sensitiser evenly and is manageable as a continuous panel at 20-foot widths.
+**Recommended substrate: unbleached muslin.** This matches the documented approach used in The Great Picture (2006) for their gelatin emulsion application; muslin absorbs cyanotype sensitiser evenly and is manageable as a continuous panel at 13-foot widths.
 
 ### Mounting and Preparation Method
 
@@ -183,7 +184,7 @@ Gum bichromate is a **pigment process** — the image is formed by watercolour p
 
 For in-camera capture at f/1088 and the exposure times this camera produces, gum bichromate is viable — ammonium dichromate is approximately 2–3× more UV-sensitive than the standard potassium version.
 
-**Multiple-coat implication:** Each coat requires drying, recoating, and re-exposure to a precise registration. For a 20-foot image, registration between coats is an engineering problem — mechanical pin registration or projection registration will be needed.
+**Multiple-coat implication:** Each coat requires drying, recoating, and re-exposure to a precise registration. For a 13-foot image, registration between coats is an engineering problem — mechanical pin registration or projection registration will be needed.
 
 ### Chemistry Quantities and Costs (single coat, 140 sq ft)
 
@@ -337,11 +338,11 @@ Ilford Multigrade V RC Deluxe is the industry-standard enlarging paper and the m
 
 ### Coverage Calculation
 
-Image plane: 5,893 mm wide × 2,388 mm tall.  
+Active image plane: 4,024 mm wide × 2,388 mm tall.  
 Paper roll width: 1,270 mm (50").  
-Number of strips needed: ⌈5,893 / 1,270⌉ = **5 strips** (covers 6,350 mm — 457 mm overhang each side).  
+Number of strips needed: ⌈4,024 / 1,270⌉ = **4 strips** (covers 5,080 mm — 528 mm spare).  
 Each strip height: 2,388 mm (~7.84 ft), cut from the 30.5 m roll.  
-Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **2 complete images per roll** (with ~2,700 mm of roll remaining).
+Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 complete images per roll** (with ~1,300 mm of roll remaining).
 
 ### Material Cost
 

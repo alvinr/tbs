@@ -1,9 +1,9 @@
 # Chemistry Shopping Lists
 ## Giant Pinhole Camera: Raw Material Procurement by Process
 
-**Image plane per print:** 5,893 × 2,388 mm (140 sq ft)  
+**Image plane per print:** 4,024 × 2,388 mm (~103 sq ft active film zone; container interior 5,893 × 2,388 mm)  
 **Run size:** 50 prints  
-**Total substrate area:** 7,000 sq ft  
+**Total substrate area:** ~5,150 sq ft  
 **Pricing basis:** April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.
 
 ---
@@ -205,7 +205,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 **Notes on paper rolls:**
 - Ilford MGRC 50"×98' confirmed listed at B&H Photo (product #ILMG50981P). Price is not shown publicly — call B&H at 800-606-6969 or log in for current pricing.
-- 50" width × 98' length yields exactly 5 strips of 50" × 96" per print (5 × 1,270 mm = 6,350 mm, covers the 5,893 mm image width with 229 mm spare). Each roll yields 2 complete prints with minimal waste.
+- 50" width × 98' length yields exactly 4 strips of 50" × 132" per print (4 × 1,270 mm = 5,080 mm, covers the 4,024 mm active image width with 528 mm spare). Each roll yields approximately 2 complete prints with minimal waste.
 - Paper must be cut and handled in **complete darkness**. A changing tent large enough for an 8-foot wide roll is required, or a light-tight room.
 
 ---
@@ -294,7 +294,7 @@ Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissol
 Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitisers. If not removed, the sensitiser will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.
 
 ### 7. Bulk muslin ordering — consider width carefully
-The image plane is 7'10" (2,388 mm) tall. 60" (1,524 mm) muslin requires the fabric to be oriented with multiple widths in the height direction, or run lengthwise. For the 19'4" × 7'10" plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 5 strips of 60"×96" are cut and joined to cover the full width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print. This eliminates vertical seams.
+The active film plane is 13'3" × 7'10" (4,024 × 2,388 mm). The image plane is 7'10" (2,388 mm) tall. 60" (1,524 mm) muslin requires multiple widths joined in the height direction. For the 13'3" × 7'10" active plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×158" are cut and joined to cover the 13'3" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 13'3" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
 
 ---
 

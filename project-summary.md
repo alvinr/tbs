@@ -8,7 +8,7 @@
 
 ## What Is It
 
-A fully operational pinhole camera built inside a standard 20-foot ISO shipping container. It makes photographs — real, large-format photographs — on contact-scale cyanotype prints measuring nearly 20 feet wide by 8 feet tall. It is transportable, deployable in remote locations, and self-sufficient for water and processing. It is not an installation that resembles a camera. It is a camera.
+A fully operational pinhole camera built inside a standard 20-foot ISO shipping container. It makes photographs — real, large-format photographs — on contact-scale cyanotype prints measuring approximately 13 feet wide by 8 feet tall. It is transportable, deployable in remote locations, and self-sufficient for water and processing. It is not an installation that resembles a camera. It is a camera.
 
 ---
 
@@ -16,8 +16,9 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane | 5,893 × 2,388 mm (~19'4" × 7'10") |
-| Image area | ~140 sq ft |
+| Image plane (active) | 4,024 × 2,388 mm (~13'3" × 7'10") |
+| Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
+| Image area | ~103 sq ft |
 | Focal length | 2,362 mm (container interior depth) |
 | Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |

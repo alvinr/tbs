@@ -84,7 +84,7 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $62 (chemistry + fabric + water). A 50-print run costs approximately $3,096. By comparison, the next cheapest alternative (gum bichromate) costs $92 per print and requires dichromate sensitiser with associated hazmat handling.
+Per-print cost: approximately $34 (chemistry + fabric + water). A 50-print run costs approximately $1,700. By comparison, the next cheapest alternative (gum bichromate) costs $56 per print and requires dichromate sensitiser with associated hazmat handling.
 
 ### Water System
 

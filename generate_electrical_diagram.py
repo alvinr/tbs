@@ -566,9 +566,9 @@ def draw_sheet2():
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
-    # Drum is centred at X=0 (outside edge), appears as semicircle footprint
-    equip(DRUM_CX - DRUM_R, 0, DRUM_D, 750, "DRUM\n(partial)", "#E8E8D0",
-          "Ø750mm vertical axis")
+    # Drum is centred at X=0 (outside edge), Yd-centred at CW/2=1181mm, appears as partial circle
+    equip(DRUM_CX - DRUM_R, C_WID//2 - DRUM_R, DRUM_D, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
+          f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
     # 55-gal drums — near cargo door end wall, Yd=25–605mm (below light trap Yd band)
     equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_STACKED_H,
           "DRUMS ×2\n(stacked)", C_STEEL, f"2×55 gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")

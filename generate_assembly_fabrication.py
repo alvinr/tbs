@@ -32,7 +32,7 @@ from tbs_constants import (
     PH_X, PH_H,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_W, EVAP_H,
+    EVAP_X, EVAP_Y, EVAP_W, EVAP_D, EVAP_H,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
@@ -464,13 +464,14 @@ def sheet2():
     ax.text(RAIL_OFF-60, RAIL_Y_NEAR, "Rail", ha="right", va="center",
             fontsize=FS_SM-1, color=C_DIM, zorder=6)
 
-    # ── Evap cooler projection (in left end zone, background) ─────────────────
-    # Evap cooler is at X=400-1000mm (depth into page), Y_depth=100-450mm (horizontal here)
-    # Height: 0-800mm. Show as ghost outline.
-    ax.add_patch(mpatches.Rectangle((100, RAIL_OFF), 350, 800,
+    # ── Evap cooler projection (pinhole wall face, background) ───────────────
+    # Rev 3: evap cooler is at Yd=0–350mm (pinhole wall face), X=700–1300mm (depth into page).
+    # In this end elevation horizontal axis = Yd → cooler spans Yd=EVAP_Y to EVAP_Y+EVAP_D.
+    # Height: 0–800mm. Show as ghost outline.
+    ax.add_patch(mpatches.Rectangle((EVAP_Y, RAIL_OFF), EVAP_D, EVAP_H,
                  facecolor=C_EVAP, edgecolor="#1A8A76",
                  linewidth=0.7, linestyle="--", alpha=0.20, zorder=2))
-    ax.text(100+175, RAIL_OFF+400, "Evap\n(behind)", ha="center", va="center",
+    ax.text(EVAP_Y + EVAP_D/2, RAIL_OFF + EVAP_H/2, "Evap\n(behind)", ha="center", va="center",
             fontsize=FS_SM-2, color="#1A8A76", alpha=0.8, zorder=3)
 
     # ── Safelight ─────────────────────────────────────────────────────────────

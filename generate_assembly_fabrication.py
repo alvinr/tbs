@@ -37,7 +37,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_STACKED_H, DRUM_LZ_CX,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_LZ_CX, DRUM_FZ_CX,
     RAIL_X_L, RAIL_X_R,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
@@ -231,13 +231,15 @@ def sheet1():
             "EVAP\nCOOLER", ha="center", va="center",
             fontsize=FS_SM-1.5, color="white", zorder=5)
 
-    # 55-gal drums x2 stacked — left zone, behind evap cooler in depth (Yd=475-1055mm)
-    # In this side elevation they appear at same X as evap cooler; draw dimmer behind.
+    # 55-gal drums ×2 — left zone, one per Yd corner (rev 4: unstacked).
+    # In this side elevation (horizontal=X) both drums share X=310mm → overlap.
+    # Draw near drum (Yd=315mm) at full opacity, far drum (Yd=2047mm) dimmed behind.
     _dlx0 = DRUM_LZ_CX - DRUM_EQ_D // 2
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_STACKED_H, C_DRUM_EQ, alpha=0.70, zorder=3)
-    ax.text(_dlx0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H/2,
-            "WASTE\nDRUMS x2\nSTACKED\n(behind\nevap cooler)",
-            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=4)
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.45, zorder=3)  # far (behind)
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=4)  # near (front)
+    ax.text(_dlx0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+            "WASTE\nDRUMS\n×2\n(near+far\ncorners)",
+            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
 
     # ── PINHOLE WALL EQUIPMENT (flush on near long wall) ──────────────────────
     # Electrical panel
@@ -284,7 +286,7 @@ def sheet1():
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
         (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # Blue IBCs
-        (DRUM_LZ_CX,              RAIL_OFF+DRUM_STACKED_H/2, "8"),  # 55-gal drums (left zone)
+        (DRUM_LZ_CX,              RAIL_OFF+DRUM_EQ_H/2, "8"),  # 55-gal drums (left zone)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "9"),  # Pump
         (-WALL_T/2, 300,          "10"),  # Fan intake
         (C_LEN+WALL_T/2, C_HGT-300, "11"),  # Fan exhaust
@@ -332,7 +334,7 @@ def sheet1():
         ("5",  "Electrical panel + battery bank",    "TBS-EL01"),
         ("6",  "Hinged panel + revolving drum",      "TBS-LT01"),
         ("7",  "Blue IBC stack x2 (front) + Brown x1 (behind, right zone)","TBS-WS01"),
-        ("8",  "55-gal drums x2 stacked (left zone, behind evap cooler)","TBS-WS01"),
+        ("8",  "55-gal drums ×2 (left zone — near corner D-1 + far corner D-2)","TBS-WS01"),
         ("9",  "Pump manifold",                      "TBS-WS01"),
         ("10", "Intake fan",                         "TBS-EL01"),
         ("11", "Exhaust fan",                        "TBS-EL01"),

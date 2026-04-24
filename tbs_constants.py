@@ -77,18 +77,24 @@ DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2000    # light trap drum height (mm)
 
-# Black-water drums — near cargo door end wall, Yd band below light trap drum
-# Light trap drum Yd centre ≈ C_WID/2 = 1,181mm, radius 375mm → Yd=806–1,556mm.
-# Drums placed at Yd=25–605mm to avoid any Yd overlap → X clearance irrelevant.
-DRUM_EQ_D      = 580    # 55-gal drum diameter (mm)
-DRUM_EQ_H      = 870    # 55-gal single drum height (mm)
-DRUM_EQ_R      = DRUM_EQ_D // 2    # = 290mm radius
-DRUM_STACKED_H = 2 * DRUM_EQ_H    # = 1,740mm (2 drums stacked)
-DRUM_LZ_CX     = 310               # centre X (mm)  [rev3: was 700; near cargo door wall]
-DRUM_LZ_YD_LO  = 25                # near edge Yd   [rev3: was 475; just off pinhole wall]
-DRUM_LZ_YD     = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 315mm centre
-DRUM_LZ_YD_HI  = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 605mm far edge
-# Drum footprint: X=20–600mm, Yd=25–605mm — zone boundary = 600+25 = 625mm = FP_X_L ✓
+# Black-water drums — LEFT end zone, one per Yd corner (rev 4: unstacked)
+# Light trap drum Yd=806–1,556mm divides the zone into two clear corners.
+# Near drum (pinhole wall corner): Yd=25–605mm  → gap to light trap = 201mm ✓
+# Far drum  (far wall corner):     Yd=1,757–2,337mm → gap to light trap = 201mm ✓
+# Both share CX=310mm (X=20–600mm). Zone boundary 600+25=625mm=FP_X_L ✓
+DRUM_EQ_D     = 580    # 55-gal drum diameter (mm)
+DRUM_EQ_H     = 870    # 55-gal single drum height (mm)
+DRUM_EQ_R     = DRUM_EQ_D // 2    # = 290mm radius
+# Near drum (pinhole wall corner)
+DRUM_LZ_CX    = 310               # near drum centre X (mm)
+DRUM_LZ_YD_LO = 25                # near drum near edge Yd (mm)
+DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 315mm centre
+DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 605mm far edge
+# Far drum (far wall corner)
+DRUM_FZ_CX    = DRUM_LZ_CX                        # = 310mm (same X centre)
+DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D - 25            # = 1,757mm (25mm from far wall)
+DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,047mm centre
+DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,337mm far edge
 
 # Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
 # At Yd=0 the cone collapses to a point → shadow-free at any X position.
@@ -153,5 +159,6 @@ if __name__ == "__main__":
     print(f"  Right zone:     X={ZONE_R_START}–{C_LEN}mm")
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
     print(f"  IBC column:     X={IBC_COL_X}–{IBC_COL_X+IBC_W}  (right edge = {IBC_COL_X+IBC_W} vs C_LEN={C_LEN})")
-    print(f"  Drums (left):   CX={DRUM_LZ_CX}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  stacked H={DRUM_STACKED_H}")
+    print(f"  Drum near:      CX={DRUM_LZ_CX}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  H={DRUM_EQ_H}")
+    print(f"  Drum far:       CX={DRUM_FZ_CX}  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}  H={DRUM_EQ_H}")
     print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")

@@ -394,8 +394,9 @@ def draw_sheet2():
         EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
         IBC_COL_X, IBC_W, IBC_D,
         BLUE_IBC_Y, BROWN_IBC_Y,
-        DRUM_EQ_D, DRUM_EQ_R, DRUM_STACKED_H,
+        DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
         DRUM_LZ_CX, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+        DRUM_FZ_CX, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
         DRUM_CX, DRUM_D, DRUM_R,
         DIAGRAMS_DIR,
     )
@@ -569,9 +570,11 @@ def draw_sheet2():
     # Drum is centred at X=0 (outside edge), Yd-centred at CW/2=1181mm, appears as partial circle
     equip(DRUM_CX - DRUM_R, C_WID//2 - DRUM_R, DRUM_D, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
-    # 55-gal drums — near cargo door end wall, Yd=25–605mm (below light trap Yd band)
-    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_STACKED_H,
-          "DRUMS ×2\n(stacked)", C_STEEL, f"2×55 gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
+    # 55-gal drums — one per Yd corner (rev 4: unstacked)
+    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_H,
+          "DRUM D-1\n(near)", C_STEEL, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
+    equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_H,
+          "DRUM D-2\n(far)", C_STEEL, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
 
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
     equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_SOLAR, "80W 12V  (E)")

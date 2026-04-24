@@ -38,7 +38,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_STACKED_H,
+    DRUM_EQ_D, DRUM_EQ_H,
     DRUM_LZ_CX,
     RAIL_X_L, RAIL_X_R,
     DIAGRAMS_DIR,
@@ -191,16 +191,17 @@ ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
 leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 600, 1900,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
-# Black-water drums — 2× 55-gal stacked, behind evap cooler in depth (same X in elevation)
-# In this side elevation (X axis = container long axis), drums appear at X=DRUM_LZ_CX ± DRUM_EQ_R
+# Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
+# In this side elevation both drums share X=DRUM_LZ_CX → overlap. Draw as single block.
 _drum_x0 = DRUM_LZ_CX - DRUM_EQ_D // 2
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_STACKED_H, C_DRUM_EQ, alpha=0.80, zorder=4)
-ax.text(_drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H/2,
-        "Waste\ndrums\n×2 stacked", ha="center", va="center",
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=4)
+ax.text(_drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+        "Waste\ndrums\n×2\n(near+far)", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
-leader(ax, _drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_STACKED_H, 800, 2200,
-       f"55-gal drums x2 stacked\n(left zone, behind evap cooler in depth)\n"
-       f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_STACKED_H}mm total",
+leader(ax, _drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H, 800, 2200,
+       f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
+       f"D-1 near: Yd=25–605mm  |  D-2 far: Yd=1,757–2,337mm\n"
+       f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",
        ha="left", fs=FS_SM)
 
 

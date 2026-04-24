@@ -242,13 +242,14 @@ See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-s
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are **Z-stacked** (vertically) in the left end zone at CX=310mm, Yd=25–605mm — entirely below the light trap drum's Yd band (≈806–1,556mm), so no X-clearance conflict with the light trap.
+IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are placed **one per Yd corner** of the left end zone — D-1 near the pinhole wall (Yd=25–605mm) and D-2 near the far wall (Yd=1,757–2,337mm). The light trap drum (Yd=806–1,556mm) sits between them with 201mm clearance either side.
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
 | Right end zone | IBC-1 + IBC-2 Blue (600L each, stacked) | 4,674–5,893 | 100–1,116 | 0–2,020 |
 | Right end zone | IBC-3 Brown (600L) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
-| Left end zone | DRUM-1/2 (55 gal each, Z-stacked) | 20–600 | 25–605 | 0–1,740 |
+| Left end zone | D-1 55-gal drum (near, pinhole wall corner) | 20–600 | 25–605 | 0–870 |
+| Left end zone | D-2 55-gal drum (far, film plane corner) | 20–600 | 1,757–2,337 | 0–870 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 

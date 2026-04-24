@@ -2,26 +2,23 @@
 """
 generate_line_of_sight.py
 
-Generates line-of-sight.png — two-panel optical clearance diagram for TBS-001.
+Generates diagrams/line-of-sight.png — two-panel optical clearance diagram
+for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):
-  Shows the optical cone from the pinhole (X=2946, Y_depth=0) to the full
-  image plane (Y_depth=2262mm) overlaid on the equipment footprints.
-  Any equipment footprint inside the cone is highlighted as a potential
-  obstruction.
+  Shows the optical cone from the pinhole (X=2874, Yd=0) expanding to the
+  new film plane edges (X=625–4649 at Yd=2262mm).
+  Equipment in shadow-free end zones (X<625 or X>4649) is always clear.
+  Equipment on the pinhole wall (Yd=0) is also always clear.
 
 Panel B — Side elevation:
   Shows the optical cone in the HEIGHT direction (pinhole at H=1194mm,
-  cone spreading to cover full image height H=0–2388mm at Y_depth=2262mm).
-  Equipment shown at their heights to check vertical clearance.
+  cone spreading to cover full image height H=0–2388mm at Yd=2262mm).
 
-Container coordinate system (matches floor plan):
+Container coordinate system:
   X  = 0–5893mm   (long axis; X=0 cargo door end, X=5893 far end)
   Yd = 0–2362mm   (optical depth; Yd=0 pinhole wall, Yd=2362 far wall)
   H  = 0–2388mm   (height)
-
-  Pinhole: X=2946, Yd=0, H=1194
-  Film plane: Yd=2262mm, spanning X=0–5893 and H=0–2388
 
 ASPECT RATIO RULE: figsize derived from data limits. set_aspect("equal") always.
 """
@@ -32,138 +29,157 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import Polygon
+import os
 
-# ── Container geometry ────────────────────────────────────────────────────────
-CL    = 5893   # container interior length (long axis)
-CW    = 2362   # container interior width  (optical depth)
-CH    = 2388   # container interior height
-D_FAR = 2262   # film plane depth from pinhole wall
-PH_X  = 2946   # pinhole X (long axis)
-PH_YD = 0      # pinhole depth (on near long wall)
-PH_H  = 1194   # pinhole height
-EQ_X  = 2700   # equipment zone boundary (long axis)
+from tbs_constants import (
+    C_LEN, C_WID, C_HGT,
+    FP_X_L, FP_X_R, FP_Y, FP_Y_MIN,
+    PH_X, PH_H,
+    ZONE_L_END, ZONE_R_START,
+    DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
+    EVAP_X, EVAP_W, EVAP_Y, EVAP_D, EVAP_H,
+    EP_X, EP_W, EP_H_LO, EP_H_HI,
+    BA_X, BA_W, BA_H_LO, BA_H_HI,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
+    BLUE_IBC_Y, BROWN_IBC_Y,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
+    DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+    DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    DIAGRAMS_DIR,
+    cone_left, cone_right,
+    C_OUT, C_CL, C_DIM,
+)
 
-# ── Equipment footprints in plan (X, Yd, width, depth) ───────────────────────
-# PINHOLE WALL COLONNADE — all equipment Yd ≤ 1220mm.
-# Matches positions in generate_floorplan_diagram.py
+os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+
+# ── Palette ───────────────────────────────────────────────────────────────────
+BG          = "#FFFFFF"
+C_CONE      = "#FFE0A0"    # optical cone fill (amber)
+C_CONE_EDGE = "#C07000"    # optical cone edge
+C_CLEAR     = "#20A020"    # clearance OK
+C_BLOCK     = "#CC2020"    # potential obstruction
+C_ZONE_L    = "#FFF0E0"    # left end zone tint (orange)
+C_ZONE_OPT  = "#F0FFF0"    # optical zone tint (green)
+C_ZONE_R    = "#E8F0FF"    # right end zone tint (blue)
+
+FS_SM = 7.0
+FS_MD = 8.5
+FS_LG = 10.0
+
+# ── Equipment list ────────────────────────────────────────────────────────────
+# Each entry: plan position (x, yd, w, d) and elevation height (h_bot, h_top)
+# zone: "left", "wall", "right" — used to assign expected clearance status
+
 EQUIPMENT = [
-    # LEFT WING
-    dict(name="Blue IBC stack (×2)",  x=100,  yd=100, w=1219, d=1016,
-         color="#4A90D9", h_bot=0, h_top=2020),   # 2×600L stacked = 2020mm
-    dict(name="Evap cooler",          x=1380, yd=100, w=600,  d=350,
-         color="#3DAA96", h_bot=0, h_top=800),
-    dict(name="Pump manifold",        x=1980, yd=100, w=400,  d=300,
-         color="#E8884A", h_bot=0, h_top=500),
-    dict(name="Electrical panel",     x=2050, yd=0,   w=300,  d=80,
-         color="#F5C518", h_bot=900, h_top=1500),  # wall-mounted on pinhole wall
-    # RIGHT WING
-    dict(name="55-gal Drum stack",    x=3900, yd=100, w=580,  d=580,
-         color="#7A6B5A", h_bot=0, h_top=1740),   # 2× stacked = 1740mm
-    dict(name="Brown IBC ×1",        x=4674, yd=100, w=1219, d=1016,
-         color="#9C7A3C", h_bot=0, h_top=1010),
+    # LEFT END ZONE — X=0–625mm (shadow-free at all depths)
+    dict(name="Light trap drum",
+         x=DRUM_CX - DRUM_R, yd=C_WID//2 - DRUM_R, w=DRUM_D, d=DRUM_D,  # centred at Yd=CW/2=1181mm
+         h_bot=0, h_top=DRUM_H_LT,
+         color="#8B6F47", zone="left"),
+
+    # Black-water drums — one per Yd corner, both at CX=310mm (rev 4: unstacked)
+    dict(name="55-gal drum D-1 (near, pinhole wall corner)",
+         x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
+         w=DRUM_EQ_D, d=DRUM_EQ_D,
+         h_bot=0, h_top=DRUM_EQ_H,
+         color="#7A6B5A", zone="left"),
+    dict(name="55-gal drum D-2 (far, film plane corner)",
+         x=DRUM_FZ_CX - DRUM_EQ_R, yd=DRUM_FZ_YD_LO,
+         w=DRUM_EQ_D, d=DRUM_EQ_D,
+         h_bot=0, h_top=DRUM_EQ_H,
+         color="#7A6B5A", zone="left"),
+
+    # PINHOLE WALL — Yd=0 face (always shadow-free)
+    # Evap cooler relocated here (rev 3) — X=700–1300mm, Yd=0 (pinhole wall face)
+    dict(name="Evap cooler",
+         x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
+         h_bot=0, h_top=EVAP_H,
+         color="#3DAA96", zone="wall"),
+    dict(name="Electrical panel",
+         x=EP_X, yd=0, w=EP_W, d=80,
+         h_bot=EP_H_LO, h_top=EP_H_HI,
+         color="#F5C518", zone="wall"),
+
+    dict(name="Battery bank",
+         x=BA_X, yd=0, w=BA_W, d=80,
+         h_bot=BA_H_LO, h_top=BA_H_HI,
+         color="#6A5ACD", zone="wall"),
+
+    dict(name="Pump manifold",
+         x=PUMP_X, yd=0, w=PUMP_W, d=80,
+         h_bot=PUMP_H_LO, h_top=PUMP_H_HI,
+         color="#E8884A", zone="wall"),
+
+    # RIGHT END ZONE — IBCs only, right-justified to end wall
+    dict(name="Blue IBC stack (×2)",
+         x=IBC_COL_X, yd=BLUE_IBC_Y, w=IBC_W, d=IBC_D,
+         h_bot=0, h_top=IBC_H_STK,
+         color="#4A90D9", zone="right"),
+
+    dict(name="Brown IBC ×1",
+         x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
+         h_bot=0, h_top=IBC_H_600,
+         color="#9C7A3C", zone="right"),
 ]
 
-# ── Optical cone geometry ─────────────────────────────────────────────────────
-# In plan view, the cone boundaries (at depth Yd from the pinhole wall):
-#   X_left(Yd)  = PH_X - PH_X * (Yd / D_FAR)          (ray to X=0 at film plane)
-#   X_right(Yd) = PH_X + (CL-PH_X) * (Yd / D_FAR)     (ray to X=CL at film plane)
-
-def cone_x_left(yd):
-    return PH_X - PH_X * (yd / D_FAR)
-
-def cone_x_right(yd):
-    return PH_X + (CL - PH_X) * (yd / D_FAR)
-
-# In side elevation, the cone boundaries (at depth Yd):
-#   H_bottom(Yd) = PH_H - PH_H * (Yd / D_FAR)          (ray to H=0 at film plane)
-#   H_top(Yd)    = PH_H + (CH - PH_H) * (Yd / D_FAR)   (ray to H=CH at film plane)
-
-def cone_h_bottom(yd):
-    return PH_H - PH_H * (yd / D_FAR)
-
-def cone_h_top(yd):
-    return PH_H + (CH - PH_H) * (yd / D_FAR)
-
-# ── Check if equipment intersects cone ────────────────────────────────────────
+# ── Cone check functions ──────────────────────────────────────────────────────
 def equipment_in_plan_cone(eq):
-    """
-    Returns True if ANY part of the equipment footprint overlaps the optical
-    cone in plan view (top-down).  Checks at both yd_near and yd_far edges.
-    """
-    for yd in np.linspace(eq["yd"], eq["yd"] + eq["d"], 20):
-        if yd < 0 or yd > D_FAR:
-            continue
-        xl = cone_x_left(yd)
-        xr = cone_x_right(yd)
+    """True if ANY part of the equipment footprint overlaps the optical cone."""
+    yd_near = eq["yd"]
+    yd_far  = eq["yd"] + eq["d"]
+    for yd in np.linspace(max(yd_near, 0), min(yd_far, FP_Y), 30):
+        xl = cone_left(yd)
+        xr = cone_right(yd)
         eq_xl = eq["x"]
         eq_xr = eq["x"] + eq["w"]
         if eq_xr > xl and eq_xl < xr:
             return True
     return False
 
+def cone_h_bottom(yd):
+    return PH_H - PH_H * (yd / FP_Y)
+
+def cone_h_top(yd):
+    return PH_H + (C_HGT - PH_H) * (yd / FP_Y)
+
 def equipment_in_elevation_cone(eq):
-    """
-    Returns True if ANY part of the equipment height intersects the optical
-    cone in the side elevation at the equipment's plan Yd position.
-    """
-    for yd in np.linspace(eq["yd"], eq["yd"] + eq["d"], 20):
-        if yd < 0 or yd > D_FAR:
-            continue
+    """True if ANY part of the equipment height intersects the cone at its depth."""
+    yd_near = eq["yd"]
+    yd_far  = eq["yd"] + eq["d"]
+    for yd in np.linspace(max(yd_near, 0), min(yd_far, FP_Y), 30):
         h_bot = cone_h_bottom(yd)
         h_top = cone_h_top(yd)
         if eq["h_top"] > h_bot and eq["h_bot"] < h_top:
             return True
     return False
 
-# ── Palette ───────────────────────────────────────────────────────────────────
-BG       = "#FFFFFF"
-C_OUT    = "#1A1A1A"
-C_DIM    = "#404040"
-C_CL     = "#2060A0"
-C_CONE   = "#FFE0A0"      # optical cone fill (amber)
-C_CONE_EDGE = "#C07000"   # optical cone edge
-C_CLEAR  = "#20A020"      # clearance OK
-C_BLOCK  = "#CC2020"      # potential obstruction
+# ── Figure layout ─────────────────────────────────────────────────────────────
+# Panel A (plan): long axis X, depth Yd
+# Panel B (elevation): depth Yd (X axis), height H (Y axis)
 
-FS_SM = 7.0
-FS_MD = 8.5
-FS_LG = 10.0
+PA_X_LO, PA_X_HI = -500, 6500
+PA_Y_LO, PA_Y_HI = -450, 2900
+PB_X_LO, PB_X_HI = -400, 2900
+PB_Y_LO, PB_Y_HI = -350, 2750
 
-# ── Figure setup: two panels side-by-side ────────────────────────────────────
-# Panel A (plan): X=0-5893mm long axis, Yd=0-2362mm depth
-# Panel B (elevation): Yd=0-2362mm depth (horizontal), H=0-2388mm (vertical)
-#
-# Data ranges with margins:
-PA_X_LO, PA_X_HI = -400, 6400      # plan: long axis
-PA_Y_LO, PA_Y_HI = -400, 2800      # plan: optical depth
-PB_X_LO, PB_X_HI = -400, 2800      # elevation: optical depth (X axis)
-PB_Y_LO, PB_Y_HI = -300, 2700      # elevation: height (Y axis)
-
-PA_W = PA_X_HI - PA_X_LO   # 6800
-PA_H = PA_Y_HI - PA_Y_LO   # 3200
-PB_W = PB_X_HI - PB_X_LO   # 3200
-PB_H = PB_Y_HI - PB_Y_LO   # 3000
-
-# Choose figure width so Panel A fills ~60% of width, Panel B ~40%
-# Use a gridspec to control widths proportionally
-# Total data width: PA_W + PB_W = 6800 + 3200 = 10000mm
-# Target total figure width: 28 inches
+PA_W = PA_X_HI - PA_X_LO   # 7000
+PA_H = PA_Y_HI - PA_Y_LO   # 3350
+PB_W = PB_X_HI - PB_X_LO   # 3300
+PB_H = PB_Y_HI - PB_Y_LO   # 3100
 
 FIG_TOT_W = 28.0
 FIG_TOT_H = FIG_TOT_W * max(PA_H, PB_H) / (PA_W + PB_W)
-# Exact: height = 28 * 3200/10000 = 8.96in
 
 DPI = 150
 
 fig = plt.figure(figsize=(FIG_TOT_W, FIG_TOT_H), dpi=DPI)
 fig.patch.set_facecolor(BG)
 
-# Gridspec: 2 columns, width proportional to panel data widths
 gs = fig.add_gridspec(1, 2, width_ratios=[PA_W, PB_W],
-                       wspace=0.08, left=0.01, right=0.99, top=0.97, bottom=0.03)
-ax_a = fig.add_subplot(gs[0])   # Plan view
-ax_b = fig.add_subplot(gs[1])   # Elevation view
+                      wspace=0.06, left=0.01, right=0.99, top=0.95, bottom=0.05)
+ax_a = fig.add_subplot(gs[0])
+ax_b = fig.add_subplot(gs[1])
 
 for ax in [ax_a, ax_b]:
     ax.set_facecolor(BG)
@@ -179,113 +195,117 @@ ax_b.set_aspect("equal")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# PANEL A — PLAN VIEW (TOP-DOWN)
-# X = long axis (0–5893mm), Y = optical depth (0–2362mm)
+# PANEL A — PLAN VIEW
 # ═══════════════════════════════════════════════════════════════════════════════
 ax = ax_a
 
+# Zone fills
+ax.add_patch(mpatches.Rectangle((0, 0), ZONE_L_END, C_WID,
+             facecolor=C_ZONE_L, edgecolor="none", zorder=0))
+ax.add_patch(mpatches.Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
+             facecolor=C_ZONE_OPT, edgecolor="none", zorder=0))
+ax.add_patch(mpatches.Rectangle((ZONE_R_START, 0), C_LEN - ZONE_R_START, C_WID,
+             facecolor=C_ZONE_R, edgecolor="none", zorder=0))
+
 # Container outline
-ax.add_patch(mpatches.Rectangle((0, 0), CL, CW,
-             facecolor="#F4F4F4", edgecolor=C_OUT, linewidth=1.6, zorder=1))
+ax.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_WID,
+             facecolor="none", edgecolor=C_OUT, linewidth=1.8, zorder=3))
 
-# Equipment zone tint
-ax.add_patch(mpatches.Rectangle((0, 0), EQ_X, CW,
-             facecolor="#FFF8EE", edgecolor="none", alpha=0.6, zorder=0))
+# Zone boundary lines
+for xb in [ZONE_L_END, ZONE_R_START]:
+    ax.plot([xb, xb], [0, C_WID], color=C_DIM, lw=1.0, ls="--",
+            dashes=(8, 4), zorder=3)
 
-# Equipment zone boundary
-ax.plot([EQ_X, EQ_X], [0, CW], color=C_DIM, lw=0.8, ls="--",
-        dashes=(6, 4), zorder=2)
-ax.text(EQ_X + 40, CW - 60, "Equipment\nzone boundary",
-        ha="left", va="top", fontsize=FS_SM - 1, color=C_DIM)
+# Zone labels
+ax.text(ZONE_L_END / 2, C_WID + 120, f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\nshadow-free",
+        ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#805000",
+        fontweight="bold")
+ax.text((ZONE_L_END + ZONE_R_START) / 2, C_WID + 120,
+        f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
+        ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#006000",
+        fontweight="bold")
+ax.text((ZONE_R_START + C_LEN) / 2, C_WID + 120,
+        f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm\nshadow-free",
+        ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#004080",
+        fontweight="bold")
 
 # ── Optical cone (plan view) ──────────────────────────────────────────────────
-yd_vals = np.linspace(0, D_FAR, 300)
-xl_vals = cone_x_left(yd_vals)
-xr_vals = cone_x_right(yd_vals)
+yd_vals = np.linspace(0, FP_Y, 300)
+xl_vals = np.array([cone_left(yd) for yd in yd_vals])
+xr_vals = np.array([cone_right(yd) for yd in yd_vals])
 
-# Fill cone
 cone_xs = np.concatenate([xl_vals, xr_vals[::-1]])
 cone_ys = np.concatenate([yd_vals, yd_vals[::-1]])
-ax.fill(cone_xs, cone_ys, color=C_CONE, alpha=0.45, zorder=2, label="Optical cone")
-ax.plot(xl_vals, yd_vals, color=C_CONE_EDGE, lw=1.2, ls="--", zorder=3)
-ax.plot(xr_vals, yd_vals, color=C_CONE_EDGE, lw=1.2, ls="--", zorder=3)
+ax.fill(cone_xs, cone_ys, color=C_CONE, alpha=0.50, zorder=2)
+ax.plot(xl_vals, yd_vals, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
+ax.plot(xr_vals, yd_vals, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 
 # Film plane line
-ax.plot([0, CL], [D_FAR, D_FAR], color="#2060A0", lw=1.5, ls="-", zorder=4)
-ax.text(CL / 2, D_FAR + 50, f"Film plane  (Yd = {D_FAR} mm)",
-        ha="center", va="bottom", fontsize=FS_SM, color="#2060A0")
+ax.plot([FP_X_L, FP_X_R], [FP_Y, FP_Y], color=C_CL, lw=2.0, zorder=4)
+ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 55,
+        f"Film plane  X={FP_X_L}–{FP_X_R}mm  (Yd={FP_Y}mm)",
+        ha="center", va="bottom", fontsize=FS_SM, color=C_CL)
 
 # Pinhole
-ax.plot(PH_X, PH_YD, "o", color=C_BLOCK, ms=8, zorder=6)
-ax.annotate(f"Pinhole\nX={PH_X}, Yd=0",
-            xy=(PH_X, PH_YD), xytext=(PH_X + 300, -250),
+ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
+ax.annotate(f"Pinhole  X={PH_X}mm",
+            xy=(PH_X, 0), xytext=(PH_X + 250, -300),
             fontsize=FS_SM, color=C_BLOCK, ha="left",
-            arrowprops=dict(arrowstyle="-", color=C_BLOCK, lw=0.7))
+            arrowprops=dict(arrowstyle="-", color=C_BLOCK, lw=0.8))
 
-# Optical axis arrow
-ax.annotate("", xy=(PH_X, D_FAR - 20), xytext=(PH_X, 20),
+# Optical axis
+ax.annotate("", xy=(PH_X, FP_Y - 20), xytext=(PH_X, 20),
             arrowprops=dict(arrowstyle="->", color=C_CL, lw=1.0))
-ax.text(PH_X + 60, D_FAR / 2,
-        f"Optical axis\n{D_FAR}mm", ha="left", va="center",
-        fontsize=FS_SM, color=C_CL)
+ax.text(PH_X + 80, FP_Y / 2, "Optical axis",
+        ha="left", va="center", fontsize=FS_SM, color=C_CL)
 
 # ── Equipment footprints ──────────────────────────────────────────────────────
-PLOTTED_LABELS = {}   # avoid legend duplicates
-
 for eq in EQUIPMENT:
     in_cone = equipment_in_plan_cone(eq)
     edge_color = C_BLOCK if in_cone else C_CLEAR
-    edge_lw = 2.0 if in_cone else 1.2
-    facecolor = eq["color"]
+    edge_lw = 2.2 if in_cone else 1.4
     alpha = 0.75 if in_cone else 0.55
 
     ax.add_patch(mpatches.Rectangle(
         (eq["x"], eq["yd"]), eq["w"], eq["d"],
-        facecolor=facecolor, edgecolor=edge_color,
+        facecolor=eq["color"], edgecolor=edge_color,
         linewidth=edge_lw, alpha=alpha, zorder=4))
 
-    # Small label inside footprint
-    ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] / 2,
-            eq["name"].split(" ×")[0].split(" (")[0],
-            ha="center", va="center",
-            fontsize=max(FS_SM - 2, 5), color="white", zorder=5,
-            fontweight="bold" if in_cone else "normal")
+    # Label inside footprint (skip drum — too narrow in Y)
+    if eq["d"] >= 150 and eq["w"] >= 200:
+        short = eq["name"].split(" (")[0].split(" x")[0]
+        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] / 2,
+                short, ha="center", va="center",
+                fontsize=max(FS_SM - 1.5, 5), color="white", zorder=5,
+                fontweight="bold")
 
-    # Obstruction flag
     if in_cone:
-        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] + 60,
-                "⚠ IN CONE",
-                ha="center", va="bottom", fontsize=FS_SM - 1,
-                color=C_BLOCK, fontweight="bold", zorder=6)
+        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] + 70,
+                "IN CONE", ha="center", va="bottom",
+                fontsize=FS_SM - 1, color=C_BLOCK, fontweight="bold", zorder=6)
 
-# ── Plan labels ───────────────────────────────────────────────────────────────
-ax.text(CL / 2, -250, "PLAN VIEW — TOP-DOWN (Z axis)",
+# ── Dimension labels ──────────────────────────────────────────────────────────
+ax.text(C_LEN / 2, -250, "PLAN VIEW — TOP-DOWN (Z axis)",
         ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
-ax.text(CL / 2, -350,
-        f"Optical cone from Pinhole (X={PH_X}, Yd=0) → Film plane (Yd={D_FAR}mm)",
+ax.text(C_LEN / 2, -350,
+        f"Optical cone: Pinhole (X={PH_X}, Yd=0) → Film plane edges "
+        f"(X={FP_X_L} & X={FP_X_R}, Yd={FP_Y}mm)",
         ha="center", va="top", fontsize=FS_SM, color=C_DIM)
 
-# Long axis dimension
-ax.annotate("", xy=(CL, -320), xytext=(0, -320),
+ax.annotate("", xy=(C_LEN, -320), xytext=(0, -320),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(CL / 2, -280, f"{CL} mm", ha="center", va="bottom",
+ax.text(C_LEN / 2, -280, f"{C_LEN} mm", ha="center", va="bottom",
         fontsize=FS_SM, color=C_DIM)
 
-# Optical depth dimension
-ax.annotate("", xy=(-280, CW), xytext=(-280, 0),
+ax.annotate("", xy=(-350, C_WID), xytext=(-350, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-300, CW / 2, f"{CW} mm", ha="right", va="center",
+ax.text(-370, C_WID / 2, f"{C_WID} mm", ha="right", va="center",
         fontsize=FS_SM, color=C_DIM, rotation=90)
 
-# Legend: cone, clear, obstruction
-for col, lbl in [(C_CONE, "Optical cone"),
-                 (C_CLEAR, "Equipment — CLEAR of cone"),
-                 (C_BLOCK, "Equipment — IN optical cone")]:
-    pass   # using text annotations below
-
-ax.text(PA_X_LO + 50, PA_Y_HI - 60,
-        "RED BORDER = equipment footprint overlaps optical cone\n"
-        "GREEN BORDER = equipment footprint clear of optical cone",
+# Legend box
+ax.text(PA_X_LO + 60, PA_Y_HI - 60,
+        "RED border = equipment inside optical cone (shadow risk)\n"
+        "GREEN border = equipment clear of optical cone",
         ha="left", va="top", fontsize=FS_SM - 0.5, color=C_OUT,
         bbox=dict(boxstyle="round,pad=4", facecolor="#FFFFF0",
                   edgecolor=C_DIM, linewidth=0.6))
@@ -297,120 +317,120 @@ ax.text(PA_X_LO + 50, PA_Y_HI - 60,
 # ═══════════════════════════════════════════════════════════════════════════════
 ax = ax_b
 
-# Container interior fill
-ax.add_patch(mpatches.Rectangle((0, 0), CW, CH,
-             facecolor="#F4F4F4", edgecolor=C_OUT, linewidth=1.6, zorder=1))
+# Container fill
+ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
+             facecolor="#F4F4F4", edgecolor=C_OUT, linewidth=1.8, zorder=1))
 
-# ── Optical cone (side elevation) ─────────────────────────────────────────────
-yd_vals_e = np.linspace(0, D_FAR, 300)
-hb_vals = cone_h_bottom(yd_vals_e)
-ht_vals  = cone_h_top(yd_vals_e)
+# ── Optical cone (elevation) ──────────────────────────────────────────────────
+yd_e = np.linspace(0, FP_Y, 300)
+hb   = np.array([cone_h_bottom(y) for y in yd_e])
+ht   = np.array([cone_h_top(y) for y in yd_e])
 
-cone_xs_e = np.concatenate([yd_vals_e, yd_vals_e[::-1]])
-cone_ys_e = np.concatenate([hb_vals, ht_vals[::-1]])
-ax.fill(cone_xs_e, cone_ys_e, color=C_CONE, alpha=0.45, zorder=2)
-ax.plot(yd_vals_e, hb_vals, color=C_CONE_EDGE, lw=1.2, ls="--", zorder=3)
-ax.plot(yd_vals_e, ht_vals, color=C_CONE_EDGE, lw=1.2, ls="--", zorder=3)
+cone_xs_e = np.concatenate([yd_e, yd_e[::-1]])
+cone_ys_e = np.concatenate([hb, ht[::-1]])
+ax.fill(cone_xs_e, cone_ys_e, color=C_CONE, alpha=0.50, zorder=2)
+ax.plot(yd_e, hb, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
+ax.plot(yd_e, ht, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 
 # Film plane
-ax.plot([D_FAR, D_FAR], [0, CH], color="#2060A0", lw=1.5, zorder=4)
-ax.text(D_FAR + 40, CH / 2, f"Film plane\nYd={D_FAR}mm",
-        ha="left", va="center", fontsize=FS_SM, color="#2060A0")
+ax.plot([FP_Y, FP_Y], [0, C_HGT], color=C_CL, lw=1.8, zorder=4)
+ax.text(FP_Y + 45, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
+        ha="left", va="center", fontsize=FS_SM, color=C_CL)
 
-# Pinhole point
-ax.plot(PH_YD, PH_H, "o", color=C_BLOCK, ms=8, zorder=6)
-ax.text(PH_YD + 80, PH_H + 60,
-        f"Pinhole\nH={PH_H}mm", ha="left", va="bottom",
-        fontsize=FS_SM, color=C_BLOCK)
+# Pinhole
+ax.plot(0, PH_H, "o", color=C_BLOCK, ms=9, zorder=6)
+ax.text(80, PH_H + 70, f"Pinhole  H={PH_H}mm",
+        ha="left", va="bottom", fontsize=FS_SM, color=C_BLOCK)
 
 # Optical axis
-ax.plot([0, D_FAR], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
+ax.plot([0, FP_Y], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
         dashes=(8, 4), zorder=3)
-ax.text(D_FAR / 2, PH_H + 50, "Optical axis", ha="center", va="bottom",
-        fontsize=FS_SM - 1, color=C_CL)
+ax.text(FP_Y / 2, PH_H + 55, "Optical axis",
+        ha="center", va="bottom", fontsize=FS_SM - 1, color=C_CL)
 
 # ── Equipment in elevation ────────────────────────────────────────────────────
-# In side elevation: X axis = Yd (optical depth), Y axis = height
-# Equipment blocks shown at their Yd range and height range.
-# For equipment with multiple Yd positions (stacked), show merged block.
-
+# For overlapping drums in X (same Yd range), offset slightly so labels visible
 for eq in EQUIPMENT:
     in_cone_h = equipment_in_elevation_cone(eq)
     edge_color = C_BLOCK if in_cone_h else C_CLEAR
-    edge_lw = 2.0 if in_cone_h else 1.2
+    edge_lw = 2.2 if in_cone_h else 1.4
+
+    yd_near = eq["yd"]
+    yd_far  = min(eq["yd"] + eq["d"], C_WID)
 
     ax.add_patch(mpatches.Rectangle(
-        (eq["yd"], eq["h_bot"]), eq["d"], eq["h_top"] - eq["h_bot"],
+        (yd_near, eq["h_bot"]), yd_far - yd_near, eq["h_top"] - eq["h_bot"],
         facecolor=eq["color"], edgecolor=edge_color,
         linewidth=edge_lw, alpha=0.65, zorder=4))
 
-    mid_yd = eq["yd"] + eq["d"] / 2
+    mid_yd = (yd_near + yd_far) / 2
     mid_h  = (eq["h_bot"] + eq["h_top"]) / 2
-    label = eq["name"].split(" (")[0]
-    ax.text(mid_yd, mid_h, label,
-            ha="center", va="center",
-            fontsize=max(FS_SM - 2.5, 4.5), color="white", zorder=5,
-            fontweight="bold" if in_cone_h else "normal")
+    label  = eq["name"].split(" (")[0]
+    h_span = eq["h_top"] - eq["h_bot"]
+    if h_span >= 200:
+        ax.text(mid_yd, mid_h, label,
+                ha="center", va="center",
+                fontsize=max(FS_SM - 2, 4.5), color="white", zorder=5,
+                fontweight="bold")
 
 # ── Elevation labels ──────────────────────────────────────────────────────────
-ax.text(CW / 2, -200, "SIDE ELEVATION — along long axis (X)",
+ax.text(C_WID / 2, -220, "SIDE ELEVATION — along long axis (X)",
         ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
-ax.text(CW / 2, -300,
-        f"Optical cone spread in HEIGHT — Pinhole at H={PH_H}mm",
+ax.text(C_WID / 2, -320,
+        f"Cone spread in HEIGHT — Pinhole at H={PH_H}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_DIM)
 
-# Depth axis dimension
-ax.annotate("", xy=(CW, -230), xytext=(0, -230),
+ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(CW / 2, -190, f"{CW} mm (optical depth)",
+ax.text(C_WID / 2, -230, f"{C_WID} mm (optical depth)",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM)
 
-# Height dimension
-ax.annotate("", xy=(-280, CH), xytext=(-280, 0),
+ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-300, CH / 2, f"{CH} mm",
+ax.text(-300, C_HGT / 2, f"{C_HGT} mm",
         ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90)
 
-# ── Shared title / notes ──────────────────────────────────────────────────────
-fig.text(0.5, 0.99,
+
+# ── Title and analysis note ───────────────────────────────────────────────────
+fig.text(0.5, 0.98,
          "TBS-001  —  OPTICAL LINE-OF-SIGHT CLEARANCE DIAGRAM",
          ha="center", va="top", fontsize=FS_LG + 1, color=C_OUT,
          fontweight="bold")
-fig.text(0.5, 0.965,
-         "Amber zone = optical cone.  "
-         "RED border = component footprint or height intersects cone (shadow risk).  "
-         "GREEN border = clear.",
+fig.text(0.5, 0.955,
+         f"Pinhole X={PH_X}mm  |  Film plane X={FP_X_L}–{FP_X_R}mm at Yd={FP_Y}mm  |  "
+         "Amber = optical cone  |  RED border = cone intersection  |  GREEN border = clear",
          ha="center", va="top", fontsize=FS_SM, color=C_DIM)
 
-# ── Analysis note ─────────────────────────────────────────────────────────────
-# Determine which items are flagged
+# Determine flagged items
 plan_flags = [eq["name"] for eq in EQUIPMENT if equipment_in_plan_cone(eq)]
-elev_flags  = [eq["name"] for eq in EQUIPMENT if equipment_in_elevation_cone(eq)]
-both_flags  = [n for n in plan_flags if n in elev_flags]
+elev_flags = [eq["name"] for eq in EQUIPMENT if equipment_in_elevation_cone(eq)]
+both_flags = [n for n in plan_flags if n in elev_flags]
 
 if both_flags:
     note = (f"OBSTRUCTION RISK: {', '.join(both_flags)}.\n"
-            "These items fall within the optical cone in BOTH plan and elevation.\n"
+            "These items fall within the optical cone in both plan and elevation.\n"
             "Reposition or reduce height to clear the cone before fabrication.")
     note_col = C_BLOCK
+    note_bg  = "#FFF0F0"
 else:
-    note = "All equipment clears the optical cone in both plan and elevation. No shadow risk."
+    note = ("All equipment clears the optical cone in both plan and elevation.  "
+            f"End zones X=0–{ZONE_L_END}mm and X={ZONE_R_START}–{C_LEN}mm are provably shadow-free.")
     note_col = C_CLEAR
+    note_bg  = "#F0FFF0"
 
-fig.text(0.5, 0.025, note, ha="center", va="bottom",
+fig.text(0.5, 0.028, note, ha="center", va="bottom",
          fontsize=FS_SM, color=note_col,
-         bbox=dict(boxstyle="round,pad=5", facecolor="#FFF8F8" if both_flags else "#F0FFF0",
+         bbox=dict(boxstyle="round,pad=5", facecolor=note_bg,
                    edgecolor=note_col, linewidth=1.0))
 
 fig.text(0.99, 0.01, "© 2026 Alvin Richards — GNU AGPLv3",
          ha="right", va="bottom", fontsize=FS_SM - 1.5, color=C_DIM, style="italic")
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-plt.savefig("line-of-sight.png",
-            dpi=DPI, bbox_inches="tight",
-            facecolor=BG, edgecolor="none")
+out = f"{DIAGRAMS_DIR}/line-of-sight.png"
+plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
 plt.close(fig)
-print(f"Saved: line-of-sight.png")
+print(f"Saved: {out}")
 if both_flags:
     print(f"  WARNING — Items in optical cone: {', '.join(both_flags)}")
 else:

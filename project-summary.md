@@ -36,7 +36,7 @@ Two independent movement systems work in series, stacking their effects non-line
 **Front board — tilt and swing (±5°)**
 The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207 mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
-**Film plane — 4-corner independent actuation (±42° tilt, ±20° swing)**
+**Film plane — 4-corner independent actuation (±42° tilt, ±28.3° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
 
 **Combined:** the two systems interact non-linearly. Their compound optical projections — modelled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
@@ -79,4 +79,4 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
-| [Equipment Layout](equipment-layout-report.md) | Optical clearance analysis, pinhole wall colonnade layout, IBC stacking system |
+| [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |

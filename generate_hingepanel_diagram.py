@@ -252,9 +252,9 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
 
-    fig.savefig("hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  hingepanel-sheet1.png saved")
+    print("  diagrams/hingepanel-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -535,9 +535,9 @@ def sheet2():
                 "PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 "EQUAL ASPECT  ·  SCALE 1:10 (APPROX)  ·  ALL DIMS IN mm")
 
-    fig.savefig("hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  hingepanel-sheet2.png saved")
+    print("  diagrams/hingepanel-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -789,9 +789,9 @@ def sheet3():
                 "DRUM ELEVATION — SECTION A-A (VIEW ALONG PANEL WIDTH): VERTICAL DRUM, WALKING HEIGHT",
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
-    fig.savefig("hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  hingepanel-sheet3.png saved")
+    print("  diagrams/hingepanel-sheet3.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────

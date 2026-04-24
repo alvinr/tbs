@@ -19,13 +19,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
 | 5. Print washing — water system | $1,457 | $2,072 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
-| 7. Light trap vestibule (S-path box) | $700 | $900 |
-| 8. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 9. Cooling & ventilation | $340 | $420 |
-| 10. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
-| 11. Printmaking tools & consumables | $350 | $500 |
-| 12. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$13,650** | **~$18,150** |
+| 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
+| 8. Cooling & ventilation | $340 | $420 |
+| 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
+| 10. Printmaking tools & consumables | $350 | $500 |
+| 11. Safety & PPE | $120 | $180 |
+| **TOTAL (base build + 50-print run)** | **~$12,950** | **~$17,250** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -263,31 +262,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 7. Light Trap Vestibule
-
-*Source: `electrical-report.md`, `lighttrap-sheet1.png`*
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| RHS steel 40×40mm hot-dip galvanised | 3m lengths for frame | 8 lengths | Metal Supermarkets (Gardena CA) | ~$200 total |
-| Exterior-grade plywood 18mm | 4'×8' sheets, walls and roof | 6 sheets | Home Depot | ~$240 total |
-| M10 × 50mm hex bolts + washers + spring washers | ISO corner casting attachment, 8 off | 1 lot | Fastenal / McMaster-Carr | ~$30 |
-| TEK self-tapping screws | Ply to RHS frame | 1 box | Home Depot | ~$15 |
-| Weatherproof sealant (exterior) | All exterior joints | 3 tubes | Home Depot | ~$24 |
-| Flat black paint (interior, zero sheen) | All interior surfaces, 2 coats | 1 gal | Home Depot / Sherwin-Williams | ~$30 |
-| Exterior door 900×2,000mm | Outward-opening solid panel | 1 | Home Depot (pre-hung) / custom fab | ~$80–$180 |
-| Full-height piano hinge | 2,000mm, stainless | 1 | McMaster-Carr #1580A51 | ~$35 |
-| Compression latch (heavy-duty exterior) | Positive seal when closed | 1 | McMaster-Carr 1765A12 | ~$45 |
-| Rosco Duvetyne 60" wide | 3 layers × 5 yards per layer | 15 yd | Rose Brand (rosebrand.com, Burbank CA) | ~$180 total |
-| Velcro tab rail (hook + loop) | Curtain mounting | 5m | Amazon / craft supplier | ~$25 |
-| 3mm mild steel plate for baffles | 2 baffles: 2,400mm × 1,500mm each | 2 pieces | Metal Supermarkets SoCal | ~$80 |
-| Flat black spray paint (baffles) | All baffle faces | 2 cans | Home Depot | ~$15 |
-
-**Section total: ~$780–$900**
-
----
-
-## 8. Revolving Drum Light Trap — Custom Fabrication
+## 7. Revolving Drum Light Trap — Custom Fabrication
 
 *Source: `light-trap-selection.md` § 3.3 & § 4. Custom-fabricated 750mm steel drum built into the hinged cargo-door panel. Replaces a fixed S-path vestibule; allows single-operator entry/exit at any time during operation without admitting daylight.*
 
@@ -338,11 +313,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Section total: ~$950–$1,450**
 
-*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 7 above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
+*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 
 ---
 
-## 9. Cooling & Ventilation
+## 8. Cooling & Ventilation
 
 *Source: `electrical-report.md`*
 
@@ -379,7 +354,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 10. Printmaking Chemistry — Cyanotype (50 prints)
+## 9. Printmaking Chemistry — Cyanotype (50 prints)
 
 *Source: `chemistry-shopping-list.md`*
 
@@ -412,7 +387,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 11. Printmaking Tools & Consumables
+## 10. Printmaking Tools & Consumables
 
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*
 
@@ -436,7 +411,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 12. Safety & PPE
+## 11. Safety & PPE
 
 *Source: `operating-manual.md`, `electrical-report.md`*
 

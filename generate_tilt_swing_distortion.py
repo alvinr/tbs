@@ -19,7 +19,7 @@ from matplotlib.patches import Rectangle
 
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = 2362          # focal length (container interior width, mm)
-FP_W = 5893       # film plane width (mm)
+FP_W = 3549       # film plane width (mm)  [rev 2: was 2920, was 5893]
 FP_H = 2388       # film plane height (mm)
 
 # ── Cyanotype palette (dark background — matches film-plane distortion renders) ─
@@ -324,7 +324,7 @@ for cfg in CONFIGS:
              'THE BIG SHOEBOX PROJECT — Combined Board+Film Plane Distortion',
              ha='center', va='top', fontsize=9, color='#E4F4FD', fontfamily='monospace')
 
-    out = f'tilt-swing-combined-{label.lower()}.png'
+    out = f'diagrams/tilt-swing-combined-{label.lower()}.png'
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
     plt.close(fig)
     print(f'  → {out}  Done.')
@@ -349,7 +349,7 @@ for idx, (cfg, ax) in enumerate(zip(CONFIGS, axes.flat)):
     label, bt, bs, ft, fs, desc = cfg
     draw_render(ax, bt, bs, ft, fs, label, desc, show_human=True)
 
-out_s = 'tilt-swing-combined-summary.png'
+out_s = 'diagrams/tilt-swing-combined-summary.png'
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
 plt.close(fig_s)
 print(f'  → {out_s}  Done.')

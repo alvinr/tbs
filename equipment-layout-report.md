@@ -1,111 +1,148 @@
-# Equipment Layout — Optical Clearance Redesign
-## TBS-001 — Pinhole Wall Colonnade
+# Equipment Layout — Shadow-Free End-Zone Design
+## TBS-001 — Film Plane Reduction Redesign
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
 
 ---
 
-## 1. The Problem — Original Layout Blocked the Optical Cone
+## 1. Design Principle — Shadow-Free End Zones
 
-The original equipment layout placed three 1,000L IBC totes and ancillary systems
-across the full container width (X=0–2,700mm long axis, Y=100–2,330mm depth from
-pinhole wall). The [line-of-sight analysis](engineering-diagrams.md#13-optical-line-of-sight-clearance)
-confirmed that six items fell inside the optical cone:
+The optical cone from the pinhole narrows as it approaches the pinhole wall and
+widens as it approaches the film plane. Any equipment placed inside the cone casts
+a shadow on the film plane, producing an unexposed void in the image.
 
-| Item | Plan intersection? | Elevation intersection? |
-|------|--------------------|------------------------|
-| Blue IBC ×2 (rear) | ✗ — entered at Yd=1,246mm | ✗ |
-| Brown IBC ×1 | ✗ | ✗ |
-| 55-gal Drum 1 | ✗ | ✗ |
-| 55-gal Drum 2 | ✗ | ✗ |
-| Evap cooler | ✗ | ✗ |
-| Pump manifold | ✗ | ✗ |
+**Solution:** Reduce the active film plane from the full 5,893 mm container width
+to a 4,024 mm span (X=625–4,649mm). This creates two **provably shadow-free end
+zones** — one at each end of the container — where equipment can be placed at any
+depth without entering the optical cone.
 
-Any item in the optical cone casts a shadow on the film plane, producing an
-unexposed void in the image. For a camera where a single exposure covers 140 sq ft
-of muslin, any shadow is unacceptable.
+The black-water drums (2× 55-gal) are relocated to the left end zone (one per Yd
+corner, D-1 near pinhole wall and D-2 near far wall), which frees the right end zone for IBCs only and allows the
+right zone boundary to move inward from X=4,019mm to X=4,649mm — widening the film
+plane by 630mm (rev 2, 2026-04-23).
+
+### Optical Cone (rev 3 geometry)
+
+The pinhole is centred on the new film plane at X=2,637mm. At depth Y from the
+pinhole wall, the cone boundaries are:
+
+```
+X_left(Y)  = 2,637 − 2,012 × Y/2,262    [left cone boundary]
+X_right(Y) = 2,637 + 2,012 × Y/2,262    [right cone boundary]
+```
+
+At the film plane (Y=2,262mm): X_left=625mm, X_right=4,649mm — exactly the
+film plane edges. The cone never extends beyond these X values at any depth ≤ 2,262mm.
+
+### Zone Definitions
+
+| Zone | X range | Shadow-free? | Equipment assigned |
+|------|---------|--------------|--------------------|
+| **Left end zone** | 0–625mm | YES at all depths | Light trap drum, 55-gal drum D-1 (Yd=25–605mm), 55-gal drum D-2 (Yd=1,757–2,337mm) |
+| **Optical zone** | 625–4,649mm | NO | Film plane, rails only |
+| **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks only |
+| **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
+
+**Shadow-free proof:**
+- Left zone (X=0–625): cone left boundary ≥ 625mm at all depths Y ≤ 2,262mm.
+  All left-zone equipment has X_right ≤ 600mm — well inside the zone. ✓
+- Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
+  All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
+- Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓
 
 ---
 
-## 2. The Fix — Pinhole Wall Colonnade
+## 2. Equipment Positions
 
-**Core principle:** The optical cone is narrowest near the pinhole wall (Yd=0).
-At depth Yd, the cone spans only a central band:
+### 2.1 Left End Zone — X=0–625mm (shadow-free at all depths)
 
-```
-X_left(Yd)  = 2,946 × (1 − Yd/2,262)     [left cone boundary]
-X_right(Yd) = 2,946 + 2,947 × (Yd/2,262) [right cone boundary]
-```
+| Item | X (mm) | Yd (mm) | H (mm) | Notes |
+|------|--------|---------|--------|-------|
+| Light trap drum | −375–375 | 806–1,556 (centred at CW/2=1,181mm) | 0–2,000 | Centred at X=0 (spans container wall); rotary drum entry |
+| 55-gal drum D-1 (near) | 20–600 | 25–605 | 0–870 | CX=310mm; pinhole wall corner; gap to light trap = 201mm |
+| 55-gal drum D-2 (far) | 20–600 | 1,757–2,337 | 0–870 | CX=310mm; far wall corner; gap to light trap = 201mm; 25mm from far wall |
 
-By keeping all equipment within **Yd ≤ 1,220mm** of the pinhole wall, and
-positioning it in **two wings that flank the pinhole in the X direction**, every
-item stays outside the cone.
+### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
 
-At Yd=1,220mm the cone spans X=1,470–4,424mm — a 2,954mm wide band. The two
-equipment wings sit entirely outside this band:
-- **LEFT WING:** X=0–2,380mm — equipment ends at X=2,380mm, cone left boundary
-  at Yd=1,220mm is X=1,470mm. Items must have their **right edge** < 1,470mm
-  for the deepest items, or shallower depth if placed closer to the pinhole.
-- **RIGHT WING:** X=3,900–5,893mm — equipment left edge ≥ 3,900mm, cone right
-  boundary at Yd=680mm (drum depth) is X=3,831mm.
+| Item | X (mm) | H (mm) | Notes |
+|------|--------|--------|-------|
+| Evaporative cooler | 700–1,300 | 0–800 | 12V DC 80W; protrudes 350mm from wall into Yd=0–350mm |
+| Electrical panel | 2,050–2,350 | 900–1,500 | IP65, wall-mount |
+| Battery bank (2× 100Ah LiFePO4) | 2,050–2,550 | 0–500 | Wall-bracket below panel |
+| Solar charge controller | Within panel | — | Mounted inside enclosure |
+| Pump manifold (3-circuit) | 2,400–2,700 | 200–600 | Wall-bracket |
+| Cable trunking | Along wall face, H=1,800mm | — | Full length |
 
-The result: **optical zone Yd=1,220–2,262mm is completely clear**
-across the full container width. The line-of-sight diagram with the new layout
-shows zero obstructions.
+### 2.3 Optical Zone — X=625–4,649mm
 
-**Floor plan — new layout:**
+Nothing at floor level. Rail slots in floor/ceiling only. Film plane frame
+spans this zone at depth Y=2,262mm (nominal far position).
 
-![TBS-001 Container Floor Plan — Pinhole Wall Colonnade](assets/container-floorplan.png)
+### 2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)
+
+IBCs only — right-justified flush to the far end wall. All three IBCs occupy a
+single X column at X=4,674mm (25mm clearance from zone boundary).
+
+| Item | X (mm) | Yd (mm) | H (mm) | Notes |
+|------|--------|---------|--------|-------|
+| Blue IBC stack ×2 (600L each) | 4,674–5,893 | 100–1,116 | 0–2,020 | Y-stacked front; stacked frame |
+| Brown IBC ×1 (600L) | 4,674–5,893 | 1,141–2,157 | 0–1,010 | Y-stacked rear (behind Blue stack) |
+
+---
+
+## 3. Floor Plan and Line-of-Sight Diagrams
+
+**Floor plan — new end-zone layout:**
+
+![TBS-001 Container Floor Plan — End-Zone Layout](assets/container-floorplan.png)
 
 **Optical line-of-sight — all clear:**
 
 ![TBS-001 Optical Line-of-Sight Clearance — New Layout](assets/line-of-sight.png)
 
----
-
-## 3. New Equipment Positions
-
-### 3.1 Left Wing (X=0–2,380mm, Yd=0–1,116mm)
-
-| Item | X (mm) | Yd (mm) | H (mm) | Cone clearance |
-|------|--------|---------|--------|---------------|
-| Blue IBC stack ×2 (600L each) | 100–1,319 | 100–1,116 | 0–2,020 | Right edge 1,319 < X_left(1,116)=1,494mm ✓ CLEAR (drum repositioned to Y=1,600mm) |
-| Evaporative cooler | 1,380–1,980 | 100–450 | 0–800 | Right edge 1,980 < X_left(450)=2,360 ✓ |
-| Pump manifold | 1,980–2,380 | 100–400 | 0–500 | Right edge 2,380 < X_left(400)=2,424 ✓ |
-| Electrical panel | 2,050–2,350 | 0–80 | 900–1,500 | Wall-mounted (Yd=0) — no cone risk ✓ |
-
-### 3.2 Right Wing (X=3,900–5,893mm, Yd=0–1,116mm)
-
-| Item | X (mm) | Yd (mm) | H (mm) | Cone clearance |
-|------|--------|---------|--------|---------------|
-| 55-gal drum stack ×2 | 3,900–4,480 | 100–680 | 0–1,740 | Left edge 3,900 > X_right(680)=3,831 ✓ |
-| Brown IBC ×1 (600L) | 4,674–5,893 | 100–1,116 | 0–1,010 | Left edge 4,674 > X_right(1,116)=4,400 ✓ |
-
-### 3.3 Pinhole Wall Face (Yd=0 surface)
-
-All electrical and plumbing runs on the **pinhole long wall face** — no
-conduit or cabling enters the optical zone:
-
-| System | Position | Notes |
-|--------|----------|-------|
-| Main electrical enclosure | X=2,050–2,350mm, H=900–1,500mm | IP65, flush-mount |
-| Battery bank (2× 100Ah LiFePO4) | Below enclosure, H=0–500mm | Wall-bracket mount |
-| Solar charge controller | Within enclosure | — |
-| Plumbing manifold (3-circuit) | X=2,400–2,600mm, H=200–600mm | Wall-bracket |
-| Fill ports & drain valves | Accessible from pinhole wall side | No floor intrusion |
-| Circuit conduit | Horizontal trunking, Y=0 wall face, H=1,800mm | Never crosses optical zone |
+The line-of-sight analysis confirms zero equipment items intersect the optical
+cone in either the plan (top-down) or elevation (side) view.
 
 ---
 
-## 4. Why Stack IBCs — The Height Problem
+## 4. Why IBC Y-Stacking (Front-to-Back)
 
-**Current 1,000L IBC (h=1,163mm):** Stacking two gives 2,326mm total — only
-62mm below the 2,388mm container ceiling. Under road vibration this is unsafe
-and violates IBC manufacturer stacking guidelines for transport.
+In the previous colonnade layout, IBCs were placed side-by-side in the X direction
+at shallow Yd depth. In the new layout the entire right end zone is X-clear from
+X=4,649mm to the end wall — all tanks can occupy the same X column and be arranged
+along the Y (depth) axis instead.
 
-**Solution: Switch to 600L IBCs (h≈1,010mm).** Stacking two gives 2,020mm —
-368mm ceiling clearance. This is safe for transport (fully loaded) within a
-self-contained stacking frame.
+| Arrangement | X span used | Max Y depth |
+|-------------|------------|------------|
+| Old (side-by-side X) | 2,400 mm | 1,116 mm |
+| **New (Y-stacked, right-justified)** | **1,219 mm** | **2,157 mm** |
+
+Y-stacking gives a 1,219mm X footprint (= IBC cage width), right-justified to the
+far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the IBCs
+fit with 25mm clearance on the zone boundary side.
+
+---
+
+## 5. IBC Stacking Frame — Design Specification
+
+A welded mild steel frame holds the two 600L Blue IBCs, one above the other,
+as a single unit. The frame provides lashing points for transport and a
+removable access panel for the lower IBC drain valve.
+
+| Item | Specification |
+|------|--------------|
+| Frame material | 50×50×3mm RHS mild steel |
+| Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
+| Frame footprint | 1,350mm × 1,150mm (IBC footprint + 65mm per side) |
+| Total loaded height | 2,020mm (IBC ×2) — 368mm ceiling clearance ✓ |
+| Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
+| Access gate | Bolted removable panel at H=0–300mm (lower IBC drain valve access) |
+| Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
+| Surface finish | Grey oxide primer + flat black powder coat (interior) |
+| Approx. weight | 45–60kg (frame alone) |
+| Approx. cost | USD $400–$600 (local mild steel fabrication) |
+
+**Why 600L IBCs, not 1,000L:**
 
 | IBC type | H (mm) | Stacked pair | Ceiling clearance | Transport safe? |
 |----------|--------|--------------|-------------------|----------------|
@@ -113,28 +150,8 @@ self-contained stacking frame.
 | **600L** | **1,010** | **2,020mm** | **368mm** | **YES** |
 | 800L | 1,116 | 2,232mm | 156mm | Marginal |
 
----
-
-## 5. IBC Stacking Frame — Design Specification
-
-A welded mild steel frame holds the two 600L IBCs, one above the other,
-as a single unit. The frame provides lashing points for transport and a
-removable access panel for the lower IBC drain valve.
-
-**Sheet 1 — Stacking Frame Assembly:**
-
-| Item | Specification |
-|------|--------------|
-| Frame material | 50×50×3mm RHS mild steel |
-| Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
-| Frame footprint | 1,350mm × 1,150mm (IBC footprint + 65mm per side) |
-| Total loaded height | 2,020mm (IBC ×2) + 1,060mm frame platform = 2,070mm with frame base |
-| Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
-| Access gate | Bolted removable panel at H=0–300mm (lower IBC drain valve access) |
-| Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
-| Surface finish | Grey oxide primer + flat black powder coat (interior) |
-| Approx. weight | 45–60kg (frame alone) |
-| Approx. cost | USD $400–$600 (local mild steel fabrication) |
+**Stacking two 600L IBCs gives 2,020mm height — 368mm ceiling clearance**, safe
+for road transport with full load.
 
 **Raw material suppliers:**
 
@@ -145,197 +162,84 @@ removable access panel for the lower IBC drain valve.
 | M12 bolts (access gate, ×8) | McMaster-Carr or local hardware | SS A2-70 |
 | Anti-slip platform mat | McMaster-Carr #6009K14 | 12mm rubber sheet, 1.2m × 1.0m |
 
-**Transport protocol:**
+---
 
-1. Drain both IBCs before transport, or reduce fill to ≤25% (250L per unit) per
-   manufacturer guidelines for road vibration
-2. Lash each IBC tier independently with 32mm polyester strap (Cordstrap or
-   equivalent, WLL ≥ 1,600kg), 2× straps per tier crossing diagonally
-3. Anti-slip 12mm rubber mat between frame base and container floor
-4. 4× container floor lashing points engaged (D-rings welded to container floor
-   at X=100, X=1,319mm — installed during container conversion)
+## 6. 55-Gallon Drum Left-Zone Placement
+
+The two 55-gal drums are placed one per Yd corner of the left end zone — D-1 near
+the pinhole wall and D-2 near the far wall. The light trap drum (Yd=806–1,556mm)
+naturally divides the zone into two clear 201mm-gap corners. Both drums share
+CX=310mm and have identical X footprints.
+
+| Parameter | D-1 (near, pinhole wall corner) | D-2 (far, film plane corner) |
+|-----------|--------------------------------|------------------------------|
+| Centre X | 310mm | 310mm |
+| Centre Yd | 315mm | 2,047mm |
+| Footprint | Ø580mm (X=20–600mm, Yd=25–605mm) | Ø580mm (X=20–600mm, Yd=1,757–2,337mm) |
+| Height | 870mm | 870mm |
+| Ceiling clearance | 2,388 − 870 = 1,518mm ✓ | 2,388 − 870 = 1,518mm ✓ |
+| X zone check | X_right=600mm < 625mm boundary ✓ | X_right=600mm < 625mm boundary ✓ |
+| Yd vs light trap | Yd_hi=605mm; gap=201mm ✓ | Yd_lo=1,757mm; gap=201mm ✓ |
+| Yd vs far wall | — | Yd_hi=2,337mm; 25mm clearance ✓ |
+
+Neither drum requires a stacking cradle. Access to each drum is from the side (Yd
+direction). D-1 has ~1.5m of clear floor between it and the light trap drum. D-2
+sits against the far wall with 25mm clearance.
+
+**Lashing:** 25mm polyester strap (WLL ≥ 1,600kg) × 2 per drum, crossed diagonally
+over the drum top and anchored to D-rings in the container floor — one lash set per
+drum (4 straps total).
 
 ---
 
-## 6. Alternative Tank Options Evaluated
+## 7. Plumbing and Electrical — Pinhole Wall Routing
 
-| Option | Footprint (mm) | Height | Capacity | Assessment |
-|--------|---------------|--------|---------|------------|
-| **600L IBC (recommended)** | 1,219×1,016 | **1,010** | 600L | Best balance — stacks at 2,020mm; standard cage frame |
-| 800L IBC | 1,219×1,016 | 1,116 | 800L | Stacks at 2,232mm — 156mm clearance; acceptable |
-| 1,000L IBC (current) | 1,219×1,016 | 1,163 | 1,000L | Cannot stack safely — only 62mm ceiling clearance |
-| Norwesco 500-gal low-profile | 2,400×2,337 | 435 | 1,893L | Footprint exceeds container interior width (2,362mm) |
-| Rectangular HDPE tank 500L | ~1,200×800 | ~900 | 500L | Non-standard; chemical compatibility check required |
-| Horizontal 55-gal drum cradle | Ø585×870 horizontal | ~585 | 208L | Reduces height but increases footprint length |
+All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
+runs through the optical zone.
 
-**Recommendation:** 3× 600L IBCs total (2× Blue, 1× Brown) + 2× 55-gal drums.
+**Plumbing manifold:** 3-circuit distribution header (Wash 1, Wash 2, Waste)
+wall-mounted at X=2,400–2,700mm, H=200–600mm. Hose runs drop vertically from
+manifold to IBCs in the right end zone. Maximum hose run: ~5.5m (manifold to
+Brown IBC at Yd=1,141mm — along pinhole wall then along right end wall).
+
+**Electrical conduit:** 25mm PVC trunking, horizontal at H=1,800mm, along the
+full container length on the pinhole wall face. Branch drops at each circuit
+termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
+10 AWG wire.
+
+**Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
+pinhole wall at X=2,637mm (pinhole side), H=400mm.
+
+---
+
+## 8. Water Capacity Summary
 
 | Tank | Qty | Capacity | Role |
 |------|-----|---------|------|
 | 600L Blue IBC (stacked ×2) | 2 | 1,200L | Clean wash water |
 | 600L Brown IBC | 1 | 600L | Recycled wash / fix |
-| 55-gal drum (stacked ×2) | 2 | 416L | Waste (sealed) |
+| 55-gal drum | 2 | 416L | Waste (sealed) |
 | **Total** | — | **2,216L** | — |
 
-2,216L supports **7–8 prints per resupply** with 40% water recycling (vs. the
-original 3,000L design capacity of ~10 prints). To restore 10-print capacity,
-add a 4th 600L IBC (2,816L total → 9–10 prints).
-
----
-
-## 7. 55-Gallon Drum Stacking
-
-Standard closed-head 55-gallon drums are rated for vertical stacking when chimed
-rims are engaged. The lower drum's chime supports the upper drum's bottom.
-Two drums stacked: 2 × 870mm = 1,740mm — 648mm clearance from container ceiling.
-
-For additional stability during transport, a simple two-level drum stacking rack
-(welded steel channel, ~$150 fabricated locally) can replace direct chime-on-chime
-stacking. Lash as for IBCs with 25mm polyester strap.
-
----
-
-## 8. Plumbing and Electrical — Pinhole Wall Routing
-
-All services route along the pinhole long wall face (Yd=0). No conduit, pipe, or
-cable runs through the optical zone.
-
-**Plumbing manifold:** 3-circuit distribution header (Wash 1, Wash 2, Waste)
-wall-mounted at X=2,400–2,600mm, H=200–600mm. Hose runs drop vertically to
-IBCs and pump. No hose crosses the container interior beyond Yd=1,220mm.
-
-**Electrical conduit:** 25mm PVC trunking, horizontal at H=1,800mm, running the
-full container length on the pinhole wall face. Branch drops at each circuit
-termination. Circuit lengths from [Electrical Report](electrical-report.md):
-- Fan exhaust (far end): ~8m run, along pinhole wall face → up ceiling corner rail
-- All other circuits: ≤6m, entirely within pinhole wall face zone
-
-**Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall, centred at X=2,946mm (pinhole side), H=400mm.
-
----
-
-## 9. Impact on Water System Capacity
+2,216L supports **7–8 prints per resupply** with 40% water recycling.
 
 See [Processing System Report](water-system-report.md) for full water circuit design.
-The colonnade layout changes tank types but not the circuit topology or chemistry.
-
-| Metric | Original | New (3× 600L IBC) | New + 4th IBC |
-|--------|---------|-------------------|---------------|
-| Clean water | 2,000L (2×1,000L) | 1,200L (2×600L stacked) | 1,800L (3×600L stacked) |
-| Recycled water | 1,000L (1×1,000L) | 600L (1×600L) | 600L |
-| Waste drums | 416L (2×55-gal) | 416L | 416L |
-| Total capacity | ~3,416L | ~2,216L | ~2,816L |
-| Prints per resupply | ~10 | ~7–8 | ~9–10 |
-
-The 3-IBC colonnade layout is the baseline. The 4-IBC option (adding a 4th 600L
-IBC to the right wing at X=4,674–5,893mm, stacked on the Brown IBC) restores full
-10-print capacity if required.
 
 ---
 
-## 10. Brown IBC Floor Runner — Transport Counterbalance System
+## 9. Summary
 
-### 10.0 Drum–IBC Clearance — Drum Centre Repositioned
-
-**Problem:** If the revolving drum centre is at Y=1,181mm (container centreline),
-its plan-view footprint spans Y=806–1,556mm. This overlaps with the Blue IBC at
-Y=100–1,116mm and X=0–375mm (drum protrusion), creating a physical conflict.
-
-**Fix:** The drum centre is repositioned to **Y=1,600mm** (toward the far wall,
-419mm from the container centreline). This shifts the drum footprint to
-Y=1,225–1,975mm — entirely outside the equipment colonnade (IBC max Y=1,116mm).
-Clearance = 1,225−1,116 = **109mm** ✓.
-
-At this position, occupants enter the container at Y=1,600mm depth from the
-pinhole wall — in the optical clear zone (Y>1,220mm). This keeps foot traffic
-out of the equipment colonnade and away from the optical zone equipment.
-
-**Impact on panel drawings:** The drum centre shifts from CW/2=1,181mm to
-1,600mm on the hinged panel (Sheet 1 and Sheet 2). The drum's horizontal
-dimension lines on those sheets need to be updated.
-
----
-
-### 10.1 The Problem — Weight Asymmetry During Transport
-
-The LEFT WING carries the Blue IBC stack (2× 600L = 1,200L capacity; loaded:
-~1,200 kg) at X=380–1,599mm. The RIGHT WING carries the Brown IBC (600L = ~600 kg)
-at X=4,674–5,893mm and the drum stack (2× 55-gal = ~416L = ~416 kg) at
-X=3,900–4,480mm.
-
-With both sides fully loaded, the weight distribution is roughly balanced along
-the long axis. However, during transit with tanks partially filled or one wing
-empty, significant lateral weight imbalance can occur.
-
-More importantly, the Brown IBC (RIGHT WING, X=4,674mm) is at the far end of the
-container. To improve lateral balance during road transport, the Brown IBC should
-be moved to the LEFT WING side — counterbalancing the Blue IBC stack.
-
-### 10.2 Solution — Floor Slide Rail System
-
-The Brown IBC sits on a **welded steel floor runner / slide rail** that allows it
-to be slid from its operational position (RIGHT WING, X=4,674mm) to a transport
-position (LEFT WING, X≈1,600mm), where it counterbalances the Blue IBCs.
-
-| Position | X range | Use case |
-|----------|---------|----------|
-| Operational | 4,674–5,893mm (RIGHT WING) | During operation — optical clearance maintained |
-| Transport | ~1,600–2,819mm (centre-left) | During road transport — weight balance |
-
-**Operational constraint:** In the operational position (X=4,674mm) the Brown IBC
-clears the optical cone: Yd_max(left_edge=4,674) = 2,262 × (4,674−2,946)/2,947
-= 2,262 × 0.586 = 1,328mm > 1,016mm (IBC depth) ✓
-
-**Transport constraint:** In transport position (X≈1,600mm), all tanks are drained
-or filled to ≤25%. The IBC footprint (1,219mm L) does not interfere with the
-Blue IBC stacking frame (right edge at X=1,599mm) when positioned at X≥1,620mm.
-
-### 10.3 Runner Specification
-
-| Item | Specification |
-|------|--------------|
-| Rail type | 2× cold-drawn steel channel (100×50×5mm PFC), floor-bolted |
-| Rail span | X=380–5,893mm (full usable length of container floor) |
-| Rail gauge | 1,016mm (matching IBC cage outer footprint) |
-| IBC slide frame | Welded 50×50×3mm RHS base pallet with UHMWPE slider pads |
-| Locking pins | 20mm dia. spring-loaded locking pin (operational) + transport position |
-| Locking holes | 2× positions: X=4,674mm (operational) + X=1,620mm (transport) |
-| UHMWPE pads | 200×50mm × 10mm thick, 4× per corner = 16 pads total |
-| Load rating | 750kg (full 600L IBC) — PFC channel rated at 1,200 kg/m continuous |
-| Approx. cost | USD $300–$450 (steel channel + fabrication, local) |
-
-**Suppliers:**
-
-| Item | Supplier | Notes |
-|------|----------|-------|
-| 100×50×5mm PFC channel | Pacific Coast Steel, Santa Fe Springs CA | A36; ~$6/linear foot |
-| UHMWPE slider pads | McMaster-Carr #8685K22 | 10mm thick, 200×100mm sheet, cut to size |
-| 20mm spring pin (×2) | McMaster-Carr #90272A150 | 20mm dia., 80mm length |
-
-### 10.4 Transport Protocol — Brown IBC
-
-1. Drain Brown IBC to ≤25% (≤150L) before transport
-2. Release operational locking pin (X=4,674mm position)
-3. Slide Brown IBC left along rail to transport position (X=1,620mm)
-4. Engage transport locking pin
-5. Lash IBC to container floor D-rings with 32mm polyester strap
-6. Confirm total centre-of-gravity: Blue IBCs (X≈990mm centroid) + Brown IBC
-   (X≈2,229mm centroid) + Drums (X≈4,190mm centroid) — acceptable for road transport
-
----
-
-## 11. Summary of Changes
-
-| System | Before | After |
-|--------|--------|-------|
-| Equipment zone concept | X=0–2,700mm (by long axis) | Yd=0–1,220mm (by depth from pinhole wall) |
-| Blue IBCs | 2× 1,000L, side by side in Yd | 2× 600L, stacked vertical, LEFT WING X=100–1,319mm |
-| Brown IBC | 1× 1,000L, X=1,380mm | 1× 600L, RIGHT WING X=4,674mm |
-| 55-gal drums | 2× floor-standing, Yd=1,310mm | 2× stacked, RIGHT WING X=3,900mm |
-| Evap cooler | X=1,380mm, Yd=1,980mm | X=1,380mm, Yd=100mm (pinhole side) |
-| Pump manifold | X=2,050mm, Yd=1,980mm | X=1,980mm, Yd=100mm |
-| Electrical panel | Short wall X=0 | Pinhole long wall, flush-mount |
-| Items in optical cone | 6 | **0** |
-| Max equipment depth | Yd=2,330mm | **Yd=1,116mm** |
-| Optical clear zone | Partial (vignetting) | **Full — Yd=1,220–2,262mm clear** |
+| Parameter | Old (colonnade) | New (end-zone) |
+|-----------|----------------|----------------|
+| Equipment zone concept | Yd=0–1,220mm depth band | X=0–625mm and X=4,649–5,893mm end zones |
+| Pinhole position | X=2,946mm | **X=2,637mm** (centred on active FP) |
+| Active film plane width | 5,893mm | **4,024mm** (X=625–4,649mm) |
+| Rail positions | X=200mm, X=5,693mm | **X=625mm, X=4,649mm** |
+| Rail span | 5,493mm | **4,024mm** |
+| Max swing angle | 20.3° | **28.3°** |
+| Blue IBCs | Left side, X=100–1,319mm | Right end zone, X=4,674mm, Y-stacked |
+| Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, Y behind Blue |
+| 55-gal drums | Right side, X=3,900mm | **Left end zone, CX=310mm, D-1 Yd=25–605mm, D-2 Yd=1,757–2,337mm** |
+| Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=700–1,300mm** |
+| Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
+| Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |

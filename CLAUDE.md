@@ -29,11 +29,11 @@ site/                    ← built output — gitignored, never commit
 ## Workflow: Adding a New Document
 
 1. Write `<name>.md` in the project root.
-2. If drawings are needed: write `generate_<name>.py` → outputs `<name>-sheet1.png`, `<name>-sheet2.png`, etc.
+2. If drawings are needed: write `generate_<name>.py` → outputs to `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc. (all generated PNGs go into `diagrams/`).
 3. Register the `.md` in `publish.sh` → `MD_FILES` array.
-4. Register any new `.png` files in `publish.sh` → `IMG_FILES` array.
+4. Register any new `.png` files in `publish.sh` → `DIAG_FILES` array (for generated diagrams) or `IMG_FILES` (for root-only images like logos).
 5. Register the `.md` in `setup_docs.py` → `MD_FILES` list (controls nav title).
-6. Register any new `.png` files in `setup_docs.py` → `IMAGE_FILES` list.
+6. Register any new `.png` files in `setup_docs.py` → `DIAG_IMAGE_FILES` list (for generated diagrams) or `ROOT_IMAGE_FILES` (for root-only images).
 7. Add a row to the `INDEX_MD` table in `setup_docs.py`.
 8. Add a nav entry to `mkdocs.yml` → `nav:` block.
 9. Add a row to `docs/index.md` → Documents table.
@@ -96,10 +96,15 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 | Focal length | 2,362 mm | Container interior depth |
 | Optimal pinhole Ø | 2.17 mm | Rayleigh: d = 1.9√(fλ), λ=550nm |
 | f-number | f/1088 | f / d |
-| Image plane | 5,893 × 2,388 mm | Container interior face |
+| Container interior | 5,893 × 2,388 mm | Full interior face |
+| Film plane (active) | 4,024 × 2,388 mm | X=625–4,649mm (shadow-free zone) |
+| Pinhole X position | 2,637 mm | Centre of active film plane (625 + 4,024/2) |
+| Rail left X | 625 mm | Left rail / film plane left edge |
+| Rail right X | 4,649 mm | Right rail / film plane right edge |
+| Rail span | 4,024 mm | RAIL_X_R − RAIL_X_L |
 | Board tilt 5° → image shift | 207 mm | 2362 × tan(5°) |
 | Film plane max tilt | ±42° | 4-corner mechanism hard stop |
-| Film plane max swing | ±20° | 4-corner mechanism hard stop |
+| Film plane max swing | ±28.3° | arctan(2162/4024) — wider rail span vs same Y travel |
 | Tilt-swing board max | ±5.3° | Screw shoulder hard stop |
 
 ---

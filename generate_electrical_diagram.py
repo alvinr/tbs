@@ -361,7 +361,7 @@ def draw_sheet1():
                 "Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
                 "Not to scale")
 
-    plt.savefig("electrical-sheet1.png", dpi=150, bbox_inches="tight",
+    plt.savefig("diagrams/electrical-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
@@ -385,6 +385,21 @@ def draw_sheet1():
 
 def draw_sheet2():
     from matplotlib.patches import Polygon as MplPolygon
+    from tbs_constants import (
+        C_LEN as TBS_C_LEN, C_WID as TBS_C_WID,
+        PH_X as TBS_PH_X,
+        FP_X_L, FP_X_R,
+        ZONE_L_END, ZONE_R_START,
+        EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
+        EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
+        IBC_COL_X, IBC_W, IBC_D,
+        BLUE_IBC_Y, BROWN_IBC_Y,
+        DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
+        DRUM_LZ_CX, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+        DRUM_FZ_CX, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+        DRUM_CX, DRUM_D, DRUM_R,
+        DIAGRAMS_DIR,
+    )
 
     FW, FH = 24.0, 14.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
@@ -418,18 +433,25 @@ def draw_sheet2():
     OX = 2.5   # drawing x of container left edge (cargo door side)
     OY = 4.5   # drawing y of container bottom edge (pinhole wall)
 
-    C_LEN   = 5898   # mm  container interior length  (horizontal in plan)
-    C_WID   = 2362   # mm  container interior width = optical depth (vertical)
-    WT_MM   = 120    # mm  schematic wall thickness
+    C_LEN   = TBS_C_LEN    # 5893 mm container interior length
+    C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
+    WT_MM   = 120           # mm schematic wall thickness
 
-    PH_X_MM = 2946   # mm  pinhole X along long axis (centred on container)
-    COLN_MM = 1220   # mm  colonnade boundary depth from pinhole wall
+    PH_X_MM = TBS_PH_X     # 2637 mm — centred on active film plane (was 2560, was 2946)
 
-    clen   = C_LEN * S          # 11.796 drawing units
-    cwid   = C_WID * S          # 4.724  drawing units
-    wt     = WT_MM * S          # 0.24   drawing units
-    ph_x   = OX + PH_X_MM * S  # 8.392  drawing units (pinhole x)
-    coln_y = OY + COLN_MM * S  # colonnade boundary y in drawing
+    # Zone boundaries
+    ZONE_L  = ZONE_L_END   # 625 mm — left end zone right boundary
+    ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
+
+    clen   = C_LEN * S     # drawing units
+    cwid   = C_WID * S     # drawing units
+    wt     = WT_MM * S     # drawing units
+    S_yd   = (cwid - 2*wt) / C_WID  # Yd scale: maps yd=0→OY+wt, yd=C_WID→OY+cwid-wt
+    ph_x   = OX + PH_X_MM * S  # pinhole x in drawing coords
+    zone_l_x = OX + ZONE_L * S   # left zone boundary x
+    zone_r_x = OX + ZONE_R * S   # right zone boundary x
+    fp_l_x   = OX + FP_X_L * S   # film plane left edge x
+    fp_r_x   = OX + FP_X_R * S   # film plane right edge x
 
     # ── Container shell ───────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((OX, OY), clen, cwid,
@@ -455,44 +477,60 @@ def draw_sheet2():
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
             fontsize=8.0, ha="center", va="top", color=C_DIM, style="italic")
 
-    # ── Optical cone — pinhole to image plane ─────────────────────────────────
-    # In plan view the cone is a triangle: apex at pinhole (bottom wall),
-    # base spanning the full image plane width (top wall).
+    # ── Zone fills (shadow-free end zones + optical zone) ────────────────────
+    ax.add_patch(mpatches.Rectangle(
+                 (OX+wt, OY+wt), ZONE_L*S - wt, cwid-2*wt,
+                 fc="#FFF0E0", ec="none", alpha=0.55, zorder=4))   # left end zone
+    ax.add_patch(mpatches.Rectangle(
+                 (zone_l_x, OY+wt), (ZONE_R-ZONE_L)*S, cwid-2*wt,
+                 fc="#F0FFF0", ec="none", alpha=0.45, zorder=4))   # optical zone
+    ax.add_patch(mpatches.Rectangle(
+                 (zone_r_x, OY+wt), (C_LEN-ZONE_R)*S, cwid-2*wt,
+                 fc="#E8F0FF", ec="none", alpha=0.55, zorder=4))   # right end zone
+
+    # Zone boundary lines
+    for zx, zlabel in [(zone_l_x, f"X={ZONE_L}mm"), (zone_r_x, f"X={ZONE_R}mm")]:
+        ax.plot([zx, zx], [OY+wt, OY+cwid-wt], color=C_DIM, lw=1.2, ls="--",
+                zorder=7)
+        ax.text(zx, OY+cwid-wt+0.08, zlabel, ha="center", va="bottom",
+                fontsize=6.5, color=C_DIM)
+
+    ax.text(OX + ZONE_L*S/2, OY + cwid - wt - 0.18,
+            "LEFT\nEND ZONE", ha="center", va="top", fontsize=7.0,
+            color="#805000", fontweight="bold", zorder=5)
+    ax.text(OX + (ZONE_L+ZONE_R)/2*S, OY + cwid - wt - 0.18,
+            "OPTICAL ZONE\n(film plane only)", ha="center", va="top", fontsize=7.0,
+            color="#006000", fontweight="bold", zorder=5)
+    ax.text(OX + (ZONE_R+C_LEN)/2*S, OY + cwid - wt - 0.18,
+            "RIGHT\nEND ZONE", ha="center", va="top", fontsize=7.0,
+            color="#004080", fontweight="bold", zorder=5)
+
+    # ── Optical cone — pinhole to new film plane edges ────────────────────────
     cone_verts = [
-        (ph_x,        OY + wt),          # pinhole point on bottom long wall
-        (OX + wt,     OY + cwid - wt),   # top-left interior corner
-        (OX+clen-wt,  OY + cwid - wt),   # top-right interior corner
+        (ph_x,    OY + wt),          # pinhole on bottom long wall
+        (fp_l_x,  OY + cwid - wt),   # film plane left edge
+        (fp_r_x,  OY + cwid - wt),   # film plane right edge
     ]
     ax.add_patch(MplPolygon(cone_verts, closed=True,
-                fc="#FFE8C0", ec="none", alpha=0.30, zorder=4))
-    ax.text(ph_x, OY + cwid * 0.65,
+                fc="#FFE8C0", ec="none", alpha=0.40, zorder=5))
+    ax.text(ph_x, OY + cwid * 0.60,
             "OPTICAL CONE — keep clear",
             ha="center", va="center", fontsize=8.0,
-            color="#8B5A00", style="italic", alpha=0.80, zorder=5)
+            color="#8B5A00", style="italic", alpha=0.85, zorder=6)
 
-    # ── Colonnade safe zone (near pinhole wall) ───────────────────────────────
+    # ── Image plane strip — new width X=1100–4649mm ───────────────────────────
     ax.add_patch(mpatches.Rectangle(
-                 (OX+wt, OY+wt), clen-2*wt, COLN_MM*S - wt,
-                 fc="#E0F0E0", ec="none", alpha=0.45, zorder=4))
-    ax.plot([OX+wt, OX+clen-wt], [coln_y, coln_y],
-            color="#1A7A1A", lw=1.5, ls="--", zorder=7)
-    ax.text(OX+clen - wt - 0.10, coln_y + 0.08,
-            "Colonnade limit  Yd=1,220mm",
-            fontsize=7.0, color="#1A7A1A", va="bottom", ha="right")
-
-    # ── Image plane strip — top long wall interior face ───────────────────────
-    ax.add_patch(mpatches.Rectangle(
-                 (OX+wt, OY+cwid-wt-0.15), clen-2*wt, 0.15,
-                 fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=5))
-    ax.text(OX + clen/2, OY + cwid - wt - 0.075,
-            "IMAGE PLANE  —  5,893 × 2,388 mm",
+                 (fp_l_x, OY+cwid-wt-0.15), (FP_X_R-FP_X_L)*S, 0.15,
+                 fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
+    ax.text((fp_l_x+fp_r_x)/2, OY + cwid - wt - 0.075,
+            f"FILM PLANE  X={FP_X_L}–{FP_X_R}mm  ({FP_X_R-FP_X_L}mm wide × 2388mm H)",
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
-            fontweight="bold", zorder=6)
+            fontweight="bold", zorder=7)
 
-    # ── Pinhole — bottom long wall at X=2,946mm ───────────────────────────────
+    # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    ax.annotate("PINHOLE  Ø2.17mm\nX=2,946mm  f/1088",
+    ax.annotate(f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
                 xy=(ph_x, OY + wt/2),
                 xytext=(ph_x, OY - 0.50),
                 fontsize=7.5, color=C_OUT, ha="center", va="top",
@@ -515,10 +553,10 @@ def draw_sheet2():
     #          The schematic 120mm wall fill is a visual overlay only.
     # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
-        ex = OX + x_mm  * S          # TBS X maps directly to drawing X
-        ey = OY + wt + yd_mm * S     # depth from interior face of pinhole wall
+        ex = OX + x_mm  * S           # TBS X maps directly to drawing X
+        ey = OY + wt + yd_mm * S_yd   # depth from interior face of pinhole wall
         ew = w_mm * S
-        ed = d_mm * S
+        ed = d_mm * S_yd
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
                      fc=col, ec=C_OUT, lw=1.0, zorder=5, alpha=0.88))
         cy_e = ey + ed / 2
@@ -529,27 +567,37 @@ def draw_sheet2():
             ax.text(ex+ew/2, cy_e - 0.12, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # Left wing  (X=0–2,380mm, near cargo door end)
-    equip(100,  100, 1219, 1016, "BLUE IBC ×2",  "#C8E8FF", "2×600L stacked")
-    equip(1380, 100,  600,  350, "EVAP\nCOOLER", C_SOLAR,  "80W 12V  (E)")
-    equip(1980, 100,  400,  300, "PUMP\nMFD",    C_BATT,   "100W 12V  (C)")
+    # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
+    # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
+    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
+          f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
+    # 55-gal drums — one per Yd corner (rev 4: unstacked)
+    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
+          "DRUM D-1\n(near)", C_STEEL, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
+    equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
+          "DRUM D-2\n(far)", C_STEEL, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
 
-    # Right wing (X=3,374–5,893mm, near far end)
-    equip(3374, 100, 1160,  580, "DRUMS ×2",  C_STEEL,  "2×55 gal")
-    equip(4559, 100, 1219, 1016, "BROWN IBC", "#D7CCC8", "1×600L")
+    # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
+    equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_SOLAR, "80W 12V  (E)")
+    equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_BATT, "Cct C")
+
+    # RIGHT END ZONE — Blue IBC stack (front, Y=100–1116mm)
+    equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "BLUE IBC ×2\n(front)",
+          "#C8E8FF", "2×600L  Yd=100–1116")
+    # Brown IBC (rear, Y=1141–2157mm)
+    equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
+          "#D7CCC8", "1×600L  Yd=1141–2157")
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
-    EP_X_MM, EP_W_MM = 2050, 300
-    EP_DX = OX + EP_X_MM * S
-    EP_DW = EP_W_MM * S
+    EP_DX = OX + EP_X * S
+    EP_DW = EP_W * S
     ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.15), EP_DW, wt*0.70,
                  fc=C_ELEC, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(EP_DX+EP_DW/2, OY+wt*0.50, "EP",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    BA_X_MM, BA_W_MM = 100, 500
-    BA_DX = OX + BA_X_MM * S
-    BA_DW = BA_W_MM * S
+    BA_DX = OX + BA_X * S
+    BA_DW = BA_W * S
     ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.15), BA_DW, wt*0.70,
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(BA_DX+BA_DW/2, OY+wt*0.50, "BAT",
@@ -596,13 +644,17 @@ def draw_sheet2():
             ha="center", va="top", fontsize=7.0, color=C_PIPE, fontweight="bold")
 
     # Drop conduits from trunking to devices
+    EVAP_CX = OX + (EVAP_X + EVAP_W/2) * S
+    PUMP_CX = OX + (PUMP_X + PUMP_W/2) * S
+    IBC_CX  = OX + (IBC_COL_X + IBC_W/2) * S
+    DRUM_CX_E = OX + DRUM_LZ_CX * S
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
-        (OX + 1680*S,        OY+wt + 350*S),    # evap cooler
-        (OX + 2180*S,        OY+wt + 300*S),    # pump
-        (OX + 3954*S,        OY+wt + 580*S),    # drums centre
-        (OX + 5169*S,        OY+wt + 1016*S),   # brown IBC centre
+        (EVAP_CX,            OY+wt + EVAP_Y*S_yd),           # evap cooler (Yd=0, pinhole wall)
+        (PUMP_CX,            OY+wt + 80*S_yd),               # pump manifold
+        (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
+        (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S_yd),  # drums (left zone)
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),
@@ -649,9 +701,12 @@ def draw_sheet2():
         ax.text(dx - 0.17, (y1+y2)/2, text,
                 ha="right", va="center", fontsize=7.5, color=C_DIM, rotation=90)
 
-    dim_h(OX, OX+clen, DIM_Y, "5,898 mm  (container interior length)")
-    dim_v(DIM_X, OY, OY+cwid,  "2,362 mm  (optical depth / interior width)")
-    dim_v(DIM_X, OY, coln_y,   "1,220 mm\n(colonnade)")
+    dim_h(OX, OX+clen, DIM_Y, f"{C_LEN} mm  (container interior length)")
+    dim_h(zone_l_x, zone_r_x, DIM_Y - 0.30,
+          f"Optical zone  {ZONE_R-ZONE_L}mm")
+    dim_h(fp_l_x, fp_r_x, DIM_Y - 0.60,
+          f"Film plane  {FP_X_R-FP_X_L}mm")
+    dim_v(DIM_X, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
 
     # ── Component key (right of container) ───────────────────────────────────
     KX = OX + clen + 0.70
@@ -670,11 +725,11 @@ def draw_sheet2():
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (right)"),
         ("C",     C_BATT,    "WATER PUMP — Cct C",
-         "12V DC  |  15A / 14 AWG / 100W  |  Colonnade left wing"),
+         "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,400mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_SOLAR,   "EVAP COOLER — Cct E",
-         "12V DC 80W  |  10A / 14 AWG  |  Colonnade left wing"),
+         f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
          "Shore power backup  |  Exterior face, cargo door wall"),
     ]
@@ -700,14 +755,14 @@ def draw_sheet2():
             ha="left", va="center", fontsize=8.5,
             fontweight="bold", color=C_OUT)
     notes = [
-        "1.  Pinhole at X=2,946mm on bottom long wall. Image plane on top long wall. "
-        "Optical axis runs across container width (2,362mm), not along its length.",
-        "2.  All equipment in colonnade zone (Yd ≤ 1,220mm from pinhole wall). "
-        "Amber shading = optical shadow cone — keep entirely clear.",
+        f"1.  Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
+        f"Film plane X={FP_X_L}–{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm depth. f/1088.",
+        f"2.  Shadow-free end zones: Left X=0–{FP_X_L}mm (light trap+55-gal drums×2, Yd=25–605mm), Right X={FP_X_R}–5,893mm (IBCs only). "
+        f"Evap cooler on pinhole wall face (Yd=0, X={EVAP_X}–{EVAP_X+EVAP_W}mm). Amber cone — keep entirely clear.",
         "3.  Cable trunking (40×25mm PVC) on pinhole wall face (Yd=0) — outside optical cone. "
         "Drop conduits (10mm corrugated) to each device.",
-        "4.  Light trap (revolving drum, Ø750mm vertical axis) is integral to cargo-door "
-        "hinged panel — see Hinged Panel drawings (§12). Not shown on this plan.",
+        "4.  Light trap (revolving drum, Ø750mm vertical axis) in left end zone — "
+        "integral to cargo-door hinged panel. See Hinged Panel drawings (§12).",
     ]
     for ni, note in enumerate(notes):
         ax.text(NX+0.10 + (ni >= 2)*7.2, NY + 0.65 - (ni % 2)*0.32,
@@ -716,10 +771,10 @@ def draw_sheet2():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, FW, 2, 2,
                 "CONTAINER FLOOR PLAN & WIRING LAYOUT",
-                "Top-down plan  ·  Colonnade layout  ·  Optical cone clear  ·  Scale 1:500",
+                "Top-down plan  ·  End-zone layout  ·  Optical cone clear  ·  Scale 1:500",
                 "1:500  (1 drawing unit = 500 mm)")
 
-    plt.savefig("electrical-sheet2.png", dpi=150, bbox_inches="tight",
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")

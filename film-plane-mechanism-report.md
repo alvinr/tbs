@@ -23,7 +23,7 @@ The four-corner design replaces the earlier two-beam approach: rather than two r
 
 ## Movement Axes
 
-The four-corner mechanism supports all view-camera movements. Corners are labelled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the 19 ft 4 in length direction and top/bottom to the 7 ft 10 in height direction.
+The four-corner mechanism supports all view-camera movements. Corners are labelled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the 7 ft 10 in height direction.
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
@@ -38,9 +38,9 @@ The four-corner mechanism supports all view-camera movements. Corners are labell
 
 **Maximum tilt angle** (top vs bottom): arctan((2,262 − 100) / 2,388) ≈ **42°**
 
-**Maximum swing angle** (left vs right): arctan((2,262 − 100) / 5,893) ≈ **20°**
+**Maximum swing angle** (left vs right): arctan((2,262 − 100) / 4,024) ≈ **28.3°**
 
-(Swing angle is shallower than tilt because the container is 5,893 mm long vs 2,388 mm tall — the same depth difference produces a smaller angle over the longer dimension.)
+(Swing angle is smaller than tilt angle because the active film plane is now 4,024 mm wide — widened by relocating the black-water drums to the left end zone at Yd=25–605mm, below the light trap drum's Yd band, and moving the left rail inward from X=1,100 mm to X=625 mm. The same Y-axis depth difference over a wider span produces a shallower angle. Rails are at X=625 mm and X=4,649 mm.)
 
 When tilted at maximum, the film plane's physical height increases from 2,268 mm to approximately **3,180 mm** — 40% longer than when flat. The backing panel accommodates this with the hinged two-panel system described below.
 
@@ -58,19 +58,19 @@ CEILING ────────────────────────
    corner TL (leadscrew A)              corner TR (leadscrew B)
         │                                       │
         │            FILM PLANE FRAME           │
-        │      5,893 mm wide × 2,388 mm tall    │
+        │      4,024 mm wide × 2,388 mm tall    │
         │       ROD-END BEARING each corner     │
    corner BL (leadscrew C)              corner BR (leadscrew D)
    [FLOOR RAIL — LEFT]                  [FLOOR RAIL — RIGHT]
 FLOOR ───────────────────────────────────────────────────────────
 ```
 
-- **4 linear rails** — HiWin HGR20 profile, 2,200 mm length, one at each corner of the container interior (ceiling-left, ceiling-right, floor-left, floor-right). Rails run along the 2,362 mm optical axis direction.
+- **4 linear rails** — HiWin HGR20 profile, 2,200 mm length, mounted at X=625mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362 mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438 mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
-- **Film plane frame** — welded 2"×2"×3/16" aluminium angle, 5,893 mm × 2,388 mm. Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25 mm bore) to allow free rotation in all axes when the plane is twisted.
+- **Film plane frame** — welded 2"×2"×3/16" aluminium angle, **4,024 mm × 2,388 mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25 mm bore) to allow free rotation in all axes when the plane is twisted.
 
-The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800 mm and TR to 2,262 mm produces a 17.5° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
+The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800 mm and TR to 2,262 mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
 
 ### Why Rod-End Spherical Bearings
 
@@ -112,16 +112,16 @@ The tilted or swung film plane creates voids where it no longer contacts the con
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2,268 mm |
-| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 5.6° | 0° | 2,315 mm |
-| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 17.5° | 0° | 2,598 mm |
-| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 41.6° | 0° | 3,121 mm |
-| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 2.1° | 2,268 mm |
-| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 11.0° | 2,268 mm |
-| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 20.3° | 2,268 mm |
-| C7 | Compound | 100 | 2,262 | 2,262 | 100 | 41.6° | 20.3° | — |
+| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2,388 mm |
+| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 11.0° | 0° | 2,434 mm |
+| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 31.5° | 0° | 2,724 mm |
+| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 42.1° | 0° | 3,184 mm |
+| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 6.6° | 2,388 mm |
+| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 20.0° | 2,388 mm |
+| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 28.3° | 2,388 mm |
+| C7 | Compound | 100 | 2,262 | 2,262 | 100 | 42.1° | 28.3° | — |
 
-*All depths measured from the pinhole wall.*
+*All depths measured from the pinhole wall. Swing angles calculated for 4,024 mm rail span (arctan(Δd/span)). Rail positions: left X=625mm, right X=4,649mm.*
 
 The compound config (C7) places TL and BR at near position, TR and BL at far — a diagonal twist. The film plane is no longer a flat rectangle; it is a ruled surface. No lines in the scene project to straight parallel lines anywhere in the image.
 
@@ -227,7 +227,7 @@ All seven configurations on a checker grid (D = 8,000 mm):
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
 
 **System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2,262mm, spanning the full 5,893mm interior length) in the context of the complete TBS-001 interior, including equipment zone and optical clear zone.
+The floor plan below shows the film plane rail positions (at Y=2,262mm, X=625–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap + 55-gal drums), evaporative cooler on pinhole wall face, optical clear zone, and right end zone (IBCs only).
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 

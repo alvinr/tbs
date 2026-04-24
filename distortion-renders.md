@@ -16,7 +16,7 @@ Source reports: [Film Plane Mechanism](film-plane-mechanism-report.md) and
 ## 1. Film Plane Distortion Renders
 
 Four-corner independent actuation of the film plane (TBS-FM01). Each corner moves ±42° tilt
-and ±20° swing independently, producing Scheimpflug-equivalent projections at pinhole
+and ±28.3° swing independently, producing Scheimpflug-equivalent projections at pinhole
 focal lengths. Seven configurations are shown.
 
 **Summary grid — all 7 configurations**

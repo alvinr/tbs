@@ -25,7 +25,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Process | Cyanotype — water-based, non-toxic, no silver |
 | Per-print cost | ~$57 |
 | 50-print run | ~$2,842 |
-| License | [GNU AGPLv3](license.md) — © 2026 Alvin Richards |
+| License | [GNU AGPLv3](licensing.md) — © 2026 Alvin Richards |
 
 ---
 
@@ -36,7 +36,7 @@ Two independent movement systems work in series, stacking their effects non-line
 **Front board — tilt and swing (±5°)**
 The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207 mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
-**Film plane — 4-corner independent actuation (±42° tilt, ±20° swing)**
+**Film plane — 4-corner independent actuation (±42° tilt, ±31.4° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
 
 **Combined:** the two systems interact non-linearly. Their compound optical projections — modelled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
@@ -75,4 +75,8 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
 | [Electrical & Systems](electrical-report.md) | Power architecture, light trap vestibule, cooling, ventilation, wiring diagrams |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, vestibule, cooling |
-| [License](license.md) | GNU AGPLv3 — © 2026 Alvin Richards |
+| [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
+| [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
+| [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
+| [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
+| [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |

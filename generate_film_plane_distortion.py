@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
-FILM_L = 5893    # film plane width  (container length)
+FILM_L = 3549    # film plane width (mm) [rev 2: was 2920, was 5893]
 FILM_H = 2388    # film plane height (container height)
 F_NOM  = 2362    # nominal focal length (container width = optical axis)
 D_NEAR = 100     # closest carriage position
@@ -37,17 +37,17 @@ PAPER_W   = np.array([0.941, 0.980, 1.000])
 CONFIGS = [
     ("C0", "Flat  0°",           D_FAR,  D_FAR,
      "Reference — no distortion. Film plane flush to far wall."),
-    ("C1", "Mild tilt  5.6°",    1800,   D_FAR,
+    ("C1", "Mild tilt  11.0°",   1800,   D_FAR,
      "Subtle keystone. Top edge 462mm closer. Top of image gently compressed."),
-    ("C2", "Strong tilt  17.5°", 800,    D_FAR,
+    ("C2", "Strong tilt  31.5°", 800,    D_FAR,
      "Dramatic keystone. Top 1,462mm closer. Top heavily compressed, bottom stretched."),
-    ("C3", "Max tilt  41.6°",    D_NEAR, D_FAR,
+    ("C3", "Max tilt  42.1°",    D_NEAR, D_FAR,
      "Extreme. Top edge 2,162mm closer than bottom. Radical perspective break."),
-    ("C4", "Reverse max  41.6°", D_FAR,  D_NEAR,
+    ("C4", "Reverse max  42.1°", D_FAR,  D_NEAR,
      "Inverted max tilt. Bottom rushes forward. Ground-rush effect."),
     ("C5", "Both near  0°",      D_NEAR, D_NEAR,
      "Flat plane 2,162mm closer than nominal. Uniform magnification boost ~2.3×."),
-    ("C6", "Compound  41.6°+15°",D_NEAR, D_FAR,
+    ("C6", "Compound  42.1°+15°",D_NEAR, D_FAR,
      "Max tilt PLUS 15° swing. Diagonal perspective break — no parallel lines."),
 ]
 
@@ -293,7 +293,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                  fontweight="bold", y=1.01)
     fig.tight_layout(pad=0.6)
 
-    fname = f"film-plane-distortion-{label.lower()}.png"
+    fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
     plt.close(fig)
@@ -335,10 +335,10 @@ def render_summary():
         color="#111111", fontsize=13, fontfamily="monospace",
         fontweight="bold", y=1.005)
     fig.tight_layout(pad=0.5)
-    fig.savefig("film-plane-distortion-summary.png", dpi=120,
+    fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  → film-plane-distortion-summary.png")
+    print("  → diagrams/film-plane-distortion-summary.png")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────

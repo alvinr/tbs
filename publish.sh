@@ -100,16 +100,35 @@ info "Syncing image assets to docs/assets/..."
 
 mkdir -p "$ASSETS_DIR"
 
+# Root-only images (not generated into diagrams/)
 IMG_FILES=(
     "plate-drawing-sheet1.png"
     "plate-drawing-sheet2.png"
+    "logo-final.png"
+    "favicon.png"
+)
+
+for f in "${IMG_FILES[@]}"; do
+    src="$SCRIPT_DIR/$f"
+    dst="$ASSETS_DIR/$f"
+    if [[ ! -f "$src" ]]; then
+        warn "$f not found — skipping"
+        continue
+    fi
+    if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
+        cp "$src" "$dst"
+        echo "    updated: $f"
+        CHANGED=$((CHANGED + 1))
+    fi
+done
+
+# Generated diagram images (all live in diagrams/)
+DIAG_FILES=(
     "portrait-camera-schematic.png"
     "portrait-optimal-3m.png"
     "portrait-scale-comparison.png"
     "water-system-sheet1.png"
     "water-system-sheet2.png"
-    "logo-final.png"
-    "favicon.png"
     "film-plane-sheet1.png"
     "film-plane-sheet2.png"
     "film-plane-sheet3.png"
@@ -141,24 +160,24 @@ IMG_FILES=(
     "lighttrap-sheet2.png"
     "hingepanel-sheet1.png"
     "hingepanel-sheet2.png"
+    "hingepanel-sheet3.png"
     "container-floorplan.png"
     "assembly-overview.png"
     "assembly-fab-sheet1.png"
     "assembly-fab-sheet2.png"
-    "hingepanel-sheet3.png"
     "line-of-sight.png"
 )
 
-for f in "${IMG_FILES[@]}"; do
-    src="$SCRIPT_DIR/$f"
+for f in "${DIAG_FILES[@]}"; do
+    src="$SCRIPT_DIR/diagrams/$f"
     dst="$ASSETS_DIR/$f"
     if [[ ! -f "$src" ]]; then
-        warn "$f not found — skipping"
+        warn "diagrams/$f not found — skipping"
         continue
     fi
     if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
         cp "$src" "$dst"
-        echo "    updated: $f"
+        echo "    updated: diagrams/$f"
         CHANGED=$((CHANGED + 1))
     fi
 done

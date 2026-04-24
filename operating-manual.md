@@ -14,10 +14,10 @@ Single-operator workflow for cyanotype on cotton muslin.
 | 0 | Pre-deployment setup | ~2 hours |
 | 1 | Chemistry preparation | ~30 min |
 | 2 | Load image plane (darkness) | ~45 min |
-| 3 | Exposure | ~2 hr (baseline) |
+| 3 | Exposure | ~30–45 min (baseline) |
 | 4 | Development | ~20 min |
 | 5 | Cleanup and close-down | ~30 min |
-| **Total** | **First print, ideal conditions** | **~5–6 hours** |
+| **Total** | **First print, ideal conditions** | **~4–4.5 hours** |
 
 Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cyanotype formula on cotton muslin, ISO equivalent ~2–4; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
@@ -143,7 +143,7 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 **Mix Parts A and B in equal volumes immediately before use:**
 
-| For 1 print (140 sq ft) | Volume |
+| For 1 print (~103 sq ft) | Volume |
 |------------------------|--------|
 | Part A | 600 ml |
 | Part B | 600 ml |
@@ -341,14 +341,14 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 *Full reference table for use in Phase 3.*
 
-| Baseline | 120 min | Direct full sun, summer, 10:00–14:00 |
-|----------|---------|-------------------------------------|
-| Thin haze | 180 min | |
-| Broken cloud | 240 min | |
-| Heavy overcast | 480 min | |
-| Early/late sun | 240 min | |
-| Winter mid-latitude | 180 min | |
-| Thin haze + early sun | 360 min | Multiply factors: 1.5 × 2.0 |
+| Baseline | 35 min | Direct full sun, summer, 10:00–14:00 (Ware formula) |
+|----------|--------|-----------------------------------------------------|
+| Thin haze | 55 min | |
+| Broken cloud | 70 min | |
+| Heavy overcast | 140 min | |
+| Early/late sun | 70 min | |
+| Winter mid-latitude | 55 min | |
+| Thin haze + early sun | 105 min | Multiply factors: 1.5 × 2.0 |
 
 ---
 

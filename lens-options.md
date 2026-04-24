@@ -2,9 +2,9 @@
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = 2,362 mm  
-**Image plane:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″), diagonal = 6,358 mm  
+**Image plane (active):** 4,024 × 2,388 mm (~13′ 3″ × 7′ 10″); container interior 5,893 × 2,388 mm  
 **Current pinhole:** Ø 2.17 mm, f/1088  
-**Baseline exposure (cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~2 hours
+**Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
 ---
 
@@ -332,7 +332,7 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 | Mid-width edge | 51.3° | 0.153 | 15% | 2.7 stops |
 | Corner | 53.4° | 0.126 | 13% | 3.0 stops |
 
-The corners of the image receive only 13% of the light falling on the centre — approximately **3 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. The effect on the final image: a natural vignette, darkening significantly from centre to corners. At 2 hours or at 2 seconds, the corner of the image is always 3 stops darker than the centre.
+The corners of the image receive only 13% of the light falling on the centre — approximately **3 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. The effect on the final image: a natural vignette, darkening significantly from centre to corners. At 35 minutes or at 2 seconds, the corner of the image is always 3 stops darker than the centre.
 
 On silver gelatin paper, 3 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed centre. Exposure must account for this — either the centre will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centred in the frame, may be desirable — a natural vignette framing the subject).
 
@@ -415,10 +415,10 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diamete
 
 | Quality | Pinhole | Process lens | Telescope APO | Fresnel lens |
 |---|---|---|---|---|
-| Coverage of image plane | Full 140 sq ft | Ø ~400 mm circle | Ø ~150–200 mm circle | Ø ~600 mm circle |
+| Coverage of image plane | ~103 sq ft (active) | Ø ~400 mm circle | Ø ~150–200 mm circle | Ø ~600 mm circle |
 | Sharpness (within covered area) | 0.23 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
 | Depth of field | Unlimited (all soft) | f/32: 1.2 m span | f/32: 1.2 m span | Shallow (soft) |
-| Exposure time (cyanotype, ISO ~1) | ~2 hr | ~1.5 sec | ~6 sec | ~0.4 sec |
+| Exposure time (Ware cyanotype, ISO ~2–4) | ~35 min | ~1.5 sec | ~6 sec | ~0.4 sec |
 | Geometric distortion | Zero | <0.1% | ~0.2% | 1–3% |
 | Chromatic aberration | Zero | <0.3 mm (APO) | <0.5 mm (APO) | ~25 mm (severe) |
 | Image magnification | M = d_i/d_o | M = d_i/d_o (same) | M = d_i/d_o (same) | M = d_i/d_o (same) |
@@ -446,8 +446,8 @@ If a lens is added for portrait work with the goal of maximising image quality:
 
 | | Pinhole | Lens |
 |---|---|---|
-| Image area | Full 140 sq ft | 0.7–4% of total (within image circle) |
-| Subject holds still | ~2 hours | 1.5–10 seconds |
+| Image area | ~103 sq ft (active) | 0.7–4% of total (within image circle) |
+| Subject holds still | ~35 min | 1.5–10 seconds |
 | Geometric character | Perfect perspective, unlimited DoF | Sharp focus zone, controllable DoF |
 | Background | Soft but rendered | Sharp (at working aperture) or shallow-DoF blur |
 | Aesthetic | Documentary/impressionistic | Conventional photographic |

@@ -21,10 +21,10 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Focal length | 2,362 mm (container interior depth) |
 | Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |
-| Baseline exposure | ~2–3 hr (cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
-| Process | Cyanotype — water-based, non-toxic, no silver |
-| Per-print cost | ~$57 |
-| 50-print run | ~$2,842 |
+| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
+| Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
+| Per-print cost | ~$62 |
+| 50-print run | ~$3,096 |
 | License | [GNU AGPLv3](licensing.md) — © 2026 Alvin Richards |
 
 ---
@@ -49,7 +49,7 @@ Every specification traces to a peer-reviewed source or manufacturer datasheet. 
 
 ## The Process
 
-Cyanotype on cotton muslin. The sensitiser (ferric ammonium citrate + potassium ferricyanide) is coated onto fabric, exposed by contact with the image-plane, and developed in plain cold water. No silver, no hazardous chemistry, no darkroom registration required.
+Cyanotype on cotton muslin using the **Mike Ware New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). Baseline exposure 30–45 minutes in full sun at f/1088 — 4–8× faster than the traditional Herschel formula. Developed in plain cold water. No silver, no hazardous chemistry, no darkroom registration required.
 
 The container travels by commercial hire truck. No CDL required for the operator. No oversize permits required for an empty 20ft standard container on Interstate highways.
 

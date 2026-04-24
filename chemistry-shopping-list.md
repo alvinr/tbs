@@ -12,7 +12,7 @@
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype** | ~$1,100 | ~$1,980 | **~$2,842** | **~$57** |
+| **Cyanotype (Ware formula)** | ~$1,116 | ~$1,980 | **~$3,096** | **~$62** |
 | **Gum bichromate** | ~$2,300 | ~$1,980 | **~$4,578** | **~$92** |
 | **Van Dyke Brown** | ~$7,800 | ~$1,980 | **~$9,782** | **~$196** |
 | **Ilford RC paper** | ~$1,220 (chemistry) | ~$18,750 (paper) | **~$19,970** | **~$399** |
@@ -44,37 +44,45 @@ URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cott
 
 ## Process 1: Cyanotype
 
-**50-print total: ~$2,842 | Per print: ~$57**
+**50-print total: ~$3,100 | Per print: ~$62**
 
-### Chemistry quantities
+Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitiser. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
 
-| Reagent | Per print | × 50 prints | Order qty |
-|---|---|---|---|
-| Ferric ammonium citrate (green) | 224 g | **11.2 kg** | 12 kg |
-| Potassium ferricyanide | 91 g | **4.55 kg** | 5 kg |
-| Distilled water | ~2 L | ~100 L | Tap water + DI filter adequate |
+**Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Formula and technical notes: mikeware.co.uk/mikeware/New_Cyanotype_Process.html (free).
 
-### Shopping list
+### Chemistry quantities — Ware New Cyanotype formula
 
-| Item | Supplier | SKU / URL | Unit size | Units | Unit price | Total |
+| Reagent | Per print | × 50 prints | Order qty | Notes |
+|---|---|---|---|---|
+| Ammonium iron(III) oxalate (AmFe) | 200 g | **10.0 kg** | 11 kg | Part A; requires warm water to dissolve |
+| Potassium ferricyanide | 91 g | **4.55 kg** | 5 kg | Part B; unchanged from traditional |
+| Ammonium dichromate | 10 g | **500 g** | 1 kg | Part B additive; contrast enhancer — handle with care |
+| Distilled / DI water | ~2 L | ~100 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
+
+> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidiser. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
+
+### Shopping list — Ware New Cyanotype (primary)
+
+| Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ferric Ammonium Citrate, green, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ferric-ammonium-citrate-green](https://stores.photoformulary.com/ferric-ammonium-citrate-green/) | 454 g (1 lb) | 27 | ~$30† | ~$810 |
-| OR Ferric Ammonium Citrate, 1 kg | **B&H Photo** | [bhphotovideo.com — Photographers Formulary](https://www.bhphotovideo.com/c/product/123829-REG/Photographers_Formulary_10_0500_1LB_Ferric_Ammonium_Citrate.html) | 454 g | 27 | ~$30 | ~$810 |
+| Ammonium Iron(III) Oxalate, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-ferric-oxalate](https://stores.photoformulary.com/ammonium-ferric-oxalate/) | 454 g (1 lb) | 25 | ~$35† | ~$875 |
+| Ammonium Iron(III) Oxalate (alt.) | **Bostick & Sullivan** | [bostick-sullivan.com/product/ammonium-ferric-oxalate](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500 g | 22 | ~$30 | ~$660 |
 | Potassium Ferricyanide, 1 kg | **Bostick & Sullivan** | [bostick-sullivan.com/product/potassium-ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000 g | 5 | **$24.29†** | **$121** |
+| Ammonium Dichromate, 100 g | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 10 | ~$12 | ~$120 |
 | Unbleached muslin, 60" wide | **Fabric Direct** | [fabricdirect.com — 150-yd roll](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 150-yd roll | 11 | ~$100 | ~$1,100 |
 
-**Process total: ~$2,031 chemistry + substrate**
+**Process total: ~$2,216 chemistry + substrate**
 
 *Note: No fixer required. Development in plain cold water. No darkroom required for processing.*
 
-### Mike Ware Improved Formula (recommended upgrade)
+### Traditional Herschel formula (alternative — if AmFe unavailable)
 
-Replaces FAC with ferric ammonium oxalate. Faster (ISO ~2–4 vs 1–2), denser shadows, smoother gradation.
+Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at room temperature.
 
-| Item | Supplier | URL | Unit | Units | Price |
-|---|---|---|---|---|---|
-| Ferric Ammonium Oxalate, 1 lb | **Photographers' Formulary** via Adorama | [adorama.com/pyfao1lb](https://www.adorama.com/pyfao1lb.html) | 454 g | 27 | ~$35 ea |
-| Potassium Ferricyanide | Same as above | — | — | — | — |
+| Item | Supplier | URL | Unit size | Units | Unit price | Total |
+|---|---|---|---|---|---|---|
+| Ferric Ammonium Citrate, green, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ferric-ammonium-citrate-green](https://stores.photoformulary.com/ferric-ammonium-citrate-green/) | 454 g (1 lb) | 27 | ~$30† | ~$810 |
+| Potassium Ferricyanide | Same as above | — | — | — | — | — |
 
 ---
 
@@ -256,7 +264,7 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 40 bottles × 25 L = 1,000 L 
 
 | Process | FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype | 11.2 kg | 4.5 kg | — | — | — | — | 1,650 yd muslin | ~$862 | **~$2,842** |
+| Cyanotype (Ware) | 10.0 kg AmFe | 4.5 kg KFe | — | — | — | — | 1,650 yd muslin | ~$1,116 | **~$3,096** |
 | Gum bichromate | — | — | — | 11.25 kg | 35 kg | — | 1,650 yd muslin | ~$2,509 | **~$4,578** |
 | Van Dyke Brown | 7 kg | — | 2.8 kg | — | — | 25 kg | 1,650 yd muslin | ~$7,800 | **~$9,782** |
 | Salt print | — | — | 8.4 kg | — | — | 50 kg | 1,650 yd muslin | ~$21,940 | **~$23,925** |
@@ -279,8 +287,8 @@ Silver nitrate is 63–68% silver by weight. The silver spot price (approximatel
 ### 4. Liquid Light — contact Rockland before ordering retail
 At the volume required for 50 prints (9,400 oz), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.
 
-### 5. Cyanotype FAC — green grade only
-There are two grades of ferric ammonium citrate: green (Fe³⁺, light-sensitive) and brown (Fe²⁺, not light-sensitive for cyanotype). Only the **green grade** is used in cyanotype. All Photographers' Formulary and Bostick & Sullivan listings specify green grade. Verify before ordering from non-photographic suppliers.
+### 5. Cyanotype AmFe — preparation notes
+Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissolve fully. Prepare Part A by adding AmFe to warm water and stirring until completely clear — a pale green-yellow solution. Do not use boiling water. Allow to cool before mixing with Part B. AmFe has a shelf life of 6–12 months in a sealed dark bottle at room temperature. If the traditional FAC formula is substituted: use only the **green grade** of ferric ammonium citrate (Fe³⁺, light-sensitive) — the brown grade (Fe²⁺) is not light-sensitive for cyanotype.
 
 ### 6. Muslin pre-treatment
 Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitisers. If not removed, the sensitiser will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.

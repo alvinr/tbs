@@ -1,4 +1,4 @@
-# Photosensitive Plane Options
+# Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
 **Image plane dimensions:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″)  
@@ -19,7 +19,7 @@ At f/1088, even the fastest non-film material (ISO 6 silver gelatin paper) requi
 |---|---|---|---|
 | Gum bichromate | **~0.25–0.5** | ~8–17 hours | $135–175 |
 | Cyanotype (Herschel) | **~1–2** | ~2–4 hours | $175–195 |
-| Cyanotype (Ware formula) | **~2–4** | ~1–2 hours | $180–210 |
+| **Cyanotype (Ware formula) ★ selected** | **~2–4** | **~30–45 min** | **$180–220** |
 | Salt print | **~1–3** | ~1.5–4 hours | $350–450 |
 | Van Dyke Brown | **~2–6** | ~45 min–2 hours | $195–300 |
 | Ilford Multigrade RC paper | **~6** | **~43 min** | $405–480 |
@@ -40,6 +40,7 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 
 | Goal | Process | Reason |
 |---|---|---|
+| **TBS-001 selected process** | Cyanotype (Ware New Cyanotype formula on cotton muslin) | ~$62/print; ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
 | **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~$190/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
@@ -87,30 +88,36 @@ Invented by Sir John Herschel in 1842 and documented in *Philosophical Transacti
 
 ### Chemistry
 
-**Standard Herschel formula:**
-- Solution A: 20 g ferric ammonium citrate (FAC, green grade) dissolved in 100 ml distilled water
-- Solution B: 8.1 g potassium ferricyanide dissolved in 100 ml distilled water
+**Mike Ware New Cyanotype formula (primary — recommended for TBS-001):**
+- Part A: 200 g ammonium iron(III) oxalate (AmFe) dissolved in 300 ml warm water (50–60°C) — stir until clear
+- Part B: 100 g potassium ferricyanide + 10 g ammonium dichromate dissolved in 1,150 ml water
 - Mix equal volumes of A and B immediately before coating
 - Apply to substrate in subdued light; allow to dry completely before exposure
 - Develop: soak in plain cold water 5–10 minutes, agitating gently; image clears in highlights
-- No fixer required; stabilise in water with a few drops of hydrogen peroxide (optional)
+- No fixer required
+- **4–8× faster than Herschel formula** — baseline exposure ~30–45 min vs 2–3 hr at f/1088
 
-**Improved Ware formula (1994):** Replaces FAC with ammonium iron(III) oxalate, yielding denser shadows, more consistent coating, and finer tonal range. Marginally more expensive but significantly better quality.  
-**Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum/National Museum of Photography, Film & Television, 1999. ISBN: 0901805831.
+**Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. ISBN: 0901805831. Full formula and technical notes freely available at mikeware.co.uk.
+
+**Traditional Herschel formula (alternative — simpler preparation, slower):**
+- Solution A: 20 g ferric ammonium citrate (FAC, green grade) dissolved in 100 ml distilled water (room temp)
+- Solution B: 8.1 g potassium ferricyanide dissolved in 100 ml distilled water
+- Mix equal volumes A and B immediately before use; baseline exposure ~2–3 hr at f/1088
 
 ### Chemistry Quantities for 140 sq ft
 
-Coverage of cyanotype sensitiser on fabric or paper: approximately 1–1.5 ml of mixed solution per 50 cm² (roughly 0.5 sq ft), or ~2 ml/sq ft at a proper single coat. Double coat recommended for density.
+Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft single coat. Double coat recommended for density.
 
-| Reagent | Quantity needed (double coat) | Unit cost (2025) | Subtotal |
+| Reagent | Quantity (double coat) | Unit cost (2026) | Subtotal |
 |---|---|---|---|
-| Ferric ammonium citrate (green) | 350–400 g | ~$14.95/100 g | ~$60 |
-| Potassium ferricyanide | 150–175 g | ~$12–15/100 g | ~$25 |
-| Distilled water | 4–5 litres | Negligible | — |
-| **Chemistry total** | | | **~$85** |
+| Ammonium iron(III) oxalate (AmFe) — Ware | 200 g | ~$35/454 g | ~$15 |
+| Potassium ferricyanide | 100 g | ~$12–15/100 g | ~$13 |
+| Ammonium dichromate | 10 g | ~$12/100 g | ~$1.50 |
+| Distilled water | 2–3 litres | Negligible | — |
+| **Chemistry total (Ware)** | | | **~$30** |
 
-**Source for FAC pricing:** Photographers' Formulary (photoformulary.com), eBay commercial listings (~$14.95/100g as of 2025 searches).  
-**Source for potassium ferricyanide:** Photographers' Formulary (standard photographic chemical supplier); ~$12–15/100g.
+**Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.  
+**Source for potassium ferricyanide:** Bostick & Sullivan; ~$24.29/kg.
 
 ### Substrate Options and Costs
 
@@ -774,7 +781,7 @@ The critical additions beyond the earlier analysis:
 |---|---|---|---|---|---|---|---|
 | Gum bichromate | ~0.25–0.5 | **8–17 hours — impractical** | ✓ | ✓ (short) | ✗ | ✗ | Flat — mitigated by warm pigment |
 | Cyanotype (Herschel) | ~1–2 | 2–4 hours | ✓ | ✓ (short) | ✗ | ✗ | Flat, dark, pallid |
-| Cyanotype (Ware) | ~2–4 | 1–2 hours | ✓ | ✓ (short) | ✗ | ✗ | Flat, dark, pallid |
+| **Cyanotype (Ware) ★** | **~2–4** | **30–45 min** | ✓ | ✓ (short) | ✗ | ✗ | Flat, dark, pallid |
 | Salt print | ~1–3 | 1.5–4 hours | ✓ | ✓ | ✗ | ✗ | Flat, notably darker than expected |
 | Van Dyke Brown | ~2–6 | 45 min–2 hours | ✓ | ✓ | ✗ | ✗ | Flat, slightly better mid-tone scale than salt |
 | **Ilford Multigrade RC** | **~6** | **~43 min** | ✓ | ✓ | **✓** | ✗ | **Best of non-film options — natural mid-tones** |
@@ -801,7 +808,7 @@ The critical additions beyond the earlier analysis:
 2. Ilford Multigrade RC paper (ISO 6) — 43 min; borderline for a standing subject in still air
 3. Liquid Light (ISO 6–12) — 20–43 min
 4. Van Dyke Brown (ISO 2–6) — 45 min–2 hours; requires cooperative conditions
-5. Cyanotype Ware formula (ISO 2–4) — 1–2 hours; possible in summer, not in autumn/winter
+5. **Cyanotype Ware formula (ISO 2–4) — 30–45 min; viable across most seasons in good sun ★ selected**
 6. Cyanotype Herschel (ISO 1–2) — 2–4 hours; requires exceptional UV conditions
 7. Salt print (ISO 1–3) — 1.5–4 hours; at limit of practical outdoor portraiture
 8. Gum bichromate (ISO 0.25–0.5) — 8–17 hours; **not viable for in-camera portraiture at f/1088**

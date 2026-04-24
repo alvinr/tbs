@@ -437,15 +437,16 @@ def draw_sheet2():
     C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
     WT_MM   = 120           # mm schematic wall thickness
 
-    PH_X_MM = TBS_PH_X     # 2874 mm — recentred on new film plane (was 2560, was 2946)
+    PH_X_MM = TBS_PH_X     # 2637 mm — centred on active film plane (was 2560, was 2946)
 
     # Zone boundaries
-    ZONE_L  = ZONE_L_END   # 1100 mm — left end zone right boundary
+    ZONE_L  = ZONE_L_END   # 625 mm — left end zone right boundary
     ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
 
     clen   = C_LEN * S     # drawing units
     cwid   = C_WID * S     # drawing units
     wt     = WT_MM * S     # drawing units
+    S_yd   = (cwid - 2*wt) / C_WID  # Yd scale: maps yd=0→OY+wt, yd=C_WID→OY+cwid-wt
     ph_x   = OX + PH_X_MM * S  # pinhole x in drawing coords
     zone_l_x = OX + ZONE_L * S   # left zone boundary x
     zone_r_x = OX + ZONE_R * S   # right zone boundary x
@@ -552,10 +553,10 @@ def draw_sheet2():
     #          The schematic 120mm wall fill is a visual overlay only.
     # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
-        ex = OX + x_mm  * S          # TBS X maps directly to drawing X
-        ey = OY + wt + yd_mm * S     # depth from interior face of pinhole wall
+        ex = OX + x_mm  * S           # TBS X maps directly to drawing X
+        ey = OY + wt + yd_mm * S_yd   # depth from interior face of pinhole wall
         ew = w_mm * S
-        ed = d_mm * S
+        ed = d_mm * S_yd
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
                      fc=col, ec=C_OUT, lw=1.0, zorder=5, alpha=0.88))
         cy_e = ey + ed / 2
@@ -567,8 +568,8 @@ def draw_sheet2():
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
-    # Drum is centred at X=0 (outside edge), Yd-centred at CW/2=1181mm, appears as partial circle
-    equip(DRUM_CX - DRUM_R, C_WID//2 - DRUM_R, DRUM_D, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
+    # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
+    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
     # 55-gal drums — one per Yd corner (rev 4: unstacked)
     equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
@@ -650,10 +651,10 @@ def draw_sheet2():
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
-        (EVAP_CX,            OY+wt + EVAP_Y*S),           # evap cooler (Yd=0, pinhole wall)
-        (PUMP_CX,            OY+wt + 80*S),                # pump manifold
-        (IBC_CX,             OY+wt + BLUE_IBC_Y*S),       # IBC column centre
-        (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S),   # drums (left zone)
+        (EVAP_CX,            OY+wt + EVAP_Y*S_yd),           # evap cooler (Yd=0, pinhole wall)
+        (PUMP_CX,            OY+wt + 80*S_yd),               # pump manifold
+        (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
+        (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S_yd),  # drums (left zone)
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),

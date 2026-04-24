@@ -40,6 +40,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+      inline_syntax: [round]
+      block_syntax: [square, begin]
   - attr_list
   - md_in_html
 

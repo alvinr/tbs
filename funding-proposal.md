@@ -26,7 +26,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 
 ### How
 
-The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 2 hours in direct sunlight using cyanotype on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
+The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the Mike Ware New Cyanotype formula on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
 
 The camera is transportable by commercial hire truck (no CDL required) and operates off-grid via a self-contained water system that supports 8–10 full-size prints between resupply runs.
 
@@ -82,9 +82,9 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 
 ### Chemistry
 
-Cyanotype uses two non-hazardous iron salts: ferric ammonium citrate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness.
+Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $57 (chemistry + fabric + water). A 50-print run costs approximately $2,842. By comparison, the next cheapest alternative (gum bichromate) costs $92 per print and requires dichromate sensitiser with associated hazmat handling.
+Per-print cost: approximately $62 (chemistry + fabric + water). A 50-print run costs approximately $3,096. By comparison, the next cheapest alternative (gum bichromate) costs $92 per print and requires dichromate sensitiser with associated hazmat handling.
 
 ### Water System
 
@@ -209,10 +209,10 @@ My practice since has moved between classical portraiture and abstract colour in
 | Image area | ~140 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
-| Baseline exposure | ~2–3 hr (cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
+| Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Film plane movement | ±42° tilt, ±28.3° swing, 4-corner independent |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
-| Process | Cyanotype on cotton muslin |
+| Process | Cyanotype (Ware formula) on cotton muslin |
 | Water system | Self-contained, 8–10 prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |
 

@@ -19,7 +19,7 @@ Single-operator workflow for cyanotype on cotton muslin.
 | 5 | Cleanup and close-down | ~30 min |
 | **Total** | **First print, ideal conditions** | **~5–6 hours** |
 
-Baseline exposure is 2 hours under direct full sun (cyanotype Herschel formula on cotton muslin, ISO equivalent ~1–2; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
+Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cyanotype formula on cotton muslin, ISO equivalent ~2–4; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
 ---
 
@@ -107,33 +107,37 @@ Baseline exposure is 2 hours under direct full sun (cyanotype Herschel formula o
 - [ ] Funnel and stirring rod
 - [ ] Digital scale (1g resolution)
 
-### 1.2 Mixing Part A — Ferric Ammonium Citrate (FAC)
+### 1.2 Mixing Part A — Ammonium Iron(III) Oxalate (Mike Ware formula)
 
-Prepare a 20% solution by weight:
+Prepare a concentrated solution using **warm water (50–60°C)**. AmFe does not dissolve at room temperature.
 
-| Print count | FAC (dry) | Water |
+| Print count | AmFe (dry) | Water (warm) |
 |-------------|-----------|-------|
-| 1 print | 244 g | 976 ml |
-| 5 prints | 1,220 g | 4,880 ml |
+| 1 print | 200 g | 300 ml |
+| 5 prints | 1,000 g | 1,500 ml |
 
-1. Weigh FAC into the mixing jug.
-2. Add water (room temperature). Stir until fully dissolved — the solution turns yellow-green.
-3. Label the jug **PART A — FAC**. Store in shade.
+1. Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
+2. Weigh AmFe into the mixing jug.
+3. Pour warm water over the AmFe. Stir continuously until fully dissolved — the solution turns pale yellow-green and is clear, not cloudy. This may take 3–5 minutes.
+4. Allow to cool to room temperature before use.
+5. Label the jug **PART A — AmFe (WARE)**. Store in a sealed dark bottle in shade.
 
-### 1.3 Mixing Part B — Potassium Ferricyanide
+### 1.3 Mixing Part B — Potassium Ferricyanide + Ammonium Dichromate
 
-Prepare an 8% solution by weight:
+Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for contrast enhancement.
 
-| Print count | Potassium ferricyanide | Water |
-|-------------|----------------------|-------|
-| 1 print | 100 g | 1,150 ml |
-| 5 prints | 500 g | 5,750 ml |
+| Print count | Potassium ferricyanide | Ammonium dichromate | Water |
+|-------------|----------------------|---------------------|-------|
+| 1 print | 100 g | 10 g | 1,150 ml |
+| 5 prints | 500 g | 50 g | 5,750 ml |
 
-1. Weigh potassium ferricyanide into the second jug.
-2. Add water. Stir until fully dissolved — the solution turns bright orange-red.
-3. Label the jug **PART B — K3Fe(CN)6**. Store in shade, away from Part A.
+1. Weigh potassium ferricyanide and ammonium dichromate into the second jug.
+2. Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
+3. Label the jug **PART B — KFe + AmDichr**. Store in shade, away from Part A.
 
-> **Storage:** Mixed A and B solutions keep for up to 4 weeks in sealed dark bottles. Mixed together (the sensitiser), the working life is 4–6 hours. Mix only what you need per session.
+> **⚠ Ammonium dichromate** is a Category 1A carcinogen. Wear nitrile gloves when handling dry powder. Do not inhale dust. The small quantity used here (~10g per print) is well within safe handling range for a ventilated workspace.
+
+> **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitiser), shelf life is 4–6 hours. Mix only what you need per session.
 
 ### 1.4 Prepare Working Sensitiser
 
@@ -221,11 +225,11 @@ Work efficiently — aim to complete coating within 20 minutes of opening the tr
 
 ## Phase 3 — Exposure
 
-**Time: ~2 hours baseline + adjustment. Shutter operated entirely from outside.**
+**Time: ~30–45 minutes baseline + adjustment (Ware formula). Shutter operated entirely from outside.**
 
 ### 3.1 Exposure Calculation
 
-Baseline exposure: **2 hours** in direct unobstructed sun, mid-morning to mid-afternoon, summer.
+Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer (Mike Ware New Cyanotype formula on cotton muslin). This is 4–8× faster than the traditional Herschel formula (~2–3 hours baseline) due to the higher UV sensitivity of ammonium iron(III) oxalate.
 
 **Exposure Adjustment Table**
 
@@ -240,7 +244,7 @@ Baseline exposure: **2 hours** in direct unobstructed sun, mid-morning to mid-af
 
 *For compound conditions (e.g. thin haze + early morning), multiply the factors: 1.5 × 2.0 = × 3.0.*
 
-These factors are EV-based estimates for light level changes. Cyanotype is an iron-based process and does not exhibit Schwarzschild reciprocity failure — no additional reciprocity correction is required beyond the factors above. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in 20-minute intervals using a card mask, develop immediately, and compare zones.
+These factors are EV-based estimates for light level changes. Cyanotype is an iron-based process and does not exhibit Schwarzschild reciprocity failure — no additional reciprocity correction is required beyond the factors above. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in **5-minute intervals** using a card mask, develop immediately, and compare zones.
 
 ### 3.2 Opening the Shutter
 

@@ -73,7 +73,7 @@ FS_LG = 10.0
 EQUIPMENT = [
     # LEFT END ZONE — X=0–625mm (shadow-free at all depths)
     dict(name="Light trap drum",
-         x=DRUM_CX - DRUM_R, yd=0, w=DRUM_D, d=C_WID,   # drum spans full depth in plan
+         x=DRUM_CX - DRUM_R, yd=C_WID//2 - DRUM_R, w=DRUM_D, d=DRUM_D,  # centred at Yd=CW/2=1181mm
          h_bot=0, h_top=DRUM_H_LT,
          color="#8B6F47", zone="left"),
 

@@ -58,7 +58,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Light trap drum | −375–375 | 0 (full depth) | 0–2,000 | Centred at X=0 (spans container wall); rotary drum entry |
+| Light trap drum | −375–375 | 806–1,556 (centred at CW/2=1,181mm) | 0–2,000 | Centred at X=0 (spans container wall); rotary drum entry |
 | 55-gal drums ×2 (stacked) | 20–600 | 25–605 | 0–1,740 | Z-stacked; CX=310mm, Yd below light trap drum Yd band (806mm+) |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)

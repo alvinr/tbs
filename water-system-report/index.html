@@ -1799,19 +1799,19 @@
 <td><strong>Blue</strong></td>
 <td>Blue — clean</td>
 <td>Fresh water supply for processing</td>
-<td>2× 275 gal IBC totes (550 gal total)</td>
+<td>2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone</td>
 </tr>
 <tr>
 <td><strong>Brown</strong></td>
 <td>Brown — used</td>
 <td>Collected wash water; filtered and recycled back to Blue</td>
-<td>1× 275 gal IBC tote</td>
+<td>1× 600L IBC tote, Y-stacked behind Blue IBCs</td>
 </tr>
 <tr>
 <td><strong>Black</strong></td>
 <td>Black — waste</td>
 <td>Heavily contaminated water; sealed drums for off-site disposal</td>
-<td>2× 55 gal HDPE drums (110 gal)</td>
+<td>2× 55 gal HDPE drums (110 gal), side-by-side in right end zone</td>
 </tr>
 </tbody>
 </table>
@@ -2244,44 +2244,67 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <p>A 100 Ah 12V lithium battery (1,200 Wh usable) provides <strong>&gt;30 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
 <hr />
 <h2 id="7-equipment-layout">7. Equipment Layout<a class="headerlink" href="#7-equipment-layout" title="Permanent link">&para;</a></h2>
-<p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>).</p>
-<p>The equipment occupies approximately 4 ft (1.2 m) of the container's 20 ft length, leaving 16 ft for the camera and processing floor.</p>
+<p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4,649–5,893mm); waste drums are in the <strong>left end zone</strong> (X=0–625mm, Z-stacked at Yd=25–605mm). The optical zone (X=625–4,649mm) is completely clear.</p>
+<p><strong>Container floor plan — all systems (top-down, 1:75):</strong>
+<img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
+<p>IBCs are <strong>Y-stacked</strong> (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are placed <strong>one per Yd corner</strong> of the left end zone — D-1 near the pinhole wall (Yd=25–605mm) and D-2 near the far wall (Yd=1,757–2,337mm). The light trap drum (Yd=806–1,556mm) sits between them with 201mm clearance either side.</p>
 <table>
 <thead>
 <tr>
 <th>Zone</th>
 <th>Contents</th>
-<th>Footprint</th>
+<th>X (mm)</th>
+<th>Yd (mm)</th>
+<th>H (mm)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Left wall (rear)</td>
-<td>IBC-1, IBC-2 (Blue), IBC-3 (Brown)</td>
-<td>1,200 × 3,600 mm</td>
+<td>Right end zone</td>
+<td>IBC-1 + IBC-2 Blue (600L each, stacked)</td>
+<td>4,674–5,893</td>
+<td>100–1,116</td>
+<td>0–2,020</td>
 </tr>
 <tr>
-<td>Floor-left</td>
-<td>P-01, P-02, ACC-01, filter skid</td>
-<td>600 × 900 mm</td>
+<td>Right end zone</td>
+<td>IBC-3 Brown (600L)</td>
+<td>4,674–5,893</td>
+<td>1,141–2,157</td>
+<td>0–1,010</td>
 </tr>
 <tr>
-<td>Right wall (rear)</td>
-<td>DRUM-1, DRUM-2 (Black)</td>
-<td>1,200 × 600 mm</td>
+<td>Left end zone</td>
+<td>D-1 55-gal drum (near, pinhole wall corner)</td>
+<td>20–600</td>
+<td>25–605</td>
+<td>0–870</td>
 </tr>
 <tr>
-<td>Floor centre</td>
-<td>Processing containment zone</td>
-<td>4,375 × 2,200 mm</td>
+<td>Left end zone</td>
+<td>D-2 55-gal drum (far, film plane corner)</td>
+<td>20–600</td>
+<td>1,757–2,337</td>
+<td>0–870</td>
 </tr>
 <tr>
-<td>Top wall</td>
-<td>Spray bar</td>
-<td>6,000 mm run</td>
+<td>Pinhole wall face</td>
+<td>Pump manifold</td>
+<td>2,400–2,700</td>
+<td>Y=0</td>
+<td>200–600</td>
+</tr>
+<tr>
+<td>Optical zone</td>
+<td>No equipment</td>
+<td>625–4,649</td>
+<td>—</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
+<p>All equipment clears the optical cone at every depth — shadow-free proof in <a href="../equipment-layout-report/">Equipment Layout Report</a>.</p>
+<p><strong>Hose routing:</strong> Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to Brown IBC rear at Yd=1,141mm). Waste hose from manifold to drums runs to the left end zone — maximum run ~3m.</p>
 <hr />
 <h2 id="8-parts-list-and-shopping-list">8. Parts List and Shopping List<a class="headerlink" href="#8-parts-list-and-shopping-list" title="Permanent link">&para;</a></h2>
 <h3 id="81-water-storage">8.1 Water storage<a class="headerlink" href="#81-water-storage" title="Permanent link">&para;</a></h3>
@@ -2791,8 +2814,17 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Sheet 2 — Equipment layout plan + parts list</td>
 <td><code>water-system-sheet2.png</code></td>
 </tr>
+<tr>
+<td>Container floor plan — all systems</td>
+<td>See <a href="../electrical-report/">Electrical &amp; Systems Report</a> Section 5.8</td>
+</tr>
 </tbody>
 </table>
+<p><strong>Sheet 1 — System Flow Schematic (P&amp;ID)</strong>
+<img alt="Water System — Sheet 1: P&amp;ID Flow Schematic" src="../assets/water-system-sheet1.png" /></p>
+<hr />
+<p><strong>Sheet 2 — Equipment Layout Plan</strong>
+<img alt="Water System — Sheet 2: Equipment Layout" src="../assets/water-system-sheet2.png" /></p>
 <hr />
 <h2 id="12-sources-and-references">12. Sources and References<a class="headerlink" href="#12-sources-and-references" title="Permanent link">&para;</a></h2>
 <ul>

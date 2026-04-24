@@ -19,12 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
 | 5. Print washing — water system | $1,457 | $2,072 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
-| 7. Light trap vestibule | $700 | $900 |
-| 8. Cooling & ventilation | $340 | $420 |
-| 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
-| 10. Printmaking tools & consumables | $350 | $500 |
-| 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$12,700** | **~$16,700** |
+| 7. Light trap vestibule (S-path box) | $700 | $900 |
+| 8. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
+| 9. Cooling & ventilation | $340 | $420 |
+| 10. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
+| 11. Printmaking tools & consumables | $350 | $500 |
+| 12. Safety & PPE | $120 | $180 |
+| **TOTAL (base build + 50-print run)** | **~$13,650** | **~$18,150** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -286,7 +287,62 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 8. Cooling & Ventilation
+## 8. Revolving Drum Light Trap — Custom Fabrication
+
+*Source: `light-trap-selection.md` § 3.3 & § 4. Custom-fabricated 750mm steel drum built into the hinged cargo-door panel. Replaces a fixed S-path vestibule; allows single-operator entry/exit at any time during operation without admitting daylight.*
+
+### Drum body and baffles
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 3mm mild steel sheet, 1,200×2,400mm | Hot-rolled A36 — drum shell and internal baffles | 2 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$160 |
+| 5mm steel plate (offcut) | Top and bottom drum caps, flanged | ~0.5m² | Pacific Coast Steel / Metal Supermarkets SoCal | ~$40 |
+| 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service centre | ~$30 |
+
+### Bearings
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| SKF 6215-2RS1 sealed deep-groove ball bearing | 75mm ID × 130mm OD × 25mm wide, C3 clearance | 2 | Bearing World — Anaheim CA; or Applied Industrial Technologies | ~$45–$65 each → ~$90–$130 |
+| Circlip for 75mm shaft | DIN 471, shaft circlip | 4 | McMaster-Carr #98541A113 | ~$10 |
+
+### Seals
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 12mm closed-cell neoprene wiper strip, PSA-backed | Top and bottom drum cap wiper seals; 3m total | 1 pack (3m) | McMaster-Carr #93855K6 | ~$22 |
+| 20mm neoprene compression strip, PSA-backed | Drum-to-panel gap seal, bonded to panel aperture surround | 2.4m | McMaster-Carr #8635K31 or equivalent | ~$20 |
+| Black UV-stable silicone sealant | Bead seal at top and bottom mount plates | 2 tubes | McMaster-Carr #7587A3 or equivalent | ~$18 |
+
+### Hardware
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| SS round grab rail, 100mm Ø × 400mm | M8 through-bolted handles, both faces at 900mm height | 2 | McMaster-Carr #4530T37 (cut to length) | ~$40 total |
+| M8 × 50mm hex bolt + nut + washer, stainless | Handle through-bolts, 4 off per handle | 1 lot | McMaster-Carr / Fastenal | ~$15 |
+| M10 × 40mm hex bolt, stainless + flat washer | Lower bearing collar — 8 off into panel bottom rail | 1 lot | McMaster-Carr / Fastenal | ~$20 |
+| M10 × 35mm hex bolt, stainless + flat washer | Upper bearing housing — 6 off into panel top rail | 1 lot | McMaster-Carr / Fastenal | ~$15 |
+
+### Surface treatment
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Flat black powder coat — interior drum surfaces | RAL 9005 matte; shot-blast prep + coat | 1 job | Local powder coat shop (SoCal) | ~$120–$180 |
+| Grey oxide primer + grey topcoat — exterior drum face | Standard exterior steel finish | 1 job | Included with powder coat job above, or rattle-can | ~$0–$30 |
+
+### Fabrication labour
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Metal fabrication — drum rolling, seam weld, baffle welding, cap welding, stub shaft welding | 16–20 hrs at local metal fab shop | 1 job | Local fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,200 |
+
+**Section total: ~$950–$1,450**
+
+*Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 7 above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
+
+---
+
+## 9. Cooling & Ventilation
 
 *Source: `electrical-report.md`*
 
@@ -323,7 +379,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 9. Printmaking Chemistry — Cyanotype (50 prints)
+## 10. Printmaking Chemistry — Cyanotype (50 prints)
 
 *Source: `chemistry-shopping-list.md`*
 
@@ -356,7 +412,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 10. Printmaking Tools & Consumables
+## 11. Printmaking Tools & Consumables
 
 *Source: `operating-manual.md`, `chemistry-shopping-list.md`*
 
@@ -380,7 +436,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 11. Safety & PPE
+## 12. Safety & PPE
 
 *Source: `operating-manual.md`, `electrical-report.md`*
 
@@ -419,7 +475,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | **Container Exchanger** | Used IBC totes, food-grade — CA listings | containerexchanger.com |
 | **BASCO USA** | HDPE drums, UN-rated 55-gal | bascousa.com |
 | **Ferguson Plumbing** | HDPE pipe, valves, fittings | ferguson.com |
-| **McMaster-Carr** | Fasteners, bearings, cable trunking, seals (all items) | mcmaster.com |
+| **Pacific Coast Steel** | Hot-rolled A36 sheet, round bar, structural steel | Santa Fe Springs CA |
+| **Bearing World** | SKF bearings, same-day availability | Anaheim CA |
+| **Applied Industrial Technologies** | SKF bearings, industrial supply | Multiple SoCal branches |
+| **McMaster-Carr** | Fasteners, bearings, cable trunking, seals, neoprene strip | mcmaster.com |
 | **Grainger** | Industrial supply — local branches throughout SoCal | grainger.com |
 | **Lenox Laser** | Custom precision laser-drilled pinholes | lenoxlaser.com |
 | **Portacool** | 12V DC evaporative coolers | portacool.com |

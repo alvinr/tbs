@@ -440,7 +440,7 @@ def draw_sheet2():
 
     # Zone boundaries
     ZONE_L  = ZONE_L_END   # 1100 mm — left end zone right boundary
-    ZONE_R  = ZONE_R_START  # 4649 mm — right end zone left boundary
+    ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
 
     clen   = C_LEN * S     # drawing units
     cwid   = C_WID * S     # drawing units
@@ -565,13 +565,16 @@ def draw_sheet2():
             ax.text(ex+ew/2, cy_e - 0.12, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # LEFT END ZONE (X=0–1100mm) — drum footprint + evap cooler
+    # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
     # Drum is centred at X=0 (outside edge), appears as semicircle footprint
     equip(DRUM_CX - DRUM_R, 0, DRUM_D, 750, "DRUM\n(partial)", "#E8E8D0",
           "Ø750mm vertical axis")
-    equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_SOLAR, "80W 12V  (E)")
+    # 55-gal drums — near cargo door end wall, Yd=25–605mm (below light trap Yd band)
+    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_STACKED_H,
+          "DRUMS ×2\n(stacked)", C_STEEL, f"2×55 gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
 
-    # PINHOLE WALL FACE (Yd=0) — pump manifold
+    # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
+    equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_SOLAR, "80W 12V  (E)")
     equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_BATT, "Cct C")
 
     # RIGHT END ZONE — Blue IBC stack (front, Y=100–1116mm)
@@ -580,9 +583,6 @@ def draw_sheet2():
     # Brown IBC (rear, Y=1141–2157mm)
     equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
           "#D7CCC8", "1×600L  Yd=1141–2157")
-    # 55-gal drums — left end zone, Y-stacked behind evap cooler
-    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_STACKED_H,
-          "DRUMS ×2\n(stacked)", C_STEEL, "2×55 gal  left zone")
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
     EP_DX = OX + EP_X * S
@@ -647,7 +647,7 @@ def draw_sheet2():
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
-        (EVAP_CX,            OY+wt + EVAP_Y*S),           # evap cooler
+        (EVAP_CX,            OY+wt + EVAP_Y*S),           # evap cooler (Yd=0, pinhole wall)
         (PUMP_CX,            OY+wt + 80*S),                # pump manifold
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S),       # IBC column centre
         (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S),   # drums (left zone)
@@ -725,7 +725,7 @@ def draw_sheet2():
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_SOLAR,   "EVAP COOLER — Cct E",
-         "12V DC 80W  |  10A / 14 AWG  |  Left end zone, X=400–1,000mm"),
+         f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
          "Shore power backup  |  Exterior face, cargo door wall"),
     ]
@@ -753,8 +753,8 @@ def draw_sheet2():
     notes = [
         f"1.  Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
         f"Film plane X={FP_X_L}–{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm depth. f/1088.",
-        f"2.  Shadow-free end zones: Left X=0–{FP_X_L}mm (drum+evap+55-gal×2), Right X={FP_X_R}–5,893mm (IBCs only). "
-        "Amber cone — keep entirely clear.",
+        f"2.  Shadow-free end zones: Left X=0–{FP_X_L}mm (light trap+55-gal drums×2, Yd=25–605mm), Right X={FP_X_R}–5,893mm (IBCs only). "
+        f"Evap cooler on pinhole wall face (Yd=0, X={EVAP_X}–{EVAP_X+EVAP_W}mm). Amber cone — keep entirely clear.",
         "3.  Cable trunking (40×25mm PVC) on pinhole wall face (Yd=0) — outside optical cone. "
         "Drop conduits (10mm corrugated) to each device.",
         "4.  Light trap (revolving drum, Ø750mm vertical axis) in left end zone — "

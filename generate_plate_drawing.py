@@ -795,7 +795,8 @@ ax2.text(dbx, dby - sb(PH_CB_D/2 + 10) - 12,
 SC10 = 10/1
 def sc(mm): return mm * SC10
 
-dcx, dcy = 490, 190  # centre of detail C
+# dcx, dcy = 490, 190  # centre of detail C
+dcx, dcy = 490, 130  # centre of detail C
 
 ax2.text(dcx, 265, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
          fontsize=8, fontweight='bold')

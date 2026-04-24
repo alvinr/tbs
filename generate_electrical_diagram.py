@@ -571,9 +571,9 @@ def draw_sheet2():
     equip(DRUM_CX - DRUM_R, C_WID//2 - DRUM_R, DRUM_D, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
     # 55-gal drums — one per Yd corner (rev 4: unstacked)
-    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_H,
+    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
           "DRUM D-1\n(near)", C_STEEL, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
-    equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_H,
+    equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
           "DRUM D-2\n(far)", C_STEEL, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
 
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold

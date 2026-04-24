@@ -8,7 +8,7 @@
 
 ## 1. The Hook
 
-A standard shipping container sits in a field. Inside, on 140 square feet of cotton fabric, a cyanotype image is forming. The image will be nearly 20 feet wide and 8 feet tall. The people who made it will wade into the image to develop it.
+A standard shipping container sits in a field. Inside, on 103 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 13 feet wide and 8 feet tall. The people who made it will wade into the image to develop it.
 
 The container is a camera.
 
@@ -22,7 +22,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 
 ### What
 
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one end of the container. The image plane — a stretched cotton muslin surface spanning the full 5,893 × 2,388mm interior face — sits at the other. Every exposure produces a latent cyanotype image on 140 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one end of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
 
 ### How
 
@@ -70,7 +70,7 @@ The pinhole camera's defining property is infinite depth of field: near and far 
 
 The movement systems add a second layer. The front board and film plane allow the photographer to place the image precisely on the print surface, to compress or expand perspective, to make the geometry of the scene converge or diverge. But unlike a view camera's Scheimpflug movements, which are used to adjust focus, these movements have no focus to adjust. They are purely compositional.
 
-The result: a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A 20-foot cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and body.
+The result: a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A 13-foot cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and body.
 
 The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the same chemistry: ferric ammonium citrate and potassium ferricyanide, exposed to UV, developed in plain water. The blue-white palette of cyanotype — Prussian blue ground, white highlights — is one of the most immediately recognisable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardised it.
 
@@ -169,7 +169,7 @@ Each deployment is a public event. The container is placed on-site; visitors can
 
 ### Archival Print Edition
 
-50 cyanotype prints on cotton muslin, each approximately 5,893 × 2,388mm. Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately 4,024 × 2,388mm (~13'3" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 
@@ -205,8 +205,9 @@ My practice since has moved between classical portraiture and abstract colour in
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
 | Focal length | 2,362 mm |
-| Image plane | 5,893 × 2,388 mm (~19'4" × 7'10") |
-| Image area | ~140 sq ft |
+| Image plane (active) | 4,024 × 2,388 mm (~13'3" × 7'10") |
+| Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
+| Image area | ~103 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |

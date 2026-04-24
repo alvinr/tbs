@@ -623,7 +623,7 @@ def sheet3():
     # ── Container end wall (depth 0→40, full height) ──────────────────────────
     ax.add_patch(plt.Rectangle((Y0_W, H_FLOOR), WALL_T, H_BRG_TOP + 100,
                                 fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="///", zorder=3))
-    ax.text(Y0_W + WALL_T / 2, H_BRG_TOP + 150,
+    ax.text(Y0_W + WALL_T / 2, H_BRG_TOP + 180,
             f"{WALL_T}mm\nWALL", ha="center", va="bottom",
             fontsize=6, color=C_DIM, **FONT, zorder=5)
 
@@ -712,12 +712,12 @@ def sheet3():
     # ── Clearance headroom line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
             color="#20A020", lw=1.2, ls="--", zorder=6)
-    ax.text(D_DEPTH_L - 60, H_DRUM_TOP + 30,
+    ax.text(X_LO + 20, H_DRUM_TOP + 30,
             f"DRUM TOP  H={H_BRG_BOT + DRUM_H}mm — 250mm HEADROOM CLEARANCE",
             ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT)
 
     # ── Section A-A indicator ─────────────────────────────────────────────────
-    ax.text(X_LO + 20, Y_HI - 60,
+    ax.text(X_LO + 20, Y_HI - 200,
             "SECTION A-A\n(looking along panel width direction)",
             ha="left", va="top", fontsize=7, color=C_CL, **FONT,
             fontweight="bold")
@@ -725,8 +725,8 @@ def sheet3():
     # ── Centre line (vertical drum axis) ──────────────────────────────────────
     ax.plot([D_CX_DEPTH, D_CX_DEPTH], [H_FLOOR - 80, H_BRG_TOP + 120],
             color=C_CL, lw=0.9, ls="--", zorder=6)
-    ax.text(D_CX_DEPTH, H_BRG_TOP + 140, "CL\nDRUM AXIS\n(VERTICAL)",
-            ha="center", va="bottom", fontsize=6.5, color=C_CL, **FONT)
+    ax.text(D_CX_DEPTH + 280, H_BRG_TOP + 140, "CL\nDRUM AXIS\n(VERTICAL)",
+            ha="left", va="bottom", fontsize=6.5, color=C_CL, **FONT)
 
     # ── Entry / exit arrows ───────────────────────────────────────────────────
     # Person enters from EXTERIOR, pushes drum, exits to INTERIOR
@@ -742,7 +742,7 @@ def sheet3():
                 xytext=(D_DEPTH_R + 20, EAR_Y),
                 arrowprops=dict(arrowstyle="->", color="#20A060", lw=1.5,
                                 mutation_scale=10))
-    ax.text(D_DEPTH_R + 80, EAR_Y + 50, "EXIT\n(to interior / darkroom)",
+    ax.text(D_DEPTH_R + 80, EAR_Y + 130, "EXIT\n(to interior / darkroom)",
             ha="left", va="bottom", fontsize=7, color="#20A060", **FONT)
 
     ax.text(D_CX_DEPTH, H_FLOOR + DRUM_H * 0.2,
@@ -757,17 +757,17 @@ def sheet3():
     dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
           f"{DRUM_H} mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
 
-    # Drum diameter (horizontal)
-    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 160,
-          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=40, fs=7)
+    # Drum diameter (horizontal) — placed below top bearing to avoid CL label clash
+    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 80,
+          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=35, fs=7)
 
-    # Panel thickness (horizontal)
-    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 180,
+    # Panel thickness (horizontal) — offset above bearing top
+    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 220,
           f"{PT}mm PANEL", offset=35, fs=6.5)
 
-    # Wall thickness (horizontal)
-    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 130,
-          f"{WALL_T}mm WALL", offset=35, fs=6.5)
+    # Wall thickness (horizontal) — placed in floor zone with larger offset
+    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 160,
+          f"{WALL_T}mm WALL", offset=50, fs=6.5)
 
     # Exterior overhang (horizontal)
     dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 60,

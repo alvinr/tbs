@@ -896,10 +896,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#optical-cone-rev-2-geometry" class="md-nav__link">
+  <a href="#optical-cone-rev-3-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optical Cone (rev 2 geometry)
+        Optical Cone (rev 3 geometry)
       
     </span>
   </a>
@@ -935,10 +935,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-left-end-zone-x01100mm-shadow-free-at-all-depths" class="md-nav__link">
+  <a href="#21-left-end-zone-x0625mm-shadow-free-at-all-depths" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Left End Zone — X=0–1,100mm (shadow-free at all depths)
+        2.1 Left End Zone — X=0–625mm (shadow-free at all depths)
       
     </span>
   </a>
@@ -957,10 +957,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-optical-zone-x11004649mm" class="md-nav__link">
+  <a href="#23-optical-zone-x6254649mm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 Optical Zone — X=1,100–4,649mm
+        2.3 Optical Zone — X=625–4,649mm
       
     </span>
   </a>
@@ -1558,20 +1558,20 @@
 widens as it approaches the film plane. Any equipment placed inside the cone casts
 a shadow on the film plane, producing an unexposed void in the image.</p>
 <p><strong>Solution:</strong> Reduce the active film plane from the full 5,893 mm container width
-to a 3,549 mm span (X=1,100–4,649mm). This creates two <strong>provably shadow-free end
+to a 4,024 mm span (X=625–4,649mm). This creates two <strong>provably shadow-free end
 zones</strong> — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.</p>
-<p>The black-water drums (2× 55-gal) are relocated to the left end zone (Y-stacked
-behind the evap cooler), which frees the right end zone for IBCs only and allows the
+<p>The black-water drums (2× 55-gal) are relocated to the left end zone (one per Yd
+corner, D-1 near pinhole wall and D-2 near far wall), which frees the right end zone for IBCs only and allows the
 right zone boundary to move inward from X=4,019mm to X=4,649mm — widening the film
 plane by 630mm (rev 2, 2026-04-23).</p>
-<h3 id="optical-cone-rev-2-geometry">Optical Cone (rev 2 geometry)<a class="headerlink" href="#optical-cone-rev-2-geometry" title="Permanent link">&para;</a></h3>
-<p>The pinhole is centred on the new film plane at X=2,874mm. At depth Y from the
+<h3 id="optical-cone-rev-3-geometry">Optical Cone (rev 3 geometry)<a class="headerlink" href="#optical-cone-rev-3-geometry" title="Permanent link">&para;</a></h3>
+<p>The pinhole is centered on the new film plane at X=2,637mm. At depth Y from the
 pinhole wall, the cone boundaries are:</p>
-<div class="highlight"><pre><span></span><code>X_left(Y)  = 2,874 − 1,774 × Y/2,262    [left cone boundary]
-X_right(Y) = 2,874 + 1,775 × Y/2,262    [right cone boundary]
+<div class="highlight"><pre><span></span><code>X_left(Y)  = 2,637 − 2,012 × Y/2,262    [left cone boundary]
+X_right(Y) = 2,637 + 2,012 × Y/2,262    [right cone boundary]
 </code></pre></div>
-<p>At the film plane (Y=2,262mm): X_left=1,100mm, X_right=4,649mm — exactly the
+<p>At the film plane (Y=2,262mm): X_left=625mm, X_right=4,649mm — exactly the
 film plane edges. The cone never extends beyond these X values at any depth ≤ 2,262mm.</p>
 <h3 id="zone-definitions">Zone Definitions<a class="headerlink" href="#zone-definitions" title="Permanent link">&para;</a></h3>
 <table>
@@ -1586,13 +1586,13 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 <tbody>
 <tr>
 <td><strong>Left end zone</strong></td>
-<td>0–1,100mm</td>
+<td>0–625mm</td>
 <td>YES at all depths</td>
-<td>Light trap drum, evap cooler, 55-gal drums ×2</td>
+<td>Light trap drum, 55-gal drum D-1 (Yd=25–605mm), 55-gal drum D-2 (Yd=1,757–2,337mm)</td>
 </tr>
 <tr>
 <td><strong>Optical zone</strong></td>
-<td>1,100–4,649mm</td>
+<td>625–4,649mm</td>
 <td>NO</td>
 <td>Film plane, rails only</td>
 </tr>
@@ -1611,14 +1611,14 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tbody>
 </table>
 <p><strong>Shadow-free proof:</strong>
-- Left zone (X=0–1,100): cone left boundary ≥ 1,100mm at all depths Y ≤ 2,262mm.
-  All left-zone equipment has X_right ≤ 1,000mm — well inside the zone. ✓
+- Left zone (X=0–625): cone left boundary ≥ 625mm at all depths Y ≤ 2,262mm.
+  All left-zone equipment has X_right ≤ 600mm — well inside the zone. ✓
 - Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
   All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
 - Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓</p>
 <hr />
 <h2 id="2-equipment-positions">2. Equipment Positions<a class="headerlink" href="#2-equipment-positions" title="Permanent link">&para;</a></h2>
-<h3 id="21-left-end-zone-x01100mm-shadow-free-at-all-depths">2.1 Left End Zone — X=0–1,100mm (shadow-free at all depths)<a class="headerlink" href="#21-left-end-zone-x01100mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
+<h3 id="21-left-end-zone-x0625mm-shadow-free-at-all-depths">2.1 Left End Zone — X=0–625mm (shadow-free at all depths)<a class="headerlink" href="#21-left-end-zone-x0625mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1633,23 +1633,23 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 <tr>
 <td>Light trap drum</td>
 <td>−375–375</td>
-<td>0 (full depth)</td>
+<td>806–1,556 (centered at CW/2=1,181mm)</td>
 <td>0–2,000</td>
-<td>Centred at X=0 (spans container wall); rotary drum entry</td>
+<td>Centered at X=0 (spans container wall); rotary drum entry</td>
 </tr>
 <tr>
-<td>Evaporative cooler</td>
-<td>400–1,000</td>
-<td>100–450</td>
-<td>0–800</td>
-<td>12V DC, exhaust through left end wall</td>
+<td>55-gal drum D-1 (near)</td>
+<td>20–600</td>
+<td>25–605</td>
+<td>0–870</td>
+<td>CX=310mm; pinhole wall corner; gap to light trap = 201mm</td>
 </tr>
 <tr>
-<td>55-gal drums ×2 (stacked)</td>
-<td>410–990</td>
-<td>475–1,055</td>
-<td>0–1,740</td>
-<td>Z-stacked (same floor footprint); centred at X=700mm, Yd=765mm</td>
+<td>55-gal drum D-2 (far)</td>
+<td>20–600</td>
+<td>1,757–2,337</td>
+<td>0–870</td>
+<td>CX=310mm; far wall corner; gap to light trap = 201mm; 25mm from far wall</td>
 </tr>
 </tbody>
 </table>
@@ -1664,6 +1664,12 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>Evaporative cooler</td>
+<td>700–1,300</td>
+<td>0–800</td>
+<td>12V DC 80W; protrudes 350mm from wall into Yd=0–350mm</td>
+</tr>
 <tr>
 <td>Electrical panel</td>
 <td>2,050–2,350</td>
@@ -1696,7 +1702,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tr>
 </tbody>
 </table>
-<h3 id="23-optical-zone-x11004649mm">2.3 Optical Zone — X=1,100–4,649mm<a class="headerlink" href="#23-optical-zone-x11004649mm" title="Permanent link">&para;</a></h3>
+<h3 id="23-optical-zone-x6254649mm">2.3 Optical Zone — X=625–4,649mm<a class="headerlink" href="#23-optical-zone-x6254649mm" title="Permanent link">&para;</a></h3>
 <p>Nothing at floor level. Rail slots in floor/ceiling only. Film plane frame
 spans this zone at depth Y=2,262mm (nominal far position).</p>
 <h3 id="24-right-end-zone-x46495893mm-shadow-free-at-all-depths">2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)<a class="headerlink" href="#24-right-end-zone-x46495893mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
@@ -1893,47 +1899,67 @@ for road transport with full load.</p>
 </table>
 <hr />
 <h2 id="6-55-gallon-drum-left-zone-placement">6. 55-Gallon Drum Left-Zone Placement<a class="headerlink" href="#6-55-gallon-drum-left-zone-placement" title="Permanent link">&para;</a></h2>
-<p>The two 55-gal drums are Z-stacked (one above the other) in the left end zone,
-behind the evap cooler. Both drums share the same floor footprint: Ø580mm circle
-centred at X=700mm, Yd=765mm from the pinhole wall.</p>
+<p>The two 55-gal drums are placed one per Yd corner of the left end zone — D-1 near
+the pinhole wall and D-2 near the far wall. The light trap drum (Yd=806–1,556mm)
+naturally divides the zone into two clear 201mm-gap corners. Both drums share
+CX=310mm and have identical X footprints.</p>
 <table>
 <thead>
 <tr>
 <th>Parameter</th>
-<th>Value</th>
+<th>D-1 (near, pinhole wall corner)</th>
+<th>D-2 (far, film plane corner)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Centre X</td>
-<td>700mm (centred on evap cooler: X=400mm + 600mm/2)</td>
+<td>310mm</td>
+<td>310mm</td>
 </tr>
 <tr>
 <td>Centre Yd</td>
-<td>765mm (25mm gap after evap cooler far edge at Yd=450mm, + 290mm drum radius)</td>
+<td>315mm</td>
+<td>2,047mm</td>
 </tr>
 <tr>
 <td>Footprint</td>
-<td>Ø580mm circle (Yd=475–1,055mm)</td>
+<td>Ø580mm (X=20–600mm, Yd=25–605mm)</td>
+<td>Ø580mm (X=20–600mm, Yd=1,757–2,337mm)</td>
 </tr>
 <tr>
-<td>Stacked height</td>
-<td>1,740mm (2× 870mm drums)</td>
+<td>Height</td>
+<td>870mm</td>
+<td>870mm</td>
 </tr>
 <tr>
 <td>Ceiling clearance</td>
-<td>2,388 − 1,740 = 648mm ✓</td>
+<td>2,388 − 870 = 1,518mm ✓</td>
+<td>2,388 − 870 = 1,518mm ✓</td>
 </tr>
 <tr>
 <td>X zone check</td>
-<td>X_right = 700 + 290 = 990mm &lt; 1,100mm zone boundary ✓</td>
+<td>X_right=600mm &lt; 625mm boundary ✓</td>
+<td>X_right=600mm &lt; 625mm boundary ✓</td>
+</tr>
+<tr>
+<td>Yd vs light trap</td>
+<td>Yd_hi=605mm; gap=201mm ✓</td>
+<td>Yd_lo=1,757mm; gap=201mm ✓</td>
+</tr>
+<tr>
+<td>Yd vs far wall</td>
+<td>—</td>
+<td>Yd_hi=2,337mm; 25mm clearance ✓</td>
 </tr>
 </tbody>
 </table>
-<p>Stacking requires a welded steel drum cradle or 1,010mm platform (similar to IBC
-stacking frame). Alternatively, a pallet jack or drum dolly can be used for loading.</p>
+<p>Neither drum requires a stacking cradle. Access to each drum is from the side (Yd
+direction). D-1 has ~1.5m of clear floor between it and the light trap drum. D-2
+sits against the far wall with 25mm clearance.</p>
 <p><strong>Lashing:</strong> 25mm polyester strap (WLL ≥ 1,600kg) × 2 per drum, crossed diagonally
-over the drum top and anchored to D-rings in the container floor or left end wall.</p>
+over the drum top and anchored to D-rings in the container floor — one lash set per
+drum (4 straps total).</p>
 <hr />
 <h2 id="7-plumbing-and-electrical-pinhole-wall-routing">7. Plumbing and Electrical — Pinhole Wall Routing<a class="headerlink" href="#7-plumbing-and-electrical-pinhole-wall-routing" title="Permanent link">&para;</a></h2>
 <p>All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
@@ -1947,7 +1973,7 @@ full container length on the pinhole wall face. Branch drops at each circuit
 termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire.</p>
 <p><strong>Solar inlet + shore power:</strong> NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2,874mm (pinhole side), H=400mm.</p>
+pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <hr />
 <h2 id="8-water-capacity-summary">8. Water Capacity Summary<a class="headerlink" href="#8-water-capacity-summary" title="Permanent link">&para;</a></h2>
 <table>
@@ -2002,32 +2028,32 @@ pinhole wall at X=2,874mm (pinhole side), H=400mm.</p>
 <tr>
 <td>Equipment zone concept</td>
 <td>Yd=0–1,220mm depth band</td>
-<td>X=0–1,100mm and X=4,649–5,893mm end zones</td>
+<td>X=0–625mm and X=4,649–5,893mm end zones</td>
 </tr>
 <tr>
 <td>Pinhole position</td>
 <td>X=2,946mm</td>
-<td><strong>X=2,874mm</strong> (centred on active FP)</td>
+<td><strong>X=2,637mm</strong> (centered on active FP)</td>
 </tr>
 <tr>
 <td>Active film plane width</td>
 <td>5,893mm</td>
-<td><strong>3,549mm</strong> (X=1,100–4,649mm)</td>
+<td><strong>4,024mm</strong> (X=625–4,649mm)</td>
 </tr>
 <tr>
 <td>Rail positions</td>
 <td>X=200mm, X=5,693mm</td>
-<td><strong>X=1,100mm, X=4,649mm</strong></td>
+<td><strong>X=625mm, X=4,649mm</strong></td>
 </tr>
 <tr>
 <td>Rail span</td>
 <td>5,493mm</td>
-<td><strong>3,549mm</strong></td>
+<td><strong>4,024mm</strong></td>
 </tr>
 <tr>
 <td>Max swing angle</td>
 <td>20.3°</td>
-<td><strong>31.4°</strong></td>
+<td><strong>28.3°</strong></td>
 </tr>
 <tr>
 <td>Blue IBCs</td>
@@ -2042,12 +2068,12 @@ pinhole wall at X=2,874mm (pinhole side), H=400mm.</p>
 <tr>
 <td>55-gal drums</td>
 <td>Right side, X=3,900mm</td>
-<td><strong>Left end zone, X=700mm CX, Z-stacked</strong></td>
+<td><strong>Left end zone, CX=310mm, D-1 Yd=25–605mm, D-2 Yd=1,757–2,337mm</strong></td>
 </tr>
 <tr>
 <td>Evap cooler</td>
 <td>X=1,380mm (near optical zone)</td>
-<td><strong>X=400mm</strong> (left end zone)</td>
+<td><strong>Pinhole wall face (Yd=0), X=700–1,300mm</strong></td>
 </tr>
 <tr>
 <td>Items in optical cone</td>

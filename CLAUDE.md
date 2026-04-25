@@ -57,13 +57,13 @@ bolt_holes(ax, cx, cy, pcd, n, ...)     # bolt hole pattern
 hatch_rect(ax, x, y, w, h, ...)        # cross-hatched section
 ```
 
-**Colour palette (white background):**
+**Color palette (white background):**
 
 ```python
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # centre lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions
-C_ALUM  = "#C8D8E8"   # aluminium section fill
+C_ALUM  = "#C8D8E8"   # aluminum section fill
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # gasket/neoprene fill
 ```
@@ -86,6 +86,7 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 - Shopping lists: 2+ US/SoCal supplier options per major component; include part numbers and current prices.
 - Distortion renders: dark background (`PRU_DEEP = "#0F2D5E"`), 800×600px per configuration, 3×3 summary grid as a separate PNG.
 - Logo/favicon palette constants live in `generate_logo_final.py` and `generate_favicon.py` — reuse if needed.
+- **Use American English spelling throughout** — e.g. "center" not "centre", "color" not "colour", "aluminum" not "aluminium", "analyze" not "analyse".
 
 ---
 

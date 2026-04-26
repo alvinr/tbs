@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
@@ -833,6 +835,3 @@ The critical additions beyond the earlier analysis:
 | Chem-Impex catalog (chem-impex.com) | Silver nitrate pricing (~$260.69/100g, 2025) |
 | Photographers' Formulary (photoformulary.com) | FAC pricing (~$14.95/100g, 2025); KFe pricing |
 | Wikipedia, *The Great Picture* | Precedent for muslin substrate at very large scale |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Distortion Renders — Film Plane & Tilt-Swing
 ## TBS-001 — Compound Optical Projections
 

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Engineering Diagrams
 ## TBS-001 — All Construction Drawings
 

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Fabrication Drawings
 
 Interchangeable plate system for the pinhole-end wall of the shipping container.
@@ -24,6 +26,3 @@ Cross-sections, fastener details, and light-seal arrangement.
 ## See Also
 
 - [Tilt-Swing Front Board](tilt-swing-board-report.md) — spherical-pivot adapter that replaces the vanilla pinhole plate, adding ±5° tilt and swing adjustment
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

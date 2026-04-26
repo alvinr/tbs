@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Electrical & Systems Report — TBS-001
 
 **Covers:** solar power architecture, battery bank, light trap vestibule, cooling, ventilation upgrade, wiring specification, and electrical diagrams.
@@ -372,6 +374,3 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Battery-powered safelight | Wired to circuit D — no separate battery required |
 | Water pump power | Now circuit C on main fuse block — remove standalone 12V supply listed in water report |
 | Container doors | Replaced by hinged drum panel — cargo doors removed from their hinges for transport |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

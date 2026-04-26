@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Container Selection & Construction Proposals
 
 **Document Status:** Working Draft v1.0 — April 2026  
@@ -508,6 +510,3 @@ The following order minimizes rework and avoids modifying a container that fails
 | Lenox Laser | Precision pinhole fabrication | [lenoxlaser.com](https://lenoxlaser.com/blog/pinholes-and-apertures/) |
 | OSHA Table Z-1 | Ventilation requirements for darkroom chemistry | osha.gov |
 | All optical formulas | See pinhole-optics-report.md | — |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

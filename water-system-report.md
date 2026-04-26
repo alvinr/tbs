@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Cyanotype Processing Water System
 ## Remote-Operation Design for the Giant Pinhole Camera
 
@@ -421,6 +423,3 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 - [Ronaqua — Big Blue GAC carbon cartridge](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter)
 - [Repackify — IBC totes for sale in California](https://www.repackify.com/buy-ibc-totes/california)
 - [FMCSA ELDT curriculum (HDPE chemical resistance reference)](https://tpr.fmcsa.dot.gov/content/Resources/ELDT-Curriculum-Summary.pdf)
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

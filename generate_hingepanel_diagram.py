@@ -164,15 +164,17 @@ def sheet1():
             "DRUM\nROTATES", color=C_DIM, fontsize=6,
             ha="left", va="center", **FONT)
 
-    # Handle bar — interior face only (shown dashed/hidden in exterior elevation)
-    HY = DY_BOT + DRUM_H * 0.45   # handle Y centre
+    # Handle bar — interior face only, shown as hidden (dashed) line inside drum body.
+    # The handle is on the inner curved surface of the drum; from the exterior elevation
+    # it is fully hidden behind the exterior drum wall — shown dashed per convention.
+    HY = DY_BOT + DRUM_H * 0.45   # handle Y centre (~900mm)
     HW = 110; HH = 42  # handle footprint
-    # Interior handle: right side of drum in elevation — shown hidden (dashed) as it
-    # is on the interior face and not visible from the exterior.
-    ax.add_patch(Rectangle((DX + DRUM_D, HY - HH / 2), HW, HH,
+    # Place handle inside the drum body rectangle, 20mm clear of the interior drum wall.
+    hx_handle = DX + DRUM_D - HW - 20
+    ax.add_patch(Rectangle((hx_handle, HY - HH / 2), HW, HH,
                             fc="none", ec=C_OUT, lw=1.2, ls=(0, (4, 3)), zorder=7))
-    leader(ax, (DX + DRUM_D + HW / 2, HY), (DX + DRUM_D + HW + 160, HY - 200),
-           "100mm PULL HANDLE\n(INTERIOR FACE ONLY)\n(hidden — not visible\nfrom exterior)")
+    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 200, HY + 300),
+           "100mm PULL HANDLE\n(INTERIOR FACE — HIDDEN)\nWelded bracket\nno through-hole")
 
     # ── Hinges (3 × left edge from exterior view) ────────────────────────────
     HINGE_YS = [220, 1190, PH - 230]

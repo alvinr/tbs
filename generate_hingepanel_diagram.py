@@ -164,14 +164,15 @@ def sheet1():
             "DRUM\nROTATES", color=C_DIM, fontsize=6,
             ha="left", va="center", **FONT)
 
-    # Handle bars (left and right of drum, at waist height)
+    # Handle bar — interior face only (shown dashed/hidden in exterior elevation)
     HY = DY_BOT + DRUM_H * 0.45   # handle Y centre
     HW = 110; HH = 42  # handle footprint
-    for hx in [DX - HW, DX + DRUM_D]:
-        ax.add_patch(Rectangle((hx, HY - HH / 2), HW, HH,
-                                fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7))
-    leader(ax, (DX - HW / 2, HY), (DX - HW - 200, HY - 220),
-           "100mm PULL HANDLE\n(BOTH SIDES)")
+    # Interior handle: right side of drum in elevation — shown hidden (dashed) as it
+    # is on the interior face and not visible from the exterior.
+    ax.add_patch(Rectangle((DX + DRUM_D, HY - HH / 2), HW, HH,
+                            fc="none", ec=C_OUT, lw=1.2, ls=(0, (4, 3)), zorder=7))
+    leader(ax, (DX + DRUM_D + HW / 2, HY), (DX + DRUM_D + HW + 160, HY - 200),
+           "100mm PULL HANDLE\n(INTERIOR FACE ONLY)\n(hidden — not visible\nfrom exterior)")
 
     # ── Hinges (3 × left edge from exterior view) ────────────────────────────
     HINGE_YS = [220, 1190, PH - 230]
@@ -692,13 +693,13 @@ def sheet3():
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.7, zorder=8)
 
-    # ── Handle bars (at H_HANDLE, on exterior and interior face) ──────────────
+    # ── Handle bar — interior face only, welded bracket (no through-hole) ────────
     HH = 42
-    for hx, label in [(D_DEPTH_L - 110, "EXT.\nHANDLE"), (D_DEPTH_R, "INT.\nHANDLE")]:
-        ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
-                                    fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
-        ax.text(hx + 55, H_HANDLE - HH / 2 - 40, label,
-                ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT)
+    hx = D_DEPTH_R
+    ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
+    ax.text(hx + 55, H_HANDLE - HH / 2 - 40, "INT. HANDLE\n(welded bracket\nno through-hole)",
+            ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT)
 
     # ── Person silhouette (simplified — 1750mm height line) ──────────────────
     PERSON_H = 1750   # mm

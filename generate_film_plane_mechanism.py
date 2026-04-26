@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 generate_film_plane_mechanism.py
 Moveable film plane mechanism — engineering drawings (4 sheets)

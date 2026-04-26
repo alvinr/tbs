@@ -34,3 +34,6 @@ Full source — Markdown documents, Python diagram generators, and build scripts
 ## Contact
 
 Alvin Richards — project correspondence via the GitHub repository linked above.
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

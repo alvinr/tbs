@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 setup_docs.py — One-time setup for the Giant Pinhole Camera MkDocs site.
 

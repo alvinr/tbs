@@ -492,3 +492,6 @@ All claims in this document trace to the following sources. Where source content
 ---
 
 *Document version: 1.0 — April 2026. Sources marked "not yet fetched" are based on well-established literature and training knowledge; primary source verification is in progress.*
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

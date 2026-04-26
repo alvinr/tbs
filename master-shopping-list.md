@@ -469,3 +469,6 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 - [Processing Water System](water-system-report.md) — three-circuit water system with filter skid design
 - [Cost Breakdown](project-cost-breakdown.md) — full itemised build cost across three deployment scenarios
 - [Operating Manual](operating-manual.md) — step-by-step single-operator workflow from chemistry prep to cleanup
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

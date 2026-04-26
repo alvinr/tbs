@@ -507,3 +507,6 @@ Scored on observation, lane control, intersections, turns, and speed management:
 - [United Truck Driving School — San Diego](https://drivetrucks.com/locations/san-diego-campus/)
 - [TGA Truck Driving School — Southern California](https://www.truckdriversed.com/)
 - [Toro School of Truck Driving](https://www.toroschool.net/)
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

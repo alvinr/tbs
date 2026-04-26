@@ -471,3 +471,6 @@ The pinhole gives the whole image, slowly. The lens gives a sharp central circle
 | Edmund Optics (edmundoptics.com) | Fresnel lens specifications, acrylic singlet availability |
 | Sky-Watcher / William Optics product pages | APO refractor objective specifications |
 | Ray, S., *Applied Photographic Optics*, 3rd ed., Focal Press, 2002, §15 | Field curvature, cos⁴ falloff, large-format lens design |
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

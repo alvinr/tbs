@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 Pinhole Camera — Portrait Scale Visualization
 Option B: 20-ft container, side-to-side

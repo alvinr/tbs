@@ -226,3 +226,6 @@ All technical reports, fabrication drawings, optical simulations, and shopping l
 ### Sample Optical Renders
 
 The combined distortion renders (see [Tilt-Swing Front Board report](tilt-swing-board-report.md)) demonstrate the range of optical projections available from the combined movement systems — from an undistorted reference frame to compound diagonal projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's movement systems, modeled from first principles and replicable in the physical instrument.
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

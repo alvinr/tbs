@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 generate_tilt_swing_distortion.py
 Combined optical distortion renders: front-board tilt/swing + film-plane tilt/swing

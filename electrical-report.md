@@ -372,3 +372,6 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Battery-powered safelight | Wired to circuit D — no separate battery required |
 | Water pump power | Now circuit C on main fuse block — remove standalone 12V supply listed in water report |
 | Container doors | Replaced by hinged drum panel — cargo doors removed from their hinges for transport |
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

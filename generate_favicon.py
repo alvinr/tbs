@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 generate_favicon.py — Renders the GPC badge as a 512×512 PNG favicon.
 Output: favicon.png (for docs/assets/)

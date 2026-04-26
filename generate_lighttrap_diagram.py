@@ -218,17 +218,8 @@ def draw_sheet1():
     ax.text(sl_x, sl_y, "SAFELIGHT\nCct D  (red LED)", ha="center", va="center",
             fontsize=7.0, color="white", fontweight="bold", zorder=6)
 
-    # ── Ventilation stub ──────────────────────────────────────────────────────
-    vent_y = OY + vd * 0.50
-    ax.add_patch(mpatches.Rectangle((OX - 0.8, vent_y - 0.4), 0.8, 0.8,
-                 fc="#A8D8B0", ec=C_OUT, lw=1.0, zorder=5))
-    ax.text(OX - 0.4, vent_y, "VENT\nSTUB", ha="center", va="center",
-            fontsize=6.5, color=C_OUT, zorder=6)
-    ax.annotate("4\" duct stub\n(cap when loading;\nopen during processing)",
-                xy=(OX - 0.8, vent_y), xytext=(OX - 3.0, vent_y),
-                fontsize=7.5, color=C_DIM, ha="right", va="center",
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
-                bbox=dict(fc="white", ec="none", pad=1))
+    # Note: ventilation fans A and B are on the container end walls (not this side wall),
+    # interior-mounted with baffle ducts — see Sheet 2 and Sheet 3 of lighttrap drawings.
 
     # ── S-path travel arrows ──────────────────────────────────────────────────
     path_col = "#1565C0"
@@ -317,9 +308,9 @@ def draw_sheet1():
         ("SAFELIGHT",
          "12V red LED strip — Circuit D",
          "Switched from inside\nNo UV component — safe during sensitiser coating"),
-        ("VENT STUB",
-         "4\" duct with weatherproof cap",
-         "Cap during film loading\nOpen + connect to ventilation during processing"),
+        ("VENTILATION",
+         "150mm compact axial panel fans — Fan A (intake) + Fan B (exhaust)",
+         "Interior-mounted on container end walls with light-safe baffle ducts\nSee Ventilation System drawings (Sheets 2 & 3)"),
     ]
     for j, (hdr, spec, detail) in enumerate(notes):
         ny = KY - 0.55 - j * 1.05
@@ -887,21 +878,33 @@ def draw_sheet3():
         (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 0.15),
         (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 1.2))
 
-    # Panel fan body — thin rectangle (shallow depth) + large impeller circle on face
+    # Panel fan body — thin rectangle (shallow depth, ~50mm) with impeller on INLET face.
+    # Impeller circle drawn on LEFT (inlet) face so orientation is unambiguous:
+    # viewing the fan from the inlet side = you see the blades face-on.
+    # Air enters LEFT face, exits RIGHT face (intake mode; reversed for exhaust).
     ax.add_patch(mpatches.Rectangle((FAN_X, FAN_CY - PF_R - 0.15), PF_BD, (PF_R + 0.15) * 2,
                  fc=C_ALUM, ec=C_OUT, lw=1.8, zorder=5))
-    # Impeller circle (full face of panel fan — fills most of body width)
-    ax.add_patch(plt.Circle((FAN_X + PF_BD / 2, FAN_CY), PF_R * 0.88,
-                 fc="#E8EEF4", ec=C_OUT, lw=1.2, zorder=6))
-    # Blade lines
+    # Impeller disc on INLET (left) face — represents view along fan axis from inlet
+    ax.add_patch(plt.Circle((FAN_X, FAN_CY), PF_R * 0.90,
+                 fc="#E8EEF4", ec=C_OUT, lw=1.5, zorder=6))
+    # Blade lines (fan blades as seen from inlet)
     for angle in range(0, 360, 45):
-        bx = FAN_X + PF_BD / 2 + PF_R * 0.80 * math.cos(math.radians(angle))
-        by = FAN_CY + PF_R * 0.80 * math.sin(math.radians(angle))
-        ax.plot([FAN_X + PF_BD / 2, bx], [FAN_CY, by],
-                color=C_DIM, lw=1.4, alpha=0.55, zorder=7)
-    # Motor hub (small circle at centre)
-    ax.add_patch(plt.Circle((FAN_X + PF_BD / 2, FAN_CY), PF_R * 0.18,
+        bx = FAN_X + PF_R * 0.82 * math.cos(math.radians(angle))
+        by = FAN_CY + PF_R * 0.82 * math.sin(math.radians(angle))
+        ax.plot([FAN_X, bx], [FAN_CY, by],
+                color=C_DIM, lw=1.4, alpha=0.60, zorder=7)
+    # Motor hub at centre
+    ax.add_patch(plt.Circle((FAN_X, FAN_CY), PF_R * 0.18,
                  fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+    # INLET / OUTLET face labels
+    ax.text(FAN_X, FAN_CY + PF_R + 0.30, "INLET\n(air enters)",
+            ha="center", va="bottom", fontsize=7.0, color=C_CL, fontweight="bold")
+    ax.text(FAN_X + PF_BD, FAN_CY + PF_R + 0.30, "OUTLET\n(air exits)",
+            ha="center", va="bottom", fontsize=7.0, color="#D32F2F", fontweight="bold")
+    # Axis direction note below fan
+    ax.text(FAN_X + PF_BD / 2, FAN_CY - PF_R - 0.30,
+            "← FAN AXIS HORIZONTAL →\nair flows along this axis",
+            ha="center", va="top", fontsize=7.0, color=C_DIM, style="italic")
 
     # Wiring run from fan into container interior
     WR_X = FAN_X + PF_BD + 0.15

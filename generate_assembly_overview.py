@@ -79,7 +79,7 @@ FS_MD = 8.5
 FS_LG = 10.0
 
 # ── Data range → figure size ──────────────────────────────────────────────────
-X_LO, X_HI = -500, 6900
+X_LO, X_HI = -500, 7900   # right edge must clear title block: TB_X+TB_W = C_LEN+420+1380 = 7693
 Y_LO, Y_HI = -650, 3100
 
 FIG_W = 24.0

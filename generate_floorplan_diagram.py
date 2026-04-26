@@ -95,7 +95,7 @@ def title_block(ax):
 
 def floor_plan():
     DEV_DEPTH = 700
-    PAD_L = 600; PAD_R = 500; PAD_B = DEV_DEPTH + 200; PAD_T = 500
+    PAD_L = 600; PAD_R = 800; PAD_B = DEV_DEPTH + 200; PAD_T = 500
 
     X_LO = -PAD_L; X_HI = C_LEN + PAD_R
     Y_LO = -PAD_B; Y_HI = C_WID + PAD_T
@@ -334,19 +334,19 @@ def floor_plan():
     # ── Legend ────────────────────────────────────────────────────────────────
     LEG_X = C_LEN + 60; LEG_Y_TOP = C_WID - 20
     legend_items = [
-        (C_BLUE_IBC,  f"Blue IBC ×2 stacked (2×600L) — Y-stacked, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
-        (C_BROWN_IBC, f"Brown IBC ×1 (600L) — Y-stacked rear, X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm"),
-        (C_DRUM_EQ,   f"55-gal HDPE drums ×2 (D-1 near Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}mm, D-2 far Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}mm) — left zone X={DRUM_LZ_CX-DRUM_EQ_R}–{DRUM_LZ_CX+DRUM_EQ_R}mm"),
-        (C_COOLER,    f"Evap cooler — pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
-        (C_ELEC_COL,  "Electrical panel + LiFePO4 battery (pinhole wall, wall-mount)"),
-        (C_PUMP_COL,  "Pump manifold (pinhole wall, wall-mount)"),
-        (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm at Y={FP_Y}mm)"),
-        (C_PINHOLE,   f"Pinhole Ø{PH_D}mm at X={PH_X}mm"),
+        (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
+        (C_BROWN_IBC, "Brown IBC ×1 (600L)"),
+        (C_DRUM_EQ,   "55-gal HDPE drums ×2"),
+        (C_COOLER,    "Evaporative cooler"),
+        (C_ELEC_COL,  "Electrical panel + battery bank"),
+        (C_PUMP_COL,  "Pump manifold"),
+        (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm)"),
+        (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
         (C_OPT,       "Optical axis (2362mm focal length)"),
-        (C_PINHOLE,   "Revolving light-trap drum (hinged panel, X=0)"),
+        (C_PINHOLE,   "Revolving light-trap drum"),
         (C_DEV_ZONE,  "Development area (outside container)"),
     ]
-    box_w = PAD_R - 60; box_h = len(legend_items) * 52 + 40
+    box_w = 680; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
     ax.add_patch(Rectangle((LEG_X, LEG_Y_TOP - box_h), box_w, box_h,
                             fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=8))
     ax.text(LEG_X + box_w/2, LEG_Y_TOP - 12, "LEGEND",

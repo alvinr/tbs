@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Funding Proposal Outline
 ## The Big Shoebox: A Deployable Room-Scale Camera
 
@@ -24,6 +26,8 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 
 TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
 
+![TBS-001 Container Floor Plan](assets/container-floorplan.png)
+
 ### How
 
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the Mike Ware New Cyanotype formula on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
@@ -44,17 +48,19 @@ The project incorporates two independent movement systems — equivalent to the 
 
 A spherical-pivot adapter plate mounts in the same wall-frame interface as the vanilla pinhole plate. A GE50-DO-2RS spherical plain bearing (PTFE-lined, maintenance-free) allows the pinhole to pivot ±5° in both tilt and swing. Four M8×1.0 fine-pitch adjustment screws with 36-detent knurled knobs provide 0.012° per click resolution.
 
-Effect: every 5° of board tilt steers the projected image 207mm across the film plane (2,362 × tan 5°). Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
+**Effect:** every 5° of board tilt steers the projected image 207mm across the film plane (2,362 × tan 5°). Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
 ### Film Plane: 4-Corner Independent Actuation (±42° tilt, ±28.3° swing)
 
 Four independently-driven corners allow the image plane to be tilted, swung, twisted, or warped into any compound configuration. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; rod-end spherical bearings (GIR25-DO) connect the leadscrews to the image plane frame.
 
-Effect: Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
+**Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
 
 ### Combined Operation
 
 The two systems interact non-linearly. When both are engaged simultaneously, the resulting optical projection cannot be predicted by either system alone and cannot be produced by any other camera type. A front board tilt combined with an opposing film plane tilt partially cancels the image shift while introducing a subtle S-curve geometric distortion. Full compound operation — both axes of both systems simultaneously — produces images where no lines remain parallel in any axis.
+
+![Combined tilt-swing distortion renders — all configurations](assets/tilt-swing-combined-summary.png)
 
 These interactions are modeled and documented in the [combined distortion renders](tilt-swing-board-report.md), produced from a two-step ray-tracing projection model derived from first principles.
 
@@ -226,6 +232,3 @@ All technical reports, fabrication drawings, optical simulations, and shopping l
 ### Sample Optical Renders
 
 The combined distortion renders (see [Tilt-Swing Front Board report](tilt-swing-board-report.md)) demonstrate the range of optical projections available from the combined movement systems — from an undistorted reference frame to compound diagonal projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's movement systems, modeled from first principles and replicable in the physical instrument.
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

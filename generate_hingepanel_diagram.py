@@ -198,20 +198,47 @@ def sheet1():
            (-HINGE_W - 280, HINGE_YS[1] + 300),
            "3 × 200mm S.S.\nBALL-BEARING PIANO HINGE")
 
-    # ── Southco C2-33 cam latches (4 corners) ────────────────────────────────
+    # ── Southco C2-33 cam latches (4 corners) — INTERIOR FACE ───────────────
+    # Latches are mounted on the INTERIOR face of the panel.
+    # From this exterior view they are hidden features — shown dashed per
+    # engineering convention for features on the far/hidden face.
+    # Interior mounting enables emergency egress: if the revolving drum jams,
+    # operators inside the container can release the latches and push the panel
+    # open outward without requiring access to the exterior face.
     LATCH_XS = [210, PW - 210]
     LATCH_YS = [220, PH - 220]
     for lx in LATCH_XS:
         for ly in LATCH_YS:
             ax.add_patch(Rectangle((lx - 35, ly - 35), 70, 70,
-                                    fc="#E8E0D0", ec=C_OUT, lw=1.2, zorder=6))
+                                    fc="none", ec=C_DIM, lw=0.9,
+                                    ls=(0, (4, 2)), zorder=6))
             ax.plot([lx - 22, lx + 22], [ly - 22, ly + 22],
-                    color=C_OUT, lw=1.2, zorder=7)
+                    color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
             ax.plot([lx - 22, lx + 22], [ly + 22, ly - 22],
-                    color=C_OUT, lw=1.2, zorder=7)
+                    color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
     leader(ax, (LATCH_XS[1], LATCH_YS[0]),
            (PW + 300, LATCH_YS[0] - 120),
-           "SOUTHCO C2-33\nCAM LATCH (×4)")
+           "SOUTHCO C2-33 CAM LATCH (×4)\nINTERIOR FACE — shown dashed\nEMERGENCY EGRESS:\noperate from inside if drum jams")
+
+    # ── Outward-opening annotation ────────────────────────────────────────────
+    # Panel hinges on left (X=0); right edge is the free edge.
+    # Opens outward — away from interior camera equipment.
+    ax.annotate("",
+                xy=(PW + 55, PH * 0.36),
+                xytext=(PW, PH * 0.36),
+                arrowprops=dict(arrowstyle="-|>", color="#204080", lw=1.3,
+                                mutation_scale=9))
+    ax.text(PW + 65, PH * 0.36 + 55,
+            "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
+            color="#204080", fontsize=6.5, ha="left", va="bottom",
+            fontweight="bold", **FONT, zorder=7)
+
+    # ── Emergency egress safety note ──────────────────────────────────────────
+    ax.text(PW / 2, -240,
+            "SAFETY: Interior-mounted cam latches (×4) allow emergency panel release from inside — "
+            "operate if revolving drum jams. Panel opens outward, clear of all equipment.",
+            color="#C04010", fontsize=6.5, ha="center", va="center",
+            fontweight="bold", **FONT, zorder=8)
 
     # ── EPDM seal leader ─────────────────────────────────────────────────────
     leader(ax, (PW - S, PH / 2),
@@ -534,6 +561,14 @@ def sheet2():
             "DRUM AXIS IS VERTICAL.\nPERSONNEL WALK THROUGH\nIN AN UPRIGHT POSITION.\nSee Sheet 3 for elevation view.",
             ha="center", va="center", fontsize=6.5, color="#403000",
             **FONT, zorder=13)
+
+    # ── Interior latch safety note ─────────────────────────────────────────────
+    # Small note below orientation box (latches are outside the drum-zone crop
+    # in this view but their presence and position is relevant to egress design)
+    ax.text(OB_X + OB_W / 2, OB_Y - 45,
+            "PANEL LATCHES (×4, SOUTHCO C2-33):\nMOUNTED ON INTERIOR FACE —\nEGRESS OPERABLE FROM INSIDE",
+            ha="center", va="top", fontsize=6, color="#C04010",
+            fontweight="bold", **FONT, zorder=13)
 
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",

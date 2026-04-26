@@ -417,62 +417,92 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9.0, color=C_DIM,
             style="italic", zorder=3)
 
-    # ── INTAKE FAN A (right short wall — vestibule end, low position) ─────────
-    FA_X = CX + CW - WT/2
-    FA_Y = CY + WT + CH * 0.18    # low position
+    # ── INTAKE FAN A (right end wall — interior-mounted, low position) ──────────
+    import math
     R_FAN = 0.45
+    BD_W  = 0.80    # baffle duct schematic depth (between wall interior face and fan body)
+    FA_Y  = CY + WT + CH * 0.18    # low position (unchanged)
+
+    # Baffle duct box — between interior face of right wall and fan body
+    bd_a_x0 = CX + CW - WT - BD_W         # left edge of baffle duct box
+    ax.add_patch(mpatches.Rectangle((bd_a_x0, FA_Y - 0.40), BD_W, 0.80,
+                 fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
+    ax.text(bd_a_x0 + BD_W / 2, FA_Y, "BAFFLE\nDUCT",
+            ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
+
+    # Grille indicator — tinted strip in right wall exterior face
+    ax.add_patch(mpatches.Rectangle((CX + CW - WT, FA_Y - 0.40), WT, 0.80,
+                 fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
+    ax.text(CX + CW - WT / 2, FA_Y, "G", ha="center", va="center",
+            fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
+
+    # Fan body — inside container, left of baffle duct
+    FA_X = bd_a_x0 - R_FAN - 0.10
     ax.add_patch(plt.Circle((FA_X, FA_Y), R_FAN, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
     ax.text(FA_X, FA_Y, "A", ha="center", va="center",
             fontsize=12, fontweight="bold", color=C_OUT, zorder=6)
-    # fan blades hint
     for angle in [0, 60, 120, 180, 240, 300]:
-        import math
         bx = FA_X + 0.30 * math.cos(math.radians(angle))
         by = FA_Y + 0.30 * math.sin(math.radians(angle))
         ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.5, alpha=0.5, zorder=5)
 
-    # Baffle box on wall (inline with fan)
-    ax.add_patch(mpatches.Rectangle((FA_X - 0.3, FA_Y - 0.5), 0.3 + WT, 1.0,
-                 fc="#E8E8E8", ec=C_OUT, lw=1.0, zorder=4, alpha=0.7))
-
-    # Airflow arrow from outside into container (low, right side)
-    ax.annotate("", xy=(FA_X - R_FAN - 0.8, FA_Y),
-                xytext=(FA_X + 1.0, FA_Y),
+    # Airflow: exterior right → grille → baffle → fan (leftward into container)
+    ax.annotate("", xy=(CX + CW, FA_Y),
+                xytext=(CX + CW + 1.6, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=7)
-    ax.text(FA_X + 1.5, FA_Y, "OUTSIDE\nAIR IN",
+    ax.text(CX + CW + 1.8, FA_Y, "OUTSIDE\nAIR IN",
             ha="left", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
+    # Short interior distribution arrow from fan into container
+    ax.annotate("", xy=(FA_X - R_FAN - 0.7, FA_Y),
+                xytext=(FA_X - R_FAN - 0.1, FA_Y),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, "Cct A  |  6\" (150mm) inline fan\n5A  /  16 AWG  /  60W  /  200 CFM",
-        (FA_X, FA_Y + R_FAN), (FA_X + 2.5, FA_Y + 2.0), size=8.0)
+    ann(ax, "Cct A  |  6\" (150mm) inline fan\n5A / 16AWG / 60W / 200 CFM\n(interior-mounted)",
+        (FA_X, FA_Y + R_FAN), (FA_X - 1.8, FA_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
-        (FA_X, FA_Y - R_FAN), (FA_X + 2.0, FA_Y - 1.5), size=7.5)
+        (FA_X, FA_Y - R_FAN), (FA_X - 1.2, FA_Y - 1.5), size=7.5)
 
-    # ── EXHAUST FAN B (left short wall — image plane end, high position) ──────
-    FB_X = CX + WT/2
-    FB_Y = CY + CH - WT - CH * 0.18   # high position
+    # ── EXHAUST FAN B (left end wall — interior-mounted, high position) ──────
+    FB_Y  = CY + CH - WT - CH * 0.18   # high position (unchanged)
+
+    # Baffle duct box — between interior face of left wall and fan body
+    bd_b_x0 = CX + WT                 # right edge of left wall = duct left face
+    ax.add_patch(mpatches.Rectangle((bd_b_x0, FB_Y - 0.40), BD_W, 0.80,
+                 fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
+    ax.text(bd_b_x0 + BD_W / 2, FB_Y, "BAFFLE\nDUCT",
+            ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
+
+    # Grille indicator — tinted strip in left wall exterior face
+    ax.add_patch(mpatches.Rectangle((CX, FB_Y - 0.40), WT, 0.80,
+                 fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
+    ax.text(CX + WT / 2, FB_Y, "G", ha="center", va="center",
+            fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
+
+    # Fan body — inside container, right of baffle duct
+    FB_X = bd_b_x0 + BD_W + R_FAN + 0.10
     ax.add_patch(plt.Circle((FB_X, FB_Y), R_FAN, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
     ax.text(FB_X, FB_Y, "B", ha="center", va="center",
             fontsize=12, fontweight="bold", color=C_OUT, zorder=6)
     for angle in [0, 60, 120, 180, 240, 300]:
-        import math
         bx = FB_X + 0.30 * math.cos(math.radians(angle))
         by = FB_Y + 0.30 * math.sin(math.radians(angle))
         ax.plot([FB_X, bx], [FB_Y, by], color=C_DIM, lw=1.5, alpha=0.5, zorder=5)
 
-    ax.add_patch(mpatches.Rectangle((FB_X - WT, FB_Y - 0.5), 0.3 + WT, 1.0,
-                 fc="#E8E8E8", ec=C_OUT, lw=1.0, zorder=4, alpha=0.7))
-
-    # Airflow arrow out through wall
-    ax.annotate("", xy=(FB_X - 1.0, FB_Y),
-                xytext=(FB_X + R_FAN + 0.8, FB_Y),
+    # Airflow: container → fan → baffle → grille → outside (leftward)
+    ax.annotate("", xy=(CX - 1.6, FB_Y),
+                xytext=(CX, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=2.5), zorder=7)
-    ax.text(FB_X - 1.5, FB_Y, "HOT AIR\nOUT",
+    ax.text(CX - 1.8, FB_Y, "HOT AIR\nOUT",
             ha="right", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
+    # Short interior collection arrow into fan
+    ax.annotate("", xy=(FB_X + R_FAN + 0.1, FB_Y),
+                xytext=(FB_X + R_FAN + 0.7, FB_Y),
+                arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, "Cct B  |  6\" (150mm) inline fan\n5A  /  16 AWG  /  60W  /  200 CFM",
-        (FB_X, FB_Y + R_FAN), (FB_X - 2.5, FB_Y + 2.0), size=8.0)
+    ann(ax, "Cct B  |  6\" (150mm) inline fan\n5A / 16AWG / 60W / 200 CFM\n(interior-mounted)",
+        (FB_X, FB_Y + R_FAN), (FB_X + 1.8, FB_Y + 2.2), size=7.5)
     ann(ax, "HIGH POSITION\n~1,800mm AFF",
-        (FB_X, FB_Y - R_FAN), (FB_X - 2.0, FB_Y - 1.5), size=7.5)
+        (FB_X, FB_Y - R_FAN), (FB_X + 1.2, FB_Y - 1.5), size=7.5)
 
     # ── EVAP COOLER (floor level, with baffled intake through bottom wall) ─────
     EC_X = CX + CW * 0.60
@@ -714,188 +744,225 @@ def draw_sheet3():
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
     ax.text(FW / 2, FH - 0.72,
-            "TBS-001  ·  Longitudinal section through fan axis  ·  "
-            "Exterior left → Interior right  ·  Schematic — not to scale",
+            "TBS-001  ·  Longitudinal section through fan axis  ·  Exterior left → Interior right  ·  "
+            "Fan & baffle duct interior-mounted — wiring inside container  ·  Schematic NTS",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
-    # ── Layout constants (schematic units, not strict scale) ─────────────────
-    # Exterior zone: x = 0 .. WX
-    # Container wall: x = WX .. WX+WT
-    # Duct housing: x = WX+WT .. WX+WT+DD
-    # Interior zone: x = WX+WT+DD ..
-    WX   = 7.5    # left face of container wall
-    WT   = 1.2    # wall thickness (schematic; actual ~2mm corrugated steel)
-    DD   = 10.0   # duct depth (represents 300mm)
-    DH   = 5.5    # duct outer height (represents 200mm)
-    SK   = 0.35   # duct housing wall thickness (represents 10mm)
-    AY   = 4.5    # bottom of duct assembly
-    BF_T = 0.30   # baffle plate thickness (minimum visible width)
+    # ── Layout constants ──────────────────────────────────────────────────────
+    # Exterior zone:  x = 0  ..  WX
+    # Container wall: x = WX  ..  WX+WT
+    # Baffle duct:    x = WX+WT  ..  WX+WT+DD     (interior-mounted)
+    # Fan body:       x = WX+WT+DD  ..  WX+WT+DD+FAN_LEN  (interior)
+    # Interior zone:  x = WX+WT+DD+FAN_LEN  ..  FW
+    WX      = 3.5    # exterior face of container wall
+    WT      = 1.2    # wall thickness (schematic)
+    DD      = 10.0   # duct depth (represents 300 mm)
+    DH      = 5.5    # duct outer height (represents 200 mm)
+    SK      = 0.35   # duct housing wall thickness (10 mm steel)
+    AY      = 4.5    # bottom of duct assembly
+    BF_T    = 0.30   # baffle plate thickness (minimum visible)
+    FAN_LEN = 5.0    # fan body depth in drawing units
+    FAN_D   = 4.5    # fan body height (represents ~150 mm dia)
+    FAN_R   = FAN_D / 2
 
-    DUCT_X = WX + WT            # interior face of container wall = duct start
-    DUCT_Y = AY                 # bottom outer face of duct
-    int_h  = DH - 2 * SK        # clear interior height
-    int_d  = DD - SK            # clear interior depth (open on wall side)
-
-    # ── Container wall ───────────────────────────────────────────────────────
-    # Full wall height (taller than duct to show wall context)
+    DUCT_X  = WX + WT           # interior face of wall = duct left face
+    DUCT_Y  = AY
+    FAN_X   = DUCT_X + DD       # fan mounts on right (interior) face of duct
+    FAN_CX  = FAN_X + FAN_LEN / 2
+    FAN_CY  = DUCT_Y + DH / 2
+    int_h   = DH - 2 * SK       # clear interior height
+    int_d   = DD - SK           # clear interior depth (right side has fan flange)
     wall_y0, wall_y1 = AY - 1.0, AY + DH + 1.0
+
+    # ── Container wall ────────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((WX, wall_y0), WT, wall_y1 - wall_y0,
                  fc=C_STEEL, ec=C_OUT, lw=2.0, zorder=4))
-    # Hatch the wall
     for yi in range(int(wall_y0 * 4), int(wall_y1 * 4)):
         yy = yi / 4.0
         ax.plot([WX, WX + WT], [yy, yy + 0.3],
                 color=C_OUT, lw=0.4, alpha=0.4, zorder=5)
-    # Opening in wall for duct penetration (shown as gap in hatch / white strip)
+    # Clear opening in wall for duct penetration
     ax.add_patch(mpatches.Rectangle((WX, AY + SK), WT, int_h,
                  fc="#F2F2EE", ec="none", zorder=5))
     ann(ax, "CONTAINER WALL\ncorrugated steel\n(shown schematic)",
-        (WX + WT / 2, wall_y1 - 0.3), (WX - 2.0, wall_y1 + 0.5))
+        (WX + WT / 2, wall_y1 - 0.2), (WX - 1.2, wall_y1 + 0.6))
 
-    # ── Baffle duct housing (interior side) ──────────────────────────────────
-    # Outer box
+    # ── Weatherproof louvre grille (exterior face of wall) ────────────────────
+    GL_W = 0.45    # grille frame depth (protruding exterior)
+    GL_H = DH * 0.65
+    GL_Y = DUCT_Y + DH / 2 - GL_H / 2
+    # Grille frame
+    ax.add_patch(mpatches.Rectangle((WX - GL_W, GL_Y), GL_W, GL_H,
+                 fc="#D0D8C8", ec=C_OUT, lw=1.2, zorder=6))
+    # Louvre slats (5 horizontal angled slats)
+    slat_h = 0.10
+    slat_gap = GL_H / 6
+    for i in range(5):
+        sy = GL_Y + slat_gap * (i + 0.5)
+        # Angled slat: left edge lower than right (rain-shedding angle)
+        ax.add_patch(mpatches.FancyBboxPatch(
+            (WX - GL_W + 0.05, sy - slat_h / 2), GL_W - 0.10, slat_h,
+            boxstyle="round,pad=0.01", fc=C_DIM, ec="none", zorder=7, alpha=0.75))
+    ann(ax, "Weatherproof louvre grille\n(no fan — passive inlet/outlet)\n150mm dia. round → rect adapter",
+        (WX - GL_W / 2, GL_Y - 0.15), (WX - GL_W / 2 - 1.5, GL_Y - 1.4))
+
+    # ── Baffle duct housing (interior-mounted, left face open to wall) ────────
     ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y), DD, DH,
                  fc="#F5F5F5", ec=C_OUT, lw=2.0, zorder=3))
-    # Housing walls (top, bottom, interior end cap — exterior face is open to wall)
+    # Housing walls: top, bottom only — left (exterior) is open to wall, right (fan) has mounting flange
     for rx, ry, rw, rh in [
-        (DUCT_X,       DUCT_Y,        DD, SK),          # bottom
-        (DUCT_X,       DUCT_Y+DH-SK,  DD, SK),          # top
-        (DUCT_X+DD-SK, DUCT_Y+SK,     SK, int_h),       # interior end cap
+        (DUCT_X, DUCT_Y,        DD, SK),         # bottom wall
+        (DUCT_X, DUCT_Y+DH-SK,  DD, SK),         # top wall
     ]:
         ax.add_patch(mpatches.Rectangle((rx, ry), rw, rh,
                      fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=4))
     # Flat black interior
-    ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y + SK), DD - SK, int_h,
-                 fc="#2A2A2A", ec="none", zorder=2, alpha=0.15))
+    ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y + SK), DD, int_h,
+                 fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
 
-    # Mounting flange (plate on exterior face, bolted through wall)
-    FL_W = 1.2   # flange overhang each side of duct
-    FL_T = 0.25  # flange thickness
-    ax.add_patch(mpatches.Rectangle((WX - FL_T, DUCT_Y - FL_W), FL_T, DH + 2 * FL_W,
-                 fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
+    # Wall mounting flange — secures duct to interior face of container wall
+    FL_W = 1.0    # flange overhang (top and bottom)
+    FL_T = 0.22   # flange plate thickness
     ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y - FL_W), FL_T, DH + 2 * FL_W,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
-    # Bolt symbols on flange (4 bolts)
-    for by in [DUCT_Y - FL_W * 0.6, DUCT_Y + DH + FL_W * 0.6]:
-        ax.plot(WX - FL_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
+    for by in [DUCT_Y - FL_W * 0.55, DUCT_Y + DH + FL_W * 0.55]:
         ax.plot(DUCT_X + FL_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
-    ann(ax, "Mounting flange\n5mm steel plate\n4 × M10 bolts",
-        (WX - FL_T / 2, DUCT_Y - FL_W - 0.1),
-        (WX - 2.5, DUCT_Y - FL_W - 1.0))
+    ann(ax, "Wall mounting flange\n5mm plate · 4×M10 bolts\n(interior face of wall)",
+        (DUCT_X + FL_T / 2, DUCT_Y - FL_W - 0.15),
+        (DUCT_X + FL_T / 2 + 0.5, DUCT_Y - FL_W - 1.3))
 
     # ── Baffles inside duct ───────────────────────────────────────────────────
-    # In this longitudinal section (exterior left → interior right):
-    # Baffle 1: vertical fin from TOP at 30% depth → gap at BOTTOM
-    # Baffle 2: vertical fin from BOTTOM at 70% depth → gap at TOP
+    # Baffle 1: from TOP, at 30% depth — gap at BOTTOM
+    # Baffle 2: from BOTTOM, at 70% depth — gap at TOP
     B1_X = DUCT_X + int_d * 0.30
     B1_H = int_h * 0.65
-    B1_Y = DUCT_Y + SK + int_h - B1_H          # top-anchored
+    B1_Y = DUCT_Y + SK + int_h - B1_H      # top-anchored
     ax.add_patch(mpatches.Rectangle((B1_X, B1_Y), BF_T, B1_H,
                  fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
 
     B2_X = DUCT_X + int_d * 0.70
     B2_H = int_h * 0.65
-    B2_Y = DUCT_Y + SK                          # bottom-anchored
+    B2_Y = DUCT_Y + SK                     # bottom-anchored
     ax.add_patch(mpatches.Rectangle((B2_X, B2_Y), BF_T, B2_H,
                  fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
 
     ann(ax, "Baffle 1\n(from top, 65%)\ngap at bottom",
         (B1_X + BF_T / 2, B1_Y + B1_H * 0.6),
-        (B1_X - 1.8, B1_Y + B1_H * 0.6 + 1.2))
+        (B1_X - 1.5, B1_Y + B1_H * 0.6 + 1.0))
     ann(ax, "Baffle 2\n(from bottom, 65%)\ngap at top",
         (B2_X + BF_T / 2, B2_Y + B2_H * 0.4),
-        (B2_X + 1.8, B2_Y + B2_H * 0.4 - 1.0))
-    ax.text(DUCT_X + (DD - SK) / 2, DUCT_Y + SK + int_h * 0.5,
+        (B2_X + 1.5, B2_Y + B2_H * 0.4 - 0.9))
+    ax.text(DUCT_X + DD / 2, DUCT_Y + SK + int_h * 0.5,
             "FLAT BLACK\nPOWDER COAT\nALL INTERIOR FACES",
-            ha="center", va="center", fontsize=7.0, color="#A0A0A0",
-            style="italic", alpha=0.8, zorder=6)
+            ha="center", va="center", fontsize=7.0, color="#808080",
+            style="italic", alpha=0.85, zorder=6)
 
-    # ── Inline fan (exterior side) ────────────────────────────────────────────
-    FAN_D   = 4.5    # fan housing diameter in drawing units (represents ~150mm)
-    FAN_R   = FAN_D / 2
-    FAN_LEN = 5.5    # fan body length in drawing units
-    FAN_CX  = WX - WT * 0.5 - FAN_LEN / 2   # fan body centred exterior of wall
-    FAN_CY  = DUCT_Y + DH / 2               # vertically centred on duct
+    # ── Fan body (interior-mounted — on right face of duct housing) ───────────
+    # Fan mounting flange at right face of duct
+    FM_T = 0.22
+    ax.add_patch(mpatches.Rectangle((FAN_X - FM_T, DUCT_Y - FL_W), FM_T, DH + 2 * FL_W,
+                 fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
+    for by in [DUCT_Y - FL_W * 0.55, DUCT_Y + DH + FL_W * 0.55]:
+        ax.plot(FAN_X - FM_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
+    ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts",
+        (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 0.15),
+        (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 1.2))
 
-    # Fan body (rectangular cross-section in elevation)
+    # Fan body (rectangular elevation view)
     ax.add_patch(mpatches.FancyBboxPatch(
-        (FAN_CX - FAN_LEN / 2, FAN_CY - FAN_R),
-        FAN_LEN, FAN_D,
+        (FAN_X, FAN_CY - FAN_R), FAN_LEN, FAN_D,
         boxstyle="round,pad=0.08",
         fc=C_ALUM, ec=C_OUT, lw=1.8, zorder=5))
-    # Impeller disc (schematic circle showing fan blade plane)
-    ax.add_patch(plt.Circle((FAN_CX, FAN_CY), FAN_R * 0.7,
+    # Impeller disc
+    ax.add_patch(plt.Circle((FAN_CX, FAN_CY), FAN_R * 0.70,
                  fc="none", ec=C_DIM, lw=1.2, ls="--", zorder=6))
     # Blade lines
     for angle in range(0, 360, 45):
-        bx = FAN_CX + FAN_R * 0.7 * math.cos(math.radians(angle))
-        by = FAN_CY + FAN_R * 0.7 * math.sin(math.radians(angle))
+        bx = FAN_CX + FAN_R * 0.70 * math.cos(math.radians(angle))
+        by = FAN_CY + FAN_R * 0.70 * math.sin(math.radians(angle))
         ax.plot([FAN_CX, bx], [FAN_CY, by],
                 color=C_DIM, lw=1.4, alpha=0.55, zorder=7)
     # Motor casing (right end of fan body)
     ax.add_patch(mpatches.Rectangle(
-        (FAN_CX + FAN_LEN / 2 - 1.0, FAN_CY - FAN_R * 0.5),
-        1.0, FAN_D * 0.5,
+        (FAN_X + FAN_LEN - 0.9, FAN_CY - FAN_R * 0.5),
+        0.9, FAN_D * 0.5,
         fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
+
+    # Wiring run from motor into container interior (right of fan)
+    WR_X = FAN_X + FAN_LEN + 0.15
+    ax.plot([WR_X, WR_X + 2.0], [FAN_CY - FAN_R * 0.35, FAN_CY - FAN_R * 0.35],
+            color=C_PIPE, lw=2.5, solid_capstyle="round", zorder=5)
+    ax.text(WR_X + 2.15, FAN_CY - FAN_R * 0.35,
+            "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
+            ha="left", va="center", fontsize=7.5, color=C_PIPE)
+
     ax.text(FAN_CX, FAN_CY - FAN_R - 0.55,
-            "6\" (150mm) INLINE FAN\nFan A (intake) or Fan B (exhaust)\n"
-            "Cct A/B  ·  60W  ·  200 CFM",
-            ha="center", va="top", fontsize=8.0,
-            fontweight="bold", color=C_OUT)
+            "6\" (150mm) INLINE FAN  ·  Fan A (intake) or Fan B (exhaust)\n"
+            "Cct A/B  ·  60W  ·  200 CFM  ·  Interior-mounted",
+            ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT)
 
-    # Connection duct stub (fan outlet → wall penetration)
-    STUB_X = FAN_CX + FAN_LEN / 2
-    ax.add_patch(mpatches.Rectangle(
-        (STUB_X, FAN_CY - int_h / 2),
-        WX - STUB_X, int_h,
-        fc=C_ALUM, ec=C_OUT, lw=1.0, zorder=4))
-    ann(ax, "Duct adapter /\nconnection stub",
-        ((STUB_X + WX) / 2, FAN_CY + int_h / 2),
-        ((STUB_X + WX) / 2, FAN_CY + int_h / 2 + 1.2))
-
-    # ── Airflow arrows ────────────────────────────────────────────────────────
+    # ── Airflow arrows (intake mode shown — exhaust is identical, reversed) ───
     mid_y = FAN_CY
-    # Exterior intake arrow
-    ax.annotate("", xy=(FAN_CX - FAN_LEN / 2 - 0.2, mid_y),
-                xytext=(FAN_CX - FAN_LEN / 2 - 1.8, mid_y),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=8)
-    ax.text(FAN_CX - FAN_LEN / 2 - 2.0, mid_y, "OUTSIDE\nAIR IN",
-            ha="right", va="center", fontsize=9.0,
-            color=C_CL, fontweight="bold")
-    # Interior exit arrow
-    int_exit_x = DUCT_X + DD + 0.5
-    ax.annotate("", xy=(int_exit_x + 1.5, mid_y),
-                xytext=(int_exit_x + 0.2, mid_y),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=8)
-    ax.text(int_exit_x + 1.7, mid_y, "INTO\nCONTAINER",
-            ha="left", va="center", fontsize=9.0,
-            color=C_CL, fontweight="bold")
+    gap1_h = int_h * 0.35
+    gap1_y = DUCT_Y + SK
+    gap2_h = int_h * 0.35
+    gap2_y = DUCT_Y + SK + int_h - gap2_h
+    y_gap1 = gap1_y + gap1_h / 2
+    y_gap2 = gap2_y + gap2_h / 2
+    pc, plw = C_CL, 1.6
+
+    # Exterior: outside → grille
+    ax.annotate("", xy=(WX - GL_W, mid_y), xytext=(WX - GL_W - 1.8, mid_y),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
+    ax.text(WX - GL_W - 2.0, mid_y, "OUTSIDE\nAIR IN",
+            ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold")
+    # Through wall opening into duct
+    ax.annotate("", xy=(DUCT_X + 0.3, mid_y), xytext=(WX + WT - 0.1, mid_y),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    # S-path through baffles
+    ax.annotate("", xy=(B1_X - 0.4, y_gap1), xytext=(B1_X - 0.4, mid_y),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    ax.annotate("", xy=(B1_X + BF_T + 0.4, y_gap1), xytext=(B1_X - 0.1, y_gap1),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    ax.annotate("", xy=(B2_X - 0.4, y_gap2), xytext=(B2_X - 0.4, y_gap1),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    ax.annotate("", xy=(B2_X + BF_T + 0.4, y_gap2), xytext=(B2_X - 0.1, y_gap2),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    # Exit baffle → fan inlet
+    ax.annotate("", xy=(FAN_X - 0.1, mid_y), xytext=(B2_X + BF_T + 0.6, mid_y),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
+    # Fan → interior container
+    ax.annotate("", xy=(FAN_X + FAN_LEN + 1.8, mid_y),
+                xytext=(FAN_X + FAN_LEN + 0.2, mid_y),
+                arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
+    ax.text(FAN_X + FAN_LEN + 2.0, mid_y, "INTO\nCONTAINER",
+            ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold")
+    ax.text(FAN_X + FAN_LEN + 2.0, mid_y - FAN_R - 0.3,
+            "(exhaust Fan B: flow reversed)",
+            ha="left", va="top", fontsize=7.0, color=C_DIM, style="italic")
 
     # ── Zone labels ───────────────────────────────────────────────────────────
-    ax.text(FAN_CX, wall_y0 - 0.3, "EXTERIOR",
-            ha="center", va="top", fontsize=9.0,
-            color=C_DIM, fontweight="bold")
-    ax.text(DUCT_X + DD / 2, wall_y0 - 0.3, "INTERIOR (container)",
-            ha="center", va="top", fontsize=9.0,
-            color=C_DIM, fontweight="bold")
-    # Zone divider
+    ax.text(WX / 2, wall_y0 - 0.3, "EXTERIOR",
+            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
+    ax.text(DUCT_X + (FAN_X + FAN_LEN - DUCT_X) / 2, wall_y0 - 0.3,
+            "INTERIOR (container)",
+            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
     ax.plot([WX + WT / 2, WX + WT / 2], [wall_y0 - 0.6, wall_y0 - 0.15],
             color=C_DIM, lw=1.0, ls=":")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.0, "300 mm  (duct depth)")
-    dim_v(ax, DUCT_X - 1.2, DUCT_Y, DUCT_Y + DH, "200 mm  (duct height)")
+    dim_v(ax, DUCT_X - 1.5, DUCT_Y, DUCT_Y + DH, "200 mm")
     dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall")
-    ax.plot([WX, WX], [DUCT_Y + DH, DUCT_Y + DH + 0.8],
-            color=C_DIM, lw=0.5, ls=":")
-    ax.plot([WX + WT, WX + WT], [DUCT_Y + DH, DUCT_Y + DH + 0.8],
-            color=C_DIM, lw=0.5, ls=":")
+    ax.plot([WX, WX], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
+    ax.plot([WX + WT, WX + WT], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
+    dim_h(ax, FAN_X, FAN_X + FAN_LEN, DUCT_Y - 1.0, "~150 mm  (fan body)")
 
     title_block(ax, FW, 3, 3,
                 "FAN & BAFFLE DUCT — ASSEMBLY SECTION",
-                "Fan mounting  ·  Wall penetration  ·  Baffle duct housing  ·  "
-                "Schematic — not to scale",
-                "Schematic NTS  ·  Refer to Sheets 1–2 for baffle geometry")
+                "Interior-mounted fan  ·  Passive louvre grille (exterior only)  ·  "
+                "Baffle duct interior-mounted  ·  All wiring inside container",
+                "Schematic NTS  ·  Refer to Sheet 2 for baffle detail geometry")
 
     plt.savefig("diagrams/lighttrap-sheet3.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

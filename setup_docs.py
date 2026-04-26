@@ -65,8 +65,10 @@ MD_FILES = [
 
 # Root-only images (not generated into diagrams/)
 ROOT_IMAGE_FILES = [
-    "plate-drawing-sheet1.png",
-    "plate-drawing-sheet2.png",
+]
+
+# Images stored in assets/ (not root, not diagrams/)
+ASSET_IMAGE_FILES = [
     "logo-final.png",
     "favicon.png",
 ]
@@ -115,6 +117,8 @@ DIAG_IMAGE_FILES = [
     "assembly-fab-sheet1.png",
     "assembly-fab-sheet2.png",
     "line-of-sight.png",
+    "plate-drawing-sheet1.png",
+    "plate-drawing-sheet2.png",
 ]
 
 MKDOCS_YML = """\
@@ -332,13 +336,13 @@ def main():
 
     # 4. Copy image assets
     print("\n[4/5] Copying image assets...")
-    for img_name in ROOT_IMAGE_FILES:
-        src = PROJECT_ROOT / img_name
+    for img_name in ASSET_IMAGE_FILES:
+        src = PROJECT_ROOT / "assets" / img_name
         if src.exists():
             shutil.copy2(src, ASSETS_DIR / img_name)
-            print(f"  {img_name} → published/assets/{img_name}")
+            print(f"  assets/{img_name} → published/assets/{img_name}")
         else:
-            print(f"  WARNING: {img_name} not found — skipping")
+            print(f"  WARNING: assets/{img_name} not found — skipping")
     for img_name in DIAG_IMAGE_FILES:
         src = PROJECT_ROOT / "diagrams" / img_name
         if src.exists():

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # The Big Shoebox — Project Summary
 
 <div style="text-align:center;">
@@ -44,13 +46,13 @@ Four corners of the image plane move independently via handwheels, enabling view
 
 Every specification traces to a peer-reviewed source or manufacturer datasheet. The optics are not approximated.
 
-**Off-grid capable:** a self-contained three-circuit water system supports 8–10 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without mains connection.
+**Off-grid capable:** a self-contained three-circuit water system supports 8–10 full-size prints between resupply runs, with 40% water recycling. 12V DC operation. Deployable without power connection.
 
 ---
 
 ## The Process
 
-Cyanotype on cotton muslin using the **Mike Ware New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). Baseline exposure 30–45 minutes in full sun at f/1088 — 4–8× faster than the traditional Herschel formula. Developed in plain cold water. No silver, no hazardous chemistry, no darkroom registration required.
+Cyanotype on cotton muslin using the **Mike Ware New Cyanotype formula** (ammonium iron(III) oxalate + potassium ferricyanide). Baseline exposure 30–45 minutes in full sun at f/1088 — 4–8× faster than the traditional Herschel formula. Developed in plain cold water, no silver or hazardous chemistry required.
 
 The container travels by commercial hire truck. No CDL required for the operator. No oversize permits required for an empty 20ft standard container on Interstate highways.
 
@@ -70,7 +72,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Fabrication Drawings](fabrication-drawings.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
-| [Cost Breakdown](project-cost-breakdown.md) | Full itemised build cost — three scenarios, all sources cited |
+| [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
@@ -81,6 +83,3 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

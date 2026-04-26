@@ -694,8 +694,10 @@ def sheet3():
             **FONT, alpha=0.7, zorder=8)
 
     # ── Handle bar — interior face only, welded bracket (no through-hole) ────────
+    # Handle projects INWARD from the drum wall into the hollow of the drum.
+    # D_DEPTH_R is the interior drum wall face; handle runs D_DEPTH_R-110 → D_DEPTH_R.
     HH = 42
-    hx = D_DEPTH_R
+    hx = D_DEPTH_R - 110
     ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(hx + 55, H_HANDLE - HH / 2 - 40, "INT. HANDLE\n(welded bracket\nno through-hole)",

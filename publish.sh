@@ -12,7 +12,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOCS_DIR="$SCRIPT_DIR/docs"
+DOCS_DIR="$SCRIPT_DIR/published"
 ASSETS_DIR="$DOCS_DIR/assets"
 
 MODE="deploy"
@@ -37,11 +37,11 @@ if [[ ! -f "$SCRIPT_DIR/mkdocs.yml" ]]; then
 fi
 
 if [[ ! -d "$DOCS_DIR" ]]; then
-    error "docs/ directory not found. Run: python3 setup_docs.py"
+    error "published/ directory not found. Run: python3 setup_docs.py"
 fi
 
 # ── Sync markdown files ───────────────────────────────────────────────────────
-info "Syncing markdown files to docs/..."
+info "Syncing markdown files to published/..."
 
 MD_FILES=(
     "pinhole-optics-report.md"
@@ -69,14 +69,14 @@ MD_FILES=(
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────
-info "Syncing home page (project-summary.md → docs/index.md)..."
+info "Syncing home page (project-summary.md → published/index.md)..."
 SUMMARY_SRC="$SCRIPT_DIR/project-summary.md"
 INDEX_DST="$DOCS_DIR/index.md"
 if [[ ! -f "$SUMMARY_SRC" ]]; then
     warn "project-summary.md not found — home page not updated"
 elif [[ ! -f "$INDEX_DST" ]] || [[ "$SUMMARY_SRC" -nt "$INDEX_DST" ]]; then
     cp "$SUMMARY_SRC" "$INDEX_DST"
-    echo "    updated: docs/index.md"
+    echo "    updated: published/index.md"
 fi
 
 CHANGED=0
@@ -96,7 +96,7 @@ for f in "${MD_FILES[@]}"; do
 done
 
 # ── Sync image assets ─────────────────────────────────────────────────────────
-info "Syncing image assets to docs/assets/..."
+info "Syncing image assets to published/assets/..."
 
 mkdir -p "$ASSETS_DIR"
 

@@ -16,8 +16,8 @@
 
 ```
 /                        ← source: .md reports, .py generator scripts
-docs/                    ← MkDocs input — auto-populated by publish.sh (do not edit directly)
-docs/assets/             ← images — auto-populated by publish.sh
+published/               ← MkDocs input — auto-populated by publish.sh (gitignored, never edit directly)
+published/assets/        ← images — auto-populated by publish.sh
 site/                    ← built output — gitignored, never commit
 .claude/                 ← Claude session files — never commit
 ```

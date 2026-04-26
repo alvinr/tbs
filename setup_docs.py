@@ -7,10 +7,10 @@ Run once from the project root:
 
 What it does:
   1. Checks / installs mkdocs and mkdocs-material
-  2. Creates the docs/ directory structure
-  3. Copies .md files and images into docs/
+  2. Creates the published/ directory structure
+  3. Copies .md files and images into published/
   4. Writes mkdocs.yml
-  5. Writes a docs/index.md landing page
+  5. Writes a published/index.md landing page
   6. Prints next steps
 
 After running, use publish.sh for subsequent refreshes.
@@ -25,7 +25,7 @@ from pathlib import Path
 # ── Configuration ────────────────────────────────────────────────────────────
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
-DOCS_DIR = PROJECT_ROOT / "docs"
+DOCS_DIR = PROJECT_ROOT / "published"
 ASSETS_DIR = DOCS_DIR / "assets"
 
 SITE_NAME = "The Big Shoebox — Research & Build"
@@ -308,7 +308,7 @@ def main():
             print(f"  {pkg} installed.")
 
     # 2. Create directory structure
-    print("\n[2/5] Creating docs/ directory structure...")
+    print("\n[2/5] Creating published/ directory structure...")
     DOCS_DIR.mkdir(exist_ok=True)
     ASSETS_DIR.mkdir(exist_ok=True)
     print(f"  {DOCS_DIR}")
@@ -326,7 +326,7 @@ def main():
             dst = target_dir / src_name
         if src.exists():
             shutil.copy2(src, dst)
-            print(f"  {src_name} → docs/{dst.relative_to(DOCS_DIR)}")
+            print(f"  {src_name} → published/{dst.relative_to(DOCS_DIR)}")
         else:
             print(f"  WARNING: {src_name} not found — skipping")
 
@@ -336,19 +336,19 @@ def main():
         src = PROJECT_ROOT / img_name
         if src.exists():
             shutil.copy2(src, ASSETS_DIR / img_name)
-            print(f"  {img_name} → docs/assets/{img_name}")
+            print(f"  {img_name} → published/assets/{img_name}")
         else:
             print(f"  WARNING: {img_name} not found — skipping")
     for img_name in DIAG_IMAGE_FILES:
         src = PROJECT_ROOT / "diagrams" / img_name
         if src.exists():
             shutil.copy2(src, ASSETS_DIR / img_name)
-            print(f"  diagrams/{img_name} → docs/assets/{img_name}")
+            print(f"  diagrams/{img_name} → published/assets/{img_name}")
         else:
             print(f"  WARNING: diagrams/{img_name} not found — skipping")
 
     # 5. Write mkdocs.yml
-    print("\n[5/5] Writing mkdocs.yml and docs/index.md...")
+    print("\n[5/5] Writing mkdocs.yml and published/index.md...")
 
     nav_entries = []
     for src_name, (subdir, title) in MD_FILES:
@@ -368,7 +368,7 @@ def main():
     print("  mkdocs.yml written")
 
     (DOCS_DIR / "index.md").write_text(INDEX_MD)
-    print("  docs/index.md written")
+    print("  published/index.md written")
 
     # Done
     print("\n" + "=" * 60)

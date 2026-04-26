@@ -565,7 +565,7 @@ def draw_sheet2():
 
     # Operating modes table
     MX, MY = CX, CY - 1.1
-    ax.add_patch(mpatches.FancyBboxPatch((MX - 0.1, MY - 1.05), CW + 0.2, 1.15,
+    ax.add_patch(mpatches.FancyBboxPatch((MX - 0.1, MY - 1.45), CW + 0.2, 1.55,
                  boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
     ax.text(MX + CW/2, MY - 0.05, "FAN OPERATING MODES",
             ha="center", va="top", fontsize=9.0, fontweight="bold", color=C_OUT)

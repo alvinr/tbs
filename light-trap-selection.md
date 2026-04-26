@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Revolving Light Trap — Selection & Specification
 ## TBS-001 Hinged Panel Integration
 
@@ -94,7 +96,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm stub shaft, welded to drum |
 | Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
-| Handle | 100mm Ø SS grab rail, both sides at 900mm height |
+| Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: grey oxide |
 | Approximate cost | USD $800–$1,500 (local metal fabrication shop) |
 | Lead time | 2–3 weeks |
@@ -142,7 +144,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 | Item | Specification |
 |------|--------------|
-| Entry handle | 100mm Ø × 400mm SS round grab rail, both sides, at 900mm height, M8 through-bolted |
+| Entry handle | 100mm Ø × 400mm SS round grab rail, interior face only, at 900mm height — welded bracket, no through-hole in drum wall |
 | Panel bolts | 8 × M10 flush-head hex bolts (lower collar) + 6 × M10 (upper housing), stainless |
 
 ### 4.5 Raw Material Suppliers (US / SoCal)
@@ -154,7 +156,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service centre | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back; ~$22 |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
-| SS grab rail 100mm Ø | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length |
+| SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
 | Flat black powder coat | Local powder coat shop | Standard service; ~$150 for drum |
 | Metal fabrication (rolling, welding, fitting) | Estimate 16–20 hrs labour at local shop | $800–$1,200 depending on shop rate |
 
@@ -194,5 +196,5 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 
 - The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately 220–260kg — requires two people and a panel hoist or engine crane for hanging.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
-- The drum rotates freely in both directions; there is no rotation limit. Operators push the drum wall to enter, step through one baffle sector, and push again to exit.
+- The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.

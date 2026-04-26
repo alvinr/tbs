@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # TBS-001 — Master Shopping List
 
 **Camera:** The Big Shoebox Project — TBS-001  
@@ -293,8 +295,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| SS round grab rail, 100mm Ø × 400mm | M8 through-bolted handles, both faces at 900mm height | 2 | McMaster-Carr #4530T37 (cut to length) | ~$40 total |
-| M8 × 50mm hex bolt + nut + washer, stainless | Handle through-bolts, 4 off per handle | 1 lot | McMaster-Carr / Fastenal | ~$15 |
+| SS round grab rail, 100mm Ø × 400mm | Interior face only, welded bracket — no through-hole in drum wall | 1 | McMaster-Carr #4530T37 (cut to length) | ~$20 |
 | M10 × 40mm hex bolt, stainless + flat washer | Lower bearing collar — 8 off into panel bottom rail | 1 lot | McMaster-Carr / Fastenal | ~$20 |
 | M10 × 35mm hex bolt, stainless + flat washer | Upper bearing housing — 6 off into panel top rail | 1 lot | McMaster-Carr / Fastenal | ~$15 |
 
@@ -469,6 +470,3 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 - [Processing Water System](water-system-report.md) — three-circuit water system with filter skid design
 - [Cost Breakdown](project-cost-breakdown.md) — full itemised build cost across three deployment scenarios
 - [Operating Manual](operating-manual.md) — step-by-step single-operator workflow from chemistry prep to cleanup
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

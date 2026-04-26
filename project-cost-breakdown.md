@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Giant Pinhole Camera — Complete Project Cost Breakdown
 
 **Date:** April 2026  
@@ -244,7 +246,7 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 | 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service centre |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
 | Seals — 12mm neoprene wiper strip, 20mm compression strip, silicone | $50 | $60 | $70 | McMaster-Carr #93855K6, #8635K31, #7587A3 |
-| Hardware — SS grab rails (×2), M8/M10 stainless bolts (14 off) | $80 | $100 | $120 | McMaster-Carr / Fastenal |
+| Hardware — SS grab rail (×1 interior, welded bracket), M10 stainless bolts (14 off) | $60 | $75 | $90 | McMaster-Carr / Fastenal |
 | Flat black powder coat (interior) + grey oxide primer (exterior) | $120 | $150 | $180 | Local powder coat shop SoCal |
 | Metal fabrication — rolling, seam weld, baffle weld, stub shaft weld (16–20 hrs) | $800 | $1,000 | $1,200 | Local metal fab shop — get 2–3 quotes |
 | **Revolving drum total** | **$950** | **$1,200** | **$1,450** | |
@@ -462,6 +464,3 @@ The following costs are not covered by existing research documents and should be
 | Location permit fees | Estimated | Check specific jurisdiction's film permit office before site selection |
 | Commercial photography insurance | Not researched | General liability + inland marine for equipment; estimate $800–$2,000/year |
 | Site preparation (levelling, power, fencing) | Not researched | Highly site-specific; budget $0–$5,000 depending on location |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

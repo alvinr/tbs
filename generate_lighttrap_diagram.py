@@ -89,7 +89,7 @@ def dim_v(ax, x, y1, y2, text, col=C_DIM):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet1():
-    FW, FH = 26.0, 18.0
+    FW, FH = 26.0, 24.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
@@ -118,7 +118,7 @@ def draw_sheet1():
     DOOR = 900    # exterior door clear opening mm
 
     # Drawing origin — container inner face at bottom of vestibule
-    OX, OY = 1.3, 4.0
+    OX, OY = 1.3, 7.0
 
     vw = V_W * S   # 24.0 units
     vd = V_D * S   # 12.0 units
@@ -394,7 +394,7 @@ def draw_sheet2():
 
     # ── LEFT HALF: Container longitudinal section ────────────────────────────
     # Schematic box representing the container interior
-    CX, CY = 0.8, 2.5      # container interior bottom-left
+    CX, CY = 0.8, 4.0      # container interior bottom-left
     CW, CH = 13.0, 7.0     # container interior drawing dimensions (schematic)
     WT = 0.35               # wall thickness (schematic)
 
@@ -563,13 +563,12 @@ def draw_sheet2():
             ha="center", va="center", fontsize=10.5,
             fontweight="bold", color=C_OUT)
     ax.text(DX + DW/2, DY + DH + 0.12,
-            "Plan view (top-down cross-section)  ·  Scale 1:10  ·  All dims mm",
+            "Plan view (top-down cross-section)  ·  Scale 1:30  ·  All dims mm",
             ha="center", va="center", fontsize=7.5, color=C_DIM)
 
-    # Scale 1:10 → 1 unit = 10mm
-    # Duct stub: 150mm (6") dia → 15 units. Too wide for 7.5-unit area.
-    # Use scale 1:20 → 1 unit = 20mm
-    DS = 1 / 20.0   # 1 unit = 20mm
+    # Scale 1:30 → 1 unit = 30mm
+    # Duct: 200mm × 300mm → 6.67 × 10 units — fits within DW=7.5, DH=10
+    DS = 1 / 30.0   # 1 unit = 30mm
     # Duct outer box: 200mm × 300mm outer (with 10mm steel walls)
     D_OW = 200 * DS   # 10 units
     D_OH = 300 * DS   # 15 units (depth of baffle stub through wall)
@@ -663,8 +662,8 @@ def draw_sheet2():
             ha="left", va="center", fontsize=8.0, color="#2E7D32",
             fontweight="bold")
 
-    # Spec note
-    ax.text(DX + DW/2, DY + 0.45,
+    # Spec note (below duct exterior face)
+    ax.text(DX + DW/2, B_OY - 0.6,
             "Material: 3mm mild steel plate  |  Weld or bolt to duct interior  |  "
             "Paint flat black all faces\n"
             "Baffle gap: 35% of clear duct width  |  Overlap: baffles 1 and 2 share no common x-range",
@@ -673,7 +672,7 @@ def draw_sheet2():
     title_block(ax, FW, 2, 2,
                 "VENTILATION SYSTEM — SECTION & BAFFLE DETAIL",
                 "Cross-ventilation layout  ·  Fan positions  ·  Light-safe baffle geometry",
-                "Section: not to scale  ·  Detail: 1:20")
+                "Section: not to scale  ·  Detail: 1:30")
 
     plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

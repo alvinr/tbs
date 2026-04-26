@@ -259,7 +259,7 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 Cyanotype is the recommended starting process: no silver, no DEA registration, no hazmat shipping, processing in plain water. Cost is lowest of all processes evaluated at this scale.
 
-### 6.1 Chemistry and substrate (50 prints)
+### 7.1 Chemistry and substrate (50 prints)
 
 | Item | Qty needed | Source | Total† |
 |------|-----------|--------|--------|
@@ -270,7 +270,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 *Note: development requires only plain cold water — no darkroom chemistry needed. The water system in Section 5 provides all wash water required.*
 
-### 6.2 Per-print cost (cyanotype, 50-print run)
+### 7.2 Per-print cost (cyanotype, 50-print run)
 
 | Component | Cost per print |
 |-----------|---------------|
@@ -280,11 +280,11 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 | Water & consumables (6-mil liner, gloves) | ~$3 |
 | **Total per print** | **~$57** |
 
-### 6.3 Alternative process cost comparison
+### 7.3 Alternative process cost comparison
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype (recommended)** | **~$2,842** | **~$57** | None — easiest |
+| **Cyanotype** | **~$2,842** | **~$57** | None — easiest |
 | Gum bichromate | ~$4,578 | ~$92 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$9,782 | ~$196 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$19,970 | ~$399 | Paper rolls very expensive at this size |
@@ -301,7 +301,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 Costs are **per deployment** (one move). The container requires no oversize/overweight permit when empty on Interstate highways.
 
-### 7.1 Commercial hire (no CDL required)
+### 8.1 Commercial hire (no CDL required)
 
 | Move type | Option | Per-move cost |
 |-----------|--------|--------------|
@@ -312,7 +312,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *If no forklift at destination: add $200–$1,200 for crane truck or forklift rental.*
 
-### 7.2 Self-haul (capital investment, requires CDL)
+### 8.2 Self-haul (capital investment, requires CDL)
 
 | Equipment | Purchase cost | Notes |
 |-----------|--------------|-------|
@@ -322,7 +322,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *Self-haul only makes economic sense if the container will be moved 60–80+ times (break-even vs. hire at ~$600/move).*
 
-### 7.3 Chassis + semi rental (frequent repositioning, CDL required)
+### 8.3 Chassis + semi rental (frequent repositioning, CDL required)
 
 | Item | Day rate† | Week rate† |
 |------|----------|-----------|
@@ -336,7 +336,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 **Source document:** `container-transport-options.md`; location permit costs are estimates not covered by existing research.
 
-### 8.1 CDL (if self-hauling)
+### 9.1 CDL (if self-hauling)
 
 | Item | Cost† |
 |------|-------|
@@ -348,9 +348,9 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 *CDL Class A is recommended — covers both tilt-bed truck operation (Class B) and semi tractor operation (Class A). El Camino College Torrance: $5,995 all-inclusive including DMV fees. WIOA funding may cover full tuition for eligible applicants.*
 
-*CDL is only required if self-hauling. Commercial hire (Sections 7.1) requires no licence from the customer.*
+*CDL is only required if self-hauling. Commercial hire (Sections 7.1) requires no license from the customer.*
 
-### 8.2 Location / filming permits
+### 9.2 Location / filming permits
 
 Permit requirements vary by jurisdiction. Estimates below are based on general knowledge — no specific research document covers this.
 
@@ -361,18 +361,18 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | California State Parks | State filming permit | $200–$500/day | CDPR Film Office |
 | Private land | Negotiated with landowner | $0–$2,000/day | Most affordable for rural locations |
 | Federal land (BLM, Forest Service) | Special Use Permit | $50–$150 processing fee + $150–$1,500/day | Site-specific |
-| Commercial operation (selling prints) | Business licence | $50–$200/year | City of operation |
+| Commercial operation (selling prints) | Business license | $50–$200/year | City of operation |
 
 *For a non-commercial art/documentary deployment at a single location: budget $0–$500 for permit costs. For regular commercial touring: budget $500–$2,000/deployment.*
 
-### 8.3 Permits summary (per deployment, non-commercial art use)
+### 9.3 Permits summary (per deployment, non-commercial art use)
 
 | Item | Low | Mid | High |
 |------|-----|-----|------|
 | Location permit | $0 | $200 | $500 |
-| Business licence (annual, prorated) | $10 | $25 | $50 |
+| Business license (annual, prorated) | $10 | $25 | $50 |
 | Misc. (insurance certificate, site access) | $0 | $75 | $200 |
-| **Licences & permits per deployment** | **$10** | **$300** | **$750** |
+| **Licenses & permits per deployment** | **$10** | **$300** | **$750** |
 
 *CDL costs are one-time and listed separately above. If CDL is obtained, add $4,345–$6,570 to the project total.*
 
@@ -385,10 +385,10 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Muslin substrate | ~$38 |
-| Sensitiser chemistry | ~$18 |
+| Sensitizer chemistry | ~$18 |
 | Water (42 gal Blue circuit) | ~$0.50 (if resupplied by tanker at ~$0.01/gal) |
 | Containment poly & consumables | ~$2 |
-| Filter cartridge amortised (replace every 10–20 prints) | ~$5 |
+| Filter cartridge amortized (replace every 10–20 prints) | ~$5 |
 | **Per-print running cost** | **~$63** |
 
 ### Per deployment

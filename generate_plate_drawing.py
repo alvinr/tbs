@@ -459,7 +459,7 @@ for i, note in enumerate(notes):
     ax1.text(notes_x, notes_y - 7 - i*6, note, fontsize=5.2, color='#222222')
 
 plt.tight_layout(pad=0)
-out1 = '/Users/alvinrichards/dev/tbs/plate-drawing-sheet1.png'
+out1 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet1.png'
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close()
 print(f'Saved sheet 1: {out1}')
@@ -977,7 +977,7 @@ for i, n in enumerate(notes2):
     ax2.text(10, 48 - i*6, n, fontsize=5.0, color='#222')
 
 plt.tight_layout(pad=0)
-out2 = '/Users/alvinrichards/dev/tbs/plate-drawing-sheet2.png'
+out2 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet2.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close()
 print(f'Saved sheet 2: {out2}')

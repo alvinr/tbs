@@ -89,7 +89,7 @@ ax.text(CX, 12, "No.1", color=CYAN_LITE, fontsize=11, ha="center", va="center",
         fontfamily="monospace", zorder=6)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-out = "favicon.png"
+out = "assets/favicon.png"
 fig.savefig(out, dpi=100, bbox_inches="tight", pad_inches=0,
             facecolor=PRU_DEEP)
 plt.close(fig)

@@ -100,30 +100,10 @@ info "Syncing image assets to published/assets/..."
 
 mkdir -p "$ASSETS_DIR"
 
-# Root-only images (not generated into diagrams/)
-IMG_FILES=(
-    "plate-drawing-sheet1.png"
-    "plate-drawing-sheet2.png"
-    "favicon.png"
-)
-
-for f in "${IMG_FILES[@]}"; do
-    src="$SCRIPT_DIR/$f"
-    dst="$ASSETS_DIR/$f"
-    if [[ ! -f "$src" ]]; then
-        warn "$f not found — skipping"
-        continue
-    fi
-    if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
-        cp "$src" "$dst"
-        echo "    updated: $f"
-        CHANGED=$((CHANGED + 1))
-    fi
-done
-
 # Images stored in assets/ (not root, not diagrams/)
 ASSET_FILES=(
     "logo-final.png"
+    "favicon.png"
 )
 
 for f in "${ASSET_FILES[@]}"; do
@@ -184,6 +164,8 @@ DIAG_FILES=(
     "assembly-fab-sheet1.png"
     "assembly-fab-sheet2.png"
     "line-of-sight.png"
+    "plate-drawing-sheet1.png"
+    "plate-drawing-sheet2.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

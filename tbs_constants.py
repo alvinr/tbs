@@ -137,6 +137,25 @@ BROWN_IBC_Y = 1141   # Brown IBC depth start (mm)  (gap = 25mm after blue stack)
 
 # IBC right edge: IBC_COL_X + IBC_W = 4,674 + 1,219 = 5,893mm = C_LEN ✓
 
+# ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
+# Both fans are identical — one part number, same baffle duct assembly.
+# Fan A: intake, far end wall (X = C_LEN face), low position.
+# Fan B: exhaust, cargo door end wall (X = 0 face), high position.
+FAN_DIAM    = 150    # fan / duct diameter (mm)
+FAN_BODY_D  =  50    # panel fan body depth (mm)
+FAN_A_H     = 600    # fan A center height AFF (mm — low position)
+FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
+
+# Baffle duct (one per fan, interior-mounted, welded galvanized steel)
+DUCT_DEPTH  = 300    # baffle duct depth into container interior (mm)
+DUCT_HEIGHT = 200    # baffle duct opening height (mm)
+
+# Shadow margins — distance from fan assembly to nearest cone edge (at worst depth)
+# Fan A right margin: C_LEN − ZONE_R_START − FAN_DIAM/2 − DUCT_DEPTH = 5893−4649−75−300 = 869mm
+# Fan B left margin: ZONE_L_END − FAN_DIAM/2 − DUCT_DEPTH = 625−75−300 = 250mm
+FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869 mm ✓
+FAN_B_MARGIN = ZONE_L_END - FAN_DIAM // 2 - DUCT_DEPTH              # = 250 mm ✓
+
 # ── Output directory ──────────────────────────────────────────────────────────
 DIAGRAMS_DIR = "diagrams"
 
@@ -164,3 +183,6 @@ if __name__ == "__main__":
     print(f"  Drum near:      CX={DRUM_LZ_CX}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  H={DRUM_EQ_H}")
     print(f"  Drum far:       CX={DRUM_FZ_CX}  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}  H={DRUM_EQ_H}")
     print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")
+    print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
+    print(f"  Fan B (exhaust):door end wall H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")
+    print(f"  Baffle duct:    {DUCT_DEPTH}mm deep × {DUCT_HEIGHT}mm H")

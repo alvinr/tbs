@@ -14,7 +14,8 @@
       "Bash(bash:*)",
       "Bash(grep:*)",
       "Bash(git pull:*)",
-      "Bash(awk '{print $9, $5}')"
+      "Bash(awk '{print $9, $5}')",
+      "WebFetch(domain:www.mikeware.co.uk)"
     ]
   }
 }

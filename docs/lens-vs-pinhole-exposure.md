@@ -1,9 +1,11 @@
-# Why a Lens Changes Exposure Time So Dramatically
+# Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
 **Camera:** Option B, f = 2,362 mm, pinhole Ø 2.17 mm (f/1088)  
-**Baseline:** ISO 6 paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes  
+**Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes  
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
+
+> **Note:** TBS-001 uses cyanotype on cotton muslin (Ware New Cyanotype formula, ISO ~2–4), not silver gelatin paper. Cyanotype does not exhibit Schwarzschild reciprocity failure, so the pinhole baseline for TBS-001 is ~35 minutes (Ware New Cyanotype formula; no Schwarzschild correction). The lens-vs-pinhole aperture ratio derived in this document (4,624×) still applies; the total gain is ~4,600× rather than ~5,500× because there is no reciprocity correction to amplify the pinhole exposure. This document uses ISO 6 paper as its worked example because it produces the clearest derivation — the physics is identical for cyanotype.
 
 ---
 

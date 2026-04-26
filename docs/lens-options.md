@@ -1,10 +1,10 @@
-# Lens Options for the Giant Pinhole Camera
+# Lens Options
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = 2,362 mm  
-**Image plane:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″), diagonal = 6,358 mm  
+**Image plane (active):** 4,024 × 2,388 mm (~13′ 3″ × 7′ 10″); container interior 5,893 × 2,388 mm  
 **Current pinhole:** Ø 2.17 mm, f/1088  
-**Baseline exposure (ISO 6 paper, f/1088, full sun, Schwarzschild corrected):** ~43 minutes
+**Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
 ---
 
@@ -22,7 +22,7 @@ This does not mean a lens is useless here. It means the lens choice determines *
 | Large Fresnel lens | Full or partial coverage | Low — artistic/aberrant character | Commercial (lighting/solar industry) |
 | Hybrid: lens + pinholes | Central sharp + full-plane soft | Intentionally mixed | DIY |
 
-Each is analysed in detail below. All share a common optical framework.
+Each is analyzed in detail below. All share a common optical framework.
 
 ---
 
@@ -55,7 +55,7 @@ Solving for d_o: **d_o = d_i × f_L / (d_i − f_L)**
 
 ### 1.2 Adjustable Focus: The Lens Board
 
-A lens mounted rigidly in the pinhole wall can only focus at one fixed distance (set by its focal length). To focus at different distances, the lens is mounted on a sliding board — a simple wooden or aluminium panel that moves forward and backward in the wall aperture, exactly as a view camera bellows extends and contracts.
+A lens mounted rigidly in the pinhole wall can only focus at one fixed distance (set by its focal length). To focus at different distances, the lens is mounted on a sliding board — a simple wooden or aluminum panel that moves forward and backward in the wall aperture, exactly as a view camera bellows extends and contracts.
 
 Moving the lens 1 mm toward the subject (increasing d_i by 1 mm) shifts focus significantly closer. The sensitivity:
 
@@ -123,7 +123,7 @@ Baseline: Sunny-16 at ISO 6 = 1/6 second at f/16. All times below include bellow
 | f/64 | f/108.5 | 7.6 sec | **10.8 sec** | Comfortable hand operation |
 | f/128 | f/217 | 30.4 sec | **55 sec** | Manageable for standing subject |
 | f/256 | f/434 | 121 sec | **4.7 min** | Getting difficult; approaches pinhole aesthetics |
-| f/512 | f/869 | 486 sec | **24 min** | Near-pinhole behaviour |
+| f/512 | f/869 | 486 sec | **24 min** | Near-pinhole behavior |
 | f/1088 | f/1844 | 2,193 sec | **~2.4 hr** | Pinhole equivalent (extremely stopped-down lens) |
 
 **Key threshold:** At f/32–f/64, exposures of 2–11 seconds allow subjects to stand still reliably. At f/8–f/22, a mechanical shutter is required — easily fabricated as a sliding black panel operated by hand.
@@ -138,7 +138,7 @@ With a pinhole, depth of field is effectively unlimited — the blur circle grow
 
 The following uses:
 - f_L = 1,400 mm (focused at 3.44 m)
-- Circle of confusion c = 3 mm (appropriate for a 5,893 mm wide image viewed from 8–10 m)
+- Circle of confusion c = 3 mm (appropriate for a 4,024 mm wide active image viewed from 5–7 m)
 - Hyperfocal distance H = f_L² / (N × c)
 
 | Aperture | Hyperfocal dist. | Near limit | Far limit | DoF span | Portrait suitability |
@@ -175,7 +175,7 @@ The following uses:
 
 These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 65–110× better than the pinhole). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 20–43× better.
 
-### 4.2 What the Improvement Looks Like on a 5,893 mm Wide Image
+### 4.2 What the Improvement Looks Like on a 4,024 mm Wide Active Image
 
 The pinhole resolves features of ~2.17 mm on the image plane. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1 mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.
 
@@ -189,7 +189,7 @@ However: **sharpness is only real within the image circle of the lens** (see Sec
 
 ### 5A: Large-Format Process / Repro Lens
 
-These are the highest-quality option within their coverage area. Process lenses (Rodenstock Apo-Ronar, Schneider G-Claron, Nikkor AM-ED) were designed for the commercial printing industry to produce flat-field, low-distortion, high-resolution reproductions. They are optimised for the reproduction ratios (1:1 to 1:10) that coincide with portrait distances at this camera's scale.
+These are the highest-quality option within their coverage area. Process lenses (Rodenstock Apo-Ronar, Schneider G-Claron, Nikkor AM-ED) were designed for the commercial printing industry to produce flat-field, low-distortion, high-resolution reproductions. They are optimized for the reproduction ratios (1:1 to 1:10) that coincide with portrait distances at this camera's scale.
 
 **Commercially available examples:**
 
@@ -202,9 +202,9 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1200mm or Nikkor T 1200mm** — both focus sharply near 2.4 m (d_i = 2,362 mm) with a single fixed lens. A 1,400 mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
 
-**What the image looks like:** A sharp circular disk in the centre of the photosensitive surface, approximately 400–500 mm in diameter. The remaining ~5,400 mm width of the image plane receives no light. The entire portrait must be composed within this central medallion.
+**What the image looks like:** A sharp circular disk in the centre of the photosensitive surface, approximately 400–500 mm in diameter. The remaining ~3,624 mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 5,893mm width = **6.8% of image width**. The circular image is a small fraction of the full 140 sq ft plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4,024mm active width = **9.9% of image width**. The circular image is a small fraction of the ~103 sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -230,7 +230,7 @@ Telescope refractor objectives are commercially produced as high-quality achroma
 | Takahashi FSQ-130ED | 1,000 mm | 130 mm | f/7.7 | ~180 mm | ~$4,500 |
 | Custom telescope doublet (150mm f/10) | 1,500 mm | 150 mm | f/10 | ~200–250 mm | ~$500–$2,000 (used) |
 
-A 150 mm aperture f/10 refractor objective at 1,500 mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250 mm image circle — still a small central medallion (200/5,893 = 3.4% of image width) but of extremely high quality.
+A 150 mm aperture f/10 refractor objective at 1,500 mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250 mm image circle — still a small central medallion (200/4,024 = **5.0% of active image width**) but of extremely high quality.
 
 These can be sourced as surplus telescope objectives from astronomy retailers (OPT Telescopes, High Point Scientific, Agena Astro) at prices that are far below commercial photographic process lenses of similar quality.
 
@@ -255,9 +255,9 @@ Large Fresnel lenses are the only commercially available single elements that co
 | Fresnel Technologies surplus acrylic | Up to 1,200 mm × 900 mm | Custom | $200–$500 |
 | Glass Fresnel (lighthouse type, antique) | 500–1,000 mm dia | 300–1,000 mm | $500–$5,000 |
 
-For this camera: a 600 × 600 mm Fresnel lens at 1,400 mm focal length would cover a 600 mm square within the 5,893 × 2,388 mm image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600 mm each) in a 1,200 × 600 mm assembly would cover about 20% of the image width.
+For this camera: a 600 × 600 mm Fresnel lens at 1,400 mm focal length would cover a 600 mm square within the 4,024 × 2,388 mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600 mm each) in a 1,200 × 600 mm assembly would cover about **30% of the active image width**.
 
-A full-width solution would require a 5,893 mm × 2,388 mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
+A full-width solution would require a 4,024 × 2,388 mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
 
 **Optical qualities of Fresnel lenses:**
 
@@ -288,7 +288,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 - Aperture required: at f/16, d = 1,400/16 = 87.5 mm. At f/8: 175 mm.
 - Physical diameter: 200–300 mm is practical for fabrication; covers ~250–400 mm image circle
 
-**To cover the full 5,893 mm image plane** as a single element, the lens would need to be at least 1,000 mm in diameter — a single glass element of 1 metre diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments (telescope mirrors of this size are fabricated) but the cost is extreme ($50,000–$300,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
+**To cover the full 4,024 mm active image plane** as a single element, the lens would need to be at least 700 mm in diameter — a single glass element of 0.7 metre diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
 
 **Realistic custom singlet:** A 200–300 mm diameter, 1,400 mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately **$2,000–$8,000** depending on surface quality specification. This covers a ~300–500 mm circle.
 
@@ -303,15 +303,16 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The image plane is flat and very wide (5,893 mm) relative to the camera depth (2,362 mm). The distance from the lens to the centre of the image plane is 2,362 mm. The distance from the lens to the far corners of the image plane is:
+The active image plane is 4,024 × 2,388 mm, centred on the pinhole (X=2,637 mm) — giving half-width 2,012 mm and half-height 1,194 mm. The distance from the lens to the centre of the image plane is 2,362 mm. The distance from the lens to the active image plane corners and edges:
 
 ```
-d_corner = √(2,362² + 3,179²) = 3,961 mm
+d_mid-width = √(2,362² + 2,012²) = 3,103 mm   [half-width of active plane]
+d_corner    = √(2,362² + 2,012² + 1,194²) = 3,325 mm   [half-diagonal of active plane]
 ```
 
-The corner is **1,599 mm further from the lens than the centre.** The left/right mid-edge point is 3,776 mm from the lens (1,414 mm further than centre). This means:
+The corner is **963 mm further from the lens than the centre.** The left/right mid-edge point is 3,103 mm from the lens (741 mm further than centre). This means:
 
-**A lens focused on the centre (d_i = 2,362 mm) is focused on a subject at ~3.4 m. At the left/right edges of the image plane, the equivalent focused subject distance would be ~3.4 × (3,776/2,362) = 5.4 m. At the corners, ~3.4 × (3,961/2,362) = 5.7 m.**
+**A lens focused on the centre (d_i = 2,362 mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,103/2,362) = 4.5 m. At the corners, ~3.4 × (3,325/2,362) = 4.8 m.**
 
 This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the centre of the camera would be rendered sharply in the centre and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:
 
@@ -329,10 +330,10 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 |---|---|---|---|---|
 | Centre | 0° | 1.000 | 100% | 0 |
 | Mid-height edge | 26.8° | 0.634 | 63% | 0.7 stops |
-| Mid-width edge | 51.3° | 0.153 | 15% | 2.7 stops |
-| Corner | 53.4° | 0.126 | 13% | 3.0 stops |
+| Mid-width edge | 40.4° | 0.334 | 33% | 1.6 stops |
+| Corner | 44.7° | 0.254 | 25% | 2.0 stops |
 
-The corners of the image receive only 13% of the light falling on the centre — approximately **3 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. The effect on the final image: a natural vignette, darkening significantly from centre to corners. At 43 minutes or at 2 seconds, the corner of the image is always 3 stops darker than the centre.
+The corners of the active image plane receive 25% of the light falling on the centre — approximately **2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,024 mm wide) is substantially narrower than the full container interior (5,893 mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2 stops (active plane). The effect on the final image: a natural vignette, darkening from centre to corners. At 35 minutes or at 2 seconds, the corner of the image is always 2 stops darker than the centre.
 
 On silver gelatin paper, 3 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed centre. Exposure must account for this — either the centre will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centred in the frame, may be desirable — a natural vignette framing the subject).
 
@@ -341,11 +342,11 @@ On silver gelatin paper, 3 stops of underexposure in the corners means the corne
 If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2,362 mm centred on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
-Δz at mid-width edge = 3,776 − 2,362 = 1,414 mm
-Δz at corner = 3,961 − 2,362 = 1,599 mm
+Δz at mid-width edge = 3,103 − 2,362 = 741 mm
+Δz at corner = 3,325 − 2,362 = 963 mm
 ```
 
-This is a very deep curvature — the image plane would bow forward at the sides by 1.4 metres. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2,362 mm radius sphere section.
+This is still substantial curvature — the active image plane would bow forward at the sides by ~741 mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2,362 mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1,414 mm of forward bow at the mid-width edge).
 
 For a process lens or telescope objective (covering only a 300–600 mm circle in the centre), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
 
@@ -371,7 +372,7 @@ For the image areas covered by each option (central circle, 300–600 mm diamete
 
 ## Section 8: Chromatic Aberration
 
-**Pinhole:** Zero chromatic aberration. All wavelengths focus at the same point (the pinhole) and arrive at the image plane with identical geometry. This is not a small advantage — it is fundamental. The pinhole is the only optical element with perfect colour rendering.
+**Pinhole:** Zero chromatic aberration. All wavelengths focus at the same point (the pinhole) and arrive at the image plane with identical geometry. This is not a small advantage — it is fundamental. The pinhole is the only optical element with perfect color rendering.
 
 **Lens chromatic aberration by type:**
 
@@ -383,9 +384,9 @@ For the image areas covered by each option (central circle, 300–600 mm diamete
 | Apochromatic triplet (telescope APO) | <0.5 mm | Negligible | Invisible in practice | — |
 | Process lens (Apo-Ronar, G-Claron) | <0.3 mm | Negligible | Invisible | — |
 
-For silver gelatin paper (blue + green sensitive), longitudinal chromatic aberration manifests as a slight softening of the focus in the blue channel relative to green. The paper does not record red, so the red focal shift does not contribute. On panchromatic film, full RGB CA is visible as coloured halos around high-contrast edges.
+For silver gelatin paper (blue + green sensitive), longitudinal chromatic aberration manifests as a slight softening of the focus in the blue channel relative to green. The paper does not record red, so the red focal shift does not contribute. On panchromatic film, full RGB CA is visible as colored halos around high-contrast edges.
 
-For portrait work, an apochromatic lens (telescope APO objective or process lens) eliminates chromatic aberration as a concern. A singlet is workable but noticeably colour-fringed at the edges of the covered image circle.
+For portrait work, an apochromatic lens (telescope APO objective or process lens) eliminates chromatic aberration as a concern. A singlet is workable but noticeably color-fringed at the edges of the covered image circle.
 
 ---
 
@@ -405,7 +406,7 @@ Make two exposures on the same piece of paper. First: lens exposed for 2–5 sec
 
 ### 9C: Zone-Focus Grid Lens Array
 
-Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300 mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000 mm² — still only about 7.7% of the 14,069,484 mm² total image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
+Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300 mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000 mm² — still only about 4.4% of the 9,609,312 mm² active image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
 
 ---
 
@@ -415,10 +416,10 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diamete
 
 | Quality | Pinhole | Process lens | Telescope APO | Fresnel lens |
 |---|---|---|---|---|
-| Coverage of image plane | Full 140 sq ft | Ø ~400 mm circle | Ø ~150–200 mm circle | Ø ~600 mm circle |
+| Coverage of image plane | ~103 sq ft (active) | Ø ~400 mm circle | Ø ~150–200 mm circle | Ø ~600 mm circle |
 | Sharpness (within covered area) | 0.23 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
 | Depth of field | Unlimited (all soft) | f/32: 1.2 m span | f/32: 1.2 m span | Shallow (soft) |
-| Exposure time (ISO 6 paper) | ~43 min | ~0.4 sec | ~0.5 sec | ~0.05 sec |
+| Exposure time (Ware cyanotype, ISO ~2–4) | ~35 min | ~1.5 sec | ~6 sec | ~0.4 sec |
 | Geometric distortion | Zero | <0.1% | ~0.2% | 1–3% |
 | Chromatic aberration | Zero | <0.3 mm (APO) | <0.5 mm (APO) | ~25 mm (severe) |
 | Image magnification | M = d_i/d_o | M = d_i/d_o (same) | M = d_i/d_o (same) | M = d_i/d_o (same) |
@@ -446,8 +447,8 @@ If a lens is added for portrait work with the goal of maximising image quality:
 
 | | Pinhole | Lens |
 |---|---|---|
-| Image area | Full 140 sq ft | 0.7–4% of total (within image circle) |
-| Subject holds still | 43 minutes | 0.5–10 seconds |
+| Image area | ~103 sq ft (active) | 0.7–4% of total (within image circle) |
+| Subject holds still | ~35 min | 1.5–10 seconds |
 | Geometric character | Perfect perspective, unlimited DoF | Sharp focus zone, controllable DoF |
 | Background | Soft but rendered | Sharp (at working aperture) or shallow-DoF blur |
 | Aesthetic | Documentary/impressionistic | Conventional photographic |

@@ -114,7 +114,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 | Ammonium iron(III) oxalate (AmFe) — Ware | 200 g | ~$35/454 g | ~$15 |
 | Potassium ferricyanide | 100 g | ~$12–15/100 g | ~$13 |
 | Ammonium dichromate | 10 g | ~$12/100 g | ~$1.50 |
-| Distilled water | 2–3 litres | Negligible | — |
+| Distilled water | 2–3 liters | Negligible | — |
 | **Chemistry total (Ware)** | | | **~$30** |
 
 **Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.  
@@ -199,7 +199,7 @@ For 4-coat image: multiply chemistry by 4 = ~$220–300 chemistry alone. **Cauti
 
 ### Substrate and Mounting
 
-Same options as cyanotype; cotton fabric or heavy watercolour paper. The gum arabic binder adheres to fabric well. Mounting identical to cyanotype (stretched over ACM backing).
+Same options as cyanotype; cotton fabric or heavy watercolor paper. The gum arabic binder adheres to fabric well. Mounting identical to cyanotype (stretched over ACM backing).
 
 ### Total Per-Image Cost (single coat, gum bichromate on muslin)
 | Item | Cost |
@@ -254,7 +254,7 @@ Heavy cotton rag paper (90–300 gsm) or unsized cotton/linen fabric. Paper requ
 
 ### Mounting and Preparation
 
-Identical to cyanotype in principle. Sensitised sheets/panels must be loaded in near-darkness. The two-bath chemistry means the substrate can be salted (step 1) in daylight; only the silver nitrate sensitising step (step 2) and loading must occur in darkness.
+Identical to cyanotype in principle. Sensitized sheets/panels must be loaded in near-darkness. The two-bath chemistry means the substrate can be salted (step 1) in daylight; only the silver nitrate sensitizing step (step 2) and loading must occur in darkness.
 
 ### Total Per-Image Cost (salt print on rag cotton)
 | Item | Cost |
@@ -291,7 +291,7 @@ Developed in the 1890s as a simplified, lower-cost silver process. Named for the
 
 ### Chemistry Quantities and Costs for 140 sq ft
 
-Coverage: approximately the same as cyanotype, 2 ml/sq ft. For 140 sq ft: 280 ml of sensitiser.
+Coverage: approximately the same as cyanotype, 2 ml/sq ft. For 140 sq ft: 280 ml of sensitizer.
 
 At 10 g AgNO₃ per 100 ml solution: **28 g silver nitrate** for single coat.
 
@@ -626,7 +626,7 @@ Salt print is a printing-out process — the image forms during exposure without
 
 **Source for ISO figures:** Reilly, J.M., *The Albumen and Salted Paper Book*, Light Impressions, 1980; Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009.
 
-**Source:** Reilly, J.M., *The Albumen and Salted Paper Book*, Light Impressions, 1980, Chapter 2. Silver chloride (AgCl) is the active compound. Its absorption edge is approximately 470–480 nm; it responds to UV and blue, not to green or red. This is the characteristic that made early Daguerreotype and Talbotype portraits require subjects to wear specific colours.
+**Source:** Reilly, J.M., *The Albumen and Salted Paper Book*, Light Impressions, 1980, Chapter 2. Silver chloride (AgCl) is the active compound. Its absorption edge is approximately 470–480 nm; it responds to UV and blue, not to green or red. This is the characteristic that made early Daguerreotype and Talbotype portraits require subjects to wear specific colors.
 
 #### Tonal Rendering in Sunlight
 

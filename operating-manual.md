@@ -38,7 +38,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 
 ### 0.2 Container Positioning
 
-1. Direct the delivery driver to position the container with the **cargo doors facing away from the subject**. The pinhole wall faces the subject.
+1. Direct the delivery driver to position the container with the **cargo doors at 90 degress from the subject**. The pinhole wall faces the subject.
 2. Once set down, check level. Use 50mm timber sleepers under corner castings to correct — up to 50mm height difference is manageable without shimming the mechanism.
 3. Open cargo doors and inspect interior:
    - No water ingress or condensation on image plane
@@ -67,7 +67,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 
 ### 0.5 Water System
 
-1. Fill IBC totes: Blue circuit (wash water) minimum 400 litres for one print; Grey circuit (waste) empty.
+1. Fill IBC totes: Blue circuit (wash water) minimum 400 liters for one print; Grey circuit (waste) empty.
 2. Open all ball valves and prime the pump by hand-filling the filter housing.
 3. Switch on water pump (circuit C). Pressure should reach 2.5–3.5 bar within 30 seconds.
 4. Check all pipe joints for drips. Tighten any fittings that are weeping.
@@ -103,7 +103,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 - [ ] UV-blocking safety glasses (wear throughout)
 - [ ] Nitrile gloves (change between Part A and Part B mixing)
 - [ ] 18" foam roller + roller tray (two sets — one per coat pass)
-- [ ] 2 × 2-litre mixing jugs (graduated)
+- [ ] 2 × 2-liter mixing jugs (graduated)
 - [ ] Funnel and stirring rod
 - [ ] Digital scale (1g resolution)
 
@@ -137,7 +137,7 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 > **⚠ Ammonium dichromate** is a Category 1A carcinogen. Wear nitrile gloves when handling dry powder. Do not inhale dust. The small quantity used here (~10g per print) is well within safe handling range for a ventilated workspace.
 
-> **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitiser), shelf life is 4–6 hours. Mix only what you need per session.
+> **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitizer), shelf life is 4–6 hours. Mix only what you need per session.
 
 ### 1.4 Prepare Working Sensitiser
 
@@ -147,12 +147,12 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 |------------------------|--------|
 | Part A | 600 ml |
 | Part B | 600 ml |
-| **Working sensitiser** | **1,200 ml** |
+| **Working sensitizer** | **1,200 ml** |
 
 1. Pour equal volumes into a third jug. Stir gently. The mix turns yellow-green.
 2. Pour into the roller tray immediately before entering for coating.
 
-> **UV sensitivity:** The mixed sensitiser is UV-sensitive but is safe under red LED safelight. Do not expose to daylight, blue sky light, or white LED light once mixed. Work quickly once inside.
+> **UV sensitivity:** The mixed sensitizer is UV-sensitive but is safe under red LED safelight. Do not expose to daylight, blue sky light, or white LED light once mixed. Work quickly once inside.
 
 ### 1.5 Humidity Check
 
@@ -164,7 +164,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 | 30–65% | Coat normally |
 | Above 70% | Delay — coating may not dry under safelight, increasing fogging risk |
 
-**GO/NO-GO checkpoint:** Both solutions prepared and labelled. Working sensitiser mixed. Humidity within range. Roller tray loaded and ready to carry in.
+**GO/NO-GO checkpoint:** Both solutions prepared and labelled. Working sensitizer mixed. Humidity within range. Roller tray loaded and ready to carry in.
 
 ---
 
@@ -174,7 +174,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 ### 2.1 Entering via the Light Trap
 
-**Revolving drum entry procedure (memorise this — you will do it in dim conditions):**
+**Revolving drum entry procedure (memorize this — you will do it in dim conditions):**
 
 1. Confirm drum panel is latched (all four Southco cam latches engaged).
 2. Carry all equipment to the drum entry side. Set it down at your feet.
@@ -191,22 +191,22 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 2. Start at the **bottom edge** of the image plane frame. Clip every 150mm using the spring clips along the bottom channel.
 3. Work upward — stretch the fabric taut (approximately 5N tension — enough to remove all wrinkles) and clip the top edge.
 4. Clip the left and right edges, pulling outward from centre.
-5. Final check: no wrinkles or sags when viewed with the safelight from 2 metres. Any slack will print as a soft zone.
+5. Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.
 
 ### 2.3 Applying the Sensitiser
 
 Work efficiently — aim to complete coating within 20 minutes of opening the tray.
 
-1. Load the foam roller with sensitiser. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
+1. Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
 2. **First pass:** roll horizontally from left to right across the full width of the muslin. Even strokes, 50% overlap. Work top to bottom.
 3. **Second pass:** roll vertically, top to bottom. Cross-direction ensures even coverage.
 4. Check edges — roller tends to undercoat at the far edges. Finish with a hand-held foam brush on the last 50mm of each edge.
-5. Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitiser — it will skin over.**
+5. Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.**
 
 ### 2.4 Tack-Drying
 
 1. Run the ventilation fans (circuits A and B) on **low speed** — just enough airflow to assist drying. Avoid directed airflow directly at the coated surface.
-2. Wait **15–20 minutes** under safelight. The sensitiser changes from wet-glossy to a matte tack-dry state.
+2. Wait **15–20 minutes** under safelight. The sensitizer changes from wet-glossy to a matte tack-dry state.
 3. Confirm by lightly touching the corner of the coated area with a gloved fingertip. It should not transfer to the glove.
 
 > **Do not proceed with a wet coat.** A wet coat will run during exposure and will not produce a sharp image.
@@ -219,7 +219,7 @@ Work efficiently — aim to complete coating within 20 minutes of opening the tr
 2. Step into the drum from the interior side. Rotate forward (same direction as entry) until you exit to the exterior.
 3. The drum seals behind you as it rotates.
 
-**GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitiser dry to touch. Drum panel latched.
+**GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
 
 ---
 
@@ -280,12 +280,12 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 ### 4.2 Development in Water
 
-Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue colour deepens over the first few minutes of drying.
+Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.
 
 **Wash sequence using the Blue circuit:**
 
 1. Switch ON water pump (circuit C).
-2. Open the Blue circuit supply valve. Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitiser clears. This is normal and non-toxic.
+2. Open the Blue circuit supply valve. Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
 3. Close the Blue circuit valve. Open the Grey circuit return valve and allow the wash water to drain to the grey recovery tank.
 4. Repeat for a total of **3 wash cycles** (15 minutes total).
 5. Final rinse: open the Blue circuit for a 2-minute final flush. Drain.
@@ -295,8 +295,8 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 ### 4.3 Drying
 
 1. Hang the developed muslin to dry — horizontal is ideal (prevents drip marks). Wooden poles or a rope line between two vehicles work well.
-2. Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidises in air.
-3. Final colour appears approximately 30 minutes after the print appears dry to the touch.
+2. Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidizes in air.
+3. Final color appears approximately 30 minutes after the print appears dry to the touch.
 
 ---
 
@@ -307,8 +307,8 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 ### 5.1 Chemistry Disposal
 
 - Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous and can be disposed of via the grey water recovery tank, or diluted and poured on ground away from water sources. Do not dispose into storm drains without verification of local regulations.
-- Unused sensitiser: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitiser: discard — working life is 6 hours.
-- Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitiser is harder to remove.
+- Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
+- Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 
 ### 5.2 Container Ventilation
 
@@ -333,7 +333,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 1. Engage all four Southco cam latches on the drum panel.
 2. Apply secondary locking bar across the drum panel face if the container will be unattended overnight.
 3. Cap all ventilation duct stubs on the exterior.
-4. Secure solar panels — if conditions allow, lay flat or fold to minimise wind load.
+4. Secure solar panels — if conditions allow, lay flat or fold to minimize wind load.
 
 ---
 
@@ -360,8 +360,8 @@ If shore charger is connected, leave it running overnight to top up the battery 
 | Image too dark / no highlight detail | Overexposure | Reduce time by 30% on next print |
 | Streaks or tide-marks | Uneven coating or drips during development | Improve roller technique; ensure even wash flow |
 | Soft or blurred image | Muslin slack at coating or during exposure | Increase clip tension; check frame is not vibrating in wind |
-| Blue haze (fogging) in shadows | Light leak or sensitiser exposed to UV before loading | Re-inspect light trap; check sensitiser storage |
-| Uneven colour — cool/warm zones | Humidity variation across coating | Ensure even pre-misting if in dry climate |
+| Blue haze (fogging) in shadows | Light leak or sensitizer exposed to UV before loading | Re-inspect light trap; check sensitizer storage |
+| Uneven color — cool/warm zones | Humidity variation across coating | Ensure even pre-misting if in dry climate |
 | Battery low warning during session | Higher-than-expected draw or low state of charge | Switch off evaporative cooler; complete session on fans and pump only |
 
 ---

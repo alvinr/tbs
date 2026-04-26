@@ -712,7 +712,7 @@ def sheet3():
     # ── Clearance headroom line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
             color="#20A020", lw=1.2, ls="--", zorder=6)
-    ax.text(X_LO + 20, H_DRUM_TOP + 30,
+    ax.text(X_LO + 1100, H_DRUM_TOP + 115,
             f"DRUM TOP  H={H_BRG_BOT + DRUM_H}mm — 250mm HEADROOM CLEARANCE",
             ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT)
 
@@ -758,7 +758,7 @@ def sheet3():
           f"{DRUM_H} mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
 
     # Drum diameter (horizontal) — placed below top bearing to avoid CL label clash
-    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 80,
+    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 130,
           f"Ø{DRUM_D} mm DRUM DIAMETER", offset=35, fs=7)
 
     # Panel thickness (horizontal) — offset above bearing top

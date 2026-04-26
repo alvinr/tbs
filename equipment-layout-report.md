@@ -23,7 +23,7 @@ plane by 630mm (rev 2, 2026-04-23).
 
 ### Optical Cone (rev 3 geometry)
 
-The pinhole is centred on the new film plane at X=2,637mm. At depth Y from the
+The pinhole is centered on the new film plane at X=2,637mm. At depth Y from the
 pinhole wall, the cone boundaries are:
 
 ```
@@ -58,7 +58,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Light trap drum | −375–375 | 806–1,556 (centred at CW/2=1,181mm) | 0–2,000 | Centred at X=0 (spans container wall); rotary drum entry |
+| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1,181mm) | 0–2,000 | Centered at X=0 (spans container wall); rotary drum entry |
 | 55-gal drum D-1 (near) | 20–600 | 25–605 | 0–870 | CX=310mm; pinhole wall corner; gap to light trap = 201mm |
 | 55-gal drum D-2 (far) | 20–600 | 1,757–2,337 | 0–870 | CX=310mm; far wall corner; gap to light trap = 201mm; 25mm from far wall |
 
@@ -232,7 +232,7 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 | Parameter | Old (colonnade) | New (end-zone) |
 |-----------|----------------|----------------|
 | Equipment zone concept | Yd=0–1,220mm depth band | X=0–625mm and X=4,649–5,893mm end zones |
-| Pinhole position | X=2,946mm | **X=2,637mm** (centred on active FP) |
+| Pinhole position | X=2,946mm | **X=2,637mm** (centered on active FP) |
 | Active film plane width | 5,893mm | **4,024mm** (X=625–4,649mm) |
 | Rail positions | X=200mm, X=5,693mm | **X=625mm, X=4,649mm** |
 | Rail span | 5,493mm | **4,024mm** |

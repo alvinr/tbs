@@ -14,10 +14,10 @@ Single-operator workflow for cyanotype on cotton muslin.
 | 0 | Pre-deployment setup | ~2 hours |
 | 1 | Chemistry preparation | ~30 min |
 | 2 | Load image plane (darkness) | ~45 min |
-| 3 | Exposure | ~2 hr (baseline) |
+| 3 | Exposure | ~30–45 min (baseline) |
 | 4 | Development | ~20 min |
 | 5 | Cleanup and close-down | ~30 min |
-| **Total** | **First print, ideal conditions** | **~5–6 hours** |
+| **Total** | **First print, ideal conditions** | **~4–4.5 hours** |
 
 Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cyanotype formula on cotton muslin, ISO equivalent ~2–4; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
@@ -45,14 +45,14 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
    - All seals (door perimeter, neoprene cord) are intact
    - Film plane mechanism moves freely on all four corners
 
-### 0.3 Light Trap Vestibule
+### 0.3 Light Trap — Revolving Drum Panel
 
-1. Bolt the vestibule frame to the container corner castings (8 × M10 bolts, 30 Nm torque).
-2. Check that the S-path baffles are seated flat against the vestibule walls.
-3. Hang the three-layer Duvetyne blackout curtains inside the vestibule — check overlaps are a minimum of 200mm at each layer.
-4. Verify: stand inside the closed vestibule with the outer door closed and container door open. Wait 2 minutes for dark adaptation. **No light should be visible from any angle.** Mark any leaks with chalk and seal with black gaffer tape before proceeding.
+1. Confirm the hinged drum panel is closed and all four Southco cam latches are engaged (quarter-turn, flush with panel face).
+2. Check the EPDM perimeter gasket is seated with no gaps or folded sections.
+3. Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
+4. Verify: step into the drum entry side and rotate through to the interior. Wait 2 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
 
-> **Safety:** The vestibule inner door operates the same as the main container cargo doors. Familiarise yourself with the latching mechanism before entering in darkness.
+> **Safety:** Do not attempt to reverse direction inside the drum — the baffles only clear forward rotation. If unsure of orientation, continue rotating forward until you exit on the intended side.
 
 ### 0.4 Solar Power System
 
@@ -84,8 +84,8 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 
 ### 0.7 Light-Leak Inspection
 
-1. Close all doors including the vestibule outer door.
-2. Switch ON interior safelight (circuit D, red LED only). Enter through the vestibule.
+1. Latch the drum panel (all four Southco cam latches engaged).
+2. Switch ON interior safelight (circuit D, red LED only). Enter through the revolving drum.
 3. Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
 4. Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
 5. Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
@@ -143,7 +143,7 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 **Mix Parts A and B in equal volumes immediately before use:**
 
-| For 1 print (140 sq ft) | Volume |
+| For 1 print (~103 sq ft) | Volume |
 |------------------------|--------|
 | Part A | 600 ml |
 | Part B | 600 ml |
@@ -174,15 +174,16 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 ### 2.1 Entering via the Light Trap
 
-**Light-trap entry procedure (memorise this — you will do it in dim conditions):**
+**Revolving drum entry procedure (memorise this — you will do it in dim conditions):**
 
-1. Carry all equipment into the vestibule. Close the outer door. Latch it.
-2. Wait 10 seconds in the vestibule darkness.
-3. Open the container cargo doors fully. Secure them to the door-stop hooks.
-4. Enter the container. Close the cargo doors behind you.
-5. Switch ON the safelight (circuit D switch, located on the electrical panel adjacent to the door).
+1. Confirm drum panel is latched (all four Southco cam latches engaged).
+2. Carry all equipment to the drum entry side. Set it down at your feet.
+3. Push the drum wall forward until the first baffle clears. Step in.
+4. Continue rotating forward until you exit into the container interior.
+5. Pass equipment through the drum in the same direction — one item at a time.
+6. Switch ON the safelight (circuit D switch, located on the electrical panel).
 
-> **Rule:** Never have both the outer vestibule door and the container cargo doors open simultaneously. One must always be closed.
+> **Rule:** The drum seals automatically as it rotates — no doors to leave open. However, do not wedge equipment in the drum aperture. If a load is too large for the drum, it must be loaded during a full dark period (after sunset) with the panel unlatched and swung open.
 
 ### 2.2 Mounting the Muslin
 
@@ -212,14 +213,13 @@ Work efficiently — aim to complete coating within 20 minutes of opening the tr
 
 ### 2.5 Exiting via the Light Trap
 
-**Reverse the entry sequence:**
+**Revolving drum exit procedure:**
 
 1. Switch OFF safelight.
-2. Open container cargo doors.
-3. Exit into vestibule. Close cargo doors behind you.
-4. Open the outer vestibule door. Exit.
+2. Step into the drum from the interior side. Rotate forward (same direction as entry) until you exit to the exterior.
+3. The drum seals behind you as it rotates.
 
-**GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitiser dry to touch. Container cargo doors latched. Outer vestibule door closed.
+**GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitiser dry to touch. Drum panel latched.
 
 ---
 
@@ -330,8 +330,8 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 ### 5.4 Securing the Container
 
-1. Close and latch all vestibule curtains.
-2. Close and latch the cargo doors. Apply secondary locking bar if the container will be unattended overnight.
+1. Engage all four Southco cam latches on the drum panel.
+2. Apply secondary locking bar across the drum panel face if the container will be unattended overnight.
 3. Cap all ventilation duct stubs on the exterior.
 4. Secure solar panels — if conditions allow, lay flat or fold to minimise wind load.
 
@@ -341,14 +341,14 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 *Full reference table for use in Phase 3.*
 
-| Baseline | 120 min | Direct full sun, summer, 10:00–14:00 |
-|----------|---------|-------------------------------------|
-| Thin haze | 180 min | |
-| Broken cloud | 240 min | |
-| Heavy overcast | 480 min | |
-| Early/late sun | 240 min | |
-| Winter mid-latitude | 180 min | |
-| Thin haze + early sun | 360 min | Multiply factors: 1.5 × 2.0 |
+| Baseline | 35 min | Direct full sun, summer, 10:00–14:00 (Ware formula) |
+|----------|--------|-----------------------------------------------------|
+| Thin haze | 55 min | |
+| Broken cloud | 70 min | |
+| Heavy overcast | 140 min | |
+| Early/late sun | 70 min | |
+| Winter mid-latitude | 55 min | |
+| Thin haze + early sun | 105 min | Multiply factors: 1.5 × 2.0 |
 
 ---
 

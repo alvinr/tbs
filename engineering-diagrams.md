@@ -5,7 +5,7 @@
 
 ---
 
-This page collects every engineering drawing produced for TBS-001, organised by subsystem.
+This page collects every engineering drawing produced for TBS-001, organized by subsystem.
 Each section links to the report where the drawing is discussed in full.
 
 ---
@@ -13,7 +13,7 @@ Each section links to the report where the drawing is discussed in full.
 ## 1. System Assembly Overview
 
 High-level schematic side-elevation of the container interior showing how all systems
-relate spatially. Colour-coded by subsystem. Optical axis is perpendicular to the page.
+relate spatially. Color-coded by subsystem. Optical axis is perpendicular to the page.
 
 ![TBS-001 — Assembly: Side Elevation (all systems)](assets/assembly-overview.png)
 

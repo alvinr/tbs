@@ -17,7 +17,7 @@ The camera operates in remote locations with no mains water or drainage. This do
 
 **Three circuits:**
 
-| Circuit | Colour code | Purpose | Storage |
+| Circuit | Color code | Purpose | Storage |
 |---------|-------------|---------|---------|
 | **Blue** | Blue — clean | Fresh water supply for processing | 2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 600L IBC tote, Y-stacked behind Blue IBCs |
@@ -48,7 +48,7 @@ When a cyanotype print is washed, the water picks up:
 
 A sediment + activated carbon filter train will:
 - Remove Prussian blue particle load (sediment stages)
-- Reduce some dissolved organics and iron-complex colour (carbon stage)
+- Reduce some dissolved organics and iron-complex color (carbon stage)
 - Restore water to a usable secondary-wash quality after 1–3 passes
 
 It will **not**:
@@ -209,13 +209,13 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 | Filter inlet/outlet | Sch 40 | 1" nominal | 100 PSI min | HDPE |
 | Black waste gravity drain | Sch 40 | 1" nominal | 50 PSI min | HDPE |
 
-**Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanised fittings — iron compounds in the wash water will react.
+**Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
 
 ### Fittings and connections
 
 | Connection type | Use | Standard |
 |----------------|-----|---------|
-| 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminium or polypropylene |
+| 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminum or polypropylene |
 | 1" NPT threaded | Pump inlet/outlet, valve connections | HDPE or brass |
 | 2" NPT bung | Drum fill/drain | HDPE bung plug |
 | Push-fit / compression | Secondary connections | John Guest / Speedfit style |
@@ -365,7 +365,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 | Task | Frequency | Notes |
 |------|-----------|-------|
-| Replace F-1 (50-micron cartridge) | Every 20 prints | Visually inspect — replace sooner if heavily discoloured |
+| Replace F-1 (50-micron cartridge) | Every 20 prints | Visually inspect — replace sooner if heavily discolored |
 | Replace F-2 (5-micron cartridge) | Every 10 prints | Replace sooner if flow rate drops |
 | Replace F-3 (GAC carbon) | Every 15 prints | Replace if taste/odour test fails |
 | Flush Brown IBC-3 | Every 5 prints | Rinse with clean water, inspect for sediment buildup |

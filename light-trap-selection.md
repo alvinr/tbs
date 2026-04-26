@@ -9,7 +9,7 @@
 
 The cargo door end of TBS-001 is sealed by a hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket.
 
-Personnel access during operation is via a revolving light trap drum built into the panel. The drum replaces a fixed S-path vestibule — operators can enter or exit at any time without opening the full panel or admitting daylight.
+Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight.
 
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
@@ -52,14 +52,14 @@ Three categories of commercial product were reviewed against these requirements.
 | Approximate price | USD $2,500–$3,500 (import from DE/NL; shipping +$400) |
 | Lead time | 4–8 weeks |
 
-**Construction:** Aluminium extrusion frame, ABS drum panels, felt drum seals, floor-mounted bearing with ceiling guide. Designed for permanent installation in a finished interior wall with a framed rectangular opening.
+**Construction:** Aluminum extrusion frame, ABS drum panels, felt drum seals, floor-mounted bearing with ceiling guide. Designed for permanent installation in a finished interior wall with a framed rectangular opening.
 
 **Assessment — Not recommended for TBS-001.**
 
 The Vario/Kaiser/Kindermann range is designed for permanent darkroom installation in climate-controlled interiors. Key issues for field use:
 - **No weatherproofing.** The top gap between drum and ceiling guide is sealed by felt strip only. In outdoor use (rain, dust, wind) this seal fails within one season.
 - **Floor bearing.** The base bearing is a stub pivot set into a floor-mount plate anchored to a finished floor. It cannot be adapted to a free-swinging 120mm panel with repeated installation/removal.
-- **Transport.** The drum (ABS/aluminium construction) is not rated for transport vibration. The bearing races and alignment tolerances assume static installation.
+- **Transport.** The drum (ABS/aluminum construction) is not rated for transport vibration. The bearing races and alignment tolerances assume static installation.
 - **Frame dependency.** The drum relies on its surrounding wall frame for structural rigidity. Removed from that frame, the drum has no self-contained structural integrity.
 
 ### 3.2 Porta-Fab Modular Darkroom Panel System
@@ -115,7 +115,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 |------|--------------|
 | Drum shell | 3mm mild steel, rolled to Ø750mm OD, seam-welded full height |
 | Drum height | 2,000mm |
-| Internal baffles | 4 × 3mm mild steel fins, welded radially from drum centreline to inner wall, at 22.5°/112.5°/202.5°/292.5° from horizontal — see Sheet 2 for baffle layout and light path |
+| Internal baffles | 4 × 3mm mild steel fins, welded radially from drum centerline to inner wall, at 22.5°/112.5°/202.5°/292.5° from horizontal — see Sheet 2 for baffle layout and light path |
 | Top cap | 5mm steel plate, flanged, welded |
 | Bottom cap | 5mm steel plate, flanged, with 75mm stub shaft for lower bearing |
 | Upper stub shaft | 75mm Ø × 150mm steel stub, welded to top cap centre |

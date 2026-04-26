@@ -78,7 +78,7 @@ In the two-beam design, simple pin joints at the beam ends sufficed because the 
 
 ### Actuation
 
-Each of the four leadscrews is turned by an **8" cast aluminium handwheel** (¾" bore). One turn of the ¾"-6 screw = **4.2 mm travel**. A SS316 locking collar on each screw holds position during exposure.
+Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" bore). One turn of the ¾"-6 screw = **4.2 mm travel**. A SS316 locking collar on each screw holds position during exposure.
 
 **Named movement modes:**
 - **Pure tilt**: turn TL and TR handwheels together by the same amount; turn BL and BR by the same amount (different from TL/TR).
@@ -94,7 +94,7 @@ As the film plane tilts (tilt axis), its along-plane height grows from 2,268 mm 
 
 **Hinged two-panel ACM system:**
 
-The backing panel is two equal ACM (aluminium composite material) sections, each ~1,600 mm × 2,388 mm, joined along the horizontal centreline with a full-width 2" aluminium piano hinge. When flat, the panels lie flush. As the plane tilts, the upper panel folds back on the hinge, maintaining full coverage at any tilt angle.
+The backing panel is two equal ACM (aluminum composite material) sections, each ~1,600 mm × 2,388 mm, joined along the horizontal centerline with a full-width 2" aluminum piano hinge. When flat, the panels lie flush. As the plane tilts, the upper panel folds back on the hinge, maintaining full coverage at any tilt angle.
 
 For compound tilt+swing, the film plane is a ruled surface (slightly twisted, not flat). The backing panels accommodate this because the hinge allows both fore-aft fold and a small amount of left-right twist.
 
@@ -245,7 +245,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Rail carriage HGH20CA | Flanged block | 8 | Automation Overstock / Amazon | McMaster-Carr | $18 |
 | Acme leadscrew ¾"-6 | 8 ft length | **4** | Roton Products (LA area) | McMaster-Carr #6289K36 | $95 |
 | Acme nut bronze ¾"-6 | — | 4 | Roton Products | McMaster-Carr #6289K512 | $12 |
-| Handwheel 8" dia | ¾" bore, cast aluminium | **4** | Grainger (Anaheim / LA / SD) | McMaster-Carr #6440K64 | $35 |
+| Handwheel 8" dia | ¾" bore, cast aluminum | **4** | Grainger (Anaheim / LA / SD) | McMaster-Carr #6440K64 | $35 |
 | Locking collar SS316 | ¾" bore | **4** | McMaster-Carr #6436K12 | Fastenal (SoCal) | $12 |
 | Corner bracket L-plate | ¼" alum. plate, 6"×8" | 4 | Metal Supermarkets SoCal | Online Metals | $20 |
 | Rod-end spherical bearing | GIR25-DO or equiv., 25 mm bore | 8 | McMaster-Carr #60645K73 | Amazon Industrial | $22 |
@@ -257,11 +257,11 @@ All items ship within the United States. Local Southern California pickup noted 
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
-| Aluminium angle 2"×2"×3/16" | 8 ft lengths | 10 | Metal Supermarkets SoCal | Online Metals | $22 |
+| Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 | Metal Supermarkets SoCal | Online Metals | $22 |
 | Dibond ACM panel 4 mm | 4 ft × 8 ft sheets | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | Black EPDM foam tape 1"×½" | 50 ft rolls | 3 | McMaster-Carr #8614K84 | Grainger | $28 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 | B&H Photo | Rosco direct | $95 |
-| Aluminium piano hinge 72" | 2" wide, 1/16" leaf | 2 | McMaster-Carr #1580A51 | Grainger | $28 |
+| Aluminum piano hinge 72" | 2" wide, 1/16" leaf | 2 | McMaster-Carr #1580A51 | Grainger | $28 |
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot / Target (local) | Amazon | $12 |
 

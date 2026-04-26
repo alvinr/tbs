@@ -38,7 +38,7 @@ URL: [fabricdirect.com](https://www.fabricdirect.com/shop/craft-fabric/broadclot
 **Fabric Wholesale Direct** — 60" wide unbleached cotton muslin, sold by the yard or bolt  
 URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cotton-muslin-fabric-60-inches)
 
-**Preparation required:** Pre-wash all fabric twice in hot water, no detergent. This removes sizing (starch filler) that repels sensitiser. Dry fully before coating.
+**Preparation required:** Pre-wash all fabric twice in hot water, no detergent. This removes sizing (starch filler) that repels sensitizer. Dry fully before coating.
 
 ---
 
@@ -46,7 +46,7 @@ URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cott
 
 **50-print total: ~$1,700 | Per print: ~$34**
 
-Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitiser. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
+Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitizer. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
 
 **Source:** Ware, M., *Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue*, Science Museum, 1999. Formula and technical notes: mikeware.co.uk/mikeware/New_Cyanotype_Process.html (free).
 
@@ -59,7 +59,7 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 | Ammonium dichromate | 8 g | **400 g** | 500 g | Part B additive; contrast enhancer — handle with care |
 | Distilled / DI water | ~1.5 L | ~75 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
 
-> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidiser. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
+> **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
 ### Shopping list — Ware New Cyanotype (primary)
 
@@ -111,7 +111,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 **Process total: ~$2,746–$2,918 (~$1,917 chemistry, ~$900 muslin)**
 
-**Hazard:** Ammonium dichromate is classified as an **oxidiser (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
+**Hazard:** Ammonium dichromate is classified as an **oxidizer (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
 
 *Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$14,000.*
 

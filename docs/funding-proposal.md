@@ -12,7 +12,7 @@ A standard shipping container sits in a field. Inside, on 103 square feet of cot
 
 The container is a camera.
 
-Not a reference to a camera. Not a metaphor. A working, optically precise, transportable pinhole camera — the largest operative example documented — built to produce full-contact-scale cyanotype photographs of whatever landscape, cityscape, or architectural space it is placed in front of.
+Not a reference to a camera. Not a metaphor. A working, optically precise, transportable pinhole camera. The largest operative example documented. Built to produce full-contact-scale cyanotype photographs of whatever landscape, cityscape, or architectural space it is placed in front of.
 
 **The Big Shoebox Project** is the design, fabrication, and operation of that camera.
 
@@ -22,7 +22,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 
 ### What
 
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one end of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
 
 ### How
 
@@ -56,9 +56,9 @@ Effect: Scheimpflug-equivalent movements at pinhole focal lengths — not to adj
 
 The two systems interact non-linearly. When both are engaged simultaneously, the resulting optical projection cannot be predicted by either system alone and cannot be produced by any other camera type. A front board tilt combined with an opposing film plane tilt partially cancels the image shift while introducing a subtle S-curve geometric distortion. Full compound operation — both axes of both systems simultaneously — produces images where no lines remain parallel in any axis.
 
-These interactions are modelled and documented in the [combined distortion renders](tilt-swing-board-report.md), produced from a two-step ray-tracing projection model derived from first principles.
+These interactions are modeled and documented in the [combined distortion renders](tilt-swing-board-report.md), produced from a two-step ray-tracing projection model derived from first principles.
 
-### Design Rigour
+### Design Rigor
 
 All specifications are citable. Optical derivations reference Rayleigh (1891), Smith's *Modern Optical Engineering*, and the Schwarzschild reciprocity failure model. Mechanical specifications reference SKF bearing datasheets, McMaster-Carr part numbers, and manufacturer tolerance standards. The full documentation — 12 technical reports, 3-sheet engineering drawings per mechanism, Python source for all optical simulations — is open and free to reuse.
 
@@ -72,7 +72,7 @@ The movement systems add a second layer. The front board and film plane allow th
 
 The result: a camera with infinite depth of field and view-camera-level geometric control, operating at a scale where the print becomes an environment. Viewers do not stand in front of the image. They enter it. A 13-foot cyanotype print on fabric can be stretched across a gallery wall, suspended from a ceiling, or laid on the ground. The scale changes the relationship between image and body.
 
-The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the same chemistry: ferric ammonium citrate and potassium ferricyanide, exposed to UV, developed in plain water. The blue-white palette of cyanotype — Prussian blue ground, white highlights — is one of the most immediately recognisable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardised it.
+The cyanotype process connects the work to the deepest history of photography. Anna Atkins made the first photographic book in 1843 using the same chemistry: ferric ammonium citrate and potassium ferricyanide, exposed to UV, developed in plain water. The blue-white palette of cyanotype — Prussian blue ground, white highlights — is one of the most immediately recognizable photographic aesthetics. Working at this scale in this process is a deliberate claim about what photography was before the silver-gelatin era standardized it.
 
 The camera is deployable. It comes to the subject. A landscape that could never be brought to a studio is instead surrounded by the camera. The field, the parking structure, the salt flat, the housing development — each becomes not just the subject but the site of the printing, developed there in plain water and hung to dry in the same air that made the exposure.
 
@@ -84,7 +84,7 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $34 (chemistry + fabric + water). A 50-print run costs approximately $1,700. By comparison, the next cheapest alternative (gum bichromate) costs $56 per print and requires dichromate sensitiser with associated hazmat handling.
+Per-print cost: approximately $34 (chemistry + fabric + water). A 50-print run costs approximately $1,700. By comparison, the next cheapest alternative (gum bichromate) costs $56 per print and requires dichromate sensitizer with associated hazmat handling.
 
 ### Water System
 
@@ -113,10 +113,11 @@ Everything required to operate the camera for a first deployment:
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $150 |
 | Film plane mechanism (4-corner, manual actuation) | $2,400 |
 | Tilt-swing front board mechanism | $1,470 |
+| Revolving drum light trap (750mm custom steel drum, bearings, seals, fabrication) | $1,200 |
 | Processing water system | $1,765 |
 | Cyanotype chemistry + muslin substrate (50-print run) | $2,842 |
-| Contingency (10%) | ~$1,300 |
-| **Level 1 total** | **~$14,200** |
+| Contingency (10%) | ~$1,400 |
+| **Level 1 total** | **~$15,500** |
 
 ### Level 2 — First Deployment (+$1,350–2,800)
 
@@ -140,13 +141,13 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$17,550–21,000 for a complete first-year programme with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$18,850–22,300 for a complete first-year programme with three public deployments, 50-print edition, and full documentation.
 
 ---
 
 ## 7. Timeline
 
-A 12-month build and deployment programme:
+A 12-month build and deployment program:
 
 | Month | Milestone |
 |-------|-----------|
@@ -165,7 +166,7 @@ A 12-month build and deployment programme:
 
 ### Public Deployments (minimum 3 in funding period)
 
-Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programmes, and community organisations at each site.
+Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
 
@@ -173,7 +174,7 @@ Each deployment is a public event. The container is placed on-site; visitors can
 
 ### Open Documentation Site
 
-All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive licence. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
+All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
 
 This is intentional. The project is as much a contribution to the field as it is a body of work.
 
@@ -181,19 +182,19 @@ This is intentional. The project is as much a contribution to the field as it is
 
 - Workshops at each deployment site: optics, cyanotype chemistry, large-format process
 - Open submission to alternative process photography publications (*Photovision*, *VIEW Camera*, *Pictorial*)
-- Public lecture/presentation at host institution or adjacent MFA programme
+- Public lecture/presentation at host institution or adjacent MFA program
 
 ---
 
 ## 9. Artist Statement / Bio
 
-Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had materialzed. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
+Photography taught me patience before anything else. As a teenager I would drop film at the post office and wait — two weeks, sometimes three — before I knew whether the image I had imagined, had indeed materialized. That interval, between exposure and knowledge, was the first version of what this project is. Like the slow food movement today, this was slow photography.
 
 At Nottingham Trent University I encountered the pinhole camera and understood immediately that something both maddening and transformative was possible with it. I graduated with a First in Photography in 1998 — my dissertation, *Deeds of War*, was acquired by the NTU library, and my photographs were selected for exhibition by the Royal Photographic Society.
 
-Through the 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format photographs made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see. It put a thought deep in the the back on y mind, why I had not taken the 5x4 camera i had constructed into that same environment.
+Through the late 1990s I worked as a photojournalist with the International Committee of the Red Cross, documenting people inside conflicts the world was not watching. It was there I encountered Alistair Thain's large-format photographs made in Sarajevo during the siege, and understood that the gravity of a slow process is not a constraint. It was the point. That work was about witness — about making visible what others could not, or would not, see. It put a thought deep in the the back of my mind... why I had not taken the 5x4 camera I had constructed into that same environment?
 
-My practice since has moved between classical portraiture and abstract colour in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 2 hours of sun, to stretch time, distort it, and make it visible. This is modern analog slow photography.
+My practice since has moved between classical portraiture and abstract color in found industrial spaces — shot on film, in darkrooms I have built. The through-line: a fascination with applying old processes to the contemporary world, to see what they can still reveal. The Big Shoebox Project is where that becomes architecture — a camera built to make a single image in 45 minutes of sun, to stretch time, distort it, and make it visible. This is modern analog slow photography.
 
 ---
 
@@ -224,4 +225,4 @@ All technical reports, fabrication drawings, optical simulations, and shopping l
 
 ### Sample Optical Renders
 
-The combined distortion renders (see [Tilt-Swing Front Board report](tilt-swing-board-report.md)) demonstrate the range of optical projections available from the combined movement systems — from an undistorted reference frame to compound diagonal projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's movement systems, modelled from first principles and replicable in the physical instrument.
+The combined distortion renders (see [Tilt-Swing Front Board report](tilt-swing-board-report.md)) demonstrate the range of optical projections available from the combined movement systems — from an undistorted reference frame to compound diagonal projections where no lines remain parallel. These are not post-processing effects. They are the direct optical output of the camera's movement systems, modeled from first principles and replicable in the physical instrument.

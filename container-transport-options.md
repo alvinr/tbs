@@ -17,7 +17,7 @@ Understanding the base weights is critical for selecting a legal and practical t
 | External height | 8 ft 6 in | 8 ft 6 in | 9 ft 6 in |
 | Width with fittings | 8 ft 6 in (standard) | 8 ft 6 in | 8 ft 6 in |
 
-A standard lane width is 12 ft — no wide-load permit is required for either container size when centred on a flatbed. Height of 8 ft 6 in–9 ft 6 in is within the US legal limit of 13 ft 6 in.
+A standard lane width is 12 ft — no wide-load permit is required for either container size when centered on a flatbed. Height of 8 ft 6 in–9 ft 6 in is within the US legal limit of 13 ft 6 in.
 
 **For this project:** The container is transported empty. The 20 ft empty weight of ~4,850 lb is the governing figure for self-haul calculations. The 40 ft at ~8,380 lb empty requires professional transport.
 
@@ -31,7 +31,7 @@ A standard lane width is 12 ft — no wide-load permit is required for either co
 | B. Commercial hire — semi flatbed | Yes | Yes | No (customer) | Long distance >100 miles |
 | C. Semi tractor + rented container chassis | Yes | Yes | **Yes — Class A** | Regular repositioning |
 | D. HD pickup + gooseneck trailer (empty 20 ft only) | Yes | **No** | Depends on state | Occasional short haul |
-| E. Specialty container trailer (QuickLoadz/DynaDolly) | Yes | No | No (if under 26,001 lb GVWR) | Frequent moves, single container |
+| E. Specialty container trailer (QuickLoadz/DynaDolly) | Yes | No | No (if under 26,001 lbs GVWR) | Frequent moves, single container |
 
 ---
 
@@ -64,11 +64,11 @@ If you anticipate moving the container frequently, purchasing is worth comparing
 
 | Class | Example chassis | Tilt-bed body | Typical use | Used price | New price |
 |-------|----------------|---------------|-------------|------------|-----------|
-| Class 5–6 (GVWR 16,001–26,000 lb) | Ford F-550, Isuzu NPR | Light-duty rollback / tilt-bed | Empty 20 ft containers; light cargo | $35,000–$70,000 | $80,000–$110,000 |
-| Class 7 (GVWR 26,001–33,000 lb) | Kenworth T270, Hino L6 | Standard container handler | Empty 20 ft; moderate payload | $65,000–$100,000 | $110,000–$150,000 |
-| Class 8 (GVWR 33,001+ lb) | Freightliner M2-106, Kenworth T280 | Galbreath SLCH or equivalent | Loaded containers; heavy service | $85,000–$130,000 | $150,000–$220,000+ |
+| Class 5–6 (GVWR 16,001–26,000 lbs) | Ford F-550, Isuzu NPR | Light-duty rollback / tilt-bed | Empty 20 ft containers; light cargo | $35,000–$70,000 | $80,000–$110,000 |
+| Class 7 (GVWR 26,001–33,000 lbs) | Kenworth T270, Hino L6 | Standard container handler | Empty 20 ft; moderate payload | $65,000–$100,000 | $110,000–$150,000 |
+| Class 8 (GVWR 33,001+ lbs) | Freightliner M2-106, Kenworth T280 | Galbreath SLCH or equivalent | Loaded containers; heavy service | $85,000–$130,000 | $150,000–$220,000+ |
 
-*Example confirmed listing: 2021 Kenworth T270 with 8,000 lb American container handler — **$99,900** (Commercial Truck Trader, 2025).*
+*Example confirmed listing: 2021 Kenworth T270 with 8,000 lbs American container handler — **$99,900** (Commercial Truck Trader, 2025).*
 
 #### Bed-only option (mount on your own truck)
 
@@ -82,14 +82,14 @@ If you already own a suitable Class 5+ truck, a tilt-bed body can be installed w
 
 *QuickLoadz complete truck packages (bed pre-installed on used International chassis) were offered from ~$75,000 in 2022; current pricing requires direct quote from QuickLoadz at (888) 304-3946.*
 
-#### Licence requirement for ownership/operation
+#### License requirement for ownership/operation
 Owning and operating a tilt-bed truck requires **CDL Class B or Class A** depending on GVWR:
-- Class 5–6 (GVWR ≤26,000 lb): standard driver's licence (non-commercial, personal use) — **no CDL**
-- Class 7+ (GVWR >26,001 lb): **CDL Class B** minimum; Class A if towing an additional trailer
+- Class 5–6 (GVWR ≤26,000 lbs): standard driver's license (non-commercial, personal use) — **no CDL**
+- Class 7+ (GVWR >26,001 lbs): **CDL Class B** minimum; Class A if towing an additional trailer
 
 **Sources:** [Commercial Truck Trader — Rollback listings](https://www.commercialtrucktrader.com/Rollback-Tow/trucks-for-sale?category=Rollback+Tow+Truck%7C2009720) · [TruckPaper — Rollback Tow Trucks](https://www.truckpaper.com/listings/for-sale/rollback-tow-trucks/16061) · [QuickLoadz — 20 ft Trucks & Beds](https://quickloadz.com/quickloadz-20-ft-container-moving-trucks-and-beds/) · [ChassisKing — Hydraulic Tilt-Bed Trailers](http://www.chassisking.com/products/self-loading-container-delivery-trailers/hydraulic-tilt-bed-container-delivery-trailers/) · [Custom Truck One Source — Container Handlers](https://www.customtruck.com/container-handlers/)
 
-### Licence requirement (hire)
+### License requirement (hire)
 **None** for the customer. The carrier holds the CDL. You need only to be present to direct placement.
 
 ### Site requirements
@@ -127,7 +127,7 @@ If no forklift/crane at the destination:
 | Forklift rental (half day) | $150–$400 |
 | Third-party crane service | $400–$1,200 |
 
-### Licence requirement
+### License requirement
 **None** for the customer. You must arrange offload equipment at the destination independently.
 
 ---
@@ -160,8 +160,8 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 ### Licence requirement
 **CDL Class A is required** — no exceptions.
 
-- Combination vehicle GVWR over 26,001 lb with towed unit over 10,000 lb triggers mandatory CDL Class A under FMCSA 49 CFR §383.
-- A 20 ft container (4,850 lb) + chassis (~6,000 lb) + tractor (~20,000 lb) = ~31,000 lb total — well over the threshold.
+- Combination vehicle GVWR over 26,001 lbs with towed unit over 10,000 lbs triggers mandatory CDL Class A under FMCSA 49 CFR §383.
+- A 20 ft container (4,850 lbs) + chassis (~6,000 lbs) + tractor (~20,000 lbs) = ~31,000 lbs total — well over the threshold.
 - **Interstate: must be 21+.** Intrastate: 18+ in most states.
 - ELDT (Entry Level Driver Training) mandatory for first-time CDL applicants in 2026.
 - DOT medical certificate required and must be submitted electronically (paper waiver expired January 10, 2026).
@@ -173,13 +173,13 @@ You rent a container chassis (an intermodal trailer specifically designed to car
 ## 6. Option D — Heavy-Duty Pickup Truck + Gooseneck Trailer (20 ft Empty Only)
 
 ### Feasibility
-This option is only viable for an **empty 20 ft container (~4,850 lb)**. A loaded container or any 40 ft container is not safe or legal on a pickup-based rig.
+This option is only viable for an **empty 20 ft container (~4,850 lbs)**. A loaded container or any 40 ft container is not safe or legal on a pickup-based rig.
 
 ### Minimum truck requirements
 
 | Spec | Minimum | Recommended |
 |------|---------|-------------|
-| Towing capacity | 18,000 lb | 30,000+ lb |
+| Towing capacity | 18,000 lbs | 30,000+ lbs |
 | Payload rating | 3,000 lb | 4,000+ lb |
 | Hitch receiver | 2½" or gooseneck ball | Gooseneck ball (2⁵⁄₁₆") |
 | Example vehicle | Ford F-450 Super Duty | Ford F-550, Ram 5500 |
@@ -196,15 +196,15 @@ This option is only viable for an **empty 20 ft container (~4,850 lb)**. A loade
 | [DynaDolly](https://shippingcontainertrailers.com/) | ~$3,500–$6,000 | N/A | Dolly-under system; requires level ground |
 | [ContainGo Mobilizer](https://www.containgo.com/mobilizer-shipping-container-trailer) | ~$15,000–$25,000 | N/A | Self-lifting; no crane needed |
 
-### Licence requirement
+### License requirement
 
-| Scenario | Licence needed |
+| Scenario | License needed |
 |----------|---------------|
-| Pickup + container chassis, total rig GVWR ≤26,001 lb | Standard Class C driver's licence |
-| Pickup + container chassis, total rig GVWR >26,001 lb | **CDL Class A** |
+| Pickup + container chassis, total rig GVWR ≤26,001 lbs | Standard Class C driver's license |
+| Pickup + container chassis, total rig GVWR >26,001 lbs | **CDL Class A** |
 | Any commercial use (hired to haul for others) | **CDL Class A + operating authority** |
 
-**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lb) + trailer GVWR (typically 20,000–25,000 lb for a container chassis). Most combinations will **exceed 26,001 lb** even empty — CDL likely required. Verify with your state DMV.
+**Calculating your GVWR:** Add truck GVWR (e.g. F-550 = 19,500 lbs) + trailer GVWR (typically 20,000–25,000 lb for a container chassis). Most combinations will **exceed 26,001 lbs** even empty — CDL likely required. Verify with your state DMV.
 
 *For non-commercial, private use on a short trip, some states allow an exemption below a certain weight — but this varies. Check with your state DMV before assuming no CDL is needed.*
 
@@ -220,7 +220,7 @@ These products eliminate the crane/forklift requirement by using hydraulics or a
 - **Price:** ~$30,000–$40,000 new
 - **How it works:** Hydraulic system lifts and secures the container using twist-locks; entire operation by one person with a remote
 - **Truck needed:** 3/4-ton+ pickup (F-250 minimum; F-350+ preferred)
-- **CDL:** Not required for personal/non-commercial use if total GVWR stays under 26,001 lb
+- **CDL:** Not required for personal/non-commercial use if total GVWR stays under 26,001 lbs
 - [quickloadz.com](https://www.quickloadz.com/quickloadz-20-ft-container-moving-trailers-and-beds/)
 
 ### DynaDolly
@@ -243,9 +243,9 @@ These products eliminate the crane/forklift requirement by using hydraulics or a
 ### Federal weight limits (FHWA)
 | Axle configuration | Max weight |
 |-------------------|-----------|
-| Single axle | 20,000 lb |
+| Single axle | 20,000 lbs |
 | Tandem axle | 34,000 lb |
-| Gross vehicle weight | **80,000 lb** |
+| Gross vehicle weight | **80,000 lbs** |
 
 An empty container on a flatbed trailer is well within federal limits. No oversize/overweight permit is required for an empty standard container.
 
@@ -266,13 +266,13 @@ An empty container on a flatbed trailer is well within federal limits. No oversi
 
 ## 9. CDL Class A and Class B — Full Requirements, Training, and Southern California Schools
 
-### 9.1 Which licence do you need?
+### 9.1 Which license do you need?
 
-| Licence | Triggers when… | Typical vehicle |
+| License | Triggers when… | Typical vehicle |
 |---------|---------------|----------------|
-| **Class A** | Combination vehicles with GVWR >26,001 lb AND the towed unit weighs >10,000 lb | Semi-tractor + container chassis; tractor-trailer |
-| **Class B** | Single vehicle GVWR >26,001 lb, OR towing a unit ≤10,000 lb | Straight truck, tilt-bed container truck (Class 7–8), large bus, dump truck |
-| No CDL | Total rig GVWR ≤26,001 lb (personal, non-commercial use) | HD pickup + empty container on light trailer (if weight allows) |
+| **Class A** | Combination vehicles with GVWR >26,001 lbs AND the towed unit weighs >10,000 lbs | Semi-tractor + container chassis; tractor-trailer |
+| **Class B** | Single vehicle GVWR >26,001 lbs, OR towing a unit ≤10,000 lbs | Straight truck, tilt-bed container truck (Class 7–8), large bus, dump truck |
+| No CDL | Total rig GVWR ≤26,001 lbs (personal, non-commercial use) | HD pickup + empty container on light trailer (if weight allows) |
 
 For this project: **Class B** covers owning and operating a Class 7–8 tilt-bed truck. **Class A** is required if you also want to tow a container chassis behind a semi tractor.
 
@@ -285,12 +285,12 @@ These must be satisfied before enrolling in skills training or sitting any DMV t
 | Requirement | Details |
 |-------------|---------|
 | **Age** | 18+ for intrastate (within California only); **21+ for interstate** (crossing state lines) |
-| **Existing driver's licence** | Valid California Class C (standard) driver's licence |
+| **Existing driver's licence** | Valid California Class C (standard) driver's license |
 | **DOT medical examination** | Physical exam by a FMCSA-certified Medical Examiner; produces a Medical Examiner's Certificate (MEC). Cost: ~$75–$150 at most clinics. Valid 2 years (or less if a medical condition requires it). As of January 10, 2026, paper MEC waivers have expired — results are submitted electronically to the FMCSA. |
 | **Social Security Number** | Required for DMV identity verification |
 | **Proof of California residency** | Two documents (utility bill, bank statement, lease, etc.) if no existing CA DL/ID |
-| **10-Year History Record Check (DL 939)** | Required if you held a licence in any other US state or jurisdiction in the last 10 years |
-| **No disqualifying record** | DUI convictions, certain drug offences, or prior CDL disqualifications may prevent issuance |
+| **10-Year History Record Check (DL 939)** | Required if you held a license in any other US state or jurisdiction in the last 10 years |
+| **No disqualifying record** | DUI convictions, certain drug offenses, or prior CDL disqualifications may prevent issuance |
 | **FMCSA ELDT registration** | Your training provider must be listed on the FMCSA Training Provider Registry (TPR). Verify at [tpr.fmcsa.dot.gov](https://tpr.fmcsa.dot.gov) |
 
 **Sources:** [California DMV — CDL Overview](https://www.dmv.ca.gov/portal/driver-licenses-identification-cards/commercial-driver-licenses-cdl/) · [Certified Safe Driver — CA CDL Requirements](https://certifiedsafedriver.com/california-cdl-license-requirements/) · [ELDT Nation — Class A in California](https://www.eldtnation.com/blog/class-a-eldt-in-california-clp-eldt-hours-road-test-steps)
@@ -377,7 +377,7 @@ Walk-around of the vehicle while verbally identifying and explaining each system
 - Cargo securement areas
 
 #### Part 2 — Basic vehicle control (closed course/parking area)
-Manoeuvres in a controlled environment. Graded on accuracy and number of pull-ups (corrections):
+Maneuvers in a controlled environment. Graded on accuracy and number of pull-ups (corrections):
 - Straight-line backing
 - Offset alley docking (backing into a marked space offset left or right)
 - Parallel parking (sight-side and blind-side)
@@ -435,7 +435,7 @@ Scored on observation, lane control, intersections, turns, and speed management:
 
 #### Cost summary
 
-| Programme type | Total cost range (tuition + DMV fees) | Duration |
+| Program type | Total cost range (tuition + DMV fees) | Duration |
 |---------------|--------------------------------------|---------|
 | Budget private school | $2,000–$3,000 | 2–3 weeks |
 | Mid-range private school | $4,000–$6,000 | 3–4 weeks |
@@ -447,7 +447,7 @@ Scored on observation, lane control, intersections, turns, and speed management:
 
 ### 9.9 Class A vs Class B — which to get for this project?
 
-| Scenario | Licence needed |
+| Scenario | License needed |
 |----------|---------------|
 | Operating a Class 7–8 tilt-bed container truck (Option A purchase) | **Class B** |
 | Driving a semi tractor + container chassis (Option C) | **Class A** |
@@ -486,7 +486,7 @@ Scored on observation, lane control, intersections, turns, and speed management:
 - [Pickup Truck Talk — Requirements for Loaded Containers 2026](https://pickuptrucktalk.com/2026/02/requirements-for-trucks-transporting-loaded-shipping-containers/)
 - [Boxhub — How to Move Your Container](https://boxhub.com/resources/how-to-move-your-shipping-container)
 - [Logrock — CDL Requirements 2026](https://www.logrock.com/fmcsa-and-dot-compliance/cdl-requirements/)
-- [Compliant Drivers — CDL Licence Requirements by State 2026](https://compliantdriversprogram.com/cdl-license-requirements/)
+- [Compliant Drivers — CDL License Requirements by State 2026](https://compliantdriversprogram.com/cdl-license-requirements/)
 - [FlexiVan FlexiDay — Daily Chassis Rental](https://flexivan.com/daily-rentals/)
 - [COOP by Ryder — Chassis Rentals](https://www.coop.com/trailer-rentals/chassis)
 - [XTRA Lease — Chassis Rental](https://www.xtralease.com/get-trailer/trailer-rental/chassis-rental)

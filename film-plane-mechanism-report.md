@@ -284,3 +284,6 @@ All items ship within the United States. Local Southern California pickup noted 
 - **Automation Overstock** — Gardena, CA. Industrial surplus linear motion components; walk-in available.
 - **Grainger** — branches throughout LA, Orange County, San Diego. Same-day local pickup.
 - **Roton Products** — ships from the LA area; Acme screw stock cut to length.
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

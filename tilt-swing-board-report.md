@@ -348,3 +348,6 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | **Total** | **~$1,470** | **~$2,440** |
 
 The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

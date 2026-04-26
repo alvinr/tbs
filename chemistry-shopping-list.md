@@ -317,3 +317,6 @@ The active film plane is 13'3" × 7'10" (4,024 × 2,388 mm). The image plane is 
 | **Adorama** | Ilford paper rolls, Rockland Liquid Light, Dektol | [adorama.com](https://www.adorama.com) |
 | **Rockland Colloid** | Liquid Light emulsion — contact for bulk pricing | [rockaloid.com](https://www.rockaloid.com) |
 | **Freestyle Photo** | Alternative process chemicals, Arista developer | [freestylephoto.biz](https://www.freestylephoto.biz) |
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 Top-down schematic showing container camera geometry and subject distances.
 Option B: side-to-side orientation.

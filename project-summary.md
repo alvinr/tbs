@@ -81,3 +81,6 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
+---
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

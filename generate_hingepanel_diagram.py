@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# © 2026 Alvin Richards
 """
 generate_hingepanel_diagram.py  —  TBS-001 Hinged Light-Trap Panel
 

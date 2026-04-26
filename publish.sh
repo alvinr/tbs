@@ -66,6 +66,7 @@ MD_FILES=(
     "engineering-diagrams.md"
     "distortion-renders.md"
     "equipment-layout-report.md"
+    "component-dependency-map.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────

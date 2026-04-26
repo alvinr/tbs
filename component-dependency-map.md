@@ -1,0 +1,308 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
+# TBS-001 Component Dependency Map
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
+
+This document is the operational guide for maintaining consistency across all TBS-001 engineering
+diagrams. When any component changes — position, dimension, or specification — consult:
+
+1. **Section 1** to find the controlling constant in `tbs_constants.py`
+2. **Section 2** to find which generator scripts use that constant
+3. **Section 3** to confirm the exact scripts to re-run and PNGs to regenerate
+
+All shared constants live in `tbs_constants.py`. Change a value there once; re-run the affected
+scripts; all diagrams update consistently.
+
+---
+
+## 1. Component Registry
+
+Each subsystem lists its key physical parameters and the `tbs_constants.py` variable(s) that
+control it. Scripts should import from `tbs_constants` rather than hardcoding these values.
+
+### 1.1 Container Structure
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Interior length (long axis X) | 5,893 mm | `C_LEN` |
+| Interior width (optical depth Y) | 2,362 mm | `C_WID` |
+| Interior height Z | 2,388 mm | `C_HGT` |
+
+*Components: corrugated steel long walls, short end walls (cargo door end / far end), roof,
+bamboo floor, corner castings, corner posts, structural corrugation ribs.*
+
+### 1.2 Optical Aperture
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Pinhole X position (long axis) | 2,637 mm | `PH_X` |
+| Pinhole center height | 1,194 mm | `PH_H` |
+| Pinhole diameter | Ø2.17 mm | `PH_D` |
+| f-number | f/1088 | `PH_FNO` |
+| Focal length | 2,362 mm | `PH_F` (= `C_WID`) |
+
+*Components: wall frame (600×600mm, 6mm steel), pinhole plate (TSB-02 / interchangeable
+Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
+
+### 1.3 Film Plane Mechanism
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Film plane left edge X | 625 mm | `FP_X_L` |
+| Film plane right edge X | 4,649 mm | `FP_X_R` |
+| Film plane width | 4,024 mm | `FP_W` |
+| Film plane height | 2,388 mm | `FP_H` |
+| Nominal depth from pinhole wall | 2,262 mm | `FP_Y` |
+| Minimum carriage depth | 100 mm | `FP_Y_MIN` |
+| Left rail X | 625 mm | `RAIL_X_L` |
+| Right rail X | 4,649 mm | `RAIL_X_R` |
+| Rail span | 4,024 mm | `RAIL_SPAN` |
+| Rail length (Y travel) | 2,200 mm | `RAIL_LEN` |
+| Max tilt | ±42.2° | `MAX_TILT_DEG` |
+| Max swing | ±28.2° | `MAX_SWING_DEG` |
+
+*Components: welded aluminum angle frame (2"×2"×3/16"), 4× HGR20 linear rails (ceiling + floor),
+8× HGH20CA carriage blocks, 4× ¾"-6 Acme leadscrews, 4× bronze nuts, 4× 8" handwheels,
+8× GIR25-DO rod-end spherical bearings, hinged ACM backing panels, Duvetyne curtain seals,
+rail felt light-trap strips.*
+
+### 1.4 Tilt-Swing Front Board
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Pinhole X (board centers here) | 2,637 mm | `PH_X` |
+| Max tilt/swing | ±5.3° | — (hardcoded in script) |
+| Resolution | 0.012°/click | — (hardcoded in script) |
+
+*Components: TSB-01 outer adapter frame (600×600×40mm Al 6061-T6), TSB-02 inner carrier plate
+(Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0
+adjustment screws, hemispherical ball-socket inserts, 36-detent knurled knobs, TSB-10 neoprene
+bellows (4-pleat, Ø290 ID → Ø360 OD).*
+
+### 1.5 Light Trap Drum
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Drum center X (cargo door end wall) | 0 mm | `DRUM_CX` |
+| Drum outer diameter | 750 mm | `DRUM_D` |
+| Drum radius | 375 mm | `DRUM_R` |
+| Drum height | 2,000 mm | `DRUM_H_LT` |
+
+*Components: 3mm mild steel rolled shell, 4× internal steel baffle fins (at 22.5°/112.5°/
+202.5°/292.5°), 5mm top and bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed
+bearings, upper and lower bearing mounts, 100mm SS interior grab rail, closed-cell neoprene
+top/bottom wiper seals + silicone bead, drum-to-panel neoprene compression strip.*
+
+### 1.6 Hinged Cargo-Door Panel
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Panel width | 2,362 mm | `C_WID` |
+| Panel height | 2,388 mm | `C_HGT` |
+| Panel thickness | 120 mm | — (hardcoded in scripts) |
+
+*Components: 50×50mm RHS steel frame, 18mm plywood skins (both faces), 20mm EPDM compression
+gasket in machined channel, 3× 200mm SS ball-bearing piano hinges, 4× Southco C2-33 cam
+compression latches, Ø750mm revolving drum aperture.*
+
+### 1.7 Ventilation System
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Fan diameter (both fans) | 150 mm | `FAN_DIAM` |
+| Panel fan body depth | 50 mm | `FAN_BODY_D` |
+| Fan A center height AFF (low) | 600 mm | `FAN_A_H` |
+| Fan B center height AFF (high) | 1,800 mm | `FAN_B_H` |
+| Baffle duct depth | 300 mm | `DUCT_DEPTH` |
+| Baffle duct height | 200 mm | `DUCT_HEIGHT` |
+| Fan A shadow margin (from cone) | 869 mm | `FAN_A_MARGIN` |
+| Fan B shadow margin (from cone) | 250 mm | `FAN_B_MARGIN` |
+
+*Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), intake, Circuit A,
+low position. Fan B — identical fan, cargo door end wall (X=0), exhaust, Circuit B, high
+position. Each fan mounts on interior face of a 300mm deep light-safe baffle duct with 2
+offset steel baffles (65% height each, S-path). Exterior face: passive weatherproof louvre
+grille only — no fan outside container.*
+
+### 1.8 Evaporative Cooler
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Left edge X | 700 mm | `EVAP_X` |
+| Width | 600 mm | `EVAP_W` |
+| Depth from pinhole wall | 0 mm | `EVAP_Y` |
+| Depth footprint | 350 mm | `EVAP_D` |
+| Height | 800 mm | `EVAP_H` |
+
+*Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
+water reservoir, Circuit E. Located on pinhole wall face (Yd=0) — shadow-free at all depths.*
+
+### 1.9 Electrical System
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Electrical panel left edge X | 2,050 mm | `EP_X` |
+| Panel width | 300 mm | `EP_W` |
+| Panel height range | 900–1,500 mm | `EP_H_LO`, `EP_H_HI` |
+| Battery bank left edge X | 2,050 mm | `BA_X` |
+| Battery bank width | 500 mm | `BA_W` |
+| Battery bank height range | 0–500 mm | `BA_H_LO`, `BA_H_HI` |
+
+*Components: 3× 200W monocrystalline solar panels (roof-mounted), Victron SmartSolar MPPT 100/50,
+2× 100Ah LiFePO4 batteries (200Ah / 2,400Wh), Victron Blue Smart IP65 shore charger,
+NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosure
+(300×200×130mm), 200A ANL main fuse, 4 AWG ground wire + 8ft copper stake.*
+
+*Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
+C — pump manifold; D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
+
+### 1.10 Pump Manifold
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Left edge X | 2,400 mm | `PUMP_X` |
+| Width | 300 mm | `PUMP_W` |
+| Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
+
+*Components: 1" HDPE header + isolation valves, 2× Shurflo 2088 12V pumps (P-01 Blue supply,
+P-02 Brown recycle), 1-gal pressure accumulator ACC-01, ball valves BV-01/02, Circuit C.*
+
+### 1.11 Water System — Blue Circuit
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| IBC column left edge X | 4,674 mm | `IBC_COL_X` |
+| IBC footprint width | 1,219 mm | `IBC_W` |
+| IBC footprint depth | 1,016 mm | `IBC_D` |
+| Stacked height (2× Blue IBC) | 2,020 mm | `IBC_H_STK` |
+| Blue stack front depth from pinhole wall | 100 mm | `BLUE_IBC_Y` |
+
+*Components: 2× 600L food-grade HDPE IBC totes (Y-stacked in right end zone), stacking
+frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" HDPE,
+600mm spacing), camlock fill inlet, low-level float switch.*
+
+### 1.12 Water System — Brown Circuit
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Brown IBC front depth | 1,141 mm | `BROWN_IBC_Y` |
+| IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
+
+*Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
+filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurflo P-02,
+3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.*
+
+### 1.13 Water System — Black Circuit (Waste)
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| 55-gal drum diameter | 580 mm | `DRUM_EQ_D` |
+| 55-gal drum height | 870 mm | `DRUM_EQ_H` |
+| Near drum center X | 310 mm | `DRUM_LZ_CX` |
+| Near drum Yd range | 25–605 mm | `DRUM_LZ_YD_LO`, `DRUM_LZ_YD_HI` |
+| Far drum center X | 310 mm | `DRUM_FZ_CX` |
+| Far drum Yd range | 1,757–2,337 mm | `DRUM_FZ_YD_LO`, `DRUM_FZ_YD_HI` |
+
+*Components: 2× 55-gal HDPE closed-head UN-rated drums (D-1 near pinhole wall corner,
+D-2 near far wall corner; both at X=310mm in left end zone), drum bungs, gravity drain
+1" pipe, polyester lashing straps.*
+
+### 1.14 Equipment Zones
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Left end zone boundary (right edge) | X = 625 mm | `ZONE_L_END` |
+| Right end zone boundary (left edge) | X = 4,649 mm | `ZONE_R_START` |
+| Optical cone left at depth Y | `PH_X − (PH_X − FP_X_L) × Y / FP_Y` | `cone_left(y)` |
+| Optical cone right at depth Y | `PH_X + (FP_X_R − PH_X) × Y / FP_Y` | `cone_right(y)` |
+
+*Derived rule: any equipment with X < ZONE_L_END is shadow-free at all depths.
+Any equipment with X > ZONE_R_START is shadow-free at all depths.
+Equipment at Yd = 0 (pinhole wall face) is always shadow-free.*
+
+---
+
+## 2. Script and Diagram Index
+
+Every generator script, its output PNGs, and the subsystems it renders.
+
+| Abbr | Generator script | PNG files produced | Subsystems drawn |
+|------|-----------------|-------------------|-----------------|
+| **FP** | `generate_floorplan_diagram.py` | `diagrams/container-floorplan.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14 |
+| **LOS** | `generate_line_of_sight.py` | `diagrams/line-of-sight.png` | 1, 2, 3, 5, 8, 9, 10, 11, 12, 13, 14 |
+| **AO** | `generate_assembly_overview.py` | `diagrams/assembly-overview.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13 |
+| **AF** | `generate_assembly_fabrication.py` | `diagrams/assembly-fab-sheet1.png`<br>`diagrams/assembly-fab-sheet2.png` | 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13 |
+| **FPM** | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
+| **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c6.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
+| **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
+| **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
+| **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png` | 1, 5, 6 |
+| **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png`<br>`diagrams/lighttrap-sheet3.png` | 1, 5, 6, 7, 8 |
+| **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
+| **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
+| **PD** | `generate_plate_drawing.py` | `diagrams/plate-drawing-sheet1.png`<br>`diagrams/plate-drawing-sheet2.png` | 1, 2 |
+| **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
+
+---
+
+## 3. Dependency Matrix
+
+✓ = this subsystem is drawn in this diagram group. Re-run all ✓ scripts when the subsystem changes.
+
+| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC |
+|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
+| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ |
+| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ |
+| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | |
+| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | |
+| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
+| **6** Hinged Panel | | | | ✓ | | | | | ✓ | ✓ | | | | |
+| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | |
+| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | |
+| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | |
+| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | |
+| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **13** Black Water (drums) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
+| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | |
+
+---
+
+## 4. Change Propagation Guide
+
+When a constant in `tbs_constants.py` changes, re-run all scripts listed. Then commit the updated
+PNGs alongside the constant change.
+
+| Changed constant(s) | Re-run scripts (abbr) | Notes |
+|--------------------|----------------------|-------|
+| `PH_X`, `PH_H` | FP, LOS, AO, AF, FPM, FPD, TSB, TSD, PD, SC | Pinhole reposition — cone geometry changes everywhere; MAX_SWING_DEG unchanged |
+| `PH_D`, `PH_FNO` | TSB, PD, SC | Aperture spec change — layout diagrams unaffected |
+| `FP_X_L`, `FP_X_R`, `FP_W` | FP, LOS, AO, AF, FPM, FPD, TSD | Rail span and ZONE boundaries both change; verify `MAX_SWING_DEG` |
+| `FP_Y`, `FP_Y_MIN` | FP, LOS, AO, AF, FPM, FPD, TSD | Depth change — also recalculates `MAX_TILT_DEG` and `MAX_SWING_DEG` |
+| `RAIL_LEN` | FPM | Rail length only — no layout impact |
+| `C_LEN` | FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC | Container resize — rare |
+| `C_WID` | FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC | Changes focal length and cone geometry |
+| `C_HGT` | FP, LOS, AO, AF, ES, HP, LT | Height change |
+| `EVAP_X`, `EVAP_W`, `EVAP_Y`, `EVAP_D`, `EVAP_H` | FP, LOS, AO, AF, ES, LT | Cooler position/size |
+| `EP_X`, `EP_W`, `EP_H_LO`, `EP_H_HI` | FP, LOS, AO, AF, ES | Electrical panel on pinhole wall |
+| `BA_X`, `BA_W`, `BA_H_LO`, `BA_H_HI` | FP, LOS, AO, AF, ES | Battery bank on pinhole wall |
+| `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on pinhole wall |
+| `IBC_COL_X`, `BLUE_IBC_Y`, `BROWN_IBC_Y` | FP, LOS, AO, AF, WS | Right end zone IBC stack |
+| `DRUM_LZ_*`, `DRUM_FZ_*`, `DRUM_EQ_*` | FP, LOS, AO, AF, WS | Left end zone waste drums |
+| `DRUM_CX`, `DRUM_D`, `DRUM_H_LT` | FP, LOS, AO, AF, HP, LT | Light trap drum; check `ZONE_L_END` |
+| `ZONE_L_END`, `ZONE_R_START` | FP, LOS, AO, ES | Zone boundaries — these are derived from `FP_X_L`/`FP_X_R`, so change those instead |
+| `FAN_A_H`, `FAN_B_H`, `FAN_DIAM`, `FAN_BODY_D` | LT, ES | Ventilation fan height or size |
+| `DUCT_DEPTH`, `DUCT_HEIGHT` | LT | Baffle duct only — lighttrap sheets |
+
+### Workflow
+
+```
+1. Edit tbs_constants.py
+2. python3 tbs_constants.py          # verify no errors, check derived values in summary
+3. python3 generate_<affected>.py    # for each affected script (see table above)
+4. Visually inspect updated PNGs in diagrams/
+5. bash publish.sh --build           # verify zero MkDocs warnings
+6. git add tbs_constants.py diagrams/*.png && git commit -m "..."
+7. bash publish.sh                   # deploy
+```

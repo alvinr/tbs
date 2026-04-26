@@ -14,10 +14,11 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
 | **5. Processing water system** | $1,457 | $1,765 | $2,072 |
-| **6. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
-| **7. Transportation (per deployment)** | $300 | $750 | $2,000 |
-| **8. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$10,027** | **$12,987** | **$17,482** |
+| **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
+| **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
+| **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
+| **9. Licences & permits** | $220 | $790 | $1,620 |
+| **TOTAL (excl. own transport, CDL, lens)** | **$10,977** | **$14,187** | **$18,932** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -231,7 +232,28 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 ---
 
-## 6. Printmaking — 50 Prints (Cyanotype)
+## 6. Revolving Drum Light Trap — Custom Fabrication
+
+**Source document:** `light-trap-selection.md`
+
+Personnel access during operation is via a 750mm steel drum built into the hinged cargo-door panel. The drum rotates freely on two SKF 6215 bearings; 4 internal baffles at 45° offset eliminate any straight-line optical path. Custom fabrication is recommended over commercial darkroom doors (~$2,500–$4,500) — those products are not weatherproof, not transport-rated, and cannot be adapted to a removable panel.
+
+| Item | Low | Mid | High | Notes |
+|------|-----|-----|------|-------|
+| 3mm mild steel sheet, 1,200×2,400mm (×2) | $140 | $160 | $180 | Hot-rolled A36 — drum shell and internal baffles; Pacific Coast Steel, Santa Fe Springs CA |
+| 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service centre |
+| SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
+| Seals — 12mm neoprene wiper strip, 20mm compression strip, silicone | $50 | $60 | $70 | McMaster-Carr #93855K6, #8635K31, #7587A3 |
+| Hardware — SS grab rails (×2), M8/M10 stainless bolts (14 off) | $80 | $100 | $120 | McMaster-Carr / Fastenal |
+| Flat black powder coat (interior) + grey oxide primer (exterior) | $120 | $150 | $180 | Local powder coat shop SoCal |
+| Metal fabrication — rolling, seam weld, baffle weld, stub shaft weld (16–20 hrs) | $800 | $1,000 | $1,200 | Local metal fab shop — get 2–3 quotes |
+| **Revolving drum total** | **$950** | **$1,200** | **$1,450** | |
+
+*Note: the hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Total saving vs. commercial darkroom door: $1,550–$3,050.*
+
+---
+
+## 7. Printmaking — 50 Prints (Cyanotype)
 
 **Source document:** `chemistry-shopping-list.md`
 
@@ -273,7 +295,7 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 ---
 
-## 7. Transportation
+## 8. Transportation
 
 **Source document:** `container-transport-options.md`
 
@@ -310,7 +332,7 @@ Costs are **per deployment** (one move). The container requires no oversize/over
 
 ---
 
-## 8. Licences & Permits
+## 9. Licences & Permits
 
 **Source document:** `container-transport-options.md`; location permit costs are estimates not covered by existing research.
 
@@ -356,7 +378,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ---
 
-## 9. Ongoing Operating Costs (After Build)
+## 10. Ongoing Operating Costs (After Build)
 
 ### Per print (cyanotype, after initial capital spent)
 
@@ -380,7 +402,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 ---
 
-## 10. Complete Budget Scenarios
+## 11. Complete Budget Scenarios
 
 ### Scenario A — Minimum viable build, local use, commercial hire transport
 
@@ -391,10 +413,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $95 |
 | Film plane mechanism (manual) | $2,200 |
 | Water system | $1,457 |
+| Revolving drum light trap (custom fabrication) | $950 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$9,794** |
+| **Scenario A total** | **~$10,744** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -405,27 +428,28 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + electric actuation) | $3,227 |
 | Water system | $1,765 |
+| Revolving drum light trap (custom fabrication) | $1,200 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$14,274** |
+| **Scenario B total (excl. CDL)** | **~$15,474** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $14,274 |
+| Scenario B build | $15,474 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$103,774–$133,774** |
+| **Scenario C total** | **~$104,974–$134,974** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 
 ---
 
-## 11. Research Gaps & Cost Verification Required
+## 12. Research Gaps & Cost Verification Required
 
 The following costs are not covered by existing research documents and should be verified before committing:
 

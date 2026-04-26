@@ -22,7 +22,7 @@ This does not mean a lens is useless here. It means the lens choice determines *
 | Large Fresnel lens | Full or partial coverage | Low — artistic/aberrant character | Commercial (lighting/solar industry) |
 | Hybrid: lens + pinholes | Central sharp + full-plane soft | Intentionally mixed | DIY |
 
-Each is analysed in detail below. All share a common optical framework.
+Each is analyzed in detail below. All share a common optical framework.
 
 ---
 
@@ -55,7 +55,7 @@ Solving for d_o: **d_o = d_i × f_L / (d_i − f_L)**
 
 ### 1.2 Adjustable Focus: The Lens Board
 
-A lens mounted rigidly in the pinhole wall can only focus at one fixed distance (set by its focal length). To focus at different distances, the lens is mounted on a sliding board — a simple wooden or aluminium panel that moves forward and backward in the wall aperture, exactly as a view camera bellows extends and contracts.
+A lens mounted rigidly in the pinhole wall can only focus at one fixed distance (set by its focal length). To focus at different distances, the lens is mounted on a sliding board — a simple wooden or aluminum panel that moves forward and backward in the wall aperture, exactly as a view camera bellows extends and contracts.
 
 Moving the lens 1 mm toward the subject (increasing d_i by 1 mm) shifts focus significantly closer. The sensitivity:
 
@@ -123,7 +123,7 @@ Baseline: Sunny-16 at ISO 6 = 1/6 second at f/16. All times below include bellow
 | f/64 | f/108.5 | 7.6 sec | **10.8 sec** | Comfortable hand operation |
 | f/128 | f/217 | 30.4 sec | **55 sec** | Manageable for standing subject |
 | f/256 | f/434 | 121 sec | **4.7 min** | Getting difficult; approaches pinhole aesthetics |
-| f/512 | f/869 | 486 sec | **24 min** | Near-pinhole behaviour |
+| f/512 | f/869 | 486 sec | **24 min** | Near-pinhole behavior |
 | f/1088 | f/1844 | 2,193 sec | **~2.4 hr** | Pinhole equivalent (extremely stopped-down lens) |
 
 **Key threshold:** At f/32–f/64, exposures of 2–11 seconds allow subjects to stand still reliably. At f/8–f/22, a mechanical shutter is required — easily fabricated as a sliding black panel operated by hand.
@@ -189,7 +189,7 @@ However: **sharpness is only real within the image circle of the lens** (see Sec
 
 ### 5A: Large-Format Process / Repro Lens
 
-These are the highest-quality option within their coverage area. Process lenses (Rodenstock Apo-Ronar, Schneider G-Claron, Nikkor AM-ED) were designed for the commercial printing industry to produce flat-field, low-distortion, high-resolution reproductions. They are optimised for the reproduction ratios (1:1 to 1:10) that coincide with portrait distances at this camera's scale.
+These are the highest-quality option within their coverage area. Process lenses (Rodenstock Apo-Ronar, Schneider G-Claron, Nikkor AM-ED) were designed for the commercial printing industry to produce flat-field, low-distortion, high-resolution reproductions. They are optimized for the reproduction ratios (1:1 to 1:10) that coincide with portrait distances at this camera's scale.
 
 **Commercially available examples:**
 
@@ -372,7 +372,7 @@ For the image areas covered by each option (central circle, 300–600 mm diamete
 
 ## Section 8: Chromatic Aberration
 
-**Pinhole:** Zero chromatic aberration. All wavelengths focus at the same point (the pinhole) and arrive at the image plane with identical geometry. This is not a small advantage — it is fundamental. The pinhole is the only optical element with perfect colour rendering.
+**Pinhole:** Zero chromatic aberration. All wavelengths focus at the same point (the pinhole) and arrive at the image plane with identical geometry. This is not a small advantage — it is fundamental. The pinhole is the only optical element with perfect color rendering.
 
 **Lens chromatic aberration by type:**
 
@@ -384,9 +384,9 @@ For the image areas covered by each option (central circle, 300–600 mm diamete
 | Apochromatic triplet (telescope APO) | <0.5 mm | Negligible | Invisible in practice | — |
 | Process lens (Apo-Ronar, G-Claron) | <0.3 mm | Negligible | Invisible | — |
 
-For silver gelatin paper (blue + green sensitive), longitudinal chromatic aberration manifests as a slight softening of the focus in the blue channel relative to green. The paper does not record red, so the red focal shift does not contribute. On panchromatic film, full RGB CA is visible as coloured halos around high-contrast edges.
+For silver gelatin paper (blue + green sensitive), longitudinal chromatic aberration manifests as a slight softening of the focus in the blue channel relative to green. The paper does not record red, so the red focal shift does not contribute. On panchromatic film, full RGB CA is visible as colored halos around high-contrast edges.
 
-For portrait work, an apochromatic lens (telescope APO objective or process lens) eliminates chromatic aberration as a concern. A singlet is workable but noticeably colour-fringed at the edges of the covered image circle.
+For portrait work, an apochromatic lens (telescope APO objective or process lens) eliminates chromatic aberration as a concern. A singlet is workable but noticeably color-fringed at the edges of the covered image circle.
 
 ---
 

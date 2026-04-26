@@ -56,7 +56,7 @@ See [Section 8.4](#84-electrical-diagrams) for embedded diagrams.
 | Combiner | 3-way MC4 branch connector + 30A inline fuse per string |
 | Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) |
 
-**Siting:** deploy panels on south-facing ground adjacent the container. A 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
+**Siting:** deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
 
 ---
 
@@ -124,7 +124,7 @@ The light trap allows a single operator to enter and exit the camera in full day
 | Skins | 18mm exterior-grade plywood each face, painted flat black interior |
 | Hinges | 3 × 200mm stainless ball-bearing piano hinges — left edge of door opening |
 | Latches | 4 × Southco C2-33 cam compression latches — perimeter |
-| Perimeter seal | 20mm EPDM compression gasket in machined aluminium channel — zero-gap when latches engaged |
+| Perimeter seal | 20mm EPDM compression gasket in machined aluminum channel — zero-gap when latches engaged |
 | Swing clearance | 180° outward — fully clears opening for IBC tote loading |
 
 ### 5.3 Revolving Drum Specification
@@ -191,7 +191,7 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
 **Left end zone (X=0–625mm) — shadow-free at all depths:**
-- Light trap drum (Ø750mm, centred at X=0, Yd=806–1,556mm)
+- Light trap drum (Ø750mm, centered at X=0, Yd=806–1,556mm)
 - 55-gal drum D-1 (near corner): CX=310mm, Yd=25–605mm, H=870mm
 - 55-gal drum D-2 (far corner): CX=310mm, Yd=1,757–2,337mm, H=870mm
 
@@ -215,7 +215,7 @@ All equipment clears the optical cone at every depth — no vignetting. See [Equ
 
 ### 6.1 The Problem
 
-A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. An operator cannot safely work above 40°C interior. Chemistry coating is impaired above 35°C.
+A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. An operator cannot safely work under 40°C interior. Chemistry coating is impaired above 35°C.
 
 ### 6.2 Strategy
 
@@ -227,7 +227,7 @@ A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
-> **Why evaporative cooling works in Palm Springs:** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's 80W — an 11× power saving.
+> **Why evaporative cooling works in Hot Climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's 80W — an 11× power saving.
 
 ### 6.3 Evaporative Cooler Specification
 
@@ -236,10 +236,10 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 | Model | Portacool Jetstream 110 (12V DC version) or equivalent |
 | Power draw | ~80W at 12V DC |
 | Airflow | ~300 CFM |
-| Water consumption | ~3 litres/hour |
+| Water consumption | ~3 liters/hour |
 | Circuit | E (10A fuse, 14 AWG) |
 | Intake | Light-safe baffle (see 6.4) |
-| Water source | Dedicated 20-litre reservoir, refilled from Blue circuit IBC tote |
+| Water source | Dedicated 20-liter reservoir, refilled from Blue circuit IBC tote |
 
 ### 6.4 Light-Safe Cooler Intake
 
@@ -302,10 +302,10 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 
 ### 8.3 Wiring Construction
 
-**Conduit:** All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilised).
+**Conduit:** All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).
 
 **Connectors:**
-- Interior connections: Anderson Powerpole 30A (red/black) — tool-free, re-mateable, industry standard for 12V DC
+- Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.

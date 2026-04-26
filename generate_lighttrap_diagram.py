@@ -417,13 +417,16 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9.0, color=C_DIM,
             style="italic", zorder=3)
 
-    # ── INTAKE FAN A (right end wall — interior-mounted, low position) ──────────
+    # ── INTAKE FAN A (right end wall — compact axial panel fan, low position) ────
+    # Both fans are identical: 150mm compact axial panel fan, ~50mm body depth.
+    # Same part, same mounting flange, same baffle duct — simplified procurement.
     import math
-    R_FAN = 0.45
-    BD_W  = 0.80    # baffle duct schematic depth (between wall interior face and fan body)
-    FA_Y  = CY + WT + CH * 0.18    # low position (unchanged)
+    PF_T  = 0.16   # panel fan body thickness in drawing units (~50mm, schematic)
+    R_PF  = 0.38   # panel fan impeller radius (150mm dia, schematic)
+    BD_W  = 0.80   # baffle duct schematic depth
+    FA_Y  = CY + WT + CH * 0.18    # low position
 
-    # Baffle duct box — between interior face of right wall and fan body
+    # Baffle duct box — between interior face of right wall and panel fan
     bd_a_x0 = CX + CW - WT - BD_W         # left edge of baffle duct box
     ax.add_patch(mpatches.Rectangle((bd_a_x0, FA_Y - 0.40), BD_W, 0.80,
                  fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
@@ -436,15 +439,19 @@ def draw_sheet2():
     ax.text(CX + CW - WT / 2, FA_Y, "G", ha="center", va="center",
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
-    # Fan body — inside container, left of baffle duct
-    FA_X = bd_a_x0 - R_FAN - 0.10
-    ax.add_patch(plt.Circle((FA_X, FA_Y), R_FAN, fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
+    # Panel fan body — thin rectangle immediately left of baffle duct
+    FA_X   = bd_a_x0 - PF_T / 2          # fan centre (impeller plane)
+    pf_a_x0 = bd_a_x0 - PF_T             # left face of panel fan
+    ax.add_patch(mpatches.Rectangle((pf_a_x0, FA_Y - R_PF - 0.08), PF_T, (R_PF + 0.08) * 2,
+                 fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
+    ax.add_patch(plt.Circle((FA_X, FA_Y), R_PF,
+                 fc="none", ec=C_OUT, lw=1.2, zorder=6))
     ax.text(FA_X, FA_Y, "A", ha="center", va="center",
-            fontsize=12, fontweight="bold", color=C_OUT, zorder=6)
+            fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
     for angle in [0, 60, 120, 180, 240, 300]:
-        bx = FA_X + 0.30 * math.cos(math.radians(angle))
-        by = FA_Y + 0.30 * math.sin(math.radians(angle))
-        ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.5, alpha=0.5, zorder=5)
+        bx = FA_X + R_PF * 0.80 * math.cos(math.radians(angle))
+        by = FA_Y + R_PF * 0.80 * math.sin(math.radians(angle))
+        ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
 
     # Airflow: exterior right → grille → baffle → fan (leftward into container)
     ax.annotate("", xy=(CX + CW, FA_Y),
@@ -453,21 +460,18 @@ def draw_sheet2():
     ax.text(CX + CW + 1.8, FA_Y, "OUTSIDE\nAIR IN",
             ha="left", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
     # Short interior distribution arrow from fan into container
-    ax.annotate("", xy=(FA_X - R_FAN - 0.7, FA_Y),
-                xytext=(FA_X - R_FAN - 0.1, FA_Y),
+    ax.annotate("", xy=(pf_a_x0 - 0.65, FA_Y),
+                xytext=(pf_a_x0 - 0.05, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, "Cct A  |  6\" (150mm) inline fan\n5A / 16AWG / 60W / 200 CFM\n(interior-mounted)",
-        (FA_X, FA_Y + R_FAN), (FA_X - 1.8, FA_Y + 2.2), size=7.5)
+    ann(ax, "Cct A  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
+        (FA_X, FA_Y + R_PF), (FA_X - 1.8, FA_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
-        (FA_X, FA_Y - R_FAN), (FA_X - 1.2, FA_Y - 1.5), size=7.5)
+        (FA_X, FA_Y - R_PF), (FA_X - 1.2, FA_Y - 1.5), size=7.5)
 
-    # ── EXHAUST FAN B (left end wall — compact axial panel fan, high position) ──
-    # Panel fan: ~50mm body depth. Total: 300mm duct + 50mm fan = 350mm from wall.
-    # Shadow margin: 625mm (cone left boundary) − 350mm = +275mm clear.
-    FB_Y  = CY + CH - WT - CH * 0.18   # high position (unchanged)
-    PF_T  = 0.16   # panel fan body thickness in drawing units (~50mm, schematic)
-    R_PF  = 0.38   # panel fan impeller radius (same 150mm dia, schematic)
+    # ── EXHAUST FAN B (left end wall — identical compact axial panel fan, high position)
+    # Same fan, duct, and mounting as Fan A.
+    FB_Y  = CY + CH - WT - CH * 0.18   # high position
 
     # Baffle duct box — between interior face of left wall and panel fan
     bd_b_x0 = CX + WT                 # right edge of left wall = duct left face
@@ -537,10 +541,10 @@ def draw_sheet2():
 
     # ── Cross-ventilation airflow path ────────────────────────────────────────
     # Curved arrow from intake (low right) diagonally to exhaust (high left)
-    flow_pts_x = [FA_X - R_FAN - 0.5, CX + CW * 0.7, CX + CW * 0.3, FB_X + R_PF + 0.5]
+    flow_pts_x = [FA_X - R_PF - 0.5, CX + CW * 0.7, CX + CW * 0.3, FB_X + R_PF + 0.5]
     flow_pts_y = [FA_Y, FA_Y + 1.5, FB_Y - 1.5, FB_Y]
     ax.annotate("", xy=(FB_X + R_PF + 0.3, FB_Y),
-                xytext=(FA_X - R_FAN - 0.3, FA_Y),
+                xytext=(FA_X - R_PF - 0.3, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2,
                                 connectionstyle="arc3,rad=-0.35",
                                 alpha=0.6), zorder=4)
@@ -557,7 +561,7 @@ def draw_sheet2():
             "40 × 25mm PVC cable trunking  (Circuits A, B, D, E)",
             ha="center", va="bottom", fontsize=7.5, color=C_PIPE, fontweight="bold")
     # Drop conduits
-    for dx, dy in [(FA_X, FA_Y + R_FAN), (FB_X, FB_Y + R_PF),
+    for dx, dy in [(FA_X, FA_Y + R_PF), (FB_X, FB_Y + R_PF),
                    (EC_X + EC_W/2, EC_Y + EC_H)]:
         ax.plot([dx, dx], [TK_Y, dy], color=C_PIPE, lw=0.9, linestyle=":", zorder=3)
 
@@ -580,7 +584,7 @@ def draw_sheet2():
         ("POST-SESSION PURGE",     "Full speed", "Full speed", "OFF"),
         ("PRE-COOL (before entry)", "Full speed", "Full speed", "ON"),
     ]
-    hdrs = ["MODE", "FAN A — inline (intake)", "FAN B — panel (exhaust)", "EVAP COOLER"]
+    hdrs = ["MODE", "FAN A — panel (intake)", "FAN B — panel (exhaust)", "EVAP COOLER"]
     for ci, hdr in enumerate(hdrs):
         hx = MX + ci * (CW / 4)
         ax.text(hx + CW/8, MY - 0.30, hdr,
@@ -868,48 +872,48 @@ def draw_sheet3():
             ha="center", va="center", fontsize=7.0, color="#808080",
             style="italic", alpha=0.85, zorder=6)
 
-    # ── Fan body (interior-mounted — on right face of duct housing) ───────────
-    # Fan mounting flange at right face of duct
-    FM_T = 0.22
+    # ── Fan body — compact axial panel fan (both Fan A and Fan B identical) ─────
+    # Panel fan: ~50mm body depth, 150mm dia. One part number for both fans.
+    FM_T  = 0.22     # mounting flange plate thickness
+    PF_BD = 0.80     # panel fan body depth in drawing units (~50mm schematic)
+    PF_R  = FAN_R    # impeller radius = FAN_R (150mm dia)
+
+    # Mounting flange at right face of duct
     ax.add_patch(mpatches.Rectangle((FAN_X - FM_T, DUCT_Y - FL_W), FM_T, DH + 2 * FL_W,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
     for by in [DUCT_Y - FL_W * 0.55, DUCT_Y + DH + FL_W * 0.55]:
         ax.plot(FAN_X - FM_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
-    ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts",
+    ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts\n(same both fans)",
         (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 0.15),
         (FAN_X - FM_T / 2, DUCT_Y + DH + FL_W + 1.2))
 
-    # Fan body (rectangular elevation view)
-    ax.add_patch(mpatches.FancyBboxPatch(
-        (FAN_X, FAN_CY - FAN_R), FAN_LEN, FAN_D,
-        boxstyle="round,pad=0.08",
-        fc=C_ALUM, ec=C_OUT, lw=1.8, zorder=5))
-    # Impeller disc
-    ax.add_patch(plt.Circle((FAN_CX, FAN_CY), FAN_R * 0.70,
-                 fc="none", ec=C_DIM, lw=1.2, ls="--", zorder=6))
+    # Panel fan body — thin rectangle (shallow depth) + large impeller circle on face
+    ax.add_patch(mpatches.Rectangle((FAN_X, FAN_CY - PF_R - 0.15), PF_BD, (PF_R + 0.15) * 2,
+                 fc=C_ALUM, ec=C_OUT, lw=1.8, zorder=5))
+    # Impeller circle (full face of panel fan — fills most of body width)
+    ax.add_patch(plt.Circle((FAN_X + PF_BD / 2, FAN_CY), PF_R * 0.88,
+                 fc="#E8EEF4", ec=C_OUT, lw=1.2, zorder=6))
     # Blade lines
     for angle in range(0, 360, 45):
-        bx = FAN_CX + FAN_R * 0.70 * math.cos(math.radians(angle))
-        by = FAN_CY + FAN_R * 0.70 * math.sin(math.radians(angle))
-        ax.plot([FAN_CX, bx], [FAN_CY, by],
+        bx = FAN_X + PF_BD / 2 + PF_R * 0.80 * math.cos(math.radians(angle))
+        by = FAN_CY + PF_R * 0.80 * math.sin(math.radians(angle))
+        ax.plot([FAN_X + PF_BD / 2, bx], [FAN_CY, by],
                 color=C_DIM, lw=1.4, alpha=0.55, zorder=7)
-    # Motor casing (right end of fan body)
-    ax.add_patch(mpatches.Rectangle(
-        (FAN_X + FAN_LEN - 0.9, FAN_CY - FAN_R * 0.5),
-        0.9, FAN_D * 0.5,
-        fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=6))
+    # Motor hub (small circle at centre)
+    ax.add_patch(plt.Circle((FAN_X + PF_BD / 2, FAN_CY), PF_R * 0.18,
+                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
 
-    # Wiring run from motor into container interior (right of fan)
-    WR_X = FAN_X + FAN_LEN + 0.15
-    ax.plot([WR_X, WR_X + 2.0], [FAN_CY - FAN_R * 0.35, FAN_CY - FAN_R * 0.35],
+    # Wiring run from fan into container interior
+    WR_X = FAN_X + PF_BD + 0.15
+    ax.plot([WR_X, WR_X + 2.5], [FAN_CY - PF_R * 0.35, FAN_CY - PF_R * 0.35],
             color=C_PIPE, lw=2.5, solid_capstyle="round", zorder=5)
-    ax.text(WR_X + 2.15, FAN_CY - FAN_R * 0.35,
+    ax.text(WR_X + 2.65, FAN_CY - PF_R * 0.35,
             "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
             ha="left", va="center", fontsize=7.5, color=C_PIPE)
 
-    ax.text(FAN_CX, FAN_CY - FAN_R - 0.55,
-            "6\" (150mm) INLINE FAN  ·  Fan A (intake) or Fan B (exhaust)\n"
-            "Cct A/B  ·  60W  ·  200 CFM  ·  Interior-mounted",
+    ax.text(FAN_X + PF_BD / 2, FAN_CY - PF_R - 0.55,
+            "150mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
+            "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT)
 
     # ── Airflow arrows (intake mode shown — exhaust is identical, reversed) ───
@@ -943,19 +947,19 @@ def draw_sheet3():
     ax.annotate("", xy=(FAN_X - 0.1, mid_y), xytext=(B2_X + BF_T + 0.6, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
     # Fan → interior container
-    ax.annotate("", xy=(FAN_X + FAN_LEN + 1.8, mid_y),
-                xytext=(FAN_X + FAN_LEN + 0.2, mid_y),
+    ax.annotate("", xy=(FAN_X + PF_BD + 1.8, mid_y),
+                xytext=(FAN_X + PF_BD + 0.2, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
-    ax.text(FAN_X + FAN_LEN + 2.0, mid_y, "INTO\nCONTAINER",
+    ax.text(FAN_X + PF_BD + 2.0, mid_y, "INTO\nCONTAINER",
             ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold")
-    ax.text(FAN_X + FAN_LEN + 2.0, mid_y - FAN_R - 0.3,
-            "(exhaust Fan B: flow reversed)",
+    ax.text(FAN_X + PF_BD + 2.0, mid_y - FAN_R - 0.3,
+            "(exhaust: flow reversed — same assembly)",
             ha="left", va="top", fontsize=7.0, color=C_DIM, style="italic")
 
     # ── Zone labels ───────────────────────────────────────────────────────────
     ax.text(WX / 2, wall_y0 - 0.3, "EXTERIOR",
             ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
-    ax.text(DUCT_X + (FAN_X + FAN_LEN - DUCT_X) / 2, wall_y0 - 0.3,
+    ax.text(DUCT_X + (FAN_X + PF_BD - DUCT_X) / 2, wall_y0 - 0.3,
             "INTERIOR (container)",
             ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
     ax.plot([WX + WT / 2, WX + WT / 2], [wall_y0 - 0.6, wall_y0 - 0.15],
@@ -967,25 +971,24 @@ def draw_sheet3():
     dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall")
     ax.plot([WX, WX], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
     ax.plot([WX + WT, WX + WT], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
-    dim_h(ax, FAN_X, FAN_X + FAN_LEN, DUCT_Y - 1.0, "~150 mm  (Fan A inline body)")
+    dim_h(ax, FAN_X, FAN_X + PF_BD, DUCT_Y - 1.0, "~50 mm  (panel fan body)")
 
-    # ── Fan B variant note ────────────────────────────────────────────────────
-    # Fan B (exhaust, left end wall) uses a compact axial panel fan, not inline.
-    # Baffle duct geometry is identical. Only the fan body changes.
+    # ── Shadow margin / procurement note ─────────────────────────────────────
     NX, NY = 0.3, 1.6
-    ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 8.5, 1.6,
+    ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 9.5, 1.6,
                  boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=5))
-    ax.text(NX + 0.20, NY + 1.35, "FAN B  —  COMPACT AXIAL PANEL FAN VARIANT",
+    ax.text(NX + 0.20, NY + 1.35,
+            "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
             ha="left", va="center", fontsize=8.5, fontweight="bold", color=C_CL)
     ax.text(NX + 0.20, NY + 1.00,
-            "Fan B (exhaust, left end wall) uses a 150mm compact axial panel fan (~50mm body depth)\n"
-            "in place of the 6\" inline unit shown above. Baffle duct geometry is identical.",
+            "Fan A (intake, right end) and Fan B (exhaust, left end) are identical.\n"
+            "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
             ha="left", va="center", fontsize=7.5, color=C_OUT)
-    ax.text(NX + 0.20, NY + 0.55,
-            "Total depth from wall:  300mm (duct) + 50mm (fan) = 350mm",
+    ax.text(NX + 0.20, NY + 0.58,
+            "Total depth from wall (each):  300mm baffle duct + 50mm fan = 350mm",
             ha="left", va="center", fontsize=7.5, color=C_OUT)
     ax.text(NX + 0.20, NY + 0.25,
-            "Shadow margin: X = 350mm vs cone left boundary X = 625mm  →  +275mm clear  ✓",
+            "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
             ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold")
 
     title_block(ax, FW, 3, 3,

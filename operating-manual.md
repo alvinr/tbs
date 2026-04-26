@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Operating Manual — TBS-001
 
 **The Big Shoebox Project — Camera No. 1**
@@ -373,6 +375,3 @@ If shore charger is connected, leave it running overnight to top up the battery 
 - [Tilt-Swing Front Board](tilt-swing-board-report.md) — pinhole steering and angular calibration
 - [Chem Shopping List](chemistry-shopping-list.md) — chemistry suppliers and quantities
 - [Processing System](water-system-report.md) — water system circuit operation
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

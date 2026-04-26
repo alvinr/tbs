@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Equipment Layout — Shadow-Free End-Zone Design
 ## TBS-001 — Film Plane Reduction Redesign
 

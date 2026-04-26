@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Transportation Options
 ## 20 ft and 40 ft — Hauling Methods, Trailer Requirements, Licence Requirements, and Pricing
 
@@ -507,6 +509,3 @@ Scored on observation, lane control, intersections, turns, and speed management:
 - [United Truck Driving School — San Diego](https://drivetrucks.com/locations/san-diego-campus/)
 - [TGA Truck Driving School — Southern California](https://www.truckdriversed.com/)
 - [Toro School of Truck Driving](https://www.toroschool.net/)
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Depth of Field, Magnification & Minimum Focal Distance
 ### 20-foot Standard Container, Side-to-Side Orientation
 
@@ -373,6 +375,3 @@ Distance from pinhole:
 | Stinson Photography, "Pinhole Pro and the Optics of Pinhole Cameras," 2018. [stinsonphotography.wordpress.com](https://stinsonphotography.wordpress.com/2018/07/16/pinhole-pro-and-the-optics-of-pinhole-cameras/) | 3–10× focal length rule of thumb for DoF |
 | [Photrio.com — CoC and hyperfocal distance for pinhole cameras](https://www.photrio.com/forum/threads/circle-of-confusion-and-hyperfocal-distance-of-a-pinhole-camera.15715/) | Practical CoC discussion; minimum focus distance concepts |
 | ISO 668:2020 | Container interior dimensions (source of f = 2,362 mm) |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

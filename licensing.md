@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # License
 
 ## The Big Shoebox Project — TBS-001
@@ -34,6 +36,3 @@ Full source — Markdown documents, Python diagram generators, and build scripts
 ## Contact
 
 Alvin Richards — project correspondence via the GitHub repository linked above.
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

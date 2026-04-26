@@ -1,3 +1,5 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
@@ -311,6 +313,3 @@ Building the camera with the **interchangeable plate system** (see fabrication d
 | Stroebel, L., *View Camera Technique*, 7th ed., Focal Press, 1999, Ch. 6 | f-number exposure calculations, bellows factor |
 | Adams, A., *The Negative*, New York Graphic Society, 1981, Ch. 4 | f-stop system; stops as doublings of exposure |
 | Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009 | Pinhole exposure tables; practical f-number application |
----
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

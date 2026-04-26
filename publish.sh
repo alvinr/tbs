@@ -104,7 +104,6 @@ mkdir -p "$ASSETS_DIR"
 IMG_FILES=(
     "plate-drawing-sheet1.png"
     "plate-drawing-sheet2.png"
-    "logo-final.png"
     "favicon.png"
 )
 
@@ -118,6 +117,25 @@ for f in "${IMG_FILES[@]}"; do
     if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
         cp "$src" "$dst"
         echo "    updated: $f"
+        CHANGED=$((CHANGED + 1))
+    fi
+done
+
+# Images stored in assets/ (not root, not diagrams/)
+ASSET_FILES=(
+    "logo-final.png"
+)
+
+for f in "${ASSET_FILES[@]}"; do
+    src="$SCRIPT_DIR/assets/$f"
+    dst="$ASSETS_DIR/$f"
+    if [[ ! -f "$src" ]]; then
+        warn "assets/$f not found — skipping"
+        continue
+    fi
+    if [[ ! -f "$dst" ]] || [[ "$src" -nt "$dst" ]]; then
+        cp "$src" "$dst"
+        echo "    updated: assets/$f"
         CHANGED=$((CHANGED + 1))
     fi
 done

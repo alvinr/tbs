@@ -144,7 +144,7 @@ def title_block(ax, x, y, w, h, title1, title2, scale, sheet_no):
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def sheet1():
-    X_LO, X_HI = -600, 7400
+    X_LO, X_HI = -600, 8400   # right edge must clear ref table: C_LEN+800+1380+200 = 8273
     Y_LO, Y_HI = -700, 3200
 
     FIG_W = 26.0

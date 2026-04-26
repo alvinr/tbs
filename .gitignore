@@ -1,0 +1,5 @@
+# MkDocs build output — never commit
+site/
+
+# Auto-generated publish directory — rebuilt by publish.sh on every deploy
+published/

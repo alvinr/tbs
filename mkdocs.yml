@@ -1,4 +1,5 @@
 site_name: "The Big Shoebox — Research & Build"
+docs_dir: published
 site_description: "A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera."
 site_url: "https://alvinr.github.io/tbs"
 

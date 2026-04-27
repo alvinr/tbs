@@ -147,7 +147,7 @@ water reservoir, Circuit E. Located on pinhole wall face (Yd=0) — shadow-free 
 | Panel height range | 900–1,500 mm | `EP_H_LO`, `EP_H_HI` |
 | Battery bank left edge X | 2,050 mm | `BA_X` |
 | Battery bank width | 500 mm | `BA_W` |
-| Battery bank height range | 0–500 mm | `BA_H_LO`, `BA_H_HI` |
+| Battery bank height range | 100–600 mm | `BA_H_LO`, `BA_H_HI` |
 
 *Components: 3× 200W monocrystalline solar panels (roof-mounted), Victron SmartSolar MPPT 100/50,
 2× 100Ah LiFePO4 batteries (200Ah / 2,400Wh), Victron Blue Smart IP65 shore charger,

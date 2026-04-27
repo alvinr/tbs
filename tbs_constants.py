@@ -114,8 +114,8 @@ EP_H_HI    = 1500    # electrical panel top H (mm)
 
 BA_X       = 2050    # battery bank left edge X (mm)
 BA_W       = 500     # battery bank width (mm)
-BA_H_LO    = 0       # battery bank bottom H (mm)
-BA_H_HI    = 500     # battery bank top H (mm)
+BA_H_LO    = 100     # battery bank bottom H (mm) — matches RAIL_OFF floor offset
+BA_H_HI    = 600     # battery bank top H (mm)
 
 PUMP_X     = 2400    # pump manifold left edge X (mm)
 PUMP_W     = 300     # pump manifold width (mm)

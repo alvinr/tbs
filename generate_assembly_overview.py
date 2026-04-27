@@ -215,7 +215,7 @@ ax.text(EP_X + EP_W/2, (EP_H_LO + EP_H_HI)/2,
         "Elec\npanel", ha="center", va="center",
         fontsize=FS_SM - 1, color=C_OUT, zorder=6)
 
-# Battery bank: X=2050-2550, H=0-500
+# Battery bank: X=2050-2550, H=100-600
 equip_rect(ax, BA_X, BA_H_LO, BA_W, BA_H_HI - BA_H_LO, C_BATT, zorder=4)
 ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",

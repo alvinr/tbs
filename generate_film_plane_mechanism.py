@@ -772,8 +772,9 @@ def sheet4():
                 xc += cw
 
     # ── Table 1: Axis movement summary ────────────────────────────────────────
-    # label_y = y0 + row_h*1.2 → y0 = 0.905 - 0.022*1.2 = 0.879
-    ax.text(0.05, 0.905, "TABLE 1 — MOVEMENT AXES  (4-CORNER INDEPENDENT DESIGN)",
+    # label sits 0.012 above header top: label_y = y0 + row_h*1.2 + 0.012
+    # y0=0.895 → header top=0.895+0.026=0.921 → label at 0.933
+    ax.text(0.05, 0.933, "TABLE 1 — MOVEMENT AXES  (4-CORNER INDEPENDENT DESIGN)",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
@@ -787,13 +788,13 @@ def sheet4():
         ["MAX TILT",      "Top=100mm, Bot=2,262mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
         ["MAX SWING",     "Left=100mm, Right=2,262mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
     ]
-    # y0=0.879; header top=0.879+0.026=0.905; bottom=0.879-8×0.022=0.703
-    draw_table(ax, 0.05, 0.879, axes_headers, axes_rows,
+    # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
+    draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,
                [0.12, 0.22, 0.15, 0.10, 0.22, 0.14])
 
     # ── Table 2: Config specs ─────────────────────────────────────────────────
-    # T1 bottom=0.703; gap=0.012; label=0.691; y0=0.665; bottom=0.665-8×0.022=0.489
-    ax.text(0.05, 0.691, "TABLE 2 — EXAMPLE TILT/SWING CONFIGURATION SPECS",
+    # T1 bottom=0.719; gap=0.025; label=0.694; y0=0.656; bottom=0.656-8×0.022=0.480
+    ax.text(0.05, 0.694, "TABLE 2 — EXAMPLE TILT/SWING CONFIGURATION SPECS",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     def tilt_angle(d_a, d_b, span):
@@ -824,13 +825,13 @@ def sheet4():
         cfg_rows.append([name, d_TL, d_TR, d_BL, d_BR,
                          f"{tilt:.1f}°", f"{swing:.1f}°", effect])
 
-    draw_table(ax, 0.05, 0.665, cfg_headers, cfg_rows,
+    draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
                [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37],
                hdr_col=STRUCT)
 
     # ── Table 3: BOM ──────────────────────────────────────────────────────────
-    # T2 bottom=0.489; gap=0.012; label=0.477; y0=0.451; bottom=0.451-15×0.022=0.121
-    ax.text(0.05, 0.477, "TABLE 3 — BILL OF MATERIALS  (4-CORNER DESIGN)",
+    # T2 bottom=0.480; gap=0.025; label=0.455; y0=0.417; bottom=0.417-15×0.022=0.087
+    ax.text(0.05, 0.455, "TABLE 3 — BILL OF MATERIALS  (4-CORNER DESIGN)",
             transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
 
     bom_headers = ["ITEM", "DESCRIPTION", "SPEC", "QTY", "SOURCE A (SoCal/US)", "EST. UNIT $"]
@@ -851,12 +852,12 @@ def sheet4():
         ["14", "6-mil black poly",        "10ft×100ft roll",         "1",  "Home Depot (local SoCal)",           "$65"],
         ["15", "Locking collar SS",       "3/4\" bore",              "4",  "McMaster-Carr #6436K12",             "$12"],
     ]
-    draw_table(ax, 0.05, 0.451, bom_headers, bom_rows,
+    draw_table(ax, 0.05, 0.417, bom_headers, bom_rows,
                [0.04, 0.17, 0.15, 0.04, 0.34, 0.09],
                hdr_col="#1A5C3A")
 
-    # ── Bottom notes — below table 3 (bottom=0.121), above title_block (0.012) ──
-    ax.text(0.05, 0.082,
+    # ── Bottom notes — below table 3 (bottom=0.087), above title_block (0.012) ──
+    ax.text(0.05, 0.070,
             "4-CORNER DESIGN vs ORIGINAL 2-BEAM DESIGN:  "
             "REMOVED: 2× 80/20 T-slot beams (5,893mm)  –$416  |  "
             "ADDED: +2 leadscrews  +$190,  +2 handwheels  +$70,  "
@@ -868,10 +869,10 @@ def sheet4():
     costs = [45, 18, 95, 12, 35, 20, 22, 8, 22, 85, 28, 95, 28, 65, 12]
     qtys  = [4,  8,  4,  4,  4,  4,  8,  8, 10,  6,  3,  1,  2,  1,  4]
     total = sum(c*q for c, q in zip(costs, qtys))
-    ax.text(0.95, 0.060, f"MATERIALS TOTAL (EST.):  ${total:,}",
+    ax.text(0.95, 0.051, f"MATERIALS TOTAL (EST.):  ${total:,}",
             transform=ax.transAxes, color=C_T1, fontsize=9,
             ha="right", fontweight="bold", **FONT)
-    ax.text(0.95, 0.044, "Excl. fabrication, fasteners, electrical actuation option",
+    ax.text(0.95, 0.035, "Excl. fabrication, fasteners, electrical actuation option",
             transform=ax.transAxes, color=DIM, fontsize=7, ha="right", **FONT)
 
     title_block(ax, "4 / 4", "MOVEMENT SPECS & BILL OF MATERIALS")

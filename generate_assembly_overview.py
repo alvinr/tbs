@@ -146,15 +146,15 @@ for xb in [ZONE_L_END, ZONE_R_START]:
             dashes=(8, 4), zorder=4)
 
 # Zone labels (inside, at top)
-ax.text(ZONE_L_END / 2, C_HGT - 100,
+ax.text(ZONE_L_END / 2, C_HGT + 100,
         f"LEFT END ZONE\nX=0–{ZONE_L_END}mm",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#805000",
         fontweight="bold", zorder=5)
-ax.text((ZONE_L_END + ZONE_R_START) / 2, C_HGT - 100,
+ax.text((ZONE_L_END + ZONE_R_START) / 2, C_HGT + 100,
         f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#006000",
         fontweight="bold", zorder=5)
-ax.text((ZONE_R_START + C_LEN) / 2, C_HGT - 100,
+ax.text((ZONE_R_START + C_LEN) / 2, C_HGT + 100,
         f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#004080",
         fontweight="bold", zorder=5)
@@ -180,7 +180,7 @@ ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
 # Centre line through drum
 ax.plot([DRUM_CX, DRUM_CX], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
-leader(ax, DRUM_CX, RAIL_OFF + DRUM_H_ELV + 60, -200, PH_H + 650,
+leader(ax, DRUM_CX, RAIL_OFF + DRUM_H_ELV + 60, -200, PH_H + 1250,
        f"Hinged panel +\nRevolving drum  VERTICAL AXIS\nO{DRUM_D}mm x {DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 
@@ -190,17 +190,17 @@ ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
         "Evap\ncooler", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
 
-leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 600, 1900,
+leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
 # In this side elevation both drums share X=DRUM_LZ_CX → overlap. Draw as single block.
 _drum_x0 = DRUM_LZ_CX - DRUM_EQ_D // 2
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=4)
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
 ax.text(_drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
         "Waste\ndrums\n×2\n(near+far)", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
-leader(ax, _drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H, 800, 2200,
+leader(ax, _drum_x0 + DRUM_EQ_D/2 + 200, RAIL_OFF + DRUM_EQ_H, 800, 1500,
        f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
        f"D-1 near: Yd=25–605mm  |  D-2 far: Yd=1,757–2,337mm\n"
        f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",
@@ -227,12 +227,12 @@ ax.text(PUMP_X + PUMP_W/2, (PUMP_H_LO + PUMP_H_HI)/2,
         "Pump", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 700, 2000,
+leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
        f"Electrical panel\n(wall-mount, Yd=0 face)\nX={EP_X}–{EP_X+EP_W}mm",
        ha="left", fs=FS_SM)
-leader(ax, BA_X + BA_W, (BA_H_LO + BA_H_HI)/2, BA_X + 800, 650,
+leader(ax, BA_X, (BA_H_LO + BA_H_HI)/4, BA_X - 500, 400,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
-leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 1100,
+leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
        f"Pump manifold\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
 
 
@@ -259,7 +259,7 @@ ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK/2,
 ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-leader(ax, IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, 4300, 2550,
+leader(ax, IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, 6300, 2750,
        f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
        f"Blue: 2x600L stacked H={IBC_H_STK}mm (front)\n"
        f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
@@ -380,7 +380,7 @@ for i, (col, lbl) in enumerate(legend_items):
 
 # ── Title block ───────────────────────────────────────────────────────────────
 TB_X = C_LEN + 420
-TB_Y = 450
+TB_Y = -450
 TB_W = 1380
 TB_H = 420
 

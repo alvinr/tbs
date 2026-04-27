@@ -38,7 +38,7 @@ PT = 120    # panel overall thickness (50×50 RHS frame + 18mm ply each face)
 # Drum
 DRUM_D  = 750          # drum outer diameter (mm)
 DRUM_R  = DRUM_D / 2  # = 375 mm
-DRUM_H  = 2000         # drum height (floor → top bearing, mm)
+DRUM_H  = 2200         # drum height (floor → top bearing, mm)
 DRUM_CX = PW / 2       # drum centre X in panel (centred horizontally)
 DRUM_CY = DRUM_H / 2  # drum centre Y = 1000 mm from floor
 
@@ -584,7 +584,7 @@ def sheet2():
 # SHEET 3  —  Drum Vertical Section (Section A-A, looking along panel width)
 #
 # This view shows the drum in ELEVATION — makes clear it is a VERTICAL cylinder
-# 2000mm tall that personnel walk through upright.
+# 2200mm tall that personnel walk through upright.
 #
 # Horizontal axis = DEPTH direction (exterior → interior, same as Sheet 2 Y axis)
 # Vertical axis   = HEIGHT (0 → 2200mm, floor → top bearing)
@@ -754,8 +754,11 @@ def sheet3():
     # ── Clearance headroom line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
             color="#20A020", lw=1.2, ls="--", zorder=6)
+    drum_body_h = H_DRUM_TOP - H_DRUM_BOT   # = DRUM_H - 2×BRG_HT = clear walking height
+    headroom_1780 = drum_body_h - 1780       # clearance for 1780mm operator (shoes)
     ax.text(X_LO + 1100, H_DRUM_TOP + 115,
-            f"DRUM TOP  H={H_BRG_BOT + DRUM_H}mm — 250mm HEADROOM CLEARANCE",
+            f"DRUM BODY TOP  H={H_DRUM_TOP}mm  |  CLEAR WALKING HT={drum_body_h}mm"
+            f"  |  {headroom_1780}mm HEADROOM (1780mm operator, shoes)",
             ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT)
 
     # ── Section A-A indicator ─────────────────────────────────────────────────

@@ -89,7 +89,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Parameter | Value |
 |-----------|-------|
 | Drum outer diameter | 750mm |
-| Drum height | 2,000mm (floor to upper bearing) |
+| Drum height | 2,200mm (floor to upper bearing) |
 | Wall thickness | 3mm mild steel sheet, formed and welded |
 | Surface finish | Shot-blast + flat black powder coat (interior); grey oxide primer (exterior) |
 | Baffles | 4 × internal steel fins, 3mm × full height, at 45° angular offset |
@@ -116,7 +116,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | Item | Specification |
 |------|--------------|
 | Drum shell | 3mm mild steel, rolled to Ø750mm OD, seam-welded full height |
-| Drum height | 2,000mm |
+| Drum height | 2,200mm |
 | Internal baffles | 4 × 3mm mild steel fins, welded radially from drum centerline to inner wall, at 22.5°/112.5°/202.5°/292.5° from horizontal — see Sheet 2 for baffle layout and light path |
 | Top cap | 5mm steel plate, flanged, welded |
 | Bottom cap | 5mm steel plate, flanged, with 75mm stub shaft for lower bearing |
@@ -179,7 +179,7 @@ See Sheet 2 of the hinged panel engineering drawings for the baffle cross-sectio
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
 | Clear diameter | 800mm | 750–900mm | **750mm** |
-| Height | 2,000–2,200mm | 2,000mm | **2,000mm** |
+| Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
 | Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$950–$1,450** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |

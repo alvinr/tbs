@@ -91,6 +91,9 @@ def title_block(ax):
             transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
     ax.text(0.99, 0.010, "ALL DIMS IN mm",
             transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
+    ax.text(0.50, 0.002, "© 2026 Alvin Richards — GNU AGPLv3",
+            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center",
+            style="italic", **FONT)
 
 
 def floor_plan():

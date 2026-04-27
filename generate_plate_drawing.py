@@ -461,6 +461,8 @@ for i, note in enumerate(notes):
     ax1.text(notes_x, notes_y - 7 - i*6, note, fontsize=5.2, color='#222222')
 
 plt.tight_layout(pad=0)
+plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+            ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet1.png'
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close()
@@ -979,6 +981,8 @@ for i, n in enumerate(notes2):
     ax2.text(10, 48 - i*6, n, fontsize=5.0, color='#222')
 
 plt.tight_layout(pad=0)
+plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+            ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet2.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
 plt.close()

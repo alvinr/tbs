@@ -72,6 +72,8 @@ def title_block(ax, FW, sheet_n, sheet_total, title1, title2, scale_str):
             ha="center", va="center", fontsize=7.0, color=C_DIM, zorder=7)
     ax.text(FW * 0.15, tb_y + 0.14, "TBS-001  ·  20FT ISO CAMERA  ·  12V DC",
             ha="center", va="center", fontsize=6.5, color=C_DIM, zorder=7)
+    ax.text(FW * 0.15, tb_y + 0.06, "© 2026 Alvin Richards — GNU AGPLv3",
+            ha="center", va="center", fontsize=5.5, color=C_DIM, style="italic", zorder=7)
 
     ax.text(FW * 0.50, tb_y + 0.45, title1,
             ha="center", va="center", fontsize=11.0, fontweight="bold",

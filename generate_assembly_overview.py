@@ -40,7 +40,7 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_EQ_D, DRUM_EQ_H,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX,
     RAIL_X_L, RAIL_X_R,
     FAN_A_H, FAN_B_H, DUCT_HEIGHT,
@@ -195,13 +195,16 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
-# In this side elevation both drums share X=DRUM_LZ_CX → overlap. Draw as single block.
-_drum_x0 = DRUM_LZ_CX - DRUM_EQ_D // 2
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
-ax.text(_drum_x0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
-        "Waste\ndrums\n×2\n(near+far)", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
-leader(ax, _drum_x0 + DRUM_EQ_D/2 + 200, RAIL_OFF + DRUM_EQ_H, 800, 1500,
+# In this side elevation both drums share X=DRUM_LZ_CX → collapse to single block.
+# Drawn at zorder=3 so the revolving drum (zorder=5) covers the overlapping portion
+# (X=20–375mm). The drum stub from X=375–600mm shows past the door, clearly inside.
+_drum_x0 = DRUM_LZ_CX - DRUM_EQ_R   # = 310 - 290 = 20mm
+_drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=3)
+ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
+        "Waste\ndrums\n×2", ha="center", va="center",
+        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=3)
+leader(ax, _drum_x0 + DRUM_EQ_D, RAIL_OFF + DRUM_EQ_H * 0.6, 800, 1500,
        f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
        f"D-1 near: Yd=25–605mm  |  D-2 far: Yd=1,757–2,337mm\n"
        f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",

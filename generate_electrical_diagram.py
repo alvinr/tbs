@@ -9,6 +9,7 @@ Sheet 1: System one-line diagram (power flow, components, fuse ratings)
 Sheet 2: Container floor plan with wiring layout  (scale 1:500)
 """
 
+import textwrap
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -254,17 +255,17 @@ def draw_sheet1():
     # ── CIRCUITS — right column ───────────────────────────────────────────────
     circuits = [
         # letter, name, fuse, wire, load, note, colour
-        ("A", "VENTILATION FAN — INTAKE  (6\")",   "5A",  "16 AWG", "60W",
+        ("A", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Far end wall (X=5,893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
-        ("B", "VENTILATION FAN — EXHAUST  (6\")",  "5A",  "16 AWG", "60W",
+        ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
          "Cargo door end wall (X=0)  |  high position  |  Yd=2,287mm corner", C_ALUM),
         ("C", "WATER PUMP  (12V DC)",              "15A", "14 AWG", "100W",
          "Adjacent water totes", C_BATT),
-        ("D", "SAFELIGHT — interior + vestibule",  "5A",  "18 AWG", "15W",
+        ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "Red LED strip  |  switched from inside", "#FFEEDD"),
-        ("E", "EVAPORATIVE COOLER  (12V DC)",      "10A", "14 AWG", "80W",
+        ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
          "Far short wall  |  light-safe baffled intake", C_SOLAR),
-        ("F", "FILM PLANE ACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
+        ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
     ]
 
@@ -288,14 +289,15 @@ def draw_sheet1():
     wlabel(ax, (LX + LW + SP_X) / 2, bus_y + 0.22,
            "Distribution bus  |  2 AWG", ha="center")
 
-    # Column header row
+    # Column offsets — spec columns shrunk to give more room to LOCATION / NOTE
+    NOTE_OFF = 4.95   # note column starts at CB_X + NOTE_OFF
     col_defs = [
         # (x_start, width, header_text)
-        (CB_X,        2.2,          "CIRCUIT / DEVICE"),
-        (CB_X + 2.25, 1.55,         "FUSE"),
-        (CB_X + 3.85, 1.55,         "WIRE GAUGE"),
-        (CB_X + 5.45, 1.55,         "MAX LOAD"),
-        (CB_X + 7.05, CB_W - 7.05,  "LOCATION / NOTE"),
+        (CB_X,        2.2,             "CIRCUIT / DEVICE"),
+        (CB_X + 2.25, 0.70,            "FUSE"),
+        (CB_X + 3.05, 0.90,            "WIRE\nGAUGE"),
+        (CB_X + 4.05, 0.80,            "MAX\nLOAD"),
+        (CB_X + NOTE_OFF, CB_W - NOTE_OFF, "LOCATION / NOTE"),
     ]
     hdr_y = CB_Y_TOP + CB_H + 0.48
     for cx0, cw, htxt in col_defs:
@@ -339,23 +341,25 @@ def draw_sheet1():
 
         # Spec cells: fuse, wire, load
         for xi, cw, txt in [
-            (CB_X + 2.25, 1.50, fuse),
-            (CB_X + 3.85, 1.50, wire),
-            (CB_X + 5.45, 1.50, load),
+            (CB_X + 2.25, 0.70, fuse),
+            (CB_X + 3.05, 0.90, wire),
+            (CB_X + 4.05, 0.80, load),
         ]:
             ax.add_patch(mpatches.Rectangle((xi, cy), cw, CB_H,
                          fc="white", ec=C_OUT, lw=0.8, zorder=3))
             ax.text(xi + cw / 2, tap_y, txt,
-                    ha="center", va="center", fontsize=8.5,
+                    ha="center", va="center", fontsize=8.0,
                     color=C_OUT, zorder=4)
 
         # Note cell
-        nx = CB_X + 7.05
-        nw = CB_W - 7.05
+        nx = CB_X + NOTE_OFF
+        nw = CB_W - NOTE_OFF
         ax.add_patch(mpatches.Rectangle((nx, cy), nw, CB_H,
                      fc="white", ec=C_OUT, lw=0.8, zorder=3))
-        ax.text(nx + nw / 2, tap_y, note,
-                ha="center", va="center", fontsize=7.8, color=C_DIM, zorder=4)
+        wrapped = textwrap.fill(note, width=40)
+        ax.text(nx + nw / 2, tap_y, wrapped,
+                ha="center", va="center", fontsize=7.2, color=C_DIM,
+                linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, FW, 1, 2,

@@ -114,6 +114,8 @@ compression latches, Ø750mm revolving drum aperture.*
 | Panel fan body depth | 50 mm | `FAN_BODY_D` |
 | Fan A center height AFF (low) | 600 mm | `FAN_A_H` |
 | Fan B center height AFF (high) | 1,800 mm | `FAN_B_H` |
+| Fan A Yd position (near-wall corner) | 75 mm | `FAN_A_YD` |
+| Fan B Yd position (far-wall corner) | 2,287 mm | `FAN_B_YD` |
 | Baffle duct depth | 300 mm | `DUCT_DEPTH` |
 | Baffle duct height | 200 mm | `DUCT_HEIGHT` |
 | Fan A shadow margin (from cone) | 869 mm | `FAN_A_MARGIN` |

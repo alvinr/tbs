@@ -17,7 +17,13 @@ Each section links to the report where the drawing is discussed in full.
 High-level schematic side-elevation of the container interior showing how all systems
 relate spatially. Color-coded by subsystem. Optical axis is perpendicular to the page.
 
-![TBS-001 — Assembly: Side Elevation (all systems)](assets/assembly-overview.png)
+![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
+
+Second view from the film plane wall (Yd = 2,362mm), looking toward the pinhole. X axis
+is mirrored (far end at left, cargo door at right). The optical cone, film plane rails,
+and carriage are the hero elements in this view.
+
+![TBS-001 — Assembly: Film Plane Side Elevation](assets/assembly-overview-fp.png)
 
 ---
 

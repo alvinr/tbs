@@ -118,6 +118,7 @@ DIAG_IMAGE_FILES = [
     "hingepanel-sheet3.png",
     "container-floorplan.png",
     "assembly-overview.png",
+    "assembly-overview-fp.png",
     "assembly-fab-sheet1.png",
     "assembly-fab-sheet2.png",
     "line-of-sight.png",

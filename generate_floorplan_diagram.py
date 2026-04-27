@@ -277,10 +277,10 @@ def floor_plan():
     # (drums relocated to left end zone — no drum column in right zone)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
-    # Fan intake (left short wall)
-    penetration(ax, 0, 300, r=55, col=C_DIM, label="FAN\nIN", label_offset=(-140, 0))
-    # Fan exhaust (right short wall)
-    penetration(ax, C_LEN, 2000, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(140, 0))
+    # Fan A — INTAKE: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), LOW (H=600mm)
+    penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(140, 0))
+    # Fan B — EXHAUST: cargo door end wall (X=0), far-wall corner (Yd=FAN_B_YD=2287mm), HIGH (H=1800mm)
+    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-140, 0))
 
     # ── Hinged panel swing arc ────────────────────────────────────────────────
     ax.add_patch(Rectangle((-WALL - 200, 0), 120, C_WID,

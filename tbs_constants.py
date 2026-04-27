@@ -145,6 +145,11 @@ FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
 FAN_A_H     = 600    # fan A center height AFF (mm — low position)
 FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
+# Yd (width) positions — cross-ventilation diagonal: intake near-wall corner,
+# exhaust far-wall corner.  Clears both waste drum columns (D-1 near, D-2 far)
+# with ≥830mm vertical separation even where Yd overlaps.
+FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
+FAN_B_YD    = C_WID - FAN_DIAM // 2  # = 2287mm — far-wall corner (X=0 wall)
 
 # Baffle duct (one per fan, interior-mounted, welded galvanized steel)
 DUCT_DEPTH  = 300    # baffle duct depth into container interior (mm)

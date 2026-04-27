@@ -115,7 +115,7 @@ def floor_plan():
     # Left end zone (X=0–ZONE_L_END, all depths)
     ax.add_patch(Rectangle((0, 0), ZONE_L_END, C_WID,
                             fc=C_ZONE_L, ec="none", zorder=1))
-    ax.text(ZONE_L_END/2, C_WID*0.5,
+    ax.text(ZONE_L_END/1.8, C_WID*0.65,
             f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\n(shadow-free,\nall depths)",
             color="#C07030", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
@@ -123,7 +123,7 @@ def floor_plan():
     # Optical / film plane zone (X=ZONE_L_END–ZONE_R_START, all depths)
     ax.add_patch(Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
                             fc=C_ZONE_OPT, ec="none", zorder=1))
-    ax.text((ZONE_L_END + ZONE_R_START)/2, C_WID*0.5,
+    ax.text((ZONE_L_END + ZONE_R_START)/2.5, C_WID*0.5,
             f"OPTICAL ZONE  (X={ZONE_L_END}–{ZONE_R_START}mm)\nFILM PLANE RAILS ONLY — FLOOR CLEAR",
             color="#4A8040", fontsize=8, ha="center", va="center",
             **FONT, alpha=0.45, fontweight="bold", zorder=2)
@@ -149,7 +149,7 @@ def floor_plan():
     # Right ray: PH_X,0 → FP_X_R,FP_Y
     ax.plot([PH_X, FP_X_R], [0, FP_Y],
             color="#C07000", lw=1.0, ls=(0, (4, 3)), zorder=4, alpha=0.7)
-    ax.text(PH_X - 220, FP_Y * 0.55, "OPTICAL CONE\n(dashed)",
+    ax.text(PH_X - 1220, FP_Y * 0.75, "OPTICAL CONE\n(dashed)",
             color="#C07000", fontsize=6, ha="right", va="center", **FONT, alpha=0.8)
 
     # ── Container outline ─────────────────────────────────────────────────────
@@ -201,7 +201,7 @@ def floor_plan():
     # ── Pinhole ───────────────────────────────────────────────────────────────
     penetration(ax, PH_X, 0, r=80, col=C_PINHOLE,
                 label=f"PINHOLE\nX={PH_X}mm\nØ{PH_D}mm",
-                label_offset=(0, -170))
+                label_offset=(0, -250))
 
     # Optical axis arrow
     ax.annotate("", xy=(PH_X, FP_Y - 40), xytext=(PH_X, 80),
@@ -212,7 +212,7 @@ def floor_plan():
 
     # ── LEFT END ZONE — equipment ─────────────────────────────────────────────
     # Hinged panel label
-    ax.text(-WALL - 350, C_WID/2,
+    ax.text(-WALL - 350, C_WID/5,
             "HINGED PANEL\n+ REVOLVING\nDRUM INLET",
             color=C_PINHOLE, fontsize=6.5, ha="right", va="center", **FONT, zorder=5)
 
@@ -322,7 +322,7 @@ def floor_plan():
     # ── Shadow-free proof callout ─────────────────────────────────────────────
     proof_x = C_LEN/2
     proof_y = -DEV_DEPTH + 80
-    ax.text(proof_x, proof_y,
+    ax.text(proof_x, proof_y - 300,
             f"SHADOW-FREE PROOF:  cone left ≥ {FP_X_L}mm at all Y  ✓     "
             f"cone right ≤ {FP_X_R}mm at all Y  ✓     "
             "pinhole wall Y=0: outside cone ✓",
@@ -332,7 +332,7 @@ def floor_plan():
             zorder=10)
 
     # ── Legend ────────────────────────────────────────────────────────────────
-    LEG_X = C_LEN + 60; LEG_Y_TOP = C_WID - 20
+    LEG_X = C_LEN + 90; LEG_Y_TOP = C_WID - 2500
     legend_items = [
         (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
         (C_BROWN_IBC, "Brown IBC ×1 (600L)"),
@@ -346,8 +346,8 @@ def floor_plan():
         (C_PINHOLE,   "Revolving light-trap drum"),
         (C_DEV_ZONE,  "Development area (outside container)"),
     ]
-    box_w = 680; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
-    ax.add_patch(Rectangle((LEG_X, LEG_Y_TOP - box_h), box_w, box_h,
+    box_w = 780; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
+    ax.add_patch(Rectangle((LEG_X - 70, LEG_Y_TOP - box_h), box_w, box_h,
                             fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=8))
     ax.text(LEG_X + box_w/2, LEG_Y_TOP - 12, "LEGEND",
             color=C_OUT, fontsize=7.5, ha="center", va="center",

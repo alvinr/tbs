@@ -740,25 +740,48 @@ def sheet3():
     ax.text(hx + 55, H_HANDLE - HH / 2 - 40, "INT. HANDLE\n(welded bracket\nno through-hole)",
             ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT)
 
-    # ── Person silhouette (simplified — 1750mm height line) ──────────────────
-    PERSON_H = 1750   # mm
-    PERSON_X = D_DEPTH_R + 120  # just to the right, inside container
-    ax.plot([PERSON_X, PERSON_X], [H_FLOOR, H_FLOOR + PERSON_H],
-            color="#A0A0A0", lw=2.5, zorder=4, solid_capstyle="round")
-    ax.add_patch(plt.Circle((PERSON_X, H_FLOOR + PERSON_H + 80), 80,
-                             fc="#C0C0C0", ec="#808080", lw=1.0, zorder=4))
-    ax.text(PERSON_X + 120, H_FLOOR + PERSON_H / 2,
-            "1750mm\nperson\n(reference)",
-            ha="left", va="center", fontsize=6, color="#808080", **FONT)
+    # ── Person silhouette — standing inside drum, feet at drum floor (H_DRUM_BOT) ──
+    PERSON_H = 1780   # mm — operator height with shoes
+    HEAD_R   = 80     # head circle radius
+    # Place person inside drum toward the interior wall, clear of centreline text
+    PERSON_X = D_DEPTH_R - 130
+    P_FOOT   = H_DRUM_BOT          # feet on drum floor (145mm above container floor)
+    P_HEAD   = P_FOOT + PERSON_H   # head top = 145 + 1780 = 1925mm
 
-    # ── Clearance headroom line ────────────────────────────────────────────────
+    # Drum floor level indicator (thin horizontal line across drum base)
+    ax.plot([D_DEPTH_L, D_DEPTH_R], [H_DRUM_BOT, H_DRUM_BOT],
+            color="#A06020", lw=0.8, ls="--", zorder=6, alpha=0.7)
+    ax.text(D_DEPTH_L - 15, H_DRUM_BOT,
+            f"DRUM FLOOR  H={H_DRUM_BOT}mm",
+            ha="right", va="center", fontsize=6, color="#A06020", **FONT)
+
+    # Person body (line) and head (circle)
+    ax.plot([PERSON_X, PERSON_X], [P_FOOT, P_HEAD],
+            color="#606060", lw=3.0, zorder=8, solid_capstyle="round")
+    ax.add_patch(plt.Circle((PERSON_X, P_HEAD + HEAD_R), HEAD_R,
+                             fc="#909090", ec="#505050", lw=1.0, zorder=8))
+
+    # Headroom gap: person head top → drum body ceiling
+    drum_body_h    = H_DRUM_TOP - H_DRUM_BOT
+    headroom_1780  = drum_body_h - PERSON_H
+    GAP_X = PERSON_X + HEAD_R + 20
+    ax.annotate("", xy=(GAP_X, H_DRUM_TOP), xytext=(GAP_X, P_HEAD + 2 * HEAD_R),
+                arrowprops=dict(arrowstyle="<->", color="#20A020", lw=1.0,
+                                mutation_scale=7), zorder=9)
+    ax.text(GAP_X + 25, (H_DRUM_TOP + P_HEAD + 2 * HEAD_R) / 2,
+            f"{headroom_1780}mm\nHEADROOM",
+            ha="left", va="center", fontsize=6, color="#20A020", fontweight="bold", **FONT)
+
+    # Label alongside person
+    ax.text(PERSON_X - HEAD_R - 15, P_FOOT + PERSON_H / 2,
+            f"{PERSON_H}mm\noperator\n(shoes)",
+            ha="right", va="center", fontsize=6, color="#505050", **FONT)
+
+    # ── Drum body ceiling line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
             color="#20A020", lw=1.2, ls="--", zorder=6)
-    drum_body_h = H_DRUM_TOP - H_DRUM_BOT   # = DRUM_H - 2×BRG_HT = clear walking height
-    headroom_1780 = drum_body_h - 1780       # clearance for 1780mm operator (shoes)
-    ax.text(X_LO + 1100, H_DRUM_TOP + 115,
-            f"DRUM BODY TOP  H={H_DRUM_TOP}mm  |  CLEAR WALKING HT={drum_body_h}mm"
-            f"  |  {headroom_1780}mm HEADROOM (1780mm operator, shoes)",
+    ax.text(X_LO + 80, H_DRUM_TOP + 60,
+            f"DRUM BODY TOP  H={H_DRUM_TOP}mm  |  CLEAR WALKING HT={drum_body_h}mm",
             ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT)
 
     # ── Section A-A indicator ─────────────────────────────────────────────────

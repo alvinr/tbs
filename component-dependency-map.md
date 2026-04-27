@@ -87,7 +87,7 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).*
 | Drum center X (cargo door end wall) | 0 mm | `DRUM_CX` |
 | Drum outer diameter | 750 mm | `DRUM_D` |
 | Drum radius | 375 mm | `DRUM_R` |
-| Drum height | 2,000 mm | `DRUM_H_LT` |
+| Drum height | 2,200 mm | `DRUM_H_LT` |
 
 *Components: 3mm mild steel rolled shell, 4× internal steel baffle fins (at 22.5°/112.5°/
 202.5°/292.5°), 5mm top and bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed

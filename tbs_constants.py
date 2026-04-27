@@ -77,7 +77,7 @@ def cone_right(y):
 DRUM_CX    = 0       # light trap drum centre X (mm) [unchanged]
 DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
-DRUM_H_LT  = 2000    # light trap drum height (mm)
+DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
 # Black-water drums — LEFT end zone, one per Yd corner (rev 4: unstacked)
 # Light trap drum Yd=806–1,556mm divides the zone into two clear corners.

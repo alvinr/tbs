@@ -117,7 +117,7 @@ BA_W       = 500     # battery bank width (mm)
 BA_H_LO    = 100     # battery bank bottom H (mm) — matches RAIL_OFF floor offset
 BA_H_HI    = 600     # battery bank top H (mm)
 
-PUMP_X     = 2400    # pump manifold left edge X (mm)
+PUMP_X     = 2600    # pump manifold left edge X (mm) — right of battery right edge (2550) + 50mm gap
 PUMP_W     = 300     # pump manifold width (mm)
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)

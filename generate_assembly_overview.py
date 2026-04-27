@@ -43,6 +43,7 @@ from tbs_constants import (
     DRUM_EQ_D, DRUM_EQ_H,
     DRUM_LZ_CX,
     RAIL_X_L, RAIL_X_R,
+    FAN_A_H, FAN_B_H, DUCT_HEIGHT,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
 )
@@ -304,15 +305,17 @@ ax.text(PH_X, PH_H - 300, "Optical axis (into page)\nFocal length 2362mm",
 
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
-FAN_W = 200
-ax.add_patch(mpatches.Rectangle((0, 200), 60, FAN_W,
+# Fan A — INTAKE: far end wall (X=C_LEN), low position (H=FAN_A_H=600mm)
+# Fan B — EXHAUST: cargo door end wall (X=0), high position (H=FAN_B_H=1800mm)
+FAN_HH = DUCT_HEIGHT  # duct opening height (200mm) — same as hatch block height
+ax.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_A_H - FAN_HH // 2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
-ax.text(30, 200 + FAN_W/2, "FAN\nIN", ha="center", va="center",
+ax.text(C_LEN - 30, FAN_A_H, "FAN\nIN", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
-ax.add_patch(mpatches.Rectangle((C_LEN - 60, C_HGT - FAN_W - 200), 60, FAN_W,
+ax.add_patch(mpatches.Rectangle((0, FAN_B_H - FAN_HH // 2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
-ax.text(C_LEN - 30, C_HGT - FAN_W/2 - 200, "FAN\nOUT", ha="center", va="center",
+ax.text(30, FAN_B_H, "FAN\nOUT", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
 
@@ -388,22 +391,22 @@ ax.add_patch(mpatches.Rectangle((TB_X, TB_Y), TB_W, TB_H,
              facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
 ax.add_patch(mpatches.Rectangle((TB_X, TB_Y + 280), TB_W, TB_H - 280,
              facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
-ax.text(TB_X + TB_W/2, TB_Y + 350, "TBS-001",
+ax.text(TB_X + TB_W/2, TB_Y + 360, "TBS-001",
         ha="center", va="center", fontsize=FS_LG + 2, color=C_OUT, fontweight="bold")
-ax.text(TB_X + TB_W/2, TB_Y + 295, "ASSEMBLY — SIDE ELEVATION",
+ax.text(TB_X + TB_W/2, TB_Y + 305, "ASSEMBLY — SIDE ELEVATION",
         ha="center", va="center", fontsize=FS_MD, color=C_OUT)
-ax.text(TB_X + 20, TB_Y + 230, "Scale: 1:75 (approx)",
+ax.text(TB_X + 20, TB_Y + 240, "Scale: 1:75 (approx)",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 170,
+ax.text(TB_X + 20, TB_Y + 180,
         f"Container: {C_LEN}L x {C_WID}W x {C_HGT}H (mm interior)",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 110,
+ax.text(TB_X + 20, TB_Y + 120,
         f"Pinhole: X={PH_X}mm  H={PH_H}mm  f/1088  Focal length {C_WID}mm",
         ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 50,
+ax.text(TB_X + 20, TB_Y + 60,
         "View: near long wall (+Y direction). Optical axis perpendicular to page.",
         ha="left", va="center", fontsize=FS_SM - 0.5, color=C_DIM)
-ax.text(TB_X + TB_W - 20, TB_Y + 15, "© 2026 Alvin Richards — GNU AGPLv3",
+ax.text(TB_X + TB_W - 20, TB_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
         ha="right", va="bottom", fontsize=FS_SM - 1, color=C_DIM, style="italic")
 
 

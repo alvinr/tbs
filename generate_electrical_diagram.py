@@ -255,9 +255,9 @@ def draw_sheet1():
     circuits = [
         # letter, name, fuse, wire, load, note, colour
         ("A", "VENTILATION FAN — INTAKE  (6\")",   "5A",  "16 AWG", "60W",
-         "Near vestibule short wall  |  low position", C_ALUM),
+         "Far end wall (X=5,893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
         ("B", "VENTILATION FAN — EXHAUST  (6\")",  "5A",  "16 AWG", "60W",
-         "Far short wall  |  high position", C_ALUM),
+         "Cargo door end wall (X=0)  |  high position  |  Yd=2,287mm corner", C_ALUM),
         ("C", "WATER PUMP  (12V DC)",              "15A", "14 AWG", "100W",
          "Adjacent water totes", C_BATT),
         ("D", "SAFELIGHT — interior + vestibule",  "5A",  "18 AWG", "15W",
@@ -400,6 +400,7 @@ def draw_sheet2():
         DRUM_LZ_CX, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
         DRUM_FZ_CX, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
         DRUM_CX, DRUM_D, DRUM_R,
+        FAN_A_YD, FAN_B_YD,
         DIAGRAMS_DIR,
     )
 
@@ -606,18 +607,18 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
-    # Fan A — intake, LEFT short wall = cargo door end
-    FA_X = OX + wt/2
-    FA_Y = OY + cwid * 0.35
+    # Fan A — INTAKE: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner
+    FA_X = OX + clen - wt/2
+    FA_Y = OY + wt + FAN_A_YD * S_yd
     ax.add_patch(plt.Circle((FA_X, FA_Y), 0.22,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FA_X, FA_Y, "A",
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Fan B — exhaust, RIGHT short wall = far end
-    FB_X = OX + clen - wt/2
-    FB_Y = OY + cwid * 0.65
+    # Fan B — EXHAUST: LEFT short wall = cargo door end (X=0), Yd=2287mm far-wall corner
+    FB_X = OX + wt/2
+    FB_Y = OY + wt + FAN_B_YD * S_yd
     ax.add_patch(plt.Circle((FB_X, FB_Y), 0.22,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FB_X, FB_Y, "B",
@@ -723,11 +724,11 @@ def draw_sheet2():
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          "2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X=100mm"),
         ("A",     C_ALUM,    "INTAKE FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door wall (left)"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5,893mm)  |  Yd=75mm"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (right)"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=2,287mm"),
         ("C",     C_BATT,    "WATER PUMP — Cct C",
-         "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,400mm"),
+         "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,600mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_SOLAR,   "EVAP COOLER — Cct E",

@@ -826,8 +826,7 @@ def sheet4():
                          f"{tilt:.1f}°", f"{swing:.1f}°", effect])
 
     draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
-               [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37],
-               hdr_col=STRUCT)
+               [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37])
 
     # ── Table 3: BOM ──────────────────────────────────────────────────────────
     # T2 bottom=0.480; gap=0.025; label=0.455; y0=0.417; bottom=0.417-15×0.022=0.087
@@ -853,8 +852,7 @@ def sheet4():
         ["15", "Locking collar SS",       "3/4\" bore",              "4",  "McMaster-Carr #6436K12",             "$12"],
     ]
     draw_table(ax, 0.05, 0.417, bom_headers, bom_rows,
-               [0.04, 0.17, 0.15, 0.04, 0.34, 0.09],
-               hdr_col="#1A5C3A")
+               [0.04, 0.17, 0.15, 0.04, 0.34, 0.09])
 
     # ── Bottom notes — below table 3 (bottom=0.087), above title_block (0.012) ──
     ax.text(0.05, 0.070,

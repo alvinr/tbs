@@ -239,12 +239,11 @@ def sheet1():
 
     # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=310mm.
     # In this side elevation (horizontal=X) both drums collapse to the same X position.
-    # Centre on DRUM_CX (X=0) so they appear in front of the light trap drum —
-    # physically correct since both sit adjacent to the cargo door in the Y direction.
-    _dlx0 = DRUM_CX - DRUM_EQ_D // 2   # = -290mm; spans -290 → +290mm
+    # Centre on DRUM_LZ_CX (X=310mm) — correct waste drum X centre (not DRUM_CX=0).
+    _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 310 - 290 = 20mm; spans 20 → 600mm
     equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.35, zorder=3)  # far (behind)
     equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.70, zorder=7)  # near (front)
-    ax.text(DRUM_CX, RAIL_OFF + DRUM_EQ_H/2,
+    ax.text(DRUM_LZ_CX, RAIL_OFF + DRUM_EQ_H/2,
             "WASTE\nDRUMS\n×2\n(near+far\ncorners)",
             ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=8)
 

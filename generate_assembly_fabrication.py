@@ -44,6 +44,7 @@ from tbs_constants import (
     DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
     RAIL_X_L, RAIL_X_R,
+    FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
 )
@@ -277,10 +278,12 @@ def sheet1():
 
     # (drums relocated to left zone — no drum column in right zone)
 
-    # ── Fans ──────────────────────────────────────────────────────────────────
-    FAN_W_FAB = 200
-    hatch_rect(ax, -WALL_T, 200, WALL_T, FAN_W_FAB, C_ALUM, "xx", 0.6)
-    hatch_rect(ax, C_LEN, C_HGT-FAN_W_FAB-200, WALL_T, FAN_W_FAB, C_ALUM, "xx", 0.6)
+    # ── Fans — shown on their correct end walls at correct heights ───────────────
+    # Fan B (exhaust): cargo door end wall (X=0), HIGH H=FAN_B_H=1800mm
+    # Fan A (intake):  far end wall (X=C_LEN),   LOW  H=FAN_A_H=600mm
+    FAN_HH = DUCT_HEIGHT   # hatch block height = duct opening height (200mm)
+    hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, C_ALUM, "xx", 0.6)  # Fan B left wall
+    hatch_rect(ax, C_LEN,   FAN_A_H - FAN_HH//2, WALL_T, FAN_HH, C_ALUM, "xx", 0.6)  # Fan A right wall
 
     # ── Callout bubbles ───────────────────────────────────────────────────────
     CALL_R = 80
@@ -292,10 +295,10 @@ def sheet1():
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
         (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # Blue IBCs
-        (DRUM_LZ_CX,              RAIL_OFF+DRUM_EQ_H/2, "8"),  # 55-gal drums (left zone)
+        (DRUM_LZ_CX,              RAIL_OFF+DRUM_EQ_H/2,  "8"),  # 55-gal drums (left zone)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "9"),  # Pump
-        (-WALL_T/2, 300,          "10"),  # Fan intake
-        (C_LEN+WALL_T/2, C_HGT-300, "11"),  # Fan exhaust
+        (-WALL_T/2, FAN_B_H,      "10"),  # Fan B exhaust (door end, HIGH)
+        (C_LEN+WALL_T/2, FAN_A_H, "11"),  # Fan A intake (far end, LOW)
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)
@@ -502,15 +505,18 @@ def sheet2():
     ax.text(C_WID/2, C_HGT-60, "Safelight strip (Circuit D)",
             ha="center", va="bottom", fontsize=FS_SM-1, color="#B8960A")
 
-    # ── Ventilation indicators ────────────────────────────────────────────────
-    ax.text(50, 350, "FAN\nINTAKE\n(low)", ha="center", va="center",
-            fontsize=FS_SM-1, color=C_DIM, rotation=90,
-            bbox=dict(boxstyle="round,pad=0.2", facecolor=C_FILL_INT,
-                      edgecolor=C_DIM, linewidth=0.5))
-    ax.text(C_WID-50, C_HGT-350, "FAN\nEXHAUST\n(high)", ha="center", va="center",
-            fontsize=FS_SM-1, color=C_DIM, rotation=90,
-            bbox=dict(boxstyle="round,pad=0.2", facecolor=C_FILL_INT,
-                      edgecolor=C_DIM, linewidth=0.5))
+    # ── Ventilation — Fan B (exhaust) only: this is the cargo door end wall (X=0) ──
+    # Fan A (intake) is on the opposite end wall (X=C_LEN) — not shown in this view.
+    # Fan B: far-wall corner (Yd=FAN_B_YD=2287mm), HIGH position (H=FAN_B_H=1800mm).
+    FAN_R2 = FAN_DIAM // 2
+    ax.add_patch(plt.Circle((FAN_B_YD, FAN_B_H), FAN_R2,
+                 facecolor=C_FILL_INT, edgecolor=C_DIM, linewidth=1.0,
+                 linestyle="--", zorder=5))
+    ax.text(FAN_B_YD, FAN_B_H, "B", ha="center", va="center",
+            fontsize=FS_SM-1, color=C_DIM, fontweight="bold", zorder=6)
+    ax.text(FAN_B_YD + FAN_R2 + 30, FAN_B_H,
+            f"FAN B\nEXHAUST\n(HIGH H={FAN_B_H}mm)\nYd={FAN_B_YD}mm",
+            ha="left", va="center", fontsize=FS_SM-1.5, color=C_DIM, zorder=6)
 
     # ── Dimensions ────────────────────────────────────────────────────────────
     DIM_TOP  = C_HGT + 350

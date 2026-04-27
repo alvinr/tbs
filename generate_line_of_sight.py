@@ -244,14 +244,14 @@ ax.plot(xr_vals, yd_vals, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 
 # Film plane line
 ax.plot([FP_X_L, FP_X_R], [FP_Y, FP_Y], color=C_CL, lw=2.0, zorder=4)
-ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 55,
+ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 115,
         f"Film plane  X={FP_X_L}–{FP_X_R}mm  (Yd={FP_Y}mm)",
         ha="center", va="bottom", fontsize=FS_SM, color=C_CL)
 
 # Pinhole
 ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
 ax.annotate(f"Pinhole  X={PH_X}mm",
-            xy=(PH_X, 0), xytext=(PH_X + 250, -300),
+            xy=(PH_X, 0), xytext=(PH_X + 250, -150),
             fontsize=FS_SM, color=C_BLOCK, ha="left",
             arrowprops=dict(arrowstyle="-", color=C_BLOCK, lw=0.8))
 
@@ -299,9 +299,9 @@ ax.annotate("", xy=(C_LEN, -320), xytext=(0, -320),
 ax.text(C_LEN / 2, -280, f"{C_LEN} mm", ha="center", va="bottom",
         fontsize=FS_SM, color=C_DIM)
 
-ax.annotate("", xy=(-350, C_WID), xytext=(-350, 0),
+ax.annotate("", xy=(-450, C_WID), xytext=(-450, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-370, C_WID / 2, f"{C_WID} mm", ha="right", va="center",
+ax.text(-500, C_WID / 2, f"{C_WID} mm", ha="right", va="center",
         fontsize=FS_SM, color=C_DIM, rotation=90)
 
 # Legend box
@@ -309,7 +309,7 @@ ax.text(PA_X_LO + 60, PA_Y_HI - 60,
         "RED border = equipment inside optical cone (shadow risk)\n"
         "GREEN border = equipment clear of optical cone",
         ha="left", va="top", fontsize=FS_SM - 0.5, color=C_OUT,
-        bbox=dict(boxstyle="round,pad=4", facecolor="#FFFFF0",
+        bbox=dict(boxstyle="round,pad=2", facecolor="#FFFFF0",
                   edgecolor=C_DIM, linewidth=0.6))
 
 
@@ -336,7 +336,7 @@ ax.plot(yd_e, ht, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 
 # Film plane
 ax.plot([FP_Y, FP_Y], [0, C_HGT], color=C_CL, lw=1.8, zorder=4)
-ax.text(FP_Y + 45, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
+ax.text(FP_Y + 125, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
         ha="left", va="center", fontsize=FS_SM, color=C_CL)
 
 # Pinhole
@@ -384,7 +384,7 @@ ax.text(C_WID / 2, -320,
 
 ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_WID / 2, -230, f"{C_WID} mm (optical depth)",
+ax.text(C_WID / 2, -200, f"{C_WID} mm (optical depth)",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM)
 
 ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),
@@ -422,7 +422,7 @@ else:
 
 fig.text(0.5, 0.028, note, ha="center", va="bottom",
          fontsize=FS_SM, color=note_col,
-         bbox=dict(boxstyle="round,pad=5", facecolor=note_bg,
+         bbox=dict(boxstyle="round,pad=2", facecolor=note_bg,
                    edgecolor=note_col, linewidth=1.0))
 
 fig.text(0.99, 0.01, "© 2026 Alvin Richards — GNU AGPLv3",

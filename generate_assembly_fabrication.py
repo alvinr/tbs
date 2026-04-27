@@ -177,14 +177,14 @@ def sheet1():
                 dashes=(6, 4), zorder=4)
 
     # Zone labels
-    ax.text(ZONE_L_END/2,          C_HGT-100, f"LEFT END ZONE\nX=0–{ZONE_L_END}mm",
+    ax.text(ZONE_L_END/2,          C_HGT+200, f"LEFT END ZONE\nX=0–{ZONE_L_END}mm",
             ha="center", va="top", fontsize=FS_SM-0.5, color="#805000",
             fontweight="bold", zorder=5)
-    ax.text((ZONE_L_END+ZONE_R_START)/2, C_HGT-100,
+    ax.text((ZONE_L_END+ZONE_R_START)/2, C_HGT+200,
             f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
             ha="center", va="top", fontsize=FS_SM-0.5, color="#006000",
             fontweight="bold", zorder=5)
-    ax.text((ZONE_R_START+C_LEN)/2, C_HGT-100,
+    ax.text((ZONE_R_START+C_LEN)/2, C_HGT+200,
             f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm",
             ha="center", va="top", fontsize=FS_SM-0.5, color="#004080",
             fontweight="bold", zorder=5)
@@ -485,19 +485,20 @@ def sheet2():
     ax.text(EVAP_Y + EVAP_D/2, RAIL_OFF + EVAP_H/2, "Evap\n(behind)", ha="center", va="center",
             fontsize=FS_SM-2, color="#1A8A76", alpha=0.8, zorder=3)
 
-    # ── 55-gal waste drums — one either side of revolving drum ────────────────
-    # Near drum: Yd=25–605mm (near wall side) — left of drum in this view
-    # Far drum:  Yd=1757–2337mm (far wall side) — right of drum in this view
-    # Both at floor level, H=RAIL_OFF to RAIL_OFF+DRUM_EQ_H.  Depth ≈310mm into page.
-    for yd_lo in [DRUM_LZ_YD_LO, DRUM_FZ_YD_LO]:
-        equip_blk(ax, yd_lo, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H,
-                  C_DRUM_EQ, alpha=0.80, zorder=4)
-    ax.text(DRUM_LZ_YD_LO + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
-            f"WASTE\nDRUM\n(near wall)\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
-            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
-    ax.text(DRUM_FZ_YD_LO + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
-            f"WASTE\nDRUM\n(far wall)\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
-            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
+    # ── 55-gal waste drums — ghost outlines (at X=310mm depth, behind this face) ─
+    # Near drum D-1: Yd=25–605mm (pinhole wall corner) — left of revolving drum
+    # Far drum  D-2: Yd=1757–2337mm (far wall corner)  — right of revolving drum
+    # Shown dashed (ghost) because they are at depth behind the cargo door face.
+    for yd_lo, label in [(DRUM_LZ_YD_LO, "D-1\n(near wall)"),
+                          (DRUM_FZ_YD_LO, "D-2\n(far wall)")]:
+        ax.add_patch(mpatches.Rectangle(
+            (yd_lo, RAIL_OFF), DRUM_EQ_D, DRUM_EQ_H,
+            facecolor=C_DRUM_EQ, edgecolor="#5A4A3A",
+            linewidth=1.0, linestyle="--", alpha=0.25, zorder=2))
+        ax.text(yd_lo + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+                f"WASTE\nDRUM\n{label}\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
+                ha="center", va="center", fontsize=FS_SM-2, color="#5A4A3A",
+                alpha=0.7, zorder=3)
 
     # ── Safelight ─────────────────────────────────────────────────────────────
     ax.plot([100, C_WID-100], [C_HGT-100, C_HGT-100],
@@ -514,7 +515,7 @@ def sheet2():
                  linestyle="--", zorder=5))
     ax.text(FAN_B_YD, FAN_B_H, "B", ha="center", va="center",
             fontsize=FS_SM-1, color=C_DIM, fontweight="bold", zorder=6)
-    ax.text(FAN_B_YD + FAN_R2 + 30, FAN_B_H,
+    ax.text(FAN_B_YD + FAN_R2 + 130, FAN_B_H,
             f"FAN B\nEXHAUST\n(HIGH H={FAN_B_H}mm)\nYd={FAN_B_YD}mm",
             ha="left", va="center", fontsize=FS_SM-1.5, color=C_DIM, zorder=6)
 

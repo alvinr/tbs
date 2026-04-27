@@ -410,7 +410,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9.0, color=C_DIM,
             style="italic", zorder=3)
 
-    # ── INTAKE FAN A (right end wall — compact axial panel fan, low position) ────
+    # ── INTAKE FAN A (left end wall — image plane / far end, compact axial panel fan, low position) ──
     # Both fans are identical: 150mm compact axial panel fan, ~50mm body depth.
     # Same part, same mounting flange, same baffle duct — simplified procurement.
     import math
@@ -419,22 +419,22 @@ def draw_sheet2():
     BD_W  = 0.80   # baffle duct schematic depth
     FA_Y  = CY + WT + CH * 0.18    # low position
 
-    # Baffle duct box — between interior face of right wall and panel fan
-    bd_a_x0 = CX + CW - WT - BD_W         # left edge of baffle duct box
+    # Baffle duct box — between interior face of left wall and panel fan
+    bd_a_x0 = CX + WT                      # right edge of left wall = duct left face
     ax.add_patch(mpatches.Rectangle((bd_a_x0, FA_Y - 0.40), BD_W, 0.80,
                  fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
     ax.text(bd_a_x0 + BD_W / 2, FA_Y, "BAFFLE\nDUCT",
             ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # Grille indicator — tinted strip in right wall exterior face
-    ax.add_patch(mpatches.Rectangle((CX + CW - WT, FA_Y - 0.40), WT, 0.80,
+    # Grille indicator — tinted strip in left wall exterior face
+    ax.add_patch(mpatches.Rectangle((CX, FA_Y - 0.40), WT, 0.80,
                  fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
-    ax.text(CX + CW - WT / 2, FA_Y, "G", ha="center", va="center",
+    ax.text(CX + WT / 2, FA_Y, "G", ha="center", va="center",
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
-    # Panel fan body — thin rectangle immediately left of baffle duct
-    FA_X   = bd_a_x0 - PF_T / 2          # fan centre (impeller plane)
-    pf_a_x0 = bd_a_x0 - PF_T             # left face of panel fan
+    # Panel fan body — thin rectangle immediately right of baffle duct
+    FA_X   = bd_a_x0 + BD_W + PF_T / 2    # fan centre (impeller plane)
+    pf_a_x0 = bd_a_x0 + BD_W              # left face of panel fan
     ax.add_patch(mpatches.Rectangle((pf_a_x0, FA_Y - R_PF - 0.08), PF_T, (R_PF + 0.08) * 2,
                  fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
     ax.add_patch(plt.Circle((FA_X, FA_Y), R_PF,
@@ -446,71 +446,71 @@ def draw_sheet2():
         by = FA_Y + R_PF * 0.80 * math.sin(math.radians(angle))
         ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
 
-    # Airflow: exterior right → grille → baffle → fan (leftward into container)
-    ax.annotate("", xy=(CX + CW, FA_Y),
-                xytext=(CX + CW + 1.6, FA_Y),
+    # Airflow: exterior left → grille → baffle → fan (rightward into container)
+    ax.annotate("", xy=(CX, FA_Y),
+                xytext=(CX - 1.6, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=7)
-    ax.text(CX + CW + 1.8, FA_Y, "OUTSIDE\nAIR IN",
-            ha="left", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
+    ax.text(CX - 1.8, FA_Y, "OUTSIDE\nAIR IN",
+            ha="right", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
     # Short interior distribution arrow from fan into container
-    ax.annotate("", xy=(pf_a_x0 - 0.65, FA_Y),
-                xytext=(pf_a_x0 - 0.05, FA_Y),
+    ax.annotate("", xy=(pf_a_x0 + PF_T + 0.65, FA_Y),
+                xytext=(pf_a_x0 + PF_T + 0.05, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
     ann(ax, "Cct A  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
-        (FA_X, FA_Y + R_PF), (FA_X - 1.8, FA_Y + 2.2), size=7.5)
+        (FA_X, FA_Y + R_PF), (FA_X + 1.8, FA_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
-        (FA_X, FA_Y - R_PF), (FA_X - 1.2, FA_Y - 1.5), size=7.5)
+        (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 1.5), size=7.5)
 
-    # ── EXHAUST FAN B (left end wall — identical compact axial panel fan, high position)
+    # ── EXHAUST FAN B (right end wall — cargo door end, identical compact axial panel fan, high position)
     # Same fan, duct, and mounting as Fan A.
     FB_Y  = CY + CH - WT - CH * 0.18   # high position
 
-    # Baffle duct box — between interior face of left wall and panel fan
-    bd_b_x0 = CX + WT                 # right edge of left wall = duct left face
+    # Baffle duct box — between interior face of right wall and panel fan
+    bd_b_x0 = CX + CW - WT - BD_W     # left edge of baffle duct box
     ax.add_patch(mpatches.Rectangle((bd_b_x0, FB_Y - 0.40), BD_W, 0.80,
                  fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
     ax.text(bd_b_x0 + BD_W / 2, FB_Y, "BAFFLE\nDUCT",
             ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # Grille indicator — tinted strip in left wall exterior face
-    ax.add_patch(mpatches.Rectangle((CX, FB_Y - 0.40), WT, 0.80,
+    # Grille indicator — tinted strip in right wall exterior face
+    ax.add_patch(mpatches.Rectangle((CX + CW - WT, FB_Y - 0.40), WT, 0.80,
                  fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
-    ax.text(CX + WT / 2, FB_Y, "G", ha="center", va="center",
+    ax.text(CX + CW - WT / 2, FB_Y, "G", ha="center", va="center",
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
-    # Panel fan body — thin rectangle immediately right of baffle duct
-    FB_X  = bd_b_x0 + BD_W + PF_T / 2   # fan centre (impeller plane)
-    pf_x0 = bd_b_x0 + BD_W               # left face of panel fan
+    # Panel fan body — thin rectangle immediately left of baffle duct
+    FB_X  = bd_b_x0 - PF_T / 2           # fan centre (impeller plane)
+    pf_x0 = bd_b_x0 - PF_T               # left face of panel fan
     ax.add_patch(mpatches.Rectangle((pf_x0, FB_Y - R_PF - 0.08), PF_T, (R_PF + 0.08) * 2,
                  fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
     # Impeller circle on face
-    ax.add_patch(plt.Circle((pf_x0 + PF_T / 2, FB_Y), R_PF,
+    ax.add_patch(plt.Circle((FB_X, FB_Y), R_PF,
                  fc="none", ec=C_OUT, lw=1.2, zorder=6))
-    ax.text(pf_x0 + PF_T / 2, FB_Y, "B", ha="center", va="center",
+    ax.text(FB_X, FB_Y, "B", ha="center", va="center",
             fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
-    # Blade lines (shorter, on face circle)
+    # Blade lines
     for angle in [0, 60, 120, 180, 240, 300]:
-        bx = pf_x0 + PF_T / 2 + R_PF * 0.80 * math.cos(math.radians(angle))
+        bx = FB_X + R_PF * 0.80 * math.cos(math.radians(angle))
         by = FB_Y + R_PF * 0.80 * math.sin(math.radians(angle))
-        ax.plot([pf_x0 + PF_T / 2, bx], [FB_Y, by],
+        ax.plot([FB_X, bx], [FB_Y, by],
                 color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
 
-    # Airflow: container → fan → baffle → grille → outside (leftward)
-    ax.annotate("", xy=(CX - 1.6, FB_Y),
-                xytext=(CX, FB_Y),
+    # Airflow: container → fan → baffle → grille → outside (rightward)
+    ax.annotate("", xy=(CX + CW + 1.6, FB_Y),
+                xytext=(CX + CW, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=2.5), zorder=7)
-    ax.text(CX - 1.8, FB_Y, "HOT AIR\nOUT",
-            ha="right", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
+    ax.text(CX + CW + 1.8, FB_Y, "HOT AIR\nOUT",
+            ha="left", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
     # Short interior collection arrow into fan
-    ax.annotate("", xy=(pf_x0 + PF_T + 0.05, FB_Y),
-                xytext=(pf_x0 + PF_T + 0.65, FB_Y),
+    ax.annotate("", xy=(pf_x0 - 0.05, FB_Y),
+                xytext=(pf_x0 - 0.65, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
 
     ann(ax, "Cct B  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
-        (FB_X, FB_Y + R_PF), (FB_X + 2.0, FB_Y + 2.2), size=7.5)
+        (FB_X, FB_Y + R_PF), (FB_X - 2.0, FB_Y + 2.2), size=7.5)
     ann(ax, "HIGH POSITION\n~1,800mm AFF",
-        (FB_X, FB_Y - R_PF), (FB_X + 1.2, FB_Y - 1.5), size=7.5)
+        (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
 
     # ── EVAP COOLER (floor level, with baffled intake through bottom wall) ─────
     EC_X = CX + CW * 0.60
@@ -533,11 +533,9 @@ def draw_sheet2():
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.0), zorder=6)
 
     # ── Cross-ventilation airflow path ────────────────────────────────────────
-    # Curved arrow from intake (low right) diagonally to exhaust (high left)
-    flow_pts_x = [FA_X - R_PF - 0.5, CX + CW * 0.7, CX + CW * 0.3, FB_X + R_PF + 0.5]
-    flow_pts_y = [FA_Y, FA_Y + 1.5, FB_Y - 1.5, FB_Y]
-    ax.annotate("", xy=(FB_X + R_PF + 0.3, FB_Y),
-                xytext=(FA_X - R_PF - 0.3, FA_Y),
+    # Curved arrow from intake Fan A (left wall, low) diagonally to exhaust Fan B (right wall, high)
+    ax.annotate("", xy=(FB_X - R_PF - 0.3, FB_Y),
+                xytext=(FA_X + R_PF + 0.3, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2,
                                 connectionstyle="arc3,rad=-0.35",
                                 alpha=0.6), zorder=4)

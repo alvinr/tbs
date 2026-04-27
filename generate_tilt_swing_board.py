@@ -194,6 +194,8 @@ def title_block(ax, fig_w, fig_h, sheet_n, sheet_total, title1, title2,
     ax.text(tb_x+70, 18, '±0.25 UNLESS NOTED', fontsize=6, color='black')
     ax.text(tb_x+8, 10, 'MATERIAL (default):', fontsize=6, color='black')
     ax.text(tb_x+100, 10, 'Al 6061-T6 HARD ANODISE', fontsize=6, color='black')
+    ax.text(tb_x+8, 2, '© 2026 Alvin Richards — GNU AGPLv3',
+            fontsize=5, color='black', style='italic')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

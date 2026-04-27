@@ -78,6 +78,9 @@ def title_block(ax, sheet_no, title, scale_note=""):
                 transform=ax.transAxes, color=DIM, fontsize=6.5, ha="right", **FONT)
     ax.text(0.99, 0.004, "ALL DIMS IN mm UNLESS NOTED",
             transform=ax.transAxes, color=DIM, fontsize=6.5, ha="right", **FONT)
+    ax.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
+            transform=ax.transAxes, color=DIM, fontsize=5.5, ha="center",
+            style="italic", **FONT)
 
 def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
     ax.annotate("", xy=(x1, y), xytext=(x0, y),

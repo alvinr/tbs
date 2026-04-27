@@ -294,7 +294,8 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                  color="#111111", fontsize=11, fontfamily="monospace",
                  fontweight="bold", y=1.01)
     fig.tight_layout(pad=0.6)
-
+    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
     fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
@@ -337,6 +338,8 @@ def render_summary():
         color="#111111", fontsize=13, fontfamily="monospace",
         fontweight="bold", y=1.005)
     fig.tight_layout(pad=0.5)
+    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
     fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
     plt.close(fig)

@@ -326,6 +326,8 @@ for cfg in CONFIGS:
              'THE BIG SHOEBOX PROJECT — Combined Board+Film Plane Distortion',
              ha='center', va='top', fontsize=9, color='#E4F4FD', fontfamily='monospace')
 
+    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
     out = f'diagrams/tilt-swing-combined-{label.lower()}.png'
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
     plt.close(fig)
@@ -351,6 +353,8 @@ for idx, (cfg, ax) in enumerate(zip(CONFIGS, axes.flat)):
     label, bt, bs, ft, fs, desc = cfg
     draw_render(ax, bt, bs, ft, fs, label, desc, show_human=True)
 
+fig_s.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+           ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out_s = 'diagrams/tilt-swing-combined-summary.png'
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
 plt.close(fig_s)

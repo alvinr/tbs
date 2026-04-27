@@ -39,7 +39,10 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_LZ_CX, DRUM_FZ_CX,
+    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
+    DRUM_LZ_CX, DRUM_FZ_CX,
+    DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
+    DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
     RAIL_X_L, RAIL_X_R,
     DIAGRAMS_DIR,
     C_OUT, C_CL, C_DIM,
@@ -233,15 +236,16 @@ def sheet1():
             "EVAP\nCOOLER", ha="center", va="center",
             fontsize=FS_SM-1.5, color="white", zorder=5)
 
-    # 55-gal drums ×2 — left zone, one per Yd corner (rev 4: unstacked).
-    # In this side elevation (horizontal=X) both drums share X=310mm → overlap.
-    # Draw near drum (Yd=315mm) at full opacity, far drum (Yd=2047mm) dimmed behind.
-    _dlx0 = DRUM_LZ_CX - DRUM_EQ_D // 2
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.45, zorder=3)  # far (behind)
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=4)  # near (front)
-    ax.text(_dlx0 + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+    # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=310mm.
+    # In this side elevation (horizontal=X) both drums collapse to the same X position.
+    # Centre on DRUM_CX (X=0) so they appear in front of the light trap drum —
+    # physically correct since both sit adjacent to the cargo door in the Y direction.
+    _dlx0 = DRUM_CX - DRUM_EQ_D // 2   # = -290mm; spans -290 → +290mm
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.35, zorder=3)  # far (behind)
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.70, zorder=7)  # near (front)
+    ax.text(DRUM_CX, RAIL_OFF + DRUM_EQ_H/2,
             "WASTE\nDRUMS\n×2\n(near+far\ncorners)",
-            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
+            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=8)
 
     # ── PINHOLE WALL EQUIPMENT (flush on near long wall) ──────────────────────
     # Electrical panel
@@ -477,6 +481,20 @@ def sheet2():
                  linewidth=0.7, linestyle="--", alpha=0.20, zorder=2))
     ax.text(EVAP_Y + EVAP_D/2, RAIL_OFF + EVAP_H/2, "Evap\n(behind)", ha="center", va="center",
             fontsize=FS_SM-2, color="#1A8A76", alpha=0.8, zorder=3)
+
+    # ── 55-gal waste drums — one either side of revolving drum ────────────────
+    # Near drum: Yd=25–605mm (near wall side) — left of drum in this view
+    # Far drum:  Yd=1757–2337mm (far wall side) — right of drum in this view
+    # Both at floor level, H=RAIL_OFF to RAIL_OFF+DRUM_EQ_H.  Depth ≈310mm into page.
+    for yd_lo in [DRUM_LZ_YD_LO, DRUM_FZ_YD_LO]:
+        equip_blk(ax, yd_lo, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H,
+                  C_DRUM_EQ, alpha=0.80, zorder=4)
+    ax.text(DRUM_LZ_YD_LO + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+            f"WASTE\nDRUM\n(near wall)\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
+            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
+    ax.text(DRUM_FZ_YD_LO + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
+            f"WASTE\nDRUM\n(far wall)\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
+            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
 
     # ── Safelight ─────────────────────────────────────────────────────────────
     ax.plot([100, C_WID-100], [C_HGT-100, C_HGT-100],

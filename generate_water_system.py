@@ -421,16 +421,10 @@ print("Sheet 1 written → diagrams/water-system-sheet1.png")
 # SHEET 2 — TANK & FILTER SKID LAYOUT (PLAN VIEW — inside container)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig2, axes = plt.subplots(1, 2, figsize=(18, 12),
-                           gridspec_kw={"width_ratios": [2, 1]})
+fig2, ax2 = plt.subplots(1, 1, figsize=(18, 12))
 fig2.patch.set_facecolor("#F5F5F0")
-
-ax2 = axes[0]  # plan view
-ax3 = axes[1]  # parts list / notes
-
-for a in [ax2, ax3]:
-    a.set_facecolor("#F5F5F0")
-    a.axis("off")
+ax2.set_facecolor("#F5F5F0")
+ax2.axis("off")
 
 # ── Title block ───────────────────────────────────────────────────────────────
 fig2.text(0.5, 0.97, "TBS-001 — WATER SYSTEM EQUIPMENT LAYOUT",
@@ -590,64 +584,6 @@ ax2.annotate("", xy=(12.2, 9.8), xytext=(12.2, 9.2),
                              mutation_scale=12))
 ax2.text(12.2, 9.0, "FRONT\n(PINHOLE END)", ha="center", fontsize=6,
          color=C_FRAME)
-
-# ── Parts list ────────────────────────────────────────────────────────────────
-ax3.set_xlim(0, 10)
-ax3.set_ylim(0, 12)
-
-ax3.add_patch(plt.Rectangle((0.1, 0.2), 9.8, 11.6, fc="white", ec=C_FRAME,
-                              lw=1.5, zorder=1))
-ax3.text(5.0, 11.5, "PARTS LIST — WATER SYSTEM", ha="center", fontsize=10,
-         fontweight="bold", color=C_TITLE, zorder=2)
-
-headers = ["ITEM", "TAG", "DESCRIPTION", "QTY"]
-col_x = [0.3, 1.4, 2.5, 9.1]
-header_y = 11.1
-for hdr, cx in zip(headers, col_x):
-    ax3.text(cx, header_y, hdr, fontsize=7.5, fontweight="bold", color=C_TITLE)
-ax3.plot([0.2, 9.9], [header_y - 0.18, header_y - 0.18], color=C_FRAME, lw=1)
-
-parts = [
-    # (item, tag, description, qty)
-    ("1",  "IBC-1/2",  "IBC tote 600L (159 gal) food-grade HDPE, 2\" bottom valve", "2"),
-    ("2",  "IBC-3",    "IBC tote 600L (159 gal) HDPE, used/rinsed (brown system)", "1"),
-    ("3",  "D-1/2",    "55 gal closed-head HDPE drum, UN-rated (black system)", "2"),
-    ("4",  "P-01",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),
-    ("5",  "P-02",     "12VDC diaphragm pump, 3.5 GPM / 45 PSI (Shurflo 2088)", "1"),
-    ("6",  "ACC-01",   "1-gal pressure accumulator tank, 125 PSI rated", "1"),
-    ("7",  "F1",       "Big Blue 4.5\"×10\" housing + 50-micron poly sediment cart.", "1"),
-    ("8",  "F2",       "Big Blue 4.5\"×10\" housing + 5-micron poly sediment cart.", "1"),
-    ("9",  "F3",       "Big Blue 4.5\"×10\" housing + GAC carbon block cartridge", "1"),
-    ("10", "BV-01–06", "Ball valve 1\" FNPT, HDPE-compatible (manual)", "8"),
-    ("11", "3W-DV-01", "3-way diverter valve 1\" FNPT (filter outlet)", "1"),
-    ("12", "3W-DV-02", "3-way diverter valve 1\" FNPT (floor drain)", "1"),
-    ("13", "—",        "1\" HDPE pipe (Sch 40 or SDR-11), total run ~25 m", "1 lot"),
-    ("14", "—",        "3/4\" HDPE pipe, spray bar, total run ~8 m", "1 lot"),
-    ("15", "—",        "1\" FNPT elbows, tees, unions — HDPE", "1 lot"),
-    ("16", "—",        "2\" camlock fittings for IBC connections (M+F pairs)", "6"),
-    ("17", "—",        "pH meter / test strips (0–14 range)", "1"),
-    ("18", "—",        "Citric acid 5 lb (pH adjustment, food grade)", "2"),
-    ("19", "—",        "12V fuse block + wiring harness (10A per pump)", "1"),
-    ("20", "—",        "Containment liner: 20' × 10' 6-mil black LDPE sheet", "4"),
-]
-
-row_y = header_y - 0.38
-for item in parts:
-    for txt, cx in zip(item, col_x):
-        ax3.text(cx, row_y, txt, fontsize=6.8, color=C_TEXT, va="center")
-    ax3.plot([0.2, 9.9], [row_y - 0.17, row_y - 0.17],
-             color="#CCCCCC", lw=0.5)
-    row_y -= 0.34
-
-ax3.text(0.3, row_y - 0.1,
-         "NOTES:\n"
-         "1. All pipes in contact with chemistry shall be HDPE or CPVC (not PVC).\n"
-         "2. Filter cartridges rated for use with low-concentration iron compounds.\n"
-         "3. Pumps powered from 12VDC house battery / solar system.\n"
-         "4. Brown→Blue recycling permitted max 3 cycles; test pH before returning.\n"
-         "5. Black drums: do not pour on ground; transport to licensed disposal.\n"
-         "6. All IBC totes and drums to be labelled per OSHA HazCom GHS standard.",
-         fontsize=6.5, color="#333", va="top", linespacing=1.6)
 
 plt.tight_layout(pad=0.5)
 fig2.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

@@ -216,7 +216,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Chemical-resistant GHS labels | For drums and totes | 1 pack | Amazon / Labelmaster | $20 |
 | Funnel with filter screen 2" | For drum filling | 2 | Amazon / Grainger | $18 |
 
-**Water consumables subtotal: ~$130**
+| Containment liner, 6-mil black LDPE | 20' × 10' sheet — secondary spill containment under IBCs and filter skid | 4 | Amazon / US Plastic Corp | $18–$28/sheet | $75–$110 |
+
+**Water consumables subtotal: ~$205–$240**
 
 **Section total: $1,457–$2,072**
 

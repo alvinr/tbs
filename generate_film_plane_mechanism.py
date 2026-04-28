@@ -740,7 +740,7 @@ def sheet4():
     ax.set_facecolor(BG)
     ax.axis("off")
 
-    ax.text(0.5, 0.968, "SHEET 4 — MOVEMENT SPECIFICATION  &  BILL OF MATERIALS",
+    ax.text(0.5, 0.968, "SHEET 4 — MOVEMENT SPECIFICATION",
             transform=ax.transAxes, color=WHITE, fontsize=13, ha="center",
             fontweight="bold", **FONT)
     ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE (4-CORNER)  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
@@ -831,52 +831,71 @@ def sheet4():
     draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
                [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37])
 
-    # ── Table 3: BOM ──────────────────────────────────────────────────────────
-    # T2 bottom=0.480; gap=0.025; label=0.455; y0=0.417; bottom=0.417-15×0.022=0.087
-    ax.text(0.05, 0.455, "TABLE 3 — BILL OF MATERIALS  (4-CORNER DESIGN)",
-            transform=ax.transAxes, color=DIM, fontsize=8, fontweight="bold", **FONT)
+    # ── BOM reference callout ─────────────────────────────────────────────────
+    # T2 bottom=0.480; BOM table removed — consolidated to master shopping list.
+    import matplotlib.patches as mpatches
+    ref_box = mpatches.FancyBboxPatch((0.05, 0.18), 0.90, 0.27,
+                                      boxstyle="round,pad=0.01",
+                                      transform=ax.transAxes,
+                                      fc=GRID, ec=STRUCT2, lw=1.5,
+                                      zorder=3, clip_on=False)
+    ax.add_patch(ref_box)
+    ax.text(0.50, 0.43, "BILL OF MATERIALS — SEE MASTER SHOPPING LIST  §4",
+            transform=ax.transAxes, color=WHITE, fontsize=11,
+            ha="center", va="center", fontweight="bold", **FONT)
+    ax.text(0.50, 0.40, "master-shopping-list.md  ·  Section 4: Film Plane Mechanism (4-Corner Independent)",
+            transform=ax.transAxes, color=DIM, fontsize=8,
+            ha="center", va="center", **FONT)
 
-    bom_headers = ["ITEM", "DESCRIPTION", "SPEC", "QTY", "SOURCE A (SoCal/US)", "EST. UNIT $"]
-    bom_rows = [
-        ["1",  "Linear guide rail",       "HGR20, 2,200mm",          "4",  "Automation Overstock, Gardena CA",   "$45"],
-        ["2",  "Rail carriage",           "HGH20CA flanged",          "8",  "Automation Overstock / Amazon",      "$18"],
-        ["3",  "Acme leadscrew",          "3/4\"-6, 8ft length",     "4",  "Roton Products (LA area)",           "$95"],
-        ["4",  "Acme nut (bronze)",       "3/4\"-6",                 "4",  "Roton Products / McMaster-Carr",     "$12"],
-        ["5",  "Handwheel 8\"",           "3/4\" bore, cast alum.",  "4",  "Grainger (Anaheim/LA/SD)",           "$35"],
-        ["6",  "Corner bracket L-plate",  "1/4\" alum. plate, 6\"×8\"","4","Metal Supermarkets SoCal",           "$20"],
-        ["7",  "Rod-end spherical bearing","GIR25-DO or equiv., 25mm","8", "McMaster-Carr #60645K73",            "$22"],
-        ["8",  "Pivot pin SS316",         "1\" dia × 8\" long",      "8",  "McMaster-Carr #98173A150",           "$8"],
-        ["9",  "Alum. angle 2\"×2\"",     "3/16\" wall, 8ft",        "10", "Metal Supermarkets SoCal",           "$22"],
-        ["10", "Dibond ACM 4mm",          "4ft×8ft sheets",          "6",  "Grimco, City of Industry CA",        "$85"],
-        ["11", "EPDM foam tape",          "1\"×1/2\", 50ft roll",    "3",  "McMaster-Carr #8614K84",             "$28"],
-        ["12", "Duvetyne (light seal)",   "60\" wide, 10yd",         "1",  "B&H Photo / Rosco direct",           "$95"],
-        ["13", "Piano hinge alum.",       "2\" wide, 72\" length",   "2",  "McMaster-Carr #1580A51",             "$28"],
-        ["14", "6-mil black poly",        "10ft×100ft roll",         "1",  "Home Depot (local SoCal)",           "$65"],
-        ["15", "Locking collar SS",       "3/4\" bore",              "4",  "McMaster-Carr #6436K12",             "$12"],
+    bom_summary = [
+        ("4",  "Linear guide rail HGR20",         "2,200mm",            "$45 ea"),
+        ("8",  "Rail carriage HGH20CA",            "Flanged block",      "$18 ea"),
+        ("4",  "Acme leadscrew ¾\"-6",             "8ft length",         "$95 ea"),
+        ("4",  "Acme nut, bronze ¾\"-6",           "—",                  "$12 ea"),
+        ("4",  "Handwheel 8\"",                    "¾\" bore, cast alum.","$35 ea"),
+        ("4",  "Corner bracket L-plate",           "¼\" alum. 6\"×8\"",  "$20 ea"),
+        ("8",  "Rod-end spherical bearing GIR25",  "25mm bore",          "$22 ea"),
+        ("8",  "Pivot pin SS316",                  "1\" dia × 8\" long", "$8 ea"),
+        ("10", "Aluminium angle 2\"×2\"×3/16\"",   "8ft lengths",        "$22 ea"),
+        ("6",  "Dibond ACM 4mm",                   "4'×8' sheets",       "$85 ea"),
+        ("3",  "EPDM foam tape 1\"×½\"",           "50ft rolls",         "$28 ea"),
+        ("1",  "Duvetyne blackout fabric",          "60\" wide, 10 yd",   "$95"),
+        ("2",  "Aluminium piano hinge 72\"",        "2\" wide",           "$28 ea"),
+        ("1",  "6-mil black poly sheeting",         "10'×100' roll",      "$65"),
+        ("4",  "Locking collar SS316 ¾\"",          "¾\" bore",           "$12 ea"),
     ]
-    draw_table(ax, 0.05, 0.417, bom_headers, bom_rows,
-               [0.04, 0.17, 0.15, 0.04, 0.34, 0.09])
-
-    # ── Bottom notes — below table 3 (bottom=0.087), above title_block (0.012) ──
-    ax.text(0.05, 0.070,
-            "4-CORNER DESIGN vs ORIGINAL 2-BEAM DESIGN:  "
-            "REMOVED: 2× 80/20 T-slot beams (5,893mm)  –$416  |  "
-            "ADDED: +2 leadscrews  +$190,  +2 handwheels  +$70,  "
-            "4× rod-end bearings  +$88,  4× corner brackets  +$80",
-            transform=ax.transAxes, color=ANNO, fontsize=6.5,
-            ha="left", **FONT)
-
-    # Materials total
     costs = [45, 18, 95, 12, 35, 20, 22, 8, 22, 85, 28, 95, 28, 65, 12]
     qtys  = [4,  8,  4,  4,  4,  4,  8,  8, 10,  6,  3,  1,  2,  1,  4]
-    total = sum(c*q for c, q in zip(costs, qtys))
-    ax.text(0.95, 0.051, f"MATERIALS TOTAL (EST.):  ${total:,}",
-            transform=ax.transAxes, color=C_T1, fontsize=9,
-            ha="right", fontweight="bold", **FONT)
-    ax.text(0.95, 0.035, "Excl. fabrication, fasteners, electrical actuation option",
-            transform=ax.transAxes, color=DIM, fontsize=7, ha="right", **FONT)
+    total = sum(c * q for c, q in zip(costs, qtys))
 
-    title_block(ax, "4 / 4", "MOVEMENT SPECS & BILL OF MATERIALS")
+    col_x0s = [0.07, 0.12, 0.44, 0.67, 0.82]
+    col_labels = ["QTY", "DESCRIPTION", "SPEC", "UNIT $", "LINE $"]
+    # Header row
+    hdr_y = 0.375
+    for lbl, cx in zip(col_labels, col_x0s):
+        ax.text(cx, hdr_y, lbl, transform=ax.transAxes,
+                color=DIM, fontsize=6.5, fontweight="bold", **FONT)
+    ax.plot([0.06, 0.94], [hdr_y - 0.005, hdr_y - 0.005],
+            transform=ax.transAxes, color=STRUCT2, lw=0.7)
+
+    row_y = hdr_y - 0.018
+    for (qty, desc, spec, unit), cost, q in zip(bom_summary, costs, qtys):
+        for val, cx in zip([qty, desc, spec, unit, f"${cost*q}"], col_x0s):
+            ax.text(cx, row_y, val, transform=ax.transAxes,
+                    color=ANNO, fontsize=6.2, **FONT)
+        row_y -= 0.013
+
+    ax.plot([0.06, 0.94], [row_y + 0.005, row_y + 0.005],
+            transform=ax.transAxes, color=STRUCT2, lw=0.7)
+    ax.text(0.82, row_y - 0.005, f"TOTAL  ${total:,}",
+            transform=ax.transAxes, color=WHITE, fontsize=8,
+            fontweight="bold", **FONT)
+    ax.text(0.07, row_y - 0.005,
+            "Excl. fabrication, fasteners, electrical actuation option. "
+            "Full specs and supplier part numbers: master-shopping-list.md §4",
+            transform=ax.transAxes, color=DIM, fontsize=6.2, **FONT)
+
+    title_block(ax, "4 / 4", "MOVEMENT SPECIFICATION")
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")

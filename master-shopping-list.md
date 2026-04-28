@@ -151,6 +151,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Section total (manual): ~$2,362**
 
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5,893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Net change: +$12 for significantly greater geometric capability. Excl. fabrication, fasteners, and optional electric actuation.
+
 ---
 
 ## 5. Print Washing — Water System

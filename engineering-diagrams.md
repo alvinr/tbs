@@ -171,7 +171,7 @@ Source report: [Light Trap Selection](light-trap-selection.md).
 **Sheet 1 — Front elevation (1:20): Panel dimensions, drum, hinges, latches**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
-**Sheet 2 — Plan cross-section (1:10 horiz / 1:1 depth): Drum baffles and S-path light route**
+**Sheet 2 — Plan cross-section (1:20): Drum baffles and S-path light route**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
 **Sheet 3 — Drum vertical section elevation (Section A-A): Confirms walking-height vertical drum orientation**

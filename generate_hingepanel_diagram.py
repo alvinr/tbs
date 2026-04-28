@@ -7,7 +7,7 @@ generate_hingepanel_diagram.py  —  TBS-001 Hinged Light-Trap Panel
 Sheet 1 — Front elevation (exterior view, 1:20):
   Panel dimensions, revolving drum position, hinges, latches, EPDM perimeter seal.
 
-Sheet 2 — Plan cross-section (1:10 horizontal / 1:1 depth — depth exaggerated):
+Sheet 2 — Plan cross-section (1:20 equal aspect):
   Panel thickness, drum cross-section with 4 baffles, S-path light route,
   container wall interface, EPDM gasket engagement, latch detail.
 """
@@ -542,7 +542,7 @@ def sheet2():
 
     # ── Scale and note ────────────────────────────────────────────────────────
     ax.text((X_LO + X_HI) / 2, Y_HI - 20,
-            "EQUAL ASPECT — ALL DIMENSIONS IN mm  ·  VIEW CROPPED TO DRUM ZONE  ·  "
+            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  VIEW CROPPED TO DRUM ZONE  ·  "
             "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT)
 
@@ -576,7 +576,7 @@ def sheet2():
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 "PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
-                "EQUAL ASPECT  ·  SCALE 1:10 (APPROX)  ·  ALL DIMS IN mm")
+                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)

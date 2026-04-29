@@ -831,69 +831,11 @@ def sheet4():
     draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
                [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37])
 
-    # ── BOM reference callout ─────────────────────────────────────────────────
-    # T2 bottom=0.480; BOM table removed — consolidated to master shopping list.
-    import matplotlib.patches as mpatches
-    ref_box = mpatches.FancyBboxPatch((0.05, 0.18), 0.90, 0.27,
-                                      boxstyle="round,pad=0.01",
-                                      transform=ax.transAxes,
-                                      fc=GRID, ec=STRUCT2, lw=1.5,
-                                      zorder=3, clip_on=False)
-    ax.add_patch(ref_box)
-    ax.text(0.50, 0.43, "BILL OF MATERIALS — SEE MASTER SHOPPING LIST  §4",
-            transform=ax.transAxes, color=WHITE, fontsize=11,
-            ha="center", va="center", fontweight="bold", **FONT)
-    ax.text(0.50, 0.40, "master-shopping-list.md  ·  Section 4: Film Plane Mechanism (4-Corner Independent)",
-            transform=ax.transAxes, color=DIM, fontsize=8,
-            ha="center", va="center", **FONT)
-
-    bom_summary = [
-        ("4",  "Linear guide rail HGR20",         "2,200mm",            "$45 ea"),
-        ("8",  "Rail carriage HGH20CA",            "Flanged block",      "$18 ea"),
-        ("4",  "Acme leadscrew ¾\"-6",             "8ft length",         "$95 ea"),
-        ("4",  "Acme nut, bronze ¾\"-6",           "—",                  "$12 ea"),
-        ("4",  "Handwheel 8\"",                    "¾\" bore, cast alum.","$35 ea"),
-        ("4",  "Corner bracket L-plate",           "¼\" alum. 6\"×8\"",  "$20 ea"),
-        ("8",  "Rod-end spherical bearing GIR25",  "25mm bore",          "$22 ea"),
-        ("8",  "Pivot pin SS316",                  "1\" dia × 8\" long", "$8 ea"),
-        ("10", "Aluminium angle 2\"×2\"×3/16\"",   "8ft lengths",        "$22 ea"),
-        ("6",  "Dibond ACM 4mm",                   "4'×8' sheets",       "$85 ea"),
-        ("3",  "EPDM foam tape 1\"×½\"",           "50ft rolls",         "$28 ea"),
-        ("1",  "Duvetyne blackout fabric",          "60\" wide, 10 yd",   "$95"),
-        ("2",  "Aluminium piano hinge 72\"",        "2\" wide",           "$28 ea"),
-        ("1",  "6-mil black poly sheeting",         "10'×100' roll",      "$65"),
-        ("4",  "Locking collar SS316 ¾\"",          "¾\" bore",           "$12 ea"),
-    ]
-    costs = [45, 18, 95, 12, 35, 20, 22, 8, 22, 85, 28, 95, 28, 65, 12]
-    qtys  = [4,  8,  4,  4,  4,  4,  8,  8, 10,  6,  3,  1,  2,  1,  4]
-    total = sum(c * q for c, q in zip(costs, qtys))
-
-    col_x0s = [0.07, 0.12, 0.44, 0.67, 0.82]
-    col_labels = ["QTY", "DESCRIPTION", "SPEC", "UNIT $", "LINE $"]
-    # Header row
-    hdr_y = 0.375
-    for lbl, cx in zip(col_labels, col_x0s):
-        ax.text(cx, hdr_y, lbl, transform=ax.transAxes,
-                color=DIM, fontsize=6.5, fontweight="bold", **FONT)
-    ax.plot([0.06, 0.94], [hdr_y - 0.005, hdr_y - 0.005],
-            transform=ax.transAxes, color=STRUCT2, lw=0.7)
-
-    row_y = hdr_y - 0.018
-    for (qty, desc, spec, unit), cost, q in zip(bom_summary, costs, qtys):
-        for val, cx in zip([qty, desc, spec, unit, f"${cost*q}"], col_x0s):
-            ax.text(cx, row_y, val, transform=ax.transAxes,
-                    color=ANNO, fontsize=6.2, **FONT)
-        row_y -= 0.013
-
-    ax.plot([0.06, 0.94], [row_y + 0.005, row_y + 0.005],
-            transform=ax.transAxes, color=STRUCT2, lw=0.7)
-    ax.text(0.82, row_y - 0.005, f"TOTAL  ${total:,}",
-            transform=ax.transAxes, color=WHITE, fontsize=8,
-            fontweight="bold", **FONT)
-    ax.text(0.07, row_y - 0.005,
-            "Excl. fabrication, fasteners, electrical actuation option. "
-            "Full specs and supplier part numbers: master-shopping-list.md §4",
-            transform=ax.transAxes, color=DIM, fontsize=6.2, **FONT)
+    # BOM removed — consolidated to master-shopping-list.md §4
+    ax.text(0.50, 0.35,
+            "Bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
+            transform=ax.transAxes, color=DIM, fontsize=7,
+            ha="center", va="center", style="italic", **FONT)
 
     title_block(ax, "4 / 4", "MOVEMENT SPECIFICATION")
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)

@@ -413,6 +413,7 @@ fig1.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
           ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 fig1.savefig("diagrams/water-system-sheet1.png", dpi=150, bbox_inches="tight",
              facecolor=fig1.get_facecolor())
+fig1.savefig("diagrams/water-system-sheet1.svg", bbox_inches="tight", facecolor=fig1.get_facecolor())
 plt.close(fig1)
 print("Sheet 1 written → diagrams/water-system-sheet1.png")
 
@@ -590,6 +591,7 @@ fig2.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
           ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 fig2.savefig("diagrams/water-system-sheet2.png", dpi=150, bbox_inches="tight",
              facecolor=fig2.get_facecolor())
+fig2.savefig("diagrams/water-system-sheet2.svg", bbox_inches="tight", facecolor=fig2.get_facecolor())
 plt.close(fig2)
 print("Sheet 2 written → diagrams/water-system-sheet2.png")
 print("Done.")

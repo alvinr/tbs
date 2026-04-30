@@ -355,6 +355,7 @@ def draw_sheet1():
 
     plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
+    plt.savefig("diagrams/lighttrap-sheet1.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet1.png  Done.")
 
@@ -723,6 +724,7 @@ def draw_sheet2():
 
     plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
+    plt.savefig("diagrams/lighttrap-sheet2.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet2.png  Done.")
 
@@ -1002,6 +1004,7 @@ def draw_sheet3():
 
     plt.savefig("diagrams/lighttrap-sheet3.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
+    plt.savefig("diagrams/lighttrap-sheet3.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet3.png  Done.")
 

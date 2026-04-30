@@ -244,6 +244,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='#101010')
+plt.savefig(str(out1).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
 
@@ -359,6 +360,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='#101010')
+plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
 
@@ -474,6 +476,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
 plt.savefig(out3, dpi=150, bbox_inches='tight', facecolor='#101010')
+plt.savefig(str(out3).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')
 

@@ -288,6 +288,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 3", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
 
     fig.savefig("diagrams/hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet1.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet1.png saved")
 
@@ -579,6 +580,7 @@ def sheet2():
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet2.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet2.png saved")
 
@@ -861,6 +863,7 @@ def sheet3():
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet3.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet3.png saved")
 

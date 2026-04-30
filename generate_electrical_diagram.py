@@ -371,6 +371,7 @@ def draw_sheet1():
 
     plt.savefig("diagrams/electrical-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
+    plt.savefig("diagrams/electrical-sheet1.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
 
@@ -785,6 +786,7 @@ def draw_sheet2():
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")
 

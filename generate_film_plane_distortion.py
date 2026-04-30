@@ -299,6 +299,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
     fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
+    fig.savefig(fname.replace(".png", ".svg"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  → {fname}")
 
@@ -342,6 +343,7 @@ def render_summary():
              ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
     fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
+    fig.savefig("diagrams/film-plane-distortion-summary.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/film-plane-distortion-summary.png")
 

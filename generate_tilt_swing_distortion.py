@@ -330,6 +330,7 @@ for cfg in CONFIGS:
              ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
     out = f'diagrams/tilt-swing-combined-{label.lower()}.png'
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
+    fig.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f'  → {out}  Done.')
 
@@ -357,6 +358,7 @@ fig_s.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
            ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out_s = 'diagrams/tilt-swing-combined-summary.png'
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
+fig_s.savefig(str(out_s).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
 plt.close(fig_s)
 print(f'  → {out_s}  Done.')
 print()

@@ -418,6 +418,7 @@ ax.text(TB_X + TB_W - 20, TB_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
 out = f"{DIAGRAMS_DIR}/assembly-overview.png"
 fig.tight_layout(pad=0)
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 
@@ -799,5 +800,6 @@ ax2.text(TB2_X + TB2_W - 20, TB2_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
 out2 = f"{DIAGRAMS_DIR}/assembly-overview-fp.png"
 fig2.tight_layout(pad=0)
 plt.savefig(out2, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
 plt.close(fig2)
 print(f"Saved: {out2}")

@@ -367,6 +367,7 @@ def floor_plan():
     import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     out = f"{DIAGRAMS_DIR}/container-floorplan.png"
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  {out} saved")
 

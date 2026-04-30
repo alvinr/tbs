@@ -465,6 +465,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet1.png'
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
+plt.savefig(str(out1).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
 plt.close()
 print(f'Saved sheet 1: {out1}')
 
@@ -985,5 +986,6 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet2.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
+plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
 plt.close()
 print(f'Saved sheet 2: {out2}')

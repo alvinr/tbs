@@ -603,6 +603,7 @@ ax1.text(cx_d, frame_y_top + 25, 'SECTION A-A  (HORIZONTAL SCALE 1:5 / VERTICAL 
 
 out1 = 'diagrams/tilt-swing-board-sheet1.png'
 fig1.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
+fig1.savefig(str(out1).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
 plt.close(fig1)
 print(f'  → {out1}  Done.')
 
@@ -944,6 +945,7 @@ for i, (k, v) in enumerate(rows):
 
 out2 = 'diagrams/tilt-swing-board-sheet2.png'
 fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
+fig2.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
 plt.close(fig2)
 print(f'  → {out2}  Done.')
 
@@ -1218,5 +1220,6 @@ ax3.text(695/2, 75, 'No special tooling required beyond M12 socket and 3 mm hex 
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'
 fig3.savefig(out3, dpi=150, bbox_inches='tight', facecolor='white')
+fig3.savefig(str(out3).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
 plt.close(fig3)
 print(f'  → {out3}  Done.')

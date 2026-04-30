@@ -3,3 +3,6 @@ site/
 
 # Auto-generated publish directory — rebuilt by publish.sh on every deploy
 published/
+
+# Generated SVG files — produced alongside PNGs but not committed or published
+diagrams/*.svg

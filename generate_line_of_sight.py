@@ -431,6 +431,7 @@ fig.text(0.99, 0.01, "© 2026 Alvin Richards — GNU AGPLv3",
 # ── Save ──────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/line-of-sight.png"
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 if both_flags:

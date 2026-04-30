@@ -270,6 +270,7 @@ def sheet1():
                 "SCALE: PROPORTIONAL (mm)")
     fig.tight_layout(pad=0.3)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet1.png")
 
@@ -506,6 +507,7 @@ def sheet2():
         title_block(ax_, "2 / 4", "TILT & SWING ELEVATIONS", "SCALE: PROPORTIONAL (mm)")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet2.png")
 
@@ -727,6 +729,7 @@ def sheet3():
         title_block(a, "3 / 4", "HARDWARE DETAILS — 4-CORNER DESIGN")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet3.png")
 
@@ -839,6 +842,7 @@ def sheet4():
 
     title_block(ax, "4 / 4", "MOVEMENT SPECIFICATION")
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
 

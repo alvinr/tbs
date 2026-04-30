@@ -366,6 +366,7 @@ def sheet1():
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet1.png"
     fig.tight_layout(pad=0)
     plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+    plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"Saved: {out}")
 
@@ -546,6 +547,7 @@ def sheet2():
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet2.png"
     fig.tight_layout(pad=0)
     plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+    plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"Saved: {out}")
 

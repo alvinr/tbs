@@ -562,16 +562,16 @@ for rx in [RAIL_X_L, RAIL_X_R]:
 
 # ── FILM PLANE carriage (symbolic) ───────────────────────────────────────────
 # Carriage shown at mid-height and a representative depth (schematic only)
-CAR_H_MID = C_HGT // 2
-CAR_H_SZ  = 300    # half-height of carriage symbol
-ax2.add_patch(mpatches.Rectangle(
-    (mx(FP_X_R) + RAIL_T, CAR_H_MID - CAR_H_SZ), FP_W - 2 * RAIL_T, CAR_H_SZ * 2,
-    facecolor=C_FILM_PLN, edgecolor=C_CL, linewidth=0.8, linestyle="--",
-    alpha=0.55, zorder=3))
-ax2.text(mx((FP_X_L + FP_X_R) / 2), CAR_H_MID,
-        f"Film plane carriage\n(symbolic — {FP_W}mm × {C_HGT}mm active area)",
-        ha="center", va="center", fontsize=FS_SM, color=C_CL,
-        style="italic", zorder=7)
+# CAR_H_MID = C_HGT // 2
+# CAR_H_SZ  = 300    # half-height of carriage symbol
+# ax2.add_patch(mpatches.Rectangle(
+#     (mx(FP_X_R) + RAIL_T, CAR_H_MID - CAR_H_SZ), FP_W - 2 * RAIL_T, CAR_H_SZ * 2,
+#     facecolor=C_FILM_PLN, edgecolor=C_CL, linewidth=0.8, linestyle="--",
+#     alpha=0.55, zorder=3))
+# ax2.text(mx((FP_X_L + FP_X_R) / 2), CAR_H_MID,
+#         f"Film plane carriage\n(symbolic — {FP_W}mm × {C_HGT}mm active area)",
+#         ha="center", va="center", fontsize=FS_SM, color=C_CL,
+#         style="italic", zorder=7)
 
 # Rail anchor marks at floor and ceiling
 for rx in [RAIL_X_L, RAIL_X_R]:
@@ -728,13 +728,15 @@ ax2.text(C_LEN/2, DIM_BOT2 - 280,
         f"  (X={FP_X_L}–{FP_X_R}mm)  from pinhole at X={PH_X}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CONE, style="italic")
 
-# Left/right zone width labels (note swapped labels)
-ax2.text(mx(ZONE_L_END/2), DIM_BOT2 - 80,
-        f"←  IBC zone\n{C_LEN-ZONE_R_START}mm  →", ha="center",
-        fontsize=FS_SM - 0.5, color="#004080")
-ax2.text(mx((ZONE_R_START + C_LEN)/2), DIM_BOT2 - 80,
-        f"←  Drum zone\n{ZONE_L_END}mm  →", ha="center",
-        fontsize=FS_SM - 0.5, color="#805000")
+# Zone width dimension lines — dim2h handles mirroring correctly
+# IBC zone: real X = ZONE_R_START–C_LEN  (appears on LEFT in this view)
+dim2h(ZONE_R_START, C_LEN, DIM_BOT2 - 80,
+      f"IBC zone  {C_LEN - ZONE_R_START}mm",
+      offset=70, fs=FS_SM - 0.5, color="#004080")
+# Drum zone: real X = 0–ZONE_L_END  (appears on RIGHT in this view)
+dim2h(0, ZONE_L_END, DIM_BOT2 - 80,
+      f"Drum zone  {ZONE_L_END}mm",
+      offset=70, fs=FS_SM - 0.5, color="#805000")
 
 # ── Legend ────────────────────────────────────────────────────────────────────
 LEG2_X = C_LEN + 420

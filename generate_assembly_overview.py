@@ -41,7 +41,7 @@ from tbs_constants import (
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-    DRUM_LZ_CX,
+    DRUM_LZ_CX, DRUM_FZ_CX,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -201,10 +201,10 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
 # (X=20–375mm). The drum stub from X=375–600mm shows past the door, clearly inside.
 _drum_x0 = DRUM_LZ_CX - DRUM_EQ_R   # = 310 - 290 = 20mm
 _drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=3)
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
 ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
         "Waste\ndrums\n×2", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=3)
+        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
 leader(ax, _drum_x0 + DRUM_EQ_D, RAIL_OFF + DRUM_EQ_H * 0.6, 800, 1500,
        f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
        f"D-1 near: Yd=25–605mm  |  D-2 far: Yd=1,757–2,337mm\n"
@@ -557,8 +557,8 @@ for rx in [RAIL_X_L, RAIL_X_R]:
             color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 
 # Rail span dimension
-dim2h(RAIL_X_L, RAIL_X_R, C_HGT + 280,
-     f"Rail span  {RAIL_SPAN}mm  (= film plane width)", offset=80, color=RAIL_CLR)
+# dim2h(RAIL_X_L, RAIL_X_R, C_HGT + 280,
+#      f"Rail span  {RAIL_SPAN}mm  (= film plane width)", offset=80, color=RAIL_CLR)
 
 # ── FILM PLANE carriage (symbolic) ───────────────────────────────────────────
 # Carriage shown at mid-height and a representative depth (schematic only)
@@ -618,30 +618,45 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         "Evap\ncooler\n[Yd=0]", ha="center", va="center",
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
-# Waste drums — ghost (behind revolving drum in this view)
-_dlx0 = DRUM_LZ_CX - DRUM_EQ_R
-eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.25, zorder=3,
+# Waste drums: two 55-gal drums, same X column, different Yd.
+# From this viewpoint (Yd=2362 looking toward Yd=0):
+#   DRUM_LZ (Yd=25–605mm)     — behind the revolving drum → ghost, low zorder
+#   DRUM_FZ (Yd=1757–2337mm)  — in front of the revolving drum → solid, high zorder
+_dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 20mm (same X for both drums)
+
+# D-1 (far from viewer — ghost, behind light trap drum)
+eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
     ec="#7A6B5A", lw=0.6)
 
-ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.5, 750, 1400,
+# Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
+
+# D-2 (close to viewer — solid, in front of light trap drum)
+_dfx0 = DRUM_FZ_CX - DRUM_EQ_R   # = 20mm
+eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
+    ec="#7A6B5A", lw=1.0)
+ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,
+        "Waste\ndrum D-2\n(front)",
+        ha="center", va="center", fontsize=FS_SM - 1, color="#3D2E22", zorder=8)
+
+ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
     "Hinged panel +\nRevolving drum  Ø{0}mm × {1}mm H\n(cargo door, right in this view)".format(DRUM_D, DRUM_H_ELV),
     ha="left", fs=FS_SM)
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — IBCs ─────────────────────
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=3)
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=6)
 ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
         "Brown IBC x1\n(600L, behind)", ha="center", va="center",
-        fontsize=FS_SM - 1, color="#FFFFFF", zorder=4)
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
 eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, alpha=0.80, zorder=5)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2,
+ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2 + 200,
         "Blue IBC x2\nstacked (front)\n2×600L", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
         [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-ldr2(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, C_LEN - 1500, 2800,
+ldr2(IBC_COL_X + IBC_W/2 + 400, RAIL_OFF + IBC_H_STK, C_LEN - 50, 2800,
     f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
     f"(far end, left in this view)", ha="right", fs=FS_SM)
 
@@ -677,7 +692,7 @@ ax2.text(C_LEN - 30, FAN_B_H, "FAN\nOUT", ha="center", va="center",
 ax2.annotate("", xy=(C_LEN - 60, FAN_B_H), xytext=(60, FAN_A_H),
             arrowprops=dict(arrowstyle="-|>", color=C_FAN, lw=1.2,
                             linestyle="dashed"), zorder=4)
-ax2.text((C_LEN)/2, (FAN_A_H + FAN_B_H)/2 - 200,
+ax2.text((C_LEN)/2 - 1200, (FAN_A_H + FAN_B_H)/2 - 200,
         "Cross-ventilation diagonal\nlow IN → high OUT", ha="center",
         fontsize=FS_SM - 1, color=C_FAN, style="italic", zorder=5)
 
@@ -753,7 +768,7 @@ for i, (col, lbl) in enumerate(legend2):
 # ── Title block ───────────────────────────────────────────────────────────────
 TB2_X = C_LEN + 420
 TB2_Y = -450
-TB2_W = 1380
+TB2_W = 1550
 TB2_H = 420
 
 ax2.add_patch(mpatches.Rectangle((TB2_X, TB2_Y), TB2_W, TB2_H,

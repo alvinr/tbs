@@ -194,6 +194,7 @@ ax1.text(2.4, 7.12, "BV-01", ha="center", fontsize=6, color=C_BLUE)
 
 # Pump P1
 pipe(ax1, 2.4, 7.0, 2.4, 6.5, C_BLUE)
+arrow_pipe(ax1, 2.4, 6.9, 2.4, 6.6, color=C_BLUE)
 pump(ax1, 2.4, 6.3, color=C_BLUE)
 ax1.text(2.75, 6.3, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BLUE)
 
@@ -205,6 +206,7 @@ ax1.text(2.4, 5.35, "ACC-01\n1 GAL", ha="center", va="center",
 
 # Valve + run to processing
 pipe(ax1, 2.4, 5.12, 2.4, 4.5, C_BLUE)
+arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
@@ -242,6 +244,7 @@ ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
 
 # Brown pump P2 — outlet from bottom of IBC-3
 pipe(ax1, 6.4, 7.48, 6.4, 5.6, C_BROWN)
+arrow_pipe(ax1, 6.4, 7.0, 6.4, 6.0, color=C_BROWN)       # downward from IBC-3
 pump(ax1, 6.4, 5.4, color=C_BROWN)
 ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BROWN)
 
@@ -257,6 +260,7 @@ ax1.text(7.1, 4.88, "FILTER SKID", ha="center", fontsize=7.5,
 filter_sym(ax1, 6.0, 3.9, label="F1")
 ax1.text(6.0, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
+arrow_pipe(ax1, 6.3, 4.6, 6.1, 4.6, color=C_BROWN)       # leftward to F1
 pipe(ax1, 6.0, 4.6, 6.0, 4.0, C_BROWN)
 pipe(ax1, 6.0, 3.8, 6.0, 3.55, C_BROWN)
 
@@ -265,19 +269,23 @@ filter_sym(ax1, 7.1, 3.9, label="F2")
 ax1.text(7.1, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.0, 3.55, 6.0, 3.25, C_BROWN)
 pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
+arrow_pipe(ax1, 6.4, 3.25, 6.8, 3.25, color=C_BROWN)     # rightward F1→F2
 pipe(ax1, 7.1, 3.25, 7.1, 3.55, C_BROWN)
 pipe(ax1, 7.1, 3.8, 7.1, 4.6, C_BROWN)
+arrow_pipe(ax1, 7.1, 4.0, 7.1, 4.4, color=C_BROWN)       # upward F2 out
 
 # Filter 3 — GAC carbon
 filter_sym(ax1, 8.2, 3.9, label="F3")
 ax1.text(8.2, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 7.1, 4.6, 7.1, 4.6, C_BROWN)
 pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
+arrow_pipe(ax1, 7.5, 4.6, 7.9, 4.6, color=C_BROWN)       # rightward F2→F3
 pipe(ax1, 8.2, 4.6, 8.2, 4.0, C_BROWN)
 pipe(ax1, 8.2, 3.8, 8.2, 3.25, C_BROWN)
 
 # pH test point
 pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)
+arrow_pipe(ax1, 8.6, 3.25, 9.1, 3.25, color=C_BROWN)     # rightward to DV-01
 box(ax1, 9.15, 3.25, 0.45, 0.35, fc="#FFF176", ec="#F9A825", lw=1.5)
 ax1.text(9.15, 3.25, "pH\nTEST", ha="center", va="center", fontsize=5.5,
          color="#E65100")
@@ -289,44 +297,57 @@ ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
 # Path back to Blue IBC
 pipe(ax1, 9.7, 3.5, 9.7, 9.0, C_BLUE, style="--")
+arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.5, color=C_BLUE)        # upward return
 pipe(ax1, 9.7, 9.0, 3.3, 9.0, C_BLUE, style="--")
+arrow_pipe(ax1, 7.5, 9.0, 5.0, 9.0, color=C_BLUE)        # leftward return
 pipe(ax1, 3.3, 9.0, 3.3, 8.9, C_BLUE, style="--")
 ax1.text(6.5, 9.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 
+# Drum geometry — defined here for use in both path-to-black and black system
+D1_X, D2_X = 11.07, 12.23  # 1/3 and 2/3 across Black zone (X=9.9–13.4)
+D_Y  = 7.5                  # raised from 6.5; centred in visual space
+DR   = 0.42                 # drum radius
+
 # Path to Black system
 pipe(ax1, 9.7, 3.0, 9.7, 2.5, C_BLACK)
-pipe(ax1, 9.7, 2.5, 11.2, 2.5, C_BLACK)
-arrow_pipe(ax1, 11.0, 2.5, 11.65, 2.5, color=C_BLACK)
+arrow_pipe(ax1, 9.7, 2.85, 9.7, 2.6, color=C_BLACK)       # downward from DV-01
+pipe(ax1, 9.7, 2.5, D1_X, 2.5, C_BLACK)
+arrow_pipe(ax1, 10.3, 2.5, D1_X, 2.5, color=C_BLACK)      # rightward to D1
 
 # ── BLACK SYSTEM ──────────────────────────────────────────────────────────────
-# Drum D1
-drum(ax1, 11.65, 6.5, r=0.42, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+drum(ax1, D1_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
      label="DRUM-1\n55 GAL\nWASTE")
-# Drum D2
-drum(ax1, 12.95, 6.5, r=0.42, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
      label="DRUM-2\n55 GAL\nWASTE")
 
-# Direct drain from processing (heavy contamination bypass)
-pipe(ax1, 15.65, 5.0, 11.65, 5.0, C_BLACK, style="-.")
-pipe(ax1, 11.65, 5.0, 11.65, 6.08, C_BLACK)
+# Heavy contamination bypass — horizontal dash-dot from processing floor to D1
+pipe(ax1, 15.65, 5.0, D1_X, 5.0, C_BLACK, style="-.")
+arrow_pipe(ax1, 14.2, 5.0, 12.5, 5.0, color=C_BLACK)      # leftward bypass flow
 ax1.text(13.5, 4.82, "HEAVY CONTAM. BYPASS (BV-04)", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
-# Fill drum from diverter
-pipe(ax1, 11.65, 2.5, 11.65, 6.08, C_BLACK)
-pipe(ax1, 11.65, 7.0, 11.65, 7.5, C_BLACK, style="--")
-pipe(ax1, 11.65, 7.5, 12.95, 7.5, C_BLACK, style="--")
-pipe(ax1, 12.95, 7.5, 12.95, 6.92, C_BLACK, style="--")
-ax1.text(12.3, 7.65, "OVERFLOW →\nDRUM-2", ha="center", fontsize=6, color=C_BLACK)
+# Fill D1 — vertical from diverter level (Y=2.5) to drum bottom (bypass joins at Y=5.0)
+pipe(ax1, D1_X, 2.5, D1_X, D_Y - DR, C_BLACK)
+arrow_pipe(ax1, D1_X, 4.0, D1_X, 6.0, color=C_BLACK)      # upward flow to D1
 
-# Disposal arrow
-pipe(ax1, 12.95, 6.08, 12.95, 5.5, C_BLACK)
-pipe(ax1, 12.95, 5.5, 13.5, 5.5, C_BLACK)
-ax1.annotate("", xy=(13.5, 5.5), xytext=(13.2, 5.5),
+# Overflow from D1 top → D2 top
+OV_Y = D_Y + DR + 0.25
+pipe(ax1, D1_X, D_Y + DR, D1_X, OV_Y, C_BLACK, style="--")
+pipe(ax1, D1_X, OV_Y, D2_X, OV_Y, C_BLACK, style="--")
+arrow_pipe(ax1, D1_X + 0.3, OV_Y, D2_X - 0.1, OV_Y, color=C_BLACK)
+pipe(ax1, D2_X, OV_Y, D2_X, D_Y + DR, C_BLACK, style="--")
+ax1.text((D1_X + D2_X) / 2, OV_Y + 0.14,
+         "OVERFLOW →\nDRUM-2", ha="center", fontsize=6, color=C_BLACK)
+
+# Disposal from D2 bottom
+DISP_Y = D_Y - DR - 0.55
+pipe(ax1, D2_X, D_Y - DR, D2_X, DISP_Y, C_BLACK)
+pipe(ax1, D2_X, DISP_Y, 13.5, DISP_Y, C_BLACK)
+ax1.annotate("", xy=(13.5, DISP_Y), xytext=(13.2, DISP_Y),
              arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=2,
                              mutation_scale=14), zorder=4)
-ax1.text(13.55, 5.5, "TO APPROVED\nDISPOSAL SITE", ha="left",
+ax1.text(13.55, DISP_Y, "TO APPROVED\nDISPOSAL SITE", ha="left",
          fontsize=6.5, color=C_BLACK, fontweight="bold", va="center")
 
 # ── PROCESSING AREA ───────────────────────────────────────────────────────────
@@ -363,6 +384,7 @@ valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
 # to brown — vertical to Y=6.3, then left along existing horizontal drain pipe
 pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)
+arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)     # upward drain return
 # to black
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
 pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)
@@ -394,9 +416,10 @@ legend_items = [
     (C_BROWN, "-",  "Brown — Used/recyclable water (1\" HDPE)"),
     (C_BLACK, "-",  "Black — Waste water (1\" HDPE)"),
     (C_BLUE,  "--", "Dashed — Return / fill lines"),
+    (C_BLACK, "-.", "Dash-dot — Heavy contamination bypass"),
 ]
 for i, (col, ls, lbl) in enumerate(legend_items):
-    yy = ly - 0.12 - i * 0.27
+    yy = ly - 0.12 - i * 0.24
     ax1.plot([lx, lx + 0.5], [yy, yy], color=col, lw=2.2, ls=ls, zorder=7)
     ax1.text(lx + 0.62, yy, lbl, va="center", fontsize=6.5, color=C_TEXT, zorder=7)
 

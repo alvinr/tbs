@@ -378,10 +378,15 @@ ax1.text(15.65, 8.2, "FLOOD/SPRAY BAR (3/4\" HDPE)",
          ha="center", fontsize=6.5, color=C_BLUE)
 
 # ── Legend ────────────────────────────────────────────────────────────────────
+# Box aligned with Blue System zone (X=0.3, width=4.5)
 lx, ly = 0.4, 2.8
-ax1.add_patch(plt.Rectangle((lx - 0.1, ly - 1.25), 4.6, 1.5,
+BOX_W = 4.5    # matches Blue System box width
+BOX_H = 1.5
+BOX_X = lx - 0.1   # = 0.3
+BOX_Y = ly - 1.25  # = 1.55
+ax1.add_patch(plt.Rectangle((BOX_X, BOX_Y), BOX_W, BOX_H,
                              fc="white", ec=C_FRAME, lw=1, zorder=6))
-ax1.text(lx + 2.1, ly + 0.1, "LEGEND", ha="center", fontsize=8,
+ax1.text(BOX_X + BOX_W / 2, ly + 0.1, "LEGEND", ha="center", fontsize=8,
          fontweight="bold", color=C_TITLE, zorder=7)
 legend_items = [
     (C_BLUE,  "-",  "Blue  — Clean water supply (1\" HDPE)"),
@@ -394,19 +399,23 @@ for i, (col, ls, lbl) in enumerate(legend_items):
     ax1.plot([lx, lx + 0.5], [yy, yy], color=col, lw=2.2, ls=ls, zorder=7)
     ax1.text(lx + 0.62, yy, lbl, va="center", fontsize=6.5, color=C_TEXT, zorder=7)
 
-# Symbol legend
+# ── Symbols box — same styling as legend, aligned with Brown System zone ──────
+# Brown System zone: X=5.1, width=4.5 → right edge = 9.6
+SYM_X = 5.1   # Brown System left edge
+ax1.add_patch(plt.Rectangle((SYM_X, BOX_Y), BOX_W, BOX_H,
+                             fc="white", ec=C_FRAME, lw=1, zorder=6))
+ax1.text(SYM_X + BOX_W / 2, ly + 0.1, "SYMBOLS", ha="center", fontsize=8,
+         fontweight="bold", color=C_TITLE, zorder=7)
 syms = [
-    ("P-xx", "Pump (12V DC diaphragm)"),
-    ("BV-xx", "Ball valve (manual)"),
-    ("3W-DV", "3-way diverter valve"),
-    ("F1/F2/F3", "Filter cartridge"),
-    ("ACC", "Pressure accumulator"),
+    ("P-xx",      "Pump (12V DC diaphragm)"),
+    ("BV-xx",     "Ball valve (manual)"),
+    ("3W-DV",     "3-way diverter valve"),
+    ("F1/F2/F3",  "Filter cartridge"),
+    ("ACC",       "Pressure accumulator"),
 ]
-ax1.text(lx, ly - 1.55, "SYMBOLS:", fontsize=7, fontweight="bold",
-         color=C_TITLE, zorder=7)
 for i, (sym, desc) in enumerate(syms):
-    ax1.text(lx, ly - 1.8 - i * 0.22,
-             f"  {sym} — {desc}", fontsize=6.2, color=C_TEXT, zorder=7)
+    ax1.text(SYM_X + 0.15, ly - 0.17 - i * 0.25,
+             f"{sym} — {desc}", va="center", fontsize=6.2, color=C_TEXT, zorder=7)
 
 plt.tight_layout(pad=0.3)
 fig1.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

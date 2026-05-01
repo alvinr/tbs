@@ -20,7 +20,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from tbs_constants import (
-    IBC_COL_X, ZONE_R_START,
+    IBC_COL_X, ZONE_L_END, ZONE_R_START,
     DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
@@ -542,6 +542,16 @@ ax2.plot([8.25, 8.25], [0.32, 0.68], color="#388E3C", lw=1.2, zorder=5)
 ax2.text(8.25, 0.18, "FLOOR DRAIN\n3W-DV-02", ha="center",
          fontsize=6, color="#388E3C")
 
+# Left end zone shading (X=0–625mm = drum zone)
+ZONE_L_DX = ZONE_L_END * SX   # = 625mm → ≈ 1.27
+ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
+              fc="#FFF3E0", ec="none", alpha=0.45, zorder=0))
+ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",
+         zorder=6)
+ax2.text(ZONE_L_DX - 0.05, CH - 0.15,
+         f"LEFT END ZONE\nX=0–{ZONE_L_END:,}mm\n(drum zone)",
+         ha="right", va="top", fontsize=6.5, color="#805000", fontweight="bold")
+
 # Right end zone shading (X=4649–5893mm in drawing)
 ZONE_R_DX = ZONE_R_START * SX   # ≈ 9.45
 ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
@@ -552,11 +562,11 @@ ax2.text(ZONE_R_DX + 0.05, CH - 0.15,
          f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(shadow-free, IBCs only)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
-# Pinhole/lens wall (left end)
-ax2.add_patch(plt.Rectangle((-0.15, 0.0), 0.15, CH, fc="#BDBDBD", ec=C_FRAME,
+# Pinhole wall — BOTTOM of plan view (Yd=0 = near side, pinhole aperture wall)
+ax2.add_patch(plt.Rectangle((0.0, -0.15), CW, 0.15, fc="#BDBDBD", ec=C_FRAME,
                              lw=2, zorder=5))
-ax2.text(-0.08, CH/2, "FRONT\nWALL\n(PINHOLE)", ha="center", va="center",
-         fontsize=6, color="#333", rotation=90, zorder=6)
+ax2.text(CW / 2, -0.08, "PINHOLE WALL (FRONT — Yd = 0)",
+         ha="center", va="center", fontsize=6, color="#333", zorder=6)
 
 # Dimensions
 def dim_h(ax, x1, x2, y, label, color=C_DIM, offset=0.25):
@@ -574,16 +584,17 @@ def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
     ax.text(xx - 0.1, (y1+y2)/2, label, ha="right", va="center",
             fontsize=6.5, color=color, rotation=90)
 
-dim_h(ax2, 0, CW, -0.1, "5,893 mm (CONTAINER INTERIOR)")
-dim_v(ax2, 0, 0, CH, "2,362 mm")
+dim_h(ax2, 0, CW, -0.35, "5,893 mm (CONTAINER INTERIOR)")
+dim_v(ax2, -0.2, 0, CH, "2,362 mm")
 dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
-dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm")
+dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", color="#805000")
+dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", color="#004080")
 
-# Orientation arrow — points toward pinhole/front wall (left side, X=0)
-ax2.annotate("", xy=(0.3, 5.7), xytext=(2.5, 5.7),
+# Orientation arrow — points toward pinhole wall (bottom, Yd=0)
+ax2.annotate("", xy=(CW + 0.3, 0.4), xytext=(CW + 0.3, 1.6),
              arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.5,
                              mutation_scale=12))
-ax2.text(1.4, 5.95, "FRONT (PINHOLE END)", ha="center", fontsize=6,
+ax2.text(CW + 0.3, 1.8, "FRONT\n(PINHOLE\nWALL)", ha="center", fontsize=6,
          color=C_FRAME)
 
 plt.tight_layout(pad=0.5)

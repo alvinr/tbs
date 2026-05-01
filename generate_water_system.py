@@ -361,8 +361,8 @@ ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
 # 3-way valve at drain
 valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
-# to brown
-pipe(ax1, 15.1, 3.6, 9.8, 6.3, C_BROWN, lw=1.8)
+# to brown — vertical to Y=6.3, then left along existing horizontal drain pipe
+pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)
 # to black
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
 pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)

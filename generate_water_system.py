@@ -72,7 +72,7 @@ def tank(ax, x, y, w, h, fc="white", ec=C_FRAME, label="", sublabel="",
                 color=ec, lw=lw, zorder=zorder)
     # label
     if label:
-        ax.text(x, y + 0.03, label, ha="center", va="center",
+        ax.text(x - 0.5, y + 0.55, label, ha="center", va="center",
                 fontsize=7.5, fontweight="bold", color=C_TEXT, zorder=zorder + 1)
     if sublabel:
         ax.text(x, y - 0.06, sublabel, ha="center", va="center",
@@ -190,7 +190,7 @@ pipe(ax1, 1.5, 7.0, 3.3, 7.0, C_BLUE)  # crossmember
 
 # Valve on outlet
 valve(ax1, 2.4, 7.0, color=C_BLUE)
-ax1.text(2.4, 6.82, "BV-01", ha="center", fontsize=6, color=C_BLUE)
+ax1.text(2.4, 7.12, "BV-01", ha="center", fontsize=6, color=C_BLUE)
 
 # Pump P1
 pipe(ax1, 2.4, 7.0, 2.4, 6.5, C_BLUE)
@@ -206,7 +206,7 @@ ax1.text(2.4, 5.35, "ACC-01\n1 GAL", ha="center", va="center",
 # Valve + run to processing
 pipe(ax1, 2.4, 5.12, 2.4, 4.5, C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
-ax1.text(2.4, 4.32, "BV-02", ha="center", fontsize=6, color=C_BLUE)
+ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
 # Run east to processing zone
 pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
@@ -232,7 +232,7 @@ tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN, lw=2,
 # Inlet from processing floor drain
 pipe(ax1, 6.4, 7.48, 6.4, 7.0, C_BROWN)
 valve(ax1, 6.4, 7.0, color=C_BROWN)
-ax1.text(6.4, 6.82, "BV-03", ha="center", fontsize=6, color=C_BROWN)
+ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
 # Arrow from processing area
 pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
@@ -240,8 +240,7 @@ arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
 
-# Brown pump P2
-pipe(ax1, 6.4, 7.48, 6.4, 9.0, C_BROWN)  # outlet from bottom of IBC
+# Brown pump P2 — outlet from bottom of IBC-3
 pipe(ax1, 6.4, 7.48, 6.4, 5.6, C_BROWN)
 pump(ax1, 6.4, 5.4, color=C_BROWN)
 ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BROWN)

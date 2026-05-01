@@ -507,7 +507,7 @@ ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BRO
 
 # ACC accumulator
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
-ax2.text(1.3, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
+ax2.text(1.45, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
 
 # 55-gal drums D-1, D-2 — LEFT end zone, one per Yd corner (rev 4: unstacked)
 DRUM_R_DU = DRUM_EQ_R * SY    # radius in drawing units
@@ -548,7 +548,7 @@ ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
               fc="#FFF3E0", ec="none", alpha=0.45, zorder=0))
 ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",
          zorder=6)
-ax2.text(ZONE_L_DX - 0.05, CH - 0.15,
+ax2.text(ZONE_L_DX - 0.05, -CH/6, #CH - 0.15,
          f"LEFT END ZONE\nX=0–{ZONE_L_END:,}mm\n(drum zone)",
          ha="right", va="top", fontsize=6.5, color="#805000", fontweight="bold")
 
@@ -558,7 +558,7 @@ ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
               fc="#E8F0FF", ec="none", alpha=0.45, zorder=0))
 ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
          zorder=6)
-ax2.text(ZONE_R_DX + 0.05, CH - 0.15,
+ax2.text(ZONE_R_DX + 0.05, -CH/6,
          f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(shadow-free, IBCs only)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 

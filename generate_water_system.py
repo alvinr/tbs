@@ -13,6 +13,7 @@ Output:
 """
 
 import math
+import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -129,6 +130,23 @@ def note(ax, x, y, txt, fs=6.5, color=C_TEXT):
     ax.text(x, y, txt, ha="left", va="center", fontsize=fs, color=color,
             zorder=10)
 
+def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE, zorder=11):
+    """Draw a pipe-crossing bridge hump on the 'over' pipe.
+    direction: 'h' = bridging pipe is horizontal (arc humps upward)
+               'v' = bridging pipe is vertical (arc humps rightward)
+    A white-filled semicircle masks the underlying pipe, then the arc is drawn.
+    """
+    if direction == 'h':
+        theta = np.linspace(0, np.pi, 40)
+        bx = x + r * np.cos(theta)
+        by = y + r * np.sin(theta)
+    else:
+        theta = np.linspace(-np.pi / 2, np.pi / 2, 40)
+        bx = x + r * np.cos(theta)
+        by = y + r * np.sin(theta)
+    ax.fill(bx, by, color='white', zorder=zorder - 1)
+    ax.plot(bx, by, color=color, lw=lw, zorder=zorder, solid_capstyle='round')
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — SYSTEM FLOW SCHEMATIC (P&ID overview)
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -175,6 +193,12 @@ ax1.add_patch(plt.Rectangle((13.6, 1.3), 4.1, 9.4, fc=C_PROC, ec="#388E3C",
 ax1.text(15.65, 10.5, "PROCESSING AREA",
          ha="center", fontsize=8, fontweight="bold", color="#2E7D32", zorder=5)
 
+# ── Shared geometry constants (used across multiple systems) ──────────────────
+D1_X, D2_X = 11.07, 12.23  # drum X centers — 1/3 and 2/3 across Black zone (9.9–13.4)
+D_Y  = 7.5                  # drum centre Y (raised)
+DR   = 0.42                 # drum radius
+BR   = 0.14                 # pipe-crossing bridge hump radius
+
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
 # IBC1 Clean water A
 tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
@@ -210,8 +234,10 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to processing zone
+# Run east to processing zone — humps over blue return (X=9.7) and black vertical (D1_X)
 pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
+pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
 arrow_pipe(ax1, 14.6, 3.8, 15.5, 3.8, color=C_BLUE)
 ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
@@ -236,8 +262,10 @@ pipe(ax1, 6.4, 7.48, 6.4, 7.0, C_BROWN)
 valve(ax1, 6.4, 7.0, color=C_BROWN)
 ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
-# Arrow from processing area
+# Arrow from processing area — humps over blue return (X=9.7) and black vertical (D1_X)
 pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
+pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE)
+pipe_bridge(ax1, D1_X,  6.3, color=C_BROWN, lw=LW_PIPE)
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
@@ -295,19 +323,16 @@ pipe(ax1, 9.4, 3.25, 9.7, 3.25, C_BROWN)
 valve(ax1, 9.7, 3.25, color="#777777", size=0.05)
 ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
-# Path back to Blue IBC
-pipe(ax1, 9.7, 3.5, 9.7, 9.0, C_BLUE, style="--")
-arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.5, color=C_BLUE)        # upward return
+# Path back to Blue IBC — split at Y=3.8 (blue supply crosses over) and Y=6.3 (brown drain crosses over)
+pipe(ax1, 9.7, 3.5,        9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
+pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
+pipe(ax1, 9.7, 6.3 + BR,   9.7, 9.0,       C_BLUE, style="--")   # above brown drain
+arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
 pipe(ax1, 9.7, 9.0, 3.3, 9.0, C_BLUE, style="--")
-arrow_pipe(ax1, 7.5, 9.0, 5.0, 9.0, color=C_BLUE)        # leftward return
+arrow_pipe(ax1, 7.5, 9.0, 5.0, 9.0, color=C_BLUE)                # leftward return
 pipe(ax1, 3.3, 9.0, 3.3, 8.9, C_BLUE, style="--")
 ax1.text(6.5, 9.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
-
-# Drum geometry — defined here for use in both path-to-black and black system
-D1_X, D2_X = 11.07, 12.23  # 1/3 and 2/3 across Black zone (X=9.9–13.4)
-D_Y  = 7.5                  # raised from 6.5; centred in visual space
-DR   = 0.42                 # drum radius
 
 # Path to Black system
 pipe(ax1, 9.7, 3.0, 9.7, 2.5, C_BLACK)
@@ -323,13 +348,18 @@ drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
 
 # Heavy contamination bypass — horizontal dash-dot from processing floor to D1
 pipe(ax1, 15.65, 5.0, D1_X, 5.0, C_BLACK, style="-.")
+pipe_bridge(ax1, 15.1, 5.0, color=C_BLACK, lw=1.8)        # hump over brown drain return
+valve(ax1, 14.5, 5.0, color=C_BLACK)                       # BV-04
+ax1.text(14.5, 5.18, "BV-04", ha="center", fontsize=6, color=C_BLACK)
 arrow_pipe(ax1, 14.2, 5.0, 12.5, 5.0, color=C_BLACK)      # leftward bypass flow
-ax1.text(13.5, 4.82, "HEAVY CONTAM. BYPASS (BV-04)", ha="center",
+ax1.text(13.5, 4.82, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
-# Fill D1 — vertical from diverter level (Y=2.5) to drum bottom (bypass joins at Y=5.0)
-pipe(ax1, D1_X, 2.5, D1_X, D_Y - DR, C_BLACK)
-arrow_pipe(ax1, D1_X, 4.0, D1_X, 6.0, color=C_BLACK)      # upward flow to D1
+# Fill D1 — vertical split at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
+pipe(ax1, D1_X, 2.5,       D1_X, 3.8 - BR,  C_BLACK)       # below blue supply
+pipe(ax1, D1_X, 3.8 + BR,  D1_X, 6.3 - BR,  C_BLACK)       # between crossings
+pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)       # above brown drain
+arrow_pipe(ax1, D1_X, 4.2, D1_X, 5.8, color=C_BLACK)       # upward flow to D1
 
 # Overflow from D1 top → D2 top
 OV_Y = D_Y + DR + 0.25
@@ -382,9 +412,10 @@ ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
 # 3-way valve at drain
 valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
-# to brown — vertical to Y=6.3, then left along existing horizontal drain pipe
-pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)
-arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)     # upward drain return
+# to brown — split at Y=5.0 (heavy contam bypass crosses over)
+pipe(ax1, 15.1, 3.6,       15.1, 5.0 - BR, C_BROWN, lw=1.8)   # below bypass crossing
+pipe(ax1, 15.1, 5.0 + BR,  15.1, 6.3,      C_BROWN, lw=1.8)   # above bypass crossing
+arrow_pipe(ax1, 15.1, 4.1, 15.1, 4.8, color=C_BROWN)          # upward drain return
 # to black
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
 pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)

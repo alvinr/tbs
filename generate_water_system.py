@@ -579,11 +579,11 @@ dim_v(ax2, 0, 0, CH, "2,362 mm")
 dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
 dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm")
 
-# North arrow
-ax2.annotate("", xy=(12.3, 5.9), xytext=(12.3, 5.3),
+# Orientation arrow — points toward pinhole/front wall (left side, X=0)
+ax2.annotate("", xy=(0.3, 5.7), xytext=(2.5, 5.7),
              arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.5,
                              mutation_scale=12))
-ax2.text(12.3, 5.1, "FRONT\n(PINHOLE END)", ha="center", fontsize=6,
+ax2.text(1.4, 5.95, "FRONT (PINHOLE END)", ha="center", fontsize=6,
          color=C_FRAME)
 
 plt.tight_layout(pad=0.5)

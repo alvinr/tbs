@@ -228,9 +228,9 @@ ax1.plot([6, 474], [65, 65], color='black', lw=0.5)
 
 # ── View titles ───────────────────────────────────────────────────────────────
 view_titles = [
-    (95, 455, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
-    (268, 455, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
-    (441, 455, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
+    (95, 355, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
+    (268, 355, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
+    (441, 355, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
 ]
 for tx, ty, t1, t2 in view_titles:
     ax1.text(tx, ty, t1, ha='center', fontsize=7.5, fontweight='bold', color='black')
@@ -445,7 +445,7 @@ ax3.text(cx3, cy3 + hw + 5, '  ', fontsize=1)  # spacer
 
 # ── Notes block ──────────────────────────────────────────────────────────────
 notes_x = 10
-notes_y = 475
+notes_y = 175
 ax1.text(notes_x, notes_y, 'GENERAL NOTES:', fontsize=7, fontweight='bold', color='black')
 notes = [
     '1. ALL DIMENSIONS IN MILLIMETRES. DO NOT SCALE DRAWING.',

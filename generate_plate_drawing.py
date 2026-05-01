@@ -543,7 +543,7 @@ for region in [(-wall_h/2, -apt_half), (apt_half, wall_h/2)]:
             ax2.plot([wall_left, wall_left + ss(WALL_T)], [y0, y0 + ss(WALL_T)],
                      color='#888', lw=0.4)
 
-ax2.text(wall_left - 3, scy, 'CONTAINER\nWALL\n(2mm steel)', ha='right',
+ax2.text(wall_left - 3, scy-9, 'CONTAINER\nWALL\n(2mm steel)', ha='right',
          va='center', fontsize=5, color='#444')
 
 # ── Wall Frame (steel 6mm plate, item 1) ──────────────────────────────────────
@@ -578,7 +578,7 @@ for sign in [-1, 1]:
         (fr_right - ss(SEAL_W/2), groove_y - sign*ss(SEAL_W/4) + sign*ss(1.5)),
         ss(1.5), fc=C_GASKT, ec='none', zorder=7))
 
-ax2.text(fr_right + 3, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
+ax2.text(fr_right + 6, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
          va='center', fontsize=5.5, color='black')
 # dim: frame thickness
 draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 8, '6', above=True, fontsize=5.5, scale=0.6)
@@ -641,7 +641,7 @@ ax2.add_patch(mpatches.Rectangle(
     (pl_right - ss(PH_CB_DEP), scy - ss(PH_DISC_D/2)),
     ss(PH_DISC_T * 30), ss(PH_DISC_D),   # exaggerated for visibility
     fc='#888', ec=C_OUT, lw=1.2, zorder=8))
-ax2.text(pl_right + 6, scy - ss(PH_DISC_D/2) - 5,
+ax2.text(pl_right + 3, scy - ss(PH_DISC_D/2) - 5,
          'ITEM 3\nPINHOLE DISC\n(Ø50 × 0.1mm SS)', fontsize=5, color='black',
          ha='left')
 
@@ -665,13 +665,13 @@ draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600', right=True, fontsiz
 ax2.annotate('', xy=(fr_left, scy + fr_apt_half),
              xytext=(fr_left, scy - fr_apt_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(fr_left - 12, scy, 'Ø350\nAPT', ha='center', fontsize=5, color=C_DIM)
+ax2.text(fr_left - 16, scy+3, 'Ø350\nAPT', ha='center', fontsize=5, color=C_DIM)
 
 # Dim: taper bore
 ax2.annotate('', xy=(pl_left, scy + ext_bore_half),
              xytext=(pl_left, scy - ext_bore_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_left - 12, scy, 'Ø90\nBORE', ha='center', fontsize=5, color=C_DIM)
+ax2.text(pl_left - 10, scy, 'Ø90\nBORE', ha='center', fontsize=5, color=C_DIM)
 
 # Dim counterbore
 ax2.annotate('', xy=(pl_right, scy + cb_half),
@@ -697,9 +697,9 @@ ax2.text(pl_right + 10, scy + pl_half*0.8, 'INTERIOR\n(CAMERA)', ha='left',
          fontsize=6.5, color='#333', style='italic')
 
 # Section title
-ax2.text(scx, scy - pl_half - 16, 'SECTION A-A', ha='center', fontsize=8,
+ax2.text(scx - 75, scy - pl_half - 16, 'SECTION A-A', ha='center', fontsize=8,
          fontweight='bold', color=C_RED)
-ax2.text(scx, scy - pl_half - 24, '1:4 scale  —  Pinhole Plate (Item 2) installed', ha='center',
+ax2.text(scx - 75, scy - pl_half - 24, '1:4 scale  —  Pinhole Plate (Item 2) installed', ha='center',
          fontsize=6, color='#555')
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -803,7 +803,7 @@ def sc(mm): return mm * SC10
 # dcx, dcy = 490, 190  # centre of detail C
 dcx, dcy = 490, 130  # centre of detail C
 
-ax2.text(dcx, 265, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
+ax2.text(dcx, 225, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
          fontsize=8, fontweight='bold')
 ax2.text(dcx, 258, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
          fontsize=6, color='#555')
@@ -851,7 +851,7 @@ ax2.add_patch(mpatches.Rectangle((plate_x, dcy - 25), step_depth, step_width + 2
 # Neoprene cord seal in wall frame groove (shown as circle in the seal groove)
 ax2.add_patch(mpatches.Circle((frame_face_x - sc(SEAL_W/2), dcy + step_width + 8),
               sc(1.5), fc=C_GASKT, ec='none', zorder=6))
-ax2.text(frame_face_x - 20, dcy + step_width + 20, 'NEOPRENE\nSEAL Ø4\n(ITEM 9)',
+ax2.text(frame_face_x - 20, dcy + step_width + 25, 'NEOPRENE\nSEAL Ø4\n(ITEM 9)',
          ha='center', fontsize=5, color=C_GASKT)
 
 # Light path arrow (showing no light path through the labyrinth)
@@ -878,7 +878,7 @@ def sd(mm): return mm * SC2
 
 ddx, ddy = 340, 200   # centre — moved right to avoid Section A-A overlap
 
-ax2.text(ddx, ddy + 130, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
+ax2.text(ddx+5, ddy + 130, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
          fontsize=8, fontweight='bold')
 ax2.text(ddx, ddy + 123, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
 
@@ -965,7 +965,7 @@ ax2.text(pl_right_d + 18, ddy, 'Ø174.5\nTUBE OD', ha='left', fontsize=5.5, colo
 draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 12, '15', above=False,
            fontsize=5.5, scale=0.5)
 
-ax2.text(ddx, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
+ax2.text(ddx - 30, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
          fontsize=6.5, fontweight='bold', color=C_RED)
 
 # ── Sheet 2 notes ─────────────────────────────────────────────────────────────

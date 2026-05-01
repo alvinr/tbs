@@ -436,7 +436,7 @@ fig2.text(0.5, 0.94, "SHEET 2 OF 2 — PLAN VIEW (INSIDE CONTAINER)  |  "
 
 # ── Plan view ─────────────────────────────────────────────────────────────────
 ax2.set_xlim(-0.5, 12.5)
-ax2.set_ylim(-0.5, 10)
+ax2.set_ylim(-0.8, 6.8)
 ax2.set_aspect("equal")
 
 # Container outline (20ft = 6096 mm; 8ft = 2438 mm → scaled ×1/25)
@@ -580,10 +580,10 @@ dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
 dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm")
 
 # North arrow
-ax2.annotate("", xy=(12.2, 9.8), xytext=(12.2, 9.2),
+ax2.annotate("", xy=(12.3, 5.9), xytext=(12.3, 5.3),
              arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.5,
                              mutation_scale=12))
-ax2.text(12.2, 9.0, "FRONT\n(PINHOLE END)", ha="center", fontsize=6,
+ax2.text(12.3, 5.1, "FRONT\n(PINHOLE END)", ha="center", fontsize=6,
          color=C_FRAME)
 
 plt.tight_layout(pad=0.5)

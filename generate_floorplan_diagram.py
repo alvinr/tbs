@@ -197,7 +197,7 @@ def floor_plan():
             color=C_FILM, lw=4.0, zorder=5, alpha=0.9)
     for hx in np.arange(FP_X_L + 100, FP_X_R, 200):
         ax.plot([hx, hx + 60], [FP_Y, FP_Y], color=C_FILM, lw=1.5, zorder=5, alpha=0.5)
-    ax.text(PH_X, FP_Y + 110,
+    ax.text(PH_X, FP_Y + 30,
             f"MUSLIN IMAGE PLANE  ({FP_W}×{FP_H}mm)  Y={FP_Y}mm",
             color=C_FILM, fontsize=7, ha="center", va="bottom", **FONT)
 
@@ -304,7 +304,7 @@ def floor_plan():
                             fc=C_DEV_ZONE, ec=C_DIM, lw=1.5, ls=(0, (5, 3)), zorder=2))
     for hx in np.arange(DEV_X0, DEV_X1, 250):
         ax.plot([hx, hx+200], [DEV_Y0, DEV_Y1], color=C_DIM, lw=0.4, alpha=0.3, zorder=3)
-    ax.text((DEV_X0+DEV_X1)/2, (DEV_Y0+DEV_Y1)/2,
+    ax.text((DEV_X0+DEV_X1)/2, (DEV_Y0+DEV_Y1)/2+50,
             "DEVELOPMENT AREA  (OUTSIDE — IN FRONT OF PINHOLE WALL)\n"
             "Fabric lowered from image plane for water wash.",
             color=C_DIM, fontsize=7, ha="center", va="center", **FONT, zorder=4)

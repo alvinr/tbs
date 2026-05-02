@@ -241,7 +241,7 @@ pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
 pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, X_J,   3.8, color=C_BLUE, lw=LW_PIPE)
-ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
+ax1.text(8.9, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
 # Refill inlet (top of IBC-1)
@@ -351,8 +351,8 @@ drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
 
 # Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
 pipe(ax1, 14.1, Y_J, X_J, Y_J, C_BLACK, style="-.")
-valve(ax1, 13.3, 5.62, color=C_BLACK)                      # BV-04
-ax1.text(13.3, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
+valve(ax1, 14.0, 5.62, color=C_BLACK)                      # BV-04
+ax1.text(14.0, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
 arrow_pipe(ax1, 13.8, 5.62, 12.0, 5.62, color=C_BLACK)    # leftward bypass flow
 ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
@@ -436,7 +436,7 @@ ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
 pipe(ax1, 14.5, 3.8,       14.5, 6.3 - BR,  C_BLUE)    # riser below brown drain
 pipe(ax1, 14.5, 6.3 + BR,  14.5, 8.0,        C_BLUE)    # riser above brown drain
 valve(ax1, 14.5, 4.4, color=C_BLUE)                      # BV-05 spray bar shutoff
-ax1.text(14.72, 4.4, "BV-05", ha="left", fontsize=6, color=C_BLUE)
+ax1.text(14.58, 4.38, "BV-05", ha="left", fontsize=6, color=C_BLUE)
 arrow_pipe(ax1, 14.5, 5.0, 14.5, 6.8, color=C_BLUE)     # upward flow to spray bar
 
 # Spray bar / flood hose symbol

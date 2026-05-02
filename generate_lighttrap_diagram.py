@@ -67,7 +67,7 @@ def ann(ax, text, xy, xytext, size=7.5):
     ax.annotate(text, xy=xy, xytext=xytext,
                 fontsize=size, color=C_OUT, ha="center", va="center",
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
-                bbox=dict(fc="white", ec="none", pad=1.5), zorder=8)
+                bbox=dict(fc="white", ec="none", pad=1.5), zorder=10)
 
 
 def dim_h(ax, x1, x2, y, text, col=C_DIM):
@@ -863,7 +863,7 @@ def draw_sheet3():
     ax.text(DUCT_X + DD / 2, DUCT_Y + SK + int_h * 0.5,
             "FLAT BLACK\nPOWDER COAT\nALL INTERIOR FACES",
             ha="center", va="center", fontsize=7.0, color="#808080",
-            style="italic", alpha=0.85, zorder=6)
+            style="italic", alpha=0.85, zorder=9)
 
     # ── Fan body — compact axial panel fan (both Fan A and Fan B identical) ─────
     # Panel fan: ~50mm body depth, 150mm dia. One part number for both fans.
@@ -900,13 +900,13 @@ def draw_sheet3():
                  fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
     # INLET / OUTLET face labels
     ax.text(FAN_X, FAN_CY + PF_R + 0.30, "INLET\n(air enters)",
-            ha="center", va="bottom", fontsize=7.0, color=C_CL, fontweight="bold")
+            ha="center", va="bottom", fontsize=7.0, color=C_CL, fontweight="bold", zorder=10)
     ax.text(FAN_X + PF_BD, FAN_CY + PF_R + 0.30, "OUTLET\n(air exits)",
-            ha="center", va="bottom", fontsize=7.0, color="#D32F2F", fontweight="bold")
+            ha="center", va="bottom", fontsize=7.0, color="#D32F2F", fontweight="bold", zorder=10)
     # Axis direction note below fan
     ax.text(FAN_X + PF_BD / 2, FAN_CY - PF_R - 0.30,
             "← FAN AXIS HORIZONTAL →\nair flows along this axis",
-            ha="center", va="top", fontsize=7.0, color=C_DIM, style="italic")
+            ha="center", va="top", fontsize=7.0, color=C_DIM, style="italic", zorder=10)
 
     # Wiring run from fan into container interior
     WR_X = FAN_X + PF_BD + 0.15
@@ -914,12 +914,12 @@ def draw_sheet3():
             color=C_PIPE, lw=2.5, solid_capstyle="round", zorder=5)
     ax.text(WR_X + 2.65, FAN_CY - PF_R * 0.35,
             "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
-            ha="left", va="center", fontsize=7.5, color=C_PIPE)
+            ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
     ax.text(FAN_X + PF_BD / 2, FAN_CY - PF_R - 0.55,
             "150mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
             "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
-            ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT)
+            ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
 
     # ── Airflow arrows (intake mode shown — exhaust is identical, reversed) ───
     mid_y = FAN_CY
@@ -935,7 +935,7 @@ def draw_sheet3():
     ax.annotate("", xy=(WX - GL_W, mid_y), xytext=(WX - GL_W - 1.8, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
     ax.text(WX - GL_W - 2.0, mid_y, "OUTSIDE\nAIR IN",
-            ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold")
+            ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
     # Through wall opening into duct
     ax.annotate("", xy=(DUCT_X + 0.3, mid_y), xytext=(WX + WT - 0.1, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
@@ -956,17 +956,17 @@ def draw_sheet3():
                 xytext=(FAN_X + PF_BD + 0.2, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
     ax.text(FAN_X + PF_BD + 2.0, mid_y, "INTO\nCONTAINER",
-            ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold")
+            ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
     ax.text(FAN_X + PF_BD + 2.0, mid_y - FAN_R - 0.3,
             "(exhaust: flow reversed — same assembly)",
-            ha="left", va="top", fontsize=7.0, color=C_DIM, style="italic")
+            ha="left", va="top", fontsize=7.0, color=C_DIM, style="italic", zorder=10)
 
     # ── Zone labels ───────────────────────────────────────────────────────────
     ax.text(WX / 2, wall_y0 - 0.3, "EXTERIOR",
-            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
+            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
     ax.text(DUCT_X + (FAN_X + PF_BD - DUCT_X) / 2, wall_y0 - 0.3,
             "INTERIOR (container)",
-            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold")
+            ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
     ax.plot([WX + WT / 2, WX + WT / 2], [wall_y0 - 0.6, wall_y0 - 0.15],
             color=C_DIM, lw=1.0, ls=":")
 
@@ -981,20 +981,20 @@ def draw_sheet3():
     # ── Shadow margin / procurement note ─────────────────────────────────────
     NX, NY = 0.3, 1.6
     ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 9.5, 1.6,
-                 boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=5))
+                 boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=9))
     ax.text(NX + 0.20, NY + 1.35,
             "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
-            ha="left", va="center", fontsize=8.5, fontweight="bold", color=C_CL)
+            ha="left", va="center", fontsize=8.5, fontweight="bold", color=C_CL, zorder=10)
     ax.text(NX + 0.20, NY + 1.00,
             "Fan A (intake, right end) and Fan B (exhaust, left end) are identical.\n"
             "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
-            ha="left", va="center", fontsize=7.5, color=C_OUT)
+            ha="left", va="center", fontsize=7.5, color=C_OUT, zorder=10)
     ax.text(NX + 0.20, NY + 0.58,
             "Total depth from wall (each):  300mm baffle duct + 50mm fan = 350mm",
-            ha="left", va="center", fontsize=7.5, color=C_OUT)
+            ha="left", va="center", fontsize=7.5, color=C_OUT, zorder=10)
     ax.text(NX + 0.20, NY + 0.25,
             "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
-            ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold")
+            ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold", zorder=10)
 
     title_block(ax, FW, 3, 3,
                 "FAN & BAFFLE DUCT — ASSEMBLY SECTION",

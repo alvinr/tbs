@@ -251,7 +251,7 @@ ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 115,
 # Pinhole
 ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
 ax.annotate(f"Pinhole  X={PH_X}mm",
-            xy=(PH_X, 0), xytext=(PH_X + 250, -150),
+            xy=(PH_X, 0), xytext=(PH_X - 650, -150),
             fontsize=FS_SM, color=C_BLOCK, ha="left",
             arrowprops=dict(arrowstyle="-", color=C_BLOCK, lw=0.8))
 
@@ -282,12 +282,12 @@ for eq in EQUIPMENT:
                 fontweight="bold")
 
     if in_cone:
-        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] + 70,
+        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] + 170,
                 "IN CONE", ha="center", va="bottom",
                 fontsize=FS_SM - 1, color=C_BLOCK, fontweight="bold", zorder=6)
 
 # ── Dimension labels ──────────────────────────────────────────────────────────
-ax.text(C_LEN / 2, -250, "PLAN VIEW — TOP-DOWN (Z axis)",
+ax.text(C_LEN / 2, -150, "PLAN VIEW — TOP-DOWN (Z axis)",
         ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
 ax.text(C_LEN / 2, -350,
         f"Optical cone: Pinhole (X={PH_X}, Yd=0) → Film plane edges "
@@ -341,7 +341,7 @@ ax.text(FP_Y + 125, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
 
 # Pinhole
 ax.plot(0, PH_H, "o", color=C_BLOCK, ms=9, zorder=6)
-ax.text(80, PH_H + 70, f"Pinhole  H={PH_H}mm",
+ax.text(-250, PH_H + 70, f"Pinhole\nH={PH_H}mm",
         ha="left", va="bottom", fontsize=FS_SM, color=C_BLOCK)
 
 # Optical axis
@@ -376,7 +376,7 @@ for eq in EQUIPMENT:
                 fontweight="bold")
 
 # ── Elevation labels ──────────────────────────────────────────────────────────
-ax.text(C_WID / 2, -220, "SIDE ELEVATION — along long axis (X)",
+ax.text(C_WID / 2, -120, "SIDE ELEVATION — along long axis (X)",
         ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
 ax.text(C_WID / 2, -320,
         f"Cone spread in HEIGHT — Pinhole at H={PH_H}mm",
@@ -384,7 +384,7 @@ ax.text(C_WID / 2, -320,
 
 ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_WID / 2, -200, f"{C_WID} mm (optical depth)",
+ax.text(C_WID / 2, -250, f"{C_WID} mm (optical depth)",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM)
 
 ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),

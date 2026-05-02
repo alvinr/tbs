@@ -329,12 +329,12 @@ ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 # Path back to Blue IBC — split at Y=3.8 (blue supply crosses over) and Y=6.3 (brown drain crosses over)
 pipe(ax1, 9.7, 3.5,        9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
 pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
-pipe(ax1, 9.7, 6.3 + BR,   9.7, 9.0,       C_BLUE, style="--")   # above brown drain
+pipe(ax1, 9.7, 6.3 + BR,   9.7, 10.3,      C_BLUE, style="--")   # above brown drain → raised
 arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
-pipe(ax1, 9.7, 9.0, 3.3, 9.0, C_BLUE, style="--")
-arrow_pipe(ax1, 7.5, 9.0, 5.0, 9.0, color=C_BLUE)                # leftward return
-pipe(ax1, 3.3, 9.0, 3.3, 8.9, C_BLUE, style="--")
-ax1.text(6.5, 9.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
+pipe(ax1, 9.7, 10.3, 3.3, 10.3, C_BLUE, style="--")
+arrow_pipe(ax1, 7.5, 10.3, 5.0, 10.3, color=C_BLUE)              # leftward return
+pipe(ax1, 3.3, 10.3, 3.3, 8.9, C_BLUE, style="--")               # drop into IBC-2 top
+ax1.text(6.5, 10.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 
 # Path to Black system

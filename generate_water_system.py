@@ -236,10 +236,11 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to processing zone — humps over blue return (X=9.7) and floor drain riser (X_J)
+# Run east to processing zone — humps over blue return (X=9.7), D1 vertical (D1_X), floor drain riser (X_J)
 pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
-pipe_bridge(ax1, 9.7,  3.8, color=C_BLUE, lw=LW_PIPE)
-pipe_bridge(ax1, X_J,  3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, X_J,   3.8, color=C_BLUE, lw=LW_PIPE)
 arrow_pipe(ax1, 14.6, 3.8, 15.5, 3.8, color=C_BLUE)
 ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
@@ -362,10 +363,13 @@ pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK, lw=1.8)  # floor drain riser 
 pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK, lw=1.8)  # riser (above blue → junction)
 # Combined flow exits junction left into D1 vertical
 pipe(ax1, X_J, Y_J,  D1_X, Y_J, C_BLACK, lw=2.2)             # junction → D1 vertical entry
-# Fill D1 — vertical from junction up, bridge at Y=6.3 (brown drain over)
-pipe(ax1, D1_X, Y_J,       D1_X, 6.3 - BR,  C_BLACK)         # junction to brown drain crossing
-pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)         # above brown drain to drum
-arrow_pipe(ax1, D1_X, Y_J + 0.1, D1_X, D_Y - DR - 0.1, color=C_BLACK)  # upward flow to D1
+# D1 vertical — full height: filter skid feeds from Y=2.5; Y-junction joins at Y_J; drum above
+# Bridges at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
+pipe(ax1, D1_X, 2.5,       D1_X, 3.8 - BR,  C_BLACK)         # filter skid inlet to blue crossing
+pipe(ax1, D1_X, 3.8 + BR,  D1_X, 6.3 - BR,  C_BLACK)         # blue crossing to brown crossing
+pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)         # brown crossing to drum
+arrow_pipe(ax1, D1_X, 3.2, D1_X, 4.5,       color=C_BLACK)   # upward flow (lower)
+arrow_pipe(ax1, D1_X, Y_J + 0.1, D1_X, D_Y - DR - 0.1, color=C_BLACK)  # upward flow (upper)
 
 # Overflow from D1 top → D2 top
 OV_Y = D_Y + DR + 0.25

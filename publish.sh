@@ -233,3 +233,18 @@ case "$MODE" in
         fi
         ;;
 esac
+
+# -- Generate brochure PDF ----------------------------------------------------
+if [[ "$MODE" != "local" ]]; then
+    if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
+        info "Generating brochure PDF..."
+        if python3 "${SCRIPT_DIR}/generate_brochure.py"; then
+            info "PDF -> tbs-brochure.pdf"
+        else
+            warn "PDF generation failed -- check generate_brochure.py output above"
+        fi
+    else
+        warn "fpdf2 / markdown / pyyaml not installed -- skipping PDF generation"
+        warn "  Install: python3 -m pip install --user fpdf2 markdown pyyaml"
+    fi
+fi

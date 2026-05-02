@@ -313,21 +313,20 @@ def rewrite_image_srcs(html):
 def _flatten_table_cells(html):
     """
     fpdf2 write_html raises NotImplementedError when it encounters any inline
-    tag (<strong>, <em>, <a>, <code>, ...) nested inside a <td> or <th>.
-    This function strips all inline tags from cell content while preserving
-    the text. Block-level tags (br) and img are kept.
+    tag nested inside a <td> or <th>.  Strip all inline tags (including <img>)
+    from cell content, preserving plain text only.
     """
     _INLINE = re.compile(
         r"</?(?:a|b|i|u|s|strong|em|span|code|small|sup|sub|abbr|cite"
-        r"|mark|kbd|var|samp|ins|del|font)[^>]*>",
+        r"|mark|kbd|var|samp|ins|del|font|img)[^>]*>",
         re.IGNORECASE,
     )
 
     def _flatten_cell(m):
-        open_tag = m.group(1)   # <td ...> or <th ...>
-        content  = m.group(2)   # inner HTML
+        open_tag = m.group(1)
+        content  = m.group(2)
         content  = _INLINE.sub("", content)
-        close    = m.group(3)   # </td> or </th>
+        close    = m.group(3)
         return f"{open_tag}{content}{close}"
 
     html = re.sub(
@@ -411,16 +410,18 @@ class BrochurePDF(FPDF):
     def footer(self):
         if self._suppress_chrome:
             return
+        cur_page_w = self.w   # actual page width (differs in landscape)
+        cur_body_w = cur_page_w - M_L - M_R
         self.set_y(-M_B + 5)
         self.set_draw_color(*C_RULE)
         self.set_line_width(0.3)
-        self.line(M_L, self.get_y(), PAGE_W - M_R, self.get_y())
+        self.line(M_L, self.get_y(), cur_page_w - M_R, self.get_y())
         self.set_y(self.get_y() + 1)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.cell(BODY_W // 2, 5, _safe(self._current_chapter), align="C",
+        self.cell(cur_body_w / 2, 5, _safe(self._current_chapter), align="C",
                   new_x=XPos.RIGHT)
-        self.cell(BODY_W // 2, 5, f"Page {self.page_no()}", align="R")
+        self.cell(cur_body_w / 2, 5, f"Page {self.page_no()}", align="R")
 
     # -- Cover page ------------------------------------------------------------
 
@@ -578,36 +579,147 @@ class BrochurePDF(FPDF):
     # -- Chapter body ----------------------------------------------------------
 
     def chapter_body(self, html):
-        """Render cleaned HTML body."""
-        self.set_font(FONT_BODY, "", 9)
-        self.set_text_color(*C_BODY)
-        self.set_x(M_L)
+        """
+        Render chapter HTML body.
 
+        Standalone images (<p><img></p>) are extracted and rendered as
+        full-page figures — landscape orientation when the image is wider
+        than tall (aspect > 1.2).  Text segments between images are rendered
+        via write_html.
+        """
         html = _clean_html_for_fpdf(html)
-
-        # Apply Unicode sanitisation to HTML text nodes
         if not USE_UNICODE_FONT:
             html = _safe_html(html)
 
+        # Split at standalone images, preserving order
+        segments = _split_at_images(html)
+
+        for seg_html, img_path in segments:
+            # ── text segment ─────────────────────────────────────────────────
+            if seg_html.strip():
+                self.set_font(FONT_BODY, "", 9)
+                self.set_text_color(*C_BODY)
+                self.set_x(M_L)
+                try:
+                    self.write_html(
+                        seg_html,
+                        table_line_separators=True,
+                        tag_styles=_build_tag_styles(),
+                    )
+                except Exception as e:
+                    print(f"  [warn] HTML render error: {e}", file=sys.stderr)
+                    plain = re.sub(r"<[^>]+>", " ", seg_html)
+                    plain = re.sub(r"\s+", " ", plain).strip()
+                    if self.page == 0:
+                        self.add_page()
+                    self.set_font(FONT_BODY, "", 9)
+                    self.set_text_color(*C_BODY)
+                    self.set_x(M_L)
+                    self.multi_cell(BODY_W, 5,
+                                    plain[:8000] + ("..." if len(plain) > 8000 else ""))
+
+            # ── full-page image ───────────────────────────────────────────────
+            if img_path:
+                self._render_image_page(img_path)
+
+    def _render_image_page(self, img_path):
+        """
+        Render a single image on its own page.
+        - Landscape page when image aspect ratio > 1.2
+        - Portrait page otherwise
+        Image is centered and scaled to fill the usable area.
+        The caption (filename without extension) appears below.
+        """
         try:
-            self.write_html(
-                html,
-                table_line_separators=True,
-                tag_styles=_build_tag_styles(),
-            )
-        except Exception as e:
-            print(f"  [warn] HTML render error: {e}", file=sys.stderr)
-            # Fallback: strip tags, write as plain text
-            plain = re.sub(r"<[^>]+>", " ", html)
-            plain = re.sub(r"\s+", " ", plain).strip()
-            # Ensure a page is open after a failed write_html
-            if self.page == 0:
-                self.add_page()
-            self.set_font(FONT_BODY, "", 9)
-            self.set_text_color(*C_BODY)
-            self.set_x(M_L)
-            self.multi_cell(BODY_W, 5,
-                            plain[:8000] + ("..." if len(plain) > 8000 else ""))
+            from PIL import Image as PILImage
+            img = PILImage.open(img_path)
+            img_w_px, img_h_px = img.size
+            aspect = img_w_px / img_h_px
+        except Exception:
+            aspect = 1.5   # assume landscape if PIL fails
+
+        LANDSCAPE_THRESHOLD = 1.2
+
+        if aspect > LANDSCAPE_THRESHOLD:
+            orientation = "L"
+            page_w, page_h = PAGE_H, PAGE_W   # A4 landscape: 297 x 210
+        else:
+            orientation = "P"
+            page_w, page_h = PAGE_W, PAGE_H   # A4 portrait: 210 x 297
+
+        self._suppress_chrome = True
+        self.add_page(orientation=orientation)
+
+        # Usable area (leave space for caption at bottom)
+        caption_h = 8
+        usable_w = page_w - M_L - M_R
+        usable_h = page_h - M_T - M_B - caption_h
+
+        # Scale image to fit, preserving aspect
+        fit_w = usable_w
+        fit_h = fit_w / aspect
+        if fit_h > usable_h:
+            fit_h = usable_h
+            fit_w = fit_h * aspect
+
+        # Center on page
+        x = M_L + (usable_w - fit_w) / 2
+        y = M_T + (usable_h - fit_h) / 2
+
+        self.image(img_path, x=x, y=y, w=fit_w, h=fit_h)
+
+        # Caption: filename without path/extension
+        caption = os.path.splitext(os.path.basename(img_path))[0]
+        self.set_xy(M_L, page_h - M_B + 2)
+        self.set_font(FONT_BODY, "I", 7)
+        self.set_text_color(*C_MUTED)
+        self.cell(usable_w, 5, _safe(caption), align="C")
+
+        self._suppress_chrome = False
+
+
+def _split_at_images(html):
+    """
+    Find standalone images — <p><img src="path"></p> — and split the HTML
+    into a list of (text_segment, img_path_or_None) pairs, in document order.
+
+    Each pair means: render text_segment first, then render img_path as a
+    full-page figure.  The final pair always has img_path=None (trailing text).
+
+    Any remaining <img> tags NOT wrapped in a solitary <p> are stripped
+    (they would be inside tables, which already had their images stripped by
+    _flatten_table_cells, but this catches any stragglers).
+    """
+    # Match <p [attrs]><img [any attrs including alt before src]></p>
+    # markdown generates: <p><img alt="..." src="path" /></p>
+    _STANDALONE = re.compile(
+        r'<p[^>]*>\s*<img\b[^>]*\bsrc="([^"]+)"[^>]*/?\s*>\s*</p>',
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    result   = []
+    last_end = 0
+
+    for m in _STANDALONE.finditer(html):
+        text_before = html[last_end : m.start()]
+        result.append((text_before, None))
+        result.append(("", m.group(1)))
+        last_end = m.end()
+
+    # Trailing text after last image
+    remaining = html[last_end:]
+    # Strip any stray <img> tags that weren't in standalone <p> wrappers
+    remaining = re.sub(r'<img[^>]*/?>',  "", remaining, flags=re.IGNORECASE)
+    result.append((remaining, None))
+
+    # Also strip stray <img> from earlier text segments
+    cleaned = []
+    for text, img in result:
+        if img is None:
+            text = re.sub(r'<img[^>]*/?>',  "", text, flags=re.IGNORECASE)
+        cleaned.append((text, img))
+
+    return cleaned
 
 
 def _build_tag_styles():

@@ -916,7 +916,7 @@ def draw_sheet3():
             "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
             ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
-    ax.text(FAN_X + PF_BD / 2, FAN_CY - PF_R - 0.55,
+    ax.text(FAN_X + PF_BD * 6, FAN_CY + PF_R - 0.65, #FAN_CY - PF_R - 0.55,
             "150mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
             "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
@@ -964,22 +964,22 @@ def draw_sheet3():
     # ── Zone labels ───────────────────────────────────────────────────────────
     ax.text(WX / 2, wall_y0 - 0.3, "EXTERIOR",
             ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
-    ax.text(DUCT_X + (FAN_X + PF_BD - DUCT_X) / 2, wall_y0 - 0.3,
+    ax.text(DUCT_X + (FAN_X + PF_BD - DUCT_X) / 2, wall_y0 + 0.5,
             "INTERIOR (container)",
             ha="center", va="top", fontsize=9.0, color=C_DIM, fontweight="bold", zorder=10)
     ax.plot([WX + WT / 2, WX + WT / 2], [wall_y0 - 0.6, wall_y0 - 0.15],
             color=C_DIM, lw=1.0, ls=":")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.0, "300 mm  (duct depth)")
-    dim_v(ax, DUCT_X - 1.5, DUCT_Y, DUCT_Y + DH, "200 mm")
+    dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.1, "300 mm  (duct depth)")
+    dim_v(ax, DUCT_X - 1.85, DUCT_Y, DUCT_Y + DH, "200 mm")
     dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall")
     ax.plot([WX, WX], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
     ax.plot([WX + WT, WX + WT], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
     dim_h(ax, FAN_X, FAN_X + PF_BD, DUCT_Y - 1.0, "~50 mm  (panel fan body)")
 
     # ── Shadow margin / procurement note ─────────────────────────────────────
-    NX, NY = 0.3, 1.6
+    NX, NY = FW - 9.5 - 0.3, 1.6
     ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 9.5, 1.6,
                  boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=9))
     ax.text(NX + 0.20, NY + 1.35,

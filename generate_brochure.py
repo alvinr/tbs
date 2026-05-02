@@ -629,14 +629,35 @@ class BrochurePDF(FPDF):
         - Portrait page otherwise
         Image is centered and scaled to fill the usable area.
         The caption (filename without extension) appears below.
+
+        RGBA PNGs (all generated diagrams) are composited onto a white
+        background before embedding — fpdf2 misrenders RGBA as a black box.
         """
+        import io
         try:
             from PIL import Image as PILImage
             img = PILImage.open(img_path)
             img_w_px, img_h_px = img.size
             aspect = img_w_px / img_h_px
-        except Exception:
-            aspect = 1.5   # assume landscape if PIL fails
+
+            # Flatten alpha channel onto white background
+            if img.mode in ("RGBA", "LA", "P"):
+                bg = PILImage.new("RGB", img.size, (255, 255, 255))
+                if img.mode == "P":
+                    img = img.convert("RGBA")
+                bg.paste(img, mask=img.split()[-1] if img.mode in ("RGBA", "LA") else None)
+                img = bg
+
+            # Save to in-memory buffer so fpdf2 reads the flattened RGB image
+            buf = io.BytesIO()
+            img.save(buf, format="PNG")
+            buf.seek(0)
+            embed_src = buf   # pass BytesIO to pdf.image()
+
+        except Exception as e:
+            print(f"  [warn] PIL error for {img_path}: {e}", file=sys.stderr)
+            embed_src = img_path   # fall back to direct path
+            aspect = 1.5
 
         LANDSCAPE_THRESHOLD = 1.2
 
@@ -666,7 +687,7 @@ class BrochurePDF(FPDF):
         x = M_L + (usable_w - fit_w) / 2
         y = M_T + (usable_h - fit_h) / 2
 
-        self.image(img_path, x=x, y=y, w=fit_w, h=fit_h)
+        self.image(embed_src, x=x, y=y, w=fit_w, h=fit_h)
 
         # Caption: filename without path/extension
         caption = os.path.splitext(os.path.basename(img_path))[0]

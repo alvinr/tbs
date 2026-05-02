@@ -241,7 +241,7 @@ pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
 pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, X_J,   3.8, color=C_BLUE, lw=LW_PIPE)
-ax1.text(8.9, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
+ax1.text(12.5, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
 # Refill inlet (top of IBC-1)
@@ -270,7 +270,7 @@ pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE)
 pipe_bridge(ax1, D1_X,  6.3, color=C_BROWN, lw=LW_PIPE)
 pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE)   # brown over spray bar riser
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
-ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
+ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
 
 # Brown pump P2 — outlet from bottom of IBC-3
@@ -289,7 +289,7 @@ ax1.text(7.1, 4.88, "FILTER SKID", ha="center", fontsize=7.5,
 
 # Filter 1 — 50 micron sediment
 filter_sym(ax1, 6.0, 3.9, label="F1")
-ax1.text(6.0, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
+ax1.text(6.6, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
 arrow_pipe(ax1, 6.3, 4.6, 6.1, 4.6, color=C_BROWN)       # leftward to F1
 pipe(ax1, 6.0, 4.6, 6.0, 4.0, C_BROWN)
@@ -297,7 +297,7 @@ pipe(ax1, 6.0, 3.8, 6.0, 3.55, C_BROWN)
 
 # Filter 2 — 5 micron sediment
 filter_sym(ax1, 7.1, 3.9, label="F2")
-ax1.text(7.1, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
+ax1.text(7.6, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.0, 3.55, 6.0, 3.25, C_BROWN)
 pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
 arrow_pipe(ax1, 6.4, 3.25, 6.8, 3.25, color=C_BROWN)     # rightward F1→F2
@@ -307,7 +307,7 @@ arrow_pipe(ax1, 7.1, 4.0, 7.1, 4.4, color=C_BROWN)       # upward F2 out
 
 # Filter 3 — GAC carbon
 filter_sym(ax1, 8.2, 3.9, label="F3")
-ax1.text(8.2, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
+ax1.text(8.6, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 7.1, 4.6, 7.1, 4.6, C_BROWN)
 pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
 arrow_pipe(ax1, 7.5, 4.6, 7.9, 4.6, color=C_BROWN)       # rightward F2→F3

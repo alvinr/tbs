@@ -79,6 +79,7 @@ nav:
   - "Transportation": container-transport-options.md
   - Appendix:
     - License: licensing.md
+    - Dependencies: component-dependency-map.md
 
 extra:
   social:

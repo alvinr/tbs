@@ -346,13 +346,12 @@ drum(ax1, D1_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
 drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
      label="DRUM-2\n55 GAL\nWASTE")
 
-# Heavy contamination bypass — horizontal dash-dot from processing floor to D1
-pipe(ax1, 15.65, 5.0, D1_X, 5.0, C_BLACK, style="-.")
-pipe_bridge(ax1, 15.1, 5.0, color=C_BLACK, lw=1.8)        # hump over brown drain return
-valve(ax1, 14.5, 5.0, color=C_BLACK)                       # BV-04
-ax1.text(14.5, 5.18, "BV-04", ha="center", fontsize=6, color=C_BLACK)
-arrow_pipe(ax1, 14.2, 5.0, 12.5, 5.0, color=C_BLACK)      # leftward bypass flow
-ax1.text(13.5, 4.82, "HEAVY CONTAM. BYPASS", ha="center",
+# Heavy contamination bypass — from bottom-left of processing floor to D1
+pipe(ax1, 14.2, 5.0, D1_X, 5.0, C_BLACK, style="-.")
+valve(ax1, 13.3, 5.0, color=C_BLACK)                       # BV-04
+ax1.text(13.3, 5.18, "BV-04", ha="center", fontsize=6, color=C_BLACK)
+arrow_pipe(ax1, 13.8, 5.0, 12.0, 5.0, color=C_BLACK)      # leftward bypass flow
+ax1.text(12.6, 4.82, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
 # Fill D1 — vertical split at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
@@ -413,9 +412,8 @@ ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
 valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
 # to brown — split at Y=5.0 (heavy contam bypass crosses over)
-pipe(ax1, 15.1, 3.6,       15.1, 5.0 - BR, C_BROWN, lw=1.8)   # below bypass crossing
-pipe(ax1, 15.1, 5.0 + BR,  15.1, 6.3,      C_BROWN, lw=1.8)   # above bypass crossing
-arrow_pipe(ax1, 15.1, 4.1, 15.1, 4.8, color=C_BROWN)          # upward drain return
+pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)              # drain return (unobstructed)
+arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)          # upward drain return
 # to black
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
 pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)

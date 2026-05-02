@@ -406,11 +406,6 @@ ax1.add_patch(plt.Rectangle((14.1, 5.0), 3.0, 3.1, fc="white", ec="#66BB6A",
 ax1.text(15.6, 6.55, "PRINT\n(5893 × 2388 mm)", ha="center", va="center",
          fontsize=7, color="#388E3C", style="italic", zorder=4)
 
-# Supply inlet
-ax1.annotate("", xy=(15.5, 3.85), xytext=(15.2, 3.85),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=2.5,
-                             mutation_scale=14), zorder=5)
-ax1.text(14.6, 3.65, "SUPPLY\n(Blue)", ha="center", fontsize=6.5, color=C_BLUE)
 
 # Floor drain
 circle_drain = plt.Circle((15.6, 4.15), 0.15, fc="white", ec="#388E3C", lw=1.5,
@@ -418,7 +413,7 @@ circle_drain = plt.Circle((15.6, 4.15), 0.15, fc="white", ec="#388E3C", lw=1.5,
 ax1.add_patch(circle_drain)
 ax1.plot([15.45, 15.75], [4.15, 4.15], color="#388E3C", lw=1.2, zorder=5)
 ax1.plot([15.6, 15.6], [4.0, 4.3], color="#388E3C", lw=1.2, zorder=5)
-ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
+ax1.text(15.6, 4.4, "FLOOR DRAIN\n+ DIVERTER", ha="center",
          fontsize=6, color="#388E3C")
 
 # 3-way valve at drain

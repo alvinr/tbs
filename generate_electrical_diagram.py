@@ -453,15 +453,22 @@ def draw_sheet2():
     ZONE_L  = ZONE_L_END   # 625 mm — left end zone right boundary
     ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
 
-    clen   = C_LEN * S     # drawing units
-    cwid   = C_WID * S     # drawing units
-    wt     = WT_MM * S     # drawing units
+    clen   = C_LEN * S     # drawing units (full container length incl. walls)
+    cwid   = C_WID * S     # drawing units (full container width incl. walls)
+    wt     = WT_MM * S     # drawing units (schematic wall thickness)
     S_yd   = (cwid - 2*wt) / C_WID  # Yd scale: maps yd=0→OY+wt, yd=C_WID→OY+cwid-wt
-    ph_x   = OX + PH_X_MM * S  # pinhole x in drawing coords
-    zone_l_x = OX + ZONE_L * S   # left zone boundary x
-    zone_r_x = OX + ZONE_R * S   # right zone boundary x
-    fp_l_x   = OX + FP_X_L * S   # film plane left edge x
-    fp_r_x   = OX + FP_X_R * S   # film plane right edge x
+
+    # Interior X scale: TBS X (0–C_LEN mm) maps to drawing interior (OX+wt … OX+clen-wt)
+    S_xi   = (clen - 2*wt) / C_LEN
+    def ix(x_mm):
+        """Map TBS interior X (mm) to drawing X coordinate."""
+        return OX + wt + x_mm * S_xi
+
+    ph_x     = ix(PH_X_MM)     # pinhole x in drawing coords
+    zone_l_x = ix(ZONE_L)      # left zone boundary x
+    zone_r_x = ix(ZONE_R)      # right zone boundary x
+    fp_l_x   = ix(FP_X_L)      # film plane left edge x
+    fp_r_x   = ix(FP_X_R)      # film plane right edge x
 
     # ── Container shell ───────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((OX, OY), clen, cwid,
@@ -483,19 +490,22 @@ def draw_sheet2():
     ax.text(OX + clen + 0.12, OY + cwid/2,
             "FAR END\n(X=5,898mm)",
             fontsize=7.0, color=C_DIM, ha="left", va="center")
-    ax.text(OX + clen/2, OY + cwid - wt - 0.22,
+    ax.text(OX + clen/2, OY + cwid - wt + 0.82,
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
             fontsize=8.0, ha="center", va="top", color=C_DIM, style="italic")
 
     # ── Zone fills (shadow-free end zones + optical zone) ────────────────────
+    int_left  = OX + wt   # drawing x of interior left face
+    int_right = OX + clen - wt   # drawing x of interior right face
+    int_w     = int_right - int_left   # interior drawing width
     ax.add_patch(mpatches.Rectangle(
-                 (OX+wt, OY+wt), ZONE_L*S - wt, cwid-2*wt,
+                 (int_left, OY+wt), zone_l_x - int_left, cwid-2*wt,
                  fc="#FFF0E0", ec="none", alpha=0.55, zorder=4))   # left end zone
     ax.add_patch(mpatches.Rectangle(
-                 (zone_l_x, OY+wt), (ZONE_R-ZONE_L)*S, cwid-2*wt,
+                 (zone_l_x, OY+wt), zone_r_x - zone_l_x, cwid-2*wt,
                  fc="#F0FFF0", ec="none", alpha=0.45, zorder=4))   # optical zone
     ax.add_patch(mpatches.Rectangle(
-                 (zone_r_x, OY+wt), (C_LEN-ZONE_R)*S, cwid-2*wt,
+                 (zone_r_x, OY+wt), int_right - zone_r_x, cwid-2*wt,
                  fc="#E8F0FF", ec="none", alpha=0.55, zorder=4))   # right end zone
 
     # Zone boundary lines
@@ -505,13 +515,13 @@ def draw_sheet2():
         ax.text(zx, OY+cwid-wt+0.08, zlabel, ha="center", va="bottom",
                 fontsize=6.5, color=C_DIM)
 
-    ax.text(OX + ZONE_L*S/2, OY + cwid - wt - 0.18,
+    ax.text((int_left + zone_l_x)/2, OY + cwid - wt + 0.52,
             "LEFT\nEND ZONE", ha="center", va="top", fontsize=7.0,
             color="#805000", fontweight="bold", zorder=5)
-    ax.text(OX + (ZONE_L+ZONE_R)/2*S, OY + cwid - wt - 0.18,
+    ax.text((zone_l_x + zone_r_x)/2, OY + cwid - wt + 0.52,
             "OPTICAL ZONE\n(film plane only)", ha="center", va="top", fontsize=7.0,
             color="#006000", fontweight="bold", zorder=5)
-    ax.text(OX + (ZONE_R+C_LEN)/2*S, OY + cwid - wt - 0.18,
+    ax.text((zone_r_x + int_right)/2, OY + cwid - wt + 0.52,
             "RIGHT\nEND ZONE", ha="center", va="top", fontsize=7.0,
             color="#004080", fontweight="bold", zorder=5)
 
@@ -530,7 +540,7 @@ def draw_sheet2():
 
     # ── Image plane strip — new width X=1100–4649mm ───────────────────────────
     ax.add_patch(mpatches.Rectangle(
-                 (fp_l_x, OY+cwid-wt-0.15), (FP_X_R-FP_X_L)*S, 0.15,
+                 (fp_l_x, OY+cwid-wt-0.15), fp_r_x - fp_l_x, 0.15,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
     ax.text((fp_l_x+fp_r_x)/2, OY + cwid - wt - 0.075,
             f"FILM PLANE  X={FP_X_L}–{FP_X_R}mm  ({FP_X_R-FP_X_L}mm wide × 2388mm H)",
@@ -558,14 +568,13 @@ def draw_sheet2():
 
     # ── Colonnade equipment ───────────────────────────────────────────────────
     # x_mm  = TBS X along long axis (0 = cargo door end = LEFT in plan)
-    #          TBS coords run 0–5,893mm interior-to-interior (real wall ~3mm).
-    #          Map directly to drawing: ex = OX + x_mm*S.
-    #          The schematic 120mm wall fill is a visual overlay only.
+    #          TBS coords run 0–5,893mm interior-to-interior.
+    #          Map to drawing interior: ex = OX + wt + x_mm * S_x.
     # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
-        ex = OX + x_mm  * S           # TBS X maps directly to drawing X
+        ex = ix(x_mm)                  # TBS X=0 maps to interior face of left wall
         ey = OY + wt + yd_mm * S_yd   # depth from interior face of pinhole wall
-        ew = w_mm * S
+        ew = w_mm * S_xi
         ed = d_mm * S_yd
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
                      fc=col, ec=C_OUT, lw=1.0, zorder=5, alpha=0.88))
@@ -599,15 +608,15 @@ def draw_sheet2():
           "#D7CCC8", "1×600L  Yd=1141–2157")
 
     # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
-    EP_DX = OX + EP_X * S
-    EP_DW = EP_W * S
+    EP_DX = ix(EP_X)
+    EP_DW = EP_W * S_xi
     ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.15), EP_DW, wt*0.70,
                  fc=C_ELEC, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(EP_DX+EP_DW/2, OY+wt*0.50, "EP",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    BA_DX = OX + BA_X * S
-    BA_DW = BA_W * S
+    BA_DX = ix(BA_X)
+    BA_DW = BA_W * S_xi
     ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.15), BA_DW, wt*0.70,
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(BA_DX+BA_DW/2, OY+wt*0.50, "BAT",
@@ -644,7 +653,7 @@ def draw_sheet2():
 
     # ── Cable trunking — pinhole wall face, full interior length ──────────────
     # Runs at Yd=0 on pinhole wall — physically on the wall, outside optical cone
-    TK_Y  = OY + wt - 0.07
+    TK_Y  = OY + wt + 0.07
     TK_X1 = OX + wt + 0.05
     TK_X2 = OX + clen - wt - 0.05
     ax.plot([TK_X1, TK_X2], [TK_Y, TK_Y],
@@ -654,10 +663,10 @@ def draw_sheet2():
             ha="center", va="top", fontsize=7.0, color=C_PIPE, fontweight="bold")
 
     # Drop conduits from trunking to devices
-    EVAP_CX = OX + (EVAP_X + EVAP_W/2) * S
-    PUMP_CX = OX + (PUMP_X + PUMP_W/2) * S
-    IBC_CX  = OX + (IBC_COL_X + IBC_W/2) * S
-    DRUM_CX_E = OX + DRUM_LZ_CX * S
+    EVAP_CX = ix(EVAP_X + EVAP_W/2)
+    PUMP_CX = ix(PUMP_X + PUMP_W/2)
+    IBC_CX  = ix(IBC_COL_X + IBC_W/2)
+    DRUM_CX_E = ix(DRUM_LZ_CX)
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
@@ -674,7 +683,7 @@ def draw_sheet2():
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
-    SP_Y2 = OY - 1.75
+    SP_Y2 = OY - 1.45
     SP_W2 = clen * 0.50
     SP_H2 = 0.60
     ax.add_patch(FancyBboxPatch((SP_X2, SP_Y2), SP_W2, SP_H2,
@@ -711,15 +720,15 @@ def draw_sheet2():
         ax.text(dx - 0.17, (y1+y2)/2, text,
                 ha="right", va="center", fontsize=7.5, color=C_DIM, rotation=90)
 
-    dim_h(OX, OX+clen, DIM_Y, f"{C_LEN} mm  (container interior length)")
-    dim_h(zone_l_x, zone_r_x, DIM_Y - 0.30,
-          f"Optical zone  {ZONE_R-ZONE_L}mm")
-    dim_h(fp_l_x, fp_r_x, DIM_Y - 0.60,
+    dim_h(OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)")
+#     dim_h(zone_l_x, zone_r_x, DIM_Y - 0.30,
+#           f"Optical zone  {ZONE_R-ZONE_L}mm")
+    dim_h(fp_l_x, fp_r_x, DIM_Y - 1.10,
           f"Film plane  {FP_X_R-FP_X_L}mm")
-    dim_v(DIM_X, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
+    dim_v(DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
 
     # ── Component key (right of container) ───────────────────────────────────
-    KX = OX + clen + 0.70
+    KX = OX + clen + 0.70 + FW * 0.10
     KY = OY + cwid - 0.05
     ax.text(KX, KY + 0.28, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.5, fontweight="bold", color=C_OUT)
@@ -756,27 +765,47 @@ def draw_sheet2():
         ax.text(KX+0.65, ky-0.12, spec,
                 ha="left", va="center", fontsize=7.5, color=C_DIM)
 
-    # ── Drawing notes ─────────────────────────────────────────────────────────
-    NX = OX
-    NY = 1.45
-    ax.add_patch(FancyBboxPatch((NX-0.10, NY-0.15), 14.5, 1.25,
-                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(NX+0.10, NY+0.90, "DRAWING NOTES:",
-            ha="left", va="center", fontsize=8.5,
-            fontweight="bold", color=C_OUT)
+    # ── Drawing notes — stacked vertically, right-aligned under component key ─
+    import textwrap
+    NOTE_W = 6.2     # box width (drawing units)
+    NX = KX          # align left edge with component key
+    NY = 0.30
     notes = [
-        f"1.  Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
-        f"Film plane X={FP_X_L}–{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm depth. f/1088.",
-        f"2.  Shadow-free end zones: Left X=0–{FP_X_L}mm (light trap+55-gal drums×2, Yd=25–605mm), Right X={FP_X_R}–5,893mm (IBCs only). "
-        f"Evap cooler on pinhole wall face (Yd=0, X={EVAP_X}–{EVAP_X+EVAP_W}mm). Amber cone — keep entirely clear.",
-        "3.  Cable trunking (40×25mm PVC) on pinhole wall face (Yd=0) — outside optical cone. "
-        "Drop conduits (10mm corrugated) to each device.",
-        "4.  Light trap (revolving drum, Ø750mm vertical axis) in left end zone — "
-        "integral to cargo-door hinged panel. See Hinged Panel drawings (§12).",
+        f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
+        f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm. f/1088.",
+        f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), "
+        f"Right X={FP_X_R}\u20135,893mm (IBCs only). Evap cooler on pinhole wall (Yd=0, "
+        f"X={EVAP_X}\u2013{EVAP_X+EVAP_W}mm). Amber cone \u2014 keep entirely clear.",
+        "3. Cable trunking (40\u00d725mm PVC) on pinhole wall face (Yd=0) \u2014 outside "
+        "optical cone. Drop conduits (10mm corrugated) to each device.",
+        "4. Light trap (revolving drum, \u00d8750mm vertical axis) in left end zone \u2014 "
+        "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
     ]
-    for ni, note in enumerate(notes):
-        ax.text(NX+0.10 + (ni >= 2)*7.2, NY + 0.65 - (ni % 2)*0.32,
-                note, ha="left", va="center", fontsize=7.5, color=C_DIM)
+    # Wrap each note and measure total height
+    WRAP_CHARS = 120
+    NOTE_FS = 6.5
+    LINE_SP = 0.20
+    NOTE_PAD = 0.12
+    wrapped_lines = []
+    for note in notes:
+        lines = textwrap.wrap(note, width=WRAP_CHARS)
+        wrapped_lines.append(lines)
+    total_lines = sum(len(ls) for ls in wrapped_lines) + len(notes) - 1  # +gaps between notes
+    box_h = 0.35 + total_lines * LINE_SP + 2 * NOTE_PAD
+
+    ax.add_patch(FancyBboxPatch((NX - 0.10, NY - NOTE_PAD), NOTE_W, box_h,
+                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
+    ax.text(NX + 0.05, NY + box_h - NOTE_PAD - 0.15, "DRAWING NOTES:",
+            ha="left", va="center", fontsize=7.5,
+            fontweight="bold", color=C_OUT)
+    cy = NY + box_h - NOTE_PAD - 0.40
+    for ni, lines in enumerate(wrapped_lines):
+        for line in lines:
+            ax.text(NX + 0.05, cy, line,
+                    ha="left", va="center", fontsize=NOTE_FS, color=C_DIM)
+            cy -= LINE_SP
+        if ni < len(wrapped_lines) - 1:
+            cy -= LINE_SP * 0.4  # small gap between notes
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, FW, 2, 2,

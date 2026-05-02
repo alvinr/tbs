@@ -351,8 +351,8 @@ drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
 
 # Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
 pipe(ax1, 14.1, Y_J, X_J, Y_J, C_BLACK, style="-.")
-valve(ax1, 14.0, 5.62, color=C_BLACK)                      # BV-04
-ax1.text(14.0, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
+valve(ax1, 12.6, 5.62, color=C_BLACK)                      # BV-04
+ax1.text(12.6, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
 arrow_pipe(ax1, 13.8, 5.62, 12.0, 5.62, color=C_BLACK)    # leftward bypass flow
 ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")

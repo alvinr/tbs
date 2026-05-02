@@ -346,12 +346,12 @@ drum(ax1, D1_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
 drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
      label="DRUM-2\n55 GAL\nWASTE")
 
-# Heavy contamination bypass — from bottom-left of processing floor to D1
-pipe(ax1, 14.2, 5.0, D1_X, 5.0, C_BLACK, style="-.")
-valve(ax1, 13.3, 5.0, color=C_BLACK)                       # BV-04
-ax1.text(13.3, 5.18, "BV-04", ha="center", fontsize=6, color=C_BLACK)
-arrow_pipe(ax1, 13.8, 5.0, 12.0, 5.0, color=C_BLACK)      # leftward bypass flow
-ax1.text(12.6, 4.82, "HEAVY CONTAM. BYPASS", ha="center",
+# Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
+pipe(ax1, 14.1, 5.62, D1_X, 5.62, C_BLACK, style="-.")
+valve(ax1, 13.3, 5.62, color=C_BLACK)                      # BV-04
+ax1.text(13.3, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
+arrow_pipe(ax1, 13.8, 5.62, 12.0, 5.62, color=C_BLACK)    # leftward bypass flow
+ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
 # Fill D1 — vertical split at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)

@@ -198,6 +198,8 @@ D1_X, D2_X = 11.07, 12.23  # drum X centers — 1/3 and 2/3 across Black zone (9
 D_Y  = 7.5                  # drum centre Y (raised)
 DR   = 0.42                 # drum radius
 BR   = 0.14                 # pipe-crossing bridge hump radius
+X_J  = D1_X + 0.5          # = 11.57, Y-junction X: floor drain + bypass merge before D1
+Y_J  = 5.62                 # Y level of Y-junction (matches heavy contam bypass exit)
 
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
 # IBC1 Clean water A
@@ -234,10 +236,10 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to processing zone — humps over blue return (X=9.7) and black vertical (D1_X)
+# Run east to processing zone — humps over blue return (X=9.7) and floor drain riser (X_J)
 pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
-pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
-pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, 9.7,  3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, X_J,  3.8, color=C_BLUE, lw=LW_PIPE)
 arrow_pipe(ax1, 14.6, 3.8, 15.5, 3.8, color=C_BLUE)
 ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
@@ -347,18 +349,23 @@ drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
      label="DRUM-2\n55 GAL\nWASTE")
 
 # Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
-pipe(ax1, 14.1, 5.62, D1_X, 5.62, C_BLACK, style="-.")
+pipe(ax1, 14.1, Y_J, X_J, Y_J, C_BLACK, style="-.")
 valve(ax1, 13.3, 5.62, color=C_BLACK)                      # BV-04
 ax1.text(13.3, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
 arrow_pipe(ax1, 13.8, 5.62, 12.0, 5.62, color=C_BLACK)    # leftward bypass flow
 ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
-# Fill D1 — vertical split at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
-pipe(ax1, D1_X, 2.5,       D1_X, 3.8 - BR,  C_BLACK)       # below blue supply
-pipe(ax1, D1_X, 3.8 + BR,  D1_X, 6.3 - BR,  C_BLACK)       # between crossings
-pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)       # above brown drain
-arrow_pipe(ax1, D1_X, 4.2, D1_X, 5.8, color=C_BLACK)       # upward flow to D1
+# Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
+# Riser climbs at X_J, bridges over blue supply at Y=3.8
+pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK, lw=1.8)  # floor drain riser (below blue)
+pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK, lw=1.8)  # riser (above blue → junction)
+# Combined flow exits junction left into D1 vertical
+pipe(ax1, X_J, Y_J,  D1_X, Y_J, C_BLACK, lw=2.2)             # junction → D1 vertical entry
+# Fill D1 — vertical from junction up, bridge at Y=6.3 (brown drain over)
+pipe(ax1, D1_X, Y_J,       D1_X, 6.3 - BR,  C_BLACK)         # junction to brown drain crossing
+pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)         # above brown drain to drum
+arrow_pipe(ax1, D1_X, Y_J + 0.1, D1_X, D_Y - DR - 0.1, color=C_BLACK)  # upward flow to D1
 
 # Overflow from D1 top → D2 top
 OV_Y = D_Y + DR + 0.25
@@ -420,7 +427,7 @@ pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)              # brown return ris
 arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)          # upward drain return
 # to black: diverter outlet → down → left → DRUM-1 (heavy contamination route)
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
-pipe(ax1, 15.6, 2.6, D1_X, 2.6, C_BLACK, lw=1.8)
+pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK, lw=1.8)
 arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
 ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
          color=C_BLACK, style="italic")

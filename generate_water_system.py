@@ -359,10 +359,10 @@ ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
 
 # Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
 # Riser climbs at X_J, bridges over blue supply at Y=3.8
-pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK, lw=1.8)  # floor drain riser (below blue)
-pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK, lw=1.8)  # riser (above blue → junction)
+pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK)  # floor drain riser (below blue)
+pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK)  # riser (above blue → junction)
 # Combined flow exits junction left into D1 vertical
-pipe(ax1, X_J, Y_J,  D1_X, Y_J, C_BLACK, lw=2.2)             # junction → D1 vertical entry
+pipe(ax1, X_J, Y_J,  D1_X, Y_J, C_BLACK)             # junction → D1 vertical entry
 # D1 vertical — full height: filter skid feeds from Y=2.5; Y-junction joins at Y_J; drum above
 # Bridges at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
 pipe(ax1, D1_X, 2.5,       D1_X, 3.8 - BR,  C_BLACK)         # filter skid inlet to blue crossing
@@ -422,22 +422,22 @@ ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
          fontsize=6, color="#388E3C")
 
 # 3-way valve at drain
-pipe(ax1, 15.6, 4.0, 15.6, 3.65, C_BROWN, lw=1.8)             # drain circle → valve
+pipe(ax1, 15.6, 4.0, 15.6, 3.65, C_BROWN)                      # drain circle → valve
 valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
 # to brown: short horizontal from valve left to brown return riser
-pipe(ax1, 15.1, 3.6, 15.55, 3.6, C_BROWN, lw=1.8)             # valve → brown return
-pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)              # brown return riser
+pipe(ax1, 15.1, 3.6, 15.55, 3.6, C_BROWN)                      # valve → brown return
+pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN)                      # brown return riser
 arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)          # upward drain return
 # to black: diverter outlet → down → left → DRUM-1 (heavy contamination route)
-pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
-pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK, lw=1.8)
+pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK)
+pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK)
 arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
 ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
          color=C_BLACK, style="italic")
 
 # Spray bar / flood hose symbol
-pipe(ax1, 14.5, 8.0, 16.8, 8.0, C_BLUE, lw=2.5)
+pipe(ax1, 14.5, 8.0, 16.8, 8.0, C_BLUE)
 for xd in [14.7, 15.2, 15.7, 16.2, 16.7]:
     ax1.annotate("", xy=(xd, 7.7), xytext=(xd, 7.95),
                  arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.5,

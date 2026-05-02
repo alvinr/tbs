@@ -409,14 +409,19 @@ ax1.text(15.6, 3.9, "FLOOR DRAIN\n+ DIVERTER", ha="center",
          fontsize=6, color="#388E3C")
 
 # 3-way valve at drain
+pipe(ax1, 15.6, 4.0, 15.6, 3.65, C_BROWN, lw=1.8)             # drain circle → valve
 valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
-# to brown — split at Y=5.0 (heavy contam bypass crosses over)
-pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)              # drain return (unobstructed)
+# to brown: short horizontal from valve left to brown return riser
+pipe(ax1, 15.1, 3.6, 15.55, 3.6, C_BROWN, lw=1.8)             # valve → brown return
+pipe(ax1, 15.1, 3.6, 15.1, 6.3, C_BROWN, lw=1.8)              # brown return riser
 arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)          # upward drain return
-# to black
+# to black: diverter outlet → down → left → DRUM-1 (heavy contamination route)
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK, lw=1.8)
-pipe(ax1, 15.6, 2.6, 12.1, 2.6, C_BLACK, lw=1.8)
+pipe(ax1, 15.6, 2.6, D1_X, 2.6, C_BLACK, lw=1.8)
+arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
+ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
+         color=C_BLACK, style="italic")
 
 # Spray bar / flood hose symbol
 pipe(ax1, 14.5, 8.0, 16.8, 8.0, C_BLUE, lw=2.5)

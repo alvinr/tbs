@@ -369,15 +369,17 @@ pipe(ax1, D2_X, OV_Y, D2_X, D_Y + DR, C_BLACK, style="--")
 ax1.text((D1_X + D2_X) / 2, OV_Y + 0.14,
          "OVERFLOW →\nDRUM-2", ha="center", fontsize=6, color=C_BLACK)
 
-# Disposal from D2 bottom
-DISP_Y = D_Y - DR - 0.55
-pipe(ax1, D2_X, D_Y - DR, D2_X, DISP_Y, C_BLACK)
-pipe(ax1, D2_X, DISP_Y, 13.5, DISP_Y, C_BLACK)
-ax1.annotate("", xy=(13.5, DISP_Y), xytext=(13.2, DISP_Y),
+# Disposal from D2 — exits top of black system box
+DISP_Y = D_Y - DR - 0.55   # = 6.53, above brown drain at 6.3 so no bridge needed
+DISP_X = 13.3               # near right edge of black zone box (box right = 13.4)
+pipe(ax1, D2_X, D_Y - DR, D2_X, DISP_Y, C_BLACK)     # D2 bottom → down
+pipe(ax1, D2_X, DISP_Y, DISP_X, DISP_Y, C_BLACK)     # right to near box edge
+pipe(ax1, DISP_X, DISP_Y, DISP_X, 10.75, C_BLACK)    # up and out top of box
+ax1.annotate("", xy=(DISP_X, 11.05), xytext=(DISP_X, 10.8),
              arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=2,
                              mutation_scale=14), zorder=4)
-ax1.text(13.55, DISP_Y, "TO APPROVED\nDISPOSAL SITE", ha="left",
-         fontsize=6.5, color=C_BLACK, fontweight="bold", va="center")
+ax1.text(DISP_X, 11.2, "TO APPROVED\nDISPOSAL SITE", ha="center",
+         fontsize=6.5, color=C_BLACK, fontweight="bold", va="bottom")
 
 # ── PROCESSING AREA ───────────────────────────────────────────────────────────
 ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C",

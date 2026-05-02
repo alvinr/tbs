@@ -236,12 +236,11 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to processing zone — humps over blue return (X=9.7), D1 vertical (D1_X), floor drain riser (X_J)
-pipe(ax1, 2.4, 3.8, 14.8, 3.8, C_BLUE)
+# Run east to spray bar riser tap-off — humps over blue return (X=9.7), D1 vertical (D1_X), floor drain riser (X_J)
+pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
 pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, X_J,   3.8, color=C_BLUE, lw=LW_PIPE)
-arrow_pipe(ax1, 14.6, 3.8, 15.5, 3.8, color=C_BLUE)
 ax1.text(8.5, 3.6, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
@@ -269,6 +268,7 @@ pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
 pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
 pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE)
 pipe_bridge(ax1, D1_X,  6.3, color=C_BROWN, lw=LW_PIPE)
+pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE)   # brown over spray bar riser
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(10.8, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
@@ -430,6 +430,14 @@ pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK)
 arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
 ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
          color=C_BLACK, style="italic")
+
+# Spray bar riser — blue supply tap-off at Y=3.8 up to spray bar at Y=8.0
+# Brown drain (Y=6.3) bridges over; riser is split with gap at crossing
+pipe(ax1, 14.5, 3.8,       14.5, 6.3 - BR,  C_BLUE)    # riser below brown drain
+pipe(ax1, 14.5, 6.3 + BR,  14.5, 8.0,        C_BLUE)    # riser above brown drain
+valve(ax1, 14.5, 4.4, color=C_BLUE)                      # BV-05 spray bar shutoff
+ax1.text(14.72, 4.4, "BV-05", ha="left", fontsize=6, color=C_BLUE)
+arrow_pipe(ax1, 14.5, 5.0, 14.5, 6.8, color=C_BLUE)     # upward flow to spray bar
 
 # Spray bar / flood hose symbol
 pipe(ax1, 14.5, 8.0, 16.8, 8.0, C_BLUE)

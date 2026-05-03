@@ -113,7 +113,7 @@ def sheet1():
 
     PAD = 500
     ax.set_xlim(-PAD, L + 1400)
-    ax.set_ylim(-1000, W + 750)
+    ax.set_ylim(-1150, W + 750)
     ax.set_aspect("equal")
     ax.axis("off")
 

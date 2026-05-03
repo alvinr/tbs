@@ -390,14 +390,14 @@ def sheet2():
     # Exterior zone (Y < 0)
     ax.add_patch(Rectangle((X_LO, Y_LO), X_HI - X_LO, Y_EXT - Y_LO,
                             fc="#EEF2F8", ec="none", zorder=1))
-    ax.text(D_CX - PAD_X / 2 - 250, (Y_LO + Y_EXT) / 2 - 125,
+    ax.text(D_CX - PAD_X / 2 - 450, (Y_LO + Y_EXT) / 2 - 125,
             "EXTERIOR", color="#5060A0", fontsize=9, ha="center", va="center",
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
     # Interior zone (Y > Y_INT)
     ax.add_patch(Rectangle((X_LO, Y_INT), X_HI - X_LO, Y_HI - Y_INT,
                             fc="#EEF6EE", ec="none", zorder=1))
-    ax.text(D_CX - PAD_X / 2 - 250, (Y_INT + Y_HI) / 2 + 125,
+    ax.text(D_CX - PAD_X / 2 - 450, (Y_INT + Y_HI) / 2 + 125,
             "INTERIOR", color="#407040", fontsize=9, ha="center", va="center",
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
@@ -431,7 +431,7 @@ def sheet2():
                     xytext=(D_XL - 60 - off, ly + off),
                     fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
-                    bbox=dict(fc="#EEF6EE", ec="none", pad=1.5), zorder=15)
+                    bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # ── Panel outer ply (Y=40→58) ─────────────────────────────────────────────
     for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
@@ -543,7 +543,7 @@ def sheet2():
     # Entry / exit tags
     ax.text(path_x[0] + 35, path_y[0],
             "ENTRY (FROM EXTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT, zorder=15)
-    ax.text(path_x[-1] + 35, path_y[-1] + 25,
+    ax.text(path_x[-1] + 25, path_y[-1] - 25,
             "EXIT (TO INTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT, zorder=15)
     # Route label
     ax.text(D_XR - 25, D_CY - DR * 0.8,

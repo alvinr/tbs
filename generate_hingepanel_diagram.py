@@ -412,8 +412,8 @@ def sheet2():
     # Right side going south — wall and outer ply (exterior side)
     LBL_OFF = 130
     for ly, lbl, off in [
-        (Y0_W + WALL_T / 2,  f"CONTAINER END WALL  ({WALL_T}mm STEEL)", 2 * LBL_OFF),
-        (Y0_PL + PLY_T / 2,  f"OUTER PLY  ({PLY_T}mm)",                 1 * LBL_OFF),
+        (Y0_W + WALL_T / 2,  f"CONTAINER END WALL ({WALL_T}mm STEEL)", 2 * LBL_OFF),
+        (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
     ]:
         ax.annotate(lbl,
                     xy=(D_XR + 60, ly),
@@ -501,7 +501,7 @@ def sheet2():
     fin_pt_x = D_CX + DR * np.cos(np.radians(0)) * 0.55
     fin_pt_y = D_CY + DR * np.sin(np.radians(0)) * 0.55
     leader(ax, (fin_pt_x, fin_pt_y),
-           (D_XR + 250, D_CY + DR * 0.5),
+           (D_XR + 150, D_CY + DR * 0.55),
            "4 × INTERNAL BAFFLES\n(90° SECTORS)\n3mm STEEL · FLAT BLACK", fs=6.5)
 
     # ── Centre lines ──────────────────────────────────────────────────────────
@@ -575,13 +575,25 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                 bbox=dict(fc="#EEF6EE", ec="none", pad=1.5), zorder=15)
 
-    # Exterior drum overhang
-    dim_v(ax, D_XL - 180, D_YB, Y0_W,
-          f"  {int(Y0_W - D_YB)}mm\n  EXT. OVERHANG", offset=25, fs=6)
+    # Exterior drum overhang — 45° leader going south-left
+    ext_oh_mid = (D_YB + Y0_W) / 2
+    dim_v(ax, D_XL - 180, D_YB, Y0_W, "", offset=25, fs=6)
+    ax.annotate(f"{int(Y0_W - D_YB)}mm EXT. OVERHANG",
+                xy=(D_XL - 180, ext_oh_mid),
+                xytext=(D_XL - 180 - LBL_OFF * 1.5, ext_oh_mid - LBL_OFF * 1.5),
+                fontsize=6, color=C_DIM, ha="right", va="top", **FONT,
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
 
-    # Interior drum overhang
-    dim_v(ax, D_XL - 180, Y1_PL2, D_YT,
-          f"  {int(D_YT - Y1_PL2)}mm\n  INT. OVERHANG", offset=25, fs=6)
+    # Interior drum overhang — 45° leader going north-left
+    int_oh_mid = (Y1_PL2 + D_YT) / 2
+    dim_v(ax, D_XL - 180, Y1_PL2, D_YT, "", offset=25, fs=6)
+    ax.annotate(f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG",
+                xy=(D_XL - 180, int_oh_mid),
+                xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
+                fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                bbox=dict(fc="#EEF6EE", ec="none", pad=1.5), zorder=15)
 
     # ── Panel extent note ─────────────────────────────────────────────────────
     ax.annotate("", xy=(D_XL, Y0_FR + FRAME_T / 2),
@@ -619,7 +631,7 @@ def sheet2():
     # ── Interior latch safety note ─────────────────────────────────────────────
     # Small note below orientation box (latches are outside the drum-zone crop
     # in this view but their presence and position is relevant to egress design)
-    ax.text(OB_X + OB_W / 2 + 350, OB_Y - 45,
+    ax.text(OB_X + OB_W / 2 + 450, OB_Y - 25,
             "PANEL LATCHES (×4, SOUTHCO C2-33):\nMOUNTED ON INTERIOR FACE —\nEGRESS OPERABLE FROM INSIDE",
             ha="center", va="top", fontsize=6, color="#C04010",
             fontweight="bold", **FONT, zorder=15)

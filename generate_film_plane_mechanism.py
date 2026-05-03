@@ -254,17 +254,17 @@ def sheet1():
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
-    # Legend box
+    # Legend box — bottom right
     leg_x = L + 200
-    leg_y = W + 500
-    ax.text(leg_x + 400, leg_y, "LEGEND", color=WHITE,
+    leg_y = -100
+    ax.text(leg_x + 500, leg_y + 160, "LEGEND", color=WHITE,
             fontsize=8, fontweight="bold", ha="center", **FONT)
     for i, (name, d_TL, d_TR, d_BL, d_BR, col, ls) in enumerate(CONFIGS):
-        ly = leg_y - 120 - i*120
-        ax.plot([leg_x, leg_x+300], [ly, ly], color=col, lw=2.0, ls=ls)
-        corner_str = f"TL={d_TL} TR={d_TR}\n  BL={d_BL} BR={d_BR}"
-        ax.text(leg_x+340, ly, f"{name}\n{corner_str}",
-                color=col, fontsize=5.8, va="center", **FONT)
+        ly = leg_y - i * 160
+        ax.plot([leg_x, leg_x + 400], [ly, ly], color=col, lw=2.0, ls=ls)
+        corner_str = f"TL={d_TL}  TR={d_TR}  BL={d_BL}  BR={d_BR}"
+        ax.text(leg_x + 440, ly, f"{name}\n  {corner_str}",
+                color=col, fontsize=6, va="center", **FONT)
 
     # Single title block at figure bottom
     fig.text(0.02, 0.030, "THE BIG SHOEBOX PROJECT  ·  TBS-001",

@@ -77,18 +77,43 @@ def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
                     lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
 
 def title_block(ax, sheet_label, subtitle, scale_note=""):
-    ax.text(0.01, 0.022, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, **FONT)
-    ax.text(0.01, 0.010, f"HINGED LIGHT-TRAP PANEL — {sheet_label}: {subtitle}",
-            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", **FONT)
-    if scale_note:
-        ax.text(0.99, 0.022, scale_note,
-                transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
-    ax.text(0.99, 0.010, "ALL DIMS IN mm",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
-    ax.text(0.50, 0.002, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center",
-            style="italic", **FONT)
+    t = ax.transAxes
+    # White box with black border spanning full width at bottom
+    ax.add_patch(FancyBboxPatch((0.005, 0.003), 0.99, 0.045,
+                 boxstyle="square,pad=0", fc="white", ec=C_OUT, lw=1.2,
+                 transform=t, zorder=20))
+    # Vertical dividers at 30% and 75%
+    ax.plot([0.30, 0.30], [0.003, 0.048], color=C_OUT, lw=0.6,
+            transform=t, zorder=21)
+    ax.plot([0.75, 0.75], [0.003, 0.048], color=C_OUT, lw=0.6,
+            transform=t, zorder=21)
+    # Left cell: project info
+    ax.text(0.152, 0.037, "THE BIG SHOEBOX PROJECT",
+            transform=t, color=C_OUT, fontsize=7.5, fontweight="bold",
+            ha="center", va="center", zorder=21, **FONT)
+    ax.text(0.152, 0.025, "TBS-001  ·  Hinged Light-Trap Panel",
+            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
+            zorder=21, **FONT)
+    ax.text(0.152, 0.012, "© 2026 Alvin Richards — GNU AGPLv3",
+            transform=t, color=C_DIM, fontsize=5.5, ha="center", va="center",
+            style="italic", zorder=21, **FONT)
+    # Centre cell: drawing title
+    ax.text(0.525, 0.037, f"HINGED LIGHT-TRAP PANEL — {sheet_label}",
+            transform=t, color=C_OUT, fontsize=8, fontweight="bold",
+            ha="center", va="center", zorder=21, **FONT)
+    ax.text(0.525, 0.020, subtitle,
+            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
+            zorder=21, **FONT)
+    ax.text(0.525, 0.009, f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
+            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
+            zorder=21, **FONT)
+    # Right cell: sheet number + units
+    ax.text(0.875, 0.035, sheet_label,
+            transform=t, color=C_OUT, fontsize=9, fontweight="bold",
+            ha="center", va="center", zorder=21, **FONT)
+    ax.text(0.875, 0.015, "ALL DIMS IN mm",
+            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
+            zorder=21, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

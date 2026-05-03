@@ -9,10 +9,16 @@ Output: tbs-brochure.pdf (project root)
 Usage:  python3 generate_brochure.py
 """
 
+import logging
 import os
 import re
 import sys
 import datetime
+
+# Suppress fpdf2 font-subsetting warnings (Apple-specific tables: Zapf, bdat, etc.)
+logging.getLogger("fpdf.drawing").setLevel(logging.ERROR)
+logging.getLogger("fontTools.subset").setLevel(logging.ERROR)
+logging.getLogger("fontTools").setLevel(logging.ERROR)
 
 # -- Imports -------------------------------------------------------------------
 try:
@@ -159,10 +165,27 @@ _UNICODE_SUBS = {
     "\u2611": "[x]",   # ballot box checked
     "\u00a0": " ",     # non-breaking space
     "\u200b": "",      # zero-width space
+    "\u26a0": "[!]",   # warning sign
+    "\u2705": "[ok]",  # check mark
+    "\u2714": "[ok]",  # heavy check mark
+    "\u274c": "[x]",   # cross mark
+    "\u2603": "*",     # snowman
+    "\u2b50": "*",     # star
+}
+
+# Glyphs missing from Arial Unicode that must always be substituted
+_MISSING_GLYPHS = {
+    "\u26a0": "[!]",   # warning sign
+    "\u2705": "[ok]",  # check mark button (emoji)
+    "\u2714": "[ok]",  # heavy check mark
+    "\u274c": "[x]",   # cross mark
 }
 
 def _safe(text):
-    """Convert text to Latin-1-safe string for core PDF fonts."""
+    """Convert text to font-safe string, substituting missing glyphs."""
+    # Always substitute glyphs missing from Arial Unicode
+    for ch, sub in _MISSING_GLYPHS.items():
+        text = text.replace(ch, sub)
     if USE_UNICODE_FONT:
         return text
     for ch, sub in _UNICODE_SUBS.items():
@@ -172,7 +195,10 @@ def _safe(text):
 
 
 def _safe_html(html):
-    """Make HTML content Latin-1-safe by replacing common Unicode entities."""
+    """Make HTML content safe by replacing unsupported glyphs/entities."""
+    # Always substitute glyphs missing from Arial Unicode
+    for ch, sub in _MISSING_GLYPHS.items():
+        html = html.replace(ch, sub)
     if USE_UNICODE_FONT:
         return html
     # Named HTML entities that expand to non-Latin-1
@@ -310,50 +336,112 @@ def rewrite_image_srcs(html):
 
 # -- HTML cleanup for fpdf2 ----------------------------------------------------
 
-def _flatten_table_cells(html):
-    """
-    fpdf2 write_html raises NotImplementedError when it encounters any inline
-    tag nested inside a <td> or <th>.  Strip all inline tags (including <img>)
-    from cell content, preserving plain text only.
-    """
-    _INLINE = re.compile(
-        r"</?(?:a|b|i|u|s|strong|em|span|code|small|sup|sub|abbr|cite"
-        r"|mark|kbd|var|samp|ins|del|font|img)[^>]*>",
-        re.IGNORECASE,
-    )
+_TAG_RE = re.compile(r"<[^>]+>")
 
-    def _flatten_cell(m):
-        open_tag = m.group(1)
-        content  = m.group(2)
-        content  = _INLINE.sub("", content)
-        close    = m.group(3)
-        return f"{open_tag}{content}{close}"
 
-    html = re.sub(
-        r"(<t[dh][^>]*>)(.*?)(</t[dh]>)",
-        _flatten_cell,
-        html,
-        flags=re.DOTALL | re.IGNORECASE,
-    )
-    return html
+_IMG_SRC_RE = re.compile(r'<img\b[^>]*\bsrc="([^"]+)"', re.IGNORECASE)
+
+
+def _decode_html(text):
+    """Decode common HTML entities in plain text."""
+    text = text.replace("&amp;", "&").replace("&lt;", "<")
+    text = text.replace("&gt;", ">").replace("&quot;", '"')
+    text = text.replace("&#39;", "'").replace("&nbsp;", " ")
+    return " ".join(text.split())
+
+
+def _parse_table_html(table_html):
+    """
+    Parse an HTML table into structured data.
+    Returns: {"header": [str, ...], "rows": [[str, ...], ...],
+              "row_images": [[str|None, ...], ...]}
+    row_images[i][j] is the image path found in that cell, or None.
+    header may be empty if the table has no <th> cells.
+    """
+    header = []
+    rows = []
+    row_images = []   # parallel to rows
+
+    def _extract_cell(cell_html):
+        """Return (plain_text, img_path_or_None) for a cell."""
+        img_m = _IMG_SRC_RE.search(cell_html)
+        img_path = img_m.group(1) if img_m else None
+        text = _TAG_RE.sub("", cell_html)
+        return _decode_html(text), img_path
+
+    # Check for <thead> — its <tr> cells become the header
+    thead_m = re.search(r"<thead[^>]*>(.*?)</thead>", table_html,
+                        flags=re.DOTALL | re.IGNORECASE)
+    if thead_m:
+        for cell_m in re.finditer(r"<t[dh][^>]*>(.*?)</t[dh]>",
+                                  thead_m.group(1),
+                                  flags=re.DOTALL | re.IGNORECASE):
+            text, _ = _extract_cell(cell_m.group(1))
+            header.append(text)
+
+    # Body rows come from <tbody> if present, else the whole table
+    tbody_m = re.search(r"<tbody[^>]*>(.*?)</tbody>", table_html,
+                        flags=re.DOTALL | re.IGNORECASE)
+    body_html = tbody_m.group(1) if tbody_m else table_html
+
+    for tr_m in re.finditer(r"<tr[^>]*>(.*?)</tr>", body_html,
+                            flags=re.DOTALL | re.IGNORECASE):
+        if thead_m and tr_m.start() < thead_m.end() and tr_m.end() <= thead_m.end():
+            continue
+        cells = []
+        imgs = []
+        has_th = bool(re.search(r"<th[\s>]", tr_m.group(1), re.IGNORECASE))
+        for cell_m in re.finditer(r"<t[dh][^>]*>(.*?)</t[dh]>",
+                                  tr_m.group(1),
+                                  flags=re.DOTALL | re.IGNORECASE):
+            text, img = _extract_cell(cell_m.group(1))
+            cells.append(text)
+            imgs.append(img)
+        if not cells:
+            continue
+        if has_th and not header:
+            header = cells
+        else:
+            rows.append(cells)
+            row_images.append(imgs)
+
+    return {"header": header, "rows": rows, "row_images": row_images}
+
+
+def _extract_tables(html):
+    """
+    Pull all <table>...</table> blocks out of the HTML.
+    Replace each with a marker <!--TABLE:n-->.
+    Returns (modified_html, [table_data, ...]).
+    """
+    tables = []
+    def _replace(m):
+        tdata = _parse_table_html(m.group(0))
+        if not tdata["header"] and not tdata["rows"]:
+            return ""
+        idx = len(tables)
+        tables.append(tdata)
+        return f"<!--TABLE:{idx}-->"
+
+    html = re.sub(r"<table[^>]*>.*?</table>", _replace, html,
+                  flags=re.DOTALL | re.IGNORECASE)
+    return html, tables
 
 
 def _clean_html_for_fpdf(html):
     """
     Simplify HTML so fpdf2's write_html handles it gracefully:
+    - Extract HTML tables (replaced with markers, rendered separately)
     - Unwrap unsupported block containers
-    - Strip inline tags from table cells (fpdf2 limitation)
-    - Strip class/id/style attributes (keep src, href, alt, colspan, rowspan, border)
+    - Strip class/id/style attributes
     - Remove HTML comments
     """
+
     for tag in ("details", "summary", "figure", "figcaption", "nav",
                 "aside", "section", "article", "main", "header",
                 "footer", "div"):
         html = re.sub(rf"<{tag}(?:\s[^>]*)?>", "", html, flags=re.IGNORECASE)
         html = re.sub(rf"</{tag}>", "", html, flags=re.IGNORECASE)
-
-    # Flatten inline formatting inside table cells
-    html = _flatten_table_cells(html)
 
     def _strip_attrs(m):
         tag_full = m.group(0)
@@ -362,7 +450,11 @@ def _clean_html_for_fpdf(html):
         return tag_full
 
     html = re.sub(r"<[a-zA-Z][^>]*>", _strip_attrs, html)
-    html = re.sub(r"<!--.*?-->", "", html, flags=re.DOTALL)
+    # Substitute glyphs missing from Arial Unicode (emoji etc.)
+    for ch, sub in _MISSING_GLYPHS.items():
+        html = html.replace(ch, sub)
+    # Remove HTML comments but preserve <!--TABLE:n--> markers
+    html = re.sub(r"<!--(?!TABLE:\d+).*?-->", "", html, flags=re.DOTALL)
     html = re.sub(r"\n{3,}", "\n\n", html)
     return html
 
@@ -582,11 +674,12 @@ class BrochurePDF(FPDF):
         """
         Render chapter HTML body.
 
-        Standalone images (<p><img></p>) are extracted and rendered as
-        full-page figures — landscape orientation when the image is wider
-        than tall (aspect > 1.2).  Text segments between images are rendered
-        via write_html.
+        Tables are extracted and rendered via _render_table (fpdf2 primitives).
+        Standalone images (<p><img></p>) are rendered as full-page figures.
+        Everything else goes through write_html.
         """
+        # Extract tables first (before general cleanup removes their markers)
+        html, tables = _extract_tables(html)
         html = _clean_html_for_fpdf(html)
         if not USE_UNICODE_FONT:
             html = _safe_html(html)
@@ -595,68 +688,244 @@ class BrochurePDF(FPDF):
         segments = _split_at_images(html)
 
         for seg_html, img_path in segments:
-            # ── text segment ─────────────────────────────────────────────────
+            # ── text segment (may contain <!--TABLE:n--> markers) ────────────
             if seg_html.strip():
-                self.set_font(FONT_BODY, "", 9)
-                self.set_text_color(*C_BODY)
-                self.set_x(M_L)
-                try:
-                    self.write_html(
-                        seg_html,
-                        table_line_separators=True,
-                        tag_styles=_build_tag_styles(),
-                    )
-                except Exception as e:
-                    print(f"  [warn] HTML render error: {e}", file=sys.stderr)
-                    plain = re.sub(r"<[^>]+>", " ", seg_html)
-                    plain = re.sub(r"\s+", " ", plain).strip()
-                    if self.page == 0:
-                        self.add_page()
-                    self.set_font(FONT_BODY, "", 9)
-                    self.set_text_color(*C_BODY)
-                    self.set_x(M_L)
-                    self.multi_cell(BODY_W, 5,
-                                    plain[:8000] + ("..." if len(plain) > 8000 else ""))
+                # Split on table markers to interleave text and tables
+                parts = re.split(r"<!--TABLE:(\d+)-->", seg_html)
+                # parts alternates: text, table_idx, text, table_idx, text ...
+                for pi, part in enumerate(parts):
+                    if pi % 2 == 0:
+                        # Text fragment — render via write_html
+                        if part.strip():
+                            self.set_font(FONT_BODY, "", 9)
+                            self.set_text_color(*C_BODY)
+                            self.set_x(M_L)
+                            try:
+                                self.write_html(
+                                    part,
+                                    tag_styles=_build_tag_styles(),
+                                )
+                            except Exception as e:
+                                print(f"  [warn] HTML render error: {e}",
+                                      file=sys.stderr)
+                                plain = re.sub(r"<[^>]+>", " ", part)
+                                plain = re.sub(r"\s+", " ", plain).strip()
+                                if self.page == 0:
+                                    self.add_page()
+                                self.set_font(FONT_BODY, "", 9)
+                                self.set_text_color(*C_BODY)
+                                self.set_x(M_L)
+                                self.multi_cell(BODY_W, 5, plain[:8000])
+                    else:
+                        # Table marker — render the extracted table
+                        tidx = int(part)
+                        if tidx < len(tables):
+                            self._render_table(tables[tidx])
 
             # ── full-page image ───────────────────────────────────────────────
             if img_path:
                 self._render_image_page(img_path)
 
-    def _render_image_page(self, img_path):
+    # -- Table renderer (drawn with fpdf2 primitives) --------------------------
+
+    def _render_table(self, tdata):
+        """
+        Draw a table using fpdf2 rect/cell primitives.
+        - Dark header row with white bold text
+        - Alternating light/white body rows
+        - Thin border lines
+        - Auto column widths proportional to content
+        - Wraps cell text with multi_cell for long content
+        - Page breaks between rows when needed
+        """
+        header = tdata["header"]
+        rows = tdata["rows"]
+        if not header and not rows:
+            return
+
+        n_cols = max(
+            len(header) if header else 0,
+            max((len(r) for r in rows), default=0),
+        )
+        if n_cols == 0:
+            return
+
+        all_rows = ([header] if header else []) + rows
+        FONT_SZ = 7
+        PAD_X = 1.0      # horizontal cell padding (mm)
+        PAD_Y = 0.5      # vertical cell padding (mm)
+        LINE_H = 3.2     # line height within cells (mm)
+
+        # -- Measure column widths using actual font metrics -------------------
+        self.set_font(FONT_BODY, "B", FONT_SZ)
+        col_w = [0.0] * n_cols
+        for row in all_rows:
+            for i, cell in enumerate(row):
+                if i < n_cols:
+                    tw = self.get_string_width(_safe(cell)) + 2 * PAD_X
+                    col_w[i] = max(col_w[i], tw)
+
+        # Ensure every column has at least enough room for ~3 chars
+        min_w = max(10, BODY_W / n_cols * 0.35)
+        col_w = [max(min_w, min(w, BODY_W * 0.6)) for w in col_w]
+
+        # Scale to fit exactly in BODY_W
+        total = sum(col_w)
+        if total > 0:
+            scale = BODY_W / total
+            col_w = [w * scale for w in col_w]
+            # After scaling, enforce absolute minimum of 10mm
+            for i in range(n_cols):
+                if col_w[i] < 10:
+                    col_w[i] = 10
+            # Re-scale if minimums pushed us over
+            total2 = sum(col_w)
+            if total2 > BODY_W:
+                scale2 = BODY_W / total2
+                col_w = [w * scale2 for w in col_w]
+
+        # -- Helper: compute row height (using font metrics for wrap count) ----
+        def _row_height(row, bold=False):
+            self.set_font(FONT_BODY, "B" if bold else "", FONT_SZ)
+            max_lines = 1
+            for i in range(n_cols):
+                text = _safe(row[i] if i < len(row) else "")
+                avail = col_w[i] - 2 * PAD_X
+                if avail <= 0:
+                    continue
+                tw = self.get_string_width(text)
+                n_lines = max(1, int(tw / avail + 0.99))  # ceil
+                max_lines = max(max_lines, n_lines)
+            return max_lines * LINE_H + 2 * PAD_Y
+
+        # -- Helper: draw one row ----------------------------------------------
+        def _draw_row(row, is_header=False, is_alt=False):
+            rh = _row_height(row, bold=is_header)
+
+            # Page break if row won't fit
+            if self.get_y() + rh > PAGE_H - M_B:
+                self.add_page()
+                self.set_y(M_T)
+                if header and not is_header:
+                    _draw_row(header, is_header=True)
+
+            y0 = self.get_y()
+
+            # Row background
+            if is_header:
+                self.set_fill_color(*C_TABLE_HDR)
+            elif is_alt:
+                self.set_fill_color(*C_TABLE_ALT)
+            else:
+                self.set_fill_color(255, 255, 255)
+            self.rect(M_L, y0, BODY_W, rh, "F")
+
+            # Disable auto page break while drawing cells — we handle
+            # page breaks ourselves above.  multi_cell auto-break would
+            # split a row across pages, leaving blank space and orphaned
+            # background rects.
+            self.set_auto_page_break(auto=False)
+
+            # Cell text
+            x = M_L
+            for i in range(n_cols):
+                text = _safe(row[i] if i < len(row) else "")
+                w = col_w[i]
+
+                if is_header:
+                    self.set_font(FONT_BODY, "B", FONT_SZ)
+                    self.set_text_color(*C_WHITE)
+                else:
+                    self.set_font(FONT_BODY, "", FONT_SZ)
+                    self.set_text_color(*C_BODY)
+
+                self.set_xy(x + PAD_X, y0 + PAD_Y)
+                self.multi_cell(w - 2 * PAD_X, LINE_H, text, align="L")
+                x += w
+
+            self.set_auto_page_break(auto=True, margin=M_B)
+
+            # Horizontal rule under row
+            self.set_draw_color(180, 180, 190)
+            self.set_line_width(0.15)
+            self.line(M_L, y0 + rh, M_L + BODY_W, y0 + rh)
+
+            # Vertical column separators
+            vx = M_L
+            for i in range(n_cols + 1):
+                self.line(vx, y0, vx, y0 + rh)
+                if i < n_cols:
+                    vx += col_w[i]
+
+            self.set_y(y0 + rh)
+
+        # -- Draw the table ----------------------------------------------------
+        self.ln(2)
+
+        if header:
+            _draw_row(header, is_header=True)
+
+        row_images = tdata.get("row_images", [])
+        for ri, row in enumerate(rows):
+            # If this row contains images, skip the table row and render
+            # each image on its own page with the row text as caption.
+            has_img = (ri < len(row_images)
+                       and any(img for img in row_images[ri] if img))
+            if has_img:
+                # Build caption from non-image cells in this row
+                caption_parts = [c for c in row if c.strip()]
+                caption = " — ".join(caption_parts) if caption_parts else None
+                for img_src in row_images[ri]:
+                    if img_src:
+                        self._render_image_page(img_src, caption=caption)
+            else:
+                _draw_row(row, is_alt=(ri % 2 == 1))
+
+        self.ln(2)
+
+    def _render_image_page(self, img_path, caption=None):
         """
         Render a single image on its own page.
         - Landscape page when image aspect ratio > 1.2
         - Portrait page otherwise
         Image is centered and scaled to fill the usable area.
-        The caption (filename without extension) appears below.
+        Caption defaults to filename without extension if not provided.
 
         RGBA PNGs (all generated diagrams) are composited onto a white
         background before embedding — fpdf2 misrenders RGBA as a black box.
+        The composited image is saved to a temp file (not BytesIO) so fpdf2
+        uses the unique file path as its dedup/cache key.
         """
-        import io
+        import tempfile
+        _tmp_file = None
         try:
             from PIL import Image as PILImage
             img = PILImage.open(img_path)
             img_w_px, img_h_px = img.size
             aspect = img_w_px / img_h_px
 
-            # Flatten alpha channel onto white background
-            if img.mode in ("RGBA", "LA", "P"):
-                bg = PILImage.new("RGB", img.size, (255, 255, 255))
+            # Flatten alpha / palette onto white background
+            if img.mode != "RGB":
                 if img.mode == "P":
                     img = img.convert("RGBA")
-                bg.paste(img, mask=img.split()[-1] if img.mode in ("RGBA", "LA") else None)
-                img = bg
+                if img.mode in ("RGBA", "LA"):
+                    bg = PILImage.new("RGB", img.size, (255, 255, 255))
+                    bg.paste(img, mask=img.split()[-1])
+                    img = bg
+                else:
+                    img = img.convert("RGB")
 
-            # Save to in-memory buffer so fpdf2 reads the flattened RGB image
-            buf = io.BytesIO()
-            img.save(buf, format="PNG")
-            buf.seek(0)
-            embed_src = buf   # pass BytesIO to pdf.image()
+            # Write composited image to a unique temp file
+            fd, tmp_path = tempfile.mkstemp(suffix=".png",
+                                            prefix="tbs_img_")
+            os.close(fd)
+            img.save(tmp_path, format="PNG")
+            embed_src = tmp_path
+            _tmp_file = tmp_path
 
         except Exception as e:
             print(f"  [warn] PIL error for {img_path}: {e}", file=sys.stderr)
-            embed_src = img_path   # fall back to direct path
+            embed_src = img_path
             aspect = 1.5
 
         LANDSCAPE_THRESHOLD = 1.2
@@ -670,9 +939,10 @@ class BrochurePDF(FPDF):
 
         self._suppress_chrome = True
         self.add_page(orientation=orientation)
+        self.set_auto_page_break(auto=False)
 
-        # Usable area (leave space for caption at bottom)
-        caption_h = 8
+        # Reserve space for caption at bottom — inside the printable area
+        caption_h = 10
         usable_w = page_w - M_L - M_R
         usable_h = page_h - M_T - M_B - caption_h
 
@@ -683,19 +953,26 @@ class BrochurePDF(FPDF):
             fit_h = usable_h
             fit_w = fit_h * aspect
 
-        # Center on page
+        # Center image in the area above the caption
         x = M_L + (usable_w - fit_w) / 2
         y = M_T + (usable_h - fit_h) / 2
 
         self.image(embed_src, x=x, y=y, w=fit_w, h=fit_h)
 
-        # Caption: filename without path/extension
-        caption = os.path.splitext(os.path.basename(img_path))[0]
-        self.set_xy(M_L, page_h - M_B + 2)
+        # Clean up temp file now that fpdf2 has read it
+        if _tmp_file and os.path.exists(_tmp_file):
+            os.unlink(_tmp_file)
+
+        # Caption: positioned below the image area, still on the same page
+        if not caption:
+            caption = os.path.splitext(os.path.basename(img_path))[0]
+        caption_y = page_h - M_B - caption_h + 2
+        self.set_xy(M_L, caption_y)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
         self.cell(usable_w, 5, _safe(caption), align="C")
 
+        self.set_auto_page_break(auto=True, margin=M_B)
         self._suppress_chrome = False
 
 
@@ -791,7 +1068,7 @@ def main():
         section = page["section"]
         basename = os.path.basename(src)
 
-        print(f"  [{i:2d}/{len(pages)}] {title}  ({basename})")
+        page_before = pdf.page_no()
 
         if section and section != prev_section:
             pdf.section_break(section)
@@ -802,6 +1079,9 @@ def main():
 
         pdf.chapter_header(i, title, section)
         pdf.chapter_body(html_body)
+
+        print(f"  [{i:2d}/{len(pages)}] {title}  ({basename})  "
+              f"pp {page_before+1}-{pdf.page_no()}")
 
     print(f"\nWriting {OUTPUT_PDF}...")
     pdf.output(OUTPUT_PDF)

@@ -178,13 +178,13 @@ Full raw material supplier list, bearing specification, and seal specification a
 
 ### 5.7 Ventilation Diagrams
 
-**Sheet 1 — Light Trap Detail (1:100) and Ventilation Fan Baffles**
-![TBS-001 Light Trap — Sheet 1](assets/lighttrap-sheet1.png)
+**Sheet 1 — Container Ventilation Section**
+![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
 
 ---
 
-**Sheet 2 — Container Ventilation Section**
-![TBS-001 Light Trap — Sheet 2: Ventilation Section](assets/lighttrap-sheet2.png)
+**Sheet 2 — Fan & Baffle Duct Assembly**
+![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
 
 ### 5.8 Container Floor Plan — All Systems
 

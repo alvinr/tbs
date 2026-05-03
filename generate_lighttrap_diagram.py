@@ -3,17 +3,17 @@
 # © 2026 Alvin Richards
 """
 generate_lighttrap_diagram.py
-TBS-001  Light Trap Vestibule & Ventilation System — two drawing sheets.
+TBS-001  Ventilation System — two drawing sheets.
 
-Sheet 1: Light trap vestibule — top-down plan cross-section showing S-path
-Sheet 2: Ventilation system — longitudinal container section + fan baffle detail
+Sheet 1: Ventilation system — container longitudinal section
+Sheet 2: Fan & baffle duct — assembly section
 """
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, Arc, FancyArrowPatch
+from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -29,7 +29,6 @@ C_GND   = "#2C5F2E"
 C_PIPE  = "#6C757D"
 C_AIR   = "#D0E8FF"   # airflow fill
 C_VEST  = "#EEF5EE"   # vestibule interior
-C_CURTAIN = "#3A1A10" # Duvetyne (dark brown-black)
 TITLE_COL = "#0F2D5E"
 
 
@@ -85,288 +84,12 @@ def dim_v(ax, x, y1, y2, text, col=C_DIM):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SHEET 1 — Light Trap Vestibule — Plan View (top-down cross-section)
-# Scale 1:100  (1 drawing unit = 100 mm)
-# Vestibule: 2,400 mm wide × 1,200 mm deep
-# ─────────────────────────────────────────────────────────────────────────────
-
-def draw_sheet1():
-    FW, FH = 26.0, 24.0
-    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
-    fig.patch.set_facecolor("white")
-    ax.set_facecolor("white")
-    ax.set_xlim(0, FW)
-    ax.set_ylim(0, FH)
-    ax.set_aspect("equal")
-    ax.axis("off")
-    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
-
-    ax.text(FW/2, FH - 0.38,
-            "LIGHT TRAP VESTIBULE — PLAN CROSS-SECTION (top-down)",
-            ha="center", va="center", fontsize=13, fontweight="bold",
-            color=TITLE_COL)
-    ax.text(FW/2, FH - 0.70,
-            "TBS-001  ·  Scale 1:100  ·  All dimensions in mm  ·  "
-            "Section cut at standing height (~1,500mm AFF)",
-            ha="center", va="center", fontsize=8.0, color=C_DIM)
-
-    # Scale: 1 unit = 100 mm
-    S = 1 / 100.0
-
-    # Vestibule real dimensions (mm)
-    V_W  = 2400   # vestibule width (along long axis of container wall)
-    V_D  = 1200   # vestibule depth (away from container)
-    WT   = 120    # schematic wall/baffle thickness mm
-    DOOR = 900    # exterior door clear opening mm
-
-    # Drawing origin — container inner face at bottom of vestibule
-    OX, OY = 1.3, 7.0
-
-    vw = V_W * S   # 24.0 units
-    vd = V_D * S   # 12.0 units
-    wt = WT  * S   # 1.2 units
-    dw = DOOR* S   # 9.0 units
-
-    # ── Container wall (bottom of vestibule) ─────────────────────────────────
-    # Show container end wall as hatched steel block
-    ax.add_patch(mpatches.Rectangle((OX, OY - wt * 1.5), vw, wt * 1.5,
-                 fc=C_STEEL, ec=C_OUT, lw=2.0, zorder=3))
-    ax.text(OX + vw/2, OY - wt * 0.75,
-            "CONTAINER CARGO-DOOR END WALL  (ISO corner castings)",
-            ha="center", va="center", fontsize=8.5, fontweight="bold",
-            color=C_OUT, zorder=4)
-
-    # Hatch lines on wall
-    for xi in range(1, 12):
-        ax.plot([OX + xi*2, OX + xi*2 + wt*1.5],
-                [OY - wt*1.5, OY],
-                color=C_OUT, lw=0.4, alpha=0.5, zorder=4)
-
-    # ── Side walls of vestibule ───────────────────────────────────────────────
-    # Left wall
-    ax.add_patch(mpatches.Rectangle((OX, OY), wt, vd,
-                 fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=3))
-    # Right wall
-    ax.add_patch(mpatches.Rectangle((OX + vw - wt, OY), wt, vd,
-                 fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=3))
-
-    # ── Exterior wall (top of vestibule) with door opening ───────────────────
-    door_x1 = OX + (vw - dw) / 2   # centre the door
-    door_x2 = door_x1 + dw
-    # Left section of exterior wall
-    ax.add_patch(mpatches.Rectangle((OX, OY + vd), door_x1 - OX, wt,
-                 fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=3))
-    # Right section
-    ax.add_patch(mpatches.Rectangle((door_x2, OY + vd), OX + vw - door_x2, wt,
-                 fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=3))
-    # Door panel (closed, shown as thin rectangle)
-    ax.add_patch(mpatches.Rectangle((door_x1, OY + vd), dw, wt * 0.3,
-                 fc="white", ec=C_OUT, lw=1.2, zorder=4))
-    # Door swing arc
-    ax.add_patch(Arc((door_x1, OY + vd), 2*dw, 2*dw,
-                     angle=0, theta1=0, theta2=90,
-                     color=C_DIM, lw=0.8, linestyle=":", zorder=3))
-    ax.text(OX + vw/2, OY + vd + wt * 0.15,
-            "EXTERIOR DOOR  900mm clear  (outward-opening, compression latch)",
-            ha="center", va="center", fontsize=7.5, fontweight="bold",
-            color=C_OUT, zorder=5)
-
-    # ── Vestibule interior fill ───────────────────────────────────────────────
-    ax.add_patch(mpatches.Rectangle((OX + wt, OY), vw - 2*wt, vd,
-                 fc=C_VEST, ec="none", zorder=2))
-
-    # ── BAFFLE 1: from left wall, at 30% depth ────────────────────────────────
-    # Spans 58% of interior width (left to right)
-    BF_SPAN = 0.58 * (vw - 2*wt)  # 58% of clear interior width
-    B1_Y = OY + vd * 0.30         # 30% from container end
-    ax.add_patch(mpatches.Rectangle((OX + wt, B1_Y), BF_SPAN, wt * 0.8,
-                 fc=C_OUT, ec=C_OUT, lw=1.0, zorder=5))
-    # Gap indicator
-    gap_x1 = OX + wt + BF_SPAN
-    gap_x2 = OX + vw - wt
-    ax.add_patch(mpatches.Rectangle((gap_x1, B1_Y - 0.2), gap_x2 - gap_x1, wt * 0.8 + 0.4,
-                 fc="#FFFDE7", ec=C_CL, lw=1.0, linestyle="--", zorder=4))
-    ax.text((gap_x1 + gap_x2)/2, B1_Y + wt * 0.4,
-            "GAP\n1,000mm", ha="center", va="center",
-            fontsize=7.0, color=C_CL, fontweight="bold", zorder=6)
-
-    # ── BAFFLE 2: from right wall, at 65% depth ───────────────────────────────
-    B2_Y = OY + vd * 0.65
-    ax.add_patch(mpatches.Rectangle((OX + vw - wt - BF_SPAN, B2_Y), BF_SPAN, wt * 0.8,
-                 fc=C_OUT, ec=C_OUT, lw=1.0, zorder=5))
-    gap2_x1 = OX + wt
-    gap2_x2 = OX + vw - wt - BF_SPAN
-    ax.add_patch(mpatches.Rectangle((gap2_x1 - 0.2, B2_Y - 0.2), gap2_x2 - gap2_x1 + 0.4, wt * 0.8 + 0.4,
-                 fc="#FFFDE7", ec=C_CL, lw=1.0, linestyle="--", zorder=4))
-    ax.text((gap2_x1 + gap2_x2)/2, B2_Y + wt * 0.4,
-            "GAP\n1,000mm", ha="center", va="center",
-            fontsize=7.0, color=C_CL, fontweight="bold", zorder=6)
-
-    # ── Duvetyne curtains (3 layers at container door end) ────────────────────
-    for ci, cx_off in enumerate([0.3, 0.6, 0.9]):
-        cx = OX + wt + cx_off
-        ax.plot([cx, cx], [OY, OY + 2.5],
-                color=C_CURTAIN, lw=3.5 - ci * 0.8, alpha=0.85, zorder=5)
-    ax.text(OX + wt + 1.4, OY + 1.5,
-            "3 layers\nRosco Duvetyne\nblackout curtain\n(200mm overlap each)",
-            ha="left", va="center", fontsize=7.5, color=C_CURTAIN, zorder=6,
-            bbox=dict(fc="white", ec="none", pad=1))
-
-    # ── Safelight D (red LED strip on ceiling/wall) ───────────────────────────
-    sl_x = OX + vw - wt - 1.5
-    sl_y = OY + vd * 0.10
-    ax.add_patch(mpatches.Rectangle((sl_x - 1.2, sl_y - 0.15), 2.4, 0.30,
-                 fc="#FF6B6B", ec=C_OUT, lw=0.8, zorder=5))
-    ax.text(sl_x, sl_y, "SAFELIGHT\nCct D  (red LED)", ha="center", va="center",
-            fontsize=7.0, color="white", fontweight="bold", zorder=6)
-
-    # Note: ventilation fans A and B are on the container end walls (not this side wall),
-    # interior-mounted with baffle ducts — see Sheet 2 and Sheet 3 of lighttrap drawings.
-
-    # ── S-path travel arrows ──────────────────────────────────────────────────
-    path_col = "#1565C0"
-    path_lw = 2.2
-    # Step 1: enter from container, go up toward baffle 1 (in right-side gap)
-    px = OX + vw - wt - 1.5   # path x (right zone)
-    ax.annotate("", xy=(px, B1_Y - 0.3), xytext=(px, OY + 1.5),
-                arrowprops=dict(arrowstyle="-|>", color=path_col, lw=path_lw), zorder=7)
-    # Step 2: cross left through baffle 1 gap
-    ax.annotate("", xy=(OX + wt + 1.0, B1_Y + wt * 0.4 + 0.4),
-                xytext=(gap_x1 + 0.3, B1_Y + wt * 0.4 + 0.4),
-                arrowprops=dict(arrowstyle="-|>", color=path_col, lw=path_lw), zorder=7)
-    # Step 3: go up in left zone toward baffle 2 gap
-    px2 = OX + wt + 1.0
-    ax.annotate("", xy=(px2, B2_Y - 0.3), xytext=(px2, B1_Y + wt * 0.4 + 0.7),
-                arrowprops=dict(arrowstyle="-|>", color=path_col, lw=path_lw), zorder=7)
-    # Step 4: cross right through baffle 2 gap
-    ax.annotate("", xy=(gap2_x2 - 0.2 + 1.5, B2_Y + wt * 0.4 + 0.4),
-                xytext=(gap2_x1 - 0.0, B2_Y + wt * 0.4 + 0.4),
-                arrowprops=dict(arrowstyle="-|>", color=path_col, lw=path_lw), zorder=7)
-    # Step 5: go up and out
-    px3 = OX + vw / 2
-    ax.annotate("", xy=(px3, OY + vd + wt + 0.4), xytext=(px3, B2_Y + wt + 0.7),
-                arrowprops=dict(arrowstyle="-|>", color=path_col, lw=path_lw), zorder=7)
-
-    # Path label
-    ax.text(OX + vw * 0.52, OY + vd * 0.50,
-            "S-PATH\n(no direct\nline of sight)",
-            ha="center", va="center", fontsize=9.0,
-            fontweight="bold", color=path_col, zorder=8,
-            bbox=dict(fc="white", ec=path_col, pad=3, lw=0.8, alpha=0.9))
-
-    # ── Dimension lines ───────────────────────────────────────────────────────
-    DY_BOT = OY - wt * 1.5 - 0.8
-    DX_L = OX - 1.2
-
-    # Vestibule width
-    dim_h(ax, OX, OX + vw, DY_BOT - 0.5, "2,400 mm  (vestibule width)")
-    ax.plot([OX, OX], [OY - wt*1.5, DY_BOT - 0.5], color=C_DIM, lw=0.5, linestyle=":")
-    ax.plot([OX+vw, OX+vw], [OY - wt*1.5, DY_BOT - 0.5], color=C_DIM, lw=0.5, linestyle=":")
-
-    # Door opening
-    dim_h(ax, door_x1, door_x2, DY_BOT, "900 mm  (door clear)")
-    ax.plot([door_x1, door_x1], [OY + vd, DY_BOT], color=C_DIM, lw=0.5, linestyle=":")
-    ax.plot([door_x2, door_x2], [OY + vd, DY_BOT], color=C_DIM, lw=0.5, linestyle=":")
-
-    # Vestibule depth
-    dim_v(ax, DX_L, OY, OY + vd, "1,200 mm  (vestibule depth)")
-    ax.plot([OX, DX_L], [OY, OY], color=C_DIM, lw=0.5, linestyle=":")
-    ax.plot([OX, DX_L], [OY+vd, OY+vd], color=C_DIM, lw=0.5, linestyle=":")
-
-    # Baffle positions
-    dim_v(ax, DX_L - 1.2, OY, B1_Y, "360 mm", col="#888888")
-    dim_v(ax, DX_L - 1.2, B1_Y, B2_Y, "420 mm", col="#888888")
-    dim_v(ax, DX_L - 1.2, B2_Y, OY + vd, "420 mm", col="#888888")
-
-    # Baffle length
-    dim_h(ax, OX + wt, OX + wt + BF_SPAN,
-          OY + vd + wt + 0.6, "1,400 mm  (baffle span)")
-
-    # ── Material callout key ──────────────────────────────────────────────────
-    KX = OX + vw + 1.5
-    KY = OY + vd + wt
-    ax.text(KX, KY, "CONSTRUCTION NOTES",
-            ha="left", va="top", fontsize=9.5,
-            fontweight="bold", color=C_OUT)
-    ax.plot([KX, KX + 7.0], [KY - 0.25, KY - 0.25],
-            color=C_OUT, lw=1.0)
-
-    notes = [
-        ("FRAME",
-         "40 × 40 mm RHS steel, hot-dip galvanised",
-         "Bolt to ISO corner castings — M10 × 50mm × 8 off\nNo welding to container required"),
-        ("WALLS / ROOF",
-         "18mm exterior-grade plywood, both faces",
-         "Interior: flat black paint (zero sheen)\nExterior: weatherproof sealant + paint"),
-        ("BAFFLES (×2)",
-         "3mm mild steel plate, floor-to-ceiling",
-         "Flat black paint, both faces\nBolted to side walls via M8 × 25mm bolts"),
-        ("CURTAINS (×3)",
-         "Rosco Duvetyne 100% blackout fabric",
-         "Velcro-tab rail, 200mm overlap per layer\nHung at container-door end of vestibule"),
-        ("DOOR",
-         "900mm × 2,000mm, outward-opening",
-         "Full-height piano hinge\nCompression latch, weatherstripped perimeter"),
-        ("SAFELIGHT",
-         "12V red LED strip — Circuit D",
-         "Switched from inside\nNo UV component — safe during sensitiser coating"),
-        ("VENTILATION",
-         "150mm compact axial panel fans — Fan A (intake) + Fan B (exhaust)",
-         "Interior-mounted on container end walls with light-safe baffle ducts\nSee Ventilation System drawings (Sheets 2 & 3)"),
-    ]
-    for j, (hdr, spec, detail) in enumerate(notes):
-        ny = KY - 0.55 - j * 1.05
-        ax.text(KX, ny, hdr + ":",
-                ha="left", va="top", fontsize=8.5,
-                fontweight="bold", color=C_OUT)
-        ax.text(KX + 0.15, ny - 0.28, spec,
-                ha="left", va="top", fontsize=7.8, color=C_OUT)
-        ax.text(KX + 0.15, ny - 0.55, detail,
-                ha="left", va="top", fontsize=7.2, color=C_DIM)
-
-    # ── Install sequence note ─────────────────────────────────────────────────
-    nx, ny2 = OX, 1.1
-    ax.add_patch(FancyBboxPatch((nx - 0.1, ny2 - 0.15), 15.0, 1.6,
-                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(nx + 0.10, ny2 + 1.28, "INSTALLATION SEQUENCE:",
-            ha="left", va="center", fontsize=8.5, fontweight="bold", color=C_OUT)
-    install = [
-        "1.  Fabricate RHS frame. Galvanise before installation.",
-        "2.  Bolt frame to ISO corner castings (M10 × 50mm, 8 bolts). Check plumb and square.",
-        "3.  Fix 18mm ply cladding to frame with TEK screws. Seal all exterior joints.",
-        "4.  Install baffle plates to side walls. Paint all interior surfaces flat black — two coats.",
-        "5.  Fit exterior door (piano hinge, full height). Install compression latch.",
-        "6.  Hang Duvetyne curtains (3 layers, Velcro rail). Test: each layer must fully overlap the next.",
-        "7.  Wire safelight from Circuit D branch (run conduit through sealed penetration in container wall).",
-        "8.  Light-leak test per Operating Manual Phase 0.7. Target: zero light after 15min dark adaptation.",
-    ]
-    col1 = [install[i] for i in range(0, len(install), 2)]
-    col2 = [install[i] for i in range(1, len(install), 2)]
-    for ri, (s1, s2) in enumerate(zip(col1, col2)):
-        ax.text(nx + 0.15, ny2 + 0.98 - ri * 0.28, s1,
-                ha="left", va="center", fontsize=7.2, color=C_DIM)
-        ax.text(nx + 7.65, ny2 + 0.98 - ri * 0.28, s2,
-                ha="left", va="center", fontsize=7.2, color=C_DIM)
-
-    title_block(ax, FW, 1, 2,
-                "LIGHT TRAP VESTIBULE — PLAN CROSS-SECTION",
-                "S-path baffle layout  ·  Materials  ·  Installation notes",
-                "1:100  (1 unit = 100 mm)")
-
-    plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
-                pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/lighttrap-sheet1.svg", bbox_inches="tight", facecolor="white")
-    plt.close(fig)
-    print("  → diagrams/lighttrap-sheet1.png  Done.")
-
-
-# ─────────────────────────────────────────────────────────────────────────────
-# SHEET 2 — Ventilation System
+# SHEET 1 — Ventilation System
 # Longitudinal container section (schematic, not to scale)
 # Fan positions, cross-ventilation path, evap cooler, cable trunking
 # ─────────────────────────────────────────────────────────────────────────────
 
-def draw_sheet2():
+def draw_sheet1():
     FW, FH = 24.0, 16.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
@@ -384,7 +107,7 @@ def draw_sheet2():
     ax.text(FW/2, FH - 0.70,
             "TBS-001  ·  Longitudinal section (schematic, not to scale)  ·  "
             "Fan positions, cross-ventilation path, evap cooler  ·  "
-            "Baffle duct assembly detail — see Sheet 3",
+            "Baffle duct assembly detail — see Sheet 2",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     # ── LEFT HALF: Container longitudinal section ────────────────────────────
@@ -592,25 +315,25 @@ def draw_sheet2():
                     ha="center", va="center", fontsize=7.5,
                     color=C_OUT if ci == 0 else ("#D32F2F" if "OFF" in val else "#2E7D32"))
 
-    title_block(ax, FW, 2, 3,
+    title_block(ax, FW, 1, 2,
                 "VENTILATION SYSTEM — CONTAINER LONGITUDINAL SECTION",
                 "Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
-                "Schematic — not to scale  ·  Baffle duct assembly detail — see Sheet 3")
+                "Schematic — not to scale  ·  Baffle duct assembly detail — see Sheet 2")
 
-    plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
+    plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/lighttrap-sheet2.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig("diagrams/lighttrap-sheet1.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet2.png  Done.")
+    print("  → diagrams/lighttrap-sheet1.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SHEET 3 — Fan + Baffle Duct + Wall Assembly
+# SHEET 2 — Fan + Baffle Duct + Wall Assembly
 # Longitudinal cross-section through the fan axis showing how the fan,
 # baffle duct housing, and container wall connect.
 # ─────────────────────────────────────────────────────────────────────────────
 
-def draw_sheet3():
+def draw_sheet2():
     import math
     FW, FH = 24.0, 14.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
@@ -871,17 +594,17 @@ def draw_sheet3():
             "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
             ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold", zorder=10)
 
-    title_block(ax, FW, 3, 3,
+    title_block(ax, FW, 2, 2,
                 "FAN & BAFFLE DUCT — ASSEMBLY SECTION",
                 "Interior-mounted fan  ·  Passive louvre grille (exterior only)  ·  "
                 "Baffle duct interior-mounted  ·  All wiring inside container",
-                "Schematic NTS  ·  Refer to Sheet 2 for baffle detail geometry")
+                "Schematic NTS  ·  Refer to Sheet 1 for container section")
 
-    plt.savefig("diagrams/lighttrap-sheet3.png", dpi=150, bbox_inches="tight",
+    plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/lighttrap-sheet3.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig("diagrams/lighttrap-sheet2.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  → diagrams/lighttrap-sheet3.png  Done.")
+    print("  → diagrams/lighttrap-sheet2.png  Done.")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -890,5 +613,4 @@ if __name__ == "__main__":
     print("Generating TBS-001 Light Trap & Ventilation diagrams...")
     draw_sheet1()
     draw_sheet2()
-    draw_sheet3()
     print("Done.")

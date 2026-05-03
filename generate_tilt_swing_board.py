@@ -177,25 +177,30 @@ def title_block(ax, fig_w, fig_h, sheet_n, sheet_total, title1, title2,
     draw_rect(ax, 5, 5, fig_w-10, fig_h-10, lw=1.5, color='black', fc='white')
     # Title block box
     tb_x = fig_w - 220
-    draw_rect(ax, tb_x, 5, 215, 75, lw=1.0, color='black', fc='#F5F5F5')
+    draw_rect(ax, tb_x, 5, 215, 75, lw=0.5, color='black', fc='#F5F5F5')
     cx_tb = tb_x + 107
     ax.text(cx_tb, 73, project, ha='center', fontsize=9, fontweight='bold', color='black')
     ax.text(cx_tb, 65, title1, ha='center', fontsize=7.5, color='black')
     ax.text(cx_tb, 57, title2, ha='center', fontsize=7, color='black')
-    ax.text(tb_x+8, 50, 'DRAWING:', fontsize=6, color='black')
-    ax.text(tb_x+55, 50, f'{series}-0{sheet_n}', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 42, 'SHEET:', fontsize=6, color='black')
-    ax.text(tb_x+50, 42, f'{sheet_n} OF {sheet_total}', fontsize=6, fontweight='bold', color='black')
+    # Divider between title area and info fields
+    ax.plot([tb_x, tb_x+215], [54, 54], color='black', lw=0.3)
+    val_x = tb_x + 68  # left-aligned value column
+    ax.text(tb_x+8, 48, 'DRAWING:', fontsize=6, color='black')
+    ax.text(val_x, 48, f'{series}-0{sheet_n}', fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, 41, 'SHEET:', fontsize=6, color='black')
+    ax.text(val_x, 41, f'{sheet_n} OF {sheet_total}', fontsize=6, fontweight='bold', color='black')
     ax.text(tb_x+8, 34, 'SCALE:', fontsize=6, color='black')
-    ax.text(tb_x+50, 34, scale_str, fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 26, 'UNITS:', fontsize=6, color='black')
-    ax.text(tb_x+50, 26, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 18, 'TOLERANCE:', fontsize=6, color='black')
-    ax.text(tb_x+70, 18, '±0.25 UNLESS NOTED', fontsize=6, color='black')
-    ax.text(tb_x+8, 10, 'MATERIAL (default):', fontsize=6, color='black')
-    ax.text(tb_x+100, 10, 'Al 6061-T6 HARD ANODISE', fontsize=6, color='black')
-    ax.text(tb_x+8, 2, '© 2026 Alvin Richards — GNU AGPLv3',
-            fontsize=5, color='black', style='italic')
+    ax.text(val_x, 34, scale_str, fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, 27, 'UNITS:', fontsize=6, color='black')
+    ax.text(val_x, 27, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, 20, 'TOLERANCE:', fontsize=6, color='black')
+    ax.text(val_x, 20, '±0.25 UNLESS NOTED', fontsize=6, color='black')
+    ax.text(tb_x+8, 13, 'MATERIAL:', fontsize=6, color='black')
+    ax.text(val_x, 13, 'Al 6061-T6 HARD ANODISE', fontsize=6, color='black')
+    # Copyright — inside the box
+    ax.plot([tb_x, tb_x+215], [9, 9], color='black', lw=0.3)
+    ax.text(cx_tb, 6, '\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3',
+            ha='center', fontsize=5, color='black', style='italic')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

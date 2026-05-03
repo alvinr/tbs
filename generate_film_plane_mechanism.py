@@ -107,13 +107,13 @@ def leader(ax, xy, xytext, text, col=ANNO, fs=6.5):
 # In this view TILT (height difference) is invisible; SWING is visible as diagonal.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet1():
-    fig, ax = plt.subplots(figsize=(16, 9))
+    fig, ax = plt.subplots(figsize=(16, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
 
     PAD = 500
     ax.set_xlim(-PAD, L + 1400)
-    ax.set_ylim(-500, W + 750)
+    ax.set_ylim(-600, W + 750)
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -266,9 +266,18 @@ def sheet1():
         ax.text(leg_x+340, ly, f"{name}\n{corner_str}",
                 color=col, fontsize=5.8, va="center", **FONT)
 
-    title_block(ax, "1 / 4", "PLAN VIEW — 4-CORNER RAIL LAYOUT",
-                "SCALE: PROPORTIONAL (mm)")
-    fig.tight_layout(pad=0.3)
+    # Single title block at figure bottom
+    fig.text(0.02, 0.030, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+             color=DIM, fontsize=7, **FONT)
+    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 1 / 4: PLAN VIEW — 4-CORNER RAIL LAYOUT",
+             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
+    fig.text(0.98, 0.030, "SCALE: PROPORTIONAL (mm)",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.98, 0.010, "ALL DIMS IN mm UNLESS NOTED",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
+             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)

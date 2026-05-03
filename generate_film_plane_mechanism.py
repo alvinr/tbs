@@ -476,8 +476,8 @@ def sheet2():
         # Swing angle arc — from horizontal (flat) to swing line
         if d_L != d_R:
             ang = np.degrees(np.arctan2(abs(d_L - d_R), RAIL_X_R - RAIL_X_L))
-            # Stagger radii: i=1 → 300, i=2 → 500
-            arc_r = 300 + (i - 1) * 200
+            # Stagger radii: i=1 → 600, i=2 → 900
+            arc_r = 600 + (i - 1) * 300
             # Arc at right rail pivot; flat line goes left (180°),
             # swing line goes left-and-down, so sweep from 180°+ang to 180°
             ax.add_patch(Arc((RAIL_X_R, D_FAR), arc_r*2, arc_r*2,

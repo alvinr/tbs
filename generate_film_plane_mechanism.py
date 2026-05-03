@@ -402,7 +402,7 @@ def sheet2():
 
     dim_line_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
                offset=0, col=DIM)
-    dim_line_v(ax, W+210, 0, H, f"INTERIOR HEIGHT  {H} mm", offset=20, col=DIM)
+    dim_line_v(ax, W+210, 0, H, f"INTERIOR HEIGHT\n{H} mm", offset=20, col=DIM)
     dim_line_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
                offset=0, col=RAIL)
     dim_line_h(ax, 0, D_NEAR, -100, f"{D_NEAR}mm", offset=20, col=DIM, fs=6)
@@ -429,7 +429,7 @@ def sheet2():
     ax.text(L/2, -WALL_T/2-100, "PINHOLE WALL",
             color=WHITE, fontsize=7, ha="center", va="center", **FONT, zorder=5)
     ax.add_patch(Rectangle((0, W), L, WALL_T, fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
-    ax.text(L/2, W+WALL_T/2, "FAR WALL",
+    ax.text(L/2, W+WALL_T/2+75, "FAR WALL",
             color=DIM, fontsize=7, ha="center", va="center", **FONT, zorder=5)
     for xw in [(-WALL_T, -WALL_T, WALL_T, W+2*WALL_T), (L, -WALL_T, WALL_T, W+2*WALL_T)]:
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
@@ -497,7 +497,7 @@ def sheet2():
     dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
     dim_line_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm", offset=20, col=DIM, fs=7)
     dim_line_v(ax, RAIL_X_L - 120, D_NEAR, D_FAR,
-               f"RAIL TRAVEL  {D_FAR-D_NEAR} mm", offset=-180, col=RAIL, fs=6.5)
+               f"RAIL\nTRAVEL\n{D_FAR-D_NEAR} mm", offset=-400, col=RAIL, fs=6.5)
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)

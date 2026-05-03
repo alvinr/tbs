@@ -364,20 +364,22 @@ def sheet2():
                 color=col, lw=lw, ls=ls, alpha=alpha, zorder=zord+1,
                 solid_capstyle="round")
 
-        # Tilt angle arc
+        # Tilt angle arc — from vertical (flat) to tilt line
         if d_top != d_bot:
             theta = np.degrees(np.arctan2(abs(d_top - d_bot), fp_top_y - fp_bot_y))
-            arc_r = 110
-            theta1 = 90 - abs(theta) if d_top < d_bot else 90
-            theta2 = 90 if d_top < d_bot else 90 + abs(theta)
+            # Stagger radii so arcs don't overlap: i=1 → 200, i=2 → 350
+            arc_r = 200 + (i - 1) * 150
+            # Arc from 90° (vertical/flat) to 90°+theta (line tilts left)
             ax.add_patch(Arc((d_bot, fp_bot_y), arc_r*2, arc_r*2,
-                             angle=0, theta1=min(theta1, theta2),
-                             theta2=max(theta1, theta2),
-                             color=col, lw=1.0, alpha=0.8, zorder=zord))
-            ax.text(d_bot + arc_r*1.5*np.sin(np.radians(abs(theta)/2)) + 40,
-                    fp_bot_y + arc_r*1.2*np.cos(np.radians(abs(theta)/2)),
+                             angle=0, theta1=90, theta2=90 + theta,
+                             color=col, lw=1.2, alpha=0.8, zorder=zord))
+            # Label at the midpoint of the arc
+            mid_ang = np.radians(90 + theta / 2)
+            ax.text(d_bot + (arc_r + 30) * np.cos(mid_ang),
+                    fp_bot_y + (arc_r + 30) * np.sin(mid_ang),
                     f"{theta:.1f}°",
-                    color=col, fontsize=6.5, ha="left", **FONT, zorder=zord+2)
+                    color=col, fontsize=7, ha="center", va="center",
+                    **FONT, zorder=zord+2)
 
         # Label — to the left of the line at its vertical midpoint
         mid_x = (d_top + d_bot) / 2

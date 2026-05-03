@@ -409,9 +409,8 @@ def sheet2():
     ax.add_patch(Rectangle((D_XR, Y0_W), X_HI - D_XR, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
     # 45° leader labels for wall and panel layers (too thin to label inline)
-    # Split north/south to avoid overlap: exterior layers go south, interior go north
-    LBL_OFF = 130   # leader line offset increment
-    # South (downward) — wall and outer ply (exterior side)
+    # Right side going south — wall and outer ply (exterior side)
+    LBL_OFF = 130
     for ly, lbl, off in [
         (Y0_W + WALL_T / 2,  f"CONTAINER END WALL  ({WALL_T}mm STEEL)", 2 * LBL_OFF),
         (Y0_PL + PLY_T / 2,  f"OUTER PLY  ({PLY_T}mm)",                 1 * LBL_OFF),
@@ -422,15 +421,15 @@ def sheet2():
                     fontsize=6.5, color=C_OUT, ha="left", va="top", **FONT,
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                     bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
-    # North (upward) — frame and inner ply (interior side)
+    # Left side going north — frame and inner ply (interior side)
     for ly, lbl, off in [
         (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME  ({FRAME_T}mm)", 1 * LBL_OFF),
         (Y0_PL2 + PLY_T / 2,  f"INNER PLY — FLAT BLACK  ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
         ax.annotate(lbl,
-                    xy=(D_XR + 60, ly),
-                    xytext=(D_XR + 60 + off, ly + off),
-                    fontsize=6.5, color=C_OUT, ha="left", va="bottom", **FONT,
+                    xy=(D_XL - 60, ly),
+                    xytext=(D_XL - 60 - off, ly + off),
+                    fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                     bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
@@ -474,7 +473,7 @@ def sheet2():
             f"Ø{DRUM_D}mm REVOLVING DRUM",
             color=C_OUT, fontsize=8, ha="center", va="center",
             **FONT, fontweight="bold", zorder=15)
-    ax.text(D_CX, D_CY - 35,
+    ax.text(D_CX, D_CY - 55,
             "3mm MILD STEEL  ·  FLAT BLACK POWDER COAT",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15)
 

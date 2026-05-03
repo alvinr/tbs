@@ -522,8 +522,8 @@ def sheet3():
     positions = [
         (0.04, 0.52, 0.44, 0.42),  # TL — corner carriage bracket
         (0.52, 0.52, 0.44, 0.42),  # TR — rail + carriage cross-section
-        (0.04, 0.08, 0.44, 0.38),  # BL — universal joint / rod-end
-        (0.52, 0.08, 0.44, 0.38),  # BR — ACM panel arrangement
+        (0.04, 0.10, 0.44, 0.36),  # BL — universal joint / rod-end
+        (0.52, 0.10, 0.44, 0.36),  # BR — ACM panel arrangement
     ]
     axes = []
     for p in positions:
@@ -725,8 +725,15 @@ def sheet3():
     fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (4-CORNER INDEPENDENT DESIGN)",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
-    for a in axes:
-        title_block(a, "3 / 4", "HARDWARE DETAILS — 4-CORNER DESIGN")
+    # Single title block at the figure bottom (not per-quadrant)
+    fig.text(0.02, 0.025, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+             color=DIM, fontsize=7, **FONT)
+    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 3 / 4: HARDWARE DETAILS — 4-CORNER DESIGN",
+             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
+    fig.text(0.98, 0.025, "ALL DIMS IN mm UNLESS NOTED",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.50, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.svg", bbox_inches="tight", facecolor=BG)

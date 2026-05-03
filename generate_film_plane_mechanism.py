@@ -379,9 +379,10 @@ def sheet2():
                     f"{theta:.1f}°",
                     color=col, fontsize=6.5, ha="left", **FONT, zorder=zord+2)
 
-        # Label — right of container, vertically centered on line
+        # Label — to the right of the line at its vertical midpoint
+        mid_x = (d_top + d_bot) / 2
         mid_y = (fp_top_y + fp_bot_y) / 2
-        ax.text(W + WALL_T + 30, mid_y, name,
+        ax.text(mid_x + 80, mid_y, name,
                 color=col, fontsize=6.5, va="center", ha="left", **FONT, zorder=zord+2)
 
     # Pinhole

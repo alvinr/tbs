@@ -535,7 +535,7 @@ def sheet3():
 
     # ── TL: Corner carriage bracket assembly ──────────────────────────────────
     ax = ax_bracket
-    ax.set_xlim(-100, 550); ax.set_ylim(-150, 400); ax.set_aspect("equal")
+    ax.set_xlim(-100, 550); ax.set_ylim(-200, 400); ax.set_aspect("equal")
 
     # Rail (running into page — shown as end-on rectangle)
     rl_w = 44; rl_h = 30
@@ -592,13 +592,13 @@ def sheet3():
 
     ax.text(200, 370, "CORNER CARRIAGE BRACKET ASSEMBLY\n(ONE PER CORNER — 4 TOTAL)",
             color=WHITE, fontsize=8, ha="center", va="bottom", **FONT)
-    ax.text(200, -130,
+    ax.text(200, -100,
             "EACH CORNER: HGH20CA ×2  +  L-BRACKET  +  ACME NUT  +  3/4\"-6 LEADSCREW  +  HANDWHEEL",
             color=DIM, fontsize=6, ha="center", **FONT)
 
     # ── TR: HGR20 + HGH20CA cross-section ────────────────────────────────────
     ax = ax_rail
-    ax.set_xlim(-200, 400); ax.set_ylim(-100, 350); ax.set_aspect("equal")
+    ax.set_xlim(-200, 400); ax.set_ylim(-150, 350); ax.set_aspect("equal")
 
     rl_w = 44; rl_h = 30
     ax.add_patch(FancyBboxPatch((-rl_w/2, 0), rl_w, rl_h,
@@ -631,7 +631,7 @@ def sheet3():
 
     # ── BL: Universal joint / rod-end bearing detail ──────────────────────────
     ax = ax_joint
-    ax.set_xlim(-200, 500); ax.set_ylim(-150, 280); ax.set_aspect("equal")
+    ax.set_xlim(-200, 500); ax.set_ylim(-200, 280); ax.set_aspect("equal")
 
     # Bracket end
     bm_w = 100; bm_h = 80
@@ -673,13 +673,13 @@ def sheet3():
     dim_line_h(ax, rod_cx-30, rod_cx+30, -80, "60 mm", offset=0, col=DIM)
     ax.text(200, 240, "CORNER JOINT DETAIL — BRACKET TO FILM FRAME\nROD-END SPHERICAL BEARING — ALLOWS TILT + SWING SIMULTANEOUSLY",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(200, -130,
+    ax.text(200, -100,
             "REPLACES SIMPLE PIN JOINT — 3-AXIS FREEDOM NEEDED FOR COMPOUND TILT+SWING",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── BR: ACM panel arrangement ─────────────────────────────────────────────
     ax = ax_acm
-    ax.set_xlim(-100, 650); ax.set_ylim(-80, 350); ax.set_aspect("equal")
+    ax.set_xlim(-100, 650); ax.set_ylim(-130, 350); ax.set_aspect("equal")
 
     panel_h = 200; panel_w = 250
     # Flat panel

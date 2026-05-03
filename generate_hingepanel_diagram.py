@@ -578,20 +578,20 @@ def sheet2():
     # ── Orientation clarification box ─────────────────────────────────────────
     # Small inset box top-right, making the viewing direction explicit
     OB_X = D_XR + 30
-    OB_Y = D_YT - 160
-    OB_W = 550
-    OB_H = 280
+    OB_Y = D_YT - 100
+    OB_W = 450
+    OB_H = 190
     import matplotlib.patches as mpatches
     ax.add_patch(mpatches.FancyBboxPatch((OB_X, OB_Y), OB_W, OB_H,
-                 boxstyle="round,pad=8",
+                 boxstyle="round,pad=3",
                  facecolor="#FFFBF0", edgecolor="#806010", linewidth=1.0, zorder=12))
-    ax.text(OB_X + OB_W / 2, OB_Y + OB_H - 25,
+    ax.text(OB_X + OB_W / 2, OB_Y + OB_H - 18,
             "ORIENTATION NOTE",
-            ha="center", va="top", fontsize=7, color="#806010",
+            ha="center", va="top", fontsize=6.5, color="#806010",
             fontweight="bold", **FONT, zorder=15)
-    ax.text(OB_X + OB_W / 2, OB_Y + OB_H * 0.5,
+    ax.text(OB_X + OB_W / 2, OB_Y + OB_H * 0.42,
             "DRUM AXIS IS VERTICAL.\nPERSONNEL WALK THROUGH\nIN AN UPRIGHT POSITION.\nSee Sheet 3 for elevation view.",
-            ha="center", va="center", fontsize=6.5, color="#403000",
+            ha="center", va="center", fontsize=6, color="#403000",
             **FONT, zorder=15)
 
     # ── Interior latch safety note ─────────────────────────────────────────────

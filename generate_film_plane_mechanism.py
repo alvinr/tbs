@@ -473,23 +473,25 @@ def sheet2():
             ax.add_patch(Rectangle((rx-40, dy-40), 80, 80,
                                    fc=col, ec=WHITE, lw=0.7, alpha=0.5, zorder=zord))
 
+        # Swing angle arc — from horizontal (flat) to swing line
         if d_L != d_R:
             ang = np.degrees(np.arctan2(abs(d_L - d_R), RAIL_X_R - RAIL_X_L))
-            mid_x = (RAIL_X_L + RAIL_X_R) / 2
-            mid_y = (d_L + d_R) / 2
-            ax.text(mid_x, mid_y + 120, f"swing {ang:.1f}°",
-                    color=col, fontsize=6, ha="center", **FONT, zorder=zord+2)
+            # Stagger radii: i=1 → 300, i=2 → 500
+            arc_r = 300 + (i - 1) * 200
+            # Arc at right rail pivot; flat line goes left (180°),
+            # swing line goes left-and-down, so sweep from 180°+ang to 180°
+            ax.add_patch(Arc((RAIL_X_R, D_FAR), arc_r*2, arc_r*2,
+                             angle=0, theta1=180, theta2=180 + ang,
+                             color=col, lw=1.2, alpha=0.8, zorder=zord))
+            mid_ang = np.radians(180 + ang / 2)
+            ax.text(RAIL_X_R + (arc_r + 40) * np.cos(mid_ang),
+                    D_FAR + (arc_r + 40) * np.sin(mid_ang),
+                    f"{ang:.1f}°",
+                    color=col, fontsize=7, ha="center", va="center",
+                    **FONT, zorder=zord+2)
 
         ax.text(L/2, d_L + (d_R-d_L)/2 - 80 - i*50,
                 name, color=col, fontsize=6.5, ha="center", **FONT, zorder=zord+2)
-
-    # Swing angle annotation for strongest config
-    ax.annotate("SWING ANGLE\n= arctan(ΔY/L)",
-                xy=(L/2, (D_NEAR+D_FAR)/2),
-                xytext=(L/2 + 800, (D_NEAR+D_FAR)/2 + 300),
-                color=C_T3, fontsize=6.5, **FONT,
-                arrowprops=dict(arrowstyle="-|>", color=C_T3, lw=0.7, mutation_scale=5),
-                ha="left")
 
     dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
     dim_line_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm", offset=20, col=DIM, fs=7)

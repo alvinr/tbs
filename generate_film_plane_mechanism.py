@@ -310,10 +310,10 @@ def sheet2():
                            fc=STRUCT, ec=WHITE, lw=1.5, zorder=4))
     ax.add_patch(Rectangle((0, 0), W, H, fc=GRID, ec="none", zorder=2))
 
-    ax.text(-WALL_T/2, H/2, "PINHOLE\nWALL",
+    ax.text(-WALL_T/2-100, H/2, "PINHOLE\nWALL",
             color=WHITE, fontsize=6.5, ha="center", va="center",
             rotation=90, **FONT, zorder=5)
-    ax.text(W+WALL_T/2, H/2, "FAR\nWALL",
+    ax.text(W+WALL_T/2+100, H/2, "FAR\nWALL",
             color=DIM, fontsize=6.5, ha="center", va="center",
             rotation=90, **FONT, zorder=5)
 
@@ -390,7 +390,7 @@ def sheet2():
     # Pinhole
     ax.add_patch(Circle((0, PH_Y), 38, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=12))
     ax.add_patch(Circle((0, PH_Y), 13, fc=BG, ec=WHITE, lw=0.8, zorder=13))
-    ax.text(-180, PH_Y, "PINHOLE\nØ2.17mm", color=PINHOLE,
+    ax.text(+150, PH_Y, "PINHOLE\nØ2.17mm", color=PINHOLE,
             fontsize=7, ha="center", va="center", **FONT)
 
     # Focal-length arrow
@@ -405,8 +405,8 @@ def sheet2():
     dim_line_v(ax, W+210, 0, H, f"INTERIOR HEIGHT  {H} mm", offset=20, col=DIM)
     dim_line_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
                offset=0, col=RAIL)
-    dim_line_h(ax, 0, D_NEAR, -100, f"{D_NEAR}", offset=0, col=DIM, fs=6)
-    dim_line_h(ax, D_FAR, W, -100, f"{W-D_FAR}", offset=0, col=DIM, fs=6)
+    dim_line_h(ax, 0, D_NEAR, -100, f"{D_NEAR}mm", offset=20, col=DIM, fs=6)
+    dim_line_h(ax, D_FAR, W, -100, f"{W-D_FAR}mm", offset=20, col=DIM, fs=6)
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -490,7 +490,8 @@ def sheet2():
                     color=col, fontsize=7, ha="center", va="center",
                     **FONT, zorder=zord+2)
 
-        ax.text(L/2, d_L + (d_R-d_L)/2 - 80 - i*50,
+        mid_y_sw = (d_L + d_R) / 2
+        ax.text(L/2, mid_y_sw + 80,
                 name, color=col, fontsize=6.5, ha="center", **FONT, zorder=zord+2)
 
     dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)

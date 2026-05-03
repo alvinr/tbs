@@ -423,7 +423,7 @@ def sheet2():
                     bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
     # Left side going north — frame and inner ply (interior side)
     for ly, lbl, off in [
-        (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME  ({FRAME_T}mm)", 1 * LBL_OFF),
+        (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME  ({FRAME_T}mm)", 1.5 * LBL_OFF),
         (Y0_PL2 + PLY_T / 2,  f"INNER PLY — FLAT BLACK  ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
         ax.annotate(lbl,
@@ -557,13 +557,23 @@ def sheet2():
     dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
           f"Ø{DRUM_D} mm  DRUM DIAMETER", fs=7)
 
-    # Container wall thickness
-    dim_v(ax, DIM_X_R, Y0_W, Y1_W,
-          f"  {WALL_T}mm\n  WALL", offset=20, fs=6.5)
+    # Container wall thickness — 45° leader
+    wall_mid = (Y0_W + Y1_W) / 2
+    dim_v(ax, DIM_X_R, Y0_W, Y1_W, "", offset=20, fs=6.5)
+    ax.annotate(f"{WALL_T}mm WALL", xy=(DIM_X_R, wall_mid),
+                xytext=(DIM_X_R + LBL_OFF, wall_mid - LBL_OFF),
+                fontsize=6.5, color=C_DIM, ha="left", va="top", **FONT,
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
 
-    # Panel overall thickness
-    dim_v(ax, DIM_X_R, Y1_W, Y1_PL2,
-          f"  {PT}mm\n  PANEL", offset=20, fs=6.5)
+    # Panel overall thickness — 45° leader
+    panel_mid = (Y1_W + Y1_PL2) / 2
+    dim_v(ax, DIM_X_R, Y1_W, Y1_PL2, "", offset=20, fs=6.5)
+    ax.annotate(f"{PT}mm PANEL", xy=(DIM_X_R, panel_mid),
+                xytext=(DIM_X_R + LBL_OFF * 1.5, panel_mid + LBL_OFF * 1.5),
+                fontsize=6.5, color=C_DIM, ha="left", va="bottom", **FONT,
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                bbox=dict(fc="#EEF6EE", ec="none", pad=1.5), zorder=15)
 
     # Exterior drum overhang
     dim_v(ax, D_XL - 180, D_YB, Y0_W,

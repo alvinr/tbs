@@ -379,11 +379,10 @@ def sheet2():
                     f"{theta:.1f}°",
                     color=col, fontsize=6.5, ha="left", **FONT, zorder=zord+2)
 
-        # Label
-        mid_x = (d_top + d_bot) / 2
+        # Label — right of container, vertically centered on line
         mid_y = (fp_top_y + fp_bot_y) / 2
-        ax.text(mid_x + 130 + i*90, mid_y, name,
-                color=col, fontsize=6.5, va="center", **FONT, zorder=zord+2)
+        ax.text(W + WALL_T + 30, mid_y, name,
+                color=col, fontsize=6.5, va="center", ha="left", **FONT, zorder=zord+2)
 
     # Pinhole
     ax.add_patch(Circle((0, PH_Y), 38, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=12))
@@ -489,14 +488,14 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-|>", color=C_T3, lw=0.7, mutation_scale=5),
                 ha="left")
 
-    dim_line_h(ax, 0, L, W+250, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
+    dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
     dim_line_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm", offset=20, col=DIM, fs=7)
     dim_line_h(ax, D_NEAR, D_FAR, -200, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
                offset=0, col=RAIL, fs=6.5)
 
-    ax.text(L/2, W+395, "VIEW B — CEILING CROSS-SECTION  (SWING)",
+    ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(L/2, W+280, "Section at ceiling height  ·  left and right corner carriages move independently",
+    ax.text(L/2, W+375, "Section at ceiling height  ·  left and right corner carriages move independently",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # Combined title

@@ -160,8 +160,8 @@ def sheet1():
         ax.add_patch(Rectangle((rx_floor, D_NEAR), RAIL_W*0.8, D_FAR-D_NEAR,
                                fc=RAIL, ec=WHITE, lw=1.0, zorder=5, alpha=0.65))
         # Labels — 45° leaders outward from rail midpoint
-        rail_mid_y = D_NEAR + (D_FAR - D_NEAR) * 0.5
-        ldr_off = 350
+        rail_mid_y = D_NEAR + (D_FAR - D_NEAR) * 0.8
+        ldr_off = 150
         if label_side == "LEFT":
             # Leaders go left
             ax.annotate(f"CEILING RAIL  ({label_side})",
@@ -197,10 +197,10 @@ def sheet1():
                                        fc=WHITE, ec=WHITE, lw=0.5, zorder=6))
 
     # Travel dim
-    ax.annotate("", xy=(RAIL_X_L - RAIL_W, D_FAR-20),
-                xytext=(RAIL_X_L - RAIL_W, D_NEAR+20),
+    ax.annotate("", xy=(RAIL_X_L - RAIL_W - 50, D_FAR-20),
+                xytext=(RAIL_X_L - RAIL_W - 50, D_NEAR+20),
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.8, mutation_scale=5))
-    ax.text(RAIL_X_L - RAIL_W - 130, (D_NEAR+D_FAR)/2,
+    ax.text(RAIL_X_L - RAIL_W - 150, (D_NEAR+D_FAR)/2,
             f"{D_FAR-D_NEAR}\nmm\ntravel",
             color=WHITE, fontsize=6.5, ha="center", va="center", **FONT)
 
@@ -253,7 +253,7 @@ def sheet1():
                 arrowprops=dict(arrowstyle="-|>", color=C_T2, lw=0.8, mutation_scale=5),
                 ha="left")
     ax.annotate("TILT moves\nboth rails\nat same end",
-                xy=(RAIL_X_L, (800+D_FAR)/2), xytext=(RAIL_X_L-450, (800+D_FAR)/2),
+                xy=(RAIL_X_L, (800+D_FAR)/2-800), xytext=(RAIL_X_L-750, (800+D_FAR)/2-800),
                 color=C_T1, fontsize=6.5, **FONT,
                 arrowprops=dict(arrowstyle="-|>", color=C_T1, lw=0.8, mutation_scale=5),
                 ha="right")

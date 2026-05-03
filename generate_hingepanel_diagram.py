@@ -342,7 +342,7 @@ def sheet2():
 
     # ── Crop window (zoomed to drum zone + margin) ────────────────────────────
     PAD_X  = 320   # horizontal margin each side
-    PAD_YB = 150   # bottom margin (exterior zone)
+    PAD_YB = 300   # bottom margin (exterior zone + title block space)
     PAD_YT = 180   # top margin (interior zone)
 
     X_LO = D_XL - PAD_X          # = 486mm
@@ -634,7 +634,7 @@ def sheet3():
 
     # ── Data range → figure size ──────────────────────────────────────────────
     PAD_L, PAD_R = 300, 700   # depth-axis margins
-    PAD_B, PAD_T = 150, 350   # height-axis margins
+    PAD_B, PAD_T = 350, 350   # height-axis margins (bottom includes title block space)
 
     X_LO = D_DEPTH_L - PAD_L   # = -595mm
     X_HI = D_DEPTH_R + PAD_R   # = 1155mm  → width 1750mm
@@ -776,7 +776,7 @@ def sheet3():
     ax.annotate("", xy=(GAP_X, H_DRUM_TOP), xytext=(GAP_X, P_HEAD + 2 * HEAD_R),
                 arrowprops=dict(arrowstyle="<->", color="#20A020", lw=1.0,
                                 mutation_scale=7), zorder=9)
-    ax.text(GAP_X + 25, (H_DRUM_TOP + P_HEAD + 2 * HEAD_R) / 2,
+    ax.text(GAP_X - 125, (H_DRUM_TOP + P_HEAD + 2 * HEAD_R) / 2,
             f"{headroom_1780}mm\nHEADROOM",
             ha="left", va="center", fontsize=6, color="#20A020", fontweight="bold", **FONT, zorder=15)
 
@@ -838,7 +838,7 @@ def sheet3():
           f"Ø{DRUM_D} mm DRUM DIAMETER", offset=35, fs=7)
 
     # Panel thickness (horizontal) — offset above bearing top
-    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 220,
+    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 250,
           f"{PT}mm PANEL", offset=35, fs=6.5)
 
     # Wall thickness (horizontal) — placed in floor zone with larger offset

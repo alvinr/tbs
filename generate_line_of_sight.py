@@ -273,16 +273,30 @@ for eq in EQUIPMENT:
         facecolor=eq["color"], edgecolor=edge_color,
         linewidth=edge_lw, alpha=alpha, zorder=4))
 
-    # Label inside footprint (skip drum — too narrow in Y)
+    # Label inside footprint, or outside for small items
+    short = eq["name"].split(" (")[0].split(" x")[0]
     if eq["d"] >= 150 and eq["w"] >= 200:
-        short = eq["name"].split(" (")[0].split(" x")[0]
         ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] / 2,
                 short, ha="center", va="center",
                 fontsize=max(FS_SM - 1.5, 5), color="white", zorder=5,
                 fontweight="bold")
+    else:
+        # External label with 45° leader line for small items
+        _small_idx = getattr(ax, '_small_label_n', 0)
+        offsets = [150, 300, 450]
+        label_off = offsets[_small_idx % len(offsets)]
+        ax._small_label_n = _small_idx + 1
+        lx = eq["x"] + eq["w"] / 2
+        ly = eq["yd"] + eq["d"]
+        ax.annotate(short, xy=(lx, ly),
+                    xytext=(lx + label_off, ly + label_off),
+                    ha="left", va="bottom",
+                    fontsize=max(FS_SM - 1.5, 5), color=C_OUT, fontweight="bold",
+                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.7),
+                    zorder=6)
 
     if in_cone:
-        ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] + 170,
+        ax.text(eq["x"] + eq["w"] / 1.5, eq["yd"] + eq["d"] + 870,
                 "IN CONE", ha="center", va="bottom",
                 fontsize=FS_SM - 1, color=C_BLOCK, fontweight="bold", zorder=6)
 
@@ -369,11 +383,24 @@ for eq in EQUIPMENT:
     mid_h  = (eq["h_bot"] + eq["h_top"]) / 2
     label  = eq["name"].split(" (")[0]
     h_span = eq["h_top"] - eq["h_bot"]
-    if h_span >= 200:
+    yd_span = yd_far - yd_near
+    if h_span >= 200 and yd_span >= 150:
         ax.text(mid_yd, mid_h, label,
                 ha="center", va="center",
                 fontsize=max(FS_SM - 2, 4.5), color="white", zorder=5,
                 fontweight="bold")
+    else:
+        # External label with 45° leader line for small items
+        _elev_idx = getattr(ax, '_elev_label_n', 0)
+        offsets = [200, 400, 600]
+        label_off = offsets[_elev_idx % len(offsets)]
+        ax._elev_label_n = _elev_idx + 1
+        ax.annotate(label, xy=(mid_yd, eq["h_top"]),
+                    xytext=(mid_yd + label_off, eq["h_top"] + label_off),
+                    ha="left", va="bottom",
+                    fontsize=max(FS_SM - 2, 4.5), color=C_OUT, fontweight="bold",
+                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.7),
+                    zorder=6)
 
 # ── Elevation labels ──────────────────────────────────────────────────────────
 ax.text(C_WID / 2, -120, "SIDE ELEVATION — along long axis (X)",

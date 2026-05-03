@@ -607,19 +607,20 @@ def draw_sheet2():
     equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
           "#D7CCC8", "1×600L  Yd=1141–2157")
 
-    # ── EP + BAT wall-mounted on pinhole wall face (Yd=0) ────────────────────
+    # ── EP + BAT wall-mounted on interior face of pinhole wall (Yd=0) ────────
+    WALL_MOUNT_H = wt * 0.55   # shallow depth for wall-mounted box
     EP_DX = ix(EP_X)
     EP_DW = EP_W * S_xi
-    ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt*0.15), EP_DW, wt*0.70,
+    ax.add_patch(mpatches.Rectangle((EP_DX, OY + wt), EP_DW, WALL_MOUNT_H,
                  fc=C_ELEC, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(EP_DX+EP_DW/2, OY+wt*0.50, "EP",
+    ax.text(EP_DX+EP_DW/2, OY + wt + WALL_MOUNT_H/2, "EP",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     BA_DX = ix(BA_X)
     BA_DW = BA_W * S_xi
-    ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt*0.15), BA_DW, wt*0.70,
+    ax.add_patch(mpatches.Rectangle((BA_DX, OY + wt), BA_DW, WALL_MOUNT_H,
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(BA_DX+BA_DW/2, OY+wt*0.50, "BAT",
+    ax.text(BA_DX+BA_DW/2, OY + wt + WALL_MOUNT_H/2, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
@@ -658,8 +659,8 @@ def draw_sheet2():
     TK_X2 = OX + clen - wt - 0.05
     ax.plot([TK_X1, TK_X2], [TK_Y, TK_Y],
             color=C_PIPE, lw=4.5, solid_capstyle="round", zorder=6)
-    ax.text((TK_X1+TK_X2)/2, TK_Y - 0.24,
-            "40×25mm PVC cable trunking — pinhole wall face (Yd=0) — outside optical cone",
+    ax.text((TK_X1+TK_X2)/2 + 1.65, TK_Y + 0.24,
+            "40×25mm PVC cable trunking — pinhole wall face (Yd=0)\noutside optical cone",
             ha="center", va="top", fontsize=7.0, color=C_PIPE, fontweight="bold")
 
     # Drop conduits from trunking to devices
@@ -693,12 +694,12 @@ def draw_sheet2():
             ha="center", va="center", fontsize=8.5, fontweight="bold",
             color=C_OUT, zorder=4)
     ax.annotate("", xy=(EP_DX+EP_DW/2, OY),
-                xytext=(SP_X2+SP_W2*0.65, SP_Y2+SP_H2),
+                xytext=(SP_X2, SP_Y2+SP_H2),
                 arrowprops=dict(arrowstyle="-|>", color="#2D7A2D", lw=1.8,
-                                connectionstyle="arc3,rad=0.2"), zorder=4)
-    ax.text(SP_X2+SP_W2*0.78, SP_Y2+0.55,
-            "PV cable  10 AWG  /  MC4  /  sealed penetration",
-            fontsize=7.0, color="#2D7A2D", ha="center", va="bottom")
+                                connectionstyle="arc3,rad=-0.25"), zorder=4)
+    ax.text(SP_X2 - 0.08, (SP_Y2+SP_H2 + OY)/2,
+            "PV cable  10 AWG / MC4\nsealed penetration",
+            fontsize=7.0, color="#2D7A2D", ha="right", va="center")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     DIM_Y = OY - 0.82

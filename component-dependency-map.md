@@ -240,7 +240,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
 | **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
 | **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png` | 1, 5, 6 |
-| **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png`<br>`diagrams/lighttrap-sheet3.png` | 1, 5, 6, 7, 8 |
+| **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png` | 1, 5, 6, 7, 8 |
 | **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
 | **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
 | **PD** | `generate_plate_drawing.py` | `diagrams/plate-drawing-sheet1.png`<br>`diagrams/plate-drawing-sheet2.png` | 1, 2 |

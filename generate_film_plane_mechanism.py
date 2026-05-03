@@ -426,7 +426,7 @@ def sheet2():
         ax.plot([x, x], [0, W], color=STRUCT2, lw=0.4, alpha=0.3, zorder=3)
 
     ax.add_patch(Rectangle((0, -WALL_T), L, WALL_T, fc=STRUCT2, ec=WHITE, lw=1.5, zorder=4))
-    ax.text(L/2, -WALL_T/2, "PINHOLE WALL",
+    ax.text(L/2, -WALL_T/2-100, "PINHOLE WALL",
             color=WHITE, fontsize=7, ha="center", va="center", **FONT, zorder=5)
     ax.add_patch(Rectangle((0, W), L, WALL_T, fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
     ax.text(L/2, W+WALL_T/2, "FAR WALL",
@@ -496,8 +496,8 @@ def sheet2():
 
     dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
     dim_line_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm", offset=20, col=DIM, fs=7)
-    dim_line_h(ax, D_NEAR, D_FAR, -200, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
-               offset=0, col=RAIL, fs=6.5)
+    dim_line_v(ax, RAIL_X_L - 120, D_NEAR, D_FAR,
+               f"RAIL TRAVEL  {D_FAR-D_NEAR} mm", offset=-180, col=RAIL, fs=6.5)
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)

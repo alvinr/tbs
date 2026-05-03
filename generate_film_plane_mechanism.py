@@ -58,7 +58,7 @@ CONFIGS = [
     ("Flat  0°",         D_FAR,  D_FAR,  D_FAR,  D_FAR,  C_FLAT, "-"),
     ("Tilt  31.5°",      800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
     ("Swing  22.4°",     800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
-    ("Compound  tilt+swing", D_NEAR, D_FAR, D_FAR, D_NEAR, C_T3, ":"),
+    ("Compound\ntilt+swing", D_NEAR, D_FAR, D_FAR, D_NEAR, C_T3, ":"),
 ]
 
 FONT = {"fontfamily": "monospace"}
@@ -126,7 +126,7 @@ def sheet1():
 
     # Pinhole wall (y=0)
     ax.add_patch(Rectangle((0, -WALL_T), L, WALL_T, fc=STRUCT2, ec=WHITE, lw=1.5, zorder=4))
-    ax.text(L/2, -WALL_T/2, "PINHOLE WALL  (20ft LONG SIDE)",
+    ax.text(L/2, -WALL_T/2 - 125, "PINHOLE WALL  (20ft LONG SIDE)",
             color=WHITE, fontsize=7.5, ha="center", va="center", **FONT, zorder=5)
 
     # Far wall (y=W)
@@ -143,7 +143,7 @@ def sheet1():
     ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
-    ax.text(ph_x + 180, -250, f"PINHOLE  X={ph_x}mm  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
+    ax.text(ph_x + 130, 75, f"PINHOLE  X={ph_x}mm  Ø2.17mm", color=PINHOLE, fontsize=7, **FONT)
 
     # ── 4 INDEPENDENT RAILS — one at each corner ──────────────────────────────
     # Left rails: at X=RAIL_X_L (ceiling = label TL/BL, floor = label TL/BL)
@@ -159,15 +159,37 @@ def sheet1():
         rx_floor = rx + 5
         ax.add_patch(Rectangle((rx_floor, D_NEAR), RAIL_W*0.8, D_FAR-D_NEAR,
                                fc=RAIL, ec=WHITE, lw=1.0, zorder=5, alpha=0.65))
-        # Labels
-        ax.text(rx_ceil + RAIL_W*0.4, D_NEAR + (D_FAR-D_NEAR)*0.5,
-                f"CEIL\n{label_side[0]}",
-                color=BG, fontsize=5.5, ha="center", va="center", rotation=90,
-                **FONT, zorder=7)
-        ax.text(rx_floor + RAIL_W*0.4, D_NEAR + (D_FAR-D_NEAR)*0.5,
-                f"FLOOR\n{label_side[0]}",
-                color=BG, fontsize=5.5, ha="center", va="center", rotation=90,
-                **FONT, zorder=7)
+        # Labels — 45° leaders outward from rail midpoint
+        rail_mid_y = D_NEAR + (D_FAR - D_NEAR) * 0.5
+        ldr_off = 350
+        if label_side == "LEFT":
+            # Leaders go left
+            ax.annotate(f"CEILING RAIL  ({label_side})",
+                        xy=(rx_ceil + RAIL_W * 0.4, rail_mid_y + 200),
+                        xytext=(rx_ceil - ldr_off, rail_mid_y + 200 + ldr_off),
+                        fontsize=6.5, color=RAIL, ha="right", va="bottom", **FONT,
+                        arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
+                        zorder=15)
+            ax.annotate(f"FLOOR RAIL  ({label_side})",
+                        xy=(rx_floor + RAIL_W * 0.4, rail_mid_y - 200),
+                        xytext=(rx_floor - ldr_off, rail_mid_y - 200 - ldr_off),
+                        fontsize=6.5, color=RAIL, ha="right", va="top", **FONT,
+                        arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
+                        zorder=15)
+        else:
+            # Leaders go right
+            ax.annotate(f"CEILING RAIL  ({label_side})",
+                        xy=(rx_ceil + RAIL_W * 0.4, rail_mid_y + 200),
+                        xytext=(rx_ceil + ldr_off, rail_mid_y + 200 + ldr_off),
+                        fontsize=6.5, color=RAIL, ha="left", va="bottom", **FONT,
+                        arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
+                        zorder=15)
+            ax.annotate(f"FLOOR RAIL  ({label_side})",
+                        xy=(rx_floor + RAIL_W * 0.4, rail_mid_y - 200),
+                        xytext=(rx_floor + ldr_off, rail_mid_y - 200 - ldr_off),
+                        fontsize=6.5, color=RAIL, ha="left", va="top", **FONT,
+                        arrowprops=dict(arrowstyle="-", color=RAIL, lw=0.8),
+                        zorder=15)
         # Rail end stops
         for ry in [D_NEAR, D_FAR]:
             for rx_ in [rx_ceil, rx_floor]:
@@ -237,9 +259,9 @@ def sheet1():
                 ha="right")
 
     # Dims
-    dim_line_h(ax, 0, L, W+350, f"INTERIOR LENGTH  {L} mm  (19 ft 4 in)",
-               offset=0, col=DIM, fs=7.5)
-    dim_line_v(ax, L+1250, 0, W, f"OPTICAL AXIS  {W} mm  (7 ft 9 in)",
+    dim_line_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L} mm  (19 ft 4 in)",
+               offset=10, col=DIM, fs=7.5)
+    dim_line_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W} mm  (7 ft 9 in)",
                offset=20, col=DIM)
     dim_line_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm\n(left end zone)", col=DIM, fs=6.5)
     dim_line_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L} mm", col=RAIL, fs=6.5)

@@ -362,8 +362,8 @@ def draw_sheet1():
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SHEET 2 — Ventilation System
-# Left: longitudinal container section (schematic, not to scale)
-# Right: fan light-safe baffle detail (scale 1:10)
+# Longitudinal container section (schematic, not to scale)
+# Fan positions, cross-ventilation path, evap cooler, cable trunking
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet2():
@@ -378,18 +378,19 @@ def draw_sheet2():
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
     ax.text(FW/2, FH - 0.38,
-            "VENTILATION SYSTEM — CONTAINER SECTION & FAN BAFFLE DETAIL",
+            "VENTILATION SYSTEM — CONTAINER LONGITUDINAL SECTION",
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
     ax.text(FW/2, FH - 0.70,
-            "TBS-001  ·  Left: container longitudinal section (schematic, not to scale)  ·  "
-            "Right: fan light-safe baffle detail (scale 1:10)",
+            "TBS-001  ·  Longitudinal section (schematic, not to scale)  ·  "
+            "Fan positions, cross-ventilation path, evap cooler  ·  "
+            "Baffle duct assembly detail — see Sheet 3",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     # ── LEFT HALF: Container longitudinal section ────────────────────────────
     # Schematic box representing the container interior
-    CX, CY = 0.8, 4.0      # container interior bottom-left
-    CW, CH = 13.0, 7.0     # container interior drawing dimensions (schematic)
+    CX, CY = 1.8, 4.0      # container interior bottom-left
+    CW, CH = 20.0, 7.0     # container interior drawing dimensions (schematic)
     WT = 0.35               # wall thickness (schematic)
 
     # Container shell
@@ -591,136 +592,10 @@ def draw_sheet2():
                     ha="center", va="center", fontsize=7.5,
                     color=C_OUT if ci == 0 else ("#D32F2F" if "OFF" in val else "#2E7D32"))
 
-    # ── RIGHT HALF: Fan baffle — ELEVATION SECTION (EXTERIOR left → INTERIOR right)
-    # Air flows left-to-right through two vertical baffles creating an S-path.
-    DX, DY = 14.0, 4.0   # detail origin
-    DW, DH = 11.5, 9.0   # detail drawing area
-    DS = 1 / 30.0         # 1 unit = 30 mm
-
-    # Duct dimensions: 200mm height (vertical) × 300mm depth (horizontal, through wall)
-    D_OW = 300 * DS         # 10.0 units — depth shown HORIZONTALLY
-    D_OH = 200 * DS         # 6.67 units — height shown VERTICALLY
-    D_WT = 10  * DS         # 0.33 units — wall thickness
-    D_BT = max(5 * DS, 0.30)  # baffle plate — min 0.30 units for visibility
-
-    B_OX = DX + (DW - D_OW) / 2
-    B_OY = DY + (DH - D_OH) / 2
-
-    # Section header
-    ax.text(DX + DW/2, DY + DH + 0.50,
-            "FAN LIGHT-SAFE BAFFLE — ELEVATION SECTION",
-            ha="center", va="center", fontsize=10.5,
-            fontweight="bold", color=C_OUT)
-    ax.text(DX + DW/2, DY + DH + 0.15,
-            "Longitudinal section through duct  ·  Scale 1:30  ·  "
-            "EXTERIOR left → INTERIOR right",
-            ha="center", va="center", fontsize=7.5, color=C_DIM)
-
-    # Duct outer box
-    ax.add_patch(mpatches.Rectangle((B_OX, B_OY), D_OW, D_OH,
-                 fc="#F5F5F5", ec=C_OUT, lw=2.0, zorder=3))
-
-    # Duct walls (steel)
-    for rx, ry, rw, rh in [
-        (B_OX,            B_OY,            D_OW, D_WT),          # bottom wall
-        (B_OX,            B_OY+D_OH-D_WT,  D_OW, D_WT),          # top wall
-        (B_OX,            B_OY+D_WT,       D_WT, D_OH-2*D_WT),   # left wall (exterior)
-        (B_OX+D_OW-D_WT,  B_OY+D_WT,      D_WT, D_OH-2*D_WT),   # right wall (interior)
-    ]:
-        ax.add_patch(mpatches.Rectangle((rx, ry), rw, rh,
-                     fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=4))
-
-    int_h = D_OH - 2 * D_WT    # clear height ≈ 6.0 units
-    int_w = D_OW - 2 * D_WT    # clear depth  ≈ 9.33 units
-
-    # BAFFLE 1: vertical fin from TOP, at 30% of depth from exterior
-    # Leaves gap at BOTTOM — air passes under it
-    B1_X  = B_OX + D_WT + int_w * 0.30
-    B1_H  = int_h * 0.65
-    B1_Y  = B_OY + D_WT + int_h - B1_H          # top-anchored
-    ax.add_patch(mpatches.Rectangle((B1_X, B1_Y), D_BT, B1_H,
-                 fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
-    # Gap 1 (bottom)
-    gap1_y = B_OY + D_WT
-    gap1_h = int_h - B1_H
-    ax.add_patch(mpatches.Rectangle((B1_X - 0.1, gap1_y), D_BT + 0.2, gap1_h,
-                 fc="#FFFDE7", ec=C_CL, lw=0.8, ls="--", zorder=4))
-    ann(ax, "BAFFLE 1\n(from top)\ngap at bottom",
-        (B1_X + D_BT / 2, B1_Y + B1_H * 0.5),
-        (B1_X - 2.0, B1_Y + B1_H * 0.5 + 0.8), size=7.5)
-
-    # BAFFLE 2: vertical fin from BOTTOM, at 70% of depth from exterior
-    # Leaves gap at TOP — air passes over it
-    B2_X  = B_OX + D_WT + int_w * 0.70
-    B2_H  = int_h * 0.65
-    B2_Y  = B_OY + D_WT                          # bottom-anchored
-    ax.add_patch(mpatches.Rectangle((B2_X, B2_Y), D_BT, B2_H,
-                 fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
-    # Gap 2 (top)
-    gap2_y = B2_Y + B2_H
-    gap2_h = int_h - B2_H
-    ax.add_patch(mpatches.Rectangle((B2_X - 0.1, gap2_y), D_BT + 0.2, gap2_h,
-                 fc="#FFFDE7", ec=C_CL, lw=0.8, ls="--", zorder=4))
-    ann(ax, "BAFFLE 2\n(from bottom)\ngap at top",
-        (B2_X + D_BT / 2, B2_Y + B2_H * 0.5),
-        (B2_X + 1.8, B2_Y + B2_H * 0.5 - 0.8), size=7.5)
-
-    # Airflow S-path: enter left at mid height → drop to gap 1 → cross → rise to gap 2 → exit right
-    mid_y  = B_OY + D_OH / 2
-    y_gap1 = gap1_y + gap1_h / 2
-    y_gap2 = gap2_y + gap2_h / 2
-    pc, plw = C_CL, 1.5
-    # Enter left
-    ax.annotate("", xy=(B_OX + D_WT + 0.2, mid_y), xytext=(B_OX - 0.8, mid_y),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-    # Drop to gap 1
-    ax.annotate("", xy=(B1_X - 0.4, y_gap1), xytext=(B1_X - 0.4, mid_y),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-    # Pass through gap 1
-    ax.annotate("", xy=(B1_X + D_BT + 0.4, y_gap1), xytext=(B1_X - 0.2, y_gap1),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-    # Rise to gap 2
-    ax.annotate("", xy=(B2_X - 0.4, y_gap2), xytext=(B2_X - 0.4, y_gap1),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-    # Pass through gap 2
-    ax.annotate("", xy=(B2_X + D_BT + 0.4, y_gap2), xytext=(B2_X - 0.2, y_gap2),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-    # Exit right
-    ax.annotate("", xy=(B_OX + D_OW + 0.8, mid_y),
-                xytext=(B_OX + D_OW - D_WT - 0.3, mid_y),
-                arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
-
-    # EXTERIOR / INTERIOR labels
-    ax.text(B_OX - 0.3, B_OY + D_OH / 2, "EXTERIOR",
-            ha="right", va="center", fontsize=8.5, color=C_DIM, fontweight="bold")
-    ax.text(B_OX + D_OW + 0.3, B_OY + D_OH / 2, "INTERIOR",
-            ha="left", va="center", fontsize=8.5, color=C_DIM, fontweight="bold")
-
-    # Dimension lines
-    dim_h(ax, B_OX, B_OX + D_OW, B_OY - 0.7, "300 mm  (depth through wall)")
-    dim_v(ax, B_OX - 1.1, B_OY, B_OY + D_OH, "200 mm")
-
-    # No-LOS callout
-    ax.text(B_OX + D_OW + 0.3, B_OY + D_OH * 0.82,
-            "✓ No direct line\n   of sight at\n   any angle",
-            ha="left", va="center", fontsize=8.0,
-            color="#2E7D32", fontweight="bold")
-
-    # Spec note + sheet 3 reference
-    ax.text(DX + DW / 2, B_OY - 1.05,
-            "3mm mild steel  ·  flat black all faces  ·  "
-            "baffles alternate top/bottom  ·  gap = 35% of clear height",
-            ha="center", va="center", fontsize=7.5, color=C_DIM)
-    ax.text(DX + DW / 2, B_OY - 1.55,
-            "Fan mounting, wall penetration & duct assembly — see Sheet 3",
-            ha="center", va="center", fontsize=8.0, color=C_CL,
-            style="italic",
-            bbox=dict(fc="#F0F8FF", ec=C_CL, pad=3, lw=0.8))
-
     title_block(ax, FW, 2, 3,
-                "VENTILATION SYSTEM — SECTION & BAFFLE DETAIL",
-                "Cross-ventilation layout  ·  Fan positions  ·  Light-safe baffle (elevation section)",
-                "Section: not to scale  ·  Baffle detail: 1:30")
+                "VENTILATION SYSTEM — CONTAINER LONGITUDINAL SECTION",
+                "Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
+                "Schematic — not to scale  ·  Baffle duct assembly detail — see Sheet 3")
 
     plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

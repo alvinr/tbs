@@ -283,11 +283,11 @@ def sheet1():
 #              X = container length, Y = optical axis depth → shows SWING
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-    fig = plt.figure(figsize=(18, 10))
+    fig = plt.figure(figsize=(18, 11))
     fig.patch.set_facecolor(BG)
 
-    ax_tilt  = fig.add_axes([0.03, 0.10, 0.44, 0.82])
-    ax_swing = fig.add_axes([0.53, 0.10, 0.44, 0.82])
+    ax_tilt  = fig.add_axes([0.03, 0.12, 0.44, 0.80])
+    ax_swing = fig.add_axes([0.53, 0.12, 0.44, 0.80])
     for ax in [ax_tilt, ax_swing]:
         ax.set_facecolor(BG)
         ax.axis("off")
@@ -398,7 +398,7 @@ def sheet2():
     ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W} mm  (FLAT)",
             color=C_FLAT, fontsize=7, ha="center", **FONT)
 
-    dim_line_h(ax, 0, W, H+160, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
+    dim_line_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
                offset=0, col=DIM)
     dim_line_v(ax, W+210, 0, H, f"INTERIOR HEIGHT  {H} mm", offset=20, col=DIM)
     dim_line_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
@@ -406,9 +406,9 @@ def sheet2():
     dim_line_h(ax, 0, D_NEAR, -100, f"{D_NEAR}", offset=0, col=DIM, fs=6)
     dim_line_h(ax, D_FAR, W, -100, f"{W-D_FAR}", offset=0, col=DIM, fs=6)
 
-    ax.text(W/2, H+225, "VIEW A — SIDE ELEVATION  (TILT)",
+    ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(W/2, H+145, "Section through centreline  ·  each corner carriage moves independently",
+    ax.text(W/2, H+215, "Section through centreline  ·  each corner carriage moves independently",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── RIGHT PANEL: PLAN CROSS-SECTION — SWING ───────────────────────────────
@@ -494,7 +494,7 @@ def sheet2():
     dim_line_h(ax, D_NEAR, D_FAR, -200, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
                offset=0, col=RAIL, fs=6.5)
 
-    ax.text(L/2, W+380, "VIEW B — CEILING CROSS-SECTION  (SWING)",
+    ax.text(L/2, W+395, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(L/2, W+280, "Section at ceiling height  ·  left and right corner carriages move independently",
             color=DIM, fontsize=6.5, ha="center", **FONT)
@@ -503,8 +503,17 @@ def sheet2():
     fig.text(0.5, 0.98, "SHEET 2 — TILT ELEVATION (left)  &  SWING CROSS-SECTION (right)",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
-    for ax_ in [ax_tilt, ax_swing]:
-        title_block(ax_, "2 / 4", "TILT & SWING ELEVATIONS", "SCALE: PROPORTIONAL (mm)")
+    # Single title block at figure bottom
+    fig.text(0.02, 0.035, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+             color=DIM, fontsize=7, **FONT)
+    fig.text(0.02, 0.018, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 2 / 4: TILT & SWING ELEVATIONS",
+             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
+    fig.text(0.98, 0.035, "SCALE: PROPORTIONAL (mm)",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.98, 0.018, "ALL DIMS IN mm UNLESS NOTED",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.50, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.svg", bbox_inches="tight", facecolor=BG)

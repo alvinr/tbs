@@ -543,7 +543,7 @@ def sheet2():
     # Entry / exit tags
     ax.text(path_x[0] + 35, path_y[0],
             "ENTRY (FROM EXTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT, zorder=15)
-    ax.text(path_x[-1] + 25, path_y[-1] - 25,
+    ax.text(path_x[-1] - 225, path_y[-1] - 25,
             "EXIT (TO INTERIOR)", color=C_PATH, fontsize=6.5, ha="left", va="center", **FONT, zorder=15)
     # Route label
     ax.text(D_XR - 25, D_CY - DR * 0.8,
@@ -555,7 +555,7 @@ def sheet2():
 
     # Drum diameter (horizontal)
     dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
-          f"Ø{DRUM_D} mm  DRUM DIAMETER", fs=7)
+          f"Ø{DRUM_D} mm  DRUM DIAMETER", fs=7, offset=-25)
 
     # Container wall thickness — arrow + inline label (no leader, avoids crossing
     # the nearby CONTAINER END WALL and OUTER PLY leader lines)
@@ -584,7 +584,7 @@ def sheet2():
                 xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
                 fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
-                bbox=dict(fc="#EEF6EE", ec="none", pad=1.5), zorder=15)
+                bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # ── Panel extent note ─────────────────────────────────────────────────────
     ax.annotate("", xy=(D_XL, Y0_FR + FRAME_T / 2),

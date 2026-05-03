@@ -379,11 +379,11 @@ def sheet2():
                     f"{theta:.1f}°",
                     color=col, fontsize=6.5, ha="left", **FONT, zorder=zord+2)
 
-        # Label — to the right of the line at its vertical midpoint
+        # Label — to the left of the line at its vertical midpoint
         mid_x = (d_top + d_bot) / 2
         mid_y = (fp_top_y + fp_bot_y) / 2
-        ax.text(mid_x + 80, mid_y, name,
-                color=col, fontsize=6.5, va="center", ha="left", **FONT, zorder=zord+2)
+        ax.text(mid_x - 80, mid_y, name,
+                color=col, fontsize=6.5, va="center", ha="right", **FONT, zorder=zord+2)
 
     # Pinhole
     ax.add_patch(Circle((0, PH_Y), 38, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=12))

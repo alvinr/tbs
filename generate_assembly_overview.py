@@ -197,8 +197,8 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
 # In this side elevation both drums share X → collapse to single block.
-# Drums sit flush against the inside of the end wall (X=0).
-_drum_x0 = 0   # flush with inside of end wall
+# Drums sit flush against the inside face of the hinged door (X=80mm).
+_drum_x0 = 80   # inside face of hinged door panel
 _drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
 equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
 ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
@@ -619,11 +619,11 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
 # Waste drums: two 55-gal drums, same X column, different Yd.
-# Drums sit flush against the inside of the end wall (X=0).
+# Drums sit flush against the inside face of the hinged door (X=80mm).
 # From this viewpoint (Yd=2362 looking toward Yd=0):
 #   DRUM_LZ (Yd=0–580mm)      — behind the revolving drum → ghost, low zorder
 #   DRUM_FZ (Yd=1782–2362mm)  — in front of the revolving drum → solid, high zorder
-_dlx0 = 0   # flush with inside of end wall
+_dlx0 = 80   # inside face of hinged door panel
 
 # D-1 (far from viewer — ghost, behind light trap drum)
 eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
@@ -632,7 +632,7 @@ eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
 # Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
 
 # D-2 (close to viewer — solid, in front of light trap drum)
-_dfx0 = 0   # flush with inside of end wall
+_dfx0 = 80   # inside face of hinged door panel
 eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
     ec="#7A6B5A", lw=1.0)
 ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,

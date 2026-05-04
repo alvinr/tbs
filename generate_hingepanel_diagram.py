@@ -1225,15 +1225,15 @@ def sheet4():
         "5. Drum locks: M12 spring plunger pins at operational + transport holes.",
         "6. Fixed door frame provides EPDM seal landing — seal unchanged.",
     ]
-    notes_x = YD_LO + 20
+    notes_x = YD_LO + 25
     for i, note in enumerate(notes):
-        ax.text(notes_x, X_LO + 50 + (len(notes) - 1 - i) * 26, note,
+        ax.text(notes_x, X_LO + 122 + (len(notes) - 1 - i) * 26, note,
                 ha="left", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
     legend_x = C_WID + 80
-    legend_top = X_LO + 50 + len(notes) * 26 + 10
+    legend_top = X_LO + 122 + len(notes) * 26 + 10
     swatches = [
         (C_ALUM,   0.9,  "Corner zone (40mm)"),
         (C_STEEL,  0.9,  "Center zone (120mm)"),

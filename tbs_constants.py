@@ -87,16 +87,16 @@ DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headr
 DRUM_EQ_D     = 580    # 55-gal drum diameter (mm)
 DRUM_EQ_H     = 870    # 55-gal single drum height (mm)
 DRUM_EQ_R     = DRUM_EQ_D // 2    # = 290mm radius
-# Near drum (pinhole wall corner)
-DRUM_LZ_CX    = 310               # near drum centre X (mm)
-DRUM_LZ_YD_LO = 25                # near drum near edge Yd (mm)
-DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 315mm centre
-DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 605mm far edge
-# Far drum (far wall corner)
-DRUM_FZ_CX    = DRUM_LZ_CX                        # = 310mm (same X centre)
-DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D - 25            # = 1,757mm (25mm from far wall)
-DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,047mm centre
-DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,337mm far edge
+# Near drum (pinhole wall corner) — flush against end wall and near side wall
+DRUM_LZ_CX    = DRUM_EQ_R                         # = 290mm centre X (flush with end wall)
+DRUM_LZ_YD_LO = 0                                 # near drum near edge Yd (flush with wall)
+DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 290mm centre
+DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 580mm far edge
+# Far drum (far wall corner) — flush against end wall and far side wall
+DRUM_FZ_CX    = DRUM_LZ_CX                        # = 290mm (same X centre)
+DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D                 # = 1,782mm (flush with far wall)
+DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,072mm centre
+DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,362mm far edge
 
 # Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
 # At Yd=0 the cone collapses to a point → shadow-free at any X position.

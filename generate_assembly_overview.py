@@ -196,10 +196,9 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
-# In this side elevation both drums share X=DRUM_LZ_CX → collapse to single block.
-# Drawn at zorder=3 so the revolving drum (zorder=5) covers the overlapping portion
-# (X=20–375mm). The drum stub from X=375–600mm shows past the door, clearly inside.
-_drum_x0 = DRUM_LZ_CX - DRUM_EQ_R   # = 310 - 290 = 20mm
+# In this side elevation both drums share X → collapse to single block.
+# Drums sit flush against the inside of the end wall (X=0).
+_drum_x0 = 0   # flush with inside of end wall
 _drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
 equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
 ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
@@ -207,7 +206,7 @@ ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
 leader(ax, _drum_x0 + DRUM_EQ_D, RAIL_OFF + DRUM_EQ_H * 0.6, 800, 1500,
        f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
-       f"D-1 near: Yd=25–605mm  |  D-2 far: Yd=1,757–2,337mm\n"
+       f"D-1 near: Yd=0–{DRUM_EQ_D}mm  |  D-2 far: Yd={C_WID-DRUM_EQ_D}–{C_WID}mm\n"
        f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",
        ha="left", fs=FS_SM)
 
@@ -620,10 +619,11 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
 # Waste drums: two 55-gal drums, same X column, different Yd.
+# Drums sit flush against the inside of the end wall (X=0).
 # From this viewpoint (Yd=2362 looking toward Yd=0):
-#   DRUM_LZ (Yd=25–605mm)     — behind the revolving drum → ghost, low zorder
-#   DRUM_FZ (Yd=1757–2337mm)  — in front of the revolving drum → solid, high zorder
-_dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 20mm (same X for both drums)
+#   DRUM_LZ (Yd=0–580mm)      — behind the revolving drum → ghost, low zorder
+#   DRUM_FZ (Yd=1782–2362mm)  — in front of the revolving drum → solid, high zorder
+_dlx0 = 0   # flush with inside of end wall
 
 # D-1 (far from viewer — ghost, behind light trap drum)
 eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
@@ -632,7 +632,7 @@ eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
 # Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
 
 # D-2 (close to viewer — solid, in front of light trap drum)
-_dfx0 = DRUM_FZ_CX - DRUM_EQ_R   # = 20mm
+_dfx0 = 0   # flush with inside of end wall
 eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
     ec="#7A6B5A", lw=1.0)
 ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,

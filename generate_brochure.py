@@ -1009,7 +1009,7 @@ class BrochurePDF(FPDF):
             # Page break if row won't fit
             if self.get_y() + rh > PAGE_H - M_B:
                 self.add_page()
-                self.set_y(M_T)
+                self.set_y(M_T + 4)   # gap below header zone
                 if header and not is_header:
                     _draw_row(header, is_header=True)
 
@@ -1065,6 +1065,9 @@ class BrochurePDF(FPDF):
 
         # -- Draw the table ----------------------------------------------------
         self.ln(2)
+        # Ensure table doesn't start in the header zone
+        if self.get_y() < M_T + 4:
+            self.set_y(M_T + 4)
 
         if header:
             _draw_row(header, is_header=True)

@@ -108,11 +108,28 @@ C_RULE      = (160, 160, 170)    # header/footer rules (neutral grey)
 
 PAGE_W   = 210   # A4 mm
 PAGE_H   = 297
+
+# ── Page zone model ──────────────────────────────────────────────────────────
+# Every page is divided into three fixed zones:
+#
+#   HEADER ZONE   y = 0  →  HEADER_H      (header text + rule)
+#   CONTENT ZONE  y = HEADER_H → PAGE_H - FOOTER_H   (all body content)
+#   FOOTER ZONE   y = PAGE_H - FOOTER_H → PAGE_H     (rule + footer text)
+#
+# fpdf2 enforces this via:
+#   M_T = HEADER_H         → cursor starts at top of content zone
+#   M_B = FOOTER_H         → auto page break at bottom of content zone
+#   header() draws only within [0, HEADER_H)
+#   footer() draws only within [PAGE_H - FOOTER_H, PAGE_H]
+# ─────────────────────────────────────────────────────────────────────────────
+HEADER_H = 16    # reserved header zone (mm)
+FOOTER_H = 16    # reserved footer zone (mm)
 M_L      = 20    # left margin
 M_R      = 20    # right margin
-M_T      = 25    # top margin (19mm below header line at y=6)
-M_B      = 25    # bottom margin
+M_T      = HEADER_H   # content starts here
+M_B      = FOOTER_H   # auto break triggers here (from bottom)
 BODY_W   = PAGE_W - M_L - M_R   # 170mm usable width
+CONTENT_H = PAGE_H - HEADER_H - FOOTER_H  # 265mm usable height
 
 
 # -- Unicode sanitiser (used when no Unicode TTF is available) ----------------
@@ -499,30 +516,37 @@ class BrochurePDF(FPDF):
     # -- Header / Footer -------------------------------------------------------
 
     def header(self):
+        """Draw within HEADER ZONE [y=0 .. HEADER_H]. Content starts below."""
         if self._suppress_chrome:
             return
+        # Text at y=4, rule at y=HEADER_H-3 (leaves 3mm gap before content)
+        self.set_font(FONT_BODY, "I", 7)
+        self.set_text_color(*C_MUTED)
+        self.set_xy(M_L, 4)
+        self.cell(0, 5, _safe("The Big Shoebox Project  --  TBS-001"),
+                  align="L")
+        rule_y = HEADER_H - 3
         self.set_draw_color(*C_RULE)
         self.set_line_width(0.4)
-        self.line(M_L, 6, PAGE_W - M_R, 6)
-        self.set_font(FONT_BODY, "I", 7)
-        self.set_text_color(*C_MUTED)
-        self.set_xy(M_L, 1)
-        self.cell(0, 5, _safe("The Big Shoebox Project  --  TBS-001"), align="L")
+        self.line(M_L, rule_y, PAGE_W - M_R, rule_y)
 
     def footer(self):
+        """Draw within FOOTER ZONE [PAGE_H - FOOTER_H .. PAGE_H]."""
         if self._suppress_chrome:
             return
-        cur_page_w = self.w   # actual page width (differs in landscape)
+        cur_page_w = self.w
+        cur_page_h = self.h
         cur_body_w = cur_page_w - M_L - M_R
-        self.set_y(-M_B + 5)
+        # Rule 3mm into footer zone, text below it
+        rule_y = cur_page_h - FOOTER_H + 3
         self.set_draw_color(*C_RULE)
         self.set_line_width(0.3)
-        self.line(M_L, self.get_y(), cur_page_w - M_R, self.get_y())
-        self.set_y(self.get_y() + 1)
+        self.line(M_L, rule_y, cur_page_w - M_R, rule_y)
+        self.set_xy(M_L, rule_y + 2)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.cell(cur_body_w / 2, 5, _safe(self._current_chapter), align="C",
-                  new_x=XPos.RIGHT)
+        self.cell(cur_body_w / 2, 5, _safe(self._current_chapter),
+                  align="C", new_x=XPos.RIGHT)
         self.cell(cur_body_w / 2, 5, f"Page {self.page_no()}", align="R")
 
     # -- Cover page ------------------------------------------------------------

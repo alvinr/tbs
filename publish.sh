@@ -164,6 +164,7 @@ DIAG_FILES=(
     "container-floorplan.png"
     "assembly-overview.png"
     "assembly-overview-fp.png"
+    "assembly-overview-plan.png"
     "assembly-fab-sheet1.png"
     "assembly-fab-sheet2.png"
     "line-of-sight.png"

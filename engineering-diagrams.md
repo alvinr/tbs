@@ -25,6 +25,12 @@ and carriage are the hero elements in this view.
 
 ![TBS-001 — Assembly: Film Plane Side Elevation](assets/assembly-overview-fp.png)
 
+Plan view of the cargo door end showing the stepped panel and waste drum positions
+in both transport mode (panel retracted 300mm, drums retracted 305mm, ISO doors closed)
+and operational mode (panel at X=0, drums at working positions, doors open).
+
+![TBS-001 — Cargo Door End Plan View: Transport vs Operational](assets/assembly-overview-plan.png)
+
 ---
 
 ## 2. Assembly Fabrication Drawings

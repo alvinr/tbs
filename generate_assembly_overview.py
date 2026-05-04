@@ -35,14 +35,18 @@ from tbs_constants import (
     PH_X, PH_H, PH_FNO,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_W, EVAP_H,
+    EVAP_X, EVAP_W, EVAP_H, EVAP_Y, EVAP_D,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
-    IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
+    BLUE_IBC_Y, BROWN_IBC_Y,
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX, DRUM_FZ_CX,
+    DRUM_LZ_YD_LO, DRUM_FZ_YD_LO,
     PANEL_CORNER_T, PANEL_CENTER_T,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W,
+    PANEL_SLIDE, DRUM_SLIDE,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -824,3 +828,400 @@ plt.savefig(out2, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
 plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
 plt.close(fig2)
 print(f"Saved: {out2}")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DIAGRAM 3 — PLAN VIEW: OPERATIONAL vs TRANSPORT MODE
+#
+# Top-down plan view of the cargo door end (X=0 end), showing two side-by-side
+# views:
+#   LEFT:  Transport mode  — panel slid inward 300mm, drums slid inward 305mm,
+#          ISO container doors can close.
+#   RIGHT: Operational mode — panel at X=0, drums at operational positions,
+#          panel can swing open 180° for loading.
+#
+# Axes: X (vertical, up = into container) vs Yd (horizontal, 0=near wall).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ── Palette for plan view ────────────────────────────────────────────────────
+C_PANEL   = "#C8C8C0"    # panel fill (same as C_DOOR)
+C_PANEL_C = "#A8B8A8"    # panel center zone (slightly different)
+C_DRUM_LT3 = "#E8E8D0"  # light trap drum fill
+C_WASTE   = "#7A6B5A"    # waste drum fill
+C_RAIL3   = "#5A3E00"    # HGR20 rail color
+C_TRACK   = "#8B7355"    # V-groove track color
+C_CONT_DR = "#9CA0A8"    # container door fill
+C_GHOST   = "#D0D0D8"    # ghost position fill
+
+# ── Geometry ─────────────────────────────────────────────────────────────────
+# Operational positions
+OP_PANEL_X  = 0                               # panel outer face at X=0
+OP_DRUM_D1_YD = DRUM_LZ_YD_LO                 # = 0mm (near wall)
+OP_DRUM_D2_YD = DRUM_FZ_YD_LO                 # = 1782mm (far wall)
+OP_DRUM_X     = PANEL_CORNER_T                 # = 40mm (left edge)
+
+# Transport positions
+TR_PANEL_X  = PANEL_SLIDE                     # = 300mm (slid inward)
+TR_DRUM_X   = OP_DRUM_X + DRUM_SLIDE          # = 345mm (slid inward)
+
+# Container exterior face and door thickness
+CONT_WALL = 40   # container wall thickness (schematic)
+DOOR_T    = 60   # ISO door leaf thickness (schematic)
+
+# Light trap drum center in Yd
+LT_DRUM_YD_CENTER = (PANEL_CORNER_YD_L + PANEL_CORNER_YD_R) / 2  # = 1181mm
+
+# How much of the X axis to show (cargo door end detail)
+PLAN_X_MAX = 1200  # show X=0 to ~1200mm into container
+
+# ── Figure: two subplots side by side ────────────────────────────────────────
+FIG3_W = 24.0
+FIG3_H = 12.0
+
+fig3, (ax_tr, ax_op) = plt.subplots(1, 2, figsize=(FIG3_W, FIG3_H), dpi=DPI)
+fig3.patch.set_facecolor(BG)
+
+# ── Common drawing helpers ───────────────────────────────────────────────────
+def plan_setup(ax, title_text, subtitle_text=""):
+    """Configure axes for plan view: Yd horizontal, X vertical (up = into container)."""
+    pad_l, pad_r = 200, 200
+    pad_b, pad_t = 350, 200
+    ax.set_xlim(-pad_l, C_WID + pad_r)
+    ax.set_ylim(-CONT_WALL - DOOR_T - pad_b, PLAN_X_MAX + pad_t)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    ax.set_facecolor(BG)
+    # Title above
+    ax.text(C_WID / 2, PLAN_X_MAX + pad_t - 30, title_text,
+            ha="center", va="top", fontsize=FS_LG + 1, color=C_OUT,
+            fontweight="bold")
+    if subtitle_text:
+        ax.text(C_WID / 2, PLAN_X_MAX + pad_t - 120, subtitle_text,
+                ha="center", va="top", fontsize=FS_SM, color=C_DIM,
+                style="italic")
+
+
+def draw_container_walls(ax):
+    """Draw the container long walls and end wall (far end, X=PLAN_X_MAX)."""
+    # Near wall (Yd=0)
+    ax.add_patch(mpatches.Rectangle((-CONT_WALL, -CONT_WALL), CONT_WALL,
+                 PLAN_X_MAX + CONT_WALL, facecolor=C_WALL, edgecolor=C_OUT,
+                 linewidth=1.2, zorder=3))
+    # Far wall (Yd=C_WID)
+    ax.add_patch(mpatches.Rectangle((C_WID, -CONT_WALL), CONT_WALL,
+                 PLAN_X_MAX + CONT_WALL, facecolor=C_WALL, edgecolor=C_OUT,
+                 linewidth=1.2, zorder=3))
+    # Container interior floor area
+    ax.add_patch(mpatches.Rectangle((0, 0), C_WID, PLAN_X_MAX,
+                 facecolor=C_INTERIOR, edgecolor="none", alpha=0.5, zorder=0))
+    # Zone boundary at ZONE_L_END (X=625)
+    ax.plot([0, C_WID], [ZONE_L_END, ZONE_L_END], color=C_DIM, lw=0.8,
+            ls="--", dashes=(6, 4), zorder=2)
+    ax.text(C_WID / 2, ZONE_L_END + 25, f"ZONE_L_END  X={ZONE_L_END}mm",
+            ha="center", va="bottom", fontsize=FS_SM - 1, color=C_DIM,
+            style="italic", zorder=3)
+
+
+def draw_stepped_panel(ax, panel_x_outer, alpha=0.85):
+    """
+    Draw the stepped panel in plan view.
+    panel_x_outer = X position of the panel's exterior face.
+    """
+    # Corner zone near (Yd=0 to PANEL_CORNER_YD_L): 40mm thick
+    ax.add_patch(mpatches.Rectangle(
+        (0, panel_x_outer), PANEL_CORNER_YD_L, PANEL_CORNER_T,
+        facecolor=C_PANEL, edgecolor=C_OUT, linewidth=1.0,
+        alpha=alpha, zorder=5))
+    # Center zone (Yd=PANEL_CORNER_YD_L to _R): 120mm thick
+    ax.add_patch(mpatches.Rectangle(
+        (PANEL_CORNER_YD_L, panel_x_outer), PANEL_CENTER_W, PANEL_CENTER_T,
+        facecolor=C_PANEL_C, edgecolor=C_OUT, linewidth=1.0,
+        alpha=alpha, zorder=5))
+    # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID): 40mm thick
+    ax.add_patch(mpatches.Rectangle(
+        (PANEL_CORNER_YD_R, panel_x_outer), C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T,
+        facecolor=C_PANEL, edgecolor=C_OUT, linewidth=1.0,
+        alpha=alpha, zorder=5))
+    # Step lines
+    for yd_step in [PANEL_CORNER_YD_L, PANEL_CORNER_YD_R]:
+        ax.plot([yd_step, yd_step],
+                [panel_x_outer + PANEL_CORNER_T, panel_x_outer + PANEL_CENTER_T],
+                color=C_OUT, lw=1.0, zorder=6)
+
+
+def draw_light_trap_drum(ax, panel_x_outer):
+    """Draw the revolving light trap drum circle in the panel center zone."""
+    drum_x_center = panel_x_outer + PANEL_CENTER_T / 2  # centered in 120mm zone
+    ax.add_patch(plt.Circle(
+        (LT_DRUM_YD_CENTER, drum_x_center), DRUM_R,
+        facecolor=C_DRUM_LT3, edgecolor=C_OUT, linewidth=1.0, zorder=6))
+    # Center cross
+    ax.plot([LT_DRUM_YD_CENTER - 40, LT_DRUM_YD_CENTER + 40],
+            [drum_x_center, drum_x_center], color=C_CL, lw=0.7, zorder=7)
+    ax.plot([LT_DRUM_YD_CENTER, LT_DRUM_YD_CENTER],
+            [drum_x_center - 40, drum_x_center + 40], color=C_CL, lw=0.7, zorder=7)
+    ax.text(LT_DRUM_YD_CENTER, drum_x_center + DRUM_R + 30,
+            f"Light trap\n\u00D8{DRUM_D}mm",
+            ha="center", va="bottom", fontsize=FS_SM - 0.5, color=C_OUT, zorder=7)
+
+
+def draw_waste_drums(ax, drum_x_left, d1_yd, d2_yd, alpha=0.85):
+    """Draw the two 55-gal waste drums in plan view (circles)."""
+    r = DRUM_EQ_R
+    cx = drum_x_left + r  # center X
+    for yd_lo, label in [(d1_yd, "D-1"), (d2_yd, "D-2")]:
+        yd_c = yd_lo + r
+        ax.add_patch(plt.Circle(
+            (yd_c, cx), r, facecolor=C_WASTE, edgecolor=C_OUT,
+            linewidth=0.8, alpha=alpha, zorder=5))
+        ax.text(yd_c, cx, label, ha="center", va="center",
+                fontsize=FS_SM - 0.5, color="#FFFFFF", fontweight="bold", zorder=6)
+
+
+def draw_hgr20_rails(ax):
+    """Draw the HGR20 panel slide rails (floor level, X direction)."""
+    rail_len = PANEL_SLIDE + 100  # show slightly longer than travel
+    for yd_pos in [100, C_WID - 100]:  # near and far wall
+        ax.add_patch(mpatches.Rectangle(
+            (yd_pos - 10, -20), 20, rail_len + 40,
+            facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=0.5,
+            alpha=0.6, zorder=4))
+
+
+def draw_vgroove_tracks(ax, drum_x_left):
+    """Draw V-groove roller tracks for waste drums."""
+    track_len = DRUM_SLIDE + 50
+    for yd_c in [DRUM_EQ_R, C_WID - DRUM_EQ_R]:
+        for offset in [-80, 80]:  # two parallel tracks per drum
+            ax.add_patch(mpatches.Rectangle(
+                (yd_c + offset - 5, drum_x_left - 10), 10, track_len + 20,
+                facecolor=C_TRACK, edgecolor=C_OUT, linewidth=0.4,
+                alpha=0.4, zorder=3))
+
+
+def draw_container_doors(ax, closed=True):
+    """Draw ISO container doors at X=0 exterior face."""
+    if closed:
+        # Doors closed — two leaves spanning the full width
+        ax.add_patch(mpatches.Rectangle(
+            (0, -CONT_WALL - DOOR_T), C_WID / 2, DOOR_T,
+            facecolor=C_CONT_DR, edgecolor=C_OUT, linewidth=1.0, zorder=4))
+        ax.add_patch(mpatches.Rectangle(
+            (C_WID / 2, -CONT_WALL - DOOR_T), C_WID / 2, DOOR_T,
+            facecolor=C_CONT_DR, edgecolor=C_OUT, linewidth=1.0, zorder=4))
+        ax.text(C_WID / 2, -CONT_WALL - DOOR_T / 2,
+                "ISO CONTAINER DOORS (CLOSED)",
+                ha="center", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
+                fontweight="bold", zorder=5)
+    else:
+        # Doors open — swung flat against container sides
+        # Near-side door
+        ax.add_patch(mpatches.Rectangle(
+            (-CONT_WALL - DOOR_T, -CONT_WALL), DOOR_T, C_WID / 2 + CONT_WALL,
+            facecolor=C_CONT_DR, edgecolor=C_OUT, linewidth=0.8,
+            alpha=0.4, zorder=2))
+        # Far-side door
+        ax.add_patch(mpatches.Rectangle(
+            (C_WID + CONT_WALL, -CONT_WALL), DOOR_T, C_WID / 2 + CONT_WALL,
+            facecolor=C_CONT_DR, edgecolor=C_OUT, linewidth=0.8,
+            alpha=0.4, zorder=2))
+        ax.text(C_WID / 2, -CONT_WALL - 30,
+                "DOORS OPEN",
+                ha="center", va="top", fontsize=FS_SM - 0.5, color=C_DIM,
+                style="italic", zorder=3)
+
+
+def draw_evap_cooler(ax):
+    """Draw evaporative cooler footprint in plan view."""
+    ax.add_patch(mpatches.Rectangle(
+        (EVAP_Y, EVAP_X), EVAP_D, EVAP_W,
+        facecolor=C_EVAP, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=5))
+    ax.text(EVAP_Y + EVAP_D / 2, EVAP_X + EVAP_W / 2,
+            "Evap\ncooler", ha="center", va="center",
+            fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+
+
+# ── LEFT PANEL: Transport mode ──────────────────────────────────────────────
+plan_setup(ax_tr, "TRANSPORT MODE",
+           f"Panel retracted {PANEL_SLIDE}mm  |  Drums retracted {DRUM_SLIDE}mm  |  Doors closed")
+draw_container_walls(ax_tr)
+draw_container_doors(ax_tr, closed=True)
+draw_hgr20_rails(ax_tr)
+draw_vgroove_tracks(ax_tr, TR_DRUM_X)
+draw_evap_cooler(ax_tr)
+
+# Ghost: operational positions (dashed outlines)
+# Ghost panel
+for yd0, w, t in [(0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
+                   (PANEL_CORNER_YD_L, PANEL_CENTER_W, PANEL_CENTER_T),
+                   (PANEL_CORNER_YD_R, C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T)]:
+    ax_tr.add_patch(mpatches.Rectangle(
+        (yd0, OP_PANEL_X), w, t,
+        facecolor="none", edgecolor=C_GHOST, linewidth=0.8,
+        ls=(0, (4, 3)), alpha=0.6, zorder=2))
+# Ghost drums
+for yd_lo in [OP_DRUM_D1_YD, OP_DRUM_D2_YD]:
+    ax_tr.add_patch(plt.Circle(
+        (yd_lo + DRUM_EQ_R, OP_DRUM_X + DRUM_EQ_R), DRUM_EQ_R,
+        facecolor="none", edgecolor=C_GHOST, linewidth=0.8,
+        ls=(0, (4, 3)), alpha=0.6, zorder=2))
+
+# Solid: transport positions
+draw_stepped_panel(ax_tr, TR_PANEL_X)
+draw_light_trap_drum(ax_tr, TR_PANEL_X)
+draw_waste_drums(ax_tr, TR_DRUM_X, OP_DRUM_D1_YD, OP_DRUM_D2_YD)
+
+# Door closure plane line
+ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
+           ls="--", dashes=(6, 3), zorder=8)
+ax_tr.text(C_WID + 40, -CONT_WALL, "Door closure\nplane",
+           ha="left", va="center", fontsize=FS_SM - 1, color="#CC2020", zorder=8)
+
+# Slide arrows
+# Panel slide arrow
+panel_mid_yd = C_WID / 2
+ax_tr.annotate("", xy=(panel_mid_yd, TR_PANEL_X + PANEL_CORNER_T / 2),
+               xytext=(panel_mid_yd, OP_PANEL_X + PANEL_CORNER_T / 2),
+               arrowprops=dict(arrowstyle="-|>", color="#2060A0", lw=1.5,
+                               connectionstyle="arc3,rad=0.15"), zorder=8)
+ax_tr.text(panel_mid_yd + 120, (OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CORNER_T / 2,
+           f"Panel slide\n{PANEL_SLIDE}mm",
+           ha="left", va="center", fontsize=FS_SM - 0.5, color="#2060A0", zorder=8)
+
+# Drum slide arrows
+for yd_lo in [OP_DRUM_D1_YD, OP_DRUM_D2_YD]:
+    yd_c = yd_lo + DRUM_EQ_R
+    ax_tr.annotate("", xy=(yd_c, TR_DRUM_X + DRUM_EQ_R),
+                   xytext=(yd_c, OP_DRUM_X + DRUM_EQ_R),
+                   arrowprops=dict(arrowstyle="-|>", color="#805000", lw=1.2,
+                                   connectionstyle="arc3,rad=-0.15"), zorder=8)
+ax_tr.text(DRUM_EQ_R + 120, (OP_DRUM_X + TR_DRUM_X) / 2 + DRUM_EQ_R,
+           f"Drum slide\n{DRUM_SLIDE}mm",
+           ha="left", va="center", fontsize=FS_SM - 0.5, color="#805000", zorder=8)
+
+# Dimensions
+dim3_y_bot = -CONT_WALL - DOOR_T - 100
+# Panel thickness dims
+ax_tr.annotate("", xy=(PANEL_CORNER_YD_L / 2, TR_PANEL_X + PANEL_CORNER_T),
+               xytext=(PANEL_CORNER_YD_L / 2, TR_PANEL_X),
+               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
+ax_tr.text(PANEL_CORNER_YD_L / 2 - 60, TR_PANEL_X + PANEL_CORNER_T / 2,
+           f"{PANEL_CORNER_T}mm", ha="right", va="center",
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+
+ax_tr.annotate("", xy=(LT_DRUM_YD_CENTER, TR_PANEL_X + PANEL_CENTER_T),
+               xytext=(LT_DRUM_YD_CENTER, TR_PANEL_X),
+               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
+ax_tr.text(LT_DRUM_YD_CENTER + DRUM_R + 30, TR_PANEL_X + PANEL_CENTER_T / 2,
+           f"{PANEL_CENTER_T}mm", ha="left", va="center",
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+
+
+# ── RIGHT PANEL: Operational mode ────────────────────────────────────────────
+plan_setup(ax_op, "OPERATIONAL MODE",
+           "Panel at X=0  |  Drums at operational positions  |  Doors open")
+draw_container_walls(ax_op)
+draw_container_doors(ax_op, closed=False)
+draw_hgr20_rails(ax_op)
+draw_vgroove_tracks(ax_op, OP_DRUM_X)
+draw_evap_cooler(ax_op)
+
+# Solid: operational positions
+draw_stepped_panel(ax_op, OP_PANEL_X)
+draw_light_trap_drum(ax_op, OP_PANEL_X)
+draw_waste_drums(ax_op, OP_DRUM_X, OP_DRUM_D1_YD, OP_DRUM_D2_YD)
+
+# Door closure plane line (for reference)
+ax_op.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=0.8,
+           ls=":", alpha=0.5, zorder=2)
+
+# Light trap drum overhang — show it extends past X=0
+lt_drum_cx = OP_PANEL_X + PANEL_CENTER_T / 2
+lt_drum_x_outer = lt_drum_cx - DRUM_R
+ax_op.text(LT_DRUM_YD_CENTER, lt_drum_x_outer - 30,
+           f"Drum extends {abs(lt_drum_x_outer):.0f}mm\npast exterior face",
+           ha="center", va="top", fontsize=FS_SM - 1, color="#CC2020",
+           style="italic", zorder=8)
+
+# Fixed door frame
+ax_op.plot([0, C_WID], [0, 0], color=C_OUT, lw=1.8, zorder=7)
+ax_op.text(C_WID + 40, 0, "Fixed door\nframe (X=0)",
+           ha="left", va="center", fontsize=FS_SM - 1, color=C_OUT, zorder=8)
+
+# EPDM seal indicator
+ax_op.plot([10, C_WID - 10], [-3, -3], color="#5A3020", lw=2.5,
+           solid_capstyle="round", zorder=7)
+ax_op.text(C_WID + 40, -3, "EPDM seal",
+           ha="left", va="center", fontsize=FS_SM - 1, color="#5A3020", zorder=8)
+
+# Panel thickness dims
+ax_op.annotate("", xy=(PANEL_CORNER_YD_L / 2, OP_PANEL_X + PANEL_CORNER_T),
+               xytext=(PANEL_CORNER_YD_L / 2, OP_PANEL_X),
+               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
+ax_op.text(PANEL_CORNER_YD_L / 2 - 60, OP_PANEL_X + PANEL_CORNER_T / 2,
+           f"{PANEL_CORNER_T}mm", ha="right", va="center",
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+
+ax_op.annotate("", xy=(LT_DRUM_YD_CENTER, OP_PANEL_X + PANEL_CENTER_T),
+               xytext=(LT_DRUM_YD_CENTER, OP_PANEL_X),
+               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
+ax_op.text(LT_DRUM_YD_CENTER + DRUM_R + 30, OP_PANEL_X + PANEL_CENTER_T / 2,
+           f"{PANEL_CENTER_T}mm", ha="left", va="center",
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+
+# Cam latch indicators (4x, interior face)
+latch_yds = [200, 756, 1606, C_WID - 200]
+for yd in latch_yds:
+    t = PANEL_CORNER_T if (yd < PANEL_CORNER_YD_L or yd > PANEL_CORNER_YD_R) else PANEL_CENTER_T
+    ax_op.plot(yd, OP_PANEL_X + t - 5, marker="x", markersize=5,
+              color="#CC2020", mew=1.2, zorder=8)
+ax_op.text(latch_yds[-1] + 60, OP_PANEL_X + PANEL_CORNER_T - 5,
+           "Cam latches x4",
+           ha="left", va="center", fontsize=FS_SM - 1, color="#CC2020", zorder=8)
+
+
+# ── Shared legend (bottom center of figure) ─────────────────────────────────
+legend_items3 = [
+    (C_PANEL,    "Panel corner zone (40mm)"),
+    (C_PANEL_C,  "Panel center zone (120mm)"),
+    (C_DRUM_LT3, "Revolving light trap drum"),
+    (C_WASTE,    "55-gal waste drum"),
+    (C_EVAP,     "Evaporative cooler"),
+    (C_CONT_DR,  "ISO container door"),
+    (C_GHOST,    "Ghost (operational position)"),
+]
+
+# Draw legend as a horizontal row under the figure using fig3 coordinates
+fig3.subplots_adjust(bottom=0.12)
+leg_ax = fig3.add_axes([0.05, 0.01, 0.9, 0.08])
+leg_ax.set_xlim(0, 1)
+leg_ax.set_ylim(0, 1)
+leg_ax.axis("off")
+
+n_items = len(legend_items3)
+item_w = 1.0 / n_items
+for i, (col, lbl) in enumerate(legend_items3):
+    cx = i * item_w + item_w * 0.08
+    leg_ax.add_patch(mpatches.Rectangle(
+        (cx, 0.35), item_w * 0.12, 0.35,
+        facecolor=col, edgecolor=C_OUT, linewidth=0.5, transform=leg_ax.transAxes))
+    leg_ax.text(cx + item_w * 0.16, 0.52, lbl,
+                ha="left", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
+                transform=leg_ax.transAxes)
+
+# ── Shared title block (figure-level) ────────────────────────────────────────
+fig3.text(0.5, 0.97, "TBS-001  —  CARGO DOOR END PLAN VIEW",
+          ha="center", va="top", fontsize=14, color=C_OUT, fontweight="bold")
+fig3.text(0.5, 0.945,
+          f"Stepped panel (40mm corners / 120mm center) on HGR20 sliding carriage  |  "
+          f"Waste drums on V-groove dollies  |  Scale: approx 1:20",
+          ha="center", va="top", fontsize=9, color=C_DIM, style="italic")
+fig3.text(0.98, 0.01, "\u00A9 2026 Alvin Richards \u2014 GNU AGPLv3",
+          ha="right", va="bottom", fontsize=7, color=C_DIM, style="italic")
+
+# ── Save ──────────────────────────────────────────────────────────────────────
+out3 = f"{DIAGRAMS_DIR}/assembly-overview-plan.png"
+plt.savefig(out3, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
+plt.savefig(str(out3).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+plt.close(fig3)
+print(f"Saved: {out3}")

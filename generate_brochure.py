@@ -1087,8 +1087,8 @@ def main():
 
         html_body = md_to_html(src)
         html_body = rewrite_image_srcs(html_body)
-        # Strip leading h1 — already rendered by chapter_header
-        html_body = re.sub(r'^\s*<h1[^>]*>.*?</h1>\s*', '', html_body,
+        # Strip first h1 — already rendered by chapter_header
+        html_body = re.sub(r'<h1[^>]*>.*?</h1>\s*', '', html_body,
                            count=1, flags=re.DOTALL)
 
         pdf.chapter_header(i, title, section)

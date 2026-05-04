@@ -174,7 +174,13 @@ BROWN_IBC_Y = 1141   # Brown IBC depth start (mm)  (gap = 25mm after blue stack)
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.
 # Fan A: intake, far end wall (X = C_LEN face), low position.
-# Fan B: exhaust, cargo door end wall (X = 0 face), high position.
+#         Baffle duct extends 300mm into container interior from X=C_LEN wall.
+# Fan B: exhaust, mounted on hinged panel (far corner zone), high position.
+#         Baffle duct protrudes 300mm from panel EXTERIOR face.
+#         Moves with panel on sliding carriage. In operational mode (panel at
+#         X=0) duct extends into open doorway (X=0 to -300). In transport mode
+#         (panel at X=300) duct occupies X=0 to 300 — inside container, clears
+#         ISO doors. Wiring via flexible cable loop from fixed door frame.
 FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
 FAN_A_H     = 600    # fan A center height AFF (mm — low position)
@@ -183,17 +189,21 @@ FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
 # exhaust far-wall corner.  Clears both waste drum columns (D-1 near, D-2 far)
 # with ≥830mm vertical separation even where Yd overlaps.
 FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
-FAN_B_YD    = C_WID - FAN_DIAM // 2  # = 2287mm — far-wall corner (X=0 wall)
+FAN_B_YD    = C_WID - FAN_DIAM // 2  # = 2287mm — far-wall corner (panel face)
 
-# Baffle duct (one per fan, interior-mounted, welded galvanized steel)
-DUCT_DEPTH  = 300    # baffle duct depth into container interior (mm)
+# Baffle duct (one per fan, welded galvanized steel)
+# Fan A: duct extends into container interior from wall
+# Fan B: duct protrudes from panel exterior face (into open doorway / container)
+DUCT_DEPTH  = 300    # baffle duct depth (mm)
 DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 
 # Shadow margins — distance from fan assembly to nearest cone edge (at worst depth)
-# Fan A right margin: C_LEN − ZONE_R_START − FAN_DIAM/2 − DUCT_DEPTH = 5893−4649−75−300 = 869mm
-# Fan B left margin: ZONE_L_END − FAN_DIAM/2 − DUCT_DEPTH = 625−75−300 = 250mm
+# Fan A: duct extends inward from X=C_LEN wall
 FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869 mm ✓
-FAN_B_MARGIN = ZONE_L_END - FAN_DIAM // 2 - DUCT_DEPTH              # = 250 mm ✓
+# Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
+# Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
+# Fan at Yd=2287mm: cone at Yd=2287 is well above X=625, so no cone intrusion.
+FAN_B_MARGIN = PANEL_CORNER_T   # = 40 mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
 DIAGRAMS_DIR = "diagrams"

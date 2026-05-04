@@ -22,12 +22,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system | $1,457 | $2,072 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 7a. Panel sliding carriage & drum dolly system | $1,083 | $1,083 |
+| 7a. Panel sliding carriage & drum dolly system | $1,103 | $1,103 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,033** | **~$18,333** |
+| **TOTAL (base build + 50-print run)** | **~$14,053** | **~$18,353** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -363,13 +363,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Brush seal strip (nylon bristle) | Carriage beam slot, 2,400mm | 1 | McMaster-Carr | ~$25 |
 | EPDM gasket (existing spec) | 20×15mm, ~9.5m | 1 | McMaster-Carr #8635K31 | ~$45 |
 | Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
-| Fan B duct notch + silicone | 200×200mm cutout | 1 | Local fab | ~$15 |
 | Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr / Fastenal | ~$60 |
 | Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
+| Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end | 1 | Waytek Wire / McMaster-Carr | ~$35 |
 
-**Door frame subtotal: ~$382**
+**Door frame subtotal: ~$402**
 
-**Section total (materials): ~$1,083**
+**Section total (materials): ~$1,103**
 **Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
 
 ---

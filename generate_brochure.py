@@ -811,6 +811,10 @@ class BrochurePDF(FPDF):
         """
         Render an HTML fragment via write_html, but split at headings
         and insert page breaks to prevent orphaned headings at page bottom.
+
+        For each heading fragment, measure its full height via dry_run.
+        If the block fits on a fresh page but not in the remaining space,
+        break first so the heading + its content stay together.
         """
         # Split HTML at heading tags, keeping the delimiter with the
         # fragment that follows it (the heading's own block).
@@ -832,10 +836,19 @@ class BrochurePDF(FPDF):
             if not frag.strip():
                 continue
 
-            # If this fragment starts with a heading, check available space
+            # If this fragment starts with a heading, measure its height
+            # and break to a new page if it won't fit but would fit on
+            # a fresh page.
             if self._HEADING_SPLIT_RE.match(frag):
                 remaining = page_bottom - self.get_y()
-                if remaining < self._HEADING_KEEP_MM:
+                # Measure fragment height via dry_run write_html
+                frag_h = self._measure_html_height(frag, tag_styles)
+                # If it won't fit here but WOULD fit on a full page, break
+                if frag_h > remaining and frag_h <= CONTENT_H:
+                    self.add_page()
+                # Fallback: if it won't even fit a full page, at least
+                # ensure minimum keep space for the heading itself
+                elif remaining < self._HEADING_KEEP_MM:
                     self.add_page()
 
             self.set_font(FONT_BODY, "", 9)
@@ -854,6 +867,30 @@ class BrochurePDF(FPDF):
                 self.set_text_color(*C_BODY)
                 self.set_x(M_L)
                 self.multi_cell(BODY_W, 5, plain[:8000])
+
+    def _measure_html_height(self, html_frag, tag_styles):
+        """Estimate height of an HTML fragment without rendering.
+
+        Counts lines by stripping tags and measuring text width against
+        BODY_W, plus extra height for headings and paragraph spacing.
+        """
+        # Strip tags to get plain text
+        plain = re.sub(r"<[^>]+>", " ", html_frag)
+        plain = re.sub(r"\s+", " ", plain).strip()
+        if not plain:
+            return 0
+        # Measure total text width
+        self.set_font(FONT_BODY, "", 9)
+        tw = self.get_string_width(plain)
+        n_lines = max(1, int(tw / BODY_W + 0.99))
+        line_h = 5.0  # approximate line height for 9pt
+        # Add height for headings (larger font + spacing)
+        n_headings = len(re.findall(r"<h[1-6][\s>]", html_frag, re.IGNORECASE))
+        heading_extra = n_headings * 8  # extra space per heading
+        # Add height for paragraph breaks
+        n_paras = len(re.findall(r"<p[\s>]", html_frag, re.IGNORECASE))
+        para_extra = n_paras * 3  # spacing between paragraphs
+        return n_lines * line_h + heading_extra + para_extra
 
     # -- Table renderer (drawn with fpdf2 primitives) --------------------------
 

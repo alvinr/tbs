@@ -892,7 +892,16 @@ def sheet4():
             transform=ax.transAxes, color=DIM, fontsize=7,
             ha="center", va="center", style="italic", **FONT)
 
-    title_block(ax, "4 / 4", "MOVEMENT SPECIFICATION")
+    # Single title block at figure bottom
+    fig.text(0.02, 0.025, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+             color=DIM, fontsize=7, **FONT)
+    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 4 / 4: MOVEMENT SPECIFICATION",
+             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
+    fig.text(0.98, 0.010, "ALL DIMS IN mm UNLESS NOTED",
+             color=DIM, fontsize=6.5, ha="right", **FONT)
+    fig.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
+             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.svg", bbox_inches="tight", facecolor=BG)
     plt.close(fig)

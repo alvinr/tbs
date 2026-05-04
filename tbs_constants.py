@@ -106,6 +106,18 @@ PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
 DRUM_SLIDE        = 305   # waste drum slide travel for transport (mm)
 DRUM_DOLLY_H      = 30    # dolly track riser height (mm) — clears HGR20 floor rail
 
+# Dolly tracks are split into permanent + removable bridge sections.
+# Permanent tracks: X=PANEL_CORNER_T to X=PERM_TRACK_END (within left end zone).
+# Bridge sections: removable, installed only during mode conversion. Span over
+# the film plane floor rail at X=RAIL_X_L with 10mm clearance on 30mm risers.
+# The film plane carriage must be retracted to Yd≤100mm before bridges are
+# installed — clears carriage blocks (nearest dolly track at Yd≈210mm).
+PERM_TRACK_END    = 620   # permanent track right end X (mm) — 5mm inside ZONE_L_END
+BRIDGE_TRACK_START = 600  # bridge section left end X (mm) — 20mm overlap for alignment
+BRIDGE_TRACK_END  = 955   # bridge section right end X (mm) — 30mm past drum transport edge
+BRIDGE_TRACK_LEN  = BRIDGE_TRACK_END - BRIDGE_TRACK_START  # = 355mm
+BRIDGE_COUNT      = 4     # 2 tracks per drum × 2 drums
+
 # ── Left end zone (X = 0–625 mm, shadow-free at all depths) ──────────────────
 DRUM_CX    = 0       # light trap drum center X (mm) [unchanged]
 DRUM_D     = 750     # revolving drum diameter (mm)

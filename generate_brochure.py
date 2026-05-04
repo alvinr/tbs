@@ -460,6 +460,9 @@ def _clean_html_for_fpdf(html):
         html = re.sub(rf"<{tag}(?:\s[^>]*)?>", "", html, flags=re.IGNORECASE)
         html = re.sub(rf"</{tag}>", "", html, flags=re.IGNORECASE)
 
+    # Strip <hr> — markdown --- separators are unnecessary in a brochure
+    html = re.sub(r"<hr\s*/?>", "", html, flags=re.IGNORECASE)
+
     def _strip_attrs(m):
         tag_full = m.group(0)
         tag_full = re.sub(r'\s+(?:class|id|style)="[^"]*"', "", tag_full)

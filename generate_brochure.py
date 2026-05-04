@@ -445,6 +445,44 @@ def _extract_tables(html):
     return html, tables
 
 
+def _flatten_lists(html):
+    """
+    Convert <ol>/<ul> lists to plain <p> paragraphs with manual
+    numbering/bullets.  Handles nested lists by increasing indent.
+    """
+    def _replace_ol(m):
+        inner = m.group(1)
+        items = re.findall(r"<li[^>]*>(.*?)</li>", inner,
+                           flags=re.DOTALL | re.IGNORECASE)
+        parts = []
+        for i, item in enumerate(items, 1):
+            # Strip nested tags but keep <strong>/<em>/<code>
+            text = item.strip()
+            parts.append(f"<p>{i}. {text}</p>")
+        return "\n".join(parts)
+
+    def _replace_ul(m):
+        inner = m.group(1)
+        items = re.findall(r"<li[^>]*>(.*?)</li>", inner,
+                           flags=re.DOTALL | re.IGNORECASE)
+        parts = []
+        for item in items:
+            text = item.strip()
+            parts.append(f"<p>* {text}</p>")
+        return "\n".join(parts)
+
+    # Process nested lists inside-out (deepest first)
+    for _ in range(5):   # max nesting depth
+        prev = html
+        html = re.sub(r"<ol[^>]*>(.*?)</ol>", _replace_ol, html,
+                       flags=re.DOTALL | re.IGNORECASE)
+        html = re.sub(r"<ul[^>]*>(.*?)</ul>", _replace_ul, html,
+                       flags=re.DOTALL | re.IGNORECASE)
+        if html == prev:
+            break
+    return html
+
+
 def _clean_html_for_fpdf(html):
     """
     Simplify HTML so fpdf2's write_html handles it gracefully:
@@ -462,6 +500,11 @@ def _clean_html_for_fpdf(html):
 
     # Strip <hr> — markdown --- separators are unnecessary in a brochure
     html = re.sub(r"<hr\s*/?>", "", html, flags=re.IGNORECASE)
+
+    # Convert <ol>/<ul> lists to plain paragraphs — fpdf2's list rendering
+    # inherits heading style for number/bullet prefixes, producing wrong
+    # color and font size.  Manual numbering avoids this entirely.
+    html = _flatten_lists(html)
 
     def _strip_attrs(m):
         tag_full = m.group(0)

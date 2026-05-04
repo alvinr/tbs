@@ -104,7 +104,7 @@ C_TABLE_HDR = (30,  40,  55)     # table header row bg
 C_TABLE_ALT = (235, 240, 248)    # alternating table row bg
 C_BODY      = (30,  30,  30)     # body text
 C_MUTED     = (100, 100, 110)    # footers / captions
-C_RULE      = (200, 70,  20)     # chapter header underline
+C_RULE      = (160, 160, 170)    # header/footer rules (neutral grey)
 
 PAGE_W   = 210   # A4 mm
 PAGE_H   = 297
@@ -320,11 +320,11 @@ def rewrite_image_srcs(html):
     # Remove script blocks (MathJax etc.)
     html = re.sub(r"<script[^>]*>.*?</script>", "", html,
                   flags=re.DOTALL | re.IGNORECASE)
-    # Replace LaTeX/MathJax math blocks with placeholder
-    html = re.sub(r"\\\[.*?\\\]", "<em>[formula -- see online docs]</em>",
+    # Replace LaTeX/MathJax math blocks with code-styled placeholder
+    html = re.sub(r"\\\[.*?\\\]", "<code>[formula -- see online docs]</code>",
                   html, flags=re.DOTALL)
-    html = re.sub(r"\\\(.*?\\\)", "<em>[formula]</em>", html, flags=re.DOTALL)
-    html = re.sub(r"\[\[.*?\]\]", "<em>[formula -- see online docs]</em>",
+    html = re.sub(r"\\\(.*?\\\)", "<code>[formula]</code>", html, flags=re.DOTALL)
+    html = re.sub(r"\[\[.*?\]\]", "<code>[formula -- see online docs]</code>",
                   html, flags=re.DOTALL)
     # Unwrap admonition wrappers
     html = re.sub(r'<div class="admonition[^"]*"[^>]*>', "<blockquote>",
@@ -519,6 +519,7 @@ class BrochurePDF(FPDF):
 
     def cover_page(self, pages):
         self._suppress_chrome = True
+        self.set_auto_page_break(auto=False)
         self.add_page()
         self.set_fill_color(*C_DARK)
         self.rect(0, 0, PAGE_W, PAGE_H, "F")
@@ -570,6 +571,7 @@ class BrochurePDF(FPDF):
                   _safe(f"{len(pages)} chapters  *  alvinr.github.io/tbs"),
                   align="C")
 
+        self.set_auto_page_break(auto=True, margin=M_B)
         self._suppress_chrome = False
 
     # -- TOC page --------------------------------------------------------------
@@ -663,7 +665,7 @@ class BrochurePDF(FPDF):
         self.set_x(M_L)
         self.multi_cell(BODY_W, 9, _safe(title), align="L")
 
-        self.set_draw_color(*C_RULE)
+        self.set_draw_color(*C_ACCENT)
         self.set_line_width(0.6)
         self.line(M_L, self.get_y() + 1, PAGE_W - M_R, self.get_y() + 1)
         self.ln(6)
@@ -1041,8 +1043,17 @@ def _build_tag_styles():
         "h4": ts("BI", 10, C_DARK),
         "h5": ts("BI",  9, C_DARK),
         "h6": ts("I",   9, C_MUTED),
-        "code": ts("",  8, C_BODY, font=code_font),
-        "pre":  ts("",  7, C_BODY, font=code_font),
+        "code": FontFace(
+            family=code_font, size_pt=8, color=C_BODY,
+            fill_color=(230, 230, 235),
+        ),
+        "pre": FontFace(
+            family=code_font, size_pt=7, color=C_BODY,
+            fill_color=(235, 235, 240),
+        ),
+        "ol":  ts("",   9, C_BODY),
+        "ul":  ts("",   9, C_BODY),
+        "li":  ts("",   9, C_BODY),
     }
 
 
@@ -1076,6 +1087,9 @@ def main():
 
         html_body = md_to_html(src)
         html_body = rewrite_image_srcs(html_body)
+        # Strip leading h1 — already rendered by chapter_header
+        html_body = re.sub(r'^\s*<h1[^>]*>.*?</h1>\s*', '', html_body,
+                           count=1, flags=re.DOTALL)
 
         pdf.chapter_header(i, title, section)
         pdf.chapter_body(html_body)

@@ -1216,35 +1216,37 @@ def sheet4():
     dim_h(ax, PANEL_CORNER_YD_R, C_WID, _dim_top,
           f"{C_WID - PANEL_CORNER_YD_R}mm", offset=25, fs=6)
 
-    # ── Notes (in exterior zone below drawing) ─────────────────────────────
+    # ── Notes (right-justified, in exterior zone below drawing) ────────────
     notes = [
         f"1. TRANSPORT MODE: Slide drums inward {SLIDE_D}mm, then slide panel inward {SLIDE_P}mm.",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
         "3. Single-person operation, 15–20 minutes per mode conversion.",
-        "4. Panel locks: 2× Destaco 207-U toggle clamps per position.  "
-        "Drum locks: M12 spring plunger pins at each position.",
-        "5. Fixed door frame provides EPDM seal landing — seal unchanged from non-sliding design.",
+        "4. Panel locks: 2× Destaco 207-U toggle clamps per position.",
+        "5. Drum locks: M12 spring plunger pins at operational + transport holes.",
+        "6. Fixed door frame provides EPDM seal landing — seal unchanged.",
     ]
+    notes_x = C_WID + PAD_R - 20
     for i, note in enumerate(notes):
-        ax.text(C_WID / 2, X_LO + 50 + (len(notes) - 1 - i) * 28, note,
-                ha="center", va="bottom", fontsize=5.5, color=C_DIM,
+        ax.text(notes_x, X_LO + 50 + (len(notes) - 1 - i) * 26, note,
+                ha="right", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 
-    # ── Legend (right side, stacked vertically above ZONE_L_END label) ───────
-    legend_x = C_WID + 80
-    legend_y = ZONE_L_END - 100
+    # ── Legend (bottom right, horizontal row above notes) ───────────────────
+    legend_y = X_LO + 50 + len(notes) * 26 + 25
     swatches = [
-        (C_ALUM,   0.9,  "Corner zone (40mm)"),
-        (C_STEEL,  0.9,  "Center zone (120mm)"),
-        ("#F5F0E8", 0.7,  "Light trap drum"),
-        ("#C8B090", 0.85, "55-gal waste drum"),
-        (C_STEEL,  0.20, "Transport (ghost)"),
+        (C_ALUM,   0.9,  "Corner"),
+        (C_STEEL,  0.9,  "Center"),
+        ("#F5F0E8", 0.7,  "Lt. trap"),
+        ("#C8B090", 0.85, "Waste drum"),
+        (C_STEEL,  0.20, "Transport"),
     ]
+    SWATCH_STEP = 200
+    legend_start = notes_x - (len(swatches) - 1) * SWATCH_STEP
     for i, (c, a, lbl) in enumerate(swatches):
-        sy = legend_y - i * 40
-        ax.add_patch(Rectangle((legend_x, sy - 7), 25, 14,
+        sx = legend_start + i * SWATCH_STEP
+        ax.add_patch(Rectangle((sx, legend_y - 7), 20, 14,
                                 fc=c, ec=C_OUT, lw=0.8, alpha=a, zorder=15))
-        ax.text(legend_x + 35, sy, lbl,
+        ax.text(sx + 28, legend_y, lbl,
                 ha="left", va="center", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 

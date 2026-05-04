@@ -1216,7 +1216,7 @@ def sheet4():
     dim_h(ax, PANEL_CORNER_YD_R, C_WID, _dim_top,
           f"{C_WID - PANEL_CORNER_YD_R}mm", offset=25, fs=6)
 
-    # ── Notes (right-justified, in exterior zone below drawing) ────────────
+    # ── Notes (left-justified, bottom left) ─────────────────────────────────
     notes = [
         f"1. TRANSPORT MODE: Slide drums inward {SLIDE_D}mm, then slide panel inward {SLIDE_P}mm.",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
@@ -1225,13 +1225,14 @@ def sheet4():
         "5. Drum locks: M12 spring plunger pins at operational + transport holes.",
         "6. Fixed door frame provides EPDM seal landing — seal unchanged.",
     ]
-    notes_x = C_WID + PAD_R - 20
+    notes_x = YD_LO + 20
     for i, note in enumerate(notes):
         ax.text(notes_x, X_LO + 50 + (len(notes) - 1 - i) * 26, note,
-                ha="right", va="bottom", fontsize=5.5, color=C_DIM,
+                ha="left", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 
-    # ── Legend (bottom right, horizontal row above notes) ───────────────────
+    # ── Legend (bottom right, horizontal row above title block) ──────────────
+    legend_right = C_WID + PAD_R - 20
     legend_y = X_LO + 50 + len(notes) * 26 + 25
     swatches = [
         (C_ALUM,   0.9,  "Corner"),
@@ -1241,7 +1242,7 @@ def sheet4():
         (C_STEEL,  0.20, "Transport"),
     ]
     SWATCH_STEP = 200
-    legend_start = notes_x - (len(swatches) - 1) * SWATCH_STEP
+    legend_start = legend_right - (len(swatches) - 1) * SWATCH_STEP
     for i, (c, a, lbl) in enumerate(swatches):
         sx = legend_start + i * SWATCH_STEP
         ax.add_patch(Rectangle((sx, legend_y - 7), 20, 14,

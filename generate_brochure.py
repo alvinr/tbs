@@ -493,10 +493,10 @@ class BrochurePDF(FPDF):
             return
         self.set_draw_color(*C_RULE)
         self.set_line_width(0.4)
-        self.line(M_L, 10, PAGE_W - M_R, 10)
+        self.line(M_L, 6, PAGE_W - M_R, 6)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)
-        self.set_xy(M_L, 5)
+        self.set_xy(M_L, 1)
         self.cell(0, 5, _safe("The Big Shoebox Project  --  TBS-001"), align="L")
 
     def footer(self):

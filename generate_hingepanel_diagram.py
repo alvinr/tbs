@@ -1037,7 +1037,7 @@ def sheet4():
     # ── Door closure plane (exterior face of wall at X = -C_WALL_T) ──────────
     ax.plot([YD_LO + 60, YD_HI - 60], [-C_WALL_T, -C_WALL_T],
             color="#804020", lw=1.2, ls=":", zorder=4, alpha=0.7)
-    ax.text(C_WID + 80, -C_WALL_T, "DOOR CLOSURE PLANE",
+    ax.text(C_WID + 80, -C_WALL_T + 20, "DOOR CLOSURE PLANE",
             ha="left", va="center", fontsize=6, color="#804020",
             fontweight="bold", **FONT, zorder=15)
 
@@ -1051,7 +1051,7 @@ def sheet4():
     # ── ZONE_L_END boundary ──────────────────────────────────────────────────
     ax.plot([YD_LO + 60, YD_HI - 60], [ZONE_L_END, ZONE_L_END],
             color="#20A020", lw=1.5, ls=(0, (8, 4)), zorder=4, alpha=0.7)
-    ax.text(C_WID + 80, ZONE_L_END,
+    ax.text(C_WID + 80, ZONE_L_END + 20,
             f"ZONE_L_END = {ZONE_L_END}mm",
             ha="left", va="center", fontsize=6.5, color="#20A020",
             fontweight="bold", **FONT, zorder=15)
@@ -1131,7 +1131,7 @@ def sheet4():
                                 color="#2060A0", lw=2.0,
                                 connectionstyle="arc3,rad=-0.3",
                                 mutation_scale=12), zorder=15)
-    ax.text(d2_yd + DRUM_EQ_R + 30, (OP_DRUM_CX + TR_DRUM_CX) / 2,
+    ax.text(d2_yd + DRUM_EQ_R + 75, (OP_DRUM_CX + TR_DRUM_CX) / 2,
             f"DRUM SLIDE\n{SLIDE_D}mm",
             ha="left", va="center", fontsize=6.5, color="#2060A0",
             fontweight="bold", **FONT, zorder=15)
@@ -1168,7 +1168,7 @@ def sheet4():
     # Operational lock at X=0 — label on left side, well below transport lock
     ax.plot([YD_LO + 60, 0], [OP_PANEL_X, OP_PANEL_X],
             color="#20A060", lw=1.0, ls="--", zorder=4)
-    ax.text(YD_LO + 60, OP_PANEL_X - 10,
+    ax.text(YD_LO + 60, OP_PANEL_X + 20,
             "OPERATIONAL LOCK (X=0)",
             ha="left", va="top", fontsize=5.5, color="#20A060",
             fontweight="bold", **FONT, zorder=15)
@@ -1176,7 +1176,7 @@ def sheet4():
     # Transport lock at X=SLIDE_P — label on left side
     ax.plot([YD_LO + 60, 0], [TR_PANEL_X, TR_PANEL_X],
             color="#C04010", lw=1.0, ls="--", zorder=4)
-    ax.text(YD_LO + 60, TR_PANEL_X + 15,
+    ax.text(YD_LO + 60, TR_PANEL_X + 10,
             f"TRANSPORT LOCK (X={SLIDE_P}mm)",
             ha="left", va="bottom", fontsize=5.5, color="#C04010",
             fontweight="bold", **FONT, zorder=15)

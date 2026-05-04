@@ -867,19 +867,21 @@ class BrochurePDF(FPDF):
                 scale2 = BODY_W / total2
                 col_w = [w * scale2 for w in col_w]
 
-        # -- Helper: compute row height (using font metrics for wrap count) ----
+        # -- Helper: compute exact row height via dry_run multi_cell ----------
         def _row_height(row, bold=False):
             self.set_font(FONT_BODY, "B" if bold else "", FONT_SZ)
-            max_lines = 1
+            max_cell_h = LINE_H   # minimum one line
             for i in range(n_cols):
                 text = _safe(row[i] if i < len(row) else "")
-                avail = col_w[i] - 2 * PAD_X
-                if avail <= 0:
+                cell_w = col_w[i] - 2 * PAD_X
+                if cell_w <= 0:
                     continue
-                tw = self.get_string_width(text)
-                n_lines = max(1, int(tw / avail + 0.99))  # ceil
-                max_lines = max(max_lines, n_lines)
-            return max_lines * LINE_H + 2 * PAD_Y
+                result = self.multi_cell(
+                    cell_w, LINE_H, text, align="L", dry_run=True,
+                    output="HEIGHT",
+                )
+                max_cell_h = max(max_cell_h, result)
+            return max_cell_h + 2 * PAD_Y
 
         # -- Helper: draw one row ----------------------------------------------
         def _draw_row(row, is_header=False, is_alt=False):

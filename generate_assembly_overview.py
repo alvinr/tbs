@@ -47,6 +47,7 @@ from tbs_constants import (
     PANEL_CORNER_T, PANEL_CENTER_T,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W,
     PANEL_SLIDE, DRUM_SLIDE,
+    PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
@@ -915,12 +916,14 @@ def draw_container_walls(ax):
     # Container interior floor area
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, PLAN_X_MAX,
                  facecolor=C_INTERIOR, edgecolor="none", alpha=0.5, zorder=0))
-    # Zone boundary at ZONE_L_END (X=625)
-    ax.plot([0, C_WID], [ZONE_L_END, ZONE_L_END], color=C_DIM, lw=0.8,
-            ls="--", dashes=(6, 4), zorder=2)
-    ax.text(C_WID / 2, ZONE_L_END + 25, f"ZONE_L_END  X={ZONE_L_END}mm",
+    # Film plane floor rail at X=RAIL_X_L (= ZONE_L_END = 625mm)
+    ax.add_patch(mpatches.Rectangle((0, RAIL_X_L - 10), C_WID, 20,
+                 facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=0.5,
+                 alpha=0.5, zorder=4))
+    ax.text(C_WID / 2, ZONE_L_END + 30,
+            f"Film plane floor rail  X={ZONE_L_END}mm",
             ha="center", va="bottom", fontsize=FS_SM - 1, color=C_DIM,
-            style="italic", zorder=3)
+            style="italic", zorder=5)
 
 
 def draw_stepped_panel(ax, panel_x_outer, alpha=0.85):
@@ -989,15 +992,28 @@ def draw_hgr20_rails(ax):
             alpha=0.6, zorder=4))
 
 
-def draw_vgroove_tracks(ax, drum_x_left):
-    """Draw V-groove roller tracks for waste drums."""
-    track_len = DRUM_SLIDE + 50
+C_BRIDGE  = "#B89060"    # bridge section color (lighter than permanent)
+
+def draw_vgroove_tracks(ax, drum_x_left, show_bridges=False):
+    """Draw V-groove roller tracks for waste drums.
+    Permanent sections: X=PANEL_CORNER_T to PERM_TRACK_END.
+    Bridge sections (removable): X=BRIDGE_TRACK_START to BRIDGE_TRACK_END.
+    """
     for yd_c in [DRUM_EQ_R, C_WID - DRUM_EQ_R]:
         for offset in [-80, 80]:  # two parallel tracks per drum
+            # Permanent section
             ax.add_patch(mpatches.Rectangle(
-                (yd_c + offset - 5, drum_x_left - 10), 10, track_len + 20,
+                (yd_c + offset - 5, PANEL_CORNER_T), 10,
+                PERM_TRACK_END - PANEL_CORNER_T,
                 facecolor=C_TRACK, edgecolor=C_OUT, linewidth=0.4,
                 alpha=0.4, zorder=3))
+            # Bridge section (removable)
+            if show_bridges:
+                ax.add_patch(mpatches.Rectangle(
+                    (yd_c + offset - 5, BRIDGE_TRACK_START), 10,
+                    BRIDGE_TRACK_END - BRIDGE_TRACK_START,
+                    facecolor=C_BRIDGE, edgecolor=C_OUT, linewidth=0.4,
+                    alpha=0.5, zorder=3, linestyle="--"))
 
 
 def draw_container_doors(ax, closed=True):
@@ -1048,7 +1064,7 @@ plan_setup(ax_tr, "TRANSPORT MODE",
 draw_container_walls(ax_tr)
 draw_container_doors(ax_tr, closed=True)
 draw_hgr20_rails(ax_tr)
-draw_vgroove_tracks(ax_tr, TR_DRUM_X)
+draw_vgroove_tracks(ax_tr, TR_DRUM_X, show_bridges=True)
 draw_evap_cooler(ax_tr)
 
 # Ghost: operational positions (dashed outlines)
@@ -1187,6 +1203,8 @@ legend_items3 = [
     (C_PANEL_C,  "Panel center zone (120mm)"),
     (C_DRUM_LT3, "Revolving light trap drum"),
     (C_WASTE,    "55-gal waste drum"),
+    (C_TRACK,    "Permanent dolly track"),
+    (C_BRIDGE,   "Removable bridge section"),
     (C_EVAP,     "Evaporative cooler"),
     (C_CONT_DR,  "ISO container door"),
     (C_GHOST,    "Ghost (operational position)"),

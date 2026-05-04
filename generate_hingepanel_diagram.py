@@ -972,7 +972,8 @@ def sheet4():
                                PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
                                DRUM_SLIDE, DRUM_EQ_D, DRUM_EQ_R, DRUM_LZ_CX,
                                DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, DRUM_FZ_YD_LO,
-                               DRUM_FZ_YD_HI, ZONE_L_END, WALL_T as C_WALL_T)
+                               DRUM_FZ_YD_HI, ZONE_L_END, WALL_T as C_WALL_T,
+                               PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END)
 
     # ── Layout constants ─────────────────────────────────────────────────────
     # Plan view:  horizontal = Yd (container width, 0 → C_WID)
@@ -1149,15 +1150,20 @@ def sheet4():
         ax.plot([yd_pos, yd_pos], [RAIL_X_START, RAIL_X_END],
                 color="#404040", lw=3.0, zorder=3, alpha=0.5)
     # ── V-groove track indicators (paired, per drum) ─────────────────────────
-    TRACK_X_START = OP_DRUM_CX - DRUM_EQ_R - 30
-    TRACK_X_END = TRACK_X_START + SLIDE_D + DRUM_EQ_D + 60
+    # Permanent section and removable bridge section shown separately
     for yd_lo, yd_hi in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI),
                           (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI)]:
         yd_c = (yd_lo + yd_hi) / 2
         for yd_off in [-150, 150]:
+            # Permanent track (solid)
             ax.plot([yd_c + yd_off, yd_c + yd_off],
-                    [TRACK_X_START, TRACK_X_END],
+                    [PANEL_CORNER_T, PERM_TRACK_END],
                     color="#2060A0", lw=2.5, zorder=3, alpha=0.35)
+            # Bridge section (dashed)
+            ax.plot([yd_c + yd_off, yd_c + yd_off],
+                    [BRIDGE_TRACK_START, BRIDGE_TRACK_END],
+                    color="#B89060", lw=2.5, zorder=3, alpha=0.45,
+                    ls="--", dashes=(6, 3))
 
     # ── Carriage beam (dashed rectangle, full height at X=0) ─────────────────
     BEAM_W = 60

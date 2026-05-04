@@ -198,16 +198,19 @@ drum (4 straps total).
 ### 6.1 Sliding Drum Dollies (Transport Mode)
 
 Each waste drum sits on a steel dolly plate (620×620mm, 6mm A36 steel) riding on
-two parallel V-groove roller tracks. The tracks run in the X direction with 305mm
-of travel. Tracks are raised 30mm on welded steel shims to clear the HGR20 film
-plane floor rail at X=625mm.
+two parallel V-groove roller tracks. The tracks are split into two sections:
 
-| Position | D-1/D-2 X range | Lock mechanism |
-|----------|----------------|----------------|
-| Operational | X=40–620mm | M12 spring plunger pin (ball-nose) |
-| Transport | X=345–925mm | M12 spring plunger pin (ball-nose) |
+- **Permanent tracks** (X=40–620mm): Fixed to the floor on 30mm welded steel risers. Always installed; entirely within the left end zone and do not interact with the film plane system.
+- **Removable bridge sections** (X=600–955mm, 355mm long): Drop-in track pieces that span over the film plane floor rail at X=625mm. Installed only during mode conversion. Each bridge has 2× M8 locating dowel pins that engage the permanent track end riser for alignment. The bridge risers straddle the HGR20 rail with 10mm clearance underneath.
 
-Rolling force: ~11N (2.5 lbf) — single-person push with one hand.
+The film plane carriage must be retracted to Yd≤100mm before installing the bridge sections — this parks the HGH20CA carriage blocks clear of all dolly track positions (nearest track at Yd≈210mm, 79mm gap).
+
+| Position | D-1/D-2 X range | Lock mechanism | Bridge sections |
+|----------|----------------|----------------|----------------|
+| Operational | X=40–620mm | M12 spring plunger pin (ball-nose) | Not installed |
+| Transport | X=345–925mm | M12 spring plunger pin (ball-nose) | Installed during slide, removed after |
+
+Rolling force: ~11N (2.5 lbf) — single-person push with one hand. Four bridge sections total (~2kg each), stowed behind IBC column when not in use.
 
 ### 6.2 Stepped Panel and Sliding Carriage (Transport Mode)
 

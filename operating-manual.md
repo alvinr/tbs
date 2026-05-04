@@ -343,16 +343,20 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm travel). The waste drums sit on V-groove roller dollies (305mm travel). Both must slide inward before the container doors can close.
 
-1. Stow all interior items. Retract film plane carriage to Y=100mm.
-2. Release all 4 Southco cam latches. Swing the panel open 180° outward.
-3. Unlash waste drums (remove 2 ratchet straps per drum).
-4. Slide each drum inward: release spring plunger pin → push dolly 305mm (~11N force) → pin engages transport hole.
-5. Swing panel closed (do not latch).
-6. Release 2 Destaco toggle clamps at operational position.
-7. Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
-8. Engage 2 Destaco toggle clamps at transport position.
-9. Close and latch standard ISO container cargo doors.
-10. Relash drums for transport (ratchet straps to dolly D-rings).
+The dolly tracks are split into two sections: permanent tracks (X=40–620mm, within the left end zone) and removable bridge sections (355mm long) that span over the film plane floor rail at X=625mm. The bridges are installed only during mode conversion — they must be removed before operating the film plane.
+
+1. Stow all interior items. Retract film plane carriage to Yd=100mm. **Confirm carriage is parked** — the bridge sections cannot be installed with the carriage in the drum track zone.
+2. Install 4 bridge track sections (2 per drum): drop each bridge onto the permanent track end, engage the 2 locating dowel pins per bridge. Confirm bridges are seated and level.
+3. Release all 4 Southco cam latches. Swing the panel open 180° outward.
+4. Unlash waste drums (remove 2 ratchet straps per drum).
+5. Slide each drum inward: release spring plunger pin → push dolly 305mm (~11N force) → pin engages transport hole. Drums cross the film plane rail on the bridge sections.
+6. Remove 4 bridge track sections. Stow inside container (e.g. behind IBC column).
+7. Swing panel closed (do not latch).
+8. Release 2 Destaco toggle clamps at operational position.
+9. Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
+10. Engage 2 Destaco toggle clamps at transport position.
+11. Close and latch standard ISO container cargo doors.
+12. Relash drums for transport (ratchet straps to dolly D-rings).
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 
@@ -362,10 +366,12 @@ The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm 
 2. Release 2 Destaco toggle clamps at transport position.
 3. Pull panel outward 300mm. Engage 2 Destaco toggle clamps at operational position.
 4. Swing panel open 180°.
-5. Unlash waste drums. Slide each drum outward: release pin → push dolly 305mm → pin engages operational hole.
-6. Lash drums in operational position (ratchet straps to dolly D-rings).
-7. Swing panel closed. Engage all 4 Southco cam latches.
-8. Perform dark-adaptation check (Phase 0.3 step 4).
+5. Install 4 bridge track sections (2 per drum): engage locating dowel pins.
+6. Unlash waste drums. Slide each drum outward: release pin → push dolly 305mm → pin engages operational hole.
+7. Remove 4 bridge track sections. Stow inside container.
+8. Lash drums in operational position (ratchet straps to dolly D-rings).
+9. Swing panel closed. Engage all 4 Southco cam latches.
+10. Perform dark-adaptation check (Phase 0.3 step 4).
 
 ---
 

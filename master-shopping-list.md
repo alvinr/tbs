@@ -22,12 +22,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system | $1,457 | $2,072 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 7a. Panel sliding carriage & drum dolly system | $1,103 | $1,103 |
+| 7a. Panel sliding carriage & drum dolly system | $1,211 | $1,211 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,053** | **~$18,353** |
+| **TOTAL (base build + 50-print run)** | **~$14,161** | **~$18,461** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -331,14 +331,17 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| V-groove track, 28mm × 400mm | Hardened steel, floor-mount | 4 | McMaster-Carr / Amazon Industrial | ~$72 |
+| V-groove track, 28mm × 580mm | Hardened steel, floor-mount (permanent section, X=40–620mm) | 4 | McMaster-Carr / Amazon Industrial | ~$72 |
+| V-groove track, 28mm × 355mm | Hardened steel, removable bridge section (X=600–955mm) — spans over film plane floor rail | 4 | McMaster-Carr / Amazon Industrial | ~$52 |
 | V-groove roller wheels, 50mm OD | Sealed bearings, 250kg/wheel | 8 | McMaster-Carr / Amazon Industrial | ~$96 |
 | Drum dolly plates, 6mm A36 steel | 620×620mm, custom fab | 2 | Metal Supermarkets SoCal / Pacific Coast Steel | ~$80 |
-| Track shim blocks (30mm risers) | Welded steel — clears HGR20 floor rail | 8 | Local fab / Metal Supermarkets | ~$40 |
+| Track shim blocks (30mm risers) | Welded steel, permanent tracks | 8 | Local fab / Metal Supermarkets | ~$40 |
+| Bridge riser blocks (30mm risers) | Welded steel, bridge sections — straddle HGR20 rail | 8 | Local fab / Metal Supermarkets | ~$40 |
+| M8 locating dowel pins | Bridge-to-permanent track alignment, 2 per bridge | 8 | McMaster-Carr | ~$16 |
 | Spring plunger pin locks, M12 | Ball-nose, operational + transport positions | 8 | McMaster-Carr | ~$64 |
 | Lashing D-rings, 25mm | 1,100kg WLL, welded to dolly plate | 4 | McMaster-Carr #3641T29 | ~$24 |
 
-**Drum slide subtotal: ~$376**
+**Drum slide subtotal: ~$484**
 
 ### Panel slide system
 
@@ -369,7 +372,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Door frame subtotal: ~$402**
 
-**Section total (materials): ~$1,103**
+**Section total (materials): ~$1,211**
 **Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
 
 ---

@@ -110,7 +110,7 @@ PAGE_W   = 210   # A4 mm
 PAGE_H   = 297
 M_L      = 20    # left margin
 M_R      = 20    # right margin
-M_T      = 20    # top margin
+M_T      = 25    # top margin (19mm below header line at y=6)
 M_B      = 25    # bottom margin
 BODY_W   = PAGE_W - M_L - M_R   # 170mm usable width
 
@@ -654,7 +654,9 @@ class BrochurePDF(FPDF):
 
     def chapter_header(self, num, title, section):
         self._current_chapter = title
+        self._suppress_chrome = True    # no header on chapter title pages
         self.add_page()
+        self._suppress_chrome = False
         self.set_y(M_T + 2)
 
         if section:

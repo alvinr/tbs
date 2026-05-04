@@ -87,13 +87,13 @@ DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headr
 DRUM_EQ_D     = 580    # 55-gal drum diameter (mm)
 DRUM_EQ_H     = 870    # 55-gal single drum height (mm)
 DRUM_EQ_R     = DRUM_EQ_D // 2    # = 290mm radius
-# Near drum (pinhole wall corner) — flush against inside face of hinged door (X=80mm)
-DRUM_LZ_CX    = 80 + DRUM_EQ_R                    # = 370mm centre X (door inside face + radius)
+# Near drum (pinhole wall corner) — right edge at ZONE_L_END, fully within shadow-free zone
+DRUM_LZ_CX    = FP_X_L - DRUM_EQ_R                # = 335mm centre X (right edge flush with zone boundary)
 DRUM_LZ_YD_LO = 0                                 # near drum near edge Yd (flush with wall)
 DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 290mm centre
 DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 580mm far edge
-# Far drum (far wall corner) — flush against inside face of hinged door
-DRUM_FZ_CX    = DRUM_LZ_CX                        # = 370mm (same X centre)
+# Far drum (far wall corner) — same X as near drum
+DRUM_FZ_CX    = DRUM_LZ_CX                        # = 335mm (same X centre)
 DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D                 # = 1,782mm (flush with far wall)
 DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,072mm centre
 DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,362mm far edge

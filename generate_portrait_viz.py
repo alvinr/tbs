@@ -11,6 +11,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ─────────────────────────────────────────
 # Camera constants
@@ -243,8 +245,9 @@ plt.tight_layout(pad=0.3)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
+os.makedirs(SVG_DIR, exist_ok=True)
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(str(out1).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
+plt.savefig(svg_path(out1), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
 
@@ -360,7 +363,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
+plt.savefig(svg_path(out2), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
 
@@ -476,7 +479,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
 plt.savefig(out3, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(str(out3).replace(".png", ".svg"), bbox_inches="tight", facecolor='#101010')
+plt.savefig(svg_path(out3), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')
 

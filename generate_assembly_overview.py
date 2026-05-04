@@ -49,12 +49,13 @@ from tbs_constants import (
     PANEL_SLIDE, DRUM_SLIDE,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
-    DIAGRAMS_DIR,
+    DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
     cone_left, cone_right,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+os.makedirs(SVG_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
 RAIL_OFF   = 100    # floor offset for all floor-standing equipment (mm)
@@ -434,7 +435,7 @@ ax.text(TB_X + TB_W - 20, TB_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
 out = f"{DIAGRAMS_DIR}/assembly-overview.png"
 fig.tight_layout(pad=0)
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 
@@ -825,7 +826,7 @@ ax2.text(TB2_X + TB2_W - 20, TB2_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
 out2 = f"{DIAGRAMS_DIR}/assembly-overview-fp.png"
 fig2.tight_layout(pad=0)
 plt.savefig(out2, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+plt.savefig(svg_path(out2), bbox_inches="tight", facecolor=BG)
 plt.close(fig2)
 print(f"Saved: {out2}")
 
@@ -1222,6 +1223,6 @@ fig3.text(0.98, 0.01, "\u00A9 2026 Alvin Richards \u2014 GNU AGPLv3",
 # ── Save ──────────────────────────────────────────────────────────────────────
 out3 = f"{DIAGRAMS_DIR}/assembly-overview-plan.png"
 plt.savefig(out3, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(str(out3).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+plt.savefig(svg_path(out3), bbox_inches="tight", facecolor=BG)
 plt.close(fig3)
 print(f"Saved: {out3}")

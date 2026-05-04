@@ -18,6 +18,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = 2362          # focal length (container interior width, mm)
@@ -329,8 +331,9 @@ for cfg in CONFIGS:
     fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
              ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
     out = f'diagrams/tilt-swing-combined-{label.lower()}.png'
+    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
-    fig.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f'  → {out}  Done.')
 
@@ -358,7 +361,7 @@ fig_s.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
            ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out_s = 'diagrams/tilt-swing-combined-summary.png'
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
-fig_s.savefig(str(out_s).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+fig_s.savefig(svg_path(out_s), bbox_inches="tight", facecolor=BG)
 plt.close(fig_s)
 print(f'  → {out_s}  Done.')
 print()

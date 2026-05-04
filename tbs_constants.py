@@ -195,8 +195,15 @@ DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869 mm ✓
 FAN_B_MARGIN = ZONE_L_END - FAN_DIAM // 2 - DUCT_DEPTH              # = 250 mm ✓
 
-# ── Output directory ──────────────────────────────────────────────────────────
+# ── Output directories ────────────────────────────────────────────────────────
 DIAGRAMS_DIR = "diagrams"
+SVG_DIR      = "diagrams/svg"
+
+def svg_path(png_path):
+    """Convert a diagrams/*.png path to diagrams/svg/*.svg."""
+    import os
+    base = os.path.basename(png_path).replace(".png", ".svg")
+    return os.path.join(SVG_DIR, base)
 
 # ── Palette (shared drawing style) ───────────────────────────────────────────
 C_OUT   = "#1A1A1A"   # outlines

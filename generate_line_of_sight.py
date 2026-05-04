@@ -48,12 +48,13 @@ from tbs_constants import (
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
-    DIAGRAMS_DIR,
+    DIAGRAMS_DIR, SVG_DIR, svg_path,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+os.makedirs(SVG_DIR, exist_ok=True)
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG          = "#FFFFFF"
@@ -458,7 +459,7 @@ fig.text(0.99, 0.01, "© 2026 Alvin Richards — GNU AGPLv3",
 # ── Save ──────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/line-of-sight.png"
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor=BG)
+plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 if both_flags:

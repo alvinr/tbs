@@ -26,6 +26,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -344,8 +346,9 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 4", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
 
+    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig("diagrams/hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig("diagrams/hingepanel-sheet1.svg", bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/hingepanel-sheet1.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet1.png saved")
 
@@ -666,7 +669,7 @@ def sheet2():
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig("diagrams/hingepanel-sheet2.svg", bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/hingepanel-sheet2.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet2.png saved")
 
@@ -949,7 +952,7 @@ def sheet3():
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig("diagrams/hingepanel-sheet3.svg", bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/hingepanel-sheet3.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet3.png saved")
 
@@ -1255,7 +1258,7 @@ def sheet4():
                 "EQUAL ASPECT  ·  ALL DIMS IN mm  ·  SOLID = OPERATIONAL, GHOST = TRANSPORT")
 
     fig.savefig("diagrams/hingepanel-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig("diagrams/hingepanel-sheet4.svg", bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/hingepanel-sheet4.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet4.png saved")
 

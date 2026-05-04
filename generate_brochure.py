@@ -486,6 +486,16 @@ class BrochurePDF(FPDF):
                 self.add_font("Mono", "I",  UNICODE_MONO_PATH)
                 self.add_font("Mono", "BI", UNICODE_MONO_PATH)
 
+    # -- Auto page break override ---------------------------------------------
+
+    def accept_page_break(self):
+        """Force portrait on auto page breaks (landscape is image-only)."""
+        from fpdf.enums import PageOrientation
+        if self.cur_orientation == PageOrientation.LANDSCAPE:
+            self.add_page(orientation="P")
+            return False   # we already added the page
+        return True        # let fpdf2 handle normally
+
     # -- Header / Footer -------------------------------------------------------
 
     def header(self):
@@ -692,6 +702,10 @@ class BrochurePDF(FPDF):
         for seg_html, img_path in segments:
             # ── text segment (may contain <!--TABLE:n--> markers) ────────────
             if seg_html.strip():
+                # Ensure text is rendered on a portrait page
+                from fpdf.enums import PageOrientation
+                if self.cur_orientation == PageOrientation.LANDSCAPE:
+                    self.add_page(orientation="P")
                 # Split on table markers to interleave text and tables
                 parts = re.split(r"<!--TABLE:(\d+)-->", seg_html)
                 # parts alternates: text, table_idx, text, table_idx, text ...

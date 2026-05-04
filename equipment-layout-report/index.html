@@ -1025,6 +1025,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. 55-Gallon Drum Left-Zone Placement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-sliding-drum-dollies-transport-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Sliding Drum Dollies (Transport Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-stepped-panel-and-sliding-carriage-transport-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Stepped Panel and Sliding Carriage (Transport Mode)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1646,7 +1674,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 <td><strong>Left end zone</strong></td>
 <td>0–625mm</td>
 <td>YES at all depths</td>
-<td>Light trap drum, 55-gal drum D-1 (Yd=25–605mm), 55-gal drum D-2 (Yd=1,757–2,337mm)</td>
+<td>Light trap drum, hinged panel (stepped), 55-gal drum D-1 (Yd=0–580mm), 55-gal drum D-2 (Yd=1,782–2,362mm)</td>
 </tr>
 <tr>
 <td><strong>Optical zone</strong></td>
@@ -1670,7 +1698,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </table>
 <p><strong>Shadow-free proof:</strong>
 - Left zone (X=0–625): cone left boundary ≥ 625mm at all depths Y ≤ 2,262mm.
-  All left-zone equipment has X_right ≤ 600mm — well inside the zone. ✓
+  All left-zone equipment has X_right ≤ 620mm — 5mm inside the zone. ✓
 - Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
   All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
 - Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓</p>
@@ -1689,25 +1717,32 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </thead>
 <tbody>
 <tr>
+<td>Hinged panel (stepped)</td>
+<td>0–40 (corner) / 0–120 (center)</td>
+<td>0–2,362</td>
+<td>0–2,388</td>
+<td>Stepped profile: 40mm corners, 120mm center (drum housing). On sliding carriage (300mm travel for transport).</td>
+</tr>
+<tr>
 <td>Light trap drum</td>
 <td>−375–375</td>
 <td>806–1,556 (centered at CW/2=1,181mm)</td>
-<td>0–2,000</td>
-<td>Centered at X=0 (spans container wall); rotary drum entry</td>
+<td>0–2,200</td>
+<td>Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry</td>
 </tr>
 <tr>
 <td>55-gal drum D-1 (near)</td>
-<td>20–600</td>
-<td>25–605</td>
+<td>40–620</td>
+<td>0–580</td>
 <td>0–870</td>
-<td>CX=310mm; pinhole wall corner; gap to light trap = 201mm</td>
+<td>CX=330mm; pinhole wall corner; left edge flush with corner panel inner face; on slide dolly (305mm travel)</td>
 </tr>
 <tr>
 <td>55-gal drum D-2 (far)</td>
-<td>20–600</td>
-<td>1,757–2,337</td>
+<td>40–620</td>
+<td>1,782–2,362</td>
 <td>0–870</td>
-<td>CX=310mm; far wall corner; gap to light trap = 201mm; 25mm from far wall</td>
+<td>CX=330mm; far wall corner; flush with far wall; on slide dolly (305mm travel)</td>
 </tr>
 </tbody>
 </table>
@@ -1959,8 +1994,9 @@ for road transport with full load.</p>
 <h2 id="6-55-gallon-drum-left-zone-placement">6. 55-Gallon Drum Left-Zone Placement<a class="headerlink" href="#6-55-gallon-drum-left-zone-placement" title="Permanent link">&para;</a></h2>
 <p>The two 55-gal drums are placed one per Yd corner of the left end zone — D-1 near
 the pinhole wall and D-2 near the far wall. The light trap drum (Yd=806–1,556mm)
-naturally divides the zone into two clear 201mm-gap corners. Both drums share
-CX=310mm and have identical X footprints.</p>
+naturally divides the zone into two clear corners. Both drums share CX=330mm and
+have identical X footprints. Each drum sits on a V-groove roller dolly with 305mm
+of X-direction travel for transport mode (see Section 6.1).</p>
 <table>
 <thead>
 <tr>
@@ -1971,19 +2007,19 @@ CX=310mm and have identical X footprints.</p>
 </thead>
 <tbody>
 <tr>
-<td>Centre X</td>
-<td>310mm</td>
-<td>310mm</td>
+<td>Center X</td>
+<td>330mm</td>
+<td>330mm</td>
 </tr>
 <tr>
-<td>Centre Yd</td>
-<td>315mm</td>
-<td>2,047mm</td>
+<td>Center Yd</td>
+<td>290mm</td>
+<td>2,072mm</td>
 </tr>
 <tr>
 <td>Footprint</td>
-<td>Ø580mm (X=20–600mm, Yd=25–605mm)</td>
-<td>Ø580mm (X=20–600mm, Yd=1,757–2,337mm)</td>
+<td>Ø580mm (X=40–620mm, Yd=0–580mm)</td>
+<td>Ø580mm (X=40–620mm, Yd=1,782–2,362mm)</td>
 </tr>
 <tr>
 <td>Height</td>
@@ -1992,32 +2028,106 @@ CX=310mm and have identical X footprints.</p>
 </tr>
 <tr>
 <td>Ceiling clearance</td>
-<td>2,388 − 870 = 1,518mm ✓</td>
-<td>2,388 − 870 = 1,518mm ✓</td>
+<td>2,388 − 870 = 1,518mm</td>
+<td>2,388 − 870 = 1,518mm</td>
 </tr>
 <tr>
 <td>X zone check</td>
-<td>X_right=600mm &lt; 625mm boundary ✓</td>
-<td>X_right=600mm &lt; 625mm boundary ✓</td>
+<td>X_right=620mm &lt; 625mm boundary (5mm margin)</td>
+<td>X_right=620mm &lt; 625mm boundary (5mm margin)</td>
 </tr>
 <tr>
 <td>Yd vs light trap</td>
-<td>Yd_hi=605mm; gap=201mm ✓</td>
-<td>Yd_lo=1,757mm; gap=201mm ✓</td>
+<td>Yd_hi=580mm; gap=226mm</td>
+<td>Yd_lo=1,782mm; gap=226mm</td>
 </tr>
 <tr>
 <td>Yd vs far wall</td>
 <td>—</td>
-<td>Yd_hi=2,337mm; 25mm clearance ✓</td>
+<td>Yd_hi=2,362mm (flush with wall)</td>
+</tr>
+<tr>
+<td>Left edge vs panel</td>
+<td>X_left=40mm = corner panel inner face</td>
+<td>X_left=40mm = corner panel inner face</td>
 </tr>
 </tbody>
 </table>
 <p>Neither drum requires a stacking cradle. Access to each drum is from the side (Yd
 direction). D-1 has ~1.5m of clear floor between it and the light trap drum. D-2
-sits against the far wall with 25mm clearance.</p>
+sits flush against the far wall.</p>
 <p><strong>Lashing:</strong> 25mm polyester strap (WLL ≥ 1,600kg) × 2 per drum, crossed diagonally
-over the drum top and anchored to D-rings in the container floor — one lash set per
+over the drum top and anchored to D-rings on the dolly plate — one lash set per
 drum (4 straps total).</p>
+<h3 id="61-sliding-drum-dollies-transport-mode">6.1 Sliding Drum Dollies (Transport Mode)<a class="headerlink" href="#61-sliding-drum-dollies-transport-mode" title="Permanent link">&para;</a></h3>
+<p>Each waste drum sits on a steel dolly plate (620×620mm, 6mm A36 steel) riding on
+two parallel V-groove roller tracks. The tracks run in the X direction with 305mm
+of travel. Tracks are raised 30mm on welded steel shims to clear the HGR20 film
+plane floor rail at X=625mm.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>D-1/D-2 X range</th>
+<th>Lock mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operational</td>
+<td>X=40–620mm</td>
+<td>M12 spring plunger pin (ball-nose)</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>X=345–925mm</td>
+<td>M12 spring plunger pin (ball-nose)</td>
+</tr>
+</tbody>
+</table>
+<p>Rolling force: ~11N (2.5 lbf) — single-person push with one hand.</p>
+<h3 id="62-stepped-panel-and-sliding-carriage-transport-mode">6.2 Stepped Panel and Sliding Carriage (Transport Mode)<a class="headerlink" href="#62-stepped-panel-and-sliding-carriage-transport-mode" title="Permanent link">&para;</a></h3>
+<p>The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756
+and Yd=1,606–2,362) and 120mm thick at the center zone (Yd=756–1,606) where the
+light trap drum is mounted. The panel's hinge line mounts to a vertical carriage
+beam (60×60×3mm SHS) riding on HGR20 linear rails at floor and ceiling level with
+300mm of X-direction travel.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Panel corner inner face X</th>
+<th>Drum exterior edge X</th>
+<th>Doors clear?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operational</td>
+<td>40mm</td>
+<td>−335mm</td>
+<td>No (drum protrudes 295mm beyond exterior)</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>340mm</td>
+<td>−35mm</td>
+<td>Yes (5mm behind exterior face)</td>
+</tr>
+</tbody>
+</table>
+<p>A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing.
+The panel seals against this frame using the existing Southco C2-33 cam latch and
+20mm EPDM gasket design — the sliding mechanism is transparent to the seal.</p>
+<p><strong>Mode conversion workflow (single person, 15–20 minutes):</strong></p>
+<ol>
+<li>Release cam latches, swing panel open 180°</li>
+<li>Unlash waste drums, slide each drum inward 305mm (pin engages)</li>
+<li>Swing panel closed (don't latch)</li>
+<li>Release toggle clamps, slide panel inward 300mm</li>
+<li>Lock panel at transport position, close container doors</li>
+<li>Relash drums for transport</li>
+</ol>
 <hr />
 <h2 id="7-plumbing-and-electrical-pinhole-wall-routing">7. Plumbing and Electrical — Pinhole Wall Routing<a class="headerlink" href="#7-plumbing-and-electrical-pinhole-wall-routing" title="Permanent link">&para;</a></h2>
 <p>All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
@@ -2126,7 +2236,7 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <tr>
 <td>55-gal drums</td>
 <td>Right side, X=3,900mm</td>
-<td><strong>Left end zone, CX=310mm, D-1 Yd=25–605mm, D-2 Yd=1,757–2,337mm</strong></td>
+<td><strong>Left end zone, CX=330mm, D-1 Yd=0–580mm, D-2 Yd=1,782–2,362mm</strong></td>
 </tr>
 <tr>
 <td>Evap cooler</td>

@@ -1180,9 +1180,14 @@ def _build_tag_styles():
             family=code_font, size_pt=7, color=C_BODY,
             fill_color=(235, 235, 240),
         ),
-        "ol":  ts("",   9, C_BODY),
-        "ul":  ts("",   9, C_BODY),
-        "li":  ts("",   9, C_BODY),
+        "ol":         ts("",   9, C_BODY),
+        "ul":         ts("",   9, C_BODY),
+        "li":         ts("",   9, C_BODY),
+        "p":          ts("",   9, C_BODY),
+        "blockquote": ts("",   9, C_BODY),
+        "a":          ts("",   9, C_BODY),
+        "em":         ts("I",  9, C_BODY),
+        "strong":     ts("B",  9, C_BODY),
     }
 
 

@@ -171,8 +171,9 @@ corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 
 # ── LEFT END ZONE — revolving drum + evap cooler ──────────────────────────────
 
-# Hinged panel (symbolic thin rect on near long wall face)
-ax.add_patch(mpatches.Rectangle((0, 0), 80, C_HGT,
+# Hinged panel — drawn as wall strip outside the interior boundary (X=-40 to 0),
+# consistent with floorplan wall convention (WALL=40mm, outside interior).
+ax.add_patch(mpatches.Rectangle((-40, 0), 40, C_HGT,
              facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
 
 # Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
@@ -602,8 +603,8 @@ ldr2(RAIL_X_R, C_HGT - 300, RAIL_X_R - 650, C_HGT - 600,
     f"Floor rail  X={RAIL_X_R}mm\n(right rail, far-end side)", ha="right", fs=FS_SM, color=RAIL_CLR)
 
 # ── LEFT END ZONE (appears on RIGHT in this view) — drum, evap, waste drums ──
-# Hinged panel — right edge of plot (near cargo door = X=0)
-ax2.add_patch(mpatches.Rectangle((C_LEN - 80, 0), 80, C_HGT,
+# Hinged panel — outside the interior boundary (consistent with floorplan wall convention)
+ax2.add_patch(mpatches.Rectangle((C_LEN, 0), 40, C_HGT,
              facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
 
 # Revolving drum

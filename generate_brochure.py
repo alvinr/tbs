@@ -879,10 +879,15 @@ class BrochurePDF(FPDF):
         for para in paragraphs:
             if not para.strip():
                 continue
-            # Check if cursor has drifted past content zone (from prior
-            # paragraph's margin spacing) and force a break if so.
-            if self.get_y() > page_bottom - 5:
-                self.add_page()
+            # Measure paragraph height and break preemptively if it
+            # won't fit in remaining space.  This prevents write_html
+            # from drawing text into the footer zone.
+            para_h = self._measure_html_height(para, tag_styles)
+            remaining = page_bottom - self.get_y()
+            if para_h > remaining or remaining < 8:
+                # Break unless para won't fit even on a fresh page
+                if para_h <= CONTENT_H:
+                    self.add_page()
             self.set_font(FONT_BODY, "", 9)
             self.set_text_color(*C_BODY)
             self.set_x(M_L)
@@ -899,8 +904,8 @@ class BrochurePDF(FPDF):
                 self.set_text_color(*C_BODY)
                 self.set_x(M_L)
                 self.multi_cell(BODY_W, 5, plain[:8000])
-            # After write_html returns, check if margin spacing pushed
-            # cursor past the content zone.
+            # Safety net: if margin spacing still pushed cursor past
+            # the content zone, force a break.
             if self.get_y() > page_bottom:
                 self.add_page()
 

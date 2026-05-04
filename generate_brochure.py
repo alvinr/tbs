@@ -344,7 +344,7 @@ def rewrite_image_srcs(html):
     html = re.sub(r"\[\[.*?\]\]", "<code>[formula -- see online docs]</code>",
                   html, flags=re.DOTALL)
     # Unwrap admonition wrappers
-    html = re.sub(r'<div class="admonition[^"]*"[^>]*>', "<blockquote>",
+    html = re.sub(r'<div class="admonition[^"]*"[^>]*>', "",
                   html, flags=re.IGNORECASE)
     html = re.sub(r'<p class="admonition-title"[^>]*>.*?</p>', "",
                   html, flags=re.DOTALL | re.IGNORECASE)
@@ -495,7 +495,7 @@ def _clean_html_for_fpdf(html):
 
     for tag in ("details", "summary", "figure", "figcaption", "nav",
                 "aside", "section", "article", "main", "header",
-                "footer", "div"):
+                "footer", "div", "blockquote"):
         html = re.sub(rf"<{tag}(?:\s[^>]*)?>", "", html, flags=re.IGNORECASE)
         html = re.sub(rf"</{tag}>", "", html, flags=re.IGNORECASE)
 

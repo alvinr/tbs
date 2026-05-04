@@ -1148,22 +1148,21 @@ class BrochurePDF(FPDF):
         self.add_page(orientation=orientation)
         self.set_auto_page_break(auto=False)
 
-        # Layout: image scaled to 85% of usable area, caption directly below
+        # Reserve space for caption at bottom — inside the printable area
         caption_h = 10
         usable_w = page_w - M_L - M_R
         usable_h = page_h - M_T - M_B - caption_h
-        max_img_h = usable_h * 0.85   # leave room for caption + gap
 
-        # Scale image to fit within 85% of usable area
+        # Scale image to fit, preserving aspect
         fit_w = usable_w
         fit_h = fit_w / aspect
-        if fit_h > max_img_h:
-            fit_h = max_img_h
+        if fit_h > usable_h:
+            fit_h = usable_h
             fit_w = fit_h * aspect
 
-        # Center image horizontally, top-align vertically
+        # Center image in the area above the caption
         x = M_L + (usable_w - fit_w) / 2
-        y = M_T + 4   # small gap below header zone
+        y = M_T + (usable_h - fit_h) / 2
 
         self.image(embed_src, x=x, y=y, w=fit_w, h=fit_h)
 
@@ -1171,10 +1170,10 @@ class BrochurePDF(FPDF):
         if _tmp_file and os.path.exists(_tmp_file):
             os.unlink(_tmp_file)
 
-        # Caption: directly below the image with a small gap
+        # Caption: positioned below the image area, still on the same page
         if not caption:
             caption = os.path.splitext(os.path.basename(img_path))[0]
-        caption_y = y + fit_h + 4   # 4mm gap below image
+        caption_y = page_h - M_B - caption_h + 2
         self.set_xy(M_L, caption_y)
         self.set_font(FONT_BODY, "I", 7)
         self.set_text_color(*C_MUTED)

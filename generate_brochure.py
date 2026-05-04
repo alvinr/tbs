@@ -447,29 +447,30 @@ def _extract_tables(html):
 
 def _flatten_lists(html):
     """
-    Convert <ol>/<ul> lists to plain <p> paragraphs with manual
-    numbering/bullets.  Handles nested lists by increasing indent.
+    Convert <ol>/<ul> lists to <br>-separated lines with manual
+    numbering/bullets.  Uses <br> instead of <p> to avoid paragraph
+    margin spacing that can push content past the auto page break
+    threshold without triggering a break check.
     """
     def _replace_ol(m):
         inner = m.group(1)
         items = re.findall(r"<li[^>]*>(.*?)</li>", inner,
                            flags=re.DOTALL | re.IGNORECASE)
-        parts = []
+        lines = []
         for i, item in enumerate(items, 1):
-            # Strip nested tags but keep <strong>/<em>/<code>
             text = item.strip()
-            parts.append(f"<p>{i}. {text}</p>")
-        return "\n".join(parts)
+            lines.append(f"{i}. {text}")
+        return "<br>\n".join(lines) + "<br>\n"
 
     def _replace_ul(m):
         inner = m.group(1)
         items = re.findall(r"<li[^>]*>(.*?)</li>", inner,
                            flags=re.DOTALL | re.IGNORECASE)
-        parts = []
+        lines = []
         for item in items:
             text = item.strip()
-            parts.append(f"<p>* {text}</p>")
-        return "\n".join(parts)
+            lines.append(f"-- {text}")
+        return "<br>\n".join(lines) + "<br>\n"
 
     # Process nested lists inside-out (deepest first)
     for _ in range(5):   # max nesting depth

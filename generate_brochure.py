@@ -853,18 +853,45 @@ class BrochurePDF(FPDF):
                 elif remaining < self._HEADING_KEEP_MM:
                     self.add_page()
 
-            # Convert <p> to <br> for safe page breaks (text segments only —
-            # image extraction has already happened by this point)
-            safe_frag = _p_to_br(frag)
+            self._render_paras(frag, tag_styles)
+
+    def _render_paras(self, html, tag_styles):
+        """
+        Split HTML at </p> boundaries and render each paragraph via
+        write_html with an explicit page-break check between them.
+        fpdf2's <p> margin spacing can push the cursor past the auto
+        page break threshold, so we verify position after every chunk.
+        """
+        page_bottom = PAGE_H - FOOTER_H
+        # Split at </p> but keep the closing tag with its paragraph
+        chunks = re.split(r'(</p>)', html, flags=re.IGNORECASE)
+        # Re-join: pairs of (content, </p>) plus possible trailing text
+        paragraphs = []
+        buf = ""
+        for chunk in chunks:
+            buf += chunk
+            if re.match(r'</p>', chunk, re.IGNORECASE):
+                paragraphs.append(buf)
+                buf = ""
+        if buf.strip():
+            paragraphs.append(buf)
+
+        for para in paragraphs:
+            if not para.strip():
+                continue
+            # Check if cursor has drifted past content zone (from prior
+            # paragraph's margin spacing) and force a break if so.
+            if self.get_y() > page_bottom - 5:
+                self.add_page()
             self.set_font(FONT_BODY, "", 9)
             self.set_text_color(*C_BODY)
             self.set_x(M_L)
             try:
-                self.write_html(safe_frag, tag_styles=tag_styles)
+                self.write_html(para, tag_styles=tag_styles)
             except Exception as e:
                 print(f"  [warn] HTML render error: {e}",
                       file=sys.stderr)
-                plain = re.sub(r"<[^>]+>", " ", frag)
+                plain = re.sub(r"<[^>]+>", " ", para)
                 plain = re.sub(r"\s+", " ", plain).strip()
                 if self.page == 0:
                     self.add_page()
@@ -872,6 +899,10 @@ class BrochurePDF(FPDF):
                 self.set_text_color(*C_BODY)
                 self.set_x(M_L)
                 self.multi_cell(BODY_W, 5, plain[:8000])
+            # After write_html returns, check if margin spacing pushed
+            # cursor past the content zone.
+            if self.get_y() > page_bottom:
+                self.add_page()
 
     def _measure_html_height(self, html_frag, tag_styles):
         """Estimate height of an HTML fragment without rendering.
@@ -1191,19 +1222,6 @@ def _split_at_images(html):
         cleaned.append((text, img))
 
     return cleaned
-
-
-def _p_to_br(html):
-    """Replace <p> tags with <br><br> to keep text in a continuous flow.
-
-    fpdf2's <p> margin spacing moves the cursor without checking auto
-    page break, causing paragraphs near the content zone boundary to
-    overflow into header/footer zones.  <br> keeps everything in a
-    flow where fpdf2 checks page breaks at every rendered line.
-    """
-    html = re.sub(r"<p[^>]*>", "<br>", html, flags=re.IGNORECASE)
-    html = re.sub(r"</p>", "<br>", html, flags=re.IGNORECASE)
-    return html
 
 
 def _build_tag_styles():

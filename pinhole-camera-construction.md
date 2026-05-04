@@ -379,13 +379,15 @@ The pinhole goes in the center of the opposite long wall.
 
 ### Step 5: Access Door — Hinged Light-Trap Panel
 
-TBS-001 replaces the original cargo doors with a purpose-built hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
+TBS-001 replaces the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
 **Panel design (see engineering drawings below):**
-- 2,362 × 2,388mm panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins, 120mm overall thickness
-- 3 × 200mm stainless ball-bearing piano hinges at left edge — 180° outward swing clears the full door opening
-- 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket to zero-gap seal
+- 2,362 × 2,388mm stepped panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins
+- **Stepped profile:** 40mm thick at corner zones (Yd=0–756mm and Yd=1,606–2,362mm) and 120mm thick at center zone (Yd=756–1,606mm) where the light trap drum is mounted
+- 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
+- 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
 - 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
+- **Transport mode:** waste drums slide inward 305mm on V-groove roller dollies, then panel slides inward 300mm, clearing container doors for closure. Single-person operation, 15–20 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
 

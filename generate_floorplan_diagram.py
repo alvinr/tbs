@@ -285,12 +285,24 @@ def floor_plan():
     # Fan B — EXHAUST: cargo door end wall (X=0), far-wall corner (Yd=FAN_B_YD=2287mm), HIGH (H=1800mm)
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-140, 0))
 
-    # ── Hinged panel swing arc ────────────────────────────────────────────────
-    ax.add_patch(Rectangle((-WALL - 200, 0), 120, C_WID,
+    # ── Hinged panel swing arc (stepped profile visible in plan) ────────────
+    # Open position: panel swings outward 180° on left-edge hinges.
+    # Show stepped outline: 40mm corners, 120mm center.
+    # Corner zones (Yd=0-756 and Yd=1606-2362)
+    ax.add_patch(Rectangle((-WALL - 200, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
                             fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
                             zorder=4, alpha=0.5))
-    ax.text(-WALL - 80, C_WID/2, "PANEL\n(OPEN)",
-            color=C_DIM, fontsize=6, ha="center", va="center",
+    ax.add_patch(Rectangle((-WALL - 200, PANEL_CORNER_YD_R), PANEL_CORNER_T,
+                            C_WID - PANEL_CORNER_YD_R,
+                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
+                            zorder=4, alpha=0.5))
+    # Center zone (Yd=756-1606)
+    ax.add_patch(Rectangle((-WALL - 200, PANEL_CORNER_YD_L), PANEL_CENTER_T,
+                            PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
+                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
+                            zorder=4, alpha=0.5))
+    ax.text(-WALL - 80, C_WID/2, "PANEL\n(OPEN)\nSTEPPED",
+            color=C_DIM, fontsize=5.5, ha="center", va="center",
             **FONT, rotation=90, alpha=0.5, zorder=5)
     swing_arc = Arc((-WALL, C_WID/2), 2*320, 2*320,
                     angle=0, theta1=180, theta2=360,

@@ -22,6 +22,20 @@ Redesign basis (2026-04-23 rev 3):
   Film plane widens from 3,549mm to 4,024mm (X=625–4,649mm).
   Pinhole recentred to X=2,637mm.  Max swing decreases from 31.4° to 28.3°
   (wider rail span over same Y travel).
+
+Redesign basis (2026-05-03 rev 4):
+  Hinged panel redesigned as stepped profile: 40mm corners (18mm ply + 4mm
+  steel plate + 18mm ply) flanking 120mm center zone (unchanged RHS frame
+  construction housing the light trap drum).  Step transitions at Yd=756mm
+  and Yd=1,606mm (drum 750mm + 50mm clearance each side).
+  Panel + waste drums mounted on sliding rail systems for transport mode:
+  panel on HGR20 linear rails (300mm travel), waste drums on V-groove dolly
+  tracks (305mm travel).  In transport position, drums slide inward and panel
+  slides inward 300mm so light trap drum clears the container exterior face
+  by 5mm, allowing standard ISO cargo doors to close.
+  Waste drums repositioned to X=40–620mm (left edge flush with corner panel
+  inner face, right edge 5mm inside ZONE_L_END).  Single-person 15–20 min
+  mode conversion.  Fixed door frame with EPDM compression seal at X=0.
 """
 
 import math
@@ -73,29 +87,49 @@ def cone_right(y):
     """X coordinate of cone right boundary at depth y from pinhole wall."""
     return PH_X + (FP_X_R - PH_X) * y / FP_Y
 
+# ── Hinged panel — stepped profile (rev 4) ───────────────────────────────────
+# Corner zones (Yd=0–756 and Yd=1,606–2,362): thin sandwich panel.
+# Center zone (Yd=756–1,606): full RHS frame housing light trap drum.
+PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 4mm plate + 18mm ply
+PANEL_CENTER_T    = 120   # center zone thickness (mm) — 18mm ply + 84mm RHS + 18mm ply
+PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
+PANEL_CORNER_YD_L = 756   # corner-to-center transition, near side (mm)
+PANEL_CORNER_YD_R = 1606  # center-to-corner transition, far side (mm)
+PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 850mm center zone width
+WALL_T            = 40    # container end-wall steel thickness (mm)
+
+# ── Sliding rail system — transport mode (rev 4) ─────────────────────────────
+# Panel slides inward 300mm on HGR20 linear rails so the light trap drum
+# clears the container exterior face, allowing ISO cargo doors to close.
+# Waste drums slide inward 305mm on V-groove dolly tracks to clear the panel.
+PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
+DRUM_SLIDE        = 305   # waste drum slide travel for transport (mm)
+DRUM_DOLLY_H      = 30    # dolly track riser height (mm) — clears HGR20 floor rail
+
 # ── Left end zone (X = 0–625 mm, shadow-free at all depths) ──────────────────
-DRUM_CX    = 0       # light trap drum centre X (mm) [unchanged]
+DRUM_CX    = 0       # light trap drum center X (mm) [unchanged]
 DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
-# Black-water drums — LEFT end zone, one per Yd corner (rev 4: unstacked)
+# Black-water drums — LEFT end zone, one per Yd corner (rev 4: on slide dollies)
 # Light trap drum Yd=806–1,556mm divides the zone into two clear corners.
-# Near drum (pinhole wall corner): Yd=25–605mm  → gap to light trap = 201mm ✓
-# Far drum  (far wall corner):     Yd=1,757–2,337mm → gap to light trap = 201mm ✓
-# Both share CX=310mm (X=20–600mm). Zone boundary 600+25=625mm=FP_X_L ✓
+# Near drum (pinhole wall corner): Yd=0–580mm   → gap to light trap = 226mm
+# Far drum  (far wall corner):     Yd=1,782–2,362mm → gap to light trap = 226mm
+# Both share CX=330mm (X=40–620mm).  Left edge flush with corner panel inner face.
+# Right edge 5mm inside ZONE_L_END.  Zone boundary 620+5=625mm=FP_X_L ✓
 DRUM_EQ_D     = 580    # 55-gal drum diameter (mm)
 DRUM_EQ_H     = 870    # 55-gal single drum height (mm)
 DRUM_EQ_R     = DRUM_EQ_D // 2    # = 290mm radius
-# Near drum (pinhole wall corner) — right edge at ZONE_L_END, fully within shadow-free zone
-DRUM_LZ_CX    = FP_X_L - DRUM_EQ_R                # = 335mm centre X (right edge flush with zone boundary)
+# Near drum (pinhole wall corner) — left edge flush with corner panel inner face
+DRUM_LZ_CX    = PANEL_CORNER_T + DRUM_EQ_R        # = 330mm center X (left edge at 40mm)
 DRUM_LZ_YD_LO = 0                                 # near drum near edge Yd (flush with wall)
-DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 290mm centre
+DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 290mm center
 DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 580mm far edge
 # Far drum (far wall corner) — same X as near drum
-DRUM_FZ_CX    = DRUM_LZ_CX                        # = 335mm (same X centre)
+DRUM_FZ_CX    = DRUM_LZ_CX                        # = 330mm (same X center)
 DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D                 # = 1,782mm (flush with far wall)
-DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,072mm centre
+DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,072mm center
 DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,362mm far edge
 
 # Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
@@ -174,6 +208,8 @@ C_GASKT = "#5A3020"   # gasket/neoprene
 
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
+    _drum_left = DRUM_LZ_CX - DRUM_EQ_R
+    _drum_right = DRUM_LZ_CX + DRUM_EQ_R
     print("TBS-001 Constants")
     print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT} mm")
     print(f"  Film plane:     {FP_W} × {FP_H} mm  (X={FP_X_L}–{FP_X_R})")
@@ -184,9 +220,12 @@ if __name__ == "__main__":
     print(f"  Left zone:      X=0–{ZONE_L_END}mm")
     print(f"  Right zone:     X={ZONE_R_START}–{C_LEN}mm")
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
+    print(f"  Panel:          corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
+    print(f"  Panel zones:    corners Yd=0–{PANEL_CORNER_YD_L} / {PANEL_CORNER_YD_R}–{C_WID}  center Yd={PANEL_CORNER_YD_L}–{PANEL_CORNER_YD_R}")
+    print(f"  Panel slide:    {PANEL_SLIDE}mm travel  drum slide: {DRUM_SLIDE}mm travel")
     print(f"  IBC column:     X={IBC_COL_X}–{IBC_COL_X+IBC_W}  (right edge = {IBC_COL_X+IBC_W} vs C_LEN={C_LEN})")
-    print(f"  Drum near:      CX={DRUM_LZ_CX}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  H={DRUM_EQ_H}")
-    print(f"  Drum far:       CX={DRUM_FZ_CX}  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}  H={DRUM_EQ_H}")
+    print(f"  Drum near:      CX={DRUM_LZ_CX}  X={_drum_left}–{_drum_right}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  H={DRUM_EQ_H}")
+    print(f"  Drum far:       CX={DRUM_FZ_CX}  X={_drum_left}–{_drum_right}  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}  H={DRUM_EQ_H}")
     print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")
     print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
     print(f"  Fan B (exhaust):door end wall H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")

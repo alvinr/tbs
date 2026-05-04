@@ -22,11 +22,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system | $1,457 | $2,072 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
+| 7a. Panel sliding carriage & drum dolly system | $1,083 | $1,083 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$12,950** | **~$17,250** |
+| **TOTAL (base build + 50-print run)** | **~$14,033** | **~$18,333** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -319,6 +320,57 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Section total: ~$950–$1,450**
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
+
+---
+
+## 7a. Panel Sliding Carriage & Drum Dolly System
+
+*Source: `equipment-layout-report.md` § 6.1 & § 6.2. Enables transport mode: waste drums slide inward 305mm, then panel slides inward 300mm, clearing container doors for closure. Single-person operation.*
+
+### Drum slide system (×2 sets)
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| V-groove track, 28mm × 400mm | Hardened steel, floor-mount | 4 | McMaster-Carr / Amazon Industrial | ~$72 |
+| V-groove roller wheels, 50mm OD | Sealed bearings, 250kg/wheel | 8 | McMaster-Carr / Amazon Industrial | ~$96 |
+| Drum dolly plates, 6mm A36 steel | 620×620mm, custom fab | 2 | Metal Supermarkets SoCal / Pacific Coast Steel | ~$80 |
+| Track shim blocks (30mm risers) | Welded steel — clears HGR20 floor rail | 8 | Local fab / Metal Supermarkets | ~$40 |
+| Spring plunger pin locks, M12 | Ball-nose, operational + transport positions | 8 | McMaster-Carr | ~$64 |
+| Lashing D-rings, 25mm | 1,100kg WLL, welded to dolly plate | 4 | McMaster-Carr #3641T29 | ~$24 |
+
+**Drum slide subtotal: ~$376**
+
+### Panel slide system
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| HGR20 linear rail, 500mm | Floor + ceiling, X-direction | 2 | Automation Overstock, Gardena CA / Amazon | ~$44 |
+| HGH20CA carriage blocks | Flanged, 2 per rail | 4 | Automation Overstock / Amazon | ~$72 |
+| Carriage beam, 60×60×3mm SHS | 2,400mm tall, mild steel | 1 | Pacific Coast Steel / Metal Supermarkets | ~$35 |
+| Hinge mounting plates, 6mm steel | 220×80mm | 3 | Local fab | ~$30 |
+| Rail mounting brackets, 8mm angle | Floor + ceiling | 4 | Local fab | ~$32 |
+| Destaco 207-U toggle clamps | 2 per position × 2 positions | 4 | McMaster-Carr / Grainger | ~$100 |
+| Strike pins, 16mm hardened dowel | Pressed into carriage base | 4 | McMaster-Carr | ~$12 |
+
+**Panel slide subtotal: ~$325**
+
+### Fixed door frame + seals
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Pacific Coast Steel / Metal Supermarkets | ~$120 |
+| Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
+| Brush seal strip (nylon bristle) | Carriage beam slot, 2,400mm | 1 | McMaster-Carr | ~$25 |
+| EPDM gasket (existing spec) | 20×15mm, ~9.5m | 1 | McMaster-Carr #8635K31 | ~$45 |
+| Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
+| Fan B duct notch + silicone | 200×200mm cutout | 1 | Local fab | ~$15 |
+| Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr / Fastenal | ~$60 |
+| Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
+
+**Door frame subtotal: ~$382**
+
+**Section total (materials): ~$1,083**
+**Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
 
 ---
 

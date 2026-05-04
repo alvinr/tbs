@@ -160,6 +160,7 @@ DIAG_FILES=(
     "hingepanel-sheet1.png"
     "hingepanel-sheet2.png"
     "hingepanel-sheet3.png"
+    "hingepanel-sheet4.png"
     "container-floorplan.png"
     "assembly-overview.png"
     "assembly-overview-fp.png"

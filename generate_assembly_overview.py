@@ -42,6 +42,7 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX, DRUM_FZ_CX,
+    PANEL_CORNER_T, PANEL_CENTER_T,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -171,10 +172,20 @@ corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 
 # ── LEFT END ZONE — revolving drum + evap cooler ──────────────────────────────
 
-# Hinged panel — drawn as wall strip outside the interior boundary (X=-40 to 0),
-# consistent with floorplan wall convention (WALL=40mm, outside interior).
+# Hinged panel — stepped profile (rev 4): 40mm corner zones, 120mm center zone.
+# In this side elevation (X-H plane), the stepped depth is visible.
+# Corner zones (majority of panel width) shown at 40mm depth inside X=0.
+# Center zone (drum housing, Yd=756-1606) shown at 120mm depth.
+# Container wall (40mm steel) drawn outside at X=-40 to 0.
 ax.add_patch(mpatches.Rectangle((-40, 0), 40, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
+             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
+# Corner zone panel (40mm, X=0 to 40) — visible in side elevation as dominant depth
+ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CORNER_T, C_HGT,
+             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
+# Center zone panel (120mm, X=0 to 120) — shown as dashed outline behind corner
+ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
+             facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
+             alpha=0.5, zorder=4))
 
 # Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
 # In this side elevation appears as a rectangle Ø750mm wide × 2000mm tall.
@@ -196,18 +207,18 @@ ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
 leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
        f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
 
-# Black-water drums — 2× 55-gal, one per Yd corner (rev 4: unstacked).
+# Black-water drums — 2× 55-gal, one per Yd corner (rev 4: on slide dollies).
 # In this side elevation both drums share X → collapse to single block.
-# Drums positioned so right edge aligns with ZONE_L_END (X=625mm),
-# fully within the shadow-free left end zone.
-_drum_x0 = ZONE_L_END - DRUM_EQ_D   # = 625 - 580 = 45mm
+# Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm),
+# right edge 5mm inside ZONE_L_END.
+_drum_x0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
 _drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
 equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
 ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
         "Waste\ndrums\n×2", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
 leader(ax, _drum_x0 + DRUM_EQ_D, RAIL_OFF + DRUM_EQ_H * 0.6, 800, 1500,
-       f"55-gal drums ×2 (unstacked — one per Yd corner)\n"
+       f"55-gal drums ×2 (on slide dollies — one per Yd corner)\n"
        f"D-1 near: Yd=0–{DRUM_EQ_D}mm  |  D-2 far: Yd={C_WID-DRUM_EQ_D}–{C_WID}mm\n"
        f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",
        ha="left", fs=FS_SM)
@@ -603,9 +614,17 @@ ldr2(RAIL_X_R, C_HGT - 300, RAIL_X_R - 650, C_HGT - 600,
     f"Floor rail  X={RAIL_X_R}mm\n(right rail, far-end side)", ha="right", fs=FS_SM, color=RAIL_CLR)
 
 # ── LEFT END ZONE (appears on RIGHT in this view) — drum, evap, waste drums ──
-# Hinged panel — outside the interior boundary (consistent with floorplan wall convention)
+# Hinged panel — stepped profile (rev 4): container wall outside, then
+# corner zones (40mm) and center zone (120mm) inside.
 ax2.add_patch(mpatches.Rectangle((C_LEN, 0), 40, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
+             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
+# Corner zone (40mm inside)
+ax2.add_patch(mpatches.Rectangle((C_LEN - PANEL_CORNER_T, 0), PANEL_CORNER_T, C_HGT,
+             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.6, alpha=0.4, zorder=4))
+# Center zone outline (120mm inside, dashed — deeper zone behind)
+ax2.add_patch(mpatches.Rectangle((C_LEN - PANEL_CENTER_T, 0), PANEL_CENTER_T, C_HGT,
+             facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
+             alpha=0.4, zorder=4))
 
 # Revolving drum
 ax2.add_patch(mpatches.Rectangle((C_LEN - DRUM_D, RAIL_OFF), DRUM_D, DRUM_H_ELV,
@@ -621,11 +640,11 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
 # Waste drums: two 55-gal drums, same X column, different Yd.
-# Drums positioned so right edge aligns with ZONE_L_END (X=625mm).
+# Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm).
 # From this viewpoint (Yd=2362 looking toward Yd=0):
 #   DRUM_LZ (Yd=0–580mm)      — behind the revolving drum → ghost, low zorder
 #   DRUM_FZ (Yd=1782–2362mm)  — in front of the revolving drum → solid, high zorder
-_dlx0 = ZONE_L_END - DRUM_EQ_D   # = 45mm
+_dlx0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
 
 # D-1 (far from viewer — ghost, behind light trap drum)
 eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
@@ -634,7 +653,7 @@ eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
 # Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
 
 # D-2 (close to viewer — solid, in front of light trap drum)
-_dfx0 = ZONE_L_END - DRUM_EQ_D   # = 45mm
+_dfx0 = PANEL_CORNER_T   # = 40mm — same X as D-1
 eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
     ec="#7A6B5A", lw=1.0)
 ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,

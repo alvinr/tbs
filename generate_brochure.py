@@ -502,10 +502,11 @@ def _clean_html_for_fpdf(html):
     # Strip <hr> — markdown --- separators are unnecessary in a brochure
     html = re.sub(r"<hr\s*/?>", "", html, flags=re.IGNORECASE)
 
-    # Convert <ol>/<ul> lists to plain paragraphs — fpdf2's list rendering
+    # Convert <ol>/<ul> lists to br-separated lines — fpdf2's list rendering
     # inherits heading style for number/bullet prefixes, producing wrong
     # color and font size.  Manual numbering avoids this entirely.
     html = _flatten_lists(html)
+
 
     def _strip_attrs(m):
         tag_full = m.group(0)
@@ -852,11 +853,14 @@ class BrochurePDF(FPDF):
                 elif remaining < self._HEADING_KEEP_MM:
                     self.add_page()
 
+            # Convert <p> to <br> for safe page breaks (text segments only —
+            # image extraction has already happened by this point)
+            safe_frag = _p_to_br(frag)
             self.set_font(FONT_BODY, "", 9)
             self.set_text_color(*C_BODY)
             self.set_x(M_L)
             try:
-                self.write_html(frag, tag_styles=tag_styles)
+                self.write_html(safe_frag, tag_styles=tag_styles)
             except Exception as e:
                 print(f"  [warn] HTML render error: {e}",
                       file=sys.stderr)
@@ -1187,6 +1191,19 @@ def _split_at_images(html):
         cleaned.append((text, img))
 
     return cleaned
+
+
+def _p_to_br(html):
+    """Replace <p> tags with <br><br> to keep text in a continuous flow.
+
+    fpdf2's <p> margin spacing moves the cursor without checking auto
+    page break, causing paragraphs near the content zone boundary to
+    overflow into header/footer zones.  <br> keeps everything in a
+    flow where fpdf2 checks page breaks at every rendered line.
+    """
+    html = re.sub(r"<p[^>]*>", "<br>", html, flags=re.IGNORECASE)
+    html = re.sub(r"</p>", "<br>", html, flags=re.IGNORECASE)
+    return html
 
 
 def _build_tag_styles():

@@ -39,7 +39,8 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
-    IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
+    BLUE_IBC_Y, BROWN_IBC_Y,
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
     DRUM_LZ_CX, DRUM_FZ_CX,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
@@ -644,17 +645,19 @@ ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
     ha="left", fs=FS_SM)
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — IBCs ─────────────────────
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
-        "Brown IBC x1\n(600L, behind)", ha="center", va="center",
-        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
-
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, alpha=0.80, zorder=5)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2 + 200,
+# Top-down: Y axis = Yd (depth).  Blue stack near pinhole wall, brown behind it.
+eq2(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_IBC_BLUE, alpha=0.80, zorder=5)
+ax2.text(mx(IBC_COL_X + IBC_W/2), BLUE_IBC_Y + IBC_D/2,
         "Blue IBC x2\nstacked (front)\n2×600L", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
+
+eq2(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, C_IBC_BROWN, alpha=0.60, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), BROWN_IBC_Y + IBC_D/2,
+        "Brown IBC x1\n(600L, behind)", ha="center", va="center",
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=7)
+# Separator line between blue and brown IBC
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
-        [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
+        [BROWN_IBC_Y, BROWN_IBC_Y],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
 ldr2(IBC_COL_X + IBC_W/2 + 400, RAIL_OFF + IBC_H_STK, C_LEN - 50, 2800,

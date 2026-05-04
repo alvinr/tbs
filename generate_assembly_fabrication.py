@@ -488,7 +488,7 @@ def sheet2():
             fontsize=FS_SM-1, color=C_DIM, zorder=6)
 
     # ── Evap cooler projection (pinhole wall face, background) ───────────────
-    # Rev 3: evap cooler is at Yd=0–350mm (pinhole wall face), X=700–1300mm (depth into page).
+    # Rev 4: evap cooler is at Yd=0–350mm (pinhole wall face), X=930–1530mm (depth into page).
     # In this end elevation horizontal axis = Yd → cooler spans Yd=EVAP_Y to EVAP_Y+EVAP_D.
     # Height: 0–800mm. Show as ghost outline.
     ax.add_patch(mpatches.Rectangle((EVAP_Y, RAIL_OFF), EVAP_D, EVAP_H,

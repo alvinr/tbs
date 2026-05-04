@@ -42,8 +42,7 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
     DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-    DRUM_LZ_CX, DRUM_LZ_YD_LO,
-    DRUM_FZ_CX, DRUM_FZ_YD_LO,
+    DRUM_LZ_CX, DRUM_FZ_CX,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -489,38 +488,38 @@ def dim2h(x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):
             fontsize=fs, color=color)
 
 # ── Zone fills ────────────────────────────────────────────────────────────────
-ax2.add_patch(mpatches.Rectangle((mx(ZONE_L_END), 0), ZONE_L_END, C_WID,
+ax2.add_patch(mpatches.Rectangle((mx(ZONE_L_END), 0), ZONE_L_END, C_HGT,
              facecolor=C_ZONE_L, edgecolor="none", alpha=0.6, zorder=0))
-ax2.add_patch(mpatches.Rectangle((mx(ZONE_R_START), 0), ZONE_R_START - ZONE_L_END, C_WID,
+ax2.add_patch(mpatches.Rectangle((mx(ZONE_R_START), 0), ZONE_R_START - ZONE_L_END, C_HGT,
              facecolor=C_ZONE_O, edgecolor="none", alpha=0.5, zorder=0))
-ax2.add_patch(mpatches.Rectangle((0, 0), C_LEN - ZONE_R_START, C_WID,
+ax2.add_patch(mpatches.Rectangle((0, 0), C_LEN - ZONE_R_START, C_HGT,
              facecolor=C_ZONE_R, edgecolor="none", alpha=0.6, zorder=0))
 
 for xb in [ZONE_L_END, ZONE_R_START]:
-    ax2.plot([mx(xb), mx(xb)], [0, C_WID], color=C_DIM, lw=1.0, ls="--",
+    ax2.plot([mx(xb), mx(xb)], [0, C_HGT], color=C_DIM, lw=1.0, ls="--",
             dashes=(8, 4), zorder=4)
 
 # Zone labels — note LEFT/RIGHT labels swap because view is mirrored
-ax2.text(mx(ZONE_L_END/2), C_WID + 100,
+ax2.text(mx(ZONE_L_END/2), C_HGT + 100,
         f"RIGHT END ZONE\n(far end,  X={ZONE_R_START}–{C_LEN}mm)",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#004080",
         fontweight="bold", zorder=5)
-ax2.text(mx((ZONE_L_END + ZONE_R_START) / 2), C_WID + 100,
+ax2.text(mx((ZONE_L_END + ZONE_R_START) / 2), C_HGT + 100,
         f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#006000",
         fontweight="bold", zorder=5)
-ax2.text(mx((ZONE_R_START + C_LEN) / 2), C_WID + 100,
+ax2.text(mx((ZONE_R_START + C_LEN) / 2), C_HGT + 100,
         f"LEFT END ZONE\n(cargo door,  X=0–{ZONE_L_END}mm)",
         ha="center", va="top", fontsize=FS_SM - 0.5, color="#805000",
         fontweight="bold", zorder=5)
 
 # ── Container outline ─────────────────────────────────────────────────────────
-ax2.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_WID,
+ax2.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_HGT,
              facecolor="none", edgecolor=C_OUT, linewidth=1.8, zorder=5))
 for xc in range(0, C_LEN + 1, 600):
     pxc = mx(xc)
     ax2.plot([pxc, pxc], [0, 60], color="#B0B0B0", lw=0.5, zorder=1)
-    ax2.plot([pxc, pxc], [C_WID - 60, C_WID], color="#B0B0B0", lw=0.5, zorder=1)
+    ax2.plot([pxc, pxc], [C_HGT - 60, C_HGT], color="#B0B0B0", lw=0.5, zorder=1)
 
 # ── OPTICAL CONE — the hero element of this view ──────────────────────────────
 # The pinhole is at (PH_X, 0, PH_H) — on the near wall (Yd=0), which is the
@@ -530,12 +529,12 @@ C_CONE   = "#4488CC"
 C_CONE_L = "#CCE4FF"
 
 cone_poly_x = [mx(PH_X), mx(FP_X_L), mx(FP_X_L), mx(FP_X_R), mx(FP_X_R), mx(PH_X)]
-cone_poly_h = [PH_H,      0,           C_WID,       C_WID,       0,           PH_H]
+cone_poly_h = [PH_H,      0,           C_HGT,       C_HGT,       0,           PH_H]
 ax2.fill(cone_poly_x, cone_poly_h, facecolor=C_CONE_L, edgecolor="none",
          alpha=0.30, zorder=1)
 # Bounding rays
 for fx in [FP_X_L, FP_X_R]:
-    for fh in [0, C_WID]:
+    for fh in [0, C_HGT]:
         ax2.plot([mx(PH_X), mx(fx)], [PH_H, fh],
                 color=C_CONE, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
 
@@ -544,19 +543,19 @@ ax2.text(mx(PH_X + (FP_X_R - PH_X) * 0.55), PH_H + 300,
         ha="center", va="bottom", fontsize=FS_SM, color=C_CONE, style="italic", zorder=6)
 
 # ── FILM PLANE RAILS — the dominant structural feature ───────────────────────
-# Rail tracks at X=RAIL_X_L and X=RAIL_X_R, spanning RAIL_OFF to C_WID-RAIL_OFF
+# Rail tracks at X=RAIL_X_L and X=RAIL_X_R, spanning RAIL_OFF to C_HGT-RAIL_OFF
 RAIL_T   = 40    # rail half-width in drawing
 RAIL_CLR = "#3060A0"
 
 C_ALUM2 = "#C8D8E8"
 for rx in [RAIL_X_L, RAIL_X_R]:
     ax2.add_patch(mpatches.Rectangle(
-        (mx(rx) - RAIL_T, RAIL_OFF), RAIL_T * 2, C_WID - 2 * RAIL_OFF,
+        (mx(rx) - RAIL_T, RAIL_OFF), RAIL_T * 2, C_HGT - 2 * RAIL_OFF,
         facecolor=C_ALUM2, edgecolor=RAIL_CLR, linewidth=1.2, alpha=0.9, zorder=5))
 
 # Rail centre lines
 for rx in [RAIL_X_L, RAIL_X_R]:
-    ax2.plot([mx(rx), mx(rx)], [0, C_WID + 150],
+    ax2.plot([mx(rx), mx(rx)], [0, C_HGT + 150],
             color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 
 # Rail span dimension
@@ -578,7 +577,7 @@ for rx in [RAIL_X_L, RAIL_X_R]:
 
 # Rail anchor marks at floor and ceiling
 for rx in [RAIL_X_L, RAIL_X_R]:
-    for ry in [RAIL_OFF, C_WID - RAIL_OFF]:
+    for ry in [RAIL_OFF, C_HGT - RAIL_OFF]:
         ax2.add_patch(plt.Circle((mx(rx), ry), 30,
                      facecolor=RAIL_CLR, edgecolor=C_OUT, linewidth=0.8, zorder=6))
 
@@ -600,18 +599,18 @@ ax2.text(mx(PH_X), PH_H - 320,
 # Rail labels
 ldr2(RAIL_X_L, RAIL_OFF + 300, RAIL_X_L + 650, 600,
     f"Floor rail  X={RAIL_X_L}mm\n(left rail, cargo-door side)", ha="left", fs=FS_SM, color=RAIL_CLR)
-ldr2(RAIL_X_R, C_WID - 300, RAIL_X_R - 650, C_WID - 600,
+ldr2(RAIL_X_R, C_HGT - 300, RAIL_X_R - 650, C_HGT - 600,
     f"Floor rail  X={RAIL_X_R}mm\n(right rail, far-end side)", ha="right", fs=FS_SM, color=RAIL_CLR)
 
 # ── LEFT END ZONE (appears on RIGHT in this view) — drum, evap, waste drums ──
-# Hinged panel — right edge of plot (near cargo door = X=0), spans full Yd width
-ax2.add_patch(mpatches.Rectangle((C_LEN - 80, 0), 80, C_WID,
+# Hinged panel — right edge of plot (near cargo door = X=0)
+ax2.add_patch(mpatches.Rectangle((C_LEN - 80, 0), 80, C_HGT,
              facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=4))
 
-# Revolving drum — spans full container width in Yd
-ax2.add_patch(mpatches.Rectangle((C_LEN - DRUM_D, 0), DRUM_D, C_WID,
+# Revolving drum
+ax2.add_patch(mpatches.Rectangle((C_LEN - DRUM_D, RAIL_OFF), DRUM_D, DRUM_H_ELV,
              facecolor=C_DRUM_LT, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
-ax2.plot([C_LEN, C_LEN], [0, C_WID + 100],
+ax2.plot([C_LEN, C_LEN], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 
 # Evap cooler (ghost — at Yd=0)
@@ -622,23 +621,22 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
 # Waste drums: two 55-gal drums, same X column, different Yd.
-# Top-down: Y axis = Yd.  Footprint is circular → DRUM_EQ_D × DRUM_EQ_D.
 # From this viewpoint (Yd=2362 looking toward Yd=0):
 #   DRUM_LZ (Yd=25–605mm)     — behind the revolving drum → ghost, low zorder
 #   DRUM_FZ (Yd=1757–2337mm)  — in front of the revolving drum → solid, high zorder
 _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 20mm (same X for both drums)
 
 # D-1 (far from viewer — ghost, behind light trap drum)
-eq2(_dlx0, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D, C_DRUM_EQ, alpha=0.20, zorder=4,
+eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
     ec="#7A6B5A", lw=0.6)
 
 # Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
 
 # D-2 (close to viewer — solid, in front of light trap drum)
 _dfx0 = DRUM_FZ_CX - DRUM_EQ_R   # = 20mm
-eq2(_dfx0, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D, C_DRUM_EQ, alpha=0.85, zorder=7,
+eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
     ec="#7A6B5A", lw=1.0)
-ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), DRUM_FZ_YD_LO + DRUM_EQ_D / 2,
+ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,
         "Waste\ndrum D-2\n(front)",
         ha="center", va="center", fontsize=FS_SM - 1, color="#3D2E22", zorder=8)
 
@@ -703,13 +701,13 @@ ax2.text((C_LEN)/2 - 1200, (FAN_A_H + FAN_B_H)/2 - 200,
         fontsize=FS_SM - 1, color=C_FAN, style="italic", zorder=5)
 
 # ── Safelight ─────────────────────────────────────────────────────────────────
-ax2.plot([100, C_LEN - 100], [C_WID - 100, C_WID - 100],
+ax2.plot([100, C_LEN - 100], [C_HGT - 100, C_HGT - 100],
         color="#FFD700", lw=2, ls="--", dashes=(8, 5), alpha=0.7, zorder=4)
-ax2.text(C_LEN/2, C_WID - 60, "Overhead safelight strip (Circuit D)",
+ax2.text(C_LEN/2, C_HGT - 60, "Overhead safelight strip (Circuit D)",
         ha="center", va="bottom", fontsize=FS_SM - 1, color="#B8960A")
 
 # ── Dimensions ────────────────────────────────────────────────────────────────
-DIM_TOP2   = C_WID + 250
+DIM_TOP2   = C_HGT + 250
 DIM_BOT2   = -250
 DIM_LEFT2  = C_LEN + 350   # left in plot = far end (X=C_LEN) in real coords
 
@@ -722,15 +720,15 @@ ax2.text(C_LEN/2, DIM_TOP2 + 80*0.55, f"Container length  {C_LEN}mm",
 
 dim2h(FP_X_L, FP_X_R, DIM_TOP2 + 200, f"Rail span  {RAIL_SPAN}mm", offset=80, color=RAIL_CLR)
 
-ax2.annotate("", xy=(DIM_LEFT2, C_WID), xytext=(DIM_LEFT2, 0),
+ax2.annotate("", xy=(DIM_LEFT2, C_HGT), xytext=(DIM_LEFT2, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax2.plot([DIM_LEFT2 - 80*0.3, DIM_LEFT2 + 80*0.3], [0, 0], color=C_DIM, lw=0.6)
-ax2.plot([DIM_LEFT2 - 80*0.3, DIM_LEFT2 + 80*0.3], [C_WID, C_WID], color=C_DIM, lw=0.6)
-ax2.text(DIM_LEFT2 - 80*0.6, C_WID/2, f"W={C_WID}mm",
+ax2.plot([DIM_LEFT2 - 80*0.3, DIM_LEFT2 + 80*0.3], [C_HGT, C_HGT], color=C_DIM, lw=0.6)
+ax2.text(DIM_LEFT2 - 80*0.6, C_HGT/2, f"H={C_HGT}mm",
         ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90)
 
 ax2.text(C_LEN/2, DIM_BOT2 - 280,
-        f"Optical cone illuminates full {FP_W}mm × {C_WID}mm film plane"
+        f"Optical cone illuminates full {FP_W}mm × {C_HGT}mm film plane"
         f"  (X={FP_X_L}–{FP_X_R}mm)  from pinhole at X={PH_X}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CONE, style="italic")
 

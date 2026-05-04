@@ -14,6 +14,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -320,9 +322,10 @@ def draw_sheet1():
                 "Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
                 "Schematic — not to scale  ·  Baffle duct assembly detail — see Sheet 2")
 
+    os.makedirs(SVG_DIR, exist_ok=True)
     plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/lighttrap-sheet1.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig(svg_path("diagrams/lighttrap-sheet1.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet1.png  Done.")
 
@@ -602,7 +605,7 @@ def draw_sheet2():
 
     plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/lighttrap-sheet2.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig(svg_path("diagrams/lighttrap-sheet2.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet2.png  Done.")
 

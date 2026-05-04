@@ -15,6 +15,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, Arc
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -371,7 +373,7 @@ def draw_sheet1():
 
     plt.savefig("diagrams/electrical-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig("diagrams/electrical-sheet1.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig(svg_path("diagrams/electrical-sheet1.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
 
@@ -408,7 +410,7 @@ def draw_sheet2():
         DRUM_FZ_CX, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
         DRUM_CX, DRUM_D, DRUM_R,
         FAN_A_YD, FAN_B_YD,
-        DIAGRAMS_DIR,
+        DIAGRAMS_DIR, svg_path,
     )
 
     FW, FH = 24.0, 14.0
@@ -816,7 +818,7 @@ def draw_sheet2():
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.svg", bbox_inches="tight", facecolor="white")
+    plt.savefig(svg_path(f"{DIAGRAMS_DIR}/electrical-sheet2.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")
 
@@ -825,6 +827,7 @@ def draw_sheet2():
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating TBS-001 Electrical & Systems diagrams...")
     draw_sheet1()
     draw_sheet2()

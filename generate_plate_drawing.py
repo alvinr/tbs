@@ -13,6 +13,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = 600      # plate outer dimension (square)
@@ -464,8 +466,9 @@ plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet1.png'
+os.makedirs(SVG_DIR, exist_ok=True)
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
-plt.savefig(str(out1).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
+plt.savefig(svg_path(out1), bbox_inches="tight", facecolor='white')
 plt.close()
 print(f'Saved sheet 1: {out1}')
 
@@ -986,6 +989,6 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet2.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
-plt.savefig(str(out2).replace(".png", ".svg"), bbox_inches="tight", facecolor='white')
+plt.savefig(svg_path(out2), bbox_inches="tight", facecolor='white')
 plt.close()
 print(f'Saved sheet 2: {out2}')

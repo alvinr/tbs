@@ -18,6 +18,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
 FILM_L = 3549    # film plane width (mm) [rev 2: was 2920, was 5893]
@@ -297,9 +299,10 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
     fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
              ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
     fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
+    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
-    fig.savefig(fname.replace(".png", ".svg"), bbox_inches="tight", facecolor="white")
+    fig.savefig(svg_path(fname), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  → {fname}")
 
@@ -343,7 +346,7 @@ def render_summary():
              ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
     fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
-    fig.savefig("diagrams/film-plane-distortion-summary.svg", bbox_inches="tight", facecolor="white")
+    fig.savefig(svg_path("diagrams/film-plane-distortion-summary.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/film-plane-distortion-summary.png")
 

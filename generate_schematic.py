@@ -10,6 +10,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
+import os
+from tbs_constants import svg_path, SVG_DIR
 
 F  = 2362.0   # focal length (container interior width), mm
 IW = 5893.0   # image plane width, mm (19'4")
@@ -212,6 +214,7 @@ plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
 out = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out, dpi=150, bbox_inches='tight', facecolor='#0D0D0D')
-plt.savefig(str(out).replace(".png", ".svg"), bbox_inches="tight", facecolor='#0D0D0D')
+os.makedirs(SVG_DIR, exist_ok=True)
+plt.savefig(svg_path(out), bbox_inches="tight", facecolor='#0D0D0D')
 plt.close()
 print(f'Saved: {out}')

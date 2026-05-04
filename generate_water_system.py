@@ -25,7 +25,9 @@ from tbs_constants import (
     DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    svg_path, SVG_DIR,
 )
+import os
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -492,11 +494,12 @@ for i, (sym, desc) in enumerate(syms):
              f"{sym} — {desc}", va="center", fontsize=6.2, color=C_TEXT, zorder=7)
 
 plt.tight_layout(pad=0.3)
+os.makedirs(SVG_DIR, exist_ok=True)
 fig1.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
           ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 fig1.savefig("diagrams/water-system-sheet1.png", dpi=150, bbox_inches="tight",
              facecolor=fig1.get_facecolor())
-fig1.savefig("diagrams/water-system-sheet1.svg", bbox_inches="tight", facecolor=fig1.get_facecolor())
+fig1.savefig(svg_path("diagrams/water-system-sheet1.png"), bbox_inches="tight", facecolor=fig1.get_facecolor())
 plt.close(fig1)
 print("Sheet 1 written → diagrams/water-system-sheet1.png")
 
@@ -685,7 +688,7 @@ fig2.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
           ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 fig2.savefig("diagrams/water-system-sheet2.png", dpi=150, bbox_inches="tight",
              facecolor=fig2.get_facecolor())
-fig2.savefig("diagrams/water-system-sheet2.svg", bbox_inches="tight", facecolor=fig2.get_facecolor())
+fig2.savefig(svg_path("diagrams/water-system-sheet2.png"), bbox_inches="tight", facecolor=fig2.get_facecolor())
 plt.close(fig2)
 print("Sheet 2 written → diagrams/water-system-sheet2.png")
 print("Done.")

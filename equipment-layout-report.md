@@ -69,7 +69,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 700–1,300 | 0–800 | 12V DC 80W; protrudes 350mm from wall into Yd=0–350mm |
+| Evaporative cooler | 930–1,530 | 0–800 | 12V DC 80W; protrudes 350mm from wall into Yd=0–350mm |
 | Electrical panel | 2,050–2,350 | 900–1,500 | IP65, wall-mount |
 | Battery bank (2× 100Ah LiFePO4) | 2,050–2,550 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
@@ -285,6 +285,6 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 | Blue IBCs | Left side, X=100–1,319mm | Right end zone, X=4,674mm, Y-stacked |
 | Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, Y behind Blue |
 | 55-gal drums | Right side, X=3,900mm | **Left end zone, CX=330mm, D-1 Yd=0–580mm, D-2 Yd=1,782–2,362mm** |
-| Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=700–1,300mm** |
+| Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=930–1,530mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |

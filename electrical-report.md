@@ -198,7 +198,7 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 - 55-gal drum D-2 (far corner): CX=310mm, Yd=1,757–2,337mm, H=870mm
 
 **Pinhole wall face (Y=0):**
-- 12V evaporative cooler (X=700–1,300mm, Yd=0–350mm) — shadow-free at Y=0
+- 12V evaporative cooler (X=930–1,530mm, Yd=0–350mm) — shadow-free at Y=0
 - Electrical enclosure (X=2,050–2,350mm, H=900–1,500mm) — wall-mounted
 - LiFePO4 battery bank (X=2,050–2,550mm, H=0–500mm) — wall-mounted
 - Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
@@ -245,7 +245,7 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ### 6.4 Light-Safe Cooler Intake
 
-The cooler is positioned on the pinhole wall face (Yd=0, X=700–1,300mm) — shadow-free at any X position because the optical cone collapses to a point at Y=0. Its intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
+The cooler is positioned on the pinhole wall face (Yd=0, X=930–1,530mm) — shadow-free at any X position because the optical cone collapses to a point at Y=0. Its intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
 
 - **Duct size:** 6" (150mm) — matches cooler inlet
 - **Penetration:** through the container left short end wall (X=0 face), positioned 400mm above floor level (within left end zone)

@@ -17,7 +17,7 @@ Coordinate system (all mm):
 
 Equipment layout — end-zone design rev 3 (evap cooler to pinhole wall, drums near end wall):
   Left end zone  (X=0–625):    light trap drum + 55-gal drums (stacked, Yd=25–605mm)
-  Pinhole wall   (Yd=0 face):  evap cooler (X=700–1300) + electrical panel + pump manifold
+  Pinhole wall   (Yd=0 face):  evap cooler (X=930–1530) + electrical panel + pump manifold
   Optical zone   (X=625–4649): film plane rails only — floor clear
   Right end zone (X=4649–5893): IBC tanks only (Y-stacked, right-justified to end wall)
 
@@ -231,7 +231,7 @@ def floor_plan():
     penetration(ax, 0, DRUM_FP_CY, r=80,
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
 
-    # Evap cooler — on pinhole wall face (Yd=0), X=700–1300mm
+    # Evap cooler — on pinhole wall face (Yd=0), X=930–1530mm
     equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_COOLER,
                f"EVAP\nCOOLER\n{EVAP_W}×{EVAP_D}", zorder=6)
     ax.text(EVAP_X + EVAP_W/2, EVAP_Y + EVAP_D + 55,

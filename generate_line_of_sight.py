@@ -93,7 +93,7 @@ EQUIPMENT = [
          color="#7A6B5A", zone="left"),
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)
-    # Evap cooler relocated here (rev 3) — X=700–1300mm, Yd=0 (pinhole wall face)
+    # Evap cooler relocated here (rev 4) — X=930–1530mm, Yd=0 (pinhole wall face)
     dict(name="Evap cooler",
          x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
          h_bot=0, h_top=EVAP_H,

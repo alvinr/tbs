@@ -14,7 +14,7 @@ Redesign basis (2026-04-23 rev 2):
   (same Y travel over wider 3,549mm rail span).
 
 Redesign basis (2026-04-23 rev 3):
-  Evap cooler relocated to pinhole wall face (Yd=0) at X=700–1,300mm — always
+  Evap cooler relocated to pinhole wall face (Yd=0) at X=930–1,530mm — always
   shadow-free at Yd=0 regardless of X position.
   Drums repositioned to X=20–600mm, Yd=25–605mm (near cargo door end wall,
   Yd range entirely below light trap drum's Yd=806–1,556mm band — no X-clearance
@@ -134,7 +134,7 @@ DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,362mm far edge
 
 # Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
 # At Yd=0 the cone collapses to a point → shadow-free at any X position.
-EVAP_X     = 700     # evap cooler left edge X (mm)  [rev3: was 400; right of drums]
+EVAP_X     = 930     # evap cooler left edge X (mm)  [rev4: was 700; clears drum D-1 transport X=925]
 EVAP_W     = 600     # evap cooler width X (mm)       [unchanged]
 EVAP_Y     = 0       # evap cooler near edge Yd (mm)  [rev3: was 100; now on pinhole wall]
 EVAP_D     = 350     # evap cooler depth Y (mm)        [unchanged]

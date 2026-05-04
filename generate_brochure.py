@@ -739,25 +739,8 @@ class BrochurePDF(FPDF):
                     if pi % 2 == 0:
                         # Text fragment — render via write_html
                         if part.strip():
-                            self.set_font(FONT_BODY, "", 9)
-                            self.set_text_color(*C_BODY)
-                            self.set_x(M_L)
-                            try:
-                                self.write_html(
-                                    part,
-                                    tag_styles=_build_tag_styles(),
-                                )
-                            except Exception as e:
-                                print(f"  [warn] HTML render error: {e}",
-                                      file=sys.stderr)
-                                plain = re.sub(r"<[^>]+>", " ", part)
-                                plain = re.sub(r"\s+", " ", plain).strip()
-                                if self.page == 0:
-                                    self.add_page()
-                                self.set_font(FONT_BODY, "", 9)
-                                self.set_text_color(*C_BODY)
-                                self.set_x(M_L)
-                                self.multi_cell(BODY_W, 5, plain[:8000])
+                            self._render_html_with_heading_breaks(
+                                part, tables)
                     else:
                         # Table marker — render the extracted table
                         tidx = int(part)
@@ -767,6 +750,64 @@ class BrochurePDF(FPDF):
             # ── full-page image ───────────────────────────────────────────────
             if img_path:
                 self._render_image_page(img_path)
+
+    # -- Heading-aware HTML renderer -------------------------------------------
+
+    # Minimum space (mm) required below a heading on the same page.
+    # If less than this remains, break to the next page first.
+    _HEADING_KEEP_MM = 35   # heading + ~4 lines of body text
+
+    _HEADING_SPLIT_RE = re.compile(
+        r'(<h[1-6][\s>])', re.IGNORECASE,
+    )
+
+    def _render_html_with_heading_breaks(self, html, tables):
+        """
+        Render an HTML fragment via write_html, but split at headings
+        and insert page breaks to prevent orphaned headings at page bottom.
+        """
+        # Split HTML at heading tags, keeping the delimiter with the
+        # fragment that follows it (the heading's own block).
+        pieces = self._HEADING_SPLIT_RE.split(html)
+        # pieces: [before_first_heading, '<h2 ', rest, '<h3 ', rest, ...]
+        # Re-join: first piece is standalone, then pairs of (tag_start, rest)
+        fragments = [pieces[0]] if pieces else []
+        for i in range(1, len(pieces), 2):
+            # Re-attach the heading tag start to its content
+            if i + 1 < len(pieces):
+                fragments.append(pieces[i] + pieces[i + 1])
+            else:
+                fragments.append(pieces[i])
+
+        tag_styles = _build_tag_styles()
+        page_bottom = PAGE_H - FOOTER_H
+
+        for frag in fragments:
+            if not frag.strip():
+                continue
+
+            # If this fragment starts with a heading, check available space
+            if self._HEADING_SPLIT_RE.match(frag):
+                remaining = page_bottom - self.get_y()
+                if remaining < self._HEADING_KEEP_MM:
+                    self.add_page()
+
+            self.set_font(FONT_BODY, "", 9)
+            self.set_text_color(*C_BODY)
+            self.set_x(M_L)
+            try:
+                self.write_html(frag, tag_styles=tag_styles)
+            except Exception as e:
+                print(f"  [warn] HTML render error: {e}",
+                      file=sys.stderr)
+                plain = re.sub(r"<[^>]+>", " ", frag)
+                plain = re.sub(r"\s+", " ", plain).strip()
+                if self.page == 0:
+                    self.add_page()
+                self.set_font(FONT_BODY, "", 9)
+                self.set_text_color(*C_BODY)
+                self.set_x(M_L)
+                self.multi_cell(BODY_W, 5, plain[:8000])
 
     # -- Table renderer (drawn with fpdf2 primitives) --------------------------
 

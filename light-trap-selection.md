@@ -9,7 +9,9 @@
 
 ## 1. Context
 
-The cargo door end of TBS-001 is sealed by a hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket.
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756mm and Yd=1,606–2,362mm) and 120mm thick at the center zone (Yd=756–1,606mm) where the revolving light trap drum is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
+
+The panel's hinge line mounts to a vertical carriage beam (60×60×3mm SHS) riding on HGR20 linear rails at floor and ceiling level with 300mm of X-direction travel. For transport, the waste drums slide inward 305mm on V-groove roller dollies, then the panel slides inward 300mm — clearing the container doors for closure. Single-person operation, 15–20 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for full sliding carriage specification.
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight.
 
@@ -35,7 +37,7 @@ Full drawings also appear in the [Engineering Diagrams](engineering-diagrams.md)
 | Light exclusion | 100% — no straight-line optical path from exterior to interior |
 | Durability | Repeated field deployment, transport vibration, outdoor exposure |
 | Operability | Single operator, no tools required to enter/exit |
-| Mounting | Flush-mounted into 120mm panel opening — no permanent wall surround |
+| Mounting | Flush-mounted into 120mm center zone of stepped panel — no permanent wall surround |
 | Weatherproofing | Drum top and bottom sealed against rain ingress during setup |
 
 ---
@@ -199,3 +201,6 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings 180° on its left-edge hinges, clearing all interior equipment. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
+- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1,606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the waste drum dolly positions.
+- **Sliding carriage:** The panel's hinge line mounts to a vertical carriage beam (60×60×3mm SHS, 2,400mm tall) riding on HGR20 linear rails at floor and ceiling level. Travel: 300mm in the X direction, locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
+- **Transport mode conversion** (single person, 15–20 minutes): release cam latches → swing panel open → slide waste drums inward 305mm → swing panel closed → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.

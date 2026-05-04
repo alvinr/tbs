@@ -43,6 +43,7 @@ from tbs_constants import (
     DRUM_LZ_CX, DRUM_FZ_CX,
     DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    PANEL_CORNER_T, PANEL_CENTER_T,
     RAIL_X_L, RAIL_X_R,
     FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -219,9 +220,13 @@ def sheet1():
             ha="left", va="bottom", fontsize=FS_SM-1, color=C_OUT, zorder=8)
 
     # ── LEFT END ZONE — hinged panel + drum + evap ────────────────────────────
-    # Hinged panel (symbolic)
-    ax.add_patch(mpatches.Rectangle((0, 0), 120, C_HGT,
-                 facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.8, zorder=4))
+    # Hinged panel — stepped profile (rev 4): 40mm corners, 120mm center
+    # Corner zone (40mm) shown as solid, center zone (120mm) as dashed outline
+    ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CORNER_T, C_HGT,
+                 facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=4))
+    ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
+                 facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
+                 alpha=0.5, zorder=4))
 
     # Revolving drum: centre at X=0, bottom at RAIL_OFF
     equip_blk(ax, -DRUM_R, RAIL_OFF, DRUM_D, DRUM_H_ELV, C_DRUM_LT, lw=1.0, alpha=0.9, zorder=5)
@@ -237,10 +242,10 @@ def sheet1():
             "EVAP\nCOOLER", ha="center", va="center",
             fontsize=FS_SM-1.5, color="white", zorder=5)
 
-    # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=310mm.
+    # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=330mm.
     # In this side elevation (horizontal=X) both drums collapse to the same X position.
-    # Centre on DRUM_LZ_CX (X=310mm) — correct waste drum X centre (not DRUM_CX=0).
-    _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 310 - 290 = 20mm; spans 20 → 600mm
+    # Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm).
+    _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 330 - 290 = 40mm; spans 40 → 620mm
     equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.35, zorder=3)  # far (behind)
     equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.70, zorder=7)  # near (front)
     ax.text(DRUM_LZ_CX, RAIL_OFF + DRUM_EQ_H/2,
@@ -415,12 +420,19 @@ def sheet2():
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
                  facecolor="none", edgecolor=C_OUT, linewidth=1.6, zorder=5))
 
-    # ── Hinged panel (fills end opening) ─────────────────────────────────────
+    # ── Hinged panel — stepped profile (fills end opening) ──────────────────
+    # Corner zones: Yd=0-756 and Yd=1606-2362, 40mm thick
+    # Center zone: Yd=756-1606, 120mm thick (drum housing)
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=1.0,
                  alpha=0.30, zorder=3))
+    # Step transition lines
+    from tbs_constants import PANEL_CORNER_YD_L, PANEL_CORNER_YD_R
+    for yd in [PANEL_CORNER_YD_L, PANEL_CORNER_YD_R]:
+        ax.plot([yd, yd], [0, C_HGT], color="#C04010", lw=1.0,
+                ls=(0, (5, 3)), alpha=0.7, zorder=4)
     ax.text(C_WID*0.12, C_HGT*0.93,
-            f"HINGED PANEL\n{C_WID}x{C_HGT}mm\n120mm thick, 50x50 RHS frame",
+            f"HINGED PANEL (STEPPED)\n{C_WID}x{C_HGT}mm\nCorner: {PANEL_CORNER_T}mm  Center: {PANEL_CENTER_T}mm",
             ha="left", va="top", fontsize=FS_SM, color=C_DIM, zorder=6)
 
     # ── Revolving drum (vertical axis, centred at CW/2) ───────────────────────

@@ -330,12 +330,42 @@ Power down in this order to avoid voltage spikes on sensitive electronics:
 
 If shore charger is connected, leave it running overnight to top up the battery bank.
 
-### 5.4 Securing the Container
+### 5.4 Securing the Container (Operational Mode)
 
 1. Engage all four Southco cam latches on the drum panel.
 2. Apply secondary locking bar across the drum panel face if the container will be unattended overnight.
 3. Cap all ventilation duct stubs on the exterior.
 4. Secure solar panels — if conditions allow, lay flat or fold to minimize wind load.
+
+### 5.5 Transport Mode Conversion (Packing Up)
+
+**Time: ~15–20 minutes. Single-person operation.**
+
+The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm travel). The waste drums sit on V-groove roller dollies (305mm travel). Both must slide inward before the container doors can close.
+
+1. Stow all interior items. Retract film plane carriage to Y=100mm.
+2. Release all 4 Southco cam latches. Swing the panel open 180° outward.
+3. Unlash waste drums (remove 2 ratchet straps per drum).
+4. Slide each drum inward: release spring plunger pin → push dolly 305mm (~11N force) → pin engages transport hole.
+5. Swing panel closed (do not latch).
+6. Release 2 Destaco toggle clamps at operational position.
+7. Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
+8. Engage 2 Destaco toggle clamps at transport position.
+9. Close and latch standard ISO container cargo doors.
+10. Relash drums for transport (ratchet straps to dolly D-rings).
+
+### 5.6 Operational Mode Conversion (Setting Up)
+
+**Time: ~15–20 minutes. Single-person operation. Reverse of 5.5.**
+
+1. Open container cargo doors fully.
+2. Release 2 Destaco toggle clamps at transport position.
+3. Pull panel outward 300mm. Engage 2 Destaco toggle clamps at operational position.
+4. Swing panel open 180°.
+5. Unlash waste drums. Slide each drum outward: release pin → push dolly 305mm → pin engages operational hole.
+6. Lash drums in operational position (ratchet straps to dolly D-rings).
+7. Swing panel closed. Engage all 4 Southco cam latches.
+8. Perform dark-adaptation check (Phase 0.3 step 4).
 
 ---
 

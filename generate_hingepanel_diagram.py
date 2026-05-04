@@ -6,10 +6,18 @@ generate_hingepanel_diagram.py  —  TBS-001 Hinged Light-Trap Panel
 
 Sheet 1 — Front elevation (exterior view, 1:20):
   Panel dimensions, revolving drum position, hinges, latches, EPDM perimeter seal.
+  Stepped profile: 40mm corner zones, 120mm center zone (drum housing).
 
 Sheet 2 — Plan cross-section (1:20 equal aspect):
-  Panel thickness, drum cross-section with 4 baffles, S-path light route,
-  container wall interface, EPDM gasket engagement, latch detail.
+  Panel thickness (center zone), drum cross-section with 4 baffles, S-path
+  light route, container wall interface, EPDM gasket engagement, latch detail.
+
+Sheet 3 — Drum vertical section:
+  Drum elevation showing walking height, bearings, person silhouette.
+
+Sheet 4 — Sliding rail transport system:
+  HGR20 panel carriage, V-groove drum dollies, fixed door frame,
+  operational vs transport positions.
 """
 
 import numpy as np
@@ -148,6 +156,27 @@ def sheet1():
                        closed=True, fill=False, ec=C_GASKT, lw=2.0, ls=(0, (4, 3)),
                        zorder=5)
     ax.add_patch(epdm)
+
+    # ── Stepped profile zone transitions (rev 4) ────────────────────────────
+    # Corner zones: 40mm thick.  Center zone: 120mm thick (drum housing).
+    STEP_YD_L = 756    # near-side corner-to-center transition
+    STEP_YD_R = 1606   # far-side center-to-corner transition
+    for sx in [STEP_YD_L, STEP_YD_R]:
+        ax.plot([sx, sx], [0, PH], color="#C04010", lw=1.2,
+                ls=(0, (6, 3)), zorder=4, alpha=0.8)
+    # Zone labels (positioned between step lines and panel edges)
+    ax.text(STEP_YD_L / 2, PH - 120,
+            "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
+            ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, PH - 120,
+            "120mm\nCENTER ZONE\n(DRUM HOUSING)", color="#C04010", fontsize=6,
+            ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    ax.text((STEP_YD_R + PW) / 2, PH - 120,
+            "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
+            ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    # Step dimension
+    dim_h(ax, STEP_YD_L, STEP_YD_R, -320,
+          f"{STEP_YD_R - STEP_YD_L} mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)")
 
     # ── Revolving drum ────────────────────────────────────────────────────────
     DX = DRUM_CX - DRUM_R   # drum left edge in panel
@@ -313,7 +342,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 3", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
+    title_block(ax, "SHEET 1 OF 4", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
 
     fig.savefig("diagrams/hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig("diagrams/hingepanel-sheet1.svg", bbox_inches="tight", facecolor=BG)
@@ -326,6 +355,10 @@ def sheet1():
 # Equal aspect — all coordinates in real mm.
 # X = panel width direction.
 # Y = depth direction (0 = container exterior face, positive into container).
+#
+# NOTE: This section cuts through the CENTER ZONE (120mm thick) of the
+# stepped panel.  Corner zones (Yd=0-756 and Yd=1606-2362) are only 40mm
+# thick — see Sheet 1 for the step transition locations.
 #
 # The drum (Ø750mm) is much larger than the panel depth (120mm + 40mm wall).
 # In plan, the drum circle overhangs both panel faces — this is physically
@@ -596,7 +629,7 @@ def sheet2():
 
     # ── Scale and note ────────────────────────────────────────────────────────
     ax.text((X_LO + X_HI) / 2, Y_HI - 20,
-            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  VIEW CROPPED TO DRUM ZONE  ·  "
+            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  SECTION THROUGH 120mm CENTER ZONE  ·  "
             "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
 
@@ -628,7 +661,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 3",
+    title_block(ax, "SHEET 2 OF 4",
                 "PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
@@ -911,7 +944,7 @@ def sheet3():
             ha="right", va="center", fontsize=6, color=C_DIM, **FONT, zorder=15)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 3",
+    title_block(ax, "SHEET 3 OF 4",
                 "DRUM ELEVATION — SECTION A-A (VIEW ALONG PANEL WIDTH): VERTICAL DRUM, WALKING HEIGHT",
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
 
@@ -921,10 +954,241 @@ def sheet3():
     print("  diagrams/hingepanel-sheet3.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 4  —  Sliding Rail Transport System (plan view at floor level)
+#
+# Shows: panel slide rails (HGR20), drum dolly tracks (V-groove), fixed door
+# frame, and both operational / transport positions.
+#
+# Horizontal axis = X (container long axis, 0 = wall inner face at cargo door)
+# Vertical axis   = Yd (container width, 0 = pinhole wall)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet4():
+    import matplotlib.patches as mpatches
+    from tbs_constants import (C_WID, PANEL_CORNER_T, PANEL_CENTER_T,
+                               PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
+                               DRUM_SLIDE, DRUM_EQ_D, DRUM_EQ_R, DRUM_LZ_CX,
+                               DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, DRUM_FZ_YD_LO,
+                               DRUM_FZ_YD_HI, ZONE_L_END, WALL_T as C_WALL_T)
+
+    # ── Layout constants ─────────────────────────────────────────────────────
+    PANEL_CT = PANEL_CORNER_T   # = 40mm
+    PANEL_CC = PANEL_CENTER_T   # = 120mm
+    SLIDE_P  = PANEL_SLIDE      # = 300mm
+    SLIDE_D  = DRUM_SLIDE       # = 305mm
+    DR       = DRUM_R           # = 375mm (light trap drum)
+
+    # Panel and drum positions in each mode
+    # Operational: panel at X=0, drums at normal position
+    # Transport: panel at X=SLIDE_P, drums at X=normal+SLIDE_D
+    OP_PANEL_X = 0
+    TR_PANEL_X = SLIDE_P        # = 300
+
+    OP_DRUM_CX = DRUM_LZ_CX    # = 330mm
+    TR_DRUM_CX = OP_DRUM_CX + SLIDE_D   # = 635mm
+
+    # ── Figure ────────────────────────────────────────────────────────────────
+    PAD_L = 200; PAD_R = 400; PAD_B = 300; PAD_T = 300
+    X_LO = -C_WALL_T - PAD_L       # = -240
+    X_HI = TR_DRUM_CX + DRUM_EQ_R + PAD_R   # = 635+290+400 = 1325
+    Y_LO = -PAD_B
+    Y_HI = C_WID + PAD_T
+
+    fig, ax = plt.subplots(figsize=(16, 12))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Container wall (X=-40 to X=0) ────────────────────────────────────────
+    ax.add_patch(Rectangle((-C_WALL_T, 0), C_WALL_T, C_WID,
+                            fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
+    ax.text(-C_WALL_T / 2, C_WID / 2, f"{int(C_WALL_T)}mm\nWALL",
+            ha="center", va="center", fontsize=6, color=BG,
+            fontweight="bold", **FONT, zorder=15, rotation=90)
+
+    # ── ZONE_L_END boundary ──────────────────────────────────────────────────
+    ax.plot([ZONE_L_END, ZONE_L_END], [Y_LO, Y_HI],
+            color="#20A020", lw=1.5, ls=(0, (8, 4)), zorder=4, alpha=0.7)
+    ax.text(ZONE_L_END + 10, Y_HI - 50,
+            f"ZONE_L_END = {ZONE_L_END}mm\n(FILM PLANE LEFT EDGE)",
+            ha="left", va="top", fontsize=6.5, color="#20A020", **FONT, zorder=15)
+
+    # ── Fixed door frame (X=0 line) ──────────────────────────────────────────
+    FRAME_W = 50   # RHS frame width
+    # Draw as thin outline at X=0
+    ax.add_patch(Rectangle((0, -10), FRAME_W, C_WID + 20,
+                            fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
+    ax.text(FRAME_W + 5, C_WID + 40,
+            "FIXED DOOR FRAME\n(50×50mm RHS, WELDED)\nSEAL LANDING AT X=0",
+            ha="left", va="bottom", fontsize=6, color="#806010", **FONT, zorder=15)
+
+    # ── Helper: draw panel in a given position ────────────────────────────────
+    def draw_panel(x_offset, alpha=1.0, label_prefix=""):
+        """Draw stepped panel outline at given X offset."""
+        # Corner zone near (Yd=0 to PANEL_CORNER_YD_L)
+        ax.add_patch(Rectangle((x_offset, 0), PANEL_CT, PANEL_CORNER_YD_L,
+                                fc=C_ALUM, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
+        # Center zone (Yd=PANEL_CORNER_YD_L to PANEL_CORNER_YD_R)
+        ax.add_patch(Rectangle((x_offset, PANEL_CORNER_YD_L), PANEL_CC,
+                                PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
+        # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID)
+        ax.add_patch(Rectangle((x_offset, PANEL_CORNER_YD_R), PANEL_CT,
+                                C_WID - PANEL_CORNER_YD_R,
+                                fc=C_ALUM, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
+        # Light trap drum circle (in center zone)
+        drum_cx_yd = C_WID / 2   # = 1181mm
+        drum_cx_x = x_offset + (PANEL_CC / 2 + C_WALL_T) / 2  # approximate drum center depth
+        # Actually drum center is at 80mm from exterior = 40mm from wall inner face
+        # In container coords: X = 40mm from wall inner face
+        drum_x = x_offset + 40   # drum center in X relative to wall inner face
+        ax.add_patch(Circle((drum_x, drum_cx_yd), DR,
+                            fc="#F5F0E8", ec=C_OUT, lw=1.5, alpha=alpha * 0.7, zorder=7))
+        if label_prefix:
+            ax.text(x_offset + PANEL_CC / 2, C_WID / 2,
+                    f"{label_prefix}\nPANEL",
+                    ha="center", va="center", fontsize=7, color=C_OUT,
+                    fontweight="bold", **FONT, alpha=alpha, zorder=15)
+
+    # ── Helper: draw waste drums at given CX ──────────────────────────────────
+    def draw_drums(cx, alpha=1.0, label=""):
+        """Draw D-1 and D-2 waste drums at given center X."""
+        r = DRUM_EQ_R
+        for yd_lo, yd_hi, name in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, "D-1"),
+                                    (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI, "D-2")]:
+            yd_c = (yd_lo + yd_hi) / 2
+            ax.add_patch(Circle((cx, yd_c), r,
+                                fc="#C8B090", ec=C_OUT, lw=1.0, alpha=alpha, zorder=8))
+            if label:
+                ax.text(cx, yd_c, f"{name}\n{label}",
+                        ha="center", va="center", fontsize=5.5, color=C_OUT,
+                        **FONT, alpha=alpha, zorder=15)
+
+    # ── Draw OPERATIONAL position (solid) ─────────────────────────────────────
+    draw_panel(OP_PANEL_X, alpha=0.9, label_prefix="OPERATIONAL")
+    draw_drums(OP_DRUM_CX, alpha=0.85, label="(OP)")
+
+    # ── Draw TRANSPORT position (ghost) ───────────────────────────────────────
+    draw_panel(TR_PANEL_X, alpha=0.25, label_prefix="TRANSPORT")
+    draw_drums(TR_DRUM_CX, alpha=0.25, label="(TR)")
+
+    # ── Slide arrows ──────────────────────────────────────────────────────────
+    # Panel slide arrow
+    arr_y = C_WID / 2 + 500
+    ax.annotate("", xy=(TR_PANEL_X + PANEL_CC / 2, arr_y),
+                xytext=(OP_PANEL_X + PANEL_CC / 2, arr_y),
+                arrowprops=dict(arrowstyle="->", color="#C04010", lw=2.0,
+                                mutation_scale=12))
+    ax.text((OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CC / 2, arr_y + 50,
+            f"PANEL SLIDE: {SLIDE_P}mm\n(HGR20 LINEAR RAILS)",
+            ha="center", va="bottom", fontsize=7, color="#C04010",
+            fontweight="bold", **FONT, zorder=15)
+
+    # Drum slide arrow (near D-1)
+    arr_y2 = (DRUM_LZ_YD_LO + DRUM_LZ_YD_HI) / 2 - 400
+    ax.annotate("", xy=(TR_DRUM_CX, arr_y2),
+                xytext=(OP_DRUM_CX, arr_y2),
+                arrowprops=dict(arrowstyle="->", color="#2060A0", lw=2.0,
+                                mutation_scale=12))
+    ax.text((OP_DRUM_CX + TR_DRUM_CX) / 2, arr_y2 - 60,
+            f"DRUM SLIDE: {SLIDE_D}mm\n(V-GROOVE DOLLY TRACKS)",
+            ha="center", va="top", fontsize=7, color="#2060A0",
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── HGR20 rail indicators (floor level) ──────────────────────────────────
+    RAIL_LEN_VIS = SLIDE_P + 200   # visual rail length
+    for yd_pos, label in [(30, "FLOOR RAIL (HGR20)"), (C_WID - 30, "CEILING RAIL (HGR20)")]:
+        ax.plot([-50, RAIL_LEN_VIS], [yd_pos, yd_pos],
+                color="#404040", lw=3.0, zorder=3, alpha=0.5)
+        ax.text(RAIL_LEN_VIS + 10, yd_pos, label,
+                ha="left", va="center", fontsize=5.5, color="#404040",
+                **FONT, zorder=15)
+
+    # ── V-groove track indicators (per drum) ─────────────────────────────────
+    TRACK_LEN = SLIDE_D + 200
+    for yd_lo, yd_hi in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI),
+                          (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI)]:
+        yd_c = (yd_lo + yd_hi) / 2
+        for yd_off in [-150, 150]:
+            ax.plot([OP_DRUM_CX - DRUM_EQ_R - 50, OP_DRUM_CX - DRUM_EQ_R + TRACK_LEN],
+                    [yd_c + yd_off, yd_c + yd_off],
+                    color="#2060A0", lw=2.5, zorder=3, alpha=0.4)
+
+    # ── Dimension lines ──────────────────────────────────────────────────────
+    # Panel corner thickness
+    dim_h(ax, OP_PANEL_X, OP_PANEL_X + PANEL_CT, -120,
+          f"{PANEL_CT}mm CORNER", offset=40, fs=6.5)
+    # Panel center thickness
+    dim_h(ax, OP_PANEL_X, OP_PANEL_X + PANEL_CC, -200,
+          f"{PANEL_CC}mm CENTER", offset=40, fs=6.5)
+    # Waste drum X range (operational)
+    _dl = OP_DRUM_CX - DRUM_EQ_R
+    _dr = OP_DRUM_CX + DRUM_EQ_R
+    dim_h(ax, _dl, _dr, DRUM_LZ_YD_HI + 60,
+          f"Ø{DRUM_EQ_D}mm  X={_dl}–{_dr}mm", offset=30, fs=6)
+
+    # ── Carriage beam indicator ──────────────────────────────────────────────
+    BEAM_W = 60
+    ax.add_patch(Rectangle((OP_PANEL_X - 5, -10), BEAM_W, C_WID + 20,
+                            fc="none", ec="#C04010", lw=1.5, ls="--",
+                            alpha=0.6, zorder=5))
+    ax.text(OP_PANEL_X + BEAM_W + 10, -40,
+            "CARRIAGE BEAM\n(60×60mm SHS)",
+            ha="left", va="top", fontsize=5.5, color="#C04010", **FONT, zorder=15)
+
+    # ── Lock position labels ─────────────────────────────────────────────────
+    ax.plot([OP_PANEL_X, OP_PANEL_X], [Y_LO + 50, -40],
+            color="#20A060", lw=1.0, ls="--", zorder=4)
+    ax.text(OP_PANEL_X, Y_LO + 30, "OPERATIONAL\nLOCK (X=0)",
+            ha="center", va="bottom", fontsize=6, color="#20A060",
+            fontweight="bold", **FONT, zorder=15)
+
+    ax.plot([TR_PANEL_X, TR_PANEL_X], [Y_LO + 50, -40],
+            color="#C04010", lw=1.0, ls="--", zorder=4)
+    ax.text(TR_PANEL_X, Y_LO + 30, f"TRANSPORT\nLOCK (X={SLIDE_P})",
+            ha="center", va="bottom", fontsize=6, color="#C04010",
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Container door closure plane ─────────────────────────────────────────
+    ax.plot([-C_WALL_T, -C_WALL_T], [Y_LO, Y_HI],
+            color="#804020", lw=1.5, ls=":", zorder=4, alpha=0.7)
+    ax.text(-C_WALL_T - 10, C_WID / 2,
+            "DOOR\nCLOSURE\nPLANE",
+            ha="right", va="center", fontsize=6, color="#804020",
+            fontweight="bold", **FONT, zorder=15, rotation=90)
+
+    # ── Notes ─────────────────────────────────────────────────────────────────
+    notes = [
+        "TRANSPORT MODE: Slide drums inward 305mm, then slide panel inward 300mm.",
+        f"Light trap drum exterior edge clears door closure plane by 5mm.",
+        "Single-person operation, 15-20 minutes per mode conversion.",
+        "Panel locks: 2× Destaco 207-U toggle clamps per position.",
+        "Drum locks: M12 spring plunger pins at each position.",
+        "Fixed door frame provides EPDM seal landing — seal unchanged from non-sliding design.",
+    ]
+    for i, note in enumerate(notes):
+        ax.text(X_HI - 20, Y_HI - 40 - i * 50, note,
+                ha="right", va="top", fontsize=5.5, color=C_DIM, **FONT, zorder=15)
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 4 OF 4",
+                "SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
+                "EQUAL ASPECT  ·  ALL DIMS IN mm  ·  SOLID = OPERATIONAL, GHOST = TRANSPORT")
+
+    fig.savefig("diagrams/hingepanel-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/hingepanel-sheet4.svg", bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet4.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
     sheet1()
     sheet2()
     sheet3()
+    sheet4()
     print("Done.")

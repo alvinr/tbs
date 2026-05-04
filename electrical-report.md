@@ -267,7 +267,7 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 | Circuit fuse | 3A | 5A |
 | Additional cost | — | ~$60 |
 
-**Installation:** Same light-baffle design as original — L-shaped offset baffles inside a duct stub. Intake fan is low on the drum-end short wall (draws in cooler air near floor level). Exhaust fan is high on the far short wall (expels hot air near ceiling). Cross-flow ventilation.
+**Installation:** Same light-baffle design as original — L-shaped offset baffles inside a duct stub. Fan A (intake) is low on the far end wall (X=C_LEN, draws in cooler air near floor level). Fan B (exhaust) is mounted on the hinged panel (far corner zone, Yd=2,287mm, H=1,800mm) with its baffle duct protruding from the panel exterior face. During operation the cargo doors are open (personnel access is via the revolving light trap drum), so the exhaust discharges directly into the open doorway. Fan B moves with the panel on the sliding carriage; wiring uses a flexible coiled cable from the fixed door frame (see §8.3). Cross-flow ventilation diagonal: low intake at far end → high exhaust at cargo door end.
 
 **Operating modes:**
 
@@ -295,7 +295,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — intake | 5A | 16 AWG | ~3m |
-| B | Ventilation fan — exhaust | 5A | 16 AWG | ~8m |
+| B | Ventilation fan — exhaust (panel-mounted) | 5A | 16 AWG | ~8m + flex connector |
 | C | Water pump | 15A | 14 AWG | ~5m |
 | D | Safelight (interior + drum) | 5A | 18 AWG | ~10m |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
@@ -309,6 +309,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
+- **Circuit B flex connector (panel-mounted exhaust fan):** Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2,200mm.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.
 

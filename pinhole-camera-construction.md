@@ -405,10 +405,9 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 
 For operations involving darkroom chemistry inside the container:
 
-- Install two 4" diameter vent penetrations (one high on each short wall)
-- Fit each with a 4" inline fan (reversible — one intake, one exhaust)
-- Cover interior face with a light-trap baffle: an L-shaped black sheet metal channel that blocks direct light while allowing airflow
-- During exposure: fans off, baffles sealed
+- **Fan A (intake):** 6" vent penetration, low position on the far end wall (X=C_LEN). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
+- **Fan B (exhaust):** 6" fan mounted on the hinged panel (far corner zone, high position). Baffle duct protrudes from the panel exterior face — exhausts into the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
+- During exposure: fans off
 - During processing/loading: fans on for ventilation
 
 **Minimum ventilation requirement for darkroom chemistry:** Acetic acid stop bath and sodium thiosulfate fixer both produce fumes. OSHA permissible exposure limit for acetic acid is 10 ppm (8-hour TWA). Forced ventilation during chemistry use is required.

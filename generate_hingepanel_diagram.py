@@ -1231,23 +1231,21 @@ def sheet4():
                 ha="left", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 
-    # ── Legend (bottom right, horizontal row above title block) ──────────────
-    legend_right = C_WID + PAD_R - 20
-    legend_y = X_LO + 50 + len(notes) * 26 + 25
+    # ── Legend (right side, stacked vertically) ─────────────────────────────
+    legend_x = C_WID + 80
+    legend_top = X_LO + 50 + len(notes) * 26 + 10
     swatches = [
-        (C_ALUM,   0.9,  "Corner"),
-        (C_STEEL,  0.9,  "Center"),
-        ("#F5F0E8", 0.7,  "Lt. trap"),
-        ("#C8B090", 0.85, "Waste drum"),
-        (C_STEEL,  0.20, "Transport"),
+        (C_ALUM,   0.9,  "Corner zone (40mm)"),
+        (C_STEEL,  0.9,  "Center zone (120mm)"),
+        ("#F5F0E8", 0.7,  "Light trap drum"),
+        ("#C8B090", 0.85, "55-gal waste drum"),
+        (C_STEEL,  0.20, "Transport (ghost)"),
     ]
-    SWATCH_STEP = 200
-    legend_start = legend_right - (len(swatches) - 1) * SWATCH_STEP
     for i, (c, a, lbl) in enumerate(swatches):
-        sx = legend_start + i * SWATCH_STEP
-        ax.add_patch(Rectangle((sx, legend_y - 7), 20, 14,
+        sy = legend_top - i * 30
+        ax.add_patch(Rectangle((legend_x, sy - 7), 20, 14,
                                 fc=c, ec=C_OUT, lw=0.8, alpha=a, zorder=15))
-        ax.text(sx + 28, legend_y, lbl,
+        ax.text(legend_x + 28, sy, lbl,
                 ha="left", va="center", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 

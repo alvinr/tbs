@@ -972,206 +972,281 @@ def sheet4():
                                DRUM_FZ_YD_HI, ZONE_L_END, WALL_T as C_WALL_T)
 
     # ── Layout constants ─────────────────────────────────────────────────────
+    # Plan view:  horizontal = Yd (container width, 0 → C_WID)
+    #             vertical   = X  (depth from wall inner face, positive inward)
+    # This matches the Sheet 2 convention and the floorplan left-end detail.
     PANEL_CT = PANEL_CORNER_T   # = 40mm
     PANEL_CC = PANEL_CENTER_T   # = 120mm
     SLIDE_P  = PANEL_SLIDE      # = 300mm
     SLIDE_D  = DRUM_SLIDE       # = 305mm
     DR       = DRUM_R           # = 375mm (light trap drum)
 
-    # Panel and drum positions in each mode
-    # Operational: panel at X=0, drums at normal position
-    # Transport: panel at X=SLIDE_P, drums at X=normal+SLIDE_D
+    # Positions in each mode (X = depth from wall inner face)
     OP_PANEL_X = 0
     TR_PANEL_X = SLIDE_P        # = 300
 
     OP_DRUM_CX = DRUM_LZ_CX    # = 330mm
     TR_DRUM_CX = OP_DRUM_CX + SLIDE_D   # = 635mm
 
-    # ── Figure ────────────────────────────────────────────────────────────────
-    PAD_L = 200; PAD_R = 400; PAD_B = 300; PAD_T = 300
-    X_LO = -C_WALL_T - PAD_L       # = -240
-    X_HI = TR_DRUM_CX + DRUM_EQ_R + PAD_R   # = 635+290+400 = 1325
-    Y_LO = -PAD_B
-    Y_HI = C_WID + PAD_T
+    # ── Figure — landscape, Yd horizontal, X vertical ────────────────────────
+    PAD_L = 350     # left of Yd=0 — room for dims + slide labels
+    PAD_R = 380     # right of Yd=C_WID — room for legend + callouts
+    PAD_B = 320     # below wall exterior — room for notes
+    PAD_T = 200     # above ZONE_L_END
 
-    fig, ax = plt.subplots(figsize=(16, 12))
+    YD_LO = -PAD_L
+    YD_HI = C_WID + PAD_R
+    X_LO  = -C_WALL_T - PAD_B
+    X_HI  = ZONE_L_END + PAD_T
+
+    fig, ax = plt.subplots(figsize=(18, 9))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(X_LO, X_HI)
-    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_xlim(YD_LO, YD_HI)
+    ax.set_ylim(X_LO, X_HI)
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── Container wall (X=-40 to X=0) ────────────────────────────────────────
-    ax.add_patch(Rectangle((-C_WALL_T, 0), C_WALL_T, C_WID,
+    # ── Axis labels ──────────────────────────────────────────────────────────
+    ax.text(C_WID / 2, X_LO + 15, "Yd  (container width)  →",
+            ha="center", va="bottom", fontsize=7, color=C_DIM,
+            **FONT, zorder=15, style="italic")
+    ax.text(YD_LO + 15, ZONE_L_END / 2,
+            "X  (depth from wall)  →",
+            ha="left", va="center", fontsize=7, color=C_DIM,
+            **FONT, zorder=15, style="italic", rotation=90)
+
+    # ── Background zone tints ────────────────────────────────────────────────
+    # Exterior zone (below wall)
+    ax.add_patch(Rectangle((YD_LO, X_LO), YD_HI - YD_LO, C_WALL_T + PAD_B,
+                            fc="#F0EDE8", ec="none", zorder=1))
+    ax.text(C_WID / 2, X_LO + 70,
+            "EXTERIOR", color="#806050", fontsize=8, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=2, alpha=0.5)
+    # Interior zone (above wall)
+    ax.add_patch(Rectangle((YD_LO, 0), YD_HI - YD_LO, X_HI,
+                            fc="#F8FAF8", ec="none", zorder=1))
+
+    # ── Container wall (X = -C_WALL_T to 0) — horizontal band ───────────────
+    ax.add_patch(Rectangle((0, -C_WALL_T), C_WID, C_WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
-    ax.text(-C_WALL_T / 2, C_WID / 2, f"{int(C_WALL_T)}mm\nWALL",
-            ha="center", va="center", fontsize=6, color=BG,
-            fontweight="bold", **FONT, zorder=15, rotation=90)
+    ax.text(-60, -C_WALL_T / 2, f"{int(C_WALL_T)}mm\nWALL",
+            ha="right", va="center", fontsize=6, color=C_DIM,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Door closure plane (exterior face of wall at X = -C_WALL_T) ──────────
+    ax.plot([YD_LO + 60, YD_HI - 60], [-C_WALL_T, -C_WALL_T],
+            color="#804020", lw=1.2, ls=":", zorder=4, alpha=0.7)
+    ax.text(C_WID + 80, -C_WALL_T, "DOOR CLOSURE PLANE",
+            ha="left", va="center", fontsize=6, color="#804020",
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Fixed door frame (at X=0, 50mm RHS) ─────────────────────────────────
+    FRAME_W = 50
+    ax.add_patch(Rectangle((0, 0), C_WID, FRAME_W,
+                            fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
+    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 80, 170),
+           "FIXED DOOR FRAME\n50×50mm RHS · SEAL LANDING", col="#806010", fs=6)
 
     # ── ZONE_L_END boundary ──────────────────────────────────────────────────
-    ax.plot([ZONE_L_END, ZONE_L_END], [Y_LO, Y_HI],
+    ax.plot([YD_LO + 60, YD_HI - 60], [ZONE_L_END, ZONE_L_END],
             color="#20A020", lw=1.5, ls=(0, (8, 4)), zorder=4, alpha=0.7)
-    ax.text(ZONE_L_END + 10, Y_HI - 50,
-            f"ZONE_L_END = {ZONE_L_END}mm\n(FILM PLANE LEFT EDGE)",
-            ha="left", va="top", fontsize=6.5, color="#20A020", **FONT, zorder=15)
+    ax.text(C_WID + 80, ZONE_L_END,
+            f"ZONE_L_END = {ZONE_L_END}mm",
+            ha="left", va="center", fontsize=6.5, color="#20A020",
+            fontweight="bold", **FONT, zorder=15)
+    ax.text(C_WID + 80, ZONE_L_END - 35,
+            "(FILM PLANE LEFT EDGE)",
+            ha="left", va="center", fontsize=5.5, color="#20A020",
+            **FONT, zorder=15)
 
-    # ── Fixed door frame (X=0 line) ──────────────────────────────────────────
-    FRAME_W = 50   # RHS frame width
-    # Draw as thin outline at X=0
-    ax.add_patch(Rectangle((0, -10), FRAME_W, C_WID + 20,
-                            fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
-    ax.text(FRAME_W + 5, C_WID + 40,
-            "FIXED DOOR FRAME\n(50×50mm RHS, WELDED)\nSEAL LANDING AT X=0",
-            ha="left", va="bottom", fontsize=6, color="#806010", **FONT, zorder=15)
-
-    # ── Helper: draw panel in a given position ────────────────────────────────
-    def draw_panel(x_offset, alpha=1.0, label_prefix=""):
-        """Draw stepped panel outline at given X offset."""
-        # Corner zone near (Yd=0 to PANEL_CORNER_YD_L)
-        ax.add_patch(Rectangle((x_offset, 0), PANEL_CT, PANEL_CORNER_YD_L,
+    # ── Helper: draw panel at given X offset ─────────────────────────────────
+    def draw_panel(x_off, alpha=1.0, label=""):
+        """Draw stepped panel. Yd = horizontal, X = vertical."""
+        # Corner zone near (Yd=0 to PANEL_CORNER_YD_L) — 40mm thick
+        ax.add_patch(Rectangle((0, x_off), PANEL_CORNER_YD_L, PANEL_CT,
                                 fc=C_ALUM, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
-        # Center zone (Yd=PANEL_CORNER_YD_L to PANEL_CORNER_YD_R)
-        ax.add_patch(Rectangle((x_offset, PANEL_CORNER_YD_L), PANEL_CC,
-                                PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
+        # Center zone (Yd=PANEL_CORNER_YD_L to PANEL_CORNER_YD_R) — 120mm thick
+        ax.add_patch(Rectangle((PANEL_CORNER_YD_L, x_off),
+                                PANEL_CORNER_YD_R - PANEL_CORNER_YD_L, PANEL_CC,
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
-        # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID)
-        ax.add_patch(Rectangle((x_offset, PANEL_CORNER_YD_R), PANEL_CT,
-                                C_WID - PANEL_CORNER_YD_R,
+        # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID) — 40mm thick
+        ax.add_patch(Rectangle((PANEL_CORNER_YD_R, x_off),
+                                C_WID - PANEL_CORNER_YD_R, PANEL_CT,
                                 fc=C_ALUM, ec=C_OUT, lw=1.0, alpha=alpha, zorder=6))
-        # Light trap drum circle (in center zone)
-        drum_cx_yd = C_WID / 2   # = 1181mm
-        drum_cx_x = x_offset + (PANEL_CC / 2 + C_WALL_T) / 2  # approximate drum center depth
-        # Actually drum center is at 80mm from exterior = 40mm from wall inner face
-        # In container coords: X = 40mm from wall inner face
-        drum_x = x_offset + 40   # drum center in X relative to wall inner face
-        ax.add_patch(Circle((drum_x, drum_cx_yd), DR,
-                            fc="#F5F0E8", ec=C_OUT, lw=1.5, alpha=alpha * 0.7, zorder=7))
-        if label_prefix:
-            ax.text(x_offset + PANEL_CC / 2, C_WID / 2,
-                    f"{label_prefix}\nPANEL",
+        # Light trap drum circle
+        drum_yd = C_WID / 2    # centered in container width
+        drum_x = x_off + 40    # drum center is 40mm from panel inner face
+        ax.add_patch(Circle((drum_yd, drum_x), DR,
+                            fc="#F5F0E8", ec=C_OUT, lw=1.5,
+                            alpha=alpha * 0.7, zorder=7))
+        if label:
+            ax.text(drum_yd, drum_x, label,
                     ha="center", va="center", fontsize=7, color=C_OUT,
                     fontweight="bold", **FONT, alpha=alpha, zorder=15)
 
-    # ── Helper: draw waste drums at given CX ──────────────────────────────────
+    # ── Helper: draw waste drums at given CX ─────────────────────────────────
     def draw_drums(cx, alpha=1.0, label=""):
-        """Draw D-1 and D-2 waste drums at given center X."""
+        """Draw D-1 and D-2 waste drums. cx is X position (vertical)."""
         r = DRUM_EQ_R
         for yd_lo, yd_hi, name in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, "D-1"),
                                     (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI, "D-2")]:
             yd_c = (yd_lo + yd_hi) / 2
-            ax.add_patch(Circle((cx, yd_c), r,
-                                fc="#C8B090", ec=C_OUT, lw=1.0, alpha=alpha, zorder=8))
-            if label:
-                ax.text(cx, yd_c, f"{name}\n{label}",
-                        ha="center", va="center", fontsize=5.5, color=C_OUT,
-                        **FONT, alpha=alpha, zorder=15)
+            ax.add_patch(Circle((yd_c, cx), r,
+                                fc="#C8B090", ec=C_OUT, lw=1.0,
+                                alpha=alpha, zorder=8))
+            ax.text(yd_c, cx, f"{name}",
+                    ha="center", va="center", fontsize=6.5, color=C_OUT,
+                    fontweight="bold", **FONT, alpha=alpha, zorder=15)
 
     # ── Draw OPERATIONAL position (solid) ─────────────────────────────────────
-    draw_panel(OP_PANEL_X, alpha=0.9, label_prefix="OPERATIONAL")
-    draw_drums(OP_DRUM_CX, alpha=0.85, label="(OP)")
+    draw_panel(OP_PANEL_X, alpha=0.9, label="OPERATIONAL\nPANEL")
+    draw_drums(OP_DRUM_CX, alpha=0.85)
 
     # ── Draw TRANSPORT position (ghost) ───────────────────────────────────────
-    draw_panel(TR_PANEL_X, alpha=0.25, label_prefix="TRANSPORT")
-    draw_drums(TR_DRUM_CX, alpha=0.25, label="(TR)")
+    draw_panel(TR_PANEL_X, alpha=0.20, label="TRANSPORT\nPANEL")
+    draw_drums(TR_DRUM_CX, alpha=0.20)
 
-    # ── Slide arrows ──────────────────────────────────────────────────────────
-    # Panel slide arrow
-    arr_y = C_WID / 2 + 500
-    ax.annotate("", xy=(TR_PANEL_X + PANEL_CC / 2, arr_y),
-                xytext=(OP_PANEL_X + PANEL_CC / 2, arr_y),
-                arrowprops=dict(arrowstyle="->", color="#C04010", lw=2.0,
-                                mutation_scale=12))
-    ax.text((OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CC / 2, arr_y + 50,
-            f"PANEL SLIDE: {SLIDE_P}mm\n(HGR20 LINEAR RAILS)",
-            ha="center", va="bottom", fontsize=7, color="#C04010",
+    # ── Slide arrows — panel ─────────────────────────────────────────────────
+    # Arrow between operational and transport panel positions, in the gap
+    # between D-1 and D-2 (around Yd=1181, the drum center)
+    arr_yd_p = C_WID / 2    # center of container width — clear area
+    arr_x0 = OP_PANEL_X + PANEL_CT / 2
+    arr_x1 = TR_PANEL_X + PANEL_CT / 2
+    ax.annotate("", xy=(arr_yd_p, arr_x1), xytext=(arr_yd_p, arr_x0),
+                arrowprops=dict(arrowstyle="->,head_length=0.6,head_width=0.4",
+                                color="#C04010", lw=2.0,
+                                connectionstyle="arc3,rad=0.3",
+                                mutation_scale=12), zorder=15)
+    ax.text(arr_yd_p + 80, (arr_x0 + arr_x1) / 2 + 20,
+            f"PANEL SLIDE\n{SLIDE_P}mm",
+            ha="left", va="center", fontsize=6.5, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 
-    # Drum slide arrow (near D-1)
-    arr_y2 = (DRUM_LZ_YD_LO + DRUM_LZ_YD_HI) / 2 - 400
-    ax.annotate("", xy=(TR_DRUM_CX, arr_y2),
-                xytext=(OP_DRUM_CX, arr_y2),
-                arrowprops=dict(arrowstyle="->", color="#2060A0", lw=2.0,
-                                mutation_scale=12))
-    ax.text((OP_DRUM_CX + TR_DRUM_CX) / 2, arr_y2 - 60,
-            f"DRUM SLIDE: {SLIDE_D}mm\n(V-GROOVE DOLLY TRACKS)",
-            ha="center", va="top", fontsize=7, color="#2060A0",
+    # ── Slide arrows — drums ─────────────────────────────────────────────────
+    # Arrow between operational and transport D-2 position (far drum, less crowded)
+    d2_yd = (DRUM_FZ_YD_LO + DRUM_FZ_YD_HI) / 2
+    ax.annotate("", xy=(d2_yd, TR_DRUM_CX), xytext=(d2_yd, OP_DRUM_CX),
+                arrowprops=dict(arrowstyle="->,head_length=0.6,head_width=0.4",
+                                color="#2060A0", lw=2.0,
+                                connectionstyle="arc3,rad=-0.3",
+                                mutation_scale=12), zorder=15)
+    ax.text(d2_yd + DRUM_EQ_R + 30, (OP_DRUM_CX + TR_DRUM_CX) / 2,
+            f"DRUM SLIDE\n{SLIDE_D}mm",
+            ha="left", va="center", fontsize=6.5, color="#2060A0",
             fontweight="bold", **FONT, zorder=15)
 
-    # ── HGR20 rail indicators (floor level) ──────────────────────────────────
-    RAIL_LEN_VIS = SLIDE_P + 200   # visual rail length
-    for yd_pos, label in [(30, "FLOOR RAIL (HGR20)"), (C_WID - 30, "CEILING RAIL (HGR20)")]:
-        ax.plot([-50, RAIL_LEN_VIS], [yd_pos, yd_pos],
+    # ── HGR20 rail indicators (along Yd edges, near floor/ceiling) ───────────
+    RAIL_X_START = -30
+    RAIL_X_END = SLIDE_P + 150
+    for yd_pos, offset, ha_pos in [
+        (30,        -15, "right"),
+        (C_WID - 30, 15, "left")
+    ]:
+        ax.plot([yd_pos, yd_pos], [RAIL_X_START, RAIL_X_END],
                 color="#404040", lw=3.0, zorder=3, alpha=0.5)
-        ax.text(RAIL_LEN_VIS + 10, yd_pos, label,
-                ha="left", va="center", fontsize=5.5, color="#404040",
-                **FONT, zorder=15)
-
-    # ── V-groove track indicators (per drum) ─────────────────────────────────
-    TRACK_LEN = SLIDE_D + 200
+    # ── V-groove track indicators (paired, per drum) ─────────────────────────
+    TRACK_X_START = OP_DRUM_CX - DRUM_EQ_R - 30
+    TRACK_X_END = TRACK_X_START + SLIDE_D + DRUM_EQ_D + 60
     for yd_lo, yd_hi in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI),
                           (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI)]:
         yd_c = (yd_lo + yd_hi) / 2
         for yd_off in [-150, 150]:
-            ax.plot([OP_DRUM_CX - DRUM_EQ_R - 50, OP_DRUM_CX - DRUM_EQ_R + TRACK_LEN],
-                    [yd_c + yd_off, yd_c + yd_off],
-                    color="#2060A0", lw=2.5, zorder=3, alpha=0.4)
+            ax.plot([yd_c + yd_off, yd_c + yd_off],
+                    [TRACK_X_START, TRACK_X_END],
+                    color="#2060A0", lw=2.5, zorder=3, alpha=0.35)
+
+    # ── Carriage beam (dashed rectangle, full height at X=0) ─────────────────
+    BEAM_W = 60
+    ax.add_patch(Rectangle((0, OP_PANEL_X - 5), C_WID, BEAM_W,
+                            fc="none", ec="#C04010", lw=1.5, ls="--",
+                            alpha=0.5, zorder=5))
+    leader(ax, (C_WID - 100, BEAM_W / 2), (C_WID + 80, 350),
+           "CARRIAGE BEAM\n60×60mm SHS", col="#C04010", fs=6)
+
+    # ── Lock position labels ────────────────────────────────────────────────
+    # Operational lock at X=0 — label on left side, well below transport lock
+    ax.plot([YD_LO + 60, 0], [OP_PANEL_X, OP_PANEL_X],
+            color="#20A060", lw=1.0, ls="--", zorder=4)
+    ax.text(YD_LO + 60, OP_PANEL_X - 10,
+            "OPERATIONAL LOCK (X=0)",
+            ha="left", va="top", fontsize=5.5, color="#20A060",
+            fontweight="bold", **FONT, zorder=15)
+
+    # Transport lock at X=SLIDE_P — label on left side
+    ax.plot([YD_LO + 60, 0], [TR_PANEL_X, TR_PANEL_X],
+            color="#C04010", lw=1.0, ls="--", zorder=4)
+    ax.text(YD_LO + 60, TR_PANEL_X + 15,
+            f"TRANSPORT LOCK (X={SLIDE_P}mm)",
+            ha="left", va="bottom", fontsize=5.5, color="#C04010",
+            fontweight="bold", **FONT, zorder=15)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
-    # Panel corner thickness
-    dim_h(ax, OP_PANEL_X, OP_PANEL_X + PANEL_CT, -120,
-          f"{PANEL_CT}mm CORNER", offset=40, fs=6.5)
-    # Panel center thickness
-    dim_h(ax, OP_PANEL_X, OP_PANEL_X + PANEL_CC, -200,
-          f"{PANEL_CC}mm CENTER", offset=40, fs=6.5)
-    # Waste drum X range (operational)
-    _dl = OP_DRUM_CX - DRUM_EQ_R
-    _dr = OP_DRUM_CX + DRUM_EQ_R
-    dim_h(ax, _dl, _dr, DRUM_LZ_YD_HI + 60,
-          f"Ø{DRUM_EQ_D}mm  X={_dl}–{_dr}mm", offset=30, fs=6)
+    # Panel thickness dims — use leaders into the panel zones for clarity
+    # Corner zone thickness
+    leader(ax, (PANEL_CORNER_YD_L / 2, PANEL_CT / 2),
+           (YD_LO + 80, PANEL_CT + 60),
+           f"{PANEL_CT}mm CORNER ZONE", col=C_DIM, fs=6)
 
-    # ── Carriage beam indicator ──────────────────────────────────────────────
-    BEAM_W = 60
-    ax.add_patch(Rectangle((OP_PANEL_X - 5, -10), BEAM_W, C_WID + 20,
-                            fc="none", ec="#C04010", lw=1.5, ls="--",
-                            alpha=0.6, zorder=5))
-    ax.text(OP_PANEL_X + BEAM_W + 10, -40,
-            "CARRIAGE BEAM\n(60×60mm SHS)",
-            ha="left", va="top", fontsize=5.5, color="#C04010", **FONT, zorder=15)
+    # Center zone thickness
+    leader(ax, (C_WID / 2, PANEL_CC - 10),
+           (C_WID / 2 + 350, PANEL_CC + 60),
+           f"{PANEL_CC}mm CENTER ZONE", col=C_DIM, fs=6)
 
-    # ── Lock position labels ─────────────────────────────────────────────────
-    ax.plot([OP_PANEL_X, OP_PANEL_X], [Y_LO + 50, -40],
-            color="#20A060", lw=1.0, ls="--", zorder=4)
-    ax.text(OP_PANEL_X, Y_LO + 30, "OPERATIONAL\nLOCK (X=0)",
-            ha="center", va="bottom", fontsize=6, color="#20A060",
-            fontweight="bold", **FONT, zorder=15)
+    # Waste drum diameter (horizontal dim above D-1, in Yd direction)
+    _d1_yd = (DRUM_LZ_YD_LO + DRUM_LZ_YD_HI) / 2
+    _dim_x = OP_DRUM_CX + DRUM_EQ_R + 40
+    dim_h(ax, _d1_yd - DRUM_EQ_R, _d1_yd + DRUM_EQ_R, _dim_x,
+          f"Ø{DRUM_EQ_D}mm", offset=25, fs=6.5)
 
-    ax.plot([TR_PANEL_X, TR_PANEL_X], [Y_LO + 50, -40],
-            color="#C04010", lw=1.0, ls="--", zorder=4)
-    ax.text(TR_PANEL_X, Y_LO + 30, f"TRANSPORT\nLOCK (X={SLIDE_P})",
-            ha="center", va="bottom", fontsize=6, color="#C04010",
-            fontweight="bold", **FONT, zorder=15)
+    # Drum X range (vertical dim on far side of D-2)
+    _dl_x = OP_DRUM_CX - DRUM_EQ_R
+    _dr_x = OP_DRUM_CX + DRUM_EQ_R
+    _d2_yd = (DRUM_FZ_YD_LO + DRUM_FZ_YD_HI) / 2
+    _dim_yd_r = _d2_yd + DRUM_EQ_R + 50
+    dim_v(ax, _dim_yd_r, _dl_x, _dr_x,
+          f"X={_dl_x}–{_dr_x}mm", offset=15, fs=6)
 
-    # ── Container door closure plane ─────────────────────────────────────────
-    ax.plot([-C_WALL_T, -C_WALL_T], [Y_LO, Y_HI],
-            color="#804020", lw=1.5, ls=":", zorder=4, alpha=0.7)
-    ax.text(-C_WALL_T - 10, C_WID / 2,
-            "DOOR\nCLOSURE\nPLANE",
-            ha="right", va="center", fontsize=6, color="#804020",
-            fontweight="bold", **FONT, zorder=15, rotation=90)
+    # Step transition Yd widths (top edge, well above ZONE_L_END)
+    _dim_top = ZONE_L_END + 60
+    dim_h(ax, 0, PANEL_CORNER_YD_L, _dim_top,
+          f"{PANEL_CORNER_YD_L}mm", offset=25, fs=6)
+    dim_h(ax, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, _dim_top,
+          f"{PANEL_CORNER_YD_R - PANEL_CORNER_YD_L}mm (CENTER)", offset=25, fs=6)
+    dim_h(ax, PANEL_CORNER_YD_R, C_WID, _dim_top,
+          f"{C_WID - PANEL_CORNER_YD_R}mm", offset=25, fs=6)
 
-    # ── Notes ─────────────────────────────────────────────────────────────────
+    # ── Notes (in exterior zone below drawing) ─────────────────────────────
     notes = [
-        "TRANSPORT MODE: Slide drums inward 305mm, then slide panel inward 300mm.",
-        f"Light trap drum exterior edge clears door closure plane by 5mm.",
-        "Single-person operation, 15-20 minutes per mode conversion.",
-        "Panel locks: 2× Destaco 207-U toggle clamps per position.",
+        f"1. TRANSPORT MODE: Slide drums inward {SLIDE_D}mm, then slide panel inward {SLIDE_P}mm.",
+        "2. Light trap drum exterior edge clears door closure plane by 5mm.",
+        "3. Single-person operation, 15–20 minutes per mode conversion.",
+        "4. Panel locks: 2× Destaco 207-U toggle clamps per position.  "
         "Drum locks: M12 spring plunger pins at each position.",
-        "Fixed door frame provides EPDM seal landing — seal unchanged from non-sliding design.",
+        "5. Fixed door frame provides EPDM seal landing — seal unchanged from non-sliding design.",
     ]
     for i, note in enumerate(notes):
-        ax.text(X_HI - 20, Y_HI - 40 - i * 50, note,
-                ha="right", va="top", fontsize=5.5, color=C_DIM, **FONT, zorder=15)
+        ax.text(C_WID / 2, X_LO + 50 + (len(notes) - 1 - i) * 28, note,
+                ha="center", va="bottom", fontsize=5.5, color=C_DIM,
+                **FONT, zorder=15)
+
+    # ── Legend (right side, stacked vertically above ZONE_L_END label) ───────
+    legend_x = C_WID + 80
+    legend_y = ZONE_L_END - 100
+    swatches = [
+        (C_ALUM,   0.9,  "Corner zone (40mm)"),
+        (C_STEEL,  0.9,  "Center zone (120mm)"),
+        ("#F5F0E8", 0.7,  "Light trap drum"),
+        ("#C8B090", 0.85, "55-gal waste drum"),
+        (C_STEEL,  0.20, "Transport (ghost)"),
+    ]
+    for i, (c, a, lbl) in enumerate(swatches):
+        sy = legend_y - i * 40
+        ax.add_patch(Rectangle((legend_x, sy - 7), 25, 14,
+                                fc=c, ec=C_OUT, lw=0.8, alpha=a, zorder=15))
+        ax.text(legend_x + 35, sy, lbl,
+                ha="left", va="center", fontsize=5.5, color=C_DIM,
+                **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 4",

@@ -891,7 +891,7 @@ def sheet3():
 
     # ── Data range → figure size ──────────────────────────────────────────────
     PAD_L, PAD_R = 300, 700   # depth-axis margins
-    PAD_B, PAD_T = 350, 350   # height-axis margins (bottom includes title block space)
+    PAD_B, PAD_T = 500, 350   # height-axis margins (bottom includes title block + rail annotations)
 
     X_LO = D_DEPTH_L - PAD_L   # = -595mm
     X_HI = D_DEPTH_R + PAD_R   # = 1155mm  → width 1750mm
@@ -948,7 +948,7 @@ def sheet3():
     ax.add_patch(plt.Rectangle((X_LO, H_FLOOR - PAD_B), X_HI - X_LO, PAD_B,
                                 fc="#D8D0C0", ec="none", zorder=2))
     ax.plot([X_LO, X_HI], [H_FLOOR, H_FLOOR], color=C_OUT, lw=1.5, zorder=4)
-    ax.text(X_LO + 30, H_FLOOR - PAD_B * 0.5, "FLOOR LEVEL",
+    ax.text(X_LO + 30, H_FLOOR - PAD_B * 0.75, "FLOOR LEVEL",
             ha="left", va="center", fontsize=7, color=C_DIM, **FONT, zorder=15)
 
     # ── HGR20 sliding rails (floor + ceiling, both container walls) ──────────
@@ -984,23 +984,23 @@ def sheet3():
                                 RAIL_BLOCK_L, RAIL_BLOCK_H,
                                 fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
 
-    # Rail labels
+    # Rail labels — placed well clear of dimension lines below
     leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, RAIL_FLOOR_Y + RAIL_PROF_H / 2),
-           (RAIL_FLOOR_X + RAIL_PROF_L + 130, RAIL_FLOOR_Y - 50),
-           "HGR20 FLOOR RAIL\n(BOTH WALLS, 500mm)\n300mm SLIDE TRAVEL",
+           (RAIL_FLOOR_X + RAIL_PROF_L + 200, RAIL_FLOOR_Y - 130),
+           "HGR20 FLOOR RAIL\n(BOTH WALLS, 500mm)",
            col=C_RAIL_S3, fs=5.5)
     leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, H_CEILING - RAIL_PROF_H / 2),
            (RAIL_FLOOR_X + RAIL_PROF_L + 130, H_CEILING + 50),
            "HGR20 CEILING RAIL\n(BOTH WALLS, 500mm)",
            col=C_RAIL_S3, fs=5.5)
 
-    # Slide travel arrow (below floor rail)
-    ARROW_Y = RAIL_FLOOR_Y - 25
+    # Slide travel arrow (below overhang dimensions, clear of title block)
+    ARROW_Y = RAIL_FLOOR_Y - 160
     ax.annotate("", xy=(Y0_W, ARROW_Y), xytext=(Y0_W + SLIDE_TRAVEL, ARROW_Y),
                 arrowprops=dict(arrowstyle="<->", color=C_RAIL_S3, lw=1.0,
                                 mutation_scale=8), zorder=9)
-    ax.text(Y0_W + SLIDE_TRAVEL / 2, ARROW_Y - 20,
-            f"{SLIDE_TRAVEL}mm\nSLIDE", ha="center", va="top",
+    ax.text(Y0_W + SLIDE_TRAVEL / 2, ARROW_Y - 15,
+            f"{SLIDE_TRAVEL}mm SLIDE TRAVEL", ha="center", va="top",
             fontsize=5.5, color=C_RAIL_S3, **FONT, zorder=15)
 
     # ── Lower bearing housing ─────────────────────────────────────────────────
@@ -1042,7 +1042,7 @@ def sheet3():
         ax.plot([fin_depth, fin_depth], [H_DRUM_BOT + 20, H_DRUM_TOP - 20],
                 color=C_OUT, lw=1.2, ls=(0, (5, 3)), zorder=7, alpha=0.7)
 
-    ax.text(D_CX_DEPTH, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
+    ax.text(D_CX_DEPTH/2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
             "4 × INTERNAL BAFFLES\n(FULL HEIGHT)\nFlat black powder coat",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.7, zorder=15)
@@ -1054,7 +1054,7 @@ def sheet3():
     hx = D_DEPTH_R - 110
     ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(hx + 55, H_HANDLE - HH / 2 - 40, "INT. HANDLE\n(welded bracket\nno through-hole)",
+    ax.text(hx + 255, H_HANDLE + 20, "INT. HANDLE\n(welded bracket\nno through-hole)",
             ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT, zorder=15)
 
     # ── Person silhouette — standing inside drum, feet at drum floor (H_DRUM_BOT) ──
@@ -1127,10 +1127,10 @@ def sheet3():
                 xytext=(D_DEPTH_R + 20, EAR_Y),
                 arrowprops=dict(arrowstyle="->", color="#20A060", lw=1.5,
                                 mutation_scale=10))
-    ax.text(D_DEPTH_R + 80, EAR_Y + 130, "EXIT\n(to interior / darkroom)",
+    ax.text(D_DEPTH_R + 80, EAR_Y, "EXIT\n(to interior / darkroom)",
             ha="left", va="bottom", fontsize=7, color="#20A060", **FONT, zorder=15)
 
-    ax.text(D_CX_DEPTH, H_FLOOR + DRUM_H * 0.2,
+    ax.text(D_CX_DEPTH /2 - 150, H_FLOOR + DRUM_H * 0.2,
             "DRUM ROTATES\nARROUND VERTICAL\nAXIS — PUSH WALL\nTO ENTER/EXIT",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.75, zorder=15)
@@ -1150,16 +1150,16 @@ def sheet3():
     dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 250,
           f"{PT}mm PANEL", offset=35, fs=6.5)
 
-    # Wall thickness (horizontal) — placed in floor zone with larger offset
+    # Wall thickness (horizontal) — placed in floor zone
     dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 160,
           f"{WALL_T}mm WALL", offset=50, fs=6.5)
 
-    # Exterior overhang (horizontal)
-    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 60,
+    # Exterior overhang (horizontal) — below floor rail
+    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 80,
           f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=35, fs=6)
 
-    # Interior overhang (horizontal)
-    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR - 60,
+    # Interior overhang (horizontal) — below floor rail
+    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR - 80,
           f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=35, fs=6)
 
     # Handle height

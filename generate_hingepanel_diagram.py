@@ -86,53 +86,97 @@ def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
             ax.plot([x + i, x + i + h], [y, y + h], color=C_OUT,
                     lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
 
-def title_block(ax, sheet_label, subtitle, scale_note="", height=0.045):
-    """Draw title block at bottom of axes.  `height` is in axes-fraction
-    units — use ~0.045 for landscape sheets, ~0.08–0.10 for portrait."""
+def title_block(ax, sheet_label, subtitle, scale_note="", height=0.045,
+                portrait=False):
+    """Draw title block at bottom of axes.
+
+    Parameters
+    ----------
+    height : float   axes-fraction box height (~0.045 landscape, ~0.09 portrait)
+    portrait : bool  if True, use smaller fonts and clip text to cell bounds
+    """
     t = ax.transAxes
-    y0 = 0.003                       # bottom of box
-    h  = height                      # box height in axes fraction
-    y1 = y0 + h                      # top of box
-    # Row positions within the box (fractions of box height, from bottom)
+    y0 = 0.003
+    h  = height
+    y1 = y0 + h
     row_top = y0 + h * 0.80
     row_mid = y0 + h * 0.48
     row_bot = y0 + h * 0.18
-    # White box with black border spanning full width at bottom
-    ax.add_patch(FancyBboxPatch((0.005, y0), 0.99, h,
+
+    # Font sizes — scale down for narrow portrait figures
+    if portrait:
+        fs_title = 6.0
+        fs_body  = 5.0
+        fs_small = 4.5
+        fs_sheet = 7.0
+    else:
+        fs_title = 7.5
+        fs_body  = 6.5
+        fs_small = 5.5
+        fs_sheet = 9.0
+
+    # Column boundaries
+    col_L = 0.005          # left edge
+    div_1 = 0.30           # first divider
+    div_2 = 0.75           # second divider
+    col_R = 0.995          # right edge
+    cx_left   = (col_L + div_1) / 2     # center of left cell
+    cx_center = (div_1 + div_2) / 2     # center of center cell
+    cx_right  = (div_2 + col_R) / 2     # center of right cell
+
+    # Clip boxes for each cell so text cannot overflow into neighbors
+    from matplotlib.patches import FancyBboxPatch as FBP
+    clip_left   = FBP((col_L, y0), div_1 - col_L, h,
+                      boxstyle="square,pad=0", transform=t)
+    clip_center = FBP((div_1, y0), div_2 - div_1, h,
+                      boxstyle="square,pad=0", transform=t)
+    clip_right  = FBP((div_2, y0), col_R - div_2, h,
+                      boxstyle="square,pad=0", transform=t)
+
+    # White box with black border
+    ax.add_patch(FancyBboxPatch((col_L, y0), col_R - col_L, h,
                  boxstyle="square,pad=0", fc="white", ec=C_OUT, lw=1.2,
                  transform=t, zorder=20))
-    # Vertical dividers at 30% and 75%
-    ax.plot([0.30, 0.30], [y0, y1], color=C_OUT, lw=0.6,
+    # Vertical dividers
+    ax.plot([div_1, div_1], [y0, y1], color=C_OUT, lw=0.6,
             transform=t, zorder=21)
-    ax.plot([0.75, 0.75], [y0, y1], color=C_OUT, lw=0.6,
+    ax.plot([div_2, div_2], [y0, y1], color=C_OUT, lw=0.6,
             transform=t, zorder=21)
+
     # Left cell: project info
-    ax.text(0.152, row_top, "THE BIG SHOEBOX PROJECT",
-            transform=t, color=C_OUT, fontsize=7.5, fontweight="bold",
-            ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.152, row_mid, "TBS-001  ·  Hinged Light-Trap Panel",
-            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
-            zorder=21, **FONT)
-    ax.text(0.152, row_bot, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=t, color=C_DIM, fontsize=5.5, ha="center", va="center",
-            style="italic", zorder=21, **FONT)
+    for txt, yy, fs, kw in [
+        ("THE BIG SHOEBOX PROJECT", row_top, fs_title,
+         dict(fontweight="bold", color=C_OUT)),
+        ("TBS-001  ·  Hinged Light-Trap Panel", row_mid, fs_body,
+         dict(color=C_DIM)),
+        ("© 2026 Alvin Richards — GNU AGPLv3", row_bot, fs_small,
+         dict(color=C_DIM, style="italic")),
+    ]:
+        t_obj = ax.text(cx_left, yy, txt, transform=t, fontsize=fs,
+                        ha="center", va="center", zorder=21, **FONT, **kw)
+        t_obj.set_clip_path(clip_left)
+
     # Center cell: drawing title
-    ax.text(0.525, row_top, f"HINGED LIGHT-TRAP PANEL — {sheet_label}",
-            transform=t, color=C_OUT, fontsize=8, fontweight="bold",
-            ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.525, row_mid, subtitle,
-            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
-            zorder=21, **FONT)
-    ax.text(0.525, row_bot, f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
-            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
-            zorder=21, **FONT)
+    for txt, yy, fs, kw in [
+        (f"HINGED LIGHT-TRAP PANEL — {sheet_label}", row_top, fs_title + 0.5,
+         dict(fontweight="bold", color=C_OUT)),
+        (subtitle, row_mid, fs_body, dict(color=C_DIM)),
+        (f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
+         row_bot, fs_body, dict(color=C_DIM)),
+    ]:
+        t_obj = ax.text(cx_center, yy, txt, transform=t, fontsize=fs,
+                        ha="center", va="center", zorder=21, **FONT, **kw)
+        t_obj.set_clip_path(clip_center)
+
     # Right cell: sheet number + units
-    ax.text(0.875, row_top, sheet_label,
-            transform=t, color=C_OUT, fontsize=9, fontweight="bold",
-            ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.875, row_bot, "ALL DIMS IN mm",
-            transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
-            zorder=21, **FONT)
+    t1 = ax.text(cx_right, row_top, sheet_label, transform=t,
+                 color=C_OUT, fontsize=fs_sheet, fontweight="bold",
+                 ha="center", va="center", zorder=21, **FONT)
+    t1.set_clip_path(clip_right)
+    t2 = ax.text(cx_right, row_bot, "ALL DIMS IN mm", transform=t,
+                 color=C_DIM, fontsize=fs_body,
+                 ha="center", va="center", zorder=21, **FONT)
+    t2.set_clip_path(clip_right)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1178,11 +1222,11 @@ def sheet3():
     dim_v(ax, HANDLE_DIM_X, H_FLOOR, HANDLE_BOT,
           f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-140, fs=6)
 
-    # ── Title block (portrait sheet — use taller box) ──────────────────────────
+    # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 4",
                 "DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm",
-                height=0.09)
+                height=0.09, portrait=True)
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet3.png"), bbox_inches="tight", facecolor=BG)

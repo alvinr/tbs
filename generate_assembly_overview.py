@@ -992,7 +992,7 @@ def draw_hgr20_rails(ax):
             alpha=0.6, zorder=4))
 
 
-C_BRIDGE  = "#B89060"    # bridge section color (lighter than permanent)
+C_BRIDGE  = "#4A90D9"    # bridge section color (blue — distinct from brown permanent)
 
 def draw_vgroove_tracks(ax, drum_x_left, show_bridges=False):
     """Draw V-groove roller tracks for waste drums.

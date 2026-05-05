@@ -175,8 +175,8 @@ def hatch_region(ax, patch, spacing=3, angle=45, color='#AAAAAA', lw=0.5):
 def title_block(ax, fig_w, fig_h, sheet_n, sheet_total, title1, title2,
                 scale_str, project='THE BIG SHOEBOX PROJECT',
                 series='TBS-TSB'):
-    # Outer border
-    draw_rect(ax, 5, 5, fig_w-10, fig_h-10, lw=1.5, color='black', fc='white')
+    # Outer border — zorder=0 so content drawn later is not hidden
+    draw_rect(ax, 5, 5, fig_w-10, fig_h-10, lw=1.5, color='black', fc='white', zorder=0)
     # Title block box
     tb_x = fig_w - 220
     draw_rect(ax, tb_x, 5, 215, 75, lw=0.5, color='black', fc='#F5F5F5')

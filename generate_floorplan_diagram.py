@@ -253,6 +253,29 @@ def floor_plan():
                 f"▲ {DRUM_EQ_H}mm H", color=C_DRUM_EQ, fontsize=5.5,
                 ha="center", va="bottom" if ann_dir > 0 else "top", **FONT, zorder=7)
 
+    # ── V-groove dolly tracks (drum slide rails) ───────────────────────────────
+    C_TRACK   = "#8B7355"    # permanent track color (brown)
+    C_BRIDGE  = "#4A90D9"    # bridge section color (blue)
+    TRACK_W   = 8            # track visual width in plan
+    for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
+        for offset in [-80, 80]:  # two parallel tracks per drum
+            ty = drum_yd + offset
+            # Permanent section (X = PANEL_CORNER_T to PERM_TRACK_END)
+            ax.add_patch(Rectangle(
+                (PANEL_CORNER_T, ty - TRACK_W/2), PERM_TRACK_END - PANEL_CORNER_T, TRACK_W,
+                facecolor=C_TRACK, edgecolor=C_OUT, linewidth=0.3,
+                alpha=0.5, zorder=4))
+            # Bridge section (X = BRIDGE_TRACK_START to BRIDGE_TRACK_END) — dashed
+            ax.add_patch(Rectangle(
+                (BRIDGE_TRACK_START, ty - TRACK_W/2), BRIDGE_TRACK_END - BRIDGE_TRACK_START, TRACK_W,
+                facecolor=C_BRIDGE, edgecolor=C_OUT, linewidth=0.3,
+                alpha=0.45, zorder=4, linestyle="--"))
+    # Track label
+    ax.text(PERM_TRACK_END / 2, DRUM_LZ_YD + DRUM_EQ_R + 120,
+            f"V-GROOVE DOLLY TRACKS\n(perm X={PANEL_CORNER_T}–{PERM_TRACK_END}, "
+            f"bridge X={BRIDGE_TRACK_START}–{BRIDGE_TRACK_END})",
+            color=C_TRACK, fontsize=5, ha="center", va="bottom", **FONT, zorder=7)
+
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
     # Electrical panel + battery (thin strip at Y=0)
     equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC_COL,
@@ -359,6 +382,8 @@ def floor_plan():
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
         (C_OPT,       "Optical axis (2362mm focal length)"),
         (C_PINHOLE,   "Revolving light-trap drum"),
+        ("#8B7355",   "V-groove dolly track (permanent)"),
+        ("#4A90D9",   "V-groove bridge section (removable)"),
         (C_DEV_ZONE,  "Development area (outside container)"),
     ]
     box_w = 780; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R

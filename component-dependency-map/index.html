@@ -1059,6 +1059,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#115-sliding-drum-dolly-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.15 Sliding Drum Dolly System
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1816,6 +1827,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#115-sliding-drum-dolly-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.15 Sliding Drum Dolly System
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2492,6 +2514,73 @@ D-2 near far wall corner; both at X=310mm in left end zone), drum bungs, gravity
 <p><em>Derived rule: any equipment with X &lt; ZONE_L_END is shadow-free at all depths.
 Any equipment with X &gt; ZONE_R_START is shadow-free at all depths.
 Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
+<h3 id="115-sliding-drum-dolly-system">1.15 Sliding Drum Dolly System<a class="headerlink" href="#115-sliding-drum-dolly-system" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dolly plate size</td>
+<td>620 × 620 mm, 6mm A36 steel</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Permanent track X range</td>
+<td>40–620 mm</td>
+<td><code>PANEL_CORNER_T</code> → <code>PERM_TRACK_END</code></td>
+</tr>
+<tr>
+<td>Removable bridge X range</td>
+<td>600–955 mm</td>
+<td><code>BRIDGE_TRACK_START</code> → <code>BRIDGE_TRACK_END</code></td>
+</tr>
+<tr>
+<td>Bridge section length</td>
+<td>355 mm</td>
+<td><code>BRIDGE_TRACK_LEN</code></td>
+</tr>
+<tr>
+<td>Bridge section count</td>
+<td>4 (2 per drum)</td>
+<td><code>BRIDGE_COUNT</code></td>
+</tr>
+<tr>
+<td>Drum slide travel</td>
+<td>305 mm</td>
+<td><code>DRUM_SLIDE</code></td>
+</tr>
+<tr>
+<td>Dolly track riser height</td>
+<td>30 mm</td>
+<td><code>DRUM_DOLLY_H</code></td>
+</tr>
+<tr>
+<td>V-groove roller wheel diameter</td>
+<td>50 mm OD, sealed bearings</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Lock mechanism</td>
+<td>M12 spring plunger pin (ball-nose)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Bridge locating pins</td>
+<td>2 × M8 dowel per section</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><em>Components: V-groove roller tracks (hardened steel, floor-mount), 30mm welded steel risers,
+dolly plates (6mm A36), V-groove roller wheels (×8, 250kg/wheel), removable bridge sections (×4,
+~2kg each, stowed behind IBC column), M12 spring plunger pin locks (×8, both positions),
+M8 dowel pins for bridge alignment.</em></p>
+<p><em>Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).</em></p>
 <hr />
 <h2 id="2-script-and-diagram-index">2. Script and Diagram Index<a class="headerlink" href="#2-script-and-diagram-index" title="Permanent link">&para;</a></h2>
 <p>Every generator script, its output PNGs, and the subsystems it renders.</p>
@@ -2509,7 +2598,7 @@ Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
 <td><strong>FP</strong></td>
 <td><code>generate_floorplan_diagram.py</code></td>
 <td><code>diagrams/container-floorplan.png</code></td>
-<td>1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14</td>
+<td>1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15</td>
 </tr>
 <tr>
 <td><strong>LOS</strong></td>
@@ -2520,8 +2609,8 @@ Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
 <tr>
 <td><strong>AO</strong></td>
 <td><code>generate_assembly_overview.py</code></td>
-<td><code>diagrams/assembly-overview.png</code><br><code>diagrams/assembly-overview-fp.png</code></td>
-<td>1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13</td>
+<td><code>diagrams/assembly-overview.png</code><br><code>diagrams/assembly-overview-fp.png</code><br><code>diagrams/assembly-overview-plan.png</code></td>
+<td>1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15</td>
 </tr>
 <tr>
 <td><strong>AF</strong></td>
@@ -2556,8 +2645,8 @@ Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
 <tr>
 <td><strong>HP</strong></td>
 <td><code>generate_hingepanel_diagram.py</code></td>
-<td><code>diagrams/hingepanel-sheet1.png</code><br><code>diagrams/hingepanel-sheet2.png</code><br><code>diagrams/hingepanel-sheet3.png</code></td>
-<td>1, 5, 6</td>
+<td><code>diagrams/hingepanel-sheet1.png</code><br><code>diagrams/hingepanel-sheet2.png</code><br><code>diagrams/hingepanel-sheet3.png</code><br><code>diagrams/hingepanel-sheet4.png</code></td>
+<td>1, 5, 6, 15</td>
 </tr>
 <tr>
 <td><strong>LT</strong></td>
@@ -2704,7 +2793,7 @@ Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
 <td><strong>6</strong> Hinged Panel</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -2853,6 +2942,23 @@ Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
+<tr>
+<td><strong>15</strong> Drum Dolly System</td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✓</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
 </tbody>
 </table>
 <hr />
@@ -2937,6 +3043,11 @@ PNGs alongside the constant change.</p>
 <td><code>DRUM_LZ_*</code>, <code>DRUM_FZ_*</code>, <code>DRUM_EQ_*</code></td>
 <td>FP, LOS, AO, AF, WS</td>
 <td>Left end zone waste drums</td>
+</tr>
+<tr>
+<td><code>PERM_TRACK_END</code>, <code>BRIDGE_TRACK_*</code>, <code>DRUM_SLIDE</code>, <code>DRUM_DOLLY_H</code></td>
+<td>FP, AO, HP</td>
+<td>Drum dolly tracks and bridge sections</td>
 </tr>
 <tr>
 <td><code>DRUM_CX</code>, <code>DRUM_D</code>, <code>DRUM_H_LT</code></td>

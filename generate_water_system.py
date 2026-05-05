@@ -25,6 +25,8 @@ from tbs_constants import (
     DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    PANEL_CORNER_T, PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
+    DRUM_SLIDE,
     svg_path, SVG_DIR,
 )
 import os
@@ -608,6 +610,34 @@ for drum_cx, drum_cy, label in [
     ax2.text(dx, dy, label, ha="center", va="center",
              fontsize=5.5, fontweight="bold", color=C_BLACK, zorder=3,
              multialignment="center")
+
+# V-groove dolly tracks under waste drums
+C_TRACK_W  = "#8B7355"    # permanent track color (brown)
+C_BRIDGE_W = "#4A90D9"    # bridge section color (blue)
+TK_W = 0.04               # track visual width in drawing units
+for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
+    for offset_mm in [-80, 80]:  # two parallel tracks per drum
+        ty = (drum_yd + offset_mm) * SY
+        # Permanent section (X = PANEL_CORNER_T to PERM_TRACK_END)
+        x0 = PANEL_CORNER_T * SX
+        x1 = PERM_TRACK_END * SX
+        ax2.add_patch(plt.Rectangle((x0, ty - TK_W/2), x1 - x0, TK_W,
+                      fc=C_TRACK_W, ec=C_FRAME, lw=0.3, alpha=0.5, zorder=1))
+        # Bridge section (removable)
+        bx0 = BRIDGE_TRACK_START * SX
+        bx1 = BRIDGE_TRACK_END * SX
+        ax2.add_patch(plt.Rectangle((bx0, ty - TK_W/2), bx1 - bx0, TK_W,
+                      fc=C_BRIDGE_W, ec=C_FRAME, lw=0.3, alpha=0.45, zorder=1, ls="--"))
+
+# Flexible waste hose annotations (drums slide 305mm on dollies)
+flex_x = (DRUM_LZ_CX + DRUM_EQ_R + 20) * SX  # just right of drum edge
+for drum_yd, lbl_va in [(DRUM_LZ_YD, "bottom"), (DRUM_FZ_YD, "top")]:
+    fy = drum_yd * SY
+    sign = 1 if lbl_va == "bottom" else -1
+    ax2.annotate("FLEX\nHOSE", xy=(flex_x, fy), xytext=(flex_x + 0.4, fy + sign * 0.45),
+                 fontsize=5, color=C_BLACK, ha="center", va="center",
+                 arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=0.8,
+                                 mutation_scale=8), zorder=5)
 
 # Spray bar along top wall
 pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)

@@ -259,6 +259,8 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 **Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to Brown IBC rear at Yd=1,141mm). Waste hose from manifold to drums runs to the left end zone — maximum run ~3m.
 
+**Flexible drum connections:** The 55-gallon waste drums sit on V-groove roller dollies with 305mm of X-direction travel for transport mode conversion (see [Equipment Layout Report](equipment-layout-report.md) §6.1). The waste hose connection to each drum must use a flexible section to accommodate this movement. Each drum connects via a 1m coiled reinforced PVC hose (1" ID, rated 50 PSI) with quick-disconnect camlock fittings (1" polypropylene Type E × Hose Barb) at the drum bung and at the fixed floor pipe stub. The coiled hose absorbs 305mm of linear travel without kinking. Quick-disconnects are released before sliding drums for transport.
+
 ---
 
 ## 8. Parts List and Shopping List
@@ -316,8 +318,10 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | 1" SDR-11 HDPE pipe | Food-safe, blue-stripe, 20 ft sticks | 5 sticks (100 ft) | [Ferguson Plumbing Supply](https://www.ferguson.com) · Winsupply | $12–$18/stick | **$60–$90** |
 | 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson / Winsupply | $9–$14/stick | **$20–$30** |
 | 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Home Depot / Amazon | $8–$12/length | **$20** |
+| 1" ID reinforced coiled PVC hose | Drum flex connection, 1m per drum (305mm travel) | 2 lengths | Home Depot / Amazon | $10–$15/length | **$20–$30** |
+| 1" polypropylene camlock (Type E × Hose Barb) | Quick-disconnect at drum and floor stub | 4 pairs | Amazon / Grainger | $5–$8/pair | **$20–$32** |
 
-**Pipe subtotal: ~$100–$140**
+**Pipe subtotal: ~$140–$202**
 
 ### 8.6 Electrical
 
@@ -354,10 +358,10 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | Pumps and accumulator | $165 | $195 |
 | Filter skid (housings + cartridges) | $265 | $370 |
 | Valves and fittings | $263 | $398 |
-| Pipe | $100 | $140 |
+| Pipe (incl. drum flex hoses) | $140 | $202 |
 | Electrical | $50 | $50 |
 | Processing consumables | $249 | $304 |
-| **TOTAL** | **$1,457** | **$2,072** |
+| **TOTAL** | **$1,497** | **$2,134** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 

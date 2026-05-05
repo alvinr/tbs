@@ -1186,20 +1186,20 @@ ax_op.text(LT_DRUM_YD_CENTER + DRUM_R + 30, OP_PANEL_X + PANEL_CENTER_T / 2,
            f"{PANEL_CENTER_T}mm", ha="left", va="center",
            fontsize=FS_SM - 1, color=C_DIM, rotation=90)
 
-# Cam latch indicators (4x, interior face) — label pulled below with leader lines
+# Cam latch indicators (4x, interior face) — label to the left with leader lines
 latch_yds = [200, 756, 1606, C_WID - 200]
-latch_label_y = -CONT_WALL - DOOR_T - 250  # below the door closure plane
+latch_label_x = -CONT_WALL - DOOR_T - 250  # below the door closure plane
+latch_label_yd = -120  # left of container wall
 for yd in latch_yds:
     t = PANEL_CORNER_T if (yd < PANEL_CORNER_YD_L or yd > PANEL_CORNER_YD_R) else PANEL_CENTER_T
     ax_op.plot(yd, OP_PANEL_X + t - 5, marker="x", markersize=5,
               color="#CC2020", mew=1.2, zorder=8)
-    ax_op.annotate("", xy=(yd, OP_PANEL_X + t - 5),
-                   xytext=(yd, latch_label_y + 40),
-                   arrowprops=dict(arrowstyle="-", color="#CC2020", lw=0.7),
-                   zorder=7)
-ax_op.text(C_WID / 2, latch_label_y,
-           "Cam latches \u00d74  (Southco C2-33, interior face)",
-           ha="center", va="center", fontsize=FS_SM - 0.5, color="#CC2020", zorder=8)
+    # Leader line from latch marker down then across to label
+    ax_op.plot([yd, yd, latch_label_yd], [OP_PANEL_X + t - 5, latch_label_x, latch_label_x],
+              color="#CC2020", lw=0.6, zorder=7)
+ax_op.text(latch_label_yd, latch_label_x - 40,
+           "Cam latches \u00d74\n(Southco C2-33, interior face)",
+           ha="left", va="top", fontsize=FS_SM - 0.5, color="#CC2020", zorder=8)
 
 
 # ── Shared legend (bottom center of figure) ─────────────────────────────────

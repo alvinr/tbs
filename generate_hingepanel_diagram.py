@@ -1068,9 +1068,10 @@ def sheet3():
     # Drum floor level indicator (thin horizontal line across drum base)
     ax.plot([D_DEPTH_L, D_DEPTH_R], [H_DRUM_BOT, H_DRUM_BOT],
             color="#A06020", lw=0.8, ls="--", zorder=6, alpha=0.7)
-    ax.text(D_DEPTH_L - 15, H_DRUM_BOT,
-            f"DRUM FLOOR  H={H_DRUM_BOT}mm",
-            ha="right", va="center", fontsize=6, color="#A06020", **FONT, zorder=15)
+    # Vertical dimension arrow: container floor → drum floor
+    DRUM_FL_DIM_X = D_DEPTH_L - 180
+    dim_v(ax, DRUM_FL_DIM_X, H_FLOOR, H_DRUM_BOT,
+          f"{H_DRUM_BOT}mm\nDRUM FLOOR", offset=-140, fs=6)
 
     # Person body (line) and head (circle)
     ax.plot([PERSON_X, PERSON_X], [P_FOOT, P_HEAD],
@@ -1162,12 +1163,11 @@ def sheet3():
     dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR - 80,
           f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=35, fs=6)
 
-    # Handle height
-    ax.plot([D_DEPTH_L - 145, D_DEPTH_L - 260], [H_HANDLE, H_HANDLE],
-            color=C_DIM, lw=0.6, ls="--", zorder=3)
-    ax.text(D_DEPTH_L - 270, H_HANDLE,
-            f"{int(H_HANDLE)}mm\nHANDLE HT",
-            ha="right", va="center", fontsize=6, color=C_DIM, **FONT, zorder=15)
+    # Vertical dimension arrow: container floor → handle bottom
+    HANDLE_DIM_X = D_DEPTH_L - 100
+    HANDLE_BOT = H_HANDLE - HH / 2   # bottom of handle bar
+    dim_v(ax, HANDLE_DIM_X, H_FLOOR, HANDLE_BOT,
+          f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-140, fs=6)
 
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 4",

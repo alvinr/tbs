@@ -260,6 +260,46 @@ def sheet1():
            (-HINGE_W - 280, HINGE_YS[1] + 300),
            "3 × 200mm S.S.\nBALL-BEARING PIANO HINGE")
 
+    # ── Sliding carriage system (behind panel, shown as hidden features) ─────
+    # Carriage beam: 60×60mm SHS, full panel height, at hinge line
+    CBEAM_W = 60
+    CBEAM_X = -HINGE_W - CBEAM_W   # left of hinges (behind panel)
+    ax.add_patch(Rectangle((CBEAM_X, 0), CBEAM_W, PH,
+                            fc="none", ec="#C04010", lw=1.5,
+                            ls=(0, (5, 3)), zorder=3, alpha=0.6))
+    ax.text(CBEAM_X + CBEAM_W / 2, PH / 2,
+            "CARRIAGE\nBEAM\n60×60mm\nSHS",
+            color="#C04010", fontsize=5, ha="center", va="center",
+            **FONT, zorder=15, alpha=0.6, rotation=90)
+
+    # HGR20 linear rails — floor and ceiling level, behind carriage beam
+    RAIL_H = 20    # rail cross-section height (visible in elevation)
+    RAIL_LEN = 350  # visible rail length in this view (extends behind panel)
+    C_RAIL = "#CC4422"   # red, matching assembly overview
+    # Floor rail
+    ax.add_patch(Rectangle((CBEAM_X - RAIL_LEN / 2, -10), RAIL_LEN, RAIL_H,
+                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.5, zorder=3))
+    ax.text(CBEAM_X - RAIL_LEN / 2 - 15, -10 + RAIL_H / 2,
+            "HGR20 FLOOR\nRAIL (500mm)",
+            color=C_RAIL, fontsize=5.5, ha="right", va="center",
+            **FONT, zorder=15)
+    # Ceiling rail
+    ax.add_patch(Rectangle((CBEAM_X - RAIL_LEN / 2, PH - 10), RAIL_LEN, RAIL_H,
+                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.5, zorder=3))
+    ax.text(CBEAM_X - RAIL_LEN / 2 - 15, PH - 10 + RAIL_H / 2,
+            "HGR20 CEILING\nRAIL (500mm)",
+            color=C_RAIL, fontsize=5.5, ha="right", va="center",
+            **FONT, zorder=15)
+
+    # Slide direction arrow (below floor rail)
+    arr_y = -80
+    ax.annotate("", xy=(CBEAM_X - 120, arr_y), xytext=(CBEAM_X + 120, arr_y),
+                arrowprops=dict(arrowstyle="<->", color=C_RAIL, lw=1.2,
+                                mutation_scale=10), zorder=15)
+    ax.text(CBEAM_X, arr_y - 50, f"300mm SLIDE TRAVEL\n(X-DIRECTION)",
+            ha="center", va="top", fontsize=5.5, color=C_RAIL,
+            fontweight="bold", **FONT, zorder=15)
+
     # ── Southco C2-33 cam latches (4 corners) — INTERIOR FACE ───────────────
     # Latches are mounted on the INTERIOR face of the panel.
     # From this exterior view they are hidden features — shown dashed per

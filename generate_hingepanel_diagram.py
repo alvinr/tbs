@@ -86,42 +86,51 @@ def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
             ax.plot([x + i, x + i + h], [y, y + h], color=C_OUT,
                     lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
 
-def title_block(ax, sheet_label, subtitle, scale_note=""):
+def title_block(ax, sheet_label, subtitle, scale_note="", height=0.045):
+    """Draw title block at bottom of axes.  `height` is in axes-fraction
+    units — use ~0.045 for landscape sheets, ~0.08–0.10 for portrait."""
     t = ax.transAxes
+    y0 = 0.003                       # bottom of box
+    h  = height                      # box height in axes fraction
+    y1 = y0 + h                      # top of box
+    # Row positions within the box (fractions of box height, from bottom)
+    row_top = y0 + h * 0.80
+    row_mid = y0 + h * 0.48
+    row_bot = y0 + h * 0.18
     # White box with black border spanning full width at bottom
-    ax.add_patch(FancyBboxPatch((0.005, 0.003), 0.99, 0.045,
+    ax.add_patch(FancyBboxPatch((0.005, y0), 0.99, h,
                  boxstyle="square,pad=0", fc="white", ec=C_OUT, lw=1.2,
                  transform=t, zorder=20))
     # Vertical dividers at 30% and 75%
-    ax.plot([0.30, 0.30], [0.003, 0.048], color=C_OUT, lw=0.6,
+    ax.plot([0.30, 0.30], [y0, y1], color=C_OUT, lw=0.6,
             transform=t, zorder=21)
-    ax.plot([0.75, 0.75], [0.003, 0.048], color=C_OUT, lw=0.6,
+    ax.plot([0.75, 0.75], [y0, y1], color=C_OUT, lw=0.6,
             transform=t, zorder=21)
     # Left cell: project info
-    ax.text(0.152, 0.037, "THE BIG SHOEBOX PROJECT",
+    ax.text(0.152, row_top, "THE BIG SHOEBOX PROJECT",
             transform=t, color=C_OUT, fontsize=7.5, fontweight="bold",
             ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.152, 0.025, "TBS-001  ·  Hinged Light-Trap Panel",
+    ax.text(0.152, row_mid, "TBS-001  ·  Hinged Light-Trap Panel",
             transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
             zorder=21, **FONT)
-    ax.text(0.152, 0.012, "© 2026 Alvin Richards — GNU AGPLv3",
+    ax.text(0.152, row_bot, "© 2026 Alvin Richards — GNU AGPLv3",
             transform=t, color=C_DIM, fontsize=5.5, ha="center", va="center",
             style="italic", zorder=21, **FONT)
-    # Centre cell: drawing title
-    ax.text(0.525, 0.037, f"HINGED LIGHT-TRAP PANEL — {sheet_label}",
+    # Center cell: drawing title
+    ax.text(0.525, row_top, f"HINGED LIGHT-TRAP PANEL — {sheet_label}",
             transform=t, color=C_OUT, fontsize=8, fontweight="bold",
             ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.525, 0.020, subtitle,
+    ax.text(0.525, row_mid, subtitle,
             transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
             zorder=21, **FONT)
-    ax.text(0.525, 0.009, f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
+    ax.text(0.525, row_bot, f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
             transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
             zorder=21, **FONT)
     # Right cell: sheet number + units
-    ax.text(0.875, 0.035, sheet_label,
+    ax.text(0.875, row_top, sheet_label,
             transform=t, color=C_OUT, fontsize=9, fontweight="bold",
             ha="center", va="center", zorder=21, **FONT)
-    ax.text(0.875, 0.015, "ALL DIMS IN mm",
+    ax.text(0.875, row_bot, "ALL DIMS IN mm",
             transform=t, color=C_DIM, fontsize=6.5, ha="center", va="center",
             zorder=21, **FONT)
 
@@ -1071,7 +1080,7 @@ def sheet3():
     # Vertical dimension arrow: container floor → drum floor
     DRUM_FL_DIM_X = D_DEPTH_L - 180
     dim_v(ax, DRUM_FL_DIM_X, H_FLOOR, H_DRUM_BOT,
-          f"{H_DRUM_BOT}mm\nDRUM FLOOR", offset=-140, fs=6)
+          f"{H_DRUM_BOT}mm\nDRUM\nFLOOR", offset=-100, fs=6)
 
     # Person body (line) and head (circle)
     ax.plot([PERSON_X, PERSON_X], [P_FOOT, P_HEAD],
@@ -1098,37 +1107,37 @@ def sheet3():
     # ── Drum body ceiling line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],
             color="#20A020", lw=1.2, ls="--", zorder=6)
-    ax.text(X_LO + 80, H_DRUM_TOP + 60,
-            f"DRUM BODY TOP  H={H_DRUM_TOP}mm  |  CLEAR WALKING HT={drum_body_h}mm",
+    ax.text(X_LO + 1180, H_DRUM_TOP,
+            f"DRUM BODY TOP H={H_DRUM_TOP}mm\nCLEAR WALKING HT={drum_body_h}mm",
             ha="left", va="bottom", fontsize=6.5, color="#20A020", **FONT, zorder=15)
 
     # ── Section A-A indicator ─────────────────────────────────────────────────
-    ax.text(X_LO + 20, Y_HI - 200,
-            "SECTION A-A\n(looking along panel width direction)",
+    ax.text(X_LO + 20, Y_HI + 50,
+            "SECTION A-A (looking along panel width direction)",
             ha="left", va="top", fontsize=7, color=C_CL, **FONT,
             fontweight="bold", zorder=15)
 
     # ── Centre line (vertical drum axis) ──────────────────────────────────────
     ax.plot([D_CX_DEPTH, D_CX_DEPTH], [H_FLOOR - 80, H_BRG_TOP + 120],
             color=C_CL, lw=0.9, ls="--", zorder=6)
-    ax.text(D_CX_DEPTH + 280, H_BRG_TOP + 140, "CL\nDRUM AXIS\n(VERTICAL)",
+    ax.text(D_CX_DEPTH - 75, H_BRG_TOP - 240, "CL\nDRUM AXIS\n(VERTICAL)",
             ha="left", va="bottom", fontsize=6.5, color=C_CL, **FONT, zorder=15)
 
     # ── Entry / exit arrows ───────────────────────────────────────────────────
     # Person enters from EXTERIOR, pushes drum, exits to INTERIOR
     EAR_Y = H_FLOOR + DRUM_H * 0.4
-    ax.annotate("", xy=(D_DEPTH_L - 20, EAR_Y),
-                xytext=(X_LO + 60, EAR_Y),
+    ax.annotate("", xy=(D_DEPTH_L - 20, EAR_Y + 450),
+                xytext=(X_LO + 20, EAR_Y + 450),
                 arrowprops=dict(arrowstyle="->", color="#C06010", lw=1.5,
                                 mutation_scale=10))
-    ax.text(X_LO + 60, EAR_Y + 50, "ENTER\n(from exterior)",
+    ax.text(X_LO + 20, EAR_Y + 500, "ENTER\n(from exterior)",
             ha="left", va="bottom", fontsize=7, color="#C06010", **FONT, zorder=15)
 
-    ax.annotate("", xy=(D_DEPTH_R + 60, EAR_Y),
-                xytext=(D_DEPTH_R + 20, EAR_Y),
+    ax.annotate("", xy=(D_DEPTH_R + 220, EAR_Y + 450),
+                xytext=(D_DEPTH_R + 40, EAR_Y + 450),
                 arrowprops=dict(arrowstyle="->", color="#20A060", lw=1.5,
                                 mutation_scale=10))
-    ax.text(D_DEPTH_R + 80, EAR_Y, "EXIT\n(to interior / darkroom)",
+    ax.text(D_DEPTH_R + 40, EAR_Y + 500, "EXIT\n(to interior /\ndarkroom)",
             ha="left", va="bottom", fontsize=7, color="#20A060", **FONT, zorder=15)
 
     ax.text(D_CX_DEPTH /2 - 150, H_FLOOR + DRUM_H * 0.2,
@@ -1144,16 +1153,16 @@ def sheet3():
           f"{DRUM_H} mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
 
     # Drum diameter (horizontal) — placed below top bearing to avoid CL label clash
-    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 130,
-          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=35, fs=7)
+    dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 180,
+          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=15, fs=7)
 
     # Panel thickness (horizontal) — offset above bearing top
-    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 250,
-          f"{PT}mm PANEL", offset=35, fs=6.5)
+    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 275,
+          f"{PT}mm PANEL", offset=15, fs=6.5)
 
     # Wall thickness (horizontal) — placed in floor zone
-    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 160,
-          f"{WALL_T}mm WALL", offset=50, fs=6.5)
+    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 100,
+          f"{WALL_T}mm WALL", offset=15, fs=6.5)
 
     # Exterior overhang (horizontal) — below floor rail
     dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 80,
@@ -1169,10 +1178,11 @@ def sheet3():
     dim_v(ax, HANDLE_DIM_X, H_FLOOR, HANDLE_BOT,
           f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-140, fs=6)
 
-    # ── Title block ────────────────────────────────────────────────────────────
+    # ── Title block (portrait sheet — use taller box) ──────────────────────────
     title_block(ax, "SHEET 3 OF 4",
-                "DRUM ELEVATION — SECTION A-A (VIEW ALONG PANEL WIDTH): VERTICAL DRUM, WALKING HEIGHT",
-                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
+                "DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
+                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm",
+                height=0.09)
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet3.png"), bbox_inches="tight", facecolor=BG)

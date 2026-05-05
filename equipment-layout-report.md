@@ -232,6 +232,26 @@ A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landin
 The panel seals against this frame using the existing Southco C2-33 cam latch and
 20mm EPDM gasket design — the sliding mechanism is transparent to the seal.
 
+#### 6.2.1 Sliding Panel Light Seal Design
+
+The sliding mechanism introduces five potential light ingress paths that must be
+sealed when the panel is in the operational (camera-ready) position.
+
+| # | Light path | Seal method |
+|---|-----------|-------------|
+| 1 | **Panel perimeter → door frame** | Existing: 20mm EPDM gasket in aluminum channel, compressed by 4× Southco C2-33 cam latches against fixed door frame at X=0. Unchanged from original design. |
+| 2 | **Left carriage beam slot** | The fixed door frame has a vertical slot (~70×2,400mm) for the carriage beam. Sealed by doubled nylon brush strip (bristles inward from both sides) bonded to the frame slot edges. The brush strip wipes against the beam during sliding and provides a light-tight seal in the locked position. No straight-line path through doubled bristles. |
+| 3 | **Right guide slot** | Matching vertical slot (~70×2,400mm) on the latch side for the right-side carriage blocks and panel frame edge. Same doubled nylon brush strip treatment as the left slot. |
+| 4 | **Rail channels at floor/ceiling (×4)** | Each HGR20 rail passes through the fixed door frame at floor or ceiling level. A 10mm closed-cell neoprene compression pad (50×30mm) is bonded to the frame face around each rail penetration. When the panel is locked at X=0, the carriage block housing compresses against this pad, closing the rail channel. In transport position, the pads are uncompressed (light seal not required). |
+| 5 | **Panel edge-to-wall clearance gaps** | The panel requires ~10mm clearance to each container wall for sliding. Two vertical strips of 15mm closed-cell EPDM (self-adhesive, full panel height) are bonded to the fixed door frame inner face at each side, positioned to compress against the panel edge when the cam latches engage. These strips deflect during sliding and spring back to seal in the locked position. |
+
+**Light seal verification:** After mode conversion to operational position, the
+operator performs a dark-adaptation check (5 minutes in darkened container with
+all seals engaged). Any visible light points are marked with gaffer tape for
+re-sealing. The doubled brush strips at the carriage beam slots are the most
+critical — they must be inspected for wear every 20 mode conversions and
+replaced annually.
+
 **Mode conversion workflow (single person, 15–20 minutes):**
 
 1. Release cam latches, swing panel open 180°

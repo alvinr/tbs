@@ -67,7 +67,7 @@ def ann(ax, text, xy, xytext, size=7.5):
     """Leader-line annotation with white-backed text."""
     ax.annotate(text, xy=xy, xytext=xytext,
                 fontsize=size, color=C_OUT, ha="center", va="center",
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
+                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.9),
                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=10)
 
 

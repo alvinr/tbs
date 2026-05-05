@@ -97,7 +97,7 @@ def dim_line_v(ax, x, y0, y1, text, offset=30, col=DIM, fs=7):
 def leader(ax, xy, xytext, text, col=ANNO, fs=6.5):
     ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
                 **FONT, ha="center",
-                arrowprops=dict(arrowstyle="-|>", color=col, lw=0.7, mutation_scale=5))
+                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.7, mutation_scale=5))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

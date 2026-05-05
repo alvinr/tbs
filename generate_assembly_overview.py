@@ -115,7 +115,7 @@ def draw_dim_v(ax, x, y1, y2, label, offset=80, fs=FS_SM, color=C_DIM):
 def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
                 fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", color=color, lw=0.7,
+                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
                                 connectionstyle="arc3,rad=0.0"))
 
 def equip_rect(ax, x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):
@@ -491,7 +491,7 @@ def eq2(x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):
 def ldr2(x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
     ax2.annotate(label, xy=(mx(x_tip), y_tip), xytext=(mx(x_txt), y_txt),
                 fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", color=color, lw=0.7,
+                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
                                 connectionstyle="arc3,rad=0.0"))
 
 def dim2h(x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):

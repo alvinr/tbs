@@ -70,7 +70,7 @@ def dim_v(ax, x, y0, y1, label, offset=70, fs=7, col=C_DIM):
 def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5):
     ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
                 ha="center", va="center", **FONT,
-                arrowprops=dict(arrowstyle="-|>", color=col, lw=0.8, mutation_scale=6),
+                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.8, mutation_scale=6),
                 zorder=15)
 
 def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
@@ -995,24 +995,24 @@ def sheet3():
                                 fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
 
     # ── Layer thickness leaders (top) ─────────────────────────────────────────
-    LDR_TOP = H_BRG_TOP + 200    # leader origin height (above bearings)
-    LDR_TOP_TGT = H_BRG_TOP + 310  # leader text target height
+    LDR_TOP = H_BRG_TOP + 100    # leader origin height (above bearings)
+    LDR_TOP_TGT = H_BRG_TOP + 210  # leader text target height
     # Wall
-    leader(ax, ((Y0_W + Y1_W) / 2, LDR_TOP),
-           ((Y0_W + Y1_W) / 2 - 120, LDR_TOP_TGT),
+    leader(ax, ((Y0_W + Y1_W) / 2, LDR_TOP - 50),
+           ((Y0_W + Y1_W) / 2 - 120, LDR_TOP_TGT + 40),
            f"{WALL_T}mm WALL\n(STEEL)", col=C_DIM, fs=5.5)
     # Outer ply
-    leader(ax, ((Y0_PL + Y1_PL) / 2, LDR_TOP),
-           ((Y0_PL + Y1_PL) / 2 + 100, LDR_TOP_TGT + 60),
-           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+    leader(ax, ((Y0_PL + Y1_PL) / 2 - 5, LDR_TOP - 80),
+           ((Y0_PL + Y1_PL) / 2 + 100, LDR_TOP_TGT + 10),
+           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
     # RHS frame
-    leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_TOP - 20),
-           ((Y0_FR + Y1_FR) / 2 + 120, LDR_TOP_TGT + 120),
-           f"{FRAME_T}mm RHS\nFRAME", col=C_DIM, fs=5.5)
+    leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_TOP - 50),
+           ((Y0_FR + Y1_FR) / 2 + 120, LDR_TOP_TGT + 50),
+           f"{FRAME_T}mm RHS FRAME", col=C_DIM, fs=5.5)
     # Inner ply
-    leader(ax, ((Y0_PL2 + Y1_PL2) / 2, LDR_TOP - 20),
-           ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_TOP_TGT + 60),
-           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+    leader(ax, ((Y0_PL2 + Y1_PL2) / 2 - 5, LDR_TOP - 60),
+           ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_TOP_TGT + 10),
+           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
 
     # ── Layer thickness leaders (bottom) ──────────────────────────────────────
     LDR_BOT = H_FLOOR + 60       # leader origin height (just above floor)
@@ -1022,17 +1022,17 @@ def sheet3():
            ((Y0_W + Y1_W) / 2 - 120, LDR_BOT_TGT),
            f"{WALL_T}mm WALL", col=C_DIM, fs=5.5)
     # Outer ply
-    leader(ax, ((Y0_PL + Y1_PL) / 2, LDR_BOT),
+    leader(ax, ((Y0_PL + Y1_PL) / 2 - 5, LDR_BOT + 20),
            ((Y0_PL + Y1_PL) / 2 + 100, LDR_BOT_TGT - 50),
-           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
     # RHS frame
     leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_BOT),
            ((Y0_FR + Y1_FR) / 2 + 120, LDR_BOT_TGT - 100),
-           f"{FRAME_T}mm RHS\nFRAME", col=C_DIM, fs=5.5)
+           f"{FRAME_T}mm RHS FRAME", col=C_DIM, fs=5.5)
     # Inner ply
-    leader(ax, ((Y0_PL2 + Y1_PL2) / 2, LDR_BOT),
+    leader(ax, ((Y0_PL2 + Y1_PL2) / 2 - 5, LDR_BOT + 20),
            ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_BOT_TGT - 50),
-           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+           f"{PLY_T}mm\nPLY", col=C_DIM, fs=5.5)
 
     # ── Floor (ground plane) ──────────────────────────────────────────────────
     ax.add_patch(plt.Rectangle((X_LO, H_FLOOR - PAD_B), X_HI - X_LO, PAD_B,
@@ -1172,7 +1172,7 @@ def sheet3():
     # Headroom gap: person head top → drum body ceiling
     drum_body_h    = H_DRUM_TOP - H_DRUM_BOT
     headroom_1780  = drum_body_h - PERSON_H
-    GAP_X = PERSON_X + HEAD_R + 20
+    GAP_X = PERSON_X
     ax.annotate("", xy=(GAP_X, H_DRUM_TOP), xytext=(GAP_X, P_HEAD + 2 * HEAD_R),
                 arrowprops=dict(arrowstyle="<->", color="#20A020", lw=1.0,
                                 mutation_scale=7), zorder=9)
@@ -1238,18 +1238,18 @@ def sheet3():
           f"Ø{DRUM_D} mm DRUM DIAMETER", offset=15, fs=7)
 
     # Panel thickness (horizontal) — offset above bearing top
-    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 275,
+    dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 295,
           f"{PT}mm PANEL", offset=15, fs=6.5)
 
     # (Wall thickness leaders are drawn above with the other layer leaders)
 
     # Exterior overhang (horizontal) — below floor rail
-    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 80,
-          f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=35, fs=6)
+    dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR + 40,
+          f"{abs(int(D_DEPTH_L))}mm EXT. OVERHANG", offset=15, fs=6)
 
     # Interior overhang (horizontal) — below floor rail
-    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR - 80,
-          f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=35, fs=6)
+    dim_h(ax, Y1_PL2, D_DEPTH_R, H_FLOOR + 40,
+          f"{int(D_DEPTH_R - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6)
 
     # Vertical dimension arrow: container floor → handle bottom
     HANDLE_DIM_X = D_DEPTH_L - 100

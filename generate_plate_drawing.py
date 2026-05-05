@@ -119,7 +119,7 @@ def draw_rect(ax, x, y, w, h, lw=LW_THICK, color=C_OUT, fc='white', zorder=3):
 def leader(ax, xfrom, yfrom, xto, yto, text, fontsize=6, color=C_DIM):
     ax.annotate(text, xy=(xto, yto), xytext=(xfrom, yfrom),
                 fontsize=fontsize, color=color,
-                arrowprops=dict(arrowstyle='->', color=color, lw=0.7))
+                arrowprops=dict(arrowstyle='->', linestyle=':', color=color, lw=0.7))
 
 def bolt_holes(ax, cx, cy, bc_r, n, d_r, color=C_OUT, lw=LW_MED):
     for i in range(n):

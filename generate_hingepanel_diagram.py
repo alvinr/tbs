@@ -1162,7 +1162,7 @@ def sheet4():
             # Bridge section (dashed)
             ax.plot([yd_c + yd_off, yd_c + yd_off],
                     [BRIDGE_TRACK_START, BRIDGE_TRACK_END],
-                    color="#B89060", lw=2.5, zorder=3, alpha=0.45,
+                    color="#4A90D9", lw=2.5, zorder=3, alpha=0.55,
                     ls="--", dashes=(6, 3))
 
     # ── Carriage beam (dashed rectangle, full height at X=0) ─────────────────

@@ -19,7 +19,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
-| 5. Print washing — water system | $1,457 | $2,072 |
+| 5. Print washing — water system | $1,497 | $2,134 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage & drum dolly system | $1,211 | $1,211 |
@@ -27,7 +27,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,161** | **~$18,461** |
+| **TOTAL (base build + 50-print run)** | **~$14,201** | **~$18,523** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -206,8 +206,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1" SDR-11 HDPE pipe | Food-safe, blue-stripe, 20ft sticks | 5 sticks | Ferguson Plumbing / Winsupply | $12–$18/stick | $60–$90 |
 | ¾" SDR-11 HDPE pipe | Spray bar run, 20ft sticks | 2 sticks | Ferguson / Winsupply | $9–$14/stick | $20–$30 |
 | ½" ID reinforced braided PVC hose | Pump inlet flexible connection, 6ft per pump | 2 lengths | Home Depot / Amazon | $8–$12/length | $20 |
+| 1" ID reinforced coiled PVC hose | Drum flex connection, 1m per drum (305mm travel) | 2 lengths | Home Depot / Amazon | $10–$15/length | $20–$30 |
+| 1" polypropylene camlock (Type E × Hose Barb) | Quick-disconnect at drum and floor stub | 4 pairs | Amazon / Grainger | $5–$8/pair | $20–$32 |
 
-**Valves, fittings & pipe subtotal: ~$363–$538**
+**Valves, fittings & pipe subtotal: ~$403–$600**
 
 ### Water system processing consumables
 
@@ -223,7 +225,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $1,457–$2,072**
+**Section total: $1,497–$2,134**
 
 ---
 

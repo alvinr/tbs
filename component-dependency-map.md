@@ -245,7 +245,7 @@ dolly plates (6mm A36), V-groove roller wheels (×8, 250kg/wheel), removable bri
 ~2kg each, stowed behind IBC column), M12 spring plunger pin locks (×8, both positions),
 M8 dowel pins for bridge alignment.*
 
-*Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
+*Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP), water system layout sheet 2 (WS).*
 
 ---
 
@@ -262,7 +262,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **FPM** | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
 | **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c6.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
-| **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
+| **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13, 15 |
 | **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 15 |
 | **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png` | 1, 5, 6, 7, 8 |
 | **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
@@ -292,7 +292,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
 | **13** Black Water (drums) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
 | **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | |
-| **15** Drum Dolly System | ✓ | | ✓ | | | | | | ✓ | | | | | |
+| **15** Drum Dolly System | ✓ | | ✓ | | | | | ✓ | ✓ | | | | | |
 
 ---
 
@@ -317,7 +317,7 @@ PNGs alongside the constant change.
 | `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on pinhole wall |
 | `IBC_COL_X`, `BLUE_IBC_Y`, `BROWN_IBC_Y` | FP, LOS, AO, AF, WS | Right end zone IBC stack |
 | `DRUM_LZ_*`, `DRUM_FZ_*`, `DRUM_EQ_*` | FP, LOS, AO, AF, WS | Left end zone waste drums |
-| `PERM_TRACK_END`, `BRIDGE_TRACK_*`, `DRUM_SLIDE`, `DRUM_DOLLY_H` | FP, AO, HP | Drum dolly tracks and bridge sections |
+| `PERM_TRACK_END`, `BRIDGE_TRACK_*`, `DRUM_SLIDE`, `DRUM_DOLLY_H` | FP, AO, HP, WS | Drum dolly tracks and bridge sections |
 | `DRUM_CX`, `DRUM_D`, `DRUM_H_LT` | FP, LOS, AO, AF, HP, LT | Light trap drum; check `ZONE_L_END` |
 | `ZONE_L_END`, `ZONE_R_START` | FP, LOS, AO, ES | Zone boundaries — these are derived from `FP_X_L`/`FP_X_R`, so change those instead |
 | `FAN_A_H`, `FAN_B_H`, `FAN_DIAM`, `FAN_BODY_D` | LT, ES | Ventilation fan height or size |

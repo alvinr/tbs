@@ -476,20 +476,25 @@ def sheet2():
     D_XL = D_CX - DR    # = 806mm
     D_XR = D_CX + DR    # = 1556mm
 
-    # ── Crop window (zoomed to drum zone + margin) ────────────────────────────
-    PAD_X  = 320   # horizontal margin each side
-    PAD_YB = 300   # bottom margin (exterior zone + title block space)
-    PAD_YT = 180   # top margin (interior zone)
+    # ── View window — full panel width + margins ────────────────────────────
+    # Corner zone thicknesses
+    CORNER_T = 40   # corner zone panel thickness
+    STEP_YD_L = 756    # near-side corner-to-center transition
+    STEP_YD_R = 1606   # far-side center-to-corner transition
 
-    X_LO = D_XL - PAD_X          # = 486mm
-    X_HI = D_XR + PAD_X + 580    # extra right for labels
-    Y_LO = D_YB - PAD_YB         # = -445mm
-    Y_HI = D_YT + PAD_YT         # = 635mm
+    PAD_X  = 450   # horizontal margin each side (room for rails + labels)
+    PAD_YB = 350   # bottom margin (exterior zone)
+    PAD_YT = 220   # top margin (interior zone)
 
-    # Content range: ~2166 × 1080mm → ratio 2.0 : 1
-    # Figure: (16, 8), ratio 2.0 : 1  → fills well with equal aspect
+    X_LO = -PAD_X                # left of panel
+    X_HI = PW + PAD_X            # right of panel
+    Y_LO = D_YB - PAD_YB         # below drum exterior overhang
+    Y_HI = D_YT + PAD_YT         # above drum interior overhang
 
-    fig, ax = plt.subplots(figsize=(16, 8))
+    FIG_W = 22.0
+    FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
+
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(X_LO, X_HI)
@@ -512,60 +517,132 @@ def sheet2():
             "INTERIOR", color="#407040", fontsize=9, ha="center", va="center",
             **FONT, fontweight="bold", alpha=0.55, zorder=15)
 
-    # ── Container end-wall cross-section (Y=0→40) ─────────────────────────────
-    # Left of drum opening
-    ax.add_patch(Rectangle((X_LO, Y0_W), D_XL - X_LO, WALL_T,
+    # ── Container end-wall cross-section (Y=0→40) — full width ────────────────
+    # Continuous wall except for the drum opening
+    ax.add_patch(Rectangle((0, Y0_W), D_XL, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
-    # Right of drum opening
-    ax.add_patch(Rectangle((D_XR, Y0_W), X_HI - D_XR, WALL_T,
+    ax.add_patch(Rectangle((D_XR, Y0_W), PW - D_XR, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
-    # 45° leader labels for wall and panel layers (too thin to label inline)
-    # Right side going south — wall and outer ply (exterior side)
+
+    # ── CENTER ZONE panel (120mm thick, Yd=756→1606) ─────────────────────────
+    # Outer ply, frame, inner ply — between drum opening edges and step lines
+    for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
+        ax.add_patch(Rectangle((x, Y0_PL), w, PLY_T,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+        ax.add_patch(Rectangle((x, Y0_FR), w, FRAME_T,
+                                fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="\\\\", zorder=3))
+        ax.add_patch(Rectangle((x, Y0_PL2), w, PLY_T,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+
+    # ── CORNER ZONES (40mm thick, Yd=0→756 and Yd=1606→2362) ─────────────────
+    # Corner zones: 18mm ply + 4mm steel plate + 18mm ply = 40mm
+    CORN_PLY   = 18
+    CORN_PLATE = 4
+    CORN_Y0_PL  = Y1_W                          # outer ply starts at wall inner face
+    CORN_Y1_PL  = CORN_Y0_PL + CORN_PLY          # = 58
+    CORN_Y0_ST  = CORN_Y1_PL                     # steel plate
+    CORN_Y1_ST  = CORN_Y0_ST + CORN_PLATE         # = 62
+    CORN_Y0_PL2 = CORN_Y1_ST                     # inner ply
+    CORN_Y1_PL2 = CORN_Y0_PL2 + CORN_PLY          # = 80
+
+    for x0, x1 in [(0, STEP_YD_L), (STEP_YD_R, PW)]:
+        w = x1 - x0
+        ax.add_patch(Rectangle((x0, CORN_Y0_PL), w, CORN_PLY,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+        ax.add_patch(Rectangle((x0, CORN_Y0_ST), w, CORN_PLATE,
+                                fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
+        ax.add_patch(Rectangle((x0, CORN_Y0_PL2), w, CORN_PLY,
+                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+
+    # ── Step transition lines ─────────────────────────────────────────────────
+    for sx in [STEP_YD_L, STEP_YD_R]:
+        # Vertical step face at transition
+        ax.plot([sx, sx], [Y0_PL, Y1_PL2], color=C_OUT, lw=1.5, zorder=5)
+        # Horizontal shelf connecting 40mm→120mm
+        ax.plot([sx, sx], [CORN_Y1_PL2, Y1_PL2], color=C_OUT, lw=1.0,
+                ls=(0, (4, 2)), zorder=4, alpha=0.7)
+
+    # ── Layer labels (leaders from center zone) ───────────────────────────────
     LBL_OFF = 130
+    lbl_x_r = D_XR + 60
     for ly, lbl, off in [
         (Y0_W + WALL_T / 2,  f"CONTAINER END WALL ({WALL_T}mm STEEL)", 2 * LBL_OFF),
         (Y0_PL + PLY_T / 2,  f"OUTER PLY ({PLY_T}mm)",                 1 * LBL_OFF),
     ]:
-        ax.annotate(lbl,
-                    xy=(D_XR + 60, ly),
-                    xytext=(D_XR + 60 + off, ly - off),
+        ax.annotate(lbl, xy=(lbl_x_r, ly),
+                    xytext=(lbl_x_r + off, ly - off),
                     fontsize=6.5, color=C_OUT, ha="left", va="top", **FONT,
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                     bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
-    # Left side going north — frame and inner ply (interior side)
+    lbl_x_l = D_XL - 60
     for ly, lbl, off in [
-        (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME  ({FRAME_T}mm)", 1.5 * LBL_OFF),
-        (Y0_PL2 + PLY_T / 2,  f"INNER PLY — FLAT BLACK  ({PLY_T}mm)",    2 * LBL_OFF),
+        (Y0_FR + FRAME_T / 2, f"50×50mm RHS STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
+        (Y0_PL2 + PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
-        ax.annotate(lbl,
-                    xy=(D_XL - 60, ly),
-                    xytext=(D_XL - 60 - off, ly + off),
+        ax.annotate(lbl, xy=(lbl_x_l, ly),
+                    xytext=(lbl_x_l - off, ly + off),
                     fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
                     arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                     bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
-    # ── Panel outer ply (Y=40→58) ─────────────────────────────────────────────
-    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
-        ax.add_patch(Rectangle((x, Y0_PL), w, PLY_T,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-
-    # ── Panel RHS frame (Y=58→142) ────────────────────────────────────────────
-    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
-        ax.add_patch(Rectangle((x, Y0_FR), w, FRAME_T,
-                                fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="\\\\", zorder=3))
-
-    # ── Panel inner ply (Y=142→160) ───────────────────────────────────────────
-    for x, w in [(X_LO, D_XL - X_LO), (D_XR, X_HI - D_XR)]:
-        ax.add_patch(Rectangle((x, Y0_PL2), w, PLY_T,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-
-    # ── EPDM seal strip at panel left edge ────────────────────────────────────
+    # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
     SEAL_W = 20
-    ax.add_patch(Rectangle((X_LO, Y0_PL), SEAL_W, PT,
+    # Left edge
+    ax.add_patch(Rectangle((0, Y0_PL), SEAL_W, PT,
                             fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
-    leader(ax, (X_LO + SEAL_W / 2, Y0_PL + PT / 2),
-           (X_LO - 160, Y0_PL + PT / 2 + 100),
+    # Right edge
+    ax.add_patch(Rectangle((PW - SEAL_W, Y0_PL), SEAL_W, PT,
+                            fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=6, alpha=0.9))
+    leader(ax, (SEAL_W / 2, Y0_PL + PT / 2),
+           (-180, Y0_PL + PT / 2 + 100),
            "20mm EPDM GASKET\n(PERIMETER SEAL)", fs=6.5)
+
+    # ── HGR20 rails and carriage system (both panel edges) ───────────────────
+    C_RAIL = "#CC4422"
+    C_CARR = "#C04010"
+    RAIL_W = 20     # HGR20 rail width (cross-section in plan)
+    RAIL_D = 500    # rail length in depth direction (extends behind panel into page)
+    CBEAM  = 60     # carriage beam SHS section
+
+    # LEFT SIDE — carriage beam + HGR20 rail
+    # Rail is at Yd≈30mm, running in depth (Y) direction — shown as a small rectangle
+    rail_left_x = -80   # left of panel edge
+    ax.add_patch(Rectangle((rail_left_x, -20), RAIL_W, WALL_T + PT + 40,
+                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.6, zorder=5))
+    # Carriage beam cross-section (60×60mm SHS)
+    ax.add_patch(Rectangle((rail_left_x - 10, Y0_PL - 5), CBEAM + 30, CORNER_T + 10,
+                            fc="none", ec=C_CARR, lw=1.5,
+                            ls=(0, (5, 3)), zorder=5, alpha=0.7))
+    # Brush seal strip (doubled, both sides of slot)
+    brush_w = 8
+    ax.add_patch(Rectangle((-brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
+                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+    ax.add_patch(Rectangle((0, Y0_W), brush_w, Y1_PL2 - Y0_W,
+                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+
+    leader(ax, (rail_left_x + RAIL_W / 2, Y0_W + WALL_T / 2),
+           (rail_left_x - 200, Y_LO + 160),
+           "HGR20 RAIL\n(FLOOR/CEILING)\n500mm X-TRAVEL", col=C_RAIL, fs=6)
+    leader(ax, (rail_left_x + CBEAM / 2, Y0_PL + CORNER_T / 2),
+           (rail_left_x - 200, Y_HI - 80),
+           "CARRIAGE BEAM\n60×60mm SHS\n+ BRUSH SEAL", col=C_CARR, fs=6)
+
+    # RIGHT SIDE — guide rail + carriage blocks (no separate beam)
+    rail_right_x = PW + 60
+    ax.add_patch(Rectangle((rail_right_x, -20), RAIL_W, WALL_T + PT + 40,
+                            fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.6, zorder=5))
+    # Brush seal strip (right slot)
+    ax.add_patch(Rectangle((PW - brush_w, Y0_W), brush_w, Y1_PL2 - Y0_W,
+                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+    ax.add_patch(Rectangle((PW, Y0_W), brush_w, Y1_PL2 - Y0_W,
+                            fc="#806040", ec=C_OUT, lw=0.5, zorder=6, alpha=0.8))
+
+    leader(ax, (rail_right_x + RAIL_W / 2, Y0_W + WALL_T / 2),
+           (rail_right_x + 200, Y_LO + 160),
+           "HGR20 RAIL\n(FLOOR/CEILING)\n500mm X-TRAVEL", col=C_RAIL, fs=6)
+    leader(ax, (PW + brush_w / 2, Y0_PL + PT / 2),
+           (rail_right_x + 200, Y_HI - 80),
+           "GUIDE SLOT\n+ BRUSH SEAL\n(DOUBLED NYLON)", col=C_CARR, fs=6)
 
     # ── Drum: draw filled circle on top to cut out the drum hole ─────────────
     # First stamp BG colour over wall/panel where drum sits, then draw drum ring
@@ -697,17 +774,36 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
-    # ── Panel extent note ─────────────────────────────────────────────────────
-    ax.annotate("", xy=(D_XL, Y0_FR + FRAME_T / 2),
-                xytext=(X_LO + 10, Y0_FR + FRAME_T / 2),
-                arrowprops=dict(arrowstyle="<-", color=C_DIM, lw=0.8, mutation_scale=6))
-    ax.text(X_LO + 15, Y0_FR + FRAME_T / 2 - 30,
-            f"← PANEL CONTINUES {int(D_XL)}mm TO LEFT EDGE",
-            color=C_DIM, fontsize=6, ha="left", va="center", **FONT, zorder=15)
+    # Full panel width dimension
+    dim_h(ax, 0, PW, Y_LO + 80, f"{PW} mm  (FULL PANEL WIDTH)", fs=7, offset=25)
+
+    # Zone width dimensions (above panel)
+    zone_dim_y = D_YT + PAD_YT * 0.85
+    dim_h(ax, 0, STEP_YD_L, zone_dim_y,
+          f"{STEP_YD_L}mm", fs=6, offset=-20)
+    dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y,
+          f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-20)
+    dim_h(ax, STEP_YD_R, PW, zone_dim_y,
+          f"{PW - STEP_YD_R}mm", fs=6, offset=-20)
+
+    # Corner zone thickness dimension
+    dim_v(ax, STEP_YD_L / 2 - 100, Y1_W, CORN_Y1_PL2,
+          f"{CORNER_T}mm", offset=15, fs=6)
+
+    # ── Zone labels ─────────────────────────────────────────────────────────────
+    ax.text(STEP_YD_L / 2, CORN_Y1_PL2 + 25,
+            f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, Y1_PL2 + 25,
+            f"120mm CENTER", color="#C04010", fontsize=6, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    ax.text((STEP_YD_R + PW) / 2, CORN_Y1_PL2 + 25,
+            f"40mm\nCORNER", color="#C04010", fontsize=6, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=15, alpha=0.7)
 
     # ── Scale and note ────────────────────────────────────────────────────────
-    ax.text((X_LO + X_HI) / 2, Y_HI - 20,
-            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  SECTION THROUGH 120mm CENTER ZONE  ·  "
+    ax.text(PW / 2, Y_HI - 20,
+            "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  FULL PANEL WIDTH  ·  "
             "DRUM OVERHANGS PANEL ON BOTH FACES — SECURED BY BEARINGS AT TOP AND BOTTOM",
             color=C_DIM, fontsize=6.5, ha="center", va="top", **FONT, zorder=15)
 

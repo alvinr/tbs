@@ -27,7 +27,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,201** | **~$18,523** |
+| **TOTAL (base build + 50-print run)** | **~$14,349** | **~$18,671** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -349,15 +349,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| HGR20 linear rail, 500mm | Floor + ceiling, X-direction | 2 | Automation Overstock, Gardena CA / Amazon | ~$44 |
-| HGH20CA carriage blocks | Flanged, 2 per rail | 4 | Automation Overstock / Amazon | ~$72 |
+| HGR20 linear rail, 500mm | Both walls, floor + ceiling, X-direction | 4 | Automation Overstock, Gardena CA / Amazon | ~$88 |
+| HGH20CA carriage blocks | Flanged, 2 per rail | 8 | Automation Overstock / Amazon | ~$144 |
 | Carriage beam, 60×60×3mm SHS | 2,400mm tall, mild steel | 1 | Pacific Coast Steel / Metal Supermarkets | ~$35 |
 | Hinge mounting plates, 6mm steel | 220×80mm | 3 | Local fab | ~$30 |
-| Rail mounting brackets, 8mm angle | Floor + ceiling | 4 | Local fab | ~$32 |
+| Rail mounting brackets, 8mm angle | Both walls, floor + ceiling | 8 | Local fab | ~$64 |
 | Destaco 207-U toggle clamps | 2 per position × 2 positions | 4 | McMaster-Carr / Grainger | ~$100 |
 | Strike pins, 16mm hardened dowel | Pressed into carriage base | 4 | McMaster-Carr | ~$12 |
 
-**Panel slide subtotal: ~$325**
+**Panel slide subtotal: ~$473**
 
 ### Fixed door frame + seals
 
@@ -374,7 +374,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Door frame subtotal: ~$402**
 
-**Section total (materials): ~$1,211**
+**Section total (materials): ~$1,359**
 **Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
 
 ---

@@ -216,9 +216,12 @@ Rolling force: ~11N (2.5 lbf) — single-person push with one hand. Four bridge 
 
 The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756
 and Yd=1,606–2,362) and 120mm thick at the center zone (Yd=756–1,606) where the
-light trap drum is mounted. The panel's hinge line mounts to a vertical carriage
-beam (60×60×3mm SHS) riding on HGR20 linear rails at floor and ceiling level with
-300mm of X-direction travel.
+light trap drum is mounted. The entire panel slides 300mm in the X direction on
+HGR20 linear rails mounted to both container walls (Yd≈30mm and Yd≈2,332mm) at
+floor and ceiling level — 4 rails total, 8 HGH20CA carriage blocks. The left
+(hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall);
+the right (latch) side rides directly on carriage blocks attached to the panel
+frame.
 
 | Position | Panel corner inner face X | Drum exterior edge X | Doors clear? |
 |----------|--------------------------|---------------------|-------------|

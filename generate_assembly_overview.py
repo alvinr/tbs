@@ -1235,8 +1235,26 @@ fig3.text(0.5, 0.945,
           f"Stepped panel (40mm corners / 120mm center) on HGR20 sliding carriage  |  "
           f"Waste drums on V-groove dollies  |  Scale: approx 1:20",
           ha="center", va="top", fontsize=9, color=C_DIM, style="italic")
-fig3.text(0.98, 0.01, "\u00A9 2026 Alvin Richards \u2014 GNU AGPLv3",
-          ha="right", va="bottom", fontsize=7, color=C_DIM, style="italic")
+
+# Title block box (bottom-right, figure coords)
+tb_ax = fig3.add_axes([0.62, 0.01, 0.36, 0.07])
+tb_ax.set_xlim(0, 1)
+tb_ax.set_ylim(0, 1)
+tb_ax.set_axis_off()
+tb_ax.add_patch(mpatches.FancyBboxPatch(
+    (0.0, 0.0), 1.0, 1.0, boxstyle="round,pad=0.01",
+    facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
+tb_ax.add_patch(mpatches.Rectangle(
+    (0.0, 0.65), 1.0, 0.35,
+    facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
+tb_ax.text(0.5, 0.82, "TBS-001", ha="center", va="center",
+           fontsize=12, color=C_OUT, fontweight="bold")
+tb_ax.text(0.02, 0.45, "ASSEMBLY — PLAN VIEW (CARGO DOOR END)",
+           ha="left", va="center", fontsize=9, color=C_OUT)
+tb_ax.text(0.02, 0.22, f"Container: {C_LEN}L \u00d7 {C_WID}W \u00d7 {C_HGT}H (mm interior)",
+           ha="left", va="center", fontsize=8, color=C_DIM)
+tb_ax.text(0.98, 0.05, "\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3",
+           ha="right", va="bottom", fontsize=7, color=C_DIM, style="italic")
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 out3 = f"{DIAGRAMS_DIR}/assembly-overview-plan.png"

@@ -951,6 +951,58 @@ def sheet3():
     ax.text(X_LO + 30, H_FLOOR - PAD_B * 0.5, "FLOOR LEVEL",
             ha="left", va="center", fontsize=7, color=C_DIM, **FONT, zorder=15)
 
+    # ── HGR20 sliding rails (floor + ceiling, both container walls) ──────────
+    # Rails run in the X (depth) direction, mounted on both side walls.
+    # In this Section A-A view (looking along Yd), the rails on both walls
+    # project to the same position.  Shown as side-profile rectangles.
+    C_RAIL_S3 = "#CC4422"     # red, consistent with Sheet 1
+    RAIL_PROF_H = 20          # rail profile height (mm)
+    RAIL_PROF_L = 500         # rail length (mm) — 500mm HGR20 rail
+    RAIL_BLOCK_H = 30         # carriage block height above rail
+    RAIL_BLOCK_L = 44         # carriage block length (mm)
+    SLIDE_TRAVEL = 300        # panel slide travel (mm)
+
+    # Floor rail — sits on floor surface, runs from just behind wall to 500mm inward
+    RAIL_FLOOR_Y = H_FLOOR                  # bottom of rail at floor level
+    RAIL_FLOOR_X = Y0_W - 50                # start slightly exterior of wall
+    ax.add_patch(plt.Rectangle((RAIL_FLOOR_X, RAIL_FLOOR_Y),
+                                RAIL_PROF_L, RAIL_PROF_H,
+                                fc=C_RAIL_S3, ec=C_OUT, lw=0.7, alpha=0.5, zorder=4))
+    # Carriage block on floor rail (at panel position)
+    BLOCK_FLOOR_X = Y0_PL - 10             # block near panel outer face
+    ax.add_patch(plt.Rectangle((BLOCK_FLOOR_X, RAIL_FLOOR_Y + RAIL_PROF_H),
+                                RAIL_BLOCK_L, RAIL_BLOCK_H,
+                                fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
+
+    # Ceiling rail — at top of panel/container opening
+    H_CEILING = H_BRG_TOP + 100            # ceiling height (above upper bearing)
+    ax.add_patch(plt.Rectangle((RAIL_FLOOR_X, H_CEILING - RAIL_PROF_H),
+                                RAIL_PROF_L, RAIL_PROF_H,
+                                fc=C_RAIL_S3, ec=C_OUT, lw=0.7, alpha=0.5, zorder=4))
+    # Carriage block on ceiling rail
+    ax.add_patch(plt.Rectangle((BLOCK_FLOOR_X, H_CEILING - RAIL_PROF_H - RAIL_BLOCK_H),
+                                RAIL_BLOCK_L, RAIL_BLOCK_H,
+                                fc=C_RAIL_S3, ec=C_OUT, lw=0.6, alpha=0.4, zorder=4))
+
+    # Rail labels
+    leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, RAIL_FLOOR_Y + RAIL_PROF_H / 2),
+           (RAIL_FLOOR_X + RAIL_PROF_L + 130, RAIL_FLOOR_Y - 50),
+           "HGR20 FLOOR RAIL\n(BOTH WALLS, 500mm)\n300mm SLIDE TRAVEL",
+           col=C_RAIL_S3, fs=5.5)
+    leader(ax, (RAIL_FLOOR_X + RAIL_PROF_L, H_CEILING - RAIL_PROF_H / 2),
+           (RAIL_FLOOR_X + RAIL_PROF_L + 130, H_CEILING + 50),
+           "HGR20 CEILING RAIL\n(BOTH WALLS, 500mm)",
+           col=C_RAIL_S3, fs=5.5)
+
+    # Slide travel arrow (below floor rail)
+    ARROW_Y = RAIL_FLOOR_Y - 25
+    ax.annotate("", xy=(Y0_W, ARROW_Y), xytext=(Y0_W + SLIDE_TRAVEL, ARROW_Y),
+                arrowprops=dict(arrowstyle="<->", color=C_RAIL_S3, lw=1.0,
+                                mutation_scale=8), zorder=9)
+    ax.text(Y0_W + SLIDE_TRAVEL / 2, ARROW_Y - 20,
+            f"{SLIDE_TRAVEL}mm\nSLIDE", ha="center", va="top",
+            fontsize=5.5, color=C_RAIL_S3, **FONT, zorder=15)
+
     # ── Lower bearing housing ─────────────────────────────────────────────────
     ax.add_patch(plt.Rectangle((D_DEPTH_L - 35, H_BRG_BOT),
                                 DRUM_D + 70, H_BRG_HT,

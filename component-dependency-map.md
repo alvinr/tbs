@@ -225,6 +225,28 @@ D-2 near far wall corner; both at X=310mm in left end zone), drum bungs, gravity
 Any equipment with X > ZONE_R_START is shadow-free at all depths.
 Equipment at Yd = 0 (pinhole wall face) is always shadow-free.*
 
+### 1.15 Sliding Drum Dolly System
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Dolly plate size | 620 × 620 mm, 6mm A36 steel | — |
+| Permanent track X range | 40–620 mm | `PANEL_CORNER_T` → `PERM_TRACK_END` |
+| Removable bridge X range | 600–955 mm | `BRIDGE_TRACK_START` → `BRIDGE_TRACK_END` |
+| Bridge section length | 355 mm | `BRIDGE_TRACK_LEN` |
+| Bridge section count | 4 (2 per drum) | `BRIDGE_COUNT` |
+| Drum slide travel | 305 mm | `DRUM_SLIDE` |
+| Dolly track riser height | 30 mm | `DRUM_DOLLY_H` |
+| V-groove roller wheel diameter | 50 mm OD, sealed bearings | — |
+| Lock mechanism | M12 spring plunger pin (ball-nose) | — |
+| Bridge locating pins | 2 × M8 dowel per section | — |
+
+*Components: V-groove roller tracks (hardened steel, floor-mount), 30mm welded steel risers,
+dolly plates (6mm A36), V-groove roller wheels (×8, 250kg/wheel), removable bridge sections (×4,
+~2kg each, stowed behind IBC column), M12 spring plunger pin locks (×8, both positions),
+M8 dowel pins for bridge alignment.*
+
+*Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
+
 ---
 
 ## 2. Script and Diagram Index
@@ -233,15 +255,15 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 | Abbr | Generator script | PNG files produced | Subsystems drawn |
 |------|-----------------|-------------------|-----------------|
-| **FP** | `generate_floorplan_diagram.py` | `diagrams/container-floorplan.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14 |
+| **FP** | `generate_floorplan_diagram.py` | `diagrams/container-floorplan.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15 |
 | **LOS** | `generate_line_of_sight.py` | `diagrams/line-of-sight.png` | 1, 2, 3, 5, 8, 9, 10, 11, 12, 13, 14 |
-| **AO** | `generate_assembly_overview.py` | `diagrams/assembly-overview.png`<br>`diagrams/assembly-overview-fp.png` | 1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13 |
+| **AO** | `generate_assembly_overview.py` | `diagrams/assembly-overview.png`<br>`diagrams/assembly-overview-fp.png`<br>`diagrams/assembly-overview-plan.png` | 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 |
 | **AF** | `generate_assembly_fabrication.py` | `diagrams/assembly-fab-sheet1.png`<br>`diagrams/assembly-fab-sheet2.png` | 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13 |
 | **FPM** | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
 | **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c6.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
 | **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
-| **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png` | 1, 5, 6 |
+| **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 15 |
 | **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png` | 1, 5, 6, 7, 8 |
 | **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
 | **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
@@ -261,7 +283,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | |
 | **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | |
 | **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
-| **6** Hinged Panel | | | | ✓ | | | | | ✓ | ✓ | | | | |
+| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
 | **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | |
 | **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | |
 | **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | |
@@ -270,6 +292,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
 | **13** Black Water (drums) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
 | **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | |
+| **15** Drum Dolly System | ✓ | | ✓ | | | | | | ✓ | | | | | |
 
 ---
 
@@ -294,6 +317,7 @@ PNGs alongside the constant change.
 | `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on pinhole wall |
 | `IBC_COL_X`, `BLUE_IBC_Y`, `BROWN_IBC_Y` | FP, LOS, AO, AF, WS | Right end zone IBC stack |
 | `DRUM_LZ_*`, `DRUM_FZ_*`, `DRUM_EQ_*` | FP, LOS, AO, AF, WS | Left end zone waste drums |
+| `PERM_TRACK_END`, `BRIDGE_TRACK_*`, `DRUM_SLIDE`, `DRUM_DOLLY_H` | FP, AO, HP | Drum dolly tracks and bridge sections |
 | `DRUM_CX`, `DRUM_D`, `DRUM_H_LT` | FP, LOS, AO, AF, HP, LT | Light trap drum; check `ZONE_L_END` |
 | `ZONE_L_END`, `ZONE_R_START` | FP, LOS, AO, ES | Zone boundaries — these are derived from `FP_X_L`/`FP_X_R`, so change those instead |
 | `FAN_A_H`, `FAN_B_H`, `FAN_DIAM`, `FAN_BODY_D` | LT, ES | Ventilation fan height or size |

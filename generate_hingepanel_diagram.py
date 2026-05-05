@@ -981,9 +981,6 @@ def sheet3():
     # ── Container end wall (depth 0→40, full height) ──────────────────────────
     ax.add_patch(plt.Rectangle((Y0_W, H_FLOOR), WALL_T, H_BRG_TOP + 100,
                                 fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="///", zorder=3))
-    ax.text(Y0_W + WALL_T / 2, H_BRG_TOP + 180,
-            f"{WALL_T}mm\nWALL", ha="center", va="bottom",
-            fontsize=6, color=C_DIM, **FONT, zorder=15)
 
     # ── Panel outer ply (depth 40→58) ────────────────────────────────────────
     ax.add_patch(plt.Rectangle((Y0_PL, H_FLOOR), PLY_T, H_BRG_TOP + 80,
@@ -996,6 +993,46 @@ def sheet3():
     # ── Panel inner ply (depth 142→160) ───────────────────────────────────────
     ax.add_patch(plt.Rectangle((Y0_PL2, H_FLOOR), PLY_T, H_BRG_TOP + 80,
                                 fc=C_ALUM, ec=C_OUT, lw=0.6, zorder=3))
+
+    # ── Layer thickness leaders (top) ─────────────────────────────────────────
+    LDR_TOP = H_BRG_TOP + 200    # leader origin height (above bearings)
+    LDR_TOP_TGT = H_BRG_TOP + 310  # leader text target height
+    # Wall
+    leader(ax, ((Y0_W + Y1_W) / 2, LDR_TOP),
+           ((Y0_W + Y1_W) / 2 - 120, LDR_TOP_TGT),
+           f"{WALL_T}mm WALL\n(STEEL)", col=C_DIM, fs=5.5)
+    # Outer ply
+    leader(ax, ((Y0_PL + Y1_PL) / 2, LDR_TOP),
+           ((Y0_PL + Y1_PL) / 2 + 100, LDR_TOP_TGT + 60),
+           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+    # RHS frame
+    leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_TOP - 20),
+           ((Y0_FR + Y1_FR) / 2 + 120, LDR_TOP_TGT + 120),
+           f"{FRAME_T}mm RHS\nFRAME", col=C_DIM, fs=5.5)
+    # Inner ply
+    leader(ax, ((Y0_PL2 + Y1_PL2) / 2, LDR_TOP - 20),
+           ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_TOP_TGT + 60),
+           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+
+    # ── Layer thickness leaders (bottom) ──────────────────────────────────────
+    LDR_BOT = H_FLOOR + 60       # leader origin height (just above floor)
+    LDR_BOT_TGT = H_FLOOR - 40   # leader text target height (below floor line)
+    # Wall
+    leader(ax, ((Y0_W + Y1_W) / 2, LDR_BOT),
+           ((Y0_W + Y1_W) / 2 - 120, LDR_BOT_TGT),
+           f"{WALL_T}mm WALL", col=C_DIM, fs=5.5)
+    # Outer ply
+    leader(ax, ((Y0_PL + Y1_PL) / 2, LDR_BOT),
+           ((Y0_PL + Y1_PL) / 2 + 100, LDR_BOT_TGT - 50),
+           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
+    # RHS frame
+    leader(ax, ((Y0_FR + Y1_FR) / 2, LDR_BOT),
+           ((Y0_FR + Y1_FR) / 2 + 120, LDR_BOT_TGT - 100),
+           f"{FRAME_T}mm RHS\nFRAME", col=C_DIM, fs=5.5)
+    # Inner ply
+    leader(ax, ((Y0_PL2 + Y1_PL2) / 2, LDR_BOT),
+           ((Y0_PL2 + Y1_PL2) / 2 + 120, LDR_BOT_TGT - 50),
+           f"{PLY_T}mm PLY", col=C_DIM, fs=5.5)
 
     # ── Floor (ground plane) ──────────────────────────────────────────────────
     ax.add_patch(plt.Rectangle((X_LO, H_FLOOR - PAD_B), X_HI - X_LO, PAD_B,
@@ -1204,12 +1241,7 @@ def sheet3():
     dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 275,
           f"{PT}mm PANEL", offset=15, fs=6.5)
 
-    # Wall thickness — leader from wall midpoint (too narrow for dim arrows)
-    wall_mid_x = (Y0_W + Y1_W) / 2
-    wall_label_y = H_BRG_BOT - 275
-    leader(ax, (wall_mid_x, H_BRG_BOT - 100),
-           (wall_mid_x - 160, wall_label_y),
-           f"{WALL_T}mm WALL", col=C_DIM, fs=6.5)
+    # (Wall thickness leaders are drawn above with the other layer leaders)
 
     # Exterior overhang (horizontal) — below floor rail
     dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 80,

@@ -1212,7 +1212,7 @@ legend_items3 = [
 
 # Draw legend as a horizontal row under the figure using fig3 coordinates
 fig3.subplots_adjust(bottom=0.12)
-leg_ax = fig3.add_axes([0.05, 0.01, 0.9, 0.08])
+leg_ax = fig3.add_axes([0.05, 0.09, 0.9, 0.06])
 leg_ax.set_xlim(0, 1)
 leg_ax.set_ylim(0, 1)
 leg_ax.axis("off")

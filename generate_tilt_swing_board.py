@@ -827,9 +827,9 @@ draw_dim_v(ax2, or_right + frame_ctx_w + 10, or_bot, or_top, f'{BRG_W} WIDE', ri
 
 leader(ax2, cx2c + 85, cy2c + 5, cx2c + ir_outer_r - ir_wall/2, cy2c,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fontsize=4.8)
-leader(ax2, cx2c - 55, cy2c - 35, or_left - frame_ctx_w/2, cy2c,
+leader(ax2, cx2c - 75, cy2c - 35, or_left - frame_ctx_w/2, cy2c,
        'TSB-01\nFRAME\nAl 6061', fontsize=4.8)
-leader(ax2, cx2c - 55, cy2c + 25, cx2c, or_bot - s1b(8),
+leader(ax2, cx2c - 55, cy2c - 40, cx2c - 15, or_bot - s1b(8),
        'TSB-02\nSHANK\nØ50 k5', fontsize=4.8)
 leader(ax2, cx2c + 75, cy2c - 18, or_right - 4, or_bot + s1b(2),
        'RUBBER\nSEAL (2RS)', fontsize=4.8)

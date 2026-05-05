@@ -1155,20 +1155,20 @@ ax_op.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=0.8,
 # Light trap drum overhang — show it extends past X=0
 lt_drum_cx = OP_PANEL_X + PANEL_CENTER_T / 2
 lt_drum_x_outer = lt_drum_cx - DRUM_R
-ax_op.text(LT_DRUM_YD_CENTER, lt_drum_x_outer - 30,
+ax_op.text(LT_DRUM_YD_CENTER, lt_drum_x_outer + 150,
            f"Drum extends {abs(lt_drum_x_outer):.0f}mm\npast exterior face",
            ha="center", va="top", fontsize=FS_SM - 1, color="#CC2020",
            style="italic", zorder=8)
 
 # Fixed door frame
 ax_op.plot([0, C_WID], [0, 0], color=C_OUT, lw=1.8, zorder=7)
-ax_op.text(C_WID + 40, 0, "Fixed door\nframe (X=0)",
+ax_op.text(C_WID + 120, 0, "Fixed door\nframe (X=0)",
            ha="left", va="center", fontsize=FS_SM - 1, color=C_OUT, zorder=8)
 
 # EPDM seal indicator
 ax_op.plot([10, C_WID - 10], [-3, -3], color="#5A3020", lw=2.5,
            solid_capstyle="round", zorder=7)
-ax_op.text(C_WID + 40, -3, "EPDM seal",
+ax_op.text(C_WID - 160, 15, "EPDM seal",
            ha="left", va="center", fontsize=FS_SM - 1, color="#5A3020", zorder=8)
 
 # Panel thickness dims
@@ -1177,14 +1177,14 @@ ax_op.annotate("", xy=(PANEL_CORNER_YD_L / 2, OP_PANEL_X + PANEL_CORNER_T),
                arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax_op.text(PANEL_CORNER_YD_L / 2 - 60, OP_PANEL_X + PANEL_CORNER_T / 2,
            f"{PANEL_CORNER_T}mm", ha="right", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90, zorder=5)
 
 ax_op.annotate("", xy=(LT_DRUM_YD_CENTER, OP_PANEL_X + PANEL_CENTER_T),
                xytext=(LT_DRUM_YD_CENTER, OP_PANEL_X),
                arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax_op.text(LT_DRUM_YD_CENTER + DRUM_R + 30, OP_PANEL_X + PANEL_CENTER_T / 2,
            f"{PANEL_CENTER_T}mm", ha="left", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+           fontsize=FS_SM - 1, color=C_DIM, rotation=90, zorder=5)
 
 # Cam latch indicators (4x, interior face) — label to the left with leader lines
 latch_yds = [200, 756, 1606, C_WID - 200]
@@ -1194,8 +1194,11 @@ for yd in latch_yds:
     t = PANEL_CORNER_T if (yd < PANEL_CORNER_YD_L or yd > PANEL_CORNER_YD_R) else PANEL_CENTER_T
     ax_op.plot(yd, OP_PANEL_X + t - 5, marker="x", markersize=5,
               color="#CC2020", mew=1.2, zorder=8)
-    # Leader line from latch marker down then across to label
-    ax_op.plot([yd, yd, latch_label_yd], [OP_PANEL_X + t - 5, latch_label_x, latch_label_x],
+    # Leader line: 45° diagonal from latch marker, then horizontal to label
+    latch_top = OP_PANEL_X + t - 5
+    drop = latch_top - latch_label_x  # vertical distance to shared line
+    diag_yd = yd - drop              # 45° means equal horizontal and vertical offset
+    ax_op.plot([yd, diag_yd, latch_label_yd], [latch_top, latch_label_x, latch_label_x],
               color="#CC2020", lw=0.6, zorder=7)
 ax_op.text(latch_label_yd, latch_label_x - 40,
            "Cam latches \u00d74\n(Southco C2-33, interior face)",

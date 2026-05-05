@@ -783,10 +783,12 @@ ax2.add_patch(ir_l); ax2.add_patch(ir_r)
 hatch_region(ax2, ir_l, spacing=2, angle=45, color='#7080A0', lw=0.4)
 hatch_region(ax2, ir_r, spacing=2, angle=45, color='#7080A0', lw=0.4)
 
-# PTFE liner gap (thin dark line)
-ax2.plot([cx2c - ir_outer_r + ir_wall, cx2c - ir_outer_r + ir_wall + s1b(2)], [ir_y, or_bot+s1b(BRG_W)],
+# PTFE liner gap (vertical lines between inner and outer rings)
+ptfe_left_x = cx2c - ir_outer_r + ir_wall + s1b(1)
+ptfe_right_x = cx2c + ir_outer_r - ir_wall - s1b(1)
+ax2.plot([ptfe_left_x, ptfe_left_x], [ir_y, ir_y + ir_h],
          color=C_GASKT, lw=2.0)
-ax2.plot([cx2c + ir_outer_r - ir_wall - s1b(2), cx2c + ir_outer_r - ir_wall], [ir_y, or_bot+s1b(BRG_W)],
+ax2.plot([ptfe_right_x, ptfe_right_x], [ir_y, ir_y + ir_h],
          color=C_GASKT, lw=2.0)
 
 # TSB-01 bore context (frame material either side of bearing)
@@ -819,17 +821,17 @@ ax2.plot([cx2c, cx2c], [or_bot - 20, or_top + 20],
 # Dimensions
 draw_dim_h(ax2, or_left - frame_ctx_w, or_right + frame_ctx_w, or_top + 12,
            f'Ø{BRG_OD} OD', above=True, fontsize=5, scale=1.2)
-draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 12,
+draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 18,
            f'Ø{BRG_ID} BORE', above=False, fontsize=5, scale=1.2)
 draw_dim_v(ax2, or_right + frame_ctx_w + 10, or_bot, or_top, f'{BRG_W} WIDE', right=True, fontsize=5, scale=1.2)
 
-leader(ax2, cx2c + 55, cy2c + 5, cx2c + ir_outer_r - ir_wall/2, cy2c,
+leader(ax2, cx2c + 85, cy2c + 5, cx2c + ir_outer_r - ir_wall/2, cy2c,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fontsize=4.8)
-leader(ax2, cx2c - 55, cy2c - 15, or_left - frame_ctx_w/2, cy2c,
+leader(ax2, cx2c - 55, cy2c - 35, or_left - frame_ctx_w/2, cy2c,
        'TSB-01\nFRAME\nAl 6061', fontsize=4.8)
-leader(ax2, cx2c - 55, cy2c + 20, cx2c - s1b(BRG_SHANK_D/2) - 2, cy2c + 10,
+leader(ax2, cx2c - 55, cy2c + 25, cx2c, or_bot - s1b(8),
        'TSB-02\nSHANK\nØ50 k5', fontsize=4.8)
-leader(ax2, cx2c + 55, cy2c - 18, or_right - 4, or_bot + s1b(2),
+leader(ax2, cx2c + 75, cy2c - 18, or_right - 4, or_bot + s1b(2),
        'RUBBER\nSEAL (2RS)', fontsize=4.8)
 
 ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',

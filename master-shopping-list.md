@@ -22,12 +22,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system | $1,497 | $2,134 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 7a. Panel sliding carriage & drum dolly system | $1,211 | $1,211 |
+| 7a. Panel sliding carriage & drum dolly system | $1,460 | $1,460 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,349** | **~$18,671** |
+| **TOTAL (base build + 50-print run)** | **~$14,598** | **~$18,920** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -365,16 +365,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Pacific Coast Steel / Metal Supermarkets | ~$120 |
 | Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
-| Brush seal strip (nylon bristle) | Carriage beam slot, 2,400mm | 1 | McMaster-Carr | ~$25 |
+| Brush seal strip (doubled nylon bristle) | Left carriage beam slot, 2,400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
+| Brush seal strip (doubled nylon bristle) | Right guide slot, 2,400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
 | EPDM gasket (existing spec) | 20×15mm, ~9.5m | 1 | McMaster-Carr #8635K31 | ~$45 |
 | Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
+| Neoprene rail channel pads, 10mm | 50×30mm, closed-cell, 4 rail penetrations | 4 | McMaster-Carr | ~$8 |
+| EPDM edge strips, 15mm | Self-adhesive, 2,400mm × 2 sides, panel edge clearance seal | 2 | McMaster-Carr | ~$18 |
 | Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr / Fastenal | ~$60 |
 | Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
 | Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end | 1 | Waytek Wire / McMaster-Carr | ~$35 |
 
-**Door frame subtotal: ~$402**
+**Door frame subtotal: ~$503**
 
-**Section total (materials): ~$1,359**
+**Section total (materials): ~$1,460**
 **Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
 
 ---

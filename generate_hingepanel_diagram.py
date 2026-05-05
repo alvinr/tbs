@@ -1204,9 +1204,12 @@ def sheet3():
     dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 275,
           f"{PT}mm PANEL", offset=15, fs=6.5)
 
-    # Wall thickness (horizontal) — placed in floor zone
-    dim_h(ax, Y0_W, Y1_W, H_BRG_BOT - 100,
-          f"{WALL_T}mm WALL", offset=15, fs=6.5)
+    # Wall thickness — leader from wall midpoint (too narrow for dim arrows)
+    wall_mid_x = (Y0_W + Y1_W) / 2
+    wall_label_y = H_BRG_BOT - 275
+    leader(ax, (wall_mid_x, H_BRG_BOT - 100),
+           (wall_mid_x - 160, wall_label_y),
+           f"{WALL_T}mm WALL", col=C_DIM, fs=6.5)
 
     # Exterior overhang (horizontal) — below floor rail
     dim_h(ax, D_DEPTH_L, Y0_W, H_FLOOR - 80,

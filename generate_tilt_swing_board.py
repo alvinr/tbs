@@ -880,7 +880,7 @@ for i in range(1, 9):
 # Knob at right end
 knob_p = mpatches.Rectangle((cx2d + screw_len, cy2d - s1b(KNOB_D/2)),
                               s1b(KNOB_H), s1b(KNOB_D),
-                              lw=LW_MED, edgecolor=C_OUT, facecolor='#404040')
+                              lw=LW_MED, edgecolor=C_OUT, facecolor='#797979')
 ax2.add_patch(knob_p)
 # Knurling lines
 for i in range(6):
@@ -924,7 +924,7 @@ leader(ax2, cx2d + screw_len + s1b(KNOB_H) + 12, cy2d + 10,
 leader(ax2, cx2d - frame_wall_w - 28, cy2d + 12,
        cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fontsize=5)
-leader(ax2, ball_x2 - s1b(8) - 20, cy2d - 18,
+leader(ax2, ball_x2 - s1b(8) - 55, cy2d - 18,
        ball_x2 - s1b(8), cy2d - s1b(BALL_D/2),
        '440C SS INSERT\nHEMI SOCKET\nRa 0.4 GROUND', fontsize=5)
 leader(ax2, ball_x2 + 14, cy2d + 12, ball_x2, cy2d + s1b(BALL_D/2),
@@ -1112,7 +1112,7 @@ def sk(mm): return mm * SC_knob
 # Knob in section view
 knob_rec = mpatches.Rectangle((cx3c - sk(KNOB_H/2), cy3c - sk(KNOB_D/2)),
                                 sk(KNOB_H), sk(KNOB_D),
-                                lw=LW_THICK, edgecolor=C_OUT, facecolor='#404040')
+                                lw=LW_THICK, edgecolor=C_OUT, facecolor='#797979')
 ax3.add_patch(knob_rec)
 # M8 bore through knob
 knob_bore = mpatches.Rectangle((cx3c - sk(KNOB_H/2), cy3c - sk(ADJ_D/2)),
@@ -1124,7 +1124,7 @@ ax3.plot([cx3c - sk(KNOB_H/2), cx3c + sk(KNOB_H/2)], [cy3c + sk(ADJ_D/2)]*2, col
 # Flat/keyway on bore (anti-rotation)
 flat_p = mpatches.Rectangle((cx3c - sk(KNOB_H/2), cy3c + sk(ADJ_D/2 - 1.5)),
                               sk(KNOB_H), sk(1.5),
-                              lw=0, facecolor='#404040')
+                              lw=0, facecolor='#797979')
 ax3.add_patch(flat_p)
 # Detent ball pocket (one shown)
 det_x = cx3c + sk(KNOB_H/2) - sk(2)

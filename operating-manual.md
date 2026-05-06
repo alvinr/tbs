@@ -75,7 +75,8 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 4. Check all pipe joints for drips. Tighten any fittings that are weeping.
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
-7. Lay fresh 6-mil black LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails). Overlap 300mm up the container walls to contain wash runoff.
+7. Confirm processing tray is installed between the film plane rails and drain hose is connected to 3W-DV-02.
+8. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 ### 0.6 Ventilation and Cooling
 

@@ -78,8 +78,14 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 ### 2.3 Optical Zone — X=625–4,649mm
 
-Nothing at floor level. Rail slots in floor/ceiling only. Film plane frame
+Rail slots in floor/ceiling at X=625 and X=4,649. Film plane frame
 spans this zone at depth Y=2,262mm (nominal far position).
+
+| Item | X (mm) | Yd (mm) | H (mm) | Notes |
+|------|--------|---------|--------|-------|
+| Processing tray (2 panels, 304 SS) | 645–4,629 | 60–2,300 | 0–50 | 50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,637, Y=60 to 3W-DV-02. Installed during operational mode; removed for transport. |
+
+The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=625 and X=4,649.
 
 ### 2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)
 

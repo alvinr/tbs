@@ -966,24 +966,26 @@ print(f'  → {out2}  Done.')
 # SHEET 3 — Bellows, Locking, Scale & Swap Procedure
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig3, ax3 = plt.subplots(figsize=(FW/25.4*0.9, FH/25.4*0.9))
+FH3 = int(FH * 1.3)  # 30% taller canvas to shift content up
+fig3, ax3 = plt.subplots(figsize=(FW/25.4*0.9, FH3/25.4*0.9))
 fig3.patch.set_facecolor('white')
 ax3.set_facecolor('white')
 ax3.set_aspect('equal')
 ax3.axis('off')
 ax3.set_xlim(0, FW)
-ax3.set_ylim(0, FH)
+ax3.set_ylim(0, FH3)
+S3_UP = FH3 - FH  # vertical shift = 150
 
-title_block(ax3, FW, FH, 3, 3,
+title_block(ax3, FW, FH3, 3, 3,
             'TILT-SWING FRONT BOARD MECHANISM',
             'SHEET 3 — BELLOWS SEAL, LOCKING, CALIBRATION SCALE & SWAP PROCEDURE',
             'AS NOTED')
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
-ax3.text(15, 490, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 480], [487, 487], color='black', lw=0.7)
+ax3.text(15, 490 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([15, 480], [487 + S3_UP, 487 + S3_UP], color='black', lw=0.7)
 
-cx3a, cy3a = 200, 370
+cx3a, cy3a = 200, 370 + S3_UP
 
 def draw_bellows_section(ax, cx, cy, tilt_deg, lw_style='-', alpha=1.0):
     """Draw bellows accordion cross-section for given tilt angle."""
@@ -1063,10 +1065,10 @@ ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 30,
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
-ax3.text(15, 245, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 200], [242, 242], color='black', lw=0.7)
+ax3.text(15, 245 + S3_UP, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([15, 200], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
 
-cx3b, cy3b = 80, 175
+cx3b, cy3b = 80, 175 + S3_UP
 
 # M8 screw shaft (horizontal)
 m8_sh = mpatches.Rectangle((cx3b - 40, cy3b - 4), 80, 8,
@@ -1105,10 +1107,10 @@ ax3.text(cx3b, cy3b - 28, 'Tighten set screw onto adj screw shank\nafter desired
          ha='center', fontsize=4.8, style='italic', color='#333333', zorder=10)
 
 # ── PANEL C: Knob detail (2:1) ────────────────────────────────────────────────
-ax3.text(215, 245, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([215, 420], [242, 242], color='black', lw=0.7)
+ax3.text(215, 245 + S3_UP, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([215, 420], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
 
-cx3c, cy3c = 305, 175
+cx3c, cy3c = 305, 175 + S3_UP
 SC_knob = 2.0
 def sk(mm): return mm * SC_knob
 
@@ -1161,14 +1163,14 @@ ax3.text(cx3c, cy3c - sk(KNOB_D/2) - 28,
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL D: Angular scale layout ─────────────────────────────────────────────
-ax3.text(430, 245, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([430, 695], [242, 242], color='black', lw=0.7)
+ax3.text(430, 245 + S3_UP, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([430, 695], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
 
-cx3d, cy3d = 530, 175
+cx3d, cy3d = 530, 175 + S3_UP
 arm = 130  # mm arm radius
 scale_w_mm = 80  # scale total width in mm
 
-ax3.text(cx3d, 240, 'Non-linear (tangent) scale: position = 80 × tan(θ)/tan(5°) mm',
+ax3.text(cx3d, 240 + S3_UP, 'Non-linear (tangent) scale: position = 80 × tan(θ)/tan(5°) mm',
          ha='center', fontsize=5, color='#333333', style='italic', zorder=10)
 
 # Draw the scale strip
@@ -1200,11 +1202,11 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── Separator line between panels B/C/D and panel E ──────────────────────────
-ax3.plot([15, 685], [135, 135], color='#999999', lw=0.5, linestyle='--', zorder=5)
+ax3.plot([15, 685], [135 + S3_UP, 135 + S3_UP], color='#999999', lw=0.5, linestyle='--', zorder=5)
 
 # ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(15, 125, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 695], [122, 122], color='black', lw=0.7)
+ax3.text(15, 125 + S3_UP, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([15, 695], [122 + S3_UP, 122 + S3_UP], color='black', lw=0.7)
 
 steps = [
     ('①', 'LOOSEN 4×\nLOCK SCREWS', '3 mm hex key\nM6 set screws'),
@@ -1218,7 +1220,7 @@ step_w = 120
 step_gap = 15
 for i, (num, title, note) in enumerate(steps):
     sx = 20 + i * (step_w + step_gap)
-    sy = 60
+    sy = 60 + S3_UP
     draw_rect(ax3, sx, sy, step_w, 55, lw=1.0, color='black', fc='#F0F0F0')
     ax3.text(sx + step_w/2, sy + 48, num, ha='center', fontsize=14,
              fontweight='bold', color='black', zorder=10)
@@ -1230,7 +1232,7 @@ for i, (num, title, note) in enumerate(steps):
         ax3.annotate('', xy=(sx + step_w + 13, sy + 27), xytext=(sx + step_w + 2, sy + 27),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
-ax3.text(695/2, 45, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
+ax3.text(695/2, 45 + S3_UP, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'

@@ -764,8 +764,6 @@ or_p_l = mpatches.Rectangle((or_left, or_bot), out_ring_wall, s1b(BRG_W),
 or_p_r = mpatches.Rectangle((or_right - out_ring_wall, or_bot), out_ring_wall, s1b(BRG_W),
                               lw=LW_THICK, edgecolor=C_OUT, facecolor=C_BEAR)
 ax2.add_patch(or_p_l); ax2.add_patch(or_p_r)
-hatch_region(ax2, or_p_l, spacing=3, angle=-45, color='#8090A0', lw=0.4)
-hatch_region(ax2, or_p_r, spacing=3, angle=-45, color='#8090A0', lw=0.4)
 
 # Outer ring top/bottom
 or_cap_h = s1b(4)
@@ -774,8 +772,6 @@ or_cap_t = mpatches.Rectangle((or_left, or_top - or_cap_h), s1b(BRG_OD), or_cap_
 or_cap_b = mpatches.Rectangle((or_left, or_bot), s1b(BRG_OD), or_cap_h,
                                 lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
 ax2.add_patch(or_cap_t); ax2.add_patch(or_cap_b)
-hatch_region(ax2, or_cap_t, spacing=3, angle=-45, color='#8090A0', lw=0.4)
-hatch_region(ax2, or_cap_b, spacing=3, angle=-45, color='#8090A0', lw=0.4)
 
 # Inner ring
 ir_wall = s1b(5)
@@ -788,8 +784,6 @@ ir_l = mpatches.Rectangle((cx2c - ir_outer_r, ir_y), ir_wall, ir_h,
 ir_r = mpatches.Rectangle((cx2c + ir_outer_r - ir_wall, ir_y), ir_wall, ir_h,
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR)
 ax2.add_patch(ir_l); ax2.add_patch(ir_r)
-hatch_region(ax2, ir_l, spacing=2, angle=45, color='#7080A0', lw=0.4)
-hatch_region(ax2, ir_r, spacing=2, angle=45, color='#7080A0', lw=0.4)
 
 # PTFE liner gap (vertical lines between inner and outer rings)
 ptfe_left_x = cx2c - ir_outer_r + ir_wall + s1b(1)
@@ -806,15 +800,12 @@ fc_l = mpatches.Rectangle((or_left - frame_ctx_w, or_bot), frame_ctx_w, s1b(BRG_
 fc_r = mpatches.Rectangle((or_right, or_bot), frame_ctx_w, s1b(BRG_W),
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax2.add_patch(fc_l); ax2.add_patch(fc_r)
-hatch_region(ax2, fc_l, spacing=4, angle=45, color='#999999', lw=0.4)
-hatch_region(ax2, fc_r, spacing=4, angle=45, color='#999999', lw=0.4)
 
 # TSB-02 shank through bearing
 shank_p2 = mpatches.Rectangle((cx2c - s1b(BRG_SHANK_D/2), or_bot - s1b(15)),
                                s1b(BRG_SHANK_D), s1b(BRG_W) + s1b(15),
                                lw=LW_MED, edgecolor=C_OUT, facecolor='#C0C0C0')
 ax2.add_patch(shank_p2)
-hatch_region(ax2, shank_p2, spacing=3, angle=45, color='#A0A0A0', lw=0.4)
 
 # Seals (EPDM lips each end)
 for sy in [or_bot, or_top - s1b(3)]:

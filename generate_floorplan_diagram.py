@@ -508,7 +508,7 @@ def egress_detail():
                                 fc=C_WALL, ec=C_OUT, lw=1.2, zorder=3))
 
     # Wall labels
-    ax.text(-WALL/2, C_WID/2, "CARGO\nDOOR\nEND",
+    ax.text(-WALL/2-75, C_WID/2+50, "CARGO\nDOOR\nEND",
             color=C_OUT, fontsize=7, ha="center", va="center",
             **FONT, rotation=90, zorder=4)
     ax.text(X_HI/2, -WALL/2, "PINHOLE WALL  (Yd=0)",
@@ -660,13 +660,13 @@ def egress_detail():
     ax.add_patch(Circle((0, C_WID/2), DRUM_R,
                          fc="none", ec=C_GHOST, lw=1.0, ls=(0, (4, 3)),
                          alpha=0.35, zorder=4))
-    ax.text(PANEL_CENTER_T + 30, C_WID/2, "PANEL\nCLOSED",
+    ax.text(PANEL_CENTER_T - 90, C_WID/2 - 50, "PANEL\nCLOSED",
             color=C_GHOST, fontsize=6, ha="left", va="center",
             **FONT, alpha=0.5, zorder=5, rotation=90)
 
     # ── Fan B penetration ────────────────────────────────────────────────────
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM,
-                label="FAN B\n(EXHAUST)", label_offset=(100, 60))
+                label="FAN B\n(EXHAUST)", label_offset=(0, -22))
 
     # ── Evap cooler (partially visible at right edge) ────────────────────────
     evap_vis_w = min(EVAP_W, X_HI - EVAP_X)

@@ -81,21 +81,21 @@ def penetration(ax, x, y, r=60, col=C_OUT, label="", label_offset=(0, 80)):
                 color=col, fontsize=6, ha="center", va="bottom", **FONT, zorder=9)
 
 def title_block(ax):
-    ax.text(0.01, 0.022, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, **FONT)
-    ax.text(0.01, 0.010, "CONTAINER FLOOR PLAN — END-ZONE LAYOUT  (TOP-DOWN VIEW)",
-            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", **FONT)
-    ax.text(0.99, 0.022, "SCALE 1:75 (APPROX)  ·  SHEET 1 OF 1",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
-    ax.text(0.99, 0.010, "ALL DIMS IN mm",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
-    ax.text(0.50, 0.002, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center",
+    ax.text(0.01, 0.990, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, va="top", **FONT)
+    ax.text(0.01, 0.978, "CONTAINER FLOOR PLAN — END-ZONE LAYOUT  (TOP-DOWN VIEW)",
+            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", va="top", **FONT)
+    ax.text(0.99, 0.990, "SCALE 1:75 (APPROX)  ·  SHEET 1 OF 1",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
+    ax.text(0.99, 0.978, "ALL DIMS IN mm",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
+    ax.text(0.50, 0.990, "© 2026 Alvin Richards — GNU AGPLv3",
+            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center", va="top",
             style="italic", **FONT)
 
 
 def floor_plan():
-    PAD_L = 600; PAD_R = 800; PAD_B = 500; PAD_T = 500
+    PAD_L = 600; PAD_R = 800; PAD_B = 800; PAD_T = 500
 
     X_LO = -PAD_L; X_HI = C_LEN + PAD_R
     Y_LO = -PAD_B; Y_HI = C_WID + PAD_T
@@ -201,13 +201,13 @@ def floor_plan():
     # ── Pinhole ───────────────────────────────────────────────────────────────
     penetration(ax, PH_X, 0, r=80, col=C_PINHOLE,
                 label=f"PINHOLE\nX={PH_X}mm\nØ{PH_D}mm",
-                label_offset=(0, -250))
+                label_offset=(0, -225))
 
     # Optical axis arrow
     ax.annotate("", xy=(PH_X, FP_Y - 40), xytext=(PH_X, 80),
                 arrowprops=dict(arrowstyle="->", color=C_OPT, lw=1.5,
                                 mutation_scale=10, ls="--"))
-    ax.text(PH_X + 80, C_WID/2, f"OPTICAL AXIS\n{C_WID}mm",
+    ax.text(PH_X + 50, C_WID/2 + 250, f"OPTICAL AXIS\n{C_WID}mm",
             color=C_OPT, fontsize=7, ha="left", va="center", **FONT)
 
     # ── LEFT END ZONE — equipment ─────────────────────────────────────────────
@@ -348,9 +348,9 @@ def floor_plan():
     dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
     dim_h(ax, 0, ZONE_L_END, -PAD_B + 150, f"{ZONE_L_END}mm\nLEFT ZONE", offset=60, fs=6)
-    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 150, f"{ZONE_R_START-ZONE_L_END}mm\nOPTICAL ZONE", offset=60, fs=6)
+    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 150, f"{ZONE_R_START-ZONE_L_END}mm\nOPTICAL ZONE", offset=15, fs=6)
     dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 150, f"{C_LEN-ZONE_R_START}mm\nRIGHT ZONE", offset=40, fs=6)
-    dim_h(ax, FP_X_L, FP_X_R, -PAD_B + 400, f"{FP_W}mm  FILM PLANE WIDTH", offset=60, fs=6)
+    dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6)
     dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6)
 
     # ── Shadow-free proof callout ─────────────────────────────────────────────
@@ -364,8 +364,7 @@ def floor_plan():
             bbox=dict(boxstyle="round,pad=0.3", fc="#E8F8E8", ec="#408040", lw=0.8),
             zorder=10)
 
-    # ── Legend ────────────────────────────────────────────────────────────────
-    LEG_X = C_LEN + 110; LEG_Y_TOP = C_WID - 2410
+    # ── Legend (two-column, below container) ────────────────────────────────
     legend_items = [
         (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
         (C_BROWN_IBC, "Brown IBC ×1 (600L)"),
@@ -381,17 +380,26 @@ def floor_plan():
         ("#4A90D9",   "V-groove bridge section (removable)"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
     ]
-    box_w = 780; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
-    ax.add_patch(Rectangle((LEG_X - 70, LEG_Y_TOP - box_h), box_w, box_h,
+    n_items = len(legend_items)
+    n_rows = (n_items + 1) // 2           # 7 rows for 13 items
+    row_h = 46; col_w = 2800              # column width in mm coords
+    box_w = col_w * 2 + 200               # total legend box width
+    box_h = n_rows * row_h + 50           # total legend box height
+    leg_x0 = 0                            # align with container left wall
+    leg_y0 = -PAD_B + 10                  # near bottom of drawing
+    ax.add_patch(Rectangle((leg_x0, leg_y0), box_w, box_h,
                             fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=8))
-    ax.text(LEG_X + box_w/2, LEG_Y_TOP - 12, "LEGEND",
+    ax.text(leg_x0 + box_w / 2, leg_y0 + box_h - 16, "LEGEND",
             color=C_OUT, fontsize=7.5, ha="center", va="center",
             fontweight="bold", **FONT, zorder=9)
     for i, (col, txt) in enumerate(legend_items):
-        iy = LEG_Y_TOP - 50 - i * 52
-        ax.add_patch(Rectangle((LEG_X + 12, iy - 16), 36, 32,
+        c = i // n_rows                   # column 0 or 1
+        r = i % n_rows                    # row within column
+        ix = leg_x0 + 20 + c * col_w
+        iy = leg_y0 + box_h - 50 - r * row_h
+        ax.add_patch(Rectangle((ix, iy - 14), 32, 28,
                                 fc=col, ec=C_OUT, lw=0.8, zorder=9, alpha=0.9))
-        ax.text(LEG_X + 58, iy, txt, color=C_DIM, fontsize=6,
+        ax.text(ix + 42, iy, txt, color=C_DIM, fontsize=6,
                 ha="left", va="center", **FONT, zorder=9)
 
     # ── Egress path annotation ─────────────────────────────────────────────────

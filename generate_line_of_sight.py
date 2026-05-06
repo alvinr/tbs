@@ -222,15 +222,15 @@ for xb in [ZONE_L_END, ZONE_R_START]:
 # Zone labels
 ax.text(ZONE_L_END / 2, C_WID + 120, f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\nshadow-free",
         ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#805000",
-        fontweight="bold")
+        fontweight="bold", zorder=10)
 ax.text((ZONE_L_END + ZONE_R_START) / 2, C_WID + 120,
         f"OPTICAL ZONE\nX={ZONE_L_END}–{ZONE_R_START}mm",
         ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#006000",
-        fontweight="bold")
+        fontweight="bold", zorder=10)
 ax.text((ZONE_R_START + C_LEN) / 2, C_WID + 120,
         f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm\nshadow-free",
         ha="center", va="bottom", fontsize=FS_SM - 0.5, color="#004080",
-        fontweight="bold")
+        fontweight="bold", zorder=10)
 
 # ── Optical cone (plan view) ──────────────────────────────────────────────────
 yd_vals = np.linspace(0, FP_Y, 300)
@@ -247,20 +247,20 @@ ax.plot(xr_vals, yd_vals, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 ax.plot([FP_X_L, FP_X_R], [FP_Y, FP_Y], color=C_CL, lw=2.0, zorder=4)
 ax.text((FP_X_L + FP_X_R) / 2, FP_Y + 115,
         f"Film plane  X={FP_X_L}–{FP_X_R}mm  (Yd={FP_Y}mm)",
-        ha="center", va="bottom", fontsize=FS_SM, color=C_CL)
+        ha="center", va="bottom", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # Pinhole
 ax.plot(PH_X, 0, "o", color=C_BLOCK, ms=9, zorder=6)
 ax.annotate(f"Pinhole  X={PH_X}mm",
             xy=(PH_X, 0), xytext=(PH_X - 650, -150),
             fontsize=FS_SM, color=C_BLOCK, ha="left",
-            arrowprops=dict(arrowstyle="-", color=C_BLOCK, lw=0.8))
+            arrowprops=dict(arrowstyle="->", linestyle=":", color=C_BLOCK, lw=0.8))
 
 # Optical axis
 ax.annotate("", xy=(PH_X, FP_Y - 20), xytext=(PH_X, 20),
             arrowprops=dict(arrowstyle="->", color=C_CL, lw=1.0))
 ax.text(PH_X + 80, FP_Y / 2, "Optical axis",
-        ha="left", va="center", fontsize=FS_SM, color=C_CL)
+        ha="left", va="center", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # ── Equipment footprints ──────────────────────────────────────────────────────
 for eq in EQUIPMENT:
@@ -279,7 +279,7 @@ for eq in EQUIPMENT:
     if eq["d"] >= 150 and eq["w"] >= 200:
         ax.text(eq["x"] + eq["w"] / 2, eq["yd"] + eq["d"] / 2,
                 short, ha="center", va="center",
-                fontsize=max(FS_SM - 1.5, 5), color="white", zorder=5,
+                fontsize=max(FS_SM - 1.5, 5), color="white", zorder=10,
                 fontweight="bold")
     else:
         # External label with 45° leader line for small items
@@ -293,31 +293,31 @@ for eq in EQUIPMENT:
                     xytext=(lx + label_off, ly + label_off),
                     ha="left", va="bottom",
                     fontsize=max(FS_SM - 1.5, 5), color=C_OUT, fontweight="bold",
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.7),
-                    zorder=6)
+                    arrowprops=dict(arrowstyle="->", linestyle=":", color=C_DIM, lw=0.7),
+                    zorder=10)
 
     if in_cone:
         ax.text(eq["x"] + eq["w"] / 1.5, eq["yd"] + eq["d"] + 870,
                 "IN CONE", ha="center", va="bottom",
-                fontsize=FS_SM - 1, color=C_BLOCK, fontweight="bold", zorder=6)
+                fontsize=FS_SM - 1, color=C_BLOCK, fontweight="bold", zorder=10)
 
 # ── Dimension labels ──────────────────────────────────────────────────────────
 ax.text(C_LEN / 2, -150, "PLAN VIEW — TOP-DOWN (Z axis)",
-        ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
+        ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold", zorder=10)
 ax.text(C_LEN / 2, -350,
         f"Optical cone: Pinhole (X={PH_X}, Yd=0) → Film plane edges "
         f"(X={FP_X_L} & X={FP_X_R}, Yd={FP_Y}mm)",
-        ha="center", va="top", fontsize=FS_SM, color=C_DIM)
+        ha="center", va="top", fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(C_LEN, -320), xytext=(0, -320),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax.text(C_LEN / 2, -280, f"{C_LEN} mm", ha="center", va="bottom",
-        fontsize=FS_SM, color=C_DIM)
+        fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(-450, C_WID), xytext=(-450, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax.text(-500, C_WID / 2, f"{C_WID} mm", ha="right", va="center",
-        fontsize=FS_SM, color=C_DIM, rotation=90)
+        fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
 
 # Legend box
 ax.text(PA_X_LO + 60, PA_Y_HI - 60,
@@ -325,7 +325,8 @@ ax.text(PA_X_LO + 60, PA_Y_HI - 60,
         "GREEN border = equipment clear of optical cone",
         ha="left", va="top", fontsize=FS_SM - 0.5, color=C_OUT,
         bbox=dict(boxstyle="round,pad=2", facecolor="#FFFFF0",
-                  edgecolor=C_DIM, linewidth=0.6))
+                  edgecolor=C_DIM, linewidth=0.6),
+        zorder=10)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -352,18 +353,18 @@ ax.plot(yd_e, ht, color=C_CONE_EDGE, lw=1.4, ls="--", zorder=3)
 # Film plane
 ax.plot([FP_Y, FP_Y], [0, C_HGT], color=C_CL, lw=1.8, zorder=4)
 ax.text(FP_Y + 125, C_HGT / 2, f"Film plane\nYd={FP_Y}mm",
-        ha="left", va="center", fontsize=FS_SM, color=C_CL)
+        ha="left", va="center", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # Pinhole
 ax.plot(0, PH_H, "o", color=C_BLOCK, ms=9, zorder=6)
 ax.text(-250, PH_H + 70, f"Pinhole\nH={PH_H}mm",
-        ha="left", va="bottom", fontsize=FS_SM, color=C_BLOCK)
+        ha="left", va="bottom", fontsize=FS_SM, color=C_BLOCK, zorder=10)
 
 # Optical axis
 ax.plot([0, FP_Y], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
         dashes=(8, 4), zorder=3)
 ax.text(FP_Y / 2, PH_H + 55, "Optical axis",
-        ha="center", va="bottom", fontsize=FS_SM - 1, color=C_CL)
+        ha="center", va="bottom", fontsize=FS_SM - 1, color=C_CL, zorder=10)
 
 # ── Equipment in elevation ────────────────────────────────────────────────────
 # For overlapping drums in X (same Yd range), offset slightly so labels visible
@@ -388,7 +389,7 @@ for eq in EQUIPMENT:
     if h_span >= 200 and yd_span >= 150:
         ax.text(mid_yd, mid_h, label,
                 ha="center", va="center",
-                fontsize=max(FS_SM - 2, 4.5), color="white", zorder=5,
+                fontsize=max(FS_SM - 2, 4.5), color="white", zorder=10,
                 fontweight="bold")
     else:
         # External label with 45° leader line for small items
@@ -400,25 +401,25 @@ for eq in EQUIPMENT:
                     xytext=(mid_yd + label_off, eq["h_top"] + label_off),
                     ha="left", va="bottom",
                     fontsize=max(FS_SM - 2, 4.5), color=C_OUT, fontweight="bold",
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.7),
-                    zorder=6)
+                    arrowprops=dict(arrowstyle="->", linestyle=":", color=C_DIM, lw=0.7),
+                    zorder=10)
 
 # ── Elevation labels ──────────────────────────────────────────────────────────
 ax.text(C_WID / 2, -120, "SIDE ELEVATION — along long axis (X)",
-        ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold")
+        ha="center", va="top", fontsize=FS_MD, color=C_OUT, fontweight="bold", zorder=10)
 ax.text(C_WID / 2, -320,
         f"Cone spread in HEIGHT — Pinhole at H={PH_H}mm",
-        ha="center", va="top", fontsize=FS_SM, color=C_DIM)
+        ha="center", va="top", fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax.text(C_WID / 2, -250, f"{C_WID} mm (optical depth)",
-        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM)
+        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
 ax.text(-300, C_HGT / 2, f"{C_HGT} mm",
-        ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90)
+        ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
 
 
 # ── Title and analysis note ───────────────────────────────────────────────────

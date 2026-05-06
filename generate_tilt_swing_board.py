@@ -699,6 +699,8 @@ leader(ax2, cx2a + 60, cy2a - 22, cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(-30)
 leader(ax2, cx2a - 65, cy2a + 35, cx2a + s2(BELL_IN_PCD/2) * np.cos(np.radians(130)),
        cy2a + s2(BELL_IN_PCD/2) * np.sin(np.radians(130)),
        '6×M6 ON\nØ310 PCD\n(BELLOWS)', fontsize=5)
+leader(ax2, cx2a - 55, cy2a - 30, cx2a - s2(PH_DISC_D/2) * 0.7, cy2a - s2(PH_DISC_D/2) * 0.7,
+       'Ø50 PINHOLE DISC\nSS-302 SHIM\nØ2.17 APERTURE', fontsize=5)
 
 ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 28, 'PANEL A — TSB-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
@@ -739,6 +741,8 @@ leader(ax2, cx2b - 58, cy2b + 5, cx2b - s2(BELL_ID/2)*0.7, cy2b,
 leader(ax2, cx2b + 50, cy2b - 20, cx2b + s2(SOCK_PCD/2)*np.cos(np.radians(-45)),
        cy2b + s2(SOCK_PCD/2)*np.sin(np.radians(-45)),
        '4×Ø16 H7\nINSERT BORES\n(REAR SIDE)', fontsize=5)
+leader(ax2, cx2b - 55, cy2b - 25, cx2b - s2(8) * 0.7, cy2b - s2(8) * 0.7,
+       'M16 TAPPED\nCENTRAL HOLE', fontsize=5)
 
 ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 28, 'PANEL B — TSB-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
@@ -824,7 +828,7 @@ draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 18,
            f'Ø{BRG_ID} BORE', above=False, fontsize=5, scale=1.2)
 draw_dim_v(ax2, or_right + frame_ctx_w + 10, or_bot, or_top, f'{BRG_W} WIDE', right=True, fontsize=5, scale=1.2)
 
-leader(ax2, cx2c + 85, cy2c + 5, cx2c + ir_outer_r - ir_wall/2, cy2c,
+leader(ax2, cx2c + 85, cy2c + 5, ptfe_right_x, cy2c,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fontsize=4.8)
 leader(ax2, cx2c - 75, cy2c - 35, or_left - frame_ctx_w/2, cy2c,
        'TSB-01\nFRAME\nAl 6061', fontsize=4.8)
@@ -832,6 +836,8 @@ leader(ax2, cx2c - 55, cy2c - 40, cx2c - 15, or_bot - s1b(8),
        'TSB-02\nSHANK\nØ50 k5', fontsize=4.8)
 leader(ax2, cx2c + 75, cy2c - 18, cx2c + ir_outer_r, or_bot + s1b(1.5),
        'RUBBER\nSEAL (2RS)', fontsize=4.8)
+leader(ax2, cx2c + 85, cy2c + 22, or_right - out_ring_wall/2, or_top,
+       'OUTER RING\n(PRESS-FIT H7/r6)', fontsize=4.8)
 
 ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
          ha='center', fontsize=5, style='italic', color='#333333')
@@ -929,6 +935,12 @@ leader(ax2, ball_x2 - s1b(8) - 55, cy2d - 18,
        '440C SS INSERT\nHEMI SOCKET\nRa 0.4 GROUND', fontsize=5)
 leader(ax2, ball_x2 + 14, cy2d + 12, ball_x2, cy2d + s1b(BALL_D/2),
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fontsize=5)
+leader(ax2, ball_x2 - carrier_rim_w - 15, cy2d + 15,
+       ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
+       'TSB-02\nCARRIER RIM', fontsize=5)
+leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30) + 10,
+       cx2d - frame_wall_w/2, cy2d + s1b(30),
+       'TSB-01\nFRAME WALL', fontsize=5)
 
 # Angular resolution table — top right of Panel D
 tbl_x, tbl_y = 580, 207

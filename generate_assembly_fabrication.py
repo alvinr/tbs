@@ -277,6 +277,18 @@ def sheet1():
 
     # (drums relocated to left zone — no drum column in right zone)
 
+    # ── Processing tray (304 SS, optical zone floor) ─────────────────────────
+    TRAY_X0 = RAIL_X_L + 20     # 645mm — 20mm clearance inside rail
+    TRAY_X1 = RAIL_X_R - 20     # 4629mm
+    TRAY_H  = 50                # 50mm rim height
+    ax.add_patch(mpatches.Rectangle((TRAY_X0, 0), TRAY_X1 - TRAY_X0, TRAY_H,
+                 facecolor=C_STEEL, edgecolor=C_OUT, linewidth=0.8,
+                 alpha=0.6, zorder=4))
+    ax.text((TRAY_X0 + TRAY_X1) / 2, TRAY_H / 2,
+            "PROCESSING TRAY (304 SS)  —  50mm rim  —  2 panels bolted at center",
+            ha="center", va="center", fontsize=FS_SM - 2, color=C_OUT,
+            style="italic", zorder=5)
+
     # ── Fans — shown on their correct end walls at correct heights ───────────────
     # Fan B (exhaust): cargo door end wall (X=0), HIGH H=FAN_B_H=1800mm
     # Fan A (intake):  far end wall (X=C_LEN),   LOW  H=FAN_A_H=600mm
@@ -298,6 +310,7 @@ def sheet1():
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "9"),  # Pump
         (-WALL_T/2, FAN_B_H,      "10"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "11"),  # Fan A intake (far end, LOW)
+        ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "12"),  # Processing tray
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)
@@ -327,7 +340,7 @@ def sheet1():
     REF_Y  = C_HGT - 80
     REF_DY = 115
     REF_W  = 1380
-    REF_H  = 11 * REF_DY + 80
+    REF_H  = 12 * REF_DY + 80
 
     ax.add_patch(mpatches.Rectangle((REF_X, REF_Y-REF_H), REF_W, REF_H,
                  facecolor="#F8F8FA", edgecolor=C_OUT, linewidth=0.8, zorder=5))
@@ -346,6 +359,7 @@ def sheet1():
         ("9",  "Pump manifold",                      "TBS-WS01"),
         ("10", "Intake fan",                         "TBS-EL01"),
         ("11", "Exhaust fan",                        "TBS-EL01"),
+        ("12", "Processing tray (304 SS, 2 panels)", "TBS-WS01"),
     ]
     for i, (num, desc, ref) in enumerate(refs):
         yy = REF_Y - 75 - i*REF_DY

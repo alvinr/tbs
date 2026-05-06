@@ -142,9 +142,9 @@ def draw_rect(ax, x, y, w, h, lw=LW_THICK, color=C_OUT, fc='white', zorder=3):
     r = mpatches.Rectangle((x, y), w, h, lw=lw, edgecolor=color, facecolor=fc, zorder=zorder)
     ax.add_patch(r)
 
-def leader(ax, xfrom, yfrom, xto, yto, text, fontsize=6, color=C_DIM):
+def leader(ax, xfrom, yfrom, xto, yto, text, fontsize=6, color=C_DIM, zorder=10):
     ax.annotate(text, xy=(xto, yto), xytext=(xfrom, yfrom),
-                fontsize=fontsize, color=color,
+                fontsize=fontsize, color=color, zorder=zorder,
                 arrowprops=dict(arrowstyle='->', linestyle=':', color=color, lw=0.7))
 
 def bolt_holes(ax, cx, cy, bc_r, n, d_r, color=C_OUT, lw=LW_MED, angle_offset=22.5):

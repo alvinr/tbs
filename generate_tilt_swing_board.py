@@ -840,7 +840,7 @@ ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPres
 ax2.text(360, 215, 'PANEL D — ADJUSTMENT SCREW DETAIL (1:1)', fontsize=7.5, fontweight='bold')
 ax2.plot([360, 695], [212, 212], color='black', lw=0.7)
 
-cx2d, cy2d = 490, 130
+cx2d, cy2d = 390, 130
 
 # Frame boss (outer adapter frame wall in section)
 frame_wall_w = s1b(35)
@@ -848,7 +848,6 @@ frame_wall_p = mpatches.Rectangle((cx2d - frame_wall_w, cy2d - s1b(30)),
                                    frame_wall_w, s1b(60),
                                    lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax2.add_patch(frame_wall_p)
-hatch_region(ax2, frame_wall_p, spacing=4, angle=45, color='#999999', lw=0.4)
 
 # Delrin bushing (M22×1.0 OD × M8 bore)
 bush_w = s1b(BUSH_L)
@@ -899,7 +898,6 @@ carrier_p2 = mpatches.Rectangle((ball_x2 - carrier_rim_w, cy2d - s1b(CARR_THICK/
                                   carrier_rim_w, s1b(CARR_THICK),
                                   lw=LW_THICK, edgecolor=C_OUT, facecolor='#C0C0C0', zorder=3)
 ax2.add_patch(carrier_p2)
-hatch_region(ax2, carrier_p2, spacing=3, angle=45, color='#A0A0A0', lw=0.4)
 # Socket insert
 sock_p = mpatches.Circle((ball_x2 - s1b(8), cy2d), s1b(8),
                            lw=LW_MED, edgecolor=C_OUT, facecolor=C_BEAR, zorder=5)

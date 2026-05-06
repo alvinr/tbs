@@ -124,7 +124,7 @@ def floor_plan():
     # Left end zone (X=0–ZONE_L_END, all depths)
     ax.add_patch(Rectangle((0, 0), ZONE_L_END, C_WID,
                             fc=C_ZONE_L, ec="none", zorder=1))
-    ax.text(ZONE_L_END/1.8, C_WID*0.65,
+    ax.text(ZONE_L_END/1.8, C_WID*1.06,
             f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\n(shadow-free,\nall depths)",
             color="#C07030", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
@@ -132,7 +132,7 @@ def floor_plan():
     # Optical / film plane zone (X=ZONE_L_END–ZONE_R_START, all depths)
     ax.add_patch(Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
                             fc=C_ZONE_OPT, ec="none", zorder=1))
-    ax.text((ZONE_L_END + ZONE_R_START)/2.5, C_WID*0.5,
+    ax.text((ZONE_L_END + ZONE_R_START)/2, C_WID*1.06,
             f"OPTICAL ZONE  (X={ZONE_L_END}–{ZONE_R_START}mm)\nFILM PLANE RAILS ONLY — FLOOR CLEAR",
             color="#4A8040", fontsize=8, ha="center", va="center",
             **FONT, alpha=0.45, fontweight="bold", zorder=2)
@@ -140,7 +140,7 @@ def floor_plan():
     # Right end zone (X=ZONE_R_START–C_LEN, all depths)
     ax.add_patch(Rectangle((ZONE_R_START, 0), C_LEN - ZONE_R_START, C_WID,
                             fc=C_ZONE_R, ec="none", zorder=1))
-    ax.text(ZONE_R_START + (C_LEN - ZONE_R_START)/2, C_WID*0.5,
+    ax.text(ZONE_R_START + (C_LEN - ZONE_R_START)/2, C_WID*1.06,
             f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm\n(shadow-free,\nall depths)",
             color="#3060A0", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
@@ -376,7 +376,7 @@ def floor_plan():
             zorder=10)
 
     # ── Legend ────────────────────────────────────────────────────────────────
-    LEG_X = C_LEN + 90; LEG_Y_TOP = C_WID - 2500
+    LEG_X = C_LEN + 110; LEG_Y_TOP = C_WID - 2410
     legend_items = [
         (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
         (C_BROWN_IBC, "Brown IBC ×1 (600L)"),

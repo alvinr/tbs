@@ -83,7 +83,7 @@ def title_block(ax, sheet_no, title, scale_note=""):
             style="italic", **FONT)
 
 def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
-    tick = abs(offset) * 0.3
+    tick = max(abs(offset) * 0.3, 15)   # minimum 15mm tick
     ax.annotate("", xy=(x1, y), xytext=(x0, y),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
     ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6)
@@ -92,7 +92,7 @@ def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
             ha="center", va="bottom", **FONT)
 
 def dim_line_v(ax, x, y0, y1, text, offset=30, col=DIM, fs=7):
-    tick = abs(offset) * 0.3
+    tick = max(abs(offset) * 0.3, 15)   # minimum 15mm tick
     ax.annotate("", xy=(x, y1), xytext=(x, y0),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
     ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6)
@@ -203,9 +203,13 @@ def sheet1():
                                        fc=WHITE, ec=WHITE, lw=0.5, zorder=6))
 
     # Travel dim
-    ax.annotate("", xy=(RAIL_X_L - RAIL_W - 50, D_FAR-20),
-                xytext=(RAIL_X_L - RAIL_W - 50, D_NEAR+20),
+    tr_x = RAIL_X_L - RAIL_W - 50
+    tr_tick = 15
+    ax.annotate("", xy=(tr_x, D_FAR-20),
+                xytext=(tr_x, D_NEAR+20),
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.8, mutation_scale=5))
+    ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_NEAR+20, D_NEAR+20], color=WHITE, lw=0.6)
+    ax.plot([tr_x - tr_tick, tr_x + tr_tick], [D_FAR-20, D_FAR-20], color=WHITE, lw=0.6)
     ax.text(RAIL_X_L - RAIL_W - 150, (D_NEAR+D_FAR)/2,
             f"{D_FAR-D_NEAR}\nmm\ntravel",
             color=WHITE, fontsize=6.5, ha="center", va="center", **FONT)
@@ -432,8 +436,11 @@ def sheet2():
 
     # Focal-length arrow
     fl_y = 50
+    fl_tick = 15
     ax.annotate("", xy=(D_FAR, fl_y), xytext=(0, fl_y),
                 arrowprops=dict(arrowstyle="<->", color=C_FLAT, lw=1.0, mutation_scale=7))
+    ax.plot([0, 0], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
+    ax.plot([D_FAR, D_FAR], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
     ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W} mm  (FLAT)",
             color=C_FLAT, fontsize=7, ha="center", **FONT)
 

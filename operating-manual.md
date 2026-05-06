@@ -75,6 +75,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 4. Check all pipe joints for drips. Tighten any fittings that are weeping.
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
+7. Lay fresh 6-mil black LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails). Overlap 300mm up the container walls to contain wash runoff.
 
 ### 0.6 Ventilation and Cooling
 
@@ -277,8 +278,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 1. Enter via light trap (same procedure as Phase 2.1). Safelight ON.
 2. Unclip the muslin from the image plane — work top-down, supporting the fabric weight as the upper clips release. The image is latent at this point and may be barely visible as a pale yellow ghost.
-3. Carry the muslin to the development area (can be outside — cyanotype develops in daylight).
-4. Exit via light trap.
+3. Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).
 
 ### 4.2 Development in Water
 
@@ -296,9 +296,10 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 ### 4.3 Drying
 
-1. Hang the developed muslin to dry — horizontal is ideal (prevents drip marks). Wooden poles or a rope line between two vehicles work well.
-2. Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidizes in air.
-3. Final color appears approximately 30 minutes after the print appears dry to the touch.
+1. After the final wash, carry the muslin outside through the light trap. Cyanotype is no longer light-sensitive after washing — daylight exposure is safe and accelerates oxidation.
+2. Hang the developed muslin to dry — horizontal is ideal (prevents drip marks). Wooden poles or a rope line between two vehicles work well.
+3. Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidizes in air.
+4. Final color appears approximately 30 minutes after the print appears dry to the touch.
 
 ---
 

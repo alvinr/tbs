@@ -44,7 +44,7 @@ C_OPT         = C_FILM
 C_ZONE_L      = "#FFF3E8"   # left zone tint
 C_ZONE_R      = "#E8F3FF"   # right zone tint
 C_ZONE_OPT    = "#F0F8F0"   # optical zone tint
-C_DEV_ZONE    = "#F0F0FF"
+C_PROC_ZONE   = "#E8F0FF"   # interior processing zone tint
 FONT          = {"fontfamily": "monospace"}
 
 WALL  = 40   # schematic wall thickness
@@ -95,8 +95,7 @@ def title_block(ax):
 
 
 def floor_plan():
-    DEV_DEPTH = 700
-    PAD_L = 600; PAD_R = 800; PAD_B = DEV_DEPTH + 200; PAD_T = 500
+    PAD_L = 600; PAD_R = 800; PAD_B = 500; PAD_T = 500
 
     X_LO = -PAD_L; X_HI = C_LEN + PAD_R
     Y_LO = -PAD_B; Y_HI = C_WID + PAD_T
@@ -330,20 +329,19 @@ def floor_plan():
                     color=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=4, alpha=0.5)
     ax.add_patch(swing_arc)
 
-    # ── Development area (outside) ────────────────────────────────────────────
-    DEV_X0 = FP_X_L; DEV_X1 = FP_X_R
-    DEV_Y0 = -DEV_DEPTH; DEV_Y1 = -WALL - 60
-    ax.add_patch(Rectangle((DEV_X0, DEV_Y0), DEV_X1 - DEV_X0, DEV_Y1 - DEV_Y0,
-                            fc=C_DEV_ZONE, ec=C_DIM, lw=1.5, ls=(0, (5, 3)), zorder=2))
-    for hx in np.arange(DEV_X0, DEV_X1, 250):
-        ax.plot([hx, hx+200], [DEV_Y0, DEV_Y1], color=C_DIM, lw=0.4, alpha=0.3, zorder=3)
-    ax.text((DEV_X0+DEV_X1)/2, (DEV_Y0+DEV_Y1)/2+50,
-            "DEVELOPMENT AREA  (OUTSIDE — IN FRONT OF PINHOLE WALL)\n"
-            "Fabric lowered from image plane for water wash.",
-            color=C_DIM, fontsize=7, ha="center", va="center", **FONT, zorder=4)
-    ax.annotate("", xy=(PH_X, DEV_Y1+10), xytext=(PH_X, 0),
-                arrowprops=dict(arrowstyle="->", color=C_DIM, lw=1.0,
-                                mutation_scale=8, ls="--", alpha=0.7))
+    # ── Processing zone (interior — optical zone floor) ─────────────────────
+    # Print wash/development uses the Blue circuit spray bar on the optical
+    # zone floor with LDPE containment sheet.  Drain feeds Brown/Black system.
+    PROC_X0 = FP_X_L; PROC_X1 = FP_X_R
+    PROC_Y0 = WALL + 60; PROC_Y1 = FP_Y - 60
+    ax.add_patch(Rectangle((PROC_X0, PROC_Y0), PROC_X1 - PROC_X0, PROC_Y1 - PROC_Y0,
+                            fc=C_PROC_ZONE, ec=C_DIM, lw=1.0, ls=(0, (5, 3)),
+                            zorder=1, alpha=0.35))
+    ax.text((PROC_X0 + PROC_X1) / 2, (PROC_Y0 + PROC_Y1) / 2,
+            "PROCESSING ZONE\n"
+            "Containment sheet on floor · spray bar wash · floor drain to Brown/Black",
+            color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
+            alpha=0.7, zorder=4)
 
     # ── Dimension annotations ─────────────────────────────────────────────────
     dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH")
@@ -357,8 +355,7 @@ def floor_plan():
 
     # ── Shadow-free proof callout ─────────────────────────────────────────────
     proof_x = C_LEN/2
-    proof_y = -DEV_DEPTH + 80
-    ax.text(proof_x, proof_y - 300,
+    ax.text(proof_x, -PAD_B + 80,
             f"SHADOW-FREE PROOF:  cone left ≥ {FP_X_L}mm at all Y  ✓     "
             f"cone right ≤ {FP_X_R}mm at all Y  ✓     "
             "pinhole wall Y=0: outside cone ✓",
@@ -382,7 +379,7 @@ def floor_plan():
         (C_PINHOLE,   "Revolving light-trap drum"),
         ("#8B7355",   "V-groove dolly track (permanent)"),
         ("#4A90D9",   "V-groove bridge section (removable)"),
-        (C_DEV_ZONE,  "Development area (outside container)"),
+        (C_PROC_ZONE, "Processing zone (interior wash area)"),
     ]
     box_w = 780; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
     ax.add_patch(Rectangle((LEG_X - 70, LEG_Y_TOP - box_h), box_w, box_h,
@@ -422,7 +419,7 @@ def floor_plan():
             **FONT, alpha=0.8, zorder=10)
 
     # Dimension line showing 1202mm gap between drums
-    dim_v(ax, -180, EGRESS_GAP_LO, EGRESS_GAP_HI,
+    dim_v(ax, -380, EGRESS_GAP_LO, EGRESS_GAP_HI,
           f"{EGRESS_GAP}mm\nEGRESS\nGAP", offset=-180, fs=6, col="#20A020")
 
     title_block(ax)

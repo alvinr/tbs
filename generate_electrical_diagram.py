@@ -708,18 +708,20 @@ def draw_sheet2():
     DIM_X = OX - 0.42
 
     def dim_h(x1, x2, dy, text):
+        tick = 0.08
         ax.annotate("", xy=(x2, dy), xytext=(x1, dy),
                     arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
-        ax.plot([x1, x1], [OY, dy], color=C_DIM, lw=0.5, ls=":")
-        ax.plot([x2, x2], [OY, dy], color=C_DIM, lw=0.5, ls=":")
+        ax.plot([x1, x1], [dy - tick, dy + tick], color=C_DIM, lw=0.6)
+        ax.plot([x2, x2], [dy - tick, dy + tick], color=C_DIM, lw=0.6)
         ax.text((x1+x2)/2, dy - 0.17, text,
                 ha="center", va="top", fontsize=7.5, color=C_DIM)
 
     def dim_v(dx, y1, y2, text):
+        tick = 0.08
         ax.annotate("", xy=(dx, y2), xytext=(dx, y1),
                     arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
-        ax.plot([OX, dx], [y1, y1], color=C_DIM, lw=0.5, ls=":")
-        ax.plot([OX, dx], [y2, y2], color=C_DIM, lw=0.5, ls=":")
+        ax.plot([dx - tick, dx + tick], [y1, y1], color=C_DIM, lw=0.6)
+        ax.plot([dx - tick, dx + tick], [y2, y2], color=C_DIM, lw=0.6)
         ax.text(dx - 0.17, (y1+y2)/2, text,
                 ha="right", va="center", fontsize=7.5, color=C_DIM, rotation=90)
 

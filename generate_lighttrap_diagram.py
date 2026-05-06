@@ -72,15 +72,21 @@ def ann(ax, text, xy, xytext, size=7.5):
 
 
 def dim_h(ax, x1, x2, y, text, col=C_DIM):
+    tick = 0.06
     ax.annotate("", xy=(x2, y), xytext=(x1, y),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9), zorder=10)
+    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6, zorder=10)
+    ax.plot([x2, x2], [y - tick, y + tick], color=col, lw=0.6, zorder=10)
     ax.text((x1+x2)/2, y + 0.18, text,
             ha="center", va="bottom", fontsize=7.5, color=col, zorder=10)
 
 
 def dim_v(ax, x, y1, y2, text, col=C_DIM):
+    tick = 0.06
     ax.annotate("", xy=(x, y2), xytext=(x, y1),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9), zorder=10)
+    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6, zorder=10)
+    ax.plot([x - tick, x + tick], [y2, y2], color=col, lw=0.6, zorder=10)
     ax.text(x - 0.18, (y1+y2)/2, text,
             ha="right", va="center", fontsize=7.5, color=col, rotation=90, zorder=10)
 

@@ -618,26 +618,35 @@ def egress_detail():
             color=C_PINHOLE, fontsize=6, ha="left", va="top",
             fontweight="bold", **FONT, zorder=9)
 
-    # Swing arc — 180° from closed (+Yd direction) to open (-X direction)
-    # Show arc at representative radius
-    swing_r = C_WID * 0.4
+    # Swing arc — panel far edge traces 90° from closed (+Yd) to open (-X)
+    # Hinge at origin (0,0). Panel far edge at r=C_WID.
+    # Closed: far edge at (0, C_WID).  Open: far edge at (-C_WID, 0).
+    # In matplotlib angle convention: 90° = +Yd, 180° = -X.
+    swing_r = C_WID  # full panel width = actual sweep radius
     swing_arc = Arc((0, 0), 2*swing_r, 2*swing_r,
-                    angle=0, theta1=-180, theta2=-90,
-                    color=C_PINHOLE, lw=1.2, ls=(0, (4, 3)),
+                    angle=0, theta1=90, theta2=180,
+                    color=C_PINHOLE, lw=1.8, ls=(0, (6, 4)),
                     zorder=4, alpha=0.6)
     ax.add_patch(swing_arc)
-    # Arrow at the end of the arc
-    arc_arrow_angle = math.radians(-135)
+
+    # Arrowhead at the open-position end of the arc (near 180° = (-C_WID, 0))
+    # Place arrow tangent at ~175° so it points in the sweep direction
+    arr_angle = math.radians(175)
+    arr_dx = -math.sin(arr_angle) * 40   # tangent direction
+    arr_dy =  math.cos(arr_angle) * 40
     ax.annotate("",
-                xy=(swing_r * math.cos(arc_arrow_angle) - 15,
-                    swing_r * math.sin(arc_arrow_angle) + 15),
-                xytext=(swing_r * math.cos(arc_arrow_angle) + 15,
-                        swing_r * math.sin(arc_arrow_angle) - 15),
-                arrowprops=dict(arrowstyle="->", color=C_PINHOLE, lw=1.2,
-                                mutation_scale=10), zorder=5)
-    ax.text(swing_r * math.cos(arc_arrow_angle) - 80,
-            swing_r * math.sin(arc_arrow_angle),
-            "180°\nSWING",
+                xy=(swing_r * math.cos(arr_angle) + arr_dx,
+                    swing_r * math.sin(arr_angle) + arr_dy),
+                xytext=(swing_r * math.cos(arr_angle),
+                        swing_r * math.sin(arr_angle)),
+                arrowprops=dict(arrowstyle="->", color=C_PINHOLE, lw=1.5,
+                                mutation_scale=12), zorder=5)
+
+    # Label on the arc midpoint (~135°)
+    mid_angle = math.radians(135)
+    ax.text(swing_r * math.cos(mid_angle) * 1.08,
+            swing_r * math.sin(mid_angle) * 1.08,
+            "PANEL TIP\nSWEEP ARC\n(180° outward)",
             color=C_PINHOLE, fontsize=6, ha="center", va="center",
             **FONT, alpha=0.7, zorder=5)
 

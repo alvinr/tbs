@@ -991,7 +991,7 @@ title_block(ax3, FW, FH3, 3, 3,
 ax3.text(15, 490 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([15, 480], [487 + S3_UP, 487 + S3_UP], color='black', lw=0.7)
 
-cx3a, cy3a = 200, 370 + S3_UP
+cx3a, cy3a = 200, 430 + S3_UP
 
 def draw_bellows_section(ax, cx, cy, tilt_deg, lw_style='-', alpha=1.0):
     """Draw bellows accordion cross-section for given tilt angle."""

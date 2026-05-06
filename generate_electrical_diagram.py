@@ -16,7 +16,11 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, Arc
 import os
-from tbs_constants import svg_path, SVG_DIR
+from tbs_constants import (
+    svg_path, SVG_DIR,
+    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_EVAP, C_ELEC, C_BATT, C_PUMP,
+)
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -24,18 +28,24 @@ C_CL    = "#2060A0"
 C_DIM   = "#505050"
 C_ALUM  = "#C8D8E8"
 C_STEEL = "#B0B0B8"
-C_ELEC  = "#FFF3CC"
-C_SOLAR = "#D4EDDA"
-C_BATT  = "#CCE5FF"
+# C_ELEC, C_BATT imported from tbs_constants (unified equipment colors)
+C_SOLAR = "#D4EDDA"       # solar array schematic fill (not an equipment constant)
 C_WARN  = "#F8D7DA"
 C_GND   = "#2C5F2E"
 C_PIPE  = "#6C757D"
 TITLE_COL = "#0F2D5E"
 
+# Light tints of unified equipment colors for Sheet 1 schematic blocks
+# where bold fills would overpower wiring labels and text
+C_ELEC_TINT  = "#FFF3CC"   # pale yellow tint for electrical panel schematic boxes
+C_BATT_TINT  = "#CCE5FF"   # pale blue tint for battery schematic boxes
+C_EVAP_TINT  = "#D4EDDA"   # pale green tint for evap cooler schematic boxes
+C_PUMP_TINT  = "#FFDEC8"   # pale orange tint for pump schematic boxes
+
 
 # ── Shared helpers ────────────────────────────────────────────────────────────
 
-def rbox(ax, x, y, w, h, title, subtitle="", fc=C_ELEC, ec=C_OUT, lw=1.4,
+def rbox(ax, x, y, w, h, title, subtitle="", fc=C_ELEC_TINT, ec=C_OUT, lw=1.4,
          ts=9.0, ss=7.5, bold=True):
     """Rounded rectangle with title + optional subtitle."""
     ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.04",
@@ -133,7 +143,7 @@ def draw_sheet1():
     rbox(ax, LX, 10.3, LW, 0.9,
          "MPPT CHARGE CONTROLLER",
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
-         fc=C_ELEC, ts=9.5, ss=8.0)
+         fc=C_ELEC_TINT, ts=9.5, ss=8.0)
     varrow(ax, CX, 12.0, 11.2, col=C_SOLAR)
     wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  MC4 connectors")
 
@@ -141,7 +151,7 @@ def draw_sheet1():
     rbox(ax, LX, 8.4, LW, 1.1,
          "BATTERY BANK — 200Ah / 2,400Wh",
          "2 × 100Ah 12V LiFePO4 in parallel  |  100% DoD usable  |  Safe to 60 °C",
-         fc=C_BATT, ts=9.5, ss=8.0)
+         fc=C_BATT_TINT, ts=9.5, ss=8.0)
     varrow(ax, CX, 10.3, 9.5, col=C_CL)
     wlabel(ax, CX + 0.18, 9.9, "2 AWG  |  Charge positive")
 
@@ -213,14 +223,14 @@ def draw_sheet1():
     ax.plot([lx + 0.1, lx + SC_W - 0.1], [ly + 3.05, ly + 3.05],
             color=C_DIM, lw=0.7)
     legend_items = [
-        (C_SOLAR,   "Solar / generation"),
-        (C_BATT,    "Battery / storage"),
-        (C_ELEC,    "Controller / charger"),
-        (C_WARN,    "Fuse / protection device"),
-        (C_ALUM,    "Ventilation loads"),
-        (C_SOLAR,   "Cooling loads"),
-        ("#F5EDD0",  "Shore power (backup only)"),
-        (C_GND,     "Earth / chassis ground"),
+        (C_SOLAR,      "Solar / generation"),
+        (C_BATT_TINT,  "Battery / storage"),
+        (C_ELEC_TINT,  "Controller / charger"),
+        (C_WARN,       "Fuse / protection device"),
+        (C_ALUM,       "Ventilation loads"),
+        (C_EVAP_TINT,  "Cooling loads"),
+        ("#F5EDD0",    "Shore power (backup only)"),
+        (C_GND,        "Earth / chassis ground"),
     ]
     for j, (col, txt) in enumerate(legend_items):
         yl = ly + 2.72 - j * 0.36
@@ -264,11 +274,11 @@ def draw_sheet1():
         ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
          "Cargo door end wall (X=0)  |  high position  |  Yd=2,287mm corner", C_ALUM),
         ("C", "WATER PUMP  (12V DC)",              "15A", "14 AWG", "100W",
-         "Adjacent water totes", C_BATT),
+         "Adjacent water totes", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "Red LED strip  |  switched from inside", "#FFEEDD"),
         ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
-         "Far short wall  |  light-safe baffled intake", C_SOLAR),
+         "Far short wall  |  light-safe baffled intake", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
     ]
@@ -590,24 +600,24 @@ def draw_sheet2():
 
     # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
     # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
-    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "DRUM\n(partial)", "#E8E8D0",
+    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "DRUM\n(partial)", C_WASTE_DRUM,
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
     # 55-gal drums — one per Yd corner (rev 4: unstacked)
     equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
-          "DRUM D-1\n(near)", C_STEEL, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
+          "DRUM D-1\n(near)", C_WASTE_DRUM, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
     equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
-          "DRUM D-2\n(far)", C_STEEL, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
+          "DRUM D-2\n(far)", C_WASTE_DRUM, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
 
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
-    equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_SOLAR, "80W 12V  (E)")
-    equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_BATT, "Cct C")
+    equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_EVAP, "80W 12V  (E)")
+    equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_PUMP, "Cct C")
 
     # RIGHT END ZONE — Blue IBC stack (front, Y=100–1116mm)
     equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "BLUE IBC ×2\n(front)",
-          "#C8E8FF", "2×600L  Yd=100–1116")
+          C_BLUE_IBC, "2×600L  Yd=100–1116")
     # Brown IBC (rear, Y=1141–2157mm)
     equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
-          "#D7CCC8", "1×600L  Yd=1141–2157")
+          C_BROWN_IBC, "1×600L  Yd=1141–2157")
 
     # ── EP + BAT wall-mounted on interior face of pinhole wall (Yd=0) ────────
     WALL_MOUNT_H = wt * 0.55   # shallow depth for wall-mounted box
@@ -748,11 +758,11 @@ def draw_sheet2():
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5,893mm)  |  Yd=75mm"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=2,287mm"),
-        ("C",     C_BATT,    "WATER PUMP — Cct C",
+        ("C",     C_PUMP,    "WATER PUMP — Cct C",
          "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,600mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
-        ("E",     C_SOLAR,   "EVAP COOLER — Cct E",
+        ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
          "Shore power backup  |  Exterior face, cargo door wall"),

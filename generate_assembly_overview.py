@@ -52,6 +52,8 @@ from tbs_constants import (
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
+    C_WALL, C_WASTE_DRUM, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_EVAP, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN,
     cone_left, cone_right,
 )
 
@@ -65,23 +67,12 @@ DRUM_H_ELV = DRUM_H_LT   # 2000mm — revolving drum height in elevation view
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG        = "#FFFFFF"
 C_INTERIOR = "#F4F4F4"
-C_WALL    = "#B0B0B8"
 C_ZONE_L  = "#FFF0E0"   # left end zone (orange tint)
 C_ZONE_O  = "#F0FFF0"   # optical zone (green tint)
 C_ZONE_R  = "#E8F0FF"   # right end zone (blue tint)
 
-C_IBC_BLUE  = "#4A90D9"
-C_IBC_BROWN = "#9C7A3C"
-C_DRUM_EQ   = "#7A6B5A"
-C_EVAP      = "#3DAA96"
-C_PUMP      = "#E8884A"
-C_ELEC      = "#F5C518"
-C_BATT      = "#6A5ACD"
 C_FILM_PLN  = "#B8D4E8"
 C_PINHOLE   = "#CC2020"
-C_DOOR      = "#C8C8C0"
-C_FAN       = "#A0A0A8"
-C_DRUM_LT   = "#E8E8D0"   # revolving light-trap drum fill
 
 FS_SM = 7.5
 FS_MD = 8.5
@@ -184,10 +175,10 @@ corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 # Center zone (drum housing, Yd=756-1606) shown at 120mm depth.
 # Container wall (40mm steel) drawn outside at X=-40 to 0.
 ax.add_patch(mpatches.Rectangle((-40, 0), 40, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
+             facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
 # Corner zone panel (40mm, X=0 to 40) — visible in side elevation as dominant depth
 ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CORNER_T, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
+             facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
 # Center zone panel (120mm, X=0 to 120) — shown as dashed outline behind corner
 ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
              facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
@@ -196,7 +187,7 @@ ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
 # Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
 # In this side elevation appears as a rectangle Ø750mm wide × 2000mm tall.
 ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
-             facecolor=C_DRUM_LT, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
+             facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
 # Centre line through drum
 ax.plot([DRUM_CX, DRUM_CX], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
@@ -219,7 +210,7 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
 # right edge 5mm inside ZONE_L_END.
 _drum_x0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
 _drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.80, zorder=5)
+equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.80, zorder=5)
 ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
         "Waste\ndrums\n×2", ha="center", va="center",
         fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
@@ -267,13 +258,13 @@ leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
 # Draw Brown first (slightly dimmer / different alpha), then Blue on top.
 
 # Brown IBC ×1 (behind Blue, dimmer)
-equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=3)
+equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=3)
 ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_600/2,
         "Brown IBC x1\n(600L, behind)",
         ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=4)
 
 # Blue IBC stack ×2 (front, on top)
-equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, alpha=0.80, zorder=5)
+equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
 ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK/2,
         "Blue IBC x2\nstacked (front)\n2x600L",
         ha="center", va="center", fontsize=FS_SM, color="#FFFFFF",
@@ -380,16 +371,16 @@ LEG_H   = 60
 LEG_GAP = 82
 
 legend_items = [
-    (C_IBC_BLUE,  "Blue IBC stack x2 (2x600L)"),
-    (C_IBC_BROWN, "Brown IBC x1 (600L)"),
-    (C_DRUM_EQ,   "55-gal drums x2"),
+    (C_BLUE_IBC,  "Blue IBC stack x2 (2x600L)"),
+    (C_BROWN_IBC, "Brown IBC x1 (600L)"),
+    (C_WASTE_DRUM,   "55-gal drums x2"),
     (C_EVAP,      "Evaporative cooler"),
     (C_PUMP,      "Pump manifold"),
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),
     (C_PINHOLE,   "Pinhole O2.17mm"),
-    (C_DOOR,      "Hinged panel + drum"),
+    (C_HINGE_PANEL,      "Hinged panel + drum"),
     (C_FAN,       "Ventilation fan"),
 ]
 
@@ -623,10 +614,10 @@ ldr2(RAIL_X_R, C_HGT - 300, RAIL_X_R - 650, C_HGT - 600,
 # Hinged panel — stepped profile (rev 4): container wall outside, then
 # corner zones (40mm) and center zone (120mm) inside.
 ax2.add_patch(mpatches.Rectangle((C_LEN, 0), 40, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
+             facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
 # Corner zone (40mm inside)
 ax2.add_patch(mpatches.Rectangle((C_LEN - PANEL_CORNER_T, 0), PANEL_CORNER_T, C_HGT,
-             facecolor=C_DOOR, edgecolor=C_OUT, linewidth=0.6, alpha=0.4, zorder=4))
+             facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=0.6, alpha=0.4, zorder=4))
 # Center zone outline (120mm inside, dashed — deeper zone behind)
 ax2.add_patch(mpatches.Rectangle((C_LEN - PANEL_CENTER_T, 0), PANEL_CENTER_T, C_HGT,
              facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
@@ -634,7 +625,7 @@ ax2.add_patch(mpatches.Rectangle((C_LEN - PANEL_CENTER_T, 0), PANEL_CENTER_T, C_
 
 # Revolving drum
 ax2.add_patch(mpatches.Rectangle((C_LEN - DRUM_D, RAIL_OFF), DRUM_D, DRUM_H_ELV,
-             facecolor=C_DRUM_LT, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
+             facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
 ax2.plot([C_LEN, C_LEN], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 
@@ -653,14 +644,14 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
 _dlx0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
 
 # D-1 (far from viewer — ghost, behind light trap drum)
-eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.20, zorder=4,
+eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.20, zorder=4,
     ec="#7A6B5A", lw=0.6)
 
 # Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
 
 # D-2 (close to viewer — solid, in front of light trap drum)
 _dfx0 = PANEL_CORNER_T   # = 40mm — same X as D-1
-eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.85, zorder=7,
+eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.85, zorder=7,
     ec="#7A6B5A", lw=1.0)
 ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,
         "Waste\ndrum D-2\n(front)",
@@ -671,12 +662,12 @@ ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
     ha="left", fs=FS_SM)
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — IBCs ─────────────────────
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_IBC_BROWN, alpha=0.60, zorder=6)
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=6)
 ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
         "Brown IBC x1\n(600L, behind)", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, alpha=0.80, zorder=5)
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
 ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2 + 200,
         "Blue IBC x2\nstacked (front)\n2×600L", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
@@ -777,11 +768,11 @@ legend2 = [
     (C_CONE_L,   "Optical cone (shadow-free projection)"),
     (C_ALUM2,    "Film plane rail (floor & ceiling)"),
     (C_FILM_PLN, "Film plane carriage (symbolic)"),
-    (C_IBC_BLUE, "Blue IBC stack x2 (2×600L)"),
-    (C_IBC_BROWN,"Brown IBC x1 (600L)"),
-    (C_DRUM_LT,  "Revolving light-trap drum"),
+    (C_BLUE_IBC, "Blue IBC stack x2 (2×600L)"),
+    (C_BROWN_IBC,"Brown IBC x1 (600L)"),
+    (C_LT_DRUM,  "Revolving light-trap drum"),
     (C_EVAP,     "Evap cooler  [ghost = Yd=0 wall]"),
-    (C_DOOR,     "Hinged panel"),
+    (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),
     (C_PINHOLE,  "Pinhole Ø2.17mm  [ghost = far wall]"),
 ]
@@ -846,10 +837,7 @@ print(f"Saved: {out2}")
 # ═══════════════════════════════════════════════════════════════════════════════
 
 # ── Palette for plan view ────────────────────────────────────────────────────
-C_PANEL   = "#C8C8C0"    # panel fill (same as C_DOOR)
 C_PANEL_C = "#A8B8A8"    # panel center zone (slightly different)
-C_DRUM_LT3 = "#E8E8D0"  # light trap drum fill
-C_WASTE   = "#7A6B5A"    # waste drum fill
 C_RAIL3   = "#CC4422"    # HGR20 panel slide rail color (red — distinct from brown tracks)
 C_TRACK   = "#8B7355"    # V-groove track color
 C_CONT_DR = "#9CA0A8"    # container door fill
@@ -934,7 +922,7 @@ def draw_stepped_panel(ax, panel_x_outer, alpha=0.85):
     # Corner zone near (Yd=0 to PANEL_CORNER_YD_L): 40mm thick
     ax.add_patch(mpatches.Rectangle(
         (0, panel_x_outer), PANEL_CORNER_YD_L, PANEL_CORNER_T,
-        facecolor=C_PANEL, edgecolor=C_OUT, linewidth=1.0,
+        facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=1.0,
         alpha=alpha, zorder=5))
     # Center zone (Yd=PANEL_CORNER_YD_L to _R): 120mm thick
     ax.add_patch(mpatches.Rectangle(
@@ -944,7 +932,7 @@ def draw_stepped_panel(ax, panel_x_outer, alpha=0.85):
     # Corner zone far (Yd=PANEL_CORNER_YD_R to C_WID): 40mm thick
     ax.add_patch(mpatches.Rectangle(
         (PANEL_CORNER_YD_R, panel_x_outer), C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T,
-        facecolor=C_PANEL, edgecolor=C_OUT, linewidth=1.0,
+        facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=1.0,
         alpha=alpha, zorder=5))
     # Step lines
     for yd_step in [PANEL_CORNER_YD_L, PANEL_CORNER_YD_R]:
@@ -958,7 +946,7 @@ def draw_light_trap_drum(ax, panel_x_outer):
     drum_x_center = panel_x_outer + PANEL_CENTER_T / 2  # centered in 120mm zone
     ax.add_patch(plt.Circle(
         (LT_DRUM_YD_CENTER, drum_x_center), DRUM_R,
-        facecolor=C_DRUM_LT3, edgecolor=C_OUT, linewidth=1.0, zorder=6))
+        facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=1.0, zorder=6))
     # Center cross
     ax.plot([LT_DRUM_YD_CENTER - 40, LT_DRUM_YD_CENTER + 40],
             [drum_x_center, drum_x_center], color=C_CL, lw=0.7, zorder=7)
@@ -976,7 +964,7 @@ def draw_waste_drums(ax, drum_x_left, d1_yd, d2_yd, alpha=0.85):
     for yd_lo, label in [(d1_yd, "D-1"), (d2_yd, "D-2")]:
         yd_c = yd_lo + r
         ax.add_patch(plt.Circle(
-            (yd_c, cx), r, facecolor=C_WASTE, edgecolor=C_OUT,
+            (yd_c, cx), r, facecolor=C_WASTE_DRUM, edgecolor=C_OUT,
             linewidth=0.8, alpha=alpha, zorder=5))
         ax.text(yd_c, cx, label, ha="center", va="center",
                 fontsize=FS_SM - 0.5, color="#FFFFFF", fontweight="bold", zorder=6)
@@ -1207,10 +1195,10 @@ ax_op.text(latch_label_yd, latch_label_x - 40,
 
 # ── Shared legend (bottom center of figure) ─────────────────────────────────
 legend_items3 = [
-    (C_PANEL,    "Panel corner zone (40mm)"),
+    (C_HINGE_PANEL,    "Panel corner zone (40mm)"),
     (C_PANEL_C,  "Panel center zone (120mm)"),
-    (C_DRUM_LT3, "Revolving light trap drum"),
-    (C_WASTE,    "55-gal waste drum"),
+    (C_LT_DRUM, "Revolving light trap drum"),
+    (C_WASTE_DRUM,    "55-gal waste drum"),
     (C_TRACK,    "Permanent dolly track"),
     (C_BRIDGE,   "Removable bridge section"),
     (C_EVAP,     "Evaporative cooler"),

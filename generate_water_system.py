@@ -27,6 +27,7 @@ from tbs_constants import (
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
     PANEL_CORNER_T, PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
     DRUM_SLIDE,
+    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_PUMP,
     svg_path, SVG_DIR,
 )
 import os
@@ -207,10 +208,10 @@ Y_J  = 5.62                 # Y level of Y-junction (matches heavy contam bypass
 
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
 # IBC1 Clean water A
-tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
+tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
      label="IBC-1", sublabel="159 gal (600L)\nCLEAN A")
 # IBC2 Clean water B
-tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE, lw=2,
+tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
      label="IBC-2", sublabel="159 gal (600L)\nCLEAN B")
 
 # Manifold joining two tanks
@@ -225,8 +226,8 @@ ax1.text(2.4, 7.12, "BV-01", ha="center", fontsize=6, color=C_BLUE)
 # Pump P1
 pipe(ax1, 2.4, 7.0, 2.4, 6.5, C_BLUE)
 arrow_pipe(ax1, 2.4, 6.9, 2.4, 6.6, color=C_BLUE)
-pump(ax1, 2.4, 6.3, color=C_BLUE)
-ax1.text(2.75, 6.3, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BLUE)
+pump(ax1, 2.4, 6.3, color=C_PUMP)
+ax1.text(2.75, 6.3, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 # Pressure accumulator
 pipe(ax1, 2.4, 6.1, 2.4, 5.6, C_BLUE)
@@ -260,7 +261,7 @@ ax1.plot([4.5, 3.95], [8.2, 8.2], color=C_BLUE, lw=0.8, ls=":")
 
 # ── BROWN SYSTEM ──────────────────────────────────────────────────────────────
 # IBC3 — used water buffer
-tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN, lw=2,
+tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2,
      label="IBC-3", sublabel="159 gal (600L)\nUSED BUFFER")
 
 # Inlet from processing floor drain
@@ -280,8 +281,8 @@ ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
 # Brown pump P2 — outlet from bottom of IBC-3
 pipe(ax1, 6.4, 7.48, 6.4, 5.6, C_BROWN)
 arrow_pipe(ax1, 6.4, 7.0, 6.4, 6.0, color=C_BROWN)       # downward from IBC-3
-pump(ax1, 6.4, 5.4, color=C_BROWN)
-ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_BROWN)
+pump(ax1, 6.4, 5.4, color=C_PUMP)
+ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 pipe(ax1, 6.4, 5.2, 6.4, 4.8, C_BROWN)
 
@@ -348,9 +349,9 @@ pipe(ax1, 9.7, 2.5, D1_X, 2.5, C_BLACK)
 arrow_pipe(ax1, 10.3, 2.5, D1_X, 2.5, color=C_BLACK)      # rightward to D1
 
 # ── BLACK SYSTEM ──────────────────────────────────────────────────────────────
-drum(ax1, D1_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+drum(ax1, D1_X, D_Y, r=DR, fc=C_WASTE_DRUM, ec=C_BLACK, lw=2,
      label="DRUM-1\n55 GAL\nWASTE")
-drum(ax1, D2_X, D_Y, r=DR, fc=C_BLACK_L, ec=C_BLACK, lw=2,
+drum(ax1, D2_X, D_Y, r=DR, fc=C_WASTE_DRUM, ec=C_BLACK, lw=2,
      label="DRUM-2\n55 GAL\nWASTE")
 
 # Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
@@ -569,11 +570,11 @@ def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
 
 # Right end zone: Blue IBC stack x2 — Y-stacked FRONT (Yd=100–1116mm)
 BLUE_IBC_DY = 100 * SY   # ≈ 0.21
-ibc_plan(ax2, IBC_COL_DX, BLUE_IBC_DY, "#BBDEFB", C_BLUE,
+ibc_plan(ax2, IBC_COL_DX, BLUE_IBC_DY, "#BBDEFB", C_BLUE_IBC,
          "IBC-1/2 BLUE x2", "2x159 gal (2x600L)\nYd=100–1116mm (front)")
 # Brown IBC x1 — Y-stacked REAR (Yd=1141–2157mm)
 BROWN_IBC_DY = 1141 * SY  # ≈ 2.42
-ibc_plan(ax2, IBC_COL_DX, BROWN_IBC_DY, "#D7CCC8", C_BROWN,
+ibc_plan(ax2, IBC_COL_DX, BROWN_IBC_DY, "#D7CCC8", C_BROWN_IBC,
          "IBC-3 BROWN", "159 gal (600L)\nYd=1141–2157mm (rear)")
 
 # Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
@@ -586,12 +587,12 @@ ax2.text(FS_X + FS_W/2, FS_Y + FS_D/2 - 0.15, "F1 → F2 → F3 (pH)",
          ha="center", fontsize=6.5, color="#E65100", zorder=3)
 
 # Pump P1 (blue) — wall-mounted, left side
-pump(ax2, 0.55, 0.6, color=C_BLUE, r=0.2)
-ax2.text(0.55, 0.25, "P-01\nBLUE SUPPLY", ha="center", fontsize=6, color=C_BLUE)
+pump(ax2, 0.55, 0.6, color=C_PUMP, r=0.2)
+ax2.text(0.55, 0.25, "P-01\nBLUE SUPPLY", ha="center", fontsize=6, color=C_PUMP)
 
 # Pump P2 (brown) — near filter skid
-pump(ax2, 2.05, 0.6, color=C_BROWN, r=0.2)
-ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_BROWN)
+pump(ax2, 2.05, 0.6, color=C_PUMP, r=0.2)
+ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_PUMP)
 
 # ACC accumulator
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
@@ -606,7 +607,7 @@ for drum_cx, drum_cy, label in [
     dx = drum_cx * SX
     dy = drum_cy * SY
     ax2.add_patch(plt.Circle((dx, dy), DRUM_R_DU,
-                             fc=C_BLACK_L, ec=C_BLACK, lw=2, zorder=2))
+                             fc=C_WASTE_DRUM, ec=C_BLACK, lw=2, zorder=2))
     ax2.text(dx, dy, label, ha="center", va="center",
              fontsize=5.5, fontweight="bold", color=C_BLACK, zorder=3,
              multialignment="center")

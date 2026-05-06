@@ -48,6 +48,8 @@ from tbs_constants import (
     FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
+    C_WASTE_DRUM, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -69,14 +71,6 @@ C_ZONE_L    = "#FFF0E0"
 C_ZONE_O    = "#F0FFF0"
 C_ZONE_R    = "#E8F0FF"
 
-C_IBC_BLUE  = "#4A90D9"
-C_IBC_BROWN = "#9C7A3C"
-C_DRUM_EQ   = "#7A6B5A"
-C_EVAP      = "#3DAA96"
-C_PUMP      = "#E8884A"
-C_ELEC      = "#F5C518"
-C_BATT      = "#6A5ACD"
-C_DRUM_LT   = "#D8D8C0"
 
 FS_SM = 7.0
 FS_MD = 8.5
@@ -230,7 +224,7 @@ def sheet1():
                  alpha=0.5, zorder=4))
 
     # Revolving drum: centre at X=0, bottom at RAIL_OFF
-    equip_blk(ax, -DRUM_R, RAIL_OFF, DRUM_D, DRUM_H_ELV, C_DRUM_LT, lw=1.0, alpha=0.9, zorder=5)
+    equip_blk(ax, -DRUM_R, RAIL_OFF, DRUM_D, DRUM_H_ELV, C_LT_DRUM, lw=1.0, alpha=0.9, zorder=5)
     draw_cl_v(ax, DRUM_CX, RAIL_OFF, RAIL_OFF+DRUM_H_ELV+150)
     ax.text(DRUM_CX, RAIL_OFF+DRUM_H_ELV/2,
             f"REVOLVING DRUM\nVERTICAL AXIS\nO{DRUM_D}x{DRUM_H_ELV}mm H",
@@ -247,8 +241,8 @@ def sheet1():
     # In this side elevation (horizontal=X) both drums collapse to the same X position.
     # Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm).
     _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 330 - 290 = 40mm; spans 40 → 620mm
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.35, zorder=3)  # far (behind)
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_DRUM_EQ, alpha=0.70, zorder=7)  # near (front)
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.35, zorder=3)  # far (behind)
+    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.70, zorder=7)  # near (front)
     ax.text(DRUM_LZ_CX, RAIL_OFF + DRUM_EQ_H/2,
             "WASTE\nDRUMS\n×2\n(near+far\ncorners)",
             ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=8)
@@ -269,7 +263,7 @@ def sheet1():
 
     # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────
     # Blue IBC stack x2 (front in depth, 2020mm tall)
-    equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_IBC_BLUE, zorder=5)
+    equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, zorder=5)
     # Stacking interface line
     ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [RAIL_OFF+IBC_H_600, RAIL_OFF+IBC_H_600],
             color="white", lw=0.8, ls="--", alpha=0.7, zorder=6)
@@ -279,7 +273,7 @@ def sheet1():
 
     # Brown IBC x1 (behind Blue, Y-depth stacked — draw at same X, dimmer)
     equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600,
-              C_IBC_BROWN, alpha=0.45, zorder=3)
+              C_BROWN_IBC, alpha=0.45, zorder=3)
 
     # (drums relocated to left zone — no drum column in right zone)
 
@@ -443,7 +437,7 @@ def sheet2():
     DRUM_RIGHT = DRUM_CY + DRUM_R   # = 1181 + 375 = 1556mm
 
     equip_blk(ax, DRUM_LEFT, RAIL_OFF, DRUM_D, DRUM_H_ELV,
-              C_DRUM_LT, ec=C_OUT, lw=1.2, alpha=0.80, zorder=6)
+              C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.80, zorder=6)
 
     # Drum axis centre line
     draw_cl_v(ax, DRUM_CY, RAIL_OFF, RAIL_OFF+DRUM_H_ELV+150)
@@ -506,7 +500,7 @@ def sheet2():
                           (DRUM_FZ_YD_LO, "D-2\n(far wall)")]:
         ax.add_patch(mpatches.Rectangle(
             (yd_lo, RAIL_OFF), DRUM_EQ_D, DRUM_EQ_H,
-            facecolor=C_DRUM_EQ, edgecolor="#5A4A3A",
+            facecolor=C_WASTE_DRUM, edgecolor="#5A4A3A",
             linewidth=1.0, linestyle="--", alpha=0.25, zorder=2))
         ax.text(yd_lo + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
                 f"WASTE\nDRUM\n{label}\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",

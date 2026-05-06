@@ -83,14 +83,20 @@ def title_block(ax, sheet_no, title, scale_note=""):
             style="italic", **FONT)
 
 def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
+    tick = abs(offset) * 0.3
     ax.annotate("", xy=(x1, y), xytext=(x0, y),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
+    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6)
+    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6)
     ax.text((x0+x1)/2, y+offset, text, color=col, fontsize=fs,
             ha="center", va="bottom", **FONT)
 
 def dim_line_v(ax, x, y0, y1, text, offset=30, col=DIM, fs=7):
+    tick = abs(offset) * 0.3
     ax.annotate("", xy=(x, y1), xytext=(x, y0),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
+    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6)
+    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6)
     ax.text(x+offset, (y0+y1)/2, text, color=col, fontsize=fs,
             ha="left", va="center", **FONT)
 

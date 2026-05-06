@@ -176,34 +176,40 @@ def hatch_region(ax, patch, spacing=3, angle=45, color='#AAAAAA', lw=0.5):
 
 def title_block(ax, fig_w, fig_h, sheet_n, sheet_total, title1, title2,
                 scale_str, project='THE BIG SHOEBOX PROJECT',
-                series='TBS-TSB'):
+                series='TBS-TSB', position='bottom'):
     # Outer border — zorder=0 so content drawn later is not hidden
     draw_rect(ax, 5, 5, fig_w-10, fig_h-10, lw=1.5, color='black', fc='white', zorder=0)
     # Title block box
-    tb_x = fig_w - 220
-    draw_rect(ax, tb_x, 5, 215, 75, lw=0.5, color='black', fc='#F5F5F5')
-    cx_tb = tb_x + 107
-    ax.text(cx_tb, 73, project, ha='center', fontsize=9, fontweight='bold', color='black')
-    ax.text(cx_tb, 65, title1, ha='center', fontsize=7.5, color='black')
-    ax.text(cx_tb, 57, title2, ha='center', fontsize=7, color='black')
+    tb_w, tb_h = 215, 75
+    tb_x = fig_w - tb_w - 5
+    if position == 'top':
+        tb_y = fig_h - tb_h - 5
+    else:
+        tb_y = 5
+    draw_rect(ax, tb_x, tb_y, tb_w, tb_h, lw=0.5, color='black', fc='#F5F5F5')
+    cx_tb = tb_x + tb_w / 2
+    # Row positions relative to tb_y
+    ax.text(cx_tb, tb_y + 68, project, ha='center', fontsize=9, fontweight='bold', color='black')
+    ax.text(cx_tb, tb_y + 60, title1, ha='center', fontsize=7.5, color='black')
+    ax.text(cx_tb, tb_y + 52, title2, ha='center', fontsize=7, color='black')
     # Divider between title area and info fields
-    ax.plot([tb_x, tb_x+215], [54, 54], color='black', lw=0.3)
+    ax.plot([tb_x, tb_x+tb_w], [tb_y + 49, tb_y + 49], color='black', lw=0.3)
     val_x = tb_x + 68  # left-aligned value column
-    ax.text(tb_x+8, 48, 'DRAWING:', fontsize=6, color='black')
-    ax.text(val_x, 48, f'{series}-0{sheet_n}', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 41, 'SHEET:', fontsize=6, color='black')
-    ax.text(val_x, 41, f'{sheet_n} OF {sheet_total}', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 34, 'SCALE:', fontsize=6, color='black')
-    ax.text(val_x, 34, scale_str, fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 27, 'UNITS:', fontsize=6, color='black')
-    ax.text(val_x, 27, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, 20, 'TOLERANCE:', fontsize=6, color='black')
-    ax.text(val_x, 20, '±0.25 UNLESS NOTED', fontsize=6, color='black')
-    ax.text(tb_x+8, 13, 'MATERIAL:', fontsize=6, color='black')
-    ax.text(val_x, 13, 'Al 6061-T6 HARD ANODISE', fontsize=6, color='black')
+    ax.text(tb_x+8, tb_y + 43, 'DRAWING:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 43, f'{series}-0{sheet_n}', fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, tb_y + 36, 'SHEET:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 36, f'{sheet_n} OF {sheet_total}', fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, tb_y + 29, 'SCALE:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 29, scale_str, fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, tb_y + 22, 'UNITS:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 22, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
+    ax.text(tb_x+8, tb_y + 15, 'TOLERANCE:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 15, '±0.25 UNLESS NOTED', fontsize=6, color='black')
+    ax.text(tb_x+8, tb_y + 8, 'MATERIAL:', fontsize=6, color='black')
+    ax.text(val_x, tb_y + 8, 'Al 6061-T6 HARD ANODIZE', fontsize=6, color='black')
     # Copyright — inside the box
-    ax.plot([tb_x, tb_x+215], [9, 9], color='black', lw=0.3)
-    ax.text(cx_tb, 6, '\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3',
+    ax.plot([tb_x, tb_x+tb_w], [tb_y + 4, tb_y + 4], color='black', lw=0.3)
+    ax.text(cx_tb, tb_y + 1, '\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3',
             ha='center', fontsize=5, color='black', style='italic')
 
 
@@ -979,7 +985,7 @@ S3_UP = FH3 - FH  # vertical shift = 150
 title_block(ax3, FW, FH3, 3, 3,
             'TILT-SWING FRONT BOARD MECHANISM',
             'SHEET 3 — BELLOWS SEAL, LOCKING, CALIBRATION SCALE & SWAP PROCEDURE',
-            'AS NOTED')
+            'AS NOTED', position='top')
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
 ax3.text(15, 490 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)

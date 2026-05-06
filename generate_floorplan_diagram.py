@@ -610,8 +610,8 @@ def egress_detail():
             **FONT, zorder=8)
 
     # Panel label
-    ax.text(-C_WID/2, -PANEL_CENTER_T - 200,
-            f"PANEL OPEN 180° OUTWARD  ({C_WID}mm)",
+    ax.text(-C_WID/2, -PANEL_CENTER_T - 275,
+            f"PANEL OPENS 180° OUTWARD  ({C_WID}mm)",
             color=C_PINHOLE, fontsize=8, ha="center", va="top",
             fontweight="bold", **FONT, zorder=8)
 

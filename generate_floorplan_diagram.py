@@ -405,6 +405,34 @@ def floor_plan():
         ax.text(LEG_X + 58, iy, txt, color=C_DIM, fontsize=6,
                 ha="left", va="center", **FONT, zorder=9)
 
+    # ── Egress path annotation ─────────────────────────────────────────────────
+    # When panel opens 180°, the light trap drum swings out with it.
+    # Clear passage between the two waste drums: Yd=580–1782 = 1202mm.
+    EGRESS_GAP_LO = DRUM_LZ_YD_HI     # 580mm
+    EGRESS_GAP_HI = DRUM_FZ_YD_LO     # 1782mm
+    EGRESS_GAP    = EGRESS_GAP_HI - EGRESS_GAP_LO  # 1202mm
+    EGRESS_MID_Y  = (EGRESS_GAP_LO + EGRESS_GAP_HI) / 2
+    EGRESS_ARROW_X = DRUM_LZ_CX       # 330mm — center of drum zone
+
+    # Dashed green arrow showing egress direction (interior → door)
+    ax.annotate("", xy=(-WALL - 60, EGRESS_MID_Y),
+                xytext=(ZONE_L_END - 60, EGRESS_MID_Y),
+                arrowprops=dict(arrowstyle="->", color="#20A020", lw=2.0,
+                                linestyle=":", mutation_scale=12),
+                zorder=10)
+    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 60,
+            f"EGRESS PATH — {EGRESS_GAP}mm CLEAR",
+            color="#20A020", fontsize=6.5, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=10)
+    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y - 60,
+            "(panel open 180°, drum swings out)",
+            color="#20A020", fontsize=5.5, ha="center", va="top",
+            **FONT, alpha=0.8, zorder=10)
+
+    # Dimension line showing 1202mm gap between drums
+    dim_v(ax, -180, EGRESS_GAP_LO, EGRESS_GAP_HI,
+          f"{EGRESS_GAP}mm\nEGRESS\nGAP", offset=-180, fs=6, col="#20A020")
+
     title_block(ax)
 
     import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)

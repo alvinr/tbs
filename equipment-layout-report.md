@@ -298,7 +298,52 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 
 ---
 
-## 9. Summary
+## 9. Egress Safety Assessment
+
+When the hinged panel is opened 180° from the inside, the light trap drum (mounted in the panel center zone, Yd=806–1,556mm) swings outward with the panel, leaving the passage between the two waste drums fully clear.
+
+### 9.1 Egress Gap
+
+| Measurement | Value |
+|-------------|-------|
+| Near drum D-1 far edge (Yd) | 580mm |
+| Far drum D-2 near edge (Yd) | 1,782mm |
+| **Clear passage width** | **1,202mm (47.3")** |
+| At door frame (X=0) | ~2,262mm (full frame opening) |
+| Passage narrows at X=40–620mm only | 1,202mm between drums |
+
+**Human factors reference:**
+
+- Average male shoulder width: ~460mm (18")
+- Standard doorway minimum (IBC/IRC): 762mm (30")
+- Emergency egress minimum: 610mm (24")
+
+The 1,202mm passage exceeds all minimums by more than 50%. A person can walk face-forward through the gap without turning sideways. Waste drums do not need to slide for egress.
+
+### 9.2 Hinge Door Swing Clearance
+
+The panel swings 180° outward (exterior, negative X). All interior equipment is clear of the swing arc:
+
+| Component | Position | In swing path? |
+|-----------|----------|---------------|
+| Waste drum D-1 | X=40–620, Yd=0–580 (interior) | No — panel swings exterior |
+| Waste drum D-2 | X=40–620, Yd=1,782–2,362 (interior) | No — panel swings exterior |
+| Light trap drum | Panel-mounted (center zone) | Moves with panel |
+| Fan B exhaust duct | Panel-mounted, Yd=2,287, H=1,800 | Moves with panel |
+| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 300mm slide + 180° swing |
+| Evap cooler | X=930–1,530, Yd=0–350 | No — 310mm inboard of drum zone |
+| Electrical panel | X=2,050–2,350 | No — 1,430mm inboard |
+| Battery bank | X=2,050–2,550 | No — 1,430mm inboard |
+| Pump manifold | X=2,600–2,900 | No — 1,980mm inboard |
+| Water lines | Pinhole wall (Yd=0), X=2,400+ | No — far inboard |
+
+The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. At closest approach, the drum body reaches minimum Yd ≈ 806mm — never overlapping with either waste drum (Yd=0–580 and Yd=1,782–2,362).
+
+**Conclusion:** No components require relocation. The existing layout provides safe single-person egress and full swing clearance at the cargo door end.
+
+---
+
+## 10. Summary
 
 | Parameter | Old (colonnade) | New (end-zone) |
 |-----------|----------------|----------------|

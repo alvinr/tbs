@@ -207,7 +207,7 @@ def sheet1():
     FR = 55  # visible frame width at face
     ax.add_patch(Rectangle((FR, FR), PW - 2 * FR, PH - 2 * FR,
                             fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-    ax.text(PW / 4, PH / 2,
+    ax.text(PW / 4 - 275, PH / 2,
             "18mm EXT-GRADE PLY\nFLAT BLACK INTERIOR",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.7)
 
@@ -229,15 +229,15 @@ def sheet1():
     ax.text(STEP_YD_L / 2, PH - 120,
             "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
-    ax.text((STEP_YD_L + STEP_YD_R) / 2, PH - 120,
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, PH - 220,
             "120mm\nCENTER ZONE\n(DRUM HOUSING)", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     ax.text((STEP_YD_R + PW) / 2, PH - 120,
             "40mm\nCORNER\nZONE", color="#C04010", fontsize=6,
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     # Step dimension
-    dim_h(ax, STEP_YD_L, STEP_YD_R, -320,
-          f"{STEP_YD_R - STEP_YD_L} mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)")
+    dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
+          f"{STEP_YD_R - STEP_YD_L} mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
 
     # ── Revolving drum ────────────────────────────────────────────────────────
     DX = DRUM_CX - DRUM_R   # drum left edge in panel
@@ -294,7 +294,7 @@ def sheet1():
     hx_handle = DX + DRUM_D - HW - 20
     ax.add_patch(Rectangle((hx_handle, HY - HH / 2), HW, HH,
                             fc="none", ec=C_OUT, lw=1.2, ls=(0, (4, 3)), zorder=7))
-    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 200, HY + 300),
+    leader(ax, (hx_handle + HW / 2, HY), (DX + DRUM_D + 300, HY + 300),
            "100mm PULL HANDLE\n(INTERIOR FACE — HIDDEN)\nWelded bracket\nno through-hole")
 
     # ── Hinges (3 × left edge from exterior view) ────────────────────────────
@@ -364,7 +364,7 @@ def sheet1():
     ax.annotate("", xy=(CBEAM_X - 120, arr_y), xytext=(CBEAM_X + 120, arr_y),
                 arrowprops=dict(arrowstyle="<->", color=C_RAIL, lw=1.2,
                                 mutation_scale=10), zorder=15)
-    ax.text(CBEAM_X, arr_y - 50, "300mm SLIDE\n(X-DIRECTION)",
+    ax.text(CBEAM_X, arr_y - 40, "300mm SLIDE\n(X-DIRECTION)",
             ha="center", va="top", fontsize=5.5, color=C_RAIL,
             fontweight="bold", **FONT, zorder=15)
 
@@ -413,7 +413,7 @@ def sheet1():
             ax.plot([lx - 22, lx + 22], [ly + 22, ly - 22],
                     color=C_DIM, lw=0.9, ls=(0, (4, 2)), zorder=7)
     leader(ax, (LATCH_XS[1], LATCH_YS[0]),
-           (PW + 300, LATCH_YS[0] - 120),
+           (PW + 430, LATCH_YS[0]),
            "SOUTHCO C2-33 CAM LATCH (×4)\nINTERIOR FACE — shown dashed\nEMERGENCY EGRESS:\noperate from inside if drum jams")
 
     # ── Outward-opening annotation ────────────────────────────────────────────
@@ -424,13 +424,13 @@ def sheet1():
                 xytext=(PW, PH * 0.36),
                 arrowprops=dict(arrowstyle="-|>", color="#204080", lw=1.3,
                                 mutation_scale=9))
-    ax.text(PW + 65, PH * 0.36 + 55,
+    ax.text(PW + 105, PH * 0.36 -55,
             "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
             color="#204080", fontsize=6.5, ha="left", va="bottom",
             fontweight="bold", **FONT, zorder=15)
 
     # ── Emergency egress safety note ──────────────────────────────────────────
-    ax.text(PW / 2, -240,
+    ax.text(PW / 2, -280,
             "SAFETY: Interior-mounted cam latches (×4) allow emergency panel release from inside — "
             "operate if revolving drum jams. Panel opens outward, clear of all equipment.",
             color="#C04010", fontsize=6.5, ha="center", va="center",
@@ -443,15 +443,15 @@ def sheet1():
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Panel width
-    dim_h(ax, 0, PW, PH + 230, f"{PW} mm  (CONTAINER INTERIOR WIDTH)")
+    dim_h(ax, 0, PW, PH + 200, f"{PW} mm  (CONTAINER INTERIOR WIDTH)", offset=20)
     # Panel height
-    dim_v(ax, PW + 150, 0, PH, f"{PH} mm", offset=55)
+    dim_v(ax, PW + 75, 0, PH, f"{PH} mm", offset=-25)
     # Drum diameter
-    dim_h(ax, DX, DX + DRUM_D, DY_TOP + 130, f"Ø{DRUM_D} mm DRUM")
+    dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D} mm DRUM", offset=20)
     # Drum clear height
-    dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H} mm\nCLEAR HEIGHT", offset=55)
+    dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H} mm\nCLEAR HEIGHT", offset=25)
     # Drum centre from left
-    dim_h(ax, 0, DRUM_CX, DY_BOT - 200, f"{int(DRUM_CX)} mm  (PANEL CL — CENTRED)")
+    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)} mm  (PANEL CL — CENTRED)", offset=-50)
     # Hinge positions from floor
     for hy in HINGE_YS:
         ax.plot([-HINGE_W - 10, -HINGE_W - 80], [hy, hy],
@@ -473,7 +473,7 @@ def sheet1():
             fontweight="bold", ha="right", va="bottom", **FONT, zorder=15)
     ax.text(PW + PAD_R - 20, AA_H - 40, "A", color=C_CL, fontsize=9,
             fontweight="bold", ha="right", va="top", **FONT, zorder=15)
-    ax.text(PW / 2, AA_H + 80,
+    ax.text(PW / 2, AA_H - 30,
             "SECTION A-A  (Plan cross-section — Sheet 2)",
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 

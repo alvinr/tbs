@@ -830,7 +830,7 @@ leader(ax2, cx2c - 75, cy2c - 35, or_left - frame_ctx_w/2, cy2c,
        'TSB-01\nFRAME\nAl 6061', fontsize=4.8)
 leader(ax2, cx2c - 55, cy2c - 40, cx2c - 15, or_bot - s1b(8),
        'TSB-02\nSHANK\nØ50 k5', fontsize=4.8)
-leader(ax2, cx2c + 75, cy2c - 18, or_right - 4, or_bot + s1b(2),
+leader(ax2, cx2c + 75, cy2c - 18, cx2c + ir_outer_r, or_bot + s1b(1.5),
        'RUBBER\nSEAL (2RS)', fontsize=4.8)
 
 ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',

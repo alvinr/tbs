@@ -29,7 +29,7 @@ BOLT_BC    = 540      # bolt circle diameter
 BOLT_D     = 13       # bolt hole clearance diameter
 BOLT_N     = 8
 DWL_D      = 8        # dowel pin diameter
-DWL_OFF    = 200      # ± horizontal from centre
+DWL_OFF    = 200      # ± horizontal from center
 SEAL_D     = 420      # neoprene groove PCD
 TRAP_SQ    = 490      # light-trap rebate PCD (square)
 FR_APT_D   = 350      # wall frame aperture diameter
@@ -96,7 +96,7 @@ C_STEEL = '#B0B0B0'
 C_ALUM  = '#D8D8D8'
 C_GASKT = '#404040'
 C_RED   = '#CC0000'
-C_DELR  = '#E8D8A0'   # Delrin/POM colour
+C_DELR  = '#E8D8A0'   # Delrin/POM color
 C_BEAR  = '#C0C8D8'   # bearing / steel blue-grey
 C_BELL  = '#303030'   # bellows black
 
@@ -238,7 +238,7 @@ SC = 1/8
 def s1(mm): return mm * SC
 
 # ───────────────────────────────────────────────
-# PANEL A: Full assembly front view (centre 85, 340)
+# PANEL A: Full assembly front view (center 85, 340)
 # ───────────────────────────────────────────────
 cx_a, cy_a = 85, 330
 hw = s1(PL_OD/2)
@@ -299,7 +299,7 @@ ax1.text(cx_a, cy_a - hw - 25, 'PANEL A — ASSEMBLY (1:8)\nTSB-01 outer frame +
 
 # ───────────────────────────────────────────────
 # PANEL B: TSB-01 Exterior (container-wall-facing) face
-# centre 255, 330
+# center 255, 330
 # ───────────────────────────────────────────────
 cx_b, cy_b = 258, 330
 
@@ -349,7 +349,7 @@ ax1.text(cx_b, cy_b - hw - 12, 'PANEL B — TSB-01 EXTERIOR (1:8)\n(Same bolt/do
 
 # ───────────────────────────────────────────────
 # PANEL C: TSB-01 Interior (container-facing) face
-# centre 420, 330
+# center 420, 330
 # ───────────────────────────────────────────────
 cx_c, cy_c = 425, 330
 
@@ -447,7 +447,7 @@ ax1.plot([left_x, right_x], [frame_y_top, frame_y_top], color=C_OUT, lw=LW_THICK
 ax1.plot([left_x, cx_d - bore_hw_d], [frame_y_bot, frame_y_bot], color=C_OUT, lw=LW_THICK)
 ax1.plot([cx_d + bore_hw_d, right_x], [frame_y_bot, frame_y_bot], color=C_OUT, lw=LW_THICK)
 
-# Neoprene seal groove (exterior face, at ±SEAL_D/2 from centre)
+# Neoprene seal groove (exterior face, at ±SEAL_D/2 from center)
 for sgn in [-1, 1]:
     gx = cx_d + sgn * sx(SEAL_D/2) - sgn * sx(SEAL_W/2)
     sg_p = mpatches.Rectangle((gx - sx(SEAL_W/2), frame_y_top - sy(SEAL_DEP)),
@@ -913,7 +913,7 @@ ax2.plot(ball_x2 - s1b(8) + s1b(BALL_D/2)*np.cos(theta),
          cy2d + s1b(BALL_D/2)*np.sin(theta),
          color=C_HID, lw=0.8, ls='--', zorder=7)
 
-# Horizontal centreline through screw
+# Horizontal centerline through screw
 ax2.plot([cx2d - frame_wall_w - 5, cx2d + screw_len + s1b(KNOB_H) + 5],
          [cy2d, cy2d], color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
@@ -980,7 +980,7 @@ title_block(ax3, FW, FH, 3, 3,
             'AS NOTED')
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
-ax3.text(15, 490, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold')
+ax3.text(15, 490, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([15, 480], [487, 487], color='black', lw=0.7)
 
 cx3a, cy3a = 200, 370
@@ -1037,14 +1037,14 @@ draw_bellows_section(ax3, cx3a, cy3a, 5, lw_style='--', alpha=0.7)
 frame_bar_h = s2(10)
 draw_rect(ax3, cx3a - s2(BELL_OD/2) - 15, cy3a, 15 + s2(BELL_OD) + 15, frame_bar_h,
           lw=LW_MED, color=C_OUT, fc=C_ALUM)
-ax3.text(cx3a, cy3a + frame_bar_h/2, 'TSB-01 OUTER FRAME', ha='center', va='center', fontsize=4.5, color='black')
+ax3.text(cx3a, cy3a + frame_bar_h/2, 'TSB-01 OUTER FRAME', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 carr_bar_h = s2(10)
 # Neutral position carrier
 draw_rect(ax3, cx3a - s2(BELL_ID/2) - 10, cy3a - s2(BELL_FREE) - carr_bar_h,
           s2(BELL_ID) + 20, carr_bar_h, lw=LW_MED, color=C_OUT, fc='#C0C0C0')
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h/2,
-         'TSB-02 CARRIER (NEUTRAL)', ha='center', va='center', fontsize=4.5, color='black')
+         'TSB-02 CARRIER (NEUTRAL)', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 # Dimensions
 draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 15, cy3a - s2(BELL_FREE), cy3a,
@@ -1056,14 +1056,14 @@ draw_dim_h(ax3, cx3a - s2(BELL_ID/2), cx3a + s2(BELL_ID/2),
 
 ax3.text(cx3a + s2(BELL_OD/2) + 52, cy3a - s2(BELL_FREE*0.5),
          '——— NEUTRAL (0°)\n- - - - 5° TILT\n(asymmetric compression\nleft side: −13.9 mm\nright side: +13.9 mm)',
-         fontsize=5, va='center', color='#333333')
+         fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 30,
          'BELLOWS TSB-10: Matte black neoprene/nylon  •  0.5 mm wall  •  4 pleats  •  15 mm pleat depth\nInner+outer flanges sealed with Ø4 mm neoprene cord gaskets (same spec as wall-frame seal)',
-         ha='center', fontsize=5, style='italic', color='#333333')
+         ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
-ax3.text(15, 245, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold')
+ax3.text(15, 245, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([15, 200], [242, 242], color='black', lw=0.7)
 
 cx3b, cy3b = 80, 175
@@ -1100,12 +1100,12 @@ leader(ax3, cx3b + 30, cy3b - 2, cx3b + 40, cy3b - 2,
        'M8×1.0\nADJ SCREW\nSHANK', fontsize=5)
 leader(ax3, cx3b - 40, cy3b + 10, cx3b - 4, cy3b + 6,
        'NYLON\nTIP', fontsize=5)
-ax3.text(cx3b + 3, cy3b + 31, '3mm HEX', fontsize=4.5, color='#333333')
+ax3.text(cx3b + 3, cy3b + 31, '3mm HEX', fontsize=4.5, color='#333333', zorder=10)
 ax3.text(cx3b, cy3b - 28, 'Tighten set screw onto adj screw shank\nafter desired angle is set. 4 off (one per axis)',
-         ha='center', fontsize=4.8, style='italic', color='#333333')
+         ha='center', fontsize=4.8, style='italic', color='#333333', zorder=10)
 
 # ── PANEL C: Knob detail (2:1) ────────────────────────────────────────────────
-ax3.text(215, 245, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold')
+ax3.text(215, 245, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([215, 420], [242, 242], color='black', lw=0.7)
 
 cx3c, cy3c = 305, 175
@@ -1144,7 +1144,7 @@ for ky_off in np.linspace(-sk(KNOB_D/2)*0.9, sk(KNOB_D/2)*0.9, 10):
              [cy3c + ky_off, cy3c + ky_off], color='#888888', lw=0.4)
 # Label engraved on face (top)
 ax3.text(cx3c, cy3c + sk(KNOB_D/2) + 5, '"TILT +"', fontsize=5, ha='center',
-         color='#333333', style='italic')
+         color='#333333', style='italic', zorder=10)
 
 draw_dim_h(ax3, cx3c - sk(KNOB_H/2), cx3c + sk(KNOB_H/2),
            cy3c - sk(KNOB_D/2) - 12, f'{KNOB_H} WIDE', above=False, fontsize=5, scale=1.0)
@@ -1157,11 +1157,11 @@ leader(ax3, cx3c + 55, cy3c - 10, cx3c + sk(3), cy3c + sk(ADJ_D/2 - 1.5),
        'FLAT/KEYWAY\n(ANTI-SPIN)', fontsize=5)
 
 ax3.text(cx3c, cy3c - sk(KNOB_D/2) - 28,
-         'Black anodise = TILT axis  |  Natural anodise = SWING axis\nEngraved label on knob face: TILT+ / TILT− / SWING+ / SWING−',
-         ha='center', fontsize=5, style='italic', color='#333333')
+         'Black anodize = TILT axis  |  Natural anodize = SWING axis\nEngraved label on knob face: TILT+ / TILT− / SWING+ / SWING−',
+         ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL D: Angular scale layout ─────────────────────────────────────────────
-ax3.text(430, 245, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold')
+ax3.text(430, 245, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([430, 695], [242, 242], color='black', lw=0.7)
 
 cx3d, cy3d = 530, 175
@@ -1169,7 +1169,7 @@ arm = 130  # mm arm radius
 scale_w_mm = 80  # scale total width in mm
 
 ax3.text(cx3d, 240, 'Non-linear (tangent) scale: position = 80 × tan(θ)/tan(5°) mm',
-         ha='center', fontsize=5, color='#333333', style='italic')
+         ha='center', fontsize=5, color='#333333', style='italic', zorder=10)
 
 # Draw the scale strip
 scale_strip_w = 80  # drawing units = mm at 1:1
@@ -1187,9 +1187,9 @@ for deg in np.arange(-5, 5.5, 0.5):
              color='black', lw=1.0 if is_major else 0.5)
     if is_major:
         ax3.text(x_pos, cy3d - scale_strip_h/2 - 3, f'{deg:+.0f}°',
-                 ha='center', va='top', fontsize=4.5, color='black')
+                 ha='center', va='top', fontsize=4.5, color='black', zorder=10)
 
-ax3.text(cx3d, cy3d, '0', ha='center', va='center', fontsize=6, fontweight='bold', color=C_RED)
+ax3.text(cx3d, cy3d, '0', ha='center', va='center', fontsize=6, fontweight='bold', color=C_RED, zorder=10)
 ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
          color=C_RED, lw=1.0)
 
@@ -1197,10 +1197,10 @@ draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
            cy3d + scale_strip_h/2 + 10, '80 mm TOTAL', above=True, fontsize=5, scale=1.0)
 ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on TSB-01 face adjacent to each knob pair',
-         ha='center', fontsize=5, style='italic', color='#333333')
+         ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(15, 155, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold')
+ax3.text(15, 155, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
 ax3.plot([15, 695], [152, 152], color='black', lw=0.7)
 
 steps = [
@@ -1218,17 +1218,17 @@ for i, (num, title, note) in enumerate(steps):
     sy = 90
     draw_rect(ax3, sx, sy, step_w, 55, lw=1.0, color='black', fc='#F0F0F0')
     ax3.text(sx + step_w/2, sy + 48, num, ha='center', fontsize=14,
-             fontweight='bold', color='black')
+             fontweight='bold', color='black', zorder=10)
     ax3.text(sx + step_w/2, sy + 32, title, ha='center', fontsize=6.5,
-             fontweight='bold', color='black')
+             fontweight='bold', color='black', zorder=10)
     ax3.text(sx + step_w/2, sy + 12, note, ha='center', fontsize=5.5,
-             color='#555555', style='italic')
+             color='#555555', style='italic', zorder=10)
     if i < 4:
         ax3.annotate('', xy=(sx + step_w + 13, sy + 27), xytext=(sx + step_w + 2, sy + 27),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
 ax3.text(695/2, 75, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
-         ha='center', fontsize=5.5, color='#333333', style='italic')
+         ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'
 fig3.savefig(out3, dpi=150, bbox_inches='tight', facecolor='white')

@@ -927,7 +927,7 @@ draw_dim_h(ax2, cx2d - frame_wall_w, cx2d - frame_wall_w + bush_w,
 leader(ax2, cx2d + screw_len + s1b(KNOB_H) + 12, cy2d + 10,
        cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
        'Ø40 KNURLED KNOB\n36-DETENT\n0.012°/CLICK', fontsize=5)
-leader(ax2, cx2d - frame_wall_w - 28, cy2d + 12,
+leader(ax2, cx2d - frame_wall_w - 25, cy2d + 14,
        cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fontsize=5)
 leader(ax2, ball_x2 - s1b(8) - 55, cy2d - 18,
@@ -935,7 +935,7 @@ leader(ax2, ball_x2 - s1b(8) - 55, cy2d - 18,
        '440C SS INSERT\nHEMI SOCKET\nRa 0.4 GROUND', fontsize=5)
 leader(ax2, ball_x2 + 14, cy2d + 12, ball_x2, cy2d + s1b(BALL_D/2),
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fontsize=5)
-leader(ax2, ball_x2 - carrier_rim_w - 15, cy2d + 15,
+leader(ax2, ball_x2 - carrier_rim_w - 35, cy2d + 25,
        ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
        'TSB-02\nCARRIER RIM', fontsize=5)
 leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30) + 10,
@@ -1097,11 +1097,9 @@ ax3.plot([cx3b + 1.5, cx3b + 1.5], [cy3b + 27, cy3b + 29], color=C_OUT, lw=1.0)
 fr3b = mpatches.Rectangle((cx3b - 40, cy3b - 12), 80, 8,
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax3.add_patch(fr3b)
-hatch_region(ax3, fr3b, spacing=3, angle=45, color='#AAAAAA', lw=0.4)
 fr3bt = mpatches.Rectangle((cx3b - 8, cy3b + 29), 16, 10,
                              lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax3.add_patch(fr3bt)
-hatch_region(ax3, fr3bt, spacing=3, angle=45, color='#AAAAAA', lw=0.4)
 
 leader(ax3, cx3b + 30, cy3b + 20, cx3b + 4, cy3b + 18,
        'M6×1.0\nNYLON-TIP\nSET SCREW', fontsize=5)

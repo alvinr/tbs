@@ -840,7 +840,7 @@ ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPres
 ax2.text(360, 215, 'PANEL D — ADJUSTMENT SCREW DETAIL (1:1)', fontsize=7.5, fontweight='bold')
 ax2.plot([360, 695], [212, 212], color='black', lw=0.7)
 
-cx2d, cy2d = 390, 130
+cx2d, cy2d = 424, 130
 
 # Frame boss (outer adapter frame wall in section)
 frame_wall_w = s1b(35)

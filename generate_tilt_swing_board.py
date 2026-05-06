@@ -1201,12 +1201,14 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on TSB-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
+S3_E_DN = int(FH3 * 0.20)  # 20% drop for Panel E separation
+
 # ── Separator line between panels B/C/D and panel E ──────────────────────────
-ax3.plot([15, 685], [135 + S3_UP, 135 + S3_UP], color='#999999', lw=0.5, linestyle='--', zorder=5)
+ax3.plot([15, 685], [135 + S3_UP - S3_E_DN, 135 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)
 
 # ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(15, 125 + S3_UP, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 695], [122 + S3_UP, 122 + S3_UP], color='black', lw=0.7)
+ax3.text(15, 125 + S3_UP - S3_E_DN, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([15, 695], [122 + S3_UP - S3_E_DN, 122 + S3_UP - S3_E_DN], color='black', lw=0.7)
 
 steps = [
     ('①', 'LOOSEN 4×\nLOCK SCREWS', '3 mm hex key\nM6 set screws'),
@@ -1220,7 +1222,7 @@ step_w = 120
 step_gap = 15
 for i, (num, title, note) in enumerate(steps):
     sx = 20 + i * (step_w + step_gap)
-    sy = 60 + S3_UP
+    sy = 60 + S3_UP - S3_E_DN
     draw_rect(ax3, sx, sy, step_w, 55, lw=1.0, color='black', fc='#F0F0F0')
     ax3.text(sx + step_w/2, sy + 48, num, ha='center', fontsize=14,
              fontweight='bold', color='black', zorder=10)
@@ -1232,7 +1234,7 @@ for i, (num, title, note) in enumerate(steps):
         ax3.annotate('', xy=(sx + step_w + 13, sy + 27), xytext=(sx + step_w + 2, sy + 27),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
-ax3.text(695/2, 45 + S3_UP, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
+ax3.text(695/2, 45 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'

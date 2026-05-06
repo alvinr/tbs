@@ -932,8 +932,8 @@ leader(ax2, ball_x2 - s1b(8) - 20, cy2d - 18,
 leader(ax2, ball_x2 + 14, cy2d + 12, ball_x2, cy2d + s1b(BALL_D/2),
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fontsize=5)
 
-# Angular resolution table
-tbl_x, tbl_y = 580, 195
+# Angular resolution table — top right of Panel D
+tbl_x, tbl_y = 580, 207
 ax2.text(tbl_x, tbl_y, 'ANGULAR RESOLUTION', fontsize=6, fontweight='bold', color='black')
 rows = [
     ('Arm radius (pivot→ball)', '130 mm'),
@@ -948,9 +948,9 @@ rows = [
 for i, (k, v) in enumerate(rows):
     ry = tbl_y - 10 - i*9
     bg = '#F8F8F8' if i%2==0 else 'white'
-    draw_rect(ax2, tbl_x - 2, ry - 7, 110, 9, lw=0.3, color='#CCCCCC', fc=bg, zorder=1)
-    ax2.text(tbl_x, ry, k, fontsize=4.5, color='black')
-    ax2.text(tbl_x + 68, ry, v, fontsize=4.5, color='black', fontweight='bold')
+    draw_rect(ax2, tbl_x - 2, ry - 7, 110, 9, lw=0.15, color='#DDDDDD', fc=bg, zorder=1)
+    ax2.text(tbl_x, ry, k, fontsize=4.5, color='black', zorder=10)
+    ax2.text(tbl_x + 68, ry, v, fontsize=4.5, color='black', fontweight='bold', zorder=10)
 
 out2 = 'diagrams/tilt-swing-board-sheet2.png'
 fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')

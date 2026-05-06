@@ -631,7 +631,7 @@ def sheet2():
         ax.annotate(lbl, xy=(lbl_x_r, ly),
                     xytext=(lbl_x_r + off, ly - off),
                     fontsize=6.5, color=C_OUT, ha="left", va="top", **FONT,
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                    arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
                     bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
     lbl_x_l = D_XL - 60
     for ly, lbl, off in [
@@ -641,7 +641,7 @@ def sheet2():
         ax.annotate(lbl, xy=(lbl_x_l, ly),
                     xytext=(lbl_x_l - off, ly + off),
                     fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
-                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                    arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
                     bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
@@ -820,7 +820,7 @@ def sheet2():
                 xy=(D_XL - 180, ext_oh_mid),
                 xytext=(D_XL - 180 - LBL_OFF * 1.5, ext_oh_mid - LBL_OFF * 1.5),
                 fontsize=6, color=C_DIM, ha="right", va="top", **FONT,
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
                 bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
 
     # Interior drum overhang — 45° leader going north-left
@@ -830,7 +830,7 @@ def sheet2():
                 xy=(D_XL - 180, int_oh_mid),
                 xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
                 fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8),
+                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # Full panel width dimension

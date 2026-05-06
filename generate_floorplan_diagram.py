@@ -58,14 +58,20 @@ FONT          = {"fontfamily": "monospace"}
 WALL  = 40   # schematic wall thickness
 
 def dim_h(ax, x0, x1, y, label, offset=80, fs=6.5, col=C_DIM):
+    tick = abs(offset) * 0.3
     ax.annotate("", xy=(x1, y), xytext=(x0, y),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7))
+    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6)
+    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6)
     ax.text((x0 + x1) / 2, y + offset, label, color=col, fontsize=fs,
             ha="center", va="bottom", **FONT)
 
 def dim_v(ax, x, y0, y1, label, offset=80, fs=6.5, col=C_DIM):
+    tick = abs(offset) * 0.3
     ax.annotate("", xy=(x, y1), xytext=(x, y0),
                 arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7))
+    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6)
+    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6)
     ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
             ha="left", va="center", **FONT)
 

@@ -686,17 +686,23 @@ ax2.text(CW / 2, -0.08, "PINHOLE WALL (FRONT — Yd = 0)",
 
 # Dimensions
 def dim_h(ax, x1, x2, y, label, color=C_DIM, offset=0.25):
+    tick = 0.08
     yy = y - offset
     ax.annotate("", xy=(x2, yy), xytext=(x1, yy),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
                                 mutation_scale=8))
+    ax.plot([x1, x1], [yy - tick, yy + tick], color=color, lw=0.6)
+    ax.plot([x2, x2], [yy - tick, yy + tick], color=color, lw=0.6)
     ax.text((x1+x2)/2, yy - 0.12, label, ha="center", fontsize=6.5, color=color)
 
 def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
+    tick = 0.08
     xx = x - offset
     ax.annotate("", xy=(xx, y2), xytext=(xx, y1),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
                                 mutation_scale=8))
+    ax.plot([xx - tick, xx + tick], [y1, y1], color=color, lw=0.6)
+    ax.plot([xx - tick, xx + tick], [y2, y2], color=color, lw=0.6)
     ax.text(xx - 0.1, (y1+y2)/2, label, ha="right", va="center",
             fontsize=6.5, color=color, rotation=90)
 

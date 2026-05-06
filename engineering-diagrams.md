@@ -59,7 +59,7 @@ Source report: [Electrical & Systems Report](electrical-report.md) §5.8.
 
 ![TBS-001 — Container Floor Plan](assets/container-floorplan.png)
 
-**Sheet 2 — Cargo door egress detail (panel open 180° inward, drums in transport position)**
+**Sheet 2 — Cargo door egress detail (panel open 180° outward, drums in operational position)**
 ![TBS-001 — Cargo Door Egress Detail](assets/container-floorplan-sheet2.png)
 
 ---

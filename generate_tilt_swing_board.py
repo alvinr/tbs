@@ -155,20 +155,22 @@ def bolt_holes(ax, cx, cy, bc_r, n, d_r, color=C_OUT, lw=LW_MED, angle_offset=22
         draw_circle(ax, bx, by, d_r, lw=lw, color=color)
 
 def hatch_region(ax, patch, spacing=3, angle=45, color='#AAAAAA', lw=0.5):
-    """Hatch inside an existing patch."""
-    bb = patch.get_extents()
-    x, y = bb.x0, bb.y0
-    w, h = bb.width, bb.height
+    """Hatch inside an existing Rectangle patch using data coordinates."""
+    # Use data-coordinate bounds directly (get_extents returns display coords
+    # which are invalid before rendering and cause misplaced hatch lines)
+    x, y = patch.get_xy()
+    w = patch.get_width()
+    h = patch.get_height()
     angle_r = np.radians(angle)
     diag = np.sqrt(w**2 + h**2) + spacing
     n = int(diag / spacing) + 2
-    cx2, cy2 = x + w/2, y + h/2
+    cx_h, cy_h = x + w/2, y + h/2
     for i in range(-n, n+1):
-        offset = i * spacing
+        off = i * spacing
         dx = diag * np.cos(angle_r)
         dy = diag * np.sin(angle_r)
-        px0 = cx2 + offset * np.cos(angle_r + np.pi/2) - dx/2
-        py0 = cy2 + offset * np.sin(angle_r + np.pi/2) - dy/2
+        px0 = cx_h + off * np.cos(angle_r + np.pi/2) - dx/2
+        py0 = cy_h + off * np.sin(angle_r + np.pi/2) - dy/2
         ax.plot([px0, px0+dx], [py0, py0+dy],
                 color=color, lw=lw, clip_path=patch, clip_on=True)
 

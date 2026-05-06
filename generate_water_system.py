@@ -707,7 +707,7 @@ def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
             fontsize=6.5, color=color, rotation=90)
 
 dim_h(ax2, 0, CW, -0.35, "5,893 mm (CONTAINER INTERIOR)")
-dim_v(ax2, -0.2, 0, CH, "2,362 mm")
+dim_v(ax2, -0.2, 0, CH, "2,362 mm", offset=0.1)
 dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
 dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", color="#805000")
 dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", color="#004080")

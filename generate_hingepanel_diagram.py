@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import os
-from tbs_constants import svg_path, SVG_DIR
+from tbs_constants import svg_path, SVG_DIR, C_WASTE_DRUM, C_LT_DRUM
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -257,7 +257,7 @@ def sheet1():
     drum_body_y0 = DY_BOT + BRG_H
     drum_body_h  = DRUM_H - 2 * BRG_H
     ax.add_patch(Rectangle((DX, drum_body_y0), DRUM_D, drum_body_h,
-                            fc="#F5F0E8", ec=C_OUT, lw=2.0, zorder=5))
+                            fc=C_LT_DRUM, ec=C_OUT, lw=2.0, zorder=5))
 
     # Arc lines indicating cylindrical form (top and bottom ellipses in elevation)
     for arc_y, angle1, angle2 in [(drum_body_y0, 0, 180), (drum_body_y0 + drum_body_h, 180, 360)]:
@@ -1113,7 +1113,7 @@ def sheet3():
     # This is the key visual: a tall vertical rectangle showing the drum is vertical
     ax.add_patch(plt.Rectangle((D_DEPTH_L, H_DRUM_BOT),
                                 DRUM_D, H_DRUM_TOP - H_DRUM_BOT,
-                                fc="#F5F0E8", ec=C_OUT, lw=2.0, zorder=5))
+                                fc=C_LT_DRUM, ec=C_OUT, lw=2.0, zorder=5))
 
     # Drum wall thickness lines (3mm each side)
     DRUM_WALL_T = 3
@@ -1394,7 +1394,7 @@ def sheet4():
         drum_yd = C_WID / 2    # centered in container width
         drum_x = x_off + 40    # drum center is 40mm from panel inner face
         ax.add_patch(Circle((drum_yd, drum_x), DR,
-                            fc="#F5F0E8", ec=C_OUT, lw=1.5,
+                            fc=C_LT_DRUM, ec=C_OUT, lw=1.5,
                             alpha=alpha * 0.7, zorder=7))
         if label:
             ax.text(drum_yd, drum_x, label,
@@ -1409,7 +1409,7 @@ def sheet4():
                                     (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI, "D-2")]:
             yd_c = (yd_lo + yd_hi) / 2
             ax.add_patch(Circle((yd_c, cx), r,
-                                fc="#C8B090", ec=C_OUT, lw=1.0,
+                                fc=C_WASTE_DRUM, ec=C_OUT, lw=1.0,
                                 alpha=alpha, zorder=8))
             ax.text(yd_c, cx, f"{name}",
                     ha="center", va="center", fontsize=6.5, color=C_OUT,
@@ -1558,8 +1558,8 @@ def sheet4():
     swatches = [
         (C_ALUM,   0.9,  "Corner zone (40mm)"),
         (C_STEEL,  0.9,  "Center zone (120mm)"),
-        ("#F5F0E8", 0.7,  "Light trap drum"),
-        ("#C8B090", 0.85, "55-gal waste drum"),
+        (C_LT_DRUM, 0.7,  "Light trap drum"),
+        (C_WASTE_DRUM, 0.85, "55-gal waste drum"),
         (C_STEEL,  0.20, "Transport (ghost)"),
     ]
     for i, (c, a, lbl) in enumerate(swatches):

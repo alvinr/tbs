@@ -235,6 +235,24 @@ C_ALUM  = "#C8D8E8"   # aluminium fill
 C_STEEL = "#B0B0B8"   # steel fill
 C_GASKT = "#5A3020"   # gasket/neoprene
 
+# ── Unified component color palette ──────────────────────────────────────────
+# Single source of truth for equipment colors across all diagrams.
+C_WASTE_DRUM   = "#7A6B5A"   # 55-gal waste drums (D-1, D-2)
+C_LT_DRUM      = "#E8E0D0"   # light trap revolving drum
+C_BLUE_IBC     = "#4A90D9"   # blue IBC tanks
+C_BROWN_IBC    = "#9C7A3C"   # brown IBC tank
+C_EVAP         = "#3DAA96"   # evaporative cooler
+C_ELEC         = "#F5C518"   # electrical panel
+C_BATT         = "#6A5ACD"   # battery bank
+C_PUMP         = "#E8884A"   # pump manifold
+C_WALL         = "#B0B0B8"   # container walls / structural steel
+C_HINGE_PANEL  = "#C8C8C0"   # hinge panel body
+C_FILM         = "#2060A0"   # film plane / muslin
+C_PINHOLE_EQ   = "#CC6600"   # pinhole aperture
+C_FAN          = "#A0A0A8"   # fans (A and B)
+C_TRACK_PERM   = "#8B7355"   # permanent dolly tracks
+C_TRACK_BRIDGE = "#4A90D9"   # removable bridge tracks
+
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
     _drum_left = DRUM_LZ_CX - DRUM_EQ_R

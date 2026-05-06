@@ -36,19 +36,11 @@ import matplotlib.patches
 
 from tbs_constants import *
 
-# ── Palette ───────────────────────────────────────────────────────────────────
+# ── Palette (local overrides removed — equipment colors from tbs_constants) ──
 BG            = "#FFFFFF"
-C_WALL        = "#B0B0B8"
 C_RAIL        = "#5A3E00"
-C_FILM        = "#2060A0"
-C_PINHOLE     = "#CC6600"
-C_OPT         = "#2060A0"
-C_BLUE_IBC    = "#4A7CB0"
-C_BROWN_IBC   = "#8B5E3C"
-C_DRUM_EQ     = "#607060"
-C_COOLER      = "#40A090"
-C_ELEC_COL    = "#806010"
-C_PUMP_COL    = "#A04040"
+C_PINHOLE     = C_PINHOLE_EQ
+C_OPT         = C_FILM
 C_ZONE_L      = "#FFF3E8"   # left zone tint
 C_ZONE_R      = "#E8F3FF"   # right zone tint
 C_ZONE_OPT    = "#F0F8F0"   # optical zone tint
@@ -238,10 +230,10 @@ def floor_plan():
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
 
     # Evap cooler — on pinhole wall face (Yd=0), X=930–1530mm
-    equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_COOLER,
+    equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_EVAP,
                f"EVAP\nCOOLER\n{EVAP_W}×{EVAP_D}", zorder=6)
     ax.text(EVAP_X + EVAP_W/2, EVAP_Y + EVAP_D + 55,
-            "▲ 800mm tall", color=C_COOLER, fontsize=5.5,
+            "▲ 800mm tall", color=C_EVAP, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # Black-water drums — 2× 55-gal, one per Yd corner (unstacked, rev 4)
@@ -250,13 +242,13 @@ def floor_plan():
         (DRUM_FZ_YD, "DRUM D-2\n208L", -1),   # far corner (far wall side)
     ]:
         ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
-                            fc=C_DRUM_EQ, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
+                            fc=C_WASTE_DRUM, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
         ax.plot(DRUM_LZ_CX, drum_cy, '+', color="#FFFFFF", ms=6, mew=1.0, zorder=7)
         ax.text(DRUM_LZ_CX, drum_cy,
                 label, color="#FFFFFF", fontsize=5.5, ha="center", va="center",
                 **FONT, fontweight="bold", zorder=7)
         ax.text(DRUM_LZ_CX, drum_cy + ann_dir * (DRUM_EQ_R + 55),
-                f"▲ {DRUM_EQ_H}mm H", color=C_DRUM_EQ, fontsize=5.5,
+                f"▲ {DRUM_EQ_H}mm H", color=C_WASTE_DRUM, fontsize=5.5,
                 ha="center", va="bottom" if ann_dir > 0 else "top", **FONT, zorder=7)
 
     # ── V-groove dolly tracks (drum slide rails) ───────────────────────────────
@@ -284,10 +276,10 @@ def floor_plan():
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
     # Electrical panel + battery (thin strip at Y=0)
-    equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC_COL,
+    equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC,
                "ELEC+\nBATT.", zorder=7, alpha=0.95)
     # Pump manifold
-    equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP_COL,
+    equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP,
                "PUMP\nMFD.", zorder=7, alpha=0.95)
 
     # ── RIGHT END ZONE — fluid tanks ──────────────────────────────────────────
@@ -380,10 +372,10 @@ def floor_plan():
     legend_items = [
         (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
         (C_BROWN_IBC, "Brown IBC ×1 (600L)"),
-        (C_DRUM_EQ,   "55-gal HDPE drums ×2"),
-        (C_COOLER,    "Evaporative cooler"),
-        (C_ELEC_COL,  "Electrical panel + battery bank"),
-        (C_PUMP_COL,  "Pump manifold"),
+        (C_WASTE_DRUM,   "55-gal HDPE drums ×2"),
+        (C_EVAP,    "Evaporative cooler"),
+        (C_ELEC,  "Electrical panel + battery bank"),
+        (C_PUMP,  "Pump manifold"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm)"),
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
         (C_OPT,       "Optical axis (2362mm focal length)"),
@@ -549,7 +541,7 @@ def egress_detail():
         (DRUM_FZ_YD, "DRUM\nD-2\n208L"),
     ]:
         ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
-                            fc=C_DRUM_EQ, ec=C_OUT, lw=1.5, alpha=0.85, zorder=6))
+                            fc=C_WASTE_DRUM, ec=C_OUT, lw=1.5, alpha=0.85, zorder=6))
         ax.text(DRUM_LZ_CX, drum_cy, label, color="#FFFFFF", fontsize=6,
                 ha="center", va="center", fontweight="bold", **FONT, zorder=7)
 
@@ -679,7 +671,7 @@ def egress_detail():
     # ── Evap cooler (partially visible at right edge) ────────────────────────
     evap_vis_w = min(EVAP_W, X_HI - EVAP_X)
     if evap_vis_w > 0:
-        equip_rect(ax, EVAP_X, EVAP_Y, evap_vis_w, EVAP_D, C_COOLER,
+        equip_rect(ax, EVAP_X, EVAP_Y, evap_vis_w, EVAP_D, C_EVAP,
                    "EVAP\nCOOLER", zorder=6)
 
     # ── EGRESS PATH ──────────────────────────────────────────────────────────

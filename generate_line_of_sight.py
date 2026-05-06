@@ -51,6 +51,8 @@ from tbs_constants import (
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
+    C_LT_DRUM, C_WASTE_DRUM, C_EVAP, C_ELEC, C_BATT, C_PUMP,
+    C_BLUE_IBC, C_BROWN_IBC,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -79,51 +81,51 @@ EQUIPMENT = [
     dict(name="Light trap drum",
          x=DRUM_CX - DRUM_R, yd=C_WID//2 - DRUM_R, w=DRUM_D, d=DRUM_D,  # centred at Yd=CW/2=1181mm
          h_bot=0, h_top=DRUM_H_LT,
-         color="#8B6F47", zone="left"),
+         color=C_LT_DRUM, zone="left"),
 
     # Black-water drums — one per Yd corner, both at CX=310mm (rev 4: unstacked)
     dict(name="55-gal drum D-1 (near, pinhole wall corner)",
          x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
          w=DRUM_EQ_D, d=DRUM_EQ_D,
          h_bot=0, h_top=DRUM_EQ_H,
-         color="#7A6B5A", zone="left"),
+         color=C_WASTE_DRUM, zone="left"),
     dict(name="55-gal drum D-2 (far, film plane corner)",
          x=DRUM_FZ_CX - DRUM_EQ_R, yd=DRUM_FZ_YD_LO,
          w=DRUM_EQ_D, d=DRUM_EQ_D,
          h_bot=0, h_top=DRUM_EQ_H,
-         color="#7A6B5A", zone="left"),
+         color=C_WASTE_DRUM, zone="left"),
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)
     # Evap cooler relocated here (rev 4) — X=930–1530mm, Yd=0 (pinhole wall face)
     dict(name="Evap cooler",
          x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
          h_bot=0, h_top=EVAP_H,
-         color="#3DAA96", zone="wall"),
+         color=C_EVAP, zone="wall"),
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,
          h_bot=EP_H_LO, h_top=EP_H_HI,
-         color="#F5C518", zone="wall"),
+         color=C_ELEC, zone="wall"),
 
     dict(name="Battery bank",
          x=BA_X, yd=0, w=BA_W, d=80,
          h_bot=BA_H_LO, h_top=BA_H_HI,
-         color="#6A5ACD", zone="wall"),
+         color=C_BATT, zone="wall"),
 
     dict(name="Pump manifold",
          x=PUMP_X, yd=0, w=PUMP_W, d=80,
          h_bot=PUMP_H_LO, h_top=PUMP_H_HI,
-         color="#E8884A", zone="wall"),
+         color=C_PUMP, zone="wall"),
 
     # RIGHT END ZONE — IBCs only, right-justified to end wall
     dict(name="Blue IBC stack (×2)",
          x=IBC_COL_X, yd=BLUE_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_STK,
-         color="#4A90D9", zone="right"),
+         color=C_BLUE_IBC, zone="right"),
 
     dict(name="Brown IBC ×1",
          x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_600,
-         color="#9C7A3C", zone="right"),
+         color=C_BROWN_IBC, zone="right"),
 ]
 
 # ── Cone check functions ──────────────────────────────────────────────────────

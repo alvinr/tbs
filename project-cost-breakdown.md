@@ -15,12 +15,12 @@
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
-| **5. Processing water system** | $1,457 | $1,765 | $2,072 |
+| **5. Processing water system (incl. tray)** | $2,634 | $3,282 | $3,929 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$10,977** | **$14,187** | **$18,932** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$12,154** | **$15,704** | **$20,789** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -226,9 +226,10 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Filter skid (3× Big Blue housings + cartridges) | $265 | $370 |
 | Valves and fittings | $263 | $398 |
 | Pipe (HDPE, spray bar) | $100 | $140 |
+| Processing tray (304 SS, fabricated, 2 panels) | $1,177 | $1,857 |
 | Electrical (12V fuse block, wiring) | $50 | $50 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $249 | $304 |
-| **Water system total** | **$1,457** | **$2,072** |
+| **Water system total** | **$2,634** | **$3,929** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -414,12 +415,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual) | $2,200 |
-| Water system | $1,457 |
+| Water system (incl. processing tray) | $2,634 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$10,744** |
+| **Scenario A total** | **~$11,921** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -429,23 +430,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + electric actuation) | $3,227 |
-| Water system | $1,765 |
+| Water system (incl. processing tray) | $3,282 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$15,474** |
+| **Scenario B total (excl. CDL)** | **~$16,991** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $15,474 |
+| Scenario B build | $16,991 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$104,974–$134,974** |
+| **Scenario C total** | **~$106,491–$136,491** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

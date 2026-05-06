@@ -338,8 +338,8 @@ def floor_plan():
                             fc=C_PROC_ZONE, ec=C_DIM, lw=1.0, ls=(0, (5, 3)),
                             zorder=1, alpha=0.35))
     ax.text((PROC_X0 + PROC_X1) / 2, (PROC_Y0 + PROC_Y1) / 2,
-            "PROCESSING ZONE\n"
-            "Containment sheet on floor · spray bar wash · floor drain to Brown/Black",
+            "PROCESSING TRAY  (304 SS, 2 panels, 50mm rim)\n"
+            "LDPE liner · spray bar wash · gravity drain to 3W-DV-02",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
             alpha=0.7, zorder=4)
 
@@ -379,7 +379,7 @@ def floor_plan():
         (C_PINHOLE,   "Revolving light-trap drum"),
         ("#8B7355",   "V-groove dolly track (permanent)"),
         ("#4A90D9",   "V-groove bridge section (removable)"),
-        (C_PROC_ZONE, "Processing zone (interior wash area)"),
+        (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
     ]
     box_w = 780; box_h = len(legend_items) * 52 + 40  # box_w fixed: sized to contain text, not tied to PAD_R
     ax.add_patch(Rectangle((LEG_X - 70, LEG_Y_TOP - box_h), box_w, box_h,

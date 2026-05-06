@@ -211,6 +211,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Valves, fittings & pipe subtotal: ~$403–$600**
 
+### Processing tray
+
+| Item | Spec | Qty | Supplier | Unit price | Est. cost |
+|------|------|-----|----------|-----------|-----------|
+| 304 SS sheet, 16-ga (1.5mm) | #4 brushed, 4'×8' sheets | 4 | Metal Supermarkets / Online Metals | $180–$250/sheet | $720–$1,000 |
+| Fabrication (cut, brake, weld) | Two tray halves: 1,992×2,240mm, 50mm rims, 1:200 fall | 1 job | Local sheet metal shop | $400–$800 | $400–$800 |
+| 1" NPT SS bulkhead union | 304 SS, welded to tray floor at drain | 1 | McMaster-Carr / Grainger | $18–$30 | $25 |
+| Silicone gasket strip, FDA grade | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr / Amazon | $15–$25 | $20 |
+| M6×16 SS hex bolts + flange nuts | Center flange, 200mm spacing | 24 | McMaster-Carr / Bolt Depot | $0.50 each | $12 |
+
+**Processing tray subtotal: ~$1,177–$1,857**
+
 ### Water system processing consumables
 
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -225,7 +237,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $1,497–$2,134**
+**Section total: $2,674–$3,991**
 
 ---
 

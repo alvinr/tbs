@@ -102,7 +102,7 @@ IBC-1 (275 gal) ──┐
 IBC-2 (275 gal) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
-                                                              (Processing floor)
+                                                              ↓ (Processing tray)
 ```
 
 - Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
@@ -115,7 +115,7 @@ IBC-2 (275 gal) ──┘                                                      �
 ### 3.2 Brown System — Used Water Recycling
 
 ```
-Processing floor drain
+Processing tray drain
         │
    3W-DV-02 ──────────────────────────────────────────→ (to Black drums if heavily loaded)
         │
@@ -165,6 +165,41 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 - Label each drum: contents, date, location, UN numbers for ferricyanide/iron compounds
 - **Do not leave drums open** — evaporation and UV exposure can drive ferricyanide chemistry
 
+### 3.4 Processing Tray
+
+Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. The tray collects wash water and gravity-drains to 3W-DV-02 (the Brown/Black diverter valve).
+
+**Tray specification:**
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; stainless resists pitting from citric acid pH adjustment |
+| Overall footprint | 3,984 × 2,240 mm (2 panels, field-bolted) | Fits inside film plane rails (X=625–4,649) with 20mm clearance per side. Clears carriage travel (Y=100–2,262) with 30mm margin |
+| Panel size (each) | 1,992 × 2,240 mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm) |
+| Rim height | 50 mm (all four sides) | Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm) |
+| Floor-to-rim height | 50 mm | Tray sits directly on the container floor. No riser needed — drain is at tray floor level |
+| Fall | 1:200 (10mm over 1,992mm) toward pinhole wall (Y=0) | Gravity drain to a single 1" NPT bulkhead fitting at the low corner |
+| Drain fitting | 1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,637, Y=60) | Connects via 1" HDPE pipe to existing 3W-DV-02 diverter valve |
+| Weight (empty) | ~110 kg (2 panels × ~55 kg) | 304 SS, 1.5mm × 4.46 m² per panel × 7.93 kg/m² per mm |
+
+**Clearance verification:**
+
+| Constraint | Clearance | Status |
+|------------|-----------|--------|
+| Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
+| Film plane rails at X=625 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
+| Dolly track bridge sections (X=600–955, Z=30–70mm, transport mode only) | Tray left edge at X=645 — bridge track enters at X=600. 45mm overlap. **Tray must be installed after bridge tracks are removed during operational mode conversion. Bridge tracks are only used during transport mode.** | Clear — operational sequence prevents conflict |
+| Pump manifold drain outlet (X=2,600–2,900, Y=0, Z=200–600) | Tray drain pipe routes along pinhole wall (Y=0) below manifold at Z=0–50. Manifold is at Z=200 minimum | Clear |
+| Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
+| Waste drums (X=40–620, left end zone) | Tray starts at X=645 — 25mm gap to drum footprint edge | Clear |
+| IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
+
+**Installation and removal:**
+
+The tray is installed as part of operational mode conversion (after waste drums are rolled to their working positions and bridge tracks removed). The two panels are carried through the cargo door, positioned between the film plane rails, bolted together at the center flange, and the drain hose connected to the 3W-DV-02 stub. For transport mode conversion, the process reverses: disconnect drain, unbolt panels, carry out through cargo door, stow panels vertically against the container exterior or in a transport rack.
+
+**Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims.
+
 ---
 
 ## 4. Processing Procedure — Step by Step
@@ -173,19 +208,20 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 1. Check Blue IBC levels — minimum 100 gal required per print session
 2. Check Black drums — must have at least 55 gal headroom before starting
 3. Run Brown recycle pump for 2 minutes to verify filter flow and check pH
-4. Lay fresh 6-mil black LDPE containment sheet on processing floor, overlap 300mm up walls
-5. Verify all valves in correct position (see valve matrix below)
+4. Confirm processing tray is installed and drain hose is connected to 3W-DV-02
+5. Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims
+6. Verify all valves in correct position (see valve matrix below)
 
 ### Print processing
 1. Expose print in camera (no water involved)
-2. Transfer print to processing area in subdued light — lay face-up on containment sheet
+2. Transfer print to processing tray in subdued light — lay face-up on containment liner
 3. Open BV-02 (Blue supply) → flood print with 21 gal via spray bar — 5 minutes
 4. Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain
 5. If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown
 6. Wash 3: open BV-02 → 21 gal clean Blue water → 5 minutes → drain
 7. Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse
 8. Hang print to dry — use internal or external line
-9. Drain residual water from floor to Brown or Black as appropriate
+9. Allow residual water to gravity-drain from tray to Brown or Black as appropriate
 
 ### Valve matrix
 
@@ -193,7 +229,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 |-------|---------|--------|---------------|-------------------|---------------|--------|---------|
 | BV-01 (Blue manifold) | Open | Open | Open | Open | Open | Open | Open |
 | BV-02 (Blue to floor) | Closed | **Open** | Closed | Closed | Closed | **Open** | Closed |
-| 3W-DV-02 (floor drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
+| 3W-DV-02 (tray drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
 | P-02 (Brown pump) | Off | Off | Off | **On** | Off | Off | Off |
 | 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue | Blue | Blue |
 
@@ -209,6 +245,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 | Brown recycle | Sch 40 / SDR-11 | 1" nominal | 100 PSI min | HDPE |
 | Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
 | Filter inlet/outlet | Sch 40 | 1" nominal | 100 PSI min | HDPE |
+| Tray drain | Sch 40 / SDR-11 | 1" nominal | gravity | HDPE |
 | Black waste gravity drain | Sch 40 | 1" nominal | 50 PSI min | HDPE |
 
 **Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
@@ -253,6 +290,7 @@ IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column a
 | Left end zone | D-1 55-gal drum (near, pinhole wall corner) | 20–600 | 25–605 | 0–870 |
 | Left end zone | D-2 55-gal drum (far, film plane corner) | 20–600 | 1,757–2,337 | 0–870 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
+| Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
@@ -323,7 +361,21 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 **Pipe subtotal: ~$140–$202**
 
-### 8.6 Electrical
+### 8.6 Processing tray
+
+| Item | Spec | Qty | Supplier | Unit price | Total |
+|------|------|-----|---------|-----------|-------|
+| 304 SS sheet, 16-ga (1.5mm) | #4 brushed, 4'×8' sheets | 4 | [Metal Supermarkets](https://www.metalsupermarkets.com) · [Online Metals](https://www.onlinemetals.com) | $180–$250/sheet | **$720–$1,000** |
+| Fabrication (cut, brake, weld) | Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners | 1 job | Local sheet metal shop (e.g. Valley Metal Fab, SoCal) | $400–$800 | **$400–$800** |
+| 1" NPT SS bulkhead union | 304 SS, welded to tray floor at drain point | 1 | [McMaster-Carr #4464K115](https://www.mcmaster.com) · Grainger | $18–$30 | **$25** |
+| Silicone gasket strip, FDA grade | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr / Amazon | $15–$25 | **$20** |
+| M6×16 SS hex bolts + flange nuts | Center flange bolts, 200mm spacing | 24 | McMaster-Carr / Bolt Depot | $0.50 each | **$12** |
+
+**Processing tray subtotal: ~$1,177–$1,857**
+
+*Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.*
+
+### 8.7 Electrical
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -334,7 +386,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 **Electrical subtotal: ~$50**
 
-### 8.7 Processing consumables
+### 8.8 Processing consumables
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -350,7 +402,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 ---
 
-### 8.8 Total cost summary
+### 8.9 Total cost summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -359,9 +411,10 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | Filter skid (housings + cartridges) | $265 | $370 |
 | Valves and fittings | $263 | $398 |
 | Pipe (incl. drum flex hoses) | $140 | $202 |
+| Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
 | Processing consumables | $249 | $304 |
-| **TOTAL** | **$1,497** | **$2,134** |
+| **TOTAL** | **$2,674** | **$3,991** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 

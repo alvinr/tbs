@@ -642,7 +642,7 @@ def sheet2():
                     xytext=(lbl_x_l - off, ly + off),
                     fontsize=6.5, color=C_OUT, ha="right", va="bottom", **FONT,
                     arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-                    bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
+                    zorder=15)
 
     # ── EPDM perimeter seal strips at panel edges ─────────────────────────────
     SEAL_W = 20
@@ -815,34 +815,28 @@ def sheet2():
 
     # Exterior drum overhang — 45° leader going south-left
     ext_oh_mid = (D_YB + Y0_W) / 2
-    dim_v(ax, D_XL - 180, D_YB, Y0_W, "", offset=25, fs=6)
-    ax.annotate(f"{int(Y0_W - D_YB)}mm EXT. OVERHANG",
-                xy=(D_XL - 180, ext_oh_mid),
-                xytext=(D_XL - 180 - LBL_OFF * 1.5, ext_oh_mid - LBL_OFF * 1.5),
-                fontsize=6, color=C_DIM, ha="right", va="top", **FONT,
-                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-                bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
+    dim_v(ax, D_XL - 150, D_YB, Y0_W, f"{int(Y0_W - D_YB)}mm EXT. OVERHANG", offset=15, fs=6)
 
     # Interior drum overhang — 45° leader going north-left
     int_oh_mid = (Y1_PL2 + D_YT) / 2
-    dim_v(ax, D_XL - 180, Y1_PL2, D_YT, "", offset=25, fs=6)
-    ax.annotate(f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG",
-                xy=(D_XL - 180, int_oh_mid),
-                xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
-                fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
-                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
-                bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
+    dim_v(ax, D_XL - 150, Y1_PL2, D_YT, f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG", offset=15, fs=6)
+#     ax.annotate(f"{int(D_YT - Y1_PL2)}mm INT. OVERHANG",
+#                 xy=(D_XL - 180, int_oh_mid),
+#                 xytext=(D_XL - 180 - LBL_OFF * 1.5, int_oh_mid + LBL_OFF * 1.5),
+#                 fontsize=6, color=C_DIM, ha="right", va="bottom", **FONT,
+#                 arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.8),
+#                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # Full panel width dimension
-    dim_h(ax, 0, PW, Y_LO + 80, f"{PW} mm  (FULL PANEL WIDTH)", fs=7, offset=25)
+    dim_h(ax, 0, PW, Y_LO + 230, f"{PW} mm  (FULL PANEL WIDTH)", fs=7, offset=-25)
 
     # Zone width dimensions (above panel)
     zone_dim_y = D_YT + PAD_YT * 0.85
-    dim_h(ax, 0, STEP_YD_L, zone_dim_y,
+    dim_h(ax, 0, STEP_YD_L, zone_dim_y-30,
           f"{STEP_YD_L}mm", fs=6, offset=-20)
-    dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y,
+    dim_h(ax, STEP_YD_L, STEP_YD_R, zone_dim_y-30,
           f"{STEP_YD_R - STEP_YD_L}mm CENTER", fs=6, offset=-20)
-    dim_h(ax, STEP_YD_R, PW, zone_dim_y,
+    dim_h(ax, STEP_YD_R, PW, zone_dim_y-30,
           f"{PW - STEP_YD_R}mm", fs=6, offset=-20)
 
     # Corner zone thickness dimension
@@ -1537,11 +1531,11 @@ def sheet4():
     # Step transition Yd widths (top edge, well above ZONE_L_END)
     _dim_top = ZONE_L_END + 60
     dim_h(ax, 0, PANEL_CORNER_YD_L, _dim_top,
-          f"{PANEL_CORNER_YD_L}mm", offset=25, fs=6)
+          f"{PANEL_CORNER_YD_L}mm", offset=15, fs=6)
     dim_h(ax, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, _dim_top,
-          f"{PANEL_CORNER_YD_R - PANEL_CORNER_YD_L}mm (CENTER)", offset=25, fs=6)
+          f"{PANEL_CORNER_YD_R - PANEL_CORNER_YD_L}mm (CENTER)", offset=15, fs=6)
     dim_h(ax, PANEL_CORNER_YD_R, C_WID, _dim_top,
-          f"{C_WID - PANEL_CORNER_YD_R}mm", offset=25, fs=6)
+          f"{C_WID - PANEL_CORNER_YD_R}mm", offset=15, fs=6)
 
     # ── Notes (left-justified, bottom left) ─────────────────────────────────
     notes = [

@@ -443,7 +443,298 @@ def floor_plan():
     print(f"  {out} saved")
 
 
+def egress_detail():
+    """Sheet 2 — Cargo door end egress detail.
+
+    Zoomed plan view of X=-500 to X=1200, full Yd width.
+    Shows:
+      • Panel swung 180° inward (into container)
+      • Waste drums slid to transport position (305mm inward)
+      • Egress paths with clearance dimensions
+    """
+    # ── Layout constants ─────────────────────────────────────────────────────
+    PAD = 350
+    X_LO, X_HI = -500, 1400
+    Y_LO, Y_HI = -PAD, C_WID + PAD
+    FIG_W = 18.0
+    FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
+
+    fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=150)
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Y_LO, Y_HI)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    C_EGRESS = "#20A020"
+    C_GHOST  = "#9090C0"
+
+    # ── Zone tints ───────────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((0, 0), ZONE_L_END, C_WID,
+                            fc=C_ZONE_L, ec="none", zorder=1))
+    ax.add_patch(Rectangle((ZONE_L_END, 0), X_HI - ZONE_L_END, C_WID,
+                            fc=C_ZONE_OPT, ec="none", zorder=1))
+    ax.plot([ZONE_L_END, ZONE_L_END], [0, C_WID],
+            color=C_DIM, lw=1.0, ls="--", zorder=3, alpha=0.5)
+    ax.text(ZONE_L_END, C_WID + 60, f"X={ZONE_L_END}",
+            color=C_DIM, fontsize=7, ha="center", va="bottom", **FONT)
+
+    # ── Container walls ──────────────────────────────────────────────────────
+    # Interior outline (partial — only the visible portion)
+    ax.plot([0, X_HI], [0, 0], color=C_OUT, lw=2.5, zorder=3)       # pinhole wall
+    ax.plot([0, X_HI], [C_WID, C_WID], color=C_OUT, lw=2.5, zorder=3)  # far wall
+    ax.plot([0, 0], [0, C_WID], color=C_OUT, lw=2.0, zorder=3)      # cargo door face
+
+    # Wall thickness hatching
+    for patch in [
+        (0, -WALL, X_HI, WALL),          # pinhole wall
+        (0, C_WID, X_HI, WALL),          # far wall
+        (-WALL, -WALL, WALL, C_WID + 2*WALL),  # left short wall
+    ]:
+        ax.add_patch(Rectangle((patch[0], patch[1]), patch[2], patch[3],
+                                fc=C_WALL, ec=C_OUT, lw=1.2, zorder=3))
+
+    ax.text(-WALL/2, C_WID/2, "CARGO\nDOOR\nEND",
+            color=C_OUT, fontsize=7, ha="center", va="center",
+            **FONT, rotation=90, zorder=4)
+    ax.text(X_HI/2, -WALL/2, "PINHOLE WALL",
+            color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
+    ax.text(X_HI/2, C_WID + WALL/2, "FAR WALL",
+            color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
+
+    # ── Door frame opening ───────────────────────────────────────────────────
+    FRAME = 50  # 50×50mm RHS fixed frame
+    ax.add_patch(Rectangle((0, 0), FRAME, FRAME,
+                            fc=C_WALL, ec=C_OUT, lw=0.8, zorder=5))
+    ax.add_patch(Rectangle((0, C_WID - FRAME), FRAME, FRAME,
+                            fc=C_WALL, ec=C_OUT, lw=0.8, zorder=5))
+
+    # ── Drums in TRANSPORT position (slid 305mm inward) ──────────────────────
+    DRUM_TX = DRUM_LZ_CX + DRUM_SLIDE   # 330 + 305 = 635mm
+    drum_left_x  = DRUM_TX - DRUM_EQ_R   # 345mm
+    drum_right_x = DRUM_TX + DRUM_EQ_R   # 925mm
+
+    for drum_cy, label in [
+        (DRUM_LZ_YD, "D-1\n(SLID)"),
+        (DRUM_FZ_YD, "D-2\n(SLID)"),
+    ]:
+        ax.add_patch(Circle((DRUM_TX, drum_cy), DRUM_EQ_R,
+                            fc=C_DRUM_EQ, ec=C_OUT, lw=1.5, alpha=0.7, zorder=6))
+        ax.text(DRUM_TX, drum_cy, label, color="#FFFFFF", fontsize=7,
+                ha="center", va="center", fontweight="bold", **FONT, zorder=7)
+
+    # Ghost outlines: drums in operational position
+    for drum_cy in [DRUM_LZ_YD, DRUM_FZ_YD]:
+        ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
+                            fc="none", ec=C_GHOST, lw=1.2, ls=(0, (4, 3)),
+                            alpha=0.5, zorder=4))
+    ax.text(DRUM_LZ_CX, DRUM_LZ_YD + DRUM_EQ_R + 50,
+            "operational\nposition", color=C_GHOST, fontsize=5.5,
+            ha="center", va="bottom", **FONT, alpha=0.6, zorder=5)
+
+    # Slide arrows (operational → transport)
+    for drum_cy in [DRUM_LZ_YD, DRUM_FZ_YD]:
+        ax.annotate("", xy=(DRUM_TX, drum_cy),
+                    xytext=(DRUM_LZ_CX, drum_cy),
+                    arrowprops=dict(arrowstyle="->", color=C_GHOST, lw=1.2,
+                                    linestyle=":", mutation_scale=10),
+                    zorder=5)
+    ax.text((DRUM_LZ_CX + DRUM_TX)/2, DRUM_FZ_YD - DRUM_EQ_R - 50,
+            f"SLIDE {DRUM_SLIDE}mm",
+            color=C_GHOST, fontsize=6, ha="center", va="top",
+            fontweight="bold", **FONT, zorder=5)
+
+    # ── V-groove dolly tracks ────────────────────────────────────────────────
+    C_TRACK  = "#8B7355"
+    C_BRIDGE = "#4A90D9"
+    TRACK_W  = 10
+    for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
+        for offset in [-80, 80]:
+            ty = drum_yd + offset
+            ax.add_patch(Rectangle(
+                (PANEL_CORNER_T, ty - TRACK_W/2),
+                PERM_TRACK_END - PANEL_CORNER_T, TRACK_W,
+                fc=C_TRACK, ec=C_OUT, lw=0.3, alpha=0.4, zorder=4))
+            ax.add_patch(Rectangle(
+                (BRIDGE_TRACK_START, ty - TRACK_W/2),
+                BRIDGE_TRACK_END - BRIDGE_TRACK_START, TRACK_W,
+                fc=C_BRIDGE, ec=C_OUT, lw=0.3, alpha=0.35,
+                zorder=4, linestyle="--"))
+
+    # ── Panel swung 180° INWARD ──────────────────────────────────────────────
+    # Hinge axis at X=0, Yd=0 (pinhole wall corner). Panel swings INTO container.
+    # At 180° inward, the panel lies along the pinhole wall (Yd=0) interior face,
+    # extending from X=0 in the +X direction.
+    #
+    # Corner zones: 40mm thick → extend to Yd = PANEL_CORNER_T = 40mm
+    # Center zone:  120mm thick → extend to Yd = PANEL_CENTER_T = 120mm
+    # Panel width (= C_WID = 2362mm) now lies along X axis.
+
+    # Stepped panel outline (open 180° inward — lies along pinhole wall)
+    # Near corner zone: was Yd=0–756, now X=0–756, depth=40mm into Yd
+    ax.add_patch(Rectangle((0, 0), PANEL_CORNER_YD_L, PANEL_CORNER_T,
+                            fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,
+                            alpha=0.55, zorder=5))
+    # Center zone: was Yd=756–1606, now X=756–1606, depth=120mm into Yd
+    ax.add_patch(Rectangle((PANEL_CORNER_YD_L, 0), PANEL_CENTER_W, PANEL_CENTER_T,
+                            fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,
+                            alpha=0.55, zorder=5))
+    # Far corner zone: was Yd=1606–2362, now X=1606–2362, depth=40mm into Yd
+    ax.add_patch(Rectangle((PANEL_CORNER_YD_R, 0), C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T,
+                            fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,
+                            alpha=0.55, zorder=5))
+
+    # Light trap drum in open panel — center zone, now at X=1181, Yd=DRUM_R
+    DRUM_OPEN_CX = (PANEL_CORNER_YD_L + PANEL_CORNER_YD_R) / 2  # 1181mm
+    ax.add_patch(Circle((DRUM_OPEN_CX, 0), DRUM_R,
+                         fc="#FFE8D0", ec=C_PINHOLE, lw=1.2, alpha=0.5,
+                         zorder=5, clip_on=True))
+    ax.text(DRUM_OPEN_CX, PANEL_CENTER_T + 30,
+            f"LIGHT TRAP DRUM\n(in open panel)\nØ{DRUM_D}mm",
+            color=C_PINHOLE, fontsize=6, ha="center", va="bottom",
+            **FONT, zorder=8)
+
+    # Hinge pin marker
+    ax.plot(0, 0, "o", color=C_PINHOLE, ms=8, zorder=8)
+    ax.text(-30, -60, "HINGE\nPIN", color=C_PINHOLE, fontsize=5.5,
+            ha="center", va="top", fontweight="bold", **FONT, zorder=8)
+
+    # Swing arc (90° from closed to open)
+    swing_r = C_WID * 0.35  # representative arc radius
+    swing_arc = Arc((0, 0), 2*swing_r, 2*swing_r,
+                    angle=0, theta1=0, theta2=90,
+                    color=C_PINHOLE, lw=1.0, ls=(0, (4, 3)),
+                    zorder=4, alpha=0.5)
+    ax.add_patch(swing_arc)
+    ax.annotate("", xy=(swing_r * 0.25, swing_r * 0.97),
+                xytext=(swing_r * 0.05, swing_r * 1.02),
+                arrowprops=dict(arrowstyle="->", color=C_PINHOLE, lw=1.0,
+                                mutation_scale=8), zorder=5)
+    ax.text(swing_r * 0.55, swing_r * 0.85, "180° INWARD\nSWING",
+            color=C_PINHOLE, fontsize=6, ha="center", va="center",
+            **FONT, alpha=0.7, zorder=5)
+
+    # Ghost outline of panel in CLOSED position (at X=0, across full Yd width)
+    # Corner zones
+    ax.add_patch(Rectangle((0, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
+                            fc="none", ec=C_GHOST, lw=1.0, ls=(0, (4, 3)),
+                            alpha=0.4, zorder=4))
+    ax.add_patch(Rectangle((0, PANEL_CORNER_YD_R), PANEL_CORNER_T,
+                            C_WID - PANEL_CORNER_YD_R,
+                            fc="none", ec=C_GHOST, lw=1.0, ls=(0, (4, 3)),
+                            alpha=0.4, zorder=4))
+    # Center zone
+    ax.add_patch(Rectangle((0, PANEL_CORNER_YD_L), PANEL_CENTER_T, PANEL_CENTER_W,
+                            fc="none", ec=C_GHOST, lw=1.0, ls=(0, (4, 3)),
+                            alpha=0.4, zorder=4))
+    ax.text(PANEL_CENTER_T + 30, C_WID/2, "CLOSED\nPOSITION",
+            color=C_GHOST, fontsize=5.5, ha="left", va="center",
+            **FONT, alpha=0.5, zorder=5, rotation=90)
+
+    # ── Fan B penetration ────────────────────────────────────────────────────
+    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM,
+                label="FAN B\n(EXHAUST)", label_offset=(-140, 0))
+
+    # ── Evap cooler (just visible at right edge of view) ─────────────────────
+    evap_vis_w = min(EVAP_W, X_HI - EVAP_X)
+    if evap_vis_w > 0:
+        equip_rect(ax, EVAP_X, EVAP_Y, evap_vis_w, EVAP_D, C_COOLER,
+                   "EVAP\nCOOLER", zorder=6)
+
+    # ── EGRESS PATHS ─────────────────────────────────────────────────────────
+    # With panel open inward and drums slid back, three egress paths exist:
+    # Path 1: Between drum D-1 and the open panel (Yd = 40mm to 345mm)
+    # Path 2: Between the two drums (Yd = 580+305=885 to 1782+305=2087 → gap = 1202mm)
+    # Path 3: Between drum D-2 and far wall (Yd = 2087+580=2652 → clipped at far wall)
+
+    # The drums have slid 305mm in X, but their Yd positions are unchanged.
+    # Key egress path is between the two drums: Yd = 580 to 1782 = 1202mm clear.
+
+    EGRESS_GAP_LO = DRUM_LZ_YD_HI   # 580mm
+    EGRESS_GAP_HI = DRUM_FZ_YD_LO   # 1782mm
+    EGRESS_GAP    = EGRESS_GAP_HI - EGRESS_GAP_LO  # 1202mm
+    EGRESS_MID_Y  = (EGRESS_GAP_LO + EGRESS_GAP_HI) / 2
+
+    # Primary egress arrow (between drums, through door)
+    ax.annotate("", xy=(-WALL - 30, EGRESS_MID_Y),
+                xytext=(drum_right_x + 80, EGRESS_MID_Y),
+                arrowprops=dict(arrowstyle="->", color=C_EGRESS, lw=2.5,
+                                linestyle=":", mutation_scale=14),
+                zorder=10)
+    ax.text((drum_right_x + 80) / 2, EGRESS_MID_Y + 55,
+            f"PRIMARY EGRESS — {EGRESS_GAP}mm CLEAR",
+            color=C_EGRESS, fontsize=8, ha="center", va="bottom",
+            fontweight="bold", **FONT, zorder=10)
+
+    # Secondary egress arrows (between each drum and wall)
+    # Near side: between pinhole wall and drum D-1 near edge
+    near_gap_lo = PANEL_CORNER_T  # 40mm (panel corner inner face, when panel is open this is clear)
+    # When panel is open inward, the near wall at Yd=0 is clear above the panel.
+    # But the open panel lies along Yd=0–40mm. Egress at Yd=0 corner is blocked by open panel.
+    # Far side: between drum D-2 far edge and far wall
+    far_gap = C_WID - DRUM_FZ_YD_HI  # 2362 - 2362 = 0mm (drum flush with wall)
+    # So there's no secondary egress on far side.
+
+    # The only clear secondary path is above the open panel's corner zone (40mm thick)
+    # at Yd=40 to Yd=DRUM_LZ_YD_LO (=0). Since drum D-1 is flush with pinhole wall,
+    # there's no gap on that side either.
+
+    # ── Egress dimension line ────────────────────────────────────────────────
+    dim_v(ax, -220, EGRESS_GAP_LO, EGRESS_GAP_HI,
+          f"{EGRESS_GAP}mm\nEGRESS\nGAP", offset=-200, fs=7, col=C_EGRESS)
+
+    # ── Drum transport position dimension ────────────────────────────────────
+    dim_h(ax, drum_left_x, drum_right_x, C_WID + 200,
+          f"DRUM Ø{DRUM_EQ_D}mm\n(transport X={drum_left_x}–{drum_right_x})",
+          offset=80, fs=6)
+
+    # ── Panel dimension along X when open ────────────────────────────────────
+    dim_h(ax, 0, C_WID, -PAD + 60,
+          f"PANEL {C_WID}mm (open inward along pinhole wall)",
+          offset=60, fs=6, col=C_PINHOLE)
+
+    # ── Clearance note ───────────────────────────────────────────────────────
+    note_x = (ZONE_L_END + X_HI) / 2
+    note_y = C_WID * 0.55
+    ax.text(note_x, note_y,
+            "EGRESS CLEARANCE SUMMARY\n"
+            "━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"Gap between drums (Yd):  {EGRESS_GAP}mm (47.3\")\n"
+            f"Avg. male shoulder width:  460mm (18\")\n"
+            f"Emergency egress min:  610mm (24\")\n"
+            f"Standard doorway min:  762mm (30\")\n"
+            "━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"Margin over emergency min:  {EGRESS_GAP - 610}mm\n"
+            "Face-forward egress: YES",
+            color=C_OUT, fontsize=7, ha="center", va="center",
+            **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.5", fc="#F0FFF0",
+                      ec=C_EGRESS, lw=1.2))
+
+    # ── Title block ──────────────────────────────────────────────────────────
+    ax.text(0.01, 0.022, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, **FONT)
+    ax.text(0.01, 0.010, "CARGO DOOR EGRESS DETAIL — PANEL OPEN 180° INWARD, DRUMS SLID TO TRANSPORT",
+            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", **FONT)
+    ax.text(0.99, 0.022, "SCALE ~1:20  ·  SHEET 2 OF 2",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
+    ax.text(0.99, 0.010, "ALL DIMS IN mm",
+            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", **FONT)
+    ax.text(0.50, 0.002, "© 2026 Alvin Richards — GNU AGPLv3",
+            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center",
+            style="italic", **FONT)
+
+    import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)
+    out = f"{DIAGRAMS_DIR}/container-floorplan-sheet2.png"
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  {out} saved")
+
+
 if __name__ == "__main__":
     print("Generating container floor plan...")
     floor_plan()
+    egress_detail()
     print("Done.")

@@ -693,6 +693,18 @@ for xw, yw, ww, hw, col, lbl in [
             ha="center", va="center", fontsize=FS_SM - 1.5, color=C_DIM,
             alpha=0.6, zorder=3)
 
+# ── Processing tray (304 SS, optical zone floor) ─────────────────────────────
+TRAY_X0 = RAIL_X_L + 20     # 645mm
+TRAY_X1 = RAIL_X_R - 20     # 4629mm
+TRAY_H  = 50                # 50mm rim height
+ax2.add_patch(mpatches.FancyBboxPatch(
+    (mx(TRAY_X1), 0), TRAY_X1 - TRAY_X0, TRAY_H, boxstyle="square,pad=0",
+    facecolor=C_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.6, zorder=4))
+ax2.text(mx((TRAY_X0 + TRAY_X1) / 2), TRAY_H / 2,
+        "Processing tray (304 SS)  —  50mm rim",
+        ha="center", va="center", fontsize=FS_SM - 2, color=C_OUT,
+        style="italic", zorder=5)
+
 # ── Ventilation fans ──────────────────────────────────────────────────────────
 # Fan A (INTAKE) at X=C_LEN (left edge in this view), H=FAN_A_H=600
 # Fan B (EXHAUST) at X=0 (right edge), H=FAN_B_H=1800
@@ -775,6 +787,7 @@ legend2 = [
     (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),
     (C_PINHOLE,  "Pinhole Ø2.17mm  [ghost = far wall]"),
+    (C_WALL,     "Processing tray (304 SS, 50mm rim)"),
 ]
 
 ax2.text(LEG2_X, LEG2_Y + LEG_H2 + 30, "LEGEND", ha="left", va="bottom",

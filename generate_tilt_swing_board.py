@@ -1201,7 +1201,7 @@ ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on TSB-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
-S3_E_DN = int(FH3 * 0.20)  # 20% drop for Panel E separation
+S3_E_DN = int(FH3 * 0.10)  # 10% drop for Panel E separation
 
 # ── Separator line between panels B/C/D and panel E ──────────────────────────
 ax3.plot([15, 685], [135 + S3_UP - S3_E_DN, 135 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)

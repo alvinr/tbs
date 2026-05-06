@@ -347,22 +347,22 @@ def floor_plan():
     dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH")
     dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
-    dim_h(ax, 0, ZONE_L_END, -PAD_B + 150, f"{ZONE_L_END}mm\nLEFT ZONE", offset=60, fs=6)
-    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 150, f"{ZONE_R_START-ZONE_L_END}mm\nOPTICAL ZONE", offset=15, fs=6)
-    dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 150, f"{C_LEN-ZONE_R_START}mm\nRIGHT ZONE", offset=40, fs=6)
+    dim_h(ax, 0, ZONE_L_END, -PAD_B + 475, f"{ZONE_L_END}mm LEFT ZONE", offset=25, fs=6)
+    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 475, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6)
+    dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 475, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6)
     dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6)
     dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6)
 
     # ── Shadow-free proof callout ─────────────────────────────────────────────
-    proof_x = C_LEN/2
-    ax.text(proof_x, -PAD_B + 80,
-            f"SHADOW-FREE PROOF:  cone left ≥ {FP_X_L}mm at all Y  ✓     "
-            f"cone right ≤ {FP_X_R}mm at all Y  ✓     "
-            "pinhole wall Y=0: outside cone ✓",
-            color="#204020", fontsize=6.5, ha="center", va="bottom",
-            **FONT, style="italic",
-            bbox=dict(boxstyle="round,pad=0.3", fc="#E8F8E8", ec="#408040", lw=0.8),
-            zorder=10)
+#     proof_x = C_LEN/2
+#     ax.text(proof_x, -PAD_B + 80,
+#             f"SHADOW-FREE PROOF:  cone left ≥ {FP_X_L}mm at all Y  ✓     "
+#             f"cone right ≤ {FP_X_R}mm at all Y  ✓     "
+#             "pinhole wall Y=0: outside cone ✓",
+#             color="#204020", fontsize=6.5, ha="center", va="bottom",
+#             **FONT, style="italic",
+#             bbox=dict(boxstyle="round,pad=0.3", fc="#E8F8E8", ec="#408040", lw=0.8),
+#             zorder=10)
 
     # ── Legend (two-column, below container) ────────────────────────────────
     legend_items = [

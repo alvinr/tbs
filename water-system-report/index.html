@@ -877,6 +877,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#34-processing-tray" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Processing Tray
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1061,10 +1072,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#86-electrical" class="md-nav__link">
+  <a href="#86-processing-tray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.6 Electrical
+        8.6 Processing tray
       
     </span>
   </a>
@@ -1072,10 +1083,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#87-processing-consumables" class="md-nav__link">
+  <a href="#87-electrical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.7 Processing consumables
+        8.7 Electrical
       
     </span>
   </a>
@@ -1083,10 +1094,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#88-total-cost-summary" class="md-nav__link">
+  <a href="#88-processing-consumables" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.8 Total cost summary
+        8.8 Processing consumables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-total-cost-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.9 Total cost summary
       
     </span>
   </a>
@@ -2004,7 +2026,7 @@
 IBC-2 (275 gal) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
-                                                              (Processing floor)
+                                                              ↓ (Processing tray)
 </code></pre></div>
 <ul>
 <li>Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves</li>
@@ -2015,7 +2037,7 @@ IBC-2 (275 gal) ──┘                                                      �
 <li>Fill inlet (top of IBC-1): 2" camlock connection for resupply from water bowser or tanker</li>
 </ul>
 <h3 id="32-brown-system-used-water-recycling">3.2 Brown System — Used Water Recycling<a class="headerlink" href="#32-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Processing floor drain
+<div class="highlight"><pre><span></span><code>Processing tray drain
         │
    3W-DV-02 ──────────────────────────────────────────→ (to Black drums if heavily loaded)
         │
@@ -2088,6 +2110,110 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <li>Label each drum: contents, date, location, UN numbers for ferricyanide/iron compounds</li>
 <li><strong>Do not leave drums open</strong> — evaporation and UV exposure can drive ferricyanide chemistry</li>
 </ul>
+<h3 id="34-processing-tray">3.4 Processing Tray<a class="headerlink" href="#34-processing-tray" title="Permanent link">&para;</a></h3>
+<p>Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. The tray collects wash water and gravity-drains to 3W-DV-02 (the Brown/Black diverter valve).</p>
+<p><strong>Tray specification:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>16-gauge (1.5mm) 304 stainless steel, #4 brushed finish</td>
+<td>Chemically inert to ferricyanide wash water; stainless resists pitting from citric acid pH adjustment</td>
+</tr>
+<tr>
+<td>Overall footprint</td>
+<td>3,984 × 2,240 mm (2 panels, field-bolted)</td>
+<td>Fits inside film plane rails (X=625–4,649) with 20mm clearance per side. Clears carriage travel (Y=100–2,262) with 30mm margin</td>
+</tr>
+<tr>
+<td>Panel size (each)</td>
+<td>1,992 × 2,240 mm</td>
+<td>Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm)</td>
+</tr>
+<tr>
+<td>Rim height</td>
+<td>50 mm (all four sides)</td>
+<td>Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm)</td>
+</tr>
+<tr>
+<td>Floor-to-rim height</td>
+<td>50 mm</td>
+<td>Tray sits directly on the container floor. No riser needed — drain is at tray floor level</td>
+</tr>
+<tr>
+<td>Fall</td>
+<td>1:200 (10mm over 1,992mm) toward pinhole wall (Y=0)</td>
+<td>Gravity drain to a single 1" NPT bulkhead fitting at the low corner</td>
+</tr>
+<tr>
+<td>Drain fitting</td>
+<td>1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,637, Y=60)</td>
+<td>Connects via 1" HDPE pipe to existing 3W-DV-02 diverter valve</td>
+</tr>
+<tr>
+<td>Weight (empty)</td>
+<td>~110 kg (2 panels × ~55 kg)</td>
+<td>304 SS, 1.5mm × 4.46 m² per panel × 7.93 kg/m² per mm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Clearance verification:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Clearance</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Film plane carriage blocks (Z=140mm at max tilt)</td>
+<td>90mm above tray rim (140 − 50)</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Film plane rails at X=625 and X=4,649 (rail channel 20mm wide)</td>
+<td>20mm gap between tray edge and rail</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Dolly track bridge sections (X=600–955, Z=30–70mm, transport mode only)</td>
+<td>Tray left edge at X=645 — bridge track enters at X=600. 45mm overlap. <strong>Tray must be installed after bridge tracks are removed during operational mode conversion. Bridge tracks are only used during transport mode.</strong></td>
+<td>Clear — operational sequence prevents conflict</td>
+</tr>
+<tr>
+<td>Pump manifold drain outlet (X=2,600–2,900, Y=0, Z=200–600)</td>
+<td>Tray drain pipe routes along pinhole wall (Y=0) below manifold at Z=0–50. Manifold is at Z=200 minimum</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Spray bar (overhead, Z=400–600 estimated)</td>
+<td>350mm+ above tray rim</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>Waste drums (X=40–620, left end zone)</td>
+<td>Tray starts at X=645 — 25mm gap to drum footprint edge</td>
+<td>Clear</td>
+</tr>
+<tr>
+<td>IBCs (X=4,674+, right end zone)</td>
+<td>Tray ends at X=4,629 — 45mm gap</td>
+<td>Clear</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Installation and removal:</strong></p>
+<p>The tray is installed as part of operational mode conversion (after waste drums are rolled to their working positions and bridge tracks removed). The two panels are carried through the cargo door, positioned between the film plane rails, bolted together at the center flange, and the drain hose connected to the 3W-DV-02 stub. For transport mode conversion, the process reverses: disconnect drain, unbolt panels, carry out through cargo door, stow panels vertically against the container exterior or in a transport rack.</p>
+<p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims.</p>
 <hr />
 <h2 id="4-processing-procedure-step-by-step">4. Processing Procedure — Step by Step<a class="headerlink" href="#4-processing-procedure-step-by-step" title="Permanent link">&para;</a></h2>
 <h3 id="before-each-session">Before each session<a class="headerlink" href="#before-each-session" title="Permanent link">&para;</a></h3>
@@ -2095,20 +2221,21 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <li>Check Blue IBC levels — minimum 100 gal required per print session</li>
 <li>Check Black drums — must have at least 55 gal headroom before starting</li>
 <li>Run Brown recycle pump for 2 minutes to verify filter flow and check pH</li>
-<li>Lay fresh 6-mil black LDPE containment sheet on processing floor, overlap 300mm up walls</li>
+<li>Confirm processing tray is installed and drain hose is connected to 3W-DV-02</li>
+<li>Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims</li>
 <li>Verify all valves in correct position (see valve matrix below)</li>
 </ol>
 <h3 id="print-processing">Print processing<a class="headerlink" href="#print-processing" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Expose print in camera (no water involved)</li>
-<li>Transfer print to processing area in subdued light — lay face-up on containment sheet</li>
+<li>Transfer print to processing tray in subdued light — lay face-up on containment liner</li>
 <li>Open BV-02 (Blue supply) → flood print with 21 gal via spray bar — 5 minutes</li>
 <li>Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain</li>
 <li>If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown</li>
 <li>Wash 3: open BV-02 → 21 gal clean Blue water → 5 minutes → drain</li>
 <li>Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse</li>
 <li>Hang print to dry — use internal or external line</li>
-<li>Drain residual water from floor to Brown or Black as appropriate</li>
+<li>Allow residual water to gravity-drain from tray to Brown or Black as appropriate</li>
 </ol>
 <h3 id="valve-matrix">Valve matrix<a class="headerlink" href="#valve-matrix" title="Permanent link">&para;</a></h3>
 <table>
@@ -2146,7 +2273,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Closed</td>
 </tr>
 <tr>
-<td>3W-DV-02 (floor drain)</td>
+<td>3W-DV-02 (tray drain)</td>
 <td>Brown</td>
 <td>Brown</td>
 <td><strong>Brown</strong></td>
@@ -2217,6 +2344,13 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Sch 40</td>
 <td>1" nominal</td>
 <td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Tray drain</td>
+<td>Sch 40 / SDR-11</td>
+<td>1" nominal</td>
+<td>gravity</td>
 <td>HDPE</td>
 </tr>
 <tr>
@@ -2351,6 +2485,13 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>2,400–2,700</td>
 <td>Y=0</td>
 <td>200–600</td>
+</tr>
+<tr>
+<td>Optical zone floor</td>
+<td>Processing tray (2 panels)</td>
+<td>645–4,629</td>
+<td>60–2,300</td>
+<td>0–50</td>
 </tr>
 <tr>
 <td>Optical zone</td>
@@ -2630,7 +2771,64 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tbody>
 </table>
 <p><strong>Pipe subtotal: ~$140–$202</strong></p>
-<h3 id="86-electrical">8.6 Electrical<a class="headerlink" href="#86-electrical" title="Permanent link">&para;</a></h3>
+<h3 id="86-processing-tray">8.6 Processing tray<a class="headerlink" href="#86-processing-tray" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Spec</th>
+<th>Qty</th>
+<th>Supplier</th>
+<th>Unit price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>304 SS sheet, 16-ga (1.5mm)</td>
+<td>#4 brushed, 4'×8' sheets</td>
+<td>4</td>
+<td><a href="https://www.metalsupermarkets.com">Metal Supermarkets</a> · <a href="https://www.onlinemetals.com">Online Metals</a></td>
+<td>$180–$250/sheet</td>
+<td><strong>$720–$1,000</strong></td>
+</tr>
+<tr>
+<td>Fabrication (cut, brake, weld)</td>
+<td>Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners</td>
+<td>1 job</td>
+<td>Local sheet metal shop (e.g. Valley Metal Fab, SoCal)</td>
+<td>$400–$800</td>
+<td><strong>$400–$800</strong></td>
+</tr>
+<tr>
+<td>1" NPT SS bulkhead union</td>
+<td>304 SS, welded to tray floor at drain point</td>
+<td>1</td>
+<td><a href="https://www.mcmaster.com">McMaster-Carr #4464K115</a> · Grainger</td>
+<td>$18–$30</td>
+<td><strong>$25</strong></td>
+</tr>
+<tr>
+<td>Silicone gasket strip, FDA grade</td>
+<td>1/16" × 1" × 10 ft, for center flange seal</td>
+<td>1 roll</td>
+<td>McMaster-Carr / Amazon</td>
+<td>$15–$25</td>
+<td><strong>$20</strong></td>
+</tr>
+<tr>
+<td>M6×16 SS hex bolts + flange nuts</td>
+<td>Center flange bolts, 200mm spacing</td>
+<td>24</td>
+<td>McMaster-Carr / Bolt Depot</td>
+<td>$0.50 each</td>
+<td><strong>$12</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processing tray subtotal: ~$1,177–$1,857</strong></p>
+<p><em>Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.</em></p>
+<h3 id="87-electrical">8.7 Electrical<a class="headerlink" href="#87-electrical" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2678,7 +2876,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tbody>
 </table>
 <p><strong>Electrical subtotal: ~$50</strong></p>
-<h3 id="87-processing-consumables">8.7 Processing consumables<a class="headerlink" href="#87-processing-consumables" title="Permanent link">&para;</a></h3>
+<h3 id="88-processing-consumables">8.8 Processing consumables<a class="headerlink" href="#88-processing-consumables" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2751,7 +2949,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </table>
 <p><strong>Consumables subtotal: ~$249–$304</strong></p>
 <hr />
-<h3 id="88-total-cost-summary">8.8 Total cost summary<a class="headerlink" href="#88-total-cost-summary" title="Permanent link">&para;</a></h3>
+<h3 id="89-total-cost-summary">8.9 Total cost summary<a class="headerlink" href="#89-total-cost-summary" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2787,6 +2985,11 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>$202</td>
 </tr>
 <tr>
+<td>Processing tray (304 SS, fabricated)</td>
+<td>$1,177</td>
+<td>$1,857</td>
+</tr>
+<tr>
 <td>Electrical</td>
 <td>$50</td>
 <td>$50</td>
@@ -2798,8 +3001,8 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td><strong>$1,497</strong></td>
-<td><strong>$2,134</strong></td>
+<td><strong>$2,674</strong></td>
+<td><strong>$3,991</strong></td>
 </tr>
 </tbody>
 </table>

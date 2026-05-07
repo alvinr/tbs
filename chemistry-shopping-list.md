@@ -83,7 +83,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 | Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ferric Ammonium Citrate, green, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ferric-ammonium-citrate-green](https://stores.photoformulary.com/ferric-ammonium-citrate-green/) | 454 g (1 lb) | 27 | ~$30† | ~$810 |
+| Ferric Ammonium Citrate, green, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ferric-ammonium-citrate-green](https://stores.photoformulary.com/ferric-ammonium-citrate-green/) | 454 g (1 lb) | 31 | ~$30† | ~$930 |
 | Potassium Ferricyanide | Same as above | — | — | — | — | — |
 
 ---
@@ -115,7 +115,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 **Hazard:** Ammonium dichromate is classified as an **oxidizer (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
 
-*Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$14,000.*
+*Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$15,800.*
 
 ---
 
@@ -266,10 +266,10 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware) | 7.5 kg AmFe | 3.5 kg | — | 0.4 kg | — | — | 1,340 yd muslin | ~$887 | **~$1,915** |
-| Gum bichromate | — | — | — | 8.25 kg | 26 kg | — | 1,340 yd muslin | ~$2,159 | **~$3,154** |
-| Van Dyke Brown | 5.25 kg FAC | — | 2.05 kg | — | — | 18.5 kg | 1,340 yd muslin | ~$6,553 | **~$7,544** |
-| Salt print | — | — | 6.25 kg | — | — | 37 kg | 1,340 yd muslin | ~$18,522 | **~$19,536** |
+| Cyanotype (Ware) | 8.45 kg AmFe | 3.95 kg | — | 0.45 kg | — | — | 1,340 yd muslin | ~$887 | **~$1,915** |
+| Gum bichromate | — | — | — | 9.3 kg | 29.3 kg | — | 1,340 yd muslin | ~$2,159 | **~$3,154** |
+| Van Dyke Brown | 5.9 kg FAC | — | 2.3 kg | — | — | 20.85 kg | 1,340 yd muslin | ~$6,553 | **~$7,544** |
+| Salt print | — | — | 7.05 kg | — | — | 41.65 kg | 1,340 yd muslin | ~$18,522 | **~$19,536** |
 | Ilford RC paper | — | — | — | — | — | — | 18 rolls paper | ~$1,275 (chem) | **~$14,775** |
 | Liquid Light | — | — | — | — | — | — | 1,340 yd + emulsion | ~$900 (chem) | **~$15,590** |
 

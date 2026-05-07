@@ -408,7 +408,7 @@ Make two exposures on the same piece of paper. First: lens exposed for 2–5 sec
 
 ### 9C: Zone-Focus Grid Lens Array
 
-Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300 mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000 mm² — still only about 4.4% of the 9,609,312 mm² active image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
+Install multiple lenses (e.g., 6 large magnifying glass elements, 200 mm diameter each) across the pinhole wall in a 3 × 2 grid, each focused at a different distance. Each lens covers approximately a 300 mm circle of the image plane, with the circles designed to tile adjacent areas. The total covered area is 6 × π(150)² ≈ 424,000 mm² — still only about 3.9% of the 10,743,612 mm² active image plane, but arranged across the full width. The effect: a grid of sharp circular windows with dark/pinhole gaps between them.
 
 ---
 

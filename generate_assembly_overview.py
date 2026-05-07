@@ -40,19 +40,15 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
-    BLUE_IBC_Y, BROWN_IBC_Y,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-    DRUM_LZ_CX, DRUM_FZ_CX,
-    DRUM_LZ_YD_LO, DRUM_FZ_YD_LO,
+    BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_W,
-    PANEL_SLIDE, DRUM_SLIDE,
-    PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
+    PANEL_SLIDE,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
-    C_WALL, C_WASTE_DRUM, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN,
     cone_left, cone_right,
 )
@@ -206,19 +202,7 @@ leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: on slide dollies).
 # In this side elevation both drums share X → collapse to single block.
-# Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm),
-# right edge 5mm inside ZONE_L_END.
-_drum_x0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
-_drum_vis_x = -DRUM_R + DRUM_D        # = 375mm — revolving drum right edge (inside container)
-equip_rect(ax, _drum_x0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.80, zorder=5)
-ax.text(_drum_vis_x + (_drum_x0 + DRUM_EQ_D - _drum_vis_x) / 2, RAIL_OFF + DRUM_EQ_H/2,
-        "Waste\ndrums\n×2", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=5)
-leader(ax, _drum_x0 + DRUM_EQ_D, RAIL_OFF + DRUM_EQ_H * 0.6, 800, 1500,
-       f"55-gal drums ×2 (on slide dollies — one per Yd corner)\n"
-       f"D-1 near: Yd=0–{DRUM_EQ_D}mm  |  D-2 far: Yd={C_WID-DRUM_EQ_D}–{C_WID}mm\n"
-       f"X={_drum_x0}–{_drum_x0+DRUM_EQ_D}mm  H={DRUM_EQ_H}mm each",
-       ha="left", fs=FS_SM)
+# (waste drums eliminated in rev 5 — left zone is light trap only)
 
 
 # ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────
@@ -371,9 +355,9 @@ LEG_H   = 60
 LEG_GAP = 82
 
 legend_items = [
-    (C_BLUE_IBC,  "Blue IBC stack x2 (2x600L)"),
-    (C_BROWN_IBC, "Brown IBC x1 (600L)"),
-    (C_WASTE_DRUM,   "55-gal drums x2"),
+    (C_BLUE_IBC,  "Blue IBC x2 (top tier)"),
+    (C_BROWN_IBC, "Brown IBC x1 (bottom near)"),
+    (C_WASTE_IBC, "Waste IBC x1 (bottom far)"),
     (C_EVAP,      "Evaporative cooler"),
     (C_PUMP,      "Pump manifold"),
     (C_ELEC,      "Electrical panel"),
@@ -636,47 +620,34 @@ ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
         "Evap\ncooler\n[Yd=0]", ha="center", va="center",
         fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
 
-# Waste drums: two 55-gal drums, same X column, different Yd.
-# Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm).
-# From this viewpoint (Yd=2362 looking toward Yd=0):
-#   DRUM_LZ (Yd=0–580mm)      — behind the revolving drum → ghost, low zorder
-#   DRUM_FZ (Yd=1782–2362mm)  — in front of the revolving drum → solid, high zorder
-_dlx0 = PANEL_CORNER_T   # = 40mm — left edge flush with corner panel inner face
-
-# D-1 (far from viewer — ghost, behind light trap drum)
-eq2(_dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.20, zorder=4,
-    ec="#7A6B5A", lw=0.6)
-
-# Revolving light trap drum drawn at zorder=5 (above D-1 ghost)
-
-# D-2 (close to viewer — solid, in front of light trap drum)
-_dfx0 = PANEL_CORNER_T   # = 40mm — same X as D-1
-eq2(_dfx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.85, zorder=7,
-    ec="#7A6B5A", lw=1.0)
-ax2.text(mx(_dfx0 + DRUM_EQ_D / 2), RAIL_OFF + DRUM_EQ_H / 2,
-        "Waste\ndrum D-2\n(front)",
-        ha="center", va="center", fontsize=FS_SM - 1, color="#3D2E22", zorder=8)
+# (waste drums eliminated in rev 5 — left zone is light trap only)
 
 ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
     "Hinged panel +\nRevolving drum  Ø{0}mm × {1}mm H\n(cargo door, right in this view)".format(DRUM_D, DRUM_H_ELV),
     ha="left", fs=FS_SM)
 
-# ── RIGHT END ZONE (appears on LEFT in this view) — IBCs ─────────────────────
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=6)
+# ── RIGHT END ZONE (appears on LEFT in this view) — 4× IBC 2×2 stack ────────
+# Far column (behind in this view): Blue #2 top + Waste bottom
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_WASTE_IBC, alpha=0.40, zorder=4)
 ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
-        "Brown IBC x1\n(600L, behind)", ha="center", va="center",
-        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+        "Waste IBC\n(behind)", ha="center", va="center",
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=5)
 
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
+# Near column (front in this view): Blue #1 top + Brown bottom
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=6)
 ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2 + 200,
-        "Blue IBC x2\nstacked (front)\n2×600L", ha="center", va="center",
-        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=6)
+        "IBC-1 Blue\n(top, front)", ha="center", va="center",
+        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=7)
+eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
+        "IBC-3 Brown\n(bottom, front)", ha="center", va="center",
+        fontsize=FS_SM - 1, color="#FFFFFF", zorder=7)
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
         [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
-        color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
+        color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=8)
 
 ldr2(IBC_COL_X + IBC_W/2 + 400, RAIL_OFF + IBC_H_STK, C_LEN - 50, 2800,
-    f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
+    f"4× IBC 2×2 stack  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
     f"(far end, left in this view)", ha="right", fs=FS_SM)
 
 # ── Pinhole-wall equipment — ghost (they face Yd=0, far from this viewpoint) ─
@@ -851,21 +822,16 @@ print(f"Saved: {out2}")
 
 # ── Palette for plan view ────────────────────────────────────────────────────
 C_PANEL_C = "#A8B8A8"    # panel center zone (slightly different)
-C_RAIL3   = "#CC4422"    # HGR20 panel slide rail color (red — distinct from brown tracks)
-C_TRACK   = "#8B7355"    # V-groove track color
+C_RAIL3   = "#CC4422"    # HGR20 panel slide rail color
 C_CONT_DR = "#9CA0A8"    # container door fill
 C_GHOST   = "#D0D0D8"    # ghost position fill
 
 # ── Geometry ─────────────────────────────────────────────────────────────────
 # Operational positions
 OP_PANEL_X  = 0                               # panel outer face at X=0
-OP_DRUM_D1_YD = DRUM_LZ_YD_LO                 # = 0mm (near wall)
-OP_DRUM_D2_YD = DRUM_FZ_YD_LO                 # = 1782mm (far wall)
-OP_DRUM_X     = PANEL_CORNER_T                 # = 40mm (left edge)
 
-# Transport positions
+# Transport positions (panel slide only — drums eliminated rev 5)
 TR_PANEL_X  = PANEL_SLIDE                     # = 300mm (slid inward)
-TR_DRUM_X   = OP_DRUM_X + DRUM_SLIDE          # = 345mm (slid inward)
 
 # Container exterior face and door thickness
 CONT_WALL = 40   # container wall thickness (schematic)
@@ -970,17 +936,7 @@ def draw_light_trap_drum(ax, panel_x_outer):
             ha="center", va="bottom", fontsize=FS_SM - 0.5, color=C_OUT, zorder=7)
 
 
-def draw_waste_drums(ax, drum_x_left, d1_yd, d2_yd, alpha=0.85):
-    """Draw the two 55-gal waste drums in plan view (circles)."""
-    r = DRUM_EQ_R
-    cx = drum_x_left + r  # center X
-    for yd_lo, label in [(d1_yd, "D-1"), (d2_yd, "D-2")]:
-        yd_c = yd_lo + r
-        ax.add_patch(plt.Circle(
-            (yd_c, cx), r, facecolor=C_WASTE_DRUM, edgecolor=C_OUT,
-            linewidth=0.8, alpha=alpha, zorder=5))
-        ax.text(yd_c, cx, label, ha="center", va="center",
-                fontsize=FS_SM - 0.5, color="#FFFFFF", fontweight="bold", zorder=6)
+# (draw_waste_drums removed — drums eliminated in rev 5)
 
 
 def draw_hgr20_rails(ax):
@@ -993,28 +949,7 @@ def draw_hgr20_rails(ax):
             alpha=0.6, zorder=4))
 
 
-C_BRIDGE  = "#4A90D9"    # bridge section color (blue — distinct from brown permanent)
-
-def draw_vgroove_tracks(ax, drum_x_left, show_bridges=False):
-    """Draw V-groove roller tracks for waste drums.
-    Permanent sections: X=PANEL_CORNER_T to PERM_TRACK_END.
-    Bridge sections (removable): X=BRIDGE_TRACK_START to BRIDGE_TRACK_END.
-    """
-    for yd_c in [DRUM_EQ_R, C_WID - DRUM_EQ_R]:
-        for offset in [-80, 80]:  # two parallel tracks per drum
-            # Permanent section
-            ax.add_patch(mpatches.Rectangle(
-                (yd_c + offset - 5, PANEL_CORNER_T), 10,
-                PERM_TRACK_END - PANEL_CORNER_T,
-                facecolor=C_TRACK, edgecolor=C_OUT, linewidth=0.4,
-                alpha=0.4, zorder=3))
-            # Bridge section (removable)
-            if show_bridges:
-                ax.add_patch(mpatches.Rectangle(
-                    (yd_c + offset - 5, BRIDGE_TRACK_START), 10,
-                    BRIDGE_TRACK_END - BRIDGE_TRACK_START,
-                    facecolor=C_BRIDGE, edgecolor=C_OUT, linewidth=0.4,
-                    alpha=0.5, zorder=3, linestyle="--"))
+# (draw_vgroove_tracks removed — dolly tracks eliminated in rev 5)
 
 
 def draw_container_doors(ax, closed=True):
@@ -1061,11 +996,10 @@ def draw_evap_cooler(ax):
 
 # ── LEFT PANEL: Transport mode ──────────────────────────────────────────────
 plan_setup(ax_tr, "TRANSPORT MODE",
-           f"Panel retracted {PANEL_SLIDE}mm  |  Drums retracted {DRUM_SLIDE}mm  |  Doors closed")
+           f"Panel retracted {PANEL_SLIDE}mm  |  Doors closed")
 draw_container_walls(ax_tr)
 draw_container_doors(ax_tr, closed=True)
 draw_hgr20_rails(ax_tr)
-draw_vgroove_tracks(ax_tr, TR_DRUM_X, show_bridges=True)
 draw_evap_cooler(ax_tr)
 
 # Ghost: operational positions (dashed outlines)
@@ -1077,17 +1011,10 @@ for yd0, w, t in [(0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
         (yd0, OP_PANEL_X), w, t,
         facecolor="none", edgecolor=C_GHOST, linewidth=0.8,
         ls=(0, (4, 3)), alpha=0.6, zorder=2))
-# Ghost drums
-for yd_lo in [OP_DRUM_D1_YD, OP_DRUM_D2_YD]:
-    ax_tr.add_patch(plt.Circle(
-        (yd_lo + DRUM_EQ_R, OP_DRUM_X + DRUM_EQ_R), DRUM_EQ_R,
-        facecolor="none", edgecolor=C_GHOST, linewidth=0.8,
-        ls=(0, (4, 3)), alpha=0.6, zorder=2))
 
 # Solid: transport positions
 draw_stepped_panel(ax_tr, TR_PANEL_X)
 draw_light_trap_drum(ax_tr, TR_PANEL_X)
-draw_waste_drums(ax_tr, TR_DRUM_X, OP_DRUM_D1_YD, OP_DRUM_D2_YD)
 
 # Door closure plane line
 ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
@@ -1106,16 +1033,7 @@ ax_tr.text(panel_mid_yd + 120, (OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CORNER_T / 
            f"Panel slide\n{PANEL_SLIDE}mm",
            ha="left", va="center", fontsize=FS_SM - 0.5, color="#2060A0", zorder=8)
 
-# Drum slide arrows
-for yd_lo in [OP_DRUM_D1_YD, OP_DRUM_D2_YD]:
-    yd_c = yd_lo + DRUM_EQ_R
-    ax_tr.annotate("", xy=(yd_c, TR_DRUM_X + DRUM_EQ_R),
-                   xytext=(yd_c, OP_DRUM_X + DRUM_EQ_R),
-                   arrowprops=dict(arrowstyle="-|>", color="#805000", lw=1.2,
-                                   connectionstyle="arc3,rad=-0.15"), zorder=8)
-ax_tr.text(DRUM_EQ_R + 120, (OP_DRUM_X + TR_DRUM_X) / 2 + DRUM_EQ_R,
-           f"Drum slide\n{DRUM_SLIDE}mm",
-           ha="left", va="center", fontsize=FS_SM - 0.5, color="#805000", zorder=8)
+# (drum slide arrows removed — drums eliminated in rev 5)
 
 # Dimensions
 dim3_y_bot = -CONT_WALL - DOOR_T - 100
@@ -1137,17 +1055,15 @@ ax_tr.text(LT_DRUM_YD_CENTER + DRUM_R + 30, TR_PANEL_X + PANEL_CENTER_T / 2,
 
 # ── RIGHT PANEL: Operational mode ────────────────────────────────────────────
 plan_setup(ax_op, "OPERATIONAL MODE",
-           "Panel at X=0  |  Drums at operational positions  |  Doors open")
+           "Panel at X=0  |  Doors open  |  Left zone clear (no drums)")
 draw_container_walls(ax_op)
 draw_container_doors(ax_op, closed=False)
 draw_hgr20_rails(ax_op)
-draw_vgroove_tracks(ax_op, OP_DRUM_X)
 draw_evap_cooler(ax_op)
 
 # Solid: operational positions
 draw_stepped_panel(ax_op, OP_PANEL_X)
 draw_light_trap_drum(ax_op, OP_PANEL_X)
-draw_waste_drums(ax_op, OP_DRUM_X, OP_DRUM_D1_YD, OP_DRUM_D2_YD)
 
 # Door closure plane line (for reference)
 ax_op.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=0.8,
@@ -1211,9 +1127,6 @@ legend_items3 = [
     (C_HINGE_PANEL,    "Panel corner zone (40mm)"),
     (C_PANEL_C,  "Panel center zone (120mm)"),
     (C_LT_DRUM, "Revolving light trap drum"),
-    (C_WASTE_DRUM,    "55-gal waste drum"),
-    (C_TRACK,    "Permanent dolly track"),
-    (C_BRIDGE,   "Removable bridge section"),
     (C_EVAP,     "Evaporative cooler"),
     (C_CONT_DR,  "ISO container door"),
     (C_GHOST,    "Ghost (operational position)"),
@@ -1242,7 +1155,7 @@ fig3.text(0.5, 0.97, "TBS-001  —  CARGO DOOR END PLAN VIEW",
           ha="center", va="top", fontsize=14, color=C_OUT, fontweight="bold")
 fig3.text(0.5, 0.945,
           f"Stepped panel (40mm corners / 120mm center) on HGR20 sliding carriage  |  "
-          f"Waste drums on V-groove dollies  |  Scale: approx 1:20",
+          f"Left zone: light trap drum only (drums eliminated rev 5)  |  Scale: approx 1:20",
           ha="center", va="top", fontsize=9, color=C_DIM, style="italic")
 
 # Title block box (bottom-right, figure coords)

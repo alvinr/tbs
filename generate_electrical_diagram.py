@@ -18,7 +18,7 @@ from matplotlib.patches import FancyBboxPatch, Arc
 import os
 from tbs_constants import (
     svg_path, SVG_DIR,
-    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_WASTE_IBC, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
 
@@ -414,10 +414,7 @@ def draw_sheet2():
         EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
         EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
         IBC_COL_X, IBC_W, IBC_D,
-        BLUE_IBC_Y, BROWN_IBC_Y,
-        DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-        DRUM_LZ_CX, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
-        DRUM_FZ_CX, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+        BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
         DRUM_CX, DRUM_D, DRUM_R,
         FAN_A_YD, FAN_B_YD,
         DIAGRAMS_DIR, svg_path,
@@ -598,26 +595,23 @@ def draw_sheet2():
             ax.text(ex+ew/2, cy_e - 0.12, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # LEFT END ZONE (X=0–625mm) — light trap drum + waste drums
+    # LEFT END ZONE (X=0–625mm) — light trap drum only (waste drums eliminated rev 5)
     # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
-    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "DRUM\n(partial)", C_WASTE_DRUM,
+    from tbs_constants import C_LT_DRUM
+    equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
-    # 55-gal drums — one per Yd corner (rev 4: unstacked)
-    equip(DRUM_LZ_CX - DRUM_EQ_R, DRUM_LZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
-          "DRUM D-1\n(near)", C_WASTE_DRUM, f"55gal  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}")
-    equip(DRUM_FZ_CX - DRUM_EQ_R, DRUM_FZ_YD_LO, DRUM_EQ_D, DRUM_EQ_D,
-          "DRUM D-2\n(far)", C_WASTE_DRUM, f"55gal  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}")
 
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
     equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_EVAP, "80W 12V  (E)")
     equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_PUMP, "Cct C")
 
-    # RIGHT END ZONE — Blue IBC stack (front, Y=100–1116mm)
-    equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "BLUE IBC ×2\n(front)",
-          C_BLUE_IBC, "2×600L  Yd=100–1116")
-    # Brown IBC (rear, Y=1141–2157mm)
-    equip(IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, "BROWN IBC\n(rear)",
-          C_BROWN_IBC, "1×600L  Yd=1141–2157")
+    # RIGHT END ZONE — 4× IBC in 2×2 stack
+    # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom
+    equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "IBC-1 BLUE\n+ IBC-3 BROWN",
+          C_BLUE_IBC, "Near column  Yd=100–1116")
+    # Far column (Yd=1141–2157): Blue #2 on top, Waste on bottom
+    equip(IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, "IBC-2 BLUE\n+ IBC-4 WASTE",
+          C_WASTE_IBC, "Far column  Yd=1141–2157")
 
     # ── EP + BAT wall-mounted on interior face of pinhole wall (Yd=0) ────────
     WALL_MOUNT_H = wt * 0.55   # shallow depth for wall-mounted box
@@ -679,14 +673,12 @@ def draw_sheet2():
     EVAP_CX = ix(EVAP_X + EVAP_W/2)
     PUMP_CX = ix(PUMP_X + PUMP_W/2)
     IBC_CX  = ix(IBC_COL_X + IBC_W/2)
-    DRUM_CX_E = ix(DRUM_LZ_CX)
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
         (EVAP_CX,            OY+wt + EVAP_Y*S_yd),           # evap cooler (Yd=0, pinhole wall)
         (PUMP_CX,            OY+wt + 80*S_yd),               # pump manifold
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
-        (DRUM_CX_E,          OY+wt + DRUM_LZ_YD_LO*S_yd),  # drums (left zone)
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),

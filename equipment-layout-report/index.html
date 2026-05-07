@@ -896,10 +896,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#optical-cone-rev-3-geometry" class="md-nav__link">
+  <a href="#optical-cone-rev-6-geometry" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optical Cone (rev 3 geometry)
+        Optical Cone (rev 6 geometry)
       
     </span>
   </a>
@@ -935,10 +935,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#21-left-end-zone-x0625mm-shadow-free-at-all-depths" class="md-nav__link">
+  <a href="#21-left-end-zone-x0150mm-shadow-free-at-all-depths" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.1 Left End Zone — X=0–625mm (shadow-free at all depths)
+        2.1 Left End Zone — X=0–150mm (shadow-free at all depths)
       
     </span>
   </a>
@@ -957,10 +957,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#23-optical-zone-x6254649mm" class="md-nav__link">
+  <a href="#23-optical-zone-x1504649mm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2.3 Optical Zone — X=625–4,649mm
+        2.3 Optical Zone — X=150–4,649mm
       
     </span>
   </a>
@@ -1017,45 +1017,34 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-55-gallon-drum-left-zone-placement" class="md-nav__link">
+  <a href="#6-left-end-zone-simplified-layout-rev-5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. 55-Gallon Drum Left-Zone Placement
+        6. Left End Zone — Simplified Layout (Rev 5)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. 55-Gallon Drum Left-Zone Placement">
+    <nav class="md-nav" aria-label="6. Left End Zone — Simplified Layout (Rev 5)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-sliding-drum-dollies-transport-mode" class="md-nav__link">
+  <a href="#61-stepped-panel-and-sliding-carriage-transport-mode" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 Sliding Drum Dollies (Transport Mode)
+        6.1 Stepped Panel and Sliding Carriage (Transport Mode)
       
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-stepped-panel-and-sliding-carriage-transport-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6.2 Stepped Panel and Sliding Carriage (Transport Mode)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6.2 Stepped Panel and Sliding Carriage (Transport Mode)">
+    <nav class="md-nav" aria-label="6.1 Stepped Panel and Sliding Carriage (Transport Mode)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#621-sliding-panel-light-seal-design" class="md-nav__link">
+  <a href="#611-sliding-panel-light-seal-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2.1 Sliding Panel Light Seal Design
+        6.1.1 Sliding Panel Light Seal Design
       
     </span>
   </a>
@@ -1700,20 +1689,20 @@
 widens as it approaches the film plane. Any equipment placed inside the cone casts
 a shadow on the film plane, producing an unexposed void in the image.</p>
 <p><strong>Solution:</strong> Reduce the active film plane from the full 5,893 mm container width
-to a 4,024 mm span (X=625–4,649mm). This creates two <strong>provably shadow-free end
+to a 4,499 mm span (X=150–4,649mm). This creates two <strong>provably shadow-free end
 zones</strong> — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.</p>
-<p>The black-water drums (2× 55-gal) are relocated to the left end zone (one per Yd
-corner, D-1 near pinhole wall and D-2 near far wall), which frees the right end zone for IBCs only and allows the
-right zone boundary to move inward from X=4,019mm to X=4,649mm — widening the film
-plane by 630mm (rev 2, 2026-04-23).</p>
-<h3 id="optical-cone-rev-3-geometry">Optical Cone (rev 3 geometry)<a class="headerlink" href="#optical-cone-rev-3-geometry" title="Permanent link">&para;</a></h3>
-<p>The pinhole is centered on the new film plane at X=2,637mm. At depth Y from the
+<p>The right end zone contains a 2×2 IBC stack (including a dedicated 600L waste
+IBC), which frees the left end zone entirely — only the light trap drum remains.
+The right zone boundary sits at X=4,649mm, giving a 4,499mm active film plane
+(rev 5, 2026-05-06).</p>
+<h3 id="optical-cone-rev-6-geometry">Optical Cone (rev 6 geometry)<a class="headerlink" href="#optical-cone-rev-6-geometry" title="Permanent link">&para;</a></h3>
+<p>The pinhole is centered on the film plane at X=2,399mm. At depth Y from the
 pinhole wall, the cone boundaries are:</p>
-<div class="highlight"><pre><span></span><code>X_left(Y)  = 2,637 − 2,012 × Y/2,262    [left cone boundary]
-X_right(Y) = 2,637 + 2,012 × Y/2,262    [right cone boundary]
+<div class="highlight"><pre><span></span><code>X_left(Y)  = 2,399 − 2,249 × Y/2,262    [left cone boundary]
+X_right(Y) = 2,399 + 2,250 × Y/2,262    [right cone boundary]
 </code></pre></div>
-<p>At the film plane (Y=2,262mm): X_left=625mm, X_right=4,649mm — exactly the
+<p>At the film plane (Y=2,262mm): X_left=150mm, X_right=4,649mm — exactly the
 film plane edges. The cone never extends beyond these X values at any depth ≤ 2,262mm.</p>
 <h3 id="zone-definitions">Zone Definitions<a class="headerlink" href="#zone-definitions" title="Permanent link">&para;</a></h3>
 <table>
@@ -1728,21 +1717,21 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 <tbody>
 <tr>
 <td><strong>Left end zone</strong></td>
-<td>0–625mm</td>
+<td>0–150mm</td>
 <td>YES at all depths</td>
-<td>Light trap drum, hinged panel (stepped), 55-gal drum D-1 (Yd=0–580mm), 55-gal drum D-2 (Yd=1,782–2,362mm)</td>
+<td>Light trap drum, hinged panel (stepped)</td>
 </tr>
 <tr>
 <td><strong>Optical zone</strong></td>
-<td>625–4,649mm</td>
+<td>150–4,649mm</td>
 <td>NO</td>
-<td>Film plane, rails only</td>
+<td>Film plane, rails, processing tray, perimeter walkway</td>
 </tr>
 <tr>
 <td><strong>Right end zone</strong></td>
 <td>4,649–5,893mm</td>
 <td>YES at all depths</td>
-<td>IBC tanks only</td>
+<td>IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste)</td>
 </tr>
 <tr>
 <td><strong>Pinhole wall face</strong></td>
@@ -1753,14 +1742,14 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tbody>
 </table>
 <p><strong>Shadow-free proof:</strong>
-- Left zone (X=0–625): cone left boundary ≥ 625mm at all depths Y ≤ 2,262mm.
-  All left-zone equipment has X_right ≤ 620mm — 5mm inside the zone. ✓
+- Left zone (X=0–150): cone left boundary ≥ 150mm at all depths Y ≤ 2,262mm.
+  All left-zone equipment (light trap drum, hinged panel) stays within zone. ✓
 - Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
   All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
 - Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓</p>
 <hr />
 <h2 id="2-equipment-positions">2. Equipment Positions<a class="headerlink" href="#2-equipment-positions" title="Permanent link">&para;</a></h2>
-<h3 id="21-left-end-zone-x0625mm-shadow-free-at-all-depths">2.1 Left End Zone — X=0–625mm (shadow-free at all depths)<a class="headerlink" href="#21-left-end-zone-x0625mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
+<h3 id="21-left-end-zone-x0150mm-shadow-free-at-all-depths">2.1 Left End Zone — X=0–150mm (shadow-free at all depths)<a class="headerlink" href="#21-left-end-zone-x0150mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1786,20 +1775,6 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 <td>0–2,200</td>
 <td>Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry</td>
 </tr>
-<tr>
-<td>55-gal drum D-1 (near)</td>
-<td>40–620</td>
-<td>0–580</td>
-<td>0–870</td>
-<td>CX=330mm; pinhole wall corner; left edge flush with corner panel inner face; on slide dolly (305mm travel)</td>
-</tr>
-<tr>
-<td>55-gal drum D-2 (far)</td>
-<td>40–620</td>
-<td>1,782–2,362</td>
-<td>0–870</td>
-<td>CX=330mm; far wall corner; flush with far wall; on slide dolly (305mm travel)</td>
-</tr>
 </tbody>
 </table>
 <h3 id="22-pinhole-wall-face-y0-surface-shadow-free">2.2 Pinhole Wall Face — Y=0 surface (shadow-free)<a class="headerlink" href="#22-pinhole-wall-face-y0-surface-shadow-free" title="Permanent link">&para;</a></h3>
@@ -1821,13 +1796,13 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tr>
 <tr>
 <td>Electrical panel</td>
-<td>2,050–2,350</td>
+<td>1,600–1,900</td>
 <td>900–1,500</td>
-<td>IP65, wall-mount</td>
+<td>IP65, wall-mount (moved away from pinhole)</td>
 </tr>
 <tr>
 <td>Battery bank (2× 100Ah LiFePO4)</td>
-<td>2,050–2,550</td>
+<td>1,600–2,100</td>
 <td>0–500</td>
 <td>Wall-bracket below panel</td>
 </tr>
@@ -1851,8 +1826,8 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 </tr>
 </tbody>
 </table>
-<h3 id="23-optical-zone-x6254649mm">2.3 Optical Zone — X=625–4,649mm<a class="headerlink" href="#23-optical-zone-x6254649mm" title="Permanent link">&para;</a></h3>
-<p>Rail slots in floor/ceiling at X=625 and X=4,649. Film plane frame
+<h3 id="23-optical-zone-x1504649mm">2.3 Optical Zone — X=150–4,649mm<a class="headerlink" href="#23-optical-zone-x1504649mm" title="Permanent link">&para;</a></h3>
+<p>Rail slots in floor/ceiling at X=150 and X=4,649. Film plane frame
 spans this zone at depth Y=2,262mm (nominal far position).</p>
 <table>
 <thead>
@@ -1867,17 +1842,24 @@ spans this zone at depth Y=2,262mm (nominal far position).</p>
 <tbody>
 <tr>
 <td>Processing tray (2 panels, 304 SS)</td>
-<td>645–4,629</td>
-<td>60–2,300</td>
+<td>170–4,629</td>
+<td>80–2,280</td>
 <td>0–50</td>
-<td>50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,637, Y=60 to 3W-DV-02. Installed during operational mode; removed for transport.</td>
+<td>50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,399, Yd=80 to 3W-DV-02. Permanently installed.</td>
+</tr>
+<tr>
+<td>Perimeter walkway (4 sections, removable)</td>
+<td>170–4,629</td>
+<td>0–400 / 1,962–2,362</td>
+<td>0–80</td>
+<td>400mm wide galvanized grated walkway around all 4 sides of processing tray. 25mm SHS legs at 600mm centers. Removable for tray access during coating.</td>
 </tr>
 </tbody>
 </table>
-<p>The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=625 and X=4,649.</p>
+<p>The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.</p>
 <h3 id="24-right-end-zone-x46495893mm-shadow-free-at-all-depths">2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)<a class="headerlink" href="#24-right-end-zone-x46495893mm-shadow-free-at-all-depths" title="Permanent link">&para;</a></h3>
-<p>IBCs only — right-justified flush to the far end wall. All three IBCs occupy a
-single X column at X=4,674mm (25mm clearance from zone boundary).</p>
+<p>2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
+columns at X=4,674mm (25mm clearance from zone boundary).</p>
 <table>
 <thead>
 <tr>
@@ -1890,18 +1872,32 @@ single X column at X=4,674mm (25mm clearance from zone boundary).</p>
 </thead>
 <tbody>
 <tr>
-<td>Blue IBC stack ×2 (600L each)</td>
+<td>Blue IBC-1 (600L, top near)</td>
 <td>4,674–5,893</td>
 <td>100–1,116</td>
-<td>0–2,020</td>
-<td>Y-stacked front; stacked frame</td>
+<td>1,010–2,020</td>
+<td>Near column top; stacked frame</td>
 </tr>
 <tr>
-<td>Brown IBC ×1 (600L)</td>
+<td>Blue IBC-2 (600L, top far)</td>
+<td>4,674–5,893</td>
+<td>1,141–2,157</td>
+<td>1,010–2,020</td>
+<td>Far column top; stacked frame</td>
+</tr>
+<tr>
+<td>Brown IBC-3 (600L, bottom near)</td>
+<td>4,674–5,893</td>
+<td>100–1,116</td>
+<td>0–1,010</td>
+<td>Near column bottom; recycled wash/fix</td>
+</tr>
+<tr>
+<td>Waste IBC-4 (600L, bottom far)</td>
 <td>4,674–5,893</td>
 <td>1,141–2,157</td>
 <td>0–1,010</td>
-<td>Y-stacked rear (behind Blue stack)</td>
+<td>Far column bottom; sealed waste collection</td>
 </tr>
 </tbody>
 </table>
@@ -1909,7 +1905,7 @@ single X column at X=4,674mm (25mm clearance from zone boundary).</p>
 <h2 id="3-floor-plan-and-line-of-sight-diagrams">3. Floor Plan and Line-of-Sight Diagrams<a class="headerlink" href="#3-floor-plan-and-line-of-sight-diagrams" title="Permanent link">&para;</a></h2>
 <p><strong>Floor plan — new end-zone layout:</strong></p>
 <p><img alt="TBS-001 Container Floor Plan — End-Zone Layout" src="../assets/container-floorplan.png" /></p>
-<p><strong>Cargo door egress detail — panel open 180° outward, drums in operational position:</strong></p>
+<p><strong>Cargo door egress detail — panel open 180° outward:</strong></p>
 <p><img alt="TBS-001 Cargo Door Egress Detail" src="../assets/container-floorplan-sheet2.png" /></p>
 <p><strong>Optical line-of-sight — all clear:</strong></p>
 <p><img alt="TBS-001 Optical Line-of-Sight Clearance — New Layout" src="../assets/line-of-sight.png" /></p>
@@ -1918,9 +1914,9 @@ cone in either the plan (top-down) or elevation (side) view.</p>
 <hr />
 <h2 id="4-why-ibc-y-stacking-front-to-back">4. Why IBC Y-Stacking (Front-to-Back)<a class="headerlink" href="#4-why-ibc-y-stacking-front-to-back" title="Permanent link">&para;</a></h2>
 <p>In the previous colonnade layout, IBCs were placed side-by-side in the X direction
-at shallow Yd depth. In the new layout the entire right end zone is X-clear from
-X=4,649mm to the end wall — all tanks can occupy the same X column and be arranged
-along the Y (depth) axis instead.</p>
+at shallow Yd depth. In the current layout (rev 5) the entire right end zone is
+X-clear from X=4,649mm to the end wall — all four tanks occupy the same X column
+in a 2×2 arrangement (two columns along Y, two tiers high).</p>
 <table>
 <thead>
 <tr>
@@ -1942,14 +1938,15 @@ along the Y (depth) axis instead.</p>
 </tr>
 </tbody>
 </table>
-<p>Y-stacking gives a 1,219mm X footprint (= IBC cage width), right-justified to the
-far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the IBCs
-fit with 25mm clearance on the zone boundary side.</p>
+<p>The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
+the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
+IBCs fit with 25mm clearance on the zone boundary side. The four-IBC configuration
+eliminates the need for separate 55-gallon waste drums.</p>
 <hr />
 <h2 id="5-ibc-stacking-frame-design-specification">5. IBC Stacking Frame — Design Specification<a class="headerlink" href="#5-ibc-stacking-frame-design-specification" title="Permanent link">&para;</a></h2>
-<p>A welded mild steel frame holds the two 600L Blue IBCs, one above the other,
-as a single unit. The frame provides lashing points for transport and a
-removable access panel for the lower IBC drain valve.</p>
+<p>A welded mild steel frame holds the 2×2 IBC stack (4× 600L IBCs total — two
+columns, two tiers each) as a single unit. The frame provides lashing points
+for transport and removable access panels for the lower IBC drain valves.</p>
 <table>
 <thead>
 <tr>
@@ -1979,8 +1976,8 @@ removable access panel for the lower IBC drain valve.</p>
 <td>25mm D-ring, 4× per tier (8× total), welded at frame corners</td>
 </tr>
 <tr>
-<td>Access gate</td>
-<td>Bolted removable panel at H=0–300mm (lower IBC drain valve access)</td>
+<td>Access gates</td>
+<td>Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2)</td>
 </tr>
 <tr>
 <td>Anti-rotation</td>
@@ -2070,108 +2067,15 @@ for road transport with full load.</p>
 </tbody>
 </table>
 <hr />
-<h2 id="6-55-gallon-drum-left-zone-placement">6. 55-Gallon Drum Left-Zone Placement<a class="headerlink" href="#6-55-gallon-drum-left-zone-placement" title="Permanent link">&para;</a></h2>
-<p>The two 55-gal drums are placed one per Yd corner of the left end zone — D-1 near
-the pinhole wall and D-2 near the far wall. The light trap drum (Yd=806–1,556mm)
-naturally divides the zone into two clear corners. Both drums share CX=330mm and
-have identical X footprints. Each drum sits on a V-groove roller dolly with 305mm
-of X-direction travel for transport mode (see Section 6.1).</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>D-1 (near, pinhole wall corner)</th>
-<th>D-2 (far, film plane corner)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Center X</td>
-<td>330mm</td>
-<td>330mm</td>
-</tr>
-<tr>
-<td>Center Yd</td>
-<td>290mm</td>
-<td>2,072mm</td>
-</tr>
-<tr>
-<td>Footprint</td>
-<td>Ø580mm (X=40–620mm, Yd=0–580mm)</td>
-<td>Ø580mm (X=40–620mm, Yd=1,782–2,362mm)</td>
-</tr>
-<tr>
-<td>Height</td>
-<td>870mm</td>
-<td>870mm</td>
-</tr>
-<tr>
-<td>Ceiling clearance</td>
-<td>2,388 − 870 = 1,518mm</td>
-<td>2,388 − 870 = 1,518mm</td>
-</tr>
-<tr>
-<td>X zone check</td>
-<td>X_right=620mm &lt; 625mm boundary (5mm margin)</td>
-<td>X_right=620mm &lt; 625mm boundary (5mm margin)</td>
-</tr>
-<tr>
-<td>Yd vs light trap</td>
-<td>Yd_hi=580mm; gap=226mm</td>
-<td>Yd_lo=1,782mm; gap=226mm</td>
-</tr>
-<tr>
-<td>Yd vs far wall</td>
-<td>—</td>
-<td>Yd_hi=2,362mm (flush with wall)</td>
-</tr>
-<tr>
-<td>Left edge vs panel</td>
-<td>X_left=40mm = corner panel inner face</td>
-<td>X_left=40mm = corner panel inner face</td>
-</tr>
-</tbody>
-</table>
-<p>Neither drum requires a stacking cradle. Access to each drum is from the side (Yd
-direction). D-1 has ~1.5m of clear floor between it and the light trap drum. D-2
-sits flush against the far wall.</p>
-<p><strong>Lashing:</strong> 25mm polyester strap (WLL ≥ 1,600kg) × 2 per drum, crossed diagonally
-over the drum top and anchored to D-rings on the dolly plate — one lash set per
-drum (4 straps total).</p>
-<h3 id="61-sliding-drum-dollies-transport-mode">6.1 Sliding Drum Dollies (Transport Mode)<a class="headerlink" href="#61-sliding-drum-dollies-transport-mode" title="Permanent link">&para;</a></h3>
-<p>Each waste drum sits on a steel dolly plate (620×620mm, 6mm A36 steel) riding on
-two parallel V-groove roller tracks. The tracks are split into two sections:</p>
-<ul>
-<li><strong>Permanent tracks</strong> (X=40–620mm): Fixed to the floor on 30mm welded steel risers. Always installed; entirely within the left end zone and do not interact with the film plane system.</li>
-<li><strong>Removable bridge sections</strong> (X=600–955mm, 355mm long): Drop-in track pieces that span over the film plane floor rail at X=625mm. Installed only during mode conversion. Each bridge has 2× M8 locating dowel pins that engage the permanent track end riser for alignment. The bridge risers straddle the HGR20 rail with 10mm clearance underneath.</li>
-</ul>
-<p>The film plane carriage must be retracted to Yd≤100mm before installing the bridge sections — this parks the HGH20CA carriage blocks clear of all dolly track positions (nearest track at Yd≈210mm, 79mm gap).</p>
-<table>
-<thead>
-<tr>
-<th>Position</th>
-<th>D-1/D-2 X range</th>
-<th>Lock mechanism</th>
-<th>Bridge sections</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Operational</td>
-<td>X=40–620mm</td>
-<td>M12 spring plunger pin (ball-nose)</td>
-<td>Not installed</td>
-</tr>
-<tr>
-<td>Transport</td>
-<td>X=345–925mm</td>
-<td>M12 spring plunger pin (ball-nose)</td>
-<td>Installed during slide, removed after</td>
-</tr>
-</tbody>
-</table>
-<p>Rolling force: ~11N (2.5 lbf) — single-person push with one hand. Four bridge sections total (~2kg each), stowed behind IBC column when not in use.</p>
-<h3 id="62-stepped-panel-and-sliding-carriage-transport-mode">6.2 Stepped Panel and Sliding Carriage (Transport Mode)<a class="headerlink" href="#62-stepped-panel-and-sliding-carriage-transport-mode" title="Permanent link">&para;</a></h3>
+<h2 id="6-left-end-zone-simplified-layout-rev-5">6. Left End Zone — Simplified Layout (Rev 5)<a class="headerlink" href="#6-left-end-zone-simplified-layout-rev-5" title="Permanent link">&para;</a></h2>
+<p>The two 55-gallon waste drums have been eliminated from the left end zone. Waste
+collection is now handled by IBC-4 (600L, sealed) in the right end zone 2×2 stack.
+The left end zone contains only the light trap drum and the hinged panel — no
+floor-mounted equipment, no dolly tracks, no bridge sections.</p>
+<p>This elimination removes all V-groove roller tracks (permanent and bridge sections)
+from the container floor, and frees the full container width (2,362mm) as
+unobstructed egress at the cargo door end.</p>
+<h3 id="61-stepped-panel-and-sliding-carriage-transport-mode">6.1 Stepped Panel and Sliding Carriage (Transport Mode)<a class="headerlink" href="#61-stepped-panel-and-sliding-carriage-transport-mode" title="Permanent link">&para;</a></h3>
 <p>The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756
 and Yd=1,606–2,362) and 120mm thick at the center zone (Yd=756–1,606) where the
 light trap drum is mounted. The entire panel slides 300mm in the X direction on
@@ -2207,7 +2111,7 @@ frame.</p>
 <p>A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing.
 The panel seals against this frame using the existing Southco C2-33 cam latch and
 20mm EPDM gasket design — the sliding mechanism is transparent to the seal.</p>
-<h4 id="621-sliding-panel-light-seal-design">6.2.1 Sliding Panel Light Seal Design<a class="headerlink" href="#621-sliding-panel-light-seal-design" title="Permanent link">&para;</a></h4>
+<h4 id="611-sliding-panel-light-seal-design">6.1.1 Sliding Panel Light Seal Design<a class="headerlink" href="#611-sliding-panel-light-seal-design" title="Permanent link">&para;</a></h4>
 <p>The sliding mechanism introduces five potential light ingress paths that must be
 sealed when the panel is in the operational (camera-ready) position.</p>
 <table>
@@ -2252,14 +2156,11 @@ all seals engaged). Any visible light points are marked with gaffer tape for
 re-sealing. The doubled brush strips at the carriage beam slots are the most
 critical — they must be inspected for wear every 20 mode conversions and
 replaced annually.</p>
-<p><strong>Mode conversion workflow (single person, 15–20 minutes):</strong></p>
+<p><strong>Mode conversion workflow (single person, ~5 minutes — panel slide only):</strong></p>
 <ol>
 <li>Release cam latches, swing panel open 180°</li>
-<li>Unlash waste drums, slide each drum inward 305mm (pin engages)</li>
-<li>Swing panel closed (don't latch)</li>
 <li>Release toggle clamps, slide panel inward 300mm</li>
 <li>Lock panel at transport position, close container doors</li>
-<li>Relash drums for transport</li>
 </ol>
 <hr />
 <h2 id="7-plumbing-and-electrical-pinhole-wall-routing">7. Plumbing and Electrical — Pinhole Wall Routing<a class="headerlink" href="#7-plumbing-and-electrical-pinhole-wall-routing" title="Permanent link">&para;</a></h2>
@@ -2274,7 +2175,7 @@ full container length on the pinhole wall face. Branch drops at each circuit
 termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire.</p>
 <p><strong>Solar inlet + shore power:</strong> NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
+pinhole wall at X=2,399mm (pinhole side), H=400mm.</p>
 <hr />
 <h2 id="8-water-capacity-summary">8. Water Capacity Summary<a class="headerlink" href="#8-water-capacity-summary" title="Permanent link">&para;</a></h2>
 <table>
@@ -2300,24 +2201,26 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <td>Recycled wash / fix</td>
 </tr>
 <tr>
-<td>55-gal drum</td>
-<td>2</td>
-<td>416L</td>
+<td>600L Waste IBC</td>
+<td>1</td>
+<td>600L</td>
 <td>Waste (sealed)</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
 <td>—</td>
-<td><strong>2,216L</strong></td>
+<td><strong>2,400L</strong></td>
 <td>—</td>
 </tr>
 </tbody>
 </table>
-<p>2,216L supports <strong>7–8 prints per resupply</strong> with 40% water recycling.</p>
+<p>2,400L supports <strong>8–9 prints per resupply</strong> with 40% water recycling.</p>
 <p>See <a href="../water-system-report/">Processing System Report</a> for full water circuit design.</p>
 <hr />
 <h2 id="9-egress-safety-assessment">9. Egress Safety Assessment<a class="headerlink" href="#9-egress-safety-assessment" title="Permanent link">&para;</a></h2>
-<p>When the hinged panel is opened 180° from the inside, the light trap drum (mounted in the panel center zone, Yd=806–1,556mm) swings outward with the panel, leaving the passage between the two waste drums fully clear.</p>
+<p>When the hinged panel is opened 180° from the inside, the light trap drum (mounted
+in the panel center zone, Yd=806–1,556mm) swings outward with the panel. With the
+waste drums eliminated (rev 5), the entire left end zone floor is clear.</p>
 <h3 id="91-egress-gap">9.1 Egress Gap<a class="headerlink" href="#91-egress-gap" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2328,24 +2231,16 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 </thead>
 <tbody>
 <tr>
-<td>Near drum D-1 far edge (Yd)</td>
-<td>580mm</td>
-</tr>
-<tr>
-<td>Far drum D-2 near edge (Yd)</td>
-<td>1,782mm</td>
-</tr>
-<tr>
 <td><strong>Clear passage width</strong></td>
-<td><strong>1,202mm (47.3")</strong></td>
+<td><strong>2,362mm (93") — full container width</strong></td>
 </tr>
 <tr>
 <td>At door frame (X=0)</td>
-<td>~2,262mm (full frame opening)</td>
+<td>~2,362mm (full frame opening)</td>
 </tr>
 <tr>
-<td>Passage narrows at X=40–620mm only</td>
-<td>1,202mm between drums</td>
+<td>Obstructions in egress path</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -2355,7 +2250,9 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <li>Standard doorway minimum (IBC/IRC): 762mm (30")</li>
 <li>Emergency egress minimum: 610mm (24")</li>
 </ul>
-<p>The 1,202mm passage exceeds all minimums by more than 50%. A person can walk face-forward through the gap without turning sideways. Waste drums do not need to slide for egress.</p>
+<p>The 2,362mm passage exceeds all minimums by more than 3×. No equipment narrows
+the egress path at any point. The elimination of waste drums from the left end
+zone provides completely unobstructed access to the cargo doors.</p>
 <h3 id="92-hinge-door-swing-clearance">9.2 Hinge Door Swing Clearance<a class="headerlink" href="#92-hinge-door-swing-clearance" title="Permanent link">&para;</a></h3>
 <p>The panel swings 180° outward (exterior, negative X). All interior equipment is clear of the swing arc:</p>
 <table>
@@ -2367,16 +2264,6 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Waste drum D-1</td>
-<td>X=40–620, Yd=0–580 (interior)</td>
-<td>No — panel swings exterior</td>
-</tr>
-<tr>
-<td>Waste drum D-2</td>
-<td>X=40–620, Yd=1,782–2,362 (interior)</td>
-<td>No — panel swings exterior</td>
-</tr>
 <tr>
 <td>Light trap drum</td>
 <td>Panel-mounted (center zone)</td>
@@ -2395,7 +2282,7 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <tr>
 <td>Evap cooler</td>
 <td>X=930–1,530, Yd=0–350</td>
-<td>No — 310mm inboard of drum zone</td>
+<td>No — far inboard</td>
 </tr>
 <tr>
 <td>Electrical panel</td>
@@ -2419,8 +2306,8 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 </tr>
 </tbody>
 </table>
-<p>The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. At closest approach, the drum body reaches minimum Yd ≈ 806mm — never overlapping with either waste drum (Yd=0–580 and Yd=1,782–2,362).</p>
-<p><strong>Conclusion:</strong> No components require relocation. The existing layout provides safe single-person egress and full swing clearance at the cargo door end.</p>
+<p>The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.</p>
+<p><strong>Conclusion:</strong> No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.</p>
 <hr />
 <h2 id="10-summary">10. Summary<a class="headerlink" href="#10-summary" title="Permanent link">&para;</a></h2>
 <table>
@@ -2435,47 +2322,52 @@ pinhole wall at X=2,637mm (pinhole side), H=400mm.</p>
 <tr>
 <td>Equipment zone concept</td>
 <td>Yd=0–1,220mm depth band</td>
-<td>X=0–625mm and X=4,649–5,893mm end zones</td>
+<td>X=0–150mm and X=4,649–5,893mm end zones</td>
 </tr>
 <tr>
 <td>Pinhole position</td>
 <td>X=2,946mm</td>
-<td><strong>X=2,637mm</strong> (centered on active FP)</td>
+<td><strong>X=2,399mm</strong> (centered on active FP)</td>
 </tr>
 <tr>
 <td>Active film plane width</td>
 <td>5,893mm</td>
-<td><strong>4,024mm</strong> (X=625–4,649mm)</td>
+<td><strong>4,499mm</strong> (X=150–4,649mm)</td>
 </tr>
 <tr>
 <td>Rail positions</td>
 <td>X=200mm, X=5,693mm</td>
-<td><strong>X=625mm, X=4,649mm</strong></td>
+<td><strong>X=150mm, X=4,649mm</strong></td>
 </tr>
 <tr>
 <td>Rail span</td>
 <td>5,493mm</td>
-<td><strong>4,024mm</strong></td>
+<td><strong>4,499mm</strong></td>
 </tr>
 <tr>
 <td>Max swing angle</td>
 <td>20.3°</td>
-<td><strong>28.3°</strong></td>
+<td><strong>25.7°</strong></td>
 </tr>
 <tr>
-<td>Blue IBCs</td>
+<td>Blue IBCs (×2)</td>
 <td>Left side, X=100–1,319mm</td>
-<td>Right end zone, X=4,674mm, Y-stacked</td>
+<td>Right end zone, X=4,674mm, 2×2 stack top tier</td>
 </tr>
 <tr>
 <td>Brown IBC</td>
 <td>Right side, X=4,674mm</td>
-<td>Right end zone, X=4,674mm, Y behind Blue</td>
+<td>Right end zone, X=4,674mm, 2×2 stack bottom near</td>
+</tr>
+<tr>
+<td>Waste IBC</td>
+<td>— (55-gal drums)</td>
+<td><strong>Right end zone, X=4,674mm, 2×2 stack bottom far</strong></td>
 </tr>
 <tr>
 <td>55-gal drums</td>
 <td>Right side, X=3,900mm</td>
-<td><strong>Left end zone, CX=330mm, D-1 Yd=0–580mm, D-2 Yd=1,782–2,362mm</strong></td>
+<td><strong>Eliminated — waste via IBC-4 in right end zone</strong></td>
 </tr>
 <tr>
 <td>Evap cooler</td>

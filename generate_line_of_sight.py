@@ -52,7 +52,7 @@ from tbs_constants import (
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
     C_LT_DRUM, C_WASTE_DRUM, C_EVAP, C_ELEC, C_BATT, C_PUMP,
-    C_BLUE_IBC, C_BROWN_IBC,
+    C_BLUE_IBC, C_BROWN_IBC, C_WALL,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -126,6 +126,12 @@ EQUIPMENT = [
          x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_600,
          color=C_BROWN_IBC, zone="right"),
+
+    # OPTICAL ZONE — processing tray on floor
+    dict(name="Processing tray (304 SS)",
+         x=FP_X_L + 20, yd=60, w=FP_X_R - FP_X_L - 40, d=2200,
+         h_bot=0, h_top=50,
+         color=C_WALL, zone="optical", skip_cone_check=True),
 ]
 
 # ── Cone check functions ──────────────────────────────────────────────────────
@@ -434,9 +440,10 @@ fig.text(0.5, 0.955,
          "Amber = optical cone  |  RED border = cone intersection  |  GREEN border = clear",
          ha="center", va="top", fontsize=FS_SM, color=C_DIM)
 
-# Determine flagged items
-plan_flags = [eq["name"] for eq in EQUIPMENT if equipment_in_plan_cone(eq)]
-elev_flags = [eq["name"] for eq in EQUIPMENT if equipment_in_elevation_cone(eq)]
+# Determine flagged items (skip items marked as floor-level fixtures)
+checkable = [eq for eq in EQUIPMENT if not eq.get("skip_cone_check")]
+plan_flags = [eq["name"] for eq in checkable if equipment_in_plan_cone(eq)]
+elev_flags = [eq["name"] for eq in checkable if equipment_in_elevation_cone(eq)]
 both_flags = [n for n in plan_flags if n in elev_flags]
 
 if both_flags:

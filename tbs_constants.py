@@ -42,6 +42,13 @@ Redesign basis (2026-05-06 rev 5):
   IBCs loaded empty via cargo doors; filled/drained remotely through 2" NPT
   bulkhead fittings in the far end wall (X=C_LEN face).
   Left end zone freed up (light trap drum remains in hinge panel).
+
+Redesign basis (2026-05-06 rev 6):
+  Film plane extended left from X=625mm to X=150mm (30mm clearance from panel
+  center inner face at X=120mm).  Pinhole recentered on wider active plane.
+  Width increases from 4,024mm to 4,499mm (+11.8%).  Active area from 9.61 m²
+  to 10.74 m² (103→116 sqft).  Max swing decreases from 28.3° to 25.7°
+  (wider rail span, same Y travel).  Left end zone shrinks to X=0–150mm.
 """
 
 import math
@@ -53,23 +60,23 @@ C_HGT  = 2388   # interior height Z (mm)
 
 # ── Film plane ────────────────────────────────────────────────────────────────
 FP_H     = 2388   # film plane height (mm)          [unchanged]
-FP_X_L   = 625    # film plane left edge X (mm)     [rev3: was 1,100; set by drum right edge + 25mm]
+FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4,019 → wider right zone]
-FP_W     = FP_X_R - FP_X_L   # = 4,024 mm          [rev3: was 3,549]
+FP_W     = FP_X_R - FP_X_L   # = 4,499 mm          [rev6: was 4,024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
 # ── Pinhole (recentred on new film plane) ─────────────────────────────────────
-PH_X   = FP_X_L + FP_W // 2   # = 2,637 mm  [rev3: was 2,874]
+PH_X   = FP_X_L + FP_W // 2   # = 2,399 mm  [rev6: was 2,637]
 PH_H   = 1194                  # height (mm) [unchanged]
 PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
 PH_F   = C_WID                 # focal length = container width [unchanged]
 PH_FNO = round(PH_F / PH_D)   # f/1088 [unchanged]
 
 # ── Film plane rails ──────────────────────────────────────────────────────────
-RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev3: 625mm; was 1,100]
+RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
 RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4,019 → now 4,649]
-RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4,024 mm  [rev3: was 3,549]
+RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4,499 mm  [rev6: was 4,024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # floor/ceiling offset (mm)  [unchanged]
 
@@ -78,10 +85,10 @@ MAX_TILT_DEG  = math.degrees(math.atan((FP_Y - FP_Y_MIN) / FP_H))
 # = arctan(2162/2388) = 42.1°  [unchanged]
 
 MAX_SWING_DEG = math.degrees(math.atan((FP_Y - FP_Y_MIN) / RAIL_SPAN))
-# = arctan(2162/4024) = 28.3°  [rev3: was 31.4° with 3,549mm span]
+# = arctan(2162/4499) = 25.7°  [rev6: was 28.3° with 4,024mm span]
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
-ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 625 mm)  [rev3: was 1,100]
+ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150 mm)  [rev6: was 625]
 ZONE_R_START = FP_X_R    # right zone left boundary X  (= 4,649 mm) [was 4,019]
 
 # ── Optical cone helper ───────────────────────────────────────────────────────
@@ -109,10 +116,10 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # clears the container exterior face, allowing ISO cargo doors to close.
 PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
 
-# ── Left end zone (X = 0–625 mm, shadow-free at all depths) ──────────────────
-# Light trap drum in hinge panel center zone.  Waste drums removed in rev 5
-# (replaced by waste IBC in right end zone).  Left zone now contains only
-# the light trap drum and is available for future use (e.g. film prep area).
+# ── Left end zone (X = 0–150 mm, shadow-free at all depths) ──────────────────
+# Light trap drum in hinge panel center zone.  Zone shrunk in rev 6 as film
+# plane extended left from X=625 to X=150mm.  Only the panel thickness
+# (40/120mm) occupies this zone now.
 DRUM_CX    = 0       # light trap drum center X (mm) [unchanged]
 DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
@@ -127,17 +134,17 @@ EVAP_D     = 350     # evap cooler depth Y (mm)        [unchanged]
 EVAP_H     = 800     # evap cooler height (mm)         [unchanged]
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
-EP_X       = 2050    # electrical panel left edge X (mm)
+EP_X       = 2010    # electrical panel left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
 EP_W       = 300     # electrical panel width (mm)
 EP_H_LO    = 900     # electrical panel bottom H (mm)
 EP_H_HI    = 1500    # electrical panel top H (mm)
 
-BA_X       = 2050    # battery bank left edge X (mm)
-BA_W       = 500     # battery bank width (mm)
+BA_X       = 1810    # battery bank left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
+BA_W       = 500     # battery bank width (mm)  → right edge 2310, clears cone left (2319)
 BA_H_LO    = 100     # battery bank bottom H (mm) — matches RAIL_OFF floor offset
 BA_H_HI    = 600     # battery bank top H (mm)
 
-PUMP_X     = 2600    # pump manifold left edge X (mm) — right of battery right edge (2550) + 50mm gap
+PUMP_X     = 2500    # pump manifold left edge X (mm) — right of cone right boundary (2479) + 21mm gap
 PUMP_W     = 300     # pump manifold width (mm)
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
@@ -166,9 +173,9 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # Stack height: 2 × 1,010 = 2,020mm  (ceiling 2,388mm → 368mm headroom ✓)
 
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
-PROC_TRAY_X_L  = FP_X_L + 20    # = 645mm — 20mm clearance from left rail
+PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]
 PROC_TRAY_X_R  = FP_X_R - 20    # = 4,629mm — 20mm clearance from right rail
-PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 3,984mm
+PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4,459mm [rev6: was 3,984]
 PROC_TRAY_D    = 2200            # depth in Y direction (mm)
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over panel length for drainage (mm), 1:200

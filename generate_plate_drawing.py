@@ -477,7 +477,7 @@ ax2.set_ylim(0, 500)
 
 # Border
 draw_rect(ax2, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
-draw_rect(ax2, 5, 35, 690, 50, lw=1.0, color='black', fc='#F0F0F0')
+draw_rect(ax2, 5, 5, 690, 80, lw=1.0, color='black', fc='#F0F0F0')
 draw_rect(ax2, 480, 5, 215, 80, lw=1.0, color='black', fc='#F5F5F5')
 
 # Title block (shared)

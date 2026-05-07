@@ -641,14 +641,15 @@ for drum_yd, lbl_va in [(DRUM_LZ_YD, "bottom"), (DRUM_FZ_YD, "top")]:
                  arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=0.8,
                                  mutation_scale=8), zorder=5)
 
-# Spray bar along top wall
-pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)
-ax2.text(8.25, 4.88, "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
-         ha="center", fontsize=7, color=C_BLUE)
-
 # Processing tray (304 SS, two panels, 50mm rim)
 TRAY_X0 = (FP_X_L + 20) * SX   # left edge in drawing units
 TRAY_X1 = (FP_X_R - 20) * SX   # right edge in drawing units
+
+# Spray bar along top wall — aligned with processing tray
+pipe(ax2, TRAY_X0, 4.75, TRAY_X1, 4.75, C_BLUE, lw=3)
+ax2.text((TRAY_X0 + TRAY_X1) / 2, 4.88,
+         "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
+         ha="center", fontsize=7, color=C_BLUE)
 TRAY_Y0 = 60 * SY              # starts 60mm from pinhole wall
 TRAY_DY = 2200 * SY            # depth in drawing units
 ax2.add_patch(plt.Rectangle((TRAY_X0, TRAY_Y0), TRAY_X1 - TRAY_X0, TRAY_DY,

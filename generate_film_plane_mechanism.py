@@ -279,7 +279,7 @@ def sheet1():
 
     # Legend box — right side, above title block
     leg_x = L + 200
-    leg_y = 200
+    leg_y = -25
     ax.text(leg_x + 500, leg_y + 160, "LEGEND", color=WHITE,
             fontsize=8, fontweight="bold", ha="center", **FONT)
     for i, (name, d_TL, d_TR, d_BL, d_BR, col, ls) in enumerate(CONFIGS):

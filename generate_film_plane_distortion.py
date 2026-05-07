@@ -19,14 +19,15 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os
-from tbs_constants import svg_path, SVG_DIR
+from tbs_constants import svg_path, SVG_DIR, FP_W, FP_H, C_WID, FP_Y_MIN
+from tbs_title_block import title_block
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
-FILM_L = 3549    # film plane width (mm) [rev 2: was 2920, was 5893]
-FILM_H = 2388    # film plane height (container height)
-F_NOM  = 2362    # nominal focal length (container width = optical axis)
-D_NEAR = 100     # closest carriage position
-D_FAR  = F_NOM - 100   # = 2262
+FILM_L = FP_W    # film plane width (mm) — from tbs_constants (4,499mm rev 6)
+FILM_H = FP_H    # film plane height (container height)
+F_NOM  = C_WID   # = 2,362mm — focal length (container interior depth)
+D_NEAR = FP_Y_MIN       # = 100mm — closest carriage position
+D_FAR  = F_NOM - D_NEAR # = 2262mm
 
 # Cyanotype palette for renders
 PRU_INK   = np.array([0.031, 0.102, 0.196])
@@ -292,12 +293,14 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
         ax.set_title(scene_name, color="#222222", fontsize=8,
                      fontfamily="monospace", pad=4)
 
-    fig.suptitle(f"TBS-001 FILM PLANE DISTORTION  ·  {label}: {name}",
-                 color="#111111", fontsize=11, fontfamily="monospace",
-                 fontweight="bold", y=1.01)
     fig.tight_layout(pad=0.6)
-    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+    ax_tb.axis("off")
+    title_block(ax_tb, f"{label}",
+                drawing_title="FILM PLANE DISTORTION",
+                subtitle=f"{name} — {desc}",
+                scale_note="Ray-traced projection",
+                doc_id="TBS-FM01 · Distortion Renders")
     fname = f"diagrams/film-plane-distortion-{label.lower()}.png"
     os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(fname, dpi=120, bbox_inches="tight",
@@ -337,13 +340,14 @@ def render_summary():
         axes[r][c].axis("off")
         axes[r][c].set_facecolor("white")
 
-    fig.suptitle(
-        "TBS-001  ·  FILM PLANE DISTORTION SUMMARY  ·  CHECKER SCENE  ·  D = 8,000 mm",
-        color="#111111", fontsize=13, fontfamily="monospace",
-        fontweight="bold", y=1.005)
     fig.tight_layout(pad=0.5)
-    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-             ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+    ax_tb.axis("off")
+    title_block(ax_tb, "SUMMARY",
+                drawing_title="FILM PLANE DISTORTION",
+                subtitle="All configurations — checker scene — D = 8,000 mm",
+                scale_note="Ray-traced projection",
+                doc_id="TBS-FM01 · Distortion Renders")
     fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,
                 bbox_inches="tight", facecolor="white")
     fig.savefig(svg_path("diagrams/film-plane-distortion-summary.png"), bbox_inches="tight", facecolor="white")

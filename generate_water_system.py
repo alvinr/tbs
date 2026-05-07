@@ -3,13 +3,15 @@
 # © 2026 Alvin Richards
 """
 generate_water_system.py
-Generates two engineering diagrams for the cyanotype processing water system:
+Generates three engineering diagrams for the cyanotype processing water system:
   Sheet 1 — System flow schematic (three-system P&ID overview)
   Sheet 2 — Tank & filter skid layout plan (dimensioned arrangement)
+  Sheet 3 — Processing tray drainage plan (slope direction, flow arrows, drain)
 
 Output:
   water-system-sheet1.png  (1800 x 1200 px, 150 dpi)
   water-system-sheet2.png  (1800 x 1200 px, 150 dpi)
+  water-system-sheet3.png  (1800 x 1200 px, 150 dpi)
 """
 
 import math
@@ -23,13 +25,17 @@ from matplotlib.lines import Line2D
 from tbs_constants import (
     C_LEN, C_WID, IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
     ZONE_L_END, ZONE_R_START,
-    FP_X_L, FP_X_R,
+    FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
-    PROC_TRAY_X_L, PROC_TRAY_X_R,
+    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
+    PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH,
+    PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
+    WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, C_WALL,
     svg_path, SVG_DIR,
 )
 import os
+from tbs_title_block import title_block
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -156,12 +162,11 @@ fig1.patch.set_facecolor("#F5F5F0")
 
 # ── Title block ───────────────────────────────────────────────────────────────
 ax1.add_patch(plt.Rectangle((0, 0), 18, 12, fc="#F5F5F0", ec=C_FRAME, lw=2))
-ax1.add_patch(plt.Rectangle((0, 0), 18, 1.1, fc="white", ec=C_FRAME, lw=1.5))
-ax1.text(9, 0.65, "GIANT PINHOLE CAMERA — CYANOTYPE PROCESSING WATER SYSTEM",
-         ha="center", va="center", fontsize=13, fontweight="bold", color=C_TITLE)
-ax1.text(9, 0.25, "SHEET 1 OF 2 — SYSTEM FLOW SCHEMATIC (P&ID)   |   "
-         "SCALE: NOT TO SCALE   |   REV 1.0",
-         ha="center", va="center", fontsize=8.5, color="#444444")
+title_block(ax1, "SHEET 1 OF 3",
+            drawing_title="WATER SYSTEM",
+            subtitle="System flow schematic (P&ID)",
+            scale_note="Not to scale",
+            doc_id="TBS-001 · Water System")
 
 # ── Zone fills ────────────────────────────────────────────────────────────────
 # Blue zone
@@ -494,11 +499,11 @@ ax2.set_facecolor("#F5F5F0")
 ax2.axis("off")
 
 # ── Title block ───────────────────────────────────────────────────────────────
-fig2.text(0.5, 0.97, "TBS-001 — WATER SYSTEM EQUIPMENT LAYOUT",
-          ha="center", fontsize=13, fontweight="bold", color=C_TITLE)
-fig2.text(0.5, 0.94, "SHEET 2 OF 2 — PLAN VIEW (INSIDE CONTAINER)  |  "
-          "SCALE: 1:25 (APPROX)  |  ALL DIMS IN MILLIMETRES",
-          ha="center", fontsize=9, color="#444444")
+title_block(ax2, "SHEET 2 OF 3",
+            drawing_title="WATER SYSTEM EQUIPMENT LAYOUT",
+            subtitle="Plan view (inside container)",
+            scale_note="1:25 (approx)",
+            doc_id="TBS-001 · Water System")
 
 # ── Plan view ─────────────────────────────────────────────────────────────────
 ax2.set_xlim(-0.5, 12.5)
@@ -682,4 +687,251 @@ fig2.savefig("diagrams/water-system-sheet2.png", dpi=150, bbox_inches="tight",
 fig2.savefig(svg_path("diagrams/water-system-sheet2.png"), bbox_inches="tight", facecolor=fig2.get_facecolor())
 plt.close(fig2)
 print("Sheet 2 written → diagrams/water-system-sheet2.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 3 — PROCESSING TRAY DRAINAGE PLAN (water flow direction)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+fig3, ax3 = plt.subplots(1, 1, figsize=(18, 12))
+fig3.patch.set_facecolor("#F5F5F0")
+ax3.set_facecolor("#F5F5F0")
+ax3.axis("off")
+
+# ── Title block ───────────────────────────────────────────────────────────────
+title_block(ax3, "SHEET 3 OF 3",
+            drawing_title="PROCESSING TRAY DRAINAGE PLAN",
+            subtitle="Plan view (water flow direction)",
+            scale_note="~1:20",
+            doc_id="TBS-001 · Water System")
+
+# ── Scale: map mm to drawing units ──────────────────────────────────────────
+# Tray is 4,459 × 2,200mm.  Fit into a ~14 × 7 drawing region.
+TRAY_DRAW_W = 13.0
+TRAY_DRAW_H = TRAY_DRAW_W * PROC_TRAY_D / PROC_TRAY_W  # maintain aspect
+
+# Origin offset (drawing units) — tray lower-left corner
+OX = 1.5
+OY = 1.8
+
+def s3x(mm):
+    """Convert tray-local X (mm from tray left edge) to drawing units."""
+    return OX + mm * TRAY_DRAW_W / PROC_TRAY_W
+
+def s3y(mm):
+    """Convert tray-local Yd (mm from tray near edge) to drawing units."""
+    return OY + mm * TRAY_DRAW_H / PROC_TRAY_D
+
+ax3.set_xlim(-0.3, OX + TRAY_DRAW_W + 2.5)
+ax3.set_ylim(-0.5, OY + TRAY_DRAW_H + 1.8)
+ax3.set_aspect("equal")
+
+# ── Tray outline ─────────────────────────────────────────────────────────────
+ax3.add_patch(plt.Rectangle((OX, OY), TRAY_DRAW_W, TRAY_DRAW_H,
+              fc="#E8F5E9", ec="#388E3C", lw=2.5, zorder=1))
+
+# Rim shading (inner border)
+RIM_DU = PROC_TRAY_RIM * TRAY_DRAW_W / PROC_TRAY_W  # rim in drawing units
+ax3.add_patch(plt.Rectangle((OX + RIM_DU, OY + RIM_DU),
+              TRAY_DRAW_W - 2*RIM_DU, TRAY_DRAW_H - 2*RIM_DU,
+              fc="#C8E6C9", ec="none", zorder=1, alpha=0.5))
+
+# Label corners with elevation annotations (high/low)
+# Low point: near rim (Yd=0), X-center
+# High corners: far rim (Yd=2200), X extremes
+ax3.text(s3x(PROC_TRAY_W/2), OY - 0.25, "LOW EDGE (Yd = 80mm)",
+         ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
+ax3.text(s3x(PROC_TRAY_W/2), OY + TRAY_DRAW_H + 0.25,
+         "HIGH EDGE (Yd = 2,280mm)",
+         ha="center", fontsize=7.5, fontweight="bold", color="#1565C0")
+
+ax3.text(OX - 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nCORNER",
+         ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
+ax3.text(OX + TRAY_DRAW_W + 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nCORNER",
+         ha="left", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
+
+# ── Slope arrows (flow direction) ───────────────────────────────────────────
+# Water flows: (1) toward Yd=0 (near wall) and (2) toward X-center
+# Draw a grid of arrows showing combined flow direction
+
+ARROW_COLOR = "#1976D2"
+ARROW_ALPHA = 0.7
+
+# Grid of flow arrows across the tray interior
+n_cols = 9
+n_rows = 5
+for i in range(n_cols):
+    for j in range(n_rows):
+        # Position in tray-local mm
+        ax_mm = PROC_TRAY_W * (i + 0.5) / n_cols
+        ay_mm = PROC_TRAY_D * (j + 0.5) / n_rows
+
+        # Flow direction: toward (PROC_TRAY_W/2, 0) — the drain point
+        # X component: toward center
+        dx_mm = (PROC_TRAY_W / 2 - ax_mm)
+        # Yd component: toward near wall (Yd=0)
+        dy_mm = -ay_mm
+
+        # Normalize and scale to fixed arrow length
+        mag = math.sqrt(dx_mm**2 + dy_mm**2)
+        if mag < 1:
+            continue
+        arrow_len = 0.35  # drawing units
+        dx_du = dx_mm / mag * arrow_len
+        dy_du = dy_mm / mag * arrow_len
+
+        ax_du = s3x(ax_mm)
+        ay_du = s3y(ay_mm)
+
+        ax3.annotate("", xy=(ax_du + dx_du, ay_du + dy_du),
+                     xytext=(ax_du - dx_du * 0.3, ay_du - dy_du * 0.3),
+                     arrowprops=dict(arrowstyle="-|>", color=ARROW_COLOR,
+                                     lw=1.5, mutation_scale=10, alpha=ARROW_ALPHA),
+                     zorder=4)
+
+# ── Drain symbol (circle + crosshair) ───────────────────────────────────────
+# Drain is at tray-local X = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L, Yd = 0 (near rim)
+drain_local_x = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
+drain_local_yd = PROC_TRAY_DRAIN_YD - PROC_TRAY_YD_NEAR
+
+drain_dx = s3x(drain_local_x)
+drain_dy = s3y(drain_local_yd)
+DRAIN_R = 0.3
+
+drain_circle = plt.Circle((drain_dx, drain_dy), DRAIN_R,
+                           fc="white", ec="#D32F2F", lw=2.5, zorder=6)
+ax3.add_patch(drain_circle)
+ax3.plot([drain_dx - DRAIN_R*0.7, drain_dx + DRAIN_R*0.7],
+         [drain_dy, drain_dy], color="#D32F2F", lw=1.8, zorder=7)
+ax3.plot([drain_dx, drain_dx],
+         [drain_dy - DRAIN_R*0.7, drain_dy + DRAIN_R*0.7],
+         color="#D32F2F", lw=1.8, zorder=7)
+
+# Drain label
+ax3.text(drain_dx, drain_dy - 0.5, "1\" NPT DRAIN\n(TO 3W-DV-02)",
+         ha="center", va="top", fontsize=7.5, fontweight="bold",
+         color="#D32F2F", zorder=8)
+ax3.text(drain_dx, drain_dy + 0.45,
+         f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}",
+         ha="center", va="bottom", fontsize=6.5, color="#D32F2F", zorder=8)
+
+# ── Slope annotations ────────────────────────────────────────────────────────
+# Yd-axis slope: 1:200 over 2,200mm = 11mm fall
+yd_fall = PROC_TRAY_D * PROC_TRAY_PITCH / PROC_TRAY_D  # = PROC_TRAY_PITCH mm
+x_half = PROC_TRAY_W / 2
+x_fall = x_half / 200  # fall from each X extreme to center at 1:200
+
+# Right-side slope annotation
+ann_x = s3x(PROC_TRAY_W * 0.82)
+ann_y = s3y(PROC_TRAY_D * 0.5)
+ax3.text(ann_x, ann_y,
+         f"X-SLOPE: 1:200\n({x_fall:.1f}mm fall\nover {x_half:,.0f}mm)",
+         ha="center", va="center", fontsize=7, color="#0D47A1",
+         bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
+         zorder=8)
+
+# Left-side slope annotation
+ann_x2 = s3x(PROC_TRAY_W * 0.18)
+ax3.text(ann_x2, ann_y,
+         f"X-SLOPE: 1:200\n({x_fall:.1f}mm fall\nover {x_half:,.0f}mm)",
+         ha="center", va="center", fontsize=7, color="#0D47A1",
+         bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
+         zorder=8)
+
+# Yd-axis slope annotation (center-top area)
+ann_y2 = s3y(PROC_TRAY_D * 0.78)
+ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
+         f"Yd-SLOPE: 1:200\n({PROC_TRAY_PITCH}mm fall over {PROC_TRAY_D:,}mm)",
+         ha="center", va="center", fontsize=7, color="#0D47A1",
+         bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
+         zorder=8)
+
+# ── Dimensions ───────────────────────────────────────────────────────────────
+# Tray width (X direction)
+ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
+             xytext=(OX, OY + TRAY_DRAW_H + 0.6),
+             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
+                             mutation_scale=10))
+ax3.text(OX + TRAY_DRAW_W/2, OY + TRAY_DRAW_H + 0.75,
+         f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})",
+         ha="center", fontsize=7, color=C_DIM)
+
+# Tray depth (Yd direction)
+ax3.annotate("", xy=(OX - 0.5, OY + TRAY_DRAW_H),
+             xytext=(OX - 0.5, OY),
+             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
+                             mutation_scale=10))
+ax3.text(OX - 0.65, OY + TRAY_DRAW_H/2,
+         f"{PROC_TRAY_D:,}mm\n(Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})",
+         ha="right", va="center", fontsize=7, color=C_DIM, rotation=90)
+
+# Drain X position dimension
+ax3.annotate("", xy=(drain_dx, OY - 0.25),
+             xytext=(OX, OY - 0.25),
+             arrowprops=dict(arrowstyle="<->", color="#D32F2F", lw=1.0,
+                             mutation_scale=8))
+ax3.text((OX + drain_dx)/2, OY - 0.4,
+         f"{drain_local_x:,}mm from left edge",
+         ha="center", fontsize=6.5, color="#D32F2F")
+
+# ── Walkway positions (dashed outlines) ──────────────────────────────────────
+WK_COLOR = "#8D6E63"
+WK_ALPHA_L = 0.4
+
+# Near walkway (overlaps tray near edge)
+near_wk_y0 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD)  # Yd=0 in container coords
+near_wk_y1 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD + WALKWAY_W)
+ax3.add_patch(plt.Rectangle((OX, near_wk_y0),
+              TRAY_DRAW_W, near_wk_y1 - near_wk_y0,
+              fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
+              alpha=WK_ALPHA_L, hatch="//", zorder=2))
+ax3.text(OX + TRAY_DRAW_W + 0.15, (near_wk_y0 + near_wk_y1)/2,
+         "NEAR\nWALKWAY\n(400mm)",
+         ha="left", va="center", fontsize=6, color=WK_COLOR)
+
+# Far walkway
+far_wk_yd_local = WALKWAY_FAR_YD - PROC_TRAY_YD_NEAR
+far_wk_y0 = s3y(far_wk_yd_local)
+far_wk_y1 = s3y(far_wk_yd_local + WALKWAY_W)
+ax3.add_patch(plt.Rectangle((OX, far_wk_y0),
+              TRAY_DRAW_W, far_wk_y1 - far_wk_y0,
+              fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
+              alpha=WK_ALPHA_L, hatch="//", zorder=2))
+ax3.text(OX + TRAY_DRAW_W + 0.15, (far_wk_y0 + far_wk_y1)/2,
+         "FAR\nWALKWAY\n(400mm)",
+         ha="left", va="center", fontsize=6, color=WK_COLOR)
+
+# ── Pipe run from drain ──────────────────────────────────────────────────────
+# 1" HDPE runs along near wall (Yd≈60) to diverter valve 3W-DV-02
+pipe_y = drain_dy - 0.8
+ax3.plot([drain_dx, drain_dx], [drain_dy - DRAIN_R, pipe_y], color=C_BROWN,
+         lw=2.5, solid_capstyle="round", zorder=5)
+ax3.annotate("", xy=(OX - 0.2, pipe_y), xytext=(drain_dx, pipe_y),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
+                             mutation_scale=12), zorder=5)
+ax3.text(drain_dx - 1.5, pipe_y - 0.2,
+         "1\" HDPE → 3W-DV-02 (ALONG PINHOLE WALL)",
+         ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
+
+# ── Notes ────────────────────────────────────────────────────────────────────
+notes = [
+    f"1. Dual-axis pitch 1:200 — water converges on drain at X={PROC_TRAY_DRAIN_X:,}, Yd={PROC_TRAY_DRAIN_YD}.",
+    f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to drain).",
+    f"3. Drain: 1\" NPT bulkhead fitting through tray floor → 3W-DV-02 diverter (Brown / Waste).",
+    f"4. Tray: 304 stainless steel, {PROC_TRAY_RIM}mm rim, permanently installed.",
+    f"5. Walkway legs (25mm SHS, 600mm spacing) do not interfere with drain — nearest leg ≈270mm away.",
+]
+for i, n in enumerate(notes):
+    fig3.text(0.04, 0.08 - i * 0.018, n, fontsize=7, color=C_TEXT,
+              fontfamily="monospace", va="top")
+
+# ── Copyright ────────────────────────────────────────────────────────────────
+fig3.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
+          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+fig3.savefig("diagrams/water-system-sheet3.png", dpi=150, bbox_inches="tight",
+             facecolor=fig3.get_facecolor())
+fig3.savefig(svg_path("diagrams/water-system-sheet3.png"), bbox_inches="tight",
+             facecolor=fig3.get_facecolor())
+plt.close(fig3)
+print("Sheet 3 written → diagrams/water-system-sheet3.png")
 print("Done.")

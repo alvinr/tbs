@@ -33,6 +33,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import os
 
+from tbs_title_block import title_block
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y, FP_Y_MIN,
@@ -423,15 +424,14 @@ ax.text(-300, C_HGT / 2, f"{C_HGT} mm",
         ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
 
 
-# ── Title and analysis note ───────────────────────────────────────────────────
-fig.text(0.5, 0.98,
-         "TBS-001  —  OPTICAL LINE-OF-SIGHT CLEARANCE DIAGRAM",
-         ha="center", va="top", fontsize=FS_LG + 1, color=C_OUT,
-         fontweight="bold")
-fig.text(0.5, 0.955,
-         f"Pinhole X={PH_X}mm  |  Film plane X={FP_X_L}–{FP_X_R}mm at Yd={FP_Y}mm  |  "
-         "Amber = optical cone  |  RED border = cone intersection  |  GREEN border = clear",
-         ha="center", va="top", fontsize=FS_SM, color=C_DIM)
+# ── Title block (full-figure overlay) ──────────────���──────────────────────────
+ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+ax_tb.axis("off")
+title_block(ax_tb, "SHEET 1 OF 1",
+            drawing_title="OPTICAL LINE-OF-SIGHT CLEARANCE",
+            subtitle=f"Pinhole X={PH_X}mm  |  Film plane X={FP_X_L}–{FP_X_R}mm at Yd={FP_Y}mm",
+            scale_note="Not to scale",
+            doc_id="TBS-001 · Line of Sight")
 
 # Determine flagged items (skip items marked as floor-level fixtures)
 checkable = [eq for eq in EQUIPMENT if not eq.get("skip_cone_check")]
@@ -456,8 +456,6 @@ fig.text(0.5, 0.028, note, ha="center", va="bottom",
          bbox=dict(boxstyle="round,pad=2", facecolor=note_bg,
                    edgecolor=note_col, linewidth=1.0))
 
-fig.text(0.99, 0.01, "© 2026 Alvin Richards — GNU AGPLv3",
-         ha="right", va="bottom", fontsize=FS_SM - 1.5, color=C_DIM, style="italic")
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/line-of-sight.png"

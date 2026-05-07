@@ -15,6 +15,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 import os
 from tbs_constants import svg_path, SVG_DIR
+from tbs_title_block import title_block
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = 600      # plate outer dimension (square)
@@ -172,23 +173,12 @@ draw_rect(ax1, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
 draw_rect(ax1, 5, 5, 690, 70, lw=1.0, color='black', fc='#F0F0F0')  # parts list
 draw_rect(ax1, 480, 5, 215, 70, lw=1.0, color='black', fc='#F5F5F5')  # title block
 
-# Title block content
-ax1.text(587, 68, 'GIANT PINHOLE CAMERA — OPTION B', ha='center', fontsize=9,
-         fontweight='bold', color='black')
-ax1.text(587, 61, 'INTERCHANGEABLE OPTICAL PLATE SYSTEM', ha='center',
-         fontsize=7.5, color='black')
-ax1.text(587, 53, 'SHEET 1 OF 2 — PART FRONT VIEWS', ha='center',
-         fontsize=7, color='black')
-ax1.text(490, 46, 'SCALE:', fontsize=6, color='black')
-ax1.text(520, 46, '1:8 (AS NOTED)', fontsize=6, color='black', fontweight='bold')
-ax1.text(490, 38, 'MATERIAL:', fontsize=6, color='black')
-ax1.text(540, 38, 'Al 6061-T6 (plates) / S275 steel (frame)', fontsize=6, color='black')
-ax1.text(490, 30, 'UNITS:', fontsize=6, color='black')
-ax1.text(515, 30, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
-ax1.text(490, 22, 'TOLERANCE:', fontsize=6, color='black')
-ax1.text(530, 22, '±0.5 UNLESS NOTED', fontsize=6, color='black')
-ax1.text(490, 14, 'FINISH:', fontsize=6, color='black')
-ax1.text(515, 14, 'ALL MACHINED FACES Ra 1.6; BORE H7 Ra 0.8', fontsize=5.5, color='black')
+# Title block (shared)
+title_block(ax1, "SHEET 1 OF 2",
+            drawing_title="OPTICAL PLATE SYSTEM",
+            subtitle="Part front views — Al 6061-T6 / S275 steel",
+            scale_note="1:8 (as noted)",
+            doc_id="TBS-001 · Interchangeable Plates")
 
 # Parts list
 ax1.text(10, 68, 'ITEM', fontsize=6, fontweight='bold', color='black')
@@ -490,14 +480,12 @@ draw_rect(ax2, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
 draw_rect(ax2, 5, 5, 690, 55, lw=1.0, color='black', fc='#F0F0F0')
 draw_rect(ax2, 480, 5, 215, 55, lw=1.0, color='black', fc='#F5F5F5')
 
-ax2.text(587, 53, 'GIANT PINHOLE CAMERA — OPTION B', ha='center', fontsize=9,
-         fontweight='bold')
-ax2.text(587, 46, 'INTERCHANGEABLE OPTICAL PLATE SYSTEM', ha='center', fontsize=7.5)
-ax2.text(587, 39, 'SHEET 2 OF 2 — SECTION A-A & DETAILS', ha='center', fontsize=7)
-ax2.text(490, 31, 'SECTION SCALE: 1:4', fontsize=6)
-ax2.text(490, 24, 'DETAIL B SCALE: 2:1', fontsize=6)
-ax2.text(490, 17, 'DETAIL C SCALE: 2:1', fontsize=6)
-ax2.text(490, 10, 'UNITS: mm', fontsize=6, fontweight='bold')
+# Title block (shared)
+title_block(ax2, "SHEET 2 OF 2",
+            drawing_title="OPTICAL PLATE SYSTEM",
+            subtitle="Section A-A & details (1:4 / 2:1)",
+            scale_note="As noted",
+            doc_id="TBS-001 · Interchangeable Plates")
 
 # ──────────────────────────────────────────────────────────────────────────────
 # SECTION A-A  (1:4 scale)

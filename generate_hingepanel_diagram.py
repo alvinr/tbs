@@ -28,6 +28,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_constants import svg_path, SVG_DIR, C_LT_DRUM
+from tbs_title_block import title_block
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -92,97 +93,6 @@ def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
             ax.plot([x + i, x + i + h], [y, y + h], color=C_OUT,
                     lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
 
-def title_block(ax, sheet_label, subtitle, scale_note="", height=0.045,
-                portrait=False):
-    """Draw title block at bottom of axes.
-
-    Parameters
-    ----------
-    height : float   axes-fraction box height (~0.045 landscape, ~0.09 portrait)
-    portrait : bool  if True, use smaller fonts and clip text to cell bounds
-    """
-    t = ax.transAxes
-    y0 = 0.003
-    h  = height
-    y1 = y0 + h
-    row_top = y0 + h * 0.80
-    row_mid = y0 + h * 0.48
-    row_bot = y0 + h * 0.18
-
-    # Font sizes — scale down for narrow portrait figures
-    if portrait:
-        fs_title = 6.0
-        fs_body  = 5.0
-        fs_small = 4.5
-        fs_sheet = 7.0
-    else:
-        fs_title = 7.5
-        fs_body  = 6.5
-        fs_small = 5.5
-        fs_sheet = 9.0
-
-    # Column boundaries
-    col_L = 0.005          # left edge
-    div_1 = 0.30           # first divider
-    div_2 = 0.75           # second divider
-    col_R = 0.995          # right edge
-    cx_left   = (col_L + div_1) / 2     # center of left cell
-    cx_center = (div_1 + div_2) / 2     # center of center cell
-    cx_right  = (div_2 + col_R) / 2     # center of right cell
-
-    # Clip boxes for each cell so text cannot overflow into neighbors
-    from matplotlib.patches import FancyBboxPatch as FBP
-    clip_left   = FBP((col_L, y0), div_1 - col_L, h,
-                      boxstyle="square,pad=0", transform=t)
-    clip_center = FBP((div_1, y0), div_2 - div_1, h,
-                      boxstyle="square,pad=0", transform=t)
-    clip_right  = FBP((div_2, y0), col_R - div_2, h,
-                      boxstyle="square,pad=0", transform=t)
-
-    # White box with black border
-    ax.add_patch(FancyBboxPatch((col_L, y0), col_R - col_L, h,
-                 boxstyle="square,pad=0", fc="white", ec=C_OUT, lw=1.2,
-                 transform=t, zorder=20))
-    # Vertical dividers
-    ax.plot([div_1, div_1], [y0, y1], color=C_OUT, lw=0.6,
-            transform=t, zorder=21)
-    ax.plot([div_2, div_2], [y0, y1], color=C_OUT, lw=0.6,
-            transform=t, zorder=21)
-
-    # Left cell: project info
-    for txt, yy, fs, kw in [
-        ("THE BIG SHOEBOX PROJECT", row_top, fs_title,
-         dict(fontweight="bold", color=C_OUT)),
-        ("TBS-001  ·  Hinged Light-Trap Panel", row_mid, fs_body,
-         dict(color=C_DIM)),
-        ("© 2026 Alvin Richards — GNU AGPLv3", row_bot, fs_small,
-         dict(color=C_DIM, style="italic")),
-    ]:
-        t_obj = ax.text(cx_left, yy, txt, transform=t, fontsize=fs,
-                        ha="center", va="center", zorder=21, **FONT, **kw)
-        t_obj.set_clip_path(clip_left)
-
-    # Center cell: drawing title
-    for txt, yy, fs, kw in [
-        (f"HINGED LIGHT-TRAP PANEL — {sheet_label}", row_top, fs_title + 0.5,
-         dict(fontweight="bold", color=C_OUT)),
-        (subtitle, row_mid, fs_body, dict(color=C_DIM)),
-        (f"Scale: {scale_note}" if scale_note else "ALL DIMS IN mm",
-         row_bot, fs_body, dict(color=C_DIM)),
-    ]:
-        t_obj = ax.text(cx_center, yy, txt, transform=t, fontsize=fs,
-                        ha="center", va="center", zorder=21, **FONT, **kw)
-        t_obj.set_clip_path(clip_center)
-
-    # Right cell: sheet number + units
-    t1 = ax.text(cx_right, row_top, sheet_label, transform=t,
-                 color=C_OUT, fontsize=fs_sheet, fontweight="bold",
-                 ha="center", va="center", zorder=21, **FONT)
-    t1.set_clip_path(clip_right)
-    t2 = ax.text(cx_right, row_bot, "ALL DIMS IN mm", transform=t,
-                 color=C_DIM, fontsize=fs_body,
-                 ha="center", va="center", zorder=21, **FONT)
-    t2.set_clip_path(clip_right)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -478,7 +388,11 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 4", "FRONT ELEVATION — EXTERIOR VIEW", "SCALE 1:20")
+    title_block(ax, "SHEET 1 OF 4",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="FRONT ELEVATION — EXTERIOR VIEW",
+                scale_note="SCALE 1:20",
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
 
     os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig("diagrams/hingepanel-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -889,8 +803,10 @@ def sheet2():
 
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 4",
-                "PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
-                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm")
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
+                scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
 
     fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet2.png"), bbox_inches="tight", facecolor=BG)
@@ -1259,8 +1175,10 @@ def sheet3():
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 4",
-                "DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
-                "EQUAL ASPECT  ·  SCALE 1:20 (APPROX)  ·  ALL DIMS IN mm",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
+                scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel",
                 height=0.09, portrait=True)
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1298,17 +1216,19 @@ def sheet4():
     TR_PANEL_X = SLIDE_P        # = 300
 
     # ── Figure — landscape, Yd horizontal, X vertical ────────────────────────
+    # Yd range is ~3100mm but X range is only ~840mm. Increase vertical padding
+    # so the diagram fills the figure and text is readable.
     PAD_L = 350     # left of Yd=0 — room for dims + slide labels
     PAD_R = 380     # right of Yd=C_WID — room for legend + callouts
-    PAD_B = 320     # below wall exterior — room for notes
-    PAD_T = 200     # above ZONE_L_END
+    PAD_B = 550     # below wall exterior — room for notes + title block
+    PAD_T = 500     # above ZONE_L_END — room for dim lines + headroom
 
     YD_LO = -PAD_L
     YD_HI = C_WID + PAD_R
     X_LO  = -C_WALL_T - PAD_B
     X_HI  = ZONE_L_END + PAD_T
 
-    fig, ax = plt.subplots(figsize=(18, 9))
+    fig, ax = plt.subplots(figsize=(18, 12))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(YD_LO, YD_HI)
@@ -1480,12 +1400,14 @@ def sheet4():
           f"{C_WID - PANEL_CORNER_YD_R}mm", offset=15, fs=6)
 
     # ── Notes (left-justified, bottom left) ─────────────────────────────────
+    from tbs_constants import PANEL_FLOOR_GAP, PROC_TRAY_RIM
     notes = [
         f"1. TRANSPORT MODE: Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
-        "3. Single-person operation, ~5 minutes per mode conversion.",
-        "4. Panel locks: 2× Destaco 207-U toggle clamps per position.",
-        "5. Fixed door frame provides EPDM seal landing — seal unchanged.",
+        f"3. Panel suspended from ceiling HGR20 rails — {PANEL_FLOOR_GAP}mm floor gap clears {PROC_TRAY_RIM}mm tray rim.",
+        "4. Single-person operation, ~5 minutes per mode conversion.",
+        "5. Panel locks: 2× Destaco 207-U toggle clamps per position.",
+        "6. See ceiling-rail-sheet1/2 for rail suspension detail.",
     ]
     notes_x = YD_LO + 25
     for i, note in enumerate(notes):
@@ -1512,8 +1434,10 @@ def sheet4():
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 4",
-                "SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
-                "EQUAL ASPECT  ·  ALL DIMS IN mm  ·  SOLID = OPERATIONAL, GHOST = TRANSPORT")
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
+                scale_note="EQUAL ASPECT  \u00b7  ALL DIMS IN mm  \u00b7  SOLID = OPERATIONAL, GHOST = TRANSPORT",
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
 
     fig.savefig("diagrams/hingepanel-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet4.png"), bbox_inches="tight", facecolor=BG)

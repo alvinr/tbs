@@ -20,6 +20,7 @@ import matplotlib.patches as mpatches
 import numpy as np
 import os
 from tbs_constants import svg_path, SVG_DIR
+from tbs_title_block import title_block
 
 # ── Dimensions (mm) ──────────────────────────────────────────────────────────
 
@@ -174,43 +175,6 @@ def hatch_region(ax, patch, spacing=3, angle=45, color='#AAAAAA', lw=0.5):
         ax.plot([px0, px0+dx], [py0, py0+dy],
                 color=color, lw=lw, clip_path=patch, clip_on=True)
 
-def title_block(ax, fig_w, fig_h, sheet_n, sheet_total, title1, title2,
-                scale_str, project='THE BIG SHOEBOX PROJECT',
-                series='TBS-TSB', position='bottom'):
-    # Outer border — zorder=0 so content drawn later is not hidden
-    draw_rect(ax, 5, 5, fig_w-10, fig_h-10, lw=1.5, color='black', fc='white', zorder=0)
-    # Title block box
-    tb_w, tb_h = 215, 75
-    tb_x = fig_w - tb_w - 5
-    if position == 'top':
-        tb_y = fig_h - tb_h - 5
-    else:
-        tb_y = 5
-    draw_rect(ax, tb_x, tb_y, tb_w, tb_h, lw=0.5, color='black', fc='#F5F5F5')
-    cx_tb = tb_x + tb_w / 2
-    # Row positions relative to tb_y
-    ax.text(cx_tb, tb_y + 68, project, ha='center', fontsize=9, fontweight='bold', color='black')
-    ax.text(cx_tb, tb_y + 60, title1, ha='center', fontsize=7.5, color='black')
-    ax.text(cx_tb, tb_y + 52, title2, ha='center', fontsize=7, color='black')
-    # Divider between title area and info fields
-    ax.plot([tb_x, tb_x+tb_w], [tb_y + 49, tb_y + 49], color='black', lw=0.3)
-    val_x = tb_x + 68  # left-aligned value column
-    ax.text(tb_x+8, tb_y + 43, 'DRAWING:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 43, f'{series}-0{sheet_n}', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, tb_y + 36, 'SHEET:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 36, f'{sheet_n} OF {sheet_total}', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, tb_y + 29, 'SCALE:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 29, scale_str, fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, tb_y + 22, 'UNITS:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 22, 'ALL DIMENSIONS IN mm', fontsize=6, fontweight='bold', color='black')
-    ax.text(tb_x+8, tb_y + 15, 'TOLERANCE:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 15, '±0.25 UNLESS NOTED', fontsize=6, color='black')
-    ax.text(tb_x+8, tb_y + 8, 'MATERIAL:', fontsize=6, color='black')
-    ax.text(val_x, tb_y + 8, 'Al 6061-T6 HARD ANODIZE', fontsize=6, color='black')
-    # Copyright — inside the box
-    ax.plot([tb_x, tb_x+tb_w], [tb_y + 4, tb_y + 4], color='black', lw=0.3)
-    ax.text(cx_tb, tb_y + 1, '\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3',
-            ha='center', fontsize=5, color='black', style='italic')
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -226,10 +190,11 @@ ax1.axis('off')
 ax1.set_xlim(0, FW)
 ax1.set_ylim(0, FH)
 
-title_block(ax1, FW, FH, 1, 3,
-            'TILT-SWING FRONT BOARD MECHANISM',
-            'SHEET 1 — OVERVIEW & OUTER ADAPTER FRAME (TSB-01)',
-            'AS NOTED')
+title_block(ax1, "SHEET 1 OF 3",
+            drawing_title="TILT-SWING FRONT BOARD",
+            subtitle="Assembly overview & Outer Adapter Frame",
+            scale_note="AS NOTED",
+            doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── Section header lines ──────────────────────────────────────────────────────
 def section_label(ax, x, y, text):
@@ -636,10 +601,11 @@ ax2.axis('off')
 ax2.set_xlim(0, FW)
 ax2.set_ylim(0, FH)
 
-title_block(ax2, FW, FH, 2, 3,
-            'TILT-SWING FRONT BOARD MECHANISM',
-            'SHEET 2 — INNER CARRIER (TSB-02), BEARING (TSB-03) & ADJUSTMENT',
-            'AS NOTED')
+title_block(ax2, "SHEET 2 OF 3",
+            drawing_title="TILT-SWING FRONT BOARD",
+            subtitle="Inner Carrier, Bearing & Adjustment mechanism",
+            scale_note="AS NOTED",
+            doc_id="TBS-TSB · Tilt-Swing Board")
 
 SC2 = 1/2
 def s2(mm): return mm * SC2
@@ -983,10 +949,11 @@ ax3.set_xlim(0, FW)
 ax3.set_ylim(0, FH3)
 S3_UP = FH3 - FH  # vertical shift = 150
 
-title_block(ax3, FW, FH3, 3, 3,
-            'TILT-SWING FRONT BOARD MECHANISM',
-            'SHEET 3 — BELLOWS SEAL, LOCKING, CALIBRATION SCALE & SWAP PROCEDURE',
-            'AS NOTED', position='top')
+title_block(ax3, "SHEET 3 OF 3",
+            drawing_title="TILT-SWING FRONT BOARD",
+            subtitle="Bellows seal, Locking, Calibration scale & Swap procedure",
+            scale_note="AS NOTED",
+            doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
 ax3.text(15, 490 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)

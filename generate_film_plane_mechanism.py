@@ -25,6 +25,7 @@ from tbs_constants import (
     FP_X_L, FP_X_R, PH_X as PH_X_C, PH_H as PH_H_C,
     MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, SVG_DIR, svg_path,
 )
+from tbs_title_block import title_block
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -54,33 +55,23 @@ D_FAR  = W - 100   # = 2262
 
 # ── 4-corner configs (d_TL, d_TR, d_BL, d_BR) — depths from pinhole wall ─────
 # TL=top-left, TR=top-right, BL=bottom-left, BR=bottom-right
+# Angle labels computed from geometry so they stay correct after rail span changes.
+_tilt_deg  = round(np.degrees(np.arctan2(D_FAR - 800, H)), 1)
+_swing_deg = round(np.degrees(np.arctan2(D_FAR - 800, FP_X_R - FP_X_L)), 1)
 CONFIGS = [
-    ("Flat  0°",         D_FAR,  D_FAR,  D_FAR,  D_FAR,  C_FLAT, "-"),
-    ("Tilt  31.5°",      800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
-    ("Swing  22.4°",     800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
-    ("Compound\ntilt+swing", D_NEAR, D_FAR, D_FAR, D_NEAR, C_T3, ":"),
+    ("Flat  0°",                   D_FAR,  D_FAR,  D_FAR,  D_FAR,  C_FLAT, "-"),
+    (f"Tilt  {_tilt_deg}°",        800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
+    (f"Swing  {_swing_deg}°",      800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
+    ("Compound\ntilt+swing",       D_NEAR, D_FAR,  D_FAR,  D_NEAR, C_T3,   ":"),
 ]
 
 FONT = {"fontfamily": "monospace"}
 
 # ── Geometry helpers ──────────────────────────────────────────────────────────
-RAIL_X_L = FP_X_L       # left rail X position = 1100mm (was 200mm)
-RAIL_X_R = FP_X_R       # right rail X position = 4649mm (was 4019mm → was 5693mm)
+RAIL_X_L = FP_X_L       # left rail X position (mm) — tracks FP_X_L from constants
+RAIL_X_R = FP_X_R       # right rail X position (mm) — tracks FP_X_R from constants
 RAIL_W   = 60           # rail width in plan view
 
-def title_block(ax, sheet_no, title, scale_note=""):
-    ax.text(0.01, 0.012, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-            transform=ax.transAxes, color=DIM, fontsize=7, **FONT)
-    ax.text(0.01, 0.004, f"MOVEABLE FILM PLANE (4-CORNER) — SHEET {sheet_no}: {title}",
-            transform=ax.transAxes, color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
-    if scale_note:
-        ax.text(0.99, 0.012, scale_note,
-                transform=ax.transAxes, color=DIM, fontsize=6.5, ha="right", **FONT)
-    ax.text(0.99, 0.004, "ALL DIMS IN mm UNLESS NOTED",
-            transform=ax.transAxes, color=DIM, fontsize=6.5, ha="right", **FONT)
-    ax.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=ax.transAxes, color=DIM, fontsize=5.5, ha="center",
-            style="italic", **FONT)
 
 def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
     tick = max(abs(offset) * 0.3, 15)   # minimum 15mm tick
@@ -298,17 +289,12 @@ def sheet1():
         ax.text(leg_x + 440, ly, f"{name}\n  {corner_str}",
                 color=col, fontsize=6, va="center", **FONT)
 
-    # Single title block at figure bottom
-    fig.text(0.02, 0.030, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-             color=DIM, fontsize=7, **FONT)
-    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 1 / 4: PLAN VIEW — 4-CORNER RAIL LAYOUT",
-             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
-    fig.text(0.98, 0.030, "SCALE: PROPORTIONAL (mm)",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.98, 0.010, "ALL DIMS IN mm UNLESS NOTED",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
-             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+    # Title block
+    title_block(ax, "SHEET 1 OF 4",
+                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                subtitle="Plan view — 4-corner rail layout",
+                scale_note="Proportional (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet1.png"), bbox_inches="tight", facecolor=BG)
@@ -552,17 +538,14 @@ def sheet2():
     fig.text(0.5, 0.98, "SHEET 2 — TILT ELEVATION (left)  &  SWING CROSS-SECTION (right)",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
-    # Single title block at figure bottom
-    fig.text(0.02, 0.035, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-             color=DIM, fontsize=7, **FONT)
-    fig.text(0.02, 0.018, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 2 / 4: TILT & SWING ELEVATIONS",
-             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
-    fig.text(0.98, 0.035, "SCALE: PROPORTIONAL (mm)",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.98, 0.018, "ALL DIMS IN mm UNLESS NOTED",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.50, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+    # Title block (full-figure overlay for multi-subplot sheet)
+    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 2 OF 4",
+                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                subtitle="Tilt elevation & Swing cross-section",
+                scale_note="Proportional (mm)",
+                doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet2.png"), bbox_inches="tight", facecolor=BG)
@@ -783,15 +766,14 @@ def sheet3():
     fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (4-CORNER INDEPENDENT DESIGN)",
              color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
 
-    # Single title block at the figure bottom (not per-quadrant)
-    fig.text(0.02, 0.025, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-             color=DIM, fontsize=7, **FONT)
-    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 3 / 4: HARDWARE DETAILS — 4-CORNER DESIGN",
-             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
-    fig.text(0.98, 0.025, "ALL DIMS IN mm UNLESS NOTED",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.50, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+    # Title block (full-figure overlay for multi-subplot sheet)
+    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 3 OF 4",
+                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                subtitle="Frame & hardware details — 4-corner design",
+                scale_note="As noted",
+                doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet3.png"), bbox_inches="tight", facecolor=BG)
@@ -905,15 +887,12 @@ def sheet4():
             transform=ax.transAxes, color=DIM, fontsize=7,
             ha="center", va="center", style="italic", **FONT)
 
-    # Single title block at figure bottom
-    fig.text(0.02, 0.025, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-             color=DIM, fontsize=7, **FONT)
-    fig.text(0.02, 0.010, "MOVEABLE FILM PLANE (4-CORNER) — SHEET 4 / 4: MOVEMENT SPECIFICATION",
-             color=WHITE, fontsize=7.5, fontweight="bold", **FONT)
-    fig.text(0.98, 0.010, "ALL DIMS IN mm UNLESS NOTED",
-             color=DIM, fontsize=6.5, ha="right", **FONT)
-    fig.text(0.50, 0.001, "© 2026 Alvin Richards — GNU AGPLv3",
-             color=DIM, fontsize=5.5, ha="center", style="italic", **FONT)
+    # Title block
+    title_block(ax, "SHEET 4 OF 4",
+                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                subtitle="Movement specification & BOM",
+                scale_note="Not to scale",
+                doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet4.png"), bbox_inches="tight", facecolor=BG)

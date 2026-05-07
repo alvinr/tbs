@@ -28,14 +28,20 @@ Redesign basis (2026-05-03 rev 4):
   steel plate + 18mm ply) flanking 120mm center zone (unchanged RHS frame
   construction housing the light trap drum).  Step transitions at Yd=756mm
   and Yd=1,606mm (drum 750mm + 50mm clearance each side).
-  Panel + waste drums mounted on sliding rail systems for transport mode:
-  panel on HGR20 linear rails (300mm travel), waste drums on V-groove dolly
-  tracks (305mm travel).  In transport position, drums slide inward and panel
-  slides inward 300mm so light trap drum clears the container exterior face
-  by 5mm, allowing standard ISO cargo doors to close.
-  Waste drums repositioned to X=40–620mm (left edge flush with corner panel
-  inner face, right edge 5mm inside ZONE_L_END).  Single-person 15–20 min
-  mode conversion.  Fixed door frame with EPDM compression seal at X=0.
+  Panel slides on HGR20 linear rails (300mm travel) so light trap drum clears
+  the container exterior face by 5mm, allowing standard ISO cargo doors to close.
+  Fixed door frame with EPDM compression seal at X=0.
+
+Redesign basis (2026-05-06 rev 5):
+  Waste drums (2x 55-gal) eliminated.  Replaced by a 4th IBC (waste, 600L)
+  in the right end zone.  4 IBCs in 2x2 stack: Blue #1 + Blue #2 on top
+  (gravity feeds spray bar), Brown + Waste on bottom (receives by gravity).
+  All V-groove dolly tracks, bridge sections, and drum slide mechanisms removed.
+  Processing tray (304 SS, 50mm rim) permanently installed in optical zone
+  with built-in 1:200 pitch for gravity drainage.  No track/tray conflict.
+  IBCs loaded empty via cargo doors; filled/drained remotely through 2" NPT
+  bulkhead fittings in the far end wall (X=C_LEN face).
+  Left end zone freed up (light trap drum remains in hinge panel).
 """
 
 import math
@@ -101,52 +107,20 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # ── Sliding rail system — transport mode (rev 4) ─────────────────────────────
 # Panel slides inward 300mm on HGR20 linear rails so the light trap drum
 # clears the container exterior face, allowing ISO cargo doors to close.
-# Waste drums slide inward 305mm on V-groove dolly tracks to clear the panel.
 PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
-DRUM_SLIDE        = 305   # waste drum slide travel for transport (mm)
-DRUM_DOLLY_H      = 30    # dolly track riser height (mm) — clears HGR20 floor rail
-
-# Dolly tracks are split into permanent + removable bridge sections.
-# Permanent tracks: X=PANEL_CORNER_T to X=PERM_TRACK_END (within left end zone).
-# Bridge sections: removable, installed only during mode conversion. Span over
-# the film plane floor rail at X=RAIL_X_L with 10mm clearance on 30mm risers.
-# The film plane carriage must be retracted to Yd≤100mm before bridges are
-# installed — clears carriage blocks (nearest dolly track at Yd≈210mm).
-PERM_TRACK_END    = 620   # permanent track right end X (mm) — 5mm inside ZONE_L_END
-BRIDGE_TRACK_START = 600  # bridge section left end X (mm) — 20mm overlap for alignment
-BRIDGE_TRACK_END  = 955   # bridge section right end X (mm) — 30mm past drum transport edge
-BRIDGE_TRACK_LEN  = BRIDGE_TRACK_END - BRIDGE_TRACK_START  # = 355mm
-BRIDGE_COUNT      = 4     # 2 tracks per drum × 2 drums
 
 # ── Left end zone (X = 0–625 mm, shadow-free at all depths) ──────────────────
+# Light trap drum in hinge panel center zone.  Waste drums removed in rev 5
+# (replaced by waste IBC in right end zone).  Left zone now contains only
+# the light trap drum and is available for future use (e.g. film prep area).
 DRUM_CX    = 0       # light trap drum center X (mm) [unchanged]
 DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
-# Black-water drums — LEFT end zone, one per Yd corner (rev 4: on slide dollies)
-# Light trap drum Yd=806–1,556mm divides the zone into two clear corners.
-# Near drum (pinhole wall corner): Yd=0–580mm   → gap to light trap = 226mm
-# Far drum  (far wall corner):     Yd=1,782–2,362mm → gap to light trap = 226mm
-# Both share CX=330mm (X=40–620mm).  Left edge flush with corner panel inner face.
-# Right edge 5mm inside ZONE_L_END.  Zone boundary 620+5=625mm=FP_X_L ✓
-DRUM_EQ_D     = 580    # 55-gal drum diameter (mm)
-DRUM_EQ_H     = 870    # 55-gal single drum height (mm)
-DRUM_EQ_R     = DRUM_EQ_D // 2    # = 290mm radius
-# Near drum (pinhole wall corner) — left edge flush with corner panel inner face
-DRUM_LZ_CX    = PANEL_CORNER_T + DRUM_EQ_R        # = 330mm center X (left edge at 40mm)
-DRUM_LZ_YD_LO = 0                                 # near drum near edge Yd (flush with wall)
-DRUM_LZ_YD    = DRUM_LZ_YD_LO + DRUM_EQ_D // 2   # = 290mm center
-DRUM_LZ_YD_HI = DRUM_LZ_YD_LO + DRUM_EQ_D        # = 580mm far edge
-# Far drum (far wall corner) — same X as near drum
-DRUM_FZ_CX    = DRUM_LZ_CX                        # = 330mm (same X center)
-DRUM_FZ_YD_LO = C_WID - DRUM_EQ_D                 # = 1,782mm (flush with far wall)
-DRUM_FZ_YD    = DRUM_FZ_YD_LO + DRUM_EQ_R         # = 2,072mm center
-DRUM_FZ_YD_HI = DRUM_FZ_YD_LO + DRUM_EQ_D        # = 2,362mm far edge
-
 # Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
 # At Yd=0 the cone collapses to a point → shadow-free at any X position.
-EVAP_X     = 930     # evap cooler left edge X (mm)  [rev4: was 700; clears drum D-1 transport X=925]
+EVAP_X     = 930     # evap cooler left edge X (mm)  [rev3: 930; on pinhole wall face]
 EVAP_W     = 600     # evap cooler width X (mm)       [unchanged]
 EVAP_Y     = 0       # evap cooler near edge Yd (mm)  [rev3: was 100; now on pinhole wall]
 EVAP_D     = 350     # evap cooler depth Y (mm)        [unchanged]
@@ -168,20 +142,44 @@ PUMP_W     = 300     # pump manifold width (mm)
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
 
-# ── Right end zone — IBC column Y-stacked, right-justified (X=4,674–5,893mm) ─
-IBC_COL_X   = ZONE_R_START + 25   # = 4,674mm  [was 4,044; right-justified to end wall]
+# ── Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
+# Right-justified to far end wall: X=4,674–5,893mm.
+# Layout (view from pinhole wall):
+#   TOP    Blue #1 (near)     Blue #2 (far)    ← gravity feeds spray bar
+#   BOTTOM Brown   (near)     Waste   (far)    ← receives water by gravity
+# Weight migrates top→bottom during session (stability improves).
+IBC_COL_X   = ZONE_R_START + 25   # = 4,674mm  [right-justified to end wall]
 IBC_W       = 1219   # IBC footprint width  (mm)
 IBC_D       = 1016   # IBC footprint depth  (mm)
 IBC_H_600   = 1010   # 600L IBC height (mm)
 IBC_H_STK   = 2020   # 2× stacked height (mm)
 
-BLUE_IBC_Y  = 100    # Blue IBC stack front depth from pinhole wall (mm)
-# Blue IBC stack rear: BLUE_IBC_Y + IBC_D = 1,116 mm
+# Near column (Yd=100–1,116mm): Blue #1 on top, Brown on bottom
+BLUE_IBC_Y  = 100    # near column Yd start (mm)
+BROWN_IBC_Y = BLUE_IBC_Y   # Brown is directly below Blue #1 (same Y column)
 
-BROWN_IBC_Y = 1141   # Brown IBC depth start (mm)  (gap = 25mm after blue stack)
-# Brown IBC rear: BROWN_IBC_Y + IBC_D = 2,157 mm  (< C_WID=2,362 ✓)
+# Far column (Yd=1,141–2,157mm): Blue #2 on top, Waste on bottom
+IBC_FAR_Y   = 1141   # far column Yd start (mm)  (25mm gap after near column)
+WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 
 # IBC right edge: IBC_COL_X + IBC_W = 4,674 + 1,219 = 5,893mm = C_LEN ✓
+# Stack height: 2 × 1,010 = 2,020mm  (ceiling 2,388mm → 368mm headroom ✓)
+
+# ── Processing tray — permanently installed in optical zone (rev 5) ──────────
+PROC_TRAY_X_L  = FP_X_L + 20    # = 645mm — 20mm clearance from left rail
+PROC_TRAY_X_R  = FP_X_R - 20    # = 4,629mm — 20mm clearance from right rail
+PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 3,984mm
+PROC_TRAY_D    = 2200            # depth in Y direction (mm)
+PROC_TRAY_RIM  = 50              # rim height (mm)
+PROC_TRAY_PITCH = 10             # fall over panel length for drainage (mm), 1:200
+
+# ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
+# 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
+# Flat steel reinforcing plate welded over corrugation before drilling.
+EXT_FILL_H   = 1800    # fill port center height AFF (mm) — feeds top of Blue IBCs
+EXT_FILL_YD  = BLUE_IBC_Y + IBC_D // 2   # = 608mm — centered on near column
+EXT_DRAIN_H  = 200     # drain port center height AFF (mm) — bottom of Waste IBC
+EXT_DRAIN_YD = IBC_FAR_Y + IBC_D // 2    # = 1,649mm — centered on far column
 
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.
@@ -198,8 +196,7 @@ FAN_BODY_D  =  50    # panel fan body depth (mm)
 FAN_A_H     = 600    # fan A center height AFF (mm — low position)
 FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
 # Yd (width) positions — cross-ventilation diagonal: intake near-wall corner,
-# exhaust far-wall corner.  Clears both waste drum columns (D-1 near, D-2 far)
-# with ≥830mm vertical separation even where Yd overlaps.
+# exhaust far-wall corner.
 FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
 FAN_B_YD    = C_WID - FAN_DIAM // 2  # = 2287mm — far-wall corner (panel face)
 
@@ -237,10 +234,10 @@ C_GASKT = "#5A3020"   # gasket/neoprene
 
 # ── Unified component color palette ──────────────────────────────────────────
 # Single source of truth for equipment colors across all diagrams.
-C_WASTE_DRUM   = "#7A6B5A"   # 55-gal waste drums (D-1, D-2)
 C_LT_DRUM      = "#E8E0D0"   # light trap revolving drum
 C_BLUE_IBC     = "#4A90D9"   # blue IBC tanks
 C_BROWN_IBC    = "#9C7A3C"   # brown IBC tank
+C_WASTE_IBC    = "#7A6B5A"   # waste IBC (rev 5: replaces C_WASTE_DRUM)
 C_EVAP         = "#3DAA96"   # evaporative cooler
 C_ELEC         = "#F5C518"   # electrical panel
 C_BATT         = "#6A5ACD"   # battery bank
@@ -250,29 +247,28 @@ C_HINGE_PANEL  = "#C8C8C0"   # hinge panel body
 C_FILM         = "#2060A0"   # film plane / muslin
 C_PINHOLE_EQ   = "#CC6600"   # pinhole aperture
 C_FAN          = "#A0A0A8"   # fans (A and B)
-C_TRACK_PERM   = "#8B7355"   # permanent dolly tracks
-C_TRACK_BRIDGE = "#4A90D9"   # removable bridge tracks
+C_PROC_ZONE    = "#E8F5E9"   # processing tray zone
 
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
-    _drum_left = DRUM_LZ_CX - DRUM_EQ_R
-    _drum_right = DRUM_LZ_CX + DRUM_EQ_R
-    print("TBS-001 Constants")
+    print("TBS-001 Constants (rev 5)")
     print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT} mm")
     print(f"  Film plane:     {FP_W} × {FP_H} mm  (X={FP_X_L}–{FP_X_R})")
     print(f"  Pinhole:        X={PH_X}  H={PH_H}  Ø{PH_D}mm  f/{PH_FNO}")
     print(f"  Rails:          X={RAIL_X_L} – {RAIL_X_R}  span={RAIL_SPAN}mm")
     print(f"  Max tilt:       {MAX_TILT_DEG:.1f}°")
     print(f"  Max swing:      {MAX_SWING_DEG:.1f}°")
-    print(f"  Left zone:      X=0–{ZONE_L_END}mm")
+    print(f"  Left zone:      X=0–{ZONE_L_END}mm (light trap drum only)")
     print(f"  Right zone:     X={ZONE_R_START}–{C_LEN}mm")
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
     print(f"  Panel:          corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
     print(f"  Panel zones:    corners Yd=0–{PANEL_CORNER_YD_L} / {PANEL_CORNER_YD_R}–{C_WID}  center Yd={PANEL_CORNER_YD_L}–{PANEL_CORNER_YD_R}")
-    print(f"  Panel slide:    {PANEL_SLIDE}mm travel  drum slide: {DRUM_SLIDE}mm travel")
-    print(f"  IBC column:     X={IBC_COL_X}–{IBC_COL_X+IBC_W}  (right edge = {IBC_COL_X+IBC_W} vs C_LEN={C_LEN})")
-    print(f"  Drum near:      CX={DRUM_LZ_CX}  X={_drum_left}–{_drum_right}  Yd={DRUM_LZ_YD_LO}–{DRUM_LZ_YD_HI}  H={DRUM_EQ_H}")
-    print(f"  Drum far:       CX={DRUM_FZ_CX}  X={_drum_left}–{_drum_right}  Yd={DRUM_FZ_YD_LO}–{DRUM_FZ_YD_HI}  H={DRUM_EQ_H}")
+    print(f"  Panel slide:    {PANEL_SLIDE}mm travel")
+    print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
+    print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
+    print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  W={PROC_TRAY_W}mm  rim={PROC_TRAY_RIM}mm")
+    print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
+    print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")
     print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")
     print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
     print(f"  Fan B (exhaust):door end wall H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")

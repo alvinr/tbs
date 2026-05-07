@@ -340,7 +340,7 @@ def sheet1():
                             fc="none", ec=C_CARR, lw=1.5,
                             ls=(0, (5, 3)), zorder=3, alpha=0.6))
     ax.text(CBEAM_X + CBEAM_W / 2, PH / 2,
-            "CARRIAGE\nBEAM\n60×60mm\nSHS",
+            "CARRIAGE BEAM 60×60mm SHS",
             color=C_CARR, fontsize=5, ha="center", va="center",
             **FONT, zorder=15, alpha=0.6, rotation=90)
 
@@ -1361,7 +1361,7 @@ def sheet4():
     FRAME_W = 50
     ax.add_patch(Rectangle((0, 0), C_WID, FRAME_W,
                             fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
-    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 80, 170),
+    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 125, 170),
            "FIXED DOOR FRAME\n50×50mm RHS · SEAL LANDING", col="#806010", fs=6)
 
     # ── ZONE_L_END boundary ──────────────────────────────────────────────────
@@ -1482,7 +1482,7 @@ def sheet4():
     ax.add_patch(Rectangle((0, OP_PANEL_X - 5), C_WID, BEAM_W,
                             fc="none", ec="#C04010", lw=1.5, ls="--",
                             alpha=0.5, zorder=5))
-    leader(ax, (C_WID - 100, BEAM_W / 2), (C_WID + 80, 350),
+    leader(ax, (C_WID - 100, BEAM_W / 2), (C_WID + 130, 250),
            "CARRIAGE BEAM\n60×60mm SHS", col="#C04010", fs=6)
 
     # ── Lock position labels ────────────────────────────────────────────────
@@ -1518,7 +1518,7 @@ def sheet4():
     _d1_yd = (DRUM_LZ_YD_LO + DRUM_LZ_YD_HI) / 2
     _dim_x = OP_DRUM_CX + DRUM_EQ_R + 40
     dim_h(ax, _d1_yd - DRUM_EQ_R, _d1_yd + DRUM_EQ_R, _dim_x,
-          f"Ø{DRUM_EQ_D}mm", offset=25, fs=6.5)
+          f"Ø{DRUM_EQ_D}mm", offset=5, fs=6)
 
     # Drum X range (vertical dim on far side of D-2)
     _dl_x = OP_DRUM_CX - DRUM_EQ_R

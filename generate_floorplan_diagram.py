@@ -15,11 +15,11 @@ Coordinate system (all mm):
            Y=0:    pinhole long wall
            Y=2362: far long wall (image plane / film fabric)
 
-Equipment layout — end-zone design rev 3 (evap cooler to pinhole wall, drums near end wall):
-  Left end zone  (X=0–625):    light trap drum + 55-gal drums (stacked, Yd=25–605mm)
+Equipment layout — end-zone design rev 5 (4-IBC 2×2 stack, drums eliminated):
+  Left end zone  (X=0–625):    light trap drum only (freed up by drum removal)
   Pinhole wall   (Yd=0 face):  evap cooler (X=930–1530) + electrical panel + pump manifold
   Optical zone   (X=625–4649): film plane rails only — floor clear
-  Right end zone (X=4649–5893): IBC tanks only (Y-stacked, right-justified to end wall)
+  Right end zone (X=4649–5893): 4× IBC in 2×2 stack (2 columns × 2 high)
 
   Every item in the end zones is provably shadow-free at all depths:
     cone left boundary  >= 625mm  at any Y <= 2262  ✓
@@ -235,43 +235,7 @@ def floor_plan():
             "▲ 800mm tall", color=C_EVAP, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    # Black-water drums — 2× 55-gal, one per Yd corner (unstacked, rev 4)
-    for drum_cy, label, ann_dir in [
-        (DRUM_LZ_YD, "DRUM D-1\n208L", +1),   # near corner (pinhole wall side)
-        (DRUM_FZ_YD, "DRUM D-2\n208L", -1),   # far corner (far wall side)
-    ]:
-        ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
-                            fc=C_WASTE_DRUM, ec=C_OUT, lw=1.2, alpha=0.88, zorder=6))
-        ax.plot(DRUM_LZ_CX, drum_cy, '+', color="#FFFFFF", ms=6, mew=1.0, zorder=7)
-        ax.text(DRUM_LZ_CX, drum_cy,
-                label, color="#FFFFFF", fontsize=5.5, ha="center", va="center",
-                **FONT, fontweight="bold", zorder=7)
-        ax.text(DRUM_LZ_CX, drum_cy + ann_dir * (DRUM_EQ_R + 55),
-                f"▲ {DRUM_EQ_H}mm H", color=C_WASTE_DRUM, fontsize=5.5,
-                ha="center", va="bottom" if ann_dir > 0 else "top", **FONT, zorder=7)
-
-    # ── V-groove dolly tracks (drum slide rails) ───────────────────────────────
-    C_TRACK   = "#8B7355"    # permanent track color (brown)
-    C_BRIDGE  = "#4A90D9"    # bridge section color (blue)
-    TRACK_W   = 8            # track visual width in plan
-    for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
-        for offset in [-80, 80]:  # two parallel tracks per drum
-            ty = drum_yd + offset
-            # Permanent section (X = PANEL_CORNER_T to PERM_TRACK_END)
-            ax.add_patch(Rectangle(
-                (PANEL_CORNER_T, ty - TRACK_W/2), PERM_TRACK_END - PANEL_CORNER_T, TRACK_W,
-                facecolor=C_TRACK, edgecolor=C_OUT, linewidth=0.3,
-                alpha=0.5, zorder=4))
-            # Bridge section (X = BRIDGE_TRACK_START to BRIDGE_TRACK_END) — dashed
-            ax.add_patch(Rectangle(
-                (BRIDGE_TRACK_START, ty - TRACK_W/2), BRIDGE_TRACK_END - BRIDGE_TRACK_START, TRACK_W,
-                facecolor=C_BRIDGE, edgecolor=C_OUT, linewidth=0.3,
-                alpha=0.45, zorder=4, linestyle="--"))
-    # Track label
-    ax.text(PERM_TRACK_END / 2, DRUM_LZ_YD + DRUM_EQ_R + 120,
-            f"V-GROOVE DOLLY TRACKS\n(perm X={PANEL_CORNER_T}–{PERM_TRACK_END}, "
-            f"bridge X={BRIDGE_TRACK_START}–{BRIDGE_TRACK_END})",
-            color=C_TRACK, fontsize=5, ha="center", va="bottom", **FONT, zorder=7)
+    # (waste drums and dolly tracks eliminated in rev 5 — left zone now light trap only)
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
     # Electrical panel + battery (thin strip at Y=0)
@@ -281,23 +245,22 @@ def floor_plan():
     equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP,
                "PUMP\nMFD.", zorder=7, alpha=0.95)
 
-    # ── RIGHT END ZONE — fluid tanks ──────────────────────────────────────────
-    # IBC column — Y-stacked: Blue IBCs (front) then Brown IBC (rear)
+    # ── RIGHT END ZONE — 4× IBC in 2×2 stack ────────────────────────────────
+    # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom
     equip_rect(ax, IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_BLUE_IBC,
-               f"BLUE IBC ×2\n(STACKED)\n2×600L\nY={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
+               f"IBC-1 BLUE\n600L (top)\nIBC-3 BROWN\n600L (bottom)\nYd={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
                zorder=6)
     ax.text(IBC_COL_X + IBC_W/2, BLUE_IBC_Y + IBC_D + 55,
-            "▲ 2020mm tall", color=C_BLUE_IBC, fontsize=5.5,
+            "▲ 2020mm tall (2-high)", color=C_BLUE_IBC, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    equip_rect(ax, IBC_COL_X, BROWN_IBC_Y, IBC_W, IBC_D, C_BROWN_IBC,
-               f"BROWN IBC ×1\n600L\nY={BROWN_IBC_Y}–{BROWN_IBC_Y+IBC_D}",
+    # Far column (Yd=1141–2157): Blue #2 on top, Waste on bottom
+    equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_WASTE_IBC,
+               f"IBC-2 BLUE\n600L (top)\nIBC-4 WASTE\n600L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
                zorder=6)
-    ax.text(IBC_COL_X + IBC_W/2, BROWN_IBC_Y + IBC_D + 55,
-            "▲ 1010mm tall", color=C_BROWN_IBC, fontsize=5.5,
+    ax.text(IBC_COL_X + IBC_W/2, IBC_FAR_Y + IBC_D + 55,
+            "▲ 2020mm tall (2-high)", color=C_WASTE_IBC, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
-
-    # (drums relocated to left end zone — no drum column in right zone)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Fan A — INTAKE: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), LOW (H=600mm)
@@ -366,9 +329,9 @@ def floor_plan():
 
     # ── Legend (two-column, below container) ────────────────────────────────
     legend_items = [
-        (C_BLUE_IBC,  "Blue IBC ×2 stacked (2×600L)"),
-        (C_BROWN_IBC, "Brown IBC ×1 (600L)"),
-        (C_WASTE_DRUM,   "55-gal HDPE drums ×2"),
+        (C_BLUE_IBC,  "Blue IBC ×2 (clean water, top tier)"),
+        (C_BROWN_IBC, "Brown IBC ×1 (recycle, bottom near)"),
+        (C_WASTE_IBC, "Waste IBC ×1 (bottom far)"),
         (C_EVAP,    "Evaporative cooler"),
         (C_ELEC,  "Electrical panel + battery bank"),
         (C_PUMP,  "Pump manifold"),
@@ -376,8 +339,6 @@ def floor_plan():
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
         (C_OPT,       "Optical axis (2362mm focal length)"),
         (C_PINHOLE,   "Revolving light-trap drum"),
-        ("#8B7355",   "V-groove dolly track (permanent)"),
-        ("#4A90D9",   "V-groove bridge section (removable)"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
     ]
     n_items = len(legend_items)
@@ -403,13 +364,11 @@ def floor_plan():
                 ha="left", va="center", **FONT, zorder=9)
 
     # ── Egress path annotation ─────────────────────────────────────────────────
-    # When panel opens 180°, the light trap drum swings out with it.
-    # Clear passage between the two waste drums: Yd=580–1782 = 1202mm.
-    EGRESS_GAP_LO = DRUM_LZ_YD_HI     # 580mm
-    EGRESS_GAP_HI = DRUM_FZ_YD_LO     # 1782mm
-    EGRESS_GAP    = EGRESS_GAP_HI - EGRESS_GAP_LO  # 1202mm
-    EGRESS_MID_Y  = (EGRESS_GAP_LO + EGRESS_GAP_HI) / 2
-    EGRESS_ARROW_X = DRUM_LZ_CX       # 330mm — center of drum zone
+    # With drums eliminated, the full container width (2362mm) is clear for egress.
+    # Panel opens 180° outward, light trap drum swings out with it.
+    EGRESS_GAP    = C_WID   # full width clear — no drums
+    EGRESS_MID_Y  = C_WID / 2
+    EGRESS_ARROW_X = ZONE_L_END / 2
 
     # Dashed green arrow showing egress direction (interior → door)
     ax.annotate("", xy=(-WALL - 60, EGRESS_MID_Y),
@@ -418,17 +377,13 @@ def floor_plan():
                                 linestyle=":", mutation_scale=12),
                 zorder=10)
     ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 60,
-            f"EGRESS PATH — {EGRESS_GAP}mm CLEAR",
+            f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color="#20A020", fontsize=6.5, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)
     ax.text(EGRESS_ARROW_X, EGRESS_MID_Y - 60,
-            "(panel open 180°, drum swings out)",
+            "(panel open 180°, drum swings out — no obstructions)",
             color="#20A020", fontsize=5.5, ha="center", va="top",
             **FONT, alpha=0.8, zorder=10)
-
-    # Dimension line showing 1202mm gap between drums
-    dim_v(ax, -380, EGRESS_GAP_LO, EGRESS_GAP_HI,
-          f"{EGRESS_GAP}mm\nEGRESS\nGAP", offset=-180, fs=6, col="#20A020")
 
     title_block(ax)
 
@@ -443,18 +398,16 @@ def floor_plan():
 def egress_detail():
     """Sheet 2 — Cargo door end egress detail.
 
-    Zoomed plan view showing the panel swung 180° OUTWARD (exterior)
-    and waste drums in operational position. The panel hinges on the
-    pinhole-wall edge (Yd=0) and swings into the exterior space (X<0).
+    Zoomed plan view showing the panel swung 180° OUTWARD (exterior).
+    The panel hinges on the pinhole-wall edge (Yd=0) and swings into
+    the exterior space (X<0).
 
     Physical constraints that prevent inward opening:
       • Light trap drum (750mm dia) would cross container wall
       • Film plane rails at X=625 (floor + ceiling) block swing path
-      • Waste drums at X=40–620 are directly behind the panel
 
-    Egress: person walks between the two waste drums (1202mm gap)
-    and out through the door opening, which is fully clear once
-    the panel is swung outward.
+    Egress: with drums eliminated (rev 5), the full container width
+    (2362mm) is clear for egress once the panel is swung outward.
     """
     import math
 
@@ -540,33 +493,7 @@ def egress_detail():
             f"FILM PLANE RAIL\n(floor + ceiling)\nX={RAIL_X_L}",
             color=C_RAIL, fontsize=5.5, ha="center", va="bottom", **FONT, zorder=8)
 
-    # ── Waste drums — operational position ───────────────────────────────────
-    for drum_cy, label in [
-        (DRUM_LZ_YD, "DRUM\nD-1\n208L"),
-        (DRUM_FZ_YD, "DRUM\nD-2\n208L"),
-    ]:
-        ax.add_patch(Circle((DRUM_LZ_CX, drum_cy), DRUM_EQ_R,
-                            fc=C_WASTE_DRUM, ec=C_OUT, lw=1.5, alpha=0.85, zorder=6))
-        ax.text(DRUM_LZ_CX, drum_cy, label, color="#FFFFFF", fontsize=6,
-                ha="center", va="center", fontweight="bold", **FONT, zorder=7)
-
-    # Drum X extent annotation
-    drum_left  = DRUM_LZ_CX - DRUM_EQ_R   # 40
-    drum_right = DRUM_LZ_CX + DRUM_EQ_R   # 620
-    dim_h(ax, drum_left, drum_right, -PAD + 80,
-          f"DRUMS X={drum_left}–{drum_right}mm", offset=50, fs=6)
-
-    # ── V-groove dolly tracks ────────────────────────────────────────────────
-    C_TRACK  = "#8B7355"
-    C_BRIDGE = "#4A90D9"
-    TRACK_W  = 10
-    for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
-        for offset in [-80, 80]:
-            ty = drum_yd + offset
-            ax.add_patch(Rectangle(
-                (PANEL_CORNER_T, ty - TRACK_W/2),
-                PERM_TRACK_END - PANEL_CORNER_T, TRACK_W,
-                fc=C_TRACK, ec=C_OUT, lw=0.3, alpha=0.4, zorder=4))
+    # (waste drums and dolly tracks eliminated in rev 5 — left zone clear)
 
     # ── Panel open 180° OUTWARD ──────────────────────────────────────────────
     # Hinge axis: vertical line at X=0, Yd=0 (pinhole wall corner).
@@ -680,33 +607,29 @@ def egress_detail():
                    "EVAP\nCOOLER", zorder=6)
 
     # ── EGRESS PATH ──────────────────────────────────────────────────────────
-    # With panel open outward, the door opening at X=0 is fully clear.
-    # Person walks between the two waste drums (Yd gap = 1202mm) toward
-    # the door and exits through the open frame.
+    # With drums eliminated (rev 5), the full container width is clear for egress.
+    # Panel opens outward, door opening at X=0 is fully unobstructed.
+    EGRESS_GAP    = C_WID   # full width clear
+    EGRESS_MID_Y  = C_WID / 2
 
-    EGRESS_GAP_LO = DRUM_LZ_YD_HI   # 580mm
-    EGRESS_GAP_HI = DRUM_FZ_YD_LO   # 1782mm
-    EGRESS_GAP    = EGRESS_GAP_HI - EGRESS_GAP_LO  # 1202mm
-    EGRESS_MID_Y  = (EGRESS_GAP_LO + EGRESS_GAP_HI) / 2
-
-    # Egress arrow: from interior, between drums, through door to exterior
+    # Egress arrow: from interior, through door to exterior
     ax.annotate("", xy=(-200, EGRESS_MID_Y),
-                xytext=(drum_right + 100, EGRESS_MID_Y),
+                xytext=(ZONE_L_END - 60, EGRESS_MID_Y),
                 arrowprops=dict(arrowstyle="->", color=C_EGRESS, lw=2.8,
                                 linestyle=":", mutation_scale=15),
                 zorder=10)
-    ax.text(DRUM_LZ_CX, EGRESS_MID_Y + 70,
-            f"EGRESS PATH — {EGRESS_GAP}mm CLEAR",
+    ax.text(ZONE_L_END / 2, EGRESS_MID_Y + 70,
+            f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color=C_EGRESS, fontsize=9, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)
-    ax.text(DRUM_LZ_CX, EGRESS_MID_Y - 70,
-            "(panel open outward, door frame clear)",
+    ax.text(ZONE_L_END / 2, EGRESS_MID_Y - 70,
+            "(panel open outward, no obstructions)",
             color=C_EGRESS, fontsize=6.5, ha="center", va="top",
             **FONT, alpha=0.8, zorder=10)
 
     # Egress gap dimension line
-    dim_v(ax, -150, EGRESS_GAP_LO, EGRESS_GAP_HI,
-          f"{EGRESS_GAP}mm\nEGRESS\nGAP", offset=-180, fs=7, col=C_EGRESS)
+    dim_v(ax, -150, 0, C_WID,
+          f"{EGRESS_GAP}mm\nFULL\nWIDTH", offset=-180, fs=7, col=C_EGRESS)
 
     # ── Clearance summary ────────────────────────────────────────────────────
     note_x = 850
@@ -714,16 +637,17 @@ def egress_detail():
     ax.text(note_x, note_y,
             "EGRESS CLEARANCE SUMMARY\n"
             "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-            f"Gap between drums (Yd):   {EGRESS_GAP}mm (47.3\")\n"
+            f"Clear width (full container):   {EGRESS_GAP}mm ({EGRESS_GAP/25.4:.0f}\")\n"
             f"Avg. male shoulder width:   460mm (18\")\n"
             f"Emergency egress min:   610mm (24\")\n"
             f"Standard doorway min:   762mm (30\")\n"
             "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
             f"Margin over emergency min:   {EGRESS_GAP - 610}mm\n"
-            "Face-forward egress:   YES\n\n"
+            "Face-forward egress:   YES\n"
+            "Left zone obstructions:   NONE\n\n"
             "PANEL OPENS OUTWARD ONLY\n"
-            "Inward blocked by: drums,\n"
-            "film plane rails, drum diameter",
+            "Inward blocked by:\n"
+            "film plane rails at X=625",
             color=C_OUT, fontsize=6.5, ha="center", va="center",
             **FONT, zorder=10,
             bbox=dict(boxstyle="round,pad=0.5", fc="#F0FFF0",
@@ -733,7 +657,7 @@ def egress_detail():
     ax.text(0.01, 0.99, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
             transform=ax.transAxes, color=C_DIM, fontsize=7, va="top", **FONT)
     ax.text(0.01, 0.975,
-            "CARGO DOOR EGRESS DETAIL — PANEL OPEN 180° OUTWARD, DRUMS IN OPERATIONAL POSITION",
+            "CARGO DOOR EGRESS DETAIL — PANEL OPEN 180° OUTWARD (NO DRUM OBSTRUCTIONS)",
             transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", va="top", **FONT)
     ax.text(0.99, 0.99, "SCALE ~1:25  ·  SHEET 2 OF 2",
             transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)

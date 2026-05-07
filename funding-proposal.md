@@ -10,7 +10,7 @@
 
 ## 1. The Hook
 
-A standard shipping container sits in a field. Inside, on 103 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 13 feet wide and 8 feet tall. The people who made it will wade into the image to develop it.
+A standard shipping container sits in a field. Inside, on 116 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 15 feet wide and 8 feet tall. The people who made it will wade into the image to develop it.
 
 The container is a camera.
 

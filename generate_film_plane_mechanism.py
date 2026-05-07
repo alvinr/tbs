@@ -277,9 +277,9 @@ def sheet1():
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
-    # Legend box — bottom right
+    # Legend box — right side, above title block
     leg_x = L + 200
-    leg_y = -550
+    leg_y = 200
     ax.text(leg_x + 500, leg_y + 160, "LEGEND", color=WHITE,
             fontsize=8, fontweight="bold", ha="center", **FONT)
     for i, (name, d_TL, d_TR, d_BL, d_BR, col, ls) in enumerate(CONFIGS):

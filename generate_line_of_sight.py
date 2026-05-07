@@ -267,7 +267,7 @@ ax.annotate(f"Pinhole  X={PH_X}mm",
 # Optical axis
 ax.annotate("", xy=(PH_X, FP_Y - 20), xytext=(PH_X, 20),
             arrowprops=dict(arrowstyle="->", color=C_CL, lw=1.0))
-ax.text(PH_X + 80, FP_Y / 2, "Optical axis",
+ax.text(PH_X + 80, FP_Y / 2 + 400, "Optical axis",
         ha="left", va="center", fontsize=FS_SM, color=C_CL, zorder=10)
 
 # ── Equipment footprints ──────────────────────────────────────────────────────
@@ -371,7 +371,7 @@ ax.text(-250, PH_H + 70, f"Pinhole\nH={PH_H}mm",
 # Optical axis
 ax.plot([0, FP_Y], [PH_H, PH_H], color=C_CL, lw=0.8, ls="--",
         dashes=(8, 4), zorder=3)
-ax.text(FP_Y / 2, PH_H + 55, "Optical axis",
+ax.text(FP_Y / 2 + 600, PH_H + 55, "Optical axis",
         ha="center", va="bottom", fontsize=FS_SM - 1, color=C_CL, zorder=10)
 
 # ── Equipment in elevation ────────────────────────────────────────────────────

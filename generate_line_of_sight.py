@@ -45,13 +45,11 @@ from tbs_constants import (
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-    DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
-    DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    IBC_FAR_Y, WASTE_IBC_Y,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
-    C_LT_DRUM, C_WASTE_DRUM, C_EVAP, C_ELEC, C_BATT, C_PUMP,
+    C_LT_DRUM, C_WASTE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP,
     C_BLUE_IBC, C_BROWN_IBC, C_WALL,
 )
 
@@ -83,17 +81,7 @@ EQUIPMENT = [
          h_bot=0, h_top=DRUM_H_LT,
          color=C_LT_DRUM, zone="left"),
 
-    # Black-water drums — one per Yd corner, both at CX=310mm (rev 4: unstacked)
-    dict(name="55-gal drum D-1 (near, pinhole wall corner)",
-         x=DRUM_LZ_CX - DRUM_EQ_R, yd=DRUM_LZ_YD_LO,
-         w=DRUM_EQ_D, d=DRUM_EQ_D,
-         h_bot=0, h_top=DRUM_EQ_H,
-         color=C_WASTE_DRUM, zone="left"),
-    dict(name="55-gal drum D-2 (far, film plane corner)",
-         x=DRUM_FZ_CX - DRUM_EQ_R, yd=DRUM_FZ_YD_LO,
-         w=DRUM_EQ_D, d=DRUM_EQ_D,
-         h_bot=0, h_top=DRUM_EQ_H,
-         color=C_WASTE_DRUM, zone="left"),
+    # (waste drums eliminated in rev 5 — left zone is light trap only)
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)
     # Evap cooler relocated here (rev 4) — X=930–1530mm, Yd=0 (pinhole wall face)
@@ -117,15 +105,20 @@ EQUIPMENT = [
          color=C_PUMP, zone="wall"),
 
     # RIGHT END ZONE — IBCs only, right-justified to end wall
-    dict(name="Blue IBC stack (×2)",
+    dict(name="Blue IBC #1 + Brown (near column)",
          x=IBC_COL_X, yd=BLUE_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_STK,
          color=C_BLUE_IBC, zone="right"),
 
-    dict(name="Brown IBC ×1",
+    dict(name="Brown IBC (bottom near)",
          x=IBC_COL_X, yd=BROWN_IBC_Y, w=IBC_W, d=IBC_D,
          h_bot=0, h_top=IBC_H_600,
          color=C_BROWN_IBC, zone="right"),
+
+    dict(name="Blue IBC #2 + Waste IBC (far column)",
+         x=IBC_COL_X, yd=IBC_FAR_Y, w=IBC_W, d=IBC_D,
+         h_bot=0, h_top=IBC_H_STK,
+         color=C_WASTE_IBC, zone="right"),
 
     # OPTICAL ZONE — processing tray on floor
     dict(name="Processing tray (304 SS)",

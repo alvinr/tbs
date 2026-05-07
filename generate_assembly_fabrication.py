@@ -39,16 +39,13 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
-    DRUM_EQ_D, DRUM_EQ_H, DRUM_EQ_R,
-    DRUM_LZ_CX, DRUM_FZ_CX,
-    DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
-    DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
+    IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
     RAIL_X_L, RAIL_X_R,
     FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
-    C_WASTE_DRUM, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
+    C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
 
@@ -238,14 +235,7 @@ def sheet1():
             fontsize=FS_SM-1.5, color="white", zorder=5)
 
     # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=330mm.
-    # In this side elevation (horizontal=X) both drums collapse to the same X position.
-    # Left edge flush with corner panel inner face (X=PANEL_CORNER_T=40mm).
-    _dlx0 = DRUM_LZ_CX - DRUM_EQ_R   # = 330 - 290 = 40mm; spans 40 → 620mm
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.35, zorder=3)  # far (behind)
-    equip_blk(ax, _dlx0, RAIL_OFF, DRUM_EQ_D, DRUM_EQ_H, C_WASTE_DRUM, alpha=0.70, zorder=7)  # near (front)
-    ax.text(DRUM_LZ_CX, RAIL_OFF + DRUM_EQ_H/2,
-            "WASTE\nDRUMS\n×2\n(near+far\ncorners)",
-            ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=8)
+    # (waste drums eliminated in rev 5 — left zone is light trap only)
 
     # ── PINHOLE WALL EQUIPMENT (flush on near long wall) ──────────────────────
     # Electrical panel
@@ -305,12 +295,11 @@ def sheet1():
         (EVAP_X+EVAP_W/2,         RAIL_OFF+EVAP_H/2,     "4"),  # Evap cooler
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
-        (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # Blue IBCs
-        (DRUM_LZ_CX,              RAIL_OFF+DRUM_EQ_H/2,  "8"),  # 55-gal drums (left zone)
-        (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "9"),  # Pump
-        (-WALL_T/2, FAN_B_H,      "10"),  # Fan B exhaust (door end, HIGH)
-        (C_LEN+WALL_T/2, FAN_A_H, "11"),  # Fan A intake (far end, LOW)
-        ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "12"),  # Processing tray
+        (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # IBCs (4× 2×2 stack)
+        (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "8"),  # Pump
+        (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
+        (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
+        ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)
@@ -354,12 +343,11 @@ def sheet1():
         ("4",  "Evaporative cooler",                 "TBS-EL01"),
         ("5",  "Electrical panel + battery bank",    "TBS-EL01"),
         ("6",  "Hinged panel + revolving drum",      "TBS-LT01"),
-        ("7",  "Blue IBC stack x2 (front) + Brown x1 (behind, right zone)","TBS-WS01"),
-        ("8",  "55-gal drums ×2 (left zone — near corner D-1 + far corner D-2)","TBS-WS01"),
-        ("9",  "Pump manifold",                      "TBS-WS01"),
+        ("7",  "4× IBC 2×2 stack (right zone — Blue ×2 top, Brown + Waste bottom)","TBS-WS01"),
+        ("8",  "Pump manifold",                      "TBS-WS01"),
+        ("9",  "Exhaust fan",                        "TBS-EL01"),
         ("10", "Intake fan",                         "TBS-EL01"),
-        ("11", "Exhaust fan",                        "TBS-EL01"),
-        ("12", "Processing tray (304 SS, 2 panels)", "TBS-WS01"),
+        ("11", "Processing tray (304 SS, 2 panels)", "TBS-WS01"),
     ]
     for i, (num, desc, ref) in enumerate(refs):
         yy = REF_Y - 75 - i*REF_DY
@@ -506,20 +494,7 @@ def sheet2():
     ax.text(EVAP_Y + EVAP_D/2, RAIL_OFF + EVAP_H/2, "Evap\n(behind)", ha="center", va="center",
             fontsize=FS_SM-2, color="#1A8A76", alpha=0.8, zorder=3)
 
-    # ── 55-gal waste drums — ghost outlines (at X=310mm depth, behind this face) ─
-    # Near drum D-1: Yd=25–605mm (pinhole wall corner) — left of revolving drum
-    # Far drum  D-2: Yd=1757–2337mm (far wall corner)  — right of revolving drum
-    # Shown dashed (ghost) because they are at depth behind the cargo door face.
-    for yd_lo, label in [(DRUM_LZ_YD_LO, "D-1\n(near wall)"),
-                          (DRUM_FZ_YD_LO, "D-2\n(far wall)")]:
-        ax.add_patch(mpatches.Rectangle(
-            (yd_lo, RAIL_OFF), DRUM_EQ_D, DRUM_EQ_H,
-            facecolor=C_WASTE_DRUM, edgecolor="#5A4A3A",
-            linewidth=1.0, linestyle="--", alpha=0.25, zorder=2))
-        ax.text(yd_lo + DRUM_EQ_D/2, RAIL_OFF + DRUM_EQ_H/2,
-                f"WASTE\nDRUM\n{label}\nØ{DRUM_EQ_D}×{DRUM_EQ_H}mm",
-                ha="center", va="center", fontsize=FS_SM-2, color="#5A4A3A",
-                alpha=0.7, zorder=3)
+    # (waste drums eliminated in rev 5 — left zone is light trap only)
 
     # ── Safelight ─────────────────────────────────────────────────────────────
     ax.plot([100, C_WID-100], [C_HGT-100, C_HGT-100],

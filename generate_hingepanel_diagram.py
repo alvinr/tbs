@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import os
-from tbs_constants import svg_path, SVG_DIR, C_WASTE_DRUM, C_LT_DRUM
+from tbs_constants import svg_path, SVG_DIR, C_LT_DRUM
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -1282,10 +1282,7 @@ def sheet4():
     import matplotlib.patches as mpatches
     from tbs_constants import (C_WID, PANEL_CORNER_T, PANEL_CENTER_T,
                                PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
-                               DRUM_SLIDE, DRUM_EQ_D, DRUM_EQ_R, DRUM_LZ_CX,
-                               DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, DRUM_FZ_YD_LO,
-                               DRUM_FZ_YD_HI, ZONE_L_END, WALL_T as C_WALL_T,
-                               PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END)
+                               ZONE_L_END, WALL_T as C_WALL_T)
 
     # ── Layout constants ─────────────────────────────────────────────────────
     # Plan view:  horizontal = Yd (container width, 0 → C_WID)
@@ -1294,15 +1291,11 @@ def sheet4():
     PANEL_CT = PANEL_CORNER_T   # = 40mm
     PANEL_CC = PANEL_CENTER_T   # = 120mm
     SLIDE_P  = PANEL_SLIDE      # = 300mm
-    SLIDE_D  = DRUM_SLIDE       # = 305mm
     DR       = DRUM_R           # = 375mm (light trap drum)
 
     # Positions in each mode (X = depth from wall inner face)
     OP_PANEL_X = 0
     TR_PANEL_X = SLIDE_P        # = 300
-
-    OP_DRUM_CX = DRUM_LZ_CX    # = 330mm
-    TR_DRUM_CX = OP_DRUM_CX + SLIDE_D   # = 635mm
 
     # ── Figure — landscape, Yd horizontal, X vertical ────────────────────────
     PAD_L = 350     # left of Yd=0 — room for dims + slide labels
@@ -1401,27 +1394,13 @@ def sheet4():
                     ha="center", va="center", fontsize=7, color=C_OUT,
                     fontweight="bold", **FONT, alpha=alpha, zorder=15)
 
-    # ── Helper: draw waste drums at given CX ─────────────────────────────────
-    def draw_drums(cx, alpha=1.0, label=""):
-        """Draw D-1 and D-2 waste drums. cx is X position (vertical)."""
-        r = DRUM_EQ_R
-        for yd_lo, yd_hi, name in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI, "D-1"),
-                                    (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI, "D-2")]:
-            yd_c = (yd_lo + yd_hi) / 2
-            ax.add_patch(Circle((yd_c, cx), r,
-                                fc=C_WASTE_DRUM, ec=C_OUT, lw=1.0,
-                                alpha=alpha, zorder=8))
-            ax.text(yd_c, cx, f"{name}",
-                    ha="center", va="center", fontsize=6.5, color=C_OUT,
-                    fontweight="bold", **FONT, alpha=alpha, zorder=15)
+    # (waste drums eliminated in rev 5 — panel slide only)
 
     # ── Draw OPERATIONAL position (solid) ─────────────────────────────────────
     draw_panel(OP_PANEL_X, alpha=0.9, label="OPERATIONAL\nPANEL")
-    draw_drums(OP_DRUM_CX, alpha=0.85)
 
     # ── Draw TRANSPORT position (ghost) ───────────────────────────────────────
     draw_panel(TR_PANEL_X, alpha=0.20, label="TRANSPORT\nPANEL")
-    draw_drums(TR_DRUM_CX, alpha=0.20)
 
     # ── Slide arrows — panel ─────────────────────────────────────────────────
     # Arrow between operational and transport panel positions, in the gap
@@ -1439,18 +1418,7 @@ def sheet4():
             ha="left", va="center", fontsize=6.5, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Slide arrows — drums ─────────────────────────────────────────────────
-    # Arrow between operational and transport D-2 position (far drum, less crowded)
-    d2_yd = (DRUM_FZ_YD_LO + DRUM_FZ_YD_HI) / 2
-    ax.annotate("", xy=(d2_yd, TR_DRUM_CX), xytext=(d2_yd, OP_DRUM_CX),
-                arrowprops=dict(arrowstyle="->,head_length=0.6,head_width=0.4",
-                                color="#2060A0", lw=2.0,
-                                connectionstyle="arc3,rad=-0.3",
-                                mutation_scale=12), zorder=15)
-    ax.text(d2_yd + DRUM_EQ_R + 75, (OP_DRUM_CX + TR_DRUM_CX) / 2,
-            f"DRUM SLIDE\n{SLIDE_D}mm",
-            ha="left", va="center", fontsize=6.5, color="#2060A0",
-            fontweight="bold", **FONT, zorder=15)
+    # (drum slide arrows removed — drums eliminated in rev 5)
 
     # ── HGR20 rail indicators (along Yd edges, near floor/ceiling) ───────────
     RAIL_X_START = -30
@@ -1461,21 +1429,7 @@ def sheet4():
     ]:
         ax.plot([yd_pos, yd_pos], [RAIL_X_START, RAIL_X_END],
                 color="#404040", lw=3.0, zorder=3, alpha=0.5)
-    # ── V-groove track indicators (paired, per drum) ─────────────────────────
-    # Permanent section and removable bridge section shown separately
-    for yd_lo, yd_hi in [(DRUM_LZ_YD_LO, DRUM_LZ_YD_HI),
-                          (DRUM_FZ_YD_LO, DRUM_FZ_YD_HI)]:
-        yd_c = (yd_lo + yd_hi) / 2
-        for yd_off in [-150, 150]:
-            # Permanent track (solid)
-            ax.plot([yd_c + yd_off, yd_c + yd_off],
-                    [PANEL_CORNER_T, PERM_TRACK_END],
-                    color="#2060A0", lw=2.5, zorder=3, alpha=0.35)
-            # Bridge section (dashed)
-            ax.plot([yd_c + yd_off, yd_c + yd_off],
-                    [BRIDGE_TRACK_START, BRIDGE_TRACK_END],
-                    color="#4A90D9", lw=2.5, zorder=3, alpha=0.55,
-                    ls="--", dashes=(6, 3))
+    # (V-groove tracks removed — dolly tracks eliminated in rev 5)
 
     # ── Carriage beam (dashed rectangle, full height at X=0) ─────────────────
     BEAM_W = 60
@@ -1514,19 +1468,7 @@ def sheet4():
            (C_WID / 2 + 350, PANEL_CC + 60),
            f"{PANEL_CC}mm CENTER ZONE", col=C_DIM, fs=6)
 
-    # Waste drum diameter (horizontal dim above D-1, in Yd direction)
-    _d1_yd = (DRUM_LZ_YD_LO + DRUM_LZ_YD_HI) / 2
-    _dim_x = OP_DRUM_CX + DRUM_EQ_R + 40
-    dim_h(ax, _d1_yd - DRUM_EQ_R, _d1_yd + DRUM_EQ_R, _dim_x,
-          f"Ø{DRUM_EQ_D}mm", offset=5, fs=6)
-
-    # Drum X range (vertical dim on far side of D-2)
-    _dl_x = OP_DRUM_CX - DRUM_EQ_R
-    _dr_x = OP_DRUM_CX + DRUM_EQ_R
-    _d2_yd = (DRUM_FZ_YD_LO + DRUM_FZ_YD_HI) / 2
-    _dim_yd_r = _d2_yd + DRUM_EQ_R + 50
-    dim_v(ax, _dim_yd_r, _dl_x, _dr_x,
-          f"X={_dl_x}–{_dr_x}mm", offset=15, fs=6)
+    # (waste drum dimensions removed — drums eliminated in rev 5)
 
     # Step transition Yd widths (top edge, well above ZONE_L_END)
     _dim_top = ZONE_L_END + 60
@@ -1539,12 +1481,11 @@ def sheet4():
 
     # ── Notes (left-justified, bottom left) ─────────────────────────────────
     notes = [
-        f"1. TRANSPORT MODE: Slide drums inward {SLIDE_D}mm, then slide panel inward {SLIDE_P}mm.",
+        f"1. TRANSPORT MODE: Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
-        "3. Single-person operation, 15–20 minutes per mode conversion.",
+        "3. Single-person operation, ~5 minutes per mode conversion.",
         "4. Panel locks: 2× Destaco 207-U toggle clamps per position.",
-        "5. Drum locks: M12 spring plunger pins at operational + transport holes.",
-        "6. Fixed door frame provides EPDM seal landing — seal unchanged.",
+        "5. Fixed door frame provides EPDM seal landing — seal unchanged.",
     ]
     notes_x = YD_LO + 25
     for i, note in enumerate(notes):
@@ -1559,7 +1500,6 @@ def sheet4():
         (C_ALUM,   0.9,  "Corner zone (40mm)"),
         (C_STEEL,  0.9,  "Center zone (120mm)"),
         (C_LT_DRUM, 0.7,  "Light trap drum"),
-        (C_WASTE_DRUM, 0.85, "55-gal waste drum"),
         (C_STEEL,  0.20, "Transport (ghost)"),
     ]
     for i, (c, a, lbl) in enumerate(swatches):

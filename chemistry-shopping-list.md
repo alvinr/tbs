@@ -67,8 +67,8 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 
 | Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ammonium Iron(III) Oxalate, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-ferric-oxalate](https://stores.photoformulary.com/ammonium-ferric-oxalate/) | 454 g (1 lb) | 18 | ~$35† | ~$630 |
-| Ammonium Iron(III) Oxalate (alt.) | **Bostick & Sullivan** | [bostick-sullivan.com/product/ammonium-ferric-oxalate](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500 g | 16 | ~$30 | ~$480 |
+| Ammonium Iron(III) Oxalate, 1 lb | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-ferric-oxalate](https://stores.photoformulary.com/ammonium-ferric-oxalate/) | 454 g (1 lb) | 19 | ~$35† | ~$665 |
+| Ammonium Iron(III) Oxalate (alt.) | **Bostick & Sullivan** | [bostick-sullivan.com/product/ammonium-ferric-oxalate](https://www.bostick-sullivan.com/product/ammonium-ferric-oxalate/) | 500 g | 17 | ~$30 | ~$510 |
 | Potassium Ferricyanide, 1 kg | **Bostick & Sullivan** | [bostick-sullivan.com/product/potassium-ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 1,000 g | 4 | **$24.29†** | **$97** |
 | Ammonium Dichromate, 100 g | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 5 | ~$12 | ~$60 |
 | Unbleached muslin, 60" wide | **Fabric Direct** | [fabricdirect.com — 150-yd roll](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 150-yd roll | 9 | ~$100 | ~$900 |
@@ -104,10 +104,10 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 | Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ammonium Dichromate, 1 kg | **Chem-Impex** | [chemimpex.com/products/37420](https://www.chemimpex.com/products/37420) | 1 kg | 9 | **$142.41†** | **$1,282** |
-| Ammonium Dichromate (alt.) | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 83 | ~$12 | ~$996 |
-| Gum Arabic Powder, bulk | **Gum Arabic USA** | [gumarabicusa.com/gum-arabic-bulk](https://www.gumarabicusa.com/gum-arabic-bulk) | Contact for 28 kg quote | — | ~$18–22/kg | ~$504–616 |
-| Gum Arabic Powder (alt.) | **Jedwards International** | [bulknaturaloils.com/acacia-gum-seyal-organic](https://bulknaturaloils.com/acacia-gum-seyal-organic.html) | Bulk kg | 28 | ~$20/kg | ~$560 |
+| Ammonium Dichromate, 1 kg | **Chem-Impex** | [chemimpex.com/products/37420](https://www.chemimpex.com/products/37420) | 1 kg | 10 | **$142.41†** | **$1,424** |
+| Ammonium Dichromate (alt.) | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 93 | ~$12 | ~$1,116 |
+| Gum Arabic Powder, bulk | **Gum Arabic USA** | [gumarabicusa.com/gum-arabic-bulk](https://www.gumarabicusa.com/gum-arabic-bulk) | Contact for 30 kg quote | — | ~$18–22/kg | ~$540–660 |
+| Gum Arabic Powder (alt.) | **Jedwards International** | [bulknaturaloils.com/acacia-gum-seyal-organic](https://bulknaturaloils.com/acacia-gum-seyal-organic.html) | Bulk kg | 30 | ~$20/kg | ~$600 |
 | Dry pigment — raw umber or lamp black | **Kremer Pigments** | kremer-pigmente.com | 1 kg | 3 | ~$20–40/kg | ~$60–120 |
 | Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
@@ -136,11 +136,11 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 | Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Silver Nitrate, 1 lb (453 g) | **Photographers' Formulary** | [stores.photoformulary.com/silver-nitrate](https://stores.photoformulary.com/silver-nitrate-class-5-1-ground-ups-only-dea-form-required-choose-ups-ground-shipping-at-checkout/) | 453 g | 5 | ~$300–350 est. | ~$1,500–1,750 |
-| Silver Nitrate, 100 g | **B&H Photo** | [bhphotovideo.com — Photographers Formulary](https://www.bhphotovideo.com/c/product/124010-REG/Photographers_Formulary_10_1140_100G_Silver_Nitrate_100.html) | 100 g | 21 | ~$110–130 est. | ~$2,310–2,730 |
-| Silver Nitrate (bulk, lab grade) | **Chem-Impex** | [chemimpex.com/products/00265](https://www.chemimpex.com/products/00265) | 100 g / 500 g | Contact for 3 kg quote | ~$260/100g est. | ~$5,330 |
+| Silver Nitrate, 1 lb (453 g) | **Photographers' Formulary** | [stores.photoformulary.com/silver-nitrate](https://stores.photoformulary.com/silver-nitrate-class-5-1-ground-ups-only-dea-form-required-choose-ups-ground-shipping-at-checkout/) | 453 g | 6 | ~$300–350 est. | ~$1,800–2,100 |
+| Silver Nitrate, 100 g | **B&H Photo** | [bhphotovideo.com — Photographers Formulary](https://www.bhphotovideo.com/c/product/124010-REG/Photographers_Formulary_10_1140_100G_Silver_Nitrate_100.html) | 100 g | 23 | ~$110–130 est. | ~$2,530–2,990 |
+| Silver Nitrate (bulk, lab grade) | **Chem-Impex** | [chemimpex.com/products/00265](https://www.chemimpex.com/products/00265) | 100 g / 500 g | Contact for 3 kg quote | ~$260/100g est. | ~$5,980 |
 | Silver Nitrate (bulk) | **Lab Alley** | [laballey.com/products/silver-nitrate-lab](https://www.laballey.com/products/silver-nitrate-lab) | Various | Contact for bulk | Market rate | Contact |
-| Ferric Ammonium Citrate, 1 lb | **Photographers' Formulary** | As cyanotype above | 454 g | 14 | ~$30 | ~$420 |
+| Ferric Ammonium Citrate, 1 lb | **Photographers' Formulary** | As cyanotype above | 454 g | 13 | ~$30 | ~$390 |
 | Tartaric Acid, 1 kg | **Lab Alley** | [laballey.com/products/tartaric-acid-nf-fcc](https://www.laballey.com/products/tartaric-acid-nf-fcc) | 1 kg | 1 | ~$15–20 | ~$20 |
 | Tartaric Acid (winemaking grade) | **Enartis USA** | [shop-usa.enartis.com/tartaric-acid-food-grade-3](https://shop-usa.enartis.com/tartaric-acid-food-grade-3) | Various | 1 kg adequate | ~$15 | ~$15 |
 | Sodium Thiosulfate, 25 kg | **Ingredient Depot** | [ingredientdepot.com/products/sodium-thiosulphate-25-kgs](https://ingredientdepot.com/products/sodium-thiosulphate-25-kgs) | 25 kg bag | 1 | ~$40–55 | ~$50 |

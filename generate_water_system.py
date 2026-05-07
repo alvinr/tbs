@@ -22,12 +22,13 @@ from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from tbs_constants import (
     IBC_COL_X, ZONE_L_END, ZONE_R_START,
+    FP_X_L, FP_X_R,
     DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
     DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
     DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
     PANEL_CORNER_T, PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
     DRUM_SLIDE,
-    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_PUMP,
+    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_PUMP, C_WALL,
     svg_path, SVG_DIR,
 )
 import os
@@ -645,18 +646,35 @@ pipe(ax2, 5.0, 4.75, 11.5, 4.75, C_BLUE, lw=3)
 ax2.text(8.25, 4.88, "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
          ha="center", fontsize=7, color=C_BLUE)
 
-# Processing area berm
-ax2.add_patch(plt.Rectangle((4.8, 0.3), 6.9, 4.3, fc=C_PROC, ec="#388E3C",
-                             lw=2, ls="--", zorder=1, alpha=0.5))
-ax2.text(8.25, 4.45, "PROCESSING CONTAINMENT ZONE (~22 sq m)",
+# Processing tray (304 SS, two panels, 50mm rim)
+TRAY_X0 = (FP_X_L + 20) * SX   # left edge in drawing units
+TRAY_X1 = (FP_X_R - 20) * SX   # right edge in drawing units
+TRAY_Y0 = 60 * SY              # starts 60mm from pinhole wall
+TRAY_DY = 2200 * SY            # depth in drawing units
+ax2.add_patch(plt.Rectangle((TRAY_X0, TRAY_Y0), TRAY_X1 - TRAY_X0, TRAY_DY,
+              fc=C_PROC, ec="#388E3C", lw=2, zorder=1, alpha=0.5))
+# Panel split line (two panels, each 1,992mm wide)
+tray_mid_x = (TRAY_X0 + TRAY_X1) / 2
+ax2.plot([tray_mid_x, tray_mid_x], [TRAY_Y0, TRAY_Y0 + TRAY_DY],
+         color="#388E3C", lw=1.2, ls="--", zorder=2)
+ax2.text((TRAY_X0 + TRAY_X1) / 2, TRAY_Y0 + TRAY_DY - 0.15,
+         "PROCESSING TRAY (304 SS, 50mm RIM, 2 PANELS)",
          ha="center", fontsize=7, color="#2E7D32")
+ax2.text(tray_mid_x - 0.8, TRAY_Y0 + TRAY_DY / 2,
+         "PANEL A\n1,992 × 2,200mm", ha="center", fontsize=6, color="#388E3C")
+ax2.text(tray_mid_x + 0.8, TRAY_Y0 + TRAY_DY / 2,
+         "PANEL B\n1,992 × 2,200mm", ha="center", fontsize=6, color="#388E3C")
 
-# Floor drain
-fd = plt.Circle((8.25, 0.5), 0.18, fc="white", ec="#388E3C", lw=1.8, zorder=4)
+# Tray drain (gravity drain to 3W-DV-02)
+drain_x = (TRAY_X0 + TRAY_X1) / 2
+drain_y = TRAY_Y0 + 0.3
+fd = plt.Circle((drain_x, drain_y), 0.18, fc="white", ec="#388E3C", lw=1.8, zorder=4)
 ax2.add_patch(fd)
-ax2.plot([8.07, 8.43], [0.5, 0.5], color="#388E3C", lw=1.2, zorder=5)
-ax2.plot([8.25, 8.25], [0.32, 0.68], color="#388E3C", lw=1.2, zorder=5)
-ax2.text(8.25, 0.18, "FLOOR DRAIN\n3W-DV-02", ha="center",
+ax2.plot([drain_x - 0.18, drain_x + 0.18], [drain_y, drain_y],
+         color="#388E3C", lw=1.2, zorder=5)
+ax2.plot([drain_x, drain_x], [drain_y - 0.18, drain_y + 0.18],
+         color="#388E3C", lw=1.2, zorder=5)
+ax2.text(drain_x, drain_y - 0.32, "TRAY DRAIN\n3W-DV-02", ha="center",
          fontsize=6, color="#388E3C")
 
 # Left end zone shading (X=0–625mm = drum zone)

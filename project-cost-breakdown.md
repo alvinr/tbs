@@ -221,7 +221,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 | Category | Low† | High† |
 |----------|------|-------|
-| Water storage (3× IBC totes + 2× 55-gal drums) | $365 | $615 |
+| Water storage (4× IBC totes, 2×2 stack) | $372 | $674 |
 | Pumps and pressure accumulator | $165 | $195 |
 | Filter skid (3× Big Blue housings + cartridges) | $265 | $370 |
 | Valves and fittings | $263 | $398 |

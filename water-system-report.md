@@ -12,9 +12,9 @@
 
 The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 8–10 full-size prints between resupply runs
+- Stores sufficient clean water for 5–7 full-size prints between resupply runs
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
-- Contains all waste water in closed, transportable drums for proper off-site disposal
+- Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
 
 **Three circuits:**
@@ -23,7 +23,7 @@ The camera operates in remote locations with no mains water or drainage. This do
 |---------|-------------|---------|---------|
 | **Blue** | Blue — clean | Fresh water supply for processing | 2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 600L IBC tote, Y-stacked behind Blue IBCs |
-| **Black** | Black — waste | Heavily contaminated water; sealed drums for off-site disposal | 2× 55 gal HDPE drums (110 gal), side-by-side in right end zone |
+| **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 600L IBC tote (IBC-4, ~158 gal), Y-stacked in right end zone |
 
 ---
 
@@ -82,13 +82,13 @@ Volume per flood = 140 sq ft × (6 mm / 304.8) = 140 × 0.0197 ft = 2.76 cu ft
 
 ### Storage capacity vs. print count
 
-| Scenario | Blue consumed per print | Prints from 550 gal Blue | Brown recycled |
+| Scenario | Blue consumed per print | Prints from 316 gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
-| No recycling | 63 gal (3 × 21) | ~8 prints | 0 |
-| With recycling (wash 2 from Brown) | 42 gal (2 × 21) | **~13 prints** | ~168 gal reused |
-| Brown recycle limit (3 passes) | — | — | 110 gal max before going to Black |
+| No recycling | 63 gal (3 × 21) | ~5 prints | 0 |
+| With recycling (wash 2 from Brown) | 42 gal (2 × 21) | **~7 prints** | ~105 gal reused |
+| Brown recycle limit (3 passes) | — | — | 158 gal max before going to Black |
 
-**Design target: 10 prints per resupply run** — comfortably achievable with the 550-gallon Blue supply.
+**Design target: 7 prints per resupply run** — achievable with the 316-gallon (1,200L) Blue supply using Brown recycling for wash 2.
 
 ---
 
@@ -97,9 +97,9 @@ Volume per flood = 140 sq ft × (6 mm / 304.8) = 140 × 0.0197 ft = 2.76 cu ft
 ### 3.1 Blue System — Clean Water Supply
 
 ```
-IBC-1 (275 gal) ──┐
-                   ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
-IBC-2 (275 gal) ──┘                                                      │
+IBC-1 (600L) ──┐
+                ├──→ Manifold → BV-01 → P-01 → ACC-01 → BV-02 → Distribution
+IBC-2 (600L) ──┘                                                      │
                                                                           ↓
                                                               FLOOD/SPRAY BAR
                                                               ↓ (Processing tray)
@@ -110,17 +110,17 @@ IBC-2 (275 gal) ──┘                                                      �
 - ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
-- Fill inlet (top of IBC-1): 2" camlock connection for resupply from water bowser or tanker
+- Fill inlet: external 2" NPT bulkhead fittings through container wall for remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
 
 ```
 Processing tray drain
         │
-   3W-DV-02 ──────────────────────────────────────────→ (to Black drums if heavily loaded)
+   3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
         ↓
-   IBC-3 (275 gal buffer)
+   IBC-3 (600L buffer)
         │
        P-02
         │
@@ -134,7 +134,7 @@ Processing tray drain
         │
    3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-2 (Blue)
         │
-        └──→ pH drift / discoloured: FORWARD TO Black drums
+        └──→ pH drift / discoloured: FORWARD TO IBC-4 (waste)
 ```
 
 **Filter train sizing:**
@@ -153,17 +153,18 @@ Processing tray drain
 FROM 3W-DV-01 (rejected filter output)
 FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
         │
-   DRUM-1 (55 gal) → OVERFLOW → DRUM-2 (55 gal)
+   IBC-4 (600L waste)
         │
    Sealed, labelled per GHS/OSHA
         │
    TRANSPORT to licensed liquid waste disposal facility
 ```
 
-- Drums are DOT-compliant UN-rated 55-gallon HDPE closed-head drums
-- Bungs sealed with drum wrench before transport
-- Label each drum: contents, date, location, UN numbers for ferricyanide/iron compounds
-- **Do not leave drums open** — evaporation and UV exposure can drive ferricyanide chemistry
+- IBC-4 is a standard 600L HDPE cage tote with 2" ball valve, identical frame to IBC-1 through IBC-3
+- IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,141)
+- Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
+- Filled and drained remotely via external 2" NPT bulkhead fitting through the container wall — no need to open cargo doors
+- **Do not leave IBC valve open** — evaporation and UV exposure can drive ferricyanide chemistry
 
 ### 3.4 Processing Tray
 
@@ -188,15 +189,15 @@ Print washing takes place inside the container on a shallow processing tray that
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=625 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
-| Dolly track bridge sections (X=600–955, Z=30–70mm, transport mode only) | Tray left edge at X=645 — bridge track enters at X=600. 45mm overlap. **Tray must be installed after bridge tracks are removed during operational mode conversion. Bridge tracks are only used during transport mode.** | Clear — operational sequence prevents conflict |
+| Container left end zone equipment (X=0–625) | Tray left edge at X=645 — 20mm clearance to end zone boundary | Clear |
 | Pump manifold drain outlet (X=2,600–2,900, Y=0, Z=200–600) | Tray drain pipe routes along pinhole wall (Y=0) below manifold at Z=0–50. Manifold is at Z=200 minimum | Clear |
 | Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
-| Waste drums (X=40–620, left end zone) | Tray starts at X=645 — 25mm gap to drum footprint edge | Clear |
+| IBC-4 waste (right end zone, X=4,674+) | Tray ends at X=4,629 — 45mm gap to IBC footprint | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 
-**Installation and removal:**
+**Permanent installation:**
 
-The tray is installed as part of operational mode conversion (after waste drums are rolled to their working positions and bridge tracks removed). The two panels are carried through the cargo door, positioned between the film plane rails, bolted together at the center flange, and the drain hose connected to the 3W-DV-02 stub. For transport mode conversion, the process reverses: disconnect drain, unbolt panels, carry out through cargo door, stow panels vertically against the container exterior or in a transport rack.
+The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange, with the drain hose permanently connected to the 3W-DV-02 stub. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims.
 
@@ -206,9 +207,9 @@ The tray is installed as part of operational mode conversion (after waste drums 
 
 ### Before each session
 1. Check Blue IBC levels — minimum 100 gal required per print session
-2. Check Black drums — must have at least 55 gal headroom before starting
+2. Check IBC-4 (waste) level — must have at least 55 gal headroom before starting
 3. Run Brown recycle pump for 2 minutes to verify filter flow and check pH
-4. Confirm processing tray is installed and drain hose is connected to 3W-DV-02
+4. Confirm processing tray drain hose is connected to 3W-DV-02 (permanently installed — visual check only)
 5. Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims
 6. Verify all valves in correct position (see valve matrix below)
 
@@ -246,7 +247,7 @@ The tray is installed as part of operational mode conversion (after waste drums 
 | Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
 | Filter inlet/outlet | Sch 40 | 1" nominal | 100 PSI min | HDPE |
 | Tray drain | Sch 40 / SDR-11 | 1" nominal | gravity | HDPE |
-| Black waste gravity drain | Sch 40 | 1" nominal | 50 PSI min | HDPE |
+| Black waste (to IBC-4) | Sch 40 | 1" nominal | 50 PSI min | HDPE |
 
 **Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
 
@@ -256,7 +257,7 @@ The tray is installed as part of operational mode conversion (after waste drums 
 |----------------|-----|---------|
 | 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminum or polypropylene |
 | 1" NPT threaded | Pump inlet/outlet, valve connections | HDPE or brass |
-| 2" NPT bung | Drum fill/drain | HDPE bung plug |
+| 2" NPT bulkhead | External fill/drain port (container wall) | 304 SS |
 | Push-fit / compression | Secondary connections | John Guest / Speedfit style |
 
 ---
@@ -276,28 +277,28 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm); waste drums are in the **left end zone** (X=0–625mm, Z-stacked at Yd=25–605mm). The optical zone (X=625–4,649mm) is completely clear.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=625–4,649mm) is completely clear.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are **Y-stacked** (front-to-back along the depth axis) in a single column at X=4,674mm, right-justified to the far end wall. The 2 × 55-gal drums are placed **one per Yd corner** of the left end zone — D-1 near the pinhole wall (Yd=25–605mm) and D-2 near the far wall (Yd=1,757–2,337mm). The light trap drum (Yd=806–1,556mm) sits between them with 201mm clearance either side.
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=100): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,141): IBC-2 Blue (top) + IBC-4 Waste (bottom). Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container wall.
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
-| Right end zone | IBC-1 + IBC-2 Blue (600L each, stacked) | 4,674–5,893 | 100–1,116 | 0–2,020 |
-| Right end zone | IBC-3 Brown (600L) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
-| Left end zone | D-1 55-gal drum (near, pinhole wall corner) | 20–600 | 25–605 | 0–870 |
-| Left end zone | D-2 55-gal drum (far, film plane corner) | 20–600 | 1,757–2,337 | 0–870 |
+| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 100–1,116 | 1,010–2,020 |
+| Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 100–1,116 | 0–1,010 |
+| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,141–2,157 | 1,010–2,020 |
+| Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
 | Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to Brown IBC rear at Yd=1,141mm). Waste hose from manifold to drums runs to the left end zone — maximum run ~3m.
+**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to far-column IBCs at Yd=1,141mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall to IBC-4 in the right end zone — maximum run ~4m.
 
-**Flexible drum connections:** The 55-gallon waste drums sit on V-groove roller dollies with 305mm of X-direction travel for transport mode conversion (see [Equipment Layout Report](equipment-layout-report.md) §6.1). The waste hose connection to each drum must use a flexible section to accommodate this movement. Each drum connects via a 1m coiled reinforced PVC hose (1" ID, rated 50 PSI) with quick-disconnect camlock fittings (1" polypropylene Type E × Hose Barb) at the drum bung and at the fixed floor pipe stub. The coiled hose absorbs 305mm of linear travel without kinking. Quick-disconnects are released before sliding drums for transport.
+**External fill/drain ports:** Each IBC connects to a 2" NPT bulkhead fitting welded through the container wall at the right end zone. This allows remote filling (from water bowser or tanker) and draining (IBC-4 waste to disposal tanker) without opening the cargo doors or entering the container. Four ports total — one per IBC — accessible from the container exterior.
 
 ---
 
@@ -307,11 +308,10 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| IBC tote 275 gal, food-grade, used/rinsed | HDPE cage tote, 2" ball valve | 3 | [Container Exchanger — CA listings](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | $80–$150 | **$240–$450** |
-| 55 gal HDPE drum, closed-head, UN-rated | Blue, 2" NPS + 2" buttress bungs | 2 | [BASCO USA](https://bascousa.com/55-gallon-closed-head-plastic-drum-blue.html) · [The Cary Company](https://www.thecarycompany.com/55-gallon-un-blue-hdpe-tight-head-drum-2-npt-2-buttress-fittings-un-rated) | $55–$75 | **$110–$150** |
-| Drum bung wrench (2" NPT + 2" buttress) | Polypropylene | 1 | Amazon / BASCO | $12–$20 | **$15** |
+| IBC tote 600L, food-grade, used/rinsed | HDPE cage tote, 2" ball valve | 4 | [Container Exchanger — CA listings](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | $80–$150 | **$320–$600** |
+| 2" NPT bulkhead fitting (304 SS) | External fill/drain port, welded through container wall | 4 | [McMaster-Carr](https://www.mcmaster.com) · Grainger | $25–$40 | **$100–$160** |
 
-**Storage subtotal: ~$365–$615**
+**Storage subtotal: ~$420–$760**
 
 ### 8.2 Pumps and pressure management
 
@@ -356,10 +356,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | 1" SDR-11 HDPE pipe | Food-safe, blue-stripe, 20 ft sticks | 5 sticks (100 ft) | [Ferguson Plumbing Supply](https://www.ferguson.com) · Winsupply | $12–$18/stick | **$60–$90** |
 | 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson / Winsupply | $9–$14/stick | **$20–$30** |
 | 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Home Depot / Amazon | $8–$12/length | **$20** |
-| 1" ID reinforced coiled PVC hose | Drum flex connection, 1m per drum (305mm travel) | 2 lengths | Home Depot / Amazon | $10–$15/length | **$20–$30** |
-| 1" polypropylene camlock (Type E × Hose Barb) | Quick-disconnect at drum and floor stub | 4 pairs | Amazon / Grainger | $5–$8/pair | **$20–$32** |
-
-**Pipe subtotal: ~$140–$202**
+**Pipe subtotal: ~$100–$140**
 
 ### 8.6 Processing tray
 
@@ -394,11 +391,10 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | pH meter (waterproof) | 0–14 range, ±0.1 accuracy | 1 | [Amazon — Apera Instruments PH20](https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX) | $35–$55 | **$45** |
 | pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $8–$12 | **$10** |
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bags | Amazon / bulk food supplier | $12–$18 | **$28** |
-| Chemical-resistant labels (GHS) | For drums and totes | 1 pack | Amazon / Labelmaster | $15–$25 | **$20** |
-| Funnel with filter screen (2") | For drum filling | 2 | Amazon / Grainger | $8–$12 | **$18** |
+| Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon / Labelmaster | $15–$25 | **$20** |
 | Nitrile gloves, box of 100 | Size M/L | 2 boxes | Amazon / Home Depot | $12–$18 | **$28** |
 
-**Consumables subtotal: ~$249–$304**
+**Consumables subtotal: ~$231–$278**
 
 ---
 
@@ -406,15 +402,15 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
-| Water storage (IBC totes + drums) | $365 | $615 |
+| Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
 | Pumps and accumulator | $165 | $195 |
 | Filter skid (housings + cartridges) | $265 | $370 |
 | Valves and fittings | $263 | $398 |
-| Pipe (incl. drum flex hoses) | $140 | $202 |
+| Pipe | $100 | $140 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
-| Processing consumables | $249 | $304 |
-| **TOTAL** | **$2,674** | **$3,991** |
+| Processing consumables | $231 | $278 |
+| **TOTAL** | **$2,671** | **$4,048** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 
@@ -430,19 +426,19 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | Flush Brown IBC-3 | Every 5 prints | Rinse with clean water, inspect for sediment buildup |
 | pH check of filtered output | Every session | Before returning Brown water to Blue system |
 | Drain and rinse Blue IBCs | Annually (or before long storage) | Prevent biofilm formation |
-| Inspect drum bungs | Before every transport | Check for leaks |
+| Inspect IBC-4 valve and cap | Before every transport | Check for leaks |
 
 ---
 
 ## 10. Safety Notes
 
-1. **Ferricyanide in alkaline conditions:** Do not allow Black drum water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH < 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.
+1. **Ferricyanide in alkaline conditions:** Do not allow IBC-4 waste water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH < 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.
 
 2. **Prussian blue is non-toxic** — it is approved as a human antidote medication in some contexts — but the fine particles are a skin/eye irritant. Wear nitrile gloves and eye protection when handling wash trays.
 
 3. **Citric acid dosing:** Always dissolve before adding to tank. Adding dry acid to iron-rich water can cause a brief exothermic reaction and bubbling. Mix in a separate container first.
 
-4. **Black drum transport:** Ensure drums are sealed with bung wrench (≥20 Nm torque). Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright.
+4. **IBC-4 waste transport:** Ensure IBC cap is sealed and ball valve is closed before transport. Label contents before transport. The liquid is not classified as DOT hazardous material at these concentrations, but label clearly and keep upright. Drain remotely via external bulkhead port to a disposal tanker.
 
 5. **Electrical:** Both pumps draw 7.5A each at 12V. The fuse block must be rated to handle simultaneous operation. Do not run pumps from the same fused circuit.
 
@@ -471,8 +467,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)
 - [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
 - [Container Exchanger — IBC totes for sale, California](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale)
-- [BASCO USA — 55 gal closed-head HDPE drums](https://bascousa.com/55-gallon-closed-head-plastic-drum-blue.html)
-- [The Cary Company — 55 gal UN-rated blue drum](https://www.thecarycompany.com/55-gallon-un-blue-hdpe-tight-head-drum-2-npt-2-buttress-fittings-un-rated)
+- [McMaster-Carr — 2" NPT bulkhead fittings](https://www.mcmaster.com)
 - [Amazon — Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C)
 - [Amazon — SeaFlo pump + accumulator system](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH)
 - [Amazon — Geekpure Big Blue 10" filter housing](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST)

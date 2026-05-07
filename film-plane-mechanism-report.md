@@ -42,7 +42,7 @@ The four-corner mechanism supports all view-camera movements. Corners are labell
 
 **Maximum swing angle** (left vs right): arctan((2,262 − 100) / 4,024) ≈ **28.3°**
 
-(Swing angle is smaller than tilt angle because the active film plane is now 4,024 mm wide — widened by relocating the black-water drums to the left end zone at Yd=25–605mm, below the light trap drum's Yd band, and moving the left rail inward from X=1,100 mm to X=625 mm. The same Y-axis depth difference over a wider span produces a shallower angle. Rails are at X=625 mm and X=4,649 mm.)
+(Swing angle is smaller than tilt angle because the active film plane is 4,024 mm wide — the left rail sits at X=625 mm and the right rail at X=4,649 mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
 
 When tilted at maximum, the film plane's physical height increases from 2,268 mm to approximately **3,180 mm** — 40% longer than when flat. The backing panel accommodates this with the hinged two-panel system described below.
 
@@ -229,7 +229,7 @@ All seven configurations on a checker grid (D = 8,000 mm):
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
 
 **System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2,262mm, X=625–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap + 55-gal drums), evaporative cooler on pinhole wall face, optical clear zone, and right end zone (IBCs only).
+The floor plan below shows the film plane rail positions (at Y=2,262mm, X=625–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap + processing tray), evaporative cooler on pinhole wall face, optical clear zone, and right end zone (4× IBCs in 2×2 stack).
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 

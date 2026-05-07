@@ -120,7 +120,7 @@ is the clear optical zone.
 
 | Zone | Long-axis span | Contents |
 |------|---------------|----------|
-| Equipment zone | X = 0–2700mm | IBC totes (×3), 55-gal drums (×2), evap cooler, pump manifold, electrical panel |
+| Equipment zone | X = 0–2700mm | IBC totes (×4, 2×2 stack), evap cooler, pump manifold, electrical panel |
 | Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
 | Pinhole wall | X = 2946mm (centre) | Aperture Ø2.17mm at Y_depth=0 |
@@ -387,7 +387,7 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 - 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
 - 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
-- **Transport mode:** waste drums slide inward 305mm on V-groove roller dollies, then panel slides inward 300mm, clearing container doors for closure. Single-person operation, 15–20 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
+- **Transport mode:** panel slides inward 300mm, clearing container doors for closure. Single-person operation, ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
 

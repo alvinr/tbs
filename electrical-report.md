@@ -194,8 +194,7 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 
 **Left end zone (X=0–625mm) — shadow-free at all depths:**
 - Light trap drum (Ø750mm, centered at X=0, Yd=806–1,556mm)
-- 55-gal drum D-1 (near corner): CX=310mm, Yd=25–605mm, H=870mm
-- 55-gal drum D-2 (far corner): CX=310mm, Yd=1,757–2,337mm, H=870mm
+- Processing tray (permanently installed)
 
 **Pinhole wall face (Y=0):**
 - 12V evaporative cooler (X=930–1,530mm, Yd=0–350mm) — shadow-free at Y=0

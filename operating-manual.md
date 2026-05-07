@@ -75,7 +75,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 4. Check all pipe joints for drips. Tighten any fittings that are weeping.
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
-7. Confirm processing tray is installed between the film plane rails and drain hose is connected to 3W-DV-02.
+7. Confirm processing tray drain hose is connected to 3W-DV-02. (The tray is permanently installed between the film plane rails.)
 8. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 ### 0.6 Ventilation and Cooling
@@ -341,39 +341,28 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 ### 5.5 Transport Mode Conversion (Packing Up)
 
-**Time: ~15–20 minutes. Single-person operation.**
+**Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm travel). The waste drums sit on V-groove roller dollies (305mm travel). Both must slide inward before the container doors can close.
+The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm travel). The panel must slide inward before the container doors can close.
 
-The dolly tracks are split into two sections: permanent tracks (X=40–620mm, within the left end zone) and removable bridge sections (355mm long) that span over the film plane floor rail at X=625mm. The bridges are installed only during mode conversion — they must be removed before operating the film plane.
-
-1. Stow all interior items. Retract film plane carriage to Yd=100mm. **Confirm carriage is parked** — the bridge sections cannot be installed with the carriage in the drum track zone.
-2. Install 4 bridge track sections (2 per drum): drop each bridge onto the permanent track end, engage the 2 locating dowel pins per bridge. Confirm bridges are seated and level.
-3. Release all 4 Southco cam latches. Swing the panel open 180° outward.
-4. Unlash waste drums (remove 2 ratchet straps per drum).
-5. Slide each drum inward: release spring plunger pin → push dolly 305mm (~11N force) → pin engages transport hole. Drums cross the film plane rail on the bridge sections.
-6. Remove 4 bridge track sections. Stow inside container (e.g. behind IBC column).
-7. Swing panel closed (do not latch).
-8. Release 2 Destaco toggle clamps at operational position.
-9. Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
-10. Engage 2 Destaco toggle clamps at transport position.
-11. Close and latch standard ISO container cargo doors.
-12. Relash drums for transport (ratchet straps to dolly D-rings).
+1. Stow all interior items. Retract film plane carriage to Yd=100mm.
+2. Release all 4 Southco cam latches. Swing the panel open 180° outward.
+3. Swing panel closed (do not latch).
+4. Release 2 Destaco toggle clamps at operational position.
+5. Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
+6. Engage 2 Destaco toggle clamps at transport position.
+7. Close and latch standard ISO container cargo doors.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
 
-**Time: ~15–20 minutes. Single-person operation. Reverse of 5.5.**
+**Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
 1. Open container cargo doors fully.
 2. Release 2 Destaco toggle clamps at transport position.
 3. Pull panel outward 300mm. Engage 2 Destaco toggle clamps at operational position.
 4. Swing panel open 180°.
-5. Install 4 bridge track sections (2 per drum): engage locating dowel pins.
-6. Unlash waste drums. Slide each drum outward: release pin → push dolly 305mm → pin engages operational hole.
-7. Remove 4 bridge track sections. Stow inside container.
-8. Lash drums in operational position (ratchet straps to dolly D-rings).
-9. Swing panel closed. Engage all 4 Southco cam latches.
-10. Perform dark-adaptation check (Phase 0.3 step 4).
+5. Swing panel closed. Engage all 4 Southco cam latches.
+6. Perform dark-adaptation check (Phase 0.3 step 4).
 
 ---
 

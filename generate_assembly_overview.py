@@ -1092,9 +1092,9 @@ legend_items3 = [
     (C_GHOST,    "Ghost (operational position)"),
 ]
 
-# Draw legend as a horizontal row under the figure using fig3 coordinates
-fig3.subplots_adjust(bottom=0.12)
-leg_ax = fig3.add_axes([0.05, 0.09, 0.9, 0.06])
+# Draw legend as a horizontal row at the top of the figure
+fig3.subplots_adjust(bottom=0.07, top=0.90)
+leg_ax = fig3.add_axes([0.05, 0.92, 0.9, 0.04])
 leg_ax.set_xlim(0, 1)
 leg_ax.set_ylim(0, 1)
 leg_ax.axis("off")
@@ -1110,8 +1110,10 @@ for i, (col, lbl) in enumerate(legend_items3):
                 ha="left", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
                 transform=leg_ax.transAxes)
 
-# ── Title block ───────────────────────────────────────────────────────────────
-title_block(ax_op, "SHEET 3 OF 3",
+# ── Title block (full-figure overlay) ─────────────────────────────────────────
+ax_tb3 = fig3.add_axes([0, 0, 1, 1], facecolor="none")
+ax_tb3.axis("off")
+title_block(ax_tb3, "SHEET 3 OF 3",
             drawing_title="ASSEMBLY OVERVIEW",
             subtitle="Plan view — cargo door end",
             scale_note="1:20 (approx)",

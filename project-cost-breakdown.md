@@ -219,7 +219,7 @@ View-camera-style moveable film plane with four independently actuated corners (
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides 10 full-size prints (140 sq ft each) between water resupply runs, with recycling.
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~10 full-size prints (~116 sq ft each) between water resupply runs, with recycling.
 
 | Category | Low† | High† |
 |----------|------|-------|
@@ -310,22 +310,22 @@ Cyanotype is the recommended starting process: no silver, no DEA registration, n
 
 | Component | Cost per print |
 |-----------|---------------|
-| Ferric ammonium citrate | ~$16.20 |
-| Potassium ferricyanide | ~$2.42 |
-| Muslin substrate (140 sq ft @ $1.20/yd, 5-strip layout) | ~$38 |
+| Ferric ammonium citrate | ~$18 |
+| Potassium ferricyanide | ~$3 |
+| Muslin substrate (~116 sq ft @ $1.20/yd, 5-strip layout) | ~$43 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
-| **Total per print** | **~$57** |
+| **Total per print** | **~$67** |
 
 ### 7.3 Alternative process cost comparison
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~$2,842** | **~$57** | None — easiest |
-| Gum bichromate | ~$4,578 | ~$92 | Hazmat shipping (dichromate) |
-| Van Dyke Brown | ~$9,782 | ~$196 | DEA form; AgNO₃ price volatility |
-| Ilford RC paper | ~$19,970 | ~$399 | Paper rolls very expensive at this size |
-| Liquid Light on muslin | ~$19,370 | ~$387 | Contact Rockland for bulk pricing |
-| Salt print | ~$23,925 | ~$478 | 3× more silver than Van Dyke — not recommended |
+| **Cyanotype** | **~$3,350** | **~$67** | None — easiest |
+| Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
+| Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
+| Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
+| Liquid Light on muslin | ~$21,800 | ~$436 | Contact Rockland for bulk pricing |
+| Salt print | ~$26,900 | ~$538 | 3× more silver than Van Dyke — not recommended |
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
 
@@ -420,12 +420,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 
 | Item | Cost |
 |------|------|
-| Muslin substrate | ~$38 |
-| Sensitizer chemistry | ~$18 |
-| Water (42 gal Blue circuit) | ~$0.50 (if resupplied by tanker at ~$0.01/gal) |
+| Muslin substrate | ~$43 |
+| Sensitizer chemistry | ~$21 |
+| Water (32 gal Blue circuit) | ~$0.35 (if resupplied by tanker at ~$0.01/gal) |
 | Containment poly & consumables | ~$2 |
 | Filter cartridge amortized (replace every 10–20 prints) | ~$5 |
-| **Per-print running cost** | **~$63** |
+| **Per-print running cost** | **~$71** |
 
 ### Per deployment
 

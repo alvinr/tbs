@@ -431,7 +431,7 @@ Based on the analysis above, the following parameters are recommended as design 
 | Resolution at optimal pinhole | 0.41–0.55 lp/mm | Young (1971); Born & Wolf (1999) |
 | Max Ilford paper roll width | 127 cm (50 in) | Ilford product page (verified 2026) |
 | Panels needed to cover 20' width | 5 panels (seamed) | 6096 mm ÷ 1270 mm |
-| Liquid Light coverage (140 sq ft) | ~94 oz, single coat | Rockland Colloid product spec (~1.5 sq ft/oz) |
+| Liquid Light coverage (116 sq ft) | ~78 oz, single coat | Rockland Colloid product spec (~1.5 sq ft/oz) |
 
 ---
 

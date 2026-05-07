@@ -32,7 +32,7 @@ TBS-001 is a 20-foot ISO shipping container converted into a functional large-fo
 
 The optical specification follows the Lord Rayleigh formula for optimal pinhole diameter (d = 1.9√(fλ), λ = 550 nm), yielding an f-number of f/1088 and a baseline exposure of approximately 30–45 minutes in direct sunlight using the Mike Ware New Cyanotype formula on cotton muslin. Every design decision — aperture, image plane materials, exposure calculation, process chemistry — traces to a peer-reviewed source or manufacturer datasheet. The full technical documentation is publicly available at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/).
 
-The camera is transportable by commercial hire truck (no CDL required) and operates off-grid via a self-contained water system that supports 8–10 full-size prints between resupply runs.
+The camera is transportable by commercial hire truck (no CDL required) and operates off-grid via a self-contained water system that supports ~10 full-size prints between resupply runs.
 
 ### Why Now
 
@@ -90,11 +90,11 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide. Neither requires DEA registration, hazmat shipping, or special disposal. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately $34 (chemistry + fabric + water). A 50-print run costs approximately $1,700. By comparison, the next cheapest alternative (gum bichromate) costs $56 per print and requires dichromate sensitizer with associated hazmat handling.
+Per-print cost: approximately $38 (chemistry + fabric + water). A 50-print run costs approximately $1,900. By comparison, the next cheapest alternative (gum bichromate) costs ~$63 per print and requires dichromate sensitizer with associated hazmat handling.
 
 ### Water System
 
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Storage: four 275-gallon IBC totes in a 2×2 stack. Capacity: 8–10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Storage: four 275-gallon IBC totes in a 2×2 stack. Capacity: ~10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
 
 The system was designed for remote deployments: no mains water connection required.
 
@@ -218,10 +218,10 @@ My practice since has moved between classical portraiture and abstract color in 
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
-| Film plane movement | ±42° tilt, ±28.3° swing, 4-corner independent |
+| Film plane movement | ±42° tilt, ±25.7° swing, 4-corner independent |
 | Front board movement | ±5.3° tilt and swing, 0.012°/click resolution |
 | Process | Cyanotype (Ware formula) on cotton muslin |
-| Water system | Self-contained, 8–10 prints per resupply, off-grid capable |
+| Water system | Self-contained, ~10 prints per resupply, off-grid capable |
 | Transport | Commercial hire tilt-bed, no CDL required |
 
 ### Full Documentation

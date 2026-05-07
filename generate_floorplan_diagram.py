@@ -113,7 +113,7 @@ def floor_plan():
     ax.add_patch(Rectangle((ZONE_L_END, 0), ZONE_R_START - ZONE_L_END, C_WID,
                             fc=C_ZONE_OPT, ec="none", zorder=1))
     ax.text((ZONE_L_END + ZONE_R_START)/2, C_WID*1.06,
-            f"OPTICAL ZONE  (X={ZONE_L_END}–{ZONE_R_START}mm)\nFILM PLANE RAILS ONLY — FLOOR CLEAR",
+            f"OPTICAL ZONE  (X={ZONE_L_END}–{ZONE_R_START}mm) FILM PLANE RAILS ONLY — FLOOR CLEAR",
             color="#4A8040", fontsize=8, ha="center", va="center",
             **FONT, alpha=0.45, fontweight="bold", zorder=2)
 
@@ -332,7 +332,7 @@ def floor_plan():
             **FONT, alpha=0.8, zorder=5)
 
     # ── Dimension annotations ─────────────────────────────────────────────────
-    dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH")
+    dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25)
     dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
     dim_h(ax, 0, ZONE_L_END, -PAD_B + 475, f"{ZONE_L_END}mm LEFT ZONE", offset=25, fs=6)
@@ -402,14 +402,14 @@ def floor_plan():
                 arrowprops=dict(arrowstyle="->", color="#20A020", lw=2.0,
                                 linestyle=":", mutation_scale=12),
                 zorder=10)
-    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 60,
+    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 80,
             f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color="#20A020", fontsize=6.5, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)
-    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y - 60,
-            "(panel open 180°, drum swings out — no obstructions)",
-            color="#20A020", fontsize=5.5, ha="center", va="top",
-            **FONT, alpha=0.8, zorder=10)
+#     ax.text(EGRESS_ARROW_X, EGRESS_MID_Y - 60,
+#             "(panel open 180°, drum swings out — no obstructions)",
+#             color="#20A020", fontsize=5.5, ha="center", va="top",
+#             **FONT, alpha=0.8, zorder=10)
 
     title_block(ax, "SHEET 1 OF 1",
                 drawing_title="CONTAINER FLOOR PLAN",

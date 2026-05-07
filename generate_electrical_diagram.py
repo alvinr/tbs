@@ -71,6 +71,34 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
             bbox=dict(fc="white", ec="none", pad=1.5), zorder=6)
 
 
+def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=7.5, color=C_OUT, ha="left"):
+    """Leader line with dotted arrow from tip to label text."""
+    ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
+                fontsize=fs, color=color, ha=ha, va="center",
+                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
+                                connectionstyle="arc3,rad=0.0"))
+
+
+def draw_dim_h(ax, x1, x2, y, label, offset=0.08, fs=7.5, color=C_DIM):
+    """Horizontal dimension line between x1 and x2 at height y."""
+    ax.annotate("", xy=(x2, y), xytext=(x1, y),
+                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0))
+    ax.plot([x1, x1], [y - offset, y + offset], color=color, lw=0.6)
+    ax.plot([x2, x2], [y - offset, y + offset], color=color, lw=0.6)
+    ax.text((x1 + x2) / 2, y - 0.17, label,
+            ha="center", va="top", fontsize=fs, color=color)
+
+
+def draw_dim_v(ax, x, y1, y2, label, offset=0.08, fs=7.5, color=C_DIM):
+    """Vertical dimension line between y1 and y2 at x position."""
+    ax.annotate("", xy=(x, y2), xytext=(x, y1),
+                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0))
+    ax.plot([x - offset, x + offset], [y1, y1], color=color, lw=0.6)
+    ax.plot([x - offset, x + offset], [y2, y2], color=color, lw=0.6)
+    ax.text(x - 0.17, (y1 + y2) / 2, label,
+            ha="right", va="center", fontsize=fs, color=color, rotation=90)
+
+
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -531,12 +559,9 @@ def draw_sheet2():
     # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    ax.annotate(f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
-                xy=(ph_x, OY + wt/2),
-                xytext=(ph_x, OY - 0.50),
-                fontsize=7.5, color=C_OUT, ha="center", va="top",
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
-                bbox=dict(fc="white", ec="none", pad=1.5))
+    leader(ax, ph_x, OY + wt/2, ph_x, OY - 0.50,
+           f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
+           fs=7.5, ha="center")
 
     # ── NEMA inlet — exterior, cargo door short wall (left face) ─────────────
     NM_X = OX - 0.55
@@ -575,7 +600,7 @@ def draw_sheet2():
 
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
     equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_EVAP, "80W 12V  (E)")
-    equip(PUMP_X, 0, PUMP_W, 80, "PUMP\nMFD", C_PUMP, "Cct C")
+    equip(PUMP_X, 0, PUMP_W, 80, "", C_PUMP, "")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
     # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom
@@ -658,6 +683,48 @@ def draw_sheet2():
         ax.plot([ddx, ddx], [TK_Y, ddy],
                 color=C_PIPE, lw=1.0, ls=":", zorder=4)
 
+    # ── Component leaders — label every key item on the diagram ────────────────
+    # EP — Electrical panel
+    leader(ax, EP_DX + EP_DW/2, OY + wt + WALL_MOUNT_H,
+           EP_DX + EP_DW/2, OY + cwid * 0.42,
+           "Electrical panel (EP)\nMPPT + fuse block\nPinhole wall face",
+           fs=6.5, color=C_ELEC)
+    # BAT — Battery bank
+    leader(ax, BA_DX + BA_DW/2, OY + wt + WALL_MOUNT_H,
+           BA_DX + BA_DW/2, OY + cwid * 0.3,
+           "Battery bank (BAT)\n2×100Ah LiFePO4",
+           fs=6.5, color=C_BATT)
+    # Fan A — Intake (far end wall)
+    leader(ax, FA_X - 0.22, FA_Y,
+           FA_X - 1.2, FA_Y + 0.5,
+           "Intake fan (A)\n6\" DC  60W",
+           fs=6.5, ha="right")
+    # Fan B — Exhaust (cargo door wall)
+    leader(ax, FB_X + 0.22, FB_Y,
+           FB_X + 1.2, FB_Y + 0.5,
+           "Exhaust fan (B)\n6\" DC  60W",
+           fs=6.5)
+    # Pump — Cct C
+    leader(ax, PUMP_CX, OY + wt + 80 * S_yd,
+           PUMP_CX + 0.8, OY + cwid * 0.3,
+           "Water pump (C)\n12V DC  100W",
+           fs=6.5, color=C_PUMP)
+    # Safelight — Cct D
+    leader(ax, SL_X + SL_W, (SL_Y1 + SL_Y2) / 2,
+           SL_X + 1.0, OY + cwid * 0.22,
+           "Safelight (D)\nRed LED strip",
+           fs=6.5, color="#B8960A")
+    # Evap cooler — Cct E
+    leader(ax, EVAP_CX, OY + wt + (EVAP_Y + EVAP_D) * S_yd,
+           EVAP_CX, OY + cwid * 0.3,
+           "Evap cooler (E)\n12V DC  80W",
+           fs=6.5, color=C_EVAP)
+    # NEMA inlet
+    leader(ax, NM_X + 0.45, NM_Y + 0.225,
+           NM_X + 1.2, NM_Y + 0.8,
+           "NEMA 5-15R inlet\nShore power (exterior)",
+           fs=6.5, color="#A07820")
+
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
     SP_Y2 = OY - 1.45
@@ -681,30 +748,10 @@ def draw_sheet2():
     DIM_Y = OY - 0.82
     DIM_X = OX - 0.42
 
-    def dim_h(x1, x2, dy, text):
-        tick = 0.08
-        ax.annotate("", xy=(x2, dy), xytext=(x1, dy),
-                    arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
-        ax.plot([x1, x1], [dy - tick, dy + tick], color=C_DIM, lw=0.6)
-        ax.plot([x2, x2], [dy - tick, dy + tick], color=C_DIM, lw=0.6)
-        ax.text((x1+x2)/2, dy - 0.17, text,
-                ha="center", va="top", fontsize=7.5, color=C_DIM)
-
-    def dim_v(dx, y1, y2, text):
-        tick = 0.08
-        ax.annotate("", xy=(dx, y2), xytext=(dx, y1),
-                    arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0))
-        ax.plot([dx - tick, dx + tick], [y1, y1], color=C_DIM, lw=0.6)
-        ax.plot([dx - tick, dx + tick], [y2, y2], color=C_DIM, lw=0.6)
-        ax.text(dx - 0.17, (y1+y2)/2, text,
-                ha="right", va="center", fontsize=7.5, color=C_DIM, rotation=90)
-
-    dim_h(OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)")
-#     dim_h(zone_l_x, zone_r_x, DIM_Y - 0.30,
-#           f"Optical zone  {ZONE_R-ZONE_L}mm")
-    dim_h(fp_l_x, fp_r_x, DIM_Y - 1.10,
-          f"Film plane  {FP_X_R-FP_X_L}mm")
-    dim_v(DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
+    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)")
+    draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 1.10,
+               f"Film plane  {FP_X_R-FP_X_L}mm")
+    draw_dim_v(ax, DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
 
     # ── Component key (right of container) ───────────────────────────────────
     KX = OX + clen + 0.70 + FW * 0.10

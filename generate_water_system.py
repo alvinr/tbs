@@ -241,7 +241,7 @@ pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
 pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
 pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
 pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE)
-ax1.text(12.5, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
+ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
 # External fill port (top of IBC-1, via bulkhead fitting in far wall)
@@ -739,9 +739,9 @@ ax3.add_patch(plt.Rectangle((OX + RIM_DU, OY + RIM_DU),
 # Label corners with elevation annotations (high/low)
 # Low point: near rim (Yd=0), X-center
 # High corners: far rim (Yd=2200), X extremes
-ax3.text(s3x(PROC_TRAY_W/2), OY - 0.25, "LOW EDGE (Yd = 80mm)",
+ax3.text(s3x(PROC_TRAY_W/2) + 1.25, OY - 0.55, "LOW EDGE (Yd = 80mm)",
          ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
-ax3.text(s3x(PROC_TRAY_W/2), OY + TRAY_DRAW_H + 0.25,
+ax3.text(s3x(PROC_TRAY_W/2), OY + TRAY_DRAW_H + 0.35,
          "HIGH EDGE (Yd = 2,280mm)",
          ha="center", fontsize=7.5, fontweight="bold", color="#1565C0")
 
@@ -808,10 +808,10 @@ ax3.plot([drain_dx, drain_dx],
          color="#D32F2F", lw=1.8, zorder=7)
 
 # Drain label
-ax3.text(drain_dx, drain_dy - 0.5, "1\" NPT DRAIN\n(TO 3W-DV-02)",
+ax3.text(drain_dx + 1.55, drain_dy + 0.2, "1\" NPT DRAIN (TO 3W-DV-02)",
          ha="center", va="top", fontsize=7.5, fontweight="bold",
          color="#D32F2F", zorder=8)
-ax3.text(drain_dx, drain_dy + 0.45,
+ax3.text(drain_dx - 0.9, drain_dy + 0.1,
          f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}",
          ha="center", va="bottom", fontsize=6.5, color="#D32F2F", zorder=8)
 
@@ -848,31 +848,32 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
-ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
-             xytext=(OX, OY + TRAY_DRAW_H + 0.6),
-             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
-                             mutation_scale=10))
-ax3.text(OX + TRAY_DRAW_W/2, OY + TRAY_DRAW_H + 0.75,
-         f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})",
-         ha="center", fontsize=7, color=C_DIM)
+dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
+      f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.2)
+
+
+# ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
+#              xytext=(OX, OY + TRAY_DRAW_H + 0.6),
+#              arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
+#                              mutation_scale=10))
+# ax3.text(OX + TRAY_DRAW_W/2, OY + TRAY_DRAW_H + 0.75,
+#          f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})",
+#          ha="center", fontsize=7, color=C_DIM)
 
 # Tray depth (Yd direction)
-ax3.annotate("", xy=(OX - 0.5, OY + TRAY_DRAW_H),
-             xytext=(OX - 0.5, OY),
-             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
-                             mutation_scale=10))
-ax3.text(OX - 0.65, OY + TRAY_DRAW_H/2,
-         f"{PROC_TRAY_D:,}mm\n(Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})",
-         ha="right", va="center", fontsize=7, color=C_DIM, rotation=90)
+dim_v(ax3, OX - 0.5, OY + TRAY_DRAW_H, OY,
+      f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.2)
 
 # Drain X position dimension
-ax3.annotate("", xy=(drain_dx, OY - 0.25),
-             xytext=(OX, OY - 0.25),
-             arrowprops=dict(arrowstyle="<->", color="#D32F2F", lw=1.0,
-                             mutation_scale=8))
-ax3.text((OX + drain_dx)/2, OY - 0.4,
-         f"{drain_local_x:,}mm from left edge",
-         ha="center", fontsize=6.5, color="#D32F2F")
+dim_h(ax3, drain_dx, OX, OY,
+      f"{drain_local_x:,}mm from left edge", offset=0.5)
+# ax3.annotate("", xy=(drain_dx, OY - 0.25),
+#              xytext=(OX, OY - 0.25),
+#              arrowprops=dict(arrowstyle="<->", color="#D32F2F", lw=1.0,
+#                              mutation_scale=8))
+# ax3.text((OX + drain_dx)/2, OY - 0.4,
+#          f"{drain_local_x:,}mm from left edge",
+#          ha="center", fontsize=6.5, color="#D32F2F")
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
 WK_COLOR = "#8D6E63"

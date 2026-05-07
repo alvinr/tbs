@@ -201,7 +201,7 @@ def sheet1():
     # Revolving drum: centre at X=0, bottom at RAIL_OFF
     equip_blk(ax, -DRUM_R, RAIL_OFF, DRUM_D, DRUM_H_ELV, C_LT_DRUM, lw=1.0, alpha=0.9, zorder=5)
     draw_cl_v(ax, DRUM_CX, RAIL_OFF, RAIL_OFF+DRUM_H_ELV+150)
-    ax.text(DRUM_CX, RAIL_OFF+DRUM_H_ELV/2,
+    ax.text(DRUM_CX, RAIL_OFF+DRUM_H_ELV/2+175,
             f"REVOLVING DRUM\nVERTICAL AXIS\nO{DRUM_D}x{DRUM_H_ELV}mm H",
             ha="center", va="center", fontsize=FS_SM-1.5, color=C_OUT,
             style="italic", zorder=6)
@@ -235,7 +235,7 @@ def sheet1():
     # Stacking interface line
     ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [RAIL_OFF+IBC_H_600, RAIL_OFF+IBC_H_600],
             color="white", lw=0.8, ls="--", alpha=0.7, zorder=6)
-    ax.text(IBC_COL_X+IBC_W/2, RAIL_OFF+IBC_H_STK/2,
+    ax.text(IBC_COL_X+IBC_W/2, RAIL_OFF+IBC_H_STK/2+175,
             "BLUE IBC x2\nSTACKED (FRONT)\n2x600L H=2020mm",
             ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
 

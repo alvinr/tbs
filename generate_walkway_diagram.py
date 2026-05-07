@@ -135,7 +135,7 @@ def sheet1():
     # ── Container wall (pinhole wall, at Yd=0) ──────────────────────────────
     ax.add_patch(Rectangle((sx(-10), sy(0)), sx(10), sy(Z_HI),
                             fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    ax.text(sx(-5), sy(Z_HI - 15), "PINHOLE\nWALL",
+    ax.text(sx(-20), sy(Z_HI - 15), "PINHOLE\nWALL",
             ha="center", va="top", fontsize=6, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
@@ -152,7 +152,7 @@ def sheet1():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
     leader(ax, (sx(TRAY_RIM_YD - 1), sy(PROC_TRAY_RIM / 2)),
-           (sx(TRAY_RIM_YD - 35), sy(PROC_TRAY_RIM + 30)),
+           (sx(TRAY_RIM_YD - 25), sy(PROC_TRAY_RIM + 10)),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", col=C_TRAY, fs=6)
     # Break line on tray floor (continues right)
     bx = sx(tray_floor_end)
@@ -188,7 +188,7 @@ def sheet1():
 
     # Frame labels
     leader(ax, (sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W / 2)),
-           (sx(OUTER_RAIL_YD - 25), sy(frame_bot - 10)),
+           (sx(OUTER_RAIL_YD - 35), sy(frame_bot - 10)),
            "30×30×3mm\nGALV ANGLE", col=C_FRAME, fs=5.5)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
@@ -294,10 +294,14 @@ def sheet1():
     ax.add_patch(Rectangle((sx(shoe_yd - 15), sy(shoe_z)),
                             sx(30), sy(5),
                             fc="#404040", ec=C_OUT, lw=0.5, zorder=10, alpha=0.4))
-    ax.text(sx(shoe_yd + 25), sy(shoe_z + 3),
-            "OPERATOR\n(STANDING)",
-            ha="left", va="center", fontsize=5, color=C_DIM,
-            **FONT, alpha=0.5, zorder=15)
+    leader(ax, (sx(shoe_yd - 10), sy(shoe_z)),
+        (sx(45), sy(shoe_z)*1.5),
+        f"OPERATOR\n(STANDING SHOE)", col=C_TRAY, fs=6)
+
+    # ax.text(sx(shoe_yd + 25), sy(shoe_z + 3),
+    #         "OPERATOR\n(STANDING SHOE)",
+    #         ha="left", va="center", fontsize=5, color=C_DIM,
+    #         **FONT, alpha=0.5, zorder=15)
 
     # ── Axis labels ──────────────────────────────────────────────────────────
     ax.text(sx(YD_HI / 2), sy(Z_LO + 5),
@@ -390,7 +394,7 @@ def sheet2():
                             fc="#E8F0FF", ec=C_DIM, lw=1.0, ls="--",
                             alpha=0.3, zorder=2))
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
-            (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2,
+            (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 1.75,
             f"PROCESSING TRAY\n{PROC_TRAY_W}×{PROC_TRAY_D}mm",
             ha="center", va="center", fontsize=8, color=C_DIM,
             alpha=0.4, **FONT, zorder=3)
@@ -450,6 +454,7 @@ def sheet2():
         length = ww if is_x_axis else wh
         ax.text(cx, cy, f"{name} WALKWAY\n{int(length)}×{WALKWAY_W}mm",
                 ha="center", va="center", fontsize=6, color=C_OUT,
+                backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
     # ── Lifting point indicators (one per section, centered) ─────────────────
@@ -467,15 +472,15 @@ def sheet2():
                             open_w, open_h,
                             fc="none", ec="#208020", lw=1.5, ls=(0, (6, 3)),
                             zorder=5))
-    ax.text(PROC_OPEN_X_L + open_w / 2, PROC_OPEN_YD_N + open_h / 2,
+    ax.text(PROC_OPEN_X_L + open_w / 2, PROC_OPEN_YD_N + open_h / 2.25,
             f"OPEN PROCESSING AREA\n{open_w}×{open_h}mm = {PROC_OPEN_AREA:.1f} m²",
             ha="center", va="center", fontsize=7, color="#208020",
             **FONT, zorder=5, alpha=0.6)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
-    dim_v(ax, PROC_TRAY_X_L - 80, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
-          f"{WALKWAY_W}mm", offset=-120, fs=6.5)
+    dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
+          f"{WALKWAY_W}mm", offset=-120, fs=6)
 
     # Leg spacing callout
     # Pick two adjacent legs on the near walkway for dimensioning
@@ -483,8 +488,8 @@ def sheet2():
     near_xs = np.linspace(PROC_TRAY_X_L + 50, PROC_TRAY_X_R - 50, n_near)
     if len(near_xs) >= 2:
         lx0, lx1 = near_xs[0], near_xs[1]
-        dim_h(ax, lx0, lx1, -100,
-              f"{int(lx1 - lx0)}mm LEG SPACING (TYP.)", offset=-40, fs=6)
+        dim_h(ax, lx0, lx1, -40,
+              f"{int(lx1 - lx0)}mm LEG SPACING (TYP.)", offset=-50, fs=6)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     legend_x = C_LEN + 60

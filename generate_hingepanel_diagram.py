@@ -74,9 +74,9 @@ def dim_v(ax, x, y0, y1, label, offset=70, fs=7, col=C_DIM):
     ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
             ha="left", va="center", zorder=15, **FONT)
 
-def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5):
+def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal"):
     ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
-                ha="center", va="center", **FONT,
+                ha="center", va="center", **FONT, fontweight=fw,
                 arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.8, mutation_scale=6),
                 zorder=15)
 
@@ -257,7 +257,7 @@ def sheet1():
     # Left floor rail
     ax.add_patch(Rectangle((CBEAM_X - RAIL_LEN / 2, -10), RAIL_LEN, RAIL_H,
                             fc=C_RAIL, ec=C_OUT, lw=0.8, alpha=0.5, zorder=3))
-    ax.text(CBEAM_X - RAIL_LEN / 2 - 15, -10 + RAIL_H / 2,
+    ax.text(CBEAM_X - RAIL_LEN / 2 - 15, -30 + RAIL_H / 2,
             "HGR20 FLOOR\nRAIL (500mm)",
             color=C_RAIL, fontsize=5.5, ha="right", va="center",
             **FONT, zorder=15)
@@ -329,15 +329,19 @@ def sheet1():
     # ── Outward-opening annotation ────────────────────────────────────────────
     # Panel hinges on left (X=0); right edge is the free edge.
     # Opens outward — away from interior camera equipment.
-    ax.annotate("",
-                xy=(PW + 55, PH * 0.36),
-                xytext=(PW, PH * 0.36),
-                arrowprops=dict(arrowstyle="-|>", color="#204080", lw=1.3,
-                                mutation_scale=9))
-    ax.text(PW + 105, PH * 0.36 -55,
-            "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
-            color="#204080", fontsize=6.5, ha="left", va="bottom",
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, (PW, PH * 0.36),
+           (PW + 275, PH * 0.36),
+           "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
+           col="#204080", fw="bold")
+#     ax.annotate("",
+#                 xy=(PW + 55, PH * 0.36),
+#                 xytext=(PW, PH * 0.36),
+#                 arrowprops=dict(arrowstyle="-|>", color="#204080", lw=1.3,
+#                                 mutation_scale=9))
+#     ax.text(PW + 175, PH * 0.36 -55,
+#             "OPENS OUTWARD\n(180° SWING —\nCLEAR OF INTERIOR\nEQUIPMENT)",
+#             color="#204080", fontsize=6.5, ha="left", va="bottom",
+#             fontweight="bold", **FONT, zorder=15)
 
     # ── Emergency egress safety note ──────────────────────────────────────────
     ax.text(PW / 2, -280,
@@ -368,8 +372,11 @@ def sheet1():
                 color=C_DIM, lw=0.6, ls="--", zorder=3)
         ax.text(-HINGE_W - 90, hy, f"{hy}", color=C_DIM, fontsize=6,
                 ha="right", va="center", **FONT, zorder=15)
-    ax.text(-HINGE_W - 90, -180, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
-            color=C_DIM, fontsize=6, ha="right", va="top", **FONT, zorder=15)
+    hinge_2_flr = round(HINGE_YS[0] - HINGE_L/2)
+    dim_v(ax, -HINGE_W - 100, hinge_2_flr, HINGE_YS[0] - HINGE_L, f"HINGE CL HEIGHT\nFROM FLOOR {hinge_2_flr}mm", offset=-320)
+
+#     ax.text(-HINGE_W - 80, 90, "HINGE CL HEIGHT\nFROM FLOOR (mm)",
+#             color=C_DIM, fontsize=6, ha="right", va="top", **FONT, zorder=15)
 
     # ── Section A-A cut indicator (at H=1000mm — corresponds to Sheet 2 plan cut)
     AA_H = 1000   # height of plan section cut
@@ -1259,7 +1266,7 @@ def sheet4():
     # ── Container wall (X = -C_WALL_T to 0) — horizontal band ───────────────
     ax.add_patch(Rectangle((0, -C_WALL_T), C_WID, C_WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
-    ax.text(-60, -C_WALL_T / 2, f"{int(C_WALL_T)}mm\nWALL",
+    ax.text(-60, -C_WALL_T / 2, f"{int(C_WALL_T)}mm WALL",
             ha="right", va="center", fontsize=6, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
@@ -1274,7 +1281,7 @@ def sheet4():
     FRAME_W = 50
     ax.add_patch(Rectangle((0, 0), C_WID, FRAME_W,
                             fc="none", ec="#806010", lw=2.0, ls="--", zorder=5))
-    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 125, 170),
+    leader(ax, (C_WID - 100, FRAME_W / 2), (C_WID + 175, 25),
            "FIXED DOOR FRAME\n50×50mm RHS · SEAL LANDING", col="#806010", fs=6)
 
     # ── ZONE_L_END boundary ──────────────────────────────────────────────────
@@ -1333,7 +1340,7 @@ def sheet4():
                                 color="#C04010", lw=2.0,
                                 connectionstyle="arc3,rad=0.3",
                                 mutation_scale=12), zorder=15)
-    ax.text(arr_yd_p + 80, (arr_x0 + arr_x1) / 2 + 20,
+    ax.text(arr_yd_p + 80, (arr_x0 + arr_x1) / 2 + 120,
             f"PANEL SLIDE\n{SLIDE_P}mm",
             ha="left", va="center", fontsize=6.5, color="#C04010",
             fontweight="bold", **FONT, zorder=15)
@@ -1380,7 +1387,7 @@ def sheet4():
     # Panel thickness dims — use leaders into the panel zones for clarity
     # Corner zone thickness
     leader(ax, (PANEL_CORNER_YD_L / 2, PANEL_CT / 2),
-           (YD_LO + 80, PANEL_CT + 60),
+           (YD_LO + 160, PANEL_CT + 60),
            f"{PANEL_CT}mm CORNER ZONE", col=C_DIM, fs=6)
 
     # Center zone thickness

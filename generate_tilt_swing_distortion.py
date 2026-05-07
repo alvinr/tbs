@@ -198,15 +198,15 @@ def project_human(board_tilt, board_swing, film_tilt, film_swing,
 
 CONFIGS = [
     # (label, board_tilt, board_swing, film_tilt, film_swing, description)
-    ('C0', 0,  0,   0,   0,  'Reference\nAll flat'),
-    ('C1', 3,  0,   0,   0,  'Board tilt +3°\nFilm flat'),
-    ('C2', 0,  0,  20,   0,  'Film tilt +20°\nBoard flat'),
-    ('C3', 3,  0,  20,   0,  'Both tilt +\nsame direction\n(amplified)'),
-    ('C4', 3,  0, -20,   0,  'Opposing tilt\n(partially cancelled)'),
-    ('C5', 0,  3,   0,  15,  'Both swing +\nsame direction'),
-    ('C6', 3,  3,   0,   0,  'Compound board\n(tilt+swing)\nflat film'),
-    ('C7', 3,  3,  20,  15,  'Full compound\nboth systems\n(max distortion)'),
-    ('C8',-3,  3,  20, -15,  'Opposing compound\n(surrealist)'),
+    ('C0', 0,  0,   0,   0,  'Reference All flat'),
+    ('C1', 3,  0,   0,   0,  'Board tilt +3° Film flat'),
+    ('C2', 0,  0,  20,   0,  'Film tilt +20° Board flat'),
+    ('C3', 3,  0,  20,   0,  'Both tilt + same direction (amplified)'),
+    ('C4', 3,  0, -20,   0,  'Opposing tilt (partially cancelled)'),
+    ('C5', 0,  3,   0,  15,  'Both swing + same direction'),
+    ('C6', 3,  3,   0,   0,  'Compound board (tilt+swing) flat film'),
+    ('C7', 3,  3,  20,  15,  'Full compound both systems (max distortion)'),
+    ('C8',-3,  3,  20, -15,  'Opposing compound (surrealist)'),
 ]
 
 

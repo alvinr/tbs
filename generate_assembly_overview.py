@@ -92,13 +92,17 @@ def draw_dim_h(ax, x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):
     ax.text((x1+x2)/2, y + offset*0.55, label, ha="center", va="bottom",
             fontsize=fs, color=color)
 
-def draw_dim_v(ax, x, y1, y2, label, offset=80, fs=FS_SM, color=C_DIM):
+def draw_dim_v(ax, x, y1, y2, label, offset=80, fs=FS_SM, color=C_DIM, right=False):
     ax.annotate("", xy=(x, y2), xytext=(x, y1),
                 arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
     ax.plot([x-offset*0.3, x+offset*0.3], [y1, y1], color=color, lw=0.6)
     ax.plot([x-offset*0.3, x+offset*0.3], [y2, y2], color=color, lw=0.6)
-    ax.text(x - offset*0.6, (y1+y2)/2, label, ha="right", va="center",
-            fontsize=fs, color=color, rotation=90)
+    if right:
+        ax.text(x + offset*0.6, (y1+y2)/2, label, ha="left", va="center",
+                fontsize=fs, color=color, rotation=90)
+    else:
+        ax.text(x - offset*0.6, (y1+y2)/2, label, ha="right", va="center",
+                fontsize=fs, color=color, rotation=90)
 
 def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
@@ -229,7 +233,7 @@ ax.text(PUMP_X + PUMP_W/2, (PUMP_H_LO + PUMP_H_HI)/2,
 leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
        f"Electrical panel\n(wall-mount, Yd=0 face)\nX={EP_X}–{EP_X+EP_W}mm",
        ha="left", fs=FS_SM)
-leader(ax, BA_X, (BA_H_LO + BA_H_HI)/4, BA_X - 500, 400,
+leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
 leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
        f"Pump manifold\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
@@ -444,20 +448,12 @@ def eq2(x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):
         facecolor=color, edgecolor=ec, linewidth=lw, alpha=alpha, zorder=zorder))
 
 def ldr2(x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
-    ax2.annotate(label, xy=(mx(x_tip), y_tip), xytext=(mx(x_txt), y_txt),
-                fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
-                                connectionstyle="arc3,rad=0.0"))
+    """Leader line in mirrored coords."""
+    leader(ax2, mx(x_tip), y_tip, mx(x_txt), y_txt, label, fs=fs, color=color, ha=ha)
 
 def dim2h(x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):
     """Horizontal dimension in mirrored coords (x1 < x2 in real space)."""
-    px1, px2 = mx(x2), mx(x1)   # note swap: real x1 → right plot edge
-    ax2.annotate("", xy=(px2, y), xytext=(px1, y),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax2.plot([px1, px1], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
-    ax2.plot([px2, px2], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
-    ax2.text((px1+px2)/2, y + offset*0.55, label, ha="center", va="bottom",
-            fontsize=fs, color=color)
+    draw_dim_h(ax2, mx(x2), mx(x1), y, label, offset=offset, fs=fs, color=color)
 
 # ── Zone fills ────────────────────────────────────────────────────────────────
 ax2.add_patch(mpatches.Rectangle((mx(ZONE_L_END), 0), ZONE_L_END, C_HGT,
@@ -689,21 +685,11 @@ DIM_TOP2   = C_HGT + 250
 DIM_BOT2   = -250
 DIM_LEFT2  = C_LEN + 350   # left in plot = far end (X=C_LEN) in real coords
 
-ax2.annotate("", xy=(C_LEN, DIM_TOP2), xytext=(0, DIM_TOP2),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax2.plot([0, 0], [DIM_TOP2 - 80*0.3, DIM_TOP2 + 80*0.3], color=C_DIM, lw=0.6)
-ax2.plot([C_LEN, C_LEN], [DIM_TOP2 - 80*0.3, DIM_TOP2 + 80*0.3], color=C_DIM, lw=0.6)
-ax2.text(C_LEN/2, DIM_TOP2 + 80*0.55, f"Container length  {C_LEN}mm",
-        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM)
+draw_dim_h(ax2, 0, C_LEN, DIM_TOP2, f"Container length  {C_LEN}mm", offset=80)
 
 dim2h(FP_X_L, FP_X_R, DIM_TOP2 + 200, f"Rail span  {RAIL_SPAN}mm", offset=80, color=RAIL_CLR)
 
-ax2.annotate("", xy=(DIM_LEFT2, C_HGT), xytext=(DIM_LEFT2, 0),
-            arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax2.plot([DIM_LEFT2 - 80*0.3, DIM_LEFT2 + 80*0.3], [0, 0], color=C_DIM, lw=0.6)
-ax2.plot([DIM_LEFT2 - 80*0.3, DIM_LEFT2 + 80*0.3], [C_HGT, C_HGT], color=C_DIM, lw=0.6)
-ax2.text(DIM_LEFT2 - 80*0.6, C_HGT/2, f"H={C_HGT}mm",
-        ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90)
+draw_dim_v(ax2, DIM_LEFT2, 0, C_HGT, f"H={C_HGT}mm", offset=80)
 
 ax2.text(C_LEN/2, DIM_BOT2 - 280,
         f"Optical cone illuminates full {FP_W}mm × {C_HGT}mm film plane"
@@ -979,7 +965,7 @@ draw_light_trap_drum(ax_tr, TR_PANEL_X)
 # Door closure plane line
 ax_tr.plot([0, C_WID], [-CONT_WALL, -CONT_WALL], color="#CC2020", lw=1.2,
            ls="--", dashes=(6, 3), zorder=8)
-ax_tr.text(C_WID + 60, -CONT_WALL, "Door closure\nplane",
+ax_tr.text(C_WID + 250, -CONT_WALL, "Door closure\nplane",
            ha="left", va="center", fontsize=FS_SM - 1, color="#CC2020", zorder=8)
 
 # Slide arrows
@@ -998,24 +984,17 @@ ax_tr.text(panel_mid_yd + 120, (OP_PANEL_X + TR_PANEL_X) / 2 + PANEL_CORNER_T / 
 # Dimensions
 dim3_y_bot = -CONT_WALL - DOOR_T - 100
 # Panel thickness dims
-ax_tr.annotate("", xy=(PANEL_CORNER_YD_L / 2, TR_PANEL_X + PANEL_CORNER_T),
-               xytext=(PANEL_CORNER_YD_L / 2, TR_PANEL_X),
-               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax_tr.text(PANEL_CORNER_YD_L / 2 - 60, TR_PANEL_X + PANEL_CORNER_T / 2,
-           f"{PANEL_CORNER_T}mm", ha="right", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
-
-ax_tr.annotate("", xy=(LT_DRUM_YD_CENTER, TR_PANEL_X + PANEL_CENTER_T),
-               xytext=(LT_DRUM_YD_CENTER, TR_PANEL_X),
-               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax_tr.text(LT_DRUM_YD_CENTER + DRUM_R + 30, TR_PANEL_X + PANEL_CENTER_T / 2,
-           f"{PANEL_CENTER_T}mm", ha="left", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90)
+draw_dim_v(ax_tr, PANEL_CORNER_YD_L / 2, TR_PANEL_X,
+           TR_PANEL_X + PANEL_CORNER_T, f"{PANEL_CORNER_T}mm",
+           offset=60, fs=FS_SM - 1)
+draw_dim_v(ax_tr, LT_DRUM_YD_CENTER, TR_PANEL_X,
+           TR_PANEL_X + PANEL_CENTER_T, f"{PANEL_CENTER_T}mm",
+           offset=60, fs=FS_SM - 1, right=True)
 
 
 # ── RIGHT PANEL: Operational mode ────────────────────────────────────────────
 plan_setup(ax_op, "OPERATIONAL MODE",
-           "Panel at X=0  |  Doors open  |  Left zone clear (no drums)")
+           "Panel at X=0  |  Doors open")
 draw_container_walls(ax_op)
 draw_container_doors(ax_op, closed=False)
 draw_hgr20_rails(ax_op)
@@ -1039,7 +1018,7 @@ ax_op.text(LT_DRUM_YD_CENTER, lt_drum_x_outer + 150,
 
 # Fixed door frame
 ax_op.plot([0, C_WID], [0, 0], color=C_OUT, lw=1.8, zorder=7)
-ax_op.text(C_WID + 120, 0, "Fixed door\nframe (X=0)",
+ax_op.text(C_WID + 320, 0, "Fixed door\nframe (X=0)",
            ha="left", va="center", fontsize=FS_SM - 1, color=C_OUT, zorder=8)
 
 # EPDM seal indicator
@@ -1049,19 +1028,12 @@ ax_op.text(C_WID - 160, 15, "EPDM seal",
            ha="left", va="center", fontsize=FS_SM - 1, color="#5A3020", zorder=8)
 
 # Panel thickness dims
-ax_op.annotate("", xy=(PANEL_CORNER_YD_L / 2, OP_PANEL_X + PANEL_CORNER_T),
-               xytext=(PANEL_CORNER_YD_L / 2, OP_PANEL_X),
-               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax_op.text(PANEL_CORNER_YD_L / 2 - 60, OP_PANEL_X + PANEL_CORNER_T / 2,
-           f"{PANEL_CORNER_T}mm", ha="right", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90, zorder=5)
-
-ax_op.annotate("", xy=(LT_DRUM_YD_CENTER, OP_PANEL_X + PANEL_CENTER_T),
-               xytext=(LT_DRUM_YD_CENTER, OP_PANEL_X),
-               arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax_op.text(LT_DRUM_YD_CENTER + DRUM_R + 30, OP_PANEL_X + PANEL_CENTER_T / 2,
-           f"{PANEL_CENTER_T}mm", ha="left", va="center",
-           fontsize=FS_SM - 1, color=C_DIM, rotation=90, zorder=5)
+draw_dim_v(ax_op, PANEL_CORNER_YD_L / 2, OP_PANEL_X,
+           OP_PANEL_X + PANEL_CORNER_T, f"{PANEL_CORNER_T}mm",
+           offset=60, fs=FS_SM - 1)
+draw_dim_v(ax_op, LT_DRUM_YD_CENTER, OP_PANEL_X,
+           OP_PANEL_X + PANEL_CENTER_T, f"{PANEL_CENTER_T}mm",
+           offset=60, fs=FS_SM - 1, right=True)
 
 # Cam latch indicators (4x, interior face) — label to the left with leader lines
 latch_yds = [200, 756, 1606, C_WID - 200]

@@ -94,7 +94,7 @@ Per-print cost: approximately $34 (chemistry + fabric + water). A 50-print run c
 
 ### Water System
 
-A self-contained three-circuit water system — Blue (wash), Red (fix), and Grey (waste recovery) — provides off-grid processing capability. Storage: three 330-gallon IBC totes plus two 55-gallon drums. Capacity: 8–10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Storage: four 275-gallon IBC totes in a 2×2 stack. Capacity: 8–10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
 
 The system was designed for remote deployments: no mains water connection required.
 

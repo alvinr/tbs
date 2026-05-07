@@ -22,12 +22,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system | $1,497 | $2,134 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 7a. Panel sliding carriage & drum dolly system | $1,460 | $1,460 |
+| 7a. Panel sliding carriage | $976 | $976 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,598** | **~$18,920** |
+| **TOTAL (base build + 50-print run)** | **~$14,114** | **~$18,436** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -164,11 +164,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| IBC tote 275 gal, food-grade, used/rinsed | HDPE cage, 2" ball valve | 3 | Container Exchanger (containerexchanger.com — CA listings) | $80–$150 | $240–$450 |
-| 55 gal HDPE drum, closed-head, UN-rated | Blue, 2" NPS + 2" buttress bungs | 2 | BASCO USA (bascousa.com) / The Cary Company | $55–$75 | $110–$150 |
-| Drum bung wrench (2" NPT + 2" buttress) | Polypropylene | 1 | Amazon / BASCO | — | $15 |
+| IBC tote 275 gal, food-grade, used/rinsed | HDPE cage, 2" ball valve — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger (containerexchanger.com — CA listings) | $80–$150 | $320–$600 |
+| 2" NPT bulkhead fitting, polypropylene | External drain/fill port on waste IBC | 2 | McMaster-Carr / Grainger | $18–$25 | $36–$50 |
+| Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports | 2 | Metal Supermarkets SoCal / Pacific Coast Steel | $8–$12 | $16–$24 |
 
-**Storage subtotal: ~$365–$615**
+**Storage subtotal: ~$372–$674**
 
 ### Pumps
 
@@ -206,10 +206,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1" SDR-11 HDPE pipe | Food-safe, blue-stripe, 20ft sticks | 5 sticks | Ferguson Plumbing / Winsupply | $12–$18/stick | $60–$90 |
 | ¾" SDR-11 HDPE pipe | Spray bar run, 20ft sticks | 2 sticks | Ferguson / Winsupply | $9–$14/stick | $20–$30 |
 | ½" ID reinforced braided PVC hose | Pump inlet flexible connection, 6ft per pump | 2 lengths | Home Depot / Amazon | $8–$12/length | $20 |
-| 1" ID reinforced coiled PVC hose | Drum flex connection, 1m per drum (305mm travel) | 2 lengths | Home Depot / Amazon | $10–$15/length | $20–$30 |
-| 1" polypropylene camlock (Type E × Hose Barb) | Quick-disconnect at drum and floor stub | 4 pairs | Amazon / Grainger | $5–$8/pair | $20–$32 |
+| 1" polypropylene camlock (Type E × Hose Barb) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon / Grainger | $5–$8/pair | $20–$32 |
 
-**Valves, fittings & pipe subtotal: ~$403–$600**
+**Valves, fittings & pipe subtotal: ~$383–$570**
 
 ### Processing tray
 
@@ -230,14 +229,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | pH meter (waterproof) | 0–14, ±0.1 accuracy | 1 | Amazon (Apera PH20) | $35–$55 |
 | pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bags | Amazon / bulk food supplier | $28 |
-| Chemical-resistant GHS labels | For drums and totes | 1 pack | Amazon / Labelmaster | $20 |
-| Funnel with filter screen 2" | For drum filling | 2 | Amazon / Grainger | $18 |
+| Chemical-resistant GHS labels | For IBC totes | 1 pack | Amazon / Labelmaster | $20 |
+| Funnel with filter screen 2" | For IBC filling | 2 | Amazon / Grainger | $18 |
 
 | Containment liner, 6-mil black LDPE | 20' × 10' sheet — secondary spill containment under IBCs and filter skid | 4 | Amazon / US Plastic Corp | $18–$28/sheet | $75–$110 |
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $2,674–$3,991**
+**Section total: $2,661–$4,020**
 
 ---
 
@@ -337,25 +336,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ---
 
-## 7a. Panel Sliding Carriage & Drum Dolly System
+## 7a. Panel Sliding Carriage
 
-*Source: `equipment-layout-report.md` § 6.1 & § 6.2. Enables transport mode: waste drums slide inward 305mm, then panel slides inward 300mm, clearing container doors for closure. Single-person operation.*
-
-### Drum slide system (×2 sets)
-
-| Item | Spec | Qty | Supplier | Est. cost |
-|------|------|-----|----------|-----------|
-| V-groove track, 28mm × 580mm | Hardened steel, floor-mount (permanent section, X=40–620mm) | 4 | McMaster-Carr / Amazon Industrial | ~$72 |
-| V-groove track, 28mm × 355mm | Hardened steel, removable bridge section (X=600–955mm) — spans over film plane floor rail | 4 | McMaster-Carr / Amazon Industrial | ~$52 |
-| V-groove roller wheels, 50mm OD | Sealed bearings, 250kg/wheel | 8 | McMaster-Carr / Amazon Industrial | ~$96 |
-| Drum dolly plates, 6mm A36 steel | 620×620mm, custom fab | 2 | Metal Supermarkets SoCal / Pacific Coast Steel | ~$80 |
-| Track shim blocks (30mm risers) | Welded steel, permanent tracks | 8 | Local fab / Metal Supermarkets | ~$40 |
-| Bridge riser blocks (30mm risers) | Welded steel, bridge sections — straddle HGR20 rail | 8 | Local fab / Metal Supermarkets | ~$40 |
-| M8 locating dowel pins | Bridge-to-permanent track alignment, 2 per bridge | 8 | McMaster-Carr | ~$16 |
-| Spring plunger pin locks, M12 | Ball-nose, operational + transport positions | 8 | McMaster-Carr | ~$64 |
-| Lashing D-rings, 25mm | 1,100kg WLL, welded to dolly plate | 4 | McMaster-Carr #3641T29 | ~$24 |
-
-**Drum slide subtotal: ~$484**
+*Source: `equipment-layout-report.md` § 6.1. Enables transport mode: panel slides inward 300mm, clearing container doors for closure. Single-person operation (~5 min, panel slide only).*
 
 ### Panel slide system
 
@@ -389,8 +372,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Door frame subtotal: ~$503**
 
-**Section total (materials): ~$1,460**
-**Fabrication labor: ~20–25 hrs × $80–$100/hr = $1,600–$2,500**
+**Section total (materials): ~$976**
+**Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ---
 
@@ -525,7 +508,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | **Waytek Wire** | Deutsch DT connectors, automotive wire | waytekwire.com |
 | **West Marine** | Blue Sea fuse blocks, marine DC wiring (Torrance CA) | westmarine.com |
 | **Container Exchanger** | Used IBC totes, food-grade — CA listings | containerexchanger.com |
-| **BASCO USA** | HDPE drums, UN-rated 55-gal | bascousa.com |
+| **BASCO USA** | HDPE drums, containers, UN-rated | bascousa.com |
 | **Ferguson Plumbing** | HDPE pipe, valves, fittings | ferguson.com |
 | **Pacific Coast Steel** | Hot-rolled A36 sheet, round bar, structural steel | Santa Fe Springs CA |
 | **Bearing World** | SKF bearings, same-day availability | Anaheim CA |

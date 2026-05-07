@@ -267,7 +267,7 @@ pinhole wall at X=2,399mm (pinhole side), H=400mm.
 | 600L Waste IBC | 1 | 600L | Waste (sealed) |
 | **Total** | — | **2,400L** | — |
 
-2,400L supports **8–9 prints per resupply** with 40% water recycling.
+2,400L supports **~10 prints per resupply** with 40% water recycling (16 gal per wash cycle, 32 gal Blue consumed per print with Brown recycling).
 
 See [Processing System Report](water-system-report.md) for full water circuit design.
 

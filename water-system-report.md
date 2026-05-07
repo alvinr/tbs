@@ -4,7 +4,7 @@
 ## Remote-Operation Design for the Giant Pinhole Camera
 
 *For a camera deployed off-grid without access to running water or mains drainage.*
-*Image plane: 5,893 × 2,388 mm (~140 sq ft). Container: 20 ft standard ISO shipping container.*
+*Image plane: 4,499 × 2,388 mm (~116 sq ft). Processing tray: 4,459 × 2,200 mm (~106 sq ft). Container: 20 ft standard ISO shipping container.*
 
 ---
 
@@ -12,7 +12,7 @@
 
 The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 5–7 full-size prints between resupply runs
+- Stores sufficient clean water for 8–10 full-size prints between resupply runs
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
@@ -66,29 +66,29 @@ It will **not**:
 
 ### Per-print water requirement
 
-Processing a 140 sq ft print on the container floor, flooded to 6 mm (¼ inch) depth:
+Processing a ~106 sq ft print in the processing tray (4,459 × 2,200 mm), flooded to 6 mm (¼ inch) depth:
 
 ```
-Volume per flood = 140 sq ft × (6 mm / 304.8) = 140 × 0.0197 ft = 2.76 cu ft
-                 = 2.76 × 7.48 = 20.6 gallons ≈ 21 gallons per wash cycle
+Volume per flood = 106 sq ft × (6 mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
+                 = 2.09 × 7.48 = 15.6 gallons ≈ 16 gallons per wash cycle
 ```
 
 | Wash cycle | Water source | Volume | Drain to |
 |-----------|-------------|--------|---------|
-| Wash 1 — 5 min | Blue (clean) | 21 gal | Brown tank |
-| Wash 2 — 5 min | Brown (recycled) | 21 gal | Brown tank |
-| Wash 3 — 5 min | Blue (clean) | 21 gal | Brown tank → Black if >3 recycles |
-| **Total per print** | | **~42 gal net Blue consumed** | |
+| Wash 1 — 5 min | Blue (clean) | 16 gal | Brown tank |
+| Wash 2 — 5 min | Brown (recycled) | 16 gal | Brown tank |
+| Wash 3 — 5 min | Blue (clean) | 16 gal | Brown tank → Black if >3 recycles |
+| **Total per print** | | **~32 gal net Blue consumed** | |
 
 ### Storage capacity vs. print count
 
 | Scenario | Blue consumed per print | Prints from 316 gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
-| No recycling | 63 gal (3 × 21) | ~5 prints | 0 |
-| With recycling (wash 2 from Brown) | 42 gal (2 × 21) | **~7 prints** | ~105 gal reused |
+| No recycling | 48 gal (3 × 16) | ~6 prints | 0 |
+| With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~10 prints** | ~160 gal reused |
 | Brown recycle limit (3 passes) | — | — | 158 gal max before going to Black |
 
-**Design target: 7 prints per resupply run** — achievable with the 316-gallon (1,200L) Blue supply using Brown recycling for wash 2.
+**Design target: 10 prints per resupply run** — achievable with the 316-gallon (1,200L) Blue supply using Brown recycling for wash 2.
 
 ---
 
@@ -216,10 +216,10 @@ The processing tray is permanently installed — it remains in place during both
 ### Print processing
 1. Expose print in camera (no water involved)
 2. Transfer print to processing tray in subdued light — lay face-up on containment liner
-3. Open BV-02 (Blue supply) → flood print with 21 gal via spray bar — 5 minutes
+3. Open BV-02 (Blue supply) → flood print with 16 gal via spray bar — 5 minutes
 4. Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain
 5. If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown
-6. Wash 3: open BV-02 → 21 gal clean Blue water → 5 minutes → drain
+6. Wash 3: open BV-02 → 16 gal clean Blue water → 5 minutes → drain
 7. Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse
 8. Hang print to dry — use internal or external line
 9. Allow residual water to gravity-drain from tray to Brown or Black as appropriate

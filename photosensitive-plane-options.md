@@ -3,16 +3,16 @@
 # Photosensitive Options
 ## Giant Pinhole Camera — Image Plane Material Selection Guide
 
-**Image plane dimensions (active):** 4,024 × 2,388 mm (~13′ 3″ × 7′ 10″)  
+**Image plane dimensions (active):** 4,499 × 2,388 mm (~14′ 9″ × 7′ 10″)  
 **Container interior:** 5,893 × 2,388 mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment  
-**Image plane area:** ~103 sq ft (9.6 m²)  
+**Image plane area:** ~116 sq ft (10.7 m²)  
 **Camera configuration:** Option B (side-to-side), f = 2,362 mm, f/1088, pinhole Ø 2.17 mm
 
 ---
 
 ## Executive Summary
 
-Eight photosensitive processes were evaluated for a ~103 sq ft (4,024 × 2,388 mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~116 sq ft (4,499 × 2,388 mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 
@@ -56,7 +56,7 @@ The one-time infrastructure cost — ACM backing panels on timber battens bolted
 
 ## Overview
 
-Covering a 140 sq ft photosensitive plane is not a solved problem in commercial photography. Every process listed below has been documented at large scale or can be extrapolated from known chemistry; costs are calculated per image for the full 140 sq ft surface including chemistry, substrate where applicable, and processing. All chemistry listed under historic/alternative processes can be sourced and mixed in a home or garage darkroom from commercially available reagents.
+Covering a 116 sq ft photosensitive plane is not a solved problem in commercial photography. Every process listed below has been documented at large scale or can be extrapolated from known chemistry; costs are calculated per image for the full 116 sq ft surface including chemistry, substrate where applicable, and processing. All chemistry listed under historic/alternative processes can be sourced and mixed in a home or garage darkroom from commercially available reagents.
 
 Processes are ordered from lowest to highest per-image cost. Film is included at the end as the documented outlier.
 
@@ -107,7 +107,7 @@ Invented by Sir John Herschel in 1842 and documented in *Philosophical Transacti
 - Solution B: 8.1 g potassium ferricyanide dissolved in 100 ml distilled water
 - Mix equal volumes A and B immediately before use; baseline exposure ~2–3 hr at f/1088
 
-### Chemistry Quantities for 140 sq ft
+### Chemistry Quantities for 116 sq ft
 
 Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft single coat. Double coat recommended for density.
 
@@ -124,7 +124,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 ### Substrate Options and Costs
 
-| Substrate | Cost per sq ft | Total (140 sq ft) | Notes |
+| Substrate | Cost per sq ft | Total (116 sq ft) | Notes |
 |---|---|---|---|
 | Unbleached muslin (100% cotton) | ~$0.50–0.80 | **$70–112** | Best absorption; flexible; same as The Great Picture substrate |
 | Pre-washed cotton canvas | ~$0.80–1.20 | $112–168 | Heavier; more dimensional stability; good for large panels |
@@ -153,7 +153,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 | Item | Cost |
 |---|---|
 | FAC + potassium ferricyanide | ~$85 |
-| Muslin (140 sq ft) | ~$80–100 |
+| Muslin (116 sq ft) | ~$80–100 |
 | Distilled water, misc | ~$10 |
 | **Total** | **~$175–$195** |
 
@@ -188,7 +188,7 @@ For in-camera capture at f/1088 and the exposure times this camera produces, gum
 
 **Multiple-coat implication:** Each coat requires drying, recoating, and re-exposure to a precise registration. For a 13-foot image, registration between coats is an engineering problem — mechanical pin registration or projection registration will be needed.
 
-### Chemistry Quantities and Costs (single coat, 140 sq ft)
+### Chemistry Quantities and Costs (single coat, 116 sq ft)
 
 | Reagent | Quantity | Unit cost | Subtotal |
 |---|---|---|---|
@@ -207,7 +207,7 @@ Same options as cyanotype; cotton fabric or heavy watercolor paper. The gum arab
 | Item | Cost |
 |---|---|
 | Chemistry (single coat) | ~$55–75 |
-| Muslin (140 sq ft) | ~$80–100 |
+| Muslin (116 sq ft) | ~$80–100 |
 | **Total** | **~$135–175** |
 
 *Note: 4-coat image builds to ~$375–475. Single coat may be sufficient for a graphic, high-contrast aesthetic.*
@@ -235,7 +235,7 @@ Invented by William Henry Fox Talbot, 1834–1840. The first negative-positive p
 4. **Fix:** 20–25% sodium thiosulfate ("hypo") solution, 5–10 minutes. Rinse thoroughly in running water, 30 minutes minimum.
 5. **Optional:** Gold toner (sodium gold chloride, 0.1%) applied between exposure and fixation significantly improves archival stability and shifts colour to red-brown/neutral.
 
-### Chemistry Quantities and Costs for 140 sq ft
+### Chemistry Quantities and Costs for 116 sq ft
 
 **Silver nitrate requirement:** ~5–10 ml of 12% solution per sq ft = 700–1,400 ml total. At 12% concentration: 84–168 g of AgNO₃.
 
@@ -263,7 +263,7 @@ Identical to cyanotype in principle. Sensitized sheets/panels must be loaded in 
 |---|---|
 | Silver nitrate (~130 g) | ~$338 |
 | All other chemistry | ~$15 |
-| Cotton muslin/canvas (140 sq ft) | ~$80–100 |
+| Cotton muslin/canvas (116 sq ft) | ~$80–100 |
 | **Total** | **~$350–$450** |
 
 *This is higher than the initial table estimate due to silver nitrate quantities at scale. Recalibrated from chemistry volumes above.*
@@ -291,9 +291,9 @@ Developed in the 1890s as a simplified, lower-cost silver process. Named for the
 - Apply to substrate in subdued light; dry
 - Expose to UV; develop in running water 3–5 min; fix in 25% sodium thiosulfate 2–5 min; wash 20 min
 
-### Chemistry Quantities and Costs for 140 sq ft
+### Chemistry Quantities and Costs for 116 sq ft
 
-Coverage: approximately the same as cyanotype, 2 ml/sq ft. For 140 sq ft: 280 ml of sensitizer.
+Coverage: approximately the same as cyanotype, 2 ml/sq ft. For 116 sq ft: 280 ml of sensitizer.
 
 At 10 g AgNO₃ per 100 ml solution: **28 g silver nitrate** for single coat.
 
@@ -309,7 +309,7 @@ At 10 g AgNO₃ per 100 ml solution: **28 g silver nitrate** for single coat.
 | Item | Cost |
 |---|---|
 | Chemistry | ~$100–$185 |
-| Muslin (140 sq ft) | ~$80–100 |
+| Muslin (116 sq ft) | ~$80–100 |
 | Misc (water, containers, gloves) | ~$15 |
 | **Total** | **~$195–$300** |
 
@@ -340,9 +340,9 @@ Ilford Multigrade V RC Deluxe is the industry-standard enlarging paper and the m
 
 ### Coverage Calculation
 
-Active image plane: 4,024 mm wide × 2,388 mm tall.  
+Active image plane: 4,499 mm wide × 2,388 mm tall.  
 Paper roll width: 1,270 mm (50").  
-Number of strips needed: ⌈4,024 / 1,270⌉ = **4 strips** (covers 5,080 mm — 528 mm spare).  
+Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5,080 mm — 581 mm spare).  
 Each strip height: 2,388 mm (~7.84 ft), cut from the 30.5 m roll.  
 Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 complete images per roll** (with ~1,300 mm of roll remaining).
 
@@ -350,7 +350,7 @@ Strips from one roll: ⌊30,500 / 2,388⌋ = **12 strips per roll** → **3 comp
 
 A 50" × 100' roll of Ilford Multigrade V RC Deluxe retails at approximately **$600–750** (B&H Photo, Freestyle Photographic, 2025 pricing). At 2 images per roll: **~$300–375 per image in paper cost.**
 
-### Processing Chemistry (140 sq ft)
+### Processing Chemistry (116 sq ft)
 
 Floor-tray or in-camera processing required; standard silver gelatin chemistry.
 
@@ -412,7 +412,7 @@ Rockland Colloid Liquid Light (LLE series) is a liquid silver gelatin emulsion t
 
 ### Coverage and Cost
 
-For 140 sq ft at 1.5 sq ft/oz (single coat): **~94 oz required**.  
+For 116 sq ft at 1.5 sq ft/oz (single coat): **~94 oz required**.  
 Double coat (recommended for density): **~188 oz**.
 
 Liquid Light retail: approximately **$25–30 per 8 oz (237 ml) bottle**.  
@@ -422,7 +422,7 @@ This is the most expensive material option and is primarily justified by the uni
 
 ### Substrate Options
 
-| Substrate | Aesthetic | Cost per sq ft | Total (140 sq ft) |
+| Substrate | Aesthetic | Cost per sq ft | Total (116 sq ft) |
 |---|---|---|---|
 | Pre-primed canvas (artist canvas roll) | Neutral; flexible | ~$0.80–1.20 | $112–168 |
 | ACM aluminium composite panel | Industrial; rigid; planar | ~$2.00–3.00 | $280–420 |
@@ -471,7 +471,7 @@ Industrial and medical X-ray film is available in very large sheet formats, unli
 | Base | Polyester; dimensionally stable; blue-grey tint |
 | Emulsion | Double-sided silver halide; blue/green sensitive |
 
-At approximately $5–8 per 14"×17" sheet, covering 140 sq ft would require roughly 150–200 sheets depending on layout, at a material cost of $750–$1,600. Large-format industrial X-ray film in continuous rolls is available from medical/NDT suppliers, but ordering in custom widths is typical.
+At approximately $5–8 per 14"×17" sheet, covering 116 sq ft would require roughly 150–200 sheets depending on layout, at a material cost of $750–$1,600. Large-format industrial X-ray film in continuous rolls is available from medical/NDT suppliers, but ordering in custom widths is typical.
 
 The significantly higher ISO rating means exposure times at f/1088 would be 5–8× shorter than with paper — approximately 5–10 minutes versus 40+ minutes for paper in full sun. This is an operationally significant advantage.
 
@@ -490,7 +490,7 @@ X-ray film is double-coated — emulsion on both sides. Wet processing produces 
 **Estimated per-image cost: $2,000–$8,000+**  
 **Included for completeness; not recommended as primary medium**
 
-Covering 140 sq ft with photographic film at any standard format produces costs that are an order of magnitude higher than paper-based options:
+Covering 116 sq ft with photographic film at any standard format produces costs that are an order of magnitude higher than paper-based options:
 
 | Format | Sheets needed | Cost/sheet | Material cost |
 |---|---|---|---|
@@ -500,7 +500,7 @@ Covering 140 sq ft with photographic film at any standard format produces costs 
 
 Processing adds C-41 or B&W chemistry at additional cost. 8×10 sheet film in continuous rolls is not commercially available. Handling and tiling 350+ sheets of 8×10 in complete darkness is impractical.
 
-Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a 140 sq ft image plane**, both on cost and operational grounds.
+Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a 116 sq ft image plane**, both on cost and operational grounds.
 
 ---
 
@@ -511,7 +511,7 @@ Regardless of process, the image plane requires a flat rigid backing. Corrugated
 ### Recommended Backing System
 
 **Aluminium Composite Material (ACM / Dibond) panels, 3 mm thick:**
-- Available in 4×8 ft (1,220×2,440 mm) sheets; approximately 18 sheets needed to tile 140 sq ft
+- Available in 4×8 ft (1,220×2,440 mm) sheets; approximately 18 sheets needed to tile 116 sq ft
 - ACM is completely flat, dimensionally stable, lightweight (~3 lb/sq ft), and mounts by bolting through panel edge to timber battens or directly to container rib flanges
 - Chemical-resistant (developer, fixer do not damage aluminium face)
 - Cost: ~$40–60 per 4×8 sheet × 18 sheets = **$720–1,080 for the backing system** (one-time infrastructure cost, reusable)

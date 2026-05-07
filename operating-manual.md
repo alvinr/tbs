@@ -148,11 +148,11 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 **Mix Parts A and B in equal volumes immediately before use:**
 
-| For 1 print (~103 sq ft) | Volume |
+| For 1 print (~116 sq ft) | Volume |
 |------------------------|--------|
-| Part A | 600 ml |
-| Part B | 600 ml |
-| **Working sensitizer** | **1,200 ml** |
+| Part A | 675 ml |
+| Part B | 675 ml |
+| **Working sensitizer** | **1,350 ml** |
 
 1. Pour equal volumes into a third jug. Stir gently. The mix turns yellow-green.
 2. Pour into the roller tray immediately before entering for coating.

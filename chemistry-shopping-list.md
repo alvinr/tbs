@@ -3,9 +3,9 @@
 # Chemistry Shopping Lists
 ## Giant Pinhole Camera: Raw Material Procurement by Process
 
-**Image plane per print:** 4,024 × 2,388 mm (~103 sq ft active film zone; container interior 5,893 × 2,388 mm)  
+**Image plane per print:** 4,499 × 2,388 mm (~116 sq ft active film zone; container interior 5,893 × 2,388 mm)  
 **Run size:** 50 prints  
-**Total substrate area:** ~5,150 sq ft  
+**Total substrate area:** ~5,800 sq ft  
 **Pricing basis:** April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.
 
 ---
@@ -14,25 +14,25 @@
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware formula)** | ~$787 | ~$900 | **~$1,700** | **~$34** |
-| **Gum bichromate** | ~$1,917 | ~$900 | **~$2,800** | **~$56** |
-| **Van Dyke Brown** | ~$5,820 | ~$900 | **~$6,700** | **~$134** |
+| **Cyanotype (Ware formula)** | ~$887 | ~$1,014 | **~$1,915** | **~$38** |
+| **Gum bichromate** | ~$2,159 | ~$1,014 | **~$3,154** | **~$63** |
+| **Van Dyke Brown** | ~$6,553 | ~$1,014 | **~$7,544** | **~$151** |
 | **Ilford RC paper** | ~$1,275 (chemistry) | ~$13,500 (paper) | **~$14,775** | **~$296** |
-| **Liquid Light** | ~$900 (chemistry) | ~$12,945 (emulsion+substrate) | **~$13,845** | **~$277** |
-| **Salt print** | ~$16,450 | ~$900 | **~$17,350** | **~$347** |
+| **Liquid Light** | ~$900 (chemistry) | ~$14,690 (emulsion+substrate) | **~$15,590** | **~$312** |
+| **Salt print** | ~$18,522 | ~$1,014 | **~$19,536** | **~$391** |
 
-Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype and gum bichromate are the only processes where 50 prints can be made for under $3,000 total.
+Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype is the only process where 50 prints can be made for under $2,000 total; gum bichromate remains under $3,500.
 
 ---
 
 ## Shared Item: Substrate Fabric
 
-All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~103 sq ft each, plus 15% waste = ~5,923 sq ft total; at 60" (5 ft) wide fabric = approximately **1,220 linear yards**.
+All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~116 sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric = approximately **1,340 linear yards**.
 
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Unbleached cotton muslin, 60" wide | 1,220 yd | **Fabric Direct** | 150-yd roll | 9 rolls | ~$100/roll | ~$900 |
-| OR by the yard | 1,220 yd | **Fabric Wholesale Direct** | per yard | 1,220 | ~$0.80–$1.20/yd | ~$975–$1,465 |
+| Unbleached cotton muslin, 60" wide | 1,340 yd | **Fabric Direct** | 150-yd roll | 9 rolls | ~$100/roll | ~$900 |
+| OR by the yard | 1,340 yd | **Fabric Wholesale Direct** | per yard | 1,340 | ~$0.80–$1.20/yd | ~$1,072–$1,608 |
 
 **Fabric Direct** — 150-yard rolls of 60" unbleached muslin, medium weight  
 URL: [fabricdirect.com](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/)
@@ -46,7 +46,7 @@ URL: [fabricwholesaledirect.com](https://fabricwholesaledirect.com/products/cott
 
 ## Process 1: Cyanotype
 
-**50-print total: ~$1,700 | Per print: ~$34**
+**50-print total: ~$1,915 | Per print: ~$38**
 
 Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sensitizer. This replaces the traditional Herschel ferric ammonium citrate (FAC) formula with ammonium iron(III) oxalate (AmFe) and achieves **4–8× faster exposures** (baseline ~30–45 min in full sun vs 2+ hours for traditional) with denser shadows and finer tonal gradation.
 
@@ -56,10 +56,10 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 
 | Reagent | Per print | × 50 prints | Order qty | Notes |
 |---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | 150 g | **7.5 kg** | 8 kg | Part A; requires warm water to dissolve |
-| Potassium ferricyanide | 70 g | **3.5 kg** | 4 kg | Part B |
-| Ammonium dichromate | 8 g | **400 g** | 500 g | Part B additive; contrast enhancer — handle with care |
-| Distilled / DI water | ~1.5 L | ~75 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
+| Ammonium iron(III) oxalate (AmFe) | 169 g | **8.45 kg** | 9 kg | Part A; requires warm water to dissolve |
+| Potassium ferricyanide | 79 g | **3.95 kg** | 4 kg | Part B |
+| Ammonium dichromate | 9 g | **450 g** | 500 g | Part B additive; contrast enhancer — handle with care |
+| Distilled / DI water | ~1.7 L | ~85 L | Tap water + DI filter adequate | Part A requires warm water (50–60°C) |
 
 > **⚠ Ammonium dichromate** is a known carcinogen (Category 1A) and oxidizer. Quantities here are small (~10g per print, 1 kg for 50 prints). Wear nitrile gloves and mix in ventilated area. Store away from flammables. No hazmat shipping at this quantity (< 1 kg per shipment from Photographers' Formulary).
 
@@ -73,7 +73,7 @@ Cyanotype uses the **Mike Ware New Cyanotype formula** (1994) as the primary sen
 | Ammonium Dichromate, 100 g | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 5 | ~$12 | ~$60 |
 | Unbleached muslin, 60" wide | **Fabric Direct** | [fabricdirect.com — 150-yd roll](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**Process total: ~$1,687 chemistry + substrate (~$787 chemistry, ~$900 muslin)**
+**Process total: ~$1,887 chemistry + substrate (~$887 chemistry, ~$900 muslin)**
 
 *Note: No fixer required. Development in plain cold water. No darkroom required for processing.*
 
@@ -90,15 +90,15 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 2: Gum Bichromate
 
-**50-print total: ~$2,800 | Per print: ~$56**
+**50-print total: ~$3,154 | Per print: ~$63**
 
 ### Chemistry quantities
 
 | Reagent | Per print | × 50 prints | Order qty |
 |---|---|---|---|
-| Ammonium dichromate | 165 g | **8.25 kg** | 9 kg |
-| Gum arabic powder | 520 g | **26 kg** | 28 kg |
-| Dry watercolour pigment | 40 g | **2.0 kg** | 2.5 kg |
+| Ammonium dichromate | 186 g | **9.3 kg** | 10 kg |
+| Gum arabic powder | 586 g | **29.3 kg** | 30 kg |
+| Dry watercolour pigment | 45 g | **2.25 kg** | 2.5 kg |
 
 ### Shopping list
 
@@ -111,7 +111,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Dry pigment — raw umber or lamp black | **Kremer Pigments** | kremer-pigmente.com | 1 kg | 3 | ~$20–40/kg | ~$60–120 |
 | Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**Process total: ~$2,746–$2,918 (~$1,917 chemistry, ~$900 muslin)**
+**Process total: ~$3,059–$3,259 (~$2,159 chemistry, ~$900 muslin)**
 
 **Hazard:** Ammonium dichromate is classified as an **oxidizer (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
 
@@ -121,16 +121,16 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 3: Van Dyke Brown
 
-**50-print total: ~$6,700 | Per print: ~$134**
+**50-print total: ~$7,544 | Per print: ~$151**
 
 ### Chemistry quantities
 
 | Reagent | Per print | × 50 prints | Order qty |
 |---|---|---|---|
-| Silver nitrate (AgNO₃) | 41 g | **2.05 kg** | 3 kg |
-| Ferric ammonium citrate (green) | 105 g | **5.25 kg** | 6 kg |
-| Tartaric acid | 10 g | **500 g** | 1 kg |
-| Sodium thiosulfate (fixer) | 370 g | **18.5 kg** | 25 kg |
+| Silver nitrate (AgNO₃) | 46 g | **2.3 kg** | 3 kg |
+| Ferric ammonium citrate (green) | 118 g | **5.9 kg** | 6 kg |
+| Tartaric acid | 11 g | **550 g** | 1 kg |
+| Sodium thiosulfate (fixer) | 417 g | **20.85 kg** | 25 kg |
 
 ### Shopping list
 
@@ -146,7 +146,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Sodium Thiosulfate, 25 kg | **Ingredient Depot** | [ingredientdepot.com/products/sodium-thiosulphate-25-kgs](https://ingredientdepot.com/products/sodium-thiosulphate-25-kgs) | 25 kg bag | 1 | ~$40–55 | ~$50 |
 | Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**Process total: ~$5,820–$6,720 depending on AgNO₃ source**
+**Process total: ~$6,553–$7,544 depending on AgNO₃ source**
 
 **Critical procurement note — silver nitrate:**
 - Silver nitrate is a DEA List I Chemical (used in drug synthesis). US purchases require a **DEA Form 224 registration** for quantities above threshold (typically >400g). Photographers' Formulary explicitly states "DEA Form Required" on their listing.
@@ -158,15 +158,15 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 ## Process 4: Salt Print
 
-**50-print total: ~$17,350 | Per print: ~$347**
+**50-print total: ~$19,536 | Per print: ~$391**
 
 ### Chemistry quantities
 
 | Reagent | Per print | × 50 prints | Order qty | Notes |
 |---|---|---|---|---|
-| Silver nitrate (AgNO₃) | 125 g | **6.25 kg** | 7 kg | DEA form required; see above |
-| Sodium chloride | 15 g | 750 g | 1 kg | Table salt adequate |
-| Sodium thiosulfate | 740 g | **37 kg** | 50 kg | Cheap bulk chemical; 25 kg bag × 2 |
+| Silver nitrate (AgNO₃) | 141 g | **7.05 kg** | 8 kg | DEA form required; see above |
+| Sodium chloride | 17 g | 850 g | 1 kg | Table salt adequate |
+| Sodium thiosulfate | 833 g | **41.65 kg** | 50 kg | Cheap bulk chemical; 25 kg bag × 2 |
 
 ### Shopping list
 
@@ -179,7 +179,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Sodium Thiosulfate (alternative) | **Alliance Chemical** | [alliancechemical.com/products/sodium-thiosulfate](https://alliancechemical.com/products/sodium-thiosulfate) | 25 lb | 4+ | ~$35 per 25 lb | ~$140 |
 | Unbleached muslin | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**The silver nitrate cost at 6.25 kg dominates entirely.** At $260/100g, this is $16,250 in AgNO₃ alone. Salt print is included here for completeness but is not recommended for a 50-print run at this scale. **Van Dyke Brown delivers a comparable aesthetic at roughly one-third the silver consumption.**
+**The silver nitrate cost at 7.05 kg dominates entirely.** At $260/100g, this is $18,330 in AgNO₃ alone. Salt print is included here for completeness but is not recommended for a 50-print run at this scale. **Van Dyke Brown delivers a comparable aesthetic at roughly one-third the silver consumption.**
 
 ---
 
@@ -192,8 +192,8 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Item | Per print | × 50 prints | Order qty |
 |---|---|---|---|
 | Ilford MGRC 50"×98' roll | 0.33 roll (3 prints/roll) | **17 rolls** | 18 rolls |
-| Kodak Dektol developer (working) | 11 L | 550 L | 10 × 5-gal packets |
-| Ilford Rapid Fixer concentrate | 3 L (makes 15 L working) | 150 L concentrate | 30 × 5L bottles |
+| Kodak Dektol developer (working) | 12.4 L | 620 L | 11 × 5-gal packets |
+| Ilford Rapid Fixer concentrate | 3.4 L (makes 17 L working) | 170 L concentrate | 34 × 5L bottles |
 
 ### Shopping list
 
@@ -207,35 +207,35 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 **Notes on paper rolls:**
 - Ilford MGRC 50"×98' confirmed listed at B&H Photo (product #ILMG50981P). Price is not shown publicly — call B&H at 800-606-6969 or log in for current pricing.
-- 50" width × 98' length yields 4 strips of 50" × 94" per print (4 × 1,270 mm = 5,080 mm covers the 4,024 mm active width with 528 mm spare; each strip height = 2,388 mm = 94"). 12 strips per roll ÷ 4 strips per print = **3 prints per roll**.
+- 50" width × 98' length yields 4 strips of 50" × 94" per print (4 × 1,270 mm = 5,080 mm covers the 4,499 mm active width with 581 mm spare; each strip height = 2,388 mm = 94"). 12 strips per roll ÷ 4 strips per print = **3 prints per roll**.
 - Paper must be cut and handled in **complete darkness**. A changing tent large enough for an 8-foot wide roll is required, or a light-tight room.
 
 ---
 
 ## Process 6: Rockland Liquid Light on Custom Substrate
 
-**50-print total: ~$13,845 | Per print: ~$277**
+**50-print total: ~$15,590 | Per print: ~$312**
 
 ### Material quantities
 
 | Item | Per print | × 50 prints | Order qty |
 |---|---|---|---|
-| Rockland Liquid Light | 140 oz (double coat) | **7,000 oz** | 219 × 32oz OR contact Rockland for bulk |
-| Developer (Dektol) | 11 L | 550 L | As above |
-| Fixer | 15 L working | 750 L | As above |
-| Substrate (muslin) | ~103 sq ft | ~5,150 sq ft | 1,220 yd of 60" muslin |
+| Rockland Liquid Light | 158 oz (double coat) | **7,900 oz** | 247 × 32oz OR contact Rockland for bulk |
+| Developer (Dektol) | 12.4 L | 620 L | As above |
+| Fixer | 17 L working | 850 L | As above |
+| Substrate (muslin) | ~116 sq ft | ~5,800 sq ft | 1,340 yd of 60" muslin |
 
 ### Shopping list
 
 | Item | Supplier | URL | Unit | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Rockland Liquid Light 32 oz | **Adorama** | [adorama.com/chll32.html](https://www.adorama.com/chll32.html) | 32 oz | 219 | ~$50–60 | ~$10,950–13,140 |
-| Rockland Liquid Light 32 oz | **B&H Photo** | [bhphotovideo.com — Rockland LLE8](https://www.bhphotovideo.com/c/product/45028-REG/Rockland_LLE8_Liquid_Light_Photo_Emulsion.html) | 8 oz | 875 | ~$25 | ~$21,875 |
+| Rockland Liquid Light 32 oz | **Adorama** | [adorama.com/chll32.html](https://www.adorama.com/chll32.html) | 32 oz | 247 | ~$50–60 | ~$12,350–14,820 |
+| Rockland Liquid Light 32 oz | **B&H Photo** | [bhphotovideo.com — Rockland LLE8](https://www.bhphotovideo.com/c/product/45028-REG/Rockland_LLE8_Liquid_Light_Photo_Emulsion.html) | 8 oz | 988 | ~$25 | ~$24,700 |
 | **Rockland direct (bulk quote)** | **Rockland Colloid** | [rockaloid.com](https://www.rockaloid.com/) | Custom bulk | Contact | — | **Recommended for 50-print volume** |
 | Developer, Fixer | As Ilford section | — | — | — | — | ~$900 |
 | Muslin substrate | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**Procurement note:** At 7,000 oz (~207 litres / ~55 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 219 bottles at $55 each. **Contact Rockland Colloid directly** (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.
+**Procurement note:** At 7,900 oz (~234 litres / ~62 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 247 bottles at $55 each. **Contact Rockland Colloid directly** (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.
 
 ---
 
@@ -243,22 +243,22 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 
 Applies to Ilford RC paper and Liquid Light. Both use standard silver gelatin processing chemistry.
 
-### Dektol developer — 550 L working solution total
+### Dektol developer — 620 L working solution total
 
 | Item | Supplier | URL | Unit | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Kodak Dektol, 5-gal powder | **Amazon** | [amazon.com — Kodak Dektol 5 gal](https://www.amazon.com/KODAK-Dektol-Developer-Powder-Gallons/dp/B00009R76F) | Makes 5 gal (18.9 L) stock | 10 | ~$28 | ~$280 |
-| Kodak Dektol, 1-gal powder | **B&H** | As above | Makes 1 gal (3.78 L) stock | 49 | ~$12 | ~$588 |
+| Kodak Dektol, 5-gal powder | **Amazon** | [amazon.com — Kodak Dektol 5 gal](https://www.amazon.com/KODAK-Dektol-Developer-Powder-Gallons/dp/B00009R76F) | Makes 5 gal (18.9 L) stock | 11 | ~$28 | ~$308 |
+| Kodak Dektol, 1-gal powder | **B&H** | As above | Makes 1 gal (3.78 L) stock | 55 | ~$12 | ~$660 |
 
-At 1:2 dilution: 1 gallon stock → 3 gallons working. 5-gal packet → 15 gal (56.7 L) working. 10 packets × 56.7 L = 567 L working. Sufficient.
+At 1:2 dilution: 1 gallon stock → 3 gallons working. 5-gal packet → 15 gal (56.7 L) working. 11 packets × 56.7 L = 624 L working. Sufficient.
 
-### Fixer — 750 L working solution total
+### Fixer — 850 L working solution total
 
 | Item | Supplier | URL | Unit | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ilford Rapid Fixer, 5 L | **B&H Photo** | [bhphotovideo.com — Ilford Rapid Fixer](https://www.bhphotovideo.com/c/product/107521-REG/Ilford_1980276_Rapid_Fixer_5_Liter.html) | 5 L concentrate | 30 | ~$20 | ~$600 |
+| Ilford Rapid Fixer, 5 L | **B&H Photo** | [bhphotovideo.com — Ilford Rapid Fixer](https://www.bhphotovideo.com/c/product/107521-REG/Ilford_1980276_Rapid_Fixer_5_Liter.html) | 5 L concentrate | 34 | ~$20 | ~$680 |
 
-At 1:4 dilution: 5 L concentrate → 25 L working. 30 bottles × 25 L = 750 L working. Exact.
+At 1:4 dilution: 5 L concentrate → 25 L working. 34 bottles × 25 L = 850 L working. Exact.
 
 ---
 
@@ -266,12 +266,12 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 30 bottles × 25 L = 750 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware) | 7.5 kg AmFe | 3.5 kg | — | 0.4 kg | — | — | 1,220 yd muslin | ~$787 | **~$1,700** |
-| Gum bichromate | — | — | — | 8.25 kg | 26 kg | — | 1,220 yd muslin | ~$1,917 | **~$2,800** |
-| Van Dyke Brown | 5.25 kg FAC | — | 2.05 kg | — | — | 18.5 kg | 1,220 yd muslin | ~$5,820 | **~$6,700** |
-| Salt print | — | — | 6.25 kg | — | — | 37 kg | 1,220 yd muslin | ~$16,450 | **~$17,350** |
+| Cyanotype (Ware) | 7.5 kg AmFe | 3.5 kg | — | 0.4 kg | — | — | 1,340 yd muslin | ~$887 | **~$1,915** |
+| Gum bichromate | — | — | — | 8.25 kg | 26 kg | — | 1,340 yd muslin | ~$2,159 | **~$3,154** |
+| Van Dyke Brown | 5.25 kg FAC | — | 2.05 kg | — | — | 18.5 kg | 1,340 yd muslin | ~$6,553 | **~$7,544** |
+| Salt print | — | — | 6.25 kg | — | — | 37 kg | 1,340 yd muslin | ~$18,522 | **~$19,536** |
 | Ilford RC paper | — | — | — | — | — | — | 18 rolls paper | ~$1,275 (chem) | **~$14,775** |
-| Liquid Light | — | — | — | — | — | — | 1,220 yd + emulsion | ~$900 (chem) | **~$13,845** |
+| Liquid Light | — | — | — | — | — | — | 1,340 yd + emulsion | ~$900 (chem) | **~$15,590** |
 
 ---
 
@@ -284,10 +284,10 @@ Any US purchase of silver nitrate above certain thresholds requires completion o
 Ammonium dichromate is a UN Class 5.1 oxidiser. Cannot be shipped by air. UPS Ground only within the continental US. Both Photographers' Formulary and Chem-Impex state ground-only shipping at checkout. It is also a Category 1A human carcinogen. Proper storage away from flammables is required; the material is capable of self-sustaining decomposition if ignited.
 
 ### 3. Silver nitrate price volatility
-Silver nitrate is 63–68% silver by weight. The silver spot price (approximately $30–35/troy oz as of early 2026) directly sets the floor for AgNO₃ cost. A 20% increase in silver price increases salt print chemistry cost by approximately $4,400 on a 50-print run. Lock in pricing before committing to this process.
+Silver nitrate is 63–68% silver by weight. The silver spot price (approximately $30–35/troy oz as of early 2026) directly sets the floor for AgNO₃ cost. A 20% increase in silver price increases salt print chemistry cost by approximately $4,950 on a 50-print run. Lock in pricing before committing to this process.
 
 ### 4. Liquid Light — contact Rockland before ordering retail
-At the volume required for 50 prints (7,000 oz / ~207 litres), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.
+At the volume required for 50 prints (7,900 oz / ~234 litres), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.
 
 ### 5. Cyanotype AmFe — preparation notes
 Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissolve fully. Prepare Part A by adding AmFe to warm water and stirring until completely clear — a pale green-yellow solution. Do not use boiling water. Allow to cool before mixing with Part B. AmFe has a shelf life of 6–12 months in a sealed dark bottle at room temperature. If the traditional FAC formula is substituted: use only the **green grade** of ferric ammonium citrate (Fe³⁺, light-sensitive) — the brown grade (Fe²⁺) is not light-sensitive for cyanotype.
@@ -296,7 +296,7 @@ Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissol
 Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitisers. If not removed, the sensitiser will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.
 
 ### 7. Bulk muslin ordering — consider width carefully
-The active film plane is 13'3" × 7'10" (4,024 × 2,388 mm). The image plane is 7'10" (2,388 mm) tall. 60" (1,524 mm) muslin requires multiple widths joined in the height direction. For the 13'3" × 7'10" active plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×158" are cut and joined to cover the 13'3" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 13'3" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
+The active film plane is 14'9" × 7'10" (4,499 × 2,388 mm). The image plane is 7'10" (2,388 mm) tall. 60" (1,524 mm) muslin requires multiple widths joined in the height direction. For the 14'9" × 7'10" active plane, the most efficient lay is: fabric width = 7'10" height (requires ~96" / 240cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×177" are cut and joined to cover the 14'9" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 14'9" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
 
 ---
 

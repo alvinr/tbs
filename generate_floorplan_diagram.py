@@ -27,6 +27,7 @@ Equipment layout — end-zone design rev 5 (4-IBC 2×2 stack, drums eliminated):
 """
 
 import numpy as np
+from tbs_title_block import title_block
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -80,18 +81,6 @@ def penetration(ax, x, y, r=60, col=C_OUT, label="", label_offset=(0, 80)):
         ax.text(x + label_offset[0], y + label_offset[1], label,
                 color=col, fontsize=6, ha="center", va="bottom", **FONT, zorder=9)
 
-def title_block(ax):
-    ax.text(0.01, 0.990, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, va="top", **FONT)
-    ax.text(0.01, 0.978, "CONTAINER FLOOR PLAN — END-ZONE LAYOUT  (TOP-DOWN VIEW)",
-            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", va="top", **FONT)
-    ax.text(0.99, 0.990, "SCALE 1:75 (APPROX)  ·  SHEET 1 OF 1",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
-    ax.text(0.99, 0.978, "ALL DIMS IN mm",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
-    ax.text(0.50, 0.990, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center", va="top",
-            style="italic", **FONT)
 
 
 def floor_plan():
@@ -292,19 +281,55 @@ def floor_plan():
                     color=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=4, alpha=0.5)
     ax.add_patch(swing_arc)
 
-    # ── Processing zone (interior — optical zone floor) ─────────────────────
-    # Print wash/development uses the Blue circuit spray bar on the optical
-    # zone floor with LDPE containment sheet.  Drain feeds Brown/Black system.
-    PROC_X0 = FP_X_L; PROC_X1 = FP_X_R
-    PROC_Y0 = WALL + 60; PROC_Y1 = FP_Y - 60
-    ax.add_patch(Rectangle((PROC_X0, PROC_Y0), PROC_X1 - PROC_X0, PROC_Y1 - PROC_Y0,
+    # ── Processing tray (interior — optical zone floor) ─────────────────────
+    ax.add_patch(Rectangle((PROC_TRAY_X_L, PROC_TRAY_YD_NEAR),
+                            PROC_TRAY_W, PROC_TRAY_D,
                             fc=C_PROC_ZONE, ec=C_DIM, lw=1.0, ls=(0, (5, 3)),
                             zorder=1, alpha=0.35))
-    ax.text((PROC_X0 + PROC_X1) / 2, (PROC_Y0 + PROC_Y1) / 2,
-            "PROCESSING TRAY  (304 SS, 2 panels, 50mm rim)\n"
-            "LDPE liner · spray bar wash · gravity drain to 3W-DV-02",
+    ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
+            (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2,
+            "PROCESSING TRAY  (304 SS, 50mm rim)\n"
+            "spray bar wash · gravity drain to 3W-DV-02",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
             alpha=0.7, zorder=4)
+
+    # ── Perimeter walkway (4 removable grated sections) ──────────────────────
+    C_WALKWAY = "#D0C8B8"   # warm gray for grating
+    WK_HATCH  = "xx"        # cross-hatch pattern to indicate grating
+    WK_ALPHA  = 0.55
+
+    # Near walkway (pinhole side) — full tray length
+    ax.add_patch(Rectangle((PROC_TRAY_X_L, WALKWAY_NEAR_YD),
+                            PROC_TRAY_W, WALKWAY_W,
+                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                            alpha=WK_ALPHA, zorder=2))
+    # Far walkway (film plane side) — full tray length
+    ax.add_patch(Rectangle((PROC_TRAY_X_L, WALKWAY_FAR_YD),
+                            PROC_TRAY_W, WALKWAY_W,
+                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                            alpha=WK_ALPHA, zorder=2))
+    # Left walkway (cargo door end) — full container width
+    ax.add_patch(Rectangle((WALKWAY_LEFT_X, 0),
+                            WALKWAY_W, C_WID,
+                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                            alpha=WK_ALPHA, zorder=2))
+    # Right walkway (IBC end) — full container width
+    ax.add_patch(Rectangle((WALKWAY_RIGHT_X, 0),
+                            WALKWAY_W, C_WID,
+                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                            alpha=WK_ALPHA, zorder=2))
+
+    # Label the walkway
+    ax.text(WALKWAY_LEFT_X + WALKWAY_W / 2,
+            C_WID / 2,
+            f"WALKWAY\n{WALKWAY_W}mm",
+            color=C_DIM, fontsize=5.5, ha="center", va="center",
+            rotation=90, **FONT, alpha=0.8, zorder=5)
+    ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
+            WALKWAY_NEAR_YD + WALKWAY_W / 2,
+            f"WALKWAY  {WALKWAY_W}mm  (REMOVABLE GRATED · {WALKWAY_H}mm DECK HEIGHT)",
+            color=C_DIM, fontsize=5.5, ha="center", va="center",
+            **FONT, alpha=0.8, zorder=5)
 
     # ── Dimension annotations ─────────────────────────────────────────────────
     dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH")
@@ -340,6 +365,7 @@ def floor_plan():
         (C_OPT,       "Optical axis (2362mm focal length)"),
         (C_PINHOLE,   "Revolving light-trap drum"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
+        ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),
     ]
     n_items = len(legend_items)
     n_rows = (n_items + 1) // 2           # 7 rows for 13 items
@@ -385,7 +411,11 @@ def floor_plan():
             color="#20A020", fontsize=5.5, ha="center", va="top",
             **FONT, alpha=0.8, zorder=10)
 
-    title_block(ax)
+    title_block(ax, "SHEET 1 OF 1",
+                drawing_title="CONTAINER FLOOR PLAN",
+                subtitle="End-zone layout (top-down view)",
+                scale_note="1:75 (approx)",
+                doc_id="TBS-001 · Floor Plan")
 
     import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)
     out = f"{DIAGRAMS_DIR}/container-floorplan.png"

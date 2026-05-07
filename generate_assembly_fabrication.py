@@ -28,6 +28,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import os
 
+from tbs_title_block import title_block
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y,
@@ -111,29 +112,6 @@ def callout(ax, cx, cy, number, r=60, fs=FS_SM - 0.5):
 def equip_blk(ax, x, y, w, h, fc, ec=C_OUT, lw=0.6, alpha=0.75, zorder=3):
     ax.add_patch(mpatches.Rectangle((x, y), w, h,
                  facecolor=fc, edgecolor=ec, linewidth=lw, alpha=alpha, zorder=zorder))
-
-def title_block(ax, x, y, w, h, title1, title2, scale, sheet_no):
-    ax.add_patch(mpatches.Rectangle((x, y), w, h,
-                 facecolor="#F0F0F4", edgecolor=C_OUT, linewidth=1.0, zorder=6))
-    ax.add_patch(mpatches.Rectangle((x, y + h*0.60), w, h*0.40,
-                 facecolor="#D8DCE8", edgecolor=C_OUT, linewidth=0.5, zorder=6))
-    ax.text(x + w/2, y + h*0.80, "TBS-001",
-            ha="center", va="center", fontsize=FS_LG+2, color=C_OUT,
-            fontweight="bold", zorder=7)
-    ax.text(x + w/2, y + h*0.65, title1,
-            ha="center", va="center", fontsize=FS_MD, color=C_OUT, zorder=7)
-    ax.text(x + w/2, y + h*0.56, title2,
-            ha="center", va="center", fontsize=FS_SM, color=C_DIM, zorder=7)
-    ax.text(x+20, y + h*0.43, f"Scale: {scale}",
-            ha="left", va="center", fontsize=FS_SM, color=C_DIM, zorder=7)
-    ax.text(x+20, y + h*0.33, f"Sheet: {sheet_no}",
-            ha="left", va="center", fontsize=FS_SM, color=C_DIM, zorder=7)
-    ax.text(x+20, y + h*0.20, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="left", va="center", fontsize=FS_SM-1, color=C_DIM,
-            style="italic", zorder=7)
-    ax.text(x+20, y + h*0.08,
-            f"Container: {C_LEN}L x {C_WID}W x {C_HGT}H (mm interior)",
-            ha="left", va="center", fontsize=FS_SM-1, color=C_DIM, zorder=7)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -359,10 +337,11 @@ def sheet1():
                 fontsize=FS_SM-1, color=C_DIM, zorder=6)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, C_LEN+800, Y_LO+40, 1380, 420,
-                "ASSEMBLY — LONG SECTION ELEVATION",
-                "(view: along +Y, horizontal=X long axis, vertical=height)",
-                "1:50", "1 of 2")
+    title_block(ax, "SHEET 1 OF 2",
+                drawing_title="ASSEMBLY — LONG SECTION ELEVATION",
+                subtitle="View: along +Y, horizontal=X long axis, vertical=height",
+                scale_note="1:50",
+                doc_id="TBS-001 · Assembly Fabrication")
 
     # ── Save ──────────────────────────────────────────────────────────────────
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet1.png"
@@ -534,10 +513,11 @@ def sheet2():
                ext=60, gap=20)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, X_LO2+40, Y_LO2+40, C_WID+200, 400,
-                "ASSEMBLY — END ELEVATION (CARGO DOOR END)",
-                "(view: from X=0, looking +X into container; horizontal=width Y, vertical=height H)",
-                "1:20", "2 of 2")
+    title_block(ax, "SHEET 2 OF 2",
+                drawing_title="ASSEMBLY — END ELEVATION",
+                subtitle="View: from X=0, looking +X into container",
+                scale_note="1:20",
+                doc_id="TBS-001 · Assembly Fabrication")
 
     # ── Save ──────────────────────────────────────────────────────────────────
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet2.png"

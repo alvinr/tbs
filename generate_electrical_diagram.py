@@ -21,6 +21,7 @@ from tbs_constants import (
     C_WASTE_IBC, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
+from tbs_title_block import title_block
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -70,36 +71,6 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
             bbox=dict(fc="white", ec="none", pad=1.5), zorder=6)
 
 
-def title_block(ax, FW, sheet_n, sheet_total, title1, title2, scale_str):
-    tb_y, tb_h = 0.05, 0.65
-    ax.add_patch(mpatches.Rectangle((0.25, tb_y), FW - 0.5, tb_h,
-                                    fc="white", ec=C_OUT, lw=1.5, zorder=6))
-    for xd in [FW * 0.30, FW * 0.70]:
-        ax.plot([xd, xd], [tb_y, tb_y + tb_h], color=C_OUT, lw=0.8, zorder=7)
-
-    ax.text(FW * 0.15, tb_y + 0.44, "THE BIG SHOEBOX PROJECT",
-            ha="center", va="center", fontsize=8.0, fontweight="bold",
-            color=TITLE_COL, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.28, "TBS-ELEC  ·  Electrical & Systems",
-            ha="center", va="center", fontsize=7.0, color=C_DIM, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.14, "TBS-001  ·  20FT ISO CAMERA  ·  12V DC",
-            ha="center", va="center", fontsize=6.5, color=C_DIM, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.06, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="center", va="center", fontsize=5.5, color=C_DIM, style="italic", zorder=7)
-
-    ax.text(FW * 0.50, tb_y + 0.45, title1,
-            ha="center", va="center", fontsize=11.0, fontweight="bold",
-            color=C_OUT, zorder=7)
-    ax.text(FW * 0.50, tb_y + 0.27, title2,
-            ha="center", va="center", fontsize=7.5, color=C_DIM, zorder=7)
-    ax.text(FW * 0.50, tb_y + 0.13, f"Scale: {scale_str}",
-            ha="center", va="center", fontsize=7.0, color=C_DIM, zorder=7)
-
-    ax.text(FW * 0.85, tb_y + 0.44, f"Sheet {sheet_n} of {sheet_total}",
-            ha="center", va="center", fontsize=9.5, fontweight="bold",
-            color=C_OUT, zorder=7)
-    ax.text(FW * 0.85, tb_y + 0.27, "2026",
-            ha="center", va="center", fontsize=8.0, color=C_DIM, zorder=7)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -376,10 +347,11 @@ def draw_sheet1():
                 linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, FW, 1, 2,
-                "SYSTEM ONE-LINE DIAGRAM",
-                "Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
-                "Not to scale")
+    title_block(ax, "SHEET 1 OF 2",
+                drawing_title="SYSTEM ONE-LINE DIAGRAM",
+                subtitle="Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
+                scale_note="Not to scale",
+                doc_id="TBS-ELEC · Electrical & Systems")
 
     plt.savefig("diagrams/electrical-sheet1.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
@@ -815,10 +787,11 @@ def draw_sheet2():
             cy -= LINE_SP * 0.4  # small gap between notes
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, FW, 2, 2,
-                "CONTAINER FLOOR PLAN & WIRING LAYOUT",
-                "Top-down plan  ·  End-zone layout  ·  Optical cone clear  ·  Scale 1:500",
-                "1:500  (1 drawing unit = 500 mm)")
+    title_block(ax, "SHEET 2 OF 2",
+                drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
+                subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
+                scale_note="1:500  (1 drawing unit = 500 mm)",
+                doc_id="TBS-ELEC · Electrical & Systems")
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

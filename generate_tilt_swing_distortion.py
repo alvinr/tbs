@@ -19,12 +19,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os
-from tbs_constants import svg_path, SVG_DIR
+from tbs_constants import (
+    svg_path, SVG_DIR, C_WID,
+    FP_W as _FP_W, FP_H as _FP_H,
+)
+from tbs_title_block import title_block
 
 # ── Camera constants ──────────────────────────────────────────────────────────
-F = 2362          # focal length (container interior width, mm)
-FP_W = 3549       # film plane width (mm)  [rev 2: was 2920, was 5893]
-FP_H = 2388       # film plane height (mm)
+F = C_WID         # focal length (container interior depth, mm) = 2,362
+FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4,499mm rev 6)
+FP_H = _FP_H      # film plane height (mm) = 2,388
 
 # ── Cyanotype palette (dark background — matches film-plane distortion renders) ─
 BG      = '#081A32'
@@ -323,13 +327,14 @@ for cfg in CONFIGS:
 
     draw_render(ax, bt, bs, ft, fs, label, desc)
 
-    # Title bar
-    fig.text(0.5, 0.97,
-             'THE BIG SHOEBOX PROJECT — Combined Board+Film Plane Distortion',
-             ha='center', va='top', fontsize=9, color='#E4F4FD', fontfamily='monospace')
-
-    fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-             ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
+    # Title block
+    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
+    ax_tb.axis("off")
+    title_block(ax_tb, f"{label}",
+                drawing_title="COMBINED DISTORTION",
+                subtitle=f"Board + Film Plane — {desc}",
+                scale_note="Ray-traced projection",
+                doc_id="TBS-TS01 · Distortion Renders")
     out = f'diagrams/tilt-swing-combined-{label.lower()}.png'
     os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
@@ -345,20 +350,17 @@ fig_s.patch.set_facecolor(BG)
 fig_s.subplots_adjust(left=0.02, right=0.98, top=0.93, bottom=0.02,
                       wspace=0.04, hspace=0.08)
 
-fig_s.text(0.5, 0.965,
-           'THE BIG SHOEBOX PROJECT — Combined Front-Board & Film-Plane Distortion',
-           ha='center', fontsize=14, color='#E4F4FD', fontfamily='monospace', fontweight='bold')
-fig_s.text(0.5, 0.947,
-           'Rows: board tilt variations  |  Cols: board swing + compound   |  '
-           'Red + = image centre  |  Grey + = nominal centre  |  Horizon = orange dashed',
-           ha='center', fontsize=9, color=C_AX, fontfamily='monospace')
-
 for idx, (cfg, ax) in enumerate(zip(CONFIGS, axes.flat)):
     label, bt, bs, ft, fs, desc = cfg
     draw_render(ax, bt, bs, ft, fs, label, desc, show_human=True)
 
-fig_s.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-           ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
+ax_tb = fig_s.add_axes([0, 0, 1, 1], facecolor="none")
+ax_tb.axis("off")
+title_block(ax_tb, "SUMMARY",
+            drawing_title="COMBINED DISTORTION",
+            subtitle="Board + Film Plane — all 9 configurations",
+            scale_note="Ray-traced projection",
+            doc_id="TBS-TS01 · Distortion Renders")
 out_s = 'diagrams/tilt-swing-combined-summary.png'
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
 fig_s.savefig(svg_path(out_s), bbox_inches="tight", facecolor=BG)

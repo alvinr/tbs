@@ -29,6 +29,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import os
 
+from tbs_title_block import title_block
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y, FP_W,
@@ -379,32 +380,11 @@ for i, (col, lbl) in enumerate(legend_items):
 
 
 # ── Title block ───────────────────────────────────────────────────────────────
-TB_X = C_LEN + 420
-TB_Y = -450
-TB_W = 1380
-TB_H = 420
-
-ax.add_patch(mpatches.Rectangle((TB_X, TB_Y), TB_W, TB_H,
-             facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
-ax.add_patch(mpatches.Rectangle((TB_X, TB_Y + 280), TB_W, TB_H - 280,
-             facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
-ax.text(TB_X + TB_W/2, TB_Y + 360, "TBS-001",
-        ha="center", va="center", fontsize=FS_LG + 2, color=C_OUT, fontweight="bold")
-ax.text(TB_X + TB_W/2, TB_Y + 305, "ASSEMBLY — SIDE ELEVATION",
-        ha="center", va="center", fontsize=FS_MD, color=C_OUT)
-ax.text(TB_X + 20, TB_Y + 240, "Scale: 1:75 (approx)",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 180,
-        f"Container: {C_LEN}L x {C_WID}W x {C_HGT}H (mm interior)",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 120,
-        f"Pinhole: X={PH_X}mm  H={PH_H}mm  f/1088  Focal length {C_WID}mm",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax.text(TB_X + 20, TB_Y + 60,
-        "View: near long wall (+Y direction). Optical axis perpendicular to page.",
-        ha="left", va="center", fontsize=FS_SM - 0.5, color=C_DIM)
-ax.text(TB_X + TB_W - 20, TB_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
-        ha="right", va="bottom", fontsize=FS_SM - 1, color=C_DIM, style="italic")
+title_block(ax, "SHEET 1 OF 3",
+            drawing_title="ASSEMBLY OVERVIEW",
+            subtitle="Side elevation — near long wall (+Y direction)",
+            scale_note="1:75 (approx)",
+            doc_id="TBS-001 · Assembly Overview")
 
 
 # ── Save ──────────────────────────────────────────────────────────────────────
@@ -771,32 +751,11 @@ for i, (col, lbl) in enumerate(legend2):
             fontsize=FS_SM, color=C_OUT)
 
 # ── Title block ───────────────────────────────────────────────────────────────
-TB2_X = C_LEN + 420
-TB2_Y = -450
-TB2_W = 1550
-TB2_H = 420
-
-ax2.add_patch(mpatches.Rectangle((TB2_X, TB2_Y), TB2_W, TB2_H,
-             facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
-ax2.add_patch(mpatches.Rectangle((TB2_X, TB2_Y + 280), TB2_W, TB2_H - 280,
-             facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
-ax2.text(TB2_X + TB2_W/2, TB2_Y + 360, "TBS-001",
-        ha="center", va="center", fontsize=FS_LG + 2, color=C_OUT, fontweight="bold")
-ax2.text(TB2_X + TB2_W/2, TB2_Y + 305, "ASSEMBLY — FILM PLANE SIDE ELEVATION",
-        ha="center", va="center", fontsize=FS_MD, color=C_OUT)
-ax2.text(TB2_X + 20, TB2_Y + 240, "Scale: 1:75 (approx)",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax2.text(TB2_X + 20, TB2_Y + 180,
-        "View: from film plane wall (Yd=2,362mm)  →  looking toward pinhole (Yd=0)",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax2.text(TB2_X + 20, TB2_Y + 120,
-        "X axis mirrored: far end (X=5,893mm) at LEFT;  cargo door (X=0) at RIGHT",
-        ha="left", va="center", fontsize=FS_SM, color=C_DIM)
-ax2.text(TB2_X + 20, TB2_Y + 60,
-        f"Rail span {RAIL_SPAN}mm  |  Film plane {FP_W}×{C_HGT}mm  |  f/{PH_FNO}",
-        ha="left", va="center", fontsize=FS_SM - 0.5, color=C_DIM)
-ax2.text(TB2_X + TB2_W - 20, TB2_Y + 0, "© 2026 Alvin Richards — GNU AGPLv3",
-        ha="right", va="bottom", fontsize=FS_SM - 1, color=C_DIM, style="italic")
+title_block(ax2, "SHEET 2 OF 3",
+            drawing_title="ASSEMBLY OVERVIEW",
+            subtitle="Film plane side elevation — looking toward pinhole",
+            scale_note="1:75 (approx)",
+            doc_id="TBS-001 · Assembly Overview")
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 out2 = f"{DIAGRAMS_DIR}/assembly-overview-fp.png"
@@ -852,10 +811,11 @@ fig3.patch.set_facecolor(BG)
 
 # ── Common drawing helpers ───────────────────────────────────────────────────
 def plan_setup(ax, title_text, subtitle_text=""):
-    """Configure axes for plan view: Yd horizontal, X vertical (up = into container)."""
+    """Configure axes for plan view: Yd horizontal (inverted: far wall left,
+    pinhole/near wall right), X vertical (up = into container)."""
     pad_l, pad_r = 200, 200
     pad_b, pad_t = 350, 200
-    ax.set_xlim(-pad_l, C_WID + pad_r)
+    ax.set_xlim(C_WID + pad_r, -pad_l)   # inverted: far wall on left, pinhole wall on right
     ax.set_ylim(-CONT_WALL - DOOR_T - pad_b, PLAN_X_MAX + pad_t)
     ax.set_aspect("equal")
     ax.axis("off")
@@ -1150,33 +1110,12 @@ for i, (col, lbl) in enumerate(legend_items3):
                 ha="left", va="center", fontsize=FS_SM - 0.5, color=C_OUT,
                 transform=leg_ax.transAxes)
 
-# ── Shared title block (figure-level) ────────────────────────────────────────
-fig3.text(0.5, 0.97, "TBS-001  —  CARGO DOOR END PLAN VIEW",
-          ha="center", va="top", fontsize=14, color=C_OUT, fontweight="bold")
-fig3.text(0.5, 0.945,
-          f"Stepped panel (40mm corners / 120mm center) on HGR20 sliding carriage  |  "
-          f"Left zone: light trap drum only (drums eliminated rev 5)  |  Scale: approx 1:20",
-          ha="center", va="top", fontsize=9, color=C_DIM, style="italic")
-
-# Title block box (bottom-right, figure coords)
-tb_ax = fig3.add_axes([0.62, 0.01, 0.36, 0.07])
-tb_ax.set_xlim(0, 1)
-tb_ax.set_ylim(0, 1)
-tb_ax.set_axis_off()
-tb_ax.add_patch(mpatches.FancyBboxPatch(
-    (0.0, 0.0), 1.0, 1.0, boxstyle="round,pad=0.01",
-    facecolor="#F8F8F8", edgecolor=C_OUT, linewidth=1.0))
-tb_ax.add_patch(mpatches.Rectangle(
-    (0.0, 0.65), 1.0, 0.35,
-    facecolor="#E0E0E8", edgecolor=C_OUT, linewidth=0.6))
-tb_ax.text(0.5, 0.82, "TBS-001", ha="center", va="center",
-           fontsize=12, color=C_OUT, fontweight="bold")
-tb_ax.text(0.02, 0.45, "ASSEMBLY — PLAN VIEW (CARGO DOOR END)",
-           ha="left", va="center", fontsize=9, color=C_OUT)
-tb_ax.text(0.02, 0.22, f"Container: {C_LEN}L \u00d7 {C_WID}W \u00d7 {C_HGT}H (mm interior)",
-           ha="left", va="center", fontsize=8, color=C_DIM)
-tb_ax.text(0.98, 0.05, "\u00a9 2026 Alvin Richards \u2014 GNU AGPLv3",
-           ha="right", va="bottom", fontsize=7, color=C_DIM, style="italic")
+# ── Title block ───────────────────────────────────────────────────────────────
+title_block(ax_op, "SHEET 3 OF 3",
+            drawing_title="ASSEMBLY OVERVIEW",
+            subtitle="Plan view — cargo door end",
+            scale_note="1:20 (approx)",
+            doc_id="TBS-001 · Assembly Overview")
 
 # ── Save ──────────────────────────────────────────────────────────────────────
 out3 = f"{DIAGRAMS_DIR}/assembly-overview-plan.png"

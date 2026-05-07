@@ -16,6 +16,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import os
 from tbs_constants import svg_path, SVG_DIR
+from tbs_title_block import title_block
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -34,33 +35,6 @@ C_VEST  = "#EEF5EE"   # vestibule interior
 TITLE_COL = "#0F2D5E"
 
 
-def title_block(ax, FW, sheet_n, sheet_total, title1, title2, scale_str):
-    tb_y, tb_h = 0.05, 0.65
-    ax.add_patch(mpatches.Rectangle((0.25, tb_y), FW - 0.5, tb_h,
-                                    fc="white", ec=C_OUT, lw=1.5, zorder=6))
-    for xd in [FW * 0.30, FW * 0.70]:
-        ax.plot([xd, xd], [tb_y, tb_y + tb_h], color=C_OUT, lw=0.8, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.44, "THE BIG SHOEBOX PROJECT",
-            ha="center", va="center", fontsize=8.0, fontweight="bold",
-            color=TITLE_COL, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.28, "TBS-ELEC  ·  Light Trap & Ventilation",
-            ha="center", va="center", fontsize=7.0, color=C_DIM, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.13, "TBS-001  ·  20FT ISO CAMERA",
-            ha="center", va="center", fontsize=6.5, color=C_DIM, zorder=7)
-    ax.text(FW * 0.15, tb_y + 0.05, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="center", va="center", fontsize=5.5, color=C_DIM, style="italic", zorder=7)
-    ax.text(FW * 0.50, tb_y + 0.45, title1,
-            ha="center", va="center", fontsize=11.0, fontweight="bold",
-            color=C_OUT, zorder=7)
-    ax.text(FW * 0.50, tb_y + 0.27, title2,
-            ha="center", va="center", fontsize=7.5, color=C_DIM, zorder=7)
-    ax.text(FW * 0.50, tb_y + 0.13, f"Scale: {scale_str}",
-            ha="center", va="center", fontsize=7.0, color=C_DIM, zorder=7)
-    ax.text(FW * 0.85, tb_y + 0.44, f"Sheet {sheet_n} of {sheet_total}",
-            ha="center", va="center", fontsize=9.5, fontweight="bold",
-            color=C_OUT, zorder=7)
-    ax.text(FW * 0.85, tb_y + 0.27, "2026",
-            ha="center", va="center", fontsize=8.0, color=C_DIM, zorder=7)
 
 
 def ann(ax, text, xy, xytext, size=7.5):
@@ -323,10 +297,11 @@ def draw_sheet1():
                     ha="center", va="center", fontsize=7.5,
                     color=C_OUT if ci == 0 else ("#D32F2F" if "OFF" in val else "#2E7D32"))
 
-    title_block(ax, FW, 1, 2,
-                "VENTILATION SYSTEM — CONTAINER LONGITUDINAL SECTION",
-                "Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
-                "Schematic — not to scale  ·  Baffle duct assembly detail — see Sheet 2")
+    title_block(ax, "SHEET 1 OF 2",
+                drawing_title="VENTILATION SYSTEM",
+                subtitle="Cross-ventilation layout  ·  Fan positions  ·  Evap cooler  ·  Cable trunking",
+                scale_note="Schematic — not to scale",
+                doc_id="TBS-LT · Light Trap & Ventilation")
 
     os.makedirs(SVG_DIR, exist_ok=True)
     plt.savefig("diagrams/lighttrap-sheet1.png", dpi=150, bbox_inches="tight",
@@ -603,11 +578,12 @@ def draw_sheet2():
             "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
             ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold", zorder=10)
 
-    title_block(ax, FW, 2, 2,
-                "FAN & BAFFLE DUCT — ASSEMBLY SECTION",
-                "Interior-mounted fan  ·  Passive louvre grille (exterior only)  ·  "
+    title_block(ax, "SHEET 2 OF 2",
+                drawing_title="FAN & BAFFLE DUCT — ASSEMBLY SECTION",
+                subtitle="Interior-mounted fan  ·  Passive louvre grille (exterior only)  ·  "
                 "Baffle duct interior-mounted  ·  All wiring inside container",
-                "Schematic NTS  ·  Refer to Sheet 1 for container section")
+                scale_note="Schematic NTS",
+                doc_id="TBS-LT · Light Trap & Ventilation")
 
     plt.savefig("diagrams/lighttrap-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")

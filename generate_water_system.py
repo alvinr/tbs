@@ -21,14 +21,12 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from tbs_constants import (
-    IBC_COL_X, ZONE_L_END, ZONE_R_START,
+    C_LEN, C_WID, IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    ZONE_L_END, ZONE_R_START,
     FP_X_L, FP_X_R,
-    DRUM_EQ_D, DRUM_EQ_R, DRUM_EQ_H,
-    DRUM_LZ_CX, DRUM_LZ_YD, DRUM_LZ_YD_LO, DRUM_LZ_YD_HI,
-    DRUM_FZ_CX, DRUM_FZ_YD, DRUM_FZ_YD_LO, DRUM_FZ_YD_HI,
-    PANEL_CORNER_T, PERM_TRACK_END, BRIDGE_TRACK_START, BRIDGE_TRACK_END,
-    DRUM_SLIDE,
-    C_WASTE_DRUM, C_BLUE_IBC, C_BROWN_IBC, C_PUMP, C_WALL,
+    BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
+    PROC_TRAY_X_L, PROC_TRAY_X_R,
+    C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, C_WALL,
     svg_path, SVG_DIR,
 )
 import os
@@ -84,15 +82,6 @@ def tank(ax, x, y, w, h, fc="white", ec=C_FRAME, label="", sublabel="",
     if sublabel:
         ax.text(x, y - 0.06, sublabel, ha="center", va="center",
                 fontsize=6.5, color="#555555", zorder=zorder + 1)
-
-def drum(ax, x, y, r=0.07, fc="white", ec=C_FRAME, label="", lw=1.4, zorder=2):
-    """Draw a 55-gal drum (circle)."""
-    circ = plt.Circle((x, y), r, fc=fc, ec=ec, lw=lw, zorder=zorder)
-    ax.add_patch(circ)
-    if label:
-        ax.text(x, y, label, ha="center", va="center",
-                fontsize=6.5, fontweight="bold", color=C_TEXT, zorder=zorder + 1,
-                multialignment="center")
 
 def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.05):
     """Draw a centrifugal pump symbol (circle with triangle arrow)."""
@@ -200,11 +189,12 @@ ax1.text(15.65, 10.5, "PROCESSING AREA",
          ha="center", fontsize=8, fontweight="bold", color="#2E7D32", zorder=5)
 
 # ── Shared geometry constants (used across multiple systems) ──────────────────
-D1_X, D2_X = 11.07, 12.23  # drum X centers — 1/3 and 2/3 across Black zone (9.9–13.4)
-D_Y  = 7.5                  # drum centre Y (raised)
-DR   = 0.42                 # drum radius
+W_X  = 11.65                # waste IBC center X (centered in Black zone 9.9–13.4)
+W_Y  = 7.5                  # waste IBC center Y (raised)
+W_W  = 1.4                  # waste IBC box width (same as other IBCs on schematic)
+W_H  = 1.4                  # waste IBC box height
 BR   = 0.14                 # pipe-crossing bridge hump radius
-X_J  = D1_X + 0.5          # = 11.57, Y-junction X: floor drain + bypass merge before D1
+X_J  = 12.07                # Y-junction X: floor drain + bypass merge before waste IBC
 Y_J  = 5.62                 # Y level of Y-junction (matches heavy contam bypass exit)
 
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
@@ -242,17 +232,16 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to spray bar riser tap-off — humps over blue return (X=9.7), D1 vertical (D1_X), floor drain riser (X_J)
+# Run east to spray bar riser tap-off — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
 pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
-pipe_bridge(ax1, D1_X,  3.8, color=C_BLUE, lw=LW_PIPE)
-pipe_bridge(ax1, X_J,   3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE)
 ax1.text(12.5, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
-# Refill inlet (top of IBC-1)
+# External fill port (top of IBC-1, via bulkhead fitting in far wall)
 pipe(ax1, 1.5, 8.9, 1.5, 9.6, C_BLUE, style="--")
-ax1.text(1.5, 9.75, "FILL\nINLET", ha="center", fontsize=6,
+ax1.text(1.5, 9.75, "EXTERNAL FILL\nPORT (2\" NPT)", ha="center", fontsize=6,
          color=C_BLUE, style="italic")
 
 # Water level sensor labels
@@ -270,10 +259,10 @@ pipe(ax1, 6.4, 7.48, 6.4, 7.0, C_BROWN)
 valve(ax1, 6.4, 7.0, color=C_BROWN)
 ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
-# Arrow from processing area — humps over blue return (X=9.7) and black vertical (D1_X)
+# Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
 pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE)
-pipe_bridge(ax1, D1_X,  6.3, color=C_BROWN, lw=LW_PIPE)
+pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE)
 pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE)   # brown over spray bar riser
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
@@ -346,16 +335,14 @@ ax1.text(6.5, 10.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
 # Path to Black system
 pipe(ax1, 9.7, 3.0, 9.7, 2.5, C_BLACK)
 arrow_pipe(ax1, 9.7, 2.85, 9.7, 2.6, color=C_BLACK)       # downward from DV-01
-pipe(ax1, 9.7, 2.5, D1_X, 2.5, C_BLACK)
-arrow_pipe(ax1, 10.3, 2.5, D1_X, 2.5, color=C_BLACK)      # rightward to D1
+pipe(ax1, 9.7, 2.5, W_X, 2.5, C_BLACK)
+arrow_pipe(ax1, 10.3, 2.5, W_X, 2.5, color=C_BLACK)       # rightward to waste IBC
 
 # ── BLACK SYSTEM ──────────────────────────────────────────────────────────────
-drum(ax1, D1_X, D_Y, r=DR, fc=C_WASTE_DRUM, ec=C_BLACK, lw=2,
-     label="DRUM-1\n55 GAL\nWASTE")
-drum(ax1, D2_X, D_Y, r=DR, fc=C_WASTE_DRUM, ec=C_BLACK, lw=2,
-     label="DRUM-2\n55 GAL\nWASTE")
+tank(ax1, W_X, W_Y, W_W, W_H, fc="#D5D5D0", ec=C_WASTE_IBC, lw=2,
+     label="IBC-4", sublabel="159 gal (600L)\nWASTE")
 
-# Heavy contamination bypass — left side of processing floor, 1/5th up (Y=5.62)
+# Heavy contamination bypass — left side of processing floor
 pipe(ax1, 14.1, Y_J, X_J, Y_J, C_BLACK, style="-.")
 valve(ax1, 12.6, 5.62, color=C_BLACK)                      # BV-04
 ax1.text(12.6, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
@@ -364,46 +351,35 @@ ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
          fontsize=6, color=C_BLACK, style="italic")
 
 # Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
-# Riser climbs at X_J, bridges over blue supply at Y=3.8
 pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK)  # floor drain riser (below blue)
 pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK)  # riser (above blue → junction)
-# Combined flow exits junction left into D1 vertical
-pipe(ax1, X_J, Y_J,  D1_X, Y_J, C_BLACK)             # junction → D1 vertical entry
-# D1 vertical — full height: filter skid feeds from Y=2.5; Y-junction joins at Y_J; drum above
-# Bridges at Y=3.8 (blue supply over) and Y=6.3 (brown drain over)
-pipe(ax1, D1_X, 2.5,       D1_X, 3.8 - BR,  C_BLACK)         # filter skid inlet to blue crossing
-pipe(ax1, D1_X, 3.8 + BR,  D1_X, 6.3 - BR,  C_BLACK)         # blue crossing to brown crossing
-pipe(ax1, D1_X, 6.3 + BR,  D1_X, D_Y - DR,  C_BLACK)         # brown crossing to drum
-arrow_pipe(ax1, D1_X, 3.2, D1_X, 4.5,       color=C_BLACK)   # upward flow (lower)
-arrow_pipe(ax1, D1_X, Y_J + 0.1, D1_X, D_Y - DR - 0.1, color=C_BLACK)  # upward flow (upper)
+# Combined flow exits junction left into waste IBC vertical
+pipe(ax1, X_J, Y_J,  W_X, Y_J, C_BLACK)              # junction → waste IBC vertical
+# Waste IBC vertical — filter skid feeds from Y=2.5; Y-junction joins at Y_J
+pipe(ax1, W_X, 2.5,       W_X, 3.8 - BR,  C_BLACK)   # filter feed to blue crossing
+pipe(ax1, W_X, 3.8 + BR,  W_X, 6.3 - BR,  C_BLACK)   # blue crossing to brown crossing
+pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC bottom
+arrow_pipe(ax1, W_X, 3.2, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
+arrow_pipe(ax1, W_X, Y_J + 0.1, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
 
-# Overflow from D1 top → D2 top
-OV_Y = D_Y + DR + 0.25
-pipe(ax1, D1_X, D_Y + DR, D1_X, OV_Y, C_BLACK, style="--")
-pipe(ax1, D1_X, OV_Y, D2_X, OV_Y, C_BLACK, style="--")
-arrow_pipe(ax1, D1_X + 0.3, OV_Y, D2_X - 0.1, OV_Y, color=C_BLACK)
-pipe(ax1, D2_X, OV_Y, D2_X, D_Y + DR, C_BLACK, style="--")
-ax1.text((D1_X + D2_X) / 2, OV_Y + 0.14,
-         "OVERFLOW →\nDRUM-2", ha="center", fontsize=6, color=C_BLACK)
-
-# Disposal from D2 — exits top of black system box
-DISP_Y = D_Y - DR - 0.55   # = 6.53, above brown drain at 6.3 so no bridge needed
-DISP_X = 13.3               # near right edge of black zone box (box right = 13.4)
-pipe(ax1, D2_X, D_Y - DR, D2_X, DISP_Y, C_BLACK)     # D2 bottom → down
-pipe(ax1, D2_X, DISP_Y, DISP_X, DISP_Y, C_BLACK)     # right to near box edge
+# External drain port — exits right side of black system box
+DISP_X = 13.3
+DISP_Y = W_Y - W_H/2 - 0.3
+pipe(ax1, W_X, W_Y - W_H/2, W_X, DISP_Y, C_BLACK)    # IBC bottom → down
+pipe(ax1, W_X, DISP_Y, DISP_X, DISP_Y, C_BLACK)      # right to near box edge
 pipe(ax1, DISP_X, DISP_Y, DISP_X, 10.75, C_BLACK)    # up and out top of box
 ax1.annotate("", xy=(DISP_X, 11.05), xytext=(DISP_X, 10.8),
              arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=2,
                              mutation_scale=14), zorder=4)
-ax1.text(DISP_X, 11.2, "TO APPROVED\nDISPOSAL SITE", ha="center",
+ax1.text(DISP_X, 11.2, "EXTERNAL DRAIN\nPORT (2\" NPT)", ha="center",
          fontsize=6.5, color=C_BLACK, fontweight="bold", va="bottom")
 
 # ── PROCESSING AREA ───────────────────────────────────────────────────────────
 ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C",
                              lw=1.5, zorder=2))
-ax1.text(15.6, 8.8, "PRINT PROCESSING FLOOR", ha="center", fontsize=7.5,
+ax1.text(15.6, 8.8, "PROCESSING TRAY (304 SS)", ha="center", fontsize=7.5,
          fontweight="bold", color="#2E7D32")
-ax1.text(15.6, 8.5, "(140 sq ft containment zone)", ha="center",
+ax1.text(15.6, 8.5, "(50mm rim, 1:200 pitch, permanent)", ha="center",
          fontsize=6.5, color="#388E3C")
 
 # Print on floor representation
@@ -419,7 +395,7 @@ circle_drain = plt.Circle((15.6, 4.15), 0.15, fc="white", ec="#388E3C", lw=1.5,
 ax1.add_patch(circle_drain)
 ax1.plot([15.45, 15.75], [4.15, 4.15], color="#388E3C", lw=1.2, zorder=5)
 ax1.plot([15.6, 15.6], [4.0, 4.3], color="#388E3C", lw=1.2, zorder=5)
-ax1.text(15.6, 4.4, "FLOOR DRAIN\n+ DIVERTER", ha="center",
+ax1.text(15.6, 4.4, "TRAY DRAIN\n+ DIVERTER", ha="center",
          fontsize=6, color="#388E3C")
 
 # 3-way valve at drain
@@ -434,7 +410,7 @@ arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)          # upward drain ret
 pipe(ax1, 15.6, 3.35, 15.6, 2.6, C_BLACK)
 pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK)
 arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
-ax1.text(13.5, 2.42, "TO DRUM (HEAVY CONTAM.)", ha="center", fontsize=6,
+ax1.text(13.5, 2.42, "TO WASTE IBC (HEAVY CONTAM.)", ha="center", fontsize=6,
          color=C_BLACK, style="italic")
 
 # Spray bar riser — blue supply tap-off at Y=3.8 up to spray bar at Y=8.0
@@ -569,14 +545,15 @@ def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
     ax.text(x + IBC_W/2, y + IBC_D/2 - 0.2, sublabel, ha="center", va="center",
             fontsize=6.5, color="#555", zorder=3)
 
-# Right end zone: Blue IBC stack x2 — Y-stacked FRONT (Yd=100–1116mm)
-BLUE_IBC_DY = 100 * SY   # ≈ 0.21
-ibc_plan(ax2, IBC_COL_DX, BLUE_IBC_DY, "#BBDEFB", C_BLUE_IBC,
-         "IBC-1/2 BLUE x2", "2x159 gal (2x600L)\nYd=100–1116mm (front)")
-# Brown IBC x1 — Y-stacked REAR (Yd=1141–2157mm)
-BROWN_IBC_DY = 1141 * SY  # ≈ 2.42
-ibc_plan(ax2, IBC_COL_DX, BROWN_IBC_DY, "#D7CCC8", C_BROWN_IBC,
-         "IBC-3 BROWN", "159 gal (600L)\nYd=1141–2157mm (rear)")
+# Right end zone: 4 IBCs in 2×2 stack (plan view shows top-down footprint)
+# Near column (Yd=100–1116mm): Blue #1 on top, Brown on bottom
+NEAR_IBC_DY = BLUE_IBC_Y * SY
+ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
+         "IBC-1 BLUE / IBC-3 BROWN", "Top: 600L clean\nBottom: 600L recycle")
+# Far column (Yd=1141–2157mm): Blue #2 on top, Waste on bottom
+FAR_IBC_DY = IBC_FAR_Y * SY
+ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
+         "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
 
 # Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
 FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9
@@ -598,48 +575,6 @@ ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_PUM
 # ACC accumulator
 box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
 ax2.text(1.45, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
-
-# 55-gal drums D-1, D-2 — LEFT end zone, one per Yd corner (rev 4: unstacked)
-DRUM_R_DU = DRUM_EQ_R * SY    # radius in drawing units
-for drum_cx, drum_cy, label in [
-    (DRUM_LZ_CX, DRUM_LZ_YD, "D-1\nnear"),   # near corner (pinhole wall side)
-    (DRUM_FZ_CX, DRUM_FZ_YD, "D-2\nfar"),    # far corner (far wall side)
-]:
-    dx = drum_cx * SX
-    dy = drum_cy * SY
-    ax2.add_patch(plt.Circle((dx, dy), DRUM_R_DU,
-                             fc=C_WASTE_DRUM, ec=C_BLACK, lw=2, zorder=2))
-    ax2.text(dx, dy, label, ha="center", va="center",
-             fontsize=5.5, fontweight="bold", color=C_BLACK, zorder=3,
-             multialignment="center")
-
-# V-groove dolly tracks under waste drums
-C_TRACK_W  = "#8B7355"    # permanent track color (brown)
-C_BRIDGE_W = "#4A90D9"    # bridge section color (blue)
-TK_W = 0.04               # track visual width in drawing units
-for drum_yd in [DRUM_LZ_YD, DRUM_FZ_YD]:
-    for offset_mm in [-80, 80]:  # two parallel tracks per drum
-        ty = (drum_yd + offset_mm) * SY
-        # Permanent section (X = PANEL_CORNER_T to PERM_TRACK_END)
-        x0 = PANEL_CORNER_T * SX
-        x1 = PERM_TRACK_END * SX
-        ax2.add_patch(plt.Rectangle((x0, ty - TK_W/2), x1 - x0, TK_W,
-                      fc=C_TRACK_W, ec=C_FRAME, lw=0.3, alpha=0.5, zorder=1))
-        # Bridge section (removable)
-        bx0 = BRIDGE_TRACK_START * SX
-        bx1 = BRIDGE_TRACK_END * SX
-        ax2.add_patch(plt.Rectangle((bx0, ty - TK_W/2), bx1 - bx0, TK_W,
-                      fc=C_BRIDGE_W, ec=C_FRAME, lw=0.3, alpha=0.45, zorder=1, ls="--"))
-
-# Flexible waste hose annotations (drums slide 305mm on dollies)
-flex_x = (DRUM_LZ_CX + DRUM_EQ_R + 20) * SX  # just right of drum edge
-for drum_yd, lbl_va in [(DRUM_LZ_YD, "bottom"), (DRUM_FZ_YD, "top")]:
-    fy = drum_yd * SY
-    sign = 1 if lbl_va == "bottom" else -1
-    ax2.annotate("FLEX\nHOSE", xy=(flex_x, fy), xytext=(flex_x + 0.4, fy + sign * 0.45),
-                 fontsize=5, color=C_BLACK, ha="center", va="center",
-                 arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=0.8,
-                                 mutation_scale=8), zorder=5)
 
 # Processing tray (304 SS, two panels, 50mm rim)
 TRAY_X0 = (FP_X_L + 20) * SX   # left edge in drawing units
@@ -678,14 +613,14 @@ ax2.plot([drain_x, drain_x], [drain_y - 0.18, drain_y + 0.18],
 ax2.text(drain_x, drain_y - 0.32, "TRAY DRAIN\n3W-DV-02", ha="center",
          fontsize=6, color="#388E3C")
 
-# Left end zone shading (X=0–625mm = drum zone)
+# Left end zone shading (X=0–625mm — light trap only, drums removed rev 5)
 ZONE_L_DX = ZONE_L_END * SX   # = 625mm → ≈ 1.27
 ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
               fc="#FFF3E0", ec="none", alpha=0.45, zorder=0))
 ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",
          zorder=6)
-ax2.text(ZONE_L_DX - 0.05, -CH/6, #CH - 0.15,
-         f"LEFT END ZONE\nX=0–{ZONE_L_END:,}mm\n(drum zone)",
+ax2.text(ZONE_L_DX - 0.05, -CH/6,
+         f"LEFT END ZONE\nX=0–{ZONE_L_END:,}mm\n(light trap only)",
          ha="right", va="top", fontsize=6.5, color="#805000", fontweight="bold")
 
 # Right end zone shading (X=4649–5893mm in drawing)
@@ -695,7 +630,7 @@ ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
 ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
          zorder=6)
 ax2.text(ZONE_R_DX + 0.05, -CH/6,
-         f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(shadow-free, IBCs only)",
+         f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(4× IBC 2×2 stack)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
 # Pinhole wall — BOTTOM of plan view (Yd=0 = near side, pinhole aperture wall)

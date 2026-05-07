@@ -58,7 +58,7 @@ def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
         fs_title = 7.5
         fs_body  = 6.5
         fs_small = 5.5
-        fs_sheet = 9.0
+        fs_sheet = 7.5
 
     # Column boundaries (axes-fraction)
     col_L = 0.005

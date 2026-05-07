@@ -477,8 +477,8 @@ ax2.set_ylim(0, 500)
 
 # Border
 draw_rect(ax2, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
-draw_rect(ax2, 5, 5, 690, 55, lw=1.0, color='black', fc='#F0F0F0')
-draw_rect(ax2, 480, 5, 215, 55, lw=1.0, color='black', fc='#F5F5F5')
+draw_rect(ax2, 5, 5, 690, 100, lw=1.0, color='black', fc='#F0F0F0')
+draw_rect(ax2, 480, 5, 215, 100, lw=1.0, color='black', fc='#F5F5F5')
 
 # Title block (shared)
 title_block(ax2, "SHEET 2 OF 2",
@@ -968,9 +968,9 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-ax2.text(10, 55, 'OPERATIONAL NOTES:', fontsize=7, fontweight='bold')
+ax2.text(10, 100, 'OPERATIONAL NOTES:', fontsize=7, fontweight='bold')
 for i, n in enumerate(notes2):
-    ax2.text(10, 48 - i*6, n, fontsize=5.0, color='#222')
+    ax2.text(10, 93 - i*6, n, fontsize=5.0, color='#222')
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

@@ -142,6 +142,9 @@ Source report: [Processing System](water-system-report.md).
 **Sheet 2 — Component layout and Bill of Materials**
 ![TBS-001 Water System — Sheet 2](assets/water-system-sheet2.png)
 
+**Sheet 3 — Processing tray drainage plan (water flow direction, slope, drain)**
+![TBS-001 Water System — Sheet 3](assets/water-system-sheet3.png)
+
 ---
 
 ## 10. Electrical & Power
@@ -186,9 +189,40 @@ Source report: [Light Trap Selection](light-trap-selection.md).
 **Sheet 3 — Drum vertical section elevation (Section A-A): Confirms walking-height vertical drum orientation**
 ![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
 
+**Sheet 4 — Sliding rail transport system (plan view): Panel slide, operational vs transport positions**
+![TBS-001 Hinged Panel — Sheet 4: Sliding Rail Transport](assets/hingepanel-sheet4.png)
+
 ---
 
-## 13. Optical Line-of-Sight Clearance
+## 13. Ceiling Rail Suspension System
+
+Panel suspension from HGR20 ceiling-mounted linear rails. Panel bottom edge clears
+the permanently installed processing tray (50mm rim) during transport slide.
+
+**Sheet 1 — Side elevation: Panel hanging from ceiling rails, processing tray clearance**
+![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
+
+**Sheet 2 — Detail: Rail/carriage/bracket assembly (≈2:1)**
+![TBS-001 Ceiling Rail — Sheet 2: Rail Detail](assets/ceiling-rail-sheet2.png)
+
+---
+
+## 14. Perimeter Walkway
+
+Removable grated walkway sections around all 4 sides of the processing tray. Provides
+dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
+without wading through the wet processing tray. 400mm wide, 80mm deck height, galvanized
+press-locked steel grating on 25mm SHS legs at 600mm centers.
+
+**Sheet 1 — Cross-section through near walkway: Grate, frame, legs, tray rim clearance (≈5:1)**
+![TBS-001 Walkway — Sheet 1: Cross-Section](assets/walkway-sheet1.png)
+
+**Sheet 2 — Plan view: All 4 sections with leg positions and open processing area**
+![TBS-001 Walkway — Sheet 2: Plan View](assets/walkway-sheet2.png)
+
+---
+
+## 15. Optical Line-of-Sight Clearance
 
 Two-panel optical clearance diagram. Confirms which equipment items fall within the
 optical cone from the pinhole (X=2946mm, H=1194mm) to the film plane (depth=2262mm).

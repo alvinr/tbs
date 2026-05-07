@@ -17,10 +17,12 @@
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
 | **5. Processing water system (incl. tray)** | $2,634 | $3,282 | $3,929 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
+| **6a. Perimeter walkway (4 sections)** | $680 | $873 | $1,070 |
+| **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$12,154** | **$15,704** | **$20,789** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$13,009** | **$16,785** | **$22,099** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -256,6 +258,37 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 ---
 
+## 6a. Perimeter Walkway
+
+**Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
+
+Four removable grated walkway sections around all 4 sides of the processing tray. 400mm wide, 80mm deck height, galvanized press-locked steel grating on 25mm SHS legs at 600mm centers. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
+
+| Item | Low | Mid | High | Notes |
+|------|-----|-----|------|-------|
+| Press-locked steel grating, 25mm bearing bar (galvanized) | $280 | $350 | $420 | ~4.7 m² total; McNichols / Metal Supermarkets SoCal |
+| Angle iron frame, 30×30×3mm galvanized (~18m) | $55 | $68 | $80 | Perimeter frame for each section |
+| SHS legs, 25×25×2mm galvanized (×32) + rubber foot pads | $45 | $55 | $70 | 80mm tall, welded to frame at ~600mm centers |
+| Fabrication (cut, weld, galvanize) — 4 sections | $300 | $400 | $500 | Local metal fab shop |
+| **Perimeter walkway total** | **$680** | **$873** | **$1,070** | |
+
+---
+
+## 6b. Ceiling Rail Suspension
+
+**Source documents:** `engineering-diagrams.md` §13, `generate_ceiling_rail_diagram.py`
+
+HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide. Two additional ceiling rails supplement the 4 wall-mounted rails in §7a.
+
+| Item | Low | Mid | High | Notes |
+|------|-----|-----|------|-------|
+| HGR20 linear rail, 500mm (×2) + HGH20CA carriage blocks (×4) | $100 | $116 | $130 | Automation Overstock, Gardena CA |
+| Ceiling mounting brackets + drop rods, 6–8mm steel | $60 | $72 | $85 | Local fab |
+| Fasteners, misc | $15 | $20 | $25 | McMaster-Carr / Fastenal |
+| **Ceiling rail total** | **$175** | **$208** | **$240** | |
+
+---
+
 ## 7. Printmaking — 50 Prints (Cyanotype)
 
 **Source document:** `chemistry-shopping-list.md`
@@ -417,10 +450,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual) | $2,200 |
 | Water system (incl. processing tray) | $2,634 |
 | Revolving drum light trap (custom fabrication) | $950 |
+| Perimeter walkway (4 sections) | $680 |
+| Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$11,921** |
+| **Scenario A total** | **~$12,776** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -432,21 +467,23 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual + electric actuation) | $3,227 |
 | Water system (incl. processing tray) | $3,282 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
+| Perimeter walkway (4 sections) | $873 |
+| Ceiling rail suspension | $208 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$16,991** |
+| **Scenario B total (excl. CDL)** | **~$18,072** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $16,991 |
+| Scenario B build | $18,072 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$106,491–$136,491** |
+| **Scenario C total** | **~$107,572–$137,572** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

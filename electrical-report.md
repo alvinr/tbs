@@ -188,21 +188,20 @@ Full raw material supplier list, bearing specification, and seal specification a
 
 ### 5.8 Container Floor Plan — All Systems
 
-Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=625–4,649mm) is completely clear.
+Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=150–4,649mm) contains the processing tray and perimeter walkways at floor level.
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-**Left end zone (X=0–625mm) — shadow-free at all depths:**
+**Left end zone (X=0–150mm) — shadow-free at all depths:**
 - Light trap drum (Ø750mm, centered at X=0, Yd=806–1,556mm)
-- Processing tray (permanently installed)
 
 **Pinhole wall face (Y=0):**
 - 12V evaporative cooler (X=930–1,530mm, Yd=0–350mm) — shadow-free at Y=0
-- Electrical enclosure (X=2,050–2,350mm, H=900–1,500mm) — wall-mounted
-- LiFePO4 battery bank (X=2,050–2,550mm, H=0–500mm) — wall-mounted
+- Electrical enclosure (X=1,600–1,900mm, H=900–1,500mm) — wall-mounted
+- LiFePO4 battery bank (X=1,600–2,100mm, H=0–500mm) — wall-mounted
 - Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
 
-**Optical zone (X=625–4,649mm):** Nothing at floor level. Rails only.
+**Optical zone (X=150–4,649mm):** Processing tray (permanent, X=170–4,629mm) and perimeter walkway (removable, 400mm wide around all 4 sides) at floor level. Rails at X=150 and X=4,649.
 
 **Right end zone (X=4,649–5,893mm) — shadow-free at all depths:**
 - 2 × Blue IBC totes (600L each), Y-stacked (front), X=4,674mm

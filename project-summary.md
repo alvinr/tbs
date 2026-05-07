@@ -18,9 +18,9 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane (active) | 4,024 × 2,388 mm (~13'3" × 7'10") |
+| Image plane (active) | 4,499 × 2,388 mm (~14'9" × 7'10") |
 | Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
-| Image area | ~103 sq ft |
+| Image area | ~116 sq ft |
 | Focal length | 2,362 mm (container interior depth) |
 | Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |

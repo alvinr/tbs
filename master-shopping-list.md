@@ -19,15 +19,17 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
-| 5. Print washing — water system | $1,497 | $2,134 |
+| 5. Print washing — water system | $2,661 | $4,020 |
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
+| 7b. Perimeter walkway (4 sections, grated) | $680 | $1,070 |
+| 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$14,114** | **~$18,436** |
+| **TOTAL (base build + 50-print run)** | **~$16,025** | **~$21,620** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -215,7 +217,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Unit price | Est. cost |
 |------|------|-----|----------|-----------|-----------|
 | 304 SS sheet, 16-ga (1.5mm) | #4 brushed, 4'×8' sheets | 4 | Metal Supermarkets / Online Metals | $180–$250/sheet | $720–$1,000 |
-| Fabrication (cut, brake, weld) | Two tray halves: 1,992×2,240mm, 50mm rims, 1:200 fall | 1 job | Local sheet metal shop | $400–$800 | $400–$800 |
+| Fabrication (cut, brake, weld) | Two tray halves: 2,229×2,200mm, 50mm rims, 1:200 dual-axis fall | 1 job | Local sheet metal shop | $400–$800 | $400–$800 |
 | 1" NPT SS bulkhead union | 304 SS, welded to tray floor at drain | 1 | McMaster-Carr / Grainger | $18–$30 | $25 |
 | Silicone gasket strip, FDA grade | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr / Amazon | $15–$25 | $20 |
 | M6×16 SS hex bolts + flange nuts | Center flange, 200mm spacing | 24 | McMaster-Carr / Bolt Depot | $0.50 each | $12 |
@@ -374,6 +376,44 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Section total (materials): ~$976**
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
+
+---
+
+## 7b. Perimeter Walkway
+
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Provides dry-foot access to all working parts of the camera without wading through the wet tray.*
+
+### Walkway sections (4 off)
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| Press-locked steel grating, 25mm bearing bar | Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×400mm (near/far), 2× 2,362×400mm (left/right) | ~4.7 m² | McNichols / Metal Supermarkets SoCal | ~$280–$420 |
+| Angle iron frame, 30×30×3mm galvanized | Perimeter frame for each section, welded | ~18 m | Metal Supermarkets / Pacific Coast Steel | ~$55–$80 |
+| SHS legs, 25×25×2mm galvanized | 80mm tall, welded to frame at ~600mm centers. ~32 legs total | 32 | Metal Supermarkets / Pacific Coast Steel | ~$25–$40 |
+| Rubber foot pads, 50×50×6mm EPDM | Self-adhesive, bonded to leg bottoms | 32 | McMaster-Carr / Amazon | ~$20–$30 |
+| Fabrication (cut, weld, galvanize) | 4 sections, frame + legs + grate | 1 job | Local fab / metal shop | ~$300–$500 |
+
+**Walkway subtotal: ~$680–$1,070**
+
+*Each section weighs approximately 25–35 kg. Single-person lift with handles. Sections are removed for tray access during coating.*
+
+---
+
+## 7c. Ceiling Rail Suspension
+
+*Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| HGR20 linear rail, 500mm | Ceiling-mounted, both walls, X-direction | 2 | Automation Overstock, Gardena CA / Amazon | ~$44 |
+| HGH20CA carriage blocks | Flanged, 2 per rail | 4 | Automation Overstock / Amazon | ~$72 |
+| Ceiling mounting brackets, 8mm angle | Welded to container ceiling ribs | 4 | Local fab | ~$32 |
+| Drop rod / hanging bracket, 6mm steel | Connects carriage block to panel top rail | 4 | Local fab | ~$40 |
+| Fasteners, misc | M10 stainless | 1 lot | McMaster-Carr / Fastenal | ~$20 |
+
+**Ceiling rail subtotal: ~$208**
+
+*Note: The panel sliding carriage (§7a) uses 4 rails at floor + ceiling on both walls. This section covers the 2 additional ceiling rails that provide panel suspension and floor gap clearance.*
 
 ---
 

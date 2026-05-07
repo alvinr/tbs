@@ -36,7 +36,7 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X position (long axis) | 2,637 mm | `PH_X` |
+| Pinhole X position (long axis) | 2,399 mm | `PH_X` |
 | Pinhole center height | 1,194 mm | `PH_H` |
 | Pinhole diameter | Ø2.17 mm | `PH_D` |
 | f-number | f/1088 | `PH_FNO` |
@@ -51,16 +51,16 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 |-----------|-------|----------|
 | Film plane left edge X | 625 mm | `FP_X_L` |
 | Film plane right edge X | 4,649 mm | `FP_X_R` |
-| Film plane width | 4,024 mm | `FP_W` |
+| Film plane width | 4,499 mm | `FP_W` |
 | Film plane height | 2,388 mm | `FP_H` |
 | Nominal depth from pinhole wall | 2,262 mm | `FP_Y` |
 | Minimum carriage depth | 100 mm | `FP_Y_MIN` |
-| Left rail X | 625 mm | `RAIL_X_L` |
+| Left rail X | 150 mm | `RAIL_X_L` |
 | Right rail X | 4,649 mm | `RAIL_X_R` |
-| Rail span | 4,024 mm | `RAIL_SPAN` |
+| Rail span | 4,499 mm | `RAIL_SPAN` |
 | Rail length (Y travel) | 2,200 mm | `RAIL_LEN` |
 | Max tilt | ±42.2° | `MAX_TILT_DEG` |
-| Max swing | ±28.2° | `MAX_SWING_DEG` |
+| Max swing | ±25.7° | `MAX_SWING_DEG` |
 
 *Components: welded aluminum angle frame (2"×2"×3/16"), 4× HGR20 linear rails (ceiling + floor),
 8× HGH20CA carriage blocks, 4× ¾"-6 Acme leadscrews, 4× bronze nuts, 4× 8" handwheels,
@@ -71,7 +71,7 @@ rail felt light-trap strips.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X (board centers here) | 2,637 mm | `PH_X` |
+| Pinhole X (board centers here) | 2,399 mm | `PH_X` |
 | Max tilt/swing | ±5.3° | — (hardcoded in script) |
 | Resolution | 0.012°/click | — (hardcoded in script) |
 
@@ -213,7 +213,7 @@ gravity drain 1" pipe.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left end zone boundary (right edge) | X = 625 mm | `ZONE_L_END` |
+| Left end zone boundary (right edge) | X = 150 mm | `ZONE_L_END` |
 | Right end zone boundary (left edge) | X = 4,649 mm | `ZONE_R_START` |
 | Optical cone left at depth Y | `PH_X − (PH_X − FP_X_L) × Y / FP_Y` | `cone_left(y)` |
 | Optical cone right at depth Y | `PH_X + (FP_X_R − PH_X) × Y / FP_Y` | `cone_right(y)` |
@@ -235,6 +235,57 @@ carriage beam (60×60×3mm SHS, 2,400mm tall), Destaco 207-U toggle clamps (×4)
 hinge mounting plates, rail mounting brackets.*
 
 *Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
+
+### 1.16 Processing Tray
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Tray left edge X | 170 mm | `PROC_TRAY_X_L` |
+| Tray right edge X | 4,629 mm | `PROC_TRAY_X_R` |
+| Tray width | 4,459 mm | `PROC_TRAY_W` |
+| Tray depth | 2,200 mm | `PROC_TRAY_D` |
+| Tray near edge Yd | 80 mm | `PROC_TRAY_YD_NEAR` |
+| Tray far edge Yd | 2,280 mm | `PROC_TRAY_YD_FAR` |
+| Rim height | 50 mm | `PROC_TRAY_RIM` |
+| Dual-axis pitch | 1:200 (10mm fall) | `PROC_TRAY_PITCH` |
+| Drain X | 2,399 mm | `PROC_TRAY_DRAIN_X` |
+| Drain Yd | 80 mm | `PROC_TRAY_DRAIN_YD` |
+
+*Components: 304 SS sheet (16-ga, 1.5mm), 2 panels field-bolted at center flange,
+1" NPT SS bulkhead drain union, silicone gasket strip, M6×16 SS fasteners.
+Permanently installed — no removal for transport mode conversion.*
+
+*Diagrams: water system sheet 3 (WS), container floor plan (FP), assembly overview (AO), walkway sheet 2 (WK).*
+
+### 1.17 Perimeter Walkway
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Walkway width | 400 mm | `WALKWAY_W` |
+| Deck height | 80 mm | `WALKWAY_H` |
+| Grate thickness | 25 mm | `WALKWAY_GRATE_T` |
+| Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
+| Far walkway Yd | 1,962 mm | `WALKWAY_FAR_YD` |
+| Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
+| Right walkway X | 4,229 mm | `WALKWAY_RIGHT_X` |
+
+*Components: galvanized press-locked steel grating (30×3mm bar, 25mm bearing bar),
+30×30×3mm galvanized angle iron frame, 25×25×2mm SHS legs at 600mm centers,
+50×50×6mm EPDM rubber foot pads. 4 removable sections.*
+
+*Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
+
+### 1.18 Ceiling Rail Suspension
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Panel floor gap | 80 mm | `PANEL_FLOOR_GAP` |
+
+*Components: HGR20 ceiling-mounted linear rails (×2, 500mm), HGH20CA carriage blocks (×4),
+ceiling mounting brackets, drop rods / hanging brackets. Suspends hinged panel with 80mm
+floor gap to clear processing tray rim (50mm) during transport slide.*
+
+*Diagrams: ceiling rail sheet 1 side elevation (CR), ceiling rail sheet 2 detail (CR), hinged panel sheet 4 (HP).*
 
 ---
 

@@ -14,39 +14,39 @@ widens as it approaches the film plane. Any equipment placed inside the cone cas
 a shadow on the film plane, producing an unexposed void in the image.
 
 **Solution:** Reduce the active film plane from the full 5,893 mm container width
-to a 4,024 mm span (X=625–4,649mm). This creates two **provably shadow-free end
+to a 4,499 mm span (X=150–4,649mm). This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.
 
 The right end zone contains a 2×2 IBC stack (including a dedicated 600L waste
 IBC), which frees the left end zone entirely — only the light trap drum remains.
-The right zone boundary sits at X=4,649mm, giving a 4,024mm active film plane
+The right zone boundary sits at X=4,649mm, giving a 4,499mm active film plane
 (rev 5, 2026-05-06).
 
-### Optical Cone (rev 3 geometry)
+### Optical Cone (rev 6 geometry)
 
-The pinhole is centered on the new film plane at X=2,637mm. At depth Y from the
+The pinhole is centered on the film plane at X=2,399mm. At depth Y from the
 pinhole wall, the cone boundaries are:
 
 ```
-X_left(Y)  = 2,637 − 2,012 × Y/2,262    [left cone boundary]
-X_right(Y) = 2,637 + 2,012 × Y/2,262    [right cone boundary]
+X_left(Y)  = 2,399 − 2,249 × Y/2,262    [left cone boundary]
+X_right(Y) = 2,399 + 2,250 × Y/2,262    [right cone boundary]
 ```
 
-At the film plane (Y=2,262mm): X_left=625mm, X_right=4,649mm — exactly the
+At the film plane (Y=2,262mm): X_left=150mm, X_right=4,649mm — exactly the
 film plane edges. The cone never extends beyond these X values at any depth ≤ 2,262mm.
 
 ### Zone Definitions
 
 | Zone | X range | Shadow-free? | Equipment assigned |
 |------|---------|--------------|--------------------|
-| **Left end zone** | 0–625mm | YES at all depths | Light trap drum, hinged panel (stepped) |
-| **Optical zone** | 625–4,649mm | NO | Film plane, rails only |
+| **Left end zone** | 0–150mm | YES at all depths | Light trap drum, hinged panel (stepped) |
+| **Optical zone** | 150–4,649mm | NO | Film plane, rails, processing tray, perimeter walkway |
 | **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
 
 **Shadow-free proof:**
-- Left zone (X=0–625): cone left boundary ≥ 625mm at all depths Y ≤ 2,262mm.
+- Left zone (X=0–150): cone left boundary ≥ 150mm at all depths Y ≤ 2,262mm.
   All left-zone equipment (light trap drum, hinged panel) stays within zone. ✓
 - Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
   All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
@@ -56,7 +56,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 ## 2. Equipment Positions
 
-### 2.1 Left End Zone — X=0–625mm (shadow-free at all depths)
+### 2.1 Left End Zone — X=0–150mm (shadow-free at all depths)
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
@@ -68,22 +68,23 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
 | Evaporative cooler | 930–1,530 | 0–800 | 12V DC 80W; protrudes 350mm from wall into Yd=0–350mm |
-| Electrical panel | 2,050–2,350 | 900–1,500 | IP65, wall-mount |
-| Battery bank (2× 100Ah LiFePO4) | 2,050–2,550 | 0–500 | Wall-bracket below panel |
+| Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
+| Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Pump manifold (3-circuit) | 2,400–2,700 | 200–600 | Wall-bracket |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
 
-### 2.3 Optical Zone — X=625–4,649mm
+### 2.3 Optical Zone — X=150–4,649mm
 
-Rail slots in floor/ceiling at X=625 and X=4,649. Film plane frame
+Rail slots in floor/ceiling at X=150 and X=4,649. Film plane frame
 spans this zone at depth Y=2,262mm (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Processing tray (2 panels, 304 SS) | 645–4,629 | 60–2,300 | 0–50 | 50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,637, Y=60 to 3W-DV-02. Permanently installed. |
+| Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,399, Yd=80 to 3W-DV-02. Permanently installed. |
+| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–400 / 1,962–2,362 | 0–80 | 400mm wide galvanized grated walkway around all 4 sides of processing tray. 25mm SHS legs at 600mm centers. Removable for tray access during coating. |
 
-The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=625 and X=4,649.
+The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 
 ### 2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)
 
@@ -253,7 +254,7 @@ termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire.
 
 **Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2,637mm (pinhole side), H=400mm.
+pinhole wall at X=2,399mm (pinhole side), H=400mm.
 
 ---
 
@@ -321,12 +322,12 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 
 | Parameter | Old (colonnade) | New (end-zone) |
 |-----------|----------------|----------------|
-| Equipment zone concept | Yd=0–1,220mm depth band | X=0–625mm and X=4,649–5,893mm end zones |
-| Pinhole position | X=2,946mm | **X=2,637mm** (centered on active FP) |
-| Active film plane width | 5,893mm | **4,024mm** (X=625–4,649mm) |
-| Rail positions | X=200mm, X=5,693mm | **X=625mm, X=4,649mm** |
-| Rail span | 5,493mm | **4,024mm** |
-| Max swing angle | 20.3° | **28.3°** |
+| Equipment zone concept | Yd=0–1,220mm depth band | X=0–150mm and X=4,649–5,893mm end zones |
+| Pinhole position | X=2,946mm | **X=2,399mm** (centered on active FP) |
+| Active film plane width | 5,893mm | **4,499mm** (X=150–4,649mm) |
+| Rail positions | X=200mm, X=5,693mm | **X=150mm, X=4,649mm** |
+| Rail span | 5,493mm | **4,499mm** |
+| Max swing angle | 20.3° | **25.7°** |
 | Blue IBCs (×2) | Left side, X=100–1,319mm | Right end zone, X=4,674mm, 2×2 stack top tier |
 | Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, 2×2 stack bottom near |
 | Waste IBC | — (55-gal drums) | **Right end zone, X=4,674mm, 2×2 stack bottom far** |

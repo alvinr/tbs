@@ -111,10 +111,13 @@ PANEL_CORNER_YD_R = 1606  # center-to-corner transition, far side (mm)
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 850mm center zone width
 WALL_T            = 40    # container end-wall steel thickness (mm)
 
-# ── Sliding rail system — transport mode (rev 4) ─────────────────────────────
-# Panel slides inward 300mm on HGR20 linear rails so the light trap drum
-# clears the container exterior face, allowing ISO cargo doors to close.
+# ── Sliding rail system — transport mode (rev 4, updated rev 6) ──────────────
+# Panel slides inward 300mm on HGR20 ceiling-mounted linear rails so the light
+# trap drum clears the container exterior face, allowing ISO cargo doors to close.
+# Panel is suspended from ceiling — bottom edge clears floor-mounted processing tray.
 PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
+PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
+                          # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
 
 # ── Left end zone (X = 0–150 mm, shadow-free at all depths) ──────────────────
 # Light trap drum in hinge panel center zone.  Zone shrunk in rev 6 as film
@@ -134,7 +137,7 @@ EVAP_D     = 350     # evap cooler depth Y (mm)        [unchanged]
 EVAP_H     = 800     # evap cooler height (mm)         [unchanged]
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
-EP_X       = 2010    # electrical panel left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
+EP_X       = 1600    # electrical panel left edge X (mm)  [rev6b: moved left, away from pinhole]
 EP_W       = 300     # electrical panel width (mm)
 EP_H_LO    = 900     # electrical panel bottom H (mm)
 EP_H_HI    = 1500    # electrical panel top H (mm)
@@ -177,8 +180,42 @@ PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev
 PROC_TRAY_X_R  = FP_X_R - 20    # = 4,629mm — 20mm clearance from right rail
 PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4,459mm [rev6: was 3,984]
 PROC_TRAY_D    = 2200            # depth in Y direction (mm)
+PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pinhole wall
+PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2,280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
-PROC_TRAY_PITCH = 10             # fall over panel length for drainage (mm), 1:200
+PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
+# Dual-axis pitch: tray slopes toward the low corner (near-pinhole, X-center).
+# Primary slope: Yd direction, falling toward Yd=0 (pinhole wall).
+# Secondary slope: X direction, falling toward X-center from both ends.
+# Low point (drain): single 1" NPT bulkhead union welded to tray floor.
+PROC_TRAY_DRAIN_X  = PH_X       # = 2,399mm — drain at X-center of tray (aligned with pinhole)
+PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
+
+# ── Perimeter walkway — removable grated sections around processing tray ─────
+# 4 sections form a rectangular perimeter walk so the operator can access all
+# working parts (valves, electrical panel, film plane, tilt-swing adjusters)
+# without wading through the wet processing tray.
+# Deck height 80mm clears the 50mm tray rim.  Legs stand on floor (outside tray)
+# and on tray floor (inside tray) — walkway bridges over the rim.
+# Material: galvanized press-locked steel grating, 25mm thick.
+WALKWAY_W       = 400    # walkway width (mm)
+WALKWAY_H       = 80     # deck height above floor (mm) — clears PROC_TRAY_RIM (50mm)
+WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
+# Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
+WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
+# Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
+WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1,962mm
+# Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
+WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
+# Right walkway (IBC end): X=tray_R-WALKWAY_W to tray_R, Yd=0 to C_WID
+WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
+# Open processing area (center, clear of walkways):
+PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
+PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,229mm
+PROC_OPEN_YD_N = WALKWAY_W                    # = 400mm
+PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1,962mm
+PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
+                                               # = 5.71 m² open processing area
 
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
@@ -270,10 +307,12 @@ if __name__ == "__main__":
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
     print(f"  Panel:          corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
     print(f"  Panel zones:    corners Yd=0–{PANEL_CORNER_YD_L} / {PANEL_CORNER_YD_R}–{C_WID}  center Yd={PANEL_CORNER_YD_L}–{PANEL_CORNER_YD_R}")
-    print(f"  Panel slide:    {PANEL_SLIDE}mm travel")
+    print(f"  Panel slide:    {PANEL_SLIDE}mm travel  floor gap={PANEL_FLOOR_GAP}mm (tray rim={PROC_TRAY_RIM}mm)")
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
-    print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  W={PROC_TRAY_W}mm  rim={PROC_TRAY_RIM}mm")
+    print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
+    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm")
+    print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")
     print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")

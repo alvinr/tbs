@@ -24,7 +24,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 
 ### What
 
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,024 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 103 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,499 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
@@ -176,7 +176,7 @@ Each deployment is a public event. The container is placed on-site; visitors can
 
 ### Archival Print Edition
 
-50 cyanotype prints on cotton muslin, each approximately 4,024 × 2,388mm (~13'3" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately 4,499 × 2,388mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 
@@ -212,9 +212,9 @@ My practice since has moved between classical portraiture and abstract color in 
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
 | Focal length | 2,362 mm |
-| Image plane (active) | 4,024 × 2,388 mm (~13'3" × 7'10") |
+| Image plane (active) | 4,499 × 2,388 mm (~14'9" × 7'10") |
 | Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
-| Image area | ~103 sq ft |
+| Image area | ~116 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |

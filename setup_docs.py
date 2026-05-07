@@ -83,6 +83,7 @@ DIAG_IMAGE_FILES = [
     "portrait-scale-comparison.png",
     "water-system-sheet1.png",
     "water-system-sheet2.png",
+    "water-system-sheet3.png",
     "film-plane-sheet1.png",
     "film-plane-sheet2.png",
     "film-plane-sheet3.png",
@@ -126,6 +127,10 @@ DIAG_IMAGE_FILES = [
     "line-of-sight.png",
     "plate-drawing-sheet1.png",
     "plate-drawing-sheet2.png",
+    "ceiling-rail-sheet1.png",
+    "ceiling-rail-sheet2.png",
+    "walkway-sheet1.png",
+    "walkway-sheet2.png",
 ]
 
 MKDOCS_YML = """\

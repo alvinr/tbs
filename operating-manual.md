@@ -76,7 +76,8 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
 7. Confirm processing tray drain hose is connected to 3W-DV-02. (The tray is permanently installed between the film plane rails.)
-8. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
+8. Install perimeter walkway sections around all 4 sides of the processing tray. Verify each section sits level on its legs (25mm SHS, 600mm spacing). The walkways provide dry-foot access to all working parts of the camera during processing.
+9. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 ### 0.6 Ventilation and Cooling
 
@@ -343,7 +344,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 **Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel rides on a sliding carriage (HGR20 linear rails, 300mm travel). The panel must slide inward before the container doors can close.
+The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 300mm inward on these rails before the container doors can close. The processing tray and perimeter walkways remain in place during mode conversion — no removal required.
 
 1. Stow all interior items. Retract film plane carriage to Yd=100mm.
 2. Release all 4 Southco cam latches. Swing the panel open 180° outward.

@@ -175,22 +175,22 @@ Print washing takes place inside the container on a shallow processing tray that
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; stainless resists pitting from citric acid pH adjustment |
-| Overall footprint | 3,984 × 2,240 mm (2 panels, field-bolted) | Fits inside film plane rails (X=625–4,649) with 20mm clearance per side. Clears carriage travel (Y=100–2,262) with 30mm margin |
-| Panel size (each) | 1,992 × 2,240 mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm) |
+| Overall footprint | 4,459 × 2,200 mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side. Spans Yd=80–2,280 |
+| Panel size (each) | 2,229 × 2,200 mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm) |
 | Rim height | 50 mm (all four sides) | Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm) |
 | Floor-to-rim height | 50 mm | Tray sits directly on the container floor. No riser needed — drain is at tray floor level |
-| Fall | 1:200 (10mm over 1,992mm) toward pinhole wall (Y=0) | Gravity drain to a single 1" NPT bulkhead fitting at the low corner |
-| Drain fitting | 1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,637, Y=60) | Connects via 1" HDPE pipe to existing 3W-DV-02 diverter valve |
-| Weight (empty) | ~110 kg (2 panels × ~55 kg) | 304 SS, 1.5mm × 4.46 m² per panel × 7.93 kg/m² per mm |
+| Fall | 1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward drain at near rim center | Water converges from both axes toward a single drain point |
+| Drain fitting | 1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,399, Yd=80) | Connects via 1" HDPE pipe along pinhole wall to 3W-DV-02 diverter valve |
+| Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
 
 **Clearance verification:**
 
 | Constraint | Clearance | Status |
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
-| Film plane rails at X=625 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
-| Container left end zone equipment (X=0–625) | Tray left edge at X=645 — 20mm clearance to end zone boundary | Clear |
-| Pump manifold drain outlet (X=2,600–2,900, Y=0, Z=200–600) | Tray drain pipe routes along pinhole wall (Y=0) below manifold at Z=0–50. Manifold is at Z=200 minimum | Clear |
+| Film plane rails at X=150 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
+| Container left end zone equipment (X=0–625) | Tray left edge at X=170 — extends into optical zone only | Clear |
+| Pump manifold drain outlet (X=2,300–2,500, Yd=0, Z=200–600) | Tray drain pipe routes along pinhole wall (Yd≈60) below manifold at Z=0–50. Manifold is at Z=200 minimum | Clear |
 | Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
 | IBC-4 waste (right end zone, X=4,674+) | Tray ends at X=4,629 — 45mm gap to IBC footprint | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
@@ -277,7 +277,7 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump p
 
 ## 7. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=625–4,649mm) is completely clear.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=150–4,649mm) contains only the processing tray and perimeter walkways at floor level.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
@@ -450,6 +450,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 |---------|------|
 | Sheet 1 — System flow schematic (P&ID) | `water-system-sheet1.png` |
 | Sheet 2 — Equipment layout plan + parts list | `water-system-sheet2.png` |
+| Sheet 3 — Processing tray drainage plan | `water-system-sheet3.png` |
 | Container floor plan — all systems | See [Electrical & Systems Report](electrical-report.md) Section 5.8 |
 
 **Sheet 1 — System Flow Schematic (P&ID)**
@@ -459,6 +460,11 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 **Sheet 2 — Equipment Layout Plan**
 ![Water System — Sheet 2: Equipment Layout](assets/water-system-sheet2.png)
+
+---
+
+**Sheet 3 — Processing Tray Drainage Plan**
+![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
 
 ---
 

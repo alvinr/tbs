@@ -8,7 +8,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 **Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
 
-**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the far rim of a Paterson 12×16" developing tray inside the prep box. The board has two armholes cut into it, with attached arm sleeves that project into the prep space — these give the operator sealed access for coating and mounting paper without opening the box. When the board is upright (exposure position), the mounted watercolor paper covers the armholes from the camera side, sealing them during exposure. The prep box end face is an extraction flap, hinged at the top, that opens in daylight after exposure for print removal. No darkroom required.
+**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The board has two armholes cut into it, with attached arm sleeves that project into the prep space — these give the operator sealed access for coating and mounting paper without opening the box. When the board is upright (exposure position), the mounted watercolor paper covers the armholes from the camera side, sealing them during exposure. The prep box end face is an extraction flap, hinged at the top, that opens in daylight after exposure for print removal. No darkroom required.
 
 ![Mini-TBS engineering drawing — two-box design with hinged flap, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
@@ -160,7 +160,7 @@ Only the camera box needs to be light-tight. The prep box remains open (it is us
 
 ### 4.3 Photo Tray and Hinged Backing Board
 
-A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, against the camera-box wall. The backing board is permanently hinged at the tray's far rim with duct tape. The board has two armholes (4" diameter, 9" apart) cut into it, with arm sleeves attached on the prep side. When upright, the board serves as the film plane; when folded down, it extends past the tray into the remaining prep space for mounting paper.
+A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, against the camera-box wall. The backing board is permanently hinged at the tray's near rim (the rim closest to the camera box) with duct tape. When the board folds up, it swings into the camera box to serve as the film plane opposite the pinhole. The board has two armholes (4" diameter, 9" apart) cut into it, with arm sleeves attached on the prep side. When upright, the board serves as the film plane; when folded down, it extends past the tray into the remaining prep space for mounting paper.
 
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
@@ -174,9 +174,9 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 2. Cut a foam-core board panel to fit snugly inside the camera box opening: approximately 17.5 × 15.5 inches (443 × 398 mm, allowing clearance for the box interior).
 3. **Armholes:** Cut two 4-inch (102 mm) diameter holes in the board, centered vertically, spaced 9 inches (230 mm) apart center-to-center. These holes allow the operator to reach through the board to the tray when the board is upright.
 4. **Arm sleeves:** Attach arm sleeves to the prep side of each armhole (see §4.6). The sleeves project into the prep space when the board is upright.
-5. **Hinge:** Attach the bottom edge of the backing board to the far rim of the tray (the rim closest to the prep box end) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
-6. **Folded-down position (prep):** The board lies flat, extending from the tray rim into the remaining prep space (~113 mm past the tray). The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
-7. **Exposure position:** Fold the board up from the tray hinge into the upright position against the camera/prep junction. Paper faces the pinhole; the armholes face the prep box. Use a binder clip or gaffer tape tab at the top edge to hold it upright. The mounted watercolor paper covers the armholes from the camera side, providing a light seal.
+5. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
+6. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
+7. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole and the armholes facing the prep box. Use a binder clip or gaffer tape tab at the top edge to hold it upright. The mounted watercolor paper covers the armholes from the camera side, providing a light seal.
 8. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
 
 ### 4.4 Pinhole Fabrication

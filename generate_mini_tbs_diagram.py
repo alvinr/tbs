@@ -67,7 +67,6 @@ BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333 mm — from hinge to ceiling inte
 BG         = "#FFFFFF"
 C_BOX      = "#D2B48C"    # tan — cardboard
 C_BOX_WALL = "#C4A882"    # darker cardboard for walls
-C_TAPE     = "#1A1A1A"    # black gaffer tape (near-black)
 C_CONE     = "#CCE4FF"    # light cone fill
 C_CONE_LN  = "#4488CC"    # light cone boundary
 C_PINHOLE  = "#CC2020"    # pinhole marker
@@ -304,7 +303,7 @@ ax.plot([0, board_x], [ph_y, ph_y],
 
 # Shutter flap (outside left wall)
 ax.add_patch(mpatches.Rectangle((-30, ph_y - 50), 28, 100,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
 # ── Box labels ──────────────────────────────────────────────────────────────
 ax.text(BOX_D / 2, BOX_H - WALL_T - 15, "CAMERA BOX", ha="center", va="top",
@@ -349,7 +348,7 @@ leader(ax, prep_end_x + WALL_T / 2, BOX_H / 3,
        "Extraction flap\n(opens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
 leader(ax, prep_end_x + WALL_T / 2, hinge_flap_y,
        TOTAL_D + 70, hinge_flap_y + 40,
-       "Gaffer tape hinge", ha="left", color=C_HINGE, fs=FS_SM - 0.5)
+       "Duct tape hinge", ha="left", color=C_HINGE, fs=FS_SM - 0.5)
 
 # View title
 ax.text(TOTAL_D / 2, BOX_H + 60, "SIDE CROSS-SECTION",
@@ -387,9 +386,9 @@ for cx in [arm_cx1, arm_cx2]:
     # Armhole
     ax.add_patch(plt.Circle((cx, arm_cy), SLEEVE_D / 2,
                  facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=1.2, alpha=0.8, zorder=4))
-    # Gaffer tape seal ring (sleeve attachment)
+    # Duct tape seal ring (sleeve attachment)
     ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
-                 facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
+                 facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
 
 # Hinge edge indicator (top edge — extraction flap hinged at top)
 ax.add_patch(mpatches.Rectangle((0, EF_H - 4), EF_W, 8,
@@ -432,7 +431,7 @@ ax.axis("off")
 # showing how the fabric sleeve attaches to the cardboard end face.
 #
 # Vertical cross-section (looking from inside the box outward):
-#   cardboard wall | fabric fold-back | gaffer tape seal | sleeve tube
+#   cardboard wall | fabric fold-back | duct tape seal | sleeve tube
 #
 # Scale: approximately 1:1 for clarity
 
@@ -503,26 +502,26 @@ ax.plot([wall_x + wall_thick, wall_x], [-hole_r, -hole_r],
 ax.add_patch(mpatches.Rectangle((-fold_back, -hole_r - fabric_thick), fold_back, fabric_thick,
              facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
-# ── Gaffer tape seal (wraps over fold-back on inside surface) ────────────
-tape_w = 50   # mm — 2" gaffer tape
+# ── Duct tape seal (wraps over fold-back on inside surface) ─────────────
+tape_w = 50   # mm — 2" duct tape
 tape_t = 1.5  # mm — tape thickness (schematic)
 
 # Upper tape — on inside surface, covering the fold-back
 ax.add_patch(mpatches.Rectangle((-fold_back, hole_r + fabric_thick),
              fold_back + 10, tape_t,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
 # Tape also covers the outside fold
 ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, hole_r),
              tape_w * 0.6, tape_t,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
 
 # Lower tape
 ax.add_patch(mpatches.Rectangle((-fold_back, -hole_r - fabric_thick - tape_t),
              fold_back + 10, tape_t,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
 ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, -hole_r - tape_t),
              tape_w * 0.6, tape_t,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
 
 # ── Elastic / rubber band at wrist end ───────────────────────────────────
 elastic_x = wall_x + wall_thick + sleeve_len - 10
@@ -551,7 +550,7 @@ draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
 leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 35,
        "Cardboard wall\n(end face)", ha="right", fs=FS_SM - 0.5)
 leader(ax, -fold_back / 2, hole_r + fabric_thick + tape_t + 2, -60, hole_r + 45,
-       "Gaffer tape\nseal (inside)", ha="right", fs=FS_SM - 0.5, color=C_TAPE)
+       "Duct tape\nseal (inside)", ha="right", fs=FS_SM - 0.5, color=C_HINGE)
 leader(ax, -fold_back / 2, hole_r + 1, -60, hole_r + 25,
        "Fabric fold-back", ha="right", fs=FS_SM - 0.5, color=C_SLEEVE)
 leader(ax, wall_x + wall_thick + sleeve_len / 3, hole_r - 1,

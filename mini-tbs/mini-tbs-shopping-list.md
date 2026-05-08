@@ -94,13 +94,17 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 ---
 
-## 6. Processing
+## 6. Photo Trays
+
+Standard darkroom developing trays — used for both chemistry coating and development washes. The 12×16" size fits inside the 18×18" prep box (external ~13.4×17.5"). Paper (16×18") overhangs slightly during brush coating — standard practice for cyanotype.
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Plastic wash basins/tubs, ~16×20" | 3 | Dollar Tree | $1.25 ea | Walmart | $2.98 ea | One per wash cycle. Bus tubs work well. |
+| Paterson 12×16" Developing Tray (PTP326) | 3 | B&H Photo | $10.95 ea | Adorama | $10.95 ea | 1 for coating + 2 for wash. Buy 3 different colors to prevent cross-contamination. |
 
-**Subtotal: $3–$9**
+**Alternative:** Paterson 12×16" Tray Set (PTP336) — set of 3 in white/gray/red, ~$28 at B&H Photo.
+
+**Subtotal: $28–$33**
 
 ---
 
@@ -126,10 +130,10 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 | Chemistry (with ammonium dichromate) | $37 | $45 |
 | Substrate (watercolor paper) | $10 | $18 |
 | Tools + consumables | $8 | $14 |
-| Processing (wash basins) | $3 | $9 |
+| Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$80** | **$126** |
-| **Total (with dichromate)** | **$92** | **$136** |
+| **Total (without dichromate)** | **$105** | **$150** |
+| **Total (with dichromate)** | **$117** | **$160** |
 
 ### What the Minimum Order Gets You
 

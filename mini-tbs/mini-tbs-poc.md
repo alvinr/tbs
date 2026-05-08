@@ -291,7 +291,7 @@ The same formula used for TBS-001. Source: Ware, M., *Cyanotype: The History, Sc
 
 | Ingredient | Quantity |
 |------------|----------|
-| Ammonium iron(III) oxalate | 30 g |
+| Ammonium iron(III) oxalate (ferric ammonium oxalate) | 30 g |
 | Warm water (50–60°C) | 75 ml |
 
 Dissolve AmFe in warm water (not boiling) with continuous stirring, 3–5 minutes, until clear pale yellow-green solution. Cool to room temperature. Store in a dark bottle. Shelf life: 6–8 weeks.

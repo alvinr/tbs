@@ -1,0 +1,2707 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A rigorous, source-backed design and build guide for a 20 ft × 7 ft pinhole camera.">
+      
+      
+      
+        <link rel="canonical" href="https://alvinr.github.io/tbs/mini-tbs/mini-tbs-poc/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../mini-tbs-shopping-list/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Mini-TBS Design - The Big Shoebox — Research & Build</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mini-tbs-proof-of-concept-pinhole-camera" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Big Shoebox — Research &amp; Build" class="md-header__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../../assets/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Big Shoebox — Research & Build
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mini-TBS Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  PoC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../funding-proposal/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Proposal
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../project-cost-breakdown/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Costing
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../operating-manual/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operating Manual
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../engineering-diagrams/" class="md-tabs__link">
+          
+  
+  
+  Construction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../master-shopping-list/" class="md-tabs__link">
+          
+  
+  
+  Shopping
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pinhole-optics-report/" class="md-tabs__link">
+          
+  
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../container-transport-options/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Transportation
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../licensing/" class="md-tabs__link">
+          
+  
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Big Shoebox — Research &amp; Build" class="md-nav__button md-logo" aria-label="The Big Shoebox — Research & Build" data-md-component="logo">
+      
+  <img src="../../assets/favicon.png" alt="logo">
+
+    </a>
+    The Big Shoebox — Research & Build
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PoC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PoC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-TBS Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-TBS Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cyanotype-prints-from-a-moving-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cyanotype Prints from a Moving Box
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-box-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Box Selection
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Box Selection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-u-haul-medium-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended: U-Haul Medium Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-u-haul-large-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternative: U-Haul Large Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-optical-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Optical Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Optical Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mini-tbs-optical-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mini-TBS Optical Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exposure-calculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Exposure Calculation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Exposure Calculation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baseline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reciprocity-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reciprocity Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exposure-adjustment-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exposure Adjustment Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Construction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Construction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-two-box-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Two-Box Assembly
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-light-sealing-the-camera-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Light-Sealing the Camera Box
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-photo-tray-and-hinged-backing-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Photo Tray and Hinged Backing Board
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pinhole-fabrication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Pinhole Fabrication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-shutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Shutter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-arm-sleeves-on-prep-box-end-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Arm Sleeves (on Prep Box End Face)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48-extraction-flap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.8 Extraction Flap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-substrate-watercolor-paper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Substrate: Watercolor Paper
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-chemistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Chemistry
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Chemistry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ware-new-cyanotype-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ware New Cyanotype Formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stock-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stock Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-sensitizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Working Sensitizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-coating-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Coating Procedure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-exposure-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Exposure Procedure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drying" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drying
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-comparison-to-tbs-001" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Comparison to TBS-001
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-bill-of-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Bill of Materials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mini-tbs-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mini-TBS Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../funding-proposal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proposal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../project-cost-breakdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Costing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operating-manual/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operating Manual
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Construction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../engineering-diagrams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Diagrams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pinhole-camera-construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Construction Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fabrication-drawings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pinhole Fab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../water-system-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Processing System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../film-plane-mechanism-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Film Plane Mechanism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tilt-swing-board-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt-Swing Front Board
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../electrical-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical & Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../light-trap-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Light Trap Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../equipment-layout-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Equipment Layout
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../component-dependency-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Component Dependency Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shopping
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shopping
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../master-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chemistry-shopping-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chem Shopping List
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pinhole-optics-report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optics Report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pinhole-option-b-optics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container Optics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lens-vs-pinhole-exposure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens vs Pinhole
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lens-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lens Options
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../photosensitive-plane-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Photosensitive Materials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../distortion-renders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distortion Renders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../container-transport-options/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Transportation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendix
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../component-dependency-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Component Dependency Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- SPDX-License-Identifier: AGPL-3.0-only -->
+<!-- © 2026 Alvin Richards -->
+<h1 id="mini-tbs-proof-of-concept-pinhole-camera">Mini-TBS — Proof-of-Concept Pinhole Camera<a class="headerlink" href="#mini-tbs-proof-of-concept-pinhole-camera" title="Permanent link">&para;</a></h1>
+<h2 id="cyanotype-prints-from-a-moving-box">Cyanotype Prints from a Moving Box<a class="headerlink" href="#cyanotype-prints-from-a-moving-box" title="Permanent link">&para;</a></h2>
+<p>A small-scale proof of concept for the <a href="../../">Big Shoebox Project</a>. This camera uses the same optics, chemistry, and process as TBS-001 — scaled down to two standard moving boxes. It produces real cyanotype prints on watercolor paper, approximately 14 × 16 inches, suitable for inclusion in proposals, exhibitions, and grant applications.</p>
+<p><strong>Purpose:</strong> Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.</p>
+<p><strong>Design:</strong> Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The prep box end face serves dual duty: it has armholes with attached arm sleeves for sealed operator access, and it is an extraction flap (hinged at the top) that opens in daylight after exposure for print removal. No darkroom required.</p>
+<p><img alt="Mini-TBS engineering drawing — two-box design with hinged flap, plan view, and pinhole face" src="../../assets/mini-tbs-sheet1.png" /></p>
+<hr />
+<h2 id="1-box-selection">1. Box Selection<a class="headerlink" href="#1-box-selection" title="Permanent link">&para;</a></h2>
+<h3 id="recommended-u-haul-medium-box">Recommended: U-Haul Medium Box<a class="headerlink" href="#recommended-u-haul-medium-box" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box dimensions</td>
+<td>18 × 18 × 16 inches (457 × 457 × 406 mm)</td>
+</tr>
+<tr>
+<td>Supplier</td>
+<td>U-Haul, Home Depot, Lowe's</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>~$4–5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quantity needed:</strong> 2 (one camera box, one prep box).</p>
+<p><strong>Orientation:</strong> Pinhole on one 18 × 16" face. Film plane on the opposite 18 × 16" face. The 18-inch (457 mm) dimension becomes the focal length. The second box attaches at the film plane face to serve as the prep/coating area.</p>
+<p><strong>Why this box:</strong></p>
+<ul>
+<li>457 mm focal length gives a practical f-number and ~10 min exposure in full sun</li>
+<li>14 × 16" usable print area is large enough to be visually compelling</li>
+<li>Standard item, universally available, inexpensive</li>
+<li>Rigid enough when taped and reinforced</li>
+<li>Two identical boxes mate perfectly at the shared face</li>
+</ul>
+<h3 id="alternative-u-haul-large-box">Alternative: U-Haul Large Box<a class="headerlink" href="#alternative-u-haul-large-box" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box dimensions</td>
+<td>24 × 18 × 18 inches (610 × 457 × 457 mm)</td>
+</tr>
+<tr>
+<td>Focal length</td>
+<td>457 mm (same — use the 18" depth)</td>
+</tr>
+<tr>
+<td>Film plane</td>
+<td>24 × 18" (610 × 457 mm)</td>
+</tr>
+<tr>
+<td>Usable area</td>
+<td>~20 × 16" (~2.2 sq ft)</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>~$6–8</td>
+</tr>
+</tbody>
+</table>
+<p>The Large box gives a bigger print but the same f-number (same 18" depth). Use it if you want a more dramatic print for a proposal.</p>
+<hr />
+<h2 id="2-optical-specification">2. Optical Specification<a class="headerlink" href="#2-optical-specification" title="Permanent link">&para;</a></h2>
+<p>All derivations use the <strong>Lord Rayleigh formula</strong> for optimal pinhole diameter:</p>
+<p>$$d = 1.9 \sqrt{f \lambda}$$</p>
+<p>where <em>f</em> is focal length in mm and <em>λ</em> = 0.00055 mm (550 nm green light).</p>
+<p><strong>Source:</strong> Rayleigh, J.W.S., "On Pin-hole Photography," <em>Philosophical Magazine</em>, Ser. 5, Vol. 31, 1891, pp. 87–99. Applied identically to the TBS-001 specification in the <a href="../../pinhole-optics-report/">Pinhole Optics Report</a>.</p>
+<h3 id="mini-tbs-optical-parameters">Mini-TBS Optical Parameters<a class="headerlink" href="#mini-tbs-optical-parameters" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Mini-TBS (PoC)</th>
+<th>TBS-001 (Container)</th>
+<th>Derivation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Focal length (f)</td>
+<td>457 mm</td>
+<td>2,362 mm</td>
+<td>Box depth / container width</td>
+</tr>
+<tr>
+<td>Rayleigh optimal d</td>
+<td>0.95 mm</td>
+<td>2.17 mm</td>
+<td>1.9 × √(f × 0.00055)</td>
+</tr>
+<tr>
+<td>Drill bit used</td>
+<td>1/32" (0.794 mm)</td>
+<td>Laser-drilled SS</td>
+<td>Closest Home Depot standard</td>
+</tr>
+<tr>
+<td>Actual pinhole Ø</td>
+<td>~0.80 mm</td>
+<td>2.17 mm</td>
+<td>Drill bit through aluminum can</td>
+</tr>
+<tr>
+<td>f-number</td>
+<td>f/575</td>
+<td>f/1088</td>
+<td>f / d</td>
+</tr>
+<tr>
+<td>Film plane</td>
+<td>406 × 457 mm</td>
+<td>4,499 × 2,388 mm</td>
+<td>Box face / container face</td>
+</tr>
+<tr>
+<td>Usable image area</td>
+<td>356 × 406 mm</td>
+<td>4,499 × 2,388 mm</td>
+<td>After mounting margins</td>
+</tr>
+<tr>
+<td>Angle of view (diag.)</td>
+<td>~53°</td>
+<td>~56°</td>
+<td>2 × arctan(half-diag / f)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pinhole undersizing note:</strong> The 1/32" drill bit produces a hole 16% smaller than the Rayleigh optimal. This means slightly less light throughput (longer exposure by ~10%) but slightly sharper image — the geometric blur circle is smaller while the diffraction blur increases only marginally. At this scale, the trade is favorable. (Renner, E., <em>Pinhole Photography</em>, 4th ed., Focal Press, 2009, Ch. 2.)</p>
+<h3 id="resolution">Resolution<a class="headerlink" href="#resolution" title="Permanent link">&para;</a></h3>
+<p>Using the Rayleigh resolution criterion (see <a href="../../pinhole-optics-report/">Pinhole Optics Report</a> §7):</p>
+<p>$$\text{Resolution} = \frac{d}{2 \times 1.22 \times \lambda \times f}$$</p>
+<p>For Mini-TBS: 0.794 / (2 × 1.22 × 0.00055 × 457) ≈ <strong>1.3 lp/mm</strong></p>
+<p>This is sufficient for a contact print viewed at arm's length — cyanotype on watercolor paper does not resolve finer detail than this.</p>
+<hr />
+<h2 id="3-exposure-calculation">3. Exposure Calculation<a class="headerlink" href="#3-exposure-calculation" title="Permanent link">&para;</a></h2>
+<h3 id="baseline">Baseline<a class="headerlink" href="#baseline" title="Permanent link">&para;</a></h3>
+<p>The TBS-001 baseline exposure is <strong>30–45 minutes at f/1088</strong> on Ware New Cyanotype (see <a href="../../operating-manual/">Operating Manual</a> §3.1). Exposure scales as the square of the f-number ratio:</p>
+<p>$$t_{\text{PoC}} = t_{\text{TBS}} \times \left(\frac{f_{\text{PoC}}}{f_{\text{TBS}}}\right)^2$$</p>
+<p>Using 37.5 min as the midpoint baseline:</p>
+<p>$$t_{\text{PoC}} = 37.5 \times \left(\frac{575}{1088}\right)^2 = 37.5 \times 0.279 = \textbf{10.5 minutes}$$</p>
+<h3 id="reciprocity-failure">Reciprocity Failure<a class="headerlink" href="#reciprocity-failure" title="Permanent link">&para;</a></h3>
+<p><strong>No correction required.</strong> Cyanotype is an iron-based process and does not exhibit classical Schwarzschild reciprocity failure. The response is linear at long exposures. (See <a href="../../pinhole-optics-report/">Pinhole Optics Report</a> §6, Table: "Cyanotype | Minimal | Iron-based process — does not exhibit classical Schwarzschild failure.")</p>
+<p>This is one of the key advantages of cyanotype for pinhole photography. A silver gelatin paper at f/575 would require Schwarzschild correction (p ≈ 0.85), extending the exposure by ~2×.</p>
+<h3 id="exposure-adjustment-table">Exposure Adjustment Table<a class="headerlink" href="#exposure-adjustment-table" title="Permanent link">&para;</a></h3>
+<p>Same multipliers as TBS-001 (<a href="../../operating-manual/">Operating Manual</a> §3.1):</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Multiplier</th>
+<th>Mini-TBS exposure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full direct sun (10:00–14:00, summer)</td>
+<td>×1.0</td>
+<td>~10 min</td>
+</tr>
+<tr>
+<td>Thin haze / milky sky</td>
+<td>×1.5</td>
+<td>~16 min</td>
+</tr>
+<tr>
+<td>Broken cloud (50% coverage)</td>
+<td>×2.0</td>
+<td>~21 min</td>
+</tr>
+<tr>
+<td>Heavy overcast</td>
+<td>×4.0</td>
+<td>~42 min</td>
+</tr>
+<tr>
+<td>Early morning / late afternoon</td>
+<td>×2.0</td>
+<td>~21 min</td>
+</tr>
+<tr>
+<td>Winter sun at mid-latitude</td>
+<td>×1.5</td>
+<td>~16 min</td>
+</tr>
+</tbody>
+</table>
+<p>For compound conditions, multiply factors: thin haze + early morning = ×3.0 → ~32 min.</p>
+<p><strong>Recommendation for first session:</strong> Choose a clear-sky day between 10:00 and 14:00. Make three exposures: one at calculated time (10 min), one at +50% (15 min), one at -25% (8 min). This brackets the exposure and compensates for any local UV variation.</p>
+<hr />
+<h2 id="4-construction">4. Construction<a class="headerlink" href="#4-construction" title="Permanent link">&para;</a></h2>
+<h3 id="41-two-box-assembly">4.1 Two-Box Assembly<a class="headerlink" href="#41-two-box-assembly" title="Permanent link">&para;</a></h3>
+<p>The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:</p>
+<ul>
+<li><strong>Camera box</strong> (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The backing board forms the film plane when upright.</li>
+<li><strong>Prep box</strong> (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Contains the Paterson 12×16" developing tray. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.</li>
+</ul>
+<p>The shared wall between the boxes is removed. A <strong>permanently hinged backing board</strong> serves as the film plane. It is hinged at the near rim of the photo tray (camera side) with duct tape, so it swings up into the camera box opposite the pinhole. Arm sleeves on the prep box end face give the operator sealed access for coating and mounting paper.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes.</li>
+<li>Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.</li>
+<li>Remove the adjacent face from both boxes (cut away the cardboard panels). This creates one long enclosure (36" deep × 18" wide × 16" high).</li>
+<li>Tape the two boxes together at the junction using gaffer tape on all four edges — floor, ceiling, and both side walls. The taped joint must be rigid.</li>
+</ol>
+<h3 id="42-light-sealing-the-camera-box">4.2 Light-Sealing the Camera Box<a class="headerlink" href="#42-light-sealing-the-camera-box" title="Permanent link">&para;</a></h3>
+<p>Only the camera box needs to be light-tight. The prep box remains open (it is used under safelight conditions only).</p>
+<p><strong>Materials:</strong> Black gaffer tape (Polyken 510 or equivalent — not duct tape, which leaves residue and can delaminate).</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Seal every external seam on the camera box with a full strip of black gaffer tape. Pay special attention to:</li>
+<li>All four flap edges on the pinhole face</li>
+<li>Every corner where two panels meet</li>
+<li>The manufacturer's glued seam (usually one long edge)</li>
+<li>Cut 2-inch squares of cardboard and tape them over every 3-plane corner junction. These are the worst light-leak points.</li>
+<li>Apply a second layer of tape on all internal seams.</li>
+<li><strong>Light-leak test:</strong> In a dark room, place a bright flashlight inside the sealed camera box (with the hinged flap upright). Inspect every seam from outside. Mark and seal any visible light.</li>
+</ol>
+<h3 id="43-photo-tray-and-hinged-backing-board">4.3 Photo Tray and Hinged Backing Board<a class="headerlink" href="#43-photo-tray-and-hinged-backing-board" title="Permanent link">&para;</a></h3>
+<p>A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, against the camera-box wall. The backing board is permanently hinged at the tray's near rim (the rim closest to the camera box) with duct tape. When the board folds up, it swings into the camera box to serve as the film plane opposite the pinhole. The board has two armholes (4" diameter, 9" apart) cut into it, with arm sleeves attached on the prep side. When upright, the board serves as the film plane; when folded down, it extends past the tray into the remaining prep space for mounting paper.</p>
+<p><strong>Materials:</strong>
+- Paterson 12×16" developing tray (PTP326 or equivalent — available from B&amp;H Photo, Adorama, or Freestyle Photo)
+- Foam-core board, 20 × 30" sheet (cut to ~17.5 × 15.5")
+- Duct tape (for the hinge — duct tape is more durable than gaffer tape for a working hinge)
+- Binder clips (1-inch, ~12 per print)</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305 mm) along the depth axis and the 16" dimension (406 mm) across the width. The tray should sit flat on the prep box floor.</li>
+<li>Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).</li>
+<li><strong>Hinge:</strong> Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.</li>
+<li><strong>Folded-down position (prep):</strong> The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.</li>
+<li><strong>Exposure position:</strong> Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or gaffer tape tab at the top edge to hold it upright.</li>
+<li><strong>Test the hinge:</strong> Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.</li>
+</ol>
+<h3 id="44-pinhole-fabrication">4.4 Pinhole Fabrication<a class="headerlink" href="#44-pinhole-fabrication" title="Permanent link">&para;</a></h3>
+<p><strong>Materials:</strong>
+- Aluminum beverage can (empty, clean, dry)
+- 400-grit and 600-grit sandpaper
+- 1/32" (0.794 mm) drill bit
+- Pin vise (hand-held chuck for small drill bits — ~$5 at Home Depot)</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Cut a 3 × 3 inch piece from the flat side wall of an aluminum beverage can using scissors. Avoid the curved top and bottom.</li>
+<li>Sand both sides with 400-grit sandpaper to remove the printed coating and any burrs. The aluminum should be clean bare metal, approximately 0.1 mm thick.</li>
+<li>Place the aluminum on a firm surface (hardwood or a book — not glass, which can chip the bit).</li>
+<li>Insert the 1/32" drill bit into the pin vise. Center the bit on the aluminum piece.</li>
+<li><strong>Drill slowly</strong> — rotate the pin vise by hand with light pressure. Do not use a power drill (the bit will wander and the hole will be oversized or oblong).</li>
+<li>After the bit breaks through, flip the aluminum and lightly sand the exit side with 600-grit to remove the raised burr collar.</li>
+<li>Hold the finished pinhole up to a light source and inspect with a magnifying glass or loupe. The hole should be round, clean-edged, and centered.</li>
+<li><strong>Drill 3–4 test pinholes.</strong> Select the cleanest, most circular one.</li>
+</ol>
+<p><strong>Mounting:</strong></p>
+<ol>
+<li>Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face).</li>
+<li>Center the aluminum pinhole plate over this hole on the inside of the box.</li>
+<li>Tape all four edges with black gaffer tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.</li>
+</ol>
+<h3 id="45-shutter">4.5 Shutter<a class="headerlink" href="#45-shutter" title="Permanent link">&para;</a></h3>
+<p>A simple flap shutter:</p>
+<ol>
+<li>Cut a 4 × 4 inch piece of stiff black cardboard (or 4 layers of black gaffer tape on regular cardboard).</li>
+<li>Tape the top edge of the flap to the box exterior, directly above the pinhole. The flap hangs down covering the pinhole.</li>
+<li><strong>To expose:</strong> Lift the flap and tape it open above the pinhole. Start the timer.</li>
+<li><strong>To end exposure:</strong> Untape the flap, let it drop. Smooth it flat over the pinhole.</li>
+</ol>
+<h3 id="46-arm-sleeves-on-prep-box-end-face">4.6 Arm Sleeves (on Prep Box End Face)<a class="headerlink" href="#46-arm-sleeves-on-prep-box-end-face" title="Permanent link">&para;</a></h3>
+<p>The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230 mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.</p>
+<p><strong>Materials:</strong>
+- Black opaque fabric (cotton knit from a black t-shirt works well)
+- Heavy-duty rubber bands or elastic hair ties
+- Black gaffer tape</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Cut two armholes in the prep box end face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face.</li>
+<li>Cut two sleeve tubes from black fabric: each approximately 18 inches long and 6 inches in diameter. A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.</li>
+<li>Insert one end of each sleeve into an armhole from the inside. Fold the fabric edge over the cardboard edge and tape it down with black gaffer tape, overlapping at least 2 inches on all sides.</li>
+<li>When in use, insert your arms through the sleeves and cinch rubber bands around your forearms to seal the openings.</li>
+<li><strong>Test:</strong> Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands.</li>
+</ol>
+<h3 id="48-extraction-flap">4.8 Extraction Flap<a class="headerlink" href="#48-extraction-flap" title="Permanent link">&para;</a></h3>
+<p>The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with gaffer tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>Score the prep box end face along the top edge, leaving 1 inch of cardboard attached at the top as a natural hinge line.</li>
+<li>Reinforce the hinge with a full-width strip of gaffer tape on both the inside and outside, spanning the hinge line.</li>
+<li>Seal the flap edges (bottom and both sides) with gaffer tape strips that overlap the flap and the box walls by at least 1 inch. These strips act as light-seal gaskets when the flap is closed.</li>
+<li><strong>To open:</strong> Peel the bottom and side tape strips, swing the flap up. Reach in to remove the exposed print.</li>
+<li><strong>To close:</strong> Swing the flap down and re-seal the edges with fresh gaffer tape strips.</li>
+</ol>
+<p><strong>Note:</strong> The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (safelight operations). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.</p>
+<h3 id="47-substrate-watercolor-paper">4.7 Substrate: Watercolor Paper<a class="headerlink" href="#47-substrate-watercolor-paper" title="Permanent link">&para;</a></h3>
+<p><strong>Why watercolor paper instead of muslin?</strong></p>
+<p>The TBS-001 full-scale camera uses cotton muslin because of the scale — no paper is manufactured 4.5 meters wide. For the 14 × 16" PoC prints, watercolor paper is the superior substrate:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Watercolor paper</th>
+<th>Cotton muslin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pre-treatment</td>
+<td>None</td>
+<td>Pre-wash twice, line dry, iron flat</td>
+</tr>
+<tr>
+<td>Lies flat</td>
+<td>Yes — naturally rigid</td>
+<td>Requires stretching and clipping</td>
+</tr>
+<tr>
+<td>Coating evenness</td>
+<td>Excellent — consistent absorption</td>
+<td>Variable — depends on tension and sizing</td>
+</tr>
+<tr>
+<td>Failure modes</td>
+<td>Few</td>
+<td>Wrinkles, uneven sizing, slack mounting</td>
+</tr>
+<tr>
+<td>Availability</td>
+<td>Any art supply store</td>
+<td>Fabric store, requires cutting</td>
+</tr>
+<tr>
+<td>Traditional substrate?</td>
+<td>Yes — the original cyanotype medium</td>
+<td>Used for large-format only</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommended paper:</strong> Arches Aquarelle hot-press, 140 lb (300 gsm), 100% cotton. Available in 22 × 30" sheets at Blick Art Materials, Joann, or Amazon. Cut each sheet to 16 × 18" (one print per sheet with trim to spare).</p>
+<p><strong>Alternative:</strong> Fabriano Artistico hot-press, 140 lb (300 gsm). Also 100% cotton.</p>
+<p><strong>Requirements:</strong>
+- <strong>Weight:</strong> 140 lb / 300 gsm minimum. Lighter paper curls severely when wet.
+- <strong>Fiber:</strong> 100% cotton (rag paper). Wood-pulp paper degrades in the iron chemistry.
+- <strong>Surface:</strong> Hot-press (smooth). Cold-press texture interferes with fine detail at this resolution.</p>
+<p><strong>Mounting the paper:</strong></p>
+<ol>
+<li>Cut a sheet to fit the backing board with 1-inch overlap on all sides (approximately 17.5 × 19.5 inches).</li>
+<li>After coating and tack-drying (see §6), fold the overlap over the board edges.</li>
+<li>Clip with binder clips every 3 inches along all four edges. The paper will lie flat naturally — much simpler than stretching muslin.</li>
+<li>Fold the backing board up into the camera position, paper face toward the pinhole.</li>
+</ol>
+<hr />
+<h2 id="5-chemistry">5. Chemistry<a class="headerlink" href="#5-chemistry" title="Permanent link">&para;</a></h2>
+<h3 id="ware-new-cyanotype-formula">Ware New Cyanotype Formula<a class="headerlink" href="#ware-new-cyanotype-formula" title="Permanent link">&para;</a></h3>
+<p>The same formula used for TBS-001. Source: Ware, M., <em>Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue</em>, Science Museum, 1999. Full details in the <a href="../../chemistry-shopping-list/">Chemistry Shopping List</a>.</p>
+<h3 id="stock-solutions">Stock Solutions<a class="headerlink" href="#stock-solutions" title="Permanent link">&para;</a></h3>
+<p><strong>Part A — Ammonium Iron(III) Oxalate:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ingredient</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ammonium iron(III) oxalate</td>
+<td>30 g</td>
+</tr>
+<tr>
+<td>Warm water (50–60°C)</td>
+<td>75 ml</td>
+</tr>
+</tbody>
+</table>
+<p>Dissolve AmFe in warm water (not boiling) with continuous stirring, 3–5 minutes, until clear pale yellow-green solution. Cool to room temperature. Store in a dark bottle. Shelf life: 6–8 weeks.</p>
+<p><strong>Part B — Potassium Ferricyanide:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ingredient</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potassium ferricyanide</td>
+<td>8 g</td>
+</tr>
+<tr>
+<td>Room-temperature water</td>
+<td>100 ml</td>
+</tr>
+</tbody>
+</table>
+<p>Dissolve with stirring until bright orange-red. Store in a dark bottle, away from Part A. Shelf life: 6–8 weeks.</p>
+<p><strong>Note:</strong> Ammonium dichromate (contrast enhancer, ~1 g per batch) is used in the full TBS formula but is <strong>optional for the PoC.</strong> It is a Category 1A carcinogen and costs $12 for the minimum order. The prints will work without it — contrast will be slightly lower but adequate for proof-of-concept purposes.</p>
+<h3 id="working-sensitizer">Working Sensitizer<a class="headerlink" href="#working-sensitizer" title="Permanent link">&para;</a></h3>
+<p>Mix equal volumes of Part A and Part B <strong>immediately before use.</strong> The mixed solution is UV-sensitive — work under red LED safelight only.</p>
+<p><strong>Per print:</strong> ~4 ml working sensitizer (2 ml Part A + 2 ml Part B), double-coated.</p>
+<p><strong>For 20 prints + 25% overage:</strong> 100 ml total working sensitizer (50 ml Part A + 50 ml Part B).</p>
+<p>Working life: 4–6 hours after mixing. Discard unused mixed solution.</p>
+<hr />
+<h2 id="6-coating-procedure">6. Coating Procedure<a class="headerlink" href="#6-coating-procedure" title="Permanent link">&para;</a></h2>
+<p><strong>Environment:</strong> Darkened room. Red LED safelight only. No daylight, no white or blue LED light.</p>
+<p><strong>Materials:</strong> Foam brush (2-inch), mixing cup, watercolor paper pre-cut to 17.5 × 19.5 inches.</p>
+<p><strong>Using the photo tray:</strong> The paper is coated in the Paterson 12×16" developing tray inside the prep box. The paper (16 × 18") is slightly larger than the tray interior (12 × 16") — the edges overhang the tray rim during brush coating. This is standard practice for cyanotype; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §4.6).</p>
+<p><strong>Procedure (from <a href="../../operating-manual/">Operating Manual</a> §2.3):</strong></p>
+<ol>
+<li>Place the pre-cut watercolor paper in the tray. The paper overhangs the 12" edges slightly — this is fine for brush coating.</li>
+<li>Pour ~4 ml of mixed sensitizer into a shallow cup (not directly into the tray).</li>
+<li>Load the foam brush evenly (not dripping).</li>
+<li><strong>First pass:</strong> Brush horizontally, left to right, with 50% overlap between strokes. Work from top to bottom.</li>
+<li><strong>Second pass:</strong> Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.</li>
+<li><strong>Edges:</strong> Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.</li>
+<li><strong>Tack-dry:</strong> Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.</li>
+<li><strong>Mount:</strong> Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat over the tray into the prep space). Clip the paper to the board with binder clips. Fold the board back up into the camera box. Paper faces the pinhole.</li>
+</ol>
+<p><strong>Humidity notes (from <a href="../../operating-manual/">Operating Manual</a> §1.5):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Humidity</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Below 30%</td>
+<td>Lightly mist paper with plain water 5 min before coating</td>
+</tr>
+<tr>
+<td>30–65%</td>
+<td>Coat normally</td>
+</tr>
+<tr>
+<td>Above 70%</td>
+<td>Delay — risk of fogging under safelight</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-exposure-procedure">7. Exposure Procedure<a class="headerlink" href="#7-exposure-procedure" title="Permanent link">&para;</a></h2>
+<ol>
+<li>After mounting the coated paper on the backing board (see §6, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or gaffer tape tab.</li>
+<li>Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.</li>
+<li>Ensure the shutter flap is closed.</li>
+<li>Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.</li>
+<li><strong>Subject selection:</strong> For the first test, choose a high-contrast scene — a sunlit building against blue sky, or a bright landscape with distinct shapes. Avoid scenes dominated by shadow.</li>
+<li>Open the shutter. Start the timer.</li>
+<li><strong>Do not move the assembly</strong> during exposure. Do not stand in front of the pinhole or allow shadows to cross it.</li>
+<li>At the calculated exposure time, close the shutter.</li>
+<li>Bring the assembly inside or into shade.</li>
+</ol>
+<hr />
+<h2 id="8-development">8. Development<a class="headerlink" href="#8-development" title="Permanent link">&para;</a></h2>
+<p><strong>Cyanotype develops in plain cold water.</strong> No fixer, no stop bath, no chemicals beyond water.</p>
+<p><strong>Procedure (from <a href="../../operating-manual/">Operating Manual</a> §4.2):</strong></p>
+<ol>
+<li>Open the extraction flap on the prep box end face (see §4.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the backing board down from the upright position, unclip the paper from the board, and remove the print through the extraction flap.</li>
+<li><strong>Wash 1:</strong> Submerge in cold water in a photo tray for 5 minutes. Agitate gently. The water will turn yellow-green as unreacted sensitizer clears. This is normal and non-toxic.</li>
+<li><strong>Wash 2:</strong> Transfer to fresh cold water for 5 minutes.</li>
+<li><strong>Wash 3:</strong> Final rinse in fresh cold water for 5 minutes.</li>
+<li><strong>Visual check after wash 2:</strong> The image should be clearly visible as deep Prussian blue shadows against white/off-white highlights.</li>
+<li>If faint: underexposed → increase time by 50% on next print</li>
+<li>If dark with no highlight detail: overexposed → reduce time by 30%</li>
+<li>If pale when wet: may darken significantly on drying — wait before judging</li>
+</ol>
+<h3 id="drying">Drying<a class="headerlink" href="#drying" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Lay the print flat on a clean surface (horizontal — watercolor paper stays flat naturally). Alternatively, hang with clips from one edge.</li>
+<li>Drying time: 20–60 minutes depending on temperature and airflow.</li>
+<li><strong>The final blue color appears approximately 30 minutes after the surface feels dry.</strong> The Prussian blue pigment continues to oxidize and deepen in air. Do not judge the final density until the print has dried completely.</li>
+</ol>
+<hr />
+<h2 id="9-troubleshooting">9. Troubleshooting<a class="headerlink" href="#9-troubleshooting" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entire print is pale/white</td>
+<td>Massive underexposure or sensitizer degraded</td>
+<td>Double the exposure time. Check sensitizer age (&gt;6 hours after mixing = discard).</td>
+</tr>
+<tr>
+<td>Print is fogged (blue overall, no contrast)</td>
+<td>Light leak in box</td>
+<td>Re-test all seams in a dark room with a flashlight inside. Seal leaks.</td>
+</tr>
+<tr>
+<td>Streaky or uneven coating</td>
+<td>Insufficient brush overlap or over-dry brush</td>
+<td>Use more sensitizer per stroke. Ensure 50% overlap on both passes.</td>
+</tr>
+<tr>
+<td>Image is sharp in center, soft at edges</td>
+<td>Normal for pinhole — expected</td>
+<td>No fix needed. Pinhole illumination falls off at edges (cos⁴ law).</td>
+</tr>
+<tr>
+<td>Image is very dark, no whites</td>
+<td>Overexposure</td>
+<td>Reduce exposure by 30%. Wash longer (5th wash cycle may help clear highlights).</td>
+</tr>
+<tr>
+<td>Paper curled during wash</td>
+<td>Paper too thin</td>
+<td>Use 140 lb (300 gsm) minimum. Let the paper relax flat during final wash.</td>
+</tr>
+<tr>
+<td>Light leak through prep box</td>
+<td>Extraction flap or arm sleeves not sealed during exposure</td>
+<td>Ensure extraction flap edges are fully taped and arm sleeves on end face are cinched.</td>
+</tr>
+<tr>
+<td>Pinhole hole is oblong</td>
+<td>Drill bit wandered or too much pressure</td>
+<td>Drill a new pinhole on fresh aluminum. Use lighter pressure, slower rotation.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-comparison-to-tbs-001">10. Comparison to TBS-001<a class="headerlink" href="#10-comparison-to-tbs-001" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Mini-TBS (PoC)</th>
+<th>TBS-001 (Container)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera body</td>
+<td>Two moving boxes + photo tray</td>
+<td>20ft ISO shipping container</td>
+</tr>
+<tr>
+<td>Focal length</td>
+<td>457 mm</td>
+<td>2,362 mm</td>
+</tr>
+<tr>
+<td>Pinhole</td>
+<td>0.80 mm (drill bit)</td>
+<td>2.17 mm (laser-drilled SS)</td>
+</tr>
+<tr>
+<td>f-number</td>
+<td>f/575</td>
+<td>f/1088</td>
+</tr>
+<tr>
+<td>Image area</td>
+<td>~1.0 sq ft</td>
+<td>~116 sq ft</td>
+</tr>
+<tr>
+<td>Exposure (full sun)</td>
+<td>~10 min</td>
+<td>~30–45 min</td>
+</tr>
+<tr>
+<td>Tilt/swing movements</td>
+<td>None (fixed)</td>
+<td>±42° tilt, ±25.7° swing</td>
+</tr>
+<tr>
+<td>Process</td>
+<td>Ware New Cyanotype</td>
+<td>Ware New Cyanotype</td>
+</tr>
+<tr>
+<td>Chemistry</td>
+<td>Identical formula</td>
+<td>Identical formula</td>
+</tr>
+<tr>
+<td>Development</td>
+<td>3× cold water wash</td>
+<td>3× cold water wash</td>
+</tr>
+<tr>
+<td>Per-print cost</td>
+<td>~$2–3</td>
+<td>~$38</td>
+</tr>
+<tr>
+<td>Build cost</td>
+<td>~$69–120</td>
+<td>~$15,500</td>
+</tr>
+</tbody>
+</table>
+<p>The optical physics, chemistry, and process are identical. The Mini-TBS validates all three at a scale that fits on a kitchen table.</p>
+<hr />
+<h2 id="11-bill-of-materials">11. Bill of Materials<a class="headerlink" href="#11-bill-of-materials" title="Permanent link">&para;</a></h2>
+<p>See the <a href="../mini-tbs-shopping-list/">Mini-TBS Shopping List</a> for the complete itemized list with suppliers, prices, and quantities for 20 prints.</p>
+<p><strong>Budget summary:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Low</th>
+<th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boxes + construction (×2)</td>
+<td>$22</td>
+<td>$28</td>
+</tr>
+<tr>
+<td>Pinhole materials</td>
+<td>$8</td>
+<td>$15</td>
+</tr>
+<tr>
+<td>Chemistry</td>
+<td>$25</td>
+<td>$45</td>
+</tr>
+<tr>
+<td>Substrate (watercolor paper)</td>
+<td>$10</td>
+<td>$18</td>
+</tr>
+<tr>
+<td>Tools + consumables</td>
+<td>$8</td>
+<td>$14</td>
+</tr>
+<tr>
+<td>Photo trays (Paterson 12×16", ×3)</td>
+<td>$28</td>
+<td>$33</td>
+</tr>
+<tr>
+<td>Safelight + light-seal</td>
+<td>$4</td>
+<td>$7</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$105</strong></td>
+<td><strong>$160</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-references">12. References<a class="headerlink" href="#12-references" title="Permanent link">&para;</a></h2>
+<p>All sources cited here are the same peer-reviewed references used throughout the TBS-001 documentation:</p>
+<ol>
+<li>Rayleigh, J.W.S., "On Pin-hole Photography," <em>Philosophical Magazine</em>, Ser. 5, Vol. 31, 1891, pp. 87–99.</li>
+<li>Ware, M., <em>Cyanotype: The History, Science and Art of Photographic Printing in Prussian Blue</em>, Science Museum, 1999. ISBN: 0901805831.</li>
+<li>Renner, E., <em>Pinhole Photography</em>, 4th ed., Focal Press, 2009.</li>
+<li>Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge UP, 1999, §8.6.</li>
+<li>Schwarzschild, K., "On the Deviation from the Reciprocity Law in Photography," <em>The Astrophysical Journal</em>, Vol. 11, 1900, pp. 89–91.</li>
+<li>Stroebel, L., Compton, J., Current, I., Zakia, R., <em>Basic Photographic Materials and Processes</em>, 3rd ed., Focal Press, 2009.</li>
+<li>Getty Conservation Institute, <em>Atlas of Analytical Signatures of Photographic Processes — Cyanotype</em>, 2013.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/yourusername/tbs" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

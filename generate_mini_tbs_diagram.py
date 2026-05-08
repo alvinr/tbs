@@ -268,32 +268,33 @@ ax.add_patch(mpatches.Rectangle((-30, ph_y - 50), 28, 100,
              facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
 # ── Armholes on prep box end face (far right wall in cross-section) ─────────
-# The operator reaches into the prep box to coat the paper on the folded-down
-# flap, then pulls arms out and folds the flap up.
+# The two armholes are side by side on the end face, spaced horizontally across
+# the 18" width.  In the side cross-section we look along the width axis, so
+# both holes project to the SAME height (ph_y) — they overlap.  Neither is in
+# the cutting plane, so they appear as a single dashed hidden-line circle with
+# a projected sleeve tube.
 SLEEVE_PROJ_XS = 80  # sleeve projection length in cross-section
 prep_wall_x = BOX_D + PREP_D - WALL_T  # inside edge of far right wall
 prep_wall_x_out = BOX_D + PREP_D       # outside edge
-for arm_y_center in [ph_y + SLEEVE_SPACING / 2, ph_y - SLEEVE_SPACING / 2]:
-    arm_top = arm_y_center + SLEEVE_D / 2
-    arm_bot = arm_y_center - SLEEVE_D / 2
-    # Erase wall at armhole opening
-    ax.add_patch(mpatches.Rectangle((prep_wall_x, arm_bot), WALL_T, SLEEVE_D,
-                 facecolor=C_BOX, edgecolor="none", linewidth=0, alpha=0.15, zorder=3))
-    # Gap edges in wall
-    ax.plot([prep_wall_x, prep_wall_x_out], [arm_top, arm_top], color=C_OUT, lw=0.8, zorder=4)
-    ax.plot([prep_wall_x, prep_wall_x_out], [arm_bot, arm_bot], color=C_OUT, lw=0.8, zorder=4)
-    # Sleeve tube projecting outward (to the right)
-    ax.add_patch(mpatches.Rectangle((prep_wall_x_out, arm_bot),
-                 SLEEVE_PROJ_XS, SLEEVE_D,
-                 facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
-    ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_top, arm_top],
-            color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-    ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_bot, arm_bot],
-            color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-    # Elastic band at wrist
-    ax.plot([prep_wall_x_out + SLEEVE_PROJ_XS, prep_wall_x_out + SLEEVE_PROJ_XS],
-            [arm_bot + 8, arm_top - 8],
-            color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
+arm_y_center = ph_y  # both armholes at the same height (centered on box)
+arm_top = arm_y_center + SLEEVE_D / 2
+arm_bot = arm_y_center - SLEEVE_D / 2
+# Hidden-line circle on wall (dashed — not in cutting plane)
+ax.add_patch(plt.Circle((prep_wall_x + WALL_T / 2, arm_y_center), SLEEVE_D / 2,
+             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
+             linestyle="--", alpha=0.6, zorder=4))
+# Sleeve tube projecting outward (to the right) — dashed hidden lines
+ax.add_patch(mpatches.Rectangle((prep_wall_x_out, arm_bot),
+             SLEEVE_PROJ_XS, SLEEVE_D,
+             facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
+ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_top, arm_top],
+        color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_bot, arm_bot],
+        color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+# Elastic band at wrist
+ax.plot([prep_wall_x_out + SLEEVE_PROJ_XS, prep_wall_x_out + SLEEVE_PROJ_XS],
+        [arm_bot + 8, arm_top - 8],
+        color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
 # ── Box labels ──────────────────────────────────────────────────────────────
 ax.text(BOX_D / 2, BOX_H - WALL_T - 15, "CAMERA BOX", ha="center", va="top",
@@ -314,11 +315,10 @@ leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
-# Armhole sleeves leader (point at upper sleeve on prep box end)
-upper_arm_y = ph_y + SLEEVE_SPACING / 2
-leader(ax, prep_wall_x_out + SLEEVE_PROJ_XS / 2, upper_arm_y + SLEEVE_D / 2 + 3,
-       TOTAL_D + 100, upper_arm_y + SLEEVE_D / 2 + 60,
-       f"Arm sleeve Ø{SLEEVE_D} mm\n(on prep box face)", ha="left", fs=FS_SM - 0.5)
+# Armhole sleeves leader (point at sleeve on prep box end)
+leader(ax, prep_wall_x_out + SLEEVE_PROJ_XS / 2, arm_top + 3,
+       TOTAL_D + 100, arm_top + 60,
+       f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(side by side on prep face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, paper_x, (paper_y1 + paper_y2) / 2, TOTAL_D + 100, ph_y + 50,
        "Watercolor paper\non backing board\n(upright = film plane)", ha="left", color=C_CL)
 leader(ax, flap_x + flap_height / 2, flap_bottom + BACKING + 3,

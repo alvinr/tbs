@@ -757,10 +757,10 @@ for step in steps:
 ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
-            drawing_title="MINI-TBS PROOF OF CONCEPT",
+            drawing_title="TBS-002 MINI-TBS PROOF OF CONCEPT",
             subtitle="Two-box camera — board at tray near rim, arm sleeves + extraction flap on end face",
             scale_note="Approx 1:4 (views) / NTS (detail)",
-            doc_id="TBS-POC · Mini-TBS")
+            doc_id="TBS-002 · Mini-TBS")
 
 # ── Save ─────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/mini-tbs-sheet1.png"

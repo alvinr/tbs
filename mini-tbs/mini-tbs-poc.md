@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Mini-TBS — Proof-of-Concept Pinhole Camera
+# TBS-002 — Mini-TBS Proof-of-Concept Pinhole Camera
 
 ## Cyanotype Prints from a Moving Box
 
@@ -62,7 +62,7 @@ where *f* is focal length in mm and *λ* = 0.00055 mm (550 nm green light).
 
 ### Mini-TBS Optical Parameters
 
-| Parameter | Mini-TBS (PoC) | TBS-001 (Container) | Derivation |
+| Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) | Derivation |
 |-----------|---------------|---------------------|------------|
 | Focal length (f) | 457 mm | 2,362 mm | Box depth / container width |
 | Rayleigh optimal d | 0.95 mm | 2.17 mm | 1.9 × √(f × 0.00055) |
@@ -402,7 +402,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 10. Comparison to TBS-001
 
-| Parameter | Mini-TBS (PoC) | TBS-001 (Container) |
+| Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) |
 |-----------|---------------|---------------------|
 | Camera body | Two moving boxes + photo tray | 20ft ISO shipping container |
 | Focal length | 457 mm | 2,362 mm |

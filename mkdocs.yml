@@ -52,9 +52,9 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - "PoC":
-    - "Mini-TBS Design": mini-tbs/mini-tbs-poc.md
-    - "Mini-TBS Shopping List": mini-tbs/mini-tbs-shopping-list.md
+  - "TBS-002 (Mini-TBS)":
+    - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
+    - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
   - "Operating Manual": operating-manual.md

@@ -215,15 +215,7 @@ ax.plot([board_x, board_x], [paper_y1, paper_y2],
 # Pinhole Y — centered on the board (film plane)
 ph_y = HINGE_Y_ABS + BOARD_H / 2
 
-# Armholes on the board — in cross-section, both holes project to the same
-# height (side by side in the width dimension). Show as a single dashed
-# hidden-line circle on the board. Paper covers these during exposure.
-arm_y_center = (board_bottom + board_top) / 2
-ax.add_patch(plt.Circle((board_x + BACKING / 2, arm_y_center), SLEEVE_D / 2,
-             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
-             linestyle="--", alpha=0.6, zorder=6))
-
-# Arm sleeves on prep box end face (not on board)
+# Arm sleeves on prep box end face
 SLEEVE_PROJ = 80
 sleeve_wall_x = prep_end_x  # end face inner surface
 arm_endface_y = BOX_H / 2   # centered on the end face
@@ -325,7 +317,7 @@ leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
        f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
-       "Paper on board\n(film plane — covers\nboard armholes)", ha="center", color=C_CL)
+       "Paper on board\n(film plane)", ha="center", color=C_CL)
 board_fold_mid = hinge_x + BOARD_H / 2
 leader(ax, board_fold_mid, hinge_y + 3,
        board_fold_mid, hinge_y + 80,

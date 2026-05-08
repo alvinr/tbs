@@ -8,7 +8,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 **Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
 
-**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The board has two armholes cut into it — when the board is upright (exposure position), the mounted watercolor paper covers the armholes from the camera side, sealing them during exposure. The prep box end face serves dual duty: it has armholes with attached arm sleeves for sealed operator access, and it is an extraction flap (hinged at the top) that opens in daylight after exposure for print removal. No darkroom required.
+**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The prep box end face serves dual duty: it has armholes with attached arm sleeves for sealed operator access, and it is an extraction flap (hinged at the top) that opens in daylight after exposure for print removal. No darkroom required.
 
 ![Mini-TBS engineering drawing — two-box design with hinged flap, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
@@ -133,7 +133,7 @@ The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 - **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The backing board forms the film plane when upright.
 - **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Contains the Paterson 12×16" developing tray. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.
 
-The shared wall between the boxes is removed. A **permanently hinged backing board** serves as the film plane. It is hinged at the near rim of the photo tray (camera side) with duct tape, so it swings up into the camera box opposite the pinhole. The board has two armholes that are covered by mounted paper during exposure. Arm sleeves on the prep box end face give the operator sealed access for coating and mounting paper.
+The shared wall between the boxes is removed. A **permanently hinged backing board** serves as the film plane. It is hinged at the near rim of the photo tray (camera side) with duct tape, so it swings up into the camera box opposite the pinhole. Arm sleeves on the prep box end face give the operator sealed access for coating and mounting paper.
 
 **Procedure:**
 
@@ -172,11 +172,10 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 
 1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305 mm) along the depth axis and the 16" dimension (406 mm) across the width. The tray should sit flat on the prep box floor.
 2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).
-3. **Armholes:** Cut two 4-inch (102 mm) diameter holes in the board, centered vertically, spaced 9 inches (230 mm) apart center-to-center. These holes are covered by the mounted paper during exposure, providing a light seal on the camera side.
-5. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
-6. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
-7. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole and the armholes facing the prep box. Use a binder clip or gaffer tape tab at the top edge to hold it upright. The mounted watercolor paper covers the armholes from the camera side, providing a light seal.
-8. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
+3. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
+4. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
+5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or gaffer tape tab at the top edge to hold it upright.
+6. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
 
 ### 4.4 Pinhole Fabrication
 
@@ -333,7 +332,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 5. **Second pass:** Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.
 6. **Edges:** Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.
 7. **Tack-dry:** Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.
-8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat over the tray into the prep space). Clip the paper to the board with binder clips, ensuring it covers the board's armholes from the camera side. Fold the board back up into the camera box. Paper faces the pinhole; the board armholes are sealed behind the paper.
+8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat over the tray into the prep space). Clip the paper to the board with binder clips. Fold the board back up into the camera box. Paper faces the pinhole.
 
 **Humidity notes (from [Operating Manual](../operating-manual.md) §1.5):**
 
@@ -392,7 +391,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 | Image is sharp in center, soft at edges | Normal for pinhole — expected | No fix needed. Pinhole illumination falls off at edges (cos⁴ law). |
 | Image is very dark, no whites | Overexposure | Reduce exposure by 30%. Wash longer (5th wash cycle may help clear highlights). |
 | Paper curled during wash | Paper too thin | Use 140 lb (300 gsm) minimum. Let the paper relax flat during final wash. |
-| Light leak through prep box | Extraction flap or arm sleeves not sealed during exposure | Ensure extraction flap edges are fully taped and arm sleeves on end face are cinched. Verify paper covers board armholes from the camera side. |
+| Light leak through prep box | Extraction flap or arm sleeves not sealed during exposure | Ensure extraction flap edges are fully taped and arm sleeves on end face are cinched. |
 | Pinhole hole is oblong | Drill bit wandered or too much pressure | Drill a new pinhole on fresh aluminum. Use lighter pressure, slower rotation. |
 
 ---

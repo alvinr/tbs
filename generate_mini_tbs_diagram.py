@@ -263,26 +263,38 @@ ax.add_patch(plt.Circle((WALL_T / 2, ph_plan_y), 6,
 ax.plot([0, BOX_D], [ph_plan_y, ph_plan_y],
         color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
-# Armholes on bottom wall
+# Armholes on the arm-sleeve face (bottom wall in plan view)
+# From above, the holes appear as gaps in the wall strip. The circular
+# openings are below the top surface so are shown as dashed hidden lines.
 sleeve_plan_cx1 = BOX_D / 2 - SLEEVE_SPACING / 2
 sleeve_plan_cx2 = BOX_D / 2 + SLEEVE_SPACING / 2
-sleeve_plan_cy  = WALL_T / 2
+sleeve_proj_len = 120  # how far the sleeve tubes project outward
 
 for cx in [sleeve_plan_cx1, sleeve_plan_cx2]:
-    ax.add_patch(plt.Circle((cx, sleeve_plan_cy), SLEEVE_D / 2,
-                 facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=1.2, alpha=0.8, zorder=4))
-    ax.add_patch(mpatches.Annulus((cx, sleeve_plan_cy), SLEEVE_D / 2 + 15, 12,
-                 facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
-    # Sleeve projection
-    sleeve_proj_len = 120
+    # Gap in the bottom wall where the armhole is cut
     ax.add_patch(mpatches.Rectangle(
-        (cx - SLEEVE_D / 2, -sleeve_proj_len),
-        SLEEVE_D, sleeve_proj_len,
-        facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.8, alpha=0.15, zorder=1))
+        (cx - SLEEVE_D / 2, 0), SLEEVE_D, WALL_T,
+        facecolor=BG, edgecolor=BG, linewidth=0, zorder=3))  # erase wall
+    # Re-draw wall edges at gap boundaries
+    ax.plot([cx - SLEEVE_D / 2, cx - SLEEVE_D / 2], [0, WALL_T],
+            color=C_OUT, lw=0.8, zorder=4)
+    ax.plot([cx + SLEEVE_D / 2, cx + SLEEVE_D / 2], [0, WALL_T],
+            color=C_OUT, lw=0.8, zorder=4)
+
+    # Hidden-line circle (dashed) showing the armhole below top surface
+    ax.add_patch(plt.Circle((cx, WALL_T / 2), SLEEVE_D / 2,
+                 facecolor="none", edgecolor=C_SLEEVE, linewidth=1.0,
+                 linestyle="--", alpha=0.6, zorder=3))
+
+    # Sleeve tube projecting outward (away from box, toward negative Y)
+    ax.add_patch(mpatches.Rectangle(
+        (cx - SLEEVE_D / 2, -sleeve_proj_len), SLEEVE_D, sleeve_proj_len,
+        facecolor=C_SLEEVE, edgecolor="none", linewidth=0, alpha=0.08, zorder=1))
     ax.plot([cx - SLEEVE_D / 2, cx - SLEEVE_D / 2], [0, -sleeve_proj_len],
             color=C_SLEEVE, lw=1.0, ls="--", zorder=2)
     ax.plot([cx + SLEEVE_D / 2, cx + SLEEVE_D / 2], [0, -sleeve_proj_len],
             color=C_SLEEVE, lw=1.0, ls="--", zorder=2)
+    # Elastic band at wrist end
     ax.plot([cx - SLEEVE_D / 2 + 8, cx + SLEEVE_D / 2 - 8],
             [-sleeve_proj_len, -sleeve_proj_len],
             color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=3)
@@ -292,8 +304,8 @@ ax.text(WALL_T / 2, BOX_W + 25, "PINHOLE\nFACE", ha="center", va="bottom",
         fontsize=FS_SM - 0.5, color=C_PINHOLE, fontweight="bold")
 ax.text(BOX_D - WALL_T / 2, BOX_W + 25, "FILM PLANE\nFACE", ha="center", va="bottom",
         fontsize=FS_SM - 0.5, color=C_CL, fontweight="bold")
-ax.text(BOX_D / 2, -PLAN_PAD + 15, "ARM-SLEEVE FACE (below)", ha="center", va="bottom",
-        fontsize=FS_SM - 0.5, color=C_DIM, style="italic")
+ax.text(BOX_D / 2, -PLAN_PAD + 15, "ARM-SLEEVE FACE", ha="center", va="bottom",
+        fontsize=FS_SM - 0.5, color=C_DIM, fontweight="bold")
 
 # Dimensions
 draw_dim_h(ax, 0, BOX_D, BOX_W + 55, f"Depth  {BOX_D} mm  (18\")", offset=12)
@@ -302,13 +314,13 @@ draw_dim_h(ax, sleeve_plan_cx1, sleeve_plan_cx2, -60,
            f"Spacing  {SLEEVE_SPACING} mm  (10\")", offset=10, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, sleeve_plan_cx1, -60, -80, -50,
-       f"Fabric sleeve\nØ{SLEEVE_D} mm", ha="right", fs=FS_SM - 0.5)
-leader(ax, sleeve_plan_cx2 + SLEEVE_D / 2 + 20, sleeve_plan_cy,
-       BOX_D + 100, 50,
-       "Gaffer tape\nseal ring", ha="left", fs=FS_SM - 0.5)
+leader(ax, sleeve_plan_cx1, -sleeve_proj_len / 2, -80, -50,
+       f"Fabric sleeve\nØ{SLEEVE_D} mm\n(hidden below)", ha="right", fs=FS_SM - 0.5)
 leader(ax, sleeve_plan_cx1, -sleeve_proj_len, -80, -sleeve_proj_len,
        "Elastic band", ha="right", color=C_PINHOLE, fs=FS_SM - 0.5)
+leader(ax, sleeve_plan_cx2 + SLEEVE_D / 2 + 5, WALL_T / 2,
+       BOX_D + 100, 50,
+       "Armhole gap\nin wall", ha="left", fs=FS_SM - 0.5)
 
 # Section cut indicator — dashed line through one armhole with "A" labels
 cut_cx = sleeve_plan_cx1
@@ -323,7 +335,7 @@ ax.text(cut_cx + 8, -sleeve_proj_len - 10, "A", fontsize=FS_MD, fontweight="bold
 ax.text(BOX_D / 2, BOX_W + 100, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(BOX_D / 2, BOX_W + 84,
-        "Armhole placement on bottom face",
+        "Armholes shown as gaps in side wall — dashed circles are hidden lines",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 

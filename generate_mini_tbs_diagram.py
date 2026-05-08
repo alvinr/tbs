@@ -7,12 +7,11 @@ generate_mini_tbs_diagram.py
 Mini-TBS proof-of-concept pinhole camera — engineering drawing.
 Output: diagrams/mini-tbs-sheet1.png
 
-Single sheet with five panels:
-  Top-left:     Side cross-section
-  Top-right:    Plan view (looking down)
-  Bottom-left:  Front view of arm-sleeve face
-  Bottom-center: Armhole detail cross-section
-  Bottom-right: Assembly sequence notes
+Single sheet with five panels showing the two-box design:
+  Top (full width):    Side cross-section — camera box + prep box, hinged flap
+  Bottom-left:         Front view — pinhole face with armholes
+  Bottom-center:       Plan view — both boxes from above
+  Bottom-right:        Assembly notes
 """
 
 import math
@@ -20,6 +19,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from matplotlib.patches import Arc
+import numpy as np
 import os
 
 from tbs_title_block import title_block
@@ -42,24 +43,30 @@ FP_W    = BOX_W - 2 * MARGIN   # usable film plane width
 FP_H    = BOX_H - 2 * MARGIN   # usable film plane height
 
 SLEEVE_D = 102   # mm — armhole diameter (4")
-SLEEVE_SPACING = 254  # mm — armhole center-to-center (10")
+SLEEVE_SPACING = 230  # mm — armhole center-to-center on pinhole face
 SLEEVE_LEN = 457  # mm — sleeve tube length (18")
 
 WALL_T  = 4      # mm — cardboard wall thickness (schematic)
 BACKING = 5      # mm — foam-core backing board thickness
+
+# Prep box dimensions (same box model)
+PREP_D  = BOX_D  # mm — prep box depth (matches camera box)
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"
 C_BOX      = "#D2B48C"    # tan — cardboard
 C_BOX_WALL = "#C4A882"    # darker cardboard for walls
 C_TAPE     = "#1A1A1A"    # black gaffer tape
-C_MUSLIN   = "#F5F0E0"    # muslin fabric
 C_CONE     = "#CCE4FF"    # light cone fill
 C_CONE_LN  = "#4488CC"    # light cone boundary
 C_PINHOLE  = "#CC2020"    # pinhole marker
 C_SLEEVE   = "#2A2A2A"    # arm sleeve fabric
 C_BACKING  = "#E8E0D0"    # foam-core board
 C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
+C_PAPER    = "#FAFAE8"    # watercolor paper
+C_HINGE    = "#886644"    # duct tape hinge
+C_TRAY     = "#8899BB"    # chemistry tray
+C_MOTION   = "#CC6600"    # motion arc color
 
 FS_SM = 6.5
 FS_MD = 8.0
@@ -98,66 +105,129 @@ def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="lef
 # SINGLE SHEET — Five panels
 # ══════════════════════════════════════════════════════════════════════════════
 
-FIG_W = 24.0
+FIG_W = 26.0
 FIG_H = 20.0
 fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=150)
 fig.patch.set_facecolor(BG)
 
-# Gridspec: 2 rows × 3 columns
-# Top row: side cross-section (cols 0-1) + plan view (col 2)
-# Bottom row: front view (col 0) + armhole detail (col 1) + assembly notes (col 2)
 gs = fig.add_gridspec(2, 3,
-                      height_ratios=[1, 1],
-                      width_ratios=[1, 1.1, 0.9],
-                      hspace=0.22, wspace=0.18,
-                      left=0.04, right=0.96, bottom=0.06, top=0.95)
+                      height_ratios=[1.1, 1],
+                      width_ratios=[0.85, 1.15, 0.85],
+                      hspace=0.22, wspace=0.16,
+                      left=0.03, right=0.97, bottom=0.06, top=0.95)
 
-ax_xsec = fig.add_subplot(gs[0, 0:2])   # side cross-section — top-left, 2 cols
-ax_plan = fig.add_subplot(gs[0, 2])      # plan view — top-right
-ax_front = fig.add_subplot(gs[1, 0])     # front view — bottom-left
-ax_det  = fig.add_subplot(gs[1, 1])      # armhole detail — bottom-center
-ax_asm  = fig.add_subplot(gs[1, 2])      # assembly notes — bottom-right
+ax_xsec  = fig.add_subplot(gs[0, :])    # side cross-section — full top row
+ax_front = fig.add_subplot(gs[1, 0])    # front view — pinhole face w/ armholes
+ax_planv = fig.add_subplot(gs[1, 1])    # plan view — both boxes from above
+ax_asm   = fig.add_subplot(gs[1, 2])    # assembly notes + spec table
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TOP-LEFT: Side cross-section (looking at 18×16" face)
+# TOP: Side cross-section — camera box + prep box with hinged flap
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_xsec
 ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
+# Layout: camera box on left, prep box on right, sharing a wall
+# X origin at left edge of camera box, Y origin at floor
+TOTAL_D = BOX_D + PREP_D  # both boxes end-to-end
 PAD = 120
-ax.set_xlim(-PAD, BOX_D + PAD * 2)
-ax.set_ylim(-PAD, BOX_H + PAD)
+ax.set_xlim(-PAD - 40, TOTAL_D + PAD * 1.5)
+ax.set_ylim(-PAD - 30, BOX_H + PAD + 20)
 
-# Box outline (cross-section)
+# ── Camera box (left) ───────────────────────────────────────────────────────
 ax.add_patch(mpatches.Rectangle((0, 0), BOX_D, BOX_H,
-             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.3, zorder=1))
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.25, zorder=1))
 
-# Wall thickness indicators
+# Camera box walls
 for rect in [
-    (0, 0, WALL_T, BOX_H),
-    (BOX_D - WALL_T, 0, WALL_T, BOX_H),
-    (0, 0, BOX_D, WALL_T),
-    (0, BOX_H - WALL_T, BOX_D, WALL_T),
+    (0, 0, WALL_T, BOX_H),                     # left wall (pinhole face)
+    (0, 0, BOX_D, WALL_T),                      # floor
+    (0, BOX_H - WALL_T, BOX_D, WALL_T),        # ceiling
 ]:
     ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
                  facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
 
-# Backing board (against right/film-plane wall)
-board_x = BOX_D - WALL_T - BACKING
-ax.add_patch(mpatches.Rectangle((board_x, WALL_T), BACKING, BOX_H - 2 * WALL_T,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8, zorder=3))
+# No right wall on camera box — that's where the flap/opening is
+# Draw just the top and bottom edges at the junction
+ax.plot([BOX_D, BOX_D], [0, WALL_T], color=C_OUT, lw=0.8, zorder=2)
+ax.plot([BOX_D, BOX_D], [BOX_H - WALL_T, BOX_H], color=C_OUT, lw=0.8, zorder=2)
 
-# Muslin on backing board (thick line)
-muslin_x = board_x
-muslin_y1 = WALL_T + MARGIN
-muslin_y2 = BOX_H - WALL_T - MARGIN
-ax.plot([muslin_x, muslin_x], [muslin_y1, muslin_y2],
-        color=C_CL, lw=3.0, solid_capstyle="butt", zorder=4)
+# ── Prep box (right) ────────────────────────────────────────────────────────
+ax.add_patch(mpatches.Rectangle((BOX_D, 0), PREP_D, BOX_H,
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.15, zorder=1))
 
-# Pinhole (on left wall)
+# Prep box walls
+for rect in [
+    (BOX_D + PREP_D - WALL_T, 0, WALL_T, BOX_H),  # far right wall
+    (BOX_D, 0, PREP_D, WALL_T),                     # floor
+    (BOX_D, BOX_H - WALL_T, PREP_D, WALL_T),       # ceiling
+]:
+    ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
+                 facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=2))
+
+# ── Hinged flap — shown in UPRIGHT position (solid) ─────────────────────────
+flap_x = BOX_D  # at the junction between boxes
+flap_bottom = WALL_T
+flap_top = BOX_H - WALL_T
+flap_height = flap_top - flap_bottom
+
+# Flap upright (solid) — the backing board with paper
+ax.add_patch(mpatches.Rectangle((flap_x - BACKING, flap_bottom), BACKING, flap_height,
+             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=1.0, zorder=5))
+# Paper on the camera side of the flap
+ax.plot([flap_x - BACKING, flap_x - BACKING],
+        [flap_bottom + MARGIN, flap_top - MARGIN],
+        color=C_CL, lw=3.0, solid_capstyle="butt", zorder=6)
+
+# ── Hinged flap — shown in FOLDED DOWN position (dashed) ────────────────────
+# When folded down, the flap lies flat on the prep box floor
+# Hinge point is at (flap_x, flap_bottom)
+folded_y = flap_bottom + BACKING  # lies on top of floor
+folded_x_end = flap_x + flap_height  # extends into prep box
+
+# Folded flap (dashed outline)
+ax.add_patch(mpatches.Rectangle((flap_x, flap_bottom), flap_height, BACKING,
+             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8,
+             linestyle="--", alpha=0.4, zorder=3))
+# Paper on the folded flap (dashed)
+ax.plot([flap_x + MARGIN, folded_x_end - MARGIN],
+        [flap_bottom + BACKING, flap_bottom + BACKING],
+        color=C_CL, lw=2.5, ls="--", dashes=(4, 3), alpha=0.5,
+        solid_capstyle="butt", zorder=4)
+
+# ── Hinge arc (motion indicator) ────────────────────────────────────────────
+# Arc from upright to folded, pivot at (flap_x, flap_bottom)
+arc_r = flap_height * 0.35
+arc = Arc((flap_x, flap_bottom), arc_r * 2, arc_r * 2,
+          angle=0, theta1=0, theta2=90,
+          color=C_MOTION, lw=1.5, ls="--", zorder=7)
+ax.add_patch(arc)
+# Arrowhead at the end of the arc (at 0°, pointing right)
+ax.annotate("", xy=(flap_x + arc_r, flap_bottom),
+            xytext=(flap_x + arc_r - 15, flap_bottom + 12),
+            arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
+
+# ── Hinge detail (duct tape) ────────────────────────────────────────────────
+hinge_w = 20
+ax.add_patch(mpatches.Rectangle((flap_x - hinge_w / 2, flap_bottom - 3),
+             hinge_w, 6,
+             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
+
+# ── Chemistry tray in prep box ──────────────────────────────────────────────
+tray_x = BOX_D + PREP_D * 0.55
+tray_w = PREP_D * 0.35
+tray_h = 30
+ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), tray_w, tray_h,
+             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.4, zorder=3))
+# Tray rim
+ax.plot([tray_x, tray_x], [WALL_T, WALL_T + tray_h], color=C_OUT, lw=1.0, zorder=4)
+ax.plot([tray_x + tray_w, tray_x + tray_w], [WALL_T, WALL_T + tray_h],
+        color=C_OUT, lw=1.0, zorder=4)
+
+# ── Pinhole (on left wall) ──────────────────────────────────────────────────
 ph_y = BOX_H / 2
 ax.add_patch(plt.Circle((WALL_T / 2, ph_y), 6,
              facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
@@ -166,426 +236,356 @@ ax.plot([WALL_T / 2 - 12, WALL_T / 2 + 12], [ph_y, ph_y],
 ax.plot([WALL_T / 2, WALL_T / 2], [ph_y - 12, ph_y + 12],
         color=C_PINHOLE, lw=0.8, zorder=6)
 
-# Aluminum plate behind pinhole (interior side)
+# Aluminum plate behind pinhole
 ax.add_patch(mpatches.Rectangle((WALL_T, ph_y - 38), 2, 76,
              facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6, zorder=4))
 
-# Light cone
+# ── Light cone ──────────────────────────────────────────────────────────────
+paper_x = flap_x - BACKING
+paper_y1 = flap_bottom + MARGIN
+paper_y2 = flap_top - MARGIN
 cone_verts = [
     (WALL_T, ph_y),
-    (muslin_x, muslin_y2),
-    (muslin_x, muslin_y1),
+    (paper_x, paper_y2),
+    (paper_x, paper_y1),
 ]
 ax.add_patch(mpatches.Polygon(cone_verts, closed=True,
-             facecolor=C_CONE, edgecolor="none", alpha=0.25, zorder=1))
-ax.plot([WALL_T, muslin_x], [ph_y, muslin_y2],
+             facecolor=C_CONE, edgecolor="none", alpha=0.2, zorder=1))
+ax.plot([WALL_T, paper_x], [ph_y, paper_y2],
         color=C_CONE_LN, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
-ax.plot([WALL_T, muslin_x], [ph_y, muslin_y1],
+ax.plot([WALL_T, paper_x], [ph_y, paper_y1],
         color=C_CONE_LN, lw=0.8, ls="--", dashes=(6, 4), alpha=0.7, zorder=2)
 
 # Optical axis
-ax.plot([0, BOX_D], [ph_y, ph_y],
+ax.plot([0, flap_x], [ph_y, ph_y],
         color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
-# Shutter flap
+# Shutter flap (outside left wall)
 ax.add_patch(mpatches.Rectangle((-30, ph_y - 50), 28, 100,
              facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
-# Dimensions
-draw_dim_h(ax, 0, BOX_D, -50, f"Focal length  {BOX_D} mm  (18\")", offset=15)
-draw_dim_v(ax, BOX_D + 60, 0, BOX_H, f"Box height  {BOX_H} mm  (16\")", offset=15, right=True)
-draw_dim_v(ax, BOX_D + 120, muslin_y1, muslin_y2,
-           f"Image  {FP_H} mm", offset=15, color=C_CL, right=True)
+# ── Armhole on pinhole face (shown as dashed hidden circle in cross-section)
+arm_cy = ph_y  # centered vertically with pinhole
+ax.add_patch(plt.Circle((WALL_T / 2, ph_y + SLEEVE_SPACING / 2), SLEEVE_D / 2 * 0.15,
+             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
+             linestyle="--", alpha=0.5, zorder=4))
+ax.add_patch(plt.Circle((WALL_T / 2, ph_y - SLEEVE_SPACING / 2), SLEEVE_D / 2 * 0.15,
+             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
+             linestyle="--", alpha=0.5, zorder=4))
 
-# Leaders
+# ── Box labels ──────────────────────────────────────────────────────────────
+ax.text(BOX_D / 2, BOX_H - WALL_T - 15, "CAMERA BOX", ha="center", va="top",
+        fontsize=FS_MD, fontweight="bold", color=C_DIM, alpha=0.5)
+ax.text(BOX_D + PREP_D / 2, BOX_H - WALL_T - 15, "PREP BOX", ha="center", va="top",
+        fontsize=FS_MD, fontweight="bold", color=C_DIM, alpha=0.5)
+
+# ── Cross-section dimensions ────────────────────────────────────────────────
+draw_dim_h(ax, 0, BOX_D, -55, f"Camera box  {BOX_D} mm  (18\"  =  focal length)", offset=15)
+draw_dim_h(ax, BOX_D, BOX_D + PREP_D, -55, f"Prep box  {PREP_D} mm  (18\")", offset=15)
+draw_dim_h(ax, 0, TOTAL_D, -100, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
+draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm\n(16\")", offset=15)
+draw_dim_v(ax, TOTAL_D + 60, paper_y1, paper_y2,
+           f"Image  {FP_H} mm", offset=12, color=C_CL, right=True)
+
+# ── Cross-section leaders ───────────────────────────────────────────────────
 leader(ax, WALL_T / 2, ph_y + 10, -80, ph_y + 100,
-       f"Pinhole  Ø{PH_D} mm\n(1/32\" drill bit)\nf/{F_NO}", ha="right", color=C_PINHOLE)
+       f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -80, ph_y - 60,
-       "Shutter flap\n(black card)", ha="right")
-leader(ax, muslin_x, (muslin_y1 + muslin_y2) / 2, BOX_D + 170, ph_y + 60,
-       "Coated muslin\non backing board", ha="left", color=C_CL)
-leader(ax, board_x + BACKING / 2, WALL_T + 10, BOX_D + 170, WALL_T + 40,
-       "Foam-core\nbacking board", ha="left")
-leader(ax, WALL_T + 1, ph_y - 30, 70, ph_y - 100,
-       "Aluminum plate\n(beverage can)", ha="left", color=C_DIM)
+       "Shutter flap", ha="right")
+leader(ax, paper_x, (paper_y1 + paper_y2) / 2, TOTAL_D + 100, ph_y + 50,
+       "Watercolor paper\non backing board\n(upright = film plane)", ha="left", color=C_CL)
+leader(ax, flap_x + flap_height / 2, flap_bottom + BACKING + 3,
+       flap_x + flap_height / 2, flap_bottom + 80,
+       "Flap folded down\n(dashed — coating position)", ha="center", color=C_MOTION)
+leader(ax, flap_x, flap_bottom, flap_x - 40, flap_bottom - 40,
+       "Duct tape hinge", ha="right", color=C_HINGE)
+leader(ax, tray_x + tray_w / 2, WALL_T + tray_h,
+       tray_x + tray_w / 2, WALL_T + tray_h + 70,
+       "Chemistry tray\n(wash basin)", ha="center", color=C_TRAY)
 leader(ax, BOX_D / 2, ph_y + 5, BOX_D / 2, ph_y + 80,
        "Light cone", ha="center", color=C_CONE_LN)
 
 # View title
-ax.text(BOX_D / 2, BOX_H + 100, "SIDE CROSS-SECTION",
-        ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
-ax.text(BOX_D / 2, BOX_H + 84,
-        "Looking at 18\" × 16\" face  —  pinhole left, film plane right",
+ax.text(TOTAL_D / 2, BOX_H + 100, "SIDE CROSS-SECTION",
+        ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
+ax.text(TOTAL_D / 2, BOX_H + 82,
+        "Two-box design  —  camera box (left) + prep box (right)  —  hinged flap between",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# TOP-RIGHT: Plan view (looking down)
-# ══════════════════════════════════════════════════════════════════════════════
-ax = ax_plan
-ax.set_facecolor(BG)
-ax.set_aspect("equal")
-ax.axis("off")
-
-PLAN_PAD = 130
-ax.set_xlim(-PLAN_PAD, BOX_D + PLAN_PAD * 1.5)
-ax.set_ylim(-PLAN_PAD, BOX_W + PLAN_PAD)
-
-# Box outline — depth (left-right) × width (bottom-top)
-ax.add_patch(mpatches.Rectangle((0, 0), BOX_D, BOX_W,
-             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.3, zorder=1))
-
-# Wall thickness
-for rect in [
-    (0, 0, WALL_T, BOX_W),
-    (BOX_D - WALL_T, 0, WALL_T, BOX_W),
-    (0, 0, BOX_D, WALL_T),
-    (0, BOX_W - WALL_T, BOX_D, WALL_T),
-]:
-    ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
-                 facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
-
-# Backing board
-plan_board_x = BOX_D - WALL_T - BACKING
-ax.add_patch(mpatches.Rectangle((plan_board_x, WALL_T), BACKING, BOX_W - 2 * WALL_T,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8, zorder=3))
-
-# Muslin
-ax.plot([plan_board_x, plan_board_x], [WALL_T + MARGIN, BOX_W - WALL_T - MARGIN],
-        color=C_CL, lw=3.0, solid_capstyle="butt", zorder=4)
-
-# Pinhole marker
-ph_plan_y = BOX_W / 2
-ax.add_patch(plt.Circle((WALL_T / 2, ph_plan_y), 6,
-             facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
-
-# Optical axis
-ax.plot([0, BOX_D], [ph_plan_y, ph_plan_y],
-        color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
-
-# Armholes on the arm-sleeve face (bottom wall in plan view)
-# From above, the holes appear as gaps in the wall strip. The circular
-# openings are below the top surface so are shown as dashed hidden lines.
-sleeve_plan_cx1 = BOX_D / 2 - SLEEVE_SPACING / 2
-sleeve_plan_cx2 = BOX_D / 2 + SLEEVE_SPACING / 2
-sleeve_proj_len = 120  # how far the sleeve tubes project outward
-
-for cx in [sleeve_plan_cx1, sleeve_plan_cx2]:
-    # Gap in the bottom wall where the armhole is cut
-    ax.add_patch(mpatches.Rectangle(
-        (cx - SLEEVE_D / 2, 0), SLEEVE_D, WALL_T,
-        facecolor=BG, edgecolor=BG, linewidth=0, zorder=3))  # erase wall
-    # Re-draw wall edges at gap boundaries
-    ax.plot([cx - SLEEVE_D / 2, cx - SLEEVE_D / 2], [0, WALL_T],
-            color=C_OUT, lw=0.8, zorder=4)
-    ax.plot([cx + SLEEVE_D / 2, cx + SLEEVE_D / 2], [0, WALL_T],
-            color=C_OUT, lw=0.8, zorder=4)
-
-    # Hidden-line circle (dashed) showing the armhole below top surface
-    ax.add_patch(plt.Circle((cx, WALL_T / 2), SLEEVE_D / 2,
-                 facecolor="none", edgecolor=C_SLEEVE, linewidth=1.0,
-                 linestyle="--", alpha=0.6, zorder=3))
-
-    # Sleeve tube projecting outward (away from box, toward negative Y)
-    ax.add_patch(mpatches.Rectangle(
-        (cx - SLEEVE_D / 2, -sleeve_proj_len), SLEEVE_D, sleeve_proj_len,
-        facecolor=C_SLEEVE, edgecolor="none", linewidth=0, alpha=0.08, zorder=1))
-    ax.plot([cx - SLEEVE_D / 2, cx - SLEEVE_D / 2], [0, -sleeve_proj_len],
-            color=C_SLEEVE, lw=1.0, ls="--", zorder=2)
-    ax.plot([cx + SLEEVE_D / 2, cx + SLEEVE_D / 2], [0, -sleeve_proj_len],
-            color=C_SLEEVE, lw=1.0, ls="--", zorder=2)
-    # Elastic band at wrist end
-    ax.plot([cx - SLEEVE_D / 2 + 8, cx + SLEEVE_D / 2 - 8],
-            [-sleeve_proj_len, -sleeve_proj_len],
-            color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=3)
-
-# Face labels
-ax.text(WALL_T / 2, BOX_W + 25, "PINHOLE\nFACE", ha="center", va="bottom",
-        fontsize=FS_SM - 0.5, color=C_PINHOLE, fontweight="bold")
-ax.text(BOX_D - WALL_T / 2, BOX_W + 25, "FILM PLANE\nFACE", ha="center", va="bottom",
-        fontsize=FS_SM - 0.5, color=C_CL, fontweight="bold")
-ax.text(BOX_D / 2, -PLAN_PAD + 15, "ARM-SLEEVE FACE", ha="center", va="bottom",
-        fontsize=FS_SM - 0.5, color=C_DIM, fontweight="bold")
-
-# Dimensions
-draw_dim_h(ax, 0, BOX_D, BOX_W + 55, f"Depth  {BOX_D} mm  (18\")", offset=12)
-draw_dim_v(ax, BOX_D + 55, 0, BOX_W, f"Width  {BOX_W} mm  (18\")", offset=12, right=True)
-draw_dim_h(ax, sleeve_plan_cx1, sleeve_plan_cx2, -60,
-           f"Spacing  {SLEEVE_SPACING} mm  (10\")", offset=10, fs=FS_SM - 0.5)
-
-# Leaders
-leader(ax, sleeve_plan_cx1, -sleeve_proj_len / 2, -80, -50,
-       f"Fabric sleeve\nØ{SLEEVE_D} mm\n(hidden below)", ha="right", fs=FS_SM - 0.5)
-leader(ax, sleeve_plan_cx1, -sleeve_proj_len, -80, -sleeve_proj_len,
-       "Elastic band", ha="right", color=C_PINHOLE, fs=FS_SM - 0.5)
-leader(ax, sleeve_plan_cx2 + SLEEVE_D / 2 + 5, WALL_T / 2,
-       BOX_D + 100, 50,
-       "Armhole gap\nin wall", ha="left", fs=FS_SM - 0.5)
-
-# Section cut indicator — dashed line through one armhole with "A" labels
-cut_cx = sleeve_plan_cx1
-ax.plot([cut_cx, cut_cx], [-sleeve_proj_len - 15, BOX_W * 0.35],
-        color=C_PINHOLE, lw=1.0, ls="-.", dashes=(8, 3, 2, 3), alpha=0.6, zorder=6)
-ax.text(cut_cx + 8, BOX_W * 0.35, "A", fontsize=FS_MD, fontweight="bold",
-        color=C_PINHOLE, ha="left", va="center")
-ax.text(cut_cx + 8, -sleeve_proj_len - 10, "A", fontsize=FS_MD, fontweight="bold",
-        color=C_PINHOLE, ha="left", va="center")
-
-# View title
-ax.text(BOX_D / 2, BOX_W + 100, "PLAN VIEW — LOOKING DOWN",
-        ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
-ax.text(BOX_D / 2, BOX_W + 84,
-        "Armholes shown as gaps in side wall — dashed circles are hidden lines",
-        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-LEFT: Front view of arm-sleeve face (18×18" face)
+# BOTTOM-LEFT: Front view — pinhole face with armholes
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_front
 ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-ax.set_xlim(-PAD, BOX_W + PAD * 1.5)
-ax.set_ylim(-PAD - 20, BOX_D + PAD)
+FPAD = 100
+ax.set_xlim(-FPAD, BOX_W + FPAD * 1.5)
+ax.set_ylim(-FPAD, BOX_H + FPAD)
 
-# Box face outline
-ax.add_patch(mpatches.Rectangle((0, 0), BOX_W, BOX_D,
+# Pinhole face outline (18" wide × 16" high)
+ax.add_patch(mpatches.Rectangle((0, 0), BOX_W, BOX_H,
              facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.3, zorder=1))
 
 # Wall thickness
 for rect in [
-    (0, 0, WALL_T, BOX_D),
-    (BOX_W - WALL_T, 0, WALL_T, BOX_D),
+    (0, 0, WALL_T, BOX_H),
+    (BOX_W - WALL_T, 0, WALL_T, BOX_H),
     (0, 0, BOX_W, WALL_T),
-    (0, BOX_D - WALL_T, BOX_W, WALL_T),
+    (0, BOX_H - WALL_T, BOX_W, WALL_T),
 ]:
     ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
                  facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
 
-# Arm sleeves
-sleeve_cy = BOX_D / 2
-sleeve_cx1 = BOX_W / 2 - SLEEVE_SPACING / 2
-sleeve_cx2 = BOX_W / 2 + SLEEVE_SPACING / 2
+# Pinhole at center
+ph_cx = BOX_W / 2
+ph_cy = BOX_H / 2
+ax.add_patch(plt.Circle((ph_cx, ph_cy), 5,
+             facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
+ax.plot([ph_cx - 10, ph_cx + 10], [ph_cy, ph_cy], color=C_PINHOLE, lw=0.8, zorder=6)
+ax.plot([ph_cx, ph_cx], [ph_cy - 10, ph_cy + 10], color=C_PINHOLE, lw=0.8, zorder=6)
 
-for cx in [sleeve_cx1, sleeve_cx2]:
-    ax.add_patch(plt.Circle((cx, sleeve_cy), SLEEVE_D / 2,
+# Armholes flanking the pinhole (same vertical center, spaced horizontally)
+arm_cx1 = BOX_W / 2 - SLEEVE_SPACING / 2
+arm_cx2 = BOX_W / 2 + SLEEVE_SPACING / 2
+arm_cy = BOX_H / 2
+
+for cx in [arm_cx1, arm_cx2]:
+    # Armhole (dark circle)
+    ax.add_patch(plt.Circle((cx, arm_cy), SLEEVE_D / 2,
                  facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=1.2, alpha=0.8, zorder=4))
-    ax.add_patch(plt.Circle((cx, sleeve_cy), SLEEVE_D / 2 + 15,
-                 facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
-                 linestyle="--", alpha=0.5, zorder=3))
-
-# Gaffer tape seal
-for cx in [sleeve_cx1, sleeve_cx2]:
-    ax.add_patch(mpatches.Annulus((cx, sleeve_cy), SLEEVE_D / 2 + 15, 12,
+    # Gaffer tape seal ring
+    ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
                  facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
 
+# Aluminum plate around pinhole (small square)
+ax.add_patch(mpatches.Rectangle((ph_cx - 25, ph_cy - 25), 50, 50,
+             facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6, alpha=0.4, zorder=3))
+
 # Dimensions
-draw_dim_h(ax, 0, BOX_W, -50, f"Box width  {BOX_W} mm  (18\")", offset=12)
-draw_dim_v(ax, BOX_W + 50, 0, BOX_D, f"Box depth  {BOX_D} mm  (18\")", offset=12, right=True)
-draw_dim_h(ax, sleeve_cx1, sleeve_cx2, BOX_D + 40,
-           f"Spacing  {SLEEVE_SPACING} mm  (10\")", offset=12, fs=FS_SM - 0.5)
-draw_dim_h(ax, sleeve_cx1 - SLEEVE_D / 2, sleeve_cx1 + SLEEVE_D / 2,
-           sleeve_cy - SLEEVE_D / 2 - 25,
+draw_dim_h(ax, 0, BOX_W, -50, f"Width  {BOX_W} mm  (18\")", offset=12)
+draw_dim_v(ax, BOX_W + 50, 0, BOX_H, f"Height  {BOX_H} mm  (16\")", offset=12, right=True)
+draw_dim_h(ax, arm_cx1, arm_cx2, BOX_H + 40,
+           f"Armhole spacing  {SLEEVE_SPACING} mm", offset=10, fs=FS_SM - 0.5)
+draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
+           arm_cy - SLEEVE_D / 2 - 25,
            f"Ø{SLEEVE_D} mm (4\")", offset=10, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, sleeve_cx1, sleeve_cy, -50, sleeve_cy + 50,
-       f"Armhole Ø{SLEEVE_D} mm\n(black fabric sleeve)\nElastic at wrist", ha="right", fs=FS_SM - 0.5)
-leader(ax, sleeve_cx1 + SLEEVE_D / 2 + 20, sleeve_cy, BOX_W + 80, sleeve_cy + 80,
-       "Gaffer tape seal\n(light-tight)", ha="left", fs=FS_SM - 0.5)
-
-# Specification table
-spec_x = BOX_W + 80
-spec_y = BOX_D - 60
-specs = [
-    f"Focal length:  {FOCAL} mm",
-    f"Pinhole:  Ø{PH_D} mm",
-    f"f-number:  f/{F_NO}",
-    f"Film plane:  {FP_W} × {FP_H} mm",
-    f"Exposure:  ~10 min  (full sun)",
-    "Process:  Ware New Cyanotype",
-    "Reciprocity:  None (iron-based)",
-]
-ax.text(spec_x, spec_y + 18, "SPECIFICATION", ha="left", va="bottom",
-        fontsize=FS_SM + 0.5, fontweight="bold", color=C_OUT)
-ax.plot([spec_x, spec_x + 200], [spec_y + 14, spec_y + 14], color=C_OUT, lw=0.8)
-for i, line in enumerate(specs):
-    ax.text(spec_x, spec_y - i * 18, line, ha="left", va="top",
-            fontsize=FS_SM - 0.5, color=C_DIM)
+leader(ax, ph_cx, ph_cy + 8, ph_cx, ph_cy + 80,
+       f"Pinhole  Ø{PH_D} mm", ha="center", color=C_PINHOLE, fs=FS_SM - 0.5)
+leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
+       f"Armhole Ø{SLEEVE_D} mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
+leader(ax, arm_cx1 + SLEEVE_D / 2 + 15, arm_cy, BOX_W + 80, arm_cy + 70,
+       "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
+leader(ax, ph_cx + 20, ph_cy - 20, ph_cx + 80, ph_cy - 70,
+       "Aluminum plate\n(beverage can)", ha="left", color=C_DIM, fs=FS_SM - 0.5)
 
 # View title
-ax.text(BOX_W / 2, BOX_D + 90, "FRONT VIEW — ARM-SLEEVE FACE",
+ax.text(BOX_W / 2, BOX_H + 85, "FRONT VIEW — PINHOLE FACE",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
-ax.text(BOX_W / 2, BOX_D + 74,
-        "18\" × 18\" side face  —  two armholes",
+ax.text(BOX_W / 2, BOX_H + 70,
+        "Pinhole centered, armholes flanking",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-CENTER: Armhole detail cross-section (Detail A)
+# BOTTOM-CENTER: Plan view — both boxes from above
 # ══════════════════════════════════════════════════════════════════════════════
-ax = ax_det
+ax = ax_planv
 ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-DET_PAD = 60
-ax.set_xlim(-DET_PAD - 200, 280)
-ax.set_ylim(-130, 130)
+PPAD = 100
+ax.set_xlim(-PPAD - 40, TOTAL_D + PPAD)
+ax.set_ylim(-PPAD, BOX_W + PPAD)
 
-# Box wall cross-section
-WALL_DRAW = 4 * 5     # exaggerated wall thickness (20 drawing units)
-HOLE_R = 51 * 1.0     # armhole radius at detail scale
+# Camera box (left) — depth × width
+ax.add_patch(mpatches.Rectangle((0, 0), BOX_D, BOX_W,
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.25, zorder=1))
 
-# Wall above armhole
-ax.add_patch(mpatches.Rectangle((-WALL_DRAW / 2, HOLE_R), WALL_DRAW, 120 - HOLE_R,
-             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=1.0, zorder=3))
-# Wall below armhole
-ax.add_patch(mpatches.Rectangle((-WALL_DRAW / 2, -120), WALL_DRAW, 120 - HOLE_R,
-             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=1.0, zorder=3))
+# Camera box walls
+for rect in [
+    (0, 0, WALL_T, BOX_W),                 # left (pinhole face)
+    (0, 0, BOX_D, WALL_T),                 # bottom
+    (0, BOX_W - WALL_T, BOX_D, WALL_T),   # top
+]:
+    ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
+                 facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
 
-# Side labels
-ax.text(40, 115, "INTERIOR", ha="left", va="top", fontsize=FS_SM - 0.5, color=C_DIM,
-        fontweight="bold", style="italic")
-ax.text(-40, 115, "EXTERIOR", ha="right", va="top", fontsize=FS_SM - 0.5, color=C_DIM,
-        fontweight="bold", style="italic")
+# Prep box (right)
+ax.add_patch(mpatches.Rectangle((BOX_D, 0), PREP_D, BOX_W,
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.15, zorder=1))
 
-# Clear wall edges at hole
-ax.plot([-WALL_DRAW / 2, -WALL_DRAW / 2], [-HOLE_R, HOLE_R],
-        color=BG, lw=3, zorder=4)
-ax.plot([WALL_DRAW / 2, WALL_DRAW / 2], [-HOLE_R, HOLE_R],
-        color=BG, lw=3, zorder=4)
+# Prep box walls
+for rect in [
+    (BOX_D + PREP_D - WALL_T, 0, WALL_T, BOX_W),  # far right
+    (BOX_D, 0, PREP_D, WALL_T),                     # bottom
+    (BOX_D, BOX_W - WALL_T, PREP_D, WALL_T),       # top
+]:
+    ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
+                 facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=2))
 
-# Fabric sleeve
-SLEEVE_DRAW_LEN = 200
+# Hinged flap position (upright — shown as thin line at junction)
+ax.plot([BOX_D, BOX_D], [WALL_T, BOX_W - WALL_T],
+        color=C_BACKING, lw=3.0, solid_capstyle="butt", zorder=4)
 
-ax.plot([-SLEEVE_DRAW_LEN, WALL_DRAW / 2 + 20], [HOLE_R, HOLE_R],
-        color=C_SLEEVE, lw=1.5, zorder=5)
-ax.plot([-SLEEVE_DRAW_LEN, WALL_DRAW / 2 + 20], [-HOLE_R, -HOLE_R],
-        color=C_SLEEVE, lw=1.5, zorder=5)
+# Backing board / flap (folded down — dashed, extending into prep box)
+flap_plan_len = BOX_H - 2 * WALL_T  # flap length when folded
+ax.add_patch(mpatches.Rectangle((BOX_D, WALL_T), flap_plan_len, BOX_W - 2 * WALL_T,
+             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.6,
+             linestyle="--", alpha=0.15, zorder=2))
 
-ax.add_patch(mpatches.Rectangle((-SLEEVE_DRAW_LEN, -HOLE_R),
-             SLEEVE_DRAW_LEN + WALL_DRAW / 2 + 20, HOLE_R * 2,
-             facecolor=C_SLEEVE, edgecolor="none", alpha=0.06, zorder=1))
+# Chemistry tray in prep box (plan view)
+tray_plan_x = BOX_D + PREP_D * 0.55
+tray_plan_w = PREP_D * 0.35
+tray_plan_h = BOX_W * 0.5
+tray_plan_y = BOX_W / 2 - tray_plan_h / 2
+ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), tray_plan_w, tray_plan_h,
+             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
 
-# Gaffer tape — interior side
-TAPE_W = 25
-tape_upper_verts = [
-    (WALL_DRAW / 2, HOLE_R + TAPE_W),
-    (WALL_DRAW / 2, HOLE_R),
-    (WALL_DRAW / 2 + 20, HOLE_R),
-    (WALL_DRAW / 2 + 20, HOLE_R + TAPE_W),
-]
-ax.add_patch(mpatches.Polygon(tape_upper_verts, closed=True,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=6))
+# Pinhole marker on left wall
+ax.add_patch(plt.Circle((WALL_T / 2, BOX_W / 2), 5,
+             facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
 
-tape_lower_verts = [
-    (WALL_DRAW / 2, -HOLE_R - TAPE_W),
-    (WALL_DRAW / 2, -HOLE_R),
-    (WALL_DRAW / 2 + 20, -HOLE_R),
-    (WALL_DRAW / 2 + 20, -HOLE_R - TAPE_W),
-]
-ax.add_patch(mpatches.Polygon(tape_lower_verts, closed=True,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=6))
+# Armholes on pinhole face (left wall) — shown as gaps in wall
+arm_plan_cy1 = BOX_W / 2 - SLEEVE_SPACING / 2
+arm_plan_cy2 = BOX_W / 2 + SLEEVE_SPACING / 2
 
-# Gaffer tape — exterior side
-tape_ext_upper = [
-    (-WALL_DRAW / 2, HOLE_R + TAPE_W),
-    (-WALL_DRAW / 2, HOLE_R),
-    (-WALL_DRAW / 2 - 20, HOLE_R),
-    (-WALL_DRAW / 2 - 20, HOLE_R + TAPE_W),
-]
-ax.add_patch(mpatches.Polygon(tape_ext_upper, closed=True,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.5, zorder=6))
+for cy in [arm_plan_cy1, arm_plan_cy2]:
+    # Gap in wall
+    ax.add_patch(mpatches.Rectangle(
+        (0, cy - SLEEVE_D / 2), WALL_T, SLEEVE_D,
+        facecolor=BG, edgecolor=BG, linewidth=0, zorder=3))
+    # Wall edges at gap
+    ax.plot([0, WALL_T], [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
+            color=C_OUT, lw=0.8, zorder=4)
+    ax.plot([0, WALL_T], [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
+            color=C_OUT, lw=0.8, zorder=4)
+    # Hidden circle (dashed)
+    ax.add_patch(plt.Circle((WALL_T / 2, cy), SLEEVE_D / 2,
+                 facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
+                 linestyle="--", alpha=0.5, zorder=3))
+    # Sleeve projection (extending left, outside box)
+    sleeve_proj = 80
+    ax.add_patch(mpatches.Rectangle(
+        (-sleeve_proj, cy - SLEEVE_D / 2), sleeve_proj, SLEEVE_D,
+        facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
+    ax.plot([-sleeve_proj, 0], [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
+            color=C_SLEEVE, lw=0.8, ls="--", zorder=2)
+    ax.plot([-sleeve_proj, 0], [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
+            color=C_SLEEVE, lw=0.8, ls="--", zorder=2)
+    # Elastic
+    ax.plot([-sleeve_proj, -sleeve_proj],
+            [cy - SLEEVE_D / 2 + 8, cy + SLEEVE_D / 2 - 8],
+            color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=3)
 
-tape_ext_lower = [
-    (-WALL_DRAW / 2, -HOLE_R - TAPE_W),
-    (-WALL_DRAW / 2, -HOLE_R),
-    (-WALL_DRAW / 2 - 20, -HOLE_R),
-    (-WALL_DRAW / 2 - 20, -HOLE_R - TAPE_W),
-]
-ax.add_patch(mpatches.Polygon(tape_ext_lower, closed=True,
-             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.5, zorder=6))
+# Optical axis
+ax.plot([0, BOX_D], [BOX_W / 2, BOX_W / 2],
+        color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
-# Elastic band at wrist
-ELASTIC_X = -SLEEVE_DRAW_LEN + 10
-ax.plot([ELASTIC_X, ELASTIC_X - 15], [HOLE_R, HOLE_R - 15],
-        color=C_SLEEVE, lw=1.5, zorder=5)
-ax.plot([ELASTIC_X, ELASTIC_X - 15], [-HOLE_R, -HOLE_R + 15],
-        color=C_SLEEVE, lw=1.5, zorder=5)
-ax.add_patch(mpatches.Rectangle((ELASTIC_X - 18, -HOLE_R + 12), 8, (HOLE_R - 12) * 2,
-             facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, alpha=0.6, zorder=7))
+# Box labels
+ax.text(BOX_D / 2, BOX_W / 2, "CAMERA", ha="center", va="center",
+        fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
+ax.text(BOX_D + PREP_D / 2, BOX_W / 2, "PREP", ha="center", va="center",
+        fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
+
+# Face labels
+ax.text(WALL_T / 2, BOX_W + 20, "PINHOLE\nFACE", ha="center", va="bottom",
+        fontsize=FS_SM - 1, color=C_PINHOLE, fontweight="bold")
 
 # Dimensions
-draw_dim_v(ax, 90, -HOLE_R, HOLE_R,
-           f"Ø{SLEEVE_D} mm\n(4\")", offset=15, right=True, fs=FS_SM - 0.5)
-draw_dim_h(ax, -SLEEVE_DRAW_LEN, WALL_DRAW / 2, -HOLE_R - 45,
-           f"Sleeve  ~{SLEEVE_LEN} mm  (18\")", offset=10, fs=FS_SM - 0.5)
-draw_dim_h(ax, -WALL_DRAW / 2, WALL_DRAW / 2, HOLE_R + 55,
-           f"Wall  ~{WALL_T} mm", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, TOTAL_D, BOX_W + 45, f"Total  {TOTAL_D} mm  (36\")", offset=10, fs=FS_SM - 0.5)
+draw_dim_v(ax, TOTAL_D + 40, 0, BOX_W, f"{BOX_W} mm", offset=10, right=True, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, BOX_D, -50, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, WALL_DRAW / 2 + 10, HOLE_R + TAPE_W / 2, 160, HOLE_R + 45,
-       "Gaffer tape (2\" wide)\nInterior — light-tight seal", ha="left", fs=FS_SM - 0.5)
-leader(ax, -WALL_DRAW / 2 - 10, HOLE_R + TAPE_W / 2, -DET_PAD - 120, HOLE_R + 45,
-       "Gaffer tape\nExterior reinforcement", ha="right", fs=FS_SM - 0.5)
-leader(ax, ELASTIC_X - 14, 0, -DET_PAD - 120, -20,
-       "Rubber band\n(wrist seal)", ha="right", color=C_PINHOLE, fs=FS_SM - 0.5)
-leader(ax, -SLEEVE_DRAW_LEN / 2, HOLE_R + 3, -SLEEVE_DRAW_LEN / 2, HOLE_R + 45,
-       "Black cotton fabric sleeve", ha="center", fs=FS_SM - 0.5)
+leader(ax, BOX_D, BOX_W / 2, BOX_D + flap_plan_len + 20, BOX_W + 30,
+       "Hinged flap\n(upright position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
+leader(ax, tray_plan_x + tray_plan_w / 2, tray_plan_y + tray_plan_h,
+       tray_plan_x + tray_plan_w / 2, BOX_W + 30,
+       "Tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
+leader(ax, -sleeve_proj / 2, arm_plan_cy1, -PPAD + 5, arm_plan_cy1 - 40,
+       "Sleeves", ha="right", fs=FS_SM - 0.5)
 
 # View title
-ax.text(-10, -120, "DETAIL A — ARMHOLE CROSS-SECTION",
-        ha="center", va="top", fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.text(-10, -110,
-        "Section through box wall at armhole centerline",
-        ha="center", va="top", fontsize=FS_SM - 0.5, color=C_DIM, style="italic")
+ax.text(TOTAL_D / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
+        ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
+ax.text(TOTAL_D / 2, BOX_W + 65,
+        "Two-box arrangement, armholes on pinhole face",
+        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-RIGHT: Assembly sequence notes
+# BOTTOM-RIGHT: Assembly notes + specification
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_asm
 ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 ax.set_xlim(0, 400)
-ax.set_ylim(0, 300)
+ax.set_ylim(0, 420)
 
-ax.add_patch(mpatches.FancyBboxPatch((10, 10), 380, 280,
-             boxstyle="round,pad=8", facecolor="#F8F6F0", edgecolor=C_OUT,
+# ── Specification table ─────────────────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((10, 250), 380, 160,
+             boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
              linewidth=0.8, zorder=1))
 
-ax.text(200, 275, "ARMHOLE ASSEMBLY", ha="center", va="top",
+ax.text(200, 400, "SPECIFICATION", ha="center", va="top",
         fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.plot([30, 370], [265, 265], color=C_OUT, lw=0.6)
+ax.plot([30, 370], [392, 392], color=C_OUT, lw=0.6)
+
+specs = [
+    f"Focal length:  {FOCAL} mm (18\")",
+    f"Pinhole:  Ø{PH_D} mm (1/32\" drill bit)",
+    f"f-number:  f/{F_NO}",
+    f"Film plane:  {FP_W} × {FP_H} mm",
+    f"Exposure:  ~10 min (full sun)",
+    "Substrate:  Watercolor paper 300 gsm",
+    "Process:  Ware New Cyanotype",
+    "Reciprocity:  None (iron-based)",
+]
+y = 382
+for line in specs:
+    ax.text(30, y, line, ha="left", va="top",
+            fontsize=FS_SM, color=C_DIM)
+    y -= 17
+
+# ── Assembly notes ──────────────────────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((10, 10), 380, 230,
+             boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
+             linewidth=0.8, zorder=1))
+
+ax.text(200, 230, "ASSEMBLY SEQUENCE", ha="center", va="top",
+        fontsize=FS_MD, fontweight="bold", color=C_OUT)
+ax.plot([30, 370], [222, 222], color=C_OUT, lw=0.6)
 
 steps = [
-    "1.  Mark two Ø102 mm (4\") circles on\n"
-    "     arm-sleeve face, spaced 254 mm\n"
-    "     (10\") c-c, vertically centered.",
-    "2.  Cut holes with box cutter.\n"
-    "     Clean edges.",
-    "3.  Cut two sleeves from black fabric:\n"
-    "     each ~Ø150 mm × 457 mm long.",
-    "4.  Insert sleeve from exterior.\n"
-    "     Pull ~50 mm through to interior.",
-    "5.  Tape interior flap to wall with\n"
-    "     2\" gaffer tape — full circumference.\n"
-    "     No gaps (light-tight seal).",
-    "6.  Tape exterior junction for\n"
-    "     reinforcement.",
-    "7.  Slip rubber band over wrist end\n"
-    "     of each sleeve for light seal.",
+    "1.  Seal both boxes with gaffer tape.",
+    "2.  Remove shared wall. Hinge the\n"
+    "     backing board at bottom with\n"
+    "     duct tape (full width).",
+    "3.  Cut armholes on pinhole face,\n"
+    "     flanking the pinhole. Attach\n"
+    "     fabric sleeves with gaffer tape.",
+    "4.  Fabricate pinhole: drill 1/32\" hole\n"
+    "     in aluminum can, sand burr.",
+    "5.  Mount pinhole plate from inside.\n"
+    "     Attach shutter flap outside.",
+    "6.  Place chemistry tray in prep box.",
+    "7.  Fold flap down → coat paper →\n"
+    "     tack-dry → fold up → expose.",
 ]
 
-y = 250
+y = 210
 for step in steps:
     ax.text(30, y, step, ha="left", va="top",
-            fontsize=FS_SM - 0.5, color=C_DIM, linespacing=1.25)
-    y -= 32
+            fontsize=FS_SM - 0.5, color=C_DIM, linespacing=1.2)
+    y -= 27
 
 
 # ── Title block (full-figure overlay) ────────────────────────────────────────
@@ -593,8 +593,8 @@ ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="MINI-TBS PROOF OF CONCEPT",
-            subtitle="Cross-section, plan view, arm-sleeve face, and armhole detail",
-            scale_note="Approx 1:3 (views) / ~2:1 (detail)",
+            subtitle="Two-box camera + prep area — hinged flap, watercolor paper substrate",
+            scale_note="Approx 1:4 (views) / NTS (detail)",
             doc_id="TBS-POC · Mini-TBS")
 
 # ── Save ─────────────────────────────────────────────────────────────────────

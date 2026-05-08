@@ -122,17 +122,17 @@ FIG_H = 22.0
 fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=150)
 fig.patch.set_facecolor(BG)
 
-gs = fig.add_gridspec(2, 5,
-                      height_ratios=[1.0, 1],
-                      width_ratios=[0.7, 0.8, 0.8, 0.55, 0.65],
+gs = fig.add_gridspec(3, 4,
+                      height_ratios=[1.0, 1.0, 0.55],
+                      width_ratios=[0.7, 1.0, 0.8, 0.65],
                       hspace=0.22, wspace=0.18,
                       left=0.03, right=0.97, bottom=0.06, top=0.95)
 
 ax_board = fig.add_subplot(gs[0, 0])    # end face — operator side (top-left)
-ax_xsec  = fig.add_subplot(gs[0, 1:])   # side cross-section (top, columns 1-4)
+ax_xsec  = fig.add_subplot(gs[0, 1:])   # side cross-section (top, columns 1-3)
 ax_armdt = fig.add_subplot(gs[1, 0])    # armhole detail cross-section
-ax_planv = fig.add_subplot(gs[1, 1:4])  # plan view (columns 1-3, aligned with xsec)
-ax_asm   = fig.add_subplot(gs[1, 4])    # assembly notes + spec table
+ax_planv = fig.add_subplot(gs[1, 1:])   # plan view (columns 1-3, same span as xsec)
+ax_asm   = fig.add_subplot(gs[2, :])    # spec + workflow — full-width bottom row
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -677,23 +677,22 @@ ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 65,
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-RIGHT: Assembly notes + specification
+# BOTTOM ROW: Specification (left) + Workflow (right) — full width
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_asm
 ax.set_facecolor(BG)
-ax.set_aspect("equal")
 ax.axis("off")
-ax.set_xlim(0, 400)
-ax.set_ylim(0, 420)
+ax.set_xlim(0, 1000)
+ax.set_ylim(0, 160)
 
-# ── Specification table ─────────────────────────────────────────────────────
-ax.add_patch(mpatches.FancyBboxPatch((10, 250), 380, 160,
+# ── Specification table (left half) ─────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((10, 10), 470, 140,
              boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
              linewidth=0.8, zorder=1))
 
-ax.text(200, 400, "SPECIFICATION", ha="center", va="top",
+ax.text(245, 145, "SPECIFICATION", ha="center", va="top",
         fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.plot([30, 370], [392, 392], color=C_OUT, lw=0.6)
+ax.plot([30, 460], [137, 137], color=C_OUT, lw=0.6)
 
 specs = [
     f"Focal length:  {FOCAL} mm (18\")",
@@ -705,36 +704,36 @@ specs = [
     "Process:  Ware New Cyanotype",
     f"Tray:  Paterson 12×16\" (PTP326)",
 ]
-y = 382
+y = 128
 for line in specs:
     ax.text(30, y, line, ha="left", va="top",
             fontsize=FS_SM, color=C_DIM)
-    y -= 17
+    y -= 14
 
-# ── Assembly notes ──────────────────────────────────────────────────────────
-ax.add_patch(mpatches.FancyBboxPatch((10, 10), 380, 230,
+# ── Workflow (right half) ──────────────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((520, 10), 470, 140,
              boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
              linewidth=0.8, zorder=1))
 
-ax.text(200, 230, "WORKFLOW", ha="center", va="top",
+ax.text(755, 145, "WORKFLOW", ha="center", va="top",
         fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.plot([30, 370], [222, 222], color=C_OUT, lw=0.6)
+ax.plot([540, 970], [137, 137], color=C_OUT, lw=0.6)
 
 steps = [
     "1.  Mix chemistry (daylight OK).",
     "2.  Coat paper in tray through arm sleeves on end face (safelight).",
     "3.  Tack-dry in sealed prep box.",
-    "4.  Fold board down → mount paper → fold up. Paper covers armholes (safelight).",
+    "4.  Fold board down, mount paper, fold up (safelight).",
     "5.  Expose (sunlight through pinhole).",
-    "6.  Open extraction flap (daylight safe) → remove print.",
+    "6.  Open extraction flap (daylight safe) — remove print.",
     "7.  Wash in photo trays (daylight).",
 ]
 
-y = 210
+y = 128
 for step in steps:
-    ax.text(30, y, step, ha="left", va="top",
-            fontsize=FS_SM - 0.5, color=C_DIM, linespacing=1.2)
-    y -=14
+    ax.text(540, y, step, ha="left", va="top",
+            fontsize=FS_SM, color=C_DIM, linespacing=1.2)
+    y -= 14
 
 
 # ── Title block (full-figure overlay) ────────────────────────────────────────

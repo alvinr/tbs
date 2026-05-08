@@ -8,7 +8,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 **Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
 
-**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The board has two armholes cut into it, with attached arm sleeves that project into the prep space — these give the operator sealed access for coating and mounting paper without opening the box. When the board is upright (exposure position), the mounted watercolor paper covers the armholes from the camera side, sealing them during exposure. The prep box end face is an extraction flap, hinged at the top, that opens in daylight after exposure for print removal. No darkroom required.
+**Design:** Two U-Haul Medium boxes joined end-to-end — a sealed camera box (pinhole + light cone) and a light-sealed prep box (standard photo tray + coating workspace). A backing board (film plane) is permanently hinged at the near rim of a Paterson 12×16" developing tray (the rim closest to the camera box). The board has two armholes cut into it — when the board is upright (exposure position), the mounted watercolor paper covers the armholes from the camera side, sealing them during exposure. The prep box end face serves dual duty: it has armholes with attached arm sleeves for sealed operator access, and it is an extraction flap (hinged at the top) that opens in daylight after exposure for print removal. No darkroom required.
 
 ![Mini-TBS engineering drawing — two-box design with hinged flap, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
@@ -133,7 +133,7 @@ The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 - **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The backing board forms the film plane when upright.
 - **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Contains the Paterson 12×16" developing tray. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.
 
-The shared wall between the boxes is removed. A **permanently hinged backing board** serves as the film plane. It is hinged at the far rim of the photo tray with duct tape. Two armholes in the board, with attached arm sleeves, give the operator sealed access to the prep space for coating and mounting paper.
+The shared wall between the boxes is removed. A **permanently hinged backing board** serves as the film plane. It is hinged at the near rim of the photo tray (camera side) with duct tape, so it swings up into the camera box opposite the pinhole. The board has two armholes that are covered by mounted paper during exposure. Arm sleeves on the prep box end face give the operator sealed access for coating and mounting paper.
 
 **Procedure:**
 
@@ -172,8 +172,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 
 1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305 mm) along the depth axis and the 16" dimension (406 mm) across the width. The tray should sit flat on the prep box floor.
 2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).
-3. **Armholes:** Cut two 4-inch (102 mm) diameter holes in the board, centered vertically, spaced 9 inches (230 mm) apart center-to-center. These holes allow the operator to reach through the board to the tray when the board is upright.
-4. **Arm sleeves:** Attach arm sleeves to the prep side of each armhole (see §4.6). The sleeves project into the prep space when the board is upright.
+3. **Armholes:** Cut two 4-inch (102 mm) diameter holes in the board, centered vertically, spaced 9 inches (230 mm) apart center-to-center. These holes are covered by the mounted paper during exposure, providing a light seal on the camera side.
 5. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
 6. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
 7. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole and the armholes facing the prep box. Use a binder clip or gaffer tape tab at the top edge to hold it upright. The mounted watercolor paper covers the armholes from the camera side, providing a light seal.
@@ -213,9 +212,9 @@ A simple flap shutter:
 3. **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
 4. **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
 
-### 4.6 Arm Sleeves (on Backing Board)
+### 4.6 Arm Sleeves (on Prep Box End Face)
 
-The armholes are cut into the backing board itself (see §4.3). When the board is upright, the armholes face the prep box, and the attached sleeves project into the prep space toward the operator. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the board — all without opening the box or breaking the light seal. During exposure, the mounted watercolor paper covers the armholes from the camera side.
+The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230 mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
 
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
@@ -224,11 +223,11 @@ The armholes are cut into the backing board itself (see §4.3). When the board i
 
 **Procedure:**
 
-1. The armholes are already cut in §4.3: two 4-inch (102 mm) diameter holes, 9 inches (230 mm) apart center-to-center.
+1. Cut two armholes in the prep box end face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face.
 2. Cut two sleeve tubes from black fabric: each approximately 18 inches long and 6 inches in diameter. A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
-3. Attach each sleeve to the prep side of the board at each armhole. Fold the fabric edge over the foam-core edge and tape it down with black gaffer tape, overlapping at least 2 inches on all sides. Seal the tape ring fully to prevent light leaks.
-4. When in use (board upright), insert your arms through the sleeves from the prep box side and cinch rubber bands around your forearms to seal the openings.
-5. **Test:** With the board upright, insert your arms through the sleeves and verify you can reach the tray, the board surface, and manipulate binder clips with both hands.
+3. Insert one end of each sleeve into an armhole from the inside. Fold the fabric edge over the cardboard edge and tape it down with black gaffer tape, overlapping at least 2 inches on all sides.
+4. When in use, insert your arms through the sleeves and cinch rubber bands around your forearms to seal the openings.
+5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands.
 
 ### 4.8 Extraction Flap
 
@@ -323,7 +322,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Materials:** Foam brush (2-inch), mixing cup, watercolor paper pre-cut to 17.5 × 19.5 inches.
 
-**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The paper (16 × 18") is slightly larger than the tray interior (12 × 16") — the edges overhang the tray rim during brush coating. This is standard practice for cyanotype; the tray catches drips and provides a stable work surface. With the backing board upright, access the tray through the arm sleeves in the board (see §4.6).
+**Using the photo tray:** The paper is coated in the Paterson 12×16" developing tray inside the prep box. The paper (16 × 18") is slightly larger than the tray interior (12 × 16") — the edges overhang the tray rim during brush coating. This is standard practice for cyanotype; the tray catches drips and provides a stable work surface. Access the tray through the arm sleeves on the prep box end face (see §4.6).
 
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
@@ -334,7 +333,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 5. **Second pass:** Brush vertically, top to bottom, with 50% overlap. This cross-direction pass ensures even coverage.
 6. **Edges:** Check all four edges — foam brushes tend to undercoat the last inch. Touch up by hand.
 7. **Tack-dry:** Allow 15–20 minutes in the prep box (light-sealed). Watercolor paper dries faster than fabric — check after 10 minutes. The sensitizer changes from wet-glossy to matte tack-dry.
-8. **Mount:** Through the arm sleeves, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat past the tray in the prep space). Clip the paper to the board with binder clips, ensuring it covers the armholes from the camera side. Fold the board back up to the exposure position. Paper faces the pinhole; the armholes are sealed behind the paper.
+8. **Mount:** Through the arm sleeves on the end face, remove the tack-dried paper from the tray. Fold the backing board down from the upright position (it lies flat over the tray into the prep space). Clip the paper to the board with binder clips, ensuring it covers the board's armholes from the camera side. Fold the board back up into the camera box. Paper faces the pinhole; the board armholes are sealed behind the paper.
 
 **Humidity notes (from [Operating Manual](../operating-manual.md) §1.5):**
 
@@ -393,7 +392,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 | Image is sharp in center, soft at edges | Normal for pinhole — expected | No fix needed. Pinhole illumination falls off at edges (cos⁴ law). |
 | Image is very dark, no whites | Overexposure | Reduce exposure by 30%. Wash longer (5th wash cycle may help clear highlights). |
 | Paper curled during wash | Paper too thin | Use 140 lb (300 gsm) minimum. Let the paper relax flat during final wash. |
-| Light leak through prep box | Extraction flap or arm sleeves not sealed during exposure | Ensure extraction flap edges are fully taped and arm sleeves are cinched. Verify paper covers both armholes from the camera side. |
+| Light leak through prep box | Extraction flap or arm sleeves not sealed during exposure | Ensure extraction flap edges are fully taped and arm sleeves on end face are cinched. Verify paper covers board armholes from the camera side. |
 | Pinhole hole is oblong | Drill bit wandered or too much pressure | Drill a new pinhole on fresh aluminum. Use lighter pressure, slower rotation. |
 
 ---

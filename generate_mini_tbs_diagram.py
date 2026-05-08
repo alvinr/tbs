@@ -391,7 +391,7 @@ draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
 # Leaders
 leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
        f"Armhole Ø{SLEEVE_D} mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
-leader(ax, arm_cx1 + SLEEVE_D / 2 + 15, arm_cy, EF_W + 80, arm_cy + 70,
+leader(ax, arm_cx1 + SLEEVE_D / 2 + 5, arm_cy, EF_W + 80, arm_cy +270,
        "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
 
 # View title
@@ -498,13 +498,13 @@ draw_dim_h(ax, 0, BOX_D, -50, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
 draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, board_plan_x, BOX_W / 2, board_plan_x - 20, BOX_W + 30,
+leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
        "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
 leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 150, tray_plan_y + TRAY_EXT_W,
        tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
 leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
-       board_fold_end + 20, BOX_W / 2 + BOARD_W / 2 + 20,
+       board_fold_end - 150, BOX_W / 2 + BOARD_W / 2 + 50,
        "Board folded\n(prep position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
 
 # View title
@@ -561,15 +561,11 @@ ax.plot([30, 370], [222, 222], color=C_OUT, lw=0.6)
 
 steps = [
     "1.  Mix chemistry (daylight OK).",
-    "2.  Coat paper in tray through arm\n"
-    "     sleeves on end face (safelight).",
+    "2.  Coat paper in tray through arm sleeves on end face (safelight).",
     "3.  Tack-dry in sealed prep box.",
-    "4.  Fold board down → mount paper\n"
-    "     → fold up. Paper covers\n"
-    "     armholes (safelight).",
+    "4.  Fold board down → mount paper → fold up. Paper covers armholes (safelight).",
     "5.  Expose (sunlight through pinhole).",
-    "6.  Open extraction flap (daylight\n"
-    "     safe) → remove print.",
+    "6.  Open extraction flap (daylight safe) → remove print.",
     "7.  Wash in photo trays (daylight).",
 ]
 
@@ -577,7 +573,7 @@ y = 210
 for step in steps:
     ax.text(30, y, step, ha="left", va="top",
             fontsize=FS_SM - 0.5, color=C_DIM, linespacing=1.2)
-    y -= 27
+    y -=14
 
 
 # ── Title block (full-figure overlay) ────────────────────────────────────────

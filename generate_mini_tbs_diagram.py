@@ -151,7 +151,9 @@ hinge_y = WALL_T + TRAY_RIM        # hinge height (at tray near rim level)
 board_fold_end = hinge_x + BOARD_H  # board tip when folded horizontal
 
 PAD = 120
-ax.set_xlim(-PAD - 40, board_fold_end + PAD)
+# Extend right limit to show extraction flap arc and open position
+flap_open_end = BOX_D + PREP_D + BOX_H * 0.3  # enough to show arc + partial open flap
+ax.set_xlim(-PAD - 40, max(board_fold_end + PAD, flap_open_end + PAD))
 ax.set_ylim(-PAD - 30, BOX_H + PAD + 20)
 
 # ── Camera box (left) ───────────────────────────────────────────────────────
@@ -191,20 +193,16 @@ ax.add_patch(mpatches.Rectangle((prep_end_x - 2, hinge_flap_y - 3), WALL_T + 4, 
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
 # Extraction flap motion arc — swings outward from top hinge
-flap_arc_r = BOX_H * 0.25
-flap_arc = Arc((prep_end_x + WALL_T / 2, hinge_flap_y), flap_arc_r * 2, flap_arc_r * 2,
+flap_arc_r = BOX_H * 0.3
+flap_hinge_x = prep_end_x + WALL_T / 2
+flap_arc = Arc((flap_hinge_x, hinge_flap_y), flap_arc_r * 2, flap_arc_r * 2,
                angle=0, theta1=-90, theta2=-5,
-               color=C_FLAP, lw=1.5, ls="--", zorder=7)
+               color=C_FLAP, lw=1.5, ls="--", zorder=9)
 ax.add_patch(flap_arc)
 # Arrow at the horizontal end (flap open position)
-ax.annotate("", xy=(prep_end_x + WALL_T / 2 + flap_arc_r, hinge_flap_y),
-            xytext=(prep_end_x + WALL_T / 2 + flap_arc_r - 12, hinge_flap_y + 10),
-            arrowprops=dict(arrowstyle="->", color=C_FLAP, lw=1.5), zorder=7)
-# Dashed flap in open position (horizontal, extending rightward from hinge)
-ax.add_patch(mpatches.Rectangle((prep_end_x + WALL_T / 2, hinge_flap_y),
-             BOX_H, WALL_T,
-             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=0.6,
-             linestyle="--", alpha=0.15, zorder=2))
+ax.annotate("", xy=(flap_hinge_x + flap_arc_r, hinge_flap_y),
+            xytext=(flap_hinge_x + flap_arc_r - 12, hinge_flap_y + 10),
+            arrowprops=dict(arrowstyle="->", color=C_FLAP, lw=1.5), zorder=9)
 
 # ── Photo tray (Paterson 12×16") inside prep box ──────────────────────────
 ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), TRAY_EXT_D, TRAY_RIM,
@@ -588,7 +586,7 @@ ax.set_aspect("equal")
 ax.axis("off")
 
 PPAD = PAD   # match cross-section padding for vertical alignment
-ax.set_xlim(-PPAD - 40, board_fold_end + PPAD)
+ax.set_xlim(-PPAD - 40, max(board_fold_end + PPAD, flap_open_end + PPAD))
 ax.set_ylim(-PPAD, BOX_W + PPAD)
 
 # Camera box (left) — depth × width

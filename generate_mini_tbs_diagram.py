@@ -217,15 +217,18 @@ ax.add_patch(mpatches.Rectangle((flap_x - hinge_w / 2, flap_bottom - 3),
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
 # ── Chemistry tray in prep box ──────────────────────────────────────────────
-tray_x = BOX_D + PREP_D * 0.55
-tray_w = PREP_D * 0.35
-tray_h = 30
-ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), tray_w, tray_h,
-             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.4, zorder=3))
-# Tray rim
-ax.plot([tray_x, tray_x], [WALL_T, WALL_T + tray_h], color=C_OUT, lw=1.0, zorder=4)
-ax.plot([tray_x + tray_w, tray_x + tray_w], [WALL_T, WALL_T + tray_h],
-        color=C_OUT, lw=1.0, zorder=4)
+# Tray must accommodate the full paper size (16×18" / 406×457mm).
+# In cross-section we see the tray's depth (457mm) and height.
+# Position it on the prep box floor, centered.
+TRAY_DEPTH = BOX_D   # 457mm — same as paper width (18")
+TRAY_RIM   = 40      # mm — tray rim height
+tray_x = BOX_D + (PREP_D - TRAY_DEPTH) / 2  # centered in prep box
+ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), TRAY_DEPTH, TRAY_RIM,
+             facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
+# Tray rims (left and right walls)
+ax.plot([tray_x, tray_x], [WALL_T, WALL_T + TRAY_RIM], color=C_OUT, lw=1.2, zorder=4)
+ax.plot([tray_x + TRAY_DEPTH, tray_x + TRAY_DEPTH], [WALL_T, WALL_T + TRAY_RIM],
+        color=C_OUT, lw=1.2, zorder=4)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
 ph_y = BOX_H / 2
@@ -264,14 +267,30 @@ ax.plot([0, flap_x], [ph_y, ph_y],
 ax.add_patch(mpatches.Rectangle((-30, ph_y - 50), 28, 100,
              facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
-# ── Armhole on pinhole face (shown as dashed hidden circle in cross-section)
-arm_cy = ph_y  # centered vertically with pinhole
-ax.add_patch(plt.Circle((WALL_T / 2, ph_y + SLEEVE_SPACING / 2), SLEEVE_D / 2 * 0.15,
-             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
-             linestyle="--", alpha=0.5, zorder=4))
-ax.add_patch(plt.Circle((WALL_T / 2, ph_y - SLEEVE_SPACING / 2), SLEEVE_D / 2 * 0.15,
-             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
-             linestyle="--", alpha=0.5, zorder=4))
+# ── Armholes on pinhole face (cross-section shows openings in left wall) ────
+# In side cross-section, the armholes appear as gaps in the left wall.
+# The sleeves project to the left (outward from the box).
+SLEEVE_PROJ_XS = 80  # sleeve projection length in cross-section
+for arm_y_center in [ph_y + SLEEVE_SPACING / 2, ph_y - SLEEVE_SPACING / 2]:
+    arm_top = arm_y_center + SLEEVE_D / 2
+    arm_bot = arm_y_center - SLEEVE_D / 2
+    # Erase wall at armhole opening
+    ax.add_patch(mpatches.Rectangle((0, arm_bot), WALL_T, SLEEVE_D,
+                 facecolor=C_BOX, edgecolor="none", linewidth=0, alpha=0.3, zorder=3))
+    # Gap edges in wall
+    ax.plot([0, WALL_T], [arm_top, arm_top], color=C_OUT, lw=0.8, zorder=4)
+    ax.plot([0, WALL_T], [arm_bot, arm_bot], color=C_OUT, lw=0.8, zorder=4)
+    # Sleeve tube projecting outward (to the left)
+    ax.add_patch(mpatches.Rectangle((-SLEEVE_PROJ_XS, arm_bot),
+                 SLEEVE_PROJ_XS, SLEEVE_D,
+                 facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
+    ax.plot([-SLEEVE_PROJ_XS, 0], [arm_top, arm_top],
+            color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+    ax.plot([-SLEEVE_PROJ_XS, 0], [arm_bot, arm_bot],
+            color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+    # Elastic band at wrist
+    ax.plot([-SLEEVE_PROJ_XS, -SLEEVE_PROJ_XS], [arm_bot + 8, arm_top - 8],
+            color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
 # ── Box labels ──────────────────────────────────────────────────────────────
 ax.text(BOX_D / 2, BOX_H - WALL_T - 15, "CAMERA BOX", ha="center", va="top",
@@ -288,10 +307,15 @@ draw_dim_v(ax, TOTAL_D + 60, paper_y1, paper_y2,
            f"Image  {FP_H} mm", offset=12, color=C_CL, right=True)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
-leader(ax, WALL_T / 2, ph_y + 10, -80, ph_y + 100,
+leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
-leader(ax, -16, ph_y, -80, ph_y - 60,
+leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
+# Armhole sleeves leader (point at upper sleeve)
+upper_arm_y = ph_y + SLEEVE_SPACING / 2
+leader(ax, -SLEEVE_PROJ_XS / 2, upper_arm_y + SLEEVE_D / 2 + 3,
+       -PAD + 10, upper_arm_y + SLEEVE_D / 2 + 60,
+       f"Arm sleeve Ø{SLEEVE_D} mm\n(on pinhole face)", ha="right", fs=FS_SM - 0.5)
 leader(ax, paper_x, (paper_y1 + paper_y2) / 2, TOTAL_D + 100, ph_y + 50,
        "Watercolor paper\non backing board\n(upright = film plane)", ha="left", color=C_CL)
 leader(ax, flap_x + flap_height / 2, flap_bottom + BACKING + 3,
@@ -299,9 +323,9 @@ leader(ax, flap_x + flap_height / 2, flap_bottom + BACKING + 3,
        "Flap folded down\n(dashed — coating position)", ha="center", color=C_MOTION)
 leader(ax, flap_x, flap_bottom, flap_x - 40, flap_bottom - 40,
        "Duct tape hinge", ha="right", color=C_HINGE)
-leader(ax, tray_x + tray_w / 2, WALL_T + tray_h,
-       tray_x + tray_w / 2, WALL_T + tray_h + 70,
-       "Chemistry tray\n(wash basin)", ha="center", color=C_TRAY)
+leader(ax, tray_x + TRAY_DEPTH / 2, WALL_T + TRAY_RIM,
+       tray_x + TRAY_DEPTH / 2, WALL_T + TRAY_RIM + 70,
+       f"Chemistry tray\n16 × 18\" ({BOX_H} × {BOX_D} mm)\n(fits full paper sheet)", ha="center", color=C_TRAY)
 leader(ax, BOX_D / 2, ph_y + 5, BOX_D / 2, ph_y + 80,
        "Light cone", ha="center", color=C_CONE_LN)
 
@@ -439,11 +463,13 @@ ax.add_patch(mpatches.Rectangle((BOX_D, WALL_T), flap_plan_len, BOX_W - 2 * WALL
              facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.6,
              linestyle="--", alpha=0.15, zorder=2))
 
-# Chemistry tray in prep box (plan view)
-tray_plan_x = BOX_D + PREP_D * 0.55
-tray_plan_w = PREP_D * 0.35
-tray_plan_h = BOX_W * 0.5
-tray_plan_y = BOX_W / 2 - tray_plan_h / 2
+# Chemistry tray in prep box (plan view) — sized to fit the paper (16×18" / 406×457mm)
+# In plan view: tray depth = 457mm (along X), tray width = 406mm (along Y)
+tray_plan_x = BOX_D + (PREP_D - TRAY_DEPTH) / 2  # centered in prep box depth
+tray_plan_w = TRAY_DEPTH  # 457mm
+TRAY_WIDTH = BOX_H  # 406mm — matches paper height (16")
+tray_plan_h = TRAY_WIDTH
+tray_plan_y = BOX_W / 2 - tray_plan_h / 2  # centered in box width
 ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), tray_plan_w, tray_plan_h,
              facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
 

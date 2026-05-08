@@ -67,6 +67,8 @@ MD_FILES=(
     "distortion-renders.md"
     "equipment-layout-report.md"
     "component-dependency-map.md"
+    "mini-tbs/mini-tbs-poc.md"
+    "mini-tbs/mini-tbs-shopping-list.md"
 )
 
 # ── Home page: sync project-summary.md → docs/index.md ───────────────────────
@@ -79,6 +81,8 @@ elif [[ ! -f "$INDEX_DST" ]] || [[ "$SUMMARY_SRC" -nt "$INDEX_DST" ]]; then
     cp "$SUMMARY_SRC" "$INDEX_DST"
     echo "    updated: published/index.md"
 fi
+
+mkdir -p "$DOCS_DIR/mini-tbs"
 
 CHANGED=0
 for f in "${MD_FILES[@]}"; do
@@ -176,6 +180,7 @@ DIAG_FILES=(
     "walkway-sheet1.png"
     "walkway-sheet2.png"
     "water-system-sheet3.png"
+    "mini-tbs-sheet1.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

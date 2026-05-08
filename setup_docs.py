@@ -64,6 +64,8 @@ MD_FILES = [
     ("distortion-renders.md",             (".",           "Distortion Renders")),
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
     ("component-dependency-map.md",       (".",           "Component Dependency Map")),
+    ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
+    ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
 
 # Root-only images (not generated into diagrams/)
@@ -131,6 +133,7 @@ DIAG_IMAGE_FILES = [
     "ceiling-rail-sheet2.png",
     "walkway-sheet1.png",
     "walkway-sheet2.png",
+    "mini-tbs-sheet1.png",
 ]
 
 MKDOCS_YML = """\

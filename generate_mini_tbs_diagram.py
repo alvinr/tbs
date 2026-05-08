@@ -702,14 +702,23 @@ ax.axis("off")
 ax.set_xlim(0, 1000)
 ax.set_ylim(0, 160)
 
-# ── Specification table (left half) ─────────────────────────────────────────
-ax.add_patch(mpatches.FancyBboxPatch((10, 10), 470, 140,
-             boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
+C_SPEC_BG = "#E8EEF4"   # cool blue-gray for specification
+C_WORK_BG = "#F4EDE4"   # warm tan for workflow
+
+BOX_W_SPEC = 340
+BOX_W_WORK = 380
+BOX_GAP = 40
+spec_x = 10
+work_x = spec_x + BOX_W_SPEC + BOX_GAP
+
+# ── Specification table (left) ─────────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((spec_x, 10), BOX_W_SPEC, 140,
+             boxstyle="round,pad=6", facecolor=C_SPEC_BG, edgecolor=C_OUT,
              linewidth=0.8, zorder=1))
 
-ax.text(245, 145, "SPECIFICATION", ha="center", va="top",
+ax.text(spec_x + BOX_W_SPEC / 2, 145, "SPECIFICATION", ha="center", va="top",
         fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.plot([30, 460], [137, 137], color=C_OUT, lw=0.6)
+ax.plot([spec_x + 20, spec_x + BOX_W_SPEC - 20], [137, 137], color=C_OUT, lw=0.6)
 
 specs = [
     f"Focal length:  {FOCAL} mm (18\")",
@@ -723,22 +732,22 @@ specs = [
 ]
 y = 128
 for line in specs:
-    ax.text(30, y, line, ha="left", va="top",
+    ax.text(spec_x + 20, y, line, ha="left", va="top",
             fontsize=FS_SM, color=C_DIM)
     y -= 14
 
-# ── Workflow (right half) ──────────────────────────────────────────────────
-ax.add_patch(mpatches.FancyBboxPatch((520, 10), 470, 140,
-             boxstyle="round,pad=6", facecolor="#F8F6F0", edgecolor=C_OUT,
+# ── Workflow (right) ──────────────────────────────────────────────────────
+ax.add_patch(mpatches.FancyBboxPatch((work_x, 10), BOX_W_WORK, 140,
+             boxstyle="round,pad=6", facecolor=C_WORK_BG, edgecolor=C_OUT,
              linewidth=0.8, zorder=1))
 
-ax.text(755, 145, "WORKFLOW", ha="center", va="top",
+ax.text(work_x + BOX_W_WORK / 2, 145, "WORKFLOW", ha="center", va="top",
         fontsize=FS_MD, fontweight="bold", color=C_OUT)
-ax.plot([540, 970], [137, 137], color=C_OUT, lw=0.6)
+ax.plot([work_x + 20, work_x + BOX_W_WORK - 20], [137, 137], color=C_OUT, lw=0.6)
 
 steps = [
     "1.  Mix chemistry (daylight OK).",
-    "2.  Coat paper in tray through arm sleeves on end face (safelight).",
+    "2.  Coat paper in tray through arm sleeves (safelight).",
     "3.  Tack-dry in sealed prep box.",
     "4.  Fold board down, mount paper, fold up (safelight).",
     "5.  Expose (sunlight through pinhole).",
@@ -748,7 +757,7 @@ steps = [
 
 y = 128
 for step in steps:
-    ax.text(540, y, step, ha="left", va="top",
+    ax.text(work_x + 20, y, step, ha="left", va="top",
             fontsize=FS_SM, color=C_DIM, linespacing=1.2)
     y -= 14
 

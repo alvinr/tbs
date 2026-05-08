@@ -134,6 +134,7 @@ DIAG_IMAGE_FILES = [
     "walkway-sheet1.png",
     "walkway-sheet2.png",
     "mini-tbs-sheet1.png",
+    "mini-tbs-sheet2.png",
 ]
 
 MKDOCS_YML = """\

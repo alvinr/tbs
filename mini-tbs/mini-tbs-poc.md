@@ -220,13 +220,17 @@ The armholes are on the prep box end face — the operator's face. They are cent
 - Heavy-duty rubber bands or elastic hair ties
 - Black gaffer tape
 
-**Procedure:**
+**Procedure** (see armhole detail in the engineering drawing):
 
-1. Cut two armholes in the prep box end face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face.
-2. Cut two sleeve tubes from black fabric: each approximately 18 inches long and 6 inches in diameter. A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
-3. Insert one end of each sleeve into an armhole from the inside. Fold the fabric edge over the cardboard edge and tape it down with black gaffer tape, overlapping at least 2 inches on all sides.
-4. When in use, insert your arms through the sleeves and cinch rubber bands around your forearms to seal the openings.
-5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands.
+1. Cut two armholes in the prep box end face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face. Use a compass to trace the circle, then cut with a box cutter. Sand or trim any rough edges — the fabric will fold over this edge.
+2. Cut two sleeve tubes from black fabric: each approximately 18 inches (450 mm) long and 6 inches in diameter (circumference ~19 inches). A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
+3. **Attach the sleeve to the wall (see detail cross-section):**
+   - Insert the sleeve through the armhole from the outside.
+   - Pull approximately 2 inches (50 mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
+   - Tape the fold-back down with a full ring of 2-inch black gaffer tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
+   - Apply a second ring of gaffer tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25 mm). This prevents the sleeve from pulling away under tension.
+4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
+5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
 ### 4.8 Extraction Flap
 

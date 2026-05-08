@@ -114,24 +114,25 @@ def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="lef
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# SINGLE SHEET — Four panels
+# SINGLE SHEET — Five panels
 # ══════════════════════════════════════════════════════════════════════════════
 
-FIG_W = 26.0
-FIG_H = 20.0
+FIG_W = 30.0
+FIG_H = 22.0
 fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=150)
 fig.patch.set_facecolor(BG)
 
-gs = fig.add_gridspec(2, 3,
-                      height_ratios=[1.1, 1],
-                      width_ratios=[0.85, 1.15, 0.85],
-                      hspace=0.22, wspace=0.16,
+gs = fig.add_gridspec(2, 4,
+                      height_ratios=[1.0, 1],
+                      width_ratios=[0.7, 0.8, 1.0, 0.65],
+                      hspace=0.22, wspace=0.18,
                       left=0.03, right=0.97, bottom=0.06, top=0.95)
 
 ax_xsec  = fig.add_subplot(gs[0, :])    # side cross-section — full top row
-ax_board = fig.add_subplot(gs[1, 0])    # board face — prep side
-ax_planv = fig.add_subplot(gs[1, 1])    # plan view — both boxes from above
-ax_asm   = fig.add_subplot(gs[1, 2])    # assembly notes + spec table
+ax_board = fig.add_subplot(gs[1, 0])    # end face — operator side
+ax_armdt = fig.add_subplot(gs[1, 1])    # armhole detail cross-section
+ax_planv = fig.add_subplot(gs[1, 2])    # plan view — both boxes from above
+ax_asm   = fig.add_subplot(gs[1, 3])    # assembly notes + spec table
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -403,7 +404,167 @@ ax.text(EF_W / 2, EF_H + 70,
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-CENTER: Plan view — both boxes from above
+# BOTTOM: Armhole detail — cross-section through sleeve attachment
+# ══════════════════════════════════════════════════════════════════════════════
+ax = ax_armdt
+ax.set_facecolor(BG)
+ax.set_aspect("equal")
+ax.axis("off")
+
+# This is an enlarged cross-section through the center of one armhole,
+# showing how the fabric sleeve attaches to the cardboard end face.
+#
+# Vertical cross-section (looking from inside the box outward):
+#   cardboard wall | fabric fold-back | gaffer tape seal | sleeve tube
+#
+# Scale: approximately 1:1 for clarity
+
+DPAD = 30
+# Drawing coordinates — wall runs vertically, sleeve extends to the right
+ax.set_xlim(-90, 280)
+ax.set_ylim(-100, 140)
+
+# ── Cardboard wall cross-section ─────────────────────────────────────────
+wall_x = 0           # inner surface of wall
+wall_thick = WALL_T   # 4 mm
+hole_r = SLEEVE_D / 2  # 51 mm radius
+wall_top = hole_r + 40   # cardboard above the hole
+wall_bot = -(hole_r + 40)  # cardboard below the hole
+
+# Upper wall section (above hole)
+ax.add_patch(mpatches.Rectangle((wall_x, hole_r), wall_thick, wall_top - hole_r,
+             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=1.0, zorder=3))
+# Lower wall section (below hole)
+ax.add_patch(mpatches.Rectangle((wall_x, wall_bot), wall_thick, hole_r + wall_bot * -1,
+             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=1.0, zorder=3))
+
+# ── Hole opening (the gap in the wall) ───────────────────────────────────
+# Just the edges of the cut hole
+ax.plot([wall_x, wall_x + wall_thick], [hole_r, hole_r],
+        color=C_OUT, lw=0.8, zorder=4)
+ax.plot([wall_x, wall_x + wall_thick], [-hole_r, -hole_r],
+        color=C_OUT, lw=0.8, zorder=4)
+
+# ── Fabric sleeve tube ──────────────────────────────────────────────────
+sleeve_len = 200     # mm shown (full sleeve is ~450mm)
+fabric_thick = 2     # mm — fabric wall thickness (schematic)
+
+# Upper fabric wall
+ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, hole_r - fabric_thick),
+             sleeve_len, fabric_thick,
+             facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
+# Lower fabric wall
+ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, -hole_r),
+             sleeve_len, fabric_thick,
+             facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
+# Sleeve interior (light fill)
+ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, -hole_r + fabric_thick),
+             sleeve_len, SLEEVE_D - 2 * fabric_thick,
+             facecolor=C_SLEEVE, edgecolor="none", alpha=0.05, zorder=1))
+
+# ── Fabric fold-back over cardboard edge ─────────────────────────────────
+# The fabric wraps from outside, over the cut edge, and folds back ~50mm
+# onto the inside surface of the wall
+fold_back = 50  # mm fold-back length on inside
+
+# Upper fold-back: fabric bends over the top edge of the hole
+# Outside to edge
+ax.plot([wall_x + wall_thick, wall_x + wall_thick], [hole_r - fabric_thick, hole_r],
+        color=C_OUT, lw=0.6, zorder=4)
+# Over the edge (short curve shown as line)
+ax.plot([wall_x + wall_thick, wall_x], [hole_r, hole_r],
+        color=C_SLEEVE, lw=2.0, zorder=5)
+# Fold-back strip on inside (runs inward = leftward from the hole edge)
+ax.add_patch(mpatches.Rectangle((-fold_back, hole_r), fold_back, fabric_thick,
+             facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
+
+# Lower fold-back
+ax.plot([wall_x + wall_thick, wall_x + wall_thick], [-hole_r, -hole_r + fabric_thick],
+        color=C_OUT, lw=0.6, zorder=4)
+ax.plot([wall_x + wall_thick, wall_x], [-hole_r, -hole_r],
+        color=C_SLEEVE, lw=2.0, zorder=5)
+ax.add_patch(mpatches.Rectangle((-fold_back, -hole_r - fabric_thick), fold_back, fabric_thick,
+             facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
+
+# ── Gaffer tape seal (wraps over fold-back on inside surface) ────────────
+tape_w = 50   # mm — 2" gaffer tape
+tape_t = 1.5  # mm — tape thickness (schematic)
+
+# Upper tape — on inside surface, covering the fold-back
+ax.add_patch(mpatches.Rectangle((-fold_back, hole_r + fabric_thick),
+             fold_back + 10, tape_t,
+             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+# Tape also covers the outside fold
+ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, hole_r),
+             tape_w * 0.6, tape_t,
+             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+
+# Lower tape
+ax.add_patch(mpatches.Rectangle((-fold_back, -hole_r - fabric_thick - tape_t),
+             fold_back + 10, tape_t,
+             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+ax.add_patch(mpatches.Rectangle((wall_x + wall_thick, -hole_r - tape_t),
+             tape_w * 0.6, tape_t,
+             facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.6, zorder=4))
+
+# ── Elastic / rubber band at wrist end ───────────────────────────────────
+elastic_x = wall_x + wall_thick + sleeve_len - 10
+# Cinch marks (sleeve narrows at wrist)
+cinch = 12
+ax.plot([elastic_x, elastic_x], [-hole_r + cinch, hole_r - cinch],
+        color=C_PINHOLE, lw=2.5, solid_capstyle="round", zorder=5)
+# Small arrows showing cinch direction
+for sign in [1, -1]:
+    y_arr = sign * (hole_r - cinch)
+    ax.annotate("", xy=(elastic_x, y_arr),
+                xytext=(elastic_x, y_arr + sign * 10),
+                arrowprops=dict(arrowstyle="->", color=C_PINHOLE, lw=1.0), zorder=5)
+
+# ── Dimensions ───────────────────────────────────────────────────────────
+draw_dim_v(ax, -75, -hole_r, hole_r,
+           f"Ø{SLEEVE_D} mm\n(4\")", offset=10, fs=FS_SM - 0.5)
+draw_dim_h(ax, -fold_back, 0, wall_top + 20,
+           f"Fold-back\n{fold_back} mm", offset=8, fs=FS_SM - 1)
+draw_dim_h(ax, 0, wall_thick, wall_top + 40,
+           f"{wall_thick} mm\nwall", offset=8, fs=FS_SM - 1)
+draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
+           f"Sleeve ~450 mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)
+
+# ── Leaders ──────────────────────────────────────────────────────────────
+leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 55,
+       "Cardboard wall\n(end face)", ha="right", fs=FS_SM - 0.5)
+leader(ax, -fold_back / 2, hole_r + fabric_thick + tape_t + 2, -60, hole_r + 45,
+       "Gaffer tape\nseal (inside)", ha="right", fs=FS_SM - 0.5, color=C_TAPE)
+leader(ax, -fold_back / 2, hole_r + 1, -60, hole_r + 25,
+       "Fabric fold-back", ha="right", fs=FS_SM - 0.5, color=C_SLEEVE)
+leader(ax, wall_x + wall_thick + sleeve_len / 3, hole_r - 1,
+       wall_x + wall_thick + sleeve_len / 3, hole_r + 30,
+       "Black fabric sleeve\n(cotton knit)", ha="center", fs=FS_SM - 0.5, color=C_SLEEVE)
+leader(ax, elastic_x, hole_r - cinch + 2, elastic_x + 40, hole_r + 20,
+       "Rubber band\n(cinch at wrist)", ha="left", fs=FS_SM - 0.5, color=C_PINHOLE)
+
+# ── Section direction labels ─────────────────────────────────────────────
+ax.text(-fold_back - 15, 0, "INSIDE\nBOX", ha="right", va="center",
+        fontsize=FS_SM - 1, color=C_DIM, fontweight="bold", alpha=0.5)
+ax.text(wall_x + wall_thick + sleeve_len + 15, 0, "OUTSIDE\n(OPERATOR)",
+        ha="left", va="center",
+        fontsize=FS_SM - 1, color=C_DIM, fontweight="bold", alpha=0.5)
+
+# ── Center line through hole ─────────────────────────────────────────────
+ax.plot([-fold_back - 5, elastic_x + 20], [0, 0],
+        color=C_CL, lw=0.6, ls="--", dashes=(6, 4), alpha=0.5, zorder=1)
+
+# View title
+ax.text(wall_x + wall_thick + sleeve_len / 2 - 20, wall_top + 65,
+        "ARMHOLE DETAIL", ha="center", va="bottom",
+        fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
+ax.text(wall_x + wall_thick + sleeve_len / 2 - 20, wall_top + 50,
+        "Cross-section through sleeve attachment — scale ~2:1",
+        ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# BOTTOM: Plan view — both boxes from above
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_planv
 ax.set_facecolor(BG)

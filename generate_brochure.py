@@ -324,7 +324,8 @@ def rewrite_image_srcs(html):
     def _replace(m):
         src  = m.group(1)
         name = re.sub(r"[?#].*$", "", src)   # strip query/fragment
-        name = re.sub(r"^assets/", "", name)  # strip assets/ prefix
+        name = re.sub(r"^(\.\./)*assets/", "", name)  # strip assets/ or ../assets/ prefix
+        name = os.path.basename(name)  # use basename for subdirectory images
         abs_path = resolve_image(name)
         if abs_path:
             return f'src="{abs_path}"'

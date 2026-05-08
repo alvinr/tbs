@@ -302,13 +302,13 @@ draw_dim_h(ax, 0, BOX_D, -55, f"Camera box  {BOX_D} mm  (18\"  =  focal length)"
 draw_dim_h(ax, BOX_D, TOTAL_D, -55, f"Prep box  {PREP_D} mm  (18\")", offset=15)
 draw_dim_h(ax, 0, TOTAL_D, -100, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
 draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm\n(16\")", offset=15)
-draw_dim_v(ax, board_fold_end + 60, paper_y1, paper_y2,
+draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
            f"Image  {int(paper_y2 - paper_y1)} mm", offset=12, color=C_CL, right=True)
 draw_dim_h(ax, tray_x, tray_x_far, BOX_H + 30,
            f"Tray  {TRAY_EXT_D} mm\n(12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
-leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
+leader(ax, WALL_T / 2, ph_y, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
@@ -319,16 +319,16 @@ leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
        "Paper on board\n(film plane)", ha="center", color=C_CL)
 board_fold_mid = hinge_x + BOARD_H / 2
-leader(ax, board_fold_mid, hinge_y + 3,
+leader(ax, board_fold_mid, hinge_y - 3,
        board_fold_mid, hinge_y + 80,
        "Board folded down\n(over tray into prep space —\nmount paper on this surface)", ha="center", color=C_MOTION)
 leader(ax, hinge_x, hinge_y - BACKING, hinge_x + 30, hinge_y - 50,
        "Duct tape hinge\n(at tray near rim)", ha="left", color=C_HINGE)
-leader(ax, tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM + 3,
-       tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM + 60,
+leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
+       tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM + 30,
        f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
-leader(ax, BOX_D / 2, ph_y + 5, BOX_D / 2, ph_y + 80,
-       "Light cone", ha="center", color=C_CONE_LN)
+ax.text(BOX_D / 2, ph_y + 10, "Light cone",
+        ha="center", color=C_CONE_LN)
 leader(ax, prep_end_x + WALL_T / 2, BOX_H / 2,
        TOTAL_D + 60, BOX_H / 2 + 30,
        "Extraction flap\n(hinged at top —\nopens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
@@ -479,9 +479,9 @@ ax.plot([0, board_plan_x], [BOX_W / 2, BOX_W / 2],
         color=C_CL, lw=0.7, ls="--", dashes=(8, 4), zorder=2)
 
 # Box labels
-ax.text(BOX_D / 2, BOX_W / 2, "CAMERA", ha="center", va="center",
+ax.text(BOX_D / 2, BOX_W / 2 + 20, "CAMERA", ha="center", va="center",
         fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
-ax.text((board_plan_x + TOTAL_D) / 2, BOX_W / 2, "PREP", ha="center", va="center",
+ax.text((board_plan_x + TOTAL_D) / 2, BOX_W / 2 + 20, "PREP", ha="center", va="center",
         fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
 
 # Face labels
@@ -500,8 +500,8 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2, board_plan_x - 20, BOX_W + 30,
        "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
-leader(ax, tray_plan_x + TRAY_EXT_D / 2, tray_plan_y + TRAY_EXT_W,
-       tray_plan_x + TRAY_EXT_D / 2, BOX_W + 30,
+leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 150, tray_plan_y + TRAY_EXT_W,
+       tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
 leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
        board_fold_end + 20, BOX_W / 2 + BOARD_W / 2 + 20,

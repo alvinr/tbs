@@ -215,7 +215,7 @@ ax.plot([board_x, board_x], [paper_y1, paper_y2],
 # Armholes on the board — in cross-section, both holes project to the same
 # height (side by side in the width dimension). Show as a single dashed
 # hidden-line circle on the board.
-ph_y = BOX_H / 2
+ph_y = HINGE_Y_ABS + BOARD_H / 2  # centered on the board (film plane)
 arm_y_center = (board_bottom + board_top) / 2  # centered on the board
 ax.add_patch(plt.Circle((board_x + BACKING / 2, arm_y_center), SLEEVE_D / 2,
              facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,

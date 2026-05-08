@@ -212,28 +212,36 @@ paper_y2 = board_top - MARGIN
 ax.plot([board_x, board_x], [paper_y1, paper_y2],
         color=C_CL, lw=3.0, solid_capstyle="butt", zorder=6)
 
+# Pinhole Y — centered on the board (film plane)
+ph_y = HINGE_Y_ABS + BOARD_H / 2
+
 # Armholes on the board — in cross-section, both holes project to the same
 # height (side by side in the width dimension). Show as a single dashed
-# hidden-line circle on the board.
-ph_y = HINGE_Y_ABS + BOARD_H / 2  # centered on the board (film plane)
-arm_y_center = (board_bottom + board_top) / 2  # centered on the board
+# hidden-line circle on the board. Paper covers these during exposure.
+arm_y_center = (board_bottom + board_top) / 2
 ax.add_patch(plt.Circle((board_x + BACKING / 2, arm_y_center), SLEEVE_D / 2,
              facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
              linestyle="--", alpha=0.6, zorder=6))
 
-# Arm sleeves projecting from board into prep space (rightward from hinge_x)
+# Arm sleeves on prep box end face (not on board)
 SLEEVE_PROJ = 80
-arm_top_s = arm_y_center + SLEEVE_D / 2
-arm_bot_s = arm_y_center - SLEEVE_D / 2
-sleeve_start_x = hinge_x  # prep side of board when upright
-ax.add_patch(mpatches.Rectangle((sleeve_start_x, arm_bot_s),
+sleeve_wall_x = prep_end_x  # end face inner surface
+arm_endface_y = BOX_H / 2   # centered on the end face
+arm_top_s = arm_endface_y + SLEEVE_D / 2
+arm_bot_s = arm_endface_y - SLEEVE_D / 2
+# Hidden-line circle on end face (both armholes project to same height in side view)
+ax.add_patch(plt.Circle((sleeve_wall_x + WALL_T / 2, arm_endface_y), SLEEVE_D / 2,
+             facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
+             linestyle="--", alpha=0.6, zorder=3))
+# Sleeves projecting outward (rightward, beyond the box)
+ax.add_patch(mpatches.Rectangle((sleeve_wall_x + WALL_T, arm_bot_s),
              SLEEVE_PROJ, SLEEVE_D,
              facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
-ax.plot([sleeve_start_x, sleeve_start_x + SLEEVE_PROJ], [arm_top_s, arm_top_s],
-        color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-ax.plot([sleeve_start_x, sleeve_start_x + SLEEVE_PROJ], [arm_bot_s, arm_bot_s],
-        color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-ax.plot([sleeve_start_x + SLEEVE_PROJ, sleeve_start_x + SLEEVE_PROJ],
+ax.plot([sleeve_wall_x + WALL_T, sleeve_wall_x + WALL_T + SLEEVE_PROJ],
+        [arm_top_s, arm_top_s], color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+ax.plot([sleeve_wall_x + WALL_T, sleeve_wall_x + WALL_T + SLEEVE_PROJ],
+        [arm_bot_s, arm_bot_s], color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
+ax.plot([sleeve_wall_x + WALL_T + SLEEVE_PROJ, sleeve_wall_x + WALL_T + SLEEVE_PROJ],
         [arm_bot_s + 8, arm_top_s - 8],
         color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
@@ -312,12 +320,12 @@ leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
-leader(ax, sleeve_start_x + SLEEVE_PROJ / 2, arm_top_s + 3,
-       board_fold_end + 60, arm_top_s + 50,
-       f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(on board, project into\nprep box toward operator)", ha="left", fs=FS_SM - 0.5)
+leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
+       TOTAL_D + SLEEVE_PROJ + 30, arm_top_s + 50,
+       f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
-       "Paper on board\n(film plane — covers\narmholes during exposure)", ha="center", color=C_CL)
+       "Paper on board\n(film plane — covers\nboard armholes)", ha="center", color=C_CL)
 board_fold_mid = hinge_x + BOARD_H / 2
 leader(ax, board_fold_mid, hinge_y + 3,
        board_fold_mid, hinge_y + 80,
@@ -337,30 +345,33 @@ leader(ax, prep_end_x + WALL_T / 2, BOX_H / 2,
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 100, "SIDE CROSS-SECTION",
         ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 82,
-        "Two-box design — board with armholes hinged at tray near rim — extraction flap on end face",
+        "Two-box design — board hinged at tray near rim — arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-LEFT: Board face — prep side (armholes + sleeve attachment)
+# BOTTOM-LEFT: Prep box end face — armholes + sleeve attachment
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_board
 ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
+# End face is BOX_W × BOX_H (18×16")
+EF_W = BOX_W
+EF_H = BOX_H
 FPAD = 100
-ax.set_xlim(-FPAD, BOARD_W + FPAD * 1.5)
-ax.set_ylim(-FPAD, BOARD_H + FPAD)
+ax.set_xlim(-FPAD, EF_W + FPAD * 1.5)
+ax.set_ylim(-FPAD, EF_H + FPAD)
 
-# Board outline
-ax.add_patch(mpatches.Rectangle((0, 0), BOARD_W, BOARD_H,
-             facecolor=C_BACKING, edgecolor=C_OUT, linewidth=1.5, alpha=0.3, zorder=1))
+# End face outline (extraction flap)
+ax.add_patch(mpatches.Rectangle((0, 0), EF_W, EF_H,
+             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=1.5, alpha=0.15, zorder=1))
 
-# Armholes centered on the board, spaced horizontally
-arm_cx1 = BOARD_W / 2 - SLEEVE_SPACING / 2
-arm_cx2 = BOARD_W / 2 + SLEEVE_SPACING / 2
-arm_cy = BOARD_H / 2
+# Armholes centered on the face, spaced horizontally
+arm_cx1 = EF_W / 2 - SLEEVE_SPACING / 2
+arm_cx2 = EF_W / 2 + SLEEVE_SPACING / 2
+arm_cy = EF_H / 2
 
 for cx in [arm_cx1, arm_cx2]:
     # Armhole
@@ -370,20 +381,16 @@ for cx in [arm_cx1, arm_cx2]:
     ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
                  facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
 
-# Hinge edge indicator (bottom edge — hinges at tray near rim)
-ax.add_patch(mpatches.Rectangle((0, -4), BOARD_W, 8,
+# Hinge edge indicator (top edge — extraction flap hinged at top)
+ax.add_patch(mpatches.Rectangle((0, EF_H - 4), EF_W, 8,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.6, alpha=0.5, zorder=5))
-ax.text(BOARD_W / 2, -12, "HINGE EDGE (at tray near rim)", ha="center", va="top",
-        fontsize=FS_SM - 1, color=C_HINGE, fontweight="bold")
-
-# Note: camera side has paper covering armholes
-ax.text(BOARD_W / 2, BOARD_H - 25, "Paper mounted on\nopposite (camera) side\ncovers armholes during exposure",
-        ha="center", va="top", fontsize=FS_SM - 1, color=C_DIM, style="italic", alpha=0.6)
+ax.text(EF_W / 2, EF_H + 12, "HINGE EDGE (extraction flap — opens upward)",
+        ha="center", va="bottom", fontsize=FS_SM - 1, color=C_HINGE, fontweight="bold")
 
 # Dimensions
-draw_dim_h(ax, 0, BOARD_W, -60, f"Board width  {BOARD_W} mm", offset=12)
-draw_dim_v(ax, BOARD_W + 50, 0, BOARD_H, f"Board height\n{BOARD_H} mm", offset=12, right=True)
-draw_dim_h(ax, arm_cx1, arm_cx2, BOARD_H + 40,
+draw_dim_h(ax, 0, EF_W, -60, f"End face width  {EF_W} mm  (18\")", offset=12)
+draw_dim_v(ax, EF_W + 50, 0, EF_H, f"End face height\n{EF_H} mm  (16\")", offset=12, right=True)
+draw_dim_h(ax, arm_cx1, arm_cx2, EF_H + 40,
            f"Armhole spacing  {SLEEVE_SPACING} mm", offset=10, fs=FS_SM - 0.5)
 draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
            arm_cy - SLEEVE_D / 2 - 45,
@@ -392,14 +399,14 @@ draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
 # Leaders
 leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
        f"Armhole Ø{SLEEVE_D} mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
-leader(ax, arm_cx1 + SLEEVE_D / 2 + 15, arm_cy, BOARD_W + 80, arm_cy + 70,
+leader(ax, arm_cx1 + SLEEVE_D / 2 + 15, arm_cy, EF_W + 80, arm_cy + 70,
        "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
 
 # View title
-ax.text(BOARD_W / 2, BOARD_H + 85, "BOARD FACE — PREP SIDE",
+ax.text(EF_W / 2, EF_H + 85, "END FACE — OPERATOR SIDE",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
-ax.text(BOARD_W / 2, BOARD_H + 70,
-        "Backing board with armholes — sleeves project toward operator",
+ax.text(EF_W / 2, EF_H + 70,
+        "Extraction flap with armholes — sleeves project toward operator",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -456,11 +463,12 @@ board_plan_x = tray_plan_x  # at the near rim of the tray
 ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - BOARD_W / 2, BOX_W / 2 + BOARD_W / 2],
         color=C_OUT, lw=2.5, solid_capstyle="butt", zorder=4)
 
-# Armholes on board (dashed circles at the board line)
+# Armholes on end face (dashed circles at the extraction flap wall)
 arm_plan_cy1 = BOX_W / 2 - SLEEVE_SPACING / 2
 arm_plan_cy2 = BOX_W / 2 + SLEEVE_SPACING / 2
+endface_plan_x = TOTAL_D - WALL_T / 2
 for cy in [arm_plan_cy1, arm_plan_cy2]:
-    ax.add_patch(plt.Circle((board_plan_x, cy), SLEEVE_D / 2,
+    ax.add_patch(plt.Circle((endface_plan_x, cy), SLEEVE_D / 2,
                  facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
                  linestyle="--", alpha=0.6, zorder=5))
 
@@ -499,7 +507,7 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0
 
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2, board_plan_x - 20, BOX_W + 30,
-       "Board (upright)\nwith armholes", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
+       "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
 leader(ax, tray_plan_x + TRAY_EXT_D / 2, tray_plan_y + TRAY_EXT_W,
        tray_plan_x + TRAY_EXT_D / 2, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
@@ -511,7 +519,7 @@ leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 65,
-        "Two-box arrangement — board with armholes at tray near rim, extraction flap on end face",
+        "Two-box arrangement — board at tray near rim, arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -562,7 +570,7 @@ ax.plot([30, 370], [222, 222], color=C_OUT, lw=0.6)
 steps = [
     "1.  Mix chemistry (daylight OK).",
     "2.  Coat paper in tray through arm\n"
-    "     sleeves in board (safelight).",
+    "     sleeves on end face (safelight).",
     "3.  Tack-dry in sealed prep box.",
     "4.  Fold board down → mount paper\n"
     "     → fold up. Paper covers\n"
@@ -585,7 +593,7 @@ ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="MINI-TBS PROOF OF CONCEPT",
-            subtitle="Two-box camera — board with armholes at tray near rim, extraction flap for print removal",
+            subtitle="Two-box camera — board at tray near rim, arm sleeves + extraction flap on end face",
             scale_note="Approx 1:4 (views) / NTS (detail)",
             doc_id="TBS-POC · Mini-TBS")
 

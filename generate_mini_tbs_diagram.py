@@ -315,10 +315,10 @@ ax.text(BOX_D + PREP_D / 2, BOX_H - WALL_T - 15, "PREP BOX", ha="center", va="to
 draw_dim_h(ax, 0, BOX_D, -45, f"Camera box  {BOX_D} mm  (18\"  =  focal length)", offset=15)
 draw_dim_h(ax, BOX_D, TOTAL_D, -45, f"Prep box  {PREP_D} mm  (18\")", offset=15)
 draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
-draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm\n(16\")", offset=15)
+draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm (16\")", offset=15)
 draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
            f"Image  {int(paper_y2 - paper_y1)} mm", offset=12, color=C_CL, right=True)
-draw_dim_h(ax, tray_x, tray_x_far, -25,
+draw_dim_h(ax, tray_x, tray_x_far, -20,
            f"Tray  {TRAY_EXT_D} mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
@@ -669,8 +669,8 @@ ax.text(TOTAL_D - WALL_T / 2 + 40, BOX_W/2, "EXTRACTION\nFLAP", ha="center", va=
 
 # Dimensions
 draw_dim_h(ax, 0, TOTAL_D, -55, f"Total  {TOTAL_D} mm  (36\")", offset=8, fs=FS_SM - 0.5)
-draw_dim_v(ax, board_fold_end + 40, 0, BOX_W,
-           f"{BOX_W} mm", offset=10, right=True, fs=FS_SM - 0.5)
+draw_dim_v(ax, -60, 0, BOX_W,
+           f"{BOX_W} mm", offset=-20, right=True, fs=FS_SM - 0.5)
 draw_dim_h(ax, 0, BOX_D, -30, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
 draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
 

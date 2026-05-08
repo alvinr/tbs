@@ -703,7 +703,7 @@ ax.set_xlim(0, 1000)
 ax.set_ylim(0, 160)
 
 C_SPEC_BG = "#E8EEF4"   # cool blue-gray for specification
-C_WORK_BG = "#F4EDE4"   # warm tan for workflow
+C_WORK_BG = "#F4E8EE"   # light pink for workflow
 
 BOX_W_SPEC = 340
 BOX_W_WORK = 380

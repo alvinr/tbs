@@ -140,17 +140,17 @@ The shared wall between the boxes is removed. A **permanently hinged backing boa
 1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes.
 2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
 3. Remove the adjacent face from both boxes (cut away the cardboard panels). This creates one long enclosure (36" deep × 18" wide × 16" high).
-4. Tape the two boxes together at the junction using gaffer tape on all four edges — floor, ceiling, and both side walls. The taped joint must be rigid.
+4. Tape the two boxes together at the junction using duct tape on all four edges — floor, ceiling, and both side walls. The taped joint must be rigid.
 
 ### 4.2 Light-Sealing the Camera Box
 
 Only the camera box needs to be light-tight. The prep box remains open (it is used under safelight conditions only).
 
-**Materials:** Black gaffer tape (Polyken 510 or equivalent — not duct tape, which leaves residue and can delaminate).
+**Materials:** Black duct tape, 2" × 30 yd (one roll covers all sealing, hinging, and light-proofing for the entire build).
 
 **Procedure:**
 
-1. Seal every external seam on the camera box with a full strip of black gaffer tape. Pay special attention to:
+1. Seal every external seam on the camera box with a full strip of black duct tape. Pay special attention to:
    - All four flap edges on the pinhole face
    - Every corner where two panels meet
    - The manufacturer's glued seam (usually one long edge)
@@ -165,7 +165,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 **Materials:**
 - Paterson 12×16" developing tray (PTP326 or equivalent — available from B&H Photo, Adorama, or Freestyle Photo)
 - Foam-core board, 20 × 30" sheet (cut to ~17.5 × 15.5")
-- Duct tape (for the hinge — duct tape is more durable than gaffer tape for a working hinge)
+- Duct tape (same roll used for all sealing and hinging)
 - Binder clips (1-inch, ~12 per print)
 
 **Procedure:**
@@ -174,7 +174,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).
 3. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
 4. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
-5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or gaffer tape tab at the top edge to hold it upright.
+5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or duct tape tab at the top edge to hold it upright.
 6. **Test the hinge:** Fold the board up and down 10–15 times. It should move freely without binding. The duct tape hinge should not crack or separate.
 
 ### 4.4 Pinhole Fabrication
@@ -200,13 +200,13 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 
 1. Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face).
 2. Center the aluminum pinhole plate over this hole on the inside of the box.
-3. Tape all four edges with black gaffer tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
+3. Tape all four edges with black duct tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
 
 ### 4.5 Shutter
 
 A simple flap shutter:
 
-1. Cut a 4 × 4 inch piece of stiff black cardboard (or 4 layers of black gaffer tape on regular cardboard).
+1. Cut a 4 × 4 inch piece of stiff black cardboard (or 4 layers of black duct tape on regular cardboard).
 2. Tape the top edge of the flap to the box exterior, directly above the pinhole. The flap hangs down covering the pinhole.
 3. **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
 4. **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
@@ -218,7 +218,7 @@ The armholes are on the prep box end face — the operator's face. They are cent
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
 - Heavy-duty rubber bands or elastic hair ties
-- Black gaffer tape
+- Black duct tape
 
 **Procedure** (see armhole detail in the engineering drawing):
 
@@ -227,22 +227,22 @@ The armholes are on the prep box end face — the operator's face. They are cent
 3. **Attach the sleeve to the wall (see detail cross-section):**
    - Insert the sleeve through the armhole from the outside.
    - Pull approximately 2 inches (50 mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
-   - Tape the fold-back down with a full ring of 2-inch black gaffer tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
-   - Apply a second ring of gaffer tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25 mm). This prevents the sleeve from pulling away under tension.
+   - Tape the fold-back down with a full ring of 2-inch black duct tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
+   - Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25 mm). This prevents the sleeve from pulling away under tension.
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
 ### 4.8 Extraction Flap
 
-The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with gaffer tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
+The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the board, and wash it externally — no need to disassemble the camera or break the light seal on the camera box.
 
 **Procedure:**
 
 1. Score the prep box end face along the top edge, leaving 1 inch of cardboard attached at the top as a natural hinge line.
-2. Reinforce the hinge with a full-width strip of gaffer tape on both the inside and outside, spanning the hinge line.
-3. Seal the flap edges (bottom and both sides) with gaffer tape strips that overlap the flap and the box walls by at least 1 inch. These strips act as light-seal gaskets when the flap is closed.
+2. Reinforce the hinge with a full-width strip of duct tape on both the inside and outside, spanning the hinge line.
+3. Seal the flap edges (bottom and both sides) with duct tape strips that overlap the flap and the box walls by at least 1 inch. These strips act as light-seal gaskets when the flap is closed.
 4. **To open:** Peel the bottom and side tape strips, swing the flap up. Reach in to remove the exposed print.
-5. **To close:** Swing the flap down and re-seal the edges with fresh gaffer tape strips.
+5. **To close:** Swing the flap down and re-seal the edges with fresh duct tape strips.
 
 **Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (safelight operations). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
 
@@ -350,7 +350,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 7. Exposure Procedure
 
-1. After mounting the coated paper on the backing board (see §6, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or gaffer tape tab.
+1. After mounting the coated paper on the backing board (see §6, step 8), verify the board is upright in the exposure position with the paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab.
 2. Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.
 3. Ensure the shutter flap is closed.
 4. Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.
@@ -415,7 +415,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 | Chemistry | Identical formula | Identical formula |
 | Development | 3× cold water wash | 3× cold water wash |
 | Per-print cost | ~$2–3 | ~$38 |
-| Build cost | ~$69–120 | ~$15,500 |
+| Build cost | ~$94–148 | ~$15,500 |
 
 The optical physics, chemistry, and process are identical. The Mini-TBS validates all three at a scale that fits on a kitchen table.
 
@@ -429,14 +429,14 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $22 | $28 |
+| Boxes + construction (×2) | $11 | $16 |
 | Pinhole materials | $8 | $15 |
 | Chemistry | $25 | $45 |
 | Substrate (watercolor paper) | $10 | $18 |
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total** | **$105** | **$160** |
+| **Total** | **$94** | **$148** |
 
 ---
 

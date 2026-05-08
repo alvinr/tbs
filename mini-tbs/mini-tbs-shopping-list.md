@@ -4,7 +4,7 @@
 
 Complete itemized list for building the Mini-TBS proof-of-concept camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $80–$136 (see summary at bottom).
+**Target budget:** $94–$148 (see summary at bottom).
 
 ---
 
@@ -13,11 +13,10 @@ Complete itemized list for building the Mini-TBS proof-of-concept camera (two-bo
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
 | Medium moving box (18×18×16") | 2 | U-Haul | $4.50 ea | Home Depot | $3.98 ea | One camera box + one prep box |
-| Black gaffer tape, 2" × 30 yd | 1 roll | Amazon (Polyken 510) | $11.99 | Home Depot (Pro Tapes) | $12.99 | Must be true gaffer tape — not duct tape |
-| Duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | For the flap hinge (more durable than gaffer for repeated folding) |
+| Black duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | Light sealing, hinges, sleeve attachment — one roll covers the entire build |
 | Foam-core board, 20×30" | 1 sheet | Dollar Tree | $1.25 | Walmart | $2.98 | Cut to ~17.5×15.5" for hinged backing board |
 
-**Subtotal: $22–$28**
+**Subtotal: $11–$16**
 
 ---
 
@@ -124,7 +123,7 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $22 | $28 |
+| Boxes + construction (×2) | $11 | $16 |
 | Pinhole materials | $8 | $15 |
 | Chemistry (without ammonium dichromate) | $25 | $35 |
 | Chemistry (with ammonium dichromate) | $37 | $45 |
@@ -132,8 +131,8 @@ Standard darkroom developing trays — used for both chemistry coating and devel
 | Tools + consumables | $8 | $14 |
 | Photo trays (Paterson 12×16", ×3) | $28 | $33 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$105** | **$150** |
-| **Total (with dichromate)** | **$117** | **$160** |
+| **Total (without dichromate)** | **$94** | **$138** |
+| **Total (with dichromate)** | **$106** | **$148** |
 
 ### What the Minimum Order Gets You
 
@@ -162,6 +161,6 @@ The leftover chemistry is enough for extended testing, workshops, or demonstrati
 5. **Substitutions:**
    - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5 mm hole — usable but slower exposure)
    - No foam brushes? A natural-hair watercolor brush or small paint roller works
-   - No gaffer tape? Multiple layers of black electrical tape, though less durable
+   - No duct tape? Multiple layers of black electrical tape, though less durable
    - No foam-core board? Stiff cardboard from another box, doubled up
    - No hot-press paper? Cold-press watercolor paper works but has visible texture in the print

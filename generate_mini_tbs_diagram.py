@@ -143,9 +143,10 @@ ax.axis("off")
 
 # ── Layout constants ───────────────────────────────────────────────────────
 tray_x = BOX_D + WALL_T            # tray near edge (camera side of prep box)
-tray_x_far = tray_x + TRAY_EXT_D   # tray far rim — hinge point
-hinge_y = WALL_T + TRAY_RIM        # hinge height (at tray rim level)
-board_fold_end = tray_x_far + BOARD_H  # board tip when folded horizontal
+tray_x_far = tray_x + TRAY_EXT_D   # tray far rim
+hinge_x = tray_x                   # hinge at tray NEAR rim (camera side)
+hinge_y = WALL_T + TRAY_RIM        # hinge height (at tray near rim level)
+board_fold_end = hinge_x + BOARD_H  # board tip when folded horizontal
 
 PAD = 120
 ax.set_xlim(-PAD - 40, board_fold_end + PAD)
@@ -195,8 +196,8 @@ ax.plot([tray_x_far, tray_x_far], [WALL_T, WALL_T + TRAY_RIM], color=C_OUT, lw=1
 ax.text(tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM / 2, "TRAY", ha="center",
         va="center", fontsize=FS_SM - 1, color=C_TRAY, fontweight="bold", alpha=0.7)
 
-# ── Backing board — UPRIGHT at tray rim (permanently hinged, solid) ────────
-board_x = tray_x_far  # board at tray far rim
+# ── Backing board — UPRIGHT at tray near rim (in camera box, solid) ────────
+board_x = hinge_x - BACKING  # board inside camera box (upright from near rim)
 board_bottom = hinge_y
 board_top = hinge_y + BOARD_H
 
@@ -219,47 +220,41 @@ ax.add_patch(plt.Circle((board_x + BACKING / 2, arm_y_center), SLEEVE_D / 2,
              facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
              linestyle="--", alpha=0.6, zorder=6))
 
-# Arm sleeves projecting from board toward the operator (right, into prep space)
+# Arm sleeves projecting from board into prep space (rightward from hinge_x)
 SLEEVE_PROJ = 80
 arm_top_s = arm_y_center + SLEEVE_D / 2
 arm_bot_s = arm_y_center - SLEEVE_D / 2
-ax.add_patch(mpatches.Rectangle((board_x + BACKING, arm_bot_s),
+sleeve_start_x = hinge_x  # prep side of board when upright
+ax.add_patch(mpatches.Rectangle((sleeve_start_x, arm_bot_s),
              SLEEVE_PROJ, SLEEVE_D,
              facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
-ax.plot([board_x + BACKING, board_x + BACKING + SLEEVE_PROJ], [arm_top_s, arm_top_s],
+ax.plot([sleeve_start_x, sleeve_start_x + SLEEVE_PROJ], [arm_top_s, arm_top_s],
         color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-ax.plot([board_x + BACKING, board_x + BACKING + SLEEVE_PROJ], [arm_bot_s, arm_bot_s],
+ax.plot([sleeve_start_x, sleeve_start_x + SLEEVE_PROJ], [arm_bot_s, arm_bot_s],
         color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-ax.plot([board_x + BACKING + SLEEVE_PROJ, board_x + BACKING + SLEEVE_PROJ],
+ax.plot([sleeve_start_x + SLEEVE_PROJ, sleeve_start_x + SLEEVE_PROJ],
         [arm_bot_s + 8, arm_top_s - 8],
         color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
-# ── Backing board — FOLDED DOWN (dashed, extending past tray) ──────────────
-ax.add_patch(mpatches.Rectangle((tray_x_far, hinge_y - BACKING), BOARD_H, BACKING,
+# ── Backing board — FOLDED DOWN (dashed, extending over tray into prep) ───
+ax.add_patch(mpatches.Rectangle((hinge_x, hinge_y - BACKING), BOARD_H, BACKING,
              facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8,
              linestyle="--", alpha=0.35, zorder=3))
 
-# Board extension past prep box end wall
-if board_fold_end > TOTAL_D:
-    ax.add_patch(mpatches.Rectangle((TOTAL_D, hinge_y - BACKING),
-                 board_fold_end - TOTAL_D, BACKING,
-                 facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.8,
-                 linestyle="--", alpha=0.2, zorder=3))
-
-# ── Hinge detail (duct tape at tray far rim) ──────────────────────────────
+# ── Hinge detail (duct tape at tray near rim) ─────────────────────────────
 hinge_w = 16
-ax.add_patch(mpatches.Rectangle((tray_x_far - hinge_w / 2, hinge_y - BACKING - 2),
+ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - BACKING - 2),
              hinge_w, BACKING + 4,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
-# ── Motion arc (board fold) ───────────────────────────────────────────────
+# ── Motion arc (board fold from near rim into camera box) ─────────────────
 arc_r = BOARD_H * 0.25
-arc = Arc((tray_x_far, hinge_y), arc_r * 2, arc_r * 2,
-          angle=0, theta1=-5, theta2=90,
+arc = Arc((hinge_x, hinge_y), arc_r * 2, arc_r * 2,
+          angle=0, theta1=90, theta2=185,
           color=C_MOTION, lw=1.5, ls="--", zorder=7)
 ax.add_patch(arc)
-ax.annotate("", xy=(tray_x_far + arc_r, hinge_y),
-            xytext=(tray_x_far + arc_r - 12, hinge_y + 10),
+ax.annotate("", xy=(hinge_x - arc_r, hinge_y),
+            xytext=(hinge_x - arc_r + 12, hinge_y + 10),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
@@ -316,18 +311,18 @@ leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
-leader(ax, board_x + BACKING + SLEEVE_PROJ / 2, arm_top_s + 3,
+leader(ax, sleeve_start_x + SLEEVE_PROJ / 2, arm_top_s + 3,
        board_fold_end + 60, arm_top_s + 50,
        f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(on board, project into\nprep box toward operator)", ha="left", fs=FS_SM - 0.5)
 leader(ax, board_x, (paper_y1 + paper_y2) / 2,
-       board_fold_end + 60, ph_y + 40,
-       "Paper on board\n(film plane — covers\narmholes during exposure)", ha="left", color=C_CL)
-board_fold_mid = tray_x_far + BOARD_H / 2
+       board_x - 80, ph_y + 90,
+       "Paper on board\n(film plane — covers\narmholes during exposure)", ha="center", color=C_CL)
+board_fold_mid = hinge_x + BOARD_H / 2
 leader(ax, board_fold_mid, hinge_y + 3,
        board_fold_mid, hinge_y + 80,
-       "Board folded down\n(prep position — mount\npaper on this surface)", ha="center", color=C_MOTION)
-leader(ax, tray_x_far, hinge_y - BACKING, tray_x_far - 30, hinge_y - 50,
-       "Duct tape hinge\n(at tray rim)", ha="right", color=C_HINGE)
+       "Board folded down\n(over tray into prep space —\nmount paper on this surface)", ha="center", color=C_MOTION)
+leader(ax, hinge_x, hinge_y - BACKING, hinge_x + 30, hinge_y - 50,
+       "Duct tape hinge\n(at tray near rim)", ha="left", color=C_HINGE)
 leader(ax, tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM + 3,
        tray_x + TRAY_EXT_D / 2, WALL_T + TRAY_RIM + 60,
        f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
@@ -341,7 +336,7 @@ leader(ax, prep_end_x + WALL_T / 2, BOX_H / 2,
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 100, "SIDE CROSS-SECTION",
         ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 82,
-        "Two-box design — board with armholes hinged at tray rim — extraction flap on end face",
+        "Two-box design — board with armholes hinged at tray near rim — extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -374,10 +369,10 @@ for cx in [arm_cx1, arm_cx2]:
     ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
                  facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
 
-# Hinge edge indicator (bottom edge — hinges at tray rim)
+# Hinge edge indicator (bottom edge — hinges at tray near rim)
 ax.add_patch(mpatches.Rectangle((0, -4), BOARD_W, 8,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.6, alpha=0.5, zorder=5))
-ax.text(BOARD_W / 2, -12, "HINGE EDGE (at tray rim)", ha="center", va="top",
+ax.text(BOARD_W / 2, -12, "HINGE EDGE (at tray near rim)", ha="center", va="top",
         fontsize=FS_SM - 1, color=C_HINGE, fontweight="bold")
 
 # Note: camera side has paper covering armholes
@@ -455,8 +450,8 @@ tray_plan_y = BOX_W / 2 - TRAY_EXT_W / 2
 ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), TRAY_EXT_D, TRAY_EXT_W,
              facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
 
-# Board upright at tray rim (shown as line in plan view)
-board_plan_x = tray_plan_x + TRAY_EXT_D
+# Board upright at tray near rim (inside camera box, shown as line in plan view)
+board_plan_x = tray_plan_x  # at the near rim of the tray
 ax.plot([board_plan_x, board_plan_x], [BOX_W / 2 - BOARD_W / 2, BOX_W / 2 + BOARD_W / 2],
         color=C_OUT, lw=2.5, solid_capstyle="butt", zorder=4)
 
@@ -468,7 +463,7 @@ for cy in [arm_plan_cy1, arm_plan_cy2]:
                  facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
                  linestyle="--", alpha=0.6, zorder=5))
 
-# Board folded down from tray rim (dashed, extending past prep box)
+# Board folded down from near rim (dashed, extending over tray into prep space)
 ax.add_patch(mpatches.Rectangle((board_plan_x, BOX_W / 2 - BOARD_W / 2),
              BOARD_H, BOARD_W,
              facecolor=C_BACKING, edgecolor=C_OUT, linewidth=0.6,
@@ -515,7 +510,7 @@ leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 65,
-        "Two-box arrangement — board with armholes at tray rim, extraction flap on end face",
+        "Two-box arrangement — board with armholes at tray near rim, extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -589,7 +584,7 @@ ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="MINI-TBS PROOF OF CONCEPT",
-            subtitle="Two-box camera — board with armholes at tray rim, extraction flap for print removal",
+            subtitle="Two-box camera — board with armholes at tray near rim, extraction flap for print removal",
             scale_note="Approx 1:4 (views) / NTS (detail)",
             doc_id="TBS-POC · Mini-TBS")
 

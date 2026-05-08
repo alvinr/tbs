@@ -58,9 +58,10 @@ TRAY_EXT_D = 340   # mm — external depth in cross-section (~13.4")
 TRAY_EXT_W = 445   # mm — external width (perpendicular to cross-section)
 TRAY_RIM   = 65    # mm — rim height (~2.5")
 
-# Board dimensions (fits inside camera box)
+# Board dimensions (fits inside camera box, hinged at tray rim height)
 BOARD_W = BOX_W - 2 * WALL_T - 6   # ~443 mm — board width (clearance)
-BOARD_H = BOX_H - 2 * WALL_T       # ~398 mm — board height
+HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69 mm — hinge height (tray rim on floor)
+BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333 mm — from hinge to ceiling interior
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"

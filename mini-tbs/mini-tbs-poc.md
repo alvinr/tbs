@@ -171,7 +171,7 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 **Procedure:**
 
 1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305 mm) along the depth axis and the 16" dimension (406 mm) across the width. The tray should sit flat on the prep box floor.
-2. Cut a foam-core board panel to fit snugly inside the camera box opening: approximately 17.5 × 15.5 inches (443 × 398 mm, allowing clearance for the box interior).
+2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).
 3. **Armholes:** Cut two 4-inch (102 mm) diameter holes in the board, centered vertically, spaced 9 inches (230 mm) apart center-to-center. These holes allow the operator to reach through the board to the tray when the board is upright.
 4. **Arm sleeves:** Attach arm sleeves to the prep side of each armhole (see §4.6). The sleeves project into the prep space when the board is upright.
 5. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.

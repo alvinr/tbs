@@ -678,11 +678,11 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
        "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
-leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 150, tray_plan_y + TRAY_EXT_W,
+leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 130, tray_plan_y + TRAY_EXT_W - 50,
        tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
 leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
-       board_fold_end - 150, BOX_W / 2 + BOARD_W / 2 + 50,
+       board_fold_end - 150, BOX_W / 2 + BOARD_W / 2 + 35,
        "Board folded\n(prep position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
 
 # View title

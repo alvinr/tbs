@@ -248,14 +248,14 @@ ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - BACKING - 2),
              hinge_w, BACKING + 4,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
-# ── Motion arc (board fold from near rim into camera box) ─────────────────
+# ── Motion arc (board folds down from upright to horizontal over tray) ────
 arc_r = BOARD_H * 0.25
 arc = Arc((hinge_x, hinge_y), arc_r * 2, arc_r * 2,
-          angle=0, theta1=90, theta2=185,
+          angle=0, theta1=-5, theta2=90,
           color=C_MOTION, lw=1.5, ls="--", zorder=7)
 ax.add_patch(arc)
-ax.annotate("", xy=(hinge_x - arc_r, hinge_y),
-            xytext=(hinge_x - arc_r + 12, hinge_y + 10),
+ax.annotate("", xy=(hinge_x + arc_r, hinge_y),
+            xytext=(hinge_x + arc_r - 12, hinge_y + 10),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────

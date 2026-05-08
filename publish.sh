@@ -181,7 +181,6 @@ DIAG_FILES=(
     "walkway-sheet2.png"
     "water-system-sheet3.png"
     "mini-tbs-sheet1.png"
-    "mini-tbs-sheet2.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

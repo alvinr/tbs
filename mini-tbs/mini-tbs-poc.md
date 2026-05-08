@@ -8,9 +8,7 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 **Purpose:** Validate the pinhole-to-cyanotype workflow before committing to the full container build. Every technical decision below traces to the same peer-reviewed sources used in the TBS-001 design.
 
-![Mini-TBS cross-section and front view](../assets/mini-tbs-sheet1.png)
-
-![Mini-TBS plan view and armhole detail](../assets/mini-tbs-sheet2.png)
+![Mini-TBS engineering drawing — cross-section, plan view, arm-sleeve face, and armhole detail](../assets/mini-tbs-sheet1.png)
 
 ---
 

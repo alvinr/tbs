@@ -67,11 +67,11 @@ BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333 mm — from hinge to ceiling inte
 BG         = "#FFFFFF"
 C_BOX      = "#D2B48C"    # tan — cardboard
 C_BOX_WALL = "#C4A882"    # darker cardboard for walls
-C_TAPE     = "#1A1A1A"    # black gaffer tape
+C_TAPE     = "#1A1A1A"    # black gaffer tape (near-black)
 C_CONE     = "#CCE4FF"    # light cone fill
 C_CONE_LN  = "#4488CC"    # light cone boundary
 C_PINHOLE  = "#CC2020"    # pinhole marker
-C_SLEEVE   = "#2A2A2A"    # arm sleeve fabric
+C_SLEEVE   = "#484060"    # arm sleeve fabric (dark purple-gray)
 C_BACKING  = "#E8E0D0"    # foam-core board
 C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
 C_PAPER    = "#FAFAE8"    # watercolor paper
@@ -313,14 +313,14 @@ ax.text(BOX_D + PREP_D / 2, BOX_H - WALL_T - 15, "PREP BOX", ha="center", va="to
         fontsize=FS_MD, fontweight="bold", color=C_DIM, alpha=0.5)
 
 # ── Cross-section dimensions ────────────────────────────────────────────────
-draw_dim_h(ax, 0, BOX_D, -55, f"Camera box  {BOX_D} mm  (18\"  =  focal length)", offset=15)
-draw_dim_h(ax, BOX_D, TOTAL_D, -55, f"Prep box  {PREP_D} mm  (18\")", offset=15)
-draw_dim_h(ax, 0, TOTAL_D, -100, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
+draw_dim_h(ax, 0, BOX_D, -45, f"Camera box  {BOX_D} mm  (18\"  =  focal length)", offset=15)
+draw_dim_h(ax, BOX_D, TOTAL_D, -45, f"Prep box  {PREP_D} mm  (18\")", offset=15)
+draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
 draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm\n(16\")", offset=15)
 draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
            f"Image  {int(paper_y2 - paper_y1)} mm", offset=12, color=C_CL, right=True)
-draw_dim_h(ax, tray_x, tray_x_far, BOX_H + 30,
-           f"Tray  {TRAY_EXT_D} mm\n(12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
+draw_dim_h(ax, tray_x, tray_x_far, -25,
+           f"Tray  {TRAY_EXT_D} mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
 leader(ax, WALL_T / 2, ph_y, -PAD + 10, ph_y + 100,
@@ -344,17 +344,17 @@ leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
        f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
 ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
-leader(ax, prep_end_x + WALL_T / 2, BOX_H / 2,
-       TOTAL_D + 60, BOX_H / 2 + 30,
+leader(ax, prep_end_x + WALL_T / 2, BOX_H / 3,
+       TOTAL_D + 90, BOX_H / 5 + 30,
        "Extraction flap\n(opens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
 leader(ax, prep_end_x + WALL_T / 2, hinge_flap_y,
-       TOTAL_D + 60, hinge_flap_y + 40,
+       TOTAL_D + 70, hinge_flap_y + 40,
        "Gaffer tape hinge", ha="left", color=C_HINGE, fs=FS_SM - 0.5)
 
 # View title
-ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 100, "SIDE CROSS-SECTION",
+ax.text(TOTAL_D / 2, BOX_H + 60, "SIDE CROSS-SECTION",
         ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
-ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 82,
+ax.text(TOTAL_D / 2, BOX_H + 42,
         "Two-box design — board hinged at tray near rim — arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
@@ -548,7 +548,7 @@ draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
            f"Sleeve ~450 mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)
 
 # ── Leaders ──────────────────────────────────────────────────────────────
-leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 55,
+leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 35,
        "Cardboard wall\n(end face)", ha="right", fs=FS_SM - 0.5)
 leader(ax, -fold_back / 2, hole_r + fabric_thick + tape_t + 2, -60, hole_r + 45,
        "Gaffer tape\nseal (inside)", ha="right", fs=FS_SM - 0.5, color=C_TAPE)
@@ -663,17 +663,17 @@ ax.text((board_plan_x + TOTAL_D) / 2, BOX_W / 2 + 20, "PREP", ha="center", va="c
         fontsize=FS_SM, fontweight="bold", color=C_DIM, alpha=0.4)
 
 # Face labels
-ax.text(WALL_T / 2, BOX_W + 20, "PINHOLE\nFACE", ha="center", va="bottom",
+ax.text(WALL_T / 2 - 30, BOX_W/2, "PINHOLE\nFACE", ha="center", va="bottom",
         fontsize=FS_SM - 1, color=C_PINHOLE, fontweight="bold")
-ax.text(TOTAL_D - WALL_T / 2, BOX_W + 20, "EXTRACTION\nFLAP", ha="center", va="bottom",
+ax.text(TOTAL_D - WALL_T / 2 + 40, BOX_W/2, "EXTRACTION\nFLAP", ha="center", va="bottom",
         fontsize=FS_SM - 1, color=C_FLAP, fontweight="bold")
 
 # Dimensions
-draw_dim_h(ax, 0, TOTAL_D, BOX_W + 45, f"Total  {TOTAL_D} mm  (36\")", offset=10, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, TOTAL_D, -55, f"Total  {TOTAL_D} mm  (36\")", offset=8, fs=FS_SM - 0.5)
 draw_dim_v(ax, board_fold_end + 40, 0, BOX_W,
            f"{BOX_W} mm", offset=10, right=True, fs=FS_SM - 0.5)
-draw_dim_h(ax, 0, BOX_D, -50, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
-draw_dim_h(ax, BOX_D, TOTAL_D, -50, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, BOX_D, -30, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
 
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
@@ -686,9 +686,9 @@ leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,
        "Board folded\n(prep position)", ha="left", color=C_MOTION, fs=FS_SM - 0.5)
 
 # View title
-ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
+ax.text(TOTAL_D / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
-ax.text((TOTAL_D + board_fold_end) / 2, BOX_W + 65,
+ax.text(TOTAL_D / 2, BOX_W + 65,
         "Two-box arrangement — board at tray near rim, arm sleeves + extraction flap on end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 

@@ -122,17 +122,17 @@ FIG_H = 22.0
 fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=150)
 fig.patch.set_facecolor(BG)
 
-gs = fig.add_gridspec(2, 4,
+gs = fig.add_gridspec(2, 5,
                       height_ratios=[1.0, 1],
-                      width_ratios=[0.7, 1.3, 0.85, 0.65],
+                      width_ratios=[0.7, 0.8, 0.8, 0.55, 0.65],
                       hspace=0.22, wspace=0.18,
                       left=0.03, right=0.97, bottom=0.06, top=0.95)
 
 ax_board = fig.add_subplot(gs[0, 0])    # end face — operator side (top-left)
-ax_xsec  = fig.add_subplot(gs[0, 1:])   # side cross-section (top, columns 1-3)
+ax_xsec  = fig.add_subplot(gs[0, 1:])   # side cross-section (top, columns 1-4)
 ax_armdt = fig.add_subplot(gs[1, 0])    # armhole detail cross-section
-ax_planv = fig.add_subplot(gs[1, 1:3])  # plan view — both boxes from above
-ax_asm   = fig.add_subplot(gs[1, 3])    # assembly notes + spec table
+ax_planv = fig.add_subplot(gs[1, 1:4])  # plan view (columns 1-3, aligned with xsec)
+ax_asm   = fig.add_subplot(gs[1, 4])    # assembly notes + spec table
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -571,7 +571,7 @@ ax.set_facecolor(BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-PPAD = 100
+PPAD = PAD   # match cross-section padding for vertical alignment
 ax.set_xlim(-PPAD - 40, board_fold_end + PPAD)
 ax.set_ylim(-PPAD, BOX_W + PPAD)
 

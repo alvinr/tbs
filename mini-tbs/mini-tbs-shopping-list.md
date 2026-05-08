@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Mini-TBS — Shopping List
+# TBS-002 — Mini-TBS Shopping List
 
 Complete itemized list for building the Mini-TBS proof-of-concept camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 

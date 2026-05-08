@@ -42,7 +42,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 | Chemical | Amount needed | Min order size | Notes |
 |----------|--------------|---------------|-------|
-| Ammonium iron(III) oxalate (Part A) | 30 g | 100 g | Excess supports 60+ additional prints |
+| Ammonium iron(III) oxalate / ferric ammonium oxalate (Part A) | 30 g | 100 g | Excess supports 60+ additional prints |
 | Potassium ferricyanide (Part B) | 8 g | 100 g | Excess supports 200+ additional prints |
 | Ammonium dichromate | 1 g | 10 g | **Optional** — contrast enhancer; omit to save cost |
 
@@ -50,7 +50,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 | Chemical | Supplier 1 | Price | Supplier 2 | Price |
 |----------|-----------|-------|-----------|-------|
-| Ammonium iron(III) oxalate, 100 g | Bostick & Sullivan | $18.00 | Photographers' Formulary | $24.50 |
+| Ammonium iron(III) oxalate (ferric ammonium oxalate), 100 g | Bostick & Sullivan | $18.00 | Photographers' Formulary | $24.50 |
 | Potassium ferricyanide, 100 g | Bostick & Sullivan | $8.50 | Photographers' Formulary | $9.95 |
 | Ammonium dichromate, 10 g | Photographers' Formulary | $12.00 | — | — |
 

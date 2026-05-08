@@ -190,6 +190,22 @@ hinge_flap_y = BOX_H - WALL_T
 ax.add_patch(mpatches.Rectangle((prep_end_x - 2, hinge_flap_y - 3), WALL_T + 4, 6,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
+# Extraction flap motion arc — swings outward from top hinge
+flap_arc_r = BOX_H * 0.25
+flap_arc = Arc((prep_end_x + WALL_T / 2, hinge_flap_y), flap_arc_r * 2, flap_arc_r * 2,
+               angle=0, theta1=-90, theta2=-5,
+               color=C_FLAP, lw=1.5, ls="--", zorder=7)
+ax.add_patch(flap_arc)
+# Arrow at the horizontal end (flap open position)
+ax.annotate("", xy=(prep_end_x + WALL_T / 2 + flap_arc_r, hinge_flap_y),
+            xytext=(prep_end_x + WALL_T / 2 + flap_arc_r - 12, hinge_flap_y + 10),
+            arrowprops=dict(arrowstyle="->", color=C_FLAP, lw=1.5), zorder=7)
+# Dashed flap in open position (horizontal, extending rightward from hinge)
+ax.add_patch(mpatches.Rectangle((prep_end_x + WALL_T / 2, hinge_flap_y),
+             BOX_H, WALL_T,
+             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=0.6,
+             linestyle="--", alpha=0.15, zorder=2))
+
 # ── Photo tray (Paterson 12×16") inside prep box ──────────────────────────
 ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), TRAY_EXT_D, TRAY_RIM,
              facecolor=C_TRAY, edgecolor=C_OUT, linewidth=0.8, alpha=0.3, zorder=3))
@@ -326,7 +342,7 @@ leader(ax, board_fold_mid, hinge_y - 3,
 leader(ax, hinge_x, hinge_y - BACKING, hinge_x + 30, hinge_y - 50,
        "Duct tape hinge\n(at tray near rim)", ha="left", color=C_HINGE)
 leader(ax, tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM - 20,
-       tray_x + TRAY_EXT_D / 2 + 60, WALL_T + TRAY_RIM + 30,
+       tray_x + TRAY_EXT_D / 2 + 80, WALL_T + TRAY_RIM + 30,
        f"Photo tray\n12×16\" (Paterson PTP326)", ha="center", color=C_TRAY)
 ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
@@ -521,11 +537,11 @@ for sign in [1, -1]:
                 arrowprops=dict(arrowstyle="->", color=C_PINHOLE, lw=1.0), zorder=5)
 
 # ── Dimensions ───────────────────────────────────────────────────────────
-draw_dim_v(ax, -75, -hole_r, hole_r,
+draw_dim_v(ax, -90, -hole_r, hole_r,
            f"Ø{SLEEVE_D} mm\n(4\")", offset=10, fs=FS_SM - 0.5)
-draw_dim_h(ax, -fold_back, 0, wall_top + 20,
+draw_dim_h(ax, -fold_back, 0, wall_top + 30,
            f"Fold-back\n{fold_back} mm", offset=8, fs=FS_SM - 1)
-draw_dim_h(ax, 0, wall_thick, wall_top + 40,
+draw_dim_h(ax, 0, wall_thick, wall_top + 5,
            f"{wall_thick} mm\nwall", offset=8, fs=FS_SM - 1)
 draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
            f"Sleeve ~450 mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)

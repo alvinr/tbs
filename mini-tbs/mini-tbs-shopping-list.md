@@ -2,9 +2,9 @@
 <!-- © 2026 Alvin Richards -->
 # Mini-TBS — Shopping List
 
-Complete itemized list for building the Mini-TBS proof-of-concept camera and making **20 cyanotype prints** on cotton muslin. All quantities include 25% overage for waste and practice.
+Complete itemized list for building the Mini-TBS proof-of-concept camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $69–$120 (see summary at bottom).
+**Target budget:** $80–$136 (see summary at bottom).
 
 ---
 
@@ -12,11 +12,12 @@ Complete itemized list for building the Mini-TBS proof-of-concept camera and mak
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Medium moving box (18×18×16") | 1 | U-Haul | $4.50 | Home Depot | $3.98 | Standard double-wall corrugated |
+| Medium moving box (18×18×16") | 2 | U-Haul | $4.50 ea | Home Depot | $3.98 ea | One camera box + one prep box |
 | Black gaffer tape, 2" × 30 yd | 1 roll | Amazon (Polyken 510) | $11.99 | Home Depot (Pro Tapes) | $12.99 | Must be true gaffer tape — not duct tape |
-| Foam-core board, 20×30" | 1 sheet | Dollar Tree | $1.25 | Walmart | $2.98 | Cut to 16×18" for backing board |
+| Duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | For the flap hinge (more durable than gaffer for repeated folding) |
+| Foam-core board, 20×30" | 1 sheet | Dollar Tree | $1.25 | Walmart | $2.98 | Cut to ~17.5×15.5" for hinged backing board |
 
-**Subtotal: $18–$20**
+**Subtotal: $22–$28**
 
 ---
 
@@ -69,11 +70,13 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
-| Unbleached cotton muslin, 45" wide | 2 yards | Joann Fabrics | $3.99/yd | Fabric Wholesale Direct | $1.50/yd | Pre-wash twice in hot water (no detergent) before use |
+| Watercolor paper, hot-press, 140 lb (300 gsm), 22×30" | 12 sheets | Blick Art Materials (Arches Aquarelle) | $7.49/sheet or $59.99/25-pk | Amazon (Arches) | $8.50/sheet | 100% cotton. Each sheet yields one 16×18" print with trim to spare. |
 
-**Yield:** 2 yards of 45" muslin = ~8 linear feet × 45" wide. Each print uses ~18 × 20" (with overhang for clips). This gives approximately **24 pieces** from 2 yards — enough for 20 prints plus 4 spares for practice.
+**Why watercolor paper instead of muslin?** At the PoC scale (14×16" prints), watercolor paper is the superior substrate: no pre-washing, no stretching, no clipping tension — it lies flat naturally and coats evenly. Muslin is used for TBS-001 only because no paper is manufactured 4.5 meters wide.
 
-**Subtotal: $3–$8**
+**Yield:** 12 sheets of 22×30" = 12 prints, cut to 17.5×19.5" each (with overlap for mounting on the backing board). Buy 12 initially and re-order as needed. If buying the 25-sheet pack, the unit cost drops to ~$2.40/sheet.
+
+**Subtotal: $10–$18** (less with bulk pack)
 
 ---
 
@@ -83,7 +86,7 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 |------|-----|-----------|-------|-----------|-------|-------|
 | Foam brushes, 2" (10-pack) | 1 pack | Home Depot | $4.97 | Dollar Tree (3-pack) | $1.25 | Disposable. One per session. |
 | Plastic mixing cups, 8 oz (10-pack) | 1 pack | Dollar Tree | $1.25 | Amazon | $3.99 | For mixing sensitizer |
-| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | For stretching muslin on backing board |
+| Binder clips, 1" (24-pack) | 1 pack | Office Depot | $2.49 | Dollar Tree | $1.25 | For mounting paper on backing board |
 | Nitrile gloves (box of 50) | 1 box | Home Depot | $7.98 | Amazon | $6.99 | Wear during coating and mixing |
 | Digital kitchen scale (0.1 g) | 1 | Amazon | $9.99 | Walmart | $8.98 | For weighing chemicals. Most kitchens already have one. |
 
@@ -117,16 +120,16 @@ The **Mike Ware New Cyanotype formula** — identical to the TBS-001 specificati
 
 | Category | Low | High |
 |----------|-----|------|
-| Box + construction | $18 | $20 |
+| Boxes + construction (×2) | $22 | $28 |
 | Pinhole materials | $8 | $15 |
 | Chemistry (without ammonium dichromate) | $25 | $35 |
 | Chemistry (with ammonium dichromate) | $37 | $45 |
-| Substrate (muslin) | $3 | $8 |
+| Substrate (watercolor paper) | $10 | $18 |
 | Tools + consumables | $8 | $14 |
 | Processing (wash basins) | $3 | $9 |
 | Safelight + light-seal | $4 | $7 |
-| **Total (without dichromate)** | **$69** | **$108** |
-| **Total (with dichromate)** | **$81** | **$120** |
+| **Total (without dichromate)** | **$80** | **$126** |
+| **Total (with dichromate)** | **$92** | **$136** |
 
 ### What the Minimum Order Gets You
 
@@ -136,7 +139,7 @@ The chemistry suppliers sell minimum quantities far larger than the PoC requires
 |----------|-----------|-----------|---------------|-------------------|
 | AmFe, 100 g | 100 g | 30 g | 70 g | ~45 more |
 | K₃[Fe(CN)₆], 100 g | 100 g | 8 g | 92 g | ~230 more |
-| Muslin, 2 yards | 2 yards | ~1.5 yards | 0.5 yard | ~4 more |
+| Paper (25-sheet bulk) | 25 sheets | 12 sheets | 13 sheets | 13 more |
 
 The leftover chemistry is enough for extended testing, workshops, or demonstrations.
 
@@ -144,16 +147,17 @@ The leftover chemistry is enough for extended testing, workshops, or demonstrati
 
 ## Sourcing Notes
 
-1. **Box:** Any standard 18×18×16" corrugated box works. If U-Haul is not nearby, Home Depot, Lowe's, and Staples all carry equivalent sizes. The key specification is the 18" depth (which becomes the focal length).
+1. **Boxes:** You need two identical 18×18×16" corrugated boxes. Buy both from the same supplier for a perfect match. U-Haul, Home Depot, Lowe's, and Staples all carry equivalent sizes. The key specification is the 18" depth (which becomes the focal length).
 
 2. **Drill bit:** The 1/32" size is stocked in the drill bit aisle at Home Depot, usually in a small-bits assortment pack. A single bit is ~$4. Buying a set of small bits ($8–12) gives you spares.
 
 3. **Chemistry lead time:** Bostick & Sullivan and Photographers' Formulary ship within 1–3 business days to most US addresses. Plan 5–7 days from order to delivery.
 
-4. **Muslin pre-wash:** Critical. New muslin has sizing (starch) that repels the sensitizer. Pre-wash twice in hot water with no detergent. Line dry. Iron flat before cutting.
+4. **Watercolor paper:** Must be 100% cotton (rag), hot-press, 140 lb (300 gsm) minimum. Arches Aquarelle is the gold standard for cyanotype — widely available at Blick Art Materials and most art supply stores. No pre-treatment needed (unlike muslin, which requires pre-washing).
 
 5. **Substitutions:**
    - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5 mm hole — usable but slower exposure)
    - No foam brushes? A natural-hair watercolor brush or small paint roller works
    - No gaffer tape? Multiple layers of black electrical tape, though less durable
    - No foam-core board? Stiff cardboard from another box, doubled up
+   - No hot-press paper? Cold-press watercolor paper works but has visible texture in the print

@@ -346,7 +346,10 @@ ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
 leader(ax, prep_end_x + WALL_T / 2, BOX_H / 2,
        TOTAL_D + 60, BOX_H / 2 + 30,
-       "Extraction flap\n(hinged at top —\nopens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
+       "Extraction flap\n(opens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
+leader(ax, prep_end_x + WALL_T / 2, hinge_flap_y,
+       TOTAL_D + 60, hinge_flap_y + 40,
+       "Gaffer tape hinge", ha="left", color=C_HINGE, fs=FS_SM - 0.5)
 
 # View title
 ax.text((TOTAL_D + board_fold_end) / 2, BOX_H + 100, "SIDE CROSS-SECTION",

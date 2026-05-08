@@ -196,7 +196,7 @@ The backing board serves dual duty: it is the coating surface when folded down, 
 
 **Mounting:**
 
-1. Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face), between the two armholes.
+1. Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face).
 2. Center the aluminum pinhole plate over this hole on the inside of the box.
 3. Tape all four edges with black gaffer tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
 
@@ -209,9 +209,9 @@ A simple flap shutter:
 3. **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
 4. **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
 
-### 4.6 Arm Sleeves (on Pinhole Face)
+### 4.6 Arm Sleeves (on Prep Box End Face)
 
-The armholes are on the pinhole face, flanking the pinhole. This gives sealed arm access to the camera interior for mounting paper onto the backing board, checking tack-dry, or making adjustments — without opening the hinged flap or breaking the light seal.
+The armholes are on the far end of the prep box — the face opposite the pinhole. This is the operator's working side: the hinged flap folds down into the prep box toward this face, so both hands have direct access for coating paper, checking tack-dry, and mounting paper onto the backing board before folding the flap back up into the camera box.
 
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
@@ -220,11 +220,11 @@ The armholes are on the pinhole face, flanking the pinhole. This gives sealed ar
 
 **Procedure:**
 
-1. Cut two armholes on the pinhole face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered horizontally on the face, flanking the pinhole. The pinhole and its aluminum plate sit between them.
+1. Cut two armholes on the prep box end face (the 18 × 16" face opposite the pinhole), each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face.
 2. Cut two sleeve tubes from black fabric: each approximately 18 inches long and 6 inches in diameter. A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
 3. Insert one end of each sleeve into an armhole from the inside. Fold the fabric edge over the cardboard edge and tape it down with black gaffer tape, overlapping at least 2 inches on all sides.
 4. When in use, insert your arms and cinch rubber bands around your forearms to seal the sleeve openings.
-5. **Test:** With the flap upright and sealed, insert your arms through the sleeves and verify you can reach the backing board with both hands.
+5. **Test:** With the flap folded down, insert your arms through the sleeves and verify you can reach the full surface of the backing board with both hands.
 
 ### 4.7 Substrate: Watercolor Paper
 

@@ -267,29 +267,32 @@ ax.plot([0, flap_x], [ph_y, ph_y],
 ax.add_patch(mpatches.Rectangle((-30, ph_y - 50), 28, 100,
              facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=3))
 
-# ── Armholes on pinhole face (cross-section shows openings in left wall) ────
-# In side cross-section, the armholes appear as gaps in the left wall.
-# The sleeves project to the left (outward from the box).
+# ── Armholes on prep box end face (far right wall in cross-section) ─────────
+# The operator reaches into the prep box to coat the paper on the folded-down
+# flap, then pulls arms out and folds the flap up.
 SLEEVE_PROJ_XS = 80  # sleeve projection length in cross-section
+prep_wall_x = BOX_D + PREP_D - WALL_T  # inside edge of far right wall
+prep_wall_x_out = BOX_D + PREP_D       # outside edge
 for arm_y_center in [ph_y + SLEEVE_SPACING / 2, ph_y - SLEEVE_SPACING / 2]:
     arm_top = arm_y_center + SLEEVE_D / 2
     arm_bot = arm_y_center - SLEEVE_D / 2
     # Erase wall at armhole opening
-    ax.add_patch(mpatches.Rectangle((0, arm_bot), WALL_T, SLEEVE_D,
-                 facecolor=C_BOX, edgecolor="none", linewidth=0, alpha=0.3, zorder=3))
+    ax.add_patch(mpatches.Rectangle((prep_wall_x, arm_bot), WALL_T, SLEEVE_D,
+                 facecolor=C_BOX, edgecolor="none", linewidth=0, alpha=0.15, zorder=3))
     # Gap edges in wall
-    ax.plot([0, WALL_T], [arm_top, arm_top], color=C_OUT, lw=0.8, zorder=4)
-    ax.plot([0, WALL_T], [arm_bot, arm_bot], color=C_OUT, lw=0.8, zorder=4)
-    # Sleeve tube projecting outward (to the left)
-    ax.add_patch(mpatches.Rectangle((-SLEEVE_PROJ_XS, arm_bot),
+    ax.plot([prep_wall_x, prep_wall_x_out], [arm_top, arm_top], color=C_OUT, lw=0.8, zorder=4)
+    ax.plot([prep_wall_x, prep_wall_x_out], [arm_bot, arm_bot], color=C_OUT, lw=0.8, zorder=4)
+    # Sleeve tube projecting outward (to the right)
+    ax.add_patch(mpatches.Rectangle((prep_wall_x_out, arm_bot),
                  SLEEVE_PROJ_XS, SLEEVE_D,
                  facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
-    ax.plot([-SLEEVE_PROJ_XS, 0], [arm_top, arm_top],
+    ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_top, arm_top],
             color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
-    ax.plot([-SLEEVE_PROJ_XS, 0], [arm_bot, arm_bot],
+    ax.plot([prep_wall_x_out, prep_wall_x_out + SLEEVE_PROJ_XS], [arm_bot, arm_bot],
             color=C_SLEEVE, lw=1.0, ls="--", zorder=3)
     # Elastic band at wrist
-    ax.plot([-SLEEVE_PROJ_XS, -SLEEVE_PROJ_XS], [arm_bot + 8, arm_top - 8],
+    ax.plot([prep_wall_x_out + SLEEVE_PROJ_XS, prep_wall_x_out + SLEEVE_PROJ_XS],
+            [arm_bot + 8, arm_top - 8],
             color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=4)
 
 # ── Box labels ──────────────────────────────────────────────────────────────
@@ -311,11 +314,11 @@ leader(ax, WALL_T / 2, ph_y + 10, -PAD + 10, ph_y + 100,
        f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
-# Armhole sleeves leader (point at upper sleeve)
+# Armhole sleeves leader (point at upper sleeve on prep box end)
 upper_arm_y = ph_y + SLEEVE_SPACING / 2
-leader(ax, -SLEEVE_PROJ_XS / 2, upper_arm_y + SLEEVE_D / 2 + 3,
-       -PAD + 10, upper_arm_y + SLEEVE_D / 2 + 60,
-       f"Arm sleeve Ø{SLEEVE_D} mm\n(on pinhole face)", ha="right", fs=FS_SM - 0.5)
+leader(ax, prep_wall_x_out + SLEEVE_PROJ_XS / 2, upper_arm_y + SLEEVE_D / 2 + 3,
+       TOTAL_D + 100, upper_arm_y + SLEEVE_D / 2 + 60,
+       f"Arm sleeve Ø{SLEEVE_D} mm\n(on prep box face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, paper_x, (paper_y1 + paper_y2) / 2, TOTAL_D + 100, ph_y + 50,
        "Watercolor paper\non backing board\n(upright = film plane)", ha="left", color=C_CL)
 leader(ax, flap_x + flap_height / 2, flap_bottom + BACKING + 3,
@@ -338,7 +341,7 @@ ax.text(TOTAL_D / 2, BOX_H + 82,
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# BOTTOM-LEFT: Front view — pinhole face with armholes
+# BOTTOM-LEFT: Rear view — prep box end face with armholes
 # ══════════════════════════════════════════════════════════════════════════════
 ax = ax_front
 ax.set_facecolor(BG)
@@ -349,9 +352,9 @@ FPAD = 100
 ax.set_xlim(-FPAD, BOX_W + FPAD * 1.5)
 ax.set_ylim(-FPAD, BOX_H + FPAD)
 
-# Pinhole face outline (18" wide × 16" high)
+# Prep box end face outline (18" wide × 16" high)
 ax.add_patch(mpatches.Rectangle((0, 0), BOX_W, BOX_H,
-             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.3, zorder=1))
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.2, zorder=1))
 
 # Wall thickness
 for rect in [
@@ -363,30 +366,16 @@ for rect in [
     ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
                  facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
 
-# Pinhole at center
-ph_cx = BOX_W / 2
-ph_cy = BOX_H / 2
-ax.add_patch(plt.Circle((ph_cx, ph_cy), 5,
-             facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
-ax.plot([ph_cx - 10, ph_cx + 10], [ph_cy, ph_cy], color=C_PINHOLE, lw=0.8, zorder=6)
-ax.plot([ph_cx, ph_cx], [ph_cy - 10, ph_cy + 10], color=C_PINHOLE, lw=0.8, zorder=6)
-
-# Armholes flanking the pinhole (same vertical center, spaced horizontally)
+# Armholes centered on the face, spaced vertically
 arm_cx1 = BOX_W / 2 - SLEEVE_SPACING / 2
 arm_cx2 = BOX_W / 2 + SLEEVE_SPACING / 2
 arm_cy = BOX_H / 2
 
 for cx in [arm_cx1, arm_cx2]:
-    # Armhole (dark circle)
     ax.add_patch(plt.Circle((cx, arm_cy), SLEEVE_D / 2,
                  facecolor=C_SLEEVE, edgecolor=C_OUT, linewidth=1.2, alpha=0.8, zorder=4))
-    # Gaffer tape seal ring
     ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
                  facecolor=C_TAPE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
-
-# Aluminum plate around pinhole (small square)
-ax.add_patch(mpatches.Rectangle((ph_cx - 25, ph_cy - 25), 50, 50,
-             facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.6, alpha=0.4, zorder=3))
 
 # Dimensions
 draw_dim_h(ax, 0, BOX_W, -50, f"Width  {BOX_W} mm  (18\")", offset=12)
@@ -398,20 +387,35 @@ draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
            f"Ø{SLEEVE_D} mm (4\")", offset=10, fs=FS_SM - 0.5)
 
 # Leaders
-leader(ax, ph_cx, ph_cy + 8, ph_cx, ph_cy + 80,
-       f"Pinhole  Ø{PH_D} mm", ha="center", color=C_PINHOLE, fs=FS_SM - 0.5)
 leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
        f"Armhole Ø{SLEEVE_D} mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
 leader(ax, arm_cx1 + SLEEVE_D / 2 + 15, arm_cy, BOX_W + 80, arm_cy + 70,
        "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
-leader(ax, ph_cx + 20, ph_cy - 20, ph_cx + 80, ph_cy - 70,
-       "Aluminum plate\n(beverage can)", ha="left", color=C_DIM, fs=FS_SM - 0.5)
+
+# Spec table
+spec_x = BOX_W + 80
+spec_y = BOX_H - 60
+specs = [
+    f"Focal length:  {FOCAL} mm",
+    f"Pinhole:  Ø{PH_D} mm",
+    f"f-number:  f/{F_NO}",
+    f"Film plane:  {FP_W} × {FP_H} mm",
+    f"Exposure:  ~10 min (full sun)",
+    "Substrate:  WC paper 300 gsm",
+    "Process:  Ware New Cyanotype",
+]
+ax.text(spec_x, spec_y + 18, "SPECIFICATION", ha="left", va="bottom",
+        fontsize=FS_SM + 0.5, fontweight="bold", color=C_OUT)
+ax.plot([spec_x, spec_x + 200], [spec_y + 14, spec_y + 14], color=C_OUT, lw=0.8)
+for i, line in enumerate(specs):
+    ax.text(spec_x, spec_y - i * 18, line, ha="left", va="top",
+            fontsize=FS_SM - 0.5, color=C_DIM)
 
 # View title
-ax.text(BOX_W / 2, BOX_H + 85, "FRONT VIEW — PINHOLE FACE",
+ax.text(BOX_W / 2, BOX_H + 85, "REAR VIEW — PREP BOX FACE",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(BOX_W / 2, BOX_H + 70,
-        "Pinhole centered, armholes flanking",
+        "Operator side — two armholes for coating access",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -477,35 +481,39 @@ ax.add_patch(mpatches.Rectangle((tray_plan_x, tray_plan_y), tray_plan_w, tray_pl
 ax.add_patch(plt.Circle((WALL_T / 2, BOX_W / 2), 5,
              facecolor=C_PINHOLE, edgecolor=C_OUT, linewidth=0.8, zorder=5))
 
-# Armholes on pinhole face (left wall) — shown as gaps in wall
+# Armholes on prep box end face (right wall) — shown as gaps in wall
 arm_plan_cy1 = BOX_W / 2 - SLEEVE_SPACING / 2
 arm_plan_cy2 = BOX_W / 2 + SLEEVE_SPACING / 2
+right_wall_x = TOTAL_D - WALL_T  # inner edge of right wall
+right_wall_xo = TOTAL_D          # outer edge of right wall
 
 for cy in [arm_plan_cy1, arm_plan_cy2]:
     # Gap in wall
     ax.add_patch(mpatches.Rectangle(
-        (0, cy - SLEEVE_D / 2), WALL_T, SLEEVE_D,
+        (right_wall_x, cy - SLEEVE_D / 2), WALL_T, SLEEVE_D,
         facecolor=BG, edgecolor=BG, linewidth=0, zorder=3))
     # Wall edges at gap
-    ax.plot([0, WALL_T], [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
+    ax.plot([right_wall_x, right_wall_xo], [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
             color=C_OUT, lw=0.8, zorder=4)
-    ax.plot([0, WALL_T], [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
+    ax.plot([right_wall_x, right_wall_xo], [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
             color=C_OUT, lw=0.8, zorder=4)
     # Hidden circle (dashed)
-    ax.add_patch(plt.Circle((WALL_T / 2, cy), SLEEVE_D / 2,
+    ax.add_patch(plt.Circle((right_wall_x + WALL_T / 2, cy), SLEEVE_D / 2,
                  facecolor="none", edgecolor=C_SLEEVE, linewidth=0.8,
                  linestyle="--", alpha=0.5, zorder=3))
-    # Sleeve projection (extending left, outside box)
+    # Sleeve projection (extending right, outside box)
     sleeve_proj = 80
     ax.add_patch(mpatches.Rectangle(
-        (-sleeve_proj, cy - SLEEVE_D / 2), sleeve_proj, SLEEVE_D,
+        (right_wall_xo, cy - SLEEVE_D / 2), sleeve_proj, SLEEVE_D,
         facecolor=C_SLEEVE, edgecolor="none", alpha=0.08, zorder=1))
-    ax.plot([-sleeve_proj, 0], [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
+    ax.plot([right_wall_xo, right_wall_xo + sleeve_proj],
+            [cy - SLEEVE_D / 2, cy - SLEEVE_D / 2],
             color=C_SLEEVE, lw=0.8, ls="--", zorder=2)
-    ax.plot([-sleeve_proj, 0], [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
+    ax.plot([right_wall_xo, right_wall_xo + sleeve_proj],
+            [cy + SLEEVE_D / 2, cy + SLEEVE_D / 2],
             color=C_SLEEVE, lw=0.8, ls="--", zorder=2)
     # Elastic
-    ax.plot([-sleeve_proj, -sleeve_proj],
+    ax.plot([right_wall_xo + sleeve_proj, right_wall_xo + sleeve_proj],
             [cy - SLEEVE_D / 2 + 8, cy + SLEEVE_D / 2 - 8],
             color=C_PINHOLE, lw=2.0, solid_capstyle="round", zorder=3)
 
@@ -522,6 +530,8 @@ ax.text(BOX_D + PREP_D / 2, BOX_W / 2, "PREP", ha="center", va="center",
 # Face labels
 ax.text(WALL_T / 2, BOX_W + 20, "PINHOLE\nFACE", ha="center", va="bottom",
         fontsize=FS_SM - 1, color=C_PINHOLE, fontweight="bold")
+ax.text(TOTAL_D - WALL_T / 2, BOX_W + 20, "PREP\nFACE", ha="center", va="bottom",
+        fontsize=FS_SM - 1, color=C_SLEEVE, fontweight="bold")
 
 # Dimensions
 draw_dim_h(ax, 0, TOTAL_D, BOX_W + 45, f"Total  {TOTAL_D} mm  (36\")", offset=10, fs=FS_SM - 0.5)
@@ -535,14 +545,15 @@ leader(ax, BOX_D, BOX_W / 2, BOX_D + flap_plan_len + 20, BOX_W + 30,
 leader(ax, tray_plan_x + tray_plan_w / 2, tray_plan_y + tray_plan_h,
        tray_plan_x + tray_plan_w / 2, BOX_W + 30,
        "Tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
-leader(ax, -sleeve_proj / 2, arm_plan_cy1, -PPAD + 5, arm_plan_cy1 - 40,
-       "Sleeves", ha="right", fs=FS_SM - 0.5)
+leader(ax, right_wall_xo + sleeve_proj / 2, arm_plan_cy1,
+       TOTAL_D + sleeve_proj + 20, arm_plan_cy1 - 40,
+       "Sleeves", ha="left", fs=FS_SM - 0.5)
 
 # View title
 ax.text(TOTAL_D / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(TOTAL_D / 2, BOX_W + 65,
-        "Two-box arrangement, armholes on pinhole face",
+        "Two-box arrangement, armholes on prep box end face",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 

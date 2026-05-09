@@ -191,17 +191,24 @@ hinge_flap_y = BOX_H - WALL_T
 ax.add_patch(mpatches.Rectangle((prep_end_x - 2, hinge_flap_y - 3), WALL_T + 4, 6,
              facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
 
-# Extraction flap motion arc — swings outward from top hinge
-flap_arc_r = BOX_H * 0.3
-flap_hinge_x = prep_end_x + WALL_T / 2
-flap_arc = Arc((flap_hinge_x, hinge_flap_y), flap_arc_r * 2, flap_arc_r * 2,
-               angle=0, theta1=-90, theta2=-5,
+# Extraction flap motion arc — same size as board arc, attached to flap bottom
+flap_hinge_cx = prep_end_x + WALL_T / 2
+flap_arc_r = BOARD_H * 0.25  # same size as board motion arc
+flap_arc_cy = flap_arc_r     # center so arc touches flap bottom (y=0) at theta=-90°
+flap_t1, flap_t2 = -90, 0    # quarter circle (closed → fully open)
+flap_arc = Arc((flap_hinge_cx, flap_arc_cy), flap_arc_r * 2, flap_arc_r * 2,
+               angle=0, theta1=flap_t1, theta2=flap_t2,
                color=C_FLAP, lw=1.5, ls="--", zorder=9)
 ax.add_patch(flap_arc)
-# Arrow at the horizontal end (flap open position)
-ax.annotate("", xy=(flap_hinge_x + flap_arc_r, hinge_flap_y),
-            xytext=(flap_hinge_x + flap_arc_r - 12, hinge_flap_y + 10),
+# Arrow at the end furthest from the flap (theta2 = open-direction end)
+flap_tip_x = flap_hinge_cx + flap_arc_r * math.cos(math.radians(flap_t2))
+flap_tip_y = flap_arc_cy + flap_arc_r * math.sin(math.radians(flap_t2))
+flap_txt_x = flap_hinge_cx + flap_arc_r * math.cos(math.radians(flap_t2 - 8))
+flap_txt_y = flap_arc_cy + flap_arc_r * math.sin(math.radians(flap_t2 - 8))
+ax.annotate("", xy=(flap_tip_x, flap_tip_y), xytext=(flap_txt_x, flap_txt_y),
             arrowprops=dict(arrowstyle="->", color=C_FLAP, lw=1.5), zorder=9)
+ax.text(flap_tip_x + 5, flap_tip_y, "Flap opens\n(daylight safe)",
+        ha="left", va="center", fontsize=FS_SM - 0.5, color=C_FLAP)
 
 # ── Photo tray (Paterson 12×16") inside prep box ──────────────────────────
 ax.add_patch(mpatches.Rectangle((tray_x, WALL_T), TRAY_EXT_D, TRAY_RIM,
@@ -264,13 +271,20 @@ ax.add_patch(mpatches.Rectangle((hinge_x - hinge_w / 2, hinge_y - BACKING - 2),
 
 # ── Motion arc (board folds down from upright to horizontal over tray) ────
 arc_r = BOARD_H * 0.25
+arc_t1, arc_t2 = -5, 90  # degrees
 arc = Arc((hinge_x, hinge_y), arc_r * 2, arc_r * 2,
-          angle=0, theta1=-5, theta2=90,
+          angle=0, theta1=arc_t1, theta2=arc_t2,
           color=C_MOTION, lw=1.5, ls="--", zorder=7)
 ax.add_patch(arc)
-ax.annotate("", xy=(hinge_x + arc_r, hinge_y),
-            xytext=(hinge_x + arc_r - 12, hinge_y + 10),
+# Arrow at the end furthest from camera box (theta1 = horizontal end)
+arc_tip_x = hinge_x + arc_r * math.cos(math.radians(arc_t1))
+arc_tip_y = hinge_y + arc_r * math.sin(math.radians(arc_t1))
+arc_txt_x = hinge_x + arc_r * math.cos(math.radians(arc_t1 + 10))
+arc_txt_y = hinge_y + arc_r * math.sin(math.radians(arc_t1 + 10))
+ax.annotate("", xy=(arc_tip_x, arc_tip_y), xytext=(arc_txt_x, arc_txt_y),
             arrowprops=dict(arrowstyle="->", color=C_MOTION, lw=1.5), zorder=7)
+ax.text(arc_tip_x + 5, arc_tip_y + 20, "Board folds down\n(prep position)",
+        ha="left", va="center", fontsize=FS_SM - 0.5, color=C_MOTION)
 
 # ── Pinhole (on left wall) ──────────────────────────────────────────────────
 ax.add_patch(plt.Circle((WALL_T / 2, ph_y), 6,
@@ -333,8 +347,8 @@ leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
        "Paper on board\n(film plane)", ha="center", color=C_CL)
 board_fold_mid = hinge_x + BOARD_H / 2
-leader(ax, board_fold_mid, hinge_y - 3,
-       board_fold_mid, hinge_y + 80,
+leader(ax, hinge_x + BOARD_H - 10, hinge_y - 8,
+       hinge_x + BOARD_H + 20, hinge_y + 80,
        "Board folded down\n(over tray into prep space —\nmount paper on this surface)", ha="center", color=C_MOTION)
 leader(ax, hinge_x, hinge_y - BACKING, hinge_x + 30, hinge_y - 50,
        "Duct tape hinge\n(at tray near rim)", ha="left", color=C_HINGE)
@@ -677,7 +691,7 @@ draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
        "Board (upright)\nfilm plane", ha="right", color=C_MOTION, fs=FS_SM - 0.5)
-leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 130, tray_plan_y + TRAY_EXT_W - 50,
+leader(ax, tray_plan_x + TRAY_EXT_D / 2 + 100, tray_plan_y + TRAY_EXT_W - 50,
        tray_plan_x + TRAY_EXT_D / 2 + 150, BOX_W + 30,
        "Photo tray", ha="center", color=C_TRAY, fs=FS_SM - 0.5)
 leader(ax, board_plan_x + BOARD_H / 2, BOX_W / 2 + BOARD_W / 2,

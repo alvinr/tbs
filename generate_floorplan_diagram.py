@@ -185,11 +185,11 @@ def floor_plan():
         ax.plot([hx, hx + 60], [FP_Y, FP_Y], color=C_FILM, lw=1.5, zorder=5, alpha=0.5)
     ax.text(PH_X, FP_Y + 30,
             f"MUSLIN IMAGE PLANE  ({FP_W}×{FP_H}mm)  Y={FP_Y}mm",
-            color=C_FILM, fontsize=7, ha="center", va="bottom", **FONT)
+            color=C_FILM, fontsize=7, ha="center", va="bottom", **FONT, backgroundcolor=BG)
 
     # ── Pinhole ───────────────────────────────────────────────────────────────
-    penetration(ax, PH_X, 0, r=80, col=C_PINHOLE,
-                label=f"PINHOLE\nX={PH_X}mm\nØ{PH_D}mm",
+    penetration(ax, PH_X, 75, r=80, col=C_PINHOLE,
+                label=f"PINHOLE X={PH_X}mm Ø{PH_D}mm",
                 label_offset=(0, -225))
 
     # Optical axis arrow
@@ -326,18 +326,18 @@ def floor_plan():
             color=C_DIM, fontsize=5.5, ha="center", va="center",
             rotation=90, **FONT, alpha=0.8, zorder=5)
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
-            WALKWAY_NEAR_YD + WALKWAY_W / 2,
+            WALKWAY_FAR_YD + WALKWAY_W / 2,
             f"WALKWAY  {WALKWAY_W}mm  (REMOVABLE GRATED · {WALKWAY_H}mm DECK HEIGHT)",
-            color=C_DIM, fontsize=5.5, ha="center", va="center",
+            color=C_DIM, fontsize=5.5, ha="center", va="center", backgroundcolor=BG,
             **FONT, alpha=0.8, zorder=5)
 
     # ── Dimension annotations ─────────────────────────────────────────────────
     dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25)
     dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
-    dim_h(ax, 0, ZONE_L_END, -PAD_B + 475, f"{ZONE_L_END}mm LEFT ZONE", offset=25, fs=6)
-    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 475, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6)
-    dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 475, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6)
+    dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm LEFT ZONE", offset=25, fs=6)
+    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 555, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6)
+    dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 555, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6)
     dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6)
     dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6)
 
@@ -368,19 +368,20 @@ def floor_plan():
         ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),
     ]
     n_items = len(legend_items)
-    n_rows = (n_items + 1) // 2           # 7 rows for 13 items
-    row_h = 46; col_w = 2800              # column width in mm coords
-    box_w = col_w * 2 + 200               # total legend box width
+    n_cols = 3
+    n_rows = (n_items + n_cols - 1) // n_cols  # rows per column
+    row_h = 46; col_w = 1900              # column width in mm coords
+    box_w = col_w * n_cols + 200          # total legend box width
     box_h = n_rows * row_h + 50           # total legend box height
     leg_x0 = 0                            # align with container left wall
-    leg_y0 = -PAD_B + 10                  # near bottom of drawing
+    leg_y0 = -PAD_B + 250                 # near bottom of drawing
     ax.add_patch(Rectangle((leg_x0, leg_y0), box_w, box_h,
                             fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=8))
     ax.text(leg_x0 + box_w / 2, leg_y0 + box_h - 16, "LEGEND",
             color=C_OUT, fontsize=7.5, ha="center", va="center",
             fontweight="bold", **FONT, zorder=9)
     for i, (col, txt) in enumerate(legend_items):
-        c = i // n_rows                   # column 0 or 1
+        c = i // n_rows                   # column 0, 1, or 2
         r = i % n_rows                    # row within column
         ix = leg_x0 + 20 + c * col_w
         iy = leg_y0 + box_h - 50 - r * row_h

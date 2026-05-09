@@ -104,7 +104,7 @@ def floor_plan():
     # Left end zone (X=0–ZONE_L_END, all depths)
     ax.add_patch(Rectangle((0, 0), ZONE_L_END, C_WID,
                             fc=C_ZONE_L, ec="none", zorder=1))
-    ax.text(ZONE_L_END/1.8, C_WID*1.06,
+    ax.text(0, C_WID*1.06,
             f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\n(shadow-free,\nall depths)",
             color="#C07030", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
@@ -124,12 +124,6 @@ def floor_plan():
             f"RIGHT END ZONE\nX={ZONE_R_START}–{C_LEN}mm\n(shadow-free,\nall depths)",
             color="#3060A0", fontsize=6.5, ha="center", va="center",
             **FONT, alpha=0.7, fontweight="bold", zorder=2)
-
-    # Zone boundary lines
-    for bx, lbl in [(ZONE_L_END, f"X={ZONE_L_END}"), (ZONE_R_START, f"X={ZONE_R_START}")]:
-        ax.plot([bx, bx], [0, C_WID], color=C_DIM, lw=1.2, ls="--", zorder=4, alpha=0.7)
-        ax.text(bx, C_WID + 60, lbl, color=C_DIM, fontsize=6.5,
-                ha="center", va="bottom", **FONT)
 
     # ── Optical cone boundary lines (plan view) ───────────────────────────────
     # Left ray: PH_X,0 → FP_X_L,FP_Y
@@ -211,8 +205,8 @@ def floor_plan():
         (0, DRUM_FP_CY), DRUM_R, -90, 90,
         fc="#FFE8D0", ec=C_PINHOLE, lw=1.2, alpha=0.6, zorder=5)
     ax.add_patch(drum_fp)
-    ax.text(DRUM_R + 60, DRUM_FP_CY,
-            f"DRUM footprint\nØ{DRUM_D}mm",
+    ax.text(DRUM_R - 160, DRUM_FP_CY,
+            f"DRUM\nfootprint\nØ{DRUM_D}mm",
             color=C_PINHOLE, fontsize=5.5, ha="left", va="center", **FONT, zorder=6)
     penetration(ax, 0, DRUM_FP_CY, r=80,
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
@@ -320,11 +314,11 @@ def floor_plan():
                             alpha=WK_ALPHA, zorder=2))
 
     # Label the walkway
-    ax.text(WALKWAY_LEFT_X + WALKWAY_W / 2,
+    ax.text(WALKWAY_RIGHT_X + WALKWAY_W / 2,
             C_WID / 2,
-            f"WALKWAY\n{WALKWAY_W}mm",
+            f"WALKWAY {WALKWAY_W}mm",
             color=C_DIM, fontsize=5.5, ha="center", va="center",
-            rotation=90, **FONT, alpha=0.8, zorder=5)
+            rotation=0, **FONT, backgroundcolor=BG, alpha=0.8, zorder=5)
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
             WALKWAY_FAR_YD + WALKWAY_W / 2,
             f"WALKWAY  {WALKWAY_W}mm  (REMOVABLE GRATED · {WALKWAY_H}mm DECK HEIGHT)",
@@ -335,7 +329,7 @@ def floor_plan():
     dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25)
     dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
-    dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm LEFT ZONE", offset=25, fs=6)
+    dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm\nLEFT ZONE", offset=25, fs=6)
     dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 555, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6)
     dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 555, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6)
     dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6)
@@ -407,10 +401,6 @@ def floor_plan():
             f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color="#20A020", fontsize=6.5, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)
-#     ax.text(EGRESS_ARROW_X, EGRESS_MID_Y - 60,
-#             "(panel open 180°, drum swings out — no obstructions)",
-#             color="#20A020", fontsize=5.5, ha="center", va="top",
-#             **FONT, alpha=0.8, zorder=10)
 
     title_block(ax, "SHEET 1 OF 1",
                 drawing_title="CONTAINER FLOOR PLAN",
@@ -649,7 +639,7 @@ def egress_detail():
                 arrowprops=dict(arrowstyle="->", color=C_EGRESS, lw=2.8,
                                 linestyle=":", mutation_scale=15),
                 zorder=10)
-    ax.text(ZONE_L_END / 2, EGRESS_MID_Y + 70,
+    ax.text(ZONE_L_END / 2, EGRESS_MID_Y + 120,
             f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color=C_EGRESS, fontsize=9, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)

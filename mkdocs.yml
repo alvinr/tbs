@@ -52,9 +52,6 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - "TBS-002 (Mini-TBS)":
-    - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
-    - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
   - Proposal: funding-proposal.md
   - "Costing": project-cost-breakdown.md
   - "Operating Manual": operating-manual.md
@@ -72,6 +69,9 @@ nav:
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md
+  - "PoC":
+    - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
+    - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
   - Research:
     - "Optics Report": pinhole-optics-report.md
     - "Container Optics": pinhole-option-b-optics.md

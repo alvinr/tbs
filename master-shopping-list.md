@@ -257,8 +257,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Leviton / Amazon | ~$25 |
 | Solar panel ground mount frame | Tilt frame, 30° | 1 | Renogy / Amazon | ~$80 |
 | PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
-| Aluminum plate 300×200×3mm | Flush-mount face plate, power panel | 1 | McMaster-Carr / Online Metals | ~$15 |
-| Neoprene gasket 300×200×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr / Amazon | ~$5 |
+| Aluminum plate 340×240×3mm | Flush-mount face plate, power panel | 1 | McMaster-Carr / Online Metals | ~$18 |
+| Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr / Amazon | ~$6 |
 | M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr / Home Depot | ~$5 |
 | MC4 bulkhead connector pairs | IP67 panel-mount | 3 pairs | Amazon / Renogy | ~$25 |
 

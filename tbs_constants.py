@@ -138,10 +138,10 @@ EVAP_H     = 800     # evap cooler height (mm)         [unchanged]
 
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
-PWR_PANEL_W = 300    # power panel width (mm)
-PWR_PANEL_H = 200    # power panel height (mm)
+PWR_PANEL_W = 340    # face plate width (mm)
+PWR_PANEL_H = 240    # face plate height (mm)
 PWR_PANEL_D = 3      # face plate thickness (mm) — flush-mount, no protrusion
-PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 10mm smaller than plate each side
+PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────

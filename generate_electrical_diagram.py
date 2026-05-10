@@ -705,7 +705,7 @@ def draw_sheet2():
            fs=6.5, color=C_EVAP)
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
-           PP_DX + PP_DW * 3, PP_DY,
+           PP_DX + PP_DW * 3, PP_DY - 0.5,
            "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
            fs=6.5, color="#806030", ha="center")
 

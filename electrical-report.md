@@ -116,8 +116,8 @@ The solar PV inputs and shore power inlet share a single **flush-mount power pan
 
 | Parameter | Specification |
 |-----------|--------------|
-| Face plate | 3mm aluminum, 300×200mm |
-| Wall cutout | 280×180mm (10mm overlap each side for gasket seal) |
+| Face plate | 3mm aluminum, 340×240mm |
+| Wall cutout | 280×180mm (30mm overlap each side for secure bolting) |
 | Weatherseal | 3mm neoprene gasket between plate and wall |
 | Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |

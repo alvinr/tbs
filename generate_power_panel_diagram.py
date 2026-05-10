@@ -171,7 +171,7 @@ def draw_sheet1():
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(NEMA_X + NEMA_W + 5), sy(NEMA_Y + NEMA_H / 2),
-           sx(nema_cx + NEMA_W * 2 + 5), sy(NEMA_Y - 10),
+           sx(nema_cx + NEMA_W * 3), sy(NEMA_Y - 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="center", va="top", arrow_style="-|>", font=FONT)
 
@@ -325,7 +325,7 @@ def draw_sheet1():
 
     # Interior destination labels
     int_label_x = wall_x + wall_thick + int_pad - 25
-    ax_b.text(bx(int_label_x), by(cut_bot + mc4_spacing),
+    ax_b.text(bx(int_label_x), by(cut_bot + mc4_spacing + 16),
               "→ MPPT", ha="left", va="center", fontsize=7,
               color=C_MC4, fontweight="bold", **FONT, zorder=7)
     ax_b.text(bx(int_label_x), by(nema_cy),
@@ -355,13 +355,13 @@ def draw_sheet1():
                f"{CUT_H}mm\nCUTOUT", offset=bx(5), fs=6, right=True, font=FONT)
 
     # Leader labels
-    leader(ax_b, bx(gasket_x - gasket_t_draw / 2),
+    leader(ax_b, bx(gasket_x - gasket_t_draw / 2 + 3),
            by(cut_top + 5),
-           bx(gasket_x - 40), by(cut_top + 5),
+           bx(gasket_x - 60), by(cut_top - 5),
            "NEOPRENE GASKET\n3mm — WEATHERSEAL",
            fs=6, color=C_GASKT, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, bx(plate_x + PLATE_T / 2), by(cut_top + 20),
+    leader(ax_b, bx(plate_x + PLATE_T / 2), by(cut_top + 23),
            bx(plate_x - 25), by(sec_h + 40),
            f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\nFLUSH WITH WALL",
            fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
@@ -385,7 +385,7 @@ def draw_sheet1():
     ax_c.set_xlim(0, 22)
     ax_c.set_ylim(0, 4.5)
 
-    ax_c.text(10, 4.6, "VIEW C — WIRING SCHEMATIC",
+    ax_c.text(8.75, 4.6, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
 

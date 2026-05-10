@@ -273,22 +273,29 @@ def draw_sheet1():
 
     # Mounting bolts (top and bottom, through plate + gasket + wall)
     bolt_positions = [cut_bot - 12, cut_top + 12]
-    bolt_shaft_d = 2       # M6 shaft shown as line thickness
-    bolt_head_w = 3        # bolt head thickness (depth axis)
-    bolt_head_h = 4        # bolt head height (across-flats)
-    nut_w = 3              # nut thickness
-    nut_h = 4              # nut height
+    # Scale bolt proportionally: plate is 3mm drawn as plate_t_draw,
+    # so 1mm = plate_t_draw/3.  M6 shaft = 6mm, head = 10mm AF, 4mm thick.
+    mm_unit = plate_t_draw / 3.0   # drawing units per mm
+    bolt_shaft_h = 6 * mm_unit    # M6 = 6mm diameter in section
+    bolt_head_w = 4 * mm_unit     # head thickness ~4mm
+    bolt_head_h = 10 * mm_unit    # head across-flats ~10mm
+    nut_w = 5 * mm_unit           # nut thickness ~5mm
+    nut_h = 10 * mm_unit          # nut across-flats ~10mm
     for by_pos in bolt_positions:
         # Bolt shaft — plate through to nut
-        ax_b.plot([bx(plate_x - bolt_head_w), bx(wall_x + wall_thick + nut_w)],
-                  [by(by_pos), by(by_pos)],
-                  color=C_DIM, lw=1.5, zorder=7)
+        draw_rect(ax_b, bx(plate_x - bolt_head_w),
+                  by(by_pos - bolt_shaft_h / 2),
+                  bx(plate_t_draw + gasket_t_draw + wall_thick + bolt_head_w + nut_w),
+                  by(bolt_shaft_h),
+                  fc=C_STEEL, color=C_OUT, lw=0.6, zorder=7)
         # Bolt head (exterior side of plate)
-        draw_rect(ax_b, bx(plate_x - bolt_head_w), by(by_pos - bolt_head_h / 2),
+        draw_rect(ax_b, bx(plate_x - bolt_head_w),
+                  by(by_pos - bolt_head_h / 2),
                   bx(bolt_head_w), by(bolt_head_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
         # Nut (interior side of wall)
-        draw_rect(ax_b, bx(wall_x + wall_thick), by(by_pos - nut_h / 2),
+        draw_rect(ax_b, bx(wall_x + wall_thick),
+                  by(by_pos - nut_h / 2),
                   bx(nut_w), by(nut_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
 
@@ -326,12 +333,12 @@ def draw_sheet1():
     # Leader labels
     leader(ax_b, bx(gasket_x - gasket_t_draw / 2),
            by(cut_top + 5),
-           bx(gasket_x - 30), by(cut_top + 35),
+           bx(gasket_x - 40), by(cut_top + 5),
            "NEOPRENE GASKET\n3mm — WEATHERSEAL",
            fs=6, color=C_GASKT, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, bx(plate_x + plate_t_draw / 2), by(cut_top + 25),
-           bx(plate_x - 35), by(sec_h + 40),
+    leader(ax_b, bx(plate_x + PLATE_T / 2), by(cut_top + 20),
+           bx(plate_x - 25), by(sec_h + 40),
            f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\nFLUSH WITH WALL",
            fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
 

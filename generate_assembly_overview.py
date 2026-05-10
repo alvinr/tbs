@@ -644,11 +644,13 @@ ax2.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_B_H - FAN_HH//2), 60, FAN_HH,
 ax2.text(C_LEN - 30, FAN_B_H, "FAN\nOUT", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=7)
 
-# Fan cross-ventilation arrow (arched)
+# Fan cross-ventilation arrow (arched, behind fans but arrow tip visible)
 ax2.annotate("", xy=(C_LEN - 60, FAN_B_H), xytext=(60, FAN_A_H),
-            arrowprops=dict(arrowstyle="-|>", color=C_FAN, lw=1.8,
+            arrowprops=dict(arrowstyle="-|>,head_length=1.0,head_width=0.6",
+                            color=C_FAN, lw=1.8,
                             linestyle=(0, (6, 3, 1, 3)),
-                            connectionstyle="arc3,rad=-0.25"), zorder=4)
+                            connectionstyle="arc3,rad=-0.25",
+                            mutation_scale=15), zorder=8)
 ax2.text((C_LEN)/2 - 1200, (FAN_A_H + FAN_B_H)/2 - 200,
         "Cross-ventilation diagonal\nlow IN → high OUT", ha="center",
         fontsize=FS_SM - 1, color=C_FAN, style="italic", zorder=5)

@@ -212,23 +212,20 @@ def floor_plan():
     equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP,
                "PUMP\nMFD.", zorder=7, alpha=0.95)
 
-    # External power panel (flush-mount, exterior of pinhole wall — ghost)
+    # External power panel (flush-mount, exterior of pinhole wall)
     PP_DEPTH = 60   # schematic depth on exterior face
     ax.add_patch(Rectangle(
         (PWR_PANEL_X, -WALL - PP_DEPTH), PWR_PANEL_W, PP_DEPTH,
-        fc="none", ec=C_ALUM, lw=1.2, ls=(0, (5, 3)),
-        alpha=0.7, zorder=6))
+        fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.9, zorder=6))
     # Wall cutout / penetration line
     cut_x = PWR_PANEL_X + (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) / 2
     ax.add_patch(Rectangle(
         (cut_x, -WALL), PWR_PANEL_CUTOUT_W, WALL,
-        fc="none", ec=C_DIM, lw=0.8, ls=(0, (3, 2)),
-        alpha=0.5, zorder=6))
+        fc="white", ec=C_OUT, lw=0.8, alpha=0.7, zorder=6))
     ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - PP_DEPTH / 2,
             "EXT PWR\nPANEL",
-            ha="center", va="center", fontsize=5, color=C_ALUM,
-            style="italic", fontweight="bold", alpha=0.7,
-            **FONT, zorder=7)
+            ha="center", va="center", fontsize=5, color=C_OUT,
+            fontweight="bold", **FONT, zorder=7)
 
     # ── RIGHT END ZONE — 4× IBC in 2×2 stack ────────────────────────────────
     # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom

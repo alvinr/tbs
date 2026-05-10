@@ -194,18 +194,43 @@ def draw_sheet1():
     def bx(mm): return mm * Sb
     def by(mm): return mm * Sb
 
-    # Layout positions (mm in section coords)
-    wall_x = 100          # wall exterior face X
-    wall_thick = 40       # exaggerated wall thickness for visibility
-    plate_t_draw = 12     # exaggerated plate thickness for visibility
-    gasket_t_draw = 6     # exaggerated gasket thickness
-    conn_depth = 50       # connector bodies protrude into interior
+    # All vertical dimensions use a consistent mm_unit so that the plate
+    # (3mm thick on depth axis), bolts (M6 = 6mm shaft), cutout (180mm),
+    # and plate height (200mm) are all proportionally correct.
+    #
+    # Depth axis (horizontal) is exaggerated for readability:
+    #   plate_t_draw and wall_thick are NOT to the same scale as height.
 
-    # Cutout height (centered in wall section)
-    sec_h = 160           # section view height
-    cut_bot = 30          # cutout bottom in section
-    cut_top = cut_bot + 100  # cutout top in section
+    wall_x = 100          # wall exterior face X position
+    wall_thick = 40       # exaggerated wall thickness (depth axis)
+    plate_t_draw = 12     # exaggerated plate thickness (depth axis)
+    gasket_t_draw = 6     # exaggerated gasket thickness (depth axis)
+    conn_depth = 50       # connector body protrusion (depth axis)
 
+    # Vertical scale: 1 mm_v = real mm in the height direction
+    mm_v = 0.7            # drawing units per real mm (height axis)
+
+    # Derived vertical positions from real dimensions
+    plate_h_draw = PLATE_H * mm_v         # 200mm plate height
+    cut_h_draw = CUT_H * mm_v             # 180mm cutout height
+    plate_bot = 0                          # plate bottom edge
+    plate_top = plate_h_draw               # plate top edge
+    cut_bot = (plate_h_draw - cut_h_draw) / 2   # cutout centered in plate
+    cut_top = cut_bot + cut_h_draw
+    mount_inset_draw = MOUNT_INSET * mm_v  # 15mm bolt inset from plate edge
+
+    # Bolt positions (15mm from plate edge = well within plate)
+    bolt_positions = [plate_bot + mount_inset_draw,
+                      plate_top - mount_inset_draw]
+
+    # Bolt dimensions (proportional to plate via mm_v)
+    bolt_shaft_h = 6 * mm_v      # M6 = 6mm diameter
+    bolt_head_w = 4 * mm_v * (plate_t_draw / (3 * mm_v))  # depth-axis exaggerated
+    bolt_head_h = 10 * mm_v      # 10mm across-flats
+    nut_w = 5 * mm_v * (plate_t_draw / (3 * mm_v))        # depth-axis exaggerated
+    nut_h = 10 * mm_v            # 10mm across-flats
+
+    sec_h = plate_h_draw
     ext_pad = 80
     int_pad = 180
     ax_b.set_xlim(bx(-ext_pad), bx(wall_x + wall_thick + int_pad))
@@ -227,62 +252,52 @@ def draw_sheet1():
 
     # Cutout opening (clear)
     draw_rect(ax_b, bx(wall_x), by(cut_bot), bx(wall_thick),
-              by(cut_top - cut_bot),
+              by(cut_h_draw),
               fc="white", color=C_OUT, lw=1.0, zorder=2)
 
-    # Gasket (between plate and wall exterior face)
+    # Gasket (between plate and wall exterior face, around cutout perimeter)
     gasket_x = wall_x - gasket_t_draw
+    gasket_strip_h = (plate_h_draw - cut_h_draw) / 2 + 3 * mm_v  # overlap cutout edge
     # Top gasket strip
-    draw_rect(ax_b, bx(gasket_x), by(cut_top - 8), bx(gasket_t_draw), by(18),
+    draw_rect(ax_b, bx(gasket_x), by(cut_top - 3 * mm_v),
+              bx(gasket_t_draw), by(gasket_strip_h),
               fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
     # Bottom gasket strip
-    draw_rect(ax_b, bx(gasket_x), by(cut_bot - 10), bx(gasket_t_draw), by(18),
+    draw_rect(ax_b, bx(gasket_x), by(cut_bot - (gasket_strip_h - 3 * mm_v)),
+              bx(gasket_t_draw), by(gasket_strip_h),
               fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
 
     # Face plate (flush with exterior wall face)
     plate_x = gasket_x - plate_t_draw
-    draw_rect(ax_b, bx(plate_x), by(cut_bot - 18), bx(plate_t_draw),
-              by(cut_top - cut_bot + 36),
+    draw_rect(ax_b, bx(plate_x), by(plate_bot), bx(plate_t_draw),
+              by(plate_h_draw),
               fc=C_ALUM, color=C_OUT, lw=1.5, zorder=6)
 
     # Connector bodies protruding through cutout into interior
-    # MC4 connectors (3, stacked vertically through cutout)
-    mc4_spacing = (cut_top - cut_bot) / 4
+    mc4_spacing = cut_h_draw / 4
     for i in range(3):
         cy = cut_bot + mc4_spacing * (i + 0.5)
-        # Connector body through wall into interior
-        draw_rect(ax_b, bx(wall_x - 5), by(cy - 4),
-                  bx(wall_thick + conn_depth + 5), by(8),
+        draw_rect(ax_b, bx(wall_x - 5), by(cy - 4 * mm_v),
+                  bx(wall_thick + conn_depth + 5), by(8 * mm_v),
                   fc="#C0E8C0", color=C_MC4, lw=1.0, zorder=4)
-        # Cable emerging into interior
         ax_b.plot([bx(wall_x + wall_thick + conn_depth),
                    bx(wall_x + wall_thick + int_pad - 30)],
                   [by(cy), by(cy)],
                   color=C_MC4, lw=1.5, zorder=5)
 
     # NEMA body through cutout
-    nema_cy = (cut_bot + cut_top) / 2 + mc4_spacing * 1.2
-    draw_rect(ax_b, bx(wall_x - 5), by(nema_cy - 5),
-              bx(wall_thick + conn_depth + 5), by(10),
+    nema_cy = cut_bot + mc4_spacing * 3.2
+    draw_rect(ax_b, bx(wall_x - 5), by(nema_cy - 5 * mm_v),
+              bx(wall_thick + conn_depth + 5), by(10 * mm_v),
               fc=C_NEMA, color=C_AC, lw=1.0, zorder=4)
-    # AC cable emerging into interior
     ax_b.plot([bx(wall_x + wall_thick + conn_depth),
                bx(wall_x + wall_thick + int_pad - 30)],
               [by(nema_cy), by(nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
-    # Mounting bolts (top and bottom, through plate + gasket + wall)
-    bolt_positions = [cut_bot - 12, cut_top + 12]
-    # Scale bolt proportionally: plate is 3mm drawn as plate_t_draw,
-    # so 1mm = plate_t_draw/3.  M6 shaft = 6mm, head = 10mm AF, 4mm thick.
-    mm_unit = plate_t_draw / 3.0   # drawing units per mm
-    bolt_shaft_h = 6 * mm_unit    # M6 = 6mm diameter in section
-    bolt_head_w = 4 * mm_unit     # head thickness ~4mm
-    bolt_head_h = 10 * mm_unit    # head across-flats ~10mm
-    nut_w = 5 * mm_unit           # nut thickness ~5mm
-    nut_h = 10 * mm_unit          # nut across-flats ~10mm
+    # Mounting bolts (through plate + gasket + wall, at mounting hole positions)
     for by_pos in bolt_positions:
-        # Bolt shaft — plate through to nut
+        # Bolt shaft
         draw_rect(ax_b, bx(plate_x - bolt_head_w),
                   by(by_pos - bolt_shaft_h / 2),
                   bx(plate_t_draw + gasket_t_draw + wall_thick + bolt_head_w + nut_w),

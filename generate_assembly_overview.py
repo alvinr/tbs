@@ -214,6 +214,18 @@ leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
 leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
        f"Pump manifold\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
 
+# External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
+PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
+PP_H_BOT = PP_CTR_H - PWR_PANEL_H / 2
+ax.add_patch(mpatches.FancyBboxPatch(
+    (PWR_PANEL_X, PP_H_BOT), PWR_PANEL_W, PWR_PANEL_H, boxstyle="square,pad=0",
+    facecolor=C_ALUM, edgecolor=C_OUT, linewidth=0.7,
+    linestyle="--", alpha=0.20, zorder=2))
+ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
+        "Ext pwr\npanel\n[exterior]",
+        ha="center", va="center", fontsize=FS_SM - 1.5, color=C_DIM,
+        alpha=0.6, zorder=3)
+
 
 # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────────
 
@@ -347,6 +359,7 @@ legend_items = [
     (C_PINHOLE,   "Pinhole O2.17mm"),
     (C_HINGE_PANEL,      "Hinged panel + drum"),
     (C_FAN,       "Ventilation fan"),
+    (C_ALUM,      "Ext power panel  [ghost = exterior]"),
 ]
 
 ax.text(LEG_X, LEG_Y + LEG_H + 30, "LEGEND", ha="left", va="bottom",

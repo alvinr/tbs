@@ -162,8 +162,8 @@ def draw_sheet1():
            "MC4 BULKHEAD\nCONNECTORS (×3 PAIRS)\nIP67 PANEL-MOUNT",
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sx(nema_cx), sy(NEMA_Y - 5),
-           sx(nema_cx + NEMA_W * 2), sy(NEMA_Y - 10),
+    leader(ax_a, sx(NEMA_X + NEMA_W + 5), sy(NEMA_Y + (NEMA_H/2)),
+           sx(nema_cx + NEMA_W * 2 + 5), sy(NEMA_Y - 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="center", va="top", arrow_style="-|>", font=FONT)
 
@@ -360,26 +360,38 @@ def draw_sheet1():
     sarrow(ax_c, 10.5, row_bot + 0.45, 12.0, col=C_AC)
     sbox(ax_c, 12.0, row_bot, 3.2, 0.9,
          "SHORE CHARGER", "Victron IP65 12/15", fc="#F5EDD0", tc=C_AC)
-    sarrow(ax_c, 15.2, row_bot + 0.45, 16.5, col=C_AC)
-
-    # Arrow from shore charger up to battery
-    ax_c.annotate("", xy=(18.0, row_top - 0.3), xytext=(18.0, row_bot + 0.9),
-                  arrowprops=dict(arrowstyle="-|>", color=C_AC, lw=1.5,
+    # Continuous line from shore charger to battery bank
+    # Horizontal to below battery, then vertical up into battery
+    bat_cx = 18.0
+    ax_c.plot([15.2, bat_cx], [row_bot + 0.45, row_bot + 0.45],
+              color=C_AC, lw=1.8, zorder=3)
+    ax_c.annotate("", xy=(bat_cx, row_top - 0.3), xytext=(bat_cx, row_bot + 0.45),
+                  arrowprops=dict(arrowstyle="-|>", color=C_AC, lw=1.8,
                                   connectionstyle="arc3,rad=0"), zorder=3)
-    ax_c.text(18.15, (row_top + row_bot) / 2 + 0.3, "12V DC\ncharge",
+    ax_c.text(bat_cx + 0.15, (row_top + row_bot) / 2 + 0.3, "12V DC\ncharge",
               fontsize=6, color=C_AC, ha="left", va="center", **FONT)
 
     # Container wall indicator
     wall_x_sch = 9.0
+    wall_x_sch_r = 10.6
     ax_c.plot([wall_x_sch - 0.1, wall_x_sch - 0.1],
               [row_bot - 0.2, row_top + 1.0],
               color=C_WALL, lw=3, zorder=1)
-    ax_c.plot([10.6, 10.6],
+    ax_c.plot([wall_x_sch_r, wall_x_sch_r],
               [row_bot - 0.2, row_top + 1.0],
               color=C_WALL, lw=3, zorder=1)
-    ax_c.text(9.75, gland_bot - 0.55, "CONTAINER\nWALL",
+    ax_c.text((wall_x_sch + wall_x_sch_r) / 2, gland_bot - 0.55,
+              "CONTAINER\nWALL",
               ha="center", va="bottom", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
+
+    # Zone labels
+    ax_c.text((wall_x_sch - 0.1) / 2, row_top + 1.15, "EXTERIOR",
+              ha="center", va="bottom", fontsize=8, fontweight="bold",
+              color=C_DIM, **FONT)
+    ax_c.text((wall_x_sch_r + 22) / 2, row_top + 1.15, "CONTAINER INTERIOR",
+              ha="center", va="bottom", fontsize=8, fontweight="bold",
+              color=C_DIM, **FONT)
 
     # ═════════════════════════════════════════════════════════════════════════
     # Title block (use the full figure axes)

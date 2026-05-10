@@ -26,6 +26,7 @@ import os
 
 from tbs_title_block import title_block
 from tbs_constants import DIAGRAMS_DIR, SVG_DIR, svg_path, C_OUT, C_CL, C_DIM
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 os.makedirs(SVG_DIR, exist_ok=True)
@@ -81,35 +82,6 @@ C_FLAP     = "#77AA77"    # extraction flap
 
 FS_SM = 6.5
 FS_MD = 8.0
-
-# ── Drawing helpers ──────────────────────────────────────────────────────────
-def draw_dim_h(ax, x1, x2, y, label, offset=12, fs=FS_SM, color=C_DIM):
-    ax.annotate("", xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x1, x1], [y - offset * 0.3, y + offset * 0.3], color=color, lw=0.6)
-    ax.plot([x2, x2], [y - offset * 0.3, y + offset * 0.3], color=color, lw=0.6)
-    ax.text((x1 + x2) / 2, y + offset * 0.55, label, ha="center", va="bottom",
-            fontsize=fs, color=color)
-
-
-def draw_dim_v(ax, x, y1, y2, label, offset=12, fs=FS_SM, color=C_DIM, right=False):
-    ax.annotate("", xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x - offset * 0.3, x + offset * 0.3], [y1, y1], color=color, lw=0.6)
-    ax.plot([x - offset * 0.3, x + offset * 0.3], [y2, y2], color=color, lw=0.6)
-    if right:
-        ax.text(x + offset * 0.6, (y1 + y2) / 2, label, ha="left", va="center",
-                fontsize=fs, color=color, rotation=90)
-    else:
-        ax.text(x - offset * 0.6, (y1 + y2) / 2, label, ha="right", va="center",
-                fontsize=fs, color=color, rotation=90)
-
-
-def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
-    ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
-                fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", linestyle=":", color=color, lw=0.7,
-                                connectionstyle="arc3,rad=0.0"))
 
 
 # ══════════════════════════════════════════════════════════════════════════════

@@ -30,6 +30,7 @@ import matplotlib.patches as mpatches
 import os
 
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y, FP_W,
@@ -84,32 +85,6 @@ FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
 DPI   = 150
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-def draw_dim_h(ax, x1, x2, y, label, offset=80, fs=FS_SM, color=C_DIM):
-    ax.annotate("", xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x1, x1], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
-    ax.plot([x2, x2], [y - offset*0.3, y + offset*0.3], color=color, lw=0.6)
-    ax.text((x1+x2)/2, y + offset*0.55, label, ha="center", va="bottom",
-            fontsize=fs, color=color)
-
-def draw_dim_v(ax, x, y1, y2, label, offset=80, fs=FS_SM, color=C_DIM, right=False):
-    ax.annotate("", xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.8))
-    ax.plot([x-offset*0.3, x+offset*0.3], [y1, y1], color=color, lw=0.6)
-    ax.plot([x-offset*0.3, x+offset*0.3], [y2, y2], color=color, lw=0.6)
-    if right:
-        ax.text(x + offset*0.6, (y1+y2)/2, label, ha="left", va="center",
-                fontsize=fs, color=color, rotation=90)
-    else:
-        ax.text(x - offset*0.6, (y1+y2)/2, label, ha="right", va="center",
-                fontsize=fs, color=color, rotation=90)
-
-def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=FS_SM, color=C_OUT, ha="left"):
-    ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
-                fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
-                                connectionstyle="arc3,rad=0.0"))
-
 def equip_rect(ax, x, y, w, h, color, alpha=0.85, ec=C_OUT, lw=0.8, zorder=3):
     ax.add_patch(mpatches.FancyBboxPatch(
         (x, y), w, h, boxstyle="square,pad=0",
@@ -333,13 +308,13 @@ DIM_TOP   = C_HGT + 250
 DIM_BOT   = -250
 DIM_RIGHT = C_LEN + 350
 
-draw_dim_h(ax, 0, C_LEN, DIM_TOP, f"Container length  {C_LEN}mm", offset=100)
+draw_dim_h(ax, 0, C_LEN, DIM_TOP, f"Container length  {C_LEN}mm", offset=100, fs=FS_SM)
 draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP + 200,
-           f"Optical zone  {ZONE_R_START-ZONE_L_END}mm", offset=80, color=C_CL)
+           f"Optical zone  {ZONE_R_START-ZONE_L_END}mm", offset=80, fs=FS_SM, color=C_CL)
 draw_dim_h(ax, FP_X_L, FP_X_R, DIM_TOP + 360,
-           f"Film plane  {FP_X_R-FP_X_L}mm", offset=80, color=C_CL)
-draw_dim_v(ax, DIM_RIGHT,        0, C_HGT, f"H={C_HGT}mm",     offset=100)
-draw_dim_v(ax, DIM_RIGHT + 300,  0, PH_H,  f"PH H={PH_H}mm",   offset=100)
+           f"Film plane  {FP_X_R-FP_X_L}mm", offset=80, fs=FS_SM, color=C_CL)
+draw_dim_v(ax, DIM_RIGHT,        0, C_HGT, f"H={C_HGT}mm",     offset=100, fs=FS_SM)
+draw_dim_v(ax, DIM_RIGHT + 300,  0, PH_H,  f"PH H={PH_H}mm",   offset=100, fs=FS_SM)
 
 # Left / right zone widths
 draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT - 80,
@@ -685,11 +660,11 @@ DIM_TOP2   = C_HGT + 250
 DIM_BOT2   = -250
 DIM_LEFT2  = C_LEN + 350   # left in plot = far end (X=C_LEN) in real coords
 
-draw_dim_h(ax2, 0, C_LEN, DIM_TOP2, f"Container length  {C_LEN}mm", offset=80)
+draw_dim_h(ax2, 0, C_LEN, DIM_TOP2, f"Container length  {C_LEN}mm", offset=80, fs=FS_SM)
 
 dim2h(FP_X_L, FP_X_R, DIM_TOP2 + 200, f"Rail span  {RAIL_SPAN}mm", offset=80, color=RAIL_CLR)
 
-draw_dim_v(ax2, DIM_LEFT2, 0, C_HGT, f"H={C_HGT}mm", offset=80)
+draw_dim_v(ax2, DIM_LEFT2, 0, C_HGT, f"H={C_HGT}mm", offset=80, fs=FS_SM)
 
 ax2.text(C_LEN/2, DIM_BOT2 - 280,
         f"Optical cone illuminates full {FP_W}mm × {C_HGT}mm film plane"

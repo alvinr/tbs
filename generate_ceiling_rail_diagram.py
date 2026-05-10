@@ -26,6 +26,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT, WALL_T,
@@ -48,36 +49,6 @@ C_CARR  = "#C04010"
 C_TRAY  = "#A0B0A0"
 C_SEAL  = "#4A2818"
 FONT    = {"fontfamily": "monospace"}
-
-# ── Drawing helpers ───────────────────────────────────────────────────────────
-def dim_h(ax, x0, x1, y, label, offset=40, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x1, y), xytext=(x0, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.text((x0 + x1) / 2, y + offset, label, color=col, fontsize=fs,
-            ha="center", va="bottom", zorder=15, **FONT)
-
-def dim_v(ax, x, y0, y1, label, offset=50, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x, y1), xytext=(x, y0),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6, zorder=15)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6, zorder=15)
-    ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
-            ha="left", va="center", zorder=15, **FONT)
-
-def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5):
-    ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
-                ha="center", va="center", **FONT,
-                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.8,
-                                mutation_scale=6),
-                zorder=15)
-
-
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Side Elevation Cross-Section
@@ -154,16 +125,18 @@ def sheet1():
     # ── Fixed door frame (at X=0, 50mm RHS) ─────────────────────────────────
     ax.add_patch(Rectangle((0, 0), FRAME_W, FRAME_H,
                             fc="#D8D0C0", ec=C_OUT, lw=1.2, zorder=4))
-    leader(ax, (FRAME_W / 2, FRAME_H * 0.85),
-           (FRAME_W / 2 - 250, FRAME_H * 0.85 + 100),
-           "FIXED DOOR FRAME\n50×50mm RHS\n(SEAL LANDING)", col="#806010", fs=6)
+    leader(ax, FRAME_W / 2, FRAME_H * 0.85,
+           FRAME_W / 2 - 250, FRAME_H * 0.85 + 100,
+           "FIXED DOOR FRAME\n50×50mm RHS\n(SEAL LANDING)", color="#806010", fs=6,
+           ha="center", arrow_style="-|>", font=FONT)
 
     # EPDM seal strip on inner face of frame
     ax.add_patch(Rectangle((FRAME_W, 15), SEAL_W, SEAL_H,
                             fc=C_SEAL, ec=C_OUT, lw=0.6, zorder=5))
-    leader(ax, (FRAME_W + SEAL_W / 2, 400),
-           (FRAME_W + 100, 300),
-           "EPDM PERIMETER\nSEAL", col=C_SEAL, fs=5.5)
+    leader(ax, FRAME_W + SEAL_W / 2, 400,
+           FRAME_W + 100, 300,
+           "EPDM PERIMETER\nSEAL", color=C_SEAL, fs=5.5,
+           ha="center", arrow_style="-|>", font=FONT)
 
     # ── Ceiling-mounted HGR20 rail ──────────────────────────────────────────
     # Rail runs from X=-30 to X=PANEL_SLIDE+150 (enough travel + overhang)
@@ -187,9 +160,10 @@ def sheet1():
         ax.add_patch(Rectangle((carr_x, carr_z), CARRIAGE_W, CARRIAGE_H,
                                 fc=C_CARR, ec=C_OUT, lw=0.8, alpha=alpha, zorder=7))
         if alpha > 0.5:
-            leader(ax, (carr_x + CARRIAGE_W / 2, carr_z + CARRIAGE_H / 2),
-                (carr_x + CARRIAGE_W / 2 + 175, carr_z + CARRIAGE_H / 2),
-                "HGH20CA", col=C_CARR, fs=5.5)
+            leader(ax, carr_x + CARRIAGE_W / 2, carr_z + CARRIAGE_H / 2,
+                carr_x + CARRIAGE_W / 2 + 175, carr_z + CARRIAGE_H / 2,
+                "HGH20CA", color=C_CARR, fs=5.5,
+                ha="center", arrow_style="-|>", font=FONT)
 
         # Suspension bracket (connects carriage to panel top)
         brk_x = x_off + PANEL_T / 2 - BRACKET_W / 2
@@ -197,9 +171,10 @@ def sheet1():
         ax.add_patch(Rectangle((brk_x, brk_z), BRACKET_W, BRACKET_H,
                                 fc="#A09080", ec=C_OUT, lw=0.8, alpha=alpha, zorder=7))
         if alpha > 0.5:
-            leader(ax, (brk_x + BRACKET_W / 2, brk_z + BRACKET_H / 2),
-                (brk_x + BRACKET_W / 2 + 175, brk_z + BRACKET_H / 2),
-                "BRACKET", col="#A09080", fs=5.5)
+            leader(ax, brk_x + BRACKET_W / 2, brk_z + BRACKET_H / 2,
+                brk_x + BRACKET_W / 2 + 175, brk_z + BRACKET_H / 2,
+                "BRACKET", color="#A09080", fs=5.5,
+                ha="center", arrow_style="-|>", font=FONT)
 
         # Panel body (from bracket bottom down to PANEL_FLOOR_GAP above floor)
         panel_top = brk_z
@@ -244,9 +219,10 @@ def sheet1():
     for z in [5, 15, 25, 35, 45]:
         ax.plot([bx - 5, bx + 5], [z - 3, z + 3], color=C_OUT, lw=0.8, zorder=5)
 
-    leader(ax, (TRAY_SHOW_X + 80, PROC_TRAY_RIM / 2),
-           (TRAY_SHOW_X + 75, 180),
-           f"PROCESSING TRAY\n304 SS · {PROC_TRAY_RIM}mm RIM\n(PERMANENT)", col=C_TRAY, fs=6)
+    leader(ax, TRAY_SHOW_X + 80, PROC_TRAY_RIM / 2,
+           TRAY_SHOW_X + 75, 180,
+           f"PROCESSING TRAY\n304 SS · {PROC_TRAY_RIM}mm RIM\n(PERMANENT)", color=C_TRAY, fs=6,
+           ha="center", arrow_style="-|>", font=FONT)
 
     # ── Clearance annotation — the key dimension ─────────────────────────────
     # Show gap between transport panel bottom and tray rim
@@ -256,19 +232,22 @@ def sheet1():
 
     # Dimension: floor to panel bottom (PANEL_FLOOR_GAP)
     gap_dim_x = PANEL_SLIDE + PANEL_T + 60
-    dim_v(ax, gap_dim_x, 0, PANEL_FLOOR_GAP,
-          f"{PANEL_FLOOR_GAP}mm\nFLOOR GAP", offset=-140, fs=7, col=C_CARR)
+    draw_dim_v(ax, gap_dim_x, 0, PANEL_FLOOR_GAP,
+              f"{PANEL_FLOOR_GAP}mm FLOOR GAP", offset=30, perpendicular=True, fs=7, color=C_CARR,
+              right=False, font=FONT)
 
     # Dimension: floor to tray rim
     tray_dim_x = TRAY_SHOW_X - 40
-    dim_v(ax, tray_dim_x + TRAY_SHOW_W + 75, 0, PROC_TRAY_RIM,
-          f"{PROC_TRAY_RIM}mm TRAY RIM", offset=20, fs=7, col=C_TRAY)
+    draw_dim_v(ax, tray_dim_x + TRAY_SHOW_W + 75, 0, PROC_TRAY_RIM,
+              f"{PROC_TRAY_RIM}mm TRAY RIM", offset=90, perpendicular=True, fs=7, color=C_TRAY,
+              right=True, font=FONT)
 
     # Clearance between tray rim top and panel bottom
     clr = PANEL_FLOOR_GAP - PROC_TRAY_RIM
     clr_x = PANEL_SLIDE + PANEL_T / 2
-    dim_v(ax, tray_dim_x + TRAY_SHOW_W + 75, PROC_TRAY_RIM, PANEL_FLOOR_GAP,
-          f"{clr}mm CLEARANCE", offset=90, fs=7, col="#208020")
+    draw_dim_v(ax, tray_dim_x + TRAY_SHOW_W + 75, PROC_TRAY_RIM, PANEL_FLOOR_GAP,
+              f"{clr}mm CLEARANCE", offset=90, perpendicular=True, fs=7, color="#208020",
+              right=True, font=FONT)
 
     # Green highlight of clearance zone
     ax.add_patch(Rectangle((PROC_TRAY_X_L, PROC_TRAY_RIM),
@@ -290,19 +269,21 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Container height dimension ───────────────────────────────────────────
-    dim_v(ax, X_HI - 80, 0, C_HGT,
-          f"{C_HGT}mm\nINTERIOR\nHEIGHT", offset=-180, fs=7)
+    draw_dim_v(ax, X_HI - 80, 0, C_HGT,
+              f"{C_HGT}mm INTERIOR HEIGHT", offset=15, fs=7,
+              right=False, font=FONT)
 
     # ── Panel height dimension ───────────────────────────────────────────────
     panel_top_z = C_HGT - RAIL_H - CARRIAGE_H - BRACKET_H
-    dim_v(ax, -WALL_T - 80, PANEL_FLOOR_GAP, panel_top_z,
-          f"{int(panel_top_z - PANEL_FLOOR_GAP)}mm\nPANEL\nHEIGHT", offset=-140, fs=6.5)
+    draw_dim_v(ax, -WALL_T - 80, PANEL_FLOOR_GAP, panel_top_z,
+              f"{int(panel_top_z - PANEL_FLOOR_GAP)}mm PANEL HEIGHT", offset=15, fs=6.5,
+              right=False, font=FONT)
 
     # ── Zone labels ──────────────────────────────────────────────────────────
     ax.text(-WALL_T / 2, Z_LO + 40, "EXTERIOR",
             ha="center", va="bottom", fontsize=7, color="#806050",
             fontweight="bold", **FONT, zorder=15, alpha=0.6)
-    ax.text(X_HI / 2, Z_HI - 40, "INTERIOR (DARKROOM)",
+    ax.text(X_HI / 2, Z_HI - 540, "INTERIOR (DARKROOM)",
             ha="center", va="top", fontsize=7, color="#205020",
             fontweight="bold", **FONT, zorder=15, alpha=0.6)
 
@@ -408,9 +389,10 @@ def sheet2():
     plate_z = -plate_h
     ax.add_patch(Rectangle((-plate_w / 2, plate_z), plate_w, plate_h,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, (sx(35), plate_z + plate_h / 2),
-           (sx(75), plate_z + plate_h / 2 + sy(25)),
-           "6mm MOUNTING PLATE (WELDED TO CEILING)", col=C_DIM, fs=6)
+    leader(ax, sx(35), plate_z + plate_h / 2,
+           sx(75), plate_z + plate_h / 2 + sy(25),
+           "6mm MOUNTING PLATE (WELDED TO CEILING)", color=C_DIM, fs=6,
+           ha="center", arrow_style="-|>", font=FONT)
 
     # ── HGR20 rail profile ───────────────────────────────────────────────────
     rail_w = sx(RAIL_W)
@@ -468,7 +450,7 @@ def sheet2():
         ax.add_patch(Rectangle((sx_pos, brk_z), side_w, side_h,
                                 fc="#A09080", ec=C_OUT, lw=1.0, zorder=4))
     # Bracket label
-    ax.text(0, brk_z + brk_h / 2,
+    ax.text(5, brk_z + brk_h / 2,
             "SUSPENSION\nBRACKET\n(10mm MILD STEEL)",
             ha="center", va="center", fontsize=5.5, color=C_OUT,
             **FONT, zorder=15)
@@ -520,21 +502,23 @@ def sheet2():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Rail height
-    dim_v(ax, sx(W_RANGE / 2 - 20), rail_z, rail_z + rail_h,
-          f"{RAIL_H}mm", offset=sx(5), fs=7)
+    draw_dim_v(ax, sx(W_RANGE / 2 - 20), rail_z, rail_z + rail_h,
+              f"{RAIL_H}mm", offset=sx(5), fs=7, right=True, font=FONT)
     # Carriage height
-    dim_v(ax, sx(W_RANGE / 2 - 20), carr_z, carr_z + carr_h,
-          f"{CARRIAGE_H}mm", offset=sx(5), fs=7)
+    draw_dim_v(ax, sx(W_RANGE / 2 - 20), carr_z, carr_z + carr_h,
+              f"{CARRIAGE_H}mm", offset=sx(5), fs=7, right=True, font=FONT)
     # Bracket height
-    dim_v(ax, -sx(W_RANGE / 2 - 20), brk_z, carr_z - brk_plate,
-          f"{BRACKET_H}mm", offset=sx(5), fs=7)
+    draw_dim_v(ax, -sx(W_RANGE / 2 - 20), brk_z, carr_z - brk_plate,
+              f"{BRACKET_H}mm", offset=sx(5), fs=7, right=True, font=FONT)
     # Panel width (thickness)
-    dim_h(ax, -panel_w / 2, panel_w / 2, panel_z - panel_vis_h - sy(15),
-          f"{PANEL_CENTER_T}mm PANEL THICKNESS", offset=-sy(5), fs=7)
+    draw_dim_h(ax, -panel_w / 2, panel_w / 2, panel_z - panel_vis_h - sy(15),
+              f"{PANEL_CENTER_T}mm PANEL THICKNESS", offset=sy(5), fs=7,
+              above=False, font=FONT)
     # Total assembly depth (ceiling to panel top)
     total_depth = 15 + 6 + RAIL_H + 2 + CARRIAGE_H + BRACKET_H + 5  # = ~161mm
-    dim_v(ax, -sx(W_RANGE / 2 - 5), panel_z, 0,
-          f"~{total_depth}mm\nTOTAL\nSUSPENSION\nDEPTH", offset=-sx(25), fs=6.5)
+    draw_dim_v(ax, -sx(W_RANGE / 2 - 5), panel_z, 0,
+              f"~{total_depth}mm TOTAL SUSPENSION DEPTH", offset=sx(5), fs=6.5,
+              right=False, font=FONT)
 
     # ── Component list (far left, compact) ──────────────────────────────────
     comp_x = -sx(W_RANGE * 1.4)

@@ -16,6 +16,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 import os
 from tbs_constants import svg_path, SVG_DIR
+from tbs_drawing import draw_dim_h, draw_dim_v
 from tbs_title_block import title_block
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -45,24 +46,6 @@ def ann(ax, text, xy, xytext, size=7.5):
                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=10)
 
 
-def dim_h(ax, x1, x2, y, text, col=C_DIM):
-    tick = 0.06
-    ax.annotate("", xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9), zorder=10)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6, zorder=10)
-    ax.plot([x2, x2], [y - tick, y + tick], color=col, lw=0.6, zorder=10)
-    ax.text((x1+x2)/2, y + 0.18, text,
-            ha="center", va="bottom", fontsize=7.5, color=col, zorder=10)
-
-
-def dim_v(ax, x, y1, y2, text, col=C_DIM):
-    tick = 0.06
-    ax.annotate("", xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9), zorder=10)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6, zorder=10)
-    ax.plot([x - tick, x + tick], [y2, y2], color=col, lw=0.6, zorder=10)
-    ax.text(x - 0.18, (y1+y2)/2, text,
-            ha="right", va="center", fontsize=7.5, color=col, rotation=90, zorder=10)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -553,12 +536,16 @@ def draw_sheet2():
             color=C_DIM, lw=1.0, ls=":")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.1, "300 mm  (duct depth)")
-    dim_v(ax, DUCT_X - 1.85, DUCT_Y, DUCT_Y + DH, "200 mm")
-    dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall")
+    draw_dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.1, "300 mm  (duct depth)",
+               offset=0.33, fs=7.5, zorder=10, color=C_DIM)
+    draw_dim_v(ax, DUCT_X - 1.85, DUCT_Y, DUCT_Y + DH, "200 mm",
+               offset=0.3, fs=7.5, zorder=10, color=C_DIM)
+    draw_dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall",
+               offset=0.33, fs=7.5, zorder=10, color=C_DIM)
     ax.plot([WX, WX], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
     ax.plot([WX + WT, WX + WT], [DUCT_Y + DH, DUCT_Y + DH + 0.85], color=C_DIM, lw=0.5, ls=":")
-    dim_h(ax, FAN_X, FAN_X + PF_BD, DUCT_Y - 1.0, "~50 mm  (panel fan body)")
+    draw_dim_h(ax, FAN_X, FAN_X + PF_BD, DUCT_Y - 1.0, "~50 mm  (panel fan body)",
+               offset=0.33, fs=7.5, zorder=10, color=C_DIM)
 
     # ── Shadow margin / procurement note ─────────────────────────────────────
     NX, NY = FW - 9.5 - 0.3, 1.6

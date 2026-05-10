@@ -22,6 +22,7 @@ from tbs_constants import (
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -71,32 +72,6 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
             bbox=dict(fc="white", ec="none", pad=1.5), zorder=6)
 
 
-def leader(ax, x_tip, y_tip, x_txt, y_txt, label, fs=7.5, color=C_OUT, ha="left"):
-    """Leader line with dotted arrow from tip to label text."""
-    ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
-                fontsize=fs, color=color, ha=ha, va="center",
-                arrowprops=dict(arrowstyle="-", linestyle=':', color=color, lw=0.7,
-                                connectionstyle="arc3,rad=0.0"))
-
-
-def draw_dim_h(ax, x1, x2, y, label, offset=0.08, fs=7.5, color=C_DIM):
-    """Horizontal dimension line between x1 and x2 at height y."""
-    ax.annotate("", xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0))
-    ax.plot([x1, x1], [y - offset, y + offset], color=color, lw=0.6)
-    ax.plot([x2, x2], [y - offset, y + offset], color=color, lw=0.6)
-    ax.text((x1 + x2) / 2, y - 0.17, label,
-            ha="center", va="top", fontsize=fs, color=color)
-
-
-def draw_dim_v(ax, x, y1, y2, label, offset=0.08, fs=7.5, color=C_DIM):
-    """Vertical dimension line between y1 and y2 at x position."""
-    ax.annotate("", xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0))
-    ax.plot([x - offset, x + offset], [y1, y1], color=color, lw=0.6)
-    ax.plot([x - offset, x + offset], [y2, y2], color=color, lw=0.6)
-    ax.text(x - 0.17, (y1 + y2) / 2, label,
-            ha="right", va="center", fontsize=fs, color=color, rotation=90)
 
 
 
@@ -748,10 +723,13 @@ def draw_sheet2():
     DIM_Y = OY - 0.82
     DIM_X = OX - 0.42
 
-    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)")
+    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)",
+               above=False, offset=0.08, fs=7.5)
     draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 1.10,
-               f"Film plane  {FP_X_R-FP_X_L}mm")
-    draw_dim_v(ax, DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)")
+               f"Film plane  {FP_X_R-FP_X_L}mm",
+               above=False, offset=0.08, fs=7.5)
+    draw_dim_v(ax, DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)",
+               offset=0.08, fs=7.5)
 
     # ── Component key (right of container) ───────────────────────────────────
     KX = OX + clen + 0.70 + FW * 0.10

@@ -204,20 +204,32 @@ def sheet1():
     ax.text(PUMP_X+PUMP_W/2, (PUMP_H_LO+PUMP_H_HI)/2, "PUMP",
             ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
 
-    # ── External power panel (flush-mount, pinhole wall exterior — ghost) ────
-    # Shown as dashed ghost outline on the exterior face of the pinhole wall.
-    # In elevation: X position along container, height centered on wall.
-    PP_H_DRAW = PWR_PANEL_H   # 240mm panel height
-    PP_Y_TOP = -WALL_T - 20   # just below exterior wall face
-    PP_Y_BOT = PP_Y_TOP - PP_H_DRAW
+    # ── External power panel (flush-mount in pinhole wall — ghost) ──────────
+    # Side elevation: panel is flush in the pinhole wall (bottom wall, Y=0).
+    # Show the aluminum face plate as a ghost rectangle on the wall face,
+    # and the cutout as a lighter dashed rectangle inside it.
+    # Height: centered at same level as electrical panel (~900–1100mm).
+    from tbs_constants import PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H
+    PP_CTR_H = (EP_H_LO + EP_H_HI) / 2   # center at same height as EP
+    PP_PLATE_BOT = PP_CTR_H - PWR_PANEL_H / 2
+    PP_CUT_BOT   = PP_CTR_H - PWR_PANEL_CUTOUT_H / 2
+
+    # Aluminum face plate (ghost outline on exterior wall face)
     ax.add_patch(mpatches.Rectangle(
-        (PWR_PANEL_X, PP_Y_BOT), PWR_PANEL_W, PP_H_DRAW,
-        facecolor="none", edgecolor=C_ALUM, linewidth=1.2,
-        ls=(0, (5, 3)), alpha=0.7, zorder=4))
-    ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_Y_BOT + PP_H_DRAW / 2,
+        (PWR_PANEL_X, PP_PLATE_BOT), PWR_PANEL_W, PWR_PANEL_H,
+        facecolor="none", edgecolor=C_ALUM, linewidth=1.5,
+        ls=(0, (5, 3)), alpha=0.7, zorder=6))
+    # Wall cutout (dashed, inside plate)
+    cut_x = PWR_PANEL_X + (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) / 2
+    ax.add_patch(mpatches.Rectangle(
+        (cut_x, PP_CUT_BOT), PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H,
+        facecolor="none", edgecolor=C_DIM, linewidth=0.8,
+        ls=(0, (3, 2)), alpha=0.5, zorder=6))
+    ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
             "EXT PWR\nPANEL",
             ha="center", va="center", fontsize=FS_SM - 2,
-            color=C_ALUM, style="italic", alpha=0.7, zorder=5)
+            color=C_ALUM, style="italic", fontweight="bold",
+            alpha=0.7, zorder=7)
 
     # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────
     # Blue IBC stack x2 (front in depth, 2020mm tall)
@@ -268,7 +280,7 @@ def sheet1():
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
         ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
-        (PWR_PANEL_X+PWR_PANEL_W/2, PP_Y_BOT + PP_H_DRAW/2, "12"),  # Ext power panel
+        (PWR_PANEL_X+PWR_PANEL_W/2, PP_PLATE_BOT - 120, "12"),  # Ext power panel
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)

@@ -598,8 +598,8 @@ def draw_sheet2():
     from tbs_constants import PWR_PANEL_X, PWR_PANEL_W
     PP_DX = ix(PWR_PANEL_X)
     PP_DW = PWR_PANEL_W * S_xi
-    PP_DY = OY - 0.60                     # exterior face of pinhole wall
     PP_DH = 0.50
+    PP_DY = OY - PP_DH                    # flush against exterior face of pinhole wall
     ax.add_patch(mpatches.Rectangle((PP_DX, PP_DY), PP_DW, PP_DH,
                  fc="#E8E0C8", ec=C_OUT, lw=1.2, zorder=5))
     ax.text(PP_DX + PP_DW / 2, PP_DY + PP_DH / 2, "EXT\nPWR",

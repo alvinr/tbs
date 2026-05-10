@@ -421,7 +421,8 @@ def egress_detail():
     # Extend X range leftward to show panel in open (exterior) position
     # Panel is 2362mm wide; when open 180° the far tip reaches X = -2362
     X_LO, X_HI = -2700, 1200
-    Y_LO, Y_HI = -PAD, C_WID + PAD
+    TB_PAD = 600   # extra space at bottom for title block
+    Y_LO, Y_HI = -PAD - TB_PAD, C_WID + PAD
     FIG_W = 22.0
     FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
 

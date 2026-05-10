@@ -357,14 +357,14 @@ def sheet2():
     ax.add_patch(Rectangle((0, 0), C_LEN, C_WID,
                             fc="#F8F8F8", ec=C_OUT, lw=2.0, zorder=1))
     # Wall labels
-    ax.text(C_LEN / 2, -40, "CARGO DOOR END (X=0)",
+    ax.text(C_LEN / 2, -40, "PINHOLE WALL (Yd=0)",
             ha="center", va="top", fontsize=6, color=C_DIM, **FONT, zorder=15)
-    ax.text(C_LEN / 2, C_WID + 40, "FAR END (X=5893)",
+    ax.text(C_LEN / 2, C_WID + 40, "FAR WALL (Yd=2362)",
             ha="center", va="bottom", fontsize=6, color=C_DIM, **FONT, zorder=15)
-    ax.text(-40, C_WID / 2, "PINHOLE WALL\n(Yd=0)",
+    ax.text(-40, C_WID / 2, "CARGO DOOR\nEND (X=0)",
             ha="right", va="center", fontsize=6, color=C_DIM,
             **FONT, zorder=15, rotation=90)
-    ax.text(C_LEN + 40, C_WID / 2, "FAR WALL\n(Yd=2362)",
+    ax.text(C_LEN + 40, C_WID / 2, "FAR END\n(X=5893)",
             ha="left", va="center", fontsize=6, color=C_DIM,
             **FONT, zorder=15, rotation=90)
 

@@ -421,10 +421,7 @@ def egress_detail():
     # Extend X range leftward to show panel in open (exterior) position
     # Panel is 2362mm wide; when open 180° the far tip reaches X = -2362
     X_LO, X_HI = -2700, 1200
-    # Extra bottom padding for title block separation (title block at top,
-    # diagram content shifted up, free space between them)
-    TB_GAP = 800   # gap between lowest diagram content and title block
-    Y_LO, Y_HI = -PAD - TB_GAP, C_WID + PAD
+    Y_LO, Y_HI = -PAD, C_WID + PAD
     FIG_W = 22.0
     FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
 
@@ -654,19 +651,12 @@ def egress_detail():
             bbox=dict(boxstyle="round,pad=0.5", fc="#F0FFF0",
                       ec=C_EGRESS, lw=1.2))
 
-    # ── Title block (top of page) ───────────────────────────────────────────
-    ax.text(0.01, 0.99, "THE BIG SHOEBOX PROJECT  ·  TBS-001",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, va="top", **FONT)
-    ax.text(0.01, 0.975,
-            "CARGO DOOR EGRESS DETAIL — PANEL OPEN 180° OUTWARD (NO DRUM OBSTRUCTIONS)",
-            transform=ax.transAxes, color=C_OUT, fontsize=8, fontweight="bold", va="top", **FONT)
-    ax.text(0.99, 0.99, "SCALE ~1:25  ·  SHEET 2 OF 2",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
-    ax.text(0.99, 0.975, "ALL DIMS IN mm",
-            transform=ax.transAxes, color=C_DIM, fontsize=7, ha="right", va="top", **FONT)
-    ax.text(0.50, 0.965, "© 2026 Alvin Richards — GNU AGPLv3",
-            transform=ax.transAxes, color=C_DIM, fontsize=6.0, ha="center",
-            va="top", style="italic", **FONT)
+    # ── Title block (bottom of page, standard format) ─────────────────────
+    title_block(ax, "SHEET 2 OF 2",
+                drawing_title="CARGO DOOR EGRESS DETAIL",
+                subtitle="PANEL OPEN 180° OUTWARD (NO DRUM OBSTRUCTIONS)",
+                scale_note="SCALE ~1:25  ·  ALL DIMS IN mm",
+                doc_id="TBS-001 · Floor Plan")
 
     import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)
     out = f"{DIAGRAMS_DIR}/container-floorplan-sheet2.png"

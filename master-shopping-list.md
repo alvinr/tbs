@@ -257,7 +257,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | NEMA 5-15R inlet (weatherproof) | Mounted in external power panel | 1 | Leviton / Amazon | ~$25 |
 | Solar panel ground mount frame | Tilt frame, 30° | 1 | Renogy / Amazon | ~$80 |
 | PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
-| IP65 junction box 300×200×120mm | External power panel enclosure | 1 | Polycase / Amazon | ~$40 |
+| IP65 junction box 300×200×80mm | External power panel enclosure | 1 | Polycase / Amazon | ~$35 |
 | IP68 cable gland M32 | Sealed wall penetration, multi-cable | 1 | McMaster-Carr / Amazon | ~$8 |
 | MC4 bulkhead connector pairs | IP67 panel-mount | 3 pairs | Amazon / Renogy | ~$25 |
 

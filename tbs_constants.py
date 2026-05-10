@@ -140,7 +140,7 @@ EVAP_H     = 800     # evap cooler height (mm)         [unchanged]
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
 PWR_PANEL_W = 300    # power panel width (mm)
 PWR_PANEL_H = 200    # power panel height (mm)
-PWR_PANEL_D = 120    # power panel depth / protrusion (mm)
+PWR_PANEL_D = 80     # power panel depth / protrusion (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
 EP_X       = 1600    # electrical panel left edge X (mm)  [rev6b: moved left, away from pinhole]

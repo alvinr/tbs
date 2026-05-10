@@ -56,6 +56,7 @@ See [Section 8.4](#84-electrical-diagrams) for embedded diagrams.
 | Orientation | Due south (azimuth 180°) |
 | Cable | 10 AWG PV cable, MC4 connectors |
 | Combiner | 3-way MC4 branch connector + 30A inline fuse per string |
+| Wall entry | Via external power panel (shared with shore power) — single IP68 cable gland |
 | Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) |
 
 **Siting:** deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
@@ -104,10 +105,27 @@ The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. 
 | Input | 100–240V AC, NEMA 5-15 (standard US outlet) |
 | Output | 12V DC, 15A (180W) |
 | Full charge time from flat | ~14 hours (200Ah ÷ 15A) |
-| Inlet | NEMA 5-15R weatherproof outlet on exterior short wall |
+| Inlet | NEMA 5-15R weatherproof inlet in external power panel (pinhole wall exterior) |
 | Approximate cost | ~$150 |
 
 Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.
+
+### 4.4 External Power Panel
+
+The solar PV inputs and shore power inlet share a single **external power panel** mounted on the pinhole wall exterior, close to the electrical panel and battery bank inside.
+
+| Parameter | Specification |
+|-----------|--------------|
+| Enclosure | IP65 junction box, 300×200×120mm |
+| Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
+| Shore power | 1 × NEMA 5-15R weatherproof inlet |
+| Wall penetration | Single M32 IP68 cable gland |
+| Location | Pinhole wall exterior, X ≈ 1,250–1,550mm (just left of EP) |
+| Approximate cost | ~$73 (box $40 + gland $8 + MC4 bulkheads $25) |
+
+A single sealed cable gland passes all cables (3 × 10 AWG PV + 1 × 14 AWG AC) through the container wall. Interior routing: PV cables to MPPT charge controller; AC cable to shore charger. See the power panel detail drawing below.
+
+![External Power Panel Detail](assets/power-panel-sheet1.png)
 
 ---
 

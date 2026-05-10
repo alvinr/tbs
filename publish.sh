@@ -159,6 +159,7 @@ DIAG_FILES=(
     "tilt-swing-combined-summary.png"
     "electrical-sheet1.png"
     "electrical-sheet2.png"
+    "power-panel-sheet1.png"
     "lighttrap-sheet1.png"
     "lighttrap-sheet2.png"
     "hingepanel-sheet1.png"

@@ -286,50 +286,132 @@ def floor_plan():
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
             alpha=0.7, zorder=4)
 
-    # ── Perimeter walkway (4 removable grated sections) ──────────────────────
+    # ── Perimeter walkway (4 mitered panels as polygons) ────────────────────
+    from matplotlib.patches import Polygon
     C_WALKWAY = "#D0C8B8"   # warm gray for grating
+    C_MITER   = "#806040"   # miter joint line color
     WK_HATCH  = "xx"        # cross-hatch pattern to indicate grating
     WK_ALPHA  = 0.55
+    W = WALKWAY_W
 
-    # Near walkway (pinhole side) — full tray length
-    ax.add_patch(Rectangle((PROC_TRAY_X_L, WALKWAY_NEAR_YD),
-                            PROC_TRAY_W, WALKWAY_W,
-                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
-                            alpha=WK_ALPHA, zorder=2))
-    # Far walkway (film plane side) — full tray length
-    ax.add_patch(Rectangle((PROC_TRAY_X_L, WALKWAY_FAR_YD),
-                            PROC_TRAY_W, WALKWAY_W,
-                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
-                            alpha=WK_ALPHA, zorder=2))
-    # Left walkway (cargo door end) — full container width
-    ax.add_patch(Rectangle((WALKWAY_LEFT_X, 0),
-                            WALKWAY_W, C_WID,
-                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
-                            alpha=WK_ALPHA, zorder=2))
-    # Right walkway (IBC end) — full container width
-    ax.add_patch(Rectangle((WALKWAY_RIGHT_X, 0),
-                            WALKWAY_W, C_WID,
-                            fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
-                            alpha=WK_ALPHA, zorder=2))
+    # Corner coordinates
+    LX = WALKWAY_LEFT_X                    # left walkway left edge
+    LXR = LX + W                          # left walkway right edge
+    RX = WALKWAY_RIGHT_X                   # right walkway left edge
+    RXR = RX + W                           # right walkway right edge
+    NY = WALKWAY_NEAR_YD                   # near walkway outer (bottom) edge
+    NYI = NY + W                           # near walkway inner edge
+    FY = WALKWAY_FAR_YD                    # far walkway inner edge
+    FYO = FY + W                           # far walkway outer (top) edge
 
-    # 45° miter joints at corners
-    C_MITER = "#806040"
-    miter_corners = [
-        # (x_inner, y_inner, x_outer, y_outer) — diagonal line across overlap
-        # Bottom-left: near walkway meets left walkway
-        (WALKWAY_LEFT_X, WALKWAY_NEAR_YD,
-         WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_NEAR_YD + WALKWAY_W),
-        # Bottom-right: near walkway meets right walkway
-        (WALKWAY_RIGHT_X + WALKWAY_W, WALKWAY_NEAR_YD,
-         WALKWAY_RIGHT_X, WALKWAY_NEAR_YD + WALKWAY_W),
-        # Top-left: far walkway meets left walkway
-        (WALKWAY_LEFT_X, WALKWAY_FAR_YD + WALKWAY_W,
-         WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_FAR_YD),
-        # Top-right: far walkway meets right walkway
-        (WALKWAY_RIGHT_X + WALKWAY_W, WALKWAY_FAR_YD + WALKWAY_W,
-         WALKWAY_RIGHT_X, WALKWAY_FAR_YD),
+    # Near walkway — mitered at both ends (triangles cut from corners)
+    near_poly = Polygon([
+        (LXR, NY),       # after left miter, bottom edge
+        (RX, NY),        # before right miter, bottom edge
+        (RXR, NYI),      # right miter point, inner edge
+        (LX, NYI),       # left miter point, inner edge  — wait, this is wrong
+    ], closed=True)
+    # Actually: near walkway spans full X range but gets a diagonal cut at each end.
+    # Bottom-left corner: miter goes from (LX, NY) to (LXR, NYI)
+    #   Near panel keeps the triangle below the diagonal → vertices on near side
+    # Bottom-right corner: miter goes from (RXR, NY) to (RX, NYI)
+    #   Near panel keeps the triangle below the diagonal
+    near_verts = [
+        (LXR, NY),    # start: bottom edge, right of left miter
+        (RX, NY),     # bottom edge, left of right miter
+        (RXR, NYI),   # right miter diagonal endpoint (outer corner)
+        # but wait — the near walkway outer edge extends to container wall...
     ]
-    for x1, y1, x2, y2 in miter_corners:
+    # Let me reconsider. The near/far walkways span from PROC_TRAY_X_L to
+    # PROC_TRAY_X_L + PROC_TRAY_W. The left/right walkways span 0 to C_WID.
+    # At the overlap corners (W×W squares), a 45° miter divides each square.
+    #
+    # Near walkway polygon (bottom, runs left–right):
+    #   Outer edge (y=NY): from LX to RXR (full span)
+    #   Inner edge (y=NYI): from LXR to RX (between miters)
+    #   Left miter: diagonal from (LX, NY) to (LXR, NYI)
+    #   Right miter: diagonal from (RXR, NY) to (RX, NYI)
+    near_x0 = PROC_TRAY_X_L
+    near_x1 = PROC_TRAY_X_L + PROC_TRAY_W
+    near_verts = [
+        (near_x0, NY),     # bottom-left corner (outer)
+        (near_x1, NY),     # bottom-right corner (outer)
+        (near_x1, NYI),    # top-right before miter — but right miter cuts here
+        (RX, NYI),         # inner edge, left of right miter
+        (RXR, NY),         # right miter hits outer edge — no, RXR > near_x1?
+    ]
+    # Hmm, let me check: PROC_TRAY_X_L = 170 = WALKWAY_LEFT_X, and
+    # PROC_TRAY_X_L + PROC_TRAY_W = 170 + 4459 = 4629 = WALKWAY_RIGHT_X + W = RXR.
+    # So near_x0 = LX and near_x1 = RXR. The near walkway runs the full span.
+    # The miter cuts are at the corners where left/right walkways overlap.
+
+    # Near walkway (pinhole side) — polygon with mitered corners
+    near_verts = [
+        (LX, NY),       # outer bottom-left
+        (RXR, NY),      # outer bottom-right
+        (RXR, NYI),     # move up at right edge — but this is right walkway territory
+    ]
+    # Actually the near walkway only needs miters where it overlaps the left
+    # and right walkways. The near walkway occupies Y from NY to NYI.
+    # In the overlap zone with the left walkway (X from LX to LXR):
+    #   the miter diagonal goes from (LX, NY) to (LXR, NYI)
+    #   the near walkway gets the portion BELOW the diagonal
+    # In the overlap zone with the right walkway (X from RX to RXR):
+    #   the miter diagonal goes from (RXR, NY) to (RX, NYI)
+    #   the near walkway gets the portion BELOW the diagonal
+
+    near_verts = [
+        (LX, NY),       # bottom-left (outer corner)
+        (RXR, NY),      # bottom-right (outer corner)
+        (RX, NYI),      # right miter: diagonal cuts to inner edge
+        (LXR, NYI),     # inner edge between miters
+        # left miter: diagonal back to start
+    ]
+    ax.add_patch(Polygon(near_verts, closed=True,
+                         fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                         alpha=WK_ALPHA, zorder=2))
+
+    # Far walkway (film plane side) — polygon with mitered corners
+    far_verts = [
+        (LX, FYO),      # top-left (outer corner)
+        (RXR, FYO),     # top-right (outer corner)
+        (RX, FY),       # right miter: diagonal cuts to inner edge
+        (LXR, FY),      # inner edge between miters
+    ]
+    ax.add_patch(Polygon(far_verts, closed=True,
+                         fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                         alpha=WK_ALPHA, zorder=2))
+
+    # Left walkway (cargo door end) — polygon with mitered corners
+    left_verts = [
+        (LX, NY),       # bottom-left (outer, shared with near)
+        (LX, FYO),      # top-left (outer, shared with far)
+        (LXR, FY),      # top miter: diagonal cuts to inner edge
+        (LXR, NYI),     # inner edge between miters
+    ]
+    ax.add_patch(Polygon(left_verts, closed=True,
+                         fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                         alpha=WK_ALPHA, zorder=2))
+
+    # Right walkway (IBC end) — polygon with mitered corners
+    right_verts = [
+        (RXR, NY),      # bottom-right (outer, shared with near)
+        (RXR, FYO),     # top-right (outer, shared with far)
+        (RX, FY),       # top miter: diagonal cuts to inner edge
+        (RX, NYI),      # inner edge between miters
+    ]
+    ax.add_patch(Polygon(right_verts, closed=True,
+                         fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
+                         alpha=WK_ALPHA, zorder=2))
+
+    # Miter joint lines (drawn on top for visibility)
+    miter_lines = [
+        (LX, NY, LXR, NYI),      # bottom-left
+        (RXR, NY, RX, NYI),      # bottom-right
+        (LX, FYO, LXR, FY),      # top-left
+        (RXR, FYO, RX, FY),      # top-right
+    ]
+    for x1, y1, x2, y2 in miter_lines:
         ax.plot([x1, x2], [y1, y2], color=C_MITER, lw=1.2, zorder=3)
 
     # Label the walkway

@@ -416,13 +416,11 @@ def sheet2():
                 ax.plot(lx, inner_yd, 'o', color=C_LEG, markersize=4,
                         markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
         else:
-            # Short walkways (left/right): legs spaced along Yd
-            # End legs at Yd=350 / Yd=2012 support the 45° miter joints —
-            # positioned on this panel's side of the diagonal (both outer
-            # and inner leg X positions clear the miter line by ≥50mm).
-            leg_yd_lo = WALKWAY_W - 50            # 350mm — just above miter at inner X
-            leg_yd_hi = WALKWAY_FAR_YD + 50       # 2012mm — just below miter at inner X
-            n_legs = max(int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 2, 4)
+            # Short walkways (left/right): legs in the middle section only.
+            # Corner miter zones are supported by shared diagonal legs (below).
+            leg_yd_lo = WALKWAY_W + 50            # clear of near miter zone
+            leg_yd_hi = WALKWAY_FAR_YD - 50       # clear of far miter zone
+            n_legs = int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 1
             leg_yds = np.linspace(leg_yd_lo, leg_yd_hi, n_legs)
             for lyd in leg_yds:
                 # Place legs at 1/4 and 3/4 across walkway width for clear centering
@@ -460,11 +458,18 @@ def sheet2():
     ]
     for x1, y1, x2, y2 in corners:
         ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
+        # Shared legs on the miter diagonal — support both panels at the joint.
+        # Two legs per diagonal at 1/3 and 2/3 positions.
+        for t in (1/3, 2/3):
+            lx = x1 + t * (x2 - x1)
+            ly = y1 + t * (y2 - y1)
+            ax.plot(lx, ly, 's', color="#505058", markersize=5,
+                    markeredgecolor=C_OUT, markeredgewidth=0.7, zorder=9)
     # Label one miter (bottom-left) — typical for all four
     mx = PROC_TRAY_X_L + W / 2
     my = W / 2
     leader(ax, mx, my, mx - 350, my - 250,
-           "45° MITER\nJOINT (TYP.)", color=C_OUT, fs=6,
+           "45° MITER JOINT\nW/ SHARED LEGS (TYP.)", color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Lifting point indicators (one per section, centered) ─────────────────
@@ -506,16 +511,20 @@ def sheet2():
     legend_x = C_LEN + 60
     legend_top = C_WID - 50
     swatches = [
-        (C_WK,      WK_ALPHA, "xx", "Walkway (grated deck)"),
-        ("#E8F0FF",  0.3,      None, "Processing tray"),
-        (C_LEG,      1.0,     None, "Leg position (25mm SHS)"),
+        (C_WK,      WK_ALPHA, "xx",  "o", "Walkway (grated deck)"),
+        ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
+        (C_LEG,      1.0,     None,  "o", "Leg position (25mm SHS)"),
+        ("#505058",  1.0,     None,  "s", "Shared miter leg"),
     ]
-    for i, (c, a, h, lbl) in enumerate(swatches):
+    for i, (c, a, h, marker, lbl) in enumerate(swatches):
         sy_pos = legend_top - i * 50
         if h:
             ax.add_patch(Rectangle((legend_x, sy_pos - 10), 30, 20,
                                     fc=c, ec=C_OUT, lw=0.6, alpha=a,
                                     hatch=h, zorder=15))
+        elif marker == "s":
+            ax.plot(legend_x + 15, sy_pos, 's', color=c, markersize=6,
+                    markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=15)
         elif c == C_LEG:
             ax.plot(legend_x + 15, sy_pos, 'o', color=c, markersize=6,
                     markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=15)

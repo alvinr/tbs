@@ -312,6 +312,26 @@ def floor_plan():
                             fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
                             alpha=WK_ALPHA, zorder=2))
 
+    # 45° miter joints at corners
+    C_MITER = "#806040"
+    miter_corners = [
+        # (x_inner, y_inner, x_outer, y_outer) — diagonal line across overlap
+        # Bottom-left: near walkway meets left walkway
+        (WALKWAY_LEFT_X, WALKWAY_NEAR_YD,
+         WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_NEAR_YD + WALKWAY_W),
+        # Bottom-right: near walkway meets right walkway
+        (WALKWAY_RIGHT_X + WALKWAY_W, WALKWAY_NEAR_YD,
+         WALKWAY_RIGHT_X, WALKWAY_NEAR_YD + WALKWAY_W),
+        # Top-left: far walkway meets left walkway
+        (WALKWAY_LEFT_X, WALKWAY_FAR_YD + WALKWAY_W,
+         WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_FAR_YD),
+        # Top-right: far walkway meets right walkway
+        (WALKWAY_RIGHT_X + WALKWAY_W, WALKWAY_FAR_YD + WALKWAY_W,
+         WALKWAY_RIGHT_X, WALKWAY_FAR_YD),
+    ]
+    for x1, y1, x2, y2 in miter_corners:
+        ax.plot([x1, x2], [y1, y2], color=C_MITER, lw=1.2, zorder=3)
+
     # Label the walkway
     ax.text(WALKWAY_RIGHT_X + WALKWAY_W / 2,
             C_WID / 2,

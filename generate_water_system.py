@@ -846,7 +846,7 @@ draw_dim_v(ax3, OX - 0.5 - 0.2, OY + TRAY_DRAW_H, OY,
 
 # Drain X position dimension
 draw_dim_h(ax3, drain_dx, OX, OY - 0.5,
-           f"{drain_local_x:,}mm from left edge", offset=0.27, fs=6.5, above=False)
+           f"{drain_local_x:,}mm from left edge", offset=0.17, fs=6.5, above=False)
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
 WK_COLOR = "#8D6E63"

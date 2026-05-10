@@ -318,7 +318,8 @@ def draw_sheet1():
         ax.annotate("", xy=(x2, y), xytext=(x1, y),
                     arrowprops=dict(arrowstyle="-|>", color=col, lw=lw), zorder=3)
 
-    # Solar path (top row)
+    # Row positions
+    row_bot = 0.8
     row_top = 2.8
     sbox(ax_c, 0.5, row_top, 2.8, 0.9,
          "SOLAR PANELS", "3×200W  12V", fc="#E8F5E8", tc=C_MC4)
@@ -332,7 +333,12 @@ def draw_sheet1():
     ax_c.text(8.25, row_top + 0.65, "10 AWG PV", fontsize=6, color=C_MC4,
               ha="center", **FONT)
 
-    sbox(ax_c, 9.0, row_top - 0.15, 1.5, 1.2,
+    # Cable gland spans both rows
+    gland_x = 9.0
+    gland_w = 1.5
+    gland_bot = row_bot
+    gland_top = row_top + 0.9
+    sbox(ax_c, gland_x, gland_bot, gland_w, gland_top - gland_bot,
          "CABLE\nGLAND", "M32 IP68", fc="#D0D0D0")
 
     sarrow(ax_c, 10.5, row_top + 0.45, 12.0, col=C_MC4)
@@ -343,7 +349,6 @@ def draw_sheet1():
          "BATTERY BANK", "2×100Ah LiFePO4", fc="#E0E8F8")
 
     # Shore power path (bottom row)
-    row_bot = 0.8
     sbox(ax_c, 0.5, row_bot, 2.8, 0.9,
          "SHORE POWER", "120V AC mains", fc=C_NEMA, tc=C_AC)
     sarrow(ax_c, 3.3, row_bot + 0.45, 4.5, col=C_AC)
@@ -353,10 +358,6 @@ def draw_sheet1():
     sbox(ax_c, 4.5, row_bot, 3.0, 0.9,
          "EXT POWER PANEL", "NEMA 5-15R inlet", fc=C_BOX)
     sarrow(ax_c, 7.5, row_bot + 0.45, 9.0, col=C_AC)
-
-    # Cable gland already drawn — connect with vertical line
-    ax_c.plot([9.75, 9.75], [row_bot + 0.9, row_top - 0.15],
-              color=C_DIM, lw=1.0, ls=":", zorder=2)
 
     sarrow(ax_c, 10.5, row_bot + 0.45, 12.0, col=C_AC)
     sbox(ax_c, 12.0, row_bot, 3.2, 0.9,

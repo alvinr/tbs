@@ -124,8 +124,8 @@ def sheet1():
                             sx(tray_floor_end - tray_floor_start), sy(TRAY_FLOOR),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
-    leader(ax, sx(TRAY_RIM_YD - 1), sy(PROC_TRAY_RIM / 2),
-           sx(TRAY_RIM_YD - 25), sy(PROC_TRAY_RIM + 10),
+    leader(ax, sx(TRAY_RIM_YD - 5), sy(PROC_TRAY_RIM / 2 + 20),
+           sx(TRAY_RIM_YD - 15), sy(PROC_TRAY_RIM + 10),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     # Break line on tray floor (continues right)
@@ -161,8 +161,8 @@ def sheet1():
                             fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
 
     # Frame labels
-    leader(ax, sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W / 2),
-           sx(OUTER_RAIL_YD - 35), sy(frame_bot - 10),
+    leader(ax, sx(OUTER_RAIL_YD / 2) + 20, sy(frame_bot + FRAME_W / 2),
+           sx(OUTER_RAIL_YD - 55), sy(frame_bot*1.5),
            "30×30×3mm\nGALV ANGLE", color=C_FRAME, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -187,7 +187,7 @@ def sheet1():
                                 sx(2), sy(cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    ax.text(sx(WALKWAY_W / 2), sy(grate_top + 5),
+    ax.text(sx(WALKWAY_W * 4/5), sy(grate_top + 5),
             f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -214,21 +214,21 @@ def sheet1():
 
     # Outer leg (on container floor, between wall and tray)
     draw_leg(LEG_OUTER_YD, stands_on_tray=False)
-    ax.text(sx(LEG_OUTER_YD), sy(-20),
+    ax.text(sx(LEG_OUTER_YD), sy(30.5),
             "OUTER LEG\n(ON FLOOR)",
-            ha="center", va="top", fontsize=5.5, color=C_LEG,
+            ha="center", va="top", fontsize=5, color=BG,
             fontweight="bold", **FONT, zorder=15)
 
     # Inner leg (on tray floor, inside rim)
     draw_leg(LEG_INNER_YD, stands_on_tray=True)
-    ax.text(sx(LEG_INNER_YD), sy(-20),
-            "INNER LEG\n(ON TRAY FLOOR)",
-            ha="center", va="top", fontsize=5.5, color=C_LEG,
+    ax.text(sx(LEG_INNER_YD), sy(30.5),
+            "INNER LEG\n(ON\nTRAY FLOOR)",
+            ha="center", va="top", fontsize=5, color=BG,
             fontweight="bold", **FONT, zorder=15)
 
     # Leg label
-    leader(ax, sx(LEG_OUTER_YD + LEG_W / 2), sy(frame_bot / 2),
-           sx(LEG_OUTER_YD + 55), sy(frame_bot / 2 - 10),
+    leader(ax, sx(LEG_OUTER_YD / 2), sy(frame_bot / 2),
+           sx(LEG_OUTER_YD - 75), sy(frame_bot / 2 - 10),
            f"25×25×2mm SHS\nGALV STEEL\n+ RUBBER FOOT PAD", color=C_LEG, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -258,7 +258,7 @@ def sheet1():
 
     # Wall to outer leg center
     draw_dim_h(ax, sx(0), sx(LEG_OUTER_YD), sy(-22),
-               f"{LEG_OUTER_YD:.0f}mm", offset=sy(7), fs=6, above=False, font=FONT)
+               f"{LEG_OUTER_YD:.0f}mm", offset=sy(-27), fs=6, above=False, font=FONT)
 
     # Outer leg center to inner leg center
     leg_span = LEG_INNER_YD - LEG_OUTER_YD
@@ -273,8 +273,8 @@ def sheet1():
     ax.add_patch(Rectangle((sx(shoe_yd - 15), sy(shoe_z)),
                             sx(30), sy(5),
                             fc="#404040", ec=C_OUT, lw=0.5, zorder=10, alpha=0.4))
-    leader(ax, sx(shoe_yd - 10), sy(shoe_z),
-           sx(45), sy(shoe_z)*1.5,
+    leader(ax, sx(shoe_yd - 15), sy(shoe_z+5),
+           sx(95), sy(shoe_z)*1.5,
            f"OPERATOR\n(STANDING SHOE)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 

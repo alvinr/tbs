@@ -39,6 +39,7 @@ from tbs_constants import (
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
     EVAP_X, EVAP_W, EVAP_H, EVAP_Y, EVAP_D,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
+    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
@@ -51,7 +52,7 @@ from tbs_constants import (
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
     C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
-    C_EVAP, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN,
+    C_EVAP, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM,
     cone_left, cone_right,
 )
 
@@ -606,6 +607,8 @@ for xw, yw, ww, hw, col, lbl in [
     (EP_X,   EP_H_LO,   EP_W,  EP_H_HI  - EP_H_LO,  C_ELEC, "Elec panel\n[Yd=0 wall]"),
     (BA_X,   BA_H_LO,   BA_W,  BA_H_HI  - BA_H_LO,  C_BATT, "Battery\n[Yd=0]"),
     (PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP, "Pump\n[Yd=0]"),
+    (PWR_PANEL_X, (EP_H_LO + EP_H_HI) / 2 - PWR_PANEL_H / 2,
+     PWR_PANEL_W, PWR_PANEL_H, C_ALUM, "Ext pwr panel\n[exterior]"),
 ]:
     ax2.add_patch(mpatches.FancyBboxPatch(
         (mx(xw + ww), yw), ww, hw, boxstyle="square,pad=0",
@@ -699,6 +702,7 @@ legend2 = [
     (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),
     (C_PINHOLE,  "Pinhole Ø2.17mm  [ghost = far wall]"),
+    (C_ALUM,     "Ext power panel  [ghost = exterior]"),
     (C_WALL,     "Processing tray (304 SS, 50mm rim)"),
 ]
 

@@ -517,7 +517,7 @@ CW = 12.0   # container width in drawing units
 CH = 5.0    # container depth in drawing units
 ax2.add_patch(plt.Rectangle((0, 0), CW, CH, fc="white", ec=C_FRAME, lw=3,
                              zorder=1))
-ax2.text(6.0, -0.35, "CONTAINER INTERIOR — PLAN VIEW  (6,096 × 2,438 mm interior)",
+ax2.text(6.0, -0.25, "CONTAINER INTERIOR — PLAN VIEW  (6,096 × 2,438 mm interior)",
          ha="center", fontsize=8, color=C_FRAME)
 
 # Wall thickness (container wall ~75mm → 0.075 at 1:25, round to 0.1)
@@ -646,11 +646,11 @@ ax2.text(CW / 2, -0.08, "PINHOLE WALL (FRONT — Yd = 0)",
          ha="center", va="center", fontsize=6, color="#333", zorder=6)
 
 # Dimensions — using shared helpers from tbs_drawing.
-draw_dim_h(ax2, 0, CW, -0.35 - 0.25, "5,893 mm (CONTAINER INTERIOR)", offset=0.27, fs=6.5, above=False)
+draw_dim_h(ax2, 0, CW, -0.30, "5,893 mm (CONTAINER INTERIOR)", offset=0.21, fs=6.5, above=False)
 draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2,362 mm", offset=0.27, fs=6.5, right=False)
 draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1,219 mm", offset=0.27, fs=6.5, above=False)
-draw_dim_h(ax2, 0, ZONE_L_DX, 5.5 - 0.25, f"LEFT END ZONE: {ZONE_L_END} mm", offset=0.27, fs=6.5, color="#805000", above=False)
-draw_dim_h(ax2, ZONE_R_DX, CW, 5.5 - 0.25, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
+draw_dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", offset=0.27, fs=6.5, color="#805000", above=False)
+draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
 
 # Orientation arrow — points toward pinhole wall (bottom, Yd=0)
 ax2.annotate("", xy=(CW + 0.3, 0.4), xytext=(CW + 0.3, 1.6),

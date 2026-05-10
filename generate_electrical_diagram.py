@@ -538,14 +538,7 @@ def draw_sheet2():
            f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
            fs=7.5, ha="center")
 
-    # ── NEMA inlet — exterior, cargo door short wall (left face) ─────────────
-    NM_X = OX - 0.55
-    NM_Y = OY + cwid * 0.60
-    ax.add_patch(mpatches.Rectangle((NM_X, NM_Y), 0.45, 0.45,
-                 fc="#FFF0CC", ec=C_OUT, lw=1.2, zorder=5))
-    ax.text(NM_X+0.225, NM_Y+0.225, "AC\nIN",
-            ha="center", va="center", fontsize=7.0,
-            fontweight="bold", color=C_OUT, zorder=6)
+    # ── NEMA inlet — positioned after EP is drawn (see below) ───────────────
 
     # ── Colonnade equipment ───────────────────────────────────────────────────
     # x_mm  = TBS X along long axis (0 = cargo door end = LEFT in plan)
@@ -600,6 +593,15 @@ def draw_sheet2():
                  fc=C_BATT, ec=C_OUT, lw=1.0, zorder=7))
     ax.text(BA_DX+BA_DW/2, OY + wt + WALL_MOUNT_H/2, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
+
+    # ── NEMA inlet — exterior, pinhole wall (bottom face), near EP ──────────
+    NM_X = EP_DX + EP_DW + 0.15          # just right of EP
+    NM_Y = OY - 0.55                     # exterior face of pinhole wall
+    ax.add_patch(mpatches.Rectangle((NM_X, NM_Y), 0.45, 0.45,
+                 fc="#FFF0CC", ec=C_OUT, lw=1.2, zorder=5))
+    ax.text(NM_X+0.225, NM_Y+0.225, "AC\nIN",
+            ha="center", va="center", fontsize=7.0,
+            fontweight="bold", color=C_OUT, zorder=6)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
     # Fan A — INTAKE: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner
@@ -695,10 +697,10 @@ def draw_sheet2():
            "Evap cooler (E)\n12V DC  80W",
            fs=6.5, color=C_EVAP)
     # NEMA inlet
-    leader(ax, NM_X + 0.45, NM_Y + 0.225,
-           NM_X + 1.2, NM_Y + 0.8,
+    leader(ax, NM_X + 0.225, NM_Y,
+           NM_X + 0.225, NM_Y - 0.6,
            "NEMA 5-15R inlet\nShore power (exterior)",
-           fs=6.5, color="#A07820")
+           fs=6.5, color="#A07820", ha="center")
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
@@ -754,7 +756,7 @@ def draw_sheet2():
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
-         "Shore power backup  |  Exterior face, cargo door wall"),
+         "Shore power backup  |  Exterior face, pinhole wall (near EP)"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
         ky = KY - 0.28 - j * 0.60

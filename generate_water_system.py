@@ -36,6 +36,7 @@ from tbs_constants import (
 )
 import os
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -644,33 +645,12 @@ ax2.add_patch(plt.Rectangle((0.0, -0.15), CW, 0.15, fc="#BDBDBD", ec=C_FRAME,
 ax2.text(CW / 2, -0.08, "PINHOLE WALL (FRONT — Yd = 0)",
          ha="center", va="center", fontsize=6, color="#333", zorder=6)
 
-# Dimensions
-def dim_h(ax, x1, x2, y, label, color=C_DIM, offset=0.25):
-    tick = 0.08
-    yy = y - offset
-    ax.annotate("", xy=(x2, yy), xytext=(x1, yy),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
-                                mutation_scale=8))
-    ax.plot([x1, x1], [yy - tick, yy + tick], color=color, lw=0.6)
-    ax.plot([x2, x2], [yy - tick, yy + tick], color=color, lw=0.6)
-    ax.text((x1+x2)/2, yy - 0.12, label, ha="center", fontsize=6.5, color=color)
-
-def dim_v(ax, x, y1, y2, label, color=C_DIM, offset=0.3):
-    tick = 0.08
-    xx = x - offset
-    ax.annotate("", xy=(xx, y2), xytext=(xx, y1),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=1.0,
-                                mutation_scale=8))
-    ax.plot([xx - tick, xx + tick], [y1, y1], color=color, lw=0.6)
-    ax.plot([xx - tick, xx + tick], [y2, y2], color=color, lw=0.6)
-    ax.text(xx - 0.1, (y1+y2)/2, label, ha="right", va="center",
-            fontsize=6.5, color=color, rotation=90)
-
-dim_h(ax2, 0, CW, -0.35, "5,893 mm (CONTAINER INTERIOR)")
-dim_v(ax2, -0.2, 0, CH, "2,362 mm", offset=0.1)
-dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2, "IBC col: 1,219 mm")
-dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", color="#805000")
-dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", color="#004080")
+# Dimensions — using shared helpers from tbs_drawing.
+draw_dim_h(ax2, 0, CW, -0.35 - 0.25, "5,893 mm (CONTAINER INTERIOR)", offset=0.27, fs=6.5, above=False)
+draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2,362 mm", offset=0.27, fs=6.5, right=False)
+draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1,219 mm", offset=0.27, fs=6.5, above=False)
+draw_dim_h(ax2, 0, ZONE_L_DX, 5.5 - 0.25, f"LEFT END ZONE: {ZONE_L_END} mm", offset=0.27, fs=6.5, color="#805000", above=False)
+draw_dim_h(ax2, ZONE_R_DX, CW, 5.5 - 0.25, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
 
 # Orientation arrow — points toward pinhole wall (bottom, Yd=0)
 ax2.annotate("", xy=(CW + 0.3, 0.4), xytext=(CW + 0.3, 1.6),
@@ -848,8 +828,8 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
-dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
-      f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.2)
+draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9 - 0.2,
+           f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.27, fs=6.5, above=False)
 
 
 # ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
@@ -861,19 +841,12 @@ dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
 #          ha="center", fontsize=7, color=C_DIM)
 
 # Tray depth (Yd direction)
-dim_v(ax3, OX - 0.5, OY + TRAY_DRAW_H, OY,
-      f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.2)
+draw_dim_v(ax3, OX - 0.5 - 0.2, OY + TRAY_DRAW_H, OY,
+           f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.27, fs=6.5, right=False)
 
 # Drain X position dimension
-dim_h(ax3, drain_dx, OX, OY,
-      f"{drain_local_x:,}mm from left edge", offset=0.5)
-# ax3.annotate("", xy=(drain_dx, OY - 0.25),
-#              xytext=(OX, OY - 0.25),
-#              arrowprops=dict(arrowstyle="<->", color="#D32F2F", lw=1.0,
-#                              mutation_scale=8))
-# ax3.text((OX + drain_dx)/2, OY - 0.4,
-#          f"{drain_local_x:,}mm from left edge",
-#          ha="center", fontsize=6.5, color="#D32F2F")
+draw_dim_h(ax3, drain_dx, OX, OY - 0.5,
+           f"{drain_local_x:,}mm from left edge", offset=0.27, fs=6.5, above=False)
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
 WK_COLOR = "#8D6E63"

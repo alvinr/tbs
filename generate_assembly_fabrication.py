@@ -29,6 +29,7 @@ import matplotlib.patches as mpatches
 import os
 
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_cl_h, draw_cl_v, hatch_rect
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y,
@@ -76,33 +77,6 @@ FS_LG = 10.0
 
 
 # ── Shared helpers ─────────────────────────────────────────────────────────────
-def draw_dim_h(ax, x1, x2, y, label, ext=60, gap=20, fs=FS_SM, color=C_DIM):
-    ax.plot([x1, x1], [y - ext*0.4, y + ext*0.6], color=color, lw=0.5)
-    ax.plot([x2, x2], [y - ext*0.4, y + ext*0.6], color=color, lw=0.5)
-    ax.annotate("", xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.7))
-    ax.text((x1+x2)/2, y + ext*0.65 + gap, label,
-            ha="center", va="bottom", fontsize=fs, color=color)
-
-def draw_dim_v(ax, x, y1, y2, label, ext=60, gap=20, fs=FS_SM, color=C_DIM):
-    ax.plot([x - ext*0.4, x + ext*0.6], [y1, y1], color=color, lw=0.5)
-    ax.plot([x - ext*0.4, x + ext*0.6], [y2, y2], color=color, lw=0.5)
-    ax.annotate("", xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle="<->", color=color, lw=0.7))
-    ax.text(x - ext*0.5 - gap, (y1+y2)/2, label,
-            ha="right", va="center", fontsize=fs, color=color, rotation=90)
-
-def draw_cl_h(ax, x1, x2, y, color=C_CL):
-    ax.plot([x1, x2], [y, y], color=color, lw=0.5, dashes=(8, 3, 2, 3))
-
-def draw_cl_v(ax, x, y1, y2, color=C_CL):
-    ax.plot([x, x], [y1, y2], color=color, lw=0.5, dashes=(8, 3, 2, 3))
-
-def hatch_rect(ax, x, y, w, h, color=C_STEEL, hatch="///", alpha=0.5):
-    ax.add_patch(mpatches.Rectangle((x, y), w, h,
-                 facecolor=color, edgecolor=C_OUT,
-                 hatch=hatch, linewidth=0.8, alpha=alpha, zorder=3))
-
 def callout(ax, cx, cy, number, r=60, fs=FS_SM - 0.5):
     ax.add_patch(plt.Circle((cx, cy), r, facecolor="white", edgecolor=C_OUT,
                              linewidth=0.8, zorder=8))
@@ -162,10 +136,10 @@ def sheet1():
 
     # ── Container walls (hatched) and outline ─────────────────────────────────
     WALL_T = 80
-    hatch_rect(ax, -WALL_T, -WALL_T, C_LEN+2*WALL_T, WALL_T, C_STEEL, "///")
-    hatch_rect(ax, -WALL_T, C_HGT,   C_LEN+2*WALL_T, WALL_T, C_STEEL, "///")
-    hatch_rect(ax, -WALL_T, -WALL_T, WALL_T, C_HGT+2*WALL_T, C_STEEL, "///")
-    hatch_rect(ax, C_LEN,   -WALL_T, WALL_T, C_HGT+2*WALL_T, C_STEEL, "///")
+    hatch_rect(ax, -WALL_T, -WALL_T, C_LEN+2*WALL_T, WALL_T, color=C_STEEL, hatch="///")
+    hatch_rect(ax, -WALL_T, C_HGT,   C_LEN+2*WALL_T, WALL_T, color=C_STEEL, hatch="///")
+    hatch_rect(ax, -WALL_T, -WALL_T, WALL_T, C_HGT+2*WALL_T, color=C_STEEL, hatch="///")
+    hatch_rect(ax, C_LEN,   -WALL_T, WALL_T, C_HGT+2*WALL_T, color=C_STEEL, hatch="///")
     ax.add_patch(mpatches.Rectangle((0, 0), C_LEN, C_HGT,
                  facecolor="none", edgecolor=C_OUT, linewidth=1.6, zorder=5))
 
@@ -261,8 +235,8 @@ def sheet1():
     # Fan B (exhaust): cargo door end wall (X=0), HIGH H=FAN_B_H=1800mm
     # Fan A (intake):  far end wall (X=C_LEN),   LOW  H=FAN_A_H=600mm
     FAN_HH = DUCT_HEIGHT   # hatch block height = duct opening height (200mm)
-    hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, C_ALUM, "xx", 0.6)  # Fan B left wall
-    hatch_rect(ax, C_LEN,   FAN_A_H - FAN_HH//2, WALL_T, FAN_HH, C_ALUM, "xx", 0.6)  # Fan A right wall
+    hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan B left wall
+    hatch_rect(ax, C_LEN,   FAN_A_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan A right wall
 
     # ── Callout bubbles ───────────────────────────────────────────────────────
     CALL_R = 80
@@ -288,19 +262,19 @@ def sheet1():
     DIM_LEFT = -450
 
     draw_dim_h(ax, 0, C_LEN, DIM_TOP, f"Container interior  {C_LEN}mm",
-               ext=80, gap=30)
+               offset=107, fs=FS_SM)
     draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP+220,
                f"Optical zone (film plane rail span)  {ZONE_R_START-ZONE_L_END}mm",
-               ext=80, gap=20, color=C_CL)
+               offset=107, fs=FS_SM, color=C_CL)
     draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT,
-               f"Left zone\n{ZONE_L_END}mm", ext=60, gap=20, color="#805000")
+               f"Left zone\n{ZONE_L_END}mm", offset=80, fs=FS_SM, color="#805000")
     draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT,
-               f"Right zone\n{C_LEN-ZONE_R_START}mm", ext=60, gap=20, color="#004080")
+               f"Right zone\n{C_LEN-ZONE_R_START}mm", offset=80, fs=FS_SM, color="#004080")
     draw_dim_h(ax, 0, PH_X, DIM_BOT-220,
-               f"Pinhole X={PH_X}mm", ext=60, gap=20)
-    draw_dim_v(ax, C_LEN+400, 0, C_HGT, f"H={C_HGT}mm", ext=80, gap=20)
-    draw_dim_v(ax, C_LEN+700, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm", ext=60, gap=20)
-    draw_dim_v(ax, DIM_LEFT, 0, PH_H, f"PH H={PH_H}mm", ext=60, gap=20)
+               f"Pinhole X={PH_X}mm", offset=80, fs=FS_SM)
+    draw_dim_v(ax, C_LEN+400, 0, C_HGT, f"H={C_HGT}mm", offset=107, fs=FS_SM)
+    draw_dim_v(ax, C_LEN+700, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm", offset=80, fs=FS_SM)
+    draw_dim_v(ax, DIM_LEFT, 0, PH_H, f"PH H={PH_H}mm", offset=80, fs=FS_SM)
 
     # ── Reference table ───────────────────────────────────────────────────────
     REF_X  = C_LEN + 800
@@ -383,10 +357,10 @@ def sheet2():
 
     # ── Container walls (cross-section, hatched) ──────────────────────────────
     WALL_T2 = 80
-    hatch_rect(ax, -WALL_T2, -WALL_T2, C_WID+2*WALL_T2, WALL_T2, C_STEEL, "///")
-    hatch_rect(ax, -WALL_T2, C_HGT,    C_WID+2*WALL_T2, WALL_T2, C_STEEL, "///")
-    hatch_rect(ax, -WALL_T2, -WALL_T2, WALL_T2, C_HGT+2*WALL_T2, C_STEEL, "///")
-    hatch_rect(ax, C_WID,    -WALL_T2, WALL_T2, C_HGT+2*WALL_T2, C_STEEL, "///")
+    hatch_rect(ax, -WALL_T2, -WALL_T2, C_WID+2*WALL_T2, WALL_T2, color=C_STEEL, hatch="///")
+    hatch_rect(ax, -WALL_T2, C_HGT,    C_WID+2*WALL_T2, WALL_T2, color=C_STEEL, hatch="///")
+    hatch_rect(ax, -WALL_T2, -WALL_T2, WALL_T2, C_HGT+2*WALL_T2, color=C_STEEL, hatch="///")
+    hatch_rect(ax, C_WID,    -WALL_T2, WALL_T2, C_HGT+2*WALL_T2, color=C_STEEL, hatch="///")
 
     # ── Interior fill ─────────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
@@ -500,17 +474,17 @@ def sheet2():
     DIM_R    = C_WID + 330
 
     draw_dim_h(ax, 0, C_WID, DIM_TOP, f"Panel / container width  {C_WID}mm",
-               ext=80, gap=30)
+               offset=107, fs=FS_SM)
     draw_dim_h(ax, DRUM_LEFT, DRUM_RIGHT, -200,
-               f"Drum O{DRUM_D}mm", ext=60, gap=20)
+               f"Drum O{DRUM_D}mm", offset=80, fs=FS_SM)
     draw_dim_h(ax, 0, DRUM_CY, DIM_TOP-250,
-               f"Drum centre  {DRUM_CY}mm (= CW/2)", ext=60, gap=20)
+               f"Drum centre  {DRUM_CY}mm (= CW/2)", offset=80, fs=FS_SM)
 
-    draw_dim_v(ax, DIM_R, 0, C_HGT, f"H={C_HGT}mm", ext=80, gap=20)
+    draw_dim_v(ax, DIM_R, 0, C_HGT, f"H={C_HGT}mm", offset=107, fs=FS_SM)
     draw_dim_v(ax, DIM_R+300, RAIL_OFF, RAIL_OFF+DRUM_H_ELV,
-               f"Drum H  {DRUM_H_ELV}mm", ext=60, gap=20)
+               f"Drum H  {DRUM_H_ELV}mm", offset=80, fs=FS_SM)
     draw_dim_v(ax, DIM_LEFT, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm",
-               ext=60, gap=20)
+               offset=80, fs=FS_SM)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 2",

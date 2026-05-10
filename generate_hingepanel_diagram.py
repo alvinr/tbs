@@ -29,6 +29,8 @@ from matplotlib.lines import Line2D
 import os
 from tbs_constants import svg_path, SVG_DIR, C_LT_DRUM
 from tbs_title_block import title_block
+from tbs_drawing import (draw_dim_h, draw_dim_v,
+                         leader as _leader_shared, hatch_rect)
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -53,45 +55,21 @@ DRUM_H  = 2200         # drum height (floor → top bearing, mm)
 DRUM_CX = PW / 2       # drum centre X in panel (centred horizontally)
 DRUM_CY = DRUM_H / 2  # drum centre Y = 1000 mm from floor
 
-# ── Drawing helpers ───────────────────────────────────────────────────────────
+# ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
 def dim_h(ax, x0, x1, y, label, offset=70, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x1, y), xytext=(x0, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.text((x0 + x1) / 2, y + offset, label, color=col, fontsize=fs,
-            ha="center", va="bottom", zorder=15, **FONT)
+    draw_dim_h(ax, x0, x1, y, label, offset=offset, fs=fs, color=col, font=FONT)
 
 def dim_v(ax, x, y0, y1, label, offset=70, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x, y1), xytext=(x, y0),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6, zorder=15)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6, zorder=15)
-    ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
-            ha="left", va="center", zorder=15, **FONT)
+    draw_dim_v(ax, x, y0, y1, label, offset=offset, fs=fs, right=True,
+               color=col, font=FONT)
 
 def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal"):
-    ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
-                ha="center", va="center", **FONT, fontweight=fw,
-                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.8, mutation_scale=6),
-                zorder=15)
-
-def hatch_rect(ax, x, y, w, h, col, angle=45, lw=0.6, alpha=0.7, zorder=3):
-    rect = Rectangle((x, y), w, h, fc=col, ec=C_OUT, lw=0.8, zorder=zorder)
-    ax.add_patch(rect)
-    # Cross-hatch lines
-    step = max(w, h) / 12
-    for i in np.arange(-max(w, h), max(w, h), step):
-        if angle == 45:
-            ax.plot([x + i, x + i + h], [y + h, y], color=C_OUT,
-                    lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
-        else:
-            ax.plot([x + i, x + i + h], [y, y + h], color=C_OUT,
-                    lw=lw, alpha=alpha, clip_on=True, zorder=zorder + 1)
+    font = dict(FONT)
+    if fw != "normal":
+        font["fontweight"] = fw
+    _leader_shared(ax, xy[0], xy[1], xytext[0], xytext[1], text,
+                   fs=fs, color=col, ha="center", va="center",
+                   arrow_style="-|>", font=font)
 
 
 

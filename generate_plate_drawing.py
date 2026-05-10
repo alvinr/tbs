@@ -16,6 +16,8 @@ import numpy as np
 import os
 from tbs_constants import svg_path, SVG_DIR
 from tbs_title_block import title_block
+from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
+                         draw_rect, leader, bolt_holes, hatch_rect)
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = 600      # plate outer dimension (square)
@@ -66,90 +68,6 @@ C_ALUM  = '#D8D8D8'
 C_GASKT = '#404040'
 C_RED   = '#CC0000'   # section-cut arrows
 
-def draw_dim_h(ax, x1, x2, y, text, above=True, fontsize=6, scale=1.0):
-    """Horizontal dimension line between x1 and x2 at height y."""
-    off = 3 * scale
-    dy = off if above else -off
-    ax.annotate('', xy=(x2, y), xytext=(x1, y),
-                arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM,
-                                mutation_scale=5*scale))
-    mx = (x1 + x2) / 2
-    va = 'bottom' if above else 'top'
-    ax.text(mx, y + (1.5*scale if above else -1.5*scale), text,
-            ha='center', va=va, fontsize=fontsize, color=C_DIM)
-    # extension lines
-    ax.plot([x1, x1], [y - off*0.3, y + off*0.3], color=C_DIM, lw=0.5)
-    ax.plot([x2, x2], [y - off*0.3, y + off*0.3], color=C_DIM, lw=0.5)
-
-def draw_dim_v(ax, x, y1, y2, text, right=True, fontsize=6, scale=1.0):
-    """Vertical dimension line."""
-    off = 3 * scale
-    dx = off if right else -off
-    ax.annotate('', xy=(x, y2), xytext=(x, y1),
-                arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM,
-                                mutation_scale=5*scale))
-    my = (y1 + y2) / 2
-    ha = 'left' if right else 'right'
-    ax.text(x + (1.5*scale if right else -1.5*scale), my, text,
-            ha=ha, va='center', fontsize=fontsize, color=C_DIM,
-            rotation=90 if not right else 0)
-    ax.plot([x - off*0.3, x + off*0.3], [y1, y1], color=C_DIM, lw=0.5)
-    ax.plot([x - off*0.3, x + off*0.3], [y2, y2], color=C_DIM, lw=0.5)
-
-def draw_cl(ax, cx, cy, r, horiz=True, vert=True, scale=1.0):
-    """Draw centrelines through (cx,cy)."""
-    ext = max(r * 1.25, 4 * scale)
-    ls = (0, (6, 2, 1, 2))
-    if horiz:
-        ax.plot([cx - ext, cx + ext], [cy, cy], color=C_CL, lw=LW_THIN,
-                linestyle=ls)
-    if vert:
-        ax.plot([cx, cx], [cy - ext, cy + ext], color=C_CL, lw=LW_THIN,
-                linestyle=ls)
-
-def draw_circle(ax, cx, cy, r, lw=LW_THICK, color=C_OUT, ls='-', fill=False, fc='none'):
-    c = mpatches.Circle((cx, cy), r, lw=lw, edgecolor=color, facecolor=fc if fill else 'none',
-                         linestyle=ls, zorder=4)
-    ax.add_patch(c)
-
-def draw_rect(ax, x, y, w, h, lw=LW_THICK, color=C_OUT, fc='white', zorder=3):
-    r = mpatches.Rectangle((x, y), w, h, lw=lw, edgecolor=color,
-                             facecolor=fc, zorder=zorder)
-    ax.add_patch(r)
-
-def leader(ax, xfrom, yfrom, xto, yto, text, fontsize=6, color=C_DIM):
-    ax.annotate(text, xy=(xto, yto), xytext=(xfrom, yfrom),
-                fontsize=fontsize, color=color,
-                arrowprops=dict(arrowstyle='->', linestyle=':', color=color, lw=0.7))
-
-def bolt_holes(ax, cx, cy, bc_r, n, d_r, color=C_OUT, lw=LW_MED):
-    for i in range(n):
-        angle = np.radians(22.5 + i * 360/n)
-        bx = cx + bc_r * np.cos(angle)
-        by = cy + bc_r * np.sin(angle)
-        draw_circle(ax, bx, by, d_r, lw=lw, color=color)
-
-def hatch_rect(ax, x, y, w, h, spacing=3, angle=45, color='#AAAAAA', lw=0.5):
-    """Draw diagonal hatching inside a rectangle."""
-    import matplotlib.patheffects as pe
-    rect = mpatches.Rectangle((x, y), w, h, color='none')
-    ax.add_patch(rect)
-    ax.set_clip_path(rect)
-    angle_r = np.radians(angle)
-    diag = np.sqrt(w**2 + h**2)
-    n = int(diag / spacing) + 2
-    cx = x + w/2
-    cy = y + h/2
-    for i in range(-n, n+1):
-        offset = i * spacing
-        dx = diag * np.cos(angle_r)
-        dy = diag * np.sin(angle_r)
-        px0 = cx + offset * np.cos(angle_r + np.pi/2) - dx/2
-        py0 = cy + offset * np.sin(angle_r + np.pi/2) - dy/2
-        px1 = px0 + dx
-        py1 = py0 + dy
-        ax.plot([px0, px1], [py0, py1], color=color, lw=lw,
-                clip_path=rect, clip_on=True)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -261,7 +179,7 @@ for sign in [-1, 1]:
              linestyle=(0, (4, 2)))
 
 # Centre lines
-draw_cl(ax1, cx1, cy1, hw * 1.1, scale=1.0)
+draw_cl(ax1, cx1, cy1, hw * 1.1)
 
 # Section cut line A-A (horizontal through centre)
 ax1.plot([cx1 - hw - 8, cx1 + hw + 8], [cy1, cy1],
@@ -280,22 +198,22 @@ dim_y_top = cy1 + hw + 14
 dim_x_right = cx1 + hw + 18
 
 # Overall width
-draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600', above=True, fontsize=6)
+draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600', above=True, fs=6, offset=3)
 # Overall height
-draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600', right=True, fontsize=6)
+draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600', right=True, fs=6, offset=3)
 # Aperture diameter
-leader(ax1, cx1 + 12, cy1 + 10, cx1 + s(FR_APT_D/2)*0.65, cy1 + s(FR_APT_D/2)*0.65,
-       'Ø350', fontsize=5.5)
+leader(ax1, cx1 + s(FR_APT_D/2)*0.65, cy1 + s(FR_APT_D/2)*0.65,
+       cx1 + 12, cy1 + 10, 'Ø350', fs=5.5, color=C_DIM)
 # Bolt circle
-leader(ax1, cx1 + 15, cy1 - 18, cx1 + s(BOLT_BC/2)*0.6, cy1 - s(BOLT_BC/2)*0.6,
-       'Ø540 B.C.\n8×Ø13', fontsize=5)
+leader(ax1, cx1 + s(BOLT_BC/2)*0.6, cy1 - s(BOLT_BC/2)*0.6,
+       cx1 + 15, cy1 - 18, 'Ø540 B.C.\n8×Ø13', fs=5, color=C_DIM)
 # Seal groove
-leader(ax1, cx1 - 18, cy1 + 22, cx1 - s(SEAL_D/2)*0.7, cy1 + s(SEAL_D/2)*0.7,
-       'Ø420\nSEAL GRV\n3×3 DEEP', fontsize=4.8)
+leader(ax1, cx1 - s(SEAL_D/2)*0.7, cy1 + s(SEAL_D/2)*0.7,
+       cx1 - 18, cy1 + 22, 'Ø420\nSEAL GRV\n3×3 DEEP', fs=4.8, color=C_DIM)
 # Dowel hole callout
-leader(ax1, cx1 - s(DWL_OFF) - 6, cy1 - 12,
-       cx1 - s(DWL_OFF), cy1 - s(DWL_D/2),
-       '2×Ø8 H7\nDOWEL\n(±200)', fontsize=4.8)
+leader(ax1, cx1 - s(DWL_OFF), cy1 - s(DWL_D/2),
+       cx1 - s(DWL_OFF) - 6, cy1 - 12,
+       '2×Ø8 H7\nDOWEL\n(±200)', fs=4.8, color=C_DIM)
 
 ax1.text(cx1, cy1 - hw - 10, '1', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
@@ -350,19 +268,19 @@ draw_cl(ax1, cx2, cy2, hw * 1.1)
 # ── Dimensions for Pinhole Plate ──────────────────────────────────────────────
 dim_y_top2 = cy2 + hw + 14
 
-draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600', above=True, fontsize=6)
+draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600', above=True, fs=6, offset=3)
 draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 6,
-           '490 (LIGHT TRAP)', above=True, fontsize=5)
+           '490 (LIGHT TRAP)', above=True, fs=5, offset=3)
 
 # Bore callout
-leader(ax1, cx2 + 14, cy2 + 12, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
-       'Ø90\nBORE THRU', fontsize=5.5)
-leader(ax1, cx2 + 16, cy2 - 10, cx2 + s(PH_CB_D/2)*0.6, cy2 - s(PH_CB_D/2)*0.6,
-       'Ø52×3\nC\'BORE\n(INT FACE)', fontsize=4.8)
-leader(ax1, cx2 - 18, cy2 + 5, cx2, cy2,
-       'Ø2.17\nPINHOLE\n(DISC)', fontsize=5.0)
-leader(ax1, cx2 - 22, cy2 - 20, cx2 - trap_h, cy2 - trap_h + 2,
-       '5×5 REBATE\n(LIGHT TRAP)', fontsize=4.8)
+leader(ax1, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
+       cx2 + 14, cy2 + 12, 'Ø90\nBORE THRU', fs=5.5, color=C_DIM)
+leader(ax1, cx2 + s(PH_CB_D/2)*0.6, cy2 - s(PH_CB_D/2)*0.6,
+       cx2 + 16, cy2 - 10, 'Ø52×3\nC\'BORE\n(INT FACE)', fs=4.8, color=C_DIM)
+leader(ax1, cx2, cy2,
+       cx2 - 18, cy2 + 5, 'Ø2.17\nPINHOLE\n(DISC)', fs=5.0, color=C_DIM)
+leader(ax1, cx2 - trap_h, cy2 - trap_h + 2,
+       cx2 - 22, cy2 - 20, '5×5 REBATE\n(LIGHT TRAP)', fs=4.8, color=C_DIM)
 
 ax1.text(cx2, cy2 - hw - 10, '2', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
@@ -415,18 +333,17 @@ draw_cl(ax3, cx3, cy3, hw * 1.1)
 
 # ── Dimensions for Lens Plate ─────────────────────────────────────────────────
 dim_y_top3 = cy3 + hw + 14
-draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600', above=True, fontsize=6)
+draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600', above=True, fs=6, offset=3)
 
-leader(ax3, cx3 + 16, cy3 + 16, cx3 + s(LB_D/2)*0.65, cy3 + s(LB_D/2)*0.65,
-       'Ø175 H7\nBORE THRU', fontsize=5.5)
-leader(ax3, cx3 + 20, cy3 - 12, cx3 + s(LT_OD/2)*0.65, cy3 - s(LT_OD/2)*0.65,
-       'Ø174.5 g6\nLENS TUBE\n(ITEM 6)', fontsize=4.8)
-leader(ax3, cx3 - 20, cy3 + 16,
-       cx3 + s(LB_D/2 + 5)*np.cos(np.radians(150)),
+leader(ax3, cx3 + s(LB_D/2)*0.65, cy3 + s(LB_D/2)*0.65,
+       cx3 + 16, cy3 + 16, 'Ø175 H7\nBORE THRU', fs=5.5, color=C_DIM)
+leader(ax3, cx3 + s(LT_OD/2)*0.65, cy3 - s(LT_OD/2)*0.65,
+       cx3 + 20, cy3 - 12, 'Ø174.5 g6\nLENS TUBE\n(ITEM 6)', fs=4.8, color=C_DIM)
+leader(ax3, cx3 + s(LB_D/2 + 5)*np.cos(np.radians(150)),
        cy3 + s(LB_D/2 + 5)*np.sin(np.radians(150)),
-       '3×M8\nSET SCREWS\n@ 120°', fontsize=4.8)
-leader(ax3, cx3 - 15, cy3 + hw - s(30) + 8, cx3 - s(60), cy3 + hw - s(30),
-       'SHUTTER\nRAIL HOLES\n4×Ø6.5', fontsize=4.8)
+       cx3 - 20, cy3 + 16, '3×M8\nSET SCREWS\n@ 120°', fs=4.8, color=C_DIM)
+leader(ax3, cx3 - s(60), cy3 + hw - s(30),
+       cx3 - 15, cy3 + hw - s(30) + 8, 'SHUTTER\nRAIL HOLES\n4×Ø6.5', fs=4.8, color=C_DIM)
 
 ax3.text(cx3, cy3 - hw - 10, '3', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
@@ -572,7 +489,7 @@ for sign in [-1, 1]:
 ax2.text(fr_right + 6, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
          va='center', fontsize=5.5, color='black')
 # dim: frame thickness
-draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 8, '6', above=True, fontsize=5.5, scale=0.6)
+draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 8, '6', above=True, fs=5.5, offset=1.8)
 
 # ── Pinhole Plate (aluminium, item 2) ─────────────────────────────────────────
 pl_left  = fr_right              # plate butts against frame face
@@ -646,11 +563,11 @@ ax2.plot([bolt_x_fr, bolt_x_end], [bolt_y, bolt_y], color='#444', lw=0.7, ls='--
 ax2.text(bolt_x_end + 2, bolt_y + 2, 'M12×40\nITEM 8', fontsize=4.5, color='black')
 
 # Dimension: plate thickness
-draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 8, '15', above=True, fontsize=5.5, scale=0.6)
+draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 8, '15', above=True, fs=5.5, offset=1.8)
 
 # Dim: plate height
 dim_rx = pl_right + 22
-draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600', right=True, fontsize=5.5, scale=0.6)
+draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600', right=True, fs=5.5, offset=1.8)
 
 # Dim: frame aperture
 ax2.annotate('', xy=(fr_left, scy + fr_apt_half),
@@ -759,7 +676,7 @@ for sign in [-1, 1]:
 
 # Dimensions
 draw_dim_h(ax2, face_x - sb(PH_CB_DEP), face_x, dby + cb_show_half + 6,
-           '3.0 DEEP', above=True, fontsize=5.5, scale=0.5)
+           '3.0 DEEP', above=True, fs=5.5, offset=1.5)
 ax2.annotate('', xy=(face_x, dby + cb_show_half),
              xytext=(face_x, dby - cb_show_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
@@ -854,9 +771,9 @@ ax2.text(plate_x + step_depth + 2, dcy - 10, 'NO LIGHT\nPATH', ha='left',
 
 # Dimensions
 draw_dim_h(ax2, plate_x, plate_x + step_depth, dcy - 30, '5.0', above=False,
-           fontsize=5.5, scale=0.5)
+           fs=5.5, offset=1.5)
 draw_dim_v(ax2, plate_x + step_depth + 8, dcy, dcy + step_width, '5.0',
-           right=True, fontsize=5.5, scale=0.5)
+           right=True, fs=5.5, offset=1.5)
 
 ax2.text(dcx, dcy - 38, 'DETAIL C — LIGHT TRAP (10:1)', ha='center', fontsize=6.5,
          fontweight='bold', color=C_RED)
@@ -954,7 +871,7 @@ ax2.annotate('', xy=(pl_right_d, ddy + tube_od_half),
 ax2.text(pl_right_d + 18, ddy, 'Ø174.5\nTUBE OD', ha='left', fontsize=5.5, color=C_DIM)
 
 draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 12, '15', above=False,
-           fontsize=5.5, scale=0.5)
+           fs=5.5, offset=1.5)
 
 ax2.text(ddx - 30, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
          fontsize=6.5, fontweight='bold', color=C_RED)

@@ -26,6 +26,7 @@ from tbs_constants import (
     MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, SVG_DIR, svg_path,
 )
 from tbs_title_block import title_block
+from tbs_drawing import leader
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -90,11 +91,6 @@ def dim_line_v(ax, x, y0, y1, text, offset=30, col=DIM, fs=7):
     ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6)
     ax.text(x+offset, (y0+y1)/2, text, color=col, fontsize=fs,
             ha="left", va="center", **FONT)
-
-def leader(ax, xy, xytext, text, col=ANNO, fs=6.5):
-    ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
-                **FONT, ha="center",
-                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.7, mutation_scale=5))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -628,8 +624,9 @@ def sheet3():
     ax.text(hw_cx, hw_cy - 75, "8\" HANDWHEEL", color=DIM, fontsize=6,
             ha="center", **FONT)
 
-    leader(ax, (cb_w/2+bk_w/2, rl_h+bk_h), (cb_w/2+bk_w/2, rl_h+bk_h+80),
-           "CORNER\nBRACKET\n(L-PLATE)", col=STRUCT2)
+    leader(ax, cb_w/2+bk_w/2, rl_h+bk_h, cb_w/2+bk_w/2, rl_h+bk_h+80,
+           "CORNER\nBRACKET\n(L-PLATE)", color=STRUCT2, ha="center",
+           arrow_style="-|>", font=FONT)
 
     ax.text(200, 370, "CORNER CARRIAGE BRACKET ASSEMBLY\n(ONE PER CORNER — 4 TOTAL)",
             color=WHITE, fontsize=8, ha="center", va="bottom", **FONT)
@@ -700,8 +697,9 @@ def sheet3():
     ax.text(rod_cx+30+25, rod_cy, "25mm\nPIN", color=DIM, fontsize=4.5,
             ha="center", va="center", **FONT)
 
-    leader(ax, (rod_cx, rod_cy+30), (rod_cx - 60, rod_cy + 130),
-           "ROD-END SPHERICAL\nBEARING (GIR25-DO\nor equiv.)\n±45° ANY AXIS", col=MECH)
+    leader(ax, rod_cx, rod_cy+30, rod_cx - 60, rod_cy + 130,
+           "ROD-END SPHERICAL\nBEARING (GIR25-DO\nor equiv.)\n±45° ANY AXIS", color=MECH, ha="center",
+           arrow_style="-|>", font=FONT)
 
     # Annotation of freedom axes
     for angle_d in [0, 45, -45]:

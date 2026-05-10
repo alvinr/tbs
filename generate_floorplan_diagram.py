@@ -36,6 +36,7 @@ from matplotlib.lines import Line2D
 import matplotlib.patches
 
 from tbs_constants import *
+from tbs_drawing import draw_dim_h, draw_dim_v
 
 # ── Palette (local overrides removed — equipment colors from tbs_constants) ──
 BG            = "#FFFFFF"
@@ -50,23 +51,6 @@ FONT          = {"fontfamily": "monospace"}
 
 WALL  = 40   # schematic wall thickness
 
-def dim_h(ax, x0, x1, y, label, offset=80, fs=6.5, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x1, y), xytext=(x0, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7))
-    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6)
-    ax.text((x0 + x1) / 2, y + offset, label, color=col, fontsize=fs,
-            ha="center", va="bottom", **FONT)
-
-def dim_v(ax, x, y0, y1, label, offset=80, fs=6.5, col=C_DIM):
-    tick = abs(offset) * 0.3
-    ax.annotate("", xy=(x, y1), xytext=(x, y0),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7))
-    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6)
-    ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
-            ha="left", va="center", **FONT)
 
 def equip_rect(ax, x, y, w, h, col, label, zorder=6, alpha=0.88):
     ax.add_patch(Rectangle((x, y), w, h, fc=col, ec=C_OUT, lw=1.2, alpha=alpha, zorder=zorder))
@@ -326,14 +310,14 @@ def floor_plan():
             **FONT, alpha=0.8, zorder=5)
 
     # ── Dimension annotations ─────────────────────────────────────────────────
-    dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25)
-    dim_v(ax, C_LEN + 200, 0, C_WID,
-          f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55)
-    dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm\nLEFT ZONE", offset=25, fs=6)
-    dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 555, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6)
-    dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 555, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6)
-    dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6)
-    dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6)
+    draw_dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25, font=FONT)
+    draw_dim_v(ax, C_LEN + 200, 0, C_WID,
+          f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55, right=True, font=FONT)
+    draw_dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm\nLEFT ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 555, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 555, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6, font=FONT)
+    draw_dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6, right=True, font=FONT)
 
     # ── Shadow-free proof callout ─────────────────────────────────────────────
 #     proof_x = C_LEN/2
@@ -649,8 +633,8 @@ def egress_detail():
             **FONT, alpha=0.8, zorder=10)
 
     # Egress gap dimension line
-    dim_v(ax, -150, 0, C_WID,
-          f"{EGRESS_GAP}mm\nFULL\nWIDTH", offset=-180, fs=7, col=C_EGRESS)
+    draw_dim_v(ax, -150, 0, C_WID,
+          f"{EGRESS_GAP}mm\nFULL\nWIDTH", offset=-180, fs=7, color=C_EGRESS, right=True, font=FONT)
 
     # ── Clearance summary ────────────────────────────────────────────────────
     note_x = 850

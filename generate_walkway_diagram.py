@@ -21,6 +21,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
@@ -45,34 +46,6 @@ C_FLOOR = "#E0DDD8"
 C_LEG   = "#707078"
 C_WALL  = "#C0C0C8"
 FONT    = {"fontfamily": "monospace"}
-
-# ── Drawing helpers ───────────────────────────────────────────────────────────
-def dim_h(ax, x0, x1, y, label, offset=8, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.35
-    ax.annotate("", xy=(x1, y), xytext=(x0, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6, zorder=15)
-    ax.text((x0 + x1) / 2, y + offset, label, color=col, fontsize=fs,
-            ha="center", va="bottom", zorder=15, **FONT)
-
-def dim_v(ax, x, y0, y1, label, offset=12, fs=7, col=C_DIM):
-    tick = abs(offset) * 0.35
-    ax.annotate("", xy=(x, y1), xytext=(x, y0),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=7),
-                zorder=15)
-    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6, zorder=15)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6, zorder=15)
-    ax.text(x + offset, (y0 + y1) / 2, label, color=col, fontsize=fs,
-            ha="left", va="center", zorder=15, **FONT)
-
-def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5):
-    ax.annotate(text, xy=xy, xytext=xytext, color=col, fontsize=fs,
-                ha="center", va="center", **FONT,
-                arrowprops=dict(arrowstyle="-|>", linestyle=':', color=col, lw=0.8,
-                                mutation_scale=6),
-                zorder=15)
 
 
 
@@ -151,9 +124,10 @@ def sheet1():
                             sx(tray_floor_end - tray_floor_start), sy(TRAY_FLOOR),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
-    leader(ax, (sx(TRAY_RIM_YD - 1), sy(PROC_TRAY_RIM / 2)),
-           (sx(TRAY_RIM_YD - 25), sy(PROC_TRAY_RIM + 10)),
-           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", col=C_TRAY, fs=6)
+    leader(ax, sx(TRAY_RIM_YD - 1), sy(PROC_TRAY_RIM / 2),
+           sx(TRAY_RIM_YD - 25), sy(PROC_TRAY_RIM + 10),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
     # Break line on tray floor (continues right)
     bx = sx(tray_floor_end)
     for z_val in np.linspace(0, TRAY_FLOOR * S, 3):
@@ -187,9 +161,10 @@ def sheet1():
                             fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
 
     # Frame labels
-    leader(ax, (sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W / 2)),
-           (sx(OUTER_RAIL_YD - 35), sy(frame_bot - 10)),
-           "30×30×3mm\nGALV ANGLE", col=C_FRAME, fs=5.5)
+    leader(ax, sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W / 2),
+           sx(OUTER_RAIL_YD - 35), sy(frame_bot - 10),
+           "30×30×3mm\nGALV ANGLE", color=C_FRAME, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
     # Main grate rectangle
@@ -252,39 +227,43 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15)
 
     # Leg label
-    leader(ax, (sx(LEG_OUTER_YD + LEG_W / 2), sy(frame_bot / 2)),
-           (sx(LEG_OUTER_YD + 55), sy(frame_bot / 2 - 10)),
-           f"25×25×2mm SHS\nGALV STEEL\n+ RUBBER FOOT PAD", col=C_LEG, fs=5.5)
+    leader(ax, sx(LEG_OUTER_YD + LEG_W / 2), sy(frame_bot / 2),
+           sx(LEG_OUTER_YD + 55), sy(frame_bot / 2 - 10),
+           f"25×25×2mm SHS\nGALV STEEL\n+ RUBBER FOOT PAD", color=C_LEG, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width
-    dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 25),
-          f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7)
+    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 25),
+               f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7, font=FONT)
 
     # Deck height (floor to grate top)
-    dim_v(ax, sx(WALKWAY_W + 20), sy(0), sy(grate_bot),
-          f"{WALKWAY_H}mm\nDECK H", offset=sx(8), fs=7)
+    draw_dim_v(ax, sx(WALKWAY_W + 20), sy(0), sy(grate_bot),
+               f"{WALKWAY_H}mm\nDECK H", offset=sx(8), fs=7, right=True, font=FONT)
 
     # Grate thickness
-    dim_v(ax, sx(WALKWAY_W + 20), sy(grate_bot), sy(grate_top),
-          f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5)
+    draw_dim_v(ax, sx(WALKWAY_W + 20), sy(grate_bot), sy(grate_top),
+               f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Tray rim height
-    dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
-          f"{PROC_TRAY_RIM}mm", offset=sx(8), fs=6.5, col=C_TRAY)
+    draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm", offset=sx(8), fs=6.5, right=True,
+               color=C_TRAY, font=FONT)
 
     # Clearance above rim
     clr = WALKWAY_H - PROC_TRAY_RIM
-    dim_v(ax, sx(TRAY_RIM_YD + 15), sy(PROC_TRAY_RIM), sy(WALKWAY_H),
-          f"{clr}mm\nCLR", offset=sx(8), fs=6.5, col="#208020")
+    draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(PROC_TRAY_RIM), sy(WALKWAY_H),
+               f"{clr}mm\nCLR", offset=sx(8), fs=6.5, right=True,
+               color="#208020", font=FONT)
 
     # Wall to tray rim
-    dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-22),
-          f"{TRAY_RIM_YD}mm", offset=-sy(7), fs=6)
+    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-22),
+               f"{TRAY_RIM_YD}mm", offset=sy(7), fs=6, above=False, font=FONT)
 
     # Tray rim to inner edge of walkway
-    dim_h(ax, sx(TRAY_RIM_YD), sx(WALKWAY_W), sy(-22),
-          f"{WALKWAY_W - TRAY_RIM_YD}mm (OVER TRAY)", offset=-sy(7), fs=6)
+    draw_dim_h(ax, sx(TRAY_RIM_YD), sx(WALKWAY_W), sy(-22),
+               f"{WALKWAY_W - TRAY_RIM_YD}mm (OVER TRAY)", offset=sy(7), fs=6,
+               above=False, font=FONT)
 
     # ── Person silhouette (standing on walkway, for scale) ───────────────────
     # Simple stick figure, shoe at grate_top
@@ -294,9 +273,10 @@ def sheet1():
     ax.add_patch(Rectangle((sx(shoe_yd - 15), sy(shoe_z)),
                             sx(30), sy(5),
                             fc="#404040", ec=C_OUT, lw=0.5, zorder=10, alpha=0.4))
-    leader(ax, (sx(shoe_yd - 10), sy(shoe_z)),
-        (sx(45), sy(shoe_z)*1.5),
-        f"OPERATOR\n(STANDING SHOE)", col=C_TRAY, fs=6)
+    leader(ax, sx(shoe_yd - 10), sy(shoe_z),
+           sx(45), sy(shoe_z)*1.5,
+           f"OPERATOR\n(STANDING SHOE)", color=C_TRAY, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ax.text(sx(shoe_yd + 25), sy(shoe_z + 3),
     #         "OPERATOR\n(STANDING SHOE)",
@@ -479,8 +459,8 @@ def sheet2():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
-    dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
-          f"{WALKWAY_W}mm", offset=-120, fs=6)
+    draw_dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
+               f"{WALKWAY_W}mm", offset=200, fs=6, right=False, font=FONT)
 
     # Leg spacing callout
     # Pick two adjacent legs on the near walkway for dimensioning
@@ -488,8 +468,9 @@ def sheet2():
     near_xs = np.linspace(PROC_TRAY_X_L + 50, PROC_TRAY_X_R - 50, n_near)
     if len(near_xs) >= 2:
         lx0, lx1 = near_xs[0], near_xs[1]
-        dim_h(ax, lx0, lx1, -40,
-              f"{int(lx1 - lx0)}mm LEG SPACING (TYP.)", offset=-50, fs=6)
+        draw_dim_h(ax, lx0, lx1, -40,
+                   f"{int(lx1 - lx0)}mm LEG SPACING (TYP.)", offset=50, fs=6,
+                   above=False, font=FONT)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     legend_x = C_LEN + 60

@@ -295,12 +295,16 @@ def draw_sheet1():
               [by(nema_cy), by(nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
-    # Mounting bolts (through plate + gasket + wall, at mounting hole positions)
+    # Mounting bolts (through plate + gasket + wall, nut clamped against wall)
+    washer_w = 1.5 * mm_v * (plate_t_draw / (3 * mm_v))  # washer thickness
+    washer_h = 12 * mm_v     # washer OD ~12mm
     for by_pos in bolt_positions:
-        # Bolt shaft
-        draw_rect(ax_b, bx(plate_x - bolt_head_w),
+        # Bolt shaft — from bolt head through plate, gasket, wall to nut
+        shaft_start = plate_x - bolt_head_w
+        shaft_end = wall_x + wall_thick + washer_w + nut_w
+        draw_rect(ax_b, bx(shaft_start),
                   by(by_pos - bolt_shaft_h / 2),
-                  bx(plate_t_draw + gasket_t_draw + wall_thick + bolt_head_w + nut_w),
+                  bx(shaft_end - shaft_start),
                   by(bolt_shaft_h),
                   fc=C_STEEL, color=C_OUT, lw=0.6, zorder=7)
         # Bolt head (exterior side of plate)
@@ -308,8 +312,13 @@ def draw_sheet1():
                   by(by_pos - bolt_head_h / 2),
                   bx(bolt_head_w), by(bolt_head_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
-        # Nut (interior side of wall)
+        # Washer (against interior face of wall)
         draw_rect(ax_b, bx(wall_x + wall_thick),
+                  by(by_pos - washer_h / 2),
+                  bx(washer_w), by(washer_h),
+                  fc="#E0E0E0", color=C_OUT, lw=0.6, zorder=8)
+        # Nut (clamped against washer, flush with interior wall face)
+        draw_rect(ax_b, bx(wall_x + wall_thick + washer_w),
                   by(by_pos - nut_h / 2),
                   bx(nut_w), by(nut_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)

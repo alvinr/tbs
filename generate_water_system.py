@@ -132,11 +132,12 @@ def note(ax, x, y, txt, fs=6.5, color=C_TEXT):
     ax.text(x, y, txt, ha="left", va="center", fontsize=fs, color=color,
             zorder=10)
 
-def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE, zorder=11):
+def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE,
+                zorder=11, bg='white'):
     """Draw a pipe-crossing bridge hump on the 'over' pipe.
     direction: 'h' = bridging pipe is horizontal (arc humps upward)
                'v' = bridging pipe is vertical (arc humps rightward)
-    A white-filled semicircle masks the underlying pipe, then the arc is drawn.
+    bg: fill color under the arc — match to the zone background.
     """
     if direction == 'h':
         theta = np.linspace(0, np.pi, 40)
@@ -146,7 +147,7 @@ def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE, zord
         theta = np.linspace(-np.pi / 2, np.pi / 2, 40)
         bx = x + r * np.cos(theta)
         by = y + r * np.sin(theta)
-    ax.fill(bx, by, color='white', zorder=zorder - 1)
+    ax.fill(bx, by, color=bg, zorder=zorder - 1)
     ax.plot(bx, by, color=color, lw=lw, zorder=zorder, solid_capstyle='round')
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -240,8 +241,8 @@ ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
 # Run east to spray bar riser tap-off — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
-pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE)
-pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE)
+pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)
+pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)
 ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
@@ -267,9 +268,9 @@ ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 6.8, 6.4, 6.3, C_BROWN)
 # Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
-pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE)
-pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE)
-pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE)   # brown over spray bar riser
+pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L)
+pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L)
+pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE, bg=C_PROC)   # brown over spray bar riser
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
@@ -358,7 +359,7 @@ ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
 
 # Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
 pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK)  # floor drain riser (below blue)
-pipe_bridge(ax1, X_J, 3.8, direction='v', color=C_BLACK, lw=LW_PIPE)  # black over blue
+pipe_bridge(ax1, X_J, 3.8, direction='v', color=C_BLACK, lw=LW_PIPE, bg=C_BLACK_L)  # black over blue
 pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK)  # riser (above blue → junction)
 # Combined flow exits junction left into waste IBC vertical
 pipe(ax1, X_J, Y_J,  W_X, Y_J, C_BLACK)              # junction → waste IBC vertical

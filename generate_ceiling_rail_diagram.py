@@ -389,9 +389,9 @@ def sheet2():
     plate_z = -plate_h
     ax.add_patch(Rectangle((-plate_w / 2, plate_z), plate_w, plate_h,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=3))
-    leader(ax, sx(35), plate_z + plate_h / 2,
-           sx(75), plate_z + plate_h / 2 + sy(25),
-           "6mm MOUNTING PLATE (WELDED TO CEILING)", color=C_DIM, fs=6,
+    leader(ax, sx(4), plate_z + plate_h / 2,
+           sx(55), plate_z - plate_h / 2 - sy(25),
+           "6mm MOUNTING PLATE\n(WELDED TO CEILING)", color=C_DIM, fs=6,
            ha="center", arrow_style="-|>", font=FONT)
 
     # ── HGR20 rail profile ───────────────────────────────────────────────────

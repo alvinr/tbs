@@ -220,26 +220,26 @@ def draw_sheet1():
         bx(gland_right - gland_left + 10), by(GLAND_ID),
         fc="white", ec=C_DIM, lw=0.6, ls="--", zorder=5))
 
-    # Cables through gland — PV (green) and AC (brown)
+    # Cables through gland — PV (green) and AC (brown), parallel
     cable_ext = panel_left + BOX_D * 0.3  # start inside box
-    cable_int = wall_x + wall_w + 80      # fan out inside
+    cable_int = wall_x + wall_w + 80      # end inside container
 
-    # PV cables (3, slightly offset)
-    for i, off in enumerate([-6, 0, 6]):
+    # PV cables (3, parallel, slightly offset vertically)
+    for off in [-6, 0, 6]:
         ax_b.plot([bx(cable_ext), bx(cable_int)],
-                  [by(gland_cy + off), by(gland_cy + off - 20 + i * 20)],
+                  [by(gland_cy + off), by(gland_cy + off)],
                   color=C_MC4, lw=1.5, zorder=6)
-    # AC cable
+    # AC cable (parallel, offset above PV bundle)
     ax_b.plot([bx(cable_ext), bx(cable_int)],
-              [by(gland_cy + 10), by(gland_cy + 35)],
+              [by(gland_cy + 10), by(gland_cy + 10)],
               color=C_AC, lw=1.5, ls="--", zorder=6)
 
     # Interior destination labels
-    ax_b.text(bx(cable_int + 5), by(gland_cy - 15),
+    ax_b.text(bx(cable_int + 5), by(gland_cy - 5),
               "→ MPPT\n   CHARGE\n   CONTROLLER",
               ha="left", va="center", fontsize=7, color=C_MC4,
               fontweight="bold", **FONT, zorder=7)
-    ax_b.text(bx(cable_int + 5), by(gland_cy + 35),
+    ax_b.text(bx(cable_int + 5), by(gland_cy + 15),
               "→ SHORE\n   CHARGER",
               ha="left", va="center", fontsize=7, color=C_AC,
               fontweight="bold", **FONT, zorder=7)

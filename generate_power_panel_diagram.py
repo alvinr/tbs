@@ -379,7 +379,7 @@ def draw_sheet1():
     ax_c.plot([10.6, 10.6],
               [row_bot - 0.2, row_top + 1.0],
               color=C_WALL, lw=3, zorder=1)
-    ax_c.text(9.75, row_top + 1.15, "CONTAINER\nWALL",
+    ax_c.text(9.75, gland_bot - 0.55, "CONTAINER\nWALL",
               ha="center", va="bottom", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
 

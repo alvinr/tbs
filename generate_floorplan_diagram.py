@@ -627,14 +627,10 @@ def egress_detail():
             f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color=C_EGRESS, fontsize=9, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)
-    ax.text(ZONE_L_END / 2, EGRESS_MID_Y - 70,
-            "(panel open outward, no obstructions)",
-            color=C_EGRESS, fontsize=6.5, ha="center", va="top",
-            **FONT, alpha=0.8, zorder=10)
 
     # Egress gap dimension line
-    draw_dim_v(ax, -150, 0, C_WID,
-          f"{EGRESS_GAP}mm\nFULL\nWIDTH", offset=-180, fs=7, color=C_EGRESS, right=True, font=FONT)
+    draw_dim_v(ax, -480, 0, C_WID,
+          f"{EGRESS_GAP}mm FULL WIDTH", offset=-30, fs=7, color=C_EGRESS, right=True, font=FONT)
 
     # ── Clearance summary ────────────────────────────────────────────────────
     note_x = 850

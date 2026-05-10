@@ -417,8 +417,11 @@ def sheet2():
                         markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
         else:
             # Short walkways (left/right): legs spaced along Yd
-            n_legs = int(wh / LEG_SPACING) + 1
-            leg_yds = np.linspace(wy + 50, wy + wh - 50, n_legs)
+            # Avoid the corner miter zones — legs only in the middle section
+            leg_yd_lo = WALKWAY_W + 50           # above near-side miter zone
+            leg_yd_hi = WALKWAY_FAR_YD - 50      # below far-side miter zone
+            n_legs = int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 1
+            leg_yds = np.linspace(leg_yd_lo, leg_yd_hi, n_legs)
             for lyd in leg_yds:
                 # Place legs at 1/4 and 3/4 across walkway width for clear centering
                 outer_x = wx + WALKWAY_W * 0.25

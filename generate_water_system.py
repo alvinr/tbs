@@ -358,6 +358,7 @@ ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
 
 # Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
 pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK)  # floor drain riser (below blue)
+pipe_bridge(ax1, X_J, 3.8, direction='v', color=C_BLACK, lw=LW_PIPE)  # black over blue
 pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK)  # riser (above blue → junction)
 # Combined flow exits junction left into waste IBC vertical
 pipe(ax1, X_J, Y_J,  W_X, Y_J, C_BLACK)              # junction → waste IBC vertical

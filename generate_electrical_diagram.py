@@ -119,7 +119,7 @@ def draw_sheet1():
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
          fc=C_ELEC_TINT, ts=9.5, ss=8.0)
     varrow(ax, CX, 12.0, 11.2, col=C_SOLAR)
-    wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  Via external power panel")
+    wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  Via flush-mount power panel")
 
     # 3. Battery bank  y=8.4–9.5
     rbox(ax, LX, 8.4, LW, 1.1,
@@ -181,7 +181,7 @@ def draw_sheet1():
 
     # NEMA 5-15R inlet below shore charger
     rbox(ax, SC_X, SC_Y - 1.35, SC_W, 0.80,
-         "NEMA 5-15R INLET  (external power panel — pinhole wall)",
+         "NEMA 5-15R INLET  (flush-mount power panel — pinhole wall)",
          "Weatherproof  |  Shore power input when mains available",
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
     varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
@@ -594,18 +594,18 @@ def draw_sheet2():
     ax.text(BA_DX+BA_DW/2, OY + wt + WALL_MOUNT_H/2, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    # ── External power panel — exterior, pinhole wall (bottom face), near EP ─
+    # ── External power panel — flush-mount in pinhole wall ──────────────────
     from tbs_constants import PWR_PANEL_X, PWR_PANEL_W
     PP_DX = ix(PWR_PANEL_X)
     PP_DW = PWR_PANEL_W * S_xi
-    PP_DH = 0.50
-    PP_DY = OY - PP_DH                    # flush against exterior face of pinhole wall
+    PP_DH = wt                             # flush in the wall thickness
+    PP_DY = OY                             # sits in the wall itself
     ax.add_patch(mpatches.Rectangle((PP_DX, PP_DY), PP_DW, PP_DH,
-                 fc="#E8E0C8", ec=C_OUT, lw=1.2, zorder=5))
+                 fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=7))
     ax.text(PP_DX + PP_DW / 2, PP_DY + PP_DH / 2, "EXT\nPWR",
             ha="center", va="center", fontsize=6.5,
-            fontweight="bold", color=C_OUT, zorder=6)
-    # Penetration line from panel into container
+            fontweight="bold", color=C_OUT, zorder=8)
+    # Cable routing from panel to EP (interior)
     ax.plot([PP_DX + PP_DW / 2, PP_DX + PP_DW / 2],
             [PP_DY + PP_DH, OY + wt + WALL_MOUNT_H],
             color="#808080", lw=1.2, ls=":", zorder=4)
@@ -762,8 +762,8 @@ def draw_sheet2():
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
-        ("EXT\nPWR","#E8E0C8","EXTERNAL POWER PANEL",
-         "3×MC4 solar + NEMA 5-15R AC  |  Single sealed penetration  |  Pinhole wall exterior"),
+        ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
+         "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
         ky = KY - 0.28 - j * 0.60

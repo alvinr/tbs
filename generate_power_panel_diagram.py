@@ -145,7 +145,7 @@ def draw_sheet1():
     ax_a.plot(gx, gy, color=C_OUT, lw=1.0, zorder=6)
 
     # Labels
-    ax_a.text(sx(BOX_W / 2), sy(BOX_H + 15),
+    ax_a.text(sx(BOX_W / 2), sy(BOX_H + 55),
               "VIEW A — FRONT ELEVATION (EXTERIOR FACE)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
@@ -158,7 +158,7 @@ def draw_sheet1():
 
     # Leader labels
     leader(ax_a, sx(MC4_X), sy(mc4_y_base + 2 * MC4_PITCH + MC4_R + 5),
-           sx(MC4_X - 25), sy(BOX_H + 45),
+           sx(MC4_X - 25), sy(BOX_H + 35),
            "MC4 BULKHEAD\nCONNECTORS (×3 PAIRS)\nIP67 PANEL-MOUNT",
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
@@ -256,7 +256,7 @@ def draw_sheet1():
         fc=C_INT, ec="none", alpha=0.3, zorder=1))
 
     # Title
-    ax_b.text(bx((wall_x + wall_w + int_pad) / 2), by(BOX_H + 70),
+    ax_b.text(bx((wall_x + wall_w + int_pad) / 2), by(BOX_H + 80),
               "VIEW B — SIDE SECTION (WALL PENETRATION)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)

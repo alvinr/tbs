@@ -157,12 +157,12 @@ def draw_sheet1():
 
     # Leader labels
     leader(ax_a, sx(MC4_X), sy(mc4_y_base + 2 * MC4_PITCH + MC4_R + 5),
-           sx(MC4_X), sy(BOX_H + 45),
+           sx(MC4_X - 25), sy(BOX_H + 45),
            "MC4 BULKHEAD\nCONNECTORS (×3 PAIRS)\nIP67 PANEL-MOUNT",
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(nema_cx), sy(NEMA_Y - 5),
-           sx(nema_cx), sy(-55),
+           sx(nema_cx + NEMA_W * 2), sy(NEMA_Y - 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="center", va="top", arrow_style="-|>", font=FONT)
 
@@ -235,12 +235,12 @@ def draw_sheet1():
               color=C_AC, lw=1.5, ls="--", zorder=6)
 
     # Interior destination labels
-    ax_b.text(bx(cable_int + 5), by(gland_cy - 5),
-              "→ MPPT\n   CHARGE\n   CONTROLLER",
+    ax_b.text(bx(cable_int + 5), by(gland_cy),
+              "→ MPPT CHARGE CONTROLLER",
               ha="left", va="center", fontsize=7, color=C_MC4,
               fontweight="bold", **FONT, zorder=7)
-    ax_b.text(bx(cable_int + 5), by(gland_cy + 15),
-              "→ SHORE\n   CHARGER",
+    ax_b.text(bx(cable_int + 5), by(gland_cy + 10),
+              "→ SHORE CHARGER",
               ha="left", va="center", fontsize=7, color=C_AC,
               fontweight="bold", **FONT, zorder=7)
 

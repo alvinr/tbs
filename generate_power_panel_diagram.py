@@ -271,20 +271,25 @@ def draw_sheet1():
               [by(nema_cy), by(nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
-    # Mounting bolts (top and bottom, through plate + wall)
+    # Mounting bolts (top and bottom, through plate + gasket + wall)
     bolt_positions = [cut_bot - 12, cut_top + 12]
+    bolt_shaft_d = 2       # M6 shaft shown as line thickness
+    bolt_head_w = 3        # bolt head thickness (depth axis)
+    bolt_head_h = 4        # bolt head height (across-flats)
+    nut_w = 3              # nut thickness
+    nut_h = 4              # nut height
     for by_pos in bolt_positions:
-        # Bolt shaft
-        ax_b.plot([bx(plate_x - 5), bx(wall_x + wall_thick + 8)],
+        # Bolt shaft — plate through to nut
+        ax_b.plot([bx(plate_x - bolt_head_w), bx(wall_x + wall_thick + nut_w)],
                   [by(by_pos), by(by_pos)],
-                  color=C_DIM, lw=2.0, zorder=7)
-        # Bolt head (exterior)
-        draw_rect(ax_b, bx(plate_x - 10), by(by_pos - 3),
-                  bx(5), by(6),
+                  color=C_DIM, lw=1.5, zorder=7)
+        # Bolt head (exterior side of plate)
+        draw_rect(ax_b, bx(plate_x - bolt_head_w), by(by_pos - bolt_head_h / 2),
+                  bx(bolt_head_w), by(bolt_head_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
-        # Nut (interior)
-        draw_rect(ax_b, bx(wall_x + wall_thick + 3), by(by_pos - 3),
-                  bx(5), by(6),
+        # Nut (interior side of wall)
+        draw_rect(ax_b, bx(wall_x + wall_thick), by(by_pos - nut_h / 2),
+                  bx(nut_w), by(nut_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
 
     # Interior destination labels

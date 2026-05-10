@@ -156,7 +156,7 @@ def floor_plan():
             color=C_OUT, fontsize=7, ha="center", va="center", **FONT, zorder=4)
     ax.text(-WALL/2, C_WID/2, "CARGO\nDOOR\nEND", color=C_OUT, fontsize=6,
             ha="center", va="center", **FONT, rotation=90, zorder=4)
-    ax.text(C_LEN + WALL/2, C_WID/2, "SEALED\nEND", color=C_OUT, fontsize=6,
+    ax.text(C_LEN + WALL/2 + 5, C_WID/2, "SEALED END", color=C_OUT, fontsize=6,
             ha="center", va="center", **FONT, rotation=90, zorder=4)
 
     # Structural ribs
@@ -182,9 +182,9 @@ def floor_plan():
             color=C_FILM, fontsize=7, ha="center", va="bottom", **FONT, backgroundcolor=BG)
 
     # ── Pinhole ───────────────────────────────────────────────────────────────
-    penetration(ax, PH_X, 75, r=80, col=C_PINHOLE,
+    penetration(ax, PH_X, 0, r=80, col=C_PINHOLE,
                 label=f"PINHOLE X={PH_X}mm Ø{PH_D}mm",
-                label_offset=(0, -225))
+                label_offset=(0, -135))
 
     # Optical axis arrow
     ax.annotate("", xy=(PH_X, FP_Y - 40), xytext=(PH_X, 80),
@@ -209,7 +209,7 @@ def floor_plan():
             f"DRUM\nfootprint\nØ{DRUM_D}mm",
             color=C_PINHOLE, fontsize=5.5, ha="left", va="center", **FONT, zorder=6)
     penetration(ax, 0, DRUM_FP_CY, r=80,
-                col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-200, 0))
+                col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-180, -30))
 
     # Evap cooler — on pinhole wall face (Yd=0), X=930–1530mm
     equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_EVAP,
@@ -247,9 +247,9 @@ def floor_plan():
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Fan A — INTAKE: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), LOW (H=600mm)
-    penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(140, 0))
+    penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(130, -30))
     # Fan B — EXHAUST: cargo door end wall (X=0), far-wall corner (Yd=FAN_B_YD=2287mm), HIGH (H=1800mm)
-    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-140, 0))
+    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-130, -30))
 
     # ── Hinged panel swing arc (stepped profile visible in plan) ────────────
     # Open position: panel swings outward 180° on left-edge hinges.
@@ -267,9 +267,9 @@ def floor_plan():
                             PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
                             fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
                             zorder=4, alpha=0.5))
-    ax.text(-WALL - 80, C_WID/2, "PANEL\n(OPEN)\nSTEPPED",
-            color=C_DIM, fontsize=5.5, ha="center", va="center",
-            **FONT, rotation=90, alpha=0.5, zorder=5)
+#     ax.text(-WALL - 80, C_WID/2, "PANEL\n(OPEN)\nSTEPPED",
+#             color=C_DIM, fontsize=5.5, ha="center", va="center",
+#             **FONT, rotation=90, alpha=0.5, zorder=5)
     swing_arc = Arc((-WALL, C_WID/2), 2*320, 2*320,
                     angle=0, theta1=180, theta2=360,
                     color=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=4, alpha=0.5)
@@ -395,9 +395,9 @@ def floor_plan():
     ax.annotate("", xy=(-WALL - 60, EGRESS_MID_Y),
                 xytext=(ZONE_L_END - 60, EGRESS_MID_Y),
                 arrowprops=dict(arrowstyle="->", color="#20A020", lw=2.0,
-                                linestyle=":", mutation_scale=12),
-                zorder=10)
-    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 80,
+                                linestyle="-", mutation_scale=12),
+                zorder=15)
+    ax.text(EGRESS_ARROW_X, EGRESS_MID_Y + 90,
             f"EGRESS PATH — {EGRESS_GAP}mm CLEAR (FULL WIDTH)",
             color="#20A020", fontsize=6.5, ha="center", va="bottom",
             fontweight="bold", **FONT, zorder=10)

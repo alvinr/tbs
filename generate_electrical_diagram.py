@@ -704,8 +704,8 @@ def draw_sheet2():
            "Evap cooler (E)\n12V DC  80W",
            fs=6.5, color=C_EVAP)
     # External power panel
-    leader(ax, PP_DX + PP_DW / 2, PP_DY,
-           PP_DX + PP_DW / 2, PP_DY - 0.6,
+    leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
+           PP_DX + PP_DW * 3, PP_DY,
            "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
            fs=6.5, color="#806030", ha="center")
 
@@ -724,7 +724,7 @@ def draw_sheet2():
                 xytext=(SP_X2, SP_Y2+SP_H2),
                 arrowprops=dict(arrowstyle="-|>", color="#2D7A2D", lw=1.8,
                                 connectionstyle="arc3,rad=-0.15"), zorder=4)
-    ax.text(SP_X2 - 0.08, (SP_Y2+SP_H2 + PP_DY)/2,
+    ax.text(SP_X2 - 0.2, (SP_Y2+SP_H2 + PP_DY)/2,
             "PV cable  10 AWG / MC4\nvia ext. power panel",
             fontsize=7.0, color="#2D7A2D", ha="right", va="center")
 

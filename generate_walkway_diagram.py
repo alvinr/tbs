@@ -468,7 +468,7 @@ def sheet2():
     # Label one miter (bottom-left) — typical for all four
     mx = PROC_TRAY_X_L + W / 2
     my = W / 2
-    leader(ax, mx, my, mx - 350, my - 250,
+    leader(ax, mx, my, mx - 350, my - 350,
            "45° MITER JOINT\nW/ SHARED LEGS (TYP.)", color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -495,7 +495,7 @@ def sheet2():
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
     draw_dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
-               f"{WALKWAY_W}mm", offset=200, fs=6, right=False, font=FONT)
+               f"{WALKWAY_W}mm", offset=50, fs=6, right=False, font=FONT)
 
     # Leg spacing callout
     # Pick two adjacent legs on the near walkway for dimensioning
@@ -508,8 +508,8 @@ def sheet2():
                    above=False, font=FONT)
 
     # ── Legend ────────────────────────────────────────────────────────────────
-    legend_x = C_LEN + 60
-    legend_top = C_WID - 50
+    legend_x = C_LEN * 4/5
+    legend_top = C_WID + 225
     swatches = [
         (C_WK,      WK_ALPHA, "xx",  "o", "Walkway (grated deck)"),
         ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
@@ -546,7 +546,7 @@ def sheet2():
         f"5. Each section weighs ≈25–35 kg. Single-person lift with handles.",
     ]
     for i, note in enumerate(notes):
-        ax.text(-PAD_X + 30, -PAD_Y_BOT + 200 + (len(notes) - 1 - i) * 35, note,
+        ax.text(C_LEN * 3/5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
                 ha="left", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 

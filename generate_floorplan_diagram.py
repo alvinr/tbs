@@ -212,6 +212,24 @@ def floor_plan():
     equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP,
                "PUMP\nMFD.", zorder=7, alpha=0.95)
 
+    # External power panel (flush-mount, exterior of pinhole wall — ghost)
+    PP_DEPTH = 60   # schematic depth on exterior face
+    ax.add_patch(Rectangle(
+        (PWR_PANEL_X, -WALL - PP_DEPTH), PWR_PANEL_W, PP_DEPTH,
+        fc="none", ec=C_ALUM, lw=1.2, ls=(0, (5, 3)),
+        alpha=0.7, zorder=6))
+    # Wall cutout / penetration line
+    cut_x = PWR_PANEL_X + (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) / 2
+    ax.add_patch(Rectangle(
+        (cut_x, -WALL), PWR_PANEL_CUTOUT_W, WALL,
+        fc="none", ec=C_DIM, lw=0.8, ls=(0, (3, 2)),
+        alpha=0.5, zorder=6))
+    ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - PP_DEPTH / 2,
+            "EXT PWR\nPANEL",
+            ha="center", va="center", fontsize=5, color=C_ALUM,
+            style="italic", fontweight="bold", alpha=0.7,
+            **FONT, zorder=7)
+
     # ── RIGHT END ZONE — 4× IBC in 2×2 stack ────────────────────────────────
     # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom
     equip_rect(ax, IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_BLUE_IBC,
@@ -344,6 +362,7 @@ def floor_plan():
         (C_PINHOLE,   "Revolving light-trap drum"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
         ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),
+        (C_ALUM,     "Ext power panel (flush-mount, exterior)"),
     ]
     n_items = len(legend_items)
     n_cols = 3

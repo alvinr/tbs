@@ -409,8 +409,8 @@ def sheet2():
     ax.add_patch(Rectangle((-plate_w / 2, plate_z), plate_w, plate_h,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=3))
     leader(ax, (sx(35), plate_z + plate_h / 2),
-           (sx(75), plate_z + plate_h / 2 + sy(20)),
-           "6mm MOUNTING PLATE\n(WELDED TO CEILING)", col=C_DIM, fs=6)
+           (sx(75), plate_z + plate_h / 2 + sy(25)),
+           "6mm MOUNTING PLATE (WELDED TO CEILING)", col=C_DIM, fs=6)
 
     # ── HGR20 rail profile ───────────────────────────────────────────────────
     rail_w = sx(RAIL_W)
@@ -521,20 +521,20 @@ def sheet2():
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Rail height
     dim_v(ax, sx(W_RANGE / 2 - 20), rail_z, rail_z + rail_h,
-          f"{RAIL_H}mm", offset=sx(15), fs=7)
+          f"{RAIL_H}mm", offset=sx(5), fs=7)
     # Carriage height
     dim_v(ax, sx(W_RANGE / 2 - 20), carr_z, carr_z + carr_h,
-          f"{CARRIAGE_H}mm", offset=sx(15), fs=7)
+          f"{CARRIAGE_H}mm", offset=sx(5), fs=7)
     # Bracket height
     dim_v(ax, -sx(W_RANGE / 2 - 20), brk_z, carr_z - brk_plate,
-          f"{BRACKET_H}mm", offset=-sx(50), fs=7)
+          f"{BRACKET_H}mm", offset=sx(5), fs=7)
     # Panel width (thickness)
     dim_h(ax, -panel_w / 2, panel_w / 2, panel_z - panel_vis_h - sy(15),
-          f"{PANEL_CENTER_T}mm PANEL THICKNESS", offset=-sy(12), fs=7)
+          f"{PANEL_CENTER_T}mm PANEL THICKNESS", offset=-sy(5), fs=7)
     # Total assembly depth (ceiling to panel top)
     total_depth = 15 + 6 + RAIL_H + 2 + CARRIAGE_H + BRACKET_H + 5  # = ~161mm
     dim_v(ax, -sx(W_RANGE / 2 - 5), panel_z, 0,
-          f"~{total_depth}mm\nTOTAL\nSUSPENSION\nDEPTH", offset=-sx(65), fs=6.5)
+          f"~{total_depth}mm\nTOTAL\nSUSPENSION\nDEPTH", offset=-sx(25), fs=6.5)
 
     # ── Component list (far left, compact) ──────────────────────────────────
     comp_x = -sx(W_RANGE * 1.4)

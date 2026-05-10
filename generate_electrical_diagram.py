@@ -119,7 +119,7 @@ def draw_sheet1():
          "Victron SmartSolar MPPT 100/50  |  Max PV: 100V OC / 50A charge",
          fc=C_ELEC_TINT, ts=9.5, ss=8.0)
     varrow(ax, CX, 12.0, 11.2, col=C_SOLAR)
-    wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  MC4 connectors")
+    wlabel(ax, CX + 0.18, 11.6, "10 AWG PV cable  |  Via external power panel")
 
     # 3. Battery bank  y=8.4–9.5
     rbox(ax, LX, 8.4, LW, 1.1,
@@ -181,7 +181,7 @@ def draw_sheet1():
 
     # NEMA 5-15R inlet below shore charger
     rbox(ax, SC_X, SC_Y - 1.35, SC_W, 0.80,
-         "NEMA 5-15R INLET  (exterior short wall — vestibule end)",
+         "NEMA 5-15R INLET  (external power panel — pinhole wall)",
          "Weatherproof  |  Shore power input when mains available",
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
     varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
@@ -534,7 +534,7 @@ def draw_sheet2():
     # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    leader(ax, ph_x, OY + wt/2, ph_x, OY - 0.50,
+    leader(ax, ph_x, OY + wt/2, ph_x * 1.1, OY - 0.50,
            f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
            fs=7.5, ha="center")
 
@@ -594,14 +594,21 @@ def draw_sheet2():
     ax.text(BA_DX+BA_DW/2, OY + wt + WALL_MOUNT_H/2, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    # ── NEMA inlet — exterior, pinhole wall (bottom face), near EP ──────────
-    NM_X = EP_DX + EP_DW + 0.15          # just right of EP
-    NM_Y = OY - 0.55                     # exterior face of pinhole wall
-    ax.add_patch(mpatches.Rectangle((NM_X, NM_Y), 0.45, 0.45,
-                 fc="#FFF0CC", ec=C_OUT, lw=1.2, zorder=5))
-    ax.text(NM_X+0.225, NM_Y+0.225, "AC\nIN",
-            ha="center", va="center", fontsize=7.0,
+    # ── External power panel — exterior, pinhole wall (bottom face), near EP ─
+    from tbs_constants import PWR_PANEL_X, PWR_PANEL_W
+    PP_DX = ix(PWR_PANEL_X)
+    PP_DW = PWR_PANEL_W * S_xi
+    PP_DY = OY - 0.60                     # exterior face of pinhole wall
+    PP_DH = 0.50
+    ax.add_patch(mpatches.Rectangle((PP_DX, PP_DY), PP_DW, PP_DH,
+                 fc="#E8E0C8", ec=C_OUT, lw=1.2, zorder=5))
+    ax.text(PP_DX + PP_DW / 2, PP_DY + PP_DH / 2, "EXT\nPWR",
+            ha="center", va="center", fontsize=6.5,
             fontweight="bold", color=C_OUT, zorder=6)
+    # Penetration line from panel into container
+    ax.plot([PP_DX + PP_DW / 2, PP_DX + PP_DW / 2],
+            [PP_DY + PP_DH, OY + wt + WALL_MOUNT_H],
+            color="#808080", lw=1.2, ls=":", zorder=4)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
     # Fan A — INTAKE: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner
@@ -696,11 +703,11 @@ def draw_sheet2():
            EVAP_CX, OY + cwid * 0.3,
            "Evap cooler (E)\n12V DC  80W",
            fs=6.5, color=C_EVAP)
-    # NEMA inlet
-    leader(ax, NM_X + 0.225, NM_Y,
-           NM_X + 0.225, NM_Y - 0.6,
-           "NEMA 5-15R inlet\nShore power (exterior)",
-           fs=6.5, color="#A07820", ha="center")
+    # External power panel
+    leader(ax, PP_DX + PP_DW / 2, PP_DY,
+           PP_DX + PP_DW / 2, PP_DY - 0.6,
+           "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
+           fs=6.5, color="#806030", ha="center")
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
@@ -713,12 +720,12 @@ def draw_sheet2():
             "SOLAR PANELS  (3×200W)  —  EXTERIOR, SOUTH-FACING",
             ha="center", va="center", fontsize=8.5, fontweight="bold",
             color=C_OUT, zorder=4)
-    ax.annotate("", xy=(EP_DX+EP_DW/2, OY),
+    ax.annotate("", xy=(PP_DX + PP_DW / 2, PP_DY + PP_DH),
                 xytext=(SP_X2, SP_Y2+SP_H2),
                 arrowprops=dict(arrowstyle="-|>", color="#2D7A2D", lw=1.8,
-                                connectionstyle="arc3,rad=-0.25"), zorder=4)
-    ax.text(SP_X2 - 0.08, (SP_Y2+SP_H2 + OY)/2,
-            "PV cable  10 AWG / MC4\nsealed penetration",
+                                connectionstyle="arc3,rad=-0.15"), zorder=4)
+    ax.text(SP_X2 - 0.08, (SP_Y2+SP_H2 + PP_DY)/2,
+            "PV cable  10 AWG / MC4\nvia ext. power panel",
             fontsize=7.0, color="#2D7A2D", ha="right", va="center")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
@@ -755,8 +762,8 @@ def draw_sheet2():
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
-        ("AC\nIN","#FFF0CC","NEMA 5-15R INLET (exterior)",
-         "Shore power backup  |  Exterior face, pinhole wall (near EP)"),
+        ("EXT\nPWR","#E8E0C8","EXTERNAL POWER PANEL",
+         "3×MC4 solar + NEMA 5-15R AC  |  Single sealed penetration  |  Pinhole wall exterior"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
         ky = KY - 0.28 - j * 0.60

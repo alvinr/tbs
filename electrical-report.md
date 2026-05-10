@@ -56,7 +56,7 @@ See [Section 8.4](#84-electrical-diagrams) for embedded diagrams.
 | Orientation | Due south (azimuth 180°) |
 | Cable | 10 AWG PV cable, MC4 connectors |
 | Combiner | 3-way MC4 branch connector + 30A inline fuse per string |
-| Wall entry | Via external power panel (shared with shore power) — single IP68 cable gland |
+| Wall entry | Via flush-mount power panel (shared with shore power) — 280×180mm wall cutout |
 | Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) |
 
 **Siting:** deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
@@ -112,18 +112,20 @@ Connect whenever shore power is available at a deployment site (campground hooku
 
 ### 4.4 External Power Panel
 
-The solar PV inputs and shore power inlet share a single **external power panel** mounted on the pinhole wall exterior, close to the electrical panel and battery bank inside.
+The solar PV inputs and shore power inlet share a single **flush-mount power panel** set into a cutout in the pinhole wall, close to the electrical panel and battery bank inside.
 
 | Parameter | Specification |
 |-----------|--------------|
-| Enclosure | IP65 junction box, 300×200×80mm |
+| Face plate | 3mm aluminum, 300×200mm |
+| Wall cutout | 280×180mm (10mm overlap each side for gasket seal) |
+| Weatherseal | 3mm neoprene gasket between plate and wall |
 | Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
-| Wall penetration | Single M32 IP68 cable gland |
-| Location | Pinhole wall exterior, X ≈ 1,250–1,550mm (just left of EP) |
-| Approximate cost | ~$73 (box $40 + gland $8 + MC4 bulkheads $25) |
+| Mounting | 4 × M6 bolts through plate, gasket, and wall |
+| Location | Pinhole wall, X ≈ 1,250–1,550mm (just left of EP) |
+| Approximate cost | ~$50 (plate $15 + gasket $5 + hardware $5 + MC4 bulkheads $25) |
 
-A single sealed cable gland passes all cables (3 × 10 AWG PV + 1 × 14 AWG AC) through the container wall. Interior routing: PV cables to MPPT charge controller; AC cable to shore charger. See the power panel detail drawing below.
+The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; AC cable routes to the shore charger. The IP67 MC4 connectors and weatherproof NEMA inlet, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. See the power panel detail drawing below.
 
 ![External Power Panel Detail](assets/power-panel-sheet1.png)
 

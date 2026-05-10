@@ -254,14 +254,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | MPPT charge controller | Victron SmartSolar MPPT 100/50 | 1 | altE Store (altestore.com) | ~$200 |
 | LiFePO4 battery 100Ah 12V | Battle Born 100Ah or Renogy Smart Lithium | 2 | battleborncotteries.com / renogy.com | ~$700 total |
 | Shore backup charger | Victron Blue Smart IP65 12/15 | 1 | altE Store | ~$150 |
-| NEMA 5-15R inlet (weatherproof) | Mounted in external power panel | 1 | Leviton / Amazon | ~$25 |
+| NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Leviton / Amazon | ~$25 |
 | Solar panel ground mount frame | Tilt frame, 30° | 1 | Renogy / Amazon | ~$80 |
 | PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
-| IP65 junction box 300×200×80mm | External power panel enclosure | 1 | Polycase / Amazon | ~$35 |
-| IP68 cable gland M32 | Sealed wall penetration, multi-cable | 1 | McMaster-Carr / Amazon | ~$8 |
+| Aluminum plate 300×200×3mm | Flush-mount face plate, power panel | 1 | McMaster-Carr / Online Metals | ~$15 |
+| Neoprene gasket 300×200×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr / Amazon | ~$5 |
+| M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr / Home Depot | ~$5 |
 | MC4 bulkhead connector pairs | IP67 panel-mount | 3 pairs | Amazon / Renogy | ~$25 |
 
-**Solar & battery subtotal: ~$1,658**
+**Solar & battery subtotal: ~$1,640**
 
 ### Distribution & wiring
 

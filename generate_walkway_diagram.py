@@ -417,10 +417,12 @@ def sheet2():
                         markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
         else:
             # Short walkways (left/right): legs spaced along Yd
-            # Avoid the corner miter zones — legs only in the middle section
-            leg_yd_lo = WALKWAY_W + 50           # above near-side miter zone
-            leg_yd_hi = WALKWAY_FAR_YD - 50      # below far-side miter zone
-            n_legs = int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 1
+            # End legs at Yd=350 / Yd=2012 support the 45° miter joints —
+            # positioned on this panel's side of the diagonal (both outer
+            # and inner leg X positions clear the miter line by ≥50mm).
+            leg_yd_lo = WALKWAY_W - 50            # 350mm — just above miter at inner X
+            leg_yd_hi = WALKWAY_FAR_YD + 50       # 2012mm — just below miter at inner X
+            n_legs = max(int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 2, 4)
             leg_yds = np.linspace(leg_yd_lo, leg_yd_hi, n_legs)
             for lyd in leg_yds:
                 # Place legs at 1/4 and 3/4 across walkway width for clear centering

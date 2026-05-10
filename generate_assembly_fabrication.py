@@ -280,7 +280,7 @@ def sheet1():
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
         ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
-        (PWR_PANEL_X+PWR_PANEL_W/2, PP_PLATE_BOT - 120, "12"),  # Ext power panel
+        (PWR_PANEL_X - 120, PP_CTR_H, "12"),  # Ext power panel
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)

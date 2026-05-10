@@ -594,7 +594,7 @@ draw_dim_h(ax2, cx2a - s2(PH_BORE/2), cx2a + s2(PH_BORE/2),
            cy2a + s2(CARR_OD/2) + 10, 'Ø90 CONE', above=True, fs=5, offset=4.5)
 
 leader(ax2, cx2a + s2(PH_CB_D/2) * 0.7, cy2a + s2(PH_CB_D/2) * 0.7,
-       cx2a + 55, cy2a + 30,
+       cx2a + 35, cy2a + 30,
        'Ø52 × 3 DEEP\nCOUNTERBORE\n(DISC SEAT)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(-30)),
        cy2a + s2(SOCK_PCD/2) * np.sin(np.radians(-30)),
@@ -641,7 +641,7 @@ draw_circle(ax2, cx2b, cy2b, s2(BELL_ID/2), lw=LW_MED, color=C_GASKT, ls='--')
 draw_cl(ax2, cx2b, cy2b, s2(CARR_OD/2)*1.2)
 
 leader(ax2, cx2b + s2(BRG_SHANK_D/2)*0.7, cy2b + s2(BRG_SHANK_D/2)*0.7,
-       cx2b + 60, cy2b + 30,
+       cx2b + 30, cy2b + 30,
        'Ø50 k5 SHANK\n× 35 LONG\n(BEARING INNER)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2b - s2(BELL_ID/2)*0.7, cy2b,
        cx2b - 58, cy2b + 5,

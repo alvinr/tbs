@@ -116,7 +116,7 @@ The solar PV inputs and shore power inlet share a single **external power panel*
 
 | Parameter | Specification |
 |-----------|--------------|
-| Enclosure | IP65 junction box, 300×200×120mm |
+| Enclosure | IP65 junction box, 300×200×80mm |
 | Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
 | Wall penetration | Single M32 IP68 cable gland |

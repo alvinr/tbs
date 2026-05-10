@@ -297,7 +297,7 @@ def draw_sheet1():
     ax_c.set_xlim(0, 22)
     ax_c.set_ylim(0, 4.5)
 
-    ax_c.text(11, 4.2, "VIEW C — WIRING SCHEMATIC",
+    ax_c.text(10, 4.6, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color=C_OUT, **FONT)
 
@@ -386,10 +386,10 @@ def draw_sheet1():
               fontweight="bold", **FONT)
 
     # Zone labels
-    ax_c.text((wall_x_sch - 0.1) / 2, row_top + 1.15, "EXTERIOR",
+    ax_c.text((wall_x_sch - 0.1) / 2, row_top + 1.35, "EXTERIOR",
               ha="center", va="bottom", fontsize=8, fontweight="bold",
               color=C_DIM, **FONT)
-    ax_c.text((wall_x_sch_r + 22) / 2, row_top + 1.15, "CONTAINER INTERIOR",
+    ax_c.text((wall_x_sch_r + 22) / 2, row_top + 1.35, "CONTAINER INTERIOR",
               ha="center", va="bottom", fontsize=8, fontweight="bold",
               color=C_DIM, **FONT)
 

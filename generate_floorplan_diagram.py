@@ -273,6 +273,16 @@ def floor_plan():
             "PANEL\n(TRANSPORT)",
             color=C_DIM, fontsize=5.5, ha="center", va="center",
             **FONT, rotation=90, alpha=0.4, zorder=5)
+    # Ghost drum in transport position (slides with panel)
+    DRUM_TR_CX = TR_X + PANEL_CENTER_T / 2  # drum center follows panel center zone
+    DRUM_TR_CY = C_WID / 2
+    ax.add_patch(Circle((DRUM_TR_CX, DRUM_TR_CY), DRUM_R,
+                         fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
+                         zorder=4, alpha=GHOST_A))
+    ax.plot([DRUM_TR_CX - 20, DRUM_TR_CX + 20], [DRUM_TR_CY, DRUM_TR_CY],
+            color=C_DIM, lw=0.5, alpha=GHOST_A, zorder=4)
+    ax.plot([DRUM_TR_CX, DRUM_TR_CX], [DRUM_TR_CY - 20, DRUM_TR_CY + 20],
+            color=C_DIM, lw=0.5, alpha=GHOST_A, zorder=4)
     # Slide arrow: operational (X=0) → transport (X=300)
     arr_yd = -60
     ax.annotate("", xy=(TR_X + PANEL_CENTER_T / 2, arr_yd),

@@ -554,7 +554,8 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW — WALKWAY LEG LAYOUT",
-                scale_note=f"SCALE ≈ 1:25 · ALL DIMS IN mm · LEGS AT ~{LEG_SPACING}mm CENTERS")
+                scale_note=f"SCALE ≈ 1:25 · ALL DIMS IN mm · LEGS AT ~{LEG_SPACING}mm CENTERS",
+                height=0.06)
 
     fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/walkway-sheet2.png"), bbox_inches="tight", facecolor=BG)

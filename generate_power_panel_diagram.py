@@ -25,7 +25,8 @@ from tbs_constants import (
     DIAGRAMS_DIR, SVG_DIR, svg_path,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_rect, draw_circle
+from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_rect,
+                         draw_circle, hatch_rect)
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -194,26 +195,23 @@ def draw_sheet1():
     ax_b.set_ylim(by(-60), by(BOX_H + 80))
 
     # Container wall (hatched)
-    ax_b.add_patch(mpatches.Rectangle(
-        (bx(wall_x), by(-30)), bx(wall_w), by(BOX_H + 100),
-        fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=3))
+    hatch_rect(ax_b, bx(wall_x), by(-30), bx(wall_w), by(BOX_H + 100),
+               color=C_WALL, edgecolor=C_OUT, lw=1.5, alpha=1.0, zorder=3)
 
     # Panel box (exterior side, attached to wall)
     panel_left = wall_x - BOX_D
     panel_bot = (BOX_H - BOX_H) / 2  # centered vertically (= 0)
-    ax_b.add_patch(mpatches.Rectangle(
-        (bx(panel_left), by(panel_bot)), bx(BOX_D), by(BOX_H),
-        fc=C_BOX, ec=C_OUT, lw=1.5, zorder=4))
+    draw_rect(ax_b, bx(panel_left), by(panel_bot), bx(BOX_D), by(BOX_H),
+              fc=C_BOX, color=C_OUT, lw=1.5, zorder=4)
 
     # Cable gland through wall
     gland_cy = BOX_H / 2
     gland_left = wall_x - 10
     gland_right = wall_x + wall_w + 10
     # Gland body
-    ax_b.add_patch(mpatches.Rectangle(
-        (bx(gland_left), by(gland_cy - GLAND_OD / 2)),
-        bx(gland_right - gland_left), by(GLAND_OD),
-        fc="#D0D0D0", ec=C_OUT, lw=1.2, zorder=5))
+    draw_rect(ax_b, bx(gland_left), by(gland_cy - GLAND_OD / 2),
+              bx(gland_right - gland_left), by(GLAND_OD),
+              fc="#D0D0D0", color=C_OUT, lw=1.2, zorder=5)
     # Gland bore (cables pass through)
     ax_b.add_patch(mpatches.Rectangle(
         (bx(gland_left - 5), by(gland_cy - GLAND_ID / 2)),

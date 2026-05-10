@@ -40,6 +40,7 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
     IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
@@ -203,6 +204,21 @@ def sheet1():
     ax.text(PUMP_X+PUMP_W/2, (PUMP_H_LO+PUMP_H_HI)/2, "PUMP",
             ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
 
+    # ── External power panel (flush-mount, pinhole wall exterior — ghost) ────
+    # Shown as dashed ghost outline on the exterior face of the pinhole wall.
+    # In elevation: X position along container, height centered on wall.
+    PP_H_DRAW = PWR_PANEL_H   # 240mm panel height
+    PP_Y_TOP = -WALL_T - 20   # just below exterior wall face
+    PP_Y_BOT = PP_Y_TOP - PP_H_DRAW
+    ax.add_patch(mpatches.Rectangle(
+        (PWR_PANEL_X, PP_Y_BOT), PWR_PANEL_W, PP_H_DRAW,
+        facecolor="none", edgecolor=C_ALUM, linewidth=1.2,
+        ls=(0, (5, 3)), alpha=0.7, zorder=4))
+    ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_Y_BOT + PP_H_DRAW / 2,
+            "EXT PWR\nPANEL",
+            ha="center", va="center", fontsize=FS_SM - 2,
+            color=C_ALUM, style="italic", alpha=0.7, zorder=5)
+
     # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────
     # Blue IBC stack x2 (front in depth, 2020mm tall)
     equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, zorder=5)
@@ -252,6 +268,7 @@ def sheet1():
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
         ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
+        (PWR_PANEL_X+PWR_PANEL_W/2, PP_Y_BOT + PP_H_DRAW/2, "12"),  # Ext power panel
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)
@@ -281,7 +298,7 @@ def sheet1():
     REF_Y  = C_HGT - 80
     REF_DY = 115
     REF_W  = 1380
-    REF_H  = 12 * REF_DY + 80
+    REF_H  = 13 * REF_DY + 80
 
     ax.add_patch(mpatches.Rectangle((REF_X, REF_Y-REF_H), REF_W, REF_H,
                  facecolor="#F8F8FA", edgecolor=C_OUT, linewidth=0.8, zorder=5))
@@ -300,6 +317,7 @@ def sheet1():
         ("9",  "Exhaust fan",                        "TBS-EL01"),
         ("10", "Intake fan",                         "TBS-EL01"),
         ("11", "Processing tray (304 SS, 2 panels)", "TBS-WS01"),
+        ("12", "Ext power panel (flush-mount, exterior)", "TBS-EL01"),
     ]
     for i, (num, desc, ref) in enumerate(refs):
         yy = REF_Y - 75 - i*REF_DY

@@ -250,29 +250,38 @@ def floor_plan():
     # Fan B — EXHAUST: cargo door end wall (X=0), far-wall corner (Yd=FAN_B_YD=2287mm), HIGH (H=1800mm)
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-130, -30))
 
-    # ── Hinged panel swing arc (stepped profile visible in plan) ────────────
-    # Open position: panel swings outward 180° on left-edge hinges.
-    # Show stepped outline: 40mm corners, 120mm center.
+    # ── Hinged panel — transport position (ghost, slid 300mm into container) ──
+    # Panel slides inward along pinhole wall (Yd=0) on HGR20 ceiling rails.
+    # Ghost outline at X=PANEL_SLIDE shows transport position.
+    TR_X = PANEL_SLIDE  # = 300mm
+    GHOST_LS = (0, (6, 4))
+    GHOST_A  = 0.35
     # Corner zones (Yd=0-756 and Yd=1606-2362)
-    ax.add_patch(Rectangle((-WALL - 200, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
-                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
-                            zorder=4, alpha=0.5))
-    ax.add_patch(Rectangle((-WALL - 200, PANEL_CORNER_YD_R), PANEL_CORNER_T,
+    ax.add_patch(Rectangle((TR_X, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
+                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
+                            zorder=4, alpha=GHOST_A))
+    ax.add_patch(Rectangle((TR_X, PANEL_CORNER_YD_R), PANEL_CORNER_T,
                             C_WID - PANEL_CORNER_YD_R,
-                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
-                            zorder=4, alpha=0.5))
+                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
+                            zorder=4, alpha=GHOST_A))
     # Center zone (Yd=756-1606)
-    ax.add_patch(Rectangle((-WALL - 200, PANEL_CORNER_YD_L), PANEL_CENTER_T,
+    ax.add_patch(Rectangle((TR_X, PANEL_CORNER_YD_L), PANEL_CENTER_T,
                             PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
-                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (6, 4)),
-                            zorder=4, alpha=0.5))
-#     ax.text(-WALL - 80, C_WID/2, "PANEL\n(OPEN)\nSTEPPED",
-#             color=C_DIM, fontsize=5.5, ha="center", va="center",
-#             **FONT, rotation=90, alpha=0.5, zorder=5)
-    swing_arc = Arc((-WALL, C_WID/2), 2*320, 2*320,
-                    angle=0, theta1=180, theta2=360,
-                    color=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=4, alpha=0.5)
-    ax.add_patch(swing_arc)
+                            fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
+                            zorder=4, alpha=GHOST_A))
+    ax.text(TR_X + PANEL_CENTER_T / 2, C_WID / 2,
+            "PANEL\n(TRANSPORT)",
+            color=C_DIM, fontsize=5.5, ha="center", va="center",
+            **FONT, rotation=90, alpha=0.4, zorder=5)
+    # Slide arrow: operational (X=0) → transport (X=300)
+    arr_yd = -60
+    ax.annotate("", xy=(TR_X + PANEL_CENTER_T / 2, arr_yd),
+                xytext=(PANEL_CENTER_T / 2, arr_yd),
+                arrowprops=dict(arrowstyle="->", color=C_DIM, lw=0.8),
+                zorder=5)
+    ax.text((PANEL_CENTER_T / 2 + TR_X + PANEL_CENTER_T / 2) / 2, arr_yd - 30,
+            f"{PANEL_SLIDE}mm SLIDE", ha="center", va="top",
+            color=C_DIM, fontsize=5, **FONT, alpha=0.5, zorder=5)
 
     # ── Processing tray (interior — optical zone floor) ─────────────────────
     ax.add_patch(Rectangle((PROC_TRAY_X_L, PROC_TRAY_YD_NEAR),

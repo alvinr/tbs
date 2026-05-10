@@ -79,7 +79,7 @@ def sheet1():
     TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm from wall
 
     # Frame rail Yd positions (set here so legs align to them)
-    OUTER_RAIL_YD = 5              # outer frame rail starts here
+    OUTER_RAIL_YD = 12             # outer frame rail starts here (foot clears wall)
     INNER_RAIL_YD = WALKWAY_W - FRAME_W - 5  # inner frame rail starts here (= 365mm)
 
     # Leg positions — centered directly under each frame rail
@@ -320,7 +320,8 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 2",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION — NEAR WALKWAY (LOOKING ALONG X AXIS)",
-                scale_note="SCALE ≈ 5:1 · ALL DIMS IN mm · SECTION THROUGH PINHOLE SIDE WALKWAY")
+                scale_note="SCALE ≈ 5:1 · ALL DIMS IN mm · SECTION THROUGH PINHOLE SIDE WALKWAY",
+                height=0.07)
 
     fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/walkway-sheet1.png"), bbox_inches="tight", facecolor=BG)
@@ -437,6 +438,30 @@ def sheet2():
                 backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
+    # ── 45° miter joints at corners ────────────────────────────────────────────
+    # Where long (near/far) and short (left/right) walkways meet, a 45° miter
+    # prevents overlap while keeping all panels at the same deck level.
+    W = WALKWAY_W
+    corners = [
+        # (x_outer, y_outer) = corner of the container; diagonal goes to inner corner
+        # Bottom-left: near × left
+        (PROC_TRAY_X_L,            0,          PROC_TRAY_X_L + W, W),
+        # Bottom-right: near × right
+        (PROC_TRAY_X_R,            0,          PROC_TRAY_X_R - W, W),
+        # Top-left: far × left
+        (PROC_TRAY_X_L,            C_WID,      PROC_TRAY_X_L + W, C_WID - W),
+        # Top-right: far × right
+        (PROC_TRAY_X_R,            C_WID,      PROC_TRAY_X_R - W, C_WID - W),
+    ]
+    for x1, y1, x2, y2 in corners:
+        ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
+    # Label one miter (bottom-left) — typical for all four
+    mx = PROC_TRAY_X_L + W / 2
+    my = W / 2
+    leader(ax, mx, my, mx - 350, my - 250,
+           "45° MITER\nJOINT (TYP.)", color=C_OUT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
     # ── Lifting point indicators (one per section, centered) ─────────────────
     lift_positions = [
         (PROC_TRAY_X_L + PROC_TRAY_W / 2, WALKWAY_NEAR_YD + WALKWAY_W / 2),
@@ -499,7 +524,7 @@ def sheet2():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        f"1. 4 removable sections. Corners overlap where long and short walkways meet.",
+        f"1. 4 removable sections. 45° miter joints at corners keep all panels level.",
         f"2. Leg pairs at ~{LEG_SPACING}mm centers. Outer legs on container floor, inner legs on tray floor.",
         f"3. Total walkway area: 2×({PROC_TRAY_W}×{WALKWAY_W}) + 2×({C_WID}×{WALKWAY_W}) = "
         f"{2*(PROC_TRAY_W*WALKWAY_W + C_WID*WALKWAY_W)/1e6:.1f} m².",

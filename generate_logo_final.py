@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import (FancyBboxPatch, Circle, Rectangle,
                                  Ellipse, Arc)
 from matplotlib.colors import LinearSegmentedColormap
+from tbs_constants import C_WID
 
 # ── Vibrant cyanotype palette ─────────────────────────────────────────────────
 PRU_INK   = "#081A32"
@@ -257,7 +258,7 @@ fl_y = C_B+1.5
 ax.annotate("", xy=(C_R, fl_y), xytext=(C_L, fl_y),
             arrowprops=dict(arrowstyle="<->", color=CYAN_MID, lw=0.9,
                             mutation_scale=7), zorder=7)
-ax.text((C_L+C_R)/2, fl_y+1.2, "FOCAL LENGTH  2,362 mm",
+ax.text((C_L+C_R)/2, fl_y+1.2, f"FOCAL LENGTH  {C_WID:,} mm",
         color=CYAN_MID, fontsize=5.0, ha="center", va="bottom",
         fontfamily="monospace", zorder=7)
 

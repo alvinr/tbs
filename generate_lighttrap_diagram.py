@@ -18,6 +18,7 @@ import os
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
+    FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
 )
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader,
@@ -135,7 +136,7 @@ def draw_sheet1():
                 xytext=(pf_a_x0 + PF_T + 0.05, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, "Cct A  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
+    ann(ax, f"Cct A  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
         (FA_X, FA_Y + R_PF), (FA_X + 1.4, FA_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
         (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 0.8), size=7.5)
@@ -182,7 +183,7 @@ def draw_sheet1():
                 xytext=(pf_x0 - 0.65, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
 
-    ann(ax, "Cct B  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
+    ann(ax, f"Cct B  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
         (FB_X, FB_Y + R_PF), (FB_X - 2.0, FB_Y + 2.2), size=7.5)
     ann(ax, "HIGH POSITION\n~1,800mm AFF",
         (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
@@ -511,9 +512,9 @@ def draw_sheet2():
             color=C_DIM, lw=1.0, ls=":")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    draw_dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.1, "300 mm  (duct depth)",
+    draw_dim_h(ax, DUCT_X, DUCT_X + DD, DUCT_Y - 1.1, f"{DUCT_DEPTH} mm  (duct depth)",
                offset=0.33, fs=7.5, zorder=10, color=C_DIM)
-    draw_dim_v(ax, DUCT_X - 1.85, DUCT_Y, DUCT_Y + DH, "200 mm",
+    draw_dim_v(ax, DUCT_X - 1.85, DUCT_Y, DUCT_Y + DH, f"{DUCT_HEIGHT} mm",
                offset=0.3, fs=7.5, zorder=10, color=C_DIM)
     draw_dim_h(ax, WX, WX + WT, DUCT_Y + DH + 0.7, "wall",
                offset=0.33, fs=7.5, zorder=10, color=C_DIM)

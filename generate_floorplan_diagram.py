@@ -611,7 +611,7 @@ def egress_detail():
             **FONT, rotation=90, zorder=4)
     ax.text(X_HI/2, -WALL/2, "PINHOLE WALL  (Yd=0)",
             color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
-    ax.text(X_HI/2, C_WID + WALL/2, "FAR WALL  (Yd=2362)",
+    ax.text(X_HI/2, C_WID + WALL/2, f"FAR WALL  (Yd={C_WID})",
             color=C_OUT, fontsize=6.5, ha="center", va="center", **FONT, zorder=4)
 
     # ── Door frame (50×50mm RHS at each corner of opening) ───────────────────

@@ -10,5 +10,8 @@ diagrams/svg/
 # Brochure PDF — generated on publish, not committed
 tbs-brochure.pdf
 
+# Stale root logo (moved to assets/ in d38ce71)
+logo-final.png
+
 # Claude Code session files
 .claude/

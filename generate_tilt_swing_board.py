@@ -190,9 +190,9 @@ draw_circle(ax1, cx_a, cy_a, s1(BELL_OUT_PCD/2), lw=LW_THIN, color='#606060', ls
 draw_cl(ax1, cx_a, cy_a, hw*1.15)
 
 # Dimension: carrier OD
-draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 12,
+draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 6,
            'Ø320 CARRIER', above=False, fs=5, offset=3)
-draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 12, '600', above=True, fs=5.5, offset=3)
+draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 6, '600 mm', above=True, fs=5.5, offset=3)
 
 ax1.text(cx_a, cy_a - hw - 25, 'PANEL A — ASSEMBLY (1:8)\nTSB-01 outer frame + TSB-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
          ha='center', fontsize=5, color='#333333', style='italic')
@@ -240,7 +240,7 @@ leader(ax1, cx_b + s1(TSB01_BORE/2)*0.7, cy_b + s1(TSB01_BORE/2)*0.7,
        cx_b + 30, cy_b + 45,
        'Ø380 BORE\n(PANEL B VIEW)', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, cx_b + s1(SEAL_D/2)*0.65, cy_b - s1(SEAL_D/2)*0.65,
-       cx_b + 22, cy_b - 38,
+       cx_b + 22, cy_b - 48,
        'Ø420 SEAL\nGROOVE\n3×3 DEEP', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, cx_b + s1(ADJ_PCD/2) + s1(BUSH_OD/2), cy_b,
        cx_b + s1(ADJ_PCD/2) + 14, cy_b + 4,
@@ -248,7 +248,8 @@ leader(ax1, cx_b + s1(ADJ_PCD/2) + s1(BUSH_OD/2), cy_b,
 leader(ax1, cx_b + s1(BOLT_BC/2)*0.65, cy_b + s1(BOLT_BC/2)*0.65,
        cx_b + 16, cy_b + 28,
        'Ø540 B.C.\n8×M12\nCLR', fs=4.5, color=C_DIM, arrow_style='->')
-ax1.text(cx_b, cy_b - hw - 12, 'PANEL B — TSB-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
+
+ax1.text(cx_b, cy_b - hw - 25, 'PANEL B — TSB-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
@@ -293,10 +294,10 @@ leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*0.6, cy_c + s1(BELL_OUT_PCD/2)*0.6,
        cx_c + 25, cy_c + 28,
        '6×M6 ON\nØ375 PCD\n(BELLOWS)', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, cx_c + s1(LAB_D3/2)*0.65, cy_c - s1(LAB_D3/2)*0.65,
-       cx_c + 20, cy_c - 35,
+       cx_c + 20, cy_c - 45,
        '3-STEP\nLABYRINTH\nØ382/390/400\n5 DEEP EACH', fs=4.3, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_c, cy_c - hw - 12, 'PANEL C — TSB-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
+ax1.text(cx_c, cy_c - hw - 25, 'PANEL C — TSB-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
@@ -489,7 +490,7 @@ for side_x in [left_x - 2, right_x + 2]:
                  color='black', lw=1.0)
 
 # Dimensions
-draw_dim_h(ax1, left_x, right_x, frame_y_top + 12, '600 (FULL WIDTH)',
+draw_dim_h(ax1, left_x, right_x, frame_y_top + 12, '600mm (FULL WIDTH)',
            above=True, fs=5, offset=3)
 draw_dim_v(ax1, left_x - 10, frame_y_bot, frame_y_top, '40',
            fs=5, offset=3)
@@ -500,16 +501,16 @@ draw_dim_h(ax1, cx_d - bore_hw_d, cx_d + bore_hw_d, carrier_y_bot - 10,
 
 # Leaders
 leader(ax1, cx_d + seat_hw + 2, frame_y_bot + seat_dep_d/2,
-       cx_d + 60, frame_y_bot + seat_dep_d/2,
+       cx_d + 80, frame_y_bot + seat_dep_d/2,
        'Ø80 H7 BEARING\nPOCKET × 50', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, cx_d + carr_hw_d + 2, carrier_y_bot + ch/2,
        cx_d + 65, carrier_y_bot + ch/2,
        'TSB-02 CARRIER\nØ320 × 25 Al', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, adj_x + sx(BUSH_OD/2), frame_y_bot + sy(BUSH_L)/2,
-       adj_x + 18, frame_y_bot + sy(BUSH_L)/2,
+       adj_x + 38, frame_y_bot + sy(BUSH_L)/2,
        'M8 SCREW\n+ DELRIN\nBUSHING', fs=4.5, color=C_DIM, arrow_style='->')
-leader(ax1, bell_x_out + 2, (bell_span_top + bell_span_bot)/2,
-       bell_x_out + 18, (bell_span_top + bell_span_bot)/2,
+leader(ax1, bell_x_out, (bell_span_top + bell_span_bot)/2.1,
+       bell_x_out + 18, (bell_span_top + bell_span_bot)/2.2,
        'BELLOWS\nTSB-10', fs=4.5, color=C_DIM, arrow_style='->')
 
 ax1.text(cx_d, carrier_y_bot - 20, '← SCENE (EXTERIOR)    INTERIOR (CONTAINER) →',

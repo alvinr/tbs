@@ -90,7 +90,7 @@ def sheet1():
     # Show Yd from -30 to WALKWAY_W+100 (= 500mm), Z from -30 to WALKWAY_H+WALKWAY_GRATE_T+60
     YD_LO = -60
     YD_HI = WALKWAY_W + 180
-    Z_LO  = -40
+    Z_LO  = -70
     Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
 
     fig, ax = plt.subplots(figsize=(16, 10))

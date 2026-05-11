@@ -13,33 +13,32 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+from matplotlib.patches import FancyBboxPatch
 import os
-from tbs_constants import svg_path, SVG_DIR
-from tbs_drawing import draw_dim_h, draw_dim_v
+from tbs_constants import (
+    svg_path, SVG_DIR,
+    C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
+)
+from tbs_drawing import (
+    draw_dim_h, draw_dim_v, draw_rect, draw_circle,
+)
 from tbs_title_block import title_block
 
-# ── Palette ───────────────────────────────────────────────────────────────────
-C_OUT   = "#1A1A1A"
-C_CL    = "#2060A0"
-C_DIM   = "#505050"
-C_ALUM  = "#C8D8E8"
-C_STEEL = "#B0B0B8"
-C_ELEC  = "#FFF3CC"
-C_SOLAR = "#D4EDDA"
-C_BATT  = "#CCE5FF"
-C_WARN  = "#F8D7DA"
+# ── Local palette (not in tbs_constants — specific to this diagram) ──────────
+C_SOLAR = "#D4EDDA"   # evap cooler fill
 C_GND   = "#2C5F2E"
 C_PIPE  = "#6C757D"
-C_AIR   = "#D0E8FF"   # airflow fill
 C_VEST  = "#EEF5EE"   # vestibule interior
 TITLE_COL = "#0F2D5E"
 
 
-
-
 def ann(ax, text, xy, xytext, size=7.5):
-    """Leader-line annotation with white-backed text."""
+    """Leader-line annotation with white-backed text.
+
+    Uses ax.annotate directly (not shared leader()) because it needs
+    bbox for white text background — important for readability over
+    busy diagram areas.
+    """
     ax.annotate(text, xy=xy, xytext=xytext,
                 fontsize=size, color=C_OUT, ha="center", va="center",
                 arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.9),
@@ -82,8 +81,7 @@ def draw_sheet1():
     WT = 0.35               # wall thickness (schematic)
 
     # Container shell
-    ax.add_patch(mpatches.Rectangle((CX, CY), CW, CH,
-                 fc="#F2F2EE", ec=C_OUT, lw=2.5, zorder=2))
+    draw_rect(ax, CX, CY, CW, CH, fc="#F2F2EE", lw=2.5, zorder=2)
     # Hatched walls
     for rx, ry, rw, rh in [
         (CX,       CY,      CW, WT),            # floor
@@ -91,8 +89,7 @@ def draw_sheet1():
         (CX,       CY+WT,   WT, CH-2*WT),       # left wall (image plane end)
         (CX+CW-WT, CY+WT,   WT, CH-2*WT),      # right wall (door/vestibule end)
     ]:
-        ax.add_patch(mpatches.Rectangle((rx, ry), rw, rh,
-                     fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=3))
+        draw_rect(ax, rx, ry, rw, rh, fc=C_STEEL, lw=0.5, zorder=3)
 
     # Interior label
     ax.text(CX + CW/2, CY + CH/2,
@@ -111,24 +108,21 @@ def draw_sheet1():
 
     # Baffle duct box — between interior face of left wall and panel fan
     bd_a_x0 = CX + WT                      # right edge of left wall = duct left face
-    ax.add_patch(mpatches.Rectangle((bd_a_x0, FA_Y - 0.40), BD_W, 0.80,
-                 fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
+    draw_rect(ax, bd_a_x0, FA_Y - 0.40, BD_W, 0.80, fc="#D8E8D8", lw=0.9, zorder=5)
     ax.text(bd_a_x0 + BD_W / 2, FA_Y, "BAFFLE\nDUCT",
             ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # Grille indicator — tinted strip in left wall exterior face
-    ax.add_patch(mpatches.Rectangle((CX, FA_Y - 0.40), WT, 0.80,
-                 fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
+    draw_rect(ax, CX, FA_Y - 0.40, WT, 0.80, fc="#A8D8B0", lw=0.7, zorder=5)
     ax.text(CX + WT / 2, FA_Y, "G", ha="center", va="center",
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
     # Panel fan body — thin rectangle immediately right of baffle duct
     FA_X   = bd_a_x0 + BD_W + PF_T / 2    # fan centre (impeller plane)
     pf_a_x0 = bd_a_x0 + BD_W              # left face of panel fan
-    ax.add_patch(mpatches.Rectangle((pf_a_x0, FA_Y - R_PF - 0.08), PF_T, (R_PF + 0.08) * 2,
-                 fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
-    ax.add_patch(plt.Circle((FA_X, FA_Y), R_PF,
-                 fc="none", ec=C_OUT, lw=1.2, zorder=6))
+    draw_rect(ax, pf_a_x0, FA_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
+              fc=C_ALUM, lw=1.5, zorder=5)
+    draw_circle(ax, FA_X, FA_Y, R_PF, lw=1.2, zorder=6)
     ax.text(FA_X, FA_Y, "A", ha="center", va="center",
             fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
     for angle in [0, 60, 120, 180, 240, 300]:
@@ -148,9 +142,9 @@ def draw_sheet1():
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
     ann(ax, "Cct A  |  150mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
-        (FA_X, FA_Y + R_PF), (FA_X + 1.8, FA_Y + 2.2), size=7.5)
+        (FA_X, FA_Y + R_PF), (FA_X + 1.4, FA_Y + 2.2), size=7.5)
     ann(ax, "LOW POSITION\n~600mm AFF",
-        (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 1.5), size=7.5)
+        (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 0.8), size=7.5)
 
     # ── EXHAUST FAN B (right end wall — cargo door end, identical compact axial panel fan, high position)
     # Same fan, duct, and mounting as Fan A.
@@ -158,25 +152,22 @@ def draw_sheet1():
 
     # Baffle duct box — between interior face of right wall and panel fan
     bd_b_x0 = CX + CW - WT - BD_W     # left edge of baffle duct box
-    ax.add_patch(mpatches.Rectangle((bd_b_x0, FB_Y - 0.40), BD_W, 0.80,
-                 fc="#D8E8D8", ec=C_OUT, lw=0.9, zorder=5))
+    draw_rect(ax, bd_b_x0, FB_Y - 0.40, BD_W, 0.80, fc="#D8E8D8", lw=0.9, zorder=5)
     ax.text(bd_b_x0 + BD_W / 2, FB_Y, "BAFFLE\nDUCT",
             ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # Grille indicator — tinted strip in right wall exterior face
-    ax.add_patch(mpatches.Rectangle((CX + CW - WT, FB_Y - 0.40), WT, 0.80,
-                 fc="#A8D8B0", ec=C_OUT, lw=0.7, zorder=5))
+    draw_rect(ax, CX + CW - WT, FB_Y - 0.40, WT, 0.80, fc="#A8D8B0", lw=0.7, zorder=5)
     ax.text(CX + CW - WT / 2, FB_Y, "G", ha="center", va="center",
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
     # Panel fan body — thin rectangle immediately left of baffle duct
     FB_X  = bd_b_x0 - PF_T / 2           # fan centre (impeller plane)
     pf_x0 = bd_b_x0 - PF_T               # left face of panel fan
-    ax.add_patch(mpatches.Rectangle((pf_x0, FB_Y - R_PF - 0.08), PF_T, (R_PF + 0.08) * 2,
-                 fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
+    draw_rect(ax, pf_x0, FB_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
+              fc=C_ALUM, lw=1.5, zorder=5)
     # Impeller circle on face
-    ax.add_patch(plt.Circle((FB_X, FB_Y), R_PF,
-                 fc="none", ec=C_OUT, lw=1.2, zorder=6))
+    draw_circle(ax, FB_X, FB_Y, R_PF, lw=1.2, zorder=6)
     ax.text(FB_X, FB_Y, "B", ha="center", va="center",
             fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
     # Blade lines
@@ -212,10 +203,9 @@ def draw_sheet1():
             ha="center", va="center", fontsize=8.0, fontweight="bold",
             color=C_OUT, zorder=6)
     # Baffled intake stub on floor
-    ax.add_patch(mpatches.Rectangle((EC_X + EC_W/2 - 0.18, CY), 0.36, WT,
-                 fc="#A8D8B0", ec=C_OUT, lw=1.0, zorder=5))
+    draw_rect(ax, EC_X + EC_W/2 - 0.18, CY, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=5)
     ax.annotate("Light-safe\nbaffled intake\n(150mm dia.)",
-                xy=(EC_X + EC_W/2, CY - 0.1), xytext=(EC_X + EC_W/2, CY - 1.2),
+                xy=(EC_X + EC_W/2, CY - 0.1), xytext=(EC_X + EC_W/2, CY - 0.8),
                 fontsize=7.5, color=C_DIM, ha="center",
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
                 bbox=dict(fc="white", ec="none", pad=1))
@@ -348,15 +338,13 @@ def draw_sheet2():
     wall_y0, wall_y1 = AY - 1.0, AY + DH + 1.0
 
     # ── Container wall ────────────────────────────────────────────────────────
-    ax.add_patch(mpatches.Rectangle((WX, wall_y0), WT, wall_y1 - wall_y0,
-                 fc=C_STEEL, ec=C_OUT, lw=2.0, zorder=4))
+    draw_rect(ax, WX, wall_y0, WT, wall_y1 - wall_y0, fc=C_STEEL, lw=2.0, zorder=4)
     for yi in range(int(wall_y0 * 4), int(wall_y1 * 4)):
         yy = yi / 4.0
         ax.plot([WX, WX + WT], [yy, yy + 0.3],
                 color=C_OUT, lw=0.4, alpha=0.4, zorder=5)
     # Clear opening in wall for duct penetration
-    ax.add_patch(mpatches.Rectangle((WX, AY + SK), WT, int_h,
-                 fc="#F2F2EE", ec="none", zorder=5))
+    draw_rect(ax, WX, AY + SK, WT, int_h, fc="#F2F2EE", color="none", lw=0, zorder=5)
     ann(ax, "CONTAINER WALL\ncorrugated steel\n(shown schematic)",
         (WX + WT / 2, wall_y1 - 0.2), (WX - 1.2, wall_y1 + 0.6))
 
@@ -365,8 +353,7 @@ def draw_sheet2():
     GL_H = DH * 0.65
     GL_Y = DUCT_Y + DH / 2 - GL_H / 2
     # Grille frame
-    ax.add_patch(mpatches.Rectangle((WX - GL_W, GL_Y), GL_W, GL_H,
-                 fc="#D0D8C8", ec=C_OUT, lw=1.2, zorder=6))
+    draw_rect(ax, WX - GL_W, GL_Y, GL_W, GL_H, fc="#D0D8C8", lw=1.2, zorder=6)
     # Louvre slats (5 horizontal angled slats)
     slat_h = 0.10
     slat_gap = GL_H / 6
@@ -380,15 +367,13 @@ def draw_sheet2():
         (WX - GL_W / 2, GL_Y - 0.15), (WX - GL_W / 2 - 1.5, GL_Y - 1.4))
 
     # ── Baffle duct housing (interior-mounted, left face open to wall) ────────
-    ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y), DD, DH,
-                 fc="#F5F5F5", ec=C_OUT, lw=2.0, zorder=3))
+    draw_rect(ax, DUCT_X, DUCT_Y, DD, DH, fc="#F5F5F5", lw=2.0, zorder=3)
     # Housing walls: top, bottom only — left (exterior) is open to wall, right (fan) has mounting flange
     for rx, ry, rw, rh in [
         (DUCT_X, DUCT_Y,        DD, SK),         # bottom wall
         (DUCT_X, DUCT_Y+DH-SK,  DD, SK),         # top wall
     ]:
-        ax.add_patch(mpatches.Rectangle((rx, ry), rw, rh,
-                     fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=4))
+        draw_rect(ax, rx, ry, rw, rh, fc=C_STEEL, lw=0.8, zorder=4)
     # Flat black interior
     ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y + SK), DD, int_h,
                  fc="#2A2A2A", ec="none", zorder=2, alpha=0.12))
@@ -396,8 +381,8 @@ def draw_sheet2():
     # Wall mounting flange — secures duct to interior face of container wall
     FL_W = 1.0    # flange overhang (top and bottom)
     FL_T = 0.22   # flange plate thickness
-    ax.add_patch(mpatches.Rectangle((DUCT_X, DUCT_Y - FL_W), FL_T, DH + 2 * FL_W,
-                 fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
+    draw_rect(ax, DUCT_X, DUCT_Y - FL_W, FL_T, DH + 2 * FL_W,
+              fc=C_ALUM, lw=1.2, zorder=6)
     for by in [DUCT_Y - FL_W * 0.55, DUCT_Y + DH + FL_W * 0.55]:
         ax.plot(DUCT_X + FL_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
     ann(ax, "Wall mounting flange\n5mm plate · 4×M10 bolts\n(interior face of wall)",
@@ -410,14 +395,12 @@ def draw_sheet2():
     B1_X = DUCT_X + int_d * 0.30
     B1_H = int_h * 0.65
     B1_Y = DUCT_Y + SK + int_h - B1_H      # top-anchored
-    ax.add_patch(mpatches.Rectangle((B1_X, B1_Y), BF_T, B1_H,
-                 fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
+    draw_rect(ax, B1_X, B1_Y, BF_T, B1_H, fc=C_OUT, lw=0.5, zorder=5)
 
     B2_X = DUCT_X + int_d * 0.70
     B2_H = int_h * 0.65
     B2_Y = DUCT_Y + SK                     # bottom-anchored
-    ax.add_patch(mpatches.Rectangle((B2_X, B2_Y), BF_T, B2_H,
-                 fc=C_OUT, ec=C_OUT, lw=0.5, zorder=5))
+    draw_rect(ax, B2_X, B2_Y, BF_T, B2_H, fc=C_OUT, lw=0.5, zorder=5)
 
     ann(ax, "Baffle 1\n(from top, 65%)\ngap at bottom",
         (B1_X + BF_T / 2, B1_Y + B1_H * 0.6),
@@ -437,8 +420,8 @@ def draw_sheet2():
     PF_R  = FAN_R    # impeller radius = FAN_R (150mm dia)
 
     # Mounting flange at right face of duct
-    ax.add_patch(mpatches.Rectangle((FAN_X - FM_T, DUCT_Y - FL_W), FM_T, DH + 2 * FL_W,
-                 fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=6))
+    draw_rect(ax, FAN_X - FM_T, DUCT_Y - FL_W, FM_T, DH + 2 * FL_W,
+              fc=C_ALUM, lw=1.2, zorder=6)
     for by in [DUCT_Y - FL_W * 0.55, DUCT_Y + DH + FL_W * 0.55]:
         ax.plot(FAN_X - FM_T / 2, by, "o", color=C_OUT, ms=4, zorder=7)
     ann(ax, "Fan mounting flange\n5mm plate · 4×M10 bolts\n(same both fans)",
@@ -449,20 +432,18 @@ def draw_sheet2():
     # Impeller circle drawn on LEFT (inlet) face so orientation is unambiguous:
     # viewing the fan from the inlet side = you see the blades face-on.
     # Air enters LEFT face, exits RIGHT face (intake mode; reversed for exhaust).
-    ax.add_patch(mpatches.Rectangle((FAN_X, FAN_CY - PF_R - 0.15), PF_BD, (PF_R + 0.15) * 2,
-                 fc=C_ALUM, ec=C_OUT, lw=1.8, zorder=5))
+    draw_rect(ax, FAN_X, FAN_CY - PF_R - 0.15, PF_BD, (PF_R + 0.15) * 2,
+              fc=C_ALUM, lw=1.8, zorder=5)
     # Impeller disc on INLET (left) face — represents view along fan axis from inlet
-    ax.add_patch(plt.Circle((FAN_X, FAN_CY), PF_R * 0.90,
-                 fc="#E8EEF4", ec=C_OUT, lw=1.5, zorder=6))
+    draw_circle(ax, FAN_X, FAN_CY, PF_R * 0.90, lw=1.5, fill=True, fc="#E8EEF4", zorder=6)
     # Blade lines (fan blades as seen from inlet)
     for angle in range(0, 360, 45):
         bx = FAN_X + PF_R * 0.82 * math.cos(math.radians(angle))
         by = FAN_CY + PF_R * 0.82 * math.sin(math.radians(angle))
         ax.plot([FAN_X, bx], [FAN_CY, by],
                 color=C_DIM, lw=1.4, alpha=0.60, zorder=7)
-    # Motor hub at centre
-    ax.add_patch(plt.Circle((FAN_X, FAN_CY), PF_R * 0.18,
-                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+    # Motor hub at center
+    draw_circle(ax, FAN_X, FAN_CY, PF_R * 0.18, lw=1.0, fill=True, fc=C_STEEL, zorder=8)
     # INLET / OUTLET face labels
     ax.text(FAN_X, FAN_CY + PF_R + 0.30, "INLET\n(air enters)",
             ha="center", va="bottom", fontsize=7.0, color=C_CL, fontweight="bold", zorder=10)

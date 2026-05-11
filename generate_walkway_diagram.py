@@ -439,9 +439,9 @@ def sheet2():
             n_legs = int((leg_yd_hi - leg_yd_lo) / LEG_SPACING) + 1
             leg_yds = np.linspace(leg_yd_lo, leg_yd_hi, n_legs)
             for lyd in leg_yds:
-                # Place legs at 1/4 and 3/4 across walkway width for clear centering
-                outer_x = wx + WALKWAY_W * 0.25
-                inner_x = wx + WALKWAY_W * 0.75
+                # Same inset as horizontal walkways: 40mm outer, 60mm inner
+                outer_x = wx + 40
+                inner_x = wx + WALKWAY_W - 60
                 ax.plot(outer_x, lyd, 'o', color=C_LEG, markersize=4,
                         markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
                 ax.plot(inner_x, lyd, 'o', color=C_LEG, markersize=4,

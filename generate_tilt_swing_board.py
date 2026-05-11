@@ -739,7 +739,7 @@ draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 18,
 draw_dim_v(ax2, or_right + frame_ctx_w + 10, or_bot, or_top, f'{BRG_W} WIDE', right=True, fs=5, offset=3.6)
 
 leader(ax2, ptfe_right_x, cy2c,
-       cx2c + 85, cy2c + 5,
+       cx2c + 85, cy2c + 25,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_left - frame_ctx_w/2, cy2c,
        cx2c - 75, cy2c - 35,
@@ -748,10 +748,10 @@ leader(ax2, cx2c - 15, or_bot - s1b(8),
        cx2c - 55, cy2c - 40,
        'TSB-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c + ir_outer_r, or_bot + s1b(1.5),
-       cx2c + 75, cy2c - 18,
+       cx2c + 75, cy2c - 45,
        'RUBBER\nSEAL (2RS)', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_right - out_ring_wall/2, or_top,
-       cx2c + 85, cy2c + 22,
+       cx2c + 85, cy2c + 42,
        'OUTER RING\n(PRESS-FIT H7/r6)', fs=4.8, color=C_DIM, arrow_style='->')
 
 ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',

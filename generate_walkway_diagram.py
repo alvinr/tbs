@@ -380,23 +380,39 @@ def sheet2():
             ha="center", va="center", fontsize=8, color=C_DIM,
             alpha=0.4, **FONT, zorder=3)
 
-    # ── Draw walkway sections ────────────────────────────────────────────────
+    # ── Draw walkway sections (polygon patches with 45° mitered corners) ────
     C_WK = "#D0C8B8"
     WK_ALPHA = 0.6
+    W = WALKWAY_W
 
-    # Walkway section definitions: (x, y, w, h, label, is_long_axis)
-    sections = [
-        ("NEAR", PROC_TRAY_X_L, WALKWAY_NEAR_YD, PROC_TRAY_W, WALKWAY_W, True),
-        ("FAR",  PROC_TRAY_X_L, WALKWAY_FAR_YD,  PROC_TRAY_W, WALKWAY_W, True),
-        ("LEFT", WALKWAY_LEFT_X, 0,               WALKWAY_W,   C_WID,     False),
-        ("RIGHT", WALKWAY_RIGHT_X, 0,             WALKWAY_W,   C_WID,     False),
+    # Polygon vertices for each walkway panel — mitered at corners to avoid
+    # overlapping hatching where near/far and left/right panels meet.
+    LX  = WALKWAY_LEFT_X;   LXR = LX + W        # left walkway X range
+    RX  = WALKWAY_RIGHT_X;  RXR = RX + W        # right walkway X range
+    NY  = WALKWAY_NEAR_YD;  NYI = NY + W         # near walkway Yd range
+    FY  = WALKWAY_FAR_YD;   FYO = FY + W         # far walkway Yd range
+    TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W  # near/far X span
+
+    walkway_polys = [
+        # Near walkway: full X span, mitered at both ends
+        ("NEAR",  [(TL, NY), (TR, NY), (RX, NYI), (LXR, NYI)],
+         TL, NY, PROC_TRAY_W, W, True),
+        # Far walkway: full X span, mitered at both ends
+        ("FAR",   [(TL, FYO), (TR, FYO), (RX, FY), (LXR, FY)],
+         TL, FY, PROC_TRAY_W, W, True),
+        # Left walkway: full Yd span, mitered at both ends
+        ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FY), (LXR, NYI)],
+         LX, 0, W, C_WID, False),
+        # Right walkway: full Yd span, mitered at both ends
+        ("RIGHT", [(RXR, NY), (RXR, FYO), (RX, FY), (RX, NYI)],
+         RX, 0, W, C_WID, False),
     ]
 
-    for name, wx, wy, ww, wh, is_x_axis in sections:
-        # Walkway fill
-        ax.add_patch(Rectangle((wx, wy), ww, wh,
-                                fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
-                                alpha=WK_ALPHA, zorder=4))
+    for name, verts, wx, wy, ww, wh, is_x_axis in walkway_polys:
+        # Walkway fill — polygon with mitered corners
+        ax.add_patch(Polygon(verts, closed=True,
+                             fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
+                             alpha=WK_ALPHA, zorder=4))
 
         # Leg positions (pairs of circles)
         if is_x_axis:
@@ -442,9 +458,7 @@ def sheet2():
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
     # ── 45° miter joints at corners ────────────────────────────────────────────
-    # Where long (near/far) and short (left/right) walkways meet, a 45° miter
-    # prevents overlap while keeping all panels at the same deck level.
-    W = WALKWAY_W
+    # Miter lines drawn on top of polygon edges for emphasis.
     corners = [
         # (x_outer, y_outer) = corner of the container; diagonal goes to inner corner
         # Bottom-left: near × left

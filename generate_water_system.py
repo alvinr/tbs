@@ -830,7 +830,7 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
-draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9 - 0.2,
+draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
            f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.27, fs=6.5, above=False)
 
 
@@ -843,7 +843,7 @@ draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9 - 0.2,
 #          ha="center", fontsize=7, color=C_DIM)
 
 # Tray depth (Yd direction)
-draw_dim_v(ax3, OX - 0.5 - 0.2, OY + TRAY_DRAW_H, OY,
+draw_dim_v(ax3, OX - 0.9, OY + TRAY_DRAW_H, OY,
            f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.27, fs=6.5, right=False)
 
 # Drain X position dimension

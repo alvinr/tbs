@@ -1045,7 +1045,7 @@ def sheet3():
     hx = D_DEPTH_R - 110
     ax.add_patch(plt.Rectangle((hx, H_HANDLE - HH / 2), 110, HH,
                                 fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))
-    ax.text(hx + 255, H_HANDLE + 20, "INT. HANDLE\n(welded bracket\nno through-hole)",
+    ax.text(hx + 255, H_HANDLE + 70, "INT. HANDLE\n(welded bracket\nno through-hole)",
             ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT, zorder=15)
 
     # ── Person silhouette — standing inside drum, feet at drum floor (H_DRUM_BOT) ──
@@ -1155,8 +1155,8 @@ def sheet3():
     # Vertical dimension arrow: container floor → handle bottom
     HANDLE_DIM_X = D_DEPTH_L - 100
     HANDLE_BOT = H_HANDLE - HH / 2   # bottom of handle bar
-    dim_v(ax, HANDLE_DIM_X, H_FLOOR, HANDLE_BOT,
-          f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-140, fs=6)
+    dim_v(ax, HANDLE_DIM_X/2 + DRUM_D, H_FLOOR, HANDLE_BOT,
+          f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-60, fs=6)
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 4",

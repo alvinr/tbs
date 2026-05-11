@@ -257,13 +257,13 @@ def sheet1():
                color="#208020", font=FONT)
 
     # Wall to outer leg center
-    draw_dim_h(ax, sx(0), sx(LEG_OUTER_YD), sy(-19),
-               f"{LEG_OUTER_YD:.0f}mm", offset=sy(24), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, sx(0), sx(LEG_OUTER_YD), sy(-22),
+               f"{LEG_OUTER_YD:.0f}mm", offset=sy(14), fs=6, above=False, font=FONT)
 
     # Outer leg center to inner leg center
     leg_span = LEG_INNER_YD - LEG_OUTER_YD
-    draw_dim_h(ax, sx(LEG_OUTER_YD), sx(LEG_INNER_YD), sy(-19),
-               f"{leg_span:.0f}mm", offset=sy(24), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, sx(LEG_OUTER_YD), sx(LEG_INNER_YD), sy(-22),
+               f"{leg_span:.0f}mm", offset=sy(14), fs=6, above=False, font=FONT)
 
     # ── Person silhouette (standing on walkway, for scale) ───────────────────
     # Simple stick figure, shoe at grate_top

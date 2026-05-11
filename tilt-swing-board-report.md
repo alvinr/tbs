@@ -55,28 +55,28 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 ```
 WALL FRAME (fixed, welded to container)
 │
-├── TSB-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
+├── ICP-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
 │    ├── Identical M12/540PCD/Ø8 dowel interface as all other plates
-│    ├── Ø380mm central bore (passes TSB-02 carrier + 135mm clearance margin)
+│    ├── Ø380mm central bore (passes ICP-02 carrier + 135mm clearance margin)
 │    ├── Ø80 H7 × 50mm deep bearing seat pocket (interior face)
 │    ├── 4× M8×1.0 fine-pitch adjustment screws with Delrin guide bushings
 │    ├── 4× M6 nylon-tip locking set screws (cross-lock each adj screw)
 │    ├── 6× M6 bellows outer flange attachment on Ø375mm PCD
 │    └── 3-step labyrinth bore (Ø382/390/400mm) — secondary light seal
 │
-├── TSB-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
+├── ICP-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
 │    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
 │    ├── Ø52×3mm counterbore — identical to standard plate
 │    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
 │    ├── 4× 440C SS hemispherical ball-socket inserts on Ø260mm PCD
 │    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
 │
-├── TSB-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
+├── ICP-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
 │    ├── SKF/INA/Kaydon GE50-DO-2RS (same bearing family as film plane)
 │    ├── Bore Ø50mm | OD Ø80mm | Width 46mm | Misalignment ±15°
 │    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
 │
-└── TSB-10  BELLOWS (matte black neoprene/nylon)
+└── ICP-10  BELLOWS (matte black neoprene/nylon)
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
@@ -142,11 +142,11 @@ Mechanical hard stop:                ±12mm travel = ±5.3°
 
 ## Light Sealing
 
-The bellows (TSB-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
+The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
 - 4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)
 - Inner and outer attachment flanges are sealed with Ø4mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates
-- The TSB-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles
+- The ICP-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles
 
 **Why bellows over EPDM wiper seal:** A wiper seal pressed against the tilting disc edge creates variable friction at different angles, giving inconsistent feel. Bellows are zero-friction, standard photographic practice, and self-certify light-tightness by construction.
 
@@ -292,13 +292,13 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 | Feature | Nominal | Tolerance | Importance |
 |---------|---------|-----------|------------|
-| TSB-01 bearing seat bore Ø80 | Ø80.000 | H7: +0.030/0.000 | Bearing outer ring press-fit |
-| TSB-02 bearing shank Ø50 | Ø50.000 | k5: +0.013/+0.002 | Bearing inner ring fit |
-| TSB-02 counterbore Ø52 | Ø52.000 | H7: +0.030/0.000 | Concentric with shank to 0.05mm |
-| TSB-02 shank perpendicularity | — | 0.05mm/100mm | Sets optical zero |
-| TSB-08 hemispherical socket Ra | — | Ra 0.4 (ground) | Ball articulation smoothness |
-| TSB-01 bolt holes M12 PCD | Ø540.000 | ±0.1mm positional | Must match wall frame exactly |
-| TSB-01 dowel holes Ø8 | Ø8.000 | H7: +0.015/0.000 | Plate registration repeatability |
+| ICP-01 bearing seat bore Ø80 | Ø80.000 | H7: +0.030/0.000 | Bearing outer ring press-fit |
+| ICP-02 bearing shank Ø50 | Ø50.000 | k5: +0.013/+0.002 | Bearing inner ring fit |
+| ICP-02 counterbore Ø52 | Ø52.000 | H7: +0.030/0.000 | Concentric with shank to 0.05mm |
+| ICP-02 shank perpendicularity | — | 0.05mm/100mm | Sets optical zero |
+| ICP-08 hemispherical socket Ra | — | Ra 0.4 (ground) | Ball articulation smoothness |
+| ICP-01 bolt holes M12 PCD | Ø540.000 | ±0.1mm positional | Must match wall frame exactly |
+| ICP-01 dowel holes Ø8 | Ø8.000 | H7: +0.015/0.000 | Plate registration repeatability |
 | Adj screw arm radius | 130.000 | ±0.25mm | Calibration scale accuracy |
 
 ---
@@ -310,8 +310,8 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
 | GE50-DO-2RS bearing | SKF, 50mm bore | Bearing Headquarters, Buena Park CA (bearingheadquarters.com) | Applied Industrial, Los Angeles | ~$90 |
-| Al 6061-T651 plate (TSB-01) | 620×620×45mm (24"×24"×1.75") | Online Metals (onlinemetals.com) | Metal Supermarkets, Chatsworth CA | ~$125 |
-| Al 6061-T6 round bar (TSB-02) | Ø340mm×35mm (13.5"OD×1.5") | Metal Supermarkets, Chatsworth CA | Online Metals | ~$100 |
+| Al 6061-T651 plate (ICP-01) | 620×620×45mm (24"×24"×1.75") | Online Metals (onlinemetals.com) | Metal Supermarkets, Chatsworth CA | ~$125 |
+| Al 6061-T6 round bar (ICP-02) | Ø340mm×35mm (13.5"OD×1.5") | Metal Supermarkets, Chatsworth CA | Online Metals | ~$100 |
 | M8×1.0 SS A4 SHCS | M8×1.0×80mm | Bolt Depot (boltdepot.com) | Pacific Coast Bolt, Anaheim CA | ~$3 ea |
 | Delrin/POM rod (bushings) | Ø30mm×200mm | McMaster-Carr, Santa Fe Springs CA (#8573K75) | Amazon Industrial | ~$20 |
 | Ø8mm Grade 25 chrome steel balls | 52100 bearing steel, 10-pack | McMaster-Carr (#9528K22) | Precision Balls Inc. | ~$14/pack |
@@ -333,9 +333,9 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|----------|
-| Hard anodise (TSB-01 exterior) | MIL-A-8625 Type III, 0.025mm | Pac-Nor Anodizing, Chatsworth CA | ~$80–120 |
-| Black anodise (TSB-02, knobs) | Type II | Aero Finishing, Burbank CA | ~$60–90 |
-| CNC machining (TSB-01 + TSB-02) | All Al parts | Fictiv (fictiv.com) / ProtoLabs | ~$800–1,500 |
+| Hard anodise (ICP-01 exterior) | MIL-A-8625 Type III, 0.025mm | Pac-Nor Anodizing, Chatsworth CA | ~$80–120 |
+| Black anodise (ICP-02, knobs) | Type II | Aero Finishing, Burbank CA | ~$60–90 |
+| CNC machining (ICP-01 + ICP-02) | All Al parts | Fictiv (fictiv.com) / ProtoLabs | ~$800–1,500 |
 | Knurled knob stock Ø40mm | Al, 4 off | Jergens (#49525) or machine from bar | ~$15 ea |
 | Angular scale engraving | Al 80×15×2mm, 2 off | LaserPros, Chatsworth CA | ~$35–50 |
 

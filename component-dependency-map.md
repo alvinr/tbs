@@ -42,7 +42,7 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 | f-number | f/1088 | `PH_FNO` |
 | Focal length | 2,362 mm | `PH_F` (= `C_WID`) |
 
-*Components: wall frame (600×600mm, 6mm steel), pinhole plate (TSB-02 / interchangeable
+*Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
 Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
 
 ### 1.3 Film Plane Mechanism
@@ -75,9 +75,9 @@ rail felt light-trap strips.*
 | Max tilt/swing | ±5.3° | — (hardcoded in script) |
 | Resolution | 0.012°/click | — (hardcoded in script) |
 
-*Components: TSB-01 outer adapter frame (600×600×40mm Al 6061-T6), TSB-02 inner carrier plate
+*Components: ICP-01 outer adapter frame (600×600×40mm Al 6061-T6), ICP-02 inner carrier plate
 (Ø320×25mm Al 6061-T6), GE50-DO-2RS spherical plain bearing (SKF, PTFE-lined), 4× M8×1.0
-adjustment screws, hemispherical ball-socket inserts, 36-detent knurled knobs, TSB-10 neoprene
+adjustment screws, hemispherical ball-socket inserts, 36-detent knurled knobs, ICP-10 neoprene
 bellows (4-pleat, Ø290 ID → Ø360 OD).*
 
 ### 1.5 Light Trap Drum

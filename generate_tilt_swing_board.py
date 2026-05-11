@@ -6,8 +6,8 @@ generate_tilt_swing_board.py
 Tilt-and-Swing Front Board — The Big Shoebox Project
 Drawing series TBS-TSB  (3 sheets)
 
-Sheet 1 — Assembly overview & Outer Adapter Frame (TSB-01)
-Sheet 2 — Inner Carrier Plate (TSB-02), Bearing & Adjustment mechanism
+Sheet 1 — Assembly overview & Outer Adapter Frame (ICP-01)
+Sheet 2 — Inner Carrier Plate (ICP-02), Bearing & Adjustment mechanism
 Sheet 3 — Light seal (bellows), Locking, Calibration scale & Swap procedure
 
 Style matches generate_plate_drawing.py (white background, same palette & helpers).
@@ -41,7 +41,7 @@ PH_CB_DEP  = 3
 PH_DISC_D  = 50
 PH_BORE    = 90       # exterior taper bore
 
-# --- TSB-01 Outer Adapter Frame ---
+# --- ICP-01 Outer Adapter Frame ---
 TSB01_THICK  = 40     # plate thickness
 TSB01_BORE   = 380    # central bore diameter
 BRG_SEAT_D   = 80     # bearing outer ring OD / seat bore diameter
@@ -51,7 +51,7 @@ ADJ_N        = 4      # 4 screws
 LAB_D1, LAB_D2, LAB_D3 = 382, 390, 400  # labyrinth step diameters
 BELL_OUT_PCD = 375    # bellows outer flange bolt PCD
 
-# --- TSB-02 Inner Carrier Plate ---
+# --- ICP-02 Inner Carrier Plate ---
 CARR_OD      = 320    # carrier plate OD
 CARR_THICK   = 25     # thickness
 BRG_SHANK_D  = 50     # bearing shank diameter (k5)
@@ -59,7 +59,7 @@ BRG_SHANK_L  = 35     # shank length
 SOCK_PCD     = 260    # ball socket insert PCD
 BELL_IN_PCD  = 310    # bellows inner flange bolt PCD
 
-# --- Bearing TSB-03 ---
+# --- Bearing ICP-03 ---
 BRG_OD       = 80
 BRG_ID       = 50
 BRG_W        = 46     # total width
@@ -131,8 +131,8 @@ def section_label(ax, x, y, text):
     ax.plot([x, x+200], [y-3, y-3], color='black', lw=0.7)
 
 section_label(ax1, 10, 490, 'PANEL A — FULL ASSEMBLY (1:8)')
-section_label(ax1, 170, 490, 'PANEL B — TSB-01 EXTERIOR FACE (1:8)')
-section_label(ax1, 330, 490, 'PANEL C — TSB-01 INTERIOR FACE (1:8)')
+section_label(ax1, 170, 490, 'PANEL B — ICP-01 EXTERIOR FACE (1:8)')
+section_label(ax1, 330, 490, 'PANEL C — ICP-01 INTERIOR FACE (1:8)')
 
 SC = 1/8
 def s1(mm): return mm * SC
@@ -143,7 +143,7 @@ def s1(mm): return mm * SC
 cx_a, cy_a = 85, 330
 hw = s1(PL_OD/2)
 
-# Outer adapter frame (TSB-01) — aluminium, slightly thicker than normal plates
+# Outer adapter frame (ICP-01) — aluminium, slightly thicker than normal plates
 p = mpatches.Rectangle((cx_a - hw, cy_a - hw), s1(PL_OD), s1(PL_OD),
                         lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
 ax1.add_patch(p)
@@ -151,7 +151,7 @@ ax1.add_patch(p)
 # Central bore
 draw_circle(ax1, cx_a, cy_a, s1(TSB01_BORE/2), lw=LW_MED, color=C_OUT, fill=True, fc='white', zorder=4)
 
-# Inner carrier plate (TSB-02) — circular, darker Al
+# Inner carrier plate (ICP-02) — circular, darker Al
 draw_circle(ax1, cx_a, cy_a, s1(CARR_OD/2), lw=LW_THICK, color=C_OUT, fill=True, fc='#C0C0C0', zorder=5)
 
 # Pinhole bore (cone opening)
@@ -194,11 +194,11 @@ draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 6,
            'Ø320 CARRIER', above=False, fs=5, offset=3)
 draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 6, '600 mm', above=True, fs=5.5, offset=3)
 
-ax1.text(cx_a, cy_a - hw - 25, 'PANEL A — ASSEMBLY (1:8)\nTSB-01 outer frame + TSB-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
+ax1.text(cx_a, cy_a - hw - 25, 'PANEL A — ASSEMBLY (1:8)\nICP-01 outer frame + ICP-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
-# PANEL B: TSB-01 Exterior (container-wall-facing) face
+# PANEL B: ICP-01 Exterior (container-wall-facing) face
 # center 255, 330
 # ───────────────────────────────────────────────
 cx_b, cy_b = 258, 330
@@ -249,11 +249,11 @@ leader(ax1, cx_b + s1(BOLT_BC/2)*0.65, cy_b + s1(BOLT_BC/2)*0.65,
        cx_b + 16, cy_b + 28,
        'Ø540 B.C.\n8×M12\nCLR', fs=4.5, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_b, cy_b - hw - 25, 'PANEL B — TSB-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
+ax1.text(cx_b, cy_b - hw - 25, 'PANEL B — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
-# PANEL C: TSB-01 Interior (container-facing) face
+# PANEL C: ICP-01 Interior (container-facing) face
 # center 420, 330
 # ───────────────────────────────────────────────
 cx_c, cy_c = 425, 330
@@ -297,7 +297,7 @@ leader(ax1, cx_c + s1(LAB_D3/2)*0.65, cy_c - s1(LAB_D3/2)*0.65,
        cx_c + 20, cy_c - 45,
        '3-STEP\nLABYRINTH\nØ382/390/400\n5 DEEP EACH', fs=4.3, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_c, cy_c - hw - 25, 'PANEL C — TSB-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
+ax1.text(cx_c, cy_c - hw - 25, 'PANEL C — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
@@ -314,7 +314,7 @@ ax1.plot([10, 490], [219, 219], color='black', lw=0.7)
 
 # Centre section at x=250, top of frame at y=210
 cx_d = 250
-frame_top = 210   # top of TSB-01 frame (exterior/scene face)
+frame_top = 210   # top of ICP-01 frame (exterior/scene face)
 
 # Heights in drawing units (1:1 vertical)
 fh = sy(TSB01_THICK)   # frame height = 40
@@ -323,7 +323,7 @@ bh = sy(BRG_W)         # bearing height = 46
 
 # Y positions (drawing downward = interior side)
 frame_y_top = frame_top
-frame_y_bot = frame_top - fh          # interior face of TSB-01
+frame_y_bot = frame_top - fh          # interior face of ICP-01
 carrier_y_top = frame_y_bot           # carrier sits flush on interior face
 carrier_y_bot = carrier_y_top - ch
 seat_y_top = frame_y_bot              # bearing pocket starts at interior face
@@ -411,7 +411,7 @@ for sgn in [-1, 1]:
                                 hatch='---', zorder=5)
     ax1.add_patch(ir_p)
 
-# TSB-02 Carrier plate
+# ICP-02 Carrier plate
 carr_hw_d = sx(CARR_OD/2)
 ph_hw_d   = sx(PH_BORE/2)
 # Carrier wings (either side of pinhole bore)
@@ -505,13 +505,13 @@ leader(ax1, cx_d + seat_hw + 2, frame_y_bot + seat_dep_d/2,
        'Ø80 H7 BEARING\nPOCKET × 50', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, cx_d + carr_hw_d + 2, carrier_y_bot + ch/2,
        cx_d + 65, carrier_y_bot + ch/2,
-       'TSB-02 CARRIER\nØ320 × 25 Al', fs=4.8, color=C_DIM, arrow_style='->')
+       'ICP-02 CARRIER\nØ320 × 25 Al', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, adj_x + sx(BUSH_OD/2), frame_y_bot + sy(BUSH_L)/2,
        adj_x + 38, frame_y_bot + sy(BUSH_L)/2,
        'M8 SCREW\n+ DELRIN\nBUSHING', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, bell_x_out, (bell_span_top + bell_span_bot)/2.1,
        bell_x_out + 18, (bell_span_top + bell_span_bot)/2.2,
-       'BELLOWS\nTSB-10', fs=4.5, color=C_DIM, arrow_style='->')
+       'BELLOWS\nICP-10', fs=4.5, color=C_DIM, arrow_style='->')
 
 ax1.text(cx_d, carrier_y_bot - 20, '← SCENE (EXTERIOR)    INTERIOR (CONTAINER) →',
          ha='center', fontsize=5, color='#555555')
@@ -547,8 +547,8 @@ title_block(ax2, "SHEET 2 OF 3",
 SC2 = 1/2
 def s2(mm): return mm * SC2
 
-# ── PANEL A: TSB-02 front (exterior) face at 1:2 ──────────────────────────────
-ax2.text(15, 490, 'PANEL A — TSB-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
+# ── PANEL A: ICP-02 front (exterior) face at 1:2 ──────────────────────────────
+ax2.text(15, 490, 'PANEL A — ICP-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
 ax2.plot([15, 330], [487, 487], color='black', lw=0.7)
 
 cx2a, cy2a = 120, 355
@@ -609,11 +609,11 @@ leader(ax2, cx2a - s2(PH_DISC_D/2) * 0.7, cy2a - s2(PH_DISC_D/2) * 0.7,
        cx2a - 55, cy2a - 30,
        'Ø50 PINHOLE DISC\nSS-302 SHIM\nØ2.17 APERTURE', fs=5, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 28, 'PANEL A — TSB-02 FRONT FACE (1:2)\nExterior / scene-facing side',
+ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 28, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
-# ── PANEL B: TSB-02 rear face at 1:2 ─────────────────────────────────────────
-ax2.text(340, 490, 'PANEL B — TSB-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
+# ── PANEL B: ICP-02 rear face at 1:2 ─────────────────────────────────────────
+ax2.text(340, 490, 'PANEL B — ICP-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
 ax2.plot([340, 640], [487, 487], color='black', lw=0.7)
 
 cx2b, cy2b = 490, 355
@@ -655,7 +655,7 @@ leader(ax2, cx2b - s2(8) * 0.7, cy2b - s2(8) * 0.7,
        cx2b - 55, cy2b - 25,
        'M16 TAPPED\nCENTRAL HOLE', fs=5, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 28, 'PANEL B — TSB-02 REAR FACE (1:2)\nBearing-side / interior',
+ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 28, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL C: Bearing section detail (1:1) ─────────────────────────────────────
@@ -667,7 +667,7 @@ cx2c, cy2c = 145, 125
 SC1 = 1.0
 def s1b(mm): return mm * SC1
 
-# Outer ring (in TSB-01 pocket)
+# Outer ring (in ICP-01 pocket)
 or_left = cx2c - s1b(BRG_OD/2)
 or_right = cx2c + s1b(BRG_OD/2)
 or_bot = cy2c - s1b(BRG_W/2)
@@ -708,7 +708,7 @@ ax2.plot([ptfe_left_x, ptfe_left_x], [ir_y, ir_y + ir_h],
 ax2.plot([ptfe_right_x, ptfe_right_x], [ir_y, ir_y + ir_h],
          color=C_GASKT, lw=2.0)
 
-# TSB-01 bore context (frame material either side of bearing)
+# ICP-01 bore context (frame material either side of bearing)
 frame_ctx_w = s1b(20)
 fc_l = mpatches.Rectangle((or_left - frame_ctx_w, or_bot), frame_ctx_w, s1b(BRG_W),
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
@@ -716,7 +716,7 @@ fc_r = mpatches.Rectangle((or_right, or_bot), frame_ctx_w, s1b(BRG_W),
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax2.add_patch(fc_l); ax2.add_patch(fc_r)
 
-# TSB-02 shank through bearing
+# ICP-02 shank through bearing
 shank_p2 = mpatches.Rectangle((cx2c - s1b(BRG_SHANK_D/2), or_bot - s1b(15)),
                                s1b(BRG_SHANK_D), s1b(BRG_W) + s1b(15),
                                lw=LW_MED, edgecolor=C_OUT, facecolor='#C0C0C0')
@@ -744,10 +744,10 @@ leader(ax2, ptfe_right_x, cy2c,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_left - frame_ctx_w/2, cy2c,
        cx2c - 75, cy2c - 35,
-       'TSB-01\nFRAME\nAl 6061', fs=4.8, color=C_DIM, arrow_style='->')
+       'ICP-01\nFRAME\nAl 6061', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c - 15, or_bot - s1b(8),
        cx2c - 55, cy2c - 40,
-       'TSB-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
+       'ICP-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c + ir_outer_r, or_bot + s1b(1.5),
        cx2c + 75, cy2c - 45,
        'RUBBER\nSEAL (2RS)', fs=4.8, color=C_DIM, arrow_style='->')
@@ -854,10 +854,10 @@ leader(ax2, ball_x2, cy2d + s1b(BALL_D/2),
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
        ball_x2 - carrier_rim_w - 35, cy2d + 25,
-       'TSB-02\nCARRIER RIM', fs=5, color=C_DIM, arrow_style='->')
+       'ICP-02\nCARRIER RIM', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30),
        cx2d - frame_wall_w/2, cy2d + s1b(30) + 10,
-       'TSB-01\nFRAME WALL', fs=5, color=C_DIM, arrow_style='->')
+       'ICP-01\nFRAME WALL', fs=5, color=C_DIM, arrow_style='->')
 
 # Angular resolution table — top right of Panel D
 tbl_x, tbl_y = 580, 207
@@ -964,14 +964,14 @@ draw_bellows_section(ax3, cx3a, cy3a, 5, lw_style='--', alpha=0.7)
 frame_bar_h = s2(10)
 draw_rect(ax3, cx3a - s2(BELL_OD/2) - 15, cy3a, 15 + s2(BELL_OD) + 15, frame_bar_h,
           lw=LW_MED, color=C_OUT, fc=C_ALUM)
-ax3.text(cx3a, cy3a + frame_bar_h/2, 'TSB-01 OUTER FRAME', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
+ax3.text(cx3a, cy3a + frame_bar_h/2, 'ICP-01 OUTER FRAME', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 carr_bar_h = s2(10)
 # Neutral position carrier
 draw_rect(ax3, cx3a - s2(BELL_ID/2) - 10, cy3a - s2(BELL_FREE) - carr_bar_h,
           s2(BELL_ID) + 20, carr_bar_h, lw=LW_MED, color=C_OUT, fc='#C0C0C0')
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h/2,
-         'TSB-02 CARRIER (NEUTRAL)', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
+         'ICP-02 CARRIER (NEUTRAL)', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 # Dimensions
 draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 15, cy3a - s2(BELL_FREE), cy3a,
@@ -986,7 +986,7 @@ ax3.text(cx3a + s2(BELL_OD/2) + 52, cy3a - s2(BELL_FREE*0.5),
          fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 30,
-         'BELLOWS TSB-10: Matte black neoprene/nylon  •  0.5 mm wall  •  4 pleats  •  15 mm pleat depth\nInner+outer flanges sealed with Ø4 mm neoprene cord gaskets (same spec as wall-frame seal)',
+         'BELLOWS ICP-10: Matte black neoprene/nylon  •  0.5 mm wall  •  4 pleats  •  15 mm pleat depth\nInner+outer flanges sealed with Ø4 mm neoprene cord gaskets (same spec as wall-frame seal)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
@@ -1126,7 +1126,7 @@ ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
 draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
            cy3d + scale_strip_h/2 + 10, '80 mm TOTAL', above=True, fs=5, offset=3)
 ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
-         '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on TSB-01 face adjacent to each knob pair',
+         '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 S3_E_DN = int(FH3 * 0.10)  # 10% drop for Panel E separation

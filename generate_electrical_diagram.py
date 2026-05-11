@@ -679,13 +679,13 @@ def draw_sheet2():
            "Battery bank (BAT)\n2×100Ah LiFePO4",
            fs=6.5, color=C_BATT)
     # Fan A — Intake (far end wall)
-    leader(ax, FA_X - 0.22, FA_Y,
-           FA_X - 1.2, FA_Y + 0.5,
+    leader(ax, FA_X + 0.1, FA_Y + 0.1,
+           FA_X + 1.2, FA_Y + 0.5,
            "Intake fan (A)\n6\" DC  60W",
            fs=6.5, ha="right")
     # Fan B — Exhaust (cargo door wall)
-    leader(ax, FB_X + 0.22, FB_Y,
-           FB_X + 1.2, FB_Y + 0.5,
+    leader(ax, FB_X - 0.1 , FB_Y + 0.1,
+           FB_X - 1.2, FB_Y + 0.7,
            "Exhaust fan (B)\n6\" DC  60W",
            fs=6.5)
     # Pump — Cct C

@@ -20,7 +20,7 @@ from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
 )
 from tbs_drawing import (
-    draw_dim_h, draw_dim_v, draw_rect, draw_circle,
+    draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader,
 )
 from tbs_title_block import title_block
 
@@ -33,16 +33,10 @@ TITLE_COL = "#0F2D5E"
 
 
 def ann(ax, text, xy, xytext, size=7.5):
-    """Leader-line annotation with white-backed text.
-
-    Uses ax.annotate directly (not shared leader()) because it needs
-    bbox for white text background — important for readability over
-    busy diagram areas.
-    """
-    ax.annotate(text, xy=xy, xytext=xytext,
-                fontsize=size, color=C_OUT, ha="center", va="center",
-                arrowprops=dict(arrowstyle="->", linestyle=':', color=C_DIM, lw=0.9),
-                bbox=dict(fc="white", ec="none", pad=1.5), zorder=10)
+    """Leader-line annotation — thin wrapper around shared leader()."""
+    leader(ax, xy[0], xy[1], xytext[0], xytext[1], text,
+           fs=size, color=C_OUT, ha="center", va="center",
+           arrow_style="->", lw=0.9, zorder=10)
 
 
 

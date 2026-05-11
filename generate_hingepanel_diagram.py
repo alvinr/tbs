@@ -1064,11 +1064,11 @@ def sheet3():
     dim_v(ax, DRUM_FL_DIM_X, H_FLOOR, H_DRUM_BOT,
           f"{H_DRUM_BOT}mm\nDRUM\nFLOOR", offset=-100, fs=6)
 
-    # Person body (line) and head (circle)
+    # Person body (line) and head (circle) — blue tones
     ax.plot([PERSON_X, PERSON_X], [P_FOOT, P_HEAD],
-            color="#606060", lw=3.0, zorder=8, solid_capstyle="round")
+            color="#2060A0", lw=3.0, zorder=8, solid_capstyle="round")
     ax.add_patch(plt.Circle((PERSON_X, P_HEAD + HEAD_R), HEAD_R,
-                             fc="#909090", ec="#505050", lw=1.0, zorder=8))
+                             fc="#70A8D8", ec="#1A4D80", lw=1.0, zorder=8))
 
     # Headroom gap: person head top → drum body ceiling
     drum_body_h    = H_DRUM_TOP - H_DRUM_BOT
@@ -1084,7 +1084,7 @@ def sheet3():
     # Label alongside person
     ax.text(PERSON_X - HEAD_R - 15, P_FOOT + PERSON_H / 2,
             f"{PERSON_H}mm\noperator\n(shoes)",
-            ha="right", va="center", fontsize=6, color="#505050", **FONT, zorder=15)
+            ha="right", va="center", fontsize=6, color="#1A4D80", **FONT, zorder=15)
 
     # ── Drum body ceiling line ────────────────────────────────────────────────
     ax.plot([D_DEPTH_L - 50, D_DEPTH_R + 50], [H_DRUM_TOP, H_DRUM_TOP],

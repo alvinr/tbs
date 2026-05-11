@@ -283,7 +283,7 @@ def sheet1():
     ax.text(-WALL_T / 2, Z_LO + 40, "EXTERIOR",
             ha="center", va="bottom", fontsize=7, color="#806050",
             fontweight="bold", **FONT, zorder=15, alpha=0.6)
-    ax.text(X_HI / 2, Z_HI - 540, "INTERIOR (DARKROOM)",
+    ax.text(X_HI / 2, Z_HI /2, "INTERIOR (DARKROOM)",
             ha="center", va="top", fontsize=7, color="#205020",
             fontweight="bold", **FONT, zorder=15, alpha=0.6)
 

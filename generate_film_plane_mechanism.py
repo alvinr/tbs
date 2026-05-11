@@ -22,7 +22,7 @@ from matplotlib.lines import Line2D
 import matplotlib.patheffects as pe
 
 from tbs_constants import (
-    FP_X_L, FP_X_R, PH_X as PH_X_C, PH_H as PH_H_C,
+    FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, PH_X as PH_X_C, PH_H as PH_H_C,
     MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, SVG_DIR, svg_path,
 )
 from tbs_title_block import title_block
@@ -830,14 +830,14 @@ def sheet4():
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
     axes_rows = [
-        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", "0–2,262 mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", "0–2,262 mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", "0–2,262 mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (right)", "Both right corners move equally",    "TR + BR together", "0–2,262 mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   "0–2,262 mm", "4× leadscrews independently","4 locking collars"],
-        ["BACK FOCUS",    "All 4 corners together",             "All",              "100–2,262mm","All 4 leadscrews together", "All 4 locks"],
-        ["MAX TILT",      "Top=100mm, Bot=2,262mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
-        ["MAX SWING",     "Left=100mm, Right=2,262mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
+        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   f"0–{FP_Y:,} mm", "4× leadscrews independently","4 locking collars"],
+        ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y:,}mm","All 4 leadscrews together", "All 4 locks"],
+        ["MAX TILT",      f"Top={FP_Y_MIN}mm, Bot={FP_Y:,}mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
+        ["MAX SWING",     f"Left={FP_Y_MIN}mm, Right={FP_Y:,}mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
     ]
     # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
     draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,

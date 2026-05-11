@@ -382,8 +382,8 @@ def draw_sheet1():
 def draw_sheet2():
     from matplotlib.patches import Polygon as MplPolygon
     from tbs_constants import (
-        C_LEN as TBS_C_LEN, C_WID as TBS_C_WID,
-        PH_X as TBS_PH_X,
+        C_LEN as TBS_C_LEN, C_WID as TBS_C_WID, FP_H,
+        PH_X as TBS_PH_X, PH_D, PH_FNO,
         FP_X_L, FP_X_R,
         ZONE_L_END, ZONE_R_START,
         EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
@@ -527,7 +527,7 @@ def draw_sheet2():
                  (fp_l_x, OY+cwid-wt-0.15), fp_r_x - fp_l_x, 0.15,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
     ax.text((fp_l_x+fp_r_x)/2, OY + cwid - wt - 0.075,
-            f"FILM PLANE  X={FP_X_L}–{FP_X_R}mm  ({FP_X_R-FP_X_L}mm wide × 2388mm H)",
+            f"FILM PLANE  X={FP_X_L}–{FP_X_R}mm  ({FP_X_R-FP_X_L}mm wide × {FP_H}mm H)",
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=7)
 
@@ -535,7 +535,7 @@ def draw_sheet2():
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     leader(ax, ph_x, OY + wt/2, ph_x * 1.1, OY - 0.50,
-           f"PINHOLE  Ø2.17mm\nX={TBS_PH_X}mm  f/1088",
+           f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}mm  f/{PH_FNO}",
            fs=7.5, ha="center")
 
     # ── NEMA inlet — positioned after EP is drawn (see below) ───────────────

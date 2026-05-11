@@ -34,7 +34,7 @@ from tbs_drawing import draw_dim_h, draw_dim_v, leader
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_Y, FP_W,
-    PH_X, PH_H, PH_FNO,
+    PH_X, PH_H, PH_D, PH_FNO,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
     EVAP_X, EVAP_W, EVAP_H, EVAP_Y, EVAP_D,
@@ -288,9 +288,9 @@ ax.add_patch(ph)
 ax.plot([PH_X - 160, PH_X + 160], [PH_H, PH_H], color=C_PINHOLE, lw=0.8, zorder=8)
 ax.plot([PH_X, PH_X], [PH_H - 160, PH_H + 160], color=C_PINHOLE, lw=0.8, zorder=8)
 leader(ax, PH_X + PINHOLE_SYM_R + 40, PH_H, PH_X + 600, PH_H + 450,
-       f"Pinhole  O2.17mm\n(X={PH_X}, H={PH_H}mm)\nf/1088",
+       f"Pinhole  O{PH_D}mm\n(X={PH_X}, H={PH_H}mm)\nf/{PH_FNO}",
        ha="left", fs=FS_SM, color=C_PINHOLE)
-ax.text(PH_X, PH_H - 300, "Optical axis (into page)\nFocal length 2362mm",
+ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {C_WID}mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CL, style="italic")
 
 

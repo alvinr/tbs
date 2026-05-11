@@ -18,6 +18,7 @@ from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Wedge
 from matplotlib.path import Path
 import matplotlib.patheffects as pe
 import matplotlib.transforms as transforms
+from tbs_constants import C_WID, PH_FNO
 
 # ── Shared helpers ────────────────────────────────────────────────────────────
 
@@ -136,7 +137,7 @@ def make_logo1():
     ax.annotate("", xy=(CAM_X + CAM_W, FL_Y), xytext=(CAM_X, FL_Y),
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.9,
                                 mutation_scale=8))
-    ax.text(CAM_X + CAM_W / 2, FL_Y - 2, "f = 2,362 mm", color=WHITE,
+    ax.text(CAM_X + CAM_W / 2, FL_Y - 2, f"f = {C_WID:,} mm", color=WHITE,
             ha="center", fontsize=6, fontfamily="monospace")
 
     # ── Rayleigh formula box ──
@@ -155,7 +156,7 @@ def make_logo1():
     ax.add_patch(Circle((85, 84), 8.5, fc=CYAN, ec=WHITE, lw=1.4, zorder=4))
     ax.text(85, 85.5, "f/", color=NAVY, fontsize=10, ha="center", va="center",
             fontweight="bold", fontfamily="monospace", zorder=5)
-    ax.text(85, 81.5, "1088", color=NAVY, fontsize=9, ha="center", va="center",
+    ax.text(85, 81.5, f"{PH_FNO}", color=NAVY, fontsize=9, ha="center", va="center",
             fontweight="bold", fontfamily="monospace", zorder=5)
 
     # ── Title ──

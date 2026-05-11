@@ -23,7 +23,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Arc
 from matplotlib.lines import Line2D
 from tbs_constants import (
-    C_LEN, C_WID, IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
+    C_LEN, C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
     ZONE_L_END, ZONE_R_START,
     FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
@@ -393,7 +393,7 @@ ax1.text(15.6, 8.5, "(50mm rim, 1:200 pitch, permanent)", ha="center",
 # Print on floor representation
 ax1.add_patch(plt.Rectangle((14.1, 5.0), 3.0, 3.1, fc="white", ec="#66BB6A",
                              lw=1.2, ls="--", alpha=0.8, zorder=3))
-ax1.text(15.6, 6.55, "PRINT\n(5893 × 2388 mm)", ha="center", va="center",
+ax1.text(15.6, 6.55, f"PRINT\n({C_LEN} × {C_HGT} mm)", ha="center", va="center",
          fontsize=7, color="#388E3C", style="italic", zorder=4)
 
 
@@ -652,7 +652,7 @@ draw_dim_h(ax2, 0, CW, -0.30, "5,893 mm (CONTAINER INTERIOR)", offset=0.21, fs=6
 draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2,362 mm", offset=0.27, fs=6.5, right=False)
 draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1,219 mm", offset=0.27, fs=6.5, above=False)
 draw_dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", offset=0.27, fs=6.5, color="#805000", above=False)
-draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {5893 - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
+draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {C_LEN - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
 
 # Orientation arrow — points toward pinhole wall (bottom, Yd=0)
 ax2.annotate("", xy=(CW + 0.3, 0.4), xytext=(CW + 0.3, 1.6),

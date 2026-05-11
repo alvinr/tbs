@@ -198,9 +198,9 @@ dim_y_top = cy1 + hw + 14
 dim_x_right = cx1 + hw + 18
 
 # Overall width
-draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600', above=True, fs=6, offset=3)
+draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600mm', above=True, fs=6, offset=3)
 # Overall height
-draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600', right=True, fs=6, offset=3)
+draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600mm', right=True, fs=6, offset=3)
 # Aperture diameter
 leader(ax1, cx1 + s(FR_APT_D/2)*0.65, cy1 + s(FR_APT_D/2)*0.65,
        cx1 + 12, cy1 + 10, 'Ø350', fs=5.5, color=C_DIM)
@@ -268,7 +268,7 @@ draw_cl(ax1, cx2, cy2, hw * 1.1)
 # ── Dimensions for Pinhole Plate ──────────────────────────────────────────────
 dim_y_top2 = cy2 + hw + 14
 
-draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600', above=True, fs=6, offset=3)
+draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=3)
 draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 6,
            '490 (LIGHT TRAP)', above=True, fs=5, offset=3)
 
@@ -333,7 +333,7 @@ draw_cl(ax3, cx3, cy3, hw * 1.1)
 
 # ── Dimensions for Lens Plate ─────────────────────────────────────────────────
 dim_y_top3 = cy3 + hw + 14
-draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600', above=True, fs=6, offset=3)
+draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600mm', above=True, fs=6, offset=3)
 
 leader(ax3, cx3 + s(LB_D/2)*0.65, cy3 + s(LB_D/2)*0.65,
        cx3 + 16, cy3 + 16, 'Ø175 H7\nBORE THRU', fs=5.5, color=C_DIM)
@@ -563,11 +563,11 @@ ax2.plot([bolt_x_fr, bolt_x_end], [bolt_y, bolt_y], color='#444', lw=0.7, ls='--
 ax2.text(bolt_x_end + 2, bolt_y + 2, 'M12×40\nITEM 8', fontsize=4.5, color='black')
 
 # Dimension: plate thickness
-draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 8, '15', above=True, fs=5.5, offset=1.8)
+draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 8, '15\nmm', above=True, fs=5.5, offset=1.8)
 
 # Dim: plate height
 dim_rx = pl_right + 22
-draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600', right=True, fs=5.5, offset=1.8)
+draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600mm', right=True, fs=5.5, offset=1.8)
 
 # Dim: frame aperture
 ax2.annotate('', xy=(fr_left, scy + fr_apt_half),
@@ -870,7 +870,7 @@ ax2.annotate('', xy=(pl_right_d, ddy + tube_od_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
 ax2.text(pl_right_d + 18, ddy, 'Ø174.5\nTUBE OD', ha='left', fontsize=5.5, color=C_DIM)
 
-draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 12, '15', above=False,
+draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 12, '15\nmm', above=False,
            fs=5.5, offset=1.5)
 
 ax2.text(ddx - 30, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',

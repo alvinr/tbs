@@ -4,7 +4,7 @@
 
 - **Project name:** The Big Shoebox Project
 - **Camera designation:** TBS-001
-- **Parts prefix:** TBS-XXX (e.g. TSB-01, TSB-02…)
+- **Parts prefix:** ICP-XX (e.g. ICP-01, ICP-02…)
 - **Container:** 20ft ISO standard shipping container, 2,362mm interior focal depth
 - **Image plane:** 4,499 × 2,388 mm active (X=150–4,649mm); container interior 5,893 × 2,388 mm
 - **Pinhole:** Ø2.17mm, SS-302 shim, f/1088 (Rayleigh formula, λ=550nm)

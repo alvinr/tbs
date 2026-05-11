@@ -1973,28 +1973,28 @@
 <p>The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:</p>
 <div class="highlight"><pre><span></span><code>WALL FRAME (fixed, welded to container)
 │
-├── TSB-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
+├── ICP-01  OUTER ADAPTER FRAME  600×600×40mm Al 6061-T6
 │    ├── Identical M12/540PCD/Ø8 dowel interface as all other plates
-│    ├── Ø380mm central bore (passes TSB-02 carrier + 135mm clearance margin)
+│    ├── Ø380mm central bore (passes ICP-02 carrier + 135mm clearance margin)
 │    ├── Ø80 H7 × 50mm deep bearing seat pocket (interior face)
 │    ├── 4× M8×1.0 fine-pitch adjustment screws with Delrin guide bushings
 │    ├── 4× M6 nylon-tip locking set screws (cross-lock each adj screw)
 │    ├── 6× M6 bellows outer flange attachment on Ø375mm PCD
 │    └── 3-step labyrinth bore (Ø382/390/400mm) — secondary light seal
 │
-├── TSB-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
+├── ICP-02  INNER CARRIER PLATE  Ø320×25mm Al 6061-T6
 │    ├── Carries standard Ø50×0.1mm SS-302 pinhole disc (Lenox Laser)
 │    ├── Ø52×3mm counterbore — identical to standard plate
 │    ├── Spherical pivot: Ø50 k5 shank into GE50-DO-2RS bearing
 │    ├── 4× 440C SS hemispherical ball-socket inserts on Ø260mm PCD
 │    └── 6× M6 bellows inner flange attachment on Ø310mm PCD
 │
-├── TSB-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
+├── ICP-03  GE50-DO-2RS SPHERICAL PLAIN BEARING
 │    ├── SKF/INA/Kaydon GE50-DO-2RS (same bearing family as film plane)
 │    ├── Bore Ø50mm | OD Ø80mm | Width 46mm | Misalignment ±15°
 │    └── PTFE-lined self-lubricating — maintenance-free, chemistry-safe
 │
-└── TSB-10  BELLOWS (matte black neoprene/nylon)
+└── ICP-10  BELLOWS (matte black neoprene/nylon)
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 </code></pre></div>
@@ -2099,11 +2099,11 @@ Mechanical hard stop:                ±12mm travel = ±5.3°
 <p><strong>Operation:</strong> To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centred on the bearing at all times.</p>
 <hr />
 <h2 id="light-sealing">Light Sealing<a class="headerlink" href="#light-sealing" title="Permanent link">&para;</a></h2>
-<p>The bellows (TSB-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
+<p>The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
 <ul>
 <li>4-pleat accordion geometry tolerates ±13.9mm asymmetric compression at ±5° tilt (left side compresses, right side extends by equal amounts)</li>
 <li>Inner and outer attachment flanges are sealed with Ø4mm neoprene cord gaskets — same specification as the wall-frame seal used on all plates</li>
-<li>The TSB-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles</li>
+<li>The ICP-01 bore has a 3-step machined labyrinth (Ø382 / Ø390 / Ø400mm, 5mm deep each) — secondary seal preventing any direct light path even if the bellows flange lifts at extreme angles</li>
 </ul>
 <p><strong>Why bellows over EPDM wiper seal:</strong> A wiper seal pressed against the tilting disc edge creates variable friction at different angles, giving inconsistent feel. Bellows are zero-friction, standard photographic practice, and self-certify light-tightness by construction.</p>
 <hr />
@@ -2252,43 +2252,43 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </thead>
 <tbody>
 <tr>
-<td>TSB-01 bearing seat bore Ø80</td>
+<td>ICP-01 bearing seat bore Ø80</td>
 <td>Ø80.000</td>
 <td>H7: +0.030/0.000</td>
 <td>Bearing outer ring press-fit</td>
 </tr>
 <tr>
-<td>TSB-02 bearing shank Ø50</td>
+<td>ICP-02 bearing shank Ø50</td>
 <td>Ø50.000</td>
 <td>k5: +0.013/+0.002</td>
 <td>Bearing inner ring fit</td>
 </tr>
 <tr>
-<td>TSB-02 counterbore Ø52</td>
+<td>ICP-02 counterbore Ø52</td>
 <td>Ø52.000</td>
 <td>H7: +0.030/0.000</td>
 <td>Concentric with shank to 0.05mm</td>
 </tr>
 <tr>
-<td>TSB-02 shank perpendicularity</td>
+<td>ICP-02 shank perpendicularity</td>
 <td>—</td>
 <td>0.05mm/100mm</td>
 <td>Sets optical zero</td>
 </tr>
 <tr>
-<td>TSB-08 hemispherical socket Ra</td>
+<td>ICP-08 hemispherical socket Ra</td>
 <td>—</td>
 <td>Ra 0.4 (ground)</td>
 <td>Ball articulation smoothness</td>
 </tr>
 <tr>
-<td>TSB-01 bolt holes M12 PCD</td>
+<td>ICP-01 bolt holes M12 PCD</td>
 <td>Ø540.000</td>
 <td>±0.1mm positional</td>
 <td>Must match wall frame exactly</td>
 </tr>
 <tr>
-<td>TSB-01 dowel holes Ø8</td>
+<td>ICP-01 dowel holes Ø8</td>
 <td>Ø8.000</td>
 <td>H7: +0.015/0.000</td>
 <td>Plate registration repeatability</td>
@@ -2323,14 +2323,14 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 <td>~$90</td>
 </tr>
 <tr>
-<td>Al 6061-T651 plate (TSB-01)</td>
+<td>Al 6061-T651 plate (ICP-01)</td>
 <td>620×620×45mm (24"×24"×1.75")</td>
 <td>Online Metals (onlinemetals.com)</td>
 <td>Metal Supermarkets, Chatsworth CA</td>
 <td>~$125</td>
 </tr>
 <tr>
-<td>Al 6061-T6 round bar (TSB-02)</td>
+<td>Al 6061-T6 round bar (ICP-02)</td>
 <td>Ø340mm×35mm (13.5"OD×1.5")</td>
 <td>Metal Supermarkets, Chatsworth CA</td>
 <td>Online Metals</td>
@@ -2441,19 +2441,19 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </thead>
 <tbody>
 <tr>
-<td>Hard anodise (TSB-01 exterior)</td>
+<td>Hard anodise (ICP-01 exterior)</td>
 <td>MIL-A-8625 Type III, 0.025mm</td>
 <td>Pac-Nor Anodizing, Chatsworth CA</td>
 <td>~$80–120</td>
 </tr>
 <tr>
-<td>Black anodise (TSB-02, knobs)</td>
+<td>Black anodise (ICP-02, knobs)</td>
 <td>Type II</td>
 <td>Aero Finishing, Burbank CA</td>
 <td>~$60–90</td>
 </tr>
 <tr>
-<td>CNC machining (TSB-01 + TSB-02)</td>
+<td>CNC machining (ICP-01 + ICP-02)</td>
 <td>All Al parts</td>
 <td>Fictiv (fictiv.com) / ProtoLabs</td>
 <td>~$800–1,500</td>

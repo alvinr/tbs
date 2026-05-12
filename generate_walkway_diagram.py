@@ -2273,10 +2273,11 @@ def sheet7():
     ax.plot([bx_arm - 3, bx_arm + 3, bx_arm - 3, bx_arm + 3,
              bx_arm - 3, bx_arm + 3, bx_arm - 3],
             zz_arm, color=C_OUT, lw=1.0, zorder=7)
-    ax.text(sx(arm_show / 2), sy(arm_bot + ARM_DEPTH + 4),
-            f"BRACKET ARM (GHOST \u2014\nEXTENDS {WALKWAY_W}mm\nALONG Yd INTO PAGE)",
-            ha="center", va="bottom", fontsize=5, color=C_BRKT,
-            alpha=0.6, **FONT, zorder=15)
+    leader(ax, sx(arm_show / 2), sy(arm_bot + ARM_DEPTH / 2),
+           sx(arm_show + 40), sy(arm_bot + ARM_DEPTH + 30),
+           f"BRACKET ARM (GHOST)\nEXTENDS {WALKWAY_W}mm\nALONG Yd INTO PAGE",
+           color=C_BRKT, fs=5.5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Gusset triangle ──────────────────────────────────────────────────────
     gusset_verts = [

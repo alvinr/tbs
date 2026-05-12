@@ -1298,15 +1298,16 @@ def sheet4():
             color=C_OUT, lw=2.0, zorder=7)
 
     # ── Gusset underneath ────────────────────────────────────────────────────
-    GUSSET_REACH = 70
+    # Gusset must stop before tray rim — tip at TRAY_DX + 5mm clearance
+    gusset_tip = TRAY_DX + 5
     gusset_verts = [
         (sx(POST_DX - BRKT_T / 2), sy(BASE_T)),     # post base
         (sx(POST_DX - BRKT_T / 2), sy(arm_bot)),     # arm bottom at post
-        (sx(POST_DX - BRKT_T / 2 - GUSSET_REACH), sy(arm_bot)),  # 70mm out
+        (sx(gusset_tip), sy(arm_bot)),                # stops before tray rim
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(POST_DX - BRKT_T / 2), sx(POST_DX - BRKT_T / 2 - GUSSET_REACH)],
+    ax.plot([sx(POST_DX - BRKT_T / 2), sx(gusset_tip)],
             [sy(BASE_T), sy(arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 

@@ -1170,9 +1170,23 @@ def sheet4():
     ax.axis("off")
 
     # ── Container floor (cross-section) ──────────────────────────────────────
+    # Under tray zone (left of tray rim)
     ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T)),
-                            sx(X_HI - X_LO), sy(FLOOR_T),
+                            sx(TRAY_DX - X_LO), sy(FLOOR_T),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, zorder=3))
+    # Bare floor zone (between tray rim and IBC — where post sits)
+    ax.add_patch(Rectangle((sx(TRAY_DX), sy(-FLOOR_T)),
+                            sx(X_HI - TRAY_DX), sy(FLOOR_T),
+                            fc="#D0C8B8", ec=C_OUT, lw=1.0, zorder=3))
+    # Bare floor top surface emphasis
+    ax.plot([sx(TRAY_DX), sx(X_HI)], [sy(0), sy(0)],
+            color=C_OUT, lw=1.5, zorder=4)
+    # "BARE FLOOR" label
+    bare_mid = (TRAY_DX + IBC_DX) / 2
+    ax.text(sx(bare_mid), sy(-FLOOR_T / 2),
+            "BARE FLOOR\n(OUTSIDE TRAY)",
+            ha="center", va="center", fontsize=5, color="#604020",
+            fontweight="bold", **FONT, zorder=15)
     # Ground hatching below floor
     ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T - 20)),
                             sx(X_HI - X_LO), sy(20),

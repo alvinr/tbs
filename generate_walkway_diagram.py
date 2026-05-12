@@ -2380,7 +2380,7 @@ def sheet7():
     # VIEW B — Plan view (looking down) — above side elevation, same Yd axis
     # Horizontal = Yd, Vertical = X (door side at top, tray side at bottom)
     # ══════════════════════════════════════════════════════════════════════════
-    PV_OX = 0                 # aligned with side elevation Yd axis
+    PV_OX = BEAM_SHOW + 50    # top right
     PV_OY = BRKT_VERT + 50   # above the side elevation
     PV_S  = 2.5              # plan view scale factor relative to main
     def px(mm): return sx(PV_OX + mm * PV_S / S)
@@ -2460,7 +2460,7 @@ def sheet7():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
-    notes_top = sy(Z_HI - 3)
+    notes_top = sy(beam_bot - 10)
     notes = [
         "BEARER BEAM CONNECTION:",
         "",

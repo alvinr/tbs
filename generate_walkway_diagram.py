@@ -1480,7 +1480,7 @@ def sheet5():
     # Z = vertical axis (0 = floor)
     X_LO = -50
     X_HI = LEFT_WK_R + NEAR_WK_SHOW + 350  # room for near walkway + notes
-    Z_LO = -40
+    Z_LO = -80
     Z_HI = WALKWAY_H + 110
 
     fig, ax = plt.subplots(figsize=(18, 10))

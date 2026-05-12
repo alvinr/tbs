@@ -65,7 +65,7 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 *Components: welded aluminum angle frame (2"×2"×3/16"), 4× HGR20 linear rails (ceiling + floor),
 8× HGH20CA carriage blocks, 4× ¾"-6 Acme leadscrews, 4× bronze nuts, 4× 8" handwheels,
 8× GIR25-DO rod-end spherical bearings, hinged ACM backing panels, Duvetyne curtain seals,
-rail felt light-trap strips.*
+rail felt light-trap strips, 92× cam-lever spring clamps at 150mm centers (muslin attachment).*
 
 ### 1.4 Tilt-Swing Front Board
 

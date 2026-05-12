@@ -66,6 +66,26 @@ FP_W     = FP_X_R - FP_X_L   # = 4,499 mm          [rev6: was 4,024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
+# ── Muslin clamp system ──────────────────────────────────────────────────────
+# Cam-lever spring clamps bolted to the perpendicular leg of the 2"x2"x3/16"
+# aluminum angle frame at 150mm centers. Jaw presses muslin hem against the
+# pinhole-facing leg. Torsion spring biases clamp closed at any tilt angle.
+FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
+FP_ANGLE_T    = 4.8    # angle thickness (mm) — 3/16" = 4.76mm ≈ 4.8mm
+CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
+CLAMP_BASE_W  = 40     # base plate width along frame edge (mm)
+CLAMP_BASE_H  = 50     # base plate height on perpendicular leg (mm)
+CLAMP_BASE_T  = 3      # base plate thickness (mm)
+CLAMP_LEVER_L = 60     # cam lever length (mm)
+CLAMP_JAW_W   = 35     # rubber jaw pad width (mm)
+CLAMP_JAW_H   = 12     # rubber jaw pad height (mm)
+CLAMP_JAW_T   = 6      # rubber jaw pad thickness (mm — 60A neoprene)
+CLAMP_OPEN_GAP = 15    # jaw clearance from frame face when open (mm)
+CLAMP_SPRING_F = 5     # nominal clamping force per clamp (N)
+CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # = 30 per horizontal edge
+CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # = 16 per vertical edge
+CLAMP_N_TOTAL = 2 * CLAMP_N_HORIZ + 2 * CLAMP_N_VERT  # = 92
+
 # ── Pinhole (recentred on new film plane) ─────────────────────────────────────
 PH_X   = FP_X_L + FP_W // 2   # = 2,399 mm  [rev6: was 2,637]
 PH_H   = 1194                  # height (mm) [unchanged]
@@ -339,6 +359,7 @@ if __name__ == "__main__":
     print("TBS-001 Constants (rev 5)")
     print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT} mm")
     print(f"  Film plane:     {FP_W} × {FP_H} mm  (X={FP_X_L}–{FP_X_R})")
+    print(f"  Muslin clamps:  {CLAMP_N_TOTAL} cam-lever clamps at {CLAMP_SPACING}mm centers")
     print(f"  Pinhole:        X={PH_X}  H={PH_H}  Ø{PH_D}mm  f/{PH_FNO}")
     print(f"  Rails:          X={RAIL_X_L} – {RAIL_X_R}  span={RAIL_SPAN}mm")
     print(f"  Max tilt:       {MAX_TILT_DEG:.1f}°")

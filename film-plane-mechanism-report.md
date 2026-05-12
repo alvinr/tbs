@@ -267,6 +267,25 @@ All items ship within the United States. Local Southern California pickup noted 
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot / Target (local) | Amazon | $12 |
 
+### Muslin Clamp System
+
+The photosensitive muslin is secured to the film plane frame by **92 cam-lever spring clamps** spaced at 150mm centers around the full perimeter (30 per horizontal edge, 16 per vertical edge). Each clamp uses an over-center cam mechanism with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
+
+The cam-lever design provides tactile snap-open/snap-closed feedback, critical for loading and unloading muslin in safelight (near-dark) conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
+
+**Muslin wrap path:** muslin drapes over the pinhole-facing leg of the 2"x2" angle, wraps around the outside corner, and a 100mm hem hangs down the perpendicular leg. The jaw presses the hem against the outer face of the pinhole-facing leg, ~10-15mm from the corner, providing direct tension.
+
+![Muslin clamp detail — Sheet 5](assets/film-plane-sheet5.png)
+
+| Item | Spec | Qty | Source A | Source B | Est. Unit |
+|------|------|-----|---------|---------|-----------|
+| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw | 92 | McMaster-Carr (Destaco equiv.) | Amazon (generic toggle) | $3-8 |
+| M5×16 SS socket head bolt | A2-70 stainless | 184 | McMaster-Carr #91292A128 | Bolt Depot | $0.25 |
+| M5 SS Nylock nut | A2-70 stainless | 184 | McMaster-Carr #93625A200 | Bolt Depot | $0.08 |
+| Neoprene strip 60A | 35mm × 6mm, self-adhesive | 1 roll (10m) | McMaster-Carr #8614K44 | Grainger | $15 |
+
+**Clamp system estimated cost:** $330 (generic toggle clamps) to $790 (Destaco-equivalent quality).
+
 ### Optional Electric Actuation
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |

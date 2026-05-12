@@ -79,7 +79,7 @@ Source report: [Pinhole Fab](fabrication-drawings.md).
 
 ## 5. Film Plane Mechanism
 
-Four-corner independent actuation mechanism (TBS-FM01).
+Four-corner independent actuation mechanism with muslin clamp system (TBS-FM01, 5 sheets).
 Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 
 **Sheet 1 — Assembly overview**
@@ -93,6 +93,9 @@ Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 
 **Sheet 4 — Full mechanism cross-section**
 ![TBS-001 Film Plane Mechanism — Sheet 4](assets/film-plane-sheet4.png)
+
+**Sheet 5 — Muslin clamp detail: cam-lever spring clamp cross-section, open/closed positions, and elevation at 150mm spacing**
+![TBS-001 Film Plane Mechanism — Sheet 5](assets/film-plane-sheet5.png)
 
 ---
 

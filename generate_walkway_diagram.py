@@ -1124,7 +1124,7 @@ def sheet4():
     # Tray right rim at X = 4,629mm (PROC_TRAY_X_R)
     # IBC stack starts at X = 4,674mm
     # Floor post at X ≈ 4,640mm (just outside tray rim, 34mm clearance to IBCs)
-    POST_X     = 4640     # floor post center X position (mm)
+    POST_X     = 4652     # floor post center X position (mm)
     TRAY_RIM_X = PROC_TRAY_X_R  # = 4,629mm
     IBC_X      = 4674     # IBC stack inner face
     POST_TO_TRAY = POST_X - TRAY_RIM_X  # = 11mm gap between post and tray rim
@@ -1192,17 +1192,6 @@ def sheet4():
                             sx(X_HI - X_LO), sy(20),
                             fc="#E0DDD8", ec=C_OUT, lw=0.5, hatch="///", zorder=2))
 
-    # ── Reinforcing plate (underneath floor, centered on post) ───────────────
-    reinf_left = POST_DX - REINF_W / 2
-    ax.add_patch(Rectangle((sx(reinf_left), sy(-FLOOR_T - REINF_T)),
-                            sx(REINF_W), sy(REINF_T),
-                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_left + REINF_W / 2), sy(-FLOOR_T - REINF_T - 2),
-           sx(reinf_left + REINF_W / 2 + 60), sy(-FLOOR_T - REINF_T - 20),
-           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
-           color="#C08040", fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
-
     # ── Processing tray ──────────────────────────────────────────────────────
     # Tray right rim (vertical wall)
     ax.add_patch(Rectangle((sx(TRAY_DX - TRAY_WALL), sy(0)),
@@ -1232,10 +1221,13 @@ def sheet4():
                             sx(BRKT_T), sy(BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
-    # ── Base plate (welded to post bottom, sits on floor) ────────────────────
-    BASE_W = 60   # base plate width
+    # ── Base plate (welded to post bottom, sits on bare floor) ─────────────
+    # Base plate must be entirely outside tray rim (TRAY_DX).
+    # Left edge at TRAY_DX + 3mm clearance.
+    BASE_W = 40   # base plate width (mm) — fits between tray rim and IBC
     BASE_T = 8    # base plate thickness
-    ax.add_patch(Rectangle((sx(POST_DX - BASE_W / 2), sy(0)),
+    base_left = TRAY_DX + 3  # 3mm clearance from tray rim
+    ax.add_patch(Rectangle((sx(base_left), sy(0)),
                             sx(BASE_W), sy(BASE_T),
                             fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=5, alpha=0.85))
     # Weld symbols at post-to-base junction
@@ -1246,9 +1238,10 @@ def sheet4():
                 color="#CC4400", lw=1.5, zorder=8)
 
     # ── Through-bolts (2× M12 through base plate + floor + reinf plate) ──────
+    # Both bolts within base plate, entirely on bare floor
     C_BOLT = "#505058"
-    bolt_x1 = POST_DX - 18
-    bolt_x2 = POST_DX + 18
+    bolt_x1 = base_left + 10
+    bolt_x2 = base_left + BASE_W - 10
 
     for bx_bolt in [bolt_x1, bolt_x2]:
         shank_hw = BOLT_R * 0.4
@@ -1279,6 +1272,17 @@ def sheet4():
            sx(bolt_x2 + 60), sy(BASE_T + 25),
            f"2\u00d7 M{BOLT_D} THROUGH-BOLTS\nBASE PLATE \u2192 FLOOR\n\u2192 REINF PLATE \u2192 NUT",
            color=C_DIM, fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Reinforcing plate (underneath floor, centered on base plate) ────────
+    reinf_left = base_left + BASE_W / 2 - REINF_W / 2
+    ax.add_patch(Rectangle((sx(reinf_left), sy(-FLOOR_T - REINF_T)),
+                            sx(REINF_W), sy(REINF_T),
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, sx(reinf_left + REINF_W / 2), sy(-FLOOR_T - REINF_T - 2),
+           sx(reinf_left + REINF_W / 2 + 60), sy(-FLOOR_T - REINF_T - 20),
+           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
+           color="#C08040", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Horizontal arm (projects LEFT from post toward container interior) ───

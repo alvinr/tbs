@@ -1210,7 +1210,7 @@ def sheet4():
     ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
             zz_t, color=C_OUT, lw=1.0, zorder=5)
     leader(ax, sx(TRAY_DX - TRAY_WALL - 5), sy(PROC_TRAY_RIM / 2),
-           sx(TRAY_DX - 60), sy(PROC_TRAY_RIM + 15),
+           sx(TRAY_DX - 60), sy(PROC_TRAY_RIM - 5),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)",
            color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1230,7 +1230,7 @@ def sheet4():
 
     # Box label
     leader(ax, sx(BOX_R_DX + 2), sy(BOX_H / 2),
-           sx(BOX_R_DX + 55), sy(BOX_H / 2 + 40),
+           sx(BOX_R_DX + 55), sy(BOX_H / 2 + 20),
            f"BOX SECTION BEAM\n{BOX_H}\u00d7{BOX_W}\u00d7{BOX_T}mm RHS\n"
            f"(SPANS {C_WID}mm\nFULL CONTAINER WIDTH\nALONG Yd)",
            color=C_BRKT, fs=6,
@@ -1278,7 +1278,7 @@ def sheet4():
                             sx(REINF_W), sy(REINF_T),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, sx(reinf_left), sy(-FLOOR_T - REINF_T / 2),
-           sx(reinf_left - 40), sy(-FLOOR_T - REINF_T - 15),
+           sx(reinf_left - 40), sy(FLOOR_T + REINF_T + 10),
            f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_W}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1291,7 +1291,7 @@ def sheet4():
                             sx(BOX_W), sy(PACKER_T),
                             fc="#E0D0A0", ec=C_OUT, lw=0.8, zorder=8, alpha=0.9))
     leader(ax, sx(BOX_R_DX + 2), sy(packer_bot + PACKER_T / 2),
-           sx(BOX_R_DX + 55), sy(packer_bot + PACKER_T / 2 - 15),
+           sx(BOX_R_DX + 55), sy(packer_bot + PACKER_T * 2.5),
            f"PACKER SHIM\n{PACKER_T}mm STEEL",
            color="#B0A060", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -1331,7 +1331,7 @@ def sheet4():
                                 sx(PB_D), sy(8),
                                 fc="#505058", ec=C_OUT, lw=0.8, zorder=10))
 
-    leader(ax, sx((WK_LEFT + BOX_L_DX) / 2), sy(plate_bot - 2),
+    leader(ax, sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(plate_bot - 2),
            sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(plate_bot - 30),
            f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(BOLTED THROUGH\nPACKER + BOX TOP)",
            color=C_BRKT, fs=5.5,
@@ -1358,8 +1358,8 @@ def sheet4():
     ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot)),
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=12))
-    leader(ax, sx(clip_x - 2), sy(plate_top),
-           sx(clip_x - 40), sy(plate_top + 35),
+    leader(ax, sx(clip_x - 2), sy(plate_top + 5),
+           sx(clip_x - 50), sy(plate_top + 15),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 

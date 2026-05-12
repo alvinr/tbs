@@ -264,8 +264,8 @@ WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # Right walkway floor post (IBC end — too far from end wall for wall mounting)
-WALKWAY_RIGHT_POST_X = 4640  # floor post X position (mm) — just outside tray rim (4,629mm)
-WALKWAY_RIGHT_POST_IBC_CLR = 34  # clearance to IBC stack inner face (mm)
+WALKWAY_RIGHT_POST_X = 4652  # floor post X position (mm) — outside tray rim (4,629mm)
+WALKWAY_RIGHT_POST_IBC_CLR = 22  # clearance to IBC stack inner face (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

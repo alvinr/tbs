@@ -1306,11 +1306,11 @@ def sheet4():
     grate_bot = BRKT_ARM_Z
     grate_top = grate_bot + WALKWAY_GRATE_T
     ax.add_patch(Rectangle((sx(WK_LEFT), sy(grate_bot)),
-                            sx(BOX_R_DX - WK_LEFT), sy(WALKWAY_GRATE_T),
+                            sx(WK_RIGHT - WK_LEFT), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     bar_spacing = 34.2
     bar_w = 3
-    for xb in np.arange(bar_w, BOX_R_DX - WK_LEFT - bar_w, bar_spacing):
+    for xb in np.arange(bar_w, WK_RIGHT - WK_LEFT - bar_w, bar_spacing):
         ax.add_patch(Rectangle((sx(WK_LEFT + xb), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
@@ -1340,7 +1340,7 @@ def sheet4():
             **FONT, zorder=15, alpha=0.7)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
-    draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 25),
+    draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 15),
                f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)

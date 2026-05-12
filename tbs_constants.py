@@ -211,8 +211,7 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 # welded between.  Grating sits directly on bracket arms.  NO legs, NO beam,
 # NO floor contact.  Entire tray interior is completely clear for film loading.
 # Deck height 100mm (75mm bracket arm + 25mm grate) clears the 50mm tray rim.
-# Material: galvanized press-locked steel grating, 25mm thick (near/far/right)
-# or 40×5mm heavy-duty bearing bars (left walkway — longer unsupported span).
+# Material: galvanized press-locked steel grating, 25mm thick (all 4 sections).
 #
 # Mounting varies by wall type:
 #   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.
@@ -224,13 +223,13 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 #       Left corners use butt joints (no miter) so near/far walkways start at
 #       X=470 — entirely past the panel transport envelope (max X=420).
 #       Only the left walkway (X=170–470) needs removal for transport.
-#       Supported at each end by near/far walkway butt joint ends.  Heavy-duty
-#       grating (40×5mm bars) spans the 1,762mm unsupported gap.
+#       Supported at each end by near/far walkway butt joint ends.  Same 25mm
+#       grating as other sections — adequate for single-person pedestrian load
+#       on a 300mm wide walkway over the 1,762mm span.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
-WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
-WALKWAY_LEFT_GRATE_T = 40  # left walkway grating thickness (mm) — heavy-duty for long span
+WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked (all 4 sections)
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
@@ -353,7 +352,7 @@ if __name__ == "__main__":
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
-    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (left={WALKWAY_LEFT_GRATE_T}mm HD)")
+    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (all sections)")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (no brackets — panel conflict)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")

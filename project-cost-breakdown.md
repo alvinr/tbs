@@ -262,18 +262,17 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. 300mm wide, 100mm deck height (75mm bracket arm + 25mm grate). No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Near/far walkways bracket to corrugated wall ribs; right walkway brackets to angle iron on flat end wall; left walkway is a removable lift-out (panel conflict — no brackets, heavy-duty 40mm grating for 1,762mm unsupported span).
+Four removable grated walkway sections around all 4 sides of the processing tray. 300mm wide, 100mm deck height (75mm bracket arm + 25mm grate). No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Near/far walkways bracket to corrugated wall ribs; right walkway brackets to angle iron on flat end wall; left walkway is a removable lift-out (panel conflict — no brackets, 25mm grating spans 1,762mm unsupported).
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 25mm (30×3mm bars) | $210 | $260 | $310 | ~3.4 m² (near/far/right); McNichols / Metal Supermarkets SoCal |
-| Heavy-duty steel grating, 40mm (40×5mm bars) | $80 | $100 | $120 | ~0.7 m² (left walkway — 1,762mm span); McNichols |
+| Press-locked steel grating, 25mm (30×3mm bars) | $260 | $325 | $390 | ~4.1 m² (all 4 sections); McNichols / Metal Supermarkets SoCal |
 | Wall brackets, 8mm steel plate gusset (×25) | $200 | $250 | $300 | Triangular gusset, 150mm vert × 300mm arm, hot-dip galvanized |
 | Angle iron mounting rail, 50×50×5mm L-angle | $15 | $20 | $25 | 1× 2,362mm, welded to right end wall interior |
 | Reinforcing plates, 80×180×6mm mild steel (×20) | $40 | $50 | $60 | Welded to wall exterior behind each bracket (near/far walls) |
 | M12×60mm hex bolts + nuts + washers (×50) | $50 | $63 | $75 | 2 per bracket, grade 8.8 galvanized |
 | Fabrication (cut, weld, galvanize brackets + install) | $250 | $325 | $400 | Local metal fab shop |
-| **Perimeter walkway total** | **$600** | **$808** | **$1,015** | |
+| **Perimeter walkway total** | **$570** | **$773** | **$975** | |
 
 ---
 

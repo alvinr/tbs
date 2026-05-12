@@ -263,8 +263,7 @@ Permanently installed — no removal for transport mode conversion.*
 |-----------|-------|----------|
 | Walkway width | 300 mm | `WALKWAY_W` |
 | Deck height | 100 mm | `WALKWAY_H` |
-| Grate thickness (near/far/right) | 25 mm | `WALKWAY_GRATE_T` |
-| Grate thickness (left, heavy-duty) | 40 mm | `WALKWAY_LEFT_GRATE_T` |
+| Grate thickness (all sections) | 25 mm | `WALKWAY_GRATE_T` |
 | Bracket vertical leg | 150 mm | `WALKWAY_BRACKET_H` |
 | Bracket plate thickness | 8 mm | `WALKWAY_BRACKET_T` |
 | Bracket spacing | 457 mm | `WALKWAY_BRACKET_SPACING` |
@@ -278,7 +277,7 @@ Permanently installed — no removal for transport mode conversion.*
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 Right: same brackets on 50×50×5mm angle iron welded to flat end wall.
-Left: removable lift-out, 40mm heavy-duty grating resting on miter corners (no brackets —
+Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
 panel conflict, must remove before panel slides to transport). No legs, no beam,
 no floor contact. 4 removable sections.*
 

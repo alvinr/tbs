@@ -1186,10 +1186,11 @@ def sheet4():
                             fc="#D0C8B8", ec=C_OUT, lw=1.0, zorder=3))
     ax.plot([sx(TRAY_DX), sx(X_HI)], [sy(0), sy(0)],
             color=C_OUT, lw=1.5, zorder=4)
-    ax.text(sx((TRAY_DX + IBC_DX) / 2), sy(-FLOOR_T / 2),
-            "BARE FLOOR\n(OUTSIDE TRAY)",
-            ha="center", va="center", fontsize=5, color="#604020",
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, sx((TRAY_DX + BOX_L_DX) / 2), sy(-FLOOR_T / 2),
+           sx(IBC_DX + 60), sy(-FLOOR_T - 35),
+           "BARE FLOOR\n(OUTSIDE TRAY)",
+           color="#604020", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
     # Ground hatching below floor
     ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T - 20)),
                             sx(X_HI - X_LO), sy(20),

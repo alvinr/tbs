@@ -234,20 +234,24 @@ def sheet1():
     C_WALKWAY = "#707078"
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (top of bracket arm)
 
-    # Bracket arm cross-section (small rectangle at Z=75mm)
+    # Bracket arm cross-section (small rectangle at Z=75mm) — ghosted (removed for transport)
     WK_X = TRAY_SHOW_X   # same X as tray left edge (170mm)
     WK_SHOW_W = TRAY_SHOW_W  # show same width as tray for visual consistency
+    WK_ALPHA = 0.25  # ghost — this walkway is removed before panel slides
     ax.add_patch(Rectangle((WK_X, BRKT_ARM_Z - WALKWAY_BRACKET_T),
                             WK_SHOW_W, WALKWAY_BRACKET_T,
-                            fc=C_WALKWAY, ec=C_OUT, lw=0.8, zorder=5))
+                            fc=C_WALKWAY, ec=C_OUT, lw=0.8, ls="--",
+                            alpha=WK_ALPHA, zorder=5))
 
-    # Grate (Z=75 to 100mm)
+    # Grate (Z=75 to 100mm) — ghosted
     ax.add_patch(Rectangle((WK_X, BRKT_ARM_Z), WK_SHOW_W, WALKWAY_GRATE_T,
-                            fc="#D0D0D4", ec=C_OUT, lw=0.8, hatch="--", zorder=5))
+                            fc="#D0D0D4", ec=C_OUT, lw=0.8, ls="--",
+                            hatch="--", alpha=WK_ALPHA, zorder=5))
 
-    # Break lines on right edge (continuation)
+    # Break lines on right edge (continuation) — ghosted
     for z in [BRKT_ARM_Z - 5, BRKT_ARM_Z + 5, BRKT_ARM_Z + 15]:
-        ax.plot([bx - 5, bx + 5], [z - 3, z + 3], color=C_OUT, lw=0.6, zorder=6)
+        ax.plot([bx - 5, bx + 5], [z - 3, z + 3], color=C_OUT, lw=0.6,
+                alpha=WK_ALPHA, zorder=6)
 
     leader(ax, WK_X + 200, WALKWAY_H + 5,
            WK_X + 200, WALKWAY_H + 100,
@@ -346,7 +350,7 @@ def sheet1():
         (C_RAIL,  1.0,  "HGR20 rail"),
         (C_CARR,  1.0,  "Carriage block"),
         (C_TRAY,  1.0,  "Processing tray"),
-        ("#D0D0D4", 1.0, "Walkway grate (removable)"),
+        ("#D0D0D4", 0.25, "Walkway grate (removed)"),
         (C_SEAL,  1.0,  "EPDM seal"),
     ]
     for i, (c, a, lbl) in enumerate(swatches):

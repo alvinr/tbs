@@ -145,7 +145,7 @@ def sheet1():
                             sx(rib_w), sy(wall_z_top),
                             fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
     ax.text(sx(-CORR_DEPTH / 2 - 5), sy(wall_z_top - 15), "PINHOLE\nWALL\n(CORRUGATED)",
-            ha="center", va="top", fontsize=6, color=C_DIM,
+            ha="center", va="top", fontsize=6, color=C_DIM, backgroundcolor="#FFFFFF",
             fontweight="bold", **FONT, zorder=15)
 
     # ── Processing tray ──────────────────────────────────────────────────────
@@ -311,7 +311,7 @@ def sheet1():
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
     leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
-           sx(WALKWAY_W / 4 - 40), sy(grate_top + 30),
+           sx(WALKWAY_W / 4 - 30), sy(grate_top + 30),
            f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK \u00b7 GALVANIZED",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -407,7 +407,7 @@ def sheet1():
             ha="center", va="bottom", fontsize=5.5, color="#404040",
             **FONT, zorder=15, alpha=0.7)
     leader(ax, sx(shoe_start + SHOE_W / 2), sy(shoe_z + SHOE_H),
-           sx(95), sy(shoe_z + SHOE_H + 35),
+           sx(95), sy(shoe_z + SHOE_H + 15),
            "OPERATOR\nSTANDING", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 

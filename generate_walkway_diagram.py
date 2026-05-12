@@ -177,8 +177,8 @@ def sheet1():
     ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
                             sx(REINF_T), sy(REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_yd - 2), sy(REINF_H * 0.7),
-           sx(reinf_yd - 25), sy(REINF_H * 0.7 + 20),
+    leader(ax, sx(reinf_yd - 1), sy(REINF_H * 0.8),
+           sx(reinf_yd - 25), sy(REINF_H),
            f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -316,7 +316,7 @@ def sheet1():
 
     # Bolt label
     leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z1),
-           sx(reinf_yd - 40), sy(bolt_z1 - 20),
+           sx(reinf_yd - 30), sy(bolt_z1 + 20),
            "2\u00d7 M12 THROUGH-\nBOLTS\nHEAD \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192\nBRACKET \u2192 NUT",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -343,7 +343,7 @@ def sheet1():
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
     leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
-           sx(WALKWAY_W / 4 - 30), sy(grate_top + 30),
+           sx(WALKWAY_W / 4 - 30), sy(grate_top + 40),
            f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK \u00b7 GALVANIZED",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -388,7 +388,7 @@ def sheet1():
                f"{WALKWAY_GRATE_T}mm\nDECK HEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Bracket vertical leg height
-    draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 15), sy(0), sy(BRKT_VERT),
+    draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 45), sy(0), sy(BRKT_VERT),
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # Bracket arm height
@@ -406,9 +406,9 @@ def sheet1():
                f"{clr}mm\nCLR", offset=sx(8), fs=6.5, right=True,
                color="#208020", font=FONT)
 
-    # Corrugation depth (ext panel to rib face)
-    draw_dim_h(ax, sx(ext_panel_yd), sx(0), sy(-22),
-               f"{CORR_DEPTH}mm\nCORR DEPTH", offset=sy(14), fs=6, above=False, font=FONT)
+    # Corrugation depth
+    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
+               f"{CORR_DEPTH}mm\nCORR", offset=sy(14), fs=6, above=False, font=FONT)
 
     # Wall to tray rim
     draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-45),
@@ -912,7 +912,7 @@ def sheet3():
                             sx(REINF_T), sy(REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, sx(reinf_yd - 2), sy(REINF_H * 0.7),
-           sx(reinf_yd - 30), sy(REINF_H * 0.7 + 20),
+           sx(reinf_yd - 30), sy(REINF_H * 0.7 + 30),
            f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)

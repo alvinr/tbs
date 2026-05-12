@@ -232,8 +232,14 @@ Mounting varies by wall type:
 **Sheet 2 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 2: Plan View](assets/walkway-sheet2.png)
 
-**Sheet 3 — Detail: Bracket attachment to corrugated wall (≈3:1)**
-![TBS-001 Walkway — Sheet 3: Bracket Detail](assets/walkway-sheet3.png)
+**Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
+![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)
+
+**Sheet 4 — Detail B: Right walkway bracket on angle iron welded to flat end wall (≈3:1)**
+![TBS-001 Walkway — Sheet 4: Angle Iron Bracket](assets/walkway-sheet4.png)
+
+**Sheet 5 — Detail C: Left walkway removable lift-out resting on miter corner (≈2:1)**
+![TBS-001 Walkway — Sheet 5: Lift-Out on Miter](assets/walkway-sheet5.png)
 
 ---
 

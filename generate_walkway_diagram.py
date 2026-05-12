@@ -36,6 +36,11 @@ Sheet 6 — Detail D: Left walkway support system (removable):
   floor) with cantilever arm, bearer beam (50×50×3mm Al RHS at X=470) spanning
   1,762mm between bracket vertical legs, and bearing strip on tray rim (X=170).
   Zero processing tray contact.
+
+Sheet 7 — Detail E: Bearer beam to bracket connection:
+  Elevation at bracket showing how the bearer beam bolts to the bracket
+  vertical leg via a welded end plate and 2× M10 wing bolts.  View looking
+  along X (same as sheet 1).  Wing bolts allow tool-free removal.
 """
 
 import numpy as np
@@ -392,7 +397,7 @@ def sheet1():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION \u2014 NEAR WALKWAY (LOOKING ALONG X AXIS)",
                 scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
@@ -696,7 +701,7 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 6",
+    title_block(ax, "SHEET 2 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -992,7 +997,7 @@ def sheet3():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 6",
+    title_block(ax, "SHEET 3 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 NEAR/FAR BRACKET ON CORRUGATED WALL RIB",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 ELEVATION THROUGH RIB",
@@ -1241,7 +1246,7 @@ def sheet4():
                 **FONT, zorder=15)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 6",
+    title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 RIGHT WALKWAY BRACKET ON ANGLE IRON (FLAT END WALL)",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm",
@@ -1598,7 +1603,7 @@ def sheet5():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 6",
+    title_block(ax, "SHEET 5 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"SCALE \u2248 2.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -1882,7 +1887,7 @@ def sheet6():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 6",
+    title_block(ax, "SHEET 6 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
                 scale_note=f"SCALE \u2248 3.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -1892,6 +1897,324 @@ def sheet6():
     fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Detail E: Bearer Beam to Bracket Connection
+#
+# Elevation showing how the bearer beam (50×50×3mm Al RHS) bolts to the
+# near walkway bracket vertical leg at the butt joint.  View looking along
+# X axis (same direction as sheet 1).
+# Horizontal = Yd (0 = pinhole wall, positive toward far wall)
+# Vertical   = Z  (0 = floor, positive up)
+# Shows: bracket vertical leg + gusset on wall, beam end plate bolted to
+# the bracket vertical leg, beam running along Yd.  Removable connection
+# using wing bolts for tool-free disassembly.
+# Scale ≈ 4:1 for clarity.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet7():
+    S = 4.0   # scale factor
+
+    def sx(mm): return mm * S
+    def sy(mm): return mm * S
+
+    # ── Structural dimensions ────────────────────────────────────────────────
+    CORR_DEPTH = 38    # corrugation depth (mm)
+    WALL_T     = 1.6   # wall steel thickness
+    BRKT_T     = WALKWAY_BRACKET_T   # 8mm plate thickness
+    BRKT_VERT  = WALKWAY_BRACKET_H   # 150mm vertical leg
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (arm top)
+    ARM_DEPTH  = BRKT_T + 2          # arm visual thickness
+    arm_bot    = BRKT_ARM_Z - ARM_DEPTH
+    GUSSET_REACH = 70
+
+    # Bearer beam
+    BEAM_SZ = LEFT_WK_BEARER_SIZE   # 50mm
+    BEAM_T  = LEFT_WK_BEARER_T      # 3mm
+    beam_bot = BRKT_ARM_Z - BEAM_SZ  # Z = 25mm
+    beam_top = BRKT_ARM_Z            # Z = 75mm
+
+    # End plate
+    EP_W = 60    # end plate width (visible face, in Z direction)
+    EP_T = 5     # end plate thickness (in Yd direction)
+    ep_bot = beam_bot - 5   # end plate extends 5mm below beam
+    ep_top = beam_top + 5   # end plate extends 5mm above beam
+
+    # Bolts (M10 wing bolts for tool-free removal)
+    BOLT_D = 10
+    BOLT_R = BOLT_D / 2
+    bolt_z1 = beam_bot + 12   # = 37mm
+    bolt_z2 = beam_top - 12   # = 63mm
+
+    # Grating
+    grate_bot = BRKT_ARM_Z
+    grate_top = grate_bot + WALKWAY_GRATE_T
+
+    # Show beam extending 250mm into view (along Yd)
+    BEAM_SHOW = 250
+
+    # ── Figure ───────────────────────────────────────────────────────────────
+    YD_LO = -60
+    YD_HI = BEAM_SHOW + 80
+    Z_LO  = -30
+    Z_HI  = BRKT_VERT + 30
+
+    fig, ax = plt.subplots(figsize=(18, 12))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Container floor ──────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(YD_LO), sy(-12)), sx(YD_HI - YD_LO), sy(12),
+                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+
+    # ── Container wall (corrugated, at Yd=0) ─────────────────────────────────
+    wall_z_top = Z_HI
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH - 5), sy(0)),
+                            sx(CORR_DEPTH + 5), sy(wall_z_top),
+                            fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    # Corrugation rib at section cut
+    rib_w = 12
+    ax.add_patch(Rectangle((sx(-rib_w / 2), sy(0)),
+                            sx(rib_w), sy(wall_z_top),
+                            fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
+    ax.text(sx(-CORR_DEPTH / 2 - 5), sy(wall_z_top - 10),
+            "CONTAINER\nWALL",
+            ha="center", va="top", fontsize=6, color=C_DIM,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Bracket vertical leg ─────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
+                            sx(BRKT_T), sy(BRKT_VERT),
+                            fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6))
+    # Label vertical leg
+    leader(ax, sx(BRKT_T / 2 + 2), sy(BRKT_VERT - 10),
+           sx(BRKT_T / 2 + 50), sy(BRKT_VERT + 10),
+           f"BRACKET VERTICAL LEG\n{BRKT_T}mm PLATE \u00d7 {BRKT_VERT}mm\n(BOLTED TO WALL RIB)",
+           color=C_BRKT, fs=5.5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Bracket arm (projects inward, ghost — continues out of view) ─────────
+    # Show just the start of the arm near the wall
+    arm_show = 120
+    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
+                            sx(arm_show), sy(ARM_DEPTH),
+                            fc=C_BRKT, ec=C_OUT, lw=1.0, alpha=0.4,
+                            ls="--", zorder=5))
+    # Arm top line
+    ax.plot([sx(0), sx(arm_show)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color=C_OUT, lw=1.5, alpha=0.5, ls="--", zorder=6)
+    # Break lines
+    for z_off in [-3, 3, 8]:
+        ax.plot([sx(arm_show - 2), sx(arm_show + 2)],
+                [sy(arm_bot + ARM_DEPTH / 2 + z_off - 2),
+                 sy(arm_bot + ARM_DEPTH / 2 + z_off + 2)],
+                color=C_OUT, lw=0.8, zorder=7)
+    ax.text(sx(arm_show / 2), sy(BRKT_ARM_Z + 4),
+            f"BRACKET ARM\n(CONTINUES {WALKWAY_W}mm\nALONG Yd \u2014 GHOST)",
+            ha="center", va="bottom", fontsize=5, color=C_BRKT,
+            alpha=0.6, **FONT, zorder=15)
+
+    # ── Gusset triangle ──────────────────────────────────────────────────────
+    gusset_verts = [
+        (sx(0), sy(0)),
+        (sx(0), sy(arm_bot)),
+        (sx(GUSSET_REACH), sy(arm_bot)),
+    ]
+    ax.add_patch(Polygon(gusset_verts, closed=True,
+                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
+    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
+            color=C_OUT, lw=1.5, zorder=6)
+
+    # Bracket bolt holes (2× M12, through wall rib)
+    brkt_bolt_z1 = 30
+    brkt_bolt_z2 = 120
+    for bz in [brkt_bolt_z1, brkt_bolt_z2]:
+        ax.add_patch(Circle((sx(0), sy(bz)), sx(6),
+                     fc=BG, ec=C_OUT, lw=1.0, zorder=8))
+        ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
+        ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
+
+    # ── End plate (welded to beam end) ───────────────────────────────────────
+    C_SUPPORT = "#D08020"
+    ep_yd = BRKT_T / 2   # end plate sits against bracket outer face
+    ax.add_patch(Rectangle((sx(ep_yd), sy(ep_bot)),
+                            sx(EP_T), sy(ep_top - ep_bot),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=7))
+    leader(ax, sx(ep_yd + EP_T / 2), sy(ep_top + 2),
+           sx(ep_yd + EP_T / 2 + 50), sy(ep_top + 20),
+           f"END PLATE\n{EP_W}\u00d7{BEAM_SZ}\u00d7{EP_T}mm\n(WELDED TO BEAM)",
+           color=C_SUPPORT, fs=5.5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Bearer beam (50×50×3mm Al RHS, running along Yd) ─────────────────────
+    beam_yd_start = ep_yd + EP_T  # beam starts after end plate
+    ax.add_patch(Rectangle((sx(beam_yd_start), sy(beam_bot)),
+                            sx(BEAM_SHOW - beam_yd_start), sy(BEAM_SZ),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=7))
+    # Hollow interior
+    ax.add_patch(Rectangle((sx(beam_yd_start + BEAM_T), sy(beam_bot + BEAM_T)),
+                            sx(BEAM_SHOW - beam_yd_start - 2 * BEAM_T),
+                            sy(BEAM_SZ - 2 * BEAM_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=8))
+    # Break lines at far end (beam continues)
+    for z_off in np.linspace(beam_bot + 5, beam_top - 5, 4):
+        ax.plot([sx(BEAM_SHOW - 2), sx(BEAM_SHOW + 2)],
+                [sy(z_off - 2), sy(z_off + 2)],
+                color=C_OUT, lw=0.8, zorder=9)
+    # Beam label
+    ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot - 3),
+            f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
+            f"(SPANS {WALKWAY_LEFT_SPAN}mm TO FAR BRACKET)",
+            ha="center", va="top", fontsize=6, color=C_SUPPORT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Wing bolts (M10, 2×) through end plate + bracket vertical leg ────────
+    C_BOLT = "#404050"
+    for bz in [bolt_z1, bolt_z2]:
+        # Bolt shaft through vertical leg + end plate
+        shaft_start = -BRKT_T / 2 - 8   # bolt head behind bracket
+        shaft_end = ep_yd + EP_T + 3     # bolt tip past end plate
+        ax.plot([sx(shaft_start), sx(shaft_end)],
+                [sy(bz), sy(bz)],
+                color=C_BOLT, lw=3.0, zorder=10)
+        # Bolt head (behind bracket, hex head)
+        head_w = 8
+        ax.add_patch(Rectangle((sx(shaft_start - head_w), sy(bz - 4)),
+                                sx(head_w), sy(8),
+                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Wing nut (on end plate side)
+        wing_yd = ep_yd + EP_T + 2
+        # Nut body
+        ax.add_patch(Rectangle((sx(wing_yd), sy(bz - 3)),
+                                sx(5), sy(6),
+                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Wings (two small triangles)
+        wing_h = 10
+        wing_w = 3
+        # Top wing
+        wing_verts_t = [
+            (sx(wing_yd + 2), sy(bz + 3)),
+            (sx(wing_yd + 2 - wing_w), sy(bz + 3 + wing_h)),
+            (sx(wing_yd + 2 + wing_w), sy(bz + 3 + wing_h)),
+        ]
+        ax.add_patch(Polygon(wing_verts_t, closed=True,
+                             fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
+        # Bottom wing
+        wing_verts_b = [
+            (sx(wing_yd + 2), sy(bz - 3)),
+            (sx(wing_yd + 2 - wing_w), sy(bz - 3 - wing_h)),
+            (sx(wing_yd + 2 + wing_w), sy(bz - 3 - wing_h)),
+        ]
+        ax.add_patch(Polygon(wing_verts_b, closed=True,
+                             fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
+        # Hole in end plate
+        ax.add_patch(Circle((sx(ep_yd + EP_T / 2), sy(bz)), sx(BOLT_R / 2),
+                     fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
+        # Hole in bracket vertical leg
+        ax.add_patch(Circle((sx(0), sy(bz)), sx(BOLT_R / 2),
+                     fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
+
+    # Label the bolts
+    leader(ax, sx(ep_yd + EP_T + 12), sy(bolt_z1),
+           sx(ep_yd + EP_T + 55), sy(bolt_z1 - 15),
+           f"M{BOLT_D} WING BOLT\n(\u00d72, TOOL-FREE\nREMOVAL)",
+           color=C_BOLT, fs=5.5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
+
+    # ── Grating resting on beam + arm (ghost) ────────────────────────────────
+    C_LEFT_WK = "#A8C8A8"
+    # Grating shown as ghost spanning across the beam top
+    ax.add_patch(Rectangle((sx(-15), sy(grate_bot)),
+                            sx(BEAM_SHOW + 30), sy(WALKWAY_GRATE_T),
+                            fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
+                            alpha=0.25, zorder=4))
+    ax.text(sx(BEAM_SHOW / 2), sy(grate_top + 3),
+            f"GRATING (GHOST) \u2014 Z={grate_bot}\u2013{grate_top}mm",
+            ha="center", va="bottom", fontsize=5.5, color="#206020",
+            **FONT, alpha=0.5, zorder=15)
+
+    # ── Contact highlight: beam top flush with arm ───────────────────────────
+    ax.plot([sx(beam_yd_start), sx(BEAM_SHOW)],
+            [sy(beam_top), sy(beam_top)],
+            color="#CC4400", lw=2.5, zorder=9)
+    ax.text(sx(beam_yd_start + 30), sy(beam_top + 1),
+            f"BEAM TOP FLUSH WITH\nBRACKET ARM (Z={beam_top}mm)",
+            ha="left", va="bottom", fontsize=5, color="#CC4400",
+            **FONT, zorder=15)
+
+    # ── Dimension lines ──────────────────────────────────────────────────────
+    # Beam section size (vertical)
+    draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(beam_bot), sy(beam_top),
+               f"{BEAM_SZ}mm", offset=sx(6), fs=6, right=True, font=FONT)
+
+    # Beam top from floor
+    draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(0), sy(beam_top),
+               f"{beam_top}mm", offset=sx(30), fs=5.5, right=True, font=FONT)
+
+    # End plate thickness
+    draw_dim_h(ax, sx(ep_yd), sx(ep_yd + EP_T), sy(ep_top + 5),
+               f"{EP_T}mm", offset=sy(3), fs=5.5, font=FONT)
+
+    # Bolt spacing
+    draw_dim_v(ax, sx(-BRKT_T / 2 - 18), sy(bolt_z1), sy(bolt_z2),
+               f"{bolt_z2 - bolt_z1}mm", offset=sx(6), fs=5.5, right=False, font=FONT)
+
+    # Bracket vertical leg height
+    draw_dim_v(ax, sx(-CORR_DEPTH - 10), sy(0), sy(BRKT_VERT),
+               f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5, right=False, font=FONT)
+
+    # ── Weld symbol between end plate and beam ───────────────────────────────
+    weld_yd = ep_yd + EP_T
+    # Small V marks to indicate fillet welds
+    for wz in [beam_bot, beam_top]:
+        ax.plot([sx(weld_yd - 2), sx(weld_yd), sx(weld_yd + 2)],
+                [sy(wz), sy(wz - 4 if wz == beam_bot else wz + 4), sy(wz)],
+                color="#CC4400", lw=1.5, zorder=11)
+    ax.text(sx(weld_yd + 8), sy(beam_top + 6),
+            "FILLET WELD\n(TYP.)", ha="left", va="bottom",
+            fontsize=4.5, color="#CC4400", **FONT, zorder=15)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes_x = sx(YD_HI - 5)
+    notes_top = sy(Z_HI - 3)
+    notes = [
+        "BEARER BEAM CONNECTION:",
+        "",
+        f"1. End plate ({EP_W}\u00d7{BEAM_SZ}\u00d7{EP_T}mm)",
+        f"   fillet-welded to beam end.",
+        f"2. 2\u00d7 M{BOLT_D} wing bolts through",
+        f"   end plate + bracket vertical leg.",
+        f"3. Wing nuts for TOOL-FREE removal.",
+        f"4. Beam top flush with bracket arm",
+        f"   top at Z={beam_top}mm.",
+        f"5. Same connection at both ends",
+        f"   (near + far bracket).",
+        f"6. Remove wing bolts to disconnect",
+        f"   beam before lifting grating.",
+    ]
+    for i, line in enumerate(notes):
+        bold = i == 0
+        ax.text(notes_x, notes_top - i * sy(5), line,
+                ha="right", va="top", fontsize=5.5 if not bold else 6,
+                color=C_OUT if bold else C_DIM,
+                fontweight="bold" if bold else "normal",
+                **FONT, zorder=15)
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 7 OF 7",
+                drawing_title="PERIMETER WALKWAY",
+                subtitle="DETAIL E \u2014 BEARER BEAM TO BRACKET CONNECTION",
+                scale_note=f"SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG X (LOOKING INTO CONTAINER)",
+                height=0.07)
+
+    fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet7.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet7.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1906,4 +2229,5 @@ if __name__ == "__main__":
     sheet4()
     sheet5()
     sheet6()
+    sheet7()
     print("Done.")

@@ -215,16 +215,16 @@ the permanently installed processing tray (50mm rim) during transport slide.
 Removable grated walkway sections around all 4 sides of the processing tray. Provides
 dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
 without wading through the wet processing tray. 300mm wide, 100mm deck height (75mm
-bracket arm + 25mm grate). Wall-cantilevered brackets on near/far/right walkways —
-no legs, no floor contact. Left walkway supported by removable U-frame cradles
-and a bearing strip on the tray rim.
+bracket arm + 25mm grate).
 
-Mounting varies by wall type:
+Mounting varies by side:
 
 - **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
-  to corrugated wall structural ribs at 457mm (18") centers.
-- **Right walkway** (far end wall): same brackets bolted to 50×50×5mm angle iron
-  mounting rail welded along the flat end wall interior (no corrugation ribs).
+  to corrugated wall structural ribs at 457mm (18") centers. Wall-cantilevered —
+  no legs, no floor contact.
+- **Right walkway** (IBC end): floor-mounted posts bolted through the container floor
+  at X≈4,640mm, just outside the tray rim. Cantilever arms reach back over the tray
+  rim to support the walkway. 34mm clearance to IBC stack. Zero tray contact.
 - **Left walkway** (cargo door end): removable lift-out section with no wall brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —
   left walkway must be removed first. Supported by: (a) bearer beam (50x50x3mm Al
@@ -241,8 +241,8 @@ Mounting varies by wall type:
 **Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
 ![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)
 
-**Sheet 4 — Detail B: Right walkway bracket on angle iron welded to flat end wall (≈3:1)**
-![TBS-001 Walkway — Sheet 4: Angle Iron Bracket](assets/walkway-sheet4.png)
+**Sheet 4 — Detail B: Right walkway floor-mounted post at IBC end (≈3:1)**
+![TBS-001 Walkway — Sheet 4: Floor-Mounted Post](assets/walkway-sheet4.png)
 
 **Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
 ![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)

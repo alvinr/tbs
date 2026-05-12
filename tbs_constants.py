@@ -235,8 +235,10 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 #
 # Mounting varies by wall type:
 #   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.
-#   Right walkway (far end wall):   brackets bolt to angle iron mounting rail
-#       welded along the flat end wall interior (no ribs on flat end walls).
+#   Right walkway (IBC end):        floor-mounted posts bolted through container
+#       floor at X≈4,640mm (just outside tray rim).  Cantilever arms reach back
+#       over tray rim to support walkway.  34mm clearance to IBC stack.
+#       Zero tray contact — posts on bare floor outside tray.
 #   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no wall brackets.
 #       Panel (hinged door) occupies the end wall at X=0 and slides inward
 #       300mm for transport.  Left walkway must be removed before panel slides.
@@ -261,9 +263,9 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# End wall angle iron mounting rail (right walkway only — flat end wall has no ribs)
-WALKWAY_ANGLE_IRON = 50  # angle iron leg size (mm) — 50×50×5mm L-angle welded to end wall
-WALKWAY_ANGLE_IRON_T = 5 # angle iron thickness (mm)
+# Right walkway floor post (IBC end — too far from end wall for wall mounting)
+WALKWAY_RIGHT_POST_X = 4640  # floor post X position (mm) — just outside tray rim (4,629mm)
+WALKWAY_RIGHT_POST_IBC_CLR = 34  # clearance to IBC stack inner face (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

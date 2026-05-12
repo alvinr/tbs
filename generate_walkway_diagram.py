@@ -21,8 +21,10 @@ Sheet 3 — Detail: Single bracket / wall attachment:
   Close-up of gusset bracket bolted to corrugated wall rib, showing
   reinforcing plate, M12 through-bolts, and grating clip.
 
-Sheet 4 — Detail B: Right walkway bracket on angle iron:
-  Bracket bolted to 50x50x5mm angle iron welded to flat end wall.
+Sheet 4 — Detail B: Right walkway floor-mounted post (IBC end):
+  Floor-mounted post bolted through container floor at X≈4,640mm,
+  just outside tray rim.  Cantilever arm reaches back over tray to
+  support walkway.  34mm clearance to IBC stack.  Zero tray contact.
 
 Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -59,7 +61,7 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_ANGLE_IRON, WALKWAY_ANGLE_IRON_T, WALKWAY_LEFT_SPAN,
+    WALKWAY_RIGHT_POST_X, WALKWAY_LEFT_SPAN,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
@@ -771,7 +773,7 @@ def sheet2():
         f"1. 4 removable grated sections. Right corners: 45\u00b0 miter. Left corners: butt joint.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
-        f"3. Right: brackets on {WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON_T}mm angle iron welded to flat end wall.",
+        f"3. Right: floor-mounted posts at X\u2248{WALKWAY_RIGHT_POST_X}mm (outside tray rim), through-bolted to floor.",
         f"4. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR}",
         f"   spans {WALKWAY_LEFT_SPAN}mm between bracket legs. {LEFT_WK_LEG_N} floor legs + bearing strip (cargo door side).",
         f"5. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
@@ -1106,218 +1108,273 @@ def sheet4():
     def sx(mm): return mm * S
     def sy(mm): return mm * S
 
-    WALL_T     = 1.6
-    ANGLE_LEG  = WALKWAY_ANGLE_IRON    # 50mm
-    ANGLE_T    = WALKWAY_ANGLE_IRON_T  # 5mm
-    BRKT_T     = WALKWAY_BRACKET_T     # 8mm
-    BRKT_VERT  = WALKWAY_BRACKET_H     # 150mm
+    # ── Structural dimensions ────────────────────────────────────────────────
+    FLOOR_T    = 3       # container floor steel thickness (mm)
+    BRKT_T     = WALKWAY_BRACKET_T     # 8mm plate
+    BRKT_VERT  = WALKWAY_BRACKET_H     # 150mm vertical post height
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
     BOLT_D     = 12
     BOLT_R     = BOLT_D / 2
     TRAY_WALL  = 3
     TRAY_FLOOR_T = 2
 
-    # ── Coordinate system (wall on RIGHT) ────────────────────────────────────────
-    # Interior face of flat end wall at Yd = WALKWAY_W.
-    # Bracket/arm/grating project LEFT (toward container interior).
-    WALL_YD = WALKWAY_W  # 300 — interior face of end wall
+    # ── Right walkway geometry ───────────────────────────────────────────────
+    # Right walkway: X = PROC_TRAY_X_R - WALKWAY_W to PROC_TRAY_X_R
+    #              = 4,229 to 4,529mm
+    # Tray right rim at X = 4,629mm (PROC_TRAY_X_R)
+    # IBC stack starts at X = 4,674mm
+    # Floor post at X ≈ 4,640mm (just outside tray rim, 34mm clearance to IBCs)
+    POST_X     = 4640     # floor post center X position (mm)
+    TRAY_RIM_X = PROC_TRAY_X_R  # = 4,629mm
+    IBC_X      = 4674     # IBC stack inner face
+    POST_TO_TRAY = POST_X - TRAY_RIM_X  # = 11mm gap between post and tray rim
+    POST_TO_IBC  = IBC_X - POST_X       # = 34mm clearance to IBCs
+    ARM_REACH  = POST_X - (PROC_TRAY_X_R - WALKWAY_W)  # arm reaches from post to walkway inner edge
 
-    YD_LO = -100
-    YD_HI = WALL_YD + WALL_T + 60
-    Z_LO  = -50
-    Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
+    REINF_T    = 6       # reinforcing plate underneath floor
+    REINF_W    = 80      # reinforcing plate width
+    REINF_H    = 120     # reinforcing plate length (along Yd)
+    WASHER_T   = 3
+    NUT_H      = 10
+    BOLT_HEAD  = 8
+
+    # ── Coordinate system ────────────────────────────────────────────────────
+    # Cross-section looking along Yd.  Horizontal = X, Vertical = Z.
+    # Post is on the RIGHT.  Arm + walkway extend LEFT toward container interior.
+    # Show from walkway inner edge (left) to IBC ghost (right).
+
+    # Map real X to drawing X: post at drawing center-right
+    DRAW_POST_X = 350    # drawing-space X for the post
+    X_OFFSET    = POST_X - DRAW_POST_X  # shift to map real X → drawing X
+    def rx(real_x):
+        """Convert real X (mm) to drawing X (mm)."""
+        return real_x - X_OFFSET
+
+    WK_LEFT  = rx(PROC_TRAY_X_R - WALKWAY_W)  # walkway inner edge in drawing
+    WK_RIGHT = rx(PROC_TRAY_X_R)               # walkway outer edge = tray rim
+    POST_DX  = rx(POST_X)                       # post in drawing
+    TRAY_DX  = rx(TRAY_RIM_X)                   # tray rim in drawing
+    IBC_DX   = rx(IBC_X)                        # IBC face in drawing
+
+    X_LO = WK_LEFT - 100
+    X_HI = IBC_DX + 150
+    Z_LO = -60
+    Z_HI = WALKWAY_H + WALKWAY_GRATE_T + 80
 
     fig, ax = plt.subplots(figsize=(16, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.set_xlim(sx(X_LO), sx(X_HI))
     ax.set_ylim(sy(Z_LO), sy(Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ── Container floor ──────────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
-                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
-
-    # ── Flat end wall (RIGHT side) ───────────────────────────────────────────
-    # Interior face at WALL_YD, exterior face at WALL_YD + WALL_T.
-    ax.add_patch(Rectangle((sx(WALL_YD), sy(0)),
-                            sx(WALL_T), sy(Z_HI),
-                            fc=C_WALL, ec=C_OUT, lw=1.5, zorder=3))
-    # Hatching beyond wall exterior
-    ax.add_patch(Rectangle((sx(WALL_YD + WALL_T), sy(0)),
-                            sx(15), sy(Z_HI),
+    # ── Container floor (cross-section) ──────────────────────────────────────
+    ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T)),
+                            sx(X_HI - X_LO), sy(FLOOR_T),
+                            fc=C_FLOOR, ec=C_OUT, lw=1.0, zorder=3))
+    # Ground hatching below floor
+    ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T - 20)),
+                            sx(X_HI - X_LO), sy(20),
                             fc="#E0DDD8", ec=C_OUT, lw=0.5, hatch="///", zorder=2))
 
-    ax.text(sx(WALL_YD + WALL_T + 7), sy(Z_HI - 8),
-            "FLAT END\nWALL\n(1.6mm CORTEN\nNO RIBS)",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
+    # ── Reinforcing plate (underneath floor, centered on post) ───────────────
+    reinf_left = POST_DX - REINF_W / 2
+    ax.add_patch(Rectangle((sx(reinf_left), sy(-FLOOR_T - REINF_T)),
+                            sx(REINF_W), sy(REINF_T),
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, sx(reinf_left + REINF_W / 2), sy(-FLOOR_T - REINF_T - 2),
+           sx(reinf_left + REINF_W / 2 + 60), sy(-FLOOR_T - REINF_T - 20),
+           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
+           color="#C08040", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Angle iron (welded to interior face of end wall) ─────────────────────
-    # L-angle: vertical leg against wall, horizontal leg on floor, both project LEFT.
-    # Vertical leg: Yd = WALL_YD - ANGLE_T to WALL_YD, Z = 0 to ANGLE_LEG
-    # Horizontal leg: Yd = WALL_YD - ANGLE_LEG to WALL_YD, Z = 0 to ANGLE_T
-    C_ANGLE = "#B08040"
+    # ── Processing tray ──────────────────────────────────────────────────────
+    # Tray right rim (vertical wall)
+    ax.add_patch(Rectangle((sx(TRAY_DX - TRAY_WALL), sy(0)),
+                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
+    # Tray floor extending left
+    tray_floor_left = X_LO + 20
+    ax.add_patch(Rectangle((sx(tray_floor_left), sy(0)),
+                            sx(TRAY_DX - TRAY_WALL - tray_floor_left), sy(TRAY_FLOOR_T),
+                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
+    # Sawtooth break line on tray floor
+    bx_tray = sx(tray_floor_left)
+    z_lo_t, z_hi_t = 0, TRAY_FLOOR_T * S
+    zz_t = np.linspace(z_lo_t, z_hi_t, 5)
+    ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
+            zz_t, color=C_OUT, lw=1.0, zorder=5)
 
-    # Vertical leg of angle iron (against wall)
-    ax.add_patch(Rectangle((sx(WALL_YD - ANGLE_T), sy(0)),
-                            sx(ANGLE_T), sy(ANGLE_LEG),
-                            fc=C_ANGLE, ec=C_OUT, lw=1.2, zorder=5))
-    # Horizontal leg of angle iron (on floor)
-    ax.add_patch(Rectangle((sx(WALL_YD - ANGLE_LEG), sy(0)),
-                            sx(ANGLE_LEG), sy(ANGLE_T),
-                            fc=C_ANGLE, ec=C_OUT, lw=1.2, zorder=5))
-    # Weld symbol at angle iron to wall junction
-    ax.plot([sx(WALL_YD + 1), sx(WALL_YD - 2), sx(WALL_YD - 5)],
-            [sy(ANGLE_LEG * 0.7), sy(ANGLE_LEG * 0.7 - 5), sy(ANGLE_LEG * 0.7)],
-            color="#CC4400", lw=1.5, zorder=8)
-
-    leader(ax, sx(WALL_YD - ANGLE_LEG / 2), sy(ANGLE_T + 3),
-           sx(WALL_YD - ANGLE_LEG - 20), sy(ANGLE_T + 20),
-           f"ANGLE IRON\n{ANGLE_LEG}\u00d7{ANGLE_LEG}\u00d7{ANGLE_T}mm\nL-ANGLE\n(WELDED TO\nEND WALL)",
-           color=C_ANGLE, fs=5.5,
+    leader(ax, sx(TRAY_DX - TRAY_WALL - 5), sy(PROC_TRAY_RIM / 2),
+           sx(TRAY_DX - 60), sy(PROC_TRAY_RIM + 15),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)",
+           color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Bracket (bolted to angle iron vertical leg) ──────────────────────────
-    # Bracket mounting plate sits against the LEFT face of angle iron vertical leg.
-    brkt_yd_r = WALL_YD - ANGLE_T       # right edge of bracket plate
-    brkt_yd_l = brkt_yd_r - BRKT_T      # left edge of bracket plate
-    ax.add_patch(Rectangle((sx(brkt_yd_l), sy(0)),
+    # ── Floor-mounted post ───────────────────────────────────────────────────
+    # Vertical steel post bolted through floor, outside tray rim
+    ax.add_patch(Rectangle((sx(POST_DX - BRKT_T / 2), sy(0)),
                             sx(BRKT_T), sy(BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
-    # Through-bolts: bracket plate + angle iron vertical leg
-    bolt_z1 = 20
-    bolt_z2 = 40    # both bolts within the 50mm angle leg height
+    # ── Base plate (welded to post bottom, sits on floor) ────────────────────
+    BASE_W = 60   # base plate width
+    BASE_T = 8    # base plate thickness
+    ax.add_patch(Rectangle((sx(POST_DX - BASE_W / 2), sy(0)),
+                            sx(BASE_W), sy(BASE_T),
+                            fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=5, alpha=0.85))
+    # Weld symbols at post-to-base junction
+    for side in [-1, 1]:
+        wx = POST_DX + side * BRKT_T / 2
+        ax.plot([sx(wx - 3 * side), sx(wx), sx(wx + 3 * side)],
+                [sy(BASE_T), sy(BASE_T + 5), sy(BASE_T)],
+                color="#CC4400", lw=1.5, zorder=8)
+
+    # ── Through-bolts (2× M12 through base plate + floor + reinf plate) ──────
     C_BOLT = "#505058"
-    NUT_H  = 10
-    BOLT_HEAD = 8
+    bolt_x1 = POST_DX - 18
+    bolt_x2 = POST_DX + 18
 
-    REINF_T = 6  # reinforcing plate behind wall exterior
-
-    for bz in [bolt_z1, bolt_z2]:
+    for bx_bolt in [bolt_x1, bolt_x2]:
         shank_hw = BOLT_R * 0.4
-        # Shank through: reinf plate + wall + angle iron vert leg + bracket plate
-        ax.add_patch(Rectangle((sx(brkt_yd_l), sy(bz - shank_hw)),
-                                sx(BRKT_T + ANGLE_T + WALL_T + REINF_T), sy(shank_hw * 2),
+        # Shank through: base plate + floor + reinforcing plate
+        shank_top = BASE_T
+        shank_bot = -FLOOR_T - REINF_T
+        ax.add_patch(Rectangle((sx(bx_bolt - shank_hw), sy(shank_bot)),
+                                sx(shank_hw * 2), sy(shank_top - shank_bot),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Head on interior side (left of bracket)
-        ax.add_patch(Rectangle((sx(brkt_yd_l - BOLT_HEAD), sy(bz - BOLT_R)),
-                                sx(BOLT_HEAD), sy(BOLT_D),
+        # Bolt head on top (above base plate)
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R), sy(BASE_T)),
+                                sx(BOLT_D), sy(BOLT_HEAD),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Nut on exterior side (right of wall + reinforcing plate)
-        ax.add_patch(Rectangle((sx(WALL_YD + WALL_T), sy(bz - BOLT_R)),
-                                sx(NUT_H), sy(BOLT_D),
+        # Washer above base plate
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R - 1), sy(BASE_T)),
+                                sx(BOLT_D + 2), sy(WASHER_T),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+        # Nut underneath reinforcing plate
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R), sy(-FLOOR_T - REINF_T - NUT_H)),
+                                sx(BOLT_D), sy(NUT_H),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Reinforcing plate (small rectangle on wall exterior)
-        ax.add_patch(Rectangle((sx(WALL_YD + WALL_T), sy(bz - BOLT_R - 4)),
-                                sx(REINF_T), sy(BOLT_D + 8),
-                                fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
+        # Washer under reinf plate
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R - 1), sy(-FLOOR_T - REINF_T - WASHER_T)),
+                                sx(BOLT_D + 2), sy(WASHER_T),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
-    leader(ax, sx(brkt_yd_l - BOLT_HEAD - 2), sy(bolt_z2),
-           sx(brkt_yd_l - BOLT_HEAD - 80), sy(bolt_z2 + 9),
-           f"M{BOLT_D} THROUGH-BOLT\nBRACKET + ANGLE IRON\n+ WALL + REINF PLATE\n(2 PER BRACKET)",
+    leader(ax, sx(bolt_x2 + BOLT_R + 2), sy(BASE_T + BOLT_HEAD / 2),
+           sx(bolt_x2 + 60), sy(BASE_T + 25),
+           f"2\u00d7 M{BOLT_D} THROUGH-BOLTS\nBASE PLATE \u2192 FLOOR\n\u2192 REINF PLATE \u2192 NUT",
            color=C_DIM, fs=5.5,
-           ha="right", va="center", arrow_style="-|>", font=FONT)
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Horizontal arm (projects LEFT from bracket) ──────────────────────────
+    # ── Horizontal arm (projects LEFT from post toward container interior) ───
     ARM_DEPTH = BRKT_T + 2
     arm_bot = BRKT_ARM_Z - ARM_DEPTH
-    GUSSET_REACH = 70
-    arm_left = brkt_yd_r - WALKWAY_W  # arm extends WALKWAY_W left from bracket
+    arm_left = WK_LEFT    # arm reaches to walkway inner edge
 
     ax.add_patch(Rectangle((sx(arm_left), sy(arm_bot)),
-                            sx(WALKWAY_W), sy(ARM_DEPTH),
+                            sx(POST_DX + BRKT_T / 2 - arm_left), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(arm_left), sx(arm_left + WALKWAY_W)],
+    ax.plot([sx(arm_left), sx(POST_DX + BRKT_T / 2)],
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=2.0, zorder=7)
 
-    # ── Gusset underneath ──────────────────────────────────────────────────────
+    # ── Gusset underneath ────────────────────────────────────────────────────
+    GUSSET_REACH = 70
     gusset_verts = [
-        (sx(brkt_yd_r), sy(ANGLE_T)),               # top of angle horiz leg
-        (sx(brkt_yd_r), sy(arm_bot)),                # arm bottom at bracket
-        (sx(brkt_yd_r - GUSSET_REACH), sy(arm_bot)), # 70mm out to left
+        (sx(POST_DX - BRKT_T / 2), sy(BASE_T)),     # post base
+        (sx(POST_DX - BRKT_T / 2), sy(arm_bot)),     # arm bottom at post
+        (sx(POST_DX - BRKT_T / 2 - GUSSET_REACH), sy(arm_bot)),  # 70mm out
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(brkt_yd_r), sx(brkt_yd_r - GUSSET_REACH)],
-            [sy(ANGLE_T), sy(arm_bot)],
+    ax.plot([sx(POST_DX - BRKT_T / 2), sx(POST_DX - BRKT_T / 2 - GUSSET_REACH)],
+            [sy(BASE_T), sy(arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
-    # Bracket label
-    leader(ax, sx(arm_left + WALKWAY_W * 0.4), sy(BRKT_ARM_Z + 3),
-           sx(arm_left + WALKWAY_W * 0.3), sy(BRKT_VERT + 15),
-           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(RIGHT WALKWAY)",
+    # Post/bracket label
+    leader(ax, sx(POST_DX), sy(BRKT_VERT),
+           sx(POST_DX - 80), sy(BRKT_VERT + 15),
+           f"FLOOR-MOUNTED POST\n{BRKT_T}mm STEEL PLATE\n{BRKT_VERT}mm TALL\n(WELDED TO BASE PLATE)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Processing tray (for reference) ──────────────────────────────────────────
-    tray_rim_yd = arm_left + WALKWAY_W - PROC_TRAY_YD_NEAR
-    ax.add_patch(Rectangle((sx(tray_rim_yd), sy(0)),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
-                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    tray_floor_start = YD_LO + 20
-    ax.add_patch(Rectangle((sx(tray_floor_start), sy(0)),
-                            sx(tray_rim_yd - tray_floor_start), sy(TRAY_FLOOR_T),
-                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-
     # ── Grated deck ──────────────────────────────────────────────────────────
-    # Grating sits on bracket arm: bottom at BRKT_ARM_Z (75mm), top at WALKWAY_H (100mm)
-    grate_bot = BRKT_ARM_Z  # = 75mm
-    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm
-    ax.add_patch(Rectangle((sx(arm_left), sy(grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+    grate_bot = BRKT_ARM_Z
+    grate_top = grate_bot + WALKWAY_GRATE_T
+    ax.add_patch(Rectangle((sx(WK_LEFT), sy(grate_bot)),
+                            sx(WK_RIGHT - WK_LEFT), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     bar_spacing = 34.2
     bar_w = 3
-    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(arm_left + yd), sy(grate_bot)),
+    for xb in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
+        ax.add_patch(Rectangle((sx(WK_LEFT + xb), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
     # ── Grating clip (innermost edge, closest to processing tray) ──────────
-    clip_yd = arm_left + 12
+    clip_x = WK_LEFT + 12
     clip_w = 8
-    clip_below = 12   # extends below arm top
-    clip_above = 5    # extends above grate top
+    clip_below = 12
+    clip_above = 5
     clip_bot = BRKT_ARM_Z - clip_below
     clip_top = grate_top + clip_above
-    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
+    ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot)),
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd - 2), sy(BRKT_ARM_Z),
-           sx(clip_yd - 40), sy(BRKT_ARM_Z + 35),
+    leader(ax, sx(clip_x - 2), sy(BRKT_ARM_Z),
+           sx(clip_x - 40), sy(BRKT_ARM_Z + 35),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
+    # ── IBC ghost (dashed outline showing clearance) ─────────────────────────
+    IBC_SHOW_W = 80   # just show a sliver of the IBC
+    ax.add_patch(Rectangle((sx(IBC_DX), sy(0)),
+                            sx(IBC_SHOW_W), sy(Z_HI - 30),
+                            fc="#FFE8C0", ec="#B08040", lw=1.0, ls="--",
+                            zorder=2, alpha=0.25))
+    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(Z_HI - 35),
+            "IBC TANK\n(GHOST)",
+            ha="center", va="top", fontsize=6, color="#B08040",
+            **FONT, zorder=15, alpha=0.7)
+
     # ── Dimension lines ──────────────────────────────────────────────────────
-    draw_dim_v(ax, sx(WALL_YD + WALL_T + 20), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm\nVERT", offset=sx(6), fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, sx(arm_left), sx(arm_left + WALKWAY_W), sy(grate_top + 20),
-               f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
-    draw_dim_v(ax, sx(arm_left - 15), sy(0), sy(grate_top),
+    # Walkway width
+    draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 25),
+               f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
+    # Deck height
+    draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
-    draw_dim_v(ax, sx(WALL_YD), sy(0), sy(ANGLE_LEG),
-               f"{ANGLE_LEG}mm", offset=sx(15), fs=6, right=True, font=FONT)
+    # Post to tray rim
+    draw_dim_h(ax, sx(TRAY_DX), sx(POST_DX), sy(PROC_TRAY_RIM + 8),
+               f"{POST_TO_TRAY}mm", offset=sy(5), fs=6, font=FONT)
+    # Post to IBC
+    draw_dim_h(ax, sx(POST_DX), sx(IBC_DX), sy(PROC_TRAY_RIM + 8),
+               f"{POST_TO_IBC}mm", offset=sy(5), fs=6, font=FONT)
+    # Post height
+    draw_dim_v(ax, sx(POST_DX + BRKT_T / 2 + 15), sy(0), sy(BRKT_VERT),
+               f"{BRKT_VERT}mm\nPOST", offset=sx(6), fs=6.5, right=True, font=FONT)
+    # Arm cantilever
+    draw_dim_h(ax, sx(WK_LEFT), sx(POST_DX), sy(arm_bot - 8),
+               f"{int(POST_DX - WK_LEFT)}mm ARM", offset=sy(5), fs=6,
+               above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(YD_LO + 10)
+    notes_x = sx(X_LO + 10)
     notes_top = sy(Z_HI - 10)
     notes = [
-        "RIGHT WALKWAY \u2014 FLAT END WALL:",
+        "RIGHT WALKWAY \u2014 FLOOR-MOUNTED POST:",
         "",
-        f"1. Far end wall is flat 1.6mm steel \u2014 no",
-        f"   corrugation ribs for direct bracket mounting.",
-        f"2. {ANGLE_LEG}\u00d7{ANGLE_LEG}\u00d7{ANGLE_T}mm L-angle welded",
-        f"   horizontally along wall interior provides",
-        f"   structural mounting surface.",
-        f"3. M12 through-bolts penetrate bracket + angle",
-        f"   iron + wall + reinforcing plate (exterior).",
-        f"4. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm along Yd.",
-        f"5. Angle iron continuous weld to wall steel",
-        f"   distributes load across flat panel.",
+        f"1. Right walkway at X={PROC_TRAY_X_R - WALKWAY_W}\u2013{PROC_TRAY_X_R}mm",
+        f"   is 1,364mm from far end wall \u2014 IBC stack",
+        f"   (X={IBC_X}\u2013{5893}mm) fills the gap.",
+        f"2. Floor post bolted through container floor",
+        f"   at X\u2248{POST_X}mm, just outside tray rim.",
+        f"3. {POST_TO_IBC}mm clearance to IBC stack.",
+        f"4. 2\u00d7 M{BOLT_D} through-bolts: base plate \u2192 floor",
+        f"   \u2192 reinforcing plate \u2192 nut (underneath).",
+        f"5. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm along Yd.",
+        f"6. Zero tray contact \u2014 post on bare floor.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -1330,8 +1387,8 @@ def sheet4():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL B \u2014 RIGHT WALKWAY BRACKET ON ANGLE IRON (FLAT END WALL)",
-                scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm",
+                subtitle="DETAIL B \u2014 RIGHT WALKWAY FLOOR-MOUNTED POST (IBC END)",
+                scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION LOOKING ALONG Yd",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)

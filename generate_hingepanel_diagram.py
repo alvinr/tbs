@@ -27,7 +27,11 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import os
-from tbs_constants import svg_path, SVG_DIR, C_LT_DRUM
+from tbs_constants import (
+    svg_path, SVG_DIR, C_LT_DRUM,
+    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
+    WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
+)
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
                          leader as _leader_shared, hatch_rect)
@@ -941,6 +945,39 @@ def sheet3():
     ax.plot([X_LO, X_HI], [H_FLOOR, H_FLOOR], color=C_OUT, lw=1.5, zorder=4)
     ax.text(X_LO + 30, H_FLOOR - PAD_B * 0.75, "FLOOR LEVEL",
             ha="left", va="center", fontsize=7, color=C_DIM, **FONT, zorder=15)
+
+    # ── Interior walkway (near/far walls) ──────────────────────────────────────
+    # In this Section A-A view (looking along Yd), the near and far walkways
+    # project to the same position. They cantilever from the container side
+    # walls, running along X. Show as cross-section on the interior side.
+    C_WALKWAY = "#707078"
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (top of bracket arm)
+    WK_START = Y1_PL2 + 80   # start showing walkway past drum overhang
+    WK_END   = D_DEPTH_R + 120  # extend into interior
+
+    # Bracket arm (8mm thick at Z=67-75mm)
+    ax.add_patch(plt.Rectangle((WK_START, BRKT_ARM_Z - WALKWAY_BRACKET_T),
+                                WK_END - WK_START, WALKWAY_BRACKET_T,
+                                fc=C_WALKWAY, ec=C_OUT, lw=0.6, zorder=4))
+    # Grate (25mm thick at Z=75-100mm)
+    ax.add_patch(plt.Rectangle((WK_START, BRKT_ARM_Z),
+                                WK_END - WK_START, WALKWAY_GRATE_T,
+                                fc="#D0D0D4", ec=C_OUT, lw=0.6, hatch="--", zorder=4))
+
+    # Break lines at right end (walkway continues)
+    for z_off in [-5, 5, 15]:
+        ax.plot([WK_END - 3, WK_END + 3],
+                [BRKT_ARM_Z + z_off - 3, BRKT_ARM_Z + z_off + 3],
+                color=C_OUT, lw=0.6, zorder=5)
+
+    leader(ax, (WK_START + (WK_END - WK_START) / 2, WALKWAY_H + 5),
+           (WK_START + (WK_END - WK_START) / 2 + 130, WALKWAY_H + 100),
+           f"WALKWAY DECK\n{WALKWAY_GRATE_T}mm GRATE AT Z={WALKWAY_H}mm\n(NEAR + FAR WALLS)",
+           col=C_WALKWAY, fs=5.5)
+
+    # Walkway deck height dimension
+    dim_v(ax, WK_END + 30, H_FLOOR, WALKWAY_H,
+          f"{WALKWAY_H}mm\nDECK", offset=30, fs=6)
 
     # ── HGR20 sliding rails (floor + ceiling, both container walls) ──────────
     # Rails run in the X (depth) direction, mounted on both side walls.

@@ -311,11 +311,13 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c6.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
 | **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
-| **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6 |
+| **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 17 |
 | **LT** | `generate_lighttrap_diagram.py` | `diagrams/lighttrap-sheet1.png`<br>`diagrams/lighttrap-sheet2.png` | 1, 5, 6, 7, 8 |
 | **TSB** | `generate_tilt_swing_board.py` | `diagrams/tilt-swing-board-sheet1.png`<br>`diagrams/tilt-swing-board-sheet2.png`<br>`diagrams/tilt-swing-board-sheet3.png` | 2, 4 |
 | **TSD** | `generate_tilt_swing_distortion.py` | `diagrams/tilt-swing-combined-c0.png` – `c8.png`<br>`diagrams/tilt-swing-combined-summary.png` | 3, 4 (optical simulation) |
 | **PD** | `generate_plate_drawing.py` | `diagrams/plate-drawing-sheet1.png`<br>`diagrams/plate-drawing-sheet2.png` | 1, 2 |
+| **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png` | 1, 16, 17 |
+| **CR** | `generate_ceiling_rail_diagram.py` | `diagrams/ceiling-rail-sheet1.png`<br>`diagrams/ceiling-rail-sheet2.png` | 1, 6, 15, 16, 17, 18 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
 ---
@@ -324,23 +326,26 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 ✓ = this subsystem is drawn in this diagram group. Re-run all ✓ scripts when the subsystem changes.
 
-| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC |
-|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|
-| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ |
-| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ |
-| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | |
-| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | |
-| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
-| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | |
-| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | |
-| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | |
-| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | |
-| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | |
-| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
-| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
-| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | |
-| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | |
-| **15** Panel Slide Carriage | ✓ | | ✓ | | | | | | ✓ | | | | | |
+| Subsystem | FP | LOS | AO | AF | FPM | FPD | ES | WS | HP | LT | TSB | TSD | PD | SC | WK | CR |
+|-----------|:--:|:---:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|:---:|:---:|:--:|:--:|:--:|:--:|
+| **1** Container | ✓ | ✓ | ✓ | ✓ | ✓ | | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | ✓ | ✓ |
+| **2** Optical Aperture | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | ✓ | ✓ | | |
+| **3** Film Plane Mech | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | | | | | | ✓ | | | | |
+| **4** Tilt-Swing Board | | | | | | | | | | | ✓ | ✓ | | | | |
+| **5** Light Trap Drum | ✓ | ✓ | ✓ | ✓ | | | | | ✓ | ✓ | | | | | | |
+| **6** Hinged Panel | | | ✓ | ✓ | | | | | ✓ | ✓ | | | | | | ✓ |
+| **7** Ventilation | ✓ | | ✓ | | | | ✓ | | | ✓ | | | | | | |
+| **8** Evap Cooler | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | ✓ | | | | | | |
+| **9** Electrical | ✓ | ✓ | ✓ | ✓ | | | ✓ | | | | | | | | | |
+| **10** Pump Manifold | ✓ | ✓ | ✓ | ✓ | | | ✓ | ✓ | | | | | | | | |
+| **11** Blue Water (IBCs) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
+| **12** Brown Water (IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
+| **13** Black Water (waste IBC) | ✓ | ✓ | ✓ | ✓ | | | | ✓ | | | | | | | | |
+| **14** Zones / Layout | ✓ | ✓ | ✓ | | | | | | | | | | | | | |
+| **15** Panel Slide Carriage | ✓ | | ✓ | | | | | | ✓ | | | | | | | ✓ |
+| **16** Processing Tray | ✓ | | ✓ | | | | | | | | | | | | ✓ | ✓ |
+| **17** Perimeter Walkway | | | | | | | | | ✓ | | | | | | ✓ | ✓ |
+| **18** Ceiling Rail Susp. | | | | | | | | | | | | | | | | ✓ |
 
 ---
 
@@ -370,6 +375,11 @@ PNGs alongside the constant change.
 | `ZONE_L_END`, `ZONE_R_START` | FP, LOS, AO, ES | Zone boundaries — these are derived from `FP_X_L`/`FP_X_R`, so change those instead |
 | `FAN_A_H`, `FAN_B_H`, `FAN_DIAM`, `FAN_BODY_D` | LT, ES | Ventilation fan height or size |
 | `DUCT_DEPTH`, `DUCT_HEIGHT` | LT | Baffle duct only — lighttrap sheets |
+| `WALKWAY_W`, `WALKWAY_H`, `WALKWAY_GRATE_T` | WK, CR, HP | Walkway deck dimensions — affects clearance annotations in CR |
+| `WALKWAY_BRACKET_H`, `WALKWAY_BRACKET_T`, `WALKWAY_BRACKET_SPACING` | WK, CR, HP | Bracket geometry |
+| `WALKWAY_ANGLE_IRON`, `WALKWAY_ANGLE_IRON_T` | WK | Right walkway angle iron mounting (flat end wall only) |
+| `PROC_TRAY_X_L`, `PROC_TRAY_X_R`, `PROC_TRAY_RIM` | FP, AO, WK, CR | Processing tray position and rim — walkway alignment and panel clearance |
+| `PANEL_FLOOR_GAP` | CR, HP | Panel bottom clearance — must exceed `PROC_TRAY_RIM` |
 
 ### Workflow
 

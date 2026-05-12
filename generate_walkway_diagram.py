@@ -222,11 +222,14 @@ def sheet1():
     ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
-    # Weld symbols at joints
-    # Where gusset meets arm bottom
-    ax.plot([sx(GUSSET_REACH / 3 - 4), sx(GUSSET_REACH / 3), sx(GUSSET_REACH / 3 + 4)],
+    # Weld symbol at gusset-to-arm joint
+    weld_x = GUSSET_REACH / 3
+    ax.plot([sx(weld_x - 4), sx(weld_x), sx(weld_x + 4)],
             [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
             color="#CC4400", lw=1.5, zorder=8)
+    ax.text(sx(weld_x), sy(arm_bot - 7), "WELD",
+            ha="center", va="top", fontsize=4.5, color="#CC4400",
+            **FONT, zorder=15)
 
     # Bolt holes on vertical plate (2× M12)
     bolt_z1 = 30
@@ -253,8 +256,8 @@ def sheet1():
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Bolt label
-    leader(ax, sx(5), sy(bolt_z1),
+    # Bolt label — point arrow into wall rib (negative Yd = through the rib)
+    leader(ax, sx(-rib_w / 2 - 2), sy(bolt_z1),
            sx(-40), sy(bolt_z1 - 20),
            "2\u00d7 M12 THROUGH-\nBOLTS TO WALL RIB\n(W/ REINFORCING\nPLATE BEHIND)",
            color=C_DIM, fs=5.5,
@@ -352,15 +355,38 @@ def sheet1():
     draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-45),
                f"{TRAY_RIM_YD}mm", offset=sy(14), fs=6, above=False, font=FONT)
 
-    # ── Person silhouette ────────────────────────────────────────────────────
-    shoe_yd = WALKWAY_W / 2
+    # ── Operator shoes (pair, US size 9 = ~270mm long × 100mm wide) ────────
+    # In this cross-section (looking along X), shoes appear as their width
+    # (100mm along Yd) × sole height (~15mm along Z). Show two shoes
+    # side-by-side with a small gap between them.
+    SHOE_W = 100   # shoe width (mm) — visible in Yd cross-section
+    SHOE_H = 15    # sole height (mm)
+    SHOE_GAP = 20  # gap between shoes (mm)
+    shoe_pair_w = 2 * SHOE_W + SHOE_GAP
+    shoe_start = (WALKWAY_W - shoe_pair_w) / 2  # center pair on walkway
     shoe_z = grate_top
-    ax.add_patch(Rectangle((sx(shoe_yd - 15), sy(shoe_z)),
-                            sx(30), sy(5),
-                            fc="#404040", ec=C_OUT, lw=0.5, zorder=10, alpha=0.4))
-    leader(ax, sx(shoe_yd - 15), sy(shoe_z + 5),
-           sx(95), sy(shoe_z) * 1.5,
-           "OPERATOR\n(STANDING SHOE)", color=C_TRAY, fs=6,
+
+    for i in range(2):
+        s_yd = shoe_start + i * (SHOE_W + SHOE_GAP)
+        # Sole
+        ax.add_patch(FancyBboxPatch(
+            (sx(s_yd), sy(shoe_z)), sx(SHOE_W), sy(SHOE_H),
+            boxstyle="round,pad=0", fc="#303030", ec=C_OUT, lw=0.6,
+            zorder=10, alpha=0.5))
+        # Heel bump (slightly thicker at back)
+        heel_w = SHOE_W * 0.3
+        ax.add_patch(Rectangle(
+            (sx(s_yd), sy(shoe_z)), sx(heel_w), sy(SHOE_H + 3),
+            fc="#303030", ec="none", zorder=10, alpha=0.4))
+
+    # Shoe length annotation (into-page dimension, since shoes point along X)
+    ax.text(sx(WALKWAY_W / 2), sy(shoe_z + SHOE_H + 6),
+            "US 9 SHOE PAIR\n(270mm LONG \u00d7 100mm WIDE)",
+            ha="center", va="bottom", fontsize=5.5, color="#404040",
+            **FONT, zorder=15, alpha=0.7)
+    leader(ax, sx(shoe_start + SHOE_W / 2), sy(shoe_z + SHOE_H),
+           sx(95), sy(shoe_z + SHOE_H + 35),
+           "OPERATOR\nSTANDING", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Axis labels ──────────────────────────────────────────────────────────

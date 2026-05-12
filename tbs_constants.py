@@ -263,9 +263,13 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# Right walkway floor post (IBC end — too far from end wall for wall mounting)
-WALKWAY_RIGHT_POST_X = 4652  # floor post X position (mm) — outside tray rim (4,629mm)
-WALKWAY_RIGHT_POST_IBC_CLR = 22  # clearance to IBC stack inner face (mm)
+# Right walkway box section beam (IBC end — too far from end wall for wall mounting)
+# Steel RHS spans full container width (Yd=0 to 2,362mm), through-bolted to floor.
+WALKWAY_RIGHT_BOX_X = 4632   # box section left face X (mm) — 3mm clear of tray rim
+WALKWAY_RIGHT_BOX_W = 40     # box section width in X (mm)
+WALKWAY_RIGHT_BOX_H = 75     # box section height = bracket arm height (mm)
+WALKWAY_RIGHT_BOX_T = 3      # box section wall thickness (mm)
+WALKWAY_RIGHT_IBC_CLR = 2    # clearance from box right face to IBC stack (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

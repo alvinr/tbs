@@ -2298,11 +2298,11 @@ def sheet7():
                             sx(plate_show), sy(PLATE_T),
                             fc=C_PLATE, ec=C_OUT, lw=1.2, alpha=0.5,
                             ls="--", zorder=5))
-    ax.text(sx(plate_show / 2), sy(plate_bot - 3),
-            f"FLAT PLATE ({PLATE_T}mm \u00d7 {PLATE_W}mm WIDE)\n"
-            f"(GHOST \u2014 EXTENDS {PLATE_W}mm IN X)",
-            ha="center", va="top", fontsize=5, color=C_PLATE,
-            **FONT, zorder=15, alpha=0.6)
+    leader(ax, sx(plate_show / 2), sy(plate_bot + PLATE_T / 2),
+           sx(plate_show + 40), sy(plate_bot - 15),
+           f"FLAT PLATE ({PLATE_T}mm \u00d7 {PLATE_W}mm WIDE)\n(GHOST \u2014 EXTENDS {PLATE_W}mm IN X)",
+           color=C_PLATE, fs=5.5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Stop lip (solid — in front of beam, door side in X) ────────────────
     # The lip is in front of the beam in this view direction (looking along X).

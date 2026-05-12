@@ -108,12 +108,15 @@ def sheet1():
     BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (bracket arm top Z)
     BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
+    REINF_W    = 80    # reinforcing plate width behind wall
+    REINF_H    = 180   # reinforcing plate height
+    REINF_T    = 6     # reinforcing plate thickness
 
     # Positions (mm real)
     TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm from wall
 
     # ── Figure ───────────────────────────────────────────────────────────────
-    YD_LO = -80
+    YD_LO = -100
     YD_HI = WALKWAY_W + 180
     Z_LO  = -70
     Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
@@ -130,23 +133,55 @@ def sheet1():
     ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Container wall (pinhole wall, at Yd=0) with corrugation ─────────────
-    # Show corrugated wall profile — wall face at Yd=0, corrugation extends
-    # inward (positive Yd) by CORR_DEPTH.  Draw a simplified corrugation.
+    # ── Corrugated wall (cross-section through rib — HOLLOW profile) ─────────
+    # Matching sheet 3 convention: exterior panel, air gap, rib side walls, rib face
     wall_z_top = Z_HI
-    # Flat wall panel (exterior face at Yd ~ -CORR_DEPTH, interior rib at Yd=0)
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH - 5), sy(0)),
-                            sx(CORR_DEPTH + 5), sy(wall_z_top),
-                            fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    # Corrugation rib at section cut (this is where bracket bolts to)
-    # Show the rib as a thicker vertical strip at Yd=0
-    rib_w = 12  # rib flange width at section
-    ax.add_patch(Rectangle((sx(-rib_w / 2), sy(0)),
-                            sx(rib_w), sy(wall_z_top),
-                            fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(-CORR_DEPTH / 2 - 5), sy(wall_z_top - 15), "PINHOLE\nWALL\n(CORRUGATED)",
-            ha="center", va="top", fontsize=6, color=C_DIM, backgroundcolor="#FFFFFF",
+    ext_panel_yd = -CORR_DEPTH - WALL_T
+
+    # Exterior wall steel panel (full height)
+    ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
+                            hatch="///"))
+    # Rib side wall (connecting exterior panel to rib face)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3,
+                            hatch="///"))
+    # Rib interior face (flange — where bracket bolts on)
+    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
+                            hatch="///"))
+    # Air gap inside the rib (light fill to show it's hollow)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
+                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+                            fc="#F0F0F0", ec="none", lw=0, zorder=2))
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
+                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+                            fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
+    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top * 0.45),
+            "AIR\nGAP",
+            ha="center", va="center", fontsize=6, color=C_DIM,
+            **FONT, zorder=15, style="italic")
+    # Rib face (interior surface at Yd=0)
+    ax.plot([sx(0), sx(0)], [sy(0), sy(wall_z_top)],
+            color=C_OUT, lw=2.0, zorder=4)
+    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top - 8),
+            "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
+
+    # ── Reinforcing plate (bonded to exterior wall face) ─────────────────────
+    reinf_yd = ext_panel_yd - REINF_T
+    ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
+                            sx(REINF_T), sy(REINF_H),
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, sx(reinf_yd - 2), sy(REINF_H * 0.7),
+           sx(reinf_yd - 25), sy(REINF_H * 0.7 + 20),
+           f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
+           color="#C08040", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Processing tray ──────────────────────────────────────────────────────
     # Tray near rim (vertical wall at Yd=TRAY_RIM_YD)
@@ -196,8 +231,8 @@ def sheet1():
     arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm
     GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim position)
 
-    # 1. Vertical mounting plate (flat rectangle on wall face)
-    ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
+    # 1. Vertical mounting plate (flat against rib interior face, Yd=0 to BRKT_T)
+    ax.add_patch(Rectangle((sx(0), sy(0)),
                             sx(BRKT_T), sy(BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
@@ -232,7 +267,7 @@ def sheet1():
             **FONT, zorder=15)
 
     # Through-bolts (2× M12) — horizontal shanks through wall + bracket
-    # Bolt axis is along Yd (horizontal in this view), matching sheet 3 convention
+    # Matching sheet 3 convention: reinf plate → ext panel → air gap → rib → bracket → nut
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
     BOLT_HEAD = 8    # hex head height (Yd direction)
@@ -242,31 +277,28 @@ def sheet1():
     bolt_z1   = 30
     bolt_z2   = 120
 
-    # Wall exterior face (left edge of wall block)
-    ext_face_yd = -CORR_DEPTH - 5
-
     for bz in [bolt_z1, bolt_z2]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
-        # Bolt shank — from exterior wall face through to bracket interior face
-        ax.add_patch(Rectangle((sx(ext_face_yd), sy(bz - shank_hw)),
-                                sx(BRKT_T / 2 - ext_face_yd), sy(shank_hw * 2),
-                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
-        # Hex head on exterior side
-        ax.add_patch(Rectangle((sx(ext_face_yd - BOLT_HEAD), sy(bz - BOLT_R)),
+        # Bolt shank — from reinf plate through to bracket face
+        ax.add_patch(Rectangle((sx(reinf_yd), sy(bz - shank_hw)),
+                                sx(BRKT_T - reinf_yd), sy(shank_hw * 2),
+                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Hex head on exterior side (left of reinforcing plate)
+        ax.add_patch(Rectangle((sx(reinf_yd - BOLT_HEAD), sy(bz - BOLT_R)),
                                 sx(BOLT_HEAD), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
         # Washer under head
-        ax.add_patch(Rectangle((sx(ext_face_yd - WASHER_T), sy(bz - BOLT_R - 1)),
+        ax.add_patch(Rectangle((sx(reinf_yd - WASHER_T), sy(bz - BOLT_R - 1)),
                                 sx(WASHER_T), sy(BOLT_D + 2),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
         # Nut on interior side (right of bracket plate)
-        ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R)),
+        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R)),
                                 sx(NUT_H), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
         # Washer under nut
-        ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R - 1)),
+        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R - 1)),
                                 sx(WASHER_T), sy(BOLT_D + 2),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
     # Bracket label — point at the arm
     leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z - 5),
@@ -283,9 +315,9 @@ def sheet1():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Bolt label
-    leader(ax, sx(ext_face_yd - BOLT_HEAD - 2), sy(bolt_z1),
-           sx(-55), sy(bolt_z1 - 20),
-           "2\u00d7 M12 THROUGH-\nBOLTS TO WALL RIB\n(W/ REINFORCING\nPLATE BEHIND)",
+    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z1),
+           sx(reinf_yd - 40), sy(bolt_z1 - 20),
+           "2\u00d7 M12 THROUGH-\nBOLTS\nHEAD \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192\nBRACKET \u2192 NUT",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -356,7 +388,7 @@ def sheet1():
                f"{WALKWAY_GRATE_T}mm\nDECK HEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Bracket vertical leg height
-    draw_dim_v(ax, sx(-CORR_DEPTH - 15), sy(0), sy(BRKT_VERT),
+    draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 15), sy(0), sy(BRKT_VERT),
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # Bracket arm height
@@ -374,9 +406,9 @@ def sheet1():
                f"{clr}mm\nCLR", offset=sx(8), fs=6.5, right=True,
                color="#208020", font=FONT)
 
-    # Corrugation depth
-    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
-               f"{CORR_DEPTH}mm\nCORR", offset=sy(14), fs=6, above=False, font=FONT)
+    # Corrugation depth (ext panel to rib face)
+    draw_dim_h(ax, sx(ext_panel_yd), sx(0), sy(-22),
+               f"{CORR_DEPTH}mm\nCORR DEPTH", offset=sy(14), fs=6, above=False, font=FONT)
 
     # Wall to tray rim
     draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-45),

@@ -911,8 +911,8 @@ def sheet3():
     ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
                             sx(REINF_T), sy(REINF_H),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_yd - 2), sy(REINF_H * 0.7),
-           sx(reinf_yd - 30), sy(REINF_H * 0.7 + 30),
+    leader(ax, sx(reinf_yd - 1), sy(REINF_H * 0.9),
+           sx(reinf_yd - 20), sy(REINF_H * 0.9 + 30),
            f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -961,7 +961,7 @@ def sheet3():
 
     # Bolt label with layer callout
     leader(ax, sx(BRKT_T + NUT_H + 2), sy(bolt_z1),
-           sx(BRKT_T + 55), sy(bolt_z1 - 22),
+           sx(BRKT_T + 15), sy(bolt_z1 - 20),
            f"M{BOLT_D} \u00d7 80mm THROUGH-BOLT\nHEAD (EXT) \u2192 REINF PLATE \u2192\nEXT PANEL \u2192 AIR GAP \u2192 RIB\nFACE \u2192 BRACKET \u2192 NUT (INT)\n2 PER BRACKET",
            color=C_DIM, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -995,8 +995,8 @@ def sheet3():
                 color="#CC4400", lw=1.5, zorder=8)
 
     # Bracket label
-    leader(ax, sx(WALKWAY_W * 0.4), sy(BRKT_ARM_Z + 3),
-           sx(WALKWAY_W * 0.55), sy(BRKT_VERT + 15),
+    leader(ax, sx(WALKWAY_W * 0.4), sy(BRKT_ARM_Z + 1),
+           sx(WALKWAY_W * 0.55), sy(BRKT_VERT * 0.8),
            f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(NEAR/FAR WALKWAYS)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1041,17 +1041,17 @@ def sheet3():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     draw_dim_v(ax, sx(reinf_yd - 15), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm\nVERT", offset=sx(6), fs=6.5, right=False, font=FONT)
-    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 20),
+               f"{BRKT_VERT}mm VERT", offset=sx(6), fs=6.5, right=True, font=FONT)
+    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 60),
                f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
     draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=True, font=FONT)
     draw_dim_v(ax, sx(WALKWAY_W + 50), sy(grate_bot), sy(grate_top),
                f"{WALKWAY_GRATE_T}mm", offset=sx(6), fs=6, right=True, font=FONT)
-    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-25),
+    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-20),
                f"{CORR_DEPTH}mm CORR", offset=sy(10), fs=6, above=False, font=FONT)
-    draw_dim_v(ax, sx(BRKT_T + NUT_H + 20), sy(bolt_z1), sy(bolt_z2),
-               f"{bolt_z2 - bolt_z1}mm", offset=sx(6), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, sx(BRKT_T - 80), sy(bolt_z1), sy(bolt_z2),
+               f"{bolt_z2 - bolt_z1}mm BOLT CENTERS", offset=sx(6), fs=6, right=True, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(WALKWAY_W + 50)
@@ -1216,7 +1216,7 @@ def sheet4():
                                 fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
 
     leader(ax, sx(brkt_yd_l - BOLT_HEAD - 2), sy(bolt_z1),
-           sx(brkt_yd_l - BOLT_HEAD - 50), sy(bolt_z1 - 18),
+           sx(brkt_yd_l - BOLT_HEAD - 60), sy(bolt_z1 - 18),
            f"M{BOLT_D} THROUGH-BOLT\nBRACKET + ANGLE IRON\n+ WALL + REINF PLATE\n(2 PER BRACKET)",
            color=C_DIM, fs=5.5,
            ha="right", va="center", arrow_style="-|>", font=FONT)

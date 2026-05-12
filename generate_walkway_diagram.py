@@ -231,16 +231,42 @@ def sheet1():
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
-    # Bolt holes on vertical plate (2× M12)
-    bolt_z1 = 30
-    bolt_z2 = 120
-    bolt_r = 6   # M12 hole radius
+    # Through-bolts (2× M12) — horizontal shanks through wall + bracket
+    # Bolt axis is along Yd (horizontal in this view), matching sheet 3 convention
+    BOLT_D    = 12
+    BOLT_R    = BOLT_D / 2
+    BOLT_HEAD = 8    # hex head height (Yd direction)
+    NUT_H     = 10   # nut height (Yd direction)
+    WASHER_T  = 3
+    C_BOLT    = "#505058"
+    bolt_z1   = 30
+    bolt_z2   = 120
+
+    # Wall exterior face (left edge of wall block)
+    ext_face_yd = -CORR_DEPTH - 5
+
     for bz in [bolt_z1, bolt_z2]:
-        ax.add_patch(Circle((sx(0), sy(bz)), sx(bolt_r),
-                     fc=BG, ec=C_OUT, lw=1.0, zorder=8))
-        # Cross marks
-        ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
-        ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
+        shank_hw = BOLT_R * 0.4  # half-width of shank in Z
+        # Bolt shank — from exterior wall face through to bracket interior face
+        ax.add_patch(Rectangle((sx(ext_face_yd), sy(bz - shank_hw)),
+                                sx(BRKT_T / 2 - ext_face_yd), sy(shank_hw * 2),
+                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
+        # Hex head on exterior side
+        ax.add_patch(Rectangle((sx(ext_face_yd - BOLT_HEAD), sy(bz - BOLT_R)),
+                                sx(BOLT_HEAD), sy(BOLT_D),
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+        # Washer under head
+        ax.add_patch(Rectangle((sx(ext_face_yd - WASHER_T), sy(bz - BOLT_R - 1)),
+                                sx(WASHER_T), sy(BOLT_D + 2),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
+        # Nut on interior side (right of bracket plate)
+        ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R)),
+                                sx(NUT_H), sy(BOLT_D),
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+        # Washer under nut
+        ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R - 1)),
+                                sx(WASHER_T), sy(BOLT_D + 2),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
 
     # Bracket label — point at the arm
     leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z - 5),
@@ -256,9 +282,9 @@ def sheet1():
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Bolt label — point arrow into wall rib (negative Yd = through the rib)
-    leader(ax, sx(-rib_w / 2 - 2), sy(bolt_z1),
-           sx(-40), sy(bolt_z1 - 20),
+    # Bolt label
+    leader(ax, sx(ext_face_yd - BOLT_HEAD - 2), sy(bolt_z1),
+           sx(-55), sy(bolt_z1 - 20),
            "2\u00d7 M12 THROUGH-\nBOLTS TO WALL RIB\n(W/ REINFORCING\nPLATE BEHIND)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)

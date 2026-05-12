@@ -1480,7 +1480,7 @@ def sheet5():
     # Z = vertical axis (0 = floor)
     X_LO = -50
     X_HI = LEFT_WK_R + NEAR_WK_SHOW + 350  # room for near walkway + notes
-    Z_LO = -80
+    Z_LO = -40
     Z_HI = WALKWAY_H + 110
 
     fig, ax = plt.subplots(figsize=(18, 10))
@@ -1891,7 +1891,7 @@ def sheet6():
             zz, color=C_OUT, lw=1.0, zorder=5)
     # Label tray rim
     leader(ax, sx(tray_x - TRAY_WALL / 2), sy(PROC_TRAY_RIM / 2),
-           sx(tray_x - 25), sy(PROC_TRAY_RIM + 20),
+           sx(tray_x + 45), sy(PROC_TRAY_RIM + 5),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm (304 SS)",
            color=C_TRAY, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
@@ -1937,7 +1937,7 @@ def sheet6():
 
     # Leg label
     leader(ax, sx(OUTER_LEG_X), sy(LEG_TOP / 2 - 5),
-           sx(OUTER_LEG_X - 40), sy(LEG_TOP / 2 - 20),
+           sx(OUTER_LEG_X - 40), sy(LEG_TOP * 0.85),
            f"FLOOR LEG\n{LEG_W}\u00d7{LEG_W}\u00d7{LEG_T}mm Al SHS\n"
            f"(\u00d7{LEFT_WK_LEG_N}, ON BARE FLOOR)\n"
            f"WITH CANTILEVER ARM",
@@ -1958,7 +1958,7 @@ def sheet6():
                             fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=9))
     # Beam label
     leader(ax, sx(LEFT_WK_R + BEAM_SZ / 2 + 2), sy(beam_bot + BEAM_SZ / 2),
-           sx(LEFT_WK_R + BEAM_SZ / 2 + 45), sy(beam_bot + BEAM_SZ / 2 - 15),
+           sx(LEFT_WK_R + BEAM_SZ / 2 + 45), sy(beam_bot + BEAM_SZ * 0.95),
            f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
            f"SPANS {WALKWAY_LEFT_SPAN}mm ALONG Yd\n"
            f"BOLTED TO NEAR/FAR\n"
@@ -2042,7 +2042,7 @@ def sheet6():
                f"{beam_bot}mm\nBEAM\nBOT", offset=sx(55), fs=5.5, right=True, font=FONT)
 
     # Tray rim height (left side)
-    draw_dim_v(ax, sx(tray_x + STRIP_H + 8), sy(0), sy(PROC_TRAY_RIM),
+    draw_dim_v(ax, sx(tray_x + STRIP_H + 25), sy(0), sy(PROC_TRAY_RIM),
                f"{PROC_TRAY_RIM}mm\nRIM",
                offset=sx(6), fs=5.5, right=True, color=C_TRAY, font=FONT)
 

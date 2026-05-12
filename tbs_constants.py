@@ -244,10 +244,13 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 #       X=470 — entirely past the panel transport envelope (max X=420).
 #       Only the left walkway (X=170–470) needs removal for transport.
 #       Supported at ends by near/far walkway bracket arms at butt joints.
-#       Intermediate support by 3 removable U-frame cradles at ~440mm centers
-#       plus a continuous bearing strip on the processing tray rim (X=170).
-#       Bearing strip: 25×25×3mm Al angle on tray rim (Z=50), top at Z=75mm.
-#       Cradle: crossbar spanning walkway width, legs on floor each side of rim.
+#       Processing tray side (X=470): removable bearer beam (50×50×3mm Al RHS)
+#       runs along Yd, bolted to near/far bracket vertical legs, spanning
+#       1,762mm.  Beam top flush at Z=75mm (grate bottom).
+#       Cargo door side (X=170): 3 floor-standing support legs at X≈140 on
+#       bare container floor (outside tray), plus a bearing strip (25×25×3mm
+#       Al angle) on the processing tray rim (Z=50→75mm).
+#       Zero processing tray contact — all supports outside or above tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
@@ -268,16 +271,20 @@ WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1,962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
 # REMOVABLE — must be lifted out before sliding panel to transport position.
 # Span between near/far bracket arms: C_WID - 2×WALKWAY_W = 1,762mm.
-# Supported by 3 removable U-frame cradles at ~440mm centers, plus a
-# continuous bearing strip on the processing tray rim (X=170, cargo door edge).
+# Supported by: (a) bearer beam along Yd at X=470 (processing tray side),
+# bolted to near/far bracket vertical legs, spanning 1,762mm; and
+# (b) 3 floor-standing support legs at X≈140 (cargo door side, outside tray)
+# plus a bearing strip on the processing tray rim (X=170).
+# Zero processing tray contact — all supports outside or above tray.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
 WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1,762mm span between bracket arms
-# Left walkway intermediate support — removable cradles + bearing strip
-LEFT_WK_CRADLE_N     = 3     # number of removable U-frame support cradles
-LEFT_WK_CRADLE_LEG   = 25    # cradle leg tube size (mm) — 25×25×3mm Al SHS
-LEFT_WK_CRADLE_LEG_T = 3     # cradle leg wall thickness (mm)
-LEFT_WK_CRADLE_BAR   = 25    # crossbar depth (mm) — Z=50 to Z=75mm
-LEFT_WK_CRADLE_BASE  = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
+# Left walkway intermediate support
+LEFT_WK_BEARER_SIZE  = 50    # bearer beam section (mm) — 50×50×3mm Al RHS
+LEFT_WK_BEARER_T     = 3     # bearer beam wall thickness (mm)
+LEFT_WK_LEG_N        = 3     # number of floor-standing support legs (cargo door side)
+LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
+LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
+LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
 # Right walkway (IBC end): X=tray_R-WALKWAY_W to tray_R, Yd=0 to C_WID
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
@@ -385,7 +392,7 @@ if __name__ == "__main__":
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
     print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (all sections)")
-    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  ({LEFT_WK_CRADLE_N} cradles + bearing strip)")
+    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")

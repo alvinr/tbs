@@ -1022,24 +1022,30 @@ def sheet4():
     NUT_H  = 10
     BOLT_HEAD = 8
 
+    REINF_T = 6  # reinforcing plate behind wall exterior
+
     for bz in [bolt_z1, bolt_z2]:
         shank_hw = BOLT_R * 0.4
-        # Shank through bracket + angle iron
+        # Shank through: reinf plate + wall + angle iron vert leg + bracket plate
         ax.add_patch(Rectangle((sx(brkt_yd_l), sy(bz - shank_hw)),
-                                sx(BRKT_T + ANGLE_T), sy(shank_hw * 2),
+                                sx(BRKT_T + ANGLE_T + WALL_T + REINF_T), sy(shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
         # Head on interior side (left of bracket)
         ax.add_patch(Rectangle((sx(brkt_yd_l - BOLT_HEAD), sy(bz - BOLT_R)),
                                 sx(BOLT_HEAD), sy(BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Nut on wall side (right of angle iron)
-        ax.add_patch(Rectangle((sx(WALL_YD), sy(bz - BOLT_R)),
+        # Nut on exterior side (right of wall + reinforcing plate)
+        ax.add_patch(Rectangle((sx(WALL_YD + WALL_T), sy(bz - BOLT_R)),
                                 sx(NUT_H), sy(BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+        # Reinforcing plate (small rectangle on wall exterior)
+        ax.add_patch(Rectangle((sx(WALL_YD + WALL_T), sy(bz - BOLT_R - 4)),
+                                sx(REINF_T), sy(BOLT_D + 8),
+                                fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
 
     leader(ax, sx(brkt_yd_l - BOLT_HEAD - 2), sy(bolt_z1),
            sx(brkt_yd_l - BOLT_HEAD - 50), sy(bolt_z1 - 18),
-           f"M{BOLT_D} THROUGH-BOLT\nANGLE IRON + BRACKET\n(2 PER BRACKET)",
+           f"M{BOLT_D} THROUGH-BOLT\nBRACKET + ANGLE IRON\n+ WALL + REINF PLATE\n(2 PER BRACKET)",
            color=C_DIM, fs=5.5,
            ha="right", va="center", arrow_style="-|>", font=FONT)
 
@@ -1086,8 +1092,9 @@ def sheet4():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
 
     # ── Grated deck ──────────────────────────────────────────────────────────
-    grate_bot = WALKWAY_H
-    grate_top = WALKWAY_H + WALKWAY_GRATE_T
+    # Grating sits on bracket arm: bottom at BRKT_ARM_Z (75mm), top at WALKWAY_H (100mm)
+    grate_bot = BRKT_ARM_Z  # = 75mm
+    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm
     ax.add_patch(Rectangle((sx(arm_left), sy(grate_bot)),
                             sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
@@ -1103,7 +1110,7 @@ def sheet4():
                f"{BRKT_VERT}mm\nVERT", offset=sx(6), fs=6.5, right=True, font=FONT)
     draw_dim_h(ax, sx(arm_left), sx(arm_left + WALKWAY_W), sy(grate_top + 20),
                f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
-    draw_dim_v(ax, sx(arm_left - 15), sy(0), sy(grate_bot),
+    draw_dim_v(ax, sx(arm_left - 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
     draw_dim_v(ax, sx(WALL_YD), sy(0), sy(ANGLE_LEG),
                f"{ANGLE_LEG}mm", offset=sx(15), fs=6, right=True, font=FONT)
@@ -1119,8 +1126,8 @@ def sheet4():
         f"2. {ANGLE_LEG}\u00d7{ANGLE_LEG}\u00d7{ANGLE_T}mm L-angle welded",
         f"   horizontally along wall interior provides",
         f"   structural mounting surface.",
-        f"3. Brackets bolt through angle iron vertical",
-        f"   leg \u2014 same 8mm gusset bracket as near/far.",
+        f"3. M12 through-bolts penetrate bracket + angle",
+        f"   iron + wall + reinforcing plate (exterior).",
         f"4. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm along Yd.",
         f"5. Angle iron continuous weld to wall steel",
         f"   distributes load across flat panel.",
@@ -1178,7 +1185,7 @@ def sheet5():
     # Yd = horizontal axis (0 = pinhole wall)
     # Z = vertical axis
     YD_LO = -60
-    YD_HI = WALKWAY_W * 2 + 120  # room for left walkway + notes
+    YD_HI = WALKWAY_W * 2 + 200  # room for left walkway + far arm + notes
     Z_LO  = -40
     Z_HI  = WALKWAY_H + 100
 
@@ -1226,16 +1233,25 @@ def sheet5():
     NUT_H = 10
     BOLT_HEAD = 8
 
+    REINF_T = 6  # reinforcing plate on wall exterior
+    # Bolt path: head -> reinf plate -> wall panel -> air gap -> rib face -> bracket -> nut
+    # Wall exterior panel at ~ -CORR_DEPTH, rib face at ~ -rib_w/2
+    wall_ext_yd = -CORR_DEPTH  # exterior panel face
+
     for bz in [bolt_z1, bolt_z2]:
         shank_hw = BOLT_R * 0.4
-        # Bolt shank through rib + bracket
-        ax.add_patch(Rectangle((sx(-rib_w / 2), sy(bz - shank_hw)),
-                                sx(rib_w + BRKT_T / 2), sy(shank_hw * 2),
+        # Bolt shank — full penetration from wall exterior to bracket interior
+        ax.add_patch(Rectangle((sx(wall_ext_yd), sy(bz - shank_hw)),
+                                sx(-wall_ext_yd + BRKT_T / 2), sy(shank_hw * 2),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Bolt head (behind wall / on reinforcing plate)
-        ax.add_patch(Rectangle((sx(-rib_w / 2 - BOLT_HEAD), sy(bz - BOLT_R)),
+        # Bolt head on exterior (behind reinforcing plate)
+        ax.add_patch(Rectangle((sx(wall_ext_yd - REINF_T - BOLT_HEAD), sy(bz - BOLT_R)),
                                 sx(BOLT_HEAD), sy(BOLT_D),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+        # Reinforcing plate on wall exterior
+        ax.add_patch(Rectangle((sx(wall_ext_yd - REINF_T), sy(bz - BOLT_R - 4)),
+                                sx(REINF_T), sy(BOLT_D + 8),
+                                fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
         # Nut on interior side of bracket
         ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R)),
                                 sx(NUT_H), sy(BOLT_D),
@@ -1329,14 +1345,52 @@ def sheet5():
            color="#CC4400", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
+    # ── Far walkway bracket arm (support at other end) ─────────────────────
+    # Show partial far walkway bracket arm at the right edge of the left walkway
+    # to make it clear the grating is supported at BOTH ends (bridge, not cantilever).
+    left_grate_yd_end = left_grate_yd_start + WALKWAY_W
+    far_arm_start = left_grate_yd_end - 30  # overlap the grating by 30mm
+    far_arm_w = 60  # show partial arm extending right
+    ax.add_patch(Rectangle((sx(far_arm_start), sy(arm_bot)),
+                            sx(far_arm_w), sy(ARM_DEPTH),
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
+    ax.plot([sx(far_arm_start), sx(far_arm_start + far_arm_w)],
+            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color=C_OUT, lw=2.0, zorder=7)
+
+    # Break lines on far arm (indicating it continues to far wall)
+    bk_yd = far_arm_start + far_arm_w
+    for z_val in np.linspace(arm_bot, BRKT_ARM_Z, 4):
+        ax.plot([sx(bk_yd - 2), sx(bk_yd + 2)],
+                [sy(z_val - 2), sy(z_val + 2)],
+                color=C_OUT, lw=0.8, zorder=10)
+
+    # Far butt joint line
+    ax.plot([sx(left_grate_yd_end), sx(left_grate_yd_end)],
+            [sy(0), sy(left_grate_top + 2)],
+            color=C_OUT, lw=1.5, ls=(0, (5, 3)), zorder=9)
+    ax.text(sx(left_grate_yd_end), sy(-5),
+            "FAR BUTT\nJOINT",
+            ha="center", va="top", fontsize=5.5, color=C_OUT,
+            **FONT, zorder=15)
+
+    # Far support highlight
+    ax.plot([sx(left_grate_yd_end - 30), sx(left_grate_yd_end + 5)],
+            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color="#CC4400", lw=2.5, zorder=10)
+    leader(ax, sx(left_grate_yd_end - 10), sy(BRKT_ARM_Z),
+           sx(left_grate_yd_end + 40), sy(BRKT_ARM_Z - 15),
+           f"FAR WALKWAY\nBRACKET ARM\n(SUPPORT #2)",
+           color="#CC4400", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
     # ── Unsupported span annotation ──────────────────────────────────────────
     span_y = left_grate_top + 35
-    left_grate_yd_end = left_grate_yd_start + WALKWAY_W
     ax.annotate("", xy=(sx(left_grate_yd_start), sy(span_y)),
                 xytext=(sx(left_grate_yd_end), sy(span_y)),
                 arrowprops=dict(arrowstyle="<->", color="#2060A0", lw=1.5, mutation_scale=10))
     ax.text(sx(left_grate_yd_start + WALKWAY_W / 2), sy(span_y + 5),
-            f"LEFT WALKWAY WIDTH = {WALKWAY_W}mm\n(SPANS {WALKWAY_LEFT_SPAN}mm BETWEEN\nNEAR/FAR BUTT JOINTS)",
+            f"LEFT WALKWAY = {WALKWAY_W}mm WIDE\nSUPPORTED AT BOTH ENDS\n(SPANS {WALKWAY_LEFT_SPAN}mm BETWEEN\nNEAR/FAR BUTT JOINTS)",
             ha="center", va="bottom", fontsize=6, color="#2060A0",
             fontweight="bold", **FONT, zorder=15)
 
@@ -1367,14 +1421,14 @@ def sheet5():
     draw_dim_v(ax, sx(-CORR_DEPTH - 10), sy(0), sy(grate_top),
                f"{int(grate_top)}mm\nTOP", offset=sx(6), fs=6, right=False, font=FONT)
     # Left walkway grate top (should match)
-    draw_dim_v(ax, sx(left_grate_yd_end + 15), sy(0), sy(left_grate_top),
+    draw_dim_v(ax, sx(left_grate_yd_end + 55), sy(0), sy(left_grate_top),
                f"{left_grate_top}mm\nTOP", offset=sx(6), fs=6, right=True, font=FONT)
     # Arm height
-    draw_dim_v(ax, sx(left_grate_yd_end + 15), sy(0), sy(BRKT_ARM_Z),
+    draw_dim_v(ax, sx(left_grate_yd_end + 55), sy(0), sy(BRKT_ARM_Z),
                f"{BRKT_ARM_Z}mm\nARM", offset=sx(30), fs=6, right=True, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(left_grate_yd_end + 60)
+    notes_x = sx(left_grate_yd_end + 100)
     notes_top = sy(Z_HI - 10)
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
@@ -1385,10 +1439,11 @@ def sheet5():
         f"   colliding with left walkway at X=170\u2013470.",
         f"3. Left walkway MUST be removed before",
         f"   sliding panel to transport position.",
-        f"4. Grating rests on near/far walkway bracket",
-        f"   arms at the butt joints (X=470).",
+        f"4. Grating supported at BOTH ends: rests on",
+        f"   near + far walkway bracket arms at butt",
+        f"   joints (X=470). Bridge, not cantilever.",
         f"5. Standard grating ({WALKWAY_GRATE_T}mm) spans",
-        f"   {WALKWAY_LEFT_SPAN}mm unsupported gap.",
+        f"   {WALKWAY_LEFT_SPAN}mm between support points.",
         f"6. Both grate tops aligned at Z={int(grate_top)}mm.",
     ]
     for i, line in enumerate(notes):

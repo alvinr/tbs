@@ -2337,27 +2337,31 @@ def sheet7():
 
     # ── Lock block (ghost — behind beam, interior/wall side in X) ──────────────
     # The lock is behind the beam in this view.
+    # Lock slides on a 50mm slot in the plate; secured with bolt + washer below.
+    SLOT_L = 50       # slot length along Yd (mm)
+    BOLT_DIA = 8      # M8 bolt
+    WASHER_DIA = 16   # washer outer diameter
+    NUT_H_LOCK = 6    # nut height
     lock_yd_mid = beam_yd_start + 60
+    # Lock block (ghost)
     ax.add_patch(Rectangle((sx(lock_yd_mid - LOCK_W / 2), sy(plate_top)),
                             sx(LOCK_W), sy(LOCK_H),
                             fc=C_BOLT, ec=C_OUT, lw=1.0, ls="--",
                             zorder=6, alpha=0.3))
-    # Thumb screw head (ghost)
-    thumb_head_h = 6
-    thumb_head_w = 14
-    ax.add_patch(Rectangle((sx(lock_yd_mid - thumb_head_w / 2),
-                             sy(plate_top + LOCK_H)),
-                            sx(thumb_head_w), sy(thumb_head_h),
-                            fc=C_BOLT, ec=C_OUT, lw=0.6, ls="--",
-                            zorder=6, alpha=0.3))
-    # Screw shank through lock into plate (ghost)
-    ax.add_patch(Rectangle((sx(lock_yd_mid - 2), sy(plate_bot)),
-                            sx(4), sy(PLATE_T + LOCK_H),
+    # Bolt shank through block and slot (ghost)
+    ax.add_patch(Rectangle((sx(lock_yd_mid - 2), sy(plate_bot - NUT_H_LOCK)),
+                            sx(4), sy(PLATE_T + LOCK_H + NUT_H_LOCK),
                             fc=C_BOLT, ec=C_OUT, lw=0.4, ls="--",
                             zorder=5, alpha=0.3))
+    # Washer + nut below plate (ghost)
+    ax.add_patch(Rectangle((sx(lock_yd_mid - WASHER_DIA / 2),
+                             sy(plate_bot - NUT_H_LOCK)),
+                            sx(WASHER_DIA), sy(NUT_H_LOCK),
+                            fc=C_BOLT, ec=C_OUT, lw=0.5, ls="--",
+                            zorder=5, alpha=0.25))
     leader(ax, sx(lock_yd_mid + LOCK_W / 2 + 2), sy(plate_top + LOCK_H / 2),
            sx(lock_yd_mid + 60), sy(plate_top + LOCK_H + 20),
-           f"LOCK BLOCK {LOCK_W}\u00d7{LOCK_H}mm\n(GHOST \u2014 BEHIND BEAM)\nM{THUMB_D} THUMB SCREW\nINTO FLAT PLATE",
+           f"LOCK BLOCK {LOCK_W}\u00d7{LOCK_H}mm\n(GHOST \u2014 BEHIND BEAM)\nM{BOLT_DIA} BOLT THROUGH\n{SLOT_L}mm SLOT \u2014 SEE VIEW C",
            color=C_BOLT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -2435,6 +2439,18 @@ def sheet7():
             f"FLAT PLATE\n({PLATE_W}mm WIDE)", ha="center", va="top",
             fontsize=4, color=C_PLATE, **FONT, zorder=15, alpha=0.6)
 
+    # Slot in plate (50mm long along Yd, visible through plate)
+    slot_pv_yd_start = plate_pv_yd_start + (plate_pv_yd_w - SLOT_L) / 2
+    slot_pv_w = BOLT_DIA + 2   # slot width in X (just wider than bolt)
+    slot_pv_x_ctr = plate_pv_x_end - LOCK_W / 2 - GAP  # aligned with lock center
+    ax.add_patch(Rectangle((px(slot_pv_yd_start), py(slot_pv_x_ctr - slot_pv_w / 2)),
+                            px(slot_pv_yd_start + SLOT_L) - px(slot_pv_yd_start),
+                            py(slot_pv_x_ctr + slot_pv_w / 2) - py(slot_pv_x_ctr - slot_pv_w / 2),
+                            fc="white", ec=C_OUT, lw=1.0, zorder=6))
+    ax.text(px(slot_pv_yd_start + SLOT_L + 2), py(slot_pv_x_ctr),
+            f"{SLOT_L}mm\nSLOT", ha="left", va="center", fontsize=3.5, color=C_DIM,
+            **FONT, zorder=15)
+
     # Lock block (interior/wall side = high X = top in plan view)
     lock_pv_x = plate_pv_x_end - LOCK_W
     lock_pv_yd_ctr = plate_pv_yd_start + plate_pv_yd_w / 2
@@ -2442,12 +2458,12 @@ def sheet7():
                             px(lock_pv_yd_ctr + LOCK_W / 2) - px(lock_pv_yd_ctr - LOCK_W / 2),
                             py(lock_pv_x + LOCK_W) - py(lock_pv_x),
                             fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
-    # Thumb screw circle
+    # Bolt circle (through slot)
     ax.add_patch(Circle((px(lock_pv_yd_ctr), py(lock_pv_x + LOCK_W / 2)),
-                         (px(THUMB_D / 2 + 1) - px(0)),
+                         (px(BOLT_DIA / 2 + 1) - px(0)),
                          fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=9))
     ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lock_pv_x + LOCK_W / 2),
-            f"LOCK + M{THUMB_D}", ha="left", va="center", fontsize=4, color=C_BOLT,
+            f"LOCK + M{BOLT_DIA}\nBOLT", ha="left", va="center", fontsize=4, color=C_BOLT,
             fontweight="bold", **FONT, zorder=15)
 
     # Beam (extends from bracket outward along Yd — ONE direction only)
@@ -2489,6 +2505,129 @@ def sheet7():
                             py(pv_border_top) - py(pv_border_bot),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW C — Lock block detail (cross-section looking along Yd)
+    # Horizontal = X, Vertical = Z.  Shows slot in plate, lock block,
+    # bolt through slot, washer + nut underneath.
+    # ══════════════════════════════════════════════════════════════════════════
+    VC_OX = BEAM_SHOW + 50
+    VC_OY = beam_bot - 30
+    VC_S  = 3.0   # larger scale for detail clarity
+    def cx(mm): return sx(VC_OX + mm * VC_S / S)
+    def cy(mm): return sy(VC_OY + mm * VC_S / S)
+
+    ax.text(cx(35), cy(85), "VIEW C \u2014 LOCK DETAIL\n(SECTION ALONG Yd)",
+            ha="center", va="bottom", fontsize=6, color=C_OUT,
+            fontweight="bold", **FONT, zorder=15)
+    ax.text(cx(35), cy(78),
+            "\u2190 INT.         DOOR \u2192",
+            ha="center", va="top", fontsize=4.5, color=C_DIM,
+            **FONT, zorder=15)
+
+    # Flat plate cross-section with slot
+    # Plate extends across view; slot is a gap in the plate
+    plate_cx_left = 0
+    plate_cx_right = 70
+    slot_cx_ctr = 35   # slot center in X coords
+    slot_cx_w = BOLT_DIA + 2   # slot width = 10mm
+    slot_left = slot_cx_ctr - slot_cx_w / 2
+    slot_right = slot_cx_ctr + slot_cx_w / 2
+
+    # Plate left of slot
+    ax.add_patch(Rectangle((cx(plate_cx_left), cy(0)),
+                            cx(slot_left) - cx(plate_cx_left), cy(PLATE_T) - cy(0),
+                            fc=C_PLATE, ec=C_OUT, lw=1.5, hatch="///", zorder=6))
+    # Plate right of slot
+    ax.add_patch(Rectangle((cx(slot_right), cy(0)),
+                            cx(plate_cx_right) - cx(slot_right), cy(PLATE_T) - cy(0),
+                            fc=C_PLATE, ec=C_OUT, lw=1.5, hatch="///", zorder=6))
+    # Slot opening (white gap)
+    ax.add_patch(Rectangle((cx(slot_left), cy(0)),
+                            cx(slot_right) - cx(slot_left), cy(PLATE_T) - cy(0),
+                            fc="white", ec=C_OUT, lw=0.8, zorder=5))
+    ax.text(cx(plate_cx_right + 3), cy(PLATE_T / 2),
+            f"FLAT PLATE\n({PLATE_T}mm)", ha="left", va="center",
+            fontsize=4.5, color=C_PLATE, **FONT, zorder=15)
+
+    # Lock block on top of plate
+    lock_cx_left = slot_cx_ctr - LOCK_W / 2
+    lock_cx_right = slot_cx_ctr + LOCK_W / 2
+    ax.add_patch(Rectangle((cx(lock_cx_left), cy(PLATE_T)),
+                            cx(lock_cx_right) - cx(lock_cx_left),
+                            cy(PLATE_T + LOCK_H) - cy(PLATE_T),
+                            fc=C_BOLT, ec=C_OUT, lw=1.5, hatch="///", zorder=8))
+    ax.text(cx(slot_cx_ctr), cy(PLATE_T + LOCK_H / 2),
+            f"LOCK\nBLOCK", ha="center", va="center",
+            fontsize=5, color="white", fontweight="bold",
+            **FONT, zorder=15)
+
+    # Bolt shank (through block, through slot, extends below plate)
+    bolt_shank_w = BOLT_DIA * 0.5   # visual width of shank
+    ax.add_patch(Rectangle((cx(slot_cx_ctr - bolt_shank_w / 2),
+                             cy(-NUT_H_LOCK)),
+                            cx(slot_cx_ctr + bolt_shank_w / 2) - cx(slot_cx_ctr - bolt_shank_w / 2),
+                            cy(PLATE_T + LOCK_H) - cy(-NUT_H_LOCK),
+                            fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))
+
+    # Bolt head on top of lock block
+    bolt_head_h = 5
+    bolt_head_w = BOLT_DIA * 1.8
+    ax.add_patch(Rectangle((cx(slot_cx_ctr - bolt_head_w / 2),
+                             cy(PLATE_T + LOCK_H)),
+                            cx(slot_cx_ctr + bolt_head_w / 2) - cx(slot_cx_ctr - bolt_head_w / 2),
+                            cy(PLATE_T + LOCK_H + bolt_head_h) - cy(PLATE_T + LOCK_H),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+    leader(ax, cx(slot_cx_ctr + bolt_head_w / 2 + 1), cy(PLATE_T + LOCK_H + bolt_head_h / 2),
+           cx(slot_cx_ctr + 30), cy(PLATE_T + LOCK_H + 20),
+           f"M{BOLT_DIA} HEX BOLT",
+           color=C_BOLT, fs=5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Washer below plate
+    washer_t = 2
+    ax.add_patch(Rectangle((cx(slot_cx_ctr - WASHER_DIA / 2),
+                             cy(-washer_t)),
+                            cx(slot_cx_ctr + WASHER_DIA / 2) - cx(slot_cx_ctr - WASHER_DIA / 2),
+                            cy(0) - cy(-washer_t),
+                            fc="#808080", ec=C_OUT, lw=1.0, zorder=8))
+
+    # Nut below washer
+    nut_w = BOLT_DIA * 1.6
+    ax.add_patch(Rectangle((cx(slot_cx_ctr - nut_w / 2),
+                             cy(-washer_t - NUT_H_LOCK)),
+                            cx(slot_cx_ctr + nut_w / 2) - cx(slot_cx_ctr - nut_w / 2),
+                            cy(-washer_t) - cy(-washer_t - NUT_H_LOCK),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+    leader(ax, cx(slot_cx_ctr + nut_w / 2 + 1), cy(-washer_t - NUT_H_LOCK / 2),
+           cx(slot_cx_ctr + 30), cy(-washer_t - NUT_H_LOCK - 10),
+           f"M{BOLT_DIA} NUT\n+ WASHER",
+           color=C_BOLT, fs=5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
+
+    # Slot dimension
+    draw_dim_h(ax, cx(slot_left), cx(slot_right),
+               cy(-washer_t - NUT_H_LOCK - 18),
+               f"{slot_cx_w}mm\nSLOT WIDTH", offset=cy(3) - cy(0), fs=4.5, font=FONT)
+    # Lock block width
+    draw_dim_h(ax, cx(lock_cx_left), cx(lock_cx_right),
+               cy(PLATE_T + LOCK_H + bolt_head_h + 5),
+               f"{LOCK_W}mm", offset=cy(3) - cy(0), fs=4.5, font=FONT)
+    # Lock height
+    draw_dim_v(ax, cx(plate_cx_right + 2), cy(PLATE_T), cy(PLATE_T + LOCK_H),
+               f"{LOCK_H}", offset=cx(3) - cx(0), fs=4.5, right=True, font=FONT)
+
+    # Slot length note (into page)
+    ax.text(cx(slot_cx_ctr), cy(-washer_t - NUT_H_LOCK - 28),
+            f"SLOT LENGTH: {SLOT_L}mm ALONG Yd\n(ALLOWS POSITION ADJUSTMENT)",
+            ha="center", va="top", fontsize=4.5, color=C_DIM,
+            **FONT, zorder=15)
+
+    # View C border
+    ax.add_patch(Rectangle((cx(-8), cy(-washer_t - NUT_H_LOCK - 35)),
+                            cx(plate_cx_right + 10) - cx(-8),
+                            cy(PLATE_T + LOCK_H + bolt_head_h + 15) - cy(-washer_t - NUT_H_LOCK - 35),
+                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
+
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
     notes_top = sy(beam_bot + 10)
@@ -2501,10 +2640,12 @@ def sheet7():
         f"   plate edge \u2014 forms pocket.",
         f"3. Beam ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS)",
         f"   sits in pocket, against lip.",
-        f"4. Lock block + M{THUMB_D} thumb screw",
-        f"   prevents lateral sliding.",
-        f"   Tool-free removal.",
-        f"5. Same at both ends",
+        f"4. Lock block + M{BOLT_DIA} bolt through",
+        f"   {SLOT_L}mm slot in plate.",
+        f"   Washer + nut below plate.",
+        f"5. Slot allows position adjustment",
+        f"   along Yd. Spanner removal.",
+        f"6. Same at both ends",
         f"   (near + far bracket).",
     ]
     for i, line in enumerate(notes):
@@ -2519,7 +2660,7 @@ def sheet7():
     title_block(ax, "SHEET 7 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL E \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
-                scale_note=f"SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW A: ALONG X / VIEW B: PLAN",
+                scale_note="SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEWS A/B/C",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)

@@ -2511,7 +2511,8 @@ def sheet7():
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
     VC_OX = BEAM_SHOW + 50
-    VC_OY = beam_bot - 30
+    # Position just below View B (plan view border bottom)
+    VC_OY = PV_OY + pv_border_bot * PV_S / S - 20
     VC_S  = 3.0   # larger scale for detail clarity
     def cx(mm): return sx(VC_OX + mm * VC_S / S)
     def cy(mm): return sy(VC_OY + mm * VC_S / S)

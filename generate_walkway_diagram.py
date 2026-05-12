@@ -262,10 +262,13 @@ def sheet1():
 
     # ── Grating clip ─────────────────────────────────────────────────────────
     clip_yd = WALKWAY_W * 0.6
-    clip_w = 10
-    clip_h = 15
-    ax.add_patch(Rectangle((sx(clip_yd), sy(brkt_arm_z - clip_h)),
-                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+    clip_w = 8
+    clip_below = 12   # extends below arm top
+    clip_above = 5    # extends above grate top
+    clip_bot = brkt_arm_z - clip_below
+    clip_top = grate_top + clip_above
+    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
+                            sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
            sx(clip_yd + 50), sy(brkt_arm_z + 35),
@@ -855,8 +858,9 @@ def sheet3():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
 
     # ── Grated deck ──────────────────────────────────────────────────────────
-    grate_bot = WALKWAY_H
-    grate_top = WALKWAY_H + WALKWAY_GRATE_T
+    # Grating sits on bracket arm: bottom at BRKT_ARM_Z (75mm), top at WALKWAY_H (100mm)
+    grate_bot = BRKT_ARM_Z  # = 75mm
+    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm
     ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
                             sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
@@ -867,12 +871,15 @@ def sheet3():
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
-    # Grating clip
+    # ── Grating clip ─────────────────────────────────────────────────────────
     clip_yd = WALKWAY_W * 0.6
-    clip_w = 10
-    clip_h = 15
-    ax.add_patch(Rectangle((sx(clip_yd), sy(BRKT_ARM_Z - clip_h)),
-                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+    clip_w = 8
+    clip_below = 12   # extends below arm top
+    clip_above = 5    # extends above grate top
+    clip_bot = BRKT_ARM_Z - clip_below
+    clip_top = grate_top + clip_above
+    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
+                            sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
            sx(clip_yd + 50), sy(BRKT_ARM_Z + 35),
@@ -884,9 +891,9 @@ def sheet3():
                f"{BRKT_VERT}mm\nVERT", offset=sx(6), fs=6.5, right=False, font=FONT)
     draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 20),
                f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
-    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_bot),
+    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(grate_bot), sy(grate_top),
+    draw_dim_v(ax, sx(WALKWAY_W + 50), sy(grate_bot), sy(grate_top),
                f"{WALKWAY_GRATE_T}mm", offset=sx(6), fs=6, right=True, font=FONT)
     draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-25),
                f"{CORR_DEPTH}mm CORR", offset=sy(10), fs=6, above=False, font=FONT)
@@ -1119,10 +1126,13 @@ def sheet4():
 
     # ── Grating clip ─────────────────────────────────────────────────────────
     clip_yd = arm_left + WALKWAY_W * 0.4
-    clip_w = 10
-    clip_h = 15
-    ax.add_patch(Rectangle((sx(clip_yd), sy(BRKT_ARM_Z - clip_h)),
-                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+    clip_w = 8
+    clip_below = 12   # extends below arm top
+    clip_above = 5    # extends above grate top
+    clip_bot = BRKT_ARM_Z - clip_below
+    clip_top = grate_top + clip_above
+    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
+                            sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
            sx(clip_yd - 40), sy(BRKT_ARM_Z + 35),

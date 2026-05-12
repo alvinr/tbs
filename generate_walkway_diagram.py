@@ -25,7 +25,7 @@ Sheet 4 — Detail B: Right walkway box section beam (IBC end):
   75×40×3mm steel RHS spanning full container width (2,362mm along Yd),
   through-bolted to floor at 457mm centers.  Positioned at X=4,632–4,672mm
   (3mm clear of tray rim, 2mm clear of IBC stack).  8mm cantilever plate
-  welded to inner face extends over tray to support grating.  Zero tray contact.
+  bolted to box top extends over tray to support grating.  Zero tray contact.
 
 Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -1280,51 +1280,70 @@ def sheet4():
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Cantilever plate (welded to box inner face, extends over tray) ───────
-    arm_bot = BRKT_ARM_Z - ARM_DEPTH
-    ax.add_patch(Rectangle((sx(WK_LEFT), sy(arm_bot)),
-                            sx(BOX_L_DX - WK_LEFT), sy(ARM_DEPTH),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(WK_LEFT), sx(BOX_L_DX)],
-            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color=C_OUT, lw=2.0, zorder=7)
-    # Weld symbol at plate-to-box junction
-    ax.plot([sx(BOX_L_DX - 3), sx(BOX_L_DX), sx(BOX_L_DX + 3)],
-            [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
-            color="#CC4400", lw=1.5, zorder=8)
-    ax.text(sx(BOX_L_DX), sy(arm_bot - 7), "WELD",
-            ha="center", va="top", fontsize=4.5, color="#CC4400",
-            **FONT, zorder=15)
+    # ── Cantilever plate (bolted to box top, extends over tray) ────────────
+    DECK_H = BOX_H + PLATE_T + WALKWAY_GRATE_T   # total deck height (108mm)
+    plate_bot = BOX_H
+    plate_top = BOX_H + PLATE_T
+    # Plate sits on box top and extends left over tray
+    ax.add_patch(Rectangle((sx(WK_LEFT), sy(plate_bot)),
+                            sx(BOX_R_DX - WK_LEFT), sy(PLATE_T),
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.85))
+    ax.plot([sx(WK_LEFT), sx(BOX_R_DX)],
+            [sy(plate_top), sy(plate_top)],
+            color=C_OUT, lw=1.5, zorder=9)
 
-    leader(ax, sx((WK_LEFT + BOX_L_DX) / 2), sy(arm_bot - 2),
-           sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(arm_bot - 25),
-           f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(WELDED TO BOX)",
+    # Bolts through plate into box top flange (2× M10)
+    PB_D = 10
+    PB_R = PB_D / 2
+    pb_bolt1 = BOX_L_DX + BOX_W * 0.3
+    pb_bolt2 = BOX_L_DX + BOX_W * 0.7
+    for pbx in [pb_bolt1, pb_bolt2]:
+        # Bolt shank through plate + box top flange
+        ax.add_patch(Rectangle((sx(pbx - PB_R * 0.4), sy(plate_bot - BOX_T)),
+                                sx(PB_R * 0.8), sy(PLATE_T + BOX_T),
+                                fc="#505058", ec=C_OUT, lw=0.5, zorder=9))
+        # Bolt head on top of plate
+        ax.add_patch(Rectangle((sx(pbx - PB_R), sy(plate_top)),
+                                sx(PB_D), sy(6),
+                                fc="#505058", ec=C_OUT, lw=0.8, zorder=10))
+        # Washer under bolt head
+        ax.add_patch(Rectangle((sx(pbx - PB_R - 1), sy(plate_top)),
+                                sx(PB_D + 2), sy(2),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+        # Nut inside box (under top flange)
+        ax.add_patch(Rectangle((sx(pbx - PB_R), sy(plate_bot - BOX_T - 8)),
+                                sx(PB_D), sy(8),
+                                fc="#505058", ec=C_OUT, lw=0.8, zorder=10))
+
+    leader(ax, sx((WK_LEFT + BOX_L_DX) / 2), sy(plate_bot - 2),
+           sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(plate_bot - 25),
+           f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(BOLTED TO BOX TOP)",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
-    grate_bot = BRKT_ARM_Z
+    grate_bot = plate_top
     grate_top = grate_bot + WALKWAY_GRATE_T
     ax.add_patch(Rectangle((sx(WK_LEFT), sy(grate_bot)),
                             sx(WK_RIGHT - WK_LEFT), sy(WALKWAY_GRATE_T),
-                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
+                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=10))
     bar_spacing = 34.2
     bar_w = 3
     for xb in np.arange(bar_w, WK_RIGHT - WK_LEFT - bar_w, bar_spacing):
         ax.add_patch(Rectangle((sx(WK_LEFT + xb), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
-                                fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
+                                fc="#909098", ec=C_OUT, lw=0.3, zorder=11))
 
     # ── Grating clip (innermost edge, closest to processing tray) ──────────
     clip_x = WK_LEFT + 12
     clip_w = 8
-    clip_bot = BRKT_ARM_Z - 12
+    clip_bot = plate_bot - 4
     clip_top = grate_top + 5
     ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot)),
                             sx(clip_w), sy(clip_top - clip_bot),
-                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_x - 2), sy(BRKT_ARM_Z),
-           sx(clip_x - 40), sy(BRKT_ARM_Z + 35),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=12))
+    leader(ax, sx(clip_x - 2), sy(plate_top),
+           sx(clip_x - 40), sy(plate_top + 35),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1343,12 +1362,15 @@ def sheet4():
     draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 15),
                f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
+               f"{DECK_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
     # Box dimensions
     draw_dim_v(ax, sx(BOX_R_DX + 15), sy(0), sy(BOX_H),
                f"{BOX_H}mm", offset=sx(6), fs=6, right=True, font=FONT)
     draw_dim_h(ax, sx(BOX_L_DX), sx(BOX_R_DX), sy(-8),
                f"{BOX_W}mm", offset=sy(4), fs=6, above=False, font=FONT)
+    # Plate thickness
+    draw_dim_v(ax, sx(BOX_R_DX + 15), sy(BOX_H), sy(plate_top),
+               f"{PLATE_T}mm", offset=sx(6), fs=5.5, right=True, font=FONT)
     # Box to tray rim clearance
     draw_dim_h(ax, sx(TRAY_DX), sx(BOX_L_DX), sy(PROC_TRAY_RIM + 8),
                f"3mm", offset=sy(5), fs=6, font=FONT)
@@ -1356,7 +1378,7 @@ def sheet4():
     draw_dim_h(ax, sx(BOX_R_DX), sx(IBC_DX), sy(PROC_TRAY_RIM + 8),
                f"{BOX_TO_IBC}mm", offset=sy(5), fs=6, font=FONT)
     # Cantilever arm
-    draw_dim_h(ax, sx(WK_LEFT), sx(BOX_L_DX), sy(arm_bot - 8),
+    draw_dim_h(ax, sx(WK_LEFT), sx(BOX_L_DX), sy(plate_bot - 8),
                f"{int(BOX_L_DX - WK_LEFT)}mm ARM", offset=sy(5), fs=6,
                above=False, font=FONT)
 
@@ -1372,9 +1394,9 @@ def sheet4():
         f"   3mm clearance to tray, {BOX_TO_IBC}mm to IBC.",
         f"3. Through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm",
         f"   centers with reinforcing plates underneath.",
-        f"4. {PLATE_T}mm cantilever plate welded to box",
-        f"   inner face supports walkway grating.",
-        f"5. Box top at Z={BOX_H}mm = grate support level.",
+        f"4. {PLATE_T}mm cantilever plate bolted to box top,",
+        f"   extends over tray to support walkway grating.",
+        f"5. Deck height {DECK_H}mm (box {BOX_H} + plate {PLATE_T} + grate {WALKWAY_GRATE_T}).",
         f"6. Zero tray contact \u2014 beam on bare floor.",
     ]
     for i, line in enumerate(notes):

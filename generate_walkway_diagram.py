@@ -1024,8 +1024,8 @@ def sheet3():
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
-    # ── Grating clip ─────────────────────────────────────────────────────────
-    clip_yd = WALKWAY_W * 0.6
+    # ── Grating clip (innermost edge, closest to processing tray) ──────────
+    clip_yd = WALKWAY_W - 20
     clip_w = 8
     clip_below = 12   # extends below arm top
     clip_above = 5    # extends above grate top
@@ -1035,7 +1035,7 @@ def sheet3():
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
-           sx(clip_yd + 50), sy(BRKT_ARM_Z + 35),
+           sx(clip_yd + 30), sy(BRKT_ARM_Z + 55),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1277,8 +1277,8 @@ def sheet4():
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
-    # ── Grating clip ─────────────────────────────────────────────────────────
-    clip_yd = arm_left + WALKWAY_W * 0.4
+    # ── Grating clip (innermost edge, closest to processing tray) ──────────
+    clip_yd = arm_left + 12
     clip_w = 8
     clip_below = 12   # extends below arm top
     clip_above = 5    # extends above grate top
@@ -1287,7 +1287,7 @@ def sheet4():
     ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
+    leader(ax, sx(clip_yd - 2), sy(BRKT_ARM_Z),
            sx(clip_yd - 40), sy(BRKT_ARM_Z + 35),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1605,8 +1605,8 @@ def sheet5():
             ha="center", va="bottom", fontsize=5.5, color=C_OUT,
             **FONT, zorder=15)
 
-    # ── Grating clip on near walkway ─────────────────────────────────────────
-    clip_x = near_wk_start + 80
+    # ── Grating clip on near walkway (innermost edge, toward processing tray)
+    clip_x = near_wk_end - 30
     clip_w = 8
     clip_below = 12
     clip_above = 5

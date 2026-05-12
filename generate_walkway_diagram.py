@@ -1836,8 +1836,9 @@ def sheet6():
     grate_bot = BRKT_ARM_Z   # = 75mm
     grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 100mm
 
-    # Floor leg geometry (cargo door side)
-    OUTER_LEG_X = tray_x - 30      # = 140mm (on bare floor, outside tray)
+    # Floor leg geometry (cargo door side — butts up to tray outer wall)
+    RUBBER_T = 2                     # rubber pad thickness
+    OUTER_LEG_X = tray_x - TRAY_WALL - BASE_W / 2  # leg centered so foot right edge = tray outer wall
     LEG_TOP = grate_bot             # = 75mm (cantilever arm top = grate bottom)
 
     # Bearer beam geometry (processing tray side)
@@ -1913,23 +1914,25 @@ def sheet6():
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Floor-standing support leg (cargo door side) ─────────────────────────
-    # Vertical post
-    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(BASE_T)),
-                            sx(LEG_W), sy(LEG_TOP - ARM_T - BASE_T),
-                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
-    # Hollow tube detail
-    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2 + LEG_T), sy(BASE_T + LEG_T)),
-                            sx(LEG_W - 2 * LEG_T),
-                            sy(LEG_TOP - ARM_T - BASE_T - 2 * LEG_T),
-                            fc="#F0E0C8", ec=C_OUT, lw=0.4, zorder=7))
-    # Foot plate
+    # Rubber pad on floor
     ax.add_patch(Rectangle((sx(OUTER_LEG_X - BASE_W / 2), sy(0)),
+                            sx(BASE_W), sy(RUBBER_T),
+                            fc="#333333", ec=C_OUT, lw=0.6, zorder=6))
+    # Foot plate on rubber pad
+    foot_bot = RUBBER_T
+    foot_top = foot_bot + BASE_T
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - BASE_W / 2), sy(foot_bot)),
                             sx(BASE_W), sy(BASE_T),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
-    # Rubber pad
-    ax.add_patch(Rectangle((sx(OUTER_LEG_X - BASE_W / 2), sy(-2)),
-                            sx(BASE_W), sy(2),
-                            fc="#333333", ec=C_OUT, lw=0.6, zorder=6))
+    # Vertical post on foot plate
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(foot_top)),
+                            sx(LEG_W), sy(LEG_TOP - ARM_T - foot_top),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
+    # Hollow tube detail
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2 + LEG_T), sy(foot_top + LEG_T)),
+                            sx(LEG_W - 2 * LEG_T),
+                            sy(LEG_TOP - ARM_T - foot_top - 2 * LEG_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.4, zorder=7))
     # Cantilever arm (from leg top to past tray rim)
     ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(LEG_TOP - ARM_T)),
                             sx(ARM_END - OUTER_LEG_X + LEG_W / 2), sy(ARM_T),
@@ -1943,9 +1946,10 @@ def sheet6():
            f"WITH CANTILEVER ARM",
            color=C_SUPPORT, fs=5.5,
            ha="center", va="top", arrow_style="-|>", font=FONT)
-    ax.text(sx(OUTER_LEG_X), sy(-5),
-            "RUBBER PAD", ha="center", va="top", fontsize=4.5,
-            color="#333333", **FONT, zorder=15)
+    leader(ax, sx(OUTER_LEG_X), sy(RUBBER_T / 2),
+           sx(OUTER_LEG_X - 50), sy(-15),
+           "RUBBER PAD", color="#333333", fs=5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Bearer beam (processing tray side, X=470) ────────────────────────────
     # Cross-section of 50×50×3mm Al RHS at X=470

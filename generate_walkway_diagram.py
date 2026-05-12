@@ -20,6 +20,15 @@ Sheet 2 — Plan view of walkway layout:
 Sheet 3 — Detail: Single bracket / wall attachment:
   Close-up of gusset bracket bolted to corrugated wall rib, showing
   reinforcing plate, M12 through-bolts, and grating clip.
+
+Sheet 4 — Detail B: Right walkway bracket on angle iron:
+  Bracket bolted to 50x50x5mm angle iron welded to flat end wall.
+
+Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
+  View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
+  Shows left walkway grating (X=170-470, removable lift-out) meeting near
+  walkway bracket arm at butt joint (X=470). Panel transport envelope
+  (X=0-420) shown as ghost, confirming 50mm clearance to near walkway.
 """
 
 import numpy as np
@@ -43,7 +52,7 @@ from tbs_constants import (
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
-    PANEL_SLIDE,
+    PANEL_SLIDE, PANEL_CENTER_T, PANEL_FLOOR_GAP,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -1197,288 +1206,231 @@ def sheet4():
 # Scale ≈ 2:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet5():
-    S = 2.0
+    S = 2.5   # scale factor
 
     def sx(mm): return mm * S
     def sy(mm): return mm * S
 
+    # ── Key geometry ─────────────────────────────────────────────────────────
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (bracket arm top = grate bottom)
-    ARM_DEPTH  = WALKWAY_BRACKET_T + 2
+    ARM_DEPTH  = WALKWAY_BRACKET_T + 2         # arm visual thickness
     arm_bot    = BRKT_ARM_Z - ARM_DEPTH
-    CORR_DEPTH = 38      # corrugation depth
-    WALL_T     = 1.6     # wall steel thickness
     TRAY_WALL  = 3       # tray wall thickness (SS)
     TRAY_FLOOR_T = 2     # tray floor thickness
 
-    # The butt joint: near walkway ends at X=470, left walkway starts at X=170.
-    # The near walkway bracket arm extends to Yd=300, left walkway grating
-    # sits on the arm top at the butt joint boundary.
+    # X positions (horizontal axis in this view — looking along Yd)
+    LEFT_WK_L = WALKWAY_LEFT_X                    # = 170mm (left walkway left edge)
+    LEFT_WK_R = WALKWAY_LEFT_X + WALKWAY_W        # = 470mm (butt joint / near walkway start)
+    PANEL_INNER = PANEL_SLIDE + PANEL_CENTER_T    # = 420mm (panel transport inner face)
+    CLEARANCE = LEFT_WK_R - PANEL_INNER           # = 50mm
+    NEAR_WK_SHOW = 200   # show 200mm of near walkway past butt joint
+
+    grate_bot = BRKT_ARM_Z   # = 75mm
+    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 100mm
 
     # ── Figure ───────────────────────────────────────────────────────────────
-    # View: elevation looking along the near walkway (X axis toward cargo door).
-    # Yd = horizontal axis (0 = pinhole wall)
-    # Z = vertical axis
-    YD_LO = -60
-    YD_HI = WALKWAY_W * 2 + 200  # room for left walkway + far arm + notes
-    Z_LO  = -40
-    Z_HI  = WALKWAY_H + 100
+    # View: looking along Yd axis (from near wall toward far wall).
+    # X = horizontal axis (0 = cargo door end wall, positive into container)
+    # Z = vertical axis (0 = floor)
+    X_LO = -50
+    X_HI = LEFT_WK_R + NEAR_WK_SHOW + 350  # room for near walkway + notes
+    Z_LO = -40
+    Z_HI = WALKWAY_H + 110
 
-    fig, ax = plt.subplots(figsize=(16, 10))
+    fig, ax = plt.subplots(figsize=(18, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.set_xlim(sx(X_LO), sx(X_HI))
     ax.set_ylim(sy(Z_LO), sy(Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
     # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
+    ax.add_patch(Rectangle((sx(X_LO), sy(-15)), sx(X_HI - X_LO), sy(15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Pinhole wall (corrugated, at Yd=0) ───────────────────────────────────
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH - 5), sy(0)),
-                            sx(CORR_DEPTH + 5), sy(Z_HI),
-                            fc=C_WALL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
-    # Corrugation rib at section cut
-    rib_w = 12
-    ax.add_patch(Rectangle((sx(-rib_w / 2), sy(0)),
-                            sx(rib_w), sy(Z_HI),
-                            fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(-CORR_DEPTH / 2 - 3), sy(Z_HI - 8),
-            "PINHOLE\nWALL",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Near walkway bracket (full detail with bolts) ────────────────────────
-    BRKT_T = WALKWAY_BRACKET_T  # 8mm
-    BRKT_VERT = WALKWAY_BRACKET_H  # 150mm
-
-    # Vertical mounting plate on wall
-    ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
-                            sx(BRKT_T), sy(BRKT_VERT),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-
-    # Through-bolts (2x M12 through wall rib + bracket plate)
-    BOLT_D = 12
-    BOLT_R = BOLT_D / 2
-    bolt_z1 = 30
-    bolt_z2 = 120
-    C_BOLT = "#505058"
-    NUT_H = 10
-    BOLT_HEAD = 8
-
-    REINF_T = 6  # reinforcing plate on wall exterior
-    # Bolt path: head -> reinf plate -> wall panel -> air gap -> rib face -> bracket -> nut
-    # Wall exterior panel at ~ -CORR_DEPTH, rib face at ~ -rib_w/2
-    wall_ext_yd = -CORR_DEPTH  # exterior panel face
-
-    for bz in [bolt_z1, bolt_z2]:
-        shank_hw = BOLT_R * 0.4
-        # Bolt shank — full penetration from wall exterior to bracket interior
-        ax.add_patch(Rectangle((sx(wall_ext_yd), sy(bz - shank_hw)),
-                                sx(-wall_ext_yd + BRKT_T / 2), sy(shank_hw * 2),
-                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Bolt head on exterior (behind reinforcing plate)
-        ax.add_patch(Rectangle((sx(wall_ext_yd - REINF_T - BOLT_HEAD), sy(bz - BOLT_R)),
-                                sx(BOLT_HEAD), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Reinforcing plate on wall exterior
-        ax.add_patch(Rectangle((sx(wall_ext_yd - REINF_T), sy(bz - BOLT_R - 4)),
-                                sx(REINF_T), sy(BOLT_D + 8),
-                                fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
-        # Nut on interior side of bracket
-        ax.add_patch(Rectangle((sx(BRKT_T / 2), sy(bz - BOLT_R)),
-                                sx(NUT_H), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-
-    leader(ax, sx(BRKT_T / 2 + NUT_H + 2), sy(bolt_z2),
-           sx(BRKT_T / 2 + 50), sy(bolt_z2 + 15),
-           f"2\u00d7 M12 THROUGH-\nBOLTS TO WALL RIB\n(W/ REINFORCING\nPLATE BEHIND)",
-           color=C_DIM, fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # Horizontal arm (projects inward at Z=BRKT_ARM_Z)
-    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
-                            sx(WALKWAY_W), sy(ARM_DEPTH),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color=C_OUT, lw=2.0, zorder=7)
-
-    # Gusset under near walkway arm
-    GUSSET_REACH = 70
-    gusset_verts = [
-        (sx(0), sy(0)),
-        (sx(0), sy(arm_bot)),
-        (sx(GUSSET_REACH), sy(arm_bot)),
-    ]
-    ax.add_patch(Polygon(gusset_verts, closed=True,
-                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
-            color=C_OUT, lw=1.5, zorder=6)
-
-    leader(ax, sx(WALKWAY_W / 2), sy(arm_bot - 3),
-           sx(WALKWAY_W / 2 - 30), sy(arm_bot - 25),
-           f"NEAR WALKWAY\nBRACKET ARM\n(WALL-MOUNTED)",
-           color=C_BRKT, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Near walkway grating (on the bracket arm) ────────────────────────────
-    # Grating sits on bracket arm: bottom at BRKT_ARM_Z (75mm), top at WALKWAY_H (100mm)
-    grate_bot = BRKT_ARM_Z  # = 75mm
-    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm
-    ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
-                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
-    bar_spacing = 34.2
-    bar_w = 3
-    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
-                                fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
-    ax.text(sx(WALKWAY_W / 2), sy(grate_top + 3),
-            f"NEAR WALKWAY\nGRATING ({WALKWAY_GRATE_T}mm)",
-            ha="center", va="bottom", fontsize=5.5, color=C_OUT,
-            **FONT, zorder=15)
-
-    # ── Left walkway grating (sits on bracket arm, past butt joint) ──────────
-    # Same grating as near/far: bottom at BRKT_ARM_Z (75mm), top at 100mm.
-    left_grate_yd_start = WALKWAY_W  # butt joint line
-    left_grate_bot = BRKT_ARM_Z  # = 75mm — same as near walkway
-    left_grate_top = left_grate_bot + WALKWAY_GRATE_T  # = 100mm
-
-    ax.add_patch(Rectangle((sx(left_grate_yd_start), sy(left_grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
-                            fc="#A8B8A8", ec=C_OUT, lw=1.5, zorder=7))
-    # Bearing bars
-    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(left_grate_yd_start + yd), sy(left_grate_bot)),
-                                sx(bar_w + 1), sy(WALKWAY_GRATE_T),
-                                fc="#8A9A8A", ec=C_OUT, lw=0.3, zorder=8))
-
-    ax.text(sx(left_grate_yd_start + WALKWAY_W / 2), sy(left_grate_top + 3),
-            f"LEFT WALKWAY\nGRATING ({WALKWAY_GRATE_T}mm)\nREMOVABLE LIFT-OUT",
-            ha="center", va="bottom", fontsize=6, color="#206020",
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Butt joint line ────────────────────────────────────────────────────────
-    ax.plot([sx(WALKWAY_W), sx(WALKWAY_W)], [sy(0), sy(left_grate_top + 2)],
-            color=C_OUT, lw=1.5, ls=(0, (5, 3)), zorder=9)
-    ax.text(sx(WALKWAY_W), sy(-5),
-            "BUTT JOINT\n(NO MITER)",
-            ha="center", va="top", fontsize=5.5, color=C_OUT,
-            **FONT, zorder=15)
-
-    # ── Support detail: left grating resting on bracket arm ──────────────────
-    contact_yd = left_grate_yd_start
-    ax.plot([sx(contact_yd - 5), sx(contact_yd + 30)],
-            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color="#CC4400", lw=2.5, zorder=10)
-    leader(ax, sx(contact_yd + 15), sy(BRKT_ARM_Z),
-           sx(contact_yd + 80), sy(BRKT_ARM_Z - 20),
-           f"GRATING RESTS ON\nBRACKET ARM TOP\n(Z={BRKT_ARM_Z}mm)\nNO FASTENERS \u2014\nLIFT TO REMOVE",
-           color="#CC4400", fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Far walkway bracket arm (support at other end) ─────────────────────
-    # Show partial far walkway bracket arm at the right edge of the left walkway
-    # to make it clear the grating is supported at BOTH ends (bridge, not cantilever).
-    left_grate_yd_end = left_grate_yd_start + WALKWAY_W
-    far_arm_start = left_grate_yd_end - 30  # overlap the grating by 30mm
-    far_arm_w = 60  # show partial arm extending right
-    ax.add_patch(Rectangle((sx(far_arm_start), sy(arm_bot)),
-                            sx(far_arm_w), sy(ARM_DEPTH),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(far_arm_start), sx(far_arm_start + far_arm_w)],
-            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color=C_OUT, lw=2.0, zorder=7)
-
-    # Break lines on far arm (indicating it continues to far wall)
-    bk_yd = far_arm_start + far_arm_w
-    for z_val in np.linspace(arm_bot, BRKT_ARM_Z, 4):
-        ax.plot([sx(bk_yd - 2), sx(bk_yd + 2)],
-                [sy(z_val - 2), sy(z_val + 2)],
-                color=C_OUT, lw=0.8, zorder=10)
-
-    # Far butt joint line
-    ax.plot([sx(left_grate_yd_end), sx(left_grate_yd_end)],
-            [sy(0), sy(left_grate_top + 2)],
-            color=C_OUT, lw=1.5, ls=(0, (5, 3)), zorder=9)
-    ax.text(sx(left_grate_yd_end), sy(-5),
-            "FAR BUTT\nJOINT",
-            ha="center", va="top", fontsize=5.5, color=C_OUT,
-            **FONT, zorder=15)
-
-    # Far support highlight
-    ax.plot([sx(left_grate_yd_end - 30), sx(left_grate_yd_end + 5)],
-            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color="#CC4400", lw=2.5, zorder=10)
-    leader(ax, sx(left_grate_yd_end - 10), sy(BRKT_ARM_Z),
-           sx(left_grate_yd_end + 40), sy(BRKT_ARM_Z - 15),
-           f"FAR WALKWAY\nBRACKET ARM\n(SUPPORT #2)",
-           color="#CC4400", fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Unsupported span annotation ──────────────────────────────────────────
-    span_y = left_grate_top + 35
-    ax.annotate("", xy=(sx(left_grate_yd_start), sy(span_y)),
-                xytext=(sx(left_grate_yd_end), sy(span_y)),
-                arrowprops=dict(arrowstyle="<->", color="#2060A0", lw=1.5, mutation_scale=10))
-    ax.text(sx(left_grate_yd_start + WALKWAY_W / 2), sy(span_y + 5),
-            f"LEFT WALKWAY = {WALKWAY_W}mm WIDE\nSUPPORTED AT BOTH ENDS\n(SPANS {WALKWAY_LEFT_SPAN}mm BETWEEN\nNEAR/FAR BUTT JOINTS)",
-            ha="center", va="bottom", fontsize=6, color="#2060A0",
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Processing tray (complete: near rim + floor + break line) ────────────
-    tray_yd = PROC_TRAY_YD_NEAR  # = 80mm from wall
-    # Near rim (vertical wall)
-    ax.add_patch(Rectangle((sx(tray_yd - TRAY_WALL), sy(0)),
+    # ── Processing tray rim (at X = PROC_TRAY_X_L = 170mm) ──────────────────
+    tray_x = PROC_TRAY_X_L   # = 170mm (same as LEFT_WK_L)
+    # Tray left rim (vertical wall)
+    ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(0)),
                             sx(TRAY_WALL), sy(PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    # Tray floor (extends inward past both walkways)
-    tray_floor_end = YD_HI - 40
-    ax.add_patch(Rectangle((sx(tray_yd), sy(0)),
-                            sx(tray_floor_end - tray_yd), sy(TRAY_FLOOR_T),
+    # Tray floor extending right
+    tray_floor_end = X_HI - 200
+    ax.add_patch(Rectangle((sx(tray_x), sy(0)),
+                            sx(tray_floor_end - tray_x), sy(TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    # Break line on tray floor (continues beyond view)
+    # Break line on tray floor
     bx = sx(tray_floor_end)
     for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
         ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
-
     # Tray rim label
-    leader(ax, sx(tray_yd - 5), sy(PROC_TRAY_RIM / 2 + 10),
-           sx(tray_yd - 20), sy(PROC_TRAY_RIM + 8),
-           f"TRAY RIM\n{PROC_TRAY_RIM}mm", color=C_TRAY, fs=5.5,
+    leader(ax, sx(tray_x - 5), sy(PROC_TRAY_RIM / 2 + 10),
+           sx(tray_x - 30), sy(PROC_TRAY_RIM + 15),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Height dimensions ────────────────────────────────────────────────────
-    # Near walkway grate top
-    draw_dim_v(ax, sx(-CORR_DEPTH - 10), sy(0), sy(grate_top),
-               f"{int(grate_top)}mm\nTOP", offset=sx(6), fs=6, right=False, font=FONT)
-    # Left walkway grate top (should match)
-    draw_dim_v(ax, sx(left_grate_yd_end + 55), sy(0), sy(left_grate_top),
-               f"{left_grate_top}mm\nTOP", offset=sx(6), fs=6, right=True, font=FONT)
+    # ── Panel transport envelope (ghost) ─────────────────────────────────────
+    # Panel sweeps X=0 to X=420, bottom at Z=80mm (PANEL_FLOOR_GAP)
+    PANEL_Z_TOP = 250   # show enough of panel to be visible (not full height)
+    ax.add_patch(Rectangle((sx(0), sy(PANEL_FLOOR_GAP)),
+                            sx(PANEL_INNER), sy(PANEL_Z_TOP - PANEL_FLOOR_GAP),
+                            fc="#CC4422", ec="#CC4422", lw=1.5, ls="--",
+                            alpha=0.08, zorder=3))
+    ax.add_patch(Rectangle((sx(0), sy(PANEL_FLOOR_GAP)),
+                            sx(PANEL_INNER), sy(PANEL_Z_TOP - PANEL_FLOOR_GAP),
+                            fc="none", ec="#CC4422", lw=1.5, ls="--",
+                            alpha=0.5, zorder=8))
+    # Panel bottom line (Z=80mm)
+    ax.plot([sx(0), sx(PANEL_INNER)], [sy(PANEL_FLOOR_GAP), sy(PANEL_FLOOR_GAP)],
+            color="#CC4422", lw=2.0, ls="--", alpha=0.6, zorder=8)
+    ax.text(sx(PANEL_INNER / 2), sy(PANEL_Z_TOP - 10),
+            f"PANEL TRANSPORT\nENVELOPE\n(X=0\u2013{PANEL_INNER}mm)\nBOTTOM AT Z={PANEL_FLOOR_GAP}mm",
+            ha="center", va="top", fontsize=6, color="#CC4422",
+            fontweight="bold", **FONT, alpha=0.7, zorder=15)
+
+    # ── Left walkway grating (X=170 to X=470, removable lift-out) ────────────
+    C_LEFT_WK = "#A8C8A8"   # green tint for removable section
+    ax.add_patch(Rectangle((sx(LEFT_WK_L), sy(grate_bot)),
+                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+                            fc=C_LEFT_WK, ec=C_OUT, lw=1.5, zorder=7))
+    # Bearing bars
+    bar_spacing = 34.2
+    bar_w = 3
+    for x in np.arange(LEFT_WK_L + bar_w, LEFT_WK_R - bar_w, bar_spacing):
+        ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
+                                sx(bar_w), sy(WALKWAY_GRATE_T),
+                                fc="#8AAA8A", ec=C_OUT, lw=0.3, zorder=8))
+    ax.text(sx((LEFT_WK_L + LEFT_WK_R) / 2), sy(grate_top + 4),
+            f"LEFT WALKWAY GRATING\n({WALKWAY_GRATE_T}mm) \u2014 REMOVABLE LIFT-OUT",
+            ha="center", va="bottom", fontsize=6.5, color="#206020",
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Near walkway bracket at butt joint (X=470) ───────────────────────────
+    # This bracket is mounted on the near container wall (Yd=0). In this view
+    # (looking along Yd), we see the bracket arm in cross-section. The vertical
+    # leg is on the wall (perpendicular to view — shown as a narrow strip).
+    BRKT_T = WALKWAY_BRACKET_T  # 8mm
+
+    # Bracket arm cross-section at X=470 (extends in Yd toward viewer)
+    ax.add_patch(Rectangle((sx(LEFT_WK_R - BRKT_T / 2), sy(arm_bot)),
+                            sx(BRKT_T), sy(ARM_DEPTH),
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
+    # Arm top surface highlight
+    ax.plot([sx(LEFT_WK_R - BRKT_T / 2), sx(LEFT_WK_R + BRKT_T / 2)],
+            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color=C_OUT, lw=2.0, zorder=7)
+
+    leader(ax, sx(LEFT_WK_R), sy(arm_bot - 2),
+           sx(LEFT_WK_R), sy(arm_bot - 22),
+           f"NEAR WALKWAY\nBRACKET ARM\n(CROSS-SECTION)\nAT X={LEFT_WK_R}mm",
+           color=C_BRKT, fs=5.5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    # ── Contact point: left grating rests on bracket arm ─────────────────────
+    ax.plot([sx(LEFT_WK_R - 15), sx(LEFT_WK_R + 15)],
+            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color="#CC4400", lw=3.0, zorder=10)
+    leader(ax, sx(LEFT_WK_R - 10), sy(BRKT_ARM_Z),
+           sx(LEFT_WK_R - 60), sy(BRKT_ARM_Z - 18),
+           f"GRATING RESTS ON\nBRACKET ARM TOP\n(Z={BRKT_ARM_Z}mm)\nNO FASTENERS \u2014\nLIFT TO REMOVE",
+           color="#CC4400", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Near walkway grating (X=470 onward, standard gray) ───────────────────
+    near_wk_start = LEFT_WK_R
+    near_wk_end = near_wk_start + NEAR_WK_SHOW
+    ax.add_patch(Rectangle((sx(near_wk_start), sy(grate_bot)),
+                            sx(NEAR_WK_SHOW), sy(WALKWAY_GRATE_T),
+                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
+    # Bearing bars
+    for x in np.arange(near_wk_start + bar_w, near_wk_end - bar_w, bar_spacing):
+        ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
+                                sx(bar_w), sy(WALKWAY_GRATE_T),
+                                fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
+    # Break lines on right edge (near walkway continues)
+    for z_off in [-5, 5, 15]:
+        ax.plot([sx(near_wk_end - 2), sx(near_wk_end + 2)],
+                [sy(BRKT_ARM_Z + z_off - 2), sy(BRKT_ARM_Z + z_off + 2)],
+                color=C_OUT, lw=0.8, zorder=10)
+    ax.text(sx(near_wk_start + NEAR_WK_SHOW / 2), sy(grate_top + 4),
+            f"NEAR WALKWAY\n({WALKWAY_GRATE_T}mm GRATE)",
+            ha="center", va="bottom", fontsize=5.5, color=C_OUT,
+            **FONT, zorder=15)
+
+    # ── Grating clip on near walkway ─────────────────────────────────────────
+    clip_x = near_wk_start + 80
+    clip_w = 8
+    clip_below = 12
+    clip_above = 5
+    clip_bot_z = BRKT_ARM_Z - clip_below
+    clip_top_z = grate_top + clip_above
+    ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot_z)),
+                            sx(clip_w), sy(clip_top_z - clip_bot_z),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, sx(clip_x + clip_w + 2), sy(grate_top),
+           sx(clip_x + 50), sy(grate_top + 20),
+           "GRATING CLIP", color="#505058", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Butt joint line at X=470 ─────────────────────────────────────────────
+    ax.plot([sx(LEFT_WK_R), sx(LEFT_WK_R)], [sy(-5), sy(grate_top + 3)],
+            color=C_OUT, lw=2.0, ls=(0, (5, 3)), zorder=9)
+    ax.text(sx(LEFT_WK_R), sy(-8),
+            f"BUTT JOINT\nX={LEFT_WK_R}mm",
+            ha="center", va="top", fontsize=6, color=C_OUT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── 50mm clearance dimension (X=420 to X=470) ────────────────────────────
+    clr_z = PANEL_FLOOR_GAP + 5
+    draw_dim_h(ax, sx(PANEL_INNER), sx(LEFT_WK_R), sy(grate_top + 45),
+               f"{CLEARANCE}mm\nCLEARANCE", offset=sy(5), fs=7,
+               color="#208020", font=FONT)
+    # Vertical guide lines for clearance
+    ax.plot([sx(PANEL_INNER), sx(PANEL_INNER)], [sy(0), sy(grate_top + 55)],
+            color="#208020", lw=0.6, ls=":", alpha=0.5, zorder=3)
+    ax.plot([sx(LEFT_WK_R), sx(LEFT_WK_R)], [sy(grate_top + 5), sy(grate_top + 55)],
+            color="#208020", lw=0.6, ls=":", alpha=0.5, zorder=3)
+
+    # ── Left walkway span dimension ──────────────────────────────────────────
+    draw_dim_h(ax, sx(LEFT_WK_L), sx(LEFT_WK_R), sy(grate_top + 70),
+               f"{WALKWAY_W}mm LEFT WALKWAY", offset=sy(5), fs=7, font=FONT)
+
+    # ── Height dimensions (right side) ───────────────────────────────────────
+    dim_x = near_wk_end + 40
+    # Grate top
+    draw_dim_v(ax, sx(dim_x), sy(0), sy(grate_top),
+               f"{int(grate_top)}mm\nDECK", offset=sx(6), fs=6, right=True, font=FONT)
     # Arm height
-    draw_dim_v(ax, sx(left_grate_yd_end + 55), sy(0), sy(BRKT_ARM_Z),
+    draw_dim_v(ax, sx(dim_x), sy(0), sy(BRKT_ARM_Z),
                f"{BRKT_ARM_Z}mm\nARM", offset=sx(30), fs=6, right=True, font=FONT)
+    # Tray rim
+    draw_dim_v(ax, sx(tray_x + 20), sy(0), sy(PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm", offset=sx(6), fs=6, right=True,
+               color=C_TRAY, font=FONT)
+    # Panel bottom
+    draw_dim_v(ax, sx(LEFT_WK_L - 20), sy(0), sy(PANEL_FLOOR_GAP),
+               f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=sx(6), fs=5.5, right=False,
+               color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(left_grate_yd_end + 100)
-    notes_top = sy(Z_HI - 10)
+    notes_x = sx(near_wk_end + 80)
+    notes_top = sy(Z_HI - 5)
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         "",
-        f"1. NO brackets \u2014 hinged panel occupies",
-        f"   the cargo door end wall at X=0.",
-        f"2. Panel slides {PANEL_SLIDE}mm inward for transport,",
-        f"   colliding with left walkway at X=170\u2013470.",
-        f"3. Left walkway MUST be removed before",
-        f"   sliding panel to transport position.",
-        f"4. Grating supported at BOTH ends: rests on",
-        f"   near + far walkway bracket arms at butt",
-        f"   joints (X=470). Bridge, not cantilever.",
-        f"5. Standard grating ({WALKWAY_GRATE_T}mm) spans",
-        f"   {WALKWAY_LEFT_SPAN}mm between support points.",
-        f"6. Both grate tops aligned at Z={int(grate_top)}mm.",
+        f"1. NO brackets under left walkway \u2014",
+        f"   hinged panel occupies end wall.",
+        f"2. Panel slides {PANEL_SLIDE}mm inward for",
+        f"   transport (inner face to X={PANEL_INNER}mm).",
+        f"3. Left walkway at X={LEFT_WK_L}\u2013{LEFT_WK_R}mm",
+        f"   MUST be removed before sliding.",
+        f"4. {CLEARANCE}mm clearance between panel inner",
+        f"   face (X={PANEL_INNER}) and near walkway",
+        f"   bracket (X={LEFT_WK_R}) \u2014 no interference.",
+        f"5. Left grating rests on near/far bracket",
+        f"   arms at butt joints. Lift to remove.",
+        f"6. Grate tops aligned: Z={int(grate_top)}mm both sides.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -1491,8 +1443,8 @@ def sheet5():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL C \u2014 LEFT WALKWAY LIFT-OUT AT BUTT JOINT",
-                scale_note=f"SCALE \u2248 2:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW AT NEAR-LEFT BUTT JOINT",
+                subtitle="DETAIL C \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
+                scale_note=f"SCALE \u2248 2.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)

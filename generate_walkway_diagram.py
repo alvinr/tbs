@@ -368,21 +368,21 @@ def sheet1():
 
     for i in range(2):
         s_yd = shoe_start + i * (SHOE_W + SHOE_GAP)
-        # Sole
+        # Sole (yellow ghost)
         ax.add_patch(FancyBboxPatch(
             (sx(s_yd), sy(shoe_z)), sx(SHOE_W), sy(SHOE_H),
-            boxstyle="round,pad=0", fc="#303030", ec=C_OUT, lw=0.6,
-            zorder=10, alpha=0.5))
+            boxstyle="round,pad=0", fc="#FFD700", ec="#B89600", lw=0.6,
+            zorder=10, alpha=0.3, ls="--"))
         # Heel bump (slightly thicker at back)
         heel_w = SHOE_W * 0.3
         ax.add_patch(Rectangle(
             (sx(s_yd), sy(shoe_z)), sx(heel_w), sy(SHOE_H + 3),
-            fc="#303030", ec="none", zorder=10, alpha=0.4))
+            fc="#FFD700", ec="none", zorder=10, alpha=0.25))
 
     # Shoe length annotation (into-page dimension, since shoes point along X)
     ax.text(sx(WALKWAY_W / 2), sy(shoe_z + SHOE_H + 6),
             "US 9 SHOE PAIR\n(270mm LONG \u00d7 100mm WIDE)",
-            ha="center", va="bottom", fontsize=5.5, color="#404040",
+            ha="center", va="bottom", fontsize=5.5, color="#B89600",
             **FONT, zorder=15, alpha=0.7)
     leader(ax, sx(shoe_start + SHOE_W / 2), sy(shoe_z + SHOE_H),
            sx(95), sy(shoe_z + SHOE_H + 35),

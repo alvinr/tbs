@@ -232,11 +232,11 @@ Mounting varies by wall type:
   floor-standing support legs at X=140 on bare floor outside tray; (c) bearing
   strip (25x25x3mm Al angle) on the processing tray rim. Zero tray contact.
 
-**Sheet 1 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
-![TBS-001 Walkway — Sheet 1: Cross-Section](assets/walkway-sheet1.png)
+**Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
+![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
-**Sheet 2 — Plan view: All 4 sections with bracket positions and panel transport envelope**
-![TBS-001 Walkway — Sheet 2: Plan View](assets/walkway-sheet2.png)
+**Sheet 2 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
+![TBS-001 Walkway — Sheet 2: Cross-Section](assets/walkway-sheet2.png)
 
 **Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
 ![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)

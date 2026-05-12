@@ -264,16 +264,19 @@ Permanently installed — no removal for transport mode conversion.*
 | Walkway width | 300 mm | `WALKWAY_W` |
 | Deck height | 100 mm | `WALKWAY_H` |
 | Grate thickness | 25 mm | `WALKWAY_GRATE_T` |
-| Spanning beam section | 75×75×4 mm | `WALKWAY_BEAM_W/H/T` |
+| Bracket vertical leg | 150 mm | `WALKWAY_BRACKET_H` |
+| Bracket plate thickness | 8 mm | `WALKWAY_BRACKET_T` |
+| Bracket spacing | 457 mm | `WALKWAY_BRACKET_SPACING` |
+| Container rib spacing | 457 mm | `CONTAINER_RIB_SPACING` |
 | Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
 | Far walkway Yd | 2,062 mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
 | Right walkway X | 4,229 mm | `WALKWAY_RIGHT_X` |
 
 *Components: galvanized press-locked steel grating (30×3mm bar, 25mm bearing bar),
-30×30×3mm galvanized angle outer rail, 75×75×4mm galv RHS spanning beam (inner,
-full-length), 25×25×2mm SHS end legs at miter corners only,
-50×50×6mm EPDM rubber foot pads. 4 removable sections.*
+8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm centers,
+M12 through-bolts with reinforcing plates behind corrugated wall. No legs, no beam,
+no floor contact. 4 removable sections.*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
 

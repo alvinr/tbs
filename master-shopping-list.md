@@ -23,7 +23,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
-| 7b. Perimeter walkway (4 sections, spanning beam) | $830 | $1,250 |
+| 7b. Perimeter walkway (4 sections, wall-cantilevered) | $620 | $1,020 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
@@ -385,22 +385,22 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ## 7b. Perimeter Walkway
 
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Spanning beam design: 75×75×4mm galv RHS beam spans full walkway length, legs at ends only — no intermediate legs on tray floor, leaving the entire tray interior clear for film loading. Deck height 100mm (75mm beam + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design: 8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm (18") centers. No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).*
 
 ### Walkway sections (4 off)
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Press-locked steel grating, 25mm bearing bar | Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 2× 2,362×300mm (left/right) | ~4.1 m² | McNichols / Metal Supermarkets SoCal | ~$250–$380 |
-| Outer frame rail, 30×30×3mm galv angle | Outer (wall-side) rail for each section | ~13.6 m | Metal Supermarkets / Pacific Coast Steel | ~$40–$55 |
-| Spanning beam, 75×75×4mm galv RHS | Inner beam, spans full section length. Replaces inner rail + all mid-span legs. | ~13.6 m | Metal Supermarkets / Pacific Coast Steel | ~$190–$245 |
-| End legs, 25×25×2mm galv SHS | 100mm tall, at walkway ends only (miter corners). ~16 end legs + 8 miter legs | 24 | Metal Supermarkets / Pacific Coast Steel | ~$12–$18 |
-| Rubber foot pads, 50×50×6mm EPDM | Self-adhesive, bonded to leg bottoms | 24 | McMaster-Carr / Amazon | ~$10–$14 |
-| Fabrication (cut, weld, galvanize) | 4 sections, outer rail + beam + end legs + grate | 1 job | Local fab / metal shop | ~$300–$500 |
+| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. | 30 | Local fab / Metal Supermarkets SoCal | ~$240–$360 |
+| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position | 30 | Metal Supermarkets / Pacific Coast Steel | ~$60–$90 |
+| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 60 | McMaster-Carr / Bolt Depot | ~$60–$90 |
+| Grating clips | Slide-on clips to secure grating to bracket arms — removable without tools | 40 | McNichols / McMaster-Carr | ~$20–$30 |
+| Fabrication + installation | Cut/weld/galvanize 30 brackets, weld reinforcing plates, drill wall ribs, install | 1 job | Local fab / metal shop | ~$250–$400 |
 
-**Walkway subtotal: ~$830–$1,250**
+**Walkway subtotal: ~$620–$1,020**
 
-*Each section weighs approximately 30–40 kg (heavier spanning beam). Two-person lift recommended. Sections are removed for tray access during coating.*
+*Grating panels lift onto bracket arms and clip in place. Sections are removed for tray access during coating. No floor contact — entire tray interior clear.*
 
 ---
 

@@ -204,19 +204,23 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 # working parts (valves, electrical panel, film plane, tilt-swing adjusters)
 # without wading through the wet processing tray.
 #
-# Spanning beam design (rev 7): inner frame rail replaced by 75×75×4mm galv RHS
-# beam spanning the full walkway length.  Legs only at the two ends of each
-# section (in the miter corner zones).  No intermediate legs on the tray floor
-# — the entire tray interior is clear for film loading.
-# Deck height 100mm (75mm beam + 25mm grate) clears the 50mm tray rim by 50mm.
-# Outer legs on container floor; end legs in miter corner zones on tray floor.
+# Wall-cantilevered bracket design (rev 8): triangular gusset brackets bolted
+# to container wall structural ribs at 457mm (18") centers.  Each bracket is
+# an 8mm steel plate right-triangle gusset: 150mm vertical leg bolted to wall
+# rib, 300mm horizontal arm projecting inward, diagonal brace welded between.
+# Grating sits directly on bracket arms.  NO legs, NO beam, NO floor contact.
+# Entire tray interior is completely clear for film loading.
+# Deck height 100mm (75mm bracket arm + 25mm grate) clears the 50mm tray rim.
 # Material: galvanized press-locked steel grating, 25mm thick.
-WALKWAY_W       = 300    # walkway width (mm) [rev7: was 400; narrower for larger film area]
-WALKWAY_H       = 100    # deck height above floor (mm) — 75mm beam + 25mm grate
+WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
+WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
-WALKWAY_BEAM_W  = 75     # spanning beam section width (mm) — 75×75×4mm RHS
-WALKWAY_BEAM_H  = 75     # spanning beam section height (mm)
-WALKWAY_BEAM_T  = 4      # spanning beam wall thickness (mm)
+# Container structural rib spacing (ISO standard 20ft container)
+CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
+# Wall-mounted cantilever brackets
+WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
+WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
+WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

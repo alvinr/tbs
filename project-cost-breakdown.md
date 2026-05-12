@@ -17,7 +17,7 @@
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
 | **5. Processing water system (incl. tray)** | $2,634 | $3,282 | $3,929 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
-| **6a. Perimeter walkway (4 sections, spanning beam)** | $830 | $1,040 | $1,250 |
+| **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $620 | $820 | $1,020 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
@@ -262,16 +262,16 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. 300mm wide, 100mm deck height (75mm spanning beam + 25mm grate). Spanning beam design: 75×75×4mm galv RHS spans full walkway length with legs at ends only — no intermediate legs on tray floor, leaving the entire tray interior clear for film loading. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
+Four removable grated walkway sections around all 4 sides of the processing tray. 300mm wide, 100mm deck height (75mm bracket arm + 25mm grate). Wall-cantilevered bracket design: 8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm (18") centers. No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 25mm bearing bar (galvanized) | $280 | $350 | $420 | ~4.7 m² total; McNichols / Metal Supermarkets SoCal |
-| Outer frame rail, 30×30×3mm galv angle (~13.6m) | $40 | $48 | $55 | Wall-side rail for each section |
-| Spanning beam, 75×75×4mm galv RHS (~13.6m) | $190 | $218 | $245 | Inner beam, spans full section length |
-| End legs, 25×25×2mm galv SHS (×24) + rubber foot pads | $22 | $26 | $32 | Ends only (miter corners), 24 total |
-| Fabrication (cut, weld, galvanize) — 4 sections | $300 | $400 | $500 | Local metal fab shop |
-| **Perimeter walkway total** | **$830** | **$1,040** | **$1,250** | |
+| Press-locked steel grating, 25mm bearing bar (galvanized) | $250 | $315 | $380 | ~4.1 m² total; McNichols / Metal Supermarkets SoCal |
+| Wall brackets, 8mm steel plate gusset (×30) | $240 | $300 | $360 | Triangular gusset, 150mm vert × 300mm arm, hot-dip galvanized |
+| Reinforcing plates, 80×180×6mm mild steel (×30) | $60 | $75 | $90 | Welded to wall exterior behind each bracket |
+| M12×60mm hex bolts + nuts + washers (×60) | $60 | $75 | $90 | 2 per bracket, grade 8.8 galvanized |
+| Fabrication (cut, weld, galvanize brackets + install) | $250 | $325 | $400 | Local metal fab shop |
+| **Perimeter walkway total** | **$620** | **$820** | **$1,020** | |
 
 ---
 
@@ -451,12 +451,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual) | $2,200 |
 | Water system (incl. processing tray) | $2,634 |
 | Revolving drum light trap (custom fabrication) | $950 |
-| Perimeter walkway (4 sections, spanning beam) | $830 |
+| Perimeter walkway (4 sections, wall-cantilevered) | $620 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$12,926** |
+| **Scenario A total** | **~$12,716** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -468,13 +468,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual + electric actuation) | $3,227 |
 | Water system (incl. processing tray) | $3,282 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
-| Perimeter walkway (4 sections, spanning beam) | $1,040 |
+| Perimeter walkway (4 sections, wall-cantilevered) | $820 |
 | Ceiling rail suspension | $208 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$18,239** |
+| **Scenario B total (excl. CDL)** | **~$18,019** |
 
 ### Scenario C — Full production, own transport, CDL
 

@@ -5,14 +5,18 @@
 generate_walkway_diagram.py  —  TBS-001 Perimeter Walkway
 
 Sheet 1 — Cross-section through near (pinhole side) walkway:
-  Detail view (~5:1) showing grated deck, outer frame rail, spanning beam
-  (75×75×4mm RHS), tray rim clearance, and dimensional annotations.
-  Section cut looking along X axis.  Spanning beam design: no intermediate
-  legs on tray floor — legs only at walkway ends (miter corners).
+  Detail view (~5:1) showing grated deck, wall-cantilevered bracket,
+  tray rim clearance, and dimensional annotations.
+  Section cut looking along X axis.  Wall-cantilevered bracket design:
+  triangular gusset brackets bolted to container wall ribs — no legs,
+  no beam, no floor contact.  Entire tray is clear for film loading.
 
 Sheet 2 — Plan view of walkway layout:
-  Top-down view showing all 4 walkway sections with end-only leg positions.
-  Spanning beam paths, corner connections, and lifting points annotated.
+  Top-down view showing all 4 walkway sections with bracket positions.
+
+Sheet 3 — Detail: Single bracket / wall attachment:
+  Close-up of gusset bracket bolted to corrugated wall rib, showing
+  reinforcing plate, M12 through-bolts, and grating clip.
 """
 
 import numpy as np
@@ -30,7 +34,8 @@ from tbs_constants import (
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_BEAM_W, WALKWAY_BEAM_H, WALKWAY_BEAM_T,
+    WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
+    CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
@@ -46,17 +51,16 @@ C_GRATE = "#A0A0A8"
 C_FRAME = "#808890"
 C_TRAY  = "#A0B0A0"
 C_FLOOR = "#E0DDD8"
-C_LEG   = "#707078"
 C_WALL  = "#C0C0C8"
+C_BRKT  = "#707888"   # bracket fill
 FONT    = {"fontfamily": "monospace"}
-
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Cross-Section Through Near Walkway
 #
 # View: looking along X axis (into the container).  Section cut through
-# the near (pinhole side) walkway at an arbitrary X position.
+# the near (pinhole side) walkway at a bracket position.
 # Horizontal = Yd (0 = pinhole wall, positive toward far wall)
 # Vertical   = Z  (0 = floor, positive up)
 # Scale ≈ 5:1 for clarity.
@@ -68,33 +72,19 @@ def sheet1():
     def sy(mm): return mm * S
 
     # ── Structural dimensions (mm real) ──────────────────────────────────────
-    FRAME_W    = 30    # outer frame channel width (30×30mm angle)
-    FRAME_T    = 3     # outer frame angle thickness
-    LEG_W      = 25    # end leg SHS width (25×25mm)
-    LEG_T      = 2     # end leg wall thickness
-    FOOT_W     = 50    # rubber foot pad width
-    FOOT_H     = 5     # rubber foot pad height
     TRAY_WALL  = 3     # tray wall thickness (SS)
     TRAY_FLOOR = 2     # tray floor thickness (SS)
-    BEAM_W     = WALKWAY_BEAM_W   # 75mm spanning beam width
-    BEAM_H     = WALKWAY_BEAM_H   # 75mm spanning beam height
-    BEAM_T     = WALKWAY_BEAM_T   # 4mm beam wall thickness
+    CORR_DEPTH = 38    # corrugation depth (mm)
+    WALL_T     = 1.6   # wall steel thickness (mm)
+    BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (bracket arm top Z)
+    BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
+    BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
 
     # Positions (mm real)
-    WALL_THICK = 5     # show a sliver of container wall at Yd=0 (schematic)
     TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm from wall
 
-    # Outer frame rail — near wall side, on container floor
-    OUTER_RAIL_YD = 12             # outer frame rail starts here (foot clears wall)
-    LEG_OUTER_YD = OUTER_RAIL_YD + FRAME_W / 2   # = 27mm (centered under outer rail)
-
-    # Spanning beam — inner side, sits on tray floor at walkway inner edge
-    # Beam inner face aligns with walkway inner edge (Yd = WALKWAY_W)
-    BEAM_YD = WALKWAY_W - BEAM_W   # = 325mm (beam outer face Yd position)
-
     # ── Figure ───────────────────────────────────────────────────────────────
-    # Show Yd from -30 to WALKWAY_W+100 (= 500mm), Z from -30 to WALKWAY_H+WALKWAY_GRATE_T+60
-    YD_LO = -60
+    YD_LO = -80
     YD_HI = WALKWAY_W + 180
     Z_LO  = -70
     Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
@@ -111,10 +101,21 @@ def sheet1():
     ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Container wall (pinhole wall, at Yd=0) ──────────────────────────────
-    ax.add_patch(Rectangle((sx(-10), sy(0)), sx(10), sy(Z_HI),
+    # ── Container wall (pinhole wall, at Yd=0) with corrugation ─────────────
+    # Show corrugated wall profile — wall face at Yd=0, corrugation extends
+    # inward (positive Yd) by CORR_DEPTH.  Draw a simplified corrugation.
+    wall_z_top = Z_HI
+    # Flat wall panel (exterior face at Yd ~ -CORR_DEPTH, interior rib at Yd=0)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH - 5), sy(0)),
+                            sx(CORR_DEPTH + 5), sy(wall_z_top),
                             fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    ax.text(sx(-20), sy(Z_HI - 15), "PINHOLE\nWALL",
+    # Corrugation rib at section cut (this is where bracket bolts to)
+    # Show the rib as a thicker vertical strip at Yd=0
+    rib_w = 12  # rib flange width at section
+    ax.add_patch(Rectangle((sx(-rib_w / 2), sy(0)),
+                            sx(rib_w), sy(wall_z_top),
+                            fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
+    ax.text(sx(-CORR_DEPTH / 2 - 5), sy(wall_z_top - 15), "PINHOLE\nWALL\n(CORRUGATED)",
             ha="center", va="top", fontsize=6, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
@@ -149,46 +150,64 @@ def sheet1():
             ha="left", va="bottom", fontsize=5.5, color="#4080C0",
             **FONT, alpha=0.7, zorder=15)
 
-    # ── Outer frame rail (30×30mm angle, near wall side) ───────────────────
-    frame_top = WALKWAY_H   # top of frame = deck height (100mm)
-    frame_bot = WALKWAY_H - FRAME_W  # bottom of outer frame (70mm)
+    # ── Cantilever bracket (triangular gusset) ───────────────────────────────
+    # Bracket profile: right-triangle gusset bolted to wall rib
+    # - Vertical leg: from Z=0 to Z=BRKT_VERT (150mm) on wall face
+    # - Horizontal arm: from Yd=0 to Yd=WALKWAY_W (300mm) at Z=BRKT_ARM_H (75mm)
+    # - Diagonal brace: from (0, BRKT_VERT) to (WALKWAY_W, BRKT_ARM_H)
+    # Draw as a filled triangle with plate thickness shown
 
-    # Outer frame rail — supported by end legs on container floor
-    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD), sy(frame_bot)),
-                            sx(FRAME_W), sy(FRAME_W),
-                            fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6))
+    brkt_arm_z = BRKT_ARM_H  # = 75mm (top of horizontal arm = grate support)
 
-    # ── Spanning beam (75×75×4mm RHS, inner side) ────────────────────────
-    # Beam is ELEVATED — supported by end legs at frame height, spanning freely
-    # between them.  At mid-span (this section) there is nothing below the beam:
-    # clear air above the tray floor for film to lay flat.
-    beam_bot = frame_top - BEAM_H   # beam bottom Z = 100 - 75 = 25mm
-    beam_top = frame_top            # beam top Z = 100mm (flush with grate bottom)
-    ax.add_patch(Rectangle((sx(BEAM_YD), sy(beam_bot)),
-                            sx(BEAM_W), sy(BEAM_H),
-                            fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6))
-    # Hollow interior indication
-    ax.add_patch(Rectangle((sx(BEAM_YD + BEAM_T), sy(beam_bot + BEAM_T)),
-                            sx(BEAM_W - 2 * BEAM_T), sy(BEAM_H - 2 * BEAM_T),
-                            fc="#A0A0A8", ec="none", zorder=6, alpha=0.3))
+    # Outer triangle (bracket profile)
+    tri_verts = [
+        (sx(0), sy(0)),                          # bottom at wall
+        (sx(0), sy(BRKT_VERT)),                  # top of vertical leg on wall
+        (sx(WALKWAY_W), sy(brkt_arm_z)),          # tip of horizontal arm
+    ]
+    ax.add_patch(Polygon(tri_verts, closed=True,
+                         fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6, alpha=0.8))
 
-    # Cross-member (connects outer rail top to beam top — thin bar)
-    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD + FRAME_W), sy(frame_top - FRAME_T)),
-                            sx(BEAM_YD - OUTER_RAIL_YD - FRAME_W), sy(FRAME_T),
-                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
+    # Horizontal arm top surface (where grate sits) — emphasize with thicker line
+    ax.plot([sx(0), sx(WALKWAY_W)], [sy(brkt_arm_z), sy(brkt_arm_z)],
+            color=C_OUT, lw=2.0, zorder=7)
 
-    # Frame labels
-    leader(ax, sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot - 2),
-           sx(OUTER_RAIL_YD - 55), sy(frame_bot - 15),
-           "30×30×3mm\nGALV ANGLE\n(OUTER RAIL)", color=C_FRAME, fs=5.5,
+    # Plate thickness indication — inner triangle (cutout to show it's plate, not solid)
+    inset = BRKT_T * 2  # visual inset for clarity
+    inner_verts = [
+        (sx(inset), sy(inset + 10)),
+        (sx(inset), sy(BRKT_VERT - inset)),
+        (sx(WALKWAY_W - inset * 3), sy(brkt_arm_z)),
+    ]
+    ax.add_patch(Polygon(inner_verts, closed=True,
+                         fc="#8890A0", ec="none", zorder=6, alpha=0.3))
+
+    # Bolt holes on vertical leg (2× M12, centered on rib)
+    bolt_z1 = 30
+    bolt_z2 = 120
+    bolt_r = 6   # M12 hole radius
+    for bz in [bolt_z1, bolt_z2]:
+        ax.add_patch(Circle((sx(0), sy(bz)), sx(bolt_r),
+                     fc=BG, ec=C_OUT, lw=1.0, zorder=8))
+        # Cross marks
+        ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
+        ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
+
+    # Bracket label
+    leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z - 15),
+           sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z - 40),
+           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\nGUSSET (TYP.)",
+           color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(BEAM_YD + BEAM_W / 2), sy(beam_bot + BEAM_H / 2),
-           sx(BEAM_YD + BEAM_W + 50), sy(beam_bot + BEAM_H / 2 + 20),
-           f"{BEAM_W}×{BEAM_H}×{BEAM_T}mm RHS\nGALV STEEL\n(SPANNING BEAM\nELEVATED — NO\nTRAY CONTACT)", color=C_LEG, fs=5.5,
+
+    # Bolt label
+    leader(ax, sx(5), sy(bolt_z1),
+           sx(-40), sy(bolt_z1 - 20),
+           "2× M12 THROUGH-\nBOLTS TO WALL RIB\n(W/ REINFORCING\nPLATE BEHIND)",
+           color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
-    # Main grate rectangle
     grate_bot = WALKWAY_H
     grate_top = WALKWAY_H + WALKWAY_GRATE_T
     ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
@@ -208,51 +227,28 @@ def sheet1():
                                 sx(2), sy(cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    ax.text(sx(WALKWAY_W * 4/5), sy(grate_top + 5),
+    ax.text(sx(WALKWAY_W / 2), sy(grate_top + 5),
             f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Outer end leg (on container floor — shown as ghost, section is mid-span)
-    # At mid-span the outer leg is absent (legs at ends only).
-    # Draw ghost outline to show where end legs sit.
-    leg_top = frame_bot
-    leg_h = leg_top - FOOT_H
-    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - LEG_W / 2), sy(FOOT_H)),
-                            sx(LEG_W), sy(leg_h),
-                            fc="none", ec=C_LEG, lw=1.0, ls=(0, (4, 3)),
-                            alpha=0.4, zorder=5))
-    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - FOOT_W / 2), sy(0)),
-                            sx(FOOT_W), sy(FOOT_H),
-                            fc="none", ec=C_LEG, lw=0.8, ls=(0, (4, 3)),
-                            alpha=0.4, zorder=5))
-    ax.text(sx(LEG_OUTER_YD), sy(leg_top / 2),
-            "END LEG\n(AT ENDS\nONLY)",
-            ha="center", va="center", fontsize=5, color=C_LEG,
-            fontweight="bold", **FONT, zorder=15, alpha=0.6)
-    leader(ax, sx(LEG_OUTER_YD + LEG_W), sy(leg_top / 2),
-           sx(LEG_OUTER_YD + 60), sy(leg_top / 2 - 15),
-           f"25×25×2mm SHS\nGALV STEEL\n+ RUBBER FOOT PAD\n(ENDS ONLY — NOT\nAT THIS SECTION)",
-           color=C_LEG, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Clear tray floor annotation ──────────────────────────────────────────
-    # Arrow showing clear air gap under the elevated spanning beam
-    clr_x = sx(BEAM_YD + BEAM_W / 2)
-    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)), xytext=(clr_x, sy(beam_bot - 1)),
+    # ── Clear tray area annotation ───────────────────────────────────────────
+    # Arrow showing clear air under the entire walkway — no legs, no beam
+    clr_x = sx(WALKWAY_W * 0.7)
+    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)), xytext=(clr_x, sy(brkt_arm_z - 1)),
                 arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
-    gap_mm = beam_bot - TRAY_FLOOR
-    ax.text(clr_x + sx(5), sy((TRAY_FLOOR + beam_bot) / 2),
-            f"{gap_mm:.0f}mm\nCLEAR\n(FILM LAYS\nFLAT HERE)",
+    gap_mm = brkt_arm_z - TRAY_FLOOR
+    ax.text(clr_x + sx(5), sy((TRAY_FLOOR + brkt_arm_z) / 2),
+            f"{gap_mm:.0f}mm\nCLEAR AIR\n(NO LEGS,\nNO BEAM —\nFILM LAYS\nFLAT HERE)",
             ha="left", va="center", fontsize=5, color="#208020",
             fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
-    # Walkway width
+    # Walkway width (= bracket arm cantilever)
     draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 25),
                f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7, font=FONT)
 
-    # Deck height (floor to grate bottom = beam + spacer)
+    # Deck height (floor to grate bottom)
     draw_dim_v(ax, sx(WALKWAY_W + 20), sy(0), sy(grate_bot),
                f"{WALKWAY_H}mm\nDECK H", offset=sx(8), fs=7, right=True, font=FONT)
 
@@ -260,9 +256,13 @@ def sheet1():
     draw_dim_v(ax, sx(WALKWAY_W + 20), sy(grate_bot), sy(grate_top),
                f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5, right=True, font=FONT)
 
-    # Beam height
-    draw_dim_v(ax, sx(BEAM_YD - 10), sy(beam_bot), sy(beam_top),
-               f"{BEAM_H}mm\nBEAM", offset=sx(8), fs=6.5, right=False, font=FONT)
+    # Bracket vertical leg height
+    draw_dim_v(ax, sx(-CORR_DEPTH - 15), sy(0), sy(BRKT_VERT),
+               f"{BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
+
+    # Bracket arm height
+    draw_dim_v(ax, sx(WALKWAY_W + 55), sy(0), sy(brkt_arm_z),
+               f"{brkt_arm_z}mm\nARM", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Tray rim height
     draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
@@ -275,35 +275,28 @@ def sheet1():
                f"{clr}mm\nCLR", offset=sx(8), fs=6.5, right=True,
                color="#208020", font=FONT)
 
-    # Wall to outer rail
-    draw_dim_h(ax, sx(0), sx(OUTER_RAIL_YD), sy(-22),
-               f"{OUTER_RAIL_YD}mm", offset=sy(14), fs=6, above=False, font=FONT)
+    # Corrugation depth
+    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
+               f"{CORR_DEPTH}mm\nCORR", offset=sy(14), fs=6, above=False, font=FONT)
 
-    # Beam position from wall
-    draw_dim_h(ax, sx(OUTER_RAIL_YD), sx(BEAM_YD), sy(-22),
-               f"{BEAM_YD - OUTER_RAIL_YD}mm", offset=sy(14), fs=6, above=False, font=FONT)
+    # Wall to tray rim
+    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-45),
+               f"{TRAY_RIM_YD}mm", offset=sy(14), fs=6, above=False, font=FONT)
 
-    # ── Person silhouette (standing on walkway, for scale) ───────────────────
-    # Simple stick figure, shoe at grate_top
+    # ── Person silhouette ────────────────────────────────────────────────────
     shoe_yd = WALKWAY_W / 2
     shoe_z = grate_top
-    # Shoe
     ax.add_patch(Rectangle((sx(shoe_yd - 15), sy(shoe_z)),
                             sx(30), sy(5),
                             fc="#404040", ec=C_OUT, lw=0.5, zorder=10, alpha=0.4))
-    leader(ax, sx(shoe_yd - 15), sy(shoe_z+5),
-           sx(95), sy(shoe_z)*1.5,
-           f"OPERATOR\n(STANDING SHOE)", color=C_TRAY, fs=6,
+    leader(ax, sx(shoe_yd - 15), sy(shoe_z + 5),
+           sx(95), sy(shoe_z) * 1.5,
+           "OPERATOR\n(STANDING SHOE)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ax.text(sx(shoe_yd + 25), sy(shoe_z + 3),
-    #         "OPERATOR\n(STANDING SHOE)",
-    #         ha="left", va="center", fontsize=5, color=C_DIM,
-    #         **FONT, alpha=0.5, zorder=15)
 
     # ── Axis labels ──────────────────────────────────────────────────────────
     ax.text(sx(YD_HI / 2), sy(Z_LO + 5),
-            "Yd  (container width, 0 = pinhole wall)  →",
+            "Yd  (container width, 0 = pinhole wall)  \u2192",
             ha="center", va="bottom", fontsize=6.5, color=C_DIM,
             **FONT, zorder=15, style="italic")
 
@@ -314,16 +307,16 @@ def sheet1():
         "CONSTRUCTION NOTES:",
         "",
         f"1. Grating: {WALKWAY_GRATE_T}mm press-locked galvanized steel,",
-        f"   30×3mm bearing bars at 34.2mm pitch.",
-        f"2. Outer rail: 30×30×3mm galvanized angle iron.",
-        f"3. Inner beam: {BEAM_W}×{BEAM_H}×{BEAM_T}mm galv RHS — spans full",
-        f"   walkway length. Legs at ENDS ONLY (miter corners).",
-        f"4. No intermediate legs on tray floor — full tray",
-        f"   interior clear for film loading.",
-        f"5. Feet: 50×50×5mm EPDM rubber pads.",
-        f"6. Grating clips to frame — no permanent fixings.",
-        f"7. Each section lifts out for tray access / transport.",
-        f"8. Near + far: {PROC_TRAY_W}mm × {WALKWAY_W}mm.  Left + right: {C_WID}mm × {WALKWAY_W}mm.",
+        f"   30\u00d73mm bearing bars at 34.2mm pitch.",
+        f"2. Cantilever brackets: {BRKT_T}mm steel plate gusset,",
+        f"   bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"3. NO legs, NO beam — entire tray floor clear",
+        f"   for film loading. Zero tray contact.",
+        f"4. 2\u00d7 M12 through-bolts per bracket, with",
+        f"   reinforcing plate behind corrugated wall.",
+        f"5. Grating clips to bracket arms — removable.",
+        f"6. Each section lifts off brackets for tray access.",
+        f"7. Near + far: {PROC_TRAY_W}\u00d7{WALKWAY_W}mm.  Left + right: {C_WID}\u00d7{WALKWAY_W}mm.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -336,8 +329,8 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="CROSS-SECTION — NEAR WALKWAY (LOOKING ALONG X AXIS)",
-                scale_note="SCALE ≈ 5:1 · ALL DIMS IN mm · SECTION THROUGH PINHOLE SIDE WALKWAY",
+                subtitle="CROSS-SECTION \u2014 NEAR WALKWAY (LOOKING ALONG X AXIS)",
+                scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -347,18 +340,17 @@ def sheet1():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — Plan View of Walkway Leg Layout
+# SHEET 2 — Plan View of Walkway Layout
 #
-# Top-down view showing all 4 walkway sections with leg positions.
+# Top-down view showing all 4 walkway sections with bracket positions.
 # Horizontal = X (container long axis)
 # Vertical   = Yd (container width)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
     import matplotlib.patches as mpatches
 
-    # ── Spanning beam design — legs at ends only ───────────────────────────
-    BEAM_W = WALKWAY_BEAM_W   # 75mm beam section width
-    END_LEG_INSET = 50        # end leg inset from walkway ends (mm)
+    BRKT_MARK_W = 30   # bracket marker width in plan view (mm, visual)
+    BRKT_MARK_D = 20   # bracket marker depth in plan view (mm, visual)
 
     # ── Figure ───────────────────────────────────────────────────────────────
     PAD_X = 300
@@ -394,7 +386,7 @@ def sheet2():
                             alpha=0.3, zorder=2))
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
             (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 1.75,
-            f"PROCESSING TRAY\n{PROC_TRAY_W}×{PROC_TRAY_D}mm",
+            f"PROCESSING TRAY\n{PROC_TRAY_W}\u00d7{PROC_TRAY_D}mm",
             ha="center", va="center", fontsize=8, color=C_DIM,
             alpha=0.4, **FONT, zorder=3)
 
@@ -403,25 +395,19 @@ def sheet2():
     WK_ALPHA = 0.6
     W = WALKWAY_W
 
-    # Polygon vertices for each walkway panel — mitered at corners to avoid
-    # overlapping hatching where near/far and left/right panels meet.
-    LX  = WALKWAY_LEFT_X;   LXR = LX + W        # left walkway X range
-    RX  = WALKWAY_RIGHT_X;  RXR = RX + W        # right walkway X range
-    NY  = WALKWAY_NEAR_YD;  NYI = NY + W         # near walkway Yd range
-    FY  = WALKWAY_FAR_YD;   FYO = FY + W         # far walkway Yd range
-    TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W  # near/far X span
+    LX  = WALKWAY_LEFT_X;   LXR = LX + W
+    RX  = WALKWAY_RIGHT_X;  RXR = RX + W
+    NY  = WALKWAY_NEAR_YD;  NYI = NY + W
+    FY  = WALKWAY_FAR_YD;   FYO = FY + W
+    TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W
 
     walkway_polys = [
-        # Near walkway: full X span, mitered at both ends
         ("NEAR",  [(TL, NY), (TR, NY), (RX, NYI), (LXR, NYI)],
          TL, NY, PROC_TRAY_W, W, True),
-        # Far walkway: full X span, mitered at both ends
         ("FAR",   [(TL, FYO), (TR, FYO), (RX, FY), (LXR, FY)],
          TL, FY, PROC_TRAY_W, W, True),
-        # Left walkway: full Yd span, mitered at both ends
         ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FY), (LXR, NYI)],
          LX, 0, W, C_WID, False),
-        # Right walkway: full Yd span, mitered at both ends
         ("RIGHT", [(RXR, NY), (RXR, FYO), (RX, FY), (RX, NYI)],
          RX, 0, W, C_WID, False),
     ]
@@ -432,91 +418,68 @@ def sheet2():
                              fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
                              alpha=WK_ALPHA, zorder=4))
 
-        # Spanning beam — filled rectangle at true 75mm width
-        C_BEAM = "#909098"
+        # Wall bracket positions — small rectangles at wall edge
         if is_x_axis:
-            if name == "NEAR":
-                beam_yd0 = wy + WALKWAY_W - BEAM_W   # inner edge
-            else:
-                beam_yd0 = wy                         # inner edge (far side)
-            ax.add_patch(Rectangle((wx, beam_yd0), ww, BEAM_W,
-                         fc=C_BEAM, ec=C_OUT, lw=0.8, alpha=0.5, zorder=5))
-        else:
-            if name == "LEFT":
-                beam_x0 = wx + WALKWAY_W - BEAM_W
-            else:
-                beam_x0 = wx
-            ax.add_patch(Rectangle((beam_x0, wy), BEAM_W, wh,
-                         fc=C_BEAM, ec=C_OUT, lw=0.8, alpha=0.5, zorder=5))
-
-        # End legs — only at the two ends of each section (near miter corners)
-        if is_x_axis:
-            for lx in [wx + END_LEG_INSET, wx + ww - END_LEG_INSET]:
+            # Near/far walkways: brackets along the long wall (Yd=0 or Yd=C_WID)
+            # Bracket spacing along X axis at container rib positions
+            x_start = wx
+            x_end = wx + ww
+            # Generate bracket X positions at rib spacing
+            brkt_xs = np.arange(x_start + WALKWAY_BRACKET_SPACING / 2,
+                                x_end, WALKWAY_BRACKET_SPACING)
+            for bx in brkt_xs:
                 if name == "NEAR":
-                    outer_yd = wy + 40
-                    inner_yd = wy + WALKWAY_W - BEAM_W / 2
+                    # Brackets on pinhole wall (Yd=0), projecting inward
+                    ax.add_patch(Rectangle((bx - BRKT_MARK_W / 2, NY),
+                                 BRKT_MARK_W, BRKT_MARK_D,
+                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
                 else:
-                    outer_yd = wy + WALKWAY_W - 40
-                    inner_yd = wy + BEAM_W / 2
-                ax.plot(lx, outer_yd, 'o', color=C_LEG, markersize=4,
-                        markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
-                ax.plot(lx, inner_yd, 'o', color=C_LEG, markersize=4,
-                        markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
+                    # Brackets on far wall (Yd=C_WID), projecting inward
+                    ax.add_patch(Rectangle((bx - BRKT_MARK_W / 2, FYO - BRKT_MARK_D),
+                                 BRKT_MARK_W, BRKT_MARK_D,
+                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
         else:
-            for lyd in [wy + END_LEG_INSET, wy + wh - END_LEG_INSET]:
-                outer_x = wx + 40
-                inner_x = wx + WALKWAY_W - BEAM_W / 2
-                ax.plot(outer_x, lyd, 'o', color=C_LEG, markersize=4,
-                        markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
-                ax.plot(inner_x, lyd, 'o', color=C_LEG, markersize=4,
-                        markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=6)
+            # Left/right walkways: brackets along end walls
+            yd_start = wy
+            yd_end = wy + wh
+            brkt_yds = np.arange(yd_start + WALKWAY_BRACKET_SPACING / 2,
+                                 yd_end, WALKWAY_BRACKET_SPACING)
+            for by in brkt_yds:
+                if name == "LEFT":
+                    ax.add_patch(Rectangle((LX, by - BRKT_MARK_W / 2),
+                                 BRKT_MARK_D, BRKT_MARK_W,
+                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
+                else:
+                    ax.add_patch(Rectangle((RXR - BRKT_MARK_D, by - BRKT_MARK_W / 2),
+                                 BRKT_MARK_D, BRKT_MARK_W,
+                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
 
         # Section label
         cx = wx + ww / 2
         cy = wy + wh / 2
         rot = 0 if is_x_axis else 90
         length = ww if is_x_axis else wh
-        ax.text(cx, cy, f"{name} WALKWAY\n{int(length)}×{WALKWAY_W}mm",
+        ax.text(cx, cy, f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm",
                 ha="center", va="center", fontsize=6, color=C_OUT,
                 backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
     # ── 45° miter joints at corners ────────────────────────────────────────────
-    # Miter lines drawn on top of polygon edges for emphasis.
     corners = [
-        # (x_outer, y_outer) = corner of the container; diagonal goes to inner corner
-        # Bottom-left: near × left
-        (PROC_TRAY_X_L,            0,          PROC_TRAY_X_L + W, W),
-        # Bottom-right: near × right
-        (PROC_TRAY_X_R,            0,          PROC_TRAY_X_R - W, W),
-        # Top-left: far × left
-        (PROC_TRAY_X_L,            C_WID,      PROC_TRAY_X_L + W, C_WID - W),
-        # Top-right: far × right
-        (PROC_TRAY_X_R,            C_WID,      PROC_TRAY_X_R - W, C_WID - W),
+        (PROC_TRAY_X_L, 0, PROC_TRAY_X_L + W, W),
+        (PROC_TRAY_X_R, 0, PROC_TRAY_X_R - W, W),
+        (PROC_TRAY_X_L, C_WID, PROC_TRAY_X_L + W, C_WID - W),
+        (PROC_TRAY_X_R, C_WID, PROC_TRAY_X_R - W, C_WID - W),
     ]
     for x1, y1, x2, y2 in corners:
         ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
-        # Shared legs on the miter diagonal — support both panels at the joint.
-        # Two legs per diagonal at 1/3 and 2/3 positions.
-        for t in (1/3, 2/3):
-            lx = x1 + t * (x2 - x1)
-            ly = y1 + t * (y2 - y1)
-            ax.plot(lx, ly, 's', color="#505058", markersize=5,
-                    markeredgecolor=C_OUT, markeredgewidth=0.7, zorder=9)
-    # Label one miter (bottom-left) — typical for all four
+
+    # Label one miter (bottom-left)
     mx = PROC_TRAY_X_L + W / 2
     my = W / 2
     leader(ax, mx, my, mx - 350, my - 350,
-           "45° MITER JOINT\nW/ SHARED END LEGS (TYP.)", color=C_OUT, fs=6,
+           "45\u00b0 MITER JOINT\n(BRACKETS ON BOTH\nADJOINING WALLS)", color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Lifting point indicators (one per section, centered) ─────────────────
-    lift_positions = [
-        (PROC_TRAY_X_L + PROC_TRAY_W / 2, WALKWAY_NEAR_YD + WALKWAY_W / 2),
-        (PROC_TRAY_X_L + PROC_TRAY_W / 2, WALKWAY_FAR_YD + WALKWAY_W / 2),
-        (WALKWAY_LEFT_X + WALKWAY_W / 2, C_WID / 2),
-        (WALKWAY_RIGHT_X + WALKWAY_W / 2, C_WID / 2),
-    ]
 
     # ── Open processing area outline ─────────────────────────────────────────
     open_w = PROC_OPEN_X_R - PROC_OPEN_X_L
@@ -526,7 +489,7 @@ def sheet2():
                             fc="none", ec="#208020", lw=1.5, ls=(0, (6, 3)),
                             zorder=5))
     ax.text(PROC_OPEN_X_L + open_w / 2, PROC_OPEN_YD_N + open_h / 2.25,
-            f"OPEN PROCESSING AREA\n{open_w}×{open_h}mm = {PROC_OPEN_AREA:.1f} m²",
+            f"OPEN PROCESSING AREA\n{open_w}\u00d7{open_h}mm = {PROC_OPEN_AREA:.1f} m\u00b2",
             ha="center", va="center", fontsize=7, color="#208020",
             **FONT, zorder=5, alpha=0.6)
 
@@ -535,22 +498,21 @@ def sheet2():
     draw_dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
                f"{WALKWAY_W}mm", offset=50, fs=6, right=False, font=FONT)
 
-    # Beam span callout (full near walkway length)
-    lx0 = PROC_TRAY_X_L + END_LEG_INSET
-    lx1 = PROC_TRAY_X_R - END_LEG_INSET
-    draw_dim_h(ax, lx0, lx1, -40,
-               f"{int(lx1 - lx0)}mm BEAM SPAN (NEAR/FAR)",
+    # Bracket spacing callout
+    # Find two adjacent bracket positions on near walkway for dimensioning
+    brkt_x0 = TL + WALKWAY_BRACKET_SPACING / 2
+    brkt_x1 = brkt_x0 + WALKWAY_BRACKET_SPACING
+    draw_dim_h(ax, brkt_x0, brkt_x1, -40,
+               f"{WALKWAY_BRACKET_SPACING}mm BRACKET SPACING (TYP.)",
                offset=50, fs=6, above=False, font=FONT)
 
     # ── Legend ────────────────────────────────────────────────────────────────
-    legend_x = C_LEN * 4/5
+    legend_x = C_LEN * 4 / 5
     legend_top = C_WID + 225
     swatches = [
         (C_WK,      WK_ALPHA, "xx",  "o", "Walkway (grated deck)"),
         ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
-        ("#909098",  0.5,     None,  "r", f"Spanning beam ({BEAM_W}×{BEAM_W}×{WALKWAY_BEAM_T}mm RHS)"),
-        (C_LEG,      1.0,     None,  "o", "End leg position (25mm SHS)"),
-        ("#505058",  1.0,     None,  "s", "Shared miter leg"),
+        (C_BRKT,     1.0,      None,  "r", f"Wall bracket ({WALKWAY_BRACKET_T}mm gusset)"),
     ]
     for i, (c, a, h, marker, lbl) in enumerate(swatches):
         sy_pos = legend_top - i * 50
@@ -561,12 +523,6 @@ def sheet2():
         elif marker == "r":
             ax.add_patch(Rectangle((legend_x, sy_pos - 10), 30, 20,
                                     fc=c, ec=C_OUT, lw=0.6, alpha=a, zorder=15))
-        elif marker == "s":
-            ax.plot(legend_x + 15, sy_pos, 's', color=c, markersize=6,
-                    markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=15)
-        elif c == C_LEG:
-            ax.plot(legend_x + 15, sy_pos, 'o', color=c, markersize=6,
-                    markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=15)
         else:
             ax.add_patch(Rectangle((legend_x, sy_pos - 10), 30, 20,
                                     fc=c, ec=C_DIM, lw=0.6, alpha=a,
@@ -576,23 +532,27 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Notes ────────────────────────────────────────────────────────────────
+    n_brackets_near = len(np.arange(TL + WALKWAY_BRACKET_SPACING / 2,
+                                     TR, WALKWAY_BRACKET_SPACING))
+    n_brackets_total = n_brackets_near * 2 + len(np.arange(
+        WALKWAY_BRACKET_SPACING / 2, C_WID, WALKWAY_BRACKET_SPACING)) * 2
     notes = [
-        f"1. 4 removable sections. 45° miter joints at corners keep all panels level.",
-        f"2. Spanning beam design: {BEAM_W}×{BEAM_W}×{WALKWAY_BEAM_T}mm RHS spans full walkway length. Legs at ENDS ONLY.",
-        f"3. No intermediate legs on tray floor — full tray interior clear for film loading.",
-        f"4. Open processing area: {PROC_OPEN_AREA:.1f} m² ({open_w}×{open_h}mm).",
-        f"5. Each section weighs ≈30–40 kg (heavier beam). Two-person lift recommended.",
+        f"1. 4 removable grated sections. 45\u00b0 miter joints at corners.",
+        f"2. Wall-cantilevered brackets: {WALKWAY_BRACKET_T}mm steel plate gussets bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"3. NO legs on tray floor \u2014 entire tray interior clear for film loading. Zero floor contact.",
+        f"4. Open processing area: {PROC_OPEN_AREA:.1f} m\u00b2 ({open_w}\u00d7{open_h}mm).",
+        f"5. ~{n_brackets_total} brackets total. Each section lifts off brackets for tray access.",
     ]
     for i, note in enumerate(notes):
-        ax.text(C_LEN * 3/5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
+        ax.text(C_LEN * 3 / 5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
                 ha="left", va="bottom", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="PLAN VIEW — SPANNING BEAM LAYOUT",
-                scale_note=f"SCALE ≈ 1:25 · ALL DIMS IN mm · LEGS AT ENDS ONLY",
+                subtitle="PLAN VIEW \u2014 WALL-CANTILEVERED BRACKET LAYOUT",
+                scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
     fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -602,54 +562,40 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Detail: Beam / Tray Rim / End Leg Interaction
+# SHEET 3 — Detail: Bracket / Wall Attachment
 #
-# View: looking along X axis at the END of the near walkway (at the miter
-# corner where near meets left walkway).  Shows the end leg on the tray
-# floor, the spanning beam sitting on the end leg, and how the beam clears
-# the tray rim.  Scale ≈ 3:1 for clarity.
+# View: looking along X axis at a single bracket bolted to the corrugated
+# wall.  Shows corrugation profile, reinforcing plate behind wall,
+# M12 through-bolts, gusset bracket, and grating sitting on arm.
+# Scale ≈ 3:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
-    S = 3.0   # scale factor (slightly smaller than sheet1 to fit more context)
+    S = 3.0
 
     def sx(mm): return mm * S
     def sy(mm): return mm * S
 
-    # ── Structural dimensions (mm real) ──────────────────────────────────────
-    FRAME_W    = 30    # outer frame angle width
-    FRAME_T    = 3     # outer frame angle thickness
-    LEG_W      = 25    # end leg SHS width
-    LEG_T      = 2     # end leg wall thickness
-    FOOT_W     = 50    # rubber foot pad width
-    FOOT_H     = 5     # rubber foot pad height
-    TRAY_WALL  = 3     # tray wall thickness (SS)
-    TRAY_FLOOR_T = 2   # tray floor thickness (SS)
-    BEAM_W     = WALKWAY_BEAM_W   # 75mm
-    BEAM_H     = WALKWAY_BEAM_H   # 75mm
-    BEAM_T     = WALKWAY_BEAM_T   # 4mm
+    # ── Structural dimensions ────────────────────────────────────────────────
+    CORR_DEPTH = 38    # corrugation depth (mm)
+    CORR_PITCH = 152   # corrugation center-to-center pitch (mm)
+    WALL_T     = 1.6   # wall steel thickness
+    REINF_W    = 80    # reinforcing plate width behind wall
+    REINF_H    = 180   # reinforcing plate height
+    REINF_T    = 6     # reinforcing plate thickness
+    BRKT_T     = WALKWAY_BRACKET_T  # 8mm
+    BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
+    BOLT_D     = 12    # M12 bolt diameter
+    TRAY_WALL  = 3
+    TRAY_FLOOR_T = 2
 
-    # Key positions (mm real, Yd axis)
-    TRAY_RIM_YD = PROC_TRAY_YD_NEAR   # = 80mm from wall
-    OUTER_RAIL_YD = 12                 # outer frame rail start
-    LEG_OUTER_YD = OUTER_RAIL_YD + FRAME_W / 2   # = 27mm
-
-    # Inner beam position — inner face at walkway inner edge
-    BEAM_YD = WALKWAY_W - BEAM_W   # = 225mm
-    LEG_INNER_YD = BEAM_YD + BEAM_W / 2   # = 262mm (centered under beam)
-
-    # Z positions
-    frame_top = WALKWAY_H           # = 100mm
-    frame_bot = frame_top - FRAME_W # = 70mm
-    beam_bot  = frame_top - BEAM_H  # = 25mm
-    beam_top  = frame_top           # = 100mm
-    grate_bot = frame_top           # = 100mm
-    grate_top = frame_top + WALKWAY_GRATE_T  # = 125mm
+    TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm
 
     # ── Figure ───────────────────────────────────────────────────────────────
-    YD_LO = -60
-    YD_HI = WALKWAY_W + 150
+    YD_LO = -100
+    YD_HI = WALKWAY_W + 100
     Z_LO  = -50
-    Z_HI  = grate_top + 80
+    Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
 
     fig, ax = plt.subplots(figsize=(16, 10))
     fig.patch.set_facecolor(BG)
@@ -663,95 +609,128 @@ def sheet3():
     ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Container wall (pinhole wall, at Yd=0) ──────────────────────────────
-    ax.add_patch(Rectangle((sx(-10), sy(0)), sx(10), sy(Z_HI),
-                            fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    ax.text(sx(-20), sy(Z_HI - 15), "PINHOLE\nWALL",
-            ha="center", va="top", fontsize=6, color=C_DIM,
+    # ── Corrugated wall profile ──────────────────────────────────────────────
+    # Show the corrugation as a trapezoidal profile in cross-section
+    # Rib flange at Yd=0, panel recedes to Yd=-CORR_DEPTH
+    # At the section cut we're at a rib (where the bracket bolts on)
+    rib_flange_w = 25   # rib top flange width (flat part)
+
+    # Draw corrugated wall — simplified profile
+    # Exterior panel (behind corrugation)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH - WALL_T), sy(0)),
+                            sx(WALL_T), sy(Z_HI),
+                            fc="#A0A0A8", ec=C_OUT, lw=0.8, zorder=3))
+    # Corrugation rib (at section cut) — trapezoidal
+    rib_verts = [
+        (sx(-CORR_DEPTH), sy(0)),
+        (sx(-CORR_DEPTH), sy(Z_HI)),
+        (sx(0), sy(Z_HI)),
+        (sx(0), sy(0)),
+    ]
+    # Simplified: draw rib as a rectangle with hatching
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
+                            sx(CORR_DEPTH), sy(Z_HI),
+                            fc=C_WALL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+    # Rib face (where bracket mates)
+    ax.add_patch(Rectangle((sx(-2), sy(0)),
+                            sx(rib_flange_w + 2), sy(Z_HI),
+                            fc="#B0B0B8", ec=C_OUT, lw=0.8, zorder=3))
+
+    ax.text(sx(-CORR_DEPTH / 2), sy(Z_HI - 10), "CONTAINER\nWALL\n(1.6mm CORTEN\nCORRUGATED)",
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
+    # ── Reinforcing plate (behind wall, at bolt positions) ───────────────────
+    reinf_z0 = 0
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH - WALL_T - REINF_T), sy(reinf_z0)),
+                            sx(REINF_T), sy(REINF_H),
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+    leader(ax, sx(-CORR_DEPTH - WALL_T - REINF_T / 2), sy(REINF_H),
+           sx(-CORR_DEPTH - 30), sy(REINF_H + 25),
+           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm\nMILD STEEL",
+           color="#C08040", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
     # ── Processing tray ──────────────────────────────────────────────────────
-    # Tray rim (vertical wall at Yd = TRAY_RIM_YD)
     ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL), sy(0)),
                             sx(TRAY_WALL), sy(PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    # Tray floor (extends inward from rim)
     tray_floor_end = YD_HI - 20
     ax.add_patch(Rectangle((sx(TRAY_RIM_YD), sy(0)),
                             sx(tray_floor_end - TRAY_RIM_YD), sy(TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    # Tray rim label
-    leader(ax, sx(TRAY_RIM_YD + 8), sy(PROC_TRAY_RIM),
-           sx(TRAY_RIM_YD + 50), sy(PROC_TRAY_RIM + 30),
-           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=6,
+    leader(ax, sx(TRAY_RIM_YD + 5), sy(PROC_TRAY_RIM),
+           sx(TRAY_RIM_YD + 50), sy(PROC_TRAY_RIM + 20),
+           f"TRAY RIM {PROC_TRAY_RIM}mm", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    # Break line
-    bx = sx(tray_floor_end)
-    for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
-        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
 
-    # ── Outer leg (on container floor, between wall and tray rim) ────────────
-    outer_leg_top = frame_bot
-    outer_leg_h = outer_leg_top - FOOT_H
-    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - LEG_W / 2), sy(FOOT_H)),
-                            sx(LEG_W), sy(outer_leg_h),
-                            fc=C_LEG, ec=C_OUT, lw=1.0, zorder=5))
-    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - LEG_W / 2 + LEG_T), sy(FOOT_H + 2)),
-                            sx(LEG_W - 2 * LEG_T), sy(outer_leg_h - 4),
-                            fc="#909098", ec="none", zorder=5, alpha=0.3))
-    # Foot pad
-    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - FOOT_W / 2), sy(0)),
-                            sx(FOOT_W), sy(FOOT_H),
-                            fc="#303030", ec=C_OUT, lw=0.8, zorder=5))
-    ax.text(sx(LEG_OUTER_YD), sy(outer_leg_top / 2),
-            "OUTER\nEND LEG\n(ON FLOOR)",
-            ha="center", va="center", fontsize=5, color=BG,
-            fontweight="bold", **FONT, zorder=15)
+    # ── Bracket (triangular gusset) ──────────────────────────────────────────
+    tri_verts = [
+        (sx(0), sy(0)),
+        (sx(0), sy(BRKT_VERT)),
+        (sx(WALKWAY_W), sy(BRKT_ARM_Z)),
+    ]
+    ax.add_patch(Polygon(tri_verts, closed=True,
+                         fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6, alpha=0.85))
 
-    # ── Inner end leg (on tray floor, inside rim) ────────────────────────────
-    inner_floor_z = TRAY_FLOOR_T   # stands on tray floor surface
-    inner_leg_top = beam_bot        # supports beam bottom
-    inner_leg_h = inner_leg_top - inner_floor_z - FOOT_H
-    ax.add_patch(Rectangle((sx(LEG_INNER_YD - LEG_W / 2), sy(inner_floor_z + FOOT_H)),
-                            sx(LEG_W), sy(inner_leg_h),
-                            fc=C_LEG, ec=C_OUT, lw=1.0, zorder=5))
-    ax.add_patch(Rectangle((sx(LEG_INNER_YD - LEG_W / 2 + LEG_T),
-                             sy(inner_floor_z + FOOT_H + 2)),
-                            sx(LEG_W - 2 * LEG_T), sy(inner_leg_h - 4),
-                            fc="#909098", ec="none", zorder=5, alpha=0.3))
-    # Foot pad on tray floor
-    ax.add_patch(Rectangle((sx(LEG_INNER_YD - FOOT_W / 2), sy(inner_floor_z)),
-                            sx(FOOT_W), sy(FOOT_H),
-                            fc="#303030", ec=C_OUT, lw=0.8, zorder=5))
-    ax.text(sx(LEG_INNER_YD), sy((inner_floor_z + inner_leg_top) / 2),
-            "INNER\nEND LEG\n(ON TRAY\nFLOOR)",
-            ha="center", va="center", fontsize=4.5, color=BG,
-            fontweight="bold", **FONT, zorder=15)
+    # Plate thickness indication
+    inset = BRKT_T * 2
+    inner_verts = [
+        (sx(inset), sy(inset + 10)),
+        (sx(inset), sy(BRKT_VERT - inset)),
+        (sx(WALKWAY_W - inset * 3), sy(BRKT_ARM_Z)),
+    ]
+    ax.add_patch(Polygon(inner_verts, closed=True,
+                         fc="#8890A0", ec="none", zorder=6, alpha=0.3))
 
-    # ── Outer frame rail (30×30mm angle) ─────────────────────────────────────
-    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD), sy(frame_bot)),
-                            sx(FRAME_W), sy(FRAME_W),
-                            fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6))
+    # Horizontal arm top surface
+    ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
+            color=C_OUT, lw=2.0, zorder=7)
 
-    # ── Spanning beam (75×75×4mm RHS) — on top of inner end leg ──────────────
-    ax.add_patch(Rectangle((sx(BEAM_YD), sy(beam_bot)),
-                            sx(BEAM_W), sy(BEAM_H),
-                            fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6))
-    # Hollow interior
-    ax.add_patch(Rectangle((sx(BEAM_YD + BEAM_T), sy(beam_bot + BEAM_T)),
-                            sx(BEAM_W - 2 * BEAM_T), sy(BEAM_H - 2 * BEAM_T),
-                            fc="#A0A0A8", ec="none", zorder=6, alpha=0.3))
+    # Weld symbol on diagonal brace (simplified — triangle at joint)
+    # Show small weld marks where diagonal meets vertical and horizontal
+    weld_sz = 5
+    for wx_pos, wz_pos in [(5, 10), (WALKWAY_W * 0.15, BRKT_ARM_Z)]:
+        ax.plot([sx(wx_pos - weld_sz), sx(wx_pos), sx(wx_pos + weld_sz)],
+                [sy(wz_pos), sy(wz_pos + weld_sz), sy(wz_pos)],
+                color="#CC4400", lw=1.5, zorder=8)
 
-    # Cross-member connecting outer rail to beam
-    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD + FRAME_W), sy(frame_top - FRAME_T)),
-                            sx(BEAM_YD - OUTER_RAIL_YD - FRAME_W), sy(FRAME_T),
-                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
+    # Bolt holes
+    bolt_z1 = 30
+    bolt_z2 = 120
+    bolt_r = 6
+    for bz in [bolt_z1, bolt_z2]:
+        ax.add_patch(Circle((sx(rib_flange_w / 2), sy(bz)), sx(bolt_r),
+                     fc=BG, ec=C_OUT, lw=1.2, zorder=8))
+        # Bolt head / washer (exterior side)
+        ax.add_patch(Rectangle((sx(-CORR_DEPTH - WALL_T - REINF_T - 5),
+                                 sy(bz - 8)), sx(5), sy(16),
+                     fc="#606060", ec=C_OUT, lw=0.8, zorder=5))
+        # Nut (interior side, on bracket face)
+        ax.add_patch(Rectangle((sx(rib_flange_w / 2 + bolt_r + 1),
+                                 sy(bz - 6)), sx(8), sy(12),
+                     fc="#606060", ec=C_OUT, lw=0.8, zorder=8))
+
+    # Bolt label
+    leader(ax, sx(rib_flange_w / 2 + bolt_r + 10), sy(bolt_z1),
+           sx(rib_flange_w + 60), sy(bolt_z1 - 25),
+           f"M{BOLT_D} \u00d7 60mm\nHEX BOLT + NUT\n+ FLAT WASHER\n(2 PER BRACKET)",
+           color=C_DIM, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Bracket label
+    leader(ax, sx(WALKWAY_W * 0.35), sy(BRKT_ARM_Z - 15),
+           sx(WALKWAY_W * 0.5), sy(BRKT_ARM_Z - 45),
+           f"GUSSET BRACKET\n{BRKT_T}mm STEEL PLATE\n{BRKT_VERT}mm VERT \u00d7 {WALKWAY_W}mm ARM",
+           color=C_BRKT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
+    grate_bot = WALKWAY_H
+    grate_top = WALKWAY_H + WALKWAY_GRATE_T
     ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
                             sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
-    # Grate bar pattern
     bar_spacing = 34.2
     bar_w = 3
     for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
@@ -759,78 +738,68 @@ def sheet3():
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
-    # ── Key dimension lines ──────────────────────────────────────────────────
-    # Clear air under beam (beam bottom to tray floor)
-    gap = beam_bot - TRAY_FLOOR_T
-    draw_dim_v(ax, sx(BEAM_YD + BEAM_W / 2 + 10), sy(TRAY_FLOOR_T), sy(beam_bot),
-               f"{gap:.0f}mm\nCLEAR", offset=sx(6), fs=6.5, right=True,
-               color="#208020", font=FONT)
+    # Grating clip detail (small L-bracket securing grate to bracket arm)
+    clip_yd = WALKWAY_W * 0.6
+    clip_w = 10
+    clip_h = 15
+    ax.add_patch(Rectangle((sx(clip_yd), sy(BRKT_ARM_Z - clip_h)),
+                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
+           sx(clip_yd + 50), sy(BRKT_ARM_Z + 35),
+           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Tray rim to beam bottom — show the beam clears the rim
-    rim_clr = beam_bot - PROC_TRAY_RIM
-    if rim_clr < 0:
-        rim_label = f"{abs(rim_clr):.0f}mm\nBELOW RIM\n(INSIDE TRAY)"
-        rim_color = "#CC4400"
-    else:
-        rim_label = f"{rim_clr:.0f}mm\nABOVE RIM"
-        rim_color = "#208020"
-    # Annotate the vertical relationship between rim top and beam bottom
-    draw_dim_v(ax, sx(TRAY_RIM_YD + 20), sy(PROC_TRAY_RIM), sy(beam_bot),
-               rim_label, offset=sx(6), fs=6, right=True,
-               color=rim_color, font=FONT)
+    # ── Dimension lines ──────────────────────────────────────────────────────
+    # Bracket vertical leg
+    draw_dim_v(ax, sx(-CORR_DEPTH - WALL_T - REINF_T - 20), sy(0), sy(BRKT_VERT),
+               f"{BRKT_VERT}mm\nVERT", offset=sx(6), fs=6.5, right=False, font=FONT)
 
-    # Beam height
-    draw_dim_v(ax, sx(BEAM_YD - 10), sy(beam_bot), sy(beam_top),
-               f"{BEAM_H}mm", offset=sx(6), fs=6.5, right=False, font=FONT)
-
-    # Walkway width
+    # Bracket arm (horizontal projection)
     draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 20),
-               f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
-
-    # Wall to tray rim
-    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-25),
-               f"{TRAY_RIM_YD}mm", offset=sy(10), fs=6, above=False, font=FONT)
-
-    # Tray rim to beam inner face
-    draw_dim_h(ax, sx(TRAY_RIM_YD), sx(BEAM_YD), sy(-25),
-               f"{BEAM_YD - TRAY_RIM_YD}mm", offset=sy(10), fs=6,
-               above=False, font=FONT)
-
-    # Beam width
-    draw_dim_h(ax, sx(BEAM_YD), sx(BEAM_YD + BEAM_W), sy(-25),
-               f"{BEAM_W}mm", offset=sy(10), fs=6, above=False, font=FONT)
+               f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
 
     # Deck height
     draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_bot),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=True, font=FONT)
 
-    # ── Labels ───────────────────────────────────────────────────────────────
-    leader(ax, sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W + 5),
-           sx(-30), sy(frame_top + 40),
-           "30×30×3mm\nGALV ANGLE", color=C_FRAME, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(BEAM_YD + BEAM_W / 2), sy(beam_top + 5),
-           sx(BEAM_YD + BEAM_W + 40), sy(grate_top + 40),
-           f"{BEAM_W}×{BEAM_H}×{BEAM_T}mm RHS\nSPANNING BEAM", color=C_LEG, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+    # Grate thickness
+    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(grate_bot), sy(grate_top),
+               f"{WALKWAY_GRATE_T}mm", offset=sx(6), fs=6, right=True, font=FONT)
+
+    # Corrugation depth
+    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-25),
+               f"{CORR_DEPTH}mm CORR", offset=sy(10), fs=6, above=False, font=FONT)
+
+    # Bolt spacing (vertical)
+    draw_dim_v(ax, sx(rib_flange_w + 30), sy(bolt_z1), sy(bolt_z2),
+               f"{bolt_z2 - bolt_z1}mm", offset=sx(6), fs=6, right=True, font=FONT)
+
+    # Clear air under bracket arm
+    gap = BRKT_ARM_Z - TRAY_FLOOR_T
+    clr_x = sx(WALKWAY_W * 0.75)
+    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR_T + 1)), xytext=(clr_x, sy(BRKT_ARM_Z - 1)),
+                arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
+    ax.text(clr_x + sx(5), sy((TRAY_FLOOR_T + BRKT_ARM_Z) / 2),
+            f"{gap:.0f}mm CLEAR\n(ZERO TRAY\nCONTACT)",
+            ha="left", va="center", fontsize=5.5, color="#208020",
+            fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(WALKWAY_W + 50)
     notes_top = sy(Z_HI - 10)
     notes = [
-        "DETAIL — END LEG AT TRAY CORNER:",
+        "BRACKET ATTACHMENT DETAIL:",
         "",
-        f"1. Inner end legs stand on tray floor (2mm SS).",
-        f"2. Spanning beam sits on top of end legs,",
-        f"   elevated {gap:.0f}mm above tray floor.",
-        f"3. Beam bottom is {abs(beam_bot - PROC_TRAY_RIM)}mm"
-        f" {'below' if beam_bot < PROC_TRAY_RIM else 'above'} tray rim top.",
-        f"4. Beam does NOT contact tray rim — it is",
-        f"   {BEAM_YD - TRAY_RIM_YD}mm inboard of the rim.",
-        f"5. At mid-span (between end legs) there are NO",
-        f"   legs or structure on the tray floor.",
-        f"6. Film lays flat on tray floor, passing freely",
-        f"   under the elevated beam.",
+        f"1. Outer bolt hole center is {rib_flange_w / 2:.0f}mm from rib face.",
+        f"   Bolts pass through bracket + rib + reinforcing plate.",
+        f"2. Reinforcing plate ({REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm) welded or",
+        f"   bonded to exterior wall face before drilling.",
+        f"3. Weld symbol: fillet weld on diagonal brace to",
+        f"   vertical and horizontal legs (both sides).",
+        f"4. Grating clips slide over bracket arm top \u2014",
+        f"   removable without tools for tray access.",
+        f"5. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm (every wall rib).",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -843,8 +812,8 @@ def sheet3():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL — BEAM / TRAY RIM / END LEG INTERACTION",
-                scale_note=f"SCALE ≈ 3:1 · ALL DIMS IN mm · SECTION AT WALKWAY END (MITER CORNER)",
+                subtitle="DETAIL \u2014 WALL BRACKET ATTACHMENT",
+                scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT WALL RIB",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -853,10 +822,11 @@ def sheet3():
     print("  diagrams/walkway-sheet3.png saved")
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating perimeter walkway diagrams...")
     sheet1()
     sheet2()

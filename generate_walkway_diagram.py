@@ -2180,7 +2180,7 @@ def sheet7():
     # ══════════════════════════════════════════════════════════════════════════
 
     # View A title
-    ax.text(sx(YD_LO + 5), sy(Z_HI - 5),
+    ax.text(sx(YD_LO + 125), sy(Z_HI - 5),
             "VIEW A \u2014 SIDE ELEVATION\n(LOOKING ALONG X INTO CONTAINER)",
             ha="left", va="top", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -2312,7 +2312,7 @@ def sheet7():
                             fc=C_PLATE, ec=C_OUT, lw=1.5,
                             zorder=10))
     leader(ax, sx(lip_yd_start + lip_show_w / 2), sy(lip_top),
-           sx(lip_yd_start + lip_show_w / 2), sy(lip_top + 25),
+           sx(lip_yd_start + lip_show_w / 2), sy(lip_top + 15),
            f"STOP LIP {LIP_T}\u00d7{LIP_H}mm\nBENT UP FROM PLATE\nFORMS POCKET WITH BASE",
            color=C_PLATE, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
@@ -2335,7 +2335,7 @@ def sheet7():
     ax.plot([bx_beam - 3, bx_beam + 3, bx_beam - 3, bx_beam + 3,
              bx_beam - 3, bx_beam + 3, bx_beam - 3],
             zz_beam, color=C_OUT, lw=1.0, zorder=9)
-    ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot - 3),
+    ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot * 1.5),
             f"BEARER BEAM {BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
             f"(SPANS {WALKWAY_LEFT_SPAN}mm TO FAR BRACKET)",
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
@@ -2366,7 +2366,7 @@ def sheet7():
                             fc=C_BOLT, ec=C_OUT, lw=0.5, ls="--",
                             zorder=5, alpha=0.25))
     leader(ax, sx(lock_yd_mid + LOCK_W / 2 + 2), sy(plate_top + LOCK_H / 2),
-           sx(lock_yd_mid + 60), sy(plate_top + LOCK_H + 20),
+           sx(lock_yd_mid + 60), sy(plate_top + LOCK_H + 10),
            f"LOCK BLOCK {LOCK_W}\u00d7{LOCK_H}mm\n(GHOST \u2014 BEHIND BEAM)\nM{BOLT_DIA} BOLT THROUGH\n{SLOT_L}mm SLOT \u2014 SEE VIEW C",
            color=C_BOLT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -2388,7 +2388,7 @@ def sheet7():
     draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(0), sy(grate_top),
                f"{int(grate_top)}mm\nDECK", offset=sx(30), fs=5.5,
                right=True, font=FONT)
-    draw_dim_v(ax, sx(-CORR_DEPTH - 15), sy(0), sy(BRKT_VERT),
+    draw_dim_v(ax, sx(-CORR_DEPTH - 20), sy(0), sy(BRKT_VERT),
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5,
                right=False, font=FONT)
 

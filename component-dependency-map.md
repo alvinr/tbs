@@ -262,15 +262,17 @@ Permanently installed — no removal for transport mode conversion.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Walkway width | 400 mm | `WALKWAY_W` |
-| Deck height | 80 mm | `WALKWAY_H` |
+| Deck height | 100 mm | `WALKWAY_H` |
 | Grate thickness | 25 mm | `WALKWAY_GRATE_T` |
+| Spanning beam section | 75×75×4 mm | `WALKWAY_BEAM_W/H/T` |
 | Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
 | Far walkway Yd | 1,962 mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
 | Right walkway X | 4,229 mm | `WALKWAY_RIGHT_X` |
 
 *Components: galvanized press-locked steel grating (30×3mm bar, 25mm bearing bar),
-30×30×3mm galvanized angle iron frame, 25×25×2mm SHS legs at 600mm centers,
+30×30×3mm galvanized angle outer rail, 75×75×4mm galv RHS spanning beam (inner,
+full-length), 25×25×2mm SHS end legs at miter corners only,
 50×50×6mm EPDM rubber foot pads. 4 removable sections.*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*

@@ -17,12 +17,12 @@
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
 | **5. Processing water system (incl. tray)** | $2,634 | $3,282 | $3,929 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
-| **6a. Perimeter walkway (4 sections)** | $680 | $873 | $1,070 |
+| **6a. Perimeter walkway (4 sections, spanning beam)** | $830 | $1,040 | $1,250 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$13,009** | **$16,785** | **$22,099** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$13,159** | **$16,952** | **$22,279** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -262,15 +262,16 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. 400mm wide, 80mm deck height, galvanized press-locked steel grating on 25mm SHS legs at 600mm centers. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
+Four removable grated walkway sections around all 4 sides of the processing tray. 400mm wide, 100mm deck height (75mm spanning beam + 25mm grate). Spanning beam design: 75×75×4mm galv RHS spans full walkway length with legs at ends only — no intermediate legs on tray floor, leaving the entire tray interior clear for film loading. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | Press-locked steel grating, 25mm bearing bar (galvanized) | $280 | $350 | $420 | ~4.7 m² total; McNichols / Metal Supermarkets SoCal |
-| Angle iron frame, 30×30×3mm galvanized (~18m) | $55 | $68 | $80 | Perimeter frame for each section |
-| SHS legs, 25×25×2mm galvanized (×32) + rubber foot pads | $45 | $55 | $70 | 80mm tall, welded to frame at ~600mm centers |
+| Outer frame rail, 30×30×3mm galv angle (~13.6m) | $40 | $48 | $55 | Wall-side rail for each section |
+| Spanning beam, 75×75×4mm galv RHS (~13.6m) | $190 | $218 | $245 | Inner beam, spans full section length |
+| End legs, 25×25×2mm galv SHS (×24) + rubber foot pads | $22 | $26 | $32 | Ends only (miter corners), 24 total |
 | Fabrication (cut, weld, galvanize) — 4 sections | $300 | $400 | $500 | Local metal fab shop |
-| **Perimeter walkway total** | **$680** | **$873** | **$1,070** | |
+| **Perimeter walkway total** | **$830** | **$1,040** | **$1,250** | |
 
 ---
 
@@ -450,12 +451,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual) | $2,200 |
 | Water system (incl. processing tray) | $2,634 |
 | Revolving drum light trap (custom fabrication) | $950 |
-| Perimeter walkway (4 sections) | $680 |
+| Perimeter walkway (4 sections, spanning beam) | $830 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$12,776** |
+| **Scenario A total** | **~$12,926** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -467,13 +468,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual + electric actuation) | $3,227 |
 | Water system (incl. processing tray) | $3,282 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
-| Perimeter walkway (4 sections) | $873 |
+| Perimeter walkway (4 sections, spanning beam) | $1,040 |
 | Ceiling rail suspension | $208 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$18,072** |
+| **Scenario B total (excl. CDL)** | **~$18,239** |
 
 ### Scenario C — Full production, own transport, CDL
 

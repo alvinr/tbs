@@ -203,12 +203,20 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 # 4 sections form a rectangular perimeter walk so the operator can access all
 # working parts (valves, electrical panel, film plane, tilt-swing adjusters)
 # without wading through the wet processing tray.
-# Deck height 80mm clears the 50mm tray rim.  Legs stand on floor (outside tray)
-# and on tray floor (inside tray) — walkway bridges over the rim.
+#
+# Spanning beam design (rev 7): inner frame rail replaced by 75×75×4mm galv RHS
+# beam spanning the full walkway length.  Legs only at the two ends of each
+# section (in the miter corner zones).  No intermediate legs on the tray floor
+# — the entire tray interior is clear for film loading.
+# Deck height 100mm (75mm beam + 25mm grate) clears the 50mm tray rim by 50mm.
+# Outer legs on container floor; end legs in miter corner zones on tray floor.
 # Material: galvanized press-locked steel grating, 25mm thick.
 WALKWAY_W       = 400    # walkway width (mm)
-WALKWAY_H       = 80     # deck height above floor (mm) — clears PROC_TRAY_RIM (50mm)
+WALKWAY_H       = 100    # deck height above floor (mm) — 75mm beam + 25mm grate
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
+WALKWAY_BEAM_W  = 75     # spanning beam section width (mm) — 75×75×4mm RHS
+WALKWAY_BEAM_H  = 75     # spanning beam section height (mm)
+WALKWAY_BEAM_T  = 4      # spanning beam wall thickness (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID

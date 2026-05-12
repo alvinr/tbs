@@ -76,7 +76,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
 7. Confirm processing tray drain hose is connected to 3W-DV-02. (The tray is permanently installed between the film plane rails.)
-8. Install perimeter walkway sections around all 4 sides of the processing tray. Verify each section sits level on its end legs and spanning beam (75×75×4mm RHS, legs at ends only). The walkways provide dry-foot access to all working parts of the camera during processing. Two-person lift recommended (~30–40 kg per section).
+8. Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Each grating panel lifts onto the bracket arms and is secured with grating clips. The walkways provide dry-foot access to all working parts of the camera during processing. No legs contact the tray floor.
 9. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 ### 0.6 Ventilation and Cooling

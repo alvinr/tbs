@@ -1669,11 +1669,11 @@ def sheet5():
            color=C_BRKT, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(LEFT_WK_R), sy(arm_bot - 2),
-           sx(LEFT_WK_R), sy(arm_bot - 22),
+    leader(ax, sx(LEFT_WK_R + 20), sy(arm_bot + ARM_DEPTH / 2),
+           sx(LEFT_WK_R + 130), sy(arm_bot - 25),
            f"NEAR WALKWAY\nBRACKET ARM\n(CROSS-SECTION)\nAT X={LEFT_WK_R}mm",
            color=C_BRKT, fs=5.5,
-           ha="center", va="top", arrow_style="-|>", font=FONT)
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Contact point: left grating rests on bracket arm ─────────────────────
     ax.plot([sx(LEFT_WK_R - 15), sx(LEFT_WK_R + 15)],

@@ -2179,6 +2179,12 @@ def sheet7():
     # Horizontal = Yd (wall at left), Vertical = Z
     # ══════════════════════════════════════════════════════════════════════════
 
+    # View A title
+    ax.text(sx(YD_LO + 5), sy(Z_HI - 5),
+            "VIEW A \u2014 SIDE ELEVATION\n(LOOKING ALONG X INTO CONTAINER)",
+            ha="left", va="top", fontsize=7, color=C_OUT,
+            fontweight="bold", **FONT, zorder=15)
+
     # ── Container floor ──────────────────────────────────────────────────────
     ax.add_patch(Rectangle((sx(YD_LO), sy(-12)),
                             sx(BEAM_SHOW + 100 - YD_LO), sy(12),

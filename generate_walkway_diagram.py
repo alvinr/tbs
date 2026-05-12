@@ -1321,6 +1321,33 @@ def sheet5():
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=2.0, zorder=7)
 
+    # Ghost outline: bracket vertical leg + gusset (perpendicular to view,
+    # projecting along Yd into the page — shown as dashed ghost to indicate
+    # how the bracket is mounted to the near container wall).
+    BRKT_VERT = WALKWAY_BRACKET_H  # 150mm vertical leg
+    GUSSET_REACH = 70
+    GHOST_A = 0.20
+    GHOST_C = C_BRKT
+    # Vertical leg (Z=0 to 150mm, centered on X=470)
+    ax.add_patch(Rectangle((sx(LEFT_WK_R - BRKT_T / 2), sy(0)),
+                            sx(BRKT_T), sy(BRKT_VERT),
+                            fc=GHOST_C, ec=C_OUT, lw=0.8, ls="--",
+                            alpha=GHOST_A, zorder=4))
+    # Gusset triangle (wall/floor to arm bottom)
+    gusset_verts = [
+        (sx(LEFT_WK_R - BRKT_T / 2), sy(0)),
+        (sx(LEFT_WK_R - BRKT_T / 2), sy(arm_bot)),
+        (sx(LEFT_WK_R - BRKT_T / 2 + GUSSET_REACH), sy(arm_bot)),
+    ]
+    ax.add_patch(Polygon(gusset_verts, closed=True,
+                         fc=GHOST_C, ec=C_OUT, lw=0.8, ls="--",
+                         alpha=GHOST_A, zorder=4))
+    leader(ax, sx(LEFT_WK_R + BRKT_T / 2 + 2), sy(BRKT_VERT - 10),
+           sx(LEFT_WK_R + 45), sy(BRKT_VERT + 5),
+           f"BRACKET VERT LEG\n{BRKT_VERT}mm (GHOST \u2014\nPERPENDICULAR\nTO VIEW)",
+           color=C_BRKT, fs=5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
     leader(ax, sx(LEFT_WK_R), sy(arm_bot - 2),
            sx(LEFT_WK_R), sy(arm_bot - 22),
            f"NEAR WALKWAY\nBRACKET ARM\n(CROSS-SECTION)\nAT X={LEFT_WK_R}mm",

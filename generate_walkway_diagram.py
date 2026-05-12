@@ -1311,8 +1311,25 @@ def sheet5():
     # (looking along Yd), we see the bracket arm in cross-section. The vertical
     # leg is on the wall (perpendicular to view — shown as a narrow strip).
     BRKT_T = WALKWAY_BRACKET_T  # 8mm
+    BRKT_VERT = WALKWAY_BRACKET_H  # 150mm vertical leg
+    GUSSET_REACH = 70
+    GHOST_A = 0.20
+    GHOST_C = C_BRKT
 
-    # Bracket arm cross-section at X=470 (extends in Yd toward viewer)
+    # Ghost outline: bracket arm extends 300mm in Yd (into the page).
+    # Show as a wider dashed rectangle at arm level to represent depth.
+    ARM_GHOST_W = 40  # visual width representing the arm projecting into page
+    ax.add_patch(Rectangle((sx(LEFT_WK_R - ARM_GHOST_W / 2), sy(arm_bot)),
+                            sx(ARM_GHOST_W), sy(ARM_DEPTH),
+                            fc=C_BRKT, ec=C_OUT, lw=0.8, ls="--",
+                            alpha=GHOST_A, zorder=4))
+    leader(ax, sx(LEFT_WK_R - ARM_GHOST_W / 2), sy(arm_bot + ARM_DEPTH / 2),
+           sx(LEFT_WK_R - ARM_GHOST_W / 2 - 35), sy(arm_bot - 10),
+           f"BRACKET ARM\n{WALKWAY_W}mm INTO PAGE\n(GHOST)",
+           color=C_BRKT, fs=5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    # Bracket arm cross-section at X=470 (solid — the cut face)
     ax.add_patch(Rectangle((sx(LEFT_WK_R - BRKT_T / 2), sy(arm_bot)),
                             sx(BRKT_T), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
@@ -1324,10 +1341,6 @@ def sheet5():
     # Ghost outline: bracket vertical leg + gusset (perpendicular to view,
     # projecting along Yd into the page — shown as dashed ghost to indicate
     # how the bracket is mounted to the near container wall).
-    BRKT_VERT = WALKWAY_BRACKET_H  # 150mm vertical leg
-    GUSSET_REACH = 70
-    GHOST_A = 0.20
-    GHOST_C = C_BRKT
     # Vertical leg (Z=0 to 150mm, centered on X=470)
     ax.add_patch(Rectangle((sx(LEFT_WK_R - BRKT_T / 2), sy(0)),
                             sx(BRKT_T), sy(BRKT_VERT),

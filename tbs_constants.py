@@ -221,8 +221,12 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 #   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no brackets.
 #       Panel (hinged door) occupies the end wall at X=0 and slides inward
 #       300mm for transport.  Left walkway must be removed before panel slides.
-#       Supported at each end by near/far walkway miter corners.  Heavy-duty
+#       Left corners use butt joints (no miter) so near/far walkways start at
+#       X=470 — entirely past the panel transport envelope (max X=420).
+#       Only the left walkway (X=170–470) needs removal for transport.
+#       Supported at each end by near/far walkway butt joint ends.  Heavy-duty
 #       grating (40×5mm bars) spans the 1,762mm unsupported gap.
+#       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked

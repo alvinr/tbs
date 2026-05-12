@@ -346,7 +346,7 @@ def sheet1():
         f"   welded to flat end wall (no ribs).",
         f"7. Left walkway: REMOVABLE LIFT-OUT —",
         f"   no brackets (panel conflict). Rests on",
-        f"   near/far miter corners. {WALKWAY_LEFT_GRATE_T}mm HD grating.",
+        f"   near/far butt joints. {WALKWAY_LEFT_GRATE_T}mm HD grating.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -420,7 +420,10 @@ def sheet2():
             ha="center", va="center", fontsize=8, color=C_DIM,
             alpha=0.4, **FONT, zorder=3)
 
-    # ── Draw walkway sections (polygon patches with 45° mitered corners) ────
+    # ── Draw walkway sections ────────────────────────────────────────────────
+    # Left corners: BUTT JOINT (no miter) — near/far walkways start at X=LXR (470)
+    # so they clear the panel transport envelope (max X=420).
+    # Right corners: 45° miter as before (no panel conflict on right side).
     C_WK = "#D0C8B8"
     WK_ALPHA = 0.6
     W = WALKWAY_W
@@ -431,12 +434,16 @@ def sheet2():
     FY  = WALKWAY_FAR_YD;   FYO = FY + W
     TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W
 
+    # Near/far: butt joint at left (X=LXR), 45° miter at right (X=RX)
+    # Left: simple rectangle (no miters)
+    # Right: 45° miters both corners
+    near_len = TR - LXR   # near/far walkway length (from butt joint to tray right)
     walkway_polys = [
-        ("NEAR",  [(TL, NY), (TR, NY), (RX, NYI), (LXR, NYI)],
-         TL, NY, PROC_TRAY_W, W, True),
-        ("FAR",   [(TL, FYO), (TR, FYO), (RX, FY), (LXR, FY)],
-         TL, FY, PROC_TRAY_W, W, True),
-        ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FY), (LXR, NYI)],
+        ("NEAR",  [(LXR, NY), (TR, NY), (RX, NYI), (LXR, NYI)],
+         LXR, NY, near_len, W, True),
+        ("FAR",   [(LXR, FYO), (TR, FYO), (RX, FY), (LXR, FY)],
+         LXR, FY, near_len, W, True),
+        ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FYO), (LXR, NY)],
          LX, 0, W, C_WID, False),
         ("RIGHT", [(RXR, NY), (RXR, FYO), (RX, FY), (RX, NYI)],
          RX, 0, W, C_WID, False),
@@ -494,21 +501,30 @@ def sheet2():
                 backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
-    # ── 45° miter joints at corners ────────────────────────────────────────────
-    corners = [
-        (PROC_TRAY_X_L, 0, PROC_TRAY_X_L + W, W),
+    # ── Corner joints ────────────────────────────────────────────────────────
+    # Right corners: 45° miter joints (near-right & far-right)
+    right_miters = [
         (PROC_TRAY_X_R, 0, PROC_TRAY_X_R - W, W),
-        (PROC_TRAY_X_L, C_WID, PROC_TRAY_X_L + W, C_WID - W),
         (PROC_TRAY_X_R, C_WID, PROC_TRAY_X_R - W, C_WID - W),
     ]
-    for x1, y1, x2, y2 in corners:
+    for x1, y1, x2, y2 in right_miters:
         ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
 
-    # Label one miter (bottom-left) — left walkway rests on this joint
-    mx = PROC_TRAY_X_L + W / 2
-    my = W / 2
-    leader(ax, mx, my, mx - 350, my - 350,
-           "45\u00b0 MITER JOINT\n(LEFT WALKWAY RESTS\nON NEAR/FAR BRACKETS)", color=C_OUT, fs=6,
+    # Left corners: butt joints (vertical line at X=LXR)
+    # Near/far walkways start at X=LXR = 470, left walkway ends at X=LXR
+    ax.plot([LXR, LXR], [NY, NYI], color=C_OUT, lw=1.5, zorder=8)   # near-left butt
+    ax.plot([LXR, LXR], [FY, FYO], color=C_OUT, lw=1.5, zorder=8)   # far-left butt
+
+    # Label one butt joint (bottom-left)
+    leader(ax, LXR, W / 2, LXR - 350, W / 2 - 350,
+           f"BUTT JOINT AT X={LXR}\n(LEFT WALKWAY LIFTS OUT\nCLEARS PANEL TRANSPORT\nENVELOPE AT X\u2264420)",
+           color=C_OUT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Label one right miter
+    mx_r = PROC_TRAY_X_R - W / 2
+    leader(ax, mx_r, W / 2, mx_r + 350, W / 2 - 350,
+           "45\u00b0 MITER JOINT", color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Panel transport envelope (dashed red) ────────────────────────────────
@@ -577,16 +593,17 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    n_brackets_near = len(np.arange(TL + WALKWAY_BRACKET_SPACING / 2,
+    n_brackets_near = len(np.arange(LXR + WALKWAY_BRACKET_SPACING / 2,
                                      TR, WALKWAY_BRACKET_SPACING))
     n_brackets_right = len(np.arange(
         WALKWAY_BRACKET_SPACING / 2, C_WID, WALKWAY_BRACKET_SPACING))
     n_brackets_total = n_brackets_near * 2 + n_brackets_right  # no left brackets
     notes = [
-        f"1. 4 removable grated sections. 45\u00b0 miter joints at corners.",
+        f"1. 4 removable grated sections. Right corners: 45\u00b0 miter. Left corners: butt joint.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
         f"3. Right: brackets on {WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON_T}mm angle iron welded to flat end wall.",
-        f"4. Left: REMOVABLE LIFT-OUT \u2014 no brackets (panel conflict). Rests on near/far miter corners.",
+        f"4. Left: REMOVABLE LIFT-OUT \u2014 no brackets (panel conflict). Rests on near/far walkway ends at butt joints.",
         f"   Heavy-duty grating ({WALKWAY_LEFT_GRATE_T}mm) spans {WALKWAY_LEFT_SPAN}mm unsupported. Remove before panel slides.",
         f"5. NO legs on tray floor \u2014 zero floor contact. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"6. ~{n_brackets_total} brackets total (near + far + right). Each section lifts off for tray access.",
@@ -661,30 +678,62 @@ def sheet3():
     ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Corrugated wall (cross-section through rib) ──────────────────────────
-    # Layers from exterior to interior:
-    #   Reinforcing plate (REINF_T thick, exterior of wall)
-    #   Wall steel (WALL_T thick, exterior panel)
-    #   Corrugation rib fill (CORR_DEPTH, solid at rib location)
-    #   Rib interior face at Yd=0 — bracket mounting surface
+    # ── Corrugated wall (cross-section through rib — HOLLOW profile) ─────────
+    # The corrugation is a trapezoidal fold in the sheet steel, NOT solid.
+    # At a rib cross-section, we see:
+    #   - Exterior panel (1.6mm steel, at Yd = -CORR_DEPTH - WALL_T)
+    #   - Two rib side walls (1.6mm each, connecting exterior panel to rib face)
+    #   - Rib interior face/flange (1.6mm, at Yd = 0)
+    #   - Air gap between exterior panel and rib face
+    # The bolt passes through: rib face → AIR GAP → exterior panel → reinf plate.
+    RIB_FLANGE_W = 20  # rib face flange width (flat part, approx)
 
-    # Exterior wall steel panel
     ext_panel_yd = -CORR_DEPTH - WALL_T
+
+    # Exterior wall steel panel (full height)
     ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
                             sx(WALL_T), sy(Z_HI),
-                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3))
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
+                            hatch="///"))
 
-    # Corrugation rib body (solid steel at rib cross-section)
+    # Rib side walls (1.6mm steel, connecting exterior panel to rib face)
+    # These are the sloped sides of the trapezoid — shown as vertical strips
+    # at the edges of the rib (simplified; real profile is sloped)
+    rib_side_yd_top = -WALL_T  # near the rib face
+    rib_side_yd_bot = -CORR_DEPTH  # near the exterior panel
+    # Left rib wall
     ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
-                            sx(CORR_DEPTH), sy(Z_HI),
-                            fc=C_WALL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+                            sx(WALL_T), sy(Z_HI),
+                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3,
+                            hatch="///"))
 
-    # Rib interior face highlight
+    # Rib interior face (flange — where bracket bolts on)
+    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
+                            sx(WALL_T), sy(Z_HI),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
+                            hatch="///"))
+
+    # Air gap inside the rib (light fill to show it's hollow)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
+                            sx(CORR_DEPTH - 2 * WALL_T), sy(Z_HI),
+                            fc="#F0F0F0", ec="none", lw=0, zorder=2))
+    # Dashed outline of air gap
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
+                            sx(CORR_DEPTH - 2 * WALL_T), sy(Z_HI),
+                            fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
+
+    # Air gap label
+    ax.text(sx(-CORR_DEPTH / 2), sy(Z_HI * 0.45),
+            "AIR\nGAP",
+            ha="center", va="center", fontsize=6, color=C_DIM,
+            **FONT, zorder=15, style="italic")
+
+    # Rib face (interior surface at Yd=0)
     ax.plot([sx(0), sx(0)], [sy(0), sy(Z_HI)],
-            color=C_OUT, lw=1.5, zorder=4)
+            color=C_OUT, lw=2.0, zorder=4)
 
     ax.text(sx(-CORR_DEPTH / 2), sy(Z_HI - 8),
-            "CORRUGATED\nWALL\n(1.6mm CORTEN)",
+            "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
@@ -744,7 +793,7 @@ def sheet3():
     # Bolt label with layer callout
     leader(ax, sx(BRKT_T + NUT_H + 2), sy(bolt_z1),
            sx(BRKT_T + 55), sy(bolt_z1 - 22),
-           f"M{BOLT_D} \u00d7 60mm THROUGH-BOLT\nHEAD (EXT) \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192 BRACKET \u2192 NUT (INT)\n2 PER BRACKET",
+           f"M{BOLT_D} \u00d7 80mm THROUGH-BOLT\nHEAD (EXT) \u2192 REINF PLATE \u2192\nEXT PANEL \u2192 AIR GAP \u2192 RIB\nFACE \u2192 BRACKET \u2192 NUT (INT)\n2 PER BRACKET",
            color=C_DIM, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
@@ -837,11 +886,12 @@ def sheet3():
     notes = [
         "NEAR/FAR WALKWAY \u2014 CORRUGATED WALL BRACKET:",
         "",
-        f"1. Bolts pass horizontally through layered",
-        f"   sandwich: head \u2192 reinf plate \u2192 wall steel",
-        f"   \u2192 rib body \u2192 bracket plate \u2192 nut.",
+        f"1. Rib is HOLLOW — bolt bridges the air gap.",
+        f"   Path: head \u2192 reinf plate \u2192 ext panel",
+        f"   \u2192 air gap \u2192 rib face \u2192 bracket \u2192 nut.",
         f"2. Reinforcing plate ({REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm)",
-        f"   welded to exterior wall face before drilling.",
+        f"   welded to exterior panel face. Provides",
+        f"   bearing surface for bolt head + washer.",
         f"3. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm",
         f"   (every structural wall rib).",
         f"4. Gusset ({GUSSET_REACH}mm reach) stops before",
@@ -1092,10 +1142,12 @@ def sheet4():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 5 — Detail: Left Walkway Lift-Out on Miter Corners
+# SHEET 5 — Detail: Left Walkway Lift-Out at Butt Joint
 #
-# Isometric-style elevation showing the left walkway grating sitting on
-# the near/far walkway bracket arms at the 45° miter corners.
+# Elevation showing the left walkway grating sitting on the near/far walkway
+# bracket arms at the butt joint (X=470).  Left corners are NOT mitered —
+# butt joints keep the near/far walkways entirely past the panel transport
+# envelope (X≤420), so only the left walkway needs to be removed for transport.
 # No brackets on the left walkway itself — it's a removable lift-out section.
 # Scale ≈ 2:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1109,11 +1161,9 @@ def sheet5():
     ARM_DEPTH  = WALKWAY_BRACKET_T + 2
     arm_bot    = BRKT_ARM_Z - ARM_DEPTH
 
-    # The miter corner: near walkway bracket arm at Yd ≈ 0, extending to Yd = 300.
-    # Left walkway grating sits on top of this arm tip at the corner.
-    # Show a partial plan-section hybrid: elevation at the miter corner,
-    # with the near walkway arm projecting from the pinhole wall (bottom of view),
-    # and the left walkway grating resting on it.
+    # The butt joint: near walkway ends at X=470, left walkway starts at X=170.
+    # The near walkway bracket arm extends to Yd=300, left walkway grating
+    # sits on the arm top at the butt joint boundary.
 
     # ── Figure ───────────────────────────────────────────────────────────────
     # View: elevation looking along the near walkway (X axis toward cargo door).
@@ -1193,11 +1243,11 @@ def sheet5():
             ha="center", va="bottom", fontsize=5.5, color=C_OUT,
             **FONT, zorder=15)
 
-    # ── Left walkway grating (sits on top of bracket arm, past the miter) ────
-    # The left walkway grating starts at the miter line (Yd = WALKWAY_W)
+    # ── Left walkway grating (sits on top of bracket arm, past butt joint) ──
+    # The left walkway grating starts at the butt joint (Yd = WALKWAY_W)
     # and extends inward. It sits directly on the bracket arm top surface.
     # Heavier grating: WALKWAY_LEFT_GRATE_T (40mm vs 25mm).
-    left_grate_yd_start = WALKWAY_W  # miter line
+    left_grate_yd_start = WALKWAY_W  # butt joint line
     left_grate_yd_end = left_grate_yd_start + WALKWAY_W  # 300mm wide
     left_grate_bot = BRKT_ARM_Z  # sits on bracket arm top (Z=75)
     left_grate_top = left_grate_bot + WALKWAY_LEFT_GRATE_T  # Z = 75 + 40 = 115mm
@@ -1216,11 +1266,11 @@ def sheet5():
             ha="center", va="bottom", fontsize=6, color="#206020",
             fontweight="bold", **FONT, zorder=15)
 
-    # ── 45° miter line ───────────────────────────────────────────────────────
+    # ── Butt joint line ────────────────────────────────────────────────────────
     ax.plot([sx(WALKWAY_W), sx(WALKWAY_W)], [sy(0), sy(left_grate_top + 2)],
             color=C_OUT, lw=1.5, ls=(0, (5, 3)), zorder=9)
     ax.text(sx(WALKWAY_W), sy(-5),
-            "45\u00b0 MITER LINE",
+            "BUTT JOINT\n(NO MITER)",
             ha="center", va="top", fontsize=5.5, color=C_OUT,
             **FONT, zorder=15)
 
@@ -1238,13 +1288,13 @@ def sheet5():
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Unsupported span annotation ──────────────────────────────────────────
-    # Arrow indicating the left walkway spans freely between near and far miter corners
+    # Arrow indicating the left walkway spans freely between near and far butt joints
     span_y = left_grate_top + 35
     ax.annotate("", xy=(sx(left_grate_yd_start), sy(span_y)),
                 xytext=(sx(left_grate_yd_end), sy(span_y)),
                 arrowprops=dict(arrowstyle="<->", color="#2060A0", lw=1.5, mutation_scale=10))
     ax.text(sx(left_grate_yd_start + WALKWAY_W / 2), sy(span_y + 5),
-            f"LEFT WALKWAY WIDTH = {WALKWAY_W}mm\n(SPANS {WALKWAY_LEFT_SPAN}mm BETWEEN\nNEAR/FAR MITER CORNERS)",
+            f"LEFT WALKWAY WIDTH = {WALKWAY_W}mm\n(SPANS {WALKWAY_LEFT_SPAN}mm BETWEEN\nNEAR/FAR BUTT JOINTS)",
             ha="center", va="bottom", fontsize=6, color="#2060A0",
             fontweight="bold", **FONT, zorder=15)
 
@@ -1278,7 +1328,7 @@ def sheet5():
         f"3. Left walkway MUST be removed before",
         f"   sliding panel to transport position.",
         f"4. Grating rests on near/far walkway bracket",
-        f"   arms at the 45\u00b0 miter corners.",
+        f"   arms at the butt joints (X=470).",
         f"5. Heavy-duty grating ({WALKWAY_LEFT_GRATE_T}mm, 40\u00d75mm bars)",
         f"   spans {WALKWAY_LEFT_SPAN}mm unsupported gap.",
         f"6. Left grate top = {left_grate_top}mm",
@@ -1295,8 +1345,8 @@ def sheet5():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL C \u2014 LEFT WALKWAY LIFT-OUT ON MITER CORNER",
-                scale_note=f"SCALE \u2248 2:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW AT NEAR-LEFT MITER",
+                subtitle="DETAIL C \u2014 LEFT WALKWAY LIFT-OUT AT BUTT JOINT",
+                scale_note=f"SCALE \u2248 2:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW AT NEAR-LEFT BUTT JOINT",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)

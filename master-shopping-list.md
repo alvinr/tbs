@@ -402,7 +402,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Walkway subtotal: ~$600–$1,015**
 
-*Near/far/right grating lifts onto bracket arms and clips in place. Left walkway is a lift-out section resting on miter corners — must be removed before sliding the hinged panel to transport position. No floor contact — entire tray interior clear.*
+*Near/far/right grating lifts onto bracket arms and clips in place. Left walkway is a lift-out section resting on near/far butt joint ends — must be removed before sliding the hinged panel to transport position. Left corners use butt joints (no miter) so near/far walkways clear the panel envelope. No floor contact — entire tray interior clear.*
 
 ---
 

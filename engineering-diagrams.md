@@ -238,8 +238,8 @@ Mounting varies by wall type:
 **Sheet 4 — Detail B: Right walkway bracket on angle iron welded to flat end wall (≈3:1)**
 ![TBS-001 Walkway — Sheet 4: Angle Iron Bracket](assets/walkway-sheet4.png)
 
-**Sheet 5 — Detail C: Left walkway removable lift-out resting on miter corner (≈2:1)**
-![TBS-001 Walkway — Sheet 5: Lift-Out on Miter](assets/walkway-sheet5.png)
+**Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
+![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
 ---
 

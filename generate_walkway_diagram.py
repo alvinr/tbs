@@ -159,20 +159,21 @@ def sheet1():
                             fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6))
 
     # ── Spanning beam (75×75×4mm RHS, inner side) ────────────────────────
-    # Beam sits on tray floor, spans full walkway length (legs at ends only)
-    beam_floor_z = TRAY_FLOOR   # beam sits on tray floor surface
-    beam_top = beam_floor_z + BEAM_H   # = 77mm (just under grating at 100mm)
-    ax.add_patch(Rectangle((sx(BEAM_YD), sy(beam_floor_z)),
+    # Beam is ELEVATED — supported by end legs at frame height, spanning freely
+    # between them.  At mid-span (this section) there is nothing below the beam:
+    # clear air above the tray floor for film to lay flat.
+    beam_bot = frame_top - BEAM_H   # beam bottom Z = 100 - 75 = 25mm
+    beam_top = frame_top            # beam top Z = 100mm (flush with grate bottom)
+    ax.add_patch(Rectangle((sx(BEAM_YD), sy(beam_bot)),
                             sx(BEAM_W), sy(BEAM_H),
                             fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6))
     # Hollow interior indication
-    ax.add_patch(Rectangle((sx(BEAM_YD + BEAM_T), sy(beam_floor_z + BEAM_T)),
+    ax.add_patch(Rectangle((sx(BEAM_YD + BEAM_T), sy(beam_bot + BEAM_T)),
                             sx(BEAM_W - 2 * BEAM_T), sy(BEAM_H - 2 * BEAM_T),
                             fc="#A0A0A8", ec="none", zorder=6, alpha=0.3))
 
-    # Cross-member (connects outer rail to beam top — thin bar)
-    xmem_y = beam_top - FRAME_T   # cross-member sits on beam top
-    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD + FRAME_W), sy(xmem_y)),
+    # Cross-member (connects outer rail top to beam top — thin bar)
+    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD + FRAME_W), sy(frame_top - FRAME_T)),
                             sx(BEAM_YD - OUTER_RAIL_YD - FRAME_W), sy(FRAME_T),
                             fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
 
@@ -181,9 +182,9 @@ def sheet1():
            sx(OUTER_RAIL_YD - 55), sy(frame_bot - 15),
            "30×30×3mm\nGALV ANGLE\n(OUTER RAIL)", color=C_FRAME, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax, sx(BEAM_YD + BEAM_W / 2), sy(beam_floor_z + BEAM_H / 2),
-           sx(BEAM_YD + BEAM_W + 50), sy(beam_floor_z + BEAM_H / 2 + 20),
-           f"{BEAM_W}×{BEAM_H}×{BEAM_T}mm RHS\nGALV STEEL\n(SPANNING BEAM)", color=C_LEG, fs=5.5,
+    leader(ax, sx(BEAM_YD + BEAM_W / 2), sy(beam_bot + BEAM_H / 2),
+           sx(BEAM_YD + BEAM_W + 50), sy(beam_bot + BEAM_H / 2 + 20),
+           f"{BEAM_W}×{BEAM_H}×{BEAM_T}mm RHS\nGALV STEEL\n(SPANNING BEAM\nELEVATED — NO\nTRAY CONTACT)", color=C_LEG, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
@@ -236,13 +237,14 @@ def sheet1():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Clear tray floor annotation ──────────────────────────────────────────
-    # Arrow showing clear tray floor under the spanning beam
-    clr_x = sx(TRAY_RIM_YD + (BEAM_YD - TRAY_RIM_YD) / 2)
-    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)), xytext=(clr_x, sy(beam_floor_z + BEAM_H - 5)),
-                arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.0, mutation_scale=8))
-    ax.text(clr_x, sy((beam_floor_z + BEAM_H) / 2),
-            "CLEAR\nTRAY\nFLOOR",
-            ha="center", va="center", fontsize=5, color="#208020",
+    # Arrow showing clear air gap under the elevated spanning beam
+    clr_x = sx(BEAM_YD + BEAM_W / 2)
+    ax.annotate("", xy=(clr_x, sy(TRAY_FLOOR + 1)), xytext=(clr_x, sy(beam_bot - 1)),
+                arrowprops=dict(arrowstyle="<->", color="#208020", lw=1.2, mutation_scale=8))
+    gap_mm = beam_bot - TRAY_FLOOR
+    ax.text(clr_x + sx(5), sy((TRAY_FLOOR + beam_bot) / 2),
+            f"{gap_mm:.0f}mm\nCLEAR\n(FILM LAYS\nFLAT HERE)",
+            ha="left", va="center", fontsize=5, color="#208020",
             fontweight="bold", **FONT, zorder=15, alpha=0.8)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
@@ -259,7 +261,7 @@ def sheet1():
                f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Beam height
-    draw_dim_v(ax, sx(BEAM_YD - 10), sy(beam_floor_z), sy(beam_floor_z + BEAM_H),
+    draw_dim_v(ax, sx(BEAM_YD - 10), sy(beam_bot), sy(beam_top),
                f"{BEAM_H}mm\nBEAM", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # Tray rim height

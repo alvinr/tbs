@@ -2281,30 +2281,25 @@ def sheet7():
     ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
-    # ── Stop lip (door side — visible, in front of beam in this view) ────────
+    # ── Stop lip (between wall and beam — welded to bracket arm) ────────────
     C_SUPPORT = "#D08020"
-    # The lip is welded to the bracket arm's door-side edge (low X).
-    # In this view (looking along X), the lip is in front of the beam = visible.
-    # Drawn as a solid rectangle projecting above the arm top.
-    lip_yd_start = BRKT_T / 2   # at the bracket edge
-    ax.add_patch(Rectangle((sx(lip_yd_start), sy(BRKT_ARM_Z)),
-                            sx(BEAM_SHOW - lip_yd_start), sy(LIP_H),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.5))
-    # Only show a short solid section near the bracket to indicate it's a lip
+    # The lip is welded to the bracket arm on the wall side of the beam.
+    # In this view (looking along X from door), the lip is BEHIND the beam.
+    # Shown as ghost (dashed).
+    lip_yd_start = BRKT_T / 2
     ax.add_patch(Rectangle((sx(lip_yd_start), sy(BRKT_ARM_Z)),
                             sx(30), sy(LIP_H),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8))
-    # Weld symbol at lip base
-    ax.plot([sx(lip_yd_start + 8), sx(lip_yd_start + 12), sx(lip_yd_start + 16)],
-            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z + 4), sy(BRKT_ARM_Z)],
-            color="#CC4400", lw=1.5, zorder=9)
+                            fc=C_BRKT, ec=C_OUT, lw=1.0, ls="--",
+                            zorder=6, alpha=0.3))
     leader(ax, sx(lip_yd_start + 15), sy(BRKT_ARM_Z + LIP_H),
            sx(lip_yd_start + 15), sy(BRKT_ARM_Z + LIP_H + 25),
-           f"STOP LIP\n{LIP_T}\u00d7{LIP_H}mm STEEL\n(WELDED TO ARM\nDOOR-SIDE EDGE)",
+           f"STOP LIP\n{LIP_T}\u00d7{LIP_H}mm STEEL\n(GHOST \u2014 WELDED\nTO ARM, WALL SIDE)\nSEE PLAN VIEW",
            color=C_BRKT, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Bearer beam (50×50×3mm Al RHS, running along Yd) ─────────────────────
+    # Beam sits on bracket arm, on the door side of the lip.
+    # In this view it's in front of the lip = fully visible.
     beam_yd_start = BRKT_T / 2
     ax.add_patch(Rectangle((sx(beam_yd_start), sy(beam_bot)),
                             sx(BEAM_SHOW - beam_yd_start), sy(BEAM_SZ),
@@ -2327,28 +2322,37 @@ def sheet7():
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Retaining plate (tray side — ghost, behind beam in this view) ────────
-    # Shown as dashed ghost because it's on the far side of the beam (high X)
-    ret_yd_mid = beam_yd_start + 60   # position along beam near bracket
-    # Horizontal clamp (dashed)
-    ax.add_patch(Rectangle((sx(ret_yd_mid - RET_L / 2), sy(beam_top)),
-                            sx(RET_L), sy(RET_T),
-                            fc=C_BOLT, ec=C_OUT, lw=0.8, ls="--",
-                            zorder=6, alpha=0.3))
-    # Thumb screw (dashed ghost)
-    ax.add_patch(Rectangle((sx(ret_yd_mid - 2), sy(beam_top - 5)),
-                            sx(4), sy(RET_T + 5),
-                            fc=C_BOLT, ec=C_OUT, lw=0.5, ls="--",
-                            zorder=6, alpha=0.3))
+    # ── Retaining block (door side — visible, in front in this view) ─────────
+    # Simple block on the bracket arm surface, on the door side of the beam.
+    # Thumb screw goes down through block into bracket arm.
+    # Beam is sandwiched: lip (wall side) | beam | block (door side).
+    C_BOLT = "#505058"
+    BLOCK_W = 20     # block width in X (along view axis — shown as depth)
+    BLOCK_H = LIP_H  # same height as lip
+    ret_yd_mid = beam_yd_start + 60
+    # Block projects above arm (visible — in front of beam in this view)
+    ax.add_patch(Rectangle((sx(ret_yd_mid - BLOCK_W / 2), sy(BRKT_ARM_Z)),
+                            sx(BLOCK_W), sy(BLOCK_H),
+                            fc=C_BOLT, ec=C_OUT, lw=1.2, zorder=10))
+    # Thumb screw head on top of block
     thumb_head_h = 6
-    thumb_head_w = 12
-    ax.add_patch(Rectangle((sx(ret_yd_mid - thumb_head_w / 2), sy(beam_top + RET_T)),
+    thumb_head_w = 14
+    ax.add_patch(Rectangle((sx(ret_yd_mid - thumb_head_w / 2), sy(BRKT_ARM_Z + BLOCK_H)),
                             sx(thumb_head_w), sy(thumb_head_h),
-                            fc=C_BOLT, ec=C_OUT, lw=0.6, ls="--",
-                            zorder=6, alpha=0.3))
-    leader(ax, sx(ret_yd_mid), sy(beam_top + RET_T + thumb_head_h + 2),
-           sx(ret_yd_mid + 60), sy(beam_top + RET_T + thumb_head_h + 20),
-           f"RETAINING PLATE +\nM{THUMB_D} THUMB SCREW\n(GHOST \u2014 TRAY SIDE,\nBEHIND BEAM)\nSEE PLAN VIEW",
+                            fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=11))
+    # Knurling
+    for ky in range(2, thumb_head_h - 1, 2):
+        ax.plot([sx(ret_yd_mid - thumb_head_w / 2 + 1),
+                 sx(ret_yd_mid + thumb_head_w / 2 - 1)],
+                [sy(BRKT_ARM_Z + BLOCK_H + ky), sy(BRKT_ARM_Z + BLOCK_H + ky)],
+                color="#707070", lw=0.3, zorder=12)
+    # Screw shank through block into bracket arm
+    ax.add_patch(Rectangle((sx(ret_yd_mid - 2), sy(arm_bot)),
+                            sx(4), sy(BLOCK_H + ARM_DEPTH),
+                            fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=9))
+    leader(ax, sx(ret_yd_mid + BLOCK_W / 2 + 2), sy(BRKT_ARM_Z + BLOCK_H / 2),
+           sx(ret_yd_mid + 60), sy(BRKT_ARM_Z + BLOCK_H + 20),
+           f"RETAINING BLOCK\nWITH M{THUMB_D} THUMB SCREW\n(INTO BRACKET ARM)\nTOOL-FREE REMOVAL",
            color=C_BOLT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -2425,37 +2429,43 @@ def sheet7():
             "BEAM", ha="center", va="center", fontsize=4.5, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Stop lip (door side = high X in plan view = top)
-    lip_x_start = beam_x_center + BEAM_SZ / 2
+    # Stop lip (tray/interior side = low X in plan view = bottom)
+    # Lip is welded to arm on the interior side of the beam.
+    lip_x_end = beam_x_center - BEAM_SZ / 2   # lip abuts beam bottom edge
+    lip_x_start = lip_x_end - LIP_T
     ax.add_patch(Rectangle((px(beam_yd_pv), py(lip_x_start)),
                             px(beam_yd_pv + BEAM_SZ) - px(beam_yd_pv),
-                            py(lip_x_start + LIP_T) - py(lip_x_start),
+                            py(lip_x_end) - py(lip_x_start),
                             fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=8))
-    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(lip_x_start + LIP_T + 4),
-            f"STOP LIP\n({LIP_T}mm)", ha="center", va="bottom", fontsize=4, color=C_BRKT,
-            fontweight="bold", **FONT, zorder=15)
+    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(lip_x_start - 4),
+            f"STOP LIP\n({LIP_T}mm, WELDED)", ha="center", va="top", fontsize=4,
+            color=C_BRKT, fontweight="bold", **FONT, zorder=15)
 
-    # Retaining plate + thumb screw (tray side = low X in plan view = bottom)
-    ret_x_start = beam_x_center - BEAM_SZ / 2 - RET_T
-    ax.add_patch(Rectangle((px(beam_yd_pv + BEAM_SZ / 2 - RET_L / 2), py(ret_x_start)),
-                            px(beam_yd_pv + BEAM_SZ / 2 + RET_L / 2) - px(beam_yd_pv + BEAM_SZ / 2 - RET_L / 2),
-                            py(ret_x_start + RET_T + RET_DEPTH) - py(ret_x_start),
-                            fc="#404050", ec=C_OUT, lw=1.0, zorder=8, alpha=0.7))
+    # Retaining block + thumb screw (door side = high X in plan view = top)
+    BLOCK_W_PV = 20   # block width in X
+    block_x_start = beam_x_center + BEAM_SZ / 2   # block abuts beam top edge
+    block_yd_center = beam_yd_pv + BEAM_SZ / 2
+    ax.add_patch(Rectangle((px(block_yd_center - BLOCK_W_PV / 2), py(block_x_start)),
+                            px(block_yd_center + BLOCK_W_PV / 2) - px(block_yd_center - BLOCK_W_PV / 2),
+                            py(block_x_start + BLOCK_W_PV) - py(block_x_start),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
     # Thumb screw (circle in plan view)
-    thumb_cx = beam_yd_pv + BEAM_SZ / 2
-    thumb_cy = ret_x_start + RET_DEPTH / 2
+    thumb_cx = block_yd_center
+    thumb_cy = block_x_start + BLOCK_W_PV / 2
     ax.add_patch(Circle((px(thumb_cx), py(thumb_cy)),
                          (px(THUMB_D / 2 + 1) - px(0)),
-                         fc="#404050", ec=C_OUT, lw=0.8, zorder=9))
-    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(ret_x_start - 5),
-            f"RETAINING\nPLATE + M{THUMB_D}\nTHUMB SCREW", ha="center", va="top",
-            fontsize=4, color="#404050",
+                         fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=9))
+    ax.text(px(block_yd_center), py(block_x_start + BLOCK_W_PV + 4),
+            f"RETAINING BLOCK\n+ M{THUMB_D} THUMB SCREW", ha="center", va="bottom",
+            fontsize=4, color=C_BOLT,
             fontweight="bold", **FONT, zorder=15)
 
     # Plan view border
-    ax.add_patch(Rectangle((px(-10), py(ret_x_start - 18)),
+    pv_bot = lip_x_start - 18
+    pv_top = block_x_start + BLOCK_W_PV + 18
+    ax.add_patch(Rectangle((px(-10), py(pv_bot)),
                             px(110) - px(-10),
-                            py(lip_x_start + LIP_T + 18) - py(ret_x_start - 18),
+                            py(pv_top) - py(pv_bot),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
     # ── Notes ────────────────────────────────────────────────────────────────
@@ -2466,11 +2476,11 @@ def sheet7():
         "",
         f"1. Beam sits on bracket arm \u2014",
         f"   gravity holds it down.",
-        f"2. Door side: {LIP_T}\u00d7{LIP_H}mm stop lip",
-        f"   welded to arm edge.",
-        f"3. Tray side: retaining plate with",
-        f"   M{THUMB_D} thumb screw clamps",
-        f"   beam from sliding. Tool-free.",
+        f"2. Wall side: {LIP_T}\u00d7{LIP_H}mm stop lip",
+        f"   welded to arm (prevents slip).",
+        f"3. Door side: retaining block with",
+        f"   M{THUMB_D} thumb screw into arm",
+        f"   (prevents slip). Tool-free.",
         f"4. Beam top flush with arm",
         f"   top at Z={beam_top}mm.",
         f"5. Same at both ends",

@@ -290,8 +290,8 @@ def sheet1():
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
 
-    # ── Grating clip ─────────────────────────────────────────────────────────
-    clip_yd = WALKWAY_W * 0.6
+    # ── Grating clip (innermost edge, closest to processing tray) ──────────
+    clip_yd = WALKWAY_W - 20
     clip_w = 8
     clip_below = 12   # extends below arm top
     clip_above = 5    # extends above grate top
@@ -301,7 +301,7 @@ def sheet1():
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
-           sx(clip_yd + 50), sy(brkt_arm_z + 55),
+           sx(clip_yd + 30), sy(brkt_arm_z + 55),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 

@@ -2632,7 +2632,7 @@ def sheet7():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
-    notes_top = sy(beam_bot + 10)
+    notes_top = sy(beam_bot + 10 + (Z_HI - Z_LO) * 0.10)
     notes = [
         "BEARER BEAM CONNECTION:",
         "",

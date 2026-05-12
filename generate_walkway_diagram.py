@@ -300,7 +300,7 @@ def sheet1():
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
     leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
-           sx(clip_yd + 50), sy(brkt_arm_z + 35),
+           sx(clip_yd + 50), sy(brkt_arm_z + 55),
            "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -317,7 +317,7 @@ def sheet1():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width (= bracket arm cantilever)
-    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 25),
+    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 55),
                f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7, font=FONT)
 
     # Deck height (floor to grate top)
@@ -382,7 +382,7 @@ def sheet1():
     # Shoe length annotation (into-page dimension, since shoes point along X)
     ax.text(sx(WALKWAY_W / 2), sy(shoe_z + SHOE_H + 6),
             "US 9 SHOE PAIR\n(270mm LONG \u00d7 100mm WIDE)",
-            ha="center", va="bottom", fontsize=5.5, color="#B89600",
+            ha="center", va="bottom", fontsize=5.5, color="#404040",
             **FONT, zorder=15, alpha=0.7)
     leader(ax, sx(shoe_start + SHOE_W / 2), sy(shoe_z + SHOE_H),
            sx(95), sy(shoe_z + SHOE_H + 35),

@@ -895,7 +895,7 @@ notes = [
     f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to drain).",
     f"3. Drain: 1\" NPT bulkhead fitting through tray floor → 3W-DV-02 diverter (Brown / Waste).",
     f"4. Tray: 304 stainless steel, {PROC_TRAY_RIM}mm rim, permanently installed.",
-    f"5. Walkway legs (25mm SHS, 600mm spacing) do not interfere with drain — nearest leg ≈270mm away.",
+    f"5. Spanning beam walkway (legs at ends only) — no intermediate legs on tray floor near drain.",
 ]
 for i, n in enumerate(notes):
     fig3.text(0.04, 0.08 - i * 0.018, n, fontsize=7, color=C_TEXT,

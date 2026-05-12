@@ -260,6 +260,18 @@ def sheet1():
             ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
+    # ── Grating clip ─────────────────────────────────────────────────────────
+    clip_yd = WALKWAY_W * 0.6
+    clip_w = 10
+    clip_h = 15
+    ax.add_patch(Rectangle((sx(clip_yd), sy(brkt_arm_z - clip_h)),
+                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, sx(clip_yd + clip_w), sy(brkt_arm_z),
+           sx(clip_yd + 50), sy(brkt_arm_z + 35),
+           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
     # ── Clear tray area annotation ───────────────────────────────────────────
     # Arrow showing clear air under the entire walkway — no legs, no beam
     clr_x = sx(WALKWAY_W * 0.7)
@@ -1104,6 +1116,18 @@ def sheet4():
         ax.add_patch(Rectangle((sx(arm_left + yd), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
+
+    # ── Grating clip ─────────────────────────────────────────────────────────
+    clip_yd = arm_left + WALKWAY_W * 0.4
+    clip_w = 10
+    clip_h = 15
+    ax.add_patch(Rectangle((sx(clip_yd), sy(BRKT_ARM_Z - clip_h)),
+                            sx(clip_w), sy(clip_h + WALKWAY_GRATE_T + 5),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
+           sx(clip_yd - 40), sy(BRKT_ARM_Z + 35),
+           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     draw_dim_v(ax, sx(WALL_YD + WALL_T + 20), sy(0), sy(BRKT_VERT),

@@ -150,17 +150,20 @@ def sheet1():
             ha="left", va="bottom", fontsize=5.5, color="#4080C0",
             **FONT, alpha=0.7, zorder=15)
 
-    # ── Cantilever bracket (3-piece: vertical plate + arm + diagonal gusset) ──
+    # ── Cantilever bracket (3-piece: vertical plate + arm + gusset underneath) ─
     # The bracket is three welded pieces:
     #   1. Vertical mounting plate: flat against wall, Z=0 to BRKT_VERT (150mm)
     #      — bolted to wall rib, does NOT project into tray zone
     #   2. Horizontal arm: welded to vertical plate at Z=BRKT_ARM_H (75mm),
     #      projects inward 300mm — ABOVE the 50mm tray rim
-    #   3. Diagonal gusset: from top of vertical plate (Z=150) to arm tip (Z=75)
-    #      — entirely above the arm, well clear of tray rim
+    #   3. Gusset underneath the arm: right triangle bracing the arm from below,
+    #      extends 70mm from wall (stops before tray rim at Yd=80mm).
+    #      Vertices: wall/floor (0,0), wall/arm-bottom (0, arm_bot), (70, arm_bot).
 
     brkt_arm_z = BRKT_ARM_H  # = 75mm (top of horizontal arm = grate support)
     ARM_DEPTH  = BRKT_T + 2  # arm cross-section depth shown (visual thickness)
+    arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm
+    GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim position)
 
     # 1. Vertical mounting plate (flat rectangle on wall face)
     ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
@@ -168,30 +171,31 @@ def sheet1():
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
     # 2. Horizontal arm (projects inward at Z=brkt_arm_z)
-    ax.add_patch(Rectangle((sx(0), sy(brkt_arm_z - ARM_DEPTH)),
+    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
                             sx(WALKWAY_W), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
     # Arm top surface (where grate sits) — emphasize
     ax.plot([sx(0), sx(WALKWAY_W)], [sy(brkt_arm_z), sy(brkt_arm_z)],
             color=C_OUT, lw=2.0, zorder=7)
 
-    # 3. Diagonal gusset brace (triangle ABOVE the arm, from wall top to arm tip)
+    # 3. Gusset UNDERNEATH the arm — right triangle bracing from below
+    # Stops at Yd=70mm, before the tray rim at Yd=80mm
     gusset_verts = [
-        (sx(0), sy(BRKT_VERT)),               # top of vertical plate
-        (sx(0), sy(brkt_arm_z)),               # where arm meets wall
-        (sx(WALKWAY_W), sy(brkt_arm_z)),       # arm tip
+        (sx(0), sy(0)),                   # wall at floor level
+        (sx(0), sy(arm_bot)),             # wall at arm bottom
+        (sx(GUSSET_REACH), sy(arm_bot)),  # 70mm out along arm bottom
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
-                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.7))
-    # Diagonal edge emphasis
-    ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_VERT), sy(brkt_arm_z)],
-            color=C_OUT, lw=1.5, zorder=7)
+                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
+    # Diagonal edge emphasis (hypotenuse)
+    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
+            color=C_OUT, lw=1.5, zorder=6)
 
-    # Weld symbols at joints (small triangles)
-    for wyd, wz in [(BRKT_T, brkt_arm_z), (WALKWAY_W * 0.15, brkt_arm_z)]:
-        ax.plot([sx(wyd - 4), sx(wyd), sx(wyd + 4)],
-                [sy(wz), sy(wz + 5), sy(wz)],
-                color="#CC4400", lw=1.5, zorder=8)
+    # Weld symbols at joints
+    # Where gusset meets arm bottom
+    ax.plot([sx(GUSSET_REACH / 3 - 4), sx(GUSSET_REACH / 3), sx(GUSSET_REACH / 3 + 4)],
+            [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
+            color="#CC4400", lw=1.5, zorder=8)
 
     # Bolt holes on vertical plate (2× M12)
     bolt_z1 = 30
@@ -204,11 +208,18 @@ def sheet1():
         ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
         ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
 
-    # Bracket label
-    leader(ax, sx(WALKWAY_W * 0.5), sy(brkt_arm_z + (BRKT_VERT - brkt_arm_z) / 2),
-           sx(WALKWAY_W * 0.5 + 30), sy(BRKT_VERT + 15),
-           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ DIAGONAL GUSSET)",
+    # Bracket label — point at the arm
+    leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z + 3),
+           sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z + 30),
+           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
            color=C_BRKT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Gusset label
+    leader(ax, sx(GUSSET_REACH / 2), sy(arm_bot / 2 - 5),
+           sx(GUSSET_REACH + 40), sy(arm_bot / 2 - 25),
+           f"GUSSET ({GUSSET_REACH}mm)\nSTOPS BEFORE\nTRAY RIM",
+           color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Bolt label
@@ -675,8 +686,10 @@ def sheet3():
            f"TRAY RIM {PROC_TRAY_RIM}mm", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Bracket (3-piece: vertical plate + arm + diagonal gusset above arm) ──
+    # ── Bracket (3-piece: vertical plate + arm + gusset underneath) ────────────
     ARM_DEPTH = BRKT_T + 2  # arm cross-section depth (visual)
+    arm_bot = BRKT_ARM_Z - ARM_DEPTH
+    GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim)
 
     # 1. Vertical mounting plate (flat on wall rib face)
     ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
@@ -684,30 +697,29 @@ def sheet3():
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
 
     # 2. Horizontal arm (projects inward at Z=BRKT_ARM_Z)
-    ax.add_patch(Rectangle((sx(0), sy(BRKT_ARM_Z - ARM_DEPTH)),
+    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
                             sx(WALKWAY_W), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
     # Arm top surface
     ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=2.0, zorder=7)
 
-    # 3. Diagonal gusset brace (triangle ABOVE the arm)
+    # 3. Gusset UNDERNEATH the arm — right triangle bracing from below
     gusset_verts = [
-        (sx(0), sy(BRKT_VERT)),
-        (sx(0), sy(BRKT_ARM_Z)),
-        (sx(WALKWAY_W), sy(BRKT_ARM_Z)),
+        (sx(0), sy(0)),
+        (sx(0), sy(arm_bot)),
+        (sx(GUSSET_REACH), sy(arm_bot)),
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
-                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.7))
-    # Diagonal edge emphasis
-    ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_VERT), sy(BRKT_ARM_Z)],
-            color=C_OUT, lw=1.5, zorder=7)
+                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
+    # Diagonal edge emphasis (hypotenuse)
+    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
+            color=C_OUT, lw=1.5, zorder=6)
 
-    # Weld symbols at joints
-    for wyd, wz in [(BRKT_T, BRKT_ARM_Z), (WALKWAY_W * 0.15, BRKT_ARM_Z)]:
-        ax.plot([sx(wyd - 4), sx(wyd), sx(wyd + 4)],
-                [sy(wz), sy(wz + 5), sy(wz)],
-                color="#CC4400", lw=1.5, zorder=8)
+    # Weld symbol where gusset meets arm bottom
+    ax.plot([sx(GUSSET_REACH / 3 - 4), sx(GUSSET_REACH / 3), sx(GUSSET_REACH / 3 + 4)],
+            [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
+            color="#CC4400", lw=1.5, zorder=8)
 
     # Bolt holes
     bolt_z1 = 30
@@ -732,11 +744,18 @@ def sheet3():
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Bracket label (point at gusset area above arm)
-    leader(ax, sx(WALKWAY_W * 0.3), sy(BRKT_ARM_Z + (BRKT_VERT - BRKT_ARM_Z) * 0.3),
+    # Bracket label
+    leader(ax, sx(WALKWAY_W * 0.4), sy(BRKT_ARM_Z + 3),
            sx(WALKWAY_W * 0.55), sy(BRKT_VERT + 15),
-           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\nVERT PLATE + ARM\n+ DIAGONAL GUSSET",
+           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\nVERT PLATE + ARM\n+ GUSSET UNDER",
            color=C_BRKT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Gusset label
+    leader(ax, sx(GUSSET_REACH / 2), sy(arm_bot / 2 - 3),
+           sx(GUSSET_REACH + 50), sy(arm_bot / 2 - 20),
+           f"GUSSET ({GUSSET_REACH}mm)\nSTOPS BEFORE\nTRAY RIM",
+           color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────

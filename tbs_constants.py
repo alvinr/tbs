@@ -237,15 +237,17 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 #   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.
 #   Right walkway (far end wall):   brackets bolt to angle iron mounting rail
 #       welded along the flat end wall interior (no ribs on flat end walls).
-#   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no brackets.
+#   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no wall brackets.
 #       Panel (hinged door) occupies the end wall at X=0 and slides inward
 #       300mm for transport.  Left walkway must be removed before panel slides.
 #       Left corners use butt joints (no miter) so near/far walkways start at
 #       X=470 — entirely past the panel transport envelope (max X=420).
 #       Only the left walkway (X=170–470) needs removal for transport.
-#       Supported at each end by near/far walkway butt joint ends.  Same 25mm
-#       grating as other sections — adequate for single-person pedestrian load
-#       on a 300mm wide walkway over the 1,762mm span.
+#       Supported at ends by near/far walkway bracket arms at butt joints.
+#       Intermediate support by 3 removable U-frame cradles at ~440mm centers
+#       plus a continuous bearing strip on the processing tray rim (X=170).
+#       Bearing strip: 25×25×3mm Al angle on tray rim (Z=50), top at Z=75mm.
+#       Cradle: crossbar spanning walkway width, legs on floor each side of rim.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
@@ -265,9 +267,18 @@ WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1,962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
 # REMOVABLE — must be lifted out before sliding panel to transport position.
-# Unsupported span between miter corners: C_WID - 2×WALKWAY_W = 1,762mm.
+# Span between near/far bracket arms: C_WID - 2×WALKWAY_W = 1,762mm.
+# Supported by 3 removable U-frame cradles at ~440mm centers, plus a
+# continuous bearing strip on the processing tray rim (X=170, cargo door edge).
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
-WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1,762mm unsupported span
+WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1,762mm span between bracket arms
+# Left walkway intermediate support — removable cradles + bearing strip
+LEFT_WK_CRADLE_N     = 3     # number of removable U-frame support cradles
+LEFT_WK_CRADLE_LEG   = 25    # cradle leg tube size (mm) — 25×25×3mm Al SHS
+LEFT_WK_CRADLE_LEG_T = 3     # cradle leg wall thickness (mm)
+LEFT_WK_CRADLE_BAR   = 25    # crossbar depth (mm) — Z=50 to Z=75mm
+LEFT_WK_CRADLE_BASE  = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
+LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
 # Right walkway (IBC end): X=tray_R-WALKWAY_W to tray_R, Yd=0 to C_WID
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
 # Open processing area (center, clear of walkways):
@@ -374,7 +385,7 @@ if __name__ == "__main__":
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
     print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (all sections)")
-    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (no brackets — panel conflict)")
+    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  ({LEFT_WK_CRADLE_N} cradles + bearing strip)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")

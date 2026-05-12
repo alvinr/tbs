@@ -29,6 +29,13 @@ Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   Shows left walkway grating (X=170-470, removable lift-out) meeting near
   walkway bracket arm at butt joint (X=470). Panel transport envelope
   (X=0-420) shown as ghost, confirming 50mm clearance to near walkway.
+  Bearing strip and support cradle shown in cross-section.
+
+Sheet 6 — Detail D: Left walkway support cradle (removable):
+  Elevation detail of one removable U-frame support cradle. Shows outer leg
+  on bare container floor (X=140), crossbar spanning walkway width, inner
+  leg on tray floor (X=450). Bearing strip on tray rim at X=170. 3 cradles
+  at ~440mm centers support the 1,762mm span between bracket arms.
 """
 
 import numpy as np
@@ -53,6 +60,8 @@ from tbs_constants import (
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
     PANEL_SLIDE, PANEL_CENTER_T, PANEL_FLOOR_GAP,
+    LEFT_WK_CRADLE_N, LEFT_WK_CRADLE_LEG, LEFT_WK_CRADLE_LEG_T,
+    LEFT_WK_CRADLE_BAR, LEFT_WK_CRADLE_BASE, LEFT_WK_BEARING_STRIP,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -382,7 +391,7 @@ def sheet1():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION \u2014 NEAR WALKWAY (LOOKING ALONG X AXIS)",
                 scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
@@ -579,6 +588,53 @@ def sheet2():
             ha="center", va="center", fontsize=7, color="#208020",
             **FONT, zorder=5, alpha=0.6)
 
+    # ── Left walkway support — bearing strip + cradles ─────────────────────
+    C_SUPPORT = "#D08020"   # orange for support elements
+    # Bearing strip on tray rim (X=170, continuous along Yd)
+    strip_yd_start = NYI   # start at near walkway inner edge (Yd=300)
+    strip_yd_end   = FY    # end at far walkway inner edge (Yd=1,962)
+    ax.plot([LX, LX], [strip_yd_start, strip_yd_end],
+            color=C_SUPPORT, lw=3.0, zorder=8, solid_capstyle="butt")
+    ax.text(LX - 15, (strip_yd_start + strip_yd_end) / 2,
+            f"BEARING\nSTRIP\n(Al 25\u00d725)",
+            ha="right", va="center", fontsize=4.5, color=C_SUPPORT,
+            fontweight="bold", **FONT, zorder=15, rotation=90)
+    # Support cradles — 3 positions along Yd
+    cradle_spacing = WALKWAY_LEFT_SPAN / (LEFT_WK_CRADLE_N + 1)
+    cradle_mark_w = 60   # plan-view cradle marker width (Yd direction)
+    cradle_mark_d = WALKWAY_W + 40  # extends beyond walkway edges to show legs
+    for i in range(LEFT_WK_CRADLE_N):
+        cy = NYI + cradle_spacing * (i + 1)  # Yd position
+        # Cradle outline (dashed rectangle straddling the walkway)
+        ax.add_patch(Rectangle((LX - 20, cy - cradle_mark_w / 2),
+                     cradle_mark_d, cradle_mark_w,
+                     fc=C_SUPPORT, ec=C_SUPPORT, lw=1.0, ls="--",
+                     alpha=0.15, zorder=6))
+        ax.add_patch(Rectangle((LX - 20, cy - cradle_mark_w / 2),
+                     cradle_mark_d, cradle_mark_w,
+                     fc="none", ec=C_SUPPORT, lw=1.0, ls="--",
+                     alpha=0.6, zorder=8))
+        # Crossbar line
+        ax.plot([LX - 10, LXR + 10], [cy, cy],
+                color=C_SUPPORT, lw=2.0, zorder=9)
+        # Leg markers (small squares at each end)
+        leg_sz = 18
+        # Outer leg (cargo door side, X < tray rim)
+        ax.add_patch(Rectangle((LX - 20 - leg_sz / 2 + 10, cy - leg_sz / 2),
+                     leg_sz, leg_sz,
+                     fc=C_SUPPORT, ec=C_OUT, lw=0.6, zorder=9))
+        # Inner leg (tray side)
+        ax.add_patch(Rectangle((LXR - leg_sz / 2, cy - leg_sz / 2),
+                     leg_sz, leg_sz,
+                     fc=C_SUPPORT, ec=C_OUT, lw=0.6, zorder=9))
+    # Label first cradle
+    c1_yd = NYI + cradle_spacing
+    leader(ax, LX + W / 2, c1_yd + cradle_mark_w / 2 + 5,
+           LX + W / 2 + 250, c1_yd + cradle_mark_w / 2 + 200,
+           f"REMOVABLE SUPPORT\nCRADLE (\u00d7{LEFT_WK_CRADLE_N})\n{int(cradle_spacing)}mm SPACING",
+           color=C_SUPPORT, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Walkway width dimension (near walkway)
     draw_dim_v(ax, PROC_TRAY_X_L - 40, WALKWAY_NEAR_YD, WALKWAY_NEAR_YD + WALKWAY_W,
@@ -599,6 +655,7 @@ def sheet2():
         (C_WK,      WK_ALPHA, "xx",  "o", "Walkway (grated deck)"),
         ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
         (C_BRKT,     1.0,      None,  "r", f"Wall bracket ({WALKWAY_BRACKET_T}mm gusset)"),
+        (C_SUPPORT,  0.8,      None,  "r", f"Support cradle / bearing strip (removable)"),
     ]
     for i, (c, a, h, marker, lbl) in enumerate(swatches):
         sy_pos = legend_top - i * 50
@@ -628,10 +685,10 @@ def sheet2():
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
         f"3. Right: brackets on {WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON_T}mm angle iron welded to flat end wall.",
-        f"4. Left: REMOVABLE LIFT-OUT \u2014 no brackets (panel conflict). Rests on near/far walkway ends at butt joints.",
-        f"   Grating ({WALKWAY_GRATE_T}mm) spans {WALKWAY_LEFT_SPAN}mm unsupported. Remove before panel slides.",
-        f"5. NO legs on tray floor \u2014 zero floor contact. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
-        f"6. ~{n_brackets_total} brackets total (near + far + right). Each section lifts off for tray access.",
+        f"4. Left: REMOVABLE LIFT-OUT \u2014 supported by {LEFT_WK_CRADLE_N} removable U-frame cradles at {int(cradle_spacing)}mm centers",
+        f"   plus continuous bearing strip (25\u00d725mm Al angle) on tray rim. All removed before panel slides.",
+        f"5. Near/far/right: NO legs on tray floor \u2014 zero floor contact. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
+        f"6. ~{n_brackets_total} wall brackets (near + far + right). Each grating section lifts off for tray access.",
     ]
     for i, note in enumerate(notes):
         ax.text(C_LEN * 3 / 5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
@@ -639,9 +696,9 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="PLAN VIEW \u2014 WALL-CANTILEVERED BRACKET LAYOUT",
+                subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
@@ -935,7 +992,7 @@ def sheet3():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 5",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 NEAR/FAR BRACKET ON CORRUGATED WALL RIB",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 ELEVATION THROUGH RIB",
@@ -1184,7 +1241,7 @@ def sheet4():
                 **FONT, zorder=15)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 5",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 RIGHT WALKWAY BRACKET ON ANGLE IRON (FLAT END WALL)",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm",
@@ -1269,6 +1326,57 @@ def sheet5():
            sx(tray_x - 30), sy(PROC_TRAY_RIM + 15),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Bearing strip on tray rim (25×25mm Al angle) ─────────────────────────
+    C_SUPPORT = "#D08020"
+    STRIP_H = LEFT_WK_BEARING_STRIP   # = 25mm
+    strip_bot = PROC_TRAY_RIM         # = 50mm (sits on rim top)
+    strip_top = strip_bot + STRIP_H   # = 75mm (= grate bottom)
+    ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(strip_bot)),
+                            sx(STRIP_H + TRAY_WALL), sy(STRIP_H),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=5))
+    leader(ax, sx(tray_x + STRIP_H / 2), sy(strip_bot + STRIP_H / 2),
+           sx(tray_x + STRIP_H / 2 - 45), sy(strip_bot + STRIP_H + 12),
+           f"BEARING STRIP\n25\u00d725\u00d73mm Al ANGLE\nON TRAY RIM\n(REMOVABLE)",
+           color=C_SUPPORT, fs=5,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Support cradle cross-section (representative — 3 along Yd) ───────────
+    # Outer leg: X≈140, stands on container floor (outside tray)
+    OUTER_LEG_X = tray_x - 30   # = 140mm
+    LEG_W = LEFT_WK_CRADLE_LEG  # = 25mm
+    # Inner leg: X≈450, stands on tray floor (inside tray)
+    INNER_LEG_X = LEFT_WK_R - 20   # = 450mm
+    CRADLE_BAR_Z = strip_top        # = 75mm (crossbar top = grate bottom)
+    CRADLE_BAR_BOT = CRADLE_BAR_Z - LEFT_WK_CRADLE_BAR  # = 50mm
+    # Outer leg (cargo door side — on bare floor)
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(0)),
+                            sx(LEG_W), sy(CRADLE_BAR_BOT),
+                            fc=C_SUPPORT, ec=C_OUT, lw=0.8, alpha=0.5, zorder=4))
+    # Outer foot plate
+    base = LEFT_WK_CRADLE_BASE  # 60mm
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - base / 2), sy(-3)),
+                            sx(base), sy(3),
+                            fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.5, zorder=4))
+    # Inner leg (tray side — on tray floor)
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - LEG_W / 2), sy(TRAY_FLOOR_T)),
+                            sx(LEG_W), sy(CRADLE_BAR_BOT - TRAY_FLOOR_T),
+                            fc=C_SUPPORT, ec=C_OUT, lw=0.8, alpha=0.5, zorder=4))
+    # Inner foot plate
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - base / 2), sy(TRAY_FLOOR_T - 1)),
+                            sx(base), sy(3),
+                            fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.5, zorder=4))
+    # Crossbar spanning between legs
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(CRADLE_BAR_BOT)),
+                            sx(INNER_LEG_X + LEG_W / 2 - OUTER_LEG_X + LEG_W / 2),
+                            sy(LEFT_WK_CRADLE_BAR),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, alpha=0.5, zorder=5))
+    # Cradle label
+    leader(ax, sx(OUTER_LEG_X - LEG_W), sy(CRADLE_BAR_BOT / 2),
+           sx(OUTER_LEG_X - 45), sy(CRADLE_BAR_BOT / 2 - 15),
+           f"SUPPORT CRADLE\n(\u00d7{LEFT_WK_CRADLE_N}, REMOVABLE)\nSEE SHEET 6",
+           color=C_SUPPORT, fs=5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # ── Panel transport envelope (ghost) ─────────────────────────────────────
     # Panel sweeps X=0 to X=420, bottom at Z=80mm (PANEL_FLOOR_GAP)
@@ -1456,21 +1564,21 @@ def sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(near_wk_end + 80)
     notes_top = sy(Z_HI - 5)
+    cradle_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_CRADLE_N + 1))
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         "",
-        f"1. NO brackets under left walkway \u2014",
-        f"   hinged panel occupies end wall.",
-        f"2. Panel slides {PANEL_SLIDE}mm inward for",
-        f"   transport (inner face to X={PANEL_INNER}mm).",
-        f"3. Left walkway at X={LEFT_WK_L}\u2013{LEFT_WK_R}mm",
-        f"   MUST be removed before sliding.",
-        f"4. {CLEARANCE}mm clearance between panel inner",
-        f"   face (X={PANEL_INNER}) and near walkway",
-        f"   bracket (X={LEFT_WK_R}) \u2014 no interference.",
-        f"5. Left grating rests on near/far bracket",
-        f"   arms at butt joints. Lift to remove.",
-        f"6. Grate tops aligned: Z={int(grate_top)}mm both sides.",
+        f"1. NO wall brackets \u2014 panel occupies end wall.",
+        f"2. Supported by: bearing strip on tray rim",
+        f"   (X={LEFT_WK_L}) + {LEFT_WK_CRADLE_N} removable U-frame",
+        f"   cradles at {cradle_spacing}mm centers (sheet 6).",
+        f"3. Butt joint ends rest on near/far bracket",
+        f"   arms at X={LEFT_WK_R}.",
+        f"4. Panel slides {PANEL_SLIDE}mm inward for transport",
+        f"   (inner face to X={PANEL_INNER}mm).",
+        f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to",
+        f"   near walkway bracket (X={LEFT_WK_R}).",
+        f"6. Remove cradles + grating before panel slides.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -1481,7 +1589,7 @@ def sheet5():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 5",
+    title_block(ax, "SHEET 5 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"SCALE \u2248 2.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -1491,6 +1599,287 @@ def sheet5():
     fig.savefig(svg_path("diagrams/walkway-sheet5.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet5.png saved")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 6 — Detail D: Left Walkway Support Cradle
+#
+# Elevation cross-section of one removable U-frame support cradle.
+# View: looking along Yd (same as sheets 1, 3, 5).
+# X = horizontal axis, Z = vertical axis.
+# Shows: outer leg on bare container floor, crossbar spanning walkway width,
+# inner leg on tray floor, bearing strip on tray rim, grating resting on top.
+# Scale ≈ 3:1 for clarity.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet6():
+    S = 3.5   # scale factor
+
+    def sx(mm): return mm * S
+    def sy(mm): return mm * S
+
+    # ── Key geometry ─────────────────────────────────────────────────────────
+    TRAY_WALL  = 3     # tray wall thickness (SS)
+    TRAY_FLOOR_T = 2   # tray floor thickness
+    tray_x = PROC_TRAY_X_L   # = 170mm
+    LEG_W  = LEFT_WK_CRADLE_LEG    # = 25mm tube
+    LEG_T  = LEFT_WK_CRADLE_LEG_T  # = 3mm wall
+    BAR_H  = LEFT_WK_CRADLE_BAR    # = 25mm crossbar depth
+    BASE_W = LEFT_WK_CRADLE_BASE   # = 60mm foot plate
+    BASE_T = 3   # foot plate thickness
+
+    LEFT_WK_L = WALKWAY_LEFT_X                 # = 170mm
+    LEFT_WK_R = WALKWAY_LEFT_X + WALKWAY_W     # = 470mm
+
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
+    grate_bot = BRKT_ARM_Z   # = 75mm
+    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 100mm
+
+    # Cradle geometry
+    OUTER_LEG_X = tray_x - 30      # = 140mm (on bare floor, outside tray)
+    INNER_LEG_X = LEFT_WK_R - 20   # = 450mm (on tray floor, inside tray)
+    BAR_BOT = grate_bot - BAR_H    # = 50mm (crossbar bottom)
+    BAR_TOP = grate_bot             # = 75mm (crossbar top = grate bottom)
+
+    # Bearing strip
+    STRIP_H = LEFT_WK_BEARING_STRIP  # = 25mm
+    strip_bot = PROC_TRAY_RIM       # = 50mm
+    strip_top = strip_bot + STRIP_H  # = 75mm
+
+    # ── Figure ───────────────────────────────────────────────────────────────
+    X_LO = OUTER_LEG_X - 80
+    X_HI = INNER_LEG_X + 120
+    Z_LO = -30
+    Z_HI = grate_top + 80
+
+    fig, ax = plt.subplots(figsize=(18, 11))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(sx(X_LO), sx(X_HI))
+    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Container floor ──────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(X_LO), sy(-12)), sx(X_HI - X_LO), sy(12),
+                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+
+    # ── Processing tray ──────────────────────────────────────────────────────
+    # Tray left rim (vertical wall)
+    ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(0)),
+                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
+    # Tray floor extending right
+    tray_floor_end = X_HI - 20
+    ax.add_patch(Rectangle((sx(tray_x), sy(0)),
+                            sx(tray_floor_end - tray_x), sy(TRAY_FLOOR_T),
+                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
+    # Break line
+    bx = sx(tray_floor_end)
+    for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
+        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
+
+    # Label tray rim
+    leader(ax, sx(tray_x - TRAY_WALL / 2), sy(PROC_TRAY_RIM / 2),
+           sx(tray_x - 25), sy(PROC_TRAY_RIM + 20),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm (304 SS)",
+           color=C_TRAY, fs=5.5,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Bearing strip (25×25mm Al angle on tray rim) ─────────────────────────
+    C_SUPPORT = "#D08020"
+    ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(strip_bot)),
+                            sx(STRIP_H + TRAY_WALL), sy(STRIP_H),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
+    # Cross-hatch for aluminum
+    for dz in range(3, STRIP_H, 5):
+        ax.plot([sx(tray_x - TRAY_WALL + 1), sx(tray_x + STRIP_H - 1)],
+                [sy(strip_bot + dz), sy(strip_bot + dz - 3)],
+                color=C_OUT, lw=0.3, alpha=0.4, zorder=7)
+    leader(ax, sx(tray_x + STRIP_H / 2), sy(strip_bot + STRIP_H / 2),
+           sx(tray_x + STRIP_H / 2 - 40), sy(strip_bot + STRIP_H + 18),
+           f"BEARING STRIP\n25\u00d725\u00d73mm Al ANGLE\nSITS ON TRAY RIM\n(REMOVABLE)",
+           color=C_SUPPORT, fs=6,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Support cradle — main drawing ────────────────────────────────────────
+    # Outer leg (cargo door side — stands on bare container floor)
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(BASE_T)),
+                            sx(LEG_W), sy(BAR_BOT - BASE_T),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
+    # Outer leg inner detail (hollow tube cross-section)
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2 + LEG_T), sy(BASE_T + LEG_T)),
+                            sx(LEG_W - 2 * LEG_T), sy(BAR_BOT - BASE_T - 2 * LEG_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.4, zorder=7))
+    # Outer foot plate
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - BASE_W / 2), sy(0)),
+                            sx(BASE_W), sy(BASE_T),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
+    # Rubber pad
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - BASE_W / 2), sy(-2)),
+                            sx(BASE_W), sy(2),
+                            fc="#333333", ec=C_OUT, lw=0.6, zorder=6))
+
+    # Inner leg (tray side — stands on tray floor)
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - LEG_W / 2), sy(TRAY_FLOOR_T + BASE_T)),
+                            sx(LEG_W), sy(BAR_BOT - TRAY_FLOOR_T - BASE_T),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
+    # Inner leg hollow
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - LEG_W / 2 + LEG_T), sy(TRAY_FLOOR_T + BASE_T + LEG_T)),
+                            sx(LEG_W - 2 * LEG_T),
+                            sy(BAR_BOT - TRAY_FLOOR_T - BASE_T - 2 * LEG_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.4, zorder=7))
+    # Inner foot plate
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - BASE_W / 2), sy(TRAY_FLOOR_T)),
+                            sx(BASE_W), sy(BASE_T),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
+    # Rubber pad (on tray floor)
+    ax.add_patch(Rectangle((sx(INNER_LEG_X - BASE_W / 2), sy(TRAY_FLOOR_T - 2)),
+                            sx(BASE_W), sy(2),
+                            fc="#333333", ec=C_OUT, lw=0.6, zorder=6))
+
+    # Crossbar spanning between legs
+    bar_x_l = OUTER_LEG_X - LEG_W / 2
+    bar_x_r = INNER_LEG_X + LEG_W / 2
+    bar_w = bar_x_r - bar_x_l
+    ax.add_patch(Rectangle((sx(bar_x_l), sy(BAR_BOT)),
+                            sx(bar_w), sy(BAR_H),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=8))
+    # Crossbar hollow detail
+    ax.add_patch(Rectangle((sx(bar_x_l + LEG_T), sy(BAR_BOT + LEG_T)),
+                            sx(bar_w - 2 * LEG_T), sy(BAR_H - 2 * LEG_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.4, zorder=9))
+
+    # ── Grating resting on crossbar (ghost — shows how it sits) ──────────────
+    C_LEFT_WK = "#A8C8A8"
+    ax.add_patch(Rectangle((sx(LEFT_WK_L), sy(grate_bot)),
+                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+                            fc=C_LEFT_WK, ec=C_OUT, lw=1.2, ls="--",
+                            alpha=0.4, zorder=10))
+    # Bearing bars in grating
+    bar_spacing = 34.2
+    bar_w_vis = 3
+    for x in np.arange(LEFT_WK_L + bar_w_vis, LEFT_WK_R - bar_w_vis, bar_spacing):
+        ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
+                                sx(bar_w_vis), sy(WALKWAY_GRATE_T),
+                                fc="#8AAA8A", ec=C_OUT, lw=0.3, alpha=0.4, zorder=11))
+    ax.text(sx((LEFT_WK_L + LEFT_WK_R) / 2), sy(grate_top + 3),
+            f"LEFT WALKWAY GRATING ({WALKWAY_GRATE_T}mm)\nREMOVABLE LIFT-OUT",
+            ha="center", va="bottom", fontsize=6.5, color="#206020",
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Contact highlights ───────────────────────────────────────────────────
+    # Grating rests on crossbar top (Z=75mm)
+    ax.plot([sx(bar_x_l + 5), sx(bar_x_r - 5)],
+            [sy(BAR_TOP), sy(BAR_TOP)],
+            color="#CC4400", lw=3.0, zorder=12)
+    ax.text(sx((bar_x_l + bar_x_r) / 2), sy(BAR_TOP - 2),
+            "GRATING CONTACT SURFACE",
+            ha="center", va="top", fontsize=5, color="#CC4400",
+            **FONT, zorder=15)
+
+    # Bearing strip also supports grating inner edge
+    ax.plot([sx(tray_x - TRAY_WALL), sx(tray_x + STRIP_H)],
+            [sy(strip_top), sy(strip_top)],
+            color="#CC4400", lw=2.0, zorder=12)
+
+    # ── Dimension lines ──────────────────────────────────────────────────────
+    # Overall cradle width
+    draw_dim_h(ax, sx(OUTER_LEG_X - BASE_W / 2), sx(INNER_LEG_X + BASE_W / 2),
+               sy(Z_LO + 5),
+               f"{int(INNER_LEG_X + BASE_W / 2 - OUTER_LEG_X + BASE_W / 2)}mm CRADLE WIDTH",
+               offset=sy(5), fs=6, above=False, font=FONT)
+
+    # Crossbar span
+    draw_dim_h(ax, sx(bar_x_l), sx(bar_x_r), sy(BAR_BOT - 8),
+               f"{int(bar_w)}mm CROSSBAR",
+               offset=sy(3), fs=5.5, above=False, font=FONT)
+
+    # Outer leg position from tray rim
+    draw_dim_h(ax, sx(OUTER_LEG_X), sx(tray_x), sy(-18),
+               f"{int(tray_x - OUTER_LEG_X)}mm",
+               offset=sy(3), fs=5.5, above=False, font=FONT)
+
+    # Full walkway width
+    draw_dim_h(ax, sx(LEFT_WK_L), sx(LEFT_WK_R), sy(grate_top + 30),
+               f"{WALKWAY_W}mm WALKWAY WIDTH",
+               offset=sy(5), fs=6.5, font=FONT)
+
+    # Height dimensions (right side)
+    dim_x_r = INNER_LEG_X + BASE_W / 2 + 20
+    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(grate_top),
+               f"{int(grate_top)}mm\nDECK", offset=sx(6), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(BAR_TOP),
+               f"{BAR_TOP}mm\nBAR TOP", offset=sx(30), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(BAR_BOT),
+               f"{BAR_BOT}mm\nBAR BOT", offset=sx(55), fs=5.5, right=True, font=FONT)
+    # Tray rim height
+    draw_dim_v(ax, sx(tray_x + STRIP_H + 8), sy(0), sy(PROC_TRAY_RIM),
+               f"{PROC_TRAY_RIM}mm\nRIM",
+               offset=sx(6), fs=5.5, right=True, color=C_TRAY, font=FONT)
+
+    # Leg labels
+    leader(ax, sx(OUTER_LEG_X), sy(BAR_BOT / 2),
+           sx(OUTER_LEG_X - 35), sy(BAR_BOT / 2 - 12),
+           f"OUTER LEG\n{LEG_W}\u00d7{LEG_W}\u00d7{LEG_T}mm\nAl SHS\n(ON BARE FLOOR)",
+           color=C_SUPPORT, fs=5.5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(INNER_LEG_X), sy(BAR_BOT / 2),
+           sx(INNER_LEG_X + 35), sy(BAR_BOT / 2 - 12),
+           f"INNER LEG\n{LEG_W}\u00d7{LEG_W}\u00d7{LEG_T}mm\nAl SHS\n(ON TRAY FLOOR)",
+           color=C_SUPPORT, fs=5.5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    # Rubber pad labels
+    ax.text(sx(OUTER_LEG_X), sy(-5),
+            "RUBBER PAD", ha="center", va="top", fontsize=4.5,
+            color="#333333", **FONT, zorder=15)
+    ax.text(sx(INNER_LEG_X), sy(TRAY_FLOOR_T - 5),
+            "RUBBER PAD", ha="center", va="top", fontsize=4.5,
+            color="#333333", **FONT, zorder=15)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    cradle_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_CRADLE_N + 1))
+    notes_x = sx(X_HI - 5)
+    notes_top = sy(Z_HI - 3)
+    notes = [
+        "LEFT WALKWAY SUPPORT CRADLE:",
+        "",
+        f"1. {LEFT_WK_CRADLE_N} removable U-frame cradles at",
+        f"   {cradle_spacing}mm centers along Yd.",
+        f"2. Crossbar at Z={BAR_BOT}\u2013{BAR_TOP}mm spans",
+        f"   full walkway width.",
+        f"3. Outer leg on bare container floor",
+        f"   (X={OUTER_LEG_X}mm, outside tray).",
+        f"4. Inner leg on tray floor",
+        f"   (X={INNER_LEG_X}mm, rubber feet).",
+        f"5. Bearing strip (25\u00d725\u00d73mm Al angle)",
+        f"   on tray rim provides continuous",
+        f"   edge support at X={LEFT_WK_L}mm.",
+        f"6. Crossbar sits on tray rim (Z={PROC_TRAY_RIM}mm)",
+        f"   for lateral stability.",
+        f"7. All supports removed with grating",
+        f"   before panel transport.",
+    ]
+    for i, line in enumerate(notes):
+        bold = i == 0
+        ax.text(notes_x, notes_top - i * sy(5), line,
+                ha="right", va="top", fontsize=5.5 if not bold else 6,
+                color=C_OUT if bold else C_DIM,
+                fontweight="bold" if bold else "normal",
+                **FONT, zorder=15)
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 6 OF 6",
+                drawing_title="PERIMETER WALKWAY",
+                subtitle="DETAIL D \u2014 LEFT WALKWAY SUPPORT CRADLE (REMOVABLE)",
+                scale_note=f"SCALE \u2248 3.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
+                height=0.07)
+
+    fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet6.png saved")
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Main
@@ -1503,4 +1892,5 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
     print("Done.")

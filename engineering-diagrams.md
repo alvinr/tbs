@@ -215,8 +215,9 @@ the permanently installed processing tray (50mm rim) during transport slide.
 Removable grated walkway sections around all 4 sides of the processing tray. Provides
 dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
 without wading through the wet processing tray. 300mm wide, 100mm deck height (75mm
-bracket arm + 25mm grate). No legs, no beam, no floor contact — entire tray interior
-completely clear for film loading.
+bracket arm + 25mm grate). Wall-cantilevered brackets on near/far/right walkways —
+no legs, no floor contact. Left walkway supported by removable U-frame cradles
+and a bearing strip on the tray rim.
 
 Mounting varies by wall type:
 
@@ -224,10 +225,11 @@ Mounting varies by wall type:
   to corrugated wall structural ribs at 457mm (18") centers.
 - **Right walkway** (far end wall): same brackets bolted to 50×50×5mm angle iron
   mounting rail welded along the flat end wall interior (no corrugation ribs).
-- **Left walkway** (cargo door end): removable lift-out section with no brackets.
+- **Left walkway** (cargo door end): removable lift-out section with no wall brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —
-  left walkway must be removed first. Supported at each end by near/far walkway
-  butt joints. Standard 25mm grating spans the 1,762mm unsupported gap.
+  left walkway must be removed first. Supported at butt joint ends by near/far
+  bracket arms, plus 3 removable U-frame support cradles at 440mm centers and a
+  continuous bearing strip (25x25x3mm Al angle) on the processing tray rim.
 
 **Sheet 1 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
 ![TBS-001 Walkway — Sheet 1: Cross-Section](assets/walkway-sheet1.png)
@@ -243,6 +245,9 @@ Mounting varies by wall type:
 
 **Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
 ![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
+
+**Sheet 6 — Detail D: Removable support cradle for left walkway (≈3.5:1)**
+![TBS-001 Walkway — Sheet 6: Support Cradle Detail](assets/walkway-sheet6.png)
 
 ---
 

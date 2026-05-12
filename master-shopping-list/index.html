@@ -2173,8 +2173,8 @@
 </tr>
 <tr>
 <td>7b. Perimeter walkway (4 sections, wall-cantilevered)</td>
-<td>$620</td>
-<td>$1,020</td>
+<td>$600</td>
+<td>$1,015</td>
 </tr>
 <tr>
 <td>7c. Ceiling rail suspension</td>
@@ -3536,7 +3536,7 @@
 <strong>Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600</strong></p>
 <hr />
 <h2 id="7b-perimeter-walkway">7b. Perimeter Walkway<a class="headerlink" href="#7b-perimeter-walkway" title="Permanent link">&para;</a></h2>
-<p><em>Source: <code>generate_walkway_diagram.py</code>, <code>engineering-diagrams.md</code> §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design: 8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm (18") centers. No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).</em></p>
+<p><em>Source: <code>generate_walkway_diagram.py</code>, <code>engineering-diagrams.md</code> §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design (rev 9): near/far walkways bracket to corrugated wall ribs, right walkway brackets to angle iron on flat end wall, left walkway is a removable lift-out (panel conflict — no brackets). No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).</em></p>
 <h3 id="walkway-sections-4-off">Walkway sections (4 off)<a class="headerlink" href="#walkway-sections-4-off" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3550,51 +3550,65 @@
 </thead>
 <tbody>
 <tr>
-<td>Press-locked steel grating, 25mm bearing bar</td>
-<td>Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 2× 2,362×300mm (left/right)</td>
-<td>~4.1 m²</td>
+<td>Press-locked steel grating, 25mm (30×3mm bars)</td>
+<td>Galvanized, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×300mm (right)</td>
+<td>~3.4 m²</td>
 <td>McNichols / Metal Supermarkets SoCal</td>
-<td>~$250–$380</td>
+<td>~$210–$310</td>
+</tr>
+<tr>
+<td>Heavy-duty steel grating, 40mm (40×5mm bars)</td>
+<td>Galvanized. Cut to size: 1× 2,362×300mm (left walkway — 1,762mm unsupported span)</td>
+<td>~0.7 m²</td>
+<td>McNichols / Metal Supermarkets SoCal</td>
+<td>~$80–$120</td>
 </tr>
 <tr>
 <td>Wall brackets, 8mm steel plate gusset</td>
 <td>Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized.</td>
-<td>30</td>
+<td>25</td>
 <td>Local fab / Metal Supermarkets SoCal</td>
-<td>~$240–$360</td>
+<td>~$200–$300</td>
+</tr>
+<tr>
+<td>Angle iron mounting rail, 50×50×5mm L-angle</td>
+<td>Mild steel, hot-dip galvanized. Welded horizontally along right end wall interior. 1× 2,362mm length.</td>
+<td>1</td>
+<td>Metal Supermarkets / Pacific Coast Steel</td>
+<td>~$15–$25</td>
 </tr>
 <tr>
 <td>Reinforcing plates, 80×180×6mm mild steel</td>
-<td>Welded to exterior wall face behind each bracket position</td>
-<td>30</td>
+<td>Welded to exterior wall face behind each bracket position (near/far walls only)</td>
+<td>20</td>
 <td>Metal Supermarkets / Pacific Coast Steel</td>
-<td>~$60–$90</td>
+<td>~$40–$60</td>
 </tr>
 <tr>
 <td>M12×60mm hex bolts, nuts, flat washers</td>
 <td>Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate.</td>
-<td>60</td>
+<td>50</td>
 <td>McMaster-Carr / Bolt Depot</td>
-<td>~$60–$90</td>
+<td>~$50–$75</td>
 </tr>
 <tr>
 <td>Grating clips</td>
 <td>Slide-on clips to secure grating to bracket arms — removable without tools</td>
-<td>40</td>
+<td>35</td>
 <td>McNichols / McMaster-Carr</td>
-<td>~$20–$30</td>
+<td>~$15–$25</td>
 </tr>
 <tr>
 <td>Fabrication + installation</td>
-<td>Cut/weld/galvanize 30 brackets, weld reinforcing plates, drill wall ribs, install</td>
+<td>Cut/weld/galvanize 25 brackets, weld angle iron + reinforcing plates, drill wall ribs, install</td>
 <td>1 job</td>
 <td>Local fab / metal shop</td>
 <td>~$250–$400</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Walkway subtotal: ~$620–$1,020</strong></p>
-<p><em>Grating panels lift onto bracket arms and clip in place. Sections are removed for tray access during coating. No floor contact — entire tray interior clear.</em></p>
+<p><strong>Walkway subtotal: ~$600–$1,015</strong></p>
+<p><em>Near/far/right grating lifts onto bracket arms and clips in place. Left walkway is a lift-out section resting on miter corners — must be removed before sliding the hinged panel to transport position. No floor contact — entire tray interior clear.</em></p>
 <hr />
 <h2 id="7c-ceiling-rail-suspension">7c. Ceiling Rail Suspension<a class="headerlink" href="#7c-ceiling-rail-suspension" title="Permanent link">&para;</a></h2>
 <p><em>Source: <code>generate_ceiling_rail_diagram.py</code>, <code>engineering-diagrams.md</code> §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.</em></p>

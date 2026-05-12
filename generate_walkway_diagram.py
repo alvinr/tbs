@@ -137,7 +137,7 @@ def sheet1():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Tray rim label
     leader(ax, sx(TRAY_RIM_YD - 5), sy(PROC_TRAY_RIM / 2 + 20),
-           sx(TRAY_RIM_YD - 15), sy(PROC_TRAY_RIM + 10),
+           sx(TRAY_RIM_YD - 20), sy(PROC_TRAY_RIM - 20),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     # Break line on tray floor (continues right)
@@ -215,14 +215,14 @@ def sheet1():
 
     # Bracket label — point at the arm
     leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z + 3),
-           sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z + 30),
+           sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z - 30),
            f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
            color=C_BRKT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # Gusset label
     leader(ax, sx(GUSSET_REACH / 2), sy(arm_bot / 2 - 5),
-           sx(GUSSET_REACH + 40), sy(arm_bot / 2 - 25),
+           sx(GUSSET_REACH-20), sy(arm_bot / 2 - 25),
            f"GUSSET ({GUSSET_REACH}mm)\nSTOPS BEFORE\nTRAY RIM",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -255,7 +255,7 @@ def sheet1():
                                 sx(2), sy(cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    ax.text(sx(WALKWAY_W / 2), sy(grate_top + 5),
+    ax.text(sx(WALKWAY_W / 4), sy(grate_top + 5),
             f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)

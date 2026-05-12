@@ -1174,7 +1174,7 @@ def sheet4():
             color="#CC4400", lw=1.5, zorder=8)
 
     leader(ax, sx(WALL_YD - ANGLE_LEG / 2), sy(ANGLE_T + 3),
-           sx(WALL_YD - ANGLE_LEG - 30), sy(ANGLE_T + 20),
+           sx(WALL_YD - ANGLE_LEG - 20), sy(ANGLE_T + 20),
            f"ANGLE IRON\n{ANGLE_LEG}\u00d7{ANGLE_LEG}\u00d7{ANGLE_T}mm\nL-ANGLE\n(WELDED TO\nEND WALL)",
            color=C_ANGLE, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1215,8 +1215,8 @@ def sheet4():
                                 sx(REINF_T), sy(BOLT_D + 8),
                                 fc="#A0A0A8", ec=C_OUT, lw=0.6, zorder=9))
 
-    leader(ax, sx(brkt_yd_l - BOLT_HEAD - 2), sy(bolt_z1),
-           sx(brkt_yd_l - BOLT_HEAD - 60), sy(bolt_z1 - 18),
+    leader(ax, sx(brkt_yd_l - BOLT_HEAD - 2), sy(bolt_z2),
+           sx(brkt_yd_l - BOLT_HEAD - 80), sy(bolt_z2 + 9),
            f"M{BOLT_D} THROUGH-BOLT\nBRACKET + ANGLE IRON\n+ WALL + REINF PLATE\n(2 PER BRACKET)",
            color=C_DIM, fs=5.5,
            ha="right", va="center", arrow_style="-|>", font=FONT)

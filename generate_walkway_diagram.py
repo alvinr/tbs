@@ -2162,7 +2162,7 @@ def sheet7():
     YD_LO = -100
     YD_HI = BEAM_SHOW + 200
     Z_LO  = -60
-    Z_HI  = BRKT_VERT + 30
+    Z_HI  = BRKT_VERT + 120
 
     fig, ax = plt.subplots(figsize=(18, 14))
     fig.patch.set_facecolor(BG)
@@ -2377,12 +2377,11 @@ def sheet7():
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5, right=False, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # VIEW B — Plan view (looking down) — inset at bottom right
+    # VIEW B — Plan view (looking down) — above side elevation, same Yd axis
     # Horizontal = Yd, Vertical = X (door side at top, tray side at bottom)
     # ══════════════════════════════════════════════════════════════════════════
-    # Position the plan view in the notes area (right side, below side elev.)
-    PV_OX = BEAM_SHOW + 50   # plan view origin X (in drawing coords)
-    PV_OY = -40              # plan view origin Y
+    PV_OX = 0                 # aligned with side elevation Yd axis
+    PV_OY = BRKT_VERT + 50   # above the side elevation
     PV_S  = 2.5              # plan view scale factor relative to main
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)

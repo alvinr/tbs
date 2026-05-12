@@ -221,7 +221,7 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 - LiFePO4 battery bank (X=1,600–2,100mm, H=0–500mm) — wall-mounted
 - Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
 
-**Optical zone (X=150–4,649mm):** Processing tray (permanent, X=170–4,629mm) and perimeter walkway (removable, 400mm wide around all 4 sides) at floor level. Rails at X=150 and X=4,649.
+**Optical zone (X=150–4,649mm):** Processing tray (permanent, X=170–4,629mm) and perimeter walkway (removable, 300mm wide around all 4 sides) at floor level. Rails at X=150 and X=4,649.
 
 **Right end zone (X=4,649–5,893mm) — shadow-free at all depths:**
 - 2 × Blue IBC totes (600L each), Y-stacked (front), X=4,674mm

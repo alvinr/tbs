@@ -262,7 +262,7 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. 400mm wide, 100mm deck height (75mm spanning beam + 25mm grate). Spanning beam design: 75×75×4mm galv RHS spans full walkway length with legs at ends only — no intermediate legs on tray floor, leaving the entire tray interior clear for film loading. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
+Four removable grated walkway sections around all 4 sides of the processing tray. 300mm wide, 100mm deck height (75mm spanning beam + 25mm grate). Spanning beam design: 75×75×4mm galv RHS spans full walkway length with legs at ends only — no intermediate legs on tray floor, leaving the entire tray interior clear for film loading. Provides dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters without wading through the wet processing tray.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|

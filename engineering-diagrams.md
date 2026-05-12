@@ -211,7 +211,7 @@ the permanently installed processing tray (50mm rim) during transport slide.
 
 Removable grated walkway sections around all 4 sides of the processing tray. Provides
 dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
-without wading through the wet processing tray. 400mm wide, 100mm deck height (75mm
+without wading through the wet processing tray. 300mm wide, 100mm deck height (75mm
 spanning beam + 25mm grate). Spanning beam design: 75×75×4mm galv RHS spans full walkway
 length with legs at ends only — no intermediate legs on tray floor, leaving the entire
 tray interior clear for film loading.
@@ -221,6 +221,9 @@ tray interior clear for film loading.
 
 **Sheet 2 — Plan view: All 4 sections with spanning beam paths and end-only leg positions**
 ![TBS-001 Walkway — Sheet 2: Plan View](assets/walkway-sheet2.png)
+
+**Sheet 3 — Detail: Beam/tray rim/end leg interaction at miter corner (≈3:1)**
+![TBS-001 Walkway — Sheet 3: Corner Detail](assets/walkway-sheet3.png)
 
 ---
 

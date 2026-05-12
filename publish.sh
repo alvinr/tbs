@@ -180,6 +180,7 @@ DIAG_FILES=(
     "ceiling-rail-sheet2.png"
     "walkway-sheet1.png"
     "walkway-sheet2.png"
+    "walkway-sheet3.png"
     "water-system-sheet3.png"
     "mini-tbs-sheet1.png"
 )

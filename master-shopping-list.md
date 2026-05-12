@@ -391,7 +391,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Press-locked steel grating, 25mm bearing bar | Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×400mm (near/far), 2× 2,362×400mm (left/right) | ~4.7 m² | McNichols / Metal Supermarkets SoCal | ~$280–$420 |
+| Press-locked steel grating, 25mm bearing bar | Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 2× 2,362×300mm (left/right) | ~4.1 m² | McNichols / Metal Supermarkets SoCal | ~$250–$380 |
 | Outer frame rail, 30×30×3mm galv angle | Outer (wall-side) rail for each section | ~13.6 m | Metal Supermarkets / Pacific Coast Steel | ~$40–$55 |
 | Spanning beam, 75×75×4mm galv RHS | Inner beam, spans full section length. Replaces inner rail + all mid-span legs. | ~13.6 m | Metal Supermarkets / Pacific Coast Steel | ~$190–$245 |
 | End legs, 25×25×2mm galv SHS | 100mm tall, at walkway ends only (miter corners). ~16 end legs + 8 miter legs | 24 | Metal Supermarkets / Pacific Coast Steel | ~$12–$18 |

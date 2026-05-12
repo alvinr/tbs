@@ -4,18 +4,18 @@
 """
 generate_walkway_diagram.py  —  TBS-001 Perimeter Walkway
 
-Sheet 1 — Cross-section through near (pinhole side) walkway:
+Sheet 1 — Plan view of walkway layout:
+  Top-down view showing all 4 walkway sections with bracket positions.
+  Left walkway shown as removable lift-out (no brackets — panel conflict).
+  Right walkway brackets on angle iron welded to flat end wall.
+  Panel transport envelope shown as dashed red zone.
+
+Sheet 2 — Cross-section through near (pinhole side) walkway:
   Detail view (~5:1) showing grated deck, wall-cantilevered bracket,
   tray rim clearance, and dimensional annotations.
   Section cut looking along X axis.  Wall-cantilevered bracket design:
   triangular gusset brackets bolted to container wall ribs — no legs,
   no beam, no floor contact.  Entire tray is clear for film loading.
-
-Sheet 2 — Plan view of walkway layout:
-  Top-down view showing all 4 walkway sections with bracket positions.
-  Left walkway shown as removable lift-out (no brackets — panel conflict).
-  Right walkway brackets on angle iron welded to flat end wall.
-  Panel transport envelope shown as dashed red zone.
 
 Sheet 3 — Detail: Single bracket / wall attachment:
   Close-up of gusset bracket bolted to corrugated wall rib, showing
@@ -479,20 +479,20 @@ def sheet1():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 7",
+    title_block(ax, "SHEET 2 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION \u2014 NEAR WALKWAY (LOOKING ALONG X AXIS)",
                 scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet1.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet2.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet1.png saved")
+    print("  diagrams/walkway-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — Plan View of Walkway Layout
+# SHEET 1 — Plan View of Walkway Layout
 #
 # Top-down view showing all 4 walkway sections with bracket positions.
 # Horizontal = X (container long axis)
@@ -783,16 +783,16 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 7",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
-    fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet2.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet1.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet2.png saved")
+    print("  diagrams/walkway-sheet1.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2313,8 +2313,8 @@ def sheet7():
 if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
     print("Generating perimeter walkway diagrams...")
-    sheet1()
-    sheet2()
+    sheet2()  # plan view → sheet1.png
+    sheet1()  # cross-section → sheet2.png
     sheet3()
     sheet4()
     sheet5()

@@ -2095,14 +2095,16 @@ def sheet6():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 7 — Detail E: Bearer Beam to Bracket Connection
 #
-# Elevation showing how the bearer beam (50×50×3mm Al RHS) bolts to the
-# near walkway bracket vertical leg at the butt joint.  View looking along
-# X axis (same direction as sheet 1).
+# Elevation showing how the bearer beam (50×50×3mm Al RHS) sits on the
+# near walkway bracket arm and is restrained against sliding.
+# View looking along X axis (same direction as sheet 1).
 # Horizontal = Yd (0 = pinhole wall, positive toward far wall)
 # Vertical   = Z  (0 = floor, positive up)
-# Shows: bracket vertical leg + gusset on wall, beam end plate bolted to
-# the bracket vertical leg, beam running along Yd.  Removable connection
-# using wing bolts for tool-free disassembly.
+#
+# Wall side: steel stop lip welded to bracket arm inner edge — beam
+# butts against it, preventing inward slide.
+# Door side: retaining plate with M8 thumb screw clamped to bracket
+# arm outer edge — prevents outward slide.  Tool-free removal.
 # Scale ≈ 4:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet7():
@@ -2127,17 +2129,14 @@ def sheet7():
     beam_bot = BRKT_ARM_Z - BEAM_SZ  # Z = 25mm
     beam_top = BRKT_ARM_Z            # Z = 75mm
 
-    # End plate
-    EP_W = 60    # end plate width (visible face, in Z direction)
-    EP_T = 5     # end plate thickness (in Yd direction)
-    ep_bot = beam_bot - 5   # end plate extends 5mm below beam
-    ep_top = beam_top + 5   # end plate extends 5mm above beam
+    # Stop lip (wall side)
+    LIP_H  = 20     # lip height above arm top (mm)
+    LIP_T  = 5      # lip thickness along Yd (mm)
 
-    # Bolts (M10 wing bolts for tool-free removal)
-    BOLT_D = 10
-    BOLT_R = BOLT_D / 2
-    bolt_z1 = beam_bot + 12   # = 37mm
-    bolt_z2 = beam_top - 12   # = 63mm
+    # Retaining plate + thumb screw (door side)
+    RET_W  = 40     # retaining plate width along Yd (mm)
+    RET_T  = 3      # retaining plate thickness (mm)
+    THUMB_D = 8     # M8 thumb screw
 
     # Grating
     grate_bot = BRKT_ARM_Z
@@ -2183,7 +2182,6 @@ def sheet7():
     ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
                             sx(BRKT_T), sy(BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6))
-    # Label vertical leg
     leader(ax, sx(BRKT_T / 2 + 2), sy(BRKT_VERT - 10),
            sx(BRKT_T / 2 + 50), sy(BRKT_VERT + 10),
            f"BRACKET VERTICAL LEG\n{BRKT_T}mm PLATE \u00d7 {BRKT_VERT}mm\n(BOLTED TO WALL RIB)",
@@ -2191,13 +2189,11 @@ def sheet7():
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Bracket arm (projects inward, ghost — continues out of view) ─────────
-    # Show just the start of the arm near the wall
     arm_show = 120
     ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
                             sx(arm_show), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.0, alpha=0.4,
                             ls="--", zorder=5))
-    # Arm top line
     ax.plot([sx(0), sx(arm_show)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=1.5, alpha=0.5, ls="--", zorder=6)
     # Sawtooth break line on bracket arm
@@ -2232,20 +2228,26 @@ def sheet7():
         ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
         ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
 
-    # ── End plate (welded to beam end) ───────────────────────────────────────
+    # ── Stop lip (wall side — welded to bracket arm inner edge) ──────────────
     C_SUPPORT = "#D08020"
-    ep_yd = BRKT_T / 2   # end plate sits against bracket outer face
-    ax.add_patch(Rectangle((sx(ep_yd), sy(ep_bot)),
-                            sx(EP_T), sy(ep_top - ep_bot),
-                            fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=7))
-    leader(ax, sx(ep_yd + EP_T / 2), sy(ep_top + 2),
-           sx(ep_yd + EP_T / 2 + 50), sy(ep_top + 20),
-           f"END PLATE\n{EP_W}\u00d7{BEAM_SZ}\u00d7{EP_T}mm\n(WELDED TO BEAM)",
-           color=C_SUPPORT, fs=5.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    C_BOLT = "#404050"
+    # Lip is a small steel tab welded to the bracket arm top, on the wall side
+    lip_yd = BRKT_T / 2   # inner edge of bracket = wall side of beam
+    ax.add_patch(Rectangle((sx(lip_yd - LIP_T), sy(BRKT_ARM_Z)),
+                            sx(LIP_T), sy(LIP_H),
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8))
+    # Weld symbol at lip base
+    ax.plot([sx(lip_yd - LIP_T - 2), sx(lip_yd - LIP_T), sx(lip_yd - LIP_T + 2)],
+            [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z + 4), sy(BRKT_ARM_Z)],
+            color="#CC4400", lw=1.5, zorder=9)
+    leader(ax, sx(lip_yd - LIP_T / 2), sy(BRKT_ARM_Z + LIP_H),
+           sx(lip_yd - LIP_T / 2 - 40), sy(BRKT_ARM_Z + LIP_H + 25),
+           f"STOP LIP\n{LIP_T}\u00d7{LIP_H}mm STEEL\n(WELDED TO ARM)",
+           color=C_BRKT, fs=5.5,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Bearer beam (50×50×3mm Al RHS, running along Yd) ─────────────────────
-    beam_yd_start = ep_yd + EP_T  # beam starts after end plate
+    beam_yd_start = lip_yd   # beam butts against stop lip
     ax.add_patch(Rectangle((sx(beam_yd_start), sy(beam_bot)),
                             sx(BEAM_SHOW - beam_yd_start), sy(BEAM_SZ),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=7))
@@ -2268,62 +2270,54 @@ def sheet7():
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Wing bolts (M10, 2×) through end plate + bracket vertical leg ────────
-    C_BOLT = "#404050"
-    for bz in [bolt_z1, bolt_z2]:
-        # Bolt shaft through vertical leg + end plate
-        shaft_start = -BRKT_T / 2 - 8   # bolt head behind bracket
-        shaft_end = ep_yd + EP_T + 3     # bolt tip past end plate
-        ax.plot([sx(shaft_start), sx(shaft_end)],
-                [sy(bz), sy(bz)],
-                color=C_BOLT, lw=3.0, zorder=10)
-        # Bolt head (behind bracket, hex head)
-        head_w = 8
-        ax.add_patch(Rectangle((sx(shaft_start - head_w), sy(bz - 4)),
-                                sx(head_w), sy(8),
-                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Wing nut (on end plate side)
-        wing_yd = ep_yd + EP_T + 2
-        # Nut body
-        ax.add_patch(Rectangle((sx(wing_yd), sy(bz - 3)),
-                                sx(5), sy(6),
-                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Wings (two small triangles)
-        wing_h = 10
-        wing_w = 3
-        # Top wing
-        wing_verts_t = [
-            (sx(wing_yd + 2), sy(bz + 3)),
-            (sx(wing_yd + 2 - wing_w), sy(bz + 3 + wing_h)),
-            (sx(wing_yd + 2 + wing_w), sy(bz + 3 + wing_h)),
-        ]
-        ax.add_patch(Polygon(wing_verts_t, closed=True,
-                             fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
-        # Bottom wing
-        wing_verts_b = [
-            (sx(wing_yd + 2), sy(bz - 3)),
-            (sx(wing_yd + 2 - wing_w), sy(bz - 3 - wing_h)),
-            (sx(wing_yd + 2 + wing_w), sy(bz - 3 - wing_h)),
-        ]
-        ax.add_patch(Polygon(wing_verts_b, closed=True,
-                             fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=10))
-        # Hole in end plate
-        ax.add_patch(Circle((sx(ep_yd + EP_T / 2), sy(bz)), sx(BOLT_R / 2),
-                     fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
-        # Hole in bracket vertical leg
-        ax.add_patch(Circle((sx(0), sy(bz)), sx(BOLT_R / 2),
-                     fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
+    # Contact highlight: beam butts against stop lip
+    ax.plot([sx(lip_yd), sx(lip_yd)],
+            [sy(beam_bot + 2), sy(beam_top - 2)],
+            color="#CC4400", lw=3.0, zorder=10)
 
-    # Label the bolts
-    leader(ax, sx(ep_yd + EP_T + 12), sy(bolt_z1),
-           sx(ep_yd + EP_T + 55), sy(bolt_z1 - 15),
-           f"M{BOLT_D} WING BOLT\n(\u00d72, TOOL-FREE\nREMOVAL)",
+    # ── Retaining plate + thumb screw (door side of beam) ────────────────────
+    # The retaining plate sits on the bracket arm outer edge and clamps
+    # over the beam top to prevent it sliding outward (toward cargo door).
+    # Shown at the far end of the beam (door side bracket).
+    ret_yd = BEAM_SHOW - RET_W - 5   # plate position along beam
+    # Retaining plate — L-shaped: vertical tab + horizontal clamp
+    # Vertical tab hangs on outer edge of bracket arm
+    tab_h = 15
+    ax.add_patch(Rectangle((sx(ret_yd + RET_W - RET_T), sy(arm_bot)),
+                            sx(RET_T), sy(tab_h),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+    # Horizontal clamp over beam top
+    ax.add_patch(Rectangle((sx(ret_yd), sy(beam_top)),
+                            sx(RET_W), sy(RET_T),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+
+    # Thumb screw (M8, through clamp plate into beam top)
+    thumb_yd = ret_yd + RET_W / 2
+    # Screw shank
+    ax.add_patch(Rectangle((sx(thumb_yd - 2), sy(beam_top - 5)),
+                            sx(4), sy(RET_T + 5),
+                            fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
+    # Thumb screw knurled head
+    thumb_head_h = 8
+    thumb_head_w = 14
+    ax.add_patch(Rectangle((sx(thumb_yd - thumb_head_w / 2), sy(beam_top + RET_T)),
+                            sx(thumb_head_w), sy(thumb_head_h),
+                            fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=11))
+    # Knurling lines on thumb screw head
+    for ky in range(2, thumb_head_h - 1, 2):
+        ax.plot([sx(thumb_yd - thumb_head_w / 2 + 1),
+                 sx(thumb_yd + thumb_head_w / 2 - 1)],
+                [sy(beam_top + RET_T + ky), sy(beam_top + RET_T + ky)],
+                color="#606060", lw=0.3, zorder=12)
+
+    leader(ax, sx(ret_yd + RET_W / 2), sy(beam_top + RET_T + thumb_head_h + 2),
+           sx(ret_yd + RET_W / 2 + 50), sy(beam_top + RET_T + thumb_head_h + 25),
+           f"RETAINING PLATE\nWITH M{THUMB_D} THUMB SCREW\n(TOOL-FREE REMOVAL)",
            color=C_BOLT, fs=5.5,
-           ha="left", va="top", arrow_style="-|>", font=FONT)
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Grating resting on beam + arm (ghost) ────────────────────────────────
     C_LEFT_WK = "#A8C8A8"
-    # Grating shown as ghost spanning across the beam top
     ax.add_patch(Rectangle((sx(-15), sy(grate_bot)),
                             sx(BEAM_SHOW + 30), sy(WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
@@ -2351,28 +2345,13 @@ def sheet7():
     draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(0), sy(beam_top),
                f"{beam_top}mm", offset=sx(30), fs=5.5, right=True, font=FONT)
 
-    # End plate thickness
-    draw_dim_h(ax, sx(ep_yd), sx(ep_yd + EP_T), sy(ep_top + 5),
-               f"{EP_T}mm", offset=sy(3), fs=5.5, font=FONT)
-
-    # Bolt spacing
-    draw_dim_v(ax, sx(-BRKT_T / 2 - 18), sy(bolt_z1), sy(bolt_z2),
-               f"{bolt_z2 - bolt_z1}mm", offset=sx(6), fs=5.5, right=False, font=FONT)
+    # Stop lip height
+    draw_dim_v(ax, sx(lip_yd - LIP_T - 10), sy(BRKT_ARM_Z), sy(BRKT_ARM_Z + LIP_H),
+               f"{LIP_H}mm", offset=sx(4), fs=5.5, right=False, font=FONT)
 
     # Bracket vertical leg height
     draw_dim_v(ax, sx(-CORR_DEPTH - 10), sy(0), sy(BRKT_VERT),
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5, right=False, font=FONT)
-
-    # ── Weld symbol between end plate and beam ───────────────────────────────
-    weld_yd = ep_yd + EP_T
-    # Small V marks to indicate fillet welds
-    for wz in [beam_bot, beam_top]:
-        ax.plot([sx(weld_yd - 2), sx(weld_yd), sx(weld_yd + 2)],
-                [sy(wz), sy(wz - 4 if wz == beam_bot else wz + 4), sy(wz)],
-                color="#CC4400", lw=1.5, zorder=11)
-    ax.text(sx(weld_yd + 8), sy(beam_top + 6),
-            "FILLET WELD\n(TYP.)", ha="left", va="bottom",
-            fontsize=4.5, color="#CC4400", **FONT, zorder=15)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
@@ -2380,17 +2359,19 @@ def sheet7():
     notes = [
         "BEARER BEAM CONNECTION:",
         "",
-        f"1. End plate ({EP_W}\u00d7{BEAM_SZ}\u00d7{EP_T}mm)",
-        f"   fillet-welded to beam end.",
-        f"2. 2\u00d7 M{BOLT_D} wing bolts through",
-        f"   end plate + bracket vertical leg.",
-        f"3. Wing nuts for TOOL-FREE removal.",
+        f"1. Beam sits on bracket arm \u2014",
+        f"   gravity holds it down.",
+        f"2. Wall side: {LIP_T}\u00d7{LIP_H}mm stop lip",
+        f"   welded to arm prevents inward slide.",
+        f"3. Door side: retaining plate with",
+        f"   M{THUMB_D} thumb screw prevents",
+        f"   outward slide. Tool-free removal.",
         f"4. Beam top flush with bracket arm",
         f"   top at Z={beam_top}mm.",
-        f"5. Same connection at both ends",
+        f"5. Same restraint at both ends",
         f"   (near + far bracket).",
-        f"6. Remove wing bolts to disconnect",
-        f"   beam before lifting grating.",
+        f"6. Loosen thumb screws + lift beam",
+        f"   to disconnect for transport.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -2403,7 +2384,7 @@ def sheet7():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 7",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL E \u2014 BEARER BEAM TO BRACKET CONNECTION",
+                subtitle="DETAIL E \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
                 scale_note=f"SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG X (LOOKING INTO CONTAINER)",
                 height=0.07)
 

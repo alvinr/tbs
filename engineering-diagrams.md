@@ -253,7 +253,7 @@ Mounting varies by side:
 **Sheet 6 — Detail D: Left walkway support system — bearer beam, floor legs, bearing strip (≈3.5:1)**
 ![TBS-001 Walkway — Sheet 6: Support System Detail](assets/walkway-sheet6.png)
 
-**Sheet 7 — Detail E: Bearer beam to bracket connection — bolted end plate with wing bolts (≈4:1)**
+**Sheet 7 — Detail E: Bearer beam anti-slip restraint — stop lip and thumb screw clamp (≈4:1)**
 ![TBS-001 Walkway — Sheet 7: Bearer Beam Connection](assets/walkway-sheet7.png)
 
 ---

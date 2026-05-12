@@ -164,10 +164,12 @@ def sheet1():
            sx(TRAY_RIM_YD - 20), sy(PROC_TRAY_RIM - 20),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS, 3mm)", color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
-    # Break line on tray floor (continues right)
+    # Sawtooth break line on tray floor (continues right)
     bx = sx(tray_floor_end)
-    for z_val in np.linspace(0, TRAY_FLOOR * S, 3):
-        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
+    z_lo, z_hi = 0, TRAY_FLOOR * S
+    zz = np.linspace(z_lo, z_hi, 5)
+    ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
+            zz, color=C_OUT, lw=1.0, zorder=5)
 
     # Tray "water level" indication (wavy line at ~15mm)
     water_h = 15
@@ -1322,10 +1324,12 @@ def sheet5():
     ax.add_patch(Rectangle((sx(tray_x), sy(0)),
                             sx(tray_floor_end - tray_x), sy(TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    # Break line on tray floor
+    # Sawtooth break line on tray floor
     bx = sx(tray_floor_end)
-    for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
-        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
+    z_lo, z_hi = 0, TRAY_FLOOR_T * S
+    zz = np.linspace(z_lo, z_hi, 5)
+    ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
+            zz, color=C_OUT, lw=1.0, zorder=5)
     # Tray rim label
     leader(ax, sx(tray_x - 5), sy(PROC_TRAY_RIM / 2 + 10),
            sx(tray_x - 30), sy(PROC_TRAY_RIM + 15),
@@ -1510,11 +1514,12 @@ def sheet5():
         ax.add_patch(Rectangle((sx(x), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
-    # Break lines on right edge (near walkway continues)
-    for z_off in [-5, 5, 15]:
-        ax.plot([sx(near_wk_end - 2), sx(near_wk_end + 2)],
-                [sy(BRKT_ARM_Z + z_off - 2), sy(BRKT_ARM_Z + z_off + 2)],
-                color=C_OUT, lw=0.8, zorder=10)
+    # Sawtooth break line on right edge (near walkway continues)
+    bx = sx(near_wk_end)
+    z_lo, z_hi = sy(grate_bot - 2), sy(grate_top + 2)
+    zz = np.linspace(z_lo, z_hi, 7)
+    ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
+            zz, color=C_OUT, lw=1.0, zorder=10)
     ax.text(sx(near_wk_start + NEAR_WK_SHOW / 2), sy(grate_top + 4),
             f"NEAR WALKWAY\n({WALKWAY_GRATE_T}mm GRATE)",
             ha="center", va="bottom", fontsize=5.5, color=C_OUT,
@@ -1696,10 +1701,12 @@ def sheet6():
     ax.add_patch(Rectangle((sx(tray_x), sy(0)),
                             sx(tray_floor_end - tray_x), sy(TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-    # Break line
+    # Sawtooth break line on tray floor
     bx = sx(tray_floor_end)
-    for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
-        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
+    z_lo, z_hi = 0, TRAY_FLOOR_T * S
+    zz = np.linspace(z_lo, z_hi, 5)
+    ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
+            zz, color=C_OUT, lw=1.0, zorder=5)
     # Label tray rim
     leader(ax, sx(tray_x - TRAY_WALL / 2), sy(PROC_TRAY_RIM / 2),
            sx(tray_x - 25), sy(PROC_TRAY_RIM + 20),
@@ -2007,12 +2014,13 @@ def sheet7():
     # Arm top line
     ax.plot([sx(0), sx(arm_show)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=1.5, alpha=0.5, ls="--", zorder=6)
-    # Break lines
-    for z_off in [-3, 3, 8]:
-        ax.plot([sx(arm_show - 2), sx(arm_show + 2)],
-                [sy(arm_bot + ARM_DEPTH / 2 + z_off - 2),
-                 sy(arm_bot + ARM_DEPTH / 2 + z_off + 2)],
-                color=C_OUT, lw=0.8, zorder=7)
+    # Sawtooth break line on bracket arm
+    bx_arm = sx(arm_show)
+    z_lo_arm, z_hi_arm = sy(arm_bot - 1), sy(BRKT_ARM_Z + 1)
+    zz_arm = np.linspace(z_lo_arm, z_hi_arm, 7)
+    ax.plot([bx_arm - 3, bx_arm + 3, bx_arm - 3, bx_arm + 3,
+             bx_arm - 3, bx_arm + 3, bx_arm - 3],
+            zz_arm, color=C_OUT, lw=1.0, zorder=7)
     ax.text(sx(arm_show / 2), sy(BRKT_ARM_Z + 4),
             f"BRACKET ARM\n(CONTINUES {WALKWAY_W}mm\nALONG Yd \u2014 GHOST)",
             ha="center", va="bottom", fontsize=5, color=C_BRKT,
@@ -2060,11 +2068,13 @@ def sheet7():
                             sx(BEAM_SHOW - beam_yd_start - 2 * BEAM_T),
                             sy(BEAM_SZ - 2 * BEAM_T),
                             fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=8))
-    # Break lines at far end (beam continues)
-    for z_off in np.linspace(beam_bot + 5, beam_top - 5, 4):
-        ax.plot([sx(BEAM_SHOW - 2), sx(BEAM_SHOW + 2)],
-                [sy(z_off - 2), sy(z_off + 2)],
-                color=C_OUT, lw=0.8, zorder=9)
+    # Sawtooth break line at far end (beam continues)
+    bx_beam = sx(BEAM_SHOW)
+    z_lo_beam, z_hi_beam = sy(beam_bot + 2), sy(beam_top - 2)
+    zz_beam = np.linspace(z_lo_beam, z_hi_beam, 7)
+    ax.plot([bx_beam - 3, bx_beam + 3, bx_beam - 3, bx_beam + 3,
+             bx_beam - 3, bx_beam + 3, bx_beam - 3],
+            zz_beam, color=C_OUT, lw=1.0, zorder=9)
     # Beam label
     ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot - 3),
             f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"

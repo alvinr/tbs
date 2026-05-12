@@ -240,7 +240,7 @@ def sheet1():
         ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
 
     # Bracket label — point at the arm
-    leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z + 3),
+    leader(ax, sx(WALKWAY_W * 0.4), sy(brkt_arm_z - 5),
            sx(WALKWAY_W * 0.4 + 50), sy(brkt_arm_z - 30),
            f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT PLATE + ARM\n+ GUSSET UNDER)",
            color=C_BRKT, fs=6,
@@ -319,11 +319,11 @@ def sheet1():
 
     # Deck height (floor to grate top)
     draw_dim_v(ax, sx(WALKWAY_W + 20), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm\nDECK H", offset=sx(8), fs=7, right=True, font=FONT)
+               f"{WALKWAY_H}mm\nDECK TOP", offset=sx(8), fs=7, right=True, font=FONT)
 
     # Grate thickness
-    draw_dim_v(ax, sx(WALKWAY_W + 55), sy(grate_bot), sy(grate_top),
-               f"{WALKWAY_GRATE_T}mm", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(WALKWAY_W + 35), sy(grate_bot), sy(grate_top),
+               f"{WALKWAY_GRATE_T}mm\nDECK HEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Bracket vertical leg height
     draw_dim_v(ax, sx(-CORR_DEPTH - 15), sy(0), sy(BRKT_VERT),
@@ -331,7 +331,7 @@ def sheet1():
 
     # Bracket arm height
     draw_dim_v(ax, sx(WALKWAY_W + 90), sy(0), sy(brkt_arm_z),
-               f"{brkt_arm_z}mm\nARM", offset=sx(8), fs=6.5, right=True, font=FONT)
+               f"{brkt_arm_z}mm\nARM TOP", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Tray rim height
     draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),

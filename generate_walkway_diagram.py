@@ -284,10 +284,11 @@ def sheet1():
                                 sx(2), sy(cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
-    ax.text(sx(WALKWAY_W / 4), sy(grate_top + 5),
-            f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
-            ha="center", va="bottom", fontsize=7, color=C_OUT,
-            fontweight="bold", **FONT, zorder=15)
+    leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
+           sx(WALKWAY_W / 4 - 40), sy(grate_top + 30),
+           f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK \u00b7 GALVANIZED",
+           color=C_OUT, fs=6, ha="center", va="center",
+           arrow_style="-|>", font=FONT)
 
     # ── Grating clip ─────────────────────────────────────────────────────────
     clip_yd = WALKWAY_W * 0.6

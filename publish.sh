@@ -181,6 +181,8 @@ DIAG_FILES=(
     "walkway-sheet1.png"
     "walkway-sheet2.png"
     "walkway-sheet3.png"
+    "walkway-sheet4.png"
+    "walkway-sheet5.png"
     "water-system-sheet3.png"
     "mini-tbs-sheet1.png"
 )

@@ -1187,7 +1187,7 @@ def sheet4():
     ax.plot([sx(TRAY_DX), sx(X_HI)], [sy(0), sy(0)],
             color=C_OUT, lw=1.5, zorder=4)
     leader(ax, sx((TRAY_DX + BOX_L_DX) / 2), sy(-FLOOR_T / 2),
-           sx(IBC_DX + 60), sy(-FLOOR_T - 35),
+           sx(IBC_DX + 60), sy(-FLOOR_T - 30),
            "BARE FLOOR\n(OUTSIDE TRAY)",
            color="#604020", fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
@@ -1266,8 +1266,8 @@ def sheet4():
                                 sx(BOLT_D + 2), sy(WASHER_T),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
-    leader(ax, sx(bolt_x2 + BOLT_R + 2), sy(-FLOOR_T / 2),
-           sx(bolt_x2 + 55), sy(-FLOOR_T - REINF_T - 15),
+    leader(ax, sx(bolt_x2 + BOLT_R), sy(-FLOOR_T / 2),
+           sx(bolt_x2 + 65), sy(FLOOR_T + REINF_T),
            f"2\u00d7 M{BOLT_D} THROUGH-BOLTS\nBOX \u2192 FLOOR \u2192 REINF PLATE\n"
            f"(AT {WALKWAY_BRACKET_SPACING}mm CENTERS\nALONG Yd)",
            color=C_DIM, fs=5.5,
@@ -1376,14 +1376,14 @@ def sheet4():
             **FONT, zorder=15, alpha=0.7)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
-    draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 15),
+    draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 10),
                f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{DECK_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
     # Box dimensions
     draw_dim_v(ax, sx(BOX_R_DX + 40), sy(0), sy(BOX_H),
                f"{BOX_H}mm", offset=sx(6), fs=6, right=True, font=FONT)
-    draw_dim_h(ax, sx(BOX_L_DX), sx(BOX_R_DX), sy(-8),
+    draw_dim_h(ax, sx(BOX_L_DX), sx(BOX_R_DX), sy(25),
                f"{BOX_W}mm", offset=sy(4), fs=6, above=False, font=FONT)
     # Packer thickness
     draw_dim_v(ax, sx(BOX_R_DX + 40), sy(BOX_H), sy(packer_top),

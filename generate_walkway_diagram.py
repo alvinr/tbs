@@ -21,10 +21,11 @@ Sheet 3 — Detail: Single bracket / wall attachment:
   Close-up of gusset bracket bolted to corrugated wall rib, showing
   reinforcing plate, M12 through-bolts, and grating clip.
 
-Sheet 4 — Detail B: Right walkway floor-mounted post (IBC end):
-  Floor-mounted post bolted through container floor at X≈4,640mm,
-  just outside tray rim.  Cantilever arm reaches back over tray to
-  support walkway.  34mm clearance to IBC stack.  Zero tray contact.
+Sheet 4 — Detail B: Right walkway box section beam (IBC end):
+  75×40×3mm steel RHS spanning full container width (2,362mm along Yd),
+  through-bolted to floor at 457mm centers.  Positioned at X=4,632–4,672mm
+  (3mm clear of tray rim, 2mm clear of IBC stack).  8mm cantilever plate
+  welded to inner face extends over tray to support grating.  Zero tray contact.
 
 Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -61,7 +62,7 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_RIGHT_POST_X, WALKWAY_LEFT_SPAN,
+    WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_LEFT_SPAN,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
@@ -773,7 +774,7 @@ def sheet2():
         f"1. 4 removable grated sections. Right corners: 45\u00b0 miter. Left corners: butt joint.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
-        f"3. Right: floor-mounted posts at X\u2248{WALKWAY_RIGHT_POST_X}mm (outside tray rim), through-bolted to floor.",
+        f"3. Right: box section beam ({WALKWAY_RIGHT_BOX_W}mm RHS) at X={WALKWAY_RIGHT_BOX_X}mm, through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"4. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR}",
         f"   spans {WALKWAY_LEFT_SPAN}mm between bracket legs. {LEFT_WK_LEG_N} floor legs + bearing strip (cargo door side).",
         f"5. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
@@ -1109,52 +1110,54 @@ def sheet4():
     def sy(mm): return mm * S
 
     # ── Structural dimensions ────────────────────────────────────────────────
-    FLOOR_T    = 3       # container floor steel thickness (mm)
-    BRKT_T     = WALKWAY_BRACKET_T     # 8mm plate
-    BRKT_VERT  = WALKWAY_BRACKET_H     # 150mm vertical post height
-    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
-    BOLT_D     = 12
-    BOLT_R     = BOLT_D / 2
-    TRAY_WALL  = 3
+    FLOOR_T      = 3       # container floor steel thickness (mm)
+    BRKT_ARM_Z   = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
+    BOLT_D       = 12
+    BOLT_R       = BOLT_D / 2
+    TRAY_WALL    = 3
     TRAY_FLOOR_T = 2
 
+    # ── Box section beam (runs full container width along Yd) ────────────────
+    # 75×40×3mm steel RHS — 75mm tall matches BRKT_ARM_Z so grate sits on top.
+    # 40mm wide in X direction — fits between tray rim and IBC stack.
+    BOX_H      = BRKT_ARM_Z  # 75mm — grate sits directly on top
+    BOX_W      = 40           # 40mm wide in X
+    BOX_T      = 3            # wall thickness
+
     # ── Right walkway geometry ───────────────────────────────────────────────
-    # Right walkway: X = PROC_TRAY_X_R - WALKWAY_W to PROC_TRAY_X_R
-    #              = 4,229 to 4,529mm
-    # Tray right rim at X = 4,629mm (PROC_TRAY_X_R)
-    # IBC stack starts at X = 4,674mm
-    # Floor post at X ≈ 4,640mm (just outside tray rim, 34mm clearance to IBCs)
-    POST_X     = 4652     # floor post center X position (mm)
     TRAY_RIM_X = PROC_TRAY_X_R  # = 4,629mm
-    IBC_X      = 4674     # IBC stack inner face
-    POST_TO_TRAY = POST_X - TRAY_RIM_X  # = 11mm gap between post and tray rim
-    POST_TO_IBC  = IBC_X - POST_X       # = 34mm clearance to IBCs
-    ARM_REACH  = POST_X - (PROC_TRAY_X_R - WALKWAY_W)  # arm reaches from post to walkway inner edge
+    IBC_X      = 4674           # IBC stack inner face
+    # Box inner face 3mm clear of tray rim
+    BOX_LEFT_X = TRAY_RIM_X + 3  # = 4,632mm
+    BOX_RIGHT_X = BOX_LEFT_X + BOX_W  # = 4,672mm
+    BOX_TO_IBC = IBC_X - BOX_RIGHT_X  # = 2mm clearance
+    BOX_CENTER_X = BOX_LEFT_X + BOX_W / 2
 
     REINF_T    = 6       # reinforcing plate underneath floor
-    REINF_W    = 80      # reinforcing plate width
-    REINF_H    = 120     # reinforcing plate length (along Yd)
+    REINF_W    = 60      # reinforcing plate width
     WASHER_T   = 3
     NUT_H      = 10
     BOLT_HEAD  = 8
 
+    # ── Cantilever plate (welded to box, supports grating) ───────────────────
+    # 8mm steel plate welded to the box inner face, extending left over the tray
+    # to support the walkway grating.  Arm top at Z=75mm (same as box top).
+    PLATE_T    = WALKWAY_BRACKET_T  # 8mm
+    ARM_DEPTH  = PLATE_T + 2        # visual thickness
+
     # ── Coordinate system ────────────────────────────────────────────────────
     # Cross-section looking along Yd.  Horizontal = X, Vertical = Z.
-    # Post is on the RIGHT.  Arm + walkway extend LEFT toward container interior.
-    # Show from walkway inner edge (left) to IBC ghost (right).
-
-    # Map real X to drawing X: post at drawing center-right
-    DRAW_POST_X = 350    # drawing-space X for the post
-    X_OFFSET    = POST_X - DRAW_POST_X  # shift to map real X → drawing X
+    DRAW_BOX_X = 350
+    X_OFFSET   = BOX_CENTER_X - DRAW_BOX_X
     def rx(real_x):
-        """Convert real X (mm) to drawing X (mm)."""
         return real_x - X_OFFSET
 
-    WK_LEFT  = rx(PROC_TRAY_X_R - WALKWAY_W)  # walkway inner edge in drawing
-    WK_RIGHT = rx(PROC_TRAY_X_R)               # walkway outer edge = tray rim
-    POST_DX  = rx(POST_X)                       # post in drawing
-    TRAY_DX  = rx(TRAY_RIM_X)                   # tray rim in drawing
-    IBC_DX   = rx(IBC_X)                        # IBC face in drawing
+    WK_LEFT  = rx(PROC_TRAY_X_R - WALKWAY_W)
+    WK_RIGHT = rx(PROC_TRAY_X_R)
+    BOX_L_DX = rx(BOX_LEFT_X)
+    BOX_R_DX = rx(BOX_RIGHT_X)
+    TRAY_DX  = rx(TRAY_RIM_X)
+    IBC_DX   = rx(IBC_X)
 
     X_LO = WK_LEFT - 100
     X_HI = IBC_DX + 150
@@ -1174,16 +1177,13 @@ def sheet4():
     ax.add_patch(Rectangle((sx(X_LO), sy(-FLOOR_T)),
                             sx(TRAY_DX - X_LO), sy(FLOOR_T),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, zorder=3))
-    # Bare floor zone (between tray rim and IBC — where post sits)
+    # Bare floor zone (between tray rim and IBC — where box sits)
     ax.add_patch(Rectangle((sx(TRAY_DX), sy(-FLOOR_T)),
                             sx(X_HI - TRAY_DX), sy(FLOOR_T),
                             fc="#D0C8B8", ec=C_OUT, lw=1.0, zorder=3))
-    # Bare floor top surface emphasis
     ax.plot([sx(TRAY_DX), sx(X_HI)], [sy(0), sy(0)],
             color=C_OUT, lw=1.5, zorder=4)
-    # "BARE FLOOR" label
-    bare_mid = (TRAY_DX + IBC_DX) / 2
-    ax.text(sx(bare_mid), sy(-FLOOR_T / 2),
+    ax.text(sx((TRAY_DX + IBC_DX) / 2), sy(-FLOOR_T / 2),
             "BARE FLOOR\n(OUTSIDE TRAY)",
             ha="center", va="center", fontsize=5, color="#604020",
             fontweight="bold", **FONT, zorder=15)
@@ -1193,11 +1193,9 @@ def sheet4():
                             fc="#E0DDD8", ec=C_OUT, lw=0.5, hatch="///", zorder=2))
 
     # ── Processing tray ──────────────────────────────────────────────────────
-    # Tray right rim (vertical wall)
     ax.add_patch(Rectangle((sx(TRAY_DX - TRAY_WALL), sy(0)),
                             sx(TRAY_WALL), sy(PROC_TRAY_RIM),
                             fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    # Tray floor extending left
     tray_floor_left = X_LO + 20
     ax.add_patch(Rectangle((sx(tray_floor_left), sy(0)),
                             sx(TRAY_DX - TRAY_WALL - tray_floor_left), sy(TRAY_FLOOR_T),
@@ -1208,55 +1206,51 @@ def sheet4():
     zz_t = np.linspace(z_lo_t, z_hi_t, 5)
     ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
             zz_t, color=C_OUT, lw=1.0, zorder=5)
-
     leader(ax, sx(TRAY_DX - TRAY_WALL - 5), sy(PROC_TRAY_RIM / 2),
            sx(TRAY_DX - 60), sy(PROC_TRAY_RIM + 15),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)",
            color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Floor-mounted post ───────────────────────────────────────────────────
-    # Vertical steel post bolted through floor, outside tray rim
-    ax.add_patch(Rectangle((sx(POST_DX - BRKT_T / 2), sy(0)),
-                            sx(BRKT_T), sy(BRKT_VERT),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
+    # ── Box section beam (75×40×3mm RHS cross-section) ───────────────────────
+    # Outer rectangle
+    ax.add_patch(Rectangle((sx(BOX_L_DX), sy(0)),
+                            sx(BOX_W), sy(BOX_H),
+                            fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6, alpha=0.85))
+    # Hollow interior
+    ax.add_patch(Rectangle((sx(BOX_L_DX + BOX_T), sy(BOX_T)),
+                            sx(BOX_W - 2 * BOX_T), sy(BOX_H - 2 * BOX_T),
+                            fc="#F0E8D8", ec=C_OUT, lw=0.8, zorder=7))
+    # Top flange emphasis (grate sits here)
+    ax.plot([sx(BOX_L_DX), sx(BOX_R_DX)], [sy(BOX_H), sy(BOX_H)],
+            color=C_OUT, lw=2.0, zorder=8)
 
-    # ── Base plate (welded to post bottom, sits on bare floor) ─────────────
-    # Base plate must be entirely outside tray rim (TRAY_DX).
-    # Left edge at TRAY_DX + 3mm clearance.
-    BASE_W = 40   # base plate width (mm) — fits between tray rim and IBC
-    BASE_T = 8    # base plate thickness
-    base_left = TRAY_DX + 3  # 3mm clearance from tray rim
-    ax.add_patch(Rectangle((sx(base_left), sy(0)),
-                            sx(BASE_W), sy(BASE_T),
-                            fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=5, alpha=0.85))
-    # Weld symbols at post-to-base junction
-    for side in [-1, 1]:
-        wx = POST_DX + side * BRKT_T / 2
-        ax.plot([sx(wx - 3 * side), sx(wx), sx(wx + 3 * side)],
-                [sy(BASE_T), sy(BASE_T + 5), sy(BASE_T)],
-                color="#CC4400", lw=1.5, zorder=8)
+    # Box label
+    leader(ax, sx(BOX_R_DX + 2), sy(BOX_H / 2),
+           sx(BOX_R_DX + 50), sy(BOX_H / 2 + 30),
+           f"BOX SECTION BEAM\n{BOX_H}\u00d7{BOX_W}\u00d7{BOX_T}mm RHS\n"
+           f"(SPANS {C_WID}mm\nFULL CONTAINER WIDTH\nALONG Yd)",
+           color=C_BRKT, fs=6,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Through-bolts (2× M12 through base plate + floor + reinf plate) ──────
-    # Both bolts within base plate, entirely on bare floor
+    # ── Through-bolts (2× M12 through box bottom + floor + reinf plate) ──────
     C_BOLT = "#505058"
-    bolt_x1 = base_left + 10
-    bolt_x2 = base_left + BASE_W - 10
+    bolt_x1 = BOX_L_DX + BOX_W * 0.3
+    bolt_x2 = BOX_L_DX + BOX_W * 0.7
 
     for bx_bolt in [bolt_x1, bolt_x2]:
         shank_hw = BOLT_R * 0.4
-        # Shank through: base plate + floor + reinforcing plate
-        shank_top = BASE_T
+        shank_top = 0   # through box bottom flange
         shank_bot = -FLOOR_T - REINF_T
         ax.add_patch(Rectangle((sx(bx_bolt - shank_hw), sy(shank_bot)),
                                 sx(shank_hw * 2), sy(shank_top - shank_bot),
                                 fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-        # Bolt head on top (above base plate)
-        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R), sy(BASE_T)),
+        # Bolt head inside box (on top of bottom flange)
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R), sy(BOX_T)),
                                 sx(BOLT_D), sy(BOLT_HEAD),
                                 fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Washer above base plate
-        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R - 1), sy(BASE_T)),
+        # Washer inside box
+        ax.add_patch(Rectangle((sx(bx_bolt - BOLT_R - 1), sy(BOX_T)),
                                 sx(BOLT_D + 2), sy(WASHER_T),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
         # Nut underneath reinforcing plate
@@ -1268,65 +1262,55 @@ def sheet4():
                                 sx(BOLT_D + 2), sy(WASHER_T),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
-    leader(ax, sx(bolt_x2 + BOLT_R + 2), sy(BASE_T + BOLT_HEAD / 2),
-           sx(bolt_x2 + 60), sy(BASE_T + 25),
-           f"2\u00d7 M{BOLT_D} THROUGH-BOLTS\nBASE PLATE \u2192 FLOOR\n\u2192 REINF PLATE \u2192 NUT",
+    leader(ax, sx(bolt_x2 + BOLT_R + 2), sy(-FLOOR_T / 2),
+           sx(bolt_x2 + 55), sy(-FLOOR_T - REINF_T - 15),
+           f"2\u00d7 M{BOLT_D} THROUGH-BOLTS\nBOX \u2192 FLOOR \u2192 REINF PLATE\n"
+           f"(AT {WALKWAY_BRACKET_SPACING}mm CENTERS\nALONG Yd)",
            color=C_DIM, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Reinforcing plate (underneath floor, centered on base plate) ────────
-    reinf_left = base_left + BASE_W / 2 - REINF_W / 2
+    # ── Reinforcing plate (underneath floor) ─────────────────────────────────
+    reinf_left = BOX_L_DX + BOX_W / 2 - REINF_W / 2
     ax.add_patch(Rectangle((sx(reinf_left), sy(-FLOOR_T - REINF_T)),
                             sx(REINF_W), sy(REINF_T),
                             fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_left + REINF_W / 2), sy(-FLOOR_T - REINF_T - 2),
-           sx(reinf_left + REINF_W / 2 + 60), sy(-FLOOR_T - REINF_T - 20),
-           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
+    leader(ax, sx(reinf_left), sy(-FLOOR_T - REINF_T / 2),
+           sx(reinf_left - 40), sy(-FLOOR_T - REINF_T - 15),
+           f"REINFORCING PLATE\n{REINF_W}\u00d7{REINF_W}\u00d7{REINF_T}mm\n(UNDERNEATH FLOOR)",
            color="#C08040", fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
+           ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Horizontal arm (projects LEFT from post toward container interior) ───
-    ARM_DEPTH = BRKT_T + 2
+    # ── Cantilever plate (welded to box inner face, extends over tray) ───────
     arm_bot = BRKT_ARM_Z - ARM_DEPTH
-    arm_left = WK_LEFT    # arm reaches to walkway inner edge
-
-    ax.add_patch(Rectangle((sx(arm_left), sy(arm_bot)),
-                            sx(POST_DX + BRKT_T / 2 - arm_left), sy(ARM_DEPTH),
+    ax.add_patch(Rectangle((sx(WK_LEFT), sy(arm_bot)),
+                            sx(BOX_L_DX - WK_LEFT), sy(ARM_DEPTH),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(arm_left), sx(POST_DX + BRKT_T / 2)],
+    ax.plot([sx(WK_LEFT), sx(BOX_L_DX)],
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=2.0, zorder=7)
+    # Weld symbol at plate-to-box junction
+    ax.plot([sx(BOX_L_DX - 3), sx(BOX_L_DX), sx(BOX_L_DX + 3)],
+            [sy(arm_bot), sy(arm_bot - 5), sy(arm_bot)],
+            color="#CC4400", lw=1.5, zorder=8)
+    ax.text(sx(BOX_L_DX), sy(arm_bot - 7), "WELD",
+            ha="center", va="top", fontsize=4.5, color="#CC4400",
+            **FONT, zorder=15)
 
-    # ── Gusset underneath ────────────────────────────────────────────────────
-    # Gusset must stop before tray rim — tip at TRAY_DX + 5mm clearance
-    gusset_tip = TRAY_DX + 5
-    gusset_verts = [
-        (sx(POST_DX - BRKT_T / 2), sy(BASE_T)),     # post base
-        (sx(POST_DX - BRKT_T / 2), sy(arm_bot)),     # arm bottom at post
-        (sx(gusset_tip), sy(arm_bot)),                # stops before tray rim
-    ]
-    ax.add_patch(Polygon(gusset_verts, closed=True,
-                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(POST_DX - BRKT_T / 2), sx(gusset_tip)],
-            [sy(BASE_T), sy(arm_bot)],
-            color=C_OUT, lw=1.5, zorder=6)
-
-    # Post/bracket label
-    leader(ax, sx(POST_DX), sy(BRKT_VERT),
-           sx(POST_DX - 80), sy(BRKT_VERT + 15),
-           f"FLOOR-MOUNTED POST\n{BRKT_T}mm STEEL PLATE\n{BRKT_VERT}mm TALL\n(WELDED TO BASE PLATE)",
-           color=C_BRKT, fs=6,
+    leader(ax, sx((WK_LEFT + BOX_L_DX) / 2), sy(arm_bot - 2),
+           sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(arm_bot - 25),
+           f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(WELDED TO BOX)",
+           color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
     grate_bot = BRKT_ARM_Z
     grate_top = grate_bot + WALKWAY_GRATE_T
     ax.add_patch(Rectangle((sx(WK_LEFT), sy(grate_bot)),
-                            sx(WK_RIGHT - WK_LEFT), sy(WALKWAY_GRATE_T),
+                            sx(BOX_R_DX - WK_LEFT), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     bar_spacing = 34.2
     bar_w = 3
-    for xb in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
+    for xb in np.arange(bar_w, BOX_R_DX - WK_LEFT - bar_w, bar_spacing):
         ax.add_patch(Rectangle((sx(WK_LEFT + xb), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
@@ -1334,10 +1318,8 @@ def sheet4():
     # ── Grating clip (innermost edge, closest to processing tray) ──────────
     clip_x = WK_LEFT + 12
     clip_w = 8
-    clip_below = 12
-    clip_above = 5
-    clip_bot = BRKT_ARM_Z - clip_below
-    clip_top = grate_top + clip_above
+    clip_bot = BRKT_ARM_Z - 12
+    clip_top = grate_top + 5
     ax.add_patch(Rectangle((sx(clip_x), sy(clip_bot)),
                             sx(clip_w), sy(clip_top - clip_bot),
                             fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
@@ -1347,7 +1329,7 @@ def sheet4():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── IBC ghost (dashed outline showing clearance) ─────────────────────────
-    IBC_SHOW_W = 80   # just show a sliver of the IBC
+    IBC_SHOW_W = 80
     ax.add_patch(Rectangle((sx(IBC_DX), sy(0)),
                             sx(IBC_SHOW_W), sy(Z_HI - 30),
                             fc="#FFE8C0", ec="#B08040", lw=1.0, ls="--",
@@ -1358,42 +1340,42 @@ def sheet4():
             **FONT, zorder=15, alpha=0.7)
 
     # ── Dimension lines ──────────────────────────────────────────────────────
-    # Walkway width
     draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 25),
                f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
-    # Deck height
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
-    # Post to tray rim
-    draw_dim_h(ax, sx(TRAY_DX), sx(POST_DX), sy(PROC_TRAY_RIM + 8),
-               f"{POST_TO_TRAY}mm", offset=sy(5), fs=6, font=FONT)
-    # Post to IBC
-    draw_dim_h(ax, sx(POST_DX), sx(IBC_DX), sy(PROC_TRAY_RIM + 8),
-               f"{POST_TO_IBC}mm", offset=sy(5), fs=6, font=FONT)
-    # Post height
-    draw_dim_v(ax, sx(POST_DX + BRKT_T / 2 + 15), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm\nPOST", offset=sx(6), fs=6.5, right=True, font=FONT)
-    # Arm cantilever
-    draw_dim_h(ax, sx(WK_LEFT), sx(POST_DX), sy(arm_bot - 8),
-               f"{int(POST_DX - WK_LEFT)}mm ARM", offset=sy(5), fs=6,
+    # Box dimensions
+    draw_dim_v(ax, sx(BOX_R_DX + 15), sy(0), sy(BOX_H),
+               f"{BOX_H}mm", offset=sx(6), fs=6, right=True, font=FONT)
+    draw_dim_h(ax, sx(BOX_L_DX), sx(BOX_R_DX), sy(-8),
+               f"{BOX_W}mm", offset=sy(4), fs=6, above=False, font=FONT)
+    # Box to tray rim clearance
+    draw_dim_h(ax, sx(TRAY_DX), sx(BOX_L_DX), sy(PROC_TRAY_RIM + 8),
+               f"3mm", offset=sy(5), fs=6, font=FONT)
+    # Box to IBC clearance
+    draw_dim_h(ax, sx(BOX_R_DX), sx(IBC_DX), sy(PROC_TRAY_RIM + 8),
+               f"{BOX_TO_IBC}mm", offset=sy(5), fs=6, font=FONT)
+    # Cantilever arm
+    draw_dim_h(ax, sx(WK_LEFT), sx(BOX_L_DX), sy(arm_bot - 8),
+               f"{int(BOX_L_DX - WK_LEFT)}mm ARM", offset=sy(5), fs=6,
                above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(X_LO + 10)
     notes_top = sy(Z_HI - 10)
     notes = [
-        "RIGHT WALKWAY \u2014 FLOOR-MOUNTED POST:",
+        "RIGHT WALKWAY \u2014 BOX SECTION BEAM:",
         "",
-        f"1. Right walkway at X={PROC_TRAY_X_R - WALKWAY_W}\u2013{PROC_TRAY_X_R}mm",
-        f"   is 1,364mm from far end wall \u2014 IBC stack",
-        f"   (X={IBC_X}\u2013{5893}mm) fills the gap.",
-        f"2. Floor post bolted through container floor",
-        f"   at X\u2248{POST_X}mm, just outside tray rim.",
-        f"3. {POST_TO_IBC}mm clearance to IBC stack.",
-        f"4. 2\u00d7 M{BOLT_D} through-bolts: base plate \u2192 floor",
-        f"   \u2192 reinforcing plate \u2192 nut (underneath).",
-        f"5. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm along Yd.",
-        f"6. Zero tray contact \u2014 post on bare floor.",
+        f"1. {BOX_H}\u00d7{BOX_W}\u00d7{BOX_T}mm steel RHS spans full",
+        f"   container width ({C_WID}mm) along Yd.",
+        f"2. Sits on bare floor outside tray rim \u2014",
+        f"   3mm clearance to tray, {BOX_TO_IBC}mm to IBC.",
+        f"3. Through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm",
+        f"   centers with reinforcing plates underneath.",
+        f"4. {PLATE_T}mm cantilever plate welded to box",
+        f"   inner face supports walkway grating.",
+        f"5. Box top at Z={BOX_H}mm = grate support level.",
+        f"6. Zero tray contact \u2014 beam on bare floor.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -1406,7 +1388,7 @@ def sheet4():
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL B \u2014 RIGHT WALKWAY FLOOR-MOUNTED POST (IBC END)",
+                subtitle="DETAIL B \u2014 RIGHT WALKWAY BOX SECTION BEAM (IBC END)",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION LOOKING ALONG Yd",
                 height=0.07)
 

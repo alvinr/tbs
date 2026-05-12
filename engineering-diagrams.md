@@ -222,9 +222,11 @@ Mounting varies by side:
 - **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
   to corrugated wall structural ribs at 457mm (18") centers. Wall-cantilevered —
   no legs, no floor contact.
-- **Right walkway** (IBC end): floor-mounted posts bolted through the container floor
-  at X≈4,640mm, just outside the tray rim. Cantilever arms reach back over the tray
-  rim to support the walkway. 34mm clearance to IBC stack. Zero tray contact.
+- **Right walkway** (IBC end): 75×40×3mm steel RHS box section beam spanning full
+  container width (2,362mm along Yd), through-bolted to floor at 457mm centers.
+  Positioned at X=4,632–4,672mm (3mm clear of tray rim, 2mm clear of IBC stack).
+  8mm cantilever plate welded to inner face extends over tray to support grating.
+  Zero tray contact.
 - **Left walkway** (cargo door end): removable lift-out section with no wall brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —
   left walkway must be removed first. Supported by: (a) bearer beam (50x50x3mm Al
@@ -241,8 +243,8 @@ Mounting varies by side:
 **Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
 ![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)
 
-**Sheet 4 — Detail B: Right walkway floor-mounted post at IBC end (≈3:1)**
-![TBS-001 Walkway — Sheet 4: Floor-Mounted Post](assets/walkway-sheet4.png)
+**Sheet 4 — Detail B: Right walkway box section beam at IBC end (≈3:1)**
+![TBS-001 Walkway — Sheet 4: Box Section Beam](assets/walkway-sheet4.png)
 
 **Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
 ![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)

@@ -22,10 +22,11 @@ Sheet 3 — Detail: Single bracket / wall attachment:
   reinforcing plate, M12 through-bolts, and grating clip.
 
 Sheet 4 — Detail B: Right walkway box section beam (IBC end):
-  75×40×3mm steel RHS spanning full container width (2,362mm along Yd),
+  50×40×3mm steel RHS spanning full container width (2,362mm along Yd),
   through-bolted to floor at 457mm centers.  Positioned at X=4,632–4,672mm
-  (3mm clear of tray rim, 2mm clear of IBC stack).  8mm cantilever plate
-  bolted to box top extends over tray to support grating.  Zero tray contact.
+  (3mm clear of tray rim, 2mm clear of IBC stack).  17mm packer shim +
+  8mm cantilever plate bolted to box top brings support to 75mm (level
+  with near/far walkways).  Plate extends over tray.  Zero tray contact.
 
 Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -1118,11 +1119,13 @@ def sheet4():
     TRAY_FLOOR_T = 2
 
     # ── Box section beam (runs full container width along Yd) ────────────────
-    # 75×40×3mm steel RHS — 75mm tall matches BRKT_ARM_Z so grate sits on top.
+    # 50×40×3mm steel RHS — standard size.  17mm packer shim + 8mm plate on
+    # top brings support level to 75mm, matching near/far bracket arms.
     # 40mm wide in X direction — fits between tray rim and IBC stack.
-    BOX_H      = BRKT_ARM_Z  # 75mm — grate sits directly on top
+    BOX_H      = 50           # 50mm tall (standard RHS)
     BOX_W      = 40           # 40mm wide in X
     BOX_T      = 3            # wall thickness
+    PACKER_T   = BRKT_ARM_Z - BOX_H - WALKWAY_BRACKET_T  # 17mm shim
 
     # ── Right walkway geometry ───────────────────────────────────────────────
     TRAY_RIM_X = PROC_TRAY_X_R  # = 4,629mm
@@ -1227,7 +1230,7 @@ def sheet4():
 
     # Box label
     leader(ax, sx(BOX_R_DX + 2), sy(BOX_H / 2),
-           sx(BOX_R_DX + 50), sy(BOX_H / 2 + 30),
+           sx(BOX_R_DX + 55), sy(BOX_H / 2 + 40),
            f"BOX SECTION BEAM\n{BOX_H}\u00d7{BOX_W}\u00d7{BOX_T}mm RHS\n"
            f"(SPANS {C_WID}mm\nFULL CONTAINER WIDTH\nALONG Yd)",
            color=C_BRKT, fs=6,
@@ -1280,11 +1283,24 @@ def sheet4():
            color="#C08040", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Cantilever plate (bolted to box top, extends over tray) ────────────
-    DECK_H = BOX_H + PLATE_T + WALKWAY_GRATE_T   # total deck height (108mm)
-    plate_bot = BOX_H
-    plate_top = BOX_H + PLATE_T
-    # Plate sits on box top and extends left over tray
+    # ── Packer shim (on box top, under cantilever plate) ───────────────────
+    packer_bot = BOX_H
+    packer_top = BOX_H + PACKER_T
+    # Packer sits on box top only (not cantilever — it's a spacer)
+    ax.add_patch(Rectangle((sx(BOX_L_DX), sy(packer_bot)),
+                            sx(BOX_W), sy(PACKER_T),
+                            fc="#E0D0A0", ec=C_OUT, lw=0.8, zorder=8, alpha=0.9))
+    leader(ax, sx(BOX_R_DX + 2), sy(packer_bot + PACKER_T / 2),
+           sx(BOX_R_DX + 55), sy(packer_bot + PACKER_T / 2 - 15),
+           f"PACKER SHIM\n{PACKER_T}mm STEEL",
+           color="#B0A060", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Cantilever plate (bolted through packer + box top) ───────────────────
+    DECK_H = WALKWAY_H   # 100mm — level with all other walkways
+    plate_bot = packer_top
+    plate_top = packer_top + PLATE_T
+    # Plate sits on packer (over box) and extends left over tray
     ax.add_patch(Rectangle((sx(WK_LEFT), sy(plate_bot)),
                             sx(BOX_R_DX - WK_LEFT), sy(PLATE_T),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.85))
@@ -1292,15 +1308,15 @@ def sheet4():
             [sy(plate_top), sy(plate_top)],
             color=C_OUT, lw=1.5, zorder=9)
 
-    # Bolts through plate into box top flange (2× M10)
+    # Bolts through plate + packer + box top flange (2× M10)
     PB_D = 10
     PB_R = PB_D / 2
     pb_bolt1 = BOX_L_DX + BOX_W * 0.3
     pb_bolt2 = BOX_L_DX + BOX_W * 0.7
     for pbx in [pb_bolt1, pb_bolt2]:
-        # Bolt shank through plate + box top flange
-        ax.add_patch(Rectangle((sx(pbx - PB_R * 0.4), sy(plate_bot - BOX_T)),
-                                sx(PB_R * 0.8), sy(PLATE_T + BOX_T),
+        # Bolt shank through plate + packer + box top flange
+        ax.add_patch(Rectangle((sx(pbx - PB_R * 0.4), sy(packer_bot - BOX_T)),
+                                sx(PB_R * 0.8), sy(PLATE_T + PACKER_T + BOX_T),
                                 fc="#505058", ec=C_OUT, lw=0.5, zorder=9))
         # Bolt head on top of plate
         ax.add_patch(Rectangle((sx(pbx - PB_R), sy(plate_top)),
@@ -1311,13 +1327,13 @@ def sheet4():
                                 sx(PB_D + 2), sy(2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
         # Nut inside box (under top flange)
-        ax.add_patch(Rectangle((sx(pbx - PB_R), sy(plate_bot - BOX_T - 8)),
+        ax.add_patch(Rectangle((sx(pbx - PB_R), sy(packer_bot - BOX_T - 8)),
                                 sx(PB_D), sy(8),
                                 fc="#505058", ec=C_OUT, lw=0.8, zorder=10))
 
     leader(ax, sx((WK_LEFT + BOX_L_DX) / 2), sy(plate_bot - 2),
-           sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(plate_bot - 25),
-           f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(BOLTED TO BOX TOP)",
+           sx((WK_LEFT + BOX_L_DX) / 2 - 30), sy(plate_bot - 30),
+           f"CANTILEVER PLATE\n{PLATE_T}mm STEEL\n(BOLTED THROUGH\nPACKER + BOX TOP)",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1364,13 +1380,16 @@ def sheet4():
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{DECK_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
     # Box dimensions
-    draw_dim_v(ax, sx(BOX_R_DX + 15), sy(0), sy(BOX_H),
+    draw_dim_v(ax, sx(BOX_R_DX + 40), sy(0), sy(BOX_H),
                f"{BOX_H}mm", offset=sx(6), fs=6, right=True, font=FONT)
     draw_dim_h(ax, sx(BOX_L_DX), sx(BOX_R_DX), sy(-8),
                f"{BOX_W}mm", offset=sy(4), fs=6, above=False, font=FONT)
+    # Packer thickness
+    draw_dim_v(ax, sx(BOX_R_DX + 40), sy(BOX_H), sy(packer_top),
+               f"{PACKER_T}", offset=sx(6), fs=5.5, right=True, font=FONT)
     # Plate thickness
-    draw_dim_v(ax, sx(BOX_R_DX + 15), sy(BOX_H), sy(plate_top),
-               f"{PLATE_T}mm", offset=sx(6), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(BOX_R_DX + 40), sy(packer_top), sy(plate_top),
+               f"{PLATE_T}", offset=sx(6), fs=5.5, right=True, font=FONT)
     # Box to tray rim clearance
     draw_dim_h(ax, sx(TRAY_DX), sx(BOX_L_DX), sy(PROC_TRAY_RIM + 8),
                f"3mm", offset=sy(5), fs=6, font=FONT)
@@ -1394,10 +1413,12 @@ def sheet4():
         f"   3mm clearance to tray, {BOX_TO_IBC}mm to IBC.",
         f"3. Through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm",
         f"   centers with reinforcing plates underneath.",
-        f"4. {PLATE_T}mm cantilever plate bolted to box top,",
-        f"   extends over tray to support walkway grating.",
-        f"5. Deck height {DECK_H}mm (box {BOX_H} + plate {PLATE_T} + grate {WALKWAY_GRATE_T}).",
-        f"6. Zero tray contact \u2014 beam on bare floor.",
+        f"4. {PACKER_T}mm packer shim on box top brings",
+        f"   support level to match near/far brackets.",
+        f"5. {PLATE_T}mm cantilever plate bolted through",
+        f"   packer + box top, extends over tray.",
+        f"6. Deck {DECK_H}mm \u2014 level with all 4 sides.",
+        f"7. Zero tray contact \u2014 beam on bare floor.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0

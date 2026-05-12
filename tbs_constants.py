@@ -265,10 +265,12 @@ WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # Right walkway box section beam (IBC end — too far from end wall for wall mounting)
 # Steel RHS spans full container width (Yd=0 to 2,362mm), through-bolted to floor.
+# 17mm packer shim + 8mm plate on top brings support level to 75mm (matches near/far).
 WALKWAY_RIGHT_BOX_X = 4632   # box section left face X (mm) — 3mm clear of tray rim
 WALKWAY_RIGHT_BOX_W = 40     # box section width in X (mm)
-WALKWAY_RIGHT_BOX_H = 75     # box section height = bracket arm height (mm)
+WALKWAY_RIGHT_BOX_H = 50     # box section height (mm) — standard 50×40×3 RHS
 WALKWAY_RIGHT_BOX_T = 3      # box section wall thickness (mm)
+WALKWAY_RIGHT_PACKER_T = 17  # packer shim thickness (mm) — 75 - 50 - 8 = 17
 WALKWAY_RIGHT_IBC_CLR = 2    # clearance from box right face to IBC stack (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall

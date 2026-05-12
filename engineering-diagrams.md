@@ -222,10 +222,11 @@ Mounting varies by side:
 - **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
   to corrugated wall structural ribs at 457mm (18") centers. Wall-cantilevered —
   no legs, no floor contact.
-- **Right walkway** (IBC end): 75×40×3mm steel RHS box section beam spanning full
+- **Right walkway** (IBC end): 50×40×3mm steel RHS box section beam spanning full
   container width (2,362mm along Yd), through-bolted to floor at 457mm centers.
   Positioned at X=4,632–4,672mm (3mm clear of tray rim, 2mm clear of IBC stack).
-  8mm cantilever plate welded to inner face extends over tray to support grating.
+  17mm packer shim + 8mm cantilever plate bolted to box top brings support level
+  to 75mm (level with near/far walkways). Plate extends over tray to support grating.
   Zero tray contact.
 - **Left walkway** (cargo door end): removable lift-out section with no wall brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —

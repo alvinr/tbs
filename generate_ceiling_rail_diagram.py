@@ -34,6 +34,8 @@ from tbs_constants import (
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     PROC_TRAY_X_L, PROC_TRAY_RIM,
     DRUM_D, DRUM_R, DRUM_H_LT,
+    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
+    WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
 )
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
@@ -224,6 +226,40 @@ def sheet1():
            f"PROCESSING TRAY\n304 SS · {PROC_TRAY_RIM}mm RIM\n(PERMANENT)", color=C_TRAY, fs=6,
            ha="center", arrow_style="-|>", font=FONT)
 
+    # ── Left walkway (removable lift-out at X=170) ──────────────────────────
+    # In this side elevation, the left walkway appears as a cross-section at
+    # X = PROC_TRAY_X_L = 170mm, running across the container width (Yd axis).
+    # Shows: grate (Z=75-100mm) sitting on bracket support.
+    # This walkway must be removed before panel slides to transport position.
+    C_WALKWAY = "#707078"
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (top of bracket arm)
+
+    # Bracket arm cross-section (small rectangle at Z=75mm)
+    WK_X = TRAY_SHOW_X   # same X as tray left edge (170mm)
+    WK_SHOW_W = TRAY_SHOW_W  # show same width as tray for visual consistency
+    ax.add_patch(Rectangle((WK_X, BRKT_ARM_Z - WALKWAY_BRACKET_T),
+                            WK_SHOW_W, WALKWAY_BRACKET_T,
+                            fc=C_WALKWAY, ec=C_OUT, lw=0.8, zorder=5))
+
+    # Grate (Z=75 to 100mm)
+    ax.add_patch(Rectangle((WK_X, BRKT_ARM_Z), WK_SHOW_W, WALKWAY_GRATE_T,
+                            fc="#D0D0D4", ec=C_OUT, lw=0.8, hatch="--", zorder=5))
+
+    # Break lines on right edge (continuation)
+    for z in [BRKT_ARM_Z - 5, BRKT_ARM_Z + 5, BRKT_ARM_Z + 15]:
+        ax.plot([bx - 5, bx + 5], [z - 3, z + 3], color=C_OUT, lw=0.6, zorder=6)
+
+    leader(ax, WK_X + 200, WALKWAY_H + 5,
+           WK_X + 200, WALKWAY_H + 100,
+           f"LEFT WALKWAY\n{WALKWAY_GRATE_T}mm GRATE · DECK AT {WALKWAY_H}mm\n(REMOVABLE — MUST LIFT OUT\nBEFORE PANEL SLIDES)",
+           color=C_WALKWAY, fs=5.5,
+           ha="center", arrow_style="-|>", font=FONT)
+
+    # Walkway deck height dimension
+    draw_dim_v(ax, WK_X - 30, 0, WALKWAY_H,
+              f"{WALKWAY_H}mm DECK", offset=15, perpendicular=True, fs=6,
+              color=C_WALKWAY, right=False, font=FONT)
+
     # ── Clearance annotation — the key dimension ─────────────────────────────
     # Show gap between transport panel bottom and tray rim
     # Transport panel inner face is at X = PANEL_SLIDE + PANEL_T = 420mm
@@ -294,6 +330,7 @@ def sheet1():
         f"3. EPDM perimeter seal engages fixed door frame when panel at X=0 (operational).",
         f"4. Seal NOT engaged during transport — light seal not required for loading/transport.",
         f"5. Panel slide travel = {PANEL_SLIDE}mm on 2× HGR20 rails (ceiling-mounted, near/far walls).",
+        f"6. Left walkway (deck at {WALKWAY_H}mm) must be lifted out before panel slides to transport.",
     ]
     for i, note in enumerate(notes):
         ax.text(X_LO + 30, Z_LO + 30 + (len(notes) - 1 - i) * 22, note,
@@ -309,6 +346,7 @@ def sheet1():
         (C_RAIL,  1.0,  "HGR20 rail"),
         (C_CARR,  1.0,  "Carriage block"),
         (C_TRAY,  1.0,  "Processing tray"),
+        ("#D0D0D4", 1.0, "Walkway grate (removable)"),
         (C_SEAL,  1.0,  "EPDM seal"),
     ]
     for i, (c, a, lbl) in enumerate(swatches):

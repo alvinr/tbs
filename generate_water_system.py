@@ -862,7 +862,7 @@ ax3.add_patch(plt.Rectangle((OX, near_wk_y0),
               fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
               alpha=WK_ALPHA_L, hatch="//", zorder=2))
 ax3.text(OX + TRAY_DRAW_W + 0.15, (near_wk_y0 + near_wk_y1)/2,
-         "NEAR\nWALKWAY\n(400mm)",
+         "NEAR\nWALKWAY\n(300mm)",
          ha="left", va="center", fontsize=6, color=WK_COLOR)
 
 # Far walkway
@@ -874,7 +874,7 @@ ax3.add_patch(plt.Rectangle((OX, far_wk_y0),
               fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
               alpha=WK_ALPHA_L, hatch="//", zorder=2))
 ax3.text(OX + TRAY_DRAW_W + 0.15, (far_wk_y0 + far_wk_y1)/2,
-         "FAR\nWALKWAY\n(400mm)",
+         "FAR\nWALKWAY\n(300mm)",
          ha="left", va="center", fontsize=6, color=WK_COLOR)
 
 # ── Pipe run from drain ──────────────────────────────────────────────────────

@@ -261,12 +261,12 @@ Permanently installed — no removal for transport mode conversion.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Walkway width | 400 mm | `WALKWAY_W` |
+| Walkway width | 300 mm | `WALKWAY_W` |
 | Deck height | 100 mm | `WALKWAY_H` |
 | Grate thickness | 25 mm | `WALKWAY_GRATE_T` |
 | Spanning beam section | 75×75×4 mm | `WALKWAY_BEAM_W/H/T` |
 | Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
-| Far walkway Yd | 1,962 mm | `WALKWAY_FAR_YD` |
+| Far walkway Yd | 2,062 mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
 | Right walkway X | 4,229 mm | `WALKWAY_RIGHT_X` |
 

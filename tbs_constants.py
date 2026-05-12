@@ -211,7 +211,7 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 # Deck height 100mm (75mm beam + 25mm grate) clears the 50mm tray rim by 50mm.
 # Outer legs on container floor; end legs in miter corner zones on tray floor.
 # Material: galvanized press-locked steel grating, 25mm thick.
-WALKWAY_W       = 400    # walkway width (mm)
+WALKWAY_W       = 300    # walkway width (mm) [rev7: was 400; narrower for larger film area]
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm beam + 25mm grate
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
 WALKWAY_BEAM_W  = 75     # spanning beam section width (mm) — 75×75×4mm RHS
@@ -228,7 +228,7 @@ WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,229mm
-PROC_OPEN_YD_N = WALKWAY_W                    # = 400mm
+PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
 PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1,962mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
                                                # = 5.71 m² open processing area

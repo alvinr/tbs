@@ -82,7 +82,7 @@ spans this zone at depth Y=2,262mm (nominal far position).
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,399, Yd=80 to 3W-DV-02. Permanently installed. |
-| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–400 / 1,962–2,362 | 0–100 | 400mm wide, 100mm deck height (75mm spanning beam + 25mm grate). 75×75×4mm galv RHS beam spans full length, legs at ends only — tray floor clear. Removable for tray access during coating. |
+| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–100 | 300mm wide, 100mm deck height (75mm spanning beam + 25mm grate). 75×75×4mm galv RHS beam spans full length, legs at ends only — tray floor clear. Removable for tray access during coating. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 

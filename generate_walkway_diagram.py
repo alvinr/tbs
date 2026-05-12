@@ -334,7 +334,7 @@ def sheet1():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 2",
+    title_block(ax, "SHEET 1 OF 3",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION — NEAR WALKWAY (LOOKING ALONG X AXIS)",
                 scale_note="SCALE ≈ 5:1 · ALL DIMS IN mm · SECTION THROUGH PINHOLE SIDE WALKWAY",
@@ -432,17 +432,22 @@ def sheet2():
                              fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
                              alpha=WK_ALPHA, zorder=4))
 
-        # Spanning beam centerline (dashed line along inner edge)
+        # Spanning beam — filled rectangle at true 75mm width
+        C_BEAM = "#909098"
         if is_x_axis:
-            beam_yd = (wy + WALKWAY_W - BEAM_W / 2) if name == "NEAR" else (wy + BEAM_W / 2)
-            ax.plot([wx + END_LEG_INSET, wx + ww - END_LEG_INSET],
-                    [beam_yd, beam_yd],
-                    color=C_FRAME, lw=2.5, ls=(0, (8, 4)), alpha=0.7, zorder=5)
+            if name == "NEAR":
+                beam_yd0 = wy + WALKWAY_W - BEAM_W   # inner edge
+            else:
+                beam_yd0 = wy                         # inner edge (far side)
+            ax.add_patch(Rectangle((wx, beam_yd0), ww, BEAM_W,
+                         fc=C_BEAM, ec=C_OUT, lw=0.8, alpha=0.5, zorder=5))
         else:
-            beam_x = (wx + WALKWAY_W - BEAM_W / 2) if name == "RIGHT" else (wx + BEAM_W / 2)
-            ax.plot([beam_x, beam_x],
-                    [wy + END_LEG_INSET, wy + wh - END_LEG_INSET],
-                    color=C_FRAME, lw=2.5, ls=(0, (8, 4)), alpha=0.7, zorder=5)
+            if name == "LEFT":
+                beam_x0 = wx + WALKWAY_W - BEAM_W
+            else:
+                beam_x0 = wx
+            ax.add_patch(Rectangle((beam_x0, wy), BEAM_W, wh,
+                         fc=C_BEAM, ec=C_OUT, lw=0.8, alpha=0.5, zorder=5))
 
         # End legs — only at the two ends of each section (near miter corners)
         if is_x_axis:
@@ -543,7 +548,7 @@ def sheet2():
     swatches = [
         (C_WK,      WK_ALPHA, "xx",  "o", "Walkway (grated deck)"),
         ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
-        (C_FRAME,    0.7,     None,  "-", f"Spanning beam ({BEAM_W}×{BEAM_W}×{WALKWAY_BEAM_T}mm RHS)"),
+        ("#909098",  0.5,     None,  "r", f"Spanning beam ({BEAM_W}×{BEAM_W}×{WALKWAY_BEAM_T}mm RHS)"),
         (C_LEG,      1.0,     None,  "o", "End leg position (25mm SHS)"),
         ("#505058",  1.0,     None,  "s", "Shared miter leg"),
     ]
@@ -553,9 +558,9 @@ def sheet2():
             ax.add_patch(Rectangle((legend_x, sy_pos - 10), 30, 20,
                                     fc=c, ec=C_OUT, lw=0.6, alpha=a,
                                     hatch=h, zorder=15))
-        elif marker == "-":
-            ax.plot([legend_x, legend_x + 30], [sy_pos, sy_pos],
-                    color=c, lw=2.5, ls=(0, (8, 4)), alpha=a, zorder=15)
+        elif marker == "r":
+            ax.add_patch(Rectangle((legend_x, sy_pos - 10), 30, 20,
+                                    fc=c, ec=C_OUT, lw=0.6, alpha=a, zorder=15))
         elif marker == "s":
             ax.plot(legend_x + 15, sy_pos, 's', color=c, markersize=6,
                     markeredgecolor=C_OUT, markeredgewidth=0.5, zorder=15)
@@ -584,7 +589,7 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 2",
+    title_block(ax, "SHEET 2 OF 3",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW — SPANNING BEAM LAYOUT",
                 scale_note=f"SCALE ≈ 1:25 · ALL DIMS IN mm · LEGS AT ENDS ONLY",
@@ -596,6 +601,258 @@ def sheet2():
     print("  diagrams/walkway-sheet2.png saved")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 3 — Detail: Beam / Tray Rim / End Leg Interaction
+#
+# View: looking along X axis at the END of the near walkway (at the miter
+# corner where near meets left walkway).  Shows the end leg on the tray
+# floor, the spanning beam sitting on the end leg, and how the beam clears
+# the tray rim.  Scale ≈ 3:1 for clarity.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet3():
+    S = 3.0   # scale factor (slightly smaller than sheet1 to fit more context)
+
+    def sx(mm): return mm * S
+    def sy(mm): return mm * S
+
+    # ── Structural dimensions (mm real) ──────────────────────────────────────
+    FRAME_W    = 30    # outer frame angle width
+    FRAME_T    = 3     # outer frame angle thickness
+    LEG_W      = 25    # end leg SHS width
+    LEG_T      = 2     # end leg wall thickness
+    FOOT_W     = 50    # rubber foot pad width
+    FOOT_H     = 5     # rubber foot pad height
+    TRAY_WALL  = 3     # tray wall thickness (SS)
+    TRAY_FLOOR_T = 2   # tray floor thickness (SS)
+    BEAM_W     = WALKWAY_BEAM_W   # 75mm
+    BEAM_H     = WALKWAY_BEAM_H   # 75mm
+    BEAM_T     = WALKWAY_BEAM_T   # 4mm
+
+    # Key positions (mm real, Yd axis)
+    TRAY_RIM_YD = PROC_TRAY_YD_NEAR   # = 80mm from wall
+    OUTER_RAIL_YD = 12                 # outer frame rail start
+    LEG_OUTER_YD = OUTER_RAIL_YD + FRAME_W / 2   # = 27mm
+
+    # Inner beam position — inner face at walkway inner edge
+    BEAM_YD = WALKWAY_W - BEAM_W   # = 225mm
+    LEG_INNER_YD = BEAM_YD + BEAM_W / 2   # = 262mm (centered under beam)
+
+    # Z positions
+    frame_top = WALKWAY_H           # = 100mm
+    frame_bot = frame_top - FRAME_W # = 70mm
+    beam_bot  = frame_top - BEAM_H  # = 25mm
+    beam_top  = frame_top           # = 100mm
+    grate_bot = frame_top           # = 100mm
+    grate_top = frame_top + WALKWAY_GRATE_T  # = 125mm
+
+    # ── Figure ───────────────────────────────────────────────────────────────
+    YD_LO = -60
+    YD_HI = WALKWAY_W + 150
+    Z_LO  = -50
+    Z_HI  = grate_top + 80
+
+    fig, ax = plt.subplots(figsize=(16, 10))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # ── Container floor ──────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
+                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+
+    # ── Container wall (pinhole wall, at Yd=0) ──────────────────────────────
+    ax.add_patch(Rectangle((sx(-10), sy(0)), sx(10), sy(Z_HI),
+                            fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
+    ax.text(sx(-20), sy(Z_HI - 15), "PINHOLE\nWALL",
+            ha="center", va="top", fontsize=6, color=C_DIM,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Processing tray ──────────────────────────────────────────────────────
+    # Tray rim (vertical wall at Yd = TRAY_RIM_YD)
+    ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL), sy(0)),
+                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
+                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
+    # Tray floor (extends inward from rim)
+    tray_floor_end = YD_HI - 20
+    ax.add_patch(Rectangle((sx(TRAY_RIM_YD), sy(0)),
+                            sx(tray_floor_end - TRAY_RIM_YD), sy(TRAY_FLOOR_T),
+                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
+    # Tray rim label
+    leader(ax, sx(TRAY_RIM_YD + 8), sy(PROC_TRAY_RIM),
+           sx(TRAY_RIM_YD + 50), sy(PROC_TRAY_RIM + 30),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+    # Break line
+    bx = sx(tray_floor_end)
+    for z_val in np.linspace(0, TRAY_FLOOR_T * S, 3):
+        ax.plot([bx - 3, bx + 3], [z_val - 2, z_val + 2], color=C_OUT, lw=0.8, zorder=5)
+
+    # ── Outer leg (on container floor, between wall and tray rim) ────────────
+    outer_leg_top = frame_bot
+    outer_leg_h = outer_leg_top - FOOT_H
+    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - LEG_W / 2), sy(FOOT_H)),
+                            sx(LEG_W), sy(outer_leg_h),
+                            fc=C_LEG, ec=C_OUT, lw=1.0, zorder=5))
+    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - LEG_W / 2 + LEG_T), sy(FOOT_H + 2)),
+                            sx(LEG_W - 2 * LEG_T), sy(outer_leg_h - 4),
+                            fc="#909098", ec="none", zorder=5, alpha=0.3))
+    # Foot pad
+    ax.add_patch(Rectangle((sx(LEG_OUTER_YD - FOOT_W / 2), sy(0)),
+                            sx(FOOT_W), sy(FOOT_H),
+                            fc="#303030", ec=C_OUT, lw=0.8, zorder=5))
+    ax.text(sx(LEG_OUTER_YD), sy(outer_leg_top / 2),
+            "OUTER\nEND LEG\n(ON FLOOR)",
+            ha="center", va="center", fontsize=5, color=BG,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Inner end leg (on tray floor, inside rim) ────────────────────────────
+    inner_floor_z = TRAY_FLOOR_T   # stands on tray floor surface
+    inner_leg_top = beam_bot        # supports beam bottom
+    inner_leg_h = inner_leg_top - inner_floor_z - FOOT_H
+    ax.add_patch(Rectangle((sx(LEG_INNER_YD - LEG_W / 2), sy(inner_floor_z + FOOT_H)),
+                            sx(LEG_W), sy(inner_leg_h),
+                            fc=C_LEG, ec=C_OUT, lw=1.0, zorder=5))
+    ax.add_patch(Rectangle((sx(LEG_INNER_YD - LEG_W / 2 + LEG_T),
+                             sy(inner_floor_z + FOOT_H + 2)),
+                            sx(LEG_W - 2 * LEG_T), sy(inner_leg_h - 4),
+                            fc="#909098", ec="none", zorder=5, alpha=0.3))
+    # Foot pad on tray floor
+    ax.add_patch(Rectangle((sx(LEG_INNER_YD - FOOT_W / 2), sy(inner_floor_z)),
+                            sx(FOOT_W), sy(FOOT_H),
+                            fc="#303030", ec=C_OUT, lw=0.8, zorder=5))
+    ax.text(sx(LEG_INNER_YD), sy((inner_floor_z + inner_leg_top) / 2),
+            "INNER\nEND LEG\n(ON TRAY\nFLOOR)",
+            ha="center", va="center", fontsize=4.5, color=BG,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Outer frame rail (30×30mm angle) ─────────────────────────────────────
+    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD), sy(frame_bot)),
+                            sx(FRAME_W), sy(FRAME_W),
+                            fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6))
+
+    # ── Spanning beam (75×75×4mm RHS) — on top of inner end leg ──────────────
+    ax.add_patch(Rectangle((sx(BEAM_YD), sy(beam_bot)),
+                            sx(BEAM_W), sy(BEAM_H),
+                            fc=C_FRAME, ec=C_OUT, lw=1.2, zorder=6))
+    # Hollow interior
+    ax.add_patch(Rectangle((sx(BEAM_YD + BEAM_T), sy(beam_bot + BEAM_T)),
+                            sx(BEAM_W - 2 * BEAM_T), sy(BEAM_H - 2 * BEAM_T),
+                            fc="#A0A0A8", ec="none", zorder=6, alpha=0.3))
+
+    # Cross-member connecting outer rail to beam
+    ax.add_patch(Rectangle((sx(OUTER_RAIL_YD + FRAME_W), sy(frame_top - FRAME_T)),
+                            sx(BEAM_YD - OUTER_RAIL_YD - FRAME_W), sy(FRAME_T),
+                            fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6))
+
+    # ── Grated deck ──────────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
+                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
+    # Grate bar pattern
+    bar_spacing = 34.2
+    bar_w = 3
+    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
+        ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
+                                sx(bar_w), sy(WALKWAY_GRATE_T),
+                                fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
+
+    # ── Key dimension lines ──────────────────────────────────────────────────
+    # Clear air under beam (beam bottom to tray floor)
+    gap = beam_bot - TRAY_FLOOR_T
+    draw_dim_v(ax, sx(BEAM_YD + BEAM_W / 2 + 10), sy(TRAY_FLOOR_T), sy(beam_bot),
+               f"{gap:.0f}mm\nCLEAR", offset=sx(6), fs=6.5, right=True,
+               color="#208020", font=FONT)
+
+    # Tray rim to beam bottom — show the beam clears the rim
+    rim_clr = beam_bot - PROC_TRAY_RIM
+    if rim_clr < 0:
+        rim_label = f"{abs(rim_clr):.0f}mm\nBELOW RIM\n(INSIDE TRAY)"
+        rim_color = "#CC4400"
+    else:
+        rim_label = f"{rim_clr:.0f}mm\nABOVE RIM"
+        rim_color = "#208020"
+    # Annotate the vertical relationship between rim top and beam bottom
+    draw_dim_v(ax, sx(TRAY_RIM_YD + 20), sy(PROC_TRAY_RIM), sy(beam_bot),
+               rim_label, offset=sx(6), fs=6, right=True,
+               color=rim_color, font=FONT)
+
+    # Beam height
+    draw_dim_v(ax, sx(BEAM_YD - 10), sy(beam_bot), sy(beam_top),
+               f"{BEAM_H}mm", offset=sx(6), fs=6.5, right=False, font=FONT)
+
+    # Walkway width
+    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 20),
+               f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
+
+    # Wall to tray rim
+    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-25),
+               f"{TRAY_RIM_YD}mm", offset=sy(10), fs=6, above=False, font=FONT)
+
+    # Tray rim to beam inner face
+    draw_dim_h(ax, sx(TRAY_RIM_YD), sx(BEAM_YD), sy(-25),
+               f"{BEAM_YD - TRAY_RIM_YD}mm", offset=sy(10), fs=6,
+               above=False, font=FONT)
+
+    # Beam width
+    draw_dim_h(ax, sx(BEAM_YD), sx(BEAM_YD + BEAM_W), sy(-25),
+               f"{BEAM_W}mm", offset=sy(10), fs=6, above=False, font=FONT)
+
+    # Deck height
+    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_bot),
+               f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=True, font=FONT)
+
+    # ── Labels ───────────────────────────────────────────────────────────────
+    leader(ax, sx(OUTER_RAIL_YD + FRAME_W / 2), sy(frame_bot + FRAME_W + 5),
+           sx(-30), sy(frame_top + 40),
+           "30×30×3mm\nGALV ANGLE", color=C_FRAME, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, sx(BEAM_YD + BEAM_W / 2), sy(beam_top + 5),
+           sx(BEAM_YD + BEAM_W + 40), sy(grate_top + 40),
+           f"{BEAM_W}×{BEAM_H}×{BEAM_T}mm RHS\nSPANNING BEAM", color=C_LEG, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes_x = sx(WALKWAY_W + 50)
+    notes_top = sy(Z_HI - 10)
+    notes = [
+        "DETAIL — END LEG AT TRAY CORNER:",
+        "",
+        f"1. Inner end legs stand on tray floor (2mm SS).",
+        f"2. Spanning beam sits on top of end legs,",
+        f"   elevated {gap:.0f}mm above tray floor.",
+        f"3. Beam bottom is {abs(beam_bot - PROC_TRAY_RIM)}mm"
+        f" {'below' if beam_bot < PROC_TRAY_RIM else 'above'} tray rim top.",
+        f"4. Beam does NOT contact tray rim — it is",
+        f"   {BEAM_YD - TRAY_RIM_YD}mm inboard of the rim.",
+        f"5. At mid-span (between end legs) there are NO",
+        f"   legs or structure on the tray floor.",
+        f"6. Film lays flat on tray floor, passing freely",
+        f"   under the elevated beam.",
+    ]
+    for i, line in enumerate(notes):
+        bold = i == 0
+        ax.text(notes_x, notes_top - i * sy(6), line,
+                ha="left", va="top", fontsize=5.5 if not bold else 6,
+                color=C_OUT if bold else C_DIM,
+                fontweight="bold" if bold else "normal",
+                **FONT, zorder=15)
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 3 OF 3",
+                drawing_title="PERIMETER WALKWAY",
+                subtitle="DETAIL — BEAM / TRAY RIM / END LEG INTERACTION",
+                scale_note=f"SCALE ≈ 3:1 · ALL DIMS IN mm · SECTION AT WALKWAY END (MITER CORNER)",
+                height=0.07)
+
+    fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet3.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet3.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
@@ -603,4 +860,5 @@ if __name__ == "__main__":
     print("Generating perimeter walkway diagrams...")
     sheet1()
     sheet2()
+    sheet3()
     print("Done.")

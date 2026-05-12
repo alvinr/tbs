@@ -224,7 +224,7 @@ Mounting varies by wall type:
 - **Left walkway** (cargo door end): removable lift-out section with no brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —
   left walkway must be removed first. Supported at each end by near/far walkway
-  miter corners. Heavy-duty grating (40×5mm bars) spans the 1,762mm unsupported gap.
+  butt joints. Standard 25mm grating spans the 1,762mm unsupported gap.
 
 **Sheet 1 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
 ![TBS-001 Walkway — Sheet 1: Cross-Section](assets/walkway-sheet1.png)

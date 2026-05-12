@@ -23,7 +23,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
-| 7b. Perimeter walkway (4 sections, wall-cantilevered) | $620 | $1,020 |
+| 7b. Perimeter walkway (4 sections, wall-cantilevered) | $600 | $1,015 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
@@ -385,22 +385,24 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ## 7b. Perimeter Walkway
 
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design: 8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm (18") centers. No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design (rev 9): near/far walkways bracket to corrugated wall ribs, right walkway brackets to angle iron on flat end wall, left walkway is a removable lift-out (panel conflict — no brackets). No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).*
 
 ### Walkway sections (4 off)
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Press-locked steel grating, 25mm bearing bar | Galvanized, 30×3mm bar, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 2× 2,362×300mm (left/right) | ~4.1 m² | McNichols / Metal Supermarkets SoCal | ~$250–$380 |
-| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. | 30 | Local fab / Metal Supermarkets SoCal | ~$240–$360 |
-| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position | 30 | Metal Supermarkets / Pacific Coast Steel | ~$60–$90 |
-| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 60 | McMaster-Carr / Bolt Depot | ~$60–$90 |
-| Grating clips | Slide-on clips to secure grating to bracket arms — removable without tools | 40 | McNichols / McMaster-Carr | ~$20–$30 |
-| Fabrication + installation | Cut/weld/galvanize 30 brackets, weld reinforcing plates, drill wall ribs, install | 1 job | Local fab / metal shop | ~$250–$400 |
+| Press-locked steel grating, 25mm (30×3mm bars) | Galvanized, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×300mm (right) | ~3.4 m² | McNichols / Metal Supermarkets SoCal | ~$210–$310 |
+| Heavy-duty steel grating, 40mm (40×5mm bars) | Galvanized. Cut to size: 1× 2,362×300mm (left walkway — 1,762mm unsupported span) | ~0.7 m² | McNichols / Metal Supermarkets SoCal | ~$80–$120 |
+| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. | 25 | Local fab / Metal Supermarkets SoCal | ~$200–$300 |
+| Angle iron mounting rail, 50×50×5mm L-angle | Mild steel, hot-dip galvanized. Welded horizontally along right end wall interior. 1× 2,362mm length. | 1 | Metal Supermarkets / Pacific Coast Steel | ~$15–$25 |
+| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position (near/far walls only) | 20 | Metal Supermarkets / Pacific Coast Steel | ~$40–$60 |
+| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 50 | McMaster-Carr / Bolt Depot | ~$50–$75 |
+| Grating clips | Slide-on clips to secure grating to bracket arms — removable without tools | 35 | McNichols / McMaster-Carr | ~$15–$25 |
+| Fabrication + installation | Cut/weld/galvanize 25 brackets, weld angle iron + reinforcing plates, drill wall ribs, install | 1 job | Local fab / metal shop | ~$250–$400 |
 
-**Walkway subtotal: ~$620–$1,020**
+**Walkway subtotal: ~$600–$1,015**
 
-*Grating panels lift onto bracket arms and clip in place. Sections are removed for tray access during coating. No floor contact — entire tray interior clear.*
+*Near/far/right grating lifts onto bracket arms and clips in place. Left walkway is a lift-out section resting on miter corners — must be removed before sliding the hinged panel to transport position. No floor contact — entire tray interior clear.*
 
 ---
 

@@ -76,7 +76,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 6. Switch pump OFF.
 7. Confirm processing tray drain hose is connected to 3W-DV-02. (The tray is permanently installed between the film plane rails.)
-8. Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Each grating panel lifts onto the bracket arms and is secured with grating clips. The walkways provide dry-foot access to all working parts of the camera during processing. No legs contact the tray floor.
+8. Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on the near/far walkway miter corners with no brackets (the hinged panel occupies this end wall). The left walkway must be removed before sliding the panel to transport position. No legs contact the tray floor.
 9. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 ### 0.6 Ventilation and Cooling
@@ -344,7 +344,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 
 **Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 300mm inward on these rails before the container doors can close. The processing tray and perimeter walkways remain in place during mode conversion — no removal required.
+The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 300mm inward on these rails before the container doors can close. The left walkway (cargo door end) must be removed before sliding the panel — lift it out from the miter corners. The processing tray and remaining walkway sections (near, far, right) remain in place during mode conversion.
 
 1. Stow all interior items. Retract film plane carriage to Yd=100mm.
 2. Release all 4 Southco cam latches. Swing the panel open 180° outward.

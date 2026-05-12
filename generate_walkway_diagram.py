@@ -13,6 +13,9 @@ Sheet 1 — Cross-section through near (pinhole side) walkway:
 
 Sheet 2 — Plan view of walkway layout:
   Top-down view showing all 4 walkway sections with bracket positions.
+  Left walkway shown as removable lift-out (no brackets — panel conflict).
+  Right walkway brackets on angle iron welded to flat end wall.
+  Panel transport envelope shown as dashed red zone.
 
 Sheet 3 — Detail: Single bracket / wall attachment:
   Close-up of gusset bracket bolted to corrugated wall rib, showing
@@ -33,12 +36,14 @@ from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
-    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
+    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
+    WALKWAY_ANGLE_IRON, WALKWAY_ANGLE_IRON_T, WALKWAY_LEFT_SPAN,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
+    PANEL_SLIDE,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -337,8 +342,11 @@ def sheet1():
         f"4. 2\u00d7 M12 through-bolts per bracket, with",
         f"   reinforcing plate behind corrugated wall.",
         f"5. Grating clips to bracket arms — removable.",
-        f"6. Each section lifts off brackets for tray access.",
-        f"7. Near + far: {PROC_TRAY_W}\u00d7{WALKWAY_W}mm.  Left + right: {C_WID}\u00d7{WALKWAY_W}mm.",
+        f"6. Right walkway: brackets on angle iron",
+        f"   welded to flat end wall (no ribs).",
+        f"7. Left walkway: REMOVABLE LIFT-OUT —",
+        f"   no brackets (panel conflict). Rests on",
+        f"   near/far miter corners. {WALKWAY_LEFT_GRATE_T}mm HD grating.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -460,28 +468,28 @@ def sheet2():
                     ax.add_patch(Rectangle((bx - BRKT_MARK_W / 2, FYO - BRKT_MARK_D),
                                  BRKT_MARK_W, BRKT_MARK_D,
                                  fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
-        else:
-            # Left/right walkways: brackets along end walls
+        elif name == "RIGHT":
+            # Right walkway: brackets on angle iron welded to far end wall
             yd_start = wy
             yd_end = wy + wh
             brkt_yds = np.arange(yd_start + WALKWAY_BRACKET_SPACING / 2,
                                  yd_end, WALKWAY_BRACKET_SPACING)
             for by in brkt_yds:
-                if name == "LEFT":
-                    ax.add_patch(Rectangle((LX, by - BRKT_MARK_W / 2),
-                                 BRKT_MARK_D, BRKT_MARK_W,
-                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
-                else:
-                    ax.add_patch(Rectangle((RXR - BRKT_MARK_D, by - BRKT_MARK_W / 2),
-                                 BRKT_MARK_D, BRKT_MARK_W,
-                                 fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
+                ax.add_patch(Rectangle((RXR - BRKT_MARK_D, by - BRKT_MARK_W / 2),
+                             BRKT_MARK_D, BRKT_MARK_W,
+                             fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
+        # LEFT walkway: NO brackets — removable lift-out section
 
         # Section label
         cx = wx + ww / 2
         cy = wy + wh / 2
         rot = 0 if is_x_axis else 90
         length = ww if is_x_axis else wh
-        ax.text(cx, cy, f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm",
+        if name == "LEFT":
+            lbl = f"LEFT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nREMOVABLE LIFT-OUT\n(HD GRATING {WALKWAY_LEFT_GRATE_T}mm)"
+        else:
+            lbl = f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm"
+        ax.text(cx, cy, lbl,
                 ha="center", va="center", fontsize=6, color=C_OUT,
                 backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
@@ -496,12 +504,27 @@ def sheet2():
     for x1, y1, x2, y2 in corners:
         ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
 
-    # Label one miter (bottom-left)
+    # Label one miter (bottom-left) — left walkway rests on this joint
     mx = PROC_TRAY_X_L + W / 2
     my = W / 2
     leader(ax, mx, my, mx - 350, my - 350,
-           "45\u00b0 MITER JOINT\n(BRACKETS ON BOTH\nADJOINING WALLS)", color=C_OUT, fs=6,
+           "45\u00b0 MITER JOINT\n(LEFT WALKWAY RESTS\nON NEAR/FAR BRACKETS)", color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Panel transport envelope (dashed red) ────────────────────────────────
+    # Show the zone swept by the panel when sliding to transport position.
+    # Left walkway must be removed before panel slides.
+    panel_transport_x = PANEL_SLIDE + 120  # panel center zone inner face in transport
+    ax.add_patch(Rectangle((0, 0), panel_transport_x, C_WID,
+                            fc="#FF0000", ec="#CC0000", lw=1.5, ls=(0, (4, 3)),
+                            alpha=0.06, zorder=3))
+    ax.plot([panel_transport_x, panel_transport_x], [0, C_WID],
+            color="#CC0000", lw=1.2, ls=(0, (4, 3)), zorder=5)
+    ax.text(panel_transport_x / 2, C_WID / 2 + 450,
+            f"PANEL TRANSPORT\nENVELOPE\n(X=0\u2013{panel_transport_x}mm)",
+            ha="center", va="center", fontsize=6, color="#CC0000",
+            fontweight="bold", **FONT, zorder=15, alpha=0.8,
+            backgroundcolor="#FFFFFF")
 
     # ── Open processing area outline ─────────────────────────────────────────
     open_w = PROC_OPEN_X_R - PROC_OPEN_X_L
@@ -556,14 +579,17 @@ def sheet2():
     # ── Notes ────────────────────────────────────────────────────────────────
     n_brackets_near = len(np.arange(TL + WALKWAY_BRACKET_SPACING / 2,
                                      TR, WALKWAY_BRACKET_SPACING))
-    n_brackets_total = n_brackets_near * 2 + len(np.arange(
-        WALKWAY_BRACKET_SPACING / 2, C_WID, WALKWAY_BRACKET_SPACING)) * 2
+    n_brackets_right = len(np.arange(
+        WALKWAY_BRACKET_SPACING / 2, C_WID, WALKWAY_BRACKET_SPACING))
+    n_brackets_total = n_brackets_near * 2 + n_brackets_right  # no left brackets
     notes = [
         f"1. 4 removable grated sections. 45\u00b0 miter joints at corners.",
-        f"2. Wall-cantilevered brackets: {WALKWAY_BRACKET_T}mm steel plate gussets bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"3. NO legs on tray floor \u2014 entire tray interior clear for film loading. Zero floor contact.",
-        f"4. Open processing area: {PROC_OPEN_AREA:.1f} m\u00b2 ({open_w}\u00d7{open_h}mm).",
-        f"5. ~{n_brackets_total} brackets total. Each section lifts off brackets for tray access.",
+        f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"3. Right: brackets on {WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON}\u00d7{WALKWAY_ANGLE_IRON_T}mm angle iron welded to flat end wall.",
+        f"4. Left: REMOVABLE LIFT-OUT \u2014 no brackets (panel conflict). Rests on near/far miter corners.",
+        f"   Heavy-duty grating ({WALKWAY_LEFT_GRATE_T}mm) spans {WALKWAY_LEFT_SPAN}mm unsupported. Remove before panel slides.",
+        f"5. NO legs on tray floor \u2014 zero floor contact. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
+        f"6. ~{n_brackets_total} brackets total (near + far + right). Each section lifts off for tray access.",
     ]
     for i, note in enumerate(notes):
         ax.text(C_LEN * 3 / 5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,

@@ -212,14 +212,24 @@ the permanently installed processing tray (50mm rim) during transport slide.
 Removable grated walkway sections around all 4 sides of the processing tray. Provides
 dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
 without wading through the wet processing tray. 300mm wide, 100mm deck height (75mm
-bracket arm + 25mm grate). Wall-cantilevered bracket design: 8mm steel plate triangular
-gusset brackets bolted to container wall ribs at 457mm (18") centers. No legs, no beam,
-no floor contact — entire tray interior completely clear for film loading.
+bracket arm + 25mm grate). No legs, no beam, no floor contact — entire tray interior
+completely clear for film loading.
+
+Mounting varies by wall type:
+
+- **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
+  to corrugated wall structural ribs at 457mm (18") centers.
+- **Right walkway** (far end wall): same brackets bolted to 50×50×5mm angle iron
+  mounting rail welded along the flat end wall interior (no corrugation ribs).
+- **Left walkway** (cargo door end): removable lift-out section with no brackets.
+  The hinged panel occupies this end wall and slides 300mm inward for transport —
+  left walkway must be removed first. Supported at each end by near/far walkway
+  miter corners. Heavy-duty grating (40×5mm bars) spans the 1,762mm unsupported gap.
 
 **Sheet 1 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
 ![TBS-001 Walkway — Sheet 1: Cross-Section](assets/walkway-sheet1.png)
 
-**Sheet 2 — Plan view: All 4 sections with wall bracket positions**
+**Sheet 2 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 2: Plan View](assets/walkway-sheet2.png)
 
 **Sheet 3 — Detail: Bracket attachment to corrugated wall (≈3:1)**

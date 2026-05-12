@@ -204,29 +204,47 @@ PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Y
 # working parts (valves, electrical panel, film plane, tilt-swing adjusters)
 # without wading through the wet processing tray.
 #
-# Wall-cantilevered bracket design (rev 8): triangular gusset brackets bolted
-# to container wall structural ribs at 457mm (18") centers.  Each bracket is
-# an 8mm steel plate right-triangle gusset: 150mm vertical leg bolted to wall
-# rib, 300mm horizontal arm projecting inward, diagonal brace welded between.
-# Grating sits directly on bracket arms.  NO legs, NO beam, NO floor contact.
-# Entire tray interior is completely clear for film loading.
+# Wall-cantilevered bracket design (rev 8, updated rev 9): triangular gusset
+# brackets bolted to container wall structural ribs at 457mm (18") centers.
+# Each bracket is an 8mm steel plate right-triangle gusset: 150mm vertical leg
+# bolted to wall rib, 300mm horizontal arm projecting inward, diagonal brace
+# welded between.  Grating sits directly on bracket arms.  NO legs, NO beam,
+# NO floor contact.  Entire tray interior is completely clear for film loading.
 # Deck height 100mm (75mm bracket arm + 25mm grate) clears the 50mm tray rim.
-# Material: galvanized press-locked steel grating, 25mm thick.
+# Material: galvanized press-locked steel grating, 25mm thick (near/far/right)
+# or 40×5mm heavy-duty bearing bars (left walkway — longer unsupported span).
+#
+# Mounting varies by wall type:
+#   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.
+#   Right walkway (far end wall):   brackets bolt to angle iron mounting rail
+#       welded along the flat end wall interior (no ribs on flat end walls).
+#   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no brackets.
+#       Panel (hinged door) occupies the end wall at X=0 and slides inward
+#       300mm for transport.  Left walkway must be removed before panel slides.
+#       Supported at each end by near/far walkway miter corners.  Heavy-duty
+#       grating (40×5mm bars) spans the 1,762mm unsupported gap.
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
 WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
 WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked
+WALKWAY_LEFT_GRATE_T = 40  # left walkway grating thickness (mm) — heavy-duty for long span
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
+# End wall angle iron mounting rail (right walkway only — flat end wall has no ribs)
+WALKWAY_ANGLE_IRON = 50  # angle iron leg size (mm) — 50×50×5mm L-angle welded to end wall
+WALKWAY_ANGLE_IRON_T = 5 # angle iron thickness (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
 WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1,962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
+# REMOVABLE — must be lifted out before sliding panel to transport position.
+# Unsupported span between miter corners: C_WID - 2×WALKWAY_W = 1,762mm.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
+WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1,762mm unsupported span
 # Right walkway (IBC end): X=tray_R-WALKWAY_W to tray_R, Yd=0 to C_WID
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
 # Open processing area (center, clear of walkways):
@@ -331,7 +349,8 @@ if __name__ == "__main__":
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
-    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm")
+    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (left={WALKWAY_LEFT_GRATE_T}mm HD)")
+    print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (no brackets — panel conflict)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")

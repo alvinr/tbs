@@ -263,19 +263,23 @@ Permanently installed — no removal for transport mode conversion.*
 |-----------|-------|----------|
 | Walkway width | 300 mm | `WALKWAY_W` |
 | Deck height | 100 mm | `WALKWAY_H` |
-| Grate thickness | 25 mm | `WALKWAY_GRATE_T` |
+| Grate thickness (near/far/right) | 25 mm | `WALKWAY_GRATE_T` |
+| Grate thickness (left, heavy-duty) | 40 mm | `WALKWAY_LEFT_GRATE_T` |
 | Bracket vertical leg | 150 mm | `WALKWAY_BRACKET_H` |
 | Bracket plate thickness | 8 mm | `WALKWAY_BRACKET_T` |
 | Bracket spacing | 457 mm | `WALKWAY_BRACKET_SPACING` |
 | Container rib spacing | 457 mm | `CONTAINER_RIB_SPACING` |
+| Angle iron mounting rail | 50×50×5 mm | `WALKWAY_ANGLE_IRON` |
 | Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
 | Far walkway Yd | 2,062 mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
+| Left walkway unsupported span | 1,762 mm | `WALKWAY_LEFT_SPAN` |
 | Right walkway X | 4,229 mm | `WALKWAY_RIGHT_X` |
 
-*Components: galvanized press-locked steel grating (30×3mm bar, 25mm bearing bar),
-8mm steel plate triangular gusset brackets bolted to container wall ribs at 457mm centers,
-M12 through-bolts with reinforcing plates behind corrugated wall. No legs, no beam,
+*Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
+Right: same brackets on 50×50×5mm angle iron welded to flat end wall.
+Left: removable lift-out, 40mm heavy-duty grating resting on miter corners (no brackets —
+panel conflict, must remove before panel slides to transport). No legs, no beam,
 no floor contact. 4 removable sections.*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*

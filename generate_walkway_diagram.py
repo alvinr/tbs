@@ -2297,17 +2297,17 @@ def sheet7():
             ha="center", va="top", fontsize=5, color=C_PLATE,
             **FONT, zorder=15, alpha=0.6)
 
-    # ── Stop lip (ghost — behind beam, wall/interior side in X) ──────────────
-    # The lip is behind the beam in this view direction (looking along X).
+    # ── Stop lip (solid — in front of beam, door side in X) ────────────────
+    # The lip is in front of the beam in this view direction (looking along X).
     lip_yd_start = BRKT_T / 2
     lip_show_w = 80
     ax.add_patch(Rectangle((sx(lip_yd_start), sy(plate_top)),
                             sx(lip_show_w), sy(LIP_H),
-                            fc=C_PLATE, ec=C_OUT, lw=1.0, ls="--",
-                            zorder=6, alpha=0.3))
+                            fc=C_PLATE, ec=C_OUT, lw=1.5,
+                            zorder=10))
     leader(ax, sx(lip_yd_start + lip_show_w / 2), sy(lip_top),
            sx(lip_yd_start + lip_show_w / 2), sy(lip_top + 25),
-           f"STOP LIP {LIP_T}\u00d7{LIP_H}mm\n(GHOST \u2014 BEHIND BEAM)\nBENT UP FROM PLATE\nFORMS POCKET WITH BASE",
+           f"STOP LIP {LIP_T}\u00d7{LIP_H}mm\nBENT UP FROM PLATE\nFORMS POCKET WITH BASE",
            color=C_PLATE, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -2335,31 +2335,29 @@ def sheet7():
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Lock block (visible — in front of beam, door side in X) ──────────────
-    # The lock is in front of the beam in this view.
+    # ── Lock block (ghost — behind beam, interior/wall side in X) ──────────────
+    # The lock is behind the beam in this view.
     lock_yd_mid = beam_yd_start + 60
     ax.add_patch(Rectangle((sx(lock_yd_mid - LOCK_W / 2), sy(plate_top)),
                             sx(LOCK_W), sy(LOCK_H),
-                            fc=C_BOLT, ec=C_OUT, lw=1.2, zorder=10))
-    # Thumb screw head
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, ls="--",
+                            zorder=6, alpha=0.3))
+    # Thumb screw head (ghost)
     thumb_head_h = 6
     thumb_head_w = 14
     ax.add_patch(Rectangle((sx(lock_yd_mid - thumb_head_w / 2),
                              sy(plate_top + LOCK_H)),
                             sx(thumb_head_w), sy(thumb_head_h),
-                            fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=11))
-    for ky in range(2, thumb_head_h - 1, 2):
-        ax.plot([sx(lock_yd_mid - thumb_head_w / 2 + 1),
-                 sx(lock_yd_mid + thumb_head_w / 2 - 1)],
-                [sy(plate_top + LOCK_H + ky), sy(plate_top + LOCK_H + ky)],
-                color="#707070", lw=0.3, zorder=12)
-    # Screw shank through lock into plate
+                            fc=C_BOLT, ec=C_OUT, lw=0.6, ls="--",
+                            zorder=6, alpha=0.3))
+    # Screw shank through lock into plate (ghost)
     ax.add_patch(Rectangle((sx(lock_yd_mid - 2), sy(plate_bot)),
                             sx(4), sy(PLATE_T + LOCK_H),
-                            fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=9))
+                            fc=C_BOLT, ec=C_OUT, lw=0.4, ls="--",
+                            zorder=5, alpha=0.3))
     leader(ax, sx(lock_yd_mid + LOCK_W / 2 + 2), sy(plate_top + LOCK_H / 2),
            sx(lock_yd_mid + 60), sy(plate_top + LOCK_H + 20),
-           f"LOCK BLOCK {LOCK_W}\u00d7{LOCK_H}mm\nM{THUMB_D} THUMB SCREW\nINTO FLAT PLATE\nTOOL-FREE REMOVAL",
+           f"LOCK BLOCK {LOCK_W}\u00d7{LOCK_H}mm\n(GHOST \u2014 BEHIND BEAM)\nM{THUMB_D} THUMB SCREW\nINTO FLAT PLATE",
            color=C_BOLT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -2437,19 +2435,24 @@ def sheet7():
             f"FLAT PLATE\n({PLATE_W}mm WIDE)", ha="center", va="top",
             fontsize=4, color=C_PLATE, **FONT, zorder=15, alpha=0.6)
 
-    # Lip (strip along Yd at interior/wall side of plate = high X = top)
-    lip_pv_x = plate_pv_x_end - LIP_T
-    ax.add_patch(Rectangle((px(plate_pv_yd_start), py(lip_pv_x)),
-                            px(plate_pv_yd_start + plate_pv_yd_w) - px(plate_pv_yd_start),
-                            py(lip_pv_x + LIP_T) - py(lip_pv_x),
-                            fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=8))
-    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lip_pv_x + LIP_T / 2),
-            "LIP", ha="left", va="center", fontsize=4, color=C_PLATE,
+    # Lock block (interior/wall side = high X = top in plan view)
+    lock_pv_x = plate_pv_x_end - LOCK_W
+    lock_pv_yd_ctr = plate_pv_yd_start + plate_pv_yd_w / 2
+    ax.add_patch(Rectangle((px(lock_pv_yd_ctr - LOCK_W / 2), py(lock_pv_x)),
+                            px(lock_pv_yd_ctr + LOCK_W / 2) - px(lock_pv_yd_ctr - LOCK_W / 2),
+                            py(lock_pv_x + LOCK_W) - py(lock_pv_x),
+                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
+    # Thumb screw circle
+    ax.add_patch(Circle((px(lock_pv_yd_ctr), py(lock_pv_x + LOCK_W / 2)),
+                         (px(THUMB_D / 2 + 1) - px(0)),
+                         fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=9))
+    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lock_pv_x + LOCK_W / 2),
+            f"LOCK + M{THUMB_D}", ha="left", va="center", fontsize=4, color=C_BOLT,
             fontweight="bold", **FONT, zorder=15)
 
     # Beam (extends from bracket outward along Yd — ONE direction only)
     beam_pv_w = 120   # show 120mm of beam extending from bracket
-    beam_pv_x = lip_pv_x - BEAM_SZ   # beam is against lip (door side)
+    beam_pv_x = lock_pv_x - GAP - BEAM_SZ   # beam below lock (door side)
     ax.add_patch(Rectangle((px(plate_pv_yd_start), py(beam_pv_x)),
                             px(plate_pv_yd_start + beam_pv_w) - px(plate_pv_yd_start),
                             py(beam_pv_x + BEAM_SZ) - py(beam_pv_x),
@@ -2468,24 +2471,19 @@ def sheet7():
     ax.plot([bx_far - 2, bx_far + 2, bx_far - 2, bx_far + 2, bx_far - 2],
             zz_brk, color=C_OUT, lw=0.8, zorder=10)
 
-    # Lock block (door side = low X = bottom in plan view)
-    lock_pv_x = beam_pv_x - GAP - LOCK_W
-    lock_pv_yd_ctr = plate_pv_yd_start + plate_pv_yd_w / 2
-    ax.add_patch(Rectangle((px(lock_pv_yd_ctr - LOCK_W / 2), py(lock_pv_x)),
-                            px(lock_pv_yd_ctr + LOCK_W / 2) - px(lock_pv_yd_ctr - LOCK_W / 2),
-                            py(lock_pv_x + LOCK_W) - py(lock_pv_x),
-                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=8))
-    # Thumb screw circle
-    ax.add_patch(Circle((px(lock_pv_yd_ctr), py(lock_pv_x + LOCK_W / 2)),
-                         (px(THUMB_D / 2 + 1) - px(0)),
-                         fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=9))
-    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lock_pv_x + LOCK_W / 2),
-            f"LOCK + M{THUMB_D}", ha="left", va="center", fontsize=4, color=C_BOLT,
+    # Lip (door side = low X = bottom in plan view)
+    lip_pv_x = beam_pv_x - LIP_T   # lip below beam
+    ax.add_patch(Rectangle((px(plate_pv_yd_start), py(lip_pv_x)),
+                            px(plate_pv_yd_start + plate_pv_yd_w) - px(plate_pv_yd_start),
+                            py(lip_pv_x + LIP_T) - py(lip_pv_x),
+                            fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=8))
+    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lip_pv_x + LIP_T / 2),
+            "LIP", ha="left", va="center", fontsize=4, color=C_PLATE,
             fontweight="bold", **FONT, zorder=15)
 
     # Plan view border
-    pv_border_bot = lock_pv_x - 12
-    pv_border_top = lip_pv_x + LIP_T + 12
+    pv_border_bot = lip_pv_x - 12
+    pv_border_top = lock_pv_x + LOCK_W + 12
     ax.add_patch(Rectangle((px(-wall_pv_w - 3), py(pv_border_bot)),
                             px(plate_pv_yd_start + beam_pv_w + 5) - px(-wall_pv_w - 3),
                             py(pv_border_top) - py(pv_border_bot),

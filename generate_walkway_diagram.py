@@ -2093,18 +2093,22 @@ def sheet6():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Detail E: Bearer Beam to Bracket Connection
+# SHEET 7 — Detail E: Bearer Beam Anti-Slip Restraint
 #
-# Elevation showing how the bearer beam (50×50×3mm Al RHS) sits on the
-# near walkway bracket arm and is restrained against sliding.
-# View looking along X axis (same direction as sheet 1).
-# Horizontal = Yd (0 = pinhole wall, positive toward far wall)
-# Vertical   = Z  (0 = floor, positive up)
+# Two views of how the bearer beam (50×50×3mm Al RHS) sits on the
+# near walkway bracket arm and is restrained against sliding in X.
 #
-# Wall side: steel stop lip welded to bracket arm inner edge — beam
-# butts against it, preventing inward slide.
-# Door side: retaining plate with M8 thumb screw clamped to bracket
-# arm outer edge — prevents outward slide.  Tool-free removal.
+# VIEW A — Side elevation looking along X (into container):
+#   Horizontal = Yd, Vertical = Z.  Hollow rib wall profile matching
+#   sheet 3, horizontal through-bolts.  Beam sits on bracket arm.
+#   Stop lip visible on near (door) side.  Retaining plate shown as
+#   ghost on far (tray) side — behind beam in this view.
+#
+# VIEW B — Plan view looking down:
+#   Horizontal = Yd, Vertical = X.  Shows bracket arm width in X
+#   with beam sitting on it, stop lip on door edge, retaining plate
+#   with thumb screw on tray edge.  Clarifies spatial relationship.
+#
 # Scale ≈ 4:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet7():
@@ -2116,12 +2120,20 @@ def sheet7():
     # ── Structural dimensions ────────────────────────────────────────────────
     CORR_DEPTH = 38    # corrugation depth (mm)
     WALL_T     = 1.6   # wall steel thickness
+    REINF_W    = 80    # reinforcing plate width
+    REINF_H    = 180   # reinforcing plate height
+    REINF_T    = 6     # reinforcing plate thickness
     BRKT_T     = WALKWAY_BRACKET_T   # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H   # 150mm vertical leg
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (arm top)
     ARM_DEPTH  = BRKT_T + 2          # arm visual thickness
     arm_bot    = BRKT_ARM_Z - ARM_DEPTH
     GUSSET_REACH = 70
+    BOLT_D     = 12
+    BOLT_R     = BOLT_D / 2
+    WASHER_T   = 3
+    NUT_H      = 10
+    BOLT_HEAD  = 8
 
     # Bearer beam
     BEAM_SZ = LEFT_WK_BEARER_SIZE   # 50mm
@@ -2129,13 +2141,14 @@ def sheet7():
     beam_bot = BRKT_ARM_Z - BEAM_SZ  # Z = 25mm
     beam_top = BRKT_ARM_Z            # Z = 75mm
 
-    # Stop lip (wall side)
+    # Stop lip (door side — near viewer in side elevation)
     LIP_H  = 20     # lip height above arm top (mm)
-    LIP_T  = 5      # lip thickness along Yd (mm)
+    LIP_T  = 5      # lip thickness in X direction (mm)
 
-    # Retaining plate + thumb screw (door side)
-    RET_W  = 40     # retaining plate width along Yd (mm)
-    RET_T  = 3      # retaining plate thickness (mm)
+    # Retaining plate + thumb screw (tray side — behind beam in side elev.)
+    RET_L  = 40     # retaining plate length along Yd (mm)
+    RET_T  = 3      # retaining plate thickness in Z (mm)
+    RET_DEPTH = 30  # how far plate extends in X over beam top
     THUMB_D = 8     # M8 thumb screw
 
     # Grating
@@ -2145,13 +2158,13 @@ def sheet7():
     # Show beam extending 250mm into view (along Yd)
     BEAM_SHOW = 250
 
-    # ── Figure ───────────────────────────────────────────────────────────────
-    YD_LO = -60
-    YD_HI = BEAM_SHOW + 80
-    Z_LO  = -30
+    # ── Figure (two views: side elevation top, plan view bottom) ─────────────
+    YD_LO = -100
+    YD_HI = BEAM_SHOW + 200
+    Z_LO  = -60
     Z_HI  = BRKT_VERT + 30
 
-    fig, ax = plt.subplots(figsize=(18, 12))
+    fig, ax = plt.subplots(figsize=(18, 14))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -2159,36 +2172,86 @@ def sheet7():
     ax.set_aspect("equal")
     ax.axis("off")
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW A — Side elevation (looking along X into container)
+    # ══════════════════════════════════════════════════════════════════════════
+
     # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-12)), sx(YD_HI - YD_LO), sy(12),
+    ax.add_patch(Rectangle((sx(YD_LO), sy(-12)), sx(BEAM_SHOW + 100 - YD_LO), sy(12),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
 
-    # ── Container wall (corrugated, at Yd=0) ─────────────────────────────────
-    wall_z_top = Z_HI
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH - 5), sy(0)),
-                            sx(CORR_DEPTH + 5), sy(wall_z_top),
-                            fc=C_WALL, ec=C_OUT, lw=1.2, hatch="///", zorder=3))
-    # Corrugation rib at section cut
-    rib_w = 12
-    ax.add_patch(Rectangle((sx(-rib_w / 2), sy(0)),
-                            sx(rib_w), sy(wall_z_top),
-                            fc="#A8A8B0", ec=C_OUT, lw=1.0, zorder=3))
-    ax.text(sx(-CORR_DEPTH / 2 - 5), sy(wall_z_top - 10),
-            "CONTAINER\nWALL",
-            ha="center", va="top", fontsize=6, color=C_DIM,
+    # ── Corrugated wall (hollow rib profile — matching sheet 3) ──────────────
+    ext_panel_yd = -CORR_DEPTH - WALL_T
+    reinf_yd = ext_panel_yd - REINF_T
+    wall_z_top = Z_HI - 5
+
+    # Exterior wall steel panel
+    ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
+    # Rib side wall (left)
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3, hatch="///"))
+    # Rib interior face (at Yd=0)
+    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
+                            sx(WALL_T), sy(wall_z_top),
+                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
+    # Air gap
+    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
+                            sx(CORR_DEPTH - 2 * WALL_T), sy(wall_z_top),
+                            fc="#F0F0F0", ec=C_DIM, lw=0.5, ls="--", zorder=2))
+    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top * 0.45),
+            "AIR\nGAP", ha="center", va="center", fontsize=5, color=C_DIM,
+            **FONT, zorder=15, style="italic")
+    ax.plot([sx(0), sx(0)], [sy(0), sy(wall_z_top)],
+            color=C_OUT, lw=2.0, zorder=4)
+    ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top - 5),
+            "CORRUGATED\nWALL RIB", ha="center", va="top", fontsize=5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
+    # Reinforcing plate (exterior)
+    ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
+                            sx(REINF_T), sy(REINF_H),
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+
     # ── Bracket vertical leg ─────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(-BRKT_T / 2), sy(0)),
+    ax.add_patch(Rectangle((sx(0), sy(0)),
                             sx(BRKT_T), sy(BRKT_VERT),
                             fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6))
-    leader(ax, sx(BRKT_T / 2 + 2), sy(BRKT_VERT - 10),
-           sx(BRKT_T / 2 + 50), sy(BRKT_VERT + 10),
+    leader(ax, sx(BRKT_T + 2), sy(BRKT_VERT - 10),
+           sx(BRKT_T + 50), sy(BRKT_VERT + 10),
            f"BRACKET VERTICAL LEG\n{BRKT_T}mm PLATE \u00d7 {BRKT_VERT}mm\n(BOLTED TO WALL RIB)",
            color=C_BRKT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # ── Bracket arm (projects inward, ghost — continues out of view) ─────────
+    # ── Through-bolts (horizontal shanks — matching sheet 3) ─────────────────
+    C_BOLT = "#505058"
+    bolt_z1 = 30
+    bolt_z2 = 120
+    for bz in [bolt_z1, bolt_z2]:
+        shank_left = reinf_yd
+        shank_right = BRKT_T
+        shank_hw = BOLT_R * 0.4
+        ax.add_patch(Rectangle((sx(shank_left), sy(bz - shank_hw)),
+                                sx(shank_right - shank_left), sy(shank_hw * 2),
+                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
+        # Hex head (exterior)
+        ax.add_patch(Rectangle((sx(reinf_yd - BOLT_HEAD), sy(bz - BOLT_R)),
+                                sx(BOLT_HEAD), sy(BOLT_D),
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+        ax.add_patch(Rectangle((sx(reinf_yd - WASHER_T), sy(bz - BOLT_R - 1)),
+                                sx(WASHER_T), sy(BOLT_D + 2),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+        # Nut (interior)
+        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R)),
+                                sx(NUT_H), sy(BOLT_D),
+                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
+        ax.add_patch(Rectangle((sx(BRKT_T), sy(bz - BOLT_R - 1)),
+                                sx(WASHER_T), sy(BOLT_D + 2),
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+
+    # ── Bracket arm (ghost — extends perpendicular to view along X) ──────────
     arm_show = 120
     ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
                             sx(arm_show), sy(ARM_DEPTH),
@@ -2196,7 +2259,6 @@ def sheet7():
                             ls="--", zorder=5))
     ax.plot([sx(0), sx(arm_show)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color=C_OUT, lw=1.5, alpha=0.5, ls="--", zorder=6)
-    # Sawtooth break line on bracket arm
     bx_arm = sx(arm_show)
     z_lo_arm, z_hi_arm = sy(arm_bot - 1), sy(BRKT_ARM_Z + 1)
     zz_arm = np.linspace(z_lo_arm, z_hi_arm, 7)
@@ -2204,7 +2266,7 @@ def sheet7():
              bx_arm - 3, bx_arm + 3, bx_arm - 3],
             zz_arm, color=C_OUT, lw=1.0, zorder=7)
     ax.text(sx(arm_show / 2), sy(BRKT_ARM_Z + 4),
-            f"BRACKET ARM\n(CONTINUES {WALKWAY_W}mm\nALONG Yd \u2014 GHOST)",
+            f"BRACKET ARM (GHOST \u2014\nEXTENDS {WALKWAY_W}mm\nALONG Yd INTO PAGE)",
             ha="center", va="bottom", fontsize=5, color=C_BRKT,
             alpha=0.6, **FONT, zorder=15)
 
@@ -2219,35 +2281,31 @@ def sheet7():
     ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
-    # Bracket bolt holes (2× M12, through wall rib)
-    brkt_bolt_z1 = 30
-    brkt_bolt_z2 = 120
-    for bz in [brkt_bolt_z1, brkt_bolt_z2]:
-        ax.add_patch(Circle((sx(0), sy(bz)), sx(6),
-                     fc=BG, ec=C_OUT, lw=1.0, zorder=8))
-        ax.plot([sx(-3), sx(3)], [sy(bz), sy(bz)], color=C_OUT, lw=0.5, zorder=9)
-        ax.plot([sx(0), sx(0)], [sy(bz - 3), sy(bz + 3)], color=C_OUT, lw=0.5, zorder=9)
-
-    # ── Stop lip (wall side — welded to bracket arm inner edge) ──────────────
+    # ── Stop lip (door side — visible, in front of beam in this view) ────────
     C_SUPPORT = "#D08020"
-    C_BOLT = "#404050"
-    # Lip is a small steel tab welded to the bracket arm top, on the wall side
-    lip_yd = BRKT_T / 2   # inner edge of bracket = wall side of beam
-    ax.add_patch(Rectangle((sx(lip_yd - LIP_T), sy(BRKT_ARM_Z)),
-                            sx(LIP_T), sy(LIP_H),
+    # The lip is welded to the bracket arm's door-side edge (low X).
+    # In this view (looking along X), the lip is in front of the beam = visible.
+    # Drawn as a solid rectangle projecting above the arm top.
+    lip_yd_start = BRKT_T / 2   # at the bracket edge
+    ax.add_patch(Rectangle((sx(lip_yd_start), sy(BRKT_ARM_Z)),
+                            sx(BEAM_SHOW - lip_yd_start), sy(LIP_H),
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.5))
+    # Only show a short solid section near the bracket to indicate it's a lip
+    ax.add_patch(Rectangle((sx(lip_yd_start), sy(BRKT_ARM_Z)),
+                            sx(30), sy(LIP_H),
                             fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8))
     # Weld symbol at lip base
-    ax.plot([sx(lip_yd - LIP_T - 2), sx(lip_yd - LIP_T), sx(lip_yd - LIP_T + 2)],
+    ax.plot([sx(lip_yd_start + 8), sx(lip_yd_start + 12), sx(lip_yd_start + 16)],
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z + 4), sy(BRKT_ARM_Z)],
             color="#CC4400", lw=1.5, zorder=9)
-    leader(ax, sx(lip_yd - LIP_T / 2), sy(BRKT_ARM_Z + LIP_H),
-           sx(lip_yd - LIP_T / 2 - 40), sy(BRKT_ARM_Z + LIP_H + 25),
-           f"STOP LIP\n{LIP_T}\u00d7{LIP_H}mm STEEL\n(WELDED TO ARM)",
+    leader(ax, sx(lip_yd_start + 15), sy(BRKT_ARM_Z + LIP_H),
+           sx(lip_yd_start + 15), sy(BRKT_ARM_Z + LIP_H + 25),
+           f"STOP LIP\n{LIP_T}\u00d7{LIP_H}mm STEEL\n(WELDED TO ARM\nDOOR-SIDE EDGE)",
            color=C_BRKT, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Bearer beam (50×50×3mm Al RHS, running along Yd) ─────────────────────
-    beam_yd_start = lip_yd   # beam butts against stop lip
+    beam_yd_start = BRKT_T / 2
     ax.add_patch(Rectangle((sx(beam_yd_start), sy(beam_bot)),
                             sx(BEAM_SHOW - beam_yd_start), sy(BEAM_SZ),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=7))
@@ -2256,67 +2314,45 @@ def sheet7():
                             sx(BEAM_SHOW - beam_yd_start - 2 * BEAM_T),
                             sy(BEAM_SZ - 2 * BEAM_T),
                             fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=8))
-    # Sawtooth break line at far end (beam continues)
+    # Sawtooth break line at far end
     bx_beam = sx(BEAM_SHOW)
     z_lo_beam, z_hi_beam = sy(beam_bot + 2), sy(beam_top - 2)
     zz_beam = np.linspace(z_lo_beam, z_hi_beam, 7)
     ax.plot([bx_beam - 3, bx_beam + 3, bx_beam - 3, bx_beam + 3,
              bx_beam - 3, bx_beam + 3, bx_beam - 3],
             zz_beam, color=C_OUT, lw=1.0, zorder=9)
-    # Beam label
     ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot - 3),
             f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
             f"(SPANS {WALKWAY_LEFT_SPAN}mm TO FAR BRACKET)",
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Contact highlight: beam butts against stop lip
-    ax.plot([sx(lip_yd), sx(lip_yd)],
-            [sy(beam_bot + 2), sy(beam_top - 2)],
-            color="#CC4400", lw=3.0, zorder=10)
-
-    # ── Retaining plate + thumb screw (door side of beam) ────────────────────
-    # The retaining plate sits on the bracket arm outer edge and clamps
-    # over the beam top to prevent it sliding outward (toward cargo door).
-    # Shown at the far end of the beam (door side bracket).
-    ret_yd = BEAM_SHOW - RET_W - 5   # plate position along beam
-    # Retaining plate — L-shaped: vertical tab + horizontal clamp
-    # Vertical tab hangs on outer edge of bracket arm
-    tab_h = 15
-    ax.add_patch(Rectangle((sx(ret_yd + RET_W - RET_T), sy(arm_bot)),
-                            sx(RET_T), sy(tab_h),
-                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-    # Horizontal clamp over beam top
-    ax.add_patch(Rectangle((sx(ret_yd), sy(beam_top)),
-                            sx(RET_W), sy(RET_T),
-                            fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-
-    # Thumb screw (M8, through clamp plate into beam top)
-    thumb_yd = ret_yd + RET_W / 2
-    # Screw shank
-    ax.add_patch(Rectangle((sx(thumb_yd - 2), sy(beam_top - 5)),
+    # ── Retaining plate (tray side — ghost, behind beam in this view) ────────
+    # Shown as dashed ghost because it's on the far side of the beam (high X)
+    ret_yd_mid = beam_yd_start + 60   # position along beam near bracket
+    # Horizontal clamp (dashed)
+    ax.add_patch(Rectangle((sx(ret_yd_mid - RET_L / 2), sy(beam_top)),
+                            sx(RET_L), sy(RET_T),
+                            fc=C_BOLT, ec=C_OUT, lw=0.8, ls="--",
+                            zorder=6, alpha=0.3))
+    # Thumb screw (dashed ghost)
+    ax.add_patch(Rectangle((sx(ret_yd_mid - 2), sy(beam_top - 5)),
                             sx(4), sy(RET_T + 5),
-                            fc=C_BOLT, ec=C_OUT, lw=0.5, zorder=11))
-    # Thumb screw knurled head
-    thumb_head_h = 8
-    thumb_head_w = 14
-    ax.add_patch(Rectangle((sx(thumb_yd - thumb_head_w / 2), sy(beam_top + RET_T)),
+                            fc=C_BOLT, ec=C_OUT, lw=0.5, ls="--",
+                            zorder=6, alpha=0.3))
+    thumb_head_h = 6
+    thumb_head_w = 12
+    ax.add_patch(Rectangle((sx(ret_yd_mid - thumb_head_w / 2), sy(beam_top + RET_T)),
                             sx(thumb_head_w), sy(thumb_head_h),
-                            fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=11))
-    # Knurling lines on thumb screw head
-    for ky in range(2, thumb_head_h - 1, 2):
-        ax.plot([sx(thumb_yd - thumb_head_w / 2 + 1),
-                 sx(thumb_yd + thumb_head_w / 2 - 1)],
-                [sy(beam_top + RET_T + ky), sy(beam_top + RET_T + ky)],
-                color="#606060", lw=0.3, zorder=12)
-
-    leader(ax, sx(ret_yd + RET_W / 2), sy(beam_top + RET_T + thumb_head_h + 2),
-           sx(ret_yd + RET_W / 2 + 50), sy(beam_top + RET_T + thumb_head_h + 25),
-           f"RETAINING PLATE\nWITH M{THUMB_D} THUMB SCREW\n(TOOL-FREE REMOVAL)",
+                            fc=C_BOLT, ec=C_OUT, lw=0.6, ls="--",
+                            zorder=6, alpha=0.3))
+    leader(ax, sx(ret_yd_mid), sy(beam_top + RET_T + thumb_head_h + 2),
+           sx(ret_yd_mid + 60), sy(beam_top + RET_T + thumb_head_h + 20),
+           f"RETAINING PLATE +\nM{THUMB_D} THUMB SCREW\n(GHOST \u2014 TRAY SIDE,\nBEHIND BEAM)\nSEE PLAN VIEW",
            color=C_BOLT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # ── Grating resting on beam + arm (ghost) ────────────────────────────────
+    # ── Grating (ghost) ─────────────────────────────────────────────────────
     C_LEFT_WK = "#A8C8A8"
     ax.add_patch(Rectangle((sx(-15), sy(grate_bot)),
                             sx(BEAM_SHOW + 30), sy(WALKWAY_GRATE_T),
@@ -2327,31 +2363,101 @@ def sheet7():
             ha="center", va="bottom", fontsize=5.5, color="#206020",
             **FONT, alpha=0.5, zorder=15)
 
-    # ── Contact highlight: beam top flush with arm ───────────────────────────
+    # Contact highlight: beam top flush with arm
     ax.plot([sx(beam_yd_start), sx(BEAM_SHOW)],
             [sy(beam_top), sy(beam_top)],
             color="#CC4400", lw=2.5, zorder=9)
-    ax.text(sx(beam_yd_start + 30), sy(beam_top + 1),
-            f"BEAM TOP FLUSH WITH\nBRACKET ARM (Z={beam_top}mm)",
-            ha="left", va="bottom", fontsize=5, color="#CC4400",
-            **FONT, zorder=15)
 
-    # ── Dimension lines ──────────────────────────────────────────────────────
-    # Beam section size (vertical)
+    # ── Dimension lines (side elevation) ─────────────────────────────────────
     draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(beam_bot), sy(beam_top),
                f"{BEAM_SZ}mm", offset=sx(6), fs=6, right=True, font=FONT)
-
-    # Beam top from floor
     draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(0), sy(beam_top),
                f"{beam_top}mm", offset=sx(30), fs=5.5, right=True, font=FONT)
-
-    # Stop lip height
-    draw_dim_v(ax, sx(lip_yd - LIP_T - 10), sy(BRKT_ARM_Z), sy(BRKT_ARM_Z + LIP_H),
-               f"{LIP_H}mm", offset=sx(4), fs=5.5, right=False, font=FONT)
-
-    # Bracket vertical leg height
-    draw_dim_v(ax, sx(-CORR_DEPTH - 10), sy(0), sy(BRKT_VERT),
+    draw_dim_v(ax, sx(-CORR_DEPTH - 15), sy(0), sy(BRKT_VERT),
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5, right=False, font=FONT)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW B — Plan view (looking down) — inset at bottom right
+    # Horizontal = Yd, Vertical = X (door side at top, tray side at bottom)
+    # ══════════════════════════════════════════════════════════════════════════
+    # Position the plan view in the notes area (right side, below side elev.)
+    PV_OX = BEAM_SHOW + 50   # plan view origin X (in drawing coords)
+    PV_OY = -40              # plan view origin Y
+    PV_S  = 2.5              # plan view scale factor relative to main
+    def px(mm): return sx(PV_OX + mm * PV_S / S)
+    def py(mm): return sy(PV_OY + mm * PV_S / S)
+
+    # Plan view title
+    ax.text(px(50), py(110), "PLAN VIEW (LOOKING DOWN)",
+            ha="center", va="bottom", fontsize=6, color=C_OUT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # X axis labels
+    ax.text(px(-25), py(90), "\u2190 DOOR\nSIDE", ha="center", va="center",
+            fontsize=4.5, color=C_DIM, **FONT, zorder=15)
+    ax.text(px(-25), py(10), "TRAY\nSIDE \u2192", ha="center", va="center",
+            fontsize=4.5, color=C_DIM, **FONT, zorder=15)
+
+    # Bracket arm (plan view: rectangle in Yd × X)
+    ARM_W_X = WALKWAY_W   # arm extends 300mm in Yd
+    ARM_D_X = ARM_DEPTH   # arm depth in X = 10mm
+    arm_x_center = 50     # X center of arm in plan coords
+    ax.add_patch(Rectangle((px(0), py(arm_x_center - ARM_D_X / 2)),
+                            px(100) - px(0), py(arm_x_center + ARM_D_X / 2) - py(arm_x_center - ARM_D_X / 2),
+                            fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=5, alpha=0.4))
+    ax.text(px(50), py(arm_x_center),
+            "BRACKET ARM", ha="center", va="center", fontsize=4, color=C_BRKT,
+            **FONT, zorder=15, alpha=0.6)
+
+    # Bearer beam cross-section (plan view: 50mm wide in Yd, 50mm deep in X)
+    beam_yd_pv = 25   # beam position along Yd in plan coords
+    beam_x_top = arm_x_center - ARM_D_X / 2   # beam sits on arm, centered
+    beam_x_center = arm_x_center
+    ax.add_patch(Rectangle((px(beam_yd_pv), py(beam_x_center - BEAM_SZ / 2)),
+                            px(beam_yd_pv + BEAM_SZ) - px(beam_yd_pv),
+                            py(beam_x_center + BEAM_SZ / 2) - py(beam_x_center - BEAM_SZ / 2),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=6))
+    # Hollow
+    ax.add_patch(Rectangle((px(beam_yd_pv + BEAM_T), py(beam_x_center - BEAM_SZ / 2 + BEAM_T)),
+                            px(beam_yd_pv + BEAM_SZ - BEAM_T) - px(beam_yd_pv + BEAM_T),
+                            py(beam_x_center + BEAM_SZ / 2 - BEAM_T) - py(beam_x_center - BEAM_SZ / 2 + BEAM_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=7))
+    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(beam_x_center),
+            "BEAM", ha="center", va="center", fontsize=4.5, color=C_SUPPORT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # Stop lip (door side = high X in plan view = top)
+    lip_x_start = beam_x_center + BEAM_SZ / 2
+    ax.add_patch(Rectangle((px(beam_yd_pv), py(lip_x_start)),
+                            px(beam_yd_pv + BEAM_SZ) - px(beam_yd_pv),
+                            py(lip_x_start + LIP_T) - py(lip_x_start),
+                            fc=C_BRKT, ec=C_OUT, lw=1.0, zorder=8))
+    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(lip_x_start + LIP_T + 4),
+            f"STOP LIP\n({LIP_T}mm)", ha="center", va="bottom", fontsize=4, color=C_BRKT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # Retaining plate + thumb screw (tray side = low X in plan view = bottom)
+    ret_x_start = beam_x_center - BEAM_SZ / 2 - RET_T
+    ax.add_patch(Rectangle((px(beam_yd_pv + BEAM_SZ / 2 - RET_L / 2), py(ret_x_start)),
+                            px(beam_yd_pv + BEAM_SZ / 2 + RET_L / 2) - px(beam_yd_pv + BEAM_SZ / 2 - RET_L / 2),
+                            py(ret_x_start + RET_T + RET_DEPTH) - py(ret_x_start),
+                            fc="#404050", ec=C_OUT, lw=1.0, zorder=8, alpha=0.7))
+    # Thumb screw (circle in plan view)
+    thumb_cx = beam_yd_pv + BEAM_SZ / 2
+    thumb_cy = ret_x_start + RET_DEPTH / 2
+    ax.add_patch(Circle((px(thumb_cx), py(thumb_cy)),
+                         (px(THUMB_D / 2 + 1) - px(0)),
+                         fc="#404050", ec=C_OUT, lw=0.8, zorder=9))
+    ax.text(px(beam_yd_pv + BEAM_SZ / 2), py(ret_x_start - 5),
+            f"RETAINING\nPLATE + M{THUMB_D}\nTHUMB SCREW", ha="center", va="top",
+            fontsize=4, color="#404050",
+            fontweight="bold", **FONT, zorder=15)
+
+    # Plan view border
+    ax.add_patch(Rectangle((px(-10), py(ret_x_start - 18)),
+                            px(110) - px(-10),
+                            py(lip_x_start + LIP_T + 18) - py(ret_x_start - 18),
+                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
@@ -2361,14 +2467,14 @@ def sheet7():
         "",
         f"1. Beam sits on bracket arm \u2014",
         f"   gravity holds it down.",
-        f"2. Wall side: {LIP_T}\u00d7{LIP_H}mm stop lip",
-        f"   welded to arm prevents inward slide.",
-        f"3. Door side: retaining plate with",
-        f"   M{THUMB_D} thumb screw prevents",
-        f"   outward slide. Tool-free removal.",
-        f"4. Beam top flush with bracket arm",
+        f"2. Door side: {LIP_T}\u00d7{LIP_H}mm stop lip",
+        f"   welded to arm edge.",
+        f"3. Tray side: retaining plate with",
+        f"   M{THUMB_D} thumb screw clamps",
+        f"   beam from sliding. Tool-free.",
+        f"4. Beam top flush with arm",
         f"   top at Z={beam_top}mm.",
-        f"5. Same restraint at both ends",
+        f"5. Same at both ends",
         f"   (near + far bracket).",
         f"6. Loosen thumb screws + lift beam",
         f"   to disconnect for transport.",
@@ -2385,7 +2491,7 @@ def sheet7():
     title_block(ax, "SHEET 7 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL E \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
-                scale_note=f"SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG X (LOOKING INTO CONTAINER)",
+                scale_note=f"SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW A: ALONG X / VIEW B: PLAN",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)

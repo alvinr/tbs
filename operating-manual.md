@@ -193,9 +193,9 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 ### 2.2 Mounting the Muslin
 
 1. Retrieve the pre-cut muslin from its light-safe bag (unbleached cotton muslin, 5,900 × 2,400mm with 100mm hem allowance).
-2. Start at the **bottom edge** of the image plane frame. Clip every 150mm using the spring clips along the bottom channel.
-3. Work upward — stretch the fabric taut (approximately 5N tension — enough to remove all wrinkles) and clip the top edge.
-4. Clip the left and right edges, pulling outward from centre.
+2. Start at the **bottom edge** of the image plane frame. Flip each cam-lever clamp open, slide the muslin hem under the jaw, then flip the lever closed — the over-center cam snaps shut with tactile feedback, gripping at ~5N. Work along the bottom edge at 150mm centers (30 clamps).
+3. Work upward — stretch the fabric taut and clamp the top edge (30 clamps). The torsion spring holds each clamp closed at any tilt angle.
+4. Clamp the left and right edges (16 clamps each), pulling outward from center. Total: 92 clamps around the full perimeter.
 5. Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.
 
 ### 2.3 Applying the Sensitiser
@@ -279,7 +279,7 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 ### 4.1 Entering and Removing the Muslin
 
 1. Enter via light trap (same procedure as Phase 2.1). Safelight ON.
-2. Unclip the muslin from the image plane — work top-down, supporting the fabric weight as the upper clips release. The image is latent at this point and may be barely visible as a pale yellow ghost.
+2. Flip each cam-lever clamp open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
 3. Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).
 
 ### 4.2 Development in Water

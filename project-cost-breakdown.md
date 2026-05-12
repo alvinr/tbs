@@ -193,6 +193,9 @@ View-camera-style moveable film plane with four independently actuated corners (
 | Aluminium piano hinge | 2" wide, 72" | 2 | $28† | $56 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
+| Cam-lever spring clamps (muslin) | Over-center cam, neoprene jaw | 92 | $3-8† | $276-736 |
+| M5×16 SS bolts + Nylock nuts | Clamp mounting (2 per clamp) | 184+184 | — | $55 |
+| Neoprene strip 60A | Jaw pads, 35mm×6mm, 10m roll | 1 | $15† | $15 |
 
 ### 4.3 Optional electric actuation
 
@@ -207,11 +210,11 @@ View-camera-style moveable film plane with four independently actuated corners (
 | Category | Total |
 |----------|-------|
 | Structural & rails | $1,260 |
-| Film frame & backing | $1,102 |
-| **Film plane mechanism (manual)** | **~$2,400** |
+| Film frame & backing (incl. clamps) | $1,450-1,910 |
+| **Film plane mechanism (manual)** | **~$2,750-3,210** |
 | Electric actuation (optional add-on) | +$827 |
 
-*Source documents quote the materials total at ~$2,400 for manual actuation, excluding fabrication and fasteners.*
+*Includes $330-790 for muslin clamp system (92 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
 
 ---
 

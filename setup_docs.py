@@ -138,6 +138,7 @@ DIAG_IMAGE_FILES = [
     "walkway-sheet3.png",
     "walkway-sheet4.png",
     "walkway-sheet5.png",
+    "walkway-sheet6.png",
     "mini-tbs-sheet1.png",
 ]
 

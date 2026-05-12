@@ -1572,7 +1572,7 @@ def sheet5():
                             sy(BEAM_SZ - 2 * LEFT_WK_BEARER_T),
                             fc="#F0E0C8", ec=C_OUT, lw=0.4, alpha=0.5, zorder=6))
     leader(ax, sx(LEFT_WK_R + BEAM_SZ / 2 + 2), sy(beam_bot + BEAM_SZ / 2),
-           sx(LEFT_WK_R + BEAM_SZ / 2 + 40), sy(beam_bot - 5),
+           sx(LEFT_WK_R + BEAM_SZ / 2 + 40), sy(beam_bot + 30),
            f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{LEFT_WK_BEARER_T}mm\nAl RHS\n"
            f"SPANS {WALKWAY_LEFT_SPAN}mm\nALONG Yd\n(REMOVABLE)",
            color=C_SUPPORT, fs=5,
@@ -1680,7 +1680,7 @@ def sheet5():
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color="#CC4400", lw=3.0, zorder=10)
     leader(ax, sx(LEFT_WK_R - 10), sy(BRKT_ARM_Z),
-           sx(LEFT_WK_R - 60), sy(BRKT_ARM_Z - 18),
+           sx(LEFT_WK_R - 120), sy(BRKT_ARM_Z - 18),
            f"GRATING RESTS ON\nBRACKET ARM TOP\n(Z={BRKT_ARM_Z}mm)\nNO FASTENERS \u2014\nLIFT TO REMOVE",
            color="#CC4400", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1748,7 +1748,7 @@ def sheet5():
     # ── Height dimensions (right side) ───────────────────────────────────────
     dim_x = near_wk_end + 40
     # Grate top
-    draw_dim_v(ax, sx(dim_x), sy(0), sy(grate_top),
+    draw_dim_v(ax, sx(dim_x-30), sy(0), sy(grate_top),
                f"{int(grate_top)}mm\nDECK", offset=sx(6), fs=6, right=True, font=FONT)
     # Arm height
     draw_dim_v(ax, sx(dim_x), sy(0), sy(BRKT_ARM_Z),
@@ -1758,7 +1758,7 @@ def sheet5():
                f"{PROC_TRAY_RIM}mm", offset=sx(6), fs=6, right=True,
                color=C_TRAY, font=FONT)
     # Panel bottom
-    draw_dim_v(ax, sx(LEFT_WK_L - 20), sy(0), sy(PANEL_FLOOR_GAP),
+    draw_dim_v(ax, sx(LEFT_WK_L - 120), sy(0), sy(PANEL_FLOOR_GAP),
                f"{PANEL_FLOOR_GAP}mm\nPANEL\nBOTTOM", offset=sx(6), fs=5.5, right=False,
                color="#CC4422", font=FONT)
 

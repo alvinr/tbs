@@ -316,6 +316,10 @@ def build_components():
                   calc_note="Light seal foam + reinforcement plates (estimate)"),
 
         # ── Equipment ────────────────────────────────────────────────────
+        Component("Fan B (exhaust)", "equipment", 2.0,
+                  0, 50, FAN_B_YD - 75, FAN_B_YD + 75,
+                  1725, 1875, color=C_FAN,
+                  calc_note="150mm axial fan on panel"),
         Component("Electrical panel", "equipment", 15.0,
                   EP_X, EP_X + EP_W, 0, 150,
                   900, 1500, color=C_ELEC,
@@ -324,6 +328,11 @@ def build_components():
                   BA_X, BA_X + BA_W, 0, 150,
                   100, 600, color=C_BATT,
                   calc_note="2× 100Ah LiFePO4 @ 13 kg each"),
+        Component("Film plane carriage", "equipment",
+                  _film_plane_carriage_weight(),
+                  FP_X_L, FP_X_R, FP_Y - 50, FP_Y + 50,
+                  100, C_HGT - 100, color=C_ALUM,
+                  calc_note="Al angle frame + 92 clamps + 4 carriages"),
         Component("Solar controller", "equipment", 2.0,
                   1700, 1800, 0, 100,
                   1200, 1400, color=C_BATT,
@@ -336,11 +345,6 @@ def build_components():
                   EVAP_X, EVAP_X + EVAP_W, EVAP_Y, EVAP_Y + EVAP_D,
                   0, 800, color=C_EVAP,
                   calc_note="Portable evap cooler unit"),
-        Component("Film plane carriage", "equipment",
-                  _film_plane_carriage_weight(),
-                  FP_X_L, FP_X_R, FP_Y - 50, FP_Y + 50,
-                  100, C_HGT - 100, color=C_ALUM,
-                  calc_note="Al angle frame + 92 clamps + 4 carriages"),
         Component("Tilt-swing board", "equipment", 30.0,
                   PH_X - 200, PH_X + 200, 0, 400,
                   PH_H - 200, PH_H + 200, color="#CC6600",
@@ -349,10 +353,6 @@ def build_components():
                   C_LEN - 50, C_LEN, FAN_A_YD - 75, FAN_A_YD + 75,
                   525, 675, color=C_FAN,
                   calc_note="150mm axial fan"),
-        Component("Fan B (exhaust)", "equipment", 2.0,
-                  0, 50, FAN_B_YD - 75, FAN_B_YD + 75,
-                  1725, 1875, color=C_FAN,
-                  calc_note="150mm axial fan on panel"),
         Component("Baffle ducts", "equipment", 6.0,
                   0, C_LEN, 0, C_WID,
                   400, 800, color=C_FAN,
@@ -635,7 +635,7 @@ def sheet1(components):
 
     # Axes setup
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-1400, C_WID + 600)
+    ax.set_ylim(-500, C_WID + 600)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
@@ -724,7 +724,7 @@ def sheet2(components):
     _draw_state_diagram(ax, components, "ready", "CAMERA READY")
 
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-400, C_WID + 200)
+    ax.set_ylim(-500, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
@@ -763,7 +763,7 @@ def sheet3(components):
             bbox=dict(fc="#FFF8F0", ec="orange", lw=1, pad=6))
 
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-400, C_WID + 200)
+    ax.set_ylim(-500, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)

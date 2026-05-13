@@ -699,10 +699,23 @@ def _draw_state_diagram(ax, components, state, state_label):
 
     # Draw non-liquid components faded; panel/drum slightly more visible
     highlight_names = {"Hinged panel", "Light trap drum"}
-    for c in non_container:
-        if c.category != "liquid":
-            a = 0.4 if c.name in highlight_names else 0.25
-            _draw_component(ax, c, alpha=a, show_label=False)
+    # Draw panel first, then drum on top (higher zorder), then everything else
+    others = [c for c in non_container
+              if c.category != "liquid" and c.name not in highlight_names]
+    panel = [c for c in non_container
+             if c.category != "liquid" and c.name == "Hinged panel"]
+    drum = [c for c in non_container
+            if c.category != "liquid" and c.name == "Light trap drum"]
+    for c in panel:
+        _draw_component(ax, c, alpha=0.5, show_label=False)
+    for c in drum:
+        # Draw drum with distinct color and higher zorder above the panel
+        w = c.x_max - c.x_min
+        h = c.yd_max - c.yd_min
+        ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
+                     fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.8, zorder=7))
+    for c in others:
+        _draw_component(ax, c, alpha=0.25, show_label=False)
 
     # Draw liquid components highlighted
     for c in non_container:

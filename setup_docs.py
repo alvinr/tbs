@@ -64,6 +64,7 @@ MD_FILES = [
     ("distortion-renders.md",             (".",           "Distortion Renders")),
     ("equipment-layout-report.md",        (".",           "Equipment Layout")),
     ("component-dependency-map.md",       (".",           "Component Dependency Map")),
+    ("weight-distribution-report.md",    (".",           "Weight Distribution")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
@@ -141,6 +142,10 @@ DIAG_IMAGE_FILES = [
     "walkway-sheet6.png",
     "walkway-sheet7.png",
     "mini-tbs-sheet1.png",
+    "weight-analysis-sheet1.png",
+    "weight-analysis-sheet2.png",
+    "weight-analysis-sheet3.png",
+    "weight-analysis-sheet4.png",
 ]
 
 MKDOCS_YML = """\
@@ -291,6 +296,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Distortion Renders](distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |
 | [Component Dependency Map](component-dependency-map.md) | System component registry, diagram index, and change propagation guide |
+| [Weight Distribution](weight-distribution-report.md) | Container weight analysis — dry, camera ready, materials exhausted — CG positions and ISO compliance |
 
 """
 

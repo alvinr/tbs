@@ -67,6 +67,7 @@ MD_FILES=(
     "distortion-renders.md"
     "equipment-layout-report.md"
     "component-dependency-map.md"
+    "weight-distribution-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )
@@ -188,6 +189,10 @@ DIAG_FILES=(
     "walkway-sheet7.png"
     "water-system-sheet3.png"
     "mini-tbs-sheet1.png"
+    "weight-analysis-sheet1.png"
+    "weight-analysis-sheet2.png"
+    "weight-analysis-sheet3.png"
+    "weight-analysis-sheet4.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

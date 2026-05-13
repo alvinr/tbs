@@ -66,6 +66,7 @@ nav:
     - "Light Trap Selection": light-trap-selection.md
     - "Equipment Layout": equipment-layout-report.md
     - "Component Dependency Map": component-dependency-map.md
+    - "Weight Distribution": weight-distribution-report.md
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md

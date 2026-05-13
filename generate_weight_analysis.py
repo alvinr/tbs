@@ -45,7 +45,7 @@ from tbs_constants import (
     EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PANEL_CORNER_T, PANEL_CENTER_T,
-    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
     DRUM_D, DRUM_H_LT,
     FAN_DIAM, FAN_A_YD, FAN_B_YD,
     C_OUT, C_DIM, C_STEEL, C_ALUM,
@@ -280,12 +280,27 @@ def build_components():
                   calc_note="Hapag-Lloyd 20ft ISO tare weight"),
 
         # ── Structure ────────────────────────────────────────────────────
+        # Panel + drum: transport position (slid 300mm inward) for dry/exhausted
+        Component("Hinged panel", "structure", panel_kg,
+                  PANEL_SLIDE, PANEL_SLIDE + 80, 0, C_WID, 0, C_HGT,
+                  color=C_HINGE_PANEL,
+                  states=("dry", "exhausted"),
+                  calc_note="Stepped sandwich: ply+steel corners, RHS center"),
+        Component("Light trap drum", "structure", drum_kg,
+                  PANEL_SLIDE, PANEL_SLIDE + 40,
+                  PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+                  0, DRUM_H_LT, color=C_LT_DRUM,
+                  states=("dry", "exhausted"),
+                  calc_note="1.5mm Al shell + 3 baffles + bearings"),
+        # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
+                  states=("ready",),
                   calc_note="Stepped sandwich: ply+steel corners, RHS center"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,
+                  states=("ready",),
                   calc_note="1.5mm Al shell + 3 baffles + bearings"),
         Component("Processing tray", "structure", 116.0,
                   PROC_TRAY_X_L, PROC_TRAY_X_R,
@@ -569,7 +584,7 @@ def _draw_quadrant_labels(ax, quads, total):
 # ═══════════════════════════════════════════════════════════════════════════
 
 def sheet1(components):
-    """Sheet 1: Component Weight Map — plan view with all dry components."""
+    """Sheet 1: Weight Distribution — Dry, configured for transport."""
     dry = [c for c in components
            if c.category != "liquid" and c.name != "Container shell"]
 
@@ -665,14 +680,14 @@ def sheet1(components):
 
     title_block(ax, "SHEET 1 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
-                subtitle="COMPONENT WEIGHT MAP — PLAN VIEW",
+                subtitle="WEIGHT DISTRIBUTION — DRY (CONFIGURED FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet1.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  Sheet 1: Component Weight Map")
+    print("  Sheet 1: Dry — Configured for Transport")
 
 
 def _draw_state_diagram(ax, components, state, state_label):
@@ -742,7 +757,7 @@ def sheet2(components):
 
     title_block(ax, "SHEET 2 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
-                subtitle="WEIGHT DISTRIBUTION — CAMERA READY (FULL BLUE IBCs)",
+                subtitle="WEIGHT DISTRIBUTION — CAMERA READY (PANEL DEPLOYED)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
@@ -781,7 +796,7 @@ def sheet3(components):
 
     title_block(ax, "SHEET 3 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
-                subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED",
+                subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED (FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
@@ -807,9 +822,9 @@ def sheet4(components):
     ax_tb = fig.add_subplot(gs[2, :])
 
     states = [
-        ("dry", "DRY\n(No Liquids)", "#808080"),
+        ("dry", "DRY\n(Transport)", "#808080"),
         ("ready", "CAMERA READY\n(Full Blue IBCs)", C_BLUE_IBC),
-        ("exhausted", "MATERIALS\nEXHAUSTED", C_BROWN_IBC),
+        ("exhausted", "MATERIALS\nEXHAUSTED (Transport)", C_BROWN_IBC),
     ]
 
     cg_points = []
@@ -953,8 +968,8 @@ def main():
     print("\n" + "=" * 70)
     print("STATE SUMMARIES")
     print("=" * 70)
-    for state, label in [("dry", "DRY"), ("ready", "CAMERA READY"),
-                         ("exhausted", "MATERIALS EXHAUSTED")]:
+    for state, label in [("dry", "DRY (Transport)"), ("ready", "CAMERA READY"),
+                         ("exhausted", "MATERIALS EXHAUSTED (Transport)")]:
         active = filter_state(components, state)
         total, x_cg, yd_cg, z_cg = compute_cg(active)
         quads = compute_quadrants(active)

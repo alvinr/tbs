@@ -592,13 +592,29 @@ def sheet1(components):
     _draw_container_outline(ax)
 
     # Draw each component (no inline labels — all via leaders)
-    # Draw drum as circle separately
+    # Draw drum as circle separately, clipped to container interior
+    from matplotlib.patches import Arc
     for c in dry:
         if c.name == "Light trap drum":
             drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
             drum_cy = C_WID / 2
-            ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
-                         fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+            # Clip: only draw the arc that falls inside X>=0
+            import math
+            overshoot = max(0, DRUM_R - drum_cx)  # how far past X=0
+            if overshoot > 0:
+                clip_angle = math.degrees(math.acos((drum_cx) / DRUM_R))
+                ax.add_patch(Arc((drum_cx, drum_cy), DRUM_D, DRUM_D,
+                             angle=0, theta1=clip_angle, theta2=360 - clip_angle,
+                             ec=C_OUT, lw=1.2, zorder=7))
+                # Fill with a polygon approximation
+                angles = np.linspace(np.radians(clip_angle),
+                                     np.radians(360 - clip_angle), 100)
+                xs = drum_cx + DRUM_R * np.cos(angles)
+                ys = drum_cy + DRUM_R * np.sin(angles)
+                ax.fill(xs, ys, fc="#A08060", alpha=0.7, ec="none", zorder=6)
+            else:
+                ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
+                             fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
         else:
             _draw_component(ax, c, alpha=0.5, show_label=False)
 
@@ -723,8 +739,23 @@ def _draw_state_diagram(ax, components, state, state_label):
         else:
             cx = PANEL_CENTER_T / 2  # deployed
         cy = C_WID / 2
-        ax.add_patch(Circle((cx, cy), DRUM_R,
-                     fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+        # Clip to container interior (X>=0)
+        import math
+        overshoot = max(0, DRUM_R - cx)
+        if overshoot > 0:
+            clip_angle = math.degrees(math.acos(cx / DRUM_R))
+            from matplotlib.patches import Arc
+            ax.add_patch(Arc((cx, cy), DRUM_D, DRUM_D,
+                         angle=0, theta1=clip_angle, theta2=360 - clip_angle,
+                         ec=C_OUT, lw=1.2, zorder=7))
+            angles = np.linspace(np.radians(clip_angle),
+                                 np.radians(360 - clip_angle), 100)
+            xs = cx + DRUM_R * np.cos(angles)
+            ys = cy + DRUM_R * np.sin(angles)
+            ax.fill(xs, ys, fc="#A08060", alpha=0.7, ec="none", zorder=6)
+        else:
+            ax.add_patch(Circle((cx, cy), DRUM_R,
+                         fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
     for c in others:
         _draw_component(ax, c, alpha=0.25, show_label=False)
 

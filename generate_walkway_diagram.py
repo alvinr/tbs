@@ -2261,33 +2261,16 @@ def sheet7():
                                 sx(WASHER_T), sy(BOLT_D + 2),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
 
-    # ── Bracket arm (ghost — extends perpendicular to view along X) ──────────
-    arm_show = 120   # show stub extending 120mm along Yd
-    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
-                            sx(arm_show), sy(ARM_DEPTH),
-                            fc=C_BRKT, ec=C_OUT, lw=1.0, alpha=0.4,
-                            ls="--", zorder=5))
-    bx_arm = sx(arm_show)
-    z_lo_arm, z_hi_arm = sy(arm_bot - 1), sy(arm_bot + ARM_DEPTH + 1)
-    zz_arm = np.linspace(z_lo_arm, z_hi_arm, 7)
-    ax.plot([bx_arm - 3, bx_arm + 3, bx_arm - 3, bx_arm + 3,
-             bx_arm - 3, bx_arm + 3, bx_arm - 3],
-            zz_arm, color=C_OUT, lw=1.0, zorder=7)
-    leader(ax, sx(arm_show / 2), sy(arm_bot + ARM_DEPTH / 2),
-           sx(arm_show + 50), sy(arm_bot + ARM_DEPTH + 30),
-           f"BRACKET ARM (GHOST)\nEXTENDS {WALKWAY_W}mm\nALONG Yd INTO PAGE",
-           color=C_BRKT, fs=5.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
-
     # ── Gusset triangle ──────────────────────────────────────────────────────
+    # Gusset connects bracket vertical leg to underside of flat plate
     gusset_verts = [
         (sx(0), sy(0)),
-        (sx(0), sy(arm_bot)),
-        (sx(GUSSET_REACH), sy(arm_bot)),
+        (sx(0), sy(plate_bot)),
+        (sx(GUSSET_REACH), sy(plate_bot)),
     ]
     ax.add_patch(Polygon(gusset_verts, closed=True,
                          fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
+    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(plate_bot)],
             color=C_OUT, lw=1.5, zorder=6)
 
     # ── Flat plate (ghost — extends in X perpendicular to view) ──────────────

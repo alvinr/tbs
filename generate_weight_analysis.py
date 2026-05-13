@@ -26,6 +26,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, Rectangle
 import numpy as np
 
+from tbs_drawing import leader
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     FP_X_L, FP_X_R, FP_W, FP_Y, FP_H,
@@ -587,34 +588,28 @@ def sheet1(components):
     far_comps.sort(key=lambda c: c.x_cg)
 
     # Near-side labels below the container
-    base_y_below = -250
+    base_y_below = -125
     n_near = max(len(near_comps), 1)
     spacing_near = min(C_LEN / n_near, 800)
     start_near = (C_LEN - spacing_near * (n_near - 1)) / 2
     for i, c in enumerate(near_comps):
-        label = f"{c.name}: {c.weight_kg:.0f} kg"
+        lbl = f"{c.name}: {c.weight_kg:.0f} kg"
         lx = start_near + i * spacing_near
-        ly = base_y_below - (i % 3) * 200
-        ax.annotate(label, xy=(c.x_cg, c.yd_cg), xytext=(lx, ly),
-                    fontsize=5, color=C_DIM,
-                    arrowprops=dict(arrowstyle="-", color="#AAAAAA",
-                                   lw=0.5, ls=":"),
-                    ha="center", va="top", zorder=15, **_FONT)
+        ly = base_y_below - (i % 3) * 125
+        leader(ax, c.x_cg, c.yd_cg, lx, ly, lbl,
+               fs=5, color=C_DIM, ha="center", va="top", lw=0.5)
 
     # Far-side labels above the container
-    base_y_above = C_WID + 250
+    base_y_above = C_WID + 125
     n_far = max(len(far_comps), 1)
     spacing_far = min(C_LEN / n_far, 800)
     start_far = (C_LEN - spacing_far * (n_far - 1)) / 2
     for i, c in enumerate(far_comps):
-        label = f"{c.name}: {c.weight_kg:.0f} kg"
+        lbl = f"{c.name}: {c.weight_kg:.0f} kg"
         lx = start_far + i * spacing_far
-        ly = base_y_above + (i % 3) * 200
-        ax.annotate(label, xy=(c.x_cg, c.yd_cg), xytext=(lx, ly),
-                    fontsize=5, color=C_DIM,
-                    arrowprops=dict(arrowstyle="-", color="#AAAAAA",
-                                   lw=0.5, ls=":"),
-                    ha="center", va="bottom", zorder=15, **_FONT)
+        ly = base_y_above + (i % 3) * 125
+        leader(ax, c.x_cg, c.yd_cg, lx, ly, lbl,
+               fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
 
     # Weight distribution — CG, quadrants, splits (same as sheets 2/3)
     dry_active = filter_state(components, "dry")

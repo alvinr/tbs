@@ -80,7 +80,9 @@ nav:
     - "Lens Options": lens-options.md
     - "Photosensitive Materials": photosensitive-plane-options.md
     - "Distortion Renders": distortion-renders.md
-  - "Transportation": container-transport-options.md
+  - "Transportation":
+    - "Options": container-transport-options.md
+    - "Weight Distribution": weight-distribution-report.md
   - Appendix:
     - License: licensing.md
     - Dependencies: component-dependency-map.md

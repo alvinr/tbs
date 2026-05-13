@@ -419,13 +419,8 @@ def build_components():
                   0, IBC_H_600, color=C_WASTE_IBC,
                   states=("exhausted",),
                   calc_note="600L waste water (bottom tier)"),
-        Component("Tray water (exhausted)", "liquid",
-                  _processing_tray_water_kg(),
-                  PROC_TRAY_X_L, PROC_TRAY_X_R,
-                  PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
-                  0, 6, color="#80C0FF",
-                  states=("exhausted",),
-                  calc_note="6mm flood depth (final processing)"),
+        # Processing tray is empty in exhausted state — all water has been
+        # processed and drained into Brown/Waste IBCs.
     ]
     return components
 
@@ -727,10 +722,11 @@ def sheet3(components):
     # Show CG shift from Camera Ready state
     ready_comps = filter_state(components, "ready")
     _, x_rdy, yd_rdy, z_rdy = compute_cg(ready_comps)
-    # X-Yd CG is identical (IBCs stack vertically); highlight Z shift
+    # Highlight Z shift and tray drainage
     dz = z_ex - z_rdy
-    note = (f"X-Yd CG unchanged\n"
-            f"Vertical CG shift: ΔZ = {dz:+.0f} mm\n"
+    dx = x_ex - x_rdy
+    note = (f"Tray drained (−59 kg)\n"
+            f"CG shift: ΔX = {dx:+.0f}, ΔZ = {dz:+.0f} mm\n"
             f"(water moves top → bottom tier)")
     ax.text(C_LEN + 100, C_WID * 0.3, note,
             fontsize=7, color="orange", va="center", ha="left",

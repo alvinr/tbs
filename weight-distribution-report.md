@@ -104,16 +104,16 @@ the single largest source of uncertainty in the structural weight.
 ### 4.1 Camera Ready (Full Blue IBCs)
 
 All wash water loaded in the two top-tier Blue IBCs. Bottom-tier Brown and
-Waste IBCs are empty. Processing tray flooded to 6mm depth.
+Waste IBCs are empty. Processing tray is empty (water is pumped to the tray
+during processing, not pre-loaded).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
 | Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=100–1,116 | Top (Z=1,010–2,020) |
 | Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,141–2,157 | Top (Z=1,010–2,020) |
-| Processing tray | 59 | 59 | X=170–4,629, Yd=80–2,280 | Floor (Z=0–6) |
-| **Total liquid** | **1,259** | **1,259** | | |
+| **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,641 kg** (3,382 dry + 1,259 liquid)
+**Total loaded weight: 4,582 kg** (3,382 dry + 1,200 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -136,7 +136,7 @@ Brown/Waste IBCs.
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
 | Dry | 3,382 | 2,892 | 1,159 | 1,033 | 50.7/49.3% | 51.0/49.0% |
-| Camera Ready | 4,641 | 3,504 | 1,151 | 1,145 | 37.7/62.3% | 51.3/48.7% |
+| Camera Ready | 4,582 | 3,518 | 1,151 | 1,159 | 37.4/62.6% | 51.3/48.7% |
 | Materials Exhausted | 4,582 | 3,518 | 1,151 | 895 | 37.4/62.6% | 51.3/48.7% |
 
 ---
@@ -153,7 +153,7 @@ category. The right end zone (IBC stack area) is the densest zone.
 ### Sheet 2 — Camera Ready Distribution
 
 Weight distribution with full Blue IBCs (top tier) and flooded processing
-tray. CG marker shows the loaded center of gravity at X=3,504, Yd=1,151.
+tray. CG marker shows the loaded center of gravity at X=3,518, Yd=1,151.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet2.png)
@@ -161,15 +161,15 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 ### Sheet 3 — Materials Exhausted Distribution
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
-IBCs. Processing tray is drained (59 kg less total liquid). The vertical
-CG drops by 250mm (Z: 1,145 → 895 mm) as water moves to bottom tier.
+IBCs. Total weight is unchanged (closed water system). The vertical
+CG drops by 264mm (Z: 1,159 → 895 mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet3.png)
 
 ### Sheet 4 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~612mm.
+The dry state is nearly balanced; liquid states shift CG rearward by ~626mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet4.png)
 
@@ -184,7 +184,7 @@ All three states are well within the ISO 24,000 kg maximum gross weight:
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
 | Dry | 3,382 | 20,618 | 14.1% |
-| Camera Ready | 4,641 | 19,359 | 19.3% |
+| Camera Ready | 4,582 | 19,418 | 19.1% |
 | Materials Exhausted | 4,582 | 19,418 | 19.1% |
 
 The container operates at less than 20% of its rated capacity in all states.
@@ -204,12 +204,12 @@ side.
 The dry state is nearly balanced front/rear (50.7/49.3%), with CG at
 X=2,892mm (just past the container midpoint of 2,947mm).
 
-When liquids are added, the CG shifts rearward to X=3,504mm (612mm past
-the dry CG). This creates a 37.7/62.3% front/rear split. The rear bias
+When liquids are added, the CG shifts rearward to X=3,518mm (626mm past
+the dry CG). This creates a 37.4/62.6% front/rear split. The rear bias
 is caused by 1,200 kg of water concentrated in the IBC stack zone
 (X=4,674–5,893mm).
 
-**Transport implication:** When loaded, the container's CG is at 59.4%
+**Transport implication:** When loaded, the container's CG is at 59.7%
 of the length from the cargo door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
@@ -218,16 +218,17 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,145 mm (1,200 kg of water in top-tier IBCs + 59 kg in tray)
-- **Materials Exhausted:** Z_cg = 895 mm (1,200 kg of water in bottom-tier IBCs, tray drained)
-- **ΔZ = −250 mm** (CG drops 250mm during a session)
+- **Camera Ready:** Z_cg = 1,159 mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 895 mm (1,200 kg of water in bottom-tier IBCs)
+- **ΔZ = −264 mm** (CG drops 264mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
-As clean water (top tier) is consumed and waste water accumulates (bottom
-tier), the system's center of gravity drops, improving stability over the
-course of a session. Total mass decreases slightly (59 kg tray water
-drained) but the dominant effect is the vertical redistribution of 1,200 kg
-from top tier to bottom tier.
+The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
+and redistributed during processing. No water is added or lost; it simply
+migrates from top-tier Blue IBCs through the processing tray into bottom-tier
+Brown/Waste IBCs. Total mass remains constant at 4,582 kg throughout a
+session, but the vertical redistribution of 1,200 kg from top tier to
+bottom tier drops the center of gravity by 264mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 

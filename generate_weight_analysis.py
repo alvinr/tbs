@@ -633,7 +633,8 @@ def sheet1(components):
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="COMPONENT WEIGHT MAP — PLAN VIEW",
                 scale_note="NOT TO SCALE",
-                doc_id="TBS-001 · Weight Distribution")
+                doc_id="TBS-001 · Weight Distribution",
+                height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet1.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -709,7 +710,8 @@ def sheet2(components):
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — CAMERA READY (FULL BLUE IBCs)",
                 scale_note="NOT TO SCALE",
-                doc_id="TBS-001 · Weight Distribution")
+                doc_id="TBS-001 · Weight Distribution",
+                height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet2.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -746,7 +748,8 @@ def sheet3(components):
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED",
                 scale_note="NOT TO SCALE",
-                doc_id="TBS-001 · Weight Distribution")
+                doc_id="TBS-001 · Weight Distribution",
+                height=0.065)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet3.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -755,7 +758,18 @@ def sheet3(components):
 
 def sheet4(components):
     """Sheet 4: Summary comparison — three states side by side."""
-    fig, axes = plt.subplots(1, 3, figsize=(20, 7))
+    from matplotlib.gridspec import GridSpec
+
+    fig = plt.figure(figsize=(20, 10))
+    gs = GridSpec(3, 3, figure=fig, height_ratios=[6, 2, 1],
+                 hspace=0.35, wspace=0.25)
+
+    # Top row: 3 plan views
+    plan_axes = [fig.add_subplot(gs[0, i]) for i in range(3)]
+    # Middle row: summary table spanning all columns
+    ax_table = fig.add_subplot(gs[1, :])
+    # Bottom row: title block spanning all columns
+    ax_tb = fig.add_subplot(gs[2, :])
 
     states = [
         ("dry", "DRY\n(No Liquids)", "#808080"),
@@ -765,7 +779,7 @@ def sheet4(components):
 
     cg_points = []
 
-    for ax, (state, label, accent) in zip(axes, states):
+    for ax, (state, label, accent) in zip(plan_axes, states):
         active = filter_state(components, state)
         total, x_cg, yd_cg, z_cg = compute_cg(active)
         quads = compute_quadrants(active)
@@ -824,28 +838,40 @@ def sheet4(components):
                 fontsize=6.5, color=C_OUT, **_FONT,
                 bbox=dict(fc="white", ec="#CCCCCC", alpha=0.9, pad=3))
 
-    fig.suptitle("TBS-001 — WEIGHT DISTRIBUTION SUMMARY",
-                 fontsize=12, fontweight="bold", color=C_OUT,
-                 y=0.98, **_FONT)
+    # Summary table in middle axes
+    ax_table.set_xlim(0, 1)
+    ax_table.set_ylim(0, 1)
+    ax_table.axis("off")
 
-    # Summary table at bottom
     table_lines = [
         "─" * 90,
-        f"{'State':<25} {'Total (kg)':>12} {'X_cg (mm)':>12} {'Yd_cg (mm)':>12} {'Z_cg (mm)':>12}  {'ISO margin':>14}",
+        f"{'State':<25} {'Total (kg)':>12} {'X_cg (mm)':>12} "
+        f"{'Yd_cg (mm)':>12} {'Z_cg (mm)':>12}  {'ISO margin':>14}",
         "─" * 90,
     ]
     for (state, label, _), (x_cg, yd_cg, z_cg, total) in zip(states, cg_points):
         clean_label = label.replace("\n", " ")
         margin = 24000 - total
         table_lines.append(
-            f"{clean_label:<25} {total:>12,.0f} {x_cg:>12,.0f} {yd_cg:>12,.0f} {z_cg:>12,.0f}  {margin:>14,.0f}")
+            f"{clean_label:<25} {total:>12,.0f} {x_cg:>12,.0f} "
+            f"{yd_cg:>12,.0f} {z_cg:>12,.0f}  {margin:>14,.0f}")
     table_lines.append("─" * 90)
     table_text = "\n".join(table_lines)
-    fig.text(0.5, 0.02, table_text, ha="center", va="bottom",
-             fontsize=7, color=C_OUT, **_FONT,
-             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
+    ax_table.text(0.5, 0.5, table_text, ha="center", va="center",
+                  fontsize=7.5, color=C_OUT, **_FONT,
+                  bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=8))
 
-    plt.tight_layout(rect=[0, 0.15, 1, 0.95])
+    # Title block in bottom axes
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 4 OF 4",
+                drawing_title="WEIGHT ANALYSIS",
+                subtitle="WEIGHT DISTRIBUTION SUMMARY — THREE STATES",
+                scale_note="NOT TO SCALE",
+                doc_id="TBS-001 · Weight Distribution",
+                height=0.75)
+
     fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet4.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)

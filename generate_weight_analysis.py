@@ -525,6 +525,41 @@ def _draw_container_outline(ax):
             ls="--", zorder=2)
 
 
+WALL_T = 40   # container end-wall thickness (mm)
+DOOR_T = 60   # ISO door leaf thickness (schematic, mm)
+C_DOOR = "#9CA0A8"  # door fill color
+
+
+def _draw_cargo_doors(ax, closed=True):
+    """Draw ISO cargo doors at X=0 end — closed or open against sides."""
+    if closed:
+        # Two door leaves closed across the opening
+        ax.add_patch(Rectangle((-WALL_T - DOOR_T, 0), DOOR_T, C_WID / 2,
+                     fc=C_DOOR, ec=C_OUT, lw=1.0, zorder=4))
+        ax.add_patch(Rectangle((-WALL_T - DOOR_T, C_WID / 2), DOOR_T,
+                     C_WID / 2,
+                     fc=C_DOOR, ec=C_OUT, lw=1.0, zorder=4))
+        ax.text(-WALL_T - DOOR_T / 2, C_WID / 2,
+                "DOORS\nCLOSED", ha="center", va="center",
+                fontsize=5, color=C_OUT, fontweight="bold", zorder=5,
+                **_FONT)
+    else:
+        # Doors swung open flat against the container side walls
+        # Near-side door (Yd < 0)
+        ax.add_patch(Rectangle((0, -WALL_T - DOOR_T),
+                     C_WID / 2 + WALL_T, DOOR_T,
+                     fc=C_DOOR, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+        # Far-side door (Yd > C_WID)
+        ax.add_patch(Rectangle((0, C_WID + WALL_T),
+                     C_WID / 2 + WALL_T, DOOR_T,
+                     fc=C_DOOR, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+        ax.text(-60, C_WID / 2, "DOORS\nOPEN", ha="right", va="center",
+                fontsize=5, color=C_DIM, style="italic", zorder=3, **_FONT)
+    # Wall thickness at cargo door end
+    ax.add_patch(Rectangle((-WALL_T, 0), WALL_T, C_WID,
+                 fc=C_WALL, ec=C_OUT, lw=0.8, alpha=0.5, zorder=3))
+
+
 def _draw_component(ax, c, *, alpha=0.6, show_label=True, fs=5.0,
                     label_offset=None):
     """Draw a component as a colored rectangle."""
@@ -590,6 +625,7 @@ def sheet1(components):
 
     fig, ax = plt.subplots(figsize=(18, 10))
     _draw_container_outline(ax)
+    _draw_cargo_doors(ax, closed=True)
 
     # Draw each component (no inline labels — all via leaders)
     # Draw drum as circle separately
@@ -703,6 +739,7 @@ def _draw_state_diagram(ax, components, state, state_label):
     non_container = [c for c in active if c.name != "Container shell"]
 
     _draw_container_outline(ax)
+    _draw_cargo_doors(ax, closed=(state != "ready"))
 
     # Draw non-liquid components faded; panel/drum slightly more visible
     highlight_names = {"Hinged panel", "Light trap drum"}

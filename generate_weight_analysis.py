@@ -869,18 +869,18 @@ def sheet4(components):
     ax_table.axis("off")
 
     table_lines = [
-        "─" * 90,
-        f"{'State':<25} {'Total (kg)':>12} {'X_cg (mm)':>12} "
+        "─" * 95,
+        f"{'State':<30} {'Total (kg)':>12} {'X_cg (mm)':>12} "
         f"{'Yd_cg (mm)':>12} {'Z_cg (mm)':>12}  {'ISO margin':>14}",
-        "─" * 90,
+        "─" * 95,
     ]
     for (state, label, _), (x_cg, yd_cg, z_cg, total) in zip(states, cg_points):
         clean_label = label.replace("\n", " ")
         margin = 24000 - total
         table_lines.append(
-            f"{clean_label:<25} {total:>12,.0f} {x_cg:>12,.0f} "
+            f"{clean_label:<30} {total:>12,.0f} {x_cg:>12,.0f} "
             f"{yd_cg:>12,.0f} {z_cg:>12,.0f}  {margin:>14,.0f}")
-    table_lines.append("─" * 90)
+    table_lines.append("─" * 95)
     table_text = "\n".join(table_lines)
     ax_table.text(0.5, 0.5, table_text, ha="center", va="center",
                   fontsize=7.5, color=C_OUT, **_FONT,

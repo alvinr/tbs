@@ -572,30 +572,49 @@ def sheet1(components):
     dry = [c for c in components
            if c.category != "liquid" and c.name != "Container shell"]
 
-    fig, ax = plt.subplots(figsize=(18, 8))
+    fig, ax = plt.subplots(figsize=(18, 10))
     _draw_container_outline(ax)
 
-    # Draw each component
+    # Draw each component (no inline labels — all via leaders)
     for c in dry:
-        _draw_component(ax, c, alpha=0.5, fs=4.5)
+        _draw_component(ax, c, alpha=0.5, show_label=False)
 
-    # Labels for small components via leaders
-    small = [c for c in dry
-             if (c.x_max - c.x_min) < 200 or (c.yd_max - c.yd_min) < 150]
-    offsets = {}
-    base_y = C_WID + 150
-    for i, c in enumerate(small):
-        label = f"{c.name}: {c.weight_kg:.1f} kg"
-        target_x = c.x_cg
-        target_y = c.yd_cg
-        # Stagger labels above the container
-        lx = 300 + (i % 6) * 900
-        ly = base_y + (i // 6) * 200
-        ax.annotate(label, xy=(target_x, target_y), xytext=(lx, ly),
+    # Leader labels for ALL components — split near-side and far-side
+    near_comps = [c for c in dry if c.yd_cg < C_WID / 2]
+    far_comps = [c for c in dry if c.yd_cg >= C_WID / 2]
+    # Sort each group by X centroid for tidy leader lines
+    near_comps.sort(key=lambda c: c.x_cg)
+    far_comps.sort(key=lambda c: c.x_cg)
+
+    # Near-side labels below the container
+    base_y_below = -250
+    n_near = max(len(near_comps), 1)
+    spacing_near = min(C_LEN / n_near, 800)
+    start_near = (C_LEN - spacing_near * (n_near - 1)) / 2
+    for i, c in enumerate(near_comps):
+        label = f"{c.name}: {c.weight_kg:.0f} kg"
+        lx = start_near + i * spacing_near
+        ly = base_y_below - (i % 3) * 200
+        ax.annotate(label, xy=(c.x_cg, c.yd_cg), xytext=(lx, ly),
                     fontsize=5, color=C_DIM,
                     arrowprops=dict(arrowstyle="-", color="#AAAAAA",
                                    lw=0.5, ls=":"),
-                    zorder=15, **_FONT)
+                    ha="center", va="top", zorder=15, **_FONT)
+
+    # Far-side labels above the container
+    base_y_above = C_WID + 250
+    n_far = max(len(far_comps), 1)
+    spacing_far = min(C_LEN / n_far, 800)
+    start_far = (C_LEN - spacing_far * (n_far - 1)) / 2
+    for i, c in enumerate(far_comps):
+        label = f"{c.name}: {c.weight_kg:.0f} kg"
+        lx = start_far + i * spacing_far
+        ly = base_y_above + (i % 3) * 200
+        ax.annotate(label, xy=(c.x_cg, c.yd_cg), xytext=(lx, ly),
+                    fontsize=5, color=C_DIM,
+                    arrowprops=dict(arrowstyle="-", color="#AAAAAA",
+                                   lw=0.5, ls=":"),
+                    ha="center", va="bottom", zorder=15, **_FONT)
 
     # Weight distribution — CG, quadrants, splits (same as sheets 2/3)
     dry_active = filter_state(components, "dry")
@@ -628,7 +647,7 @@ def sheet1(components):
 
     # Axes setup
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-500, C_WID + 600)
+    ax.set_ylim(-1000, C_WID + 900)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)

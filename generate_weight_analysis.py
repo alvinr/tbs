@@ -697,15 +697,25 @@ def _draw_state_diagram(ax, components, state, state_label):
 
     _draw_container_outline(ax)
 
-    # Draw non-liquid components faded
+    # Draw non-liquid components faded; panel/drum slightly more visible
+    highlight_names = {"Hinged panel", "Light trap drum"}
     for c in non_container:
         if c.category != "liquid":
-            _draw_component(ax, c, alpha=0.25, show_label=False)
+            a = 0.4 if c.name in highlight_names else 0.25
+            _draw_component(ax, c, alpha=a, show_label=False)
 
     # Draw liquid components highlighted
     for c in non_container:
         if c.category == "liquid":
             _draw_component(ax, c, alpha=0.6, show_label=True, fs=5.5)
+
+    # Leader labels for panel and drum
+    for c in non_container:
+        if c.name in highlight_names:
+            lbl = f"{c.name}: {c.weight_kg:.0f} kg"
+            leader(ax, c.x_cg, c.yd_cg,
+                   c.x_cg, C_WID + 150, lbl,
+                   fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
 
     # CG and quadrants
     total, x_cg, yd_cg, z_cg = compute_cg(active)

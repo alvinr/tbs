@@ -604,21 +604,50 @@ def sheet1(components):
                                    lw=0.5, ls=":"),
                     zorder=15, **_FONT)
 
+    # Weight distribution — CG, quadrants, splits (same as sheets 2/3)
+    dry_active = filter_state(components, "dry")
+    total_dry, x_cg, yd_cg, z_cg = compute_cg(dry_active)
+    quads = compute_quadrants(dry_active)
+    splits = compute_splits(quads, total_dry)
+
+    _draw_cg_marker(ax, x_cg, yd_cg,
+                    label=f"CG ({x_cg:,.0f}, {yd_cg:,.0f})")
+
+    # Geometric center
+    ax.plot(C_LEN / 2, C_WID / 2, "+", color="#AAAAAA", ms=10, mew=1.5,
+            zorder=15)
+    ax.text(C_LEN / 2, C_WID / 2 + 100, "GEO\nCENTER", ha="center",
+            va="bottom", fontsize=5, color="#AAAAAA", zorder=15, **_FONT)
+
+    _draw_quadrant_labels(ax, quads, total_dry)
+
+    # Edge split labels
+    ax.text(C_LEN / 2, -150,
+            f"← FRONT {splits['front_pct']:.1f}%  |  "
+            f"REAR {splits['rear_pct']:.1f}% →",
+            ha="center", va="top", fontsize=7, color=C_DIM,
+            fontweight="bold", zorder=25, **_FONT)
+    ax.text(-150, C_WID / 2,
+            f"NEAR {splits['near_pct']:.1f}%\n|\n"
+            f"FAR {splits['far_pct']:.1f}%",
+            ha="right", va="center", fontsize=7, color=C_DIM,
+            fontweight="bold", zorder=25, **_FONT)
+
     # Axes setup
-    ax.set_xlim(-200, C_LEN + 200)
-    ax.set_ylim(-400, C_WID + 600)
+    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_ylim(-1400, C_WID + 600)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    # Totals
-    total_dry, x_cg, yd_cg, z_cg = compute_cg(filter_state(components, "dry"))
+    # Summary box
     info = (f"DRY WEIGHT SUMMARY\n"
             f"Container tare: 2,200 kg\n"
             f"Equipment + structure: {total_dry - 2200:,.0f} kg\n"
             f"Total dry: {total_dry:,.0f} kg\n"
-            f"CG: X={x_cg:,.0f} mm, Yd={yd_cg:,.0f} mm\n"
+            f"CG: X={x_cg:,.0f}, Yd={yd_cg:,.0f}\n"
+            f"Z_cg: {z_cg:,.0f} mm\n"
             f"ISO max gross: 24,000 kg → margin: {24000 - total_dry:,.0f} kg")
     ax.text(C_LEN + 100, C_WID * 0.5, info, fontsize=7, color=C_OUT,
             va="center", ha="left", **_FONT,

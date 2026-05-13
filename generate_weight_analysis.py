@@ -588,17 +588,18 @@ def sheet1(components):
     far_comps.sort(key=lambda c: c.x_cg)
 
     # Near-side labels below the container
-    # Per-component label X origin overrides (fraction of C_LEN to add)
-    label_x_nudge = {"Near walkway": 0.05}
+    # Per-component leader tip X overrides (fraction of C_LEN to add)
+    tip_x_nudge = {"Near walkway": 0.05}
     base_y_below = -125
     n_near = max(len(near_comps), 1)
     spacing_near = min(C_LEN / n_near, 800)
     start_near = (C_LEN - spacing_near * (n_near - 1)) / 2
     for i, c in enumerate(near_comps):
         lbl = f"{c.name}: {c.weight_kg:.0f} kg"
-        lx = start_near + i * spacing_near + label_x_nudge.get(c.name, 0) * C_LEN
+        tip_x = c.x_cg + tip_x_nudge.get(c.name, 0) * C_LEN
+        lx = start_near + i * spacing_near
         ly = base_y_below - (i % 3) * 125
-        leader(ax, c.x_cg, c.yd_cg, lx, ly, lbl,
+        leader(ax, tip_x, c.yd_cg, lx, ly, lbl,
                fs=5, color=C_DIM, ha="center", va="top", lw=0.5)
 
     # Far-side labels above the container

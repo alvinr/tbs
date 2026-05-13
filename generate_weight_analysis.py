@@ -23,7 +23,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, Rectangle
+from matplotlib.patches import Circle, FancyBboxPatch, Rectangle
 import numpy as np
 
 from tbs_drawing import leader
@@ -46,7 +46,7 @@ from tbs_constants import (
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PANEL_CORNER_T, PANEL_CENTER_T,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
-    DRUM_D, DRUM_H_LT,
+    DRUM_D, DRUM_R, DRUM_H_LT,
     FAN_DIAM, FAN_A_YD, FAN_B_YD,
     C_OUT, C_DIM, C_STEEL, C_ALUM,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC,
@@ -709,11 +709,11 @@ def _draw_state_diagram(ax, components, state, state_label):
     for c in panel:
         _draw_component(ax, c, alpha=0.5, show_label=False)
     for c in drum:
-        # Draw drum with distinct color and higher zorder above the panel
-        w = c.x_max - c.x_min
-        h = c.yd_max - c.yd_min
-        ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
-                     fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.8, zorder=7))
+        # Draw drum as circle (plan view of cylinder Ø750mm)
+        cx = c.x_cg
+        cy = c.yd_cg
+        ax.add_patch(Circle((cx, cy), DRUM_R,
+                     fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
     for c in others:
         _draw_component(ax, c, alpha=0.25, show_label=False)
 

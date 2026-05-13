@@ -606,7 +606,7 @@ def sheet1(components):
 
     # Axes setup
     ax.set_xlim(-200, C_LEN + 200)
-    ax.set_ylim(-1400, C_WID + 600)
+    ax.set_ylim(-400, C_WID + 600)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
@@ -695,7 +695,7 @@ def sheet2(components):
     _draw_state_diagram(ax, components, "ready", "CAMERA READY")
 
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-1400, C_WID + 200)
+    ax.set_ylim(-400, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
@@ -734,7 +734,7 @@ def sheet3(components):
             bbox=dict(fc="#FFF8F0", ec="orange", lw=1, pad=6))
 
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-1400, C_WID + 200)
+    ax.set_ylim(-400, C_WID + 200)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)

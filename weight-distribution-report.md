@@ -52,8 +52,8 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel | 203 | 0–80 | 0–2,362 | Stepped sandwich: ply+steel corners, RHS center frame. Scaled to 240 kg combined with drum per [Light Trap Selection](light-trap-selection.md) §7 |
-| Light trap drum | 37 | 0–40 | 756–1,606 | 1.5mm Al shell Ø750×2,200mm + 3 baffles + bearings |
+| Hinged panel | 203 | 0–80 (deployed) / 300–380 (transport) | 0–2,362 | Stepped sandwich: ply+steel corners, RHS center frame. Scaled to 240 kg combined with drum per [Light Trap Selection](light-trap-selection.md) §7 |
+| Light trap drum | 37 | 0–40 (deployed) / 300–340 (transport) | 756–1,606 | 1.5mm Al shell Ø750×2,200mm + 3 baffles + bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 78 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 44 kg/m² grating |
 | Far walkway | 78 | 470–4,629 | 2,062–2,362 | Same as near walkway |
@@ -135,33 +135,36 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry | 3,382 | 2,880 | 1,159 | 1,033 | 50.7/49.3% | 51.0/49.0% |
-| Camera Ready | 4,582 | 3,510 | 1,151 | 1,159 | 37.4/62.6% | 51.3/48.7% |
-| Materials Exhausted | 4,582 | 3,510 | 1,151 | 895 | 37.4/62.6% | 51.3/48.7% |
+| Dry (Transport) | 3,382 | 2,902 | 1,158 | 1,033 | 50.7/49.3% | 51.0/49.0% |
+| Camera Ready (Deployed) | 4,582 | 3,510 | 1,150 | 1,159 | 37.4/62.6% | 51.3/48.7% |
+| Materials Exhausted (Transport) | 4,582 | 3,525 | 1,150 | 895 | 37.4/62.6% | 51.3/48.7% |
 
 ---
 
 ## 5. Weight Distribution Diagrams
 
-### Sheet 1 — Component Weight Map
+### Sheet 1 — Dry Weight (Configured for Transport)
 
 All dry components shown at actual footprint positions, color-coded by
-category. The right end zone (IBC stack area) is the densest zone.
+category. The hinged panel is retracted 300mm inward on its ceiling rails
+(transport position). The right end zone (IBC stack area) is the densest zone.
 
-![TBS-001 — Weight Analysis: Component Weight Map](assets/weight-analysis-sheet1.png)
+![TBS-001 — Weight Analysis: Dry — Transport](assets/weight-analysis-sheet1.png)
 
-### Sheet 2 — Camera Ready Distribution
+### Sheet 2 — Camera Ready (Panel Deployed)
 
-Weight distribution with full Blue IBCs (top tier) and flooded processing
-tray. CG marker shows the loaded center of gravity at X=3,510, Yd=1,151.
+Weight distribution with full Blue IBCs (top tier) and hinged panel
+deployed to its operational position at the cargo door end (X=0–80).
+CG marker shows the loaded center of gravity at X=3,510, Yd=1,150.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet2.png)
 
-### Sheet 3 — Materials Exhausted Distribution
+### Sheet 3 — Materials Exhausted (Configured for Transport)
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
-IBCs. Total weight is unchanged (closed water system). The vertical
+IBCs. The hinged panel is retracted to transport position (X=300–380).
+Total weight is unchanged (closed water system). The vertical
 CG drops by 264mm (Z: 1,159 → 895 mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet3.png)
@@ -169,7 +172,7 @@ CG drops by 264mm (Z: 1,159 → 895 mm) as water moves to bottom tier.
 ### Sheet 4 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~630mm.
+The dry state is nearly balanced; liquid states shift CG rearward by ~608mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet4.png)
 
@@ -202,14 +205,16 @@ side.
 ### 6.3 Front-Rear Balance
 
 The dry state is nearly balanced front/rear (50.7/49.3%), with CG at
-X=2,880mm (just past the container midpoint of 2,947mm).
+X=2,902mm (just past the container midpoint of 2,947mm). In the dry/transport
+state, the hinged panel is retracted 300mm inward on its ceiling rails.
 
-When liquids are added, the CG shifts rearward to X=3,510mm (630mm past
+When liquids are added and the panel is deployed, the CG shifts rearward to
+X=3,510mm (608mm past
 the dry CG). This creates a 37.4/62.6% front/rear split. The rear bias
 is caused by 1,200 kg of water concentrated in the IBC stack zone
 (X=4,674–5,893mm).
 
-**Transport implication:** When loaded, the container's CG is at 59.5%
+**Transport implication:** When loaded, the container's CG is at 59.8%
 of the length from the cargo door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.

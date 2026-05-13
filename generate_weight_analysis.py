@@ -852,7 +852,7 @@ def sheet4(components):
                 f"CG: ({x_cg:,.0f}, {yd_cg:,.0f}, Z={z_cg:,.0f})\n"
                 f"F/R: {splits['front_pct']:.1f}/{splits['rear_pct']:.1f}%\n"
                 f"N/F: {splits['near_pct']:.1f}/{splits['far_pct']:.1f}%")
-        ax.text(C_LEN / 2, -50, info, ha="center", va="top",
+        ax.text(C_LEN / 2, -450, info, ha="center", va="top",
                 fontsize=6.5, color=C_OUT, **_FONT,
                 bbox=dict(fc="white", ec="#CCCCCC", alpha=0.9, pad=3))
 

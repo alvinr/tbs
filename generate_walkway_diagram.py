@@ -2274,7 +2274,7 @@ def sheet7():
              bx_arm - 3, bx_arm + 3, bx_arm - 3],
             zz_arm, color=C_OUT, lw=1.0, zorder=7)
     leader(ax, sx(arm_show / 2), sy(arm_bot + ARM_DEPTH / 2),
-           sx(arm_show + 40), sy(arm_bot + ARM_DEPTH + 30),
+           sx(arm_show + 50), sy(arm_bot + ARM_DEPTH + 30),
            f"BRACKET ARM (GHOST)\nEXTENDS {WALKWAY_W}mm\nALONG Yd INTO PAGE",
            color=C_BRKT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -2298,8 +2298,8 @@ def sheet7():
                             sx(plate_show), sy(PLATE_T),
                             fc=C_PLATE, ec=C_OUT, lw=1.2, alpha=0.5,
                             ls="--", zorder=5))
-    leader(ax, sx(plate_show / 2), sy(plate_bot + PLATE_T / 2),
-           sx(plate_show + 40), sy(plate_bot - 15),
+    leader(ax, sx(plate_show * 0.8), sy(plate_bot + PLATE_T / 2),
+           sx(plate_show + 40), sy(plate_bot - 5),
            f"FLAT PLATE ({PLATE_T}mm \u00d7 {PLATE_W}mm WIDE)\n(GHOST \u2014 EXTENDS {PLATE_W}mm IN X)",
            color=C_PLATE, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
@@ -2336,7 +2336,7 @@ def sheet7():
     ax.plot([bx_beam - 3, bx_beam + 3, bx_beam - 3, bx_beam + 3,
              bx_beam - 3, bx_beam + 3, bx_beam - 3],
             zz_beam, color=C_OUT, lw=1.0, zorder=9)
-    ax.text(sx((beam_yd_start + BEAM_SHOW) / 2), sy(beam_bot * 1.5),
+    ax.text(sx((beam_yd_start + BEAM_SHOW) * 0.7), sy(beam_bot * 1.5),
             f"BEARER BEAM {BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
             f"(SPANS {WALKWAY_LEFT_SPAN}mm TO FAR BRACKET)",
             ha="center", va="top", fontsize=6, color=C_SUPPORT,

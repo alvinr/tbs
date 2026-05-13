@@ -46,7 +46,9 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Component | Weight (kg) | Position | Calculation Basis |
 |-----------|------------|----------|-------------------|
-| Container shell | 2,200 | Full footprint | Hapag-Lloyd 20ft ISO tare weight |
+| Container shell (excl. doors) | 1,920 | Full footprint | Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg) |
+| Cargo door — near leaf | 140 | Closed: X=−100 to −40 / Open: along near wall | ISO door leaf, ~140 kg each |
+| Cargo door — far leaf | 140 | Closed: X=−100 to −40 / Open: along far wall | ISO door leaf, ~140 kg each |
 
 ### 3.2 Structural Components
 
@@ -87,7 +89,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container shell | 2,200 | 65.1% |
+| Container (shell + doors) | 2,200 | 65.1% |
 | Structure | 796 | 23.5% |
 | Equipment | 387 | 11.4% |
 | **Total dry** | **3,382** | **100%** |
@@ -135,9 +137,9 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,382 | 2,902 | 1,158 | 1,033 | 50.7/49.3% | 51.0/49.0% |
-| Camera Ready (Deployed) | 4,582 | 3,510 | 1,150 | 1,159 | 37.4/62.6% | 51.3/48.7% |
-| Materials Exhausted (Transport) | 4,582 | 3,525 | 1,150 | 895 | 37.4/62.6% | 51.3/48.7% |
+| Dry (Transport) | 3,382 | 2,652 | 1,158 | 1,033 | 54.8/45.2% | 51.0/49.0% |
+| Camera Ready (Deployed) | 4,582 | 3,367 | 1,150 | 1,159 | 40.5/59.5% | 51.3/48.7% |
+| Materials Exhausted (Transport) | 4,582 | 3,341 | 1,150 | 895 | 40.5/59.5% | 51.3/48.7% |
 
 ---
 
@@ -155,7 +157,7 @@ category. The hinged panel is retracted 300mm inward on its ceiling rails
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=3,510, Yd=1,150.
+CG marker shows the loaded center of gravity at X=3,367, Yd=1,150.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet2.png)
@@ -172,7 +174,7 @@ CG drops by 264mm (Z: 1,159 → 895 mm) as water moves to bottom tier.
 ### Sheet 4 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~608mm.
+The dry state is nearly balanced; liquid states shift CG rearward by ~715mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet4.png)
 
@@ -204,18 +206,20 @@ side.
 
 ### 6.3 Front-Rear Balance
 
-The dry state is nearly balanced front/rear (50.7/49.3%), with CG at
-X=2,902mm (just past the container midpoint of 2,947mm). In the dry/transport
-state, the hinged panel is retracted 300mm inward on its ceiling rails.
+The dry/transport state has a front-biased split (54.8/45.2%), with CG at
+X=2,652mm. This front bias comes from the cargo doors (280 kg total) being
+in their closed position at X≈−70mm, pulling the CG toward the cargo door
+end. The hinged panel is also retracted 300mm inward on its ceiling rails.
 
-When liquids are added and the panel is deployed, the CG shifts rearward to
-X=3,510mm (608mm past
-the dry CG). This creates a 37.4/62.6% front/rear split. The rear bias
-is caused by 1,200 kg of water concentrated in the IBC stack zone
-(X=4,674–5,893mm).
+When liquids are added and the panel and doors are deployed (camera ready),
+the CG shifts rearward to X=3,367mm (715mm past the dry CG). The doors
+swing open flat against the side walls (X=0–1,221mm), redistributing
+280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
+zone (X=4,674–5,893mm). This creates a 40.5/59.5% front/rear split.
 
-**Transport implication:** When loaded, the container's CG is at 59.8%
-of the length from the cargo door end. For trailer placement, the container
+**Transport implication:** When loaded for transport (materials exhausted,
+doors closed), the container's CG is at 56.7% of the length from the cargo
+door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
 

@@ -275,9 +275,35 @@ def build_components():
 
     components = [
         # ── Container ────────────────────────────────────────────────────
-        Component("Container shell", "container", 2200.0,
+        Component("Container shell", "container", 1920.0,
                   0, C_LEN, 0, C_WID, 0, C_HGT, color=C_WALL,
-                  calc_note="Hapag-Lloyd 20ft ISO tare weight"),
+                  calc_note="Hapag-Lloyd 20ft ISO tare (2,200 kg) minus doors (280 kg)"),
+
+        # ── Cargo doors (2 leaves, ~140 kg each = 280 kg total) ─────
+        # Closed (transport): both leaves at X≈-50 (exterior face), full Yd span
+        # Open (camera ready): each leaf swung flat against a side wall
+        Component("Cargo door (near)", "container", 140.0,
+                  -WALL_T - DOOR_T, -WALL_T, 0, C_WID / 2,
+                  0, C_HGT, color=C_DOOR,
+                  states=("dry", "exhausted"),
+                  calc_note="ISO door leaf ~140 kg, closed position"),
+        Component("Cargo door (far)", "container", 140.0,
+                  -WALL_T - DOOR_T, -WALL_T, C_WID / 2, C_WID,
+                  0, C_HGT, color=C_DOOR,
+                  states=("dry", "exhausted"),
+                  calc_note="ISO door leaf ~140 kg, closed position"),
+        Component("Cargo door (near)", "container", 140.0,
+                  0, C_WID / 2 + WALL_T,
+                  -WALL_T - DOOR_T, -WALL_T,
+                  0, C_HGT, color=C_DOOR,
+                  states=("ready",),
+                  calc_note="ISO door leaf ~140 kg, open against near wall"),
+        Component("Cargo door (far)", "container", 140.0,
+                  0, C_WID / 2 + WALL_T,
+                  C_WID + WALL_T, C_WID + WALL_T + DOOR_T,
+                  0, C_HGT, color=C_DOOR,
+                  states=("ready",),
+                  calc_note="ISO door leaf ~140 kg, open against far wall"),
 
         # ── Structure ────────────────────────────────────────────────────
         # Panel + drum: transport position (slid 300mm inward) for dry/exhausted
@@ -621,7 +647,7 @@ def _draw_quadrant_labels(ax, quads, total):
 def sheet1(components):
     """Sheet 1: Weight Distribution — Dry, configured for transport."""
     dry = [c for c in components
-           if c.category != "liquid" and c.name != "Container shell"]
+           if c.category not in ("liquid", "container")]
 
     fig, ax = plt.subplots(figsize=(18, 10))
     _draw_container_outline(ax)
@@ -736,7 +762,7 @@ def sheet1(components):
 def _draw_state_diagram(ax, components, state, state_label):
     """Helper: draw a weight distribution diagram for one state."""
     active = filter_state(components, state)
-    non_container = [c for c in active if c.name != "Container shell"]
+    non_container = [c for c in active if c.category != "container"]
 
     _draw_container_outline(ax)
     _draw_cargo_doors(ax, closed=(state != "ready"))
@@ -918,7 +944,7 @@ def sheet4(components):
 
         # Draw non-liquid components faded
         non_cont = [c for c in active
-                    if c.name != "Container shell" and c.category != "liquid"]
+                    if c.category not in ("container", "liquid")]
         for c in non_cont:
             w = c.x_max - c.x_min
             h = c.yd_max - c.yd_min

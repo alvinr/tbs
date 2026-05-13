@@ -592,8 +592,15 @@ def sheet1(components):
     _draw_container_outline(ax)
 
     # Draw each component (no inline labels — all via leaders)
+    # Draw drum as circle separately
     for c in dry:
-        _draw_component(ax, c, alpha=0.5, show_label=False)
+        if c.name == "Light trap drum":
+            drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
+            drum_cy = C_WID / 2
+            ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
+                         fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+        else:
+            _draw_component(ax, c, alpha=0.5, show_label=False)
 
     # Leader labels for ALL components — split near-side and far-side
     near_comps = [c for c in dry if c.yd_cg < C_WID / 2]
@@ -710,8 +717,12 @@ def _draw_state_diagram(ax, components, state, state_label):
         _draw_component(ax, c, alpha=0.5, show_label=False)
     for c in drum:
         # Draw drum as circle (plan view of cylinder Ø750mm)
-        cx = c.x_cg
-        cy = c.yd_cg
+        # Position: panel face + half center-zone thickness
+        if state in ("dry", "exhausted"):
+            cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport
+        else:
+            cx = PANEL_CENTER_T / 2  # deployed
+        cy = C_WID / 2
         ax.add_patch(Circle((cx, cy), DRUM_R,
                      fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
     for c in others:

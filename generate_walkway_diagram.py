@@ -1962,7 +1962,7 @@ def sheet6():
                             fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=9))
     # Beam label
     leader(ax, sx(LEFT_WK_R + BEAM_SZ / 2 + 2), sy(beam_bot + BEAM_SZ / 2),
-           sx(LEFT_WK_R + BEAM_SZ / 2 + 45), sy(beam_bot + BEAM_SZ * 0.95),
+           sx(LEFT_WK_R + BEAM_SZ / 2 + 45), sy(beam_bot + BEAM_SZ * 1.15),
            f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS\n"
            f"SPANS {WALKWAY_LEFT_SPAN}mm ALONG Yd\n"
            f"BOLTED TO NEAR/FAR\n"
@@ -2038,12 +2038,12 @@ def sheet6():
 
     # Height dimensions (right side)
     dim_x_r = LEFT_WK_R + BEAM_SZ / 2 + 30
-    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(grate_top),
-               f"{int(grate_top)}mm\nDECK", offset=sx(6), fs=6, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(beam_top),
-               f"{beam_top}mm\nBEAM\nTOP", offset=sx(30), fs=5.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(dim_x_r), sy(0), sy(beam_bot),
-               f"{beam_bot}mm\nBEAM\nBOT", offset=sx(55), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_x_r + 5), sy(0), sy(grate_top),
+               f"{int(grate_top)}mm DECK", offset=sx(6), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_x_r - 5), sy(0), sy(beam_top),
+               f"{beam_top}mm BEAM TOP", offset=sx(6), fs=5.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(dim_x_r - 20), sy(0), sy(beam_bot),
+               f"{beam_bot}mm\nBEAM\nBOT", offset=sx(6), fs=5.5, right=True, font=FONT)
 
     # Tray rim height (left side)
     draw_dim_v(ax, sx(tray_x + STRIP_H + 25), sy(0), sy(PROC_TRAY_RIM),

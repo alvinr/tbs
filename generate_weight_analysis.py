@@ -399,13 +399,6 @@ def build_components():
                   IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
                   states=("ready",),
                   calc_note="600L clean wash water (top tier)"),
-        Component("Tray water (ready)", "liquid", _processing_tray_water_kg(),
-                  PROC_TRAY_X_L, PROC_TRAY_X_R,
-                  PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
-                  0, 6, color="#80C0FF",
-                  states=("ready",),
-                  calc_note="6mm flood depth over tray area"),
-
         # ── Liquids — Materials Exhausted (water in bottom-tier IBCs) ────
         Component("Brown IBC-3 water", "liquid", 600.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
@@ -869,10 +862,10 @@ def sheet4(components):
     ax_table.axis("off")
 
     table_lines = [
-        "─" * 95,
+        "─" * 100,
         f"{'State':<30} {'Total (kg)':>12} {'X_cg (mm)':>12} "
         f"{'Yd_cg (mm)':>12} {'Z_cg (mm)':>12}  {'ISO margin':>14}",
-        "─" * 95,
+        "─" * 100,
     ]
     for (state, label, _), (x_cg, yd_cg, z_cg, total) in zip(states, cg_points):
         clean_label = label.replace("\n", " ")
@@ -880,7 +873,7 @@ def sheet4(components):
         table_lines.append(
             f"{clean_label:<30} {total:>12,.0f} {x_cg:>12,.0f} "
             f"{yd_cg:>12,.0f} {z_cg:>12,.0f}  {margin:>14,.0f}")
-    table_lines.append("─" * 95)
+    table_lines.append("─" * 100)
     table_text = "\n".join(table_lines)
     ax_table.text(0.5, 0.5, table_text, ha="center", va="center",
                   fontsize=7.5, color=C_OUT, **_FONT,

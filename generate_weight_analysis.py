@@ -584,7 +584,9 @@ def sheet1(components):
     near_comps = [c for c in dry if c.yd_cg < C_WID / 2]
     far_comps = [c for c in dry if c.yd_cg >= C_WID / 2]
     # Sort each group by X centroid for tidy leader lines
-    near_comps.sort(key=lambda c: c.x_cg)
+    # Swap Near walkway and Pump manifold in label order
+    sort_swap = {"Near walkway": 1, "Pump manifold": -1}
+    near_comps.sort(key=lambda c: c.x_cg + sort_swap.get(c.name, 0) * 1e6)
     far_comps.sort(key=lambda c: c.x_cg)
 
     # Near-side labels below the container

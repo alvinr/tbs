@@ -2661,7 +2661,9 @@ Waste IBCs are empty. Processing tray flooded to 6mm depth.</p>
 <p><strong>Total loaded weight: 4,641 kg</strong> (3,382 dry + 1,259 liquid)</p>
 <h3 id="42-materials-exhausted-ready-for-resupply">4.2 Materials Exhausted (Ready for Resupply)<a class="headerlink" href="#42-materials-exhausted-ready-for-resupply" title="Permanent link">&para;</a></h3>
 <p>After a full session, wash water has been consumed and redistributed.
-Blue IBCs are empty; Brown (recycled) and Waste IBCs are full.</p>
+Blue IBCs are empty; Brown (recycled) and Waste IBCs are full. The
+processing tray has been drained — all processed water is in the
+Brown/Waste IBCs.</p>
 <table>
 <thead>
 <tr>
@@ -2689,21 +2691,21 @@ Blue IBCs are empty; Brown (recycled) and Waste IBCs are full.</p>
 </tr>
 <tr>
 <td>Processing tray</td>
-<td>59</td>
-<td>59</td>
-<td>X=170–4,629, Yd=80–2,280</td>
-<td>Floor (Z=0–6)</td>
+<td>—</td>
+<td>0</td>
+<td>Drained</td>
+<td>—</td>
 </tr>
 <tr>
 <td><strong>Total liquid</strong></td>
-<td><strong>1,259</strong></td>
-<td><strong>1,259</strong></td>
+<td><strong>1,200</strong></td>
+<td><strong>1,200</strong></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Total loaded weight: 4,641 kg</strong> (identical to Camera Ready)</p>
+<p><strong>Total loaded weight: 4,582 kg</strong> (3,382 dry + 1,200 liquid)</p>
 <h3 id="43-state-comparison">4.3 State Comparison<a class="headerlink" href="#43-state-comparison" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2738,11 +2740,11 @@ Blue IBCs are empty; Brown (recycled) and Waste IBCs are full.</p>
 </tr>
 <tr>
 <td>Materials Exhausted</td>
-<td>4,641</td>
-<td>3,504</td>
+<td>4,582</td>
+<td>3,518</td>
 <td>1,151</td>
-<td>883</td>
-<td>37.7/62.3%</td>
+<td>895</td>
+<td>37.4/62.6%</td>
 <td>51.3/48.7%</td>
 </tr>
 </tbody>
@@ -2759,9 +2761,9 @@ tray. CG marker shows the loaded center of gravity at X=3,504, Yd=1,151.
 Quadrant weights show the rear-heavy bias from the IBC stack.</p>
 <p><img alt="TBS-001 — Weight Analysis: Camera Ready" src="../assets/weight-analysis-sheet2.png" /></p>
 <h3 id="sheet-3-materials-exhausted-distribution">Sheet 3 — Materials Exhausted Distribution<a class="headerlink" href="#sheet-3-materials-exhausted-distribution" title="Permanent link">&para;</a></h3>
-<p>Same total weight as Camera Ready, but water has migrated from top-tier
-Blue IBCs to bottom-tier Brown/Waste IBCs. The X-Yd CG is unchanged;
-the vertical CG drops by 262mm (Z: 1,145 → 883 mm).</p>
+<p>Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
+IBCs. Processing tray is drained (59 kg less total liquid). The vertical
+CG drops by 250mm (Z: 1,145 → 895 mm) as water moves to bottom tier.</p>
 <p><img alt="TBS-001 — Weight Analysis: Materials Exhausted" src="../assets/weight-analysis-sheet3.png" /></p>
 <h3 id="sheet-4-summary-comparison">Sheet 4 — Summary Comparison<a class="headerlink" href="#sheet-4-summary-comparison" title="Permanent link">&para;</a></h3>
 <p>Three-state side-by-side comparison with CG positions and summary table.
@@ -2795,9 +2797,9 @@ The dry state is nearly balanced; liquid states shift CG rearward by ~612mm.</p>
 </tr>
 <tr>
 <td>Materials Exhausted</td>
-<td>4,641</td>
-<td>19,359</td>
-<td>19.3%</td>
+<td>4,582</td>
+<td>19,418</td>
+<td>19.1%</td>
 </tr>
 </tbody>
 </table>
@@ -2824,19 +2826,16 @@ axle(s) to balance the load.</p>
 <h3 id="64-vertical-cg-and-self-stabilizing-design">6.4 Vertical CG and Self-Stabilizing Design<a class="headerlink" href="#64-vertical-cg-and-self-stabilizing-design" title="Permanent link">&para;</a></h3>
 <p>The most significant finding is the <strong>vertical CG migration</strong> between states:</p>
 <ul>
-<li><strong>Camera Ready:</strong> Z_cg = 1,145 mm (1,200 kg of water in top-tier IBCs)</li>
-<li><strong>Materials Exhausted:</strong> Z_cg = 883 mm (1,200 kg of water in bottom-tier IBCs)</li>
-<li><strong>ΔZ = −262 mm</strong> (CG drops 262mm during a session)</li>
+<li><strong>Camera Ready:</strong> Z_cg = 1,145 mm (1,200 kg of water in top-tier IBCs + 59 kg in tray)</li>
+<li><strong>Materials Exhausted:</strong> Z_cg = 895 mm (1,200 kg of water in bottom-tier IBCs, tray drained)</li>
+<li><strong>ΔZ = −250 mm</strong> (CG drops 250mm during a session)</li>
 </ul>
 <p>This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 As clean water (top tier) is consumed and waste water accumulates (bottom
 tier), the system's center of gravity drops, improving stability over the
-course of a session. The total mass remains constant — only the vertical
-distribution changes.</p>
-<p>The X-Yd CG position is identical between Camera Ready and Materials
-Exhausted because the Blue IBCs (top tier) and Brown/Waste IBCs (bottom
-tier) occupy the same plan-view footprint — they are vertically stacked,
-not laterally displaced.</p>
+course of a session. Total mass decreases slightly (59 kg tray water
+drained) but the dominant effect is the vertical redistribution of 1,200 kg
+from top tier to bottom tier.</p>
 <h3 id="65-walkway-weight-sensitivity">6.5 Walkway Weight Sensitivity<a class="headerlink" href="#65-walkway-weight-sensitivity" title="Permanent link">&para;</a></h3>
 <p>The walkway system contributes 327 kg (9.7% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The weight is

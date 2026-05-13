@@ -57,7 +57,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 78 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 44 kg/m² grating |
 | Far walkway | 78 | 470–4,629 | 2,062–2,362 | Same as near walkway |
-| Right walkway | 135 | 4,632–4,932 | 0–2,362 | 50×40×3 RHS beam + 17mm packer + grating |
+| Right walkway | 135 | 4,329–4,672 | 0–2,362 | 50×40×3 RHS beam + 17mm packer + grating |
 | Left walkway | 35 | 170–470 | 0–2,362 | Removable lift-out: grating + 50×50×3 Al bearer beam + 3 legs |
 | Ceiling rails | 48 | 0–5,893 | 30–2,332 | 2× HGR20 @ 3.7 kg/m + 8 carriage blocks |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
@@ -135,9 +135,9 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry | 3,382 | 2,892 | 1,159 | 1,033 | 50.7/49.3% | 51.0/49.0% |
-| Camera Ready | 4,582 | 3,518 | 1,151 | 1,159 | 37.4/62.6% | 51.3/48.7% |
-| Materials Exhausted | 4,582 | 3,518 | 1,151 | 895 | 37.4/62.6% | 51.3/48.7% |
+| Dry | 3,382 | 2,880 | 1,159 | 1,033 | 50.7/49.3% | 51.0/49.0% |
+| Camera Ready | 4,582 | 3,510 | 1,151 | 1,159 | 37.4/62.6% | 51.3/48.7% |
+| Materials Exhausted | 4,582 | 3,510 | 1,151 | 895 | 37.4/62.6% | 51.3/48.7% |
 
 ---
 
@@ -153,7 +153,7 @@ category. The right end zone (IBC stack area) is the densest zone.
 ### Sheet 2 — Camera Ready Distribution
 
 Weight distribution with full Blue IBCs (top tier) and flooded processing
-tray. CG marker shows the loaded center of gravity at X=3,518, Yd=1,151.
+tray. CG marker shows the loaded center of gravity at X=3,510, Yd=1,151.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet2.png)
@@ -169,7 +169,7 @@ CG drops by 264mm (Z: 1,159 → 895 mm) as water moves to bottom tier.
 ### Sheet 4 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
-The dry state is nearly balanced; liquid states shift CG rearward by ~626mm.
+The dry state is nearly balanced; liquid states shift CG rearward by ~630mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet4.png)
 
@@ -202,14 +202,14 @@ side.
 ### 6.3 Front-Rear Balance
 
 The dry state is nearly balanced front/rear (50.7/49.3%), with CG at
-X=2,892mm (just past the container midpoint of 2,947mm).
+X=2,880mm (just past the container midpoint of 2,947mm).
 
-When liquids are added, the CG shifts rearward to X=3,518mm (626mm past
+When liquids are added, the CG shifts rearward to X=3,510mm (630mm past
 the dry CG). This creates a 37.4/62.6% front/rear split. The rear bias
 is caused by 1,200 kg of water concentrated in the IBC stack zone
 (X=4,674–5,893mm).
 
-**Transport implication:** When loaded, the container's CG is at 59.7%
+**Transport implication:** When loaded, the container's CG is at 59.5%
 of the length from the cargo door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.

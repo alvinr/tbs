@@ -73,7 +73,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Pump manifold | 5 | 2,500–2,800 | 0–150 | 3× 12V diaphragm pumps + manifold |
 | Evaporative cooler | 15 | 930–1,530 | 0–350 | Portable evap cooler unit |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
-| Tilt-swing board | 30 | 2,199–2,599 | 0–400 | Spherical-pivot board + adjustment screws |
+| Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
 | Blue IBC-1 (tote) | 55 | 4,674–5,893 | 100–1,116 | 600L steel-cage IBC tare (top tier, near) |

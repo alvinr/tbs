@@ -347,9 +347,9 @@ def build_components():
                   0, 800, color=C_EVAP,
                   calc_note="Portable evap cooler unit"),
         Component("Tilt-swing board", "equipment", 30.0,
-                  PH_X - 200, PH_X + 200, 0, 400,
-                  PH_H - 200, PH_H + 200, color="#CC6600",
-                  calc_note="Spherical-pivot board + adjustment screws"),
+                  PH_X - 310, PH_X + 310, 0, 100,
+                  PH_H - 310, PH_H + 310, color="#CC6600",
+                  calc_note="620×620×45mm Al plate + spherical pivot + screws"),
         Component("Fan A (intake)", "equipment", 2.0,
                   C_LEN - 50, C_LEN, FAN_A_YD - 75, FAN_A_YD + 75,
                   525, 675, color=C_FAN,
@@ -629,14 +629,14 @@ def sheet1(components):
     _draw_quadrant_labels(ax, quads, total_dry)
 
     # Edge split labels
-    ax.text(C_LEN / 2, -150,
+    ax.text(C_LEN / 2, C_WID * 1.3,
             f"← FRONT {splits['front_pct']:.1f}%  |  "
             f"REAR {splits['rear_pct']:.1f}% →",
             ha="center", va="top", fontsize=7, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
-    ax.text(-150, C_WID / 2,
-            f"NEAR {splits['near_pct']:.1f}%\n|\n"
-            f"FAR {splits['far_pct']:.1f}%",
+    ax.text(-60, C_WID * 0.5,
+            f"FAR {splits['far_pct']:.1f}%\n\n"
+            f"NEAR {splits['near_pct']:.1f}%",
             ha="right", va="center", fontsize=7, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
 
@@ -705,12 +705,12 @@ def _draw_state_diagram(ax, components, state, state_label):
     _draw_quadrant_labels(ax, quads, total)
 
     # Edge split labels
-    ax.text(C_LEN / 2, -150,
+    ax.text(C_LEN / 2, C_WID * 1.05,
             f"← FRONT {splits['front_pct']:.1f}%  |  REAR {splits['rear_pct']:.1f}% →",
             ha="center", va="top", fontsize=7, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
-    ax.text(-150, C_WID / 2,
-            f"NEAR {splits['near_pct']:.1f}%\n|\nFAR {splits['far_pct']:.1f}%",
+    ax.text(-60, C_WID * 0.5,
+            f"FAR {splits['far_pct']:.1f}%\n\nNEAR {splits['near_pct']:.1f}%",
             ha="right", va="center", fontsize=7, color=C_DIM,
             fontweight="bold", rotation=0, zorder=25, **_FONT)
 

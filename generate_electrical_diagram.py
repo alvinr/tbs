@@ -188,13 +188,14 @@ def draw_sheet1():
     wlabel(ax, SC_X + SC_W / 2 + 0.15, SC_Y - 0.28, "Shore AC →", size=7.0)
 
     # ── LEGEND ────────────────────────────────────────────────────────────────
-    lx, ly = SC_X, 1.1
-    ax.add_patch(FancyBboxPatch((lx - 0.1, ly - 0.15), SC_W + 0.2, 3.6,
+    lx, ly = SC_X, 1.4
+    LEG_H = 3.78
+    ax.add_patch(FancyBboxPatch((lx - 0.1, ly - 0.15), SC_W + 0.2, LEG_H,
                  boxstyle="round,pad=0.05", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(lx + SC_W / 2, ly + 3.28, "LEGEND",
+    ax.text(lx + SC_W / 2, ly + LEG_H - 0.32, "LEGEND",
             ha="center", va="center", fontsize=9.5,
             fontweight="bold", color=C_OUT)
-    ax.plot([lx + 0.1, lx + SC_W - 0.1], [ly + 3.05, ly + 3.05],
+    ax.plot([lx + 0.1, lx + SC_W - 0.1], [ly + LEG_H - 0.55, ly + LEG_H - 0.55],
             color=C_DIM, lw=0.7)
     legend_items = [
         (C_SOLAR,      "Solar / generation"),
@@ -208,7 +209,7 @@ def draw_sheet1():
         (C_GND,        "Earth / chassis ground"),
     ]
     for j, (col, txt) in enumerate(legend_items):
-        yl = ly + 2.72 - j * 0.36
+        yl = ly + LEG_H - 0.88 - j * 0.36
         ax.add_patch(mpatches.Rectangle((lx + 0.15, yl - 0.11), 0.45, 0.28,
                      fc=col, ec=C_OUT, lw=0.7, zorder=4))
         ax.text(lx + 0.75, yl + 0.03, txt,
@@ -216,7 +217,7 @@ def draw_sheet1():
 
     # ── ENERGY SUMMARY ────────────────────────────────────────────────────────
     ex = lx + SC_W + 0.8
-    ey, ew, eh = 1.1, 6.8, 3.6
+    ey, ew, eh = 1.4, 6.8, 3.78
     ax.add_patch(FancyBboxPatch((ex - 0.1, ey - 0.15), ew + 0.2, eh,
                  boxstyle="round,pad=0.05", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
     ax.text(ex + ew / 2, ey + eh - 0.28, "ENERGY SUMMARY",

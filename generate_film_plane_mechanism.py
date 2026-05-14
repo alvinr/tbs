@@ -1027,7 +1027,7 @@ def sheet5():
     ax_a.add_patch(Rectangle((sa(lbk_x), sa(lbracket_bot)),
                               sa(LBRACKET_W), sa(LBRACKET_T),
                               fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
-    leader(ax_a, sa(lbk_x + LBRACKET_T / 2), sa(lbracket_bot + LBRACKET_H / 2),
+    leader(ax_a, sa(lbk_x + LBRACKET_T / 2 - 5), sa(lbracket_bot + LBRACKET_H / 2 - 10),
            sa(-25), sa(lbracket_bot + LBRACKET_H / 2),
            f"L-BRACKET\n(1/4\" Al PLATE)",
            color=DIM, fs=5, ha="right", va="center",
@@ -1062,7 +1062,7 @@ def sheet5():
 
     ax_a.text(sa(LEG / 2), sa(T + 3), "PINHOLE-FACING LEG",
               ha="center", va="bottom", fontsize=5, color=DIM, **FONT, zorder=15)
-    ax_a.text(sa(-3), sa(-LEG / 2 + T), "PERP.\nLEG",
+    ax_a.text(sa(-5), sa(-LEG / 2 + T), "PERP. LEG",
               ha="right", va="center", fontsize=5, color=DIM, rotation=90, **FONT, zorder=15)
 
     # ── Muslin wrap path ──────────────────────────────────────────────────────

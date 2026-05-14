@@ -1942,7 +1942,7 @@ def sheet6():
     # ── Corrugated wall (hollow rib profile — matching sheet 3) ──────────────
     ext_panel_yd = -CORR_DEPTH - WALL_T
     reinf_yd = ext_panel_yd - REINF_T
-    wall_z_top = Z_HI - 5
+    wall_z_top = BRKT_VERT + 30   # cut just above bracket top + break line
 
     # Exterior wall steel panel
     ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
@@ -1965,6 +1965,12 @@ def sheet6():
             **FONT, zorder=15, style="italic")
     ax.plot([sx(0), sx(0)], [sy(0), sy(wall_z_top)],
             color=C_OUT, lw=2.0, zorder=4)
+    # Sawtooth break line at top of wall (wall continues upward)
+    n_teeth = 5
+    xs_brk = np.linspace(ext_panel_yd - REINF_T, WALL_T, n_teeth * 2 + 1)
+    teeth_y = [wall_z_top + (3 if i % 2 == 1 else -3) for i in range(len(xs_brk))]
+    ax.plot([sx(x) for x in xs_brk], [sy(y) for y in teeth_y],
+            color=C_OUT, lw=1.2, zorder=15)
     ax.text(sx(-CORR_DEPTH / 2), sy(wall_z_top - 5),
             "CORRUGATED\nWALL RIB", ha="center", va="top", fontsize=5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)

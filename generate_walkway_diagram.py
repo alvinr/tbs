@@ -17,11 +17,7 @@ Sheet 2 — Cross-section through near (pinhole side) walkway:
   triangular gusset brackets bolted to container wall ribs — no legs,
   no beam, no floor contact.  Entire tray is clear for film loading.
 
-Sheet 3 — Detail: Single bracket / wall attachment:
-  Close-up of gusset bracket bolted to corrugated wall rib, showing
-  reinforcing plate, M12 through-bolts, and grating clip.
-
-Sheet 4 — Detail B: Right walkway ceiling-hung support (IBC end):
+Sheet 3 — Detail A: Right walkway ceiling-hung support (IBC end):
   300mm wide, same as near/far.  No floor contact — suspended from ceiling
   corrugations by M10 threaded rod hangers at 457mm centers.  Two 50×50×5mm
   steel angle bearers run full container width along Yd at X=4,329 and
@@ -30,20 +26,20 @@ Sheet 4 — Detail B: Right walkway ceiling-hung support (IBC end):
   ends bear on adjacent walkway brackets.  Zero tray contact, zero floor
   contact.
 
-Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
+Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
   Shows left walkway grating (X=170-470, removable lift-out) meeting near
   walkway bracket arm at butt joint (X=470). Panel transport envelope
   (X=0-420) shown as ghost, confirming 50mm clearance to near walkway.
   Bearing strip and support cradle shown in cross-section.
 
-Sheet 6 — Detail D: Left walkway support system (removable):
+Sheet 5 — Detail C: Left walkway support system (removable):
   Elevation showing all support elements: floor-standing leg (X=140, on bare
   floor) with cantilever arm, bearer beam (50×50×3mm Al RHS at X=470) spanning
   1,762mm between bracket vertical legs, and bearing strip on tray rim (X=170).
   Zero processing tray contact.
 
-Sheet 7 — Detail E: Bearer beam to bracket connection:
+Sheet 6 — Detail D: Bearer beam to bracket connection:
   Elevation at bracket showing how the bearer beam bolts to the bracket
   vertical leg via a welded end plate and 2× M10 wing bolts.  View looking
   along X (same as sheet 1).  Wing bolts allow tool-free removal.
@@ -468,14 +464,19 @@ def sheet1():
         f"   30\u00d73mm bearing bars at 34.2mm pitch.",
         f"2. Cantilever brackets: {BRKT_T}mm steel plate gusset,",
         f"   bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"3. NO legs, NO beam — entire tray floor clear",
+        f"3. Rib is HOLLOW — bolt bridges the air gap.",
+        f"   Path: head \u2192 reinf plate \u2192 ext panel",
+        f"   \u2192 air gap \u2192 rib face \u2192 bracket \u2192 nut.",
+        f"4. Reinforcing plate welded to exterior panel",
+        f"   face. Bearing surface for bolt head + washer.",
+        f"5. Gusset reach stops before tray rim at",
+        f"   {PROC_TRAY_YD_NEAR}mm.",
+        f"6. NO legs, NO beam — entire tray floor clear",
         f"   for film loading. Zero tray contact.",
-        f"4. 2\u00d7 M12 through-bolts per bracket, with",
-        f"   reinforcing plate behind corrugated wall.",
-        f"5. Grating clips to bracket arms — removable.",
-        f"6. Right walkway: brackets on angle iron",
-        f"   welded to flat end wall (no ribs).",
-        f"7. Left walkway: REMOVABLE LIFT-OUT —",
+        f"7. Grating clips to bracket arms — removable.",
+        f"8. Right walkway: CEILING-HUNG from M{WALKWAY_RIGHT_HANGER_D}",
+        f"   threaded rod hangers. See Sheet 3.",
+        f"9. Left walkway: REMOVABLE LIFT-OUT —",
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
     ]
@@ -488,9 +489,9 @@ def sheet1():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 7",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="CROSS-SECTION \u2014 NEAR WALKWAY (LOOKING ALONG X AXIS)",
+                subtitle="CROSS-SECTION \u2014 NEAR WALKWAY WITH BRACKET DETAIL",
                 scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
                 height=0.07)
 
@@ -788,7 +789,7 @@ def sheet2():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 7",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -801,303 +802,7 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Detail: Near/Far Bracket on Corrugated Wall Rib
-#
-# Elevation cross-section looking along the walkway (X axis).
-# Shows the bolt sandwich: reinforcing plate → wall steel → rib → bracket plate.
-# The bolt is drawn as a horizontal bar passing through the layered materials.
-# Scale ≈ 3:1 for clarity.
-# ═══════════════════════════════════════════════════════════════════════════════
-def sheet3():
-    S = 3.0
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
-
-    # ── Structural dimensions ────────────────────────────────────────────────
-    CORR_DEPTH = 38    # corrugation depth (mm)
-    WALL_T     = 1.6   # wall steel thickness
-    REINF_W    = 80    # reinforcing plate width behind wall
-    REINF_H    = 180   # reinforcing plate height
-    REINF_T    = 6     # reinforcing plate thickness
-    BRKT_T     = WALKWAY_BRACKET_T  # 8mm
-    BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm
-    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
-    BOLT_D     = 12    # M12 bolt diameter
-    BOLT_R     = BOLT_D / 2
-    TRAY_WALL  = 3
-    TRAY_FLOOR_T = 2
-    TRAY_RIM_YD = PROC_TRAY_YD_NEAR  # = 80mm
-
-    # Bolt assembly dimensions (in the through-thickness direction = Yd axis)
-    WASHER_T   = 3     # flat washer thickness
-    NUT_H      = 10    # M12 nut height
-    BOLT_HEAD  = 8     # hex head height
-
-    # ── Figure ───────────────────────────────────────────────────────────────
-    YD_LO = -100
-    YD_HI = WALKWAY_W + 100
-    Z_LO  = -50
-    Z_HI  = WALKWAY_H + WALKWAY_GRATE_T + 80
-
-    fig, ax = plt.subplots(figsize=(16, 10))
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(Z_LO), sy(Z_HI))
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    # ── Container floor ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(YD_LO), sy(-15)), sx(YD_HI - YD_LO), sy(15),
-                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
-
-    # ── Corrugated wall (cross-section through rib — HOLLOW profile) ─────────
-    # The corrugation is a trapezoidal fold in the sheet steel, NOT solid.
-    # At a rib cross-section, we see:
-    #   - Exterior panel (1.6mm steel, at Yd = -CORR_DEPTH - WALL_T)
-    #   - Two rib side walls (1.6mm each, connecting exterior panel to rib face)
-    #   - Rib interior face/flange (1.6mm, at Yd = 0)
-    #   - Air gap between exterior panel and rib face
-    # The bolt passes through: rib face → AIR GAP → exterior panel → reinf plate.
-    RIB_FLANGE_W = 20  # rib face flange width (flat part, approx)
-
-    ext_panel_yd = -CORR_DEPTH - WALL_T
-
-    # Exterior wall steel panel (full height)
-    ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),
-                            sx(WALL_T), sy(Z_HI),
-                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
-                            hatch="///"))
-
-    # Rib side walls (1.6mm steel, connecting exterior panel to rib face)
-    # These are the sloped sides of the trapezoid — shown as vertical strips
-    # at the edges of the rib (simplified; real profile is sloped)
-    rib_side_yd_top = -WALL_T  # near the rib face
-    rib_side_yd_bot = -CORR_DEPTH  # near the exterior panel
-    # Left rib wall
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH), sy(0)),
-                            sx(WALL_T), sy(Z_HI),
-                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3,
-                            hatch="///"))
-
-    # Rib interior face (flange — where bracket bolts on)
-    ax.add_patch(Rectangle((sx(-WALL_T), sy(0)),
-                            sx(WALL_T), sy(Z_HI),
-                            fc="#909098", ec=C_OUT, lw=1.2, zorder=3,
-                            hatch="///"))
-
-    # Air gap inside the rib (light fill to show it's hollow)
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(Z_HI),
-                            fc="#F0F0F0", ec="none", lw=0, zorder=2))
-    # Dashed outline of air gap
-    ax.add_patch(Rectangle((sx(-CORR_DEPTH + WALL_T), sy(0)),
-                            sx(CORR_DEPTH - 2 * WALL_T), sy(Z_HI),
-                            fc="none", ec=C_DIM, lw=0.5, ls="--", zorder=3))
-
-    # Air gap label
-    ax.text(sx(-CORR_DEPTH / 2), sy(Z_HI * 0.45),
-            "AIR\nGAP",
-            ha="center", va="center", fontsize=6, color=C_DIM,
-            **FONT, zorder=15, style="italic")
-
-    # Rib face (interior surface at Yd=0)
-    ax.plot([sx(0), sx(0)], [sy(0), sy(Z_HI)],
-            color=C_OUT, lw=2.0, zorder=4)
-
-    ax.text(sx(-CORR_DEPTH / 2), sy(Z_HI - 8),
-            "CORRUGATED\nWALL RIB\n(1.6mm CORTEN\nHOLLOW PROFILE)",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── Reinforcing plate (bonded to exterior wall face) ─────────────────────
-    reinf_yd = ext_panel_yd - REINF_T
-    ax.add_patch(Rectangle((sx(reinf_yd), sy(0)),
-                            sx(REINF_T), sy(REINF_H),
-                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, sx(reinf_yd - 1), sy(REINF_H * 0.9),
-           sx(reinf_yd - 20), sy(REINF_H * 0.9 + 30),
-           f"REINFORCING\nPLATE\n{REINF_W}\u00d7{REINF_H}\n\u00d7{REINF_T}mm\n(EXTERIOR)",
-           color="#C08040", fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Bracket mounting plate (flat against rib interior face) ──────────────
-    ax.add_patch(Rectangle((sx(0), sy(0)),
-                            sx(BRKT_T), sy(BRKT_VERT),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-
-    # ── Through-bolts (cross-section: horizontal bars) ───────────────────────
-    # The bolt passes horizontally through: reinf plate → wall → rib → bracket
-    # Shown in cross-section as a horizontal rectangle (bolt shank)
-    # with a hex head on the exterior and a nut on the interior.
-    bolt_z1 = 30
-    bolt_z2 = 120
-    C_BOLT = "#505058"
-
-    for bz in [bolt_z1, bolt_z2]:
-        # Bolt shank — horizontal bar from reinf plate through to bracket face
-        shank_left = reinf_yd
-        shank_right = BRKT_T
-        shank_hw = BOLT_R * 0.4  # half-width of shank in Z (cross-section)
-        ax.add_patch(Rectangle((sx(shank_left), sy(bz - shank_hw)),
-                                sx(shank_right - shank_left), sy(shank_hw * 2),
-                                fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))
-
-        # Hex head on exterior side (left of reinforcing plate)
-        head_left = reinf_yd - BOLT_HEAD
-        ax.add_patch(Rectangle((sx(head_left), sy(bz - BOLT_R)),
-                                sx(BOLT_HEAD), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Washer under head
-        ax.add_patch(Rectangle((sx(reinf_yd - WASHER_T), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
-
-        # Nut on interior side (right of bracket plate)
-        nut_left = BRKT_T
-        ax.add_patch(Rectangle((sx(nut_left), sy(bz - BOLT_R)),
-                                sx(NUT_H), sy(BOLT_D),
-                                fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=10))
-        # Washer under nut
-        ax.add_patch(Rectangle((sx(nut_left), sy(bz - BOLT_R - 1)),
-                                sx(WASHER_T), sy(BOLT_D + 2),
-                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
-
-    # Bolt label with layer callout
-    leader(ax, sx(BRKT_T + NUT_H + 2), sy(bolt_z1),
-           sx(BRKT_T + 15), sy(bolt_z1 - 20),
-           f"M{BOLT_D} \u00d7 80mm THROUGH-BOLT\nHEAD (EXT) \u2192 REINF PLATE \u2192\nEXT PANEL \u2192 AIR GAP \u2192 RIB\nFACE \u2192 BRACKET \u2192 NUT (INT)\n2 PER BRACKET",
-           color=C_DIM, fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Horizontal arm ───────────────────────────────────────────────────────
-    ARM_DEPTH = BRKT_T + 2
-    arm_bot = BRKT_ARM_Z - ARM_DEPTH
-    GUSSET_REACH = 70
-
-    ax.add_patch(Rectangle((sx(0), sy(arm_bot)),
-                            sx(WALKWAY_W), sy(ARM_DEPTH),
-                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
-    ax.plot([sx(0), sx(WALKWAY_W)], [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
-            color=C_OUT, lw=2.0, zorder=7)
-
-    # ── Gusset underneath ────────────────────────────────────────────────────
-    gusset_verts = [
-        (sx(0), sy(0)),
-        (sx(0), sy(arm_bot)),
-        (sx(GUSSET_REACH), sy(arm_bot)),
-    ]
-    ax.add_patch(Polygon(gusset_verts, closed=True,
-                         fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=5, alpha=0.85))
-    ax.plot([sx(0), sx(GUSSET_REACH)], [sy(0), sy(arm_bot)],
-            color=C_OUT, lw=1.5, zorder=6)
-
-    # Weld symbols
-    for wx_pos, wz_pos in [(GUSSET_REACH / 3, arm_bot), (BRKT_T / 2, BRKT_ARM_Z * 0.4)]:
-        ax.plot([sx(wx_pos - 4), sx(wx_pos), sx(wx_pos + 4)],
-                [sy(wz_pos), sy(wz_pos - 5), sy(wz_pos)],
-                color="#CC4400", lw=1.5, zorder=8)
-
-    # Bracket label
-    leader(ax, sx(WALKWAY_W * 0.4), sy(BRKT_ARM_Z + 1),
-           sx(WALKWAY_W * 0.55), sy(BRKT_VERT * 0.8),
-           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(NEAR/FAR WALKWAYS)",
-           color=C_BRKT, fs=6,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Processing tray ──────────────────────────────────────────────────────
-    ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL), sy(0)),
-                            sx(TRAY_WALL), sy(PROC_TRAY_RIM),
-                            fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=4))
-    tray_floor_end = YD_HI - 20
-    ax.add_patch(Rectangle((sx(TRAY_RIM_YD), sy(0)),
-                            sx(tray_floor_end - TRAY_RIM_YD), sy(TRAY_FLOOR_T),
-                            fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
-
-    # ── Grated deck ──────────────────────────────────────────────────────────
-    # Grating sits on bracket arm: bottom at BRKT_ARM_Z (75mm), top at WALKWAY_H (100mm)
-    grate_bot = BRKT_ARM_Z  # = 75mm
-    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm
-    ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
-                            fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
-    bar_spacing = 34.2
-    bar_w = 3
-    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
-        ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
-                                sx(bar_w), sy(WALKWAY_GRATE_T),
-                                fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
-
-    # ── Grating clip (innermost edge, closest to processing tray) ──────────
-    clip_yd = WALKWAY_W - 20
-    clip_w = 8
-    clip_below = 12   # extends below arm top
-    clip_above = 5    # extends above grate top
-    clip_bot = BRKT_ARM_Z - clip_below
-    clip_top = grate_top + clip_above
-    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot)),
-                            sx(clip_w), sy(clip_top - clip_bot),
-                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd + clip_w), sy(BRKT_ARM_Z),
-           sx(clip_yd + 30), sy(BRKT_ARM_Z + 55),
-           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Dimension lines ──────────────────────────────────────────────────────
-    draw_dim_v(ax, sx(reinf_yd - 15), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm VERT", offset=sx(6), fs=6.5, right=True, font=FONT)
-    draw_dim_h(ax, sx(0), sx(WALKWAY_W), sy(grate_top + 60),
-               f"{WALKWAY_W}mm CANTILEVER ARM", offset=sy(6), fs=7, font=FONT)
-    draw_dim_v(ax, sx(WALKWAY_W + 15), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm\nDECK", offset=sx(6), fs=6.5, right=True, font=FONT)
-    draw_dim_v(ax, sx(WALKWAY_W + 50), sy(grate_bot), sy(grate_top),
-               f"{WALKWAY_GRATE_T}mm", offset=sx(6), fs=6, right=True, font=FONT)
-    draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-20),
-               f"{CORR_DEPTH}mm CORR", offset=sy(10), fs=6, above=False, font=FONT)
-    draw_dim_v(ax, sx(BRKT_T - 80), sy(bolt_z1), sy(bolt_z2),
-               f"{bolt_z2 - bolt_z1}mm BOLT CENTERS", offset=sx(6), fs=6, right=True, font=FONT)
-
-    # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(WALKWAY_W + 50)
-    notes_top = sy(Z_HI - 10)
-    notes = [
-        "NEAR/FAR WALKWAY \u2014 CORRUGATED WALL BRACKET:",
-        "",
-        f"1. Rib is HOLLOW — bolt bridges the air gap.",
-        f"   Path: head \u2192 reinf plate \u2192 ext panel",
-        f"   \u2192 air gap \u2192 rib face \u2192 bracket \u2192 nut.",
-        f"2. Reinforcing plate ({REINF_W}\u00d7{REINF_H}\u00d7{REINF_T}mm)",
-        f"   welded to exterior panel face. Provides",
-        f"   bearing surface for bolt head + washer.",
-        f"3. Bracket spacing: {WALKWAY_BRACKET_SPACING}mm",
-        f"   (every structural wall rib).",
-        f"4. Gusset ({GUSSET_REACH}mm reach) stops before",
-        f"   tray rim at {TRAY_RIM_YD}mm.",
-    ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(6), line,
-                ha="left", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
-
-    # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 7",
-                drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL A \u2014 NEAR/FAR BRACKET ON CORRUGATED WALL RIB",
-                scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 ELEVATION THROUGH RIB",
-                height=0.07)
-
-    fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet3.png"), bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print("  diagrams/walkway-sheet3.png saved")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — Detail: Right Walkway Bracket on Angle Iron (Flat End Wall)
+# SHEET 3 — Detail A: Right Walkway Ceiling-Hung Support (IBC End)
 #
 # Elevation cross-section looking along the walkway (Yd axis).
 # The far end wall is flat 1.6mm steel — no corrugation ribs.
@@ -1409,19 +1114,19 @@ def sheet4():
                 **FONT, zorder=15)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 7",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL B \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
+                subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
                 scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION LOOKING ALONG Yd",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet4.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet3.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet4.png saved")
+    print("  diagrams/walkway-sheet3.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 5 — Detail: Left Walkway Lift-Out at Butt Joint
+# SHEET 4 — Detail B: Left Walkway Lift-Out at Butt Joint
 #
 # Elevation showing the left walkway grating sitting on the near/far walkway
 # bracket arms at the butt joint (X=470).  Left corners are NOT mitered —
@@ -1769,19 +1474,19 @@ def sheet5():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 7",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL C \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
+                subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"SCALE \u2248 2.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.10)
 
-    fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet5.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet4.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet5.png saved")
+    print("  diagrams/walkway-sheet4.png saved")
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 6 — Detail D: Left Walkway Support System
+# SHEET 5 — Detail C: Left Walkway Support System
 #
 # Elevation cross-section showing both support elements for the left walkway:
 #   (a) Floor-standing support leg (cargo door side, X=140, on bare floor)
@@ -2059,20 +1764,20 @@ def sheet6():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 7",
+    title_block(ax, "SHEET 5 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL D \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
+                subtitle="DETAIL C \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
                 scale_note=f"SCALE \u2248 3.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet5.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet6.png saved")
+    print("  diagrams/walkway-sheet5.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Detail E: Bearer Beam Anti-Slip Restraint
+# SHEET 6 — Detail D: Bearer Beam Anti-Slip Restraint
 #
 # Two views of how the bearer beam (50×50×3mm Al RHS) sits on the
 # near walkway bracket arm and is restrained against sliding in X.
@@ -2628,16 +2333,16 @@ def sheet7():
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 7",
+    title_block(ax, "SHEET 6 OF 6",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL E \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
+                subtitle="DETAIL D \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
                 scale_note="SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEWS A/B/C",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet7.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/walkway-sheet7.png saved")
+    print("  diagrams/walkway-sheet6.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2648,9 +2353,8 @@ if __name__ == "__main__":
     print("Generating perimeter walkway diagrams...")
     sheet2()  # plan view → sheet1.png
     sheet1()  # cross-section → sheet2.png
-    sheet3()
-    sheet4()
-    sheet5()
-    sheet6()
-    sheet7()
+    sheet4()  # ceiling-hung → sheet3.png
+    sheet5()  # butt joint → sheet4.png
+    sheet6()  # left support → sheet5.png
+    sheet7()  # bearer beam → sheet6.png
     print("Done.")

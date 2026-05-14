@@ -796,15 +796,6 @@ def _draw_state_diagram(ax, components, state, state_label):
         if c.category == "liquid":
             _draw_component(ax, c, alpha=0.6, show_label=True, fs=5.5)
 
-    # Leader labels for panel and drum (sheet 2 only — omit on sheet 3)
-    if state == "ready":
-        for c in non_container:
-            if c.name in highlight_names:
-                lbl = f"{c.name}: {c.weight_kg:.0f} kg"
-                leader(ax, c.x_cg, c.yd_cg,
-                       c.x_cg, C_WID + 150, lbl,
-                       fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
-
     # CG and quadrants
     total, x_cg, yd_cg, z_cg = compute_cg(active)
     quads = compute_quadrants(active)

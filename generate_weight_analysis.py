@@ -574,11 +574,11 @@ def _draw_cargo_doors(ax, closed=True):
         # Near-side door (Yd < 0)
         ax.add_patch(Rectangle((0, -WALL_T - DOOR_T),
                      C_WID / 2 + WALL_T, DOOR_T,
-                     fc=C_DOOR, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+                     fc=C_DOOR, ec=C_OUT, lw=1.0, zorder=4))
         # Far-side door (Yd > C_WID)
         ax.add_patch(Rectangle((0, C_WID + WALL_T),
                      C_WID / 2 + WALL_T, DOOR_T,
-                     fc=C_DOOR, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+                     fc=C_DOOR, ec=C_OUT, lw=1.0, zorder=4))
         ax.text(-60, C_WID / 2, "DOORS\nOPEN", ha="right", va="center",
                 fontsize=5, color=C_DIM, style="italic", zorder=3, **_FONT)
     # Wall thickness at cargo door end
@@ -933,24 +933,51 @@ def sheet4(components):
         splits = compute_splits(quads, total)
         cg_points.append((x_cg, yd_cg, z_cg, total))
 
-        # Draw container outline
-        ax.add_patch(Rectangle((0, 0), C_LEN, C_WID,
-                     fc="#F8F8F8", ec=C_OUT, lw=1.5, zorder=1))
+        # Draw container outline and cargo doors
+        _draw_container_outline(ax)
+        _draw_cargo_doors(ax, closed=(state != "ready"))
+
         # Quadrant lines
         ax.plot([C_LEN / 2, C_LEN / 2], [0, C_WID], color="#DDDDDD",
                 lw=0.5, ls="--", zorder=2)
         ax.plot([0, C_LEN], [C_WID / 2, C_WID / 2], color="#DDDDDD",
                 lw=0.5, ls="--", zorder=2)
 
-        # Draw non-liquid components faded
+        # Draw non-liquid, non-container components faded
+        # Separate panel and drum for special rendering
+        highlight_names = {"Hinged panel", "Light trap drum"}
         non_cont = [c for c in active
                     if c.category not in ("container", "liquid")]
         for c in non_cont:
+            if c.name in highlight_names:
+                continue
             w = c.x_max - c.x_min
             h = c.yd_max - c.yd_min
             if w > 0 and h > 0:
                 ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
                              fc=c.color, ec="none", alpha=0.2, zorder=3))
+
+        # Draw panel
+        for c in non_cont:
+            if c.name == "Hinged panel":
+                w = c.x_max - c.x_min
+                h = c.yd_max - c.yd_min
+                if w > 0 and h > 0:
+                    ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
+                                 fc=c.color, ec=C_OUT, alpha=0.4, lw=0.6,
+                                 zorder=4))
+
+        # Draw drum as circle
+        for c in non_cont:
+            if c.name == "Light trap drum":
+                if state in ("dry", "exhausted"):
+                    cx = PANEL_SLIDE + PANEL_CENTER_T / 2
+                else:
+                    cx = PANEL_CENTER_T / 2
+                cy = C_WID / 2
+                ax.add_patch(Circle((cx, cy), DRUM_R,
+                             fc="#A08060", ec=C_OUT, lw=0.8, alpha=0.5,
+                             zorder=5))
 
         # Draw liquids
         liquids = [c for c in active if c.category == "liquid"]
@@ -971,8 +998,8 @@ def sheet4(components):
 
         ax.set_title(label, fontsize=9, fontweight="bold", color=C_OUT,
                      **_FONT)
-        ax.set_xlim(-100, C_LEN + 100)
-        ax.set_ylim(-100, C_WID + 100)
+        ax.set_xlim(-250, C_LEN + 100)
+        ax.set_ylim(-250, C_WID + 250)
         ax.set_aspect("equal")
         ax.tick_params(labelsize=5)
 

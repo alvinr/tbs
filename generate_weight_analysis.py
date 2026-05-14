@@ -856,9 +856,9 @@ def sheet_summary(components):
     """Sheet 1: Summary comparison — three states side by side."""
     from matplotlib.gridspec import GridSpec
 
-    fig = plt.figure(figsize=(20, 10))
+    fig = plt.figure(figsize=(20, 8))
     gs = GridSpec(3, 3, figure=fig, height_ratios=[6, 2, 1],
-                 hspace=0.35, wspace=0.25)
+                 hspace=0.15, wspace=0.25)
 
     # Top row: 3 plan views
     plan_axes = [fig.add_subplot(gs[0, i]) for i in range(3)]

@@ -912,7 +912,7 @@ def draw_sheet3():
         DIAGRAMS_DIR, svg_path, C_LT_DRUM,
     )
 
-    FW, FH = 24.0, 14.0
+    FW, FH = 24.0, 11.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
@@ -922,22 +922,12 @@ def draw_sheet3():
     ax.axis("off")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
-    # ── Page title ────────────────────────────────────────────────────────────
-    ax.text(FW / 2, FH - 0.38,
-            "PINHOLE WALL INTERIOR ELEVATION — TBS-001",
-            ha="center", va="center", fontsize=13, fontweight="bold",
-            color=TITLE_COL)
-    ax.text(FW / 2, FH - 0.72,
-            "View looking toward pinhole wall (Yd=0) from inside  ·  Scale 1:40  "
-            "·  All dimensions in mm",
-            ha="center", va="center", fontsize=8.0, color=C_DIM)
-
     # ── Scale ─────────────────────────────────────────────────────────────────
     S = 1.0 / 400.0   # 1 drawing unit = 400mm (approx 1:40 at 150dpi)
 
     # Wall placement in figure space
-    OX = 2.0    # drawing x of wall left edge (X=0, cargo door end)
-    OY = 2.0    # drawing y of wall bottom edge (Z=0, floor)
+    OX = 2.0    # drawing x of wall left edge
+    OY = 1.5    # drawing y of wall bottom edge (Z=0, floor)
 
     C_LEN = TBS_C_LEN   # 5893mm
     C_HGT = TBS_C_HGT   # 2388mm
@@ -952,6 +942,17 @@ def draw_sheet3():
     def wz(z_mm):
         """Map TBS Z (mm) to drawing Y coordinate."""
         return OY + z_mm * S
+
+    # ── Page title (positioned above top dimension lines) ───────────────────
+    TITLE_Y = OY + whgt + 1.30
+    ax.text(FW / 2, TITLE_Y,
+            "PINHOLE WALL INTERIOR ELEVATION — TBS-001",
+            ha="center", va="center", fontsize=13, fontweight="bold",
+            color=TITLE_COL)
+    ax.text(FW / 2, TITLE_Y - 0.34,
+            "View looking toward pinhole wall (Yd=0) from inside  ·  Scale 1:40  "
+            "·  All dimensions in mm",
+            ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     # ── Wall rectangle ────────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((OX, OY), wlen, whgt,
@@ -1190,7 +1191,7 @@ def draw_sheet3():
 
     # ── Component key (right of elevation) ────────────────────────────────────
     KX = OX + wlen + 1.2
-    KY = OY + whgt - 0.3
+    KY = OY + whgt + 0.6
     ax.text(KX, KY + 0.25, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.0, fontweight="bold", color=C_OUT)
     ax.plot([KX, KX + 6.0], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
@@ -1219,7 +1220,6 @@ def draw_sheet3():
     # ── Drawing notes ─────────────────────────────────────────────────────────
     import textwrap
     NX = KX
-    NY = 0.30
     NOTE_W = 6.0
     notes = [
         "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. "
@@ -1241,6 +1241,10 @@ def draw_sheet3():
         wrapped_lines.append(lines)
     total_lines = sum(len(ls) for ls in wrapped_lines) + len(notes) - 1
     box_h = 0.35 + total_lines * LINE_SP + 2 * NOTE_PAD
+
+    # Position notes box directly below component key
+    key_bottom = KY - 0.25 - (len(key_items) - 1) * 0.55 - 0.30
+    NY = key_bottom - box_h
 
     ax.add_patch(FancyBboxPatch((NX - 0.10, NY - NOTE_PAD), NOTE_W, box_h,
                  boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))

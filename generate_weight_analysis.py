@@ -698,7 +698,7 @@ def sheet_dry(components):
             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
 
     ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-1000, C_WID + 900)
+    ax.set_ylim(-1000, C_WID + 500)
     ax.set_aspect("equal")
     ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)

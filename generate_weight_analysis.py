@@ -657,18 +657,18 @@ def sheet1(components):
     # Processing tray first at lower zorder (large area, must not obscure others)
     for c in dry:
         if c.name == "Processing tray":
-            _draw_component(ax, c, alpha=0.3, show_label=False, zorder=3)
-    # Drum as circle
+            _draw_component(ax, c, alpha=0.35, show_label=False, zorder=3)
+    # All other components on top (excluding drum)
+    for c in dry:
+        if c.name not in ("Light trap drum", "Processing tray"):
+            _draw_component(ax, c, alpha=0.7, show_label=False)
+    # Drum as circle on top
     for c in dry:
         if c.name == "Light trap drum":
             drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
             drum_cy = C_WID / 2
             ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
                          fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
-    # All other components on top
-    for c in dry:
-        if c.name not in ("Light trap drum", "Processing tray"):
-            _draw_component(ax, c, alpha=0.5, show_label=False)
 
     # Leader labels for ALL components — split near-side and far-side
     near_comps = [c for c in dry if c.yd_cg < C_WID / 2]

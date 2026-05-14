@@ -161,6 +161,9 @@ Source report: [Electrical & Systems](electrical-report.md).
 **Sheet 2 — Wiring layout and component positions**
 ![TBS-001 Electrical — Sheet 2](assets/electrical-sheet2.png)
 
+**Sheet 3 — Pinhole wall interior elevation: equipment mounting heights, cable trunking, drop conduits, pull-cord switches, LED panels**
+![TBS-001 Electrical — Sheet 3](assets/electrical-sheet3.png)
+
 ---
 
 ## 11. Light Trap Vestibule — Revolving Drum (Current Design)

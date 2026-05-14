@@ -115,6 +115,7 @@ DIAG_IMAGE_FILES = [
     "tilt-swing-combined-summary.png",
     "electrical-sheet1.png",
     "electrical-sheet2.png",
+    "electrical-sheet3.png",
     "power-panel-sheet1.png",
     "lighttrap-sheet1.png",
     "lighttrap-sheet2.png",

@@ -354,7 +354,7 @@ def draw_sheet1():
                 linespacing=1.25, zorder=4)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 2",
+    title_block(ax, "SHEET 1 OF 3",
                 drawing_title="SYSTEM ONE-LINE DIAGRAM",
                 subtitle="Power flow  ·  Component specifications  ·  Circuit fuse ratings  ·  Wire gauges",
                 scale_note="Not to scale",
@@ -876,7 +876,7 @@ def draw_sheet2():
             cy -= LINE_SP * 0.4  # small gap between notes
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 2",
+    title_block(ax, "SHEET 2 OF 3",
                 drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
                 scale_note="1:500  (1 drawing unit = 500 mm)",
@@ -891,10 +891,391 @@ def draw_sheet2():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# SHEET 3 — Pinhole Wall Interior Elevation
+#
+# ORIENTATION:
+#   Viewer stands inside container looking toward the pinhole wall (Yd=0).
+#   Horizontal axis = container X (0=cargo door LEFT, 5893=far end RIGHT).
+#   Vertical axis = Z (0=floor, 2388=ceiling).
+#   Equipment mounted on the wall face is drawn at actual X and Z positions.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def draw_sheet3():
+    from tbs_constants import (
+        C_LEN as TBS_C_LEN, C_HGT as TBS_C_HGT,
+        PH_X as TBS_PH_X, PH_H, PH_D,
+        EP_X, EP_W, EP_H_LO, EP_H_HI,
+        BA_X, BA_W, BA_H_LO, BA_H_HI,
+        PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+        EVAP_X, EVAP_W, EVAP_H,
+        PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
+        DIAGRAMS_DIR, svg_path, C_LT_DRUM,
+    )
+
+    FW, FH = 24.0, 14.0
+    fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+    fig.patch.set_facecolor("white")
+    ax.set_facecolor("white")
+    ax.set_xlim(0, FW)
+    ax.set_ylim(0, FH)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+
+    # ── Page title ────────────────────────────────────────────────────────────
+    ax.text(FW / 2, FH - 0.38,
+            "PINHOLE WALL INTERIOR ELEVATION — TBS-001",
+            ha="center", va="center", fontsize=13, fontweight="bold",
+            color=TITLE_COL)
+    ax.text(FW / 2, FH - 0.72,
+            "View looking toward pinhole wall (Yd=0) from inside  ·  Scale 1:40  "
+            "·  All dimensions in mm",
+            ha="center", va="center", fontsize=8.0, color=C_DIM)
+
+    # ── Scale ─────────────────────────────────────────────────────────────────
+    S = 1.0 / 400.0   # 1 drawing unit = 400mm (approx 1:40 at 150dpi)
+
+    # Wall placement in figure space
+    OX = 2.0    # drawing x of wall left edge (X=0, cargo door end)
+    OY = 2.0    # drawing y of wall bottom edge (Z=0, floor)
+
+    C_LEN = TBS_C_LEN   # 5893mm
+    C_HGT = TBS_C_HGT   # 2388mm
+
+    wlen = C_LEN * S     # wall width in drawing units
+    whgt = C_HGT * S     # wall height in drawing units
+
+    def wx(x_mm):
+        """Map TBS X (mm) to drawing X coordinate."""
+        return OX + x_mm * S
+
+    def wz(z_mm):
+        """Map TBS Z (mm) to drawing Y coordinate."""
+        return OY + z_mm * S
+
+    # ── Wall rectangle ────────────────────────────────────────────────────────
+    ax.add_patch(mpatches.Rectangle((OX, OY), wlen, whgt,
+                 fc="#F8F8F4", ec=C_OUT, lw=2.5, zorder=2))
+
+    # Floor line
+    ax.plot([OX - 0.3, OX + wlen + 0.3], [OY, OY],
+            color=C_OUT, lw=3.0, zorder=3)
+    ax.text(OX + wlen / 2, OY - 0.20, "FLOOR (Z=0)",
+            ha="center", va="top", fontsize=7.5, color=C_DIM)
+
+    # Ceiling line
+    ax.plot([OX - 0.3, OX + wlen + 0.3], [OY + whgt, OY + whgt],
+            color=C_OUT, lw=3.0, zorder=3)
+    ax.text(OX + wlen / 2, OY + whgt + 0.12, "CEILING (Z=2,388mm)",
+            ha="center", va="bottom", fontsize=7.5, color=C_DIM)
+
+    # Wall labels
+    ax.text(OX - 0.15, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
+            ha="right", va="center", fontsize=7.0, color=C_OUT,
+            fontweight="bold")
+    ax.text(OX + wlen + 0.15, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
+            ha="left", va="center", fontsize=7.0, color=C_DIM)
+
+    # ── Cable trunking — horizontal at ceiling corner ─────────────────────────
+    TK_H_MM = 25    # trunking height (mm)
+    TK_W_MM = 40    # trunking depth (mm) — shown as height on elevation
+    TK_Z = C_HGT - TK_H_MM   # bottom of trunking (Z=2363mm)
+    tk_y = wz(TK_Z)
+    tk_h = TK_H_MM * S
+    ax.add_patch(mpatches.Rectangle((OX + 0.02, tk_y), wlen - 0.04, tk_h,
+                 fc=C_PIPE, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
+    ax.text(OX + wlen / 2, tk_y + tk_h / 2,
+            "40×25mm PVC CABLE TRUNKING — FULL LENGTH",
+            ha="center", va="center", fontsize=7.0, fontweight="bold",
+            color="white", zorder=7)
+
+    # ── Helper: wall-mount equipment box ──────────────────────────────────────
+    def wall_equip(x_mm, z_lo, z_hi, w_mm, label, sublabel, fc, badge=""):
+        ex = wx(x_mm)
+        ey = wz(z_lo)
+        ew = w_mm * S
+        eh = (z_hi - z_lo) * S
+        ax.add_patch(mpatches.Rectangle((ex, ey), ew, eh,
+                     fc=fc, ec=C_OUT, lw=1.2, zorder=5, alpha=0.88))
+        cx = ex + ew / 2
+        cy = ey + eh / 2
+        ax.text(cx, cy + 0.08, label,
+                ha="center", va="center", fontsize=7.5, fontweight="bold",
+                color=C_OUT, zorder=6)
+        if sublabel:
+            ax.text(cx, cy - 0.10, sublabel,
+                    ha="center", va="center", fontsize=6.0, color=C_DIM, zorder=6)
+        # Drop conduit from trunking
+        ax.plot([cx, cx], [tk_y, ey + eh],
+                color=C_PIPE, lw=1.2, ls=":", zorder=4)
+        return ex, ey, ew, eh
+
+    # ── External power panel (flush in wall) ──────────────────────────────────
+    # Centered vertically at ~EP mounting height
+    PP_Z_LO = EP_H_LO   # align with bottom of EP
+    PP_Z_HI = PP_Z_LO + PWR_PANEL_H
+    pp_x = wx(PWR_PANEL_X)
+    pp_y = wz(PP_Z_LO)
+    pp_w = PWR_PANEL_W * S
+    pp_h = PWR_PANEL_H * S
+    ax.add_patch(mpatches.Rectangle((pp_x, pp_y), pp_w, pp_h,
+                 fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
+    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 + 0.06,
+            "EXT POWER\nPANEL", ha="center", va="center",
+            fontsize=6.5, fontweight="bold", color=C_OUT, zorder=6)
+    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 - 0.14,
+            "3×MC4 + NEMA", ha="center", va="center",
+            fontsize=5.5, color=C_DIM, zorder=6)
+    # Cable route from panel up to trunking
+    ax.plot([pp_x + pp_w / 2, pp_x + pp_w / 2], [pp_y + pp_h, tk_y],
+            color=C_PIPE, lw=1.2, ls=":", zorder=4)
+
+    # ── Evaporative cooler (floor-standing) ───────────────────────────────────
+    wall_equip(EVAP_X, 0, EVAP_H, EVAP_W,
+               "EVAPORATIVE\nCOOLER", "Circuit E  80W", C_EVAP)
+
+    # ── Electrical panel (wall-mounted) ───────────────────────────────────────
+    wall_equip(EP_X, EP_H_LO, EP_H_HI, EP_W,
+               "ELECTRICAL\nPANEL (EP)", "MPPT + fuse block", C_ELEC)
+
+    # ── Battery bank (wall-mounted) ───────────────────────────────────────────
+    wall_equip(BA_X, BA_H_LO, BA_H_HI, BA_W,
+               "BATTERY BANK", "2×100Ah LiFePO4", C_BATT)
+
+    # ── Pump manifold (wall-mounted) ──────────────────────────────────────────
+    wall_equip(PUMP_X, PUMP_H_LO, PUMP_H_HI, PUMP_W,
+               "PUMP\nMANIFOLD", "Circuit C  100W", "#F5C8A0")
+
+    # ── Pinhole ───────────────────────────────────────────────────────────────
+    ph_x = wx(TBS_PH_X)
+    ph_z = wz(PH_H)
+    ax.add_patch(plt.Circle((ph_x, ph_z), 0.12,
+                 fc="black", ec=C_OUT, lw=1.0, zorder=8))
+    leader(ax, ph_x, ph_z, ph_x, ph_z - 0.8,
+           f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}  Z={PH_H}mm",
+           fs=7.0, ha="center")
+
+    # ── Pull-cord switches ────────────────────────────────────────────────────
+    PS_X_MM = 1800     # X position (near EP)
+    PS_Z_MM = C_HGT - 60   # just below trunking
+    CORD_HANG_Z = 900  # cord bottom hangs to ~900mm above floor (~1500mm above walkway deck at 100mm)
+
+    C_SWITCH = "#E0E0FF"
+    for si, (sw_label, sw_color, sw_x_off) in enumerate([
+        ("D", "#FFD700", -60), ("G", "#FFFFF0", 60)
+    ]):
+        sx = wx(PS_X_MM + sw_x_off)
+        sz = wz(PS_Z_MM)
+        # Switch body
+        sw_sz = 0.20
+        ax.add_patch(mpatches.Rectangle((sx - sw_sz/2, sz - sw_sz/2), sw_sz, sw_sz,
+                     fc=sw_color, ec=C_OUT, lw=1.2, zorder=7))
+        ax.text(sx, sz, sw_label,
+                ha="center", va="center", fontsize=7.0, fontweight="bold",
+                color=C_OUT, zorder=8)
+        # Pull cord hanging down
+        cord_bot = wz(CORD_HANG_Z)
+        ax.plot([sx, sx], [sz - sw_sz/2, cord_bot],
+                color=C_OUT, lw=0.8, ls="-", zorder=5)
+        # Small circle at cord end (pull handle)
+        ax.add_patch(plt.Circle((sx, cord_bot), 0.06,
+                     fc="white", ec=C_OUT, lw=0.8, zorder=6))
+        # Conduit from switch to trunking
+        ax.plot([sx, sx], [sz + sw_sz/2, tk_y],
+                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+
+    # Pull switch label
+    leader(ax, wx(PS_X_MM), wz(CORD_HANG_Z) - 0.1,
+           wx(PS_X_MM) + 1.2, wz(CORD_HANG_Z) - 0.6,
+           "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
+           fs=6.5, color="#606080")
+
+    # ── LED panels (ceiling-mounted, shown as rectangles at top) ──────────────
+    LED_W_MM = 600
+    LED_H_MM = 30    # panel thickness shown in elevation
+    LED_Z = C_HGT - TK_H_MM - LED_H_MM - 10   # just below trunking
+    LED_POSITIONS = [1000, 2900, 4800]
+    C_LED = "#FFFFF0"
+    for lp_x in LED_POSITIONS:
+        lx = wx(lp_x)
+        lz = wz(LED_Z)
+        lw = LED_W_MM * S
+        lh = LED_H_MM * S
+        ax.add_patch(mpatches.Rectangle((lx, lz), lw, lh,
+                     fc=C_LED, ec=C_OUT, lw=1.0, zorder=5))
+        ax.text(lx + lw / 2, lz + lh / 2, "G",
+                ha="center", va="center", fontsize=6.5, fontweight="bold",
+                color=C_OUT, zorder=6)
+        # Conduit stub up to trunking
+        ax.plot([lx + lw / 2, lx + lw / 2], [lz + lh, tk_y],
+                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+
+    # LED panel leader (label middle panel)
+    mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
+    mid_led_cz = wz(LED_Z + LED_H_MM)
+    leader(ax, mid_led_cx, mid_led_cz,
+           mid_led_cx + 1.5, mid_led_cz + 0.5,
+           "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
+           fs=6.5, color="#808000")
+
+    # ── Safelight strip — shown as thin strip near cargo door end ─────────────
+    # Circuit D: red LED strip on inner drum face and cargo door wall
+    # Show the portion on the pinhole wall interior (near X=0)
+    SL_X_MM = 50      # near cargo door end
+    SL_W_MM = 10      # thin strip
+    SL_Z_LO = 200
+    SL_Z_HI = 2100
+    sl_x = wx(SL_X_MM)
+    sl_z = wz(SL_Z_LO)
+    sl_w = max(SL_W_MM * S, 0.08)
+    sl_h = (SL_Z_HI - SL_Z_LO) * S
+    ax.add_patch(mpatches.Rectangle((sl_x, sl_z), sl_w, sl_h,
+                 fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
+    leader(ax, sl_x, sl_z + sl_h / 2,
+           sl_x - 0.5, sl_z + sl_h / 2 + 0.4,
+           "Safelight (D)\nRed LED strip",
+           fs=6.5, color="#B8960A")
+
+    # ── Dimension lines ───────────────────────────────────────────────────────
+    # Overall wall width
+    draw_dim_h(ax, OX, OX + wlen, OY - 0.70,
+               f"{C_LEN} mm  (interior length)",
+               above=False, offset=0.08, fs=7.5)
+    # Overall wall height
+    draw_dim_v(ax, OX - 0.60, OY, OY + whgt,
+               f"{TBS_C_HGT} mm",
+               offset=0.08, fs=7.5)
+
+    # EP height dimensions
+    ep_x_r = wx(EP_X + EP_W)
+    draw_dim_v(ax, ep_x_r + 0.15, OY, wz(EP_H_LO),
+               f"{EP_H_LO}", offset=0.05, fs=6.5)
+    draw_dim_v(ax, ep_x_r + 0.15, wz(EP_H_LO), wz(EP_H_HI),
+               f"{EP_H_HI - EP_H_LO}", offset=0.05, fs=6.5)
+
+    # Battery height dimensions
+    ba_x_r = wx(BA_X + BA_W)
+    draw_dim_v(ax, ba_x_r + 0.15, OY, wz(BA_H_LO),
+               f"{BA_H_LO}", offset=0.05, fs=6.5)
+    draw_dim_v(ax, ba_x_r + 0.15, wz(BA_H_LO), wz(BA_H_HI),
+               f"{BA_H_HI - BA_H_LO}", offset=0.05, fs=6.5)
+
+    # Pinhole height
+    draw_dim_v(ax, ph_x + 0.25, OY, wz(PH_H),
+               f"PH  Z={PH_H}", offset=0.05, fs=6.5)
+
+    # Trunking height callout
+    draw_dim_v(ax, OX + wlen + 0.40, wz(TK_Z), OY + whgt,
+               f"Trunking\n{TK_H_MM}mm", offset=0.05, fs=6.0)
+
+    # Pull switch cord length
+    ps_dim_x = wx(PS_X_MM + 120)
+    draw_dim_v(ax, ps_dim_x, wz(CORD_HANG_Z), wz(PS_Z_MM),
+               f"Cord\n{PS_Z_MM - CORD_HANG_Z}mm", offset=0.05, fs=6.0)
+
+    # ── Horizontal X dimensions for key equipment ─────────────────────────────
+    DIM_Z_TOP = OY + whgt + 0.40
+    draw_dim_h(ax, wx(EVAP_X), wx(EVAP_X + EVAP_W), DIM_Z_TOP,
+               f"Evap  X={EVAP_X}–{EVAP_X+EVAP_W}",
+               above=True, offset=0.05, fs=6.0)
+    draw_dim_h(ax, wx(EP_X), wx(EP_X + EP_W), DIM_Z_TOP + 0.35,
+               f"EP  X={EP_X}–{EP_X+EP_W}",
+               above=True, offset=0.05, fs=6.0)
+    draw_dim_h(ax, wx(BA_X), wx(BA_X + BA_W), DIM_Z_TOP,
+               f"BAT  X={BA_X}–{BA_X+BA_W}",
+               above=True, offset=0.05, fs=6.0)
+    draw_dim_h(ax, wx(PUMP_X), wx(PUMP_X + PUMP_W), DIM_Z_TOP,
+               f"Pump  X={PUMP_X}–{PUMP_X+PUMP_W}",
+               above=True, offset=0.05, fs=6.0)
+
+    # ── Component key (right of elevation) ────────────────────────────────────
+    KX = OX + wlen + 1.2
+    KY = OY + whgt - 0.3
+    ax.text(KX, KY + 0.25, "COMPONENT KEY",
+            ha="left", va="center", fontsize=9.0, fontweight="bold", color=C_OUT)
+    ax.plot([KX, KX + 6.0], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
+
+    key_items = [
+        (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
+        (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
+        (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
+        ("#F5C8A0", "PUMP MANIFOLD",     f"Cct C  |  X={PUMP_X}–{PUMP_X+PUMP_W}  |  Z={PUMP_H_LO}–{PUMP_H_HI}mm"),
+        (C_EVAP,    "EVAP COOLER",       f"Cct E  |  X={EVAP_X}–{EVAP_X+EVAP_W}  |  Floor to Z={EVAP_H}mm"),
+        (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
+        ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
+        ("#E0E0FF", "PULL SWITCHES",     "Ccts D & G  |  SPST 6A  |  X≈1,800mm  |  Cord to ~1,500mm AFF"),
+        ("#FFD700", "SAFELIGHT (D)",     "Red LED strip  |  Near cargo door end"),
+    ]
+    for j, (fc, title_k, spec) in enumerate(key_items):
+        ky = KY - 0.25 - j * 0.55
+        ax.add_patch(mpatches.Rectangle((KX, ky - 0.16), 0.45, 0.38,
+                     fc=fc, ec=C_OUT, lw=0.8, zorder=4))
+        ax.text(KX + 0.60, ky + 0.04, title_k,
+                ha="left", va="center", fontsize=7.5,
+                fontweight="bold", color=C_OUT)
+        ax.text(KX + 0.60, ky - 0.12, spec,
+                ha="left", va="center", fontsize=6.5, color=C_DIM)
+
+    # ── Drawing notes ─────────────────────────────────────────────────────────
+    import textwrap
+    NX = KX
+    NY = 0.30
+    NOTE_W = 6.0
+    notes = [
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. "
+        "All equipment is wall-mounted or floor-standing on the pinhole wall face.",
+        "2. Cable trunking runs horizontally at the ceiling corner rail (Z≈2,363mm). "
+        "Drop conduits (10mm corrugated, shown dashed) descend to each device.",
+        "3. Pull-cord switches at ceiling height, cords hang to ~1,500mm above "
+        "walkway deck (~900mm AFF). D=safelight (red), G=white light.",
+        "4. LED panels are ceiling-mounted, centered across container width. "
+        "Connected to Circuit G via trunking. Non-operational only.",
+    ]
+    WRAP_CHARS = 100
+    NOTE_FS = 6.5
+    LINE_SP = 0.20
+    NOTE_PAD = 0.12
+    wrapped_lines = []
+    for note in notes:
+        lines = textwrap.wrap(note, width=WRAP_CHARS)
+        wrapped_lines.append(lines)
+    total_lines = sum(len(ls) for ls in wrapped_lines) + len(notes) - 1
+    box_h = 0.35 + total_lines * LINE_SP + 2 * NOTE_PAD
+
+    ax.add_patch(FancyBboxPatch((NX - 0.10, NY - NOTE_PAD), NOTE_W, box_h,
+                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
+    ax.text(NX + 0.05, NY + box_h - NOTE_PAD - 0.15, "DRAWING NOTES:",
+            ha="left", va="center", fontsize=7.5,
+            fontweight="bold", color=C_OUT)
+    cy = NY + box_h - NOTE_PAD - 0.40
+    for ni, lines in enumerate(wrapped_lines):
+        for line in lines:
+            ax.text(NX + 0.05, cy, line,
+                    ha="left", va="center", fontsize=NOTE_FS, color=C_DIM)
+            cy -= LINE_SP
+        if ni < len(wrapped_lines) - 1:
+            cy -= LINE_SP * 0.4
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 3 OF 3",
+                drawing_title="PINHOLE WALL INTERIOR ELEVATION",
+                subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
+                scale_note="1:40  (1 drawing unit = 400 mm)",
+                doc_id="TBS-ELEC · Electrical & Systems")
+
+    plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet3.png", dpi=150, bbox_inches="tight",
+                pad_inches=0.10, facecolor="white")
+    plt.savefig(svg_path(f"{DIAGRAMS_DIR}/electrical-sheet3.png"), bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print("  → electrical-sheet3.png  Done.")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
     os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating TBS-001 Electrical & Systems diagrams...")
     draw_sheet1()
     draw_sheet2()
+    draw_sheet3()
     print("Done.")

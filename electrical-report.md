@@ -399,6 +399,14 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
 ---
 
+**Sheet 3 — Pinhole Wall Interior Elevation**
+
+Interior elevation of the pinhole wall face (Yd=0), looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.
+
+![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
+
+---
+
 ## 10. Shopping List
 
 All US/SoCal sources. Prices approximate as of 2026.

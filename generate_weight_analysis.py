@@ -966,19 +966,17 @@ def sheet_summary(components):
     ax_table.set_ylim(0, 1)
     ax_table.axis("off")
 
-    table_lines = [
-        "─" * 100,
-        f"{'State':<30} {'Total (kg)':>12} {'X_cg (mm)':>12} "
-        f"{'Yd_cg (mm)':>12} {'Z_cg (mm)':>12}  {'ISO margin':>14}",
-        "─" * 100,
-    ]
+    hdr = (f"{'State':<36}  {'Total (kg)':>10}  {'X_cg (mm)':>10}  "
+           f"{'Yd_cg (mm)':>10}  {'Z_cg (mm)':>10}  {'ISO margin':>12}")
+    rule = "-" * len(hdr)
+    table_lines = [rule, hdr, rule]
     for (state, label, _), (x_cg, yd_cg, z_cg, total) in zip(states, cg_points):
         clean_label = label.replace("\n", " ")
         margin = 24000 - total
         table_lines.append(
-            f"{clean_label:<30} {total:>12,.0f} {x_cg:>12,.0f} "
-            f"{yd_cg:>12,.0f} {z_cg:>12,.0f}  {margin:>14,.0f}")
-    table_lines.append("─" * 100)
+            f"{clean_label:<36}  {total:>10,.0f}  {x_cg:>10,.0f}  "
+            f"{yd_cg:>10,.0f}  {z_cg:>10,.0f}  {margin:>12,.0f}")
+    table_lines.append(rule)
     table_text = "\n".join(table_lines)
     ax_table.text(0.5, 0.5, table_text, ha="center", va="center",
                   fontsize=7.5, color=C_OUT, **_FONT,

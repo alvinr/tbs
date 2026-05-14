@@ -930,153 +930,258 @@ def sheet5():
     fig = plt.figure(figsize=(16, 12))
     fig.patch.set_facecolor(BG)
 
-    # ── PANEL A: Cross-section of clamp on frame angle (top-left) ────────────
+    # ── PANEL A: Context cross-section — ceiling rail to muslin (top-left) ────
     ax_a = fig.add_axes([0.04, 0.45, 0.46, 0.48])
     ax_a.set_facecolor(BG)
     ax_a.axis("off")
 
-    S = 3.0  # scale factor for panel A
+    S = 1.8  # reduced scale to fit full vertical chain
     def sa(mm): return mm * S
 
     LEG = FP_ANGLE_LEG   # 50.8mm
     T   = FP_ANGLE_T     # 4.8mm
 
-    # Coordinate system: pinhole-facing leg is horizontal (Yd axis),
-    # perpendicular leg is vertical (Z axis). Corner of angle at origin.
-    ax_a.set_xlim(sa(-30), sa(LEG + 80))
-    ax_a.set_ylim(sa(-60), sa(LEG + 40))
+    # Geometry constants for the suspension chain
+    RAIL_H = 30       # HGR20 rail height
+    RAIL_W = 20       # HGR20 rail visible width
+    CARRIAGE_H = 28   # HGH20CA carriage height
+    CARRIAGE_W = 44   # HGH20CA carriage width
+    BRACKET_H = 40    # suspension bracket height
+    BRACKET_W = 60    # suspension bracket width
+    LBRACKET_H = 50   # corner L-bracket vertical extent
+    LBRACKET_W = 40   # corner L-bracket horizontal extent
+    LBRACKET_T = 6    # 1/4" aluminum plate
+    BEARING_D = 25    # GIR25-DO rod-end bore
+    CEILING_T = 8     # visual ceiling thickness
+
+    # Coordinate system: angle corner at (0, 0).
+    # Positive Y = up toward ceiling. Negative Y = down toward floor.
+    # Positive X = toward pinhole (horizontal leg direction).
+
+    # Stack heights above angle frame top (Y=T):
+    lbracket_bot = T + 5          # small gap above angle
+    lbracket_top = lbracket_bot + LBRACKET_H
+    bearing_cy = lbracket_top - 15  # bearing center in L-bracket
+    bracket_bot = lbracket_top + 5
+    bracket_top = bracket_bot + BRACKET_H
+    carriage_bot = bracket_top
+    carriage_top = carriage_bot + CARRIAGE_H
+    rail_bot = carriage_top
+    rail_top = rail_bot + RAIL_H
+    ceiling_bot = rail_top
+    ceiling_top = ceiling_bot + CEILING_T
+
+    ax_a.set_xlim(sa(-35), sa(LEG + 85))
+    ax_a.set_ylim(sa(-LEG - 10), sa(ceiling_top + 15))
     ax_a.set_aspect("equal")
 
-    # Aluminum angle — L-profile
-    # Pinhole-facing leg: horizontal, from (0,0) to (LEG, T)
+    # ── Ceiling ──────────────────────────────────────────────────────────────
+    C_CEIL = "#A0A0A0"
+    ax_a.add_patch(Rectangle((sa(-30), sa(ceiling_bot)),
+                              sa(LEG + 110), sa(CEILING_T),
+                              fc=C_CEIL, ec=ANNO, lw=1.2, hatch="xxx", zorder=3))
+    ax_a.text(sa(LEG + 75), sa(ceiling_bot + CEILING_T / 2),
+              "CONTAINER\nCEILING", ha="left", va="center",
+              fontsize=5, color=DIM, **FONT, zorder=15)
+
+    # ── HGR20 Rail (bolted to ceiling, hangs down) ───────────────────────────
+    C_RAIL = "#708090"
+    rail_cx = LEG / 2  # centered on angle
+    ax_a.add_patch(Rectangle((sa(rail_cx - RAIL_W / 2), sa(rail_bot)),
+                              sa(RAIL_W), sa(RAIL_H),
+                              fc=C_RAIL, ec=ANNO, lw=1.2, zorder=4))
+    leader(ax_a, sa(rail_cx), sa(rail_bot + RAIL_H / 2),
+           sa(rail_cx + 50), sa(rail_bot + RAIL_H / 2 + 15),
+           f"HGR20 RAIL\n({RAIL_W}×{RAIL_H}mm)",
+           color=C_RAIL, fs=5.5, ha="left", va="center",
+           arrow_style="-|>", font=FONT)
+
+    # ── HGH20CA Carriage block ───────────────────────────────────────────────
+    C_CARR = "#607080"
+    ax_a.add_patch(Rectangle((sa(rail_cx - CARRIAGE_W / 2), sa(carriage_bot)),
+                              sa(CARRIAGE_W), sa(CARRIAGE_H),
+                              fc=C_CARR, ec=ANNO, lw=1.2, zorder=5))
+    leader(ax_a, sa(rail_cx + CARRIAGE_W / 2), sa(carriage_bot + CARRIAGE_H / 2),
+           sa(rail_cx + 55), sa(carriage_bot + CARRIAGE_H / 2 - 10),
+           f"HGH20CA\nCARRIAGE\n({CARRIAGE_W}×{CARRIAGE_H}mm)",
+           color=C_CARR, fs=5.5, ha="left", va="center",
+           arrow_style="-|>", font=FONT)
+
+    # ── Suspension bracket ───────────────────────────────────────────────────
+    C_BRKT = "#8090A0"
+    ax_a.add_patch(Rectangle((sa(rail_cx - BRACKET_W / 2), sa(bracket_bot)),
+                              sa(BRACKET_W), sa(BRACKET_H),
+                              fc=C_BRKT, ec=ANNO, lw=1.0, zorder=4))
+    ax_a.text(sa(rail_cx), sa(bracket_bot + BRACKET_H / 2),
+              "BRACKET", ha="center", va="center",
+              fontsize=5, color="white", fontweight="bold", **FONT, zorder=15)
+
+    # ── Corner L-bracket (1/4" Al plate) ─────────────────────────────────────
+    # Vertical part connects to bracket above; horizontal part connects to angle
+    lbk_x = rail_cx - LBRACKET_W / 2
+    # Vertical arm
+    ax_a.add_patch(Rectangle((sa(lbk_x), sa(lbracket_bot)),
+                              sa(LBRACKET_T), sa(LBRACKET_H),
+                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
+    # Horizontal arm (connects to angle frame)
+    ax_a.add_patch(Rectangle((sa(lbk_x), sa(lbracket_bot)),
+                              sa(LBRACKET_W), sa(LBRACKET_T),
+                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
+    leader(ax_a, sa(lbk_x + LBRACKET_W / 2), sa(lbracket_bot + LBRACKET_H / 2),
+           sa(-25), sa(lbracket_bot + LBRACKET_H / 2),
+           f"L-BRACKET\n(1/4\" Al PLATE)",
+           color=DIM, fs=5, ha="right", va="center",
+           arrow_style="-|>", font=FONT)
+
+    # ── Rod-end spherical bearing ────────────────────────────────────────────
+    C_BEAR = "#C08040"
+    ax_a.add_patch(Circle((sa(lbk_x + LBRACKET_T / 2), sa(bearing_cy)),
+                           sa(BEARING_D / 2),
+                           fc=C_BEAR, ec=ANNO, lw=1.0, zorder=6))
+    ax_a.add_patch(Circle((sa(lbk_x + LBRACKET_T / 2), sa(bearing_cy)),
+                           sa(BEARING_D / 4),
+                           fc=BG, ec=ANNO, lw=0.8, zorder=7))
+    leader(ax_a, sa(lbk_x - 2), sa(bearing_cy),
+           sa(-25), sa(bearing_cy - 15),
+           f"GIR25-DO\nROD-END BEARING\n(FREE ROTATION\nFOR TILT/SWING)",
+           color=C_BEAR, fs=5, ha="right", va="center",
+           arrow_style="-|>", font=FONT)
+
+    # ── Aluminum angle — L-profile ───────────────────────────────────────────
+    # Pinhole-facing leg: horizontal
     ax_a.add_patch(Rectangle((sa(0), sa(0)), sa(LEG), sa(T),
                               fc=C_ALUM, ec=ANNO, lw=1.5, zorder=3))
-    # Perpendicular leg: vertical, from (0,0) to (T, -LEG) [going down]
+    # Perpendicular leg: vertical (going down)
     ax_a.add_patch(Rectangle((sa(0), sa(-LEG + T)), sa(T), sa(LEG - T),
                               fc=C_ALUM, ec=ANNO, lw=1.5, zorder=3))
-    # Hatching for angle cross-section
+    # Hatching
     ax_a.add_patch(Rectangle((sa(0), sa(0)), sa(LEG), sa(T),
                               fc="none", ec="#8898A8", lw=0.3, hatch="///", zorder=4))
     ax_a.add_patch(Rectangle((sa(0), sa(-LEG + T)), sa(T), sa(LEG - T),
                               fc="none", ec="#8898A8", lw=0.3, hatch="///", zorder=4))
 
     ax_a.text(sa(LEG / 2), sa(T + 3), "PINHOLE-FACING LEG",
-              ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
+              ha="center", va="bottom", fontsize=5, color=DIM, **FONT, zorder=15)
     ax_a.text(sa(-3), sa(-LEG / 2 + T), "PERP.\nLEG",
-              ha="right", va="center", fontsize=5.5, color=DIM, rotation=90, **FONT, zorder=15)
+              ha="right", va="center", fontsize=5, color=DIM, rotation=90, **FONT, zorder=15)
 
     # ── Muslin wrap path ──────────────────────────────────────────────────────
-    # Muslin drapes over pinhole-facing leg, wraps around outside corner,
-    # hem hangs down along outside of perpendicular leg.
-    muslin_t = 1.5  # visual thickness for muslin line
-    hem_end = -CLAMP_BASE_H  # hem hangs to about here on perp leg
+    muslin_t = 1.5
+    hem_end = -CLAMP_BASE_H
 
-    # Path: from right side of pinhole leg, over top, around corner, down perp leg
     muslin_pts_x = [sa(LEG + 10), sa(LEG), sa(LEG), sa(LEG + muslin_t),
                     sa(LEG + muslin_t), sa(T + muslin_t), sa(T + muslin_t)]
     muslin_pts_y = [sa(T / 2), sa(T / 2), sa(T + muslin_t), sa(T + muslin_t),
                     sa(T + muslin_t), sa(T + muslin_t), sa(hem_end)]
 
-    ax_a.plot(muslin_pts_x, muslin_pts_y, color=C_MUSLIN, lw=4, solid_capstyle="round",
+    ax_a.plot(muslin_pts_x, muslin_pts_y, color=C_MUSLIN, lw=3, solid_capstyle="round",
               zorder=5, alpha=0.8)
-    ax_a.plot(muslin_pts_x, muslin_pts_y, color=ANNO, lw=1.0, zorder=6)
+    ax_a.plot(muslin_pts_x, muslin_pts_y, color=ANNO, lw=0.8, zorder=6)
 
     leader(ax_a, sa(LEG + 5), sa(T + muslin_t + 2),
-           sa(LEG + 30), sa(T + 20),
-           "MUSLIN\n(100mm HEM)", color=C_MUSLIN, fs=6,
+           sa(LEG + 40), sa(T + 20),
+           "MUSLIN\n(100mm HEM)", color=C_MUSLIN, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Clamp base plate (bolted to perpendicular leg) ────────────────────────
-    base_x = T  # outer face of perp leg
-    base_y_top = 0
+    # ── Clamp base plate ─────────────────────────────────────────────────────
+    base_x = T
     base_y_bot = -CLAMP_BASE_H
     ax_a.add_patch(Rectangle((sa(base_x), sa(base_y_bot)),
                               sa(CLAMP_BASE_T), sa(CLAMP_BASE_H),
                               fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7, alpha=0.9))
 
-    # M5 bolts through base plate + perpendicular leg
+    # M5 bolts
     bolt_z1 = -15
     bolt_z2 = -35
     bolt_d = 5
     for bz in [bolt_z1, bolt_z2]:
-        # Shank through perp leg + base plate
         ax_a.add_patch(Rectangle((sa(0), sa(bz - bolt_d * 0.2)),
                                   sa(T + CLAMP_BASE_T), sa(bolt_d * 0.4),
                                   fc=C_BOLT, ec=ANNO, lw=0.6, zorder=10))
-        # Head on inside of perp leg
         ax_a.add_patch(Rectangle((sa(-4), sa(bz - bolt_d * 0.5)),
                                   sa(4), sa(bolt_d),
                                   fc=C_BOLT, ec=ANNO, lw=0.8, zorder=10))
-        # Nylock nut on outside
         ax_a.add_patch(Rectangle((sa(T + CLAMP_BASE_T), sa(bz - bolt_d * 0.5)),
                                   sa(5), sa(bolt_d),
                                   fc=C_BOLT, ec=ANNO, lw=0.8, zorder=10))
 
-    leader(ax_a, sa(T + CLAMP_BASE_T + 6), sa(bolt_z1),
-           sa(T + CLAMP_BASE_T + 35), sa(bolt_z1 + 10),
-           f"M5 BOLT +\nNYLOCK NUT\n(2 PER CLAMP)", color=C_BOLT, fs=5.5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
+    # ── Cam lever + jaw (closed) ─────────────────────────────────────────────
+    pivot_x = T + CLAMP_BASE_T / 2
+    pivot_z = 0
 
-    # ── Cam lever + jaw (closed position) ─────────────────────────────────────
-    # Pivot at top of base plate, jaw presses muslin against pinhole-facing leg
-    pivot_x = T + CLAMP_BASE_T / 2  # center of base plate
-    pivot_z = 0  # top of base plate = corner of angle
-
-    # Jaw pad (pressed against pinhole-facing leg outer face)
-    jaw_x = LEG - CLAMP_JAW_T  # against outer face of pinhole leg
+    jaw_x = LEG - CLAMP_JAW_T
     jaw_z_top = T + muslin_t + CLAMP_JAW_H / 2
     jaw_z_bot = T + muslin_t - CLAMP_JAW_H / 2
     ax_a.add_patch(Rectangle((sa(jaw_x), sa(jaw_z_bot)),
                               sa(CLAMP_JAW_T), sa(CLAMP_JAW_H),
                               fc=C_NEOP, ec=ANNO, lw=1.0, zorder=8))
 
-    # Lever arm from pivot to jaw
     ax_a.plot([sa(pivot_x), sa(jaw_x + CLAMP_JAW_T / 2)],
               [sa(pivot_z), sa(T + muslin_t)],
-              color=C_CLAMP, lw=3, solid_capstyle="round", zorder=7)
+              color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=7)
 
-    # Pivot circle
-    ax_a.add_patch(Circle((sa(pivot_x), sa(pivot_z)), sa(3),
+    ax_a.add_patch(Circle((sa(pivot_x), sa(pivot_z)), sa(2.5),
                            fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=9))
 
-    # Spring schematic (small zigzag near pivot)
+    # Spring schematic
     sp_x = pivot_x + 5
     sp_z = pivot_z + 3
     spring_xs = [sa(sp_x), sa(sp_x + 2), sa(sp_x + 4), sa(sp_x + 6),
                  sa(sp_x + 8), sa(sp_x + 10)]
     spring_zs = [sa(sp_z), sa(sp_z + 3), sa(sp_z - 2), sa(sp_z + 3),
                  sa(sp_z - 2), sa(sp_z)]
-    ax_a.plot(spring_xs, spring_zs, color=C_CLAMP, lw=1.2, zorder=8)
-    ax_a.text(sa(sp_x + 5), sa(sp_z + 6), "TORSION\nSPRING",
-              ha="center", va="bottom", fontsize=5, color=C_CLAMP, **FONT, zorder=15)
+    ax_a.plot(spring_xs, spring_zs, color=C_CLAMP, lw=1.0, zorder=8)
+
+    # Leader labels for clamp components
+    leader(ax_a, sa(T + CLAMP_BASE_T + 6), sa(bolt_z1),
+           sa(LEG + 40), sa(bolt_z1),
+           f"M5 BOLT + NYLOCK\n(2 PER CLAMP)", color=C_BOLT, fs=5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sa(jaw_x + CLAMP_JAW_T / 2), sa(jaw_z_top + 1),
-           sa(jaw_x - 15), sa(jaw_z_top + 18),
-           f"NEOPRENE JAW\n({CLAMP_JAW_W}×{CLAMP_JAW_H}×{CLAMP_JAW_T}mm\n60A SHORE)",
-           color=C_NEOP, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+           sa(LEG + 40), sa(jaw_z_top + 8),
+           f"NEOPRENE JAW\n60A SHORE", color=C_NEOP, fs=5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, sa((pivot_x + jaw_x) / 2), sa(T / 2 + 2),
-           sa((pivot_x + jaw_x) / 2 - 10), sa(-20),
-           f"CAM LEVER\n({CLAMP_LEVER_L}mm)\nCLOSED POSITION",
-           color=C_CLAMP, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_a, sa(pivot_x + 3), sa(pivot_z - 5),
+           sa(LEG + 40), sa(-20),
+           f"CAM LEVER\nCLOSED", color=C_CLAMP, fs=5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Dimension lines ──────────────────────────────────────────────────────
-    draw_dim_h(ax_a, sa(0), sa(LEG), sa(-LEG - 5),
-               f"{LEG}mm LEG", offset=sa(3), fs=6, font=FONT)
-    draw_dim_v(ax_a, sa(-15), sa(-LEG + T), sa(T),
-               f"{LEG}mm\nLEG", offset=sa(5), fs=6, right=False, font=FONT)
-    draw_dim_h(ax_a, sa(0), sa(T), sa(-LEG - 15),
-               f"{T}mm THK", offset=sa(3), fs=5.5, font=FONT)
+    # ── Load path annotation (right side) ────────────────────────────────────
+    # Vertical arrow showing load path direction
+    path_x = LEG + 70
+    arrow_positions = [
+        (ceiling_bot - 2, "CEILING"),
+        (rail_bot + RAIL_H / 2, "HGR20 RAIL"),
+        (carriage_bot + CARRIAGE_H / 2, "CARRIAGE"),
+        (bracket_bot + BRACKET_H / 2, "BRACKET"),
+        (bearing_cy, "BEARING"),
+        (lbracket_bot + 5, "L-BRACKET"),
+        (T / 2, "ANGLE FRAME"),
+        (-25, "CLAMP"),
+        (-LEG + T, "MUSLIN"),
+    ]
+    for i in range(len(arrow_positions) - 1):
+        y1 = arrow_positions[i][0]
+        y2 = arrow_positions[i + 1][0]
+        ax_a.annotate("", xy=(sa(path_x), sa(y2 + 3)),
+                      xytext=(sa(path_x), sa(y1 - 3)),
+                      arrowprops=dict(arrowstyle="-|>", color="#C04010",
+                                      lw=1.0, alpha=0.6))
 
-    ax_a.text(sa(LEG / 2), sa(LEG + 25),
-              "PANEL A — CROSS-SECTION: CLAMP ON FRAME ANGLE",
-              ha="center", va="bottom", fontsize=8, color=ANNO,
+    ax_a.text(sa(path_x), sa(ceiling_top + 5),
+              "LOAD\nPATH", ha="center", va="bottom",
+              fontsize=5, color="#C04010", fontweight="bold", **FONT, zorder=15)
+
+    # Panel title
+    ax_a.text(sa(LEG / 2), sa(ceiling_top + 12),
+              "PANEL A — CONTEXT: CEILING RAIL TO MUSLIN",
+              ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_a.text(sa(LEG / 2), sa(LEG + 17),
-              "SCALE ≈ 3:1 · SECTION THROUGH CLAMP AT FRAME EDGE",
-              ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
+    ax_a.text(sa(LEG / 2), sa(ceiling_top + 6),
+              "SCALE ≈ 1.8:1 · CROSS-SECTION SHOWING FULL SUSPENSION CHAIN",
+              ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # ── PANEL B: Open vs closed positions (top-right) ────────────────────────
     ax_b = fig.add_axes([0.54, 0.45, 0.42, 0.48])

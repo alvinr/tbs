@@ -646,42 +646,19 @@ def _draw_quadrant_labels(ax, quads, total):
 
 def sheet1(components):
     """Sheet 1: Weight Distribution — Dry, configured for transport."""
-    dry = [c for c in components
-           if c.category not in ("liquid", "container")]
-
     fig, ax = plt.subplots(figsize=(18, 10))
-    _draw_container_outline(ax)
-    _draw_cargo_doors(ax, closed=True)
+    total_dry, x_cg, yd_cg, z_cg = _draw_state_diagram(
+        ax, components, "dry", "DRY (TRANSPORT)")
 
-    # Draw each component (no inline labels — all via leaders)
-    # Draw components using same visual style as sheets 2/3
-    # Panel first (slightly more visible), then drum, then everything else faded
-    highlight_names = {"Hinged panel", "Light trap drum"}
-    panel = [c for c in dry if c.name == "Hinged panel"]
-    others = [c for c in dry
-              if c.name not in highlight_names]
-    for c in panel:
-        _draw_component(ax, c, alpha=0.5, show_label=False)
-    # Drum as circle
-    for c in dry:
-        if c.name == "Light trap drum":
-            drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
-            drum_cy = C_WID / 2
-            ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
-                         fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
-    # All other components
-    for c in others:
-        _draw_component(ax, c, alpha=0.25, show_label=False)
-
-    # Leader labels for ALL components — split near-side and far-side
-    near_comps = [c for c in dry if c.yd_cg < C_WID / 2]
-    far_comps = [c for c in dry if c.yd_cg >= C_WID / 2]
-    # Sort each group by X centroid for tidy leader lines
-    near_comps.sort(key=lambda c: c.x_cg)
-    far_comps.sort(key=lambda c: c.x_cg)
+    # Leader labels for ALL non-container/non-liquid components
+    dry = [c for c in filter_state(components, "dry")
+           if c.category not in ("liquid", "container")]
+    near_comps = sorted([c for c in dry if c.yd_cg < C_WID / 2],
+                        key=lambda c: c.x_cg)
+    far_comps = sorted([c for c in dry if c.yd_cg >= C_WID / 2],
+                       key=lambda c: c.x_cg)
 
     # Near-side labels below the container
-    # Per-component leader tip X overrides (fraction of C_LEN to add)
     tip_x_nudge = {"Near walkway": 0.05}
     base_y_below = -125
     n_near = max(len(near_comps), 1)
@@ -707,44 +684,8 @@ def sheet1(components):
         leader(ax, c.x_cg, c.yd_cg, lx, ly, lbl,
                fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
 
-    # Weight distribution — CG, quadrants, splits (same as sheets 2/3)
-    dry_active = filter_state(components, "dry")
-    total_dry, x_cg, yd_cg, z_cg = compute_cg(dry_active)
-    quads = compute_quadrants(dry_active)
-    splits = compute_splits(quads, total_dry)
-
-    _draw_cg_marker(ax, x_cg, yd_cg,
-                    label=f"CG ({x_cg:,.0f}, {yd_cg:,.0f})")
-
-    # Geometric center
-    ax.plot(C_LEN / 2, C_WID / 2, "+", color="#AAAAAA", ms=10, mew=1.5,
-            zorder=15)
-    ax.text(C_LEN / 2, C_WID / 2 + 100, "GEO\nCENTER", ha="center",
-            va="bottom", fontsize=5, color="#AAAAAA", zorder=15, **_FONT)
-
-    _draw_quadrant_labels(ax, quads, total_dry)
-
-    # Edge split labels
-    ax.text(C_LEN / 2, C_WID * 1.3,
-            f"← FRONT {splits['front_pct']:.1f}%  |  "
-            f"REAR {splits['rear_pct']:.1f}% →",
-            ha="center", va="top", fontsize=6, color=C_DIM,
-            fontweight="bold", zorder=25, **_FONT)
-    ax.text(-120, C_WID * 0.75,
-            f"FAR {splits['far_pct']:.1f}%\n\n"
-            f"NEAR {splits['near_pct']:.1f}%",
-            ha="right", va="center", fontsize=6, color=C_DIM,
-            fontweight="bold", zorder=25, **_FONT)
-
-    # Axes setup
-    ax.set_xlim(-400, C_LEN + 500)
-    ax.set_ylim(-1000, C_WID + 900)
-    ax.set_aspect("equal")
-    ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
-    ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
-    ax.tick_params(labelsize=6)
-
-    # Summary box
+    # Replace the default info box with a more detailed summary
+    # (draw over the one placed by _draw_state_diagram)
     info = (f"DRY WEIGHT SUMMARY\n"
             f"Container tare: 2,200 kg\n"
             f"Equipment + structure: {total_dry - 2200:,.0f} kg\n"
@@ -755,6 +696,13 @@ def sheet1(components):
     ax.text(C_LEN + 100, C_WID * 0.5, info, fontsize=7, color=C_OUT,
             va="center", ha="left", **_FONT,
             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
+
+    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_ylim(-1000, C_WID + 900)
+    ax.set_aspect("equal")
+    ax.set_xlabel("X (mm) — 0 = cargo door end", fontsize=8, **_FONT)
+    ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
+    ax.tick_params(labelsize=6)
 
     title_block(ax, "SHEET 1 OF 4",
                 drawing_title="WEIGHT ANALYSIS",

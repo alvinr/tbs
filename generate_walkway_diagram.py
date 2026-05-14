@@ -64,7 +64,7 @@ from tbs_constants import (
     WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_CEIL_PLATE,
-    WALKWAY_LEFT_SPAN, IBC_COL_X,
+    WALKWAY_LEFT_SPAN, IBC_COL_X, IBC_W, IBC_H_600,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
@@ -932,21 +932,65 @@ def sheet4():
     ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
             zz_t, color=C_OUT, lw=1.0, zorder=5)
     leader(ax, sx(TRAY_DX - TRAY_WALL / 2), sy(zy_bot(PROC_TRAY_RIM)),
-           sx(TRAY_DX - 55), sy(zy_bot(PROC_TRAY_RIM + 30)),
+           sx(TRAY_DX - 55), sy(zy_bot(PROC_TRAY_RIM - 30)),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm",
            color=C_TRAY, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # IBC ghost (short, just in bottom zone)
-    IBC_SHOW_W = 60
+    # IBC ghost — 2×2 stack (bottom zone + through break + into top zone)
+    # Cross-section looking along Yd: horizontal = X, vertical = Z
+    # IBC inner face at IBC_DX, extends IBC_W = 1219mm to the right
+    IBC_SHOW_W = min(IBC_W, X_HI - IBC_DX - 10)  # clip to drawing width
+    C_IBC = "#B08040"
+    IBC_A = 0.20   # ghost alpha
+
+    # Bottom IBC (Z=0 to IBC_H_600) — only bottom zone visible
     ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
                             sx(IBC_SHOW_W), sy(BOT_Z_HI - 10),
-                            fc="#FFE8C0", ec="#B08040", lw=1.0, ls="--",
-                            zorder=2, alpha=0.20))
-    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(zy_bot(BOT_Z_HI - 15)),
-            "IBC\n(GHOST)",
-            ha="center", va="top", fontsize=6, color="#B08040",
-            **FONT, zorder=15, alpha=0.7)
+                            fc="#FFE8C0", ec=C_IBC, lw=1.0, ls="--",
+                            zorder=2, alpha=IBC_A))
+    # IBC cage vertical posts at inner face
+    post_w = 8
+    ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
+                            sx(post_w), sy(BOT_Z_HI - 10),
+                            fc=C_IBC, ec=C_IBC, lw=0.5,
+                            zorder=2, alpha=IBC_A * 1.5))
+    # IBC cage bottom rail
+    ax.add_patch(Rectangle((sx(IBC_DX), sy(zy_bot(0))),
+                            sx(IBC_SHOW_W), sy(post_w),
+                            fc=C_IBC, ec=C_IBC, lw=0.5,
+                            zorder=2, alpha=IBC_A * 1.5))
+
+    # Continuation through break zone (dashed vertical lines)
+    for edge_x in [IBC_DX, IBC_DX + IBC_SHOW_W]:
+        ax.plot([sx(edge_x), sx(edge_x)],
+                [sy(zy_bot(BOT_Z_HI - 10)), sy(zy_top(TOP_Z_LO + 10))],
+                color=C_IBC, lw=0.8, ls=(0, (4, 4)), alpha=0.3, zorder=1)
+
+    # Stacking frame line (at Z = IBC_H_600 = 1010mm) — annotated in break
+    frame_label_y = (zy_bot(BOT_Z_HI) + zy_top(TOP_Z_LO)) / 2 + 10
+    ax.plot([sx(IBC_DX), sx(IBC_DX + IBC_SHOW_W)],
+            [sy(frame_label_y), sy(frame_label_y)],
+            color=C_IBC, lw=1.5, ls="--", alpha=0.5, zorder=1)
+    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(frame_label_y + 5),
+            f"STACKING FRAME\n(Z={IBC_H_600}mm)",
+            ha="center", va="bottom", fontsize=5, color=C_IBC,
+            **FONT, zorder=15, alpha=0.6)
+
+    # Labels
+    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(zy_bot(BOT_Z_HI - 20)),
+            f"BOTTOM IBC\n(GHOST)",
+            ha="center", va="top", fontsize=5.5, color=C_IBC,
+            fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    ax.text(sx(IBC_DX + IBC_SHOW_W / 2), sy(frame_label_y + 30),
+            f"TOP IBC\n(GHOST)",
+            ha="center", va="bottom", fontsize=5.5, color=C_IBC,
+            fontweight="bold", **FONT, zorder=15, alpha=0.7)
+    # Stack annotation
+    ax.text(sx(IBC_DX + IBC_SHOW_W + 5), sy(zy_bot(BOT_Z_HI / 2)),
+            f"2\u00d72 IBC STACK\n{IBC_H_600}\u00d72 = {IBC_H_600*2}mm",
+            ha="left", va="center", fontsize=5, color=C_IBC,
+            **FONT, zorder=15, alpha=0.6)
 
     # Bearer angles
     for br_x in [BR_IN_X, BR_OUT_X]:
@@ -957,8 +1001,8 @@ def sheet4():
                                 sx(BEARER_S), sy(BEARER_T),
                                 fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=8, alpha=0.85))
 
-    leader(ax, sx(BR_IN_X + BEARER_S / 2), sy(zy_bot(BEARER_BOT + 5)),
-           sx(BR_IN_X - 35), sy(zy_bot(BEARER_BOT - 25)),
+    leader(ax, sx(BR_IN_X + BEARER_S * 0.4), sy(zy_bot(BEARER_BOT + 5)),
+           sx(BR_IN_X + 35), sy(zy_bot(BEARER_BOT - 25)),
            f"BEARER ANGLE\n{BEARER_S}\u00d7{BEARER_S}\u00d7{BEARER_T}mm\nSTEEL L-ANGLE\n"
            f"(SPANS {C_WID}mm ALONG Yd)",
            color=C_BRKT, fs=5.5,
@@ -1094,7 +1138,7 @@ def sheet4():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(X_HI - 180)
-    notes_top = sy(zy_top(C_HGT + CEIL_CORR_H + 20))
+    notes_top = sy(zy_top(C_HGT - CEIL_CORR_H + 20))
     notes = [
         "RIGHT WALKWAY \u2014 CEILING-HUNG:",
         "",

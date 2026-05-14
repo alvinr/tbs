@@ -399,7 +399,7 @@ def draw_sheet2():
         DIAGRAMS_DIR, svg_path,
     )
 
-    FW, FH = 24.0, 14.0
+    FW, FH = 24.0, 11.5
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
@@ -408,16 +408,6 @@ def draw_sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
-
-    # ── Page title ────────────────────────────────────────────────────────────
-    ax.text(FW / 2, FH - 0.38,
-            "CONTAINER FLOOR PLAN & WIRING LAYOUT — TBS-001",
-            ha="center", va="center", fontsize=13, fontweight="bold",
-            color=TITLE_COL)
-    ax.text(FW / 2, FH - 0.72,
-            "Top-down plan view  ·  Scale 1:500  ·  All dimensions in mm  "
-            "·  Pinhole on bottom long wall — optical axis crosses container width (2,362mm)",
-            ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     # ── Scale / geometry constants ────────────────────────────────────────────
     # 1 drawing unit = 500 mm
@@ -429,7 +419,7 @@ def draw_sheet2():
     # BOTTOM long wall = Y=0    = PINHOLE WALL  (Yd=0, optical origin)
     # TOP   long wall  = Y=2362 = IMAGE PLANE WALL
     OX = 2.5   # drawing x of container left edge (cargo door side)
-    OY = 4.5   # drawing y of container bottom edge (pinhole wall)
+    OY = 3.8   # drawing y of container bottom edge (pinhole wall)
 
     C_LEN   = TBS_C_LEN    # 5893 mm container interior length
     C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
@@ -451,6 +441,17 @@ def draw_sheet2():
     def ix(x_mm):
         """Map TBS interior X (mm) to drawing X coordinate."""
         return OX + wt + x_mm * S_xi
+
+    # ── Page title — positioned just above container ─────────────────────────
+    title_y = OY + cwid + 1.10
+    ax.text(FW / 2, title_y,
+            "CONTAINER FLOOR PLAN & WIRING LAYOUT — TBS-001",
+            ha="center", va="center", fontsize=13, fontweight="bold",
+            color=TITLE_COL)
+    ax.text(FW / 2, title_y - 0.34,
+            "Top-down plan view  ·  Scale 1:500  ·  All dimensions in mm  "
+            "·  Pinhole on bottom long wall — optical axis crosses container width (2,362mm)",
+            ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     ph_x     = ix(PH_X_MM)     # pinhole x in drawing coords
     zone_l_x = ix(ZONE_L)      # left zone boundary x
@@ -538,7 +539,7 @@ def draw_sheet2():
     # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    leader(ax, ph_x, OY + wt/2, ph_x * 1.1, OY - 0.50,
+    leader(ax, ph_x, OY + wt/2, ph_x * 1.1, OY - 0.35,
            f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}mm  f/{PH_FNO}",
            fs=7.5, ha="center")
 
@@ -813,9 +814,9 @@ def draw_sheet2():
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
-    SP_Y2 = OY - 1.45
+    SP_Y2 = OY - 1.15
     SP_W2 = clen * 0.50
-    SP_H2 = 0.60
+    SP_H2 = 0.50
     ax.add_patch(FancyBboxPatch((SP_X2, SP_Y2), SP_W2, SP_H2,
                  boxstyle="round,pad=0.04", fc=C_SOLAR, ec=C_OUT, lw=1.8, zorder=3))
     ax.text(SP_X2+SP_W2/2, SP_Y2+SP_H2/2,
@@ -831,12 +832,12 @@ def draw_sheet2():
             fontsize=7.0, color="#2D7A2D", ha="right", va="center")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    DIM_Y = OY - 0.82
+    DIM_Y = OY - 0.60
     DIM_X = OX - 0.42
 
-    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.5, f"{C_LEN} mm  (container interior length)",
+    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.20, f"{C_LEN} mm  (container interior length)",
                above=False, offset=0.08, fs=7.5)
-    draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 1.10,
+    draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 0.85,
                f"Film plane  {FP_X_R-FP_X_L}mm",
                above=False, offset=0.08, fs=7.5)
     draw_dim_v(ax, DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)",
@@ -844,7 +845,7 @@ def draw_sheet2():
 
     # ── Component key (right of container) ───────────────────────────────────
     KX = OX + clen + 0.70 + FW * 0.10
-    KY = OY + cwid + 0.80
+    KY = OY + cwid + 0.50
     ax.text(KX, KY + 0.28, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.5, fontweight="bold", color=C_OUT)
     ax.plot([KX, KX + 5.8], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
@@ -872,7 +873,7 @@ def draw_sheet2():
          "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
-        ky = KY - 0.28 - j * 0.60
+        ky = KY - 0.28 - j * 0.50
         ax.add_patch(mpatches.Rectangle((KX, ky-0.20), 0.50, 0.44,
                      fc=bc, ec=C_OUT, lw=0.9, zorder=4))
         ax.text(KX+0.25, ky+0.01, badge,

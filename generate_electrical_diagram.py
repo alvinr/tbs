@@ -844,7 +844,7 @@ def draw_sheet2():
 
     # ── Component key (right of container) ───────────────────────────────────
     KX = OX + clen + 0.70 + FW * 0.10
-    KY = OY + cwid - 0.05
+    KY = OY + cwid + 0.80
     ax.text(KX, KY + 0.28, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.5, fontweight="bold", color=C_OUT)
     ax.plot([KX, KX + 5.8], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)

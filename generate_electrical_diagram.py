@@ -252,7 +252,7 @@ def draw_sheet1():
         ("C", "WATER PUMP  (12V DC)",              "15A", "14 AWG", "100W",
          "Adjacent water totes", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
-         "Red LED strip  |  switched from inside", "#FFEEDD"),
+         "2× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
          "Far short wall  |  light-safe baffled intake", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
@@ -633,15 +633,20 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Safelight D — vertical strip on inner face of cargo door wall (left)
-    SL_X  = OX + wt + 0.05
-    SL_W  = 0.10
-    SL_Y1 = OY + wt + 0.15
-    SL_Y2 = OY + cwid - wt - 0.15
-    ax.add_patch(mpatches.Rectangle((SL_X, SL_Y1), SL_W, SL_Y2-SL_Y1,
-                 fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
-    ax.text(SL_X + SL_W + 0.08, (SL_Y1+SL_Y2)/2, "D",
-            ha="left", va="center", fontsize=7.0, fontweight="bold", color=C_OUT)
+    # Safelight D — two ceiling-mounted N–S strips flanking pinhole centerline
+    from tbs_constants import PH_X as SL_PH_X
+    SL_OFFSET = 1000   # mm offset each side of pinhole X
+    SL_POSITIONS = [SL_PH_X - SL_OFFSET, SL_PH_X + SL_OFFSET]  # X≈1399, 3399
+    SL_STRIP_W = 20    # strip width along X (mm)
+    for sl_x_mm in SL_POSITIONS:
+        sl_dx = ix(sl_x_mm)
+        sl_dw = max(SL_STRIP_W * S_xi, 0.08)
+        sl_dy1 = OY + wt + 0.05
+        sl_dy2 = OY + cwid - wt - 0.05
+        ax.add_patch(mpatches.Rectangle((sl_dx, sl_dy1), sl_dw, sl_dy2 - sl_dy1,
+                     fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
+        ax.text(sl_dx + sl_dw + 0.06, (sl_dy1 + sl_dy2) / 2, "D",
+                ha="left", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     # ── White LED panels (Circuit G) — 3× ceiling-mounted ───────────────────
     LED_W_MM = 600    # panel width along X
@@ -703,7 +708,8 @@ def draw_sheet2():
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
-        (SL_X + SL_W/2,      SL_Y1),
+        (ix(SL_POSITIONS[0] + SL_STRIP_W/2), OY + wt + 0.05),
+        (ix(SL_POSITIONS[1] + SL_STRIP_W/2), OY + wt + 0.05),
         (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
     ] + [(ix(lp + LED_W_MM/2), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
@@ -735,10 +741,12 @@ def draw_sheet2():
            PUMP_CX + 0.8, OY + cwid * 0.3,
            "Water pump (C)\n12V DC  100W",
            fs=6.5, color=C_PUMP)
-    # Safelight — Cct D
-    leader(ax, SL_X + SL_W, (SL_Y1 + SL_Y2) / 2,
-           SL_X + 1.0, OY + cwid * 0.22,
-           "Safelight (D)\nRed LED strip",
+    # Safelight — Cct D (label near-pinhole strip)
+    sl_ldr_x = ix(SL_POSITIONS[0] + SL_STRIP_W / 2)
+    sl_ldr_y = OY + cwid * 0.5
+    leader(ax, sl_ldr_x, sl_ldr_y,
+           sl_ldr_x - 0.8, OY + cwid * 0.22,
+           "Safelight (D)\n2× red LED strips\nceiling, N–S",
            fs=6.5, color="#B8960A")
     # Evap cooler — Cct E
     leader(ax, EVAP_CX, OY + wt + (EVAP_Y + EVAP_D) * S_yd,
@@ -808,7 +816,7 @@ def draw_sheet2():
         ("C",     C_PUMP,    "WATER PUMP — Cct C",
          "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,600mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
-         "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
+         f"2× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{SL_POSITIONS[0]}, {SL_POSITIONS[1]}mm"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
@@ -1119,22 +1127,34 @@ def draw_sheet3():
            "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
            fs=6.5, color="#808000")
 
-    # ── Safelight strip — shown as thin strip near cargo door end ─────────────
-    # Circuit D: red LED strip on inner drum face and cargo door wall
-    # Show the portion on the pinhole wall interior (near X=0)
-    SL_X_MM = 50      # near cargo door end
-    SL_W_MM = 10      # thin strip
-    SL_Z_LO = 200
-    SL_Z_HI = 2100
-    sl_x = wx(SL_X_MM + SL_W_MM)   # mirrored
-    sl_z = wz(SL_Z_LO)
-    sl_w = max(SL_W_MM * S, 0.08)
-    sl_h = (SL_Z_HI - SL_Z_LO) * S
-    ax.add_patch(mpatches.Rectangle((sl_x, sl_z), sl_w, sl_h,
-                 fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
-    leader(ax, sl_x + sl_w, sl_z + sl_h / 2,
-           sl_x + sl_w + 0.6, sl_z + sl_h / 2 + 0.4,
-           "Safelight (D)\nRed LED strip",
+    # ── Safelight strips — two ceiling-mounted N–S strips flanking pinhole ───
+    # Circuit D: 2× red LED strips at X≈1399 and X≈3399 (offset ±1000mm from pinhole)
+    # Shown in elevation as short rectangles at ceiling height (they run N–S, perpendicular to this view)
+    from tbs_constants import PH_X as SL3_PH_X
+    SL3_OFFSET = 1000
+    SL3_POSITIONS = [SL3_PH_X - SL3_OFFSET, SL3_PH_X + SL3_OFFSET]
+    SL3_W_MM = 20     # strip width along X
+    SL3_H_MM = 20     # strip thickness in elevation
+    SL3_Z = C_HGT - TK_H_MM - LED_H_MM - 10 - SL3_H_MM - 10  # below LED panels
+    for sl3_x in SL3_POSITIONS:
+        s3x = wx(sl3_x + SL3_W_MM)   # mirrored
+        s3z = wz(SL3_Z)
+        s3w = max(SL3_W_MM * S, 0.08)
+        s3h = SL3_H_MM * S
+        ax.add_patch(mpatches.Rectangle((s3x, s3z), s3w, s3h,
+                     fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
+        ax.text(s3x + s3w / 2, s3z + s3h / 2, "D",
+                ha="center", va="center", fontsize=5.0, fontweight="bold",
+                color=C_OUT, zorder=6)
+        # Conduit up to trunking
+        ax.plot([s3x + s3w / 2, s3x + s3w / 2], [s3z + s3h, tk_y],
+                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+    # Leader on near-pinhole strip
+    s3_ldr_x = wx(SL3_POSITIONS[0] + SL3_W_MM / 2)
+    s3_ldr_z = wz(SL3_Z)
+    leader(ax, s3_ldr_x, s3_ldr_z,
+           s3_ldr_x + 0.8, s3_ldr_z - 0.5,
+           f"Safelight (D)\n2× red LED strips\nceiling N–S at\nX≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}",
            fs=6.5, color="#B8960A")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
@@ -1205,7 +1225,7 @@ def draw_sheet3():
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
         ("#E0E0FF", "PULL SWITCHES",     "Ccts D & G  |  SPST 6A  |  X≈1,800mm  |  Cord to ~1,500mm AFF"),
-        ("#FFD700", "SAFELIGHT (D)",     "Red LED strip  |  Near cargo door end"),
+        ("#FFD700", "SAFELIGHT (D)",     f"2× red LED strips  |  Ceiling N–S  |  X≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}mm"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):
         ky = KY - 0.25 - j * 0.55

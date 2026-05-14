@@ -160,7 +160,7 @@ The light trap allows a single operator to enter and exit the camera in full day
 | Baffles | 4 internal baffles at 45° offset — no direct line of sight at any rotation angle |
 | Bearings | SKF 6215-2RS1, 75mm ID, top and bottom stub shafts |
 | Seals | 12mm neoprene wiper seals (top/bottom); 20mm compression strip at drum-to-panel gap |
-| Safelight | 12V red LED strip (circuit D), interior drum face |
+| Safelight | 12V red LED strip (circuit D), 2× ceiling strips + drum interior |
 | Surface treatment | RAL 9005 matte powder coat — all interior surfaces |
 | Fabrication | Custom — local metal fab shop. Full BOM in [Master Shopping List](master-shopping-list.md) §7 |
 
@@ -305,7 +305,7 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Red LED strip on the inner drum face and cargo door wall. Used during loading and development when photosensitive material is present. 15W, always available.
+- **Safelight (Circuit D):** Two red LED strips ceiling-mounted running north–south (across the container width), offset ±1,000mm from the pinhole centerline (X≈1,399mm and X≈3,399mm), plus a strip on the inner drum face. Used during loading and development when photosensitive material is present. 15W, always available.
 - **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
@@ -362,7 +362,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 | A | Ventilation fan — intake | 5A | 16 AWG | ~3m |
 | B | Ventilation fan — exhaust (panel-mounted) | 5A | 16 AWG | ~8m + flex connector |
 | C | Water pump | 15A | 14 AWG | ~5m |
-| D | Safelight (interior + drum) | 5A | 18 AWG | ~10m |
+| D | Safelight (2× ceiling strips + drum) | 5A | 18 AWG | ~12m (2 branches + drum) |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
 | F | Film plane actuators (optional) | 20A | 12 AWG | ~6m |
 | G | White LED panels (general lighting) | 10A | 16 AWG | ~12m (3 branches) |

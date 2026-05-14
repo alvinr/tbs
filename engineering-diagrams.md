@@ -225,7 +225,7 @@ Mounting varies by side:
 - **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
   to corrugated wall structural ribs at 457mm (18") centers. Wall-cantilevered —
   no legs, no floor contact.
-- **Right walkway** (IBC end): ceiling-hung design — no floor contact. Two 50×50×5mm
+- **Right walkway** (IBC end): ceiling-hung design — no floor contact. Two 25×25×5mm
   steel angle bearers run full container width (2,362mm along Yd) at X=4,329mm and
   X=4,629mm. Suspended from ceiling corrugations by M10 threaded rod hangers at
   457mm centers (5 pairs, all at Yd < 2,025mm — clear of optical cone). 300mm wide

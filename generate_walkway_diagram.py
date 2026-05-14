@@ -806,7 +806,7 @@ def sheet2():
 #
 # Elevation cross-section looking along the walkway (Yd axis).
 # The far end wall is flat 1.6mm steel — no corrugation ribs.
-# A 50×50×5mm angle iron is welded horizontally along the interior face
+# A 25×25×5mm angle iron is welded horizontally along the interior face
 # to provide a structural mounting surface for the cantilever brackets.
 # Scale ≈ 3:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -990,15 +990,18 @@ def sheet4():
     # Hanger rod stubs (extending up from bearer into break zone)
     C_ROD = "#606068"
     rod_hw = HANGER_R * 0.4
+    # Rod passes through the horizontal flange of the L-angle.
+    # Nut + washer below the horizontal flange, nut + washer above.
+    FLANGE_BOT = BEARER_TOP - BEARER_T   # bottom of horizontal flange
     for br_x in [BR_IN_X + BEARER_S / 2, BR_OUT_X + BEARER_S / 2]:
-        # Bottom nut + washer
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R - 1), sy(zy_bot(BEARER_BOT - WASHER_T))),
+        # Bottom nut + washer (below horizontal flange)
+        ax.add_patch(Rectangle((sx(br_x - HANGER_R - 1), sy(zy_bot(FLANGE_BOT - WASHER_T))),
                                 sx(HANGER_D + 2), sy(WASHER_T),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
-        ax.add_patch(Rectangle((sx(br_x - HANGER_R), sy(zy_bot(BEARER_BOT - WASHER_T - NUT_H))),
+        ax.add_patch(Rectangle((sx(br_x - HANGER_R), sy(zy_bot(FLANGE_BOT - WASHER_T - NUT_H))),
                                 sx(HANGER_D), sy(NUT_H),
                                 fc="#505058", ec=C_OUT, lw=0.8, zorder=7))
-        # Top nut + washer (above bearer horizontal leg)
+        # Top nut + washer (above horizontal flange)
         ax.add_patch(Rectangle((sx(br_x - HANGER_R - 1), sy(zy_bot(BEARER_TOP))),
                                 sx(HANGER_D + 2), sy(WASHER_T),
                                 fc="#808080", ec=C_OUT, lw=0.5, zorder=7))
@@ -1006,8 +1009,8 @@ def sheet4():
                                 sx(HANGER_D), sy(NUT_H),
                                 fc="#505058", ec=C_OUT, lw=0.8, zorder=7))
         # Rod stub up to top of bottom zone
-        ax.add_patch(Rectangle((sx(br_x - rod_hw), sy(zy_bot(BEARER_BOT - WASHER_T - NUT_H))),
-                                sx(rod_hw * 2), sy(BOT_Z_HI - BEARER_BOT + WASHER_T + NUT_H),
+        ax.add_patch(Rectangle((sx(br_x - rod_hw), sy(zy_bot(FLANGE_BOT - WASHER_T - NUT_H))),
+                                sx(rod_hw * 2), sy(BOT_Z_HI - FLANGE_BOT + WASHER_T + NUT_H),
                                 fc=C_ROD, ec=C_OUT, lw=0.8, zorder=5))
 
     # Bottom detail dimensions
@@ -1225,8 +1228,8 @@ def sheet5():
     ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(0)),
                             sx(LEG_W), sy(LEG_TOP),
                             fc=C_SUPPORT, ec=C_OUT, lw=0.8, alpha=0.5, zorder=4))
-    # Foot plate
-    ax.add_patch(Rectangle((sx(OUTER_LEG_X - base / 2), sy(-3)),
+    # Foot plate (sits on floor)
+    ax.add_patch(Rectangle((sx(OUTER_LEG_X - base / 2), sy(0)),
                             sx(base), sy(3),
                             fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.5, zorder=4))
     # Cantilever arm from leg to walkway edge
@@ -1873,6 +1876,24 @@ def sheet7():
     ax.add_patch(Rectangle((sx(YD_LO), sy(-12)),
                             sx(BEAM_SHOW + 100 - YD_LO), sy(12),
                             fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+
+    # ── Processing tray (ghost — for consistency with other sheets) ─────────
+    TRAY_RIM_YD = PROC_TRAY_YD_NEAR   # = 80mm from wall
+    TRAY_FLOOR_S = 2                   # tray floor thickness
+    TRAY_WALL_S  = 3                   # tray wall thickness
+    # Tray floor (extends from rim toward interior)
+    ax.add_patch(Rectangle((sx(TRAY_RIM_YD), sy(0)),
+                            sx(BEAM_SHOW - TRAY_RIM_YD + 30), sy(TRAY_FLOOR_S),
+                            fc=C_TRAY, ec=C_OUT, lw=0.6, alpha=0.4, zorder=3))
+    # Tray rim (vertical wall at Yd = 80mm)
+    ax.add_patch(Rectangle((sx(TRAY_RIM_YD - TRAY_WALL_S), sy(0)),
+                            sx(TRAY_WALL_S), sy(PROC_TRAY_RIM),
+                            fc=C_TRAY, ec=C_OUT, lw=0.8, alpha=0.5, zorder=4))
+    leader(ax, sx(TRAY_RIM_YD - TRAY_WALL_S / 2), sy(PROC_TRAY_RIM),
+           sx(TRAY_RIM_YD + 30), sy(PROC_TRAY_RIM + 15),
+           f"TRAY RIM\n{PROC_TRAY_RIM}mm",
+           color=C_TRAY, fs=5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Corrugated wall (hollow rib profile — matching sheet 3) ──────────────
     ext_panel_yd = -CORR_DEPTH - WALL_T

@@ -185,7 +185,7 @@ def _walkway_right_weight():
     """Right walkway (IBC end): ceiling-hung — bearers + hangers + grating."""
     BS = WALKWAY_RIGHT_BEARER_SIZE
     BT = WALKWAY_RIGHT_BEARER_T
-    # 2× steel angle bearers (50×50×5mm), each spanning 2362mm
+    # 2× steel angle bearers (25×25×5mm), each spanning 2362mm
     # L-angle cross-section area: 2*BS*BT - BT*BT
     angle_area = (2 * BS * BT - BT * BT) * 1e-6  # m²
     bearers_kg = 2 * angle_area * (C_WID / 1000) * RHO_STEEL

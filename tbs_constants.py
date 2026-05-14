@@ -270,7 +270,7 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # 300mm between bearers.  Near/far ends bear on adjacent walkway brackets.
 # All hangers placed at Yd < 2,025mm — clear of optical cone.
 WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
-WALKWAY_RIGHT_BEARER_SIZE = 50   # bearer angle leg (mm) — 50×50×5mm steel L-angle
+WALKWAY_RIGHT_BEARER_SIZE = 25   # bearer angle leg (mm) — 25×25×5mm steel L-angle
 WALKWAY_RIGHT_BEARER_T   = 5    # bearer angle thickness (mm)
 WALKWAY_RIGHT_HANGER_D   = 10   # hanger threaded rod diameter (mm) — M10
 WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs (at ~457mm centers along Yd)

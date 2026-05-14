@@ -276,7 +276,7 @@ Permanently installed — no removal for transport mode conversion.*
 | Right walkway X | 4,329 mm | `WALKWAY_RIGHT_X` |
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
-Right: ceiling-hung — 2× 50×50×5mm steel angle bearers suspended from ceiling by M10
+Right: ceiling-hung — 2× 25×25×5mm steel angle bearers suspended from ceiling by M10
 threaded rod hangers (5 pairs at 457mm centers). No floor contact — clears IBC stack entirely.
 Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
 panel conflict, must remove before panel slides to transport). No floor contact on

@@ -22,11 +22,13 @@ Sheet 3 — Detail: Single bracket / wall attachment:
   reinforcing plate, M12 through-bolts, and grating clip.
 
 Sheet 4 — Detail B: Right walkway box section beam (IBC end):
+  200mm wide (narrower than near/far 300mm for IBC clearance).
   50×40×3mm steel RHS spanning full container width (2,362mm along Yd),
-  through-bolted to floor at 457mm centers.  Positioned at X=4,632–4,672mm
-  (3mm clear of tray rim, 2mm clear of IBC stack).  17mm packer shim +
+  through-bolted to floor at 457mm centers.  Positioned at X=4,532–4,572mm
+  (97mm clear of tray rim, 102mm clear of IBC stack).  17mm packer shim +
   8mm cantilever plate bolted to box top brings support to 75mm (level
   with near/far walkways).  Plate extends over tray.  Zero tray contact.
+  Miter corners where 200mm right meets 300mm near/far walkways.
 
 Sheet 5 — Detail C: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -61,9 +63,10 @@ from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
-    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
+    WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_LEFT_SPAN,
+    WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_RIGHT_IBC_CLR,
+    WALKWAY_LEFT_SPAN, IBC_COL_X,
     CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
@@ -555,14 +558,15 @@ def sheet2():
     W = WALKWAY_W
 
     LX  = WALKWAY_LEFT_X;   LXR = LX + W
-    RX  = WALKWAY_RIGHT_X;  RXR = RX + W
+    RW  = WALKWAY_RIGHT_W                     # 200mm (narrower than near/far)
+    RX  = WALKWAY_RIGHT_X;  RXR = RX + RW     # right walkway inner/outer edges
     NY  = WALKWAY_NEAR_YD;  NYI = NY + W
     FY  = WALKWAY_FAR_YD;   FYO = FY + W
     TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W
 
-    # Near/far: butt joint at left (X=LXR), 45° miter at right (X=RX)
+    # Near/far: butt joint at left (X=LXR), miter at right (X=RX meets 200mm right)
     # Left: simple rectangle (no miters)
-    # Right: 45° miters both corners
+    # Right: miter corners — 200mm right meets 300mm near/far
     near_len = TR - LXR   # near/far walkway length (from butt joint to tray right)
     walkway_polys = [
         ("NEAR",  [(LXR, NY), (TR, NY), (RX, NYI), (LXR, NYI)],
@@ -572,7 +576,7 @@ def sheet2():
         ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FYO), (LXR, NY)],
          LX, 0, W, C_WID, False),
         ("RIGHT", [(RXR, NY), (RXR, FYO), (RX, FY), (RX, NYI)],
-         RX, 0, W, C_WID, False),
+         RX, 0, RW, C_WID, False),
     ]
 
     for name, verts, wx, wy, ww, wh, is_x_axis in walkway_polys:
@@ -620,6 +624,8 @@ def sheet2():
         length = ww if is_x_axis else wh
         if name == "LEFT":
             lbl = f"LEFT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nREMOVABLE LIFT-OUT"
+        elif name == "RIGHT":
+            lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_RIGHT_W}mm"
         else:
             lbl = f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm"
         ax.text(cx, cy, lbl,
@@ -628,10 +634,10 @@ def sheet2():
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
     # ── Corner joints ────────────────────────────────────────────────────────
-    # Right corners: 45° miter joints (near-right & far-right)
+    # Right corners: miter joints (near-right & far-right) — 200mm right meets 300mm near/far
     right_miters = [
-        (PROC_TRAY_X_R, 0, PROC_TRAY_X_R - W, W),
-        (PROC_TRAY_X_R, C_WID, PROC_TRAY_X_R - W, C_WID - W),
+        (TR, NY, RX, NYI),        # near-right: tray edge to inner corner
+        (TR, FYO, RX, FY),        # far-right: tray edge to inner corner
     ]
     for x1, y1, x2, y2 in right_miters:
         ax.plot([x1, x2], [y1, y2], color=C_OUT, lw=1.5, zorder=8)
@@ -772,7 +778,7 @@ def sheet2():
         WALKWAY_BRACKET_SPACING / 2, C_WID, WALKWAY_BRACKET_SPACING))
     n_brackets_total = n_brackets_near * 2 + n_brackets_right  # no left brackets
     notes = [
-        f"1. 4 removable grated sections. Right corners: 45\u00b0 miter. Left corners: butt joint.",
+        f"1. 4 removable grated sections. Right ({WALKWAY_RIGHT_W}mm) meets near/far ({WALKWAY_W}mm) at miter. Left: butt joint.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
         f"3. Right: box section beam ({WALKWAY_RIGHT_BOX_W}mm RHS) at X={WALKWAY_RIGHT_BOX_X}mm, through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm centers.",
@@ -1129,11 +1135,10 @@ def sheet4():
 
     # ── Right walkway geometry ───────────────────────────────────────────────
     TRAY_RIM_X = PROC_TRAY_X_R  # = 4,629mm
-    IBC_X      = 4674           # IBC stack inner face
-    # Box inner face 3mm clear of tray rim
-    BOX_LEFT_X = TRAY_RIM_X + 3  # = 4,632mm
-    BOX_RIGHT_X = BOX_LEFT_X + BOX_W  # = 4,672mm
-    BOX_TO_IBC = IBC_X - BOX_RIGHT_X  # = 2mm clearance
+    IBC_X      = IBC_COL_X      # IBC stack inner face (4,674mm)
+    BOX_LEFT_X = WALKWAY_RIGHT_BOX_X  # = 4,532mm (97mm clear of tray rim)
+    BOX_RIGHT_X = BOX_LEFT_X + BOX_W  # = 4,572mm
+    BOX_TO_IBC = IBC_X - BOX_RIGHT_X  # = 102mm clearance
     BOX_CENTER_X = BOX_LEFT_X + BOX_W / 2
 
     REINF_T    = 6       # reinforcing plate underneath floor
@@ -1155,7 +1160,7 @@ def sheet4():
     def rx(real_x):
         return real_x - X_OFFSET
 
-    WK_LEFT  = rx(PROC_TRAY_X_R - WALKWAY_W)
+    WK_LEFT  = rx(PROC_TRAY_X_R - WALKWAY_RIGHT_W)
     WK_RIGHT = rx(PROC_TRAY_X_R)
     BOX_L_DX = rx(BOX_LEFT_X)
     BOX_R_DX = rx(BOX_RIGHT_X)
@@ -1377,7 +1382,7 @@ def sheet4():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     draw_dim_h(ax, sx(WK_LEFT), sx(WK_RIGHT), sy(grate_top + 10),
-               f"{WALKWAY_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
+               f"{WALKWAY_RIGHT_W}mm WALKWAY", offset=sy(6), fs=7, font=FONT)
     draw_dim_v(ax, sx(WK_LEFT - 15), sy(0), sy(grate_top),
                f"{DECK_H}mm\nDECK", offset=sx(6), fs=6.5, right=False, font=FONT)
     # Box dimensions
@@ -1392,8 +1397,8 @@ def sheet4():
     draw_dim_v(ax, sx(BOX_R_DX + 40), sy(packer_top), sy(plate_top),
                f"{PLATE_T}", offset=sx(6), fs=5.5, right=True, font=FONT)
     # Box to tray rim clearance
-    draw_dim_h(ax, sx(TRAY_DX), sx(BOX_L_DX), sy(PROC_TRAY_RIM + 8),
-               f"3mm", offset=sy(5), fs=6, font=FONT)
+    draw_dim_h(ax, sx(BOX_L_DX), sx(TRAY_DX), sy(PROC_TRAY_RIM + 8),
+               f"{int(TRAY_RIM_X - BOX_LEFT_X)}mm", offset=sy(5), fs=6, font=FONT)
     # Box to IBC clearance
     draw_dim_h(ax, sx(BOX_R_DX), sx(IBC_DX), sy(PROC_TRAY_RIM + 8),
                f"{BOX_TO_IBC}mm", offset=sy(5), fs=6, font=FONT)
@@ -1410,8 +1415,8 @@ def sheet4():
         "",
         f"1. {BOX_H}\u00d7{BOX_W}\u00d7{BOX_T}mm steel RHS spans full",
         f"   container width ({C_WID}mm) along Yd.",
-        f"2. Sits on bare floor outside tray rim \u2014",
-        f"   3mm clearance to tray, {BOX_TO_IBC}mm to IBC.",
+        f"2. Sits on bare floor \u2014 {int(TRAY_RIM_X - BOX_LEFT_X)}mm",
+        f"   clearance to tray rim, {BOX_TO_IBC}mm to IBC.",
         f"3. Through-bolted to floor at {WALKWAY_BRACKET_SPACING}mm",
         f"   centers with reinforcing plates underneath.",
         f"4. {PACKER_T}mm packer shim on box top brings",

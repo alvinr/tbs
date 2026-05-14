@@ -660,7 +660,7 @@ def sheet1(components):
             drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
             drum_cy = C_WID / 2
             ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
-                         fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+                         fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
         else:
             _draw_component(ax, c, alpha=0.5, show_label=False)
 
@@ -787,7 +787,7 @@ def _draw_state_diagram(ax, components, state, state_label):
             cx = PANEL_CENTER_T / 2  # deployed
         cy = C_WID / 2
         ax.add_patch(Circle((cx, cy), DRUM_R,
-                     fc="#A08060", ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+                     fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
     for c in others:
         _draw_component(ax, c, alpha=0.25, show_label=False)
 
@@ -968,7 +968,7 @@ def sheet4(components):
                     cx = PANEL_CENTER_T / 2
                 cy = C_WID / 2
                 ax.add_patch(Circle((cx, cy), DRUM_R,
-                             fc="#A08060", ec=C_OUT, lw=0.8, alpha=0.5,
+                             fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7,
                              zorder=5))
 
         # Draw liquids

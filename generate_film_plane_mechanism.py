@@ -1289,7 +1289,7 @@ def sheet5():
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="APPROX 3:1 (SECTION) / 1.2:1 (ELEVATION)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
-                height=0.08)
+                height=0.12)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet5.png"), bbox_inches="tight", facecolor=BG)

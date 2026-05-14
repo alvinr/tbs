@@ -719,12 +719,12 @@ def sheet1(components):
     ax.text(C_LEN / 2, C_WID * 1.3,
             f"← FRONT {splits['front_pct']:.1f}%  |  "
             f"REAR {splits['rear_pct']:.1f}% →",
-            ha="center", va="top", fontsize=7, color=C_DIM,
+            ha="center", va="top", fontsize=6, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
-    ax.text(-60, C_WID * 0.5,
+    ax.text(-120, C_WID * 0.75,
             f"FAR {splits['far_pct']:.1f}%\n\n"
             f"NEAR {splits['near_pct']:.1f}%",
-            ha="right", va="center", fontsize=7, color=C_DIM,
+            ha="right", va="center", fontsize=6, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
 
     # Axes setup
@@ -796,13 +796,14 @@ def _draw_state_diagram(ax, components, state, state_label):
         if c.category == "liquid":
             _draw_component(ax, c, alpha=0.6, show_label=True, fs=5.5)
 
-    # Leader labels for panel and drum
-    for c in non_container:
-        if c.name in highlight_names:
-            lbl = f"{c.name}: {c.weight_kg:.0f} kg"
-            leader(ax, c.x_cg, c.yd_cg,
-                   c.x_cg, C_WID + 150, lbl,
-                   fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
+    # Leader labels for panel and drum (sheet 2 only — omit on sheet 3)
+    if state == "ready":
+        for c in non_container:
+            if c.name in highlight_names:
+                lbl = f"{c.name}: {c.weight_kg:.0f} kg"
+                leader(ax, c.x_cg, c.yd_cg,
+                       c.x_cg, C_WID + 150, lbl,
+                       fs=5, color=C_DIM, ha="center", va="bottom", lw=0.5)
 
     # CG and quadrants
     total, x_cg, yd_cg, z_cg = compute_cg(active)
@@ -822,11 +823,11 @@ def _draw_state_diagram(ax, components, state, state_label):
     # Edge split labels
     ax.text(C_LEN / 2, C_WID * 1.05,
             f"← FRONT {splits['front_pct']:.1f}%  |  REAR {splits['rear_pct']:.1f}% →",
-            ha="center", va="top", fontsize=7, color=C_DIM,
+            ha="center", va="top", fontsize=6, color=C_DIM,
             fontweight="bold", zorder=25, **_FONT)
-    ax.text(-60, C_WID * 0.5,
+    ax.text(-120, C_WID * 0.75,
             f"FAR {splits['far_pct']:.1f}%\n\nNEAR {splits['near_pct']:.1f}%",
-            ha="right", va="center", fontsize=7, color=C_DIM,
+            ha="right", va="center", fontsize=6, color=C_DIM,
             fontweight="bold", rotation=0, zorder=25, **_FONT)
 
     # Title info

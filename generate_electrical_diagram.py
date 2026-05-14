@@ -371,13 +371,13 @@ def draw_sheet1():
 # SHEET 2 — Container Floor Plan + Wiring Layout  (scale 1:500)
 #
 # ORIENTATION:
-#   Container long axis (5,898mm) = HORIZONTAL (left–right in plan)
+#   Container long axis (5,893mm) = HORIZONTAL (left–right in plan)
 #   Optical depth (2,362mm)       = VERTICAL (bottom–top in plan)
 #   LEFT short wall  = X=0   = CARGO DOOR end (hinged panel / light trap)
-#   RIGHT short wall = X=5898= FAR END
+#   RIGHT short wall = X=5893= FAR END
 #   BOTTOM long wall = Y=0   = PINHOLE WALL  (Yd=0)
 #   TOP long wall    = Y=2362= IMAGE PLANE WALL
-#   Pinhole: on BOTTOM long wall at X=2,946mm (midpoint)
+#   Pinhole: on BOTTOM long wall at X=2,399mm (centered on film plane)
 #   Image plane: on TOP long wall
 #   NO vestibule shown — light trap is part of hinged-panel drawing
 #   All equipment in colonnade strip Yd ≤ 1,220mm (near bottom/pinhole wall)
@@ -415,7 +415,7 @@ def draw_sheet2():
 
     # Container placement in figure space
     # LEFT  short wall = X=0    = CARGO DOOR end  (hinged panel, light trap)
-    # RIGHT short wall = X=5898 = far end
+    # RIGHT short wall = X=5893 = far end
     # BOTTOM long wall = Y=0    = PINHOLE WALL  (Yd=0, optical origin)
     # TOP   long wall  = Y=2362 = IMAGE PLANE WALL
     OX = 2.5   # drawing x of container left edge (cargo door side)
@@ -425,10 +425,10 @@ def draw_sheet2():
     C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
     WT_MM   = 120           # mm schematic wall thickness
 
-    PH_X_MM = TBS_PH_X     # 2637 mm — centred on active film plane (was 2560, was 2946)
+    PH_X_MM = TBS_PH_X     # 2399 mm — centered on active film plane
 
     # Zone boundaries
-    ZONE_L  = ZONE_L_END   # 625 mm — left end zone right boundary
+    ZONE_L  = ZONE_L_END   # left end zone right boundary
     ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
 
     clen   = C_LEN * S     # drawing units (full container length incl. walls)
@@ -477,7 +477,7 @@ def draw_sheet2():
             fontsize=7.0, color=C_OUT, ha="right", va="center",
             fontweight="bold")
     ax.text(OX + clen + 0.12, OY + cwid/2,
-            "FAR END\n(X=5,898mm)",
+            "FAR END\n(X=5,893mm)",
             fontsize=7.0, color=C_DIM, ha="left", va="center")
     ax.text(OX + clen/2, OY + cwid - wt + 0.82,
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
@@ -527,7 +527,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=8.0,
             color="#8B5A00", style="italic", alpha=0.85, zorder=6)
 
-    # ── Image plane strip — new width X=1100–4649mm ───────────────────────────
+    # ── Image plane strip — X=150–4649mm ────────────────────────────────────
     ax.add_patch(mpatches.Rectangle(
                  (fp_l_x, OY+cwid-wt-0.15), fp_r_x - fp_l_x, 0.15,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))

@@ -13,8 +13,8 @@ View direction: looking at the near long wall (Y=0 face) from outside.
   Yd (into page) = 0–2362 mm  (optical depth; not a diagram axis)
 
 Zones (shadow-free proof):
-  Left end zone:   X = 0–1,100 mm   (drum + evap cooler + 55-gal drums stacked)
-  Optical zone:    X = 1,100–4,649 mm  (film plane only)
+  Left end zone:   X = 0–150 mm     (light trap drum only)
+  Optical zone:    X = 150–4,649 mm   (film plane only)
   Right end zone:  X = 4,649–5,893 mm  (IBCs only, right-justified)
   Pinhole wall:    Yd = 0 face  (electrical + battery + pump; flush-mount)
 
@@ -235,22 +235,22 @@ ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
 # Draw Brown first (slightly dimmer / different alpha), then Blue on top.
 
 # Brown IBC ×1 (behind Blue, dimmer)
-equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=3)
-ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_600/2,
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=3)
+ax.text(IBC_COL_X + IBC_W/2, IBC_H_600/2,
         "Brown IBC x1\n(600L, behind)",
         ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=4)
 
 # Blue IBC stack ×2 (front, on top)
-equip_rect(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
-ax.text(IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK/2,
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
+ax.text(IBC_COL_X + IBC_W/2, IBC_H_STK/2,
         "Blue IBC x2\nstacked (front)\n2x600L",
         ha="center", va="center", fontsize=FS_SM, color="#FFFFFF",
         fontweight="bold", zorder=6)
 # Stacking line
-ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
+ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [IBC_H_600, IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-leader(ax, IBC_COL_X + IBC_W/2, RAIL_OFF + IBC_H_STK, 6300, 2750,
+leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK, 6300, 2750,
        f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
        f"Blue: 2x600L stacked H={IBC_H_STK}mm (front)\n"
        f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
@@ -593,25 +593,25 @@ ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — 4× IBC 2×2 stack ────────
 # Far column (behind in this view): Blue #2 top + Waste bottom
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_WASTE_IBC, alpha=0.40, zorder=4)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_STK, C_WASTE_IBC, alpha=0.40, zorder=4)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600/2,
         "Waste IBC\n(behind)", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=5)
 
 # Near column (front in this view): Blue #1 top + Brown bottom
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_STK/2 + 200,
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_STK/2 + 200,
         "IBC-1 Blue\n(top, front)", ha="center", va="center",
         fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=7)
-eq2(IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), RAIL_OFF + IBC_H_600/2,
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600/2,
         "IBC-3 Brown\n(bottom, front)", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=7)
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
-        [RAIL_OFF + IBC_H_600, RAIL_OFF + IBC_H_600],
+        [IBC_H_600, IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=8)
 
-ldr2(IBC_COL_X + IBC_W/2 + 400, RAIL_OFF + IBC_H_STK, C_LEN - 50, 2800,
+ldr2(IBC_COL_X + IBC_W/2 + 400, IBC_H_STK, C_LEN - 50, 2800,
     f"4× IBC 2×2 stack  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
     f"(far end, left in this view)", ha="right", fs=FS_SM)
 

@@ -1086,8 +1086,8 @@ def sheet5():
     SB = 2.5
     def sb(mm): return mm * SB
 
-    ax_b.set_xlim(sb(-40), sb(LEG + 50))
-    ax_b.set_ylim(sb(-60), sb(LEG + CLAMP_LEVER_L + 10))
+    ax_b.set_xlim(sb(-40), sb(LEG + 120))
+    ax_b.set_ylim(sb(-100), sb(LEG + CLAMP_LEVER_L + 10))
     ax_b.set_aspect("equal")
 
     # Simplified angle profile (side view — just the pinhole-facing leg top edge)
@@ -1254,8 +1254,7 @@ def sheet5():
               f"SCALE ≈ 1.2:1 · {CLAMP_N_TOTAL} CLAMPS TOTAL AROUND {int(FP_W)}×{int(FP_H)}mm FRAME PERIMETER",
               ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
 
-    # Notes
-    notes_x = sc(span + 20)
+    # Notes — placed in panel B (top-right), below diagram content
     notes = [
         "CLAMP NOTES:",
         "",
@@ -1273,9 +1272,11 @@ def sheet5():
         f"   snap open/closed by feel",
         f"   in safelight conditions.",
     ]
+    notes_x = sb(LEG + 35)
+    notes_y_start = sb(-10)
     for i, line in enumerate(notes):
         bold = i == 0
-        ax_c.text(notes_x, sc(T + CLAMP_JAW_H + 5 - i * 6.5), line,
+        ax_b.text(notes_x, notes_y_start - i * sb(5.5), line,
                   ha="left", va="top", fontsize=5.5 if not bold else 6,
                   color=ANNO if bold else DIM,
                   fontweight="bold" if bold else "normal",
@@ -1287,7 +1288,8 @@ def sheet5():
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="APPROX 3:1 (SECTION) / 1.2:1 (ELEVATION)",
-                doc_id="TBS-FM01 · Film Plane Mechanism")
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.08)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet5.png"), bbox_inches="tight", facecolor=BG)

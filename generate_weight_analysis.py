@@ -654,21 +654,24 @@ def sheet1(components):
     _draw_cargo_doors(ax, closed=True)
 
     # Draw each component (no inline labels — all via leaders)
-    # Processing tray first at lowest zorder (large area, must not obscure others)
-    for c in dry:
-        if c.name == "Processing tray":
-            _draw_component(ax, c, alpha=0.2, show_label=False, zorder=2)
-    # All other components on top (excluding drum)
-    for c in dry:
-        if c.name not in ("Light trap drum", "Processing tray"):
-            _draw_component(ax, c, alpha=0.7, show_label=False)
-    # Drum as circle on top
+    # Draw components using same visual style as sheets 2/3
+    # Panel first (slightly more visible), then drum, then everything else faded
+    highlight_names = {"Hinged panel", "Light trap drum"}
+    panel = [c for c in dry if c.name == "Hinged panel"]
+    others = [c for c in dry
+              if c.name not in highlight_names]
+    for c in panel:
+        _draw_component(ax, c, alpha=0.5, show_label=False)
+    # Drum as circle
     for c in dry:
         if c.name == "Light trap drum":
             drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
             drum_cy = C_WID / 2
             ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
                          fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
+    # All other components
+    for c in others:
+        _draw_component(ax, c, alpha=0.25, show_label=False)
 
     # Leader labels for ALL components — split near-side and far-side
     near_comps = [c for c in dry if c.yd_cg < C_WID / 2]

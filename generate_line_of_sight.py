@@ -40,7 +40,7 @@ from tbs_constants import (
     PH_X, PH_H,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_W, EVAP_Y, EVAP_D, EVAP_H,
+    EVAP_X, EVAP_W, EVAP_Y, EVAP_D, EVAP_H, RAIL_OFF,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
@@ -88,7 +88,7 @@ EQUIPMENT = [
     # Evap cooler relocated here (rev 4) — X=930–1530mm, Yd=0 (pinhole wall face)
     dict(name="Evap cooler",
          x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
-         h_bot=0, h_top=EVAP_H,
+         h_bot=RAIL_OFF, h_top=RAIL_OFF + EVAP_H,
          color=C_EVAP, zone="wall"),
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,

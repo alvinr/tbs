@@ -1191,7 +1191,7 @@ def draw_sheet3():
 
     # ── Component key (right of elevation) ────────────────────────────────────
     KX = OX + wlen + 1.2
-    KY = OY + whgt + 0.6
+    KY = OY + whgt + 1.2
     ax.text(KX, KY + 0.25, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.0, fontweight="bold", color=C_OUT)
     ax.plot([KX, KX + 6.0], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)

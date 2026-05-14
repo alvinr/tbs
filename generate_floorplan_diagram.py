@@ -316,8 +316,9 @@ def floor_plan():
     # Corner coordinates
     LX = WALKWAY_LEFT_X                    # left walkway left edge
     LXR = LX + W                          # left walkway right edge
+    RW = WALKWAY_RIGHT_W                   # right walkway width (200mm, narrower)
     RX = WALKWAY_RIGHT_X                   # right walkway left edge
-    RXR = RX + W                           # right walkway right edge
+    RXR = RX + RW                          # right walkway right edge
     NY = WALKWAY_NEAR_YD                   # near walkway outer (bottom) edge
     NYI = NY + W                           # near walkway inner edge
     FY = WALKWAY_FAR_YD                    # far walkway inner edge
@@ -434,9 +435,9 @@ def floor_plan():
         ax.plot([x1, x2], [y1, y2], color=C_MITER, lw=1.2, zorder=3)
 
     # Label the walkway
-    ax.text(WALKWAY_RIGHT_X + WALKWAY_W / 2,
+    ax.text(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W / 2,
             C_WID / 2,
-            f"WALKWAY {WALKWAY_W}mm",
+            f"WALKWAY {WALKWAY_RIGHT_W}mm",
             color=C_DIM, fontsize=5.5, ha="center", va="center",
             rotation=0, **FONT, backgroundcolor=BG, alpha=0.8, zorder=5)
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,

@@ -39,7 +39,7 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_RIGHT_BOX_H,
+    WALKWAY_RIGHT_W, WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_RIGHT_BOX_H,
     WALKWAY_RIGHT_BOX_T, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T, LEFT_WK_LEG_N,
     EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
@@ -186,10 +186,10 @@ def _walkway_right_weight():
     rhs_perim = 2 * (50 + 40) - 4 * 3  # inner perimeter approx
     rhs_area = (2 * (50 + 40) * 3 - 4 * 3 * 3) * 1e-6  # m² cross-section
     beam_kg = rhs_area * (C_WID / 1000) * RHO_STEEL
-    # Packer shim: 17mm steel plate, ~300mm wide × 2362mm
-    packer_kg = 0.300 * (C_WID / 1000) * 0.017 * RHO_STEEL
-    # Grating
-    grate_area = (WALKWAY_W / 1000) * (C_WID / 1000)
+    # Packer shim: 17mm steel plate, ~200mm wide × 2362mm
+    packer_kg = 0.200 * (C_WID / 1000) * 0.017 * RHO_STEEL
+    # Grating (200mm wide)
+    grate_area = (WALKWAY_RIGHT_W / 1000) * (C_WID / 1000)
     grate_kg = grate_area * GRATING_KG_PER_M2
     return beam_kg + packer_kg + grate_kg
 
@@ -342,9 +342,9 @@ def build_components():
                   0, WALKWAY_H, color=C_STEEL,
                   calc_note=f"Brackets + {GRATING_KG_PER_M2} kg/m² grating"),
         Component("Right walkway", "structure", right_wk,
-                  WALKWAY_RIGHT_X, WALKWAY_RIGHT_BOX_X + WALKWAY_RIGHT_BOX_W,
+                  WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_RIGHT_W,
                   0, C_WID, 0, WALKWAY_H, color=C_STEEL,
-                  calc_note="50×40×3 RHS beam + 17mm packer + grating"),
+                  calc_note=f"50×40×3 RHS beam + 17mm packer + {WALKWAY_RIGHT_W}mm grating"),
         Component("Left walkway", "structure", left_wk,
                   WALKWAY_LEFT_X, WALKWAY_LEFT_X + WALKWAY_W,
                   0, C_WID, 0, WALKWAY_H, color="#80C080",

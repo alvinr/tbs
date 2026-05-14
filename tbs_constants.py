@@ -263,15 +263,17 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# Right walkway box section beam (IBC end — too far from end wall for wall mounting)
-# Steel RHS spans full container width (Yd=0 to 2,362mm), through-bolted to floor.
-# 17mm packer shim + 8mm plate on top brings support level to 75mm (matches near/far).
-WALKWAY_RIGHT_BOX_X = 4632   # box section left face X (mm) — 3mm clear of tray rim
+# Right walkway (IBC end) — narrowed to 200mm for IBC clearance.
+# Box section beam (50×40×3 RHS) spans full container width (Yd=0 to 2,362mm),
+# through-bolted to floor. 17mm packer shim + 8mm plate on top brings support
+# level to 75mm (matches near/far). Miter corners where it meets near/far walkways.
+WALKWAY_RIGHT_W = 200        # right walkway width (mm) — narrower than near/far for IBC clearance
+WALKWAY_RIGHT_BOX_X = 4532   # box section left face X (mm) — 97mm clear of tray rim
 WALKWAY_RIGHT_BOX_W = 40     # box section width in X (mm)
 WALKWAY_RIGHT_BOX_H = 50     # box section height (mm) — standard 50×40×3 RHS
 WALKWAY_RIGHT_BOX_T = 3      # box section wall thickness (mm)
 WALKWAY_RIGHT_PACKER_T = 17  # packer shim thickness (mm) — 75 - 50 - 8 = 17
-WALKWAY_RIGHT_IBC_CLR = 2    # clearance from box right face to IBC stack (mm)
+WALKWAY_RIGHT_IBC_CLR = 102  # clearance from box right face to IBC stack (mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
@@ -294,15 +296,15 @@ LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
-# Right walkway (IBC end): X=tray_R-WALKWAY_W to tray_R, Yd=0 to C_WID
-WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_W # = 4,229mm
+# Right walkway (IBC end): narrower (200mm) with miter corners to near/far (300mm)
+WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,429mm (grating left edge)
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
-PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,229mm
+PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm
 PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
 PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1,962mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
-                                               # = 5.71 m² open processing area
+                                               # = 6.42 m² open processing area
 
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
@@ -399,7 +401,8 @@ if __name__ == "__main__":
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
-    print(f"  Walkway:        {WALKWAY_W}mm wide × {WALKWAY_H}mm deck H  grate={WALKWAY_GRATE_T}mm (all sections)")
+    print(f"  Walkway:        near/far={WALKWAY_W}mm  right={WALKWAY_RIGHT_W}mm  deck H={WALKWAY_H}mm  grate={WALKWAY_GRATE_T}mm")
+    print(f"  Right walkway:  box beam X={WALKWAY_RIGHT_BOX_X}  IBC clearance={WALKWAY_RIGHT_IBC_CLR}mm")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")

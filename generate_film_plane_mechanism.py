@@ -924,7 +924,7 @@ def sheet5():
     C_ALUM    = "#C8D8E8"   # aluminum section fill
     C_CLAMP   = "#D4522A"   # clamp mechanism (burnt orange)
     C_NEOP    = "#333333"   # neoprene jaw pad
-    C_MUSLIN  = "#F5F0E0"   # muslin fabric
+    C_MUSLIN  = "#D4B896"   # muslin fabric (warm tan — visible on white bg)
     C_BOLT    = "#505058"   # bolt hardware
 
     fig = plt.figure(figsize=(16, 12))
@@ -1074,9 +1074,9 @@ def sheet5():
     muslin_pts_y = [sa(T / 2), sa(T / 2), sa(T + muslin_t), sa(T + muslin_t),
                     sa(T + muslin_t), sa(T + muslin_t), sa(hem_end)]
 
-    ax_a.plot(muslin_pts_x, muslin_pts_y, color=C_MUSLIN, lw=3, solid_capstyle="round",
-              zorder=5, alpha=0.8)
-    ax_a.plot(muslin_pts_x, muslin_pts_y, color=ANNO, lw=0.8, zorder=6)
+    ax_a.plot(muslin_pts_x, muslin_pts_y, color=C_MUSLIN, lw=5, solid_capstyle="round",
+              zorder=5, alpha=0.9)
+    ax_a.plot(muslin_pts_x, muslin_pts_y, color=ANNO, lw=1.0, zorder=6)
 
     leader(ax_a, sa(LEG + 5), sa(T + muslin_t + 2),
            sa(LEG + 40), sa(T + 20),
@@ -1210,6 +1210,15 @@ def sheet5():
     pv_x = T + CLAMP_BASE_T / 2
     pv_z = 0
 
+    # Muslin wrap on pinhole-facing leg (same path as Panel A)
+    muslin_b_pts_x = [sb(LEG + 8), sb(LEG), sb(LEG), sb(LEG + 1.5),
+                      sb(LEG + 1.5), sb(T + 1.5), sb(T + 1.5)]
+    muslin_b_pts_y = [sb(T / 2), sb(T / 2), sb(T + 1.5), sb(T + 1.5),
+                      sb(T + 1.5), sb(T + 1.5), sb(-CLAMP_BASE_H)]
+    ax_b.plot(muslin_b_pts_x, muslin_b_pts_y, color=C_MUSLIN, lw=4,
+              solid_capstyle="round", zorder=4, alpha=0.9)
+    ax_b.plot(muslin_b_pts_x, muslin_b_pts_y, color=ANNO, lw=0.8, zorder=4.5)
+
     # ── CLOSED position (solid) ──────────────────────────────────────────────
     jaw_x_closed = LEG - CLAMP_JAW_T
     jaw_z_closed = T + 2  # pressing against muslin on pinhole leg face
@@ -1312,7 +1321,7 @@ def sheet5():
 
     # Muslin — draped over pinhole-facing leg (covers the full surface)
     ax_c.add_patch(Rectangle((sp(-10), sp(-8)), sp(frame_len + 20), sp(8 + T + 3),
-                              fc=C_MUSLIN, ec=ANNO, lw=0.6, alpha=0.4, zorder=4))
+                              fc=C_MUSLIN, ec=ANNO, lw=0.8, alpha=0.6, zorder=4))
     ax_c.text(sp(frame_len / 2), sp(-12), "MUSLIN (DRAPES OVER PINHOLE LEG, HEM WRAPS AROUND CORNER)",
               ha="center", va="top", fontsize=5, color=DIM, style="italic", **FONT, zorder=15)
 
@@ -1399,9 +1408,9 @@ def sheet5():
     # Muslin (continuous line across top of frame)
     muslin_y = T + 2
     ax_d.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
-              color=C_MUSLIN, lw=5, solid_capstyle="butt", alpha=0.7, zorder=4)
+              color=C_MUSLIN, lw=6, solid_capstyle="butt", alpha=0.9, zorder=4)
     ax_d.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
-              color=ANNO, lw=0.8, zorder=5)
+              color=ANNO, lw=1.0, zorder=5)
 
     # Draw 3 clamps at 0, 150, 300mm
     for i, cx in enumerate([0, CLAMP_SPACING, CLAMP_SPACING * 2]):

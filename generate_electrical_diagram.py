@@ -634,15 +634,16 @@ def draw_sheet2():
             color=C_OUT, zorder=6)
 
     # Safelight D — two ceiling-mounted N–S strips flanking pinhole centerline
-    from tbs_constants import PH_X as SL_PH_X
-    SL_OFFSET = 1000   # mm offset each side of pinhole X
-    SL_POSITIONS = [SL_PH_X - SL_OFFSET, SL_PH_X + SL_OFFSET]  # X≈1399, 3399
+    # Positioned in gaps between white LED panels to avoid visual overlap
+    # Shortened to Yd≈2,100mm to stay clear of optical cone
+    SL_POSITIONS = [1800, 4100]   # X positions (mm) — in gaps between white panels
     SL_STRIP_W = 20    # strip width along X (mm)
+    SL_YD_MAX = 2100   # stop before optical cone (cone reaches strip Z at Yd≈2,174)
     for sl_x_mm in SL_POSITIONS:
         sl_dx = ix(sl_x_mm)
         sl_dw = max(SL_STRIP_W * S_xi, 0.08)
         sl_dy1 = OY + wt + 0.05
-        sl_dy2 = OY + cwid - wt - 0.05
+        sl_dy2 = OY + wt + SL_YD_MAX * S_yd
         ax.add_patch(mpatches.Rectangle((sl_dx, sl_dy1), sl_dw, sl_dy2 - sl_dy1,
                      fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
         ax.text(sl_dx + sl_dw + 0.06, (sl_dy1 + sl_dy2) / 2, "D",
@@ -708,8 +709,8 @@ def draw_sheet2():
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
-        (ix(SL_POSITIONS[0] + SL_STRIP_W/2), OY + wt + 0.05),
-        (ix(SL_POSITIONS[1] + SL_STRIP_W/2), OY + wt + 0.05),
+        (ix(SL_POSITIONS[0] + SL_STRIP_W / 2), OY + wt + 0.05),
+        (ix(SL_POSITIONS[1] + SL_STRIP_W / 2), OY + wt + 0.05),
         (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
     ] + [(ix(lp + LED_W_MM/2), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
@@ -816,7 +817,7 @@ def draw_sheet2():
         ("C",     C_PUMP,    "WATER PUMP — Cct C",
          "12V DC  |  15A / 14 AWG / 100W  |  Pinhole wall face, X=2,600mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
-         f"2× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{SL_POSITIONS[0]}, {SL_POSITIONS[1]}mm"),
+         f"2× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{SL_POSITIONS[0]}, {SL_POSITIONS[1]}  |  Yd=0–2,100"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
@@ -1130,9 +1131,7 @@ def draw_sheet3():
     # ── Safelight strips — two ceiling-mounted N–S strips flanking pinhole ───
     # Circuit D: 2× red LED strips at X≈1399 and X≈3399 (offset ±1000mm from pinhole)
     # Shown in elevation as short rectangles at ceiling height (they run N–S, perpendicular to this view)
-    from tbs_constants import PH_X as SL3_PH_X
-    SL3_OFFSET = 1000
-    SL3_POSITIONS = [SL3_PH_X - SL3_OFFSET, SL3_PH_X + SL3_OFFSET]
+    SL3_POSITIONS = [1800, 4100]   # match sheet 2 positions
     SL3_W_MM = 20     # strip width along X
     SL3_H_MM = 20     # strip thickness in elevation
     SL3_Z = C_HGT - TK_H_MM - LED_H_MM - 10 - SL3_H_MM - 10  # below LED panels
@@ -1154,7 +1153,7 @@ def draw_sheet3():
     s3_ldr_z = wz(SL3_Z)
     leader(ax, s3_ldr_x, s3_ldr_z,
            s3_ldr_x + 0.8, s3_ldr_z - 0.5,
-           f"Safelight (D)\n2× red LED strips\nceiling N–S at\nX≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}",
+           f"Safelight (D)\n2× red LED strips\nceiling N–S\nX≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}\nYd=0–2,100mm",
            fs=6.5, color="#B8960A")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
@@ -1225,7 +1224,7 @@ def draw_sheet3():
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
         ("#E0E0FF", "PULL SWITCHES",     "Ccts D & G  |  SPST 6A  |  X≈1,800mm  |  Cord to ~1,500mm AFF"),
-        ("#FFD700", "SAFELIGHT (D)",     f"2× red LED strips  |  Ceiling N–S  |  X≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}mm"),
+        ("#FFD700", "SAFELIGHT (D)",     f"2× red LED strips  |  Ceiling N–S  |  X≈{SL3_POSITIONS[0]}, {SL3_POSITIONS[1]}  |  Yd=0–2,100"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):
         ky = KY - 0.25 - j * 0.55

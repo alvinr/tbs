@@ -305,7 +305,7 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Two red LED strips ceiling-mounted running north–south (across the container width), offset ±1,000mm from the pinhole centerline (X≈1,399mm and X≈3,399mm), plus a strip on the inner drum face. Used during loading and development when photosensitive material is present. 15W, always available.
+- **Safelight (Circuit D):** Two red LED strips ceiling-mounted running north–south (across the container width) at X≈1,800mm and X≈4,100mm, plus a strip on the inner drum face. Each strip runs from Yd=0 (pinhole wall) to Yd≈2,100mm — shortened to stay clear of the optical cone, which reaches strip height at Yd≈2,174mm. Used during loading and development when photosensitive material is present. 15W, always available.
 - **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.

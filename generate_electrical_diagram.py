@@ -1045,9 +1045,9 @@ def draw_sheet3():
     ax.add_patch(mpatches.Rectangle((tray_x_r, OY), tray_w, tray_h,
                  fc="#D0E8D0", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                  alpha=GHOST_ALPHA, zorder=3))
-    ax.text((tray_x_l + tray_x_r) / 2, OY + tray_h / 2,
+    ax.text((tray_x_l + tray_x_r) / 3, OY + tray_h / 2,
             f"PROCESSING TRAY RIM  (Z=0–{PROC_TRAY_RIM}mm,  X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}mm)",
-            ha="center", va="center", fontsize=6.0, color="#606060",
+            ha="center", va="center", fontsize=5.5, color="#606060",
             style="italic", zorder=4)
 
     # ── Ghost: near walkway deck ─────────────────────────────────────────────
@@ -1059,9 +1059,9 @@ def draw_sheet3():
     ax.add_patch(mpatches.Rectangle((wk_x_r, OY), wk_w, wk_h,
                  fc="#E0D8C8", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                  alpha=GHOST_ALPHA, zorder=3))
-    ax.text((wk_x_l + wk_x_r) / 2, OY + wk_h / 2,
+    ax.text((wk_x_l + wk_x_r) / 2.5, OY + wk_h / 1.5,
             f"NEAR WALKWAY DECK  (Z=0–{WALKWAY_H}mm,  X={WALKWAY_LEFT_X + WALKWAY_W}–{PROC_TRAY_X_R}mm)",
-            ha="center", va="center", fontsize=6.0, color="#606060",
+            ha="center", va="center", fontsize=5.5, color="#606060",
             style="italic", zorder=4)
 
     # ── Cable trunking — horizontal at ceiling corner ─────────────────────────
@@ -1139,7 +1139,7 @@ def draw_sheet3():
     ph_z = wz(PH_H)
     ax.add_patch(plt.Circle((ph_x, ph_z), 0.12,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    leader(ax, ph_x, ph_z, ph_x, ph_z - 0.8,
+    leader(ax, ph_x, ph_z, ph_x, ph_z + 0.8,
            f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}  Z={PH_H}mm",
            fs=7.0, ha="center")
 
@@ -1174,7 +1174,7 @@ def draw_sheet3():
 
     # Pull switch label
     leader(ax, wx(PS_X_MM), wz(CORD_HANG_Z) - 0.1,
-           wx(PS_X_MM) - 1.2, wz(CORD_HANG_Z) - 0.6,
+           wx(PS_X_MM), wz(CORD_HANG_Z) - 0.6,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
@@ -1230,7 +1230,7 @@ def draw_sheet3():
     s3_ldr_x = wx(SL3_POSITIONS[0] + SL3_W_MM / 2)
     s3_ldr_z = wz(SL3_Z)
     leader(ax, s3_ldr_x, s3_ldr_z,
-           s3_ldr_x + 0.8, s3_ldr_z - 0.5,
+           s3_ldr_x + 0.5, s3_ldr_z - 0.5,
            f"Safelight (D)\n3× red LED strips\nceiling N–S\nX≈{', '.join(str(x) for x in SL3_POSITIONS)}",
            fs=6.5, color="#B8960A")
 
@@ -1256,11 +1256,11 @@ def draw_sheet3():
     draw_dim_v(ax, ba_x_l + 0.15, OY, wz(BA_H_LO),
                f"{BA_H_LO}", offset=0.05, fs=6.5)
     draw_dim_v(ax, ba_x_l + 0.15, wz(BA_H_LO), wz(BA_H_HI),
-               f"{BA_H_HI - BA_H_LO}", offset=0.05, fs=6.5)
+               f"{BA_H_HI - BA_H_LO}mm", offset=0.05, fs=6.5, right=True)
 
     # Pinhole height
-    draw_dim_v(ax, ph_x - 0.25, OY, wz(PH_H),
-               f"PH  Z={PH_H}", offset=0.05, fs=6.5)
+    draw_dim_v(ax, ph_x - 0.2, OY, wz(PH_H),
+               f"{PH_H}mm", offset=0.05, fs=6.5, right=True)
 
     # Trunking height callout
     draw_dim_v(ax, OX - 0.40, wz(TK_Z), OY + whgt,

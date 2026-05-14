@@ -1967,7 +1967,8 @@ def sheet6():
             color=C_OUT, lw=2.0, zorder=4)
     # Sawtooth break line at top of wall (wall continues upward)
     n_teeth = 5
-    xs_brk = np.linspace(ext_panel_yd - REINF_T, WALL_T, n_teeth * 2 + 1)
+    brk_span = (WALL_T) - (ext_panel_yd - REINF_T)
+    xs_brk = np.linspace(ext_panel_yd - REINF_T - brk_span * 0.10, WALL_T, n_teeth * 2 + 1)
     teeth_y = [wall_z_top + (3 if i % 2 == 1 else -3) for i in range(len(xs_brk))]
     ax.plot([sx(x) for x in xs_brk], [sy(y) for y in teeth_y],
             color=C_OUT, lw=1.2, zorder=15)

@@ -2126,11 +2126,11 @@ def sheet6():
                right=False, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # VIEW B — Plan view (looking down) — top left of page
+    # VIEW B — Plan view (looking down) — top middle of page
     # Horizontal = Yd (wall at left), Vertical = X (interior at top,
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
-    PV_OX = -60
+    PV_OX = 60
     PV_OY = BRKT_VERT + 260
     PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
@@ -2245,11 +2245,11 @@ def sheet6():
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # VIEW C — Lock block detail (cross-section looking along Yd) — top right
+    # VIEW C — Lock block detail (cross-section looking along Yd) — top right of page
     # Horizontal = X, Vertical = Z.  Shows slot in plate, lock block,
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
-    VC_OX = 200
+    VC_OX = 300
     VC_OY = PV_OY - 5   # align with View B vertically
     VC_S  = 3.9   # 30% larger than original 3.0
     def cx(mm): return sx(VC_OX + mm * VC_S / S)

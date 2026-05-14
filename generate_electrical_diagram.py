@@ -1062,7 +1062,7 @@ def draw_sheet3():
                     ha="center", va="center", fontsize=6.0, color=C_DIM, zorder=6)
         # Drop conduit from trunking
         ax.plot([cx, cx], [tk_y, ey + eh],
-                color=C_PIPE, lw=1.2, ls=":", zorder=4)
+                color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
         return ex, ey, ew, eh
 
     # ── External power panel (flush in wall) ──────────────────────────────────
@@ -1083,7 +1083,7 @@ def draw_sheet3():
             fontsize=5.5, color=C_DIM, zorder=6)
     # Cable route from panel up to trunking
     ax.plot([pp_x + pp_w / 2, pp_x + pp_w / 2], [pp_y + pp_h, tk_y],
-            color=C_PIPE, lw=1.2, ls=":", zorder=4)
+            color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
     # ── Evaporative cooler (floor-standing) ───────────────────────────────────
     wall_equip(EVAP_X, 0, EVAP_H, EVAP_W,
@@ -1137,7 +1137,7 @@ def draw_sheet3():
                      fc="white", ec=C_OUT, lw=0.8, zorder=6))
         # Conduit from switch to trunking
         ax.plot([sx, sx], [sz + sw_sz/2, tk_y],
-                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+                color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
     # Pull switch label
     leader(ax, wx(PS_X_MM), wz(CORD_HANG_Z) - 0.1,
@@ -1163,7 +1163,7 @@ def draw_sheet3():
                 color=C_OUT, zorder=6)
         # Conduit stub up to trunking
         ax.plot([lx + lw / 2, lx + lw / 2], [lz + lh, tk_y],
-                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+                color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
     # LED panel leader (label middle panel)
     mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
@@ -1192,7 +1192,7 @@ def draw_sheet3():
                 color=C_OUT, zorder=6)
         # Conduit up to trunking
         ax.plot([s3x + s3w / 2, s3x + s3w / 2], [s3z + s3h, tk_y],
-                color=C_PIPE, lw=1.0, ls=":", zorder=4)
+                color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
     # Leader on near-pinhole strip
     s3_ldr_x = wx(SL3_POSITIONS[0] + SL3_W_MM / 2)
     s3_ldr_z = wz(SL3_Z)

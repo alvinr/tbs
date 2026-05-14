@@ -397,7 +397,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. Near/far walls only. | 18 | Local fab / Metal Supermarkets SoCal | ~$145–$220 |
 | Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position (near/far walls only) | 18 | Metal Supermarkets / Pacific Coast Steel | ~$35–$55 |
 | M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 36 | McMaster-Carr / Bolt Depot | ~$35–$55 |
-| Steel angle bearer, 50×50×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway inner/outer bearers). | 2 | Metal Supermarkets / Pacific Coast Steel | ~$30–$50 |
+| Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway inner/outer bearers). | 2 | Metal Supermarkets / Pacific Coast Steel | ~$20–$35 |
 | M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs for right walkway). | 10 | McMaster-Carr / Bolt Depot | ~$40–$60 |
 | Ceiling bracket plates, 100×60×6mm steel | Galvanized. Bolted through ceiling corrugation. 10 plates (1 per hanger). | 10 | Local fab / Metal Supermarkets SoCal | ~$20–$35 |
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod (top/bottom of bearer). | 40+40 | McMaster-Carr / Bolt Depot | ~$20–$30 |

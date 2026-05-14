@@ -1173,8 +1173,8 @@ def draw_sheet3():
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
     # Pull switch label
-    leader(ax, wx(PS_X_MM), wz(CORD_HANG_Z) - 0.1,
-           wx(PS_X_MM), wz(CORD_HANG_Z) - 0.6,
+    leader(ax, wx(PS_X_MM + sw_x_off), wz(CORD_HANG_Z),
+           wx(PS_X_MM) + 0.5, wz(CORD_HANG_Z) + 0.6,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
@@ -1201,8 +1201,8 @@ def draw_sheet3():
     # LED panel leader (label middle panel)
     mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
     mid_led_cz = wz(LED_Z + LED_H_MM)
-    leader(ax, mid_led_cx, mid_led_cz,
-           mid_led_cx - 1.5, mid_led_cz + 0.5,
+    leader(ax, mid_led_cx, mid_led_cz - 0.1,
+           mid_led_cx - 1.5, mid_led_cz - 0.5,
            "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
            fs=6.5, color="#808000")
 
@@ -1240,21 +1240,21 @@ def draw_sheet3():
                f"{C_LEN} mm  (interior length)",
                above=False, offset=0.08, fs=7.5)
     # Overall wall height
-    draw_dim_v(ax, OX - 0.60, OY, OY + whgt,
+    draw_dim_v(ax, OX - 0.90, OY, OY + whgt,
                f"{TBS_C_HGT} mm",
                offset=0.08, fs=7.5)
 
     # EP height dimensions — dim line to the left of EP (mirrored)
     ep_x_l = wx(EP_X)  # right edge in drawing (mirrored)
-    draw_dim_v(ax, ep_x_l + 0.15, OY, wz(EP_H_LO),
-               f"{EP_H_LO}", offset=0.05, fs=6.5)
-    draw_dim_v(ax, ep_x_l + 0.15, wz(EP_H_LO), wz(EP_H_HI),
-               f"{EP_H_HI - EP_H_LO}", offset=0.05, fs=6.5)
+    draw_dim_v(ax, ep_x_l, OY, wz(EP_H_LO),
+               f"{EP_H_LO}mm", offset=0.05, fs=6.5)
+    draw_dim_v(ax, ep_x_l - 0.85, wz(EP_H_LO), wz(EP_H_HI),
+               f"{EP_H_HI - EP_H_LO}mm", offset=0.05, fs=6.5)
 
     # Battery height dimensions — dim line to the left of BAT (mirrored)
     ba_x_l = wx(BA_X)  # right edge in drawing (mirrored)
     draw_dim_v(ax, ba_x_l + 0.15, OY, wz(BA_H_LO),
-               f"{BA_H_LO}", offset=0.05, fs=6.5)
+               f"{BA_H_LO}\nmm", offset=0.05, fs=6.5)
     draw_dim_v(ax, ba_x_l + 0.15, wz(BA_H_LO), wz(BA_H_HI),
                f"{BA_H_HI - BA_H_LO}mm", offset=0.05, fs=6.5, right=True)
 
@@ -1263,13 +1263,13 @@ def draw_sheet3():
                f"{PH_H}mm", offset=0.05, fs=6.5, right=True)
 
     # Trunking height callout
-    draw_dim_v(ax, OX - 0.40, wz(TK_Z), OY + whgt,
+    draw_dim_v(ax, OX - 0.50, wz(TK_Z), OY + whgt,
                f"Trunking\n{TK_H_MM}mm", offset=0.05, fs=6.0)
 
     # Pull switch cord length
     ps_dim_x = wx(PS_X_MM - 120)  # mirrored offset
     draw_dim_v(ax, ps_dim_x, wz(CORD_HANG_Z), wz(PS_Z_MM),
-               f"Cord\n{PS_Z_MM - CORD_HANG_Z}mm", offset=0.05, fs=6.0)
+               f"Cord {PS_Z_MM - CORD_HANG_Z}mm", offset=0.05, fs=6.0, right=True)
 
     # ── Horizontal X dimensions for key equipment ─────────────────────────────
     DIM_Z_TOP = OY + whgt + 0.40

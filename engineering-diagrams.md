@@ -225,13 +225,13 @@ Mounting varies by side:
 - **Near/far walkways** (long walls): 8mm steel plate triangular gusset brackets bolted
   to corrugated wall structural ribs at 457mm (18") centers. Wall-cantilevered —
   no legs, no floor contact.
-- **Right walkway** (IBC end): 200mm wide (narrower than near/far to clear IBC stack).
-  50×40×3mm steel RHS box section beam spanning full container width (2,362mm along Yd),
-  through-bolted to floor at 457mm centers. Positioned at X=4,532–4,572mm (97mm clear
-  of tray rim, 102mm clear of IBC stack). 17mm packer shim + 8mm cantilever plate
-  bolted to box top brings support level to 75mm (level with near/far walkways). Plate
-  extends over tray to support grating. Miter corners where 200mm right meets 300mm
-  near/far walkways. Zero tray contact.
+- **Right walkway** (IBC end): ceiling-hung design — no floor contact. Two 50×50×5mm
+  steel angle bearers run full container width (2,362mm along Yd) at X=4,329mm and
+  X=4,629mm. Suspended from ceiling corrugations by M10 threaded rod hangers at
+  457mm centers (5 pairs, all at Yd < 2,025mm — clear of optical cone). 300mm wide
+  grating spans between bearers. Near/far ends bear on adjacent walkway bracket
+  structures. Deck height 100mm (level with all sides). Zero tray contact, zero
+  floor contact — clears IBC stack entirely.
 - **Left walkway** (cargo door end): removable lift-out section with no wall brackets.
   The hinged panel occupies this end wall and slides 300mm inward for transport —
   left walkway must be removed first. Supported by: (a) bearer beam (50x50x3mm Al
@@ -248,8 +248,8 @@ Mounting varies by side:
 **Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
 ![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)
 
-**Sheet 4 — Detail B: Right walkway box section beam at IBC end (≈3:1)**
-![TBS-001 Walkway — Sheet 4: Box Section Beam](assets/walkway-sheet4.png)
+**Sheet 4 — Detail B: Right walkway ceiling-hung support at IBC end (≈3:1)**
+![TBS-001 Walkway — Sheet 4: Ceiling-Hung Support](assets/walkway-sheet4.png)
 
 **Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
 ![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)

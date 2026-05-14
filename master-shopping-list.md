@@ -23,13 +23,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
-| 7b. Perimeter walkway (4 sections, wall-cantilevered) | $550 | $935 |
+| 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $850 | $1,320 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,100** | **~$21,690** |
+| **TOTAL (base build + 50-print run)** | **~$16,400** | **~$22,075** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -387,23 +387,26 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 ## 7b. Perimeter Walkway
 
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Wall-cantilevered bracket design (rev 9): near/far walkways (300mm) bracket to corrugated wall ribs, right walkway (200mm, narrower for IBC clearance) brackets to angle iron on flat end wall, left walkway is a removable lift-out (panel conflict — no brackets). Miter corners where 200mm right meets 300mm near/far. No legs, no beam, no floor contact — entire tray interior completely clear for film loading. Deck height 100mm (75mm bracket arm + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections (all 300mm wide) around the processing tray. Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
 
 ### Walkway sections (4 off)
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Press-locked steel grating, 25mm (30×3mm bars) | Galvanized, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×200mm (right), 1× 2,362×300mm (left — removable lift-out) | ~3.9 m² | McNichols / Metal Supermarkets SoCal | ~$250–$370 |
-| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. | 25 | Local fab / Metal Supermarkets SoCal | ~$200–$300 |
-| Angle iron mounting rail, 50×50×5mm L-angle | Mild steel, hot-dip galvanized. Welded horizontally along right end wall interior. 1× 2,362mm length. | 1 | Metal Supermarkets / Pacific Coast Steel | ~$15–$25 |
-| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position (near/far walls only) | 20 | Metal Supermarkets / Pacific Coast Steel | ~$40–$60 |
-| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 50 | McMaster-Carr / Bolt Depot | ~$50–$75 |
-| Grating clips | Slide-on clips to secure grating to bracket arms — removable without tools | 35 | McNichols / McMaster-Carr | ~$15–$25 |
-| Fabrication + installation | Cut/weld/galvanize 25 brackets, weld angle iron + reinforcing plates, drill wall ribs, install | 1 job | Local fab / metal shop | ~$250–$400 |
+| Press-locked steel grating, 25mm (30×3mm bars) | Galvanized, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×300mm (right), 1× 2,362×300mm (left — removable lift-out) | ~4.1 m² | McNichols / Metal Supermarkets SoCal | ~$260–$390 |
+| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical leg × 300mm horizontal arm, diagonal brace welded. Hot-dip galvanized. Near/far walls only. | 18 | Local fab / Metal Supermarkets SoCal | ~$145–$220 |
+| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position (near/far walls only) | 18 | Metal Supermarkets / Pacific Coast Steel | ~$35–$55 |
+| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 2 per bracket through wall rib + reinforcing plate. | 36 | McMaster-Carr / Bolt Depot | ~$35–$55 |
+| Steel angle bearer, 50×50×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway inner/outer bearers). | 2 | Metal Supermarkets / Pacific Coast Steel | ~$30–$50 |
+| M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs for right walkway). | 10 | McMaster-Carr / Bolt Depot | ~$40–$60 |
+| Ceiling bracket plates, 100×60×6mm steel | Galvanized. Bolted through ceiling corrugation. 10 plates (1 per hanger). | 10 | Local fab / Metal Supermarkets SoCal | ~$20–$35 |
+| M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod (top/bottom of bearer). | 40+40 | McMaster-Carr / Bolt Depot | ~$20–$30 |
+| Grating clips | Slide-on clips to secure grating to bracket arms / bearers — removable without tools | 35 | McNichols / McMaster-Carr | ~$15–$25 |
+| Fabrication + installation | Cut/weld/galvanize 18 brackets + reinforcing plates, drill wall ribs, hang right walkway bearers, install | 1 job | Local fab / metal shop | ~$250–$400 |
 
-**Walkway subtotal: ~$550–$935**
+**Walkway subtotal: ~$850–$1,320**
 
-*Near/far/right grating lifts onto bracket arms and clips in place. Left walkway is a lift-out section resting on near/far butt joint ends — must be removed before sliding the hinged panel to transport position. Left corners use butt joints (no miter) so near/far walkways clear the panel envelope. No floor contact — entire tray interior clear.*
+*Near/far grating lifts onto bracket arms and clips in place. Right walkway grating rests on ceiling-hung bearer angles — no floor contact, clears IBC stack entirely. Left walkway is a lift-out section resting on near/far butt joint ends — must be removed before sliding the hinged panel to transport position. Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
 ---
 

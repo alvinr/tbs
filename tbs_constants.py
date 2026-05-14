@@ -263,17 +263,19 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
-# Right walkway (IBC end) — narrowed to 200mm for IBC clearance.
-# Box section beam (50×40×3 RHS) spans full container width (Yd=0 to 2,362mm),
-# through-bolted to floor. 17mm packer shim + 8mm plate on top brings support
-# level to 75mm (matches near/far). Miter corners where it meets near/far walkways.
-WALKWAY_RIGHT_W = 200        # right walkway width (mm) — narrower than near/far for IBC clearance
-WALKWAY_RIGHT_BOX_X = 4532   # box section left face X (mm) — 97mm clear of tray rim
-WALKWAY_RIGHT_BOX_W = 40     # box section width in X (mm)
-WALKWAY_RIGHT_BOX_H = 50     # box section height (mm) — standard 50×40×3 RHS
-WALKWAY_RIGHT_BOX_T = 3      # box section wall thickness (mm)
-WALKWAY_RIGHT_PACKER_T = 17  # packer shim thickness (mm) — 75 - 50 - 8 = 17
-WALKWAY_RIGHT_IBC_CLR = 102  # clearance from box right face to IBC stack (mm)
+# Right walkway (IBC end) — ceiling-hung design.
+# No floor contact, no box beam.  Two longitudinal steel angle bearers
+# (50×50×5mm) running full container width along Yd, suspended from ceiling
+# corrugations by M10 threaded rod hangers at 457mm centers.  Grating spans
+# 300mm between bearers.  Near/far ends bear on adjacent walkway brackets.
+# All hangers placed at Yd < 2,025mm — clear of optical cone.
+WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
+WALKWAY_RIGHT_BEARER_SIZE = 50   # bearer angle leg (mm) — 50×50×5mm steel L-angle
+WALKWAY_RIGHT_BEARER_T   = 5    # bearer angle thickness (mm)
+WALKWAY_RIGHT_HANGER_D   = 10   # hanger threaded rod diameter (mm) — M10
+WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs (at ~457mm centers along Yd)
+WALKWAY_RIGHT_HANGER_L   = C_HGT - (WALKWAY_H - WALKWAY_GRATE_T)  # 2388 - 75 = 2313mm rod length
+WALKWAY_RIGHT_CEIL_PLATE  = (100, 60, 6)  # ceiling bracket plate (L×W×T mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
@@ -296,8 +298,8 @@ LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
-# Right walkway (IBC end): narrower (200mm) with miter corners to near/far (300mm)
-WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,429mm (grating left edge)
+# Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
+WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner edge)
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm
@@ -401,8 +403,8 @@ if __name__ == "__main__":
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
-    print(f"  Walkway:        near/far={WALKWAY_W}mm  right={WALKWAY_RIGHT_W}mm  deck H={WALKWAY_H}mm  grate={WALKWAY_GRATE_T}mm")
-    print(f"  Right walkway:  box beam X={WALKWAY_RIGHT_BOX_X}  IBC clearance={WALKWAY_RIGHT_IBC_CLR}mm")
+    print(f"  Walkway:        all={WALKWAY_W}mm  deck H={WALKWAY_H}mm  grate={WALKWAY_GRATE_T}mm")
+    print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod  {WALKWAY_RIGHT_BEARER_SIZE}×{WALKWAY_RIGHT_BEARER_SIZE}×{WALKWAY_RIGHT_BEARER_T}mm bearers")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")

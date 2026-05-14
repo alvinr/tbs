@@ -335,13 +335,13 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 |-----------|--------------|
 | Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
 | Quantity | 2 |
-| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,800mm (near EP), ceiling height |
+| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,230mm (above evap cooler), ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
 | Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |
 | Approximate cost | ~$8 each, ~$16 total |
 
-The switches are positioned adjacent to the electrical panel so the operator can control lighting immediately upon entry via the revolving drum. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
+The switches are positioned above the evaporative cooler, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
 
 ---
 

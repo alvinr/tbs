@@ -712,8 +712,8 @@ def draw_sheet2():
                 ha="center", va="center", fontsize=7.0, fontweight="bold",
                 color=C_OUT, zorder=6)
 
-    # ── Pull-cord switches — pinhole wall side, near EP ─────────────────────
-    PS_X_MM = 1800   # X position (mm) — near electrical panel
+    # ── Pull-cord switches — pinhole wall side, above evap cooler ───────────
+    PS_X_MM = EVAP_X + EVAP_W // 2   # X position — centered above evap cooler
     PS_YD   = 50     # just off pinhole wall
     PS_SZ   = 0.16   # symbol size in drawing units
     C_SWITCH = "#E0E0FF"
@@ -868,7 +868,7 @@ def draw_sheet2():
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
          "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
-         "SPST 6A ceiling switches  |  D=safelight, G=white light  |  Pinhole wall, X≈1,800mm"),
+         f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Pinhole wall, X≈{PS_X_MM}mm"),
         ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
          "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
@@ -1144,7 +1144,7 @@ def draw_sheet3():
            fs=7.0, ha="center")
 
     # ── Pull-cord switches ────────────────────────────────────────────────────
-    PS_X_MM = 1800     # X position (near EP)
+    PS_X_MM = EVAP_X + EVAP_W // 2   # X position — centered above evap cooler
     PS_Z_MM = C_HGT - 60   # just below trunking
     CORD_HANG_Z = 900  # cord bottom hangs to ~900mm above floor (~1500mm above walkway deck at 100mm)
 
@@ -1301,7 +1301,7 @@ def draw_sheet3():
         (C_EVAP,    "EVAP COOLER",       f"Cct E  |  X={EVAP_X}–{EVAP_X+EVAP_W}  |  Walkway deck Z={RAIL_OFF}–{RAIL_OFF+EVAP_H}mm"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
-        ("#E0E0FF", "PULL SWITCHES",     "Ccts D & G  |  SPST 6A  |  X≈1,800mm  |  Cord to ~1,500mm AFF"),
+        ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1,500mm AFF"),
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):

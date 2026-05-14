@@ -242,23 +242,20 @@ Mounting varies by side:
 **Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
-**Sheet 2 — Cross-section through near walkway: Grate, cantilever bracket, tray rim clearance (≈5:1)**
-![TBS-001 Walkway — Sheet 2: Cross-Section](assets/walkway-sheet2.png)
+**Sheet 2 — Cross-section through near walkway with bracket detail: Grate, cantilever bracket, corrugated wall rib attachment, tray rim clearance (≈5:1)**
+![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-**Sheet 3 — Detail A: Near/far bracket through-bolted to corrugated wall rib (≈3:1)**
-![TBS-001 Walkway — Sheet 3: Corrugated Wall Bracket](assets/walkway-sheet3.png)
+**Sheet 3 — Detail A: Right walkway ceiling-hung support at IBC end (≈3:1)**
+![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
 
-**Sheet 4 — Detail B: Right walkway ceiling-hung support at IBC end (≈3:1)**
-![TBS-001 Walkway — Sheet 4: Ceiling-Hung Support](assets/walkway-sheet4.png)
+**Sheet 4 — Detail B: Left walkway removable lift-out resting on butt joint (≈2:1)**
+![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-**Sheet 5 — Detail C: Left walkway removable lift-out resting on butt joint (≈2:1)**
-![TBS-001 Walkway — Sheet 5: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
+**Sheet 5 — Detail C: Left walkway support system — bearer beam, floor legs, bearing strip (≈3.5:1)**
+![TBS-001 Walkway — Sheet 5: Support System Detail](assets/walkway-sheet5.png)
 
-**Sheet 6 — Detail D: Left walkway support system — bearer beam, floor legs, bearing strip (≈3.5:1)**
-![TBS-001 Walkway — Sheet 6: Support System Detail](assets/walkway-sheet6.png)
-
-**Sheet 7 — Detail E: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (≈4:1)**
-![TBS-001 Walkway — Sheet 7: Bearer Beam Connection](assets/walkway-sheet7.png)
+**Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (≈4:1)**
+![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
 ---
 

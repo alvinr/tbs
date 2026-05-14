@@ -654,10 +654,10 @@ def sheet1(components):
     _draw_cargo_doors(ax, closed=True)
 
     # Draw each component (no inline labels — all via leaders)
-    # Processing tray first at lower zorder (large area, must not obscure others)
+    # Processing tray first at lowest zorder (large area, must not obscure others)
     for c in dry:
         if c.name == "Processing tray":
-            _draw_component(ax, c, alpha=0.35, show_label=False, zorder=3)
+            _draw_component(ax, c, alpha=0.2, show_label=False, zorder=2)
     # All other components on top (excluding drum)
     for c in dry:
         if c.name not in ("Light trap drum", "Processing tray"):

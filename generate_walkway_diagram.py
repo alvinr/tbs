@@ -1895,9 +1895,9 @@ def sheet6():
     YD_LO = -100
     YD_HI = BEAM_SHOW + 200
     Z_LO  = -60
-    Z_HI  = BRKT_VERT + 400   # extended upward for Views B/C at top
+    Z_HI  = BRKT_VERT + 320   # tightened for Views B/C at top
 
-    fig, ax = plt.subplots(figsize=(18, 22))
+    fig, ax = plt.subplots(figsize=(18, 18))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -2138,7 +2138,7 @@ def sheet6():
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
     PV_OX = 60
-    PV_OY = BRKT_VERT + 260
+    PV_OY = BRKT_VERT + 190
     PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)

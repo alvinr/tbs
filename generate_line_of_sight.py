@@ -8,9 +8,9 @@ Generates diagrams/line-of-sight.png — two-panel optical clearance diagram
 for TBS-001 (redesigned film-plane-reduction layout).
 
 Panel A — Plan view (top-down):
-  Shows the optical cone from the pinhole (X=2874, Yd=0) expanding to the
-  new film plane edges (X=625–4649 at Yd=2262mm).
-  Equipment in shadow-free end zones (X<625 or X>4649) is always clear.
+  Shows the optical cone from the pinhole (X=2399, Yd=0) expanding to the
+  film plane edges (X=150–4649 at Yd=2262mm).
+  Equipment in shadow-free end zones (X<150 or X>4649) is always clear.
   Equipment on the pinhole wall (Yd=0) is also always clear.
 
 Panel B — Side elevation:
@@ -123,7 +123,7 @@ EQUIPMENT = [
 
     # OPTICAL ZONE — processing tray on floor
     dict(name="Processing tray (304 SS)",
-         x=FP_X_L + 20, yd=60, w=FP_X_R - FP_X_L - 40, d=2200,
+         x=FP_X_L + 20, yd=80, w=FP_X_R - FP_X_L - 40, d=2200,
          h_bot=0, h_top=50,
          color=C_WALL, zone="optical", skip_cone_check=True),
 ]

@@ -16,13 +16,13 @@ Coordinate system (all mm):
            Y=2362: far long wall (image plane / film fabric)
 
 Equipment layout — end-zone design rev 5 (4-IBC 2×2 stack, drums eliminated):
-  Left end zone  (X=0–625):    light trap drum only (freed up by drum removal)
+  Left end zone  (X=0–150):    light trap drum only (freed up by drum removal)
   Pinhole wall   (Yd=0 face):  evap cooler (X=930–1530) + electrical panel + pump manifold
-  Optical zone   (X=625–4649): film plane rails only — floor clear
+  Optical zone   (X=150–4649): film plane rails only — floor clear
   Right end zone (X=4649–5893): 4× IBC in 2×2 stack (2 columns × 2 high)
 
   Every item in the end zones is provably shadow-free at all depths:
-    cone left boundary  >= 625mm  at any Y <= 2262  ✓
+    cone left boundary  >= 150mm  at any Y <= 2262  ✓
     cone right boundary <= 4649mm  at any Y <= 2262  ✓
 """
 
@@ -546,7 +546,7 @@ def egress_detail():
 
     Physical constraints that prevent inward opening:
       • Light trap drum (750mm dia) would cross container wall
-      • Film plane rails at X=625 (floor + ceiling) block swing path
+      • Film plane rails at X=150 (floor + ceiling) block swing path
 
     Egress: with drums eliminated (rev 5), the full container width
     (2362mm) is clear for egress once the panel is swung outward.
@@ -783,7 +783,7 @@ def egress_detail():
             "Left zone obstructions:   NONE\n\n"
             "PANEL OPENS OUTWARD ONLY\n"
             "Inward blocked by:\n"
-            "film plane rails at X=625",
+            "film plane rails at X=150",
             color=C_OUT, fontsize=6.5, ha="center", va="center",
             **FONT, zorder=10,
             bbox=dict(boxstyle="round,pad=0.5", fc="#F0FFF0",

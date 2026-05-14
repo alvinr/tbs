@@ -233,16 +233,16 @@ def sheet1():
 
     # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────
     # Blue IBC stack x2 (front in depth, 2020mm tall)
-    equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_STK, C_BLUE_IBC, zorder=5)
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, zorder=5)
     # Stacking interface line
-    ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [RAIL_OFF+IBC_H_600, RAIL_OFF+IBC_H_600],
+    ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [IBC_H_600, IBC_H_600],
             color="white", lw=0.8, ls="--", alpha=0.7, zorder=6)
-    ax.text(IBC_COL_X+IBC_W/2, RAIL_OFF+IBC_H_STK/2+175,
+    ax.text(IBC_COL_X+IBC_W/2, IBC_H_STK/2+175,
             "BLUE IBC x2\nSTACKED (FRONT)\n2x600L H=2020mm",
             ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
 
     # Brown IBC x1 (behind Blue, Y-depth stacked — draw at same X, dimmer)
-    equip_blk(ax, IBC_COL_X, RAIL_OFF, IBC_W, IBC_H_600,
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600,
               C_BROWN_IBC, alpha=0.45, zorder=3)
 
     # (drums relocated to left zone — no drum column in right zone)
@@ -275,7 +275,7 @@ def sheet1():
         (EVAP_X+EVAP_W/2,         RAIL_OFF+EVAP_H/2,     "4"),  # Evap cooler
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
-        (IBC_COL_X+IBC_W/2,      RAIL_OFF+IBC_H_STK/2,  "7"),  # IBCs (4× 2×2 stack)
+        (IBC_COL_X+IBC_W/2,      IBC_H_STK/2,            "7"),  # IBCs (4× 2×2 stack)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "8"),  # Pump
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
@@ -441,7 +441,7 @@ def sheet2():
             ha="center", va="center", fontsize=FS_SM-0.5, color=C_OUT,
             style="italic", zorder=7)
 
-    # ── Film plane (dashed inset — behind this view, at X=1100–4649 depth) ────
+    # ── Film plane (dashed inset — behind this view, at X=150–4649 depth) ─────
     # In this end elevation the film plane spans the full container height but
     # only the range Y=0–CW in the horizontal axis here. Indicate with dashed rect.
     ax.add_patch(mpatches.Rectangle((50, 50), C_WID-100, C_HGT-100,

@@ -1942,7 +1942,7 @@ def sheet6():
     # ── Corrugated wall (hollow rib profile — matching sheet 3) ──────────────
     ext_panel_yd = -CORR_DEPTH - WALL_T
     reinf_yd = ext_panel_yd - REINF_T
-    wall_z_top = BRKT_VERT + 30   # cut just above bracket top + break line
+    wall_z_top = BRKT_VERT + 100  # 100mm above bracket top, then break line
 
     # Exterior wall steel panel
     ax.add_patch(Rectangle((sx(ext_panel_yd), sy(0)),

@@ -587,14 +587,14 @@ def _draw_cargo_doors(ax, closed=True):
 
 
 def _draw_component(ax, c, *, alpha=0.6, show_label=True, fs=5.0,
-                    label_offset=None):
+                    label_offset=None, zorder=5):
     """Draw a component as a colored rectangle."""
     w = c.x_max - c.x_min
     h = c.yd_max - c.yd_min
     if w < 1 or h < 1:
         return
     ax.add_patch(Rectangle((c.x_min, c.yd_min), w, h,
-                 fc=c.color, ec=C_OUT, lw=0.6, alpha=alpha, zorder=5))
+                 fc=c.color, ec=C_OUT, lw=0.6, alpha=alpha, zorder=zorder))
     if show_label:
         label = f"{c.name}\n{c.weight_kg:.0f} kg"
         # Only show label if rectangle is big enough
@@ -654,14 +654,20 @@ def sheet1(components):
     _draw_cargo_doors(ax, closed=True)
 
     # Draw each component (no inline labels — all via leaders)
-    # Draw drum as circle separately
+    # Processing tray first at lower zorder (large area, must not obscure others)
+    for c in dry:
+        if c.name == "Processing tray":
+            _draw_component(ax, c, alpha=0.3, show_label=False, zorder=3)
+    # Drum as circle
     for c in dry:
         if c.name == "Light trap drum":
             drum_cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport position
             drum_cy = C_WID / 2
             ax.add_patch(Circle((drum_cx, drum_cy), DRUM_R,
                          fc=C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.7, zorder=7))
-        else:
+    # All other components on top
+    for c in dry:
+        if c.name not in ("Light trap drum", "Processing tray"):
             _draw_component(ax, c, alpha=0.5, show_label=False)
 
     # Leader labels for ALL components — split near-side and far-side

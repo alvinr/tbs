@@ -145,14 +145,14 @@ Brown/Waste IBCs.
 
 ## 5. Weight Distribution Diagrams
 
-### Sheet 1 — Summary Comparison
+### 1 — Summary Comparison
 
 Three-state side-by-side comparison with CG positions and summary table.
 The dry state is nearly balanced; liquid states shift CG rearward by ~715mm.
 
 ![TBS-001 — Weight Analysis: Summary Comparison](assets/weight-analysis-sheet1.png)
 
-### Sheet 2 — Dry Weight (Configured for Transport)
+### 2 — Dry Weight (Configured for Transport)
 
 All dry components shown at actual footprint positions, color-coded by
 category. The hinged panel is retracted 300mm inward on its ceiling rails
@@ -160,7 +160,7 @@ category. The hinged panel is retracted 300mm inward on its ceiling rails
 
 ![TBS-001 — Weight Analysis: Dry — Transport](assets/weight-analysis-sheet2.png)
 
-### Sheet 3 — Camera Ready (Panel Deployed)
+### 3 — Camera Ready (Panel Deployed)
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
@@ -169,7 +169,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
 
-### Sheet 4 — Materials Exhausted (Configured for Transport)
+### 4 — Materials Exhausted (Configured for Transport)
 
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is retracted to transport position (X=300–380).

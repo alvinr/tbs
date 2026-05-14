@@ -947,7 +947,7 @@ def sheet4(components):
 
         ax.set_title(label, fontsize=9, fontweight="bold", color=C_OUT,
                      **_FONT)
-        ax.set_xlim(-250, C_LEN + 100)
+        ax.set_xlim(-450, C_LEN + 100)
         ax.set_ylim(-250, C_WID + 250)
         ax.set_aspect("equal")
         ax.tick_params(labelsize=5)

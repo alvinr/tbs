@@ -273,13 +273,14 @@ Permanently installed — no removal for transport mode conversion.*
 | Far walkway Yd | 2,062 mm | `WALKWAY_FAR_YD` |
 | Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
 | Left walkway unsupported span | 1,762 mm | `WALKWAY_LEFT_SPAN` |
-| Right walkway X | 4,429 mm | `WALKWAY_RIGHT_X` |
+| Right walkway X | 4,329 mm | `WALKWAY_RIGHT_X` |
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
-Right: same brackets on 50×50×5mm angle iron welded to flat end wall.
+Right: ceiling-hung — 2× 50×50×5mm steel angle bearers suspended from ceiling by M10
+threaded rod hangers (5 pairs at 457mm centers). No floor contact — clears IBC stack entirely.
 Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
-panel conflict, must remove before panel slides to transport). No legs, no beam,
-no floor contact. 4 removable sections.*
+panel conflict, must remove before panel slides to transport). No floor contact on
+any section. 4 removable sections.*
 
 *Diagrams: walkway sheet 1 cross-section (WK), walkway sheet 2 plan view (WK), container floor plan (FP).*
 

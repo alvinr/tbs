@@ -39,8 +39,9 @@ from tbs_constants import (
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
-    WALKWAY_RIGHT_W, WALKWAY_RIGHT_BOX_X, WALKWAY_RIGHT_BOX_W, WALKWAY_RIGHT_BOX_H,
-    WALKWAY_RIGHT_BOX_T, WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
+    WALKWAY_RIGHT_W, WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
+    WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_L,
+    WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T, LEFT_WK_LEG_N,
     EVAP_X, EVAP_W, EVAP_Y, EVAP_D,
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
@@ -181,17 +182,24 @@ def _walkway_near_far_weight():
 
 
 def _walkway_right_weight():
-    """Right walkway (IBC end): box section beam + grating."""
-    # Box section: 50×40×3mm RHS, spanning 2362mm
-    rhs_perim = 2 * (50 + 40) - 4 * 3  # inner perimeter approx
-    rhs_area = (2 * (50 + 40) * 3 - 4 * 3 * 3) * 1e-6  # m² cross-section
-    beam_kg = rhs_area * (C_WID / 1000) * RHO_STEEL
-    # Packer shim: 17mm steel plate, ~200mm wide × 2362mm
-    packer_kg = 0.200 * (C_WID / 1000) * 0.017 * RHO_STEEL
-    # Grating (200mm wide)
+    """Right walkway (IBC end): ceiling-hung — bearers + hangers + grating."""
+    BS = WALKWAY_RIGHT_BEARER_SIZE
+    BT = WALKWAY_RIGHT_BEARER_T
+    # 2× steel angle bearers (50×50×5mm), each spanning 2362mm
+    # L-angle cross-section area: 2*BS*BT - BT*BT
+    angle_area = (2 * BS * BT - BT * BT) * 1e-6  # m²
+    bearers_kg = 2 * angle_area * (C_WID / 1000) * RHO_STEEL
+    # Hangers: M10 threaded rod, 2313mm long, 5 pairs = 10 rods
+    rod_area = 3.14159 * (WALKWAY_RIGHT_HANGER_D / 2000) ** 2  # m²
+    hangers_kg = WALKWAY_RIGHT_HANGER_N * 2 * rod_area * (WALKWAY_RIGHT_HANGER_L / 1000) * RHO_STEEL
+    # Ceiling plates: 100×60×6mm, 10 plates (1 per hanger)
+    plate_kg = WALKWAY_RIGHT_HANGER_N * 2 * (0.100 * 0.060 * 0.006) * RHO_STEEL
+    # Grating (300mm wide)
     grate_area = (WALKWAY_RIGHT_W / 1000) * (C_WID / 1000)
     grate_kg = grate_area * GRATING_KG_PER_M2
-    return beam_kg + packer_kg + grate_kg
+    # Hardware (nuts, washers, clips) estimate
+    hardware_kg = 2.0
+    return bearers_kg + hangers_kg + plate_kg + grate_kg + hardware_kg
 
 
 def _walkway_left_weight():
@@ -342,9 +350,9 @@ def build_components():
                   0, WALKWAY_H, color=C_STEEL,
                   calc_note=f"Brackets + {GRATING_KG_PER_M2} kg/m² grating"),
         Component("Right walkway", "structure", right_wk,
-                  WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_RIGHT_W,
+                  WALKWAY_RIGHT_X, WALKWAY_RIGHT_X + WALKWAY_W,
                   0, C_WID, 0, WALKWAY_H, color=C_STEEL,
-                  calc_note=f"50×40×3 RHS beam + 17mm packer + {WALKWAY_RIGHT_W}mm grating"),
+                  calc_note=f"Ceiling-hung: bearers + M{WALKWAY_RIGHT_HANGER_D} hangers + grating"),
         Component("Left walkway", "structure", left_wk,
                   WALKWAY_LEFT_X, WALKWAY_LEFT_X + WALKWAY_W,
                   0, C_WID, 0, WALKWAY_H, color="#80C080",

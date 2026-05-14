@@ -980,7 +980,7 @@ def sheet5():
     ax_a.add_patch(Rectangle((sa(-30), sa(ceiling_bot)),
                               sa(LEG + 110), sa(CEILING_T),
                               fc=C_CEIL, ec=ANNO, lw=1.2, hatch="xxx", zorder=3))
-    ax_a.text(sa(LEG + 75), sa(ceiling_bot + CEILING_T / 2),
+    ax_a.text(sa(LEG + 85), sa(ceiling_bot + CEILING_T / 2),
               "CONTAINER\nCEILING", ha="left", va="center",
               fontsize=5, color=DIM, **FONT, zorder=15)
 
@@ -991,7 +991,7 @@ def sheet5():
                               sa(RAIL_W), sa(RAIL_H),
                               fc=C_RAIL, ec=ANNO, lw=1.2, zorder=4))
     leader(ax_a, sa(rail_cx), sa(rail_bot + RAIL_H / 2),
-           sa(rail_cx + 50), sa(rail_bot + RAIL_H / 2 + 15),
+           sa(rail_cx + 50), sa(rail_bot + RAIL_H / 2),
            f"HGR20 RAIL\n({RAIL_W}×{RAIL_H}mm)",
            color=C_RAIL, fs=5.5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
@@ -1027,7 +1027,7 @@ def sheet5():
     ax_a.add_patch(Rectangle((sa(lbk_x), sa(lbracket_bot)),
                               sa(LBRACKET_W), sa(LBRACKET_T),
                               fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
-    leader(ax_a, sa(lbk_x + LBRACKET_W / 2), sa(lbracket_bot + LBRACKET_H / 2),
+    leader(ax_a, sa(lbk_x + LBRACKET_T / 2), sa(lbracket_bot + LBRACKET_H / 2),
            sa(-25), sa(lbracket_bot + LBRACKET_H / 2),
            f"L-BRACKET\n(1/4\" Al PLATE)",
            color=DIM, fs=5, ha="right", va="center",
@@ -1042,7 +1042,7 @@ def sheet5():
                            sa(BEARING_D / 4),
                            fc=BG, ec=ANNO, lw=0.8, zorder=7))
     leader(ax_a, sa(lbk_x - 2), sa(bearing_cy),
-           sa(-25), sa(bearing_cy - 15),
+           sa(-25), sa(bearing_cy + 15),
            f"GIR25-DO\nROD-END BEARING\n(FREE ROTATION\nFOR TILT/SWING)",
            color=C_BEAR, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
@@ -1134,12 +1134,12 @@ def sheet5():
 
     # Leader labels for clamp components
     leader(ax_a, sa(T + CLAMP_BASE_T + 6), sa(bolt_z1),
-           sa(LEG + 40), sa(bolt_z1),
+           sa(LEG - 20), sa(bolt_z1 - 20),
            f"M5 BOLT + NYLOCK\n(2 PER CLAMP)", color=C_BOLT, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sa(jaw_x + CLAMP_JAW_T / 2), sa(jaw_z_top + 1),
-           sa(LEG + 40), sa(jaw_z_top + 8),
+           sa(LEG), sa(jaw_z_top + 25),
            f"NEOPRENE JAW\n60A SHORE", color=C_NEOP, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
@@ -1364,7 +1364,7 @@ def sheet5():
            arrow_style="-|>", font=FONT)
 
     leader(ax_c, sp(clamp_x), sp(T + 2),
-           sp(clamp_x + 55), sp(-25),
+           sp(clamp_x), sp(-25),
            f"NEOPRENE JAW\n({CLAMP_JAW_W}×{CLAMP_JAW_H}×{CLAMP_JAW_T}mm)\nPRESSES MUSLIN\nAGAINST FRAME",
            color=C_NEOP, fs=5, ha="center", va="center",
            arrow_style="-|>", font=FONT)

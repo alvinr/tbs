@@ -895,7 +895,7 @@ def draw_sheet2():
 #
 # ORIENTATION:
 #   Viewer stands inside container looking toward the pinhole wall (Yd=0).
-#   Horizontal axis = container X (0=cargo door LEFT, 5893=far end RIGHT).
+#   Horizontal axis = container X mirrored (0=cargo door RIGHT, 5893=far end LEFT).
 #   Vertical axis = Z (0=floor, 2388=ceiling).
 #   Equipment mounted on the wall face is drawn at actual X and Z positions.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -946,8 +946,8 @@ def draw_sheet3():
     whgt = C_HGT * S     # wall height in drawing units
 
     def wx(x_mm):
-        """Map TBS X (mm) to drawing X coordinate."""
-        return OX + x_mm * S
+        """Map TBS X (mm) to drawing X coordinate (mirrored: interior view)."""
+        return OX + (C_LEN - x_mm) * S
 
     def wz(z_mm):
         """Map TBS Z (mm) to drawing Y coordinate."""
@@ -970,11 +970,11 @@ def draw_sheet3():
             ha="center", va="bottom", fontsize=7.5, color=C_DIM)
 
     # Wall labels
-    ax.text(OX - 0.15, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
-            ha="right", va="center", fontsize=7.0, color=C_OUT,
+    ax.text(OX - 0.15, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
+            ha="right", va="center", fontsize=7.0, color=C_DIM)
+    ax.text(OX + wlen + 0.15, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
+            ha="left", va="center", fontsize=7.0, color=C_OUT,
             fontweight="bold")
-    ax.text(OX + wlen + 0.15, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
-            ha="left", va="center", fontsize=7.0, color=C_DIM)
 
     # ── Cable trunking — horizontal at ceiling corner ─────────────────────────
     TK_H_MM = 25    # trunking height (mm)
@@ -991,7 +991,7 @@ def draw_sheet3():
 
     # ── Helper: wall-mount equipment box ──────────────────────────────────────
     def wall_equip(x_mm, z_lo, z_hi, w_mm, label, sublabel, fc, badge=""):
-        ex = wx(x_mm)
+        ex = wx(x_mm + w_mm)   # mirrored: right edge of component maps to left in drawing
         ey = wz(z_lo)
         ew = w_mm * S
         eh = (z_hi - z_lo) * S
@@ -1014,7 +1014,7 @@ def draw_sheet3():
     # Centered vertically at ~EP mounting height
     PP_Z_LO = EP_H_LO   # align with bottom of EP
     PP_Z_HI = PP_Z_LO + PWR_PANEL_H
-    pp_x = wx(PWR_PANEL_X)
+    pp_x = wx(PWR_PANEL_X + PWR_PANEL_W)   # mirrored
     pp_y = wz(PP_Z_LO)
     pp_w = PWR_PANEL_W * S
     pp_h = PWR_PANEL_H * S
@@ -1086,7 +1086,7 @@ def draw_sheet3():
 
     # Pull switch label
     leader(ax, wx(PS_X_MM), wz(CORD_HANG_Z) - 0.1,
-           wx(PS_X_MM) + 1.2, wz(CORD_HANG_Z) - 0.6,
+           wx(PS_X_MM) - 1.2, wz(CORD_HANG_Z) - 0.6,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
@@ -1097,7 +1097,7 @@ def draw_sheet3():
     LED_POSITIONS = [1000, 2900, 4800]
     C_LED = "#FFFFF0"
     for lp_x in LED_POSITIONS:
-        lx = wx(lp_x)
+        lx = wx(lp_x + LED_W_MM)   # mirrored
         lz = wz(LED_Z)
         lw = LED_W_MM * S
         lh = LED_H_MM * S
@@ -1114,7 +1114,7 @@ def draw_sheet3():
     mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
     mid_led_cz = wz(LED_Z + LED_H_MM)
     leader(ax, mid_led_cx, mid_led_cz,
-           mid_led_cx + 1.5, mid_led_cz + 0.5,
+           mid_led_cx - 1.5, mid_led_cz + 0.5,
            "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
            fs=6.5, color="#808000")
 
@@ -1125,14 +1125,14 @@ def draw_sheet3():
     SL_W_MM = 10      # thin strip
     SL_Z_LO = 200
     SL_Z_HI = 2100
-    sl_x = wx(SL_X_MM)
+    sl_x = wx(SL_X_MM + SL_W_MM)   # mirrored
     sl_z = wz(SL_Z_LO)
     sl_w = max(SL_W_MM * S, 0.08)
     sl_h = (SL_Z_HI - SL_Z_LO) * S
     ax.add_patch(mpatches.Rectangle((sl_x, sl_z), sl_w, sl_h,
                  fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
-    leader(ax, sl_x, sl_z + sl_h / 2,
-           sl_x - 0.5, sl_z + sl_h / 2 + 0.4,
+    leader(ax, sl_x + sl_w, sl_z + sl_h / 2,
+           sl_x + sl_w + 0.6, sl_z + sl_h / 2 + 0.4,
            "Safelight (D)\nRed LED strip",
            fs=6.5, color="#B8960A")
 
@@ -1146,45 +1146,45 @@ def draw_sheet3():
                f"{TBS_C_HGT} mm",
                offset=0.08, fs=7.5)
 
-    # EP height dimensions
-    ep_x_r = wx(EP_X + EP_W)
-    draw_dim_v(ax, ep_x_r + 0.15, OY, wz(EP_H_LO),
+    # EP height dimensions — dim line to the left of EP (mirrored)
+    ep_x_l = wx(EP_X)  # right edge in drawing (mirrored)
+    draw_dim_v(ax, ep_x_l + 0.15, OY, wz(EP_H_LO),
                f"{EP_H_LO}", offset=0.05, fs=6.5)
-    draw_dim_v(ax, ep_x_r + 0.15, wz(EP_H_LO), wz(EP_H_HI),
+    draw_dim_v(ax, ep_x_l + 0.15, wz(EP_H_LO), wz(EP_H_HI),
                f"{EP_H_HI - EP_H_LO}", offset=0.05, fs=6.5)
 
-    # Battery height dimensions
-    ba_x_r = wx(BA_X + BA_W)
-    draw_dim_v(ax, ba_x_r + 0.15, OY, wz(BA_H_LO),
+    # Battery height dimensions — dim line to the left of BAT (mirrored)
+    ba_x_l = wx(BA_X)  # right edge in drawing (mirrored)
+    draw_dim_v(ax, ba_x_l + 0.15, OY, wz(BA_H_LO),
                f"{BA_H_LO}", offset=0.05, fs=6.5)
-    draw_dim_v(ax, ba_x_r + 0.15, wz(BA_H_LO), wz(BA_H_HI),
+    draw_dim_v(ax, ba_x_l + 0.15, wz(BA_H_LO), wz(BA_H_HI),
                f"{BA_H_HI - BA_H_LO}", offset=0.05, fs=6.5)
 
     # Pinhole height
-    draw_dim_v(ax, ph_x + 0.25, OY, wz(PH_H),
+    draw_dim_v(ax, ph_x - 0.25, OY, wz(PH_H),
                f"PH  Z={PH_H}", offset=0.05, fs=6.5)
 
     # Trunking height callout
-    draw_dim_v(ax, OX + wlen + 0.40, wz(TK_Z), OY + whgt,
+    draw_dim_v(ax, OX - 0.40, wz(TK_Z), OY + whgt,
                f"Trunking\n{TK_H_MM}mm", offset=0.05, fs=6.0)
 
     # Pull switch cord length
-    ps_dim_x = wx(PS_X_MM + 120)
+    ps_dim_x = wx(PS_X_MM - 120)  # mirrored offset
     draw_dim_v(ax, ps_dim_x, wz(CORD_HANG_Z), wz(PS_Z_MM),
                f"Cord\n{PS_Z_MM - CORD_HANG_Z}mm", offset=0.05, fs=6.0)
 
     # ── Horizontal X dimensions for key equipment ─────────────────────────────
     DIM_Z_TOP = OY + whgt + 0.40
-    draw_dim_h(ax, wx(EVAP_X), wx(EVAP_X + EVAP_W), DIM_Z_TOP,
+    draw_dim_h(ax, wx(EVAP_X + EVAP_W), wx(EVAP_X), DIM_Z_TOP,
                f"Evap  X={EVAP_X}–{EVAP_X+EVAP_W}",
                above=True, offset=0.05, fs=6.0)
-    draw_dim_h(ax, wx(EP_X), wx(EP_X + EP_W), DIM_Z_TOP + 0.35,
+    draw_dim_h(ax, wx(EP_X + EP_W), wx(EP_X), DIM_Z_TOP + 0.35,
                f"EP  X={EP_X}–{EP_X+EP_W}",
                above=True, offset=0.05, fs=6.0)
-    draw_dim_h(ax, wx(BA_X), wx(BA_X + BA_W), DIM_Z_TOP,
+    draw_dim_h(ax, wx(BA_X + BA_W), wx(BA_X), DIM_Z_TOP,
                f"BAT  X={BA_X}–{BA_X+BA_W}",
                above=True, offset=0.05, fs=6.0)
-    draw_dim_h(ax, wx(PUMP_X), wx(PUMP_X + PUMP_W), DIM_Z_TOP,
+    draw_dim_h(ax, wx(PUMP_X + PUMP_W), wx(PUMP_X), DIM_Z_TOP,
                f"Pump  X={PUMP_X}–{PUMP_X+PUMP_W}",
                above=True, offset=0.05, fs=6.0)
 

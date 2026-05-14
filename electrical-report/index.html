@@ -1109,22 +1109,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-wiring-specification" class="md-nav__link">
+  <a href="#8-interior-lighting" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Wiring Specification
+        8. Interior Lighting
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="8. Wiring Specification">
+    <nav class="md-nav" aria-label="8. Interior Lighting">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-main-enclosure" class="md-nav__link">
+  <a href="#81-two-circuit-lighting-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.1 Main Enclosure
+        8.1 Two-Circuit Lighting Design
       
     </span>
   </a>
@@ -1132,10 +1132,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#82-circuit-list" class="md-nav__link">
+  <a href="#82-white-led-panel-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.2 Circuit List
+        8.2 White LED Panel Specification
       
     </span>
   </a>
@@ -1143,21 +1143,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#83-wiring-construction" class="md-nav__link">
+  <a href="#83-pull-cord-switches" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 Wiring Construction
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#84-electrical-diagrams" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8.4 Electrical Diagrams
+        8.3 Pull-Cord Switches
       
     </span>
   </a>
@@ -1170,10 +1159,71 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-shopping-list" class="md-nav__link">
+  <a href="#9-wiring-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Shopping List
+        9. Wiring Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Wiring Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-main-enclosure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Main Enclosure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-circuit-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Circuit List
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-wiring-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Wiring Construction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-electrical-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Electrical Diagrams
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-shopping-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Shopping List
       
     </span>
   </a>
@@ -1181,10 +1231,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-impact-on-existing-design" class="md-nav__link">
+  <a href="#11-impact-on-existing-design" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Impact on Existing Design
+        11. Impact on Existing Design
       
     </span>
   </a>
@@ -2036,9 +2086,9 @@
   → Victron SmartSolar MPPT 100/50 charge controller
   → 12V / 200Ah LiFePO4 battery bank ←── Victron IP65 12/15 shore charger (optional)
   → Blue Sea 5026 fuse block
-  → Circuits A–F (ventilation, pump, safelight, cooling, actuators)
+  → Circuits A–G (ventilation, pump, safelight, cooling, actuators, lighting)
 </code></pre></div>
-<p>See <a href="#84-electrical-diagrams">Section 8.4</a> for embedded diagrams.</p>
+<p>See <a href="#94-electrical-diagrams">Section 9.4</a> for embedded diagrams.</p>
 <hr />
 <h2 id="2-power-budget">2. Power Budget<a class="headerlink" href="#2-power-budget" title="Permanent link">&para;</a></h2>
 <table>
@@ -2088,9 +2138,15 @@
 <td>Intermittent</td>
 </tr>
 <tr>
+<td>G</td>
+<td>White LED panels (general lighting)</td>
+<td>60W</td>
+<td>Non-operational periods only</td>
+</tr>
+<tr>
 <td><strong>Total peak (all on)</strong></td>
 <td></td>
-<td><strong>415W</strong></td>
+<td><strong>475W</strong></td>
 <td>Not all simultaneous</td>
 </tr>
 </tbody>
@@ -2635,14 +2691,116 @@
 </tbody>
 </table>
 <hr />
-<h2 id="8-wiring-specification">8. Wiring Specification<a class="headerlink" href="#8-wiring-specification" title="Permanent link">&para;</a></h2>
-<h3 id="81-main-enclosure">8.1 Main Enclosure<a class="headerlink" href="#81-main-enclosure" title="Permanent link">&para;</a></h3>
+<h2 id="8-interior-lighting">8. Interior Lighting<a class="headerlink" href="#8-interior-lighting" title="Permanent link">&para;</a></h2>
+<h3 id="81-two-circuit-lighting-design">8.1 Two-Circuit Lighting Design<a class="headerlink" href="#81-two-circuit-lighting-design" title="Permanent link">&para;</a></h3>
+<p>TBS-001 requires two mutually exclusive lighting modes:</p>
+<ul>
+<li><strong>Safelight (Circuit D):</strong> Red LED strip on the inner drum face and cargo door wall. Used during loading and development when photosensitive material is present. 15W, always available.</li>
+<li><strong>White light (Circuit G):</strong> General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.</li>
+</ul>
+<p>The two circuits are independently switched — they are <strong>not</strong> interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.</p>
+<h3 id="82-white-led-panel-specification">8.2 White LED Panel Specification<a class="headerlink" href="#82-white-led-panel-specification" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>12V DC LED flat panel, 4000K neutral white</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>3 panels</td>
+</tr>
+<tr>
+<td>Power per panel</td>
+<td>20W</td>
+</tr>
+<tr>
+<td>Total power</td>
+<td>60W</td>
+</tr>
+<tr>
+<td>Luminous output</td>
+<td>~1,800 lumens per panel (5,400 lm total)</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>~300 × 600 mm</td>
+</tr>
+<tr>
+<td>Mounting</td>
+<td>Ceiling-mounted, centered across container width (Yd ≈ 1,181mm)</td>
+</tr>
+<tr>
+<td>Positions</td>
+<td>X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,800mm (evenly spaced along length)</td>
+</tr>
+<tr>
+<td>Circuit</td>
+<td>G (10A fuse, 16 AWG)</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~$25 each, ~$75 total</td>
+</tr>
+</tbody>
+</table>
+<p>Three panels at ~1,800 lumens each provide 5,400 lumens total across the ~14 m² floor area — approximately 385 lux, comparable to a well-lit workshop. The panels are wired in parallel from Circuit G via the ceiling cable trunking.</p>
+<h3 id="83-pull-cord-switches">8.3 Pull-Cord Switches<a class="headerlink" href="#83-pull-cord-switches" title="Permanent link">&para;</a></h3>
+<p>Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>12V DC SPST pull-cord ceiling switch, 6A rated</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Position</td>
+<td>Pinhole wall face (Yd ≈ 0), X ≈ 1,800mm (near EP), ceiling height</td>
+</tr>
+<tr>
+<td>Switch 1</td>
+<td>Circuit D — safelight (red). Cord labeled "RED"</td>
+</tr>
+<tr>
+<td>Switch 2</td>
+<td>Circuit G — white light. Cord labeled "WHITE"</td>
+</tr>
+<tr>
+<td>Wire</td>
+<td>Inline on respective circuit, between fuse block and load</td>
+</tr>
+<tr>
+<td>Approximate cost</td>
+<td>~$8 each, ~$16 total</td>
+</tr>
+</tbody>
+</table>
+<p>The switches are positioned adjacent to the electrical panel so the operator can control lighting immediately upon entry via the revolving drum. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.</p>
+<hr />
+<h2 id="9-wiring-specification">9. Wiring Specification<a class="headerlink" href="#9-wiring-specification" title="Permanent link">&para;</a></h2>
+<h3 id="91-main-enclosure">9.1 Main Enclosure<a class="headerlink" href="#91-main-enclosure" title="Permanent link">&para;</a></h3>
 <p>IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2,050–2,350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
 - Battery positive and negative busbars with 200A main fuse
 - Shore charger output terminals</p>
-<h3 id="82-circuit-list">8.2 Circuit List<a class="headerlink" href="#82-circuit-list" title="Permanent link">&para;</a></h3>
+<h3 id="92-circuit-list">9.2 Circuit List<a class="headerlink" href="#92-circuit-list" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2697,6 +2855,13 @@
 <td>~6m</td>
 </tr>
 <tr>
+<td>G</td>
+<td>White LED panels (general lighting)</td>
+<td>10A</td>
+<td>16 AWG</td>
+<td>~12m (3 branches)</td>
+</tr>
+<tr>
 <td>—</td>
 <td>Main battery fuse</td>
 <td>200A</td>
@@ -2705,15 +2870,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="83-wiring-construction">8.3 Wiring Construction<a class="headerlink" href="#83-wiring-construction" title="Permanent link">&para;</a></h3>
+<h3 id="93-wiring-construction">9.3 Wiring Construction<a class="headerlink" href="#93-wiring-construction" title="Permanent link">&para;</a></h3>
 <p><strong>Conduit:</strong> All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).</p>
 <p><strong>Connectors:</strong>
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
 - <strong>Circuit B flex connector (panel-mounted exhaust fan):</strong> Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2,200mm.</p>
 <p><strong>Grounding:</strong> Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.</p>
-<p><strong>Labelling:</strong> Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F) plus device description. Re-label after any wiring change.</p>
-<h3 id="84-electrical-diagrams">8.4 Electrical Diagrams<a class="headerlink" href="#84-electrical-diagrams" title="Permanent link">&para;</a></h3>
+<p><strong>Labelling:</strong> Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.</p>
+<h3 id="94-electrical-diagrams">9.4 Electrical Diagrams<a class="headerlink" href="#94-electrical-diagrams" title="Permanent link">&para;</a></h3>
 <p><strong>Sheet 1 — System One-Line Diagram</strong></p>
 <p>Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labelled.</p>
 <p><img alt="TBS-ELEC Sheet 1 — System One-Line Diagram" src="../assets/electrical-sheet1.png" /></p>
@@ -2722,7 +2887,7 @@
 <p>Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.</p>
 <p><img alt="TBS-ELEC Sheet 2 — Container Wiring Layout" src="../assets/electrical-sheet2.png" /></p>
 <hr />
-<h2 id="9-shopping-list">9. Shopping List<a class="headerlink" href="#9-shopping-list" title="Permanent link">&para;</a></h2>
+<h2 id="10-shopping-list">10. Shopping List<a class="headerlink" href="#10-shopping-list" title="Permanent link">&para;</a></h2>
 <p>All US/SoCal sources. Prices approximate as of 2026.</p>
 <table>
 <thead>
@@ -2855,10 +3020,22 @@
 <td>~$120</td>
 </tr>
 <tr>
+<td>12V LED flat panel, 300×600mm, 4000K</td>
+<td>20W, neutral white, ceiling-mount</td>
+<td>Amazon / superbrightleds.com</td>
+<td>~$75 (×3)</td>
+</tr>
+<tr>
+<td>Pull-cord ceiling switch, 12V 6A SPST</td>
+<td>Inline switch for lighting circuits D &amp; G</td>
+<td>Amazon / Lowe's</td>
+<td>~$16 (×2)</td>
+</tr>
+<tr>
 <td><strong>Electrical system total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~$1,740</strong></td>
+<td><strong>~$1,830</strong></td>
 </tr>
 <tr>
 <td><strong>Shade canopy total</strong></td>
@@ -2876,12 +3053,12 @@
 <td><strong>Systems grand total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~$2,220</strong></td>
+<td><strong>~$2,310</strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h2 id="10-impact-on-existing-design">10. Impact on Existing Design<a class="headerlink" href="#10-impact-on-existing-design" title="Permanent link">&para;</a></h2>
+<h2 id="11-impact-on-existing-design">11. Impact on Existing Design<a class="headerlink" href="#11-impact-on-existing-design" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>

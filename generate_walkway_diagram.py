@@ -1895,9 +1895,9 @@ def sheet6():
     YD_LO = -100
     YD_HI = BEAM_SHOW + 200
     Z_LO  = -60
-    Z_HI  = BRKT_VERT + 120
+    Z_HI  = BRKT_VERT + 400   # extended upward for Views B/C at top
 
-    fig, ax = plt.subplots(figsize=(18, 14))
+    fig, ax = plt.subplots(figsize=(18, 22))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -1910,8 +1910,8 @@ def sheet6():
     # Horizontal = Yd (wall at left), Vertical = Z
     # ══════════════════════════════════════════════════════════════════════════
 
-    # View A title
-    ax.text(sx(YD_LO + 125), sy(Z_HI - 5),
+    # View A title (above content, below Views B/C)
+    ax.text(sx(YD_LO + 125), sy(BRKT_VERT + 135),
             "VIEW A \u2014 SIDE ELEVATION\n(LOOKING ALONG X INTO CONTAINER)",
             ha="left", va="top", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -2126,25 +2126,25 @@ def sheet6():
                right=False, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════
-    # VIEW B — Plan view (looking down) — top right
+    # VIEW B — Plan view (looking down) — top left of page
     # Horizontal = Yd (wall at left), Vertical = X (interior at top,
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
-    PV_OX = BEAM_SHOW + 50
-    PV_OY = BRKT_VERT + 50
-    PV_S  = 2.5
+    PV_OX = -60
+    PV_OY = BRKT_VERT + 260
+    PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)
 
     ax.text(px(60), py(115), "VIEW B \u2014 PLAN (LOOKING DOWN)",
-            ha="center", va="bottom", fontsize=6, color=C_OUT,
+            ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
     # Axis labels
     ax.text(px(-15), py(90), "\u2190 INT.\n(WALL\nSIDE)", ha="center", va="center",
-            fontsize=4.5, color=C_DIM, **FONT, zorder=15)
+            fontsize=5.5, color=C_DIM, **FONT, zorder=15)
     ax.text(px(-15), py(10), "DOOR\nSIDE \u2192", ha="center", va="center",
-            fontsize=4.5, color=C_DIM, **FONT, zorder=15)
+            fontsize=5.5, color=C_DIM, **FONT, zorder=15)
 
     # Wall stub at Yd=0 (left edge)
     wall_pv_w = 5   # wall thickness in plan
@@ -2153,7 +2153,7 @@ def sheet6():
                             py(100) - py(0),
                             fc="#909098", ec=C_OUT, lw=1.2, zorder=3, hatch="///"))
     ax.text(px(-wall_pv_w / 2), py(105),
-            "WALL", ha="center", va="bottom", fontsize=4.5, color=C_DIM,
+            "WALL", ha="center", va="bottom", fontsize=5.5, color=C_DIM,
             fontweight="bold", **FONT, zorder=15)
 
     # Bracket vertical leg stub (at wall)
@@ -2176,7 +2176,7 @@ def sheet6():
     ax.text(px(plate_pv_yd_start + plate_pv_yd_w / 2),
             py(plate_pv_x_start - 3),
             f"FLAT PLATE\n({PLATE_W}mm WIDE)", ha="center", va="top",
-            fontsize=4, color=C_PLATE, **FONT, zorder=15, alpha=0.6)
+            fontsize=5, color=C_PLATE, **FONT, zorder=15, alpha=0.6)
 
     # Slot in plate (50mm long along Yd, visible through plate)
     slot_pv_yd_start = plate_pv_yd_start + (plate_pv_yd_w - SLOT_L) / 2
@@ -2187,7 +2187,7 @@ def sheet6():
                             py(slot_pv_x_ctr + slot_pv_w / 2) - py(slot_pv_x_ctr - slot_pv_w / 2),
                             fc="white", ec=C_OUT, lw=1.0, zorder=6))
     ax.text(px(slot_pv_yd_start + SLOT_L + 2), py(slot_pv_x_ctr),
-            f"{SLOT_L}mm\nSLOT", ha="left", va="center", fontsize=3.5, color=C_DIM,
+            f"{SLOT_L}mm\nSLOT", ha="left", va="center", fontsize=4.5, color=C_DIM,
             **FONT, zorder=15)
 
     # Lock block (interior/wall side = high X = top in plan view)
@@ -2201,8 +2201,8 @@ def sheet6():
     ax.add_patch(Circle((px(lock_pv_yd_ctr), py(lock_pv_x + LOCK_W / 2)),
                          (px(BOLT_DIA / 2 + 1) - px(0)),
                          fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=9))
-    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lock_pv_x + LOCK_W / 2),
-            f"LOCK + M{BOLT_DIA}\nBOLT", ha="left", va="center", fontsize=4, color=C_BOLT,
+    ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 20), py(lock_pv_x + LOCK_W / 2),
+            f"LOCK + M{BOLT_DIA}\nBOLT", ha="left", va="center", fontsize=5, color=C_BOLT,
             fontweight="bold", **FONT, zorder=15)
 
     # Beam (extends from bracket outward along Yd — ONE direction only)
@@ -2218,7 +2218,7 @@ def sheet6():
                             py(beam_pv_x + BEAM_SZ - BEAM_T) - py(beam_pv_x + BEAM_T),
                             fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=7))
     ax.text(px(plate_pv_yd_start + beam_pv_w / 2), py(beam_pv_x + BEAM_SZ / 2),
-            "BEAM", ha="center", va="center", fontsize=5, color=C_SUPPORT,
+            "BEAM", ha="center", va="center", fontsize=6.5, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
     # Break line at far end (beam continues to far bracket)
     bx_far = px(plate_pv_yd_start + beam_pv_w)
@@ -2233,7 +2233,7 @@ def sheet6():
                             py(lip_pv_x + LIP_T) - py(lip_pv_x),
                             fc=C_PLATE, ec=C_OUT, lw=1.2, zorder=8))
     ax.text(px(plate_pv_yd_start + plate_pv_yd_w + 3), py(lip_pv_x + LIP_T / 2),
-            "LIP", ha="left", va="center", fontsize=4, color=C_PLATE,
+            "LIP", ha="left", va="center", fontsize=5, color=C_PLATE,
             fontweight="bold", **FONT, zorder=15)
 
     # Plan view border
@@ -2245,24 +2245,22 @@ def sheet6():
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
     # ══════════════════════════════════════════════════════════════════════════
-    # VIEW C — Lock block detail (cross-section looking along Yd)
+    # VIEW C — Lock block detail (cross-section looking along Yd) — top right
     # Horizontal = X, Vertical = Z.  Shows slot in plate, lock block,
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
-    VC_OX = BEAM_SHOW + 50
-    # Position below View B with gap
-    vc_top = PV_OY + pv_border_bot * PV_S / S - 20
-    VC_OY = vc_top - (vc_top - Z_LO) * 0.5
-    VC_S  = 3.0   # larger scale for detail clarity
+    VC_OX = 200
+    VC_OY = PV_OY - 5   # align with View B vertically
+    VC_S  = 3.9   # 30% larger than original 3.0
     def cx(mm): return sx(VC_OX + mm * VC_S / S)
     def cy(mm): return sy(VC_OY + mm * VC_S / S)
 
     ax.text(cx(35), cy(85), "VIEW C \u2014 LOCK DETAIL\n(SECTION ALONG Yd)",
-            ha="center", va="bottom", fontsize=6, color=C_OUT,
+            ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
     ax.text(cx(35), cy(78),
             "\u2190 INT.         DOOR \u2192",
-            ha="center", va="top", fontsize=4.5, color=C_DIM,
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
     # Flat plate cross-section with slot
@@ -2288,7 +2286,7 @@ def sheet6():
                             fc="white", ec=C_OUT, lw=0.8, zorder=5))
     ax.text(cx(plate_cx_right + 3), cy(PLATE_T / 2),
             f"FLAT PLATE\n({PLATE_T}mm)", ha="left", va="center",
-            fontsize=4.5, color=C_PLATE, **FONT, zorder=15)
+            fontsize=5.5, color=C_PLATE, **FONT, zorder=15)
 
     # Lock block on top of plate
     lock_cx_left = slot_cx_ctr - LOCK_W / 2
@@ -2299,7 +2297,7 @@ def sheet6():
                             fc=C_BOLT, ec=C_OUT, lw=1.5, hatch="///", zorder=8))
     ax.text(cx(slot_cx_ctr), cy(PLATE_T + LOCK_H / 2),
             f"LOCK\nBLOCK", ha="center", va="center",
-            fontsize=5, color="white", fontweight="bold",
+            fontsize=6.5, color="white", fontweight="bold",
             **FONT, zorder=15)
 
     # Bolt shank (through block, through slot, extends below plate)
@@ -2321,7 +2319,7 @@ def sheet6():
     leader(ax, cx(slot_cx_ctr + bolt_head_w / 2 + 1), cy(PLATE_T + LOCK_H + bolt_head_h / 2),
            cx(slot_cx_ctr + 30), cy(PLATE_T + LOCK_H + 20),
            f"M{BOLT_DIA} HEX BOLT",
-           color=C_BOLT, fs=5,
+           color=C_BOLT, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # Washer below plate
@@ -2342,25 +2340,25 @@ def sheet6():
     leader(ax, cx(slot_cx_ctr + nut_w / 2 + 1), cy(-washer_t - NUT_H_LOCK / 2),
            cx(slot_cx_ctr + 30), cy(-washer_t - NUT_H_LOCK - 10),
            f"M{BOLT_DIA} NUT\n+ WASHER",
-           color=C_BOLT, fs=5,
+           color=C_BOLT, fs=6.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # Slot dimension
     draw_dim_h(ax, cx(slot_left), cx(slot_right),
                cy(-washer_t - NUT_H_LOCK - 18),
-               f"{slot_cx_w}mm\nSLOT WIDTH", offset=cy(3) - cy(0), fs=4.5, font=FONT)
+               f"{slot_cx_w}mm\nSLOT WIDTH", offset=cy(3) - cy(0), fs=5.5, font=FONT)
     # Lock block width
     draw_dim_h(ax, cx(lock_cx_left), cx(lock_cx_right),
                cy(PLATE_T + LOCK_H + bolt_head_h + 5),
-               f"{LOCK_W}mm", offset=cy(3) - cy(0), fs=4.5, font=FONT)
+               f"{LOCK_W}mm", offset=cy(3) - cy(0), fs=5.5, font=FONT)
     # Lock height
     draw_dim_v(ax, cx(plate_cx_right + 2), cy(PLATE_T), cy(PLATE_T + LOCK_H),
-               f"{LOCK_H}", offset=cx(3) - cx(0), fs=4.5, right=True, font=FONT)
+               f"{LOCK_H}", offset=cx(3) - cx(0), fs=5.5, right=True, font=FONT)
 
     # Slot length note (into page)
     ax.text(cx(slot_cx_ctr), cy(-washer_t - NUT_H_LOCK - 28),
             f"SLOT LENGTH: {SLOT_L}mm ALONG Yd\n(ALLOWS POSITION ADJUSTMENT)",
-            ha="center", va="top", fontsize=4.5, color=C_DIM,
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
     # View C border
@@ -2369,9 +2367,9 @@ def sheet6():
                             cy(PLATE_T + LOCK_H + bolt_head_h + 15) - cy(-washer_t - NUT_H_LOCK - 35),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
-    # ── Notes ────────────────────────────────────────────────────────────────
+    # ── Notes (right of View A) ─────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
-    notes_top = sy(beam_bot + 10 + (Z_HI - Z_LO) * 0.10)
+    notes_top = sy(BRKT_VERT + 80)
     notes = [
         "BEARER BEAM CONNECTION:",
         "",

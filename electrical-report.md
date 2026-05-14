@@ -19,10 +19,10 @@ Solar panels (3 × 200W)
   → Victron SmartSolar MPPT 100/50 charge controller
   → 12V / 200Ah LiFePO4 battery bank ←── Victron IP65 12/15 shore charger (optional)
   → Blue Sea 5026 fuse block
-  → Circuits A–F (ventilation, pump, safelight, cooling, actuators)
+  → Circuits A–G (ventilation, pump, safelight, cooling, actuators, lighting)
 ```
 
-See [Section 8.4](#84-electrical-diagrams) for embedded diagrams.
+See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 
 ---
 
@@ -36,7 +36,8 @@ See [Section 8.4](#84-electrical-diagrams) for embedded diagrams.
 | D | Safelight — interior + vestibule | 15W | Loading phase only (~45 min) |
 | E | Evaporative cooler (12V DC) | 80W | Continuous during operation |
 | F | Film plane actuators (optional) | 100W peak | Intermittent |
-| **Total peak (all on)** | | **415W** | Not all simultaneous |
+| G | White LED panels (general lighting) | 60W | Non-operational periods only |
+| **Total peak (all on)** | | **475W** | Not all simultaneous |
 
 **Energy per session (one print):** ~3.5 hours active → approximately 1.5–1.8 kWh consumed.
 
@@ -298,9 +299,55 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 
 ---
 
-## 8. Wiring Specification
+## 8. Interior Lighting
 
-### 8.1 Main Enclosure
+### 8.1 Two-Circuit Lighting Design
+
+TBS-001 requires two mutually exclusive lighting modes:
+
+- **Safelight (Circuit D):** Red LED strip on the inner drum face and cargo door wall. Used during loading and development when photosensitive material is present. 15W, always available.
+- **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
+
+The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
+
+### 8.2 White LED Panel Specification
+
+| Parameter | Specification |
+|-----------|--------------|
+| Type | 12V DC LED flat panel, 4000K neutral white |
+| Quantity | 3 panels |
+| Power per panel | 20W |
+| Total power | 60W |
+| Luminous output | ~1,800 lumens per panel (5,400 lm total) |
+| Size | ~300 × 600 mm |
+| Mounting | Ceiling-mounted, centered across container width (Yd ≈ 1,181mm) |
+| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,800mm (evenly spaced along length) |
+| Circuit | G (10A fuse, 16 AWG) |
+| Approximate cost | ~$25 each, ~$75 total |
+
+Three panels at ~1,800 lumens each provide 5,400 lumens total across the ~14 m² floor area — approximately 385 lux, comparable to a well-lit workshop. The panels are wired in parallel from Circuit G via the ceiling cable trunking.
+
+### 8.3 Pull-Cord Switches
+
+Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
+
+| Parameter | Specification |
+|-----------|--------------|
+| Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
+| Quantity | 2 |
+| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,800mm (near EP), ceiling height |
+| Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
+| Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
+| Wire | Inline on respective circuit, between fuse block and load |
+| Approximate cost | ~$8 each, ~$16 total |
+
+The switches are positioned adjacent to the electrical panel so the operator can control lighting immediately upon entry via the revolving drum. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
+
+---
+
+## 9. Wiring Specification
+
+### 9.1 Main Enclosure
 
 IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2,050–2,350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
@@ -308,7 +355,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 - Battery positive and negative busbars with 200A main fuse
 - Shore charger output terminals
 
-### 8.2 Circuit List
+### 9.2 Circuit List
 
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
@@ -318,9 +365,10 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 | D | Safelight (interior + drum) | 5A | 18 AWG | ~10m |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
 | F | Film plane actuators (optional) | 20A | 12 AWG | ~6m |
+| G | White LED panels (general lighting) | 10A | 16 AWG | ~12m (3 branches) |
 | — | Main battery fuse | 200A | 2/0 AWG | ~0.5m (battery to busbar) |
 
-### 8.3 Wiring Construction
+### 9.3 Wiring Construction
 
 **Conduit:** All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).
 
@@ -331,9 +379,9 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.
 
-**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–F) plus device description. Re-label after any wiring change.
+**Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.
 
-### 8.4 Electrical Diagrams
+### 9.4 Electrical Diagrams
 
 **Sheet 1 — System One-Line Diagram**
 
@@ -351,7 +399,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
 ---
 
-## 9. Shopping List
+## 10. Shopping List
 
 All US/SoCal sources. Prices approximate as of 2026.
 
@@ -377,14 +425,16 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shade canopy | 80% shade cloth, 20 × 10ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
-| **Electrical system total** | | | **~$1,740** |
+| 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
+| Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
+| **Electrical system total** | | | **~$1,830** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (evap cooler)** | | | **~$280** |
-| **Systems grand total** | | | **~$2,220** |
+| **Systems grand total** | | | **~$2,310** |
 
 ---
 
-## 10. Impact on Existing Design
+## 11. Impact on Existing Design
 
 | Existing element | Change required |
 |-----------------|----------------|

@@ -203,6 +203,7 @@ def draw_sheet1():
         (C_WARN,       "Fuse / protection device"),
         (C_ALUM,       "Ventilation loads"),
         (C_EVAP_TINT,  "Cooling loads"),
+        ("#FFFFF0",    "Lighting loads"),
         ("#F5EDD0",    "Shore power (backup only)"),
         (C_GND,        "Earth / chassis ground"),
     ]
@@ -230,7 +231,7 @@ def draw_sheet1():
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
         ("Solar recharge",      "~1 day from flat with 600W array"),
         ("Shore recharge",      "~14h from flat  (15A charger)"),
-        ("Peak load",           "~415W simultaneous  (all circuits on)"),
+        ("Peak load",           "~475W simultaneous  (all circuits on)"),
     ]
     for k, (param, val) in enumerate(summary):
         yk = ey + eh - 0.80 - k * 0.37
@@ -255,13 +256,15 @@ def draw_sheet1():
          "Far short wall  |  light-safe baffled intake", C_EVAP_TINT),
         ("F", "FILM PLANE\nACTUATORS  (optional)",  "20A", "12 AWG", "≤100W pk",
          "Future provision  |  leave fused spare", "#E8E8E8"),
+        ("G", "WHITE LED PANELS\n(general lighting)",  "10A", "16 AWG", "60W",
+         "3×20W ceiling panels  |  pull-cord switch  |  non-operational only", "#FFFFF0"),
     ]
 
     SP_X  = ex - 0.5      # spine x
     CB_X  = SP_X + 0.65   # circuit boxes left edge
     CB_W  = FW - CB_X - 0.4
-    CB_H  = 0.88
-    CB_GAP = 1.22
+    CB_H  = 0.78
+    CB_GAP = 1.05
     CB_Y_TOP = 13.1       # top circuit box y
 
     # Vertical distribution spine
@@ -639,6 +642,43 @@ def draw_sheet2():
     ax.text(SL_X + SL_W + 0.08, (SL_Y1+SL_Y2)/2, "D",
             ha="left", va="center", fontsize=7.0, fontweight="bold", color=C_OUT)
 
+    # ── White LED panels (Circuit G) — 3× ceiling-mounted ───────────────────
+    LED_W_MM = 600    # panel width along X
+    LED_D_MM = 300    # panel depth along Yd
+    LED_YD   = C_WID / 2 - LED_D_MM / 2   # centered across width
+    LED_POSITIONS = [1000, 2900, 4800]     # X positions (mm)
+    C_LED = "#FFFFF0"
+    for lp_x in LED_POSITIONS:
+        lx = ix(lp_x)
+        ly = OY + wt + LED_YD * S_yd
+        lw = LED_W_MM * S_xi
+        ld = LED_D_MM * S_yd
+        ax.add_patch(mpatches.Rectangle((lx, ly), lw, ld,
+                     fc=C_LED, ec=C_OUT, lw=0.8, zorder=5, alpha=0.85))
+        ax.text(lx + lw / 2, ly + ld / 2, "G",
+                ha="center", va="center", fontsize=7.0, fontweight="bold",
+                color=C_OUT, zorder=6)
+
+    # ── Pull-cord switches — pinhole wall side, near EP ─────────────────────
+    PS_X_MM = 1800   # X position (mm) — near electrical panel
+    PS_YD   = 50     # just off pinhole wall
+    PS_SZ   = 0.16   # symbol size in drawing units
+    C_SWITCH = "#E0E0FF"
+    for si, (sw_label, sw_x_off) in enumerate([("D", -40), ("G", 40)]):
+        sx = ix(PS_X_MM + sw_x_off)
+        sy = OY + wt + PS_YD * S_yd
+        ax.add_patch(mpatches.Circle((sx, sy), PS_SZ,
+                     fc=C_SWITCH, ec=C_OUT, lw=1.0, zorder=7))
+        ax.text(sx, sy, sw_label,
+                ha="center", va="center", fontsize=6.0, fontweight="bold",
+                color=C_OUT, zorder=8)
+    # Pull switch leader
+    ps_mid_x = ix(PS_X_MM)
+    leader(ax, ps_mid_x, OY + wt + PS_YD * S_yd,
+           ps_mid_x - 0.6, OY + cwid * 0.18,
+           "Pull-cord switches\nD=safelight  G=white",
+           fs=6.5, color="#606080")
+
     # ── Cable trunking — pinhole wall face, full interior length ──────────────
     # Runs at Yd=0 on pinhole wall — physically on the wall, outside optical cone
     TK_Y  = OY + wt + 0.07
@@ -663,7 +703,8 @@ def draw_sheet2():
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
         (SL_X + SL_W/2,      SL_Y1),
-    ]:
+        (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
+    ] + [(ix(lp + LED_W_MM/2), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
                 color=C_PIPE, lw=1.0, ls=":", zorder=4)
 
@@ -703,6 +744,13 @@ def draw_sheet2():
            EVAP_CX, OY + cwid * 0.3,
            "Evap cooler (E)\n12V DC  80W",
            fs=6.5, color=C_EVAP)
+    # LED panels — Cct G (label middle panel only)
+    led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
+    led_mid_cy = OY + wt + (LED_YD + LED_D_MM) * S_yd
+    leader(ax, led_mid_cx, led_mid_cy,
+           led_mid_cx + 0.8, OY + cwid * 0.62,
+           "LED panels (G)\n3×20W  4000K white",
+           fs=6.5, color="#808000")
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
            PP_DX + PP_DW * 2, PP_DY - 0.5,
@@ -762,6 +810,10 @@ def draw_sheet2():
          "Red LED strip  |  5A / 18 AWG / 15W  |  Inner face, cargo door wall"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
          f"12V DC 80W  |  10A / 14 AWG  |  Pinhole wall face (Yd=0), X={EVAP_X}–{EVAP_X+EVAP_W}mm"),
+        ("G",     C_LED,     "WHITE LED PANELS — Cct G",
+         "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
+        ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
+         "SPST 6A ceiling switches  |  D=safelight, G=white light  |  Pinhole wall, X≈1,800mm"),
         ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
          "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
@@ -793,6 +845,8 @@ def draw_sheet2():
         "optical cone. Drop conduits (10mm corrugated) to each device.",
         "4. Light trap (revolving drum, \u00d8750mm vertical axis) in left end zone \u2014 "
         "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
+        "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched "
+        "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
     # Wrap each note and measure total height
     WRAP_CHARS = 120

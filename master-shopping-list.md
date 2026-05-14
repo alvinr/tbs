@@ -20,7 +20,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
 | 5. Print washing — water system | $2,661 | $4,020 |
-| 6. Electrical — power, circuits, wiring | $1,690 | $1,800 |
+| 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
 | 7b. Perimeter walkway (4 sections, wall-cantilevered) | $570 | $955 |
@@ -29,7 +29,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,025** | **~$21,620** |
+| **TOTAL (base build + 50-print run)** | **~$16,120** | **~$21,710** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -278,12 +278,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 40×25mm PVC cable trunking | 5m lengths | 4 | Lowe's / McMaster-Carr | ~$40 |
 | 10mm corrugated conduit (grey) | Drop conduits to devices | 10m | McMaster-Carr 7828K48 | ~$30 |
 | Brady M210 wire label kit | Wire label cartridge | 1 | McMaster-Carr / Amazon | ~$80 |
+| 12V LED flat panel, 300×600mm, 4000K | 20W neutral white, ceiling-mount | 3 | Amazon / superbrightleds.com | ~$75 total |
+| Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting Ccts D & G | 2 | Amazon / Lowe's | ~$16 total |
 | Copper ground stake 8ft × ⅝" dia | Earth connection | 1 | Home Depot | ~$20 |
 | 4 AWG ground wire, green/yellow | 3m | 1 | AutoZone / Amazon | ~$15 |
 
-**Distribution & wiring subtotal: ~$510**
+**Distribution & wiring subtotal: ~$600**
 
-**Section total: ~$1,695–$1,800**  
+**Section total: ~$1,785–$1,890**  
 *Note: water pump wiring now included in this section via main fuse block — remove the standalone 12V supply listed in older versions of the water system BOM.*
 
 ---

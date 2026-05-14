@@ -99,7 +99,7 @@ FONT    = {"fontfamily": "monospace"}
 # Vertical   = Z  (0 = floor, positive up)
 # Scale ≈ 5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet1():
+def sheet2():
     S = 5.0   # scale factor
 
     def sx(mm): return mm * S
@@ -397,8 +397,8 @@ def sheet1():
                f"{BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # Bracket arm height
-    draw_dim_v(ax, sx(WALKWAY_W + 90), sy(0), sy(brkt_arm_z),
-               f"{brkt_arm_z}mm\nARM TOP", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(WALKWAY_W + 5), sy(0), sy(brkt_arm_z),
+               f"{brkt_arm_z}mm ARM TOP", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Tray rim height
     draw_dim_v(ax, sx(TRAY_RIM_YD + 15), sy(0), sy(PROC_TRAY_RIM),
@@ -508,7 +508,7 @@ def sheet1():
 # Horizontal = X (container long axis)
 # Vertical   = Yd (container width)
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet2():
+def sheet1():
     import matplotlib.patches as mpatches
 
     BRKT_MARK_W = 30   # bracket marker width in plan view (mm, visual)
@@ -810,7 +810,7 @@ def sheet2():
 # to provide a structural mounting surface for the cantilever brackets.
 # Scale ≈ 3:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet4():
+def sheet3():
     """Right walkway — ceiling-hung hanger detail.
 
     Split view: top detail (ceiling attachment) and bottom detail (bearer/grating)
@@ -1182,7 +1182,7 @@ def sheet4():
 # No brackets on the left walkway itself — it's a removable lift-out section.
 # Scale ≈ 2:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet5():
+def sheet4():
     S = 2.5   # scale factor
 
     def sx(mm): return mm * S
@@ -1545,7 +1545,7 @@ def sheet5():
 # Zero processing tray contact — all supports outside or above tray.
 # Scale ≈ 3.5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet6():
+def sheet5():
     S = 3.5   # scale factor
 
     def sx(mm): return mm * S
@@ -1842,7 +1842,7 @@ def sheet6():
 #
 # Scale ≈ 4:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet7():
+def sheet6():
     S = 4.0   # scale factor
 
     def sx(mm): return mm * S
@@ -2416,10 +2416,10 @@ def sheet7():
 if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
     print("Generating perimeter walkway diagrams...")
-    sheet2()  # plan view → sheet1.png
-    sheet1()  # cross-section → sheet2.png
-    sheet4()  # ceiling-hung → sheet3.png
-    sheet5()  # butt joint → sheet4.png
-    sheet6()  # left support → sheet5.png
-    sheet7()  # bearer beam → sheet6.png
+    sheet1()  # plan view → sheet1.png
+    sheet2()  # cross-section → sheet2.png
+    sheet3()  # ceiling-hung → sheet3.png
+    sheet4()  # butt joint → sheet4.png
+    sheet5()  # left support → sheet5.png
+    sheet6()  # bearer beam → sheet6.png
     print("Done.")

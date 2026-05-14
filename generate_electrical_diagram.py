@@ -961,8 +961,10 @@ def draw_sheet3():
         EP_X, EP_W, EP_H_LO, EP_H_HI,
         BA_X, BA_W, BA_H_LO, BA_H_HI,
         PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
-        EVAP_X, EVAP_W, EVAP_H,
+        EVAP_X, EVAP_W, EVAP_H, RAIL_OFF,
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
+        PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM,
+        WALKWAY_W, WALKWAY_H, WALKWAY_LEFT_X,
         DIAGRAMS_DIR, svg_path, C_LT_DRUM,
     )
 
@@ -1031,6 +1033,37 @@ def draw_sheet3():
             ha="left", va="center", fontsize=7.0, color=C_OUT,
             fontweight="bold")
 
+    # ── Ghost: processing tray rim ──────────────────────────────────────────
+    GHOST_ALPHA = 0.22
+    GHOST_EC = "#808080"
+    GHOST_LS = (0, (4, 3))
+    # Tray rim: X=170–4629, Z=0–50mm
+    tray_x_l = wx(PROC_TRAY_X_L)    # mirrored: right in drawing
+    tray_x_r = wx(PROC_TRAY_X_R)    # mirrored: left in drawing
+    tray_w = tray_x_l - tray_x_r    # positive because mirrored
+    tray_h = PROC_TRAY_RIM * S
+    ax.add_patch(mpatches.Rectangle((tray_x_r, OY), tray_w, tray_h,
+                 fc="#D0E8D0", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
+                 alpha=GHOST_ALPHA, zorder=3))
+    ax.text((tray_x_l + tray_x_r) / 2, OY + tray_h / 2,
+            f"PROCESSING TRAY RIM  (Z=0–{PROC_TRAY_RIM}mm,  X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}mm)",
+            ha="center", va="center", fontsize=6.0, color="#606060",
+            style="italic", zorder=4)
+
+    # ── Ghost: near walkway deck ─────────────────────────────────────────────
+    # Near walkway runs along pinhole wall, X=470–4629, deck at Z=100mm
+    wk_x_l = wx(WALKWAY_LEFT_X + WALKWAY_W)   # walkway starts at X=470 (left butt joint)
+    wk_x_r = wx(PROC_TRAY_X_R)                # ends at tray right edge
+    wk_w = wk_x_l - wk_x_r
+    wk_h = WALKWAY_H * S
+    ax.add_patch(mpatches.Rectangle((wk_x_r, OY), wk_w, wk_h,
+                 fc="#E0D8C8", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
+                 alpha=GHOST_ALPHA, zorder=3))
+    ax.text((wk_x_l + wk_x_r) / 2, OY + wk_h / 2,
+            f"NEAR WALKWAY DECK  (Z=0–{WALKWAY_H}mm,  X={WALKWAY_LEFT_X + WALKWAY_W}–{PROC_TRAY_X_R}mm)",
+            ha="center", va="center", fontsize=6.0, color="#606060",
+            style="italic", zorder=4)
+
     # ── Cable trunking — horizontal at ceiling corner ─────────────────────────
     TK_H_MM = 25    # trunking height (mm)
     TK_W_MM = 40    # trunking depth (mm) — shown as height on elevation
@@ -1085,8 +1118,8 @@ def draw_sheet3():
     ax.plot([pp_x + pp_w / 2, pp_x + pp_w / 2], [pp_y + pp_h, tk_y],
             color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
 
-    # ── Evaporative cooler (floor-standing) ───────────────────────────────────
-    wall_equip(EVAP_X, 0, EVAP_H, EVAP_W,
+    # ── Evaporative cooler (on walkway deck, raised above tray rim) ─────────
+    wall_equip(EVAP_X, RAIL_OFF, RAIL_OFF + EVAP_H, EVAP_W,
                "EVAPORATIVE\nCOOLER", "Circuit E  80W", C_EVAP)
 
     # ── Electrical panel (wall-mounted) ───────────────────────────────────────
@@ -1265,7 +1298,7 @@ def draw_sheet3():
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
         ("#F5C8A0", "PUMP MANIFOLD",     f"Cct C  |  X={PUMP_X}–{PUMP_X+PUMP_W}  |  Z={PUMP_H_LO}–{PUMP_H_HI}mm"),
-        (C_EVAP,    "EVAP COOLER",       f"Cct E  |  X={EVAP_X}–{EVAP_X+EVAP_W}  |  Floor to Z={EVAP_H}mm"),
+        (C_EVAP,    "EVAP COOLER",       f"Cct E  |  X={EVAP_X}–{EVAP_X+EVAP_W}  |  Walkway deck Z={RAIL_OFF}–{RAIL_OFF+EVAP_H}mm"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
         ("#E0E0FF", "PULL SWITCHES",     "Ccts D & G  |  SPST 6A  |  X≈1,800mm  |  Cord to ~1,500mm AFF"),

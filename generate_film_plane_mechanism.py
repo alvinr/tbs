@@ -1176,61 +1176,154 @@ def sheet5():
               f"SCALE ≈ 2.5:1 · TORSION SPRING BIASES CLOSED",
               ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
 
-    # ── PANEL C: Elevation — 3 clamps at 150mm spacing (bottom) ──────────────
-    ax_c = fig.add_axes([0.04, 0.08, 0.92, 0.33])
+    # ── PANEL C: Plan view — clamp attachment to frame edge (bottom-left) ─────
+    ax_c = fig.add_axes([0.04, 0.06, 0.46, 0.36])
     ax_c.set_facecolor(BG)
     ax_c.axis("off")
 
-    SC = 1.2
+    SP = 2.8  # scale factor for panel C
+    def sp(mm): return mm * SP
+
+    # Plan view: looking down (Z-axis). X = along frame edge, Y = across frame.
+    # Frame angle in plan: pinhole-facing leg runs along X,
+    # perpendicular leg sticks out in +Y direction.
+    frame_len = CLAMP_SPACING * 2 + 40  # show ~2 clamp spacings
+    ax_c.set_xlim(sp(-30), sp(frame_len + 30))
+    ax_c.set_ylim(sp(-50), sp(LEG + 50))
+    ax_c.set_aspect("equal")
+
+    # Pinhole-facing leg (horizontal bar along X, depth = LEG, thickness = T)
+    ax_c.add_patch(Rectangle((sp(-10), sp(0)), sp(frame_len + 20), sp(T),
+                              fc=C_ALUM, ec=ANNO, lw=1.2, hatch="///", zorder=3))
+    ax_c.text(sp(frame_len + 15), sp(T / 2), "PINHOLE-\nFACING LEG",
+              ha="left", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
+
+    # Perpendicular leg — continuous strip in +Y from the angle corner
+    ax_c.add_patch(Rectangle((sp(-10), sp(T)), sp(frame_len + 20), sp(LEG - T),
+                              fc=C_ALUM, ec=ANNO, lw=1.2, hatch="///",
+                              alpha=0.5, zorder=2))
+    ax_c.text(sp(frame_len + 15), sp(LEG / 2 + T / 2), "PERP.\nLEG",
+              ha="left", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
+
+    # Muslin — draped over pinhole-facing leg (covers the full surface)
+    ax_c.add_patch(Rectangle((sp(-10), sp(-8)), sp(frame_len + 20), sp(8 + T + 3),
+                              fc=C_MUSLIN, ec=ANNO, lw=0.6, alpha=0.4, zorder=4))
+    ax_c.text(sp(frame_len / 2), sp(-12), "MUSLIN (DRAPES OVER PINHOLE LEG, HEM WRAPS AROUND CORNER)",
+              ha="center", va="top", fontsize=5, color=DIM, style="italic", **FONT, zorder=15)
+
+    # Draw 2 clamps in plan view
+    for cx in [CLAMP_SPACING * 0.5, CLAMP_SPACING * 1.5]:
+        # Base plate — bolted to outer face of perpendicular leg
+        bp_y = LEG  # outer face of perp leg
+        ax_c.add_patch(Rectangle((sp(cx - CLAMP_BASE_W / 2), sp(bp_y)),
+                                  sp(CLAMP_BASE_W), sp(CLAMP_BASE_T),
+                                  fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=7, alpha=0.9))
+
+        # M5 bolts (circles in plan view) — through base plate + perp leg
+        for boff in [-12, 12]:
+            bolt_cx = cx + boff
+            ax_c.add_patch(Circle((sp(bolt_cx), sp(bp_y + CLAMP_BASE_T / 2)),
+                                   sp(2.5), fc=C_BOLT, ec=ANNO, lw=0.6, zorder=9))
+
+        # Lever arm — from base plate to jaw (in plan, it's a strip from
+        # the perp leg outer face reaching over to the pinhole-facing leg)
+        lever_tip_y = T + 2  # jaw presses on top of pinhole-facing leg
+        ax_c.plot([sp(cx), sp(cx)],
+                  [sp(bp_y), sp(lever_tip_y)],
+                  color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=6)
+
+        # Pivot dot at base plate
+        ax_c.add_patch(Circle((sp(cx), sp(bp_y)), sp(2),
+                               fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=9))
+
+        # Jaw pad (in plan view — width along frame edge, depth into frame)
+        ax_c.add_patch(Rectangle((sp(cx - CLAMP_JAW_W / 2), sp(lever_tip_y - 1)),
+                                  sp(CLAMP_JAW_W), sp(CLAMP_JAW_T),
+                                  fc=C_NEOP, ec=ANNO, lw=0.8, zorder=8))
+
+    # Leader labels
+    clamp_x = CLAMP_SPACING * 0.5
+    leader(ax_c, sp(clamp_x), sp(LEG + CLAMP_BASE_T / 2),
+           sp(clamp_x - 40), sp(LEG + 30),
+           f"BASE PLATE\n({CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm)\n2× M5 BOLTS TO PERP LEG",
+           color=C_CLAMP, fs=5, ha="center", va="center",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax_c, sp(clamp_x), sp(T + 2),
+           sp(clamp_x + 55), sp(-25),
+           f"NEOPRENE JAW\n({CLAMP_JAW_W}×{CLAMP_JAW_H}×{CLAMP_JAW_T}mm)\nPRESSES MUSLIN\nAGAINST FRAME",
+           color=C_NEOP, fs=5, ha="center", va="center",
+           arrow_style="-|>", font=FONT)
+
+    # Spacing dimension
+    draw_dim_h(ax_c, sp(CLAMP_SPACING * 0.5), sp(CLAMP_SPACING * 1.5),
+               sp(LEG + 20), f"{CLAMP_SPACING}mm SPACING",
+               offset=sp(3), fs=6, font=FONT)
+
+    # Direction arrows / labels
+    ax_c.annotate("", xy=(sp(-20), sp(LEG / 2)), xytext=(sp(-20), sp(LEG / 2 - 15)),
+                  arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.0))
+    ax_c.text(sp(-25), sp(LEG / 2 - 8), "→ TO\nPINHOLE",
+              ha="right", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
+
+    ax_c.text(sp(frame_len / 2), sp(LEG + 42),
+              "PANEL C — PLAN VIEW: CLAMP ATTACHMENT TO FRAME EDGE",
+              ha="center", va="bottom", fontsize=8, color=ANNO,
+              fontweight="bold", **FONT, zorder=15)
+    ax_c.text(sp(frame_len / 2), sp(LEG + 35),
+              f"SCALE ≈ 2.8:1 · LOOKING DOWN (Z-AXIS) AT FRAME EDGE",
+              ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
+
+    # ── PANEL D: Elevation — 3 clamps at 150mm spacing (bottom-right) ────────
+    ax_d = fig.add_axes([0.54, 0.06, 0.42, 0.36])
+    ax_d.set_facecolor(BG)
+    ax_d.axis("off")
+
+    SC = 1.0
     def sc(mm): return mm * SC
 
     span = CLAMP_SPACING * 3  # show 3 spacings = 450mm
-    ax_c.set_xlim(sc(-50), sc(span + 100))
-    ax_c.set_ylim(sc(-LEG - 30), sc(T + CLAMP_JAW_H + 40))
-    ax_c.set_aspect("equal")
+    ax_d.set_xlim(sc(-50), sc(span + 60))
+    ax_d.set_ylim(sc(-LEG - 30), sc(T + CLAMP_JAW_H + 40))
+    ax_d.set_aspect("equal")
 
     # Frame angle profile — shown as continuous bar (pinhole-facing leg seen end-on)
-    # The top surface is the pinhole-facing leg
-    ax_c.add_patch(Rectangle((sc(-20), sc(0)), sc(span + 70), sc(T),
+    ax_d.add_patch(Rectangle((sc(-20), sc(0)), sc(span + 70), sc(T),
                               fc=C_ALUM, ec=ANNO, lw=1.0, hatch="///", zorder=3))
-    ax_c.text(sc(span + 55), sc(T / 2), "FRAME\nANGLE",
-              ha="left", va="center", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # Muslin (continuous line across top of frame)
     muslin_y = T + 2
-    ax_c.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
+    ax_d.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
               color=C_MUSLIN, lw=5, solid_capstyle="butt", alpha=0.7, zorder=4)
-    ax_c.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
+    ax_d.plot([sc(-20), sc(span + 50)], [sc(muslin_y), sc(muslin_y)],
               color=ANNO, lw=0.8, zorder=5)
-    ax_c.text(sc(span + 55), sc(muslin_y), "MUSLIN",
-              ha="left", va="center", fontsize=5.5, color=C_MUSLIN, **FONT, zorder=15)
 
     # Draw 3 clamps at 0, 150, 300mm
     for i, cx in enumerate([0, CLAMP_SPACING, CLAMP_SPACING * 2]):
         # Perpendicular leg (going down)
-        ax_c.add_patch(Rectangle((sc(cx - T / 2), sc(-LEG + T)),
+        ax_d.add_patch(Rectangle((sc(cx - T / 2), sc(-LEG + T)),
                                   sc(T), sc(LEG - T),
                                   fc=C_ALUM, ec=ANNO, lw=0.8, zorder=3))
 
         # Base plate on perp leg
         bp_x = cx + T / 2
-        ax_c.add_patch(Rectangle((sc(bp_x), sc(-CLAMP_BASE_H)),
+        ax_d.add_patch(Rectangle((sc(bp_x), sc(-CLAMP_BASE_H)),
                                   sc(CLAMP_BASE_T), sc(CLAMP_BASE_H),
                                   fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=6, alpha=0.9))
 
-        # Lever arm (simplified — line from pivot to jaw area)
+        # Lever arm (simplified)
         pv_cx = bp_x + CLAMP_BASE_T / 2
-        jaw_cx = cx + LEG / 2  # jaw roughly at midpoint of pinhole leg
-        ax_c.plot([sc(pv_cx), sc(jaw_cx)],
+        jaw_cx = cx + LEG / 2
+        ax_d.plot([sc(pv_cx), sc(jaw_cx)],
                   [sc(0), sc(T + 2)],
                   color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=6)
 
         # Pivot dot
-        ax_c.add_patch(Circle((sc(pv_cx), sc(0)), sc(2),
+        ax_d.add_patch(Circle((sc(pv_cx), sc(0)), sc(2),
                                fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=8))
 
         # Jaw pad
-        ax_c.add_patch(Rectangle((sc(jaw_cx - CLAMP_JAW_T / 2), sc(muslin_y - 1)),
+        ax_d.add_patch(Rectangle((sc(jaw_cx - CLAMP_JAW_T / 2), sc(muslin_y - 1)),
                                   sc(CLAMP_JAW_T), sc(CLAMP_JAW_H),
                                   fc=C_NEOP, ec=ANNO, lw=0.8, zorder=7))
 
@@ -1238,21 +1331,16 @@ def sheet5():
     for i in range(2):
         x1 = CLAMP_SPACING * i
         x2 = CLAMP_SPACING * (i + 1)
-        draw_dim_h(ax_c, sc(x1), sc(x2), sc(-LEG - 10),
-                   f"{CLAMP_SPACING}mm", offset=sc(4), fs=7, font=FONT)
+        draw_dim_h(ax_d, sc(x1), sc(x2), sc(-LEG - 10),
+                   f"{CLAMP_SPACING}mm", offset=sc(4), fs=6, font=FONT)
 
-    # Total span
-    draw_dim_h(ax_c, sc(0), sc(CLAMP_SPACING * 2), sc(-LEG - 25),
-               f"{CLAMP_SPACING * 2}mm (2 SPACES)", offset=sc(4), fs=6, font=FONT)
-
-    # Labels
-    ax_c.text(sc(span / 2 - 75), sc(T + CLAMP_JAW_H + 20),
-              "PANEL C — ELEVATION: CLAMPS AT 150mm SPACING ALONG FRAME EDGE",
-              ha="center", va="bottom", fontsize=8, color=ANNO,
+    ax_d.text(sc(span / 2), sc(T + CLAMP_JAW_H + 30),
+              "PANEL D — ELEVATION: CLAMPS AT 150mm SPACING",
+              ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_c.text(sc(span / 2 - 75), sc(T + CLAMP_JAW_H + 12),
-              f"SCALE ≈ 1.2:1 · {CLAMP_N_TOTAL} CLAMPS TOTAL AROUND {int(FP_W)}×{int(FP_H)}mm FRAME PERIMETER",
-              ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
+    ax_d.text(sc(span / 2), sc(T + CLAMP_JAW_H + 22),
+              f"SCALE ≈ 1:1 · {CLAMP_N_TOTAL} CLAMPS TOTAL",
+              ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # Notes — placed in panel B (top-right), below diagram content
     notes = [
@@ -1283,13 +1371,17 @@ def sheet5():
                   **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    # Use panel C's axes for the title block (it spans the full width)
-    title_block(ax_c, "SHEET 5 OF 5",
+    # Create a full-width axes at the bottom for the title block
+    ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.06])
+    ax_tb.set_xlim(0, 1)
+    ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 5 OF 5",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
-                scale_note="APPROX 3:1 (SECTION) / 1.2:1 (ELEVATION)",
+                scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
-                height=0.12)
+                height=0.75)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet5.png"), bbox_inches="tight", facecolor=BG)

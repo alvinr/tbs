@@ -10,10 +10,10 @@ sheets showing component positions and weight distribution.
 
 Outputs
 -------
-diagrams/weight-analysis-sheet1.png  — Component weight map (plan view)
-diagrams/weight-analysis-sheet2.png  — Camera Ready state distribution
-diagrams/weight-analysis-sheet3.png  — Materials Exhausted state distribution
-diagrams/weight-analysis-sheet4.png  — Summary comparison (3 states)
+diagrams/weight-analysis-sheet1.png  — Summary comparison (3 states)
+diagrams/weight-analysis-sheet2.png  — Component weight map (plan view)
+diagrams/weight-analysis-sheet3.png  — Camera Ready state distribution
+diagrams/weight-analysis-sheet4.png  — Materials Exhausted state distribution
 """
 
 import os
@@ -644,8 +644,8 @@ def _draw_quadrant_labels(ax, quads, total):
 # Sheet generators
 # ═══════════════════════════════════════════════════════════════════════════
 
-def sheet1(components):
-    """Sheet 1: Weight Distribution — Dry, configured for transport."""
+def sheet_dry(components):
+    """Sheet 2: Weight Distribution — Dry, configured for transport."""
     fig, ax = plt.subplots(figsize=(18, 10))
     total_dry, x_cg, yd_cg, z_cg = _draw_state_diagram(
         ax, components, "dry", "DRY (TRANSPORT)")
@@ -704,16 +704,16 @@ def sheet1(components):
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 1 OF 4",
+    title_block(ax, "SHEET 2 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — DRY (CONFIGURED FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet1.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet2.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  Sheet 1: Dry — Configured for Transport")
+    print("  Sheet 2: Dry — Configured for Transport")
 
 
 def _draw_state_diagram(ax, components, state, state_label):
@@ -789,8 +789,8 @@ def _draw_state_diagram(ax, components, state, state_label):
     return total, x_cg, yd_cg, z_cg
 
 
-def sheet2(components):
-    """Sheet 2: Camera Ready state distribution."""
+def sheet_ready(components):
+    """Sheet 3: Camera Ready state distribution."""
     fig, ax = plt.subplots(figsize=(18, 8))
     _draw_state_diagram(ax, components, "ready", "CAMERA READY")
 
@@ -801,20 +801,20 @@ def sheet2(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 2 OF 4",
+    title_block(ax, "SHEET 3 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — CAMERA READY (PANEL DEPLOYED)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet2.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet3.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  Sheet 2: Camera Ready Distribution")
+    print("  Sheet 3: Camera Ready Distribution")
 
 
-def sheet3(components):
-    """Sheet 3: Materials Exhausted state distribution."""
+def sheet_exhausted(components):
+    """Sheet 4: Materials Exhausted state distribution."""
     fig, ax = plt.subplots(figsize=(18, 8))
     total_ex, x_ex, yd_ex, z_ex = _draw_state_diagram(
         ax, components, "exhausted", "MATERIALS EXHAUSTED")
@@ -840,20 +840,20 @@ def sheet3(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 3 OF 4",
+    title_block(ax, "SHEET 4 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED (FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.065)
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet3.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet4.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  Sheet 3: Materials Exhausted Distribution")
+    print("  Sheet 4: Materials Exhausted Distribution")
 
 
-def sheet4(components):
-    """Sheet 4: Summary comparison — three states side by side."""
+def sheet_summary(components):
+    """Sheet 1: Summary comparison — three states side by side."""
     from matplotlib.gridspec import GridSpec
 
     fig = plt.figure(figsize=(20, 10))
@@ -988,17 +988,17 @@ def sheet4(components):
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 4",
+    title_block(ax_tb, "SHEET 1 OF 4",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION SUMMARY — THREE STATES",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.75)
 
-    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet4.png"),
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet1.png"),
                 dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
-    print("  Sheet 4: Summary Comparison")
+    print("  Sheet 1: Summary Comparison")
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1059,10 +1059,10 @@ def main():
 
     # Generate diagrams
     print("\nGenerating diagrams...")
-    sheet1(components)
-    sheet2(components)
-    sheet3(components)
-    sheet4(components)
+    sheet_summary(components)
+    sheet_dry(components)
+    sheet_ready(components)
+    sheet_exhausted(components)
     print("\nDone.")
 
 

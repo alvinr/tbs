@@ -912,7 +912,7 @@ def draw_sheet3():
         DIAGRAMS_DIR, svg_path, C_LT_DRUM,
     )
 
-    FW, FH = 24.0, 11.0
+    FW, FH = 24.0, 9.9
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")

@@ -728,8 +728,8 @@ def draw_sheet2():
     # Pull switch leader
     ps_mid_x = ix(PS_X_MM)
     leader(ax, ps_mid_x, OY + wt + PS_YD * S_yd,
-           ps_mid_x - 0.6, OY + cwid * 0.18,
-           "Pull-cord switches\nD=safelight  G=white",
+           ps_mid_x + 0.1, OY + cwid * 0.18,
+           "Pull-cord switches\nD=safelight\nG=white",
            fs=6.5, color="#606080")
 
     # ── Cable trunking — pinhole wall face, full interior length ──────────────
@@ -763,13 +763,13 @@ def draw_sheet2():
 
     # ── Component leaders — label every key item on the diagram ────────────────
     # EP — Electrical panel
-    leader(ax, EP_DX + EP_DW/2, OY + wt + WALL_MOUNT_H,
-           EP_DX + EP_DW/2, OY + cwid * 0.42,
+    leader(ax, EP_DX + 0.1, OY + wt + WALL_MOUNT_H,
+           EP_DX - EP_DW + 0.05, OY + cwid * 0.32,
            "Electrical panel (EP)\nMPPT + fuse block\nPinhole wall face",
            fs=6.5, color=C_ELEC)
     # BAT — Battery bank
-    leader(ax, BA_DX + BA_DW/2, OY + wt + WALL_MOUNT_H,
-           BA_DX + BA_DW/2, OY + cwid * 0.3,
+    leader(ax, BA_DX + BA_DW * 0.9, OY + wt + WALL_MOUNT_H,
+           BA_DX + BA_DW * 0.6, OY + cwid * 0.3,
            "Battery bank (BAT)\n2×100Ah LiFePO4",
            fs=6.5, color=C_BATT)
     # Fan A — Intake (far end wall)
@@ -784,19 +784,19 @@ def draw_sheet2():
            fs=6.5)
     # Pump — Cct C
     leader(ax, PUMP_CX, OY + wt + 80 * S_yd,
-           PUMP_CX + 0.8, OY + cwid * 0.3,
+           PUMP_CX + 0.2, OY + cwid * 0.3,
            "Water pump (C)\n12V DC  100W",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
     sl_ldr_y = OY + cwid * 0.5
     leader(ax, sl_ldr_x, sl_ldr_y,
-           sl_ldr_x - 0.8, OY + cwid * 0.22,
+           sl_ldr_x - 0.9, OY + cwid * 0.72,
            "Safelight (D)\n3× red LED strips\nceiling, N–S",
            fs=6.5, color="#B8960A")
     # Evap cooler — Cct E
     leader(ax, EVAP_CX, OY + wt + (EVAP_Y + EVAP_D) * S_yd,
-           EVAP_CX, OY + cwid * 0.3,
+           EVAP_CX - 0.7, OY + cwid * 0.3,
            "Evap cooler (E)\n12V DC  80W",
            fs=6.5, color=C_EVAP)
     # LED panels — Cct G (label middle panel only)

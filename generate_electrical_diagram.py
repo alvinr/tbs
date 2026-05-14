@@ -570,6 +570,47 @@ def draw_sheet2():
     equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
 
+    # ── Ghost: hinged panel + drum in TRANSPORT position ────────────────────
+    # Panel retracted 300mm inward (X=300–380 corner / 300–420 center)
+    # Drum center at X=300, Yd centered at C_WID/2
+    from tbs_constants import (
+        PANEL_SLIDE, PANEL_CORNER_T, PANEL_CENTER_T,
+        PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+    )
+    GHOST_ALPHA = 0.18
+    GHOST_EC = "#808080"
+    GHOST_LS = (0, (4, 3))   # dashed
+
+    # Panel — stepped profile: corners thinner, center thicker
+    # Near corner: Yd=0 to PANEL_CORNER_YD_L, thickness=PANEL_CORNER_T
+    for (yd_lo, yd_hi, thick) in [
+        (0, PANEL_CORNER_YD_L, PANEL_CORNER_T),
+        (PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_CENTER_T),
+        (PANEL_CORNER_YD_R, C_WID, PANEL_CORNER_T),
+    ]:
+        gp_x = ix(PANEL_SLIDE)
+        gp_w = thick * S_xi
+        gp_y = OY + wt + yd_lo * S_yd
+        gp_h = (yd_hi - yd_lo) * S_yd
+        ax.add_patch(mpatches.Rectangle((gp_x, gp_y), gp_w, gp_h,
+                     fc="#B0A090", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
+                     alpha=GHOST_ALPHA, zorder=4))
+
+    # Drum — circle at X=PANEL_SLIDE (center moves with panel)
+    gd_cx = ix(PANEL_SLIDE)   # drum center X in transport
+    gd_cy = OY + wt + (C_WID / 2) * S_yd
+    gd_r = DRUM_R * S_xi
+    ax.add_patch(plt.Circle((gd_cx, gd_cy), gd_r,
+                 fc=C_LT_DRUM, ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
+                 alpha=GHOST_ALPHA, zorder=4))
+
+    # Label
+    ax.text(ix(PANEL_SLIDE + PANEL_CENTER_T + 30),
+            OY + wt + C_WID * 0.08 * S_yd,
+            "Panel + drum\n(transport position)",
+            ha="left", va="bottom", fontsize=6.0, color="#808080",
+            style="italic", zorder=5)
+
     # PINHOLE WALL FACE (Yd=0) — evap cooler (rev 3) + pump manifold
     equip(EVAP_X, EVAP_Y, EVAP_W, EVAP_D, "EVAP\nCOOLER", C_EVAP, "80W 12V  (E)")
     equip(PUMP_X, 0, PUMP_W, 80, "", C_PUMP, "")

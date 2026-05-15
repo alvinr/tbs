@@ -1795,14 +1795,13 @@ def sheet6():
     pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
     # Elbow at bend (horizontal → vertical)
     draw_elbow_fitting(ax, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # V1 on horizontal run, midway between bulkhead and elbow
+    v1_yd = (cl_yd + f1_drop_yd) / 2
+    _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1")
     # Vertical drop: elbow → IBC-1 top
     pipe_v(ax, f1_drop_yd, fill_conn_z, EXT_FILL_1_H, C_PIPE_BLUE)
     # Flange at IBC connection
     draw_flange(ax, f1_drop_yd, fill_conn_z, 'v', C_PIPE_BLUE)
-    # Valve V1 on vertical drop
-    _draw_valve_elev(ax, sx, sy, f1_drop_yd,
-                     EXT_FILL_1_H - (EXT_FILL_1_H - fill_conn_z) * 0.4,
-                     C_PIPE_BLUE, "V1")
     # Flow arrow
     ax.annotate("", xy=(sx(f1_drop_yd), sy(fill_conn_z + 15)),
                 xytext=(sx(f1_drop_yd), sy(fill_conn_z + 80)),

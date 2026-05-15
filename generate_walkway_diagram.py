@@ -693,7 +693,7 @@ def sheet1():
     beam_w_vis = 12  # visual width in plan view (beam is 50mm deep, seen from above)
     ax.plot([beam_x, beam_x], [NYI, FY],
             color=C_SUPPORT, lw=4.0, zorder=8, solid_capstyle="butt")
-    ax.text(beam_x + 18, (NYI + FY) / 2,
+    ax.text(beam_x + 24, (NYI + FY) / 2,
             f"BEARER BEAM\n{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}"
             f"\u00d7{LEFT_WK_BEARER_T}mm\nAl RHS\n(REMOVABLE)",
             ha="left", va="center", fontsize=4.5, color=C_SUPPORT,
@@ -704,7 +704,7 @@ def sheet1():
     strip_yd_end   = FY    # end at far walkway inner edge (Yd=1,962)
     ax.plot([LX, LX], [strip_yd_start, strip_yd_end],
             color=C_SUPPORT, lw=3.0, zorder=8, solid_capstyle="butt")
-    ax.text(LX - 15, (strip_yd_start + strip_yd_end) / 2,
+    ax.text(LX - 20, (strip_yd_start + strip_yd_end) * 0.6,
             f"BEARING\nSTRIP\n(Al 25\u00d725)",
             ha="right", va="center", fontsize=4.5, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15, rotation=90)
@@ -725,7 +725,7 @@ def sheet1():
     # Label first leg
     c1_yd = NYI + leg_spacing
     leader(ax, leg_x, c1_yd + leg_sz / 2 + 5,
-           leg_x - 200, c1_yd + leg_sz / 2 + 200,
+           leg_x - 300, c1_yd + leg_sz / 2 + 180,
            f"FLOOR LEG (\u00d7{LEFT_WK_LEG_N})\n{int(leg_spacing)}mm SPACING\nON BARE FLOOR\n(OUTSIDE TRAY)",
            color=C_SUPPORT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)

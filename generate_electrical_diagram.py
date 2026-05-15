@@ -1165,7 +1165,7 @@ def draw_sheet3():
         # Pull cord hanging down — parallel lines with repeating slash marks
         cord_bot = wz(CORD_HANG_Z)
         cord_top = sz - sw_sz/2
-        cord_w = 0.04  # half-width of cord (drawing units)
+        cord_w = 0.028  # half-width of cord (drawing units)
         # Two parallel lines
         ax.plot([sx - cord_w, sx - cord_w], [cord_top, cord_bot],
                 color=C_OUT, lw=0.9, zorder=5)

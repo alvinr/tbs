@@ -386,27 +386,19 @@ def sheet1():
     notes = [
         "CROSS-SECTION NOTES:",
         "",
-        "1. View looking along X toward sealed",
-        "   end wall. Section through IBC stack.",
-        f"2. 4x 600L IBCs (Schutz Ecobulk MX).",
-        f"   Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
-        f"3. Portal frame: 50x50x3mm RHS mild steel,",
-        f"   wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
-        f"4. {IBC_GAP}mm plumbing corridor between",
-        "   columns for internal pipe routing.",
-        f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm",
-        f"   rubber anti-slip mat.",
-        f"6. {FRAME_LIP_H}mm steel lip retains upper",
-        "   IBC cage against lateral movement.",
-        f"7. 8x D-ring lashing points (4 per tier),",
-        f"   {DRING_WLL}kg WLL each.",
-        f"8. External plumbing panel on end wall",
-        "   centerline (see Sheets 4-5).",
+        "1. View looking along X toward sealed end wall. Section through IBC stack.",
+        f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
+        f"3. Portal frame: 50x50x3mm RHS mild steel, wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
+        f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
+        f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm rubber anti-slip mat.",
+        f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",
+        f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
+        f"8. External plumbing panel on end wall centerline (see Sheets 4-5).",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(12), line,
-                ha="center", va="top", fontsize=6 if bold else 5.5,
+        ax.text(notes_x, notes_top - i * sy(18), line,
+                ha="center", va="top", fontsize=7 if bold else 6.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -638,26 +630,21 @@ def sheet2():
     # ── Notes ─────────────────────────────────────────────────────────────────
     notes_x = px(X_LO + 20)
     notes_top = py(YD_HI - 10 - (YD_HI - YD_LO) * 0.20)
+    notes_top = py(YD_LO + 340)
     notes = [
         "PLAN VIEW NOTES:",
         "",
-        f"1. 4x Schutz Ecobulk MX 600L IBCs",
-        f"   in 2x2 stack. Top tier visible;",
-        "   bottom tier shown dashed (below).",
-        f"2. {IBC_GAP}mm plumbing corridor between",
-        "   columns for internal pipe routing.",
-        f"3. IBCs pushed to walls ({BLUE_IBC_Y}mm clearance)",
-        "   to maximize corridor width.",
-        f"4. External plumbing panel on end wall",
-        "   centerline — 4x 2\" NPT ports.",
-        f"5. Portal frame: wall brackets + corridor",
-        "   uprights. ~{FRAME_WEIGHT}kg.",
+        f"1. 4x Schutz Ecobulk MX 600L IBCs in 2x2 stack. Top tier visible; bottom tier shown dashed (below).",
+        f"2. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
+        f"3. IBCs pushed to walls ({BLUE_IBC_Y}mm clearance) to maximize corridor width.",
+        f"4. External plumbing panel on end wall] centerline — 4x 2\" NPT ports.",
+        f"5. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
         "6. See Sheets 4-5 for plumbing detail.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * py(12), line,
-                ha="left", va="top", fontsize=6 if bold else 5.5,
+        ax.text(notes_x, notes_top - i * py(18), line,
+                ha="left", va="top", fontsize=7 if bold else 6.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -1235,28 +1222,21 @@ def sheet4():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(YD_LO + 30)
-    notes_top = sy(Z_LO + 430)
+    notes_top = sy(Z_LO + 380)
     notes = [
         "EXTERNAL PLUMBING PANEL NOTES:",
         "",
-        "1. 4x 2\" NPT bulkhead unions through",
-        "   sealed end wall on container centerline.",
-        "2. 6mm mild steel reinforcing plate welded",
-        "   to wall interior before penetrations.",
-        "3. Type DC camlock fittings (2\" aluminum)",
-        "   on exterior face — quick-connect for",
-        "   fill hose (F1/F2) and drain hose (D3/D4).",
-        "4. Fill ports at top (gravity + pump to IBCs).",
-        "   Drain ports at bottom (gravity drain).",
-        "5. All penetrations sealed with neoprene",
-        "   gaskets — light-tight and watertight.",
-        "6. Interior connections routed through",
-        "   plumbing corridor (see Sheet 5).",
+        "1. 4x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
+        "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
+        "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (F1/F2) and drain hose (D3/D4).",
+        "4. Fill ports at top (gravity + pump to IBCs). Drain ports at bottom (gravity drain).",
+        "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
+        "6. Interior connections routed through plumbing corridor (see Sheet 5).",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(11), line,
-                ha="left", va="top", fontsize=6 if bold else 5.5,
+        ax.text(notes_x, notes_top - i * sy(18), line,
+                ha="left", va="top", fontsize=7 if bold else 6.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -1498,26 +1478,20 @@ def sheet5():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = px(X_LO + 20)
-    notes_top = py(YD_LO + 300)
+    notes_top = py(YD_LO + 320)
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
         "",
         f"1. All pipes 2\" (50mm) UPVC, schedule 40.",
-        f"2. Fill pipes (F1, F2): from bulkhead unions",
-        "   through corridor to top-tier Blue IBCs.",
-        f"3. Drain pipes (D3, D4): from bottom-tier",
-        "   Brown/Waste IBCs through corridor to",
-        "   bulkhead unions for external drain.",
-        f"4. Ball valve at each IBC connection (V1-V4)",
-        "   for individual IBC isolation.",
-        f"5. Pipes routed through {CORRIDOR_W}mm plumbing",
-        "   corridor between IBC columns.",
-        "6. All connections 2\" NPT union fittings",
-        "   for IBC removal without cutting pipe.",
+        f"2. Fill pipes (F1, F2): from bulkhead unions through corridor to top-tier Blue IBCs.",
+        f"3. Drain pipes (D3, D4): from bottom-tier Brown/Waste IBCs through corridor to bulkhead unions for external drain.",
+        f"4. Ball valve at each IBC connection (V1-V4) for individual IBC isolation.",
+        f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
+        "6. All connections 2\" NPT union fittings for IBC removal without cutting pipe.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * py(11), line,
+        ax.text(notes_x, notes_top - i * py(18), line,
                 ha="left", va="top", fontsize=6 if bold else 5.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
@@ -1528,7 +1502,7 @@ def sheet5():
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING PLAN — PIPE ROUTING & VALVES",
                 scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
-                height=0.06)
+                height=0.05)
 
     fig.savefig("diagrams/ibc-stacking-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/ibc-stacking-sheet5.png"), bbox_inches="tight", facecolor=BG)
@@ -1839,26 +1813,17 @@ def sheet6():
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
         "",
-        "1. View from inside container, looking at",
-        "   sealed end wall. IBCs shown in elevation",
-        "   flanking the plumbing corridor.",
-        "2. 4x 2\" NPT bulkhead unions on centerline;",
-        "   fill ports (F1/F2) at top, drains (D3/D4)",
-        "   at bottom.",
-        "3. Fill pipes route horizontally from bulkhead",
-        "   through corridor, then drop vertically into",
-        "   top-tier Blue IBCs via top opening.",
-        "4. Drain pipes exit bottom-tier IBC valves,",
-        "   rise to bulkhead height, then route",
-        "   horizontally through corridor to wall.",
-        "5. Ball valves V1-V4 on each vertical run for",
-        "   individual IBC isolation.",
+        "1. View from inside container, looking at sealed end wall. IBCs shown in elevation flanking the plumbing corridor.",
+        "2. 4x 2\" NPT bulkhead unions on centerline; fill ports (F1/F2) at top, drains (D3/D4) at bottom.",
+        "3. Fill pipes route horizontally from bulkhead through corridor, then drop vertically into top-tier Blue IBCs via top opening.",
+        "4. Drain pipes exit bottom-tier IBC valves, rise to bulkhead height, then route horizontally through corridor to wall.",
+        "5. Ball valves V1-V4 on each vertical run for individual IBC isolation.",
         "6. All pipe 2\" UPVC schedule 40.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(10), line,
-                ha="left", va="top", fontsize=6 if bold else 5.5,
+        ax.text(notes_x, notes_top - i * sy(24), line,
+                ha="left", va="top", fontsize=7 if bold else 6.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)

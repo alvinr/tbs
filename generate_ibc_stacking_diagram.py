@@ -352,8 +352,8 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Notes ─────────────────────────────────────────────────────────────────
-    notes_x = sx(YD_HI - 10)
-    notes_top = sy(C_HGT - 50)
+    notes_x = sx(C_WID / 2)
+    notes_top = sy(Z_LO + 480)
     notes = [
         "CROSS-SECTION NOTES:",
         "",
@@ -377,7 +377,7 @@ def sheet1():
     for i, line in enumerate(notes):
         bold = i == 0
         ax.text(notes_x, notes_top - i * sy(12), line,
-                ha="right", va="top", fontsize=6 if bold else 5.5,
+                ha="center", va="top", fontsize=6 if bold else 5.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -597,7 +597,7 @@ def sheet2():
 
     # ── Notes ─────────────────────────────────────────────────────────────────
     notes_x = px(X_LO + 20)
-    notes_top = py(YD_HI - 10)
+    notes_top = py(YD_HI - 10 - (YD_HI - YD_LO) * 0.20)
     notes = [
         "PLAN VIEW NOTES:",
         "",

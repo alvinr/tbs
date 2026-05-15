@@ -228,7 +228,7 @@ def floor_plan():
             fontweight="bold", **FONT, zorder=7)
 
     # ── RIGHT END ZONE — 4× IBC in 2×2 stack ────────────────────────────────
-    # Near column (Yd=153–1169): Blue #1 on top, Brown on bottom
+    # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
     equip_rect(ax, IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_BLUE_IBC,
                f"IBC-1 BLUE\n600L (top)\nIBC-3 BROWN\n600L (bottom)\nYd={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
                zorder=6)
@@ -236,7 +236,7 @@ def floor_plan():
             "▲ 2020mm tall (2-high)", color=C_BLUE_IBC, fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
-    # Far column (Yd=1194–2210): Blue #2 on top, Waste on bottom
+    # Far column (Yd=1316–2332): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
     equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_WASTE_IBC,
                f"IBC-2 BLUE\n600L (top)\nIBC-4 WASTE\n600L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
                zorder=6)

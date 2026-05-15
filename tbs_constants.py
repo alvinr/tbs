@@ -192,12 +192,13 @@ IBC_D       = 1016   # IBC footprint depth  (mm)
 IBC_H_600   = 1010   # 600L IBC height (mm)
 IBC_H_STK   = 2020   # 2× stacked height (mm)
 
-# Near column (Yd=153–1,169mm): Blue #1 on top, Brown on bottom
-BLUE_IBC_Y  = 153    # near column Yd start (mm) — centered across container width
+# Near column (Yd=30–1,046mm): Blue #1 on top, Brown on bottom
+BLUE_IBC_Y  = 30     # near column Yd start (mm) — pushed to near wall, 30mm clearance
 BROWN_IBC_Y = BLUE_IBC_Y   # Brown is directly below Blue #1 (same Y column)
 
-# Far column (Yd=1,194–2,210mm): Blue #2 on top, Waste on bottom
-IBC_FAR_Y   = 1194   # far column Yd start (mm)  (25mm gap after near column)
+# Far column (Yd=1,316–2,332mm): Blue #2 on top, Waste on bottom
+IBC_FAR_Y   = 1316   # far column Yd start (mm) — pushed to far wall, 30mm clearance
+# Central plumbing corridor: Yd=1,046–1,316 (270mm wide)
 WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 
 # IBC right edge: IBC_COL_X + IBC_W = 4,674 + 1,219 = 5,893mm = C_LEN ✓
@@ -311,10 +312,17 @@ PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_Y
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
 # Flat steel reinforcing plate welded over corrugation before drilling.
-EXT_FILL_H   = 1800    # fill port center height AFF (mm) — feeds top of Blue IBCs
-EXT_FILL_YD  = BLUE_IBC_Y + IBC_D // 2   # = 661mm — centered on near column
-EXT_DRAIN_H  = 200     # drain port center height AFF (mm) — bottom of Waste IBC
-EXT_DRAIN_YD = IBC_FAR_Y + IBC_D // 2    # = 1,702mm — centered on far column
+# External plumbing panel — 4 ports stacked vertically on end wall centerline
+EXT_PANEL_YD = C_WID // 2   # = 1,181mm — panel centered on container width
+EXT_FILL_1_H = 1800    # fill Blue IBC-1 port height (mm) — top tier near
+EXT_FILL_2_H = 1600    # fill Blue IBC-2 port height (mm) — top tier far
+EXT_DRAIN_3_H = 400    # drain Brown IBC-3 port height (mm) — bottom tier near
+EXT_DRAIN_4_H = 200    # drain Waste IBC-4 port height (mm) — bottom tier far
+# Legacy aliases for downstream code
+EXT_FILL_H   = EXT_FILL_1_H
+EXT_FILL_YD  = EXT_PANEL_YD
+EXT_DRAIN_H  = EXT_DRAIN_4_H
+EXT_DRAIN_YD = EXT_PANEL_YD
 
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.

@@ -190,7 +190,7 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Brown IBC front depth | 1,141 mm | `BROWN_IBC_Y` |
+| Brown IBC front depth | 30 mm | `BROWN_IBC_Y` |
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
 *Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
@@ -202,7 +202,7 @@ filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurf
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Waste IBC front depth | 1,316 mm | `WASTE_IBC_Y` |
-| IBC far-wall Y | 2,332 mm | `IBC_FAR_Y` |
+| IBC far column start Y | 1,316 mm | `IBC_FAR_Y` |
 | Waste IBC color code | Black/grey | `C_WASTE_IBC` |
 
 *Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),

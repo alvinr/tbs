@@ -59,13 +59,13 @@ FONT    = {"fontfamily": "monospace"}
 # ── Frame constants (from equipment-layout-report.md §5) ──────────────────────
 FRAME_RHS      = 50     # 50×50×3mm RHS
 FRAME_T        = 3      # wall thickness
-FRAME_FOOTPRINT_W = 1350  # frame footprint width (across Yd)
-FRAME_FOOTPRINT_D = 1150  # frame footprint depth (along X — not used in elevation)
+FRAME_FOOTPRINT_W = 2187  # frame footprint width (across Yd, spans both columns + 65mm overhang/side)
+FRAME_FOOTPRINT_D = 1349  # frame footprint depth (along X, IBC_W + 65mm overhang/side)
 FRAME_PLATFORM_H  = 1060  # platform height (1,010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 52     # kg (midpoint of 45–60 range)
+FRAME_WEIGHT   = 75     # kg (midpoint of 65–85 range, unified frame)
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)

@@ -1404,14 +1404,94 @@ def sheet5():
             [py(corr_cx), py(corr_cx)],
             color=C_CL, lw=1.0, ls="--", zorder=4)
 
+    # ── Pipe fitting helpers (matching sheet 6 conventions) ────────────────
+    PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
+    PIPE_WALL_T = 3.0
+    PIPE_HW = PIPE_OD / 2
+
+    def pipe_plan_h(ax, x1, x2, yd, color, lw=2.5, zo=7):
+        """Horizontal double-wall pipe (X direction) in plan view."""
+        ax.plot([px(x1), px(x2)], [py(yd + PIPE_HW), py(yd + PIPE_HW)],
+                color=color, lw=lw, zorder=zo)
+        ax.plot([px(x1), px(x2)], [py(yd - PIPE_HW), py(yd - PIPE_HW)],
+                color=color, lw=lw, zorder=zo)
+        ax.fill_between([px(x1), px(x2)],
+                        [py(yd - PIPE_HW)] * 2, [py(yd + PIPE_HW)] * 2,
+                        color=color, alpha=0.08, zorder=zo - 1)
+
+    def pipe_plan_v(ax, x, yd1, yd2, color, lw=2.5, zo=7):
+        """Vertical double-wall pipe (Yd direction) in plan view."""
+        ax.plot([px(x + PIPE_HW), px(x + PIPE_HW)], [py(yd1), py(yd2)],
+                color=color, lw=lw, zorder=zo)
+        ax.plot([px(x - PIPE_HW), px(x - PIPE_HW)], [py(yd1), py(yd2)],
+                color=color, lw=lw, zorder=zo)
+        ax.fill_betweenx([py(yd1), py(yd2)],
+                         [px(x - PIPE_HW)] * 2, [px(x + PIPE_HW)] * 2,
+                         color=color, alpha=0.08, zorder=zo - 1)
+
+    def elbow_plan(ax, x, yd, color, zo=9):
+        """90° elbow fitting block at a pipe bend in plan view."""
+        s = PIPE_OD * 0.7
+        ax.add_patch(Rectangle((px(x - s), py(yd - s)),
+                                px(2 * s), py(2 * s),
+                                fc=color, ec=C_OUT, lw=1.5,
+                                alpha=0.35, zorder=zo))
+        ax.text(px(x), py(yd), "E", ha="center", va="center",
+                fontsize=4.5, color="white", fontweight="bold",
+                **FONT, zorder=zo + 1)
+
+    def flange_plan(ax, x, yd, orientation, color, zo=8):
+        """Pipe flange at a connection in plan view."""
+        fw = 8
+        fh = PIPE_OD + 20
+        if orientation == 'h':  # on horizontal pipe
+            ax.add_patch(Rectangle((px(x - fw / 2), py(yd - fh / 2)),
+                                    px(fw), py(fh),
+                                    fc=color, ec=C_OUT, lw=1.5,
+                                    alpha=0.4, zorder=zo))
+        else:  # on vertical pipe
+            ax.add_patch(Rectangle((px(x - fh / 2), py(yd - fw / 2)),
+                                    px(fh), py(fw),
+                                    fc=color, ec=C_OUT, lw=1.5,
+                                    alpha=0.4, zorder=zo))
+
+    def valve_plan(ax, x, yd, orientation, color, label, zo=11):
+        """Ball valve bowtie in plan view. orientation: 'h' or 'v'."""
+        vs = 18
+        if orientation == 'v':  # on a vertical (Yd-direction) pipe
+            tri1 = Polygon([(px(x - vs), py(yd - vs)),
+                             (px(x + vs), py(yd - vs)),
+                             (px(x), py(yd))], closed=True,
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+            tri2 = Polygon([(px(x - vs), py(yd + vs)),
+                             (px(x + vs), py(yd + vs)),
+                             (px(x), py(yd))], closed=True,
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+        else:  # on a horizontal (X-direction) pipe
+            tri1 = Polygon([(px(x - vs), py(yd - vs)),
+                             (px(x - vs), py(yd + vs)),
+                             (px(x), py(yd))], closed=True,
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+            tri2 = Polygon([(px(x + vs), py(yd - vs)),
+                             (px(x + vs), py(yd + vs)),
+                             (px(x), py(yd))], closed=True,
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+        ax.add_patch(tri1)
+        ax.add_patch(tri2)
+        if label:
+            ax.text(px(x), py(yd), label,
+                    ha="center", va="center", fontsize=5, color="white",
+                    fontweight="bold", **FONT, zorder=zo + 2)
+
+    # ── Pipe system colors (matching sheet 6) ────────────────────────────────
+    C_PIPE_BLUE   = "#2060C0"
+    C_PIPE_BROWN  = "#8D6E63"
+    C_PIPE_BLACK  = "#505050"
+
     # ── Bulkhead unions at end wall ──────────────────────────────────────────
-    # All 4 ports are at Yd = C_WID/2 (centerline), shown as circles on wall
     panel_yd = C_WID / 2
     bh_x = C_LEN  # at end wall
 
-    # Draw the 4 bulkhead penetrations (stacked vertically in reality,
-    # but in plan view they overlap at the same Yd — show as one symbol
-    # with annotation)
     ax.add_patch(Circle((px(bh_x), py(panel_yd)),
                          px(30), fc=C_PORT, ec=C_OUT,
                          lw=2.0, alpha=0.6, zorder=12))
@@ -1423,104 +1503,126 @@ def sheet5():
             ha="left", va="center", fontsize=5.5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Pipe runs ────────────────────────────────────────────────────────────
-    # Pipes run from bulkhead along corridor centerline, then branch to IBCs.
-    # Fill pipes (F1, F2) go to top-tier Blue IBCs via top of IBC
-    # Drain pipes (D3, D4) come from bottom-tier Brown/Waste via bottom valve
+    # ── Pipe routing ─────────────────────────────────────────────────────────
+    # IBC corridor-facing edges
+    near_ibc_conn_yd = near_col_r   # 1,046
+    far_ibc_conn_yd  = far_col_l    # 1,316
 
-    pipe_color_fill  = "#2060C0"
-    pipe_color_drain = "#A04020"
-    pipe_lw = 3.0
+    # Connection X positions (spread along IBC for clarity)
+    fill_x  = IBC_COL_X + IBC_W * 0.65
+    drain_x = IBC_COL_X + IBC_W * 0.35
 
-    # IBC connection points (at IBC face nearest to corridor)
-    near_ibc_conn_yd = near_col_r   # near column corridor-facing edge
-    far_ibc_conn_yd  = far_col_l    # far column corridor-facing edge
-
-    # Connection X positions (spread along IBC width for clarity)
-    fill_x  = IBC_COL_X + IBC_W * 0.65   # fill connection further from wall
-    drain_x = IBC_COL_X + IBC_W * 0.35   # drain connection closer to wall
-
-    # --- Fill pipe to IBC-1 (near, Blue top) ---
-    # Bulkhead → corridor centerline → branch to near IBC
-    f1_path_x = [bh_x, bh_x - 80, fill_x, fill_x]
-    f1_path_y = [panel_yd, corr_cx, corr_cx, near_ibc_conn_yd]
-    ax.plot([px(x) for x in f1_path_x], [py(y) for y in f1_path_y],
-            color=pipe_color_fill, lw=pipe_lw, solid_capstyle="round", zorder=8)
-
-    # Valve symbol on near branch
-    valve_x = fill_x
-    valve_yd = corr_cx - (corr_cx - near_ibc_conn_yd) * 0.5
-    _draw_valve(ax, px, py, valve_x, valve_yd, pipe_color_fill, "V1")
-
+    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) ────────────────────────
+    # Horizontal from wall to fill_x at corridor centerline
+    pipe_plan_h(ax, bh_x - 20, fill_x, corr_cx, C_PIPE_BLUE)
+    flange_plan(ax, bh_x - 20, corr_cx, 'h', C_PIPE_BLUE)
+    # V1 on horizontal run
+    v1_x = (bh_x + fill_x) / 2
+    valve_plan(ax, v1_x, corr_cx, 'h', C_PIPE_BLUE, "V1")
+    # Elbow at fill_x → branch down to near IBC
+    elbow_plan(ax, fill_x, corr_cx, C_PIPE_BLUE)
+    # Vertical branch to near IBC
+    pipe_plan_v(ax, fill_x, near_ibc_conn_yd, corr_cx, C_PIPE_BLUE)
+    flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
     # Label
     ax.text(px(fill_x + 40), py(near_ibc_conn_yd + 50),
-            "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n1\" HDPE",
-            ha="left", va="center", fontsize=5.5, color=pipe_color_fill,
+            "F1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
+            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
-    # --- Fill pipe to IBC-2 (far, Blue top) ---
-    f2_path_x = [bh_x, bh_x - 80, fill_x, fill_x]
-    f2_path_y = [panel_yd, corr_cx, corr_cx, far_ibc_conn_yd]
-    ax.plot([px(x) for x in f2_path_x], [py(y) for y in f2_path_y],
-            color=pipe_color_fill, lw=pipe_lw, ls="-",
-            solid_capstyle="round", zorder=7, alpha=0.7)
-
-    valve_yd = corr_cx + (far_ibc_conn_yd - corr_cx) * 0.5
-    _draw_valve(ax, px, py, valve_x, valve_yd, pipe_color_fill, "V2")
-
+    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ─────────────────────────
+    # Offset horizontal slightly from F1 for clarity
+    f2_corr_yd = corr_cx + 25
+    pipe_plan_h(ax, bh_x - 20, fill_x, f2_corr_yd, C_PIPE_BLUE)
+    # V2 on horizontal run
+    v2_x = (bh_x + fill_x) / 2 + 60
+    valve_plan(ax, v2_x, f2_corr_yd, 'h', C_PIPE_BLUE, "V2")
+    # Elbow → branch up to far IBC
+    elbow_plan(ax, fill_x, f2_corr_yd, C_PIPE_BLUE)
+    pipe_plan_v(ax, fill_x, f2_corr_yd, far_ibc_conn_yd, C_PIPE_BLUE)
+    flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
     ax.text(px(fill_x + 40), py(far_ibc_conn_yd - 50),
-            "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n1\" HDPE",
-            ha="left", va="center", fontsize=5.5, color=pipe_color_fill,
+            "F2 → IBC-2\n(FILL, BLUE)\n1\" HDPE",
+            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
-    # --- Drain pipe from IBC-3 (near, Brown bottom) ---
-    d3_path_x = [bh_x, bh_x - 80, drain_x, drain_x]
-    d3_path_y = [panel_yd, corr_cx, corr_cx, near_ibc_conn_yd]
-    ax.plot([px(x) for x in d3_path_x], [py(y) for y in d3_path_y],
-            color=pipe_color_drain, lw=pipe_lw, ls="-",
-            solid_capstyle="round", zorder=7, alpha=0.8)
-
-    valve_yd = corr_cx - (corr_cx - near_ibc_conn_yd) * 0.5
-    _draw_valve(ax, px, py, drain_x, valve_yd, pipe_color_drain, "V3")
-
+    # ── D3: IBC-3 (near, Brown) → corridor → Bulkhead ───────────────────────
+    d3_corr_yd = corr_cx - 25
+    pipe_plan_v(ax, drain_x, near_ibc_conn_yd, d3_corr_yd, C_PIPE_BROWN)
+    flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
+    # V3 on vertical branch
+    v3_yd = corr_cx - (corr_cx - near_ibc_conn_yd) * 0.5
+    valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
+    # Elbow → horizontal to wall
+    elbow_plan(ax, drain_x, d3_corr_yd, C_PIPE_BROWN)
+    pipe_plan_h(ax, drain_x, bh_x - 20, d3_corr_yd, C_PIPE_BROWN)
+    flange_plan(ax, bh_x - 20, d3_corr_yd, 'h', C_PIPE_BROWN)
+    # Flow arrow
+    ax.annotate("", xy=(px(bh_x - 40), py(d3_corr_yd)),
+                xytext=(px(bh_x - 100), py(d3_corr_yd)),
+                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
-            "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=pipe_color_drain,
+            "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
             **FONT, zorder=15)
 
-    # --- Drain pipe from IBC-4 (far, Waste bottom) ---
-    d4_path_x = [bh_x, bh_x - 80, drain_x, drain_x]
-    d4_path_y = [panel_yd, corr_cx, corr_cx, far_ibc_conn_yd]
-    ax.plot([px(x) for x in d4_path_x], [py(y) for y in d4_path_y],
-            color=pipe_color_drain, lw=pipe_lw, ls="-",
-            solid_capstyle="round", zorder=7, alpha=0.6)
-
-    valve_yd = corr_cx + (far_ibc_conn_yd - corr_cx) * 0.5
-    _draw_valve(ax, px, py, drain_x, valve_yd, pipe_color_drain, "V4")
-
+    # ── D4: IBC-4 (far, Waste) → corridor → Bulkhead ────────────────────────
+    d4_corr_yd = corr_cx + 50
+    pipe_plan_v(ax, drain_x, d4_corr_yd, far_ibc_conn_yd, C_PIPE_BLACK)
+    flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
+    v4_yd = corr_cx + (far_ibc_conn_yd - corr_cx) * 0.5
+    valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
+    elbow_plan(ax, drain_x, d4_corr_yd, C_PIPE_BLACK)
+    pipe_plan_h(ax, drain_x, bh_x - 20, d4_corr_yd, C_PIPE_BLACK)
+    flange_plan(ax, bh_x - 20, d4_corr_yd, 'h', C_PIPE_BLACK)
+    ax.annotate("", xy=(px(bh_x - 40), py(d4_corr_yd)),
+                xytext=(px(bh_x - 100), py(d4_corr_yd)),
+                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
     ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=pipe_color_drain,
+            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
 
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = px(X_LO + 30)
     leg_top = py(C_WID + 100)
-    ax.plot([leg_x, leg_x + px(80)], [leg_top, leg_top],
-            color=pipe_color_fill, lw=pipe_lw, zorder=15)
-    ax.text(leg_x + px(90), leg_top, "FILL PIPE (1\" HDPE)",
-            ha="left", va="center", fontsize=6, color=pipe_color_fill,
-            **FONT, zorder=15)
-    ax.plot([leg_x, leg_x + px(80)], [leg_top - py(25), leg_top - py(25)],
-            color=pipe_color_drain, lw=pipe_lw, zorder=15)
-    ax.text(leg_x + px(90), leg_top - py(25), "DRAIN PIPE (1\" HDPE)",
-            ha="left", va="center", fontsize=6, color=pipe_color_drain,
+    leg_sp = py(22)
+    pipe_lw = 2.5
+
+    legend_items = [
+        (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill (1\" HDPE SDR-11)"),
+        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle (1\" HDPE SDR-11)"),
+        (C_PIPE_BLACK, "BLACK/WASTE — Drain (1\" HDPE SDR-11)"),
+    ]
+    for i, (color, desc) in enumerate(legend_items):
+        y = leg_top - i * leg_sp
+        ax.plot([leg_x, leg_x + px(60)], [y + py(3), y + py(3)],
+                color=color, lw=pipe_lw, zorder=15)
+        ax.plot([leg_x, leg_x + px(60)], [y - py(3), y - py(3)],
+                color=color, lw=pipe_lw, zorder=15)
+        ax.text(leg_x + px(70), y, desc,
+                ha="left", va="center", fontsize=5.5, color=color,
+                **FONT, zorder=15)
+
+    # Elbow legend
+    y_el = leg_top - len(legend_items) * leg_sp
+    s_el = PIPE_OD * 0.5
+    ax.add_patch(Rectangle((leg_x + px(30) - px(s_el), y_el - py(s_el)),
+                            px(2 * s_el), py(2 * s_el),
+                            fc="#A0A0A0", ec=C_OUT, lw=1.2, alpha=0.35, zorder=15))
+    ax.text(leg_x + px(30), y_el, "E", ha="center", va="center",
+            fontsize=4.5, color="white", fontweight="bold", **FONT, zorder=16)
+    ax.text(leg_x + px(70), y_el,
+            "90° ELBOW (Banjo LE100, 1\" HDPE NPT)",
+            ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
     # Valve legend
-    _draw_valve(ax, px, py, X_LO + 40, C_WID + 50, C_DIM, "")
-    ax.text(leg_x + px(90), leg_top - py(50), "BALL VALVE (1\" HDPE)",
-            ha="left", va="center", fontsize=6, color=C_DIM,
+    y_vl = y_el - leg_sp
+    valve_plan(ax, (leg_x + px(30)) / px(1), y_vl / py(1), 'h', C_DIM, "")
+    ax.text(leg_x + px(70), y_vl,
+            "BALL VALVE (Banjo V100FP, 1\" poly, quarter-turn)",
+            ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -1542,12 +1644,12 @@ def sheet5():
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
         "",
-        f"1. All pipes 2\" (50mm) UPVC, schedule 40.",
-        f"2. Fill pipes (F1, F2): from bulkhead unions through corridor to top-tier Blue IBCs.",
-        f"3. Drain pipes (D3, D4): from bottom-tier Brown/Waste IBCs through corridor to bulkhead unions for external drain.",
-        f"4. Ball valve at each IBC connection (V1-V4) for individual IBC isolation.",
+        "1. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
+        "2. Fill pipes (F1, F2): from bulkhead unions through corridor to top-tier Blue IBCs.",
+        "3. Drain pipes (D3, D4): from bottom-tier IBCs through corridor to bulkhead unions.",
+        "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V2 on horizontal, V3/V4 on branch.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
-        "6. All connections 2\" NPT union fittings for IBC removal without cutting pipe.",
+        "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -1850,7 +1952,7 @@ def sheet6():
 
     # ── F1: Bulkhead → IBC-1 (near, top tier) — BLUE fill ───────────────────
     # Horizontal from bulkhead through corridor, elbow, then vertical drop
-    f1_drop_yd = near_ibc_cx
+    f1_drop_yd = near_col_r  # corridor-facing edge of near IBC
     # Horizontal run: bulkhead → elbow point
     pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
     # Elbow at bend (horizontal → vertical)
@@ -1868,7 +1970,7 @@ def sheet6():
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── F2: Bulkhead → IBC-2 (far, top tier) — BLUE fill ────────────────────
-    f2_drop_yd = far_ibc_cx
+    f2_drop_yd = far_col_l  # corridor-facing edge of far IBC
     # Horizontal run: bulkhead → elbow point (V2 on horizontal before elbow)
     pipe_h(ax, cl_yd - bh_outer_r - 5, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
     # V2 on horizontal run, midway between bulkhead and elbow
@@ -1885,7 +1987,7 @@ def sheet6():
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── D3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
-    d3_yd = near_ibc_cx
+    d3_yd = near_col_r  # corridor-facing edge of near IBC
     # Vertical rise: IBC-3 valve → elbow height
     pipe_v(ax, d3_yd, drain_conn_z, EXT_DRAIN_3_H, C_PIPE_BROWN)
     draw_flange(ax, d3_yd, drain_conn_z, 'v', C_PIPE_BROWN)
@@ -1905,7 +2007,7 @@ def sheet6():
     # ── D4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
     # NOTE: D4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
     # the residual ~120L below D4 height.
-    d4_yd = far_ibc_cx
+    d4_yd = far_col_l  # corridor-facing edge of far IBC
     # Vertical rise: IBC-4 valve → elbow height
     pipe_v(ax, d4_yd, drain_conn_z, EXT_DRAIN_4_H, C_PIPE_BLACK)
     draw_flange(ax, d4_yd, drain_conn_z, 'v', C_PIPE_BLACK)

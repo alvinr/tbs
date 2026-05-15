@@ -2131,11 +2131,11 @@ def sheet6():
     # ── Dimension lines (side elevation) ─────────────────────────────────────
     draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(beam_bot), sy(beam_top),
                f"{BEAM_SZ}mm", offset=sx(6), fs=6, right=True, font=FONT)
-    draw_dim_v(ax, sx(BEAM_SHOW + 15), sy(0), sy(grate_top),
-               f"{int(grate_top)}mm\nDECK", offset=sx(30), fs=5.5,
+    draw_dim_v(ax, sx(BEAM_SHOW + 25), sy(0), sy(grate_top),
+               f"{int(grate_top)}mm DECK", offset=sx(6), fs=5.5,
                right=True, font=FONT)
     draw_dim_v(ax, sx(-CORR_DEPTH - 20), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm\nVERT LEG", offset=sx(6), fs=5.5,
+               f"{BRKT_VERT}mm VERT LEG", offset=sx(6), fs=5.5,
                right=False, font=FONT)
 
     # ══════════════════════════════════════════════════════════════════════════

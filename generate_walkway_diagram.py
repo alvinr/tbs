@@ -2138,7 +2138,7 @@ def sheet6():
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
     PV_OX = 60
-    PV_OY = BRKT_VERT + 113
+    PV_OY = BRKT_VERT + 65
     PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)
@@ -2257,7 +2257,7 @@ def sheet6():
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
     VC_OX = 300
-    VC_OY = PV_OY - 5   # align with View B vertically
+    VC_OY = BRKT_VERT + 108   # bottom-aligned with View B
     VC_S  = 3.9   # 30% larger than original 3.0
     def cx(mm): return sx(VC_OX + mm * VC_S / S)
     def cy(mm): return sy(VC_OY + mm * VC_S / S)

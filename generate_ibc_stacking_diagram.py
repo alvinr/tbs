@@ -1645,8 +1645,8 @@ def sheet5():
         "INTERNAL PLUMBING PLAN NOTES:",
         "",
         "1. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
-        "2. Fill pipes (F1, F2): from bulkhead unions through corridor to top-tier Blue IBCs.",
-        "3. Drain pipes (D3, D4): from bottom-tier IBCs through corridor to bulkhead unions.",
+        "2. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
+        "3. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
         "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V2 on horizontal, V3/V4 on branch.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
@@ -1945,15 +1945,21 @@ def sheet6():
     # ── IBC connection heights ───────────────────────────────────────────────
     top_ibc_top = platform_z + FRAME_RHS + MAT_T + IBC_H_600
     fill_conn_z = top_ibc_top - 80   # fill inlet near top of top-tier IBC
-    drain_conn_z = 120   # drain valve height on bottom-tier IBC
+    drain_conn_z = 185   # IBC butterfly valve centerline ~175-200mm above floor
 
     near_ibc_cx = BLUE_IBC_Y + IBC_D / 2   # IBC-1/3 center Yd
     far_ibc_cx  = IBC_FAR_Y + IBC_D / 2    # IBC-2/4 center Yd
 
+    # IBC valve faces point toward corridor. Fill cap is on top, offset
+    # ~250mm from the valve face (front) toward the corridor side.
+    FILL_CAP_OFFSET = 250  # mm from valve face (corridor edge)
+    f1_fill_yd = BLUE_IBC_Y + IBC_D - FILL_CAP_OFFSET   # near IBC fill cap Yd
+    f2_fill_yd = IBC_FAR_Y + FILL_CAP_OFFSET             # far IBC fill cap Yd
+
     # ── F1: Bulkhead → over IBC-1 top → drop into IBC-1 (near, top tier) ───
-    # Fill enters through IBC top opening (gravity feed). F1 at Z=2,250
-    # is above IBC top (2,082), so the horizontal run clears the IBC.
-    f1_drop_yd = near_ibc_cx  # drop point centered over IBC-1 fill opening
+    # Fill enters through IBC fill cap (DN150, offset ~250mm from valve face
+    # toward corridor side). F1 at Z=2,250 is above IBC top (2,082).
+    f1_drop_yd = f1_fill_yd  # drop point at fill cap position (offset from valve face)
     # Horizontal run: bulkhead → over IBC-1 center (entirely above IBC)
     pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
     # V1 on horizontal run, in the corridor
@@ -1971,7 +1977,7 @@ def sheet6():
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── F2: Bulkhead → over IBC-2 top → drop into IBC-2 (far, top tier) ──
-    f2_drop_yd = far_ibc_cx  # drop point centered over IBC-2 fill opening
+    f2_drop_yd = f2_fill_yd  # drop point at fill cap position (offset from valve face)
     # Horizontal run: bulkhead → over IBC-2 center
     pipe_h(ax, cl_yd - bh_outer_r - 5, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
     # V2 on horizontal run, in the corridor
@@ -2035,10 +2041,13 @@ def sheet6():
     # ── Blue outflow manifold (X-direction, into the page) ───────────────────
     # Two isolation valves (V-B1, V-B2) — one per IBC outlet — join at tee
     # in corridor, then V-B3 after tee → single pipe to P-01 → spray bar.
-    blue_out_z = platform_z + FRAME_RHS + MAT_T + 120  # low on Blue IBCs
+    # Blue IBCs use their built-in DN50 butterfly valve (S60×6 thread) on the
+    # corridor-facing face, ~185mm above the platform they sit on.
+    top_tier_base = platform_z + FRAME_RHS + MAT_T  # floor of top-tier IBCs
+    blue_out_z = top_tier_base + drain_conn_z  # drain valve height on top-tier
 
-    # IBC-1 outlet (near column) — pipe stub + valve
-    b1_yd = BLUE_IBC_Y + IBC_D - 60
+    # IBC-1 outlet (near column) — at corridor-facing drain valve
+    b1_yd = near_col_r  # valve face points toward corridor
     pipe_stub_x(ax, b1_yd, blue_out_z, C_PIPE_BLUE,
                 "", label_side="left")
     # Horizontal pipe from IBC-1 toward corridor center
@@ -2050,8 +2059,8 @@ def sheet6():
             ha="right", va="center", fontsize=5, color=C_PIPE_BLUE,
             **FONT, zorder=10)
 
-    # IBC-2 outlet (far column) — pipe stub + valve
-    b2_yd = IBC_FAR_Y + 60
+    # IBC-2 outlet (far column) — at corridor-facing drain valve
+    b2_yd = far_col_l  # valve face points toward corridor
     pipe_stub_x(ax, b2_yd, blue_out_z, C_PIPE_BLUE,
                 "", label_side="right")
     # Horizontal pipe from IBC-2 toward corridor center
@@ -2079,45 +2088,50 @@ def sheet6():
             fontweight="bold", **FONT, zorder=10)
 
     # ── Brown IBC-3 inlet ← tray drain (gravity) ────────────────────────────
-    brown_in_z = 180
-    pipe_stub_x(ax, BLUE_IBC_Y + IBC_D - 60, brown_in_z, C_PIPE_BROWN,
+    # Tray drain enters IBC-3 through a top-mounted fitting (fill cap area).
+    # Shown as X-direction pipe stub at top of IBC-3.
+    brown_in_z = IBC_H_600 - 80  # near top of bottom-tier IBC
+    pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
                 "← TRAY\nDRAIN", label_side="left")
 
     # ── Brown IBC-3 outlet → P-02 pump → filter skid ────────────────────────
-    # Offset lower to clear D3 horizontal run at Z=400
+    # Uses IBC-3's built-in DN50 butterfly valve at corridor-facing face.
+    # Offset below D3 horizontal run at Z=400 to avoid pipe crossing.
     brown_out_z = 250
-    pipe_stub_x(ax, BLUE_IBC_Y + IBC_D - 100, brown_out_z, C_PIPE_BROWN,
+    pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
                 "TO P-02 →\nFILTER SKID", label_side="left")
 
     # ── Filter skid return → IBC-2 (cleaned water returns to supply) ────────
-    filter_ret_z = platform_z + FRAME_RHS + MAT_T + 250
-    pipe_stub_x(ax, IBC_FAR_Y + 60, filter_ret_z, C_PIPE_FILTER,
+    # Returns through top of IBC-2 (fill cap area)
+    filter_ret_z = top_ibc_top - 80  # near top of top-tier far IBC
+    pipe_stub_x(ax, far_ibc_cx, filter_ret_z, C_PIPE_FILTER,
                 "← FILTER\nRETURN", label_side="right")
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
-    waste_in_z = 250
-    pipe_stub_x(ax, IBC_FAR_Y + IBC_D - 60, waste_in_z, C_PIPE_BLACK,
+    # Enters through IBC-4 fill cap on top
+    waste_in_z = IBC_H_600 - 80  # near top of bottom-tier far IBC
+    pipe_stub_x(ax, far_ibc_cx, waste_in_z, C_PIPE_BLACK,
                 "← WASTE\nDIVERTER", label_side="right")
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
-    leader(ax, sx(near_ibc_cx), sy(EXT_FILL_1_H),
+    leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
            sx(BLUE_IBC_Y - 20), sy(EXT_FILL_1_H + 80),
-           "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n1\" HDPE",
+           "F1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, sx(far_ibc_cx), sy(EXT_FILL_2_H),
+    leader(ax, sx(f2_fill_yd), sy(EXT_FILL_2_H),
            sx(IBC_FAR_Y + IBC_D + 20), sy(EXT_FILL_2_H + 80),
-           "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n1\" HDPE",
+           "F2 → IBC-2 FILL CAP\n(DN150, TOP FAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, sx(near_ibc_cx), sy(drain_conn_z),
+    leader(ax, sx(near_col_r), sy(drain_conn_z),
            sx(BLUE_IBC_Y - 20), sy(drain_conn_z - 80),
-           "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n1\" HDPE",
+           "D3 ← IBC-3 VALVE\n(DN50, S60×6, BROWN\nBOTTOM NEAR)\n1\" HDPE",
            color=C_PIPE_BROWN, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, sx(far_ibc_cx), sy(drain_conn_z),
+    leader(ax, sx(far_col_l), sy(drain_conn_z),
            sx(IBC_FAR_Y + IBC_D + 20), sy(drain_conn_z - 80),
-           "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n1\" HDPE",
+           "D4 ← IBC-4 VALVE\n(DN50, S60×6, WASTE\nBOTTOM FAR)\n1\" HDPE",
            color=C_PIPE_BLACK, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -2203,13 +2217,13 @@ def sheet6():
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
         "1. View from inside container looking at sealed end wall. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
-        "2. Fill ports (F1/F2) above IBC tops for gravity feed. V2 on horizontal run before elbow for accessible isolation.",
-        "3. 90° elbow fittings (E) at all pipe direction changes — 1\" HDPE NPT 90° street elbows (Banjo LE100 or equiv.).",
-        "4. Blue outflow: IBC-1 → VB1 → tee ← VB2 ← IBC-2; after tee → VB3 → single pipe to P-01 → spray bar.",
-        "5. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn lever handle. All hand-operated.",
-        "6. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal time.",
-        "7. Brown outlet (to P-02/filter skid) at Z=250mm — offset below D3 horizontal at Z=400mm to avoid pipe crossing.",
-        "8. All fittings NPT threaded. Flanges at all bulkhead and IBC connections. Elbows at all 90° bends.",
+        "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
+        "3. Fill caps (DN150) offset ~250mm from valve face toward corridor. F1/F2 gravity feed above IBC tops.",
+        "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
+        "5. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
+        "6. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
+        "7. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal.",
+        "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0

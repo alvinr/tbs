@@ -259,7 +259,26 @@ Mounting varies by side:
 
 ---
 
-## 15. Optical Line-of-Sight Clearance
+## 15. IBC Stacking & Securing
+
+2×2 IBC stack in the right end zone (X=4,674–5,893mm). Four 600L Schutz Ecobulk
+MX totes held in a welded 50×50×3mm RHS mild steel stacking frame with D-ring
+lashing points, anti-rotation lip, and removable access gates.
+Source report: [Equipment Layout](equipment-layout-report.md) §5,
+[Water System](water-system-report.md) §5.
+
+**Sheet 1 — Cross-section elevation (looking along X): 2-tier stack, frame, D-rings, ceiling clearance**
+![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
+
+**Sheet 2 — Plan view: 4 IBCs in 2×2 arrangement, frame perimeter, fill/drain ports**
+![TBS-001 IBC Stacking — Sheet 2: Plan View](assets/ibc-stacking-sheet2.png)
+
+**Sheet 3 — Fastening details: D-ring lashing, anti-rotation lip, access gate, strap routing**
+![TBS-001 IBC Stacking — Sheet 3: Fastening Details](assets/ibc-stacking-sheet3.png)
+
+---
+
+## 16. Optical Line-of-Sight Clearance
 
 Two-panel optical clearance diagram. Confirms which equipment items fall within the
 optical cone from the pinhole (X=2946mm, H=1194mm) to the film plane (depth=2262mm).

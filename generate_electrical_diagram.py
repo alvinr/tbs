@@ -10,6 +10,7 @@ Sheet 2: Container floor plan with wiring layout  (scale 1:500)
 """
 
 import textwrap
+import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -1161,10 +1162,20 @@ def draw_sheet3():
         ax.text(sx, sz, sw_label,
                 ha="center", va="center", fontsize=7.0, fontweight="bold",
                 color=C_OUT, zorder=8)
-        # Pull cord hanging down
+        # Pull cord hanging down — twisted rope effect
         cord_bot = wz(CORD_HANG_Z)
-        ax.plot([sx, sx], [sz - sw_sz/2, cord_bot],
-                color=C_OUT, lw=0.8, ls="-", zorder=5)
+        cord_top = sz - sw_sz/2
+        cord_len = cord_top - cord_bot
+        # Two intertwining sinusoidal strands for braided cord look
+        n_pts = 150
+        cord_ys = np.linspace(cord_top, cord_bot, n_pts)
+        amplitude = cord_len * 0.025  # ~2.5% of cord length
+        freq = 25  # number of full twists
+        t = np.linspace(0, freq * 2 * np.pi, n_pts)
+        strand1_x = sx + amplitude * np.sin(t)
+        strand2_x = sx - amplitude * np.sin(t)
+        ax.plot(strand1_x, cord_ys, color=C_OUT, lw=1.4, zorder=5)
+        ax.plot(strand2_x, cord_ys, color="#707070", lw=1.2, zorder=5)
         # Small circle at cord end (pull handle)
         ax.add_patch(plt.Circle((sx, cord_bot), 0.06,
                      fc="white", ec=C_OUT, lw=0.8, zorder=6))

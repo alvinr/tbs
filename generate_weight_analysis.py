@@ -248,12 +248,13 @@ def _ceiling_rail_weight():
 
 
 def _ibc_stacking_frame_weight():
-    """Steel tube stacking frame for 2×2 IBC configuration.
-    50×50×3mm RHS mild steel frame, unified across both columns.
-    Footprint: 2,187 × 1,349mm. Weight: 65–85 kg per equipment-layout-report.md §5.
+    """Steel tube portal frame for 2×2 IBC configuration.
+    50×50×3mm RHS mild steel portal frame with open plumbing corridor,
+    wall-to-wall via brackets. Footprint: 2,187 × 1,349mm.
+    Weight: ~90 kg per revised equipment-layout-report.md §5.
     """
-    # Midpoint of fabrication estimate (65–85 kg) from equipment layout report
-    return 75.0
+    # Portal frame redesign: open plumbing corridor, wall-to-wall via brackets
+    return 90.0
 
 
 # ═══════════════════════════════════════════════════════════════════════════

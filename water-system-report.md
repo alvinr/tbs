@@ -110,7 +110,7 @@ IBC-2 (600L) ──┘                                                      │
 - ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
-- Fill inlet: external 2" NPT bulkhead fittings through container wall for remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=1,800mm, Fill Blue IBC-2 at Z=1,600mm — for remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
 
@@ -161,9 +161,9 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 ```
 
 - IBC-4 is a standard 600L HDPE cage tote with 2" ball valve, identical frame to IBC-1 through IBC-3
-- IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,141)
+- IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)
 - Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
-- Filled and drained remotely via external 2" NPT bulkhead fitting through the container wall — no need to open cargo doors
+- Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1,181mm, Z=200mm) — no need to open cargo doors
 - **Do not leave IBC valve open** — evaporation and UV exposure can drive ferricyanide chemistry
 
 ### 3.4 Processing Tray
@@ -282,23 +282,33 @@ See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-s
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=153): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,194): IBC-2 Blue (top) + IBC-4 Waste (bottom). Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container wall.
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
-| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 153–1,169 | 1,010–2,020 |
-| Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 153–1,169 | 0–1,010 |
-| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,194–2,210 | 1,010–2,020 |
-| Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,194–2,210 | 0–1,010 |
+| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 30–1,046 | 1,010–2,020 |
+| Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 30–1,046 | 0–1,010 |
+| Right end zone | Plumbing corridor | 4,674–5,893 | 1,046–1,316 | 0–2,020 |
+| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 |
+| Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
 | Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply hoses run along the pinhole wall to the right end zone, then along the right end wall to the IBC inlets — maximum run ~5.5m (manifold to far-column IBCs at Yd=1,141mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall to IBC-4 in the right end zone — maximum run ~4m.
+**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m.
 
-**External fill/drain ports:** Each IBC connects to a 2" NPT bulkhead fitting welded through the container wall at the right end zone. This allows remote filling (from water bowser or tanker) and draining (IBC-4 waste to disposal tanker) without opening the cargo doors or entering the container. Four ports total — one per IBC — accessible from the container exterior.
+**External fill/drain ports:** Four 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:
+
+| Port | Function | Z (mm) | Connects to |
+|------|----------|--------|-------------|
+| Fill Blue IBC-1 | Fresh water supply fill | 1,800 | IBC-1 (top, near column) |
+| Fill Blue IBC-2 | Fresh water supply fill | 1,600 | IBC-2 (top, far column) |
+| Drain Brown IBC-3 | Used water drain | 400 | IBC-3 (bottom, near column) |
+| Drain Waste IBC-4 | Waste water drain | 200 | IBC-4 (bottom, far column) |
+
+This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
 ---
 

@@ -89,14 +89,16 @@ The processing tray sits below the film plane carriage blocks (minimum Z=140mm a
 ### 2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
-columns at X=4,674mm (25mm clearance from zone boundary).
+columns at X=4,674mm (25mm clearance from zone boundary), separated by a
+270mm plumbing corridor between near and far columns. IBC wall clearance
+is 30mm on each side.
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Blue IBC-1 (600L, top near) | 4,674–5,893 | 153–1,169 | 1,010–2,020 | Near column top; stacked frame |
-| Blue IBC-2 (600L, top far) | 4,674–5,893 | 1,194–2,210 | 1,010–2,020 | Far column top; stacked frame |
-| Brown IBC-3 (600L, bottom near) | 4,674–5,893 | 153–1,169 | 0–1,010 | Near column bottom; recycled wash/fix |
-| Waste IBC-4 (600L, bottom far) | 4,674–5,893 | 1,194–2,210 | 0–1,010 | Far column bottom; sealed waste collection |
+| Blue IBC-1 (600L, top near) | 4,674–5,893 | 30–1,046 | 1,010–2,020 | Near column top; stacked frame |
+| Blue IBC-2 (600L, top far) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 | Far column top; stacked frame |
+| Brown IBC-3 (600L, bottom near) | 4,674–5,893 | 30–1,046 | 0–1,010 | Near column bottom; recycled wash/fix |
+| Waste IBC-4 (600L, bottom far) | 4,674–5,893 | 1,316–2,332 | 0–1,010 | Far column bottom; sealed waste collection |
 
 ---
 
@@ -129,12 +131,14 @@ in a 2×2 arrangement (two columns along Y, two tiers high).
 | Arrangement | X span used | Max Y depth |
 |-------------|------------|------------|
 | Old (side-by-side X) | 2,400 mm | 1,116 mm |
-| **New (Y-stacked, right-justified)** | **1,219 mm** | **2,157 mm** |
+| **New (Y-stacked, right-justified)** | **1,219 mm** | **2,302 mm** |
 
 The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
 the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
-IBCs fit with 25mm clearance on the zone boundary side. The four-IBC configuration
-eliminates the need for separate 55-gallon waste drums.
+IBCs fit with 25mm clearance on the zone boundary side. The two columns are
+separated by a 270mm plumbing corridor (replacing the former 25mm gap), with
+30mm wall clearance on each side. The four-IBC configuration eliminates the need
+for separate 55-gallon waste drums.
 
 ---
 
@@ -148,14 +152,14 @@ for transport and removable access panels for the lower IBC drain valves.
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
 | Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
-| Frame footprint | 2,187mm × 1,284mm (65mm overhang per side across Yd; 65mm cargo-door side, flush to end wall along X) |
+| Frame footprint | 2,362mm × 1,284mm portal frame — wall-to-wall width via brackets for lateral restraint, 1,284mm depth. Corridor uprights at inner IBC edges define the 270mm plumbing corridor between columns |
 | Total loaded height | 2,020mm (IBC ×2) — 368mm ceiling clearance ✓ |
 | Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
 | Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |
 | Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
 | Center divider | 50×50×3mm RHS cross-member on platform between near/far columns |
 | Surface finish | Grey oxide primer + flat black powder coat (interior) |
-| Approx. weight | 65–85kg (frame alone) |
+| Approx. weight | ~90kg (frame alone) |
 | Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
 **Why 600L IBCs, not 1,000L:**
@@ -247,7 +251,7 @@ runs through the optical zone.
 **Plumbing manifold:** 3-circuit distribution header (Wash 1, Wash 2, Waste)
 wall-mounted at X=2,400–2,700mm, H=200–600mm. Hose runs drop vertically from
 manifold to IBCs in the right end zone. Maximum hose run: ~5.5m (manifold to
-Brown IBC at Yd=1,141mm — along pinhole wall then along right end wall).
+Brown IBC at Yd=538mm — along pinhole wall then along right end wall).
 
 **Electrical conduit:** 25mm PVC trunking, horizontal at H=1,800mm, along the
 full container length on the pinhole wall face. Branch drops at each circuit

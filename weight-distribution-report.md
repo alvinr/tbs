@@ -78,21 +78,21 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
-| Blue IBC-1 (tote) | 55 | 4,674–5,893 | 153–1,169 | 600L steel-cage IBC tare (top tier, near) |
-| Blue IBC-2 (tote) | 55 | 4,674–5,893 | 1,194–2,210 | 600L steel-cage IBC tare (top tier, far) |
-| Brown IBC-3 (tote) | 55 | 4,674–5,893 | 153–1,169 | 600L steel-cage IBC tare (bottom tier, near) |
-| Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,194–2,210 | 600L steel-cage IBC tare (bottom tier, far) |
-| IBC stacking frame | 75 | 4,674–5,893 | 88–2,275 | 50×50×3mm RHS mild steel unified frame ([Equipment Layout](equipment-layout-report.md) §5) |
-| **Equipment subtotal** | **431** | | | |
+| Blue IBC-1 (tote) | 55 | 4,674–5,893 | 30–1,046 | 600L steel-cage IBC tare (top tier, near) |
+| Blue IBC-2 (tote) | 55 | 4,674–5,893 | 1,316–2,332 | 600L steel-cage IBC tare (top tier, far) |
+| Brown IBC-3 (tote) | 55 | 4,674–5,893 | 30–1,046 | 600L steel-cage IBC tare (bottom tier, near) |
+| Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,316–2,332 | 600L steel-cage IBC tare (bottom tier, far) |
+| IBC stacking frame | 90 | 4,674–5,893 | 0–2,362 | 50×50×3mm RHS mild steel portal frame, wall-to-wall with open plumbing corridor ([Equipment Layout](equipment-layout-report.md) §5) |
+| **Equipment subtotal** | **446** | | | |
 
 ### 3.4 Dry Weight Summary
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 65.7% |
-| Structure | 719 | 21.5% |
-| Equipment | 431 | 12.9% |
-| **Total dry** | **3,350** | **100%** |
+| Container (shell + doors) | 2,200 | 65.4% |
+| Structure | 719 | 21.4% |
+| Equipment | 446 | 13.3% |
+| **Total dry** | **3,365** | **100%** |
 
 **Grating weight assumption:** 25mm press-locked galvanized steel bar grating
 at 30×100mm bearing bar pitch weighs approximately 44 kg/m² (McNICHOLS
@@ -111,11 +111,11 @@ during processing, not pre-loaded).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=153–1,169 | Top (Z=1,010–2,020) |
-| Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,194–2,210 | Top (Z=1,010–2,020) |
+| Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=30–1,046 | Top (Z=1,010–2,020) |
+| Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,010–2,020) |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,550 kg** (3,350 dry + 1,200 liquid)
+**Total loaded weight: 4,565 kg** (3,365 dry + 1,200 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -126,20 +126,20 @@ Brown/Waste IBCs.
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=153–1,169 | Bottom (Z=0–1,010) |
-| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,194–2,210 | Bottom (Z=0–1,010) |
+| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=30–1,046 | Bottom (Z=0–1,010) |
+| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Bottom (Z=0–1,010) |
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,550 kg** (3,350 dry + 1,200 liquid)
+**Total loaded weight: 4,565 kg** (3,365 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,350 | 2,644 | 1,161 | 1,055 | 55.4/44.6% | 50.9/49.1% |
-| Camera Ready (Deployed) | 4,550 | 3,366 | 1,167 | 1,176 | 40.8/59.2% | 50.7/49.3% |
-| Materials Exhausted (Transport) | 4,550 | 3,340 | 1,167 | 910 | 40.8/59.2% | 50.7/49.3% |
+| Dry (Transport) | 3,365 | 2,656 | 1,161 | 1,054 | 55.1/44.9% | 50.9/49.1% |
+| Camera Ready (Deployed) | 4,565 | 3,372 | 1,167 | 1,176 | 40.6/59.4% | 50.7/49.3% |
+| Materials Exhausted (Transport) | 4,565 | 3,346 | 1,167 | 910 | 40.6/59.4% | 50.7/49.3% |
 
 ---
 
@@ -188,9 +188,9 @@ All three states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,350 | 20,650 | 14.0% |
-| Camera Ready | 4,550 | 19,450 | 19.0% |
-| Materials Exhausted | 4,550 | 19,450 | 19.0% |
+| Dry | 3,365 | 20,635 | 14.0% |
+| Camera Ready | 4,565 | 19,435 | 19.0% |
+| Materials Exhausted | 4,565 | 19,435 | 19.0% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -206,16 +206,16 @@ side.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (55.4/44.6%), with CG at
-X=2,644mm. This front bias comes from the cargo doors (280 kg total) being
+The dry/transport state has a front-biased split (55.1/44.9%), with CG at
+X=2,656mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also retracted 300mm inward on its ceiling rails.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,366mm (722mm past the dry CG). The doors
+the CG shifts rearward to X=3,372mm (716mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a 40.8/59.2% front/rear split.
+zone (X=4,674–5,893mm). This creates a 40.6/59.4% front/rear split.
 
 **Transport implication:** When loaded for transport (materials exhausted,
 doors closed), the container's CG is at 56.7% of the length from the cargo
@@ -235,13 +235,13 @@ This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,550 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,565 kg throughout a
 session, but the vertical redistribution of 1,200 kg from top tier to
 bottom tier drops the center of gravity by 266mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 
-The walkway system contributes 250 kg (7.5% of dry weight), making it the
+The walkway system contributes 250 kg (7.4% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The weight is
 dominated by the grating at 44 kg/m² (McNICHOLS catalog value). If lighter
 aluminum grating were used (~20 kg/m²), the walkway weight would drop to

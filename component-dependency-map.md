@@ -180,7 +180,7 @@ P-02 Brown recycle), 1-gal pressure accumulator ACC-01, ball valves BV-01/02, Ci
 | IBC footprint width | 1,219 mm | `IBC_W` |
 | IBC footprint depth | 1,016 mm | `IBC_D` |
 | Stacked height (2× Blue IBC) | 2,020 mm | `IBC_H_STK` |
-| Blue stack front depth from pinhole wall | 153 mm | `BLUE_IBC_Y` |
+| Blue stack front depth from pinhole wall | 30 mm | `BLUE_IBC_Y` |
 
 *Components: 2× 600L food-grade HDPE IBC totes (Y-stacked in right end zone), stacking
 frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" HDPE,
@@ -201,8 +201,8 @@ filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurf
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Waste IBC front depth | 1,194 mm | `WASTE_IBC_Y` |
-| IBC far-wall Y | 2,210 mm | `IBC_FAR_Y` |
+| Waste IBC front depth | 1,316 mm | `WASTE_IBC_Y` |
+| IBC far-wall Y | 2,332 mm | `IBC_FAR_Y` |
 | Waste IBC color code | Black/grey | `C_WASTE_IBC` |
 
 *Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),

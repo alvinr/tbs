@@ -111,10 +111,10 @@ def sheet1():
     # ── Layout bounds ─────────────────────────────────────────────────────────
     YD_LO = -120
     YD_HI = C_WID + 120
-    Z_LO  = -80
+    Z_LO  = -580
     Z_HI  = C_HGT + 100
 
-    fig, ax = plt.subplots(figsize=(18, 18))
+    fig, ax = plt.subplots(figsize=(18, 22))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -410,12 +410,12 @@ def sheet2():
     def py(mm): return mm * S   # Yd along vertical
 
     # The plan view shows the area around the IBC stack
-    X_LO = IBC_COL_X - 300
-    X_HI = C_LEN + 150
-    YD_LO = -120
+    X_LO = IBC_COL_X - 600
+    X_HI = C_LEN + 350
+    YD_LO = -400
     YD_HI = C_WID + 120
 
-    fig, ax = plt.subplots(figsize=(18, 14))
+    fig, ax = plt.subplots(figsize=(20, 17))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(px(X_LO), px(X_HI))
@@ -650,11 +650,11 @@ def sheet3():
     def sx(mm): return mm * S
     def sy(mm): return mm * S
 
-    fig, ax = plt.subplots(figsize=(20, 18))
+    fig, ax = plt.subplots(figsize=(20, 22))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(0, sx(600))
-    ax.set_ylim(0, sy(500))
+    ax.set_ylim(sy(-100), sy(500))
     ax.set_aspect("equal")
     ax.axis("off")
 

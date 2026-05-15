@@ -249,14 +249,11 @@ def _ceiling_rail_weight():
 
 def _ibc_stacking_frame_weight():
     """Steel tube stacking frame for 2×2 IBC configuration.
-    40×40×3mm steel SHS frame supporting top-tier IBCs.
+    50×50×3mm RHS mild steel frame supporting top-tier IBCs.
+    Weight: 45–60 kg per equipment-layout-report.md §5.
     """
-    # Rectangular frame: 2 × (1219 + 2 × 1016) mm in steel SHS
-    # Plus 2 cross members
-    frame_length = 2 * (IBC_W / 1000) + 4 * (IBC_D / 1000) + 2 * (IBC_W / 1000)
-    # 40×40×3mm SHS: ~3.45 kg/m
-    shs_kg_per_m = (4 * 40 * 3 - 4 * 3 * 3) * 1e-6 * RHO_STEEL  # ≈ 3.45 kg/m
-    return frame_length * shs_kg_per_m
+    # Midpoint of fabrication estimate (45–60 kg) from equipment layout report
+    return 52.0
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -434,7 +431,7 @@ def build_components():
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, IBC_FAR_Y + IBC_D,
                   IBC_H_600 - 50, IBC_H_600, color=C_STEEL,
-                  calc_note="40×40×3mm steel SHS frame"),
+                  calc_note="50×50×3mm RHS mild steel frame"),
 
         # ── Liquids — Camera Ready state (water in top-tier Blue IBCs) ───
         Component("Blue IBC-1 water", "liquid", 600.0,

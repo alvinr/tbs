@@ -60,7 +60,7 @@ FONT    = {"fontfamily": "monospace"}
 FRAME_RHS      = 50     # 50×50×3mm RHS
 FRAME_T        = 3      # wall thickness
 FRAME_FOOTPRINT_W = 2187  # frame footprint width (across Yd, spans both columns + 65mm overhang/side)
-FRAME_FOOTPRINT_D = 1349  # frame footprint depth (along X, IBC_W + 65mm overhang/side)
+FRAME_FOOTPRINT_D = 1284  # frame footprint depth (along X, 65mm overhang cargo-door side, flush to end wall)
 FRAME_PLATFORM_H  = 1060  # platform height (1,010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
@@ -467,8 +467,8 @@ def sheet2():
     frame_overhang = (FRAME_FOOTPRINT_W - (IBC_FAR_Y + IBC_D - BLUE_IBC_Y)) / 2
     frame_yd_l = BLUE_IBC_Y - frame_overhang
     frame_yd_r = IBC_FAR_Y + IBC_D + frame_overhang
-    frame_x_l = IBC_COL_X - 65  # 65mm overhang on each side along X
-    frame_x_r = IBC_COL_X + IBC_W + 65
+    frame_x_l = IBC_COL_X - 65  # 65mm overhang on cargo-door side
+    frame_x_r = min(IBC_COL_X + IBC_W + 65, C_LEN)  # clamp to end wall
 
     # Frame outline
     ax.add_patch(Rectangle((px(frame_x_l), py(frame_yd_l)),

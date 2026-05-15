@@ -1158,7 +1158,7 @@ def sheet4():
 
     # ── Reinforcing plate ────────────────────────────────────────────────────
     plate_w = 300   # plate width (mm)
-    plate_h = 1800  # plate height — spans from below lowest port to above highest
+    plate_h = EXT_FILL_1_H - 100 + 100  # spans from below lowest port to above highest
     plate_yd = cl_yd - plate_w / 2
     plate_z = 100   # bottom edge
     ax.add_patch(Rectangle((sx(plate_yd), sy(plate_z)),
@@ -1670,7 +1670,7 @@ def sheet6():
 
     # ── Reinforcing plate on wall interior ───────────────────────────────────
     plate_w = 300
-    plate_h = 1800
+    plate_h = EXT_FILL_1_H - 100 + 100  # spans from below lowest port to above highest
     plate_yd = cl_yd - plate_w / 2
     plate_z = 100
     ax.add_patch(Rectangle((sx(plate_yd), sy(plate_z)),

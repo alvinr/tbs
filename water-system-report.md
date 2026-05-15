@@ -110,7 +110,7 @@ IBC-2 (600L) ──┘                                                      │
 - ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
-- Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=1,800mm, Fill Blue IBC-2 at Z=1,600mm — for remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
 
@@ -303,8 +303,8 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 
 | Port | Function | Z (mm) | Connects to |
 |------|----------|--------|-------------|
-| Fill Blue IBC-1 | Fresh water supply fill | 1,800 | IBC-1 (top, near column) |
-| Fill Blue IBC-2 | Fresh water supply fill | 1,600 | IBC-2 (top, far column) |
+| Fill Blue IBC-1 | Fresh water supply fill | 2,250 | IBC-1 (top, near column) — gravity feed |
+| Fill Blue IBC-2 | Fresh water supply fill | 2,150 | IBC-2 (top, far column) — gravity feed |
 | Drain Brown IBC-3 | Used water drain | 400 | IBC-3 (bottom, near column) |
 | Drain Waste IBC-4 | Waste water drain | 200 | IBC-4 (bottom, far column) |
 

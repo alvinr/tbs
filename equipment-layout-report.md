@@ -148,7 +148,7 @@ for transport and removable access panels for the lower IBC drain valves.
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
 | Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
-| Frame footprint | 2,187mm × 1,349mm (spans both IBC columns + 65mm overhang per side) |
+| Frame footprint | 2,187mm × 1,284mm (65mm overhang per side across Yd; 65mm cargo-door side, flush to end wall along X) |
 | Total loaded height | 2,020mm (IBC ×2) — 368mm ceiling clearance ✓ |
 | Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
 | Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |

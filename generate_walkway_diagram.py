@@ -1895,9 +1895,9 @@ def sheet6():
     YD_LO = -100
     YD_HI = BEAM_SHOW + 200
     Z_LO  = -60
-    Z_HI  = BRKT_VERT + 320   # tightened for Views B/C at top
+    Z_HI  = BRKT_VERT + 220   # tightened to match lowered Views B/C
 
-    fig, ax = plt.subplots(figsize=(18, 18))
+    fig, ax = plt.subplots(figsize=(18, 15))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))

@@ -192,12 +192,12 @@ IBC_D       = 1016   # IBC footprint depth  (mm)
 IBC_H_600   = 1010   # 600L IBC height (mm)
 IBC_H_STK   = 2020   # 2× stacked height (mm)
 
-# Near column (Yd=100–1,116mm): Blue #1 on top, Brown on bottom
-BLUE_IBC_Y  = 100    # near column Yd start (mm)
+# Near column (Yd=153–1,169mm): Blue #1 on top, Brown on bottom
+BLUE_IBC_Y  = 153    # near column Yd start (mm) — centered across container width
 BROWN_IBC_Y = BLUE_IBC_Y   # Brown is directly below Blue #1 (same Y column)
 
-# Far column (Yd=1,141–2,157mm): Blue #2 on top, Waste on bottom
-IBC_FAR_Y   = 1141   # far column Yd start (mm)  (25mm gap after near column)
+# Far column (Yd=1,194–2,210mm): Blue #2 on top, Waste on bottom
+IBC_FAR_Y   = 1194   # far column Yd start (mm)  (25mm gap after near column)
 WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 
 # IBC right edge: IBC_COL_X + IBC_W = 4,674 + 1,219 = 5,893mm = C_LEN ✓
@@ -312,9 +312,9 @@ PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_Y
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
 # Flat steel reinforcing plate welded over corrugation before drilling.
 EXT_FILL_H   = 1800    # fill port center height AFF (mm) — feeds top of Blue IBCs
-EXT_FILL_YD  = BLUE_IBC_Y + IBC_D // 2   # = 608mm — centered on near column
+EXT_FILL_YD  = BLUE_IBC_Y + IBC_D // 2   # = 661mm — centered on near column
 EXT_DRAIN_H  = 200     # drain port center height AFF (mm) — bottom of Waste IBC
-EXT_DRAIN_YD = IBC_FAR_Y + IBC_D // 2    # = 1,649mm — centered on far column
+EXT_DRAIN_YD = IBC_FAR_Y + IBC_D // 2    # = 1,702mm — centered on far column
 
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.

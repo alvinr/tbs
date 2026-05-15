@@ -78,11 +78,11 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |
-| Blue IBC-1 (tote) | 55 | 4,674–5,893 | 100–1,116 | 600L steel-cage IBC tare (top tier, near) |
-| Blue IBC-2 (tote) | 55 | 4,674–5,893 | 1,141–2,157 | 600L steel-cage IBC tare (top tier, far) |
-| Brown IBC-3 (tote) | 55 | 4,674–5,893 | 100–1,116 | 600L steel-cage IBC tare (bottom tier, near) |
-| Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,141–2,157 | 600L steel-cage IBC tare (bottom tier, far) |
-| IBC stacking frame | 75 | 4,674–5,893 | 100–2,157 | 50×50×3mm RHS mild steel unified frame ([Equipment Layout](equipment-layout-report.md) §5) |
+| Blue IBC-1 (tote) | 55 | 4,674–5,893 | 153–1,169 | 600L steel-cage IBC tare (top tier, near) |
+| Blue IBC-2 (tote) | 55 | 4,674–5,893 | 1,194–2,210 | 600L steel-cage IBC tare (top tier, far) |
+| Brown IBC-3 (tote) | 55 | 4,674–5,893 | 153–1,169 | 600L steel-cage IBC tare (bottom tier, near) |
+| Waste IBC-4 (tote) | 55 | 4,674–5,893 | 1,194–2,210 | 600L steel-cage IBC tare (bottom tier, far) |
+| IBC stacking frame | 75 | 4,674–5,893 | 88–2,275 | 50×50×3mm RHS mild steel unified frame ([Equipment Layout](equipment-layout-report.md) §5) |
 | **Equipment subtotal** | **431** | | | |
 
 ### 3.4 Dry Weight Summary
@@ -111,8 +111,8 @@ during processing, not pre-loaded).
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=100–1,116 | Top (Z=1,010–2,020) |
-| Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,141–2,157 | Top (Z=1,010–2,020) |
+| Blue IBC-1 water | 600 | 600 | X=4,674–5,893, Yd=153–1,169 | Top (Z=1,010–2,020) |
+| Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,194–2,210 | Top (Z=1,010–2,020) |
 | **Total liquid** | **1,200** | **1,200** | | |
 
 **Total loaded weight: 4,550 kg** (3,350 dry + 1,200 liquid)
@@ -126,8 +126,8 @@ Brown/Waste IBCs.
 
 | Liquid | Volume (L) | Weight (kg) | Position | Tier |
 |--------|-----------|------------|----------|------|
-| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=100–1,116 | Bottom (Z=0–1,010) |
-| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,141–2,157 | Bottom (Z=0–1,010) |
+| Brown IBC-3 water | 600 | 600 | X=4,674–5,893, Yd=153–1,169 | Bottom (Z=0–1,010) |
+| Waste IBC-4 water | 600 | 600 | X=4,674–5,893, Yd=1,194–2,210 | Bottom (Z=0–1,010) |
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
@@ -137,9 +137,9 @@ Brown/Waste IBCs.
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,350 | 2,644 | 1,157 | 1,055 | 55.4/44.6% | 51.1/48.9% |
-| Camera Ready (Deployed) | 4,550 | 3,366 | 1,149 | 1,176 | 40.8/59.2% | 51.3/48.7% |
-| Materials Exhausted (Transport) | 4,550 | 3,340 | 1,149 | 910 | 40.8/59.2% | 51.3/48.7% |
+| Dry (Transport) | 3,350 | 2,644 | 1,161 | 1,055 | 55.4/44.6% | 50.9/49.1% |
+| Camera Ready (Deployed) | 4,550 | 3,366 | 1,167 | 1,176 | 40.8/59.2% | 50.7/49.3% |
+| Materials Exhausted (Transport) | 4,550 | 3,340 | 1,167 | 910 | 40.8/59.2% | 50.7/49.3% |
 
 ---
 

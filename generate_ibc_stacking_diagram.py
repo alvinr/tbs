@@ -1143,6 +1143,66 @@ def sheet4():
             ha="center", va="bottom", fontsize=6, color=C_CL,
             fontweight="bold", **FONT, zorder=15)
 
+    # ── Ghost IBC outlines and stacking frame (behind wall) ────────────────
+    # Mirrored Yd for external view: yd_ext = C_WID - yd_internal
+    platform_z = IBC_H_600                        # 1,010mm
+    top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1,072mm
+
+    # Near column (internal Yd 30–1046) → external Yd 1316–2332
+    near_ext_l = C_WID - (BLUE_IBC_Y + IBC_D)     # 1,316
+    # Far column (internal Yd 1316–2332) → external Yd 30–1046
+    far_ext_l  = C_WID - (IBC_FAR_Y + IBC_D)      # 30
+
+    ghost_ibcs = [
+        ("IBC-3\nBROWN",  near_ext_l, 0,          C_BROWN_IBC),
+        ("IBC-1\nBLUE",   near_ext_l, top_tier_z, C_BLUE_IBC),
+        ("IBC-4\nWASTE",  far_ext_l,  0,          C_WASTE_IBC),
+        ("IBC-2\nBLUE",   far_ext_l,  top_tier_z, C_BLUE_IBC),
+    ]
+    for label, yd_l, z_base, color in ghost_ibcs:
+        # Light fill
+        ax.add_patch(Rectangle((sx(yd_l), sy(z_base)),
+                                sx(IBC_D), sy(IBC_H_600),
+                                fc=color, ec="none", lw=0,
+                                alpha=0.12, zorder=2.5))
+        # Dashed cage outline
+        ax.add_patch(Rectangle((sx(yd_l), sy(z_base)),
+                                sx(IBC_D), sy(IBC_H_600),
+                                fc="none", ec=color, lw=1.8, ls=(0, (6, 3)),
+                                alpha=0.5, zorder=2.6))
+        # Cage uprights (ghost)
+        for post_yd in [yd_l + 15, yd_l + IBC_D - 15]:
+            ax.add_patch(Rectangle((sx(post_yd - CAGE_POST_W / 2), sy(z_base)),
+                                    sx(CAGE_POST_W), sy(IBC_H_600),
+                                    fc="none", ec=color, lw=0.5, ls=(0, (4, 3)),
+                                    alpha=0.3, zorder=2.6))
+        ax.text(sx(yd_l + IBC_D / 2), sy(z_base + IBC_H_600 / 2), label,
+                ha="center", va="center", fontsize=6, color=color,
+                alpha=0.55, fontweight="bold", **FONT, zorder=2.7)
+
+    # Stacking frame — platform beams (ghost)
+    for pl, pr in [(near_ext_l - FRAME_RHS, near_ext_l + IBC_D + 5),
+                    (far_ext_l - 5,          far_ext_l + IBC_D + FRAME_RHS)]:
+        ax.add_patch(Rectangle((sx(pl), sy(platform_z)),
+                                sx(pr - pl), sy(FRAME_RHS),
+                                fc=C_FRAME, ec=C_FRAME, lw=1.5, ls=(0, (6, 3)),
+                                alpha=0.2, zorder=2.5))
+
+    # Corridor uprights (ghost) — internal Yd 1046–1096 and 1266–1316
+    # External: 1266–1316 and 1046–1096
+    for uyd in [C_WID - (BLUE_IBC_Y + IBC_D + FRAME_RHS),
+                C_WID - IBC_FAR_Y]:
+        ax.add_patch(Rectangle((sx(uyd), sy(0)),
+                                sx(FRAME_RHS), sy(IBC_H_STK + FRAME_RHS),
+                                fc=C_FRAME, ec=C_FRAME, lw=1.2, ls=(0, (6, 3)),
+                                alpha=0.18, zorder=2.5))
+
+    # Ghost label
+    ax.text(sx(C_WID / 2), sy(IBC_H_STK + FRAME_RHS + 30),
+            "GHOST OUTLINE — IBCs & STACKING FRAME (BEHIND WALL)",
+            ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
+            fontstyle="italic", **FONT, zorder=2.8)
+
     # ── Reinforcing plate ────────────────────────────────────────────────────
     plate_w = 300   # plate width (mm)
     plate_h = EXT_FILL_1_H - 100 + 100  # spans from below lowest port to above highest

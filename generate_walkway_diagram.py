@@ -1911,7 +1911,7 @@ def sheet6():
     # ══════════════════════════════════════════════════════════════════════════
 
     # View A title (above content, below Views B/C)
-    ax.text(sx(YD_LO + 125), sy(BRKT_VERT + 135),
+    ax.text(sx(YD_LO + 50), sy(BRKT_VERT + 135),
             "VIEW A \u2014 SIDE ELEVATION\n(LOOKING ALONG X INTO CONTAINER)",
             ha="left", va="top", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -2138,7 +2138,7 @@ def sheet6():
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
     PV_OX = 60
-    PV_OY = BRKT_VERT + 190
+    PV_OY = BRKT_VERT + 133
     PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)
@@ -2262,10 +2262,10 @@ def sheet6():
     def cx(mm): return sx(VC_OX + mm * VC_S / S)
     def cy(mm): return sy(VC_OY + mm * VC_S / S)
 
-    ax.text(cx(35), cy(85), "VIEW C \u2014 LOCK DETAIL\n(SECTION ALONG Yd)",
+    ax.text(cx(35), cy(65), "VIEW C \u2014 LOCK DETAIL\n(SECTION ALONG Yd)",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
-    ax.text(cx(35), cy(78),
+    ax.text(cx(35), cy(60),
             "\u2190 INT.         DOOR \u2192",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
@@ -2376,7 +2376,7 @@ def sheet6():
 
     # ── Notes (right of View A) ─────────────────────────────────────────────
     notes_x = sx(YD_HI - 5)
-    notes_top = sy(BRKT_VERT + 80)
+    notes_top = sy(BRKT_VERT - 80)
     notes = [
         "BEARER BEAM CONNECTION:",
         "",

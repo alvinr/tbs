@@ -650,7 +650,8 @@ def sheet1():
 
     # Label right walkway hanger detail
     hanger_lbl_x = RX + W / 2
-    leader(ax, hanger_lbl_x, W / 2 + 80, hanger_lbl_x + 350, W / 2 - 350,
+    leader(ax, hanger_lbl_x + 120, W / 2 + 90,
+           hanger_lbl_x + 450, W / 2 + 350,
            f"CEILING HANGERS\nM{WALKWAY_RIGHT_HANGER_D} THREADED ROD\n"
            f"({WALKWAY_RIGHT_HANGER_N} PAIRS AT {WALKWAY_BRACKET_SPACING}mm)",
            color="#606068", fs=6,
@@ -773,6 +774,8 @@ def sheet1():
                                      TR, WALKWAY_BRACKET_SPACING))
     n_brackets_total = n_brackets_near * 2  # near + far only (no right brackets)
     notes = [
+        "CONSTRUCTION NOTES:",
+        "",
         f"1. 4 removable grated sections, all {WALKWAY_W}mm wide. Butt joints at all corners.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
@@ -784,8 +787,11 @@ def sheet1():
         f"6. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
     ]
     for i, note in enumerate(notes):
+        bold = i == 0
         ax.text(C_LEN * 3 / 5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
-                ha="left", va="bottom", fontsize=5.5, color=C_DIM,
+                ha="left", va="bottom", fontsize=6 if bold else 5.5,
+                color=C_OUT if bold else C_DIM,
+                fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────

@@ -276,7 +276,7 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 **Sheet 3 — Fastening details: D-ring lashing, anti-rotation lip, access gate, strap routing**
 ![TBS-001 IBC Stacking — Sheet 3: Fastening Details](assets/ibc-stacking-sheet3.png)
 
-**Sheet 4 — External plumbing panel elevation: View from outside the container sealed end wall. 4× 2" NPT bulkhead unions stacked vertically on container centerline — fill ports (Blue IBC-1 at 1,800mm, Blue IBC-2 at 1,600mm) at top, drain ports (Brown IBC-3 at 400mm, Waste IBC-4 at 200mm) at bottom. Reinforcing plate, camlock fittings, height dimensions**
+**Sheet 4 — External plumbing panel elevation: View from outside the container sealed end wall. 4× 2" NPT bulkhead unions stacked vertically on container centerline — fill ports (Blue IBC-1 at 2,250mm, Blue IBC-2 at 2,150mm) above IBC tops for gravity feed, drain ports (Brown IBC-3 at 400mm, Waste IBC-4 at 200mm) at bottom. Reinforcing plate, camlock fittings, height dimensions**
 ![TBS-001 IBC Stacking — Sheet 4: External Plumbing Panel Elevation](assets/ibc-stacking-sheet4.png)
 
 **Sheet 5 — Internal plumbing plan view: Looking down at IBC zone showing two IBC columns with 270mm central plumbing corridor. Pipe runs from end-wall bulkhead unions through corridor to each IBC. Ball valves (V1–V4) at each IBC connection. All pipes 2" UPVC schedule 40**

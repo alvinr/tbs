@@ -314,8 +314,8 @@ PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_Y
 # Flat steel reinforcing plate welded over corrugation before drilling.
 # External plumbing panel — 4 ports stacked vertically on end wall centerline
 EXT_PANEL_YD = C_WID // 2   # = 1,181mm — panel centered on container width
-EXT_FILL_1_H = 1800    # fill Blue IBC-1 port height (mm) — top tier near
-EXT_FILL_2_H = 1600    # fill Blue IBC-2 port height (mm) — top tier far
+EXT_FILL_1_H = 2250    # fill Blue IBC-1 port height (mm) — above top-tier IBC top (2,082mm), gravity feed
+EXT_FILL_2_H = 2150    # fill Blue IBC-2 port height (mm) — above top-tier IBC top, staggered for camlock clearance
 EXT_DRAIN_3_H = 400    # drain Brown IBC-3 port height (mm) — bottom tier near
 EXT_DRAIN_4_H = 200    # drain Waste IBC-4 port height (mm) — bottom tier far
 # Legacy aliases for downstream code

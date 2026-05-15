@@ -2138,7 +2138,7 @@ def sheet6():
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
     PV_OX = 60
-    PV_OY = BRKT_VERT + 133
+    PV_OY = BRKT_VERT + 113
     PV_S  = 3.25   # 30% larger than original 2.5
     def px(mm): return sx(PV_OX + mm * PV_S / S)
     def py(mm): return sy(PV_OY + mm * PV_S / S)

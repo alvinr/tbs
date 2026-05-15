@@ -1950,38 +1950,40 @@ def sheet6():
     near_ibc_cx = BLUE_IBC_Y + IBC_D / 2   # IBC-1/3 center Yd
     far_ibc_cx  = IBC_FAR_Y + IBC_D / 2    # IBC-2/4 center Yd
 
-    # ── F1: Bulkhead → IBC-1 (near, top tier) — BLUE fill ───────────────────
-    # Horizontal from bulkhead through corridor, elbow, then vertical drop
-    f1_drop_yd = near_col_r  # corridor-facing edge of near IBC
-    # Horizontal run: bulkhead → elbow point
+    # ── F1: Bulkhead → over IBC-1 top → drop into IBC-1 (near, top tier) ───
+    # Fill enters through IBC top opening (gravity feed). F1 at Z=2,250
+    # is above IBC top (2,082), so the horizontal run clears the IBC.
+    f1_drop_yd = near_ibc_cx  # drop point centered over IBC-1 fill opening
+    # Horizontal run: bulkhead → over IBC-1 center (entirely above IBC)
     pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
-    # Elbow at bend (horizontal → vertical)
-    draw_elbow_fitting(ax, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
-    # V1 on horizontal run, midway between bulkhead and elbow
-    v1_yd = (cl_yd + f1_drop_yd) / 2
+    # V1 on horizontal run, in the corridor
+    v1_yd = (cl_yd + near_col_r) / 2
     _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1")
-    # Vertical drop: elbow → IBC-1 top
+    # Elbow above IBC-1 center (horizontal → vertical drop)
+    draw_elbow_fitting(ax, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # Vertical drop through IBC top opening
     pipe_v(ax, f1_drop_yd, fill_conn_z, EXT_FILL_1_H, C_PIPE_BLUE)
-    # Flange at IBC connection
-    draw_flange(ax, f1_drop_yd, fill_conn_z, 'v', C_PIPE_BLUE)
-    # Flow arrow
+    # Flange at IBC top opening
+    draw_flange(ax, f1_drop_yd, top_ibc_top, 'v', C_PIPE_BLUE)
+    # Flow arrow into IBC
     ax.annotate("", xy=(sx(f1_drop_yd), sy(fill_conn_z + 15)),
                 xytext=(sx(f1_drop_yd), sy(fill_conn_z + 80)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
-    # ── F2: Bulkhead → IBC-2 (far, top tier) — BLUE fill ────────────────────
-    f2_drop_yd = far_col_l  # corridor-facing edge of far IBC
-    # Horizontal run: bulkhead → elbow point (V2 on horizontal before elbow)
+    # ── F2: Bulkhead → over IBC-2 top → drop into IBC-2 (far, top tier) ──
+    f2_drop_yd = far_ibc_cx  # drop point centered over IBC-2 fill opening
+    # Horizontal run: bulkhead → over IBC-2 center
     pipe_h(ax, cl_yd - bh_outer_r - 5, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
-    # V2 on horizontal run, midway between bulkhead and elbow
-    v2_yd = (cl_yd + f2_drop_yd) / 2
+    # V2 on horizontal run, in the corridor
+    v2_yd = (cl_yd + far_col_l) / 2
     _draw_valve_elev_h(ax, sx, sy, v2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "V2")
-    # Elbow at bend (horizontal → vertical)
+    # Elbow above IBC-2 center
     draw_elbow_fitting(ax, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
-    # Vertical drop: elbow → IBC-2 top
+    # Vertical drop through IBC top opening
     pipe_v(ax, f2_drop_yd, fill_conn_z, EXT_FILL_2_H, C_PIPE_BLUE)
-    draw_flange(ax, f2_drop_yd, fill_conn_z, 'v', C_PIPE_BLUE)
-    # Flow arrow
+    # Flange at IBC top opening
+    draw_flange(ax, f2_drop_yd, top_ibc_top, 'v', C_PIPE_BLUE)
+    # Flow arrow into IBC
     ax.annotate("", xy=(sx(f2_drop_yd), sy(fill_conn_z + 15)),
                 xytext=(sx(f2_drop_yd), sy(fill_conn_z + 80)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))

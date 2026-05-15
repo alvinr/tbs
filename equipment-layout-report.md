@@ -93,10 +93,10 @@ columns at X=4,674mm (25mm clearance from zone boundary).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Blue IBC-1 (600L, top near) | 4,674–5,893 | 100–1,116 | 1,010–2,020 | Near column top; stacked frame |
-| Blue IBC-2 (600L, top far) | 4,674–5,893 | 1,141–2,157 | 1,010–2,020 | Far column top; stacked frame |
-| Brown IBC-3 (600L, bottom near) | 4,674–5,893 | 100–1,116 | 0–1,010 | Near column bottom; recycled wash/fix |
-| Waste IBC-4 (600L, bottom far) | 4,674–5,893 | 1,141–2,157 | 0–1,010 | Far column bottom; sealed waste collection |
+| Blue IBC-1 (600L, top near) | 4,674–5,893 | 153–1,169 | 1,010–2,020 | Near column top; stacked frame |
+| Blue IBC-2 (600L, top far) | 4,674–5,893 | 1,194–2,210 | 1,010–2,020 | Far column top; stacked frame |
+| Brown IBC-3 (600L, bottom near) | 4,674–5,893 | 153–1,169 | 0–1,010 | Near column bottom; recycled wash/fix |
+| Waste IBC-4 (600L, bottom far) | 4,674–5,893 | 1,194–2,210 | 0–1,010 | Far column bottom; sealed waste collection |
 
 ---
 

@@ -618,12 +618,12 @@ def draw_sheet2():
     equip(PUMP_X, 0, PUMP_W, 80, "", C_PUMP, "")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
-    # Near column (Yd=100–1116): Blue #1 on top, Brown on bottom
+    # Near column (Yd=153–1169): Blue #1 on top, Brown on bottom
     equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "IBC-1 BLUE\n+ IBC-3 BROWN",
-          C_BLUE_IBC, "Near column  Yd=100–1116")
-    # Far column (Yd=1141–2157): Blue #2 on top, Waste on bottom
+          C_BLUE_IBC, "Near column  Yd=153–1169")
+    # Far column (Yd=1194–2210): Blue #2 on top, Waste on bottom
     equip(IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, "IBC-2 BLUE\n+ IBC-4 WASTE",
-          C_WASTE_IBC, "Far column  Yd=1141–2157")
+          C_WASTE_IBC, "Far column  Yd=1194–2210")
 
     # ── EP + BAT wall-mounted on interior face of pinhole wall (Yd=0) ────────
     WALL_MOUNT_H = wt * 0.55   # shallow depth for wall-mounted box

@@ -554,11 +554,11 @@ def ibc_plan(ax, x, y, fc, ec, label, sublabel=""):
             fontsize=6.5, color="#555", zorder=3)
 
 # Right end zone: 4 IBCs in 2×2 stack (plan view shows top-down footprint)
-# Near column (Yd=100–1116mm): Blue #1 on top, Brown on bottom
+# Near column (Yd=153–1169mm): Blue #1 on top, Brown on bottom
 NEAR_IBC_DY = BLUE_IBC_Y * SY
 ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
          "IBC-1 BLUE / IBC-3 BROWN", "Top: 600L clean\nBottom: 600L recycle")
-# Far column (Yd=1141–2157mm): Blue #2 on top, Waste on bottom
+# Far column (Yd=1194–2210mm): Blue #2 on top, Waste on bottom
 FAR_IBC_DY = IBC_FAR_Y * SY
 ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
          "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")

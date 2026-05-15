@@ -282,14 +282,14 @@ See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-s
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=100): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,141): IBC-2 Blue (top) + IBC-4 Waste (bottom). Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container wall.
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=153): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,194): IBC-2 Blue (top) + IBC-4 Waste (bottom). Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container wall.
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
-| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 100–1,116 | 1,010–2,020 |
-| Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 100–1,116 | 0–1,010 |
-| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,141–2,157 | 1,010–2,020 |
-| Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,141–2,157 | 0–1,010 |
+| Right end zone | IBC-1 Blue (top, near column) | 4,674–5,893 | 153–1,169 | 1,010–2,020 |
+| Right end zone | IBC-3 Brown (bottom, near column) | 4,674–5,893 | 153–1,169 | 0–1,010 |
+| Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,194–2,210 | 1,010–2,020 |
+| Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,194–2,210 | 0–1,010 |
 | Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
 | Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |

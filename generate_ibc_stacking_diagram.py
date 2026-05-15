@@ -275,7 +275,7 @@ def sheet1():
     # D-ring label (one leader for all)
     leader(ax, sx(frame_yd_l - 25), sy(FRAME_RHS * 1.5),
            sx(frame_yd_l - 80), sy(FRAME_RHS * 1.5 + 120),
-           f"D-RING LASHING POINT\n25mm, {DRING_WLL}kg WLL\n8× TOTAL (4 PER TIER)\nMcMaster #3641T29",
+           f"D-RING LASHING POINT\n25mm, {DRING_WLL}kg WLL\n8x TOTAL (4 PER TIER)\nMcMaster #3641T29",
            color=dring_color, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -293,7 +293,7 @@ def sheet1():
 
     leader(ax, sx(gate_yd + FRAME_RHS + gate_w / 2), sy(GATE_H),
            sx(gate_yd + FRAME_RHS + gate_w / 2 - 50), sy(GATE_H + 100),
-           f"ACCESS GATE (×2)\nREMOVABLE PANEL\nH=0–{GATE_H}mm\n4× M{GATE_BOLT_D} BOLTS\n(DRAIN VALVE ACCESS)",
+           f"ACCESS GATE (x2)\nREMOVABLE PANEL\nH=0-{GATE_H}mm\n4x M{GATE_BOLT_D} BOLTS\n(DRAIN VALVE ACCESS)",
            color="#C04040", fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -301,14 +301,14 @@ def sheet1():
     # Frame label
     leader(ax, sx(frame_yd_l + FRAME_RHS / 2), sy(IBC_H_600 / 2),
            sx(frame_yd_l - 80), sy(IBC_H_600 / 2 + 50),
-           f"STACKING FRAME\n50×50×3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
+           f"STACKING FRAME\n50x50x3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
            color=C_FRAME, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # Platform label
     leader(ax, sx(C_WID / 2), sy(platform_z + FRAME_RHS / 2),
            sx(C_WID / 2 + 200), sy(platform_z + 180),
-           f"PLATFORM BEAM\n50×50×3mm RHS\n+ {MAT_T}mm RUBBER MAT\n+ {FRAME_LIP_H}mm ANTI-ROTATION LIP",
+           f"PLATFORM BEAM\n50x50x3mm RHS\n+ {MAT_T}mm RUBBER MAT\n+ {FRAME_LIP_H}mm ANTI-ROTATION LIP",
            color=C_FRAME, fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -359,19 +359,19 @@ def sheet1():
         "",
         "1. View looking along X toward sealed",
         "   end wall. Section through IBC stack.",
-        f"2. 4× 600L IBCs (Schutz Ecobulk MX).",
-        f"   Each: 55kg tare, {IBC_W}×{IBC_D}×{IBC_H_600}mm.",
-        f"3. Stacking frame: 50×50×3mm RHS mild",
+        f"2. 4x 600L IBCs (Schutz Ecobulk MX).",
+        f"   Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
+        f"3. Stacking frame: 50x50x3mm RHS mild",
         f"   steel, welded. ~{FRAME_WEIGHT}kg frame alone.",
         f"4. Platform at Z={IBC_H_600}mm + {MAT_T}mm",
         f"   rubber anti-slip mat.",
         f"5. {FRAME_LIP_H}mm steel lip retains upper",
         "   IBC cage against lateral movement.",
-        f"6. 8× D-ring lashing points (4 per tier),",
+        f"6. 8x D-ring lashing points (4 per tier),",
         f"   {DRING_WLL}kg WLL each.",
-        f"7. 2× removable access gates (H=0–{GATE_H}mm)",
+        f"7. 2x removable access gates (H=0-{GATE_H}mm)",
         "   for lower IBC drain valve access.",
-        f"8. Total loaded: 4×655kg = 2,620kg",
+        f"8. Total loaded: 4x655kg = 2,620kg",
         f"   + {FRAME_WEIGHT}kg frame = ~2,672kg.",
     ]
     for i, line in enumerate(notes):
@@ -385,8 +385,8 @@ def sheet1():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="CROSS-SECTION ELEVATION — 2×2 STACK IN RIGHT END ZONE",
-                scale_note=f"SCALE ≈ 2.5:1 · ALL DIMS IN mm · SECTION LOOKING ALONG X",
+                subtitle="CROSS-SECTION ELEVATION — 2x2 STACK IN RIGHT END ZONE",
+                scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - SECTION LOOKING ALONG X",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -398,18 +398,18 @@ def sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — Plan View (looking down)
 #
-# Horizontal = Yd (0=near/pinhole wall)
-# Vertical   = X  (IBC_COL_X at bottom, container end wall at top)
+# Standard TBS plan view convention:
+#   Horizontal = X  (0=cargo door at left, sealed end at right)
+#   Vertical   = Yd (0=pinhole/near wall at bottom)
 # Shows 4 IBCs from above with frame, ports, and walkway context.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
     S = 2.5
 
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def px(mm): return mm * S   # X along horizontal
+    def py(mm): return mm * S   # Yd along vertical
 
     # The plan view shows the area around the IBC stack
-    # X runs from ~4,400 to 5,893 (end wall)
     X_LO = IBC_COL_X - 300
     X_HI = C_LEN + 150
     YD_LO = -120
@@ -418,49 +418,49 @@ def sheet2():
     fig, ax = plt.subplots(figsize=(18, 14))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(X_LO), sy(X_HI))
+    ax.set_xlim(px(X_LO), px(X_HI))
+    ax.set_ylim(py(YD_LO), py(YD_HI))
     ax.set_aspect("equal")
     ax.axis("off")
 
     # ── Container walls ───────────────────────────────────────────────────────
     WALL_T = 25  # visual wall thickness (plan view)
 
-    # Near wall (bottom of Yd range)
-    ax.add_patch(Rectangle((sx(-WALL_T), sy(X_LO)),
-                            sx(WALL_T), sy(X_HI - X_LO),
+    # Near wall (pinhole, bottom of Yd range)
+    ax.add_patch(Rectangle((px(X_LO), py(-WALL_T)),
+                            px(X_HI - X_LO), py(WALL_T),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
     # Far wall (top of Yd range)
-    ax.add_patch(Rectangle((sx(C_WID), sy(X_LO)),
-                            sx(WALL_T), sy(X_HI - X_LO),
+    ax.add_patch(Rectangle((px(X_LO), py(C_WID)),
+                            px(X_HI - X_LO), py(WALL_T),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
-    # End wall (sealed end, top of X range)
-    ax.add_patch(Rectangle((sx(-WALL_T), sy(C_LEN)),
-                            sx(C_WID + 2 * WALL_T), sy(WALL_T),
+    # End wall (sealed end, right side of X range)
+    ax.add_patch(Rectangle((px(C_LEN), py(-WALL_T)),
+                            px(WALL_T), py(C_WID + 2 * WALL_T),
                             fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
 
     # Interior face lines
-    ax.plot([sx(0), sx(0)], [sy(X_LO), sy(C_LEN)], color=C_OUT, lw=2.0, zorder=3)
-    ax.plot([sx(C_WID), sx(C_WID)], [sy(X_LO), sy(C_LEN)], color=C_OUT, lw=2.0, zorder=3)
-    ax.plot([sx(0), sx(C_WID)], [sy(C_LEN), sy(C_LEN)], color=C_OUT, lw=2.0, zorder=3)
+    ax.plot([px(X_LO), px(C_LEN)], [py(0), py(0)], color=C_OUT, lw=2.0, zorder=3)
+    ax.plot([px(X_LO), px(C_LEN)], [py(C_WID), py(C_WID)], color=C_OUT, lw=2.0, zorder=3)
+    ax.plot([px(C_LEN), px(C_LEN)], [py(0), py(C_WID)], color=C_OUT, lw=2.0, zorder=3)
 
     # Wall labels
-    ax.text(sx(-WALL_T - 10), sy((X_LO + C_LEN) / 2),
-            "NEAR WALL\n(PINHOLE, Yd=0)", ha="right", va="center",
-            fontsize=6, color=C_DIM, **FONT, rotation=90)
-    ax.text(sx(C_WID + WALL_T + 10), sy((X_LO + C_LEN) / 2),
-            "FAR WALL\n(Yd=2,362)", ha="left", va="center",
-            fontsize=6, color=C_DIM, **FONT, rotation=90)
-    ax.text(sx(C_WID / 2), sy(C_LEN + WALL_T + 10),
-            f"SEALED END WALL (X={C_LEN}mm)", ha="center", va="bottom",
-            fontsize=6.5, color=C_DIM, fontweight="bold", **FONT)
+    ax.text(px((X_LO + C_LEN) / 2), py(-WALL_T - 10),
+            "NEAR WALL (PINHOLE, Yd=0)", ha="center", va="top",
+            fontsize=6, color=C_DIM, **FONT)
+    ax.text(px((X_LO + C_LEN) / 2), py(C_WID + WALL_T + 10),
+            "FAR WALL (Yd=2,362)", ha="center", va="bottom",
+            fontsize=6, color=C_DIM, **FONT)
+    ax.text(px(C_LEN + WALL_T + 10), py(C_WID / 2),
+            f"SEALED END WALL\n(X={C_LEN}mm)", ha="left", va="center",
+            fontsize=6.5, color=C_DIM, fontweight="bold", **FONT, rotation=90)
 
     # Arrow showing direction toward cargo door
-    ax.annotate("", xy=(sx(C_WID / 2), sy(X_LO + 20)),
-                xytext=(sx(C_WID / 2), sy(X_LO + 150)),
+    ax.annotate("", xy=(px(X_LO + 20), py(C_WID / 2)),
+                xytext=(px(X_LO + 150), py(C_WID / 2)),
                 arrowprops=dict(arrowstyle="->", color=C_DIM, lw=1.5))
-    ax.text(sx(C_WID / 2), sy(X_LO + 10),
-            "← CARGO DOOR END", ha="center", va="top",
+    ax.text(px(X_LO + 10), py(C_WID / 2),
+            "CARGO\nDOOR\nEND", ha="right", va="center",
             fontsize=6, color=C_DIM, **FONT)
 
     # ── Frame perimeter (plan view) ───────────────────────────────────────────
@@ -471,19 +471,19 @@ def sheet2():
     frame_x_r = IBC_COL_X + IBC_W + 65
 
     # Frame outline
-    ax.add_patch(Rectangle((sx(frame_yd_l), sy(frame_x_l)),
-                            sx(frame_yd_r - frame_yd_l),
-                            sy(frame_x_r - frame_x_l),
+    ax.add_patch(Rectangle((px(frame_x_l), py(frame_yd_l)),
+                            px(frame_x_r - frame_x_l),
+                            py(frame_yd_r - frame_yd_l),
                             fc="none", ec=C_FRAME, lw=2.5, zorder=6))
 
     # Frame RHS members (plan view — show as rectangles at perimeter)
     for yd in [frame_yd_l, frame_yd_r - FRAME_RHS]:
-        ax.add_patch(Rectangle((sx(yd), sy(frame_x_l)),
-                                sx(FRAME_RHS), sy(frame_x_r - frame_x_l),
+        ax.add_patch(Rectangle((px(frame_x_l), py(yd)),
+                                px(frame_x_r - frame_x_l), py(FRAME_RHS),
                                 fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=6, alpha=0.5))
     for xp in [frame_x_l, frame_x_r - FRAME_RHS]:
-        ax.add_patch(Rectangle((sx(frame_yd_l), sy(xp)),
-                                sx(frame_yd_r - frame_yd_l), sy(FRAME_RHS),
+        ax.add_patch(Rectangle((px(xp), py(frame_yd_l)),
+                                px(FRAME_RHS), py(frame_yd_r - frame_yd_l),
                                 fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=6, alpha=0.5))
 
     # ── 4 IBCs (plan view — looking down onto top tier) ───────────────────────
@@ -497,134 +497,128 @@ def sheet2():
     # Show top tier IBCs as solid, bottom tier labels only (since they're beneath)
     for i, (label, yd, x, color) in enumerate(ibc_plan):
         if i < 2:  # top tier — visible from above
-            ax.add_patch(Rectangle((sx(yd), sy(x)),
-                                    sx(IBC_D), sy(IBC_W),
+            ax.add_patch(Rectangle((px(x), py(yd)),
+                                    px(IBC_W), py(IBC_D),
                                     fc=color, ec=C_OUT, lw=1.8, alpha=0.4, zorder=7))
             # Cage grid lines (top view shows cage structure)
             for frac in [0.25, 0.5, 0.75]:
-                ax.plot([sx(yd + IBC_D * frac), sx(yd + IBC_D * frac)],
-                        [sy(x), sy(x + IBC_W)],
+                ax.plot([px(x + IBC_W * frac), px(x + IBC_W * frac)],
+                        [py(yd), py(yd + IBC_D)],
                         color=C_OUT, lw=0.4, alpha=0.3, zorder=7)
-                ax.plot([sx(yd), sx(yd + IBC_D)],
-                        [sy(x + IBC_W * frac), sy(x + IBC_W * frac)],
+                ax.plot([px(x), px(x + IBC_W)],
+                        [py(yd + IBC_D * frac), py(yd + IBC_D * frac)],
                         color=C_OUT, lw=0.4, alpha=0.3, zorder=7)
-            ax.text(sx(yd + IBC_D / 2), sy(x + IBC_W / 2), label,
+            ax.text(px(x + IBC_W / 2), py(yd + IBC_D / 2), label,
                     ha="center", va="center", fontsize=7, color=C_OUT,
                     fontweight="bold", **FONT, zorder=10)
         else:  # bottom tier — hidden below, show as dashed outline
-            ax.add_patch(Rectangle((sx(yd), sy(x)),
-                                    sx(IBC_D), sy(IBC_W),
+            ax.add_patch(Rectangle((px(x), py(yd)),
+                                    px(IBC_W), py(IBC_D),
                                     fc="none", ec=color, lw=1.0, ls="--",
                                     alpha=0.5, zorder=4))
             # Bottom tier label below the IBC footprint
-            offset_x = -80 if i == 2 else -80
-            ax.text(sx(yd + IBC_D / 2), sy(x - 30), label.split("\n")[0],
+            ax.text(px(x + IBC_W / 2), py(yd - 30), label.split("\n")[0],
                     ha="center", va="top", fontsize=5.5, color=color,
                     style="italic", **FONT, zorder=10)
 
     # ── Fill/drain ports through end wall ─────────────────────────────────────
-    # 4× 2" NPT bulkhead fittings through the sealed end wall
-    port_x = C_LEN  # on the end wall line
+    # 4x 2" NPT bulkhead fittings through the sealed end wall
     near_col_center = BLUE_IBC_Y + IBC_D / 2
     far_col_center = IBC_FAR_Y + IBC_D / 2
 
     port_data = [
-        ("FILL\nIBC-1", near_col_center - 120, port_x),
-        ("FILL\nIBC-2", far_col_center - 120, port_x),
-        ("DRAIN\nIBC-3", near_col_center + 120, port_x),
-        ("DRAIN\nIBC-4", far_col_center + 120, port_x),
+        ("FILL\nIBC-1", near_col_center - 120, C_LEN),
+        ("FILL\nIBC-2", far_col_center - 120, C_LEN),
+        ("DRAIN\nIBC-3", near_col_center + 120, C_LEN),
+        ("DRAIN\nIBC-4", far_col_center + 120, C_LEN),
     ]
-    for plabel, pyd, px in port_data:
-        ax.add_patch(Circle((sx(pyd), sy(px)),
-                             sx(PORT_DIA / 2), fc=C_PORT, ec=C_OUT,
+    for plabel, pyd, pxv in port_data:
+        ax.add_patch(Circle((px(pxv), py(pyd)),
+                             px(PORT_DIA / 2), fc=C_PORT, ec=C_OUT,
                              lw=1.5, zorder=12))
-        ax.text(sx(pyd), sy(px + 50), plabel,
-                ha="center", va="bottom", fontsize=5, color=C_PORT,
+        ax.text(px(pxv + 50), py(pyd), plabel,
+                ha="left", va="center", fontsize=5, color=C_PORT,
                 fontweight="bold", **FONT, zorder=15)
 
-    ax.text(sx(C_WID / 2), sy(C_LEN + WALL_T + 60),
-            "4× 2\" NPT BULKHEAD FITTINGS\n(EXTERNAL FILL/DRAIN — NO DOOR ACCESS REQUIRED)",
-            ha="center", va="bottom", fontsize=6, color=C_PORT,
+    ax.text(px(C_LEN + WALL_T + 60), py(C_WID / 2),
+            "4x 2\" NPT BULKHEAD\nFITTINGS (EXTERNAL\nFILL/DRAIN — NO DOOR\nACCESS REQUIRED)",
+            ha="left", va="center", fontsize=6, color=C_PORT,
             **FONT, zorder=15)
 
     # ── D-ring positions (plan view — at frame corners) ───────────────────────
     dring_color = "#D0A030"
     for dyd in [frame_yd_l, frame_yd_r]:
         for dx in [frame_x_l, frame_x_r]:
-            ax.add_patch(Circle((sx(dyd), sy(dx)),
-                                 sx(12), fc=dring_color, ec=C_OUT,
+            ax.add_patch(Circle((px(dx), py(dyd)),
+                                 px(12), fc=dring_color, ec=C_OUT,
                                  lw=1.0, zorder=11))
-    ax.text(sx(frame_yd_l - 30), sy(frame_x_l - 10),
-            "D-RING\n(TYP. 8×)", ha="right", va="top",
+    ax.text(px(frame_x_l - 10), py(frame_yd_l - 30),
+            "D-RING (TYP. 8x)", ha="right", va="top",
             fontsize=5.5, color=dring_color, fontweight="bold", **FONT, zorder=15)
 
     # ── Dimensions ────────────────────────────────────────────────────────────
-    # IBC footprint depth (along Yd)
-    draw_dim_h(ax, sx(BLUE_IBC_Y), sx(BLUE_IBC_Y + IBC_D),
-               sy(IBC_COL_X - 60),
-               f"{IBC_D}mm", offset=sy(5), fs=6, font=FONT)
+    # IBC footprint depth (along Yd) — vertical dimension
+    draw_dim_v(ax, px(IBC_COL_X - 60), py(BLUE_IBC_Y), py(BLUE_IBC_Y + IBC_D),
+               f"{IBC_D}mm", offset=px(5), fs=6, font=FONT)
 
     # Gap between columns
-    draw_dim_h(ax, sx(BLUE_IBC_Y + IBC_D), sx(IBC_FAR_Y),
-               sy(IBC_COL_X - 60),
-               f"{IBC_GAP}mm GAP", offset=sy(5), fs=5.5, font=FONT)
+    draw_dim_v(ax, px(IBC_COL_X - 60), py(BLUE_IBC_Y + IBC_D), py(IBC_FAR_Y),
+               f"{IBC_GAP}mm\nGAP", offset=px(5), fs=5.5, font=FONT)
 
     # Far column depth
-    draw_dim_h(ax, sx(IBC_FAR_Y), sx(IBC_FAR_Y + IBC_D),
-               sy(IBC_COL_X - 60),
-               f"{IBC_D}mm", offset=sy(5), fs=6, font=FONT)
+    draw_dim_v(ax, px(IBC_COL_X - 60), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
+               f"{IBC_D}mm", offset=px(5), fs=6, font=FONT)
 
-    # IBC width (along X)
-    draw_dim_v(ax, sx(IBC_FAR_Y + IBC_D + 80), sy(IBC_COL_X), sy(IBC_COL_X + IBC_W),
-               f"{IBC_W}mm\nIBC WIDTH", offset=sx(8), fs=6, right=True, font=FONT)
+    # IBC width (along X) — horizontal dimension
+    draw_dim_h(ax, px(IBC_COL_X), px(IBC_COL_X + IBC_W),
+               py(IBC_FAR_Y + IBC_D + 80),
+               f"{IBC_W}mm IBC WIDTH", offset=py(5), fs=6, font=FONT)
 
-    # Frame footprint width
-    draw_dim_h(ax, sx(frame_yd_l), sx(frame_yd_r),
-               sy(frame_x_r + 60),
-               f"{FRAME_FOOTPRINT_W}mm FRAME", offset=sy(5), fs=6, font=FONT)
+    # Frame footprint width (along Yd) — vertical dimension
+    draw_dim_v(ax, px(frame_x_r + 60), py(frame_yd_l), py(frame_yd_r),
+               f"{FRAME_FOOTPRINT_W}mm FRAME", offset=px(5), fs=6, right=True, font=FONT)
 
     # Distance from near wall to IBC
-    draw_dim_h(ax, sx(0), sx(BLUE_IBC_Y),
-               sy(IBC_COL_X - 120),
-               f"{BLUE_IBC_Y}mm", offset=sy(5), fs=5.5, font=FONT)
+    draw_dim_v(ax, px(IBC_COL_X - 120), py(0), py(BLUE_IBC_Y),
+               f"{BLUE_IBC_Y}mm", offset=px(5), fs=5.5, font=FONT)
 
     # ── Walkway context (ghost) ───────────────────────────────────────────────
     # Right walkway runs along the left edge of the IBC zone
     wk_x_l = WALKWAY_RIGHT_X
     wk_x_r = WALKWAY_RIGHT_X + WALKWAY_W
-    ax.add_patch(Rectangle((sx(0), sy(wk_x_l)),
-                            sx(C_WID), sy(WALKWAY_W),
+    ax.add_patch(Rectangle((px(wk_x_l), py(0)),
+                            px(WALKWAY_W), py(C_WID),
                             fc="#E8F0E8", ec=C_GRATE, lw=1.0, ls="--",
                             alpha=0.3, zorder=3))
-    ax.text(sx(C_WID / 2), sy(wk_x_l + WALKWAY_W / 2),
-            f"RIGHT WALKWAY (X={wk_x_l}–{wk_x_r}mm) — CEILING HUNG",
+    ax.text(px(wk_x_l + WALKWAY_W / 2), py(C_WID / 2),
+            f"RIGHT WALKWAY\n(X={wk_x_l}-{wk_x_r}mm)\nCEILING HUNG",
             ha="center", va="center", fontsize=5.5, color=C_GRATE,
-            style="italic", **FONT, zorder=5)
+            style="italic", **FONT, zorder=5, rotation=90)
 
     # ── Notes ─────────────────────────────────────────────────────────────────
-    notes_x = sx(YD_HI - 10)
-    notes_top = sy(X_HI - 50)
+    notes_x = px(X_LO + 20)
+    notes_top = py(YD_HI - 10)
     notes = [
         "PLAN VIEW NOTES:",
         "",
-        f"1. 4× Schutz Ecobulk MX 600L IBCs",
-        f"   in 2×2 stack. Top tier visible;",
+        f"1. 4x Schutz Ecobulk MX 600L IBCs",
+        f"   in 2x2 stack. Top tier visible;",
         "   bottom tier shown dashed (below).",
-        f"2. Frame footprint: {FRAME_FOOTPRINT_W}×{FRAME_FOOTPRINT_D}mm",
+        f"2. Frame footprint: {FRAME_FOOTPRINT_W}x{FRAME_FOOTPRINT_D}mm",
         f"   (65mm overhang per side).",
         f"3. {IBC_GAP}mm gap between near/far columns",
         "   allows frame uprights and air flow.",
         f"4. IBC right edge aligns with container",
         f"   end wall (X={C_LEN}mm). No wasted space.",
-        f"5. 4× 2\" NPT bulkhead fittings through",
+        f"5. 4x 2\" NPT bulkhead fittings through",
         "   end wall for external fill/drain.",
         "6. Right walkway (ceiling-hung) provides",
         "   access without floor contact.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(12), line,
-                ha="right", va="top", fontsize=6 if bold else 5.5,
+        ax.text(notes_x, notes_top - i * py(12), line,
+                ha="left", va="top", fontsize=6 if bold else 5.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -632,8 +626,8 @@ def sheet2():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="PLAN VIEW — 2×2 IBC LAYOUT IN RIGHT END ZONE",
-                scale_note=f"SCALE ≈ 2.5:1 · ALL DIMS IN mm · VIEW LOOKING DOWN",
+                subtitle="PLAN VIEW — 2x2 IBC LAYOUT IN RIGHT END ZONE",
+                scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -687,7 +681,7 @@ def sheet3():
                             sx(FRAME_RHS - 2 * FRAME_T), sy(FRAME_RHS - 2 * FRAME_T),
                             fc="#D8D8D8", ec=C_OUT, lw=0.8, zorder=6))
     ax.text(sx(rhs_x + FRAME_RHS / 2), sy(rhs_y + FRAME_RHS / 2),
-            f"{FRAME_RHS}×{FRAME_RHS}\n×{FRAME_T} RHS",
+            f"{FRAME_RHS}x{FRAME_RHS}\nx{FRAME_T} RHS",
             ha="center", va="center", fontsize=6, color=C_OUT, **FONT, zorder=10)
 
     # Mounting plate (welded to frame face)
@@ -778,7 +772,7 @@ def sheet3():
                             sx(beam_show_w - 2 * FRAME_T), sy(FRAME_RHS - 2 * FRAME_T),
                             fc="#D8D8D8", ec=C_OUT, lw=0.8, zorder=6))
     ax.text(sx(beam_x + beam_show_w / 2), sy(beam_y + FRAME_RHS / 2),
-            f"PLATFORM BEAM\n{FRAME_RHS}×{FRAME_RHS}×{FRAME_T} RHS",
+            f"PLATFORM BEAM\n{FRAME_RHS}x{FRAME_RHS}x{FRAME_T} RHS",
             ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
 
     # Rubber mat on top of beam
@@ -831,7 +825,7 @@ def sheet3():
     # Labels
     leader(ax, sx(lip_x + FRAME_LIP_T / 2), sy(lip_y + FRAME_LIP_H),
            sx(lip_x + 50), sy(lip_y + FRAME_LIP_H + 35),
-           f"ANTI-ROTATION LIP\n{FRAME_LIP_T}mm STEEL × {FRAME_LIP_H}mm H\nFILLET WELDED TO PLATFORM\nFULL PERIMETER",
+           f"ANTI-ROTATION LIP\n{FRAME_LIP_T}mm STEEL x {FRAME_LIP_H}mm H\nFILLET WELDED TO PLATFORM\nFULL PERIMETER",
            color=C_STEEL, fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -888,7 +882,7 @@ def sheet3():
                 color="#C04040", lw=0.5, alpha=0.3, zorder=8)
 
     ax.text(sx(gate_x + gate_w / 2), sy(gate_y + gate_panel_h / 2),
-            f"REMOVABLE GATE PANEL\nH=0–{GATE_H}mm\n(BOLTED — 4× M{GATE_BOLT_D})",
+            f"REMOVABLE GATE PANEL\nH=0-{GATE_H}mm\n(BOLTED — 4x M{GATE_BOLT_D})",
             ha="center", va="center", fontsize=6, color="#C04040",
             fontweight="bold", **FONT, zorder=10)
 
@@ -916,13 +910,13 @@ def sheet3():
     # Labels
     leader(ax, sx(gate_x + gate_w + 15), sy(gate_y + gate_panel_h / 2),
            sx(gate_x + gate_w + 60), sy(gate_y + gate_panel_h + 30),
-           f"GATE REMOVED FOR\nDRAIN VALVE ACCESS\n(2× GATES — NEAR/FAR COLUMNS)",
+           f"GATE REMOVED FOR\nDRAIN VALVE ACCESS\n(2x GATES — NEAR/FAR COLUMNS)",
            color="#C04040", fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     leader(ax, sx(upright_l_x + FRAME_RHS / 2), sy(DC_OY + 10 + upright_h),
            sx(upright_l_x - 30), sy(DC_OY + 10 + upright_h + 20),
-           f"FRAME UPRIGHT\n{FRAME_RHS}×{FRAME_RHS}×{FRAME_T} RHS",
+           f"FRAME UPRIGHT\n{FRAME_RHS}x{FRAME_RHS}x{FRAME_T} RHS",
            color=C_FRAME, fs=6,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -992,7 +986,7 @@ def sheet3():
 
     # Ratchet strap lines (over top of IBC, D-ring to D-ring)
     strap_color = "#2060A0"
-    # Bottom tier strap: ①→② over the bottom IBC
+    # Bottom tier strap: 1->2 over the bottom IBC
     strap_y_bot = sch_y + sch_h / 2 - 5
     ax.plot([sx(sch_x - 8), sx(sch_x + sch_w / 2)],
             [sy(sch_y + 25), sy(strap_y_bot)],
@@ -1001,7 +995,7 @@ def sheet3():
             [sy(strap_y_bot), sy(sch_y + 25)],
             color=strap_color, lw=2.0, ls="-", zorder=8)
 
-    # Top tier strap: ③→④ over the top IBC
+    # Top tier strap: 3->4 over the top IBC
     strap_y_top = sch_y + sch_h - 5
     ax.plot([sx(sch_x - 8), sx(sch_x + sch_w / 2)],
             [sy(sch_y + sch_h / 2 + 25), sy(strap_y_top)],
@@ -1022,11 +1016,11 @@ def sheet3():
     dn_x = sx(DD_OX + 10)
     dn_top = sy(DD_OY + 12)
     d_notes = [
-        "• 25mm ratchet straps, 1,100kg WLL",
-        "• D-ring to D-ring over IBC top",
-        "• 1 strap per tier per side (4 total)",
-        "• Tighten before transport",
-        "• Check strap tension after 50km",
+        "- 25mm ratchet straps, 1,100kg WLL",
+        "- D-ring to D-ring over IBC top",
+        "- 1 strap per tier per side (4 total)",
+        "- Tighten before transport",
+        "- Check strap tension after 50km",
     ]
     for i, note in enumerate(d_notes):
         ax.text(dn_x, dn_top - i * sy(6), note,
@@ -1041,8 +1035,8 @@ def sheet3():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="FASTENING DETAILS — D-RING · LIP · ACCESS GATE · LASHING",
-                scale_note="SCALE ≈ 5:1 · ALL DIMS IN mm · DETAILS A–D",
+                subtitle="FASTENING DETAILS — D-RING - LIP - ACCESS GATE - LASHING",
+                scale_note="SCALE ~ 5:1 - ALL DIMS IN mm - DETAILS A-D",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1057,7 +1051,7 @@ def sheet3():
 if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
     print("Generating IBC stacking diagrams...")
-    sheet1()  # cross-section elevation → ibc-stacking-sheet1.png
-    sheet2()  # plan view → ibc-stacking-sheet2.png
-    sheet3()  # fastening details → ibc-stacking-sheet3.png
+    sheet1()  # cross-section elevation -> ibc-stacking-sheet1.png
+    sheet2()  # plan view -> ibc-stacking-sheet2.png
+    sheet3()  # fastening details -> ibc-stacking-sheet3.png
     print("Done.")

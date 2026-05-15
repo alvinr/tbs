@@ -282,6 +282,9 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 **Sheet 5 — Internal plumbing plan view: Looking down at IBC zone showing two IBC columns with 270mm central plumbing corridor. Pipe runs from end-wall bulkhead unions through corridor to each IBC. Ball valves (V1–V4) at each IBC connection. All pipes 2" UPVC schedule 40**
 ![TBS-001 IBC Stacking — Sheet 5: Internal Plumbing Plan View](assets/ibc-stacking-sheet5.png)
 
+**Sheet 6 — Internal plumbing elevation: View from inside the container looking at the sealed end wall. Shows 4 bulkhead unions on centerline with pipe routing to flanking IBCs. Fill pipes (F1/F2) route horizontally from upper bulkheads through corridor, then drop vertically into top-tier Blue IBCs. Drain pipes (D3/D4) rise from bottom-tier IBC valves to bulkhead height, then route horizontally to wall. Ball valves V1–V4 on each vertical run**
+![TBS-001 IBC Stacking — Sheet 6: Internal Plumbing Elevation](assets/ibc-stacking-sheet6.png)
+
 ---
 
 ## 16. Optical Line-of-Sight Clearance

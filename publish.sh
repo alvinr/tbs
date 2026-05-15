@@ -192,6 +192,7 @@ DIAG_FILES=(
     "ibc-stacking-sheet3.png"
     "ibc-stacking-sheet4.png"
     "ibc-stacking-sheet5.png"
+    "ibc-stacking-sheet6.png"
     "water-system-sheet3.png"
     "mini-tbs-sheet1.png"
     "weight-analysis-sheet1.png"

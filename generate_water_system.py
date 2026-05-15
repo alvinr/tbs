@@ -246,9 +246,12 @@ pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)
 ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
-# External fill port (top of IBC-1, via bulkhead fitting in far wall)
+# External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
 pipe(ax1, 1.5, 8.9, 1.5, 9.6, C_BLUE, style="--")
-ax1.text(1.5, 9.75, "EXTERNAL FILL\nPORT (2\" NPT)", ha="center", fontsize=6,
+ax1.text(1.5, 9.75, "EXT. FILL F1\n(2\" NPT)\nGRAVITY FEED", ha="center", fontsize=5.5,
+         color=C_BLUE, style="italic")
+pipe(ax1, 3.3, 8.9, 3.3, 9.6, C_BLUE, style="--")
+ax1.text(3.3, 9.75, "EXT. FILL F2\n(2\" NPT)\nGRAVITY FEED", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
 
 # Water level sensor labels

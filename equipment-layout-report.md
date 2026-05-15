@@ -148,14 +148,15 @@ for transport and removable access panels for the lower IBC drain valves.
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
 | Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
-| Frame footprint | 1,350mm × 1,150mm (IBC footprint + 65mm per side) |
+| Frame footprint | 2,187mm × 1,349mm (spans both IBC columns + 65mm overhang per side) |
 | Total loaded height | 2,020mm (IBC ×2) — 368mm ceiling clearance ✓ |
 | Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
 | Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |
 | Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
+| Center divider | 50×50×3mm RHS cross-member on platform between near/far columns |
 | Surface finish | Grey oxide primer + flat black powder coat (interior) |
-| Approx. weight | 45–60kg (frame alone) |
-| Approx. cost | USD $400–$600 (local mild steel fabrication) |
+| Approx. weight | 65–85kg (frame alone) |
+| Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
 **Why 600L IBCs, not 1,000L:**
 

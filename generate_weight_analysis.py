@@ -249,11 +249,11 @@ def _ceiling_rail_weight():
 
 def _ibc_stacking_frame_weight():
     """Steel tube stacking frame for 2×2 IBC configuration.
-    50×50×3mm RHS mild steel frame supporting top-tier IBCs.
-    Weight: 45–60 kg per equipment-layout-report.md §5.
+    50×50×3mm RHS mild steel frame, unified across both columns.
+    Footprint: 2,187 × 1,349mm. Weight: 65–85 kg per equipment-layout-report.md §5.
     """
-    # Midpoint of fabrication estimate (45–60 kg) from equipment layout report
-    return 52.0
+    # Midpoint of fabrication estimate (65–85 kg) from equipment layout report
+    return 75.0
 
 
 # ═══════════════════════════════════════════════════════════════════════════

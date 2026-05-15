@@ -268,6 +268,7 @@ The processing tray is permanently installed — it remains in place during both
 |------|-------------|-------------|---------|
 | P-01 Blue pump (Shurflo 2088) | 7.5 A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
 | P-02 Brown pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
+| P-03 Waste pump (Shurflo 2088) | 7.5 A @ 12V | intermittent (waste disposal only) | — |
 | pH meter | <0.1 A | — | <1 Wh |
 | **Total per print** | | | **~38 Wh** |
 
@@ -327,11 +328,12 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| Shurflo 2088-554-144 pump | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$110–$140** |
+| Shurflo 2088-554-144 pump (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$110–$140** |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$65** |
 | SeaFlo / Kohree pressure accumulator | 1 gal, 125 PSI, 1/2" NPT | 1 | [Amazon — SeaFlo accumulator system](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | $25–$45 | **$35** |
 | Pump mounting bracket (stainless) | For 2088 series | 2 | Amazon | $8–$12 | **$20** |
 
-**Pump subtotal: ~$165–$195**
+**Pump subtotal: ~$230–$265**
 
 ### 8.3 Filter skid
 
@@ -349,15 +351,15 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| Ball valve 1" FNPT, full-bore | HDPE-body or brass, lever handle | 8 | Amazon / Home Depot / Ferguson Plumbing | $8–$14 | **$65–$110** |
+| Ball valve 1" FNPT, full-bore (Banjo V100FP) | Polypropylene body, full-port, quarter-turn lever handle. V1–V4 (end-wall isolation), VB1–VB3 (Blue manifold), plus spares | 11 | [Amazon — Banjo V100FP](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) · Home Depot · Ferguson | $10–$16 | **$110–$176** |
 | 3-way diverter valve 1" FNPT | L-port or T-port, HDPE compatible | 2 | [Amazon — 1" 3-way ball valve](https://www.amazon.com/3-way-ball-valve/s?k=1+inch+3+way+ball+valve) | $18–$30 | **$40–$60** |
 | 2" camlock fitting pairs (M+F) | Polypropylene, 2" | 6 pairs | Amazon / Grainger | $5–$8/pair | **$35–$50** |
-| 1" NPT elbows (HDPE) | 90° street elbow | 12 | Home Depot / Ferguson | $3–$5 | **$40–$60** |
-| 1" NPT tees (HDPE) | Equal tee | 8 | Home Depot / Ferguson | $4–$6 | **$35–$50** |
+| 1" NPT 90° elbow (Banjo LE100) | HDPE/polypropylene 90° street elbow. 4× end-wall pipe bends (F1/F2/D3/D4) plus system elbows | 14 | [Amazon — Banjo LE100](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) · Home Depot · Ferguson | $3–$5 | **$42–$70** |
+| 1" NPT equal tee (Banjo TEE100) | Polypropylene equal tee. 1× Blue outflow manifold (VB1/VB2 merge) plus system tees | 8 | [Amazon — Banjo TEE100](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) · Home Depot · Ferguson | $4–$6 | **$35–$50** |
 | 1" NPT unions | For maintenance disconnects | 6 | Ferguson / Amazon | $6–$10 | **$40–$60** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
-**Valves & fittings subtotal: ~$263–$398**
+**Valves & fittings subtotal: ~$310–$474**
 
 ### 8.5 Pipe
 
@@ -413,14 +415,14 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
-| Pumps and accumulator | $165 | $195 |
+| Pumps and accumulator (P-01, P-02, P-03) | $230 | $265 |
 | Filter skid (housings + cartridges) | $265 | $370 |
-| Valves and fittings | $263 | $398 |
+| Valves and fittings | $310 | $474 |
 | Pipe | $100 | $140 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$2,671** | **$4,048** |
+| **TOTAL** | **$2,783** | **$4,189** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 

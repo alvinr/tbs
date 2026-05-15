@@ -1394,7 +1394,7 @@ def sheet5():
 
     # Label
     ax.text(px(fill_x + 40), py(near_ibc_conn_yd + 50),
-            "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n2\" UPVC",
+            "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n1\" HDPE",
             ha="left", va="center", fontsize=5.5, color=pipe_color_fill,
             **FONT, zorder=15)
 
@@ -1409,7 +1409,7 @@ def sheet5():
     _draw_valve(ax, px, py, valve_x, valve_yd, pipe_color_fill, "V2")
 
     ax.text(px(fill_x + 40), py(far_ibc_conn_yd - 50),
-            "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n2\" UPVC",
+            "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n1\" HDPE",
             ha="left", va="center", fontsize=5.5, color=pipe_color_fill,
             **FONT, zorder=15)
 
@@ -1424,7 +1424,7 @@ def sheet5():
     _draw_valve(ax, px, py, drain_x, valve_yd, pipe_color_drain, "V3")
 
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
-            "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n2\" UPVC",
+            "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=pipe_color_drain,
             **FONT, zorder=15)
 
@@ -1439,7 +1439,7 @@ def sheet5():
     _draw_valve(ax, px, py, drain_x, valve_yd, pipe_color_drain, "V4")
 
     ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n2\" UPVC",
+            "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=pipe_color_drain,
             **FONT, zorder=15)
 
@@ -1448,18 +1448,18 @@ def sheet5():
     leg_top = py(C_WID + 100)
     ax.plot([leg_x, leg_x + px(80)], [leg_top, leg_top],
             color=pipe_color_fill, lw=pipe_lw, zorder=15)
-    ax.text(leg_x + px(90), leg_top, "FILL PIPE (2\" UPVC)",
+    ax.text(leg_x + px(90), leg_top, "FILL PIPE (1\" HDPE)",
             ha="left", va="center", fontsize=6, color=pipe_color_fill,
             **FONT, zorder=15)
     ax.plot([leg_x, leg_x + px(80)], [leg_top - py(25), leg_top - py(25)],
             color=pipe_color_drain, lw=pipe_lw, zorder=15)
-    ax.text(leg_x + px(90), leg_top - py(25), "DRAIN PIPE (2\" UPVC)",
+    ax.text(leg_x + px(90), leg_top - py(25), "DRAIN PIPE (1\" HDPE)",
             ha="left", va="center", fontsize=6, color=pipe_color_drain,
             **FONT, zorder=15)
 
     # Valve legend
     _draw_valve(ax, px, py, X_LO + 40, C_WID + 50, C_DIM, "")
-    ax.text(leg_x + px(90), leg_top - py(50), "BALL VALVE (2\" UPVC)",
+    ax.text(leg_x + px(90), leg_top - py(50), "BALL VALVE (1\" HDPE)",
             ha="left", va="center", fontsize=6, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1534,8 +1534,8 @@ def sheet6():
     def sy(mm): return mm * S
 
     # ── Pipe fitting drawing helpers ─────────────────────────────────────────
-    PIPE_OD = 60.3    # 2" UPVC schedule 40 outer diameter (mm)
-    PIPE_WALL = 3.9   # wall thickness
+    PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
+    PIPE_WALL = 3.0   # wall thickness
     PIPE_HW = PIPE_OD / 2  # half-width for double-wall rendering
 
     def pipe_h(ax, yd1, yd2, z, color, lw=2.5, zo=7):
@@ -1559,37 +1559,31 @@ def sheet6():
                          [sx(yd - PIPE_HW)] * 2, [sx(yd + PIPE_HW)] * 2,
                          color=color, alpha=0.08, zorder=zo - 1)
 
-    def pipe_elbow(ax, yd_c, z_c, from_dir, to_dir, color, lw=2.5, zo=7):
-        """Draw a curved 90° elbow at the junction of two pipe runs.
-
-        from_dir/to_dir: 'left', 'right', 'up', 'down'
-        The elbow is a quarter-arc with inner and outer radii.
+    def draw_elbow_fitting(ax, yd, z, color, zo=9):
+        """Draw a 90° elbow fitting block at a pipe bend point.
+        1" HDPE 90° NPT street elbow (Banjo LE100 or equivalent).
         """
-        r_inner = PIPE_HW * 1.5
-        r_outer = r_inner + PIPE_OD
+        s = PIPE_OD * 0.7  # fitting block half-size
+        ax.add_patch(Rectangle((sx(yd - s), sy(z - s)),
+                                sx(2 * s), sy(2 * s),
+                                fc=color, ec=C_OUT, lw=1.5,
+                                alpha=0.35, zorder=zo))
+        ax.text(sx(yd), sy(z), "E", ha="center", va="center",
+                fontsize=4.5, color="white", fontweight="bold",
+                **FONT, zorder=zo + 1)
 
-        # Determine quadrant from direction pair
-        dirs = (from_dir, to_dir)
-        if dirs in (('left', 'up'), ('down', 'right')):
-            t1, t2, center_off = 0, 90, (-1, -1)
-        elif dirs in (('right', 'up'), ('down', 'left')):
-            t1, t2, center_off = 90, 180, (1, -1)
-        elif dirs in (('left', 'down'), ('up', 'right')):
-            t1, t2, center_off = 270, 360, (-1, 1)
-        elif dirs in (('right', 'down'), ('up', 'left')):
-            t1, t2, center_off = 180, 270, (1, 1)
-        else:
-            return  # unsupported combination
-
-        theta = np.linspace(np.radians(t1), np.radians(t2), 20)
-        cx = yd_c + center_off[0] * (r_inner + r_outer) / 2 * 0
-        cz = z_c + center_off[1] * (r_inner + r_outer) / 2 * 0
-
-        for r in [r_inner, r_outer]:
-            yds = yd_c + r * np.cos(theta) * center_off[0]
-            zs = z_c + r * np.sin(theta) * center_off[1]
-            ax.plot([sx(y) for y in yds], [sy(z) for z in zs],
-                    color=color, lw=lw, zorder=zo)
+    def draw_tee_fitting(ax, yd, z, color, zo=9):
+        """Draw a tee fitting symbol at a pipe junction.
+        1" HDPE NPT equal tee (Banjo TEE100 or equivalent).
+        """
+        s = PIPE_OD * 0.7
+        ax.add_patch(Rectangle((sx(yd - s), sy(z - s)),
+                                sx(2 * s), sy(2 * s),
+                                fc=color, ec=C_OUT, lw=1.5,
+                                alpha=0.35, zorder=zo))
+        ax.text(sx(yd), sy(z), "T", ha="center", va="center",
+                fontsize=4.5, color="white", fontweight="bold",
+                **FONT, zorder=zo + 1)
 
     def draw_flange(ax, yd, z, orientation, color, zo=8):
         """Draw a pipe flange (thick ring) at a connection point.
@@ -1795,16 +1789,17 @@ def sheet6():
     far_ibc_cx  = IBC_FAR_Y + IBC_D / 2    # IBC-2/4 center Yd
 
     # ── F1: Bulkhead → IBC-1 (near, top tier) — BLUE fill ───────────────────
-    # Horizontal from bulkhead to corridor edge, then drop vertically into IBC-1
-    f1_h_end = near_col_r + 10  # horizontal run ends just inside corridor
-    pipe_h(ax, cl_yd + bh_outer_r + 5, f1_h_end, EXT_FILL_1_H, C_PIPE_BLUE)
-    # Elbow at corridor edge → drop down
+    # Horizontal from bulkhead through corridor, elbow, then vertical drop
     f1_drop_yd = near_ibc_cx
-    pipe_h(ax, f1_h_end, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # Horizontal run: bulkhead → elbow point
+    pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # Elbow at bend (horizontal → vertical)
+    draw_elbow_fitting(ax, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # Vertical drop: elbow → IBC-1 top
     pipe_v(ax, f1_drop_yd, fill_conn_z, EXT_FILL_1_H, C_PIPE_BLUE)
     # Flange at IBC connection
     draw_flange(ax, f1_drop_yd, fill_conn_z, 'v', C_PIPE_BLUE)
-    # Valve V1
+    # Valve V1 on vertical drop
     _draw_valve_elev(ax, sx, sy, f1_drop_yd,
                      EXT_FILL_1_H - (EXT_FILL_1_H - fill_conn_z) * 0.4,
                      C_PIPE_BLUE, "V1")
@@ -1814,92 +1809,152 @@ def sheet6():
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── F2: Bulkhead → IBC-2 (far, top tier) — BLUE fill ────────────────────
-    f2_h_end = far_col_l - 10
-    pipe_h(ax, cl_yd - bh_outer_r - 5, f2_h_end, EXT_FILL_2_H, C_PIPE_BLUE)
-    pipe_h(ax, f2_h_end, far_ibc_cx, EXT_FILL_2_H, C_PIPE_BLUE)
-    pipe_v(ax, far_ibc_cx, fill_conn_z, EXT_FILL_2_H, C_PIPE_BLUE)
-    draw_flange(ax, far_ibc_cx, fill_conn_z, 'v', C_PIPE_BLUE)
-    _draw_valve_elev(ax, sx, sy, far_ibc_cx,
-                     EXT_FILL_2_H - (EXT_FILL_2_H - fill_conn_z) * 0.4,
-                     C_PIPE_BLUE, "V2")
-    ax.annotate("", xy=(sx(far_ibc_cx), sy(fill_conn_z + 15)),
-                xytext=(sx(far_ibc_cx), sy(fill_conn_z + 80)),
+    f2_drop_yd = far_ibc_cx
+    # Horizontal run: bulkhead → elbow point (V2 on horizontal before elbow)
+    pipe_h(ax, cl_yd - bh_outer_r - 5, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
+    # V2 on horizontal run, midway between bulkhead and elbow
+    v2_yd = (cl_yd + f2_drop_yd) / 2
+    _draw_valve_elev_h(ax, sx, sy, v2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "V2")
+    # Elbow at bend (horizontal → vertical)
+    draw_elbow_fitting(ax, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
+    # Vertical drop: elbow → IBC-2 top
+    pipe_v(ax, f2_drop_yd, fill_conn_z, EXT_FILL_2_H, C_PIPE_BLUE)
+    draw_flange(ax, f2_drop_yd, fill_conn_z, 'v', C_PIPE_BLUE)
+    # Flow arrow
+    ax.annotate("", xy=(sx(f2_drop_yd), sy(fill_conn_z + 15)),
+                xytext=(sx(f2_drop_yd), sy(fill_conn_z + 80)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── D3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
-    pipe_v(ax, near_ibc_cx, drain_conn_z, EXT_DRAIN_3_H, C_PIPE_BROWN)
-    pipe_h(ax, near_ibc_cx, cl_yd + bh_outer_r + 5, EXT_DRAIN_3_H, C_PIPE_BROWN)
-    draw_flange(ax, near_ibc_cx, drain_conn_z, 'v', C_PIPE_BROWN)
-    _draw_valve_elev(ax, sx, sy, near_ibc_cx,
+    d3_yd = near_ibc_cx
+    # Vertical rise: IBC-3 valve → elbow height
+    pipe_v(ax, d3_yd, drain_conn_z, EXT_DRAIN_3_H, C_PIPE_BROWN)
+    draw_flange(ax, d3_yd, drain_conn_z, 'v', C_PIPE_BROWN)
+    # V3 on vertical run
+    _draw_valve_elev(ax, sx, sy, d3_yd,
                      drain_conn_z + (EXT_DRAIN_3_H - drain_conn_z) * 0.45,
                      C_PIPE_BROWN, "V3")
+    # Elbow at bend (vertical → horizontal)
+    draw_elbow_fitting(ax, d3_yd, EXT_DRAIN_3_H, C_PIPE_BROWN)
+    # Horizontal run: elbow → bulkhead
+    pipe_h(ax, d3_yd, cl_yd + bh_outer_r + 5, EXT_DRAIN_3_H, C_PIPE_BROWN)
+    # Flow arrow toward wall
     ax.annotate("", xy=(sx(cl_yd - 5), sy(EXT_DRAIN_3_H)),
                 xytext=(sx(cl_yd - 70), sy(EXT_DRAIN_3_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
 
     # ── D4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
-    pipe_v(ax, far_ibc_cx, drain_conn_z, EXT_DRAIN_4_H, C_PIPE_BLACK)
-    pipe_h(ax, far_ibc_cx, cl_yd - bh_outer_r - 5, EXT_DRAIN_4_H, C_PIPE_BLACK)
-    draw_flange(ax, far_ibc_cx, drain_conn_z, 'v', C_PIPE_BLACK)
-    _draw_valve_elev(ax, sx, sy, far_ibc_cx,
+    # NOTE: D4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
+    # the residual ~120L below D4 height.
+    d4_yd = far_ibc_cx
+    # Vertical rise: IBC-4 valve → elbow height
+    pipe_v(ax, d4_yd, drain_conn_z, EXT_DRAIN_4_H, C_PIPE_BLACK)
+    draw_flange(ax, d4_yd, drain_conn_z, 'v', C_PIPE_BLACK)
+    # V4 on vertical run
+    _draw_valve_elev(ax, sx, sy, d4_yd,
                      drain_conn_z + (EXT_DRAIN_4_H - drain_conn_z) * 0.45,
                      C_PIPE_BLACK, "V4")
+    # Elbow at bend (vertical → horizontal)
+    draw_elbow_fitting(ax, d4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK)
+    # Horizontal run: elbow → bulkhead
+    pipe_h(ax, d4_yd, cl_yd - bh_outer_r - 5, EXT_DRAIN_4_H, C_PIPE_BLACK)
     ax.annotate("", xy=(sx(cl_yd + 5), sy(EXT_DRAIN_4_H)),
                 xytext=(sx(cl_yd + 70), sy(EXT_DRAIN_4_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
+    # P-03 waste evacuation pump — on D4 vertical run below elbow
+    p03_z = EXT_DRAIN_4_H - 60
+    _draw_pump_symbol(ax, sx, sy, d4_yd + 60, p03_z, C_PIPE_BLACK, "P-03")
+    # Dashed connection from pump to pipe
+    ax.plot([sx(d4_yd + PIPE_HW), sx(d4_yd + 60 - 22)],
+            [sy(p03_z), sy(p03_z)],
+            color=C_PIPE_BLACK, lw=1.5, ls="--", zorder=7)
 
-    # ── Process pipe stubs (X-direction, into the page) ──────────────────────
-    # These represent pipes running along the container length toward the
-    # processing area. Shown as cross-section circles on the IBC faces.
+    # ── Blue outflow manifold (X-direction, into the page) ───────────────────
+    # Two isolation valves (V-B1, V-B2) — one per IBC outlet — join at tee
+    # in corridor, then V-B3 after tee → single pipe to P-01 → spray bar.
+    blue_out_z = platform_z + FRAME_RHS + MAT_T + 120  # low on Blue IBCs
 
-    # Blue IBC-1 outlet → P-01 pump → spray bar (leaves IBC bottom, runs in X)
-    blue_out_z = platform_z + FRAME_RHS + MAT_T + 120  # low on Blue IBC-1
-    pipe_stub_x(ax, BLUE_IBC_Y + IBC_D - 60, blue_out_z, C_PIPE_BLUE,
-                "TO P-01 →\nSPRAY BAR", label_side="left")
+    # IBC-1 outlet (near column) — pipe stub + valve
+    b1_yd = BLUE_IBC_Y + IBC_D - 60
+    pipe_stub_x(ax, b1_yd, blue_out_z, C_PIPE_BLUE,
+                "", label_side="left")
+    # Horizontal pipe from IBC-1 toward corridor center
+    pipe_h(ax, b1_yd, corr_l + 10, blue_out_z, C_PIPE_BLUE)
+    # V-B1 on this horizontal run
+    vb1_yd = (b1_yd + corr_l) / 2
+    _draw_valve_elev_h(ax, sx, sy, vb1_yd, blue_out_z, C_PIPE_BLUE, "VB1")
+    ax.text(sx(b1_yd - 55), sy(blue_out_z), "IBC-1\nOUTLET",
+            ha="right", va="center", fontsize=5, color=C_PIPE_BLUE,
+            **FONT, zorder=10)
 
-    # Blue IBC-2 manifold outlet (same circuit, paralleled)
-    pipe_stub_x(ax, IBC_FAR_Y + 60, blue_out_z, C_PIPE_BLUE,
-                "TO P-01 →\nSPRAY BAR", label_side="right")
+    # IBC-2 outlet (far column) — pipe stub + valve
+    b2_yd = IBC_FAR_Y + 60
+    pipe_stub_x(ax, b2_yd, blue_out_z, C_PIPE_BLUE,
+                "", label_side="right")
+    # Horizontal pipe from IBC-2 toward corridor center
+    pipe_h(ax, corr_r - 10, b2_yd, blue_out_z, C_PIPE_BLUE)
+    # V-B2 on this horizontal run
+    vb2_yd = (b2_yd + corr_r) / 2
+    _draw_valve_elev_h(ax, sx, sy, vb2_yd, blue_out_z, C_PIPE_BLUE, "VB2")
+    ax.text(sx(b2_yd + 55), sy(blue_out_z), "IBC-2\nOUTLET",
+            ha="left", va="center", fontsize=5, color=C_PIPE_BLUE,
+            **FONT, zorder=10)
 
-    # Brown IBC-3 inlet ← tray drain (gravity, enters low on IBC)
+    # Tee fitting in corridor where both outlets merge
+    draw_tee_fitting(ax, corr_cx, blue_out_z, C_PIPE_BLUE)
+
+    # V-B3 after the tee — single merged pipe continues to P-01
+    vb3_z = blue_out_z - 60
+    pipe_v(ax, corr_cx, vb3_z, blue_out_z, C_PIPE_BLUE)
+    _draw_valve_elev(ax, sx, sy, corr_cx, vb3_z + 15, C_PIPE_BLUE, "VB3")
+    # Merged pipe stub (X-direction → P-01 → spray bar)
+    pipe_stub_x(ax, corr_cx, vb3_z - 30, C_PIPE_BLUE,
+                "", label_side="right")
+    ax.text(sx(corr_cx + 55), sy(vb3_z - 30),
+            "→ P-01 → SPRAY BAR",
+            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
+            fontweight="bold", **FONT, zorder=10)
+
+    # ── Brown IBC-3 inlet ← tray drain (gravity) ────────────────────────────
     brown_in_z = 180
     pipe_stub_x(ax, BLUE_IBC_Y + IBC_D - 60, brown_in_z, C_PIPE_BROWN,
                 "← TRAY\nDRAIN", label_side="left")
 
-    # Brown IBC-3 outlet → P-02 pump → filter skid
-    brown_out_z = 350
+    # ── Brown IBC-3 outlet → P-02 pump → filter skid ────────────────────────
+    # Offset lower to clear D3 horizontal run at Z=400
+    brown_out_z = 250
     pipe_stub_x(ax, BLUE_IBC_Y + IBC_D - 100, brown_out_z, C_PIPE_BROWN,
                 "TO P-02 →\nFILTER SKID", label_side="left")
 
-    # Filter skid return → IBC-2 (filtered water returns to clean supply)
+    # ── Filter skid return → IBC-2 (cleaned water returns to supply) ────────
     filter_ret_z = platform_z + FRAME_RHS + MAT_T + 250
     pipe_stub_x(ax, IBC_FAR_Y + 60, filter_ret_z, C_PIPE_FILTER,
                 "← FILTER\nRETURN", label_side="right")
 
-    # Waste IBC-4 inlet ← diverter/bypass (rejected filtrate)
-    waste_in_z = 350
+    # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
+    waste_in_z = 250
     pipe_stub_x(ax, IBC_FAR_Y + IBC_D - 60, waste_in_z, C_PIPE_BLACK,
                 "← WASTE\nDIVERTER", label_side="right")
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(near_ibc_cx), sy(EXT_FILL_1_H),
            sx(BLUE_IBC_Y - 20), sy(EXT_FILL_1_H + 80),
-           "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n2\" UPVC",
+           "F1 → IBC-1\n(FILL, BLUE TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(far_ibc_cx), sy(EXT_FILL_2_H),
            sx(IBC_FAR_Y + IBC_D + 20), sy(EXT_FILL_2_H + 80),
-           "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n2\" UPVC",
+           "F2 → IBC-2\n(FILL, BLUE TOP FAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(near_ibc_cx), sy(drain_conn_z),
            sx(BLUE_IBC_Y - 20), sy(drain_conn_z - 80),
-           "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n2\" UPVC",
+           "D3 ← IBC-3\n(DRAIN, BROWN\nBOTTOM NEAR)\n1\" HDPE",
            color=C_PIPE_BROWN, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
     leader(ax, sx(far_ibc_cx), sy(drain_conn_z),
            sx(IBC_FAR_Y + IBC_D + 20), sy(drain_conn_z - 80),
-           "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n2\" UPVC",
+           "D4 ← IBC-4\n(DRAIN, WASTE\nBOTTOM FAR)\n1\" HDPE",
            color=C_PIPE_BLACK, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -1909,10 +1964,10 @@ def sheet6():
     leg_spacing = sy(22)
 
     legend_items = [
-        (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, P-01 to spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (tray drain, P-02 to filter skid)"),
+        (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (tray drain → IBC-3, P-02 → filter skid)"),
         (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
-        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate to IBC-4"),
+        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate to IBC-4, P-03 evacuation pump"),
     ]
     for i, (color, desc) in enumerate(legend_items):
         y = leg_top - i * leg_spacing
@@ -1933,6 +1988,31 @@ def sheet6():
                          fc="white", ec=C_OUT, lw=0.8, alpha=0.7, zorder=16))
     ax.text(leg_x + sx(70), y_cs,
             "PIPE CROSS-SECTION (running in X direction, into page)",
+            ha="left", va="center", fontsize=5.5, color=C_DIM,
+            **FONT, zorder=15)
+
+    # Elbow fitting legend
+    y_el = y_cs - leg_spacing
+    s_el = PIPE_OD * 0.5
+    ax.add_patch(Rectangle((leg_x + sx(30) - sx(s_el), y_el - sy(s_el)),
+                            sx(2 * s_el), sy(2 * s_el),
+                            fc="#A0A0A0", ec=C_OUT, lw=1.2, alpha=0.35, zorder=15))
+    ax.text(leg_x + sx(30), y_el, "E", ha="center", va="center",
+            fontsize=4.5, color="white", fontweight="bold", **FONT, zorder=16)
+    ax.text(leg_x + sx(70), y_el,
+            "90° ELBOW FITTING (1\" HDPE NPT — Banjo LE100 or equiv.)",
+            ha="left", va="center", fontsize=5.5, color=C_DIM,
+            **FONT, zorder=15)
+
+    # Tee fitting legend
+    y_tee = y_el - leg_spacing
+    ax.add_patch(Rectangle((leg_x + sx(30) - sx(s_el), y_tee - sy(s_el)),
+                            sx(2 * s_el), sy(2 * s_el),
+                            fc="#A0A0A0", ec=C_OUT, lw=1.2, alpha=0.35, zorder=15))
+    ax.text(leg_x + sx(30), y_tee, "T", ha="center", va="center",
+            fontsize=4.5, color="white", fontweight="bold", **FONT, zorder=16)
+    ax.text(leg_x + sx(70), y_tee,
+            "TEE FITTING (1\" HDPE NPT — Banjo TEE100 or equiv.)",
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
@@ -1959,18 +2039,14 @@ def sheet6():
     notes_top = sy(Z_LO + 470)
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
-        "",
-        "1. View from inside container, looking at sealed end wall. IBCs shown in elevation flanking the plumbing corridor.",
-        "2. 4x 2\" NPT bulkhead unions on wall centerline: fill ports (F1/F2) above IBC tops for gravity feed, drains (D3/D4) at bottom.",
-        "3. Fill pipes (BLUE) route horizontally from bulkhead through corridor, then drop vertically into top-tier Blue IBCs.",
-        "4. Drain pipes route from bottom-tier IBC valves up to bulkhead height, then horizontally through corridor to wall.",
-        "5. Ball valves V1-V4 on each vertical run for individual IBC isolation.",
-        "6. Cross-section circles show process pipes running in X direction toward processing area:",
-        "   — BLUE: IBC-1/2 outlets → P-01 pump → spray bar over processing tray",
-        "   — BROWN: tray drain → IBC-3 inlet; IBC-3 outlet → P-02 pump → filter skid",
-        "   — FILTER: filter skid return → IBC-2 (cleaned water recycled to supply)",
-        "   — BLACK: rejected filtrate/bypass → IBC-4 (waste)",
-        "7. All pipe 2\" UPVC schedule 40. Flanges shown at all connection points.",
+        "1. View from inside container looking at sealed end wall. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
+        "2. Fill ports (F1/F2) above IBC tops for gravity feed. V2 on horizontal run before elbow for accessible isolation.",
+        "3. 90° elbow fittings (E) at all pipe direction changes — 1\" HDPE NPT 90° street elbows (Banjo LE100 or equiv.).",
+        "4. Blue outflow: IBC-1 → VB1 → tee ← VB2 ← IBC-2; after tee → VB3 → single pipe to P-01 → spray bar.",
+        "5. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn lever handle. All hand-operated.",
+        "6. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal time.",
+        "7. Brown outlet (to P-02/filter skid) at Z=250mm — offset below D3 horizontal at Z=400mm to avoid pipe crossing.",
+        "8. All fittings NPT threaded. Flanges at all bulkhead and IBC connections. Elbows at all 90° bends.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -2010,6 +2086,46 @@ def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
     if label:
         ax.text(sx(yd), sy(z), label,
                 ha="center", va="center", fontsize=5, color="white",
+                fontweight="bold", **FONT, zorder=13)
+
+
+def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label):
+    """Draw a ball valve symbol (bowtie) on a HORIZONTAL pipe in elevation.
+    Bowtie axis perpendicular to flow — oriented vertically."""
+    vs = 18  # half-size in mm
+    # Top triangle (pointing down)
+    tri1 = Polygon([(sx(yd - vs), sy(z + vs)),
+                     (sx(yd + vs), sy(z + vs)),
+                     (sx(yd), sy(z))], closed=True,
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+    # Bottom triangle (pointing up)
+    tri2 = Polygon([(sx(yd - vs), sy(z - vs)),
+                     (sx(yd + vs), sy(z - vs)),
+                     (sx(yd), sy(z))], closed=True,
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+    ax.add_patch(tri1)
+    ax.add_patch(tri2)
+    if label:
+        ax.text(sx(yd), sy(z), label,
+                ha="center", va="center", fontsize=5, color="white",
+                fontweight="bold", **FONT, zorder=13)
+
+
+def _draw_pump_symbol(ax, sx, sy, yd, z, color, label):
+    """Draw a pump symbol (circle with arrow) in elevation view."""
+    r = 22
+    ax.add_patch(Circle((sx(yd), sy(z)), sx(r),
+                         fc=color, ec=C_OUT, lw=1.8, alpha=0.3, zorder=11))
+    # Triangle inside (flow direction indicator)
+    ts = 12
+    tri = Polygon([(sx(yd - ts), sy(z - ts)),
+                    (sx(yd - ts), sy(z + ts)),
+                    (sx(yd + ts), sy(z))], closed=True,
+                   fc=color, ec=C_OUT, lw=1.0, alpha=0.6, zorder=12)
+    ax.add_patch(tri)
+    if label:
+        ax.text(sx(yd), sy(z + r + 12), label,
+                ha="center", va="bottom", fontsize=5.5, color=color,
                 fontweight="bold", **FONT, zorder=13)
 
 

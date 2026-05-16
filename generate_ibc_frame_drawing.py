@@ -909,10 +909,10 @@ def sheet3():
 
     X_LO = -300
     X_HI = FRAME_FOOTPRINT_D + 300
-    YD_LO = -300
+    YD_LO = -750
     YD_HI = FRAME_FOOTPRINT_W + 300
 
-    fig, ax = plt.subplots(figsize=(16, 20))
+    fig, ax = plt.subplots(figsize=(16, 24))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(px(X_LO), px(X_HI))
@@ -1067,7 +1067,7 @@ def sheet3():
 
     # ── Detail inset: Corner Joint ──────────────────────────────────────────
     det_x = px(X_LO + 20)
-    det_y = py(YD_LO + 10)
+    det_y = py(YD_LO + 120)
     det_w = px(350)
     det_h = py(280)
     ax.add_patch(Rectangle((det_x, det_y), det_w, det_h,
@@ -1126,7 +1126,7 @@ def sheet3():
             fontsize=4.5, color=C_DIM, **FONT, zorder=15)
 
     # ── Detail inset: D-ring Mounting ───────────────────────────────────────
-    det2_x = det_x + det_w + px(20)
+    det2_x = det_x + det_w + px(40)
     det2_y = det_y
     det2_w = px(350)
     det2_h = py(280)
@@ -1173,7 +1173,7 @@ def sheet3():
 
     # ── Notes ───────────────────────────────────────────────────────────────
     notes_x = px(X_LO + 20)
-    notes_y = py(YD_LO + 260)
+    notes_y = py(YD_LO + 110)
     notes = [
         "PLAN VIEW NOTES:",
         "",

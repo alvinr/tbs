@@ -480,7 +480,7 @@ def sheet3():
         ax.plot(px(bx), pz(plate_z_bot), "v", color=C_OUT, ms=3, zorder=8)
 
     leader(ax, px(rod_yd + plate_w / 2), pz(plate_z_bot + plate_t / 2),
-           px(rod_yd + plate_w / 2 + 40), pz(plate_z_bot + 60),
+           px(rod_yd + plate_w / 2 + 40), pz(plate_z_bot - 30),
            "CEILING PLATE\n100×60×6mm STEEL\n2× M10 BOLTS TO RIB",
            fs=5.5, ha="left")
 
@@ -574,16 +574,16 @@ def sheet3():
     # ── Key dimensions ──
     # Shelf thickness
     draw_dim_v(ax, px(-30), pz(shelf_z_bot), pz(shelf_z_top),
-               "22", offset=5, fs=6)
+               "22mm", offset=5, fs=6)
     # Ceiling to shelf (rod length)
     draw_dim_v(ax, px(YD_HI - 30), pz(shelf_z_top), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}", offset=10, fs=6, right=True)
+               f"{int(HANGER_ROD_L)}mm", offset=10, fs=6, right=True)
     # Ply thickness
     draw_dim_v(ax, px(210), pz(shelf_z_top - ply_t), pz(shelf_z_top),
-               "18 PLY", offset=5, fs=5, right=True)
+               "18mm PLY", offset=5, fs=5, right=True)
     # Frame height
     draw_dim_v(ax, px(210), pz(shelf_z_bot), pz(shelf_z_bot + frame_size),
-               "25 SHS", offset=5, fs=5, right=True)
+               "25mm SHS", offset=5, fs=5, right=True)
 
     # ── Assembly note ──
     ax.text(px(YD_HI / 2), pz(Z_LO + 30),

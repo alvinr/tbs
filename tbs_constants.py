@@ -180,17 +180,22 @@ PUMP_W     = 300     # pump manifold width (mm)
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
 
-# ── Chemistry prep shelves (pinhole wall, right of pump manifold) ─────────────
-# Two fold-down shelves for mixing cyanotype chemistry, coating muslin, and
-# materials staging.  Hinged at bottom edge — fold UP against wall for transport.
-# Phenolic-faced ply on 25×25×3mm SHS frame.  Single folding leg per shelf.
-SHELF_A_X      = 2900    # shelf A left edge X (mm) — 100mm clearance from pump manifold
-SHELF_B_X      = 3879    # shelf B left edge X (mm)
-SHELF_W        = 750     # shelf width (mm)
-SHELF_DEPTH    = 250     # shelf deployed depth from wall (mm) — Yd=0 to Yd=250
-SHELF_H        = 1025    # hinge / work surface height AFF (mm) — 925mm above walkway deck
+# ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────
+# Single ceiling-hung shelf for mixing cyanotype chemistry, coating muslin, and
+# materials staging.  Suspended from 4x M10 threaded rod hangers at the corner
+# where the near walkway meets the right walkway.  On the tray side (inside) of
+# the near walkway — walkway stays clear for passage.  Shadow-free: cone right
+# boundary at Yd=600 is X=2,996mm; shelf at X=4,329+ is >1,300mm outside cone.
+SHELF_X_L      = 4329    # shelf left edge X (mm) — aligned with right walkway inner edge
+SHELF_X_R      = 4629    # shelf right edge X (mm) — aligned with tray right edge
+SHELF_W        = 300     # shelf width in X direction (mm) = right walkway width
+SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
+SHELF_YD_FAR   = 900     # shelf far edge Yd (mm)
+SHELF_DEPTH    = 600     # shelf depth in Yd direction (mm)
+SHELF_H        = 1025    # work surface height AFF (mm) — 925mm above walkway deck
 SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
-SHELF_GAP      = 229     # gap between shelves (mm)
+SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches right walkway)
+SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
 
 # ── Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
 # Right-justified to far end wall: X=4,674–5,893mm.

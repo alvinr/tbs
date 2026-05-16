@@ -962,7 +962,7 @@ def sa_z(z_mm):
     return OA_Y + z_mm / SC_A
 
 ax4a.set_xlim(sa_y(-30) - 0.5, sa_y(420) + 1.0)
-ax4a.set_ylim(sa_z(-50) - 0.5, sa_z(200) + 1.5)
+ax4a.set_ylim(sa_z(-50) - 0.5, sa_z(220) + 1.5)
 
 # Panel A title
 ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (APPROX 1:2)",
@@ -982,39 +982,44 @@ ax4a.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-FLOOR_T)), WALL_T / SC_A,
               fc="#B0B0B8", ec=C_FRAME, lw=1.8, zorder=2, hatch=".."))
 
 # ── HDPE shim strips under tray ─────────────────────────────────────────────
-# Tapered: 0mm at near end (Yd=80) → PROC_TRAY_SHIM_H at far end
-# In this view we see the near portion (Yd=80 to ~400), so shims are thin here.
+# CORRECT GEOMETRY: sump bottom sits ON container floor (Z=0).
+# Tray floor is therefore RAISED by sump depth: Z = PROC_TRAY_SUMP_Z (20mm).
+# Shim strips start at 20mm (near end) and taper to 20+PITCH=30mm (far end)
+# to provide the 1:220 drainage slope toward the sump.
 TRAY_T = 1.5  # 16-gauge SS
 tray_yd_near = PROC_TRAY_YD_NEAR   # 80mm
 tray_yd_far_view = 400  # visible range in detail
 
+# Tray floor base height (raised by sump depth)
+TRAY_BASE_Z = PROC_TRAY_SUMP_Z  # 20mm — tray floor at near end
+
 # True slope per mm
 slope_per_mm = PROC_TRAY_PITCH / PROC_TRAY_D  # 10/2200 = 0.00455
 
-# Shim profile: height at any Yd = (Yd - tray_yd_near) * slope_per_mm
-# At Yd=80 (near edge): shim height = 0mm
-# At Yd=400 (view edge): shim height = (400-80) * 0.00455 = 1.45mm
-# Exaggerate for visibility
+# Shim profile: height at any Yd = TRAY_BASE_Z + (Yd - tray_yd_near) * slope_per_mm
+# At Yd=80 (near edge): shim height = 20mm (matches sump depth)
+# At Yd=2280 (far edge): shim height = 30mm (20 + 10mm pitch)
+# Exaggerate the SLOPE for visibility (base height shown proportionally)
 SLOPE_EXAG_A = 5.0
 
-# Draw two representative shim strips as tapered parallelograms
+# Draw representative shim strips as rectangles
 shim_color = "#E8DCC0"  # HDPE tan
 for shim_yd in [130, 250, 370]:
     if shim_yd > tray_yd_far_view:
         continue
-    shim_hw = PROC_TRAY_SHIM_W / 2  # 25mm half-width — in Yd direction for cross-section this is the thickness visible
-    # In cross-section (looking along X), each shim strip appears as a rectangle
-    # whose height tapers from 0 at near end to slope_per_mm * run at that point
-    shim_h_here = (shim_yd - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
+    # Shim height = base (20mm) + slope component
+    shim_h_base = TRAY_BASE_Z
+    shim_h_slope = (shim_yd - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
+    shim_h_here = shim_h_base + shim_h_slope
     shim_vis_w = 15  # visible width in cross-section (strip runs along X, we see its edge)
     ax4a.add_patch(plt.Rectangle((sa_y(shim_yd - shim_vis_w/2), sa_z(0)),
-                  shim_vis_w / SC_A, max(shim_h_here, 0.3) / SC_A,
+                  shim_vis_w / SC_A, shim_h_here / SC_A,
                   fc=shim_color, ec="#A09070", lw=0.8, zorder=3))
 
 # ── Tray floor (sloped, sitting on shims) ────────────────────────────────────
-# Tray bottom surface follows the shim profile
-tray_z_at_near = 0.0  # shim height = 0 at near edge
-tray_z_at_far = (tray_yd_far_view - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
+# Tray bottom surface at near end = TRAY_BASE_Z (20mm), rises with slope
+tray_z_at_near = TRAY_BASE_Z  # 20mm — sits at sump depth level
+tray_z_at_far = TRAY_BASE_Z + (tray_yd_far_view - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
 
 # Tray floor polygon
 tray_pts_x = [sa_y(tray_yd_near), sa_y(tray_yd_far_view),
@@ -1023,20 +1028,22 @@ tray_pts_y = [sa_z(tray_z_at_near), sa_z(tray_z_at_far),
               sa_z(tray_z_at_far + TRAY_T), sa_z(tray_z_at_near + TRAY_T)]
 ax4a.fill(tray_pts_x, tray_pts_y, fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4)
 
-# Near rim
+# Near rim — extends from tray floor (Z=20mm) up by rim height (50mm)
 rim_h = PROC_TRAY_RIM  # 50mm
-ax4a.add_patch(plt.Rectangle((sa_y(tray_yd_near - TRAY_T), sa_z(0)),
+RIM_TOP = TRAY_BASE_Z + rim_h  # 20 + 50 = 70mm above container floor
+ax4a.add_patch(plt.Rectangle((sa_y(tray_yd_near - TRAY_T), sa_z(TRAY_BASE_Z)),
               TRAY_T / SC_A, rim_h / SC_A,
               fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4))
 
 # ── Sump well ────────────────────────────────────────────────────────────────
 # Pressed into tray floor at low point: 150mm (X) x 100mm (Yd) x 20mm deep
+# CORRECT: sump bottom is AT container floor (Z=0), tray floor is at Z=20mm
 # In this cross-section (cut along X), we see the Yd extent (100mm) and depth (20mm)
 sump_yd_start = PROC_TRAY_DRAIN_YD  # 80mm (starts at near rim)
 sump_yd_end = sump_yd_start + PROC_TRAY_SUMP_D  # 180mm
-sump_z_floor = tray_z_at_near - PROC_TRAY_SUMP_Z  # 20mm below tray floor level
+sump_z_floor = 0.0  # sump bottom sits ON container floor
 
-# Sump well cavity
+# Sump well cavity — U-shaped depression from tray floor (Z=20) down to Z=0
 sump_pts_x = [sa_y(sump_yd_start + 3), sa_y(sump_yd_end - 3),
               sa_y(sump_yd_end - 3), sa_y(sump_yd_end),
               sa_y(sump_yd_end), sa_y(sump_yd_start),
@@ -1047,11 +1054,10 @@ sump_pts_z = [sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T),
               sa_z(sump_z_floor), sa_z(sump_z_floor)]
 ax4a.fill(sump_pts_x, sump_pts_z, fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4)
 
-# Water pooled in sump (blue fill)
-sump_water_z = sump_z_floor + TRAY_T + 2  # just above sump floor
+# Water pooled in sump (blue fill) — water collects from Z=0 up to near tray floor
 ax4a.fill([sa_y(sump_yd_start + 4), sa_y(sump_yd_end - 4),
            sa_y(sump_yd_end - 4), sa_y(sump_yd_start + 4)],
-          [sa_z(TRAY_T + 6), sa_z(TRAY_T + 6),
+          [sa_z(TRAY_BASE_Z - 4), sa_z(TRAY_BASE_Z - 4),
            sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T)],
           fc="#B3D9F2", ec="none", alpha=0.5, zorder=5)
 
@@ -1059,8 +1065,8 @@ ax4a.fill([sa_y(sump_yd_start + 4), sa_y(sump_yd_end - 4),
 # 1" tube sits in the sump, extends up past the rim
 TUBE_OD = 25.4  # 1" OD
 tube_yd = sump_yd_start + PROC_TRAY_SUMP_D / 2  # center of sump in Yd = 130mm
-tube_z_bot = sump_z_floor + 5  # 5mm above sump floor (leaves residual)
-tube_z_top = rim_h + 30  # extends above rim
+tube_z_bot = sump_z_floor + 5  # 5mm above sump floor (Z=5mm)
+tube_z_top = RIM_TOP + 30  # extends above rim (70 + 30 = 100mm)
 
 # Tube body
 ax4a.add_patch(plt.Rectangle((sa_y(tube_yd - TUBE_OD/2), sa_z(tube_z_bot)),
@@ -1089,26 +1095,26 @@ hose_lw = 3.0
 # Simplified as a series of line segments
 hose_pts_y = [tube_yd, tube_yd, tube_yd - 15, tray_yd_near - 10,
               tray_yd_near - 20, 0]
-hose_pts_z = [tube_z_top, rim_h + 25, rim_h + 35, rim_h + 20,
-              rim_h - 10, rim_h - 10]
+hose_pts_z = [tube_z_top, RIM_TOP + 25, RIM_TOP + 35, RIM_TOP + 20,
+              RIM_TOP - 10, RIM_TOP - 10]
 ax4a.plot([sa_y(y) for y in hose_pts_y], [sa_z(z) for z in hose_pts_z],
          color=hose_color, lw=hose_lw, solid_capstyle="round", zorder=5,
          alpha=0.8)
 # Arrow at wall end
-ax4a.annotate("", xy=(sa_y(-10), sa_z(rim_h - 10)),
-             xytext=(sa_y(10), sa_z(rim_h - 10)),
+ax4a.annotate("", xy=(sa_y(-10), sa_z(RIM_TOP - 10)),
+             xytext=(sa_y(10), sa_z(RIM_TOP - 10)),
              arrowprops=dict(arrowstyle="-|>", color=hose_color, lw=2.0,
                              mutation_scale=12),
              zorder=5)
 
 # ── Water surface in tray (away from sump) ───────────────────────────────────
 FLOOD_DEPTH = 6
-water_z_left = TRAY_T + FLOOD_DEPTH
+water_z_left = tray_z_at_near + TRAY_T + FLOOD_DEPTH
 water_z_right = tray_z_at_far + TRAY_T + FLOOD_DEPTH
 ax4a.fill([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view),
            sa_y(tray_yd_far_view), sa_y(sump_yd_end + 5)],
           [sa_z(water_z_left + 1), sa_z(water_z_right),
-           sa_z(tray_z_at_far + TRAY_T), sa_z(TRAY_T + 1)],
+           sa_z(tray_z_at_far + TRAY_T), sa_z(tray_z_at_near + TRAY_T + 1)],
           fc="#B3D9F2", ec="none", alpha=0.3, zorder=3)
 ax4a.plot([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view)],
          [sa_z(water_z_left + 1), sa_z(water_z_right)],
@@ -1128,13 +1134,17 @@ ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
           fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=3, alpha=0.5)
 
 # ── Detail dimensions ────────────────────────────────────────────────────────
-# Rim height
-draw_dim_v(ax4a, sa_y(tray_yd_near - 25), sa_z(0), sa_z(rim_h),
-           f"{rim_h}mm RIM", offset=1.5, fs=7.5, right=False)
+# Rim top to floor
+draw_dim_v(ax4a, sa_y(tray_yd_near - 25), sa_z(0), sa_z(RIM_TOP),
+           f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=1.5, fs=7, right=False)
 
-# Sump depth
-draw_dim_v(ax4a, sa_y(sump_yd_end + 10), sa_z(sump_z_floor), sa_z(0),
-           f"{PROC_TRAY_SUMP_Z}mm", offset=1.0, fs=7, right=True)
+# Tray floor height above container floor
+draw_dim_v(ax4a, sa_y(sump_yd_end + 30), sa_z(0), sa_z(TRAY_BASE_Z),
+           f"{PROC_TRAY_SUMP_Z}mm\nTRAY FLOOR", offset=1.0, fs=6.5, right=True)
+
+# Sump depth (same as tray floor height — shows the cavity)
+draw_dim_v(ax4a, sa_y(sump_yd_end + 10), sa_z(sump_z_floor), sa_z(TRAY_BASE_Z),
+           f"{PROC_TRAY_SUMP_Z}mm\nSUMP", offset=1.0, fs=7, right=True)
 
 # Sump width (Yd extent)
 draw_dim_h(ax4a, sa_y(sump_yd_start), sa_y(sump_yd_end),
@@ -1146,7 +1156,7 @@ draw_dim_v(ax4a, sa_y(tube_yd + TUBE_OD/2 + 8), sa_z(sump_z_floor), sa_z(tube_z_
            "5mm", offset=0.6, fs=6, right=True)
 
 # Sump to wall
-draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(rim_h + 30),
+draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(RIM_TOP + 30),
            f"{sump_yd_start}mm", offset=0.8, fs=7)
 
 # Walkway deck height
@@ -1162,25 +1172,25 @@ leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
        sa_y(tube_yd + 90), sa_z(120),
        "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
-leader(ax4a, sa_y(tray_yd_near - 15), sa_z(rim_h - 10),
-       sa_y(-15), sa_z(rim_h + 50),
+leader(ax4a, sa_y(tray_yd_near - 15), sa_z(RIM_TOP - 10),
+       sa_y(-15), sa_z(RIM_TOP + 50),
        "1\" REINFORCED\nSUCTION HOSE\nTO P-04", fs=6.5, color=C_BROWN)
 
-leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/2), sa_z(sump_z_floor + TRAY_T),
+leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/2), sa_z(TRAY_BASE_Z / 2),
        sa_y(250), sa_z(-30),
-       f"SUMP WELL\n({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm)\nPRESSED INTO TRAY", fs=6.5, color="#0D47A1")
+       f"SUMP WELL\n({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm)\nBOTTOM ON CONTAINER FLOOR", fs=6.5, color="#0D47A1")
 
-leader(ax4a, sa_y(250), sa_z(water_z_left + 3),
-       sa_y(350), sa_z(80),
+leader(ax4a, sa_y(250), sa_z(water_z_left),
+       sa_y(350), sa_z(TRAY_BASE_Z + rim_h + 10),
        "WATER LEVEL\n(6mm FLOOD)", fs=6.5, color=C_BLUE)
 
 leader(ax4a, sa_y(150), sa_z(WK_DECK_H - WK_GRATE_T/2),
        sa_y(330), sa_z(155),
        "WALKWAY GRATING\n(WALL-CANTILEVERED)", fs=6, color="#8D6E63")
 
-leader(ax4a, sa_y(250), sa_z(1),
-       sa_y(350), sa_z(30),
-       f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\nTAPERED 0-{PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
+leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
+       sa_y(350), sa_z(TRAY_BASE_Z + rim_h + 30),
+       f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\n{PROC_TRAY_SUMP_Z}-{PROC_TRAY_SUMP_Z + PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
 
 # Slope note
 ax4a.text(sa_y(310), sa_z(-10),
@@ -1206,10 +1216,10 @@ def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
 ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
-ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(1200) + 1.5)
+ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(720) + 1.5)
 
 # Panel B title
-ax4b.text(sb_y(250), sb_z(1180), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
+ax4b.text(sb_y(250), sb_z(700), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1219,22 +1229,23 @@ ax4b.add_patch(plt.Rectangle((sb_y(-20), sb_z(-FLOOR_T)),
               650 / SC_B, FLOOR_T / SC_B,
               fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
 
-# Near wall
+# Near wall (cropped to view height)
 ax4b.add_patch(plt.Rectangle((sb_y(-WALL_T - 8), sb_z(-FLOOR_T)), 10 / SC_B,
-              1250 / SC_B,
+              720 / SC_B,
               fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
 
 # ── Shim strips (visible as small rectangles on floor) ───────────────────────
+# Shims start at TRAY_BASE_Z (20mm) at near end and add slope on top
+SLOPE_EXAG_B = 8.0
 for shim_yd in [130, 250, 370, 490]:
-    sh_h = (shim_yd - tray_yd_near) * slope_per_mm * 8.0  # exaggerated
+    sh_h = TRAY_BASE_Z + (shim_yd - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
     ax4b.add_patch(plt.Rectangle((sb_y(shim_yd - 8), sb_z(0)),
                   16 / SC_B, max(sh_h, 1) / SC_B,
                   fc="#E8DCC0", ec="#A09070", lw=0.6, zorder=3))
 
 # ── Tray ─────────────────────────────────────────────────────────────────────
-SLOPE_EXAG_B = 8.0
-tray_z_near_b = 0
-tray_z_far_b = (550 - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
+tray_z_near_b = TRAY_BASE_Z  # 20mm — raised by sump depth
+tray_z_far_b = TRAY_BASE_Z + (550 - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
 
 # Tray floor
 ax4b.fill([sb_y(tray_yd_near), sb_y(550), sb_y(550), sb_y(tray_yd_near)],
@@ -1242,23 +1253,25 @@ ax4b.fill([sb_y(tray_yd_near), sb_y(550), sb_y(550), sb_y(tray_yd_near)],
            sb_z(tray_z_far_b + TRAY_T * 5), sb_z(tray_z_near_b + TRAY_T * 5)],
           fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4)
 
-# Near rim
-ax4b.add_patch(plt.Rectangle((sb_y(tray_yd_near - 3), sb_z(0)),
+# Near rim — from tray floor (Z=20) up by rim height
+ax4b.add_patch(plt.Rectangle((sb_y(tray_yd_near - 3), sb_z(TRAY_BASE_Z)),
               6 / SC_B, rim_h / SC_B,
               fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4))
 
 # ── Sump well (simplified at this scale) ────────────────────────────────────
+# Sump bottom at Z=0, tray floor at Z=TRAY_BASE_Z (20mm)
 sump_yd_b = PROC_TRAY_DRAIN_YD
-ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(-PROC_TRAY_SUMP_Z)),
+ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
               PROC_TRAY_SUMP_D / SC_B, PROC_TRAY_SUMP_Z / SC_B,
               fc="#B3D9F2", ec=C_FRAME, lw=1.2, alpha=0.6, zorder=5))
 
-# Pickup tube (simplified)
+# Pickup tube (simplified) — from sump floor+5 to above rim
 tube_yd_b = sump_yd_b + PROC_TRAY_SUMP_D / 2
+RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
 ax4b.plot([sb_y(tube_yd_b), sb_y(tube_yd_b)],
-         [sb_z(-PROC_TRAY_SUMP_Z + 5), sb_z(rim_h + 20)],
+         [sb_z(5), sb_z(RIM_TOP_B + 20)],
          color=C_FRAME, lw=2.5, solid_capstyle="round", zorder=5)
-ax4b.text(sb_y(tube_yd_b + 20), sb_z(rim_h + 35), "PICKUP\nTUBE",
+ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
           ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", zorder=6)
 
@@ -1268,7 +1281,7 @@ P04_Z = PUMP_H_LO + 80  # P-04 mounted in manifold zone, ~280mm
 
 # Hose path
 hose_b_y = [tube_yd_b, tube_yd_b, tray_yd_near - 5, 0, 0, 15]
-hose_b_z = [rim_h + 20, rim_h + 30, rim_h + 15, rim_h, P04_Z + 30, P04_Z]
+hose_b_z = [RIM_TOP_B + 20, RIM_TOP_B + 30, RIM_TOP_B + 15, RIM_TOP_B, P04_Z + 30, P04_Z]
 ax4b.plot([sb_y(y) for y in hose_b_y], [sb_z(z) for z in hose_b_z],
          color=C_BROWN, lw=3.0, solid_capstyle="round", zorder=4, alpha=0.8)
 
@@ -1317,23 +1330,22 @@ ax4b.text(sb_y(DV_YD_B), sb_z(DV_Z_B), "3W-DV-02",
           ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=6)
 
 # ── Rise from diverter to IBC-3 ─────────────────────────────────────────────
+# View cropped at Z=720mm; IBC-3 is at Z=1,010mm (above view).
+# Show arrow going up to top of view with label.
 IBC3_FILL_Z = IBC_H_600   # ~1,010mm
-ax4b.annotate("", xy=(sb_y(DV_YD_B), sb_z(IBC3_FILL_Z)),
+ARROW_TOP_Z = 680  # near top of cropped view
+ax4b.annotate("", xy=(sb_y(DV_YD_B), sb_z(ARROW_TOP_Z)),
              xytext=(sb_y(DV_YD_B), sb_z(DV_Z_B + dv_h_b/2)),
              arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
                              mutation_scale=14),
              zorder=4)
 
-# IBC-3 box
-ibc_box_w = 100
-ibc_box_h = 80
-ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - ibc_box_w/2), sb_z(IBC3_FILL_Z)),
-              ibc_box_w / SC_B, ibc_box_h / SC_B,
-              fc=C_BROWN_L, ec=C_BROWN, lw=1.5, zorder=3))
-ax4b.text(sb_y(DV_YD_B), sb_z(IBC3_FILL_Z + ibc_box_h/2),
-          "IBC-3\n(BROWN\n600L)",
-          ha="center", va="center", fontsize=7, fontweight="bold",
-          color=C_BROWN, zorder=4)
+# IBC-3 label at arrow tip (not drawn as box — above view)
+ax4b.text(sb_y(DV_YD_B + 10), sb_z(ARROW_TOP_Z - 10),
+          f"TO IBC-3 (BROWN)\nZ = {IBC3_FILL_Z:,}mm",
+          ha="left", va="top", fontsize=7, fontweight="bold",
+          color=C_BROWN, zorder=4,
+          bbox=dict(fc="white", ec=C_BROWN, lw=0.8, pad=2, alpha=0.9))
 
 # ── Waste branch (dashed) ───────────────────────────────────────────────────
 ax4b.annotate("", xy=(sb_y(DV_YD_B - dv_w_b/2 - 40), sb_z(DV_Z_B)),
@@ -1351,13 +1363,13 @@ ax4b.text(sb_y(DV_YD_B - dv_w_b/2 - 55), sb_z(DV_Z_B),
 draw_dim_v(ax4b, sb_y(120), sb_z(0), sb_z(MANIFOLD_Z_LO),
            f"{MANIFOLD_Z_LO}mm", offset=0.5, fs=7, right=True)
 
-# Floor to IBC-3 base
-draw_dim_v(ax4b, sb_y(160), sb_z(0), sb_z(IBC3_FILL_Z),
-           f"{IBC3_FILL_Z:,}mm", offset=0.6, fs=6.5, right=True)
+# Floor to manifold top
+draw_dim_v(ax4b, sb_y(160), sb_z(0), sb_z(MANIFOLD_Z_HI),
+           f"{MANIFOLD_Z_HI}mm", offset=0.6, fs=6.5, right=True)
 
-# Rim height
-draw_dim_v(ax4b, sb_y(tray_yd_near - 30), sb_z(0), sb_z(rim_h),
-           f"{rim_h}mm", offset=0.4, fs=6.5, right=False)
+# Rim top above floor
+draw_dim_v(ax4b, sb_y(tray_yd_near - 30), sb_z(0), sb_z(RIM_TOP_B),
+           f"{int(RIM_TOP_B)}mm", offset=0.4, fs=6.5, right=False)
 
 # Walkway
 draw_dim_v(ax4b, sb_y(WALKWAY_W + 15), sb_z(0), sb_z(WK_DECK_H),
@@ -1365,7 +1377,7 @@ draw_dim_v(ax4b, sb_y(WALKWAY_W + 15), sb_z(0), sb_z(WK_DECK_H),
 
 # ── Labels ───────────────────────────────────────────────────────────────────
 leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
-       sb_y(200), sb_z(WK_DECK_H + 30),
+       sb_y(200), sb_z(WK_DECK_H + 40),
        "WALKWAY", fs=6.5, color="#8D6E63")
 
 leader(ax4b, sb_y(DV_YD_B), sb_z(P04_Z + pump_r_b + 5),
@@ -1390,9 +1402,9 @@ for i, note in enumerate(flow_notes):
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes4 = [
     "NOTES:",
-    "- NO penetration of tray floor or container floor.",
-    "- Tray slope by tapered HDPE shim strips (0-10mm).",
-    "- Sump well pressed into tray at fabrication.",
+    "- Sump bottom sits ON container floor (Z=0).",
+    "- Tray floor raised to Z=20mm (sump depth).",
+    "- Shims taper 20-30mm (base + slope).",
     "- Pickup tube lifts out for cleaning (no tools).",
     "- P-04: Shurflo 2088, 12V DC, self-priming.",
     "- Tray slope exaggerated for clarity in both panels.",

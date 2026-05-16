@@ -322,8 +322,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| IBC tote 600L, food-grade, used/rinsed | HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150 | 4 | [Container Exchanger — CA listings](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | $80–$150 | **$320–$600** |
-| 2" NPT bulkhead fitting (304 SS) | External fill/drain port, welded through container wall | 4 | [McMaster-Carr](https://www.mcmaster.com) · Grainger | $25–$40 | **$100–$160** |
+| [IBC tote 600L, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150 | 4 | Container Exchanger | $80–$150 | **$320–$600** |
+| [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External fill/drain port, welded through container wall | 4 | McMaster-Carr | $25–$40 | **$100–$160** |
 
 **Storage subtotal: ~$420–$760**
 
@@ -331,11 +331,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| Shurflo 2088-554-144 pump (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$110–$140** |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$65** |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Pumps used chemistry from tray drain (floor level) up to IBC-3 fill cap (DN150, ~900mm lift) | 1 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$65** |
-| SeaFlo / Kohree pressure accumulator | 1 gal, 125 PSI, 1/2" NPT | 1 | [Amazon — SeaFlo accumulator system](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | $25–$45 | **$35** |
-| Pump mounting bracket (stainless) | For 2088 series | 3 | Amazon | $8–$12 | **$30** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | Amazon | $55–$70 | **$110–$140** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift) | 1 | Amazon | $55–$70 | **$65** |
+| [SeaFlo pressure accumulator](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | 1 gal, 125 PSI, 1/2" NPT | 1 | Amazon | $25–$45 | **$35** |
+| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series | 3 | Amazon | $8–$12 | **$30** |
 
 **Pump subtotal: ~$305–$355**
 
@@ -343,11 +343,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| Big Blue filter housing 4.5"×10" | 1" NPT brass ports, pressure relief, wrench included | 3 | [Amazon — Geekpure Big Blue 10"](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST) · [Bluonics two-pack](https://www.bluonics.com/products/big-blue-10-inch-two-whole-house-water-filter-carbon-sediment-solid-housing) | $28–$45 each | **$85–$135** |
-| 50-micron sediment cartridge 4.5"×10" | Polypropylene depth filter | 4 (+ spares) | [Amazon — Pentair Pentek DGD-5005](https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9) | $8–$12 each | **$35–$50** |
-| 5-micron sediment cartridge 4.5"×10" | Polypropylene wound/pleated | 4 (+ spares) | [Amazon — Pentair Pentek RFC-BB](https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ) | $10–$15 each | **$45–$60** |
-| GAC carbon block 4.5"×10" | Granular activated carbon, 25-micron | 4 (+ spares) | [Amazon — Ronaqua Big Blue GAC](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter) | $15–$22 each | **$65–$90** |
-| Filter skid frame | 600×900mm slotted steel angle, DIY | 1 | Home Depot / Lowe's (steel angle iron) | $25–$40 | **$35** |
+| [Geekpure Big Blue filter housing 4.5"×10"](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST) | 1" NPT brass ports, pressure relief, wrench included | 3 | Amazon | $28–$45 each | **$85–$135** |
+| [Pentair Pentek DGD-5005 sediment cartridge](https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9) | 50-micron, 4.5"×10" polypropylene depth filter | 4 (+ spares) | Amazon | $8–$12 each | **$35–$50** |
+| [Pentair Pentek RFC-BB cartridge](https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ) | 5-micron, 4.5"×10" polypropylene wound/pleated | 4 (+ spares) | Amazon | $10–$15 each | **$45–$60** |
+| [Ronaqua Big Blue GAC carbon block](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter) | 4.5"×10" granular activated carbon, 25-micron | 4 (+ spares) | Ronaqua | $15–$22 each | **$65–$90** |
+| Filter skid frame | 600×900mm slotted steel angle, DIY | 1 | Local steel supplier | $25–$40 | **$35** |
 
 **Filter subtotal: ~$265–$370**
 
@@ -355,14 +355,14 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| Ball valve 1" FNPT, full-bore (Banjo V100FP) | Polypropylene body, full-port, quarter-turn lever handle. V1–V4 (end-wall isolation), VB1–VB3 (Blue manifold), plus spares | 11 | [Amazon — Banjo V100FP](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) · Home Depot · Ferguson | $10–$16 | **$110–$176** |
-| 3-way diverter valve 1" FNPT | L-port or T-port, HDPE compatible | 2 | [Amazon — 1" 3-way ball valve](https://www.amazon.com/3-way-ball-valve/s?k=1+inch+3+way+ball+valve) | $18–$30 | **$40–$60** |
-| 2" camlock fitting pairs (M+F) | Polypropylene, 2" | 6 pairs | Amazon / Grainger | $5–$8/pair | **$35–$50** |
-| 1" NPT 90° elbow (Banjo LE100) | HDPE/polypropylene 90° street elbow. 4× end-wall pipe bends (F1/F2/D3/D4) plus system elbows | 14 | [Amazon — Banjo LE100](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) · Home Depot · Ferguson | $3–$5 | **$42–$70** |
-| 1" NPT equal tee (Banjo TEE100) | Polypropylene equal tee. 1× Blue outflow manifold (VB1/VB2 merge) plus system tees | 8 | [Amazon — Banjo TEE100](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) · Home Depot · Ferguson | $4–$6 | **$35–$50** |
-| 1" NPT unions | For maintenance disconnects | 6 | Ferguson / Amazon | $6–$10 | **$40–$60** |
-| S60×6 to 1" NPT adapter | IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female | 8 | [Amazon — IBC S60×6 adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) · [US Plastic Corp](https://www.usplastic.com) · Grainger | $8–$15 | **$64–$120** |
-| 1" NPT spring check valve (CV1–CV4) | Inline non-return valve on each bulkhead line (F1, F2, D3, D4). Prevents backflow through bulkhead unions. PVC/polypropylene body, EPDM seal, 1" FNPT × FNPT | 4 | [Amazon — 1" check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve) · Ferguson · Grainger | $8–$14 | **$32–$56** |
+| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3, plus spares | 11 | Amazon | $10–$16 | **$110–$176** |
+| [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01, 3W-DV-02 | 2 | Amazon | $18–$30 | **$40–$60** |
+| [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | **$35–$50** |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. F1/F2/D3/D4 bends plus system elbows | 14 | Amazon | $3–$5 | **$42–$70** |
+| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. Blue outflow manifold merge plus system tees | 8 | Amazon | $4–$6 | **$35–$50** |
+| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | For maintenance disconnects | 6 | Amazon | $6–$10 | **$40–$60** |
+| [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female | 8 | Amazon | $8–$15 | **$64–$120** |
+| [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT | 4 | Amazon | $8–$14 | **$32–$56** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
 **Valves & fittings subtotal: ~$406–$650**
@@ -371,20 +371,21 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| 1" SDR-11 HDPE pipe | Food-safe, blue-stripe, 20 ft sticks | 5 sticks (100 ft) | [Ferguson Plumbing Supply](https://www.ferguson.com) · Winsupply | $12–$18/stick | **$60–$90** |
-| 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson / Winsupply | $9–$14/stick | **$20–$30** |
-| 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Home Depot / Amazon | $8–$12/length | **$20** |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft sticks | 5 sticks (100 ft) | Ferguson | $12–$18/stick | **$60–$90** |
+| [3/4" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson | $9–$14/stick | **$20–$30** |
+| [1/2" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Amazon | $8–$12/length | **$20** |
+
 **Pipe subtotal: ~$100–$140**
 
 ### 8.6 Processing tray
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| 304 SS sheet, 16-ga (1.5mm) | #4 brushed, 4'×8' sheets | 4 | [Metal Supermarkets](https://www.metalsupermarkets.com) · [Online Metals](https://www.onlinemetals.com) | $180–$250/sheet | **$720–$1,000** |
-| Fabrication (cut, brake, weld) | Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners | 1 job | Local sheet metal shop (e.g. Valley Metal Fab, SoCal) | $400–$800 | **$400–$800** |
-| 1" NPT SS bulkhead union | 304 SS, welded to tray floor at drain point | 1 | [McMaster-Carr #4464K115](https://www.mcmaster.com) · Grainger | $18–$30 | **$25** |
-| Silicone gasket strip, FDA grade | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr / Amazon | $15–$25 | **$20** |
-| M6×16 SS hex bolts + flange nuts | Center flange bolts, 200mm spacing | 24 | McMaster-Carr / Bolt Depot | $0.50 each | **$12** |
+| [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | **$720–$1,000** |
+| Fabrication (cut, brake, weld) | Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners | 1 job | Local sheet metal shop | $400–$800 | **$400–$800** |
+| [1" NPT SS bulkhead union](https://www.mcmaster.com/4464K115) | 304 SS, welded to tray floor at drain point | 1 | McMaster-Carr | $18–$30 | **$25** |
+| [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
+| [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange bolts, 200mm spacing | 24 | McMaster-Carr | $0.50 each | **$12** |
 
 **Processing tray subtotal: ~$1,177–$1,857**
 
@@ -394,10 +395,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| 12V fuse block (6-way) | Blade fuse, 10A per channel | 1 | Amazon | $12–$20 | **$15** |
-| 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | West Marine / Amazon | $18–$28 | **$22** |
-| Anderson Powerpole connectors | 30A, for pump connections | 4 pairs | Amazon | $1.50/pair | **$8** |
-| 10A blade fuses (pack) | For pump circuits | 10 | Amazon / AutoZone | $5/pack | **$5** |
+| [12V fuse block (6-way)](https://www.amazon.com/s?k=12V+6+way+blade+fuse+block) | Blade fuse, 10A per channel | 1 | Amazon | $12–$20 | **$15** |
+| [14 AWG duplex marine wire](https://www.amazon.com/s?k=14+AWG+duplex+marine+wire+tinned+copper+25+ft) | Tinned copper, 25 ft | 1 roll | Amazon | $18–$28 | **$22** |
+| [Anderson Powerpole connectors 30A](https://www.amazon.com/s?k=anderson+powerpole+30A+connector) | For pump connections | 4 pairs | Amazon | $1.50/pair | **$8** |
+| [10A blade fuses (pack)](https://www.amazon.com/s?k=10A+standard+blade+fuse+pack) | For pump circuits | 10 | Amazon | $5/pack | **$5** |
 
 **Electrical subtotal: ~$50**
 
@@ -405,12 +406,12 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| 6-mil black LDPE sheeting | 20 ft × 100 ft roll | 1 | Home Depot / Uline | $80–$120 | **$100** |
-| pH meter (waterproof) | 0–14 range, ±0.1 accuracy | 1 | [Amazon — Apera Instruments PH20](https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX) | $35–$55 | **$45** |
-| pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $8–$12 | **$10** |
-| Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bags | Amazon / bulk food supplier | $12–$18 | **$28** |
-| Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon / Labelmaster | $15–$25 | **$20** |
-| Nitrile gloves, box of 100 | Size M/L | 2 boxes | Amazon / Home Depot | $12–$18 | **$28** |
+| 6-mil black LDPE sheeting | 20 ft × 100 ft roll | 1 | Home Depot | $80–$120 | **$100** |
+| [Apera Instruments PH20 pH meter](https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX) | Waterproof, 0–14 range, ±0.1 accuracy | 1 | Amazon | $35–$55 | **$45** |
+| [pH calibration solution set](https://www.amazon.com/s?k=pH+calibration+buffer+solution+4+7+sachet) | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $8–$12 | **$10** |
+| [Citric acid, food grade, 5 lb](https://www.amazon.com/s?k=citric+acid+food+grade+5+lb) | pH adjustment (acidifier) | 2 bags | Amazon | $12–$18 | **$28** |
+| [Chemical-resistant labels (GHS)](https://www.amazon.com/s?k=GHS+chemical+resistant+labels) | For IBC totes | 1 pack | Amazon | $15–$25 | **$20** |
+| [Nitrile gloves, box of 100](https://www.amazon.com/s?k=nitrile+gloves+100+pack) | Size M/L | 2 boxes | Amazon | $12–$18 | **$28** |
 
 **Consumables subtotal: ~$231–$278**
 
@@ -430,7 +431,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Processing consumables | $231 | $278 |
 | **TOTAL** | **$2,954** | **$4,455** |
 
-*Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
+*Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 
 ---
 
@@ -488,14 +489,15 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ## 12. Sources and References
 
+**Chemistry and safety:**
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)
 - [Ask MetaFilter — Disposing of cyanotyping water](https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water)
-- [Container Exchanger — IBC totes for sale, California](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale)
-- [McMaster-Carr — 2" NPT bulkhead fittings](https://www.mcmaster.com)
-- [Amazon — Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C)
-- [Amazon — SeaFlo pump + accumulator system](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH)
-- [Amazon — Geekpure Big Blue 10" filter housing](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST)
-- [Amazon — Pentair Pentek DGD-5005 sediment cartridge](https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9)
-- [Ronaqua — Big Blue GAC carbon cartridge](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter)
-- [Repackify — IBC totes for sale in California](https://www.repackify.com/buy-ibc-totes/california)
 - [FMCSA ELDT curriculum (HDPE chemical resistance reference)](https://tpr.fmcsa.dot.gov/content/Resources/ELDT-Curriculum-Summary.pdf)
+
+**Suppliers — consolidated by provider (see shopping list for direct part links):**
+- [Amazon](https://www.amazon.com) — Pumps (Shurflo 2088), accumulator, filter housings, cartridges, Banjo valves/fittings, check valves, IBC adapters, electrical, consumables
+- [McMaster-Carr](https://www.mcmaster.com) — Bulkhead fittings, tray hardware (bulkhead union, gasket, bolts)
+- [Ferguson Plumbing Supply](https://www.ferguson.com) — HDPE pipe (1" and 3/4" SDR-11)
+- [Container Exchanger](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) — Used IBC totes, California
+- [Online Metals](https://www.onlinemetals.com) — 304 SS sheet for processing tray
+- [Ronaqua](https://www.ronaqua.com) — GAC carbon filter cartridges

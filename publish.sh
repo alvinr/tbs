@@ -198,6 +198,7 @@ DIAG_FILES=(
     "ibc-frame-sheet2.png"
     "ibc-frame-sheet3.png"
     "water-system-sheet3.png"
+    "water-system-sheet4.png"
     "mini-tbs-sheet1.png"
     "weight-analysis-sheet1.png"
     "weight-analysis-sheet2.png"

@@ -148,6 +148,9 @@ Source report: [Processing System](water-system-report.md).
 **Sheet 3 — Processing tray drainage plan (water flow direction, slope, drain)**
 ![TBS-001 Water System — Sheet 3](assets/water-system-sheet3.png)
 
+**Sheet 4 — Processing tray drain cross-section elevation: Detail A drain fitting (~1:2), Section A-A full drain-to-IBC flow path (~1:15)**
+![TBS-001 Water System — Sheet 4](assets/water-system-sheet4.png)
+
 ---
 
 ## 10. Electrical & Power

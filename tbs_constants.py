@@ -180,6 +180,18 @@ PUMP_W     = 300     # pump manifold width (mm)
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
 
+# ── Chemistry prep shelves (pinhole wall, right of pump manifold) ─────────────
+# Two fold-down shelves for mixing cyanotype chemistry, coating muslin, and
+# materials staging.  Hinged at bottom edge — fold UP against wall for transport.
+# Phenolic-faced ply on 25×25×3mm SHS frame.  Single folding leg per shelf.
+SHELF_A_X      = 2900    # shelf A left edge X (mm) — 100mm clearance from pump manifold
+SHELF_B_X      = 3879    # shelf B left edge X (mm)
+SHELF_W        = 750     # shelf width (mm)
+SHELF_DEPTH    = 450     # shelf deployed depth from wall (mm) — Yd=0 to Yd=450
+SHELF_H        = 1025    # hinge / work surface height AFF (mm) — 925mm above walkway deck
+SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
+SHELF_GAP      = 229     # gap between shelves (mm)
+
 # ── Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
 # Right-justified to far end wall: X=4,674–5,893mm.
 # Layout (view from pinhole wall):

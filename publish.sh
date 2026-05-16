@@ -68,6 +68,7 @@ MD_FILES=(
     "equipment-layout-report.md"
     "component-dependency-map.md"
     "weight-distribution-report.md"
+    "chemistry-prep-shelves.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )
@@ -202,6 +203,9 @@ DIAG_FILES=(
     "weight-analysis-sheet2.png"
     "weight-analysis-sheet3.png"
     "weight-analysis-sheet4.png"
+    "shelf-sheet1.png"
+    "shelf-sheet2.png"
+    "shelf-sheet3.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

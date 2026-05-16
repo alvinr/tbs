@@ -159,7 +159,7 @@ NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosu
 (300×200×130mm), 200A ANL main fuse, 4 AWG ground wire + 8ft copper stake.*
 
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
-C — pump manifold; D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
+C — water pumps P-01–P-04; D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
 
 ### 1.10 Pump Manifold
 
@@ -169,8 +169,10 @@ C — pump manifold; D — safelight vestibule; E — evaporative cooler; F — 
 | Width | 300 mm | `PUMP_W` |
 | Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
 
-*Components: 1" HDPE header + isolation valves, 2× Shurflo 2088 12V pumps (P-01 Blue supply,
-P-02 Brown recycle), 1-gal pressure accumulator ACC-01, ball valves BV-01/02, Circuit C.*
+*Components: 1" HDPE header + isolation valves, 4× 12V pumps (P-01 Blue spray bar supply,
+P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray drain transfer),
+1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
+manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.*
 
 ### 1.11 Water System — Blue Circuit
 
@@ -194,8 +196,10 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
 *Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
+DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurflo P-02,
-3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.*
+3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
+Filled via DN150 top fill cap from P-04 tray drain transfer pump.*
 
 ### 1.13 Water System — Black Circuit (Waste)
 
@@ -203,11 +207,12 @@ filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurf
 |-----------|-------|----------|
 | Waste IBC front depth | 1,316 mm | `WASTE_IBC_Y` |
 | IBC far column start Y | 1,316 mm | `IBC_FAR_Y` |
-| Waste IBC color code | Black/grey | `C_WASTE_IBC` |
+| Waste IBC color code | Black | `C_WASTE_IBC` |
 
 *Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),
-2" NPT bulkhead fittings for external drain/fill, reinforcing plates for external ports,
-gravity drain 1" pipe.*
+DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
+2" NPT bulkhead fittings for external drain/fill (D4), reinforcing plates for external ports,
+P-03 waste evacuation pump. Filled via DN150 top fill cap from filter reject line.*
 
 ### 1.14 Equipment Zones
 

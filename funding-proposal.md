@@ -94,7 +94,7 @@ Per-print cost: approximately $38 (chemistry + fabric + water). A 50-print run c
 
 ### Water System
 
-A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Storage: four 275-gallon IBC totes in a 2×2 stack. Capacity: ~10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
+A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 600L IBC totes in a 2×2 stack, four 12V DC pumps (P-01–P-04), check valves on all external lines, and a 3-stage filtration skid. Capacity: ~10 full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC, operable from a single deep-cycle battery or small generator.
 
 The system was designed for remote deployments: no mains water connection required.
 
@@ -120,10 +120,10 @@ Everything required to operate the camera for a first deployment:
 | Film plane mechanism (4-corner, manual actuation) | $2,400 |
 | Tilt-swing front board mechanism | $1,470 |
 | Revolving drum light trap (750mm custom steel drum, bearings, seals, fabrication) | $1,200 |
-| Processing water system | $1,765 |
+| Processing water system | $3,705 |
 | Cyanotype chemistry + muslin substrate (50-print run) | $2,842 |
-| Contingency (10%) | ~$1,400 |
-| **Level 1 total** | **~$15,500** |
+| Contingency (10%) | ~$1,600 |
+| **Level 1 total** | **~$17,660** |
 
 ### Level 2 — First Deployment (+$1,350–2,800)
 
@@ -147,7 +147,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$18,850–22,300 for a complete first-year programme with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$21,010–24,460 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ---
 

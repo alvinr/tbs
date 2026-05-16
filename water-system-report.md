@@ -470,6 +470,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Sheet 1 — System flow schematic (P&ID) | `water-system-sheet1.png` |
 | Sheet 2 — Equipment layout plan + parts list | `water-system-sheet2.png` |
 | Sheet 3 — Processing tray drainage plan | `water-system-sheet3.png` |
+| Sheet 4 — Drain cross-section elevation (fitting detail + flow path) | `water-system-sheet4.png` |
 | Container floor plan — all systems | See [Electrical & Systems Report](electrical-report.md) Section 5.8 |
 
 **Sheet 1 — System Flow Schematic (P&ID)**
@@ -484,6 +485,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Sheet 3 — Processing Tray Drainage Plan**
 ![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
+
+---
+
+**Sheet 4 — Processing Tray Drain Cross-Section Elevation**
+![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
 
 ---
 

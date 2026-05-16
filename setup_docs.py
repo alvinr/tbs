@@ -88,6 +88,7 @@ DIAG_IMAGE_FILES = [
     "water-system-sheet1.png",
     "water-system-sheet2.png",
     "water-system-sheet3.png",
+    "water-system-sheet4.png",
     "film-plane-sheet1.png",
     "film-plane-sheet2.png",
     "film-plane-sheet3.png",

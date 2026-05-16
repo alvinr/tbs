@@ -3,15 +3,17 @@
 # © 2026 Alvin Richards
 """
 generate_water_system.py
-Generates three engineering diagrams for the cyanotype processing water system:
+Generates four engineering diagrams for the cyanotype processing water system:
   Sheet 1 — System flow schematic (three-system P&ID overview)
   Sheet 2 — Tank & filter skid layout plan (dimensioned arrangement)
   Sheet 3 — Processing tray drainage plan (slope direction, flow arrows, drain)
+  Sheet 4 — Processing tray drain cross-section (elevation through drain fitting)
 
 Output:
   water-system-sheet1.png  (1800 x 1200 px, 150 dpi)
   water-system-sheet2.png  (1800 x 1200 px, 150 dpi)
   water-system-sheet3.png  (1800 x 1200 px, 150 dpi)
+  water-system-sheet4.png  (1800 x 1200 px, 150 dpi)
 """
 
 import math
@@ -27,6 +29,7 @@ from tbs_constants import (
     ZONE_L_END, ZONE_R_START,
     FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH,
     PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
@@ -36,7 +39,7 @@ from tbs_constants import (
 )
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v
+from tbs_drawing import draw_dim_h, draw_dim_v, leader
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
@@ -913,4 +916,500 @@ fig3.savefig(svg_path("diagrams/water-system-sheet3.png"), bbox_inches="tight",
              facecolor=fig3.get_facecolor())
 plt.close(fig3)
 print("Sheet 3 written → diagrams/water-system-sheet3.png")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 4 — PROCESSING TRAY DRAIN CROSS-SECTION ELEVATION
+# Two panels:
+#   LEFT  — Zoomed detail of drain fitting (approx 1:2 equivalent)
+#   RIGHT — Full cross-section through container at X=2,399mm showing
+#           tray, drain pipe, manifold, pump, diverter, IBC connection.
+# Horizontal = Yd, Vertical = Z (height above floor).
+# ═══════════════════════════════════════════════════════════════════════════════
+
+fig4, (ax4a, ax4b) = plt.subplots(1, 2, figsize=(20, 12),
+                                   gridspec_kw={"width_ratios": [1, 1.2]})
+fig4.patch.set_facecolor("#F5F5F0")
+for axx in (ax4a, ax4b):
+    axx.set_facecolor("#F5F5F0")
+    axx.axis("off")
+    axx.set_aspect("equal")
+
+# ── Title block (spans both panels) ─────────────────────────────────────────
+title_block(ax4b, "SHEET 4 OF 4",
+            drawing_title="PROCESSING TRAY DRAIN — CROSS-SECTION ELEVATION",
+            subtitle="Section A-A at X=2,399mm (through drain), looking along +X",
+            scale_note="DETAIL ~1:2  |  ELEVATION ~1:15",
+            doc_id="TBS-001 · Water System")
+
+# ═════════════════════════════════════════════════════════════════════════════
+# PANEL A — DRAIN FITTING DETAIL (~1:2)
+# Focused view: Yd = -20 to 350mm, Z = -80 to 180mm
+# ═════════════════════════════════════════════════════════════════════════════
+SC_A = 2.0   # mm per drawing unit
+OA_X = 1.5   # drawing offset for Yd=0
+OA_Y = 2.5   # drawing offset for Z=0
+
+def sa_y(yd_mm):
+    return OA_X + yd_mm / SC_A
+
+def sa_z(z_mm):
+    return OA_Y + z_mm / SC_A
+
+ax4a.set_xlim(sa_y(-30) - 0.5, sa_y(380) + 1.0)
+ax4a.set_ylim(sa_z(-90) - 0.5, sa_z(200) + 1.5)
+
+# Panel A title
+ax4a.text(sa_y(175), sa_z(195), "DETAIL A — DRAIN FITTING (APPROX 1:2)",
+          ha="center", va="top", fontsize=10, fontweight="bold",
+          color="#1A237E", zorder=10)
+
+# ── Container floor (section fill) ──────────────────────────────────────────
+FLOOR_T = 4.0   # simplified floor thickness in section
+ax4a.add_patch(plt.Rectangle((sa_y(-20), sa_z(-FLOOR_T)),
+              400 / SC_A, FLOOR_T / SC_A,
+              fc="#B0B0B8", ec=C_FRAME, lw=1.8, zorder=2, hatch=".."))
+
+# Near wall (Yd=0) — vertical
+WALL_T = 2.0
+ax4a.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-FLOOR_T)), WALL_T / SC_A,
+              230 / SC_A,
+              fc="#B0B0B8", ec=C_FRAME, lw=1.8, zorder=2, hatch=".."))
+
+# ── Tray floor & rims (detail scale) ────────────────────────────────────────
+TRAY_T = 1.5  # 16-gauge SS
+tray_yd_near = PROC_TRAY_YD_NEAR   # 80mm
+tray_yd_far = 350  # only show near portion in detail
+
+# Slope: 10mm over 2,200mm = 0.0045mm/mm. Exaggerate 5x for detail.
+SLOPE_EXAG_A = 5.0
+slope_per_mm = PROC_TRAY_PITCH / PROC_TRAY_D  # true slope
+tray_z_at_near = 0.0
+tray_z_at_350 = (350 - tray_yd_near) * slope_per_mm * SLOPE_EXAG_A
+
+# Tray floor (sloped)
+tray_pts_x = [sa_y(tray_yd_near), sa_y(tray_yd_far),
+              sa_y(tray_yd_far), sa_y(tray_yd_near)]
+tray_pts_y = [sa_z(tray_z_at_near), sa_z(tray_z_at_350),
+              sa_z(tray_z_at_350 + TRAY_T), sa_z(tray_z_at_near + TRAY_T)]
+ax4a.fill(tray_pts_x, tray_pts_y, fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4)
+
+# Near rim
+rim_h = PROC_TRAY_RIM  # 50mm
+ax4a.add_patch(plt.Rectangle((sa_y(tray_yd_near - TRAY_T), sa_z(0)),
+              TRAY_T / SC_A, rim_h / SC_A,
+              fc="#C8D8E8", ec=C_FRAME, lw=1.5, zorder=4))
+
+# ── Drain fitting ────────────────────────────────────────────────────────────
+DRAIN_OD = 33.4       # 1" NPT thread OD (mm)
+DRAIN_FLANGE = 50     # flange OD (mm)
+DRAIN_BODY_L = 40     # body length below tray (mm)
+DRAIN_NUT_H = 12      # lock nut height (mm)
+GASKET_T = 2           # neoprene gasket thickness (mm)
+
+drain_yd = PROC_TRAY_DRAIN_YD  # 80mm
+
+# Bore through tray (hole in tray floor)
+# Show tray floor split at the drain
+bore_half = DRAIN_OD / 2 + 2  # bore slightly larger than thread
+
+# Flange (top, sitting on gasket on tray floor)
+flange_z_bot = TRAY_T + GASKET_T
+flange_h = 8  # mm
+ax4a.add_patch(plt.Rectangle((sa_y(drain_yd - DRAIN_FLANGE/2), sa_z(flange_z_bot)),
+              DRAIN_FLANGE / SC_A, flange_h / SC_A,
+              fc="#D4A060", ec=C_FRAME, lw=1.2, zorder=6))
+# Thread hatching on flange
+for hx in range(3):
+    xh = drain_yd - DRAIN_FLANGE/2 + 5 + hx * (DRAIN_FLANGE - 10) / 2
+    ax4a.plot([sa_y(xh), sa_y(xh)], [sa_z(flange_z_bot), sa_z(flange_z_bot + flange_h)],
+             color="#B08030", lw=0.4, zorder=7)
+
+# Gasket (neoprene, between flange and tray top surface)
+ax4a.add_patch(plt.Rectangle((sa_y(drain_yd - DRAIN_FLANGE/2 + 2), sa_z(TRAY_T)),
+              (DRAIN_FLANGE - 4) / SC_A, GASKET_T / SC_A,
+              fc="#5A3020", ec="#3A1A10", lw=0.8, zorder=5))
+
+# Threaded body (passes through tray floor hole and extends below)
+body_z_top = TRAY_T  # flush with tray top (gasket sits on top)
+body_z_bot = -DRAIN_BODY_L
+ax4a.add_patch(plt.Rectangle((sa_y(drain_yd - DRAIN_OD/2), sa_z(body_z_bot)),
+              DRAIN_OD / SC_A, (body_z_top - body_z_bot) / SC_A,
+              fc="#D4A060", ec=C_FRAME, lw=1.0, zorder=5))
+# Thread marks
+for tz in range(int(body_z_bot), int(body_z_top), 4):
+    ax4a.plot([sa_y(drain_yd - DRAIN_OD/2), sa_y(drain_yd - DRAIN_OD/2 + 3)],
+             [sa_z(tz), sa_z(tz + 2)], color="#B08030", lw=0.5, zorder=6)
+    ax4a.plot([sa_y(drain_yd + DRAIN_OD/2), sa_y(drain_yd + DRAIN_OD/2 - 3)],
+             [sa_z(tz), sa_z(tz + 2)], color="#B08030", lw=0.5, zorder=6)
+
+# Lock nut (below floor, clamps fitting body)
+nut_z_top = -DRAIN_BODY_L
+nut_z_bot = nut_z_top - DRAIN_NUT_H
+ax4a.add_patch(plt.Rectangle((sa_y(drain_yd - DRAIN_FLANGE/2), sa_z(nut_z_bot)),
+              DRAIN_FLANGE / SC_A, DRAIN_NUT_H / SC_A,
+              fc="#D4A060", ec=C_FRAME, lw=1.2, zorder=6))
+
+# Bore through tray (show the hole)
+ax4a.plot([sa_y(drain_yd - bore_half), sa_y(drain_yd - bore_half)],
+         [sa_z(0), sa_z(TRAY_T)], color=C_FRAME, lw=1.5, zorder=5)
+ax4a.plot([sa_y(drain_yd + bore_half), sa_y(drain_yd + bore_half)],
+         [sa_z(0), sa_z(TRAY_T)], color=C_FRAME, lw=1.5, zorder=5)
+
+# ── Pipe from drain ─────────────────────────────────────────────────────────
+PIPE_OD = 33.4  # 1" nominal
+PIPE_Z = 25     # pipe CL height above floor
+
+# Vertical drop from lock nut to pipe CL
+ax4a.add_patch(plt.Rectangle((sa_y(drain_yd - PIPE_OD/2), sa_z(PIPE_Z - PIPE_OD/2)),
+              PIPE_OD / SC_A, (nut_z_bot - PIPE_Z + PIPE_OD/2) / SC_A,
+              fc=C_BROWN_L, ec=C_BROWN, lw=1.5, zorder=4))
+
+# 90-degree elbow — simplified as two-line bend
+elbow_r = 35  # mm
+from matplotlib.patches import Arc as MplArc
+
+# Elbow outer and inner arcs
+elbow_cx = drain_yd - elbow_r
+elbow_cz = PIPE_Z
+arc_o = MplArc((sa_y(elbow_cx), sa_z(elbow_cz)),
+               2 * (elbow_r + PIPE_OD / 2) / SC_A,
+               2 * (elbow_r + PIPE_OD / 2) / SC_A,
+               angle=0, theta1=0, theta2=90,
+               color=C_BROWN, lw=1.5, zorder=4)
+arc_i = MplArc((sa_y(elbow_cx), sa_z(elbow_cz)),
+               2 * max(elbow_r - PIPE_OD / 2, 2) / SC_A,
+               2 * max(elbow_r - PIPE_OD / 2, 2) / SC_A,
+               angle=0, theta1=0, theta2=90,
+               color=C_BROWN, lw=1.5, zorder=4)
+ax4a.add_patch(arc_o)
+ax4a.add_patch(arc_i)
+
+# Horizontal pipe run toward near wall
+horiz_end_yd = -10  # into wall
+ax4a.add_patch(plt.Rectangle((sa_y(horiz_end_yd), sa_z(PIPE_Z - PIPE_OD / 2)),
+              (elbow_cx - horiz_end_yd) / SC_A, PIPE_OD / SC_A,
+              fc=C_BROWN_L, ec=C_BROWN, lw=1.5, zorder=3))
+
+# ── Water surface ────────────────────────────────────────────────────────────
+FLOOD_DEPTH = 6
+water_z = TRAY_T + GASKET_T + flange_h + 2  # above flange top
+# Water just above tray floor (not above flange — water goes around fitting)
+water_z_left = TRAY_T + FLOOD_DEPTH
+water_z_right = tray_z_at_350 + TRAY_T + FLOOD_DEPTH
+ax4a.fill([sa_y(tray_yd_near + 2), sa_y(tray_yd_far),
+           sa_y(tray_yd_far), sa_y(tray_yd_near + 2)],
+          [sa_z(water_z_left), sa_z(water_z_right),
+           sa_z(tray_z_at_350 + TRAY_T), sa_z(TRAY_T)],
+          fc="#B3D9F2", ec="none", alpha=0.35, zorder=3)
+ax4a.plot([sa_y(tray_yd_near + 2), sa_y(tray_yd_far)],
+         [sa_z(water_z_left), sa_z(water_z_right)],
+         color=C_BLUE, lw=1.0, ls="--", zorder=5)
+
+# ── Walkway grate ────────────────────────────────────────────────────────────
+WK_DECK_H = 100
+WK_GRATE_T = 25
+ax4a.add_patch(plt.Rectangle((sa_y(0), sa_z(WK_DECK_H - WK_GRATE_T)),
+              WALKWAY_W / SC_A, WK_GRATE_T / SC_A,
+              fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
+              alpha=0.7))
+# Bracket arm (triangle)
+ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
+          [sa_z(WK_DECK_H - WK_GRATE_T), sa_z(WK_DECK_H - WK_GRATE_T - 30),
+           sa_z(WK_DECK_H - WK_GRATE_T)],
+          fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=3, alpha=0.5)
+
+# ── Detail dimensions ────────────────────────────────────────────────────────
+# Rim height
+draw_dim_v(ax4a, sa_y(tray_yd_near - 25), sa_z(0), sa_z(rim_h),
+           f"{rim_h}mm", offset=1.5, fs=7.5, right=False)
+
+# Flange OD
+draw_dim_h(ax4a, sa_y(drain_yd - DRAIN_FLANGE/2), sa_y(drain_yd + DRAIN_FLANGE/2),
+           sa_z(flange_z_bot + flange_h + 8),
+           f"{DRAIN_FLANGE}mm FLANGE", offset=1.0, fs=7)
+
+# Thread OD
+draw_dim_h(ax4a, sa_y(drain_yd - DRAIN_OD/2), sa_y(drain_yd + DRAIN_OD/2),
+           sa_z(-DRAIN_BODY_L - DRAIN_NUT_H - 12),
+           f"{DRAIN_OD}mm (1\" NPT)", offset=1.0, fs=7, above=False)
+
+# Body length
+draw_dim_v(ax4a, sa_y(drain_yd + DRAIN_FLANGE/2 + 10), sa_z(-DRAIN_BODY_L), sa_z(0),
+           f"{DRAIN_BODY_L}mm", offset=1.2, fs=7, right=True)
+
+# Pipe OD
+draw_dim_v(ax4a, sa_y(20), sa_z(PIPE_Z - PIPE_OD/2), sa_z(PIPE_Z + PIPE_OD/2),
+           f"{PIPE_OD:.0f}mm", offset=1.0, fs=6.5, right=False)
+
+# Drain to wall
+draw_dim_h(ax4a, sa_y(0), sa_y(drain_yd), sa_z(rim_h + 20),
+           f"{drain_yd}mm", offset=0.8, fs=7)
+
+# Walkway deck height
+draw_dim_v(ax4a, sa_y(WALKWAY_W + 15), sa_z(0), sa_z(WK_DECK_H),
+           f"{WK_DECK_H}mm DECK", offset=1.0, fs=6.5, right=True)
+
+# ── Detail leaders ───────────────────────────────────────────────────────────
+leader(ax4a, sa_y(drain_yd), sa_z(flange_z_bot + flange_h/2),
+       sa_y(drain_yd + 80), sa_z(100),
+       "1\" NPT BULKHEAD\nUNION (304 SS)", fs=7, color=C_FRAME)
+
+leader(ax4a, sa_y(drain_yd), sa_z(TRAY_T + GASKET_T/2),
+       sa_y(drain_yd + 100), sa_z(130),
+       "NEOPRENE GASKET\n(2mm)", fs=6.5, color="#5A3020")
+
+leader(ax4a, sa_y(drain_yd), sa_z(nut_z_bot + DRAIN_NUT_H/2),
+       sa_y(drain_yd + 90), sa_z(-65),
+       "LOCK NUT\n(SS)", fs=6.5, color=C_FRAME)
+
+leader(ax4a, sa_y(25), sa_z(PIPE_Z),
+       sa_y(150), sa_z(-40),
+       "1\" HDPE SCH40/SDR-11\nTO MANIFOLD", fs=7, color=C_BROWN)
+
+leader(ax4a, sa_y(200), sa_z(water_z_left + 3),
+       sa_y(280), sa_z(80),
+       "WATER LEVEL\n(6mm FLOOD)", fs=6.5, color=C_BLUE)
+
+leader(ax4a, sa_y(150), sa_z(WK_DECK_H - WK_GRATE_T/2),
+       sa_y(280), sa_z(140),
+       "WALKWAY GRATING\n(WALL-CANTILEVERED)", fs=6, color="#8D6E63")
+
+# Slope note
+ax4a.text(sa_y(250), sa_z(15),
+          f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D:,}mm (1:220)\n"
+          f"SLOPE EXAGGERATED {SLOPE_EXAG_A:.0f}x",
+          ha="center", va="center", fontsize=6.5, color="#0D47A1",
+          bbox=dict(fc="white", ec="#0D47A1", lw=0.5, pad=2, alpha=0.9),
+          zorder=8)
+
+# ═════════════════════════════════════════════════════════════════════════════
+# PANEL B — FULL CROSS-SECTION ELEVATION (~1:15)
+# Yd = -150 to 600mm, Z = -80 to 1,150mm
+# Shows tray, drain, pipe, manifold, diverter, pump, rise to IBC-3
+# ═════════════════════════════════════════════════════════════════════════════
+SC_B = 8.0   # mm per drawing unit
+OB_X = 1.0
+OB_Y = 2.0
+
+def sb_y(yd_mm):
+    return OB_X + yd_mm / SC_B
+
+def sb_z(z_mm):
+    return OB_Y + z_mm / SC_B
+
+ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
+ax4b.set_ylim(sb_z(-100) - 0.5, sb_z(1200) + 1.5)
+
+# Panel B title
+ax4b.text(sb_y(250), sb_z(1180), "SECTION A-A — DRAIN TO IBC (APPROX 1:15)",
+          ha="center", va="top", fontsize=10, fontweight="bold",
+          color="#1A237E", zorder=10)
+
+# ── Container structure ──────────────────────────────────────────────────────
+# Floor
+ax4b.add_patch(plt.Rectangle((sb_y(-20), sb_z(-FLOOR_T)),
+              650 / SC_B, FLOOR_T / SC_B,
+              fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
+
+# Near wall
+ax4b.add_patch(plt.Rectangle((sb_y(-WALL_T - 8), sb_z(-FLOOR_T)), 10 / SC_B,
+              1250 / SC_B,
+              fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
+
+# ── Tray ─────────────────────────────────────────────────────────────────────
+SLOPE_EXAG_B = 8.0  # larger exaggeration to be visible at this scale
+tray_z_near_b = 0
+tray_z_far_b = (550 - tray_yd_near) * slope_per_mm * SLOPE_EXAG_B
+
+# Tray floor
+ax4b.fill([sb_y(tray_yd_near), sb_y(550), sb_y(550), sb_y(tray_yd_near)],
+          [sb_z(tray_z_near_b), sb_z(tray_z_far_b),
+           sb_z(tray_z_far_b + TRAY_T * 5), sb_z(tray_z_near_b + TRAY_T * 5)],
+          fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4)
+
+# Near rim
+ax4b.add_patch(plt.Rectangle((sb_y(tray_yd_near - 3), sb_z(0)),
+              6 / SC_B, rim_h / SC_B,
+              fc="#C8D8E8", ec=C_FRAME, lw=1.2, zorder=4))
+
+# ── Drain fitting (simplified at this scale) ────────────────────────────────
+# Show as a small rectangle at drain point
+drain_yd_b = PROC_TRAY_DRAIN_YD
+ax4b.add_patch(plt.Rectangle((sb_y(drain_yd_b - 20), sb_z(-35)),
+              40 / SC_B, 50 / SC_B,
+              fc="#D4A060", ec=C_FRAME, lw=1.2, zorder=5))
+ax4b.text(sb_y(drain_yd_b), sb_z(rim_h + 25), "DRAIN\nFITTING",
+          ha="center", va="bottom", fontsize=6, color="#B08030",
+          fontweight="bold", zorder=6)
+
+# ── Pipe from drain to wall ──────────────────────────────────────────────────
+PIPE_Z_B = 25
+# Vertical drop
+ax4b.plot([sb_y(drain_yd_b), sb_y(drain_yd_b)],
+         [sb_z(-35), sb_z(PIPE_Z_B)],
+         color=C_BROWN, lw=3, solid_capstyle="round", zorder=4)
+
+# Horizontal run to wall
+ax4b.add_patch(plt.Rectangle((sb_y(-10), sb_z(PIPE_Z_B - 15)),
+              (drain_yd_b + 10) / SC_B, 30 / SC_B,
+              fc=C_BROWN_L, ec=C_BROWN, lw=1.5, zorder=3))
+
+# ── Walkway ──────────────────────────────────────────────────────────────────
+ax4b.add_patch(plt.Rectangle((sb_y(0), sb_z(WK_DECK_H - WK_GRATE_T)),
+              WALKWAY_W / SC_B, WK_GRATE_T / SC_B,
+              fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
+              alpha=0.7))
+
+# ── Pump manifold zone (dashed context, at Z=200–600) ───────────────────────
+MANIFOLD_Z_LO = PUMP_H_LO   # 200mm
+MANIFOLD_Z_HI = PUMP_H_HI   # 600mm
+ax4b.add_patch(plt.Rectangle((sb_y(-5), sb_z(MANIFOLD_Z_LO)),
+              40 / SC_B, (MANIFOLD_Z_HI - MANIFOLD_Z_LO) / SC_B,
+              fc="none", ec=C_PUMP, lw=1.5, ls="--", zorder=3))
+ax4b.text(sb_y(50), sb_z((MANIFOLD_Z_LO + MANIFOLD_Z_HI) / 2),
+          "PUMP\nMANIFOLD\n(BEHIND\nSECTION\nPLANE)",
+          ha="left", va="center", fontsize=5.5, color=C_PUMP, style="italic",
+          zorder=4)
+
+# ── 3W-DV-02 diverter valve ─────────────────────────────────────────────────
+DV_Z_B = MANIFOLD_Z_LO + 50  # 250mm — within manifold zone
+DV_YD_B = 15  # on wall face inside container
+dv_w_b = 60
+dv_h_b = 40
+
+# Pipe rises from horizontal run to diverter
+ax4b.plot([sb_y(drain_yd_b - 20), sb_y(drain_yd_b - 20)],
+         [sb_z(PIPE_Z_B), sb_z(DV_Z_B - 10)],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=4,
+         ls=(0, (6, 3)))
+# horizontal to diverter
+ax4b.annotate("", xy=(sb_y(DV_YD_B + dv_w_b/2), sb_z(DV_Z_B)),
+             xytext=(sb_y(drain_yd_b - 20), sb_z(DV_Z_B)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0),
+             zorder=4)
+
+# Diverter box
+ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B - dv_h_b/2)),
+              dv_w_b / SC_B, dv_h_b / SC_B,
+              fc="#FFF9C4", ec=C_FRAME, lw=1.5, zorder=5))
+ax4b.text(sb_y(DV_YD_B), sb_z(DV_Z_B), "3W-DV-02",
+          ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=6)
+
+# ── P-04 pump ────────────────────────────────────────────────────────────────
+PUMP_Z_B = DV_Z_B + 120  # ~370mm
+pump_r_b = 25  # mm
+ax4b.add_patch(plt.Circle((sb_y(DV_YD_B), sb_z(PUMP_Z_B)),
+              pump_r_b / SC_B,
+              fc="#E8884A", ec=C_FRAME, lw=1.5, zorder=5))
+ax4b.text(sb_y(DV_YD_B), sb_z(PUMP_Z_B), "P-04",
+          ha="center", va="center", fontsize=7, fontweight="bold",
+          color="white", zorder=6)
+
+# Connection: diverter to pump
+ax4b.plot([sb_y(DV_YD_B), sb_y(DV_YD_B)],
+         [sb_z(DV_Z_B + dv_h_b/2), sb_z(PUMP_Z_B - pump_r_b)],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=4)
+
+# ── Rise to IBC-3 ───────────────────────────────────────────────────────────
+IBC3_FILL_Z = IBC_H_600   # ~1,010mm
+ax4b.annotate("", xy=(sb_y(DV_YD_B), sb_z(IBC3_FILL_Z)),
+             xytext=(sb_y(DV_YD_B), sb_z(PUMP_Z_B + pump_r_b)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
+                             mutation_scale=14),
+             zorder=4)
+
+# IBC-3 box
+ibc_box_w = 100
+ibc_box_h = 80
+ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - ibc_box_w/2), sb_z(IBC3_FILL_Z)),
+              ibc_box_w / SC_B, ibc_box_h / SC_B,
+              fc=C_BROWN_L, ec=C_BROWN, lw=1.5, zorder=3))
+ax4b.text(sb_y(DV_YD_B), sb_z(IBC3_FILL_Z + ibc_box_h/2),
+          "IBC-3\n(BROWN\n600L)",
+          ha="center", va="center", fontsize=7, fontweight="bold",
+          color=C_BROWN, zorder=4)
+
+# ── Waste branch (dashed) ───────────────────────────────────────────────────
+ax4b.annotate("", xy=(sb_y(DV_YD_B - dv_w_b/2 - 40), sb_z(DV_Z_B)),
+             xytext=(sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=1.5,
+                             linestyle="--", mutation_scale=10),
+             zorder=3)
+ax4b.text(sb_y(DV_YD_B - dv_w_b/2 - 55), sb_z(DV_Z_B),
+          "IBC-4\n(WASTE)",
+          ha="center", va="center", fontsize=6, color=C_BLACK,
+          style="italic", zorder=4)
+
+# ── Dimensions ───────────────────────────────────────────────────────────────
+# Floor to manifold bottom
+draw_dim_v(ax4b, sb_y(100), sb_z(0), sb_z(MANIFOLD_Z_LO),
+           f"{MANIFOLD_Z_LO}mm", offset=0.5, fs=7, right=True)
+
+# Floor to manifold top
+draw_dim_v(ax4b, sb_y(130), sb_z(0), sb_z(MANIFOLD_Z_HI),
+           f"{MANIFOLD_Z_HI}mm", offset=0.5, fs=7, right=True)
+
+# Floor to IBC-3 base
+draw_dim_v(ax4b, sb_y(160), sb_z(0), sb_z(IBC3_FILL_Z),
+           f"{IBC3_FILL_Z:,}mm\n(~900mm LIFT)", offset=0.6, fs=6.5, right=True)
+
+# Rim height
+draw_dim_v(ax4b, sb_y(tray_yd_near - 30), sb_z(0), sb_z(rim_h),
+           f"{rim_h}mm", offset=0.4, fs=6.5, right=False)
+
+# Drain to wall
+draw_dim_h(ax4b, sb_y(0), sb_y(drain_yd_b), sb_z(rim_h + 30),
+           f"{drain_yd_b}mm", offset=0.4, fs=7)
+
+# Walkway
+draw_dim_v(ax4b, sb_y(WALKWAY_W + 15), sb_z(0), sb_z(WK_DECK_H),
+           f"{WK_DECK_H}mm", offset=0.4, fs=6, right=True)
+
+# ── Labels ───────────────────────────────────────────────────────────────────
+leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
+       sb_y(200), sb_z(WK_DECK_H + 30),
+       "WALKWAY", fs=6.5, color="#8D6E63")
+
+leader(ax4b, sb_y(DV_YD_B), sb_z(PUMP_Z_B + pump_r_b + 5),
+       sb_y(100), sb_z(PUMP_Z_B + 80),
+       "SHURFLO 2088\n12V DC, 3.5 GPM", fs=6, color=C_PUMP)
+
+# ── Flow path legend ────────────────────────────────────────────────────────
+flow_notes = [
+    "FLOW PATH:",
+    "1. Water drains by gravity to low point (Yd=80mm)",
+    "2. Through 1\" NPT bulkhead drain fitting",
+    "3. 1\" HDPE pipe along pinhole wall to manifold zone",
+    "4. To 3W-DV-02 three-way diverter valve",
+    "5. Default: P-04 pump lifts to IBC-3 (~900mm head)",
+    "6. Alt: divert to IBC-4 (Waste) when selected",
+]
+for i, note in enumerate(flow_notes):
+    fw = "bold" if i == 0 else "normal"
+    fig4.text(0.52, 0.11 - i * 0.016, note, fontsize=6.5, color=C_TEXT,
+              fontfamily="monospace", fontweight=fw, va="top")
+
+# ── Notes ────────────────────────────────────────────────────────────────────
+notes4 = [
+    "NOTES:",
+    "- Tray: 304 SS, 16-gauge (1.5mm), permanently installed.",
+    "- Drain fitting welded to tray floor -- no penetration of container floor.",
+    "- Pipe routes along pinhole wall below manifold (Z=200-600mm).",
+    "- P-04: Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI.",
+    "- Tray slope exaggerated for clarity in both panels.",
+]
+for i, n in enumerate(notes4):
+    fw = "bold" if i == 0 else "normal"
+    fig4.text(0.04, 0.11 - i * 0.016, n, fontsize=6.5, color=C_TEXT,
+              fontfamily="monospace", fontweight=fw, va="top")
+
+# ── Copyright ────────────────────────────────────────────────────────────────
+fig4.text(0.99, 0.005, "© 2026 Alvin Richards -- GNU AGPLv3",
+          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+fig4.savefig("diagrams/water-system-sheet4.png", dpi=150, bbox_inches="tight",
+             facecolor=fig4.get_facecolor())
+fig4.savefig(svg_path("diagrams/water-system-sheet4.png"), bbox_inches="tight",
+             facecolor=fig4.get_facecolor())
+plt.close(fig4)
+print("Sheet 4 written --> diagrams/water-system-sheet4.png")
 print("Done.")

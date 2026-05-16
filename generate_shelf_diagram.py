@@ -395,7 +395,7 @@ def sheet2():
 
     # ── Leader callouts ──
     leader(ax, px(SHELF_CY), pz(shelf_z_top + 5),
-           px(SHELF_CY + 100), pz(shelf_z_top + 100),
+           px(SHELF_CY * 0.8), pz(shelf_z_top + 100),
            "18mm PHENOLIC PLY\nON 25×25×3mm SHS FRAME",
            fs=5.5, ha="left")
     leader(ax, px(SHELF_YD_NEAR + HANGER_INSET), pz(C_HGT - 3),
@@ -403,7 +403,7 @@ def sheet2():
            f"CEILING PLATE\n100×60×6mm",
            fs=5, ha="left")
     leader(ax, px(SHELF_YD_FAR - HANGER_INSET), pz((SHELF_H + C_HGT) / 2),
-           px(SHELF_YD_FAR - HANGER_INSET + 100), pz((SHELF_H + C_HGT) / 2 + 50),
+           px(SHELF_YD_FAR - HANGER_INSET + 50), pz((SHELF_H + C_HGT) / 2 + 50),
            f"M{SHELF_HANGER_D} THREADED\nROD HANGER",
            fs=5, ha="left")
 

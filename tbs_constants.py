@@ -182,13 +182,14 @@ PUMP_H_HI  = 600     # pump manifold top H (mm)
 
 # ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────
 # Single ceiling-hung shelf for mixing cyanotype chemistry, coating muslin, and
-# materials staging.  Suspended from 4x M10 threaded rod hangers at the corner
-# where the near walkway meets the right walkway.  On the tray side (inside) of
-# the near walkway — walkway stays clear for passage.  Shadow-free: cone right
-# boundary at Yd=600 is X=2,996mm; shelf at X=4,329+ is >1,300mm outside cone.
-SHELF_X_L      = 4329    # shelf left edge X (mm) — aligned with right walkway inner edge
-SHELF_X_R      = 4629    # shelf right edge X (mm) — aligned with tray right edge
-SHELF_W        = 300     # shelf width in X direction (mm) = right walkway width
+# materials staging.  Suspended from 4x M10 threaded rod hangers in the
+# processing area corner, just inside the right walkway and near walkway.
+# Does not overlap any walkway — all walkways clear for passage.
+# Shadow-free: cone right boundary at Yd=600 is X=3,148mm; shelf at
+# X=4,029+ is >880mm outside cone.
+SHELF_X_L      = 4029    # shelf left edge X (mm) — 300mm left of right walkway
+SHELF_X_R      = 4329    # shelf right edge X (mm) — flush with right walkway inner edge
+SHELF_W        = 300     # shelf width in X direction (mm)
 SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
 SHELF_YD_FAR   = 900     # shelf far edge Yd (mm)
 SHELF_DEPTH    = 600     # shelf depth in Yd direction (mm)

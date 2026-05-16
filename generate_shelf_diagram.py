@@ -224,19 +224,19 @@ def sheet1():
     # ── Dimensions ──
     # Shelf width (X direction) — horizontal
     draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 50),
-               f"{SHELF_W}", offset=10, fs=7)
+               f"{SHELF_W}mm", offset=10, fs=7)
     # Shelf depth (Yd direction) — vertical
     draw_dim_v(ax, px(SHELF_X_L - 50), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
-               f"{SHELF_DEPTH}", offset=10, fs=7)
+               f"{SHELF_DEPTH}mm", offset=10, fs=7)
     # Distance from pinhole wall (Yd direction)
     draw_dim_v(ax, px(SHELF_X_R + 50), py(0), py(SHELF_YD_NEAR),
-               f"{SHELF_YD_NEAR}\nFROM\nWALL", offset=10, fs=6, right=True)
+               f"{SHELF_YD_NEAR}mm\nFROM\nWALL", offset=10, fs=6, right=True)
     # Near walkway width
     draw_dim_v(ax, px(X_LO + 80), py(0), py(WALKWAY_W),
-               "300\nWALKWAY", offset=8, fs=6)
+               "300mm\nWALKWAY", offset=8, fs=6)
     # Right walkway width
     draw_dim_h(ax, px(WALKWAY_RIGHT_X), px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W),
-               py(-80), f"{WALKWAY_RIGHT_W}", offset=8, fs=6)
+               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=8, fs=6)
 
     # ── Title block ──
     title_block(ax, "SHEET 1 OF 3",

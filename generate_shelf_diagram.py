@@ -62,7 +62,7 @@ C_IBC    = "#B0D0F0"    # IBC outline
 C_ZONE   = "#E8F4E8"    # shadow-free zone fill
 
 # ── Derived constants ────────────────────────────────────────────────────────
-SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4,179mm
+SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4,029mm
 SHELF_CY = (SHELF_YD_NEAR + SHELF_YD_FAR) / 2  # shelf center Yd = 600mm
 HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1025 = 1363mm
 # Hanger positions: 4 corners, inset 30mm from shelf edges
@@ -83,17 +83,17 @@ def sheet1():
     """Plan view showing shelf position relative to walkways and optical cone."""
     # View: looking down.  X horizontal (cargo door left, far end right).
     # Yd vertical (pinhole wall at bottom, far wall at top).
-    # This puts the near walkway as a horizontal band at the bottom,
-    # the right walkway as a vertical band on the right, the shelf in the
-    # bottom-right corner, and the IBCs further right.
-    X_LO, X_HI = 3800, 5950
-    YD_LO, YD_HI = -100, 1200
-    SC = 12.0
+    # Near walkway = horizontal band at bottom, right walkway = vertical
+    # band on right, shelf in the L-shaped corner between them.
+    # Tight crop centered on shelf with surrounding context.
+    X_LO, X_HI = 3400, 5100
+    YD_LO, YD_HI = -120, 1000
+    SC = 8.0
 
     def px(x): return (x - X_LO) / SC      # X → horizontal
     def py(yd): return (yd - YD_LO) / SC    # Yd → vertical (bottom=wall)
 
-    fig, ax = plt.subplots(figsize=(18, 14), facecolor=BG)
+    fig, ax = plt.subplots(figsize=(18, 12), facecolor=BG)
     ax.set_facecolor(BG)
     ax.set_xlim(px(X_LO), px(X_HI))
     ax.set_ylim(py(YD_LO), py(YD_HI))
@@ -101,56 +101,59 @@ def sheet1():
     ax.axis("off")
 
     # ── Optical cone right boundary (at various Yd, as a shaded zone) ──
-    cone_yds = np.linspace(0, 1200, 50)
+    cone_yds = np.linspace(0, YD_HI, 50)
     cone_xs = [cone_right(yd) for yd in cone_yds]
     # Shade the cone zone (everything left of the boundary)
-    cone_poly_x = [px(x) for x in cone_xs] + [px(X_LO), px(X_LO)]
-    cone_poly_y = [py(yd) for yd in cone_yds] + [py(1200), py(0)]
+    cone_poly_x = [px(max(x, X_LO)) for x in cone_xs] + [px(X_LO), px(X_LO)]
+    cone_poly_y = [py(yd) for yd in cone_yds] + [py(YD_HI), py(0)]
     ax.fill(cone_poly_x, cone_poly_y, fc=C_CONE, alpha=0.15, zorder=1)
-    # Cone boundary line
-    ax.plot([px(x) for x in cone_xs], [py(yd) for yd in cone_yds],
-            color="#CC4444", lw=1.0, ls="--", zorder=3)
-    ax.text(px(cone_right(800) + 60), py(800), "OPTICAL CONE\nRIGHT BOUNDARY",
-            fontsize=5, color="#CC4444", ha="left", va="center", rotation=20)
+    # Cone boundary line (only draw where it's in view)
+    vis = [(x, yd) for x, yd in zip(cone_xs, cone_yds) if x >= X_LO]
+    if vis:
+        ax.plot([px(x) for x, _ in vis], [py(yd) for _, yd in vis],
+                color="#CC4444", lw=1.2, ls="--", zorder=3)
+        mid_idx = len(vis) // 2
+        mx, myd = vis[mid_idx]
+        ax.text(px(mx + 40), py(myd), "OPTICAL CONE\nRIGHT BOUNDARY",
+                fontsize=6, color="#CC4444", ha="left", va="center", rotation=25)
 
     # ── Right end zone (shadow-free, green tint) ──
-    ax.add_patch(Rectangle((px(ZONE_R_START), py(YD_LO + 10)),
-                            px(X_HI - 50) - px(ZONE_R_START),
-                            py(YD_HI - 10) - py(YD_LO + 10),
-                            fc=C_ZONE, ec="none", alpha=0.3, zorder=1))
-    ax.text(px(ZONE_R_START + 30), py(600), "RIGHT END\nZONE\n(SHADOW-\nFREE)",
-            fontsize=5, color="#408040", ha="left", va="center")
-    # Zone boundary
-    ax.plot([px(ZONE_R_START), px(ZONE_R_START)],
-            [py(YD_LO + 10), py(YD_HI - 10)],
-            color="#408040", lw=0.8, ls=(0, (6, 3)), zorder=3)
+    if ZONE_R_START < X_HI:
+        ax.add_patch(Rectangle((px(ZONE_R_START), py(YD_LO + 10)),
+                                px(X_HI) - px(ZONE_R_START),
+                                py(YD_HI - 10) - py(YD_LO + 10),
+                                fc=C_ZONE, ec="none", alpha=0.25, zorder=1))
+        ax.text(px(ZONE_R_START + 20), py(YD_HI - 40),
+                "RIGHT END ZONE (SHADOW-FREE)",
+                fontsize=5.5, color="#408040", ha="left", va="top")
+        ax.plot([px(ZONE_R_START), px(ZONE_R_START)],
+                [py(YD_LO + 10), py(YD_HI - 10)],
+                color="#408040", lw=0.8, ls=(0, (6, 3)), zorder=3)
 
     # ── Container walls ──
     # Pinhole wall (Yd=0) — bottom
-    ax.plot([px(X_LO + 50), px(X_HI - 50)], [py(0), py(0)],
+    ax.plot([px(X_LO), px(X_HI)], [py(0), py(0)],
             color=C_OUT, lw=2.0, zorder=5)
-    ax.text(px((X_LO + X_HI) / 2), py(-50), "PINHOLE WALL (Yd=0)",
-            fontsize=5.5, color=C_DIM, ha="center", va="top")
-    # Far end wall (X=5893) — right edge
-    ax.plot([px(C_LEN), px(C_LEN)], [py(YD_LO + 10), py(YD_HI - 10)],
-            color=C_OUT, lw=2.0, zorder=5)
+    ax.text(px((X_LO + X_HI) / 2), py(-60), "PINHOLE WALL (Yd=0)",
+            fontsize=6, color=C_DIM, ha="center", va="top")
 
     # ── Near walkway (Yd=0 to 300) — horizontal band at bottom ──
-    ax.add_patch(Rectangle((px(X_LO + 100), py(0)),
-                            px(X_HI - 100) - px(X_LO + 100),
+    ax.add_patch(Rectangle((px(X_LO), py(0)),
+                            px(X_HI) - px(X_LO),
                             py(WALKWAY_W) - py(0),
                             fc=C_WALKWAY, ec=C_OUT, lw=0.6, alpha=0.4, zorder=2))
-    ax.text(px(4000), py(WALKWAY_W / 2), "NEAR WALKWAY  300mm",
-            fontsize=5, color=C_DIM, ha="center", va="center")
+    ax.text(px(3700), py(WALKWAY_W / 2), "NEAR WALKWAY  300mm",
+            fontsize=6, color=C_DIM, ha="center", va="center")
 
     # ── Right walkway (X=4329 to 4629) — vertical band on right ──
+    rw_yd_top = min(C_WID, YD_HI)
     ax.add_patch(Rectangle((px(WALKWAY_RIGHT_X), py(0)),
                             px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W) - px(WALKWAY_RIGHT_X),
-                            py(C_WID) - py(0),
+                            py(rw_yd_top) - py(0),
                             fc=C_WALKWAY, ec=C_OUT, lw=0.6, alpha=0.4, zorder=2))
-    ax.text(px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W / 2), py(C_WID / 2),
+    ax.text(px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W / 2), py(min(800, rw_yd_top - 50)),
             "RIGHT\nWALKWAY\n(CEILING-\nHUNG)",
-            fontsize=5, color=C_DIM, ha="center", va="center", rotation=90)
+            fontsize=6, color=C_DIM, ha="center", va="center", rotation=90)
 
     # Right walkway hanger positions (+ marks at ceiling rod locations)
     rw_hanger_yds = np.arange(CONTAINER_RIB_SPACING / 2, C_WID,
@@ -159,84 +162,84 @@ def sheet1():
     rw_rod_x_outer = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 15
     hgr_sz = 6.0 / SC  # half-size of + mark in page coords
     for hy in rw_hanger_yds:
-        if py(hy) > py(YD_HI - 20):
+        if hy > YD_HI - 20:
             continue  # skip if outside view
         for rx in [rw_rod_x_inner, rw_rod_x_outer]:
             ax.plot([px(rx) - hgr_sz, px(rx) + hgr_sz], [py(hy), py(hy)],
-                    color=C_HANGER, lw=1.2, zorder=6)
+                    color=C_HANGER, lw=1.4, zorder=6)
             ax.plot([px(rx), px(rx)], [py(hy) - hgr_sz, py(hy) + hgr_sz],
-                    color=C_HANGER, lw=1.2, zorder=6)
-    # Label first hanger pair
-    if len(rw_hanger_yds) > 0:
-        leader(ax, px(rw_rod_x_outer), py(rw_hanger_yds[0]),
-               px(rw_rod_x_outer + 120), py(rw_hanger_yds[0] - 60),
+                    color=C_HANGER, lw=1.4, zorder=6)
+    # Label first visible hanger pair
+    vis_hangers = [hy for hy in rw_hanger_yds if hy < YD_HI - 20]
+    if vis_hangers:
+        leader(ax, px(rw_rod_x_outer), py(vis_hangers[0]),
+               px(rw_rod_x_outer + 80), py(vis_hangers[0] - 50),
                f"M{WALKWAY_RIGHT_HANGER_D} HANGER\nPAIRS (×{WALKWAY_RIGHT_HANGER_N})\n@ {CONTAINER_RIB_SPACING}mm CTR",
-               fs=5, ha="left")
+               fs=5.5, ha="left")
 
     # ── Processing tray outline ──
-    tray_x_lo = max(PROC_TRAY_X_L, X_LO + 50)
-    tray_x_hi = PROC_TRAY_X_R
+    tray_x_lo = max(PROC_TRAY_X_L, X_LO)
+    tray_x_hi = min(PROC_TRAY_X_R, X_HI)
     tray_yd_lo = PROC_TRAY_YD_NEAR
-    tray_yd_hi = min(PROC_TRAY_YD_FAR, YD_HI - 50)
+    tray_yd_hi = min(PROC_TRAY_YD_FAR, YD_HI)
     ax.add_patch(Rectangle((px(tray_x_lo), py(tray_yd_lo)),
                             px(tray_x_hi) - px(tray_x_lo),
                             py(tray_yd_hi) - py(tray_yd_lo),
                             fc="none", ec=C_TRAY, lw=0.8, ls=":", zorder=2))
-    ax.text(px(4100), py(600), "PROCESSING TRAY\n(BELOW, H=0–50mm)",
-            fontsize=4.5, color=C_TRAY, ha="center", va="center")
+    ax.text(px(3900), py(700), "PROCESSING TRAY\n(BELOW, H=0–50mm)",
+            fontsize=5.5, color=C_TRAY, ha="center", va="center")
 
-    # ── IBC stack (right end zone) ──
-    # Near column
-    ax.add_patch(Rectangle((px(IBC_COL_X), py(BLUE_IBC_Y)),
-                            px(IBC_COL_X + IBC_W) - px(IBC_COL_X),
-                            py(BLUE_IBC_Y + IBC_D) - py(BLUE_IBC_Y),
-                            fc=C_IBC, ec=C_OUT, lw=0.8, alpha=0.3, zorder=2))
-    ax.text(px(IBC_COL_X + IBC_W / 2), py(BLUE_IBC_Y + IBC_D / 2),
-            "IBC\nNEAR COL", fontsize=5, color=C_DIM, ha="center", va="center")
-    # Far column
-    ax.add_patch(Rectangle((px(IBC_COL_X), py(IBC_FAR_Y)),
-                            px(IBC_COL_X + IBC_W) - px(IBC_COL_X),
-                            py(IBC_FAR_Y + IBC_D) - py(IBC_FAR_Y),
-                            fc=C_IBC, ec=C_OUT, lw=0.8, alpha=0.3, zorder=2))
-    ax.text(px(IBC_COL_X + IBC_W / 2), py(IBC_FAR_Y + IBC_D / 2),
-            "IBC\nFAR COL", fontsize=5, color=C_DIM, ha="center", va="center")
+    # ── IBC stack (right end zone — show near column only, clipped) ──
+    ibc_x_lo = max(IBC_COL_X, X_LO)
+    ibc_x_hi = min(IBC_COL_X + IBC_W, X_HI)
+    if ibc_x_lo < X_HI and BLUE_IBC_Y < YD_HI:
+        ibc_yd_hi = min(BLUE_IBC_Y + IBC_D, YD_HI)
+        ax.add_patch(Rectangle((px(ibc_x_lo), py(BLUE_IBC_Y)),
+                                px(ibc_x_hi) - px(ibc_x_lo),
+                                py(ibc_yd_hi) - py(BLUE_IBC_Y),
+                                fc=C_IBC, ec=C_OUT, lw=0.8, alpha=0.3, zorder=2))
+        ax.text(px((ibc_x_lo + ibc_x_hi) / 2), py((BLUE_IBC_Y + ibc_yd_hi) / 2),
+                "IBC", fontsize=6, color=C_DIM, ha="center", va="center")
 
     # ── SHELF (main feature — bold) ──
     ax.add_patch(Rectangle((px(SHELF_X_L), py(SHELF_YD_NEAR)),
                             px(SHELF_X_R) - px(SHELF_X_L),
                             py(SHELF_YD_FAR) - py(SHELF_YD_NEAR),
-                            fc=C_SHELF, ec=C_OUT, lw=2.0, zorder=8))
+                            fc=C_SHELF, ec=C_OUT, lw=2.5, zorder=8))
     ax.text(px(SHELF_CX), py(SHELF_CY),
-            f"CHEMISTRY\nPREP SHELF\n{SHELF_W}×{SHELF_DEPTH}mm\nH={SHELF_H}mm\n(CEILING-HUNG)",
-            fontsize=5.5, color=C_OUT, ha="center", va="center", fontweight="bold")
+            f"CHEMISTRY PREP SHELF\n{SHELF_W}×{SHELF_DEPTH}mm  H={SHELF_H}mm\n(CEILING-HUNG)",
+            fontsize=7, color=C_OUT, ha="center", va="center", fontweight="bold")
 
     # Hanger positions (4 dots)
     for hx, hy in HANGER_POSITIONS:
-        ax.plot(px(hx), py(hy), "o", color=C_HANGER, ms=6, zorder=10)
+        ax.plot(px(hx), py(hy), "o", color=C_HANGER, ms=7, zorder=10)
     leader(ax, px(HANGER_POSITIONS[2][0]), py(HANGER_POSITIONS[2][1]),
-           px(HANGER_POSITIONS[2][0] - 120), py(HANGER_POSITIONS[2][1] + 80),
-           f"M{SHELF_HANGER_D} HANGER\nROD (×4)", fs=5.5, ha="right")
+           px(HANGER_POSITIONS[2][0] - 80), py(HANGER_POSITIONS[2][1] + 60),
+           f"M{SHELF_HANGER_D} HANGER\nROD (×4)", fs=6, ha="right")
 
     # ── Operator position annotation ──
     op_yd = 150  # standing on near walkway
     op_x = SHELF_CX  # at shelf center X
-    ax.plot(px(op_x), py(op_yd), "x", color="#2060A0", ms=10, mew=2, zorder=9)
-    ax.text(px(op_x - 80), py(op_yd), "OPERATOR\nSTANDS HERE",
-            fontsize=5, color="#2060A0", ha="right", va="center")
+    ax.plot(px(op_x), py(op_yd), "x", color="#2060A0", ms=12, mew=2, zorder=9)
+    ax.text(px(op_x - 60), py(op_yd), "OPERATOR\nSTANDS HERE",
+            fontsize=6, color="#2060A0", ha="right", va="center")
 
     # ── Dimensions ──
     # Shelf width (X direction) — horizontal
-    draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 60),
-               f"{SHELF_W}", offset=8, fs=6)
+    draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 50),
+               f"{SHELF_W}", offset=10, fs=7)
     # Shelf depth (Yd direction) — vertical
-    draw_dim_v(ax, px(SHELF_X_L - 60), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
-               f"{SHELF_DEPTH}", offset=8, fs=6)
+    draw_dim_v(ax, px(SHELF_X_L - 50), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
+               f"{SHELF_DEPTH}", offset=10, fs=7)
     # Distance from pinhole wall (Yd direction)
-    draw_dim_v(ax, px(SHELF_X_R + 60), py(0), py(SHELF_YD_NEAR),
-               f"{SHELF_YD_NEAR}\nFROM\nWALL", offset=8, fs=5.5, right=True)
-    # Walkway width (Yd direction)
-    draw_dim_v(ax, px(X_LO + 150), py(0), py(WALKWAY_W),
-               "300\nWALKWAY", offset=8, fs=5.5)
+    draw_dim_v(ax, px(SHELF_X_R + 50), py(0), py(SHELF_YD_NEAR),
+               f"{SHELF_YD_NEAR}\nFROM\nWALL", offset=10, fs=6, right=True)
+    # Near walkway width
+    draw_dim_v(ax, px(X_LO + 80), py(0), py(WALKWAY_W),
+               "300\nWALKWAY", offset=8, fs=6)
+    # Right walkway width
+    draw_dim_h(ax, px(WALKWAY_RIGHT_X), px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W),
+               py(-80), f"{WALKWAY_RIGHT_W}", offset=8, fs=6)
 
     # ── Title block ──
     title_block(ax, "SHEET 1 OF 3",

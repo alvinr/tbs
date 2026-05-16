@@ -928,10 +928,15 @@ print("Sheet 3 written → diagrams/water-system-sheet3.png")
 # Horizontal = Yd, Vertical = Z (height above floor).
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig4, (ax4a, ax4b) = plt.subplots(1, 2, figsize=(20, 12),
-                                   gridspec_kw={"width_ratios": [1, 1.2]})
+from matplotlib.gridspec import GridSpec
+fig4 = plt.figure(figsize=(20, 12))
 fig4.patch.set_facecolor("#F5F5F0")
-for axx in (ax4a, ax4b):
+gs4 = GridSpec(2, 2, figure=fig4, width_ratios=[1, 1.2], height_ratios=[1.4, 1],
+               hspace=0.08, wspace=0.05)
+ax4a = fig4.add_subplot(gs4[0, 0])   # Detail A — top left
+ax4c = fig4.add_subplot(gs4[1, 0])   # Plan view — bottom left
+ax4b = fig4.add_subplot(gs4[:, 1])   # Section A-A — full right column
+for axx in (ax4a, ax4b, ax4c):
     axx.set_facecolor("#F5F5F0")
     axx.axis("off")
     axx.set_aspect("equal")
@@ -939,11 +944,66 @@ for axx in (ax4a, ax4b):
 # ── Title block (spans both panels) ─────────────────────────────────────────
 title_block(ax4b, "SHEET 4 OF 4",
             drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
-            subtitle="Section A-A at X=2,399mm (through sump), looking along +X",
-            scale_note="DETAIL ~1:2  |  ELEVATION ~1:15",
+            subtitle="Section A-A at X=2,399mm (through sump) + plan view of walkway penetration",
+            scale_note="DETAIL ~1:2  |  PLAN ~1:3  |  ELEVATION ~1:15",
             doc_id="TBS-001 · Water System")
 
 from matplotlib.patches import Arc as MplArc
+
+
+def draw_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, sy, sz,
+                   fc="#B0B0B8", ec="#333333", bore_fc="white", zorder=5):
+    """Draw a pipe with visible walls and bore along a polyline path.
+
+    y_pts, z_pts: coordinates in mm (before scaling)
+    od_mm: outer diameter in mm
+    wall_mm: wall thickness in mm
+    sy, sz: scale functions (mm -> data coordinates)
+    """
+    n = len(y_pts)
+    if n < 2:
+        return
+    half_od = od_mm / 2.0
+    half_id = half_od - wall_mm
+
+    # Compute unit normals at each vertex
+    normals = []
+    for i in range(n):
+        if i == 0:
+            dy, dz = y_pts[1] - y_pts[0], z_pts[1] - z_pts[0]
+        elif i == n - 1:
+            dy, dz = y_pts[-1] - y_pts[-2], z_pts[-1] - z_pts[-2]
+        else:
+            dy, dz = y_pts[i+1] - y_pts[i-1], z_pts[i+1] - z_pts[i-1]
+        length = max((dy**2 + dz**2)**0.5, 1e-6)
+        normals.append((-dz / length, dy / length))
+
+    # Outer wall polygon
+    ol = [(sy(y_pts[i] + normals[i][0] * half_od),
+           sz(z_pts[i] + normals[i][1] * half_od)) for i in range(n)]
+    ir_ = [(sy(y_pts[i] - normals[i][0] * half_od),
+            sz(z_pts[i] - normals[i][1] * half_od)) for i in range(n)]
+    poly_y = [p[0] for p in ol] + [p[0] for p in ir_[::-1]]
+    poly_z = [p[1] for p in ol] + [p[1] for p in ir_[::-1]]
+    ax.fill(poly_y, poly_z, fc=fc, ec=ec, lw=0.8, zorder=zorder)
+
+    # Bore (inner white)
+    ol2 = [(sy(y_pts[i] + normals[i][0] * half_id),
+            sz(z_pts[i] + normals[i][1] * half_id)) for i in range(n)]
+    ir2 = [(sy(y_pts[i] - normals[i][0] * half_id),
+            sz(z_pts[i] - normals[i][1] * half_id)) for i in range(n)]
+    poly_y2 = [p[0] for p in ol2] + [p[0] for p in ir2[::-1]]
+    poly_z2 = [p[1] for p in ol2] + [p[1] for p in ir2[::-1]]
+    ax.fill(poly_y2, poly_z2, fc=bore_fc, ec="none", zorder=zorder + 1)
+
+
+def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",
+                  bore_fc="white", zorder=5):
+    """Draw pipe end-on at data coords (cy, cz) with radius r_data."""
+    ax.add_patch(plt.Circle((cy, cz), r_data, fc=fc, ec=ec, lw=1.0, zorder=zorder))
+    ax.add_patch(plt.Circle((cy, cz), r_data - wall_data,
+                 fc=bore_fc, ec="none", zorder=zorder + 1))
+
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PANEL A — SUMP WELL & PICKUP DETAIL (~1:2)
@@ -1068,14 +1128,16 @@ tube_yd = sump_yd_start + PROC_TRAY_SUMP_D / 2  # center of sump in Yd = 130mm
 tube_z_bot = sump_z_floor + 5  # 5mm above sump floor (Z=5mm)
 tube_z_top = RIM_TOP + 30  # extends above rim (70 + 30 = 100mm)
 
-# Tube body
-ax4a.add_patch(plt.Rectangle((sa_y(tube_yd - TUBE_OD/2), sa_z(tube_z_bot)),
-              TUBE_OD / SC_A, (tube_z_top - tube_z_bot) / SC_A,
-              fc="#E0E0E0", ec=C_FRAME, lw=1.2, zorder=6))
-
 # Foot valve / strainer at bottom
 foot_valve_h = 15
 foot_valve_w = 35
+
+# Tube body — double-wall pipe section
+TUBE_WALL = 3.0  # HDPE tube wall thickness (mm)
+draw_pipe_path(ax4a,
+               [tube_yd, tube_yd], [tube_z_bot + foot_valve_h, tube_z_top],
+               TUBE_OD, TUBE_WALL, sa_y, sa_z,
+               fc="#D0D0D0", ec=C_FRAME, zorder=6)
 ax4a.add_patch(plt.Rectangle((sa_y(tube_yd - foot_valve_w/2), sa_z(tube_z_bot)),
               foot_valve_w / SC_A, foot_valve_h / SC_A,
               fc="#D0D0D0", ec=C_FRAME, lw=1.0, zorder=7))
@@ -1102,6 +1164,8 @@ HOSE_PASS_Z_TOP = WK_DECK_H       # top of walkway grating = 100mm
 HOSE_PASS_Z_BOT = WK_DECK_H - WK_GRATE_T  # bottom of grating = 75mm
 
 # Hose path: tube top → up → bend over rim → down through walkway → below
+HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
+HOSE_WALL = 4.0  # hose wall thickness (mm)
 hose_pts_y = [tube_yd, tube_yd, tube_yd - 15,
               HOSE_PASS_YD, HOSE_PASS_YD,
               HOSE_PASS_YD, HOSE_PASS_YD - 15, 0]
@@ -1109,15 +1173,14 @@ hose_pts_z = [tube_z_top, RIM_TOP + 25, RIM_TOP + 35,
               RIM_TOP + 15, HOSE_PASS_Z_TOP + 3,
               HOSE_PASS_Z_BOT - 10, HOSE_PASS_Z_BOT - 15,
               HOSE_PASS_Z_BOT - 15]
-ax4a.plot([sa_y(y) for y in hose_pts_y], [sa_z(z) for z in hose_pts_z],
-         color=hose_color, lw=hose_lw, solid_capstyle="round", zorder=8,
-         alpha=0.8)
-# Arrow at wall end (below walkway, heading to pump manifold)
+draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
+               sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
+# Flow arrow below walkway
 ax4a.annotate("", xy=(sa_y(-10), sa_z(HOSE_PASS_Z_BOT - 15)),
              xytext=(sa_y(10), sa_z(HOSE_PASS_Z_BOT - 15)),
-             arrowprops=dict(arrowstyle="-|>", color=hose_color, lw=2.0,
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0,
                              mutation_scale=12),
-             zorder=8)
+             zorder=10)
 
 # ── Water surface in tray (away from sump) ───────────────────────────────────
 FLOOD_DEPTH = 6
@@ -1305,9 +1368,9 @@ ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
 # Pickup tube (simplified) — from sump floor+5 to above rim
 tube_yd_b = sump_yd_b + PROC_TRAY_SUMP_D / 2
 RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
-ax4b.plot([sb_y(tube_yd_b), sb_y(tube_yd_b)],
-         [sb_z(5), sb_z(RIM_TOP_B + 20)],
-         color=C_FRAME, lw=2.5, solid_capstyle="round", zorder=5)
+draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, RIM_TOP_B + 20],
+               TUBE_OD, TUBE_WALL, sb_y, sb_z,
+               fc="#D0D0D0", ec=C_FRAME, zorder=5)
 ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
           ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", zorder=6)
@@ -1319,8 +1382,8 @@ P04_Z = PUMP_H_LO + 80  # P-04 mounted in manifold zone, ~280mm
 # Hose path
 hose_b_y = [tube_yd_b, tube_yd_b, tray_yd_near - 5, 0, 0, 15]
 hose_b_z = [RIM_TOP_B + 20, RIM_TOP_B + 30, RIM_TOP_B + 15, RIM_TOP_B, P04_Z + 30, P04_Z]
-ax4b.plot([sb_y(y) for y in hose_b_y], [sb_z(z) for z in hose_b_z],
-         color=C_BROWN, lw=3.0, solid_capstyle="round", zorder=4, alpha=0.8)
+draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
+               sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
 
 # ── Walkway ──────────────────────────────────────────────────────────────────
 ax4b.add_patch(plt.Rectangle((sb_y(0), sb_z(WK_DECK_H - WK_GRATE_T)),
@@ -1355,9 +1418,10 @@ dv_w_b = 60
 dv_h_b = 40
 
 # P-04 discharge to diverter
-ax4b.plot([sb_y(DV_YD_B), sb_y(DV_YD_B)],
-         [sb_z(P04_Z + pump_r_b), sb_z(DV_Z_B - dv_h_b/2)],
-         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=4)
+draw_pipe_path(ax4b, [DV_YD_B, DV_YD_B],
+               [P04_Z + pump_r_b, DV_Z_B - dv_h_b/2],
+               TUBE_OD, TUBE_WALL, sb_y, sb_z,
+               fc=C_BROWN, ec="#5A3020", zorder=4)
 
 # Diverter box
 ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B - dv_h_b/2)),
@@ -1375,9 +1439,10 @@ IBC3_FILL_Z = IBC_H_600   # ~1,010mm
 ELBOW_Z = DV_Z_B + dv_h_b/2 + 40  # short rise above diverter
 
 # Short vertical rise from diverter to elbow
-ax4b.plot([sb_y(DV_YD_B), sb_y(DV_YD_B)],
-         [sb_z(DV_Z_B + dv_h_b/2), sb_z(ELBOW_Z)],
-         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=4)
+draw_pipe_path(ax4b, [DV_YD_B, DV_YD_B],
+               [DV_Z_B + dv_h_b/2, ELBOW_Z],
+               TUBE_OD, TUBE_WALL, sb_y, sb_z,
+               fc=C_BROWN, ec="#5A3020", zorder=4)
 
 # Elbow symbol — small arc indicating 90° turn into the page
 elbow_r = 15  # mm
@@ -1386,18 +1451,14 @@ ax4b.add_patch(Arc((sb_y(DV_YD_B), sb_z(ELBOW_Z)),
                angle=0, theta1=0, theta2=90,
                ec=C_BROWN, lw=2.0, zorder=5))
 
-# Pipe end-on (circle) — shows pipe going into the page toward IBC-3
+# Pipe end-on (circle with bore) — pipe going into the page toward IBC-3
 PIPE_OD_B = 25  # 1" nominal
-ax4b.add_patch(plt.Circle((sb_y(DV_YD_B + elbow_r), sb_z(ELBOW_Z + elbow_r)),
-              PIPE_OD_B / 2 / SC_B,
-              fc=C_BROWN, ec=C_FRAME, lw=1.2, zorder=6))
-# Cross marks inside circle to indicate pipe going into page
-cr = PIPE_OD_B / 2 / SC_B * 0.6
-cx, cz = sb_y(DV_YD_B + elbow_r), sb_z(ELBOW_Z + elbow_r)
-ax4b.plot([cx - cr, cx + cr], [cz - cr, cz + cr],
-         color="white", lw=1.0, zorder=7)
-ax4b.plot([cx - cr, cx + cr], [cz + cr, cz - cr],
-         color="white", lw=1.0, zorder=7)
+pipe_end_cy = sb_y(DV_YD_B + elbow_r)
+pipe_end_cz = sb_z(ELBOW_Z + elbow_r)
+pipe_end_r = PIPE_OD_B / 2 / SC_B
+pipe_end_wall = TUBE_WALL / SC_B
+draw_pipe_end(ax4b, pipe_end_cy, pipe_end_cz, pipe_end_r, pipe_end_wall,
+              fc=C_BROWN, ec=C_FRAME, zorder=6)
 
 # Label
 leader(ax4b, sb_y(DV_YD_B + elbow_r + 20), sb_z(ELBOW_Z + elbow_r),
@@ -1441,6 +1502,137 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
 leader(ax4b, sb_y(DV_YD_B), sb_z(P04_Z + pump_r_b + 5),
        sb_y(100), sb_z(P04_Z + 80),
        "SHURFLO 2088\n12V DC, 3.5 GPM\nSELF-PRIMING", fs=6, color=C_PUMP)
+
+# ═════════════════════════════════════════════════════════════════════════════
+# PANEL C — PLAN VIEW: WALKWAY PIPE PENETRATION (~1:3)
+# Looking down. X horizontal, Yd vertical (wall at bottom).
+# Shows walkway grating with notch, pipe passing through, routing context.
+# ═════════════════════════════════════════════════════════════════════════════
+SC_C = 3.0   # mm per drawing unit
+OC_X = 1.0   # drawing offset for X=0 (relative)
+OC_Y = 1.0   # drawing offset for Yd=0
+
+# Center the view on the pipe penetration area
+# Show X = PH_X - 200 to PH_X + 200 (400mm span around sump center)
+# Show Yd = -30 to 350mm
+X_CENTER = PH_X  # 2399mm — sump/pickup X position
+X_VIEW_L = X_CENTER - 200
+X_VIEW_R = X_CENTER + 200
+
+def sc_x(x_mm):
+    """Scale X in mm (relative to X_VIEW_L) to data coords."""
+    return OC_X + (x_mm - X_VIEW_L) / SC_C
+
+def sc_yd(yd_mm):
+    """Scale Yd in mm to data coords."""
+    return OC_Y + yd_mm / SC_C
+
+ax4c.set_xlim(sc_x(X_VIEW_L - 30) - 0.5, sc_x(X_VIEW_R + 30) + 0.5)
+ax4c.set_ylim(sc_yd(-40) - 0.5, sc_yd(360) + 0.5)
+
+# Panel C title
+ax4c.text(sc_x(X_CENTER), sc_yd(350),
+          "PLAN VIEW — WALKWAY PIPE PENETRATION (APPROX 1:3)",
+          ha="center", va="top", fontsize=9, fontweight="bold",
+          color="#1A237E", zorder=10)
+
+# ── Container wall (Yd=0 line) ──────────────────────────────────────────────
+ax4c.add_patch(plt.Rectangle((sc_x(X_VIEW_L - 20), sc_yd(-WALL_T)),
+              (X_VIEW_R - X_VIEW_L + 40) / SC_C, WALL_T / SC_C,
+              fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=2, hatch=".."))
+
+# ── Walkway grating (Yd = 0 to WALKWAY_W) ──────────────────────────────────
+# Two grating sections with notch gap between them
+NOTCH_X_HW = 25  # half-width of notch in X direction (50mm total)
+notch_x_l = X_CENTER - NOTCH_X_HW
+notch_x_r = X_CENTER + NOTCH_X_HW
+
+# Grating LEFT of notch
+ax4c.add_patch(plt.Rectangle((sc_x(X_VIEW_L - 10), sc_yd(0)),
+              (notch_x_l - X_VIEW_L + 10) / SC_C, WALKWAY_W / SC_C,
+              fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3, alpha=0.7))
+
+# Grating RIGHT of notch
+ax4c.add_patch(plt.Rectangle((sc_x(notch_x_r), sc_yd(0)),
+              (X_VIEW_R + 10 - notch_x_r) / SC_C, WALKWAY_W / SC_C,
+              fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3, alpha=0.7))
+
+# Notch edges
+ax4c.plot([sc_x(notch_x_l), sc_x(notch_x_l)],
+         [sc_yd(0), sc_yd(WALKWAY_W)],
+         color="#8D6E63", lw=1.2, zorder=4)
+ax4c.plot([sc_x(notch_x_r), sc_x(notch_x_r)],
+         [sc_yd(0), sc_yd(WALKWAY_W)],
+         color="#8D6E63", lw=1.2, zorder=4)
+
+# Inner notch boundary (Yd direction — cut to accommodate Yd range of hose)
+NOTCH_YD_INNER = HOSE_PASS_YD - NOTCH_HW  # ~45mm
+NOTCH_YD_OUTER = HOSE_PASS_YD + NOTCH_HW  # ~85mm
+# Draw the notch opening more precisely
+ax4c.add_patch(plt.Rectangle((sc_x(notch_x_l), sc_yd(NOTCH_YD_INNER)),
+              (notch_x_r - notch_x_l) / SC_C,
+              (NOTCH_YD_OUTER - NOTCH_YD_INNER) / SC_C,
+              fc="#F5F5F0", ec="#8D6E63", lw=1.0, zorder=4))
+
+# ── Pipe cross-section (circle from above) ──────────────────────────────────
+# The hose passes through the notch at (X_CENTER, HOSE_PASS_YD)
+pipe_r_c = HOSE_OD / 2 / SC_C
+pipe_wall_c = HOSE_WALL / SC_C
+draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(HOSE_PASS_YD),
+              pipe_r_c, pipe_wall_c,
+              fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=6)
+
+# ── Tray rim (dashed context line at Yd=80) ─────────────────────────────────
+ax4c.plot([sc_x(X_VIEW_L), sc_x(X_VIEW_R)],
+         [sc_yd(tray_yd_near), sc_yd(tray_yd_near)],
+         color="#C8D8E8", lw=1.5, ls="--", zorder=2)
+ax4c.text(sc_x(X_VIEW_R - 10), sc_yd(tray_yd_near + 8),
+          "TRAY RIM (BELOW)", ha="right", va="bottom",
+          fontsize=5.5, color="#6A8CAF", style="italic", zorder=3)
+
+# ── Pipe routing arrows ─────────────────────────────────────────────────────
+# Arrow from sump area (inside tray) to pipe — shows hose coming from tray side
+ax4c.annotate("", xy=(sc_x(X_CENTER), sc_yd(HOSE_PASS_YD + HOSE_OD/2 + 5)),
+             xytext=(sc_x(X_CENTER), sc_yd(tray_yd_near + 30)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5,
+                             mutation_scale=10),
+             zorder=5)
+ax4c.text(sc_x(X_CENTER), sc_yd(tray_yd_near + 40),
+          "FROM PICKUP\nTUBE IN SUMP", ha="center", va="bottom",
+          fontsize=5.5, color=C_BROWN, fontweight="bold", zorder=5)
+
+# Arrow from pipe to manifold — hose routes along wall (in -X direction or along wall)
+ax4c.annotate("", xy=(sc_x(X_CENTER - 80), sc_yd(HOSE_PASS_YD - HOSE_OD/2 - 5)),
+             xytext=(sc_x(X_CENTER), sc_yd(HOSE_PASS_YD - HOSE_OD/2 - 5)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5,
+                             linestyle="--", mutation_scale=10),
+             zorder=5)
+ax4c.text(sc_x(X_CENTER - 90), sc_yd(HOSE_PASS_YD - HOSE_OD/2 - 5),
+          "TO P-04\nON MANIFOLD\n(BELOW WALKWAY)", ha="right", va="center",
+          fontsize=5.5, color=C_BROWN, fontweight="bold", zorder=5)
+
+# ── Dimensions ──────────────────────────────────────────────────────────────
+# Notch width in X
+draw_dim_h(ax4c, sc_x(notch_x_l), sc_x(notch_x_r),
+           sc_yd(-15), f"{int(notch_x_r - notch_x_l)}mm NOTCH",
+           offset=0.5, fs=6.5, above=False)
+
+# Walkway width
+draw_dim_v(ax4c, sc_x(X_VIEW_R + 15), sc_yd(0), sc_yd(WALKWAY_W),
+           f"{WALKWAY_W}mm WALKWAY", offset=0.6, fs=6, right=True)
+
+# Hose position from wall
+draw_dim_v(ax4c, sc_x(X_VIEW_L + 15), sc_yd(0), sc_yd(HOSE_PASS_YD),
+           f"{HOSE_PASS_YD}mm", offset=0.5, fs=6, right=False)
+
+# Labels
+leader(ax4c, sc_x(X_CENTER + 30), sc_yd(HOSE_PASS_YD),
+       sc_x(X_CENTER + 100), sc_yd(HOSE_PASS_YD + 80),
+       f"1\" REINFORCED\nSUCTION HOSE\n(OD {HOSE_OD:.0f}mm)", fs=6, color=C_BROWN)
+
+leader(ax4c, sc_x(notch_x_l + 10), sc_yd(WALKWAY_W - 20),
+       sc_x(X_CENTER + 120), sc_yd(WALKWAY_W + 30),
+       "NOTCH CUT\nIN WALKWAY\nGRATING", fs=6, color="#8D6E63")
 
 # ── Flow path legend ────────────────────────────────────────────────────────
 flow_notes = [

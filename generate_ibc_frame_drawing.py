@@ -1067,11 +1067,11 @@ def sheet3():
 
     # ── Detail inset: Corner Joint ──────────────────────────────────────────
     det_x = px(X_LO + 20)
-    det_y = py(YD_LO + 540)
+    det_y = py(YD_LO + 240)
     det_w = px(350)
     det_h = py(280)
     ax.add_patch(Rectangle((det_x, det_y), det_w, det_h,
-                            fc=C_DETAIL, ec=C_OUT, lw=1.5, zorder=12))
+                            fc="white", ec=C_OUT, lw=1.5, zorder=12))
     ax.text(det_x + det_w / 2, det_y + det_h - py(10),
             "DETAIL A: TYPICAL CORNER JOINT (≈5:1)",
             ha="center", va="top", fontsize=6, color=C_OUT,
@@ -1131,7 +1131,7 @@ def sheet3():
     det2_w = px(350)
     det2_h = py(280)
     ax.add_patch(Rectangle((det2_x, det2_y), det2_w, det2_h,
-                            fc=C_DETAIL, ec=C_OUT, lw=1.5, zorder=12))
+                            fc="white", ec=C_OUT, lw=1.5, zorder=12))
     ax.text(det2_x + det2_w / 2, det2_y + det2_h - py(10),
             "DETAIL B: D-RING LASHING POINT (≈4:1)",
             ha="center", va="top", fontsize=6, color=C_OUT,
@@ -1172,8 +1172,8 @@ def sheet3():
             **FONT, zorder=15)
 
     # ── Notes ───────────────────────────────────────────────────────────────
-    notes_x = px(X_LO + 20)
-    notes_y = py(YD_LO + 110)
+    notes_x = px(X_HI / 2)
+    notes_y = py(YD_LO + 510)
     notes = [
         "PLAN VIEW NOTES:",
         "",
@@ -1188,8 +1188,8 @@ def sheet3():
     ]
     for i, line in enumerate(notes):
         bold = i == 0
-        ax.text(notes_x, notes_y - i * py(18), line,
-                ha="left", va="top", fontsize=6.5 if bold else 5.5,
+        ax.text(notes_x, notes_y - i * py(20), line,
+                ha="left", va="top", fontsize=7 if bold else 6.5,
                 color=C_OUT if bold else C_DIM,
                 fontweight="bold" if bold else "normal",
                 **FONT, zorder=15)
@@ -1199,7 +1199,7 @@ def sheet3():
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLAN VIEW — PLATFORM BEAM LAYOUT & DETAILS",
                 scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW LOOKING DOWN",
-                height=0.05)
+                height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet3.png", dpi=130,
                 bbox_inches="tight", facecolor=BG)

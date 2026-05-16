@@ -324,7 +324,7 @@ def sheet1():
     ax.axis("off")
 
     # ── Title ────────────────────────────────────────────────────────────────
-    ax.text(sx(FRAME_FOOTPRINT_W / 2), sy(TOP_Z + 200),
+    ax.text(sx(FRAME_FOOTPRINT_W * 0.5), sy(TOP_Z + 300),
             "FRONT ELEVATION — LOOKING ALONG X TOWARD SEALED END WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -518,91 +518,91 @@ def sheet1():
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall width
-    draw_dim_h(ax, sx(0), sx(FRAME_FOOTPRINT_W), sy(-120),
+    draw_dim_h(ax, sx(0), sx(FRAME_FOOTPRINT_W), sy(-80),
                f"{FRAME_FOOTPRINT_W}mm  FRAME WIDTH (WALL-TO-WALL)",
-               offset=sy(5), fs=6, font=FONT)
+               offset=sy(5), fs=6, font=FONT, above=False)
 
     # Near column
-    draw_dim_h(ax, sx(BLUE_IBC_Y), sx(NEAR_COL_R), sy(-60),
+    draw_dim_h(ax, sx(BLUE_IBC_Y), sx(NEAR_COL_R), sy(-50),
                f"{IBC_D}mm  IBC DEPTH",
                offset=sy(5), fs=5.5, font=FONT)
 
     # Corridor
-    draw_dim_h(ax, sx(NEAR_COL_R), sx(FAR_COL_L), sy(-60),
+    draw_dim_h(ax, sx(NEAR_COL_R), sx(FAR_COL_L), sy(-50),
                f"{CORRIDOR_W}mm\nCORRIDOR",
                offset=sy(5), fs=5.5, font=FONT)
 
     # Far column
-    draw_dim_h(ax, sx(IBC_FAR_Y), sx(IBC_FAR_Y + IBC_D), sy(-60),
+    draw_dim_h(ax, sx(IBC_FAR_Y), sx(IBC_FAR_Y + IBC_D), sy(-50),
                f"{IBC_D}mm  IBC DEPTH",
                offset=sy(5), fs=5.5, font=FONT)
 
     # Heights (right side)
     dim_yd = IBC_FAR_Y + IBC_D + FRAME_RHS + 80
     draw_dim_v(ax, sx(dim_yd), sy(0), sy(PLATFORM_Z),
-               f"{PLATFORM_Z}mm\nBOTTOM TIER",
-               offset=sx(5), fs=5.5, right=True, font=FONT)
+               f"{PLATFORM_Z}mm BOTTOM TIER",
+               offset=sx(15), fs=5.5, right=True, font=FONT)
     draw_dim_v(ax, sx(dim_yd + 80), sy(0), sy(PLATFORM_Z + FRAME_RHS),
-               f"{PLATFORM_Z + FRAME_RHS}mm\nPLATFORM TOP",
-               offset=sx(5), fs=5.5, right=True, font=FONT)
+               f"{PLATFORM_Z + FRAME_RHS}mm PLATFORM TOP",
+               offset=sx(15), fs=5.5, right=True, font=FONT)
     draw_dim_v(ax, sx(dim_yd + 160), sy(0), sy(TOP_Z),
-               f"{TOP_Z}mm\nFRAME TOP",
-               offset=sx(5), fs=5.5, right=True, font=FONT)
+               f"{TOP_Z}mm FRAME TOP",
+               offset=sx(15), fs=5.5, right=True, font=FONT)
 
     # RHS member size
     draw_dim_h(ax, sx(POST_NEAR_YD), sx(POST_NEAR_YD + FRAME_RHS),
                sy(TOP_Z + 60),
-               f"{FRAME_RHS}mm", offset=sy(5), fs=5.5, font=FONT)
+               f"{FRAME_RHS}mm", offset=sy(20), fs=5.5, font=FONT)
 
     # Gate height
     draw_dim_v(ax, sx(BLUE_IBC_Y - FRAME_RHS - 60), sy(0), sy(GATE_H),
-               f"{GATE_H}mm\nGATE",
+               f"{GATE_H}mm GATE",
                offset=sx(5), fs=5.5, font=FONT)
 
     # Lip height
     draw_dim_v(ax, sx(POST_NEAR_YD - 30), sy(PLATFORM_Z + FRAME_RHS),
                sy(PLATFORM_Z + FRAME_RHS + LIP_H),
-               f"{LIP_H}mm\nLIP",
+               f"{LIP_H}mm LIP",
                offset=sx(5), fs=5.5, font=FONT)
 
     # IBC anatomy dimensions (left side of near column)
     anat_yd = BLUE_IBC_Y - FRAME_RHS - 160
     draw_dim_v(ax, sx(anat_yd), sy(0), sy(IBC_PALLET_H),
-               f"{IBC_PALLET_H}mm\nPALLET",
+               f"{IBC_PALLET_H}mm PALLET",
                offset=sx(5), fs=5, font=FONT)
     draw_dim_v(ax, sx(anat_yd), sy(IBC_PALLET_H), sy(IBC_BOTTLE_TOP),
-               f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm\nBOTTLE",
+               f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm BOTTLE",
                offset=sx(5), fs=5, font=FONT)
-    draw_dim_v(ax, sx(anat_yd), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
-               f"{IBC_CAGE_RAIL_W}mm\nRAIL",
+    draw_dim_v(ax, sx(anat_yd + 40), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
+               f"{IBC_CAGE_RAIL_W}mm RAIL",
                offset=sx(5), fs=5, font=FONT)
     # Valve height
     draw_dim_v(ax, sx(anat_yd - 60), sy(0), sy(IBC_VALVE_Z),
-               f"{IBC_VALVE_Z}mm\nVALVE CL",
+               f"{IBC_VALVE_Z}mm VALVE CL",
                offset=sx(5), fs=5, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
     leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z / 2),
-           sx(NEAR_COL_R + 180), sy(TOP_Z / 2 + 150),
+           sx(NEAR_COL_R + 300), sy(TOP_Z / 2 + 150),
            "CORRIDOR UPRIGHT\n50×50×3 RHS\n(×6 TOTAL, 3 PER SIDE)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(BLUE_IBC_Y - 100), sy(PLATFORM_Z + 200),
+           sx(BLUE_IBC_Y - 100), sy(PLATFORM_Z + 300),
            "PLATFORM BEAM\n50×50×3 RHS\n(×6, 3 PER COLUMN)",
            color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(0), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(-100), sy(PLATFORM_Z + 300),
+           sx(-100), sy(PLATFORM_Z + 200),
            "WALL BRACKET\n8mm PLATE + GUSSET\nM12 ANCHOR BOLTS\n(×4 PER WALL, ×8 TOTAL)",
            color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
            sy(PLATFORM_Z + FRAME_RHS + LIP_H / 2),
-           sx(POST_NEAR_YD + 180), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 100),
+           sx(POST_NEAR_YD + 300), sy(PLATFORM_Z + FRAME_RHS + LIP_H + 200),
            "ANTI-ROTATION LIP\n5mm PLATE × 40mm HIGH\nFILLET WELDED TO PLATFORM",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -621,7 +621,7 @@ def sheet1():
 
     # ── IBC anatomy labels ──────────────────────────────────────────────────
     leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(IBC_PALLET_H / 2),
-           sx(BLUE_IBC_Y + IBC_D / 2 - 200), sy(IBC_PALLET_H / 2 - 100),
+           sx(BLUE_IBC_Y + IBC_D / 2 - 200), sy(IBC_PALLET_H + 100),
            "PALLET BASE\n168mm (STEEL/PLASTIC)\nFORK POCKETS",
            color=C_PALLET, fs=5, ha="right", va="top",
            arrow_style="-|>", font=FONT)
@@ -640,8 +640,8 @@ def sheet1():
 
     leader(ax, sx(IBC_FAR_Y + IBC_D / 2),
            sy(plat_top + IBC_PALLET_H / 2),
-           sx(IBC_FAR_Y + IBC_D + 150),
-           sy(plat_top + IBC_PALLET_H / 2 - 60),
+           sx(IBC_FAR_Y + IBC_D * 0.5),
+           sy(plat_top + IBC_PALLET_H / 2 + 280),
            "UPPER IBC PALLET\nBEARS ON PLATFORM\n+ 12mm RUBBER MAT",
            color=C_PALLET, fs=5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -654,7 +654,7 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     # ── Material note ───────────────────────────────────────────────────────
-    mat_note_y = sy(Z_LO + 300)
+    mat_note_y = sy(Z_HI - 40)
     notes = [
         "MATERIAL & FABRICATION NOTES:",
         "",
@@ -684,7 +684,7 @@ def sheet1():
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
                 scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW ALONG X",
-                height=0.05)
+                height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet1.png", dpi=130,
                 bbox_inches="tight", facecolor=BG)
@@ -816,36 +816,36 @@ def sheet2():
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth
-    draw_dim_h(ax, sx(FX_FRONT), sx(FX_BACK + FRAME_RHS), sy(-120),
+    draw_dim_h(ax, sx(FX_FRONT), sx(FX_BACK + FRAME_RHS), sy(-60),
                f"{FRAME_FOOTPRINT_D}mm  FRAME DEPTH",
-               offset=sy(5), fs=6, font=FONT)
+               offset=sy(10), fs=6, font=FONT, above=False)
 
     # Bay spacing
-    draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-60),
+    draw_dim_h(ax, sx(FX_FRONT), sx(FX_MID), sy(-40),
                f"{FX_MID}mm", offset=sy(5), fs=5.5, font=FONT)
-    draw_dim_h(ax, sx(FX_MID), sx(FX_BACK), sy(-60),
+    draw_dim_h(ax, sx(FX_MID + FRAME_RHS), sx(FX_BACK), sy(-40),
                f"{FX_BACK - FX_MID}mm", offset=sy(5), fs=5.5, font=FONT)
 
     # Heights (right side)
     dim_x = FRAME_FOOTPRINT_D + 80
     draw_dim_v(ax, sx(dim_x), sy(0), sy(PLATFORM_Z),
-               f"{PLATFORM_Z}mm", offset=sx(5), fs=5.5, right=True, font=FONT)
+               f"{PLATFORM_Z}mm", offset=sx(10), fs=5.5, right=True, font=FONT)
     draw_dim_v(ax, sx(dim_x + 60), sy(PLATFORM_Z), sy(TOP_Z),
-               f"{TOP_Z - PLATFORM_Z}mm", offset=sx(5), fs=5.5,
+               f"{TOP_Z - PLATFORM_Z}mm", offset=sx(10), fs=5.5,
                right=True, font=FONT)
     draw_dim_v(ax, sx(dim_x + 120), sy(0), sy(TOP_Z),
-               f"{TOP_Z}mm\nTOTAL", offset=sx(5), fs=5.5,
+               f"{TOP_Z}mm TOTAL", offset=sx(10), fs=5.5,
                right=True, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
     leader(ax, sx(FX_MID + FRAME_RHS / 2), sy(TOP_Z / 2),
-           sx(FX_MID + 200), sy(TOP_Z / 2 + 200),
+           sx(FX_MID + 200), sy(TOP_Z / 2 + 300),
            "CORRIDOR UPRIGHT\n50×50×3 RHS\nFLOOR TO TOP",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(FRAME_FOOTPRINT_D / 2), sy(PLATFORM_Z + FRAME_RHS / 2),
-           sx(FRAME_FOOTPRINT_D / 2 + 200), sy(PLATFORM_Z + 200),
+           sx(FRAME_FOOTPRINT_D / 2 - 300), sy(PLATFORM_Z + 200),
            "LONGITUDINAL BEAM\n50×50×3 RHS\n(3 LEVELS × 2 = 6 TOTAL)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)

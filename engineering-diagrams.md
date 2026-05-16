@@ -295,3 +295,23 @@ Equipment items intersecting the cone are highlighted as potential shadow source
 See [Construction Guide](pinhole-camera-construction.md) §4 for layout context.
 
 ![TBS-001 — Optical Line-of-Sight Clearance](assets/line-of-sight.png)
+
+---
+
+## 17. IBC Support Frame Fabrication
+
+Welded 50×50×3mm RHS mild steel stacking frame for the 2×2 IBC stack in the
+right end zone. Portal spine along the 270mm plumbing corridor with cantilever
+platform beams, X-bracing, wall brackets, D-ring lashing points, anti-rotation
+lip, and removable access gates. Frame only — no IBCs or other components shown.
+Source report: [Equipment Layout](equipment-layout-report.md) §5,
+[Water System](water-system-report.md) §5.
+
+**Sheet 1 — Front elevation (looking along X toward sealed end wall): Full container width showing corridor uprights (×6, 3 per side), three levels of transverse beams (base/platform/top), wall brackets with M12 anchor bolts and gusset plates, anti-rotation lip (5mm × 40mm plate), D-ring lashing points (×8, WLL 1,100 kg), access gates (×2, 300mm × 916mm clear)**
+![TBS-001 IBC Frame — Sheet 1: Front Elevation](assets/ibc-frame-sheet1.png)
+
+**Sheet 2 — Side elevation (looking along Yd from near wall): Frame depth (1,284mm) showing three upright bays at 642mm centers, longitudinal beams at three levels, X-bracing in bottom-tier bays for racking resistance, D-ring positions, access gate outline**
+![TBS-001 IBC Frame — Sheet 2: Side Elevation](assets/ibc-frame-sheet2.png)
+
+**Sheet 3 — Plan view at platform level (Z=1,060mm): Beam layout in cross-section showing longitudinal corridor beams, transverse cantilever beams, corridor opening, wall bracket positions and bolt pattern, anti-rotation lip perimeter, rubber mat positions. Detail A: typical welded corner joint (≈5:1). Detail B: D-ring lashing point mounting (≈4:1)**
+![TBS-001 IBC Frame — Sheet 3: Plan View](assets/ibc-frame-sheet3.png)

@@ -1216,10 +1216,10 @@ def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
 ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
-ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(720) + 1.5)
+ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
 
 # Panel B title
-ax4b.text(sb_y(250), sb_z(700), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
+ax4b.text(sb_y(250), sb_z(600), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1231,7 +1231,7 @@ ax4b.add_patch(plt.Rectangle((sb_y(-20), sb_z(-FLOOR_T)),
 
 # Near wall (cropped to view height)
 ax4b.add_patch(plt.Rectangle((sb_y(-WALL_T - 8), sb_z(-FLOOR_T)), 10 / SC_B,
-              720 / SC_B,
+              620 / SC_B,
               fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
 
 # ── Shim strips (visible as small rectangles on floor) ───────────────────────
@@ -1329,23 +1329,44 @@ ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B - dv_h_b/2))
 ax4b.text(sb_y(DV_YD_B), sb_z(DV_Z_B), "3W-DV-02",
           ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=6)
 
-# ── Rise from diverter to IBC-3 ─────────────────────────────────────────────
-# View cropped at Z=720mm; IBC-3 is at Z=1,010mm (above view).
-# Show arrow going up to top of view with label.
+# ── Discharge from diverter to IBC-3 ────────────────────────────────────────
+# IBC-3 is at the far end of the container (along X). From the diverter, the
+# pipe rises slightly then elbows horizontally along the wall toward IBC-3.
+# In this cross-section (looking along +X), the horizontal run goes INTO the
+# page — shown as a pipe end-on (circle) after the elbow.
 IBC3_FILL_Z = IBC_H_600   # ~1,010mm
-ARROW_TOP_Z = 680  # near top of cropped view
-ax4b.annotate("", xy=(sb_y(DV_YD_B), sb_z(ARROW_TOP_Z)),
-             xytext=(sb_y(DV_YD_B), sb_z(DV_Z_B + dv_h_b/2)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
-                             mutation_scale=14),
-             zorder=4)
+ELBOW_Z = DV_Z_B + dv_h_b/2 + 40  # short rise above diverter
 
-# IBC-3 label at arrow tip (not drawn as box — above view)
-ax4b.text(sb_y(DV_YD_B + 10), sb_z(ARROW_TOP_Z - 10),
-          f"TO IBC-3 (BROWN)\nZ = {IBC3_FILL_Z:,}mm",
-          ha="left", va="top", fontsize=7, fontweight="bold",
-          color=C_BROWN, zorder=4,
-          bbox=dict(fc="white", ec=C_BROWN, lw=0.8, pad=2, alpha=0.9))
+# Short vertical rise from diverter to elbow
+ax4b.plot([sb_y(DV_YD_B), sb_y(DV_YD_B)],
+         [sb_z(DV_Z_B + dv_h_b/2), sb_z(ELBOW_Z)],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=4)
+
+# Elbow symbol — small arc indicating 90° turn into the page
+elbow_r = 15  # mm
+ax4b.add_patch(Arc((sb_y(DV_YD_B), sb_z(ELBOW_Z)),
+               2 * elbow_r / SC_B, 2 * elbow_r / SC_B,
+               angle=0, theta1=0, theta2=90,
+               ec=C_BROWN, lw=2.0, zorder=5))
+
+# Pipe end-on (circle) — shows pipe going into the page toward IBC-3
+PIPE_OD_B = 25  # 1" nominal
+ax4b.add_patch(plt.Circle((sb_y(DV_YD_B + elbow_r), sb_z(ELBOW_Z + elbow_r)),
+              PIPE_OD_B / 2 / SC_B,
+              fc=C_BROWN, ec=C_FRAME, lw=1.2, zorder=6))
+# Cross marks inside circle to indicate pipe going into page
+cr = PIPE_OD_B / 2 / SC_B * 0.6
+cx, cz = sb_y(DV_YD_B + elbow_r), sb_z(ELBOW_Z + elbow_r)
+ax4b.plot([cx - cr, cx + cr], [cz - cr, cz + cr],
+         color="white", lw=1.0, zorder=7)
+ax4b.plot([cx - cr, cx + cr], [cz + cr, cz - cr],
+         color="white", lw=1.0, zorder=7)
+
+# Label
+leader(ax4b, sb_y(DV_YD_B + elbow_r + 20), sb_z(ELBOW_Z + elbow_r),
+       sb_y(120), sb_z(ELBOW_Z + 80),
+       f"TO IBC-3 (BROWN)\nVIA WALL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
+       color=C_BROWN)
 
 # ── Waste branch (dashed) ───────────────────────────────────────────────────
 ax4b.annotate("", xy=(sb_y(DV_YD_B - dv_w_b/2 - 40), sb_z(DV_Z_B)),

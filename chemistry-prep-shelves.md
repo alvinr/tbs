@@ -22,24 +22,24 @@ The shelf must not obstruct walkway navigation (the operator walks the full leng
 
 ## 2. Location and Spatial Constraints
 
-The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=4,029–4,329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
+The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=3,729–4,329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
 
 ### 2.1 Optical Cone Clearance
 
-At Yd=600mm (shelf centroid), the optical cone right boundary is:
+At Yd=450mm (shelf centroid), the optical cone right boundary is:
 
-    cone_right(600) = PH_X + (FP_X_R − PH_X) × 600 / FP_Y
-                    = 2,637 + (4,649 − 2,637) × 600 / 2,362
-                    = 2,637 + 511 = 3,148mm
+    cone_right(450) = PH_X + (FP_X_R − PH_X) × 450 / FP_Y
+                    = 2,637 + (4,649 − 2,637) × 450 / 2,362
+                    = 2,637 + 384 = 3,021mm
 
-The shelf left edge (X=4,029mm) is 881mm outside the optical cone. The shelf cannot vignette the image at any film plane position.
+The shelf left edge (X=3,729mm) is 708mm outside the optical cone. The shelf cannot vignette the image at any film plane position.
 
 ### 2.2 Spatial Constraints
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=4,029–4,329mm (300mm) |
-| Shelf Yd range | Yd=300–900mm (600mm) |
+| Shelf X range | X=3,729–4,329mm (600mm) |
+| Shelf Yd range | Yd=300–600mm (300mm) |
 | Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
 | Processing tray | Floor level (rim H=50mm) — well below shelf at H=1,025mm |
 | Right walkway | X=4,329–4,629mm, ceiling-hung (adjacent, Yd=0–300mm) |
@@ -56,12 +56,12 @@ Single ceiling-suspended platform:
 
 | Parameter | Value |
 |-----------|-------|
-| Position | X=4,029–4,329mm, Yd=300–900mm |
-| Width (X direction) | 300mm |
-| Depth (Yd direction) | 600mm |
+| Position | X=3,729–4,329mm, Yd=300–600mm |
+| Width (X direction) | 600mm |
+| Depth (Yd direction) | 300mm |
 | Work surface height | H=1,025mm above floor (925mm above walkway deck) |
 | Shelf thickness | 22mm (18mm ply + 4mm perimeter frame) |
-| Work surface area | 300 × 600 = 180,000 mm² (0.18 m²) |
+| Work surface area | 600 × 300 = 180,000 mm² (0.18 m²) |
 | Hanger rod length | 1,363mm (ceiling to shelf top) |
 | Hanger rod diameter | M10 (matches right walkway system) |
 | Number of hanger rods | 4 (one at each corner, inset 30mm) |
@@ -70,7 +70,7 @@ Single ceiling-suspended platform:
 
 **Work surface:** 18mm phenolic-faced plywood (concrete form ply). The phenolic resin face provides excellent chemical resistance to cyanotype solutions (ferric/ferricyanide salts, pH 3–4 citric acid). Surface is smooth, non-absorbent, and easily wiped clean. If damaged after extended use, the ply panel can be unbolted and replaced for ~$30.
 
-**Perimeter frame:** 25×25×3mm mild steel SHS (square hollow section), welded into a rectangular perimeter frame (300×600mm outer). The ply panel sits inside the frame, flush with the top surface. Frame corners have gusset plates for rigidity. Finish: flat black powder coat.
+**Perimeter frame:** 25×25×3mm mild steel SHS (square hollow section), welded into a rectangular perimeter frame (600×300mm outer). The ply panel sits inside the frame, flush with the top surface. Frame corners have gusset plates for rigidity. Finish: flat black powder coat.
 
 **Spill guard:** 15mm-tall steel lip welded to the frame top edge on all four sides. Prevents chemistry bottles or solution from sliding off during road transport vibration. The lip doubles as a retainer for loose items.
 
@@ -119,9 +119,9 @@ The shelf is permanently installed — it does not fold or detach for transport.
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=100mm) at approximately X=4,179mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1,025mm (925mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the near walkway (deck at H=100mm) at approximately X=4,029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1,025mm (925mm above the walkway deck) — ergonomic counter height for standing prep work.
 
-The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 600mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
+The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
 
 The near walkway remains completely clear for transit in both directions — no fold-down mechanism, no legs on the walkway, no obstruction at any time.
 
@@ -131,7 +131,7 @@ The near walkway remains completely clear for transit in both directions — no 
 
 1. Cut 4× M10 threaded rod to 1,400mm (allows 37mm trim margin for leveling)
 2. Fabricate 4× ceiling plates (100×60×6mm, drill 2× Ø9mm + 1× Ø11mm per plate)
-3. Mark ceiling rib positions for 4 hanger locations (corners of 300×600mm rectangle, inset 30mm)
+3. Mark ceiling rib positions for 4 hanger locations (corners of 600×300mm rectangle, inset 30mm)
 4. Drill 2× Ø9mm holes per ceiling plate location through ceiling ribs
 5. Install ceiling plates with M8×30mm bolts + backing washers (torque to 20 N·m)
 6. Thread M10 rods through ceiling plates; secure with nut + washer above and below plate
@@ -174,7 +174,7 @@ The near walkway remains completely clear for transit in both directions — no 
 
 ### Sheet 1 — Plan View
 
-Top-down view showing the shelf position (X=4,029–4,329mm, Yd=300–900mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
+Top-down view showing the shelf position (X=3,729–4,329mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
@@ -182,7 +182,7 @@ Top-down view showing the shelf position (X=4,029–4,329mm, Yd=300–900mm) rel
 
 ### Sheet 2 — Section Elevation
 
-Cross-section at X=4,179mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
+Cross-section at X=4,029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
 
 ![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
 

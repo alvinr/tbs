@@ -185,14 +185,15 @@ PUMP_H_HI  = 600     # pump manifold top H (mm)
 # materials staging.  Suspended from 4x M10 threaded rod hangers in the
 # processing area corner, just inside the right walkway and near walkway.
 # Does not overlap any walkway — all walkways clear for passage.
-# Shadow-free: cone right boundary at Yd=600 is X=3,148mm; shelf at
-# X=4,029+ is >880mm outside cone.
-SHELF_X_L      = 4029    # shelf left edge X (mm) — 300mm left of right walkway
+# Rotated 90°: long axis along X (parallel to walkway), short axis into tray.
+# Shadow-free: cone right boundary at Yd=450 is X=3,021mm; shelf at
+# X=3,729+ is >700mm outside cone.
+SHELF_X_L      = 3729    # shelf left edge X (mm) — 600mm left of right walkway
 SHELF_X_R      = 4329    # shelf right edge X (mm) — flush with right walkway inner edge
-SHELF_W        = 300     # shelf width in X direction (mm)
+SHELF_W        = 600     # shelf width in X direction (mm) — long axis along walkway
 SHELF_YD_NEAR  = 300     # shelf near edge Yd (mm) — at near walkway outer edge
-SHELF_YD_FAR   = 900     # shelf far edge Yd (mm)
-SHELF_DEPTH    = 600     # shelf depth in Yd direction (mm)
+SHELF_YD_FAR   = 600     # shelf far edge Yd (mm)
+SHELF_DEPTH    = 300     # shelf depth in Yd direction (mm) — short axis into tray
 SHELF_H        = 1025    # work surface height AFF (mm) — 925mm above walkway deck
 SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
 SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches right walkway)

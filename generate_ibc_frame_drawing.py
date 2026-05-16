@@ -34,6 +34,8 @@ from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
     BLUE_IBC_Y, IBC_FAR_Y,
+    IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W,
+    IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, hatch_rect
@@ -96,6 +98,16 @@ BRACKET_L   = 150   # bracket leg length along Yd
 BRACKET_T   = 8     # bracket plate thickness
 BRACKET_BOLT_D = 12 # M12 anchor bolts
 
+# ── IBC anatomy derived heights ─────────────────────────────────────────────
+# (base constants imported from tbs_constants.py)
+IBC_BOTTLE_TOP = IBC_H_600 - IBC_CAGE_RAIL_W    # bottle top (~985mm)
+IBC_BOTTLE_BASE = IBC_PALLET_H                   # bottle starts at pallet top
+
+# Ghost IBC colors
+C_PALLET  = "#8B7355"    # pallet base (wood/steel brown)
+C_BOTTLE  = "#B8D4E8"    # HDPE bottle (translucent blue)
+C_CAGE    = "#707070"    # galvanized cage wire
+
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Helper — draw a filled RHS cross-section (cut view)
@@ -150,10 +162,136 @@ def _weld_tick(ax, x, y, sx, sy, *, side='right', size=8, zo=10):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# Ghost IBC helpers — show cage/pallet anatomy as context for frame interface
+# ═══════════════════════════════════════════════════════════════════════════════
+def _ghost_ibc_elev(ax, yd, z_base, width, sx, sy, *, label="", zo=2.5):
+    """Draw a ghost IBC in elevation view showing pallet, bottle, cage anatomy.
+
+    yd      — left edge Yd position
+    z_base  — bottom of pallet (Z=0 for bottom tier, Z=platform for top tier)
+    width   — IBC width in this view direction (IBC_D for front, IBC_W for side)
+    """
+    # Pallet base
+    ax.add_patch(Rectangle((sx(yd), sy(z_base)),
+                            sx(width), sy(IBC_PALLET_H),
+                            fc=C_PALLET, ec=C_CAGE, lw=0.8, alpha=0.15,
+                            zorder=zo))
+    # Fork pocket slots (2 openings on each side)
+    fork_w = width * 0.25
+    for fx_off in [width * 0.15, width * 0.60]:
+        ax.add_patch(Rectangle((sx(yd + fx_off), sy(z_base + 20)),
+                                sx(fork_w), sy(IBC_PALLET_H - 40),
+                                fc=BG, ec=C_CAGE, lw=0.4, alpha=0.3,
+                                zorder=zo + 0.1))
+
+    # HDPE bottle (inner container)
+    bottle_z = z_base + IBC_BOTTLE_BASE
+    bottle_top = z_base + IBC_BOTTLE_TOP
+    bottle_h = bottle_top - bottle_z
+    bi = IBC_BOTTLE_INSET
+    ax.add_patch(Rectangle((sx(yd + bi), sy(bottle_z)),
+                            sx(width - 2 * bi), sy(bottle_h),
+                            fc=C_BOTTLE, ec=C_CAGE, lw=0.5, alpha=0.12,
+                            zorder=zo + 0.2))
+
+    # Cage top rail
+    rail_z = z_base + IBC_BOTTLE_TOP
+    ax.add_patch(Rectangle((sx(yd), sy(rail_z)),
+                            sx(width), sy(IBC_CAGE_RAIL_W),
+                            fc=C_CAGE, ec=C_CAGE, lw=0.8, alpha=0.2,
+                            zorder=zo + 0.3))
+
+    # Cage corner tubes (shown as vertical strips at edges)
+    ci = IBC_CAGE_INSET
+    for tube_yd in [yd + ci, yd + width - ci]:
+        ax.add_patch(Rectangle((sx(tube_yd - IBC_CAGE_TUBE_D / 2),
+                                 sy(z_base + IBC_PALLET_H - 28)),
+                                sx(IBC_CAGE_TUBE_D),
+                                sy(IBC_H_600 - IBC_PALLET_H + 28),
+                                fc=C_CAGE, ec=C_CAGE, lw=0.6, alpha=0.15,
+                                zorder=zo + 0.3))
+
+    # Cage horizontal mid-rail (wire mesh represented by a single mid line)
+    mid_z = z_base + IBC_PALLET_H + (IBC_H_600 - IBC_PALLET_H) / 2
+    ax.plot([sx(yd + ci), sx(yd + width - ci)],
+            [sy(mid_z), sy(mid_z)],
+            color=C_CAGE, lw=0.5, alpha=0.25, zorder=zo + 0.2)
+
+    # Drain valve position (corridor-facing side — on the right edge for near
+    # column, left edge for far column; caller can adjust)
+    valve_z = z_base + IBC_VALVE_Z
+    # Small circle representing valve
+    ax.add_patch(Circle((sx(yd + width - IBC_CAGE_INSET), sy(valve_z)),
+                         sx(15), fc=C_CAGE, ec=C_CAGE, lw=0.8,
+                         alpha=0.25, zorder=zo + 0.4))
+
+    # Label
+    if label:
+        ax.text(sx(yd + width / 2), sy(z_base + IBC_H_600 / 2), label,
+                ha="center", va="center", fontsize=5.5, color=C_CAGE,
+                alpha=0.5, **FONT, zorder=zo + 0.5)
+
+
+def _ghost_ibc_elev_far(ax, yd, z_base, width, sx, sy, *, label="", zo=2.5):
+    """Ghost IBC for far column — drain valve on LEFT (corridor) side."""
+    _ghost_ibc_elev(ax, yd, z_base, width, sx, sy, label=label, zo=zo)
+    # Override valve position to left side
+    valve_z = z_base + IBC_VALVE_Z
+    # Remove the default right-side valve by drawing over it, then draw on left
+    ax.add_patch(Circle((sx(yd + IBC_CAGE_INSET), sy(valve_z)),
+                         sx(15), fc=C_CAGE, ec=C_CAGE, lw=0.8,
+                         alpha=0.25, zorder=zo + 0.4))
+
+
+def _ghost_ibc_plan(ax, x, yd, w, d, px, py, *, label="", zo=2.5):
+    """Draw a ghost IBC in plan view showing pallet footprint, cage tubes,
+    and bottle outline.
+
+    x, yd — bottom-left corner in plan coordinates
+    w     — width along X axis
+    d     — depth along Yd axis
+    """
+    # Pallet footprint
+    ax.add_patch(Rectangle((px(x), py(yd)), px(w), py(d),
+                            fc=C_PALLET, ec=C_CAGE, lw=0.8, alpha=0.08,
+                            zorder=zo))
+
+    # Bottle outline (inset from pallet)
+    bi = IBC_BOTTLE_INSET
+    ax.add_patch(Rectangle((px(x + bi), py(yd + bi)),
+                            px(w - 2 * bi), py(d - 2 * bi),
+                            fc=C_BOTTLE, ec=C_CAGE, lw=0.5, alpha=0.08,
+                            zorder=zo + 0.2))
+
+    # Cage corner tubes (4 circles at corners)
+    ci = IBC_CAGE_INSET
+    r = IBC_CAGE_TUBE_D / 2
+    for cx, cy in [(x + ci, yd + ci),
+                   (x + w - ci, yd + ci),
+                   (x + ci, yd + d - ci),
+                   (x + w - ci, yd + d - ci)]:
+        ax.add_patch(Circle((px(cx), py(cy)), px(r),
+                             fc=C_CAGE, ec=C_CAGE, lw=0.6,
+                             alpha=0.25, zorder=zo + 0.3))
+
+    # Pallet runner lines (2 runners along X, typical for US format)
+    for runner_yd in [yd + d * 0.25, yd + d * 0.75]:
+        ax.plot([px(x + 20), px(x + w - 20)],
+                [py(runner_yd), py(runner_yd)],
+                color=C_PALLET, lw=1.5, alpha=0.2, zorder=zo + 0.1)
+
+    if label:
+        ax.text(px(x + w / 2), py(yd + d / 2), label,
+                ha="center", va="center", fontsize=5.5, color=C_CAGE,
+                alpha=0.5, **FONT, zorder=zo + 0.5)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Front Elevation
 #
 # Looking along X toward the sealed end wall.  Shows full container width
-# (Yd axis horizontal, Z axis vertical).  Frame members only.
+# (Yd axis horizontal, Z axis vertical).  Frame members and ghost IBC
+# outlines showing cage/pallet anatomy.
 #
 # Visible members:
 #   - 2 corridor uprights (front bay, cut section)
@@ -162,6 +300,7 @@ def _weld_tick(ax, x, y, sx, sy, *, side='right', size=8, zo=10):
 #   - Anti-rotation lip on platform
 #   - D-ring lashing points
 #   - Access gates on corridor face
+#   - Ghost IBC outlines showing pallet/cage/bottle interface
 #   - Behind: mid and back bay uprights shown dashed
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet1():
@@ -189,6 +328,19 @@ def sheet1():
             "FRONT ELEVATION — LOOKING ALONG X TOWARD SEALED END WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
+
+    # ── Ghost IBC outlines (cage/pallet anatomy) ──────────────────────────────
+    # Bottom tier (Z=0)
+    plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
+    _ghost_ibc_elev(ax, BLUE_IBC_Y, 0, IBC_D, sx, sy,
+                    label="IBC-3\n(BOTTOM NEAR)")
+    _ghost_ibc_elev_far(ax, IBC_FAR_Y, 0, IBC_D, sx, sy,
+                        label="IBC-4\n(BOTTOM FAR)")
+    # Top tier (on platform)
+    _ghost_ibc_elev(ax, BLUE_IBC_Y, plat_top, IBC_D, sx, sy,
+                    label="IBC-1\n(TOP NEAR)")
+    _ghost_ibc_elev_far(ax, IBC_FAR_Y, plat_top, IBC_D, sx, sy,
+                        label="IBC-2\n(TOP FAR)")
 
     # ── Base beams (Z=0, transverse — Yd direction) ─────────────────────────
     # Near column base beam: from near wall bracket to corridor
@@ -413,6 +565,22 @@ def sheet1():
                f"{LIP_H}mm\nLIP",
                offset=sx(5), fs=5.5, font=FONT)
 
+    # IBC anatomy dimensions (left side of near column)
+    anat_yd = BLUE_IBC_Y - FRAME_RHS - 160
+    draw_dim_v(ax, sx(anat_yd), sy(0), sy(IBC_PALLET_H),
+               f"{IBC_PALLET_H}mm\nPALLET",
+               offset=sx(5), fs=5, font=FONT)
+    draw_dim_v(ax, sx(anat_yd), sy(IBC_PALLET_H), sy(IBC_BOTTLE_TOP),
+               f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm\nBOTTLE",
+               offset=sx(5), fs=5, font=FONT)
+    draw_dim_v(ax, sx(anat_yd), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
+               f"{IBC_CAGE_RAIL_W}mm\nRAIL",
+               offset=sx(5), fs=5, font=FONT)
+    # Valve height
+    draw_dim_v(ax, sx(anat_yd - 60), sy(0), sy(IBC_VALVE_Z),
+               f"{IBC_VALVE_Z}mm\nVALVE CL",
+               offset=sx(5), fs=5, font=FONT)
+
     # ── Member labels ───────────────────────────────────────────────────────
     leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z / 2),
            sx(NEAR_COL_R + 180), sy(TOP_Z / 2 + 150),
@@ -451,6 +619,40 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="center", va="top",
            arrow_style="-|>", font=FONT)
 
+    # ── IBC anatomy labels ──────────────────────────────────────────────────
+    leader(ax, sx(BLUE_IBC_Y + IBC_D / 2), sy(IBC_PALLET_H / 2),
+           sx(BLUE_IBC_Y + IBC_D / 2 - 200), sy(IBC_PALLET_H / 2 - 100),
+           "PALLET BASE\n168mm (STEEL/PLASTIC)\nFORK POCKETS",
+           color=C_PALLET, fs=5, ha="right", va="top",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), sy(IBC_VALVE_Z),
+           sx(NEAR_COL_R + 200), sy(IBC_VALVE_Z - 60),
+           f"DN50 VALVE (S60×6)\nZ={IBC_VALVE_Z}mm\nCORRIDOR FACE",
+           color=C_CAGE, fs=5, ha="left", va="top",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(BLUE_IBC_Y + IBC_CAGE_INSET), sy(IBC_H_600 - 50),
+           sx(BLUE_IBC_Y - 150), sy(IBC_H_600 + 50),
+           f"CAGE TOP RAIL\n{IBC_CAGE_TUBE_D}mm Ø TUBE\nLASHING STRAP BEARS HERE",
+           color=C_CAGE, fs=5, ha="right", va="bottom",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(IBC_FAR_Y + IBC_D / 2),
+           sy(plat_top + IBC_PALLET_H / 2),
+           sx(IBC_FAR_Y + IBC_D + 150),
+           sy(plat_top + IBC_PALLET_H / 2 - 60),
+           "UPPER IBC PALLET\nBEARS ON PLATFORM\n+ 12mm RUBBER MAT",
+           color=C_PALLET, fs=5, ha="left", va="top",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
+           sy(plat_top + 20),
+           sx(POST_NEAR_YD + 200), sy(plat_top - 60),
+           "LIP RETAINS\nPALLET PERIMETER",
+           color=C_WELD, fs=5, ha="left", va="top",
+           arrow_style="-|>", font=FONT)
+
     # ── Material note ───────────────────────────────────────────────────────
     mat_note_y = sy(Z_LO + 300)
     notes = [
@@ -458,13 +660,16 @@ def sheet1():
         "",
         f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B.",
         f"2. All joints fillet welded (5mm leg), continuous. Grind flush where noted.",
-        f"3. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face.",
+        f"3. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
         f"4. Wall brackets: 8mm mild steel plate, triangular gusset. M12 anchor bolts to container wall ribs.",
         f"5. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
         f"6. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
         f"7. Surface finish: grey oxide primer + flat black powder coat.",
         f"8. Anti-slip rubber mat: 12mm thick, 1,016 × 1,219mm (one per column on platform).",
-        f"9. Total frame weight: ~90 kg.",
+        f"9. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
+        f"10. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",
+        f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
+        f"12. Total frame weight: ~90 kg.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -528,6 +733,18 @@ def sheet2():
             "SIDE ELEVATION — LOOKING ALONG Yd FROM NEAR WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
+
+    # ── Ghost IBC outlines (cage/pallet anatomy) ──────────────────────────────
+    # In side elevation, IBC width = IBC_W = 1,219mm along X.
+    # IBC is centered in frame depth: offset = (FRAME_FOOTPRINT_D - IBC_W)/2
+    ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2  # ~32.5mm
+    plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
+    # Bottom tier
+    _ghost_ibc_elev(ax, ibc_x_offset, 0, IBC_W, sx, sy,
+                    label="BOTTOM TIER\n(IBC-3 OR IBC-4)")
+    # Top tier
+    _ghost_ibc_elev(ax, ibc_x_offset, plat_top, IBC_W, sx, sy,
+                    label="TOP TIER\n(IBC-1 OR IBC-2)")
 
     # ── Uprights (3 bays: front, mid, back) ─────────────────────────────────
     for fx in FX_POSTS:
@@ -776,13 +993,12 @@ def sheet3():
                 ha="center", va="center", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=10, alpha=0.7)
 
-    # ── IBC footprint ghost outlines ────────────────────────────────────────
-    for mat_yd in [near_mat_yd, far_mat_yd]:
-        ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT  # centered in frame
-        ax.add_patch(Rectangle((px(ibc_x), py(mat_yd)),
-                                px(IBC_W), py(IBC_D),
-                                fc="none", ec=C_CL, lw=0.8, ls=(0, (5, 5)),
-                                alpha=0.4, zorder=7))
+    # ── IBC footprint ghost outlines (with cage/pallet anatomy) ──────────────
+    ibc_x = (FRAME_FOOTPRINT_D - IBC_W) / 2 + FX_FRONT  # centered in frame
+    _ghost_ibc_plan(ax, ibc_x, near_mat_yd, IBC_W, IBC_D, px, py,
+                    label="IBC PALLET\nFOOTPRINT")
+    _ghost_ibc_plan(ax, ibc_x, far_mat_yd, IBC_W, IBC_D, px, py,
+                    label="IBC PALLET\nFOOTPRINT")
 
     # ── Corridor opening ────────────────────────────────────────────────────
     corr_x1 = FX_FRONT + FRAME_RHS
@@ -965,9 +1181,10 @@ def sheet3():
         "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
         "3. Transverse beams (along Yd) at each upright bay: cantilever from corridor to wall bracket.",
         "4. Wall brackets bolted to container wall corrugation ribs (M12 anchor bolts, 2 per bracket).",
-        "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face, full perimeter of each bay.",
-        f"6. Rubber mat: 12mm anti-slip, trimmed to IBC footprint ({IBC_D} × {IBC_W}mm).",
-        "7. Ghost outline (blue dashed): IBC cage footprint for reference.",
+        "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face. Retains IBC pallet perimeter.",
+        f"6. Rubber mat: 12mm anti-slip, trimmed to IBC pallet footprint ({IBC_D} × {IBC_W}mm).",
+        f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
+        "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0

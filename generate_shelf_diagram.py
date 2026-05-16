@@ -53,14 +53,14 @@ C_PUMP   = "#B8C8B0"   # pump manifold context
 # ── Derived constants ──────��─────────────────────────────────────────────────
 SHELF_A_R = SHELF_A_X + SHELF_W         # 3,650mm
 SHELF_B_R = SHELF_B_X + SHELF_W         # 4,629mm
-SHELF_FOLD_TOP = SHELF_H + SHELF_DEPTH  # 1,475mm (top edge when folded)
+SHELF_FOLD_TOP = SHELF_H + SHELF_DEPTH  # 1,275mm (top edge when folded)
 CABLE_TRUNK_H = 1800                     # cable trunking height AFF
 CABLE_TRUNK_SIZE = 40                    # trunking cross-section (40×25mm)
-LEG_LENGTH = 500                         # folding leg approximate length
-# Leg foot rests at walkway outer edge (Yd=300), pivot at shelf front (Yd=450)
-# When deployed: leg spans from shelf underside at Yd≈300 down to deck at H=100
-LEG_PIVOT_YD = 300       # pivot at 2/3 shelf depth from wall
-LEG_FOOT_H = WALKWAY_H  # rests on walkway deck = 100mm
+LEG_LENGTH = 925                         # folding leg approximate length (H=1025 - 100)
+# Leg pivots at shelf front edge (Yd=250), foot on walkway deck at H=100
+# When deployed: leg is vertical from shelf underside down to deck
+LEG_PIVOT_YD = SHELF_DEPTH              # pivot at front edge of shelf (Yd=250)
+LEG_FOOT_H = WALKWAY_H                  # rests on walkway deck = 100mm
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

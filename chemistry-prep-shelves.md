@@ -48,14 +48,14 @@ Two identical shelves centered in the available zone:
 | Shelf A position | X=2,900–3,650mm |
 | Shelf B position | X=3,879–4,629mm |
 | Width (each) | 750mm |
-| Depth (deployed) | 450mm (Yd=0 to Yd=450mm) |
+| Depth (deployed) | 250mm (Yd=0 to Yd=250mm) |
 | Gap between shelves | 229mm |
 | Work surface height | H=1,025mm above floor (925mm above walkway deck) |
 | Shelf thickness | 22mm (18mm ply + 4mm perimeter frame) |
 | Protrusion when folded | 22mm from wall face |
-| Folded top edge height | H=1,475mm (325mm below cable trunking) |
-| Walkway overhang (deployed) | 150mm past walkway outer edge |
-| Total work surface area | 2 × 750 × 450 = 675,000 mm² (0.675 m²) |
+| Folded top edge height | H=1,275mm (525mm below cable trunking) |
+| Walkway overhang (deployed) | None — front edge at Yd=250mm, within 300mm walkway |
+| Total work surface area | 2 × 750 × 250 = 375,000 mm² (0.375 m²) |
 
 ### 3.2 Construction
 
@@ -63,7 +63,7 @@ Two identical shelves centered in the available zone:
 
 **Frame:** 25×25×3mm mild steel SHS (square hollow section), welded into a rectangular perimeter frame matching the ply panel. The frame provides rigidity and the attachment points for the piano hinge and folding leg. Finish: flat black powder coat (interior standard).
 
-**Folding leg:** One per shelf. 25×25×3mm steel SHS, approximately 925mm long (spans from shelf underside at Yd=300 down to walkway deck at H=100mm). Pivots on a M8 shoulder bolt at the shelf frame's front cross-member, at the 2/3 depth point (Yd=300mm from wall). When deployed, the leg is vertical — foot rests on the walkway grating. When folded, the leg swings up and lies flat against the shelf underside, retained by a neodymium disc magnet.
+**Folding leg:** One per shelf. 25×25×3mm steel SHS, approximately 925mm long (spans from shelf underside down to walkway deck at H=100mm). Pivots on a M8 shoulder bolt at the shelf frame's front cross-member at the front edge (Yd=250mm from wall). When deployed, the leg is vertical — foot rests on the walkway grating. The operator stands at the walkway outer edge (Yd≈250–300mm), facing the wall, with the shelf at counter height directly in front of them. When folded, the leg swings up and lies flat against the shelf underside, retained by a neodymium disc magnet.
 
 ### 3.3 Fold Mechanism
 
@@ -78,7 +78,7 @@ The shelf folds **up** against the wall:
 | Parameter | Value |
 |-----------|-------|
 | Design load per shelf | 20 kg (44 lbs) |
-| Moment at hinge (20 kg at 225mm centroid) | 44 N·m |
+| Moment at hinge (20 kg at 125mm centroid) | 25 N·m |
 | Support | Piano hinge (distributed) + folding leg at Yd=300 |
 | Safety factor | >3× (piano hinge shear capacity ~150 N·m per 750mm) |
 
@@ -104,7 +104,7 @@ This method requires no welding inside the container and can be installed with b
 | Check | Status |
 |-------|--------|
 | Folded protrusion from wall | 22mm — well within 300mm walkway clearance ✓ |
-| Folded top edge | H=1,475mm — 325mm below cable trunking (H=1,800mm) ✓ |
+| Folded top edge | H=1,275mm — 525mm below cable trunking (H=1,800mm) ✓ |
 | Ball catch engagement | 50N — holds against road vibration (ISO 668 transport loads) ✓ |
 | Folding leg stored | Flat against shelf underside, magnet-retained ✓ |
 | Conflicts with other systems | None — clear of pump manifold, IBC stack, walkway ✓ |
@@ -130,7 +130,7 @@ This method requires no welding inside the container and can be installed with b
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Phenolic-faced plywood, 18mm | 1220×2440mm sheet (cut to 2× 750×450) | 1 | Local lumber yard / Home Depot | ~$60 |
+| Phenolic-faced plywood, 18mm | 1220×2440mm sheet (cut to 2× 750×250) | 1 | Local lumber yard / Home Depot | ~$60 |
 | 25×25×3mm steel SHS | 6m length | 2 | Pacific Coast Steel / Online Metals | ~$60 |
 | 50×50×5mm steel angle | 6m length (cut to 2× 750mm) | 1 | Pacific Coast Steel / Online Metals | ~$40 |
 | SS piano hinge, 50mm × 900mm | Cut to 2× 750mm | 1 | McMaster-Carr #1658A31 | ~$30 |
@@ -160,7 +160,7 @@ Interior elevation showing both shelves in deployed position (solid) and folded 
 
 ### Sheet 2 — Plan View
 
-Top-down view showing shelf depth relative to the 300mm near walkway. The 150mm overhang past the walkway outer edge does not obstruct walkway passage — operator stands between the wall and the shelf front edge.
+Top-down view showing shelf depth relative to the 300mm near walkway. The shelf front edge (Yd=250mm) is within the walkway — operator stands at the walkway outer edge and works at the shelf like a counter.
 
 ![Chemistry Prep Shelves — Sheet 2: Plan View](assets/shelf-sheet2.png)
 

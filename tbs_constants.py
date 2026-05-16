@@ -187,10 +187,19 @@ PUMP_H_HI  = 600     # pump manifold top H (mm)
 #   BOTTOM Brown   (near)     Waste   (far)    ← receives water by gravity
 # Weight migrates top→bottom during session (stability improves).
 IBC_COL_X   = ZONE_R_START + 25   # = 4,674mm  [right-justified to end wall]
-IBC_W       = 1219   # IBC footprint width  (mm)
-IBC_D       = 1016   # IBC footprint depth  (mm)
-IBC_H_600   = 1010   # 600L IBC height (mm)
+IBC_W       = 1219   # IBC overall width  (mm) — US 48" pallet format, includes cage
+IBC_D       = 1016   # IBC overall depth  (mm) — US 40" pallet format, includes cage
+IBC_H_600   = 1010   # 640L IBC overall height (mm) — includes pallet base + cage + bottle
 IBC_H_STK   = 2020   # 2× stacked height (mm)
+
+# IBC cage/pallet anatomy (US 48"×40" composite tote)
+# Three parts: steel/plastic pallet base, HDPE blow-molded bottle, galvanized wire cage.
+IBC_PALLET_H    = 168    # pallet base height including feet/runners (mm)
+IBC_CAGE_TUBE_D = 25     # cage corner upright tube OD (mm)
+IBC_CAGE_RAIL_W = 25     # cage top rail tube OD (mm)
+IBC_CAGE_INSET  = 15     # cage tube center inset from pallet edge (mm)
+IBC_BOTTLE_INSET = 30    # bottle wall inset from pallet edge (mm)
+IBC_VALVE_Z     = 185    # DN50 butterfly valve CL above IBC base (mm)
 
 # Near column (Yd=30–1,046mm): Blue #1 on top, Brown on bottom
 BLUE_IBC_Y  = 30     # near column Yd start (mm) — pushed to near wall, 30mm clearance

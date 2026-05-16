@@ -1067,7 +1067,7 @@ def sheet3():
 
     # ── Detail inset: Corner Joint ──────────────────────────────────────────
     det_x = px(X_LO + 20)
-    det_y = py(YD_LO + 120)
+    det_y = py(YD_LO + 540)
     det_w = px(350)
     det_h = py(280)
     ax.add_patch(Rectangle((det_x, det_y), det_w, det_h,

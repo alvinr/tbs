@@ -1390,6 +1390,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chemistry-prep-shelves/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Prep Shelves
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2289,11 +2317,11 @@ IBC-2 (600L) ──┘                                                      │
 <li>Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="32-brown-system-used-water-recycling">3.2 Brown System — Used Water Recycling<a class="headerlink" href="#32-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Processing tray drain
+<div class="highlight"><pre><span></span><code>Processing tray sump (P-04 suction pickup)
+        │
+   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 fill cap)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
-        │
-       P-04 (tray drain transfer pump — lifts ~900mm to IBC-3 fill cap)
         │
         ↓
    IBC-3 (600L buffer, filled via DN150 fill cap on top)
@@ -2366,7 +2394,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <li><strong>Do not leave IBC valve open</strong> — evaporation and UV exposure can drive ferricyanide chemistry</li>
 </ul>
 <h3 id="34-processing-tray">3.4 Processing Tray<a class="headerlink" href="#34-processing-tray" title="Permanent link">&para;</a></h3>
-<p>Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. The tray collects wash water and gravity-drains to 3W-DV-02 (the Brown/Black diverter valve).</p>
+<p>Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. Water collects at the low point and is pumped out by P-04 via a sump pickup — there is no penetration of the tray floor or container floor.</p>
 <p><strong>Tray specification:</strong></p>
 <table>
 <thead>
@@ -2400,17 +2428,17 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <tr>
 <td>Floor-to-rim height</td>
 <td>50 mm</td>
-<td>Tray sits directly on the container floor. No riser needed — drain is at tray floor level</td>
+<td>Tray sits on tapered HDPE shim strips on the container floor (see slope support below)</td>
 </tr>
 <tr>
 <td>Fall</td>
-<td>1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward drain at near rim center</td>
-<td>Water converges from both axes toward a single drain point</td>
+<td>1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward sump at near rim center</td>
+<td>Water converges from both axes toward the sump well</td>
 </tr>
 <tr>
-<td>Drain fitting</td>
-<td>1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,399, Yd=80)</td>
-<td>Connects via 1" HDPE pipe along pinhole wall to 3W-DV-02 diverter valve</td>
+<td>Sump well</td>
+<td>150 × 100 mm, 20mm deep, pressed into tray floor at low point (X=2,399, Yd=80)</td>
+<td>Collects water at lowest point; P-04 suction pickup tube sits in sump</td>
 </tr>
 <tr>
 <td>Weight (empty)</td>
@@ -2419,6 +2447,94 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tr>
 </tbody>
 </table>
+<p><strong>Slope support — tapered HDPE shim strips:</strong></p>
+<p>The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded to the container floor beneath the tray. No risers, no under-tray plumbing — the tray sits directly on the shims.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>HDPE flat bar, 50mm wide</td>
+</tr>
+<tr>
+<td>Quantity</td>
+<td>5 strips running the full tray depth (Yd direction, 2,200mm each)</td>
+</tr>
+<tr>
+<td>Spacing</td>
+<td>~1,000mm apart across tray width (X direction)</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280)</td>
+</tr>
+<tr>
+<td>Attachment</td>
+<td>Construction adhesive (Loctite PL Premium or equivalent) to container floor</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>Creates the Yd-axis slope. X-axis slope is formed into the tray panels during fabrication (pressed crown)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sump well and pickup:</strong></p>
+<p>Instead of a through-floor drain fitting, the tray has a shallow sump well pressed into the floor at the low point. P-04 draws water from the sump via a suction pickup tube — no penetration of the tray floor or the container floor.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sump dimensions</td>
+<td>150mm (X) × 100mm (Yd) × 20mm deep</td>
+</tr>
+<tr>
+<td>Sump location</td>
+<td>X=2,399mm (tray center), Yd=80mm (near rim, low point)</td>
+</tr>
+<tr>
+<td>Sump forming</td>
+<td>Pressed/stamped into tray panel during fabrication</td>
+</tr>
+<tr>
+<td>Pickup tube</td>
+<td>1" HDPE dip tube, stainless foot valve with strainer screen (prevents debris)</td>
+</tr>
+<tr>
+<td>Pickup height</td>
+<td>Tube bottom 5mm above sump floor (leaves ~0.75L residual)</td>
+</tr>
+<tr>
+<td>Suction line</td>
+<td>1" flexible reinforced hose from pickup tube, routed over near rim to P-04 suction inlet on pump manifold</td>
+</tr>
+<tr>
+<td>Pump</td>
+<td>P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming)</td>
+</tr>
+<tr>
+<td>Discharge</td>
+<td>P-04 output → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why sump pickup instead of a through-floor drain:</strong></p>
+<ol>
+<li><strong>No penetration</strong> — eliminates leak risk from a bulkhead fitting seal under the tray</li>
+<li><strong>No under-tray clearance needed</strong> — tray sits flat on shim strips, no plumbing runs below</li>
+<li><strong>Simpler fabrication</strong> — pressed sump is cheaper and more reliable than a welded bulkhead union</li>
+<li><strong>Easier to protect</strong> — no exposed plumbing beneath the tray that could be damaged during transport</li>
+<li><strong>Field-serviceable</strong> — pickup tube lifts out for cleaning; no tools required</li>
+</ol>
 <p><strong>Clearance verification:</strong></p>
 <table>
 <thead>
@@ -2445,18 +2561,13 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Clear</td>
 </tr>
 <tr>
-<td>Pump manifold drain outlet (X=2,300–2,500, Yd=0, Z=200–600)</td>
-<td>Tray drain pipe routes along pinhole wall (Yd≈60) below manifold at Z=0–50. Manifold is at Z=200 minimum</td>
+<td>Pump manifold (X=2,500–2,800, Yd=0, Z=200–600)</td>
+<td>Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict</td>
 <td>Clear</td>
 </tr>
 <tr>
 <td>Spray bar (overhead, Z=400–600 estimated)</td>
 <td>350mm+ above tray rim</td>
-<td>Clear</td>
-</tr>
-<tr>
-<td>IBC-4 waste (right end zone, X=4,674+)</td>
-<td>Tray ends at X=4,629 — 45mm gap to IBC footprint</td>
 <td>Clear</td>
 </tr>
 <tr>
@@ -2467,8 +2578,8 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tbody>
 </table>
 <p><strong>Permanent installation:</strong></p>
-<p>The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange, with the drain hose permanently connected to the 3W-DV-02 stub. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).</p>
-<p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims.</p>
+<p>The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange. The P-04 suction pickup tube sits in the sump well permanently; the flexible suction hose routes over the near rim to the pump manifold. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).</p>
+<p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.</p>
 <hr />
 <h2 id="4-processing-procedure-step-by-step">4. Processing Procedure — Step by Step<a class="headerlink" href="#4-processing-procedure-step-by-step" title="Permanent link">&para;</a></h2>
 <h3 id="before-each-session">Before each session<a class="headerlink" href="#before-each-session" title="Permanent link">&para;</a></h3>
@@ -2476,7 +2587,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <li>Check Blue IBC levels — minimum 100 gal required per print session</li>
 <li>Check IBC-4 (waste) level — must have at least 55 gal headroom before starting</li>
 <li>Run Brown recycle pump for 2 minutes to verify filter flow and check pH</li>
-<li>Confirm processing tray drain hose is connected to 3W-DV-02 (permanently installed — visual check only)</li>
+<li>Confirm P-04 suction pickup tube is seated in sump well and suction hose is connected (permanently installed — visual check only)</li>
 <li>Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims</li>
 <li>Verify all valves in correct position (see valve matrix below)</li>
 </ol>
@@ -2485,12 +2596,12 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <li>Expose print in camera (no water involved)</li>
 <li>Transfer print to processing tray in subdued light — lay face-up on containment liner</li>
 <li>Open BV-02 (Blue supply) → flood print with 16 gal via spray bar — 5 minutes</li>
-<li>Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain</li>
+<li>Close BV-02 → switch ON P-04 to pump sump to IBC-3 via 3W-DV-02 (set to Brown) → drain</li>
 <li>If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown</li>
 <li>Wash 3: open BV-02 → 16 gal clean Blue water → 5 minutes → drain</li>
 <li>Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse</li>
 <li>Hang print to dry — use internal or external line</li>
-<li>Allow residual water to gravity-drain from tray to Brown or Black as appropriate</li>
+<li>Allow residual water to collect in sump; run P-04 to pump residual to Brown or Black as appropriate</li>
 </ol>
 <h3 id="valve-matrix">Valve matrix<a class="headerlink" href="#valve-matrix" title="Permanent link">&para;</a></h3>
 <table>
@@ -2602,11 +2713,11 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Tray drain</td>
-<td>Sch 40 / SDR-11</td>
+<td>Tray drain (P-04 suction)</td>
+<td>Reinforced flex hose</td>
 <td>1" nominal</td>
-<td>gravity</td>
-<td>HDPE</td>
+<td>pump suction</td>
+<td>HDPE/PVC braid</td>
 </tr>
 <tr>
 <td>Black waste (to IBC-4)</td>
@@ -2832,18 +2943,18 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>IBC tote 600L, food-grade, used/rinsed</td>
+<td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">IBC tote 600L, food-grade, used/rinsed</a></td>
 <td>HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150</td>
 <td>4</td>
-<td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger — CA listings</a></td>
+<td>Container Exchanger</td>
 <td>$80–$150</td>
 <td><strong>$320–$600</strong></td>
 </tr>
 <tr>
-<td>2" NPT bulkhead fitting (304 SS)</td>
+<td><a href="https://www.mcmaster.com/4464K115">2" NPT bulkhead fitting (304 SS)</a></td>
 <td>External fill/drain port, welded through container wall</td>
 <td>4</td>
-<td><a href="https://www.mcmaster.com">McMaster-Carr</a> · Grainger</td>
+<td>McMaster-Carr</td>
 <td>$25–$40</td>
 <td><strong>$100–$160</strong></td>
 </tr>
@@ -2864,40 +2975,40 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>Shurflo 2088-554-144 pump (P-01, P-02)</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-01, P-02)</td>
 <td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
 <td>2</td>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td>Amazon</td>
 <td>$55–$70</td>
 <td><strong>$110–$140</strong></td>
 </tr>
 <tr>
-<td>Shurflo 2088-554-144 pump (P-03 waste evacuation)</td>
-<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L)</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-03 waste evacuation)</td>
+<td>12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L)</td>
 <td>1</td>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td>Amazon</td>
 <td>$55–$70</td>
 <td><strong>$65</strong></td>
 </tr>
 <tr>
-<td>Shurflo 2088-554-144 pump (P-04 tray drain transfer)</td>
-<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Pumps used chemistry from tray drain (floor level) up to IBC-3 fill cap (DN150, ~900mm lift)</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-04 tray drain transfer)</td>
+<td>12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift)</td>
 <td>1</td>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td>Amazon</td>
 <td>$55–$70</td>
 <td><strong>$65</strong></td>
 </tr>
 <tr>
-<td>SeaFlo / Kohree pressure accumulator</td>
+<td><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">SeaFlo pressure accumulator</a></td>
 <td>1 gal, 125 PSI, 1/2" NPT</td>
 <td>1</td>
-<td><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">Amazon — SeaFlo accumulator system</a></td>
+<td>Amazon</td>
 <td>$25–$45</td>
 <td><strong>$35</strong></td>
 </tr>
 <tr>
-<td>Pump mounting bracket (stainless)</td>
-<td>For 2088 series</td>
+<td><a href="https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless">Shurflo pump mounting bracket</a></td>
+<td>Stainless, for 2088 series</td>
 <td>3</td>
 <td>Amazon</td>
 <td>$8–$12</td>
@@ -2920,34 +3031,34 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>Big Blue filter housing 4.5"×10"</td>
+<td><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Geekpure Big Blue filter housing 4.5"×10"</a></td>
 <td>1" NPT brass ports, pressure relief, wrench included</td>
 <td>3</td>
-<td><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Amazon — Geekpure Big Blue 10"</a> · <a href="https://www.bluonics.com/products/big-blue-10-inch-two-whole-house-water-filter-carbon-sediment-solid-housing">Bluonics two-pack</a></td>
+<td>Amazon</td>
 <td>$28–$45 each</td>
 <td><strong>$85–$135</strong></td>
 </tr>
 <tr>
-<td>50-micron sediment cartridge 4.5"×10"</td>
-<td>Polypropylene depth filter</td>
+<td><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Pentair Pentek DGD-5005 sediment cartridge</a></td>
+<td>50-micron, 4.5"×10" polypropylene depth filter</td>
 <td>4 (+ spares)</td>
-<td><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Amazon — Pentair Pentek DGD-5005</a></td>
+<td>Amazon</td>
 <td>$8–$12 each</td>
 <td><strong>$35–$50</strong></td>
 </tr>
 <tr>
-<td>5-micron sediment cartridge 4.5"×10"</td>
-<td>Polypropylene wound/pleated</td>
+<td><a href="https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ">Pentair Pentek RFC-BB cartridge</a></td>
+<td>5-micron, 4.5"×10" polypropylene wound/pleated</td>
 <td>4 (+ spares)</td>
-<td><a href="https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ">Amazon — Pentair Pentek RFC-BB</a></td>
+<td>Amazon</td>
 <td>$10–$15 each</td>
 <td><strong>$45–$60</strong></td>
 </tr>
 <tr>
-<td>GAC carbon block 4.5"×10"</td>
-<td>Granular activated carbon, 25-micron</td>
+<td><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Ronaqua Big Blue GAC carbon block</a></td>
+<td>4.5"×10" granular activated carbon, 25-micron</td>
 <td>4 (+ spares)</td>
-<td><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Amazon — Ronaqua Big Blue GAC</a></td>
+<td>Ronaqua</td>
 <td>$15–$22 each</td>
 <td><strong>$65–$90</strong></td>
 </tr>
@@ -2955,7 +3066,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Filter skid frame</td>
 <td>600×900mm slotted steel angle, DIY</td>
 <td>1</td>
-<td>Home Depot / Lowe's (steel angle iron)</td>
+<td>Local steel supplier</td>
 <td>$25–$40</td>
 <td><strong>$35</strong></td>
 </tr>
@@ -2976,66 +3087,66 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>Ball valve 1" FNPT, full-bore (Banjo V100FP)</td>
-<td>Polypropylene body, full-port, quarter-turn lever handle. V1–V4 (end-wall isolation), VB1–VB3 (Blue manifold), plus spares</td>
+<td><a href="https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0">Banjo V100FP ball valve 1" FNPT</a></td>
+<td>Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3, plus spares</td>
 <td>11</td>
-<td><a href="https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0">Amazon — Banjo V100FP</a> · Home Depot · Ferguson</td>
+<td>Amazon</td>
 <td>$10–$16</td>
 <td><strong>$110–$176</strong></td>
 </tr>
 <tr>
-<td>3-way diverter valve 1" FNPT</td>
-<td>L-port or T-port, HDPE compatible</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT">3-way diverter valve 1" FNPT</a></td>
+<td>L-port or T-port, HDPE compatible. 3W-DV-01, 3W-DV-02</td>
 <td>2</td>
-<td><a href="https://www.amazon.com/3-way-ball-valve/s?k=1+inch+3+way+ball+valve">Amazon — 1" 3-way ball valve</a></td>
+<td>Amazon</td>
 <td>$18–$30</td>
 <td><strong>$40–$60</strong></td>
 </tr>
 <tr>
-<td>2" camlock fitting pairs (M+F)</td>
-<td>Polypropylene, 2"</td>
+<td><a href="https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair">2" polypropylene camlock pairs (M+F)</a></td>
+<td>For external bulkhead connections</td>
 <td>6 pairs</td>
-<td>Amazon / Grainger</td>
+<td>Amazon</td>
 <td>$5–$8/pair</td>
 <td><strong>$35–$50</strong></td>
 </tr>
 <tr>
-<td>1" NPT 90° elbow (Banjo LE100)</td>
-<td>HDPE/polypropylene 90° street elbow. 4× end-wall pipe bends (F1/F2/D3/D4) plus system elbows</td>
+<td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Banjo LE100 90° elbow 1" NPT</a></td>
+<td>Polypropylene street elbow. F1/F2/D3/D4 bends plus system elbows</td>
 <td>14</td>
-<td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Amazon — Banjo LE100</a> · Home Depot · Ferguson</td>
+<td>Amazon</td>
 <td>$3–$5</td>
 <td><strong>$42–$70</strong></td>
 </tr>
 <tr>
-<td>1" NPT equal tee (Banjo TEE100)</td>
-<td>Polypropylene equal tee. 1× Blue outflow manifold (VB1/VB2 merge) plus system tees</td>
+<td><a href="https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2">Banjo TEE100 equal tee 1" NPT</a></td>
+<td>Polypropylene. Blue outflow manifold merge plus system tees</td>
 <td>8</td>
-<td><a href="https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2">Amazon — Banjo TEE100</a> · Home Depot · Ferguson</td>
+<td>Amazon</td>
 <td>$4–$6</td>
 <td><strong>$35–$50</strong></td>
 </tr>
 <tr>
-<td>1" NPT unions</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union">1" NPT polypropylene union</a></td>
 <td>For maintenance disconnects</td>
 <td>6</td>
-<td>Ferguson / Amazon</td>
+<td>Amazon</td>
 <td>$6–$10</td>
 <td><strong>$40–$60</strong></td>
 </tr>
 <tr>
-<td>S60×6 to 1" NPT adapter</td>
+<td><a href="https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter">S60×6 to 1" NPT adapter</a></td>
 <td>IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female</td>
 <td>8</td>
-<td><a href="https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter">Amazon — IBC S60×6 adapter</a> · <a href="https://www.usplastic.com">US Plastic Corp</a> · Grainger</td>
+<td>Amazon</td>
 <td>$8–$15</td>
 <td><strong>$64–$120</strong></td>
 </tr>
 <tr>
-<td>1" NPT spring check valve (CV1–CV4)</td>
-<td>Inline non-return valve on each bulkhead line (F1, F2, D3, D4). Prevents backflow through bulkhead unions. PVC/polypropylene body, EPDM seal, 1" FNPT × FNPT</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC">1" NPT spring check valve</a> (CV1–CV4)</td>
+<td>Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT</td>
 <td>4</td>
-<td><a href="https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve">Amazon — 1" check valve</a> · Ferguson · Grainger</td>
+<td>Amazon</td>
 <td>$8–$14</td>
 <td><strong>$32–$56</strong></td>
 </tr>
@@ -3064,39 +3175,32 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>1" SDR-11 HDPE pipe</td>
+<td><a href="https://www.ferguson.com">1" SDR-11 HDPE pipe</a></td>
 <td>Food-safe, blue-stripe, 20 ft sticks</td>
 <td>5 sticks (100 ft)</td>
-<td><a href="https://www.ferguson.com">Ferguson Plumbing Supply</a> · Winsupply</td>
+<td>Ferguson</td>
 <td>$12–$18/stick</td>
 <td><strong>$60–$90</strong></td>
 </tr>
 <tr>
-<td>3/4" SDR-11 HDPE pipe</td>
+<td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>
 <td>Spray bar run, 20 ft sticks</td>
 <td>2 sticks (40 ft)</td>
-<td>Ferguson / Winsupply</td>
+<td>Ferguson</td>
 <td>$9–$14/stick</td>
 <td><strong>$20–$30</strong></td>
 </tr>
 <tr>
-<td>1/2" ID reinforced braided PVC hose</td>
+<td><a href="https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft">1/2" ID reinforced braided PVC hose</a></td>
 <td>Pump inlet flexible connection, 6 ft per pump</td>
 <td>2 lengths</td>
-<td>Home Depot / Amazon</td>
+<td>Amazon</td>
 <td>$8–$12/length</td>
 <td><strong>$20</strong></td>
 </tr>
-<tr>
-<td><strong>Pipe subtotal: ~$100–$140</strong></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<p><strong>Pipe subtotal: ~$100–$140</strong></p>
 <h3 id="86-processing-tray">8.6 Processing tray<a class="headerlink" href="#86-processing-tray" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3111,48 +3215,64 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>304 SS sheet, 16-ga (1.5mm)</td>
+<td><a href="https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet">304 SS sheet, 16-ga (1.5mm)</a></td>
 <td>#4 brushed, 4'×8' sheets</td>
 <td>4</td>
-<td><a href="https://www.metalsupermarkets.com">Metal Supermarkets</a> · <a href="https://www.onlinemetals.com">Online Metals</a></td>
+<td>Online Metals</td>
 <td>$180–$250/sheet</td>
 <td><strong>$720–$1,000</strong></td>
 </tr>
 <tr>
-<td>Fabrication (cut, brake, weld)</td>
-<td>Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners</td>
+<td>Fabrication (cut, brake, weld, press sump)</td>
+<td>Two tray halves: each 2,229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners</td>
 <td>1 job</td>
-<td>Local sheet metal shop (e.g. Valley Metal Fab, SoCal)</td>
-<td>$400–$800</td>
-<td><strong>$400–$800</strong></td>
+<td>Local sheet metal shop</td>
+<td>$450–$850</td>
+<td><strong>$450–$850</strong></td>
 </tr>
 <tr>
-<td>1" NPT SS bulkhead union</td>
-<td>304 SS, welded to tray floor at drain point</td>
+<td><a href="https://www.mcmaster.com/8619K451">HDPE flat bar 50×10mm</a></td>
+<td>Tapered shim strips for tray slope support, 2,200mm long, 5 required</td>
+<td>5</td>
+<td>McMaster-Carr / TAP Plastics</td>
+<td>$8–$15 each</td>
+<td><strong>$40–$75</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer">1" SS foot valve with strainer</a></td>
+<td>Suction pickup for sump well, prevents debris and maintains prime</td>
 <td>1</td>
-<td><a href="https://www.mcmaster.com">McMaster-Carr #4464K115</a> · Grainger</td>
-<td>$18–$30</td>
-<td><strong>$25</strong></td>
-</tr>
-<tr>
-<td>Silicone gasket strip, FDA grade</td>
-<td>1/16" × 1" × 10 ft, for center flange seal</td>
-<td>1 roll</td>
-<td>McMaster-Carr / Amazon</td>
+<td>Amazon</td>
 <td>$15–$25</td>
 <td><strong>$20</strong></td>
 </tr>
 <tr>
-<td>M6×16 SS hex bolts + flange nuts</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft">1" reinforced suction hose, 6 ft</a></td>
+<td>P-04 suction line from sump pickup over tray rim to pump manifold</td>
+<td>1</td>
+<td>Amazon</td>
+<td>$12–$20</td>
+<td><strong>$15</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.mcmaster.com/1460N14">Silicone gasket strip, FDA grade</a></td>
+<td>1/16" × 1" × 10 ft, for center flange seal</td>
+<td>1 roll</td>
+<td>McMaster-Carr</td>
+<td>$15–$25</td>
+<td><strong>$20</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.mcmaster.com/92196A150">M6×16 SS hex bolts + flange nuts</a></td>
 <td>Center flange bolts, 200mm spacing</td>
 <td>24</td>
-<td>McMaster-Carr / Bolt Depot</td>
+<td>McMaster-Carr</td>
 <td>$0.50 each</td>
 <td><strong>$12</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Processing tray subtotal: ~$1,177–$1,857</strong></p>
+<p><strong>Processing tray subtotal: ~$1,277–$1,992</strong></p>
 <p><em>Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.</em></p>
 <h3 id="87-electrical">8.7 Electrical<a class="headerlink" href="#87-electrical" title="Permanent link">&para;</a></h3>
 <table>
@@ -3168,7 +3288,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>12V fuse block (6-way)</td>
+<td><a href="https://www.amazon.com/s?k=12V+6+way+blade+fuse+block">12V fuse block (6-way)</a></td>
 <td>Blade fuse, 10A per channel</td>
 <td>1</td>
 <td>Amazon</td>
@@ -3176,26 +3296,26 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><strong>$15</strong></td>
 </tr>
 <tr>
-<td>14 AWG duplex marine wire</td>
+<td><a href="https://www.amazon.com/s?k=14+AWG+duplex+marine+wire+tinned+copper+25+ft">14 AWG duplex marine wire</a></td>
 <td>Tinned copper, 25 ft</td>
 <td>1 roll</td>
-<td>West Marine / Amazon</td>
+<td>Amazon</td>
 <td>$18–$28</td>
 <td><strong>$22</strong></td>
 </tr>
 <tr>
-<td>Anderson Powerpole connectors</td>
-<td>30A, for pump connections</td>
+<td><a href="https://www.amazon.com/s?k=anderson+powerpole+30A+connector">Anderson Powerpole connectors 30A</a></td>
+<td>For pump connections</td>
 <td>4 pairs</td>
 <td>Amazon</td>
 <td>$1.50/pair</td>
 <td><strong>$8</strong></td>
 </tr>
 <tr>
-<td>10A blade fuses (pack)</td>
+<td><a href="https://www.amazon.com/s?k=10A+standard+blade+fuse+pack">10A blade fuses (pack)</a></td>
 <td>For pump circuits</td>
 <td>10</td>
-<td>Amazon / AutoZone</td>
+<td>Amazon</td>
 <td>$5/pack</td>
 <td><strong>$5</strong></td>
 </tr>
@@ -3219,20 +3339,20 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>6-mil black LDPE sheeting</td>
 <td>20 ft × 100 ft roll</td>
 <td>1</td>
-<td>Home Depot / Uline</td>
+<td>Home Depot</td>
 <td>$80–$120</td>
 <td><strong>$100</strong></td>
 </tr>
 <tr>
-<td>pH meter (waterproof)</td>
-<td>0–14 range, ±0.1 accuracy</td>
+<td><a href="https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX">Apera Instruments PH20 pH meter</a></td>
+<td>Waterproof, 0–14 range, ±0.1 accuracy</td>
 <td>1</td>
-<td><a href="https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX">Amazon — Apera Instruments PH20</a></td>
+<td>Amazon</td>
 <td>$35–$55</td>
 <td><strong>$45</strong></td>
 </tr>
 <tr>
-<td>pH calibration solution set</td>
+<td><a href="https://www.amazon.com/s?k=pH+calibration+buffer+solution+4+7+sachet">pH calibration solution set</a></td>
 <td>pH 4 + pH 7 buffer sachets</td>
 <td>1 set</td>
 <td>Amazon</td>
@@ -3240,26 +3360,26 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><strong>$10</strong></td>
 </tr>
 <tr>
-<td>Citric acid, food grade, 5 lb</td>
+<td><a href="https://www.amazon.com/s?k=citric+acid+food+grade+5+lb">Citric acid, food grade, 5 lb</a></td>
 <td>pH adjustment (acidifier)</td>
 <td>2 bags</td>
-<td>Amazon / bulk food supplier</td>
+<td>Amazon</td>
 <td>$12–$18</td>
 <td><strong>$28</strong></td>
 </tr>
 <tr>
-<td>Chemical-resistant labels (GHS)</td>
+<td><a href="https://www.amazon.com/s?k=GHS+chemical+resistant+labels">Chemical-resistant labels (GHS)</a></td>
 <td>For IBC totes</td>
 <td>1 pack</td>
-<td>Amazon / Labelmaster</td>
+<td>Amazon</td>
 <td>$15–$25</td>
 <td><strong>$20</strong></td>
 </tr>
 <tr>
-<td>Nitrile gloves, box of 100</td>
+<td><a href="https://www.amazon.com/s?k=nitrile+gloves+100+pack">Nitrile gloves, box of 100</a></td>
 <td>Size M/L</td>
 <td>2 boxes</td>
-<td>Amazon / Home Depot</td>
+<td>Amazon</td>
 <td>$12–$18</td>
 <td><strong>$28</strong></td>
 </tr>
@@ -3324,7 +3444,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tr>
 </tbody>
 </table>
-<p><em>Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.</em></p>
+<p><em>Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: </em><em>Amazon</em><em> (~30 line items — qualifies for bulk/subscribe discounts), </em><em>McMaster-Carr</em><em> (tray hardware — single order, fast shipping), </em><em>Ferguson</em><em> (HDPE pipe — call for contractor pricing), and </em><em>Online Metals</em><em> (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.</em></p>
 <hr />
 <h2 id="9-maintenance-schedule">9. Maintenance Schedule<a class="headerlink" href="#9-maintenance-schedule" title="Permanent link">&para;</a></h2>
 <table>
@@ -3415,6 +3535,10 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><code>water-system-sheet3.png</code></td>
 </tr>
 <tr>
+<td>Sheet 4 — Drain cross-section elevation (fitting detail + flow path)</td>
+<td><code>water-system-sheet4.png</code></td>
+</tr>
+<tr>
 <td>Container floor plan — all systems</td>
 <td>See <a href="../electrical-report/">Electrical &amp; Systems Report</a> Section 5.8</td>
 </tr>
@@ -3429,20 +3553,21 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <p><strong>Sheet 3 — Processing Tray Drainage Plan</strong>
 <img alt="Water System — Sheet 3: Drainage Plan" src="../assets/water-system-sheet3.png" /></p>
 <hr />
+<p><strong>Sheet 4 — Processing Tray Drain Cross-Section Elevation</strong>
+<img alt="Water System — Sheet 4: Drain Cross-Section" src="../assets/water-system-sheet4.png" /></p>
+<hr />
 <h2 id="12-sources-and-references">12. Sources and References<a class="headerlink" href="#12-sources-and-references" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/">Photrio — Composition of cyanotype wash water</a></li>
-<li><a href="https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water">Ask MetaFilter — Disposing of cyanotyping water</a></li>
-<li><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger — IBC totes for sale, California</a></li>
-<li><a href="https://www.mcmaster.com">McMaster-Carr — 2" NPT bulkhead fittings</a></li>
-<li><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088-554-144 pump</a></li>
-<li><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">Amazon — SeaFlo pump + accumulator system</a></li>
-<li><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Amazon — Geekpure Big Blue 10" filter housing</a></li>
-<li><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Amazon — Pentair Pentek DGD-5005 sediment cartridge</a></li>
-<li><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Ronaqua — Big Blue GAC carbon cartridge</a></li>
-<li><a href="https://www.repackify.com/buy-ibc-totes/california">Repackify — IBC totes for sale in California</a></li>
-<li><a href="https://tpr.fmcsa.dot.gov/content/Resources/ELDT-Curriculum-Summary.pdf">FMCSA ELDT curriculum (HDPE chemical resistance reference)</a></li>
-</ul>
+<p><strong>Chemistry and safety:</strong>
+- <a href="https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/">Photrio — Composition of cyanotype wash water</a>
+- <a href="https://ask.metafilter.com/374714/Disposing-of-cyanotyping-water">Ask MetaFilter — Disposing of cyanotyping water</a>
+- <a href="https://tpr.fmcsa.dot.gov/content/Resources/ELDT-Curriculum-Summary.pdf">FMCSA ELDT curriculum (HDPE chemical resistance reference)</a></p>
+<p><strong>Suppliers — consolidated by provider (see shopping list for direct part links):</strong>
+- <a href="https://www.amazon.com">Amazon</a> — Pumps (Shurflo 2088), accumulator, filter housings, cartridges, Banjo valves/fittings, check valves, IBC adapters, electrical, consumables
+- <a href="https://www.mcmaster.com">McMaster-Carr</a> — Bulkhead fittings, tray hardware (bulkhead union, gasket, bolts)
+- <a href="https://www.ferguson.com">Ferguson Plumbing Supply</a> — HDPE pipe (1" and 3/4" SDR-11)
+- <a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger</a> — Used IBC totes, California
+- <a href="https://www.onlinemetals.com">Online Metals</a> — 304 SS sheet for processing tray
+- <a href="https://www.ronaqua.com">Ronaqua</a> — GAC carbon filter cartridges</p>
 
 
 

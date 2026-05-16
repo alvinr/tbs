@@ -550,7 +550,7 @@ def sheet3():
                             fc=C_HANGER, ec=C_OUT, lw=0.8, zorder=8))
 
     leader(ax, px(rod_yd + 10), pz(shelf_z_bot - nut_h / 2),
-           px(rod_yd + 70), pz(shelf_z_bot - 50),
+           px(rod_yd + 20), pz(shelf_z_bot + 50),
            "M10 NUT + WASHER\n(DOUBLE-NUTTED\nFOR LEVEL ADJ.)",
            fs=5, ha="left")
 
@@ -579,7 +579,7 @@ def sheet3():
     draw_dim_v(ax, px(YD_HI - 30), pz(shelf_z_top), pz(C_HGT),
                f"{int(HANGER_ROD_L)}mm", offset=5, fs=6, right=True)
     # Ply thickness
-    draw_dim_v(ax, px(210), pz(shelf_z_top - ply_t), pz(shelf_z_top),
+    draw_dim_v(ax, px(250), pz(shelf_z_top - ply_t), pz(shelf_z_top),
                "18mm PLY", offset=5, fs=5, right=True)
     # Frame height
     draw_dim_v(ax, px(210), pz(shelf_z_bot), pz(shelf_z_bot + frame_size),
@@ -600,7 +600,7 @@ def sheet3():
                 subtitle="HANGER & FRAME DETAIL",
                 scale_note="SCALE ~1:5",
                 doc_id="TBS-001 · Chem Prep",
-                portrait=True, height=0.07)
+                portrait=True, height=0.06)
 
     out = "diagrams/shelf-sheet3.png"
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)

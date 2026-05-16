@@ -152,6 +152,27 @@ def sheet1():
             "RIGHT\nWALKWAY\n(CEILING-\nHUNG)",
             fontsize=5, color=C_DIM, ha="center", va="center", rotation=90)
 
+    # Right walkway hanger positions (+ marks at ceiling rod locations)
+    rw_hanger_yds = np.arange(CONTAINER_RIB_SPACING / 2, C_WID,
+                               CONTAINER_RIB_SPACING)[:WALKWAY_RIGHT_HANGER_N]
+    rw_rod_x_inner = WALKWAY_RIGHT_X + 15
+    rw_rod_x_outer = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 15
+    hgr_sz = 6.0 / SC  # half-size of + mark in page coords
+    for hy in rw_hanger_yds:
+        if py(hy) > py(YD_HI - 20):
+            continue  # skip if outside view
+        for rx in [rw_rod_x_inner, rw_rod_x_outer]:
+            ax.plot([px(rx) - hgr_sz, px(rx) + hgr_sz], [py(hy), py(hy)],
+                    color=C_HANGER, lw=1.2, zorder=6)
+            ax.plot([px(rx), px(rx)], [py(hy) - hgr_sz, py(hy) + hgr_sz],
+                    color=C_HANGER, lw=1.2, zorder=6)
+    # Label first hanger pair
+    if len(rw_hanger_yds) > 0:
+        leader(ax, px(rw_rod_x_outer), py(rw_hanger_yds[0]),
+               px(rw_rod_x_outer + 120), py(rw_hanger_yds[0] - 60),
+               f"M{WALKWAY_RIGHT_HANGER_D} HANGER\nPAIRS (×{WALKWAY_RIGHT_HANGER_N})\n@ {CONTAINER_RIB_SPACING}mm CTR",
+               fs=5, ha="left")
+
     # ── Processing tray outline ──
     tray_x_lo = max(PROC_TRAY_X_L, X_LO + 50)
     tray_x_hi = PROC_TRAY_X_R

@@ -2286,15 +2286,17 @@ IBC-2 (600L) ──┘                                                      │
 <li>ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution</li>
-<li>Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=1,800mm, Fill Blue IBC-2 at Z=1,600mm — for remote resupply from water bowser or tanker (no cargo door access required)</li>
+<li>Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="32-brown-system-used-water-recycling">3.2 Brown System — Used Water Recycling<a class="headerlink" href="#32-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Processing tray drain
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
+       P-04 (tray drain transfer pump — lifts ~900mm to IBC-3 fill cap)
+        │
         ↓
-   IBC-3 (600L buffer)
+   IBC-3 (600L buffer, filled via DN150 fill cap on top)
         │
        P-02
         │
@@ -2357,7 +2359,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
    TRANSPORT to licensed liquid waste disposal facility
 </code></pre></div>
 <ul>
-<li>IBC-4 is a standard 600L HDPE cage tote with 2" ball valve, identical frame to IBC-1 through IBC-3</li>
+<li>IBC-4 is a standard 600L HDPE cage tote with DN50 butterfly valve (S60×6 thread), identical frame to IBC-1 through IBC-3</li>
 <li>IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)</li>
 <li>Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds</li>
 <li>Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1,181mm, Z=200mm) — no need to open cargo doors</li>
@@ -2673,6 +2675,18 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>15.2 Wh</td>
 </tr>
 <tr>
+<td>P-03 Waste pump (Shurflo 2088)</td>
+<td>7.5 A @ 12V</td>
+<td>intermittent (waste disposal only)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>P-04 Tray drain transfer pump (Shurflo 2088)</td>
+<td>7.5 A @ 12V</td>
+<td>0.08 hr (5 min run)</td>
+<td>7.5 Wh</td>
+</tr>
+<tr>
 <td>pH meter</td>
 <td>&lt;0.1 A</td>
 <td>—</td>
@@ -2682,11 +2696,11 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><strong>Total per print</strong></td>
 <td></td>
 <td></td>
-<td><strong>~38 Wh</strong></td>
+<td><strong>~46 Wh</strong></td>
 </tr>
 </tbody>
 </table>
-<p>A 100 Ah 12V lithium battery (1,200 Wh usable) provides <strong>&gt;30 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
+<p>A 100 Ah 12V lithium battery (1,200 Wh usable) provides <strong>&gt;25 prints</strong> of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.</p>
 <hr />
 <h2 id="7-equipment-layout">7. Equipment Layout<a class="headerlink" href="#7-equipment-layout" title="Permanent link">&para;</a></h2>
 <p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. All four IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=150–4,649mm) contains only the processing tray and perimeter walkways at floor level.</p>
@@ -2778,14 +2792,14 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <tr>
 <td>Fill Blue IBC-1</td>
 <td>Fresh water supply fill</td>
-<td>1,800</td>
-<td>IBC-1 (top, near column)</td>
+<td>2,250</td>
+<td>IBC-1 (top, near column) — gravity feed</td>
 </tr>
 <tr>
 <td>Fill Blue IBC-2</td>
 <td>Fresh water supply fill</td>
-<td>1,600</td>
-<td>IBC-2 (top, far column)</td>
+<td>2,150</td>
+<td>IBC-2 (top, far column) — gravity feed</td>
 </tr>
 <tr>
 <td>Drain Brown IBC-3</td>
@@ -2819,7 +2833,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <tbody>
 <tr>
 <td>IBC tote 600L, food-grade, used/rinsed</td>
-<td>HDPE cage tote, 2" ball valve</td>
+<td>HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150</td>
 <td>4</td>
 <td><a href="https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale">Container Exchanger — CA listings</a></td>
 <td>$80–$150</td>
@@ -2850,12 +2864,28 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>Shurflo 2088-554-144 pump</td>
+<td>Shurflo 2088-554-144 pump (P-01, P-02)</td>
 <td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
 <td>2</td>
 <td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
 <td>$55–$70</td>
 <td><strong>$110–$140</strong></td>
+</tr>
+<tr>
+<td>Shurflo 2088-554-144 pump (P-03 waste evacuation)</td>
+<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L)</td>
+<td>1</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td>$55–$70</td>
+<td><strong>$65</strong></td>
+</tr>
+<tr>
+<td>Shurflo 2088-554-144 pump (P-04 tray drain transfer)</td>
+<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Pumps used chemistry from tray drain (floor level) up to IBC-3 fill cap (DN150, ~900mm lift)</td>
+<td>1</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Amazon — Shurflo 2088</a></td>
+<td>$55–$70</td>
+<td><strong>$65</strong></td>
 </tr>
 <tr>
 <td>SeaFlo / Kohree pressure accumulator</td>
@@ -2868,14 +2898,14 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <tr>
 <td>Pump mounting bracket (stainless)</td>
 <td>For 2088 series</td>
-<td>2</td>
+<td>3</td>
 <td>Amazon</td>
 <td>$8–$12</td>
-<td><strong>$20</strong></td>
+<td><strong>$30</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Pump subtotal: ~$165–$195</strong></p>
+<p><strong>Pump subtotal: ~$305–$355</strong></p>
 <h3 id="83-filter-skid">8.3 Filter skid<a class="headerlink" href="#83-filter-skid" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2946,12 +2976,12 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </thead>
 <tbody>
 <tr>
-<td>Ball valve 1" FNPT, full-bore</td>
-<td>HDPE-body or brass, lever handle</td>
-<td>8</td>
-<td>Amazon / Home Depot / Ferguson Plumbing</td>
-<td>$8–$14</td>
-<td><strong>$65–$110</strong></td>
+<td>Ball valve 1" FNPT, full-bore (Banjo V100FP)</td>
+<td>Polypropylene body, full-port, quarter-turn lever handle. V1–V4 (end-wall isolation), VB1–VB3 (Blue manifold), plus spares</td>
+<td>11</td>
+<td><a href="https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0">Amazon — Banjo V100FP</a> · Home Depot · Ferguson</td>
+<td>$10–$16</td>
+<td><strong>$110–$176</strong></td>
 </tr>
 <tr>
 <td>3-way diverter valve 1" FNPT</td>
@@ -2970,18 +3000,18 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><strong>$35–$50</strong></td>
 </tr>
 <tr>
-<td>1" NPT elbows (HDPE)</td>
-<td>90° street elbow</td>
-<td>12</td>
-<td>Home Depot / Ferguson</td>
+<td>1" NPT 90° elbow (Banjo LE100)</td>
+<td>HDPE/polypropylene 90° street elbow. 4× end-wall pipe bends (F1/F2/D3/D4) plus system elbows</td>
+<td>14</td>
+<td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Amazon — Banjo LE100</a> · Home Depot · Ferguson</td>
 <td>$3–$5</td>
-<td><strong>$40–$60</strong></td>
+<td><strong>$42–$70</strong></td>
 </tr>
 <tr>
-<td>1" NPT tees (HDPE)</td>
-<td>Equal tee</td>
+<td>1" NPT equal tee (Banjo TEE100)</td>
+<td>Polypropylene equal tee. 1× Blue outflow manifold (VB1/VB2 merge) plus system tees</td>
 <td>8</td>
-<td>Home Depot / Ferguson</td>
+<td><a href="https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2">Amazon — Banjo TEE100</a> · Home Depot · Ferguson</td>
 <td>$4–$6</td>
 <td><strong>$35–$50</strong></td>
 </tr>
@@ -2994,6 +3024,22 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><strong>$40–$60</strong></td>
 </tr>
 <tr>
+<td>S60×6 to 1" NPT adapter</td>
+<td>IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female</td>
+<td>8</td>
+<td><a href="https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter">Amazon — IBC S60×6 adapter</a> · <a href="https://www.usplastic.com">US Plastic Corp</a> · Grainger</td>
+<td>$8–$15</td>
+<td><strong>$64–$120</strong></td>
+</tr>
+<tr>
+<td>1" NPT spring check valve (CV1–CV4)</td>
+<td>Inline non-return valve on each bulkhead line (F1, F2, D3, D4). Prevents backflow through bulkhead unions. PVC/polypropylene body, EPDM seal, 1" FNPT × FNPT</td>
+<td>4</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve">Amazon — 1" check valve</a> · Ferguson · Grainger</td>
+<td>$8–$14</td>
+<td><strong>$32–$56</strong></td>
+</tr>
+<tr>
 <td>Thread seal tape (PTFE)</td>
 <td>1/2" wide, 260" roll</td>
 <td>4</td>
@@ -3003,7 +3049,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tr>
 </tbody>
 </table>
-<p><strong>Valves &amp; fittings subtotal: ~$263–$398</strong></p>
+<p><strong>Valves &amp; fittings subtotal: ~$406–$650</strong></p>
 <h3 id="85-pipe">8.5 Pipe<a class="headerlink" href="#85-pipe" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3237,9 +3283,9 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>$760</td>
 </tr>
 <tr>
-<td>Pumps and accumulator</td>
-<td>$165</td>
-<td>$195</td>
+<td>Pumps and accumulator (P-01, P-02, P-03, P-04)</td>
+<td>$305</td>
+<td>$355</td>
 </tr>
 <tr>
 <td>Filter skid (housings + cartridges)</td>
@@ -3247,9 +3293,9 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>$370</td>
 </tr>
 <tr>
-<td>Valves and fittings</td>
-<td>$263</td>
-<td>$398</td>
+<td>Valves and fittings (incl. S60×6 adapters, check valves)</td>
+<td>$406</td>
+<td>$650</td>
 </tr>
 <tr>
 <td>Pipe</td>
@@ -3273,8 +3319,8 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td><strong>$2,671</strong></td>
-<td><strong>$4,048</strong></td>
+<td><strong>$2,954</strong></td>
+<td><strong>$4,455</strong></td>
 </tr>
 </tbody>
 </table>

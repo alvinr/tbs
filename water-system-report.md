@@ -362,9 +362,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1" NPT equal tee (Banjo TEE100) | Polypropylene equal tee. 1× Blue outflow manifold (VB1/VB2 merge) plus system tees | 8 | [Amazon — Banjo TEE100](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) · Home Depot · Ferguson | $4–$6 | **$35–$50** |
 | 1" NPT unions | For maintenance disconnects | 6 | Ferguson / Amazon | $6–$10 | **$40–$60** |
 | S60×6 to 1" NPT adapter | IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female | 8 | [Amazon — IBC S60×6 adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) · [US Plastic Corp](https://www.usplastic.com) · Grainger | $8–$15 | **$64–$120** |
+| 1" NPT spring check valve (CV1–CV4) | Inline non-return valve on each bulkhead line (F1, F2, D3, D4). Prevents backflow through bulkhead unions. PVC/polypropylene body, EPDM seal, 1" FNPT × FNPT | 4 | [Amazon — 1" check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve) · Ferguson · Grainger | $8–$14 | **$32–$56** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
-**Valves & fittings subtotal: ~$374–$594**
+**Valves & fittings subtotal: ~$406–$650**
 
 ### 8.5 Pipe
 
@@ -422,12 +423,12 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
 | Pumps and accumulator (P-01, P-02, P-03, P-04) | $305 | $355 |
 | Filter skid (housings + cartridges) | $265 | $370 |
-| Valves and fittings (incl. S60×6 adapters) | $374 | $594 |
+| Valves and fittings (incl. S60×6 adapters, check valves) | $406 | $650 |
 | Pipe | $100 | $140 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$2,922** | **$4,399** |
+| **TOTAL** | **$2,954** | **$4,455** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 

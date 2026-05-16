@@ -961,8 +961,8 @@ def sa_y(yd_mm):
 def sa_z(z_mm):
     return OA_Y + z_mm / SC_A
 
-ax4a.set_xlim(sa_y(-30) - 0.5, sa_y(420) + 1.0)
-ax4a.set_ylim(sa_z(-50) - 0.5, sa_z(220) + 1.5)
+ax4a.set_xlim(sa_y(-40) - 0.5, sa_y(420) + 1.0)
+ax4a.set_ylim(sa_z(-55) - 0.5, sa_z(220) + 1.5)
 
 # Panel A title
 ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (APPROX 1:2)",
@@ -1086,26 +1086,38 @@ for sy_m in range(3):
              [sa_z(tube_z_bot), sa_z(tube_z_bot + foot_valve_h)],
              color="#999999", lw=0.4, zorder=8)
 
-# ── Suction hose from tube top, over rim, toward wall ────────────────────────
-# Flexible hose curves over the rim and routes to pump manifold
+# ── Walkway & hose pass-through constants ────────────────────────────────────
+WK_DECK_H = 100
+WK_GRATE_T = 25
+
+# ── Suction hose from tube top, over rim, through walkway to pump ────────────
+# Flexible hose curves over the rim, drops through a hole in the walkway
+# grating, and routes along the wall to P-04 on the manifold below.
 hose_color = C_BROWN
 hose_lw = 3.0
 
-# Hose path: tube top → up → bend over rim → down outside rim → toward wall
-# Simplified as a series of line segments
-hose_pts_y = [tube_yd, tube_yd, tube_yd - 15, tray_yd_near - 10,
-              tray_yd_near - 20, 0]
-hose_pts_z = [tube_z_top, RIM_TOP + 25, RIM_TOP + 35, RIM_TOP + 20,
-              RIM_TOP - 10, RIM_TOP - 10]
+# Hose pass-through position in walkway
+HOSE_PASS_YD = tray_yd_near - 15  # ~65mm — just outside the rim
+HOSE_PASS_Z_TOP = WK_DECK_H       # top of walkway grating = 100mm
+HOSE_PASS_Z_BOT = WK_DECK_H - WK_GRATE_T  # bottom of grating = 75mm
+
+# Hose path: tube top → up → bend over rim → down through walkway → below
+hose_pts_y = [tube_yd, tube_yd, tube_yd - 15,
+              HOSE_PASS_YD, HOSE_PASS_YD,
+              HOSE_PASS_YD, HOSE_PASS_YD - 15, 0]
+hose_pts_z = [tube_z_top, RIM_TOP + 25, RIM_TOP + 35,
+              RIM_TOP + 15, HOSE_PASS_Z_TOP + 3,
+              HOSE_PASS_Z_BOT - 10, HOSE_PASS_Z_BOT - 15,
+              HOSE_PASS_Z_BOT - 15]
 ax4a.plot([sa_y(y) for y in hose_pts_y], [sa_z(z) for z in hose_pts_z],
-         color=hose_color, lw=hose_lw, solid_capstyle="round", zorder=5,
+         color=hose_color, lw=hose_lw, solid_capstyle="round", zorder=8,
          alpha=0.8)
-# Arrow at wall end
-ax4a.annotate("", xy=(sa_y(-10), sa_z(RIM_TOP - 10)),
-             xytext=(sa_y(10), sa_z(RIM_TOP - 10)),
+# Arrow at wall end (below walkway, heading to pump manifold)
+ax4a.annotate("", xy=(sa_y(-10), sa_z(HOSE_PASS_Z_BOT - 15)),
+             xytext=(sa_y(10), sa_z(HOSE_PASS_Z_BOT - 15)),
              arrowprops=dict(arrowstyle="-|>", color=hose_color, lw=2.0,
                              mutation_scale=12),
-             zorder=5)
+             zorder=8)
 
 # ── Water surface in tray (away from sump) ───────────────────────────────────
 FLOOD_DEPTH = 6
@@ -1120,18 +1132,43 @@ ax4a.plot([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view)],
          [sa_z(water_z_left + 1), sa_z(water_z_right)],
          color=C_BLUE, lw=1.0, ls="--", zorder=5)
 
-# ── Walkway grate ────────────────────────────────────────────────────────────
-WK_DECK_H = 100
-WK_GRATE_T = 25
-ax4a.add_patch(plt.Rectangle((sa_y(0), sa_z(WK_DECK_H - WK_GRATE_T)),
-              WALKWAY_W / SC_A, WK_GRATE_T / SC_A,
+# ── Walkway grate (with pipe pass-through notch) ────────────────────────────
+NOTCH_HW = 20  # half-width of the pipe notch in Yd
+
+# Grating LEFT of notch (wall side: Yd=0 to notch left edge)
+notch_left = HOSE_PASS_YD - NOTCH_HW
+notch_right = HOSE_PASS_YD + NOTCH_HW
+if notch_left > 0:
+    ax4a.add_patch(plt.Rectangle((sa_y(0), sa_z(WK_DECK_H - WK_GRATE_T)),
+                  notch_left / SC_A, WK_GRATE_T / SC_A,
+                  fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
+                  alpha=0.7))
+
+# Grating RIGHT of notch (notch right edge to walkway outer edge)
+ax4a.add_patch(plt.Rectangle((sa_y(notch_right), sa_z(WK_DECK_H - WK_GRATE_T)),
+              (WALKWAY_W - notch_right) / SC_A, WK_GRATE_T / SC_A,
               fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
               alpha=0.7))
+
+# Notch opening (gap in grating — white background visible)
+# Draw notch edges for clarity
+ax4a.plot([sa_y(notch_left), sa_y(notch_left)],
+         [sa_z(WK_DECK_H - WK_GRATE_T), sa_z(WK_DECK_H)],
+         color="#8D6E63", lw=1.2, zorder=4)
+ax4a.plot([sa_y(notch_right), sa_y(notch_right)],
+         [sa_z(WK_DECK_H - WK_GRATE_T), sa_z(WK_DECK_H)],
+         color="#8D6E63", lw=1.2, zorder=4)
+
 # Bracket arm (triangle)
 ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
           [sa_z(WK_DECK_H - WK_GRATE_T), sa_z(WK_DECK_H - WK_GRATE_T - 30),
            sa_z(WK_DECK_H - WK_GRATE_T)],
           fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=3, alpha=0.5)
+
+# Pipe pass-through label
+leader(ax4a, sa_y(HOSE_PASS_YD), sa_z(WK_DECK_H - WK_GRATE_T/2),
+       sa_y(HOSE_PASS_YD - 60), sa_z(WK_DECK_H + 40),
+       f"40mm NOTCH\nIN GRATING\nFOR 1\" HOSE", fs=5.5, color="#8D6E63")
 
 # ── Detail dimensions ────────────────────────────────────────────────────────
 # Rim top to floor
@@ -1172,9 +1209,9 @@ leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
        sa_y(tube_yd + 90), sa_z(120),
        "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
-leader(ax4a, sa_y(tray_yd_near - 15), sa_z(RIM_TOP - 10),
-       sa_y(-15), sa_z(RIM_TOP + 50),
-       "1\" REINFORCED\nSUCTION HOSE\nTO P-04", fs=6.5, color=C_BROWN)
+leader(ax4a, sa_y(HOSE_PASS_YD - 10), sa_z(HOSE_PASS_Z_BOT - 15),
+       sa_y(-15), sa_z(HOSE_PASS_Z_BOT - 35),
+       "1\" REINFORCED SUCTION\nHOSE TO P-04\n(BELOW WALKWAY)", fs=6, color=C_BROWN)
 
 leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/2), sa_z(TRAY_BASE_Z / 2),
        sa_y(250), sa_z(-30),

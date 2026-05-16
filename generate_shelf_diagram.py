@@ -433,14 +433,14 @@ def sheet2():
 def sheet3():
     """Detail of ceiling hanger connection and shelf frame cross-section."""
     # View: close-up cross-section at one hanger corner. Yd horizontal, Z vertical.
-    # Scale 1:5
-    YD_LO, YD_HI = -50, 250
-    Z_LO, Z_HI = 900, 2450
+    # Scale 1:5.  Wide enough for title block to render cleanly.
+    YD_LO, YD_HI = -120, 380
+    Z_LO, Z_HI = 860, 2450
 
     def px(yd): return (yd - YD_LO) / 5.0
     def pz(z): return (z - Z_LO) / 5.0
 
-    fig, ax = plt.subplots(figsize=(14, 18), facecolor=BG)
+    fig, ax = plt.subplots(figsize=(18, 18), facecolor=BG)
     ax.set_facecolor(BG)
     ax.set_xlim(px(YD_LO), px(YD_HI))
     ax.set_ylim(pz(Z_LO), pz(Z_HI))
@@ -577,7 +577,7 @@ def sheet3():
                "22mm", offset=5, fs=6)
     # Ceiling to shelf (rod length)
     draw_dim_v(ax, px(YD_HI - 30), pz(shelf_z_top), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm", offset=10, fs=6, right=True)
+               f"{int(HANGER_ROD_L)}mm", offset=5, fs=6, right=True)
     # Ply thickness
     draw_dim_v(ax, px(210), pz(shelf_z_top - ply_t), pz(shelf_z_top),
                "18mm PLY", offset=5, fs=5, right=True)
@@ -599,7 +599,8 @@ def sheet3():
                 drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="HANGER & FRAME DETAIL",
                 scale_note="SCALE ~1:5",
-                doc_id="TBS-001 · Chem Prep")
+                doc_id="TBS-001 · Chem Prep",
+                portrait=True, height=0.07)
 
     out = "diagrams/shelf-sheet3.png"
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)

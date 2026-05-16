@@ -1039,7 +1039,7 @@ def sheet3():
     # Bay spacing
     draw_dim_h(ax, px(FX_FRONT), px(FX_MID), py(-60),
                f"{FX_MID}mm", offset=py(5), fs=5.5, font=FONT)
-    draw_dim_h(ax, px(FX_MID), px(FX_BACK), py(-60),
+    draw_dim_h(ax, px(FX_MID + FRAME_RHS), px(FX_BACK), py(-60),
                f"{FX_BACK - FX_MID}mm", offset=py(5), fs=5.5, font=FONT)
 
     # Overall width
@@ -1113,7 +1113,7 @@ def sheet3():
             color=C_WELD, lw=2.5, zorder=15)
     ax.plot([wx, wx + px(12)], [wy, wy - py(12)],
             color=C_WELD, lw=2.5, zorder=15)
-    ax.text(wx + px(16), wy, "FILLET WELD\n5mm LEG\nCONTINUOUS",
+    ax.text(wx + px(30), wy, "FILLET WELD\n5mm LEG\nCONTINUOUS",
             ha="left", va="center", fontsize=4.5, color=C_WELD,
             **FONT, zorder=15)
 
@@ -1162,8 +1162,8 @@ def sheet3():
                          fc=C_OUT, ec=C_OUT, lw=1.0, zorder=15))
 
     # Labels
-    ax.text(d_cx, d_cy + py(d_r) + py(12),
-            f"D-RING 25mm\nWLL {DRING_WLL} kg",
+    ax.text(d_cx, d_cy + py(d_r) + py(30),
+            f"D-RING 25mm WLL {DRING_WLL} kg",
             ha="center", va="bottom", fontsize=4.5, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
     ax.text(d_cx, d_cy - py(plate_h_d / 2) - py(8),

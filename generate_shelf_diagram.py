@@ -224,19 +224,19 @@ def sheet1():
     # ── Dimensions ──
     # Shelf width (X direction) — horizontal
     draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 50),
-               f"{SHELF_W}mm", offset=10, fs=7)
+               f"{SHELF_W}mm", offset=5, fs=7)
     # Shelf depth (Yd direction) — vertical
     draw_dim_v(ax, px(SHELF_X_L - 50), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
-               f"{SHELF_DEPTH}mm", offset=10, fs=7)
+               f"{SHELF_DEPTH}mm", offset=5, fs=7)
     # Distance from pinhole wall (Yd direction)
     draw_dim_v(ax, px(SHELF_X_R + 50), py(0), py(SHELF_YD_NEAR),
-               f"{SHELF_YD_NEAR}mm\nFROM\nWALL", offset=10, fs=6, right=True)
+               f"{SHELF_YD_NEAR}mm FROM WALL", offset=5, fs=6, right=True)
     # Near walkway width
     draw_dim_v(ax, px(X_LO + 80), py(0), py(WALKWAY_W),
-               "300mm\nWALKWAY", offset=8, fs=6)
+               "300mm\nWALKWAY", offset=5, fs=6)
     # Right walkway width
     draw_dim_h(ax, px(WALKWAY_RIGHT_X), px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W),
-               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=8, fs=6)
+               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=5, fs=6)
 
     # ── Title block ──
     title_block(ax, "SHEET 1 OF 3",
@@ -352,28 +352,28 @@ def sheet2():
     # ── Dimensions ──
     # Shelf height above floor
     draw_dim_v(ax, px(SHELF_YD_FAR + 80), pz(0), pz(SHELF_H),
-               f"{SHELF_H} AFF", offset=10, fs=6, right=True)
+               f"{SHELF_H}mm AFF", offset=10, fs=6, right=True)
     # Shelf height above walkway deck
     draw_dim_v(ax, px(SHELF_YD_NEAR - 50), pz(WALKWAY_H), pz(SHELF_H),
-               f"{SHELF_H - WALKWAY_H}\nABOVE DECK", offset=8, fs=5.5)
+               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=8, fs=5.5)
     # Hanger rod length
     draw_dim_v(ax, px(SHELF_YD_FAR + 140), pz(SHELF_H), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}\nROD", offset=8, fs=5.5, right=True)
+               f"{int(HANGER_ROD_L)}mm\nROD", offset=8, fs=5.5, right=True)
     # Shelf depth (Yd)
     draw_dim_h(ax, px(SHELF_YD_NEAR), px(SHELF_YD_FAR), pz(shelf_z_bot - 50),
-               f"{SHELF_DEPTH} DEPTH", offset=8, fs=6)
+               f"{SHELF_DEPTH}mm DEPTH", offset=8, fs=6)
     # Walkway width
     draw_dim_h(ax, px(0), px(WALKWAY_W), pz(-30),
-               "300 WALKWAY", offset=6, fs=5.5)
+               "300mm WALKWAY", offset=6, fs=5.5)
     # Gap between walkway edge and shelf
     draw_dim_h(ax, px(WALKWAY_W), px(SHELF_YD_NEAR), pz(SHELF_H + 40),
-               "0 (FLUSH)", offset=6, fs=5)
+               "0mm (FLUSH)", offset=6, fs=5)
     # Shelf thickness
     draw_dim_v(ax, px(SHELF_YD_NEAR - 20), pz(shelf_z_bot), pz(shelf_z_top),
-               "22", offset=5, fs=5, right=True)
+               "22mm", offset=5, fs=5, right=True)
     # Container height
     draw_dim_v(ax, px(YD_HI - 50), pz(0), pz(C_HGT),
-               f"{C_HGT}", offset=10, fs=5.5, right=True)
+               f"{C_HGT}mm", offset=10, fs=5.5, right=True)
 
     # ── Leader callouts ──
     leader(ax, px(SHELF_CY), pz(shelf_z_top + 5),

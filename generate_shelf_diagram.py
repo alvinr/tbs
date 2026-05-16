@@ -38,7 +38,7 @@ from tbs_constants import (
     PUMP_X, PUMP_W,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
-    WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N,
+    WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1,
     CONTAINER_RIB_SPACING,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
     PROC_TRAY_RIM,
@@ -156,8 +156,9 @@ def sheet1():
             fontsize=6, color=C_DIM, ha="center", va="center", rotation=90)
 
     # Right walkway hanger positions (filled dots — same as shelf hangers)
-    rw_hanger_yds = np.arange(CONTAINER_RIB_SPACING / 2, C_WID,
-                               CONTAINER_RIB_SPACING)[:WALKWAY_RIGHT_HANGER_N]
+    rw_hanger_yds = np.array([WALKWAY_RIGHT_HANGER_Y1] + list(
+        np.arange(CONTAINER_RIB_SPACING / 2 + CONTAINER_RIB_SPACING,
+                   C_WID, CONTAINER_RIB_SPACING)))[:WALKWAY_RIGHT_HANGER_N]
     rw_rod_x_inner = WALKWAY_RIGHT_X + 15
     rw_rod_x_outer = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 15
     for hy in rw_hanger_yds:
@@ -170,7 +171,7 @@ def sheet1():
     if vis_hangers:
         leader(ax, px(rw_rod_x_outer), py(vis_hangers[0]),
                px(rw_rod_x_outer + 80), py(vis_hangers[0] - 50),
-               f"M{WALKWAY_RIGHT_HANGER_D} HANGER\nPAIRS (×{WALKWAY_RIGHT_HANGER_N})\n@ {CONTAINER_RIB_SPACING}mm CTR",
+               f"M{WALKWAY_RIGHT_HANGER_D} HANGER\nPAIRS (×{WALKWAY_RIGHT_HANGER_N})\n1st @ {WALKWAY_RIGHT_HANGER_Y1}mm",
                fs=5.5, ha="left")
 
     # ── Processing tray outline ──

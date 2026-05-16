@@ -301,7 +301,7 @@ def floor_plan():
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
             (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2,
             "PROCESSING TRAY  (304 SS, 50mm rim)\n"
-            "spray bar wash · gravity drain to 3W-DV-02",
+            "spray bar wash · sump pickup (P-04) to 3W-DV-02",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
             alpha=0.7, zorder=4)
 

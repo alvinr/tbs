@@ -219,12 +219,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Unit price | Est. cost |
 |------|------|-----|----------|-----------|-----------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | $720–$1,000 |
-| Fabrication (cut, brake, weld) | Two tray halves: 2,229×2,200mm, 50mm rims, 1:200 dual-axis fall | 1 job | Local sheet metal shop | $400–$800 | $400–$800 |
-| [1" NPT SS bulkhead union](https://www.mcmaster.com/4464K115) | 304 SS, welded to tray floor at drain | 1 | McMaster-Carr | $18–$30 | $25 |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2,229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
+| [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
+| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump to pump manifold | 1 | Amazon | $12–$20 | $15 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange, 200mm spacing | 24 | McMaster-Carr | $0.50 each | $12 |
 
-**Processing tray subtotal: ~$1,177–$1,857**
+**Processing tray subtotal: ~$1,277–$1,992**
 
 ### Water system processing consumables
 

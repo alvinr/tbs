@@ -40,7 +40,7 @@ The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through
 - [ ] 0.1.4 — Check all pipe joints for drips. Tighten any fittings that are weeping.
 - [ ] 0.1.5 — Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
 - [ ] 0.1.6 — Switch P-01 OFF.
-- [ ] 0.1.7 — Confirm processing tray drain is connected to 3W-DV-02. Set 3W-DV-02 to route toward IBC-3 (Brown). P-04 (tray drain transfer pump) lifts used chemistry from the tray drain to IBC-3 fill cap — it runs automatically when the tray drain float switch activates, or can be switched on manually. (The tray is permanently installed between the film plane rails.)
+- [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 fill cap (~900mm head). Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
 
 ### 0.2 Chemistry — Part A (Ammonium Iron(III) Oxalate)
 
@@ -319,7 +319,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 - [ ] 4.2.1 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
 - [ ] 4.2.2 — Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now** — the print is safe once washing begins.
-- [ ] 4.2.3 — Close VB3. Switch ON P-04 (tray drain transfer pump) to pump wash water from the tray drain up to IBC-3 (Brown recovery). If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
+- [ ] 4.2.3 — Close VB3. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
 - [ ] 4.2.4 — Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
 - [ ] 4.2.5 — Final rinse: open VB3 for a 2-minute final flush. Drain via P-04 to IBC-3.
 

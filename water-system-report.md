@@ -115,11 +115,11 @@ IBC-2 (600L) ──┘                                                      │
 ### 3.2 Brown System — Used Water Recycling
 
 ```
-Processing tray drain
+Processing tray sump (P-04 suction pickup)
+        │
+   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 fill cap)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
-        │
-       P-04 (tray drain transfer pump — lifts ~900mm to IBC-3 fill cap)
         │
         ↓
    IBC-3 (600L buffer, filled via DN150 fill cap on top)
@@ -170,7 +170,7 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 
 ### 3.4 Processing Tray
 
-Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. The tray collects wash water and gravity-drains to 3W-DV-02 (the Brown/Black diverter valve).
+Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. Water collects at the low point and is pumped out by P-04 via a sump pickup — there is no penetration of the tray floor or container floor.
 
 **Tray specification:**
 
@@ -180,10 +180,46 @@ Print washing takes place inside the container on a shallow processing tray that
 | Overall footprint | 4,459 × 2,200 mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side. Spans Yd=80–2,280 |
 | Panel size (each) | 2,229 × 2,200 mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm) |
 | Rim height | 50 mm (all four sides) | Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm) |
-| Floor-to-rim height | 50 mm | Tray sits directly on the container floor. No riser needed — drain is at tray floor level |
-| Fall | 1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward drain at near rim center | Water converges from both axes toward a single drain point |
-| Drain fitting | 1" NPT stainless bulkhead union, welded to tray floor at low point (X=2,399, Yd=80) | Connects via 1" HDPE pipe along pinhole wall to 3W-DV-02 diverter valve |
+| Floor-to-rim height | 50 mm | Tray sits on tapered HDPE shim strips on the container floor (see slope support below) |
+| Fall | 1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward sump at near rim center | Water converges from both axes toward the sump well |
+| Sump well | 150 × 100 mm, 20mm deep, pressed into tray floor at low point (X=2,399, Yd=80) | Collects water at lowest point; P-04 suction pickup tube sits in sump |
 | Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
+
+**Slope support — tapered HDPE shim strips:**
+
+The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded to the container floor beneath the tray. No risers, no under-tray plumbing — the tray sits directly on the shims.
+
+| Parameter | Value |
+|-----------|-------|
+| Material | HDPE flat bar, 50mm wide |
+| Quantity | 5 strips running the full tray depth (Yd direction, 2,200mm each) |
+| Spacing | ~1,000mm apart across tray width (X direction) |
+| Profile | Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280) |
+| Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
+| Function | Creates the Yd-axis slope. X-axis slope is formed into the tray panels during fabrication (pressed crown) |
+
+**Sump well and pickup:**
+
+Instead of a through-floor drain fitting, the tray has a shallow sump well pressed into the floor at the low point. P-04 draws water from the sump via a suction pickup tube — no penetration of the tray floor or the container floor.
+
+| Parameter | Value |
+|-----------|-------|
+| Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
+| Sump location | X=2,399mm (tray center), Yd=80mm (near rim, low point) |
+| Sump forming | Pressed/stamped into tray panel during fabrication |
+| Pickup tube | 1" HDPE dip tube, stainless foot valve with strainer screen (prevents debris) |
+| Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75L residual) |
+| Suction line | 1" flexible reinforced hose from pickup tube, routed over near rim to P-04 suction inlet on pump manifold |
+| Pump | P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming) |
+| Discharge | P-04 output → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste) |
+
+**Why sump pickup instead of a through-floor drain:**
+
+1. **No penetration** — eliminates leak risk from a bulkhead fitting seal under the tray
+2. **No under-tray clearance needed** — tray sits flat on shim strips, no plumbing runs below
+3. **Simpler fabrication** — pressed sump is cheaper and more reliable than a welded bulkhead union
+4. **Easier to protect** — no exposed plumbing beneath the tray that could be damaged during transport
+5. **Field-serviceable** — pickup tube lifts out for cleaning; no tools required
 
 **Clearance verification:**
 
@@ -192,16 +228,15 @@ Print washing takes place inside the container on a shallow processing tray that
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
 | Container left end zone equipment (X=0–625) | Tray left edge at X=170 — extends into optical zone only | Clear |
-| Pump manifold drain outlet (X=2,300–2,500, Yd=0, Z=200–600) | Tray drain pipe routes along pinhole wall (Yd≈60) below manifold at Z=0–50. Manifold is at Z=200 minimum | Clear |
+| Pump manifold (X=2,500–2,800, Yd=0, Z=200–600) | Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict | Clear |
 | Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
-| IBC-4 waste (right end zone, X=4,674+) | Tray ends at X=4,629 — 45mm gap to IBC footprint | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 
 **Permanent installation:**
 
-The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange, with the drain hose permanently connected to the 3W-DV-02 stub. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
+The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange. The P-04 suction pickup tube sits in the sump well permanently; the flexible suction hose routes over the near rim to the pump manifold. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
 
-**Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims.
+**Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.
 
 ---
 
@@ -211,7 +246,7 @@ The processing tray is permanently installed — it remains in place during both
 1. Check Blue IBC levels — minimum 100 gal required per print session
 2. Check IBC-4 (waste) level — must have at least 55 gal headroom before starting
 3. Run Brown recycle pump for 2 minutes to verify filter flow and check pH
-4. Confirm processing tray drain hose is connected to 3W-DV-02 (permanently installed — visual check only)
+4. Confirm P-04 suction pickup tube is seated in sump well and suction hose is connected (permanently installed — visual check only)
 5. Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims
 6. Verify all valves in correct position (see valve matrix below)
 
@@ -219,12 +254,12 @@ The processing tray is permanently installed — it remains in place during both
 1. Expose print in camera (no water involved)
 2. Transfer print to processing tray in subdued light — lay face-up on containment liner
 3. Open BV-02 (Blue supply) → flood print with 16 gal via spray bar — 5 minutes
-4. Close BV-02 → open 3W-DV-02 to Brown (floor drain to IBC-3) → drain
+4. Close BV-02 → switch ON P-04 to pump sump to IBC-3 via 3W-DV-02 (set to Brown) → drain
 5. If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown
 6. Wash 3: open BV-02 → 16 gal clean Blue water → 5 minutes → drain
 7. Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse
 8. Hang print to dry — use internal or external line
-9. Allow residual water to gravity-drain from tray to Brown or Black as appropriate
+9. Allow residual water to collect in sump; run P-04 to pump residual to Brown or Black as appropriate
 
 ### Valve matrix
 
@@ -248,7 +283,7 @@ The processing tray is permanently installed — it remains in place during both
 | Brown recycle | Sch 40 / SDR-11 | 1" nominal | 100 PSI min | HDPE |
 | Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
 | Filter inlet/outlet | Sch 40 | 1" nominal | 100 PSI min | HDPE |
-| Tray drain | Sch 40 / SDR-11 | 1" nominal | gravity | HDPE |
+| Tray drain (P-04 suction) | Reinforced flex hose | 1" nominal | pump suction | HDPE/PVC braid |
 | Black waste (to IBC-4) | Sch 40 | 1" nominal | 50 PSI min | HDPE |
 
 **Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
@@ -382,12 +417,14 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | **$720–$1,000** |
-| Fabrication (cut, brake, weld) | Two tray halves: each 1,992×2,240mm with 50mm rims, 1:200 fall, welded corners | 1 job | Local sheet metal shop | $400–$800 | **$400–$800** |
-| [1" NPT SS bulkhead union](https://www.mcmaster.com/4464K115) | 304 SS, welded to tray floor at drain point | 1 | McMaster-Carr | $18–$30 | **$25** |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2,229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2,200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
+| [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Suction pickup for sump well, prevents debris and maintains prime | 1 | Amazon | $15–$25 | **$20** |
+| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | **$15** |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange bolts, 200mm spacing | 24 | McMaster-Carr | $0.50 each | **$12** |
 
-**Processing tray subtotal: ~$1,177–$1,857**
+**Processing tray subtotal: ~$1,277–$1,992**
 
 *Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.*
 

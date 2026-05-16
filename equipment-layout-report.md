@@ -81,7 +81,7 @@ spans this zone at depth Y=2,262mm (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; gravity drain at X=2,399, Yd=80 to 3W-DV-02. Permanently installed. |
+| Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
 | Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–100 | 300mm wide, 100mm deck height. Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out on butt joints (no brackets — panel conflict), 25mm grating. Left corners: butt joint (no miter). No legs, no floor contact. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
@@ -249,7 +249,7 @@ All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
 runs through the optical zone.
 
 **Plumbing manifold:** 4-pump distribution header (P-01 Blue spray bar, P-02 Brown
-recycle, P-03 waste evacuation, P-04 tray drain transfer) wall-mounted at
+recycle, P-03 waste evacuation, P-04 tray sump pickup) wall-mounted at
 X=2,400–2,700mm, H=200–600mm. Hose runs drop vertically from manifold to IBCs
 in the right end zone. Maximum hose run: ~5.5m (manifold to Brown IBC at
 Yd=538mm — along pinhole wall then along right end wall).

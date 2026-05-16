@@ -2103,13 +2103,13 @@ def sheet6():
             ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             fontweight="bold", **FONT, zorder=10)
 
-    # ── Brown IBC-3 inlet ← tray drain (pumped via P-04) ──────────────────────
-    # Tray drain collects at tray low point (floor level). P-04 pumps used
-    # chemistry up to IBC-3 fill cap (DN150) on top. Cannot gravity feed —
-    # fill cap is ~900mm above tray drain.
+    # ── Brown IBC-3 inlet ← tray sump (pumped via P-04) ──────────────────────
+    # Water collects in sump well at tray low point. P-04 suction pickup
+    # draws from sump, pumps up to IBC-3 fill cap (DN150) on top.
+    # Cannot gravity feed — fill cap is ~900mm above tray floor.
     brown_in_z = IBC_H_600 - 80  # near top of bottom-tier IBC
     pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
-                "← P-04 ← TRAY\nDRAIN (PUMPED)", label_side="left")
+                "← P-04 ← TRAY\nSUMP (PUMPED)", label_side="left")
     # P-04 tray drain transfer pump — on the brown inlet line
     p04_z = brown_in_z + 60
     _draw_pump_symbol(ax, sx, sy, near_ibc_cx - 80, p04_z, C_PIPE_BROWN, "P-04")
@@ -2167,7 +2167,7 @@ def sheet6():
 
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray drain → IBC-3 fill cap, P-02 → filter skid)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3 fill cap, P-02 → filter skid)"),
         (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
         (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 evacuation pump"),
     ]
@@ -2266,7 +2266,7 @@ def sheet6():
         "7. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal.",
         "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
         "9. Check valves CV1–CV4 (1\" NPT spring check) on all four bulkhead lines — prevents backflow through bulkhead unions.",
-        "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift).",
+        "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
         "11. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     for i, line in enumerate(notes):

@@ -170,7 +170,7 @@ C — water pumps P-01–P-04; D — safelight vestibule; E — evaporative cool
 | Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
 
 *Components: 1" HDPE header + isolation valves, 4× 12V pumps (P-01 Blue spray bar supply,
-P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray drain transfer),
+P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.*
 
@@ -199,7 +199,7 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 filter skid with 3-stage Big Blue housing (50μm → 5μm → GAC carbon), Shurflo P-02,
 3-way diverter valves 3W-DV-01 and 3W-DV-02, pH test point.
-Filled via DN150 top fill cap from P-04 tray drain transfer pump.*
+Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
 
 ### 1.13 Water System — Black Circuit (Waste)
 
@@ -253,14 +253,17 @@ hinge mounting plates, rail mounting brackets.*
 | Tray far edge Yd | 2,280 mm | `PROC_TRAY_YD_FAR` |
 | Rim height | 50 mm | `PROC_TRAY_RIM` |
 | Dual-axis pitch | 1:200 (10mm fall) | `PROC_TRAY_PITCH` |
-| Drain X | 2,399 mm | `PROC_TRAY_DRAIN_X` |
-| Drain Yd | 80 mm | `PROC_TRAY_DRAIN_YD` |
+| Sump X | 2,399 mm | `PROC_TRAY_DRAIN_X` |
+| Sump Yd | 80 mm | `PROC_TRAY_DRAIN_YD` |
+| Sump dimensions | 150 x 100 x 20 mm | `PROC_TRAY_SUMP_W/D/Z` |
 
 *Components: 304 SS sheet (16-ga, 1.5mm), 2 panels field-bolted at center flange,
-1" NPT SS bulkhead drain union, silicone gasket strip, M6×16 SS fasteners.
+pressed sump well (150x100x20mm), 5x tapered HDPE shim strips (50mm wide, 0-10mm),
+1" SS foot valve w/ strainer, 1" reinforced suction hose, silicone gasket strip,
+M6x16 SS fasteners. No penetration of tray or container floor.
 Permanently installed — no removal for transport mode conversion.*
 
-*Diagrams: water system sheet 3 (WS), container floor plan (FP), assembly overview (AO), walkway sheet 2 (WK).*
+*Diagrams: water system sheets 3-4 (WS), container floor plan (FP), assembly overview (AO), walkway sheet 2 (WK).*
 
 ### 1.17 Perimeter Walkway
 

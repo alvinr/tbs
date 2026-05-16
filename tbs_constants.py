@@ -38,7 +38,7 @@ Redesign basis (2026-05-06 rev 5):
   (gravity feeds spray bar), Brown + Waste on bottom (receives by gravity).
   All V-groove dolly tracks, bridge sections, and drum slide mechanisms removed.
   Processing tray (304 SS, 50mm rim) permanently installed in optical zone
-  with built-in 1:200 pitch for gravity drainage.  No track/tray conflict.
+  with built-in 1:200 pitch (HDPE shim strips) and sump pickup.  No track/tray conflict.
   IBCs loaded empty via cargo doors; filled/drained remotely through 2" NPT
   bulkhead fittings in the far end wall (X=C_LEN face).
   Left end zone freed up (light trap drum remains in hinge panel).
@@ -244,9 +244,18 @@ PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
 # Dual-axis pitch: tray slopes toward the low corner (near-pinhole, X-center).
 # Primary slope: Yd direction, falling toward Yd=0 (pinhole wall).
 # Secondary slope: X direction, falling toward X-center from both ends.
-# Low point (drain): single 1" NPT bulkhead union welded to tray floor.
-PROC_TRAY_DRAIN_X  = PH_X       # = 2,399mm — drain at X-center of tray (aligned with pinhole)
+# Slope is achieved by tapered HDPE shim strips bonded to container floor
+# under the tray (high end ~10mm thick, feathered to zero at drain end).
+PROC_TRAY_SHIM_H   = 10         # shim strip max height at far rim (mm) = PITCH
+PROC_TRAY_SHIM_W   = 50         # shim strip width (mm) — HDPE flat bar
+PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
+# Low point: sump well pressed into tray floor at near rim center.
+# P-04 suction pickup tube sits in sump — no penetration of tray or container floor.
+PROC_TRAY_DRAIN_X  = PH_X       # = 2,399mm — sump at X-center of tray (aligned with pinhole)
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
+PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
+PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
+PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 
 # ── Perimeter walkway — removable grated sections around processing tray ─────
 # 4 sections form a rectangular perimeter walk so the operator can access all

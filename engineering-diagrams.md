@@ -228,7 +228,7 @@ Mounting varies by side:
 - **Right walkway** (IBC end): ceiling-hung design — no floor contact. Two 25×25×5mm
   steel angle bearers run full container width (2,362mm along Yd) at X=4,329mm and
   X=4,629mm. Suspended from ceiling corrugations by M10 threaded rod hangers at
-  457mm centers (5 pairs, all at Yd < 2,025mm — clear of optical cone). 300mm wide
+  457mm centers (5 pairs — 1st at Yd=320mm, rest at 457mm centers; all at Yd ≤ 2,057mm — clear of optical cone). 300mm wide
   grating spans between bearers. Near/far ends bear on adjacent walkway bracket
   structures. Deck height 100mm (level with all sides). Zero tray contact, zero
   floor contact — clears IBC stack entirely.

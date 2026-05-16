@@ -302,7 +302,9 @@ WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
 WALKWAY_RIGHT_BEARER_SIZE = 25   # bearer angle leg (mm) — 25×25×5mm steel L-angle
 WALKWAY_RIGHT_BEARER_T   = 5    # bearer angle thickness (mm)
 WALKWAY_RIGHT_HANGER_D   = 10   # hanger threaded rod diameter (mm) — M10
-WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs (at ~457mm centers along Yd)
+WALKWAY_RIGHT_HANGER_N   = 5    # number of hanger pairs along Yd
+WALKWAY_RIGHT_HANGER_Y1  = 320  # first pair Yd (mm) — shifted 20% toward film plane
+                                # to clear shelf hanger zone (was 228.5mm = half-spacing)
 WALKWAY_RIGHT_HANGER_L   = C_HGT - (WALKWAY_H - WALKWAY_GRATE_T)  # 2388 - 75 = 2313mm rod length
 WALKWAY_RIGHT_CEIL_PLATE  = (100, 60, 6)  # ceiling bracket plate (L×W×T mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W

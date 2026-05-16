@@ -62,7 +62,7 @@ from tbs_constants import (
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_RIGHT_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING,
     WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
-    WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_L,
+    WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_Y1, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_CEIL_PLATE,
     WALKWAY_LEFT_SPAN, IBC_COL_X, IBC_W, IBC_H_600,
     CONTAINER_RIB_SPACING,
@@ -603,10 +603,11 @@ def sheet1():
                                  fc=C_BRKT, ec=C_OUT, lw=0.6, zorder=6))
         elif name == "RIGHT":
             # Right walkway: ceiling-hung — show hanger positions as + marks
-            hanger_yds = np.arange(WALKWAY_BRACKET_SPACING / 2,
-                                   C_WID, WALKWAY_BRACKET_SPACING)
+            hanger_yds = np.array([WALKWAY_RIGHT_HANGER_Y1] + list(
+                np.arange(WALKWAY_BRACKET_SPACING / 2 + WALKWAY_BRACKET_SPACING,
+                           C_WID, WALKWAY_BRACKET_SPACING)))[:WALKWAY_RIGHT_HANGER_N]
             hgr_sz = 12  # half-size of + mark
-            for by in hanger_yds[:WALKWAY_RIGHT_HANGER_N]:
+            for by in hanger_yds:
                 # Inner bearer hanger (X = RX)
                 for hx in [RX + 15, RXR - 15]:
                     ax.plot([hx - hgr_sz, hx + hgr_sz], [by, by],
@@ -653,7 +654,7 @@ def sheet1():
     leader(ax, hanger_lbl_x + 120, W / 2 + 90,
            hanger_lbl_x + 450, W / 2 + 350,
            f"CEILING HANGERS\nM{WALKWAY_RIGHT_HANGER_D} THREADED ROD\n"
-           f"({WALKWAY_RIGHT_HANGER_N} PAIRS AT {WALKWAY_BRACKET_SPACING}mm)",
+           f"({WALKWAY_RIGHT_HANGER_N} PAIRS — 1st AT {WALKWAY_RIGHT_HANGER_Y1}mm,\nREST AT {WALKWAY_BRACKET_SPACING}mm CTR)",
            color="#606068", fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -779,7 +780,7 @@ def sheet1():
         f"1. 4 removable grated sections, all {WALKWAY_W}mm wide. Butt joints at all corners.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
-        f"3. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs of M{WALKWAY_RIGHT_HANGER_D} threaded rod hangers from ceiling at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"3. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs of M{WALKWAY_RIGHT_HANGER_D} threaded rod hangers from ceiling (1st pair at Yd={WALKWAY_RIGHT_HANGER_Y1}mm, rest at {WALKWAY_BRACKET_SPACING}mm centers).",
         f"   2\u00d7 {WALKWAY_RIGHT_BEARER_SIZE}\u00d7{WALKWAY_RIGHT_BEARER_SIZE}\u00d7{WALKWAY_RIGHT_BEARER_T}mm steel angle bearers. No floor contact \u2014 clear of IBC stack.",
         f"4. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR}",
         f"   spans {WALKWAY_LEFT_SPAN}mm between bracket legs. {LEFT_WK_LEG_N} floor legs + bearing strip (cargo door side).",
@@ -1097,7 +1098,7 @@ def sheet3():
     # Break label
     ax.text(sx((X_LO + X_HI) / 2), sy((break_y_bot + break_y_top) / 2),
             f"M{HANGER_D} THREADED ROD \u2014 {WALKWAY_RIGHT_HANGER_L}mm\n"
-            f"({WALKWAY_RIGHT_HANGER_N} PAIRS AT {WALKWAY_BRACKET_SPACING}mm CENTERS ALONG Yd)",
+            f"({WALKWAY_RIGHT_HANGER_N} PAIRS — 1st AT Yd={WALKWAY_RIGHT_HANGER_Y1}mm, REST AT {WALKWAY_BRACKET_SPACING}mm CTR)",
             ha="center", va="center", fontsize=7, color=C_ROD,
             fontweight="bold", **FONT, zorder=16,
             bbox=dict(boxstyle="round,pad=0.3", fc=BG, ec=C_ROD, lw=0.8, alpha=0.9))
@@ -1151,8 +1152,8 @@ def sheet3():
         f"1. 2\u00d7 {BEARER_S}\u00d7{BEARER_S}\u00d7{BEARER_T}mm steel angle bearers",
         f"   span full container width ({C_WID}mm) along Yd.",
         f"2. Suspended from ceiling corrugations by M{HANGER_D}",
-        f"   threaded rod at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"3. {WALKWAY_RIGHT_HANGER_N} hanger pairs \u2014 all at Yd < 2,025mm",
+        f"   threaded rod (1st at Yd={WALKWAY_RIGHT_HANGER_Y1}mm, rest {WALKWAY_BRACKET_SPACING}mm ctr).",
+        f"3. {WALKWAY_RIGHT_HANGER_N} hanger pairs \u2014 all at Yd \u2264 2,057mm",
         f"   (clear of optical cone).",
         f"4. Near/far ends bear on adjacent walkway brackets.",
         f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",

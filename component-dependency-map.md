@@ -282,7 +282,7 @@ Permanently installed — no removal for transport mode conversion.*
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 Right: ceiling-hung — 2× 25×25×5mm steel angle bearers suspended from ceiling by M10
-threaded rod hangers (5 pairs at 457mm centers). No floor contact — clears IBC stack entirely.
+threaded rod hangers (5 pairs — 1st at Yd=320mm, rest at 457mm centers). No floor contact — clears IBC stack entirely.
 Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
 panel conflict, must remove before panel slides to transport). No floor contact on
 any section. 4 removable sections.*

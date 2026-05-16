@@ -63,19 +63,21 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 3. Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
 4. Connect Blue Sea fuse block to battery positive busbar.
 5. Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-6. Verify each circuit fuse is seated: A (intake fan), B (exhaust fan), C (water pump), D (safelight), E (evap cooler), F (actuators, if fitted).
+6. Verify each circuit fuse is seated: A (intake fan), B (exhaust fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
 
 > **Shore power backup:** If mains power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
 ### 0.5 Water System
 
-1. Fill IBC totes: Blue circuit (wash water) minimum 400 liters for one print; Grey circuit (waste) empty.
-2. Open all ball valves and prime the pump by hand-filling the filter housing.
-3. Switch on water pump (circuit C). Pressure should reach 2.5–3.5 bar within 30 seconds.
+The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through P-04), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. Check valves CV1–CV4 on each bulkhead line prevent backflow. External fill (F1/F2) and drain (D3/D4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+
+1. Fill Blue IBC-1 and IBC-2 via external bulkhead ports F1/F2 (minimum 400 liters total for one print). Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
+2. Open isolation valves V1, V2 (fill lines) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
+3. Switch on P-01 Blue pump (circuit C). Pressure should reach 2.5–3.5 bar within 30 seconds.
 4. Check all pipe joints for drips. Tighten any fittings that are weeping.
 5. Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
-6. Switch pump OFF.
-7. Confirm processing tray drain hose is connected to 3W-DV-02. (The tray is permanently installed between the film plane rails.)
+6. Switch P-01 OFF.
+7. Confirm processing tray drain is connected to 3W-DV-02. Set 3W-DV-02 to route toward IBC-3 (Brown). P-04 (tray drain transfer pump) lifts used chemistry from the tray drain to IBC-3 fill cap — it runs automatically when the tray drain float switch activates, or can be switched on manually. (The tray is permanently installed between the film plane rails.)
 8. Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on the near/far walkway butt joint ends with no brackets (the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start at X=470, entirely past the panel transport envelope. The left walkway must be removed before sliding the panel to transport position. No legs contact the tray floor.
 9. Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
@@ -288,11 +290,11 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 **Wash sequence using the Blue circuit:**
 
-1. Switch ON water pump (circuit C).
-2. Open the Blue circuit supply valve. Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
-3. Close the Blue circuit valve. Open the Grey circuit return valve and allow the wash water to drain to the grey recovery tank.
-4. Repeat for a total of **3 wash cycles** (15 minutes total).
-5. Final rinse: open the Blue circuit for a 2-minute final flush. Drain.
+1. Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
+2. Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic.
+3. Close VB3. Switch ON P-04 (tray drain transfer pump) to pump wash water from the tray drain up to IBC-3 (Brown recovery). If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
+4. Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
+5. Final rinse: open VB3 for a 2-minute final flush. Drain via P-04 to IBC-3.
 
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
 
@@ -311,7 +313,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 ### 5.1 Chemistry Disposal
 
-- Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous and can be disposed of via the grey water recovery tank, or diluted and poured on ground away from water sources. Do not dispose into storm drains without verification of local regulations.
+- Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port D4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
 - Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 
@@ -325,7 +327,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 Power down in this order to avoid voltage spikes on sensitive electronics:
 
 1. Evaporative cooler (circuit E)
-2. Water pump (circuit C)
+2. Water pumps P-01 through P-04 (circuit C)
 3. Ventilation fans (circuits A, B)
 4. Safelight (circuit D)
 5. Film plane actuators if used (circuit F)

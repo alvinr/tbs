@@ -1160,17 +1160,11 @@ HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
 HOSE_WALL = 4.0  # hose wall thickness (mm)
 HOSE_ON_WK = WK_DECK_H + HOSE_OD / 2  # hose centerline sitting on walkway surface
 
-# Hose path: tube top → over rim → onto walkway surface → across to wall → up wall
-hose_pts_y = [tube_yd, tube_yd, tube_yd - 15,
-              tray_yd_near - 5,                # clear the rim
-              tray_yd_near - 15,               # settle onto walkway
-              10,                               # across walkway to near wall
-              5, 5]                             # elbow up the wall
-hose_pts_z = [tube_z_top, RIM_TOP + 25, RIM_TOP + 35,
-              RIM_TOP + 10,                     # descending past rim
-              HOSE_ON_WK,                       # on walkway surface
-              HOSE_ON_WK,                       # horizontal run across walkway
-              HOSE_ON_WK + 10, 180]             # elbow at wall, up toward P-04
+# Hose path: elbow at pickup tube top → straight to wall → elbow up wall
+WALL_ELBOW_YD = 5     # elbow at wall
+WALL_ELBOW_Z = HOSE_ON_WK  # hose sits on walkway at the wall end
+hose_pts_y = [tube_yd, WALL_ELBOW_YD, WALL_ELBOW_YD]
+hose_pts_z = [tube_z_top, WALL_ELBOW_Z, 180]
 draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
                sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
 # Flow arrow going up wall
@@ -1351,17 +1345,9 @@ ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
 P04_Z = PUMP_H_LO + 80  # P-04 mounted in manifold zone, ~280mm
 HOSE_ON_WK_B = WK_DECK_H + HOSE_OD / 2  # centerline on walkway surface
 
-# Hose path: over rim → onto walkway → across to wall → elbow up wall → P-04
-hose_b_y = [tube_yd_b, tube_yd_b,           # up from pickup
-            tray_yd_near - 5,                 # clear rim
-            tray_yd_near - 15,                # settle onto walkway
-            10,                               # across walkway to wall
-            5, 5]                             # elbow up the wall to P-04
-hose_b_z = [RIM_TOP_B + 20, RIM_TOP_B + 30, # up and over
-            RIM_TOP_B + 10,                   # descending past rim
-            HOSE_ON_WK_B,                     # on walkway surface
-            HOSE_ON_WK_B,                     # horizontal run
-            HOSE_ON_WK_B + 10, P04_Z]        # elbow at wall, up to P-04
+# Hose path: elbow at pickup → straight to wall → elbow up wall → P-04
+hose_b_y = [tube_yd_b, WALL_ELBOW_YD, WALL_ELBOW_YD]
+hose_b_z = [RIM_TOP_B + 20, HOSE_ON_WK_B, P04_Z]
 draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
                sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
 

@@ -155,20 +155,16 @@ def sheet1():
             "RIGHT\nWALKWAY\n(CEILING-\nHUNG)",
             fontsize=6, color=C_DIM, ha="center", va="center", rotation=90)
 
-    # Right walkway hanger positions (+ marks at ceiling rod locations)
+    # Right walkway hanger positions (filled dots — same as shelf hangers)
     rw_hanger_yds = np.arange(CONTAINER_RIB_SPACING / 2, C_WID,
                                CONTAINER_RIB_SPACING)[:WALKWAY_RIGHT_HANGER_N]
     rw_rod_x_inner = WALKWAY_RIGHT_X + 15
     rw_rod_x_outer = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W - 15
-    hgr_sz = 6.0 / SC  # half-size of + mark in page coords
     for hy in rw_hanger_yds:
         if hy > YD_HI - 20:
             continue  # skip if outside view
         for rx in [rw_rod_x_inner, rw_rod_x_outer]:
-            ax.plot([px(rx) - hgr_sz, px(rx) + hgr_sz], [py(hy), py(hy)],
-                    color=C_HANGER, lw=1.4, zorder=6)
-            ax.plot([px(rx), px(rx)], [py(hy) - hgr_sz, py(hy) + hgr_sz],
-                    color=C_HANGER, lw=1.4, zorder=6)
+            ax.plot(px(rx), py(hy), "o", color=C_HANGER, ms=7, zorder=6)
     # Label first visible hanger pair
     vis_hangers = [hy for hy in rw_hanger_yds if hy < YD_HI - 20]
     if vis_hangers:

@@ -1962,6 +1962,10 @@ def sheet6():
     f1_drop_yd = f1_fill_yd  # drop point at fill cap position (offset from valve face)
     # Horizontal run: bulkhead → over IBC-1 center (entirely above IBC)
     pipe_h(ax, cl_yd + bh_outer_r + 5, f1_drop_yd, EXT_FILL_1_H, C_PIPE_BLUE)
+    # CV1 check valve — prevents backflow from IBC-1 toward bulkhead
+    cv1_yd = cl_yd + bh_outer_r + 50
+    _draw_check_valve_h(ax, sx, sy, cv1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "CV1",
+                        flow_dir="left")
     # V1 on horizontal run, in the corridor
     v1_yd = (cl_yd + near_col_r) / 2
     _draw_valve_elev_h(ax, sx, sy, v1_yd, EXT_FILL_1_H, C_PIPE_BLUE, "V1")
@@ -1980,6 +1984,10 @@ def sheet6():
     f2_drop_yd = f2_fill_yd  # drop point at fill cap position (offset from valve face)
     # Horizontal run: bulkhead → over IBC-2 center
     pipe_h(ax, cl_yd - bh_outer_r - 5, f2_drop_yd, EXT_FILL_2_H, C_PIPE_BLUE)
+    # CV2 check valve — prevents backflow from IBC-2 toward bulkhead
+    cv2_yd = cl_yd - bh_outer_r - 50
+    _draw_check_valve_h(ax, sx, sy, cv2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "CV2",
+                        flow_dir="right")
     # V2 on horizontal run, in the corridor
     v2_yd = (cl_yd + far_col_l) / 2
     _draw_valve_elev_h(ax, sx, sy, v2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "V2")
@@ -2007,6 +2015,10 @@ def sheet6():
     draw_elbow_fitting(ax, d3_yd, EXT_DRAIN_3_H, C_PIPE_BROWN)
     # Horizontal run: elbow → bulkhead
     pipe_h(ax, d3_yd, cl_yd + bh_outer_r + 5, EXT_DRAIN_3_H, C_PIPE_BROWN)
+    # CV3 check valve — prevents backflow from bulkhead into IBC-3
+    cv3_yd = cl_yd + bh_outer_r + 50
+    _draw_check_valve_h(ax, sx, sy, cv3_yd, EXT_DRAIN_3_H, C_PIPE_BROWN, "CV3",
+                        flow_dir="right")
     # Flow arrow toward wall
     ax.annotate("", xy=(sx(cl_yd - 5), sy(EXT_DRAIN_3_H)),
                 xytext=(sx(cl_yd - 70), sy(EXT_DRAIN_3_H)),
@@ -2027,6 +2039,10 @@ def sheet6():
     draw_elbow_fitting(ax, d4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK)
     # Horizontal run: elbow → bulkhead
     pipe_h(ax, d4_yd, cl_yd - bh_outer_r - 5, EXT_DRAIN_4_H, C_PIPE_BLACK)
+    # CV4 check valve — prevents backflow from bulkhead into IBC-4
+    cv4_yd = cl_yd - bh_outer_r - 50
+    _draw_check_valve_h(ax, sx, sy, cv4_yd, EXT_DRAIN_4_H, C_PIPE_BLACK, "CV4",
+                        flow_dir="left")
     ax.annotate("", xy=(sx(cl_yd + 5), sy(EXT_DRAIN_4_H)),
                 xytext=(sx(cl_yd + 70), sy(EXT_DRAIN_4_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
@@ -2202,6 +2218,22 @@ def sheet6():
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
+    # Check valve legend
+    y_cv = y_tee - leg_spacing
+    cv_vs = 10
+    tri_cv = Polygon([(leg_x + sx(30 - cv_vs), y_cv - sy(cv_vs)),
+                       (leg_x + sx(30 - cv_vs), y_cv + sy(cv_vs)),
+                       (leg_x + sx(30 + cv_vs), y_cv)], closed=True,
+                      fc="#A0A0A0", ec=C_OUT, lw=1.0, alpha=0.45, zorder=15)
+    ax.add_patch(tri_cv)
+    ax.plot([leg_x + sx(30 - cv_vs), leg_x + sx(30 - cv_vs)],
+            [y_cv - sy(cv_vs + 3), y_cv + sy(cv_vs + 3)],
+            color=C_OUT, lw=1.8, zorder=16)
+    ax.text(leg_x + sx(70), y_cv,
+            "CHECK VALVE (1\" NPT spring — prevents backflow on all bulkhead lines)",
+            ha="left", va="center", fontsize=5.5, color=C_DIM,
+            **FONT, zorder=15)
+
     # ── Dimensions ───────────────────────────────────────────────────────────
     dim_yd = cl_yd + plate_w / 2 + 40
     for port_z, label in [(EXT_FILL_1_H, f"F1: {EXT_FILL_1_H}mm"),
@@ -2233,8 +2265,9 @@ def sheet6():
         "6. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "7. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal.",
         "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "9. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift).",
-        "10. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
+        "9. Check valves CV1–CV4 (1\" NPT spring check) on all four bulkhead lines — prevents backflow through bulkhead unions.",
+        "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift).",
+        "11. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0
@@ -2296,6 +2329,38 @@ def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label):
     if label:
         ax.text(sx(yd), sy(z), label,
                 ha="center", va="center", fontsize=5, color="white",
+                fontweight="bold", **FONT, zorder=13)
+
+
+def _draw_check_valve_h(ax, sx, sy, yd, z, color, label, flow_dir="right"):
+    """Draw a check valve (non-return valve) on a HORIZONTAL pipe.
+
+    Triangle pointing in flow direction with a perpendicular bar at the
+    upstream end (the seat).  flow_dir: 'left' or 'right'.
+    """
+    vs = 16  # half-size in mm
+    if flow_dir == "right":
+        # Triangle pointing right  →
+        tri = Polygon([(sx(yd - vs), sy(z - vs)),
+                        (sx(yd - vs), sy(z + vs)),
+                        (sx(yd + vs), sy(z))], closed=True,
+                       fc=color, ec=C_OUT, lw=1.0, alpha=0.45, zorder=11)
+        # Bar at upstream (left) end
+        ax.plot([sx(yd - vs), sx(yd - vs)], [sy(z - vs - 4), sy(z + vs + 4)],
+                color=C_OUT, lw=2.0, zorder=12)
+    else:
+        # Triangle pointing left  ←
+        tri = Polygon([(sx(yd + vs), sy(z - vs)),
+                        (sx(yd + vs), sy(z + vs)),
+                        (sx(yd - vs), sy(z))], closed=True,
+                       fc=color, ec=C_OUT, lw=1.0, alpha=0.45, zorder=11)
+        # Bar at upstream (right) end
+        ax.plot([sx(yd + vs), sx(yd + vs)], [sy(z - vs - 4), sy(z + vs + 4)],
+                color=C_OUT, lw=2.0, zorder=12)
+    ax.add_patch(tri)
+    if label:
+        ax.text(sx(yd), sy(z + vs + 14), label,
+                ha="center", va="bottom", fontsize=4.5, color=color,
                 fontweight="bold", **FONT, zorder=13)
 
 

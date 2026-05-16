@@ -306,9 +306,14 @@ def sheet2():
             fontsize=5, color=C_DIM, ha="center", va="bottom")
 
     # ── Ceiling hanger rods (4, but in this section view we see 2 — near and far) ──
+    nut_h_s2 = 8   # nut height in mm (visual, at 1:10 scale)
+    washer_w_s2 = 20  # washer width in mm
+    nut_w_s2 = 14     # nut width in mm
+    shelf_z_top_s2 = SHELF_H
+    shelf_z_bot_s2 = SHELF_H - SHELF_T
     for yd in [SHELF_YD_NEAR + HANGER_INSET, SHELF_YD_FAR - HANGER_INSET]:
-        # Rod from ceiling down to shelf
-        ax.plot([px(yd), px(yd)], [pz(C_HGT), pz(SHELF_H)],
+        # Rod from ceiling down past shelf bottom (extends to lower nut)
+        ax.plot([px(yd), px(yd)], [pz(C_HGT), pz(shelf_z_bot_s2 - nut_h_s2 - 4)],
                 color=C_HANGER, lw=2.0, zorder=6)
         # Ceiling plate
         plate_w = 60
@@ -316,8 +321,21 @@ def sheet2():
                                 px(yd + plate_w / 2) - px(yd - plate_w / 2),
                                 pz(C_HGT) - pz(C_HGT - 6),
                                 fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=7))
-        # Nut at shelf level
-        ax.plot(px(yd), pz(SHELF_H), "s", color=C_HANGER, ms=5, zorder=8)
+        # Top lock nut (above shelf surface)
+        ax.add_patch(Rectangle((px(yd - nut_w_s2 / 2), pz(shelf_z_top_s2)),
+                                px(yd + nut_w_s2 / 2) - px(yd - nut_w_s2 / 2),
+                                pz(shelf_z_top_s2 + nut_h_s2) - pz(shelf_z_top_s2),
+                                fc=C_HANGER, ec=C_OUT, lw=0.6, zorder=9))
+        # Bottom nut (below shelf frame)
+        ax.add_patch(Rectangle((px(yd - nut_w_s2 / 2), pz(shelf_z_bot_s2 - nut_h_s2)),
+                                px(yd + nut_w_s2 / 2) - px(yd - nut_w_s2 / 2),
+                                pz(shelf_z_bot_s2) - pz(shelf_z_bot_s2 - nut_h_s2),
+                                fc=C_HANGER, ec=C_OUT, lw=0.6, zorder=9))
+        # Bottom washer
+        ax.add_patch(Rectangle((px(yd - washer_w_s2 / 2), pz(shelf_z_bot_s2 - nut_h_s2 - 3)),
+                                px(yd + washer_w_s2 / 2) - px(yd - washer_w_s2 / 2),
+                                pz(shelf_z_bot_s2 - nut_h_s2) - pz(shelf_z_bot_s2 - nut_h_s2 - 3),
+                                fc=C_HANGER, ec=C_OUT, lw=0.5, zorder=9))
 
     # ── Shelf platform ──
     shelf_z_top = SHELF_H
@@ -352,28 +370,28 @@ def sheet2():
     # ── Dimensions ──
     # Shelf height above floor
     draw_dim_v(ax, px(SHELF_YD_FAR + 80), pz(0), pz(SHELF_H),
-               f"{SHELF_H}mm AFF", offset=10, fs=6, right=True)
+               f"{SHELF_H}mm AFF", offset=5, fs=6, right=True)
     # Shelf height above walkway deck
     draw_dim_v(ax, px(SHELF_YD_NEAR - 50), pz(WALKWAY_H), pz(SHELF_H),
-               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=8, fs=5.5)
+               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=5, fs=5.5)
     # Hanger rod length
     draw_dim_v(ax, px(SHELF_YD_FAR + 140), pz(SHELF_H), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm\nROD", offset=8, fs=5.5, right=True)
+               f"{int(HANGER_ROD_L)}mm\nROD", offset=5, fs=5.5, right=True)
     # Shelf depth (Yd)
     draw_dim_h(ax, px(SHELF_YD_NEAR), px(SHELF_YD_FAR), pz(shelf_z_bot - 50),
-               f"{SHELF_DEPTH}mm DEPTH", offset=8, fs=6)
+               f"{SHELF_DEPTH}mm DEPTH", offset=5, fs=6)
     # Walkway width
     draw_dim_h(ax, px(0), px(WALKWAY_W), pz(-30),
-               "300mm WALKWAY", offset=6, fs=5.5)
+               "300mm WALKWAY", offset=5, fs=5.5)
     # Gap between walkway edge and shelf
     draw_dim_h(ax, px(WALKWAY_W), px(SHELF_YD_NEAR), pz(SHELF_H + 40),
-               "0mm (FLUSH)", offset=6, fs=5)
+               "0mm (FLUSH)", offset=5, fs=5)
     # Shelf thickness
     draw_dim_v(ax, px(SHELF_YD_NEAR - 20), pz(shelf_z_bot), pz(shelf_z_top),
                "22mm", offset=5, fs=5, right=True)
     # Container height
     draw_dim_v(ax, px(YD_HI - 50), pz(0), pz(C_HGT),
-               f"{C_HGT}mm", offset=10, fs=5.5, right=True)
+               f"{C_HGT}mm", offset=5, fs=5.5, right=True)
 
     # ── Leader callouts ──
     leader(ax, px(SHELF_CY), pz(shelf_z_top + 5),

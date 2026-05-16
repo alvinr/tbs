@@ -62,7 +62,7 @@ C_IBC    = "#B0D0F0"    # IBC outline
 C_ZONE   = "#E8F4E8"    # shadow-free zone fill
 
 # ── Derived constants ────────────────────────────────────────────────────────
-SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4,479mm
+SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4,179mm
 SHELF_CY = (SHELF_YD_NEAR + SHELF_YD_FAR) / 2  # shelf center Yd = 600mm
 HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1025 = 1363mm
 # Hanger positions: 4 corners, inset 30mm from shelf edges
@@ -140,7 +140,7 @@ def sheet1():
     ax.text(px(WALKWAY_W / 2), py(4000), "NEAR\nWALKWAY\n300mm",
             fontsize=5, color=C_DIM, ha="center", va="center", rotation=90)
 
-    # ── Right walkway (X=4329 to 4629, ceiling-hung) ──
+    # ── Right walkway (X=4329 to 4629, ceiling-hung — adjacent to shelf) ──
     ax.add_patch(Rectangle((px(0), py(WALKWAY_RIGHT_X)),
                             px(C_WID) - px(0),
                             py(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W) - py(WALKWAY_RIGHT_X),

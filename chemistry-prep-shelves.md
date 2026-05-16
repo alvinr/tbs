@@ -22,7 +22,7 @@ The shelf must not obstruct walkway navigation (the operator walks the full leng
 
 ## 2. Location and Spatial Constraints
 
-The shelf occupies the right corner of the container interior, between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), at the same X range as the right walkway (X=4,329–4,629mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side.
+The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=4,029–4,329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
 
 ### 2.1 Optical Cone Clearance
 
@@ -32,17 +32,17 @@ At Yd=600mm (shelf centroid), the optical cone right boundary is:
                     = 2,637 + (4,649 − 2,637) × 600 / 2,362
                     = 2,637 + 511 = 3,148mm
 
-The shelf left edge (X=4,329mm) is 1,181mm outside the optical cone. The shelf cannot vignette the image at any film plane position.
+The shelf left edge (X=4,029mm) is 881mm outside the optical cone. The shelf cannot vignette the image at any film plane position.
 
 ### 2.2 Spatial Constraints
 
 | Constraint | Value |
 |-----------|-------|
-| Shelf X range | X=4,329–4,629mm (300mm) |
+| Shelf X range | X=4,029–4,329mm (300mm) |
 | Shelf Yd range | Yd=300–900mm (600mm) |
 | Near walkway | Yd=0–300mm — shelf starts at walkway outer edge |
 | Processing tray | Floor level (rim H=50mm) — well below shelf at H=1,025mm |
-| Right walkway | X=4,329–4,629mm, ceiling-hung (same X range, Yd=0–300mm) |
+| Right walkway | X=4,329–4,629mm, ceiling-hung (adjacent, Yd=0–300mm) |
 | Ceiling height | H=2,388mm (container interior) |
 | Cable trunking | H=1,800mm (40×25mm PVC, horizontal full length) |
 
@@ -56,7 +56,7 @@ Single ceiling-suspended platform:
 
 | Parameter | Value |
 |-----------|-------|
-| Position | X=4,329–4,629mm, Yd=300–900mm |
+| Position | X=4,029–4,329mm, Yd=300–900mm |
 | Width (X direction) | 300mm |
 | Depth (Yd direction) | 600mm |
 | Work surface height | H=1,025mm above floor (925mm above walkway deck) |
@@ -119,7 +119,7 @@ The shelf is permanently installed — it does not fold or detach for transport.
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=100mm) at approximately X=4,479mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1,025mm (925mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the near walkway (deck at H=100mm) at approximately X=4,179mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1,025mm (925mm above the walkway deck) — ergonomic counter height for standing prep work.
 
 The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 600mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
 
@@ -174,7 +174,7 @@ The near walkway remains completely clear for transit in both directions — no 
 
 ### Sheet 1 — Plan View
 
-Top-down view showing the shelf position (X=4,329–4,629mm, Yd=300–900mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and does not encroach on the walkway.
+Top-down view showing the shelf position (X=4,029–4,329mm, Yd=300–900mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
 
 ![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
 
@@ -182,7 +182,7 @@ Top-down view showing the shelf position (X=4,329–4,629mm, Yd=300–900mm) rel
 
 ### Sheet 2 — Section Elevation
 
-Cross-section at X=4,479mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
+Cross-section at X=4,179mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
 
 ![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
 

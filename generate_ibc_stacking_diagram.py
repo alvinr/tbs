@@ -2087,12 +2087,19 @@ def sheet6():
             ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             fontweight="bold", **FONT, zorder=10)
 
-    # ── Brown IBC-3 inlet ← tray drain (gravity) ────────────────────────────
-    # Tray drain enters IBC-3 through a top-mounted fitting (fill cap area).
-    # Shown as X-direction pipe stub at top of IBC-3.
+    # ── Brown IBC-3 inlet ← tray drain (pumped via P-04) ──────────────────────
+    # Tray drain collects at tray low point (floor level). P-04 pumps used
+    # chemistry up to IBC-3 fill cap (DN150) on top. Cannot gravity feed —
+    # fill cap is ~900mm above tray drain.
     brown_in_z = IBC_H_600 - 80  # near top of bottom-tier IBC
     pipe_stub_x(ax, near_ibc_cx, brown_in_z, C_PIPE_BROWN,
-                "← TRAY\nDRAIN", label_side="left")
+                "← P-04 ← TRAY\nDRAIN (PUMPED)", label_side="left")
+    # P-04 tray drain transfer pump — on the brown inlet line
+    p04_z = brown_in_z + 60
+    _draw_pump_symbol(ax, sx, sy, near_ibc_cx - 80, p04_z, C_PIPE_BROWN, "P-04")
+    ax.plot([sx(near_ibc_cx - 80 + 22), sx(near_ibc_cx - PIPE_OD / 2)],
+            [sy(brown_in_z), sy(brown_in_z)],
+            color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
     # ── Brown IBC-3 outlet → P-02 pump → filter skid ────────────────────────
     # Uses IBC-3's built-in DN50 butterfly valve at corridor-facing face.
@@ -2108,10 +2115,12 @@ def sheet6():
                 "← FILTER\nRETURN", label_side="right")
 
     # ── Waste IBC-4 inlet ← diverter/bypass (rejected filtrate) ─────────────
-    # Enters through IBC-4 fill cap on top
+    # Enters through IBC-4 fill cap (DN150) on top. Filter skid reject/bypass
+    # line feeds into waste IBC via fill cap — cannot use drain valve (would
+    # drain out existing waste when opened).
     waste_in_z = IBC_H_600 - 80  # near top of bottom-tier far IBC
     pipe_stub_x(ax, far_ibc_cx, waste_in_z, C_PIPE_BLACK,
-                "← WASTE\nDIVERTER", label_side="right")
+                "← FILTER REJECT\nVIA FILL CAP (DN150)", label_side="right")
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
@@ -2142,9 +2151,9 @@ def sheet6():
 
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (tray drain → IBC-3, P-02 → filter skid)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray drain → IBC-3 fill cap, P-02 → filter skid)"),
         (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
-        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate to IBC-4, P-03 evacuation pump"),
+        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 evacuation pump"),
     ]
     for i, (color, desc) in enumerate(legend_items):
         y = leg_top - i * leg_spacing
@@ -2224,6 +2233,8 @@ def sheet6():
         "6. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
         "7. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal.",
         "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
+        "9. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift).",
+        "10. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     for i, line in enumerate(notes):
         bold = i == 0

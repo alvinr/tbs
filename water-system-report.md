@@ -119,8 +119,10 @@ Processing tray drain
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
+       P-04 (tray drain transfer pump — lifts ~900mm to IBC-3 fill cap)
+        │
         ↓
-   IBC-3 (600L buffer)
+   IBC-3 (600L buffer, filled via DN150 fill cap on top)
         │
        P-02
         │
@@ -269,10 +271,11 @@ The processing tray is permanently installed — it remains in place during both
 | P-01 Blue pump (Shurflo 2088) | 7.5 A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
 | P-02 Brown pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
 | P-03 Waste pump (Shurflo 2088) | 7.5 A @ 12V | intermittent (waste disposal only) | — |
+| P-04 Tray drain transfer pump (Shurflo 2088) | 7.5 A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
 | pH meter | <0.1 A | — | <1 Wh |
-| **Total per print** | | | **~38 Wh** |
+| **Total per print** | | | **~46 Wh** |
 
-A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>30 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
+A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump power without recharging. A modest 100W solar panel recharges in ~3–4 hours of sun.
 
 ---
 
@@ -330,10 +333,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|---------|-----------|-------|
 | Shurflo 2088-554-144 pump (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$110–$140** |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$65** |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports. Pumps used chemistry from tray drain (floor level) up to IBC-3 fill cap (DN150, ~900mm lift) | 1 | [Amazon — Shurflo 2088](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | $55–$70 | **$65** |
 | SeaFlo / Kohree pressure accumulator | 1 gal, 125 PSI, 1/2" NPT | 1 | [Amazon — SeaFlo accumulator system](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | $25–$45 | **$35** |
-| Pump mounting bracket (stainless) | For 2088 series | 2 | Amazon | $8–$12 | **$20** |
+| Pump mounting bracket (stainless) | For 2088 series | 3 | Amazon | $8–$12 | **$30** |
 
-**Pump subtotal: ~$230–$265**
+**Pump subtotal: ~$305–$355**
 
 ### 8.3 Filter skid
 
@@ -416,14 +420,14 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
-| Pumps and accumulator (P-01, P-02, P-03) | $230 | $265 |
+| Pumps and accumulator (P-01, P-02, P-03, P-04) | $305 | $355 |
 | Filter skid (housings + cartridges) | $265 | $370 |
 | Valves and fittings (incl. S60×6 adapters) | $374 | $594 |
 | Pipe | $100 | $140 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$2,847** | **$4,309** |
+| **TOTAL** | **$2,922** | **$4,399** |
 
 *Used IBC totes drive significant savings vs. new. Ferguson Plumbing Supply and Grainger may offer better pricing on bulk pipe and fittings than retail stores — obtain quotes before ordering.*
 

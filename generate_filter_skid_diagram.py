@@ -93,6 +93,10 @@ ax2.axis("off")
 ax.set_xlim(sx(2600) - 1, sx(4200) + 1)
 ax.set_ylim(sz(1200) - 1, sz(2300) + 2)
 
+# Mirror X axis for interior view: matches pinhole wall elevation convention
+# (high X / IBC end on LEFT, low X / cargo door end on RIGHT)
+ax.invert_xaxis()
+
 # Reset label registry for collision avoidance
 reset_label_registry()
 
@@ -106,7 +110,7 @@ for rib_x in range(2742, 3900, CORR_SPACING):  # ribs near our zone
 # Ceiling line
 ax.plot([sx(2650), sx(4150)], [sz(2388), sz(2388)],
         color="#888888", lw=1.0, ls="-", zorder=1)
-ax.text(sx(2750), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="left", va="bottom",
+ax.text(sx(2750), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="right", va="bottom",
         fontsize=6, color="#888888", style="italic")
 
 # ── Slotted angle frame ──────────────────────────────────────────────────────
@@ -513,16 +517,16 @@ draw_pipe_path(ax,
     [DV01_X, DV01_X],
     [DV01_Z + DV01_R, DV01_Z + DV01_R + 100],
     OD, WALL, fc=C_BLUE)
-ax.text(sx(DV01_X + 20), sz(DV01_Z + DV01_R + 120), "→ BLUE\n  (pH 6.5–8.0)",
-        ha="left", va="bottom", fontsize=5.5, color=C_BLUE, fontweight="bold")
+ax.text(sx(DV01_X + 20), sz(DV01_Z + DV01_R + 120), "← BLUE\n  (pH 6.5–8.0)",
+        ha="right", va="bottom", fontsize=5.5, color=C_BLUE, fontweight="bold")
 
 # Right output → Black system (waste)
 draw_pipe_path(ax,
     [DV01_X + DV01_R, DV01_X + DV01_R + 80],
     [DV01_Z, DV01_Z],
     OD, WALL, fc="#333333")
-ax.text(sx(DV01_X + DV01_R + 90), sz(DV01_Z), "→ BLACK\n  (pH outside range)",
-        ha="left", va="center", fontsize=5.5, color="#333333", fontweight="bold")
+ax.text(sx(DV01_X + DV01_R + 90), sz(DV01_Z), "← BLACK\n  (pH outside range)",
+        ha="right", va="center", fontsize=5.5, color="#333333", fontweight="bold")
 
 # ── Flow arrows on header ────────────────────────────────────────────────────
 arrow_style = dict(arrowstyle="-|>", color=C_HDPE, lw=1.8, mutation_scale=10)
@@ -574,7 +578,7 @@ ax.plot([sx(FSKID_X - 120), sx(FSKID_X + FSKID_W + 60)],
         color=C_DIM, lw=0.5, ls=":", zorder=2)
 ax.text(sx(FSKID_X - 130), sz(FILT_SUMP_Z),
         f"Z={FILT_SUMP_Z}mm AFF\n(EYE LEVEL)",
-        ha="right", va="center", fontsize=5.5, color=C_DIM)
+        ha="left", va="center", fontsize=5.5, color=C_DIM)
 
 # Ceiling clearance
 CEILING_Z = 2388
@@ -839,7 +843,7 @@ ax2.text(sb_y(90), sb_z(-315),
 # ── Title block ──────────────────────────────────────────────────────────────
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="FILTER SKID — PLUMBING ELEVATION",
-            subtitle="VIEW FROM INSIDE CONTAINER LOOKING AT PINHOLE WALL (Yd=0)",
+            subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0) — MATCHES COMBINED ELEVATION",
             scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Filter Skid Detail",
             height=0.05)

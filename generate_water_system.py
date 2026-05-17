@@ -306,6 +306,20 @@ ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 pipe(ax1, 6.4, 5.2, 6.4, 4.8, C_BROWN)
 
+# ── Brown drain-out — IBC-3 to exterior drain port D3 via P-05 ───────────
+# Separate drain circuit from left side of IBC-3 (right side feeds P-02 recirculation)
+BD_X = 5.35
+pipe(ax1, 5.7, 8.0, BD_X, 8.0, C_BROWN)             # stub from IBC left edge
+valve(ax1, BD_X, 8.0, color=C_BROWN)
+ax1.text(BD_X - 0.15, 7.85, "BV-07", ha="right", fontsize=6, color=C_BROWN)
+pipe(ax1, BD_X, 8.2, BD_X, 8.65, C_BROWN)            # up from valve to pump
+pump(ax1, BD_X, 8.85, color=C_PUMP)
+ax1.text(BD_X - 0.35, 8.85, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
+pipe(ax1, BD_X, 9.05, BD_X, 9.6, C_BROWN)            # up from pump to ext port
+arrow_pipe(ax1, BD_X, 9.3, BD_X, 9.55, color=C_BROWN)
+ax1.text(BD_X, 9.75, "EXT. DRAIN D3\n(2\" NPT)", ha="center", fontsize=5.5,
+         color=C_BROWN, style="italic", va="bottom")
+
 # ── FILTER SKID ───────────────────────────────────────────────────────────────
 ax1.add_patch(plt.Rectangle((5.2, 3.0), 3.8, 2.0, fc=C_FILT, ec="#F57F17",
                              lw=1.5, alpha=0.8, zorder=1))
@@ -393,17 +407,19 @@ pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC b
 arrow_pipe(ax1, W_X, 3.2, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
 arrow_pipe(ax1, W_X, Y_J + 0.1, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
 
-# External drain port — exits right side of black system box
-DISP_X = 13.3
-DISP_Y = W_Y - W_H/2 - 0.3
-pipe(ax1, W_X, W_Y - W_H/2, W_X, DISP_Y, C_BLACK)    # IBC bottom → down
-pipe(ax1, W_X, DISP_Y, DISP_X, DISP_Y, C_BLACK)      # right to near box edge
-pipe(ax1, DISP_X, DISP_Y, DISP_X, 10.75, C_BLACK)    # up and out top of box
-ax1.annotate("", xy=(DISP_X, 11.05), xytext=(DISP_X, 10.8),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=2,
-                             mutation_scale=14), zorder=4)
-ax1.text(DISP_X, 11.2, "EXTERNAL DRAIN\nPORT (2\" NPT)", ha="center",
-         fontsize=6.5, color=C_BLACK, fontweight="bold", va="bottom")
+# ── Waste drain-out — IBC-4 to exterior drain port D4 via P-03 ────────────
+# Separate outlet from right side of IBC-4 (left side carries waste inflow)
+WD_X = 12.6
+pipe(ax1, W_X + W_W/2, 7.8, WD_X, 7.8, C_BLACK)        # stub from IBC right edge
+valve(ax1, WD_X, 7.8, color=C_BLACK)
+ax1.text(WD_X + 0.15, 7.65, "BV-08", ha="left", fontsize=6, color=C_BLACK)
+pipe(ax1, WD_X, 8.0, WD_X, 8.5, C_BLACK)
+pump(ax1, WD_X, 8.7, color=C_PUMP)
+ax1.text(WD_X + 0.35, 8.7, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)
+pipe(ax1, WD_X, 8.9, WD_X, 9.6, C_BLACK)
+arrow_pipe(ax1, WD_X, 9.3, WD_X, 9.55, color=C_BLACK)
+ax1.text(WD_X, 9.75, "EXT. DRAIN D4\n(2\" NPT)", ha="center", fontsize=5.5,
+         color=C_BLACK, style="italic", va="bottom")
 
 # ── PROCESSING AREA ───────────────────────────────────────────────────────────
 ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C",
@@ -585,6 +601,15 @@ ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
 FAR_IBC_DY = IBC_FAR_Y * SY
 ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
          "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
+
+# Drain pumps P-03 (waste) and P-05 (brown) — in plumbing corridor between IBC columns
+CORR_DY = 1181 * SY  # corridor centerline in drawing coords
+pump(ax2, IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.25, color=C_PUMP, r=0.15)
+ax2.text(IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.55, "P-05\nBROWN\nDRAIN",
+         ha="center", fontsize=5, color=C_PUMP)
+pump(ax2, IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.25, color=C_PUMP, r=0.15)
+ax2.text(IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.55, "P-03\nWASTE\nDRAIN",
+         ha="center", fontsize=5, color=C_PUMP)
 
 # Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
 FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9

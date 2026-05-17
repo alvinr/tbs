@@ -212,8 +212,8 @@ TAP_WALL_T     = 3       # branch pipe wall thickness (mm)
 # Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
 FSKID_X        = 2850    # frame left edge X (mm) — 50mm right of pump manifold
 FSKID_W        = 900     # frame width (mm)
-FSKID_Z_LO     = 150     # frame bottom Z above floor (mm) — on riser pads
-FSKID_Z_HI     = 750     # frame top Z above floor (mm)
+FSKID_Z_LO     = 1410    # frame bottom Z above floor (mm) — raised for walkway clearance
+FSKID_Z_HI     = 2010    # frame top Z above floor (mm)
 FSKID_H        = 600     # frame height (mm)
 
 # Big Blue 4.5"×10" housings (physical dimensions)
@@ -226,8 +226,8 @@ BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
 F1_X           = 3050    # F1 center X (mm) — 50μ sediment
 F2_X           = 3350    # F2 center X (mm) — 5μ sediment
 F3_X           = 3650    # F3 center X (mm) — GAC carbon
-FILT_HEAD_Z    = 680     # filter head top Z (mm) — ports at this height
-FILT_SUMP_Z    = 340     # filter sump bottom Z (mm) — head_Z - BB_H
+FILT_HEAD_Z    = 1940    # filter head top Z (mm) — ports at this height
+FILT_SUMP_Z    = 1600    # filter sump bottom Z (mm) — eye level for cartridge inspection
 
 # Filter pipe (1" HDPE Sch40)
 FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)

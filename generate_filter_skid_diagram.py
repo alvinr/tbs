@@ -437,8 +437,8 @@ draw_pipe_path(ax,
     OD, WALL)
 
 # Supply annotation at riser entry
-ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 30)),
-            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
+ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
+            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 30)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
 ax.text(sx(RISER_X), sz(RISER_ENTRY_Z - 10),
         "FROM P-02\n(PUMP MANIFOLD\nBELOW)", ha="center", va="top",

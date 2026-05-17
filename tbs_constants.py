@@ -205,6 +205,34 @@ TAP_Z          = 1150    # tap spout height AFF (mm) — 125mm above shelf surfa
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm)
 
+
+# ── Filter skid (pinhole wall, right of pump manifold) ─────────────────────
+# 900×600mm slotted steel angle frame, wall-mounted on pinhole wall (Yd=0).
+# Three Geekpure Big Blue 4.5"×10" housings, vertical mount, heads at top.
+# Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
+FSKID_X        = 2850    # frame left edge X (mm) — 50mm right of pump manifold
+FSKID_W        = 900     # frame width (mm)
+FSKID_Z_LO     = 150     # frame bottom Z above floor (mm) — on riser pads
+FSKID_Z_HI     = 750     # frame top Z above floor (mm)
+FSKID_H        = 600     # frame height (mm)
+
+# Big Blue 4.5"×10" housings (physical dimensions)
+BB_OD          = 130     # housing outer diameter incl bracket (mm) — 4.5"=114mm + clamp
+BB_H           = 340     # housing total height (mm) — head + sump bowl
+BB_HEAD_H      = 70      # head height (mm) — where 1" NPT ports are
+BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
+
+# Filter center X positions (300mm spacing)
+F1_X           = 3050    # F1 center X (mm) — 50μ sediment
+F2_X           = 3350    # F2 center X (mm) — 5μ sediment
+F3_X           = 3650    # F3 center X (mm) — GAC carbon
+FILT_HEAD_Z    = 680     # filter head top Z (mm) — ports at this height
+FILT_SUMP_Z    = 340     # filter sump bottom Z (mm) — head_Z - BB_H
+
+# Filter pipe (1" HDPE Sch40)
+FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)
+FILT_PIPE_WALL = 4       # pipe wall thickness (mm)
+
 # ���─ Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
 # Right-justified to far end wall: X=4,674–5,893mm.
 # Layout (view from pinhole wall):

@@ -18,6 +18,8 @@ Cyanotype processing requires a clean, stable work surface for:
 
 The shelf must not obstruct walkway navigation (the operator walks the full length of the near walkway during film loading and coating). A ceiling-suspended platform in the right corner — on the tray side of the near walkway — provides 0.18 m² of counter-height workspace while leaving the walkway completely clear.
 
+A dedicated water tap (TAP-01) on the pinhole wall at X=3,729mm, Z=1,150mm provides filtered water from the blue supply line for chemistry mixing and wash-down. Ball valve BV-06, mounted inline on the 3/4" branch pipe at X=3,600mm (129mm to the left of the shelf edge), gives the operator easy shut-off control from the prep position.
+
 ---
 
 ## 2. Location and Spatial Constraints

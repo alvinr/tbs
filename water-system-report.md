@@ -267,6 +267,7 @@ The processing tray is permanently installed — it remains in place during both
 |-------|---------|--------|---------------|-------------------|---------------|--------|---------|
 | BV-01 (Blue manifold) | Open | Open | Open | Open | Open | Open | Open |
 | BV-02 (Blue to floor) | Closed | **Open** | Closed | Closed | Closed | **Open** | Closed |
+| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed | Closed | Closed |
 | 3W-DV-02 (tray drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
 | P-02 (Brown pump) | Off | Off | Off | **On** | Off | Off | Off |
 | 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue | Blue | Blue |
@@ -416,6 +417,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3, plus spares | 11 | Amazon | $10–$16 | **$110–$176** |
+| [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | **$8–$12** |
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01, 3W-DV-02 | 2 | Amazon | $18–$30 | **$40–$60** |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | **$35–$50** |
 | [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. F1/F2/D3/D4 bends plus system elbows | 14 | Amazon | $3–$5 | **$42–$70** |

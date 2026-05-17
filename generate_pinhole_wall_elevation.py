@@ -454,10 +454,10 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
 # ── DV-01 diverter valve ─────────────────────────────────────────────────
 ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
-             linewidth=1.0, zorder=11))
+             linewidth=1.0, zorder=9))
 ax.text(sx(DV01_X), sz(PORT_Z), "DV-01",
         ha="center", va="center", fontsize=3.5, color=C_OUT,
-        zorder=14, **FONT)
+        zorder=10, **FONT)
 
 # ── P-02 suction: IBC-3 → pump manifold (entering from right / IBC zone) ──
 # P-02 suction draws from IBC-3 in the right end zone.  Pipe enters manifold
@@ -493,30 +493,29 @@ ax.text(sx(RISER_X), sz(P02_SUCT_Z - 30), "P-02",
         color=C_PUMP, zorder=10, **FONT)
 
 # ── DV-01 output: filtered water return to Blue IBC-2 (runs right) ────────
-# From DV-01, pipe runs right along the wall at PORT_Z height toward IBC zone.
-# Start from DV-01 center so pipe passes behind the white circle and looks connected.
-DV01_RET_Z = PORT_Z - 60   # slightly below DV-01 center to separate from inlet
+# Blue return exits DV-01 from the right edge (toward IBC zone) at PORT_Z,
+# then runs horizontally to the IBC stack zone.
 draw_pipe_path(ax,
-    [DV01_X, DV01_X + 200, IBC_PIPE_EXIT_X],
-    [PORT_Z, DV01_RET_Z, DV01_RET_Z],
-    OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=12)
+    [DV01_X + DV01_R, IBC_PIPE_EXIT_X],
+    [PORT_Z, PORT_Z],
+    OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=8)
 
 # Arrow showing flow toward IBCs
-ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 10), sz(DV01_RET_Z)),
-            xytext=(sx(IBC_PIPE_EXIT_X + 150), sz(DV01_RET_Z)),
+ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 10), sz(PORT_Z)),
+            xytext=(sx(IBC_PIPE_EXIT_X + 150), sz(PORT_Z)),
             arrowprops=dict(arrowstyle="-|>", color="#3070B0", lw=1.2),
             zorder=10)
-ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_RET_Z + 35),
+ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(PORT_Z + 35),
         "FILTERED RETURN → BLUE IBC-2", ha="center", va="bottom",
         fontsize=3.5, color="#3070B0", zorder=10, **FONT)
 
 # ── DV-01 waste output: to Black IBC-4 (runs right, lower Z) ──────────────
-# Start from DV-01 center so pipe passes behind the white circle and looks connected.
+# Waste exits DV-01 from the bottom edge, drops down, then runs right to IBC zone.
 DV01_WASTE_Z = PORT_Z - 200  # well below DV-01 for clear visibility
 draw_pipe_path(ax,
     [DV01_X, DV01_X, IBC_PIPE_EXIT_X],
-    [PORT_Z, DV01_WASTE_Z, DV01_WASTE_Z],
-    OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=7)
+    [PORT_Z - DV01_R, DV01_WASTE_Z, DV01_WASTE_Z],
+    OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=8)
 
 ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_WASTE_Z - 35),
         "WASTE → BLACK IBC-4", ha="center", va="top",

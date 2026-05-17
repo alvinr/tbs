@@ -457,26 +457,32 @@ draw_pipe_path(ax,
     OD, WALL)
 
 # ── F3 OUT → pH test point → DV-01 ──────────────────────────────────────────
-# pH test point: inline tee with probe pocket, positioned after F3
-PH_TEST_X = F3_X + 200  # 3850mm
+# pH test point: inline tee fitting with probe pocket, positioned after F3
+PH_TEST_X = F3_X + 200  # 3745mm
 PH_TEST_Z = PORT_Z
 
-# Pipe from F3 OUT up to header, right to pH test point, down, and on to DV-01
-# Single path so elbows render at all turns
-DV01_X = PH_TEST_X + 150  # 4000mm
+DV01_X = PH_TEST_X + 150  # 3895mm
 DV01_Z = PORT_Z
 DV01_R = 50  # valve body radius
 
+# Pipe from F3 OUT up to header, right to pH test point, and down to tee
+# (elbows at header turns only — bottom terminates at tee, no elbow)
 draw_pipe_path(ax,
-    [f3_out, f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z, PORT_Z],
+    [f3_out, f3_out, PH_TEST_X, PH_TEST_X],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, WALL)
+
+# Horizontal branch from tee to DV-01
+draw_pipe_path(ax,
+    [PH_TEST_X, DV01_X - DV01_R],
+    [PORT_Z, PORT_Z],
     OD, WALL)
 
 # ── pH test point symbol ─────────────────────────────────────────────────────
-# Draw as a tee with upward stub (probe insertion point)
+# Tee fitting with upward stub (probe insertion point)
 PH_STUB_H = 80  # stub height
 
-# Vertical stub from pipe
+# Vertical stub from tee (upward)
 draw_pipe_path(ax,
     [PH_TEST_X, PH_TEST_X],
     [PORT_Z, PORT_Z + PH_STUB_H],

@@ -356,16 +356,16 @@ filter_sym(ax1, 6.0, 4.2, label="F1")
 ax1.text(6.6, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
 arrow_pipe(ax1, 6.3, 4.6, 6.1, 4.6, color=C_BROWN)       # leftward to F1
-pipe(ax1, 6.0, 4.6, 6.0, 4.42, C_BROWN)
-pipe(ax1, 6.0, 3.98, 6.0, 3.25, C_BROWN)
+pipe(ax1, 6.0, 4.6, 6.0, 4.33, C_BROWN)
+pipe(ax1, 6.0, 4.07, 6.0, 3.25, C_BROWN)
 
 # Filter 2 — 5 micron sediment
 filter_sym(ax1, 7.1, 4.2, label="F2")
 ax1.text(7.6, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
 arrow_pipe(ax1, 6.4, 3.25, 6.8, 3.25, color=C_BROWN)     # rightward F1→F2
-pipe(ax1, 7.1, 3.25, 7.1, 3.98, C_BROWN)
-pipe(ax1, 7.1, 4.42, 7.1, 4.6, C_BROWN)
+pipe(ax1, 7.1, 3.25, 7.1, 4.07, C_BROWN)
+pipe(ax1, 7.1, 4.33, 7.1, 4.6, C_BROWN)
 arrow_pipe(ax1, 7.1, 4.45, 7.1, 4.55, color=C_BROWN)     # upward F2 out
 
 # Filter 3 — GAC carbon
@@ -373,8 +373,8 @@ filter_sym(ax1, 8.2, 4.2, label="F3")
 ax1.text(8.6, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
 arrow_pipe(ax1, 7.5, 4.6, 7.9, 4.6, color=C_BROWN)       # rightward F2→F3
-pipe(ax1, 8.2, 4.6, 8.2, 4.42, C_BROWN)
-pipe(ax1, 8.2, 3.98, 8.2, 3.25, C_BROWN)
+pipe(ax1, 8.2, 4.6, 8.2, 4.33, C_BROWN)
+pipe(ax1, 8.2, 4.07, 8.2, 3.25, C_BROWN)
 
 # pH test point
 pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)
@@ -389,15 +389,17 @@ pipe(ax1, 9.4, 3.25, 9.7 - DVR, 3.25, C_BROWN)
 valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
 ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
-# Path back to Blue IBC — split at Y=3.8 (blue supply crosses over) and Y=6.3 (brown drain crosses over)
+# Path back to Blue IBC — up at X=9.7, left at Y=9.2 (below F2 fill port), down to IBC-2
+RET_Y = 9.2   # return horizontal — below ext fill ports at Y=9.65
 pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
 pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
-pipe(ax1, 9.7, 6.3 + BR,   9.7, 10.3,      C_BLUE, style="--")   # above brown drain → raised
+pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
 arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
-pipe(ax1, 9.7, 10.3, 3.3, 10.3, C_BLUE, style="--")
-arrow_pipe(ax1, 7.5, 10.3, 5.0, 10.3, color=C_BLUE)              # leftward return
-pipe(ax1, 3.3, 10.3, 3.3, 8.9, C_BLUE, style="--")               # drop into IBC-2 top
-ax1.text(6.5, 10.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
+pipe(ax1, 9.7, RET_Y, 4.0, RET_Y, C_BLUE, style="--")            # left to IBC-2 right edge
+pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)  # over brown drain-out pipe
+arrow_pipe(ax1, 7.5, RET_Y, 5.0, RET_Y, color=C_BLUE)            # leftward return
+pipe(ax1, 4.0, RET_Y, 4.0, 8.9, C_BLUE, style="--")              # drop into IBC-2 top
+ax1.text(6.5, RET_Y + 0.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 
 # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical

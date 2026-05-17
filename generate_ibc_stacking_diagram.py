@@ -1599,45 +1599,35 @@ def sheet5():
     C_PIPE_BLACK  = "#505050"
 
     # ── Bulkhead ports at end wall ──────────────────────────────────────────
-    # 4 separate bulkhead unions stacked vertically (different Z heights).
-    # In plan view we offset them slightly in Yd so each pipe visibly
-    # connects to its own port.  Ordered by Z height (top to bottom):
-    #   F1 (Z=2,250), F2 (Z=2,150), D3 (Z=400), D4 (Z=200)
+    # All 4 ports are at the same Yd (panel_yd = corridor centerline),
+    # stacked vertically at different Z heights (matching sheet 4).
+    # Looking down they project to the same point.
     panel_yd = C_WID / 2
     bh_x = C_LEN  # at end wall
-    port_spacing = PIPE_OD + 8  # ~41mm between port centers
-    port_r = 18  # port circle radius in mm
 
-    # Port Yd positions — centered on panel_yd, spread by port_spacing
-    # Near side (low Yd) to far side (high Yd): D3, D4, F2, F1
-    # This keeps fill ports (F1/F2) on the far side near their corridor
-    # entry, and drain ports on the near side.
-    bh_ports = [
-        ("F1", panel_yd - 1.5 * port_spacing, C_PIPE_BLUE),
-        ("F2", panel_yd - 0.5 * port_spacing, C_PIPE_BLUE),
-        ("D3", panel_yd + 0.5 * port_spacing, C_PIPE_BROWN),
-        ("D4", panel_yd + 1.5 * port_spacing, C_PIPE_BLACK),
-    ]
-    for label, port_yd, color in bh_ports:
-        draw_pipe_end(ax, px(bh_x), py(port_yd),
-                      px(port_r), px(3),
-                      fc=color, ec=C_OUT, zorder=12)
-        ax.text(px(bh_x), py(port_yd), label,
-                ha="center", va="center", fontsize=4.5, color="white",
-                fontweight="bold", **FONT, zorder=14)
-    # Bracket label
-    ax.text(px(bh_x + 40), py(panel_yd + 100),
-            "4x BULKHEAD\nUNIONS 2\" NPT\n(STACKED AT\nDIFFERENT Z)",
-            ha="left", va="center", fontsize=5.5, color=C_PORT,
+    # Draw stacked port symbol — outermost ring is largest (F1, top),
+    # inner rings for lower ports
+    port_r = 22
+    draw_pipe_end(ax, px(bh_x), py(panel_yd),
+                  px(port_r), px(3),
+                  fc=C_PIPE_BLUE, ec=C_OUT, zorder=12)
+    # Color rings for the 4 circuits (concentric, largest = topmost)
+    for r_frac, color in [(0.65, C_PIPE_BLUE), (0.45, C_PIPE_BROWN),
+                           (0.25, C_PIPE_BLACK)]:
+        ax.add_patch(Circle((px(bh_x), py(panel_yd)),
+                     px(port_r * r_frac), fc=color, ec="none",
+                     zorder=13, alpha=0.8))
+    ax.text(px(bh_x + 40), py(panel_yd + 60),
+            "4x BULKHEAD UNIONS\n2\" NPT, STACKED\nAT Yd=" + f"{int(panel_yd)}mm\n"
+            "F1: Z={0}  F2: Z={1}\nD3: Z={2}  D4: Z={3}".format(
+                EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H),
+            ha="left", va="center", fontsize=5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
 
-    # Port Yd lookup for pipe routing
-    f1_port_yd = bh_ports[0][1]
-    f2_port_yd = bh_ports[1][1]
-    d3_port_yd = bh_ports[2][1]
-    d4_port_yd = bh_ports[3][1]
-
     # ── Pipe routing ─────────────────────────────────────────────────────────
+    # All pipes share the corridor centerline (panel_yd) from the bulkhead.
+    # They separate at their branch points — fill pipes at fill_x,
+    # drain pipes at drain_x.
     near_ibc_conn_yd = near_col_r   # 1,046
     far_ibc_conn_yd  = far_col_l    # 1,316
 
@@ -1645,28 +1635,29 @@ def sheet5():
     fill_x  = IBC_COL_X + IBC_W * 0.65
     drain_x = IBC_COL_X + IBC_W * 0.35
 
-    # ── D3: IBC-3 (near, Brown) → its own bulkhead port ────────────────────
+    # ── D3: IBC-3 (near, Brown) → bulkhead ─────────────────────────────────
+    # L-shaped: from IBC-3, elbow at corridor centerline, to bulkhead
     draw_pipe_path(ax,
-                   [drain_x, drain_x, bh_x - port_r],
-                   [near_ibc_conn_yd, d3_port_yd, d3_port_yd],
+                   [drain_x, drain_x, bh_x],
+                   [near_ibc_conn_yd, panel_yd, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BROWN, ec="#5A3020", zorder=6)
     flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
-    v3_yd = (near_ibc_conn_yd + d3_port_yd) / 2
+    v3_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
             "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
             **FONT, zorder=15)
 
-    # ── D4: IBC-4 (far, Waste) → its own bulkhead port ─────────────────────
+    # ── D4: IBC-4 (far, Waste) → bulkhead ──────────────────────────────────
     draw_pipe_path(ax,
-                   [drain_x, drain_x, bh_x - port_r],
-                   [far_ibc_conn_yd, d4_port_yd, d4_port_yd],
+                   [drain_x, drain_x, bh_x],
+                   [far_ibc_conn_yd, panel_yd, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLACK, ec="#333333", zorder=6)
     flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
-    v4_yd = (far_ibc_conn_yd + d4_port_yd) / 2
+    v4_yd = (far_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
     ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
             "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
@@ -1674,9 +1665,10 @@ def sheet5():
             **FONT, zorder=15)
 
     # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ────────────────────────
+    # Beneath F1; corridor run covered by F1 at higher zorder
     draw_pipe_path(ax,
-                   [bh_x - port_r, fill_x, fill_x],
-                   [f2_port_yd, f2_port_yd, far_ibc_conn_yd],
+                   [bh_x, fill_x, fill_x],
+                   [panel_yd, panel_yd, far_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
     flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
@@ -1685,14 +1677,14 @@ def sheet5():
             ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
-    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) ───────────────────────
+    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) — top pipe ────────────
     draw_pipe_path(ax,
-                   [bh_x - port_r, fill_x, fill_x],
-                   [f1_port_yd, f1_port_yd, near_ibc_conn_yd],
+                   [bh_x, fill_x, fill_x],
+                   [panel_yd, panel_yd, near_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=8)
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
     v1_x = (bh_x + fill_x) / 2
-    valve_plan(ax, v1_x, f1_port_yd, 'h', C_PIPE_BLUE, "V1")
+    valve_plan(ax, v1_x, panel_yd, 'h', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
     ax.text(px(fill_x + 40), py(near_ibc_conn_yd + 50),
             "F1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",

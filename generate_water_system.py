@@ -246,7 +246,7 @@ PR = 0.1125  # pump radius
 pipe(ax1, 2.4, 7.0 - VR, 2.4, 6.3 + PR, C_BLUE)
 arrow_pipe(ax1, 2.4, 6.85, 2.4, 6.5, color=C_BLUE)
 pump(ax1, 2.4, 6.3, color=C_PUMP)
-ax1.text(2.75, 6.3, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+ax1.text(2.60, 6.2, "P-01\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 # Pressure accumulator
 pipe(ax1, 2.4, 6.3 - PR, 2.4, 5.6, C_BLUE)
@@ -258,7 +258,7 @@ ax1.text(2.4, 5.35, "ACC-01\n1 GAL", ha="center", va="center",
 pipe(ax1, 2.4, 5.12, 2.4, 4.5 + VR, C_BLUE)
 arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
-ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
+ax1.text(2.70, 4.47, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.5 - VR, 2.4, 3.8, C_BLUE)
 # Run east to spray bar riser tap-off — humps over filter verticals, blue return, waste vertical
 pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
@@ -274,7 +274,7 @@ ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
 TAP_SCH_X = 12.0   # schematic X position for tap branch
 pipe(ax1, TAP_SCH_X, 3.8, TAP_SCH_X, 3.3 + VR, C_BLUE)
 valve(ax1, TAP_SCH_X, 3.3, color=C_BLUE)
-ax1.text(TAP_SCH_X, 3.15, "BV-06", ha="center", fontsize=6, color=C_BLUE)
+ax1.text(TAP_SCH_X + 0.30, 3.30, "BV-06", ha="center", fontsize=6, color=C_BLUE)
 tap_y = 2.36
 pipe(ax1, TAP_SCH_X, 3.3 - VR, TAP_SCH_X, tap_y, C_BLUE)
 pipe_bridge(ax1, TAP_SCH_X, 2.6, direction='v', color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)  # over black waste line
@@ -312,7 +312,7 @@ tank(ax1, 6.4, 8.2, 1.4, 1.4, fc="#D7CCC8", ec=C_BROWN_IBC, lw=2,
 # Inlet from processing floor drain
 pipe(ax1, 6.4, 7.48, 6.4, 7.0 + VR, C_BROWN)
 valve(ax1, 6.4, 7.0, color=C_BROWN)
-ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
+ax1.text(6.75, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 7.0 - VR, 6.4, 6.3, C_BROWN)
 # Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 6.4, 6.3, 15.1, 6.3, C_BROWN, style="--")
@@ -327,7 +327,7 @@ ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
 pipe(ax1, 6.4, 7.0 - VR, 6.4, 5.4 + PR, C_BROWN)
 arrow_pipe(ax1, 6.4, 6.8, 6.4, 5.8, color=C_BROWN)       # downward from IBC-3
 pump(ax1, 6.4, 5.4, color=C_PUMP)
-ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
+ax1.text(6.60, 5.3, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)
 
@@ -336,10 +336,10 @@ pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)
 BD_X = 5.35
 pipe(ax1, 5.7, 8.0, BD_X + VR, 8.0, C_BROWN)        # stub from IBC left edge → valve edge
 valve(ax1, BD_X, 8.0, color=C_BROWN)
-ax1.text(BD_X - 0.15, 7.85, "BV-07", ha="right", fontsize=6, color=C_BROWN)
+ax1.text(BD_X - 0.15, 7.95, "BV-07", ha="right", fontsize=6, color=C_BROWN)
 pipe(ax1, BD_X, 8.0 + VR, BD_X, 8.85 - PR, C_BROWN) # valve top → pump bottom
 pump(ax1, BD_X, 8.85, color=C_PUMP)
-ax1.text(BD_X - 0.35, 8.85, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
+ax1.text(BD_X - 0.15, 8.75, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
 pipe(ax1, BD_X, 8.85 + PR, BD_X, 9.5, C_BROWN)        # up from pump top → ext port
 arrow_pipe(ax1, BD_X, 9.3, BD_X, 9.45, color=C_BROWN)
 ext_port(ax1, BD_X, 9.65, color=C_BROWN, label="X3")
@@ -388,7 +388,7 @@ ax1.text(9.15, 3.25, "pH\nTEST", ha="center", va="center", fontsize=5.5,
 DVR = 0.075 * 1.6  # diverter valve circle radius = 0.12
 pipe(ax1, 9.4, 3.25, 9.7 - DVR, 3.25, C_BROWN)
 valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
-ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
+ax1.text(9.7, 2.9, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
 # Path back to Blue IBC — up at X=9.7, left at Y=9.2 (below F2 fill port), down to IBC-2
 RET_Y = 9.2   # return horizontal — below ext fill ports at Y=9.65
@@ -423,10 +423,10 @@ arrow_pipe(ax1, W_X, 6.5, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (uppe
 WD_X = 12.6
 pipe(ax1, W_X + W_W/2, 7.8, WD_X + VR, 7.8, C_BLACK)   # stub from IBC right edge → valve
 valve(ax1, WD_X, 7.8, color=C_BLACK)
-ax1.text(WD_X + 0.15, 7.65, "BV-08", ha="left", fontsize=6, color=C_BLACK)
+ax1.text(WD_X + 0.15, 7.75, "BV-08", ha="left", fontsize=6, color=C_BLACK)
 pipe(ax1, WD_X, 7.8 + VR, WD_X, 8.7 - PR, C_BLACK)     # valve top → pump bottom
 pump(ax1, WD_X, 8.7, color=C_PUMP)
-ax1.text(WD_X + 0.35, 8.7, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)
+ax1.text(WD_X + 0.15, 8.65, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)
 pipe(ax1, WD_X, 8.7 + PR, WD_X, 9.5, C_BLACK)           # pump top → ext port
 arrow_pipe(ax1, WD_X, 9.3, WD_X, 9.45, color=C_BLACK)
 ext_port(ax1, WD_X, 9.65, color=C_BLACK, label="X4")
@@ -461,14 +461,14 @@ ax1.text(15.6, 4.4, "TRAY DRAIN", ha="center",
 PUMP_R = 0.1125
 pipe(ax1, 15.6, 4.0, 15.6, 3.65 + PUMP_R, C_BROWN)              # drain → P-04
 pump(ax1, 15.6, 3.65, color=C_PUMP)
-ax1.text(15.95, 3.65, "P-04\n12VDC", ha="left", fontsize=6, color=C_PUMP)
+ax1.text(15.80, 3.60, "P-04\n12VDC", ha="left", fontsize=6, color=C_PUMP)
 
 # 3-way diverter valve below P-04
 DV02_Y = 3.05
 DV02_R = 0.075 * 1.6   # diverter valve circle radius = 0.12
 pipe(ax1, 15.6, 3.65 - PUMP_R, 15.6, DV02_Y + DV02_R, C_BROWN)  # P-04 → DV-02
 valve(ax1, 15.6, DV02_Y, color="#777777", size=0.075)
-ax1.text(15.6, DV02_Y - 0.22, "3W-DV-02", ha="center", fontsize=6, color="#444")
+ax1.text(16.00, DV02_Y, "3W-DV-02", ha="center", fontsize=6, color="#444")
 
 # to brown: short horizontal from valve left to brown return riser (dashed — return flow)
 pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN, style="--")  # valve → brown return
@@ -486,7 +486,7 @@ ax1.text(13.5, 2.42, "TO WASTE IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=6,
 # Brown drain (Y=6.3) bridges over; riser is split with gap at crossing
 pipe(ax1, 14.5, 3.8,       14.5, 4.4 - VR,  C_BLUE)    # riser to valve bottom
 valve(ax1, 14.5, 4.4, color=C_BLUE)                      # BV-05 spray bar shutoff
-ax1.text(14.58, 4.38, "BV-05", ha="left", fontsize=6, color=C_BLUE)
+ax1.text(14.65, 4.38, "BV-05", ha="left", fontsize=6, color=C_BLUE)
 pipe(ax1, 14.5, 4.4 + VR,  14.5, 6.3 - BR,  C_BLUE)    # valve top to brown crossing
 pipe(ax1, 14.5, 6.3 + BR,  14.5, 8.0,        C_BLUE)    # above brown drain
 arrow_pipe(ax1, 14.5, 5.0, 14.5, 6.8, color=C_BLUE)     # upward flow to spray bar

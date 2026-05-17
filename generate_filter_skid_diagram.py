@@ -73,14 +73,23 @@ def sz(z_mm):
 # X horizontal, Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(18, 12))
+from matplotlib.gridspec import GridSpec
+
+fig = plt.figure(figsize=(20, 12))
 fig.patch.set_facecolor(C_BG)
-ax = fig.add_subplot(111)
+gs = GridSpec(1, 2, figure=fig, width_ratios=[2.2, 1], wspace=0.06)
+
+ax = fig.add_subplot(gs[0, 0])   # Main elevation
 ax.set_facecolor(C_BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-# Set axis limits — show from X=2700 to X=3900, Z=-50 to 1000
+ax2 = fig.add_subplot(gs[0, 1])  # Detail cross-section
+ax2.set_facecolor(C_BG)
+ax2.set_aspect("equal")
+ax2.axis("off")
+
+# Set axis limits — main elevation
 ax.set_xlim(sx(2600) - 1, sx(4200) + 1)
 ax.set_ylim(sz(-100) - 1, sz(1000) + 2)
 
@@ -216,7 +225,21 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
         bracket_h / SC, (bracket_tab + bracket_h) / SC,
         fc="#999999", ec=C_FRAME, lw=1.0, zorder=7))
 
-    # Bolt symbols through tabs into backing board (2 per bracket)
+    # HDPE spacer blocks (25mm standoff between bracket and backing board)
+    # Visible in elevation as small rectangles behind bracket tabs
+    SPACER_D = 25   # spacer depth (Yd direction — not visible in elevation)
+    SPACER_H = 40   # spacer height (visible)
+    SPACER_W = 20   # spacer width (visible, slightly wider than bracket tab)
+    spacer_z = FILT_HEAD_Z - bracket_tab - 5
+    for sp_x in [cx_mm - bracket_w / 2 - 4,
+                 cx_mm + bracket_w / 2 - SPACER_W + 4]:
+        ax.add_patch(plt.Rectangle(
+            (sx(sp_x), sz(spacer_z)),
+            SPACER_W / SC, SPACER_H / SC,
+            fc="#E0D8B0", ec="#A09060", lw=0.8, zorder=3,
+            hatch=".."))
+
+    # Bolt symbols through tabs + spacers into backing board (2 per bracket)
     for bolt_x in [cx_mm - bracket_w / 2 + bracket_h / 2,
                    cx_mm + bracket_w / 2 - bracket_h / 2]:
         bolt_z = FILT_HEAD_Z - bracket_tab + 10
@@ -593,7 +616,7 @@ leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
 # Mounting bracket
 leader(ax, sx(F2_X + BB_OD / 2 + 10), sz(FILT_HEAD_Z + 6),
        sx(F2_X + BB_OD / 2 + 120), sz(FILT_HEAD_Z + 70),
-       "STEEL U-BRACKET\n(M6 BOLT TO PLY)", fs=5.5)
+       "U-BRACKET + 25mm\nHDPE SPACER (SEE DETAIL B)", fs=5.5)
 
 # Pipe material
 leader(ax, sx((f1_out + f2_in) / 2), sz(HEADER_Z + 10),
@@ -611,19 +634,230 @@ notes = [
     "2. Filter housings: Geekpure Big Blue 4.5\"×10\" (1\" NPT ports).",
     "3. Flow direction: P-02 → F1 (50μ) → F2 (5μ) → F3 (GAC) → pH test → DV-01.",
     "4. 18mm plywood backing board inside frame — easy mounting/repositioning of housings.",
-    "5. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
-    "6. pH test point: inline tee with removable cap for handheld probe insertion.",
-    "7. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
+    "5. 25mm HDPE spacer blocks between bracket and ply — clears rear port fittings (Detail B).",
+    "6. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
+    "7. pH test point: inline tee with removable cap for handheld probe insertion.",
+    "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
 for i, n in enumerate(notes):
     fig.text(0.04, 0.10 - i * 0.018, n, fontsize=7, color=C_TEXT,
              fontfamily="monospace", va="top")
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)
+# Side elevation (vertical section perpendicular to pinhole wall)
+# Yd horizontal (wall at left), Z vertical
+# Shows: corrugated wall → 18mm ply → 25mm HDPE spacer → bracket tab →
+#        filter head → sump bowl below → 1" NPT port with pipe
+# ═══════════════════════════════════════════════════════════════════════════════
+
+SC_B = 2.0  # mm per drawing unit for detail
+OBY = 3.0   # Yd origin
+OBZ = 4.0   # Z origin
+
+def sb_y(yd_mm):
+    return OBY + yd_mm / SC_B
+
+def sb_z(z_mm):
+    return OBZ + z_mm / SC_B
+
+# Detail limits — Yd = -15 to 200, Z relative to head center
+# Sump bottom at Z = -35 - 270 = -305; rounded bottom adds ~65 → need Z to -320
+HEAD_CZ = 0
+ax2.set_xlim(sb_y(-25) - 0.5, sb_y(210) + 1)
+ax2.set_ylim(sb_z(-330) - 0.5, sb_z(130) + 1)
+
+# Detail title
+ax2.text(sb_y(90), sb_z(115), "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (APPROX 1:2)",
+         ha="center", va="top", fontsize=9, fontweight="bold",
+         color="#1A237E", zorder=10)
+
+# All Z coordinates below are relative to filter head center (PORT_Z)
+
+# ── 1. Container corrugated wall (section fill) ─────────────────────────────
+# Wall is at Yd=0, ~2mm steel corrugated sheet — show as hatched rectangle
+WALL_T = 2.0
+# Corrugation profile — simplified as a thick hatched band
+ax2.add_patch(plt.Rectangle((sb_y(-WALL_T), sb_z(-320)),
+              WALL_T / SC_B, 420 / SC_B,
+              fc=C_STEEL_FILL, ec=C_FRAME, lw=1.8, zorder=3, hatch="//"))
+ax2.text(sb_y(-WALL_T / 2), sb_z(105), "WALL", ha="center", va="bottom",
+         fontsize=5.5, color=C_FRAME, rotation=0)
+
+# ── 2. Plywood backing board (18mm) ─────────────────────────────────────────
+PLY_YD_START = 0   # flush against wall inner face
+PLY_THICK = 18
+ax2.add_patch(plt.Rectangle((sb_y(PLY_YD_START), sb_z(-320)),
+              PLY_THICK / SC_B, 420 / SC_B,
+              fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
+# Wood grain indication
+for gz in range(-310, 100, 15):
+    ax2.plot([sb_y(PLY_YD_START + 2), sb_y(PLY_YD_START + PLY_THICK - 2)],
+             [sb_z(gz), sb_z(gz + 3)],
+             color="#C0B080", lw=0.4, zorder=3.5)
+
+# Dimension: ply thickness
+draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(PLY_YD_START + PLY_THICK),
+           sb_z(-60), "18mm", offset=0.3, fs=5.5)
+
+# ── 3. HDPE spacer block (25mm) ─────────────────────────────────────────────
+SPACER_YD = PLY_YD_START + PLY_THICK
+SPACER_THICK = 25
+SPACER_VIS_H = 40   # visible height in section
+ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
+              SPACER_THICK / SC_B, SPACER_VIS_H / SC_B,
+              fc="#E0D8B0", ec="#A09060", lw=1.2, zorder=4,
+              hatch=".."))
+
+# Dimension: spacer thickness
+draw_dim_h(ax2, sb_y(SPACER_YD), sb_y(SPACER_YD + SPACER_THICK),
+           sb_z(-60), "25mm", offset=0.3, fs=5.5)
+
+# ── 4. Steel bracket tab (3mm) ──────────────────────────────────────────────
+BRACKET_YD = SPACER_YD + SPACER_THICK
+BRACKET_THICK = 3
+BRACKET_VIS_H = 50
+ax2.add_patch(plt.Rectangle((sb_y(BRACKET_YD), sb_z(-BRACKET_VIS_H / 2)),
+              BRACKET_THICK / SC_B, BRACKET_VIS_H / SC_B,
+              fc="#999999", ec=C_FRAME, lw=1.2, zorder=5))
+
+# ── M6 bolt through bracket + spacer + ply ──────────────────────────────────
+BOLT_Z = -10  # bolt centerline Z (relative)
+bolt_y_head = BRACKET_YD + BRACKET_THICK  # bolt head on front face of bracket
+bolt_y_tip = PLY_YD_START - 2  # bolt tip emerges slightly past ply back face
+
+# Bolt shank
+ax2.plot([sb_y(bolt_y_tip), sb_y(bolt_y_head)],
+         [sb_z(BOLT_Z), sb_z(BOLT_Z)],
+         color=C_FRAME, lw=1.8, zorder=6)
+
+# Bolt head (hex, simplified as small rectangle)
+ax2.add_patch(plt.Rectangle((sb_y(bolt_y_head), sb_z(BOLT_Z - 4)),
+              5 / SC_B, 8 / SC_B,
+              fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
+
+# Washer + nut on back side
+ax2.add_patch(plt.Rectangle((sb_y(bolt_y_tip - 3), sb_z(BOLT_Z - 5)),
+              3 / SC_B, 10 / SC_B,
+              fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
+
+# Bolt label
+leader(ax2, sb_y(bolt_y_head + 3), sb_z(BOLT_Z),
+       sb_y(bolt_y_head + 40), sb_z(BOLT_Z - 30),
+       "M6×70 BOLT\n+ NYLOC NUT", fs=5)
+
+# ── 5. Filter head (section through center) ─────────────────────────────────
+HEAD_YD = BRACKET_YD + BRACKET_THICK + 2  # small gap for clamp band
+HEAD_DEPTH = 80   # head depth in Yd direction (front-to-back)
+HEAD_VIS_H = BB_HEAD_H  # 70mm
+
+ax2.add_patch(plt.Rectangle((sb_y(HEAD_YD), sb_z(-HEAD_VIS_H / 2)),
+              HEAD_DEPTH / SC_B, HEAD_VIS_H / SC_B,
+              fc=C_HEAD, ec=C_FRAME, lw=1.8, zorder=5))
+ax2.text(sb_y(HEAD_YD + HEAD_DEPTH / 2), sb_z(0), "HEAD",
+         ha="center", va="center", fontsize=6, color="white",
+         fontweight="bold", zorder=6)
+
+# ── 6. Sump bowl (hangs below head) ─────────────────────────────────────────
+SUMP_H = BB_H - BB_HEAD_H   # 270mm
+SUMP_W_SEC = BB_OD   # 130mm diameter shown in section
+sump_yd_center = HEAD_YD + HEAD_DEPTH / 2
+
+ax2.add_patch(plt.Rectangle(
+    (sb_y(sump_yd_center - SUMP_W_SEC / 2), sb_z(-HEAD_VIS_H / 2 - SUMP_H)),
+    SUMP_W_SEC / SC_B, SUMP_H / SC_B,
+    fc=C_HOUSING, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=4))
+
+# Rounded bottom
+arc_r_b = SUMP_W_SEC / 2
+theta_b = np.linspace(180, 360, 40)
+arc_bx = sb_y(sump_yd_center) + (arc_r_b / SC_B) * np.cos(np.radians(theta_b))
+arc_bz = sb_z(-HEAD_VIS_H / 2 - SUMP_H) + (arc_r_b / SC_B) * np.sin(np.radians(theta_b)) + arc_r_b / SC_B
+ax2.plot(arc_bx, arc_bz, color=C_FRAME, lw=1.5, zorder=5)
+
+ax2.text(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H / 2), "SUMP\nBOWL",
+         ha="center", va="center", fontsize=6, color="white",
+         fontweight="bold", zorder=6)
+
+# Sump height dimension
+draw_dim_v(ax2, sb_y(sump_yd_center + SUMP_W_SEC / 2 + 15),
+           sb_z(-HEAD_VIS_H / 2 - SUMP_H), sb_z(-HEAD_VIS_H / 2),
+           f"{int(SUMP_H)}mm", offset=0.3, fs=5)
+
+# Cartridge removal annotation — sump unscrews downward
+ax2.annotate("", xy=(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H - 40)),
+             xytext=(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H - 5)),
+             arrowprops=dict(arrowstyle="-|>", color="#CC4444", lw=2.0,
+                             mutation_scale=12), zorder=10)
+ax2.text(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H - 45),
+         "UNSCREW SUMP\nFOR CARTRIDGE\nREPLACEMENT",
+         ha="center", va="top", fontsize=5.5, color="#CC4444", fontweight="bold")
+
+# ── 7. 1" NPT port (front face of head) with pipe stub ──────────────────────
+PORT_YD = HEAD_YD + HEAD_DEPTH  # port exits front face
+PIPE_OD_SEC = FILT_PIPE_OD   # 33mm
+PIPE_WALL_SEC = FILT_PIPE_WALL  # 4mm
+PORT_Z_SEC = 0  # at head center
+
+# Port bore through head
+ax2.add_patch(plt.Rectangle((sb_y(PORT_YD - 15), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2)),
+              15 / SC_B, PIPE_OD_SEC / SC_B,
+              fc="white", ec=C_FRAME, lw=1.0, zorder=6))
+
+# Pipe stub (1" HDPE extending from port)
+STUB_LEN = 50
+# Outer wall
+ax2.add_patch(plt.Rectangle((sb_y(PORT_YD), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2)),
+              STUB_LEN / SC_B, PIPE_OD_SEC / SC_B,
+              fc=C_HDPE, ec=C_FRAME, lw=1.0, zorder=5))
+# Inner bore
+ax2.add_patch(plt.Rectangle(
+    (sb_y(PORT_YD), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2 + PIPE_WALL_SEC)),
+    STUB_LEN / SC_B, (PIPE_OD_SEC - 2 * PIPE_WALL_SEC) / SC_B,
+    fc="white", ec="none", zorder=6))
+
+# Pipe label
+leader(ax2, sb_y(PORT_YD + STUB_LEN), sb_z(PORT_Z_SEC),
+       sb_y(PORT_YD + STUB_LEN + 30), sb_z(PORT_Z_SEC + 25),
+       "1\" HDPE\nTO HEADER", fs=5)
+
+# ── 8. Clamp band (at head/sump junction) ───────────────────────────────────
+CLAMP_H_SEC = 15
+CLAMP_YD_L = sump_yd_center - SUMP_W_SEC / 2 - 5
+CLAMP_W_SEC = SUMP_W_SEC + 10
+ax2.add_patch(plt.Rectangle(
+    (sb_y(CLAMP_YD_L), sb_z(-HEAD_VIS_H / 2 - CLAMP_H_SEC)),
+    CLAMP_W_SEC / SC_B, CLAMP_H_SEC / SC_B,
+    fc="#888888", ec=C_FRAME, lw=1.0, zorder=6))
+
+# ── Overall standoff dimension ───────────────────────────────────────────────
+total_standoff = PLY_THICK + SPACER_THICK + BRACKET_THICK  # 18 + 25 + 3 = 46mm
+draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(BRACKET_YD + BRACKET_THICK),
+           sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.3, fs=5.5)
+
+# ── Component labels along section ──────────────────────────────────────────
+label_z = 85
+label_items = [
+    (PLY_YD_START + PLY_THICK / 2, "18mm PLY"),
+    (SPACER_YD + SPACER_THICK / 2, "25mm HDPE\nSPACER"),
+    (BRACKET_YD + BRACKET_THICK / 2, "BRACKET"),
+]
+for ly, ltxt in label_items:
+    ax2.text(sb_y(ly), sb_z(label_z), ltxt, ha="center", va="bottom",
+             fontsize=5, color=C_FRAME, rotation=0)
+    ax2.plot([sb_y(ly), sb_y(ly)], [sb_z(label_z - 5), sb_z(50)],
+             color=C_DIM, lw=0.5, ls=":", zorder=2)
+
+# ── Section cut indicator note ───────────────────────────────────────────────
+ax2.text(sb_y(90), sb_z(-315),
+         "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO WALL AT PORT HEIGHT",
+         ha="center", va="top", fontsize=6, color="#666666", style="italic")
+
 # ── Title block ──────────────────────────────────────────────────────────────
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="FILTER SKID — PLUMBING ELEVATION",
             subtitle="VIEW FROM INSIDE CONTAINER LOOKING AT PINHOLE WALL (Yd=0)",
-            scale_note="SCALE 1:5  |  ALL DIMS IN mm",
+            scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Filter Skid Detail")
 
 # ── Copyright ────────────────────────────────────────────────────────────────

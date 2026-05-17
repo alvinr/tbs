@@ -288,11 +288,11 @@ ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
 
 # External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
 pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE, style="--")
-ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="F1")
+ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
 ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
 pipe(ax1, 3.3, 8.9, 3.3, 9.5, C_BLUE, style="--")
-ext_port(ax1, 3.3, 9.65, color=C_BLUE, label="F2")
+ext_port(ax1, 3.3, 9.65, color=C_BLUE, label="X2")
 ax1.text(3.3, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
 
@@ -312,7 +312,7 @@ valve(ax1, 6.4, 7.0, color=C_BROWN)
 ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 7.0 - VR, 6.4, 6.3, C_BROWN)
 # Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
-pipe(ax1, 6.4, 6.3, 15.65, 6.3, C_BROWN, style="--")
+pipe(ax1, 6.4, 6.3, 15.1, 6.3, C_BROWN, style="--")
 pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L)
 pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L)
 pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE, bg=C_PROC)   # brown over spray bar riser
@@ -326,7 +326,7 @@ arrow_pipe(ax1, 6.4, 6.8, 6.4, 5.8, color=C_BROWN)       # downward from IBC-3
 pump(ax1, 6.4, 5.4, color=C_PUMP)
 ax1.text(6.75, 5.4, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
-pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.8, C_BROWN)
+pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)
 
 # ── Brown drain-out — IBC-3 to exterior drain port D3 via P-05 ───────────
 # Separate drain circuit from left side of IBC-3 (right side feeds P-02 recirculation)
@@ -339,7 +339,7 @@ pump(ax1, BD_X, 8.85, color=C_PUMP)
 ax1.text(BD_X - 0.35, 8.85, "P-05\n12VDC", ha="right", fontsize=6, color=C_PUMP)
 pipe(ax1, BD_X, 8.85 + PR, BD_X, 9.5, C_BROWN)        # up from pump top → ext port
 arrow_pipe(ax1, BD_X, 9.3, BD_X, 9.45, color=C_BROWN)
-ext_port(ax1, BD_X, 9.65, color=C_BROWN, label="D3")
+ext_port(ax1, BD_X, 9.65, color=C_BROWN, label="X3")
 ax1.text(BD_X, 9.95, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5,
          color=C_BROWN, style="italic", va="bottom")
 
@@ -427,7 +427,7 @@ pump(ax1, WD_X, 8.7, color=C_PUMP)
 ax1.text(WD_X + 0.35, 8.7, "P-03\n12VDC", ha="left", fontsize=6, color=C_PUMP)
 pipe(ax1, WD_X, 8.7 + PR, WD_X, 9.5, C_BLACK)           # pump top → ext port
 arrow_pipe(ax1, WD_X, 9.3, WD_X, 9.45, color=C_BLACK)
-ext_port(ax1, WD_X, 9.65, color=C_BLACK, label="D4")
+ext_port(ax1, WD_X, 9.65, color=C_BLACK, label="X4")
 ax1.text(WD_X, 9.95, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5,
          color=C_BLACK, style="italic", va="bottom")
 
@@ -468,9 +468,9 @@ pipe(ax1, 15.6, 3.65 - PUMP_R, 15.6, DV02_Y + DV02_R, C_BROWN)  # P-04 → DV-02
 valve(ax1, 15.6, DV02_Y, color="#777777", size=0.075)
 ax1.text(15.6, DV02_Y - 0.22, "3W-DV-02", ha="center", fontsize=6, color="#444")
 
-# to brown: short horizontal from valve left to brown return riser
-pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN)         # valve → brown return
-pipe(ax1, 15.1, DV02_Y, 15.1, 6.3, C_BROWN)                      # brown return riser
+# to brown: short horizontal from valve left to brown return riser (dashed — return flow)
+pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN, style="--")  # valve → brown return
+pipe(ax1, 15.1, DV02_Y, 15.1, 6.3, C_BROWN, style="--")              # brown return riser
 arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)             # upward drain return
 
 # to black: diverter outlet → down → left to waste IBC vertical

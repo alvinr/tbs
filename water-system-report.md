@@ -152,8 +152,8 @@ Processing tray sump (P-04 suction pickup)
 ### 3.3 Black System — Waste Containment
 
 ```
-FROM 3W-DV-01 (rejected filter output)
-FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
+FROM 3W-DV-01 (rejected filter output — pH out of range)
+FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
         │
    IBC-4 (600L waste)
         │

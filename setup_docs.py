@@ -161,6 +161,7 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet1.png",
     "shelf-sheet2.png",
     "shelf-sheet3.png",
+    "pinhole-wall-elevation.png",
 ]
 
 MKDOCS_YML = """\

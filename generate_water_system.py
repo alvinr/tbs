@@ -95,9 +95,9 @@ def tank(ax, x, y, w, h, fc="white", ec=C_FRAME, label="", sublabel="",
         ax.text(x, y - 0.06, sublabel, ha="center", va="center",
                 fontsize=6.5, color="#555555", zorder=zorder + 1)
 
-def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.075):
+def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.1125):
     """Draw a centrifugal pump symbol (circle with triangle arrow)."""
-    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=2.2, zorder=zorder)
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=2.8, zorder=zorder)
     ax.add_patch(circ)
     # Triangle inside
     tri = plt.Polygon([(x - r*0.55, y - r*0.55),

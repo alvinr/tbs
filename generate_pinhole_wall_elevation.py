@@ -460,18 +460,37 @@ ax.text(sx(DV01_X), sz(PORT_Z), "DV-01",
         zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
-# Branch tee off the supply riser, drops down to tap spout height
+# Branch tee off the supply riser, drops down to tap spout height.
+# Ball valve BV-06 inline on horizontal run, close to shelf for easy access.
 TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
+TAP_BRANCH_Z = TAP_Z + 100   # horizontal run height (1250mm)
+BV06_X = 3600                 # valve position — close to shelf left edge (3729)
+BV06_R = 25                   # valve body radius for symbol
+
+# Pipe: riser → horizontal → valve gap → horizontal → drop to tap
+# Split into two segments with a gap for the valve symbol
 draw_pipe_path(ax,
-    [RISER_X, RISER_X, TAP_X, TAP_X],
-    [TAP_Z + 100, TAP_Z + 100, TAP_Z + 100, TAP_Z],
+    [RISER_X, RISER_X, BV06_X - BV06_R],
+    [TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_BRANCH_Z],
     TAP_OD, TAP_WALL, zorder=7)
+draw_pipe_path(ax,
+    [BV06_X + BV06_R, TAP_X, TAP_X],
+    [TAP_BRANCH_Z, TAP_BRANCH_Z, TAP_Z],
+    TAP_OD, TAP_WALL, zorder=7)
+
+# BV-06 valve symbol (filled circle with label)
+ax.add_patch(plt.Circle((sx(BV06_X), sz(TAP_BRANCH_Z)), BV06_R * S,
+             fill=True, facecolor="white", edgecolor=C_OUT,
+             linewidth=0.8, zorder=9))
+ax.text(sx(BV06_X), sz(TAP_BRANCH_Z), "BV\n06",
+        ha="center", va="center", fontsize=3, color=C_OUT,
+        zorder=10, **FONT)
 
 # Tap spout symbol
 leader(ax, sx(TAP_X), sz(TAP_Z),
        sx(TAP_X + 150), sz(TAP_Z - 80),
-       "TAP-01\n(BV-06)", fs=4.5, color=C_DIM, zorder=10)
+       "TAP-01", fs=4.5, color=C_DIM, zorder=10)
 
 # ── Pull-cord switches ───────────────────────────────────────────────────
 for psx, plabel in [(PS_X_D, "D"), (PS_X_G, "G")]:

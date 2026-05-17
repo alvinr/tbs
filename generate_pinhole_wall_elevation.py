@@ -494,9 +494,10 @@ ax.text(sx(RISER_X), sz(P02_SUCT_Z - 30), "P-02",
 
 # ── DV-01 output: filtered water return to Blue IBC-2 (runs right) ────────
 # From DV-01, pipe runs right along the wall at PORT_Z height toward IBC zone.
+# Start from DV-01 center so pipe passes behind the white circle and looks connected.
 DV01_RET_Z = PORT_Z - 60   # slightly below DV-01 center to separate from inlet
 draw_pipe_path(ax,
-    [DV01_X + DV01_R, DV01_X + 200, IBC_PIPE_EXIT_X],
+    [DV01_X, DV01_X + 200, IBC_PIPE_EXIT_X],
     [PORT_Z, DV01_RET_Z, DV01_RET_Z],
     OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=7)
 
@@ -510,10 +511,11 @@ ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_RET_Z + 35),
         fontsize=3.5, color="#3070B0", zorder=10, **FONT)
 
 # ── DV-01 waste output: to Black IBC-4 (runs right, lower Z) ──────────────
+# Start from DV-01 center so pipe passes behind the white circle and looks connected.
 DV01_WASTE_Z = PORT_Z - 130  # below return line
 draw_pipe_path(ax,
-    [DV01_X, DV01_X, DV01_X + 100, IBC_PIPE_EXIT_X],
-    [PORT_Z, DV01_WASTE_Z, DV01_WASTE_Z, DV01_WASTE_Z],
+    [DV01_X, DV01_X, IBC_PIPE_EXIT_X],
+    [PORT_Z, DV01_WASTE_Z, DV01_WASTE_Z],
     OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=6)
 
 ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_WASTE_Z - 35),

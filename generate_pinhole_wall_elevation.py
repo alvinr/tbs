@@ -161,6 +161,24 @@ equip_block(0, TK_Z, C_LEN, TK_H, "", C_TRUNKING,
 ax.text(sx(C_LEN / 2), sz(TK_Z + TK_H / 2), "CABLE TRUNKING (40×25mm PVC)",
         ha="center", va="center", fontsize=4, color="white", zorder=4, **FONT)
 
+# ── Drop conduits (10mm corrugated flex) from trunking to devices ────────
+C_CONDUIT = "#707070"
+conduit_drops = [
+    # (X center mm, Z top of device mm, label)
+    (EVAP_X + EVAP_W / 2,  RAIL_OFF + EVAP_H,  "E"),     # evap cooler — circuit E
+    (EP_X + EP_W / 2,      EP_H_HI,             ""),      # electrical panel
+    (BA_X + BA_W / 2,      BA_H_HI,             ""),      # battery bank
+    (PUMP_X + PUMP_W / 2,  PUMP_H_HI,           "F"),     # pump — circuit F
+    (PWR_PANEL_X + PWR_PANEL_W / 2, PWR_Z_LO + PWR_PANEL_H, ""),  # ext power panel
+    (PS_X_D,               PS_Z + 15,           ""),      # pull-cord switch D
+    (PS_X_G,               PS_Z + 15,           ""),      # pull-cord switch G
+]
+for cx_mm, ztop_mm, clabel in conduit_drops:
+    ax.plot([sx(cx_mm), sx(cx_mm)], [sz(TK_Z), sz(ztop_mm)],
+            color=C_CONDUIT, lw=0.8, ls=(0, (4, 3)), zorder=3)
+    # Small filled circle at trunking junction
+    ax.plot(sx(cx_mm), sz(TK_Z), 'o', color=C_CONDUIT, ms=2.5, zorder=4)
+
 # ═══════════════════════════════════════════════════════════════════════════
 # 3. WALKWAY DECK (near walkway along pinhole wall)
 # ═══════════════════════════════════════════════════════════════════════════

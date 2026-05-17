@@ -395,10 +395,10 @@ RET_Y = 9.2   # return horizontal — below ext fill ports at Y=9.65
 pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
 pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
 pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
-arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
+arrow_pipe(ax1, 9.7, 7.0, 9.7, 7.3, color=C_BLUE)                # short upward return arrow
 pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to X2 fill line
 pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
-arrow_pipe(ax1, 7.5, RET_Y, 5.0, RET_Y, color=C_BLUE)            # leftward return
+arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
 ax1.text(6.5, RET_Y + 0.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 
@@ -473,7 +473,7 @@ ax1.text(15.6, DV02_Y - 0.22, "3W-DV-02", ha="center", fontsize=6, color="#444")
 # to brown: short horizontal from valve left to brown return riser (dashed — return flow)
 pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN, style="--")  # valve → brown return
 pipe(ax1, 15.1, DV02_Y, 15.1, 6.3, C_BROWN, style="--")              # brown return riser
-arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)             # upward drain return
+arrow_pipe(ax1, 15.1, 5.5, 15.1, 5.8, color=C_BROWN)             # short upward drain return arrow
 
 # to black: diverter outlet → down → left to waste IBC vertical
 pipe(ax1, 15.6, DV02_Y - DV02_R, 15.6, 2.6, C_BLACK)

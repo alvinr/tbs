@@ -244,10 +244,13 @@ arrow_pipe(ax1, 2.4, 4.95, 2.4, 4.65, color=C_BLUE)
 valve(ax1, 2.4, 4.5, color=C_BLUE)
 ax1.text(2.4, 4.37, "BV-02", ha="center", fontsize=6, color=C_BLUE)
 pipe(ax1, 2.4, 4.3, 2.4, 3.8, C_BLUE)
-# Run east to spray bar riser tap-off — humps over blue return (X=9.7) and waste vertical (W_X)
+# Run east to spray bar riser tap-off — humps over filter verticals, blue return, waste vertical
 pipe(ax1, 2.4, 3.8, 14.5, 3.8, C_BLUE)
-pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)
-pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)
+pipe_bridge(ax1, 6.0,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_FILT)     # over F1 vertical
+pipe_bridge(ax1, 7.1,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_FILT)     # over F2 vertical
+pipe_bridge(ax1, 8.2,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_FILT)     # over F3 vertical
+pipe_bridge(ax1, 9.7,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)  # over blue return
+pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)  # over waste vertical
 ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 

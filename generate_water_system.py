@@ -1241,24 +1241,28 @@ for sy_m in range(3):
 WK_DECK_H = 100
 WK_GRATE_T = 25
 
-# ── Suction hose from tube top, over rim, across walkway, up wall ────────────
-# Rim top (Z=70) to walkway bottom (Z=75) = 5mm gap — no room for 33mm hose.
-# Route OVER the walkway surface instead. Hose lies on top of the grating,
-# runs across to the wall, then up the wall to P-04 on the manifold.
+# ── Suction hose from tube top, across walkway, up wall ─────────────────────
+# Proper plumbing routing with discrete 90° elbow fittings:
+#   1. Vertical stub from tube top up to walkway-surface height
+#   2. 90° elbow at tube (vertical → horizontal)
+#   3. Horizontal run across walkway at constant Z (parallel to grating)
+#   4. 90° elbow at wall (horizontal → vertical)
+#   5. Vertical run up wall toward P-04
 HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
 HOSE_WALL = 4.0  # hose wall thickness (mm)
-HOSE_ON_WK = WK_DECK_H + HOSE_OD / 2  # hose centerline sitting on walkway surface
+HOSE_ON_WK = WK_DECK_H + HOSE_OD / 2  # hose centerline on walkway = 116.5mm
 
-# Hose path: elbow at pickup tube top → straight to wall → elbow up wall
-WALL_ELBOW_YD = 5     # elbow at wall
-WALL_ELBOW_Z = HOSE_ON_WK  # hose sits on walkway at the wall end
-hose_pts_y = [tube_yd, WALL_ELBOW_YD, WALL_ELBOW_YD]
-hose_pts_z = [tube_z_top, WALL_ELBOW_Z, 180]
+# Wall pipe must be fully inside container (wall interior face at Yd=0)
+WALL_PIPE_YD = HOSE_OD / 2 + 2  # ~18.5mm — outer edge of pipe just clears wall
+
+# 4 waypoints → 2 elbows (at tube top, at wall)
+hose_pts_y = [tube_yd,   tube_yd,      WALL_PIPE_YD, WALL_PIPE_YD]
+hose_pts_z = [tube_z_top, HOSE_ON_WK,  HOSE_ON_WK,   195]
 draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
                sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
 # Flow arrow going up wall
-ax4a.annotate("", xy=(sa_y(5), sa_z(195)),
-             xytext=(sa_y(5), sa_z(180)),
+ax4a.annotate("", xy=(sa_y(WALL_PIPE_YD), sa_z(210)),
+             xytext=(sa_y(WALL_PIPE_YD), sa_z(195)),
              arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0,
                              mutation_scale=12),
              zorder=10)
@@ -1423,7 +1427,8 @@ ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
 # Pickup tube (simplified) — from sump floor+5 to above rim
 tube_yd_b = sump_yd_b + PROC_TRAY_SUMP_D / 2
 RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
-draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, RIM_TOP_B + 20],
+tube_z_top_b = RIM_TOP_B + 30  # tube top above rim = 100mm (matches Detail A)
+draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
                TUBE_OD, TUBE_WALL, sb_y, sb_z,
                fc="#D0D0D0", ec=C_FRAME, zorder=5)
 ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
@@ -1434,9 +1439,10 @@ ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
 P04_Z = PUMP_H_LO + 80  # P-04 mounted in manifold zone, ~280mm
 HOSE_ON_WK_B = WK_DECK_H + HOSE_OD / 2  # centerline on walkway surface
 
-# Hose path: elbow at pickup → straight to wall → elbow up wall → P-04
-hose_b_y = [tube_yd_b, WALL_ELBOW_YD, WALL_ELBOW_YD]
-hose_b_z = [RIM_TOP_B + 20, HOSE_ON_WK_B, P04_Z]
+# Hose path: vertical stub → elbow → horizontal across walkway → elbow → up wall
+WALL_PIPE_YD_B = HOSE_OD / 2 + 2  # ~18.5mm — outer edge clears wall
+hose_b_y = [tube_yd_b, tube_yd_b, WALL_PIPE_YD_B, WALL_PIPE_YD_B]
+hose_b_z = [tube_z_top_b, HOSE_ON_WK_B, HOSE_ON_WK_B, P04_Z]
 draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
                sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
 
@@ -1616,19 +1622,19 @@ HOSE_ROUTE_YD = 65  # hose centerline on walkway (just inside rim)
 # Hose straight run across walkway: from rim area to wall
 draw_pipe_path(ax4c,
                [X_CENTER, X_CENTER, X_CENTER],
-               [tray_yd_near + 30, HOSE_ROUTE_YD, 5],
+               [tray_yd_near + 30, HOSE_ROUTE_YD, WALL_PIPE_YD],
                HOSE_OD, HOSE_WALL, sc_x, sc_yd,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 
 # Pipe end-on at wall (elbow turns upward — shown as circle)
 pipe_r_c = HOSE_OD / 2 / SC_C
 pipe_wall_c = HOSE_WALL / SC_C
-draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(5),
+draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(WALL_PIPE_YD),
               pipe_r_c, pipe_wall_c,
               fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=7)
 
 # ── Elbow symbol at wall ────────────────────────────────────────────────────
-leader(ax4c, sc_x(X_CENTER + 5), sc_yd(5),
+leader(ax4c, sc_x(X_CENTER + 5), sc_yd(WALL_PIPE_YD),
        sc_x(X_CENTER + 80), sc_yd(-20),
        "90° ELBOW\n(TURNS UP WALL\nTO P-04)", fs=6, color=C_BROWN)
 

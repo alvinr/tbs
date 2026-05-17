@@ -322,18 +322,19 @@ for psx, plabel in [(PS_X_D, "D"), (PS_X_G, "G")]:
             color=C_DIM, lw=0.4, ls=":", zorder=5)
 
 # ── Shelf hanger rods (ghost — shelf is at Yd=300, not on wall face) ─────
-# Show the 4 hanger rod positions as thin dashed vertical lines
+# Show the 4 hanger rod positions as solid dark lines
+C_SHELF_DK = "#8A7A3A"   # darker gold for hangers/shelf — contrast with wall
 hanger_xs = [SHELF_X_L, SHELF_X_R]  # 2 pairs at shelf corners
 for hx in hanger_xs:
     ax.plot([sx(hx), sx(hx)], [sz(SHELF_H), sz(TK_Z)],
-            color=C_SHELF, lw=0.5, ls="--", zorder=3, alpha=0.5)
+            color=C_SHELF_DK, lw=1.2, ls="--", zorder=4)
 
-# Shelf ghost outline (dashed, it's behind the walkway plane at Yd=300)
+# Shelf ghost outline (behind walkway plane at Yd=300, but drawn darker)
 equip_block(SHELF_X_L, SHELF_H - SHELF_T, SHELF_X_R - SHELF_X_L, SHELF_T,
-            "", C_SHELF, ls="--", alpha=0.3, lw=0.6, zorder=3)
+            "", C_SHELF_DK, ls="--", alpha=0.6, lw=1.2, zorder=4)
 ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
         "CHEM SHELF (Yd=300, BEHIND)", ha="center", va="top",
-        fontsize=4, color=C_SHELF, style="italic", zorder=10, **FONT)
+        fontsize=4, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 5. DIMENSION LINES — key clearances and positions

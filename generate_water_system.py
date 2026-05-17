@@ -329,32 +329,30 @@ ax1.add_patch(plt.Rectangle((5.2, 3.0), 3.8, 2.0, fc=C_FILT, ec="#F57F17",
 ax1.text(7.1, 4.88, "FILTER SKID", ha="center", fontsize=7.5,
          fontweight="bold", color="#E65100")
 
-# Filter 1 — 50 micron sediment
-filter_sym(ax1, 6.0, 3.9, label="F1")
+# Filter 1 — 50 micron sediment (symbol above blue supply bridge humps)
+filter_sym(ax1, 6.0, 4.2, label="F1")
 ax1.text(6.6, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
 arrow_pipe(ax1, 6.3, 4.6, 6.1, 4.6, color=C_BROWN)       # leftward to F1
-pipe(ax1, 6.0, 4.6, 6.0, 4.0, C_BROWN)
-pipe(ax1, 6.0, 3.8, 6.0, 3.55, C_BROWN)
+pipe(ax1, 6.0, 4.6, 6.0, 4.35, C_BROWN)
+pipe(ax1, 6.0, 4.05, 6.0, 3.25, C_BROWN)
 
 # Filter 2 — 5 micron sediment
-filter_sym(ax1, 7.1, 3.9, label="F2")
+filter_sym(ax1, 7.1, 4.2, label="F2")
 ax1.text(7.6, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
-pipe(ax1, 6.0, 3.55, 6.0, 3.25, C_BROWN)
 pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
 arrow_pipe(ax1, 6.4, 3.25, 6.8, 3.25, color=C_BROWN)     # rightward F1→F2
-pipe(ax1, 7.1, 3.25, 7.1, 3.55, C_BROWN)
-pipe(ax1, 7.1, 3.8, 7.1, 4.6, C_BROWN)
-arrow_pipe(ax1, 7.1, 4.0, 7.1, 4.4, color=C_BROWN)       # upward F2 out
+pipe(ax1, 7.1, 3.25, 7.1, 4.05, C_BROWN)
+pipe(ax1, 7.1, 4.35, 7.1, 4.6, C_BROWN)
+arrow_pipe(ax1, 7.1, 4.4, 7.1, 4.55, color=C_BROWN)      # upward F2 out
 
 # Filter 3 — GAC carbon
-filter_sym(ax1, 8.2, 3.9, label="F3")
+filter_sym(ax1, 8.2, 4.2, label="F3")
 ax1.text(8.6, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
-pipe(ax1, 7.1, 4.6, 7.1, 4.6, C_BROWN)
 pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
 arrow_pipe(ax1, 7.5, 4.6, 7.9, 4.6, color=C_BROWN)       # rightward F2→F3
-pipe(ax1, 8.2, 4.6, 8.2, 4.0, C_BROWN)
-pipe(ax1, 8.2, 3.8, 8.2, 3.25, C_BROWN)
+pipe(ax1, 8.2, 4.6, 8.2, 4.35, C_BROWN)
+pipe(ax1, 8.2, 4.05, 8.2, 3.25, C_BROWN)
 
 # pH test point
 pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)

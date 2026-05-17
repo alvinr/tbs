@@ -95,9 +95,9 @@ def tank(ax, x, y, w, h, fc="white", ec=C_FRAME, label="", sublabel="",
         ax.text(x, y - 0.06, sublabel, ha="center", va="center",
                 fontsize=6.5, color="#555555", zorder=zorder + 1)
 
-def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.05):
+def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.075):
     """Draw a centrifugal pump symbol (circle with triangle arrow)."""
-    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=1.8, zorder=zorder)
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=2.2, zorder=zorder)
     ax.add_patch(circ)
     # Triangle inside
     tri = plt.Polygon([(x - r*0.55, y - r*0.55),
@@ -106,10 +106,10 @@ def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.05):
                       fc=color, ec=color, zorder=zorder + 1)
     ax.add_patch(tri)
 
-def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.04, label="V"):
+def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.06, label="V"):
     """Draw a ball valve symbol (bowtie inside white circle)."""
     r = size * 1.6
-    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=1.5, zorder=zorder)
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=2.0, zorder=zorder)
     ax.add_patch(circ)
     tri1 = plt.Polygon([(x - size, y - size),
                         (x - size, y + size),
@@ -124,16 +124,16 @@ def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.04, label="V"):
 
 def filter_sym(ax, x, y, color=C_FILT, zorder=4, label="F"):
     """Draw a filter symbol (pentagon/diamond)."""
-    size = 0.07
-    h    = 0.09
+    size = 0.105
+    h    = 0.135
     pts  = [(x, y + h*0.6),
             (x + size*0.7, y + h*0.2),
             (x + size*0.5, y - h*0.5),
             (x - size*0.5, y - h*0.5),
             (x - size*0.7, y + h*0.2)]
-    poly = plt.Polygon(pts, fc=color, ec=C_FRAME, lw=1.2, zorder=zorder)
+    poly = plt.Polygon(pts, fc=color, ec=C_FRAME, lw=1.5, zorder=zorder)
     ax.add_patch(poly)
-    ax.text(x, y, label, ha="center", va="center", fontsize=6, zorder=zorder + 1,
+    ax.text(x, y, label, ha="center", va="center", fontsize=8, zorder=zorder + 1,
             fontweight="bold")
 
 def note(ax, x, y, txt, fs=6.5, color=C_TEXT):
@@ -337,25 +337,25 @@ filter_sym(ax1, 6.0, 4.2, label="F1")
 ax1.text(6.6, 3.35, "50μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.4, 4.6, 6.0, 4.6, C_BROWN)
 arrow_pipe(ax1, 6.3, 4.6, 6.1, 4.6, color=C_BROWN)       # leftward to F1
-pipe(ax1, 6.0, 4.6, 6.0, 4.35, C_BROWN)
-pipe(ax1, 6.0, 4.05, 6.0, 3.25, C_BROWN)
+pipe(ax1, 6.0, 4.6, 6.0, 4.42, C_BROWN)
+pipe(ax1, 6.0, 3.98, 6.0, 3.25, C_BROWN)
 
 # Filter 2 — 5 micron sediment
 filter_sym(ax1, 7.1, 4.2, label="F2")
 ax1.text(7.6, 3.35, "5μ\nSEDIMENT", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 6.0, 3.25, 7.1, 3.25, C_BROWN)
 arrow_pipe(ax1, 6.4, 3.25, 6.8, 3.25, color=C_BROWN)     # rightward F1→F2
-pipe(ax1, 7.1, 3.25, 7.1, 4.05, C_BROWN)
-pipe(ax1, 7.1, 4.35, 7.1, 4.6, C_BROWN)
-arrow_pipe(ax1, 7.1, 4.4, 7.1, 4.55, color=C_BROWN)      # upward F2 out
+pipe(ax1, 7.1, 3.25, 7.1, 3.98, C_BROWN)
+pipe(ax1, 7.1, 4.42, 7.1, 4.6, C_BROWN)
+arrow_pipe(ax1, 7.1, 4.45, 7.1, 4.55, color=C_BROWN)     # upward F2 out
 
 # Filter 3 — GAC carbon
 filter_sym(ax1, 8.2, 4.2, label="F3")
 ax1.text(8.6, 3.35, "GAC\nCARBON", ha="center", fontsize=6, color="#E65100")
 pipe(ax1, 7.1, 4.6, 8.2, 4.6, C_BROWN)
 arrow_pipe(ax1, 7.5, 4.6, 7.9, 4.6, color=C_BROWN)       # rightward F2→F3
-pipe(ax1, 8.2, 4.6, 8.2, 4.35, C_BROWN)
-pipe(ax1, 8.2, 4.05, 8.2, 3.25, C_BROWN)
+pipe(ax1, 8.2, 4.6, 8.2, 4.42, C_BROWN)
+pipe(ax1, 8.2, 3.98, 8.2, 3.25, C_BROWN)
 
 # pH test point
 pipe(ax1, 8.2, 3.25, 8.9, 3.25, C_BROWN)
@@ -366,7 +366,7 @@ ax1.text(9.15, 3.25, "pH\nTEST", ha="center", va="center", fontsize=5.5,
 
 # ── DIVERTER VALVE after filter — back to Blue OR forward to Black ─────────────
 pipe(ax1, 9.4, 3.25, 9.7, 3.25, C_BROWN)
-valve(ax1, 9.7, 3.25, color="#777777", size=0.05)
+valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
 ax1.text(9.7, 3.0, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
 # Path back to Blue IBC — split at Y=3.8 (blue supply crosses over) and Y=6.3 (brown drain crosses over)
@@ -451,7 +451,7 @@ ax1.text(15.6, 4.4, "TRAY DRAIN\n+ DIVERTER", ha="center",
 
 # 3-way valve at drain
 pipe(ax1, 15.6, 4.0, 15.6, 3.65, C_BROWN)                      # drain circle → valve
-valve(ax1, 15.6, 3.6, color="#777777", size=0.05)
+valve(ax1, 15.6, 3.6, color="#777777", size=0.075)
 ax1.text(15.6, 3.4, "3W-DV-02", ha="center", fontsize=6, color="#444")
 # to brown: short horizontal from valve left to brown return riser
 pipe(ax1, 15.1, 3.6, 15.55, 3.6, C_BROWN)                      # valve → brown return

@@ -222,10 +222,11 @@ BB_H           = 340     # housing total height (mm) — head + sump bowl
 BB_HEAD_H      = 70      # head height (mm) — where 1" NPT ports are
 BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
 
-# Filter center X positions (300mm spacing)
-F1_X           = 3050    # F1 center X (mm) — 50μ sediment
-F2_X           = 3350    # F2 center X (mm) — 5μ sediment
-F3_X           = 3650    # F3 center X (mm) — GAC carbon
+# Filter center X positions (equally spaced within 850mm inner frame)
+# 3 housings × 130mm OD = 390mm; remaining 460mm ÷ 4 gaps = 115mm each
+F1_X           = 3055    # F1 center X (mm) — 50μ sediment
+F2_X           = 3300    # F2 center X (mm) — 5μ sediment
+F3_X           = 3545    # F3 center X (mm) — GAC carbon
 FILT_HEAD_Z    = 1940    # filter head top Z (mm) — ports at this height
 FILT_SUMP_Z    = 1600    # filter sump bottom Z (mm) — eye level for cartridge inspection
 

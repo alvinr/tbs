@@ -554,19 +554,19 @@ ax.annotate("", xy=(sx(mid_x4 + 30), sz(HEADER_Z)),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax, sx(FSKID_X), sx(FSKID_X + FSKID_W), sz(FSKID_Z_LO - 50),
-           "900mm", offset=0.4)
+           "900mm", offset=0.44)
 
 # Frame height
 draw_dim_v(ax, sx(FSKID_X - 80), sz(FSKID_Z_LO), sz(FSKID_Z_HI),
-           "600mm", offset=0.4)
+           "600mm", offset=0.44)
 
 # Filter spacing (F1 to F2)
 draw_dim_h(ax, sx(F1_X), sx(F2_X), sz(FILT_SUMP_Z - 80),
-           "300mm", offset=0.3, fs=5.5)
+           "300mm", offset=0.33, fs=5.5)
 
 # Filter spacing (F2 to F3)
 draw_dim_h(ax, sx(F2_X), sx(F3_X), sz(FILT_SUMP_Z - 80),
-           "300mm", offset=0.3, fs=5.5)
+           "300mm", offset=0.33, fs=5.5)
 
 # Sump bottom height AFF
 ax.plot([sx(FSKID_X - 120), sx(FSKID_X + FSKID_W + 60)],
@@ -579,11 +579,11 @@ ax.text(sx(FSKID_X - 130), sz(FILT_SUMP_Z),
 # Ceiling clearance
 CEILING_Z = 2388
 draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(HEADER_Z), sz(CEILING_Z),
-           f"{CEILING_Z - HEADER_Z}mm\nCLEARANCE", offset=0.4)
+           f"{CEILING_Z - HEADER_Z}mm\nCLEARANCE", offset=0.44)
 
 # Header height above ports
 draw_dim_v(ax, sx(PH_TEST_X + 100), sz(PORT_Z), sz(HEADER_Z),
-           f"{int(HEADER_Z - PORT_Z)}mm", offset=0.3, fs=5.5)
+           f"{int(HEADER_Z - PORT_Z)}mm", offset=0.33, fs=5.5)
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
@@ -681,7 +681,7 @@ for gz in range(-310, 100, 15):
 
 # Dimension: ply thickness
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(PLY_YD_START + PLY_THICK),
-           sb_z(-60), "18mm", offset=0.3, fs=5.5)
+           sb_z(-60), "18mm", offset=0.33, fs=5.5)
 
 # ── 3. HDPE spacer block (50mm) ─────────────────────────────────────────────
 SPACER_YD = PLY_YD_START + PLY_THICK
@@ -694,7 +694,7 @@ ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
 
 # Dimension: spacer thickness
 draw_dim_h(ax2, sb_y(SPACER_YD), sb_y(SPACER_YD + SPACER_THICK),
-           sb_z(-60), "50mm", offset=0.3, fs=5.5)
+           sb_z(-60), "50mm", offset=0.33, fs=5.5)
 
 # ── 4. Steel bracket tab (3mm) ──────────────────────────────────────────────
 BRACKET_YD = SPACER_YD + SPACER_THICK
@@ -765,7 +765,7 @@ ax2.text(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H / 2), "SUMP\nBOWL",
 # Sump height dimension
 draw_dim_v(ax2, sb_y(sump_yd_center + SUMP_W_SEC / 2 + 15),
            sb_z(-HEAD_VIS_H / 2 - SUMP_H), sb_z(-HEAD_VIS_H / 2),
-           f"{int(SUMP_H)}mm", offset=0.3, fs=5)
+           f"{int(SUMP_H)}mm", offset=0.33, fs=5)
 
 # Cartridge removal annotation — sump unscrews downward
 ax2.annotate("", xy=(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H - 40)),
@@ -816,7 +816,7 @@ ax2.add_patch(plt.Rectangle(
 # ── Overall standoff dimension ───────────────────────────────────────────────
 total_standoff = PLY_THICK + SPACER_THICK + BRACKET_THICK  # 18 + 50 + 3 = 71mm
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(BRACKET_YD + BRACKET_THICK),
-           sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.3, fs=5.5)
+           sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.33, fs=5.5)
 
 # ── Component labels along section ──────────────────────────────────────────
 label_z = 85

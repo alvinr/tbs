@@ -153,7 +153,7 @@ def note(ax, x, y, txt, fs=6.5, color=C_TEXT):
             zorder=10)
 
 def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE,
-                zorder=11, bg='white'):
+                zorder=11, bg='white', style='-'):
     """Draw a pipe-crossing bridge hump on the 'over' pipe.
     direction: 'h' = bridging pipe is horizontal (arc humps upward)
                'v' = bridging pipe is vertical (arc humps rightward)
@@ -168,7 +168,7 @@ def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE,
         bx = x + r * np.cos(theta)
         by = y + r * np.sin(theta)
     ax.fill(bx, by, color=bg, zorder=zorder - 1)
-    ax.plot(bx, by, color=color, lw=lw, zorder=zorder, solid_capstyle='round')
+    ax.plot(bx, by, color=color, lw=lw, ls=style, zorder=zorder, solid_capstyle='round')
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — SYSTEM FLOW SCHEMATIC (P&ID overview)
@@ -277,6 +277,7 @@ valve(ax1, TAP_SCH_X, 3.3, color=C_BLUE)
 ax1.text(TAP_SCH_X, 3.15, "BV-06", ha="center", fontsize=6, color=C_BLUE)
 tap_y = 2.36
 pipe(ax1, TAP_SCH_X, 3.3 - VR, TAP_SCH_X, tap_y, C_BLUE)
+pipe_bridge(ax1, TAP_SCH_X, 2.6, direction='v', color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)  # over black waste line
 # Tap symbol (inverted triangle)
 ax1.plot([TAP_SCH_X - 0.2, TAP_SCH_X + 0.2, TAP_SCH_X, TAP_SCH_X - 0.2],
          [tap_y, tap_y, tap_y - 0.3, tap_y],
@@ -288,10 +289,12 @@ ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
 
 # External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
 pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE)
+arrow_pipe(ax1, 1.5, 9.4, 1.5, 9.0, color=C_BLUE)               # downward fill flow
 ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
 ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
 pipe(ax1, 3.3, 8.9, 3.3, 9.5, C_BLUE)
+arrow_pipe(ax1, 3.3, 9.4, 3.3, 9.0, color=C_BLUE)               # downward fill flow
 ext_port(ax1, 3.3, 9.65, color=C_BLUE, label="X2")
 ax1.text(3.3, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
@@ -313,9 +316,9 @@ ax1.text(6.6, 6.97, "BV-03", ha="center", fontsize=6, color=C_BROWN)
 pipe(ax1, 6.4, 7.0 - VR, 6.4, 6.3, C_BROWN)
 # Arrow from processing area — humps over blue return (X=9.7) and waste vertical (W_X)
 pipe(ax1, 6.4, 6.3, 15.1, 6.3, C_BROWN, style="--")
-pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L)
-pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L)
-pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE, bg=C_PROC)   # brown over spray bar riser
+pipe_bridge(ax1, 9.7,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BROWN_L, style="--")
+pipe_bridge(ax1, W_X,   6.3, color=C_BROWN, lw=LW_PIPE, bg=C_BLACK_L, style="--")
+pipe_bridge(ax1, 14.5,  6.3, color=C_BROWN, lw=LW_PIPE, bg=C_PROC, style="--")
 arrow_pipe(ax1, 6.6, 6.3, 6.4, 6.3, color=C_BROWN)
 ax1.text(8.1, 6.1, "1\" HDPE — BROWN (DRAIN FROM FLOOR)", ha="center",
          fontsize=7, color=C_BROWN)
@@ -394,7 +397,7 @@ pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between cross
 pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
 arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
 pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to X2 fill line
-pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)  # over brown drain-out pipe
+pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
 arrow_pipe(ax1, 7.5, RET_Y, 5.0, RET_Y, color=C_BLUE)            # leftward return
 ax1.text(6.5, RET_Y + 0.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")

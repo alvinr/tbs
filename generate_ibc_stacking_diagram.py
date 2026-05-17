@@ -1614,7 +1614,10 @@ def sheet5():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Pipe routing ─────────────────────────────────────────────────────────
-    # IBC corridor-facing edges
+    # Looking down, all 4 pipes run along the corridor centerline (same Yd),
+    # stacked vertically.  Blue fill pipes are highest (Z=2,250/2,100) and
+    # visible on top.  Brown/waste are below and hidden by the blue pipes
+    # in the corridor run — only their branch stubs to the IBCs are visible.
     near_ibc_conn_yd = near_col_r   # 1,046
     far_ibc_conn_yd  = far_col_l    # 1,316
 
@@ -1622,33 +1625,82 @@ def sheet5():
     fill_x  = IBC_COL_X + IBC_W * 0.65
     drain_x = IBC_COL_X + IBC_W * 0.35
 
-    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) ────────────────────────
-    # L-shaped path: horizontal from wall → 90° elbow → vertical to near IBC
+    # Slight Yd offset for the two blue pipes so they read as separate
+    # (in reality ~33mm pipe OD, one each side of centerline)
+    blue_offset = PIPE_OD / 2 + 2  # half OD + gap
+
+    # ── D3: IBC-3 (near, Brown) → corridor → Bulkhead (HIDDEN BENEATH) ─────
+    # Branch stub visible from IBC-3 to corridor; corridor run dashed (below blue)
+    # Branch: IBC-3 face → corridor centerline
+    draw_pipe_path(ax,
+                   [drain_x, drain_x],
+                   [near_ibc_conn_yd, corr_cx],
+                   PIPE_OD, PIPE_WALL_T, px, py,
+                   fc=C_PIPE_BROWN, ec="#5A3020", zorder=6)
+    flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
+    # V3 on branch
+    v3_yd = (near_ibc_conn_yd + corr_cx) / 2
+    valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
+    # Corridor run (hidden beneath blue) — dashed centerline
+    ax.plot([px(drain_x), px(bh_x - 20)],
+            [py(corr_cx), py(corr_cx)],
+            color=C_PIPE_BROWN, lw=1.5, ls=(0, (5, 5)), zorder=5, alpha=0.5)
+    # Flow arrow
+    ax.annotate("", xy=(px(bh_x - 30), py(corr_cx - 30)),
+                xytext=(px(bh_x - 90), py(corr_cx - 30)),
+                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
+    ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
+            "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
+            **FONT, zorder=15)
+
+    # ── D4: IBC-4 (far, Waste) → corridor → Bulkhead (HIDDEN BENEATH) ──────
+    # Branch stub visible from IBC-4 to corridor; corridor run dashed
+    draw_pipe_path(ax,
+                   [drain_x, drain_x],
+                   [far_ibc_conn_yd, corr_cx],
+                   PIPE_OD, PIPE_WALL_T, px, py,
+                   fc=C_PIPE_BLACK, ec="#333333", zorder=6)
+    flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
+    v4_yd = (far_ibc_conn_yd + corr_cx) / 2
+    valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
+    # Corridor run (hidden beneath blue) — dashed centerline
+    ax.plot([px(drain_x), px(bh_x - 20)],
+            [py(corr_cx), py(corr_cx)],
+            color=C_PIPE_BLACK, lw=1.5, ls=(0, (3, 4)), zorder=5, alpha=0.5)
+    ax.annotate("", xy=(px(bh_x - 30), py(corr_cx + 30)),
+                xytext=(px(bh_x - 90), py(corr_cx + 30)),
+                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
+    ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
+            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
+            **FONT, zorder=15)
+
+    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) — VISIBLE ON TOP ──────
+    # F1 runs on the near side of the corridor centerline
+    f1_corr_yd = corr_cx - blue_offset
     draw_pipe_path(ax,
                    [bh_x - 20, fill_x, fill_x],
-                   [corr_cx, corr_cx, near_ibc_conn_yd],
+                   [f1_corr_yd, f1_corr_yd, near_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    flange_plan(ax, bh_x - 20, corr_cx, 'h', C_PIPE_BLUE)
-    # V1 on horizontal run
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=8)
+    flange_plan(ax, bh_x - 20, f1_corr_yd, 'h', C_PIPE_BLUE)
     v1_x = (bh_x + fill_x) / 2
-    valve_plan(ax, v1_x, corr_cx, 'h', C_PIPE_BLUE, "V1")
+    valve_plan(ax, v1_x, f1_corr_yd, 'h', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    # Label
     ax.text(px(fill_x + 40), py(near_ibc_conn_yd + 50),
             "F1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
             ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
-    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ─────────────────────────
-    # Offset horizontal slightly from F1 for clarity
-    f2_corr_yd = corr_cx + 25
+    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) — VISIBLE ON TOP ───────
+    # F2 runs on the far side of the corridor centerline
+    f2_corr_yd = corr_cx + blue_offset
     draw_pipe_path(ax,
                    [bh_x - 20, fill_x, fill_x],
                    [f2_corr_yd, f2_corr_yd, far_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    # V2 on horizontal run
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=8)
     v2_x = (bh_x + fill_x) / 2 + 60
     valve_plan(ax, v2_x, f2_corr_yd, 'h', C_PIPE_BLUE, "V2")
     flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
@@ -1657,45 +1709,11 @@ def sheet5():
             ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
-    # ── D3: IBC-3 (near, Brown) → corridor → Bulkhead ───────────────────────
-    d3_corr_yd = corr_cx - 25
-    draw_pipe_path(ax,
-                   [drain_x, drain_x, bh_x - 20],
-                   [near_ibc_conn_yd, d3_corr_yd, d3_corr_yd],
-                   PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BROWN, ec="#5A3020", zorder=7)
-    flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
-    # V3 on vertical branch
-    v3_yd = corr_cx - (corr_cx - near_ibc_conn_yd) * 0.5
-    valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
-    flange_plan(ax, bh_x - 20, d3_corr_yd, 'h', C_PIPE_BROWN)
-    # Flow arrow
-    ax.annotate("", xy=(px(bh_x - 40), py(d3_corr_yd)),
-                xytext=(px(bh_x - 100), py(d3_corr_yd)),
-                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
-    ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
-            "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
-            **FONT, zorder=15)
-
-    # ── D4: IBC-4 (far, Waste) → corridor → Bulkhead ────────────────────────
-    d4_corr_yd = corr_cx + 50
-    draw_pipe_path(ax,
-                   [drain_x, drain_x, bh_x - 20],
-                   [far_ibc_conn_yd, d4_corr_yd, d4_corr_yd],
-                   PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLACK, ec="#333333", zorder=7)
-    flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
-    v4_yd = corr_cx + (far_ibc_conn_yd - corr_cx) * 0.5
-    valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
-    flange_plan(ax, bh_x - 20, d4_corr_yd, 'h', C_PIPE_BLACK)
-    ax.annotate("", xy=(px(bh_x - 40), py(d4_corr_yd)),
-                xytext=(px(bh_x - 100), py(d4_corr_yd)),
-                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
-    ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
-            **FONT, zorder=15)
+    # ── "HIDDEN" annotation for obscured pipes ──────────────────────────────
+    ax.text(px((drain_x + bh_x) / 2), py(corr_cx - 55),
+            "D3/D4 CORRIDOR RUNS HIDDEN\nBENEATH BLUE FILL PIPES",
+            ha="center", va="top", fontsize=5, color=C_DIM,
+            style="italic", **FONT, zorder=15)
 
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = px(X_LO + 30)

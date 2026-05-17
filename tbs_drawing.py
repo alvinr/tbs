@@ -12,7 +12,8 @@ tbs_constants.py.
 Usage
 -----
     from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl,
-                             draw_circle, draw_rect, bolt_holes, hatch_rect)
+                             draw_circle, draw_rect, bolt_holes, hatch_rect,
+                             place_label, register_pipe, reset_label_registry)
 """
 
 import numpy as np
@@ -212,6 +213,193 @@ def bolt_holes(ax, cx, cy, bc_r, n, d_r, *, color=C_OUT, lw=1.0,
 
 
 # ── Hatching ─────────────────────────────────────────────────────────────────
+
+# ── Label placement ─────────────────────────────────────────────────────────
+
+# Registry of placed labels and pipe segments for collision avoidance.
+# Each entry: (x, y, width_est, height_est).  Populated by place_label().
+# Pipe entries: ((x1,y1), (x2,y2)).  Populated by the caller via
+# register_pipe() or passed per-call.
+_label_registry = []
+_pipe_registry  = []
+
+
+def reset_label_registry():
+    """Clear the label and pipe registries (call once per sheet)."""
+    _label_registry.clear()
+    _pipe_registry.clear()
+
+
+def register_pipe(x1, y1, x2, y2):
+    """Record a pipe segment for collision avoidance."""
+    _pipe_registry.append(((x1, y1), (x2, y2)))
+
+
+def _point_to_segment_dist(px, py, x1, y1, x2, y2):
+    """Minimum distance from point (px,py) to line segment (x1,y1)-(x2,y2)."""
+    dx, dy = x2 - x1, y2 - y1
+    if dx == 0 and dy == 0:
+        return np.hypot(px - x1, py - y1)
+    t = max(0, min(1, ((px - x1) * dx + (py - y1) * dy) / (dx * dx + dy * dy)))
+    proj_x, proj_y = x1 + t * dx, y1 + t * dy
+    return np.hypot(px - proj_x, py - proj_y)
+
+
+def _score_quadrant(cx, cy, dx, dy, scan_r=0.5):
+    """Score a candidate label position — lower is better.
+
+    Counts nearby pipes and existing labels within *scan_r* of the
+    candidate point (cx+dx, cy+dy).
+    """
+    tx, ty = cx + dx, cy + dy
+    score = 0.0
+    for (x1, y1), (x2, y2) in _pipe_registry:
+        d = _point_to_segment_dist(tx, ty, x1, y1, x2, y2)
+        if d < scan_r:
+            score += (scan_r - d) / scan_r   # closer pipe = higher penalty
+    for lx, ly, lw, lh in _label_registry:
+        d = np.hypot(tx - lx, ty - ly)
+        if d < scan_r:
+            score += (scan_r - d) / scan_r
+    return score
+
+
+# Default offset rules derived from hand-tuned label placements.
+# Each entry: (dx, dy, ha, va) relative to component center.
+_DEFAULTS = {
+    #                  dx      dy     ha        va
+    'valve':         ( 0.30, -0.03, 'left',   'center'),
+    'pump':          ( 0.20, -0.10, 'left',   'center'),
+    'diverter':      ( 0.40,  0.00, 'center', 'center'),
+    'ext_port':      ( 0.00,  0.30, 'center', 'bottom'),
+    'filter':        ( 0.00, -0.20, 'center', 'top'),
+    'generic':       ( 0.15, -0.05, 'left',   'center'),
+}
+
+
+def place_label(ax, x, y, label, *,
+                component='valve',
+                radius=None,
+                dx=None, dy=None,
+                ha=None, va=None,
+                fontsize=6, color=None,
+                auto=True,
+                zorder=10,
+                scan_r=0.5,
+                **text_kwargs):
+    """Place a label near a schematic component with automatic positioning.
+
+    Parameters
+    ----------
+    ax          : matplotlib Axes
+    x, y        : component center coordinates
+    label       : text string (may be multi-line)
+    component   : 'valve', 'pump', 'diverter', 'ext_port', 'filter', 'generic'
+                  Selects default offset rules.
+    radius      : component symbol radius — offsets are measured from the edge,
+                  not the center.  If None, uses 0.096 for valve, 0.1125 for
+                  pump, 0.12 for diverter, 0.12 for ext_port, 0.0 otherwise.
+    dx, dy      : explicit offset override.  If provided, auto-placement is
+                  skipped for that axis (set one or both).
+    ha, va      : horizontal / vertical alignment override.
+    fontsize    : label font size (default 6).
+    color       : text color.  If None, inherits from the calling code.
+    auto        : if True (default), use quadrant scoring to pick the best
+                  side when dx/dy are not supplied.  If False, use the static
+                  defaults for the component type without scoring.
+    scan_r      : radius for quadrant scoring collision scan (default 0.5).
+    zorder      : drawing order for the text.
+    **text_kwargs : passed through to ax.text() (e.g. style, fontweight).
+
+    Returns
+    -------
+    matplotlib.text.Text — the placed text artist, for further tweaking.
+
+    Examples
+    --------
+    # Auto-place with defaults:
+    place_label(ax, 2.4, 7.0, "BV-01", component='valve', color=C_BLUE)
+
+    # Override just the X offset, auto-pick Y:
+    place_label(ax, 2.4, 7.0, "BV-01", component='valve', dx=0.35)
+
+    # Full manual placement (auto is effectively bypassed):
+    place_label(ax, 2.4, 7.0, "BV-01", dx=-0.2, dy=0.15, ha='right')
+    """
+    # ── Component radius defaults ────────────────────────────────────────
+    _RADII = {
+        'valve':    0.096,
+        'pump':     0.1125,
+        'diverter': 0.12,
+        'ext_port': 0.12,
+        'filter':   0.0,
+        'generic':  0.0,
+    }
+    r = radius if radius is not None else _RADII.get(component, 0.0)
+
+    # ── Fetch static defaults for this component type ────────────────────
+    defs = _DEFAULTS.get(component, _DEFAULTS['generic'])
+    d_dx, d_dy, d_ha, d_va = defs
+
+    # ── Auto quadrant scoring ────────────────────────────────────────────
+    if auto and (dx is None or dy is None):
+        # Candidate offsets: four quadrants plus pure cardinal directions
+        candidates = [
+            ( abs(d_dx),  abs(d_dy)),   # NE
+            (-abs(d_dx),  abs(d_dy)),   # NW
+            ( abs(d_dx), -abs(d_dy)),   # SE
+            (-abs(d_dx), -abs(d_dy)),   # SW
+            ( abs(d_dx),  0.0),         # E
+            (-abs(d_dx),  0.0),         # W
+            ( 0.0,        abs(d_dy)),   # N
+            ( 0.0,       -abs(d_dy)),   # S
+        ]
+        best_score = float('inf')
+        best_cdx, best_cdy = d_dx, d_dy
+        for cdx, cdy in candidates:
+            # Add radius to offset so label clears the symbol edge
+            eff_dx = cdx + (r * np.sign(cdx) if cdx != 0 else 0)
+            eff_dy = cdy + (r * np.sign(cdy) if cdy != 0 else 0)
+            s = _score_quadrant(x, y, eff_dx, eff_dy, scan_r)
+            if s < best_score:
+                best_score = s
+                best_cdx, best_cdy = eff_dx, eff_dy
+        auto_dx, auto_dy = best_cdx, best_cdy
+    else:
+        auto_dx = d_dx + (r * np.sign(d_dx) if d_dx != 0 else 0)
+        auto_dy = d_dy
+
+    # ── Apply overrides ──────────────────────────────────────────────────
+    final_dx = dx if dx is not None else auto_dx
+    final_dy = dy if dy is not None else auto_dy
+
+    # Alignment: infer from offset direction if not explicitly given
+    if ha is None:
+        if final_dx > 0.01:
+            ha = 'left'
+        elif final_dx < -0.01:
+            ha = 'right'
+        else:
+            ha = 'center'
+    if va is None:
+        va = d_va
+
+    # ── Place the text ───────────────────────────────────────────────────
+    tx, ty = x + final_dx, y + final_dy
+    kw = dict(ha=ha, va=va, fontsize=fontsize, zorder=zorder)
+    if color is not None:
+        kw['color'] = color
+    kw.update(text_kwargs)
+    txt = ax.text(tx, ty, label, **kw)
+
+    # ── Register for future collision checks ─────────────────────────────
+    n_lines = label.count('\n') + 1
+    est_w = len(max(label.split('\n'), key=len)) * fontsize * 0.008
+    est_h = n_lines * fontsize * 0.015
+    _label_registry.append((tx, ty, est_w, est_h))
+
+    return txt
+
 
 def hatch_rect(ax, x, y, w, h, *, color="#AAAAAA", hatch="///",
                edgecolor=C_OUT, lw=0.8, alpha=0.5, zorder=3):

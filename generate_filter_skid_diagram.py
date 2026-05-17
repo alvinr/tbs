@@ -89,9 +89,9 @@ ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
 
-# Set axis limits — main elevation
+# Set axis limits — main elevation (raised skid: Z=1410–2010, header ~2000)
 ax.set_xlim(sx(2600) - 1, sx(4200) + 1)
-ax.set_ylim(sz(-100) - 1, sz(1000) + 2)
+ax.set_ylim(sz(1200) - 1, sz(2300) + 2)
 
 # Reset label registry for collision avoidance
 reset_label_registry()
@@ -100,12 +100,13 @@ reset_label_registry()
 # Corrugation ribs at 457mm spacing — show as vertical dashed lines
 CORR_SPACING = 457
 for rib_x in range(2742, 3900, CORR_SPACING):  # ribs near our zone
-    ax.plot([sx(rib_x), sx(rib_x)], [sz(0), sz(900)],
+    ax.plot([sx(rib_x), sx(rib_x)], [sz(1300), sz(2200)],
             color="#AAAAAA", lw=0.6, ls="--", zorder=1)
 
-# Wall face (horizontal line at Yd=0, shown as the background)
-ax.axhline(sz(0), color="#888888", lw=1.0, ls="-", xmin=0.02, xmax=0.98, zorder=1)
-ax.text(sx(2750), sz(-30), "CONTAINER FLOOR", ha="left", va="top",
+# Ceiling line
+ax.plot([sx(2650), sx(4150)], [sz(2388), sz(2388)],
+        color="#888888", lw=1.0, ls="-", zorder=1)
+ax.text(sx(2750), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="left", va="bottom",
         fontsize=6, color="#888888", style="italic")
 
 # ── Slotted angle frame ──────────────────────────────────────────────────────
@@ -409,31 +410,10 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
 
 
 # ── P-02 pump ────────────────────────────────────────────────────────────────
-# P-02 is in the pump manifold zone, left of the filter skid
-# Position: X=2750, Z=400 (center)
+# P-02 is in the pump manifold zone (Z=200–600), below the visible area.
+# Show the discharge riser entering from below.
 P02_X = 2750
-P02_Z = 400
-P02_R = 60  # pump body radius in mm
-
-# Pump body (circle)
-ax.add_patch(plt.Circle((sx(P02_X), sz(P02_Z)), P02_R / SC,
-             fc="#FFDDDD", ec=C_PUMP, lw=2.5, zorder=6))
-
-# Pump impeller indication (arc arrow)
-imp_r = P02_R * 0.6
-theta_imp = np.linspace(30, 300, 50)
-ax.plot(sx(P02_X) + (imp_r / SC) * np.cos(np.radians(theta_imp)),
-        sz(P02_Z) + (imp_r / SC) * np.sin(np.radians(theta_imp)),
-        color=C_PUMP, lw=1.5, zorder=7)
-
-# Pump label
-place_label(ax, sx(P02_X), sz(P02_Z), "P-02\n(12V DIAPHRAGM)",
-            component='pump', fontsize=6.5, color=C_PUMP,
-            dx=-0.5, dy=-2.5, ha='center', va='top')
-
-# Pump suction port (bottom) and discharge port (right)
-P02_SUCTION_Z = P02_Z - P02_R   # bottom
-P02_DISCHARGE_X = P02_X + P02_R  # right side
+RISER_X = P02_X + 110  # discharge riser X (offset right of pump center)
 
 # ── Pipe routing ─────────────────────────────────────────────────────────────
 # Flow path: IBC-3 → P-02 suction (from below) → P-02 discharge → F1 IN →
@@ -443,28 +423,26 @@ OD = FILT_PIPE_OD    # 33mm
 WALL = FILT_PIPE_WALL  # 4mm
 
 # Port Z position for all filters
-PORT_Z = FILT_HEAD_Z - BB_HEAD_H / 2  # 680 - 35 = 645mm
+PORT_Z = FILT_HEAD_Z - BB_HEAD_H / 2  # 1940 - 35 = 1905mm
 
 # Header height (horizontal pipe run above filter heads connecting them)
-HEADER_Z = FILT_HEAD_Z + 60  # 740mm — above heads with clearance
+HEADER_Z = FILT_HEAD_Z + 60  # 2000mm — above heads with clearance
 
-# ── Suction pipe: from bottom (IBC-3 supply) up to P-02 ──────────────────────
+# ── Supply riser: P-02 discharge rises from pump manifold to header ──────────
+# Riser enters visible area from below, runs up to header, then right to F1 IN
+RISER_ENTRY_Z = 1280  # just below visible frame (enters from pump manifold below)
 draw_pipe_path(ax,
-    [P02_X, P02_X],
-    [100, P02_SUCTION_Z],
-    OD, WALL, fc=C_BROWN)
-
-# Suction annotation
-ax.annotate("", xy=(sx(P02_X), sz(130)), xytext=(sx(P02_X), sz(200)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
-ax.text(sx(P02_X), sz(60), "FROM IBC-3\n(BROWN RETURN)",
-        ha="center", va="top", fontsize=6, color=C_BROWN, style="italic")
-
-# ── Discharge pipe: P-02 right → up to header → right to F1 IN → down to port
-draw_pipe_path(ax,
-    [P02_DISCHARGE_X, P02_DISCHARGE_X + 50, P02_DISCHARGE_X + 50, f1_in, f1_in],
-    [P02_Z, P02_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    [RISER_X, RISER_X, RISER_X, f1_in, f1_in],
+    [RISER_ENTRY_Z, HEADER_Z, HEADER_Z, HEADER_Z, PORT_Z],
     OD, WALL)
+
+# Supply annotation at riser entry
+ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 30)),
+            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
+ax.text(sx(RISER_X), sz(RISER_ENTRY_Z - 10),
+        "FROM P-02\n(PUMP MANIFOLD\nBELOW)", ha="center", va="top",
+        fontsize=6, color=C_BROWN, style="italic")
 
 # ── F1 OUT → F2 IN (via header) ─────────────────────────────────────────────
 draw_pipe_path(ax,
@@ -549,8 +527,8 @@ ax.text(sx(DV01_X + DV01_R + 90), sz(DV01_Z), "→ BLACK\n  (pH outside range)",
 
 # ── Flow arrows on header ────────────────────────────────────────────────────
 arrow_style = dict(arrowstyle="-|>", color=C_HDPE, lw=1.8, mutation_scale=10)
-# Arrow between P-02 discharge and F1
-mid_x1 = (P02_DISCHARGE_X + 50 + f1_in) / 2
+# Arrow between riser and F1
+mid_x1 = (RISER_X + f1_in) / 2
 ax.annotate("", xy=(sx(mid_x1 + 30), sz(HEADER_Z)),
             xytext=(sx(mid_x1 - 30), sz(HEADER_Z)),
             arrowprops=arrow_style, zorder=12)
@@ -590,13 +568,18 @@ draw_dim_h(ax, sx(F1_X), sx(F2_X), sz(FILT_SUMP_Z - 80),
 draw_dim_h(ax, sx(F2_X), sx(F3_X), sz(FILT_SUMP_Z - 80),
            "300mm", offset=0.3, fs=5.5)
 
-# Height: floor to frame bottom
-draw_dim_v(ax, sx(FSKID_X + FSKID_W + 80), sz(0), sz(FSKID_Z_LO),
-           "150mm", offset=0.3, fs=5.5)
+# Sump bottom height AFF
+ax.plot([sx(FSKID_X - 120), sx(FSKID_X + FSKID_W + 60)],
+        [sz(FILT_SUMP_Z), sz(FILT_SUMP_Z)],
+        color=C_DIM, lw=0.5, ls=":", zorder=2)
+ax.text(sx(FSKID_X - 130), sz(FILT_SUMP_Z),
+        f"Z={FILT_SUMP_Z}mm AFF\n(EYE LEVEL)",
+        ha="right", va="center", fontsize=5.5, color=C_DIM)
 
-# Height: floor to filter head
-draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(0), sz(FILT_HEAD_Z),
-           "680mm", offset=0.4)
+# Ceiling clearance
+CEILING_Z = 2388
+draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(HEADER_Z), sz(CEILING_Z),
+           f"{CEILING_Z - HEADER_Z}mm\nCLEARANCE", offset=0.4)
 
 # Header height above ports
 draw_dim_v(ax, sx(PH_TEST_X + 100), sz(PORT_Z), sz(HEADER_Z),
@@ -604,8 +587,8 @@ draw_dim_v(ax, sx(PH_TEST_X + 100), sz(PORT_Z), sz(HEADER_Z),
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
-leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI + 20),
-       sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI + 80),
+leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO - 10),
+       sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO - 70),
        "25×25×3 SLOTTED\nSTEEL ANGLE FRAME", fs=6)
 
 # Backing board

@@ -454,10 +454,10 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
 # ── DV-01 diverter valve ─────────────────────────────────────────────────
 ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
-             linewidth=1.0, zorder=9))
+             linewidth=1.0, zorder=11))
 ax.text(sx(DV01_X), sz(PORT_Z), "DV-01",
         ha="center", va="center", fontsize=3.5, color=C_OUT,
-        zorder=10, **FONT)
+        zorder=14, **FONT)
 
 # ── P-02 suction: IBC-3 → pump manifold (entering from right / IBC zone) ──
 # P-02 suction draws from IBC-3 in the right end zone.  Pipe enters manifold
@@ -499,7 +499,7 @@ DV01_RET_Z = PORT_Z - 60   # slightly below DV-01 center to separate from inlet
 draw_pipe_path(ax,
     [DV01_X, DV01_X + 200, IBC_PIPE_EXIT_X],
     [PORT_Z, DV01_RET_Z, DV01_RET_Z],
-    OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=7)
+    OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=12)
 
 # Arrow showing flow toward IBCs
 ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 10), sz(DV01_RET_Z)),

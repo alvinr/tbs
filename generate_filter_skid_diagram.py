@@ -131,6 +131,19 @@ for upright_x in [FSKID_X + ANGLE_W / 2, FSKID_X + FSKID_W - ANGLE_W / 2]:
                 [sz(slot_z), sz(slot_z + 40)],
                 color="#666666", lw=1.0, zorder=4)
 
+# ── Backing board (18mm plywood) ─────────────────────────────────────────────
+# Sits inside the frame, behind the filter housings — easy mounting surface
+PLY_T = 18  # plywood thickness in mm
+C_PLY = "#D4C8A0"  # plywood fill color
+# The board spans the full inner frame width and height
+ply_x = FSKID_X + ANGLE_W
+ply_w = FSKID_W - 2 * ANGLE_W
+ply_z = FSKID_Z_LO + ANGLE_W
+ply_h = FSKID_H - 2 * ANGLE_W
+ax.add_patch(plt.Rectangle((sx(ply_x), sz(ply_z)),
+             ply_w / SC, ply_h / SC,
+             fc=C_PLY, ec="#A09060", lw=1.0, alpha=0.5, zorder=2.5))
+
 # ── Wall mounting brackets ───────────────────────────────────────────────────
 # L-brackets connecting frame to container ribs
 BRACKET_W = 50
@@ -179,7 +192,38 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
         body_w / SC, BB_HEAD_H / SC,
         fc=C_HEAD, ec=C_FRAME, lw=1.8, zorder=6))
 
-    # Mounting bracket (clamp band at top of sump)
+    # Mounting bracket — steel U-bracket screwed through backing board
+    # The bracket wraps around the head and bolts to the 18mm ply
+    bracket_w = body_w + 20   # bracket width (wider than housing)
+    bracket_h = 12            # bracket thickness
+    bracket_tab = 30          # tab height extending above/below head
+
+    # Horizontal bar across top of head
+    ax.add_patch(plt.Rectangle(
+        (sx(cx_mm - bracket_w / 2), sz(FILT_HEAD_Z)),
+        bracket_w / SC, bracket_h / SC,
+        fc="#999999", ec=C_FRAME, lw=1.2, zorder=7))
+
+    # Left tab (down from bar, alongside housing)
+    ax.add_patch(plt.Rectangle(
+        (sx(cx_mm - bracket_w / 2), sz(FILT_HEAD_Z - bracket_tab)),
+        bracket_h / SC, (bracket_tab + bracket_h) / SC,
+        fc="#999999", ec=C_FRAME, lw=1.0, zorder=7))
+
+    # Right tab (down from bar, alongside housing)
+    ax.add_patch(plt.Rectangle(
+        (sx(cx_mm + bracket_w / 2 - bracket_h), sz(FILT_HEAD_Z - bracket_tab)),
+        bracket_h / SC, (bracket_tab + bracket_h) / SC,
+        fc="#999999", ec=C_FRAME, lw=1.0, zorder=7))
+
+    # Bolt symbols through tabs into backing board (2 per bracket)
+    for bolt_x in [cx_mm - bracket_w / 2 + bracket_h / 2,
+                   cx_mm + bracket_w / 2 - bracket_h / 2]:
+        bolt_z = FILT_HEAD_Z - bracket_tab + 10
+        ax.plot(sx(bolt_x), sz(bolt_z), 'x', color=C_FRAME,
+                markersize=4, mew=1.2, zorder=8)
+
+    # Clamp band at sump/head junction (existing from Big Blue kit)
     clamp_h = 15
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - body_w / 2 - 8), sz(head_z_bot - clamp_h)),
@@ -393,16 +437,10 @@ ax.annotate("", xy=(sx(P02_X), sz(130)), xytext=(sx(P02_X), sz(200)),
 ax.text(sx(P02_X), sz(60), "FROM IBC-3\n(BROWN RETURN)",
         ha="center", va="top", fontsize=6, color=C_BROWN, style="italic")
 
-# ── Discharge pipe: P-02 right → up to header → right to F1 IN ──────────────
+# ── Discharge pipe: P-02 right → up to header → right to F1 IN → down to port
 draw_pipe_path(ax,
-    [P02_DISCHARGE_X, P02_DISCHARGE_X + 50, P02_DISCHARGE_X + 50, f1_in],
-    [P02_Z, P02_Z, HEADER_Z, HEADER_Z],
-    OD, WALL)
-
-# Drop from header to F1 IN port
-draw_pipe_path(ax,
-    [f1_in, f1_in],
-    [HEADER_Z, PORT_Z],
+    [P02_DISCHARGE_X, P02_DISCHARGE_X + 50, P02_DISCHARGE_X + 50, f1_in, f1_in],
+    [P02_Z, P02_Z, HEADER_Z, HEADER_Z, PORT_Z],
     OD, WALL)
 
 # ── F1 OUT → F2 IN (via header) ─────────────────────────────────────────────
@@ -422,10 +460,15 @@ draw_pipe_path(ax,
 PH_TEST_X = F3_X + 200  # 3850mm
 PH_TEST_Z = PORT_Z
 
-# Pipe from F3 OUT up to header, then right to pH test point, then down
+# Pipe from F3 OUT up to header, right to pH test point, down, and on to DV-01
+# Single path so elbows render at all turns
+DV01_X = PH_TEST_X + 150  # 4000mm
+DV01_Z = PORT_Z
+DV01_R = 50  # valve body radius
+
 draw_pipe_path(ax,
-    [f3_out, f3_out, PH_TEST_X, PH_TEST_X],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    [f3_out, f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z, PORT_Z],
     OD, WALL)
 
 # ── pH test point symbol ─────────────────────────────────────────────────────
@@ -449,18 +492,6 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
 place_label(ax, sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r),
             "pH TEST\nPOINT", component='generic', fontsize=6, color=C_TEXT,
             dx=1.5, dy=0.5, ha='left', va='center')
-
-# ── DV-01 diverter valve ─────────────────────────────────────────────────────
-# DV-01 is downstream of pH test — decides Blue or Black based on pH reading
-DV01_X = PH_TEST_X + 150  # 4000mm
-DV01_Z = PORT_Z
-DV01_R = 50  # valve body radius
-
-# Pipe from pH test to DV-01
-draw_pipe_path(ax,
-    [PH_TEST_X, DV01_X - DV01_R],
-    [PORT_Z, PORT_Z],
-    OD, WALL)
 
 # DV-01 body (diamond shape for 3-way valve)
 dv_pts_x = [sx(DV01_X), sx(DV01_X + DV01_R), sx(DV01_X), sx(DV01_X - DV01_R)]
@@ -522,31 +553,31 @@ ax.annotate("", xy=(sx(mid_x4 + 30), sz(HEADER_Z)),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax, sx(FSKID_X), sx(FSKID_X + FSKID_W), sz(FSKID_Z_LO - 50),
-           "900", offset=0.4)
+           "900mm", offset=0.4)
 
 # Frame height
 draw_dim_v(ax, sx(FSKID_X - 80), sz(FSKID_Z_LO), sz(FSKID_Z_HI),
-           "600", offset=0.4)
+           "600mm", offset=0.4)
 
 # Filter spacing (F1 to F2)
 draw_dim_h(ax, sx(F1_X), sx(F2_X), sz(FILT_SUMP_Z - 80),
-           "300", offset=0.3, fs=5.5)
+           "300mm", offset=0.3, fs=5.5)
 
 # Filter spacing (F2 to F3)
 draw_dim_h(ax, sx(F2_X), sx(F3_X), sz(FILT_SUMP_Z - 80),
-           "300", offset=0.3, fs=5.5)
+           "300mm", offset=0.3, fs=5.5)
 
 # Height: floor to frame bottom
 draw_dim_v(ax, sx(FSKID_X + FSKID_W + 80), sz(0), sz(FSKID_Z_LO),
-           "150", offset=0.3, fs=5.5)
+           "150mm", offset=0.3, fs=5.5)
 
 # Height: floor to filter head
 draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(0), sz(FILT_HEAD_Z),
-           "680", offset=0.4)
+           "680mm", offset=0.4)
 
-# Header height
+# Header height above ports
 draw_dim_v(ax, sx(PH_TEST_X + 100), sz(PORT_Z), sz(HEADER_Z),
-           str(int(HEADER_Z - PORT_Z)), offset=0.3, fs=5.5)
+           f"{int(HEADER_Z - PORT_Z)}mm", offset=0.3, fs=5.5)
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
@@ -554,10 +585,20 @@ leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI + 20),
        sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI + 80),
        "25×25×3 SLOTTED\nSTEEL ANGLE FRAME", fs=6)
 
+# Backing board
+leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
+       sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO - 20),
+       "18mm PLYWOOD\nBACKING BOARD", fs=5.5)
+
+# Mounting bracket
+leader(ax, sx(F2_X + BB_OD / 2 + 10), sz(FILT_HEAD_Z + 6),
+       sx(F2_X + BB_OD / 2 + 120), sz(FILT_HEAD_Z + 70),
+       "STEEL U-BRACKET\n(M6 BOLT TO PLY)", fs=5.5)
+
 # Pipe material
 leader(ax, sx((f1_out + f2_in) / 2), sz(HEADER_Z + 10),
        sx((f1_out + f2_in) / 2), sz(HEADER_Z + 90),
-       "1\" HDPE Sch40\n(OD 33, WALL 4)", fs=5.5)
+       "1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=5.5)
 
 # Wall bracket
 leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H / 2),
@@ -569,9 +610,10 @@ notes = [
     "1. All pipe: 1\" HDPE Sch40 (OD 33mm, wall 4mm). Push-fit barb connections.",
     "2. Filter housings: Geekpure Big Blue 4.5\"×10\" (1\" NPT ports).",
     "3. Flow direction: P-02 → F1 (50μ) → F2 (5μ) → F3 (GAC) → pH test → DV-01.",
-    "4. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
-    "5. pH test point: inline tee with removable cap for handheld probe insertion.",
-    "6. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
+    "4. 18mm plywood backing board inside frame — easy mounting/repositioning of housings.",
+    "5. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
+    "6. pH test point: inline tee with removable cap for handheld probe insertion.",
+    "7. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
 for i, n in enumerate(notes):
     fig.text(0.04, 0.10 - i * 0.018, n, fontsize=7, color=C_TEXT,

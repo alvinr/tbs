@@ -1614,15 +1614,21 @@ ax4c.text(sc_x(X_VIEW_R - 10), sc_yd(tray_yd_near + 8),
           fontsize=5.5, color="#6A8CAF", style="italic", zorder=5)
 
 # ── Hose routing (double-wall) across walkway surface ───────────────────────
-# In plan view: hose comes from sump area (Yd > 80), crosses over rim,
-# runs across the walkway surface toward the wall (Yd decreasing),
-# elbows at the wall and goes up (shown as pipe end-on at wall).
-HOSE_ROUTE_YD = 65  # hose centerline on walkway (just inside rim)
+# In plan view looking down, the hose horizontal run is visible as a straight
+# pipe from the pickup tube (Yd=130) across the walkway to the wall (Yd=18.5).
+# Vertical segments (up from tube, up wall) appear end-on as circles.
 
-# Hose straight run across walkway: from rim area to wall
+# Pickup tube end-on (vertical tube seen from above)
+tube_r_c = TUBE_OD / 2 / SC_C
+tube_wall_c = TUBE_WALL / SC_C
+draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(tube_yd),
+              tube_r_c, tube_wall_c,
+              fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
+
+# Straight hose from pickup tube to wall — single continuous run
 draw_pipe_path(ax4c,
-               [X_CENTER, X_CENTER, X_CENTER],
-               [tray_yd_near + 30, HOSE_ROUTE_YD, WALL_PIPE_YD],
+               [X_CENTER, X_CENTER],
+               [tube_yd, WALL_PIPE_YD],
                HOSE_OD, HOSE_WALL, sc_x, sc_yd,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 
@@ -1633,28 +1639,27 @@ draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(WALL_PIPE_YD),
               pipe_r_c, pipe_wall_c,
               fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=7)
 
-# ── Elbow symbol at wall ────────────────────────────────────────────────────
+# ── Elbow labels ────────────────────────────────────────────────────────────
 leader(ax4c, sc_x(X_CENTER + 5), sc_yd(WALL_PIPE_YD),
        sc_x(X_CENTER + 80), sc_yd(-20),
        "90° ELBOW\n(TURNS UP WALL\nTO P-04)", fs=6, color=C_BROWN)
 
-# ── Incoming hose from sump ─────────────────────────────────────────────────
-ax4c.text(sc_x(X_CENTER), sc_yd(tray_yd_near + 40),
-          "FROM PICKUP\nTUBE IN SUMP", ha="center", va="bottom",
-          fontsize=5.5, color=C_BROWN, fontweight="bold", zorder=5)
+leader(ax4c, sc_x(X_CENTER + 5), sc_yd(tube_yd),
+       sc_x(X_CENTER + 100), sc_yd(tube_yd + 60),
+       "90° ELBOW AT\nPICKUP TUBE", fs=6, color=C_BROWN)
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
 # Walkway width
 draw_dim_v(ax4c, sc_x(X_VIEW_R + 15), sc_yd(0), sc_yd(WALKWAY_W),
            f"{WALKWAY_W}mm WALKWAY", offset=0.6, fs=6, right=True)
 
-# Hose position from wall
-draw_dim_v(ax4c, sc_x(X_VIEW_L + 15), sc_yd(0), sc_yd(HOSE_ROUTE_YD),
-           f"{HOSE_ROUTE_YD}mm", offset=0.5, fs=6, right=False)
+# Pickup tube Yd from wall
+draw_dim_v(ax4c, sc_x(X_VIEW_L + 15), sc_yd(0), sc_yd(tube_yd),
+           f"{tube_yd:.0f}mm\nTUBE Yd", offset=0.5, fs=6, right=False)
 
 # Labels
-leader(ax4c, sc_x(X_CENTER + 30), sc_yd(HOSE_ROUTE_YD),
-       sc_x(X_CENTER + 100), sc_yd(HOSE_ROUTE_YD + 80),
+leader(ax4c, sc_x(X_CENTER + 30), sc_yd((tube_yd + WALL_PIPE_YD) / 2),
+       sc_x(X_CENTER + 100), sc_yd((tube_yd + WALL_PIPE_YD) / 2 + 80),
        f"1\" REINFORCED\nSUCTION HOSE\n(OD {HOSE_OD:.0f}mm)\nON WALKWAY SURFACE", fs=6, color=C_BROWN)
 
 leader(ax4c, sc_x(X_CENTER - 60), sc_yd(WALKWAY_W - 30),

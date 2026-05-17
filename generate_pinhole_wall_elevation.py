@@ -86,8 +86,10 @@ OX = 2.5    # drawing origin X offset (inches)
 OZ = 2.5    # drawing origin Z offset (inches) — room for notes below
 
 def sx(x_mm):
-    """Convert X position (mm) to drawing x coordinate."""
-    return OX + x_mm * S
+    """Convert X position (mm) to drawing x coordinate.
+    Mirrored: viewing from inside container toward pinhole wall,
+    high X (IBC end) is on the LEFT, low X (cargo door) on the RIGHT."""
+    return OX + (C_LEN - x_mm) * S
 
 def sz(z_mm):
     """Convert Z position (mm) to drawing y coordinate."""
@@ -297,10 +299,9 @@ ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
 # 5. DIMENSION LINES — key clearances and positions
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Right-side vertical dims — use fixed drawing-space offsets (inches) from wall
-rx0 = sx(C_LEN) + 0.15   # first dim line
+# Right-side vertical dims (cargo door end = X=0 = right side after mirror)
+rx0 = sx(0) + 0.15        # first dim line
 rx1 = rx0 + 0.5           # second
-rx2 = rx1 + 0.5           # third
 
 # Full container height
 draw_dim_v(ax, rx0, sz(0), sz(C_HGT),
@@ -314,8 +315,8 @@ draw_dim_v(ax, rx1, sz(0), sz(WALKWAY_H),
 draw_dim_v(ax, rx1, sz(FSKID_Z_LO), sz(FSKID_Z_HI),
            f"{FSKID_Z_HI - FSKID_Z_LO}", offset=0.2, fs=5, right=True)
 
-# Left-side vertical dims
-lx0 = sx(0) - 0.15
+# Left-side vertical dims (IBC end = X=C_LEN = left side after mirror)
+lx0 = sx(C_LEN) - 0.15
 lx1 = lx0 - 0.5
 
 # Pinhole height

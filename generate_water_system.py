@@ -275,9 +275,9 @@ TAP_SCH_X = 12.0   # schematic X position for tap branch
 pipe(ax1, TAP_SCH_X, 3.8, TAP_SCH_X, 3.3 + VR, C_BLUE)
 valve(ax1, TAP_SCH_X, 3.3, color=C_BLUE)
 ax1.text(TAP_SCH_X, 3.15, "BV-06", ha="center", fontsize=6, color=C_BLUE)
-pipe(ax1, TAP_SCH_X, 3.3 - VR, TAP_SCH_X, 2.2, C_BLUE)
+tap_y = 2.36
+pipe(ax1, TAP_SCH_X, 3.3 - VR, TAP_SCH_X, tap_y, C_BLUE)
 # Tap symbol (inverted triangle)
-tap_y = 2.0
 ax1.plot([TAP_SCH_X - 0.2, TAP_SCH_X + 0.2, TAP_SCH_X, TAP_SCH_X - 0.2],
          [tap_y, tap_y, tap_y - 0.3, tap_y],
          color=C_BLUE, lw=2.0, solid_capstyle="round", zorder=5)

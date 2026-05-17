@@ -465,28 +465,21 @@ DV01_X = PH_TEST_X + 150  # 3895mm
 DV01_Z = PORT_Z
 DV01_R = 50  # valve body radius
 
-# Pipe from F3 OUT up to header, right to pH test point, and down to tee
-# (elbows at header turns only — bottom terminates at tee, no elbow)
-draw_pipe_path(ax,
-    [f3_out, f3_out, PH_TEST_X, PH_TEST_X],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
-    OD, WALL)
-
-# Horizontal branch from tee to DV-01
-draw_pipe_path(ax,
-    [PH_TEST_X, DV01_X - DV01_R],
-    [PORT_Z, PORT_Z],
-    OD, WALL)
-
 # ── pH test point symbol ─────────────────────────────────────────────────────
-# Tee fitting with upward stub (probe insertion point)
+# Draw the pH stub FIRST (lower zorder) so the main pipe's elbow covers it
 PH_STUB_H = 80  # stub height
 
-# Vertical stub from tee (upward)
 draw_pipe_path(ax,
     [PH_TEST_X, PH_TEST_X],
     [PORT_Z, PORT_Z + PH_STUB_H],
-    OD, WALL)
+    OD, WALL, zorder=6)
+
+# Main pipe: F3 OUT → header → pH test → turn → DV-01
+# Single path with elbow at the turn — drawn on top of the stub
+draw_pipe_path(ax,
+    [f3_out, f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z, PORT_Z],
+    OD, WALL, zorder=8)
 
 # Probe cap (circle at top of stub)
 cap_r = 18

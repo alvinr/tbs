@@ -37,7 +37,7 @@ from tbs_constants import (
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_RIGHT_X,
-    C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC,
+    C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP,
     PROC_TRAY_RIM,
     EXT_PANEL_YD, EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
 )
@@ -1649,6 +1649,14 @@ def sheet5():
             "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
+    # P-03 pump label (pump inline on vertical run, below plan view)
+    p03_plan_yd = (v4_yd + far_ibc_conn_yd) / 2
+    ax.plot(px(drain_x), py(p03_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
+    ax.text(px(drain_x), py(p03_plan_yd), "P", ha="center", va="center",
+            fontsize=5, color="white", fontweight="bold", zorder=13)
+    ax.text(px(drain_x - 40), py(p03_plan_yd),
+            "P-03", ha="right", va="center", fontsize=5.5, color=C_PUMP,
+            **FONT, zorder=15)
 
     # ── D3: IBC-3 (near, Brown) → bulkhead (above D4) ──────────────────────
     # D3 (Z=400) sits above D4 (Z=200). Covers D4 in the corridor run.
@@ -1663,6 +1671,14 @@ def sheet5():
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
             "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
+            **FONT, zorder=15)
+    # P-05 pump label (pump inline on vertical run)
+    p05_plan_yd = (v3_yd + near_ibc_conn_yd) / 2
+    ax.plot(px(drain_x), py(p05_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
+    ax.text(px(drain_x), py(p05_plan_yd), "P", ha="center", va="center",
+            fontsize=5, color="white", fontweight="bold", zorder=13)
+    ax.text(px(drain_x - 40), py(p05_plan_yd),
+            "P-05", ha="right", va="center", fontsize=5.5, color=C_PUMP,
             **FONT, zorder=15)
 
     # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ────────────────────────
@@ -1700,8 +1716,8 @@ def sheet5():
 
     legend_items = [
         (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill (1\" HDPE SDR-11)"),
-        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle (1\" HDPE SDR-11)"),
-        (C_PIPE_BLACK, "BLACK/WASTE — Drain (1\" HDPE SDR-11)"),
+        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle, P-05 drain pump (1\" HDPE SDR-11)"),
+        (C_PIPE_BLACK, "BLACK/WASTE — Drain, P-03 drain pump (1\" HDPE SDR-11)"),
     ]
     ec_map = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020", "#505050": "#333333"}
     for i, (color, desc) in enumerate(legend_items):
@@ -2102,6 +2118,13 @@ def sheet6():
     ax.annotate("", xy=(sx(cl_yd - 5), sy(EXT_DRAIN_3_H)),
                 xytext=(sx(cl_yd - 70), sy(EXT_DRAIN_3_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
+    # P-05 brown drain pump — on D3 vertical run below elbow
+    p05_z = EXT_DRAIN_3_H - 60
+    _draw_pump_symbol(ax, sx, sy, d3_yd - 60, p05_z, C_PIPE_BROWN, "P-05")
+    # Dashed connection from pump to pipe
+    ax.plot([sx(d3_yd - PIPE_HW), sx(d3_yd - 60 + 22)],
+            [sy(p05_z), sy(p05_z)],
+            color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
     # ── D4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
     # NOTE: D4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
@@ -2252,9 +2275,9 @@ def sheet6():
 
     legend_items = [
         (C_PIPE_BLUE,   "BLUE CIRCUIT — Clean supply (fill, VB1/VB2 → tee → VB3 → P-01 → spray bar)"),
-        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3 fill cap, P-02 → filter skid)"),
+        (C_PIPE_BROWN,  "BROWN CIRCUIT — Recycled (P-04 ← tray sump → IBC-3, P-02 → filter skid, P-05 drain pump)"),
         (C_PIPE_FILTER, "FILTER CIRCUIT — Filtered return to IBC-2"),
-        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 evacuation pump"),
+        (C_PIPE_BLACK,  "BLACK/WASTE — Rejected filtrate via fill cap → IBC-4, P-03 drain pump"),
     ]
     ec_map6 = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020",
                "#E65100": "#B34000", "#505050": "#333333"}
@@ -2353,7 +2376,7 @@ def sheet6():
         "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
         "5. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
         "6. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
-        "7. D4 at Z=200mm: gravity drains IBC-4 to ~200mm (~120L residual). P-03 pump empties residual at disposal.",
+        "7. D3 at Z=400mm / D4 at Z=200mm: P-05 and P-03 drain pumps evacuate IBCs through bulkhead ports at disposal.",
         "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
         "9. Check valves CV1–CV4 (1\" NPT spring check) on all four bulkhead lines — prevents backflow through bulkhead unions.",
         "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",

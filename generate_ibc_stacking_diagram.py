@@ -1626,58 +1626,45 @@ def sheet5():
     fill_x  = IBC_COL_X + IBC_W * 0.65
     drain_x = IBC_COL_X + IBC_W * 0.35
 
-    # ── D3: IBC-3 (near, Brown) → corridor → Bulkhead (HIDDEN BENEATH) ─────
-    # Branch stub visible from IBC-3 to corridor centerline
+    # ── D3: IBC-3 (near, Brown) → corridor → Bulkhead ─────────────────────
+    # Full L-shaped path drawn at low zorder; blue F1 on top covers the
+    # corridor run, leaving only the branch from IBC-3 visible.
     draw_pipe_path(ax,
-                   [drain_x, drain_x],
-                   [near_ibc_conn_yd, corr_cx],
+                   [drain_x, drain_x, bh_x],
+                   [near_ibc_conn_yd, corr_cx, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BROWN, ec="#5A3020", zorder=6)
     flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
     # V3 on branch
     v3_yd = (near_ibc_conn_yd + corr_cx) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
-    # Corridor run to bulkhead (hidden beneath blue) — dashed centerline
-    ax.plot([px(drain_x), px(bh_x)],
-            [py(corr_cx), py(panel_yd)],
-            color=C_PIPE_BROWN, lw=1.5, ls=(0, (5, 5)), zorder=5, alpha=0.5)
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
             "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
             **FONT, zorder=15)
 
-    # ── D4: IBC-4 (far, Waste) → corridor → Bulkhead (HIDDEN BENEATH) ──────
-    # Branch stub visible from IBC-4 to corridor centerline
+    # ── D4: IBC-4 (far, Waste) → corridor → Bulkhead ───────────────────────
     draw_pipe_path(ax,
-                   [drain_x, drain_x],
-                   [far_ibc_conn_yd, corr_cx],
+                   [drain_x, drain_x, bh_x],
+                   [far_ibc_conn_yd, corr_cx, panel_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLACK, ec="#333333", zorder=6)
     flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
     v4_yd = (far_ibc_conn_yd + corr_cx) / 2
     valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
-    # Corridor run to bulkhead (hidden beneath blue) — dashed centerline
-    ax.plot([px(drain_x), px(bh_x)],
-            [py(corr_cx), py(panel_yd)],
-            color=C_PIPE_BLACK, lw=1.5, ls=(0, (3, 4)), zorder=5, alpha=0.4)
     ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
             "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
 
-    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) — HIDDEN BENEATH F1 ────
-    # F2 (Z=2,150) is below F1 (Z=2,250).  Corridor run hidden; only the
-    # branch from corridor to IBC-2 is visible where it diverges from F1.
-    # Dashed corridor run from bulkhead to branch point
-    ax.plot([px(bh_x), px(fill_x)],
-            [py(panel_yd), py(corr_cx)],
-            color=C_PIPE_BLUE, lw=1.5, ls=(0, (5, 5)), zorder=7, alpha=0.4)
-    # Visible branch from corridor to far IBC
+    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) — BENEATH F1 ─────────
+    # F2 (Z=2,150) is below F1 (Z=2,250).  Full L-shaped path drawn at
+    # lower zorder; F1 on top covers the shared corridor run.
     draw_pipe_path(ax,
-                   [fill_x, fill_x],
-                   [corr_cx, far_ibc_conn_yd],
+                   [bh_x, fill_x, fill_x],
+                   [panel_yd, corr_cx, far_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=8)
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
     flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
     ax.text(px(fill_x + 40), py(far_ibc_conn_yd - 50),
             "F2 → IBC-2\n(FILL, BLUE)\n1\" HDPE",

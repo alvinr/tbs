@@ -952,49 +952,138 @@ from matplotlib.patches import Arc as MplArc
 
 
 def draw_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, sy, sz,
-                   fc="#B0B0B8", ec="#333333", bore_fc="white", zorder=5):
-    """Draw a pipe with visible walls and bore along a polyline path.
+                   fc="#B0B0B8", ec="#333333", bore_fc="white",
+                   elbow_r=None, zorder=5):
+    """Draw a pipe run with parallel-sided straight sections and elbow fittings.
 
-    y_pts, z_pts: coordinates in mm (before scaling)
-    od_mm: outer diameter in mm
-    wall_mm: wall thickness in mm
-    sy, sz: scale functions (mm -> data coordinates)
+    Pipes have constant OD with parallel walls.  Direction changes are drawn
+    as discrete elbow fittings (concentric arcs), never as gradual curves.
+    Supports 90 deg, 45 deg, and arbitrary-angle elbows.
+
+    y_pts, z_pts : waypoint coordinates in mm (before scaling)
+    od_mm        : pipe outer diameter in mm
+    wall_mm      : pipe wall thickness in mm
+    sy, sz       : scale functions  mm -> data coordinates
+    elbow_r      : elbow centerline bend radius in mm (default 1.0 x od_mm)
     """
     n = len(y_pts)
     if n < 2:
         return
     half_od = od_mm / 2.0
     half_id = half_od - wall_mm
+    if elbow_r is None:
+        elbow_r = od_mm          # standard short-radius barb elbow
 
-    # Compute unit normals at each vertex
-    normals = []
-    for i in range(n):
-        if i == 0:
-            dy, dz = y_pts[1] - y_pts[0], z_pts[1] - z_pts[0]
-        elif i == n - 1:
-            dy, dz = y_pts[-1] - y_pts[-2], z_pts[-1] - z_pts[-2]
+    # ── segment directions ──────────────────────────────────────────────
+    segs = []
+    for i in range(n - 1):
+        dy = y_pts[i + 1] - y_pts[i]
+        dz = z_pts[i + 1] - z_pts[i]
+        length = max(math.hypot(dy, dz), 1e-6)
+        segs.append((dy / length, dz / length, length))
+
+    # ── elbow geometry at each intermediate waypoint ────────────────────
+    elbows = []                  # one entry per interior waypoint
+    for i in range(1, n - 1):
+        d1y, d1z, _ = segs[i - 1]
+        d2y, d2z, _ = segs[i]
+
+        cos_a = max(-1.0, min(1.0, d1y * d2y + d1z * d2z))
+        alpha = math.acos(cos_a)          # angle between direction vectors
+        turn  = math.pi - alpha           # actual bend angle
+
+        if turn < 0.01:                   # nearly straight — skip
+            elbows.append(None)
+            continue
+
+        # clamp tangent so it never eats more than 40 % of either segment
+        tangent = elbow_r * math.tan(turn / 2)
+        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
+        if tangent > max_t:
+            tangent = max_t               # use a tighter bend radius
+
+        cross = d1y * d2z - d1z * d2y     # +ve = left turn
+
+        # normal toward arc center
+        if cross > 0:
+            ny, nz = -d1z, d1y
         else:
-            dy, dz = y_pts[i+1] - y_pts[i-1], z_pts[i+1] - z_pts[i-1]
-        length = max((dy**2 + dz**2)**0.5, 1e-6)
-        normals.append((-dz / length, dy / length))
+            ny, nz = d1z, -d1y
 
-    # Outer wall polygon
-    ol = [(sy(y_pts[i] + normals[i][0] * half_od),
-           sz(z_pts[i] + normals[i][1] * half_od)) for i in range(n)]
-    ir_ = [(sy(y_pts[i] - normals[i][0] * half_od),
-            sz(z_pts[i] - normals[i][1] * half_od)) for i in range(n)]
-    poly_y = [p[0] for p in ol] + [p[0] for p in ir_[::-1]]
-    poly_z = [p[1] for p in ol] + [p[1] for p in ir_[::-1]]
-    ax.fill(poly_y, poly_z, fc=fc, ec=ec, lw=0.8, zorder=zorder)
+        # arc center from the incoming tangent point
+        tp_y = y_pts[i] - d1y * tangent
+        tp_z = z_pts[i] - d1z * tangent
+        # radius may have been clamped — recompute from tangent
+        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
+        cy = tp_y + ny * r_eff
+        cz = tp_z + nz * r_eff
 
-    # Bore (inner white)
-    ol2 = [(sy(y_pts[i] + normals[i][0] * half_id),
-            sz(z_pts[i] + normals[i][1] * half_id)) for i in range(n)]
-    ir2 = [(sy(y_pts[i] - normals[i][0] * half_id),
-            sz(z_pts[i] - normals[i][1] * half_id)) for i in range(n)]
-    poly_y2 = [p[0] for p in ol2] + [p[0] for p in ir2[::-1]]
-    poly_z2 = [p[1] for p in ol2] + [p[1] for p in ir2[::-1]]
-    ax.fill(poly_y2, poly_z2, fc=bore_fc, ec="none", zorder=zorder + 1)
+        start_a = math.atan2(tp_z - cz, tp_y - cy)
+        sweep   = turn if cross > 0 else -turn
+
+        elbows.append({
+            'tangent': tangent,
+            'r': r_eff,
+            'center': (cy, cz),
+            'start': start_a,
+            'sweep': sweep,
+        })
+
+    # ── helper: filled annular‐ring rectangle (one straight section) ───
+    def _rect(sy0, sz0, sy1, sz1, nx, nz, half_r, color, z_ord):
+        pts = [(sy(sy0 + nx * half_r), sz(sz0 + nz * half_r)),
+               (sy(sy1 + nx * half_r), sz(sz1 + nz * half_r)),
+               (sy(sy1 - nx * half_r), sz(sz1 - nz * half_r)),
+               (sy(sy0 - nx * half_r), sz(sz0 - nz * half_r))]
+        ax.fill([p[0] for p in pts], [p[1] for p in pts],
+                fc=color, ec=ec if color != bore_fc else "none",
+                lw=0.8 if color != bore_fc else 0,
+                zorder=z_ord)
+
+    # ── draw straight sections (trimmed by tangent lengths) ─────────────
+    for i in range(len(segs)):
+        dy, dz, seg_len = segs[i]
+        nx, nz = -dz, dy          # perpendicular
+
+        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
+        trim_e = elbows[i]['tangent']     if (i < len(elbows) and elbows[i]) else 0
+
+        p0y = y_pts[i]     + dy * trim_s
+        p0z = z_pts[i]     + dz * trim_s
+        p1y = y_pts[i + 1] - dy * trim_e
+        p1z = z_pts[i + 1] - dz * trim_e
+
+        remaining = seg_len - trim_s - trim_e
+        if remaining < 0.5:
+            continue              # segment fully consumed by elbows
+
+        _rect(p0y, p0z, p1y, p1z, nx, nz, half_od, fc, zorder)
+        _rect(p0y, p0z, p1y, p1z, nx, nz, half_id, bore_fc, zorder + 1)
+
+    # ── draw elbow fittings (concentric arcs) ───────────────────────────
+    for elb in elbows:
+        if elb is None:
+            continue
+        cy, cz = elb['center']
+        r_eff  = elb['r']
+        sa     = elb['start']
+        sw     = elb['sweep']
+        n_arc  = max(20, int(abs(sw) / 0.04))
+        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
+
+        def _arc_ring(r_out, r_in, color, z_ord):
+            oy = [sy(cy + r_out * math.cos(a)) for a in angles]
+            oz = [sz(cz + r_out * math.sin(a)) for a in angles]
+            iy = [sy(cy + r_in  * math.cos(a)) for a in angles]
+            iz = [sz(cz + r_in  * math.sin(a)) for a in angles]
+            ax.fill(oy + iy[::-1], oz + iz[::-1],
+                    fc=color,
+                    ec=ec if color != bore_fc else "none",
+                    lw=0.8 if color != bore_fc else 0,
+                    zorder=z_ord)
+
+        _arc_ring(r_eff + half_od, max(r_eff - half_od, 0.5), fc,      zorder)
+        _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
 
 
 def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",

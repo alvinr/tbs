@@ -393,10 +393,9 @@ pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue s
 pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
 pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
 arrow_pipe(ax1, 9.7, 5.5, 9.7, 7.0, color=C_BLUE)                # upward return
-pipe(ax1, 9.7, RET_Y, 4.0, RET_Y, C_BLUE, style="--")            # left to IBC-2 right edge
+pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to X2 fill line
 pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L)  # over brown drain-out pipe
 arrow_pipe(ax1, 7.5, RET_Y, 5.0, RET_Y, color=C_BLUE)            # leftward return
-pipe(ax1, 4.0, RET_Y, 4.0, 8.9, C_BLUE, style="--")              # drop into IBC-2 top
 ax1.text(6.5, RET_Y + 0.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 

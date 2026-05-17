@@ -1635,8 +1635,23 @@ def sheet5():
     fill_x  = IBC_COL_X + IBC_W * 0.65
     drain_x = IBC_COL_X + IBC_W * 0.35
 
-    # ── D3: IBC-3 (near, Brown) → bulkhead ─────────────────────────────────
-    # L-shaped: from IBC-3, elbow at corridor centerline, to bulkhead
+    # ── D4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
+    # D4 (Z=200) is the lowest pipe. Drawn first so D3 covers it in corridor.
+    draw_pipe_path(ax,
+                   [drain_x, drain_x, bh_x],
+                   [far_ibc_conn_yd, panel_yd, panel_yd],
+                   PIPE_OD, PIPE_WALL_T, px, py,
+                   fc=C_PIPE_BLACK, ec="#333333", zorder=5)
+    flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
+    v4_yd = (far_ibc_conn_yd + panel_yd) / 2
+    valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
+    ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
+            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
+            **FONT, zorder=15)
+
+    # ── D3: IBC-3 (near, Brown) → bulkhead (above D4) ──────────────────────
+    # D3 (Z=400) sits above D4 (Z=200). Covers D4 in the corridor run.
     draw_pipe_path(ax,
                    [drain_x, drain_x, bh_x],
                    [near_ibc_conn_yd, panel_yd, panel_yd],
@@ -1648,20 +1663,6 @@ def sheet5():
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
             "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
-            **FONT, zorder=15)
-
-    # ── D4: IBC-4 (far, Waste) → bulkhead ──────────────────────────────────
-    draw_pipe_path(ax,
-                   [drain_x, drain_x, bh_x],
-                   [far_ibc_conn_yd, panel_yd, panel_yd],
-                   PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLACK, ec="#333333", zorder=6)
-    flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
-    v4_yd = (far_ibc_conn_yd + panel_yd) / 2
-    valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
-    ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
 
     # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ────────────────────────

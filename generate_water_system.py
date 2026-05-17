@@ -251,6 +251,21 @@ pipe_bridge(ax1, W_X,   3.8, color=C_BLUE, lw=LW_PIPE, bg=C_BLACK_L)
 ax1.text(12.75, 4.0, "1\" HDPE — BLUE (SUPPLY)", ha="center",
          fontsize=7, color=C_BLUE)
 
+# Chemistry prep tap — tee off blue supply at shelf location
+TAP_SCH_X = 12.0   # schematic X position for tap branch
+pipe(ax1, TAP_SCH_X, 3.8, TAP_SCH_X, 2.8, C_BLUE)
+valve(ax1, TAP_SCH_X, 3.3, color=C_BLUE)
+ax1.text(TAP_SCH_X, 3.15, "BV-06", ha="center", fontsize=6, color=C_BLUE)
+# Tap symbol (inverted triangle)
+tap_y = 2.6
+ax1.plot([TAP_SCH_X - 0.2, TAP_SCH_X + 0.2, TAP_SCH_X, TAP_SCH_X - 0.2],
+         [tap_y, tap_y, tap_y - 0.3, tap_y],
+         color=C_BLUE, lw=2.0, solid_capstyle="round", zorder=5)
+ax1.plot([TAP_SCH_X, TAP_SCH_X], [tap_y - 0.3, tap_y - 0.5],
+         color=C_BLUE, lw=2.0, zorder=5)
+ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
+         fontsize=6, color=C_BLUE)
+
 # External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
 pipe(ax1, 1.5, 8.9, 1.5, 9.6, C_BLUE, style="--")
 ax1.text(1.5, 9.75, "EXT. FILL F1\n(2\" NPT)\nGRAVITY FEED", ha="center", fontsize=5.5,
@@ -648,6 +663,13 @@ ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
 ax2.text(ZONE_R_DX + 1, CH + 1,
          f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(4× IBC 2×2 stack)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
+
+# Chemistry prep tap — on pinhole wall at shelf position
+TAP_DX = 3729 * SX   # TAP_X in drawing units
+ax2.plot(TAP_DX, 0.05, "v", color=C_BLUE, ms=10, zorder=8)
+ax2.plot([TAP_DX, TAP_DX], [0.05, 0.25], color=C_BLUE, lw=2.0, zorder=7)
+ax2.text(TAP_DX, 0.40, "TAP-01\n(CHEM PREP)", ha="center", fontsize=5.5,
+         color=C_BLUE, zorder=8)
 
 # Pinhole wall — BOTTOM of plan view (Yd=0 = near side, pinhole aperture wall)
 ax2.add_patch(plt.Rectangle((0.0, -0.15), CW, 0.15, fc="#BDBDBD", ec=C_FRAME,

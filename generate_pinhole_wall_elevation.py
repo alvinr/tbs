@@ -512,11 +512,11 @@ ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_RET_Z + 35),
 
 # ── DV-01 waste output: to Black IBC-4 (runs right, lower Z) ──────────────
 # Start from DV-01 center so pipe passes behind the white circle and looks connected.
-DV01_WASTE_Z = PORT_Z - 130  # below return line
+DV01_WASTE_Z = PORT_Z - 200  # well below DV-01 for clear visibility
 draw_pipe_path(ax,
     [DV01_X, DV01_X, IBC_PIPE_EXIT_X],
     [PORT_Z, DV01_WASTE_Z, DV01_WASTE_Z],
-    OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=6)
+    OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=7)
 
 ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_WASTE_Z - 35),
         "WASTE → BLACK IBC-4", ha="center", va="top",

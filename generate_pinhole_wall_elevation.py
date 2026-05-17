@@ -40,6 +40,7 @@ from tbs_constants import (
     C_OUT, C_CL, C_DIM,
     C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PUMP,
     C_PINHOLE_EQ, C_WALL,
+    ZONE_R_START,
     DIAGRAMS_DIR,
 )
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_cl
@@ -110,8 +111,11 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
                 ec=C_OUT, lw=1.0, zorder=5, ls="-", alpha=0.85,
                 label_fs=5.5, label_color=C_OUT):
     """Draw a filled rectangle with centered label."""
+    # sx() is mirrored, so sx(x_mm + w_mm) < sx(x_mm) — use the left corner
+    x_draw = sx(x_mm + w_mm)
+    w_draw = sx(x_mm) - sx(x_mm + w_mm)  # positive width in drawing space
     rect = mpatches.FancyBboxPatch(
-        (sx(x_mm), sz(z_mm)), w_mm * S, h_mm * S,
+        (x_draw, sz(z_mm)), w_draw, h_mm * S,
         boxstyle="square,pad=0", facecolor=fc, edgecolor=ec,
         linewidth=lw, linestyle=ls, alpha=alpha, zorder=zorder)
     ax.add_patch(rect)
@@ -125,15 +129,22 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
 # ═══════════════════════════════════════════════════════════════════════════
 # 1. CONTAINER OUTLINE
 # ═══════════════════════════════════════════════════════════════════════════
-# Outer rectangle
+# Outer rectangle — sx() is mirrored, so sx(C_LEN) < sx(0)
+wall_left = sx(C_LEN)   # left edge of container in drawing space
+wall_right = sx(0)       # right edge
+wall_w = wall_right - wall_left
 ax.add_patch(mpatches.Rectangle(
-    (sx(0), sz(0)), C_LEN * S, C_HGT * S,
+    (wall_left, sz(0)), wall_w, C_HGT * S,
     facecolor="white", edgecolor=C_OUT, linewidth=2.0, zorder=1))
 
 # Floor line (thicker)
-ax.plot([sx(0), sx(C_LEN)], [sz(0), sz(0)], color=C_OUT, lw=2.0, zorder=2)
+ax.plot([wall_left, wall_right], [sz(0), sz(0)], color=C_OUT, lw=2.5, zorder=2)
 # Ceiling line
-ax.plot([sx(0), sx(C_LEN)], [sz(C_HGT), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
+ax.plot([wall_left, wall_right], [sz(C_HGT), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
+# Left wall line
+ax.plot([wall_left, wall_left], [sz(0), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
+# Right wall line
+ax.plot([wall_right, wall_right], [sz(0), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
 
 # ── Corrugation ribs (faint vertical dashed lines) ─────────────────────────
 rib_x = CONTAINER_RIB_SPACING
@@ -181,13 +192,24 @@ while bx <= WK_X_R:
                 color=C_OUT, lw=0.4, zorder=3)
     bx += CONTAINER_RIB_SPACING
 
+# ── Zone labels for empty areas ───────────────────────────────────────────
+# Left end zone (X=0–150mm, cargo door / hinged panel)
+ax.text(sx(75), sz(C_HGT / 2), "CARGO DOOR\nEND\n(HINGED PANEL)",
+        ha="center", va="center", fontsize=5, color="#AAAAAA",
+        style="italic", zorder=2, **FONT)
+
+# Right end zone (X=4649–5893mm, IBC stack)
+ax.text(sx(ZONE_R_START + (C_LEN - ZONE_R_START) / 2), sz(C_HGT / 2),
+        "IBC STACK\nZONE", ha="center", va="center",
+        fontsize=5, color="#AAAAAA", style="italic", zorder=2, **FONT)
+
 # ═══════════════════════════════════════════════════════════════════════════
 # 4. EQUIPMENT BLOCKS
 # ═══════════════════════════════════════════════════════════════════════════
 
 # ── Evaporative cooler ──────────────────────────────────────────────────────
 equip_block(EVAP_X, RAIL_OFF, EVAP_W, EVAP_H,
-            "EVAPORATIVE\nCOOLER", C_EVAP, label_fs=5)
+            "EVAPORATIVE\nCOOLER", C_EVAP, label_fs=6)
 
 # ── External power panel (flush-mount, exterior — dashed outline) ──────────
 equip_block(PWR_PANEL_X, PWR_Z_LO, PWR_PANEL_W, PWR_PANEL_H,

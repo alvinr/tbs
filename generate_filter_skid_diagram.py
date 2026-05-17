@@ -489,7 +489,7 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
         ha="center", va="center", fontsize=5.5, fontweight="bold", zorder=9)
 
 # pH test label
-place_label(ax, sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r),
+place_label(ax, sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r * 3),
             "pH TEST\nPOINT", component='generic', fontsize=6, color=C_TEXT,
             dx=1.5, dy=0.5, ha='left', va='center')
 
@@ -503,7 +503,7 @@ ax.text(sx(DV01_X), sz(DV01_Z), "3W", ha="center", va="center",
         fontsize=5, fontweight="bold", color=C_FRAME, zorder=9)
 
 # DV-01 label
-place_label(ax, sx(DV01_X), sz(DV01_Z), "DV-01\n(3-WAY DIVERTER)",
+place_label(ax, sx(DV01_X), sz(DV01_Z - 40), "DV-01\n(3-WAY DIVERTER)",
             component='diverter', fontsize=6, color=C_TEXT,
             dx=0, dy=-2.5, ha='center', va='top')
 
@@ -587,7 +587,7 @@ draw_dim_v(ax, sx(PH_TEST_X + 100), sz(PORT_Z), sz(HEADER_Z),
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
-leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO - 10),
+leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO),
        sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO - 70),
        "25×25×3 SLOTTED\nSTEEL ANGLE FRAME", fs=6)
 
@@ -598,7 +598,7 @@ leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
 
 # Mounting bracket
 leader(ax, sx(F2_X + BB_OD / 2 + 10), sz(FILT_HEAD_Z + 6),
-       sx(F2_X + BB_OD / 2 + 120), sz(FILT_HEAD_Z + 70),
+       sx(F2_X + BB_OD / 2 + 100), sz(FILT_HEAD_Z + 120),
        "U-BRACKET + 50mm\nHDPE SPACER (SEE DETAIL B)", fs=5.5)
 
 # Pipe material
@@ -608,7 +608,7 @@ leader(ax, sx((f1_out + f2_in) / 2), sz(HEADER_Z + 10),
 
 # Wall bracket
 leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H / 2),
-       sx(FSKID_X - BRACKET_W / 2 - 80), sz(FSKID_Z_LO + 50 + BRACKET_H / 2 + 60),
+       sx(FSKID_X - BRACKET_W / 2 - 140), sz(FSKID_Z_LO + 50 + BRACKET_H / 2 + 60),
        "L-BRACKET\nTO WALL RIB", fs=5.5)
 
 # ── Notes ────────────────────────────────────────────────────────────────────
@@ -694,7 +694,7 @@ ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
 
 # Dimension: spacer thickness
 draw_dim_h(ax2, sb_y(SPACER_YD), sb_y(SPACER_YD + SPACER_THICK),
-           sb_z(-60), "50mm", offset=0.33, fs=5.5)
+           sb_z(SPACER_YD - SPACER_THICK), f"{SPACER_THICK}mm", offset=0.5, fs=5.5)
 
 # ── 4. Steel bracket tab (3mm) ──────────────────────────────────────────────
 BRACKET_YD = SPACER_YD + SPACER_THICK
@@ -841,7 +841,8 @@ title_block(ax, "SHEET 1 OF 1",
             drawing_title="FILTER SKID — PLUMBING ELEVATION",
             subtitle="VIEW FROM INSIDE CONTAINER LOOKING AT PINHOLE WALL (Yd=0)",
             scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
-            doc_id="TBS-001 · Water System — Filter Skid Detail")
+            doc_id="TBS-001 · Water System — Filter Skid Detail",
+            height=0.05)
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

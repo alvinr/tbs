@@ -89,9 +89,9 @@ OZ = 2.5    # drawing origin Z offset (inches) — room for notes below
 
 def sx(x_mm):
     """Convert X position (mm) to drawing x coordinate.
-    Mirrored: viewing from inside container toward pinhole wall,
-    high X (IBC end) is on the LEFT, low X (cargo door) on the RIGHT."""
-    return OX + (C_LEN - x_mm) * S
+    Non-mirrored: matches filter-skid-sheet1 convention.
+    Low X (cargo door) on LEFT, high X (IBC end) on RIGHT."""
+    return OX + x_mm * S
 
 def sz(z_mm):
     """Convert Z position (mm) to drawing y coordinate."""
@@ -112,9 +112,8 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
                 ec=C_OUT, lw=1.0, zorder=5, ls="-", alpha=0.85,
                 label_fs=5.5, label_color=C_OUT):
     """Draw a filled rectangle with centered label."""
-    # sx() is mirrored, so sx(x_mm + w_mm) < sx(x_mm) — use the left corner
-    x_draw = sx(x_mm + w_mm)
-    w_draw = sx(x_mm) - sx(x_mm + w_mm)  # positive width in drawing space
+    x_draw = sx(x_mm)
+    w_draw = w_mm * S  # positive width in drawing space
     rect = mpatches.FancyBboxPatch(
         (x_draw, sz(z_mm)), w_draw, h_mm * S,
         boxstyle="square,pad=0", facecolor=fc, edgecolor=ec,
@@ -234,9 +233,9 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
 # ═══════════════════════════════════════════════════════════════════════════
 # 1. CONTAINER OUTLINE
 # ═══════════════════════════════════════════════════════════════════════════
-# Outer rectangle — sx() is mirrored, so sx(C_LEN) < sx(0)
-wall_left = sx(C_LEN)   # left edge of container in drawing space
-wall_right = sx(0)       # right edge
+# Outer rectangle
+wall_left = sx(0)        # left edge of container in drawing space
+wall_right = sx(C_LEN)   # right edge
 wall_w = wall_right - wall_left
 ax.add_patch(mpatches.Rectangle(
     (wall_left, sz(0)), wall_w, C_HGT * S,
@@ -325,12 +324,12 @@ while bx <= WK_X_R:
     bx += CONTAINER_RIB_SPACING
 
 # ── Zone labels for empty areas ───────────────────────────────────────────
-# Left end zone (X=0–150mm, cargo door / hinged panel)
+# Left end zone (X=0–150mm, cargo door / hinged panel) — left side of drawing
 ax.text(sx(75), sz(C_HGT / 2), "CARGO DOOR\nEND\n(HINGED PANEL)",
         ha="center", va="center", fontsize=5, color="#AAAAAA",
         style="italic", zorder=2, **FONT)
 
-# Right end zone (X=4649–5893mm, IBC stack)
+# Right end zone (X=4649–5893mm, IBC stack) — right side of drawing
 ax.text(sx(ZONE_R_START + (C_LEN - ZONE_R_START) / 2), sz(C_HGT / 2),
         "IBC STACK\nZONE", ha="center", va="center",
         fontsize=5, color="#AAAAAA", style="italic", zorder=2, **FONT)
@@ -612,7 +611,7 @@ ax.text(sx(BV06_X), sz(TAP_BRANCH_Z), "BV\n06",
 
 # Tap spout symbol
 leader(ax, sx(TAP_X), sz(TAP_Z),
-       sx(TAP_X + 150), sz(TAP_Z - 80),
+       sx(TAP_X - 150), sz(TAP_Z - 80),
        "TAP-01", fs=4.5, color=C_DIM, zorder=10)
 
 # ── Pull-cord switches ───────────────────────────────────────────────────
@@ -644,29 +643,29 @@ ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
 # 5. DIMENSION LINES — key clearances and positions
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Right-side vertical dims (cargo door end = X=0 = right side after mirror)
-rx0 = sx(0) + 0.15        # first dim line
-rx1 = rx0 + 0.5           # second
+# Left-side vertical dims (cargo door end = X=0 = left side)
+lx0 = sx(0) - 0.15        # first dim line
+lx1 = lx0 - 0.5           # second
 
 # Full container height
-draw_dim_v(ax, rx0, sz(0), sz(C_HGT),
-           f"{C_HGT}mm", offset=0.2, fs=5, right=True)
+draw_dim_v(ax, lx0, sz(0), sz(C_HGT),
+           f"{C_HGT}mm", offset=0.2, fs=5)
 
 # Walkway deck height
-draw_dim_v(ax, rx1, sz(0), sz(WALKWAY_H),
-           f"{WALKWAY_H}", offset=0.2, fs=5, right=True)
+draw_dim_v(ax, lx1, sz(0), sz(WALKWAY_H),
+           f"{WALKWAY_H}", offset=0.2, fs=5)
+
+# Right-side vertical dims (IBC end = X=C_LEN = right side)
+rx0 = sx(C_LEN) + 0.15
+rx1 = rx0 + 0.5
+
+# Pinhole height
+draw_dim_v(ax, rx0, sz(0), sz(PH_H),
+           f"{PH_H}mm", offset=0.2, fs=5, right=True)
 
 # Filter skid Z range
 draw_dim_v(ax, rx1, sz(FSKID_Z_LO), sz(FSKID_Z_HI),
            f"{FSKID_Z_HI - FSKID_Z_LO}", offset=0.2, fs=5, right=True)
-
-# Left-side vertical dims (IBC end = X=C_LEN = left side after mirror)
-lx0 = sx(C_LEN) - 0.15
-lx1 = lx0 - 0.5
-
-# Pinhole height
-draw_dim_v(ax, lx0, sz(0), sz(PH_H),
-           f"{PH_H}mm", offset=0.2, fs=5)
 
 # ── Horizontal dims below floor ─────────────────────────────────────────────
 # Row 1: equipment widths
@@ -697,12 +696,12 @@ draw_dim_h(ax, sx(0), sx(C_LEN), row2_z,
 # ── Clearance leaders ──────────────────────────────────────────────────────
 fskid_clr = TK_Z - FSKID_Z_HI
 leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI),
-       sx(FSKID_X + FSKID_W + 250), sz(FSKID_Z_HI + 250),
+       sx(FSKID_X - 250), sz(FSKID_Z_HI + 250),
        f"SKID TOP → TRUNKING: {fskid_clr}mm", fs=4.5, color=C_DIM, zorder=10)
 
 ep_clr = C_HGT - EP_H_HI
 leader(ax, sx(EP_X + EP_W / 2), sz(EP_H_HI),
-       sx(EP_X - 300), sz(EP_H_HI + 300),
+       sx(EP_X + EP_W + 300), sz(EP_H_HI + 300),
        f"EP TOP → CEILING: {ep_clr}mm", fs=4.5, color=C_DIM, zorder=10)
 
 # ═══════════════════════════════════════════════════════════════════════════

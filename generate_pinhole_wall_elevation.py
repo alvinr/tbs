@@ -11,6 +11,7 @@ Horizontal axis = X (mm), Vertical axis = Z (mm AFF).
 Output: diagrams/pinhole-wall-elevation.png
 """
 
+import math
 import os
 import matplotlib
 matplotlib.use("Agg")
@@ -26,8 +27,8 @@ from tbs_constants import (
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     FSKID_X, FSKID_W, FSKID_Z_LO, FSKID_Z_HI,
-    F1_X, F2_X, F3_X, BB_OD, BB_H,
-    FILT_HEAD_Z, FILT_SUMP_Z, FILT_PIPE_OD,
+    F1_X, F2_X, F3_X, BB_OD, BB_H, BB_HEAD_H, BB_PORT_SEP,
+    FILT_HEAD_Z, FILT_SUMP_Z, FILT_PIPE_OD, FILT_PIPE_WALL,
     TAP_X, TAP_Z,
     SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_HANGER_N,
     SHELF_YD_NEAR,
@@ -125,6 +126,110 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
     ax.text(cx, cz, label, ha="center", va="center",
             fontsize=label_fs, color=label_color, zorder=zorder + 1,
             **FONT)
+
+# ── Helper: parallel-wall pipe drawing ──────────────────────────────────────
+C_HDPE_FILL = "#2A5A2A"   # HDPE pipe fill (dark green)
+C_HDPE_EDGE = "#1A3A1A"   # HDPE pipe edge
+
+def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
+                   fc=C_HDPE_FILL, ec=C_HDPE_EDGE, bore_fc="white",
+                   elbow_r=None, zorder=8):
+    """Draw a pipe run with parallel walls and rounded elbows.
+    x_pts, z_pts: waypoint coordinates in mm (before scaling).
+    Uses the mirrored sx()/sz() scale functions.
+    """
+    n = len(x_pts)
+    if n < 2:
+        return
+    half_od = od_mm / 2.0
+    half_id = half_od - wall_mm
+    if elbow_r is None:
+        elbow_r = od_mm * 1.0
+
+    segs = []
+    for i in range(n - 1):
+        dx = x_pts[i + 1] - x_pts[i]
+        dz = z_pts[i + 1] - z_pts[i]
+        length = max(math.hypot(dx, dz), 1e-6)
+        segs.append((dx / length, dz / length, length))
+
+    elbows = []
+    for i in range(1, n - 1):
+        d1x, d1z, _ = segs[i - 1]
+        d2x, d2z, _ = segs[i]
+        cos_a = max(-1.0, min(1.0, d1x * d2x + d1z * d2z))
+        alpha = math.acos(cos_a)
+        turn = math.pi - alpha
+        if turn < 0.01:
+            elbows.append(None)
+            continue
+        tangent = elbow_r * math.tan(turn / 2)
+        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
+        if tangent > max_t:
+            tangent = max_t
+        cross = d1x * d2z - d1z * d2x
+        if cross > 0:
+            nx, nz = -d1z, d1x
+        else:
+            nx, nz = d1z, -d1x
+        tp_x = x_pts[i] - d1x * tangent
+        tp_z = z_pts[i] - d1z * tangent
+        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
+        cy = tp_x + nx * r_eff
+        cz_e = tp_z + nz * r_eff
+        start_a = math.atan2(tp_z - cz_e, tp_x - cy)
+        sweep = turn if cross > 0 else -turn
+        elbows.append({
+            'tangent': tangent, 'r': r_eff,
+            'center': (cy, cz_e), 'start': start_a, 'sweep': sweep,
+        })
+
+    def _rect(sx0, sz0, sx1, sz1, nx, nz, half_r, color, z_ord):
+        pts = [(sx(sx0 + nx * half_r), sz(sz0 + nz * half_r)),
+               (sx(sx1 + nx * half_r), sz(sz1 + nz * half_r)),
+               (sx(sx1 - nx * half_r), sz(sz1 - nz * half_r)),
+               (sx(sx0 - nx * half_r), sz(sz0 - nz * half_r))]
+        ax.fill([p[0] for p in pts], [p[1] for p in pts],
+                fc=color, ec=ec if color != bore_fc else "none",
+                lw=0.5 if color != bore_fc else 0, zorder=z_ord)
+
+    for i in range(len(segs)):
+        dx, dz, seg_len = segs[i]
+        nx, nz = -dz, dx
+        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
+        trim_e = elbows[i]['tangent'] if (i < len(elbows) and elbows[i]) else 0
+        p0x = x_pts[i] + dx * trim_s
+        p0z = z_pts[i] + dz * trim_s
+        p1x = x_pts[i + 1] - dx * trim_e
+        p1z = z_pts[i + 1] - dz * trim_e
+        remaining = seg_len - trim_s - trim_e
+        if remaining < 0.5:
+            continue
+        _rect(p0x, p0z, p1x, p1z, nx, nz, half_od, fc, zorder)
+        _rect(p0x, p0z, p1x, p1z, nx, nz, half_id, bore_fc, zorder + 1)
+
+    for elb in elbows:
+        if elb is None:
+            continue
+        cy, cz_e = elb['center']
+        r_eff = elb['r']
+        sa = elb['start']
+        sw = elb['sweep']
+        n_arc = max(20, int(abs(sw) / 0.04))
+        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
+
+        def _arc_ring(r_out, r_in, color, z_ord, _cy=cy, _cz=cz_e, _angles=angles):
+            ox = [sx(_cy + r_out * math.cos(a)) for a in _angles]
+            oz = [sz(_cz + r_out * math.sin(a)) for a in _angles]
+            ix_a = [sx(_cy + r_in * math.cos(a)) for a in _angles]
+            iz_a = [sz(_cz + r_in * math.sin(a)) for a in _angles]
+            ax.fill(ox + ix_a[::-1], oz + iz_a[::-1],
+                    fc=color, ec=ec if color != bore_fc else "none",
+                    lw=0.5 if color != bore_fc else 0, zorder=z_ord)
+
+        _arc_ring(r_eff + half_od, max(r_eff - half_od, 0.5), fc, zorder)
+        _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 1. CONTAINER OUTLINE
@@ -282,42 +387,90 @@ for fx, flabel in [(F1_X, "F1"), (F2_X, "F2"), (F3_X, "F3")]:
     equip_block(hx, hz, BB_OD, hh, flabel, C_FILTER,
                 lw=0.8, zorder=6, alpha=0.8, label_fs=5.5, label_color="white")
 
-# ── Header pipe (single line at this scale) ──────────────────────────────
-ax.plot([sx(RISER_X), sx(DV01_X)], [sz(HEADER_Z), sz(HEADER_Z)],
-        color=C_HDPE, lw=1.5, zorder=5)
+# ═══════════════════════════════════════════════════════════════════════════
+# 4a. PLUMBING — parallel-wall pipe routing
+# ═══════════════════════════════════════════════════════════════════════════
+OD = FILT_PIPE_OD      # 33mm (1" HDPE Sch40)
+PIPE_WALL = FILT_PIPE_WALL  # 4mm
+PORT_Z = FILT_HEAD_Z - BB_HEAD_H / 2   # 1905mm — filter port centerline
 
-# ── Supply riser ─────────────────────────────────────────────────────────
-ax.plot([sx(RISER_X), sx(RISER_X)], [sz(PUMP_H_HI), sz(HEADER_Z)],
-        color=C_HDPE, lw=1.5, zorder=5)
-# Annotation
-ax.annotate("", xy=(sx(RISER_X), sz(PUMP_H_HI + 80)),
-            xytext=(sx(RISER_X), sz(PUMP_H_HI)),
-            arrowprops=dict(arrowstyle="-|>", color=C_HDPE, lw=1.2), zorder=10)
+# Filter port X positions (IN on left, OUT on right of each housing)
+f1_in  = F1_X - BB_PORT_SEP / 2   # 3010mm
+f1_out = F1_X + BB_PORT_SEP / 2   # 3100mm
+f2_in  = F2_X - BB_PORT_SEP / 2   # 3255mm
+f2_out = F2_X + BB_PORT_SEP / 2   # 3345mm
+f3_in  = F3_X - BB_PORT_SEP / 2   # 3500mm
+f3_out = F3_X + BB_PORT_SEP / 2   # 3590mm
 
-# ── pH test point ────────────────────────────────────────────────────────
-ax.plot([sx(PH_TEST_X), sx(PH_TEST_X)],
-        [sz(HEADER_Z), sz(HEADER_Z + 40)],
-        color=C_HDPE, lw=1.5, zorder=5)
-ax.add_patch(plt.Circle((sx(PH_TEST_X), sz(HEADER_Z + 50)), 10 * S,
-             fill=True, facecolor="white", edgecolor=C_OUT,
-             linewidth=0.8, zorder=6))
-ax.text(sx(PH_TEST_X), sz(HEADER_Z + 50), "pH",
-        ha="center", va="center", fontsize=3.5, color=C_OUT, zorder=7, **FONT)
+RISER_ENTRY_Z = PUMP_H_HI   # riser enters from pump manifold top
+
+# ── Supply riser: P-02 discharge → header → F1 IN ──────────────────────
+draw_pipe_path(ax,
+    [RISER_X, RISER_X, RISER_X, f1_in, f1_in],
+    [RISER_ENTRY_Z, HEADER_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, PIPE_WALL)
+
+# Flow arrow at riser base
+ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
+            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 20)),
+            arrowprops=dict(arrowstyle="-|>", color=C_HDPE_FILL, lw=1.2),
+            zorder=10)
+
+# ── F1 OUT → F2 IN (via header) ─────────────────────────────────────────
+draw_pipe_path(ax,
+    [f1_out, f1_out, f2_in, f2_in],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, PIPE_WALL)
+
+# ── F2 OUT → F3 IN (via header) ─────────────────────────────────────────
+draw_pipe_path(ax,
+    [f2_out, f2_out, f3_in, f3_in],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, PIPE_WALL)
+
+# ── F3 OUT → pH test → DV-01 ────────────────────────────────────────────
+PH_STUB_H = 80   # pH probe stub height
+
+# Draw pH stub FIRST at lower zorder (main pipe elbow covers the junction)
+draw_pipe_path(ax,
+    [PH_TEST_X, PH_TEST_X],
+    [PORT_Z, PORT_Z + PH_STUB_H],
+    OD, PIPE_WALL, zorder=6)
+
+# Main pipe: F3 OUT → header → pH test X → down → DV-01
+draw_pipe_path(ax,
+    [f3_out, f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z, PORT_Z],
+    OD, PIPE_WALL, zorder=8)
+
+# pH probe cap (circle at top of stub)
+cap_r = 18
+ax.add_patch(plt.Circle((sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r)),
+             cap_r * S, fc="#FFFFCC", ec=C_OUT, lw=0.8, zorder=9))
+ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
+        ha="center", va="center", fontsize=3.5, fontweight="bold",
+        color=C_OUT, zorder=10, **FONT)
 
 # ── DV-01 diverter valve ─────────────────────────────────────────────────
-ax.add_patch(plt.Circle((sx(DV01_X), sz(HEADER_Z)), DV01_R * S,
+ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
-             linewidth=1.0, zorder=6))
-ax.text(sx(DV01_X), sz(HEADER_Z), "DV-01",
-        ha="center", va="center", fontsize=3.5, color=C_OUT, zorder=7, **FONT)
+             linewidth=1.0, zorder=9))
+ax.text(sx(DV01_X), sz(PORT_Z), "DV-01",
+        ha="center", va="center", fontsize=3.5, color=C_OUT,
+        zorder=10, **FONT)
 
-# ── Chemistry tap TAP-01 ─────────────────────────────────────────────────
-# Small symbol on wall
-tap_w, tap_h = 30, 60
-equip_block(TAP_X - tap_w / 2, TAP_Z - tap_h / 2, tap_w, tap_h,
-            "", C_HDPE, lw=0.6, zorder=6, alpha=0.7)
+# ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
+# Branch tee off the supply riser, drops down to tap spout height
+TAP_OD = 25     # 3/4" branch pipe
+TAP_WALL = 3
+draw_pipe_path(ax,
+    [RISER_X, RISER_X, TAP_X, TAP_X],
+    [TAP_Z + 100, TAP_Z + 100, TAP_Z + 100, TAP_Z],
+    TAP_OD, TAP_WALL, zorder=7)
+
+# Tap spout symbol
 leader(ax, sx(TAP_X), sz(TAP_Z),
-       sx(TAP_X + 120), sz(TAP_Z + 80),
+       sx(TAP_X + 150), sz(TAP_Z - 80),
        "TAP-01\n(BV-06)", fs=4.5, color=C_DIM, zorder=10)
 
 # ── Pull-cord switches ───────────────────────────────────────────────────

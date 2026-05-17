@@ -561,12 +561,13 @@ draw_dim_v(ax, sx(FSKID_X - 80), sz(FSKID_Z_LO), sz(FSKID_Z_HI),
            "600mm", offset=0.44)
 
 # Filter spacing (F1 to F2)
+f_spacing = F2_X - F1_X
 draw_dim_h(ax, sx(F1_X), sx(F2_X), sz(FILT_SUMP_Z - 80),
-           "300mm", offset=0.33, fs=5.5)
+           f"{f_spacing}mm", offset=0.33, fs=5.5)
 
 # Filter spacing (F2 to F3)
 draw_dim_h(ax, sx(F2_X), sx(F3_X), sz(FILT_SUMP_Z - 80),
-           "300mm", offset=0.33, fs=5.5)
+           f"{F3_X - F2_X}mm", offset=0.33, fs=5.5)
 
 # Sump bottom height AFF
 ax.plot([sx(FSKID_X - 120), sx(FSKID_X + FSKID_W + 60)],

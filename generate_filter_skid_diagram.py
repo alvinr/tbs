@@ -227,7 +227,7 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
 
     # HDPE spacer blocks (25mm standoff between bracket and backing board)
     # Visible in elevation as small rectangles behind bracket tabs
-    SPACER_D = 25   # spacer depth (Yd direction — not visible in elevation)
+    SPACER_D = 50   # spacer depth (Yd direction — not visible in elevation)
     SPACER_H = 40   # spacer height (visible)
     SPACER_W = 20   # spacer width (visible, slightly wider than bracket tab)
     spacer_z = FILT_HEAD_Z - bracket_tab - 5
@@ -616,7 +616,7 @@ leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
 # Mounting bracket
 leader(ax, sx(F2_X + BB_OD / 2 + 10), sz(FILT_HEAD_Z + 6),
        sx(F2_X + BB_OD / 2 + 120), sz(FILT_HEAD_Z + 70),
-       "U-BRACKET + 25mm\nHDPE SPACER (SEE DETAIL B)", fs=5.5)
+       "U-BRACKET + 50mm\nHDPE SPACER (SEE DETAIL B)", fs=5.5)
 
 # Pipe material
 leader(ax, sx((f1_out + f2_in) / 2), sz(HEADER_Z + 10),
@@ -634,7 +634,7 @@ notes = [
     "2. Filter housings: Geekpure Big Blue 4.5\"×10\" (1\" NPT ports).",
     "3. Flow direction: P-02 → F1 (50μ) → F2 (5μ) → F3 (GAC) → pH test → DV-01.",
     "4. 18mm plywood backing board inside frame — easy mounting/repositioning of housings.",
-    "5. 25mm HDPE spacer blocks between bracket and ply — clears rear port fittings (Detail B).",
+    "5. 50mm HDPE spacer blocks between bracket and ply — clears rear port fittings (Detail B).",
     "6. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
     "7. pH test point: inline tee with removable cap for handheld probe insertion.",
     "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
@@ -647,7 +647,7 @@ for i, n in enumerate(notes):
 # DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)
 # Side elevation (vertical section perpendicular to pinhole wall)
 # Yd horizontal (wall at left), Z vertical
-# Shows: corrugated wall → 18mm ply → 25mm HDPE spacer → bracket tab →
+# Shows: corrugated wall → 18mm ply → 50mm HDPE spacer → bracket tab →
 #        filter head → sump bowl below → 1" NPT port with pipe
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -700,9 +700,9 @@ for gz in range(-310, 100, 15):
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(PLY_YD_START + PLY_THICK),
            sb_z(-60), "18mm", offset=0.3, fs=5.5)
 
-# ── 3. HDPE spacer block (25mm) ─────────────────────────────────────────────
+# ── 3. HDPE spacer block (50mm) ─────────────────────────────────────────────
 SPACER_YD = PLY_YD_START + PLY_THICK
-SPACER_THICK = 25
+SPACER_THICK = 50
 SPACER_VIS_H = 40   # visible height in section
 ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
               SPACER_THICK / SC_B, SPACER_VIS_H / SC_B,
@@ -711,7 +711,7 @@ ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
 
 # Dimension: spacer thickness
 draw_dim_h(ax2, sb_y(SPACER_YD), sb_y(SPACER_YD + SPACER_THICK),
-           sb_z(-60), "25mm", offset=0.3, fs=5.5)
+           sb_z(-60), "50mm", offset=0.3, fs=5.5)
 
 # ── 4. Steel bracket tab (3mm) ──────────────────────────────────────────────
 BRACKET_YD = SPACER_YD + SPACER_THICK
@@ -744,7 +744,7 @@ ax2.add_patch(plt.Rectangle((sb_y(bolt_y_tip - 3), sb_z(BOLT_Z - 5)),
 # Bolt label
 leader(ax2, sb_y(bolt_y_head + 3), sb_z(BOLT_Z),
        sb_y(bolt_y_head + 40), sb_z(BOLT_Z - 30),
-       "M6×70 BOLT\n+ NYLOC NUT", fs=5)
+       "M6×80 BOLT\n+ NYLOC NUT", fs=5)
 
 # ── 5. Filter head (section through center) ─────────────────────────────────
 HEAD_YD = BRACKET_YD + BRACKET_THICK + 2  # small gap for clamp band
@@ -831,7 +831,7 @@ ax2.add_patch(plt.Rectangle(
     fc="#888888", ec=C_FRAME, lw=1.0, zorder=6))
 
 # ── Overall standoff dimension ───────────────────────────────────────────────
-total_standoff = PLY_THICK + SPACER_THICK + BRACKET_THICK  # 18 + 25 + 3 = 46mm
+total_standoff = PLY_THICK + SPACER_THICK + BRACKET_THICK  # 18 + 50 + 3 = 71mm
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(BRACKET_YD + BRACKET_THICK),
            sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.3, fs=5.5)
 
@@ -839,7 +839,7 @@ draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(BRACKET_YD + BRACKET_THICK),
 label_z = 85
 label_items = [
     (PLY_YD_START + PLY_THICK / 2, "18mm PLY"),
-    (SPACER_YD + SPACER_THICK / 2, "25mm HDPE\nSPACER"),
+    (SPACER_YD + SPACER_THICK / 2, "50mm HDPE\nSPACER"),
     (BRACKET_YD + BRACKET_THICK / 2, "BRACKET"),
 ]
 for ly, ltxt in label_items:

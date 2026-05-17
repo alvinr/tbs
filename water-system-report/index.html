@@ -959,6 +959,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#diverter-valve-operator-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diverter valve operator decisions
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2377,8 +2388,8 @@ IBC-2 (600L) ──┘                                                      │
 </table>
 <p><strong>pH management:</strong> If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
 <h3 id="33-black-system-waste-containment">3.3 Black System — Waste Containment<a class="headerlink" href="#33-black-system-waste-containment" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output)
-FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
+<div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output — pH out of range)
+FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
         │
    IBC-4 (600L waste)
         │
@@ -2639,6 +2650,16 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Closed</td>
 </tr>
 <tr>
+<td>BV-06 (Chem tap)</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+</tr>
+<tr>
 <td>3W-DV-02 (tray drain)</td>
 <td>Brown</td>
 <td>Brown</td>
@@ -2667,6 +2688,45 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Blue</td>
 <td>Blue</td>
 <td>Blue</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diverter-valve-operator-decisions">Diverter valve operator decisions<a class="headerlink" href="#diverter-valve-operator-decisions" title="Permanent link">&para;</a></h3>
+<p>The two 3-way diverter valves serve different roles in the water triage chain. Understanding when and why to switch each valve is critical to avoiding cross-contamination of the Blue clean supply.</p>
+<p><strong>3W-DV-02 — Tray drain diverter (operator judgment call)</strong></p>
+<p>DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:</p>
+<ul>
+<li><strong>Set to Brown (default):</strong> Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and potential recycling back to Blue.</li>
+<li><strong>Switch to Black:</strong> Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.</li>
+</ul>
+<p><strong>Rule of thumb:</strong> If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.</p>
+<p><strong>3W-DV-01 — Filter output diverter (pH meter reading)</strong></p>
+<p>DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After brown water has been filtered, the operator checks the pH reading:</p>
+<ul>
+<li><strong>Set to Blue return (default):</strong> pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.</li>
+<li><strong>Switch to Black:</strong> pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Valve</th>
+<th>Decision</th>
+<th>Basis</th>
+<th>Who decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3W-DV-02 (tray drain)</td>
+<td>Brown vs Black</td>
+<td>Contamination severity at drain time</td>
+<td>Operator — visual judgment</td>
+</tr>
+<tr>
+<td>3W-DV-01 (filter output)</td>
+<td>Blue vs Black</td>
+<td>Water quality after filtering</td>
+<td>Operator — pH meter reading</td>
 </tr>
 </tbody>
 </table>
@@ -3093,6 +3153,14 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td>Amazon</td>
 <td>$10–$16</td>
 <td><strong>$110–$176</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA">Banjo V075FP ball valve 3/4" FNPT</a></td>
+<td>Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off)</td>
+<td>1</td>
+<td>Amazon</td>
+<td>$8–$12</td>
+<td><strong>$8–$12</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT">3-way diverter valve 1" FNPT</a></td>
@@ -3539,6 +3607,10 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <td><code>water-system-sheet4.png</code></td>
 </tr>
 <tr>
+<td>Filter skid — plumbing elevation detail</td>
+<td><code>filter-skid-sheet1.png</code></td>
+</tr>
+<tr>
 <td>Container floor plan — all systems</td>
 <td>See <a href="../electrical-report/">Electrical &amp; Systems Report</a> Section 5.8</td>
 </tr>
@@ -3555,6 +3627,9 @@ FROM 3W-DV-02 (direct bypass — heavily contaminated first rinse, if needed)
 <hr />
 <p><strong>Sheet 4 — Processing Tray Drain Cross-Section Elevation</strong>
 <img alt="Water System — Sheet 4: Drain Cross-Section" src="../assets/water-system-sheet4.png" /></p>
+<hr />
+<p><strong>Filter Skid — Plumbing Elevation Detail (1:5)</strong>
+<img alt="Filter Skid — Plumbing Elevation" src="../assets/filter-skid-sheet1.png" /></p>
 <hr />
 <h2 id="12-sources-and-references">12. Sources and References<a class="headerlink" href="#12-sources-and-references" title="Permanent link">&para;</a></h2>
 <p><strong>Chemistry and safety:</strong>

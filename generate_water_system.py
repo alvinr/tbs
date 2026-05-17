@@ -287,11 +287,11 @@ ax1.text(TAP_SCH_X, tap_y - 0.7, "TAP-01\n(CHEM PREP)", ha="center",
          fontsize=6, color=C_BLUE)
 
 # External fill ports (top of IBCs, via bulkhead fittings in end wall — gravity feed)
-pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE, style="--")
+pipe(ax1, 1.5, 8.9, 1.5, 9.5, C_BLUE)
 ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
 ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
-pipe(ax1, 3.3, 8.9, 3.3, 9.5, C_BLUE, style="--")
+pipe(ax1, 3.3, 8.9, 3.3, 9.5, C_BLUE)
 ext_port(ax1, 3.3, 9.65, color=C_BLUE, label="X2")
 ax1.text(3.3, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")

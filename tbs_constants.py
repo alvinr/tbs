@@ -199,7 +199,13 @@ SHELF_T        = 22      # shelf total thickness (mm) — 18mm ply + 4mm frame
 SHELF_HANGER_D = 10      # hanger threaded rod diameter (mm) — M10 (matches right walkway)
 SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
 
-# ── Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
+# ── Chemistry prep tap (pinhole wall, tees off blue supply line) ─────────────
+TAP_X          = 3729    # tap X position (mm) — at shelf left edge
+TAP_Z          = 1150    # tap spout height AFF (mm) — 125mm above shelf surface
+TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
+TAP_WALL_T     = 3       # branch pipe wall thickness (mm)
+
+# ���─ Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
 # Right-justified to far end wall: X=4,674–5,893mm.
 # Layout (view from pinhole wall):
 #   TOP    Blue #1 (near)     Blue #2 (far)    ← gravity feeds spray bar

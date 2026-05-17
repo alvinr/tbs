@@ -214,7 +214,15 @@ def sheet1():
            px(HANGER_POSITIONS[2][0] - 80), py(HANGER_POSITIONS[2][1] + 60),
            f"M{SHELF_HANGER_D} HANGER\nROD (×4)", fs=6, ha="right")
 
-    # ── Operator position annotation ──
+    # ── Chemistry prep tap (on pinhole wall at X=3729) ──
+    tap_x = 3729   # TAP_X
+    ax.plot(px(tap_x), py(0), "v", color="#2979B8", ms=10, zorder=10)
+    ax.plot([px(tap_x), px(tap_x)], [py(0), py(-30)],
+            color="#2979B8", lw=2.0, zorder=9)
+    ax.text(px(tap_x), py(-70), "TAP-01", fontsize=6, color="#2979B8",
+            ha="center", va="top", fontweight="bold")
+
+    # ��─ Operator position annotation ──
     op_yd = 150  # standing on near walkway
     op_x = SHELF_CX  # at shelf center X
     ax.plot(px(op_x), py(op_yd), "x", color="#2060A0", ms=12, mew=2, zorder=9)
@@ -406,6 +414,31 @@ def sheet2():
            px(SHELF_YD_FAR - HANGER_INSET + 50), pz((SHELF_H + C_HGT) / 2 + 50),
            f"M{SHELF_HANGER_D} THREADED\nROD HANGER",
            fs=5, ha="left")
+
+    # ── Chemistry prep tap (on pinhole wall, Z=1150mm) ──
+    tap_z = 1150   # TAP_Z from constants
+    tap_yd = 0     # on pinhole wall face
+    # Pipe stub from wall
+    ax.add_patch(Rectangle((px(tap_yd), pz(tap_z - 12)),
+                            px(60) - px(0),
+                            pz(tap_z + 12) - pz(tap_z - 12),
+                            fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=8))
+    # Tap body (circle)
+    tap_body = Circle((px(60), pz(tap_z)), radius=(pz(20) - pz(0)),
+                      fc="#2979B8", ec=C_OUT, lw=1.0, zorder=9)
+    ax.add_patch(tap_body)
+    # Spout (pointing down)
+    ax.plot([px(60), px(60)], [pz(tap_z - 20), pz(tap_z - 50)],
+            color=C_OUT, lw=2.0, zorder=9)
+    ax.plot([px(50), px(70)], [pz(tap_z - 50), pz(tap_z - 50)],
+            color=C_OUT, lw=1.5, zorder=9)
+    # Valve handle (horizontal bar)
+    ax.plot([px(40), px(80)], [pz(tap_z + 20), pz(tap_z + 20)],
+            color="#2979B8", lw=2.5, zorder=10)
+    leader(ax, px(80), pz(tap_z),
+           px(180), pz(tap_z + 80),
+           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1,150mm AFF",
+           fs=5.5, ha="left")
 
     # ── Section cut label ──
     ax.text(px(YD_HI - 50), pz(Z_HI - 50),

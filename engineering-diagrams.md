@@ -51,6 +51,22 @@ drum, film-plane rail mounting positions, equipment projection footprints, and v
 
 ---
 
+## 2a. Pinhole Wall — Combined Interior Elevation
+
+Coordination drawing showing every system mounted on the pinhole wall (Yd=0),
+viewed from inside the container. All equipment drawn as simplified blocks with
+their designated colors. Used to verify spatial fit and identify interferences.
+
+Includes: evaporative cooler, external power panel (flush-mount, exterior face),
+electrical panel, battery bank, pinhole aperture, pump manifold, filter skid
+(F1/F2/F3), header pipe, supply riser, pH test point, DV-01 diverter, chemistry
+tap (TAP-01), pull-cord switches, cable trunking, near walkway deck and brackets,
+and chemistry shelf hanger rods (ghost — shelf at Yd=300).
+
+![TBS-001 — Pinhole Wall Combined Interior Elevation](assets/pinhole-wall-elevation.png)
+
+---
+
 ## 3. Container Floor Plan
 
 Top-down floor plan of the full container interior. Equipment positions dimensioned.

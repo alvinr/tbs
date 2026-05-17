@@ -1505,26 +1505,18 @@ draw_pipe_path(ax4b, [DV_YD_B, DV_YD_B],
                TUBE_OD, TUBE_WALL, sb_y, sb_z,
                fc=C_BROWN, ec="#5A3020", zorder=4)
 
-# Elbow symbol — small arc indicating 90° turn into the page
-elbow_r = 15  # mm
-ax4b.add_patch(Arc((sb_y(DV_YD_B), sb_z(ELBOW_Z)),
-               2 * elbow_r / SC_B, 2 * elbow_r / SC_B,
-               angle=0, theta1=0, theta2=90,
-               ec=C_BROWN, lw=2.0, zorder=5))
-
-# Pipe end-on (circle with bore) — pipe going into the page toward IBC-3
-PIPE_OD_B = 25  # 1" nominal
-pipe_end_cy = sb_y(DV_YD_B + elbow_r)
-pipe_end_cz = sb_z(ELBOW_Z + elbow_r)
-pipe_end_r = PIPE_OD_B / 2 / SC_B
+# Pipe end-on (circle with bore) — 90° elbow turns into the page toward IBC-3
+# Centered on the vertical pipe centerline (DV_YD_B) at the top of the rise
+pipe_end_r = TUBE_OD / 2 / SC_B
 pipe_end_wall = TUBE_WALL / SC_B
-draw_pipe_end(ax4b, pipe_end_cy, pipe_end_cz, pipe_end_r, pipe_end_wall,
+draw_pipe_end(ax4b, sb_y(DV_YD_B), sb_z(ELBOW_Z),
+              pipe_end_r, pipe_end_wall,
               fc=C_BROWN, ec=C_FRAME, zorder=6)
 
 # Label
-leader(ax4b, sb_y(DV_YD_B + elbow_r + 20), sb_z(ELBOW_Z + elbow_r),
+leader(ax4b, sb_y(DV_YD_B + 20), sb_z(ELBOW_Z),
        sb_y(120), sb_z(ELBOW_Z + 80),
-       f"TO IBC-3 (BROWN)\nVIA WALL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
+       f"90° ELBOW TO IBC-3\nVIA WALL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
        color=C_BROWN)
 
 # ── Waste branch (dashed) ───────────────────────────────────────────────────

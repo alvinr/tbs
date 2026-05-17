@@ -107,15 +107,18 @@ def pump(ax, x, y, color=C_BLUE, zorder=5, r=0.05):
     ax.add_patch(tri)
 
 def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.04, label="V"):
-    """Draw a ball valve symbol (bowtie)."""
+    """Draw a ball valve symbol (bowtie inside white circle)."""
+    r = size * 1.6
+    circ = plt.Circle((x, y), r, fc="white", ec=color, lw=1.5, zorder=zorder)
+    ax.add_patch(circ)
     tri1 = plt.Polygon([(x - size, y - size),
                         (x - size, y + size),
                         (x, y)],
-                       fc=color, ec=color, alpha=0.85, zorder=zorder)
+                       fc=color, ec=color, alpha=0.85, zorder=zorder + 1)
     tri2 = plt.Polygon([(x + size, y - size),
                         (x + size, y + size),
                         (x, y)],
-                       fc=color, ec=color, alpha=0.85, zorder=zorder)
+                       fc=color, ec=color, alpha=0.85, zorder=zorder + 1)
     ax.add_patch(tri1)
     ax.add_patch(tri2)
 

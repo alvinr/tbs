@@ -1566,26 +1566,32 @@ def sheet5():
                                     alpha=0.4, zorder=zo))
 
     def valve_plan(ax, x, yd, orientation, color, label, zo=11):
-        """Ball valve bowtie in plan view. orientation: 'h' or 'v'."""
+        """Ball valve bowtie in white circle, plan view. orientation: 'h' or 'v'."""
         vs = 18
+        cr = vs * 1.6  # circle radius in mm
+        # White circle background
+        circ = plt.Circle((px(x), py(yd)),
+                           abs(px(cr) - px(0)),  # radius in data coords
+                           fc="white", ec=color, lw=1.5, zorder=zo)
+        ax.add_patch(circ)
         if orientation == 'v':  # on a vertical (Yd-direction) pipe
             tri1 = Polygon([(px(x - vs), py(yd - vs)),
                              (px(x + vs), py(yd - vs)),
                              (px(x), py(yd))], closed=True,
-                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo + 1)
             tri2 = Polygon([(px(x - vs), py(yd + vs)),
                              (px(x + vs), py(yd + vs)),
                              (px(x), py(yd))], closed=True,
-                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo + 1)
         else:  # on a horizontal (X-direction) pipe
             tri1 = Polygon([(px(x - vs), py(yd - vs)),
                              (px(x - vs), py(yd + vs)),
                              (px(x), py(yd))], closed=True,
-                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo + 1)
             tri2 = Polygon([(px(x + vs), py(yd - vs)),
                              (px(x + vs), py(yd + vs)),
                              (px(x), py(yd))], closed=True,
-                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo)
+                            fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=zo + 1)
         ax.add_patch(tri1)
         ax.add_patch(tri2)
         if label:
@@ -2404,17 +2410,23 @@ def sheet6():
 
 
 def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
-    """Draw a ball valve symbol (bowtie) in elevation view at (yd, z)."""
+    """Draw a ball valve symbol (bowtie in white circle) in elevation view at (yd, z)."""
     vs = 18  # half-size in mm
+    cr = vs * 1.6  # circle radius in mm
+    # White circle background
+    circ = plt.Circle((sx(yd), sy(z)),
+                       abs(sx(cr) - sx(0)),  # radius in data coords
+                       fc="white", ec=color, lw=1.5, zorder=11)
+    ax.add_patch(circ)
     # Bowtie oriented horizontally (left/right triangles meeting at center)
     tri1 = Polygon([(sx(yd - vs), sy(z - vs)),
                      (sx(yd - vs), sy(z + vs)),
                      (sx(yd), sy(z))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     tri2 = Polygon([(sx(yd + vs), sy(z - vs)),
                      (sx(yd + vs), sy(z + vs)),
                      (sx(yd), sy(z))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     ax.add_patch(tri1)
     ax.add_patch(tri2)
     if label:
@@ -2424,19 +2436,25 @@ def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
 
 
 def _draw_valve_elev_h(ax, sx, sy, yd, z, color, label):
-    """Draw a ball valve symbol (bowtie) on a HORIZONTAL pipe in elevation.
+    """Draw a ball valve symbol (bowtie in white circle) on a HORIZONTAL pipe in elevation.
     Bowtie axis perpendicular to flow — oriented vertically."""
     vs = 18  # half-size in mm
+    cr = vs * 1.6  # circle radius in mm
+    # White circle background
+    circ = plt.Circle((sx(yd), sy(z)),
+                       abs(sx(cr) - sx(0)),  # radius in data coords
+                       fc="white", ec=color, lw=1.5, zorder=11)
+    ax.add_patch(circ)
     # Top triangle (pointing down)
     tri1 = Polygon([(sx(yd - vs), sy(z + vs)),
                      (sx(yd + vs), sy(z + vs)),
                      (sx(yd), sy(z))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     # Bottom triangle (pointing up)
     tri2 = Polygon([(sx(yd - vs), sy(z - vs)),
                      (sx(yd + vs), sy(z - vs)),
                      (sx(yd), sy(z))], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     ax.add_patch(tri1)
     ax.add_patch(tri2)
     if label:
@@ -2496,24 +2514,25 @@ def _draw_pump_symbol(ax, sx, sy, yd, z, color, label):
 
 
 def _draw_valve(ax, px, py, x, yd, color, label):
-    """Draw a ball valve symbol (bowtie) at position (x, yd) in data coords."""
+    """Draw a ball valve symbol (bowtie in white circle) at position (x, yd) in data coords."""
     valve_size = 18  # half-size in mm
-    # Bowtie: two triangles meeting at center
-    verts = [
-        (px(x - valve_size), py(yd - valve_size)),
-        (px(x + valve_size), py(yd - valve_size)),
-        (px(x), py(yd)),
-        (px(x - valve_size), py(yd + valve_size)),
-        (px(x + valve_size), py(yd + valve_size)),
-        (px(x), py(yd)),
-    ]
+    cr = valve_size * 1.6  # circle radius in mm
+    # White circle background
+    circ = plt.Circle((px(x), py(yd)),
+                       abs(px(cr) - px(0)),  # radius in data coords
+                       fc="white", ec=color, lw=1.5, zorder=11)
+    ax.add_patch(circ)
     # Upper triangle
-    tri1 = Polygon([verts[0], verts[1], verts[2]], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+    tri1 = Polygon([(px(x - valve_size), py(yd - valve_size)),
+                     (px(x + valve_size), py(yd - valve_size)),
+                     (px(x), py(yd))], closed=True,
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     ax.add_patch(tri1)
     # Lower triangle
-    tri2 = Polygon([verts[3], verts[4], verts[5]], closed=True,
-                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=11)
+    tri2 = Polygon([(px(x - valve_size), py(yd + valve_size)),
+                     (px(x + valve_size), py(yd + valve_size)),
+                     (px(x), py(yd))], closed=True,
+                    fc=color, ec=C_OUT, lw=1.0, alpha=0.5, zorder=12)
     ax.add_patch(tri2)
     if label:
         ax.text(px(x), py(yd), label,

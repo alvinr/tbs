@@ -221,8 +221,6 @@ W_Y  = 7.5                  # waste IBC center Y (raised)
 W_W  = 1.4                  # waste IBC box width (same as other IBCs on schematic)
 W_H  = 1.4                  # waste IBC box height
 BR   = 0.14                 # pipe-crossing bridge hump radius
-X_J  = 12.07                # Y-junction X: floor drain + bypass merge before waste IBC
-Y_J  = 5.62                 # Y level of Y-junction (matches heavy contam bypass exit)
 
 # ── BLUE SYSTEM ───────────────────────────────────────────────────────────────
 # IBC1 Clean water A
@@ -411,27 +409,12 @@ arrow_pipe(ax1, 10.3, 3.25, W_X - 0.1, 3.25, color=C_BLACK)  # rightward to wast
 tank(ax1, W_X, W_Y, W_W, W_H, fc="#D5D5D0", ec=C_WASTE_IBC, lw=2,
      label="IBC-4", sublabel="159 gal (600L)\nWASTE")
 
-# Heavy contamination bypass — left side of processing floor
-pipe(ax1, 14.1, Y_J, 12.6 + VR, Y_J, C_BLACK, style="-.")
-valve(ax1, 12.6, 5.62, color=C_BLACK)                      # BV-04
-ax1.text(12.6, 5.80, "BV-04", ha="center", fontsize=6, color=C_BLACK)
-pipe(ax1, 12.6 - VR, Y_J, X_J, Y_J, C_BLACK, style="-.")
-arrow_pipe(ax1, 13.8, 5.62, 12.8, 5.62, color=C_BLACK)    # leftward bypass flow
-ax1.text(12.6, 5.44, "HEAVY CONTAM. BYPASS", ha="center",
-         fontsize=6, color=C_BLACK, style="italic")
-
-# Y-junction: floor drain riser meets heavy contam bypass at (X_J, Y_J)
-pipe(ax1, X_J, 2.6,       X_J, 3.8 - BR,  C_BLACK)  # floor drain riser (below blue)
-pipe_bridge(ax1, X_J, 3.8, direction='v', color=C_BLACK, lw=LW_PIPE, bg=C_BLACK_L)  # black over blue
-pipe(ax1, X_J, 3.8 + BR,  X_J, Y_J,        C_BLACK)  # riser (above blue → junction)
-# Combined flow exits junction left into waste IBC vertical
-pipe(ax1, X_J, Y_J,  W_X, Y_J, C_BLACK)              # junction → waste IBC vertical
-# Waste IBC vertical — DV-01 feeds from Y=3.25; Y-junction joins at Y_J
-pipe(ax1, W_X, 3.25,      W_X, 3.8 - BR,  C_BLACK)   # DV-01 feed to blue crossing
+# Waste IBC vertical — DV-01 feeds at Y=3.25, DV-02 black feeds at Y=2.6
+pipe(ax1, W_X, 2.6,       W_X, 3.8 - BR,  C_BLACK)   # DV-02 feed to blue crossing
 pipe(ax1, W_X, 3.8 + BR,  W_X, 6.3 - BR,  C_BLACK)   # blue crossing to brown crossing
 pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC bottom
 arrow_pipe(ax1, W_X, 3.4, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
-arrow_pipe(ax1, W_X, Y_J + 0.1, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
+arrow_pipe(ax1, W_X, 6.5, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
 
 # ── Waste drain-out — IBC-4 to exterior drain port D4 via P-03 ────────────
 # Separate outlet from right side of IBC-4 (left side carries waste inflow)
@@ -490,11 +473,11 @@ pipe(ax1, 15.1, DV02_Y, 15.6 - DV02_R, DV02_Y, C_BROWN)         # valve → brow
 pipe(ax1, 15.1, DV02_Y, 15.1, 6.3, C_BROWN)                      # brown return riser
 arrow_pipe(ax1, 15.1, 4.5, 15.1, 5.5, color=C_BROWN)             # upward drain return
 
-# to black: diverter outlet → down → left to floor drain riser
+# to black: diverter outlet → down → left to waste IBC vertical
 pipe(ax1, 15.6, DV02_Y - DV02_R, 15.6, 2.6, C_BLACK)
-pipe(ax1, 15.6, 2.6, X_J,  2.6, C_BLACK)
+pipe(ax1, 15.6, 2.6, W_X,  2.6, C_BLACK)
 arrow_pipe(ax1, 14.5, 2.6, 12.5, 2.6, color=C_BLACK)
-ax1.text(13.5, 2.42, "TO WASTE IBC (HEAVY CONTAM.)", ha="center", fontsize=6,
+ax1.text(13.5, 2.42, "TO WASTE IBC-4 (HEAVY CONTAM.)", ha="center", fontsize=6,
          color=C_BLACK, style="italic")
 
 # Spray bar riser — blue supply tap-off at Y=3.8 up to spray bar at Y=8.0
@@ -533,7 +516,6 @@ legend_items = [
     (C_BROWN, "-",  "Brown — Used/recyclable water (1\" HDPE)"),
     (C_BLACK, "-",  "Black — Waste water (1\" HDPE)"),
     (C_BLUE,  "--", "Dashed — Return / fill lines"),
-    (C_BLACK, "-.", "Dash-dot — Heavy contamination bypass"),
 ]
 for i, (col, ls, lbl) in enumerate(legend_items):
     yy = ly - 0.12 - i * 0.24

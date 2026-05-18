@@ -33,6 +33,10 @@ from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_GASKT,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
     FILT_PIPE_OD, FILT_PIPE_WALL,
+    C_LEN, C_WID, WALKWAY_W,
+    PROC_TRAY_YD_NEAR, PROC_TRAY_D, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
+    FSKID_X, FSKID_W,
+    BLUE_IBC_Y, IBC_FAR_Y, IBC_COL_X, IBC_W, IBC_D,
     svg_path,
 )
 from tbs_title_block import title_block
@@ -77,19 +81,25 @@ def sz(z_mm):
 # X horizontal (mirrored), Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(20, 12))
+fig = plt.figure(figsize=(24, 16))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(1, 2, figure=fig, width_ratios=[2.2, 1], wspace=0.06)
+gs = GridSpec(2, 2, figure=fig, width_ratios=[1.6, 1],
+             height_ratios=[1.2, 1], wspace=0.05, hspace=0.06)
 
-ax = fig.add_subplot(gs[0, 0])   # Main elevation
+ax = fig.add_subplot(gs[0, 0])   # Main elevation (top left)
 ax.set_facecolor(C_BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-ax2 = fig.add_subplot(gs[0, 1])  # Detail cross-section
+ax2 = fig.add_subplot(gs[0, 1])  # Detail A — cross-section (top right)
 ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
+
+ax3 = fig.add_subplot(gs[1, :])  # Detail B — plan view (full bottom row)
+ax3.set_facecolor(C_BG)
+ax3.set_aspect("equal")
+ax3.axis("off")
 
 # Axis limits — manifold zone: X=2300–3000, Z=0–800
 ax.set_xlim(sx(2200) - 1, sx(3100) + 1)
@@ -879,11 +889,305 @@ ax2.text(sa_y(100), sa_z(-95),
          ha="center", va="top", fontsize=6, color="#666666", style="italic")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# DETAIL B — PLAN VIEW (TOP-DOWN PIPE ROUTING)
+# View from ceiling looking down at the floor
+# X horizontal (mirrored to match elevation), Yd vertical (wall at top)
+# Shows: manifold position on pinhole wall, pipe runs to IBCs, tray sump,
+#        near walkway, processing tray, filter skid position, plumbing corridor
+# ═══════════════════════════════════════════════════════════════════════════════
+
+SC_B = 10.0   # mm per drawing unit (1:10 for good readability)
+OBX = 2.0     # X origin offset
+OBY = 1.5     # Yd origin offset
+
+# Yd range clipped to 0–1600mm: covers wall, walkway, tray, corridor, far IBC column
+YD_MAX_PLAN = 1600
+
+def sp_x(x_mm):
+    """Convert X position (mm) to plan view x coordinate."""
+    return OBX + (x_mm - 2000) / SC_B
+
+def sp_y(yd_mm):
+    """Convert Yd position (mm) to plan view y coordinate (Yd=0 at top)."""
+    return OBY + (YD_MAX_PLAN - yd_mm) / SC_B  # flip so wall (Yd=0) is at top
+
+# Set axis limits
+ax3.set_xlim(sp_x(1900) - 1, sp_x(5500) + 1)
+ax3.set_ylim(sp_y(YD_MAX_PLAN + 150) - 1, sp_y(-200) + 1)
+
+# Mirror X to match elevation convention (high X on left)
+ax3.invert_xaxis()
+
+# Detail title
+ax3.text(sp_x(3600), sp_y(-120), "DETAIL B — PLAN VIEW (PIPE ROUTING)\nLOOKING DOWN FROM CEILING  |  SCALE ~1:10",
+         ha="center", va="top", fontsize=8, fontweight="bold",
+         color="#1A237E", zorder=10)
+
+# ── Pinhole wall (Yd=0) ─────────────────────────────────────────────────────
+ax3.plot([sp_x(1900), sp_x(5300)], [sp_y(0), sp_y(0)],
+         color=C_FRAME, lw=2.5, zorder=3)
+ax3.text(sp_x(2000), sp_y(-30), "PINHOLE WALL (Yd=0)", ha="left", va="top",
+         fontsize=7, color=C_FRAME, fontweight="bold")
+
+# Far wall indicator (beyond clipped range — show as annotation)
+ax3.plot([sp_x(1900), sp_x(5400)], [sp_y(YD_MAX_PLAN), sp_y(YD_MAX_PLAN)],
+         color="#AAAAAA", lw=1.0, ls=":", zorder=2)
+ax3.text(sp_x(5350), sp_y(YD_MAX_PLAN + 20), "FAR WALL Yd=2,362 →",
+         ha="right", va="top", fontsize=5, color="#AAAAAA", style="italic")
+
+# ── Near walkway (Yd=0–300) ─────────────────────────────────────────────────
+ax3.add_patch(plt.Rectangle(
+    (sp_x(2200), sp_y(WALKWAY_W)),
+    (4800 - 2200) / SC_B, WALKWAY_W / SC_B,
+    fc="#E8E8E0", ec="#BBBBBB", lw=0.8, alpha=0.5, zorder=1))
+ax3.text(sp_x(3600), sp_y(WALKWAY_W / 2), "NEAR WALKWAY (Yd=0–300)",
+         ha="center", va="center", fontsize=6, color="#999999", style="italic")
+
+# ── Processing tray outline ─────────────────────────────────────────────────
+TRAY_YD_NEAR = PROC_TRAY_YD_NEAR   # 80
+TRAY_YD_FAR = TRAY_YD_NEAR + PROC_TRAY_D  # 2280
+TRAY_X_L = 170
+TRAY_X_R = 4629
+ax3.add_patch(plt.Rectangle(
+    (sp_x(TRAY_X_L), sp_y(TRAY_YD_FAR)),
+    (TRAY_X_R - TRAY_X_L) / SC_B, PROC_TRAY_D / SC_B,
+    fc="none", ec="#4488AA", lw=1.2, ls="--", zorder=2))
+ax3.text(sp_x((TRAY_X_L + TRAY_X_R) / 2), sp_y(TRAY_YD_FAR - 30),
+         "PROCESSING TRAY", ha="center", va="top",
+         fontsize=5, color="#4488AA", style="italic")
+
+# Sump position
+SUMP_X = PROC_TRAY_DRAIN_X   # 2399
+SUMP_YD = PROC_TRAY_DRAIN_YD  # 80
+ax3.plot(sp_x(SUMP_X), sp_y(SUMP_YD), 's', color="#4488AA",
+         markersize=6, zorder=5)
+ax3.text(sp_x(SUMP_X), sp_y(SUMP_YD + 60), "SUMP",
+         ha="center", va="top", fontsize=5, color="#4488AA", fontweight="bold")
+
+# ── Pump manifold footprint ─────────────────────────────────────────────────
+# Manifold sits on the wall face — depth ~120mm from wall (pump body + bracket)
+MANIFOLD_DEPTH = 120  # Yd depth from wall
+ax3.add_patch(plt.Rectangle(
+    (sp_x(PUMP_X), sp_y(MANIFOLD_DEPTH)),
+    PUMP_W / SC_B, MANIFOLD_DEPTH / SC_B,
+    fc=C_PUMP_BODY, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=4))
+ax3.text(sp_x(PUMP_X + PUMP_W / 2), sp_y(MANIFOLD_DEPTH / 2),
+         "PUMP\nMANIFOLD", ha="center", va="center",
+         fontsize=7, fontweight="bold", color="white", zorder=5)
+
+# Pump positions within manifold (simplified as small rectangles)
+PUMP_PLAN_W = 50   # pump body plan width (X)
+PUMP_PLAN_D = 40   # pump body plan depth (Yd)
+pump_plan_positions = [
+    (P01_X + 25, 30, "P-01", C_BLUE),
+    (P02_X + 25, 30, "P-02", C_BROWN),
+    (P03_X + 25, 70, "P-03", C_BLACK_SYS),
+    (P04_X + 25, 70, "P-04", C_BLACK_SYS),
+]
+for ppx, ppyd, pplabel, ppcolor in pump_plan_positions:
+    ax3.add_patch(plt.Rectangle(
+        (sp_x(ppx), sp_y(ppyd + PUMP_PLAN_D)),
+        PUMP_PLAN_W / SC_B, PUMP_PLAN_D / SC_B,
+        fc=ppcolor, ec=C_FRAME, lw=0.8, alpha=0.7, zorder=5))
+    ax3.text(sp_x(ppx + PUMP_PLAN_W / 2), sp_y(ppyd + PUMP_PLAN_D / 2),
+             pplabel, ha="center", va="center",
+             fontsize=5, color="white", fontweight="bold", zorder=6)
+
+# ── Filter skid footprint ────────────────────────────────────────────────────
+FSKID_DEPTH = 200   # approximate depth from wall
+ax3.add_patch(plt.Rectangle(
+    (sp_x(FSKID_X), sp_y(FSKID_DEPTH)),
+    FSKID_W / SC_B, FSKID_DEPTH / SC_B,
+    fc="#3366AA", ec=C_FRAME, lw=1.2, alpha=0.3, zorder=3))
+ax3.text(sp_x(FSKID_X + FSKID_W / 2), sp_y(FSKID_DEPTH / 2),
+         "FILTER\nSKID", ha="center", va="center",
+         fontsize=7, fontweight="bold", color="#3366AA", zorder=4)
+
+# ── IBC positions ────────────────────────────────────────────────────────────
+# Near column (Blue#1 on top of Brown)
+ibc_near_x = IBC_COL_X
+ibc_near_yd = BLUE_IBC_Y
+ax3.add_patch(plt.Rectangle(
+    (sp_x(ibc_near_x), sp_y(ibc_near_yd + IBC_D)),
+    IBC_W / SC_B, IBC_D / SC_B,
+    fc="#CCDDEE", ec="#6699BB", lw=1.2, alpha=0.5, zorder=3))
+ax3.text(sp_x(ibc_near_x + IBC_W / 2), sp_y(ibc_near_yd + IBC_D / 2),
+         "IBC-1 (BLUE)\nIBC-3 (BROWN)\n[stacked]", ha="center", va="center",
+         fontsize=6, color="#336699", fontweight="bold")
+
+# Far column (Blue#2 on top of Waste) — partially clipped by Yd range
+ibc_far_x = IBC_COL_X
+ibc_far_yd = IBC_FAR_Y
+ibc_far_clip_d = min(IBC_D, YD_MAX_PLAN - ibc_far_yd)  # clip to visible range
+ax3.add_patch(plt.Rectangle(
+    (sp_x(ibc_far_x), sp_y(ibc_far_yd + ibc_far_clip_d)),
+    IBC_W / SC_B, ibc_far_clip_d / SC_B,
+    fc="#EEDDCC", ec="#BB9966", lw=1.2, alpha=0.5, zorder=3))
+ax3.text(sp_x(ibc_far_x + IBC_W / 2), sp_y(ibc_far_yd + ibc_far_clip_d / 2),
+         "IBC-2 (BLUE)\nIBC-4 (WASTE)\n[stacked]", ha="center", va="center",
+         fontsize=5, color="#996633", fontweight="bold")
+
+# ── Central plumbing corridor ────────────────────────────────────────────────
+CORRIDOR_YD_NEAR = 1046   # between near and far IBC columns
+CORRIDOR_YD_FAR = 1316
+ax3.add_patch(plt.Rectangle(
+    (sp_x(ibc_near_x), sp_y(CORRIDOR_YD_FAR)),
+    IBC_W / SC_B, (CORRIDOR_YD_FAR - CORRIDOR_YD_NEAR) / SC_B,
+    fc="#FFE8CC", ec="#CC9944", lw=0.8, ls="--", alpha=0.3, zorder=2))
+ax3.text(sp_x(ibc_near_x + IBC_W / 2), sp_y((CORRIDOR_YD_NEAR + CORRIDOR_YD_FAR) / 2),
+         "PLUMBING\nCORRIDOR\n(270mm)", ha="center", va="center",
+         fontsize=5.5, color="#CC9944", style="italic")
+
+# ── Pipe runs (plan view) — shown as colored lines with arrow direction ─────
+PIPE_LW = 3.5   # line width for pipe runs
+
+# Pipe Yd offsets — spread pipes apart for clarity (actual routing is along wall face)
+BLUE_SUP_YD = 20     # Blue supply suction
+BLUE_DIS_YD = 50     # Blue discharge to spray bar
+BROWN_SUC_YD = 80    # Brown suction from IBC-3
+BROWN_DIS_YD = 110   # Brown discharge to filter skid (riser)
+WASTE_SUC_YD = 140   # Waste suction from IBC-4
+WASTE_DIS_YD = 170   # Waste discharge to ext drain
+TRAY_SUC_YD = 200    # Tray drain suction from sump
+TRAY_DIS_YD = 230    # Tray drain discharge to DV-02
+
+# --- 1. BLUE SUPPLY SUCTION: IBC-1/IBC-2 → along wall → BV-01 → P-01 ─────
+blue_ibc_x = ibc_near_x + IBC_W / 2   # center of IBC column in X
+# Wall run from manifold to IBC zone
+ax3.plot([sp_x(PUMP_X + PUMP_W), sp_x(ibc_near_x)],
+         [sp_y(BLUE_SUP_YD), sp_y(BLUE_SUP_YD)],
+         color=C_BLUE, lw=PIPE_LW, ls="-", zorder=6)
+# Turn down to near IBC column (IBC-1)
+ax3.plot([sp_x(ibc_near_x), sp_x(ibc_near_x)],
+         [sp_y(BLUE_SUP_YD), sp_y(ibc_near_yd + IBC_D / 2)],
+         color=C_BLUE, lw=PIPE_LW, ls="-", zorder=6)
+# Also feeds through corridor to far IBC (IBC-2)
+ax3.plot([sp_x(ibc_near_x + 40), sp_x(ibc_near_x + 40)],
+         [sp_y(ibc_near_yd + IBC_D), sp_y(ibc_far_yd)],
+         color=C_BLUE, lw=PIPE_LW, ls="--", alpha=0.6, zorder=5)
+# Label
+ax3.text(sp_x((PUMP_X + PUMP_W + ibc_near_x) / 2), sp_y(BLUE_SUP_YD - 15),
+         "BLUE SUPPLY (IBC-1 & IBC-2 → BV-01 → P-01)", ha="center", va="top",
+         fontsize=5.5, color=C_BLUE, fontweight="bold")
+
+# --- 2. BLUE DISCHARGE: P-01 → ACC-01 → BV-02 → spray bar ────────────────
+ax3.plot([sp_x(PUMP_X + PUMP_W), sp_x(4200)],
+         [sp_y(BLUE_DIS_YD), sp_y(BLUE_DIS_YD)],
+         color=C_BLUE, lw=PIPE_LW, ls="-", alpha=0.8, zorder=6)
+ax3.annotate("", xy=(sp_x(4200), sp_y(BLUE_DIS_YD)),
+             xytext=(sp_x(4000), sp_y(BLUE_DIS_YD)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=2.0), zorder=7)
+ax3.text(sp_x(4250), sp_y(BLUE_DIS_YD), "TO SPRAY BAR →",
+         ha="left", va="center", fontsize=5.5, color=C_BLUE, style="italic")
+ax3.text(sp_x((PUMP_X + PUMP_W + 4200) / 2), sp_y(BLUE_DIS_YD - 15),
+         "BLUE DISCH. (P-01 → ACC-01 → BV-02)", ha="center", va="top",
+         fontsize=5, color=C_BLUE)
+
+# --- 3. BROWN SUCTION: IBC-3 → along wall → P-02 ─────────────────────────
+ax3.plot([sp_x(PUMP_X + PUMP_W), sp_x(ibc_near_x - 20)],
+         [sp_y(BROWN_SUC_YD), sp_y(BROWN_SUC_YD)],
+         color=C_BROWN, lw=PIPE_LW, ls="--", alpha=0.6, zorder=5)
+# Turn down to near IBC (IBC-3 is below IBC-1 in near column)
+ax3.plot([sp_x(ibc_near_x - 20), sp_x(ibc_near_x - 20)],
+         [sp_y(BROWN_SUC_YD), sp_y(ibc_near_yd + IBC_D / 2 + 80)],
+         color=C_BROWN, lw=PIPE_LW, ls="--", alpha=0.6, zorder=5)
+ax3.text(sp_x((PUMP_X + PUMP_W + ibc_near_x) / 2), sp_y(BROWN_SUC_YD - 15),
+         "BROWN SUCTION (IBC-3 → P-02)", ha="center", va="top",
+         fontsize=5, color=C_BROWN)
+
+# --- 4. BROWN DISCHARGE: P-02 → riser → filter skid ──────────────────────
+ax3.plot([sp_x(PUMP_X + PUMP_W), sp_x(FSKID_X)],
+         [sp_y(BROWN_DIS_YD), sp_y(BROWN_DIS_YD)],
+         color=C_BROWN, lw=PIPE_LW, ls="-", zorder=6)
+ax3.annotate("", xy=(sp_x(FSKID_X), sp_y(BROWN_DIS_YD)),
+             xytext=(sp_x(FSKID_X - 100), sp_y(BROWN_DIS_YD)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0), zorder=7)
+ax3.text(sp_x((PUMP_X + PUMP_W + FSKID_X) / 2), sp_y(BROWN_DIS_YD - 15),
+         "BROWN DISCH. (P-02 → RISER → FILTER SKID)", ha="center", va="top",
+         fontsize=5, color=C_BROWN)
+
+# --- 5. WASTE SUCTION: IBC-4 (far column) → corridor → along wall → P-03 ─
+# Along wall from manifold to IBC zone
+ax3.plot([sp_x(PUMP_X + PUMP_W), sp_x(ibc_near_x + 80)],
+         [sp_y(WASTE_SUC_YD), sp_y(WASTE_SUC_YD)],
+         color=C_BLACK_SYS, lw=PIPE_LW, ls="--", alpha=0.6, zorder=5)
+# Turn down through corridor to far IBC (IBC-4)
+ax3.plot([sp_x(ibc_near_x + 80), sp_x(ibc_near_x + 80)],
+         [sp_y(WASTE_SUC_YD), sp_y(ibc_far_yd + IBC_D / 2)],
+         color=C_BLACK_SYS, lw=PIPE_LW, ls="--", alpha=0.6, zorder=5)
+ax3.text(sp_x((PUMP_X + PUMP_W + ibc_near_x) / 2), sp_y(WASTE_SUC_YD - 15),
+         "WASTE SUCTION (IBC-4 → P-03)", ha="center", va="top",
+         fontsize=5, color=C_BLACK_SYS)
+
+# --- 6. WASTE DISCHARGE: P-03 → external drain (lower X) ─────────────────
+ax3.plot([sp_x(PUMP_X), sp_x(2100)],
+         [sp_y(WASTE_DIS_YD), sp_y(WASTE_DIS_YD)],
+         color=C_BLACK_SYS, lw=PIPE_LW, ls="-", zorder=6)
+ax3.annotate("", xy=(sp_x(2100), sp_y(WASTE_DIS_YD)),
+             xytext=(sp_x(2250), sp_y(WASTE_DIS_YD)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=2.0), zorder=7)
+ax3.text(sp_x(2050), sp_y(WASTE_DIS_YD), "← TO EXT. DRAIN PORT",
+         ha="right", va="center", fontsize=5.5, color=C_BLACK_SYS, style="italic",
+         fontweight="bold")
+
+# --- 7. TRAY DRAIN SUCTION: sump → over tray rim → along wall → P-04 ────
+# Sump to wall face
+ax3.plot([sp_x(SUMP_X), sp_x(SUMP_X), sp_x(PUMP_X + PUMP_W)],
+         [sp_y(SUMP_YD), sp_y(TRAY_SUC_YD), sp_y(TRAY_SUC_YD)],
+         color=C_BLACK_SYS, lw=PIPE_LW, ls="-", zorder=6)
+ax3.annotate("", xy=(sp_x(PUMP_X + PUMP_W), sp_y(TRAY_SUC_YD)),
+             xytext=(sp_x(PUMP_X + PUMP_W + 150), sp_y(TRAY_SUC_YD)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.5), zorder=7)
+ax3.text(sp_x(SUMP_X + 40), sp_y(TRAY_SUC_YD - 15),
+         "TRAY DRAIN (SUMP → P-04)", ha="left", va="top",
+         fontsize=5, color=C_BLACK_SYS)
+
+# --- 8. TRAY DRAIN DISCHARGE: P-04 → DV-02 → IBC-3 or IBC-4 ────────────
+# DV-02 routes to same corridor as other IBC connections
+ax3.plot([sp_x(PUMP_X), sp_x(PUMP_X), sp_x(ibc_near_x + 120)],
+         [sp_y(TRAY_DIS_YD), sp_y(TRAY_DIS_YD + 60), sp_y(TRAY_DIS_YD + 60)],
+         color=C_BROWN, lw=PIPE_LW * 0.8, ls="-.", alpha=0.6, zorder=5)
+ax3.plot([sp_x(ibc_near_x + 120), sp_x(ibc_near_x + 120)],
+         [sp_y(TRAY_DIS_YD + 60), sp_y(ibc_near_yd + IBC_D)],
+         color=C_BROWN, lw=PIPE_LW * 0.8, ls="-.", alpha=0.6, zorder=5)
+ax3.text(sp_x(PUMP_X - 15), sp_y(TRAY_DIS_YD + 60),
+         "P-04 → DV-02\n→ IBC-3 or IBC-4",
+         ha="left", va="center", fontsize=5, color=C_BROWN, style="italic")
+
+# ── Pipe color legend ────────────────────────────────────────────────────────
+legend_x = sp_x(2100)
+legend_y_start = sp_y(C_WID - 80)
+legend_items = [
+    (C_BLUE, "Blue supply / discharge"),
+    (C_BROWN, "Brown recycle / filter"),
+    (C_BLACK_SYS, "Waste / tray drain"),
+]
+for i, (lc, lt) in enumerate(legend_items):
+    ly = legend_y_start + i * 1.0
+    ax3.plot([legend_x, legend_x + 1.8], [ly, ly],
+             color=lc, lw=3.0, zorder=8)
+    ax3.text(legend_x + 2.2, ly, lt, ha="left", va="center",
+             fontsize=5.5, color=lc, zorder=8)
+
+# ── Yd dimension references ─────────────────────────────────────────────────
+draw_dim_v(ax3, sp_x(5350), sp_y(WALKWAY_W), sp_y(0),
+           f"{WALKWAY_W}mm\nWALKWAY", offset=0.4, fs=5.5)
+
+# Manifold to filter skid X distance
+draw_dim_h(ax3, sp_x(PUMP_X + PUMP_W), sp_x(FSKID_X), sp_y(-80),
+           f"{FSKID_X - PUMP_X - PUMP_W}mm", offset=0.33, fs=5.5)
+
+# Manifold to IBC column X distance
+draw_dim_h(ax3, sp_x(PUMP_X), sp_x(ibc_near_x), sp_y(-140),
+           f"{ibc_near_x - PUMP_X}mm", offset=0.33, fs=5.5)
+
+
 # ── Title block ──────────────────────────────────────────────────────────────
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="PUMP MANIFOLD — PLUMBING ELEVATION",
             subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0) — MATCHES COMBINED ELEVATION",
-            scale_note="ELEVATION 1:5  |  DETAIL A ~1:2  |  ALL DIMS IN mm",
+            scale_note="ELEVATION 1:5  |  DETAIL A ~1:2  |  DETAIL B (PLAN) ~1:10  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Pump Manifold Detail",
             height=0.05)
 

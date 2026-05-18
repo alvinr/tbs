@@ -564,11 +564,11 @@ BV01_Z = PM_HEADER_Z_BLUE_SUC
 BV02_X = PM_ACC_X + PM_ACC_W + 40   # BV-02 on discharge header (right of ACC-01)
 BV02_Z = PM_HEADER_Z_BLUE_DISCH
 
-# Trunk (1"): IBC → BV-01
+# 1/2" suction: IBC → BV-01
 draw_pipe_path(ax,
     [IBC_PIPE_EXIT_X, BV01_X + BV_R],
     [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC],
-    OD, PIPE_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # Arrow: flow from IBC (LEFT) toward manifold (RIGHT in drawing)
 ax.annotate("", xy=(sx(BV01_X + BV_R + 30), sz(PM_HEADER_Z_BLUE_SUC)),
             xytext=(sx(BV01_X + BV_R + 150), sz(PM_HEADER_Z_BLUE_SUC)),
@@ -579,11 +579,11 @@ ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC + 30),
 
 # BV-01 symbol
 _bv_symbol(ax, BV01_X, BV01_Z, "BV\n01")
-# 1" from BV-01 to right edge of frame
+# 1/2" from BV-01 to right edge of frame
 draw_pipe_path(ax,
     [BV01_X - BV_R, PM_FRAME_R],
     [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC],
-    OD, PIPE_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # 1/2": frame edge → horizontal across frame → 90° drop → P-01 IN
 draw_pipe_path(ax,
     [PM_FRAME_R, p01_in_x + ELB, p01_in_x + ELB, p01_in_x],
@@ -601,11 +601,11 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 _bv_symbol(ax, BV02_X, BV02_Z, "BV\n02")
-# BV-02 → 1" trunk → spray bar (runs LEFT in drawing toward IBC zone)
+# BV-02 → 1/2" discharge → spray bar (runs LEFT in drawing toward IBC zone)
 draw_pipe_path(ax,
     [BV02_X + BV_R, IBC_PIPE_EXIT_X],
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_DISCH],
-    OD, PIPE_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # Arrow: flow from manifold toward spray bar (LEFT in drawing = higher X)
 ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 150), sz(PM_HEADER_Z_BLUE_DISCH)),
             xytext=(sx(IBC_PIPE_EXIT_X + 30), sz(PM_HEADER_Z_BLUE_DISCH)),
@@ -617,11 +617,11 @@ ax.text(sx((BV02_X + IBC_PIPE_EXIT_X) / 2), sz(PM_HEADER_Z_BLUE_DISCH + 25),
 # ════════════════════════════════════════════════════════════════════════════
 # P-02 BROWN RECYCLE: IBC-3 → P-02 → riser → filter skid F1 IN
 # ════════════════════════════════════════════════════════════════════════════
-# Trunk (1"): IBC-3 → right edge of frame at top-row port Z
+# 1/2" suction: IBC-3 → right edge of frame at top-row port Z
 draw_pipe_path(ax,
     [IBC_PIPE_EXIT_X, PM_FRAME_R],
     [p02_port_z, p02_port_z],
-    OD, PIPE_WALL, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 ax.annotate("", xy=(sx(PM_FRAME_R + 30), sz(p02_port_z)),
             xytext=(sx(PM_FRAME_R + 150), sz(p02_port_z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
@@ -635,36 +635,28 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 
 # P-02 OUT → left elbow → up past frame top (+50mm) → horizontal to RISER_X
-#          → 90° turn up (still 1/2") → reducer → 1" riser to F1
+#          → 90° turn up → 1/2" riser all the way to F1 header
 RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top
-REDUCER_STUB = 40                      # 1/2" vertical stub before reducer
-REDUCER_H = 25                         # reducer trapezoid height
 draw_pipe_path(ax,
     [p02_out_x, p02_out_x - ELB, p02_out_x - ELB, RISER_X],
     [p02_port_z, p02_port_z, RISER_ENTRY_Z, RISER_ENTRY_Z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1/2" vertical stub up from the 90° turn
-REDUCER_BOT_Z = RISER_ENTRY_Z + REDUCER_STUB
-draw_pipe_path(ax,
-    [RISER_X, RISER_X],
-    [RISER_ENTRY_Z, REDUCER_BOT_Z],
-    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1/2→1" reducer bushing (trapezoid)
-REDUCER_TOP_Z = REDUCER_BOT_Z + REDUCER_H
-red_pts = [
-    (sx(RISER_X - OD_H / 2), sz(REDUCER_BOT_Z)),
-    (sx(RISER_X + OD_H / 2), sz(REDUCER_BOT_Z)),
-    (sx(RISER_X + OD / 2),   sz(REDUCER_TOP_Z)),
-    (sx(RISER_X - OD / 2),   sz(REDUCER_TOP_Z)),
-]
-ax.add_patch(plt.Polygon(red_pts, fc=C_BROWN, ec=C_BROWN_EC, lw=0.6, zorder=Z_BROWN))
-# 1" riser: from reducer top → filter header → F1 IN
+# 1/2" riser: RISER_X → filter header → reducer at F1 IN
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in, f1_in],
-    [REDUCER_TOP_Z, HEADER_Z, HEADER_Z, PORT_Z],
-    OD, PIPE_WALL, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=6)
-ax.annotate("", xy=(sx(RISER_X), sz(REDUCER_TOP_Z + 100)),
-            xytext=(sx(RISER_X), sz(REDUCER_TOP_Z + 20)),
+    [RISER_ENTRY_Z, HEADER_Z, HEADER_Z, PORT_Z + 30],
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
+# 1/2→1" reducer bushing at F1 IN port
+REDUCER_H = 20
+red_pts = [
+    (sx(f1_in - OD_H / 2), sz(PORT_Z + 30)),
+    (sx(f1_in + OD_H / 2), sz(PORT_Z + 30)),
+    (sx(f1_in + OD / 2),   sz(PORT_Z)),
+    (sx(f1_in - OD / 2),   sz(PORT_Z)),
+]
+ax.add_patch(plt.Polygon(red_pts, fc=C_BROWN, ec=C_BROWN_EC, lw=0.6, zorder=Z_BROWN))
+ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
+            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 20)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
 
 # (P-03 relocated to IBC corridor — no waste pipes on manifold)
@@ -675,11 +667,11 @@ ax.annotate("", xy=(sx(RISER_X), sz(REDUCER_TOP_Z + 100)),
 TRAY_DRAIN_Z = WALKWAY_H + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
 
-# Tray drain suction: 1" trunk from sump → below P-04 column
+# Tray drain suction: 1/2" from sump → below P-04 column
 draw_pipe_path(ax,
     [TRAY_SUMP_X, p04_in_x],
     [TRAY_DRAIN_Z, TRAY_DRAIN_Z],
-    OD, PIPE_WALL, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
+    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 # 1/2" riser: deck level up through frame to P-04 IN port
 draw_pipe_path(ax,
     [p04_in_x, p04_in_x],
@@ -715,7 +707,7 @@ DV02_BROWN_Z = PM_DV02_Z + PM_DV02_R + 30
 draw_pipe_path(ax,
     [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
     [PM_DV02_Z + PM_DV02_R, DV02_BROWN_Z, DV02_BROWN_Z],
-    OD, PIPE_WALL, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=6)
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=6)
 ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",
         fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
@@ -725,7 +717,7 @@ DV02_BLACK_Z = PM_FRAME_Z_LO + 15
 draw_pipe_path(ax,
     [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
     [PM_DV02_Z - PM_DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],
-    OD, PIPE_WALL, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=6)
+    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=6)
 ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
         "WASTE → BLACK IBC-4", ha="center", va="top",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
@@ -734,7 +726,7 @@ ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
 draw_pipe_path(ax,
     [DV01_X + DV01_R, IBC_PIPE_EXIT_X],
     [PORT_Z, PORT_Z],
-    OD, PIPE_WALL, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=8)
+    OD_H, WALL_H, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=8)
 ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 150), sz(PORT_Z)),
             xytext=(sx(IBC_PIPE_EXIT_X + 30), sz(PORT_Z)),
             arrowprops=dict(arrowstyle="-|>", color="#3070B0", lw=1.2),
@@ -748,7 +740,7 @@ DV01_WASTE_Z = PORT_Z - 200
 draw_pipe_path(ax,
     [DV01_X, DV01_X, IBC_PIPE_EXIT_X],
     [PORT_Z - DV01_R, DV01_WASTE_Z, DV01_WASTE_Z],
-    OD, PIPE_WALL, fc="#555555", ec="#333333", bore_fc="white", zorder=8)
+    OD_H, WALL_H, fc="#555555", ec="#333333", bore_fc="white", zorder=8)
 ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_WASTE_Z - 35),
         "WASTE → BLACK IBC-4", ha="center", va="top",
         fontsize=3.5, color="#555555", zorder=10, **FONT)

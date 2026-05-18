@@ -303,23 +303,40 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 
 ### Pipe sizing
 
+Two pipe sizes are used: **1" trunk lines** for the long runs between IBCs, filter skid, and spray bar; **1/2" manifold pipe** for the short runs within the pump manifold frame. The 1/2" size matches the Shurflo 2088 pump ports (1/2"-14 male parallel thread), eliminating the need for reducer fittings at each pump — only four 1"→1/2" bushing reducers are needed at the manifold frame entry/exit points.
+
+**Trunk lines (1" HDPE Sch 40):**
+
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| Blue supply main | Sch 40 / SDR-11 | 1" nominal | 100 PSI min | HDPE |
-| Brown recycle | Sch 40 / SDR-11 | 1" nominal | 100 PSI min | HDPE |
+| Blue supply trunk (IBC → manifold) | Sch 40 / SDR-11 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Blue discharge trunk (manifold → spray bar) | Sch 40 / SDR-11 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Brown recycle trunk (IBC → manifold, manifold → filter skid) | Sch 40 / SDR-11 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
 | Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
-| Filter inlet/outlet | Sch 40 | 1" nominal | 100 PSI min | HDPE |
-| Tray drain (P-04 suction) | Reinforced flex hose | 1" nominal | pump suction | HDPE/PVC braid |
-| Black waste (to IBC-4) | Sch 40 | 1" nominal | 50 PSI min | HDPE |
+| Filter inlet/outlet | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Black waste trunk (manifold → IBC-4) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
 
-**Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
+**Pump manifold internal (1/2" HDPE Sch 40):**
+
+| Circuit | Pipe | Size | Pressure rating | Material |
+|---------|------|------|----------------|---------|
+| Pump headers and connections (all 4 pumps) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
+| ACC-01 inlet/outlet | Sch 40 | 1/2" nominal (OD 21mm) | 125 PSI min | HDPE |
+| BV-01/BV-02 manifold side | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
+| Tray drain suction (P-04) | Reinforced flex hose | 1/2" nominal | pump suction | HDPE/PVC braid |
+
+At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The short manifold runs (< 500mm each) contribute negligible head loss.
+
+**Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
 
 ### Fittings and connections
 
 | Connection type | Use | Standard |
 |----------------|-----|---------|
 | 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminum or polypropylene |
-| 1" NPT threaded | Pump inlet/outlet, valve connections | HDPE or brass |
+| 1" NPT threaded | Trunk lines (IBC runs, filter skid, spray bar feed) | HDPE or brass |
+| 1/2" NPT threaded | Pump manifold internal connections, pump ports, ACC-01 | HDPE or brass |
+| 1"×1/2" NPT bushing reducer | Trunk-to-manifold transitions at frame entry/exit (4 required) | Polypropylene or brass |
 | 2" NPT bulkhead | External fill/drain port (container wall) | 304 SS |
 | Push-fit / compression | Secondary connections | John Guest / Speedfit style |
 
@@ -420,24 +437,27 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | **$8–$12** |
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01, 3W-DV-02 | 2 | Amazon | $18–$30 | **$40–$60** |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | **$35–$50** |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. F1/F2/D3/D4 bends plus system elbows | 14 | Amazon | $3–$5 | **$42–$70** |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. Trunk line bends | 10 | Amazon | $3–$5 | **$30–$50** |
+| [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | Pump manifold internal bends | 8 | Amazon | $2–$4 | **$16–$32** |
 | [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. Blue outflow manifold merge plus system tees | 8 | Amazon | $4–$6 | **$35–$50** |
-| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | For maintenance disconnects | 6 | Amazon | $6–$10 | **$40–$60** |
+| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | For maintenance disconnects on trunk lines | 6 | Amazon | $6–$10 | **$40–$60** |
+| [1"×1/2" NPT bushing reducer](https://www.amazon.com/s?k=1+inch+1%2F2+inch+NPT+bushing+reducer+polypropylene) | Trunk-to-manifold transitions at pump frame entry/exit | 4 | Amazon | $3–$5 | **$12–$20** |
 | [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female | 8 | Amazon | $8–$15 | **$64–$120** |
 | [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT | 4 | Amazon | $8–$14 | **$32–$56** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
-**Valves & fittings subtotal: ~$406–$650**
+**Valves & fittings subtotal: ~$420–$670**
 
 ### 8.5 Pipe
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft sticks | 5 sticks (100 ft) | Ferguson | $12–$18/stick | **$60–$90** |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft sticks. Trunk lines (IBC runs, filter skid, spray bar feed) | 4 sticks (80 ft) | Ferguson | $12–$18/stick | **$48–$72** |
+| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | Pump manifold internal runs, short headers. Matches pump port size | 1 stick (20 ft) | Ferguson | $6–$10/stick | **$6–$10** |
 | [3/4" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson | $9–$14/stick | **$20–$30** |
 | [1/2" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Amazon | $8–$12/length | **$20** |
 
-**Pipe subtotal: ~$100–$140**
+**Pipe subtotal: ~$94–$132**
 
 ### 8.6 Processing tray
 

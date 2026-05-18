@@ -437,6 +437,44 @@ HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
 # Transition X: where 1" trunk meets 1/2" manifold
 TRANS_X = FRAME_X + FRAME_W + 10  # just outside frame right
 
+# ── Pipe bridge/hop helper (shows one pipe crossing over another) ────────────
+def draw_pipe_bridge(ax, x_mm, z_mm, od_mm, direction="h", color="white",
+                     zorder=11):
+    """Draw a semicircular bridge at (x_mm, z_mm) to indicate a pipe crossing.
+
+    direction: 'h' = pipe running horizontally crosses a vertical pipe
+               'v' = pipe running vertically crosses a horizontal pipe
+    The bridge is a small semicircle that 'hops' over the crossing pipe.
+    A white background rectangle blanks out the crossed pipe beneath.
+    """
+    hop_r = od_mm * 0.8  # radius of the hop arc
+    n_pts = 20
+
+    if direction == "h":
+        # Horizontal pipe hops over a vertical pipe at this point
+        # Blank rectangle behind the hop
+        ax.add_patch(plt.Rectangle(
+            (sx(x_mm - hop_r * 1.2), sz(z_mm - od_mm / 2 - 1)),
+            (hop_r * 2.4) / SC, (od_mm + 2) / SC,
+            fc=C_BG, ec="none", zorder=zorder - 1))
+        # Semicircular arc above
+        angles = np.linspace(0, np.pi, n_pts)
+        arc_x = [sx(x_mm + hop_r * np.cos(a)) for a in angles]
+        arc_z = [sz(z_mm + hop_r * np.sin(a)) for a in angles]
+        ax.plot(arc_x, arc_z, color=C_FRAME, lw=1.5, solid_capstyle="round",
+                zorder=zorder)
+    else:
+        # Vertical pipe hops over a horizontal pipe at this point
+        ax.add_patch(plt.Rectangle(
+            (sx(x_mm - od_mm / 2 - 1), sz(z_mm - hop_r * 1.2)),
+            (od_mm + 2) / SC, (hop_r * 2.4) / SC,
+            fc=C_BG, ec="none", zorder=zorder - 1))
+        angles = np.linspace(-np.pi / 2, np.pi / 2, n_pts)
+        arc_x = [sx(x_mm + hop_r * np.sin(a)) for a in angles]
+        arc_z = [sz(z_mm + hop_r * np.cos(a)) for a in angles]
+        ax.plot(arc_x, arc_z, color=C_FRAME, lw=1.5, solid_capstyle="round",
+                zorder=zorder)
+
 # ── Reducer symbol helper ────────────────────────────────────────────────────
 def draw_reducer(ax, x_mm, z_mm, orientation="h"):
     """Draw a 1"→1/2" reducer symbol at (x_mm, z_mm). 'h'=horizontal, 'v'=vertical."""
@@ -563,17 +601,19 @@ ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
 # ════════════════════════════════════════════════════════════════════════════
 # P-03 WASTE EVAC — IBC-4 → P-03 → external drain
 # ════════════════════════════════════════════════════════════════════════════
-WASTE_HEADER_Z = PORT_Z_BOT  # enters at bottom-row port height
-# Trunk (1"): IBC-4 → reducer
+# Route waste suction BETWEEN the two rows so it doesn't pass through P-04.
+# Z midway in the gap between bottom-row top and top-row bottom.
+WASTE_HEADER_Z = PUMP_Z_BOT + PUMP_BODY_H + PUMP_GAP_Z // 2  # mid-gap between rows
+# Trunk (1"): IBC-4 → reducer (runs at mid-gap Z, clear of P-04)
 draw_pipe_path(ax,
     [PIPE_EXIT_X, TRANS_X + 40],
     [WASTE_HEADER_Z, WASTE_HEADER_Z],
     OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
 draw_reducer(ax, TRANS_X + 40, WASTE_HEADER_Z, "h")
-# Manifold (1/2"): reducer → P-03 IN
+# Manifold (1/2"): reducer → elbow down → P-03 IN
 draw_pipe_path(ax,
-    [TRANS_X + 25, p03_in_x],
-    [WASTE_HEADER_Z, WASTE_HEADER_Z],
+    [TRANS_X + 25, p03_in_x + ELBOW_OFFSET, p03_in_x + ELBOW_OFFSET, p03_in_x],
+    [WASTE_HEADER_Z, WASTE_HEADER_Z, PORT_Z_BOT, PORT_Z_BOT],
     OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
 
 # P-03 OUT → 90° down → horizontal to external drain
@@ -644,6 +684,21 @@ place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
             dx=0, dy=-2.0, ha='center', va='top')
 
 
+# ── Pipe crossing bridges ──────────────────────────────────────────────────
+# P-04 tray drain discharge runs horizontally at TRAY_DISCH_Z and crosses
+# the P-03 waste discharge vertical riser at WASTE_RISER_X.
+draw_pipe_bridge(ax, WASTE_RISER_X, TRAY_DISCH_Z, OD_H, direction="h")
+
+# P-04 tray drain vertical drop to DV-02 crosses the waste 1" discharge
+# trunk running horizontally at WASTE_DISCH_Z - 15.
+draw_pipe_bridge(ax, DV02_X, WASTE_DISCH_Z - 15, OD_1, direction="v")
+
+# The P-04 suction riser (vertical) may cross the waste discharge trunk
+# if p04_in_x is in range — check and add bridge.
+if PIPE_ENTRY_X < p04_in_x < WASTE_RISER_X:
+    draw_pipe_bridge(ax, p04_in_x, WASTE_DISCH_Z - 15, OD_1, direction="v")
+
+
 # ── Flow direction arrows ────────────────────────────────────────────────────
 arrow_style = dict(arrowstyle="-|>", lw=1.5, mutation_scale=10)
 
@@ -665,6 +720,18 @@ ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z_TOP)),
             xytext=(sx(mid_brown + 30), sz(PORT_Z_TOP)),
             arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
 
+# Waste suction arrow (incoming from higher X at WASTE_HEADER_Z)
+mid_waste_in = (PIPE_EXIT_X + TRANS_X + 40) / 2
+ax.annotate("", xy=(sx(mid_waste_in - 30), sz(WASTE_HEADER_Z)),
+            xytext=(sx(mid_waste_in + 30), sz(WASTE_HEADER_Z)),
+            arrowprops=dict(**arrow_style, color=C_BLACK_SYS), zorder=12)
+
+# Waste discharge arrow (outgoing toward lower X)
+mid_waste_out = (WASTE_RISER_X + PIPE_ENTRY_X) / 2
+ax.annotate("", xy=(sx(mid_waste_out - 30), sz(WASTE_DISCH_Z - 15)),
+            xytext=(sx(mid_waste_out + 30), sz(WASTE_DISCH_Z - 15)),
+            arrowprops=dict(**arrow_style, color=C_BLACK_SYS), zorder=12)
+
 
 # ── Pipe entry/exit annotations ──────────────────────────────────────────────
 # Blue supply label at entry (higher X side)
@@ -681,6 +748,11 @@ ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_DISCH + 15),
 ax.text(sx(PIPE_EXIT_X + 5), sz(PORT_Z_TOP - 15),
         "FROM IBC-3\n(BROWN RECYCLE — 1\" TRUNK)", ha="right", va="top",
         fontsize=5, color=C_BROWN, style="italic")
+
+# Waste suction label (higher X side)
+ax.text(sx(PIPE_EXIT_X + 5), sz(WASTE_HEADER_Z + 15),
+        "FROM IBC-4\n(WASTE — 1\" TRUNK)", ha="right", va="bottom",
+        fontsize=5, color=C_BLACK_SYS, style="italic")
 
 
 # ── Dimensions ───────────────────────────────────────────────────────────────

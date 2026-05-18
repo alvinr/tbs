@@ -134,28 +134,28 @@ FRAME_LW = 2.0
 
 # Pump body dimensions — VERTICAL ORIENTATION (Shurflo 2088 datasheet)
 # Pump stands upright: long axis (218mm) vertical, width (127mm) horizontal
+# 127mm is the TOTAL width to the end of the threaded port fittings.
 # Ports on head end (top), facing LEFT and RIGHT (81mm apart in X)
-PUMP_BODY_W = 127    # 5.00" width in X (from datasheet)
+PUMP_BODY_W = 127    # 5.00" TOTAL width in X incl. port threads (from datasheet)
 PUMP_BODY_H = 218    # 8.60" height in Z (long axis, from datasheet)
-PORT_SPACING = 81    # 3.20" between IN and OUT ports (left-right on head)
-PORT_STUB_L = 35     # port stub length (horizontal, shortened from 43mm)
-PORT_STUB_OD = 18    # 1/2" male thread visual diameter
+PORT_SPACING = 81    # 3.20" between IN and OUT port centers (left-right on head)
+PORT_OD = 18         # 1/2" male thread visual diameter
 
-# Frame much wider: 2 pumps (127mm each) + stubs (35mm × 4) + gaps + frame
-# [frame | margin | stub | P-01 body | stub | gap | stub | P-02 body | stub | margin | frame]
-# 25 + 20 + 35 + 127 + 35 + 60 + 35 + 127 + 35 + 20 + 25 = 544mm
-PUMP_GAP_X = 150      # gap between P-01 OUT stub and P-02 IN stub (clearance for elbows)
-PUMP_MARGIN_X = 20    # margin from frame inner edge to first port stub
-FRAME_W = 2 * ANGLE_W + 2 * PUMP_MARGIN_X + 2 * (PUMP_BODY_W + 2 * PORT_STUB_L) + PUMP_GAP_X
+# Frame: 2 pumps (127mm each, ports included) + gaps + frame
+# [frame | margin | P-01 (127mm incl ports) | gap | P-02 (127mm incl ports) | margin | frame]
+# 25 + 20 + 127 + 150 + 127 + 20 + 25 = 494mm
+PUMP_GAP_X = 150      # gap between P-01 and P-02 (clearance for pipe elbows)
+PUMP_MARGIN_X = 20    # margin from frame inner edge to pump body edge
+FRAME_W = 2 * ANGLE_W + 2 * PUMP_MARGIN_X + 2 * PUMP_BODY_W + PUMP_GAP_X
 FRAME_X = PUMP_X + (PUMP_W - FRAME_W) // 2  # centered within pump zone
 
 # Frame tall enough for one row of vertical pumps (218mm) + pipe headers above
 FRAME_Z_HI = FRAME_Z_LO + PUMP_BODY_H + 2 * ANGLE_W + 60  # body + frame + clearance
 FRAME_H = FRAME_Z_HI - FRAME_Z_LO
 
-# Pump X positions (left edge of body, accounting for stubs + margins)
-P01_X = FRAME_X + ANGLE_W + PUMP_MARGIN_X + PORT_STUB_L
-P02_X = P01_X + PUMP_BODY_W + 2 * PORT_STUB_L + PUMP_GAP_X
+# Pump X positions (left edge of body)
+P01_X = FRAME_X + ANGLE_W + PUMP_MARGIN_X
+P02_X = P01_X + PUMP_BODY_W + PUMP_GAP_X
 P03_X = P01_X   # stacked below P-01
 P04_X = P02_X   # stacked below P-02
 
@@ -349,10 +349,11 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
     """Draw a single Shurflo 2088 pump in vertical orientation.
 
     px, pz: bottom-left corner of pump body in mm.
-    Ports face LEFT (IN, higher X) and RIGHT (OUT, lower X) from the head.
-    Returns: (in_x, in_z, out_x, out_z) — port stub end centers.
+    127mm width includes port threads at each end.
+    Ports face LEFT (OUT, lower X) and RIGHT (IN, higher X) from the head.
+    Returns: (in_x, in_z, out_x, out_z) — port connection point centers.
     """
-    # Pump body rectangle (127mm W × 218mm H, vertical)
+    # Pump body rectangle (127mm W × 218mm H, vertical — includes ports)
     ax.add_patch(plt.Rectangle((sx(px), sz(pz)),
                  PUMP_BODY_W / SC, PUMP_BODY_H / SC,
                  fc=color, ec=C_FRAME, lw=1.5, alpha=0.85, zorder=5))
@@ -370,29 +371,23 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
     # Port Z position near the head (top of body)
     port_z = pz + PUMP_BODY_H - PORT_Z_OFFSET
 
-    # IN port: higher X side (stub extends to the right toward IBCs)
-    in_x_base = px + PUMP_BODY_W         # right edge of body
-    in_x_end = in_x_base + PORT_STUB_L   # end of stub
-    ax.add_patch(plt.Rectangle(
-        (sx(in_x_base), sz(port_z - PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC, PORT_STUB_OD / SC,
-        fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax.text(sx(in_x_end + 5), sz(port_z), "IN",
+    # IN port: higher X side (right edge of 127mm body)
+    in_x = px + PUMP_BODY_W
+    ax.add_patch(plt.Circle((sx(in_x), sz(port_z)), PORT_OD / 2 / SC,
+                 fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
+    ax.text(sx(in_x + 8), sz(port_z), "IN",
             ha="left", va="center",
             fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
 
-    # OUT port: lower X side (stub extends to the left)
-    out_x_base = px                      # left edge of body
-    out_x_end = out_x_base - PORT_STUB_L # end of stub
-    ax.add_patch(plt.Rectangle(
-        (sx(out_x_end), sz(port_z - PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC, PORT_STUB_OD / SC,
-        fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax.text(sx(out_x_end - 5), sz(port_z), "OUT",
+    # OUT port: lower X side (left edge of 127mm body)
+    out_x = px
+    ax.add_patch(plt.Circle((sx(out_x), sz(port_z)), PORT_OD / 2 / SC,
+                 fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
+    ax.text(sx(out_x - 8), sz(port_z), "OUT",
             ha="right", va="center",
             fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
 
-    return in_x_end, port_z, out_x_end, port_z
+    return in_x, port_z, out_x, port_z
 
 
 # Draw P-01 and P-02 (solid — visible in elevation)
@@ -697,7 +692,7 @@ leader(ax, sx(acc_cx), sz(ACC_Z + ACC_H + 15),
 # Pump spec (general — one callout for all)
 leader(ax, sx(P01_X + PUMP_BODY_W / 2), sz(P01_Z + PUMP_BODY_H / 2),
        sx(P01_X - 80), sz(P01_Z + PUMP_BODY_H / 2 + 40),
-       "ALL PUMPS: SHURFLO 2088\n12V DC, 3.5 GPM, 45 PSI\n218×127×113mm BODY\n1/2\"-14 PORTS, 81mm APART", fs=5.5)
+       "ALL PUMPS: SHURFLO 2088\n12V DC, 3.5 GPM, 45 PSI\n218H × 127W × 113D mm\n(127mm INCL. PORT THREADS)", fs=5.5)
 
 # Wall bracket
 leader(ax, sx(FRAME_X - BRACKET_W / 2), sz(FRAME_Z_LO + 40 + BRACKET_H / 2),
@@ -720,7 +715,7 @@ leader(ax, sx(manif_label_x), sz(HEADER_Z_BLUE_SUC - 8),
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
     "1. All pumps: Shurflo 2088-554-144, 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm.",
-    "2. Pump body: 218mm L × 127mm W × 113mm H. Vertical orientation, ports face L/R.",
+    "2. Pump body: 218mm H × 127mm W (incl. port threads) × 113mm D. Vertical, ports face L/R.",
     "3. TRUNK pipe: 1\" HDPE Sch40 (OD 33mm, wall 4mm) — IBC runs, filter skid, spray bar.",
     "4. MANIFOLD pipe: 1/2\" HDPE Sch40 (OD 21mm, wall 3mm) — matches pump ports, no reducers at pumps.",
     "5. 1\"→1/2\" bushing reducers at manifold entry/exit points (4 total, marked ▷◁ on drawing).",
@@ -1027,26 +1022,21 @@ def draw_pump_4(ax_p, px, pz, label, sublabel, color=C_PUMP_BODY):
               sublabel, ha="center", va="top",
               fontsize=5, color=C_TEXT, style="italic", zorder=6)
     port_z = pz + PUMP_BODY_H - PORT_Z_OFFSET
-    # IN port stub (higher X, right)
-    in_x_base = px + PUMP_BODY_W
-    in_x_end = in_x_base + PORT_STUB_L
-    ax_p.add_patch(plt.Rectangle(
-        (sx(in_x_base), sz(port_z - PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC, PORT_STUB_OD / SC,
-        fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax_p.text(sx(in_x_end + 5), sz(port_z), "IN",
+    # IN port (higher X, right edge of 127mm body)
+    in_x = px + PUMP_BODY_W
+    ax_p.add_patch(plt.Circle((sx(in_x), sz(port_z)), PORT_OD / 2 / SC,
+                   fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
+    ax_p.text(sx(in_x + 8), sz(port_z), "IN",
               ha="left", va="center",
               fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
-    # OUT port stub (lower X, left)
-    out_x_end = px - PORT_STUB_L
-    ax_p.add_patch(plt.Rectangle(
-        (sx(out_x_end), sz(port_z - PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC, PORT_STUB_OD / SC,
-        fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax_p.text(sx(out_x_end - 5), sz(port_z), "OUT",
+    # OUT port (lower X, left edge of 127mm body)
+    out_x = px
+    ax_p.add_patch(plt.Circle((sx(out_x), sz(port_z)), PORT_OD / 2 / SC,
+                   fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
+    ax_p.text(sx(out_x - 8), sz(port_z), "OUT",
               ha="right", va="center",
               fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
-    return in_x_end, port_z, out_x_end, port_z
+    return in_x, port_z, out_x, port_z
 
 p03_in_x, p03_port_z, p03_out_x, _ = draw_pump_4(ax4, P03_X, P03_Z, "P-03", "WASTE EVACUATION")
 p04_in_x, p04_port_z, p04_out_x, _ = draw_pump_4(ax4, P04_X, P04_Z, "P-04", "TRAY DRAIN")
@@ -1307,8 +1297,8 @@ pumps_ghost = [
 def _plan_pump_ports(pcx, pyd):
     """Return (in_x, in_yd, out_x, out_yd) for plan view port positions."""
     port_yd = pyd + PP_D / 2
-    in_x = pcx + PP_W / 2 + PORT_STUB_L   # right side
-    out_x = pcx - PP_W / 2 - PORT_STUB_L  # left side
+    in_x = pcx + PP_W / 2    # right edge of body (port included in 127mm)
+    out_x = pcx - PP_W / 2   # left edge of body
     return in_x, port_yd, out_x, port_yd
 
 # Draw ghost pumps first (lower zorder)
@@ -1340,22 +1330,16 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D + 8),
              psub, ha="center", va="top",
              fontsize=4.5, color=pcolor, fontweight="bold", zorder=6)
-    # Port stubs — drawn as short rectangles on LEFT and RIGHT sides
+    # Port indicators — circles at body edges (ports within 127mm envelope)
     p_in_x, p_in_yd, p_out_x, p_out_yd = _plan_pump_ports(pcx, pyd)
-    # IN stub (right side)
-    ax3.add_patch(plt.Rectangle(
-        (sp_x(pcx + PP_W / 2), sp_y(p_in_yd + PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC_B, PORT_STUB_OD / SC_B,
-        fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
-    # OUT stub (left side)
-    ax3.add_patch(plt.Rectangle(
-        (sp_x(pcx - PP_W / 2 - PORT_STUB_L), sp_y(p_out_yd + PORT_STUB_OD / 2)),
-        PORT_STUB_L / SC_B, PORT_STUB_OD / SC_B,
-        fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
+    ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)),
+                  PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
+    ax3.add_patch(plt.Circle((sp_x(p_out_x), sp_y(p_out_yd)),
+                  PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
     # Port labels
-    ax3.text(sp_x(p_in_x + 5), sp_y(p_in_yd), "IN", ha="left", va="center",
+    ax3.text(sp_x(p_in_x + 15), sp_y(p_in_yd), "IN", ha="left", va="center",
              fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
-    ax3.text(sp_x(p_out_x - 5), sp_y(p_out_yd), "OUT", ha="right", va="center",
+    ax3.text(sp_x(p_out_x - 15), sp_y(p_out_yd), "OUT", ha="right", va="center",
              fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
 
 # ── ACC-01 from above ───────────────────────────────────────────────────────

@@ -82,22 +82,22 @@ def sz(z_mm):
 # X horizontal (mirrored), Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(24, 26))
+fig = plt.figure(figsize=(24, 30))
 fig.patch.set_facecolor(C_BG)
 gs = GridSpec(3, 2, figure=fig, width_ratios=[1.6, 1],
-             height_ratios=[1.2, 1.0, 1], wspace=0.05, hspace=0.08)
+             height_ratios=[1, 1, 0.85], wspace=0.05, hspace=0.08)
 
-ax = fig.add_subplot(gs[0, 0])   # P-01/P-02 elevation (top left)
+ax = fig.add_subplot(gs[0, 0])   # P-01/P-02 elevation (row 0, left)
 ax.set_facecolor(C_BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-ax2 = fig.add_subplot(gs[0, 1])  # Detail A — cross-section (top right)
+ax2 = fig.add_subplot(gs[0, 1])  # Detail A — cross-section (row 0, right)
 ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
 
-ax4 = fig.add_subplot(gs[1, :])  # P-03/P-04 elevation (full middle row)
+ax4 = fig.add_subplot(gs[1, 0])  # P-03/P-04 elevation (row 1, left — same column as ax)
 ax4.set_facecolor(C_BG)
 ax4.set_aspect("equal")
 ax4.axis("off")
@@ -107,12 +107,20 @@ ax3.set_facecolor(C_BG)
 ax3.set_aspect("equal")
 ax3.axis("off")
 
-# Axis limits — manifold zone (wider frame extends to ~X=3140)
-ax.set_xlim(sx(2200) - 1, sx(3400) + 1)
-ax.set_ylim(sz(-50) - 1, sz(950) + 2)
+# Axis limits — shared between both elevation panels for alignment
+ELEV_XLIM = (sx(2200) - 1, sx(3400) + 1)
+ELEV_YLIM = (sz(-130) - 1, sz(750) + 1)
+ax.set_xlim(*ELEV_XLIM)
+ax.set_ylim(*ELEV_YLIM)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
+
+# Panel title
+ax.text(sx(PUMP_X + PUMP_W / 2), sz(730),
+        "P-01 / P-02 ELEVATION — BLUE SUPPLY & BROWN RECYCLE",
+        ha="center", va="top", fontsize=9, fontweight="bold",
+        color="#1A237E", zorder=10)
 
 # Reset label registry for collision avoidance
 reset_label_registry()
@@ -920,9 +928,9 @@ ax2.text(sa_y(70), sa_z(-95),
 # ghosted.  All pipe connections for the waste and tray drain circuits.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# ax4 uses the same coordinate functions (sx, sz) and scale as the main elevation
-ax4.set_xlim(sx(2200) - 1, sx(3400) + 1)
-ax4.set_ylim(sz(-120) - 1, sz(750) + 1)
+# ax4 uses the same coordinate functions (sx, sz) and identical limits as ax
+ax4.set_xlim(*ELEV_XLIM)
+ax4.set_ylim(*ELEV_YLIM)
 ax4.invert_xaxis()
 reset_label_registry()
 

@@ -430,7 +430,7 @@ PIPE_ENTRY_X = FRAME_X - 150           # pipes exit toward cargo door (lower X)
 ELBOW_OFFSET = 40  # offset from port for visible 90° elbow
 
 # Header Z heights above top-row pump bodies
-HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 60   # Blue suction header
+HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 160  # Blue suction header (+100mm clearance)
 HEADER_Z_BLUE_DISCH  = PUMP_TOP_Z_TOP + 30   # Blue discharge header
 HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
 

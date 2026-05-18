@@ -959,17 +959,46 @@ PP_W = 90     # pump plan width in X (shorter in plan than elevation)
 PP_D = 50     # pump plan depth in Yd
 PP_PORT_R = 8  # port circle radius
 
-# Pump positions in plan (centered in their elevation X positions)
-# Each pump's center X matches its elevation position
-pumps_plan = [
+# Pumps are stacked vertically (Z): P-01 above P-03, P-02 above P-04.
+# In plan view (looking down) only top-row pumps are visible; bottom-row
+# are ghosted (dashed outline, faded fill) offset slightly in Yd.
+GHOST_ALPHA = 0.2
+GHOST_LW = 1.0
+GHOST_LS = (0, (4, 3))  # dashed
+GHOST_YD_OFFSET = 8     # slight offset so ghost outline peeks out
+
+# Top row (solid — visible from above)
+pumps_solid = [
     (P01_X + PUMP_BODY_W / 2, 25,  "P-01", C_BLUE,       "BLUE SUPPLY"),
     (P02_X + PUMP_BODY_W / 2, 25,  "P-02", C_BROWN,      "BROWN RECYCLE"),
-    (P03_X + PUMP_BODY_W / 2, 75,  "P-03", C_BLACK_SYS,  "WASTE EVAC"),
-    (P04_X + PUMP_BODY_W / 2, 75,  "P-04", C_BLACK_SYS,  "TRAY DRAIN"),
+]
+# Bottom row (ghost — hidden below top row)
+pumps_ghost = [
+    (P03_X + PUMP_BODY_W / 2, 25 + GHOST_YD_OFFSET, "P-03", C_BLACK_SYS,  "WASTE EVAC\n(BELOW P-01)"),
+    (P04_X + PUMP_BODY_W / 2, 25 + GHOST_YD_OFFSET, "P-04", C_BLACK_SYS,  "TRAY DRAIN\n(BELOW P-02)"),
 ]
 
-for pcx, pyd, plabel, pcolor, psub in pumps_plan:
-    # Pump body rectangle (from above)
+# Draw ghost pumps first (lower zorder)
+for pcx, pyd, plabel, pcolor, psub in pumps_ghost:
+    ax3.add_patch(plt.Rectangle(
+        (sp_x(pcx - PP_W / 2), sp_y(pyd + PP_D)),
+        PP_W / SC_B, PP_D / SC_B,
+        fc=pcolor, ec=pcolor, lw=GHOST_LW, alpha=GHOST_ALPHA,
+        ls=GHOST_LS, zorder=3))
+    ax3.text(sp_x(pcx), sp_y(pyd + PP_D / 2),
+             plabel, ha="center", va="center",
+             fontsize=6, color=pcolor, fontweight="bold", alpha=0.4, zorder=4)
+    # Ports — ghost
+    in_x = pcx + PP_W / 2
+    out_x = pcx - PP_W / 2
+    port_yd = pyd + PP_D / 2
+    ax3.add_patch(plt.Circle((sp_x(in_x), sp_y(port_yd)), PP_PORT_R / SC_B,
+                  fc="white", ec=pcolor, lw=0.8, alpha=GHOST_ALPHA, zorder=3))
+    ax3.add_patch(plt.Circle((sp_x(out_x), sp_y(port_yd)), PP_PORT_R / SC_B,
+                  fc="white", ec=pcolor, lw=0.8, alpha=GHOST_ALPHA, zorder=3))
+
+# Draw solid pumps on top
+for pcx, pyd, plabel, pcolor, psub in pumps_solid:
     ax3.add_patch(plt.Rectangle(
         (sp_x(pcx - PP_W / 2), sp_y(pyd + PP_D)),
         PP_W / SC_B, PP_D / SC_B,
@@ -977,16 +1006,13 @@ for pcx, pyd, plabel, pcolor, psub in pumps_plan:
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D / 2),
              plabel, ha="center", va="center",
              fontsize=7, color="white", fontweight="bold", zorder=6)
-    # Sub-label
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D + 8),
              psub, ha="center", va="top",
              fontsize=4.5, color=pcolor, fontweight="bold", zorder=6)
-
-    # Inlet port (higher X side) and outlet port (lower X side)
+    # Ports — solid
     in_x = pcx + PP_W / 2
     out_x = pcx - PP_W / 2
     port_yd = pyd + PP_D / 2
-
     ax3.add_patch(plt.Circle((sp_x(in_x), sp_y(port_yd)), PP_PORT_R / SC_B,
                   fc="white", ec=C_FRAME, lw=1.0, zorder=7))
     ax3.add_patch(plt.Circle((sp_x(out_x), sp_y(port_yd)), PP_PORT_R / SC_B,
@@ -1000,7 +1026,7 @@ for pcx, pyd, plabel, pcolor, psub in pumps_plan:
 # Circular pressure tank between pump rows
 ACC_PLAN_R = 30   # tank radius in plan
 acc_plan_cx = FRAME_X + FRAME_W / 2
-acc_plan_cy = (25 + PP_D + 75) / 2  # between top and bottom rows
+acc_plan_cy = 25 + PP_D / 2         # at pump row center Yd
 ax3.add_patch(plt.Circle((sp_x(acc_plan_cx), sp_y(acc_plan_cy)),
               ACC_PLAN_R / SC_B, fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
 ax3.text(sp_x(acc_plan_cx), sp_y(acc_plan_cy), "ACC-01",
@@ -1204,50 +1230,37 @@ ax3.text(sp_x(p02_out_x), sp_y(-40),
          "RISER TO\nFILTER SKID",
          ha="center", va="top", fontsize=5, color=C_BROWN, fontweight="bold")
 
-# ── Waste suction: IBC-4 → P-03 IN ────────────────────────────────────────
-# Route below pump row (Yd=135) to avoid crossing P-04, then turn up to port
-draw_pipe_path_plan(ax3,
-    [EXIT_X_R, p03_in_x, p03_in_x],
-    [135, 135, ROW_BOT_YD],
-    OD, WALL, fc=C_BLACK_SYS, zorder=4)
-ax3.text(sp_x(EXIT_X_R + 10), sp_y(135),
-         "FROM IBC-4\n(WASTE SUCTION)",
-         ha="left", va="center", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+# ── Ghost pipes: P-03 and P-04 connections (hidden below top row) ──────────
+# These pumps are stacked below P-01/P-02; shown as dashed ghost lines.
+GHOST_PIPE_ALPHA = 0.3
+GHOST_PIPE_LW = 2.0
 
-# ── Waste discharge: P-03 OUT → ext drain (lower X) ───────────────────────
-# Route below the pump row to avoid overlapping tray drain discharge
-WASTE_OUT_YD = 140
-draw_pipe_path_plan(ax3,
-    [p03_out_x, p03_out_x, EXIT_X_L],
-    [ROW_BOT_YD, WASTE_OUT_YD, WASTE_OUT_YD],
-    OD, WALL, fc=C_BLACK_SYS, zorder=4)
-ax3.text(sp_x(EXIT_X_L - 10), sp_y(WASTE_OUT_YD),
-         "TO EXT.\nDRAIN",
-         ha="right", va="center", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+def ghost_pipe(x_pts, yd_pts, color):
+    """Draw a ghosted pipe as a dashed centerline (not filled parallel walls)."""
+    ax3.plot([sp_x(x) for x in x_pts], [sp_y(y) for y in yd_pts],
+             color=color, lw=GHOST_PIPE_LW, ls=(0, (5, 4)),
+             alpha=GHOST_PIPE_ALPHA, zorder=3)
 
-# ── Tray drain suction: from tray sump (high Yd) → P-04 IN ────────────────
-# Comes from walkway side, routes to P-04 IN port (higher X side)
-draw_pipe_path_plan(ax3,
-    [p04_in_x, p04_in_x],
-    [EXIT_YD_BOT, ROW_BOT_YD],
-    OD, WALL, fc=C_BLACK_SYS, zorder=4)
-ax3.text(sp_x(p04_in_x + 10), sp_y(EXIT_YD_BOT + 15),
-         "FROM TRAY\nSUMP",
-         ha="left", va="top", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+def ghost_label(x, yd, text, color, ha="left", va="center"):
+    ax3.text(sp_x(x), sp_y(yd), text, ha=ha, va=va,
+             fontsize=5, color=color, fontweight="bold", alpha=0.4)
 
-# ── Tray drain discharge: P-04 OUT → DV-02 → IBC-3 or IBC-4 ──────────────
-draw_pipe_path_plan(ax3,
-    [p04_out_x, dv02_plan_x + dv_plan_r],
-    [ROW_BOT_YD, dv02_plan_yd],
-    OD, WALL, fc=C_BROWN, zorder=4)
-# DV-02 → exit left
-draw_pipe_path_plan(ax3,
-    [dv02_plan_x - dv_plan_r, EXIT_X_L],
-    [dv02_plan_yd, dv02_plan_yd],
-    OD, WALL, fc=C_BROWN, zorder=4)
-ax3.text(sp_x(EXIT_X_L - 10), sp_y(dv02_plan_yd),
-         "VIA DV-02 TO\nIBC-3 or IBC-4",
-         ha="right", va="center", fontsize=5, color=C_BROWN, fontweight="bold")
+# Waste suction: IBC-4 → P-03 IN (ghost)
+ghost_pipe([EXIT_X_R, p03_in_x, p03_in_x], [135, 135, ROW_TOP_YD + GHOST_YD_OFFSET], C_BLACK_SYS)
+ghost_label(EXIT_X_R + 10, 135, "FROM IBC-4\n(WASTE SUCTION)", C_BLACK_SYS)
+
+# Waste discharge: P-03 OUT → ext drain (ghost)
+ghost_pipe([p03_out_x, p03_out_x, EXIT_X_L], [ROW_TOP_YD + GHOST_YD_OFFSET, 140, 140], C_BLACK_SYS)
+ghost_label(EXIT_X_L - 10, 140, "TO EXT.\nDRAIN", C_BLACK_SYS, ha="right")
+
+# Tray drain suction: tray sump → P-04 IN (ghost)
+ghost_pipe([p04_in_x, p04_in_x], [EXIT_YD_BOT, ROW_TOP_YD + GHOST_YD_OFFSET], C_BLACK_SYS)
+ghost_label(p04_in_x + 10, EXIT_YD_BOT + 15, "FROM TRAY\nSUMP", C_BLACK_SYS, ha="left", va="top")
+
+# Tray drain discharge: P-04 OUT → DV-02 → IBC-3/IBC-4 (ghost)
+ghost_pipe([p04_out_x, dv02_plan_x + dv_plan_r], [ROW_TOP_YD + GHOST_YD_OFFSET, dv02_plan_yd], C_BROWN)
+ghost_pipe([dv02_plan_x - dv_plan_r, EXIT_X_L], [dv02_plan_yd, dv02_plan_yd], C_BROWN)
+ghost_label(EXIT_X_L - 10, dv02_plan_yd, "VIA DV-02 TO\nIBC-3 or IBC-4", C_BROWN, ha="right")
 
 # ── BV-01 and BV-02 symbols in plan ─────────────────────────────────────────
 # (positions defined above with pipe routing constants)
@@ -1270,18 +1283,20 @@ ax3.add_patch(plt.Polygon(list(zip(bv2_pts_x, bv2_pts_y)),
 ax3.text(sp_x(bv02_plan_x), sp_y(bv02_plan_yd - 18), "BV-02",
          ha="center", va="top", fontsize=5, color=C_VALVE, fontweight="bold")
 
-# ── DV-02 symbol in plan ────────────────────────────────────────────────────
+# ── DV-02 symbol in plan (ghost — on P-04 discharge line) ──────────────────
 dv_pts_x = [sp_x(dv02_plan_x), sp_x(dv02_plan_x + dv_plan_r),
             sp_x(dv02_plan_x), sp_x(dv02_plan_x - dv_plan_r)]
 dv_pts_y = [sp_y(dv02_plan_yd + dv_plan_r), sp_y(dv02_plan_yd),
             sp_y(dv02_plan_yd - dv_plan_r), sp_y(dv02_plan_yd)]
 ax3.add_patch(plt.Polygon(list(zip(dv_pts_x, dv_pts_y)),
-              fc="white", ec=C_FRAME, lw=1.5, zorder=9))
+              fc="white", ec=C_FRAME, lw=1.0, ls=GHOST_LS,
+              alpha=GHOST_ALPHA, zorder=3))
 ax3.text(sp_x(dv02_plan_x), sp_y(dv02_plan_yd), "3W",
          ha="center", va="center", fontsize=4, fontweight="bold",
-         color=C_FRAME, zorder=10)
+         color=C_FRAME, alpha=0.4, zorder=4)
 ax3.text(sp_x(dv02_plan_x), sp_y(dv02_plan_yd - 20), "DV-02",
-         ha="center", va="top", fontsize=5, color=C_FRAME, fontweight="bold")
+         ha="center", va="top", fontsize=5, color=C_FRAME,
+         fontweight="bold", alpha=0.4)
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
 # Frame width

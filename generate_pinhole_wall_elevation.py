@@ -635,18 +635,36 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 
 # P-02 OUT → left elbow → up past frame top (+50mm) → horizontal to RISER_X
-RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top — shows 1/2→1" transition
+#          → 90° turn up (still 1/2") → reducer → 1" riser to F1
+RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top
+REDUCER_STUB = 40                      # 1/2" vertical stub before reducer
+REDUCER_H = 25                         # reducer trapezoid height
 draw_pipe_path(ax,
     [p02_out_x, p02_out_x - ELB, p02_out_x - ELB, RISER_X],
     [p02_port_z, p02_port_z, RISER_ENTRY_Z, RISER_ENTRY_Z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1" riser: RISER_X → filter header → F1 IN
+# 1/2" vertical stub up from the 90° turn
+REDUCER_BOT_Z = RISER_ENTRY_Z + REDUCER_STUB
+draw_pipe_path(ax,
+    [RISER_X, RISER_X],
+    [RISER_ENTRY_Z, REDUCER_BOT_Z],
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
+# 1/2→1" reducer bushing (trapezoid)
+REDUCER_TOP_Z = REDUCER_BOT_Z + REDUCER_H
+red_pts = [
+    (sx(RISER_X - OD_H / 2), sz(REDUCER_BOT_Z)),
+    (sx(RISER_X + OD_H / 2), sz(REDUCER_BOT_Z)),
+    (sx(RISER_X + OD / 2),   sz(REDUCER_TOP_Z)),
+    (sx(RISER_X - OD / 2),   sz(REDUCER_TOP_Z)),
+]
+ax.add_patch(plt.Polygon(red_pts, fc=C_BROWN, ec=C_BROWN_EC, lw=0.6, zorder=Z_BROWN))
+# 1" riser: from reducer top → filter header → F1 IN
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in, f1_in],
-    [RISER_ENTRY_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    [REDUCER_TOP_Z, HEADER_Z, HEADER_Z, PORT_Z],
     OD, PIPE_WALL, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=6)
-ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
-            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 20)),
+ax.annotate("", xy=(sx(RISER_X), sz(REDUCER_TOP_Z + 100)),
+            xytext=(sx(RISER_X), sz(REDUCER_TOP_Z + 20)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
 
 # (P-03 relocated to IBC corridor — no waste pipes on manifold)

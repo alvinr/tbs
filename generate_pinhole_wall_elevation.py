@@ -757,42 +757,16 @@ BV06_R = 25                   # valve body radius for symbol
 
 # Pipe: Blue discharge tee → riser up → horizontal → valve gap → drop to tap
 # TAP riser crosses Blue suction trunk at Z=PM_HEADER_Z_BLUE_SUC.
-# Same-color pipe crossing: semicircular bridge loop on rear pipe.
-# The rear pipe breaks at the crossing and a semicircular arc loops to one
-# side, clearly showing the pipe passes behind (not connects to) the front pipe.
-CROSS_GAP = 3  # mm clearance each side of front pipe at crossing
-_gap_half = OD_H / 2.0 + CROSS_GAP  # half-gap sized to front pipe (1/2")
-_bridge_r_mm = 40  # bridge arc radius (mm) — large enough to read at this scale
-# Rear pipe: below crossing (stops short of front pipe)
+# Crossing convention: gap in rear pipe (no junction dot = not connected).
+# The real tee at (TAP_TEE_X, PM_HEADER_Z_BLUE_DISCH) gets a junction dot.
+CROSS_GAP = 25  # mm clearance each side — wide gap for clear visual break
+_gap_half = OD_H / 2.0 + CROSS_GAP  # half-gap sized to front pipe + margin
+# Rear pipe: below crossing (TAP_TEE_X, discharge Z → gap below suction Z)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X],
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_SUC - _gap_half],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
-# Bridge arc: semicircular loop drawn as explicit points.
-# The rear (vertical) pipe loops to the right in drawing space (= lower X
-# physical, toward cargo door) to pass behind the front (horizontal) pipe.
-# numpy generates the semicircle points in mm, then we convert to drawing coords.
-_n_arc = 30
-_arc_angles = [math.pi / 2 - i * math.pi / (_n_arc - 1) for i in range(_n_arc)]
-# Center of crossing in physical mm
-_cross_x = TAP_TEE_X
-_cross_z = PM_HEADER_Z_BLUE_SUC
-# Arc points loop to lower-X side (= rightward in drawing due to mirror).
-# theta=+pi/2 → top (0, +r), theta=0 → right in physical (-r in drawing),
-# theta=-pi/2 → bottom (0, -r)
-_arc_x_mm = [_cross_x - _bridge_r_mm * math.cos(a) for a in _arc_angles]
-_arc_z_mm = [_cross_z + _bridge_r_mm * math.sin(a) for a in _arc_angles]
-_arc_dx = [sx(x) for x in _arc_x_mm]
-_arc_dz = [sz(z) for z in _arc_z_mm]
-# White mask first — wide stroke to erase front pipe behind bridge
-ax.plot(_arc_dx, _arc_dz, color="white", linewidth=5, solid_capstyle="round", zorder=8.5)
-# Pipe outline (outer edge)
-ax.plot(_arc_dx, _arc_dz, color=C_BLUE_EC, linewidth=2.4, solid_capstyle="butt", zorder=9)
-# Pipe fill (Blue)
-ax.plot(_arc_dx, _arc_dz, color=C_BLUE, linewidth=1.6, solid_capstyle="butt", zorder=9)
-# Bore (white center line)
-ax.plot(_arc_dx, _arc_dz, color="white", linewidth=0.6, solid_capstyle="butt", zorder=9)
-# Rear pipe: above crossing (resumes after bridge)
+# Rear pipe: above crossing (gap above suction Z → BV-06)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X, BV06_X - BV06_R],
     [PM_HEADER_Z_BLUE_SUC + _gap_half, TAP_BRANCH_Z, TAP_BRANCH_Z],
@@ -839,6 +813,20 @@ equip_block(SHELF_X_L, SHELF_H - SHELF_T, SHELF_X_R - SHELF_X_L, SHELF_T,
 ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
         "CHEM SHELF (Yd=300, BEHIND)", ha="center", va="top",
         fontsize=4, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# JUNCTION DOTS — filled circles at every real pipe tee/branch connection.
+# Convention: dot = pipes connect; no dot (gap only) = pipes merely cross.
+# ═══════════════════════════════════════════════════════════════════════════
+JD_R = 18  # junction dot radius (mm) — bold, ~2× pipe OD for visibility
+
+# TAP-01 branch tee off Blue discharge trunk
+ax.add_patch(plt.Circle((sx(TAP_TEE_X), sz(PM_HEADER_Z_BLUE_DISCH)),
+             JD_R * S, fc=C_BLUE, ec=C_BLUE_EC, lw=0.8, zorder=Z_BLUE + 1))
+
+# Tray drain suction tee at p04_in_x (vertical riser meets horizontal run)
+ax.add_patch(plt.Circle((sx(p04_in_x), sz(TRAY_DRAIN_Z)),
+             JD_R * S, fc=C_BLACK_SYS, ec=C_BLACK_EC, lw=0.8, zorder=Z_BLACK + 1))
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 5. DIMENSION LINES — key clearances and positions
@@ -928,7 +916,7 @@ for ix_mm, ilabel in items:
 # 7. INTERFERENCE NOTES
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
-    "1. All pipe: 1\" HDPE Sch40 (OD=33mm). Blue circuit in blue, Brown circuit in brown, Waste/Black in gray.",
+    "1. All internal pipe: ½\" HDPE (OD=21mm) except filter housings (1\" NPT). Blue circuit in blue, Brown in brown, Waste/Black in gray.",
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
@@ -936,6 +924,7 @@ notes = [
     "6. Battery right edge (X=2310) clears pinhole cone left boundary (X=2319 at Yd=0) by 9mm.",
     "7. Tray drain suction runs from sump (X=2399) to manifold frame bottom; DV-02 directs to IBC-3 or IBC-4.",
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
+    "9. PIPE CROSSING CONVENTION: ● filled dot = real connection (tee/branch). Gap without dot = pipes cross but do NOT connect.",
 ]
 note_y = 0.06
 for i, note in enumerate(notes):

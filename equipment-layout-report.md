@@ -71,7 +71,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 | Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
 | Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
-| Pump manifold (4 pumps, P-01–P-04) | 2,400–2,700 | 200–600 | Wall-bracket |
+| Pump manifold (3 pumps: P-01, P-02, P-04) | 2,400–2,700 | 200–600 | Wall-bracket |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
 
 ### 2.3 Optical Zone — X=150–4,649mm
@@ -248,11 +248,13 @@ replaced annually.
 All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
 runs through the optical zone.
 
-**Plumbing manifold:** 4-pump distribution header (P-01 Blue spray bar, P-02 Brown
-recycle, P-03 waste evacuation, P-04 tray sump pickup) wall-mounted at
-X=2,400–2,700mm, H=200–600mm. Hose runs drop vertically from manifold to IBCs
-in the right end zone. Maximum hose run: ~5.5m (manifold to Brown IBC at
-Yd=538mm — along pinhole wall then along right end wall).
+**Plumbing manifold:** 3-pump distribution header (P-01 Blue spray bar, P-02 Brown
+recycle, P-04 tray sump pickup) wall-mounted at X=2,400–2,700mm, H=200–600mm.
+P-03 (waste evacuation) is mounted separately in the IBC plumbing corridor on
+the D4 waste drain run, minimizing pipe length to the external drain port.
+Hose runs drop vertically from manifold to IBCs in the right end zone. Maximum
+hose run: ~5.5m (manifold to Brown IBC at Yd=538mm — along pinhole wall then
+along right end wall).
 
 **Electrical conduit:** 25mm PVC trunking, horizontal at H=1,800mm, along the
 full container length on the pinhole wall face. Branch drops at each circuit

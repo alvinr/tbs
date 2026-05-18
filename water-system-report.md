@@ -107,7 +107,7 @@ IBC-2 (600L) ──┘                                                      │
 
 - Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
-- ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off
+- ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
 - Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)
@@ -228,7 +228,7 @@ Instead of a through-floor drain fitting, the tray has a shallow sump well press
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
 | Container left end zone equipment (X=0–625) | Tray left edge at X=170 — extends into optical zone only | Clear |
-| Pump manifold (X=2,500–2,800, Yd=0, Z=200–600) | Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict | Clear |
+| Pump manifold (X=2,500–2,800, Yd=0, Z=200–600) — 3 pumps: P-01, P-02, P-04 | Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict | Clear |
 | Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 
@@ -303,7 +303,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 
 ### Pipe sizing
 
-Two pipe sizes are used: **1" trunk lines** for the long runs between IBCs, filter skid, and spray bar; **1/2" manifold pipe** for the short runs within the pump manifold frame. The 1/2" size matches the Shurflo 2088 pump ports (1/2"-14 male parallel thread), eliminating the need for reducer fittings at each pump — only four 1"→1/2" bushing reducers are needed at the manifold frame entry/exit points.
+Two pipe sizes are used: **1" trunk lines** for the long runs between IBCs, filter skid, and spray bar; **1/2" manifold pipe** for the short runs within the pump manifold frame. The 1/2" size matches the Shurflo 2088 pump ports (1/2"-14 male parallel thread), eliminating the need for reducer fittings at each pump — only three 1"→1/2" bushing reducers are needed at the manifold frame entry/exit points (P-01, P-02, P-04). P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.
 
 **Trunk lines (1" HDPE Sch 40):**
 
@@ -320,7 +320,7 @@ Two pipe sizes are used: **1" trunk lines** for the long runs between IBCs, filt
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| Pump headers and connections (all 4 pumps) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
+| Pump headers and connections (3 manifold pumps: P-01, P-02, P-04) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
 | ACC-01 inlet/outlet | Sch 40 | 1/2" nominal (OD 21mm) | 125 PSI min | HDPE |
 | BV-01/BV-02 manifold side | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
 | Tray drain suction (P-04) | Reinforced flex hose | 1/2" nominal | pump suction | HDPE/PVC braid |
@@ -348,7 +348,7 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 |------|-------------|-------------|---------|
 | P-01 Blue pump (Shurflo 2088) | 7.5 A @ 12V | 0.25 hr (15 min run) | 22.5 Wh |
 | P-02 Brown pump (Shurflo 2088) | 7.5 A @ 12V | 0.17 hr (10 min run) | 15.2 Wh |
-| P-03 Waste pump (Shurflo 2088) | 7.5 A @ 12V | intermittent (waste disposal only) | — |
+| P-03 Waste pump (Shurflo 2088) — *IBC corridor* | 7.5 A @ 12V | intermittent (waste disposal only) | — |
 | P-04 Tray drain transfer pump (Shurflo 2088) | 7.5 A @ 12V | 0.08 hr (5 min run) | 7.5 Wh |
 | pH meter | <0.1 A | — | <1 Wh |
 | **Total per print** | | | **~46 Wh** |
@@ -373,13 +373,14 @@ IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-j
 | Right end zone | Plumbing corridor | 4,674–5,893 | 1,046–1,316 | 0–2,020 |
 | Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 |
 | Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
-| Pinhole wall face | Pump manifold | 2,400–2,700 | Y=0 | 200–600 |
+| Pinhole wall face | Pump manifold (P-01, P-02, P-04) | 2,400–2,700 | Y=0 | 200–600 |
+| IBC plumbing corridor | P-03 waste pump (on D4 drain run) | 4,674–5,893 | 1,046–1,316 | ~200 |
 | Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m.
+**Hose routing:** Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the D4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).
 
 **External fill/drain ports:** Four 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:
 
@@ -410,10 +411,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | Amazon | $55–$70 | **$110–$140** |
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation — *mounted in IBC plumbing corridor on D4 drain run*) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift) | 1 | Amazon | $55–$70 | **$65** |
-| [SeaFlo pressure accumulator](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | 1 gal, 125 PSI, 1/2" NPT | 1 | Amazon | $25–$45 | **$35** |
-| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series | 3 | Amazon | $8–$12 | **$30** |
+| [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, 1/2" MNPT | 1 | Amazon | $25–$45 | **$35** |
+| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | **$40** |
 
 **Pump subtotal: ~$305–$355**
 
@@ -467,7 +468,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2,229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
 | [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2,200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Suction pickup for sump well, prevents debris and maintains prime | 1 | Amazon | $15–$25 | **$20** |
-| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | **$15** |
+| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold (P-04) | 1 | Amazon | $12–$20 | **$15** |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange bolts, 200mm spacing | 24 | McMaster-Carr | $0.50 each | **$12** |
 
@@ -506,7 +507,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
-| Pumps and accumulator (P-01, P-02, P-03, P-04) | $305 | $355 |
+| Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor) | $305 | $355 |
 | Filter skid (housings + cartridges) | $265 | $370 |
 | Valves and fittings (incl. S60×6 adapters, check valves) | $406 | $650 |
 | Pipe | $100 | $140 |

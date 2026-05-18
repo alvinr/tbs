@@ -179,6 +179,8 @@ PUMP_X     = 2500    # pump manifold left edge X (mm) — right of cone right bo
 PUMP_W     = 500     # pump manifold width (mm) — 127mm body incl. ports, 150mm gap
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
+# Note: P-03 (waste evacuation) relocated to IBC plumbing corridor on D4 drain run.
+# Pump manifold holds 3 pumps: P-01 (Blue), P-02 (Brown), P-04 (Tray drain).
 
 # ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────
 # Single ceiling-hung shelf for mixing cyanotype chemistry, coating muslin, and

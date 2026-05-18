@@ -32,7 +32,7 @@ See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 |---------|--------|-----------|-----------|
 | A | Ventilation fan — intake (6") | 60W | Continuous during processing |
 | B | Ventilation fan — exhaust (6") | 60W | Continuous during processing |
-| C | Water pumps P-01–P-04 (12V DC) | 100W | Intermittent (~30 min/print) |
+| C | Water pumps P-01–P-04 (12V DC; P-03 in IBC corridor) | 100W | Intermittent (~30 min/print) |
 | D | Safelight — interior + vestibule | 15W | Loading phase only (~45 min) |
 | E | Evaporative cooler (12V DC) | 80W | Continuous during operation |
 | F | Film plane actuators (optional) | 100W peak | Intermittent |
@@ -361,7 +361,7 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — intake | 5A | 16 AWG | ~3m |
 | B | Ventilation fan — exhaust (panel-mounted) | 5A | 16 AWG | ~8m + flex connector |
-| C | Water pumps P-01–P-04 | 15A | 14 AWG | ~5m |
+| C | Water pumps P-01–P-04 (P-03 in IBC corridor, longer run) | 15A | 14 AWG | ~5m (manifold) / ~8m (P-03) |
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
 | F | Film plane actuators (optional) | 20A | 12 AWG | ~6m |
@@ -449,5 +449,5 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans (4") | Replace with 6" units — same baffle design, same penetration locations |
 | 12V fuse block ($50 item in water system BOM) | Superseded by Blue Sea 5026 — consolidates all circuits in one panel |
 | Battery-powered safelight | Wired to circuit D — no separate battery required |
-| Water pump power (P-01–P-04) | Now circuit C on main fuse block — remove standalone 12V supply listed in water report |
+| Water pump power (P-01–P-04; P-03 relocated to IBC corridor) | Now circuit C on main fuse block — remove standalone 12V supply listed in water report. P-03 wire run is longer (~8m to IBC corridor) |
 | Container doors | Replaced by hinged drum panel — cargo doors removed from their hinges for transport |

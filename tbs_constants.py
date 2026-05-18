@@ -176,7 +176,7 @@ BA_H_LO    = 100     # battery bank bottom H (mm) — matches RAIL_OFF floor off
 BA_H_HI    = 600     # battery bank top H (mm)
 
 PUMP_X     = 2500    # pump manifold left edge X (mm) — right of cone right boundary (2479) + 21mm gap
-PUMP_W     = 300     # pump manifold width (mm)
+PUMP_W     = 640     # pump manifold width (mm) — widened for 150mm pump gap + elbow clearance
 PUMP_H_LO  = 200     # pump manifold bottom H (mm)
 PUMP_H_HI  = 600     # pump manifold top H (mm)
 

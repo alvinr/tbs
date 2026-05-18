@@ -585,9 +585,16 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # 1/2": frame edge → horizontal across frame → 90° drop → P-01 IN
+# Split at Blue discharge crossing (Z=PM_HEADER_Z_BLUE_DISCH): suction drop
+# breaks flush against the discharge pipe (both Blue, discharge drawn later = front)
+_suc_gap = OD_H / 2.0
 draw_pipe_path(ax,
-    [PM_FRAME_R, p01_in_x + ELB, p01_in_x + ELB, p01_in_x],
-    [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC, p01_port_z, p01_port_z],
+    [PM_FRAME_R, p01_in_x + ELB, p01_in_x + ELB],
+    [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_DISCH + _suc_gap],
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
+draw_pipe_path(ax,
+    [p01_in_x + ELB, p01_in_x + ELB, p01_in_x],
+    [PM_HEADER_Z_BLUE_DISCH - _suc_gap, p01_port_z, p01_port_z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 
 # P-01 OUT → 90° up → Blue discharge header → ACC-01 → BV-02
@@ -637,14 +644,26 @@ draw_pipe_path(ax,
 # P-02 OUT → left elbow → up past frame top (+50mm) → horizontal to RISER_X
 #          → 90° turn up → 1/2" riser all the way to F1 header
 RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top
+# Split at Blue discharge crossing (Z=PM_HEADER_Z_BLUE_DISCH): Brown breaks flush
+_p02_gap = OD_H / 2.0  # break flush against Blue discharge OD
 draw_pipe_path(ax,
-    [p02_out_x, p02_out_x - ELB, p02_out_x - ELB, RISER_X],
-    [p02_port_z, p02_port_z, RISER_ENTRY_Z, RISER_ENTRY_Z],
+    [p02_out_x, p02_out_x - ELB, p02_out_x - ELB],
+    [p02_port_z, p02_port_z, PM_HEADER_Z_BLUE_DISCH - _p02_gap],
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
+draw_pipe_path(ax,
+    [p02_out_x - ELB, p02_out_x - ELB, RISER_X],
+    [PM_HEADER_Z_BLUE_DISCH + _p02_gap, RISER_ENTRY_Z, RISER_ENTRY_Z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 # 1/2" riser: RISER_X → filter header → reducer at F1 IN
+# Split at Blue suction crossing (Z=PM_HEADER_Z_BLUE_SUC): Brown breaks flush
+_riser_gap = OD_H / 2.0  # break flush against Blue suction OD
+draw_pipe_path(ax,
+    [RISER_X, RISER_X],
+    [RISER_ENTRY_Z, PM_HEADER_Z_BLUE_SUC - _riser_gap],
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in, f1_in],
-    [RISER_ENTRY_Z, HEADER_Z, HEADER_Z, PORT_Z + 30],
+    [PM_HEADER_Z_BLUE_SUC + _riser_gap, HEADER_Z, HEADER_Z, PORT_Z + 30],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 # 1/2→1" reducer bushing at F1 IN port
 REDUCER_H = 20

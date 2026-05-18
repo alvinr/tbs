@@ -159,7 +159,7 @@ NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosu
 (300×200×130mm), 200A ANL main fuse, 4 AWG ground wire + 8ft copper stake.*
 
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
-C — water pumps P-01–P-04; D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
+C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
 
 ### 1.10 Pump Manifold
 
@@ -169,7 +169,7 @@ C — water pumps P-01–P-04; D — safelight vestibule; E — evaporative cool
 | Width | 500 mm | `PUMP_W` |
 | Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
 
-*Components: 1" HDPE header + isolation valves, 4× 12V pumps (P-01 Blue spray bar supply,
+*Components: 1" HDPE header + isolation valves, 3× 12V pumps on manifold (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.*
@@ -212,7 +212,7 @@ Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
 *Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
 2" NPT bulkhead fittings for external drain/fill (D4), reinforcing plates for external ports,
-P-03 waste evacuation pump. Filled via DN150 top fill cap from filter reject line.*
+P-03 waste evacuation pump (mounted in IBC plumbing corridor on D4 drain run). Filled via DN150 top fill cap from filter reject line.*
 
 ### 1.14 Equipment Zones
 

@@ -176,8 +176,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01 through P-04) | 4 | Amazon | $55–$70 | $220–$280 |
-| [SeaFlo pressure accumulator](https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH) | 1 gal, 125 PSI, ½" NPT | 1 | Amazon | $25–$45 | $35 |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01, P-02, P-04 manifold + P-03 IBC corridor) | 4 | Amazon | $55–$70 | $220–$280 |
+| [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, ½" MNPT | 1 | Amazon | $25–$45 | $35 |
 | [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series | 3 | Amazon | $8–$12 | $30 |
 
 **Pump subtotal: ~$165–$195**

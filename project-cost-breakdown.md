@@ -227,7 +227,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Category | Low† | High† |
 |----------|------|-------|
 | Water storage (4× IBC totes, bulkhead fittings) | $420 | $760 |
-| Pumps and accumulator (P-01–P-04) | $305 | $355 |
+| Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor) | $305 | $355 |
 | Filter skid (3× Big Blue housings + cartridges) | $265 | $370 |
 | Valves and fittings (incl. S60×6 adapters, check valves CV1–CV4) | $406 | $650 |
 | Pipe (HDPE, spray bar) | $100 | $140 |

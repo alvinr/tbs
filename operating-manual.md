@@ -32,7 +32,7 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 
 ### 0.1 Water System
 
-The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through P-04), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. Check valves CV1–CV4 on each bulkhead line prevent backflow. External fill (F1/F2) and drain (D3/D4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), four pumps (P-01, P-02, P-04 on pinhole wall manifold; P-03 in IBC plumbing corridor), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. Check valves CV1–CV4 on each bulkhead line prevent backflow. External fill (F1/F2) and drain (D3/D4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
 - [ ] 0.1.1 — Fill Blue IBC-1 and IBC-2 via external bulkhead ports F1/F2 (minimum 400 liters total for one print). Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
 - [ ] 0.1.2 — Open isolation valves V1, V2 (fill lines) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.

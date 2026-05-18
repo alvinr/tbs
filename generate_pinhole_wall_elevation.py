@@ -756,14 +756,43 @@ BV06_X = 3600                 # valve position — close to shelf left edge (372
 BV06_R = 25                   # valve body radius for symbol
 
 # Pipe: Blue discharge tee → riser up → horizontal → valve gap → drop to tap
-# TAP riser (zorder=7) crosses behind Blue suction trunk (zorder=8) at Z=976.
-# Split riser into two segments with a gap at the crossing.
+# TAP riser crosses Blue suction trunk at Z=PM_HEADER_Z_BLUE_SUC.
+# Same-color pipe crossing: semicircular bridge loop on rear pipe.
+# The rear pipe breaks at the crossing and a semicircular arc loops to one
+# side, clearly showing the pipe passes behind (not connects to) the front pipe.
 CROSS_GAP = 3  # mm clearance each side of front pipe at crossing
 _gap_half = OD_H / 2.0 + CROSS_GAP  # half-gap sized to front pipe (1/2")
+_bridge_r_mm = 40  # bridge arc radius (mm) — large enough to read at this scale
+# Rear pipe: below crossing (stops short of front pipe)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X],
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_SUC - _gap_half],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
+# Bridge arc: semicircular loop drawn as explicit points.
+# The rear (vertical) pipe loops to the right in drawing space (= lower X
+# physical, toward cargo door) to pass behind the front (horizontal) pipe.
+# numpy generates the semicircle points in mm, then we convert to drawing coords.
+_n_arc = 30
+_arc_angles = [math.pi / 2 - i * math.pi / (_n_arc - 1) for i in range(_n_arc)]
+# Center of crossing in physical mm
+_cross_x = TAP_TEE_X
+_cross_z = PM_HEADER_Z_BLUE_SUC
+# Arc points loop to lower-X side (= rightward in drawing due to mirror).
+# theta=+pi/2 → top (0, +r), theta=0 → right in physical (-r in drawing),
+# theta=-pi/2 → bottom (0, -r)
+_arc_x_mm = [_cross_x - _bridge_r_mm * math.cos(a) for a in _arc_angles]
+_arc_z_mm = [_cross_z + _bridge_r_mm * math.sin(a) for a in _arc_angles]
+_arc_dx = [sx(x) for x in _arc_x_mm]
+_arc_dz = [sz(z) for z in _arc_z_mm]
+# White mask first — wide stroke to erase front pipe behind bridge
+ax.plot(_arc_dx, _arc_dz, color="white", linewidth=5, solid_capstyle="round", zorder=8.5)
+# Pipe outline (outer edge)
+ax.plot(_arc_dx, _arc_dz, color=C_BLUE_EC, linewidth=2.4, solid_capstyle="butt", zorder=9)
+# Pipe fill (Blue)
+ax.plot(_arc_dx, _arc_dz, color=C_BLUE, linewidth=1.6, solid_capstyle="butt", zorder=9)
+# Bore (white center line)
+ax.plot(_arc_dx, _arc_dz, color="white", linewidth=0.6, solid_capstyle="butt", zorder=9)
+# Rear pipe: above crossing (resumes after bridge)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X, BV06_X - BV06_R],
     [PM_HEADER_Z_BLUE_SUC + _gap_half, TAP_BRANCH_Z, TAP_BRANCH_Z],

@@ -82,45 +82,32 @@ def sz(z_mm):
 # X horizontal (mirrored), Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(24, 30))
+fig = plt.figure(figsize=(24, 20))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(3, 2, figure=fig, width_ratios=[1.6, 1],
-             height_ratios=[1, 1, 0.85], wspace=0.05, hspace=0.08)
+gs = GridSpec(2, 2, figure=fig, width_ratios=[1.6, 1],
+             height_ratios=[1.2, 1], wspace=0.05, hspace=0.06)
 
-ax = fig.add_subplot(gs[0, 0])   # P-01/P-02 elevation (row 0, left)
+ax = fig.add_subplot(gs[0, 0])   # Main elevation — all 4 pumps (top left)
 ax.set_facecolor(C_BG)
 ax.set_aspect("equal")
 ax.axis("off")
 
-ax2 = fig.add_subplot(gs[0, 1])  # Detail A — cross-section (row 0, right)
+ax2 = fig.add_subplot(gs[0, 1])  # Detail A — cross-section (top right)
 ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
 
-ax4 = fig.add_subplot(gs[1, 0])  # P-03/P-04 elevation (row 1, left — same column as ax)
-ax4.set_facecolor(C_BG)
-ax4.set_aspect("equal")
-ax4.axis("off")
-
-ax3 = fig.add_subplot(gs[2, :])  # Detail B — plan view (full bottom row)
+ax3 = fig.add_subplot(gs[1, :])  # Detail B — plan view (full bottom row)
 ax3.set_facecolor(C_BG)
 ax3.set_aspect("equal")
 ax3.axis("off")
 
-# Axis limits — shared between both elevation panels for alignment
-ELEV_XLIM = (sx(2200) - 1, sx(3400) + 1)
-ELEV_YLIM = (sz(-130) - 1, sz(750) + 1)
-ax.set_xlim(*ELEV_XLIM)
-ax.set_ylim(*ELEV_YLIM)
+# Axis limits — elevation panel (taller frame for 2×2 pump grid)
+ax.set_xlim(sx(2200) - 1, sx(3400) + 1)
+ax.set_ylim(sz(-130) - 1, sz(1050) + 2)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
-
-# Panel title
-ax.text(sx(PUMP_X + PUMP_W / 2), sz(730),
-        "P-01 / P-02 ELEVATION — BLUE SUPPLY & BROWN RECYCLE",
-        ha="center", va="top", fontsize=9, fontweight="bold",
-        color="#1A237E", zorder=10)
 
 # Reset label registry for collision avoidance
 reset_label_registry()
@@ -149,22 +136,29 @@ PUMP_MARGIN_X = 20    # margin from frame inner edge to pump body edge
 FRAME_W = 2 * ANGLE_W + 2 * PUMP_MARGIN_X + 2 * PUMP_BODY_W + PUMP_GAP_X
 FRAME_X = PUMP_X + (PUMP_W - FRAME_W) // 2  # centered within pump zone
 
-# Frame tall enough for one row of vertical pumps (218mm) + pipe headers above
-FRAME_Z_HI = FRAME_Z_LO + PUMP_BODY_H + 2 * ANGLE_W + 60  # body + frame + clearance
+# Frame tall enough for TWO rows of vertical pumps (2×218mm) + gap + headers
+PUMP_GAP_Z = 60       # vertical gap between bottom and top pump rows
+PUMP_MARGIN_Z = 20    # vertical margin inside frame above/below pump rows
+FRAME_Z_HI = (FRAME_Z_LO + 2 * ANGLE_W + 2 * PUMP_MARGIN_Z
+              + 2 * PUMP_BODY_H + PUMP_GAP_Z + 40)  # +40 for header clearance
 FRAME_H = FRAME_Z_HI - FRAME_Z_LO
 
-# Pump X positions (left edge of body)
+# Pump X positions (left edge of body) — two columns
 P01_X = FRAME_X + ANGLE_W + PUMP_MARGIN_X
 P02_X = P01_X + PUMP_BODY_W + PUMP_GAP_X
-P03_X = P01_X   # stacked below P-01
-P04_X = P02_X   # stacked below P-02
+P03_X = P01_X   # same column as P-01
+P04_X = P02_X   # same column as P-02
 
-# Vertical positions — single row (stacking is in Yd depth, not visible in elevation)
-PUMP_Z = FRAME_Z_LO + ANGLE_W + 30   # bottom of pump body
-P01_Z = PUMP_Z
-P02_Z = PUMP_Z
-P03_Z = PUMP_Z   # same Z (stacked behind P-01 in Yd)
-P04_Z = PUMP_Z   # same Z (stacked behind P-02 in Yd)
+# Pump Z positions — two rows
+#   Bottom row: P-03 (left), P-04 (right)
+#   Top row:    P-01 (left), P-02 (right)
+PUMP_Z_BOT = FRAME_Z_LO + ANGLE_W + PUMP_MARGIN_Z
+PUMP_Z_TOP = PUMP_Z_BOT + PUMP_BODY_H + PUMP_GAP_Z
+
+P01_Z = PUMP_Z_TOP
+P02_Z = PUMP_Z_TOP
+P03_Z = PUMP_Z_BOT
+P04_Z = PUMP_Z_BOT
 
 # Pipe constants — two sizes
 # Trunk lines (IBC → manifold entry, manifold exit → spray bar / filter skid): 1" HDPE
@@ -173,6 +167,12 @@ WALL_1 = FILT_PIPE_WALL   # 4mm
 # Manifold internal (pump connections, headers within frame): 1/2" HDPE
 OD_H = PUMP_PIPE_OD       # 21mm — 1/2" nominal, matches pump ports
 WALL_H = PUMP_PIPE_WALL   # 3mm
+
+# Panel title (placed after FRAME_Z_HI is computed)
+ax.text(sx(PUMP_X + PUMP_W / 2), sz(FRAME_Z_HI + 100),
+        "PUMP MANIFOLD ELEVATION — ALL CIRCUITS",
+        ha="center", va="top", fontsize=9, fontweight="bold",
+        color="#1A237E", zorder=10)
 
 # ── Container wall context ───────────────────────────────────────────────────
 CORR_SPACING = 457
@@ -390,23 +390,19 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
     return in_x, port_z, out_x, port_z
 
 
-# Draw P-01 and P-02 (solid — visible in elevation)
-# P-03/P-04 occupy the same X,Z position (stacked behind in Yd) — not drawn
-# in elevation; shown only in plan view Detail B as ghost.
+# Draw all 4 pumps — 2×2 grid visible in elevation
+# Top row: P-01 (Blue supply), P-02 (Brown recycle)
+# Bottom row: P-03 (Waste), P-04 (Tray drain)
 p01_in_x, p01_in_z, p01_out_x, p01_out_z = draw_pump(ax, P01_X, P01_Z, "P-01", "BLUE SUPPLY")
 p02_in_x, p02_in_z, p02_out_x, p02_out_z = draw_pump(ax, P02_X, P02_Z, "P-02", "BROWN RECYCLE")
+p03_in_x, p03_in_z, p03_out_x, p03_out_z = draw_pump(ax, P03_X, P03_Z, "P-03", "WASTE EVAC")
+p04_in_x, p04_in_z, p04_out_x, p04_out_z = draw_pump(ax, P04_X, P04_Z, "P-04", "TRAY DRAIN")
 
-# Port Z (same for all pumps)
-PORT_Z = p01_in_z   # = PUMP_Z + PUMP_BODY_H - PORT_Z_OFFSET
-PUMP_TOP_Z = PUMP_Z + PUMP_BODY_H
-
-# P-03/P-04 behind P-01/P-02 — note (plumbing shown in sliced view below)
-ax.text(sx(P01_X + PUMP_BODY_W / 2), sz(P01_Z + 15),
-        "P-03 BEHIND", ha="center", va="bottom",
-        fontsize=4, color=C_BLACK_SYS, alpha=0.4, style="italic", zorder=6)
-ax.text(sx(P02_X + PUMP_BODY_W / 2), sz(P02_Z + 15),
-        "P-04 BEHIND", ha="center", va="bottom",
-        fontsize=4, color=C_BLACK_SYS, alpha=0.4, style="italic", zorder=6)
+# Port Z heights (differ by row)
+PORT_Z_TOP = p01_in_z   # top row port Z
+PORT_Z_BOT = p03_in_z   # bottom row port Z
+PUMP_TOP_Z_TOP = PUMP_Z_TOP + PUMP_BODY_H  # top of top-row pumps
+PUMP_TOP_Z_BOT = PUMP_Z_BOT + PUMP_BODY_H  # top of bottom-row pumps
 
 
 # ── Ball valve helper ────────────────────────────────────────────────────────
@@ -424,32 +420,49 @@ def draw_ball_valve(ax, bvx, bvz, label):
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# PIPE CONNECTIONS — ports face LEFT and RIGHT (horizontal)
-# Suction pipes run as horizontal headers above the pump bodies, then drop
-# down with two 90° elbows into the horizontal port stubs.
-# Discharge pipes exit horizontally, elbow up to header height, then run out.
+# PIPE CONNECTIONS — ALL 4 PUMPS
+# Top row (P-01/P-02) ports at PORT_Z_TOP; bottom row (P-03/P-04) at PORT_Z_BOT.
+# Headers run above the top row; bottom-row pipes route between rows or below.
 # ═══════════════════════════════════════════════════════════════════════════════
 
 PIPE_EXIT_X = FRAME_X + FRAME_W + 200  # pipes enter/exit toward IBCs (higher X)
 PIPE_ENTRY_X = FRAME_X - 150           # pipes exit toward cargo door (lower X)
+ELBOW_OFFSET = 40  # offset from port for visible 90° elbow
 
-# Header Z heights above pump bodies
-HEADER_Z_BLUE_SUC   = PUMP_TOP_Z + 60   # Blue suction header
-HEADER_Z_BLUE_DISCH = PUMP_TOP_Z + 30   # Blue discharge header
-HEADER_Z_BROWN_DISCH = PUMP_TOP_Z + 55  # Brown discharge header (avoids blue)
+# Header Z heights above top-row pump bodies
+HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 60   # Blue suction header
+HEADER_Z_BLUE_DISCH  = PUMP_TOP_Z_TOP + 30   # Blue discharge header
+HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
 
-# ── ACC-01 Accumulator ──────────────────────────────────────────────────────
-# On Blue discharge header, to the right of the frame
-ACC_W = 60    # width in X
-ACC_H = 50    # height in Z
-ACC_X = FRAME_X + FRAME_W + 40   # to the right of the frame
-ACC_Z = HEADER_Z_BLUE_DISCH - ACC_H / 2  # centered on discharge header
+# Transition X: where 1" trunk meets 1/2" manifold
+TRANS_X = FRAME_X + FRAME_W + 10  # just outside frame right
+
+# ── Reducer symbol helper ────────────────────────────────────────────────────
+def draw_reducer(ax, x_mm, z_mm, orientation="h"):
+    """Draw a 1"→1/2" reducer symbol at (x_mm, z_mm). 'h'=horizontal, 'v'=vertical."""
+    r = 12
+    if orientation == "h":
+        pts = [(sx(x_mm + r), sz(z_mm - OD_1 / 2)),
+               (sx(x_mm + r), sz(z_mm + OD_1 / 2)),
+               (sx(x_mm - r), sz(z_mm + OD_H / 2)),
+               (sx(x_mm - r), sz(z_mm - OD_H / 2))]
+    else:
+        pts = [(sx(x_mm - OD_1 / 2), sz(z_mm + r)),
+               (sx(x_mm + OD_1 / 2), sz(z_mm + r)),
+               (sx(x_mm + OD_H / 2), sz(z_mm - r)),
+               (sx(x_mm - OD_H / 2), sz(z_mm - r))]
+    poly = plt.Polygon(pts, fc=C_STEEL_FILL, ec=C_FRAME, lw=1.0, zorder=9)
+    ax.add_patch(poly)
+
+# ── ACC-01 Accumulator (on Blue discharge header) ──────────────────────────
+ACC_W = 60
+ACC_H = 50
+ACC_X = FRAME_X + FRAME_W + 40
+ACC_Z = HEADER_Z_BLUE_DISCH - ACC_H / 2
 
 ax.add_patch(plt.Rectangle((sx(ACC_X), sz(ACC_Z)),
              ACC_W / SC, ACC_H / SC,
              fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
-
-# Pressure vessel dome (rounded top)
 acc_cx = ACC_X + ACC_W / 2
 acc_top = ACC_Z + ACC_H
 acc_dome_r = ACC_W / 2
@@ -457,143 +470,89 @@ theta_acc = np.linspace(0, 180, 30)
 acc_dome_x = [sx(acc_cx + acc_dome_r * np.cos(np.radians(a))) for a in theta_acc]
 acc_dome_z = [sz(acc_top + acc_dome_r * 0.3 * np.sin(np.radians(a))) for a in theta_acc]
 ax.fill(acc_dome_x, acc_dome_z, fc=C_ACC, ec=C_FRAME, lw=1.2, alpha=0.8, zorder=5)
-
 ax.text(sx(acc_cx), sz(ACC_Z + ACC_H / 2), "ACC-01",
         ha="center", va="center", fontsize=6, fontweight="bold",
         color="white", zorder=6)
 
-# ── BV-01 Ball Valve (Blue supply inlet) ────────────────────────────────────
-# On Blue suction header, to the right of the frame
+# ── BV-01 / BV-02 Ball Valves ──────────────────────────────────────────────
 BV01_X = FRAME_X + FRAME_W + 60
 BV01_Z = HEADER_Z_BLUE_SUC
-
 draw_ball_valve(ax, BV01_X, BV01_Z, "BV-01")
 place_label(ax, sx(BV01_X), sz(BV01_Z + 30), "BV-01\n(1\" BALL)",
             component='valve', fontsize=5, color=C_TEXT,
             dx=0, dy=1.2, ha='center', va='bottom')
 
-# ── BV-02 Ball Valve (Blue supply outlet) ───────────────────────────────────
-# On Blue discharge header, after ACC-01 (further right)
 BV02_X = ACC_X + ACC_W + 40
 BV02_Z = HEADER_Z_BLUE_DISCH
-
 draw_ball_valve(ax, BV02_X, BV02_Z, "BV-02")
 place_label(ax, sx(BV02_X), sz(BV02_Z + 30), "BV-02\n(1\" BALL)",
             component='valve', fontsize=5, color=C_TEXT,
             dx=0, dy=1.2, ha='center', va='bottom')
 
-
-# ── Reducer symbol helper ────────────────────────────────────────────────────
-def draw_reducer(ax, x_mm, z_mm, orientation="h"):
-    """Draw a 1"→1/2" reducer symbol at (x_mm, z_mm). 'h'=horizontal, 'v'=vertical."""
-    r = 12  # symbol size
-    if orientation == "h":
-        # Trapezoid narrowing from right (1") to left (1/2")
-        pts = [(sx(x_mm + r), sz(z_mm - OD_1 / 2 / SC * SC)),
-               (sx(x_mm + r), sz(z_mm + OD_1 / 2 / SC * SC)),
-               (sx(x_mm - r), sz(z_mm + OD_H / 2 / SC * SC)),
-               (sx(x_mm - r), sz(z_mm - OD_H / 2 / SC * SC))]
-    else:
-        pts = [(sx(x_mm - OD_1 / 2 / SC * SC), sz(z_mm + r)),
-               (sx(x_mm + OD_1 / 2 / SC * SC), sz(z_mm + r)),
-               (sx(x_mm + OD_H / 2 / SC * SC), sz(z_mm - r)),
-               (sx(x_mm - OD_H / 2 / SC * SC), sz(z_mm - r))]
-    poly = plt.Polygon(pts, fc=C_STEEL_FILL, ec=C_FRAME, lw=1.0, zorder=9)
-    ax.add_patch(poly)
-
-# Transition X positions: where 1" trunk meets 1/2" manifold
-# Blue supply: trunk enters at frame right edge, transitions to 1/2" inside
-TRANS_BLUE_IN_X = FRAME_X + FRAME_W + 10   # just outside frame right
-# Blue discharge: 1/2" inside → transitions to 1" at frame right edge
-TRANS_BLUE_OUT_X = FRAME_X + FRAME_W + 10
-# Brown suction: trunk enters at frame right edge
-TRANS_BROWN_IN_X = FRAME_X + FRAME_W + 10
-# Brown discharge: transitions at frame top as riser leaves manifold
-TRANS_BROWN_OUT_Z = PUMP_TOP_Z + 40  # just above pump top
-
-# ── Blue supply: IBC → BV-01 (1") → reducer → header → P-01 IN (1/2") ────
+# ════════════════════════════════════════════════════════════════════════════
+# P-01 BLUE SUPPLY — IBC → BV-01 → P-01 → ACC-01 → BV-02 → spray bar
+# ════════════════════════════════════════════════════════════════════════════
 # Trunk (1"): IBC → BV-01
 draw_pipe_path(ax,
     [PIPE_EXIT_X, BV01_X + BV_R],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
     OD_1, WALL_1, fc=C_BLUE, zorder=6)
-
-# Trunk (1"): BV-01 → reducer point
+# Trunk (1"): BV-01 → reducer
 draw_pipe_path(ax,
-    [BV01_X - BV_R, TRANS_BLUE_IN_X],
+    [BV01_X - BV_R, TRANS_X],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
     OD_1, WALL_1, fc=C_BLUE, zorder=6)
-
-# Reducer symbol
-draw_reducer(ax, TRANS_BLUE_IN_X, HEADER_Z_BLUE_SUC, "h")
-
-# Manifold (1/2"): reducer → header → 90° drop → 90° horizontal into P-01 IN
-ELBOW_OFFSET = 40  # offset from port stub end for visible elbow
+draw_reducer(ax, TRANS_X, HEADER_Z_BLUE_SUC, "h")
+# Manifold (1/2"): reducer → 90° drop → P-01 IN
 draw_pipe_path(ax,
-    [TRANS_BLUE_IN_X - 15, p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET, p01_in_x],
-    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, PORT_Z, PORT_Z],
+    [TRANS_X - 15, p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET, p01_in_x],
+    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, PORT_Z_TOP, PORT_Z_TOP],
     OD_H, WALL_H, fc=C_BLUE, zorder=6)
 
-# ── Blue discharge: P-01 OUT (1/2") → ACC-01 → BV-02 → reducer → exit (1") ──
-
-# Manifold (1/2"): P-01 OUT → 90° horizontal left → 90° up → header → ACC-01
+# P-01 OUT → 90° up → header → ACC-01 → BV-02 → spray bar
 draw_pipe_path(ax,
     [p01_out_x, p01_out_x - ELBOW_OFFSET, p01_out_x - ELBOW_OFFSET, ACC_X],
-    [PORT_Z, PORT_Z, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
+    [PORT_Z_TOP, PORT_Z_TOP, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, zorder=6)
-
-# Manifold (1/2"): ACC-01 exit → BV-02
 acc_exit_x = ACC_X + ACC_W
 draw_pipe_path(ax,
     [acc_exit_x, BV02_X - BV_R],
     [HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, zorder=6)
-
-# Reducer at BV-02 exit → trunk
 draw_reducer(ax, BV02_X + BV_R + 15, BV02_Z, "h")
-
-# Trunk (1"): BV-02 → spray bar exit
 draw_pipe_path(ax,
     [BV02_X + BV_R + 30, PIPE_EXIT_X],
     [BV02_Z, BV02_Z],
     OD_1, WALL_1, fc=C_BLUE, zorder=6)
 
-# ── Brown suction: IBC-3 (1") → reducer → P-02 IN (1/2") ────────────────
-# Trunk (1"): IBC → reducer point
+# ════════════════════════════════════════════════════════════════════════════
+# P-02 BROWN RECYCLE — IBC-3 → P-02 → filter skid
+# ════════════════════════════════════════════════════════════════════════════
+# Trunk (1"): IBC-3 → reducer
 draw_pipe_path(ax,
-    [PIPE_EXIT_X, TRANS_BROWN_IN_X],
-    [PORT_Z, PORT_Z],
+    [PIPE_EXIT_X, TRANS_X],
+    [PORT_Z_TOP, PORT_Z_TOP],
     OD_1, WALL_1, fc=C_BROWN, zorder=6)
-
-# Reducer symbol
-draw_reducer(ax, TRANS_BROWN_IN_X, PORT_Z, "h")
-
+draw_reducer(ax, TRANS_X, PORT_Z_TOP, "h")
 # Manifold (1/2"): reducer → P-02 IN
 draw_pipe_path(ax,
-    [TRANS_BROWN_IN_X - 15, p02_in_x],
-    [PORT_Z, PORT_Z],
+    [TRANS_X - 15, p02_in_x],
+    [PORT_Z_TOP, PORT_Z_TOP],
     OD_H, WALL_H, fc=C_BROWN, zorder=6)
 
-# ── Brown discharge: P-02 OUT (1/2") → riser → reducer → filter skid (1") ─
+# P-02 OUT → 90° up → riser → filter skid
+TRANS_BROWN_OUT_Z = PUMP_TOP_Z_TOP + 40
 RISER_EXIT_Z = HEADER_Z_BROWN_DISCH + 80
-
-# Manifold (1/2"): P-02 OUT → 90° horizontal left → 90° up to transition Z
-draw_pipe_path(ax,
-    [p02_out_x, p02_out_x - ELBOW_OFFSET, p02_out_x - ELBOW_OFFSET],
-    [PORT_Z, PORT_Z, TRANS_BROWN_OUT_Z],
-    OD_H, WALL_H, fc=C_BROWN, zorder=6)
-
-# Reducer (vertical) — on the riser at the elbow offset X
 BROWN_RISER_X = p02_out_x - ELBOW_OFFSET
+draw_pipe_path(ax,
+    [p02_out_x, BROWN_RISER_X, BROWN_RISER_X],
+    [PORT_Z_TOP, PORT_Z_TOP, TRANS_BROWN_OUT_Z],
+    OD_H, WALL_H, fc=C_BROWN, zorder=6)
 draw_reducer(ax, BROWN_RISER_X, TRANS_BROWN_OUT_Z, "v")
-
-# Trunk (1"): transition → riser exit to filter skid
 draw_pipe_path(ax,
     [BROWN_RISER_X, BROWN_RISER_X],
     [TRANS_BROWN_OUT_Z + 15, RISER_EXIT_Z],
     OD_1, WALL_1, fc=C_BROWN, zorder=6)
-
-# Riser exit arrow and annotation
 ax.annotate("", xy=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z)),
             xytext=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z - 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
@@ -601,19 +560,88 @@ ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
         "TO FILTER SKID\n(F1 → F2 → F3)", ha="center", va="bottom",
         fontsize=5.5, color=C_BROWN, style="italic", fontweight="bold")
 
-# P-03/P-04 plumbing shown in dedicated panel below (ax4)
-# Ghost reference only in main elevation
-GHOST_PIPE_LW_ELEV = 1.5
-GHOST_LS_ELEV = (0, (5, 4))
-WASTE_HEADER_Z = HEADER_Z_BLUE_SUC + 30
-ax.plot([sx(PIPE_EXIT_X), sx(p01_in_x)],
-        [sz(WASTE_HEADER_Z), sz(WASTE_HEADER_Z)],
-        color=C_BLACK_SYS, lw=GHOST_PIPE_LW_ELEV, ls=GHOST_LS_ELEV,
-        alpha=0.25, zorder=4)
-ax.text(sx(PIPE_EXIT_X + 5), sz(WASTE_HEADER_Z + 8),
-        "WASTE / TRAY DRAIN — SEE P-03/P-04 ELEVATION BELOW",
-        ha="right", va="bottom", fontsize=4.5, color=C_BLACK_SYS,
-        alpha=0.5, style="italic")
+# ════════════════════════════════════════════════════════════════════════════
+# P-03 WASTE EVAC — IBC-4 → P-03 → external drain
+# ════════════════════════════════════════════════════════════════════════════
+WASTE_HEADER_Z = PORT_Z_BOT  # enters at bottom-row port height
+# Trunk (1"): IBC-4 → reducer
+draw_pipe_path(ax,
+    [PIPE_EXIT_X, TRANS_X + 40],
+    [WASTE_HEADER_Z, WASTE_HEADER_Z],
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+draw_reducer(ax, TRANS_X + 40, WASTE_HEADER_Z, "h")
+# Manifold (1/2"): reducer → P-03 IN
+draw_pipe_path(ax,
+    [TRANS_X + 25, p03_in_x],
+    [WASTE_HEADER_Z, WASTE_HEADER_Z],
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+
+# P-03 OUT → 90° down → horizontal to external drain
+WASTE_DISCH_Z = PUMP_Z_BOT - 30  # below bottom-row pumps
+draw_pipe_path(ax,
+    [p03_out_x, p03_out_x - ELBOW_OFFSET, p03_out_x - ELBOW_OFFSET],
+    [PORT_Z_BOT, PORT_Z_BOT, WASTE_DISCH_Z],
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+WASTE_RISER_X = p03_out_x - ELBOW_OFFSET
+draw_reducer(ax, WASTE_RISER_X, WASTE_DISCH_Z, "v")
+draw_pipe_path(ax,
+    [WASTE_RISER_X, WASTE_RISER_X, PIPE_ENTRY_X],
+    [WASTE_DISCH_Z - 15, WASTE_DISCH_Z - 15, WASTE_DISCH_Z - 15],
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+ax.text(sx(PIPE_ENTRY_X - 5), sz(WASTE_DISCH_Z - 15),
+        "TO EXT.\nDRAIN PORT →", ha="left", va="center",
+        fontsize=5, color=C_BLACK_SYS, style="italic", fontweight="bold")
+
+# ════════════════════════════════════════════════════════════════════════════
+# P-04 TRAY DRAIN — sump → P-04 → DV-02 → IBC-3 / IBC-4
+# ════════════════════════════════════════════════════════════════════════════
+SUMP_ENTRY_Z = 50
+# Suction: sump → P-04 IN (vertical riser)
+draw_pipe_path(ax,
+    [p04_in_x, p04_in_x],
+    [SUMP_ENTRY_Z, PORT_Z_BOT],
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+ax.annotate("", xy=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z)),
+            xytext=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z + 50)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.2), zorder=10)
+ax.text(sx(p04_in_x + 40), sz(SUMP_ENTRY_Z - 10),
+        "FROM TRAY\nSUMP", ha="center", va="top",
+        fontsize=4.5, color=C_BLACK_SYS, style="italic")
+
+# Discharge: P-04 OUT → DV-02
+DV02_X = FRAME_X + FRAME_W / 2
+DV02_Z = FRAME_Z_LO - 60
+DV02_R = 20
+TRAY_DISCH_Z = WASTE_DISCH_Z - 25
+draw_pipe_path(ax,
+    [p04_out_x, p04_out_x - ELBOW_OFFSET, p04_out_x - ELBOW_OFFSET,
+     DV02_X, DV02_X],
+    [PORT_Z_BOT, PORT_Z_BOT, TRAY_DISCH_Z, TRAY_DISCH_Z, DV02_Z + DV02_R],
+    OD_H, WALL_H, fc=C_BROWN, zorder=6)
+
+# DV-02 symbol (diamond)
+dv02_pts_x = [sx(DV02_X), sx(DV02_X + DV02_R), sx(DV02_X), sx(DV02_X - DV02_R)]
+dv02_pts_z = [sz(DV02_Z + DV02_R), sz(DV02_Z), sz(DV02_Z - DV02_R), sz(DV02_Z)]
+ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
+                          fc="white", ec=C_FRAME, lw=2.0, zorder=9))
+ax.text(sx(DV02_X), sz(DV02_Z), "3W", ha="center", va="center",
+        fontsize=4, fontweight="bold", color=C_FRAME, zorder=10)
+# DV-02 outputs
+draw_pipe_path(ax,
+    [DV02_X + DV02_R, DV02_X + DV02_R + 80],
+    [DV02_Z, DV02_Z],
+    OD_1, WALL_1, fc=C_BROWN, zorder=6)
+ax.text(sx(DV02_X + DV02_R + 90), sz(DV02_Z + 10), "← BROWN (IBC-3)",
+        ha="right", va="bottom", fontsize=5, color=C_BROWN, fontweight="bold")
+draw_pipe_path(ax,
+    [DV02_X - DV02_R, DV02_X - DV02_R - 80],
+    [DV02_Z, DV02_Z],
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+ax.text(sx(DV02_X - DV02_R - 90), sz(DV02_Z + 10), "BLACK (IBC-4) →",
+        ha="left", va="bottom", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
+            component='diverter', fontsize=5.5, color=C_TEXT,
+            dx=0, dy=-2.0, ha='center', va='top')
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────
@@ -631,10 +659,10 @@ ax.annotate("", xy=(sx(mid_blue_out + 30), sz(HEADER_Z_BLUE_DISCH)),
             xytext=(sx(mid_blue_out - 30), sz(HEADER_Z_BLUE_DISCH)),
             arrowprops=dict(**arrow_style, color=C_BLUE), zorder=12)
 
-# Brown suction arrow (incoming from higher X at PORT_Z)
+# Brown suction arrow (incoming from higher X at PORT_Z_TOP)
 mid_brown = (PIPE_EXIT_X + p02_in_x) / 2
-ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z)),
-            xytext=(sx(mid_brown + 30), sz(PORT_Z)),
+ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z_TOP)),
+            xytext=(sx(mid_brown + 30), sz(PORT_Z_TOP)),
             arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
 
 
@@ -650,7 +678,7 @@ ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_DISCH + 15),
         fontsize=5, color=C_BLUE, style="italic")
 
 # Brown suction label (higher X side)
-ax.text(sx(PIPE_EXIT_X + 5), sz(PORT_Z - 15),
+ax.text(sx(PIPE_EXIT_X + 5), sz(PORT_Z_TOP - 15),
         "FROM IBC-3\n(BROWN RECYCLE — 1\" TRUNK)", ha="right", va="top",
         fontsize=5, color=C_BROWN, style="italic")
 
@@ -706,7 +734,7 @@ leader(ax, sx(pipe_label_x), sz(HEADER_Z_BLUE_SUC + 8),
        "TRUNK: 1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=5)
 
 # Manifold pipe label (on the 1/2" section near P-01)
-manif_label_x = (p01_in_x + TRANS_BLUE_IN_X) / 2
+manif_label_x = (p01_in_x + TRANS_X) / 2
 leader(ax, sx(manif_label_x), sz(HEADER_Z_BLUE_SUC - 8),
        sx(manif_label_x), sz(HEADER_Z_BLUE_SUC - 50),
        "MANIFOLD: 1/2\" HDPE Sch40\n(OD 21mm, WALL 3mm)", fs=5)
@@ -721,7 +749,7 @@ notes = [
     "5. 1\"→1/2\" bushing reducers at manifold entry/exit points (4 total, marked ▷◁ on drawing).",
     "6. P-01 (Blue): IBC-1/IBC-2 → BV-01 → P-01 → ACC-01 → BV-02 → spray bar.",
     "7. P-02 (Brown): IBC-3 → P-02 → filter skid (F1 → F2 → F3 → DV-01).",
-    "8. P-03 (Waste): IBC-4 → P-03 → external drain. P-04 (Tray drain): sump → DV-02 → IBCs. (See P-03/P-04 elevation.)",
+    "8. P-03 (Waste): IBC-4 → P-03 → external drain. P-04 (Tray drain): sump → P-04 → DV-02 → IBC-3 or IBC-4.",
     "9. ACC-01: SeaFlo 1-gallon accumulator, 125 PSI, 1/2\" NPT. Smooths pump cycling.",
     "10. Each pump circuit fused at 10A. Do not run >2 pumps simultaneously without load check.",
 ]
@@ -934,266 +962,6 @@ for ly, ltxt in label_items:
 ax2.text(sa_y(70), sa_z(-95),
          "SECTION IN Yd AT PORT HEIGHT\nPUMP THROUGH-BOLTED TO 18mm PLY\nNO BRACKET — DIRECT MOUNT",
          ha="center", va="top", fontsize=5.5, color="#666666", style="italic")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# P-03 / P-04 ELEVATION — WASTE & TRAY DRAIN CIRCUITS (1:5)
-# Same view as main elevation but showing P-03/P-04 solid with P-01/P-02
-# ghosted.  All pipe connections for the waste and tray drain circuits.
-# ═══════════════════════════════════════════════════════════════════════════════
-
-# ax4 uses the same coordinate functions (sx, sz) and identical limits as ax
-ax4.set_xlim(*ELEV_XLIM)
-ax4.set_ylim(*ELEV_YLIM)
-ax4.invert_xaxis()
-reset_label_registry()
-
-# Panel title
-ax4.text(sx(PUMP_X + PUMP_W / 2), sz(720),
-         "P-03 / P-04 ELEVATION — WASTE & TRAY DRAIN CIRCUITS\n"
-         "P-01 / P-02 REMOVED FOR CLARITY  |  SAME SCALE 1:5",
-         ha="center", va="top", fontsize=9, fontweight="bold",
-         color="#1A237E", zorder=10)
-
-# ── Context: corrugation ribs ────────────────────────────────────────────────
-for rib_x in range(2285, 3200, CORR_SPACING):
-    ax4.plot([sx(rib_x), sx(rib_x)], [sz(-30), sz(700)],
-             color="#AAAAAA", lw=0.6, ls="--", zorder=1)
-
-# Floor line
-ax4.plot([sx(2200), sx(3400)], [sz(0), sz(0)],
-         color="#888888", lw=1.5, ls="-", zorder=1)
-ax4.text(sx(2250), sz(-15), "FLOOR (Z=0)", ha="left", va="top",
-         fontsize=6, color="#888888", style="italic")
-
-# Walkway deck
-ax4.plot([sx(2300), sx(3300)], [sz(WALKWAY_Z), sz(WALKWAY_Z)],
-         color=C_STEEL_FILL, lw=2.0, ls="-", zorder=1)
-
-# ── Mounting frame (same as main elevation) ──────────────────────────────────
-# Bottom rail
-ax4.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_LO)),
-             FRAME_W / SC, ANGLE_W / SC,
-             fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
-# Top rail
-ax4.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_HI - ANGLE_W)),
-             FRAME_W / SC, ANGLE_W / SC,
-             fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
-# Left upright
-ax4.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_LO)),
-             ANGLE_W / SC, FRAME_H / SC,
-             fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
-# Right upright
-ax4.add_patch(plt.Rectangle((sx(FRAME_X + FRAME_W - ANGLE_W), sz(FRAME_Z_LO)),
-             ANGLE_W / SC, FRAME_H / SC,
-             fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
-
-# Plywood backing
-ax4.add_patch(plt.Rectangle((sx(ply_x), sz(ply_z)),
-             ply_w / SC, ply_h / SC,
-             fc=C_PLY, ec="#A09060", lw=1.0, alpha=0.5, zorder=2.5))
-
-# ── Ghost P-01/P-02 (dashed outline, faded — in front of P-03/P-04) ─────────
-GHOST_ALPHA_4 = 0.2
-GHOST_LS_4 = (0, (4, 3))
-
-for gpx, gpz, glabel, gcolor in [
-    (P01_X, P01_Z, "P-01\n(BLUE — IN FRONT)", C_BLUE),
-    (P02_X, P02_Z, "P-02\n(BROWN — IN FRONT)", C_BROWN),
-]:
-    ax4.add_patch(plt.Rectangle((sx(gpx), sz(gpz)),
-                  PUMP_BODY_W / SC, PUMP_BODY_H / SC,
-                  fc=gcolor, ec=gcolor, lw=1.5, alpha=GHOST_ALPHA_4,
-                  ls=GHOST_LS_4, zorder=4))
-    ax4.text(sx(gpx + PUMP_BODY_W / 2), sz(gpz + PUMP_BODY_H / 2),
-             glabel, ha="center", va="center",
-             fontsize=6, color=gcolor, alpha=0.4, style="italic", zorder=5)
-
-# ── Solid P-03 (Waste) and P-04 (Tray Drain) ────────────────────────────────
-def draw_pump_4(ax_p, px, pz, label, sublabel, color=C_PUMP_BODY):
-    """Draw a pump on ax4 — same as draw_pump but for the second panel."""
-    ax_p.add_patch(plt.Rectangle((sx(px), sz(pz)),
-                   PUMP_BODY_W / SC, PUMP_BODY_H / SC,
-                   fc=color, ec=C_FRAME, lw=1.5, alpha=0.85, zorder=5))
-    ax_p.text(sx(px + PUMP_BODY_W / 2), sz(pz + PUMP_BODY_H / 2),
-              label, ha="center", va="center",
-              fontsize=9, fontweight="bold", color="white", zorder=6)
-    ax_p.text(sx(px + PUMP_BODY_W / 2), sz(pz - 8),
-              sublabel, ha="center", va="top",
-              fontsize=5, color=C_TEXT, style="italic", zorder=6)
-    port_z = pz + PUMP_BODY_H - PORT_Z_OFFSET
-    # IN port (higher X, right edge of 127mm body)
-    in_x = px + PUMP_BODY_W
-    ax_p.add_patch(plt.Circle((sx(in_x), sz(port_z)), PORT_OD / 2 / SC,
-                   fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax_p.text(sx(in_x + 8), sz(port_z), "IN",
-              ha="left", va="center",
-              fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
-    # OUT port (lower X, left edge of 127mm body)
-    out_x = px
-    ax_p.add_patch(plt.Circle((sx(out_x), sz(port_z)), PORT_OD / 2 / SC,
-                   fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
-    ax_p.text(sx(out_x - 8), sz(port_z), "OUT",
-              ha="right", va="center",
-              fontsize=4, fontweight="bold", color=C_FRAME, zorder=8)
-    return in_x, port_z, out_x, port_z
-
-p03_in_x, p03_port_z, p03_out_x, _ = draw_pump_4(ax4, P03_X, P03_Z, "P-03", "WASTE EVACUATION")
-p04_in_x, p04_port_z, p04_out_x, _ = draw_pump_4(ax4, P04_X, P04_Z, "P-04", "TRAY DRAIN")
-
-# Port Z (same for both — same pump row)
-PORT_Z_4 = p03_port_z
-
-# ── Pipe exit/entry points ───────────────────────────────────────────────────
-PIPE_EXIT_X_4 = FRAME_X + FRAME_W + 200
-PIPE_ENTRY_X_4 = FRAME_X - 150
-
-# Header Z heights for waste & tray drain circuits
-WASTE_HEADER_Z = PUMP_Z + PUMP_BODY_H + 60   # waste suction header
-WASTE_DISCH_Z = PUMP_Z + PUMP_BODY_H + 30    # waste discharge header
-TRAY_DISCH_Z = WASTE_DISCH_Z - 25            # tray drain discharge below waste
-
-# Transition X (where 1" trunk meets 1/2" manifold)
-TRANS_WASTE_IN_X = FRAME_X + FRAME_W + 10
-
-# ── Waste suction: IBC-4 (1") → reducer → P-03 IN (1/2") ──────────────────
-# Trunk (1"): IBC-4 → frame right edge
-draw_pipe_path(ax4,
-    [PIPE_EXIT_X_4, TRANS_WASTE_IN_X + 40],
-    [WASTE_HEADER_Z, WASTE_HEADER_Z],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
-
-# Reducer symbol
-draw_reducer(ax4, TRANS_WASTE_IN_X + 40, WASTE_HEADER_Z, "h")
-
-# Manifold (1/2"): reducer → 90° drop → 90° horizontal into P-03 IN
-draw_pipe_path(ax4,
-    [TRANS_WASTE_IN_X + 25, p03_in_x + ELBOW_OFFSET,
-     p03_in_x + ELBOW_OFFSET, p03_in_x],
-    [WASTE_HEADER_Z, WASTE_HEADER_Z, PORT_Z_4, PORT_Z_4],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
-
-# Flow arrow
-ax4.annotate("", xy=(sx(TRANS_WASTE_IN_X + 100), sz(WASTE_HEADER_Z)),
-             xytext=(sx(TRANS_WASTE_IN_X + 160), sz(WASTE_HEADER_Z)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.5), zorder=12)
-
-ax4.text(sx(PIPE_EXIT_X_4 + 5), sz(WASTE_HEADER_Z + 15),
-         "FROM IBC-4\n(WASTE — 1\" TRUNK)", ha="right", va="bottom",
-         fontsize=5.5, color=C_BLACK_SYS, style="italic")
-
-# ── Waste discharge: P-03 OUT (1/2") → 90° up → reducer → ext drain (1") ──
-draw_pipe_path(ax4,
-    [p03_out_x, p03_out_x - ELBOW_OFFSET, p03_out_x - ELBOW_OFFSET],
-    [PORT_Z_4, PORT_Z_4, WASTE_DISCH_Z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
-
-# Reducer (vertical) on waste discharge riser
-WASTE_RISER_X = p03_out_x - ELBOW_OFFSET
-draw_reducer(ax4, WASTE_RISER_X, WASTE_DISCH_Z, "v")
-
-# Trunk (1"): waste riser → external drain port (lower X)
-draw_pipe_path(ax4,
-    [WASTE_RISER_X, WASTE_RISER_X, PIPE_ENTRY_X_4],
-    [WASTE_DISCH_Z + 15, WASTE_DISCH_Z + 15, WASTE_DISCH_Z + 15],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
-
-# Flow arrow
-mid_waste_out = (WASTE_RISER_X + PIPE_ENTRY_X_4) / 2
-ax4.annotate("", xy=(sx(mid_waste_out - 30), sz(WASTE_DISCH_Z + 15)),
-             xytext=(sx(mid_waste_out + 30), sz(WASTE_DISCH_Z + 15)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.5), zorder=12)
-
-ax4.text(sx(PIPE_ENTRY_X_4 - 5), sz(WASTE_DISCH_Z + 15),
-         "TO EXTERNAL\nDRAIN PORT →", ha="left", va="center",
-         fontsize=5.5, color=C_BLACK_SYS, style="italic", fontweight="bold")
-
-# ── Tray drain suction: sump → P-04 IN (1/2") ──────────────────────────────
-SUMP_ENTRY_Z = 50
-draw_pipe_path(ax4,
-    [p04_in_x, p04_in_x],
-    [SUMP_ENTRY_Z, PORT_Z_4],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
-
-# Flow arrow (upward)
-ax4.annotate("", xy=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z)),
-             xytext=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z + 60)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.2), zorder=10)
-ax4.text(sx(p04_in_x + 40), sz(SUMP_ENTRY_Z - 10),
-         "FROM TRAY SUMP\n(1/2\" HDPE SUCTION)", ha="center", va="top",
-         fontsize=5.5, color=C_BLACK_SYS, style="italic")
-
-# ── Tray drain discharge: P-04 OUT (1/2") → DV-02 → IBC-3 / IBC-4 ─────────
-DV02_X = FRAME_X + FRAME_W / 2
-DV02_Z = FRAME_Z_LO - 60
-DV02_R = 20
-
-draw_pipe_path(ax4,
-    [p04_out_x, p04_out_x - ELBOW_OFFSET, p04_out_x - ELBOW_OFFSET,
-     DV02_X, DV02_X],
-    [PORT_Z_4, PORT_Z_4, TRAY_DISCH_Z, TRAY_DISCH_Z, DV02_Z + DV02_R],
-    OD_H, WALL_H, fc=C_BROWN, zorder=6)
-
-# DV-02 symbol (diamond)
-dv02_pts_x4 = [sx(DV02_X), sx(DV02_X + DV02_R), sx(DV02_X), sx(DV02_X - DV02_R)]
-dv02_pts_z4 = [sz(DV02_Z + DV02_R), sz(DV02_Z), sz(DV02_Z - DV02_R), sz(DV02_Z)]
-dv02_poly4 = plt.Polygon(list(zip(dv02_pts_x4, dv02_pts_z4)),
-                          fc="white", ec=C_FRAME, lw=2.0, zorder=9)
-ax4.add_patch(dv02_poly4)
-ax4.text(sx(DV02_X), sz(DV02_Z), "3W", ha="center", va="center",
-         fontsize=4, fontweight="bold", color=C_FRAME, zorder=10)
-
-# DV-02 outputs (1" trunk to IBCs)
-# Right (higher X) → Brown (IBC-3)
-draw_pipe_path(ax4,
-    [DV02_X + DV02_R, DV02_X + DV02_R + 100],
-    [DV02_Z, DV02_Z],
-    OD_1, WALL_1, fc=C_BROWN, zorder=6)
-ax4.annotate("", xy=(sx(DV02_X + DV02_R + 100), sz(DV02_Z)),
-             xytext=(sx(DV02_X + DV02_R + 60), sz(DV02_Z)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=12)
-ax4.text(sx(DV02_X + DV02_R + 110), sz(DV02_Z + 10), "← BROWN (IBC-3)",
-         ha="right", va="bottom", fontsize=5.5, color=C_BROWN, fontweight="bold")
-
-# Left (lower X) → Black (IBC-4)
-draw_pipe_path(ax4,
-    [DV02_X - DV02_R, DV02_X - DV02_R - 100],
-    [DV02_Z, DV02_Z],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
-ax4.annotate("", xy=(sx(DV02_X - DV02_R - 100), sz(DV02_Z)),
-             xytext=(sx(DV02_X - DV02_R - 60), sz(DV02_Z)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.5), zorder=12)
-ax4.text(sx(DV02_X - DV02_R - 110), sz(DV02_Z + 10), "BLACK (IBC-4) →",
-         ha="left", va="bottom", fontsize=5.5, color=C_BLACK_SYS, fontweight="bold")
-
-# DV-02 label
-place_label(ax4, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
-            component='diverter', fontsize=5.5, color=C_TEXT,
-            dx=0, dy=-2.0, ha='center', va='top')
-
-# ── Brown discharge riser: P-02 OUT → filter skid (context) ─────────────────
-# Show the brown discharge riser as ghost reference (it's P-02's circuit,
-# but visible here as context since the riser is near P-03's waste pipes)
-BROWN_RISER_X_4 = p03_out_x - ELBOW_OFFSET - 50
-ax4.plot([sx(BROWN_RISER_X_4), sx(BROWN_RISER_X_4)],
-         [sz(WASTE_DISCH_Z + 15), sz(WASTE_DISCH_Z + 80)],
-         color=C_BROWN, lw=1.5, ls=(0, (5, 4)), alpha=0.3, zorder=4)
-ax4.text(sx(BROWN_RISER_X_4), sz(WASTE_DISCH_Z + 85),
-         "BROWN RISER\nTO FILTER SKID\n(P-02 CIRCUIT)", ha="center", va="bottom",
-         fontsize=4.5, color=C_BROWN, alpha=0.4, style="italic")
-
-# ── Dimensions ───────────────────────────────────────────────────────────────
-draw_dim_h(ax4, sx(FRAME_X), sx(FRAME_X + FRAME_W), sz(FRAME_Z_LO - 60),
-           f"{FRAME_W}mm", offset=0.44)
-
-# ── Leader callouts ──────────────────────────────────────────────────────────
-leader(ax4, sx(P03_X + PUMP_BODY_W / 2), sz(P03_Z + PUMP_BODY_H / 2),
-       sx(P03_X - 80), sz(P03_Z + PUMP_BODY_H / 2 + 40),
-       "P-03: SHURFLO 2088\nWASTE EVAC\n12V DC, 3.5 GPM", fs=5.5)
-
-leader(ax4, sx(P04_X + PUMP_BODY_W / 2), sz(P04_Z + PUMP_BODY_H / 2),
-       sx(P04_X + PUMP_BODY_W + 80), sz(P04_Z + PUMP_BODY_H / 2 + 40),
-       "P-04: SHURFLO 2088\nTRAY DRAIN\n12V DC, 3.5 GPM", fs=5.5)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

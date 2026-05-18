@@ -113,8 +113,11 @@ ax.invert_xaxis()
 reset_label_registry()
 
 # ── Manifold layout constants ────────────────────────────────────────────────
-# Frame base Z from tbs_constants
-FRAME_Z_LO = PUMP_H_LO   # 200
+# Frame extends from just above the walkway deck (Z=105) up past the pumps.
+# The lower section houses DV-02 (3-way diverter); the upper section holds
+# the 2×2 pump grid.  PUMP_H_LO (200) marks the pump zone boundary in the
+# combined elevation, but the physical frame starts lower to include DV-02.
+FRAME_Z_LO = 105     # just above walkway deck (Z=100)
 
 ANGLE_W = 25   # frame member width (25×25×3mm SHS)
 FRAME_LW = 2.0
@@ -136,10 +139,13 @@ PUMP_MARGIN_X = 20    # margin from frame inner edge to pump body edge
 FRAME_W = 2 * ANGLE_W + 2 * PUMP_MARGIN_X + 2 * PUMP_BODY_W + PUMP_GAP_X
 FRAME_X = PUMP_X + (PUMP_W - FRAME_W) // 2  # centered within pump zone
 
-# Frame tall enough for TWO rows of vertical pumps (2×218mm) + gap + headers
+# Pump zone starts above DV-02 area
+PUMP_ZONE_Z = 200     # Z where pumps begin (matches PUMP_H_LO for other diagrams)
 PUMP_GAP_Z = 60       # vertical gap between bottom and top pump rows
-PUMP_MARGIN_Z = 20    # vertical margin inside frame above/below pump rows
-FRAME_Z_HI = (FRAME_Z_LO + 2 * ANGLE_W + 2 * PUMP_MARGIN_Z
+PUMP_MARGIN_Z = 20    # vertical margin inside pump zone
+
+# Frame top: covers pump zone + headers
+FRAME_Z_HI = (PUMP_ZONE_Z + 2 * PUMP_MARGIN_Z
               + 2 * PUMP_BODY_H + PUMP_GAP_Z + 40)  # +40 for header clearance
 FRAME_H = FRAME_Z_HI - FRAME_Z_LO
 
@@ -152,7 +158,7 @@ P04_X = P02_X   # same column as P-02
 # Pump Z positions — two rows
 #   Bottom row: P-03 (left), P-04 (right)
 #   Top row:    P-01 (left), P-02 (right)
-PUMP_Z_BOT = FRAME_Z_LO + ANGLE_W + PUMP_MARGIN_Z
+PUMP_Z_BOT = PUMP_ZONE_Z + PUMP_MARGIN_Z
 PUMP_Z_TOP = PUMP_Z_BOT + PUMP_BODY_H + PUMP_GAP_Z
 
 P01_Z = PUMP_Z_TOP
@@ -670,9 +676,9 @@ ax.text(sx(p04_in_x + 40), sz(SUMP_ENTRY_Z - 10),
         "FROM TRAY\nSUMP", ha="center", va="top",
         fontsize=4.5, color=C_BLACK_SYS, style="italic")
 
-# Discharge: P-04 OUT → DV-02
+# Discharge: P-04 OUT → DV-02 (mounted on board, below pump zone)
 DV02_X = FRAME_X + FRAME_W / 2
-DV02_Z = FRAME_Z_LO - 60
+DV02_Z = FRAME_Z_LO + ANGLE_W + 40   # inside the frame, below pump zone
 DV02_R = 20
 TRAY_DISCH_Z = WASTE_DISCH_Z - 25
 draw_pipe_path(ax,

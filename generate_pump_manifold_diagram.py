@@ -702,7 +702,7 @@ leader(ax, sx(P01_X + PUMP_BODY_W / 2), sz(P01_Z + PUMP_BODY_H / 2),
 # Wall bracket
 leader(ax, sx(FRAME_X - BRACKET_W / 2), sz(FRAME_Z_LO + 40 + BRACKET_H / 2),
        sx(FRAME_X - BRACKET_W / 2 - 80), sz(FRAME_Z_LO + 40 + BRACKET_H / 2 + 50),
-       "L-BRACKET\nTO WALL RIB", fs=5)
+       "FRAME BRACKET\nTO WALL RIB", fs=5)
 
 # Pipe material leaders — trunk and manifold
 pipe_label_x = (BV01_X + PIPE_EXIT_X) / 2
@@ -786,51 +786,15 @@ for gz in range(-85, 100, 12):
 draw_dim_h(ax2, sa_y(PLY_YD_START), sa_y(PLY_YD_START + PLY_THICK),
            sa_z(-50), "18mm", offset=0.33, fs=5.5)
 
-# ── 3. Pump mounting bracket (steel L-bracket) ──────────────────────────────
-BRACKET_YD = PLY_YD_START + PLY_THICK
-BRACKET_THICK_A = 3
-BRACKET_VIS_H = 70  # visible height of bracket vertical leg
-
-# Vertical leg (bolted to ply)
-ax2.add_patch(plt.Rectangle((sa_y(BRACKET_YD), sa_z(-BRACKET_VIS_H / 2)),
-              BRACKET_THICK_A / SC_A, BRACKET_VIS_H / SC_A,
-              fc="#999999", ec=C_FRAME, lw=1.2, zorder=5))
-
-# Horizontal leg (pump sits on this)
-BRACKET_HORIZ_LEN = 40
-BRACKET_HORIZ_Z = -BRACKET_VIS_H / 2
-ax2.add_patch(plt.Rectangle((sa_y(BRACKET_YD), sa_z(BRACKET_HORIZ_Z - BRACKET_THICK_A)),
-              BRACKET_HORIZ_LEN / SC_A, BRACKET_THICK_A / SC_A,
-              fc="#999999", ec=C_FRAME, lw=1.2, zorder=5))
-
-# ── M6 bolt through bracket + ply ───────────────────────────────────────────
-BOLT_Z_A = 0
-bolt_y_head = BRACKET_YD + BRACKET_THICK_A
-bolt_y_tip = PLY_YD_START - 2
-
-ax2.plot([sa_y(bolt_y_tip), sa_y(bolt_y_head)],
-         [sa_z(BOLT_Z_A), sa_z(BOLT_Z_A)],
-         color=C_FRAME, lw=1.8, zorder=6)
-
-# Bolt head
-ax2.add_patch(plt.Rectangle((sa_y(bolt_y_head), sa_z(BOLT_Z_A - 4)),
-              5 / SC_A, 8 / SC_A,
-              fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
-
-# Nut on back
-ax2.add_patch(plt.Rectangle((sa_y(bolt_y_tip - 3), sa_z(BOLT_Z_A - 5)),
-              3 / SC_A, 10 / SC_A,
-              fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
-
-leader(ax2, sa_y(bolt_y_head + 3), sa_z(BOLT_Z_A),
-       sa_y(bolt_y_head + 35), sa_z(BOLT_Z_A - 25),
-       "M6×40 BOLT\n+ NYLOC NUT", fs=5)
-
-# ── 4. Pump body (cross-section) ────────────────────────────────────────────
-# Vertical pump: section cut in Yd shows 113mm depth × pump head zone height
-PUMP_YD = BRACKET_YD + BRACKET_THICK_A + 5  # small gap
-PUMP_DEPTH = 113   # actual pump depth in Yd (4.45" from datasheet)
+# ── 3. Pump body — through-bolted directly to plywood ────────────────────────
+# No bracket. Pump base sits flat against ply face.
+# Four 1/4"-20 bolts in two columns, 3.2" (81.3mm) apart, each column
+# with two bolts.  Bolts pass through pump mounting feet + 18mm ply;
+# nyloc nuts on wall side.
+PUMP_YD = PLY_YD_START + PLY_THICK   # pump base face flush against ply
+PUMP_DEPTH = 113   # 4.45" depth in Yd (from datasheet)
 PUMP_SEC_H = 85    # visible height in section (head zone)
+BOLT_COL_SPACING = 81.3  # 3.2" between bolt columns (vertical Z)
 
 # Pump body rectangle
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD), sa_z(-PUMP_SEC_H / 2 + 10)),
@@ -850,7 +814,7 @@ ax2.add_patch(plt.Circle((sa_y(chamber_cx), sa_z(chamber_cz)), chamber_r / SC_A,
 ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 12), "DIAPHRAGM",
          ha="center", va="top", fontsize=4, color="#8B5E3C", zorder=6)
 
-# Motor indication (below — motor is at the bottom of the vertical pump)
+# Head/motor indication (top of vertical pump — head near ply, motor outward)
 motor_z_bot = -PUMP_SEC_H / 2 + 10 + PUMP_SEC_H
 motor_h = 30
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 15), sa_z(motor_z_bot)),
@@ -859,6 +823,61 @@ ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 15), sa_z(motor_z_bot)),
 ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(motor_z_bot + motor_h / 2),
          "HEAD", ha="center", va="center",
          fontsize=5, color="white", fontweight="bold", zorder=6)
+
+# ── 4. Through-bolts (4× 1/4"-20, two columns 3.2" apart) ──────────────────
+# Cross-section shows two bolts (one column); the other column is 81.3mm
+# away in X (into the page).  Each bolt goes: washer + nut (pump side) →
+# shank through pump foot + 18mm ply → washer + nyloc nut (wall side).
+BOLT_SHANK_D = 6.35   # 1/4" = 6.35mm
+BOLT_HEAD_W = 10       # hex head/nut width (across flats)
+BOLT_HEAD_H = 5        # hex head/nut height
+NUT_H = 5              # nyloc nut height
+
+# Two bolt Z positions (centered on pump body, 81.3mm apart)
+pump_center_z = (-PUMP_SEC_H / 2 + 10) + PUMP_SEC_H / 2
+bolt_z_upper = pump_center_z + BOLT_COL_SPACING / 2
+bolt_z_lower = pump_center_z - BOLT_COL_SPACING / 2
+
+for bz in [bolt_z_upper, bolt_z_lower]:
+    # Bolt shank — through pump base + plywood
+    bolt_tip_yd = PLY_YD_START - 2   # just past ply on wall side
+    bolt_head_yd = PUMP_YD + 8       # just inside pump body
+    ax2.plot([sa_y(bolt_tip_yd), sa_y(bolt_head_yd)],
+             [sa_z(bz), sa_z(bz)],
+             color=C_FRAME, lw=1.8, zorder=7)
+
+    # Nut on pump side (tightened against pump mounting foot)
+    ax2.add_patch(plt.Rectangle(
+        (sa_y(bolt_head_yd), sa_z(bz - BOLT_HEAD_W / 2)),
+        BOLT_HEAD_H / SC_A, BOLT_HEAD_W / SC_A,
+        fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
+
+    # Washer (pump side, between nut and body)
+    ax2.add_patch(plt.Rectangle(
+        (sa_y(PUMP_YD), sa_z(bz - 5)),
+        2 / SC_A, 10 / SC_A,
+        fc="#999999", ec=C_FRAME, lw=0.5, zorder=7.5))
+
+    # Nyloc nut on wall side (behind ply)
+    ax2.add_patch(plt.Rectangle(
+        (sa_y(bolt_tip_yd - NUT_H), sa_z(bz - BOLT_HEAD_W / 2)),
+        NUT_H / SC_A, BOLT_HEAD_W / SC_A,
+        fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
+
+    # Washer (wall side)
+    ax2.add_patch(plt.Rectangle(
+        (sa_y(bolt_tip_yd - 1), sa_z(bz - 5)),
+        1 / SC_A, 10 / SC_A,
+        fc="#999999", ec=C_FRAME, lw=0.5, zorder=7.5))
+
+# Bolt column spacing dimension (vertical between two bolts)
+draw_dim_v(ax2, sa_y(bolt_head_yd + 18), sa_z(bolt_z_lower), sa_z(bolt_z_upper),
+           f"81.3mm\n(3.2\")", offset=0.33, fs=5)
+
+# Bolt callout
+leader(ax2, sa_y(bolt_head_yd + 5), sa_z(bolt_z_upper),
+       sa_y(bolt_head_yd + 45), sa_z(bolt_z_upper + 25),
+       "1/4\"-20 × 30mm\n+ NYLOC NUT\n(4 PER PUMP)", fs=5)
 
 # ── 5. Port bores (1/2" NPSM — exit SIDEWAYS in X, not front face) ────────
 # In this Yd section, the ports project LEFT and RIGHT out of the page.
@@ -894,20 +913,20 @@ leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
        sa_y(port_bore_yd + 50), sa_z(PORT_Z_SEC + 30),
        "1/2\" NPSM PORTS\nEXIT LEFT & RIGHT\n(81mm APART IN X)\n→ 1/2\" HDPE", fs=5)
 
-# ── Overall standoff dimension ───────────────────────────────────────────────
-total_standoff = PLY_THICK + BRACKET_THICK_A + 5  # 18 + 3 + 5 = 26mm
-draw_dim_h(ax2, sa_y(PLY_YD_START), sa_y(PUMP_YD),
-           sa_z(-75), f"{int(PUMP_YD)}mm\nSTANDOFF", offset=0.33, fs=5.5)
-
-# Pump depth dimension
+# ── Dimensions ───────────────────────────────────────────────────────────────
+# Ply thickness (already drawn above)
+# Pump depth
 draw_dim_h(ax2, sa_y(PUMP_YD), sa_y(PUMP_YD + PUMP_DEPTH),
            sa_z(-75), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=0.33, fs=5.5)
+
+# Wall + ply total
+draw_dim_h(ax2, sa_y(-WALL_T), sa_y(PLY_YD_START + PLY_THICK),
+           sa_z(-90), f"{PLY_THICK + int(WALL_T)}mm\nWALL + PLY", offset=0.33, fs=5)
 
 # ── Component labels along section ──────────────────────────────────────────
 label_z_a = 100
 label_items = [
     (PLY_YD_START + PLY_THICK / 2, "18mm PLY"),
-    (BRACKET_YD + BRACKET_THICK_A / 2, "BRACKET"),
     (PUMP_YD + PUMP_DEPTH / 2, "SHURFLO 2088"),
 ]
 for ly, ltxt in label_items:
@@ -918,8 +937,8 @@ for ly, ltxt in label_items:
 
 # Section cut indicator note
 ax2.text(sa_y(70), sa_z(-95),
-         "SECTION IN Yd AT PORT HEIGHT\nPORTS EXIT L/R (PERPENDICULAR TO CUT)",
-         ha="center", va="top", fontsize=6, color="#666666", style="italic")
+         "SECTION IN Yd AT PORT HEIGHT\nPUMP THROUGH-BOLTED TO 18mm PLY\nNO BRACKET — DIRECT MOUNT",
+         ha="center", va="top", fontsize=5.5, color="#666666", style="italic")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

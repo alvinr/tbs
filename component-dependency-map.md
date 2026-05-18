@@ -165,8 +165,8 @@ C — water pumps P-01–P-04; D — safelight vestibule; E — evaporative cool
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left edge X | 2,400 mm | `PUMP_X` |
-| Width | 300 mm | `PUMP_W` |
+| Left edge X | 2,500 mm | `PUMP_X` |
+| Width | 640 mm | `PUMP_W` |
 | Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
 
 *Components: 1" HDPE header + isolation valves, 4× 12V pumps (P-01 Blue spray bar supply,

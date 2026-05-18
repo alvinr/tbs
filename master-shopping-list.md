@@ -202,18 +202,21 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | $8–$12 |
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible | 2 | Amazon | $18–$30 | $40–$60 |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | $35–$50 |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow | 14 | Amazon | $3–$5 | $42–$70 |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow (trunk lines) | 10 | Amazon | $3–$5 | $30–$50 |
+| [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | Pump manifold internal bends | 8 | Amazon | $2–$4 | $16–$32 |
 | [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene | 8 | Amazon | $4–$6 | $35–$50 |
-| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | Maintenance disconnects | 6 | Amazon | $6–$10 | $40–$60 |
+| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | Maintenance disconnects on trunk lines | 6 | Amazon | $6–$10 | $40–$60 |
+| [1"×1/2" NPT bushing reducer](https://www.amazon.com/s?k=1+inch+1%2F2+inch+NPT+bushing+reducer+polypropylene) | Trunk-to-manifold transitions at pump frame | 4 | Amazon | $3–$5 | $12–$20 |
 | [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 valve to 1" HDPE pipe | 8 | Amazon | $8–$15 | $64–$120 |
 | [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Non-return valve, PVC body, EPDM seal | 4 | Amazon | $8–$14 | $32–$56 |
 | PTFE thread seal tape | ½" wide, 260" roll | 4 | Home Depot | $2 | $8 |
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft sticks | 5 sticks | Ferguson | $12–$18/stick | $60–$90 |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft sticks (trunk lines) | 4 sticks | Ferguson | $12–$18/stick | $48–$72 |
+| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | Pump manifold internal runs | 1 stick | Ferguson | $6–$10/stick | $6–$10 |
 | [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
 | [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
 | [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
 
-**Valves, fittings & pipe subtotal: ~$383–$570**
+**Valves, fittings & pipe subtotal: ~$404–$592**
 
 ### Processing tray
 
@@ -223,7 +226,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Fabrication (cut, brake, weld, press sump) | Two tray halves: 2,229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
 | [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
-| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump to pump manifold | 1 | Amazon | $12–$20 | $15 |
+| [1/2" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump to pump manifold (matches pump port) | 1 | Amazon | $8–$15 | $12 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange, 200mm spacing | 24 | McMaster-Carr | $0.50 each | $12 |
 

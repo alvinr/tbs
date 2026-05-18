@@ -234,6 +234,10 @@ FILT_SUMP_Z    = 1600    # filter sump bottom Z (mm) — eye level for cartridge
 FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)
 FILT_PIPE_WALL = 4       # pipe wall thickness (mm)
 
+# Pump manifold pipe (1/2" HDPE Sch40)
+PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)
+PUMP_PIPE_WALL = 3       # pipe wall thickness (mm)
+
 # ���─ Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
 # Right-justified to far end wall: X=4,674–5,893mm.
 # Layout (view from pinhole wall):

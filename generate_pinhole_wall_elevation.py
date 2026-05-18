@@ -634,8 +634,8 @@ draw_pipe_path(ax,
     [p02_port_z, p02_port_z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 
-# P-02 OUT → left elbow → up to frame top → horizontal to RISER_X
-RISER_ENTRY_Z = PM_FRAME_Z_HI   # riser exits frame top
+# P-02 OUT → left elbow → up past frame top (+50mm) → horizontal to RISER_X
+RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top — shows 1/2→1" transition
 draw_pipe_path(ax,
     [p02_out_x, p02_out_x - ELB, p02_out_x - ELB, RISER_X],
     [p02_port_z, p02_port_z, RISER_ENTRY_Z, RISER_ENTRY_Z],

@@ -437,6 +437,15 @@ HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
 # Transition X: where 1" trunk meets 1/2" manifold
 TRANS_X = FRAME_X + FRAME_W + 10  # just outside frame right
 
+# ── Pipe layer zorders (depth from wall) ────────────────────────────────────
+# Layer 1 (back, closest to wall): Black/waste pipes
+# Layer 2 (middle): Brown pipes
+# Layer 3 (front, closest to viewer): Blue pipes
+# Higher zorder = drawn on top = closer to viewer
+Z_BLACK = 6    # Layer 1 — back
+Z_BROWN = 7    # Layer 2 — middle
+Z_BLUE  = 8    # Layer 3 — front
+
 # ── Pipe crossing helper (break in rear pipe, front pipe continuous) ─────────
 def draw_pipe_crossing(ax, x_mm, z_mm, front_od, front_wall, front_dir,
                        front_fc, rear_od):
@@ -547,34 +556,34 @@ place_label(ax, sx(BV02_X), sz(BV02_Z + 30), "BV-02\n(1\" BALL)",
 draw_pipe_path(ax,
     [PIPE_EXIT_X, BV01_X + BV_R],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
-    OD_1, WALL_1, fc=C_BLUE, zorder=6)
+    OD_1, WALL_1, fc=C_BLUE, zorder=Z_BLUE)
 # Trunk (1"): BV-01 → reducer
 draw_pipe_path(ax,
     [BV01_X - BV_R, TRANS_X],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
-    OD_1, WALL_1, fc=C_BLUE, zorder=6)
+    OD_1, WALL_1, fc=C_BLUE, zorder=Z_BLUE)
 draw_reducer(ax, TRANS_X, HEADER_Z_BLUE_SUC, "h")
 # Manifold (1/2"): reducer → 90° drop → P-01 IN
 draw_pipe_path(ax,
     [TRANS_X - 15, p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET, p01_in_x],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, PORT_Z_TOP, PORT_Z_TOP],
-    OD_H, WALL_H, fc=C_BLUE, zorder=6)
+    OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 
 # P-01 OUT → 90° up → header → ACC-01 → BV-02 → spray bar
 draw_pipe_path(ax,
     [p01_out_x, p01_out_x - ELBOW_OFFSET, p01_out_x - ELBOW_OFFSET, ACC_X],
     [PORT_Z_TOP, PORT_Z_TOP, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
-    OD_H, WALL_H, fc=C_BLUE, zorder=6)
+    OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 acc_exit_x = ACC_X + ACC_W
 draw_pipe_path(ax,
     [acc_exit_x, BV02_X - BV_R],
     [HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
-    OD_H, WALL_H, fc=C_BLUE, zorder=6)
+    OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 draw_reducer(ax, BV02_X + BV_R + 15, BV02_Z, "h")
 draw_pipe_path(ax,
     [BV02_X + BV_R + 30, PIPE_EXIT_X],
     [BV02_Z, BV02_Z],
-    OD_1, WALL_1, fc=C_BLUE, zorder=6)
+    OD_1, WALL_1, fc=C_BLUE, zorder=Z_BLUE)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-02 BROWN RECYCLE — IBC-3 → P-02 → filter skid
@@ -583,13 +592,13 @@ draw_pipe_path(ax,
 draw_pipe_path(ax,
     [PIPE_EXIT_X, TRANS_X],
     [PORT_Z_TOP, PORT_Z_TOP],
-    OD_1, WALL_1, fc=C_BROWN, zorder=6)
+    OD_1, WALL_1, fc=C_BROWN, zorder=Z_BROWN)
 draw_reducer(ax, TRANS_X, PORT_Z_TOP, "h")
 # Manifold (1/2"): reducer → P-02 IN
 draw_pipe_path(ax,
     [TRANS_X - 15, p02_in_x],
     [PORT_Z_TOP, PORT_Z_TOP],
-    OD_H, WALL_H, fc=C_BROWN, zorder=6)
+    OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 
 # P-02 OUT → 90° up → riser → filter skid
 TRANS_BROWN_OUT_Z = PUMP_TOP_Z_TOP + 40
@@ -598,12 +607,12 @@ BROWN_RISER_X = p02_out_x - ELBOW_OFFSET
 draw_pipe_path(ax,
     [p02_out_x, BROWN_RISER_X, BROWN_RISER_X],
     [PORT_Z_TOP, PORT_Z_TOP, TRANS_BROWN_OUT_Z],
-    OD_H, WALL_H, fc=C_BROWN, zorder=6)
+    OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 draw_reducer(ax, BROWN_RISER_X, TRANS_BROWN_OUT_Z, "v")
 draw_pipe_path(ax,
     [BROWN_RISER_X, BROWN_RISER_X],
     [TRANS_BROWN_OUT_Z + 15, RISER_EXIT_Z],
-    OD_1, WALL_1, fc=C_BROWN, zorder=6)
+    OD_1, WALL_1, fc=C_BROWN, zorder=Z_BROWN)
 ax.annotate("", xy=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z)),
             xytext=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z - 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
@@ -621,26 +630,26 @@ WASTE_HEADER_Z = PUMP_Z_BOT + PUMP_BODY_H + PUMP_GAP_Z // 2  # mid-gap between r
 draw_pipe_path(ax,
     [PIPE_EXIT_X, TRANS_X + 40],
     [WASTE_HEADER_Z, WASTE_HEADER_Z],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=Z_BLACK)
 draw_reducer(ax, TRANS_X + 40, WASTE_HEADER_Z, "h")
 # Manifold (1/2"): reducer → elbow down → P-03 IN
 draw_pipe_path(ax,
     [TRANS_X + 25, p03_in_x + ELBOW_OFFSET, p03_in_x + ELBOW_OFFSET, p03_in_x],
     [WASTE_HEADER_Z, WASTE_HEADER_Z, PORT_Z_BOT, PORT_Z_BOT],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 # P-03 OUT → 90° down → horizontal to external drain
 WASTE_DISCH_Z = PUMP_Z_BOT - 30  # below bottom-row pumps
 draw_pipe_path(ax,
     [p03_out_x, p03_out_x - ELBOW_OFFSET, p03_out_x - ELBOW_OFFSET],
     [PORT_Z_BOT, PORT_Z_BOT, WASTE_DISCH_Z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
 WASTE_RISER_X = p03_out_x - ELBOW_OFFSET
 draw_reducer(ax, WASTE_RISER_X, WASTE_DISCH_Z, "v")
 draw_pipe_path(ax,
     [WASTE_RISER_X, WASTE_RISER_X, PIPE_ENTRY_X],
     [WASTE_DISCH_Z - 15, WASTE_DISCH_Z - 15, WASTE_DISCH_Z - 15],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.text(sx(PIPE_ENTRY_X - 5), sz(WASTE_DISCH_Z - 15),
         "TO EXT.\nDRAIN PORT →", ha="left", va="center",
         fontsize=5, color=C_BLACK_SYS, style="italic", fontweight="bold")
@@ -653,7 +662,7 @@ SUMP_ENTRY_Z = 50
 draw_pipe_path(ax,
     [p04_in_x, p04_in_x],
     [SUMP_ENTRY_Z, PORT_Z_BOT],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=6)
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.annotate("", xy=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z)),
             xytext=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z + 50)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.2), zorder=10)
@@ -670,7 +679,7 @@ draw_pipe_path(ax,
     [p04_out_x, p04_out_x - ELBOW_OFFSET, p04_out_x - ELBOW_OFFSET,
      DV02_X, DV02_X],
     [PORT_Z_BOT, PORT_Z_BOT, TRAY_DISCH_Z, TRAY_DISCH_Z, DV02_Z + DV02_R],
-    OD_H, WALL_H, fc=C_BROWN, zorder=6)
+    OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 
 # DV-02 symbol (diamond)
 dv02_pts_x = [sx(DV02_X), sx(DV02_X + DV02_R), sx(DV02_X), sx(DV02_X - DV02_R)]
@@ -683,13 +692,13 @@ ax.text(sx(DV02_X), sz(DV02_Z), "3W", ha="center", va="center",
 draw_pipe_path(ax,
     [DV02_X + DV02_R, DV02_X + DV02_R + 80],
     [DV02_Z, DV02_Z],
-    OD_1, WALL_1, fc=C_BROWN, zorder=6)
+    OD_1, WALL_1, fc=C_BROWN, zorder=Z_BROWN)
 ax.text(sx(DV02_X + DV02_R + 90), sz(DV02_Z + 10), "← BROWN (IBC-3)",
         ha="right", va="bottom", fontsize=5, color=C_BROWN, fontweight="bold")
 draw_pipe_path(ax,
     [DV02_X - DV02_R, DV02_X - DV02_R - 80],
     [DV02_Z, DV02_Z],
-    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=6)
+    OD_1, WALL_1, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.text(sx(DV02_X - DV02_R - 90), sz(DV02_Z + 10), "BLACK (IBC-4) →",
         ha="left", va="bottom", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
 place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
@@ -698,38 +707,22 @@ place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
 
 
 # ── Pipe crossings ─────────────────────────────────────────────────────────
-# CONVENTION: front pipe (closest to viewer) draws continuously;
-# rear pipe has a gap/break where the front pipe crosses it.
-# Horizontal trunks/headers are generally "in front" of vertical
-# drops/risers (they represent the main runs).
+# Layer system: Black L1 (back) → Brown L2 (middle) → Blue L3 (front).
+# Front pipe draws continuously; rear pipe has a gap/break.
+# Pipe zorders (Z_BLACK=6, Z_BROWN=7, Z_BLUE=8) handle most overlap
+# automatically; explicit breaks only needed where pipes truly cross.
+#
+# Verified actual crossings (all others eliminated by geometry):
 
-# --- TOP AREA (headers above top-row pumps) ---
-# 1. Brown riser crosses Blue discharge header — header in front
+# 1. Brown riser (L2, vertical) crosses Blue discharge header (L3, horizontal)
+#    → Blue in front (L3 > L2), Brown riser gets break
 draw_pipe_crossing(ax, BROWN_RISER_X, HEADER_Z_BLUE_DISCH,
                    OD_H, WALL_H, "h", C_BLUE, OD_H)
 
-# 2. Blue suction drop crosses Blue discharge header — header in front
+# 2. Blue suction drop (L3, vertical) crosses Blue discharge header (L3, horizontal)
+#    → Same layer; header is main trunk, so header continuous, drop gets break
 draw_pipe_crossing(ax, p01_in_x + ELBOW_OFFSET, HEADER_Z_BLUE_DISCH,
                    OD_H, WALL_H, "h", C_BLUE, OD_H)
-
-# 3. Brown 1" riser crosses Blue suction manifold — suction in front
-draw_pipe_crossing(ax, BROWN_RISER_X, HEADER_Z_BLUE_SUC,
-                   OD_H, WALL_H, "h", C_BLUE, OD_1)
-
-# --- BOTTOM AREA (below bottom-row pumps) ---
-# 4. P-04 tray drain discharge (horiz) crosses P-03 waste riser (vert)
-#    — tray drain in front
-draw_pipe_crossing(ax, WASTE_RISER_X, TRAY_DISCH_Z,
-                   OD_H, WALL_H, "h", C_BROWN, OD_H)
-
-# 5. DV-02 vertical pipe crosses waste 1" discharge trunk — trunk in front
-draw_pipe_crossing(ax, DV02_X, WASTE_DISCH_Z - 15,
-                   OD_1, WALL_1, "h", C_BLACK_SYS, OD_H)
-
-# 6. P-04 suction riser crosses waste discharge trunk — trunk in front
-if PIPE_ENTRY_X < p04_in_x < WASTE_RISER_X:
-    draw_pipe_crossing(ax, p04_in_x, WASTE_DISCH_Z - 15,
-                       OD_1, WALL_1, "h", C_BLACK_SYS, OD_H)
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────

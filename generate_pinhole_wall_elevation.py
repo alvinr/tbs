@@ -756,9 +756,17 @@ BV06_X = 3600                 # valve position — close to shelf left edge (372
 BV06_R = 25                   # valve body radius for symbol
 
 # Pipe: Blue discharge tee → riser up → horizontal → valve gap → drop to tap
+# TAP riser (zorder=7) crosses behind Blue suction trunk (zorder=8) at Z=976.
+# Split riser into two segments with a gap at the crossing.
+CROSS_GAP = 3  # mm clearance each side of front pipe at crossing
+_gap_half = OD_H / 2.0 + CROSS_GAP  # half-gap sized to front pipe (1/2")
+draw_pipe_path(ax,
+    [TAP_TEE_X, TAP_TEE_X],
+    [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_SUC - _gap_half],
+    TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X, BV06_X - BV06_R],
-    [PM_HEADER_Z_BLUE_DISCH, TAP_BRANCH_Z, TAP_BRANCH_Z],
+    [PM_HEADER_Z_BLUE_SUC + _gap_half, TAP_BRANCH_Z, TAP_BRANCH_Z],
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 draw_pipe_path(ax,
     [BV06_X + BV06_R, TAP_X, TAP_X],

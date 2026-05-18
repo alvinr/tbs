@@ -1007,80 +1007,250 @@ ax3.text(sp_x(acc_plan_cx), sp_y(acc_plan_cy), "ACC-01",
          ha="center", va="center", fontsize=5.5, fontweight="bold",
          color="white", zorder=6)
 
-# ── Pipe stubs with direction arrows ────────────────────────────────────────
-PIPE_LW = 3.0
-STUB_LEN = 120  # stub length extending from manifold edge
+# ── Valve position constants (needed before pipe routing) ──────────────────
+bv01_plan_x = FRAME_X + FRAME_W + 50   # 2850
+bv01_plan_yd = 35
+bv_plan_r = 12
+bv02_plan_x = FRAME_X + FRAME_W + 50   # 2850
+bv02_plan_yd = 115
+dv02_plan_x = FRAME_X - 50             # 2450
+dv02_plan_yd = 95
+dv_plan_r = 14
 
-# Helper: draw a pipe stub from manifold edge with arrow and label
-def pipe_stub(x_start, yd, x_end, color, label, label_side="right"):
-    """Draw a horizontal pipe stub with arrow and label."""
-    ax3.plot([sp_x(x_start), sp_x(x_end)], [sp_y(yd), sp_y(yd)],
-             color=color, lw=PIPE_LW, ls="-", zorder=6)
-    # Arrow direction
-    if x_end > x_start:  # going right (higher X)
-        arr_x = x_end - 40
-        arr_dx = 35
-    else:  # going left (lower X)
-        arr_x = x_end + 40
-        arr_dx = -35
-    ax3.annotate("", xy=(sp_x(arr_x + arr_dx), sp_y(yd)),
-                 xytext=(sp_x(arr_x), sp_y(yd)),
-                 arrowprops=dict(arrowstyle="-|>", color=color, lw=2.0), zorder=7)
-    # Label
-    if label_side == "right":
-        ax3.text(sp_x(x_end + 10), sp_y(yd), label,
-                 ha="left", va="center", fontsize=5.5, color=color,
-                 fontweight="bold", zorder=8)
-    else:
-        ax3.text(sp_x(x_end - 10), sp_y(yd), label,
-                 ha="right", va="center", fontsize=5.5, color=color,
-                 fontweight="bold", zorder=8)
+# ── Pipe routing — parallel-wall pipes (plan view) ─────────────────────────
+# Adapted from draw_pipe_path() to use plan-view coordinate transforms sp_x/sp_y.
+# x_pts/yd_pts are in mm; OD/WALL in mm; elbow_r auto-calculated.
 
-# Blue supply IN (from right / higher X)
-pipe_stub(FRAME_X + FRAME_W, 40, FRAME_X + FRAME_W + STUB_LEN,
-          C_BLUE, "← FROM IBC-1/IBC-2\n    (BLUE SUPPLY)", "right")
+def draw_pipe_path_plan(ax_p, x_pts, yd_pts, od_mm, wall_mm,
+                        fc=C_HDPE, ec=C_FRAME, bore_fc="white",
+                        elbow_r=None, zorder=8):
+    """Draw a pipe run with parallel walls in plan view."""
+    n = len(x_pts)
+    if n < 2:
+        return
+    half_od = od_mm / 2.0
+    half_id = half_od - wall_mm
+    if elbow_r is None:
+        elbow_r = od_mm * 1.0
 
-# Blue discharge OUT (to right / higher X → spray bar)
-pipe_stub(FRAME_X + FRAME_W, 105, FRAME_X + FRAME_W + STUB_LEN,
-          C_BLUE, "→ TO SPRAY BAR\n    (VIA ACC-01, BV-02)", "right")
+    segs = []
+    for i in range(n - 1):
+        dx = x_pts[i + 1] - x_pts[i]
+        dy = yd_pts[i + 1] - yd_pts[i]
+        length = max(math.hypot(dx, dy), 1e-6)
+        segs.append((dx / length, dy / length, length))
 
-# Brown suction IN (from right / higher X)
-pipe_stub(FRAME_X + FRAME_W, 50, FRAME_X + FRAME_W + STUB_LEN,
-          C_BROWN, "← FROM IBC-3\n    (BROWN SUCTION)", "right")
+    elbows = []
+    for i in range(1, n - 1):
+        d1x, d1y, _ = segs[i - 1]
+        d2x, d2y, _ = segs[i]
+        cos_a = max(-1.0, min(1.0, d1x * d2x + d1y * d2y))
+        alpha = math.acos(cos_a)
+        turn = math.pi - alpha
+        if turn < 0.01:
+            elbows.append(None)
+            continue
+        tangent = elbow_r * math.tan(turn / 2)
+        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
+        if tangent > max_t:
+            tangent = max_t
+        cross = d1x * d2y - d1y * d2x
+        if cross > 0:
+            nx, ny = -d1y, d1x
+        else:
+            nx, ny = d1y, -d1x
+        tp_x = x_pts[i] - d1x * tangent
+        tp_y = yd_pts[i] - d1y * tangent
+        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
+        cy = tp_x + nx * r_eff
+        cy_e = tp_y + ny * r_eff
+        start_a = math.atan2(tp_y - cy_e, tp_x - cy)
+        sweep = turn if cross > 0 else -turn
+        elbows.append({
+            'tangent': tangent, 'r': r_eff,
+            'center': (cy, cy_e), 'start': start_a, 'sweep': sweep,
+        })
 
-# Brown discharge OUT (to right / higher X → riser → filter skid)
-pipe_stub(FRAME_X + FRAME_W, 115, FRAME_X + FRAME_W + STUB_LEN,
-          C_BROWN, "→ TO FILTER SKID\n    (RISER UP)", "right")
+    def _rect_plan(sx0, sy0, sx1, sy1, nx, ny, half_r, color, z_ord):
+        pts = [(sp_x(sx0 + nx * half_r), sp_y(sy0 + ny * half_r)),
+               (sp_x(sx1 + nx * half_r), sp_y(sy1 + ny * half_r)),
+               (sp_x(sx1 - nx * half_r), sp_y(sy1 - ny * half_r)),
+               (sp_x(sx0 - nx * half_r), sp_y(sy0 - ny * half_r))]
+        ax_p.fill([p[0] for p in pts], [p[1] for p in pts],
+                  fc=color, ec=ec if color != bore_fc else "none",
+                  lw=0.8 if color != bore_fc else 0, zorder=z_ord)
 
-# Waste suction IN (from right / higher X)
-pipe_stub(FRAME_X + FRAME_W, 85, FRAME_X + FRAME_W + STUB_LEN,
-          C_BLACK_SYS, "← FROM IBC-4\n    (WASTE SUCTION)", "right")
+    for i in range(len(segs)):
+        dx, dy, seg_len = segs[i]
+        nx, ny = -dy, dx
+        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
+        trim_e = elbows[i]['tangent'] if (i < len(elbows) and elbows[i]) else 0
+        p0x = x_pts[i] + dx * trim_s
+        p0y = yd_pts[i] + dy * trim_s
+        p1x = x_pts[i + 1] - dx * trim_e
+        p1y = yd_pts[i + 1] - dy * trim_e
+        remaining = seg_len - trim_s - trim_e
+        if remaining < 0.5:
+            continue
+        _rect_plan(p0x, p0y, p1x, p1y, nx, ny, half_od, fc, zorder)
+        _rect_plan(p0x, p0y, p1x, p1y, nx, ny, half_id, bore_fc, zorder + 1)
 
-# Waste discharge OUT (to left / lower X → ext drain)
-pipe_stub(FRAME_X, 85, FRAME_X - STUB_LEN,
-          C_BLACK_SYS, "TO EXT. DRAIN →\n(LOWER X)", "left")
+    for elb in elbows:
+        if elb is None:
+            continue
+        cy, cy_e = elb['center']
+        r_eff = elb['r']
+        sa = elb['start']
+        sw = elb['sweep']
+        n_arc = max(20, int(abs(sw) / 0.04))
+        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
 
-# Tray drain suction IN (from below / higher Yd — vertical pipe)
-tray_suc_x = P04_X + PUMP_BODY_W / 2 + 20
-ax3.plot([sp_x(tray_suc_x), sp_x(tray_suc_x)],
-         [sp_y(MANIFOLD_DEPTH), sp_y(MANIFOLD_DEPTH + STUB_LEN)],
-         color=C_BLACK_SYS, lw=PIPE_LW, ls="-", zorder=6)
-ax3.annotate("", xy=(sp_x(tray_suc_x), sp_y(MANIFOLD_DEPTH)),
-             xytext=(sp_x(tray_suc_x), sp_y(MANIFOLD_DEPTH + 60)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=2.0), zorder=7)
-ax3.text(sp_x(tray_suc_x + 10), sp_y(MANIFOLD_DEPTH + STUB_LEN + 10),
-         "FROM TRAY SUMP\n(Yd=80, X=2,399)",
-         ha="left", va="top", fontsize=5.5, color=C_BLACK_SYS, fontweight="bold")
+        def _arc_ring_plan(r_out, r_in, color, z_ord,
+                           _cy=cy, _ce=cy_e, _angles=angles):
+            ox_ = [sp_x(_cy + r_out * math.cos(a)) for a in _angles]
+            oy_ = [sp_y(_ce + r_out * math.sin(a)) for a in _angles]
+            ix_ = [sp_x(_cy + r_in * math.cos(a)) for a in _angles]
+            iy_ = [sp_y(_ce + r_in * math.sin(a)) for a in _angles]
+            ax_p.fill(ox_ + ix_[::-1], oy_ + iy_[::-1],
+                      fc=color, ec=ec if color != bore_fc else "none",
+                      lw=0.8 if color != bore_fc else 0, zorder=z_ord)
 
-# Tray drain discharge → DV-02 (exits to right, then routes to IBC-3/4)
-pipe_stub(FRAME_X, 95, FRAME_X - STUB_LEN,
-          C_BROWN, "P-04 → DV-02 →\nIBC-3 or IBC-4", "left")
+        _arc_ring_plan(r_eff + half_od, max(r_eff - half_od, 0.5), fc, zorder)
+        _arc_ring_plan(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
+
+
+# ── Plan-view pipe routing ─────────────────────────────────────────────────
+# Compute pump port positions in plan view (mm)
+# IN port = higher X side, OUT port = lower X side; port_yd = center of pump body
+p01_cx = P01_X + PUMP_BODY_W / 2   # 2585
+p02_cx = P02_X + PUMP_BODY_W / 2   # 2715
+p03_cx = P03_X + PUMP_BODY_W / 2   # 2585
+p04_cx = P04_X + PUMP_BODY_W / 2   # 2715
+
+p01_in_x  = p01_cx + PP_W / 2      # 2630 (higher X = toward IBCs)
+p01_out_x = p01_cx - PP_W / 2      # 2540 (lower X)
+p02_in_x  = p02_cx + PP_W / 2      # 2760
+p02_out_x = p02_cx - PP_W / 2      # 2670
+p03_in_x  = p03_cx + PP_W / 2      # 2630
+p03_out_x = p03_cx - PP_W / 2      # 2540
+p04_in_x  = p04_cx + PP_W / 2      # 2760
+p04_out_x = p04_cx - PP_W / 2      # 2670
+
+ROW_TOP_YD = 25 + PP_D / 2         # 50  — top row port Yd
+ROW_BOT_YD = 75 + PP_D / 2         # 100 — bottom row port Yd
+
+# Exit point X for IBC-side pipes (beyond the frame + stub)
+EXIT_X_R = 3050   # right exit (toward IBCs)
+EXIT_X_L = 2250   # left exit (toward lower X / ext drain)
+EXIT_YD_BOT = MANIFOLD_DEPTH + 200  # below frame (from walkway side)
+
+# ── Blue supply: IBC-1/IBC-2 → BV-01 → P-01 IN ───────────────────────────
+draw_pipe_path_plan(ax3,
+    [EXIT_X_R, bv01_plan_x + bv_plan_r],
+    [35, 35],
+    OD, WALL, fc=C_BLUE, zorder=4)
+# BV-01 → P-01 IN
+draw_pipe_path_plan(ax3,
+    [bv01_plan_x - bv_plan_r, p01_in_x],
+    [35, ROW_TOP_YD],
+    OD, WALL, fc=C_BLUE, zorder=4)
+# Label at exit
+ax3.text(sp_x(EXIT_X_R + 10), sp_y(35),
+         "FROM IBC-1/IBC-2\n(BLUE SUPPLY)",
+         ha="left", va="center", fontsize=5, color=C_BLUE, fontweight="bold")
+
+# ── Blue discharge: P-01 OUT → ACC-01 → BV-02 → spray bar ────────────────
+# P-01 OUT → down to ACC zone → across to ACC
+draw_pipe_path_plan(ax3,
+    [p01_out_x, p01_out_x, acc_plan_cx - ACC_PLAN_R],
+    [ROW_TOP_YD, acc_plan_cy, acc_plan_cy],
+    OD, WALL, fc=C_BLUE, zorder=4)
+# ACC → right along gap between rows → turn down to BV-02
+draw_pipe_path_plan(ax3,
+    [acc_plan_cx + ACC_PLAN_R, bv02_plan_x, bv02_plan_x - bv_plan_r],
+    [acc_plan_cy, acc_plan_cy, bv02_plan_yd],
+    OD, WALL, fc=C_BLUE, zorder=4)
+# BV-02 → spray bar exit
+draw_pipe_path_plan(ax3,
+    [bv02_plan_x + bv_plan_r, EXIT_X_R],
+    [ROW_BOT_YD + 15, ROW_BOT_YD + 15],
+    OD, WALL, fc=C_BLUE, zorder=4)
+# Label at exit
+ax3.text(sp_x(EXIT_X_R + 10), sp_y(ROW_BOT_YD + 15),
+         "TO SPRAY BAR",
+         ha="left", va="center", fontsize=5, color=C_BLUE, fontweight="bold")
+
+# ── Brown suction: IBC-3 → P-02 IN ────────────────────────────────────────
+# Route along wall side (Yd=20) to avoid crossing P-01, then turn down to port
+draw_pipe_path_plan(ax3,
+    [EXIT_X_R, p02_in_x, p02_in_x],
+    [20, 20, ROW_TOP_YD],
+    OD, WALL, fc=C_BROWN, zorder=4)
+ax3.text(sp_x(EXIT_X_R + 10), sp_y(20),
+         "FROM IBC-3\n(BROWN SUCTION)",
+         ha="left", va="center", fontsize=5, color=C_BROWN, fontweight="bold")
+
+# ── Brown discharge: P-02 OUT → riser to filter skid ──────────────────────
+# P-02 outlet goes toward wall (Yd=0) as a vertical riser
+draw_pipe_path_plan(ax3,
+    [p02_out_x, p02_out_x],
+    [ROW_TOP_YD, -20],
+    OD, WALL, fc=C_BROWN, zorder=4)
+# Riser arrow (going up through floor toward filter skid above)
+ax3.annotate("", xy=(sp_x(p02_out_x), sp_y(-30)),
+             xytext=(sp_x(p02_out_x), sp_y(-10)),
+             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0), zorder=9)
+ax3.text(sp_x(p02_out_x), sp_y(-40),
+         "RISER TO\nFILTER SKID",
+         ha="center", va="top", fontsize=5, color=C_BROWN, fontweight="bold")
+
+# ── Waste suction: IBC-4 → P-03 IN ────────────────────────────────────────
+# Route below pump row (Yd=135) to avoid crossing P-04, then turn up to port
+draw_pipe_path_plan(ax3,
+    [EXIT_X_R, p03_in_x, p03_in_x],
+    [135, 135, ROW_BOT_YD],
+    OD, WALL, fc=C_BLACK_SYS, zorder=4)
+ax3.text(sp_x(EXIT_X_R + 10), sp_y(135),
+         "FROM IBC-4\n(WASTE SUCTION)",
+         ha="left", va="center", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+
+# ── Waste discharge: P-03 OUT → ext drain (lower X) ───────────────────────
+# Route below the pump row to avoid overlapping tray drain discharge
+WASTE_OUT_YD = 140
+draw_pipe_path_plan(ax3,
+    [p03_out_x, p03_out_x, EXIT_X_L],
+    [ROW_BOT_YD, WASTE_OUT_YD, WASTE_OUT_YD],
+    OD, WALL, fc=C_BLACK_SYS, zorder=4)
+ax3.text(sp_x(EXIT_X_L - 10), sp_y(WASTE_OUT_YD),
+         "TO EXT.\nDRAIN",
+         ha="right", va="center", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+
+# ── Tray drain suction: from tray sump (high Yd) → P-04 IN ────────────────
+# Comes from walkway side, routes to P-04 IN port (higher X side)
+draw_pipe_path_plan(ax3,
+    [p04_in_x, p04_in_x],
+    [EXIT_YD_BOT, ROW_BOT_YD],
+    OD, WALL, fc=C_BLACK_SYS, zorder=4)
+ax3.text(sp_x(p04_in_x + 10), sp_y(EXIT_YD_BOT + 15),
+         "FROM TRAY\nSUMP",
+         ha="left", va="top", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
+
+# ── Tray drain discharge: P-04 OUT → DV-02 → IBC-3 or IBC-4 ──────────────
+draw_pipe_path_plan(ax3,
+    [p04_out_x, dv02_plan_x + dv_plan_r],
+    [ROW_BOT_YD, dv02_plan_yd],
+    OD, WALL, fc=C_BROWN, zorder=4)
+# DV-02 → exit left
+draw_pipe_path_plan(ax3,
+    [dv02_plan_x - dv_plan_r, EXIT_X_L],
+    [dv02_plan_yd, dv02_plan_yd],
+    OD, WALL, fc=C_BROWN, zorder=4)
+ax3.text(sp_x(EXIT_X_L - 10), sp_y(dv02_plan_yd),
+         "VIA DV-02 TO\nIBC-3 or IBC-4",
+         ha="right", va="center", fontsize=5, color=C_BROWN, fontweight="bold")
 
 # ── BV-01 and BV-02 symbols in plan ─────────────────────────────────────────
-# BV-01 on Blue supply inlet line
-bv01_plan_x = FRAME_X + FRAME_W + 50
-bv01_plan_yd = 40
-bv_plan_r = 12
+# (positions defined above with pipe routing constants)
 bv_pts_x = [sp_x(bv01_plan_x), sp_x(bv01_plan_x + bv_plan_r),
             sp_x(bv01_plan_x), sp_x(bv01_plan_x - bv_plan_r)]
 bv_pts_y = [sp_y(bv01_plan_yd + bv_plan_r), sp_y(bv01_plan_yd),
@@ -1091,8 +1261,6 @@ ax3.text(sp_x(bv01_plan_x), sp_y(bv01_plan_yd - 18), "BV-01",
          ha="center", va="top", fontsize=5, color=C_VALVE, fontweight="bold")
 
 # BV-02 on Blue discharge line
-bv02_plan_x = FRAME_X + FRAME_W + 50
-bv02_plan_yd = 105
 bv2_pts_x = [sp_x(bv02_plan_x), sp_x(bv02_plan_x + bv_plan_r),
              sp_x(bv02_plan_x), sp_x(bv02_plan_x - bv_plan_r)]
 bv2_pts_y = [sp_y(bv02_plan_yd + bv_plan_r), sp_y(bv02_plan_yd),
@@ -1103,9 +1271,6 @@ ax3.text(sp_x(bv02_plan_x), sp_y(bv02_plan_yd - 18), "BV-02",
          ha="center", va="top", fontsize=5, color=C_VALVE, fontweight="bold")
 
 # ── DV-02 symbol in plan ────────────────────────────────────────────────────
-dv02_plan_x = FRAME_X - 50
-dv02_plan_yd = 95
-dv_plan_r = 14
 dv_pts_x = [sp_x(dv02_plan_x), sp_x(dv02_plan_x + dv_plan_r),
             sp_x(dv02_plan_x), sp_x(dv02_plan_x - dv_plan_r)]
 dv_pts_y = [sp_y(dv02_plan_yd + dv_plan_r), sp_y(dv02_plan_yd),

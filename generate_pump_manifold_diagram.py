@@ -685,16 +685,29 @@ place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
 
 
 # ── Pipe crossing bridges ──────────────────────────────────────────────────
-# P-04 tray drain discharge runs horizontally at TRAY_DISCH_Z and crosses
-# the P-03 waste discharge vertical riser at WASTE_RISER_X.
+# CONVENTION: semicircular hop at every point where one pipe crosses another
+# without connecting.  direction="h" for horiz pipe crossing vert,
+#                      direction="v" for vert pipe crossing horiz.
+
+# --- TOP AREA (headers above top-row pumps) ---
+# 1. Brown discharge riser (vertical) crosses Blue discharge header (horiz)
+draw_pipe_bridge(ax, BROWN_RISER_X, HEADER_Z_BLUE_DISCH, OD_H, direction="v")
+
+# 2. Blue suction drop (vertical) crosses Blue discharge header (horiz)
+draw_pipe_bridge(ax, p01_in_x + ELBOW_OFFSET, HEADER_Z_BLUE_DISCH, OD_H,
+                 direction="v")
+
+# 3. Brown discharge riser 1" (vertical) crosses Blue suction manifold (horiz)
+draw_pipe_bridge(ax, BROWN_RISER_X, HEADER_Z_BLUE_SUC, OD_H, direction="v")
+
+# --- BOTTOM AREA (below bottom-row pumps) ---
+# 4. P-04 tray drain discharge (horiz) crosses P-03 waste riser (vert)
 draw_pipe_bridge(ax, WASTE_RISER_X, TRAY_DISCH_Z, OD_H, direction="h")
 
-# P-04 tray drain vertical drop to DV-02 crosses the waste 1" discharge
-# trunk running horizontally at WASTE_DISCH_Z - 15.
+# 5. P-04 tray drain vertical drop to DV-02 crosses waste 1" discharge trunk
 draw_pipe_bridge(ax, DV02_X, WASTE_DISCH_Z - 15, OD_1, direction="v")
 
-# The P-04 suction riser (vertical) may cross the waste discharge trunk
-# if p04_in_x is in range — check and add bridge.
+# 6. P-04 suction riser (vertical) may cross waste discharge trunk
 if PIPE_ENTRY_X < p04_in_x < WASTE_RISER_X:
     draw_pipe_bridge(ax, p04_in_x, WASTE_DISCH_Z - 15, OD_1, direction="v")
 
@@ -847,12 +860,12 @@ def sa_y(yd_mm):
 def sa_z(z_mm):
     return OAZ + z_mm / SC_A
 
-# Detail limits
+# Detail limits — taller to show full 218mm pump height
 ax2.set_xlim(sa_y(-25) - 0.5, sa_y(220) + 0.5)
-ax2.set_ylim(sa_z(-100) - 0.5, sa_z(130) + 0.5)
+ax2.set_ylim(sa_z(-150) - 0.5, sa_z(160) + 0.5)
 
 # Detail title
-ax2.text(sa_y(100), sa_z(120), "DETAIL A — PUMP MOUNTING\nCROSS-SECTION (APPROX 1:3)",
+ax2.text(sa_y(100), sa_z(150), "DETAIL A — PUMP MOUNTING\nCROSS-SECTION (APPROX 1:3)",
          ha="center", va="top", fontsize=8, fontweight="bold",
          color="#1A237E", zorder=10)
 
@@ -860,20 +873,20 @@ ax2.text(sa_y(100), sa_z(120), "DETAIL A — PUMP MOUNTING\nCROSS-SECTION (APPRO
 
 # ── 1. Container corrugated wall (section fill) ─────────────────────────────
 WALL_T = 2.0
-ax2.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-90)),
-              WALL_T / SC_A, 200 / SC_A,
+ax2.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-130)),
+              WALL_T / SC_A, 280 / SC_A,
               fc=C_STEEL_FILL, ec=C_FRAME, lw=1.8, zorder=3, hatch="//"))
-ax2.text(sa_y(-WALL_T / 2), sa_z(105), "WALL", ha="center", va="bottom",
+ax2.text(sa_y(-WALL_T / 2), sa_z(145), "WALL", ha="center", va="bottom",
          fontsize=5.5, color=C_FRAME)
 
 # ── 2. Plywood backing board (18mm) ─────────────────────────────────────────
 PLY_YD_START = 0
 PLY_THICK = 18
-ax2.add_patch(plt.Rectangle((sa_y(PLY_YD_START), sa_z(-90)),
-              PLY_THICK / SC_A, 200 / SC_A,
+ax2.add_patch(plt.Rectangle((sa_y(PLY_YD_START), sa_z(-130)),
+              PLY_THICK / SC_A, 280 / SC_A,
               fc=C_PLY, ec="#A09060", lw=1.5, zorder=3))
 # Wood grain
-for gz in range(-85, 100, 12):
+for gz in range(-125, 140, 12):
     ax2.plot([sa_y(PLY_YD_START + 2), sa_y(PLY_YD_START + PLY_THICK - 2)],
              [sa_z(gz), sa_z(gz + 2)],
              color="#C0B080", lw=0.4, zorder=3.5)
@@ -888,36 +901,49 @@ draw_dim_h(ax2, sa_y(PLY_YD_START), sa_y(PLY_YD_START + PLY_THICK),
 # nyloc nuts on wall side.
 PUMP_YD = PLY_YD_START + PLY_THICK   # pump base face flush against ply
 PUMP_DEPTH = 113   # 4.45" depth in Yd (from datasheet)
-PUMP_SEC_H = 85    # visible height in section (head zone)
+PUMP_SEC_H = 218   # FULL pump height in section (218mm = 8.60" per spec)
 BOLT_COL_SPACING = 81.3  # 3.2" between bolt columns (vertical Z)
 
-# Pump body rectangle
-ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD), sa_z(-PUMP_SEC_H / 2 + 10)),
+# Pump body Z range — centered on Z=0 (port height reference)
+PUMP_SEC_Z_BOT = -PUMP_SEC_H / 2   # -109mm
+PUMP_SEC_Z_TOP = PUMP_SEC_H / 2    # +109mm
+
+# Pump body rectangle (full 218mm height × 113mm depth)
+ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD), sa_z(PUMP_SEC_Z_BOT)),
               PUMP_DEPTH / SC_A, PUMP_SEC_H / SC_A,
               fc=C_PUMP_BODY, ec=C_FRAME, lw=1.8, alpha=0.85, zorder=5))
 
-ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(25),
+ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(0),
          "PUMP\nBODY", ha="center", va="center",
          fontsize=6, color="white", fontweight="bold", zorder=6)
 
-# Diaphragm chamber indication (internal circle)
+# Diaphragm chamber indication (internal circle, centered on pump)
 chamber_cx = PUMP_YD + PUMP_DEPTH / 2
-chamber_cz = -5
-chamber_r = 25
+chamber_cz = -20
+chamber_r = 30
 ax2.add_patch(plt.Circle((sa_y(chamber_cx), sa_z(chamber_cz)), chamber_r / SC_A,
               fc="#D0A070", ec="#8B5E3C", lw=1.0, alpha=0.5, zorder=5.5))
-ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 12), "DIAPHRAGM",
+ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 18), "DIAPHRAGM",
          ha="center", va="top", fontsize=4, color="#8B5E3C", zorder=6)
 
-# Head/motor indication (top of vertical pump — head near ply, motor outward)
-motor_z_bot = -PUMP_SEC_H / 2 + 10 + PUMP_SEC_H
-motor_h = 30
-ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 15), sa_z(motor_z_bot)),
-              (PUMP_DEPTH - 30) / SC_A, motor_h / SC_A,
+# Head zone (top ~50mm of pump — ports exit from here)
+HEAD_ZONE_H = 50
+head_z_bot = PUMP_SEC_Z_TOP - HEAD_ZONE_H
+ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 10), sa_z(head_z_bot)),
+              (PUMP_DEPTH - 20) / SC_A, HEAD_ZONE_H / SC_A,
               fc="#CC8844", ec=C_FRAME, lw=1.2, alpha=0.85, zorder=5))
-ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(motor_z_bot + motor_h / 2),
+ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(head_z_bot + HEAD_ZONE_H / 2),
          "HEAD", ha="center", va="center",
          fontsize=5, color="white", fontweight="bold", zorder=6)
+
+# Motor end indication (bottom ~40mm)
+MOTOR_ZONE_H = 40
+ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 10), sa_z(PUMP_SEC_Z_BOT)),
+              (PUMP_DEPTH - 20) / SC_A, MOTOR_ZONE_H / SC_A,
+              fc="#CC7733", ec=C_FRAME, lw=1.0, alpha=0.6, zorder=5))
+ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(PUMP_SEC_Z_BOT + MOTOR_ZONE_H / 2),
+         "MOTOR", ha="center", va="center",
+         fontsize=4.5, color="white", fontweight="bold", zorder=6)
 
 # ── 4. Through-bolts (4× 1/4"-20, two columns 3.2" apart) ──────────────────
 # Cross-section shows two bolts (one column); the other column is 81.3mm
@@ -929,7 +955,7 @@ BOLT_HEAD_H = 5        # hex head/nut height
 NUT_H = 5              # nyloc nut height
 
 # Two bolt Z positions (centered on pump body, 81.3mm apart)
-pump_center_z = (-PUMP_SEC_H / 2 + 10) + PUMP_SEC_H / 2
+pump_center_z = 0  # centered on port height reference
 bolt_z_upper = pump_center_z + BOLT_COL_SPACING / 2
 bolt_z_lower = pump_center_z - BOLT_COL_SPACING / 2
 
@@ -979,7 +1005,8 @@ leader(ax2, sa_y(bolt_head_yd + 5), sa_z(bolt_z_upper),
 # They appear as circles (cross-section through the port bore).
 PORT_OD_SEC = 21   # 1/2" pipe OD ~21mm
 PORT_WALL_SEC = 3
-PORT_Z_SEC = 0     # port center Z (relative to section center)
+# Ports are near the head (top of pump), 30mm below top edge
+PORT_Z_SEC = PUMP_SEC_Z_TOP - PORT_Z_OFFSET  # ~79mm above center
 
 # Port bore — shown as a circle with dashed line indicating it exits sideways
 port_bore_yd = PUMP_YD + PUMP_DEPTH / 2  # approximate center of head zone in Yd
@@ -1012,14 +1039,18 @@ leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
 # Ply thickness (already drawn above)
 # Pump depth
 draw_dim_h(ax2, sa_y(PUMP_YD), sa_y(PUMP_YD + PUMP_DEPTH),
-           sa_z(-75), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=0.33, fs=5.5)
+           sa_z(PUMP_SEC_Z_BOT - 20), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=0.33, fs=5.5)
 
 # Wall + ply total
 draw_dim_h(ax2, sa_y(-WALL_T), sa_y(PLY_YD_START + PLY_THICK),
-           sa_z(-90), f"{PLY_THICK + int(WALL_T)}mm\nWALL + PLY", offset=0.33, fs=5)
+           sa_z(PUMP_SEC_Z_BOT - 40), f"{PLY_THICK + int(WALL_T)}mm\nWALL + PLY", offset=0.33, fs=5)
+
+# Pump height dimension (full 218mm)
+draw_dim_v(ax2, sa_y(PUMP_YD + PUMP_DEPTH + 15), sa_z(PUMP_SEC_Z_BOT), sa_z(PUMP_SEC_Z_TOP),
+           f"{PUMP_SEC_H}mm\n(8.60\")", offset=0.33, fs=5)
 
 # ── Component labels along section ──────────────────────────────────────────
-label_z_a = 100
+label_z_a = PUMP_SEC_Z_TOP + 20
 label_items = [
     (PLY_YD_START + PLY_THICK / 2, "18mm PLY"),
     (PUMP_YD + PUMP_DEPTH / 2, "SHURFLO 2088"),
@@ -1027,11 +1058,11 @@ label_items = [
 for ly, ltxt in label_items:
     ax2.text(sa_y(ly), sa_z(label_z_a), ltxt, ha="center", va="bottom",
              fontsize=5, color=C_FRAME)
-    ax2.plot([sa_y(ly), sa_y(ly)], [sa_z(label_z_a - 5), sa_z(motor_z_bot + motor_h + 2)],
+    ax2.plot([sa_y(ly), sa_y(ly)], [sa_z(label_z_a - 5), sa_z(PUMP_SEC_Z_TOP + 2)],
              color=C_DIM, lw=0.5, ls=":", zorder=2)
 
 # Section cut indicator note
-ax2.text(sa_y(70), sa_z(-95),
+ax2.text(sa_y(70), sa_z(PUMP_SEC_Z_BOT - 30),
          "SECTION IN Yd AT PORT HEIGHT\nPUMP THROUGH-BOLTED TO 18mm PLY\nNO BRACKET — DIRECT MOUNT",
          ha="center", va="top", fontsize=5.5, color="#666666", style="italic")
 

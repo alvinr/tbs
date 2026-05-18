@@ -434,7 +434,7 @@ def draw_ball_valve(ax, bvx, bvz, label):
 PIPE_EXIT_X = FRAME_X + FRAME_W + 350  # pipes enter/exit toward IBCs (higher X)
 PIPE_ENTRY_X = FRAME_X - 150           # pipes exit toward cargo door (lower X)
 ELBOW_OFFSET = 40  # offset from port for visible 90° elbow
-CROSS_GAP = 15     # mm clearance each side — wide gap for clear visual break
+CROSS_GAP = 0      # rear pipe butts flush to front pipe outer wall (zero extra gap)
 
 # Header Z heights above top-row pump bodies
 HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 260  # Blue suction header (+75mm raised)
@@ -639,13 +639,10 @@ place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
             dx=0, dy=-2.0, ha='center', va='top')
 
 
-# ── Pipe crossings & junction dots ─────────────────────────────────────────
+# ── Pipe crossings ─────────────────────────────────────────────────────────
 # Layer system: Black L1 (back) → Brown L2 (middle) → Blue L3 (front).
-# Front pipe draws continuously; rear pipe is split into two segments with
-# a gap where the front pipe crosses (break/gap method).
-# Convention: filled junction dot = real connection; gap without dot = crossing.
-# No junction dots are needed in this manifold detail view because all pipe
-# runs are point-to-point (no tees/branches). All gaps are visual crossings.
+# Front pipe draws continuously; rear pipe breaks flush against front pipe
+# outer wall (zero extra gap). Joins butt at zero distance.
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────

@@ -757,10 +757,10 @@ BV06_R = 25                   # valve body radius for symbol
 
 # Pipe: Blue discharge tee → riser up → horizontal → valve gap → drop to tap
 # TAP riser crosses Blue suction trunk at Z=PM_HEADER_Z_BLUE_SUC.
-# Crossing convention: gap in rear pipe (no junction dot = not connected).
-# The real tee at (TAP_TEE_X, PM_HEADER_Z_BLUE_DISCH) gets a junction dot.
-CROSS_GAP = 25  # mm clearance each side — wide gap for clear visual break
-_gap_half = OD_H / 2.0 + CROSS_GAP  # half-gap sized to front pipe + margin
+# Crossing: rear pipe breaks flush against front pipe walls (zero extra gap).
+# Front pipe (Blue suction, zorder=Z_BLUE) is continuous; rear pipe butts
+# exactly to the front pipe OD edge.
+_gap_half = OD_H / 2.0  # rear pipe stops at front pipe outer wall
 # Rear pipe: below crossing (TAP_TEE_X, discharge Z → gap below suction Z)
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X],
@@ -813,20 +813,6 @@ equip_block(SHELF_X_L, SHELF_H - SHELF_T, SHELF_X_R - SHELF_X_L, SHELF_T,
 ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
         "CHEM SHELF (Yd=300, BEHIND)", ha="center", va="top",
         fontsize=4, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
-
-# ═══════════════════════════════════════════════════════════════════════════
-# JUNCTION DOTS — filled circles at every real pipe tee/branch connection.
-# Convention: dot = pipes connect; no dot (gap only) = pipes merely cross.
-# ═══════════════════════════════════════════════════════════════════════════
-JD_R = 18  # junction dot radius (mm) — bold, ~2× pipe OD for visibility
-
-# TAP-01 branch tee off Blue discharge trunk
-ax.add_patch(plt.Circle((sx(TAP_TEE_X), sz(PM_HEADER_Z_BLUE_DISCH)),
-             JD_R * S, fc=C_BLUE, ec=C_BLUE_EC, lw=0.8, zorder=Z_BLUE + 1))
-
-# Tray drain suction tee at p04_in_x (vertical riser meets horizontal run)
-ax.add_patch(plt.Circle((sx(p04_in_x), sz(TRAY_DRAIN_Z)),
-             JD_R * S, fc=C_BLACK_SYS, ec=C_BLACK_EC, lw=0.8, zorder=Z_BLACK + 1))
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 5. DIMENSION LINES — key clearances and positions
@@ -924,7 +910,6 @@ notes = [
     "6. Battery right edge (X=2310) clears pinhole cone left boundary (X=2319 at Yd=0) by 9mm.",
     "7. Tray drain suction runs from sump (X=2399) to manifold frame bottom; DV-02 directs to IBC-3 or IBC-4.",
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
-    "9. PIPE CROSSING CONVENTION: ● filled dot = real connection (tee/branch). Gap without dot = pipes cross but do NOT connect.",
 ]
 note_y = 0.06
 for i, note in enumerate(notes):

@@ -209,6 +209,7 @@ DIAG_FILES=(
     "shelf-sheet2.png"
     "shelf-sheet3.png"
     "pinhole-wall-elevation.png"
+    "pump-manifold-sheet1.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

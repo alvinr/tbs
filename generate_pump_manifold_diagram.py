@@ -519,18 +519,19 @@ draw_pipe_path(ax,
 # Reducer symbol
 draw_reducer(ax, TRANS_BLUE_IN_X, HEADER_Z_BLUE_SUC, "h")
 
-# Manifold (1/2"): reducer → header → drop to P-01 IN port
+# Manifold (1/2"): reducer → header → 90° drop → 90° horizontal into P-01 IN
+ELBOW_OFFSET = 40  # offset from port stub end for visible elbow
 draw_pipe_path(ax,
-    [TRANS_BLUE_IN_X - 15, p01_in_x, p01_in_x],
-    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, PORT_Z],
+    [TRANS_BLUE_IN_X - 15, p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET, p01_in_x],
+    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, PORT_Z, PORT_Z],
     OD_H, WALL_H, fc=C_BLUE, zorder=6)
 
 # ── Blue discharge: P-01 OUT (1/2") → ACC-01 → BV-02 → reducer → exit (1") ──
 
-# Manifold (1/2"): P-01 OUT → up → ACC-01
+# Manifold (1/2"): P-01 OUT → 90° horizontal left → 90° up → header → ACC-01
 draw_pipe_path(ax,
-    [p01_out_x, p01_out_x, ACC_X],
-    [PORT_Z, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
+    [p01_out_x, p01_out_x - ELBOW_OFFSET, p01_out_x - ELBOW_OFFSET, ACC_X],
+    [PORT_Z, PORT_Z, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, zorder=6)
 
 # Manifold (1/2"): ACC-01 exit → BV-02
@@ -568,26 +569,27 @@ draw_pipe_path(ax,
 # ── Brown discharge: P-02 OUT (1/2") → riser → reducer → filter skid (1") ─
 RISER_EXIT_Z = HEADER_Z_BROWN_DISCH + 80
 
-# Manifold (1/2"): P-02 OUT → up to transition Z
+# Manifold (1/2"): P-02 OUT → 90° horizontal left → 90° up to transition Z
 draw_pipe_path(ax,
-    [p02_out_x, p02_out_x],
-    [PORT_Z, TRANS_BROWN_OUT_Z],
+    [p02_out_x, p02_out_x - ELBOW_OFFSET, p02_out_x - ELBOW_OFFSET],
+    [PORT_Z, PORT_Z, TRANS_BROWN_OUT_Z],
     OD_H, WALL_H, fc=C_BROWN, zorder=6)
 
-# Reducer (vertical)
-draw_reducer(ax, p02_out_x, TRANS_BROWN_OUT_Z, "v")
+# Reducer (vertical) — on the riser at the elbow offset X
+BROWN_RISER_X = p02_out_x - ELBOW_OFFSET
+draw_reducer(ax, BROWN_RISER_X, TRANS_BROWN_OUT_Z, "v")
 
 # Trunk (1"): transition → riser exit to filter skid
 draw_pipe_path(ax,
-    [p02_out_x, p02_out_x],
+    [BROWN_RISER_X, BROWN_RISER_X],
     [TRANS_BROWN_OUT_Z + 15, RISER_EXIT_Z],
     OD_1, WALL_1, fc=C_BROWN, zorder=6)
 
 # Riser exit arrow and annotation
-ax.annotate("", xy=(sx(p02_out_x), sz(RISER_EXIT_Z)),
-            xytext=(sx(p02_out_x), sz(RISER_EXIT_Z - 60)),
+ax.annotate("", xy=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z)),
+            xytext=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z - 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
-ax.text(sx(p02_out_x), sz(RISER_EXIT_Z + 10),
+ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
         "TO FILTER SKID\n(F1 → F2 → F3)", ha="center", va="bottom",
         fontsize=5.5, color=C_BROWN, style="italic", fontweight="bold")
 
@@ -879,74 +881,72 @@ leader(ax2, sa_y(bolt_y_head + 3), sa_z(BOLT_Z_A),
        "M6×40 BOLT\n+ NYLOC NUT", fs=5)
 
 # ── 4. Pump body (cross-section) ────────────────────────────────────────────
+# Vertical pump: section cut in Yd shows 113mm depth × pump head zone height
 PUMP_YD = BRACKET_YD + BRACKET_THICK_A + 5  # small gap
-PUMP_DEPTH = 100   # depth in Yd direction
-PUMP_SEC_H = 85    # height in section
+PUMP_DEPTH = 113   # actual pump depth in Yd (4.45" from datasheet)
+PUMP_SEC_H = 85    # visible height in section (head zone)
 
 # Pump body rectangle
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD), sa_z(-PUMP_SEC_H / 2 + 10)),
               PUMP_DEPTH / SC_A, PUMP_SEC_H / SC_A,
               fc=C_PUMP_BODY, ec=C_FRAME, lw=1.8, alpha=0.85, zorder=5))
 
-ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(10),
+ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(25),
          "PUMP\nBODY", ha="center", va="center",
          fontsize=6, color="white", fontweight="bold", zorder=6)
 
 # Diaphragm chamber indication (internal circle)
 chamber_cx = PUMP_YD + PUMP_DEPTH / 2
-chamber_cz = 10
+chamber_cz = -5
 chamber_r = 25
 ax2.add_patch(plt.Circle((sa_y(chamber_cx), sa_z(chamber_cz)), chamber_r / SC_A,
               fc="#D0A070", ec="#8B5E3C", lw=1.0, alpha=0.5, zorder=5.5))
 ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 12), "DIAPHRAGM",
          ha="center", va="top", fontsize=4, color="#8B5E3C", zorder=6)
 
-# Motor dome (top)
+# Motor indication (below — motor is at the bottom of the vertical pump)
 motor_z_bot = -PUMP_SEC_H / 2 + 10 + PUMP_SEC_H
 motor_h = 30
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 15), sa_z(motor_z_bot)),
               (PUMP_DEPTH - 30) / SC_A, motor_h / SC_A,
               fc="#CC8844", ec=C_FRAME, lw=1.2, alpha=0.85, zorder=5))
 ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(motor_z_bot + motor_h / 2),
-         "MOTOR", ha="center", va="center",
+         "HEAD", ha="center", va="center",
          fontsize=5, color="white", fontweight="bold", zorder=6)
 
-# ── 5. Port stubs (1/2" NPSM) ──────────────────────────────────────────────
-PORT_YD = PUMP_YD + PUMP_DEPTH  # port exits front face
+# ── 5. Port bores (1/2" NPSM — exit SIDEWAYS in X, not front face) ────────
+# In this Yd section, the ports project LEFT and RIGHT out of the page.
+# They appear as circles (cross-section through the port bore).
 PORT_OD_SEC = 21   # 1/2" pipe OD ~21mm
 PORT_WALL_SEC = 3
-PORT_Z_SEC = 0
+PORT_Z_SEC = 0     # port center Z (relative to section center)
 
-# Port bore through pump body
-ax2.add_patch(plt.Rectangle((sa_y(PORT_YD - 10), sa_z(PORT_Z_SEC - PORT_OD_SEC / 2)),
-              10 / SC_A, PORT_OD_SEC / SC_A,
-              fc="white", ec=C_FRAME, lw=1.0, zorder=6))
+# Port bore — shown as a circle with dashed line indicating it exits sideways
+port_bore_yd = PUMP_YD + PUMP_DEPTH / 2  # approximate center of head zone in Yd
+port_bore_r = PORT_OD_SEC / 2
 
-# Hose barb fitting
-BARB_LEN = 35
-# Outer wall
-ax2.add_patch(plt.Rectangle((sa_y(PORT_YD), sa_z(PORT_Z_SEC - PORT_OD_SEC / 2)),
-              BARB_LEN / SC_A, PORT_OD_SEC / SC_A,
-              fc=C_STEEL_FILL, ec=C_FRAME, lw=1.0, zorder=5))
+# Outer bore circle (port tube cross-section)
+ax2.add_patch(plt.Circle((sa_y(port_bore_yd), sa_z(PORT_Z_SEC)),
+              port_bore_r / SC_A, fc="white", ec=C_FRAME, lw=1.5, zorder=6))
 # Inner bore
-ax2.add_patch(plt.Rectangle(
-    (sa_y(PORT_YD), sa_z(PORT_Z_SEC - PORT_OD_SEC / 2 + PORT_WALL_SEC)),
-    BARB_LEN / SC_A, (PORT_OD_SEC - 2 * PORT_WALL_SEC) / SC_A,
-    fc="white", ec="none", zorder=6))
+ax2.add_patch(plt.Circle((sa_y(port_bore_yd), sa_z(PORT_Z_SEC)),
+              (port_bore_r - PORT_WALL_SEC) / SC_A,
+              fc="white", ec=C_FRAME, lw=0.8, zorder=6.5))
+# Center dot (convention for a bore going into the page)
+ax2.plot(sa_y(port_bore_yd), sa_z(PORT_Z_SEC), 'o',
+         color=C_FRAME, markersize=3, zorder=7)
 
-# Barb ridges
-for bx in range(10, BARB_LEN, 8):
-    barb_yd = PORT_YD + bx
-    ax2.plot([sa_y(barb_yd), sa_y(barb_yd + 3)],
-             [sa_z(PORT_Z_SEC - PORT_OD_SEC / 2 - 2), sa_z(PORT_Z_SEC - PORT_OD_SEC / 2)],
-             color=C_FRAME, lw=0.8, zorder=6)
-    ax2.plot([sa_y(barb_yd), sa_y(barb_yd + 3)],
-             [sa_z(PORT_Z_SEC + PORT_OD_SEC / 2 + 2), sa_z(PORT_Z_SEC + PORT_OD_SEC / 2)],
-             color=C_FRAME, lw=0.8, zorder=6)
+# Arrow showing port direction (exits sideways in X)
+ax2.annotate("", xy=(sa_y(port_bore_yd + 30), sa_z(PORT_Z_SEC)),
+             xytext=(sa_y(port_bore_yd + 15), sa_z(PORT_Z_SEC)),
+             arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.2), zorder=8)
+ax2.annotate("", xy=(sa_y(port_bore_yd - 30), sa_z(PORT_Z_SEC)),
+             xytext=(sa_y(port_bore_yd - 15), sa_z(PORT_Z_SEC)),
+             arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.2), zorder=8)
 
-leader(ax2, sa_y(PORT_YD + BARB_LEN), sa_z(PORT_Z_SEC),
-       sa_y(PORT_YD + BARB_LEN + 25), sa_z(PORT_Z_SEC + 25),
-       "1/2\" NPSM\nHOSE BARB\n→ 1\" HDPE", fs=5)
+leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
+       sa_y(port_bore_yd + 50), sa_z(PORT_Z_SEC + 30),
+       "1/2\" NPSM PORTS\nEXIT LEFT & RIGHT\n(81mm APART IN X)\n→ 1/2\" HDPE", fs=5)
 
 # ── Overall standoff dimension ───────────────────────────────────────────────
 total_standoff = PLY_THICK + BRACKET_THICK_A + 5  # 18 + 3 + 5 = 26mm
@@ -971,8 +971,8 @@ for ly, ltxt in label_items:
              color=C_DIM, lw=0.5, ls=":", zorder=2)
 
 # Section cut indicator note
-ax2.text(sa_y(100), sa_z(-95),
-         "SECTION THROUGH PUMP CENTER\nPERPENDICULAR TO WALL AT PORT HEIGHT",
+ax2.text(sa_y(70), sa_z(-95),
+         "SECTION IN Yd AT PORT HEIGHT\nPORTS EXIT L/R (PERPENDICULAR TO CUT)",
          ha="center", va="top", fontsize=6, color="#666666", style="italic")
 
 

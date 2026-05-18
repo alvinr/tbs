@@ -437,43 +437,56 @@ HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
 # Transition X: where 1" trunk meets 1/2" manifold
 TRANS_X = FRAME_X + FRAME_W + 10  # just outside frame right
 
-# ── Pipe bridge/hop helper (shows one pipe crossing over another) ────────────
-def draw_pipe_bridge(ax, x_mm, z_mm, od_mm, direction="h", color="white",
-                     zorder=11):
-    """Draw a semicircular bridge at (x_mm, z_mm) to indicate a pipe crossing.
+# ── Pipe crossing helper (break in rear pipe, front pipe continuous) ─────────
+def draw_pipe_crossing(ax, x_mm, z_mm, front_od, front_wall, front_dir,
+                       front_fc, rear_od):
+    """Show a pipe crossing where the front pipe is continuous and the rear
+    pipe has a visible gap.
 
-    direction: 'h' = pipe running horizontally crosses a vertical pipe
-               'v' = pipe running vertically crosses a horizontal pipe
-    The bridge is a small semicircle that 'hops' over the crossing pipe.
-    A white background rectangle blanks out the crossed pipe beneath.
+    x_mm, z_mm:   crossing point in mm.
+    front_od/wall: OD and wall thickness of the FRONT (continuous) pipe.
+    front_dir:     'h' = front pipe runs horizontally, 'v' = vertically.
+    front_fc:      fill color of the front pipe.
+    rear_od:       OD of the REAR (broken) pipe (runs perpendicular to front).
+
+    Convention: the rear pipe is blanked with a background rectangle slightly
+    wider than the front pipe OD, then a short segment of the front pipe is
+    redrawn at high zorder so it reads as continuous.
     """
-    hop_r = od_mm * 0.8  # radius of the hop arc
-    n_pts = 20
+    margin = 8          # extra gap beyond front pipe OD on each side
+    gap = front_od + margin * 2   # total blank in the rear pipe
+    half_od = front_od / 2.0
+    half_id = half_od - front_wall
+    seg = gap + 12      # front-pipe redraw segment (slightly wider than gap)
 
-    if direction == "h":
-        # Horizontal pipe hops over a vertical pipe at this point
-        # Blank rectangle behind the hop
+    # 1. Background rect blanks the crossing zone (covers rear pipe)
+    blank = max(front_od, rear_od) + margin * 2 + 4
+    ax.add_patch(plt.Rectangle(
+        (sx(x_mm + blank / 2), sz(z_mm - blank / 2)),
+        blank / SC, blank / SC,
+        fc=C_BG, ec="none", zorder=10))
+
+    # 2. Redraw front pipe segment through the crossing (high zorder)
+    if front_dir == "h":
+        # Front pipe horizontal — draw outer wall rect + inner bore rect
         ax.add_patch(plt.Rectangle(
-            (sx(x_mm - hop_r * 1.2), sz(z_mm - od_mm / 2 - 1)),
-            (hop_r * 2.4) / SC, (od_mm + 2) / SC,
-            fc=C_BG, ec="none", zorder=zorder - 1))
-        # Semicircular arc above
-        angles = np.linspace(0, np.pi, n_pts)
-        arc_x = [sx(x_mm + hop_r * np.cos(a)) for a in angles]
-        arc_z = [sz(z_mm + hop_r * np.sin(a)) for a in angles]
-        ax.plot(arc_x, arc_z, color=C_FRAME, lw=1.5, solid_capstyle="round",
-                zorder=zorder)
+            (sx(x_mm + seg / 2), sz(z_mm - half_od)),
+            seg / SC, front_od / SC,
+            fc=front_fc, ec=C_FRAME, lw=0.8, zorder=11))
+        ax.add_patch(plt.Rectangle(
+            (sx(x_mm + seg / 2), sz(z_mm - half_id)),
+            seg / SC, (half_id * 2) / SC,
+            fc="white", ec="none", zorder=12))
     else:
-        # Vertical pipe hops over a horizontal pipe at this point
+        # Front pipe vertical
         ax.add_patch(plt.Rectangle(
-            (sx(x_mm - od_mm / 2 - 1), sz(z_mm - hop_r * 1.2)),
-            (od_mm + 2) / SC, (hop_r * 2.4) / SC,
-            fc=C_BG, ec="none", zorder=zorder - 1))
-        angles = np.linspace(-np.pi / 2, np.pi / 2, n_pts)
-        arc_x = [sx(x_mm + hop_r * np.sin(a)) for a in angles]
-        arc_z = [sz(z_mm + hop_r * np.cos(a)) for a in angles]
-        ax.plot(arc_x, arc_z, color=C_FRAME, lw=1.5, solid_capstyle="round",
-                zorder=zorder)
+            (sx(x_mm + half_od), sz(z_mm - seg / 2)),
+            front_od / SC, seg / SC,
+            fc=front_fc, ec=C_FRAME, lw=0.8, zorder=11))
+        ax.add_patch(plt.Rectangle(
+            (sx(x_mm + half_id), sz(z_mm - seg / 2)),
+            (half_id * 2) / SC, seg / SC,
+            fc="white", ec="none", zorder=12))
 
 # ── Reducer symbol helper ────────────────────────────────────────────────────
 def draw_reducer(ax, x_mm, z_mm, orientation="h"):
@@ -684,32 +697,39 @@ place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
             dx=0, dy=-2.0, ha='center', va='top')
 
 
-# ── Pipe crossing bridges ──────────────────────────────────────────────────
-# CONVENTION: semicircular hop at every point where one pipe crosses another
-# without connecting.  direction="h" for horiz pipe crossing vert,
-#                      direction="v" for vert pipe crossing horiz.
+# ── Pipe crossings ─────────────────────────────────────────────────────────
+# CONVENTION: front pipe (closest to viewer) draws continuously;
+# rear pipe has a gap/break where the front pipe crosses it.
+# Horizontal trunks/headers are generally "in front" of vertical
+# drops/risers (they represent the main runs).
 
 # --- TOP AREA (headers above top-row pumps) ---
-# 1. Brown discharge riser (vertical) crosses Blue discharge header (horiz)
-draw_pipe_bridge(ax, BROWN_RISER_X, HEADER_Z_BLUE_DISCH, OD_H, direction="v")
+# 1. Brown riser crosses Blue discharge header — header in front
+draw_pipe_crossing(ax, BROWN_RISER_X, HEADER_Z_BLUE_DISCH,
+                   OD_H, WALL_H, "h", C_BLUE, OD_H)
 
-# 2. Blue suction drop (vertical) crosses Blue discharge header (horiz)
-draw_pipe_bridge(ax, p01_in_x + ELBOW_OFFSET, HEADER_Z_BLUE_DISCH, OD_H,
-                 direction="v")
+# 2. Blue suction drop crosses Blue discharge header — header in front
+draw_pipe_crossing(ax, p01_in_x + ELBOW_OFFSET, HEADER_Z_BLUE_DISCH,
+                   OD_H, WALL_H, "h", C_BLUE, OD_H)
 
-# 3. Brown discharge riser 1" (vertical) crosses Blue suction manifold (horiz)
-draw_pipe_bridge(ax, BROWN_RISER_X, HEADER_Z_BLUE_SUC, OD_H, direction="v")
+# 3. Brown 1" riser crosses Blue suction manifold — suction in front
+draw_pipe_crossing(ax, BROWN_RISER_X, HEADER_Z_BLUE_SUC,
+                   OD_H, WALL_H, "h", C_BLUE, OD_1)
 
 # --- BOTTOM AREA (below bottom-row pumps) ---
 # 4. P-04 tray drain discharge (horiz) crosses P-03 waste riser (vert)
-draw_pipe_bridge(ax, WASTE_RISER_X, TRAY_DISCH_Z, OD_H, direction="h")
+#    — tray drain in front
+draw_pipe_crossing(ax, WASTE_RISER_X, TRAY_DISCH_Z,
+                   OD_H, WALL_H, "h", C_BROWN, OD_H)
 
-# 5. P-04 tray drain vertical drop to DV-02 crosses waste 1" discharge trunk
-draw_pipe_bridge(ax, DV02_X, WASTE_DISCH_Z - 15, OD_1, direction="v")
+# 5. DV-02 vertical pipe crosses waste 1" discharge trunk — trunk in front
+draw_pipe_crossing(ax, DV02_X, WASTE_DISCH_Z - 15,
+                   OD_1, WALL_1, "h", C_BLACK_SYS, OD_H)
 
-# 6. P-04 suction riser (vertical) may cross waste discharge trunk
+# 6. P-04 suction riser crosses waste discharge trunk — trunk in front
 if PIPE_ENTRY_X < p04_in_x < WASTE_RISER_X:
-    draw_pipe_bridge(ax, p04_in_x, WASTE_DISCH_Z - 15, OD_1, direction="v")
+    draw_pipe_crossing(ax, p04_in_x, WASTE_DISCH_Z - 15,
+                       OD_1, WALL_1, "h", C_BLACK_SYS, OD_H)
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────

@@ -2322,7 +2322,7 @@ IBC-2 (600L) ──┘                                                      │
 <ul>
 <li>Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves</li>
 <li>P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming</li>
-<li>ACC-01: 1-gallon pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
+<li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution</li>
 <li>Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)</li>
@@ -2733,6 +2733,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <hr />
 <h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
 <h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
+<p>Two pipe sizes are used: <strong>1" trunk lines</strong> for the long runs between IBCs, filter skid, and spray bar; <strong>1/2" manifold pipe</strong> for the short runs within the pump manifold frame. The 1/2" size matches the Shurflo 2088 pump ports (1/2"-14 male parallel thread), eliminating the need for reducer fittings at each pump — only four 1"→1/2" bushing reducers are needed at the manifold frame entry/exit points.</p>
+<p><strong>Trunk lines (1" HDPE Sch 40):</strong></p>
 <table>
 <thead>
 <tr>
@@ -2745,16 +2747,23 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>Blue supply main</td>
+<td>Blue supply trunk (IBC → manifold)</td>
 <td>Sch 40 / SDR-11</td>
-<td>1" nominal</td>
+<td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Brown recycle</td>
+<td>Blue discharge trunk (manifold → spray bar)</td>
 <td>Sch 40 / SDR-11</td>
-<td>1" nominal</td>
+<td>1" nominal (OD 33mm)</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Brown recycle trunk (IBC → manifold, manifold → filter skid)</td>
+<td>Sch 40 / SDR-11</td>
+<td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
@@ -2768,27 +2777,63 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tr>
 <td>Filter inlet/outlet</td>
 <td>Sch 40</td>
-<td>1" nominal</td>
+<td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Tray drain (P-04 suction)</td>
-<td>Reinforced flex hose</td>
-<td>1" nominal</td>
-<td>pump suction</td>
-<td>HDPE/PVC braid</td>
-</tr>
-<tr>
-<td>Black waste (to IBC-4)</td>
+<td>Black waste trunk (manifold → IBC-4)</td>
 <td>Sch 40</td>
-<td>1" nominal</td>
+<td>1" nominal (OD 33mm)</td>
 <td>50 PSI min</td>
 <td>HDPE</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Why HDPE, not PVC?</strong> Standard grey PVC is not rated for photographic chemistry contact and can leach plasticisers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.</p>
+<p><strong>Pump manifold internal (1/2" HDPE Sch 40):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Pipe</th>
+<th>Size</th>
+<th>Pressure rating</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pump headers and connections (all 4 pumps)</td>
+<td>Sch 40</td>
+<td>1/2" nominal (OD 21mm)</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>ACC-01 inlet/outlet</td>
+<td>Sch 40</td>
+<td>1/2" nominal (OD 21mm)</td>
+<td>125 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>BV-01/BV-02 manifold side</td>
+<td>Sch 40</td>
+<td>1/2" nominal (OD 21mm)</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Tray drain suction (P-04)</td>
+<td>Reinforced flex hose</td>
+<td>1/2" nominal</td>
+<td>pump suction</td>
+<td>HDPE/PVC braid</td>
+</tr>
+</tbody>
+</table>
+<p>At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The short manifold runs (&lt; 500mm each) contribute negligible head loss.</p>
+<p><strong>Why HDPE, not PVC?</strong> Standard grey PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.</p>
 <h3 id="fittings-and-connections">Fittings and connections<a class="headerlink" href="#fittings-and-connections" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2806,8 +2851,18 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>1" NPT threaded</td>
-<td>Pump inlet/outlet, valve connections</td>
+<td>Trunk lines (IBC runs, filter skid, spray bar feed)</td>
 <td>HDPE or brass</td>
+</tr>
+<tr>
+<td>1/2" NPT threaded</td>
+<td>Pump manifold internal connections, pump ports, ACC-01</td>
+<td>HDPE or brass</td>
+</tr>
+<tr>
+<td>1"×1/2" NPT bushing reducer</td>
+<td>Trunk-to-manifold transitions at frame entry/exit (4 required)</td>
+<td>Polypropylene or brass</td>
 </tr>
 <tr>
 <td>2" NPT bulkhead</td>
@@ -3059,8 +3114,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$65</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/SEAFLO-Water-Pump-Accumulator-System/dp/B076JHCCBH">SeaFlo pressure accumulator</a></td>
-<td>1 gal, 125 PSI, 1/2" NPT</td>
+<td><a href="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8">SeaFlo pressure accumulator</a></td>
+<td>0.75 L (23.5 oz), 125 PSI, 1/2" MNPT</td>
 <td>1</td>
 <td>Amazon</td>
 <td>$25–$45</td>
@@ -3180,11 +3235,19 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Banjo LE100 90° elbow 1" NPT</a></td>
-<td>Polypropylene street elbow. F1/F2/D3/D4 bends plus system elbows</td>
-<td>14</td>
+<td>Polypropylene street elbow. Trunk line bends</td>
+<td>10</td>
 <td>Amazon</td>
 <td>$3–$5</td>
-<td><strong>$42–$70</strong></td>
+<td><strong>$30–$50</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene">1/2" NPT 90° elbow polypropylene</a></td>
+<td>Pump manifold internal bends</td>
+<td>8</td>
+<td>Amazon</td>
+<td>$2–$4</td>
+<td><strong>$16–$32</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2">Banjo TEE100 equal tee 1" NPT</a></td>
@@ -3196,11 +3259,19 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union">1" NPT polypropylene union</a></td>
-<td>For maintenance disconnects</td>
+<td>For maintenance disconnects on trunk lines</td>
 <td>6</td>
 <td>Amazon</td>
 <td>$6–$10</td>
 <td><strong>$40–$60</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1+inch+1%2F2+inch+NPT+bushing+reducer+polypropylene">1"×1/2" NPT bushing reducer</a></td>
+<td>Trunk-to-manifold transitions at pump frame entry/exit</td>
+<td>4</td>
+<td>Amazon</td>
+<td>$3–$5</td>
+<td><strong>$12–$20</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter">S60×6 to 1" NPT adapter</a></td>
@@ -3228,7 +3299,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p><strong>Valves &amp; fittings subtotal: ~$406–$650</strong></p>
+<p><strong>Valves &amp; fittings subtotal: ~$420–$670</strong></p>
 <h3 id="85-pipe">8.5 Pipe<a class="headerlink" href="#85-pipe" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3244,11 +3315,19 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tbody>
 <tr>
 <td><a href="https://www.ferguson.com">1" SDR-11 HDPE pipe</a></td>
-<td>Food-safe, blue-stripe, 20 ft sticks</td>
-<td>5 sticks (100 ft)</td>
+<td>Food-safe, blue-stripe, 20 ft sticks. Trunk lines (IBC runs, filter skid, spray bar feed)</td>
+<td>4 sticks (80 ft)</td>
 <td>Ferguson</td>
 <td>$12–$18/stick</td>
-<td><strong>$60–$90</strong></td>
+<td><strong>$48–$72</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.ferguson.com">1/2" SDR-11 HDPE pipe</a></td>
+<td>Pump manifold internal runs, short headers. Matches pump port size</td>
+<td>1 stick (20 ft)</td>
+<td>Ferguson</td>
+<td>$6–$10/stick</td>
+<td><strong>$6–$10</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>
@@ -3268,7 +3347,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p><strong>Pipe subtotal: ~$100–$140</strong></p>
+<p><strong>Pipe subtotal: ~$94–$132</strong></p>
 <h3 id="86-processing-tray">8.6 Processing tray<a class="headerlink" href="#86-processing-tray" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

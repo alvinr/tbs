@@ -67,6 +67,20 @@ and chemistry shelf hanger rods (ghost — shelf at Yd=300).
 
 ---
 
+## 2b. Pump Manifold Detail
+
+Detailed elevation of the pump manifold assembly (X=2,500–2,800mm, Z=200–600mm)
+mounted on the pinhole wall face (Yd=0). Shows all four Shurflo 2088 pumps
+(P-01 Blue supply, P-02 Brown recycle, P-03 Waste evacuation, P-04 Tray drain),
+ACC-01 pressure accumulator, BV-01/BV-02 ball valves, DV-02 tray drain diverter,
+and all pipe connections with parallel-wall drawing.
+Source report: [Water System Report](water-system-report.md).
+
+**Sheet 1 — Pump manifold elevation (1:5) + Detail A pump mounting cross-section (~1:2)**
+![TBS-001 — Pump Manifold Detail](assets/pump-manifold-sheet1.png)
+
+---
+
 ## 3. Container Floor Plan
 
 Top-down floor plan of the full container interior. Equipment positions dimensioned.

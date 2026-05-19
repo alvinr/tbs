@@ -138,7 +138,7 @@ FRAME_X = PUMP_X + (PUMP_W - FRAME_W) // 2  # centered within pump zone
 # Pump Z positions — single top row + centered P-04 below
 PUMP_Z_TOP = 518      # top row (P-01, P-02) bottom edge
 
-P04_Z = PUMP_Z_TOP - PUMP_BODY_H - 20   # 280mm — clears top row by 20mm
+P04_Z = PUMP_Z_TOP - PUMP_BODY_H - 80   # 220mm — dropped for tray drain routing clearance
 P04_X = FRAME_X + (FRAME_W - PUMP_BODY_W) // 2  # centered in frame
 
 FRAME_Z_LO = P04_Z - PUMP_MARGIN_Z - ANGLE_W   # 235mm
@@ -445,7 +445,6 @@ DV02_BROWN_RISER_X = DV02_X - 25  # 25mm lower X (right in drawing)
 # Tray drain suction
 TRAY_DRAIN_Z = WALKWAY_Z + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
-TRAY_RISER_X = FRAME_R + 50     # riser past frame right edge
 
 # ── Pipe layer zorders (depth from wall) ────────────────────────────────────
 # Layer 1 (back, closest to wall): Black/waste pipes
@@ -593,16 +592,18 @@ ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
 # ════════════════════════════════════════════════════════════════════════════
 # P-04 TRAY DRAIN — sump → P-04 → DV-02 → IBC-3 / IBC-4
 # ════════════════════════════════════════════════════════════════════════════
-# Suction: tray sump → horizontal left past frame → riser up → P-04 IN
+# Suction: tray sump → vertical riser → 90° left → drop to port → 90° into P-04 IN
+_riser_top_z = P04_Z + PUMP_BODY_H + 40  # 40mm above P-04 top
+_drop_x = p04_in_x + ELB                 # X where pipe drops toward port
 draw_pipe_path(ax,
-    [TRAY_SUMP_X, TRAY_RISER_X, TRAY_RISER_X, p04_in_x],
-    [TRAY_DRAIN_Z, TRAY_DRAIN_Z, PORT_Z_P04, PORT_Z_P04],
+    [TRAY_SUMP_X, TRAY_SUMP_X, _drop_x, _drop_x, p04_in_x],
+    [TRAY_DRAIN_Z, _riser_top_z, _riser_top_z, PORT_Z_P04, PORT_Z_P04],
     OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.annotate("", xy=(sx(TRAY_RISER_X - 30), sz(TRAY_DRAIN_Z)),
-            xytext=(sx(TRAY_SUMP_X + 60), sz(TRAY_DRAIN_Z)),
+ax.annotate("", xy=(sx(TRAY_SUMP_X), sz(_riser_top_z - 30)),
+            xytext=(sx(TRAY_SUMP_X), sz(TRAY_DRAIN_Z + 30)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.2), zorder=10)
-ax.text(sx((TRAY_SUMP_X + TRAY_RISER_X) / 2), sz(TRAY_DRAIN_Z + 25),
-        "FROM TRAY SUMP\n(BLACK — TRAY DRAIN)", ha="center", va="bottom",
+ax.text(sx(TRAY_SUMP_X - 30), sz((_riser_top_z + TRAY_DRAIN_Z) / 2),
+        "FROM TRAY\nSUMP", ha="right", va="center",
         fontsize=4.5, color=C_BLACK_SYS, style="italic")
 
 # Discharge: P-04 OUT → DV-02 (60mm right of P-04 at port height)

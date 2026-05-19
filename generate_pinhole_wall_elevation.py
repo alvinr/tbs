@@ -605,9 +605,6 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
 ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=1.0, zorder=9))
-ax.text(sx(DV01_X), sz(PORT_Z), "DV-01",
-        ha="center", va="center", fontsize=3.5, color=C_OUT,
-        zorder=10, **FONT)
 ax.annotate("DV-01\n(3-WAY DIVERTER)", xy=(sx(DV01_X), sz(PORT_Z + DV01_R)),
             xytext=(sx(DV01_X - 80), sz(PORT_Z + DV01_R + 120)),
             fontsize=4.2, color=C_DIM, fontweight="bold",
@@ -653,8 +650,6 @@ def _bv_symbol(ax, bvx, bvz, label, zorder=9):
     pts_z = [sz(bvz + BV_R), sz(bvz), sz(bvz - BV_R), sz(bvz)]
     ax.add_patch(plt.Polygon(list(zip(pts_x, pts_z)),
                  fc="#CC4444", ec=C_OUT, lw=0.8, alpha=0.8, zorder=zorder))
-    ax.text(sx(bvx), sz(bvz), label, ha="center", va="center",
-            fontsize=2.5, fontweight="bold", color="white", zorder=zorder + 1, **FONT)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-01 BLUE SUPPLY: IBC-1/2 → BV-01 → P-01 → ACC-01 → BV-02 → spray bar
@@ -835,9 +830,6 @@ dv02_pts_z = [sz(PM_DV02_Z + PM_DV02_R), sz(PM_DV02_Z),
               sz(PM_DV02_Z - PM_DV02_R), sz(PM_DV02_Z)]
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
              fc="white", ec=C_OUT, lw=1.0, zorder=9))
-ax.text(sx(PM_DV02_X), sz(PM_DV02_Z), "DV-02",
-        ha="center", va="center", fontsize=3.2, color=C_OUT,
-        zorder=10, **FONT)
 ax.annotate("DV-02\n(3-WAY DIVERTER)", xy=(sx(PM_DV02_X), sz(PM_DV02_Z - PM_DV02_R)),
             xytext=(sx(PM_DV02_X + 80), sz(PM_DV02_Z - 120)),
             fontsize=4.2, color=C_DIM, fontweight="bold",

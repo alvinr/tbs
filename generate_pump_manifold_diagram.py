@@ -678,17 +678,17 @@ ax.annotate("", xy=(sx(PIPE_EXIT_X), sz(DV02_BROWN_Z)),
 
 # ── Pipe entry/exit annotations — weighted toward open space ─────────────────
 # Blue supply label (on long run, between component and edge)
-ax.text(sx((PIPE_EXIT_X + BV01_X) * 0.57), sz(HEADER_Z_BLUE_SUC - 25),
+ax.text(sx((PIPE_EXIT_X + BV01_X) * 0.51), sz(HEADER_Z_BLUE_SUC - 25),
         "FROM IBC-1 & IBC-2 (BLUE SUPPLY)", ha="center", va="top",
         fontsize=5, color=C_BLUE, style="italic")
 
 # Blue discharge label (on long run)
-ax.text(sx((BV02_X + PIPE_EXIT_X) * 0.57), sz(HEADER_Z_BLUE_DISCH - 25),
-        "TO SPRAY BAR (BLUE DISCHARGE)", ha="center", va="top",
+ax.text(sx((BV02_X + PIPE_EXIT_X) * 0.50), sz(HEADER_Z_BLUE_DISCH - 25),
+        "TO SPRAY BAR\n(BLUE DISCHARGE)", ha="center", va="top",
         fontsize=5, color=C_BLUE, style="italic")
 
 # Brown suction label (on long run)
-ax.text(sx((PIPE_EXIT_X + FRAME_R) * 0.57), sz(PORT_Z_TOP - 25),
+ax.text(sx((PIPE_EXIT_X + FRAME_R) * 0.515), sz(PORT_Z_TOP - 25),
         "FROM IBC-3 (BROWN RECYCLE)", ha="center", va="top",
         fontsize=5, color=C_BROWN, style="italic")
 
@@ -707,23 +707,23 @@ draw_dim_v(ax, sx(FRAME_X - 160), sz(0), sz(FRAME_Z_LO),
            f"{FRAME_Z_LO}mm AFF", offset=0.44)
 
 # Pump body width (P-01)
-draw_dim_h(ax, sx(P01_X), sx(P01_X + PUMP_BODY_W), sz(P01_Z - 30),
+draw_dim_h(ax, sx(P01_X), sx(P01_X + PUMP_BODY_W), sz(P01_Z + 30),
            f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
 
 # P-04 centered position
-draw_dim_h(ax, sx(P04_X), sx(P04_X + PUMP_BODY_W), sz(P04_Z - 30),
+draw_dim_h(ax, sx(P04_X), sx(P04_X + PUMP_BODY_W), sz(P04_Z + 30),
            f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
 
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame material
-leader(ax, sx(FRAME_X + FRAME_W / 2), sz(FRAME_Z_LO),
-       sx(FRAME_X + FRAME_W / 2), sz(FRAME_Z_LO - 45),
+leader(ax, sx(FRAME_X + 5), sz(FRAME_H * 0.4),
+       sx(FRAME_X + FRAME_W * 0.2), sz(FRAME_Z_LO - 25),
        "25×25×3 SHS STEEL\nMOUNTING FRAME", fs=5.5)
 
 # Plywood
-leader(ax, sx(FRAME_X + FRAME_W / 2 + 50), sz(FRAME_Z_LO + ANGLE_W + 20),
-       sx(FRAME_X + FRAME_W / 2 + 50), sz(FRAME_Z_LO - 15),
+leader(ax, sx(FRAME_X + FRAME_W / 2 + 200), sz(FRAME_Z_LO + ANGLE_W + 60),
+       sx(FRAME_X + FRAME_W / 2 + 150), sz(FRAME_Z_LO + 150),
        "18mm PLYWOOD\nBACKING BOARD", fs=5)
 
 # Accumulator specs
@@ -763,7 +763,7 @@ notes = [
     "10. ACC-01: SeaFlo 0.75L accumulator, 125 PSI, 1/2\" MNPT. Each circuit fused at 10A.",
 ]
 for i, n in enumerate(notes):
-    fig.text(0.35, 0.055 - i * 0.013, n, fontsize=6, color=C_TEXT,
+    fig.text(0.15, 0.075 - i * 0.013, n, fontsize=8, color=C_TEXT,
              fontfamily="monospace", va="top")
 
 
@@ -924,12 +924,12 @@ for bz in [bolt_z_upper, bolt_z_lower]:
 
 # Bolt column spacing dimension (vertical between two bolts)
 _nut_outer_yd = nut_pump_yd + BOLT_HEAD_H
-draw_dim_v(ax2, sa_y(_nut_outer_yd + 18), sa_z(bolt_z_lower), sa_z(bolt_z_upper),
-           f"81.3mm\n(3.2\")", offset=0.33, fs=5)
+draw_dim_v(ax2, sa_y(_nut_outer_yd + 9), sa_z(bolt_z_lower), sa_z(bolt_z_upper),
+           f"81.3mm\n(3.2\")", offset=0.37, fs=5)
 
 # Bolt callout
 leader(ax2, sa_y(_nut_outer_yd + 5), sa_z(bolt_z_upper),
-       sa_y(_nut_outer_yd + 45), sa_z(bolt_z_upper + 25),
+       sa_y(_nut_outer_yd + 25), sa_z(bolt_z_upper + 10),
        "1/4\"-20 × 30mm\n+ NYLOC NUT\n(4 PER PUMP)", fs=5)
 
 # ── 5. Port bores (1/2" NPSM — exit SIDEWAYS in X, not front face) ────────
@@ -964,7 +964,7 @@ ax2.annotate("", xy=(sa_y(port_bore_yd - 30), sa_z(PORT_Z_SEC)),
              arrowprops=dict(arrowstyle="-|>", color=C_FRAME, lw=1.2), zorder=8)
 
 leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
-       sa_y(port_bore_yd + 50), sa_z(PORT_Z_SEC + 30),
+       sa_y(port_bore_yd + 50), sa_z(PORT_Z_SEC + 50),
        "1/2\" NPSM PORTS\nEXIT LEFT & RIGHT\n(81mm APART IN X)\n→ 1/2\" HDPE", fs=5)
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
@@ -1027,7 +1027,7 @@ ax3.set_ylim(sp_y(520) - 0.5, sp_y(-100) + 0.5)
 ax3.invert_xaxis()
 
 # Detail title
-ax3.text(sp_x(2750), sp_y(-90),
+ax3.text(sp_x(2750), sp_y(-130),
          "DETAIL B\nPUMP MANIFOLD PLAN VIEW\nLooking Down from Ceiling  |  Scale ~1:5.5",
          ha="center", va="top", fontsize=7, fontweight="bold",
          color="#1A237E", zorder=10)
@@ -1344,7 +1344,7 @@ ax3.add_patch(plt.Circle((sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD)),
               (OD_H / 2 - WALL_H) / SC_B, fc="white", ec=C_FRAME, lw=0.8, zorder=9.5))
 ax3.plot(sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD), '+',
          color=C_FRAME, markersize=6, mew=1.2, zorder=10)
-ax3.text(sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD - 18),
+ax3.text(sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD - 45),
          "RISER TO\nFILTER SKID",
          ha="center", va="top", fontsize=4, color=C_BROWN, fontweight="bold")
 
@@ -1366,7 +1366,7 @@ def ghost_label(x, yd, text, color, ha="left", va="center"):
 p04_cx = P04_X + PUMP_BODY_W / 2
 p04_plan_in_x = P04_X + PUMP_BODY_W  # IN port on right side
 ghost_pipe([EXIT_X_R, p04_plan_in_x], [EXIT_YD_BOT, PORT_PLAN_YD], C_BLACK_SYS)
-ghost_label(EXIT_X_R + 10, EXIT_YD_BOT + 15, "FROM TRAY\nSUMP", C_BLACK_SYS, ha="left", va="top")
+ghost_label(EXIT_X_R + 10, EXIT_YD_BOT - 55, "FROM TRAY\nSUMP", C_BLACK_SYS, ha="left", va="top")
 
 # Tray drain discharge: P-04 OUT → DV-02 → IBC-3/IBC-4 (ghost)
 p04_plan_out_x = P04_X  # OUT port on left side
@@ -1426,7 +1426,7 @@ title_block(ax, "SHEET 1 OF 1",
             subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0)",
             scale_note="ELEV 1:5  |  DETAIL A ~1:4.5  |  DETAIL B (PLAN) ~1:5.5  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Pump Manifold Detail",
-            height=0.04)
+            height=0.06)
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

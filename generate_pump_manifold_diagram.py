@@ -102,9 +102,9 @@ ax3.set_facecolor(C_BG)
 ax3.set_aspect("equal")
 ax3.axis("off")
 
-# Axis limits — elevation panel (taller frame for 2×2 pump grid)
+# Axis limits — elevation panel
 ax.set_xlim(sx(2200) - 1, sx(3550) + 1)
-ax.set_ylim(sz(-130) - 1, sz(1100) + 2)
+ax.set_ylim(sz(-30) - 1, sz(1150) + 2)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
@@ -113,12 +113,8 @@ ax.invert_xaxis()
 reset_label_registry()
 
 # ── Manifold layout constants ────────────────────────────────────────────────
-# Frame extends from just above the walkway deck (Z=105) up past the pumps.
-# The lower section houses DV-02 (3-way diverter); the upper section holds
-# the 2×2 pump grid.  PUMP_H_LO (200) marks the pump zone boundary in the
-# combined elevation, but the physical frame starts lower to include DV-02.
-FRAME_Z_LO = 105     # just above walkway deck (Z=100)
-
+# Matches pinhole-wall-elevation.py pump manifold layout exactly.
+# Frame widened 40%; P-04 centered below P-01/P-02; P-03 relocated to IBC corridor.
 ANGLE_W = 25   # frame member width (25×25×3mm SHS)
 FRAME_LW = 2.0
 
@@ -131,38 +127,31 @@ PUMP_BODY_H = 218    # 8.60" height in Z (long axis, from datasheet)
 PORT_SPACING = 81    # 3.20" between IN and OUT port centers (left-right on head)
 PORT_OD = 18         # 1/2" male thread visual diameter
 
-# Frame: 2 pumps (127mm each, ports included) + gaps + frame
-# [frame | margin | P-01 (127mm incl ports) | gap | P-02 (127mm incl ports) | margin | frame]
-# 25 + 20 + 127 + 150 + 127 + 20 + 25 = 494mm
-PUMP_GAP_X = 150      # gap between P-01 and P-02 (clearance for pipe elbows)
+# Frame: widened 40% to separate P-01 and P-02 horizontally
+PUMP_GAP_X = 60       # nominal gap (before 40% stretch)
 PUMP_MARGIN_X = 20    # margin from frame inner edge to pump body edge
-FRAME_W = 2 * ANGLE_W + 2 * PUMP_MARGIN_X + 2 * PUMP_BODY_W + PUMP_GAP_X
+PUMP_MARGIN_Z = 20    # vertical margin inside frame
+FRAME_W = int((2 * ANGLE_W + 2 * PUMP_MARGIN_X
+               + 2 * PUMP_BODY_W + 1 * PUMP_GAP_X) * 1.4)  # 565mm
 FRAME_X = PUMP_X + (PUMP_W - FRAME_W) // 2  # centered within pump zone
 
-# Pump zone starts above DV-02 area
-PUMP_ZONE_Z = 200     # Z where pumps begin (matches PUMP_H_LO for other diagrams)
-PUMP_GAP_Z = 60       # vertical gap between bottom and top pump rows
-PUMP_MARGIN_Z = 20    # vertical margin inside pump zone
+# Pump Z positions — single top row + centered P-04 below
+PUMP_Z_TOP = 518      # top row (P-01, P-02) bottom edge
 
-# Frame top: covers pump zone + headers
-FRAME_Z_HI = (PUMP_ZONE_Z + 2 * PUMP_MARGIN_Z
-              + 2 * PUMP_BODY_H + PUMP_GAP_Z + 40)  # +40 for header clearance
+P04_Z = PUMP_Z_TOP - PUMP_BODY_H - 20   # 280mm — clears top row by 20mm
+P04_X = FRAME_X + (FRAME_W - PUMP_BODY_W) // 2  # centered in frame
+
+FRAME_Z_LO = P04_Z - PUMP_MARGIN_Z - ANGLE_W   # 235mm
+FRAME_Z_HI = (PUMP_Z_TOP + PUMP_BODY_H
+              + PUMP_MARGIN_Z + ANGLE_W)          # 781mm
 FRAME_H = FRAME_Z_HI - FRAME_Z_LO
 
-# Pump X positions (left edge of body) — two columns
+# Pump X positions — P-01 at left inner edge, P-02 at right inner edge
 P01_X = FRAME_X + ANGLE_W + PUMP_MARGIN_X
-P02_X = P01_X + PUMP_BODY_W + PUMP_GAP_X
-P04_X = P02_X   # same column as P-02
-
-# Pump Z positions — two rows
-#   Bottom row: P-04 (right) — bottom-left slot empty (P-03 relocated to IBC corridor)
-#   Top row:    P-01 (left), P-02 (right)
-PUMP_Z_BOT = PUMP_ZONE_Z + PUMP_MARGIN_Z
-PUMP_Z_TOP = PUMP_Z_BOT + PUMP_BODY_H + PUMP_GAP_Z
+P02_X = FRAME_X + FRAME_W - ANGLE_W - PUMP_MARGIN_X - PUMP_BODY_W
 
 P01_Z = PUMP_Z_TOP
 P02_Z = PUMP_Z_TOP
-P04_Z = PUMP_Z_BOT
 
 # Pipe constants — single size for all pump-driven runs
 # All internal plumbing is 1/2" HDPE, matching Shurflo 2088 pump ports.
@@ -183,18 +172,18 @@ ax.text(sx(PUMP_X + PUMP_W / 2), sz(1080),
 # ── Container wall context ───────────────────────────────────────────────────
 CORR_SPACING = 457
 for rib_x in range(2285, 3200, CORR_SPACING):
-    ax.plot([sx(rib_x), sx(rib_x)], [sz(-30), sz(1050)],
+    ax.plot([sx(rib_x), sx(rib_x)], [sz(0), sz(1100)],
             color="#AAAAAA", lw=0.6, ls="--", zorder=1)
 
 # Floor line
-ax.plot([sx(2200), sx(3100)], [sz(0), sz(0)],
+ax.plot([sx(2200), sx(3400)], [sz(0), sz(0)],
         color="#888888", lw=1.5, ls="-", zorder=1)
 ax.text(sx(2250), sz(-15), "FLOOR (Z=0)", ha="left", va="top",
         fontsize=6, color="#888888", style="italic")
 
 # Walkway deck line
 WALKWAY_Z = 100
-ax.plot([sx(2300), sx(3000)], [sz(WALKWAY_Z), sz(WALKWAY_Z)],
+ax.plot([sx(2300), sx(3300)], [sz(WALKWAY_Z), sz(WALKWAY_Z)],
         color=C_STEEL_FILL, lw=2.0, ls="-", zorder=1)
 ax.text(sx(2350), sz(WALKWAY_Z + 10), "WALKWAY DECK (Z=100)",
         ha="left", va="bottom", fontsize=5.5, color="#888888", style="italic")
@@ -396,18 +385,16 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
     return in_x, port_z, out_x, port_z
 
 
-# Draw 3 pumps — top row full, bottom-right only (P-03 relocated to IBC corridor)
-# Top row: P-01 (Blue supply), P-02 (Brown recycle)
-# Bottom row: P-04 (Tray drain) — bottom-left slot empty
+# Draw 3 pumps — top row (P-01, P-02), P-04 centered below
+# P-03 relocated to IBC plumbing corridor
 p01_in_x, p01_in_z, p01_out_x, p01_out_z = draw_pump(ax, P01_X, P01_Z, "P-01", "BLUE SUPPLY")
 p02_in_x, p02_in_z, p02_out_x, p02_out_z = draw_pump(ax, P02_X, P02_Z, "P-02", "BROWN RECYCLE")
 p04_in_x, p04_in_z, p04_out_x, p04_out_z = draw_pump(ax, P04_X, P04_Z, "P-04", "TRAY DRAIN")
 
 # Port Z heights (differ by row)
-PORT_Z_TOP = p01_in_z   # top row port Z
-PORT_Z_BOT = p04_in_z   # bottom row port Z
+PORT_Z_TOP = p01_in_z      # top row port Z (706mm)
+PORT_Z_P04 = p04_in_z      # P-04 port Z (468mm)
 PUMP_TOP_Z_TOP = PUMP_Z_TOP + PUMP_BODY_H  # top of top-row pumps
-PUMP_TOP_Z_BOT = PUMP_Z_BOT + PUMP_BODY_H  # top of bottom-row pumps
 
 
 # ── Ball valve helper ────────────────────────────────────────────────────────
@@ -426,23 +413,39 @@ def draw_ball_valve(ax, bvx, bvz, label):
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # PIPE CONNECTIONS — 3 PUMPS (P-01, P-02, P-04)
-# Top row (P-01/P-02) ports at PORT_Z_TOP; bottom row (P-04) at PORT_Z_BOT.
-# Headers run above the top row; bottom-row pipes route between rows or below.
+# Top row (P-01/P-02) ports at PORT_Z_TOP; P-04 at PORT_Z_P04.
+# Headers run above the top row. DV-02 right of P-04 at port height.
 # P-03 has been relocated to the IBC plumbing corridor.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-PIPE_EXIT_X = FRAME_X + FRAME_W + 350  # pipes enter/exit toward IBCs (higher X)
-PIPE_ENTRY_X = FRAME_X - 150           # pipes exit toward cargo door (lower X)
+FRAME_R = FRAME_X + FRAME_W             # right edge of manifold frame
+PIPE_EXIT_X = FRAME_R + 350             # pipes enter/exit toward IBCs (higher X)
+PIPE_ENTRY_X = FRAME_X - 150            # pipes exit toward cargo door (lower X)
 ELBOW_OFFSET = 40  # offset from port for visible 90° elbow
-CROSS_GAP = 0      # rear pipe butts flush to front pipe outer wall (zero extra gap)
+ELB = ELBOW_OFFSET
 
 # Header Z heights above top-row pump bodies
-HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 260  # Blue suction header (+75mm raised)
-HEADER_Z_BLUE_DISCH  = FRAME_Z_HI + 20       # Blue discharge clears backing board
-HEADER_Z_BROWN_DISCH = PUMP_TOP_Z_TOP + 55   # Brown discharge riser exit
+HEADER_Z_BLUE_SUC    = PUMP_TOP_Z_TOP + 260  # Blue suction header
+HEADER_Z_BLUE_DISCH  = FRAME_Z_HI + 20       # Blue discharge header
 
 # Entry/exit X for pipes entering/leaving the manifold zone
-TRANS_X = FRAME_X + FRAME_W + 10  # just outside frame right
+TRANS_X = FRAME_R + 10  # just outside frame right
+
+# DV-02: 60mm right of P-04 (lower physical X), at P-04 port height
+DV02_R = 20
+DV02_X = P04_X - 60
+DV02_Z = PORT_Z_P04  # = P04_Z + PUMP_BODY_H - PORT_Z_OFFSET
+
+# DV-02 output horizontal runs (above walkway)
+DV02_BROWN_Z = WALKWAY_Z + 40    # 140mm — Brown closest to walkway
+DV02_BLACK_Z = DV02_BROWN_Z + 25 # 165mm — Black above Brown
+DV02_BLACK_RISER_X = DV02_X
+DV02_BROWN_RISER_X = DV02_X - 25  # 25mm lower X (right in drawing)
+
+# Tray drain suction
+TRAY_DRAIN_Z = WALKWAY_Z + 20   # 120mm — just above walkway deck
+TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
+TRAY_RISER_X = FRAME_R + 50     # riser past frame right edge
 
 # ── Pipe layer zorders (depth from wall) ────────────────────────────────────
 # Layer 1 (back, closest to wall): Black/waste pipes
@@ -475,7 +478,7 @@ def draw_reducer(ax, x_mm, z_mm, orientation="h"):
 # ── ACC-01 Accumulator (on Blue discharge header) ──────────────────────────
 ACC_W = 200      # 7-7/8" length (horizontal, inline with header)
 ACC_H = 127      # 5" diameter (vertical, from SeaFlo spec)
-ACC_X = FRAME_X + FRAME_W + 40
+ACC_X = FRAME_R + 40
 ACC_Z = HEADER_Z_BLUE_DISCH - ACC_H / 2 + 25   # 25mm above discharge header center
 
 ax.add_patch(plt.Rectangle((sx(ACC_X), sz(ACC_Z)),
@@ -493,7 +496,7 @@ ax.text(sx(acc_cx), sz(ACC_Z + ACC_H / 2), "ACC-01",
         color="white", zorder=6)
 
 # ── BV-01 / BV-02 Ball Valves ──────────────────────────────────────────────
-BV01_X = FRAME_X + FRAME_W + 60
+BV01_X = FRAME_R + 60
 BV01_Z = HEADER_Z_BLUE_SUC
 draw_ball_valve(ax, BV01_X, BV01_Z, "BV-01")
 place_label(ax, sx(BV01_X), sz(BV01_Z + 30), "BV-01\n(½\" BALL)",
@@ -510,31 +513,30 @@ place_label(ax, sx(BV02_X), sz(BV02_Z + 30), "BV-02\n(½\" BALL)",
 # ════════════════════════════════════════════════════════════════════════════
 # P-01 BLUE SUPPLY — IBC → BV-01 → P-01 → ACC-01 → BV-02 → spray bar
 # ════════════════════════════════════════════════════════════════════════════
-# 1/2": IBC → BV-01
+# Blue suction: IBC → BV-01
 draw_pipe_path(ax,
     [PIPE_EXIT_X, BV01_X + BV_R],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
     OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
-# 1/2": BV-01 → manifold entry
+# BV-01 → manifold entry
 draw_pipe_path(ax,
-    [BV01_X - BV_R, TRANS_X],
+    [BV01_X - BV_R, FRAME_R],
     [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC],
     OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
-# 1/2": manifold entry → 90° drop → P-01 IN
-# Split at Blue discharge header crossing (rear pipe gets gap, header is front)
-_gap_half_h = OD_H / 2.0 + CROSS_GAP
+# Suction drop → P-01 IN (split at Blue discharge crossing)
+_suc_gap = OD_H / 2.0
 draw_pipe_path(ax,
-    [TRANS_X - 15, p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET],
-    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_DISCH + _gap_half_h],
+    [FRAME_R, p01_in_x + ELB, p01_in_x + ELB],
+    [HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_SUC, HEADER_Z_BLUE_DISCH + _suc_gap],
     OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 draw_pipe_path(ax,
-    [p01_in_x + ELBOW_OFFSET, p01_in_x + ELBOW_OFFSET, p01_in_x],
-    [HEADER_Z_BLUE_DISCH - _gap_half_h, PORT_Z_TOP, PORT_Z_TOP],
+    [p01_in_x + ELB, p01_in_x + ELB, p01_in_x],
+    [HEADER_Z_BLUE_DISCH - _suc_gap, PORT_Z_TOP, PORT_Z_TOP],
     OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 
-# P-01 OUT → 90° up → header → ACC-01 → BV-02 → spray bar
+# P-01 OUT → discharge header → ACC-01 → BV-02 → spray bar
 draw_pipe_path(ax,
-    [p01_out_x, p01_out_x - ELBOW_OFFSET, p01_out_x - ELBOW_OFFSET, ACC_X],
+    [p01_out_x, p01_out_x - ELB, p01_out_x - ELB, ACC_X],
     [PORT_Z_TOP, PORT_Z_TOP, HEADER_Z_BLUE_DISCH, HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, zorder=Z_BLUE)
 acc_exit_x = ACC_X + ACC_W
@@ -550,35 +552,36 @@ draw_pipe_path(ax,
 # ════════════════════════════════════════════════════════════════════════════
 # P-02 BROWN RECYCLE — IBC-3 → P-02 → filter skid
 # ════════════════════════════════════════════════════════════════════════════
-# 1/2": IBC-3 → manifold entry
+# Brown suction: IBC-3 → manifold entry → P-02 IN
 draw_pipe_path(ax,
-    [PIPE_EXIT_X, TRANS_X],
+    [PIPE_EXIT_X, FRAME_R],
     [PORT_Z_TOP, PORT_Z_TOP],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
-# 1/2": manifold entry → P-02 IN
 draw_pipe_path(ax,
-    [TRANS_X - 15, p02_in_x],
+    [FRAME_R, p02_in_x],
     [PORT_Z_TOP, PORT_Z_TOP],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 
-# P-02 OUT → 90° up → riser → filter skid
-TRANS_BROWN_OUT_Z = PUMP_TOP_Z_TOP + 40
-RISER_EXIT_Z = HEADER_Z_BROWN_DISCH + 80
-BROWN_RISER_X = p02_out_x - ELBOW_OFFSET
+# P-02 OUT → 90° bend → straight north riser → filter skid
+# Riser goes straight up from first bend, crossing both Blue headers
+BROWN_RISER_X = p02_out_x - ELB  # riser at first bend
+_p02_gap = OD_H / 2.0  # gap for Blue pipe crossings
+RISER_EXIT_Z = HEADER_Z_BLUE_SUC + 80  # exit above suction header
+
+# P-02 out to first bend, then up to discharge header crossing
 draw_pipe_path(ax,
     [p02_out_x, BROWN_RISER_X, BROWN_RISER_X],
-    [PORT_Z_TOP, PORT_Z_TOP, TRANS_BROWN_OUT_Z],
+    [PORT_Z_TOP, PORT_Z_TOP, HEADER_Z_BLUE_DISCH - _p02_gap],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
-# 1/2" riser continues to filter skid (reducer at F1 housing inlet)
-# Split at Blue discharge header crossing (Brown is rear, Blue is front)
-_gap_half_1 = OD_H / 2.0 + CROSS_GAP   # gap sized to front pipe (1/2")
+# Gap at discharge header, continue to suction header crossing
 draw_pipe_path(ax,
     [BROWN_RISER_X, BROWN_RISER_X],
-    [TRANS_BROWN_OUT_Z, HEADER_Z_BLUE_DISCH - _gap_half_1],
+    [HEADER_Z_BLUE_DISCH + _p02_gap, HEADER_Z_BLUE_SUC - _p02_gap],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
+# Gap at suction header, continue to riser exit
 draw_pipe_path(ax,
     [BROWN_RISER_X, BROWN_RISER_X],
-    [HEADER_Z_BLUE_DISCH + _gap_half_1, RISER_EXIT_Z],
+    [HEADER_Z_BLUE_SUC + _p02_gap, RISER_EXIT_Z],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 ax.annotate("", xy=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z)),
             xytext=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z - 60)),
@@ -590,28 +593,22 @@ ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
 # ════════════════════════════════════════════════════════════════════════════
 # P-04 TRAY DRAIN — sump → P-04 → DV-02 → IBC-3 / IBC-4
 # ════════════════════════════════════════════════════════════════════════════
-SUMP_ENTRY_Z = 50
-# Suction: sump → P-04 IN (vertical riser)
+# Suction: tray sump → horizontal left past frame → riser up → P-04 IN
 draw_pipe_path(ax,
-    [p04_in_x, p04_in_x],
-    [SUMP_ENTRY_Z, PORT_Z_BOT],
+    [TRAY_SUMP_X, TRAY_RISER_X, TRAY_RISER_X, p04_in_x],
+    [TRAY_DRAIN_Z, TRAY_DRAIN_Z, PORT_Z_P04, PORT_Z_P04],
     OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.annotate("", xy=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z)),
-            xytext=(sx(p04_in_x + 30), sz(SUMP_ENTRY_Z + 50)),
+ax.annotate("", xy=(sx(TRAY_RISER_X - 30), sz(TRAY_DRAIN_Z)),
+            xytext=(sx(TRAY_SUMP_X + 60), sz(TRAY_DRAIN_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.2), zorder=10)
-ax.text(sx(p04_in_x + 40), sz(SUMP_ENTRY_Z - 10),
-        "FROM TRAY\nSUMP", ha="center", va="top",
+ax.text(sx((TRAY_SUMP_X + TRAY_RISER_X) / 2), sz(TRAY_DRAIN_Z + 25),
+        "FROM TRAY SUMP\n(BLACK — TRAY DRAIN)", ha="center", va="bottom",
         fontsize=4.5, color=C_BLACK_SYS, style="italic")
 
-# Discharge: P-04 OUT → DV-02 (mounted on board, below pump zone)
-DV02_X = FRAME_X + FRAME_W / 2
-DV02_Z = FRAME_Z_LO + ANGLE_W + 40   # inside the frame, below pump zone
-DV02_R = 20
-TRAY_DISCH_Z = PUMP_Z_BOT - 55  # below bottom-row pumps (was WASTE_DISCH_Z - 25)
+# Discharge: P-04 OUT → DV-02 (60mm right of P-04 at port height)
 draw_pipe_path(ax,
-    [p04_out_x, p04_out_x - ELBOW_OFFSET, p04_out_x - ELBOW_OFFSET,
-     DV02_X, DV02_X],
-    [PORT_Z_BOT, PORT_Z_BOT, TRAY_DISCH_Z, TRAY_DISCH_Z, DV02_Z + DV02_R],
+    [p04_out_x, DV02_X + DV02_R],
+    [PORT_Z_P04, PORT_Z_P04],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
 
 # DV-02 symbol (diamond)
@@ -621,28 +618,29 @@ ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
                           fc="white", ec=C_FRAME, lw=2.0, zorder=9))
 ax.text(sx(DV02_X), sz(DV02_Z), "3W", ha="center", va="center",
         fontsize=4, fontweight="bold", color=C_FRAME, zorder=10)
-# DV-02 outputs
-draw_pipe_path(ax,
-    [DV02_X + DV02_R, DV02_X + DV02_R + 80],
-    [DV02_Z, DV02_Z],
-    OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
-ax.text(sx(DV02_X + DV02_R + 90), sz(DV02_Z + 10), "← BROWN (IBC-3)",
-        ha="right", va="bottom", fontsize=5, color=C_BROWN, fontweight="bold")
-draw_pipe_path(ax,
-    [DV02_X - DV02_R, DV02_X - DV02_R - 80],
-    [DV02_Z, DV02_Z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.text(sx(DV02_X - DV02_R - 90), sz(DV02_Z + 10), "BLACK (IBC-4) →",
-        ha="left", va="bottom", fontsize=5, color=C_BLACK_SYS, fontweight="bold")
 place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
             component='diverter', fontsize=5.5, color=C_TEXT,
             dx=0, dy=-2.0, ha='center', va='top')
 
+# DV-02 Black output: bottom vertex → south to Z=165 → left to IBC
+draw_pipe_path(ax,
+    [DV02_BLACK_RISER_X, DV02_BLACK_RISER_X, PIPE_EXIT_X],
+    [DV02_Z - DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],
+    OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
+ax.text(sx((DV02_X + PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
+        "BLACK → IBC-4", ha="center", va="top",
+        fontsize=5, color=C_BLACK_SYS, fontweight="bold")
 
-# ── Pipe crossings ─────────────────────────────────────────────────────────
-# Layer system: Black L1 (back) → Brown L2 (middle) → Blue L3 (front).
-# Front pipe draws continuously; rear pipe breaks flush against front pipe
-# outer wall (zero extra gap). Joins butt at zero distance.
+# DV-02 Brown output: right vertex → riser south to Z=140 → left to IBC
+draw_pipe_path(ax,
+    [DV02_X - DV02_R, DV02_BROWN_RISER_X,
+     DV02_BROWN_RISER_X, PIPE_EXIT_X],
+    [DV02_Z, DV02_Z,
+     DV02_BROWN_Z, DV02_BROWN_Z],
+    OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
+ax.text(sx((DV02_X + PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
+        "BROWN → IBC-3", ha="center", va="bottom",
+        fontsize=5, color=C_BROWN, fontweight="bold")
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────
@@ -670,17 +668,17 @@ ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z_TOP)),
 # ── Pipe entry/exit annotations ──────────────────────────────────────────────
 # Blue supply label at entry (higher X side)
 ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_SUC + 15),
-        "FROM IBC-1 & IBC-2\n(BLUE SUPPLY — 1\" TRUNK)", ha="right", va="bottom",
+        "FROM IBC-1 & IBC-2\n(BLUE SUPPLY)", ha="right", va="bottom",
         fontsize=5, color=C_BLUE, style="italic")
 
 # Blue discharge label at exit (higher X side)
 ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_DISCH + 15),
-        "TO SPRAY BAR\n(BLUE DISCHARGE — 1\" TRUNK)", ha="right", va="bottom",
+        "TO SPRAY BAR\n(BLUE DISCHARGE)", ha="right", va="bottom",
         fontsize=5, color=C_BLUE, style="italic")
 
 # Brown suction label (higher X side)
 ax.text(sx(PIPE_EXIT_X + 5), sz(PORT_Z_TOP - 15),
-        "FROM IBC-3\n(BROWN RECYCLE — 1\" TRUNK)", ha="right", va="top",
+        "FROM IBC-3\n(BROWN RECYCLE)", ha="right", va="top",
         fontsize=5, color=C_BROWN, style="italic")
 
 
@@ -697,8 +695,12 @@ draw_dim_v(ax, sx(FRAME_X - 100), sz(FRAME_Z_LO), sz(FRAME_Z_HI),
 draw_dim_v(ax, sx(FRAME_X - 160), sz(0), sz(FRAME_Z_LO),
            f"{FRAME_Z_LO}mm AFF", offset=0.44)
 
-# Pump body width
+# Pump body width (P-01)
 draw_dim_h(ax, sx(P01_X), sx(P01_X + PUMP_BODY_W), sz(P01_Z - 30),
+           f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
+
+# P-04 centered position
+draw_dim_h(ax, sx(P04_X), sx(P04_X + PUMP_BODY_W), sz(P04_Z - 30),
            f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
 
 
@@ -728,30 +730,25 @@ leader(ax, sx(FRAME_X - BRACKET_W / 2), sz(FRAME_Z_LO + 40 + BRACKET_H / 2),
        sx(FRAME_X - BRACKET_W / 2 - 80), sz(FRAME_Z_LO + 40 + BRACKET_H / 2 + 50),
        "FRAME BRACKET\nTO WALL RIB", fs=5)
 
-# Pipe material leaders — trunk and manifold
+# Pipe material leader
 pipe_label_x = (BV01_X + PIPE_EXIT_X) / 2
 leader(ax, sx(pipe_label_x), sz(HEADER_Z_BLUE_SUC + 8),
        sx(pipe_label_x), sz(HEADER_Z_BLUE_SUC + 60),
-       "TRUNK: 1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=5)
-
-# Manifold pipe label (on the 1/2" section near P-01)
-manif_label_x = (p01_in_x + TRANS_X) / 2
-leader(ax, sx(manif_label_x), sz(HEADER_Z_BLUE_SUC - 8),
-       sx(manif_label_x), sz(HEADER_Z_BLUE_SUC - 50),
-       "MANIFOLD: 1/2\" HDPE Sch40\n(OD 21mm, WALL 3mm)", fs=5)
+       "ALL MANIFOLD: 1/2\" HDPE Sch40\n(OD 21mm, WALL 3mm)", fs=5)
 
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
     "1. All pumps: Shurflo 2088-554-144, 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm.",
-    "2. Pump body: 218H × 127W × 113D mm. Vertical, ports face L/R.",
-    "3. TRUNK: 1\" HDPE Sch40 (OD 33mm, wall 4mm). MANIFOLD: 1/2\" HDPE Sch40 (OD 21mm, wall 3mm).",
-    "4. 1\"→1/2\" bushing reducers at manifold entry/exit points (4 total, marked ▷◁).",
+    "2. Pump body: 218H × 127W × 113D mm. Vertical, ports face L/R. Through-bolted to 18mm ply.",
+    "3. All manifold piping: 1/2\" HDPE Sch40 (OD 21mm, wall 3mm).",
+    "4. Frame widened 40% (565mm) for pump separation. P-04 centered below P-01/P-02.",
     "5. P-01 (Blue): IBC-1/2 → BV-01 → P-01 → ACC-01 → BV-02 → spray bar.",
-    "6. P-02 (Brown): IBC-3 → P-02 → filter skid.",
-    "7. P-04 (Tray drain): sump → P-04 → DV-02 → IBC-3 or IBC-4.",
-    "8. P-03 (Waste evac) relocated to IBC plumbing corridor — not shown on this diagram.",
-    "9. ACC-01: SeaFlo 0.75L accumulator, 125 PSI, 1/2\" MNPT. Each circuit fused at 10A.",
+    "6. P-02 (Brown): IBC-3 → P-02 → riser straight north → filter skid.",
+    "7. P-04 (Tray drain): sump → P-04 → DV-02 → IBC-3 (Brown) or IBC-4 (Black).",
+    "8. DV-02 outputs: Brown at Z=140 (closest to walkway), Black at Z=165 (above Brown).",
+    "9. P-03 (Waste evac) relocated to IBC plumbing corridor — not shown on this diagram.",
+    "10. ACC-01: SeaFlo 0.75L accumulator, 125 PSI, 1/2\" MNPT. Each circuit fused at 10A.",
 ]
 for i, n in enumerate(notes):
     fig.text(0.35, 0.055 - i * 0.013, n, fontsize=6, color=C_TEXT,
@@ -1083,9 +1080,9 @@ pumps_solid = [
     (P01_X + PUMP_BODY_W / 2, PUMP_YD_START, "P-01", C_BLUE,  "BLUE SUPPLY"),
     (P02_X + PUMP_BODY_W / 2, PUMP_YD_START, "P-02", C_BROWN, "BROWN RECYCLE"),
 ]
-# Bottom row (ghost — hidden below top row); P-03 removed (relocated to IBC corridor)
+# P-04 (ghost — hidden below top row, centered in frame); P-03 relocated to IBC corridor
 pumps_ghost = [
-    (P04_X + PUMP_BODY_W / 2, PUMP_YD_START + GHOST_YD_OFFSET, "P-04", C_BLACK_SYS, "TRAY DRAIN\n(BELOW P-02)"),
+    (P04_X + PUMP_BODY_W / 2, PUMP_YD_START + GHOST_YD_OFFSET, "P-04", C_BLACK_SYS, "TRAY DRAIN\n(CENTERED BELOW)"),
 ]
 
 def _plan_pump_ports(pcx, pyd):
@@ -1138,7 +1135,7 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
 
 # ── ACC-01 from above ───────────────────────────────────────────────────────
 ACC_PLAN_R = 57   # tank half-depth in plan (~114mm H from spec)
-acc_plan_cx = FRAME_X + FRAME_W + 60   # to the right of the frame
+acc_plan_cx = FRAME_R + 60             # to the right of the frame
 acc_plan_cy = PUMP_YD_START + PP_D / 2  # at pump center depth
 ax3.add_patch(plt.Circle((sp_x(acc_plan_cx), sp_y(acc_plan_cy)),
               ACC_PLAN_R / SC_B, fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
@@ -1147,12 +1144,12 @@ ax3.text(sp_x(acc_plan_cx), sp_y(acc_plan_cy), "ACC-01",
          color="white", zorder=6)
 
 # ── Valve position constants (needed before pipe routing) ──────────────────
-bv01_plan_x = FRAME_X + FRAME_W + 60   # outside frame, right
+bv01_plan_x = FRAME_R + 60             # outside frame, right
 bv01_plan_yd = PORT_PLAN_YD            # on blue supply line
 bv_plan_r = 12
-bv02_plan_x = FRAME_X + FRAME_W + 60   # outside frame, right
+bv02_plan_x = FRAME_R + 60             # outside frame, right
 bv02_plan_yd = acc_plan_cy             # on blue discharge line
-dv02_plan_x = FRAME_X - 60             # outside frame, left
+dv02_plan_x = DV02_X                   # matches elevation DV-02 X position
 dv02_plan_yd = PORT_PLAN_YD            # on tray drain discharge line
 dv_plan_r = 14
 
@@ -1309,11 +1306,11 @@ ax3.text(sp_x(EXIT_X_R + 10), sp_y(bv02_plan_yd),
 # ── Brown suction: IBC-3 (½") → P-02 IN ─────────────────────────────────
 BROWN_PLAN_YD = PORT_PLAN_YD + 30
 draw_pipe_path_plan(ax3,
-    [EXIT_X_R, FRAME_X + FRAME_W + 10],
+    [EXIT_X_R, FRAME_R + 10],
     [BROWN_PLAN_YD, BROWN_PLAN_YD],
     OD_H, WALL_H, fc=C_BROWN, zorder=4)
 draw_pipe_path_plan(ax3,
-    [FRAME_X + FRAME_W + 10, p02_plan_in_x, p02_plan_in_x],
+    [FRAME_R + 10, p02_plan_in_x, p02_plan_in_x],
     [BROWN_PLAN_YD, BROWN_PLAN_YD, PORT_PLAN_YD],
     OD_H, WALL_H, fc=C_BROWN, zorder=4)
 ax3.text(sp_x(EXIT_X_R + 10), sp_y(BROWN_PLAN_YD),
@@ -1353,14 +1350,17 @@ def ghost_label(x, yd, text, color, ha="left", va="center"):
     ax3.text(sp_x(x), sp_y(yd), text, ha=ha, va=va,
              fontsize=3.5, color=color, fontweight="bold", alpha=0.4)
 
-# Tray drain suction: tray sump → P-04 IN (ghost) — same X as P-02 IN
-ghost_pipe([p02_plan_in_x, p02_plan_in_x], [EXIT_YD_BOT, PORT_PLAN_YD], C_BLACK_SYS)
-ghost_label(p02_plan_in_x + 10, EXIT_YD_BOT + 15, "FROM TRAY\nSUMP", C_BLACK_SYS, ha="left", va="top")
+# Tray drain suction: tray sump → P-04 IN (ghost) — at P-04 center X
+p04_cx = P04_X + PUMP_BODY_W / 2
+p04_plan_in_x = P04_X + PUMP_BODY_W  # IN port on right side
+ghost_pipe([EXIT_X_R, p04_plan_in_x], [EXIT_YD_BOT, PORT_PLAN_YD], C_BLACK_SYS)
+ghost_label(EXIT_X_R + 10, EXIT_YD_BOT + 15, "FROM TRAY\nSUMP", C_BLACK_SYS, ha="left", va="top")
 
 # Tray drain discharge: P-04 OUT → DV-02 → IBC-3/IBC-4 (ghost)
-ghost_pipe([p02_plan_out_x, dv02_plan_x + dv_plan_r], [PORT_PLAN_YD, dv02_plan_yd], C_BROWN)
-ghost_pipe([dv02_plan_x - dv_plan_r, EXIT_X_L], [dv02_plan_yd, dv02_plan_yd], C_BROWN)
-ghost_label(EXIT_X_L - 10, dv02_plan_yd, "VIA DV-02 TO\nIBC-3 or IBC-4", C_BROWN, ha="right")
+p04_plan_out_x = P04_X  # OUT port on left side
+ghost_pipe([p04_plan_out_x, dv02_plan_x + dv_plan_r], [PORT_PLAN_YD, dv02_plan_yd], C_BROWN)
+ghost_pipe([dv02_plan_x - dv_plan_r, EXIT_X_R], [dv02_plan_yd, dv02_plan_yd + 30], C_BROWN)
+ghost_label(EXIT_X_R + 10, dv02_plan_yd + 30, "VIA DV-02 TO\nIBC-3 or IBC-4", C_BROWN, ha="left")
 
 # ── BV-01 and BV-02 symbols in plan ─────────────────────────────────────────
 # (positions defined above with pipe routing constants)

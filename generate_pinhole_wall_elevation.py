@@ -69,11 +69,11 @@ PM_MARGIN_Z = 20         # vertical margin inside frame
 PM_FRAME_W = (2 * PM_ANGLE + 2 * PM_MARGIN_X
               + 2 * PM_PUMP_W + 1 * PM_GAP_X)             # 404mm
 PM_FRAME_X = PUMP_X + (PUMP_W - PM_FRAME_W) // 2          # centered (may extend past zone)
-# P-04 raised 250mm from original Z=150, centered horizontally
-PM_P04_Z = 400           # P-04 bottom Z
-PM_P04_X = PM_FRAME_X + (PM_FRAME_W - PM_PUMP_W) // 2     # centered in frame
 # Top row (P-01, P-02) — kept at original Z position
 PM_PUMP_Z_TOP = 518
+# P-04 centered horizontally, 20mm below top row for clearance
+PM_P04_Z = PM_PUMP_Z_TOP - PM_PUMP_H - 20   # 280mm — clears P-01/P-02 by 20mm
+PM_P04_X = PM_FRAME_X + (PM_FRAME_W - PM_PUMP_W) // 2     # centered in frame
 # Frame wraps all pumps tightly
 PM_FRAME_Z_LO = PM_P04_Z - PM_MARGIN_Z - PM_ANGLE         # 355mm
 PM_FRAME_Z_HI = (PM_PUMP_Z_TOP + PM_PUMP_H
@@ -737,8 +737,9 @@ TRAY_DRAIN_Z = WALKWAY_H + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
 
 # DV-02 output routing: both Black and Brown run south then left to IBCs
-DV02_BLACK_Z = 100               # Black horizontal run ~100mm from floor
-DV02_BROWN_Z = DV02_BLACK_Z + 25 # Brown parallel, 25mm above Black
+# Both horizontal runs above the walkway deck (Z=100)
+DV02_BLACK_Z = WALKWAY_H + 40    # 140mm — Black horizontal run above walkway
+DV02_BROWN_Z = DV02_BLACK_Z + 25 # 165mm — Brown parallel, 25mm above Black
 # Vertical risers: Black drops at DV-02 X, Brown offset 25mm to the right (lower X)
 DV02_BLACK_RISER_X = PM_DV02_X
 DV02_BROWN_RISER_X = PM_DV02_X - 25  # 25mm right in drawing (lower X)
@@ -976,7 +977,7 @@ notes = [
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
-    "5. Pump manifold frame: 404mm W × 426mm H (Z=355–781). P-01/P-02 top, P-04 centered below. DV-02 on P-04 discharge.",
+    "5. Pump manifold frame: 404mm W (Z=235–781). P-01/P-02 top, P-04 centered below with 20mm clearance. DV-02 on P-04 discharge.",
     "6. Battery right edge (X=2310) clears pinhole cone left boundary (X=2319 at Yd=0) by 9mm.",
     "7. Tray drain suction runs from sump (X=2399) to manifold frame bottom; DV-02 directs to IBC-3 or IBC-4.",
     "8. P-03 waste pump is in IBC plumbing corridor (X≈4700) — shorter pipe runs, less trapped liquid.",

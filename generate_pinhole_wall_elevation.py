@@ -663,12 +663,12 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_SUC, PM_HEADER_Z_BLUE_SUC],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # Arrow: flow from IBC (LEFT) toward manifold (RIGHT in drawing)
-ax.annotate("", xy=(sx(BV01_X + BV_R + 30), sz(PM_HEADER_Z_BLUE_SUC)),
-            xytext=(sx(BV01_X + BV_R + 150), sz(PM_HEADER_Z_BLUE_SUC)),
+ax.annotate("", xy=(sx(BV01_X + BV_R + 1500), sz(PM_HEADER_Z_BLUE_SUC)),
+            xytext=(sx(BV01_X + BV_R + 1380), sz(PM_HEADER_Z_BLUE_SUC)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
-ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC - 30),
+ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) * 0.57), sz(PM_HEADER_Z_BLUE_SUC - 35),
         "BLUE SUCTION FROM IBC-1/2", ha="center", va="bottom",
-        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
+        fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
 # BV-01 symbol + leader
 _bv_symbol(ax, BV01_X, BV01_Z, "BV\n01")
@@ -715,12 +715,12 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # Arrow: flow from manifold toward spray bar (LEFT in drawing = higher X)
-ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X ), sz(PM_HEADER_Z_BLUE_DISCH)),
-            xytext=(sx(IBC_PIPE_EXIT_X - 100), sz(PM_HEADER_Z_BLUE_DISCH)),
+ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X - 50), sz(PM_HEADER_Z_BLUE_DISCH)),
+            xytext=(sx(IBC_PIPE_EXIT_X - 170), sz(PM_HEADER_Z_BLUE_DISCH)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
-ax.text(sx((BV02_X + IBC_PIPE_EXIT_X) / 2), sz(PM_HEADER_Z_BLUE_DISCH + 15),
+ax.text(sx((BV02_X + IBC_PIPE_EXIT_X) * 0.55), sz(PM_HEADER_Z_BLUE_DISCH - 35),
         "BLUE DISCHARGE → SPRAY BAR", ha="center", va="bottom",
-        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
+        fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-02 BROWN RECYCLE: IBC-3 → P-02 → riser → filter skid F1 IN
@@ -730,12 +730,12 @@ draw_pipe_path(ax,
     [IBC_PIPE_EXIT_X, PM_FRAME_R],
     [p02_port_z, p02_port_z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-ax.annotate("", xy=(sx(PM_FRAME_R + 1480), sz(p02_port_z)),
-            xytext=(sx(PM_FRAME_R + 1600), sz(p02_port_z)),
+ax.annotate("", xy=(sx(PM_FRAME_R + 1460), sz(p02_port_z)),
+            xytext=(sx(PM_FRAME_R + 1580), sz(p02_port_z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
-ax.text(sx((IBC_PIPE_EXIT_X + PM_FRAME_R) / 2), sz(p02_port_z + 15),
+ax.text(sx((IBC_PIPE_EXIT_X + PM_FRAME_R) * 0.58), sz(p02_port_z - 35),
         "P-02 SUCTION FROM IBC-3", ha="center", va="bottom",
-        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
 # 1/2" manifold: frame edge → P-02 IN
 draw_pipe_path(ax,
     [PM_FRAME_R, p02_in_x],
@@ -830,10 +830,10 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 # Flow arrow: Black from DV-02 toward IBC-4
 _dv02_blk_mid = (DV02_BLACK_RISER_X + IBC_PIPE_EXIT_X) / 2
-ax.annotate("", xy=(sx(_dv02_blk_mid + 1000), sz(DV02_BLACK_Z)),
-            xytext=(sx(_dv02_blk_mid + 880), sz(DV02_BLACK_Z)),
+ax.annotate("", xy=(sx(_dv02_blk_mid + 950), sz(DV02_BLACK_Z)),
+            xytext=(sx(_dv02_blk_mid + 830), sz(DV02_BLACK_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z + 35),
+ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) * 0.61), sz(DV02_BLACK_Z + 35),
         "WASTE → BLACK IBC-4", ha="center", va="top",
         fontsize=4.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
@@ -847,25 +847,25 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 # Flow arrow: Brown from DV-02 toward IBC-3
 _dv02_brn_mid = (DV02_BROWN_RISER_X + IBC_PIPE_EXIT_X) / 2
-ax.annotate("", xy=(sx(_dv02_brn_mid + 1025), sz(DV02_BROWN_Z)),
-            xytext=(sx(_dv02_brn_mid + 900), sz(DV02_BROWN_Z)),
+ax.annotate("", xy=(sx(_dv02_brn_mid + 960), sz(DV02_BROWN_Z)),
+            xytext=(sx(_dv02_brn_mid + 840), sz(DV02_BROWN_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
-ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z - 35),
+ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) * 0.61), sz(DV02_BROWN_Z - 35),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",
-        fontsize=4.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
 # ── DV-01 output: filtered water return to Blue IBC-2 ─────────────────────
 draw_pipe_path(ax,
     [DV01_X + DV01_R, IBC_PIPE_EXIT_X],
     [PORT_Z, PORT_Z],
     OD_H, WALL_H, fc="#3070B0", ec="#1A3A6A", bore_fc="white", zorder=8)
-ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 150), sz(PORT_Z)),
-            xytext=(sx(IBC_PIPE_EXIT_X + 30), sz(PORT_Z)),
+ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X ), sz(PORT_Z)),
+            xytext=(sx(IBC_PIPE_EXIT_X - 120), sz(PORT_Z)),
             arrowprops=dict(arrowstyle="-|>", color="#3070B0", lw=1.2),
             zorder=10)
-ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(PORT_Z + 35),
+ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) * 0.52), sz(PORT_Z - 35),
         "FILTERED RETURN → BLUE IBC-2", ha="center", va="bottom",
-        fontsize=3.5, color="#3070B0", zorder=10, **FONT)
+        fontsize=4, color="#3070B0", zorder=10, **FONT)
 
 # ── DV-01 waste output: to Black IBC-4 ────────────────────────────────────
 DV01_WASTE_Z = PORT_Z - 200
@@ -873,9 +873,13 @@ draw_pipe_path(ax,
     [DV01_X, DV01_X, IBC_PIPE_EXIT_X],
     [PORT_Z - DV01_R, DV01_WASTE_Z, DV01_WASTE_Z],
     OD_H, WALL_H, fc="#555555", ec="#333333", bore_fc="white", zorder=8)
-ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) / 2), sz(DV01_WASTE_Z - 35),
+ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X ), sz(DV01_WASTE_Z)),
+            xytext=(sx(IBC_PIPE_EXIT_X - 120), sz(DV01_WASTE_Z)),
+            arrowprops=dict(arrowstyle="-|>", color="#555555", lw=1.2),
+            zorder=10)
+ax.text(sx((DV01_X + IBC_PIPE_EXIT_X) * 0.53), sz(DV01_WASTE_Z - 30),
         "WASTE → BLACK IBC-4", ha="center", va="top",
-        fontsize=3.5, color="#555555", zorder=10, **FONT)
+        fontsize=4, color="#555555", zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
 # Branch tee off the Blue discharge trunk, rises to tap height.

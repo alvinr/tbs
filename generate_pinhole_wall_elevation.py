@@ -360,7 +360,7 @@ for gx in range(int(WK_X_L), int(WK_X_R), 80):
             color=C_STEEL, lw=0.2, zorder=4, alpha=0.3)
 
 # Label
-ax.text(sx((WK_X_L + WK_X_R) / 2), sz(WALKWAY_H + 15),
+ax.text(sx((WK_X_L + WK_X_R) * 0.6), sz(WALKWAY_H + 5),
         "NEAR WALKWAY DECK (Z=100mm)", ha="center", va="bottom",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
@@ -444,13 +444,13 @@ ax.text(sx(PROC_TRAY_X_L + 100), sz(TRAY_RIM_TOP / 2),
         "PROCESSING TRAY (304 SS, 50mm RIM)", ha="left", va="center",
         fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
 
-ax.text(sx(SUMP_X_L - 20), sz(TRAY_FLOOR_Z / 2 + 3),
-        "SUMP\nWELL", ha="right", va="center",
-        fontsize=2.5, color="#0D47A1", zorder=10, **FONT)
+ax.text(sx(SUMP_X_L - 40), sz(TRAY_FLOOR_Z / 2 + 20),
+        "SUMP WELL", ha="right", va="center",
+        fontsize=4.5, color="#0D47A1", zorder=10, **FONT)
 
 ax.text(sx(TUBE_X - 40), sz(TRAY_RIM_TOP + 5),
         "PICKUP TUBE", ha="right", va="bottom",
-        fontsize=2.5, color="#666666", zorder=10, **FONT)
+        fontsize=4.5, color="#666666", zorder=10, **FONT)
 # Leader from pickup label to tube
 ax.plot([sx(TUBE_X - 35), sx(TUBE_X - 5)],
         [sz(TRAY_RIM_TOP + 5), sz(TRAY_RIM_TOP + 5)],
@@ -526,7 +526,7 @@ for (px, plabel) in [
                 label_fs=3.5, label_color="white")
 
 # Frame label
-ax.text(sx(PM_FRAME_X + PM_FRAME_W / 2), sz(PM_FRAME_Z_HI + 15),
+ax.text(sx(PM_FRAME_X + PM_FRAME_W / 2), sz(PM_FRAME_Z_HI - 225),
         "PUMP MANIFOLD\n(P-01, P-02, P-04)", ha="center", va="bottom",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
@@ -538,7 +538,7 @@ equip_block(PM_ACC_X, PM_ACC_Z, PM_ACC_W, PM_ACC_H,
 # ── Filter skid frame ────────────────────────────────────────────────────
 equip_block(FSKID_X, FSKID_Z_LO, FSKID_W, FSKID_Z_HI - FSKID_Z_LO,
             "", C_FSKID, alpha=0.35, lw=1.2)
-ax.text(sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI - 30),
+ax.text(sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI - 530),
         "FILTER SKID FRAME", ha="center", va="top",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
@@ -606,7 +606,7 @@ ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=1.0, zorder=9))
 leader(ax, sx(DV01_X), sz(PORT_Z + DV01_R),
-       sx(DV01_X - 350), sz(PORT_Z + DV01_R + 180),
+       sx(DV01_X - 75), sz(PORT_Z + DV01_R + 180),
        "DV-01\n(3-WAY DIVERTER)", fs=4.2, color=C_DIM,
        ha="center", va="bottom", lw=0.6, zorder=11, font=FONT)
 
@@ -666,7 +666,7 @@ draw_pipe_path(ax,
 ax.annotate("", xy=(sx(BV01_X + BV_R + 30), sz(PM_HEADER_Z_BLUE_SUC)),
             xytext=(sx(BV01_X + BV_R + 150), sz(PM_HEADER_Z_BLUE_SUC)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
-ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC + 30),
+ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC - 30),
         "BLUE SUCTION FROM IBC-1/2", ha="center", va="bottom",
         fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
 
@@ -715,10 +715,10 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 # Arrow: flow from manifold toward spray bar (LEFT in drawing = higher X)
-ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X + 150), sz(PM_HEADER_Z_BLUE_DISCH)),
-            xytext=(sx(IBC_PIPE_EXIT_X + 30), sz(PM_HEADER_Z_BLUE_DISCH)),
+ax.annotate("", xy=(sx(IBC_PIPE_EXIT_X ), sz(PM_HEADER_Z_BLUE_DISCH)),
+            xytext=(sx(IBC_PIPE_EXIT_X - 100), sz(PM_HEADER_Z_BLUE_DISCH)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
-ax.text(sx((BV02_X + IBC_PIPE_EXIT_X) / 2), sz(PM_HEADER_Z_BLUE_DISCH + 25),
+ax.text(sx((BV02_X + IBC_PIPE_EXIT_X) / 2), sz(PM_HEADER_Z_BLUE_DISCH + 15),
         "BLUE DISCHARGE → SPRAY BAR", ha="center", va="bottom",
         fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
 
@@ -730,10 +730,10 @@ draw_pipe_path(ax,
     [IBC_PIPE_EXIT_X, PM_FRAME_R],
     [p02_port_z, p02_port_z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-ax.annotate("", xy=(sx(PM_FRAME_R + 30), sz(p02_port_z)),
-            xytext=(sx(PM_FRAME_R + 150), sz(p02_port_z)),
+ax.annotate("", xy=(sx(PM_FRAME_R + 1480), sz(p02_port_z)),
+            xytext=(sx(PM_FRAME_R + 1600), sz(p02_port_z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
-ax.text(sx((IBC_PIPE_EXIT_X + PM_FRAME_R) / 2), sz(p02_port_z + 30),
+ax.text(sx((IBC_PIPE_EXIT_X + PM_FRAME_R) / 2), sz(p02_port_z + 15),
         "P-02 SUCTION FROM IBC-3", ha="center", va="bottom",
         fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
 # 1/2" manifold: frame edge → P-02 IN
@@ -803,8 +803,8 @@ ax.annotate("", xy=(sx(TRAY_SUMP_X), sz(_riser_top_z - 30)),
             xytext=(sx(TRAY_SUMP_X), sz(TRAY_DRAIN_Z + 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
 ax.text(sx(TRAY_SUMP_X - 80), sz((_riser_top_z + TRAY_DRAIN_Z) / 2),
-        "TRAY DRAIN\nRISER", ha="right", va="center",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+        "TRAY\nDRAIN\nRISER", ha="right", va="center",
+        fontsize=4.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 # P-04 OUT → right in drawing (lower X) → horizontal to DV-02 left vertex
 draw_pipe_path(ax,
@@ -819,7 +819,7 @@ dv02_pts_z = [sz(PM_DV02_Z + PM_DV02_R), sz(PM_DV02_Z),
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
              fc="white", ec=C_OUT, lw=1.0, zorder=9))
 leader(ax, sx(PM_DV02_X), sz(PM_DV02_Z - PM_DV02_R),
-       sx(PM_DV02_X + 200), sz(PM_DV02_Z - 200),
+       sx(PM_DV02_X - 300), sz(PM_DV02_Z + 300),
        "DV-02\n(3-WAY DIVERTER)", fs=4.2, color=C_DIM,
        ha="center", va="top", lw=0.6, zorder=11, font=FONT)
 
@@ -830,12 +830,12 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 # Flow arrow: Black from DV-02 toward IBC-4
 _dv02_blk_mid = (DV02_BLACK_RISER_X + IBC_PIPE_EXIT_X) / 2
-ax.annotate("", xy=(sx(_dv02_blk_mid + 150), sz(DV02_BLACK_Z)),
-            xytext=(sx(_dv02_blk_mid + 30), sz(DV02_BLACK_Z)),
+ax.annotate("", xy=(sx(_dv02_blk_mid + 1000), sz(DV02_BLACK_Z)),
+            xytext=(sx(_dv02_blk_mid + 880), sz(DV02_BLACK_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
+ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z + 35),
         "WASTE → BLACK IBC-4", ha="center", va="top",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=4.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 # DV-02 RIGHT vertex (drawing) → Brown: right stub → south to Z=140 → left to IBC-3
 # Right vertex in drawing = lower physical X = PM_DV02_X - PM_DV02_R
@@ -847,12 +847,12 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 # Flow arrow: Brown from DV-02 toward IBC-3
 _dv02_brn_mid = (DV02_BROWN_RISER_X + IBC_PIPE_EXIT_X) / 2
-ax.annotate("", xy=(sx(_dv02_brn_mid + 150), sz(DV02_BROWN_Z)),
-            xytext=(sx(_dv02_brn_mid + 30), sz(DV02_BROWN_Z)),
+ax.annotate("", xy=(sx(_dv02_brn_mid + 1025), sz(DV02_BROWN_Z)),
+            xytext=(sx(_dv02_brn_mid + 900), sz(DV02_BROWN_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
-ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
+ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z - 35),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",
-        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4.5, color=C_BROWN, zorder=10, **FONT)
 
 # ── DV-01 output: filtered water return to Blue IBC-2 ─────────────────────
 draw_pipe_path(ax,
@@ -942,7 +942,7 @@ for hx in hanger_xs:
 # Shelf ghost outline (behind walkway plane at Yd=300, but drawn darker)
 equip_block(SHELF_X_L, SHELF_H - SHELF_T, SHELF_X_R - SHELF_X_L, SHELF_T,
             "", C_SHELF_DK, ls="--", alpha=0.6, lw=1.2, zorder=4)
-ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T - 30),
+ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T + 60),
         "CHEM SHELF (Yd=300, BEHIND)", ha="center", va="top",
         fontsize=4, color=C_SHELF_DK, style="italic", zorder=10, **FONT)
 

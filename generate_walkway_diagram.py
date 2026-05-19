@@ -53,7 +53,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
@@ -480,13 +480,7 @@ def sheet2():
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(6.5), line,
-                ha="left", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
@@ -787,13 +781,9 @@ def sheet1():
         f"5. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"6. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
     ]
-    for i, note in enumerate(notes):
-        bold = i == 0
-        ax.text(C_LEN * 3 / 5 + PAD_X, -PAD_Y_BOT + 250 + (len(notes) - 1 - i) * 35, note,
-                ha="left", va="bottom", fontsize=6 if bold else 5.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, C_LEN * 3 / 5 + PAD_X,
+               -PAD_Y_BOT + 250 + (len(notes) - 1) * 35,
+               spacing=35, fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -1159,13 +1149,7 @@ def sheet3():
         f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",
         f"6. ZERO floor contact \u2014 clears IBC stack entirely.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(6), line,
-                ha="left", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 6",
@@ -1519,13 +1503,7 @@ def sheet4():
         f"   near walkway bracket (X={LEFT_WK_R}).",
         f"6. Remove cradles + grating before panel slides.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(6), line,
-                ha="left", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1809,13 +1787,7 @@ def sheet5():
         f"5. All supports removable \u2014 lift out",
         f"   with grating before panel transport.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(5), line,
-                ha="right", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="right", font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 6",
@@ -2401,13 +2373,7 @@ def sheet6():
         f"6. Same at both ends",
         f"   (near + far bracket).",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(5), line,
-                ha="right", va="top", fontsize=5.5 if not bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="right", font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",

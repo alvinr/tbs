@@ -42,7 +42,7 @@ from tbs_constants import (
     EXT_PANEL_YD, EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"
@@ -382,8 +382,6 @@ def sheet1():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Notes ─────────────────────────────────────────────────────────────────
-    notes_x = sx(C_WID / 2)
-    notes_top = sy(Z_LO + 480)
     notes = [
         "CROSS-SECTION NOTES:",
         "",
@@ -396,13 +394,8 @@ def sheet1():
         f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
         f"8. External plumbing panel on end wall centerline (see Sheets 4-5).",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(18), line,
-                ha="center", va="top", fontsize=7 if bold else 6.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(18),
+               fs=6.5, ha="center", font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -629,9 +622,6 @@ def sheet2():
             style="italic", **FONT, zorder=5, rotation=90)
 
     # ── Notes ─────────────────────────────────────────────────────────────────
-    notes_x = px(X_LO + 20)
-    notes_top = py(YD_HI - 10 - (YD_HI - YD_LO) * 0.20)
-    notes_top = py(YD_LO + 340)
     notes = [
         "PLAN VIEW NOTES:",
         "",
@@ -642,13 +632,8 @@ def sheet2():
         f"5. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
         "6. See Sheets 4-5 for plumbing detail.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * py(18), line,
-                ha="left", va="top", fontsize=7 if bold else 6.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 340), spacing=py(18),
+               fs=6.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
@@ -1282,8 +1267,6 @@ def sheet4():
                f"{plate_w}mm PLATE", offset=sy(5), fs=5.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(YD_LO + 30)
-    notes_top = sy(Z_LO + 380)
     notes = [
         "EXTERNAL PLUMBING PANEL NOTES:",
         "",
@@ -1294,13 +1277,8 @@ def sheet4():
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 5).",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(18), line,
-                ha="left", va="top", fontsize=7 if bold else 6.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 380), spacing=sy(18),
+               fs=6.5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1774,8 +1752,6 @@ def sheet5():
                f"{BLUE_IBC_Y}mm", offset=px(5), fs=5.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = px(X_LO + 20)
-    notes_top = py(YD_LO + 320)
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
         "",
@@ -1786,13 +1762,8 @@ def sheet5():
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * py(18), line,
-                ha="left", va="top", fontsize=6 if bold else 5.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 320), spacing=py(18),
+               fs=5.5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 6",
@@ -2372,8 +2343,6 @@ def sheet6():
                f"{CORRIDOR_W}mm CORRIDOR", offset=sy(5), fs=5.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(YD_LO + 20)
-    notes_top = sy(Z_LO + 470)
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
         "1. View from inside container looking at sealed end wall. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
@@ -2388,13 +2357,8 @@ def sheet6():
         "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
         "11. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_top - i * sy(22), line,
-                ha="left", va="top", fontsize=7 if bold else 6,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_LO + 470), spacing=sy(22),
+               fs=6, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",

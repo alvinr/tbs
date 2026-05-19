@@ -41,7 +41,7 @@ from tbs_constants import (
 )
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 
 # ── Colour palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system

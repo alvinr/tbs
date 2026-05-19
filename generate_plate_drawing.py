@@ -17,7 +17,7 @@ import os
 from tbs_constants import svg_path, SVG_DIR
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
-                         draw_rect, leader, bolt_holes, hatch_rect)
+                         draw_rect, leader, bolt_holes, hatch_rect, draw_notes)
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = 600      # plate outer dimension (square)
@@ -353,10 +353,8 @@ ax3.text(cx3, cy3 - hw - 10, '3', ha='center', va='center', fontsize=10,
 ax3.text(cx3, cy3 + hw + 5, '  ', fontsize=1)  # spacer
 
 # ── Notes block ──────────────────────────────────────────────────────────────
-notes_x = 10
-notes_y = 175
-ax1.text(notes_x, notes_y, 'GENERAL NOTES:', fontsize=7, fontweight='bold', color='black')
 notes = [
+    'GENERAL NOTES:',
     '1. ALL DIMENSIONS IN MILLIMETRES. DO NOT SCALE DRAWING.',
     '2. ITEMS 2 AND 3: CRITICAL BORE Ø175 H7 AND DOWEL HOLES Ø8 H7 — MATCH REAM PAIRS.',
     '3. LIGHT TRAP REBATE: 5mm WIDE × 5mm DEEP SQUARE STEP ON MATING (INTERIOR) FACE OF ITEMS 2 & 3.',
@@ -366,8 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-for i, note in enumerate(notes):
-    ax1.text(notes_x, notes_y - 7 - i*6, note, fontsize=5.2, color='#222222')
+draw_notes(ax1, notes, 10, 175, spacing=6, fs=5.2)
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
@@ -878,6 +875,7 @@ ax2.text(ddx - 30, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', h
 
 # ── Sheet 2 notes ─────────────────────────────────────────────────────────────
 notes2 = [
+    'OPERATIONAL NOTES:',
     'FOCUS ADJUSTMENT: SLIDE LENS TUBE (ITEM 6) WITHIN PLATE BORE (ITEM 3/ITEM 5) AND LOCK WITH 3×M8 SET SCREWS.',
     'AT 3.4m SUBJECT DISTANCE: POSITION LENS TUBE SO LENS PRINCIPAL PLANE IS 1,400mm FROM PINHOLE WALL INTERIOR FACE.',
     'AT 5.0m SUBJECT DISTANCE: RETRACT TUBE TO 1,604mm. MARK TUBE AT BOTH POSITIONS WITH SCRIBED LINES.',
@@ -885,9 +883,7 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-ax2.text(10, 80, 'OPERATIONAL NOTES:', fontsize=7, fontweight='bold')
-for i, n in enumerate(notes2):
-    ax2.text(10, 73 - i*6, n, fontsize=5.0, color='#222')
+draw_notes(ax2, notes2, 10, 80, spacing=6, fs=5.0)
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

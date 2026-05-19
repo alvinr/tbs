@@ -817,12 +817,6 @@ draw_pipe_path(ax,
     [p04_out_x, PM_DV02_X + PM_DV02_R],
     [p04_port_z, p04_port_z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# Flow arrow: P-04 OUT → DV-02
-_p04_out_mid = (p04_out_x + PM_DV02_X + PM_DV02_R) / 2
-ax.annotate("", xy=(sx(_p04_out_mid + 30), sz(p04_port_z)),
-            xytext=(sx(_p04_out_mid - 30), sz(p04_port_z)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
-
 # DV-02 symbol (diamond)
 dv02_pts_x = [sx(PM_DV02_X), sx(PM_DV02_X + PM_DV02_R),
               sx(PM_DV02_X), sx(PM_DV02_X - PM_DV02_R)]

@@ -33,7 +33,7 @@ from tbs_constants import (
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
 )
 from tbs_title_block import title_block
-from tbs_drawing import leader
+from tbs_drawing import leader, draw_notes
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -1476,13 +1476,8 @@ def sheet5():
     ]
     notes_x = sb(LEG + 35)
     notes_y_start = sb(-10)
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax_b.text(notes_x, notes_y_start - i * sb(5.5), line,
-                  ha="left", va="top", fontsize=5.5 if not bold else 6,
-                  color=ANNO if bold else DIM,
-                  fontweight="bold" if bold else "normal",
-                  **FONT, zorder=15)
+    draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(5.5),
+               fs=5.5, title_fs=6, color=DIM, title_color=ANNO, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     # Create a full-width axes at the bottom for the title block

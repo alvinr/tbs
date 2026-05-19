@@ -47,7 +47,7 @@ from tbs_constants import (
     ZONE_R_START,
     DIAGRAMS_DIR,
 )
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_cl
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes
 from tbs_title_block import title_block
 
 # ── Local constants (computed from tbs_constants) ────────────────────────────
@@ -1048,10 +1048,8 @@ notes = [
     "7. Processing tray (304 SS, 50mm rim) sits on shims at Z=20. Sump well at X=2399, pickup tube to P-04 via walkway.",
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]
-note_y =0.65
-for i, note in enumerate(notes):
-    ax.text(0.1, note_y - i * 0.018, note, transform=ax.transAxes,
-            fontsize=4.5, color=C_DIM, va="bottom", **FONT)
+draw_notes(ax, notes, 0.1 * FW, 0.65 * FH, spacing=0.018 * FH,
+           fs=4.5, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. TITLE BLOCK

@@ -36,7 +36,7 @@ from tbs_constants import (
 from tbs_title_block import title_block
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, leader, draw_rect, hatch_rect,
-    place_label, register_pipe, reset_label_registry,
+    place_label, register_pipe, reset_label_registry, draw_notes,
 )
 
 # ── Color palette ─────────────────────────────────────────────────────────────
@@ -91,7 +91,7 @@ ax2.axis("off")
 
 # Set axis limits — main elevation (raised skid: Z=1410–2010, header ~2000)
 ax.set_xlim(sx(2600) - 1, sx(4200) + 1)
-ax.set_ylim(sz(1200) - 1, sz(2300) + 2)
+ax.set_ylim(sz(1050) - 1, sz(2300) + 2)
 
 # Mirror X axis for interior view: matches pinhole wall elevation convention
 # (high X / IBC end on LEFT, low X / cargo door end on RIGHT)
@@ -617,6 +617,7 @@ leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H / 2),
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
+    "NOTES",
     "1. All pipe: 1\" HDPE Sch40 (OD 33mm, wall 4mm). Push-fit barb connections.",
     "2. Filter housings: Geekpure Big Blue 4.5\"×10\" (1\" NPT ports).",
     "3. Flow direction: P-02 → F1 (50μ) → F2 (5μ) → F3 (GAC) → pH test → DV-01.",
@@ -626,9 +627,8 @@ notes = [
     "7. pH test point: inline tee with removable cap for handheld probe insertion.",
     "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
-for i, n in enumerate(notes):
-    fig.text(0.04, 0.10 - i * 0.018, n, fontsize=7, color=C_TEXT,
-             fontfamily="monospace", va="top")
+draw_notes(ax, notes, sx(FSKID_X), sz(1280), spacing=4.5, fs=7,
+           font={"fontfamily": "monospace"})
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)

@@ -26,7 +26,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT, WALL_T,
@@ -336,10 +336,9 @@ def sheet1():
         f"5. Panel slide travel = {PANEL_SLIDE}mm on 2× HGR20 rails (ceiling-mounted, near/far walls).",
         f"6. Left walkway (deck at {WALKWAY_H}mm) must be lifted out before panel slides to transport.",
     ]
-    for i, note in enumerate(notes):
-        ax.text(X_LO + 30, Z_LO + 30 + (len(notes) - 1 - i) * 22, note,
-                ha="left", va="bottom", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=15)
+    draw_notes(ax, notes, X_LO + 30, Z_LO + 30 + (len(notes) - 1) * 22,
+               spacing=22, fs=5.5, title_fs=5.5, color=C_DIM,
+               title_color=C_DIM, font=FONT)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     legend_x = X_HI - 240
@@ -565,7 +564,9 @@ def sheet2():
     # ── Component list (far left, compact) ──────────────────────────────────
     comp_x = -sx(W_RANGE * 1.4)
     comp_top = sy(5)
-    components = [
+    LINE_H = sy(7)   # tighter line spacing
+
+    comp_lines = [
         "COMPONENT LIST (PER RAIL):",
         "",
         "1× HGR20 rail, 500mm length",
@@ -575,21 +576,22 @@ def sheet2():
         "4× M8×25 hex bolts (carriage→bracket)",
         "4× M10×35 hex bolts (bracket→panel)",
         "1× 6mm mounting plate (welded)",
-        "",
+    ]
+    draw_notes(ax, comp_lines, comp_x, comp_top, spacing=LINE_H,
+               fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
+               font=FONT)
+
+    note_lines = [
         "NOTES:",
         f"• 2 rails total (near + far wall)",
         f"• Load rating: 12.7 kN per block",
         f"• Panel mass ≈ 180 kg (4 blocks)",
         f"• Safety factor > 10×",
     ]
-    LINE_H = sy(7)   # tighter line spacing
-    for i, line in enumerate(components):
-        bold = i == 0 or line.startswith("NOTES")
-        ax.text(comp_x, comp_top - i * LINE_H, line,
-                ha="left", va="top", fontsize=5 if not bold else 5.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    notes_top = comp_top - len(comp_lines) * LINE_H
+    draw_notes(ax, note_lines, comp_x, notes_top, spacing=LINE_H,
+               fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
+               font=FONT)
 
     # ── Scale note ───────────────────────────────────────────────────────────
     ax.text(0, -sy(H_RANGE) + sy(10),

@@ -34,7 +34,7 @@ from tbs_constants import (
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
-                         leader as _leader_shared, hatch_rect)
+                         leader as _leader_shared, hatch_rect, draw_notes)
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -1432,10 +1432,10 @@ def sheet4():
         "6. See ceiling-rail-sheet1/2 for rail suspension detail.",
     ]
     notes_x = YD_LO + 25
-    for i, note in enumerate(notes):
-        ax.text(notes_x, X_LO + 122 + (len(notes) - 1 - i) * 26, note,
-                ha="left", va="bottom", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=15)
+    notes_y_top = X_LO + 122 + (len(notes) - 1) * 26
+    draw_notes(ax, notes, notes_x, notes_y_top, spacing=26,
+               fs=5.5, title_fs=5.5, color=C_DIM, title_color=C_DIM,
+               border_lw=0, font=FONT)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
     legend_x = C_WID + 80

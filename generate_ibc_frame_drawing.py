@@ -38,7 +38,7 @@ from tbs_constants import (
     IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, hatch_rect
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, hatch_rect, draw_notes
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 BG       = "#FFFFFF"
@@ -654,7 +654,6 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     # ── Material note ───────────────────────────────────────────────────────
-    mat_note_y = sy(Z_HI - 40)
     notes = [
         "MATERIAL & FABRICATION NOTES:",
         "",
@@ -671,13 +670,8 @@ def sheet1():
         f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
         f"12. Total frame weight: ~90 kg.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(sx(YD_LO + 20), mat_note_y - i * sy(18), line,
-                ha="left", va="top", fontsize=6.5 if bold else 5.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_HI - 40), spacing=sy(18),
+               fs=5.5, font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
@@ -859,7 +853,6 @@ def sheet2():
            arrow_style="-|>", font=FONT)
 
     # ── Notes ───────────────────────────────────────────────────────────────
-    notes_y = sy(Z_LO + 300)
     notes = [
         "SIDE ELEVATION NOTES:",
         "",
@@ -870,13 +863,8 @@ def sheet2():
         f"5. Access gate (300mm × 916mm clear opening) at front bay, corridor face only.",
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(sx(X_LO + 20), notes_y - i * sy(18), line,
-                ha="left", va="top", fontsize=6.5 if bold else 5.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, sx(X_LO + 20), sy(Z_LO + 300), spacing=sy(18),
+               fs=5.5, font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1172,8 +1160,6 @@ def sheet3():
             **FONT, zorder=15)
 
     # ── Notes ───────────────────────────────────────────────────────────────
-    notes_x = px(X_HI / 2)
-    notes_y = py(YD_LO + 510)
     notes = [
         "PLAN VIEW NOTES:",
         "",
@@ -1186,13 +1172,8 @@ def sheet3():
         f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
-    for i, line in enumerate(notes):
-        bold = i == 0
-        ax.text(notes_x, notes_y - i * py(20), line,
-                ha="left", va="top", fontsize=7 if bold else 6.5,
-                color=C_OUT if bold else C_DIM,
-                fontweight="bold" if bold else "normal",
-                **FONT, zorder=15)
+    draw_notes(ax, notes, px(X_HI / 2), py(YD_LO + 510), spacing=py(20),
+               fs=6.5, font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

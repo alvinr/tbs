@@ -56,8 +56,9 @@ DV01_X = PH_TEST_X + 150             # 3895mm — diverter valve X
 DV01_R = 50                           # DV-01 body radius
 
 # ── Pump manifold frame constants ──
-# Layout: 3 pumps (P-01, P-02, P-03) side by side in top row,
+# Layout: P-01, P-02 side by side in top row,
 #         P-04 alone in bottom row, 150mm pipe routing gap between rows.
+# P-03 is in the IBC plumbing corridor (separate from manifold).
 PM_ANGLE = 25            # 25×25mm SHS frame member width
 PM_PUMP_W = 127          # Shurflo 2088 body width (mm), includes port threads
 PM_PUMP_H = 218          # Shurflo 2088 body height (mm)
@@ -65,21 +66,20 @@ PM_GAP_X = 60            # gap between pumps horizontally
 PM_MARGIN_X = 20         # margin from frame inner edge to pump body
 PM_MARGIN_Z = 20         # vertical margin inside frame
 PM_PIPE_GAP_Z = 150      # vertical gap between rows for pipe routing
-# Frame: 3 pumps wide, 2 rows + pipe routing gap tall
+# Frame: 2 pumps wide, 2 rows + pipe routing gap tall
 PM_FRAME_W = (2 * PM_ANGLE + 2 * PM_MARGIN_X
-              + 3 * PM_PUMP_W + 2 * PM_GAP_X)             # 591mm
+              + 2 * PM_PUMP_W + 1 * PM_GAP_X)             # 404mm
 PM_FRAME_X = PUMP_X + (PUMP_W - PM_FRAME_W) // 2          # centered (may extend past zone)
 PM_FRAME_Z_LO = 105      # just above walkway deck (Z=100)
 PM_FRAME_Z_HI = (PM_FRAME_Z_LO + 2 * PM_ANGLE
                  + 2 * PM_MARGIN_Z + 2 * PM_PUMP_H + PM_PIPE_GAP_Z)  # 781mm
 # Bottom row (P-04): starts at frame bottom + angle + margin
 PM_PUMP_Z_BOT = PM_FRAME_Z_LO + PM_ANGLE + PM_MARGIN_Z   # 150mm
-# Top row (P-01, P-02, P-03): above bottom row + pump height + pipe gap
+# Top row (P-01, P-02): above bottom row + pump height + pipe gap
 PM_PUMP_Z_TOP = PM_PUMP_Z_BOT + PM_PUMP_H + PM_PIPE_GAP_Z  # 518mm
-# Pump X positions — top row: 3 pumps side by side
+# Pump X positions — top row: 2 pumps side by side
 PM_P01_X = PM_FRAME_X + PM_ANGLE + PM_MARGIN_X            # left pump
-PM_P02_X = PM_P01_X + PM_PUMP_W + PM_GAP_X                # center pump
-PM_P03_X = PM_P02_X + PM_PUMP_W + PM_GAP_X                # right pump
+PM_P02_X = PM_P01_X + PM_PUMP_W + PM_GAP_X                # right pump
 PM_P04_X = PM_P01_X                                        # bottom row, left-aligned
 PM_PORT_OFF = 30         # port offset from top of pump body
 PM_PORT_Z_TOP = PM_PUMP_Z_TOP + PM_PUMP_H - PM_PORT_OFF   # port Z, top row pumps
@@ -95,6 +95,12 @@ PM_ACC_W = 200
 PM_ACC_H = 127
 PM_ACC_X = PM_FRAME_X + PM_FRAME_W + 40
 PM_ACC_Z = PM_HEADER_Z_BLUE_DISCH - PM_ACC_H // 2 + 25
+# ── P-03 in IBC plumbing corridor ──
+# P-03 (waste evacuation) is mounted in the IBC corridor, not on the pump manifold.
+# Shown at left edge of IBC zone in elevation (actual Yd ≈ 1,100).
+P03_IBC_X = ZONE_R_START + 50                             # 4699mm — just inside IBC zone
+P03_IBC_Z = WALKWAY_H + 50                                # 150mm — above walkway
+
 # Pipe colors for Blue and Brown circuits
 C_BLUE  = "#2979B8"      # Blue circuit pipe fill
 C_BLUE_EC = "#1A5A8A"    # Blue circuit pipe edge
@@ -418,7 +424,7 @@ ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
         ha="center", va="top", fontsize=5, color=C_PINHOLE_EQ,
         zorder=10, **FONT)
 
-# ── Pump manifold (3+1 layout: P-01/P-02/P-03 top row, P-04 bottom) ────
+# ── Pump manifold (P-01/P-02 top row, P-04 bottom row) ────
 # Frame outline (25×25mm SHS perimeter)
 PM_FRAME_H = PM_FRAME_Z_HI - PM_FRAME_Z_LO
 equip_block(PM_FRAME_X, PM_FRAME_Z_LO, PM_FRAME_W, PM_FRAME_H,
@@ -429,11 +435,10 @@ equip_block(PM_FRAME_X + PM_ANGLE, PM_FRAME_Z_LO + PM_ANGLE,
             PM_FRAME_W - 2 * PM_ANGLE, PM_FRAME_H - 2 * PM_ANGLE,
             "", "#D4C8A0", lw=0.5, zorder=3, alpha=0.3)
 
-# 4 pump bodies: top row P-01/P-02/P-03 side by side, bottom row P-04
+# 3 pump bodies: top row P-01/P-02 side by side, bottom row P-04
 for (px, pz, plabel) in [
     (PM_P01_X, PM_PUMP_Z_TOP, "P-01"),
     (PM_P02_X, PM_PUMP_Z_TOP, "P-02"),
-    (PM_P03_X, PM_PUMP_Z_TOP, "P-03"),
     (PM_P04_X, PM_PUMP_Z_BOT, "P-04"),
 ]:
     equip_block(px, pz, PM_PUMP_W, PM_PUMP_H,
@@ -442,8 +447,16 @@ for (px, pz, plabel) in [
 
 # Frame label
 ax.text(sx(PM_FRAME_X + PM_FRAME_W / 2), sz(PM_FRAME_Z_HI + 15),
-        "PUMP MANIFOLD\n(P-01, P-02, P-03, P-04)", ha="center", va="bottom",
+        "PUMP MANIFOLD\n(P-01, P-02, P-04)", ha="center", va="bottom",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
+
+# ── P-03 in IBC corridor ────
+equip_block(P03_IBC_X, P03_IBC_Z, PM_PUMP_W, PM_PUMP_H,
+            "P-03", C_PUMP, lw=0.8, zorder=6, alpha=0.65,
+            label_fs=3.5, label_color="white")
+ax.text(sx(P03_IBC_X + PM_PUMP_W / 2), sz(P03_IBC_Z + PM_PUMP_H + 15),
+        "P-03\n(IBC CORRIDOR)", ha="center", va="bottom",
+        fontsize=3.5, color=C_DIM, zorder=10, **FONT)
 
 # ACC-01 accumulator (blue rectangle, right of frame)
 equip_block(PM_ACC_X, PM_ACC_Z, PM_ACC_W, PM_ACC_H,
@@ -545,8 +558,10 @@ p01_in_x  = PM_P01_X + PM_PUMP_W;  p01_out_x = PM_P01_X
 p01_port_z = PM_PORT_Z_TOP
 p02_in_x  = PM_P02_X + PM_PUMP_W;  p02_out_x = PM_P02_X
 p02_port_z = PM_PORT_Z_TOP
-p03_in_x  = PM_P03_X + PM_PUMP_W;  p03_out_x = PM_P03_X
-p03_port_z = PM_PORT_Z_TOP
+# P-03 in IBC corridor
+p03_in_x  = P03_IBC_X + PM_PUMP_W;  p03_out_x = P03_IBC_X
+p03_port_z = P03_IBC_Z + PM_PUMP_H - PM_PORT_OFF
+# P-04 bottom row of manifold
 p04_in_x  = PM_P04_X + PM_PUMP_W;  p04_out_x = PM_P04_X
 p04_port_z = PM_PUMP_Z_BOT + PM_PUMP_H - PM_PORT_OFF
 
@@ -686,38 +701,32 @@ ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
 
 # ════════════════════════════════════════════════════════════════════════════
-# P-03 WASTE EVACUATION: IBC-4 → P-03 → external drain port
+# P-03 WASTE EVACUATION (IBC CORRIDOR): IBC-4 → P-03 → external drain port
 # ════════════════════════════════════════════════════════════════════════════
-# Suction: IBC-4 (Black) → into frame → P-03 IN
-# Offset 40mm below P-02 Brown suction to avoid overlap (both top-row pumps)
-P03_SUC_Z = p03_port_z - 40  # external run Z, below Brown suction at p02_port_z
+# P-03 is in the IBC corridor — short suction from IBC-4 and short discharge
+# to external drain.  Only the stubs entering the IBC zone are shown.
+# Suction: IBC-4 → P-03 IN (short run within IBC zone)
 draw_pipe_path(ax,
-    [IBC_PIPE_EXIT_X, PM_FRAME_R],
-    [P03_SUC_Z, P03_SUC_Z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
-ax.annotate("", xy=(sx(PM_FRAME_R + 30), sz(P03_SUC_Z)),
-            xytext=(sx(PM_FRAME_R + 150), sz(P03_SUC_Z)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx((IBC_PIPE_EXIT_X + PM_FRAME_R) / 2), sz(P03_SUC_Z - 25),
-        "P-03 SUCTION FROM IBC-4", ha="center", va="top",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
-# 1/2": frame edge → jog up to port Z → P-03 IN
-draw_pipe_path(ax,
-    [PM_FRAME_R, PM_FRAME_R, p03_in_x],
-    [P03_SUC_Z, p03_port_z, p03_port_z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
-
-# P-03 OUT → left (toward cargo door) → external drain
-draw_pipe_path(ax,
-    [p03_out_x, PM_FRAME_X],
+    [IBC_PIPE_EXIT_X + 400, p03_in_x],
     [p03_port_z, p03_port_z],
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
-ax.annotate("", xy=(sx(PM_FRAME_X - 30), sz(p03_port_z)),
-            xytext=(sx(PM_FRAME_X + 60), sz(p03_port_z)),
+ax.annotate("", xy=(sx(p03_in_x - 20), sz(p03_port_z)),
+            xytext=(sx(IBC_PIPE_EXIT_X + 350), sz(p03_port_z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx(PM_FRAME_X - 50), sz(p03_port_z + 30),
-        "WASTE → EXT. DRAIN", ha="center", va="bottom",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+ax.text(sx(p03_in_x + 60), sz(p03_port_z + 25),
+        "FROM IBC-4", ha="center", va="bottom",
+        fontsize=3.0, color=C_BLACK_SYS, zorder=10, **FONT)
+# Discharge: P-03 OUT → external drain (short run, exits container)
+draw_pipe_path(ax,
+    [p03_out_x, P03_IBC_X - 80],
+    [p03_port_z, p03_port_z],
+    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
+ax.annotate("", xy=(sx(P03_IBC_X - 60), sz(p03_port_z)),
+            xytext=(sx(p03_out_x + 20), sz(p03_port_z)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
+ax.text(sx(P03_IBC_X - 80), sz(p03_port_z - 25),
+        "TO EXT. DRAIN", ha="center", va="top",
+        fontsize=3.0, color=C_BLACK_SYS, zorder=10, **FONT)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-04 TRAY DRAIN: sump → P-04 → DV-02 → IBC-3 / IBC-4
@@ -962,10 +971,11 @@ notes = [
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
-    "5. Pump manifold frame: 591mm W × 676mm H (Z=105–781). 3+1 layout: P-01/P-02/P-03 top row, P-04 bottom. DV-02 in pipe routing gap.",
+    "5. Pump manifold frame: 404mm W × 676mm H (Z=105–781). P-01/P-02 top row, P-04 bottom. DV-02 in pipe routing gap.",
     "6. Battery right edge (X=2310) clears pinhole cone left boundary (X=2319 at Yd=0) by 9mm.",
     "7. Tray drain suction runs from sump (X=2399) to manifold frame bottom; DV-02 directs to IBC-3 or IBC-4.",
-    "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
+    "8. P-03 waste pump is in IBC plumbing corridor (X≈4700) — shorter pipe runs, less trapped liquid.",
+    "9. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]
 note_y = 0.06
 for i, note in enumerate(notes):

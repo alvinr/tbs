@@ -369,18 +369,18 @@ ax.text(sx((WK_X_L + WK_X_R) / 2), sz(WALKWAY_H + 15),
         "NEAR WALKWAY DECK (Z=100mm)", ha="center", va="bottom",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
-# ── Walkway brackets (triangular gussets at rib positions) ──────────────────
+# ── Walkway brackets (cantilever arms at rib positions) ─────────────────────
+# Viewed end-on: brackets project in Yd (toward viewer), so they appear as
+# small rectangles (bracket thickness × vertical leg height), not triangles.
 bx = WK_X_L
 while bx <= WK_X_R:
-    # Find nearest rib
     nearest_rib = round(bx / CONTAINER_RIB_SPACING) * CONTAINER_RIB_SPACING
     if WK_X_L <= nearest_rib <= WK_X_R:
-        # Small triangle: vertical leg on wall, horizontal arm
-        tri_x = [sx(nearest_rib), sx(nearest_rib), sx(nearest_rib + WALKWAY_W * 0.15)]
-        tri_z = [sz(0), sz(deck_z_bot), sz(0)]
-        ax.fill(tri_x, tri_z, color=C_STEEL, alpha=0.5, zorder=3)
-        ax.plot(tri_x + [tri_x[0]], tri_z + [tri_z[0]],
-                color=C_OUT, lw=0.4, zorder=3)
+        # End-on rectangle: WALKWAY_BRACKET_T wide × deck_z_bot tall
+        bw = WALKWAY_BRACKET_T  # 8mm plate thickness (visible width in X)
+        bh = deck_z_bot         # 75mm from floor to grating underside
+        equip_block(nearest_rib - bw / 2, 0, bw, bh,
+                    "", C_STEEL, ec=C_OUT, lw=0.5, zorder=3, alpha=0.6)
     bx += CONTAINER_RIB_SPACING
 
 # ═══════════════════════════════════════════════════════════════════════════

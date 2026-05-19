@@ -440,7 +440,7 @@ ax.plot(sx(TUBE_X), sz(TUBE_Z_BOT), 's',
         color="#666666", markersize=3, zorder=4)
 
 # Labels — positioned to be readable at combined elevation scale
-ax.text(sx(PROC_TRAY_X_L + 100), sz(TRAY_RIM_TOP / 2),
+ax.text(sx(PROC_TRAY_X_L + 350), sz(TRAY_RIM_TOP / 2),
         "PROCESSING TRAY (304 SS, 50mm RIM)", ha="left", va="center",
         fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
 
@@ -461,12 +461,12 @@ ax.plot([sx(TUBE_X - 5), sx(TUBE_X)],
 
 # ── Zone labels for empty areas ───────────────────────────────────────────
 # Left end zone (X=0–150mm, cargo door / hinged panel)
-ax.text(sx(75), sz(C_HGT / 2), "CARGO DOOR\nEND\n(HINGED PANEL)",
+ax.text(sx(125), sz(C_HGT / 2), "CARGO DOOR\nEND\n(HINGED PANEL)",
         ha="center", va="center", fontsize=5, color="#AAAAAA",
         style="italic", zorder=2, **FONT)
 
 # Right end zone (X=4649–5893mm, IBC stack)
-ax.text(sx(ZONE_R_START + (C_LEN - ZONE_R_START) / 2), sz(C_HGT / 2),
+ax.text(sx(ZONE_R_START + (C_LEN - ZONE_R_START) / 2), sz(C_HGT * 0.8),
         "IBC STACK\nZONE", ha="center", va="center",
         fontsize=5, color="#AAAAAA", style="italic", zorder=2, **FONT)
 
@@ -964,11 +964,11 @@ draw_dim_v(ax, rx0, sz(0), sz(C_HGT),
 
 # Walkway deck height
 draw_dim_v(ax, rx1, sz(0), sz(WALKWAY_H),
-           f"{WALKWAY_H}", offset=0.2, fs=5, right=True)
+           f"{WALKWAY_H}mm", offset=0.2, fs=5, right=True)
 
 # Filter skid Z range
 draw_dim_v(ax, rx1, sz(FSKID_Z_LO), sz(FSKID_Z_HI),
-           f"{FSKID_Z_HI - FSKID_Z_LO}", offset=0.2, fs=5, right=True)
+           f"{FSKID_Z_HI - FSKID_Z_LO}mm", offset=0.2, fs=5, right=True)
 
 # Left-side vertical dims (IBC end = X=C_LEN = left side after mirror)
 lx0 = sx(C_LEN) - 0.15
@@ -1032,12 +1032,13 @@ for ix_mm, ilabel in items:
     ax.plot([sx(ix_mm), sx(ix_mm)], [sz(C_HGT), ann_y],
             color=C_DIM, lw=0.3, ls=":", zorder=1)
     ax.text(sx(ix_mm), ann_y + 0.05, ilabel, ha="center", va="bottom",
-            fontsize=3.5, color=C_DIM, zorder=10, **FONT)
+            fontsize=4, color=C_DIM, zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 7. INTERFERENCE NOTES
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
+    "NOTES",
     "1. All internal pipe: ½\" HDPE (OD=21mm) except filter housings (1\" NPT). Blue circuit in blue, Brown in brown, Waste/Black in gray.",
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
@@ -1047,9 +1048,9 @@ notes = [
     "7. Processing tray (304 SS, 50mm rim) sits on shims at Z=20. Sump well at X=2399, pickup tube to P-04 via walkway.",
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]
-note_y = 0.06
+note_y =0.65
 for i, note in enumerate(notes):
-    ax.text(0.01, note_y + i * 0.018, note, transform=ax.transAxes,
+    ax.text(0.1, note_y - i * 0.018, note, transform=ax.transAxes,
             fontsize=4.5, color=C_DIM, va="bottom", **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════

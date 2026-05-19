@@ -1049,7 +1049,7 @@ notes = [
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]
 draw_notes(ax, notes, 0.1 * FW, 0.65 * FH, spacing=0.018 * FH,
-           fs=4.5, color=C_DIM, title_color=C_DIM, font=FONT)
+           fs=4.5, width=22, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. TITLE BLOCK

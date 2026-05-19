@@ -628,7 +628,7 @@ notes = [
     "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
 draw_notes(ax, notes, sx(FSKID_X), sz(1280), spacing=4.5, fs=7,
-           font={"fontfamily": "monospace"})
+           width=230, font={"fontfamily": "monospace"})
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)

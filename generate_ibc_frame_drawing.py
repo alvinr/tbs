@@ -671,7 +671,7 @@ def sheet1():
         f"12. Total frame weight: ~90 kg.",
     ]
     draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_HI - 40), spacing=sy(18),
-               fs=5.5, font=FONT)
+               fs=5.5, font=FONT, width=sx(1900))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
@@ -864,14 +864,14 @@ def sheet2():
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
     ]
     draw_notes(ax, notes, sx(X_LO + 20), sy(Z_LO + 300), spacing=sy(18),
-               fs=5.5, font=FONT)
+               fs=5.5, font=FONT, width=sx(1200))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="SIDE ELEVATION — CORRIDOR STRUCTURE & X-BRACING",
                 scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW ALONG Yd",
-                height=0.05)
+                height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet2.png", dpi=130,
                 bbox_inches="tight", facecolor=BG)
@@ -1173,7 +1173,7 @@ def sheet3():
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
     draw_notes(ax, notes, px(X_HI / 2), py(YD_LO + 510), spacing=py(20),
-               fs=6.5, font=FONT)
+               fs=6.5, font=FONT, width=px(1100))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

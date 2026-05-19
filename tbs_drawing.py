@@ -452,7 +452,7 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     notes : list[str]
         Lines of text. First line is rendered bold as the title.
     x, y_top : float
-        Top-left corner of the text block in axes data coordinates.
+        Top-left anchor of the text block in axes data coordinates.
     spacing : float
         Vertical distance between lines in axes data units.
     fs : float
@@ -464,15 +464,15 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     title_color : str
         Title (first line) color.
     ha : str
-        Horizontal alignment — 'left' or 'center'.
+        Horizontal alignment — 'left', 'center', or 'right'.
     pad_x : float or None
         Horizontal padding inside border (data units). Defaults to spacing.
     pad_y : float or None
         Vertical padding inside border (data units). Defaults to spacing * 0.5.
-    width : float or None
-        Explicit border width in data units. When set, the border uses this
-        width instead of measuring text. Required for axes with
-        ``set_aspect("equal")`` where auto-measurement is unreliable.
+    width : float
+        Border width in data units.  The border extends *width* data units
+        from the text anchor in the reading direction (rightward on normal
+        axes, leftward on mirrored axes).
     border_color : str
         Border rectangle edge color.
     border_lw : float
@@ -491,59 +491,39 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
     if font is None:
         font = {}
 
-    # Convert data coords to axes-fraction coords so that text and border
-    # render consistently regardless of set_aspect("equal") or GridSpec.
-    d2a = ax.transData + ax.transAxes.inverted()
-
-    def to_ax(dx, dy):
-        """Data coords → axes-fraction coords."""
-        return d2a.transform((dx, dy))
-
-    ax_x, ax_ytop = to_ax(x, y_top)
-    _, ax_ybot = to_ax(x, y_top - spacing)
-    ax_spacing = ax_ytop - ax_ybot  # positive downward in data = negative in axes-frac
-
-    # Draw text lines in axes-fraction coords
+    # Draw text lines in data coords
     for i, line in enumerate(notes):
         is_title = (i == 0)
-        ay = ax_ytop - i * ax_spacing
-        ax.text(ax_x, ay, line, ha=ha, va="top",
+        y = y_top - i * spacing
+        ax.text(x, y, line, ha=ha, va="top",
                 fontsize=title_fs if is_title else fs,
                 color=title_color if is_title else color,
                 fontweight="bold" if is_title else "normal",
-                transform=ax.transAxes,
                 zorder=zorder + 1, **font)
 
-    # Measure longest line width in axes-fraction space
+    # Border rectangle in data coords
+    if width is None:
+        return  # no border when width not specified
+
     n = len(notes)
-    longest = max(notes, key=len)
-    t = ax.text(0, 0, longest, fontsize=fs, va="top", ha="left",
-                transform=ax.transAxes, **font, alpha=0)
-    ax.figure.canvas.draw()
-    renderer = ax.figure.canvas.get_renderer()
-    bb_px = t.get_window_extent(renderer=renderer)
-    t.remove()
-    # Convert pixel width to axes-fraction width
-    ax_bb = ax.get_window_extent(renderer=renderer)
-    text_w_frac = bb_px.width / ax_bb.width if ax_bb.width > 0 else 0.5
+    box_top = y_top + pad_y
+    box_bot = y_top - (n - 1) * spacing - pad_y
+    box_h = box_top - box_bot
 
-    # Padding in axes-fraction
-    pad_x_frac = abs(to_ax(x + pad_x, 0)[0] - ax_x)
-    pad_y_frac = abs(to_ax(0, y_top + pad_y)[1] - ax_ytop)
-
-    # Border box in axes-fraction coords
-    box_top_f = ax_ytop + pad_y_frac
-    box_bot_f = ax_ytop - (n - 1) * ax_spacing - pad_y_frac
-    box_h_f = box_top_f - box_bot_f
+    # Handle mirrored (inverted) X axis: width extends in reading direction
+    x_inverted = ax.get_xlim()[0] > ax.get_xlim()[1]
+    sign = -1 if x_inverted else 1
 
     if ha == "center":
-        box_left_f = ax_x - text_w_frac / 2 - pad_x_frac
-    else:
-        box_left_f = ax_x - pad_x_frac
-    box_w_f = text_w_frac + 2 * pad_x_frac
+        box_left_x = x - sign * (width / 2 + pad_x)
+    elif ha == "right":
+        box_left_x = x - sign * (width + pad_x)
+    else:  # left
+        box_left_x = x - sign * pad_x
+    box_w = sign * (width + 2 * pad_x)
 
     rect = mpatches.FancyBboxPatch(
-        (box_left_f, box_bot_f), box_w_f, box_h_f,
+        (box_left_x, box_bot), box_w, box_h,
         boxstyle="square,pad=0", fc="white", ec=border_color,
-        lw=border_lw, transform=ax.transAxes, zorder=zorder)
+        lw=border_lw, zorder=zorder)
     ax.add_patch(rect)

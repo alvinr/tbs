@@ -1459,25 +1459,17 @@ def sheet5():
     # Notes — placed in panel B (top-right), below diagram content
     notes = [
         "CLAMP NOTES:",
-        "",
-        f"1. {CLAMP_N_TOTAL} cam-lever clamps at",
-        f"   {CLAMP_SPACING}mm centers around",
-        f"   full frame perimeter.",
-        f"2. Base plate: 6061-T6 aluminum",
-        f"   {CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm,",
-        f"   2× M5 bolts to perp leg.",
-        f"3. Neoprene jaw pad (60A shore)",
-        f"   grips muslin without tearing.",
-        f"4. Torsion spring biases clamp",
-        f"   closed at any tilt angle.",
-        f"5. Over-center cam action:",
-        f"   snap open/closed by feel",
-        f"   in safelight conditions.",
+        f"1. {CLAMP_N_TOTAL} cam-lever clamps at {CLAMP_SPACING}mm centers around full frame perimeter.",
+        f"2. Base plate: 6061-T6 aluminum {CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm, 2× M5 bolts to perp leg.",
+        f"3. Neoprene jaw pad (60A shore) grips muslin without tearing.",
+        f"4. Torsion spring biases clamp closed at any tilt angle.",
+        f"5. Over-center cam action: snap open/closed by feel in safelight conditions.",
     ]
     notes_x = sb(LEG + 35)
     notes_y_start = sb(-10)
     draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(5.5),
-               fs=5.5, title_fs=6, color=DIM, title_color=ANNO, font=FONT)
+               fs=5.5, title_fs=6, color=DIM, title_color=ANNO, font=FONT,
+               width=sb(80))
 
     # ── Title block ───────────────────────────────────────────────────────────
     # Create a full-width axes at the bottom for the title block

@@ -668,23 +668,22 @@ draw_pipe_path(ax,
     [p02_port_z, p02_port_z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 
-# P-02 OUT → left elbow → up past frame top (+50mm) → horizontal to RISER_X
-#          → 90° turn up → 1/2" riser all the way to F1 header
-RISER_ENTRY_Z = PM_FRAME_Z_HI + 50   # 50mm above frame top
+# P-02 OUT → left elbow → straight north to F1 header height → right to F1 IN
+# Riser at p02_out_x - ELB goes directly up, crossing both Blue headers.
+RISER_X = p02_out_x - ELB  # riser is right at the first bend
 # Split at Blue discharge crossing (Z=PM_HEADER_Z_BLUE_DISCH): Brown breaks flush
 _p02_gap = OD_H / 2.0  # break flush against Blue discharge OD
 draw_pipe_path(ax,
-    [p02_out_x, p02_out_x - ELB, p02_out_x - ELB],
+    [p02_out_x, RISER_X, RISER_X],
     [p02_port_z, p02_port_z, PM_HEADER_Z_BLUE_DISCH - _p02_gap],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# Include the 90° turn at RISER_X and riser up to Blue suction crossing in one path
+# Riser resumes above Blue discharge, up to Blue suction crossing
 _riser_gap = OD_H / 2.0  # break flush against Blue suction OD
 draw_pipe_path(ax,
-    [p02_out_x - ELB, p02_out_x - ELB, RISER_X, RISER_X],
-    [PM_HEADER_Z_BLUE_DISCH + _p02_gap, RISER_ENTRY_Z, RISER_ENTRY_Z,
-     PM_HEADER_Z_BLUE_SUC - _riser_gap],
+    [RISER_X, RISER_X],
+    [PM_HEADER_Z_BLUE_DISCH + _p02_gap, PM_HEADER_Z_BLUE_SUC - _riser_gap],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1/2" riser resumes above Blue suction crossing
+# Riser resumes above Blue suction, up to F1 header → horizontal to F1 IN
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in, f1_in],
     [PM_HEADER_Z_BLUE_SUC + _riser_gap, HEADER_Z, HEADER_Z, PORT_Z + 30],
@@ -698,8 +697,8 @@ red_pts = [
     (sx(f1_in - OD / 2),   sz(PORT_Z)),
 ]
 ax.add_patch(plt.Polygon(red_pts, fc=C_BROWN, ec=C_BROWN_EC, lw=0.6, zorder=Z_BROWN))
-ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
-            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 20)),
+ax.annotate("", xy=(sx(RISER_X), sz(PM_FRAME_Z_HI + 100)),
+            xytext=(sx(RISER_X), sz(PM_FRAME_Z_HI + 20)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.0), zorder=10)
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -738,21 +737,23 @@ TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
 
 # DV-02 output routing: both Black and Brown run south then left to IBCs
 # Both horizontal runs above the walkway deck (Z=100)
-DV02_BLACK_Z = WALKWAY_H + 40    # 140mm — Black horizontal run above walkway
-DV02_BROWN_Z = DV02_BLACK_Z + 25 # 165mm — Brown parallel, 25mm above Black
+# Brown closest to walkway (turns last, lower Z), Black above (turns sooner, higher Z)
+DV02_BROWN_Z = WALKWAY_H + 40    # 140mm — Brown horizontal run (closest to walkway)
+DV02_BLACK_Z = DV02_BROWN_Z + 25 # 165mm — Black horizontal run (above Brown)
 # Vertical risers: Black drops at DV-02 X, Brown offset 25mm to the right (lower X)
 DV02_BLACK_RISER_X = PM_DV02_X
 DV02_BROWN_RISER_X = PM_DV02_X - 25  # 25mm right in drawing (lower X)
 
-# Tray drain suction: 1/2" from sump → 90° up to P-04 IN port
+# Tray drain suction: 1/2" from sump → extends left past frame → riser up → into P-04 IN
+_tray_riser_x = PM_FRAME_R + 50   # riser well past frame right edge (leftward in drawing)
 draw_pipe_path(ax,
-    [TRAY_SUMP_X, p04_in_x, p04_in_x],
-    [TRAY_DRAIN_Z, TRAY_DRAIN_Z, p04_port_z],
+    [TRAY_SUMP_X, _tray_riser_x, _tray_riser_x, p04_in_x],
+    [TRAY_DRAIN_Z, TRAY_DRAIN_Z, p04_port_z, p04_port_z],
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
-ax.annotate("", xy=(sx(p04_in_x), sz(TRAY_DRAIN_Z + 60)),
-            xytext=(sx(p04_in_x), sz(TRAY_DRAIN_Z + 10)),
+ax.annotate("", xy=(sx(_tray_riser_x - 30), sz(TRAY_DRAIN_Z)),
+            xytext=(sx(TRAY_SUMP_X + 60), sz(TRAY_DRAIN_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx((TRAY_SUMP_X + p04_in_x) / 2), sz(TRAY_DRAIN_Z + 25),
+ax.text(sx((TRAY_SUMP_X + _tray_riser_x) / 2), sz(TRAY_DRAIN_Z + 25),
         "TRAY DRAIN → P-04", ha="center", va="bottom",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
@@ -782,12 +783,13 @@ ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
         "WASTE → BLACK IBC-4", ha="center", va="top",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
-# DV-02 TOP vertex → Brown: north stub → jog right 25mm → south to Z=125 → left to IBC-3
+# DV-02 RIGHT vertex (drawing) → Brown: right stub → south to Z=140 → left to IBC-3
+# Right vertex in drawing = lower physical X = PM_DV02_X - PM_DV02_R
 draw_pipe_path(ax,
-    [PM_DV02_X, PM_DV02_X, DV02_BROWN_RISER_X,
+    [PM_DV02_X - PM_DV02_R, DV02_BROWN_RISER_X,
      DV02_BROWN_RISER_X, IBC_PIPE_EXIT_X],
-    [PM_DV02_Z + PM_DV02_R, PM_DV02_Z + PM_DV02_R + ELB,
-     PM_DV02_Z + PM_DV02_R + ELB, DV02_BROWN_Z, DV02_BROWN_Z],
+    [PM_DV02_Z, PM_DV02_Z,
+     DV02_BROWN_Z, DV02_BROWN_Z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 ax.text(sx((PM_DV02_X + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",

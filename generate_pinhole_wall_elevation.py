@@ -606,7 +606,7 @@ ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=1.0, zorder=9))
 ax.annotate("DV-01\n(3-WAY DIVERTER)", xy=(sx(DV01_X), sz(PORT_Z + DV01_R)),
-            xytext=(sx(DV01_X - 80), sz(PORT_Z + DV01_R + 120)),
+            xytext=(sx(DV01_X - 350), sz(PORT_Z + DV01_R + 180)),
             fontsize=4.2, color=C_DIM, fontweight="bold",
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
@@ -675,7 +675,7 @@ ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC + 30),
 # BV-01 symbol + leader
 _bv_symbol(ax, BV01_X, BV01_Z, "BV\n01")
 ax.annotate("BV-01\n(½\" BALL)", xy=(sx(BV01_X), sz(BV01_Z + BV_R)),
-            xytext=(sx(BV01_X + 80), sz(BV01_Z + 80)),
+            xytext=(sx(BV01_X + 120), sz(BV01_Z + 140)),
             fontsize=4.2, color=C_DIM, fontweight="bold",
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
@@ -710,7 +710,7 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 _bv_symbol(ax, BV02_X, BV02_Z, "BV\n02")
 ax.annotate("BV-02\n(½\" BALL)", xy=(sx(BV02_X), sz(BV02_Z + BV_R)),
-            xytext=(sx(BV02_X + 80), sz(BV02_Z + 80)),
+            xytext=(sx(BV02_X + 180), sz(BV02_Z + 120)),
             fontsize=4.2, color=C_DIM, fontweight="bold",
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
@@ -808,7 +808,7 @@ draw_pipe_path(ax,
 ax.annotate("", xy=(sx(TRAY_SUMP_X), sz(_riser_top_z - 30)),
             xytext=(sx(TRAY_SUMP_X), sz(TRAY_DRAIN_Z + 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx(TRAY_SUMP_X - 30), sz((_riser_top_z + TRAY_DRAIN_Z) / 2),
+ax.text(sx(TRAY_SUMP_X - 80), sz((_riser_top_z + TRAY_DRAIN_Z) / 2),
         "TRAY DRAIN\nRISER", ha="right", va="center",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
@@ -825,7 +825,7 @@ dv02_pts_z = [sz(PM_DV02_Z + PM_DV02_R), sz(PM_DV02_Z),
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
              fc="white", ec=C_OUT, lw=1.0, zorder=9))
 ax.annotate("DV-02\n(3-WAY DIVERTER)", xy=(sx(PM_DV02_X), sz(PM_DV02_Z - PM_DV02_R)),
-            xytext=(sx(PM_DV02_X + 80), sz(PM_DV02_Z - 120)),
+            xytext=(sx(PM_DV02_X + 200), sz(PM_DV02_Z - 200)),
             fontsize=4.2, color=C_DIM, fontweight="bold",
             ha="center", va="top",
             arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),

@@ -74,7 +74,7 @@ PM_FRAME_X = PUMP_X + (PUMP_W - PM_FRAME_W) // 2          # centered (may extend
 # Top row (P-01, P-02) — kept at original Z position
 PM_PUMP_Z_TOP = 518
 # P-04 centered horizontally, 20mm below top row for clearance
-PM_P04_Z = PM_PUMP_Z_TOP - PM_PUMP_H - 20   # 280mm — clears P-01/P-02 by 20mm
+PM_P04_Z = PM_PUMP_Z_TOP - PM_PUMP_H - 80   # 220mm — dropped for tray drain routing clearance
 PM_P04_X = PM_FRAME_X + (PM_FRAME_W - PM_PUMP_W) // 2     # centered in frame
 # Frame wraps all pumps tightly
 PM_FRAME_Z_LO = PM_P04_Z - PM_MARGIN_Z - PM_ANGLE         # 355mm
@@ -443,12 +443,6 @@ ax.plot([sx(TUBE_X), sx(TUBE_X)],
 # Foot valve indicator at bottom
 ax.plot(sx(TUBE_X), sz(TUBE_Z_BOT), 's',
         color="#666666", markersize=3, zorder=4)
-
-# Suction hose stub — dashed connector from tube top through walkway to pipe start
-# The hose crosses the walkway in Yd (into the page) then rises up the wall.
-ax.plot([sx(TUBE_X), sx(TUBE_X)],
-        [sz(TUBE_Z_TOP), sz(WALKWAY_H + 20)],
-        color=C_BLACK_SYS, lw=0.8, ls=":", zorder=3.5, alpha=0.7)
 
 # Labels — positioned to be readable at combined elevation scale
 ax.text(sx(PROC_TRAY_X_L + 100), sz(TRAY_RIM_TOP / 2),
@@ -833,17 +827,20 @@ DV02_BLACK_Z = DV02_BROWN_Z + 25 # 165mm — Black horizontal run (above Brown)
 DV02_BLACK_RISER_X = PM_DV02_X
 DV02_BROWN_RISER_X = PM_DV02_X - 25  # 25mm right in drawing (lower X)
 
-# Tray drain suction: 1/2" from sump → extends left past frame → riser up → into P-04 IN
-_tray_riser_x = PM_FRAME_R + 50   # riser well past frame right edge (leftward in drawing)
+# Tray drain suction: pickup tube rises vertically from sump (X=2399),
+# 90° left above P-04, then two 90° turns down into P-04 IN port.
+# Path: vertical up → left → down → left into port
+_riser_top_z = PM_P04_Z + PM_PUMP_H + 40  # 40mm above P-04 top
+_drop_x = p04_in_x + ELB                  # X where pipe drops toward port
 draw_pipe_path(ax,
-    [TRAY_SUMP_X, _tray_riser_x, _tray_riser_x, p04_in_x],
-    [TRAY_DRAIN_Z, TRAY_DRAIN_Z, p04_port_z, p04_port_z],
+    [TRAY_SUMP_X, TRAY_SUMP_X, _drop_x, _drop_x, p04_in_x],
+    [TRAY_DRAIN_Z, _riser_top_z, _riser_top_z, p04_port_z, p04_port_z],
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
-ax.annotate("", xy=(sx(_tray_riser_x - 30), sz(TRAY_DRAIN_Z)),
-            xytext=(sx(TRAY_SUMP_X + 60), sz(TRAY_DRAIN_Z)),
+ax.annotate("", xy=(sx(TRAY_SUMP_X), sz(_riser_top_z - 30)),
+            xytext=(sx(TRAY_SUMP_X), sz(TRAY_DRAIN_Z + 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLACK_SYS, lw=1.0), zorder=10)
-ax.text(sx((TRAY_SUMP_X + _tray_riser_x) / 2), sz(TRAY_DRAIN_Z + 25),
-        "TRAY DRAIN → P-04", ha="center", va="bottom",
+ax.text(sx(TRAY_SUMP_X - 30), sz((_riser_top_z + TRAY_DRAIN_Z) / 2),
+        "TRAY DRAIN\nRISER", ha="right", va="center",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 # P-04 OUT → right in drawing (lower X) → horizontal to DV-02 left vertex

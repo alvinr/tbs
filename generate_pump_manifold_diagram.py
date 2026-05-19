@@ -500,7 +500,7 @@ BV01_X = FRAME_R + 60
 BV01_Z = HEADER_Z_BLUE_SUC
 draw_ball_valve(ax, BV01_X, BV01_Z, "BV-01")
 leader(ax, sx(BV01_X), sz(BV01_Z + BV_R),
-       sx(BV01_X + 60), sz(BV01_Z + 80),
+       sx(BV01_X -60), sz(BV01_Z + 80),
        "BV-01\n(½\" BALL)", fs=5, color=C_TEXT,
        ha="center", va="bottom", lw=0.6, zorder=11)
 
@@ -622,7 +622,7 @@ dv02_pts_z = [sz(DV02_Z + DV02_R), sz(DV02_Z), sz(DV02_Z - DV02_R), sz(DV02_Z)]
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
                           fc="white", ec=C_FRAME, lw=2.0, zorder=9))
 leader(ax, sx(DV02_X), sz(DV02_Z - DV02_R),
-       sx(DV02_X + 150), sz(DV02_Z - 180),
+       sx(DV02_X - 80), sz(DV02_Z - 50),
        "DV-02\n(3-WAY DIVERTER)", fs=5.5, color=C_TEXT,
        ha="center", va="top", lw=0.6, zorder=11)
 
@@ -631,12 +631,7 @@ draw_pipe_path(ax,
     [DV02_BLACK_RISER_X, DV02_BLACK_RISER_X, PIPE_EXIT_X],
     [DV02_Z - DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],
     OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
-# Flow arrow on Black output — far out on long run
-_dv02_blk_mid = (DV02_BLACK_RISER_X + PIPE_EXIT_X) * 0.6
-ax.annotate("", xy=(sx(_dv02_blk_mid + 30), sz(DV02_BLACK_Z)),
-            xytext=(sx(_dv02_blk_mid - 30), sz(DV02_BLACK_Z)),
-            arrowprops=dict(**arrow_style, color=C_BLACK_SYS), zorder=12)
-ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.58), sz(DV02_BLACK_Z + 20),
+ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.55), sz(DV02_BLACK_Z + 20),
         "WASTE → BLACK IBC-4", ha="center", va="bottom",
         fontsize=5, color=C_BLACK_SYS, fontweight="bold")
 
@@ -647,33 +642,37 @@ draw_pipe_path(ax,
     [DV02_Z, DV02_Z,
      DV02_BROWN_Z, DV02_BROWN_Z],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
-# Flow arrow on Brown output — far out on long run
-_dv02_brn_mid = (DV02_BROWN_RISER_X + PIPE_EXIT_X) * 0.6
-ax.annotate("", xy=(sx(_dv02_brn_mid + 30), sz(DV02_BROWN_Z)),
-            xytext=(sx(_dv02_brn_mid - 30), sz(DV02_BROWN_Z)),
-            arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
-ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.58), sz(DV02_BROWN_Z - 20),
+ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.55), sz(DV02_BROWN_Z - 20),
         "DRAIN → BROWN IBC-3", ha="center", va="top",
         fontsize=5, color=C_BROWN, fontweight="bold")
 
 
-# ── Flow direction arrows ────────────────────────────────────────────────────
-# Blue supply arrow (incoming from higher X toward P-01) — far out on long run
-mid_blue_in = (PIPE_EXIT_X + BV01_X) * 0.6
-ax.annotate("", xy=(sx(mid_blue_in - 30), sz(HEADER_Z_BLUE_SUC)),
-            xytext=(sx(mid_blue_in + 30), sz(HEADER_Z_BLUE_SUC)),
+# ── Flow direction arrows — at pipe ends, in liquid color ────────────────────
+_AW = 40  # arrow length in mm
+
+# Blue suction IN (from IBC, entering at PIPE_EXIT_X — flow toward manifold)
+ax.annotate("", xy=(sx(PIPE_EXIT_X - _AW), sz(HEADER_Z_BLUE_SUC)),
+            xytext=(sx(PIPE_EXIT_X), sz(HEADER_Z_BLUE_SUC)),
             arrowprops=dict(**arrow_style, color=C_BLUE), zorder=12)
 
-# Blue discharge arrow (outgoing to higher X) — far out on long run
-mid_blue_out = (BV02_X + PIPE_EXIT_X) * 0.6
-ax.annotate("", xy=(sx(mid_blue_out + 30), sz(HEADER_Z_BLUE_DISCH)),
-            xytext=(sx(mid_blue_out - 30), sz(HEADER_Z_BLUE_DISCH)),
+# Blue discharge OUT (to spray bar, exiting at PIPE_EXIT_X — flow away from manifold)
+ax.annotate("", xy=(sx(PIPE_EXIT_X), sz(HEADER_Z_BLUE_DISCH)),
+            xytext=(sx(PIPE_EXIT_X - _AW), sz(HEADER_Z_BLUE_DISCH)),
             arrowprops=dict(**arrow_style, color=C_BLUE), zorder=12)
 
-# Brown suction arrow (incoming from higher X at PORT_Z_TOP) — far out on long run
-mid_brown = (PIPE_EXIT_X + p02_in_x) * 0.6
-ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z_TOP)),
-            xytext=(sx(mid_brown + 30), sz(PORT_Z_TOP)),
+# Brown suction IN (from IBC-3, entering at PIPE_EXIT_X — flow toward manifold)
+ax.annotate("", xy=(sx(PIPE_EXIT_X - _AW), sz(PORT_Z_TOP)),
+            xytext=(sx(PIPE_EXIT_X), sz(PORT_Z_TOP)),
+            arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
+
+# DV-02 Black OUT (to IBC-4, exiting at PIPE_EXIT_X)
+ax.annotate("", xy=(sx(PIPE_EXIT_X), sz(DV02_BLACK_Z)),
+            xytext=(sx(PIPE_EXIT_X - _AW), sz(DV02_BLACK_Z)),
+            arrowprops=dict(**arrow_style, color=C_BLACK_SYS), zorder=12)
+
+# DV-02 Brown OUT (to IBC-3, exiting at PIPE_EXIT_X)
+ax.annotate("", xy=(sx(PIPE_EXIT_X), sz(DV02_BROWN_Z)),
+            xytext=(sx(PIPE_EXIT_X - _AW), sz(DV02_BROWN_Z)),
             arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
 
 
@@ -751,6 +750,7 @@ leader(ax, sx(pipe_label_x), sz(HEADER_Z_BLUE_SUC + 8),
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
+    "NOTES",
     "1. All pumps: Shurflo 2088-554-144, 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm.",
     "2. Pump body: 218H × 127W × 113D mm. Vertical, ports face L/R. Through-bolted to 18mm ply.",
     "3. All manifold piping: 1/2\" HDPE Sch40 (OD 21mm, wall 3mm).",

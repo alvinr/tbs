@@ -682,8 +682,8 @@ ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
 # ════════════════════════════════════════════════════════════════════════════
 TRAY_DRAIN_Z = WALKWAY_H + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
-DV02_BROWN_Z = PM_DV02_Z + PM_DV02_R + 30  # 220mm — Brown output header Z
-DV02_BLACK_Z = PM_FRAME_Z_LO + 15           # 120mm — Black output header Z
+DV02_BROWN_Z = PM_DV02_Z         # 170mm — Brown exits left vertex at DV-02 center Z
+DV02_BLACK_Z = PM_DV02_Z - 150   # 20mm — Black drops 150mm south from right vertex
 
 # Tray drain suction: 1/2" from sump → below P-04 column
 draw_pipe_path(ax,
@@ -708,11 +708,10 @@ ax.text(sx((TRAY_SUMP_X + p04_in_x) / 2), sz(TRAY_DRAIN_Z + 25),
         "TRAY DRAIN → P-04", ha="center", va="bottom",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
-# P-04 OUT → down to DV-02 center Z → horizontal to DV-02 (drawing-LEFT vertex)
-# DV-02 drawing-LEFT vertex = physical right = PM_DV02_X + PM_DV02_R
+# P-04 OUT → right (drawing) to DV-02 X → 90° south → DV-02 top vertex
 draw_pipe_path(ax,
-    [p04_out_x, p04_out_x, PM_DV02_X + PM_DV02_R],
-    [p04_port_z, PM_DV02_Z, PM_DV02_Z],
+    [p04_out_x, PM_DV02_X, PM_DV02_X],
+    [p04_port_z, p04_port_z, PM_DV02_Z + PM_DV02_R],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 
 # DV-02 symbol inside frame (diamond)
@@ -726,20 +725,23 @@ ax.text(sx(PM_DV02_X), sz(PM_DV02_Z), "DV-02",
         ha="center", va="center", fontsize=3.2, color=C_OUT,
         zorder=10, **FONT)
 
-# DV-02 → Brown IBC-3: from top vertex → up → horizontal LEFT to IBC zone
+# DV-02 LEFT output (drawing) → Brown directly left to IBC-3
+# Left vertex in drawing = higher X physical = PM_DV02_X + PM_DV02_R
 draw_pipe_path(ax,
-    [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
-    [PM_DV02_Z + PM_DV02_R, DV02_BROWN_Z, DV02_BROWN_Z],
+    [PM_DV02_X + PM_DV02_R, IBC_PIPE_EXIT_X],
+    [DV02_BROWN_Z, DV02_BROWN_Z],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",
         fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
 
-# DV-02 → Black IBC-4: from bottom vertex → down → horizontal LEFT to IBC zone
+# DV-02 RIGHT output (drawing) → Black: right → 90° south 150mm → 90° left to IBC-4
+# Right vertex in drawing = lower X physical = PM_DV02_X - PM_DV02_R
+_dv02_black_elb = PM_DV02_X - PM_DV02_R - ELB  # short horizontal stub right
 draw_pipe_path(ax,
-    [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
-    [PM_DV02_Z - PM_DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],
-    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=6)
+    [PM_DV02_X - PM_DV02_R, _dv02_black_elb, _dv02_black_elb, IBC_PIPE_EXIT_X],
+    [PM_DV02_Z, PM_DV02_Z, DV02_BLACK_Z, DV02_BLACK_Z],
+    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
         "WASTE → BLACK IBC-4", ha="center", va="top",
         fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)

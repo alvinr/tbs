@@ -36,7 +36,9 @@ from tbs_constants import (
     WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
     CONTAINER_RIB_SPACING,
-    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_RIM,
+    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X,
+    PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM,
+    PROC_TRAY_YD_NEAR, PROC_TRAY_D, PROC_TRAY_PITCH,
     RAIL_OFF,
     FAN_B_H, FAN_B_YD, FAN_DIAM,
     C_OUT, C_CL, C_DIM,
@@ -380,6 +382,93 @@ while bx <= WK_X_R:
         ax.plot(tri_x + [tri_x[0]], tri_z + [tri_z[0]],
                 color=C_OUT, lw=0.4, zorder=3)
     bx += CONTAINER_RIB_SPACING
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 3a. PROCESSING TRAY — edge-on in elevation (below walkway deck)
+# ═══════════════════════════════════════════════════════════════════════════
+# The tray sits on shim strips at Z=PROC_TRAY_SUMP_Z (20mm), spanning from
+# PROC_TRAY_X_L (170mm) to PROC_TRAY_X_R (4629mm).  Near rim at Yd=80 rises
+# 50mm above tray floor.  Sump well at X=2399 dips from Z=20 down to Z=0.
+
+TRAY_FLOOR_Z = PROC_TRAY_SUMP_Z   # 20mm — tray floor raised by sump depth
+TRAY_RIM_TOP = TRAY_FLOOR_Z + PROC_TRAY_RIM  # 70mm
+C_TRAY = "#C8D8E8"    # 304 SS tray fill (light blue-gray)
+C_TRAY_EC = "#5A8AAF"  # tray edge color
+
+# Tray body — filled band from Z=0 to rim top (70mm), full width
+# At this scale, show the entire tray profile as a single colored band
+equip_block(PROC_TRAY_X_L, 0, PROC_TRAY_X_R - PROC_TRAY_X_L, TRAY_RIM_TOP,
+            "", C_TRAY, ec=C_TRAY_EC, lw=0.6, zorder=2.5, alpha=0.35)
+
+# Tray floor line at Z=20mm (where the flat bottom of the tray sits)
+ax.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],
+        [sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z)],
+        color=C_TRAY_EC, lw=0.6, zorder=2.8)
+
+# Rim top line (shows 50mm rim height across full span)
+ax.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],
+        [sz(TRAY_RIM_TOP), sz(TRAY_RIM_TOP)],
+        color=C_TRAY_EC, lw=0.8, zorder=2.8)
+
+# Left rim upstand (thickened for visibility)
+ax.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_L)],
+        [sz(0), sz(TRAY_RIM_TOP)],
+        color=C_TRAY_EC, lw=1.0, zorder=2.8)
+# Right rim upstand
+ax.plot([sx(PROC_TRAY_X_R), sx(PROC_TRAY_X_R)],
+        [sz(0), sz(TRAY_RIM_TOP)],
+        color=C_TRAY_EC, lw=1.0, zorder=2.8)
+
+# Sump well — depression at X=2399, width=150mm in X, depth from Z=20 to Z=0
+SUMP_X_L = PROC_TRAY_DRAIN_X - PROC_TRAY_SUMP_W / 2  # 2324mm
+SUMP_X_R = PROC_TRAY_DRAIN_X + PROC_TRAY_SUMP_W / 2  # 2474mm
+
+# Sump cavity — darker fill from tray floor down to Z=0
+sump_pts_x = [sx(SUMP_X_L), sx(SUMP_X_L), sx(SUMP_X_R), sx(SUMP_X_R)]
+sump_pts_z = [sz(TRAY_FLOOR_Z), sz(0), sz(0), sz(TRAY_FLOOR_Z)]
+ax.fill(sump_pts_x, sump_pts_z, fc="#8BB8D8", ec=C_TRAY_EC, lw=0.8,
+        alpha=0.5, zorder=2.9)
+
+# Pickup tube — 1" HDPE tube from Z=5 up to walkway level
+TUBE_OD_VIS = 25.4  # 1" OD
+TUBE_X = PROC_TRAY_DRAIN_X  # 2399mm — at sump center
+TUBE_Z_BOT = 5   # 5mm above sump floor
+TUBE_Z_TOP = WALKWAY_H  # tube top at walkway level (100mm)
+
+# Tube drawn as a thickened vertical line (visible at combined elevation scale)
+ax.plot([sx(TUBE_X), sx(TUBE_X)],
+        [sz(TUBE_Z_BOT), sz(TUBE_Z_TOP)],
+        color="#888888", lw=1.5, zorder=3.5, solid_capstyle='round')
+
+# Foot valve indicator at bottom
+ax.plot(sx(TUBE_X), sz(TUBE_Z_BOT), 's',
+        color="#666666", markersize=3, zorder=4)
+
+# Suction hose stub — dashed connector from tube top through walkway to pipe start
+# The hose crosses the walkway in Yd (into the page) then rises up the wall.
+ax.plot([sx(TUBE_X), sx(TUBE_X)],
+        [sz(TUBE_Z_TOP), sz(WALKWAY_H + 20)],
+        color=C_BLACK_SYS, lw=0.8, ls=":", zorder=3.5, alpha=0.7)
+
+# Labels — positioned to be readable at combined elevation scale
+ax.text(sx(PROC_TRAY_X_L + 100), sz(TRAY_RIM_TOP / 2),
+        "PROCESSING TRAY (304 SS, 50mm RIM)", ha="left", va="center",
+        fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
+
+ax.text(sx(SUMP_X_L - 20), sz(TRAY_FLOOR_Z / 2 + 3),
+        "SUMP\nWELL", ha="right", va="center",
+        fontsize=2.5, color="#0D47A1", zorder=10, **FONT)
+
+ax.text(sx(TUBE_X - 40), sz(TRAY_RIM_TOP + 5),
+        "PICKUP TUBE", ha="right", va="bottom",
+        fontsize=2.5, color="#666666", zorder=10, **FONT)
+# Leader from pickup label to tube
+ax.plot([sx(TUBE_X - 35), sx(TUBE_X - 5)],
+        [sz(TRAY_RIM_TOP + 5), sz(TRAY_RIM_TOP + 5)],
+        color="#666666", lw=0.3, zorder=10)
+ax.plot([sx(TUBE_X - 5), sx(TUBE_X)],
+        [sz(TRAY_RIM_TOP + 5), sz(TUBE_Z_TOP - 5)],
+        color="#666666", lw=0.3, zorder=10)
 
 # ── Zone labels for empty areas ───────────────────────────────────────────
 # Left end zone (X=0–150mm, cargo door / hinged panel)
@@ -981,7 +1070,7 @@ notes = [
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
     "5. Pump manifold frame: 404mm W (Z=235–781). P-01/P-02 top, P-04 centered below with 20mm clearance. DV-02 on P-04 discharge.",
     "6. Battery right edge (X=2310) clears pinhole cone left boundary (X=2319 at Yd=0) by 9mm.",
-    "7. Tray drain suction runs from sump (X=2399) to manifold frame bottom; DV-02 directs to IBC-3 or IBC-4.",
+    "7. Processing tray (304 SS, 50mm rim) sits on shims at Z=20. Sump well at X=2399, pickup tube to P-04 via walkway.",
     "8. P-03 waste pump is in IBC plumbing corridor (X≈4700) — shorter pipe runs, less trapped liquid.",
     "9. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]

@@ -2572,7 +2572,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>Clear</td>
 </tr>
 <tr>
-<td>Pump manifold (X=2,500–2,800, Yd=0, Z=200–600)</td>
+<td>Pump manifold (X=2,500–2,800, Yd=0, Z=200–600) — 3 pumps: P-01, P-02, P-04</td>
 <td>Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict</td>
 <td>Clear</td>
 </tr>
@@ -2733,8 +2733,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <hr />
 <h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
 <h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
-<p>Two pipe sizes are used: <strong>1" trunk lines</strong> for the long runs between IBCs, filter skid, and spray bar; <strong>1/2" manifold pipe</strong> for the short runs within the pump manifold frame. The 1/2" size matches the Shurflo 2088 pump ports (1/2"-14 male parallel thread), eliminating the need for reducer fittings at each pump — only four 1"→1/2" bushing reducers are needed at the manifold frame entry/exit points.</p>
-<p><strong>Trunk lines (1" HDPE Sch 40):</strong></p>
+<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The only 1" pipe is between the three filter housings (which have 1" NPT ports) and DV-01, requiring a single 1/2"→1" bushing reducer at the F1 filter inlet. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.</p>
+<p><strong>Internal runs (1/2" HDPE Sch 40):</strong></p>
 <table>
 <thead>
 <tr>
@@ -2747,66 +2747,52 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>Blue supply trunk (IBC → manifold)</td>
+<td>Blue supply (IBC → BV-01 → P-01)</td>
 <td>Sch 40 / SDR-11</td>
-<td>1" nominal (OD 33mm)</td>
+<td>1/2" nominal (OD 21mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Blue discharge trunk (manifold → spray bar)</td>
+<td>Blue discharge (P-01 → ACC-01 → BV-02 → spray bar)</td>
 <td>Sch 40 / SDR-11</td>
-<td>1" nominal (OD 33mm)</td>
+<td>1/2" nominal (OD 21mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Brown recycle trunk (IBC → manifold, manifold → filter skid)</td>
+<td>Brown suction (IBC-3 → P-02)</td>
 <td>Sch 40 / SDR-11</td>
-<td>1" nominal (OD 33mm)</td>
+<td>1/2" nominal (OD 21mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Spray bar</td>
-<td>SDR-11</td>
-<td>3/4" nominal</td>
-<td>100 PSI min</td>
-<td>HDPE</td>
-</tr>
-<tr>
-<td>Filter inlet/outlet</td>
-<td>Sch 40</td>
-<td>1" nominal (OD 33mm)</td>
-<td>100 PSI min</td>
-<td>HDPE</td>
-</tr>
-<tr>
-<td>Black waste trunk (manifold → IBC-4)</td>
-<td>Sch 40</td>
-<td>1" nominal (OD 33mm)</td>
-<td>50 PSI min</td>
-<td>HDPE</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Pump manifold internal (1/2" HDPE Sch 40):</strong></p>
-<table>
-<thead>
-<tr>
-<th>Circuit</th>
-<th>Pipe</th>
-<th>Size</th>
-<th>Pressure rating</th>
-<th>Material</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pump headers and connections (all 4 pumps)</td>
+<td>Brown riser (P-02 → F1 inlet)</td>
 <td>Sch 40</td>
 <td>1/2" nominal (OD 21mm)</td>
 <td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>Tray drain suction (sump → P-04)</td>
+<td>Reinforced flex hose</td>
+<td>1/2" nominal</td>
+<td>pump suction</td>
+<td>HDPE/PVC braid</td>
+</tr>
+<tr>
+<td>DV-02 outputs (→ IBC-3, → IBC-4)</td>
+<td>Sch 40</td>
+<td>1/2" nominal (OD 21mm)</td>
+<td>50 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>DV-01 outputs (→ Blue IBC-2, → Black IBC-4)</td>
+<td>Sch 40</td>
+<td>1/2" nominal (OD 21mm)</td>
+<td>50 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
@@ -2817,22 +2803,71 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>HDPE</td>
 </tr>
 <tr>
-<td>BV-01/BV-02 manifold side</td>
+<td>Spray bar</td>
+<td>SDR-11</td>
+<td>3/4" nominal</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Filter skid interconnects (1" HDPE Sch 40):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Pipe</th>
+<th>Size</th>
+<th>Pressure rating</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Filter housing interconnects (F1→F2→F3)</td>
 <td>Sch 40</td>
-<td>1/2" nominal (OD 21mm)</td>
+<td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>Tray drain suction (P-04)</td>
-<td>Reinforced flex hose</td>
-<td>1/2" nominal</td>
-<td>pump suction</td>
-<td>HDPE/PVC braid</td>
+<td>F3 outlet → pH test → DV-01</td>
+<td>Sch 40</td>
+<td>1" nominal (OD 33mm)</td>
+<td>100 PSI min</td>
+<td>HDPE</td>
 </tr>
 </tbody>
 </table>
-<p>At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The short manifold runs (&lt; 500mm each) contribute negligible head loss.</p>
+<p><strong>IBC fill/drain (1" HDPE Sch 40 — gravity flow, not pump-driven):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Circuit</th>
+<th>Pipe</th>
+<th>Size</th>
+<th>Pressure rating</th>
+<th>Material</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>External fill lines (F1/F2 bulkhead → IBCs)</td>
+<td>Sch 40</td>
+<td>1" nominal (OD 33mm)</td>
+<td>50 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>External drain lines (D3/D4 bulkhead → IBCs)</td>
+<td>Sch 40</td>
+<td>1" nominal (OD 33mm)</td>
+<td>50 PSI min</td>
+<td>HDPE</td>
+</tr>
+</tbody>
+</table>
+<p>At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.</p>
 <p><strong>Why HDPE, not PVC?</strong> Standard grey PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.</p>
 <h3 id="fittings-and-connections">Fittings and connections<a class="headerlink" href="#fittings-and-connections" title="Permanent link">&para;</a></h3>
 <table>
@@ -2851,17 +2886,17 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>1" NPT threaded</td>
-<td>Trunk lines (IBC runs, filter skid, spray bar feed)</td>
+<td>Filter skid interconnects (F1→F2→F3→DV-01), IBC fill/drain lines</td>
 <td>HDPE or brass</td>
 </tr>
 <tr>
 <td>1/2" NPT threaded</td>
-<td>Pump manifold internal connections, pump ports, ACC-01</td>
+<td>All pump-driven runs, pump ports, manifold connections, ACC-01, ball valves</td>
 <td>HDPE or brass</td>
 </tr>
 <tr>
-<td>1"×1/2" NPT bushing reducer</td>
-<td>Trunk-to-manifold transitions at frame entry/exit (4 required)</td>
+<td>1/2"×1" NPT bushing reducer</td>
+<td>P-02 riser to F1 filter inlet (1 required)</td>
 <td>Polypropylene or brass</td>
 </tr>
 <tr>
@@ -2901,7 +2936,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>15.2 Wh</td>
 </tr>
 <tr>
-<td>P-03 Waste pump (Shurflo 2088)</td>
+<td>P-03 Waste pump (Shurflo 2088) — <em>IBC corridor</em></td>
 <td>7.5 A @ 12V</td>
 <td>intermittent (waste disposal only)</td>
 <td>—</td>
@@ -2981,10 +3016,17 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>Pinhole wall face</td>
-<td>Pump manifold</td>
+<td>Pump manifold (P-01, P-02, P-04)</td>
 <td>2,400–2,700</td>
 <td>Y=0</td>
 <td>200–600</td>
+</tr>
+<tr>
+<td>IBC plumbing corridor</td>
+<td>P-03 waste pump (on D4 drain run)</td>
+<td>4,674–5,893</td>
+<td>1,046–1,316</td>
+<td>~200</td>
 </tr>
 <tr>
 <td>Optical zone floor</td>
@@ -3003,7 +3045,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tbody>
 </table>
 <p>All equipment clears the optical cone at every depth — shadow-free proof in <a href="../equipment-layout-report/">Equipment Layout Report</a>.</p>
-<p><strong>Hose routing:</strong> Pump manifold is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m.</p>
+<p><strong>Hose routing:</strong> Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the D4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).</p>
 <p><strong>External fill/drain ports:</strong> Four 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:</p>
 <table>
 <thead>
@@ -3098,7 +3140,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$110–$140</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-03 waste evacuation)</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-03 waste evacuation — <em>mounted in IBC plumbing corridor on D4 drain run</em>)</td>
 <td>12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L)</td>
 <td>1</td>
 <td>Amazon</td>
@@ -3123,11 +3165,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless">Shurflo pump mounting bracket</a></td>
-<td>Stainless, for 2088 series</td>
-<td>3</td>
+<td>Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03)</td>
+<td>4</td>
 <td>Amazon</td>
 <td>$8–$12</td>
-<td><strong>$30</strong></td>
+<td><strong>$40</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3202,12 +3244,20 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
+<td><a href="https://www.amazon.com/s?k=banjo+1%2F2+inch+ball+valve+polypropylene">Banjo V050FP ball valve 1/2" FNPT</a></td>
+<td>Polypropylene, full-port, quarter-turn. BV-01, BV-02, plus spares</td>
+<td>4</td>
+<td>Amazon</td>
+<td>$6–$10</td>
+<td><strong>$24–$40</strong></td>
+</tr>
+<tr>
 <td><a href="https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0">Banjo V100FP ball valve 1" FNPT</a></td>
-<td>Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3, plus spares</td>
-<td>11</td>
+<td>Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3 (IBC fill/drain valves)</td>
+<td>7</td>
 <td>Amazon</td>
 <td>$10–$16</td>
-<td><strong>$110–$176</strong></td>
+<td><strong>$70–$112</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA">Banjo V075FP ball valve 3/4" FNPT</a></td>
@@ -3218,12 +3268,20 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$8–$12</strong></td>
 </tr>
 <tr>
+<td><a href="https://www.amazon.com/s?k=1%2F2+inch+3+way+ball+valve+NPT">3-way diverter valve 1/2" FNPT</a></td>
+<td>L-port or T-port, HDPE compatible. 3W-DV-02 (tray drain)</td>
+<td>1</td>
+<td>Amazon</td>
+<td>$12–$22</td>
+<td><strong>$12–$22</strong></td>
+</tr>
+<tr>
 <td><a href="https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT">3-way diverter valve 1" FNPT</a></td>
-<td>L-port or T-port, HDPE compatible. 3W-DV-01, 3W-DV-02</td>
-<td>2</td>
+<td>L-port or T-port, HDPE compatible. 3W-DV-01 (filter output — matches 1" filter port)</td>
+<td>1</td>
 <td>Amazon</td>
 <td>$18–$30</td>
-<td><strong>$40–$60</strong></td>
+<td><strong>$18–$30</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair">2" polypropylene camlock pairs (M+F)</a></td>
@@ -3234,44 +3292,52 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$35–$50</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Banjo LE100 90° elbow 1" NPT</a></td>
-<td>Polypropylene street elbow. Trunk line bends</td>
-<td>10</td>
-<td>Amazon</td>
-<td>$3–$5</td>
-<td><strong>$30–$50</strong></td>
-</tr>
-<tr>
 <td><a href="https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene">1/2" NPT 90° elbow polypropylene</a></td>
-<td>Pump manifold internal bends</td>
-<td>8</td>
+<td>All pump-driven run bends (manifold internal + external runs)</td>
+<td>14</td>
 <td>Amazon</td>
 <td>$2–$4</td>
-<td><strong>$16–$32</strong></td>
+<td><strong>$28–$56</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Banjo LE100 90° elbow 1" NPT</a></td>
+<td>Polypropylene street elbow. Filter skid interconnects, IBC fill/drain bends</td>
+<td>6</td>
+<td>Amazon</td>
+<td>$3–$5</td>
+<td><strong>$18–$30</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene">1/2" NPT polypropylene tee</a></td>
+<td>Blue suction/discharge tees, system branches</td>
+<td>6</td>
+<td>Amazon</td>
+<td>$2–$4</td>
+<td><strong>$12–$24</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2">Banjo TEE100 equal tee 1" NPT</a></td>
-<td>Polypropylene. Blue outflow manifold merge plus system tees</td>
-<td>8</td>
-<td>Amazon</td>
-<td>$4–$6</td>
-<td><strong>$35–$50</strong></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union">1" NPT polypropylene union</a></td>
-<td>For maintenance disconnects on trunk lines</td>
-<td>6</td>
-<td>Amazon</td>
-<td>$6–$10</td>
-<td><strong>$40–$60</strong></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/s?k=1+inch+1%2F2+inch+NPT+bushing+reducer+polypropylene">1"×1/2" NPT bushing reducer</a></td>
-<td>Trunk-to-manifold transitions at pump frame entry/exit</td>
+<td>Polypropylene. IBC fill/drain tees</td>
 <td>4</td>
 <td>Amazon</td>
+<td>$4–$6</td>
+<td><strong>$16–$24</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union">1/2" NPT polypropylene union</a></td>
+<td>For maintenance disconnects on pump runs</td>
+<td>6</td>
+<td>Amazon</td>
+<td>$4–$6</td>
+<td><strong>$24–$36</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=1%2F2+inch+to+1+inch+NPT+bushing+reducer+polypropylene">1/2"×1" NPT bushing reducer</a></td>
+<td>P-02 riser to F1 filter inlet (1 required)</td>
+<td>1</td>
+<td>Amazon</td>
 <td>$3–$5</td>
-<td><strong>$12–$20</strong></td>
+<td><strong>$3–$5</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter">S60×6 to 1" NPT adapter</a></td>
@@ -3314,20 +3380,20 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.ferguson.com">1" SDR-11 HDPE pipe</a></td>
-<td>Food-safe, blue-stripe, 20 ft sticks. Trunk lines (IBC runs, filter skid, spray bar feed)</td>
+<td><a href="https://www.ferguson.com">1/2" SDR-11 HDPE pipe</a></td>
+<td>All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). Matches pump port size</td>
 <td>4 sticks (80 ft)</td>
 <td>Ferguson</td>
-<td>$12–$18/stick</td>
-<td><strong>$48–$72</strong></td>
+<td>$6–$10/stick</td>
+<td><strong>$24–$40</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.ferguson.com">1/2" SDR-11 HDPE pipe</a></td>
-<td>Pump manifold internal runs, short headers. Matches pump port size</td>
-<td>1 stick (20 ft)</td>
+<td><a href="https://www.ferguson.com">1" SDR-11 HDPE pipe</a></td>
+<td>Food-safe, blue-stripe, 20 ft sticks. Filter skid interconnects and IBC fill/drain lines only</td>
+<td>2 sticks (40 ft)</td>
 <td>Ferguson</td>
-<td>$6–$10/stick</td>
-<td><strong>$6–$10</strong></td>
+<td>$12–$18/stick</td>
+<td><strong>$24–$36</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>
@@ -3395,7 +3461,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft">1" reinforced suction hose, 6 ft</a></td>
-<td>P-04 suction line from sump pickup over tray rim to pump manifold</td>
+<td>P-04 suction line from sump pickup over tray rim to pump manifold (P-04)</td>
 <td>1</td>
 <td>Amazon</td>
 <td>$12–$20</td>
@@ -3550,7 +3616,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$760</td>
 </tr>
 <tr>
-<td>Pumps and accumulator (P-01, P-02, P-03, P-04)</td>
+<td>Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor)</td>
 <td>$305</td>
 <td>$355</td>
 </tr>

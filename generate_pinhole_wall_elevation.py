@@ -650,17 +650,14 @@ draw_pipe_path(ax,
     [p02_out_x, p02_out_x - ELB, p02_out_x - ELB],
     [p02_port_z, p02_port_z, PM_HEADER_Z_BLUE_DISCH - _p02_gap],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-draw_pipe_path(ax,
-    [p02_out_x - ELB, p02_out_x - ELB, RISER_X],
-    [PM_HEADER_Z_BLUE_DISCH + _p02_gap, RISER_ENTRY_Z, RISER_ENTRY_Z],
-    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1/2" riser: RISER_X → filter header → reducer at F1 IN
-# Split at Blue suction crossing (Z=PM_HEADER_Z_BLUE_SUC): Brown breaks flush
+# Include the 90° turn at RISER_X and riser up to Blue suction crossing in one path
 _riser_gap = OD_H / 2.0  # break flush against Blue suction OD
 draw_pipe_path(ax,
-    [RISER_X, RISER_X],
-    [RISER_ENTRY_Z, PM_HEADER_Z_BLUE_SUC - _riser_gap],
+    [p02_out_x - ELB, p02_out_x - ELB, RISER_X, RISER_X],
+    [PM_HEADER_Z_BLUE_DISCH + _p02_gap, RISER_ENTRY_Z, RISER_ENTRY_Z,
+     PM_HEADER_Z_BLUE_SUC - _riser_gap],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
+# 1/2" riser resumes above Blue suction crossing
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in, f1_in],
     [PM_HEADER_Z_BLUE_SUC + _riser_gap, HEADER_Z, HEADER_Z, PORT_Z + 30],
@@ -685,6 +682,8 @@ ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
 # ════════════════════════════════════════════════════════════════════════════
 TRAY_DRAIN_Z = WALKWAY_H + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
+DV02_BROWN_Z = PM_DV02_Z + PM_DV02_R + 30  # 220mm — Brown output header Z
+DV02_BLACK_Z = PM_FRAME_Z_LO + 15           # 120mm — Black output header Z
 
 # Tray drain suction: 1/2" from sump → below P-04 column
 draw_pipe_path(ax,
@@ -692,9 +691,15 @@ draw_pipe_path(ax,
     [TRAY_DRAIN_Z, TRAY_DRAIN_Z],
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 # 1/2" riser: deck level up through frame to P-04 IN port
+# Split at Brown DV-02→IBC-3 crossing (Z=DV02_BROWN_Z): Black breaks flush behind Brown
+_p04_gap = OD_H / 2.0  # break flush against Brown pipe OD
 draw_pipe_path(ax,
     [p04_in_x, p04_in_x],
-    [TRAY_DRAIN_Z, p04_port_z],
+    [TRAY_DRAIN_Z, DV02_BROWN_Z - _p04_gap],
+    OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
+draw_pipe_path(ax,
+    [p04_in_x, p04_in_x],
+    [DV02_BROWN_Z + _p04_gap, p04_port_z],
     OD_H, WALL_H, fc=C_BLACK_SYS, ec=C_BLACK_EC, bore_fc="white", zorder=Z_BLACK)
 ax.annotate("", xy=(sx(p04_in_x), sz(TRAY_DRAIN_Z + 60)),
             xytext=(sx(p04_in_x), sz(TRAY_DRAIN_Z + 10)),
@@ -722,17 +727,15 @@ ax.text(sx(PM_DV02_X), sz(PM_DV02_Z), "DV-02",
         zorder=10, **FONT)
 
 # DV-02 → Brown IBC-3: from top vertex → up → horizontal LEFT to IBC zone
-DV02_BROWN_Z = PM_DV02_Z + PM_DV02_R + 30
 draw_pipe_path(ax,
     [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
     [PM_DV02_Z + PM_DV02_R, DV02_BROWN_Z, DV02_BROWN_Z],
-    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=6)
+    OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
 ax.text(sx((PM_FRAME_R + IBC_PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
         "DRAIN → BROWN IBC-3", ha="center", va="bottom",
         fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
 
 # DV-02 → Black IBC-4: from bottom vertex → down → horizontal LEFT to IBC zone
-DV02_BLACK_Z = PM_FRAME_Z_LO + 15
 draw_pipe_path(ax,
     [PM_DV02_X, PM_DV02_X, IBC_PIPE_EXIT_X],
     [PM_DV02_Z - PM_DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],

@@ -65,9 +65,9 @@ PM_PUMP_H = 218          # Shurflo 2088 body height (mm)
 PM_GAP_X = 60            # gap between pumps horizontally
 PM_MARGIN_X = 20         # margin from frame inner edge to pump body
 PM_MARGIN_Z = 20         # vertical margin inside frame
-# Frame: 2 pumps wide
-PM_FRAME_W = (2 * PM_ANGLE + 2 * PM_MARGIN_X
-              + 2 * PM_PUMP_W + 1 * PM_GAP_X)             # 404mm
+# Frame: 2 pumps wide, 40% wider than minimum for pump separation
+PM_FRAME_W = int((2 * PM_ANGLE + 2 * PM_MARGIN_X
+              + 2 * PM_PUMP_W + 1 * PM_GAP_X) * 1.4)      # 565mm
 PM_FRAME_X = PUMP_X + (PUMP_W - PM_FRAME_W) // 2          # centered (may extend past zone)
 # Top row (P-01, P-02) — kept at original Z position
 PM_PUMP_Z_TOP = 518
@@ -78,9 +78,9 @@ PM_P04_X = PM_FRAME_X + (PM_FRAME_W - PM_PUMP_W) // 2     # centered in frame
 PM_FRAME_Z_LO = PM_P04_Z - PM_MARGIN_Z - PM_ANGLE         # 355mm
 PM_FRAME_Z_HI = (PM_PUMP_Z_TOP + PM_PUMP_H
                  + PM_MARGIN_Z + PM_ANGLE)                  # 781mm
-# Pump X positions — top row: 2 pumps side by side
+# Pump X positions — top row: 2 pumps at frame edges, separated
 PM_P01_X = PM_FRAME_X + PM_ANGLE + PM_MARGIN_X            # left pump
-PM_P02_X = PM_P01_X + PM_PUMP_W + PM_GAP_X                # right pump
+PM_P02_X = PM_FRAME_X + PM_FRAME_W - PM_ANGLE - PM_MARGIN_X - PM_PUMP_W  # right pump
 PM_PORT_OFF = 30         # port offset from top of pump body
 PM_PORT_Z_TOP = PM_PUMP_Z_TOP + PM_PUMP_H - PM_PORT_OFF   # 706mm — port Z, top row
 PM_PORT_Z_P04 = PM_P04_Z + PM_PUMP_H - PM_PORT_OFF        # 588mm — port Z, P-04

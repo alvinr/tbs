@@ -5,15 +5,16 @@
 tbs_drawing.py — Shared drawing helpers for all TBS engineering diagrams.
 
 Provides dimension lines, leader lines, center lines, circles, rectangles,
-bolt hole patterns, and hatching.  All functions take an axes object as the
-first argument and use keyword defaults matching the TBS palette in
-tbs_constants.py.
+bolt hole patterns, hatching, and notes blocks.  All functions take an axes
+object as the first argument and use keyword defaults matching the TBS palette
+in tbs_constants.py.
 
 Usage
 -----
     from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl,
                              draw_circle, draw_rect, bolt_holes, hatch_rect,
-                             place_label, register_pipe, reset_label_registry)
+                             place_label, register_pipe, reset_label_registry,
+                             draw_notes)
 """
 
 import numpy as np
@@ -435,3 +436,96 @@ def hatch_lines(ax, patch, *, spacing=3, angle=45, color="#AAAAAA",
         py0 = cy_h + off * np.sin(angle_r + np.pi / 2) - dy / 2
         ax.plot([px0, px0 + dx], [py0, py0 + dy],
                 color=color, lw=lw, clip_path=patch, clip_on=True)
+
+
+# ── Notes block ────────────────────────────────────────────────────────────
+
+def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
+               color=C_DIM, title_color=C_OUT, ha="left", pad_x=None,
+               pad_y=None, border_color=C_OUT, border_lw=0.6, zorder=15,
+               font=None):
+    """Draw a bordered notes block with bold first line.
+
+    Parameters
+    ----------
+    ax : matplotlib Axes
+    notes : list[str]
+        Lines of text. First line is rendered bold as the title.
+    x, y_top : float
+        Top-left corner of the text block in axes data coordinates.
+    spacing : float
+        Vertical distance between lines in axes data units.
+    fs : float
+        Font size for body lines (default 7).
+    title_fs : float or None
+        Font size for the title line; defaults to *fs* + 0.5.
+    color : str
+        Body text color.
+    title_color : str
+        Title (first line) color.
+    ha : str
+        Horizontal alignment — 'left' or 'center'.
+    pad_x : float or None
+        Horizontal padding inside border (data units). Defaults to spacing.
+    pad_y : float or None
+        Vertical padding inside border (data units). Defaults to spacing * 0.5.
+    border_color : str
+        Border rectangle edge color.
+    border_lw : float
+        Border line width.
+    zorder : int
+        Drawing layer.
+    font : dict or None
+        Extra font kwargs (e.g. ``{"fontfamily": "monospace"}``).
+    """
+    if title_fs is None:
+        title_fs = fs + 0.5
+    if pad_x is None:
+        pad_x = spacing
+    if pad_y is None:
+        pad_y = spacing * 0.5
+    if font is None:
+        font = {}
+
+    # Draw text lines
+    for i, line in enumerate(notes):
+        is_title = (i == 0)
+        y = y_top - i * spacing
+        ax.text(x, y, line, ha=ha, va="top",
+                fontsize=title_fs if is_title else fs,
+                color=title_color if is_title else color,
+                fontweight="bold" if is_title else "normal",
+                zorder=zorder + 1, **font)
+
+    # Border rectangle
+    n = len(notes)
+    box_top = y_top + pad_y
+    box_bot = y_top - (n - 1) * spacing - pad_y
+    box_h = box_top - box_bot
+
+    # Measure width of the longest line using a scratch render
+    longest = max(notes, key=len)
+    t = ax.text(x, y_top, longest, fontsize=fs, va="top", ha=ha,
+                **font, alpha=0)
+    ax.figure.canvas.draw()
+    bb = t.get_window_extent(renderer=ax.figure.canvas.get_renderer())
+    inv = ax.transData.inverted()
+    data_bb = inv.transform(bb)
+    text_w = abs(data_bb[1][0] - data_bb[0][0])
+    t.remove()
+
+    # Handle mirrored (inverted) X axis
+    x_inverted = ax.get_xlim()[0] > ax.get_xlim()[1]
+    sign = -1 if x_inverted else 1
+
+    if ha == "center":
+        box_left_x = x - sign * (text_w / 2 + pad_x)
+    else:
+        box_left_x = x - sign * pad_x
+    box_w = sign * (text_w + 2 * pad_x)
+
+    rect = mpatches.FancyBboxPatch(
+        (box_left_x, box_bot), box_w, box_h,
+        boxstyle="square,pad=0", fc="white", ec=border_color,
+        lw=border_lw, zorder=zorder)
+    ax.add_patch(rect)

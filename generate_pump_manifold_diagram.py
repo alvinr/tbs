@@ -43,7 +43,7 @@ from tbs_constants import (
 from tbs_title_block import title_block
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, leader, draw_rect, hatch_rect,
-    place_label, register_pipe, reset_label_registry,
+    place_label, register_pipe, reset_label_registry, draw_notes,
 )
 
 # ── Color palette ─────────────────────────────────────────────────────────────
@@ -104,7 +104,7 @@ ax3.axis("off")
 
 # Axis limits — elevation panel
 ax.set_xlim(sx(2200) - 1, sx(3550) + 1)
-ax.set_ylim(sz(-30) - 1, sz(1150) + 2)
+ax.set_ylim(sz(-280) - 1, sz(1150) + 2)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
@@ -762,15 +762,8 @@ notes = [
     "9. P-03 (Waste evac) relocated to IBC plumbing corridor — not shown on this diagram.",
     "10. ACC-01: SeaFlo 0.75L accumulator, 125 PSI, 1/2\" MNPT. Each circuit fused at 10A.",
 ]
-# Align notes bottom with title block bottom.
-# Title block sits at ax-fraction y0=0.003 → figure y ≈ 0.14.
-# Stack notes upward from there.
-_notes_bottom = 0.14
-_notes_spacing = 0.013
-_notes_top = _notes_bottom + (len(notes) - 1) * _notes_spacing
-for i, n in enumerate(notes):
-    fig.text(0.15, _notes_top - i * _notes_spacing, n, fontsize=8, color=C_TEXT,
-             fontfamily="monospace", va="top")
+draw_notes(ax, notes, sx(FRAME_X), sz(-18), spacing=5.0, fs=8,
+           font={"fontfamily": "monospace"})
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

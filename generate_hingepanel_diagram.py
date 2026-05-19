@@ -1424,7 +1424,8 @@ def sheet4():
     # ── Notes (left-justified, bottom left) ─────────────────────────────────
     from tbs_constants import PANEL_FLOOR_GAP, PROC_TRAY_RIM
     notes = [
-        f"1. TRANSPORT MODE: Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
+        f"TRANSPORT MODE",
+        f"1.Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
         f"3. Panel suspended from ceiling HGR20 rails — {PANEL_FLOOR_GAP}mm floor gap clears {PROC_TRAY_RIM}mm tray rim.",
         "4. Single-person operation, ~5 minutes per mode conversion.",
@@ -1435,7 +1436,7 @@ def sheet4():
     notes_y_top = X_LO + 122 + (len(notes) - 1) * 26
     draw_notes(ax, notes, notes_x, notes_y_top, spacing=26,
                fs=5.5, title_fs=5.5, color=C_DIM, title_color=C_DIM,
-               border_lw=0, font=FONT)
+               width=1100, font=FONT)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
     legend_x = C_WID + 80

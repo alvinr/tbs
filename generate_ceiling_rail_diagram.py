@@ -338,7 +338,8 @@ def sheet1():
     ]
     draw_notes(ax, notes, X_LO + 30, Z_LO + 30 + (len(notes) - 1) * 22,
                spacing=22, fs=5.5, title_fs=5.5, color=C_DIM,
-               title_color=C_DIM, font=FONT)
+               title_color=C_DIM, font=FONT,
+               width=(X_HI - X_LO) * 0.65)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     legend_x = X_HI - 240
@@ -579,7 +580,7 @@ def sheet2():
     ]
     draw_notes(ax, comp_lines, comp_x, comp_top, spacing=LINE_H,
                fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
-               font=FONT)
+               font=FONT, width=sx(W_RANGE * 1.3))
 
     note_lines = [
         "NOTES:",
@@ -591,7 +592,7 @@ def sheet2():
     notes_top = comp_top - len(comp_lines) * LINE_H
     draw_notes(ax, note_lines, comp_x, notes_top, spacing=LINE_H,
                fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
-               font=FONT)
+               font=FONT, width=sx(W_RANGE * 1.3))
 
     # ── Scale note ───────────────────────────────────────────────────────────
     ax.text(0, -sy(H_RANGE) + sy(10),

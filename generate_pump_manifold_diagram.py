@@ -163,7 +163,7 @@ OD_1 = FILT_PIPE_OD       # 33mm — 1" nominal (filter housing ports)
 WALL_1 = FILT_PIPE_WALL   # 4mm
 
 # Panel title (placed after FRAME_Z_HI is computed)
-ax.text(sx(PUMP_X + PUMP_W / 2), sz(1080),
+ax.text(sx(PUMP_X + PUMP_W / 2), sz(1180),
         "PUMP MANIFOLD ELEVATION — 3-PUMP LAYOUT (P-01, P-02, P-04)\n"
         "Interior View Looking at Pinhole Wall (Yd=0)  |  Scale 1:5",
         ha="center", va="top", fontsize=11, fontweight="bold",
@@ -407,8 +407,6 @@ def draw_ball_valve(ax, bvx, bvz, label):
     poly = plt.Polygon(list(zip(pts_x, pts_z)),
                         fc=C_VALVE, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=9)
     ax.add_patch(poly)
-    ax.text(sx(bvx), sz(bvz), "BV", ha="center", va="center",
-            fontsize=4, fontweight="bold", color="white", zorder=10)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -445,6 +443,9 @@ DV02_BROWN_RISER_X = DV02_X - 25  # 25mm lower X (right in drawing)
 # Tray drain suction
 TRAY_DRAIN_Z = WALKWAY_Z + 20   # 120mm — just above walkway deck
 TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
+
+# ── Flow arrow style ───────────────────────────────────────────────────────
+arrow_style = dict(arrowstyle="-|>", lw=1.5, mutation_scale=10)
 
 # ── Pipe layer zorders (depth from wall) ────────────────────────────────────
 # Layer 1 (back, closest to wall): Black/waste pipes
@@ -498,16 +499,18 @@ ax.text(sx(acc_cx), sz(ACC_Z + ACC_H / 2), "ACC-01",
 BV01_X = FRAME_R + 60
 BV01_Z = HEADER_Z_BLUE_SUC
 draw_ball_valve(ax, BV01_X, BV01_Z, "BV-01")
-place_label(ax, sx(BV01_X), sz(BV01_Z + 30), "BV-01\n(½\" BALL)",
-            component='valve', fontsize=5, color=C_TEXT,
-            dx=0, dy=1.2, ha='center', va='bottom')
+leader(ax, sx(BV01_X), sz(BV01_Z + BV_R),
+       sx(BV01_X + 60), sz(BV01_Z + 80),
+       "BV-01\n(½\" BALL)", fs=5, color=C_TEXT,
+       ha="center", va="bottom", lw=0.6, zorder=11)
 
 BV02_X = ACC_X + ACC_W + 40
 BV02_Z = HEADER_Z_BLUE_DISCH
 draw_ball_valve(ax, BV02_X, BV02_Z, "BV-02")
-place_label(ax, sx(BV02_X), sz(BV02_Z + 30), "BV-02\n(½\" BALL)",
-            component='valve', fontsize=5, color=C_TEXT,
-            dx=0, dy=1.2, ha='center', va='bottom')
+leader(ax, sx(BV02_X), sz(BV02_Z + BV_R),
+       sx(BV02_X + 60), sz(BV02_Z + 80),
+       "BV-02\n(½\" BALL)", fs=5, color=C_TEXT,
+       ha="center", va="bottom", lw=0.6, zorder=11)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-01 BLUE SUPPLY — IBC → BV-01 → P-01 → ACC-01 → BV-02 → spray bar
@@ -585,9 +588,10 @@ draw_pipe_path(ax,
 ax.annotate("", xy=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z)),
             xytext=(sx(BROWN_RISER_X), sz(RISER_EXIT_Z - 60)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
-ax.text(sx(BROWN_RISER_X), sz(RISER_EXIT_Z + 10),
-        "TO FILTER SKID\n(F1 → F2 → F3)", ha="center", va="bottom",
-        fontsize=5.5, color=C_BROWN, style="italic", fontweight="bold")
+leader(ax, sx(BROWN_RISER_X), sz(RISER_EXIT_Z),
+       sx(BROWN_RISER_X + 80), sz(RISER_EXIT_Z + 40),
+       "TO FILTER SKID\n(F1 → F2 → F3)", fs=5.5, color=C_BROWN,
+       ha="left", va="bottom", lw=0.6, zorder=11)
 
 # ════════════════════════════════════════════════════════════════════════════
 # P-04 TRAY DRAIN — sump → P-04 → DV-02 → IBC-3 / IBC-4
@@ -617,19 +621,23 @@ dv02_pts_x = [sx(DV02_X), sx(DV02_X + DV02_R), sx(DV02_X), sx(DV02_X - DV02_R)]
 dv02_pts_z = [sz(DV02_Z + DV02_R), sz(DV02_Z), sz(DV02_Z - DV02_R), sz(DV02_Z)]
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
                           fc="white", ec=C_FRAME, lw=2.0, zorder=9))
-ax.text(sx(DV02_X), sz(DV02_Z), "3W", ha="center", va="center",
-        fontsize=4, fontweight="bold", color=C_FRAME, zorder=10)
-place_label(ax, sx(DV02_X), sz(DV02_Z - 25), "DV-02\n(3-WAY DIVERTER)",
-            component='diverter', fontsize=5.5, color=C_TEXT,
-            dx=0, dy=-2.0, ha='center', va='top')
+leader(ax, sx(DV02_X), sz(DV02_Z - DV02_R),
+       sx(DV02_X + 150), sz(DV02_Z - 180),
+       "DV-02\n(3-WAY DIVERTER)", fs=5.5, color=C_TEXT,
+       ha="center", va="top", lw=0.6, zorder=11)
 
 # DV-02 Black output: bottom vertex → south to Z=165 → left to IBC
 draw_pipe_path(ax,
     [DV02_BLACK_RISER_X, DV02_BLACK_RISER_X, PIPE_EXIT_X],
     [DV02_Z - DV02_R, DV02_BLACK_Z, DV02_BLACK_Z],
     OD_H, WALL_H, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.text(sx((DV02_X + PIPE_EXIT_X) / 2), sz(DV02_BLACK_Z - 25),
-        "BLACK → IBC-4", ha="center", va="top",
+# Flow arrow on Black output — far out on long run
+_dv02_blk_mid = (DV02_BLACK_RISER_X + PIPE_EXIT_X) * 0.6
+ax.annotate("", xy=(sx(_dv02_blk_mid + 30), sz(DV02_BLACK_Z)),
+            xytext=(sx(_dv02_blk_mid - 30), sz(DV02_BLACK_Z)),
+            arrowprops=dict(**arrow_style, color=C_BLACK_SYS), zorder=12)
+ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.58), sz(DV02_BLACK_Z + 20),
+        "WASTE → BLACK IBC-4", ha="center", va="bottom",
         fontsize=5, color=C_BLACK_SYS, fontweight="bold")
 
 # DV-02 Brown output: right vertex → riser south to Z=140 → left to IBC
@@ -639,47 +647,50 @@ draw_pipe_path(ax,
     [DV02_Z, DV02_Z,
      DV02_BROWN_Z, DV02_BROWN_Z],
     OD_H, WALL_H, fc=C_BROWN, zorder=Z_BROWN)
-ax.text(sx((DV02_X + PIPE_EXIT_X) / 2), sz(DV02_BROWN_Z + 25),
-        "BROWN → IBC-3", ha="center", va="bottom",
+# Flow arrow on Brown output — far out on long run
+_dv02_brn_mid = (DV02_BROWN_RISER_X + PIPE_EXIT_X) * 0.6
+ax.annotate("", xy=(sx(_dv02_brn_mid + 30), sz(DV02_BROWN_Z)),
+            xytext=(sx(_dv02_brn_mid - 30), sz(DV02_BROWN_Z)),
+            arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
+ax.text(sx((DV02_X + PIPE_EXIT_X) * 0.58), sz(DV02_BROWN_Z - 20),
+        "DRAIN → BROWN IBC-3", ha="center", va="top",
         fontsize=5, color=C_BROWN, fontweight="bold")
 
 
 # ── Flow direction arrows ────────────────────────────────────────────────────
-arrow_style = dict(arrowstyle="-|>", lw=1.5, mutation_scale=10)
-
-# Blue supply arrow (incoming from higher X toward P-01)
-mid_blue_in = (PIPE_EXIT_X + BV01_X) / 2
+# Blue supply arrow (incoming from higher X toward P-01) — far out on long run
+mid_blue_in = (PIPE_EXIT_X + BV01_X) * 0.6
 ax.annotate("", xy=(sx(mid_blue_in - 30), sz(HEADER_Z_BLUE_SUC)),
             xytext=(sx(mid_blue_in + 30), sz(HEADER_Z_BLUE_SUC)),
             arrowprops=dict(**arrow_style, color=C_BLUE), zorder=12)
 
-# Blue discharge arrow (outgoing to higher X)
-mid_blue_out = (BV02_X + PIPE_EXIT_X) / 2
+# Blue discharge arrow (outgoing to higher X) — far out on long run
+mid_blue_out = (BV02_X + PIPE_EXIT_X) * 0.6
 ax.annotate("", xy=(sx(mid_blue_out + 30), sz(HEADER_Z_BLUE_DISCH)),
             xytext=(sx(mid_blue_out - 30), sz(HEADER_Z_BLUE_DISCH)),
             arrowprops=dict(**arrow_style, color=C_BLUE), zorder=12)
 
-# Brown suction arrow (incoming from higher X at PORT_Z_TOP)
-mid_brown = (PIPE_EXIT_X + p02_in_x) / 2
+# Brown suction arrow (incoming from higher X at PORT_Z_TOP) — far out on long run
+mid_brown = (PIPE_EXIT_X + p02_in_x) * 0.6
 ax.annotate("", xy=(sx(mid_brown - 30), sz(PORT_Z_TOP)),
             xytext=(sx(mid_brown + 30), sz(PORT_Z_TOP)),
             arrowprops=dict(**arrow_style, color=C_BROWN), zorder=12)
 
 
-# ── Pipe entry/exit annotations ──────────────────────────────────────────────
-# Blue supply label at entry (higher X side)
-ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_SUC + 15),
-        "FROM IBC-1 & IBC-2\n(BLUE SUPPLY)", ha="right", va="bottom",
+# ── Pipe entry/exit annotations — weighted toward open space ─────────────────
+# Blue supply label (on long run, between component and edge)
+ax.text(sx((PIPE_EXIT_X + BV01_X) * 0.57), sz(HEADER_Z_BLUE_SUC - 25),
+        "FROM IBC-1 & IBC-2 (BLUE SUPPLY)", ha="center", va="top",
         fontsize=5, color=C_BLUE, style="italic")
 
-# Blue discharge label at exit (higher X side)
-ax.text(sx(PIPE_EXIT_X + 5), sz(HEADER_Z_BLUE_DISCH + 15),
-        "TO SPRAY BAR\n(BLUE DISCHARGE)", ha="right", va="bottom",
+# Blue discharge label (on long run)
+ax.text(sx((BV02_X + PIPE_EXIT_X) * 0.57), sz(HEADER_Z_BLUE_DISCH - 25),
+        "TO SPRAY BAR (BLUE DISCHARGE)", ha="center", va="top",
         fontsize=5, color=C_BLUE, style="italic")
 
-# Brown suction label (higher X side)
-ax.text(sx(PIPE_EXIT_X + 5), sz(PORT_Z_TOP - 15),
-        "FROM IBC-3\n(BROWN RECYCLE)", ha="right", va="top",
+# Brown suction label (on long run)
+ax.text(sx((PIPE_EXIT_X + FRAME_R) * 0.57), sz(PORT_Z_TOP - 25),
+        "FROM IBC-3 (BROWN RECYCLE)", ha="center", va="top",
         fontsize=5, color=C_BROWN, style="italic")
 
 

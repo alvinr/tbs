@@ -605,12 +605,10 @@ ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
 ax.add_patch(plt.Circle((sx(DV01_X), sz(PORT_Z)), DV01_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=1.0, zorder=9))
-ax.annotate("DV-01\n(3-WAY DIVERTER)", xy=(sx(DV01_X), sz(PORT_Z + DV01_R)),
-            xytext=(sx(DV01_X - 350), sz(PORT_Z + DV01_R + 180)),
-            fontsize=4.2, color=C_DIM, fontweight="bold",
-            ha="center", va="bottom",
-            arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
-            zorder=11, **FONT)
+leader(ax, sx(DV01_X), sz(PORT_Z + DV01_R),
+       sx(DV01_X - 350), sz(PORT_Z + DV01_R + 180),
+       "DV-01\n(3-WAY DIVERTER)", fs=4.2, color=C_DIM,
+       ha="center", va="bottom", lw=0.6, zorder=11, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # PUMP MANIFOLD — INTERNAL PIPE ROUTING
@@ -674,12 +672,10 @@ ax.text(sx((IBC_PIPE_EXIT_X + BV01_X) / 2), sz(PM_HEADER_Z_BLUE_SUC + 30),
 
 # BV-01 symbol + leader
 _bv_symbol(ax, BV01_X, BV01_Z, "BV\n01")
-ax.annotate("BV-01\n(½\" BALL)", xy=(sx(BV01_X), sz(BV01_Z + BV_R)),
-            xytext=(sx(BV01_X + 120), sz(BV01_Z + 140)),
-            fontsize=4.2, color=C_DIM, fontweight="bold",
-            ha="center", va="bottom",
-            arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
-            zorder=11, **FONT)
+leader(ax, sx(BV01_X), sz(BV01_Z + BV_R),
+       sx(BV01_X + 120), sz(BV01_Z + 140),
+       "BV-01\n(½\" BALL)", fs=4.2, color=C_DIM,
+       ha="center", va="bottom", lw=0.6, zorder=11, font=FONT)
 # 1/2" from BV-01 to right edge of frame
 draw_pipe_path(ax,
     [BV01_X - BV_R, PM_FRAME_R],
@@ -709,12 +705,10 @@ draw_pipe_path(ax,
     [PM_HEADER_Z_BLUE_DISCH, PM_HEADER_Z_BLUE_DISCH],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=Z_BLUE)
 _bv_symbol(ax, BV02_X, BV02_Z, "BV\n02")
-ax.annotate("BV-02\n(½\" BALL)", xy=(sx(BV02_X), sz(BV02_Z + BV_R)),
-            xytext=(sx(BV02_X + 180), sz(BV02_Z + 120)),
-            fontsize=4.2, color=C_DIM, fontweight="bold",
-            ha="center", va="bottom",
-            arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
-            zorder=11, **FONT)
+leader(ax, sx(BV02_X), sz(BV02_Z + BV_R),
+       sx(BV02_X + 180), sz(BV02_Z + 120),
+       "BV-02\n(½\" BALL)", fs=4.2, color=C_DIM,
+       ha="center", va="bottom", lw=0.6, zorder=11, font=FONT)
 # BV-02 → 1/2" discharge → spray bar (runs LEFT in drawing toward IBC zone)
 draw_pipe_path(ax,
     [BV02_X + BV_R, IBC_PIPE_EXIT_X],
@@ -824,12 +818,10 @@ dv02_pts_z = [sz(PM_DV02_Z + PM_DV02_R), sz(PM_DV02_Z),
               sz(PM_DV02_Z - PM_DV02_R), sz(PM_DV02_Z)]
 ax.add_patch(plt.Polygon(list(zip(dv02_pts_x, dv02_pts_z)),
              fc="white", ec=C_OUT, lw=1.0, zorder=9))
-ax.annotate("DV-02\n(3-WAY DIVERTER)", xy=(sx(PM_DV02_X), sz(PM_DV02_Z - PM_DV02_R)),
-            xytext=(sx(PM_DV02_X + 200), sz(PM_DV02_Z - 200)),
-            fontsize=4.2, color=C_DIM, fontweight="bold",
-            ha="center", va="top",
-            arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6),
-            zorder=11, **FONT)
+leader(ax, sx(PM_DV02_X), sz(PM_DV02_Z - PM_DV02_R),
+       sx(PM_DV02_X + 200), sz(PM_DV02_Z - 200),
+       "DV-02\n(3-WAY DIVERTER)", fs=4.2, color=C_DIM,
+       ha="center", va="top", lw=0.6, zorder=11, font=FONT)
 
 # DV-02 BOTTOM vertex → Black: south to Z=165, then left to IBC-4
 draw_pipe_path(ax,
@@ -1011,7 +1003,7 @@ draw_dim_h(ax, sx(0), sx(C_LEN), row2_z,
 # ── Clearance leaders ──────────────────────────────────────────────────────
 fskid_clr = TK_Z - FSKID_Z_HI
 leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI),
-       sx(FSKID_X + FSKID_W + 250), sz(FSKID_Z_HI + 250),
+       sx(FSKID_X + FSKID_W/2), sz(FSKID_Z_HI + 250),
        f"SKID TOP → TRUNKING: {fskid_clr}mm", fs=4.5, color=C_DIM, zorder=10)
 
 ep_clr = C_HGT - EP_H_HI

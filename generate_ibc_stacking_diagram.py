@@ -1692,7 +1692,7 @@ def sheet5():
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = px(X_LO + 30)
     leg_top = py(C_WID + 100)
-    leg_sp = py(22)
+    leg_sp = py(33)
     pipe_lw = 2.5
 
     # Legend background box
@@ -2231,7 +2231,7 @@ def sheet6():
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
-           sx(BLUE_IBC_Y + IBC_D * 0.7), sy(EXT_FILL_1_H + 80),
+           sx(BLUE_IBC_Y + IBC_D * 0.7), sy(EXT_FILL_1_H - 80),
            "F1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)

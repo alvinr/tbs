@@ -782,7 +782,7 @@ def s3y(mm):
     return OY + mm * TRAY_DRAW_H / PROC_TRAY_D
 
 ax3.set_xlim(-0.3, OX + TRAY_DRAW_W + 2.5)
-ax3.set_ylim(-0.5, OY + TRAY_DRAW_H + 1.8)
+ax3.set_ylim(-3.5, OY + TRAY_DRAW_H + 1.8)
 ax3.set_aspect("equal")
 
 # ── Tray outline ─────────────────────────────────────────────────────────────
@@ -975,9 +975,8 @@ notes = [
     f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
     f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
 ]
-for i, n in enumerate(notes):
-    fig3.text(0.04, 0.08 - i * 0.018, n, fontsize=7, color=C_TEXT,
-              fontfamily="monospace", va="top")
+draw_notes(ax3, notes, 0.3, -0.8, spacing=0.4, fs=7, width=14,
+           color=C_TEXT, title_color=C_TEXT, font={"fontfamily": "monospace"})
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig3.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
@@ -1445,7 +1444,7 @@ def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
 ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
-ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
+ax4b.set_ylim(sb_z(-130) - 0.5, sb_z(620) + 1.5)
 
 # Panel B title
 ax4b.text(sb_y(250), sb_z(600), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
@@ -1649,7 +1648,7 @@ def sc_yd(yd_mm):
     return OC_Y + yd_mm / SC_C
 
 ax4c.set_xlim(sc_x(X_VIEW_L - 30) - 0.5, sc_x(X_VIEW_R + 30) + 0.5)
-ax4c.set_ylim(sc_yd(-40) - 0.5, sc_yd(360) + 0.5)
+ax4c.set_ylim(sc_yd(-100) - 0.5, sc_yd(360) + 0.5)
 
 # Panel C title
 ax4c.text(sc_x(X_CENTER), sc_yd(350),
@@ -1738,26 +1737,24 @@ flow_notes = [
     "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
     "6. Alt: divert to IBC-4 (Waste) when selected",
 ]
-for i, note in enumerate(flow_notes):
-    fw = "bold" if i == 0 else "normal"
-    fig4.text(0.52, 0.11 - i * 0.016, note, fontsize=6.5, color=C_TEXT,
-              fontfamily="monospace", fontweight=fw, va="top")
+draw_notes(ax4b, flow_notes, sb_y(-170), sb_z(-75), spacing=1.2,
+           fs=6.5, width=30, color=C_TEXT, title_color=C_TEXT,
+           font={"fontfamily": "monospace"})
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes4 = [
     "NOTES:",
-    "- Sump bottom sits ON container floor (Z=0).",
-    "- Tray floor raised to Z=20mm (sump depth).",
-    "- Shims taper 20-30mm (base + slope).",
-    "- Pickup tube lifts out for cleaning (no tools).",
-    "- P-04: Shurflo 2088, 12V DC, self-priming.",
-    "- Hose runs over walkway surface (5mm rim-to-grate gap).",
-    "- Tray slope exaggerated for clarity in both panels.",
+    "1. Sump bottom sits ON container floor (Z=0).",
+    "2. Tray floor raised to Z=20mm (sump depth).",
+    "3. Shims taper 20-30mm (base + slope).",
+    "4. Pickup tube lifts out for cleaning (no tools).",
+    "5. P-04: Shurflo 2088, 12V DC, self-priming.",
+    "6. Hose runs over walkway surface (5mm rim-to-grate gap).",
+    "7. Tray slope exaggerated for clarity in both panels.",
 ]
-for i, n in enumerate(notes4):
-    fw = "bold" if i == 0 else "normal"
-    fig4.text(0.04, 0.11 - i * 0.016, n, fontsize=6.5, color=C_TEXT,
-              fontfamily="monospace", fontweight=fw, va="top")
+draw_notes(ax4c, notes4, sc_x(X_VIEW_L - 20), sc_yd(-55), spacing=3.5,
+           fs=6.5, width=45, color=C_TEXT, title_color=C_TEXT,
+           font={"fontfamily": "monospace"})
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig4.text(0.99, 0.005, "© 2026 Alvin Richards -- GNU AGPLv3",

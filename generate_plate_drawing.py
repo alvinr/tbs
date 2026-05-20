@@ -367,8 +367,7 @@ notes = [
 draw_notes(ax1, notes, 10, 175, spacing=6, fs=6.5, width=680)
 
 plt.tight_layout(pad=0)
-plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet1.png'
 os.makedirs(SVG_DIR, exist_ok=True)
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
@@ -886,8 +885,7 @@ notes2 = [
 draw_notes(ax2, notes2, 10, 70, spacing=5, fs=6.5, width=680)
 
 plt.tight_layout(pad=0)
-plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/plate-drawing-sheet2.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
 plt.savefig(svg_path(out2), bbox_inches="tight", facecolor='white')

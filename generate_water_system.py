@@ -544,8 +544,7 @@ for i, (sym, desc) in enumerate(syms):
 
 plt.tight_layout(pad=0.3)
 os.makedirs(SVG_DIR, exist_ok=True)
-fig1.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+
 fig1.savefig("diagrams/water-system-sheet1.png", dpi=150, bbox_inches="tight",
              facecolor=fig1.get_facecolor())
 fig1.savefig(svg_path("diagrams/water-system-sheet1.png"), bbox_inches="tight", facecolor=fig1.get_facecolor())
@@ -739,8 +738,7 @@ ax2.text(CW + 0.3, 1.8, "FRONT\n(PINHOLE\nWALL)", ha="center", fontsize=6,
          color=C_FRAME)
 
 plt.tight_layout(pad=0.5)
-fig2.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+
 fig2.savefig("diagrams/water-system-sheet2.png", dpi=150, bbox_inches="tight",
              facecolor=fig2.get_facecolor())
 fig2.savefig(svg_path("diagrams/water-system-sheet2.png"), bbox_inches="tight", facecolor=fig2.get_facecolor())
@@ -978,9 +976,6 @@ notes = [
 draw_notes(ax3, notes, 0.3, -0.8, spacing=0.2, fs=7, width=14,
            color=C_TEXT, title_color=C_TEXT, font={"fontfamily": "monospace"})
 
-# ── Copyright ────────────────────────────────────────────────────────────────
-fig3.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
 fig3.savefig("diagrams/water-system-sheet3.png", dpi=150, bbox_inches="tight",
              facecolor=fig3.get_facecolor())
 fig3.savefig(svg_path("diagrams/water-system-sheet3.png"), bbox_inches="tight",

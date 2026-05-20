@@ -210,8 +210,7 @@ ax.set_aspect('equal')
 ax.axis('off')
 
 plt.tight_layout(pad=0.3)
-plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-            ha="right", va="bottom", fontsize=6, color="#667788", style="italic")
+
 out = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out, dpi=150, bbox_inches='tight', facecolor='#0D0D0D')
 os.makedirs(SVG_DIR, exist_ok=True)

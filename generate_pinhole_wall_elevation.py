@@ -538,8 +538,8 @@ equip_block(PM_ACC_X, PM_ACC_Z, PM_ACC_W, PM_ACC_H,
 # ── Filter skid frame ────────────────────────────────────────────────────
 equip_block(FSKID_X, FSKID_Z_LO, FSKID_W, FSKID_Z_HI - FSKID_Z_LO,
             "", C_FSKID, alpha=0.35, lw=1.2)
-ax.text(sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI - 530),
-        "FILTER SKID FRAME", ha="center", va="top",
+ax.text(sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_HI - 30),
+        "FILTER UNIT\nFRAME", ha="center", va="top",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
 # ── Filter housings F1, F2, F3 ───────────────────────────────────────────
@@ -566,17 +566,8 @@ f2_out = F2_X + BB_PORT_SEP / 2   # 3345mm
 f3_in  = F3_X - BB_PORT_SEP / 2   # 3500mm
 f3_out = F3_X + BB_PORT_SEP / 2   # 3590mm
 
-# ── F1 OUT → F2 IN (via header) ─────────────────────────────────────────
-draw_pipe_path(ax,
-    [f1_out, f1_out, f2_in, f2_in],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
-    OD, PIPE_WALL)
-
-# ── F2 OUT → F3 IN (via header) ─────────────────────────────────────────
-draw_pipe_path(ax,
-    [f2_out, f2_out, f3_in, f3_in],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
-    OD, PIPE_WALL)
+# NOTE: F1→F2 and F2→F3 inter-stage flow is internal to the combo unit manifold.
+# No external pipes between filter stages drawn here.
 
 # ── F3 OUT → pH test → DV-01 ────────────────────────────────────────────
 PH_STUB_H = 80   # pH probe stub height
@@ -587,10 +578,10 @@ draw_pipe_path(ax,
     [PORT_Z, PORT_Z + PH_STUB_H],
     OD, PIPE_WALL, zorder=6)
 
-# Main pipe: F3 OUT → header → pH test X → down → DV-01
+# Main pipe: F3 OUT (manifold outlet) → pH test → DV-01 — horizontal run, no header rise
 draw_pipe_path(ax,
-    [f3_out, f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
-    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z, PORT_Z],
+    [f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
+    [PORT_Z, PORT_Z, PORT_Z, PORT_Z],
     OD, PIPE_WALL, zorder=8)
 
 # pH probe cap (circle at top of stub)
@@ -757,12 +748,12 @@ draw_pipe_path(ax,
     [RISER_X, RISER_X],
     [PM_HEADER_Z_BLUE_DISCH + _p02_gap, PM_HEADER_Z_BLUE_SUC - _riser_gap],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# Riser resumes above Blue suction, up to F1 header → horizontal to F1 IN
+# Riser resumes above Blue suction, up to manifold inlet height → horizontal to F1 IN
 draw_pipe_path(ax,
-    [RISER_X, RISER_X, f1_in, f1_in],
-    [PM_HEADER_Z_BLUE_SUC + _riser_gap, HEADER_Z, HEADER_Z, PORT_Z + 30],
+    [RISER_X, RISER_X, f1_in],
+    [PM_HEADER_Z_BLUE_SUC + _riser_gap, PORT_Z + 30, PORT_Z + 30],
     OD_H, WALL_H, fc=C_BROWN, ec=C_BROWN_EC, bore_fc="white", zorder=Z_BROWN)
-# 1/2→1" reducer bushing at F1 IN port
+# 1/2→1" reducer bushing at F1 IN port (manifold inlet)
 REDUCER_H = 20
 red_pts = [
     (sx(f1_in - OD_H / 2), sz(PORT_Z + 30)),
@@ -1039,7 +1030,7 @@ for ix_mm, ilabel in items:
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
     "NOTES",
-    "1. All internal pipe: ½\" HDPE (OD=21mm) except filter housings (1\" NPT). Blue circuit in blue, Brown in brown, Waste/Black in gray.",
+    "1. All internal pipe: ½\" HDPE (OD=21mm) except combo filter unit inlet/outlet (1\" NPT). Blue circuit in blue, Brown in brown, Waste/Black in gray.",
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",

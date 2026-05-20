@@ -21,7 +21,7 @@ import matplotlib.patches as mpatches
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PH_X, PH_H, PH_D,
-    EVAP_X, EVAP_W, EVAP_H,
+    EVAP_X, EVAP_W, EVAP_H, EVAP_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
@@ -32,7 +32,7 @@ from tbs_constants import (
     PUMP_PIPE_OD, PUMP_PIPE_WALL,
     TAP_X, TAP_Z,
     SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_HANGER_N,
-    SHELF_YD_NEAR,
+    SHELF_YD_NEAR, SHELF_DEPTH,
     WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
     CONTAINER_RIB_SPACING,
@@ -137,7 +137,10 @@ C_TRUNKING = "#808080" # cable trunking
 # S maps mm → figure inches.  Container 5893×2388 must fit comfortably.
 # Available drawing area ≈ 22" wide × 8" tall (in a 26×12" figure).
 S = 0.00335   # mm → inches  (≈1:7.6 at screen DPI, ≈1:20 at 300dpi print)
-FW, FH = 26.0, 12.0
+FW = 26.0
+FH = 12.0                       # elevation panel height (inches)
+FH_PLAN = 5.0                   # plan view panel height (inches)
+FH_TOTAL = FH + FH_PLAN         # total figure height
 OX = 2.5    # drawing origin X offset (inches)
 OZ = 2.5    # drawing origin Z offset (inches) — room for notes below
 
@@ -152,12 +155,22 @@ def sz(z_mm):
     return OZ + z_mm * S
 
 # ── Figure setup ────────────────────────────────────────────────────────────
-fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
+PLAN_FRAC = FH_PLAN / FH_TOTAL
+ELEV_FRAC = FH / FH_TOTAL
+
+fig = plt.figure(figsize=(FW, FH_TOTAL), dpi=150)
+
+ax = fig.add_axes([0, PLAN_FRAC, 1, ELEV_FRAC])
 ax.set_xlim(0, FW)
 ax.set_ylim(0, FH)
 ax.set_aspect("equal")
 ax.axis("off")
-fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
+
+ax2 = fig.add_axes([0, 0, 1, PLAN_FRAC])
+ax2.set_xlim(0, FW)
+ax2.set_ylim(0, FH_PLAN)
+ax2.set_aspect("equal")
+ax2.axis("off")
 
 FONT = {"fontfamily": "monospace"}
 
@@ -1044,13 +1057,196 @@ draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.012 * FH,
            fs=4.5, width=4.75, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
-# 8. TITLE BLOCK
+# 8. PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS
 # ═══════════════════════════════════════════════════════════════════════════
-title_block(ax, "SHEET 1 OF 1",
-            drawing_title="PINHOLE WALL — COMBINED INTERIOR ELEVATION",
-            subtitle="ALL SYSTEMS · INTERFERENCE CHECK",
-            scale_note="SCALE 1:20  ·  ALL DIMS IN mm",
-            doc_id="TBS-001 · Pinhole Wall")
+# Shows component footprints in X vs Yd (depth from pinhole wall).
+# Yd scale is exaggerated 1.5x vs X for depth visibility.
+# The component with the largest egress into the walkway at any X position
+# is drawn solid; others at the same X position are ghosted.
+
+EP_DEPTH_YD     = 160    # electrical panel box depth (mm)
+BA_DEPTH_YD     = 220    # battery bank (175mm cells + bracket)
+PM_DEPTH_YD     = 200    # pump manifold (ply + frame + pump + ports)
+ACC_DEPTH_YD    = 200    # accumulator (same mount depth as pump frame)
+FSKID_DEPTH_YD  = 250    # filter unit (ply + standoff + housing body)
+
+PLAN_S_YD = S * 1.5             # Yd scale ~1.5x elevation X scale
+PLAN_OYD  = 0.8                 # Y offset in ax2 data coords
+
+def plan_sy(yd_mm):
+    """Convert Yd (mm from wall) to plan view y coordinate on ax2."""
+    return PLAN_OYD + yd_mm * PLAN_S_YD
+
+def plan_block(xl, xr, yd_near, yd_far, label, fc, *,
+               ec=C_OUT, lw=1.0, ls="-", alpha=0.75,
+               label_fs=4.5, label_color=C_OUT, zorder=5):
+    """Draw a component footprint rectangle on the plan view (ax2)."""
+    x_draw = sx(xr)
+    w_draw = sx(xl) - sx(xr)
+    y_draw = plan_sy(yd_near)
+    h_draw = plan_sy(yd_far) - plan_sy(yd_near)
+    ax2.add_patch(mpatches.FancyBboxPatch(
+        (x_draw, y_draw), w_draw, h_draw,
+        boxstyle="square,pad=0", fc=fc, ec=ec,
+        lw=lw, ls=ls, alpha=alpha, zorder=zorder))
+    if label:
+        cx = sx((xl + xr) / 2)
+        cy = plan_sy((yd_near + yd_far) / 2)
+        ax2.text(cx, cy, label, ha="center", va="center",
+                fontsize=label_fs, color=label_color,
+                zorder=zorder + 1, **FONT)
+
+# ── Container wall line (Yd=0) ──────────────────────────────────────────────
+ax2.plot([sx(0), sx(C_LEN)], [plan_sy(0), plan_sy(0)],
+        color=C_OUT, lw=2.5, zorder=2)
+ax2.text(sx(C_LEN / 2), plan_sy(0) - 0.12,
+        "PINHOLE WALL (Yd = 0)", ha="center", va="top",
+        fontsize=5, color=C_OUT, fontweight="bold", zorder=10, **FONT)
+
+# ── Walkway grating zone (X=470-4629, Yd=0-300mm) ──────────────────────────
+wk_x_draw = sx(WK_X_R)
+wk_w_draw = sx(WK_X_L) - sx(WK_X_R)
+ax2.add_patch(mpatches.FancyBboxPatch(
+    (wk_x_draw, plan_sy(0)), wk_w_draw, plan_sy(WALKWAY_W) - plan_sy(0),
+    boxstyle="square,pad=0", fc="#F0F0F0", ec="none", alpha=0.5, zorder=1))
+for hx in range(int(WK_X_L), int(WK_X_R), 200):
+    ax2.plot([sx(hx), sx(hx + 100)],
+            [plan_sy(0), plan_sy(WALKWAY_W)],
+            color="#D8D8D8", lw=0.2, zorder=1)
+ax2.text(sx(500), plan_sy(WALKWAY_W / 2),
+        "NEAR WALKWAY\n(300mm)", ha="center", va="center",
+        fontsize=5, color="#BBBBBB", style="italic", zorder=2, **FONT)
+
+# ── Walkway outer edge (Yd=300mm) ──────────────────────────────────────────
+ax2.plot([sx(0), sx(C_LEN)], [plan_sy(WALKWAY_W), plan_sy(WALKWAY_W)],
+        color=C_OUT, lw=1.0, ls="--", zorder=2)
+ax2.text(sx(50), plan_sy(WALKWAY_W) + 0.06,
+        "WALKWAY OUTER EDGE (Yd = 300)", ha="left", va="bottom",
+        fontsize=4.5, color=C_DIM, zorder=10, **FONT)
+
+# ── Component footprints ────────────────────────────────────────────────────
+plan_comps = [
+    ("EVAPORATIVE\nCOOLER", EVAP_X, EVAP_X + EVAP_W,
+     0, EVAP_D, C_EVAP, "Z = 100–900"),
+    ("ELECTRICAL\nPANEL", EP_X, EP_X + EP_W,
+     0, EP_DEPTH_YD, C_ELEC, "Z = 900–1500"),
+    ("BATTERY\nBANK", BA_X, BA_X + BA_W,
+     0, BA_DEPTH_YD, C_BATT, "Z = 100–600"),
+    ("PUMP\nMANIFOLD", PM_FRAME_X, PM_FRAME_X + PM_FRAME_W,
+     0, PM_DEPTH_YD, C_PUMP, "Z = 235–781"),
+    ("ACC-01", PM_ACC_X, PM_ACC_X + PM_ACC_W,
+     0, ACC_DEPTH_YD, C_BLUE, "Z ≈ 790"),
+    ("FILTER\nUNIT", FSKID_X, FSKID_X + FSKID_W,
+     0, FSKID_DEPTH_YD, C_FILTER, "Z = 1410–2010"),
+    ("CHEMISTRY\nSHELF", SHELF_X_L, SHELF_X_R,
+     SHELF_YD_NEAR, SHELF_YD_NEAR + SHELF_DEPTH, C_SHELF, "Z = 1025"),
+]
+
+# Determine max-egress status: solid if no other component fully covers
+# this component's X range with deeper Yd; ghosted otherwise.
+comp_solid = []
+for i, (_, xl, xr, yn, yf, _, _) in enumerate(plan_comps):
+    dominated = False
+    for j, (_, oxl, oxr, oyn, oyf, _, _) in enumerate(plan_comps):
+        if i == j:
+            continue
+        if oxl <= xl and oxr >= xr and oyn <= yn and oyf > yf:
+            dominated = True
+            break
+    comp_solid.append(not dominated)
+
+# Draw ghosted components first, then solid on top
+for solid_pass in (False, True):
+    for k, (name, xl, xr, yn, yf, color, zr) in enumerate(plan_comps):
+        is_solid = comp_solid[k]
+        if is_solid != solid_pass:
+            continue
+        alpha = 0.75 if is_solid else 0.25
+        lw_c = 1.0 if is_solid else 0.5
+        ls_c = "-" if is_solid else "--"
+        zo = 5 if is_solid else 3
+        lbl_fs = 4.5 if is_solid else 3.5
+        lbl_col = C_OUT if is_solid else "#999"
+        plan_block(xl, xr, yn, yf, name, color,
+                   lw=lw_c, ls=ls_c, alpha=alpha, zorder=zo,
+                   label_fs=lbl_fs, label_color=lbl_col)
+
+# Z range annotations inside solid components (lower portion)
+for k, (name, xl, xr, yn, yf, color, zr) in enumerate(plan_comps):
+    if not comp_solid[k]:
+        continue
+    cx = sx((xl + xr) / 2)
+    cy_bot = plan_sy(yn + (yf - yn) * 0.2)
+    ax2.text(cx, cy_bot, zr, ha="center", va="center",
+            fontsize=3, color="#666", zorder=6, **FONT)
+
+# ── Processing tray near rim (context) ──────────────────────────────────────
+ax2.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],
+        [plan_sy(PROC_TRAY_YD_NEAR), plan_sy(PROC_TRAY_YD_NEAR)],
+        color=C_TRAY_EC, lw=0.8, ls=":", zorder=4)
+ax2.text(sx(PROC_TRAY_X_R - 150), plan_sy(PROC_TRAY_YD_NEAR) + 0.04,
+        "PROC TRAY NEAR RIM (Yd = 80)", ha="right", va="bottom",
+        fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
+
+# ── Evap cooler overhang warning ─────────────────────────────────────────────
+if EVAP_D > WALKWAY_W:
+    _overhang = EVAP_D - WALKWAY_W
+    ax2.annotate("", xy=(sx(EVAP_X + EVAP_W / 2), plan_sy(WALKWAY_W)),
+                xytext=(sx(EVAP_X + EVAP_W / 2), plan_sy(EVAP_D)),
+                arrowprops=dict(arrowstyle="<->", color="#CC0000", lw=1.0),
+                zorder=10)
+    ax2.text(sx(EVAP_X + EVAP_W / 2) + 0.12,
+            plan_sy((WALKWAY_W + EVAP_D) / 2),
+            f"{_overhang}mm\nOVERHANG", ha="left", va="center",
+            fontsize=4.5, color="#CC0000", fontweight="bold",
+            zorder=10, **FONT)
+
+# ── Depth dimension lines ───────────────────────────────────────────────────
+_dim_items = [
+    (EVAP_X + EVAP_W * 0.75, EVAP_D, f"{EVAP_D}mm", C_EVAP),
+    (BA_X + BA_W * 0.75, BA_DEPTH_YD, f"{BA_DEPTH_YD}mm", C_BATT),
+    (FSKID_X + FSKID_W * 0.25, FSKID_DEPTH_YD, f"{FSKID_DEPTH_YD}mm", C_FILTER),
+]
+for _dx_mm, _yd_max, _dlabel, _dcolor in _dim_items:
+    draw_dim_v(ax2, sx(_dx_mm), plan_sy(0), plan_sy(_yd_max),
+               _dlabel, offset=0.1, fs=4.5, color=_dcolor,
+               right=True, font=FONT)
+
+# ── Yd scale marks (right side) ─────────────────────────────────────────────
+_yd_scale_x = sx(0) + 0.2
+for _yd_val in range(0, 601, 100):
+    _y = plan_sy(_yd_val)
+    ax2.plot([_yd_scale_x - 0.04, _yd_scale_x + 0.04], [_y, _y],
+            color=C_DIM, lw=0.4, zorder=10)
+    ax2.text(_yd_scale_x + 0.08, _y, f"{_yd_val}",
+            ha="left", va="center", fontsize=3.5, color=C_DIM,
+            zorder=10, **FONT)
+ax2.text(_yd_scale_x + 0.08, plan_sy(300) + 0.25,
+        "Yd (mm)\n↑ INTO CONTAINER", ha="left", va="bottom",
+        fontsize=4, color=C_DIM, fontweight="bold", zorder=10, **FONT)
+
+# ── Section title ───────────────────────────────────────────────────────────
+_plan_title_y = FH_PLAN - 0.45
+ax2.text(sx(C_LEN / 2), _plan_title_y,
+        "PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS",
+        ha="center", va="bottom", fontsize=9, color=C_OUT,
+        fontweight="bold", zorder=10, **FONT)
+ax2.text(sx(C_LEN / 2), _plan_title_y - 0.12,
+        "VIEW: LOOKING DOWN · Yd SCALE 1.5× EXAGGERATED"
+        " · MAX-EGRESS SOLID, OTHERS GHOSTED",
+        ha="center", va="top", fontsize=4.5, color=C_DIM,
+        zorder=10, **FONT)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 9. TITLE BLOCK
+# ═══════════════════════════════════════════════════════════════════════════
+title_block(ax2, "SHEET 1 OF 1",
+            drawing_title="PINHOLE WALL — COMBINED ELEVATION + PLAN VIEW",
+            subtitle="ALL SYSTEMS · INTERFERENCE CHECK · WALKWAY ACCESS",
+            scale_note="ELEV ~1:20 · PLAN Yd 1.5× EXAG."
+                       " · ALL DIMS IN mm",
+            doc_id="TBS-001 · Pinhole Wall",
+            height=0.045 * FH / FH_PLAN)
 
 # ── Save ────────────────────────────────────────────────────────────────────
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)

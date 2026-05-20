@@ -1449,7 +1449,7 @@ def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
 ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
-ax4b.set_ylim(sb_z(-130) - 0.5, sb_z(620) + 1.5)
+ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
 
 # Panel B title
 ax4b.text(sb_y(250), sb_z(600), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
@@ -1653,7 +1653,7 @@ def sc_yd(yd_mm):
     return OC_Y + yd_mm / SC_C
 
 ax4c.set_xlim(sc_x(X_VIEW_L - 30) - 0.5, sc_x(X_VIEW_R + 30) + 0.5)
-ax4c.set_ylim(sc_yd(-100) - 0.5, sc_yd(360) + 0.5)
+ax4c.set_ylim(sc_yd(-40) - 0.5, sc_yd(360) + 0.5)
 
 # Panel C title
 ax4c.text(sc_x(X_CENTER), sc_yd(350),
@@ -1732,21 +1732,12 @@ leader(ax4c, sc_x(X_CENTER - 60), sc_yd(WALKWAY_W - 30),
        sc_x(X_CENTER + 120), sc_yd(WALKWAY_W + 30),
        "WALKWAY GRATING\n(HOSE RUNS ON TOP)", fs=6, color="#8D6E63")
 
-# ── Flow path legend ────────────────────────────────────────────────────────
-flow_notes = [
-    "FLOW PATH:",
-    "1. Water drains by gravity to sump well (Yd=80mm)",
-    "2. P-04 suction pickup draws from sump via foot valve",
-    "3. 1\" reinforced hose over rim, across walkway, up wall to P-04",
-    "4. P-04 discharge to 3W-DV-02 three-way diverter",
-    "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
-    "6. Alt: divert to IBC-4 (Waste) when selected",
-]
-draw_notes(ax4b, flow_notes, sb_y(-170), sb_z(-75), spacing=1.2,
-           fs=6.5, width=80, color=C_TEXT, title_color=C_TEXT,
-           font={"fontfamily": "monospace"})
+# ── Notes axes (full-width strip above title block) ─────────────────────────
+ax4_notes = fig4.add_axes([0.04, 0.06, 0.92, 0.10])
+ax4_notes.set_xlim(0, 100)
+ax4_notes.set_ylim(0, 10)
+ax4_notes.axis("off")
 
-# ── Notes ────────────────────────────────────────────────────────────────────
 notes4 = [
     "NOTES:",
     "1. Sump bottom sits ON container floor (Z=0).",
@@ -1757,13 +1748,23 @@ notes4 = [
     "6. Hose runs over walkway surface (5mm rim-to-grate gap).",
     "7. Tray slope exaggerated for clarity in both panels.",
 ]
-draw_notes(ax4c, notes4, sc_x(X_VIEW_L - 20), sc_yd(-55), spacing=3.5,
-           fs=6.5, width=135, color=C_TEXT, title_color=C_TEXT,
+draw_notes(ax4_notes, notes4, 1, 9, spacing=1.0,
+           fs=6.5, width=42, color=C_TEXT, title_color=C_TEXT,
            font={"fontfamily": "monospace"})
 
-# ── Copyright ────────────────────────────────────────────────────────────────
-fig4.text(0.99, 0.005, "© 2026 Alvin Richards -- GNU AGPLv3",
-          ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
+flow_notes = [
+    "FLOW PATH:",
+    "1. Water drains by gravity to sump well (Yd=80mm)",
+    "2. P-04 suction pickup draws from sump via foot valve",
+    "3. 1\" reinforced hose over rim, across walkway, up wall to P-04",
+    "4. P-04 discharge to 3W-DV-02 three-way diverter",
+    "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
+    "6. Alt: divert to IBC-4 (Waste) when selected",
+]
+draw_notes(ax4_notes, flow_notes, 52, 9, spacing=1.0,
+           fs=6.5, width=42, color=C_TEXT, title_color=C_TEXT,
+           font={"fontfamily": "monospace"})
+
 fig4.savefig("diagrams/water-system-sheet4.png", dpi=150, bbox_inches="tight",
              facecolor=fig4.get_facecolor())
 fig4.savefig(svg_path("diagrams/water-system-sheet4.png"), bbox_inches="tight",

@@ -1071,10 +1071,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#83-filter-skid" class="md-nav__link">
+  <a href="#83-filter-unit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8.3 Filter skid
+        8.3 Filter unit
       
     </span>
   </a>
@@ -2352,12 +2352,12 @@ IBC-2 (600L) ──┘                                                      │
         └──→ pH drift / discoloured: FORWARD TO IBC-4 (waste)
 </code></pre></div>
 <p><strong>Filter train sizing:</strong></p>
+<p>The filter train uses a single 3-stage whole-house filter unit (e.g. <a href="https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter">Purcooflow WHF2045B302</a> or equivalent) with 4.5"×20" Big Blue cartridges. This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.</p>
 <table>
 <thead>
 <tr>
 <th>Stage</th>
-<th>Housing</th>
-<th>Cartridge</th>
+<th>Cartridge (4.5"×20")</th>
 <th>Removes</th>
 <th>Replace interval</th>
 </tr>
@@ -2365,27 +2365,25 @@ IBC-2 (600L) ──┘                                                      │
 <tbody>
 <tr>
 <td>F-1</td>
-<td>Big Blue 4.5"×10"</td>
-<td>50-micron poly depth</td>
-<td>Gross sediment, Prussian blue particles</td>
-<td>Every 20 prints</td>
+<td>MPP 5-micron melt-blown polypropylene sediment</td>
+<td>Gross sediment, fiber lint, Prussian blue particles</td>
+<td>Every 25 prints</td>
 </tr>
 <tr>
 <td>F-2</td>
-<td>Big Blue 4.5"×10"</td>
-<td>5-micron poly sediment</td>
-<td>Fine particles, residual blue</td>
-<td>Every 10 prints</td>
+<td>KDF-55 heavy metal removal</td>
+<td>Dissolved iron compounds from ferricyanide wash water</td>
+<td>Every 30 prints</td>
 </tr>
 <tr>
 <td>F-3</td>
-<td>Big Blue 4.5"×10"</td>
-<td>GAC carbon block</td>
-<td>Organics, colour, taste</td>
-<td>Every 15 prints</td>
+<td>CTO coconut shell activated carbon block</td>
+<td>Residual organics, color, taste</td>
+<td>Every 20 prints</td>
 </tr>
 </tbody>
 </table>
+<p>The 20" cartridges hold roughly 2× the media volume of the previous 10" cartridges, extending service life proportionally. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from iSpring (WGB32B), Express Water, and other vendors — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.</p>
 <p><strong>pH management:</strong> If filtered water reads pH &lt;6, do nothing — slightly acidic is preferred. If pH &gt;7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH &gt;8 to the Blue system.</p>
 <h3 id="33-black-system-waste-containment">3.3 Black System — Waste Containment<a class="headerlink" href="#33-black-system-waste-containment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -2733,7 +2731,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <hr />
 <h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
 <h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
-<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The only 1" pipe is between the three filter housings (which have 1" NPT ports) and DV-01, requiring a single 1/2"→1" bushing reducer at the F1 filter inlet. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.</p>
+<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.</p>
 <p><strong>Internal runs (1/2" HDPE Sch 40):</strong></p>
 <table>
 <thead>
@@ -2811,7 +2809,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p><strong>Filter skid interconnects (1" HDPE Sch 40):</strong></p>
+<p><strong>Filter unit outlet (1" HDPE Sch 40):</strong></p>
 <table>
 <thead>
 <tr>
@@ -2824,14 +2822,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>Filter housing interconnects (F1→F2→F3)</td>
-<td>Sch 40</td>
-<td>1" nominal (OD 33mm)</td>
-<td>100 PSI min</td>
-<td>HDPE</td>
-</tr>
-<tr>
-<td>F3 outlet → pH test → DV-01</td>
+<td>Combo filter outlet → pH test → DV-01</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
 <td>100 PSI min</td>
@@ -2886,7 +2877,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>1" NPT threaded</td>
-<td>Filter skid interconnects (F1→F2→F3→DV-01), IBC fill/drain lines</td>
+<td>Combo filter outlet → DV-01, IBC fill/drain lines</td>
 <td>HDPE or brass</td>
 </tr>
 <tr>
@@ -3174,7 +3165,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tbody>
 </table>
 <p><strong>Pump subtotal: ~$305–$355</strong></p>
-<h3 id="83-filter-skid">8.3 Filter skid<a class="headerlink" href="#83-filter-skid" title="Permanent link">&para;</a></h3>
+<h3 id="83-filter-unit">8.3 Filter unit<a class="headerlink" href="#83-filter-unit" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -3188,48 +3179,40 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST">Geekpure Big Blue filter housing 4.5"×10"</a></td>
-<td>1" NPT brass ports, pressure relief, wrench included</td>
-<td>3</td>
-<td>Amazon</td>
-<td>$28–$45 each</td>
-<td><strong>$85–$135</strong></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9">Pentair Pentek DGD-5005 sediment cartridge</a></td>
-<td>50-micron, 4.5"×10" polypropylene depth filter</td>
-<td>4 (+ spares)</td>
-<td>Amazon</td>
-<td>$8–$12 each</td>
-<td><strong>$35–$50</strong></td>
-</tr>
-<tr>
-<td><a href="https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ">Pentair Pentek RFC-BB cartridge</a></td>
-<td>5-micron, 4.5"×10" polypropylene wound/pleated</td>
-<td>4 (+ spares)</td>
-<td>Amazon</td>
-<td>$10–$15 each</td>
-<td><strong>$45–$60</strong></td>
-</tr>
-<tr>
-<td><a href="https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter">Ronaqua Big Blue GAC carbon block</a></td>
-<td>4.5"×10" granular activated carbon, 25-micron</td>
-<td>4 (+ spares)</td>
-<td>Ronaqua</td>
-<td>$15–$22 each</td>
-<td><strong>$65–$90</strong></td>
-</tr>
-<tr>
-<td>Filter skid frame</td>
-<td>600×900mm slotted steel angle, DIY</td>
+<td><a href="https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter">3-stage Big Blue combo filter unit 4.5"×20"</a></td>
+<td>1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equivalent (iSpring WGB32B, Express Water, etc.)</td>
 <td>1</td>
-<td>Local steel supplier</td>
-<td>$25–$40</td>
-<td><strong>$35</strong></td>
+<td>Purcooflow / Amazon</td>
+<td>$350–$450</td>
+<td><strong>$350–$450</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron">MPP 5-micron sediment cartridge 4.5"×20"</a></td>
+<td>Melt-blown polypropylene depth filter (F-1 stage)</td>
+<td>3 + spares</td>
+<td>Amazon</td>
+<td>$8–$14 each</td>
+<td><strong>$24–$42</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter">KDF-55 heavy metal cartridge 4.5"×20"</a></td>
+<td>KDF-55 media for dissolved iron/metal removal (F-2 stage)</td>
+<td>2 + spares</td>
+<td>Amazon</td>
+<td>$30–$50 each</td>
+<td><strong>$60–$100</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter">CTO carbon block cartridge 4.5"×20"</a></td>
+<td>Coconut shell activated carbon block (F-3 stage)</td>
+<td>3 + spares</td>
+<td>Amazon</td>
+<td>$12–$20 each</td>
+<td><strong>$36–$60</strong></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Filter subtotal: ~$265–$370</strong></p>
+<p><strong>Filter subtotal: ~$470–$652</strong></p>
 <h3 id="84-valves-and-fittings">8.4 Valves and fittings<a class="headerlink" href="#84-valves-and-fittings" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3301,11 +3284,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI">Banjo LE100 90° elbow 1" NPT</a></td>
-<td>Polypropylene street elbow. Filter skid interconnects, IBC fill/drain bends</td>
-<td>6</td>
+<td>Polypropylene street elbow. IBC fill/drain bends, filter outlet to DV-01</td>
+<td>4</td>
 <td>Amazon</td>
 <td>$3–$5</td>
-<td><strong>$18–$30</strong></td>
+<td><strong>$12–$20</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene">1/2" NPT polypropylene tee</a></td>
@@ -3365,7 +3348,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p><strong>Valves &amp; fittings subtotal: ~$420–$670</strong></p>
+<p><strong>Valves &amp; fittings subtotal: ~$414–$660</strong></p>
 <h3 id="85-pipe">8.5 Pipe<a class="headerlink" href="#85-pipe" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3389,11 +3372,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">1" SDR-11 HDPE pipe</a></td>
-<td>Food-safe, blue-stripe, 20 ft sticks. Filter skid interconnects and IBC fill/drain lines only</td>
-<td>2 sticks (40 ft)</td>
+<td>Food-safe, blue-stripe, 20 ft stick. Filter outlet to DV-01 and IBC fill/drain lines only</td>
+<td>1 stick (20 ft)</td>
 <td>Ferguson</td>
 <td>$12–$18/stick</td>
-<td><strong>$24–$36</strong></td>
+<td><strong>$12–$18</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>
@@ -3413,7 +3396,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p><strong>Pipe subtotal: ~$94–$132</strong></p>
+<p><strong>Pipe subtotal: ~$76–$108</strong></p>
 <h3 id="86-processing-tray">8.6 Processing tray<a class="headerlink" href="#86-processing-tray" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3621,19 +3604,19 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>$355</td>
 </tr>
 <tr>
-<td>Filter skid (housings + cartridges)</td>
-<td>$265</td>
-<td>$370</td>
+<td>Filter unit (3-stage combo + cartridges)</td>
+<td>$470</td>
+<td>$652</td>
 </tr>
 <tr>
 <td>Valves and fittings (incl. S60×6 adapters, check valves)</td>
-<td>$406</td>
-<td>$650</td>
+<td>$414</td>
+<td>$660</td>
 </tr>
 <tr>
 <td>Pipe</td>
-<td>$100</td>
-<td>$140</td>
+<td>$76</td>
+<td>$108</td>
 </tr>
 <tr>
 <td>Processing tray (304 SS, fabricated)</td>
@@ -3652,8 +3635,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><strong>TOTAL</strong></td>
-<td><strong>$2,954</strong></td>
-<td><strong>$4,455</strong></td>
+<td><strong>$3,143</strong></td>
+<td><strong>$4,720</strong></td>
 </tr>
 </tbody>
 </table>

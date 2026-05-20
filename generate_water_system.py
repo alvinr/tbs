@@ -975,7 +975,7 @@ notes = [
     f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
     f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
 ]
-draw_notes(ax3, notes, 0.3, -0.8, spacing=0.4, fs=7, width=14,
+draw_notes(ax3, notes, 0.3, -0.8, spacing=0.2, fs=7, width=14,
            color=C_TEXT, title_color=C_TEXT, font={"fontfamily": "monospace"})
 
 # ── Copyright ────────────────────────────────────────────────────────────────
@@ -1010,12 +1010,17 @@ for axx in (ax4a, ax4b, ax4c):
     axx.axis("off")
     axx.set_aspect("equal")
 
-# ── Title block (spans both panels) ─────────────────────────────────────────
-title_block(ax4b, "SHEET 4 OF 4",
+# ── Title block (full-width axes spanning both columns) ───────────────────
+ax4_tb = fig4.add_axes([0.04, 0.0, 0.92, 0.06])
+ax4_tb.set_xlim(0, 1)
+ax4_tb.set_ylim(0, 1)
+ax4_tb.axis("off")
+title_block(ax4_tb, "SHEET 4 OF 4",
             drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
             subtitle="Section A-A at X=2,399mm (through sump) + plan view of walkway hose routing",
             scale_note="DETAIL ~1:2  |  PLAN ~1:3  |  ELEVATION ~1:15",
-            doc_id="TBS-001 · Water System")
+            doc_id="TBS-001 · Water System",
+            height=0.75)
 
 from matplotlib.patches import Arc as MplArc
 
@@ -1738,7 +1743,7 @@ flow_notes = [
     "6. Alt: divert to IBC-4 (Waste) when selected",
 ]
 draw_notes(ax4b, flow_notes, sb_y(-170), sb_z(-75), spacing=1.2,
-           fs=6.5, width=30, color=C_TEXT, title_color=C_TEXT,
+           fs=6.5, width=80, color=C_TEXT, title_color=C_TEXT,
            font={"fontfamily": "monospace"})
 
 # ── Notes ────────────────────────────────────────────────────────────────────
@@ -1753,7 +1758,7 @@ notes4 = [
     "7. Tray slope exaggerated for clarity in both panels.",
 ]
 draw_notes(ax4c, notes4, sc_x(X_VIEW_L - 20), sc_yd(-55), spacing=3.5,
-           fs=6.5, width=45, color=C_TEXT, title_color=C_TEXT,
+           fs=6.5, width=135, color=C_TEXT, title_color=C_TEXT,
            font={"fontfamily": "monospace"})
 
 # ── Copyright ────────────────────────────────────────────────────────────────

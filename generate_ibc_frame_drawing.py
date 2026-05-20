@@ -670,8 +670,8 @@ def sheet1():
         f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
         f"12. Total frame weight: ~90 kg.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_HI - 40), spacing=sy(18),
-               fs=5.5, font=FONT, width=sx(1900))
+    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_HI - 15), spacing=sy(18),
+               fs=5.5, font=FONT, width=sx(1100))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
@@ -864,7 +864,7 @@ def sheet2():
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
     ]
     draw_notes(ax, notes, sx(X_LO + 20), sy(Z_LO + 300), spacing=sy(18),
-               fs=5.5, font=FONT, width=sx(1200))
+               fs=5.5, font=FONT, width=sx(900))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1162,7 +1162,6 @@ def sheet3():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "PLAN VIEW NOTES:",
-        "",
         "1. Plan cut at platform level (Z=1,060mm). All beams shown in cross-section (hatched).",
         "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
         "3. Transverse beams (along Yd) at each upright bay: cantilever from corridor to wall bracket.",
@@ -1172,8 +1171,8 @@ def sheet3():
         f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
-    draw_notes(ax, notes, px(X_HI / 2), py(YD_LO + 510), spacing=py(20),
-               fs=6.5, font=FONT, width=px(1100))
+    draw_notes(ax, notes, px(X_HI * 0.35), py(YD_LO + 510), spacing=py(16),
+               fs=5.5, font=FONT, width=px(975))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

@@ -384,7 +384,6 @@ def sheet1():
     # ── Notes ─────────────────────────────────────────────────────────────────
     notes = [
         "CROSS-SECTION NOTES:",
-        "",
         "1. View looking along X toward sealed end wall. Section through IBC stack.",
         f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
         f"3. Portal frame: 50x50x3mm RHS mild steel, wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
@@ -394,8 +393,8 @@ def sheet1():
         f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
         f"8. External plumbing panel on end wall centerline (see Sheets 4-5).",
     ]
-    draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(18),
-               fs=6.5, ha="center", font=FONT, width=5000)
+    draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(22),
+               fs=6.5, ha="left", font=FONT, width=2250)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -624,7 +623,6 @@ def sheet2():
     # ── Notes ─────────────────────────────────────────────────────────────────
     notes = [
         "PLAN VIEW NOTES:",
-        "",
         f"1. 4x Schutz Ecobulk MX 600L IBCs in 2x2 stack. Top tier visible; bottom tier shown dashed (below).",
         f"2. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         f"3. IBCs pushed to walls ({BLUE_IBC_Y}mm clearance) to maximize corridor width.",
@@ -632,15 +630,15 @@ def sheet2():
         f"5. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
         "6. See Sheets 4-5 for plumbing detail.",
     ]
-    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 340), spacing=py(18),
-               fs=6.5, font=FONT, width=4500)
+    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 300), spacing=py(18),
+               fs=6.5, font=FONT, width=3000)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="PLAN VIEW — 2x2 IBC LAYOUT IN RIGHT END ZONE",
                 scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
-                height=0.06)
+                height=0.05)
 
     fig.savefig("diagrams/ibc-stacking-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/ibc-stacking-sheet2.png"), bbox_inches="tight", facecolor=BG)
@@ -1028,16 +1026,16 @@ def sheet3():
     dn_x = sx(DD_OX + 10)
     dn_top = sy(DD_OY + 12)
     d_notes = [
-        "- 25mm ratchet straps, 1,100kg WLL",
-        "- D-ring to D-ring over IBC top",
-        "- 1 strap per tier per side (4 total)",
-        "- Tighten before transport",
-        "- Check strap tension after 50km",
+        "NOTES:",
+        "1. 25mm ratchet straps, 1,100kg WLL",
+        "2. D-ring to D-ring over IBC top",
+        "3. 1 strap per tier per side (4 total)",
+        "4. Tighten before transport",
+        "5. Check strap tension after 50km",
     ]
-    for i, note in enumerate(d_notes):
-        ax.text(dn_x, dn_top - i * sy(6), note,
-                ha="left", va="top", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=15)
+
+    draw_notes(ax, d_notes, dn_x, dn_top, spacing=22,
+               fs=6.5, font=FONT, width=425)
 
     # Detail D border
     ax.add_patch(Rectangle((sx(DD_OX - 5), sy(DD_OY)),
@@ -1269,7 +1267,6 @@ def sheet4():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "EXTERNAL PLUMBING PANEL NOTES:",
-        "",
         "1. 4x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (F1/F2) and drain hose (D3/D4).",
@@ -1277,8 +1274,8 @@ def sheet4():
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 5).",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 380), spacing=sy(18),
-               fs=6.5, font=FONT, width=8000)
+    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 350), spacing=sy(18),
+               fs=6.5, font=FONT, width=5000)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1754,7 +1751,6 @@ def sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        "",
         "1. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
         "2. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
         "3. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
@@ -1762,15 +1758,15 @@ def sheet5():
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
     ]
-    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 320), spacing=py(18),
-               fs=5.5, font=FONT, width=4500)
+    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
+               fs=5.5, font=FONT, width=2500)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 6",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING PLAN — PIPE ROUTING & VALVES",
                 scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
-                height=0.05)
+                height=0.04)
 
     fig.savefig("diagrams/ibc-stacking-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/ibc-stacking-sheet5.png"), bbox_inches="tight", facecolor=BG)
@@ -2357,15 +2353,15 @@ def sheet6():
         "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
         "11. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_LO + 470), spacing=sy(22),
-               fs=6, font=FONT, width=6000)
+    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 425), spacing=sy(22),
+               fs=6, font=FONT, width=3500)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING ELEVATION — ALL WATER SYSTEM CONNECTIONS",
                 scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW FROM INSIDE",
-                height=0.06)
+                height=0.04)
 
     fig.savefig("diagrams/ibc-stacking-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/ibc-stacking-sheet6.png"), bbox_inches="tight", facecolor=BG)

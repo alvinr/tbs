@@ -297,7 +297,8 @@ def sheet1():
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
-                doc_id="TBS-FM01 · Film Plane Mechanism")
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.05)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet1.png"), bbox_inches="tight", facecolor=BG)
@@ -1465,11 +1466,11 @@ def sheet5():
         f"4. Torsion spring biases clamp closed at any tilt angle.",
         f"5. Over-center cam action: snap open/closed by feel in safelight conditions.",
     ]
-    notes_x = sb(LEG + 35)
-    notes_y_start = sb(-10)
+    notes_x = sb(-LEG)
+    notes_y_start = sb(-80)
     draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(5.5),
                fs=5.5, title_fs=6, color=DIM, title_color=ANNO, font=FONT,
-               width=sb(80))
+               width=sb(130))
 
     # ── Title block ───────────────────────────────────────────────────────────
     # Create a full-width axes at the bottom for the title block

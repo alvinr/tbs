@@ -126,7 +126,7 @@ parts = [
      'Ø420mm loop in 3×3 groove on wall frame face'),
 ]
 for i, (it, desc, mat, qty, note) in enumerate(parts):
-    yp = 58 - i * 5.8
+    yp = 58 - i * 4.8
     bg = '#FFFFFF' if i % 2 == 0 else '#F8F8F8'
     draw_rect(ax1, 6, yp - 2, 468, 5.5, lw=0, fc=bg, zorder=1)
     ax1.text(10, yp + 0.5, it, fontsize=5.5, color='black', fontweight='bold')
@@ -364,7 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-draw_notes(ax1, notes, 10, 175, spacing=6, fs=5.2, width=680)
+draw_notes(ax1, notes, 10, 175, spacing=6, fs=6.5, width=680)
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
@@ -883,7 +883,7 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-draw_notes(ax2, notes2, 10, 80, spacing=6, fs=5.0, width=680)
+draw_notes(ax2, notes2, 10, 70, spacing=5, fs=6.5, width=465)
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

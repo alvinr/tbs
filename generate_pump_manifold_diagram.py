@@ -762,8 +762,8 @@ notes = [
     "9. P-03 (Waste evac) relocated to IBC plumbing corridor — not shown on this diagram.",
     "10. ACC-01: SeaFlo 0.75L accumulator, 125 PSI, 1/2\" MNPT. Each circuit fused at 10A.",
 ]
-draw_notes(ax, notes, sx(PIPE_EXIT_X + 50), sz(65), spacing=4.0, fs=7,
-           width=200, font={"fontfamily": "monospace"})
+draw_notes(ax, notes, sx(PIPE_EXIT_X + 150), sz(75), spacing=4.0, fs=7,
+           width=110, font={"fontfamily": "monospace"})
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

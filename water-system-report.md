@@ -141,11 +141,15 @@ Processing tray sump (P-04 suction pickup)
 
 **Filter train sizing:**
 
-| Stage | Housing | Cartridge | Removes | Replace interval |
-|-------|---------|-----------|---------|-----------------|
-| F-1 | Big Blue 4.5"×10" | 50-micron poly depth | Gross sediment, Prussian blue particles | Every 20 prints |
-| F-2 | Big Blue 4.5"×10" | 5-micron poly sediment | Fine particles, residual blue | Every 10 prints |
-| F-3 | Big Blue 4.5"×10" | GAC carbon block | Organics, colour, taste | Every 15 prints |
+The filter train uses a single 3-stage whole-house filter unit (e.g. [Purcooflow WHF2045B302](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) or equivalent) with 4.5"×20" Big Blue cartridges. This eliminates all inter-housing plumbing and the separate filter skid frame — the unit mounts directly to the pinhole wall with its integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer connects P-02 output to the unit inlet.
+
+| Stage | Cartridge (4.5"×20") | Removes | Replace interval |
+|-------|---------------------|---------|-----------------|
+| F-1 | MPP 5-micron melt-blown polypropylene sediment | Gross sediment, fiber lint, Prussian blue particles | Every 25 prints |
+| F-2 | KDF-55 heavy metal removal | Dissolved iron compounds from ferricyanide wash water | Every 30 prints |
+| F-3 | CTO coconut shell activated carbon block | Residual organics, color, taste | Every 20 prints |
+
+The 20" cartridges hold roughly 2× the media volume of the previous 10" cartridges, extending service life proportionally. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from iSpring (WGB32B), Express Water, and other vendors — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.
 
 **pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
@@ -303,7 +307,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 
 ### Pipe sizing
 
-All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The only 1" pipe is between the three filter housings (which have 1" NPT ports) and DV-01, requiring a single 1/2"→1" bushing reducer at the F1 filter inlet. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.
+All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.
 
 **Internal runs (1/2" HDPE Sch 40):**
 
@@ -319,12 +323,11 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 | ACC-01 inlet/outlet | Sch 40 | 1/2" nominal (OD 21mm) | 125 PSI min | HDPE |
 | Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
 
-**Filter skid interconnects (1" HDPE Sch 40):**
+**Filter unit outlet (1" HDPE Sch 40):**
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| Filter housing interconnects (F1→F2→F3) | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
-| F3 outlet → pH test → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Combo filter outlet → pH test → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
 
 **IBC fill/drain (1" HDPE Sch 40 — gravity flow, not pump-driven):**
 
@@ -342,7 +345,7 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 | Connection type | Use | Standard |
 |----------------|-----|---------|
 | 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminum or polypropylene |
-| 1" NPT threaded | Filter skid interconnects (F1→F2→F3→DV-01), IBC fill/drain lines | HDPE or brass |
+| 1" NPT threaded | Combo filter outlet → DV-01, IBC fill/drain lines | HDPE or brass |
 | 1/2" NPT threaded | All pump-driven runs, pump ports, manifold connections, ACC-01, ball valves | HDPE or brass |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet (1 required) | Polypropylene or brass |
 | 2" NPT bulkhead | External fill/drain port (container wall) | 304 SS |
@@ -426,17 +429,16 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Pump subtotal: ~$305–$355**
 
-### 8.3 Filter skid
+### 8.3 Filter unit
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [Geekpure Big Blue filter housing 4.5"×10"](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST) | 1" NPT brass ports, pressure relief, wrench included | 3 | Amazon | $28–$45 each | **$85–$135** |
-| [Pentair Pentek DGD-5005 sediment cartridge](https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9) | 50-micron, 4.5"×10" polypropylene depth filter | 4 (+ spares) | Amazon | $8–$12 each | **$35–$50** |
-| [Pentair Pentek RFC-BB cartridge](https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ) | 5-micron, 4.5"×10" polypropylene wound/pleated | 4 (+ spares) | Amazon | $10–$15 each | **$45–$60** |
-| [Ronaqua Big Blue GAC carbon block](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter) | 4.5"×10" granular activated carbon, 25-micron | 4 (+ spares) | Ronaqua | $15–$22 each | **$65–$90** |
-| Filter skid frame | 600×900mm slotted steel angle, DIY | 1 | Local steel supplier | $25–$40 | **$35** |
+| [3-stage Big Blue combo filter unit 4.5"×20"](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) | 1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equivalent (iSpring WGB32B, Express Water, etc.) | 1 | Purcooflow / Amazon | $350–$450 | **$350–$450** |
+| [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $8–$14 each | **$24–$42** |
+| [KDF-55 heavy metal cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron/metal removal (F-2 stage) | 2 + spares | Amazon | $30–$50 each | **$60–$100** |
+| [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $12–$20 each | **$36–$60** |
 
-**Filter subtotal: ~$265–$370**
+**Filter subtotal: ~$470–$652**
 
 ### 8.4 Valves and fittings
 
@@ -449,7 +451,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output — matches 1" filter port) | 1 | Amazon | $18–$30 | **$18–$30** |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | **$35–$50** |
 | [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | **$28–$56** |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. Filter skid interconnects, IBC fill/drain bends | 6 | Amazon | $3–$5 | **$18–$30** |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | **$12–$20** |
 | [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | **$12–$24** |
 | [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | **$16–$24** |
 | [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | For maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | **$24–$36** |
@@ -458,18 +460,18 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT | 4 | Amazon | $8–$14 | **$32–$56** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
-**Valves & fittings subtotal: ~$420–$670**
+**Valves & fittings subtotal: ~$414–$660**
 
 ### 8.5 Pipe
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). Matches pump port size | 4 sticks (80 ft) | Ferguson | $6–$10/stick | **$24–$40** |
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft sticks. Filter skid interconnects and IBC fill/drain lines only | 2 sticks (40 ft) | Ferguson | $12–$18/stick | **$24–$36** |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft stick. Filter outlet to DV-01 and IBC fill/drain lines only | 1 stick (20 ft) | Ferguson | $12–$18/stick | **$12–$18** |
 | [3/4" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson | $9–$14/stick | **$20–$30** |
 | [1/2" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Amazon | $8–$12/length | **$20** |
 
-**Pipe subtotal: ~$94–$132**
+**Pipe subtotal: ~$76–$108**
 
 ### 8.6 Processing tray
 
@@ -519,13 +521,13 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |----------|-------------|--------------|
 | Water storage (4x IBC totes + bulkhead fittings) | $420 | $760 |
 | Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor) | $305 | $355 |
-| Filter skid (housings + cartridges) | $265 | $370 |
-| Valves and fittings (incl. S60×6 adapters, check valves) | $406 | $650 |
-| Pipe | $100 | $140 |
+| Filter unit (3-stage combo + cartridges) | $470 | $652 |
+| Valves and fittings (incl. S60×6 adapters, check valves) | $414 | $660 |
+| Pipe | $76 | $108 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$2,954** | **$4,455** |
+| **TOTAL** | **$3,143** | **$4,720** |
 
 *Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 

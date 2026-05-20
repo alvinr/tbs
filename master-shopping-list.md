@@ -19,7 +19,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
-| 5. Print washing — water system | $2,822 | $4,346 |
+| 5. Print washing — water system | $3,009 | $4,600 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
@@ -29,7 +29,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,560** | **~$22,400** |
+| **TOTAL (base build + 50-print run)** | **~$16,750** | **~$22,650** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -182,17 +182,16 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Pump subtotal: ~$167–$203**
 
-### Filter skid
+### Filter unit
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Geekpure Big Blue filter housing 4.5"×10"](https://www.amazon.com/Geekpure-Filter-Housing-1-Inch-Bracket-Blue/dp/B07799BBST) | 1" NPT brass ports, pressure relief | 3 | Amazon | $28–$45 | $85–$135 |
-| [Pentair Pentek DGD-5005 sediment cartridge](https://www.amazon.com/Pentair-Pentek-Sediment-Water-Filter/dp/B0CM8PY8Q9) | 50-micron, 4.5"×10" polypropylene depth filter | 4 + spares | Amazon | $8–$12 | $35–$50 |
-| [Pentair Pentek RFC-BB cartridge](https://www.amazon.com/Pentair-Pentek-Carbon-Water-Filter/dp/B0F1Z2TXKQ) | 5-micron, 4.5"×10" PP wound/pleated | 4 + spares | Amazon | $10–$15 | $45–$60 |
-| [Ronaqua Big Blue GAC carbon block](https://www.ronaqua.com/products/10-inch-big-blue-granular-activated-carbon-whole-house-water-filter) | 4.5"×10" granular activated carbon, 25-micron | 4 + spares | Ronaqua | $15–$22 | $65–$90 |
-| Filter skid frame | 600×900mm slotted steel angle, DIY | 1 | Local steel supplier | $25–$40 | $35 |
+| [3-stage Big Blue combo filter 4.5"×20"](https://www.purcooflow.com/products/whf2045b302-3-stage-kdf-heavy-metal-water-filter) | 1" NPT ports, integrated bracket, triple drain valves. Purcooflow WHF2045B302 or equiv. (iSpring WGB32B, Express Water) | 1 | Purcooflow / Amazon | $350–$450 | $350–$450 |
+| [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+melt+blown+polypropylene+sediment+filter+5+micron) | Melt-blown polypropylene depth filter (F-1 stage) | 3 + spares | Amazon | $8–$14 | $24–$42 |
+| [KDF-55 heavy metal cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+KDF+55+heavy+metal+water+filter) | KDF-55 media for dissolved iron removal (F-2 stage) | 2 + spares | Amazon | $30–$50 | $60–$100 |
+| [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/s?k=4.5x20+CTO+coconut+shell+carbon+block+filter) | Coconut shell activated carbon block (F-3 stage) | 3 + spares | Amazon | $12–$20 | $36–$60 |
 
-**Filter subtotal: ~$265–$370**
+**Filter subtotal: ~$470–$652**
 
 ### Valves, fittings & pipe
 
@@ -205,7 +204,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output) | 1 | Amazon | $18–$30 | $18–$30 |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | $35–$50 |
 | [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | $28–$56 |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. Filter skid interconnects, IBC fill/drain bends | 6 | Amazon | $3–$5 | $18–$30 |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | $12–$20 |
 | [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | $12–$24 |
 | [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | $16–$24 |
 | [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | Maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | $24–$36 |
@@ -214,12 +213,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Non-return valve, PVC body, EPDM seal | 4 | Amazon | $8–$14 | $32–$56 |
 | PTFE thread seal tape | ½" wide, 260" roll | 4 | Home Depot | $2 | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). 20ft sticks | 4 sticks | Ferguson | $6–$10/stick | $24–$40 |
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft sticks. Filter skid interconnects and IBC fill/drain lines only | 2 sticks | Ferguson | $12–$18/stick | $24–$36 |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft stick. Filter outlet to DV-01 and IBC fill/drain lines only | 1 stick | Ferguson | $12–$18/stick | $12–$18 |
 | [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
 | [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
 | [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
 
-**Valves, fittings & pipe subtotal: ~$520–$843**
+**Valves, fittings & pipe subtotal: ~$502–$815**
 
 ### Processing tray
 
@@ -249,7 +248,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $2,822–$4,346**
+**Section total: $3,009–$4,600**
 
 ---
 
@@ -578,7 +577,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
 | **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle | Online |
 | **[McNichols](https://www.mcnichols.com)** | Press-locked steel grating, clips | Online / Multiple branches |
-| **[Ronaqua](https://www.ronaqua.com)** | GAC carbon filter cartridges | Online |
+| **[Purcooflow](https://www.purcooflow.com)** | 3-stage combo filter units, replacement cartridges | Online |
 | **[Grainger](https://www.grainger.com)** | Industrial supply — local branches throughout SoCal | Multiple SoCal branches |
 | **[Lenox Laser](https://www.lenoxlaser.com)** | Custom precision laser-drilled pinholes | Glen Arm, MD |
 | **[Portacool](https://www.portacool.com)** | 12V DC evaporative coolers | Online |

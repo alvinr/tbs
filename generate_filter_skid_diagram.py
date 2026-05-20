@@ -853,10 +853,6 @@ title_block(ax_tb, "SHEET 1 OF 1",
             doc_id="TBS-001 · Water System — 3-Stage Combo Filter Unit Detail",
             height=0.75)
 
-# ── Copyright ────────────────────────────────────────────────────────────────
-fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",
-         ha="right", va="bottom", fontsize=6.0, color="#888888", style="italic")
-
 # ── Save ─────────────────────────────────────────────────────────────────────
 import os
 os.makedirs("diagrams", exist_ok=True)

@@ -19,7 +19,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
-| 5. Print washing — water system | $2,661 | $4,020 |
+| 5. Print washing — water system | $2,822 | $4,346 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
@@ -29,7 +29,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,400** | **~$22,075** |
+| **TOTAL (base build + 50-print run)** | **~$16,560** | **~$22,400** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -146,7 +146,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit |
 |------|------|-----|----------|-----------|
-| [PA-14 linear actuator](https://www.progressiveautomations.com/products/linear-actuator-pa-14) | 12V, 20" stroke, 150 lb | 4 | [Progressive Automations](https://www.progressiveautomations.com) | $185 |
+| [PA-14 linear actuator](https://www.progressiveautomations.com) | 12V, 20" stroke, 150 lb | 4 | [Progressive Automations](https://www.progressiveautomations.com) | $185 |
 | 12V 30A power supply | Enclosed | 1 | [Mouser](https://www.mouser.com) / Digi-Key | $55 |
 | DPDT momentary rocker switch | Panel-mount, 20A | 4 | [Mouser](https://www.mouser.com) | $8 |
 
@@ -168,9 +168,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|-------|
 | [IBC tote 275 gal, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | HDPE cage, DN50 butterfly valve (S60×6) — Blue (×2), Brown (×1), Waste (×1) | 4 | Container Exchanger | $80–$150 | $320–$600 |
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External drain/fill port, welded through container wall | 4 | McMaster-Carr | $25–$40 | $100–$160 |
-| Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports | 2 | Metal Supermarkets SoCal | $8–$12 | $16–$24 |
+| Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports (one per fitting) | 4 | Metal Supermarkets SoCal | $8–$12 | $32–$48 |
 
-**Storage subtotal: ~$372–$674**
+**Storage subtotal: ~$388–$698**
 
 ### Pumps
 
@@ -178,9 +178,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|-------|
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, ½" NPSM ports (P-01, P-02, P-04 manifold + P-03 IBC corridor) | 4 | Amazon | $55–$70 | $220–$280 |
 | [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, ½" MNPT | 1 | Amazon | $25–$45 | $35 |
-| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series | 3 | Amazon | $8–$12 | $30 |
+| [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | $32–$48 |
 
-**Pump subtotal: ~$165–$195**
+**Pump subtotal: ~$167–$203**
 
 ### Filter skid
 
@@ -198,25 +198,28 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3, plus spares | 11 | Amazon | $10–$16 | $110–$176 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.amazon.com/s?k=banjo+1%2F2+inch+ball+valve+polypropylene) | Polypropylene, full-port, quarter-turn. BV-01, BV-02, plus spares | 4 | Amazon | $6–$10 | $24–$40 |
+| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3 (IBC fill/drain valves) | 7 | Amazon | $10–$16 | $70–$112 |
 | [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | $8–$12 |
-| [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible | 2 | Amazon | $18–$30 | $40–$60 |
+| [3-way diverter valve 1/2" FNPT](https://www.amazon.com/s?k=1%2F2+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-02 (tray drain) | 1 | Amazon | $12–$22 | $12–$22 |
+| [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output) | 1 | Amazon | $18–$30 | $18–$30 |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | $35–$50 |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow (trunk lines) | 10 | Amazon | $3–$5 | $30–$50 |
-| [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | Pump manifold internal bends | 8 | Amazon | $2–$4 | $16–$32 |
-| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene | 8 | Amazon | $4–$6 | $35–$50 |
-| [1" NPT polypropylene union](https://www.amazon.com/s?k=1+inch+NPT+polypropylene+union) | Maintenance disconnects on trunk lines | 6 | Amazon | $6–$10 | $40–$60 |
-| [1"×1/2" NPT bushing reducer](https://www.amazon.com/s?k=1+inch+1%2F2+inch+NPT+bushing+reducer+polypropylene) | Trunk-to-manifold transitions at pump frame | 4 | Amazon | $3–$5 | $12–$20 |
+| [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | $28–$56 |
+| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. Filter skid interconnects, IBC fill/drain bends | 6 | Amazon | $3–$5 | $18–$30 |
+| [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | $12–$24 |
+| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | $16–$24 |
+| [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | Maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | $24–$36 |
+| [1/2"×1" NPT bushing reducer](https://www.amazon.com/s?k=1%2F2+inch+to+1+inch+NPT+bushing+reducer+polypropylene) | P-02 riser to F1 filter inlet | 1 | Amazon | $3–$5 | $3–$5 |
 | [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 valve to 1" HDPE pipe | 8 | Amazon | $8–$15 | $64–$120 |
 | [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Non-return valve, PVC body, EPDM seal | 4 | Amazon | $8–$14 | $32–$56 |
 | PTFE thread seal tape | ½" wide, 260" roll | 4 | Home Depot | $2 | $8 |
-| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft sticks (trunk lines) | 4 sticks | Ferguson | $12–$18/stick | $48–$72 |
-| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | Pump manifold internal runs | 1 stick | Ferguson | $6–$10/stick | $6–$10 |
+| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). 20ft sticks | 4 sticks | Ferguson | $6–$10/stick | $24–$40 |
+| [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20ft sticks. Filter skid interconnects and IBC fill/drain lines only | 2 sticks | Ferguson | $12–$18/stick | $24–$36 |
 | [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
 | [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
 | [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
 
-**Valves, fittings & pipe subtotal: ~$404–$592**
+**Valves, fittings & pipe subtotal: ~$520–$843**
 
 ### Processing tray
 
@@ -226,7 +229,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Fabrication (cut, brake, weld, press sump) | Two tray halves: 2,229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
 | [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
-| [1/2" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump to pump manifold (matches pump port) | 1 | Amazon | $8–$15 | $12 |
+| [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | $15 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
 | [M6×16 SS hex bolts + flange nuts](https://www.mcmaster.com/92196A150) | Center flange, 200mm spacing | 24 | McMaster-Carr | $0.50 each | $12 |
 
@@ -246,7 +249,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $2,661–$4,020**
+**Section total: $2,822–$4,346**
 
 ---
 
@@ -259,11 +262,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [Solar panels, 200W monocrystalline](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 12V nominal | 3 | [Renogy](https://www.renogy.com) | ~$400 total |
-| [Victron SmartSolar MPPT 100/50](https://www.altestore.com/store/charge-controllers/solar-charge-controllers/mppt-solar-charge-controllers/victron-smartsolar-mppt-charge-controllers/) | MPPT charge controller | 1 | [altE Store](https://www.altestore.com) | ~$200 |
+| [Victron SmartSolar MPPT 100/50](https://www.altestore.com) | MPPT charge controller | 1 | [altE Store](https://www.altestore.com) | ~$200 |
 | [LiFePO4 battery 100Ah 12V](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | Renogy Smart Lithium or Battle Born | 2 | [Renogy](https://www.renogy.com) | ~$700 total |
-| [Victron Blue Smart IP65 12/15](https://www.altestore.com/store/chargers/battery-chargers/victron-blue-smart-ip65-chargers/) | Shore backup charger | 1 | [altE Store](https://www.altestore.com) | ~$150 |
+| [Victron Blue Smart IP65 12/15](https://www.altestore.com) | Shore backup charger | 1 | [altE Store](https://www.altestore.com) | ~$150 |
 | NEMA 5-15R inlet (weatherproof) | Mounted in flush-mount power panel | 1 | Amazon | ~$25 |
-| [Solar panel ground mount frame](https://www.renogy.com/solar-panel-mounting/) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
+| [Solar panel ground mount frame](https://www.renogy.com) | Tilt frame, 30° | 1 | [Renogy](https://www.renogy.com) | ~$80 |
 | PV cable 10 AWG | MC4 connectors | 1 lot | Amazon | ~$30 |
 | Aluminum plate 340×240×3mm | Flush-mount face plate, power panel | 1 | [Online Metals](https://www.onlinemetals.com) | ~$18 |
 | Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr | ~$6 |
@@ -282,7 +285,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Wiring kit — 12/14/16/18 AWG | 50ft each color, tinned copper | 1 kit | [Waytek Wire](https://www.waytekwire.com) / Amazon | ~$80 |
 | 2/0 AWG cable | Battery–fuse–busbar, 3ft | 1 lot | Amazon | ~$30 |
 | [Anderson Powerpole connectors 30A](https://powerwerx.com/anderson-powerpole-connectors) | 50 pairs | 1 kit | [Powerwerx](https://powerwerx.com) | ~$40 |
-| [Deutsch DT connectors 2-pin](https://www.waytekwire.com/products/connectors/deutsch-connectors/deutsch-dt-connectors/) | Exterior penetrations, IP67 | 10 sets | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
+| [Deutsch DT connectors 2-pin](https://www.waytekwire.com) | Exterior penetrations, IP67 | 10 sets | [Waytek Wire](https://www.waytekwire.com) | ~$30 |
 | 40×25mm PVC cable trunking | 5m lengths | 4 | McMaster-Carr | ~$40 |
 | [10mm corrugated conduit](https://www.mcmaster.com/7828K48) | Drop conduits to devices | 10m | McMaster-Carr #7828K48 | ~$30 |
 | [Brady M210 wire label kit](https://www.amazon.com/s?k=Brady+M210+label+printer+wire) | Wire label cartridge | 1 | Amazon | ~$80 |
@@ -564,7 +567,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | **[Roton Products](https://www.roton.com)** | Acme leadscrews and nuts, cut to length | Ships from LA area |
 | **[Renogy](https://www.renogy.com)** | Solar panels, MPPT controllers, LiFePO4 batteries | Online |
 | **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
-| **[Battle Born Batteries](https://www.battleborncotteries.com)** | 100Ah LiFePO4 12V | Online |
+| **[Battle Born Batteries](https://battlebornbatteries.com)** | 100Ah LiFePO4 12V | Online |
 | **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |
 | **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, automotive wire | Online |
 | **[West Marine](https://www.westmarine.com)** | Blue Sea fuse blocks, marine DC wiring | Torrance CA |

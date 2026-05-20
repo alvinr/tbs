@@ -304,7 +304,7 @@ def sheet1():
 
     # D-ring label (one leader for all)
     leader(ax, sx(near_col_r + FRAME_RHS + 20), sy(FRAME_RHS * 1.5),
-           sx(near_col_r + FRAME_RHS + 60), sy(FRAME_RHS * 1.5 + 120),
+           sx(near_col_r + FRAME_RHS + CORRIDOR_W), sy(FRAME_RHS * 1.5 + 120),
            f"D-RING LASHING POINT\n25mm, {DRING_WLL}kg WLL\n8x TOTAL (4 PER TIER)\nMcMaster #3641T29",
            color=dring_color, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -322,7 +322,7 @@ def sheet1():
                                  fc="#C04040", ec=C_OUT, lw=0.5, zorder=12))
 
     leader(ax, sx(BLUE_IBC_Y + FRAME_RHS + gate_w / 2), sy(GATE_H),
-           sx(BLUE_IBC_Y + FRAME_RHS + gate_w / 2 - 50), sy(GATE_H + 100),
+           sx(BLUE_IBC_Y + FRAME_RHS + gate_w / 2 - 50), sy(GATE_H + 50),
            f"ACCESS GATE (x2)\nREMOVABLE PANEL\nH=0-{GATE_H}mm\n4x M{GATE_BOLT_D} BOLTS\n(DRAIN VALVE ACCESS)",
            color="#C04040", fs=6,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -330,7 +330,7 @@ def sheet1():
     # ── Labels ────────────────────────────────────────────────────────────────
     # Frame label
     leader(ax, sx(near_col_r + FRAME_RHS / 2), sy(IBC_H_600 / 2),
-           sx(near_col_r + FRAME_RHS + 60), sy(IBC_H_600 / 2 + 50),
+           sx(near_col_r + FRAME_RHS + 20), sy(IBC_H_600 / 2 + 50),
            f"STACKING FRAME\n50x50x3mm RHS\nMILD STEEL\n~{FRAME_WEIGHT}kg",
            color=C_FRAME, fs=6.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
@@ -466,7 +466,7 @@ def sheet2():
             "FAR WALL (Yd=2,362)", ha="center", va="bottom",
             fontsize=6, color=C_DIM, **FONT)
     ax.text(px(C_LEN + WALL_T + 10), py(C_WID / 2),
-            f"SEALED END WALL\n(X={C_LEN}mm)", ha="left", va="center",
+            f"SEALED END WALL (X={C_LEN}mm)", ha="left", va="center",
             fontsize=6.5, color=C_DIM, fontweight="bold", **FONT, rotation=90)
 
     # Arrow showing direction toward cargo door
@@ -565,7 +565,7 @@ def sheet2():
     ax.add_patch(Circle((px(C_LEN), py(panel_yd)),
                          px(PORT_DIA / 2), fc=C_PORT, ec=C_OUT,
                          lw=1.5, zorder=12))
-    ax.text(px(C_LEN + 50), py(panel_yd),
+    ax.text(px(C_LEN + 75), py(panel_yd),
             "PLUMBING PANEL\n4x 2\" NPT\n(CENTERLINE)",
             ha="left", va="center", fontsize=5.5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
@@ -596,12 +596,12 @@ def sheet2():
 
     # IBC width (along X) — horizontal dimension
     draw_dim_h(ax, px(IBC_COL_X), px(IBC_COL_X + IBC_W),
-               py(IBC_FAR_Y + IBC_D + 80),
+               py(IBC_FAR_Y + IBC_D + 120),
                f"{IBC_W}mm IBC WIDTH", offset=py(5), fs=6, font=FONT)
 
     # Container width (along Yd) — frame spans wall-to-wall
-    draw_dim_v(ax, px(frame_x_r + 60), py(0), py(C_WID),
-               f"{C_WID}mm (WALL TO WALL)", offset=px(5), fs=6, right=True, font=FONT)
+    draw_dim_v(ax, px(frame_x_r + 225), py(0), py(C_WID),
+               f"{C_WID}mm (WALL TO WALL)", offset=px(10), fs=6, right=True, font=FONT)
 
     # Distance from near wall to IBC
     draw_dim_v(ax, px(IBC_COL_X - 120), py(0), py(BLUE_IBC_Y),
@@ -1197,7 +1197,7 @@ def sheet4():
                             fc=C_STEEL, ec=C_OUT, lw=1.5, alpha=0.3,
                             hatch="...", zorder=5))
     leader(ax, sx(plate_yd), sy(plate_z + plate_h / 2),
-           sx(plate_yd - 80), sy(plate_z + plate_h / 2 + 100),
+           sx(plate_yd - 180), sy(plate_z + plate_h / 2 + 100),
            f"REINFORCING PLATE\n6mm MILD STEEL\n{plate_w}x{plate_h}mm\nWELDED TO WALL",
            color=C_STEEL, fs=6,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
@@ -1275,7 +1275,7 @@ def sheet4():
         "6. Interior connections routed through plumbing corridor (see Sheet 5).",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 350), spacing=sy(18),
-               fs=6.5, font=FONT, width=7500)
+               fs=6.5, font=FONT, width=5000)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1510,7 +1510,7 @@ def sheet5():
     ax.add_patch(Rectangle((px(IBC_COL_X - 65), py(corr_yd_lo)),
                             px(IBC_W + 130), py(corr_yd_hi - corr_yd_lo),
                             fc=C_CL, ec="none", alpha=0.08, zorder=4))
-    ax.text(px(IBC_COL_X + IBC_W / 2), py(corr_cx),
+    ax.text(px(IBC_COL_X + IBC_W * 0.1), py(corr_cx),
             f"PLUMBING CORRIDOR\n{CORRIDOR_W}mm",
             ha="center", va="center", fontsize=7, color=C_CL,
             fontweight="bold", **FONT, zorder=10)
@@ -1635,7 +1635,7 @@ def sheet5():
     ax.plot(px(drain_x), py(p03_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
     ax.text(px(drain_x), py(p03_plan_yd), "P", ha="center", va="center",
             fontsize=5, color="white", fontweight="bold", zorder=13)
-    ax.text(px(drain_x - 40), py(p03_plan_yd),
+    ax.text(px(drain_x + 60), py(p03_plan_yd),
             "P-03", ha="right", va="center", fontsize=5.5, color=C_PUMP,
             **FONT, zorder=15)
 
@@ -1658,7 +1658,7 @@ def sheet5():
     ax.plot(px(drain_x), py(p05_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
     ax.text(px(drain_x), py(p05_plan_yd), "P", ha="center", va="center",
             fontsize=5, color="white", fontweight="bold", zorder=13)
-    ax.text(px(drain_x - 40), py(p05_plan_yd),
+    ax.text(px(drain_x + 60), py(p05_plan_yd),
             "P-05", ha="right", va="center", fontsize=5.5, color=C_PUMP,
             **FONT, zorder=15)
 
@@ -2221,22 +2221,22 @@ def sheet6():
 
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
-           sx(BLUE_IBC_Y - 20), sy(EXT_FILL_1_H + 80),
+           sx(BLUE_IBC_Y + IBC_D * 0.7), sy(EXT_FILL_1_H + 80),
            "F1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(f2_fill_yd), sy(EXT_FILL_2_H),
-           sx(IBC_FAR_Y + IBC_D + 20), sy(EXT_FILL_2_H + 80),
+           sx(IBC_FAR_Y + IBC_D * 0.3), sy(EXT_FILL_2_H + 80),
            "F2 → IBC-2 FILL CAP\n(DN150, TOP FAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(near_col_r), sy(drain_conn_z),
-           sx(BLUE_IBC_Y - 20), sy(drain_conn_z - 80),
+           sx(BLUE_IBC_Y + IBC_D * 0.7), sy(drain_conn_z - 80),
            "D3 ← IBC-3 VALVE\n(DN50, S60×6, BROWN\nBOTTOM NEAR)\n1\" HDPE",
            color=C_PIPE_BROWN, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
     leader(ax, sx(far_col_l), sy(drain_conn_z),
-           sx(IBC_FAR_Y + IBC_D + 20), sy(drain_conn_z - 80),
+           sx(IBC_FAR_Y + IBC_D * 0.5), sy(drain_conn_z - 80),
            "D4 ← IBC-4 VALVE\n(DN50, S60×6, WASTE\nBOTTOM FAR)\n1\" HDPE",
            color=C_PIPE_BLACK, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
@@ -2327,7 +2327,7 @@ def sheet6():
                            (EXT_DRAIN_3_H, f"D3: {EXT_DRAIN_3_H}mm"),
                            (EXT_DRAIN_4_H, f"D4: {EXT_DRAIN_4_H}mm")]:
         draw_dim_v(ax, sx(dim_yd), sy(0), sy(port_z),
-                   label, offset=sx(5), fs=5.5, right=True, font=FONT)
+                   label, offset=sx(10), fs=5.5, right=True, font=FONT)
         dim_yd += 50
 
     # Container interior width

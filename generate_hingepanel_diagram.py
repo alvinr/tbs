@@ -971,8 +971,8 @@ def sheet3():
                 color=C_OUT, lw=0.6, zorder=5)
 
     leader(ax, (WK_START + (WK_END - WK_START) / 2, WALKWAY_H + 5),
-           (WK_START + (WK_END - WK_START) / 2 + 130, WALKWAY_H + 100),
-           f"WALKWAY DECK\n{WALKWAY_GRATE_T}mm GRATE AT Z={WALKWAY_H}mm\n(NEAR + FAR WALLS)",
+           (WK_START + (WK_END - WK_START) / 2 + 300, WALKWAY_H + 200),
+           f"WALKWAY DECK\n{WALKWAY_GRATE_T}mm GRATE AT\nZ={WALKWAY_H}mm\n(NEAR + FAR WALLS)",
            col=C_WALKWAY, fs=5.5)
 
     # Walkway deck height dimension

@@ -413,11 +413,11 @@ def sheet2():
 
     # Corrugation depth
     draw_dim_h(ax, sx(-CORR_DEPTH), sx(0), sy(-22),
-               f"{CORR_DEPTH}mm\nCORR", offset=sy(14), fs=6, above=False, font=FONT)
+               f"{CORR_DEPTH}mm\nCORR", offset=sy(10), fs=6, above=False, font=FONT)
 
     # Wall to tray rim
-    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-45),
-               f"{TRAY_RIM_YD}mm", offset=sy(14), fs=6, above=False, font=FONT)
+    draw_dim_h(ax, sx(0), sx(TRAY_RIM_YD), sy(-35),
+               f"{TRAY_RIM_YD}mm", offset=sy(10), fs=6, above=False, font=FONT)
 
     # ── Operator shoes (pair, US size 9 = ~270mm long × 100mm wide) ────────
     # In this cross-section (looking along X), shoes appear as their width
@@ -1235,7 +1235,7 @@ def sheet4():
             zz, color=C_OUT, lw=1.0, zorder=5)
     # Tray rim label
     leader(ax, sx(tray_x - 5), sy(PROC_TRAY_RIM / 2 + 10),
-           sx(tray_x - 30), sy(PROC_TRAY_RIM + 15),
+           sx(tray_x - 70), sy(PROC_TRAY_RIM + 15),
            f"TRAY RIM\n{PROC_TRAY_RIM}mm\n(304 SS)", color=C_TRAY, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -1271,8 +1271,8 @@ def sheet4():
                             sx(tray_x + 20 - OUTER_LEG_X + LEG_W / 2), sy(5),
                             fc=C_SUPPORT, ec=C_OUT, lw=0.6, alpha=0.5, zorder=5))
     # Leg label
-    leader(ax, sx(OUTER_LEG_X - LEG_W), sy(LEG_TOP / 2),
-           sx(OUTER_LEG_X - 45), sy(LEG_TOP / 2 - 15),
+    leader(ax, sx(OUTER_LEG_X - LEG_W/2), sy(LEG_TOP / 2),
+           sx(OUTER_LEG_X - 55), sy(LEG_TOP / 2),
            f"FLOOR LEG\n(\u00d7{LEFT_WK_LEG_N}, REMOVABLE)\nON BARE FLOOR\nSEE SHEET 6",
            color=C_SUPPORT, fs=5,
            ha="center", va="top", arrow_style="-|>", font=FONT)
@@ -1293,7 +1293,7 @@ def sheet4():
                             sy(BEAM_SZ - 2 * LEFT_WK_BEARER_T),
                             fc="#F0E0C8", ec=C_OUT, lw=0.4, alpha=0.5, zorder=6))
     leader(ax, sx(LEFT_WK_R + BEAM_SZ / 2 + 2), sy(beam_bot + BEAM_SZ / 2),
-           sx(LEFT_WK_R + BEAM_SZ / 2 + 40), sy(beam_bot + 30),
+           sx(LEFT_WK_R + BEAM_SZ / 2 + 40), sy(beam_bot + 20),
            f"BEARER BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{LEFT_WK_BEARER_T}mm\nAl RHS\n"
            f"SPANS {WALKWAY_LEFT_SPAN}mm\nALONG Yd\n(REMOVABLE)",
            color=C_SUPPORT, fs=5,
@@ -1484,7 +1484,7 @@ def sheet4():
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(LEFT_WK_R + 200)
+    notes_x = sx(LEFT_WK_R + 150)
     notes_top = sy(Z_HI - 5)
     leg_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1))
     notes = [
@@ -1496,7 +1496,7 @@ def sheet4():
         f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to near walkway bracket (X={LEFT_WK_R}).",
         f"6. Remove cradles + grating before panel slides.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(450), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(320), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1616,7 +1616,7 @@ def sheet5():
         ax.plot([sx(tray_x - TRAY_WALL + 1), sx(tray_x + STRIP_H - 1)],
                 [sy(strip_bot + dz), sy(strip_bot + dz - 3)],
                 color=C_OUT, lw=0.3, alpha=0.4, zorder=7)
-    leader(ax, sx(tray_x + STRIP_H / 2), sy(strip_bot + STRIP_H / 2),
+    leader(ax, sx(tray_x - STRIP_H * 0.7), sy(strip_bot + STRIP_H / 2 + 12),
            sx(tray_x + STRIP_H / 2 - 40), sy(strip_bot + STRIP_H + 18),
            f"BEARING STRIP\n25\u00d725\u00d73mm Al ANGLE\nON TRAY RIM\n(REMOVABLE)",
            color=C_SUPPORT, fs=6,

@@ -254,14 +254,14 @@ def sheet1():
                 alpha=WK_ALPHA, zorder=6)
 
     leader(ax, WK_X + 200, WALKWAY_H + 5,
-           WK_X + 200, WALKWAY_H + 100,
+           WK_X + 400, WALKWAY_H + 100,
            f"LEFT WALKWAY\n{WALKWAY_GRATE_T}mm GRATE · DECK AT {WALKWAY_H}mm\n(REMOVABLE — MUST LIFT OUT\nBEFORE PANEL SLIDES)",
            color=C_WALKWAY, fs=5.5,
            ha="center", arrow_style="-|>", font=FONT)
 
     # Walkway deck height dimension
     draw_dim_v(ax, WK_X - 30, 0, WALKWAY_H,
-              f"{WALKWAY_H}mm DECK", offset=15, perpendicular=True, fs=6,
+              f"{WALKWAY_H}mm\nDECK", offset=15, perpendicular=True, fs=6,
               color=C_WALKWAY, right=False, font=FONT)
 
     # ── Clearance annotation — the key dimension ─────────────────────────────

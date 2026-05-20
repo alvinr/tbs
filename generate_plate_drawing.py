@@ -883,7 +883,7 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-draw_notes(ax2, notes2, 10, 70, spacing=5, fs=6.5, width=465)
+draw_notes(ax2, notes2, 10, 70, spacing=5, fs=6.5, width=680)
 
 plt.tight_layout(pad=0)
 plt.figtext(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

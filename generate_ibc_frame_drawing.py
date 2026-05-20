@@ -1172,7 +1172,7 @@ def sheet3():
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
     draw_notes(ax, notes, px(X_HI * 0.35), py(YD_LO + 510), spacing=py(16),
-               fs=5.5, font=FONT, width=px(975))
+               fs=5.5, font=FONT, width=px(1500))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

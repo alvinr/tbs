@@ -329,6 +329,7 @@ def sheet1():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
+        "NOTES:",
         f"1. Panel suspended from HGR20 ceiling rail — bottom edge {PANEL_FLOOR_GAP}mm above floor.",
         f"2. Processing tray rim = {PROC_TRAY_RIM}mm. Clearance above rim = {clr}mm (panel clears in transport).",
         f"3. EPDM perimeter seal engages fixed door frame when panel at X=0 (operational).",
@@ -339,7 +340,7 @@ def sheet1():
     draw_notes(ax, notes, X_LO + 30, Z_LO + 30 + (len(notes) - 1) * 22,
                spacing=22, fs=5.5, title_fs=5.5, color=C_DIM,
                title_color=C_DIM, font=FONT,
-               width=(X_HI - X_LO) * 0.65)
+               width=(X_HI - X_LO) * 0.95)
 
     # ── Legend ────────────────────────────────────────────────────────────────
     legend_x = X_HI - 240

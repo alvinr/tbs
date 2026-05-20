@@ -2261,7 +2261,7 @@ def sheet6():
     leg_box_x = leg_x - sx(10)
     leg_box_top = leg_top + leg_spacing * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_spacing + leg_spacing * 0.3
-    leg_box_w = sx(770)
+    leg_box_w = sx(847)
     ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
                             leg_box_top - leg_box_bot,
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))

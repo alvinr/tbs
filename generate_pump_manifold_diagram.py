@@ -1419,13 +1419,17 @@ draw_dim_v(ax3, sp_x(FRAME_X - 30), sp_y(MANIFOLD_DEPTH), sp_y(0),
            f"{MANIFOLD_DEPTH}mm\nDEPTH", offset=0.25, fs=4.5)
 
 
-# ── Title block ──────────────────────────────────────────────────────────────
-title_block(ax, "SHEET 1 OF 1",
+# ── Title block (full-width axes spanning all columns) ───────────────────────
+ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.06])
+ax_tb.set_xlim(0, 1)
+ax_tb.set_ylim(0, 1)
+ax_tb.axis("off")
+title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="PUMP MANIFOLD — PLUMBING ELEVATION",
             subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0)",
             scale_note="ELEV 1:5  |  DETAIL A ~1:4.5  |  DETAIL B (PLAN) ~1:5.5  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Pump Manifold Detail",
-            height=0.06)
+            height=0.75)
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

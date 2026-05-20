@@ -840,13 +840,17 @@ ax2.text(sb_y(90), sb_z(-315),
          "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO WALL AT PORT HEIGHT",
          ha="center", va="top", fontsize=6, color="#666666", style="italic")
 
-# ── Title block ──────────────────────────────────────────────────────────────
-title_block(ax, "SHEET 1 OF 1",
+# ── Title block (full-width axes spanning both columns) ──────────────────────
+ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.06])
+ax_tb.set_xlim(0, 1)
+ax_tb.set_ylim(0, 1)
+ax_tb.axis("off")
+title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="FILTER SKID — PLUMBING ELEVATION",
             subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0) — MATCHES COMBINED ELEVATION",
             scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Filter Skid Detail",
-            height=0.05)
+            height=0.75)
 
 # ── Copyright ────────────────────────────────────────────────────────────────
 fig.text(0.99, 0.005, "© 2026 Alvin Richards — GNU AGPLv3",

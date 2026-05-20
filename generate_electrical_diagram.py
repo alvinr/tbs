@@ -23,7 +23,7 @@ from tbs_constants import (
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 C_OUT   = "#1A1A1A"
@@ -886,13 +886,10 @@ def draw_sheet2():
         ax.text(KX+0.65, ky-0.12, spec,
                 ha="left", va="center", fontsize=7.5, color=C_DIM)
 
-    # ── Drawing notes — stacked vertically, right-aligned under component key ─
-    import textwrap
-    NOTE_W = 6.2     # box width (drawing units)
-    NX = KX          # align left edge with component key
-    NY = 0.30
+    # ── Drawing notes ──────────────────────────────────────────────────────────
     notes = [
-        f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentred on new film plane). "
+        "DRAWING NOTES:",
+        f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentered on new film plane). "
         f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm. f/1088.",
         f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), "
         f"Right X={FP_X_R}\u20135,893mm (IBCs only). Evap cooler on pinhole wall (Yd=0, "
@@ -904,31 +901,8 @@ def draw_sheet2():
         "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched "
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
-    # Wrap each note and measure total height
-    WRAP_CHARS = 120
-    NOTE_FS = 6.5
-    LINE_SP = 0.20
-    NOTE_PAD = 0.12
-    wrapped_lines = []
-    for note in notes:
-        lines = textwrap.wrap(note, width=WRAP_CHARS)
-        wrapped_lines.append(lines)
-    total_lines = sum(len(ls) for ls in wrapped_lines) + len(notes) - 1  # +gaps between notes
-    box_h = 0.35 + total_lines * LINE_SP + 2 * NOTE_PAD
-
-    ax.add_patch(FancyBboxPatch((NX - 0.10, NY - NOTE_PAD), NOTE_W, box_h,
-                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(NX + 0.05, NY + box_h - NOTE_PAD - 0.15, "DRAWING NOTES:",
-            ha="left", va="center", fontsize=7.5,
-            fontweight="bold", color=C_OUT)
-    cy = NY + box_h - NOTE_PAD - 0.40
-    for ni, lines in enumerate(wrapped_lines):
-        for line in lines:
-            ax.text(NX + 0.05, cy, line,
-                    ha="left", va="center", fontsize=NOTE_FS, color=C_DIM)
-            cy -= LINE_SP
-        if ni < len(wrapped_lines) - 1:
-            cy -= LINE_SP * 0.4  # small gap between notes
+    draw_notes(ax, notes, KX, 1.8, spacing=0.20,
+               fs=6.5, width=6.0, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1330,47 +1304,21 @@ def draw_sheet3():
                 ha="left", va="center", fontsize=6.5, color=C_DIM)
 
     # ── Drawing notes ─────────────────────────────────────────────────────────
-    import textwrap
-    NX = KX
-    NOTE_W = 6.0
     notes = [
+        "DRAWING NOTES:",
         "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. "
         "All equipment is wall-mounted or floor-standing on the pinhole wall face.",
-        "2. Cable trunking runs horizontally at the ceiling corner rail (Z≈2,363mm). "
+        "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482,363mm). "
         "Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1,500mm above "
         "walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. "
         "Connected to Circuit G via trunking. Non-operational only.",
     ]
-    WRAP_CHARS = 100
-    NOTE_FS = 6.5
-    LINE_SP = 0.20
-    NOTE_PAD = 0.12
-    wrapped_lines = []
-    for note in notes:
-        lines = textwrap.wrap(note, width=WRAP_CHARS)
-        wrapped_lines.append(lines)
-    total_lines = sum(len(ls) for ls in wrapped_lines) + len(notes) - 1
-    box_h = 0.35 + total_lines * LINE_SP + 2 * NOTE_PAD
-
-    # Position notes box directly below component key
     key_bottom = KY - 0.25 - (len(key_items) - 1) * 0.55 - 0.30
-    NY = key_bottom - box_h
-
-    ax.add_patch(FancyBboxPatch((NX - 0.10, NY - NOTE_PAD), NOTE_W, box_h,
-                 boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
-    ax.text(NX + 0.05, NY + box_h - NOTE_PAD - 0.15, "DRAWING NOTES:",
-            ha="left", va="center", fontsize=7.5,
-            fontweight="bold", color=C_OUT)
-    cy = NY + box_h - NOTE_PAD - 0.40
-    for ni, lines in enumerate(wrapped_lines):
-        for line in lines:
-            ax.text(NX + 0.05, cy, line,
-                    ha="left", va="center", fontsize=NOTE_FS, color=C_DIM)
-            cy -= LINE_SP
-        if ni < len(wrapped_lines) - 1:
-            cy -= LINE_SP * 0.4
+    notes_y_top = key_bottom - 0.3
+    draw_notes(ax, notes, KX, notes_y_top, spacing=0.20,
+               fs=6.5, width=6.0, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

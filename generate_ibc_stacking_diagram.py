@@ -2254,14 +2254,14 @@ def sheet6():
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = sx(YD_LO + 20)
     leg_top = sy(C_HGT + 100)
-    leg_spacing = sy(22)
+    leg_spacing = sy(33)
 
     # Legend background box
     n_leg_items = 8  # 4 pipes + cross-section + elbow + tee + check valve
     leg_box_x = leg_x - sx(10)
     leg_box_top = leg_top + leg_spacing * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_spacing + leg_spacing * 0.3
-    leg_box_w = sx(1100)
+    leg_box_w = sx(770)
     ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
                             leg_box_top - leg_box_bot,
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))

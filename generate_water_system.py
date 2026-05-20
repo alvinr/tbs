@@ -968,6 +968,7 @@ ax3.text(drain_dx - 1.5, pipe_y - 0.2,
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
+    "NOTES:",
     f"1. Dual-axis pitch 1:200 — water converges on sump at X={PROC_TRAY_DRAIN_X:,}, Yd={PROC_TRAY_DRAIN_YD}.",
     f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to sump).",
     f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) pressed into tray floor — P-04 suction pickup lifts to IBC-3.",

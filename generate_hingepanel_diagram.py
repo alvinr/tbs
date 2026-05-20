@@ -795,7 +795,7 @@ def sheet2():
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
-                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel", height=0.055)
 
     fig.savefig("diagrams/hingepanel-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet2.png"), bbox_inches="tight", facecolor=BG)
@@ -1201,7 +1201,7 @@ def sheet3():
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel",
-                height=0.09, portrait=True)
+                height=0.05, portrait=True)
 
     fig.savefig("diagrams/hingepanel-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet3.png"), bbox_inches="tight", facecolor=BG)
@@ -1425,18 +1425,18 @@ def sheet4():
     from tbs_constants import PANEL_FLOOR_GAP, PROC_TRAY_RIM
     notes = [
         f"TRANSPORT MODE",
-        f"1.Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
+        f"1. Slide panel inward {SLIDE_P}mm (single slide only — drums eliminated).",
         "2. Light trap drum exterior edge clears door closure plane by 5mm.",
         f"3. Panel suspended from ceiling HGR20 rails — {PANEL_FLOOR_GAP}mm floor gap clears {PROC_TRAY_RIM}mm tray rim.",
         "4. Single-person operation, ~5 minutes per mode conversion.",
         "5. Panel locks: 2× Destaco 207-U toggle clamps per position.",
         "6. See ceiling-rail-sheet1/2 for rail suspension detail.",
     ]
-    notes_x = YD_LO + 25
+    notes_x = YD_LO + 30
     notes_y_top = X_LO + 122 + (len(notes) - 1) * 26
     draw_notes(ax, notes, notes_x, notes_y_top, spacing=26,
                fs=5.5, title_fs=5.5, color=C_DIM, title_color=C_DIM,
-               width=1100, font=FONT)
+               width=1000, font=FONT)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
     legend_x = C_WID + 80
@@ -1460,7 +1460,8 @@ def sheet4():
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
                 scale_note="EQUAL ASPECT  \u00b7  ALL DIMS IN mm  \u00b7  SOLID = OPERATIONAL, GHOST = TRANSPORT",
-                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
+                doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel",
+                height=0.06)
 
     fig.savefig("diagrams/hingepanel-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/hingepanel-sheet4.png"), bbox_inches="tight", facecolor=BG)

@@ -1048,8 +1048,8 @@ notes = [
     "7. Processing tray (304 SS, 50mm rim) sits on shims at Z=20. Sump well at X=2399, pickup tube to P-04 via walkway.",
     "8. All horizontal runs to IBCs enter IBC stack zone (X>4649) — routing within zone not shown.",
 ]
-draw_notes(ax, notes, 0.1 * FW, 0.65 * FH, spacing=0.018 * FH,
-           fs=4.5, width=22, color=C_DIM, title_color=C_DIM, font=FONT)
+draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.012 * FH,
+           fs=4.5, width=4.75, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. TITLE BLOCK

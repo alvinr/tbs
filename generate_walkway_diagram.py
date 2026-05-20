@@ -770,7 +770,6 @@ def sheet1():
     n_brackets_total = n_brackets_near * 2  # near + far only (no right brackets)
     notes = [
         "CONSTRUCTION NOTES:",
-        "",
         f"1. 4 removable grated sections, all {WALKWAY_W}mm wide. Butt joints at all corners.",
         f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
@@ -781,9 +780,9 @@ def sheet1():
         f"5. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"6. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
     ]
-    draw_notes(ax, notes, C_LEN * 3 / 5 + PAD_X,
-               -PAD_Y_BOT + 250 + (len(notes) - 1) * 35,
-               spacing=35, fs=5.5, width=2200, font=FONT)
+    draw_notes(ax, notes, C_LEN * 3 / 5 -50,
+               -PAD_Y_BOT + 350 + (len(notes) - 1) * 35,
+               spacing=35, fs=5.5, width=2600, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -1485,25 +1484,19 @@ def sheet4():
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(near_wk_end + 80)
+    notes_x = sx(LEFT_WK_R + 200)
     notes_top = sy(Z_HI - 5)
     leg_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1))
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
-        "",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
-        f"2. Processing tray side (X={LEFT_WK_R}):",
-        f"   bearer beam {LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm",
-        f"   Al RHS spans {WALKWAY_LEFT_SPAN}mm (sheet 6).",
-        f"3. Cargo door side (X={LEFT_WK_L}): bearing",
-        f"   strip + {LEFT_WK_LEG_N} floor legs at {leg_spacing}mm ctrs.",
-        f"4. ZERO tray contact \u2014 all supports",
-        f"   outside or above processing tray.",
-        f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to",
-        f"   near walkway bracket (X={LEFT_WK_R}).",
+        f"2. Processing tray side (X={LEFT_WK_R}): bearer beam {LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS spans {WALKWAY_LEFT_SPAN}mm (sheet 6).",
+        f"3. Cargo door side (X={LEFT_WK_L}): bearing strip + {LEFT_WK_LEG_N} floor legs at {leg_spacing}mm ctrs.",
+        f"4. ZERO tray contact \u2014 all supports outside or above processing tray.",
+        f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to near walkway bracket (X={LEFT_WK_R}).",
         f"6. Remove cradles + grating before panel slides.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(260), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(320), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1768,26 +1761,18 @@ def sheet5():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     leg_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1))
-    notes_x = sx(X_HI - 5)
+    notes_x = sx(X_LO + 5)
     notes_top = sy(Z_HI - 3)
     notes = [
         "LEFT WALKWAY SUPPORT SYSTEM:",
         "",
-        f"1. BEARER BEAM ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm",
-        f"   Al RHS) at X={LEFT_WK_R}mm spans",
-        f"   {WALKWAY_LEFT_SPAN}mm along Yd. Bolted to",
-        f"   near/far bracket vertical legs.",
-        f"2. {LEFT_WK_LEG_N} FLOOR LEGS at X={OUTER_LEG_X}mm",
-        f"   ({leg_spacing}mm centers) on bare floor",
-        f"   outside processing tray.",
-        f"3. BEARING STRIP (25\u00d725\u00d73mm Al angle)",
-        f"   on tray rim at X={LEFT_WK_L}mm.",
-        f"4. ZERO tray contact \u2014 all supports",
-        f"   outside or above processing tray.",
-        f"5. All supports removable \u2014 lift out",
-        f"   with grating before panel transport.",
+        f"1. BEARER BEAM ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS) at X={LEFT_WK_R}mm spans {WALKWAY_LEFT_SPAN}mm along Yd. Bolted to near/far bracket vertical legs.",
+        f"2. {LEFT_WK_LEG_N} FLOOR LEGS at X={OUTER_LEG_X}mm ({leg_spacing}mm centers) on bare floor outside processing tray.",
+        f"3. BEARING STRIP (25\u00d725\u00d73mm Al angle) on tray rim at X={LEFT_WK_L}mm.",
+        f"4. ZERO tray contact \u2014 all supports outside or above processing tray.",
+        f"5. All supports removable \u2014 lift out with grating before panel transport.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="right", width=sx(200), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="left", width=sx(220), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 6",
@@ -2354,26 +2339,18 @@ def sheet6():
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
     # ── Notes (right of View A) ─────────────────────────────────────────────
-    notes_x = sx(YD_HI - 5)
-    notes_top = sy(BRKT_VERT - 80)
+    notes_x = sx(YD_HI/2)
+    notes_top = sy(BRKT_VERT + 20)
     notes = [
         "BEARER BEAM CONNECTION:",
-        "",
-        f"1. Flat plate ({PLATE_T}mm \u00d7 {PLATE_W}mm wide)",
-        f"   welded to bracket arm.",
-        f"2. Lip ({LIP_T}\u00d7{LIP_H}mm) bent up from",
-        f"   plate edge \u2014 forms pocket.",
-        f"3. Beam ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS)",
-        f"   sits in pocket, against lip.",
-        f"4. Lock block + M{BOLT_DIA} bolt through",
-        f"   {SLOT_L}mm slot in plate.",
-        f"   Washer + nut below plate.",
-        f"5. Slot allows position adjustment",
-        f"   along Yd. Spanner removal.",
-        f"6. Same at both ends",
-        f"   (near + far bracket).",
+        f"1. Flat plate ({PLATE_T}mm \u00d7 {PLATE_W}mm wide) welded to bracket arm.",
+        f"2. Lip ({LIP_T}\u00d7{LIP_H}mm) bent up from plate edge \u2014 forms pocket.",
+        f"3. Beam ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS) sits in pocket, against lip.",
+        f"4. Lock block + M{BOLT_DIA} bolt through {SLOT_L}mm slot in plate. Washer + nut below plate.",
+        f"5. Slot allows position adjustment along Yd. Spanner removal.",
+        f"6. Same at both ends (near + far bracket).",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="right", width=sx(200), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="left", width=sx(140), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",

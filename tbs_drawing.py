@@ -507,7 +507,7 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
 
     n = len(notes)
     box_top = y_top + pad_y
-    box_bot = y_top - (n - 1) * spacing - pad_y
+    box_bot = y_top - (n) * spacing - pad_y
     box_h = box_top - box_bot
 
     # Handle mirrored (inverted) X axis: width extends in reading direction

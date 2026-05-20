@@ -563,13 +563,12 @@ def sheet2():
               right=False, font=FONT)
 
     # ── Component list (far left, compact) ──────────────────────────────────
-    comp_x = -sx(W_RANGE * 1.4)
+    comp_x = -sx(W_RANGE * 1.5)
     comp_top = sy(5)
-    LINE_H = sy(7)   # tighter line spacing
+    LINE_H = sy(6)   # tighter line spacing
 
     comp_lines = [
         "COMPONENT LIST (PER RAIL):",
-        "",
         "1× HGR20 rail, 500mm length",
         "2× HGH20CA carriage blocks",
         "2× Suspension brackets (10mm MS)",
@@ -580,19 +579,19 @@ def sheet2():
     ]
     draw_notes(ax, comp_lines, comp_x, comp_top, spacing=LINE_H,
                fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
-               font=FONT, width=sx(W_RANGE * 1.3))
+               font=FONT, width=sx(W_RANGE * 0.4))
 
     note_lines = [
         "NOTES:",
-        f"• 2 rails total (near + far wall)",
-        f"• Load rating: 12.7 kN per block",
-        f"• Panel mass ≈ 180 kg (4 blocks)",
-        f"• Safety factor > 10×",
+        f"1. 2 rails total (near + far wall)",
+        f"2. Load rating: 12.7 kN per block",
+        f"3. Panel mass ≈ 180 kg (4 blocks)",
+        f"4. Safety factor > 10×",
     ]
     notes_top = comp_top - len(comp_lines) * LINE_H
     draw_notes(ax, note_lines, comp_x, notes_top, spacing=LINE_H,
                fs=5, title_fs=5.5, color=C_DIM, title_color=C_OUT,
-               font=FONT, width=sx(W_RANGE * 1.3))
+               font=FONT, width=sx(W_RANGE * 0.4))
 
     # ── Scale note ───────────────────────────────────────────────────────────
     ax.text(0, -sy(H_RANGE) + sy(10),

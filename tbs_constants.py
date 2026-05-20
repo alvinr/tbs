@@ -218,19 +218,20 @@ FSKID_Z_LO     = 1410    # frame bottom Z above floor (mm) — raised for walkwa
 FSKID_Z_HI     = 2010    # frame top Z above floor (mm)
 FSKID_H        = 600     # frame height (mm)
 
-# Big Blue 4.5"×10" housings (physical dimensions)
+# Big Blue 4.5"×20" housings (physical dimensions — 3-stage combo unit)
+# Purcooflow WHF2045B302 or equivalent: 3 housings side-by-side, integrated manifold
 BB_OD          = 130     # housing outer diameter incl bracket (mm) — 4.5"=114mm + clamp
-BB_H           = 340     # housing total height (mm) — head + sump bowl
+BB_H           = 530     # housing total height (mm) — head + sump bowl (20" sump ~508mm + 70mm head)
 BB_HEAD_H      = 70      # head height (mm) — where 1" NPT ports are
 BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
 
 # Filter center X positions (equally spaced within 850mm inner frame)
 # 3 housings × 130mm OD = 390mm; remaining 460mm ÷ 4 gaps = 115mm each
-F1_X           = 3055    # F1 center X (mm) — 50μ sediment
-F2_X           = 3300    # F2 center X (mm) — 5μ sediment
-F3_X           = 3545    # F3 center X (mm) — GAC carbon
+F1_X           = 3055    # F1 center X (mm) — 5μ MPP sediment
+F2_X           = 3300    # F2 center X (mm) — KDF-55 metal
+F3_X           = 3545    # F3 center X (mm) — CTO carbon
 FILT_HEAD_Z    = 1940    # filter head top Z (mm) — ports at this height
-FILT_SUMP_Z    = 1600    # filter sump bottom Z (mm) — eye level for cartridge inspection
+FILT_SUMP_Z    = 1410    # filter sump bottom Z (mm) — FILT_HEAD_Z - BB_H = 1940 - 530 = 1410
 
 # Filter pipe (1" HDPE Sch40)
 FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)

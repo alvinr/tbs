@@ -278,7 +278,7 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
             fontsize=4.5, fontweight="bold", color=C_FRAME, zorder=8)
 
     # Filter label below housing
-    place_label(ax, sx(cx_mm), sz(body_z_bot - 30), f"{label}\n{filter_type}",
+    place_label(ax, sx(cx_mm), sz(body_z_top - 30), f"{label}\n{filter_type}",
                 component='filter', fontsize=7, color=C_TEXT,
                 dx=0, dy=-0.8, ha='center', va='top')
 
@@ -290,7 +290,7 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
 
 
 # Draw three filter housings (part of integrated combo unit)
-f1_in, f1_out, f_port_z = draw_filter_housing(ax, F1_X, "F1", "5μ MPP SEDIMENT")
+f1_in, f1_out, f_port_z = draw_filter_housing(ax, F1_X, "F1", "5μ MPP\nSEDIMENT")
 f2_in, f2_out, _        = draw_filter_housing(ax, F2_X, "F2", "KDF-55 METAL")
 f3_in, f3_out, _        = draw_filter_housing(ax, F3_X, "F3", "CTO CARBON")
 
@@ -461,8 +461,8 @@ draw_pipe_path(ax,
     OD, WALL)
 
 # Supply annotation at riser entry
-ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 100)),
-            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 30)),
+ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 80)),
+            xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 10)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
 ax.text(sx(RISER_X), sz(RISER_ENTRY_Z - 10),
         "FROM P-02\n(PUMP MANIFOLD\nBELOW)", ha="center", va="top",
@@ -592,29 +592,29 @@ draw_dim_v(ax, sx(PH_TEST_X + 100), sz(FILT_HEAD_Z), sz(MANIFOLD_Z_TOP),
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
-leader(ax, sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO),
-       sx(FSKID_X + FSKID_W / 2), sz(FSKID_Z_LO - 70),
+leader(ax, sx(FSKID_X + FSKID_W * 0.35), sz(FSKID_Z_LO),
+       sx(FSKID_X + FSKID_W * 0.55), sz(FSKID_Z_LO - 120),
        "25×25×3 SLOTTED\nSTEEL ANGLE FRAME", fs=6)
 
 # Backing board
 leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
        sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO - 20),
-       "18mm PLYWOOD\nBACKING BOARD", fs=5.5)
+       "18mm PLYWOOD\nBACKING BOARD", fs=6)
 
 # Manifold head callout
 leader(ax, sx((manifold_x_l + manifold_x_r) / 2), sz(MANIFOLD_Z_TOP),
        sx((manifold_x_l + manifold_x_r) / 2), sz(MANIFOLD_Z_TOP + 90),
-       "INTEGRATED MANIFOLD HEAD\n(Purcooflow WHF2045B302 or equiv.)", fs=5.5)
+       "INTEGRATED MANIFOLD HEAD\n(Purcooflow WHF2045B302 or equiv.)", fs=6)
 
 # Pipe material on inlet riser leg
 leader(ax, sx(RISER_X), sz(RISER_ENTRY_Z + 200),
-       sx(RISER_X - 80), sz(RISER_ENTRY_Z + 300),
-       "1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=5.5)
+       sx(RISER_X - 120), sz(RISER_ENTRY_Z + 300),
+       "1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=6)
 
 # Wall bracket
-leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H / 2),
-       sx(FSKID_X - BRACKET_W / 2 - 140), sz(FSKID_Z_LO + 50 + BRACKET_H / 2 + 60),
-       "L-BRACKET\nTO WALL RIB", fs=5.5)
+leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H * 0.3),
+       sx(FSKID_X - BRACKET_W / 2 - 160), sz(FSKID_Z_LO + 50 + BRACKET_H / 2 + 30),
+       "L-BRACKET\nTO WALL RIB", fs=6)
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
@@ -628,8 +628,8 @@ notes = [
     "7. pH test point: inline tee with removable cap for handheld probe insertion.",
     "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
-draw_notes(ax, notes, sx(FSKID_X+FSKID_W*1.45), sz(1330), spacing=4.5, fs=7,
-           width=160, font={"fontfamily": "monospace"})
+draw_notes(ax, notes, sx(FSKID_X+FSKID_W*1.45), sz(1230), spacing=4.5, fs=7,
+           width=180, font={"fontfamily": "monospace"})
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)

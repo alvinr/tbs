@@ -1030,7 +1030,8 @@ for ix_mm, ilabel in items:
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
     "NOTES",
-    "1. All internal pipe: ½\" HDPE (OD=21mm) except combo filter unit inlet/outlet (1\" NPT). Blue circuit in blue, Brown in brown, Waste/Black in gray.",
+    "1. All internal pipe: ½\" HDPE (OD=21mm) except combo filter unit inlet/outlet (1\" NPT).",
+    "   Blue circuit in blue, Brown in brown, Waste/Black in gray.",
     "2. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict with evap cooler.",
     "3. Chemistry shelf (dashed) is ceiling-hung at Yd=300mm — behind near walkway plane, not on wall face.",
     "4. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",

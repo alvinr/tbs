@@ -1402,15 +1402,15 @@ leader(ax4a, sa_y(tube_yd), sa_z(tube_z_bot + foot_valve_h/2),
        "1\" SS FOOT VALVE\nW/ STRAINER SCREEN", fs=7, color=C_FRAME)
 
 leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
-       sa_y(tube_yd + 90), sa_z(120),
+       sa_y(tube_yd + 90), sa_z(140),
        "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
 leader(ax4a, sa_y(40), sa_z(HOSE_ON_WK),
-       sa_y(-15), sa_z(HOSE_ON_WK + 40),
+       sa_y(45), sa_z(HOSE_ON_WK + 40),
        "1\" REINFORCED SUCTION\nHOSE TO P-04\n(ON WALKWAY SURFACE)", fs=6, color=C_BROWN)
 
-leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/2), sa_z(TRAY_BASE_Z / 2),
-       sa_y(250), sa_z(-30),
+leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/4), sa_z(TRAY_BASE_Z / 2),
+       sa_y(150), sa_z(-30),
        f"SUMP WELL\n({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm)\nBOTTOM ON CONTAINER FLOOR", fs=6.5, color="#0D47A1")
 
 leader(ax4a, sa_y(250), sa_z(water_z_left),
@@ -1422,7 +1422,7 @@ leader(ax4a, sa_y(150), sa_z(WK_DECK_H - WK_GRATE_T/2),
        "WALKWAY GRATING\n(WALL-CANTILEVERED)", fs=6, color="#8D6E63")
 
 leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
-       sa_y(350), sa_z(TRAY_BASE_Z + rim_h + 30),
+       sa_y(350), sa_z(TRAY_BASE_Z + rim_h /2),
        f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\n{PROC_TRAY_SUMP_Z}-{PROC_TRAY_SUMP_Z + PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
 
 # Slope note
@@ -1452,7 +1452,7 @@ ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
 ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
 
 # Panel B title
-ax4b.text(sb_y(250), sb_z(600), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
+ax4b.text(sb_y(250), sb_z(650), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1589,7 +1589,7 @@ draw_pipe_end(ax4b, sb_y(DV_YD_B), sb_z(ELBOW_Z),
 
 # Label
 leader(ax4b, sb_y(DV_YD_B + 20), sb_z(ELBOW_Z),
-       sb_y(120), sb_z(ELBOW_Z + 80),
+       sb_y(50), sb_z(ELBOW_Z + 80),
        f"90° ELBOW TO IBC-3\nVIA WALL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
        color=C_BROWN)
 
@@ -1627,7 +1627,7 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
        "WALKWAY", fs=6.5, color="#8D6E63")
 
 leader(ax4b, sb_y(DV_YD_B), sb_z(P04_Z + pump_r_b + 5),
-       sb_y(100), sb_z(P04_Z + 80),
+       sb_y(80), sb_z(P04_Z + 80),
        "SHURFLO 2088\n12V DC, 3.5 GPM\nSELF-PRIMING", fs=6, color=C_PUMP)
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1707,11 +1707,11 @@ draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(WALL_PIPE_YD),
 
 # ── Elbow labels ────────────────────────────────────────────────────────────
 leader(ax4c, sc_x(X_CENTER + 5), sc_yd(WALL_PIPE_YD),
-       sc_x(X_CENTER + 80), sc_yd(-20),
+       sc_x(X_CENTER + 80), sc_yd(-30),
        "90° ELBOW\n(TURNS UP WALL\nTO P-04)", fs=6, color=C_BROWN)
 
 leader(ax4c, sc_x(X_CENTER + 5), sc_yd(tube_yd),
-       sc_x(X_CENTER + 100), sc_yd(tube_yd + 60),
+       sc_x(X_CENTER + 100), sc_yd(tube_yd + 90),
        "90° ELBOW AT\nPICKUP TUBE", fs=6, color=C_BROWN)
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
@@ -1729,7 +1729,7 @@ leader(ax4c, sc_x(X_CENTER + 30), sc_yd((tube_yd + WALL_PIPE_YD) / 2),
        f"1\" REINFORCED\nSUCTION HOSE\n(OD {HOSE_OD:.0f}mm)\nON WALKWAY SURFACE", fs=6, color=C_BROWN)
 
 leader(ax4c, sc_x(X_CENTER - 60), sc_yd(WALKWAY_W - 30),
-       sc_x(X_CENTER + 120), sc_yd(WALKWAY_W + 30),
+       sc_x(X_CENTER + 120), sc_yd(WALKWAY_W + 20),
        "WALKWAY GRATING\n(HOSE RUNS ON TOP)", fs=6, color="#8D6E63")
 
 # ── Notes axes (full-width strip above title block) ─────────────────────────

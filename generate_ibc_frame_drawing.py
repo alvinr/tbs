@@ -520,22 +520,22 @@ def sheet1():
     # Overall width
     draw_dim_h(ax, sx(0), sx(FRAME_FOOTPRINT_W), sy(-80),
                f"{FRAME_FOOTPRINT_W}mm  FRAME WIDTH (WALL-TO-WALL)",
-               offset=sy(5), fs=6, font=FONT, above=False)
+               offset=sy(9), fs=6, font=FONT, above=False)
 
     # Near column
     draw_dim_h(ax, sx(BLUE_IBC_Y), sx(NEAR_COL_R), sy(-50),
                f"{IBC_D}mm  IBC DEPTH",
-               offset=sy(5), fs=5.5, font=FONT)
+               offset=sy(9), fs=5.5, font=FONT)
 
     # Corridor
     draw_dim_h(ax, sx(NEAR_COL_R), sx(FAR_COL_L), sy(-50),
                f"{CORRIDOR_W}mm\nCORRIDOR",
-               offset=sy(5), fs=5.5, font=FONT)
+               offset=sy(9), fs=5.5, font=FONT)
 
     # Far column
     draw_dim_h(ax, sx(IBC_FAR_Y), sx(IBC_FAR_Y + IBC_D), sy(-50),
                f"{IBC_D}mm  IBC DEPTH",
-               offset=sy(5), fs=5.5, font=FONT)
+               offset=sy(9), fs=5.5, font=FONT)
 
     # Heights (right side)
     dim_yd = IBC_FAR_Y + IBC_D + FRAME_RHS + 80
@@ -557,29 +557,29 @@ def sheet1():
     # Gate height
     draw_dim_v(ax, sx(BLUE_IBC_Y - FRAME_RHS - 60), sy(0), sy(GATE_H),
                f"{GATE_H}mm GATE",
-               offset=sx(5), fs=5.5, font=FONT)
+               offset=sx(9), fs=5.5, font=FONT)
 
     # Lip height
     draw_dim_v(ax, sx(POST_NEAR_YD - 30), sy(PLATFORM_Z + FRAME_RHS),
                sy(PLATFORM_Z + FRAME_RHS + LIP_H),
                f"{LIP_H}mm LIP",
-               offset=sx(5), fs=5.5, font=FONT)
+               offset=sx(9), fs=5.5, font=FONT)
 
     # IBC anatomy dimensions (left side of near column)
     anat_yd = BLUE_IBC_Y - FRAME_RHS - 160
     draw_dim_v(ax, sx(anat_yd), sy(0), sy(IBC_PALLET_H),
                f"{IBC_PALLET_H}mm PALLET",
-               offset=sx(5), fs=5, font=FONT)
+               offset=sx(9), fs=5, font=FONT)
     draw_dim_v(ax, sx(anat_yd), sy(IBC_PALLET_H), sy(IBC_BOTTLE_TOP),
                f"{IBC_BOTTLE_TOP - IBC_PALLET_H}mm BOTTLE",
-               offset=sx(5), fs=5, font=FONT)
+               offset=sx(9), fs=5, font=FONT)
     draw_dim_v(ax, sx(anat_yd + 40), sy(IBC_BOTTLE_TOP), sy(IBC_H_600),
                f"{IBC_CAGE_RAIL_W}mm RAIL",
-               offset=sx(5), fs=5, font=FONT)
+               offset=sx(9), fs=5, font=FONT)
     # Valve height
     draw_dim_v(ax, sx(anat_yd - 60), sy(0), sy(IBC_VALVE_Z),
                f"{IBC_VALVE_Z}mm VALVE CL",
-               offset=sx(5), fs=5, font=FONT)
+               offset=sx(9), fs=5, font=FONT)
 
     # ── Member labels ───────────────────────────────────────────────────────
     leader(ax, sx(NEAR_COL_R + FRAME_RHS / 2), sy(TOP_Z / 2),
@@ -627,7 +627,7 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(BLUE_IBC_Y + IBC_D - IBC_CAGE_INSET), sy(IBC_VALVE_Z),
-           sx(NEAR_COL_R + 200), sy(IBC_VALVE_Z - 60),
+           sx(NEAR_COL_R - 400), sy(IBC_VALVE_Z + 160),
            f"DN50 VALVE (S60×6)\nZ={IBC_VALVE_Z}mm\nCORRIDOR FACE",
            color=C_CAGE, fs=5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -648,7 +648,7 @@ def sheet1():
 
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
            sy(plat_top + 20),
-           sx(POST_NEAR_YD + 200), sy(plat_top - 60),
+           sx(POST_NEAR_YD + 80), sy(plat_top - 70),
            "LIP RETAINS\nPALLET PERIMETER",
            color=C_WELD, fs=5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -847,7 +847,7 @@ def sheet2():
     brace_cx = (FX_FRONT + FRAME_RHS + FX_MID) / 2
     brace_cz = (FRAME_RHS + PLATFORM_Z) / 2
     leader(ax, sx(brace_cx), sy(brace_cz),
-           sx(brace_cx + 200), sy(brace_cz - 200),
+           sx(brace_cx + 125), sy(brace_cz - 100),
            "X-BRACE\n50×50×3 RHS\n(×4 TOTAL,\n2 PER BAY,\nBOTTOM TIER ONLY)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
@@ -1022,36 +1022,36 @@ def sheet3():
     # Overall depth
     draw_dim_h(ax, px(FX_FRONT), px(FRAME_FOOTPRINT_D), py(-120),
                f"{FRAME_FOOTPRINT_D}mm  FRAME DEPTH",
-               offset=py(5), fs=6, font=FONT)
+               offset=py(8), fs=6, font=FONT)
 
     # Bay spacing
     draw_dim_h(ax, px(FX_FRONT), px(FX_MID), py(-60),
-               f"{FX_MID}mm", offset=py(5), fs=5.5, font=FONT)
+               f"{FX_MID}mm", offset=py(7), fs=5.5, font=FONT)
     draw_dim_h(ax, px(FX_MID + FRAME_RHS), px(FX_BACK), py(-60),
-               f"{FX_BACK - FX_MID}mm", offset=py(5), fs=5.5, font=FONT)
+               f"{FX_BACK - FX_MID}mm", offset=py(8), fs=5.5, font=FONT)
 
     # Overall width
     dim_x = FRAME_FOOTPRINT_D + 80
     draw_dim_v(ax, px(dim_x), py(0), py(FRAME_FOOTPRINT_W),
                f"{FRAME_FOOTPRINT_W}mm\nFRAME WIDTH",
-               offset=px(5), fs=6, right=True, font=FONT)
+               offset=px(8), fs=6, right=True, font=FONT)
 
     # Near column depth
     draw_dim_v(ax, px(dim_x + 80), py(BLUE_IBC_Y), py(NEAR_COL_R),
-               f"{IBC_D}mm", offset=px(5), fs=5.5, right=True, font=FONT)
+               f"{IBC_D}mm", offset=px(8), fs=5.5, right=True, font=FONT)
 
     # Corridor
     draw_dim_v(ax, px(dim_x + 80), py(NEAR_COL_R), py(FAR_COL_L),
-               f"{CORRIDOR_W}mm", offset=px(5), fs=5.5, right=True, font=FONT)
+               f"{CORRIDOR_W}mm", offset=px(8), fs=5.5, right=True, font=FONT)
 
     # Far column depth
     draw_dim_v(ax, px(dim_x + 80), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
-               f"{IBC_D}mm", offset=px(5), fs=5.5, right=True, font=FONT)
+               f"{IBC_D}mm", offset=px(8), fs=5.5, right=True, font=FONT)
 
     # RHS member size
     draw_dim_h(ax, px(FX_FRONT), px(FX_FRONT + FRAME_RHS),
                py(FRAME_FOOTPRINT_W + 80),
-               f"{FRAME_RHS}mm", offset=py(5), fs=5.5, font=FONT)
+               f"{FRAME_RHS}mm", offset=py(8), fs=5.5, font=FONT)
 
     # ── Detail inset: Corner Joint ──────────────────────────────────────────
     det_x = px(X_LO + 20)
@@ -1172,7 +1172,7 @@ def sheet3():
         "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
     ]
     draw_notes(ax, notes, px(X_HI * 0.35), py(YD_LO + 510), spacing=py(16),
-               fs=5.5, font=FONT, width=px(1500))
+               fs=5.5, font=FONT, width=px(975))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

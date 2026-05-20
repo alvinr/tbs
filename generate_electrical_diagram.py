@@ -607,7 +607,7 @@ def draw_sheet2():
                  alpha=GHOST_ALPHA, zorder=4))
 
     # Label
-    ax.text(ix(PANEL_SLIDE + PANEL_CENTER_T + 30),
+    ax.text(ix(PANEL_SLIDE + PANEL_CENTER_T - 250),
             OY + wt + C_WID * 0.08 * S_yd,
             "Panel + drum\n(transport position)",
             ha="left", va="bottom", fontsize=6.0, color="#808080",
@@ -729,7 +729,7 @@ def draw_sheet2():
     # Pull switch leader
     ps_mid_x = ix(PS_X_MM)
     leader(ax, ps_mid_x, OY + wt + PS_YD * S_yd,
-           ps_mid_x + 0.1, OY + cwid * 0.18,
+           ps_mid_x - 1.1, OY + cwid * 0.22,
            "Pull-cord switches\nD=safelight\nG=white",
            fs=6.5, color="#606080")
 
@@ -785,7 +785,7 @@ def draw_sheet2():
            fs=6.5)
     # Pump — Cct C
     leader(ax, PUMP_CX, OY + wt + 80 * S_yd,
-           PUMP_CX + 0.2, OY + cwid * 0.3,
+           PUMP_CX + 0.1, OY + cwid * 0.3,
            "Water pump (C)\n12V DC  100W",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
@@ -804,12 +804,12 @@ def draw_sheet2():
     led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
     led_mid_cy = OY + wt + (LED_YD + LED_D_MM) * S_yd
     leader(ax, led_mid_cx, led_mid_cy,
-           led_mid_cx + 0.8, OY + cwid * 0.62,
+           led_mid_cx + 0.6, OY + cwid * 0.62,
            "LED panels (G)\n3×20W  4000K white",
            fs=6.5, color="#808000")
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
-           PP_DX + PP_DW * 2, PP_DY - 0.5,
+           PP_DX + PP_DW * 2, PP_DY - 0.35,
            "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
            fs=6.5, color="#806030", ha="center")
 
@@ -902,7 +902,7 @@ def draw_sheet2():
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
     draw_notes(ax, notes, KX * 0.73, 1.85, spacing=0.18,
-               fs=6.5, width=16.0, font={"fontfamily": "monospace"})
+               fs=6.5, width=10.5, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1314,7 +1314,7 @@ def draw_sheet3():
     key_bottom = KY - 0.25 - (len(key_items) - 1) * 0.55 - 0.30
     notes_y_top = key_bottom - 0.3
     draw_notes(ax, notes, 0.2, KY + 0.3, spacing=0.20,
-               fs=6.5, width=14.0, font={"fontfamily": "monospace"})
+               fs=6.5, width=8.0, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

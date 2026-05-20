@@ -1496,7 +1496,7 @@ def sheet4():
         f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to near walkway bracket (X={LEFT_WK_R}).",
         f"6. Remove cradles + grating before panel slides.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(320), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(450), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",

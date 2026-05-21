@@ -83,6 +83,10 @@ P04_Z = P02_Z + PUMP_H + PUMP_GAP    # = 1636
 ACC_YD = PUMP_COL
 ACC_Z  = P04_Z + PUMP_H + PUMP_GAP   # = 1894 (bottom of body / port)
 
+# P-03 (waste evacuation) — right column, above filter stack
+P03_COL = FILT_COL                    # 175 — right column center
+P03_Z   = PUMP_ZONE_BOT              # 1120 — matches pump zone baseline
+
 # ── Colors ────────────────────────────────────────────────────────────────
 C_FRAME      = "#1A1A1A"
 C_FRAME_FILL = "#B0B0B8"
@@ -211,6 +215,22 @@ for pname, pdesc, pz, pfc, pec in pump_specs:
             pdesc, ha="center", va="center",
             fontsize=3.5, color=pec, zorder=8, **FONT)
 
+# P-03 — right column, above filter stack
+rect(P03_COL - PUMP_W / 2, P03_Z, PUMP_W, PUMP_H,
+     C_PUMP_BODY, C_PUMP_EC, lw=1.2, zorder=6)
+rect(P03_COL - PUMP_W / 2 - 10, P03_Z - 8,
+     PUMP_W + 20, 8,
+     C_FRAME_FILL, C_FRAME, lw=0.5, zorder=4)
+for _p03_port_yd in [P03_COL - PORT_HALF, P03_COL + PORT_HALF]:
+    circ(_p03_port_yd, P03_Z + PUMP_H - 25, 10,
+         C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+ax.text(sx(P03_COL), sz(P03_Z + PUMP_H / 2 + 15),
+        "P-03", ha="center", va="center",
+        fontsize=6, color=C_BLACK_SYS, fontweight="bold", zorder=8, **FONT)
+ax.text(sx(P03_COL), sz(P03_Z + PUMP_H / 2 - 20),
+        "WASTE\nEVAC", ha="center", va="center",
+        fontsize=3.5, color=C_BLACK_EC, zorder=8, **FONT)
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  3. ACC-01 — above pump stack (profile view, vertical, port at bottom)
@@ -321,6 +341,9 @@ SUCT_RISE = 50               # suction route rises above port Z
 P01_PORT_Z = P01_Z + PUMP_H - 25
 P02_PORT_Z = P02_Z + PUMP_H - 25
 P04_PORT_Z = P04_Z + PUMP_H - 25
+P03_PORT_Z = P03_Z + PUMP_H - 25
+P03_PORT_IN  = P03_COL + PORT_HALF   # 205 — right (inlet/suction)
+P03_PORT_OUT = P03_COL - PORT_HALF   # 145 — left (outlet/discharge)
 
 # ── Filter head Z positions ──
 F01_HEAD_Z = F01_Z + FILT_H - FILT_HEAD / 2   # top filter head
@@ -605,6 +628,36 @@ ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BLACK),
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
+# ════════════════════════════════════════════════════════════════
+#  P-03 WASTE EVACUATION (C_BLACK_SYS) — right column
+# ════════════════════════════════════════════════════════════════
+
+# P-03 suction: IBC-4 (RIGHT) → P-03 inlet (right port)
+draw_pipe_path(ax,
+    [EXIT_R, P03_PORT_IN],
+    [P03_PORT_Z, P03_PORT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P03_PORT_Z)),
+            xytext=(sx(EXIT_R), sz(P03_PORT_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
+ax.text(sx(EXIT_R + 5), sz(P03_PORT_Z),
+        "FROM\nIBC-4\n(WASTE)", ha="left", va="center",
+        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+
+# P-03 discharge: outlet (left port) → drop 60mm → right to D4 bulkhead
+_P03_DISCH_Z = P03_PORT_Z - 60
+draw_pipe_path(ax,
+    [P03_PORT_OUT, P03_PORT_OUT, EXIT_R],
+    [P03_PORT_Z, _P03_DISCH_Z, _P03_DISCH_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+ax.annotate("", xy=(sx(EXIT_R), sz(_P03_DISCH_Z)),
+            xytext=(sx(EXIT_R - _AW), sz(_P03_DISCH_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
+ax.text(sx(EXIT_R + 5), sz(_P03_DISCH_Z),
+        "TO D4\nDRAIN\nPORT", ha="left", va="center",
+        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 #  6. DIMENSIONS
 # ═══════════════════════════════════════════════════════════════════════════
@@ -800,7 +853,7 @@ notes = [
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
     "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
-    "5. TOP: P-01/P-02/P-04 (3× Shurflo 2088) + ACC-01 — above filter stack.",
+    "5. TOP: P-01/P-02/P-04 (left col) + ACC-01; P-03 waste evac (right col) — above filter stack.",
     "6. BV-01/BV-02 on Blue circuit. DV-02 on P-04 discharge (3-way to IBC-3 or IBC-4).",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",

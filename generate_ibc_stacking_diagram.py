@@ -40,6 +40,9 @@ from tbs_constants import (
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP,
     PROC_TRAY_RIM,
     EXT_PANEL_YD, EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
+    EQPANEL_X, EQPANEL_W, EQPANEL_T, EQPANEL_YD,
+    PUMP_D,
+    BB_OD, FSKID_YD, F1_X, F2_X, F3_X,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
@@ -56,6 +59,7 @@ C_WALL  = "#C0C0C8"
 C_GRATE = "#A0A0A8"
 C_RUBBER = "#404040"
 C_PORT  = "#708090"
+C_PLY   = "#D4C8A0"
 FONT    = {"fontfamily": "monospace"}
 
 # ── Frame constants (from equipment-layout-report.md §5) ──────────────────────
@@ -1520,6 +1524,57 @@ def sheet5():
             [py(corr_cx), py(corr_cx)],
             color=C_CL, lw=1.0, ls="--", zorder=4)
 
+    # ── Equipment panel (pumps + filters) ────────────────────────────────
+    ep_x = EQPANEL_X
+    ep_w = EQPANEL_W
+    ep_yd = EQPANEL_YD                       # back face Yd (against near IBC column)
+    ep_front_yd = ep_yd + EQPANEL_T          # front face Yd
+
+    # Plywood panel (thin strip in plan view)
+    ax.add_patch(Rectangle((px(ep_x), py(ep_yd)),
+                            px(ep_w), py(EQPANEL_T),
+                            fc=C_PLY, ec="#A09060", lw=1.5, zorder=6))
+
+    # Pump protrusion zone (from panel front face into corridor)
+    pump_yd_far = ep_front_yd + PUMP_D       # = 1191
+    ax.add_patch(Rectangle((px(ep_x), py(ep_front_yd)),
+                            px(ep_w), py(PUMP_D),
+                            fc=C_PUMP, ec=C_OUT, lw=1.0, alpha=0.25,
+                            ls="--", zorder=5))
+    # Pump label — left of F1 to avoid filter circle overlap
+    ax.text(px(ep_x + 80), py(ep_front_yd + PUMP_D / 2),
+            "P-01\nP-02\nP-04",
+            ha="center", va="center", fontsize=5, color=C_PUMP,
+            fontweight="bold", **FONT, zorder=10)
+
+    # 3x Big Blue filter housings (circles in plan view, above pumps at higher Z)
+    filt_yd = FSKID_YD                       # filter column center Yd = 1186
+    filt_r = BB_OD / 2                       # 65mm radius
+    for fx, flabel in [(F1_X, "F1"), (F2_X, "F2"), (F3_X, "F3")]:
+        ax.add_patch(Circle((px(fx), py(filt_yd)),
+                     px(filt_r), fc="#4A7A4A", ec=C_OUT, lw=1.0,
+                     alpha=0.3, zorder=7))
+        ax.text(px(fx), py(filt_yd), flabel,
+                ha="center", va="center", fontsize=5.5, color="#2A5A2A",
+                fontweight="bold", **FONT, zorder=10)
+
+    # Equipment panel label — below panel toward near wall
+    ax.text(px(ep_x + ep_w / 2), py(ep_yd - 25),
+            f"EQUIPMENT PANEL  (18mm MARINE PLY, {ep_w}mm WIDE)",
+            ha="center", va="top", fontsize=5, color="#A09060",
+            fontweight="bold", **FONT, zorder=10)
+
+    # Filter row label — above corridor, pointing down at filter row
+    filt_label_yd = corr_yd_hi + 40
+    ax.text(px(F2_X), py(filt_label_yd),
+            "3× BIG BLUE 4.5\"×10\" FILTER HOUSINGS\n(F1=50μ  F2=5μ  F3=GAC)  Z=1600–1940",
+            ha="center", va="bottom", fontsize=5, color="#2A5A2A",
+            **FONT, zorder=10)
+    ax.annotate("", xy=(px(F2_X), py(filt_yd + filt_r + 5)),
+                xytext=(px(F2_X), py(filt_label_yd)),
+                arrowprops=dict(arrowstyle="-|>", color="#2A5A2A", lw=0.8),
+                zorder=10)
+
     # ── Pipe fitting helpers (matching sheet 6 conventions) ────────────────
     PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
     PIPE_WALL_T = 3.0
@@ -1653,15 +1708,6 @@ def sheet5():
             "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
             **FONT, zorder=15)
-    # P-05 pump label (pump inline on vertical run)
-    p05_plan_yd = (v3_yd + near_ibc_conn_yd) / 2
-    ax.plot(px(drain_x), py(p05_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
-    ax.text(px(drain_x), py(p05_plan_yd), "P", ha="center", va="center",
-            fontsize=5, color="white", fontweight="bold", zorder=13)
-    ax.text(px(drain_x + 60), py(p05_plan_yd),
-            "P-05", ha="right", va="center", fontsize=5.5, color=C_PUMP,
-            **FONT, zorder=15)
-
     # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ────────────────────────
     # Beneath F1; corridor run covered by F1 at higher zorder
     draw_pipe_path(ax,
@@ -1696,7 +1742,7 @@ def sheet5():
     pipe_lw = 2.5
 
     # Legend background box
-    n_leg_items = 5  # 3 pipes + elbow + valve
+    n_leg_items = 7  # 3 pipes + elbow + valve + panel + filter
     leg_box_x = leg_x - px(10)
     leg_box_top = leg_top + leg_sp * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_sp + leg_sp * 0.3
@@ -1707,7 +1753,7 @@ def sheet5():
 
     legend_items = [
         (C_PIPE_BLUE,  "BLUE CIRCUIT — Fill (1\" HDPE SDR-11)"),
-        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle, P-05 drain pump (1\" HDPE SDR-11)"),
+        (C_PIPE_BROWN, "BROWN CIRCUIT — Drain/recycle (1\" HDPE SDR-11)"),
         (C_PIPE_BLACK, "BLACK/WASTE — Drain, P-03 drain pump (1\" HDPE SDR-11)"),
     ]
     ec_map = {"#2060C0": "#1A4A90", "#8D6E63": "#5A3020", "#505050": "#333333"}
@@ -1745,6 +1791,30 @@ def sheet5():
             ha="left", va="center", fontsize=5.5, color=C_DIM,
             **FONT, zorder=15)
 
+    # Equipment panel legend
+    y_ep = y_vl - leg_sp
+    ax.add_patch(Rectangle((leg_x, y_ep - leg_sp * 0.25),
+                            px(60), leg_sp * 0.5,
+                            fc=C_PLY, ec="#A09060", lw=1.0, zorder=15))
+    ax.add_patch(Rectangle((leg_x + px(10), y_ep - leg_sp * 0.15),
+                            px(40), leg_sp * 0.3,
+                            fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
+                            ls="--", zorder=15))
+    ax.text(leg_x + px(70), y_ep,
+            "EQUIPMENT PANEL — P-01/P-02/P-04 pumps, ACC-01 (18mm marine ply)",
+            ha="left", va="center", fontsize=5.5, color="#A09060",
+            **FONT, zorder=15)
+
+    # Filter housing legend
+    y_fl = y_ep - leg_sp
+    ax.add_patch(Circle((leg_x + px(30), y_fl),
+                 px(10), fc="#4A7A4A", ec=C_OUT, lw=1.0,
+                 alpha=0.3, zorder=15))
+    ax.text(leg_x + px(70), y_fl,
+            "BIG BLUE FILTER HOUSING — 4.5\"×10\" (F1=50μ, F2=5μ, F3=GAC)",
+            ha="left", va="center", fontsize=5.5, color="#2A5A2A",
+            **FONT, zorder=15)
+
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Corridor width
     draw_dim_v(ax, px(IBC_COL_X - 60), py(near_col_r), py(far_col_l),
@@ -1767,6 +1837,7 @@ def sheet5():
         "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V2 on horizontal, V3/V4 on branch.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
+        f"7. Equipment panel ({EQPANEL_W}mm × 18mm marine ply) in corridor: P-01/P-02/P-04 pumps + 3× Big Blue filters.",
     ]
     draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
                fs=5.5, font=FONT, width=2500)

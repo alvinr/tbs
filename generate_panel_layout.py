@@ -464,12 +464,19 @@ def draw_ball_valve(x, z, label, color):
 #  BLUE SYSTEM (C_BLUE)
 # ════════════════════════════════════════════════════════════════
 
-# Blue suction: IBC-1/2 (LEFT) → BV-01 → P-01 inlet (RIGHT port)
+# Blue suction: IBC-1/2 (LEFT) → BV-01 → 90° elbow → P-01 inlet (RIGHT port)
 # Raised above port Z to clear outlet; discharge riser draws over via Z_DISCH
 _P01_SUCT_Z = P01_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
-    [EXIT_L, PORT_IN_YD, PORT_IN_YD],
-    [_P01_SUCT_Z, _P01_SUCT_Z, P01_PORT_Z],
+    [EXIT_L, PORT_IN_YD],
+    [_P01_SUCT_Z, _P01_SUCT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+# 90° elbow fitting at turn down to inlet port
+circ(PORT_IN_YD, _P01_SUCT_Z, PIPE_OD + 2,
+     C_BLUE, C_BLUE_EC, lw=1.0, zorder=Z_BLUE + 1)
+draw_pipe_path(ax,
+    [PORT_IN_YD, PORT_IN_YD],
+    [_P01_SUCT_Z, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P01_SUCT_Z)),

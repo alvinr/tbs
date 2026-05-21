@@ -659,10 +659,22 @@ draw_pipe_path(ax,
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 # Seg 2: vertical below crossing, past port, U-turn back up to P-03 port
+# Split at discharge crossing (Z=_P03_DISCH_Z) — gap-break, discharge in front.
 _P03_HOOK_Z = P03_Z - 20
+_P03_DISCH_Z = P03_PORT_Z - PORT_DROP
+_p03_dx_gap = PIPE_OD / 2.0
+
+# Seg 2a: hook + vertical up to below discharge crossing
 draw_pipe_path(ax,
     [_P03_DROP_YD, _P03_DROP_YD, R_PORT_IN, R_PORT_IN],
-    [_xing_z - _xing_gap, _P03_HOOK_Z, _P03_HOOK_Z, P03_PORT_Z],
+    [_xing_z - _xing_gap, _P03_HOOK_Z, _P03_HOOK_Z,
+     _P03_DISCH_Z - _p03_dx_gap],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+
+# Seg 2b: vertical above discharge crossing to P-03 port
+draw_pipe_path(ax,
+    [R_PORT_IN, R_PORT_IN],
+    [_P03_DISCH_Z + _p03_dx_gap, P03_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 ax.annotate("", xy=(sx(EXIT_R - _AW), sz(BV08_Z)),
@@ -674,11 +686,11 @@ ax.text(sx(EXIT_R + 5), sz(BV08_Z),
 draw_ball_valve(BV08_YD, BV08_Z, "BV\n08", C_BLACK_EC)
 
 # P-03 discharge: outlet (left port) → drop → right to D4 bulkhead
-_P03_DISCH_Z = P03_PORT_Z - PORT_DROP
+# zorder +0.5 so discharge draws in front of suction gap-break
 draw_pipe_path(ax,
     [R_PORT_OUT, R_PORT_OUT, EXIT_R],
     [P03_PORT_Z, _P03_DISCH_Z, _P03_DISCH_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK + 0.5)
 ax.annotate("", xy=(sx(EXIT_R), sz(_P03_DISCH_Z)),
             xytext=(sx(EXIT_R - _AW), sz(_P03_DISCH_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)

@@ -40,10 +40,11 @@ PANEL_H  = 2060  # face height (mm, Z span: 200–2260)
 PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
-PUMP_W   = 127   # front face width (mm) — port-to-port
+PUMP_W   = 127   # front face width (mm)
 PUMP_H   = 218   # front face height (mm) — body length, vertical mount
 PUMP_D   = 100   # depth from panel (mm)
 PUMP_GAP = 40    # vertical gap between pumps (mm)
+PORT_HALF = 30   # half of port-to-port spacing (mm)
 
 # ── Accumulator ───────────────────────────────────────────────────────────
 ACC_OD  = 127    # body OD (mm)
@@ -71,6 +72,8 @@ FILT_STACK_TOP = F01_Z + FILT_H       # = 1080
 
 # Left column: 3 pumps stacked vertically + ACC-01 above — TOP
 PUMP_COL = PUMP_W // 2               # = 63mm from left edge (127mm zone center)
+PORT_IN_YD  = PUMP_COL + PORT_HALF   # right — inlet (suction)
+PORT_OUT_YD = PUMP_COL - PORT_HALF   # left — outlet (discharge)
 PUMP_ZONE_BOT = FILT_STACK_TOP + 40  # = 1120 (40mm gap above filter stack)
 
 P01_Z = PUMP_ZONE_BOT                 # = 1120
@@ -196,9 +199,9 @@ for pname, pdesc, pz, pfc, pec in pump_specs:
     # Pump body
     rect(PUMP_COL - PUMP_W / 2, pz, PUMP_W, PUMP_H,
          C_PUMP_BODY, C_PUMP_EC, lw=1.2, zorder=6)
-    # Port indicators (top and bottom)
-    for port_z in [pz + 25, pz + PUMP_H - 25]:
-        circ(PUMP_COL, port_z, 10,
+    # Port indicators (side by side at head — outlet LEFT, inlet RIGHT)
+    for port_yd in [PORT_OUT_YD, PORT_IN_YD]:
+        circ(port_yd, pz + PUMP_H - 25, 10,
              C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
     # Label
     ax.text(sx(PUMP_COL), sz(pz + PUMP_H / 2 + 15),
@@ -304,13 +307,12 @@ Z_BLACK = 6
 Z_BROWN = 7
 Z_BLUE  = 8
 
-# ── Port Z positions (panel-relative) ──
-P01_PT = P01_Z + PUMP_H - 25   # top port
-P01_PB = P01_Z + 25            # bottom port
-P02_PT = P02_Z + PUMP_H - 25
-P02_PB = P02_Z + 25
-P04_PT = P04_Z + PUMP_H - 25
-P04_PB = P04_Z + 25
+# ── Port Z positions (both ports at pump head, side by side) ──
+PORT_DROP = 30               # discharge route drops below port Z to avoid suction overlap
+
+P01_PORT_Z = P01_Z + PUMP_H - 25
+P02_PORT_Z = P02_Z + PUMP_H - 25
+P04_PORT_Z = P04_Z + PUMP_H - 25
 
 # ── Filter head Z positions ──
 F01_HEAD_Z = F01_Z + FILT_H - FILT_HEAD / 2   # top filter head
@@ -332,13 +334,13 @@ EXIT_L = -60    # past left panel edge (near wall / walkway)
 EXIT_R = 330    # past right panel edge (far wall / IBCs)
 
 # ── Valve positions ──
-BV01_YD = 20
-BV01_Z  = P01_PT
+BV01_YD = 0
+BV01_Z  = P01_PORT_Z
 BV02_YD = -40
 DISCH_EXIT_Z = ACC_Z - 30   # discharge exit offset below ACC tee
 BV02_Z  = DISCH_EXIT_Z
-DV02_YD = 155
-DV02_Z  = P04_PB
+DV02_YD = PORT_IN_YD + 30
+DV02_Z  = P04_PORT_Z - PORT_DROP
 
 # ── Flow arrow style ──
 _AW = 25
@@ -458,23 +460,23 @@ def draw_ball_valve(x, z, label, color):
 #  BLUE SYSTEM (C_BLUE)
 # ════════════════════════════════════════════════════════════════
 
-# Blue suction: IBC-1/2 (near column, LEFT) → BV-01 → P-01 top port
+# Blue suction: IBC-1/2 (LEFT) → BV-01 → P-01 inlet (RIGHT port)
 draw_pipe_path(ax,
-    [EXIT_L, PUMP_COL],
-    [P01_PT, P01_PT],
+    [EXIT_L, PORT_IN_YD],
+    [P01_PORT_Z, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
-ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P01_PT)),
-            xytext=(sx(EXIT_L), sz(P01_PT)),
+ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P01_PORT_Z)),
+            xytext=(sx(EXIT_L), sz(P01_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(P01_PT),
+ax.text(sx(EXIT_L - 5), sz(P01_PORT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# Blue discharge: P-01 bottom → left riser → up to ACC-01 → BV-02 → exit LEFT
+# Blue discharge: P-01 outlet (LEFT port) → drop → left riser → up to ACC-01
 draw_pipe_path(ax,
-    [PUMP_COL, DISCH_RAIL, DISCH_RAIL],
-    [P01_PB, P01_PB, ACC_Z],
+    [PORT_OUT_YD, PORT_OUT_YD, DISCH_RAIL, DISCH_RAIL],
+    [P01_PORT_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 # ACC-01 tee
 draw_pipe_path(ax,
@@ -499,22 +501,22 @@ ax.text(sx(EXIT_L - 5), sz(DISCH_EXIT_Z),
 #  BROWN SYSTEM (C_BROWN)
 # ════════════════════════════════════════════════════════════════
 
-# Brown suction: IBC-3 (far column, RIGHT) → P-02 top port
+# Brown suction: IBC-3 (far column, RIGHT) → P-02 inlet (RIGHT port)
 draw_pipe_path(ax,
-    [EXIT_R, PUMP_COL],
-    [P02_PT, P02_PT],
+    [EXIT_R, PORT_IN_YD],
+    [P02_PORT_Z, P02_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P02_PT)),
-            xytext=(sx(EXIT_R), sz(P02_PT)),
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P02_PORT_Z)),
+            xytext=(sx(EXIT_R), sz(P02_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-ax.text(sx(EXIT_R + 5), sz(P02_PT),
+ax.text(sx(EXIT_R + 5), sz(P02_PORT_Z),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
         fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# Brown discharge: P-02 bottom → F-01 IN (F-01 at top of filter stack)
+# Brown discharge: P-02 outlet (LEFT port) → drop → right to F_IN_YD → down to F-01
 draw_pipe_path(ax,
-    [PUMP_COL, F_IN_YD, F_IN_YD],
-    [P02_PB, P02_PB, F01_HEAD_Z],
+    [PORT_OUT_YD, PORT_OUT_YD, F_IN_YD, F_IN_YD],
+    [P02_PORT_Z, P02_PORT_Z - PORT_DROP, P02_PORT_Z - PORT_DROP, F01_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # Filter jumpers — gravity-fed downward: F-01 → F-02 → F-03
@@ -553,27 +555,27 @@ ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
 #  TRAY DRAIN / BLACK SYSTEM (C_BLACK_SYS)
 # ════════════════════════════════════════════════════════════════
 
-# Tray drain suction: LEFT → P-04 top port (gap at Blue discharge riser)
+# Tray drain suction: LEFT → P-04 inlet (RIGHT port, gap at Blue discharge riser)
 _gap_half = PIPE_OD / 2 + 3
 draw_pipe_path(ax,
     [EXIT_L, DISCH_RAIL - _gap_half],
-    [P04_PT, P04_PT],
+    [P04_PORT_Z, P04_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 draw_pipe_path(ax,
-    [DISCH_RAIL + _gap_half, PUMP_COL],
-    [P04_PT, P04_PT],
+    [DISCH_RAIL + _gap_half, PORT_IN_YD],
+    [P04_PORT_Z, P04_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P04_PT)),
-            xytext=(sx(EXIT_L), sz(P04_PT)),
+ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P04_PORT_Z)),
+            xytext=(sx(EXIT_L), sz(P04_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(P04_PT),
+ax.text(sx(EXIT_L - 5), sz(P04_PORT_Z),
         "FROM\nTRAY\nSUMP", ha="right", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
-# P-04 discharge → DV-02
+# P-04 discharge: outlet (LEFT port) → drop → right to DV-02
 draw_pipe_path(ax,
-    [PUMP_COL, DV02_YD],
-    [P04_PB, P04_PB],
+    [PORT_OUT_YD, PORT_OUT_YD, DV02_YD],
+    [P04_PORT_Z, DV02_Z, DV02_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 # DV-02 (3-way diverter — diamond symbol)

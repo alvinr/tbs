@@ -398,7 +398,7 @@ ax.plot(sx(TUBE_X), sz(TUBE_Z_BOT), 's',
 # Labels — positioned to be readable at combined elevation scale
 ax.text(sx(PROC_TRAY_X_L + 350), sz(TRAY_RIM_TOP / 2),
         "PROCESSING TRAY (304 SS, 50mm RIM)", ha="left", va="center",
-        fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
+        fontsize=4.0, color=C_TRAY_EC, zorder=10, **FONT)
 
 ax.text(sx(SUMP_X_L - 40), sz(TRAY_FLOOR_Z / 2 + 20),
         "SUMP WELL", ha="right", va="center",
@@ -436,7 +436,7 @@ ax.add_patch(plt.Circle((sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z)), duct_r * S,
              fill=True, facecolor=C_DUCT, edgecolor=C_OUT,
              linewidth=1.2, zorder=8, alpha=0.6))
 ax.text(sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z), f"DUCT\nØ{EVAP_DUCT_D}",
-        ha="center", va="center", fontsize=3.5, color=C_OUT, zorder=9, **FONT)
+        ha="center", va="center", fontsize=4.0, color=C_OUT, zorder=9, **FONT)
 leader(ax, sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z - duct_r),
        sx(EVAP_DUCT_X + 300), sz(EVAP_DUCT_Z - 200),
        "EVAP COOLER DUCT\n(EXTERNAL UNIT)", fs=4.5, color=C_DIM,
@@ -771,7 +771,7 @@ ax2.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],
         color=C_TRAY_EC, lw=0.8, ls=":", zorder=4)
 ax2.text(sx(PROC_TRAY_X_R - 150), plan_sy(PROC_TRAY_YD_NEAR) + 0.04,
         "PROC TRAY NEAR RIM (Yd = 80)", ha="right", va="bottom",
-        fontsize=3.5, color=C_TRAY_EC, zorder=10, **FONT)
+        fontsize=4.0, color=C_TRAY_EC, zorder=10, **FONT)
 
 # ── Widened walkway section (EP/BAT zone, 500mm) ───────────────────────────
 ww_x_draw = sx(WALKWAY_NEAR_WIDE_X_R)
@@ -803,7 +803,7 @@ for _yd_val in range(0, 601, 100):
     ax2.plot([_yd_scale_x - 0.04, _yd_scale_x + 0.04], [_y, _y],
             color=C_DIM, lw=0.4, zorder=10)
     ax2.text(_yd_scale_x + 0.08, _y, f"{_yd_val}",
-            ha="left", va="center", fontsize=3.5, color=C_DIM,
+            ha="left", va="center", fontsize=4.0, color=C_DIM,
             zorder=10, **FONT)
 ax2.text(_yd_scale_x + 0.08, plan_sy(300) + 0.25,
         "Yd (mm)\n↑ INTO CONTAINER", ha="left", va="bottom",

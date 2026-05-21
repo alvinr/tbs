@@ -17,9 +17,10 @@ import os
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import math
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_title_block import title_block
 
@@ -279,173 +280,302 @@ ax.text(sx(F02_X_C), sz(FILT_Z_TOP + 30),
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  5b. PLUMBING — pipe routes, valves, flow arrows
+#  5b. PLUMBING — parallel-wall pipes, diamond valves, concentric elbows
 #
 #  Orientation: looking at panel from corridor side.
 #  LEFT = lower container X (toward cargo door / spray bar)
 #  RIGHT = higher container X (toward IBCs)
 # ═══════════════════════════════════════════════════════════════════════════
 
-PIPE_LW = 3.0
-VALVE_R = 15    # valve symbol radius (mm)
+# Pipe dimensions
+PIPE_OD = PUMP_PIPE_OD
+PIPE_WALL = PUMP_PIPE_WALL
 
-# ── Port Z positions (from existing port indicators) ──
-P01_PT = P01_Z + PUMP_H - 25     # P-01 top port
-P01_PB = P01_Z + 25              # P-01 bottom port
-P02_PT = P02_Z + PUMP_H - 25     # P-02 top port
-P02_PB = P02_Z + 25              # P-02 bottom port
-P04_PT = P04_Z + PUMP_H - 25     # P-04 top port
-P04_PB = P04_Z + 25              # P-04 bottom port
+# Valve half-diagonal (mm in panel coords)
+BV_R = 15
 
-# ── Routing rails (vertical pipe runs alongside pump column) ──
-RAIL_L = PUMP_COL_X - PUMP_W / 2 - 30   # ~33mm — left of pump column
-RAIL_R = PUMP_COL_X + PUMP_W / 2 + 30   # ~193mm — right of pump column
+# Pipe layer zorders
+Z_BLACK = 6
+Z_BROWN = 7
+Z_BLUE  = 8
+
+# ── Port Z positions ──
+P01_PT = P01_Z + PUMP_H - 25
+P01_PB = P01_Z + 25
+P02_PT = P02_Z + PUMP_H - 25
+P02_PB = P02_Z + 25
+P04_PT = P04_Z + PUMP_H - 25
+P04_PB = P04_Z + 25
+
+# ── Routing rails ──
+RAIL_L = PUMP_COL_X - PUMP_W / 2 - 30
+RAIL_R = PUMP_COL_X + PUMP_W / 2 + 30
 
 # ── Entry/exit X positions ──
 EXIT_R = PANEL_X_R + 40
-EXIT_L = PANEL_X_L - 40
+EXIT_L = PANEL_X_L - 65
 
 # ── Header heights ──
-BLUE_HDR_Z = FILT_Z_TOP + 40     # 680mm — Blue suction header above filters
-BROWN_HDR_Z = FILT_Z_TOP - FILT_HEAD / 2   # 605mm — Brown at filter port height
+BLUE_HDR_Z = FILT_Z_TOP + 40
+BROWN_HDR_Z = FILT_Z_TOP - FILT_HEAD / 2
+
+# ── Blue discharge riser ──
+DISCH_X = RAIL_L - 25
 
 # ── Valve positions ──
-BV01_X = (RAIL_R + FILT_START_X) / 2  # ~236mm — between pump col and filters
+BV01_X = (RAIL_R + FILT_START_X) / 2
 BV01_Z = BLUE_HDR_Z
-BV02_X = RAIL_L - 60                  # left of panel — on Blue discharge header
-BV02_Z = ACC_Z                        # same height as ACC-01
-DV02_X = RAIL_R + 40                  # ~233mm — right of pump column
-DV02_Z = P04_PB                       # at P-04 outlet height
+BV02_X = (DISCH_X + EXIT_L) / 2
+BV02_Z = ACC_Z
+DV02_X = RAIL_R + 40
+DV02_Z = P04_PB
+
+# ── Flow arrow style ──
+_AW = 30
+_arrow_kw = dict(arrowstyle="-|>", lw=1.5, mutation_scale=8)
 
 
-def pipe_run(pts, color, lw=PIPE_LW, ls="-", alpha=1.0, zorder=10):
-    """Draw connected pipe segments from list of (x_mm, z_mm) tuples."""
-    xs = [sx(p[0]) for p in pts]
-    zs = [sz(p[1]) for p in pts]
-    ax.plot(xs, zs, color=color, lw=lw, ls=ls, solid_capstyle="round",
-            alpha=alpha, zorder=zorder)
+def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
+                   fc, ec=C_FRAME, bore_fc="white",
+                   elbow_r=None, zorder=8):
+    """Parallel-wall pipe run with concentric-arc elbows."""
+    n = len(x_pts)
+    if n < 2:
+        return
+    half_od = od_mm / 2.0
+    half_id = half_od - wall_mm
+    if elbow_r is None:
+        elbow_r = od_mm * 1.0
+
+    segs = []
+    for i in range(n - 1):
+        dx = x_pts[i + 1] - x_pts[i]
+        dz = z_pts[i + 1] - z_pts[i]
+        length = max(math.hypot(dx, dz), 1e-6)
+        segs.append((dx / length, dz / length, length))
+
+    elbows = []
+    for i in range(1, n - 1):
+        d1x, d1z, _ = segs[i - 1]
+        d2x, d2z, _ = segs[i]
+        cos_a = max(-1.0, min(1.0, d1x * d2x + d1z * d2z))
+        alpha_a = math.acos(cos_a)
+        turn = math.pi - alpha_a
+        if turn < 0.01:
+            elbows.append(None)
+            continue
+        tangent = elbow_r * math.tan(turn / 2)
+        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
+        if tangent > max_t:
+            tangent = max_t
+        cross = d1x * d2z - d1z * d2x
+        if cross > 0:
+            nx, nz = -d1z, d1x
+        else:
+            nx, nz = d1z, -d1x
+        tp_x = x_pts[i] - d1x * tangent
+        tp_z = z_pts[i] - d1z * tangent
+        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
+        cy = tp_x + nx * r_eff
+        cz_e = tp_z + nz * r_eff
+        start_a = math.atan2(tp_z - cz_e, tp_x - cy)
+        sweep = turn if cross > 0 else -turn
+        elbows.append({
+            'tangent': tangent, 'r': r_eff,
+            'center': (cy, cz_e), 'start': start_a, 'sweep': sweep,
+        })
+
+    def _rect(sx0, sz0, sx1, sz1, nx, nz, half_r, color, z_ord):
+        pts = [(sx(sx0 + nx * half_r), sz(sz0 + nz * half_r)),
+               (sx(sx1 + nx * half_r), sz(sz1 + nz * half_r)),
+               (sx(sx1 - nx * half_r), sz(sz1 - nz * half_r)),
+               (sx(sx0 - nx * half_r), sz(sz0 - nz * half_r))]
+        ax.fill([p[0] for p in pts], [p[1] for p in pts],
+                fc=color, ec=ec if color != bore_fc else "none",
+                lw=0.8 if color != bore_fc else 0, zorder=z_ord)
+
+    for i in range(len(segs)):
+        dx, dz, seg_len = segs[i]
+        nx, nz = -dz, dx
+        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
+        trim_e = elbows[i]['tangent'] if (i < len(elbows) and elbows[i]) else 0
+        p0x = x_pts[i] + dx * trim_s
+        p0z = z_pts[i] + dz * trim_s
+        p1x = x_pts[i + 1] - dx * trim_e
+        p1z = z_pts[i + 1] - dz * trim_e
+        remaining = seg_len - trim_s - trim_e
+        if remaining < 0.5:
+            continue
+        _rect(p0x, p0z, p1x, p1z, nx, nz, half_od, fc, zorder)
+        _rect(p0x, p0z, p1x, p1z, nx, nz, half_id, bore_fc, zorder + 1)
+
+    for elb in elbows:
+        if elb is None:
+            continue
+        cy, cz_e = elb['center']
+        r_eff = elb['r']
+        sa = elb['start']
+        sw = elb['sweep']
+        n_arc = max(20, int(abs(sw) / 0.04))
+        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
+
+        def _arc_ring(r_out, r_in, color, z_ord,
+                      _cy=cy, _cz=cz_e, _angles=angles):
+            ox_ = [sx(_cy + r_out * math.cos(a)) for a in _angles]
+            oz_ = [sz(_cz + r_out * math.sin(a)) for a in _angles]
+            ix_ = [sx(_cy + r_in * math.cos(a)) for a in _angles]
+            iz_ = [sz(_cz + r_in * math.sin(a)) for a in _angles]
+            ax.fill(ox_ + ix_[::-1], oz_ + iz_[::-1],
+                    fc=color, ec=ec if color != bore_fc else "none",
+                    lw=0.8 if color != bore_fc else 0, zorder=z_ord)
+
+        _arc_ring(r_eff + half_od, max(r_eff - half_od, 0.5), fc, zorder)
+        _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5),
+                  bore_fc, zorder + 1)
 
 
-def valve_sym(x, z, label, color):
-    """Small circle valve symbol at panel coords."""
-    circ(x, z, VALVE_R, "white", color, lw=1.5, zorder=12)
+def draw_ball_valve(x, z, label, color):
+    """Diamond valve symbol at (x, z) in panel mm coords."""
+    pts_x = [sx(x), sx(x + BV_R), sx(x), sx(x - BV_R)]
+    pts_z = [sz(z + BV_R), sz(z), sz(z - BV_R), sz(z)]
+    ax.add_patch(plt.Polygon(list(zip(pts_x, pts_z)),
+                             fc="white", ec=color, lw=1.5, zorder=12))
     ax.text(sx(x), sz(z), label, ha="center", va="center",
             fontsize=3, color=color, fontweight="bold", zorder=13, **FONT)
-
-
-def flow_arrow(x1, z1, x2, z2, color, zorder=11):
-    """Flow direction arrow from (x1,z1) toward (x2,z2)."""
-    ax.annotate("", xy=(sx(x2), sz(z2)), xytext=(sx(x1), sz(z1)),
-                arrowprops=dict(arrowstyle="-|>", color=color, lw=1.5,
-                                mutation_scale=8),
-                zorder=zorder)
 
 
 # ════════════════════════════════════════════════════════════════
 #  BLUE SYSTEM (C_BLUE)
 # ════════════════════════════════════════════════════════════════
 
-# Blue suction: IBC (right) → header above filters → BV-01 → down to P-01
-pipe_run([(EXIT_R, BLUE_HDR_Z), (BV01_X + VALVE_R + 3, BLUE_HDR_Z)], C_BLUE)
-pipe_run([(BV01_X - VALVE_R - 3, BLUE_HDR_Z), (RAIL_L, BLUE_HDR_Z),
-          (RAIL_L, P01_PT), (PUMP_COL_X, P01_PT)], C_BLUE)
-valve_sym(BV01_X, BV01_Z, "BV\n01", C_BLUE)
-flow_arrow(EXIT_R - 5, BLUE_HDR_Z, EXIT_R - 40, BLUE_HDR_Z, C_BLUE)
+# Blue suction: IBC → header above filters → BV-01 → down rail → P-01
+draw_pipe_path(ax,
+    [EXIT_R, RAIL_L, RAIL_L, PUMP_COL_X],
+    [BLUE_HDR_Z, BLUE_HDR_Z, P01_PT, P01_PT],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+draw_ball_valve(BV01_X, BV01_Z, "BV\n01", C_BLUE)
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(BLUE_HDR_Z)),
+            xytext=(sx(EXIT_R), sz(BLUE_HDR_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
 
-# Blue discharge: P-01 → left rail → up to ACC-01 height → BV-02 → exit left
-DISCH_X = RAIL_L - 25  # vertical riser X
-pipe_run([(PUMP_COL_X, P01_PB), (DISCH_X, P01_PB),
-          (DISCH_X, ACC_Z)], C_BLUE, zorder=9)
-# ACC-01 tee stub
-pipe_run([(DISCH_X, ACC_Z), (PUMP_COL_X - ACC_OD / 2, ACC_Z)],
-         C_BLUE, lw=2.0, zorder=9)
-# Horizontal from riser → BV-02 → exit left (spray bar)
-pipe_run([(DISCH_X, ACC_Z), (BV02_X + VALVE_R + 3, ACC_Z)], C_BLUE, zorder=9)
-pipe_run([(BV02_X - VALVE_R - 3, ACC_Z), (EXIT_L, ACC_Z)], C_BLUE, zorder=9)
-valve_sym(BV02_X, BV02_Z, "BV\n02", C_BLUE)
-flow_arrow(EXIT_L + 40, ACC_Z, EXIT_L + 5, ACC_Z, C_BLUE)
+# Blue discharge: P-01 bottom → riser → ACC-01 tee → BV-02 → exit left
+draw_pipe_path(ax,
+    [PUMP_COL_X, DISCH_X, DISCH_X],
+    [P01_PB, P01_PB, ACC_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+draw_pipe_path(ax,
+    [DISCH_X, PUMP_COL_X - ACC_OD / 2],
+    [ACC_Z, ACC_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+draw_pipe_path(ax,
+    [DISCH_X, EXIT_L],
+    [ACC_Z, ACC_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+draw_ball_valve(BV02_X, BV02_Z, "BV\n02", C_BLUE)
+ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
+            xytext=(sx(EXIT_L + _AW), sz(ACC_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
 
-# Blue suction entry label
 ax.text(sx(EXIT_R + 5), sz(BLUE_HDR_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="left", va="center",
-        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
-# Blue discharge exit label
+        fontsize=4, color=C_BLUE, zorder=10, **FONT)
 ax.text(sx(EXIT_L - 5), sz(ACC_Z),
         "TO\nSPRAY\nBAR", ha="right", va="center",
-        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
+        fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
 #  BROWN SYSTEM (C_BROWN)
 # ════════════════════════════════════════════════════════════════
 
-# Brown suction: IBC-3 (right) → P-02 top port
-pipe_run([(EXIT_R, P02_PT), (PUMP_COL_X, P02_PT)], C_BROWN)
-flow_arrow(EXIT_R - 5, P02_PT, EXIT_R - 40, P02_PT, C_BROWN)
+# Brown suction: IBC-3 → P-02 top port
+draw_pipe_path(ax,
+    [EXIT_R, PUMP_COL_X],
+    [P02_PT, P02_PT],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P02_PT)),
+            xytext=(sx(EXIT_R), sz(P02_PT)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(P02_PT),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
-        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# Brown discharge: P-02 bottom → right → filter header → through filters → exit right
-# P-02 outlet to filter header height
-pipe_run([(PUMP_COL_X, P02_PB), (RAIL_R, P02_PB),
-          (RAIL_R, BROWN_HDR_Z)], C_BROWN, zorder=9)
-
-# Header connecting to filter inlets (at port height)
-F01_IN_X = F01_X_C - 30   # F-01 IN port
-F03_OUT_X = F03_X_C + 30  # F-03 OUT port
-pipe_run([(RAIL_R, BROWN_HDR_Z), (F01_IN_X, BROWN_HDR_Z)], C_BROWN, zorder=9)
-
-# Inter-filter connections (through head section ports)
-pipe_run([(F01_X_C + 30, BROWN_HDR_Z), (F02_X_C - 30, BROWN_HDR_Z)],
-         C_BROWN, lw=2.0, zorder=9)
-pipe_run([(F02_X_C + 30, BROWN_HDR_Z), (F03_X_C - 30, BROWN_HDR_Z)],
-         C_BROWN, lw=2.0, zorder=9)
-
-# F-03 outlet → exit right (filtered water returns to Blue IBC)
-pipe_run([(F03_OUT_X, BROWN_HDR_Z), (EXIT_R, BROWN_HDR_Z)], C_BROWN, zorder=9)
-flow_arrow(EXIT_R - 40, BROWN_HDR_Z, EXIT_R - 5, BROWN_HDR_Z, C_BROWN)
+# Brown discharge: P-02 bottom → rail → filter header → through filters → exit
+F01_IN_X = F01_X_C - 30
+F03_OUT_X = F03_X_C + 30
+draw_pipe_path(ax,
+    [PUMP_COL_X, RAIL_R, RAIL_R, F01_IN_X],
+    [P02_PB, P02_PB, BROWN_HDR_Z, BROWN_HDR_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+draw_pipe_path(ax,
+    [F01_X_C + 30, F02_X_C - 30],
+    [BROWN_HDR_Z, BROWN_HDR_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+draw_pipe_path(ax,
+    [F02_X_C + 30, F03_X_C - 30],
+    [BROWN_HDR_Z, BROWN_HDR_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+draw_pipe_path(ax,
+    [F03_OUT_X, EXIT_R],
+    [BROWN_HDR_Z, BROWN_HDR_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+ax.annotate("", xy=(sx(EXIT_R), sz(BROWN_HDR_Z)),
+            xytext=(sx(EXIT_R - _AW), sz(BROWN_HDR_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(BROWN_HDR_Z),
         "FILTERED\nTO IBC-1\n(REUSE)", ha="left", va="center",
-        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
 #  TRAY DRAIN / BLACK SYSTEM (C_BLACK_SYS)
 # ════════════════════════════════════════════════════════════════
 
-# Tray drain suction: enters from left (hose from tray sump) → P-04 top port
-pipe_run([(EXIT_L, P04_PT), (PUMP_COL_X, P04_PT)], C_BLACK_SYS, ls="--")
-flow_arrow(EXIT_L + 5, P04_PT, EXIT_L + 40, P04_PT, C_BLACK_SYS)
+# Tray drain suction: left → P-04 top port (gap at Blue discharge riser)
+_gap_half = PIPE_OD / 2 + 3
+draw_pipe_path(ax,
+    [EXIT_L, DISCH_X - _gap_half],
+    [P04_PT, P04_PT],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+draw_pipe_path(ax,
+    [DISCH_X + _gap_half, PUMP_COL_X],
+    [P04_PT, P04_PT],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P04_PT)),
+            xytext=(sx(EXIT_L), sz(P04_PT)),
+            arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_L - 5), sz(P04_PT),
         "FROM\nTRAY\nSUMP", ha="right", va="center",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
-# P-04 discharge: → DV-02 → exits right to IBC-3 or IBC-4
-pipe_run([(PUMP_COL_X, P04_PB), (DV02_X - VALVE_R - 3, P04_PB)], C_BLACK_SYS)
-# DV-02 symbol (3-way diverter — triangle)
-DV_SZ = 18
-dv_pts = [(sx(DV02_X), sz(DV02_Z + DV_SZ)),
-          (sx(DV02_X + DV_SZ), sz(DV02_Z - DV_SZ)),
-          (sx(DV02_X - DV_SZ), sz(DV02_Z - DV_SZ))]
-ax.add_patch(plt.Polygon(dv_pts, closed=True,
-             fc="white", ec=C_BLACK_EC, lw=1.5, zorder=12))
-ax.text(sx(DV02_X), sz(DV02_Z - 3), "DV\n02", ha="center", va="center",
-        fontsize=2.5, color=C_BLACK_EC, fontweight="bold", zorder=13, **FONT)
+# P-04 discharge → DV-02
+draw_pipe_path(ax,
+    [PUMP_COL_X, DV02_X],
+    [P04_PB, P04_PB],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
-# DV-02 outputs: Brown (IBC-3) and Black/Waste (IBC-4)
-DV_OUT_Z_BROWN = DV02_Z + DV_SZ + 15
-DV_OUT_Z_BLACK = DV02_Z - DV_SZ - 15
-pipe_run([(DV02_X, DV02_Z + DV_SZ), (DV02_X, DV_OUT_Z_BROWN),
-          (EXIT_R, DV_OUT_Z_BROWN)], C_BROWN, lw=2.0)
-pipe_run([(DV02_X, DV02_Z - DV_SZ), (DV02_X, DV_OUT_Z_BLACK),
-          (EXIT_R, DV_OUT_Z_BLACK)], C_BLACK_SYS, lw=2.0)
+# DV-02 (3-way diverter — diamond symbol)
+draw_ball_valve(DV02_X, DV02_Z, "DV\n02", C_BLACK_EC)
+
+# DV-02 Brown output → IBC-3
+DV_OUT_Z_BROWN = DV02_Z + BV_R + 15
+draw_pipe_path(ax,
+    [DV02_X, DV02_X, EXIT_R],
+    [DV02_Z + BV_R, DV_OUT_Z_BROWN, DV_OUT_Z_BROWN],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BROWN),
         "→ IBC-3", ha="left", va="center",
-        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+
+# DV-02 Black output → IBC-4
+DV_OUT_Z_BLACK = DV02_Z - BV_R - 15
+draw_pipe_path(ax,
+    [DV02_X, DV02_X, EXIT_R],
+    [DV02_Z - BV_R, DV_OUT_Z_BLACK, DV_OUT_Z_BLACK],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BLACK),
         "→ IBC-4", ha="left", va="center",
-        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

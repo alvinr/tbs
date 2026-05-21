@@ -515,16 +515,22 @@ draw_pipe_path(ax,
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # Filter jumpers (via rails on right side of filter column)
-# F-01 OUT → rail → F-02 IN
+# Arrival horizontals offset 20mm below head Z to avoid merging with
+# the departure pipe at the same filter head.
+_JMPR_DROP = 20
+
+# F-01 OUT → rail 1 → drop to F-02 IN
 draw_pipe_path(ax,
-    [F_OUT_YD, JMPR_RAIL1, JMPR_RAIL1, F_IN_YD],
-    [F01_HEAD_Z, F01_HEAD_Z, F02_HEAD_Z, F02_HEAD_Z],
+    [F_OUT_YD, JMPR_RAIL1, JMPR_RAIL1, F_IN_YD, F_IN_YD],
+    [F01_HEAD_Z, F01_HEAD_Z, F02_HEAD_Z - _JMPR_DROP,
+     F02_HEAD_Z - _JMPR_DROP, F02_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
-# F-02 OUT → rail → F-03 IN
+# F-02 OUT → rail 2 → drop to F-03 IN
 draw_pipe_path(ax,
-    [F_OUT_YD, JMPR_RAIL2, JMPR_RAIL2, F_IN_YD],
-    [F02_HEAD_Z, F02_HEAD_Z, F03_HEAD_Z, F03_HEAD_Z],
+    [F_OUT_YD, JMPR_RAIL2, JMPR_RAIL2, F_IN_YD, F_IN_YD],
+    [F02_HEAD_Z, F02_HEAD_Z, F03_HEAD_Z - _JMPR_DROP,
+     F03_HEAD_Z - _JMPR_DROP, F03_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # F-03 OUT → exit RIGHT (filtered to IBC-1)

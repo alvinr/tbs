@@ -9,7 +9,8 @@ corridor (Yd=1046–1316), perpendicular to the sealed end wall at X=5000.
 Equipment mounts on the panel face, protruding toward the open end (-X).
 
 Left pump column:  P-01 (Blue) + P-04 (Tray drain) + ACC-01.
-Right pump column: P-02 (Brown) + P-03 (Waste evac) + DV-02.
+Right pump column: P-02 (Brown) + P-03 (Waste evac) + DV-02 + P-05 (Brown drain).
+BV-07/BV-08 manual isolation valves on IBC drain-out suction lines.
 Filters (×3) centered on panel below pump zone.
 
 Plus a cross-section strip showing panel/walkway/wall relationship.
@@ -94,6 +95,8 @@ P03_Z = P02_Z + PUMP_H + PUMP_GAP    # = 1378 (right col, top)
 
 ACC_YD = PUMP_COL
 ACC_Z  = P04_Z + PUMP_H + 150        # = 1746 (raised above P-04 for pipe separation)
+
+P05_Z = ACC_Z                         # = 1746 (right column, beside ACC-01)
 
 # ── Colors ────────────────────────────────────────────────────────────────
 C_FRAME      = "#1A1A1A"
@@ -190,8 +193,9 @@ ax.text(sx(PANEL_W / 2), sz(PANEL_H - 30),
 
 # Zone separator (dashed line between left and right pump columns — pump zone only)
 zone_yd = PUMP_W + 6   # 133mm — between pump columns
+_zone_top = max(ACC_Z + ACC_LEN, P05_Z + PUMP_H) + 50
 ax.plot([sx(zone_yd), sx(zone_yd)],
-        [sz(PUMP_ZONE_BOT - 20), sz(ACC_Z + ACC_LEN + 50)],
+        [sz(PUMP_ZONE_BOT - 20), sz(_zone_top)],
         color=C_PLY_EC, lw=0.5, ls=(0, (4, 4)), zorder=3, alpha=0.5)
 
 
@@ -230,6 +234,8 @@ _draw_pump(R_COL, R_PORT_IN, R_PORT_OUT,
            P02_Z, "P-02", "BROWN\nRECYCLE", C_BROWN, C_BROWN_EC)
 _draw_pump(R_COL, R_PORT_IN, R_PORT_OUT,
            P03_Z, "P-03", "WASTE\nEVAC", C_BLACK_SYS, C_BLACK_EC)
+_draw_pump(R_COL, R_PORT_IN, R_PORT_OUT,
+           P05_Z, "P-05", "BROWN\nDRAIN", C_BROWN, C_BROWN_EC)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -309,7 +315,7 @@ ax.text(sx(FILT_COL), sz(F03_Z - 45),
 
 # Pump zone (top — spans both columns)
 ax.text(sx(PANEL_W / 2), sz(P01_Z - 30),
-        "PUMP ZONE (×4)", ha="center", va="top",
+        "PUMP ZONE (×5)", ha="center", va="top",
         fontsize=4.5, color=C_PUMP_EC, fontweight="bold", zorder=10, **FONT)
 
 
@@ -342,6 +348,7 @@ P01_PORT_Z = P01_Z + PUMP_H - 25      # 1313 (left col, bottom)
 P04_PORT_Z = P04_Z + PUMP_H - 25      # 1571 (left col, top)
 P02_PORT_Z = P02_Z + PUMP_H - 25      # 1313 (right col, bottom)
 P03_PORT_Z = P03_Z + PUMP_H - 25      # 1571 (right col, top)
+P05_PORT_Z = P05_Z + PUMP_H - 25      # 1939 (right col, top — beside ACC-01)
 
 # ── Filter head Z positions ──
 F01_HEAD_Z = F01_Z + FILT_H - FILT_HEAD / 2   # top filter head
@@ -369,6 +376,10 @@ BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
 DV02_YD = R_COL                      # right column — blank space above P-03
 DV02_Z  = P04_PORT_Z + 100           # 100mm rise from P-04 outlet before turn
+BV07_YD = PANEL_W + 15               # just past right panel edge (IBC side)
+BV07_Z  = P05_PORT_Z                 # inline on P-05 suction horizontal
+BV08_YD = PANEL_W + 15               # just past right panel edge (IBC side)
+BV08_Z  = P03_PORT_Z                 # inline on P-03 suction horizontal
 
 # ── Flow arrow style ──
 _AW = 25
@@ -644,6 +655,7 @@ ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P03_PORT_Z)),
 ax.text(sx(EXIT_R + 5), sz(P03_PORT_Z),
         "FROM\nIBC-4\n(WASTE)", ha="left", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+draw_ball_valve(BV08_YD, BV08_Z, "BV\n08", C_BLACK_EC)
 
 # P-03 discharge: outlet (left port) → drop → right to D4 bulkhead
 _P03_DISCH_Z = P03_PORT_Z - PORT_DROP
@@ -657,6 +669,37 @@ ax.annotate("", xy=(sx(EXIT_R), sz(_P03_DISCH_Z)),
 ax.text(sx(EXIT_R + 5), sz(_P03_DISCH_Z),
         "TO D4\nDRAIN\nPORT", ha="left", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+
+
+# ════════════════════════════════════════════════════════════════
+#  P-05 BROWN DRAIN (C_BROWN) — right column, beside ACC-01
+# ════════════════════════════════════════════════════════════════
+
+# P-05 suction: IBC-3 (RIGHT) → BV-07 → P-05 inlet (right port)
+draw_pipe_path(ax,
+    [EXIT_R, R_PORT_IN],
+    [P05_PORT_Z, P05_PORT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+draw_ball_valve(BV07_YD, BV07_Z, "BV\n07", C_BROWN)
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P05_PORT_Z)),
+            xytext=(sx(EXIT_R), sz(P05_PORT_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
+ax.text(sx(EXIT_R + 5), sz(P05_PORT_Z),
+        "FROM\nIBC-3\n(DRAIN)", ha="left", va="center",
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+
+# P-05 discharge: outlet (left port) → drop → right to D3 drain port
+_P05_DISCH_Z = P05_PORT_Z - PORT_DROP
+draw_pipe_path(ax,
+    [R_PORT_OUT, R_PORT_OUT, EXIT_R],
+    [P05_PORT_Z, _P05_DISCH_Z, _P05_DISCH_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+ax.annotate("", xy=(sx(EXIT_R), sz(_P05_DISCH_Z)),
+            xytext=(sx(EXIT_R - _AW), sz(_P05_DISCH_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
+ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
+        "TO D3\nDRAIN\nPORT", ha="left", va="center",
+        fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -720,7 +763,7 @@ ax.text(sx(PANEL_W + 30), sz(0),
 leader(ax,
        sx(PUMP_COL - PUMP_W / 2), sz(P01_Z + PUMP_H / 2),
        sx(X_SHOW_L + 10), sz(P01_Z + PUMP_H / 2 - 60),
-       "Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(×4 on SS L-brackets)",
+       "Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(×5 on SS L-brackets)",
        fs=4, color=C_PUMP_EC, font=FONT)
 
 # ACC-01
@@ -854,8 +897,8 @@ notes = [
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
     "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
-    "5. TOP: 2×2 pump grid — P-01/P-04 + ACC-01 (left); P-02/P-03 + DV-02 (right) — above filters.",
-    "6. BV-01/BV-02 on Blue circuit. DV-02 above P-03 (IBC-3 exits right, IBC-4 exits bottom).",
+    "5. LEFT COL: P-01/P-04 + ACC-01. RIGHT COL: P-02/P-03 + DV-02 + P-05. All above filters.",
+    "6. BV-01/BV-02 (Blue), BV-07 (Brown drain), BV-08 (Waste drain) — manual ball valves.",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]

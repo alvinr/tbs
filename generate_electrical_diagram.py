@@ -250,8 +250,8 @@ def draw_sheet1():
          "Far end wall (X=5,893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
         ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
          "Cargo door end wall (X=0)  |  high position  |  Yd=2,287mm corner", C_ALUM),
-        ("C", "WATER PUMP  (12V DC)",              "15A", "14 AWG", "100W",
-         "Equipment panel, IBC corridor (Yd=1,046)", C_PUMP_TINT),
+        ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
+         "Equipment panel, IBC corridor (Yd=1,046–1,316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
@@ -392,8 +392,8 @@ def draw_sheet2():
         FP_X_L, FP_X_R,
         ZONE_L_END, ZONE_R_START,
         EVAP_DUCT_X, EVAP_DUCT_D,
-        EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W, PUMP_D,
-        CORRIDOR_YD_NEAR, EQPANEL_X, EQPANEL_W,
+        EP_X, EP_W, BA_X, BA_W,
+        CORRIDOR_YD_NEAR, CORRIDOR_W, EQPANEL_X, EQPANEL_W, FSKID_X,
         IBC_COL_X, IBC_W, IBC_D,
         BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
         DRUM_CX, DRUM_D, DRUM_R,
@@ -624,9 +624,9 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold",
             color=C_OUT, zorder=8)
 
-    # EQUIPMENT PANEL (Yd=1,046) — pump manifold in IBC corridor
-    PUMP_YD = CORRIDOR_YD_NEAR
-    equip(PUMP_X, PUMP_YD, PUMP_W, PUMP_D, "", C_PUMP, "")
+    # EQUIPMENT PANEL (Yd=1,046) — pumps + filters in IBC corridor
+    equip(FSKID_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
+          "C", C_PUMP, "Equip panel  Yd=1,046–1,316")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
     # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
@@ -757,13 +757,13 @@ def draw_sheet2():
 
     # Drop conduits from trunking to devices
     DUCT_CX = ix(EVAP_DUCT_X)
-    PUMP_CX = ix(PUMP_X + PUMP_W/2)
+    PUMP_CX = ix(FSKID_X + EQPANEL_W / 2)
     IBC_CX  = ix(IBC_COL_X + IBC_W/2)
     for ddx, ddy in [
         (BA_DX + BA_DW/2,    OY + wt),
         (EP_DX + EP_DW/2,    OY + wt),
         (DUCT_CX,            OY + wt / 2),                   # duct penetration (in wall)
-        (PUMP_CX,            OY+wt + PUMP_YD*S_yd),          # pump manifold (Yd=1,046)
+        (PUMP_CX,            OY+wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2)*S_yd),  # equip panel
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
         (FA_X,               FA_Y - 0.22),
         (FB_X,               FB_Y - 0.22),
@@ -795,9 +795,9 @@ def draw_sheet2():
            "Exhaust fan (B)\n6\" DC  60W",
            fs=6.5)
     # Pump — Cct C (on equipment panel in IBC corridor)
-    leader(ax, PUMP_CX, OY + wt + PUMP_YD * S_yd,
+    leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
            PUMP_CX + 0.3, OY + cwid * 0.55,
-           "Water pumps (C)\n12V DC  100W\nEquipment panel",
+           "Pumps + filters (C)\n12V DC  100W\nEquipment panel",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
@@ -871,8 +871,8 @@ def draw_sheet2():
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5,893mm)  |  Yd=75mm"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=2,287mm"),
-        ("C",     C_PUMP,    "WATER PUMP — Cct C",
-         f"12V DC  |  15A / 14 AWG / 100W  |  Equipment panel, Yd={CORRIDOR_YD_NEAR:,}mm"),
+        ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",
+         f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR:,}–{CORRIDOR_YD_NEAR + CORRIDOR_W:,}mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
@@ -946,8 +946,8 @@ def draw_sheet3():
         PH_X as TBS_PH_X, PH_H, PH_D,
         EP_X, EP_W, EP_H_LO, EP_H_HI,
         BA_X, BA_W, BA_H_LO, BA_H_HI,
-        PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
-        EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z, CORRIDOR_YD_NEAR,
+        EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z,
+        CORRIDOR_YD_NEAR, CORRIDOR_W,
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
         PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM,
         WALKWAY_W, WALKWAY_H, WALKWAY_LEFT_X,
@@ -1129,18 +1129,7 @@ def draw_sheet3():
     wall_equip(BA_X, BA_H_LO, BA_H_HI, BA_W,
                "BATTERY BANK", "2×100Ah LiFePO4", C_BATT)
 
-    # ── Pump manifold (relocated to equipment panel, Yd=1,046) ────────────────
-    # Ghost outline showing former position
-    pm_x = wx(PUMP_X + PUMP_W)
-    pm_w = PUMP_W * S
-    pm_y = wz(PUMP_H_LO)
-    pm_h = (PUMP_H_HI - PUMP_H_LO) * S
-    ax.add_patch(mpatches.Rectangle((pm_x, pm_y), pm_w, pm_h,
-                 fc="none", ec="#C0C0C0", lw=1.0, ls=(0, (3, 3)), zorder=3))
-    ax.text(pm_x + pm_w / 2, pm_y + pm_h / 2,
-            "PUMPS\n(RELOCATED TO\nEQUIP PANEL\nYd=1,046)",
-            ha="center", va="center", fontsize=5.5, color="#A0A0A0",
-            style="italic", zorder=4)
+    # (Pump manifold removed from pinhole wall — now on equipment panel in IBC corridor)
 
     # ── Pinhole ───────────────────────────────────────────────────────────────
     ph_x = wx(TBS_PH_X)
@@ -1316,7 +1305,7 @@ def draw_sheet3():
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_H_HI}mm"),
-        ("#F5C8A0", "PUMP MANIFOLD",     f"Cct C  |  Relocated to equipment panel (Yd={CORRIDOR_YD_NEAR})"),
+        ("#F5C8A0", "EQUIPMENT PANEL",   f"Cct C  |  Pumps + filters  |  IBC corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W})"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
@@ -1336,7 +1325,7 @@ def draw_sheet3():
     # ── Drawing notes ─────────────────────────────────────────────────────────
     notes = [
         "DRAWING NOTES:",
-        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps relocated to equipment panel (Yd=1,046); evap cooler external via duct.",
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on equipment panel in IBC corridor (Yd=1,046); evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482,363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1,500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",

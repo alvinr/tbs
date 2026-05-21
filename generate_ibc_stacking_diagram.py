@@ -1548,7 +1548,7 @@ def sheet5():
                             fc=C_PUMP, ec=C_OUT, lw=1.0, alpha=0.25,
                             ls="--", zorder=5))
     ax.text(px(pump_x_far + PUMP_D / 2), py(pump_yd_near + PUMP_YD_SPAN / 2),
-            "P-01 / P-02 / P-04\n(PUMP ZONE)",
+            "P-01 / P-02 / P-03 / P-04\n(PUMP ZONE)",
             ha="center", va="center", fontsize=5, color=C_PUMP,
             fontweight="bold", **FONT, zorder=10)
 
@@ -1676,9 +1676,9 @@ def sheet5():
     near_ibc_conn_yd = near_col_r   # 1,046
     far_ibc_conn_yd  = far_col_l    # 1,316
 
-    # Connection X positions (spread along IBC for clarity)
-    fill_x  = IBC_COL_X + IBC_W * 0.65
-    drain_x = IBC_COL_X + IBC_W * 0.35
+    # Connection X positions — at panel face for valve accessibility
+    fill_x  = ep_face_x
+    drain_x = ep_face_x
 
     # ── D4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
     # D4 (Z=200) is the lowest pipe. Drawn first so D3 covers it in corridor.
@@ -1694,15 +1694,6 @@ def sheet5():
             "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
-    # P-03 pump label (pump inline on vertical run, below plan view)
-    p03_plan_yd = (v4_yd + far_ibc_conn_yd) / 2
-    ax.plot(px(drain_x), py(p03_plan_yd), "o", color=C_PUMP, ms=8, zorder=12)
-    ax.text(px(drain_x), py(p03_plan_yd), "P", ha="center", va="center",
-            fontsize=5, color="white", fontweight="bold", zorder=13)
-    ax.text(px(drain_x + 60), py(p03_plan_yd),
-            "P-03", ha="right", va="center", fontsize=5.5, color=C_PUMP,
-            **FONT, zorder=15)
-
     # ── D3: IBC-3 (near, Brown) → bulkhead (above D4) ──────────────────────
     # D3 (Z=400) sits above D4 (Z=200). Covers D4 in the corridor run.
     draw_pipe_path(ax,
@@ -1725,9 +1716,9 @@ def sheet5():
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
     flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    ax.text(px(fill_x + 40), py(far_ibc_conn_yd - 50),
+    ax.text(px(fill_x - 40), py(far_ibc_conn_yd + 200),
             "F2 → IBC-2\n(FILL, BLUE)\n1\" HDPE",
-            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
     # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) — top pipe ────────────
@@ -1736,12 +1727,12 @@ def sheet5():
                    [panel_yd, panel_yd, near_ibc_conn_yd],
                    PIPE_OD, PIPE_WALL_T, px, py,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=9)
-    v1_x = (bh_x + fill_x) / 2
-    valve_plan(ax, v1_x, panel_yd, 'h', C_PIPE_BLUE, "V1")
+    v1_yd = (near_ibc_conn_yd + panel_yd) / 2
+    valve_plan(ax, fill_x, v1_yd, 'v', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    ax.text(px(fill_x + 40), py(near_ibc_conn_yd + 50),
+    ax.text(px(fill_x - 40), py(near_ibc_conn_yd - 200),
             "F1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
-            ha="left", va="center", fontsize=5.5, color=C_PIPE_BLUE,
+            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
 
     # ── Legend ───────────────────────────────────────────────────────────────
@@ -1810,7 +1801,7 @@ def sheet5():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + px(70), y_ep,
-            "EQUIPMENT PANEL — P-01/P-02/P-04 pumps, ACC-01 (18mm marine ply)",
+            "EQUIPMENT PANEL — P-01/P-02/P-03/P-04 pumps, ACC-01 (18mm marine ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 
@@ -1843,10 +1834,10 @@ def sheet5():
         "1. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
         "2. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
         "3. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
-        "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V2 on horizontal, V3/V4 on branch.",
+        "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V3/V4 on vertical branch at panel face.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
-        f"7. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-04 pumps + 3× Big Blue filters.",
+        f"7. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-03/P-04 pumps + 3× Big Blue filters.",
     ]
     draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
                fs=5.5, font=FONT, width=2500)

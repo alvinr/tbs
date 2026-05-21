@@ -233,11 +233,10 @@ _draw_pump(R_COL, R_PORT_IN, R_PORT_OUT,
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  3. ACC-01 — above pump stack (profile view, vertical, port at bottom)
-#     Dead-end branch off main discharge pipe via tee — NOT inline
+#  3. ACC-01 — above pump stack (profile view, vertical, ports at bottom)
+#     Inline: flow enters right port, exits left port (same as pump convention)
 # ═══════════════════════════════════════════════════════════════════════════
-ACC_STUB = 25   # gap between main pipe and ACC body for tee stub
-ACC_BODY_Z = ACC_Z + ACC_STUB
+ACC_BODY_Z = ACC_Z
 rect(ACC_YD - ACC_OD / 2, ACC_BODY_Z, ACC_OD, ACC_LEN,
      C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.7)
 ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 + 10),
@@ -246,9 +245,10 @@ ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 + 10),
 ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 - 15),
         f"O/{ACC_OD}", ha="center", va="center",
         fontsize=3.5, color="white", zorder=8, **FONT)
-# Port at bottom of ACC body (tee stub pipe drawn with Blue system pipes below)
-circ(ACC_YD, ACC_BODY_Z, 10,
-     C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=10)
+# Two ports at bottom (IN right, OUT left — same spacing as pump ports)
+for port_yd in [PORT_OUT_YD, PORT_IN_YD]:
+    circ(port_yd, ACC_BODY_Z, 10,
+         C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=10)
 
 # Mounting clamp (U-bracket at top)
 clamp_w = ACC_OD + 20
@@ -503,17 +503,15 @@ ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# Blue discharge: full path as single draw_pipe_path for proper elbows
-# P-01 outlet → drop → right to riser → up to ACC_Z → left to spray bar
-# Z_DISCH so riser draws OVER crossing suction pipes
+# Blue discharge IN: P-01 outlet → riser → ACC-01 inlet (right port)
 draw_pipe_path(ax,
-    [EXIT_L, DISCH_RAIL, DISCH_RAIL, PORT_OUT_YD, PORT_OUT_YD],
+    [PORT_IN_YD, DISCH_RAIL, DISCH_RAIL, PORT_OUT_YD, PORT_OUT_YD],
     [ACC_Z, ACC_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# ACC-01 tee stub: branch up from main pipe to accumulator body
+# Blue discharge OUT: ACC-01 outlet (left port) → BV-02 → spray bar
 draw_pipe_path(ax,
-    [ACC_YD, ACC_YD],
-    [ACC_Z, ACC_BODY_Z],
+    [EXIT_L, PORT_OUT_YD],
+    [ACC_Z, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
@@ -540,16 +538,14 @@ ax.text(sx(EXIT_R + 5), sz(P02_PORT_Z),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
         fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# Brown discharge: P-02 outlet (left port) → jog left → drop to F-01 IN
+# Brown discharge: P-02 outlet → drop → left → down to F-01 IN
 draw_pipe_path(ax,
-    [R_PORT_OUT, F_IN_YD, F_IN_YD],
-    [P02_PORT_Z, P02_PORT_Z, F01_HEAD_Z],
+    [R_PORT_OUT, R_PORT_OUT, F_IN_YD, F_IN_YD],
+    [P02_PORT_Z, P02_PORT_Z - PORT_DROP, P02_PORT_Z - PORT_DROP, F01_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # Filter jumpers — gravity-fed downward: F-01 → F-02 → F-03
-# Arrival horizontals offset 20mm above head Z to avoid merging with
-# the departure pipe at the same filter head.
-_JMPR_DROP = 20
+_JMPR_DROP = 50
 
 # F-01 OUT → rail 1 → drop to F-02 IN
 draw_pipe_path(ax,
@@ -583,10 +579,18 @@ ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
 # ════════════════════════════════════════════════════════════════
 
 # Tray drain suction: LEFT → P-04 inlet (RIGHT port)
-# Raised above port Z to clear outlet; discharge riser draws over via Z_DISCH
+# Suction horizontal crosses discharge vertical at Yd=PORT_OUT_YD —
+# break suction at crossing (discharge is front pipe).
 _P04_SUCT_Z = P04_PORT_Z + SUCT_RISE
+_gap_half = PIPE_OD / 2.0
+# Suction: before crossing
 draw_pipe_path(ax,
-    [EXIT_L, PORT_IN_YD, PORT_IN_YD],
+    [EXIT_L, PORT_OUT_YD - _gap_half],
+    [_P04_SUCT_Z, _P04_SUCT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+# Suction: after crossing + drop to port
+draw_pipe_path(ax,
+    [PORT_OUT_YD + _gap_half, PORT_IN_YD, PORT_IN_YD],
     [_P04_SUCT_Z, _P04_SUCT_Z, P04_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),
@@ -596,11 +600,11 @@ ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
         "FROM\nTRAY\nSUMP", ha="right", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
-# P-04 discharge: outlet (LEFT port) → drop → right to DV-02
+# P-04 discharge: outlet (LEFT port) → up → right to DV-02 (front pipe at crossing)
 draw_pipe_path(ax,
     [PORT_OUT_YD, PORT_OUT_YD, DV02_YD],
     [P04_PORT_Z, DV02_Z, DV02_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK + 0.5)
 
 # DV-02 (3-way diverter — diamond symbol)
 draw_ball_valve(DV02_YD, DV02_Z, "DV\n02", C_BLACK_EC)

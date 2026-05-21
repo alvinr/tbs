@@ -306,6 +306,7 @@ BV_R = 15
 Z_BLACK = 6
 Z_BROWN = 7
 Z_BLUE  = 8
+Z_DISCH = 9    # discharge riser draws OVER suction pipes
 
 # ── Port Z positions (both ports at pump head, side by side) ──
 PORT_DROP = 30               # discharge route drops below port Z
@@ -325,7 +326,7 @@ F_IN_YD  = FILT_COL - 35
 F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
-DISCH_RAIL = -20    # Blue discharge riser (left of panel)
+DISCH_RAIL = 10     # Blue discharge riser (inside panel, left of outlet)
 INTERZONE  = F_IN_YD                         # pump-to-filter transition
 JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
 JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
@@ -457,22 +458,15 @@ def draw_ball_valve(x, z, label, color):
             fontsize=3, color=color, fontweight="bold", zorder=13, **FONT)
 
 
-# Gap half-width for pipe crossings at Blue discharge riser
-_gap_half = PIPE_OD / 2 + 3
-
 # ════════════════════════════════════════════════════════════════
 #  BLUE SYSTEM (C_BLUE)
 # ════════════════════════════════════════════════════════════════
 
 # Blue suction: IBC-1/2 (LEFT) → BV-01 → P-01 inlet (RIGHT port)
-# Raised above port Z to clear outlet; gap at blue discharge riser
+# Raised above port Z to clear outlet; discharge riser draws over via Z_DISCH
 _P01_SUCT_Z = P01_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
-    [EXIT_L, DISCH_RAIL - _gap_half],
-    [_P01_SUCT_Z, _P01_SUCT_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
-draw_pipe_path(ax,
-    [DISCH_RAIL + _gap_half, PORT_IN_YD, PORT_IN_YD],
+    [EXIT_L, PORT_IN_YD, PORT_IN_YD],
     [_P01_SUCT_Z, _P01_SUCT_Z, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
@@ -483,21 +477,22 @@ ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# Blue discharge: P-01 outlet (LEFT port) → drop → left riser → up to ACC-01
+# Blue discharge: P-01 outlet (LEFT port) → drop → riser → up to ACC-01
+# Z_DISCH so riser draws OVER crossing suction pipes
 draw_pipe_path(ax,
     [PORT_OUT_YD, PORT_OUT_YD, DISCH_RAIL, DISCH_RAIL],
     [P01_PORT_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, ACC_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 # ACC-01 tee
 draw_pipe_path(ax,
     [DISCH_RAIL, PUMP_COL - ACC_OD / 2],
     [ACC_Z, ACC_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 # Discharge exit: drop below ACC tee then left to spray bar
 draw_pipe_path(ax,
     [DISCH_RAIL, DISCH_RAIL, EXIT_L],
     [ACC_Z, DISCH_EXIT_Z, DISCH_EXIT_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L), sz(DISCH_EXIT_Z)),
             xytext=(sx(EXIT_L + _AW), sz(DISCH_EXIT_Z)),
@@ -565,15 +560,11 @@ ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
 #  TRAY DRAIN / BLACK SYSTEM (C_BLACK_SYS)
 # ════════════════════════════════════════════════════════════════
 
-# Tray drain suction: LEFT → P-04 inlet (RIGHT port, gap at Blue discharge riser)
-# Raised above port Z to clear outlet
+# Tray drain suction: LEFT → P-04 inlet (RIGHT port)
+# Raised above port Z to clear outlet; discharge riser draws over via Z_DISCH
 _P04_SUCT_Z = P04_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
-    [EXIT_L, DISCH_RAIL - _gap_half],
-    [_P04_SUCT_Z, _P04_SUCT_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-draw_pipe_path(ax,
-    [DISCH_RAIL + _gap_half, PORT_IN_YD, PORT_IN_YD],
+    [EXIT_L, PORT_IN_YD, PORT_IN_YD],
     [_P04_SUCT_Z, _P04_SUCT_Z, P04_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),

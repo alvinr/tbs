@@ -4,17 +4,17 @@
 """
 generate_pump_manifold_diagram.py
 Generates a detailed plumbing diagram of the pump manifold assembly mounted on
-the pinhole wall (Yd=0).
+the equipment panel in the IBC plumbing corridor (Yd=1046).
 
 Sheet 1 — Pump Manifold Elevation (1:5)
-  View from inside the container looking at the pinhole wall.
+  View from IBC corridor looking at equipment panel face.
   X axis horizontal (mirrored), Z axis vertical.
   Shows: mounting frame, three Shurflo 2088 pumps (P-01, P-02, P-04),
          ACC-01 accumulator, BV-01/BV-02 ball valves, all pipe connections
          with parallel-wall drawing, dimensions and leader callouts.
 
   Detail A — Pump Mounting Cross-Section (~1:2)
-  Shows: container wall → plywood → mounting bracket → pump body → ports.
+  Shows: equipment panel → plywood → pump body → ports.
 
 Output:
   diagrams/pump-manifold-sheet1.png  (1800 x 1200 px, 150 dpi)
@@ -37,6 +37,7 @@ from tbs_constants import (
     C_LEN, C_WID, WALKWAY_W,
     PROC_TRAY_YD_NEAR, PROC_TRAY_D, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
     FSKID_X, FSKID_W,
+    CORRIDOR_W, CORRIDOR_YD_NEAR,
     BLUE_IBC_Y, IBC_FAR_Y, IBC_COL_X, IBC_W, IBC_D,
     svg_path,
 )
@@ -78,7 +79,7 @@ def sz(z_mm):
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — PUMP MANIFOLD ELEVATION (1:5)
-# View from inside container looking at pinhole wall (Yd=0)
+# View from IBC corridor looking at equipment panel (Yd=1046)
 # X horizontal (mirrored), Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -103,8 +104,8 @@ ax3.set_aspect("equal")
 ax3.axis("off")
 
 # Axis limits — elevation panel
-ax.set_xlim(sx(2200) - 1, sx(3550) + 1)
-ax.set_ylim(sz(-280) - 1, sz(1150) + 2)
+ax.set_xlim(sx(PUMP_X - 500) - 1, sx(PUMP_X + PUMP_W + 1200) + 1)
+ax.set_ylim(sz(-280) - 1, sz(1200) + 2)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
@@ -113,7 +114,6 @@ ax.invert_xaxis()
 reset_label_registry()
 
 # ── Manifold layout constants ────────────────────────────────────────────────
-# Matches pinhole-wall-elevation.py pump manifold layout exactly.
 # Frame widened 40%; P-04 centered below P-01/P-02; P-03 relocated to IBC corridor.
 ANGLE_W = 25   # frame member width (25×25×3mm SHS)
 FRAME_LW = 2.0
@@ -165,27 +165,22 @@ WALL_1 = FILT_PIPE_WALL   # 4mm
 # Panel title (placed after FRAME_Z_HI is computed)
 ax.text(sx(PUMP_X + PUMP_W / 2), sz(1180),
         "PUMP MANIFOLD ELEVATION — 3-PUMP LAYOUT (P-01, P-02, P-04)\n"
-        "Interior View Looking at Pinhole Wall (Yd=0)  |  Scale 1:5",
+        "View from IBC Corridor Looking at Equipment Panel (Yd=1046)  |  Scale 1:5",
         ha="center", va="top", fontsize=11, fontweight="bold",
         color="#1A237E", zorder=10)
 
-# ── Container wall context ───────────────────────────────────────────────────
-CORR_SPACING = 457
-for rib_x in range(2285, 3200, CORR_SPACING):
-    ax.plot([sx(rib_x), sx(rib_x)], [sz(0), sz(1100)],
-            color="#AAAAAA", lw=0.6, ls="--", zorder=1)
-
+# ── Context lines ────────────────────────────────────────────────────────────
 # Floor line
-ax.plot([sx(2200), sx(3400)], [sz(0), sz(0)],
+ax.plot([sx(PUMP_X - 300), sx(PUMP_X + PUMP_W + 800)], [sz(0), sz(0)],
         color="#888888", lw=1.5, ls="-", zorder=1)
-ax.text(sx(2250), sz(-15), "FLOOR (Z=0)", ha="left", va="top",
+ax.text(sx(PUMP_X - 250), sz(-15), "FLOOR (Z=0)", ha="left", va="top",
         fontsize=6, color="#888888", style="italic")
 
 # Walkway deck line
 WALKWAY_Z = 100
-ax.plot([sx(2300), sx(3300)], [sz(WALKWAY_Z), sz(WALKWAY_Z)],
+ax.plot([sx(PUMP_X - 200), sx(PUMP_X + PUMP_W + 700)], [sz(WALKWAY_Z), sz(WALKWAY_Z)],
         color=C_STEEL_FILL, lw=2.0, ls="-", zorder=1)
-ax.text(sx(2350), sz(WALKWAY_Z + 10), "WALKWAY DECK (Z=100)",
+ax.text(sx(PUMP_X - 150), sz(WALKWAY_Z + 10), "WALKWAY DECK (Z=100)",
         ha="left", va="bottom", fontsize=5.5, color="#888888", style="italic")
 
 
@@ -222,7 +217,7 @@ ax.add_patch(plt.Rectangle((sx(ply_x), sz(ply_z)),
              fc=C_PLY, ec="#A09060", lw=1.0, alpha=0.5, zorder=2.5))
 
 
-# ── Wall mounting brackets ───────────────────────────────────────────────────
+# ── Panel mounting brackets ──────────────────────────────────────────────────
 BRACKET_W = 50
 BRACKET_H = 60
 for bz in [FRAME_Z_LO + 40, FRAME_Z_HI - 80]:
@@ -442,13 +437,13 @@ DV02_BROWN_RISER_X = DV02_X - 25  # 25mm lower X (right in drawing)
 
 # Tray drain suction
 TRAY_DRAIN_Z = WALKWAY_Z + 20   # 120mm — just above walkway deck
-TRAY_SUMP_X = PROC_TRAY_DRAIN_X  # 2399mm
+TRAY_SUMP_X = PROC_TRAY_DRAIN_X
 
 # ── Flow arrow style ───────────────────────────────────────────────────────
 arrow_style = dict(arrowstyle="-|>", lw=1.5, mutation_scale=10)
 
-# ── Pipe layer zorders (depth from wall) ────────────────────────────────────
-# Layer 1 (back, closest to wall): Black/waste pipes
+# ── Pipe layer zorders (depth from panel) ───────────────────────────────────
+# Layer 1 (back, closest to panel): Black/waste pipes
 # Layer 2 (middle): Brown pipes
 # Layer 3 (front, closest to viewer): Blue pipes
 # Higher zorder = drawn on top = closer to viewer
@@ -739,7 +734,7 @@ leader(ax, sx(P01_X + PUMP_BODY_W / 2), sz(P01_Z + PUMP_BODY_H / 2),
 # Wall bracket
 leader(ax, sx(FRAME_X - BRACKET_W / 2), sz(FRAME_Z_LO + 40 + BRACKET_H / 2),
        sx(FRAME_X - BRACKET_W / 2 - 80), sz(FRAME_Z_LO + 40 + BRACKET_H / 2 + 50),
-       "FRAME BRACKET\nTO WALL RIB", fs=5)
+       "FRAME BRACKET\nTO PANEL", fs=5)
 
 # Pipe material leader
 pipe_label_x = (BV01_X + PIPE_EXIT_X) / 2
@@ -768,9 +763,9 @@ draw_notes(ax, notes, sx(PIPE_EXIT_X + 150), sz(-25), spacing=4.0, fs=7,
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL A — PUMP MOUNTING CROSS-SECTION (~1:2)
-# Side elevation (vertical section perpendicular to pinhole wall)
-# Yd horizontal (wall at left), Z vertical
-# Shows: corrugated wall → 18mm ply → pump bracket → pump body → ports
+# Side elevation (vertical section perpendicular to equipment panel)
+# Yd horizontal (panel at left), Z vertical
+# Shows: equipment panel → 18mm ply → pump body → ports
 # ═══════════════════════════════════════════════════════════════════════════════
 
 SC_A = 4.5  # mm per drawing unit for detail (~1:4.5, compact for side panel)
@@ -794,13 +789,13 @@ ax2.text(sa_y(100), sa_z(175), "DETAIL A\nPUMP MOUNTING CROSS-SECTION\nScale ~1:
 
 # All Z coordinates below are relative to pump port center
 
-# ── 1. Container corrugated wall (section fill) ─────────────────────────────
-WALL_T = 2.0
-ax2.add_patch(plt.Rectangle((sa_y(-WALL_T), sa_z(-130)),
-              WALL_T / SC_A, 280 / SC_A,
-              fc=C_STEEL_FILL, ec=C_FRAME, lw=1.8, zorder=3, hatch="//"))
-ax2.text(sa_y(-WALL_T / 2), sa_z(145), "WALL", ha="center", va="bottom",
-         fontsize=5.5, color=C_FRAME)
+# ── 1. Equipment panel (18mm marine ply at Yd=1046) ──────────────────────────
+PANEL_T = 18.0
+ax2.add_patch(plt.Rectangle((sa_y(-PANEL_T), sa_z(-130)),
+              PANEL_T / SC_A, 280 / SC_A,
+              fc="#D4C8A0", ec="#A09060", lw=1.8, zorder=3))
+ax2.text(sa_y(-PANEL_T / 2), sa_z(145), "EQUIP\nPANEL", ha="center", va="bottom",
+         fontsize=5, color=C_FRAME)
 
 # ── 2. Plywood backing board (18mm) ─────────────────────────────────────────
 PLY_YD_START = 0
@@ -821,7 +816,7 @@ draw_dim_h(ax2, sa_y(PLY_YD_START), sa_y(PLY_YD_START + PLY_THICK),
 # No bracket. Pump base sits flat against ply face.
 # Four 1/4"-20 bolts in two columns, 3.2" (81.3mm) apart, each column
 # with two bolts.  Bolts pass through pump mounting feet + 18mm ply;
-# nyloc nuts on wall side.
+# nyloc nuts on panel side.
 PUMP_YD = PLY_YD_START + PLY_THICK   # pump base face flush against ply
 PUMP_DEPTH = 113   # 4.45" depth in Yd (from datasheet)
 PUMP_SEC_H = 218   # FULL pump height in section (218mm = 8.60" per spec)
@@ -887,12 +882,11 @@ WASHER_T = 2   # washer thickness
 for bz in [bolt_z_upper, bolt_z_lower]:
     # Assembly order (wall → pump side):
     #   nyloc nut | washer | PLY (18mm) | washer | pump foot | nut
-    # Nut on pump side: sits flush against washer, which is against pump face
     washer_pump_yd = PUMP_YD                         # washer against pump face
     nut_pump_yd = washer_pump_yd + WASHER_T           # nut against washer
 
     # Bolt shank — through pump base + plywood, ends at nut
-    bolt_tip_yd = PLY_YD_START - 2   # just past ply on wall side
+    bolt_tip_yd = PLY_YD_START - 2   # just past ply on panel side
     ax2.plot([sa_y(bolt_tip_yd), sa_y(nut_pump_yd)],
              [sa_z(bz), sa_z(bz)],
              color=C_FRAME, lw=1.8, zorder=7)
@@ -909,13 +903,13 @@ for bz in [bolt_z_upper, bolt_z_lower]:
         BOLT_HEAD_H / SC_A, BOLT_HEAD_W / SC_A,
         fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
 
-    # Nyloc nut on wall side (behind ply)
+    # Nyloc nut on panel side (behind ply)
     ax2.add_patch(plt.Rectangle(
         (sa_y(bolt_tip_yd - NUT_H), sa_z(bz - BOLT_HEAD_W / 2)),
         NUT_H / SC_A, BOLT_HEAD_W / SC_A,
         fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
 
-    # Washer (wall side)
+    # Washer (panel side)
     ax2.add_patch(plt.Rectangle(
         (sa_y(bolt_tip_yd - 1), sa_z(bz - 5)),
         1 / SC_A, 10 / SC_A,
@@ -972,9 +966,9 @@ leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
 draw_dim_h(ax2, sa_y(PUMP_YD), sa_y(PUMP_YD + PUMP_DEPTH),
            sa_z(PUMP_SEC_Z_BOT - 20), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=0.33, fs=5.5)
 
-# Wall + ply total
-draw_dim_h(ax2, sa_y(-WALL_T), sa_y(PLY_YD_START + PLY_THICK),
-           sa_z(PUMP_SEC_Z_BOT - 40), f"{PLY_THICK + int(WALL_T)}mm\nWALL + PLY", offset=0.33, fs=5)
+# Panel + ply total
+draw_dim_h(ax2, sa_y(-PANEL_T), sa_y(PLY_YD_START + PLY_THICK),
+           sa_z(PUMP_SEC_Z_BOT - 40), f"{PLY_THICK + int(PANEL_T)}mm\nPANEL + PLY", offset=0.33, fs=5)
 
 # Pump height dimension (full 218mm)
 draw_dim_v(ax2, sa_y(PUMP_YD + PUMP_DEPTH + 15), sa_z(PUMP_SEC_Z_BOT), sa_z(PUMP_SEC_Z_TOP),
@@ -1001,7 +995,7 @@ ax2.text(sa_y(70), sa_z(PUMP_SEC_Z_BOT - 30),
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL B — PLAN VIEW (PUMP MANIFOLD ONLY)
 # View from ceiling looking down at the manifold zone
-# X horizontal (mirrored to match elevation), Yd vertical (wall at top)
+# X horizontal (mirrored to match elevation), Yd vertical (panel at top)
 # Shows: 3 pumps from above (P-01, P-02, P-04), ACC-01, BV-01/BV-02, DV-02, pipe stubs with
 #        direction arrows indicating where each pipe routes to
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1016,41 +1010,39 @@ def sp_x(x_mm):
 
 def sp_y(yd_mm):
     """Convert Yd position (mm) to plan view y coordinate (Yd=0 at top)."""
-    return OBY + (500 - yd_mm) / SC_B  # flip so wall (Yd=0) is at top
+    return OBY + (500 - yd_mm) / SC_B  # flip so panel (Yd=0) is at top
 
-# Set axis limits — focus on X=2200–3500, Yd=-50 to 520
-ax3.set_xlim(sp_x(2200) - 0.5, sp_x(3500) + 0.5)
+# Set axis limits — focus on pump zone
+ax3.set_xlim(sp_x(PUMP_X - 500) - 0.5, sp_x(PUMP_X + PUMP_W + 800) + 0.5)
 ax3.set_ylim(sp_y(520) - 0.5, sp_y(-100) + 0.5)
 
 # Mirror X to match elevation convention (high X on left)
 ax3.invert_xaxis()
 
 # Detail title
-ax3.text(sp_x(2750), sp_y(-130),
+ax3.text(sp_x(PUMP_X + PUMP_W / 2), sp_y(-130),
          "DETAIL B\nPUMP MANIFOLD PLAN VIEW\nLooking Down from Ceiling  |  Scale ~1:5.5",
          ha="center", va="top", fontsize=7, fontweight="bold",
          color="#1A237E", zorder=10)
 
-# ── Pinhole wall (Yd=0) ─────────────────────────────────────────────────────
-ax3.plot([sp_x(2150), sp_x(3150)], [sp_y(0), sp_y(0)],
+# ── Equipment panel face (Yd=1046, shown as Yd=0 in relative coords) ────────
+ax3.plot([sp_x(PUMP_X - 400), sp_x(PUMP_X + PUMP_W + 600)], [sp_y(0), sp_y(0)],
          color=C_FRAME, lw=3.0, zorder=3)
-ax3.text(sp_x(2200), sp_y(-15), "PINHOLE WALL (Yd=0)", ha="left", va="top",
+ax3.text(sp_x(PUMP_X - 350), sp_y(-15),
+         f"EQUIPMENT PANEL (Yd={CORRIDOR_YD_NEAR})", ha="left", va="top",
          fontsize=5.5, color=C_FRAME, fontweight="bold")
 
-# Corrugation ribs at Yd=0 (wall detail)
-for rib_x in range(2285, 3100, CORR_SPACING):
-    ax3.plot([sp_x(rib_x), sp_x(rib_x)], [sp_y(-5), sp_y(5)],
-             color="#AAAAAA", lw=1.5, zorder=2)
-
-# ── Near walkway edge (Yd=300) ──────────────────────────────────────────────
-ax3.plot([sp_x(2150), sp_x(3150)], [sp_y(WALKWAY_W), sp_y(WALKWAY_W)],
+# ── Far IBC column face (corridor boundary) ─────────────────────────────────
+ax3.plot([sp_x(PUMP_X - 400), sp_x(PUMP_X + PUMP_W + 600)],
+         [sp_y(CORRIDOR_W), sp_y(CORRIDOR_W)],
          color="#BBBBBB", lw=1.0, ls="--", zorder=2)
-ax3.text(sp_x(3100), sp_y(WALKWAY_W + 10), "WALKWAY EDGE (Yd=300)",
+ax3.text(sp_x(PUMP_X + PUMP_W + 500), sp_y(CORRIDOR_W + 10),
+         f"FAR IBC COLUMN (Yd={CORRIDOR_YD_NEAR + CORRIDOR_W})",
          ha="right", va="top", fontsize=4.5, color="#999999", style="italic")
 
 # ── Mounting frame footprint (plan view) ────────────────────────────────────
-# Frame sits against wall, depth = 18mm ply + bracket + 113mm pump depth (vertical)
-MANIFOLD_DEPTH = 160  # Yd depth from wall (ply + bracket + 113mm pump body + clearance)
+# Frame sits against panel, depth = 18mm ply + 113mm pump body + clearance
+MANIFOLD_DEPTH = 160  # Yd depth from panel face
 # Frame perimeter
 ax3.add_patch(plt.Rectangle(
     (sp_x(FRAME_X), sp_y(MANIFOLD_DEPTH)),
@@ -1078,7 +1070,7 @@ GHOST_LW = 1.0
 GHOST_LS = (0, (4, 3))  # dashed
 GHOST_YD_OFFSET = 8     # slight offset so ghost outline peeks out
 
-# Pump Yd start position (motor end at wall, head end outward)
+# Pump Yd start position (motor end at panel, head end outward)
 PUMP_YD_START = 20   # 18mm ply + 2mm clearance
 
 # Port positions in plan view: ports on LEFT and RIGHT sides in X
@@ -1131,7 +1123,7 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
              fontsize=5.5, color="white", fontweight="bold", zorder=6)
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D + 8),
              psub, ha="center", va="top",
-             fontsize=3.5, color=pcolor, fontweight="bold", zorder=6)
+             fontsize=4.0, color=pcolor, fontweight="bold", zorder=6)
     # Port indicators — circles at body edges (ports within 127mm envelope)
     p_in_x, p_in_yd, p_out_x, p_out_yd = _plan_pump_ports(pcx, pyd)
     ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)),
@@ -1140,9 +1132,9 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
                   PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
     # Port labels
     ax3.text(sp_x(p_in_x + 15), sp_y(p_in_yd), "IN", ha="left", va="center",
-             fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
+             fontsize=4.0, fontweight="bold", color=C_FRAME, zorder=8)
     ax3.text(sp_x(p_out_x - 15), sp_y(p_out_yd), "OUT", ha="right", va="center",
-             fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
+             fontsize=4.0, fontweight="bold", color=C_FRAME, zorder=8)
 
 # ── ACC-01 from above ───────────────────────────────────────────────────────
 ACC_PLAN_R = 57   # tank half-depth in plan (~114mm H from spec)
@@ -1273,8 +1265,8 @@ p02_cx = P02_X + PUMP_BODY_W / 2
 p04_cx = P04_X + PUMP_BODY_W / 2
 
 # Exit points
-EXIT_X_R = 3100   # right exit (toward IBCs)
-EXIT_X_L = 2200   # left exit (toward lower X / ext drain)
+EXIT_X_R = FRAME_R + 350    # right exit (toward IBCs), matches main elevation
+EXIT_X_L = FRAME_X - 300   # left exit (toward lower X / ext drain)
 EXIT_YD_BOT = MANIFOLD_DEPTH + 150  # below frame (from walkway side)
 
 # Plan-view port positions for P-01 and P-02
@@ -1329,9 +1321,9 @@ ax3.text(sp_x(EXIT_X_R + 10), sp_y(BROWN_PLAN_YD),
          ha="left", va="center", fontsize=4, color=C_BROWN, fontweight="bold")
 
 # ── Brown discharge: P-02 OUT (1/2") → riser to filter skid ─────────────
-# Pipe runs from P-02 OUT toward the wall, then rises vertically (Z).
+# Pipe runs from P-02 OUT toward the panel, then rises vertically (Z).
 # In plan view a vertical riser appears as a filled circle (pipe cross-section).
-RISER_PLAN_YD = 10  # just inside the wall, not through it
+RISER_PLAN_YD = 10  # just inside the panel, not through it
 draw_pipe_path_plan(ax3,
     [p02_plan_out_x, p02_plan_out_x],
     [PORT_PLAN_YD, RISER_PLAN_YD],
@@ -1359,7 +1351,7 @@ def ghost_pipe(x_pts, yd_pts, color):
 
 def ghost_label(x, yd, text, color, ha="left", va="center"):
     ax3.text(sp_x(x), sp_y(yd), text, ha=ha, va=va,
-             fontsize=3.5, color=color, fontweight="bold", alpha=0.4)
+             fontsize=4.0, color=color, fontweight="bold", alpha=0.4)
 
 # Tray drain suction: tray sump → P-04 IN (ghost) — at P-04 center X
 p04_cx = P04_X + PUMP_BODY_W / 2
@@ -1414,7 +1406,7 @@ ax3.text(sp_x(dv02_plan_x), sp_y(dv02_plan_yd - 20), "DV-02",
 draw_dim_h(ax3, sp_x(FRAME_X), sp_x(FRAME_X + FRAME_W), sp_y(-40),
            f"{FRAME_W}mm", offset=0.25, fs=5)
 
-# Frame depth from wall
+# Frame depth from panel
 draw_dim_v(ax3, sp_x(FRAME_X - 30), sp_y(MANIFOLD_DEPTH), sp_y(0),
            f"{MANIFOLD_DEPTH}mm\nDEPTH", offset=0.25, fs=4.5)
 
@@ -1426,7 +1418,7 @@ ax_tb.set_ylim(0, 1)
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="PUMP MANIFOLD — PLUMBING ELEVATION",
-            subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0)",
+            subtitle=f"VIEW FROM IBC CORRIDOR LOOKING AT EQUIPMENT PANEL (Yd={CORRIDOR_YD_NEAR})",
             scale_note="ELEV 1:5  |  DETAIL A ~1:4.5  |  DETAIL B (PLAN) ~1:5.5  |  ALL DIMS IN mm",
             doc_id="TBS-001 · Water System — Pump Manifold Detail",
             height=0.75)

@@ -40,17 +40,17 @@ from tbs_constants import (
     PH_X, PH_H,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_W, EVAP_Y, EVAP_D, EVAP_H, RAIL_OFF,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
-    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D,
+    CORRIDOR_YD_NEAR,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
     IBC_FAR_Y, WASTE_IBC_Y,
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
-    C_LT_DRUM, C_WASTE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP,
+    C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP,
     C_BLUE_IBC, C_BROWN_IBC, C_WALL,
 )
 
@@ -85,11 +85,6 @@ EQUIPMENT = [
     # (waste drums eliminated in rev 5 — left zone is light trap only)
 
     # PINHOLE WALL — Yd=0 face (always shadow-free)
-    # Evap cooler relocated here (rev 4) — X=930–1530mm, Yd=0 (pinhole wall face)
-    dict(name="Evap cooler",
-         x=EVAP_X, yd=EVAP_Y, w=EVAP_W, d=EVAP_D,
-         h_bot=RAIL_OFF, h_top=RAIL_OFF + EVAP_H,
-         color=C_EVAP, zone="wall"),
     dict(name="Electrical panel",
          x=EP_X, yd=0, w=EP_W, d=80,
          h_bot=EP_H_LO, h_top=EP_H_HI,
@@ -101,9 +96,9 @@ EQUIPMENT = [
          color=C_BATT, zone="wall"),
 
     dict(name="Pump manifold",
-         x=PUMP_X, yd=0, w=PUMP_W, d=80,
+         x=PUMP_X, yd=CORRIDOR_YD_NEAR, w=PUMP_W, d=PUMP_D,
          h_bot=PUMP_H_LO, h_top=PUMP_H_HI,
-         color=C_PUMP, zone="wall"),
+         color=C_PUMP, zone="right"),
 
     # RIGHT END ZONE — IBCs only, right-justified to end wall
     dict(name="Blue IBC #1 + Brown (near column)",

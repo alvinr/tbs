@@ -49,6 +49,19 @@ Redesign basis (2026-05-06 rev 6):
   Width increases from 4,024mm to 4,499mm (+11.8%).  Active area from 9.61 m²
   to 10.74 m² (103→116 sqft).  Max swing decreases from 28.3° to 25.7°
   (wider rail span, same Y travel).  Left end zone shrinks to X=0–150mm.
+
+Redesign basis (2026-05-20 rev 7 — walkway reorg):
+  Near walkway (pinhole wall side) made usable by relocating wall-mounted
+  equipment that blocked passage.  Evaporative cooler moved external with
+  200mm duct penetration at X=1200, Z=2100.  EP raised to Z=1600–2200.
+  Batteries switched to 120mm slim-profile depth.  Pump manifold
+  (P-01/P-02/P-04), ACC-01, and 3× filter housings relocated from pinhole
+  wall to equipment panel in IBC plumbing corridor (270mm gap between
+  near/far IBC columns, Yd=1046–1316).  Panel: 18mm marine ply, 780×1110mm
+  at X=4800.  Near walkway widened to 500mm at X=1600–2310.  Corner
+  triangle at right walkway/IBC junction.  Tray sump relocated to X=4550,
+  Yd=80 (slope to IBC corner).  Filter housings reverted to 3× separate
+  4.5"×10" Big Blue (combo unit Purcooflow WHF2045B302 does not fit corridor).
 """
 
 import math
@@ -148,13 +161,18 @@ DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
-# Evap cooler — relocated to pinhole wall face (Yd=0), right of drums in X
-# At Yd=0 the cone collapses to a point → shadow-free at any X position.
-EVAP_X     = 930     # evap cooler left edge X (mm)  [rev3: 930; on pinhole wall face]
-EVAP_W     = 600     # evap cooler width X (mm)       [unchanged]
-EVAP_Y     = 0       # evap cooler near edge Yd (mm)  [rev3: was 100; now on pinhole wall]
-EVAP_D     = 350     # evap cooler depth Y (mm)        [unchanged]
-EVAP_H     = 800     # evap cooler height (mm)         [unchanged]
+# Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
+# Cooler relocated outside container, connected via 200mm duct through
+# pinhole wall at X=1200, Z=2100.
+EVAP_DUCT_X  = 1200    # duct penetration center X (mm) — through pinhole wall
+EVAP_DUCT_Z  = 2100    # duct penetration center Z (mm)
+EVAP_DUCT_D  = 200     # duct outer diameter (mm)
+# Legacy interior constants (retained while generators are updated)
+EVAP_X     = 930     # [DEPRECATED rev7 — evap now external]
+EVAP_W     = 600     # [DEPRECATED rev7]
+EVAP_Y     = 0       # [DEPRECATED rev7]
+EVAP_D     = 350     # [DEPRECATED rev7]
+EVAP_H     = 800     # [DEPRECATED rev7]
 
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
@@ -167,20 +185,54 @@ PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
 EP_X       = 1600    # electrical panel left edge X (mm)  [rev6b: moved left, away from pinhole]
 EP_W       = 300     # electrical panel width (mm)
-EP_H_LO    = 900     # electrical panel bottom H (mm)
-EP_H_HI    = 1500    # electrical panel top H (mm)
+EP_H_LO    = 1600    # electrical panel bottom Z (mm) [rev7: raised from 900 for walkway clearance]
+EP_H_HI    = 2200    # electrical panel top Z (mm)   [rev7: raised from 1500]
 
 BA_X       = 1810    # battery bank left edge X (mm)  [rev6: was 2050; shifted left to clear cone]
 BA_W       = 500     # battery bank width (mm)  → right edge 2310, clears cone left (2319)
-BA_H_LO    = 100     # battery bank bottom H (mm) — matches RAIL_OFF floor offset
-BA_H_HI    = 600     # battery bank top H (mm)
+BA_H_LO    = 100     # battery bank bottom Z (mm) — matches RAIL_OFF floor offset
+BA_H_HI    = 600     # battery bank top Z (mm)
+BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiFePO4]
 
-PUMP_X     = 2500    # pump manifold left edge X (mm) — right of cone right boundary (2479) + 21mm gap
-PUMP_W     = 500     # pump manifold width (mm) — 127mm body incl. ports, 150mm gap
-PUMP_H_LO  = 200     # pump manifold bottom H (mm)
-PUMP_H_HI  = 600     # pump manifold top H (mm)
-# Note: P-03 (waste evacuation) relocated to IBC plumbing corridor on D4 drain run.
-# Pump manifold holds 3 pumps: P-01 (Blue), P-02 (Brown), P-04 (Tray drain).
+# ── Equipment panel — IBC plumbing corridor (rev 7: walkway reorg) ───────
+# 18mm marine ply panel spanning ACROSS the IBC plumbing corridor (Yd
+# direction), perpendicular to the sealed end wall.  Panel face (equipment
+# side) faces the open end (lower X = accessible from walkway).  Equipment
+# protrudes from panel face toward open end.
+# Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
+# Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
+# Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
+EQPANEL_X       = 5000    # panel face X (mm) — open-end face where equipment mounts
+EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5000–5018)
+EQPANEL_Z_LO    = 200     # panel bottom Z (mm) — 100mm above walkway deck
+EQPANEL_Z_HI    = 2260    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388)
+EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 2060mm
+
+# IBC plumbing corridor dimensions (derived from IBC layout: Yd=30+1016=1046 to 1316)
+CORRIDOR_YD_NEAR = 1046    # near IBC column far face Yd (mm) — BLUE_IBC_Y + IBC_D
+CORRIDOR_YD_FAR  = 1316    # far IBC column near face Yd (mm) — IBC_FAR_Y
+CORRIDOR_W       = CORRIDOR_YD_FAR - CORRIDOR_YD_NEAR  # = 270mm
+
+# Panel Yd extent (spans full corridor, perpendicular to container walls)
+EQPANEL_YD       = CORRIDOR_YD_NEAR     # = 1046 — near edge Yd
+EQPANEL_YD_FAR   = CORRIDOR_YD_FAR      # = 1316 — far edge Yd
+EQPANEL_YD_SPAN  = CORRIDOR_W           # = 270mm — panel width in Yd
+
+# Backward-compatible X footprint for elevation views (left-edge + width)
+EQPANEL_W       = EQPANEL_T + 130   # = 148mm — total X footprint (ply + max protrusion BB_OD)
+
+# Pump zone — near side of panel face (Yd=1046–1173)
+# Pumps protrude from panel face toward open end (lower X).
+PUMP_D       = 100     # pump protrusion from panel face in -X direction (mm) — Shurflo 2088 height
+PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
+PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
+PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
+PUMP_H_LO    = 1320    # pump zone bottom Z (mm) — above filter stack + 40mm gap
+PUMP_H_HI    = 2220    # pump zone top Z (mm) — includes ACC-01 top
+PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of corridor
+# P-01 (Blue supply), P-02 (Brown recycle), P-04 (Tray drain) on equipment panel.
+# P-03 (waste evacuation) on D4 drain run in IBC plumbing corridor.
+# ACC-01 accumulator mounted adjacent to P-01 on panel.
 
 # ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────
 # Single ceiling-hung shelf for mixing cyanotype chemistry, coating muslin, and
@@ -208,30 +260,38 @@ TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
 TAP_WALL_T     = 3       # branch pipe wall thickness (mm)
 
 
-# ── Filter skid (pinhole wall, right of pump manifold) ─────────────────────
-# 900×600mm slotted steel angle frame, wall-mounted on pinhole wall (Yd=0).
-# Three Geekpure Big Blue 4.5"×10" housings, vertical mount, heads at top.
+# ── Filter zone — on equipment panel (rev 7: was pinhole wall skid) ──────
+# 3× separate Geekpure Big Blue 4.5"×10" housings, vertical mount, sump-down.
+# Stacked vertically on far side of corridor (Yd=1186–1316).
+# Protrude from panel face toward open end, same as pumps.
 # Flow: IBC-3 → P-02 → F1 → F2 → F3 → pH test → DV-01.
-FSKID_X        = 2850    # frame left edge X (mm) — 50mm right of pump manifold
-FSKID_W        = 900     # frame width (mm)
-FSKID_Z_LO     = 1410    # frame bottom Z above floor (mm) — raised for walkway clearance
-FSKID_Z_HI     = 2010    # frame top Z above floor (mm)
-FSKID_H        = 600     # frame height (mm)
 
-# Big Blue 4.5"×20" housings (physical dimensions — 3-stage combo unit)
-# Purcooflow WHF2045B302 or equivalent: 3 housings side-by-side, integrated manifold
+# Big Blue 4.5"×10" housings (physical dimensions — 3× separate units)
 BB_OD          = 130     # housing outer diameter incl bracket (mm) — 4.5"=114mm + clamp
-BB_H           = 530     # housing total height (mm) — head + sump bowl (20" sump ~508mm + 70mm head)
+BB_H           = 340     # housing total height (mm) — head + sump bowl (10" sump)
 BB_HEAD_H      = 70      # head height (mm) — where 1" NPT ports are
 BB_PORT_SEP    = 90      # center-to-center distance between IN/OUT ports (mm)
 
-# Filter center X positions (equally spaced within 850mm inner frame)
-# 3 housings × 130mm OD = 390mm; remaining 460mm ÷ 4 gaps = 115mm each
-F1_X           = 3055    # F1 center X (mm) — 5μ MPP sediment
-F2_X           = 3300    # F2 center X (mm) — KDF-55 metal
-F3_X           = 3545    # F3 center X (mm) — CTO carbon
-FILT_HEAD_Z    = 1940    # filter head top Z (mm) — ports at this height
-FILT_SUMP_Z    = 1410    # filter sump bottom Z (mm) — FILT_HEAD_Z - BB_H = 1940 - 530 = 1410
+FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for elevation views
+FSKID_W        = BB_OD              # = 130 — filter zone width in X (= housing OD protrusion)
+FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near edge Yd (13mm gap past pumps)
+
+# Filter Z positions — 3 housings stacked vertically, 30mm gaps between.
+# Filters at BOTTOM of panel (easy cartridge access), pumps above.
+FSKID_Z_LO     = EQPANEL_Z_LO  # = 200 — filter zone bottom Z (mm) — F1 sump bottom
+FSKID_Z_HI     = FSKID_Z_LO + 3 * BB_H + 2 * 30  # = 1280 — F3 head top
+FSKID_H        = FSKID_Z_HI - FSKID_Z_LO  # = 1080mm
+F1_Z           = 200     # F1 sump bottom Z (mm) — 50μ sediment (lowest, most accessible)
+F2_Z           = 570     # F2 sump bottom Z (mm) — 5μ sediment
+F3_Z           = 940     # F3 sump bottom Z (mm) — GAC carbon (highest filter)
+FILT_HEAD_Z    = F3_Z + BB_H  # = 1280 — top of highest filter head
+FILT_SUMP_Z    = F1_Z         # = 200 — bottom of lowest filter sump
+
+# Deprecated — filters no longer spread along X (stacked vertically instead).
+# Kept for backward compat with retired generate_filter_skid_diagram.py.
+F1_X           = F1_Z    # DEPRECATED: use F1_Z
+F2_X           = F2_Z    # DEPRECATED: use F2_Z
+F3_X           = F3_Z    # DEPRECATED: use F3_Z
 
 # Filter pipe (1" HDPE Sch40)
 FILT_PIPE_OD   = 33      # 1" nominal HDPE OD (mm)
@@ -283,18 +343,21 @@ PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pin
 PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2,280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
-# Dual-axis pitch: tray slopes toward the low corner (near-pinhole, X-center).
+# Dual-axis pitch: tray slopes toward the low corner (near-pinhole, IBC end).
 # Primary slope: Yd direction, falling toward Yd=0 (pinhole wall).
-# Secondary slope: X direction, falling toward X-center from both ends.
+# Secondary slope: X direction, falling toward X=4550 (IBC corner).
 # Slope is achieved by tapered HDPE shim strips bonded to container floor
 # under the tray (high end ~10mm thick, feathered to zero at drain end).
 PROC_TRAY_SHIM_H   = 10         # shim strip max height at far rim (mm) = PITCH
 PROC_TRAY_SHIM_W   = 50         # shim strip width (mm) — HDPE flat bar
 PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
-# Low point: sump well pressed into tray floor at near rim center.
+# Low point: sump well pressed into tray floor at near rim, IBC end.
 # P-04 suction pickup tube sits in sump — no penetration of tray or container floor.
-PROC_TRAY_DRAIN_X  = PH_X       # = 2,399mm — sump at X-center of tray (aligned with pinhole)
+PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2399]
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
+
+# Spray bar — Blue supply delivery, below walkway deck (rev 7)
+SPRAY_BAR_FEED_Z   = 75         # spray bar supply line Z (mm) — below grating, above tray rim
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
@@ -382,6 +445,12 @@ LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber 
 LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner edge)
+# Near walkway widened section (rev 7: EP raised + slim batteries free walkway)
+# Grating widened from 300mm to 500mm in EP/battery zone only.
+# Deeper cantilever brackets (500mm arm) with heavier gussets in this section.
+WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
+WALKWAY_NEAR_WIDE_X_L = EP_X            # = 1600mm — starts at EP left edge
+WALKWAY_NEAR_WIDE_X_R = BA_X + BA_W     # = 2310mm — ends at battery right edge
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm
@@ -475,7 +544,7 @@ C_PROC_ZONE    = "#E8F5E9"   # processing tray zone
 
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
-    print("TBS-001 Constants (rev 5)")
+    print("TBS-001 Constants (rev 7)")
     print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT} mm")
     print(f"  Film plane:     {FP_W} × {FP_H} mm  (X={FP_X_L}–{FP_X_R})")
     print(f"  Muslin clamps:  {CLAMP_N_TOTAL} cam-lever clamps at {CLAMP_SPACING}mm centers")
@@ -486,19 +555,28 @@ if __name__ == "__main__":
     print(f"  Left zone:      X=0–{ZONE_L_END}mm (light trap drum only)")
     print(f"  Right zone:     X={ZONE_R_START}–{C_LEN}mm")
     print(f"  Cone at Y=FP_Y: X={cone_left(FP_Y):.0f} – {cone_right(FP_Y):.0f}")
-    print(f"  Panel:          corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
+    print(f"  Hinge panel:    corner={PANEL_CORNER_T}mm  center={PANEL_CENTER_T}mm  step={PANEL_STEP}mm")
     print(f"  Panel zones:    corners Yd=0–{PANEL_CORNER_YD_L} / {PANEL_CORNER_YD_R}–{C_WID}  center Yd={PANEL_CORNER_YD_L}–{PANEL_CORNER_YD_R}")
     print(f"  Panel slide:    {PANEL_SLIDE}mm travel  floor gap={PANEL_FLOOR_GAP}mm (tray rim={PROC_TRAY_RIM}mm)")
     print(f"  IBC 2x2 stack:  X={IBC_COL_X}–{IBC_COL_X+IBC_W}  near Yd={BLUE_IBC_Y}  far Yd={IBC_FAR_Y}")
+    print(f"  IBC corridor:   Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_FAR}  width={CORRIDOR_W}mm")
     print(f"  IBC stack H:    {IBC_H_STK}mm  (ceiling {C_HGT}mm → headroom {C_HGT - IBC_H_STK}mm)")
+    print(f"  Eq panel:       face X={EQPANEL_X}  T={EQPANEL_T}mm  Z={EQPANEL_Z_LO}–{EQPANEL_Z_HI}  Yd={EQPANEL_YD}–{EQPANEL_YD_FAR} (spans corridor)")
+    print(f"  Pumps on panel: X={PUMP_X}–{EQPANEL_X}  Z={PUMP_H_LO}–{PUMP_H_HI}  Yd={PUMP_YD}  depth={PUMP_D}mm  Yd_span={PUMP_YD_SPAN}mm")
+    print(f"  Filters:        F1 Z={F1_Z}  F2 Z={F2_Z}  F3 Z={F3_Z}  Yd={FSKID_YD}  X protrusion={BB_OD}mm")
+    print(f"  Filter housing: OD={BB_OD}mm  H={BB_H}mm (4.5\"×10\")")
     print(f"  Proc tray:      X={PROC_TRAY_X_L}–{PROC_TRAY_X_R}  Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR}  rim={PROC_TRAY_RIM}mm")
-    print(f"  Walkway:        all={WALKWAY_W}mm  deck H={WALKWAY_H}mm  grate={WALKWAY_GRATE_T}mm")
-    print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod  {WALKWAY_RIGHT_BEARER_SIZE}×{WALKWAY_RIGHT_BEARER_SIZE}×{WALKWAY_RIGHT_BEARER_T}mm bearers")
+    print(f"  Tray sump:      X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}")
+    print(f"  Walkway:        std={WALKWAY_W}mm  wide={WALKWAY_NEAR_WIDE_W}mm (X={WALKWAY_NEAR_WIDE_X_L}–{WALKWAY_NEAR_WIDE_X_R})")
+    print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
+    print(f"  Evap cooler:    EXTERNAL — duct Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X} Z={EVAP_DUCT_Z}")
+    print(f"  EP:             X={EP_X}–{EP_X+EP_W}  Z={EP_H_LO}–{EP_H_HI} [rev7: raised]")
+    print(f"  Battery:        X={BA_X}–{BA_X+BA_W}  Z={BA_H_LO}–{BA_H_HI}  depth={BA_D}mm [rev7: slim]")
+    print(f"  Spray bar feed: Z={SPRAY_BAR_FEED_Z}mm")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")
-    print(f"  Evap cooler:    X={EVAP_X}–{EVAP_X+EVAP_W}  Yd={EVAP_Y} (pinhole wall face)")
     print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
     print(f"  Fan B (exhaust):door end wall H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")
     print(f"  Baffle duct:    {DUCT_DEPTH}mm deep × {DUCT_HEIGHT}mm H")

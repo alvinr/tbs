@@ -216,11 +216,13 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 **Left end zone (X=0–150mm) — shadow-free at all depths:**
 - Light trap drum (Ø750mm, centered at X=0, Yd=806–1,556mm)
 
-**Pinhole wall face (Y=0):**
-- 12V evaporative cooler (X=930–1,530mm, Yd=0–350mm) — shadow-free at Y=0
+**Pinhole wall face (Yd=0):**
+- Evap duct penetration (Ø200mm at X=1,200mm, Z=2,100mm) — cooler is external
 - Electrical enclosure (X=1,600–1,900mm, H=900–1,500mm) — wall-mounted
 - LiFePO4 battery bank (X=1,600–2,100mm, H=0–500mm) — wall-mounted
-- Pump manifold (X=2,400–2,700mm, H=200–600mm) — wall-mounted
+
+**Equipment panel (Yd=1,046, IBC corridor):**
+- Pump manifold (X=4,800–5,580mm, Z=900–1,400mm) — panel-mounted
 
 **Optical zone (X=150–4,649mm):** Processing tray (permanent, X=170–4,629mm) and perimeter walkway (removable, 300mm wide around all 4 sides) at floor level. Rails at X=150 and X=4,649.
 
@@ -264,12 +266,12 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ### 6.4 Light-Safe Cooler Intake
 
-The cooler is positioned on the pinhole wall face (Yd=0, X=930–1,530mm) — shadow-free at any X position because the optical cone collapses to a point at Y=0. Its intake duct must not admit light. Use the same offset-baffle design as the existing ventilation:
+The cooler is mounted externally on the pinhole wall exterior. Cooled air enters through a Ø200mm insulated duct penetration at X=1,200mm, Z=2,100mm. The penetration includes a light-safe baffle to prevent light ingress:
 
-- **Duct size:** 6" (150mm) — matches cooler inlet
-- **Penetration:** through the container left short end wall (X=0 face), positioned 400mm above floor level (within left end zone)
-- **Interior baffles:** two 150 × 150mm flat steel baffles, offset 75mm, mounted inside a 250mm duct stub — breaks the direct light path while allowing unrestricted airflow at 300 CFM
-- **Exterior:** weatherproof louvre with mesh screen to exclude insects
+- **Duct size:** 200mm (8") — sized for ~300 CFM at low velocity
+- **Penetration:** through the pinhole wall (Yd=0 face) at X=1,200mm, Z=2,100mm
+- **Interior baffles:** two 200 × 200mm flat steel baffles, offset 100mm, mounted inside a 300mm duct stub — breaks the direct light path while allowing unrestricted airflow
+- **Exterior:** cooler unit direct-coupled to duct with weatherproof housing
 
 ---
 
@@ -335,13 +337,13 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 |-----------|--------------|
 | Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
 | Quantity | 2 |
-| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,230mm (above evap cooler), ceiling height |
+| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,750mm (near electrical panel), ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
 | Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |
 | Approximate cost | ~$8 each, ~$16 total |
 
-The switches are positioned above the evaporative cooler, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
+The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
 
 ---
 

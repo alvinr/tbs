@@ -37,11 +37,13 @@ from tbs_constants import (
     PH_X, PH_H, PH_D, PH_FNO,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_W, EVAP_H, EVAP_Y, EVAP_D,
+    EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
+    FSKID_X,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
@@ -52,7 +54,7 @@ from tbs_constants import (
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
     C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
-    C_EVAP, C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM,
+    C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM,
     cone_left, cone_right,
 )
 
@@ -144,7 +146,7 @@ corrugation_marks(ax, 0,    0, C_LEN, step=600)
 corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 
 
-# ── LEFT END ZONE — revolving drum + evap cooler ──────────────────────────────
+# ── LEFT END ZONE — revolving drum ────────────────────────────────────────────
 
 # Hinged panel — stepped profile (rev 4): 40mm corner zones, 120mm center zone.
 # In this side elevation (X-H plane), the stepped depth is visible.
@@ -172,14 +174,17 @@ leader(ax, DRUM_CX, RAIL_OFF + DRUM_H_ELV + 60, -200, PH_H + 1250,
        f"Hinged panel +\nRevolving drum  VERTICAL AXIS\nO{DRUM_D}mm x {DRUM_H_ELV}mm H",
        ha="right", fs=FS_SM)
 
-# Evap cooler: X=400-1000, bottom at RAIL_OFF, height EVAP_H=800
-equip_rect(ax, EVAP_X, RAIL_OFF, EVAP_W, EVAP_H, C_EVAP, zorder=4)
-ax.text(EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H/2,
-        "Evap\ncooler", ha="center", va="center",
-        fontsize=FS_SM - 0.5, color="#FFFFFF", zorder=6)
-
-leader(ax, EVAP_X + EVAP_W/2, RAIL_OFF + EVAP_H, 1200, 1100,
-       f"Evap cooler\nX={EVAP_X}–{EVAP_X+EVAP_W}mm", ha="left", fs=FS_SM)
+# Duct penetration — Ø200mm through pinhole wall for external evap cooler
+duct_r = EVAP_DUCT_D / 2
+ax.add_patch(plt.Circle((EVAP_DUCT_X, EVAP_DUCT_Z), duct_r,
+             facecolor="#E8E8E8", edgecolor=C_OUT, linewidth=1.0,
+             linestyle="--", zorder=4))
+ax.text(EVAP_DUCT_X, EVAP_DUCT_Z,
+        f"Ø{EVAP_DUCT_D}", ha="center", va="center",
+        fontsize=FS_SM - 1.5, color=C_OUT, zorder=6)
+leader(ax, EVAP_DUCT_X + duct_r + 20, EVAP_DUCT_Z, 1800, 2300,
+       f"Evap duct penetration\nØ{EVAP_DUCT_D}mm (external unit)",
+       ha="left", fs=FS_SM)
 
 # Black-water drums — 2× 55-gal, one per Yd corner (rev 4: on slide dollies).
 # In this side elevation both drums share X → collapse to single block.
@@ -200,19 +205,22 @@ ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-# Pump manifold: X=2400-2700, H=200-600
-equip_rect(ax, PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP, zorder=4)
-ax.text(PUMP_X + PUMP_W/2, (PUMP_H_LO + PUMP_H_HI)/2,
-        "Pump", ha="center", va="center",
-        fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+# Equipment panel zone: X=4870–5018, Z=900–2010 (pumps+filters, Yd=1046–1316)
+EQ_ZONE_X = FSKID_X
+EQ_ZONE_W = EQPANEL_X + EQPANEL_T - FSKID_X
+equip_rect(ax, EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP,
+           alpha=0.50, ec=C_OUT, lw=0.7, zorder=3)
+ax.text(EQ_ZONE_X + EQ_ZONE_W/2, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2,
+        "Equip panel\n[Yd=1046]", ha="center", va="center",
+        fontsize=FS_SM - 1, color=C_OUT, zorder=6)
 
 leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
        f"Electrical panel\n(wall-mount, Yd=0 face)\nX={EP_X}–{EP_X+EP_W}mm",
        ha="left", fs=FS_SM)
 leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
-leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
-       f"Pump manifold\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
+leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 700, 500,
+       f"Equipment panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
 
 # External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
 PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
@@ -336,7 +344,7 @@ draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT - 80,
            f"R zone\n{C_LEN-ZONE_R_START}mm", offset=60, fs=FS_SM - 0.5, color="#004080")
 
 ax.text(C_LEN/2, DIM_BOT - 300,
-        f"All equipment in shadow-free end zones (X<{ZONE_L_END} or X>{ZONE_R_START}) or on pinhole wall (Yd=0)",
+        f"All equipment in shadow-free end zones (X<{ZONE_L_END} or X>{ZONE_R_START}), on pinhole wall (Yd=0), or in IBC corridor",
         ha="center", va="top", fontsize=FS_SM, color="#004020", style="italic")
 
 
@@ -351,8 +359,8 @@ legend_items = [
     (C_BLUE_IBC,  "Blue IBC x2 (top tier)"),
     (C_BROWN_IBC, "Brown IBC x1 (bottom near)"),
     (C_WASTE_IBC, "Waste IBC x1 (bottom far)"),
-    (C_EVAP,      "Evaporative cooler"),
-    (C_PUMP,      "Pump manifold"),
+    ("#E8E8E8",   "Evap duct penetration (ext unit)"),
+    (C_PUMP,      "Equipment panel (pumps+filters)"),
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),
@@ -559,7 +567,7 @@ ldr2(RAIL_X_L, RAIL_OFF + 300, RAIL_X_L + 650, 600,
 ldr2(RAIL_X_R, C_HGT - 300, RAIL_X_R - 650, C_HGT - 600,
     f"Floor rail  X={RAIL_X_R}mm\n(right rail, far-end side)", ha="right", fs=FS_SM, color=RAIL_CLR)
 
-# ── LEFT END ZONE (appears on RIGHT in this view) — drum, evap, waste drums ──
+# ── LEFT END ZONE (appears on RIGHT in this view) — drum ─────────────────────
 # Hinged panel — stepped profile (rev 4): container wall outside, then
 # corner zones (40mm) and center zone (120mm) inside.
 ax2.add_patch(mpatches.Rectangle((C_LEN, 0), 40, C_HGT,
@@ -578,13 +586,7 @@ ax2.add_patch(mpatches.Rectangle((C_LEN - DRUM_D, RAIL_OFF), DRUM_D, DRUM_H_ELV,
 ax2.plot([C_LEN, C_LEN], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 
-# Evap cooler (ghost — at Yd=0)
-eq2(EVAP_X, RAIL_OFF, EVAP_W, EVAP_H, C_EVAP, alpha=0.30, zorder=3,
-    ec="#3DAA96", lw=0.7)
-ax2.text(mx(EVAP_X + EVAP_W/2), RAIL_OFF + EVAP_H/2,
-        "Evap\ncooler\n[Yd=0]", ha="center", va="center",
-        fontsize=FS_SM - 1.5, color="#3DAA96", alpha=0.7, zorder=4)
-
+# (evap cooler removed — external unit with duct penetration at X=1200)
 # (waste drums eliminated in rev 5 — left zone is light trap only)
 
 ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
@@ -619,7 +621,7 @@ ldr2(IBC_COL_X + IBC_W/2 + 400, IBC_H_STK, C_LEN - 50, 2800,
 for xw, yw, ww, hw, col, lbl in [
     (EP_X,   EP_H_LO,   EP_W,  EP_H_HI  - EP_H_LO,  C_ELEC, "Elec panel\n[Yd=0 wall]"),
     (BA_X,   BA_H_LO,   BA_W,  BA_H_HI  - BA_H_LO,  C_BATT, "Battery\n[Yd=0]"),
-    (PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP, "Pump\n[Yd=0]"),
+    (EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP, "Equip panel\n[Yd=1046]"),
     (PWR_PANEL_X, (EP_H_LO + EP_H_HI) / 2 - PWR_PANEL_H / 2,
      PWR_PANEL_W, PWR_PANEL_H, C_ALUM, "Ext pwr panel\n[exterior]"),
 ]:
@@ -714,7 +716,6 @@ legend2 = [
     (C_BLUE_IBC, "Blue IBC stack x2 (2×600L)"),
     (C_BROWN_IBC,"Brown IBC x1 (600L)"),
     (C_LT_DRUM,  "Revolving light-trap drum"),
-    (C_EVAP,     "Evap cooler  [ghost = Yd=0 wall]"),
     (C_HINGE_PANEL,     "Hinged panel"),
     (C_FAN,      "Ventilation fan (IN / OUT)"),
     (C_PINHOLE,  "Pinhole Ø2.17mm  [ghost = far wall]"),
@@ -925,14 +926,7 @@ def draw_container_doors(ax, closed=True):
                 style="italic", zorder=3)
 
 
-def draw_evap_cooler(ax):
-    """Draw evaporative cooler footprint in plan view."""
-    ax.add_patch(mpatches.Rectangle(
-        (EVAP_Y, EVAP_X), EVAP_D, EVAP_W,
-        facecolor=C_EVAP, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=5))
-    ax.text(EVAP_Y + EVAP_D / 2, EVAP_X + EVAP_W / 2,
-            "Evap\ncooler", ha="center", va="center",
-            fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+# (draw_evap_cooler removed — evap cooler is now external)
 
 
 # ── LEFT PANEL: Transport mode ──────────────────────────────────────────────
@@ -941,7 +935,6 @@ plan_setup(ax_tr, "TRANSPORT MODE",
 draw_container_walls(ax_tr)
 draw_container_doors(ax_tr, closed=True)
 draw_hgr20_rails(ax_tr)
-draw_evap_cooler(ax_tr)
 
 # Ghost: operational positions (dashed outlines)
 # Ghost panel
@@ -993,7 +986,6 @@ plan_setup(ax_op, "OPERATIONAL MODE",
 draw_container_walls(ax_op)
 draw_container_doors(ax_op, closed=False)
 draw_hgr20_rails(ax_op)
-draw_evap_cooler(ax_op)
 
 # Solid: operational positions
 draw_stepped_panel(ax_op, OP_PANEL_X)
@@ -1054,7 +1046,6 @@ legend_items3 = [
     (C_HINGE_PANEL,    "Panel corner zone (40mm)"),
     (C_PANEL_C,  "Panel center zone (120mm)"),
     (C_LT_DRUM, "Revolving light trap drum"),
-    (C_EVAP,     "Evaporative cooler"),
     (C_CONT_DR,  "ISO container door"),
     (C_GHOST,    "Ghost (operational position)"),
 ]

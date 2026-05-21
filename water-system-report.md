@@ -232,13 +232,13 @@ Instead of a through-floor drain fitting, the tray has a shallow sump well press
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
 | Container left end zone equipment (X=0–625) | Tray left edge at X=170 — extends into optical zone only | Clear |
-| Pump manifold (X=2,500–2,800, Yd=0, Z=200–600) — 3 pumps: P-01, P-02, P-04 | Suction hose routes over tray rim at Z=50, along pinhole wall to manifold at Z=200+. No conflict | Clear |
+| Pump manifold (X=4,800–5,580, Yd=1,046, Z=900–1,400) — equipment panel | Suction hose routes over tray rim at Z=50, along rim exterior to equipment panel. No conflict | Clear |
 | Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 
 **Permanent installation:**
 
-The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange. The P-04 suction pickup tube sits in the sump well permanently; the flexible suction hose routes over the near rim to the pump manifold. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
+The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange. The P-04 suction pickup tube sits in the sump well permanently; the flexible suction hose routes over the near rim, along the rim exterior, and across to the equipment panel in the IBC corridor. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.
 

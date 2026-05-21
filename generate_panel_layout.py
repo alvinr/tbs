@@ -368,7 +368,7 @@ BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
 DV02_YD = R_COL                      # right column — blank space above P-03
-DV02_Z  = P03_Z + PUMP_H + 40        # above P-03 top, next to ACC-01
+DV02_Z  = P04_PORT_Z + 100           # 100mm rise from P-04 outlet before turn
 
 # ── Flow arrow style ──
 _AW = 25
@@ -541,7 +541,7 @@ ax.text(sx(EXIT_R + 5), sz(P02_PORT_Z),
 # Brown discharge: P-02 outlet → drop → left → down to F-01 IN
 draw_pipe_path(ax,
     [R_PORT_OUT, R_PORT_OUT, F_IN_YD, F_IN_YD],
-    [P02_PORT_Z, P02_PORT_Z - PORT_DROP, P02_PORT_Z - PORT_DROP, F01_HEAD_Z],
+    [P02_PORT_Z, P02_PORT_Z - 100, P02_PORT_Z - 100, F01_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # Filter jumpers — gravity-fed downward: F-01 → F-02 → F-03

@@ -57,11 +57,11 @@ Coordination drawing showing every system mounted on the pinhole wall (Yd=0),
 viewed from inside the container. All equipment drawn as simplified blocks with
 their designated colors. Used to verify spatial fit and identify interferences.
 
-Includes: evaporative cooler, external power panel (flush-mount, exterior face),
-electrical panel, battery bank, pinhole aperture, pump manifold, filter skid
-(F1/F2/F3), header pipe, supply riser, pH test point, DV-01 diverter, chemistry
-tap (TAP-01), pull-cord switches, cable trunking, near walkway deck and brackets,
-and chemistry shelf hanger rods (ghost — shelf at Yd=300).
+Includes: evap duct penetration (Ø200mm, cooler external), external power panel
+(flush-mount, exterior face), electrical panel, battery bank, pinhole aperture,
+pull-cord switches, cable trunking, near walkway deck and brackets, and chemistry
+shelf hanger rods (ghost — shelf at Yd=300). Pump manifold and filter skid are on
+the equipment panel at Yd=1,046 (IBC corridor) — shown as ghost outlines.
 
 ![TBS-001 — Pinhole Wall Combined Interior Elevation](assets/pinhole-wall-elevation.png)
 
@@ -69,12 +69,11 @@ and chemistry shelf hanger rods (ghost — shelf at Yd=300).
 
 ## 2b. Pump Manifold Detail
 
-Detailed elevation of the pump manifold assembly (X=2,500–2,800mm, Z=200–600mm)
-mounted on the pinhole wall face (Yd=0). Shows the three manifold-mounted Shurflo 2088 pumps
-(P-01 Blue supply, P-02 Brown recycle, P-04 Tray drain),
-ACC-01 pressure accumulator, BV-01/BV-02 ball valves, DV-02 tray drain diverter,
-and all pipe connections with parallel-wall drawing. P-03 (Waste evacuation) is
-relocated to the IBC plumbing corridor on the D4 drain run — see IBC Stacking Sheet 6.
+Detailed elevation of the pump manifold assembly (X=4,800–5,580mm, Z=900–1,400mm)
+mounted on the equipment panel (Yd=1,046) in the IBC plumbing corridor. Shows four
+Shurflo 2088 pumps (P-01 Blue supply, P-02 Brown recycle, P-03 Waste evacuation,
+P-04 Tray drain), ACC-01 pressure accumulator, BV-01/BV-02 ball valves, DV-02 tray
+drain diverter, and all pipe connections with parallel-wall drawing.
 Source report: [Water System Report](water-system-report.md).
 
 **Sheet 1 — Pump manifold elevation (1:5) + Detail A pump mounting cross-section (~1:2)**

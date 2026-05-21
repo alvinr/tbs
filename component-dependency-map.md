@@ -129,18 +129,17 @@ weatherproof louvre grille. Fan B has the same baffle duct protruding from the p
 face — exhausts into the open doorway during operation. Fan B moves with the panel on the
 sliding carriage; wiring via flexible coiled cable from fixed door frame (Circuit B).*
 
-### 1.8 Evaporative Cooler
+### 1.8 Evaporative Cooler (External)
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left edge X | 700 mm | `EVAP_X` |
-| Width | 600 mm | `EVAP_W` |
-| Depth from pinhole wall | 0 mm | `EVAP_Y` |
-| Depth footprint | 350 mm | `EVAP_D` |
-| Height | 800 mm | `EVAP_H` |
+| Duct penetration X | 1,200 mm | `EVAP_DUCT_X` |
+| Duct penetration Z | 2,100 mm | `EVAP_DUCT_Z` |
+| Duct diameter | 200 mm | `EVAP_DUCT_D` |
 
 *Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
-water reservoir, Circuit E. Located on pinhole wall face (Yd=0) — shadow-free at all depths.*
+water reservoir, Circuit E. Mounted externally on the pinhole wall; cooled air enters through
+Ø200mm insulated duct penetration with light-safe baffle.*
 
 ### 1.9 Electrical System
 
@@ -161,18 +160,21 @@ NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosu
 *Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
 C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.*
 
-### 1.10 Pump Manifold
+### 1.10 Pump Manifold (Equipment Panel)
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left edge X | 2,500 mm | `PUMP_X` |
-| Width | 500 mm | `PUMP_W` |
-| Height range | 200–600 mm | `PUMP_H_LO`, `PUMP_H_HI` |
+| Left edge X | 4,800 mm | `PUMP_X` |
+| Width | 780 mm | `PUMP_W` |
+| Height range | 900–1,400 mm | `PUMP_H_LO`, `PUMP_H_HI` |
+| Depth from pinhole wall | 1,046 mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
+| Protrusion from panel | 127 mm | `PUMP_D` |
 
-*Components: 1" HDPE header + isolation valves, 3× 12V pumps on manifold (P-01 Blue spray bar supply,
+*Components: 1" HDPE header + isolation valves, 4× 12V pumps on equipment panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
-manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.*
+manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.
+Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.*
 
 ### 1.11 Water System — Blue Circuit
 
@@ -225,7 +227,8 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on D4 drain run). F
 
 *Derived rule: any equipment with X < ZONE_L_END is shadow-free at all depths.
 Any equipment with X > ZONE_R_START is shadow-free at all depths.
-Equipment at Yd = 0 (pinhole wall face) is always shadow-free.*
+Equipment at Yd = 0 (pinhole wall face) is always shadow-free.
+Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 
 ### 1.15 Panel Sliding Carriage
 
@@ -373,10 +376,10 @@ PNGs alongside the constant change.
 | `C_LEN` | FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC | Container resize — rare |
 | `C_WID` | FP, LOS, AO, AF, FPM, ES, WS, HP, LT, PD, SC | Changes focal length and cone geometry |
 | `C_HGT` | FP, LOS, AO, AF, ES, HP, LT | Height change |
-| `EVAP_X`, `EVAP_W`, `EVAP_Y`, `EVAP_D`, `EVAP_H` | FP, LOS, AO, AF, ES, LT | Cooler position/size |
+| `EVAP_DUCT_X`, `EVAP_DUCT_Z`, `EVAP_DUCT_D` | FP, AO, AF, ES | Evap duct penetration (cooler external) |
 | `EP_X`, `EP_W`, `EP_H_LO`, `EP_H_HI` | FP, LOS, AO, AF, ES | Electrical panel on pinhole wall |
 | `BA_X`, `BA_W`, `BA_H_LO`, `BA_H_HI` | FP, LOS, AO, AF, ES | Battery bank on pinhole wall |
-| `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on pinhole wall |
+| `PUMP_X`, `PUMP_W`, `PUMP_H_LO`, `PUMP_H_HI` | FP, LOS, AO, AF, ES, WS | Pump manifold on equipment panel (Yd=1046) |
 | `IBC_COL_X`, `BLUE_IBC_Y`, `BROWN_IBC_Y` | FP, LOS, AO, AF, WS | Right end zone IBC stack |
 | `WASTE_IBC_Y`, `IBC_FAR_Y`, `C_WASTE_IBC` | FP, LOS, AO, AF, WS | Right end zone waste IBC (4th tote in 2×2 stack) |
 | `PANEL_SLIDE` | FP, AO, HP | Panel sliding carriage travel |

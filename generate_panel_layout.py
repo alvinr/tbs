@@ -48,7 +48,7 @@ PORT_HALF = 30   # half of port-to-port spacing (mm)
 
 # ── Accumulator ───────────────────────────────────────────────────────────
 ACC_OD  = 127    # body OD (mm)
-ACC_LEN = 200    # body length (mm) — axis perpendicular to panel
+ACC_LEN = 150    # body length (mm) — vertical mount, port at bottom
 
 # ── Filter housing (separate, 4.5"×10") ──────────────────────────────────
 FILT_OD  = 130   # housing OD (mm)
@@ -81,7 +81,7 @@ P02_Z = P01_Z + PUMP_H + PUMP_GAP    # = 1378
 P04_Z = P02_Z + PUMP_H + PUMP_GAP    # = 1636
 
 ACC_YD = PUMP_COL
-ACC_Z  = P04_Z + PUMP_H + PUMP_GAP + ACC_OD // 2   # = 1957
+ACC_Z  = P04_Z + PUMP_H + PUMP_GAP   # = 1894 (bottom of body / port)
 
 # ── Colors ────────────────────────────────────────────────────────────────
 C_FRAME      = "#1A1A1A"
@@ -213,20 +213,23 @@ for pname, pdesc, pz, pfc, pec in pump_specs:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  3. ACC-01 — above pump stack (end-on circle)
+#  3. ACC-01 — above pump stack (profile view, vertical, port at bottom)
 # ═══════════════════════════════════════════════════════════════════════════
-circ(ACC_YD, ACC_Z, ACC_OD / 2,
+rect(ACC_YD - ACC_OD / 2, ACC_Z, ACC_OD, ACC_LEN,
      C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.7)
-ax.text(sx(ACC_YD), sz(ACC_Z + 5),
+ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 + 10),
         "ACC-01", ha="center", va="center",
         fontsize=5, color="white", fontweight="bold", zorder=8, **FONT)
-ax.text(sx(ACC_YD), sz(ACC_Z - 20),
+ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 - 15),
         f"O/{ACC_OD}", ha="center", va="center",
         fontsize=3.5, color="white", zorder=8, **FONT)
+# Port at bottom center
+circ(ACC_YD, ACC_Z, 10,
+     C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
 
-# Mounting clamp (U-bracket)
+# Mounting clamp (U-bracket at top)
 clamp_w = ACC_OD + 20
-rect(ACC_YD - clamp_w / 2, ACC_Z + ACC_OD / 2,
+rect(ACC_YD - clamp_w / 2, ACC_Z + ACC_LEN,
      clamp_w, 8,
      C_FRAME_FILL, C_FRAME, lw=0.5, zorder=5)
 
@@ -339,8 +342,7 @@ EXIT_R = 330    # past right panel edge (far wall / IBCs)
 BV01_YD = 0
 BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
-DISCH_EXIT_Z = ACC_Z - 30   # discharge exit offset below ACC tee
-BV02_Z  = DISCH_EXIT_Z
+BV02_Z  = ACC_Z   # on horizontal at ACC port Z
 DV02_YD = PORT_IN_YD + 30
 DV02_Z  = P04_PORT_Z - PORT_DROP
 
@@ -477,27 +479,22 @@ ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# Blue discharge: P-01 outlet (LEFT port) → drop → riser → up to ACC-01
+# Blue discharge: P-01 outlet (LEFT port) → drop → riser → up to ACC-01 port
 # Z_DISCH so riser draws OVER crossing suction pipes
 draw_pipe_path(ax,
     [PORT_OUT_YD, PORT_OUT_YD, DISCH_RAIL, DISCH_RAIL],
     [P01_PORT_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# ACC-01 tee
+# Horizontal at ACC_Z: exit LEFT to spray bar + tee RIGHT to ACC port
 draw_pipe_path(ax,
-    [DISCH_RAIL, PUMP_COL - ACC_OD / 2],
+    [EXIT_L, ACC_YD],
     [ACC_Z, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# Discharge exit: drop below ACC tee then left to spray bar
-draw_pipe_path(ax,
-    [DISCH_RAIL, DISCH_RAIL, EXIT_L],
-    [ACC_Z, DISCH_EXIT_Z, DISCH_EXIT_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
-ax.annotate("", xy=(sx(EXIT_L), sz(DISCH_EXIT_Z)),
-            xytext=(sx(EXIT_L + _AW), sz(DISCH_EXIT_Z)),
+ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
+            xytext=(sx(EXIT_L + _AW), sz(ACC_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(DISCH_EXIT_Z),
+ax.text(sx(EXIT_L - 5), sz(ACC_Z),
         "TO\nSPRAY\nBAR", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
@@ -670,9 +667,9 @@ leader(ax,
 
 # ACC-01
 leader(ax,
-       sx(ACC_YD + ACC_OD / 2), sz(ACC_Z),
-       sx(PANEL_W + 40), sz(ACC_Z + 60),
-       "ACC-01: 0.75L ACCUM.\nO/127 × 200mm\n1/2\" MNPT",
+       sx(ACC_YD + ACC_OD / 2), sz(ACC_Z + ACC_LEN / 2),
+       sx(PANEL_W + 40), sz(ACC_Z + ACC_LEN / 2 + 60),
+       "ACC-01: 0.75L ACCUM.\nO/127 × 150mm\n1/2\" MNPT (bottom)",
        fs=4, color=C_BLUE_EC, font=FONT)
 
 # Filter specs

@@ -816,14 +816,18 @@ draw_notes(ax, notes, 0.2, 1.6, spacing=0.13,
 #         filter head → sump bowl below → 1" NPT port with pipe stub
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Detail callout on main elevation — dashed circle at F-01
-_det_cx = sx(FILT_COL)
-_det_cy = sz(F01_Z + FILT_H / 2)
-_det_r = FILT_OD * 0.55 / SC
-ax.add_patch(plt.Circle((_det_cx, _det_cy), _det_r,
-             fc="none", ec="#1A237E", lw=1.0, ls="--", zorder=11))
-ax.text(_det_cx + _det_r + 0.08, _det_cy + _det_r,
-        "B", fontsize=6, color="#1A237E", fontweight="bold", zorder=11, **FONT)
+# Detail B callout on main elevation — section cut line at F-01
+_cut_z_top = sz(F01_Z + FILT_H - FILT_HEAD / 2 + 30)
+_cut_z_bot = sz(F01_Z + FILT_H - FILT_HEAD / 2 - 30)
+_cut_x = sx(FILT_COL + FILT_OD / 2 + 15)
+ax.plot([_cut_x, _cut_x], [_cut_z_bot, _cut_z_top],
+        color="#1A237E", lw=1.2, ls=(0, (6, 3, 1, 3)), zorder=11)
+ax.text(_cut_x + 0.06, _cut_z_top,
+        "B", fontsize=5, color="#1A237E", fontweight="bold",
+        va="bottom", ha="center", zorder=11, **FONT)
+ax.text(_cut_x + 0.06, _cut_z_bot,
+        "B", fontsize=5, color="#1A237E", fontweight="bold",
+        va="top", ha="center", zorder=11, **FONT)
 
 # ── Position and scale ──
 SC_D = 70.0       # mm per figure inch (~1:3 scale)

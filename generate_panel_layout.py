@@ -370,7 +370,7 @@ EXIT_L = -60    # past left panel edge (near wall / walkway)
 EXIT_R = 330    # past right panel edge (far wall / IBCs)
 
 # ── Valve positions ──
-BV01_YD = 0
+BV01_YD = 100                        # 100mm inward from left panel edge
 BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
@@ -378,8 +378,8 @@ DV02_YD = R_COL                      # right column — blank space above P-03
 DV02_Z  = P04_PORT_Z + 100           # 100mm rise from P-04 outlet before turn
 BV07_YD = PANEL_W + 15               # just past right panel edge (IBC side)
 BV07_Z  = P05_PORT_Z                 # inline on P-05 suction horizontal
-BV08_YD = PANEL_W + 15               # just past right panel edge (IBC side)
-BV08_Z  = P03_PORT_Z                 # inline on P-03 suction horizontal
+BV08_YD = 250                        # within panel, on raised suction horizontal
+BV08_Z  = P03_PORT_Z + 150           # 1721 — raised 150mm for routing clearance
 
 # ── Flow arrow style ──
 _AW = 25
@@ -503,7 +503,7 @@ def draw_ball_valve(x, z, label, color):
 # Raised above port Z to clear outlet; discharge riser draws over via Z_DISCH
 _P01_SUCT_Z = P01_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
-    [EXIT_L, PORT_IN_YD, PORT_IN_YD],
+    [EXIT_L, BV01_YD, BV01_YD],
     [_P01_SUCT_Z, _P01_SUCT_Z, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
@@ -644,15 +644,30 @@ ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
 #  P-03 WASTE EVACUATION (C_BLACK_SYS) — right column
 # ════════════════════════════════════════════════════════════════
 
-# P-03 suction: IBC-4 (RIGHT) → P-03 inlet (right port)
+# P-03 suction: IBC-4 (RIGHT) → BV-08 → route down to P-03 inlet
+# Raised 150mm (to Z=BV08_Z) so BV-08 sits within the backing board.
+# Vertical drop at Yd=170 avoids DV-02 outputs; crosses P-04 discharge
+# horizontal at Z=DV02_Z — gap-break (both black, P-03 suction behind).
+_P03_DROP_YD = 170
+_xing_z = DV02_Z
+_xing_gap = PIPE_OD / 2.0
+
+# Seg 1: horizontal entry from right + vertical above P-04 discharge crossing
 draw_pipe_path(ax,
-    [EXIT_R, R_PORT_IN],
-    [P03_PORT_Z, P03_PORT_Z],
+    [EXIT_R, _P03_DROP_YD, _P03_DROP_YD],
+    [BV08_Z, BV08_Z, _xing_z + _xing_gap],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P03_PORT_Z)),
-            xytext=(sx(EXIT_R), sz(P03_PORT_Z)),
+
+# Seg 2: vertical below crossing + horizontal to P-03 port
+draw_pipe_path(ax,
+    [_P03_DROP_YD, _P03_DROP_YD, R_PORT_IN],
+    [_xing_z - _xing_gap, P03_PORT_Z, P03_PORT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(BV08_Z)),
+            xytext=(sx(EXIT_R), sz(BV08_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-ax.text(sx(EXIT_R + 5), sz(P03_PORT_Z),
+ax.text(sx(EXIT_R + 5), sz(BV08_Z),
         "FROM\nIBC-4\n(WASTE)", ha="left", va="center",
         fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 draw_ball_valve(BV08_YD, BV08_Z, "BV\n08", C_BLACK_EC)

@@ -279,6 +279,176 @@ ax.text(sx(F02_X_C), sz(FILT_Z_TOP + 30),
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+#  5b. PLUMBING — pipe routes, valves, flow arrows
+#
+#  Orientation: looking at panel from corridor side.
+#  LEFT = lower container X (toward cargo door / spray bar)
+#  RIGHT = higher container X (toward IBCs)
+# ═══════════════════════════════════════════════════════════════════════════
+
+PIPE_LW = 3.0
+VALVE_R = 15    # valve symbol radius (mm)
+
+# ── Port Z positions (from existing port indicators) ──
+P01_PT = P01_Z + PUMP_H - 25     # P-01 top port
+P01_PB = P01_Z + 25              # P-01 bottom port
+P02_PT = P02_Z + PUMP_H - 25     # P-02 top port
+P02_PB = P02_Z + 25              # P-02 bottom port
+P04_PT = P04_Z + PUMP_H - 25     # P-04 top port
+P04_PB = P04_Z + 25              # P-04 bottom port
+
+# ── Routing rails (vertical pipe runs alongside pump column) ──
+RAIL_L = PUMP_COL_X - PUMP_W / 2 - 30   # ~33mm — left of pump column
+RAIL_R = PUMP_COL_X + PUMP_W / 2 + 30   # ~193mm — right of pump column
+
+# ── Entry/exit X positions ──
+EXIT_R = PANEL_X_R + 40
+EXIT_L = PANEL_X_L - 40
+
+# ── Header heights ──
+BLUE_HDR_Z = FILT_Z_TOP + 40     # 680mm — Blue suction header above filters
+BROWN_HDR_Z = FILT_Z_TOP - FILT_HEAD / 2   # 605mm — Brown at filter port height
+
+# ── Valve positions ──
+BV01_X = (RAIL_R + FILT_START_X) / 2  # ~236mm — between pump col and filters
+BV01_Z = BLUE_HDR_Z
+BV02_X = RAIL_L - 60                  # left of panel — on Blue discharge header
+BV02_Z = ACC_Z                        # same height as ACC-01
+DV02_X = RAIL_R + 40                  # ~233mm — right of pump column
+DV02_Z = P04_PB                       # at P-04 outlet height
+
+
+def pipe_run(pts, color, lw=PIPE_LW, ls="-", alpha=1.0, zorder=10):
+    """Draw connected pipe segments from list of (x_mm, z_mm) tuples."""
+    xs = [sx(p[0]) for p in pts]
+    zs = [sz(p[1]) for p in pts]
+    ax.plot(xs, zs, color=color, lw=lw, ls=ls, solid_capstyle="round",
+            alpha=alpha, zorder=zorder)
+
+
+def valve_sym(x, z, label, color):
+    """Small circle valve symbol at panel coords."""
+    circ(x, z, VALVE_R, "white", color, lw=1.5, zorder=12)
+    ax.text(sx(x), sz(z), label, ha="center", va="center",
+            fontsize=3, color=color, fontweight="bold", zorder=13, **FONT)
+
+
+def flow_arrow(x1, z1, x2, z2, color, zorder=11):
+    """Flow direction arrow from (x1,z1) toward (x2,z2)."""
+    ax.annotate("", xy=(sx(x2), sz(z2)), xytext=(sx(x1), sz(z1)),
+                arrowprops=dict(arrowstyle="-|>", color=color, lw=1.5,
+                                mutation_scale=8),
+                zorder=zorder)
+
+
+# ════════════════════════════════════════════════════════════════
+#  BLUE SYSTEM (C_BLUE)
+# ════════════════════════════════════════════════════════════════
+
+# Blue suction: IBC (right) → header above filters → BV-01 → down to P-01
+pipe_run([(EXIT_R, BLUE_HDR_Z), (BV01_X + VALVE_R + 3, BLUE_HDR_Z)], C_BLUE)
+pipe_run([(BV01_X - VALVE_R - 3, BLUE_HDR_Z), (RAIL_L, BLUE_HDR_Z),
+          (RAIL_L, P01_PT), (PUMP_COL_X, P01_PT)], C_BLUE)
+valve_sym(BV01_X, BV01_Z, "BV\n01", C_BLUE)
+flow_arrow(EXIT_R - 5, BLUE_HDR_Z, EXIT_R - 40, BLUE_HDR_Z, C_BLUE)
+
+# Blue discharge: P-01 → left rail → up to ACC-01 height → BV-02 → exit left
+DISCH_X = RAIL_L - 25  # vertical riser X
+pipe_run([(PUMP_COL_X, P01_PB), (DISCH_X, P01_PB),
+          (DISCH_X, ACC_Z)], C_BLUE, zorder=9)
+# ACC-01 tee stub
+pipe_run([(DISCH_X, ACC_Z), (PUMP_COL_X - ACC_OD / 2, ACC_Z)],
+         C_BLUE, lw=2.0, zorder=9)
+# Horizontal from riser → BV-02 → exit left (spray bar)
+pipe_run([(DISCH_X, ACC_Z), (BV02_X + VALVE_R + 3, ACC_Z)], C_BLUE, zorder=9)
+pipe_run([(BV02_X - VALVE_R - 3, ACC_Z), (EXIT_L, ACC_Z)], C_BLUE, zorder=9)
+valve_sym(BV02_X, BV02_Z, "BV\n02", C_BLUE)
+flow_arrow(EXIT_L + 40, ACC_Z, EXIT_L + 5, ACC_Z, C_BLUE)
+
+# Blue suction entry label
+ax.text(sx(EXIT_R + 5), sz(BLUE_HDR_Z),
+        "FROM\nIBC-1/2\n(BLUE)", ha="left", va="center",
+        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
+# Blue discharge exit label
+ax.text(sx(EXIT_L - 5), sz(ACC_Z),
+        "TO\nSPRAY\nBAR", ha="right", va="center",
+        fontsize=3.5, color=C_BLUE, zorder=10, **FONT)
+
+
+# ════════════════════════════════════════════════════════════════
+#  BROWN SYSTEM (C_BROWN)
+# ════════════════════════════════════════════════════════════════
+
+# Brown suction: IBC-3 (right) → P-02 top port
+pipe_run([(EXIT_R, P02_PT), (PUMP_COL_X, P02_PT)], C_BROWN)
+flow_arrow(EXIT_R - 5, P02_PT, EXIT_R - 40, P02_PT, C_BROWN)
+ax.text(sx(EXIT_R + 5), sz(P02_PT),
+        "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
+        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+
+# Brown discharge: P-02 bottom → right → filter header → through filters → exit right
+# P-02 outlet to filter header height
+pipe_run([(PUMP_COL_X, P02_PB), (RAIL_R, P02_PB),
+          (RAIL_R, BROWN_HDR_Z)], C_BROWN, zorder=9)
+
+# Header connecting to filter inlets (at port height)
+F01_IN_X = F01_X_C - 30   # F-01 IN port
+F03_OUT_X = F03_X_C + 30  # F-03 OUT port
+pipe_run([(RAIL_R, BROWN_HDR_Z), (F01_IN_X, BROWN_HDR_Z)], C_BROWN, zorder=9)
+
+# Inter-filter connections (through head section ports)
+pipe_run([(F01_X_C + 30, BROWN_HDR_Z), (F02_X_C - 30, BROWN_HDR_Z)],
+         C_BROWN, lw=2.0, zorder=9)
+pipe_run([(F02_X_C + 30, BROWN_HDR_Z), (F03_X_C - 30, BROWN_HDR_Z)],
+         C_BROWN, lw=2.0, zorder=9)
+
+# F-03 outlet → exit right (filtered water returns to Blue IBC)
+pipe_run([(F03_OUT_X, BROWN_HDR_Z), (EXIT_R, BROWN_HDR_Z)], C_BROWN, zorder=9)
+flow_arrow(EXIT_R - 40, BROWN_HDR_Z, EXIT_R - 5, BROWN_HDR_Z, C_BROWN)
+ax.text(sx(EXIT_R + 5), sz(BROWN_HDR_Z),
+        "FILTERED\nTO IBC-1\n(REUSE)", ha="left", va="center",
+        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+
+
+# ════════════════════════════════════════════════════════════════
+#  TRAY DRAIN / BLACK SYSTEM (C_BLACK_SYS)
+# ════════════════════════════════════════════════════════════════
+
+# Tray drain suction: enters from left (hose from tray sump) → P-04 top port
+pipe_run([(EXIT_L, P04_PT), (PUMP_COL_X, P04_PT)], C_BLACK_SYS, ls="--")
+flow_arrow(EXIT_L + 5, P04_PT, EXIT_L + 40, P04_PT, C_BLACK_SYS)
+ax.text(sx(EXIT_L - 5), sz(P04_PT),
+        "FROM\nTRAY\nSUMP", ha="right", va="center",
+        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+
+# P-04 discharge: → DV-02 → exits right to IBC-3 or IBC-4
+pipe_run([(PUMP_COL_X, P04_PB), (DV02_X - VALVE_R - 3, P04_PB)], C_BLACK_SYS)
+# DV-02 symbol (3-way diverter — triangle)
+DV_SZ = 18
+dv_pts = [(sx(DV02_X), sz(DV02_Z + DV_SZ)),
+          (sx(DV02_X + DV_SZ), sz(DV02_Z - DV_SZ)),
+          (sx(DV02_X - DV_SZ), sz(DV02_Z - DV_SZ))]
+ax.add_patch(plt.Polygon(dv_pts, closed=True,
+             fc="white", ec=C_BLACK_EC, lw=1.5, zorder=12))
+ax.text(sx(DV02_X), sz(DV02_Z - 3), "DV\n02", ha="center", va="center",
+        fontsize=2.5, color=C_BLACK_EC, fontweight="bold", zorder=13, **FONT)
+
+# DV-02 outputs: Brown (IBC-3) and Black/Waste (IBC-4)
+DV_OUT_Z_BROWN = DV02_Z + DV_SZ + 15
+DV_OUT_Z_BLACK = DV02_Z - DV_SZ - 15
+pipe_run([(DV02_X, DV02_Z + DV_SZ), (DV02_X, DV_OUT_Z_BROWN),
+          (EXIT_R, DV_OUT_Z_BROWN)], C_BROWN, lw=2.0)
+pipe_run([(DV02_X, DV02_Z - DV_SZ), (DV02_X, DV_OUT_Z_BLACK),
+          (EXIT_R, DV_OUT_Z_BLACK)], C_BLACK_SYS, lw=2.0)
+ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BROWN),
+        "→ IBC-3", ha="left", va="center",
+        fontsize=3.5, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BLACK),
+        "→ IBC-4", ha="left", va="center",
+        fontsize=3.5, color=C_BLACK_SYS, zorder=10, **FONT)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 #  6. DIMENSIONS
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -476,15 +646,15 @@ ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 0.18,
 #  NOTES
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
-    "EQUIPMENT PANEL — IN IBC PLUMBING CORRIDOR",
+    "EQUIPMENT PANEL — IBC PLUMBING CORRIDOR — ALL PIPE CONNECTIONS SHOWN",
     f"1. Panel: 18mm marine ply, back against near IBC column at Yd={PANEL_YD}.",
-    f"2. Panel size: {PANEL_WIDTH}mm W × {PANEL_HEIGHT}mm H.",
-    "3. Pumps: 3× Shurflo 2088 (12V, 3.5 GPM, 45 PSI) on SS L-brackets.",
-    "4. ACC-01: 0.75L pressure accumulator, 1/2\" MNPT, inline P-01.",
-    "5. Filters: 3× separate 4.5\"×10\" housings, sump-down for access.",
-    f"6. Max protrusion from panel: {max_depth}mm into corridor.",
-    f"7. Clearance to far IBC: {clearance}mm (of 270mm corridor).",
-    f"8. Panel X position: ~{PANEL_WALL_X}–{PANEL_WALL_X + PANEL_WIDTH}mm along container.",
+    f"2. Panel size: {PANEL_WIDTH}mm W × {PANEL_HEIGHT}mm H. Position X={PANEL_WALL_X}–{PANEL_WALL_X + PANEL_WIDTH}mm.",
+    "3. Pumps: P-01 (Blue supply), P-02 (Brown recycle), P-04 (tray drain) — 3× Shurflo 2088.",
+    "4. BV-01 (Blue suction), BV-02 (Blue discharge), ACC-01 inline P-01 discharge.",
+    "5. Filters: F-01/F-02/F-03 (4.5\"×10\"), sump-down. P-02 → F-01 → F-02 → F-03 → IBC-1.",
+    "6. DV-02: 3-way diverter on P-04 discharge — routes to IBC-3 (Brown) or IBC-4 (Waste).",
+    f"7. Max protrusion: {max_depth}mm. Clearance to far IBC: {clearance}mm.",
+    "8. Pipes exit right to IBC corridor (270mm gap). Compatible with IBC-stacking sheet 5.",
 ]
 draw_notes(ax, notes, 0.3, 1.7, spacing=0.13,
            fs=4, width=FW - 0.6, color=C_DIM, title_color=C_NEW, font=FONT)
@@ -495,7 +665,7 @@ draw_notes(ax, notes, 0.3, 1.7, spacing=0.13,
 # ═══════════════════════════════════════════════════════════════════════════
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
-            subtitle="FRONT ELEVATION + CROSS-SECTION",
+            subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION",
             scale_note="ELEV SCALE 1:100 · X-SECTION NOT TO SCALE · ALL DIMS IN mm",
             doc_id="TBS-001 · Reorg Proposal",
             height=0.028)

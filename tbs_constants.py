@@ -201,11 +201,12 @@ BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiF
 # protrudes from panel face toward open end.
 # Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
 # Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
+# Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
 EQPANEL_X       = 5000    # panel face X (mm) — open-end face where equipment mounts
 EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5000–5018)
-EQPANEL_Z_LO    = 900     # panel bottom Z (mm) — well above walkway deck
-EQPANEL_Z_HI    = 2010    # panel top Z (mm)
-EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 1110mm
+EQPANEL_Z_LO    = 200     # panel bottom Z (mm) — 100mm above walkway deck
+EQPANEL_Z_HI    = 2260    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388)
+EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 2060mm
 
 # IBC plumbing corridor dimensions (derived from IBC layout: Yd=30+1016=1046 to 1316)
 CORRIDOR_YD_NEAR = 1046    # near IBC column far face Yd (mm) — BLUE_IBC_Y + IBC_D
@@ -226,8 +227,8 @@ PUMP_D       = 100     # pump protrusion from panel face in -X direction (mm) �
 PUMP_YD_SPAN = 127     # pump body width in Yd direction (mm) — Shurflo 2088 width
 PUMP_X       = EQPANEL_X - PUMP_D   # = 4900 — pump zone left edge X for elevation views
 PUMP_W       = PUMP_D               # = 100 — pump zone width in X for elevation views
-PUMP_H_LO    = EQPANEL_Z_LO  # pump zone bottom Z (mm) [rev7: panel bottom]
-PUMP_H_HI    = 1400    # pump zone top Z (mm)
+PUMP_H_LO    = 1320    # pump zone bottom Z (mm) — above filter stack + 40mm gap
+PUMP_H_HI    = 2220    # pump zone top Z (mm) — includes ACC-01 top
 PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of corridor
 # P-01 (Blue supply), P-02 (Brown recycle), P-04 (Tray drain) on equipment panel.
 # P-03 (waste evacuation) on D4 drain run in IBC plumbing corridor.
@@ -275,16 +276,16 @@ FSKID_X        = EQPANEL_X - BB_OD  # = 4870 — filter zone left edge X for ele
 FSKID_W        = BB_OD              # = 130 — filter zone width in X (= housing OD protrusion)
 FSKID_YD       = CORRIDOR_YD_NEAR + PUMP_YD_SPAN + 13  # = 1186 — filter near edge Yd (13mm gap past pumps)
 
-# Filter Z positions — 3 housings stacked vertically, 30mm gaps between
-# Pumps and filters at different Yd so Z ranges can overlap.
-FSKID_Z_LO     = 900     # filter zone bottom Z (mm) — F1 sump bottom
-FSKID_Z_HI     = FSKID_Z_LO + 3 * BB_H + 2 * 30  # = 1980 — F3 head top
+# Filter Z positions — 3 housings stacked vertically, 30mm gaps between.
+# Filters at BOTTOM of panel (easy cartridge access), pumps above.
+FSKID_Z_LO     = EQPANEL_Z_LO  # = 200 — filter zone bottom Z (mm) — F1 sump bottom
+FSKID_Z_HI     = FSKID_Z_LO + 3 * BB_H + 2 * 30  # = 1280 — F3 head top
 FSKID_H        = FSKID_Z_HI - FSKID_Z_LO  # = 1080mm
-F1_Z           = 900     # F1 sump bottom Z (mm) — 50μ sediment (lowest)
-F2_Z           = 1270    # F2 sump bottom Z (mm) — 5μ sediment
-F3_Z           = 1640    # F3 sump bottom Z (mm) — GAC carbon (highest)
-FILT_HEAD_Z    = F3_Z + BB_H  # = 1980 — top of highest filter head
-FILT_SUMP_Z    = F1_Z         # = 900 — bottom of lowest filter sump
+F1_Z           = 200     # F1 sump bottom Z (mm) — 50μ sediment (lowest, most accessible)
+F2_Z           = 570     # F2 sump bottom Z (mm) — 5μ sediment
+F3_Z           = 940     # F3 sump bottom Z (mm) — GAC carbon (highest filter)
+FILT_HEAD_Z    = F3_Z + BB_H  # = 1280 — top of highest filter head
+FILT_SUMP_Z    = F1_Z         # = 200 — bottom of lowest filter sump
 
 # Deprecated — filters no longer spread along X (stacked vertically instead).
 # Kept for backward compat with retired generate_filter_skid_diagram.py.

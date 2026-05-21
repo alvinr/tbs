@@ -648,7 +648,7 @@ ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
 # Raised 150mm (to Z=BV08_Z) so BV-08 sits within the backing board.
 # Vertical drop at Yd=170 avoids DV-02 outputs; crosses P-04 discharge
 # horizontal at Z=DV02_Z — gap-break (both black, P-03 suction behind).
-_P03_DROP_YD = 120
+_P03_DROP_YD = 145
 _xing_z = DV02_Z
 _xing_gap = PIPE_OD / 2.0
 

@@ -486,16 +486,12 @@ ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# Blue discharge: P-01 outlet (LEFT port) → drop → riser → up to ACC-01 port
+# Blue discharge: full path as single draw_pipe_path for proper elbows
+# P-01 outlet → drop → right to riser → up to ACC_Z → left to spray bar
 # Z_DISCH so riser draws OVER crossing suction pipes
 draw_pipe_path(ax,
-    [PORT_OUT_YD, PORT_OUT_YD, DISCH_RAIL, DISCH_RAIL],
-    [P01_PORT_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, ACC_Z],
-    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# Horizontal at ACC_Z: exit LEFT to spray bar, through ACC port, to riser RIGHT
-draw_pipe_path(ax,
-    [EXIT_L, DISCH_RAIL],
-    [ACC_Z, ACC_Z],
+    [EXIT_L, DISCH_RAIL, DISCH_RAIL, PORT_OUT_YD, PORT_OUT_YD],
+    [ACC_Z, ACC_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),

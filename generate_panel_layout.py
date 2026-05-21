@@ -335,7 +335,8 @@ EXIT_R = 330    # past right panel edge (far wall / IBCs)
 BV01_YD = 20
 BV01_Z  = P01_PT
 BV02_YD = -40
-BV02_Z  = ACC_Z
+DISCH_EXIT_Z = ACC_Z - 30   # discharge exit offset below ACC tee
+BV02_Z  = DISCH_EXIT_Z
 DV02_YD = 155
 DV02_Z  = P04_PB
 
@@ -480,16 +481,16 @@ draw_pipe_path(ax,
     [DISCH_RAIL, PUMP_COL - ACC_OD / 2],
     [ACC_Z, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
-# Discharge exit
+# Discharge exit: drop below ACC tee then left to spray bar
 draw_pipe_path(ax,
-    [DISCH_RAIL, EXIT_L],
-    [ACC_Z, ACC_Z],
+    [DISCH_RAIL, DISCH_RAIL, EXIT_L],
+    [ACC_Z, DISCH_EXIT_Z, DISCH_EXIT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
-ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
-            xytext=(sx(EXIT_L + _AW), sz(ACC_Z)),
+ax.annotate("", xy=(sx(EXIT_L), sz(DISCH_EXIT_Z)),
+            xytext=(sx(EXIT_L + _AW), sz(DISCH_EXIT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(ACC_Z),
+ax.text(sx(EXIT_L - 5), sz(DISCH_EXIT_Z),
         "TO\nSPRAY\nBAR", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 

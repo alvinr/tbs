@@ -1718,19 +1718,11 @@ ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X),
           fontweight="bold", color="white", zorder=7)
 
 # ── Hose routing along tray rim exterior ───────────────────────────────────
-# Step 1: Short Yd crossing from pickup tube to rim exterior
 RIM_EXT_YD_C = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm
-draw_pipe_path(ax4c,
-               [tube_yd, RIM_EXT_YD_C],
-               [SUMP_X, SUMP_X],
-               HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
-               fc=C_BROWN, ec="#5A3020", zorder=6)
-
-# Steps 2-4: Along rim → 90° around tray corner → cross Yd → 90° at panel → to P-04
 CORNER_X = TRAY_X_R + 15   # just past tray right edge
 draw_pipe_path(ax4c,
-               [RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
-               [SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
+               [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
+               [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
                HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 

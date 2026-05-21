@@ -376,8 +376,8 @@ BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
 DV02_YD = R_COL                      # right column — blank space above P-03
 DV02_Z  = P04_PORT_Z + 100           # 100mm rise from P-04 outlet before turn
-BV07_YD = PANEL_W + 15               # just past right panel edge (IBC side)
-BV07_Z  = P05_PORT_Z                 # inline on P-05 suction horizontal
+BV07_YD = R_COL                       # centered above P-05
+BV07_Z  = P05_Z + PUMP_H + 30        # 30mm above P-05 top
 BV08_YD = 250                        # within panel, on raised suction horizontal
 BV08_Z  = P03_PORT_Z + 150           # 1721 — raised 150mm for routing clearance
 
@@ -658,10 +658,11 @@ draw_pipe_path(ax,
     [BV08_Z, BV08_Z, _xing_z + _xing_gap],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
-# Seg 2: vertical below crossing + horizontal to P-03 port
+# Seg 2: vertical below crossing, past port, U-turn back up to P-03 port
+_P03_HOOK_Z = P03_Z + 50
 draw_pipe_path(ax,
-    [_P03_DROP_YD, _P03_DROP_YD, R_PORT_IN],
-    [_xing_z - _xing_gap, P03_PORT_Z, P03_PORT_Z],
+    [_P03_DROP_YD, _P03_DROP_YD, R_PORT_IN, R_PORT_IN],
+    [_xing_z - _xing_gap, _P03_HOOK_Z, _P03_HOOK_Z, P03_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 ax.annotate("", xy=(sx(EXIT_R - _AW), sz(BV08_Z)),
@@ -690,16 +691,16 @@ ax.text(sx(EXIT_R + 5), sz(_P03_DISCH_Z),
 #  P-05 BROWN DRAIN (C_BROWN) — right column, beside ACC-01
 # ════════════════════════════════════════════════════════════════
 
-# P-05 suction: IBC-3 (RIGHT) → BV-07 → P-05 inlet (right port)
+# P-05 suction: IBC-3 (RIGHT) → BV-07 (centered above P-05) → drop → P-05 inlet
 draw_pipe_path(ax,
-    [EXIT_R, R_PORT_IN],
-    [P05_PORT_Z, P05_PORT_Z],
+    [EXIT_R, R_COL, R_COL, R_PORT_IN],
+    [BV07_Z, BV07_Z, P05_PORT_Z, P05_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 draw_ball_valve(BV07_YD, BV07_Z, "BV\n07", C_BROWN)
-ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P05_PORT_Z)),
-            xytext=(sx(EXIT_R), sz(P05_PORT_Z)),
+ax.annotate("", xy=(sx(EXIT_R - _AW), sz(BV07_Z)),
+            xytext=(sx(EXIT_R), sz(BV07_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-ax.text(sx(EXIT_R + 5), sz(P05_PORT_Z),
+ax.text(sx(EXIT_R + 5), sz(BV07_Z),
         "FROM\nIBC-3\n(DRAIN)", ha="left", va="center",
         fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 

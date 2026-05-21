@@ -360,7 +360,7 @@ F_IN_YD  = FILT_COL - 35
 F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
-DISCH_RAIL = PUMP_W + 10  # Blue discharge riser — between pump columns
+DISCH_RAIL = PUMP_W - 15  # Blue discharge riser — 25mm left of prior position
 INTERZONE  = F_IN_YD                         # pump-to-filter transition
 JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
 JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
@@ -648,7 +648,7 @@ ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
 # Raised 150mm (to Z=BV08_Z) so BV-08 sits within the backing board.
 # Vertical drop at Yd=170 avoids DV-02 outputs; crosses P-04 discharge
 # horizontal at Z=DV02_Z — gap-break (both black, P-03 suction behind).
-_P03_DROP_YD = 145
+_P03_DROP_YD = 150
 _xing_z = DV02_Z
 _xing_gap = PIPE_OD / 2.0
 

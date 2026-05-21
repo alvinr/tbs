@@ -308,7 +308,8 @@ Z_BROWN = 7
 Z_BLUE  = 8
 
 # ── Port Z positions (both ports at pump head, side by side) ──
-PORT_DROP = 30               # discharge route drops below port Z to avoid suction overlap
+PORT_DROP = 30               # discharge route drops below port Z
+SUCT_RISE = 30               # suction route rises above port Z
 
 P01_PORT_Z = P01_Z + PUMP_H - 25
 P02_PORT_Z = P02_Z + PUMP_H - 25
@@ -335,7 +336,7 @@ EXIT_R = 330    # past right panel edge (far wall / IBCs)
 
 # ── Valve positions ──
 BV01_YD = 0
-BV01_Z  = P01_PORT_Z
+BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
 DISCH_EXIT_Z = ACC_Z - 30   # discharge exit offset below ACC tee
 BV02_Z  = DISCH_EXIT_Z
@@ -456,20 +457,29 @@ def draw_ball_valve(x, z, label, color):
             fontsize=3, color=color, fontweight="bold", zorder=13, **FONT)
 
 
+# Gap half-width for pipe crossings at Blue discharge riser
+_gap_half = PIPE_OD / 2 + 3
+
 # ════════════════════════════════════════════════════════════════
 #  BLUE SYSTEM (C_BLUE)
 # ════════════════════════════════════════════════════════════════
 
 # Blue suction: IBC-1/2 (LEFT) → BV-01 → P-01 inlet (RIGHT port)
+# Raised above port Z to clear outlet; gap at blue discharge riser
+_P01_SUCT_Z = P01_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
-    [EXIT_L, PORT_IN_YD],
-    [P01_PORT_Z, P01_PORT_Z],
+    [EXIT_L, DISCH_RAIL - _gap_half],
+    [_P01_SUCT_Z, _P01_SUCT_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
+draw_pipe_path(ax,
+    [DISCH_RAIL + _gap_half, PORT_IN_YD, PORT_IN_YD],
+    [_P01_SUCT_Z, _P01_SUCT_Z, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_BLUE)
 draw_ball_valve(BV01_YD, BV01_Z, "BV\n01", C_BLUE)
-ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P01_PORT_Z)),
-            xytext=(sx(EXIT_L), sz(P01_PORT_Z)),
+ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P01_SUCT_Z)),
+            xytext=(sx(EXIT_L), sz(_P01_SUCT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(P01_PORT_Z),
+ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
@@ -556,19 +566,20 @@ ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
 # ════════════════════════════════════════════════════════════════
 
 # Tray drain suction: LEFT → P-04 inlet (RIGHT port, gap at Blue discharge riser)
-_gap_half = PIPE_OD / 2 + 3
+# Raised above port Z to clear outlet
+_P04_SUCT_Z = P04_PORT_Z + SUCT_RISE
 draw_pipe_path(ax,
     [EXIT_L, DISCH_RAIL - _gap_half],
-    [P04_PORT_Z, P04_PORT_Z],
+    [_P04_SUCT_Z, _P04_SUCT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 draw_pipe_path(ax,
-    [DISCH_RAIL + _gap_half, PORT_IN_YD],
-    [P04_PORT_Z, P04_PORT_Z],
+    [DISCH_RAIL + _gap_half, PORT_IN_YD, PORT_IN_YD],
+    [_P04_SUCT_Z, _P04_SUCT_Z, P04_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.annotate("", xy=(sx(EXIT_L + _AW), sz(P04_PORT_Z)),
-            xytext=(sx(EXIT_L), sz(P04_PORT_Z)),
+ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),
+            xytext=(sx(EXIT_L), sz(_P04_SUCT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-ax.text(sx(EXIT_L - 5), sz(P04_PORT_Z),
+ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
         "FROM\nTRAY\nSUMP", ha="right", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 

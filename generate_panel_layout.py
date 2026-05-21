@@ -370,7 +370,7 @@ EXIT_L = -60    # past left panel edge (near wall / walkway)
 EXIT_R = 330    # past right panel edge (far wall / IBCs)
 
 # ── Valve positions ──
-BV01_YD = 100                        # 100mm inward from left panel edge
+BV01_YD = PORT_IN_YD                  # aligned with P-01 inlet port
 BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
@@ -648,7 +648,7 @@ ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
 # Raised 150mm (to Z=BV08_Z) so BV-08 sits within the backing board.
 # Vertical drop at Yd=170 avoids DV-02 outputs; crosses P-04 discharge
 # horizontal at Z=DV02_Z — gap-break (both black, P-03 suction behind).
-_P03_DROP_YD = 170
+_P03_DROP_YD = 120
 _xing_z = DV02_Z
 _xing_gap = PIPE_OD / 2.0
 

@@ -134,7 +134,6 @@ DIAG_FILES=(
     "portrait-scale-comparison.png"
     "water-system-sheet1.png"
     "water-system-sheet2.png"
-    "filter-skid-sheet1.png"
     "film-plane-sheet1.png"
     "film-plane-sheet2.png"
     "film-plane-sheet3.png"
@@ -209,7 +208,6 @@ DIAG_FILES=(
     "shelf-sheet2.png"
     "shelf-sheet3.png"
     "pinhole-wall-elevation.png"
-    "pump-manifold-sheet1.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

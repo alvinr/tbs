@@ -42,6 +42,8 @@ from tbs_constants import (
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
+    FSKID_X,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
@@ -203,11 +205,13 @@ ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
 
-# Pump manifold: X=4800-5580, H=900-1400 (equipment panel, Yd=1046)
-equip_rect(ax, PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP,
+# Equipment panel zone: X=4870–5018, Z=900–2010 (pumps+filters, Yd=1046–1316)
+EQ_ZONE_X = FSKID_X
+EQ_ZONE_W = EQPANEL_X + EQPANEL_T - FSKID_X
+equip_rect(ax, EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP,
            alpha=0.50, ec=C_OUT, lw=0.7, zorder=3)
-ax.text(PUMP_X + PUMP_W/2, (PUMP_H_LO + PUMP_H_HI)/2,
-        "Pump\n[Yd=1046]", ha="center", va="center",
+ax.text(EQ_ZONE_X + EQ_ZONE_W/2, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2,
+        "Equip panel\n[Yd=1046]", ha="center", va="center",
         fontsize=FS_SM - 1, color=C_OUT, zorder=6)
 
 leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
@@ -215,8 +219,8 @@ leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
        ha="left", fs=FS_SM)
 leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
-leader(ax, PUMP_X + PUMP_W, (PUMP_H_LO + PUMP_H_HI)/2, PUMP_X + 700, 500,
-       f"Pump manifold  (equip panel, Yd=1046)\nX={PUMP_X}–{PUMP_X+PUMP_W}mm", ha="left", fs=FS_SM)
+leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 700, 500,
+       f"Equipment panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
 
 # External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
 PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
@@ -356,7 +360,7 @@ legend_items = [
     (C_BROWN_IBC, "Brown IBC x1 (bottom near)"),
     (C_WASTE_IBC, "Waste IBC x1 (bottom far)"),
     ("#E8E8E8",   "Evap duct penetration (ext unit)"),
-    (C_PUMP,      "Pump manifold (equip panel)"),
+    (C_PUMP,      "Equipment panel (pumps+filters)"),
     (C_ELEC,      "Electrical panel"),
     (C_BATT,      "Battery bank"),
     (C_FILM_PLN,  "Film plane (symbolic band)"),
@@ -617,7 +621,7 @@ ldr2(IBC_COL_X + IBC_W/2 + 400, IBC_H_STK, C_LEN - 50, 2800,
 for xw, yw, ww, hw, col, lbl in [
     (EP_X,   EP_H_LO,   EP_W,  EP_H_HI  - EP_H_LO,  C_ELEC, "Elec panel\n[Yd=0 wall]"),
     (BA_X,   BA_H_LO,   BA_W,  BA_H_HI  - BA_H_LO,  C_BATT, "Battery\n[Yd=0]"),
-    (PUMP_X, PUMP_H_LO, PUMP_W, PUMP_H_HI - PUMP_H_LO, C_PUMP, "Pump\n[Yd=1046]"),
+    (EQ_ZONE_X, EQPANEL_Z_LO, EQ_ZONE_W, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PUMP, "Equip panel\n[Yd=1046]"),
     (PWR_PANEL_X, (EP_H_LO + EP_H_HI) / 2 - PWR_PANEL_H / 2,
      PWR_PANEL_W, PWR_PANEL_H, C_ALUM, "Ext pwr panel\n[exterior]"),
 ]:

@@ -624,15 +624,6 @@ FAR_IBC_DY = IBC_FAR_Y * SY
 ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
          "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
 
-# Drain pumps P-03 (waste) and P-05 (brown) — in plumbing corridor between IBC columns
-CORR_DY = 1181 * SY  # corridor centerline in drawing coords
-pump(ax2, IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.25, color=C_PUMP, r=0.15)
-ax2.text(IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.55, "P-05\nBROWN\nDRAIN",
-         ha="center", fontsize=5, color=C_PUMP)
-pump(ax2, IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.25, color=C_PUMP, r=0.15)
-ax2.text(IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.55, "P-03\nWASTE\nDRAIN",
-         ha="center", fontsize=5, color=C_PUMP)
-
 # Equipment panel in IBC plumbing corridor (between IBC columns)
 EP_X_DU = PUMP_X * SX             # ≈ 9.77
 EP_W_DU = PUMP_W * SX             # ≈ 1.59
@@ -644,7 +635,7 @@ ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 + 0.08,
          "EQUIPMENT PANEL", ha="center", fontsize=6.5,
          fontweight="bold", color="#E65100", zorder=3)
 ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 - 0.12,
-         "P-01, P-02, P-04, ACC-01\nF1 → F2 → F3 (3-STAGE FILTER)",
+         "P-01–P-05, ACC-01, BV-01/02/07/08\nF1 → F2 → F3 (3-STAGE FILTER)",
          ha="center", fontsize=5, color="#E65100", zorder=3)
 
 # Processing tray (304 SS, two panels, 50mm rim)

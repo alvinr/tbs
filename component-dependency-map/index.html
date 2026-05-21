@@ -1004,10 +1004,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#18-evaporative-cooler" class="md-nav__link">
+  <a href="#18-evaporative-cooler-external" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.8 Evaporative Cooler
+        1.8 Evaporative Cooler (External)
       
     </span>
   </a>
@@ -1026,10 +1026,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#110-pump-manifold" class="md-nav__link">
+  <a href="#110-pump-manifold-equipment-panel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.10 Pump Manifold
+        1.10 Pump Manifold (Equipment Panel)
       
     </span>
   </a>
@@ -2064,10 +2064,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#18-evaporative-cooler" class="md-nav__link">
+  <a href="#18-evaporative-cooler-external" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.8 Evaporative Cooler
+        1.8 Evaporative Cooler (External)
       
     </span>
   </a>
@@ -2086,10 +2086,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#110-pump-manifold" class="md-nav__link">
+  <a href="#110-pump-manifold-equipment-panel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1.10 Pump Manifold
+        1.10 Pump Manifold (Equipment Panel)
       
     </span>
   </a>
@@ -2599,7 +2599,7 @@ baffle duct with 2 offset steel baffles (65% height each, S-path); exterior face
 weatherproof louvre grille. Fan B has the same baffle duct protruding from the panel exterior
 face — exhausts into the open doorway during operation. Fan B moves with the panel on the
 sliding carriage; wiring via flexible coiled cable from fixed door frame (Circuit B).</em></p>
-<h3 id="18-evaporative-cooler">1.8 Evaporative Cooler<a class="headerlink" href="#18-evaporative-cooler" title="Permanent link">&para;</a></h3>
+<h3 id="18-evaporative-cooler-external">1.8 Evaporative Cooler (External)<a class="headerlink" href="#18-evaporative-cooler-external" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2610,34 +2610,25 @@ sliding carriage; wiring via flexible coiled cable from fixed door frame (Circui
 </thead>
 <tbody>
 <tr>
-<td>Left edge X</td>
-<td>700 mm</td>
-<td><code>EVAP_X</code></td>
+<td>Duct penetration X</td>
+<td>1,200 mm</td>
+<td><code>EVAP_DUCT_X</code></td>
 </tr>
 <tr>
-<td>Width</td>
-<td>600 mm</td>
-<td><code>EVAP_W</code></td>
+<td>Duct penetration Z</td>
+<td>2,100 mm</td>
+<td><code>EVAP_DUCT_Z</code></td>
 </tr>
 <tr>
-<td>Depth from pinhole wall</td>
-<td>0 mm</td>
-<td><code>EVAP_Y</code></td>
-</tr>
-<tr>
-<td>Depth footprint</td>
-<td>350 mm</td>
-<td><code>EVAP_D</code></td>
-</tr>
-<tr>
-<td>Height</td>
-<td>800 mm</td>
-<td><code>EVAP_H</code></td>
+<td>Duct diameter</td>
+<td>200 mm</td>
+<td><code>EVAP_DUCT_D</code></td>
 </tr>
 </tbody>
 </table>
 <p><em>Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
-water reservoir, Circuit E. Located on pinhole wall face (Yd=0) — shadow-free at all depths.</em></p>
+water reservoir, Circuit E. Mounted externally on the pinhole wall; cooled air enters through
+Ø200mm insulated duct penetration with light-safe baffle.</em></p>
 <h3 id="19-electrical-system">1.9 Electrical System<a class="headerlink" href="#19-electrical-system" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2686,7 +2677,7 @@ NEMA 5-15R weatherproof inlet, Blue Sea 5026 12-circuit fuse block, IP65 enclosu
 (300×200×130mm), 200A ANL main fuse, 4 AWG ground wire + 8ft copper stake.</em></p>
 <p><em>Circuits: A — safelight strip (overhead red LED); B — film plane mechanism motors;
 C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule; E — evaporative cooler; F — ventilation fans.</em></p>
-<h3 id="110-pump-manifold">1.10 Pump Manifold<a class="headerlink" href="#110-pump-manifold" title="Permanent link">&para;</a></h3>
+<h3 id="110-pump-manifold-equipment-panel">1.10 Pump Manifold (Equipment Panel)<a class="headerlink" href="#110-pump-manifold-equipment-panel" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2698,25 +2689,36 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 <tbody>
 <tr>
 <td>Left edge X</td>
-<td>2,500 mm</td>
+<td>4,800 mm</td>
 <td><code>PUMP_X</code></td>
 </tr>
 <tr>
 <td>Width</td>
-<td>500 mm</td>
+<td>780 mm</td>
 <td><code>PUMP_W</code></td>
 </tr>
 <tr>
 <td>Height range</td>
-<td>200–600 mm</td>
+<td>900–1,400 mm</td>
 <td><code>PUMP_H_LO</code>, <code>PUMP_H_HI</code></td>
+</tr>
+<tr>
+<td>Depth from pinhole wall</td>
+<td>1,046 mm</td>
+<td><code>PUMP_YD</code> (= <code>CORRIDOR_YD_NEAR</code>)</td>
+</tr>
+<tr>
+<td>Protrusion from panel</td>
+<td>127 mm</td>
+<td><code>PUMP_D</code></td>
 </tr>
 </tbody>
 </table>
-<p><em>Components: 1" HDPE header + isolation valves, 3× 12V pumps on manifold (P-01 Blue spray bar supply,
+<p><em>Components: 1" HDPE header + isolation valves, 4× 12V pumps on equipment panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
-manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.</em></p>
+manifold ball valves VB1/VB2/VB3, check valves CV1–CV4 on bulkhead lines F1/F2/D3/D4, Circuit C.
+Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), in the IBC plumbing corridor.</em></p>
 <h3 id="111-water-system-blue-circuit">1.11 Water System — Blue Circuit<a class="headerlink" href="#111-water-system-blue-circuit" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2849,7 +2851,8 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on D4 drain run). F
 </table>
 <p><em>Derived rule: any equipment with X &lt; ZONE_L_END is shadow-free at all depths.
 Any equipment with X &gt; ZONE_R_START is shadow-free at all depths.
-Equipment at Yd = 0 (pinhole wall face) is always shadow-free.</em></p>
+Equipment at Yd = 0 (pinhole wall face) is always shadow-free.
+Equipment in the IBC corridor (X &gt; ZONE_R_START) at any Yd is shadow-free.</em></p>
 <h3 id="115-panel-sliding-carriage">1.15 Panel Sliding Carriage<a class="headerlink" href="#115-panel-sliding-carriage" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3594,9 +3597,9 @@ PNGs alongside the constant change.</p>
 <td>Height change</td>
 </tr>
 <tr>
-<td><code>EVAP_X</code>, <code>EVAP_W</code>, <code>EVAP_Y</code>, <code>EVAP_D</code>, <code>EVAP_H</code></td>
-<td>FP, LOS, AO, AF, ES, LT</td>
-<td>Cooler position/size</td>
+<td><code>EVAP_DUCT_X</code>, <code>EVAP_DUCT_Z</code>, <code>EVAP_DUCT_D</code></td>
+<td>FP, AO, AF, ES</td>
+<td>Evap duct penetration (cooler external)</td>
 </tr>
 <tr>
 <td><code>EP_X</code>, <code>EP_W</code>, <code>EP_H_LO</code>, <code>EP_H_HI</code></td>
@@ -3611,7 +3614,7 @@ PNGs alongside the constant change.</p>
 <tr>
 <td><code>PUMP_X</code>, <code>PUMP_W</code>, <code>PUMP_H_LO</code>, <code>PUMP_H_HI</code></td>
 <td>FP, LOS, AO, AF, ES, WS</td>
-<td>Pump manifold on pinhole wall</td>
+<td>Pump manifold on equipment panel (Yd=1046)</td>
 </tr>
 <tr>
 <td><code>IBC_COL_X</code>, <code>BLUE_IBC_Y</code>, <code>BROWN_IBC_Y</code></td>

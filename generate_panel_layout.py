@@ -360,7 +360,7 @@ F_IN_YD  = FILT_COL - 35
 F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
-DISCH_RAIL = PUMP_W - 15  # Blue discharge riser — 25mm left of prior position
+DISCH_RAIL = PUMP_W - 5  # Blue discharge riser — 25mm left of prior position
 INTERZONE  = F_IN_YD                         # pump-to-filter transition
 JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
 JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
@@ -659,7 +659,7 @@ draw_pipe_path(ax,
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 
 # Seg 2: vertical below crossing, past port, U-turn back up to P-03 port
-_P03_HOOK_Z = P03_Z + 50
+_P03_HOOK_Z = P03_Z - 20
 draw_pipe_path(ax,
     [_P03_DROP_YD, _P03_DROP_YD, R_PORT_IN, R_PORT_IN],
     [_xing_z - _xing_gap, _P03_HOOK_Z, _P03_HOOK_Z, P03_PORT_Z],

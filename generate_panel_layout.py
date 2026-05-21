@@ -107,7 +107,7 @@ C_WALL_HATCH = "#999999"
 
 # ── Scale and layout ─────────────────────────────────────────────────────
 SC  = 120.0   # mm per inch (main elevation, 1:120)
-FW  = 7.0
+FW  = 10.0
 FH  = 22.5
 
 # Show range (panel-relative mm + margins for dims/leaders)
@@ -817,12 +817,201 @@ draw_notes(ax, notes, 0.2, 1.6, spacing=0.13,
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+#  DETAIL B — FILTER MOUNTING CROSS-SECTION
+#  Side section perpendicular to panel face at filter head height.
+#  Shows: 18mm ply panel → 50mm HDPE spacer → 3mm steel bracket →
+#         filter head → sump bowl below → 1" NPT port with pipe stub
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Detail callout on main elevation — dashed circle at F-01
+_det_cx = sx(FILT_COL)
+_det_cy = sz(F01_Z + FILT_H / 2)
+_det_r = FILT_OD * 0.55 / SC
+ax.add_patch(plt.Circle((_det_cx, _det_cy), _det_r,
+             fc="none", ec="#1A237E", lw=1.0, ls="--", zorder=11))
+ax.text(_det_cx + _det_r + 0.08, _det_cy + _det_r,
+        "B", fontsize=6, color="#1A237E", fontweight="bold", zorder=11, **FONT)
+
+# ── Position and scale ──
+SC_D = 70.0       # mm per figure inch (~1:3 scale)
+DET_LEFT = 7.0    # figure x for Yd=0 (panel front face)
+DET_Z0 = 9.5      # figure y for head center (Z=0)
+
+
+def det_y(yd_mm):
+    """Detail Yd (mm from panel face) → figure x."""
+    return DET_LEFT + yd_mm / SC_D
+
+
+def det_z(z_mm):
+    """Detail Z (mm from head center) → figure y."""
+    return DET_Z0 + z_mm / SC_D
+
+
+# Detail title
+ax.text(det_y(80), det_z(85),
+        "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (~1:3)",
+        ha="center", va="bottom",
+        fontsize=5, fontweight="bold",
+        color="#1A237E", zorder=10, **FONT)
+
+# ── All Z coords relative to filter head port center ──
+
+# 1. Equipment panel (18mm marine ply)
+D_PANEL_T = 18.0
+_dpanel_bot = -320
+_dpanel_top = 65
+ax.add_patch(mpatches.Rectangle(
+    (det_y(-D_PANEL_T), det_z(_dpanel_bot)),
+    D_PANEL_T / SC_D, (_dpanel_top - _dpanel_bot) / SC_D,
+    fc=C_PLY, ec=C_PLY_EC, lw=1.5, zorder=3))
+for _gz in range(_dpanel_bot + 5, _dpanel_top - 5, 12):
+    ax.plot([det_y(-D_PANEL_T + 2), det_y(-2)],
+            [det_z(_gz), det_z(_gz + 2)],
+            color="#C0B080", lw=0.3, zorder=3.5)
+
+# 2. HDPE spacer block (50mm thick, 40mm visible height in section)
+D_SPACER_YD = 0
+D_SPACER_T = 50
+D_SPACER_VIS_H = 40
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_SPACER_YD), det_z(-D_SPACER_VIS_H / 2)),
+    D_SPACER_T / SC_D, D_SPACER_VIS_H / SC_D,
+    fc="#E0D8B0", ec="#A09060", lw=1.0, zorder=4, hatch=".."))
+
+# 3. Steel bracket tab (3mm)
+D_BRACKET_YD = D_SPACER_YD + D_SPACER_T      # 50
+D_BRACKET_T = 3
+D_BRACKET_VIS_H = 50
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_BRACKET_YD), det_z(-D_BRACKET_VIS_H / 2)),
+    D_BRACKET_T / SC_D, D_BRACKET_VIS_H / SC_D,
+    fc="#999999", ec=C_FRAME, lw=1.0, zorder=5))
+
+# 4. M6×80 bolt through panel + spacer + bracket
+D_BOLT_Z = -10
+_bolt_head_yd = D_BRACKET_YD + D_BRACKET_T   # 53
+_bolt_tip_yd = -D_PANEL_T - 2                # -20
+ax.plot([det_y(_bolt_tip_yd), det_y(_bolt_head_yd)],
+        [det_z(D_BOLT_Z), det_z(D_BOLT_Z)],
+        color=C_FRAME, lw=1.2, zorder=6)
+ax.add_patch(mpatches.Rectangle(
+    (det_y(_bolt_head_yd), det_z(D_BOLT_Z - 3)),
+    4 / SC_D, 6 / SC_D,
+    fc="#666666", ec=C_FRAME, lw=0.8, zorder=7))
+ax.add_patch(mpatches.Rectangle(
+    (det_y(_bolt_tip_yd - 2), det_z(D_BOLT_Z - 4)),
+    3 / SC_D, 8 / SC_D,
+    fc="#666666", ec=C_FRAME, lw=0.8, zorder=7))
+leader(ax, det_y(_bolt_head_yd + 3), det_z(D_BOLT_Z),
+       det_y(_bolt_head_yd + 35), det_z(D_BOLT_Z - 25),
+       "M6×80 BOLT\n+ NYLOC NUT", fs=3.5, color=C_DIM, font=FONT)
+
+# 5. Filter head (80mm depth × 70mm visible height)
+D_HEAD_YD = D_BRACKET_YD + D_BRACKET_T + 2   # 55 (2mm gap for clamp)
+D_HEAD_DEPTH = 80
+D_HEAD_VIS_H = FILT_HEAD                     # 70
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_HEAD_YD), det_z(-D_HEAD_VIS_H / 2)),
+    D_HEAD_DEPTH / SC_D, D_HEAD_VIS_H / SC_D,
+    fc="#555555", ec=C_FRAME, lw=1.5, zorder=5))
+ax.text(det_y(D_HEAD_YD + D_HEAD_DEPTH / 2), det_z(0),
+        "HEAD", ha="center", va="center",
+        fontsize=4, color="white", fontweight="bold", zorder=6, **FONT)
+
+# 6. Sump bowl (hangs below head)
+D_SUMP_H = FILT_H - FILT_HEAD               # 270
+D_SUMP_W = FILT_OD                           # 130
+_sump_cy = D_HEAD_YD + D_HEAD_DEPTH / 2      # 95
+_sump_top_z = -D_HEAD_VIS_H / 2              # -35
+_sump_bot_z = _sump_top_z - D_SUMP_H         # -305
+ax.add_patch(mpatches.Rectangle(
+    (det_y(_sump_cy - D_SUMP_W / 2), det_z(_sump_bot_z)),
+    D_SUMP_W / SC_D, D_SUMP_H / SC_D,
+    fc=C_FILTER, ec=C_FRAME, lw=1.2, alpha=0.6, zorder=4))
+ax.text(det_y(_sump_cy), det_z(_sump_top_z - D_SUMP_H / 2),
+        "SUMP\nBOWL", ha="center", va="center",
+        fontsize=4, color="white", fontweight="bold", zorder=6, **FONT)
+
+# Sump height dimension
+draw_dim_v(ax, det_y(_sump_cy + D_SUMP_W / 2 + 10),
+           det_z(_sump_bot_z), det_z(_sump_top_z),
+           f"{int(D_SUMP_H)}", offset=0.06, fs=3.5, color=C_DIM,
+           right=True, font=FONT)
+
+# Cartridge removal arrow
+ax.annotate("", xy=(det_y(_sump_cy), det_z(_sump_bot_z - 25)),
+            xytext=(det_y(_sump_cy), det_z(_sump_bot_z - 5)),
+            arrowprops=dict(arrowstyle="-|>", color="#CC4444", lw=1.5,
+                            mutation_scale=8), zorder=10)
+ax.text(det_y(_sump_cy), det_z(_sump_bot_z - 30),
+        "UNSCREW SUMP\nFOR CARTRIDGE\nREPLACEMENT",
+        ha="center", va="top",
+        fontsize=3.5, color="#CC4444", fontweight="bold", zorder=10, **FONT)
+
+# 7. 1" NPT port with pipe stub
+D_PORT_YD = D_HEAD_YD + D_HEAD_DEPTH         # 135
+D_PIPE_OD_D = 33
+D_PIPE_WALL_D = 4
+D_STUB_LEN = 40
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_PORT_YD - 12), det_z(-D_PIPE_OD_D / 2)),
+    12 / SC_D, D_PIPE_OD_D / SC_D,
+    fc="white", ec=C_FRAME, lw=0.7, zorder=6))
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_PORT_YD), det_z(-D_PIPE_OD_D / 2)),
+    D_STUB_LEN / SC_D, D_PIPE_OD_D / SC_D,
+    fc=C_PIPE_FILL, ec=C_FRAME, lw=0.7, zorder=5))
+ax.add_patch(mpatches.Rectangle(
+    (det_y(D_PORT_YD), det_z(-D_PIPE_OD_D / 2 + D_PIPE_WALL_D)),
+    D_STUB_LEN / SC_D, (D_PIPE_OD_D - 2 * D_PIPE_WALL_D) / SC_D,
+    fc="white", ec="none", zorder=6))
+leader(ax, det_y(D_PORT_YD + D_STUB_LEN), det_z(0),
+       det_y(D_PORT_YD + D_STUB_LEN + 25), det_z(18),
+       "1\" HDPE\nTO NEXT STAGE", fs=3.5, color=C_PIPE_EC, font=FONT)
+
+# 8. Clamp band at head/sump junction
+D_CLAMP_H = 12
+_clamp_yd_l = _sump_cy - D_SUMP_W / 2 - 4
+_clamp_w = D_SUMP_W + 8
+ax.add_patch(mpatches.Rectangle(
+    (det_y(_clamp_yd_l), det_z(_sump_top_z - D_CLAMP_H)),
+    _clamp_w / SC_D, D_CLAMP_H / SC_D,
+    fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
+
+# ── Detail dimensions ──
+_standoff = D_SPACER_T + D_BRACKET_T   # 53mm from panel face
+draw_dim_h(ax, det_y(0), det_y(D_BRACKET_YD + D_BRACKET_T),
+           det_z(-55), f"{_standoff}mm STANDOFF", offset=0.05, fs=3.5,
+           color=C_DIM, font=FONT)
+draw_dim_h(ax, det_y(-D_PANEL_T), det_y(0),
+           det_z(55), f"{int(D_PANEL_T)}", offset=0.04, fs=3,
+           color=C_DIM, font=FONT)
+
+# ── Component labels above section ──
+_lbl_z = 68
+for _ly, _ltxt in [(-D_PANEL_T / 2, "18mm\nPANEL"),
+                    (D_SPACER_YD + D_SPACER_T / 2, "50mm\nHDPE"),
+                    (D_BRACKET_YD + D_BRACKET_T / 2, "3mm\nBKT")]:
+    ax.text(det_y(_ly), det_z(_lbl_z), _ltxt, ha="center", va="bottom",
+            fontsize=3, color=C_FRAME, zorder=10, **FONT)
+    ax.plot([det_y(_ly), det_y(_ly)], [det_z(_lbl_z - 3), det_z(40)],
+            color=C_DIM, lw=0.4, ls=":", zorder=2)
+
+# Section description
+ax.text(det_y(80), det_z(_sump_bot_z - 50),
+        "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO PANEL\nAT PORT HEIGHT\n(4.5\"×10\" BIG BLUE — SUMP-DOWN)",
+        ha="center", va="top",
+        fontsize=3.5, color="#666666", style="italic", zorder=10, **FONT)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 #  TITLE BLOCK
 # ═══════════════════════════════════════════════════════════════════════════
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
-            subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION",
-            scale_note="ELEV SCALE 1:120 · X-SECTION NOT TO SCALE · ALL DIMS IN mm",
+            subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION + DETAIL B",
+            scale_note="ELEV 1:120 · DETAIL B ~1:3 · X-SECTION NTS · ALL DIMS IN mm",
             doc_id="TBS-001 · Reorg Proposal",
             height=0.028)
 

@@ -29,7 +29,8 @@ from tbs_constants import (
     ZONE_L_END, ZONE_R_START,
     FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
-    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D,
+    EQPANEL_X, EQPANEL_W, EQPANEL_T, CORRIDOR_YD_NEAR,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH,
     PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
@@ -623,35 +624,19 @@ FAR_IBC_DY = IBC_FAR_Y * SY
 ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
          "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
 
-# Drain pumps P-03 (waste) and P-05 (brown) — in plumbing corridor between IBC columns
-CORR_DY = 1181 * SY  # corridor centerline in drawing coords
-pump(ax2, IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.25, color=C_PUMP, r=0.15)
-ax2.text(IBC_COL_DX + IBC_W * 0.35, CORR_DY + 0.55, "P-05\nBROWN\nDRAIN",
-         ha="center", fontsize=5, color=C_PUMP)
-pump(ax2, IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.25, color=C_PUMP, r=0.15)
-ax2.text(IBC_COL_DX + IBC_W * 0.65, CORR_DY - 0.55, "P-03\nWASTE\nDRAIN",
-         ha="center", fontsize=5, color=C_PUMP)
-
-# Filter skid (600×400mm → 0.6×0.4 → scaled = 0.96×0.64)
-FS_X, FS_Y, FS_W, FS_D = 2.3, 0.2, 2.5, 0.9
-ax2.add_patch(plt.Rectangle((FS_X, FS_Y), FS_W, FS_D, fc=C_FILT, ec="#F57F17",
-                             lw=2, zorder=2))
-ax2.text(FS_X + FS_W/2, FS_Y + FS_D/2 + 0.1, "FILTER SKID",
-         ha="center", fontsize=7, fontweight="bold", color="#E65100", zorder=3)
-ax2.text(FS_X + FS_W/2, FS_Y + FS_D/2 - 0.15, "F1 → F2 → F3 (pH)",
-         ha="center", fontsize=6.5, color="#E65100", zorder=3)
-
-# Pump P1 (blue) — wall-mounted, left side
-pump(ax2, 0.55, 0.6, color=C_PUMP, r=0.2)
-ax2.text(0.55, 0.25, "P-01\nBLUE SUPPLY", ha="center", fontsize=6, color=C_PUMP)
-
-# Pump P2 (brown) — near filter skid
-pump(ax2, 2.05, 0.6, color=C_PUMP, r=0.2)
-ax2.text(2.05, 0.25, "P-02\nBROWN RECYCLE", ha="center", fontsize=6, color=C_PUMP)
-
-# ACC accumulator
-box(ax2, 1.3, 0.6, 0.55, 0.4, fc="#E3F2FD", ec=C_BLUE, lw=1.5)
-ax2.text(1.45, 0.6, "ACC-01", ha="center", va="center", fontsize=6.5, color=C_BLUE)
+# Equipment panel in IBC plumbing corridor (between IBC columns)
+EP_X_DU = PUMP_X * SX             # ≈ 9.77
+EP_W_DU = PUMP_W * SX             # ≈ 1.59
+EP_Y_DU = 1046 * SY               # ≈ 2.21 (corridor near face)
+EP_D_DU = 270 * SY                # ≈ 0.57 (corridor width)
+ax2.add_patch(plt.Rectangle((EP_X_DU, EP_Y_DU), EP_W_DU, EP_D_DU,
+              fc=C_FILT, ec="#F57F17", lw=2, zorder=2))
+ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 + 0.08,
+         "EQUIPMENT PANEL", ha="center", fontsize=6.5,
+         fontweight="bold", color="#E65100", zorder=3)
+ax2.text(EP_X_DU + EP_W_DU/2, EP_Y_DU + EP_D_DU/2 - 0.12,
+         "P-01–P-05, ACC-01, BV-01/02/07/08\nF1 → F2 → F3 (3-STAGE FILTER)",
+         ha="center", fontsize=5, color="#E65100", zorder=3)
 
 # Processing tray (304 SS, two panels, 50mm rim)
 TRAY_X0 = (FP_X_L + 20) * SX   # left edge in drawing units
@@ -662,7 +647,7 @@ pipe(ax2, TRAY_X0, 4.75, TRAY_X1, 4.75, C_BLUE, lw=3)
 ax2.text((TRAY_X0 + TRAY_X1) / 2, 4.88,
          "FLOOD/SPRAY BAR (3/4\" HDPE, 1\" NPT inlets every 600mm)",
          ha="center", fontsize=7, color=C_BLUE)
-TRAY_Y0 = 60 * SY              # starts 60mm from pinhole wall
+TRAY_Y0 = PROC_TRAY_YD_NEAR * SY  # starts at near edge
 TRAY_DY = 2200 * SY            # depth in drawing units
 ax2.add_patch(plt.Rectangle((TRAY_X0, TRAY_Y0), TRAY_X1 - TRAY_X0, TRAY_DY,
               fc=C_PROC, ec="#388E3C", lw=2, zorder=1, alpha=0.5))
@@ -678,9 +663,9 @@ ax2.text(tray_mid_x - 0.8, TRAY_Y0 + TRAY_DY / 2,
 ax2.text(tray_mid_x + 0.8, TRAY_Y0 + TRAY_DY / 2,
          "PANEL B\n1,992 × 2,200mm", ha="center", fontsize=6, color="#388E3C")
 
-# Tray sump (P-04 suction pickup to 3W-DV-02)
-drain_x = (TRAY_X0 + TRAY_X1) / 2
-drain_y = TRAY_Y0 + 0.3
+# Tray sump at IBC corner (P-04 suction pickup to 3W-DV-02)
+drain_x = PROC_TRAY_DRAIN_X * SX
+drain_y = PROC_TRAY_DRAIN_YD * SY
 fd = plt.Circle((drain_x, drain_y), 0.18, fc="white", ec="#388E3C", lw=1.8, zorder=4)
 ax2.add_patch(fd)
 ax2.plot([drain_x - 0.18, drain_x + 0.18], [drain_y, drain_y],
@@ -710,7 +695,7 @@ ax2.text(ZONE_R_DX + 1, CH + 1,
          f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(4× IBC 2×2 stack)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
-# Chemistry prep tap — on pinhole wall at shelf position
+# Chemistry prep tap — on near wall at shelf position
 TAP_DX = 3729 * SX   # TAP_X in drawing units
 ax2.plot(TAP_DX, 0.05, "v", color=C_BLUE, ms=10, zorder=8)
 ax2.plot([TAP_DX, TAP_DX], [0.05, 0.25], color=C_BLUE, lw=2.0, zorder=7)
@@ -794,25 +779,30 @@ ax3.add_patch(plt.Rectangle((OX + RIM_DU, OY + RIM_DU),
               fc="#C8E6C9", ec="none", zorder=1, alpha=0.5))
 
 # Label corners with elevation annotations (high/low)
-# Low point: near rim (Yd=0), X-center
-# High corners: far rim (Yd=2200), X extremes
-ax3.text(s3x(PROC_TRAY_W/2) + 1.25, OY - 0.55, "LOW EDGE (Yd = 80mm)",
+# Low point: IBC corner (near rim, right side) — drain at X=4550, Yd=80
+# High point: far-left corner (opposite diagonal)
+drain_local_x_s3 = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
+ax3.text(s3x(drain_local_x_s3), OY - 0.55, "LOW CORNER\n(DRAIN — IBC SIDE)",
          ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
-ax3.text(s3x(PROC_TRAY_W/2), OY + TRAY_DRAW_H + 0.35,
-         "HIGH EDGE (Yd = 2,280mm)",
-         ha="center", fontsize=7.5, fontweight="bold", color="#1565C0")
+ax3.text(OX - 0.15, OY + TRAY_DRAW_H + 0.35,
+         "HIGH CORNER\n(FAR-LEFT)",
+         ha="left", fontsize=7.5, fontweight="bold", color="#1565C0")
 
-ax3.text(OX - 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nCORNER",
+ax3.text(OX - 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nEDGE",
          ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
-ax3.text(OX + TRAY_DRAW_W + 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nCORNER",
-         ha="left", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
+ax3.text(OX + TRAY_DRAW_W + 0.15, OY - 0.3, "LOW\nEDGE",
+         ha="left", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
 
 # ── Slope arrows (flow direction) ───────────────────────────────────────────
-# Water flows: (1) toward Yd=0 (near wall) and (2) toward X-center
+# Water flows toward drain at IBC corner (right side, near edge)
 # Draw a grid of arrows showing combined flow direction
 
 ARROW_COLOR = "#1976D2"
 ARROW_ALPHA = 0.7
+
+# Drain position in tray-local coordinates (used by arrows and drain symbol)
+drain_local_x = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
+drain_local_yd = PROC_TRAY_DRAIN_YD - PROC_TRAY_YD_NEAR
 
 # Grid of flow arrows across the tray interior
 n_cols = 9
@@ -823,11 +813,9 @@ for i in range(n_cols):
         ax_mm = PROC_TRAY_W * (i + 0.5) / n_cols
         ay_mm = PROC_TRAY_D * (j + 0.5) / n_rows
 
-        # Flow direction: toward (PROC_TRAY_W/2, 0) — the drain point
-        # X component: toward center
-        dx_mm = (PROC_TRAY_W / 2 - ax_mm)
-        # Yd component: toward near wall (Yd=0)
-        dy_mm = -ay_mm
+        # Flow direction: toward drain at IBC corner
+        dx_mm = (drain_local_x - ax_mm)
+        dy_mm = (drain_local_yd - ay_mm)
 
         # Normalize and scale to fixed arrow length
         mag = math.sqrt(dx_mm**2 + dy_mm**2)
@@ -847,10 +835,6 @@ for i in range(n_cols):
                      zorder=4)
 
 # ── Drain symbol (circle + crosshair) ───────────────────────────────────────
-# Drain is at tray-local X = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L, Yd = 0 (near rim)
-drain_local_x = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
-drain_local_yd = PROC_TRAY_DRAIN_YD - PROC_TRAY_YD_NEAR
-
 drain_dx = s3x(drain_local_x)
 drain_dy = s3y(drain_local_yd)
 DRAIN_R = 0.3
@@ -873,32 +857,23 @@ ax3.text(drain_dx - 0.9, drain_dy + 0.1,
          ha="center", va="bottom", fontsize=6.5, color="#D32F2F", zorder=8)
 
 # ── Slope annotations ────────────────────────────────────────────────────────
-# Yd-axis slope: 1:200 over 2,200mm = 11mm fall
-yd_fall = PROC_TRAY_D * PROC_TRAY_PITCH / PROC_TRAY_D  # = PROC_TRAY_PITCH mm
-x_half = PROC_TRAY_W / 2
-x_fall = x_half / 200  # fall from each X extreme to center at 1:200
+# Slope: 1:200 in both X and Yd toward drain corner (IBC side)
+x_fall = PROC_TRAY_W / 200  # full-width fall (left to right)
+yd_fall = PROC_TRAY_D / 200  # full-depth fall (far to near)
 
-# Right-side slope annotation
-ann_x = s3x(PROC_TRAY_W * 0.82)
+# X-slope annotation (center of tray)
+ann_x = s3x(PROC_TRAY_W * 0.5)
 ann_y = s3y(PROC_TRAY_D * 0.5)
 ax3.text(ann_x, ann_y,
-         f"X-SLOPE: 1:200\n({x_fall:.1f}mm fall\nover {x_half:,.0f}mm)",
+         f"X-SLOPE: 1:200 → IBC CORNER\n({x_fall:.1f}mm fall over {PROC_TRAY_W:,.0f}mm)",
          ha="center", va="center", fontsize=7, color="#0D47A1",
          bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
          zorder=8)
 
-# Left-side slope annotation
-ann_x2 = s3x(PROC_TRAY_W * 0.18)
-ax3.text(ann_x2, ann_y,
-         f"X-SLOPE: 1:200\n({x_fall:.1f}mm fall\nover {x_half:,.0f}mm)",
-         ha="center", va="center", fontsize=7, color="#0D47A1",
-         bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
-         zorder=8)
-
-# Yd-axis slope annotation (center-top area)
+# Yd-axis slope annotation (upper area)
 ann_y2 = s3y(PROC_TRAY_D * 0.78)
 ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
-         f"Yd-SLOPE: 1:200\n({PROC_TRAY_PITCH}mm fall over {PROC_TRAY_D:,}mm)",
+         f"Yd-SLOPE: 1:200\n({yd_fall:.1f}mm fall over {PROC_TRAY_D:,}mm)",
          ha="center", va="center", fontsize=7, color="#0D47A1",
          bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
          zorder=8)
@@ -1012,8 +987,8 @@ ax4_tb.set_ylim(0, 1)
 ax4_tb.axis("off")
 title_block(ax4_tb, "SHEET 4 OF 4",
             drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
-            subtitle="Section A-A at X=2,399mm (through sump) + plan view of walkway hose routing",
-            scale_note="DETAIL ~1:2  |  PLAN ~1:3  |  ELEVATION ~1:15",
+            subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X:,}mm (through sump) + plan view of rim hose routing",
+            scale_note="DETAIL ~1:2  |  PLAN ~1:8  |  ELEVATION ~1:12",
             doc_id="TBS-001 · Water System",
             height=0.75)
 
@@ -1279,12 +1254,16 @@ ax4a.fill([sa_y(sump_yd_start + 4), sa_y(sump_yd_end - 4),
            sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T)],
           fc="#B3D9F2", ec="none", alpha=0.5, zorder=5)
 
+# ── Walkway & hose pass-through constants ────────────────────────────────────
+WK_DECK_H = 100
+WK_GRATE_T = 25
+
 # ── Pickup tube (dip tube with foot valve) ───────────────────────────────────
 # 1" tube sits in the sump, extends up past the rim
 TUBE_OD = 25.4  # 1" OD
 tube_yd = sump_yd_start + PROC_TRAY_SUMP_D / 2  # center of sump in Yd = 130mm
 tube_z_bot = sump_z_floor + 5  # 5mm above sump floor (Z=5mm)
-tube_z_top = RIM_TOP + 30  # extends above rim (70 + 30 = 100mm)
+tube_z_top = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
 
 # Foot valve / strainer at bottom
 foot_valve_h = 15
@@ -1306,35 +1285,26 @@ for sy_m in range(3):
              [sa_z(tube_z_bot), sa_z(tube_z_bot + foot_valve_h)],
              color="#999999", lw=0.4, zorder=8)
 
-# ── Walkway & hose pass-through constants ────────────────────────────────────
-WK_DECK_H = 100
-WK_GRATE_T = 25
-
-# ── Suction hose from tube top, across walkway, up wall ─────────────────────
-# Proper plumbing routing with discrete 90° elbow fittings:
-#   1. Vertical stub from tube top up to walkway-surface height
-#   2. 90° elbow at tube (vertical → horizontal)
-#   3. Horizontal run across walkway at constant Z (parallel to grating)
-#   4. 90° elbow at wall (horizontal → vertical)
-#   5. Vertical run up wall toward P-04
+# ── Suction hose from tube top, along tray rim exterior ──────────────────────
 HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
 HOSE_WALL = 4.0  # hose wall thickness (mm)
-HOSE_ON_WK = WK_DECK_H + HOSE_OD / 2  # hose centerline on walkway = 116.5mm
+RIM_EXT_YD = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on exterior of rim
+HOSE_RIM_Z = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
 
-# Wall pipe must be fully inside container (wall interior face at Yd=0)
-WALL_PIPE_YD = HOSE_OD / 2 + 2  # ~18.5mm — outer edge of pipe just clears wall
-
-# 4 waypoints → 2 elbows (at tube top, at wall)
-hose_pts_y = [tube_yd,   tube_yd,      WALL_PIPE_YD, WALL_PIPE_YD]
-hose_pts_z = [tube_z_top, HOSE_ON_WK,  HOSE_ON_WK,   195]
+# Hose path: short vertical overlap with tube top (creates 90° elbow) →
+# horizontal above walkway → 90° elbow → down along rim exterior
+ELBOW_OVERLAP = HOSE_OD  # vertical approach length for visible elbow fitting
+hose_pts_y = [tube_yd, tube_yd, RIM_EXT_YD, RIM_EXT_YD]
+hose_pts_z = [tube_z_top - ELBOW_OVERLAP, tube_z_top, tube_z_top, HOSE_RIM_Z]
 draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
                sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
-# Flow arrow going up wall
-ax4a.annotate("", xy=(sa_y(WALL_PIPE_YD), sa_z(210)),
-             xytext=(sa_y(WALL_PIPE_YD), sa_z(195)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.0,
-                             mutation_scale=12),
-             zorder=10)
+
+# Pipe end-on at rim exterior (hose turns to run along X — into the page)
+pipe_r_a = HOSE_OD / 2 / SC_A
+pipe_wall_a = HOSE_WALL / SC_A
+draw_pipe_end(ax4a, sa_y(RIM_EXT_YD), sa_z(HOSE_RIM_Z),
+              pipe_r_a, pipe_wall_a,
+              fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=9)
 
 # ── Water surface in tray (away from sump) ───────────────────────────────────
 FLOOD_DEPTH = 6
@@ -1349,7 +1319,7 @@ ax4a.plot([sa_y(sump_yd_end + 5), sa_y(tray_yd_far_view)],
          [sa_z(water_z_left + 1), sa_z(water_z_right)],
          color=C_BLUE, lw=1.0, ls="--", zorder=5)
 
-# ── Walkway grate (solid — hose runs over the top) ──────────────────────────
+# ── Walkway grate ───────────────────────────────────────────────────────────
 ax4a.add_patch(plt.Rectangle((sa_y(0), sa_z(WK_DECK_H - WK_GRATE_T)),
               WALKWAY_W / SC_A, WK_GRATE_T / SC_A,
               fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
@@ -1400,9 +1370,9 @@ leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
        sa_y(tube_yd + 90), sa_z(140),
        "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
-leader(ax4a, sa_y(40), sa_z(HOSE_ON_WK),
-       sa_y(45), sa_z(HOSE_ON_WK + 40),
-       "1\" REINFORCED SUCTION\nHOSE TO P-04\n(ON WALKWAY SURFACE)", fs=6, color=C_BROWN)
+leader(ax4a, sa_y(RIM_EXT_YD + 5), sa_z(HOSE_RIM_Z),
+       sa_y(RIM_EXT_YD - 40), sa_z(HOSE_RIM_Z + 60),
+       "1\" REINFORCED SUCTION\nHOSE ALONG RIM TO P-04\n(INTO PAGE — SEE PLAN)", fs=6, color=C_BROWN)
 
 leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/4), sa_z(TRAY_BASE_Z / 2),
        sa_y(150), sa_z(-30),
@@ -1430,10 +1400,10 @@ ax4a.text(sa_y(310), sa_z(-10),
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PANEL B — FULL CROSS-SECTION ELEVATION (~1:15)
-# Yd = -150 to 600mm, Z = -50 to 1,150mm
-# Shows tray, sump, suction hose, P-04 pump, 3W-DV-02, rise to IBC-3
+# Yd = -20 to 1150mm, Z = -50 to 1,150mm
+# Shows tray, sump, suction hose routing to equipment panel (Yd=1046)
 # ═════════════════════════════════════════════════════════════════════════════
-SC_B = 8.0   # mm per drawing unit
+SC_B = 12.0   # mm per drawing unit (wider view for panel routing)
 OB_X = 1.0
 OB_Y = 2.0
 
@@ -1443,23 +1413,18 @@ def sb_y(yd_mm):
 def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
-ax4b.set_xlim(sb_y(-180) - 0.5, sb_y(650) + 1.0)
+ax4b.set_xlim(sb_y(-20) - 0.5, sb_y(1150) + 1.0)
 ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
 
 # Panel B title
-ax4b.text(sb_y(250), sb_z(650), "SECTION A-A — SUMP TO IBC (APPROX 1:15)",
+ax4b.text(sb_y(550), sb_z(650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (APPROX 1:12)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
 # ── Container structure ──────────────────────────────────────────────────────
 # Floor
 ax4b.add_patch(plt.Rectangle((sb_y(-20), sb_z(-FLOOR_T)),
-              650 / SC_B, FLOOR_T / SC_B,
-              fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
-
-# Near wall (cropped to view height)
-ax4b.add_patch(plt.Rectangle((sb_y(-WALL_T - 8), sb_z(-FLOOR_T)), 10 / SC_B,
-              620 / SC_B,
+              1180 / SC_B, FLOOR_T / SC_B,
               fc="#B0B0B8", ec=C_FRAME, lw=1.5, zorder=2, hatch=".."))
 
 # ── Shim strips (visible as small rectangles on floor) ───────────────────────
@@ -1496,7 +1461,7 @@ ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
 # Pickup tube (simplified) — from sump floor+5 to above rim
 tube_yd_b = sump_yd_b + PROC_TRAY_SUMP_D / 2
 RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
-tube_z_top_b = RIM_TOP_B + 30  # tube top above rim = 100mm (matches Detail A)
+tube_z_top_b = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
 draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
                TUBE_OD, TUBE_WALL, sb_y, sb_z,
                fc="#D0D0D0", ec=C_FRAME, zorder=5)
@@ -1504,43 +1469,65 @@ ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
           ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", zorder=6)
 
-# ── Suction hose from pickup over rim, across walkway, up wall to P-04 ──────
-P04_Z = PUMP_H_LO + 80  # P-04 mounted in manifold zone, ~280mm
-HOSE_ON_WK_B = WK_DECK_H + HOSE_OD / 2  # centerline on walkway surface
+# ── Suction hose from pickup, along tray rim exterior to equipment panel ─────
+P04_Z = PUMP_H_LO + 80  # P-04 on equipment panel
+PANEL_YD = 1046           # equipment panel Yd position
+RIM_EXT_YD_B = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on rim exterior
+HOSE_RIM_Z_B = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
 
-# Hose path: vertical stub → elbow → horizontal across walkway → elbow → up wall
-WALL_PIPE_YD_B = HOSE_OD / 2 + 2  # ~18.5mm — outer edge clears wall
-hose_b_y = [tube_yd_b, tube_yd_b, WALL_PIPE_YD_B, WALL_PIPE_YD_B]
-hose_b_z = [tube_z_top_b, HOSE_ON_WK_B, HOSE_ON_WK_B, P04_Z]
+# Hose path: short vertical overlap with tube top (creates 90° elbow) →
+# horizontal above walkway → 90° elbow → down along rim exterior
+ELBOW_OVERLAP_B = HOSE_OD
+hose_b_y = [tube_yd_b, tube_yd_b, RIM_EXT_YD_B, RIM_EXT_YD_B]
+hose_b_z = [tube_z_top_b - ELBOW_OVERLAP_B, tube_z_top_b, tube_z_top_b, HOSE_RIM_Z_B]
 draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
                sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
 
-# ── Walkway ──────────────────────────────────────────────────────────────────
+# Pipe end-on at rim exterior (hose runs along X — into the page toward IBC corner)
+pipe_r_b = HOSE_OD / 2 / SC_B
+pipe_wall_b = HOSE_WALL / SC_B
+draw_pipe_end(ax4b, sb_y(RIM_EXT_YD_B), sb_z(HOSE_RIM_Z_B),
+              pipe_r_b, pipe_wall_b,
+              fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=6)
+
+# Dashed routing indicator from rim to equipment panel
+ax4b.plot([sb_y(RIM_EXT_YD_B), sb_y(PANEL_YD)],
+          [sb_z(HOSE_RIM_Z_B), sb_z(P04_Z)],
+          color=C_BROWN, lw=1.0, ls=":", zorder=3, alpha=0.6)
+ax4b.text(sb_y((RIM_EXT_YD_B + PANEL_YD) / 2), sb_z((HOSE_RIM_Z_B + P04_Z) / 2 + 30),
+          "HOSE ALONG RIM →\nCROSSES AT IBC CORNER\n(SEE PLAN VIEW)",
+          ha="center", va="bottom", fontsize=5.5, color=C_BROWN,
+          style="italic", zorder=4)
+
+# ── Near walkway (Yd=0-300) ──────────────────────────────────────────────────
 ax4b.add_patch(plt.Rectangle((sb_y(0), sb_z(WK_DECK_H - WK_GRATE_T)),
               WALKWAY_W / SC_B, WK_GRATE_T / SC_B,
               fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
               alpha=0.7))
 
-# ── P-04 pump ────────────────────────────────────────────────────────────────
+# ── Equipment panel at Yd=1046 (dashed context) ─────────────────────────────
+MANIFOLD_Z_LO = PUMP_H_LO
+MANIFOLD_Z_HI = PUMP_H_HI
+ax4b.add_patch(plt.Rectangle((sb_y(PANEL_YD - 9), sb_z(0)),
+              18 / SC_B, (MANIFOLD_Z_HI + 100) / SC_B,
+              fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
+ax4b.add_patch(plt.Rectangle((sb_y(PANEL_YD - 20), sb_z(MANIFOLD_Z_LO)),
+              60 / SC_B, (MANIFOLD_Z_HI - MANIFOLD_Z_LO) / SC_B,
+              fc="none", ec=C_PUMP, lw=1.5, ls="--", zorder=3))
+ax4b.text(sb_y(PANEL_YD + 50), sb_z((MANIFOLD_Z_LO + MANIFOLD_Z_HI) / 2),
+          "EQUIP\nPANEL\n(Yd=1046)",
+          ha="left", va="center", fontsize=5.5, color=C_PUMP, style="italic",
+          zorder=4)
+
+# ── P-04 pump (on equipment panel) ──────────────────────────────────────────
 pump_r_b = 25  # mm
-DV_YD_B = 15
+DV_YD_B = PANEL_YD
 ax4b.add_patch(plt.Circle((sb_y(DV_YD_B), sb_z(P04_Z)),
               pump_r_b / SC_B,
               fc="#E8884A", ec=C_FRAME, lw=1.5, zorder=5))
 ax4b.text(sb_y(DV_YD_B), sb_z(P04_Z), "P-04",
           ha="center", va="center", fontsize=7, fontweight="bold",
           color="white", zorder=6)
-
-# ── Pump manifold zone (dashed context, at Z=200-600) ───────────────────────
-MANIFOLD_Z_LO = PUMP_H_LO   # 200mm
-MANIFOLD_Z_HI = PUMP_H_HI   # 600mm
-ax4b.add_patch(plt.Rectangle((sb_y(-5), sb_z(MANIFOLD_Z_LO)),
-              50 / SC_B, (MANIFOLD_Z_HI - MANIFOLD_Z_LO) / SC_B,
-              fc="none", ec=C_PUMP, lw=1.5, ls="--", zorder=3))
-ax4b.text(sb_y(60), sb_z((MANIFOLD_Z_LO + MANIFOLD_Z_HI) / 2),
-          "PUMP\nMANIFOLD\nZONE",
-          ha="left", va="center", fontsize=5.5, color=C_PUMP, style="italic",
-          zorder=4)
 
 # ── 3W-DV-02 diverter valve (on P-04 discharge) ─────────────────────────────
 DV_Z_B = P04_Z + 100   # above pump
@@ -1561,10 +1548,9 @@ ax4b.text(sb_y(DV_YD_B), sb_z(DV_Z_B), "3W-DV-02",
           ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=6)
 
 # ── Discharge from diverter to IBC-3 ────────────────────────────────────────
-# IBC-3 is at the far end of the container (along X). From the diverter, the
-# pipe rises slightly then elbows horizontally along the wall toward IBC-3.
-# In this cross-section (looking along +X), the horizontal run goes INTO the
-# page — shown as a pipe end-on (circle) after the elbow.
+# IBC-3 is nearby (equipment panel is in the IBC corridor). From the diverter,
+# the pipe runs along the panel toward IBC-3. In this cross-section (looking
+# along +X), the run goes INTO the page — shown as a pipe end-on.
 IBC3_FILL_Z = IBC_H_600   # ~1,010mm
 ELBOW_Z = DV_Z_B + dv_h_b/2 + 40  # short rise above diverter
 
@@ -1584,28 +1570,28 @@ draw_pipe_end(ax4b, sb_y(DV_YD_B), sb_z(ELBOW_Z),
 
 # Label
 leader(ax4b, sb_y(DV_YD_B + 20), sb_z(ELBOW_Z),
-       sb_y(50), sb_z(ELBOW_Z + 80),
-       f"90° ELBOW TO IBC-3\nVIA WALL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
+       sb_y(DV_YD_B + 80), sb_z(ELBOW_Z + 80),
+       f"90° ELBOW TO IBC-3\nVIA PANEL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
        color=C_BROWN)
 
-# ── Waste branch (dashed) ───────────────────────────────────────────────────
-ax4b.annotate("", xy=(sb_y(DV_YD_B - dv_w_b/2 - 40), sb_z(DV_Z_B)),
-             xytext=(sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B)),
+# ── Waste branch (dashed) — IBC-4 is in the corridor (higher Yd) ────────────
+ax4b.annotate("", xy=(sb_y(DV_YD_B + dv_w_b/2 + 40), sb_z(DV_Z_B)),
+             xytext=(sb_y(DV_YD_B + dv_w_b/2), sb_z(DV_Z_B)),
              arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=1.5,
                              linestyle="--", mutation_scale=10),
              zorder=3)
-ax4b.text(sb_y(DV_YD_B - dv_w_b/2 - 55), sb_z(DV_Z_B),
+ax4b.text(sb_y(DV_YD_B + dv_w_b/2 + 55), sb_z(DV_Z_B),
           "IBC-4\n(WASTE)",
           ha="center", va="center", fontsize=6, color=C_BLACK,
           style="italic", zorder=4)
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
-# Floor to manifold bottom
-draw_dim_v(ax4b, sb_y(120), sb_z(0), sb_z(MANIFOLD_Z_LO),
+# Floor to manifold bottom (near equipment panel)
+draw_dim_v(ax4b, sb_y(PANEL_YD + 60), sb_z(0), sb_z(MANIFOLD_Z_LO),
            f"{MANIFOLD_Z_LO}mm", offset=0.5, fs=7, right=True)
 
 # Floor to manifold top
-draw_dim_v(ax4b, sb_y(160), sb_z(0), sb_z(MANIFOLD_Z_HI),
+draw_dim_v(ax4b, sb_y(PANEL_YD + 100), sb_z(0), sb_z(MANIFOLD_Z_HI),
            f"{MANIFOLD_Z_HI}mm", offset=0.6, fs=6.5, right=True)
 
 # Rim top above floor
@@ -1622,110 +1608,139 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
        "WALKWAY", fs=6.5, color="#8D6E63")
 
 leader(ax4b, sb_y(DV_YD_B), sb_z(P04_Z + pump_r_b + 5),
-       sb_y(80), sb_z(P04_Z + 80),
+       sb_y(DV_YD_B - 120), sb_z(P04_Z + 80),
        "SHURFLO 2088\n12V DC, 3.5 GPM\nSELF-PRIMING", fs=6, color=C_PUMP)
 
 # ═════════════════════════════════════════════════════════════════════════════
-# PANEL C — PLAN VIEW: HOSE ROUTING ACROSS WALKWAY (~1:3)
-# Looking down. X horizontal, Yd vertical (wall at bottom).
-# Shows walkway grating with hose running across the surface, elbow at wall.
+# PANEL C — PLAN VIEW: HOSE ROUTING ALONG TRAY RIM (~1:8)
+# Looking down. Yd horizontal (wall at left, panel at right).
+# X vertical (lower X at bottom, higher X at top).
+# Shows hose along near rim exterior, around tray corner, to equipment panel.
 # ═════════════════════════════════════════════════════════════════════════════
-SC_C = 3.0   # mm per drawing unit
-OC_X = 1.0   # drawing offset for X=0 (relative)
-OC_Y = 1.0   # drawing offset for Yd=0
+SC_C = 8.0   # mm per drawing unit
+OC_H = 1.0   # horizontal offset (Yd=0 position)
+OC_V = 1.5   # vertical offset (X baseline)
 
-# Center the view on the hose routing area
-X_CENTER = PH_X  # 2399mm — sump/pickup X position
-X_VIEW_L = X_CENTER - 200
-X_VIEW_R = X_CENTER + 200
+SUMP_X = PROC_TRAY_DRAIN_X   # 4,550mm
+TRAY_X_R = PROC_TRAY_X_R     # 4,629mm
+IBC_X = IBC_COL_X             # 4,674mm
+EP_X = EQPANEL_X              # 5,000mm — equipment panel face X
+EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
+X_VIEW_BOT = 4350
+X_VIEW_TOP = EP_X + EQPANEL_T + 80  # ~5,098mm — past panel back face
+YD_VIEW_L = -30
+YD_VIEW_R = 1130
 
-def sc_x(x_mm):
-    """Scale X in mm (relative to X_VIEW_L) to data coords."""
-    return OC_X + (x_mm - X_VIEW_L) / SC_C
+def sc_yd_c(yd_mm):
+    return OC_H + (yd_mm - YD_VIEW_L) / SC_C
 
-def sc_yd(yd_mm):
-    """Scale Yd in mm to data coords."""
-    return OC_Y + yd_mm / SC_C
+def sc_x_c(x_mm):
+    return OC_V + (x_mm - X_VIEW_BOT) / SC_C
 
-ax4c.set_xlim(sc_x(X_VIEW_L - 30) - 0.5, sc_x(X_VIEW_R + 30) + 0.5)
-ax4c.set_ylim(sc_yd(-40) - 0.5, sc_yd(360) + 0.5)
+ax4c.set_xlim(sc_yd_c(YD_VIEW_L) - 0.5, sc_yd_c(YD_VIEW_R) + 0.5)
+ax4c.set_ylim(sc_x_c(X_VIEW_BOT - 30) - 0.5, sc_x_c(X_VIEW_TOP + 30) + 0.5)
 
 # Panel C title
-ax4c.text(sc_x(X_CENTER), sc_yd(350),
-          "PLAN VIEW — HOSE ROUTING ACROSS WALKWAY (APPROX 1:3)",
+ax4c.text(sc_yd_c((YD_VIEW_L + YD_VIEW_R) / 2), sc_x_c(X_VIEW_TOP + 15),
+          "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (APPROX 1:8)",
           ha="center", va="top", fontsize=9, fontweight="bold",
           color="#1A237E", zorder=10)
 
-# ── Container wall (Yd=0 line) ──────────────────────────────────────────────
-ax4c.add_patch(plt.Rectangle((sc_x(X_VIEW_L - 20), sc_yd(-WALL_T)),
-              (X_VIEW_R - X_VIEW_L + 40) / SC_C, WALL_T / SC_C,
+# ── Container wall (Yd=0, vertical line at left) ───────────────────────────
+ax4c.add_patch(plt.Rectangle((sc_yd_c(-WALL_T), sc_x_c(X_VIEW_BOT - 20)),
+              WALL_T / SC_C, (X_VIEW_TOP - X_VIEW_BOT + 40) / SC_C,
               fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=2, hatch=".."))
 
-# ── Walkway grating (solid — no notch, hose runs on top) ───────────────────
-ax4c.add_patch(plt.Rectangle((sc_x(X_VIEW_L - 10), sc_yd(0)),
-              (X_VIEW_R - X_VIEW_L + 20) / SC_C, WALKWAY_W / SC_C,
-              fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3, alpha=0.7))
+# ── Tray outline (partial) ─────────────────────────────────────────────────
+tray_x_l_vis = max(PROC_TRAY_X_L, X_VIEW_BOT)
+ax4c.add_patch(plt.Rectangle((sc_yd_c(tray_yd_near), sc_x_c(tray_x_l_vis)),
+              (400 - tray_yd_near) / SC_C,
+              (TRAY_X_R - tray_x_l_vis) / SC_C,
+              fc="#E8F0F8", ec="#C8D8E8", lw=1.0, zorder=2, alpha=0.4))
+ax4c.text(sc_yd_c(200), sc_x_c((tray_x_l_vis + TRAY_X_R) / 2),
+          "PROCESSING\nTRAY", ha="center", va="center",
+          fontsize=6, color="#6A8CAF", style="italic", alpha=0.7, zorder=3)
 
-# ── Tray rim (dashed context line at Yd=80) ─────────────────────────────────
-ax4c.plot([sc_x(X_VIEW_L), sc_x(X_VIEW_R)],
-         [sc_yd(tray_yd_near), sc_yd(tray_yd_near)],
-         color="#C8D8E8", lw=1.5, ls="--", zorder=4)
-ax4c.text(sc_x(X_VIEW_R - 10), sc_yd(tray_yd_near + 8),
-          "TRAY RIM (BELOW)", ha="right", va="bottom",
-          fontsize=5.5, color="#6A8CAF", style="italic", zorder=5)
+# Near rim line (Yd=80, runs along X)
+ax4c.plot([sc_yd_c(tray_yd_near), sc_yd_c(tray_yd_near)],
+         [sc_x_c(tray_x_l_vis), sc_x_c(TRAY_X_R)],
+         color="#C8D8E8", lw=2.0, zorder=4)
 
-# ── Hose routing (double-wall) across walkway surface ───────────────────────
-# In plan view looking down, the hose horizontal run is visible as a straight
-# pipe from the pickup tube (Yd=130) across the walkway to the wall (Yd=18.5).
-# Vertical segments (up from tube, up wall) appear end-on as circles.
+# Right rim line (X=4,629, runs along Yd)
+ax4c.plot([sc_yd_c(tray_yd_near), sc_yd_c(400)],
+         [sc_x_c(TRAY_X_R), sc_x_c(TRAY_X_R)],
+         color="#C8D8E8", lw=2.0, zorder=4)
 
-# Pickup tube end-on (vertical tube seen from above)
+# ── Sump (small rectangle inside tray at near rim) ─────────────────────────
+ax4c.add_patch(plt.Rectangle(
+    (sc_yd_c(PROC_TRAY_DRAIN_YD), sc_x_c(SUMP_X - PROC_TRAY_SUMP_W / 2)),
+    PROC_TRAY_SUMP_D / SC_C, PROC_TRAY_SUMP_W / SC_C,
+    fc="#B3D9F2", ec=C_FRAME, lw=1.0, zorder=5))
+ax4c.text(sc_yd_c(PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D / 2),
+          sc_x_c(SUMP_X),
+          "SUMP", ha="center", va="center", fontsize=5.5,
+          fontweight="bold", color="#0D47A1", zorder=6)
+
+# ── Pickup tube end-on (vertical tube seen from above) ─────────────────────
 tube_r_c = TUBE_OD / 2 / SC_C
 tube_wall_c = TUBE_WALL / SC_C
-draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(tube_yd),
+draw_pipe_end(ax4c, sc_yd_c(tube_yd), sc_x_c(SUMP_X),
               tube_r_c, tube_wall_c,
               fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
-# Straight hose from pickup tube to wall — single continuous run
+# ── Equipment panel (spans corridor at X=5000, perpendicular to sealed end) ──
+ax4c.add_patch(plt.Rectangle(
+    (sc_yd_c(CORRIDOR_YD_NEAR - 9), sc_x_c(EP_X)),
+    270 / SC_C, EQPANEL_T / SC_C,
+    fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
+ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR + 15), sc_x_c(EP_X + EQPANEL_T / 2),
+          "EQUIPMENT\nPANEL\n(X=5,000)",
+          ha="left", va="center", fontsize=5.5, color=C_PUMP,
+          style="italic", zorder=4)
+
+# P-04 on equipment panel — pump protrudes from panel face toward lower X
+P04_PLAN_X = EP_X - PUMP_D / 2
+ax4c.add_patch(plt.Circle(
+    (sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X)),
+    20 / SC_C,
+    fc="#E8884A", ec=C_FRAME, lw=1.2, zorder=6))
+ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X),
+          "P-04", ha="center", va="center", fontsize=5.5,
+          fontweight="bold", color="white", zorder=7)
+
+# ── Hose routing along tray rim exterior ───────────────────────────────────
+RIM_EXT_YD_C = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm
+CORNER_X = TRAY_X_R + 15   # just past tray right edge
 draw_pipe_path(ax4c,
-               [X_CENTER, X_CENTER],
-               [tube_yd, WALL_PIPE_YD],
-               HOSE_OD, HOSE_WALL, sc_x, sc_yd,
+               [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
+               [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
+               HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 
-# Pipe end-on at wall (elbow turns upward — shown as circle)
-pipe_r_c = HOSE_OD / 2 / SC_C
-pipe_wall_c = HOSE_WALL / SC_C
-draw_pipe_end(ax4c, sc_x(X_CENTER), sc_yd(WALL_PIPE_YD),
-              pipe_r_c, pipe_wall_c,
-              fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=7)
+# P-clip marks along rim run (small ticks)
+for clip_x in range(SUMP_X, CORNER_X, 60):
+    ax4c.plot([sc_yd_c(RIM_EXT_YD_C - 8), sc_yd_c(RIM_EXT_YD_C + 8)],
+             [sc_x_c(clip_x), sc_x_c(clip_x)],
+             color="#666666", lw=0.6, zorder=5)
 
-# ── Elbow labels ────────────────────────────────────────────────────────────
-leader(ax4c, sc_x(X_CENTER + 5), sc_yd(WALL_PIPE_YD),
-       sc_x(X_CENTER + 80), sc_yd(-30),
-       "90° ELBOW\n(TURNS UP WALL\nTO P-04)", fs=6, color=C_BROWN)
+# ── Labels ──────────────────────────────────────────────────────────────────
+leader(ax4c, sc_yd_c(RIM_EXT_YD_C), sc_x_c(SUMP_X - 50),
+       sc_yd_c(RIM_EXT_YD_C - 60), sc_x_c(X_VIEW_BOT + 50),
+       "1\" SUCTION HOSE\nALONG RIM EXTERIOR\n(P-CLIPPED TO RIM)", fs=6, color=C_BROWN)
 
-leader(ax4c, sc_x(X_CENTER + 5), sc_yd(tube_yd),
-       sc_x(X_CENTER + 100), sc_yd(tube_yd + 90),
-       "90° ELBOW AT\nPICKUP TUBE", fs=6, color=C_BROWN)
+leader(ax4c, sc_yd_c((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2), sc_x_c(CORNER_X),
+       sc_yd_c(500), sc_x_c(CORNER_X + 60),
+       "CROSSES TO\nEQUIPMENT PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
-# Walkway width
-draw_dim_v(ax4c, sc_x(X_VIEW_R + 15), sc_yd(0), sc_yd(WALKWAY_W),
-           f"{WALKWAY_W}mm WALKWAY", offset=0.6, fs=6, right=True)
+# Rim-to-panel Yd distance
+draw_dim_h(ax4c, sc_yd_c(RIM_EXT_YD_C), sc_yd_c(CORRIDOR_YD_NEAR),
+           sc_x_c(X_VIEW_BOT + 20),
+           f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=0.8, fs=6)
 
-# Pickup tube Yd from wall
-draw_dim_v(ax4c, sc_x(X_VIEW_L + 15), sc_yd(0), sc_yd(tube_yd),
-           f"{tube_yd:.0f}mm\nTUBE Yd", offset=0.5, fs=6, right=False)
-
-# Labels
-leader(ax4c, sc_x(X_CENTER + 30), sc_yd((tube_yd + WALL_PIPE_YD) / 2),
-       sc_x(X_CENTER + 100), sc_yd((tube_yd + WALL_PIPE_YD) / 2 + 80),
-       f"1\" REINFORCED\nSUCTION HOSE\n(OD {HOSE_OD:.0f}mm)\nON WALKWAY SURFACE", fs=6, color=C_BROWN)
-
-leader(ax4c, sc_x(X_CENTER - 60), sc_yd(WALKWAY_W - 30),
-       sc_x(X_CENTER + 120), sc_yd(WALKWAY_W + 20),
-       "WALKWAY GRATING\n(HOSE RUNS ON TOP)", fs=6, color="#8D6E63")
+# Hose run along rim (X distance)
+draw_dim_v(ax4c, sc_yd_c(RIM_EXT_YD_C - 25), sc_x_c(SUMP_X), sc_x_c(CORNER_X),
+           f"{CORNER_X - SUMP_X}mm", offset=0.5, fs=6, right=False)
 
 # ── Notes axes (full-width strip above title block) ─────────────────────────
 ax4_notes = fig4.add_axes([0.04, 0.06, 0.92, 0.10])
@@ -1739,9 +1754,9 @@ notes4 = [
     "2. Tray floor raised to Z=20mm (sump depth).",
     "3. Shims taper 20-30mm (base + slope).",
     "4. Pickup tube lifts out for cleaning (no tools).",
-    "5. P-04: Shurflo 2088, 12V DC, self-priming.",
-    "6. Hose runs over walkway surface (5mm rim-to-grate gap).",
-    "7. Tray slope exaggerated for clarity in both panels.",
+    "5. P-04: Shurflo 2088, 12V DC, self-priming, on equipment panel.",
+    "6. Hose runs along tray rim exterior, P-clipped to rim.",
+    "7. Tray slope exaggerated for clarity in elevation panels.",
 ]
 draw_notes(ax4_notes, notes4, 42, 9, spacing=1.0,
            fs=6.5, width=24, color=C_TEXT, title_color=C_TEXT,
@@ -1751,7 +1766,7 @@ flow_notes = [
     "FLOW PATH:",
     "1. Water drains by gravity to sump well (Yd=80mm)",
     "2. P-04 suction pickup draws from sump via foot valve",
-    "3. 1\" reinforced hose over rim, across walkway, up wall to P-04",
+    "3. 1\" hose along rim exterior to tray corner, then to equip panel",
     "4. P-04 discharge to 3W-DV-02 three-way diverter",
     "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
     "6. Alt: divert to IBC-4 (Waste) when selected",

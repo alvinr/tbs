@@ -17,7 +17,7 @@ Coordinate system (all mm):
 
 Equipment layout — end-zone design rev 5 (4-IBC 2×2 stack, drums eliminated):
   Left end zone  (X=0–150):    light trap drum only (freed up by drum removal)
-  Pinhole wall   (Yd=0 face):  evap cooler (X=930–1530) + electrical panel + pump manifold
+  Pinhole wall   (Yd=0 face):  duct penetration (X=1200) + electrical panel + battery bank
   Optical zone   (X=150–4649): film plane rails only — floor clear
   Right end zone (X=4649–5893): 4× IBC in 2×2 stack (2 columns × 2 high)
 
@@ -195,22 +195,24 @@ def floor_plan():
     penetration(ax, 0, DRUM_FP_CY, r=80,
                 col=C_PINHOLE, label="DRUM\nINLET", label_offset=(-180, -30))
 
-    # Evap cooler — on pinhole wall face (Yd=0), X=930–1530mm
-    equip_rect(ax, EVAP_X, EVAP_Y, EVAP_W, EVAP_D, C_EVAP,
-               f"EVAP\nCOOLER\n{EVAP_W}×{EVAP_D}", zorder=6)
-    ax.text(EVAP_X + EVAP_W/2, EVAP_Y + EVAP_D + 55,
-            "▲ 800mm tall", color=C_EVAP, fontsize=5.5,
-            ha="center", va="bottom", **FONT, zorder=7)
+    # Evap duct penetration — cooler is external (rev 7)
+    penetration(ax, EVAP_DUCT_X, 0, r=EVAP_DUCT_D / 2, col=C_EVAP,
+                label=f"EVAP DUCT\nØ{EVAP_DUCT_D}\n(EXT. COOLER)",
+                label_offset=(0, EVAP_DUCT_D / 2 + 60))
 
     # (waste drums and dolly tracks eliminated in rev 5 — left zone now light trap only)
 
     # ── PINHOLE WALL (Y=0 face) — wall-mounted items ──────────────────────────
-    # Electrical panel + battery (thin strip at Y=0)
+    # Electrical panel (thin strip at Y=0) — raised to Z=1600–2200
     equip_rect(ax, EP_X, 0, EP_W, 80, C_ELEC,
-               "ELEC+\nBATT.", zorder=7, alpha=0.95)
-    # Pump manifold
-    equip_rect(ax, PUMP_X, 0, PUMP_W, 80, C_PUMP,
-               "PUMP\nMFD.", zorder=7, alpha=0.95)
+               "ELEC\nPANEL", zorder=7, alpha=0.95)
+    # Battery bank (slim profile, 120mm depth)
+    equip_rect(ax, BA_X, 0, BA_W, BA_D, C_BATT,
+               "BATT.", zorder=7, alpha=0.85)
+
+    # ── EQUIPMENT PANEL (IBC plumbing corridor, Yd=1046) ────────────────────
+    equip_rect(ax, EQPANEL_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
+               C_PUMP, "EQUIP PANEL\n(PUMPS+FILTERS)", zorder=7, alpha=0.8)
 
     # External power panel (flush-mount, exterior of pinhole wall)
     PP_DEPTH = 60   # schematic depth on exterior face
@@ -301,7 +303,7 @@ def floor_plan():
     ax.text((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2,
             (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2,
             "PROCESSING TRAY  (304 SS, 50mm rim)\n"
-            "spray bar wash · sump pickup (P-04) to 3W-DV-02",
+            f"spray bar wash · sump at X={PROC_TRAY_DRAIN_X} (slope to IBC corner)",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT,
             alpha=0.7, zorder=4)
 
@@ -377,6 +379,18 @@ def floor_plan():
                          fc=C_WALKWAY, ec=C_DIM, lw=0.8, hatch=WK_HATCH,
                          alpha=WK_ALPHA, zorder=2))
 
+    # Near walkway widened section (EP/BAT zone, 500mm) — rev 7
+    WIDE_EXTRA = WALKWAY_NEAR_WIDE_W - W  # extra 200mm beyond standard 300mm
+    ax.add_patch(Rectangle(
+        (WALKWAY_NEAR_WIDE_X_L, NY + W), WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L, WIDE_EXTRA,
+        fc="#E8FFE8", ec="#66AA66", lw=1.0, ls="--", hatch=WK_HATCH,
+        alpha=0.4, zorder=2))
+    ax.text((WALKWAY_NEAR_WIDE_X_L + WALKWAY_NEAR_WIDE_X_R) / 2,
+            NY + W + WIDE_EXTRA / 2,
+            f"WIDENED\n{WALKWAY_NEAR_WIDE_W}mm",
+            color="#448844", fontsize=5, ha="center", va="center",
+            fontweight="bold", **FONT, zorder=5)
+
     # Butt joint lines at corners
     C_MITER = C_DIM  # reuse color variable name
     butt_lines = [
@@ -426,9 +440,10 @@ def floor_plan():
         (C_BLUE_IBC,  "Blue IBC ×2 (clean water, top tier)"),
         (C_BROWN_IBC, "Brown IBC ×1 (recycle, bottom near)"),
         (C_WASTE_IBC, "Waste IBC ×1 (bottom far)"),
-        (C_EVAP,    "Evaporative cooler"),
-        (C_ELEC,  "Electrical panel + battery bank"),
-        (C_PUMP,  "Pump manifold"),
+        (C_EVAP,    "Evap duct penetration (cooler external)"),
+        (C_ELEC,  "Electrical panel"),
+        (C_BATT,  "Battery bank (slim 120mm)"),
+        (C_PUMP,  "Equipment panel (pumps+filters, IBC corridor)"),
         (C_FILM,      f"Muslin image plane ({FP_W}×{FP_H}mm)"),
         (C_PINHOLE,   f"Pinhole Ø{PH_D}mm"),
         (C_OPT,       "Optical axis (2362mm focal length)"),
@@ -695,11 +710,10 @@ def egress_detail():
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM,
                 label="FAN B\n(EXHAUST)", label_offset=(0, -22))
 
-    # ── Evap cooler (partially visible at right edge) ────────────────────────
-    evap_vis_w = min(EVAP_W, X_HI - EVAP_X)
-    if evap_vis_w > 0:
-        equip_rect(ax, EVAP_X, EVAP_Y, evap_vis_w, EVAP_D, C_EVAP,
-                   "EVAP\nCOOLER", zorder=6)
+    # ── Evap duct penetration (partially visible at right edge) ──────────────
+    if EVAP_DUCT_X < X_HI:
+        penetration(ax, EVAP_DUCT_X, 0, r=EVAP_DUCT_D / 2, col=C_EVAP,
+                    label=f"EVAP DUCT Ø{EVAP_DUCT_D}", label_offset=(0, 70))
 
     # ── EGRESS PATH ──────────────────────────────────────────────────────────
     # With drums eliminated (rev 5), the full container width is clear for egress.

@@ -120,7 +120,9 @@ is the clear optical zone.
 
 | Zone | Long-axis span | Contents |
 |------|---------------|----------|
-| Equipment zone | X = 0–2700mm | IBC totes (×4, 2×2 stack), evap cooler, pump manifold, electrical panel |
+| Left end zone | X = 0–150mm | Light trap drum, hinged panel |
+| Right end zone | X = 4,649–5,893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
+| Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
 | Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
 | Pinhole wall | X = 2946mm (centre) | Aperture Ø2.17mm at Y_depth=0 |

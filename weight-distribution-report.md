@@ -72,8 +72,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Electrical panel | 15 | 1,600–1,900 | 0–150 | Wall-mount distribution panel |
 | Battery bank | 26 | 1,810–2,310 | 0–150 | 2× 100Ah LiFePO4 @ 13 kg each |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Pump manifold | 5 | 2,500–2,800 | 0–150 | 3× 12V diaphragm pumps + manifold |
-| Evaporative cooler | 15 | 930–1,530 | 0–350 | Portable evap cooler unit |
+| Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on equipment panel |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
@@ -131,15 +130,15 @@ Brown/Waste IBCs.
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,565 kg** (3,365 dry + 1,200 liquid)
+**Total loaded weight: 4,550 kg** (3,350 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,365 | 2,656 | 1,161 | 1,054 | 55.1/44.9% | 50.9/49.1% |
-| Camera Ready (Deployed) | 4,565 | 3,372 | 1,167 | 1,176 | 40.6/59.4% | 50.7/49.3% |
-| Materials Exhausted (Transport) | 4,565 | 3,346 | 1,167 | 910 | 40.6/59.4% | 50.7/49.3% |
+| Dry (Transport) | 3,350 | 2,665 | 1,167 | 1,058 | 54.8/45.2% | 50.7/49.3% |
+| Camera Ready (Deployed) | 4,550 | 3,382 | 1,171 | 1,179 | 40.3/59.7% | 50.5/49.5% |
+| Materials Exhausted (Transport) | 4,550 | 3,356 | 1,171 | 912 | 40.3/59.7% | 50.5/49.5% |
 
 ---
 
@@ -164,7 +163,7 @@ category. The hinged panel is retracted 300mm inward on its ceiling rails
 
 Weight distribution with full Blue IBCs (top tier) and hinged panel
 deployed to its operational position at the cargo door end (X=0–80).
-CG marker shows the loaded center of gravity at X=3,350, Yd=1,150.
+CG marker shows the loaded center of gravity at X=3,382, Yd=1,171.
 Quadrant weights show the rear-heavy bias from the IBC stack.
 
 ![TBS-001 — Weight Analysis: Camera Ready](assets/weight-analysis-sheet3.png)
@@ -174,7 +173,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is retracted to transport position (X=300–380).
 Total weight is unchanged (closed water system). The vertical
-CG drops by 269mm (Z: 1,176 → 907 mm) as water moves to bottom tier.
+CG drops by 267mm (Z: 1,179 → 912 mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
@@ -188,37 +187,37 @@ All three states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,365 | 20,635 | 14.0% |
-| Camera Ready | 4,565 | 19,435 | 19.0% |
-| Materials Exhausted | 4,565 | 19,435 | 19.0% |
+| Dry | 3,350 | 20,650 | 14.0% |
+| Camera Ready | 4,550 | 19,450 | 19.0% |
+| Materials Exhausted | 4,550 | 19,450 | 19.0% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
 
 ### 6.2 Left-Right Balance (Near/Far)
 
-The near/far split is nearly balanced in all states (51/49%). This is by
+The near/far split is nearly balanced in all states (~50.5/49.5%). This is by
 design: equipment on the pinhole wall (near side) is lightweight (electrical
-panel, batteries, pumps totaling ~73 kg), and the IBC stack is centered
+panel, batteries totaling ~43 kg), the pump manifold is on the equipment panel
+centered in the IBC corridor (Yd=1,046), and the IBC stack is centered
 across the container width. The film plane carriage contributes ~33 kg to
-the far side but is offset by the tilt-swing board and cooler on the near
-side.
+the far side but is offset by the tilt-swing board on the near side.
 
 ### 6.3 Front-Rear Balance
 
-The dry/transport state has a front-biased split (55.1/44.9%), with CG at
-X=2,656mm. This front bias comes from the cargo doors (280 kg total) being
+The dry/transport state has a front-biased split (54.8/45.2%), with CG at
+X=2,665mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also retracted 300mm inward on its ceiling rails.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,372mm (716mm past the dry CG). The doors
+the CG shifts rearward to X=3,382mm (717mm past the dry CG). The doors
 swing open flat against the side walls (X=0–1,221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a 40.6/59.4% front/rear split.
+zone (X=4,674–5,893mm). This creates a 40.3/59.7% front/rear split.
 
 **Transport implication:** When loaded for transport (materials exhausted,
-doors closed), the container's CG is at 56.7% of the length from the cargo
+doors closed), the container's CG is at 56.9% of the length from the cargo
 door end. For trailer placement, the container
 should be positioned so the rear (sealed) end sits over or near the trailer
 axle(s) to balance the load.
@@ -227,21 +226,21 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,176 mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 910 mm (1,200 kg of water in bottom-tier IBCs)
-- **ΔZ = −266 mm** (CG drops 266mm during a session)
+- **Camera Ready:** Z_cg = 1,179 mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 912 mm (1,200 kg of water in bottom-tier IBCs)
+- **ΔZ = −267 mm** (CG drops 267mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,565 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,550 kg throughout a
 session, but the vertical redistribution of 1,200 kg from top tier to
-bottom tier drops the center of gravity by 266mm, improving stability.
+bottom tier drops the center of gravity by 267mm, improving stability.
 
 ### 6.5 Walkway Weight Sensitivity
 
-The walkway system contributes 250 kg (7.4% of dry weight), making it the
+The walkway system contributes 250 kg (7.5% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The weight is
 dominated by the grating at 44 kg/m² (McNICHOLS catalog value). If lighter
 aluminum grating were used (~20 kg/m²), the walkway weight would drop to

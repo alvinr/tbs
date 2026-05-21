@@ -73,6 +73,8 @@ from tbs_constants import (
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T,
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
+    WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
+    EP_X, EP_W, BA_X, BA_W,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -560,11 +562,18 @@ def sheet1():
     FY  = WALKWAY_FAR_YD;   FYO = FY + W
     TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W
 
-    # All walkways same width — simple rectangles with butt joints at corners
+    # Near walkway: L-shaped polygon with bump-out at X=1600-2310
     near_len = TR - LXR   # near/far walkway length (from butt joint to tray right)
+    WXL = WALKWAY_NEAR_WIDE_X_L  # 1600
+    WXR = WALKWAY_NEAR_WIDE_X_R  # 2310
+    WW  = WALKWAY_NEAR_WIDE_W    # 500
+    near_verts = [
+        (LXR, NY), (TR, NY), (TR, NYI),
+        (WXR, NYI), (WXR, WW), (WXL, WW), (WXL, NYI),
+        (LXR, NYI),
+    ]
     walkway_polys = [
-        ("NEAR",  [(LXR, NY), (TR, NY), (TR, NYI), (LXR, NYI)],
-         LXR, NY, near_len, W, True),
+        ("NEAR",  near_verts, LXR, NY, near_len, W, True),
         ("FAR",   [(LXR, FYO), (TR, FYO), (TR, FY), (LXR, FY)],
          LXR, FY, near_len, W, True),
         ("LEFT",  [(LX, NY), (LX, FYO), (LXR, FYO), (LXR, NY)],
@@ -621,6 +630,8 @@ def sheet1():
             lbl = f"LEFT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nREMOVABLE LIFT-OUT"
         elif name == "RIGHT":
             lbl = f"RIGHT WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\nCEILING-HUNG"
+        elif name == "NEAR":
+            lbl = f"NEAR WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm\n(WIDENED TO {WALKWAY_NEAR_WIDE_W}mm\nAT EP/BATT ZONE)"
         else:
             lbl = f"{name} WALKWAY\n{int(length)}\u00d7{WALKWAY_W}mm"
         ax.text(cx, cy, lbl,
@@ -651,6 +662,30 @@ def sheet1():
            f"({WALKWAY_RIGHT_HANGER_N} PAIRS — 1st AT {WALKWAY_RIGHT_HANGER_Y1}mm,\nREST AT {WALKWAY_BRACKET_SPACING}mm CTR)",
            color="#606068", fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Near walkway bump-out annotation ────────────────────────────────────
+    bump_cx = (WXL + WXR) / 2
+    bump_cy = (NYI + WW) / 2
+    ax.text(bump_cx, bump_cy, f"WIDENED TO {WW}mm\n(EP + BATTERY ZONE)",
+            ha="center", va="center", fontsize=5.5, color=C_OUT,
+            backgroundcolor="#FFFFFF", fontweight="bold", **FONT, zorder=9)
+    draw_dim_v(ax, WXL - 40, NY, WW,
+               f"{WW}mm", offset=50, fs=6, right=False, font=FONT)
+    draw_dim_h(ax, WXL, WXR, WW + 30,
+               f"{WXR - WXL}mm BUMP-OUT", offset=50, fs=6, font=FONT)
+
+    # EP + battery ghost outlines (wall-mounted equipment that drives bump-out)
+    C_EQUIP_GHOST = "#808080"
+    ax.add_patch(Rectangle((EP_X, NY), EP_W, 120,
+                            fc="none", ec=C_EQUIP_GHOST, lw=1.0, ls="--",
+                            alpha=0.6, zorder=5))
+    ax.text(EP_X + EP_W / 2, 60, "EP", ha="center", va="center",
+            fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
+    ax.add_patch(Rectangle((BA_X, NY), BA_W, 120,
+                            fc="none", ec=C_EQUIP_GHOST, lw=1.0, ls="--",
+                            alpha=0.6, zorder=5))
+    ax.text(BA_X + BA_W / 2, 60, "BATT", ha="center", va="center",
+            fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
 
     # ── Panel transport envelope (dashed red) ────────────────────────────────
     # Show the zone swept by the panel when sliding to transport position.
@@ -770,15 +805,16 @@ def sheet1():
     n_brackets_total = n_brackets_near * 2  # near + far only (no right brackets)
     notes = [
         "CONSTRUCTION NOTES:",
-        f"1. 4 removable grated sections, all {WALKWAY_W}mm wide. Butt joints at all corners.",
-        f"2. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) bolted to corrugated wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
-        f"   Start at X={LXR} (butt joint) \u2014 entirely past panel transport envelope (X\u2264420).",
-        f"3. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs of M{WALKWAY_RIGHT_HANGER_D} threaded rod hangers from ceiling (1st pair at Yd={WALKWAY_RIGHT_HANGER_Y1}mm, rest at {WALKWAY_BRACKET_SPACING}mm centers).",
-        f"   2\u00d7 {WALKWAY_RIGHT_BEARER_SIZE}\u00d7{WALKWAY_RIGHT_BEARER_SIZE}\u00d7{WALKWAY_RIGHT_BEARER_T}mm steel angle bearers. No floor contact \u2014 clear of IBC stack.",
-        f"4. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR}",
-        f"   spans {WALKWAY_LEFT_SPAN}mm between bracket legs. {LEFT_WK_LEG_N} floor legs + bearing strip (cargo door side).",
-        f"5. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
-        f"6. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
+        f"1. 4 removable grated sections, {WALKWAY_W}mm wide standard. Butt joints at all corners.",
+        f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank).",
+        f"   Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm) with heavier gussets in bump-out zone.",
+        f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"   Start at X={LXR} (butt joint) \u2014 past panel transport envelope (X\u2264420).",
+        f"4. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs M{WALKWAY_RIGHT_HANGER_D} rod hangers.",
+        f"5. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR},",
+        f"   spans {WALKWAY_LEFT_SPAN}mm. {LEFT_WK_LEG_N} floor legs + bearing strip.",
+        f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
+        f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
     ]
     draw_notes(ax, notes, C_LEN * 3 / 5 -50,
                -PAD_Y_BOT + 350 + (len(notes) - 1) * 35,

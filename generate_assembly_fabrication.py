@@ -36,7 +36,7 @@ from tbs_constants import (
     PH_X, PH_H,
     ZONE_L_END, ZONE_R_START,
     DRUM_CX, DRUM_D, DRUM_R, DRUM_H_LT,
-    EVAP_X, EVAP_Y, EVAP_W, EVAP_D, EVAP_H,
+    EVAP_DUCT_X, EVAP_DUCT_D, EVAP_DUCT_Z,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
@@ -49,7 +49,7 @@ from tbs_constants import (
     DIAGRAMS_DIR, SVG_DIR, svg_path,
     C_OUT, C_CL, C_DIM,
     C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
-    C_EVAP, C_ELEC, C_BATT, C_PUMP,
+    C_ELEC, C_BATT, C_PUMP,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
@@ -164,7 +164,7 @@ def sheet1():
             f"Pinhole\nX={PH_X}mm\nH={PH_H}mm",
             ha="left", va="bottom", fontsize=FS_SM-1, color=C_OUT, zorder=8)
 
-    # ── LEFT END ZONE — hinged panel + drum + evap ────────────────────────────
+    # ── LEFT END ZONE — hinged panel + drum ─────────────────────────────────
     # Hinged panel — stepped profile (rev 4): 40mm corners, 120mm center
     # Corner zone (40mm) shown as solid, center zone (120mm) as dashed outline
     ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CORNER_T, C_HGT,
@@ -181,11 +181,14 @@ def sheet1():
             ha="center", va="center", fontsize=FS_SM-1.5, color=C_OUT,
             style="italic", zorder=6)
 
-    # Evap cooler: X=400-1000, bottom at RAIL_OFF
-    equip_blk(ax, EVAP_X, RAIL_OFF, EVAP_W, EVAP_H, C_EVAP, zorder=4)
-    ax.text(EVAP_X+EVAP_W/2, RAIL_OFF+EVAP_H/2,
-            "EVAP\nCOOLER", ha="center", va="center",
-            fontsize=FS_SM-1.5, color="white", zorder=5)
+    # Duct penetration — Ø200mm through pinhole wall for external evap cooler
+    duct_r = EVAP_DUCT_D / 2
+    ax.add_patch(plt.Circle((EVAP_DUCT_X, EVAP_DUCT_Z), duct_r,
+                 facecolor="#E8E8E8", edgecolor=C_OUT, linewidth=1.0,
+                 linestyle="--", zorder=5))
+    ax.text(EVAP_DUCT_X, EVAP_DUCT_Z,
+            f"DUCT\nØ{EVAP_DUCT_D}", ha="center", va="center",
+            fontsize=FS_SM-2, color=C_OUT, zorder=6)
 
     # 55-gal drums ×2 — one per Yd corner (near wall + far wall), both at CX=330mm.
     # (waste drums eliminated in rev 5 — left zone is light trap only)
@@ -272,7 +275,7 @@ def sheet1():
         (PH_X,                    PH_H+350,              "1"),  # Pinhole
         (RAIL_X_L,                C_HGT-RAIL_OFF-200,    "2"),  # Rails (left)
         (RAIL_X_R,                RAIL_OFF+200,           "3"),  # Film plane mechanism
-        (EVAP_X+EVAP_W/2,         RAIL_OFF+EVAP_H/2,     "4"),  # Evap cooler
+        (EVAP_DUCT_X,             EVAP_DUCT_Z,            "4"),  # Duct penetration
         (EP_X+EP_W/2,             (EP_H_LO+EP_H_HI)/2,   "5"),  # Electrical
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
         (IBC_COL_X+IBC_W/2,      IBC_H_STK/2,            "7"),  # IBCs (4× 2×2 stack)
@@ -321,7 +324,7 @@ def sheet1():
         ("1",  "Pinhole aperture plate",            "TBS-P01"),
         ("2",  "Film plane rails x4",               "TBS-FM01"),
         ("3",  "Film plane mechanism",               "TBS-FM01"),
-        ("4",  "Evaporative cooler",                 "TBS-EL01"),
+        ("4",  "Evap duct penetration (Ø200mm, ext unit)", "TBS-EL01"),
         ("5",  "Electrical panel + battery bank",    "TBS-EL01"),
         ("6",  "Hinged panel + revolving drum",      "TBS-LT01"),
         ("7",  "4× IBC 2×2 stack (right zone — Blue ×2 top, Brown + Waste bottom)","TBS-WS01"),
@@ -467,16 +470,7 @@ def sheet2():
     ax.text(RAIL_OFF-60, RAIL_Y_NEAR, "Rail", ha="right", va="center",
             fontsize=FS_SM-1, color=C_DIM, zorder=6)
 
-    # ── Evap cooler projection (pinhole wall face, background) ───────────────
-    # Rev 4: evap cooler is at Yd=0–350mm (pinhole wall face), X=930–1530mm (depth into page).
-    # In this end elevation horizontal axis = Yd → cooler spans Yd=EVAP_Y to EVAP_Y+EVAP_D.
-    # Height: 0–800mm. Show as ghost outline.
-    ax.add_patch(mpatches.Rectangle((EVAP_Y, RAIL_OFF), EVAP_D, EVAP_H,
-                 facecolor=C_EVAP, edgecolor="#1A8A76",
-                 linewidth=0.7, linestyle="--", alpha=0.20, zorder=2))
-    ax.text(EVAP_Y + EVAP_D/2, RAIL_OFF + EVAP_H/2, "Evap\n(behind)", ha="center", va="center",
-            fontsize=FS_SM-2, color="#1A8A76", alpha=0.8, zorder=3)
-
+    # (evap cooler removed — external unit, duct penetration at X=1200)
     # (waste drums eliminated in rev 5 — left zone is light trap only)
 
     # ── Safelight ─────────────────────────────────────────────────────────────

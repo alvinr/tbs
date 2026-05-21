@@ -3,16 +3,16 @@
 # © 2026 Alvin Richards
 """
 generate_filter_skid_diagram.py
-Generates a detailed plumbing diagram of the 3-stage combo filter unit mounted
-on the pinhole wall (Yd=0).
+Generates a detailed plumbing diagram of the 3-stage filter skid mounted
+on the equipment panel in the IBC plumbing corridor (Yd=1046).
 
-Sheet 1 — Filter Unit Elevation (1:5)
-  View from inside the container looking at the pinhole wall.
+Sheet 1 — Filter Skid Elevation (1:5)
+  View from corridor side looking at the equipment panel face.
   X axis horizontal, Z axis vertical.
-  Shows: slotted angle frame, three Big Blue 4.5"×20" housings (F1/F2/F3)
-         on integrated manifold (Purcooflow WHF2045B302 or equiv.),
-         P-02 pump, 1" HDPE inlet/outlet pipes with parallel-wall drawing,
-         pH test point, DV-01 diverter valve, dimensions and leader callouts.
+  Shows: slotted angle frame, three separate Big Blue 4.5"×10" housings
+         (F1/F2/F3) with external inter-stage piping,
+         P-02 supply riser, 1" HDPE inlet/outlet pipes with parallel-wall
+         drawing, pH test point, DV-01 diverter valve, dimensions and leaders.
 
 Output:
   diagrams/filter-skid-sheet1.png  (1800 x 1200 px, 150 dpi)
@@ -70,7 +70,7 @@ def sz(z_mm):
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — FILTER SKID ELEVATION (1:5)
-# View from inside container looking at pinhole wall (Yd=0)
+# View from corridor looking at equipment panel face (Yd=1046)
 # X horizontal, Z vertical
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -90,28 +90,22 @@ ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
 
-# Set axis limits — main elevation (raised skid: Z=1410–2010, header ~2000)
-ax.set_xlim(sx(2600) - 1, sx(4200) + 1)
-ax.set_ylim(sz(800) - 1, sz(2300) + 2)
+# Set axis limits — main elevation (skid Z=1600–1940, header ~2000)
+ax.set_xlim(sx(4500) - 1, sx(6100) + 1)
+ax.set_ylim(sz(1100) - 1, sz(2500) + 2)
 
-# Mirror X axis for interior view: matches pinhole wall elevation convention
+# Mirror X axis for interior view: matches combined elevation convention
 # (high X / IBC end on LEFT, low X / cargo door end on RIGHT)
 ax.invert_xaxis()
 
 # Reset label registry for collision avoidance
 reset_label_registry()
 
-# ── Container wall context (corrugated profile) ──────────────────────────────
-# Corrugation ribs at 457mm spacing — show as vertical dashed lines
-CORR_SPACING = 457
-for rib_x in range(2742, 3900, CORR_SPACING):  # ribs near our zone
-    ax.plot([sx(rib_x), sx(rib_x)], [sz(1300), sz(2200)],
-            color="#AAAAAA", lw=0.6, ls="--", zorder=1)
-
+# ── Context lines ────────────────────────────────────────────────────────────
 # Ceiling line
-ax.plot([sx(2650), sx(4150)], [sz(2388), sz(2388)],
+ax.plot([sx(4600), sx(6050)], [sz(2388), sz(2388)],
         color="#888888", lw=1.0, ls="-", zorder=1)
-ax.text(sx(2750), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="right", va="bottom",
+ax.text(sx(4700), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="right", va="bottom",
         fontsize=6, color="#888888", style="italic")
 
 # ── Slotted angle frame ──────────────────────────────────────────────────────
@@ -289,27 +283,10 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
     return in_x, out_x, port_z
 
 
-# Draw three filter housings (part of integrated combo unit)
+# Draw three separate filter housings
 f1_in, f1_out, f_port_z = draw_filter_housing(ax, F1_X, "F1", "5μ MPP\nSEDIMENT")
 f2_in, f2_out, _        = draw_filter_housing(ax, F2_X, "F2", "KDF-55 METAL")
 f3_in, f3_out, _        = draw_filter_housing(ax, F3_X, "F3", "CTO CARBON")
-
-# ── Integrated manifold head block ────────────────────────────────────────────
-# Single manifold head spanning all 3 housings — replaces individual per-housing
-# brackets. All inter-stage flow is internal. Combo unit: Purcooflow WHF2045B302.
-MANIFOLD_Z_BOT = FILT_HEAD_Z        # bottom of manifold block = top of housings
-MANIFOLD_Z_TOP = FILT_HEAD_Z + 50   # 50mm manifold head above housing tops
-manifold_x_l = F1_X - BB_OD / 2 - 10   # spans from left of F1 to right of F3
-manifold_x_r = F3_X + BB_OD / 2 + 10
-manifold_w   = manifold_x_r - manifold_x_l
-ax.add_patch(plt.Rectangle(
-    (sx(manifold_x_l), sz(MANIFOLD_Z_BOT)),
-    manifold_w / SC, (MANIFOLD_Z_TOP - MANIFOLD_Z_BOT) / SC,
-    fc="#3A3A3A", ec=C_FRAME, lw=2.0, zorder=8))
-ax.text(sx((manifold_x_l + manifold_x_r) / 2), sz((MANIFOLD_Z_BOT + MANIFOLD_Z_TOP) / 2),
-        "INTEGRATED MANIFOLD HEAD",
-        ha="center", va="center", fontsize=6, fontweight="bold",
-        color="white", zorder=9)
 
 
 # ── Pipe drawing helper (parallel-wall style) ────────────────────────────────
@@ -431,15 +408,15 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
         _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
 
 
-# ── P-02 pump ────────────────────────────────────────────────────────────────
-# P-02 is in the pump manifold zone (Z=200–600), below the visible area.
+# ── P-02 supply riser ────────────────────────────────────────────────────────
+# P-02 is mounted on the same equipment panel (pump section below filter skid).
 # Show the discharge riser entering from below.
-P02_X = 2750
+P02_X = FSKID_X + 50
 RISER_X = P02_X + 110  # discharge riser X (offset right of pump center)
 
 # ── Pipe routing ─────────────────────────────────────────────────────────────
-# Flow path: IBC-3 → P-02 suction (from below) → P-02 discharge → F1 IN →
-#            F1 OUT → F2 IN → F2 OUT → F3 IN → F3 OUT → pH test → DV-01
+# Flow path: IBC-3 → P-02 discharge → F1 IN → F1 OUT → F2 IN →
+#            F2 OUT → F3 IN → F3 OUT → pH test → DV-01
 
 OD = FILT_PIPE_OD    # 33mm
 WALL = FILT_PIPE_WALL  # 4mm
@@ -450,14 +427,13 @@ PORT_Z = FILT_HEAD_Z - BB_HEAD_H / 2  # 1940 - 35 = 1905mm
 # Header height (horizontal pipe run above filter heads connecting them)
 HEADER_Z = FILT_HEAD_Z + 60  # 2000mm — above heads with clearance
 
-# ── Supply riser: P-02 discharge rises from pump manifold to manifold inlet ──
-# Riser enters visible area from below, runs up to manifold inlet height (PORT_Z),
-# then right to F1 IN on the manifold. No header pipe — F1 IN is the external inlet.
-RISER_ENTRY_Z = 1280  # just below visible frame (enters from pump manifold below)
-MANIFOLD_INLET_Z = PORT_Z  # inlet/outlet are at port height on the manifold
+# ── Supply riser: P-02 discharge rises to F1 inlet ──────────────────────────
+# Riser enters visible area from below, runs up to port height, then to F1 IN.
+RISER_ENTRY_Z = FSKID_Z_LO - 100  # just below visible frame
+INLET_Z = PORT_Z
 draw_pipe_path(ax,
     [RISER_X, RISER_X, f1_in],
-    [RISER_ENTRY_Z, MANIFOLD_INLET_Z, MANIFOLD_INLET_Z],
+    [RISER_ENTRY_Z, INLET_Z, INLET_Z],
     OD, WALL)
 
 # Supply annotation at riser entry
@@ -465,11 +441,21 @@ ax.annotate("", xy=(sx(RISER_X), sz(RISER_ENTRY_Z + 80)),
             xytext=(sx(RISER_X), sz(RISER_ENTRY_Z + 10)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=1.5), zorder=10)
 ax.text(sx(RISER_X), sz(RISER_ENTRY_Z - 10),
-        "FROM P-02\n(PUMP MANIFOLD\nBELOW)", ha="center", va="top",
+        "FROM P-02\n(PUMP SECTION\nBELOW)", ha="center", va="top",
         fontsize=6, color=C_BROWN, style="italic")
 
-# NOTE: F1→F2 and F2→F3 inter-stage flow is INTERNAL to the combo unit manifold.
-# No external pipes between filter stages.
+# ── Inter-stage pipes (external, separate housings) ──────────────────────────
+# F1 OUT → header rise → F2 IN
+HEADER_Z = FILT_HEAD_Z + 40
+draw_pipe_path(ax,
+    [f1_out, f1_out, f2_in, f2_in],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, WALL, zorder=7)
+# F2 OUT → header rise → F3 IN
+draw_pipe_path(ax,
+    [f2_out, f2_out, f3_in, f3_in],
+    [PORT_Z, HEADER_Z, HEADER_Z, PORT_Z],
+    OD, WALL, zorder=7)
 
 # ── F3 OUT → pH test point → DV-01 ──────────────────────────────────────────
 # pH test point: inline tee fitting with probe pocket, positioned after F3 outlet
@@ -489,8 +475,8 @@ draw_pipe_path(ax,
     [PORT_Z, PORT_Z + PH_STUB_H],
     OD, WALL, zorder=6)
 
-# Main pipe: F3 OUT (manifold outlet) → pH test → DV-01
-# No header rise needed — pipe runs directly from outlet at port height
+# Main pipe: F3 OUT → pH test → DV-01
+# Runs directly from outlet at port height
 draw_pipe_path(ax,
     [f3_out, PH_TEST_X, PH_TEST_X, DV01_X - DV01_R],
     [PORT_Z, PORT_Z, PORT_Z, PORT_Z],
@@ -541,13 +527,18 @@ ax.text(sx(DV01_X + DV01_R + 90), sz(DV01_Z), "← BLACK\n  (pH outside range)",
 
 # ── Flow arrows ──────────────────────────────────────────────────────────────
 arrow_style = dict(arrowstyle="-|>", color=C_HDPE, lw=1.8, mutation_scale=10)
-# Arrow on supply riser (horizontal leg from riser to manifold inlet)
+# Arrow on supply riser (horizontal leg from riser to F1 inlet)
 mid_x1 = (RISER_X + f1_in) / 2
-ax.annotate("", xy=(sx(mid_x1 + 30), sz(MANIFOLD_INLET_Z)),
-            xytext=(sx(mid_x1 - 30), sz(MANIFOLD_INLET_Z)),
+ax.annotate("", xy=(sx(mid_x1 + 30), sz(INLET_Z)),
+            xytext=(sx(mid_x1 - 30), sz(INLET_Z)),
             arrowprops=arrow_style, zorder=12)
 
-# NOTE: No inter-housing arrows — F1→F2 and F2→F3 flow is internal to manifold.
+# Inter-stage flow arrows
+for xa, xb in [(f1_out, f2_in), (f2_out, f3_in)]:
+    mid_x = (xa + xb) / 2
+    ax.annotate("", xy=(sx(mid_x + 30), sz(HEADER_Z)),
+                xytext=(sx(mid_x - 30), sz(HEADER_Z)),
+                arrowprops=arrow_style, zorder=12)
 
 # Arrow between F3 outlet and pH test (horizontal run)
 mid_x4 = (f3_out + PH_TEST_X) / 2
@@ -558,11 +549,11 @@ ax.annotate("", xy=(sx(mid_x4 + 30), sz(PORT_Z)),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax, sx(FSKID_X), sx(FSKID_X + FSKID_W), sz(FSKID_Z_LO - 50),
-           "900mm", offset=0.44)
+           f"{FSKID_W}mm", offset=0.44)
 
 # Frame height
 draw_dim_v(ax, sx(FSKID_X - 80), sz(FSKID_Z_LO), sz(FSKID_Z_HI),
-           "600mm", offset=0.44)
+           f"{FSKID_H}mm", offset=0.44)
 
 # Filter spacing (F1 to F2)
 f_spacing = F2_X - F1_X
@@ -581,14 +572,11 @@ ax.text(sx(FSKID_X - 130), sz(FILT_SUMP_Z),
         f"Z={FILT_SUMP_Z}mm AFF",
         ha="left", va="center", fontsize=5.5, color=C_DIM)
 
-# Ceiling clearance (measured from manifold top)
+# Ceiling clearance (measured from header pipes above heads)
 CEILING_Z = 2388
-draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(MANIFOLD_Z_TOP), sz(CEILING_Z),
-           f"{CEILING_Z - MANIFOLD_Z_TOP}mm\nCLEARANCE", offset=0.44)
-
-# Manifold height above housing tops
-draw_dim_v(ax, sx(PH_TEST_X + 100), sz(FILT_HEAD_Z), sz(MANIFOLD_Z_TOP),
-           f"{int(MANIFOLD_Z_TOP - FILT_HEAD_Z)}mm", offset=0.33, fs=5.5)
+TOP_OF_PIPES = HEADER_Z + OD / 2
+draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(TOP_OF_PIPES), sz(CEILING_Z),
+           f"{int(CEILING_Z - TOP_OF_PIPES)}mm\nCLEARANCE", offset=0.44)
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
@@ -601,30 +589,25 @@ leader(ax, sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO + ANGLE_W + 30),
        sx(FSKID_X + FSKID_W / 2 + 100), sz(FSKID_Z_LO - 20),
        "18mm PLYWOOD\nBACKING BOARD", fs=6)
 
-# Manifold head callout
-leader(ax, sx((manifold_x_l + manifold_x_r) / 2), sz(MANIFOLD_Z_TOP),
-       sx((manifold_x_l + manifold_x_r) / 2), sz(MANIFOLD_Z_TOP + 90),
-       "INTEGRATED MANIFOLD HEAD\n(Purcooflow WHF2045B302 or equiv.)", fs=6)
-
 # Pipe material on inlet riser leg
 leader(ax, sx(RISER_X), sz(RISER_ENTRY_Z + 200),
        sx(RISER_X - 120), sz(RISER_ENTRY_Z + 300),
        "1\" HDPE Sch40\n(OD 33mm, WALL 4mm)", fs=6)
 
-# Wall bracket
+# Panel bracket
 leader(ax, sx(FSKID_X - BRACKET_W / 2), sz(FSKID_Z_LO + 50 + BRACKET_H * 0.3),
        sx(FSKID_X - BRACKET_W / 2 - 160), sz(FSKID_Z_LO + 50 + BRACKET_H / 2 + 30),
-       "L-BRACKET\nTO WALL RIB", fs=6)
+       "L-BRACKET\nTO PANEL", fs=6)
 
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
     "NOTES",
-    "1. Inlet/outlet: 1\" NPT only at manifold left (F1 inlet) and right (F3 outlet).",
-    "2. Filter unit: 3-stage combo, 4.5\"×20\" Big Blue housings (Purcooflow WHF2045B302 or equiv.).",
-    "3. Internal flow: F1 (5μ MPP) → F2 (KDF-55) → F3 (CTO). Single 1\" NPT inlet and outlet.",
-    "4. 18mm plywood backing board inside frame — mounting surface for combo unit.",
+    "1. 3× separate 4.5\"×10\" Big Blue housings, individual U-bracket mounts.",
+    "2. External inter-stage piping: F1 OUT → F2 IN → F2 OUT → F3 IN (1\" HDPE).",
+    "3. Flow: F1 (5μ MPP sediment) → F2 (KDF-55 metal) → F3 (CTO carbon).",
+    "4. 18mm plywood backing board inside frame — mounting surface for housings.",
     "5. 50mm HDPE spacer blocks between bracket and ply — clears rear port fittings (Detail B).",
-    "6. Frame mounted to pinhole wall corrugation ribs with M8 bolts + nyloc nuts.",
+    "6. Frame mounted to equipment panel in IBC plumbing corridor (Yd=1046).",
     "7. pH test point: inline tee with removable cap for handheld probe insertion.",
     "8. DV-01 routes to Blue system (pH 6.5–8.0) or Black waste (outside range).",
 ]
@@ -633,7 +616,7 @@ draw_notes(ax, notes, sx(FSKID_X+FSKID_W*1.45), sz(1230), spacing=4.5, fs=7,
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # DETAIL B — FILTER MOUNTING CROSS-SECTION (~1:2)
-# Side elevation (vertical section perpendicular to pinhole wall)
+# Side elevation (vertical section perpendicular to equipment panel)
 # Yd horizontal (wall at left), Z vertical
 # Shows: corrugated wall → 18mm ply → 50mm HDPE spacer → bracket tab →
 #        filter head → sump bowl below → 1" NPT port with pipe
@@ -662,15 +645,13 @@ ax2.text(sb_y(90), sb_z(115), "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (APPR
 
 # All Z coordinates below are relative to filter head center (PORT_Z)
 
-# ── 1. Container corrugated wall (section fill) ─────────────────────────────
-# Wall is at Yd=0, ~2mm steel corrugated sheet — show as hatched rectangle
-WALL_T = 2.0
-# Corrugation profile — simplified as a thick hatched band
-ax2.add_patch(plt.Rectangle((sb_y(-WALL_T), sb_z(-510)),
-              WALL_T / SC_B, 610 / SC_B,
-              fc=C_STEEL_FILL, ec=C_FRAME, lw=1.8, zorder=3, hatch="//"))
-ax2.text(sb_y(-WALL_T / 2), sb_z(105), "WALL", ha="center", va="bottom",
-         fontsize=5.5, color=C_FRAME, rotation=0)
+# ── 1. Equipment panel (18mm marine ply at Yd=1046) ──────────────────────────
+PANEL_T = 18.0
+ax2.add_patch(plt.Rectangle((sb_y(-PANEL_T), sb_z(-510)),
+              PANEL_T / SC_B, 610 / SC_B,
+              fc="#D4C8A0", ec="#A09060", lw=1.8, zorder=3))
+ax2.text(sb_y(-PANEL_T / 2), sb_z(105), "EQUIP\nPANEL", ha="center", va="bottom",
+         fontsize=5, color=C_FRAME, rotation=0)
 
 # ── 2. Plywood backing board (18mm) ─────────────────────────────────────────
 PLY_YD_START = 0   # flush against wall inner face
@@ -807,7 +788,7 @@ ax2.add_patch(plt.Rectangle(
 # Pipe label
 leader(ax2, sb_y(PORT_YD + STUB_LEN), sb_z(PORT_Z_SEC),
        sb_y(PORT_YD + STUB_LEN + 30), sb_z(PORT_Z_SEC + 25),
-       "1\" HDPE\nTO MANIFOLD\nOUTLET", fs=5)
+       "1\" HDPE\nTO NEXT STAGE\n/ OUTLET", fs=5)
 
 # ── 8. Clamp band (at head/sump junction) ───────────────────────────────────
 CLAMP_H_SEC = 15
@@ -838,7 +819,7 @@ for ly, ltxt in label_items:
 
 # ── Section cut indicator note ───────────────────────────────────────────────
 ax2.text(sb_y(90), sb_z(-505),
-         "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO WALL AT PORT HEIGHT\n(20\" SUMP — Purcooflow WHF2045B302 or equiv.)",
+         "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO PANEL AT PORT HEIGHT\n(4.5\"×10\" BIG BLUE — SUMP-DOWN ORIENTATION)",
          ha="center", va="top", fontsize=6, color="#666666", style="italic")
 
 # ── Title block (full-width axes spanning both columns) ──────────────────────
@@ -847,10 +828,10 @@ ax_tb.set_xlim(0, 1)
 ax_tb.set_ylim(0, 1)
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
-            drawing_title="3-STAGE COMBO FILTER UNIT — PLUMBING ELEVATION",
-            subtitle="INTERIOR VIEW LOOKING AT PINHOLE WALL (Yd=0) — MATCHES COMBINED ELEVATION",
+            drawing_title="3-STAGE FILTER SKID — PLUMBING ELEVATION",
+            subtitle="VIEW FROM IBC CORRIDOR LOOKING AT EQUIPMENT PANEL (Yd=1046)",
             scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
-            doc_id="TBS-001 · Water System — 3-Stage Combo Filter Unit Detail",
+            doc_id="TBS-001 · Water System — 3-Stage Filter Skid Detail",
             height=0.75)
 
 # ── Save ─────────────────────────────────────────────────────────────────────

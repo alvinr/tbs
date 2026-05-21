@@ -450,12 +450,6 @@ WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner ed
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_NEAR_WIDE_X_L = EP_X            # = 1600mm — starts at EP left edge
 WALKWAY_NEAR_WIDE_X_R = BA_X + BA_W     # = 2310mm — ends at battery right edge
-# Corner triangle at right walkway / IBC junction (rev 7)
-# Triangular grating piece extending near walkway toward IBC zone entrance.
-# Right triangle: full walkway depth (300mm) at X=4329, tapering to zero at X=4650.
-CORNER_TRI_X_L  = WALKWAY_RIGHT_X       # = 4329mm (flush with right walkway)
-CORNER_TRI_X_R  = 4650                   # outer edge X (mm) — near IBC zone boundary
-CORNER_TRI_YD   = WALKWAY_W             # = 300mm max depth (at inner edge)
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm
@@ -574,7 +568,6 @@ if __name__ == "__main__":
     print(f"  Tray sump:      X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}")
     print(f"  Walkway:        std={WALKWAY_W}mm  wide={WALKWAY_NEAR_WIDE_W}mm (X={WALKWAY_NEAR_WIDE_X_L}–{WALKWAY_NEAR_WIDE_X_R})")
     print(f"  Right walkway:  CEILING-HUNG  {WALKWAY_RIGHT_HANGER_N} hanger pairs  M{WALKWAY_RIGHT_HANGER_D} rod")
-    print(f"  Corner tri:     X={CORNER_TRI_X_L}–{CORNER_TRI_X_R}  Yd=0–{CORNER_TRI_YD}")
     print(f"  Left walkway:   REMOVABLE LIFT-OUT  span={WALKWAY_LEFT_SPAN}mm  (bearer beam + {LEFT_WK_LEG_N} floor legs)")
     print(f"  Walkway open:   X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}  Yd={PROC_OPEN_YD_N}–{PROC_OPEN_YD_F}  area={PROC_OPEN_AREA:.2f} m²")
     print(f"  Evap cooler:    EXTERNAL — duct Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X} Z={EVAP_DUCT_Z}")

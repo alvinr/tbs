@@ -74,7 +74,6 @@ from tbs_constants import (
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
-    CORNER_TRI_X_L, CORNER_TRI_X_R, CORNER_TRI_YD,
     EP_X, EP_W, BA_X, BA_W,
 )
 
@@ -688,21 +687,6 @@ def sheet1():
     ax.text(BA_X + BA_W / 2, 60, "BATT", ha="center", va="center",
             fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
 
-    # ── Corner triangle (near walkway / right walkway junction) ──────────────
-    tri_verts = [
-        (CORNER_TRI_X_L, NYI),
-        (CORNER_TRI_X_R, NY),
-        (CORNER_TRI_X_L, NY),
-    ]
-    ax.add_patch(Polygon(tri_verts, closed=True,
-                         fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
-                         alpha=WK_ALPHA, zorder=4))
-    leader(ax, (CORNER_TRI_X_L + CORNER_TRI_X_R) / 2, NYI * 0.4,
-           (CORNER_TRI_X_L + CORNER_TRI_X_R) / 2, NYI + 200,
-           "CORNER TRIANGLE\n(IBC ZONE TRANSITION)",
-           color=C_OUT, fs=5.5,
-           ha="center", va="center", arrow_style="-|>", font=FONT)
-
     # ── Panel transport envelope (dashed red) ────────────────────────────────
     # Show the zone swept by the panel when sliding to transport position.
     # Left walkway must be removed before panel slides.
@@ -827,7 +811,6 @@ def sheet1():
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint) \u2014 past panel transport envelope (X\u2264420).",
         f"4. Right: CEILING-HUNG \u2014 {WALKWAY_RIGHT_HANGER_N} pairs M{WALKWAY_RIGHT_HANGER_D} rod hangers.",
-        f"   Corner triangle at IBC zone transition (X={CORNER_TRI_X_L}\u2013{CORNER_TRI_X_R}).",
         f"5. Left: REMOVABLE LIFT-OUT \u2014 bearer beam ({LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm Al RHS) at X={LXR},",
         f"   spans {WALKWAY_LEFT_SPAN}mm. {LEFT_WK_LEG_N} floor legs + bearing strip.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",

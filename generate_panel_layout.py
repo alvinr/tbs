@@ -329,7 +329,7 @@ F_IN_YD  = FILT_COL - 35
 F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
-DISCH_RAIL = 10     # Blue discharge riser (inside panel, left of outlet)
+DISCH_RAIL = 260    # Blue discharge riser (right side of panel)
 INTERZONE  = F_IN_YD                         # pump-to-filter transition
 JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
 JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
@@ -485,9 +485,9 @@ draw_pipe_path(ax,
     [PORT_OUT_YD, PORT_OUT_YD, DISCH_RAIL, DISCH_RAIL],
     [P01_PORT_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# Horizontal at ACC_Z: exit LEFT to spray bar + tee RIGHT to ACC port
+# Horizontal at ACC_Z: exit LEFT to spray bar, through ACC port, to riser RIGHT
 draw_pipe_path(ax,
-    [EXIT_L, ACC_YD],
+    [EXIT_L, DISCH_RAIL],
     [ACC_Z, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)

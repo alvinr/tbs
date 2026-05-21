@@ -8,8 +8,9 @@ Front elevation of an 18mm plywood panel spanning the 270mm IBC plumbing
 corridor (Yd=1046–1316), perpendicular to the sealed end wall at X=5000.
 Equipment mounts on the panel face, protruding toward the open end (-X).
 
-Left column (near wall, 127mm): 3× pumps + ACC-01.
-Right column (far wall, 130mm): 3× filter housings stacked vertically.
+Left pump column:  P-01 (Blue) + P-04 (Tray drain) + ACC-01.
+Right pump column: P-02 (Brown) + P-03 (Waste evac) + DV-02.
+Filters (×3) centered on panel below pump zone.
 
 Plus a cross-section strip showing panel/walkway/wall relationship.
 
@@ -63,7 +64,7 @@ FILT_HEAD = 70   # head section height (mm)
 
 # Right column: 3 filter housings stacked vertically (sump-down) — BOTTOM
 # F-01 (coarsest) at top, F-03 (finest) at bottom: gravity-assisted series flow
-FILT_COL = 175                        # filter column center (Yd from left edge)
+FILT_COL = PANEL_W // 2               # filter column center — centered on panel
 
 F01_Z = 2 * (FILT_H + FILT_GAP)      # = 740 (top — P-02 feeds here first)
 F02_Z = FILT_H + FILT_GAP            # = 370 (middle)
@@ -79,7 +80,7 @@ PUMP_COL = PUMP_W // 2               # = 63mm — left column center
 PORT_IN_YD  = PUMP_COL + PORT_HALF   # right — inlet (suction)
 PORT_OUT_YD = PUMP_COL - PORT_HALF   # left — outlet (discharge)
 
-R_COL = FILT_COL                     # = 175mm — right column center
+R_COL = PANEL_W - PUMP_COL           # = 207mm — right pump column center (symmetric)
 R_PORT_IN  = R_COL + PORT_HALF       # 205 — right (inlet/suction)
 R_PORT_OUT = R_COL - PORT_HALF       # 145 — left (outlet/discharge)
 
@@ -92,7 +93,7 @@ P02_Z = PUMP_ZONE_BOT                 # = 1120 (right col, bottom)
 P03_Z = P02_Z + PUMP_H + PUMP_GAP    # = 1378 (right col, top)
 
 ACC_YD = PUMP_COL
-ACC_Z  = P04_Z + PUMP_H + PUMP_GAP   # = 1636 (above P-04)
+ACC_Z  = P04_Z + PUMP_H + 150        # = 1746 (raised above P-04 for pipe separation)
 
 # ── Colors ────────────────────────────────────────────────────────────────
 C_FRAME      = "#1A1A1A"
@@ -187,9 +188,10 @@ ax.text(sx(PANEL_W / 2), sz(PANEL_H - 30),
         ha="center", va="top",
         fontsize=4, color=C_PLY_EC, zorder=4, **FONT)
 
-# Zone separator (dashed line between pump and filter columns)
-zone_yd = PUMP_W + 6   # 133mm — midway in 13mm gap
-ax.plot([sx(zone_yd), sx(zone_yd)], [sz(-10), sz(PANEL_H + 10)],
+# Zone separator (dashed line between left and right pump columns — pump zone only)
+zone_yd = PUMP_W + 6   # 133mm — between pump columns
+ax.plot([sx(zone_yd), sx(zone_yd)],
+        [sz(PUMP_ZONE_BOT - 20), sz(ACC_Z + ACC_LEN + 50)],
         color=C_PLY_EC, lw=0.5, ls=(0, (4, 4)), zorder=3, alpha=0.5)
 
 
@@ -257,7 +259,7 @@ rect(ACC_YD - clamp_w / 2, ACC_BODY_Z + ACC_LEN,
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  4. FILTER HOUSINGS — 3× separate, stacked vertically (sump down)
-#     Right column (Yd=110–240), 130mm OD × 340mm tall
+#     Centered on panel (Yd=70–200), 130mm OD × 340mm tall
 #     F-01 (50µm) at top → F-02 (5µm) → F-03 (GAC) at bottom: gravity-fed
 # ═══════════════════════════════════════════════════════════════════════════
 filter_specs = [
@@ -351,7 +353,7 @@ F_IN_YD  = FILT_COL - 35
 F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
-DISCH_RAIL = 260    # Blue discharge riser (right side of panel)
+DISCH_RAIL = PUMP_W + 10  # Blue discharge riser — between pump columns
 INTERZONE  = F_IN_YD                         # pump-to-filter transition
 JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
 JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
@@ -365,8 +367,8 @@ BV01_YD = 0
 BV01_Z  = P01_PORT_Z + SUCT_RISE
 BV02_YD = -40
 BV02_Z  = ACC_Z   # on horizontal at ACC port Z
-DV02_YD = PORT_IN_YD + 30
-DV02_Z  = P04_PORT_Z - PORT_DROP
+DV02_YD = R_COL                      # right column — blank space above P-03
+DV02_Z  = P03_Z + PUMP_H + 40        # above P-03 top, next to ACC-01
 
 # ── Flow arrow style ──
 _AW = 25
@@ -538,8 +540,7 @@ ax.text(sx(EXIT_R + 5), sz(P02_PORT_Z),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
         fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# Brown discharge: P-02 outlet (left port) → straight down to F-01 IN
-# R_PORT_OUT=145, F_IN_YD=140 — nearly vertical, natural drop
+# Brown discharge: P-02 outlet (left port) → jog left → drop to F-01 IN
 draw_pipe_path(ax,
     [R_PORT_OUT, F_IN_YD, F_IN_YD],
     [P02_PORT_Z, P02_PORT_Z, F01_HEAD_Z],
@@ -604,26 +605,22 @@ draw_pipe_path(ax,
 # DV-02 (3-way diverter — diamond symbol)
 draw_ball_valve(DV02_YD, DV02_Z, "DV\n02", C_BLACK_EC)
 
-# DV-02 outputs route UP past right-column pumps, then right to IBCs
-_DV_CLEAR_Z = max(P03_Z, P04_Z) + PUMP_H + 20   # above all pump tops
-
-# DV-02 Brown output → IBC-3 (RIGHT)
-DV_OUT_Z_BROWN = _DV_CLEAR_Z
+# DV-02 Brown output → IBC-3: exits RIGHT from DV-02
 draw_pipe_path(ax,
-    [DV02_YD, DV02_YD, EXIT_R],
-    [DV02_Z + BV_R, DV_OUT_Z_BROWN, DV_OUT_Z_BROWN],
+    [DV02_YD + BV_R, EXIT_R],
+    [DV02_Z, DV02_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
-ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BROWN),
+ax.text(sx(EXIT_R + 5), sz(DV02_Z),
         "→ IBC-3", ha="left", va="center",
         fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# DV-02 Black output → IBC-4 (RIGHT)
-DV_OUT_Z_BLACK = _DV_CLEAR_Z + 25
+# DV-02 Black output → IBC-4: exits BOTTOM from DV-02, then RIGHT
+_DV_IBC4_Z = DV02_Z - 30
 draw_pipe_path(ax,
     [DV02_YD, DV02_YD, EXIT_R],
-    [DV02_Z - BV_R, DV_OUT_Z_BLACK, DV_OUT_Z_BLACK],
+    [DV02_Z - BV_R, _DV_IBC4_Z, _DV_IBC4_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
-ax.text(sx(EXIT_R + 5), sz(DV_OUT_Z_BLACK),
+ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
         "→ IBC-4", ha="left", va="center",
         fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
 
@@ -853,8 +850,8 @@ notes = [
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
     "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
-    "5. TOP: 2×2 pump grid — P-01/P-04 (left col) + ACC-01; P-02/P-03 (right col) — above filters.",
-    "6. BV-01/BV-02 on Blue circuit. DV-02 on P-04 discharge (3-way to IBC-3 or IBC-4).",
+    "5. TOP: 2×2 pump grid — P-01/P-04 + ACC-01 (left); P-02/P-03 + DV-02 (right) — above filters.",
+    "6. BV-01/BV-02 on Blue circuit. DV-02 above P-03 (IBC-3 exits right, IBC-4 exits bottom).",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]

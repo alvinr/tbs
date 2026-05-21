@@ -1298,7 +1298,7 @@ for sy_m in range(3):
 HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
 HOSE_WALL = 4.0  # hose wall thickness (mm)
 RIM_EXT_YD = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on exterior of rim
-HOSE_RIM_Z = TRAY_BASE_Z + rim_h / 2         # ~45mm — mid-rim height
+HOSE_RIM_Z = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
 
 # Hose path: short vertical overlap with tube top (creates 90° elbow) →
 # horizontal above walkway → 90° elbow → down along rim exterior
@@ -1482,7 +1482,7 @@ ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
 P04_Z = PUMP_H_LO + 80  # P-04 on equipment panel
 PANEL_YD = 1046           # equipment panel Yd position
 RIM_EXT_YD_B = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on rim exterior
-HOSE_RIM_Z_B = TRAY_BASE_Z + rim_h / 2         # ~45mm — mid-rim height
+HOSE_RIM_Z_B = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
 
 # Hose path: short vertical overlap with tube top (creates 90° elbow) →
 # horizontal above walkway → 90° elbow → down along rim exterior

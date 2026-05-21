@@ -58,15 +58,16 @@ FILT_HEAD = 70   # head section height (mm)
 # ── Layout on panel face (panel-relative coordinates) ────────────────────
 # Horizontal axis = Yd from left edge (0=near wall, 270=far wall)
 # Vertical axis = Z from panel bottom (0=bottom, 2060=top)
-# Filters at BOTTOM (easy cartridge access), pumps at TOP.
+# Filters at BOTTOM, pumps at TOP.  F-01 at top of filter stack for gravity flow.
 
 # Right column: 3 filter housings stacked vertically (sump-down) — BOTTOM
-FILT_COL = 140 + FILT_OD // 2        # = 205mm from left edge (130mm zone center)
+# F-01 (coarsest) at top, F-03 (finest) at bottom: gravity-assisted series flow
+FILT_COL = 175                        # filter column center (Yd from left edge)
 
-F01_Z = 0                             # F-01 sump bottom (flush with panel bottom)
-F02_Z = FILT_H + FILT_GAP            # = 370
-F03_Z = 2 * (FILT_H + FILT_GAP)      # = 740
-FILT_STACK_TOP = F03_Z + FILT_H       # = 1080
+F01_Z = 2 * (FILT_H + FILT_GAP)      # = 740 (top — P-02 feeds here first)
+F02_Z = FILT_H + FILT_GAP            # = 370 (middle)
+F03_Z = 0                             # = 0   (bottom — filtered exit)
+FILT_STACK_TOP = F01_Z + FILT_H       # = 1080
 
 # Left column: 3 pumps stacked vertically + ACC-01 above — TOP
 PUMP_COL = PUMP_W // 2               # = 63mm from left edge (127mm zone center)
@@ -229,7 +230,8 @@ rect(ACC_YD - clamp_w / 2, ACC_Z + ACC_OD / 2,
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  4. FILTER HOUSINGS — 3× separate, stacked vertically (sump down)
-#     Right column (Yd=140–270), each 130mm OD × 340mm tall
+#     Right column (Yd=110–240), 130mm OD × 340mm tall
+#     F-01 (50µm) at top → F-02 (5µm) → F-03 (GAC) at bottom: gravity-fed
 # ═══════════════════════════════════════════════════════════════════════════
 filter_specs = [
     ("F-01", "50µm\nSED.", F01_Z),
@@ -269,10 +271,10 @@ for fname, fdesc, fz in filter_specs:
 #  5. ZONE LABELS
 # ═══════════════════════════════════════════════════════════════════════════
 # Filter zone (bottom)
-ax.text(sx(FILT_COL), sz(F01_Z - 20),
+ax.text(sx(FILT_COL), sz(F03_Z - 20),
         "FILTER SKID (×3)", ha="center", va="top",
         fontsize=4.5, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
-ax.text(sx(FILT_COL), sz(F01_Z - 45),
+ax.text(sx(FILT_COL), sz(F03_Z - 45),
         "SUMP DOWN", ha="center", va="top",
         fontsize=3.5, color=C_FILTER, zorder=10, **FONT)
 
@@ -303,27 +305,27 @@ Z_BROWN = 7
 Z_BLUE  = 8
 
 # ── Port Z positions (panel-relative) ──
-P01_PT = P01_Z + PUMP_H - 25   # = 243 (top port)
-P01_PB = P01_Z + 25            # = 75  (bottom port)
-P02_PT = P02_Z + PUMP_H - 25   # = 501
-P02_PB = P02_Z + 25            # = 333
-P04_PT = P04_Z + PUMP_H - 25   # = 759
-P04_PB = P04_Z + 25            # = 591
+P01_PT = P01_Z + PUMP_H - 25   # top port
+P01_PB = P01_Z + 25            # bottom port
+P02_PT = P02_Z + PUMP_H - 25
+P02_PB = P02_Z + 25
+P04_PT = P04_Z + PUMP_H - 25
+P04_PB = P04_Z + 25
 
 # ── Filter head Z positions ──
-F01_HEAD_Z = F01_Z + FILT_H - FILT_HEAD / 2   # = 305
-F02_HEAD_Z = F02_Z + FILT_H - FILT_HEAD / 2   # = 675
-F03_HEAD_Z = F03_Z + FILT_H - FILT_HEAD / 2   # = 1045
+F01_HEAD_Z = F01_Z + FILT_H - FILT_HEAD / 2   # top filter head
+F02_HEAD_Z = F02_Z + FILT_H - FILT_HEAD / 2   # middle filter head
+F03_HEAD_Z = F03_Z + FILT_H - FILT_HEAD / 2   # bottom filter head
 
 # Filter port Yd positions (IN=left/near, OUT=right/far)
-F_IN_YD  = FILT_COL - 35   # = 170
-F_OUT_YD = FILT_COL + 35   # = 240
+F_IN_YD  = FILT_COL - 35
+F_OUT_YD = FILT_COL + 35
 
 # ── Routing rails ──
 DISCH_RAIL = -20    # Blue discharge riser (left of panel)
-INTERZONE  = 140    # between pump & filter zones
-JMPR_RAIL1 = 275    # F01→F02 jumper rail (right of filters)
-JMPR_RAIL2 = 290    # F02→F03 jumper rail
+INTERZONE  = F_IN_YD                         # pump-to-filter transition
+JMPR_RAIL1 = FILT_COL + FILT_OD // 2 + 10   # 10mm outside housing
+JMPR_RAIL2 = JMPR_RAIL1 + 15                # 15mm further out
 
 # ── Entry/exit positions ──
 EXIT_L = -60    # past left panel edge (near wall / walkway)
@@ -508,29 +510,29 @@ ax.text(sx(EXIT_R + 5), sz(P02_PT),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
         fontsize=4, color=C_BROWN, zorder=10, **FONT)
 
-# Brown discharge: P-02 bottom → interzone → F-01 IN port
+# Brown discharge: P-02 bottom → F-01 IN (F-01 at top of filter stack)
 draw_pipe_path(ax,
-    [PUMP_COL, INTERZONE, INTERZONE, F_IN_YD],
-    [P02_PB, P02_PB, F01_HEAD_Z, F01_HEAD_Z],
+    [PUMP_COL, F_IN_YD, F_IN_YD],
+    [P02_PB, P02_PB, F01_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
-# Filter jumpers (via rails on right side of filter column)
-# Arrival horizontals offset 20mm below head Z to avoid merging with
+# Filter jumpers — gravity-fed downward: F-01 → F-02 → F-03
+# Arrival horizontals offset 20mm above head Z to avoid merging with
 # the departure pipe at the same filter head.
 _JMPR_DROP = 20
 
 # F-01 OUT → rail 1 → drop to F-02 IN
 draw_pipe_path(ax,
     [F_OUT_YD, JMPR_RAIL1, JMPR_RAIL1, F_IN_YD, F_IN_YD],
-    [F01_HEAD_Z, F01_HEAD_Z, F02_HEAD_Z - _JMPR_DROP,
-     F02_HEAD_Z - _JMPR_DROP, F02_HEAD_Z],
+    [F01_HEAD_Z, F01_HEAD_Z, F02_HEAD_Z + _JMPR_DROP,
+     F02_HEAD_Z + _JMPR_DROP, F02_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # F-02 OUT → rail 2 → drop to F-03 IN
 draw_pipe_path(ax,
     [F_OUT_YD, JMPR_RAIL2, JMPR_RAIL2, F_IN_YD, F_IN_YD],
-    [F02_HEAD_Z, F02_HEAD_Z, F03_HEAD_Z - _JMPR_DROP,
-     F03_HEAD_Z - _JMPR_DROP, F03_HEAD_Z],
+    [F02_HEAD_Z, F02_HEAD_Z, F03_HEAD_Z + _JMPR_DROP,
+     F03_HEAD_Z + _JMPR_DROP, F03_HEAD_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 
 # F-03 OUT → exit RIGHT (filtered to IBC-1)
@@ -612,18 +614,18 @@ draw_dim_h(ax, sx(PUMP_COL - PUMP_W / 2), sx(PUMP_COL + PUMP_W / 2),
 
 # Filter OD
 draw_dim_h(ax, sx(FILT_COL - FILT_OD / 2), sx(FILT_COL + FILT_OD / 2),
-           sz(F01_Z - 15),
+           sz(F03_Z - 15),
            f"O/{FILT_OD}", offset=0.04, fs=4, color=C_FILTER, font=FONT)
 
-# Filter housing height (single)
+# Filter housing height (single — bottom filter)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 20),
-           sz(F01_Z), sz(F01_Z + FILT_H),
+           sz(F03_Z), sz(F03_Z + FILT_H),
            f"{FILT_H}", offset=0.08, fs=4.5, color=C_FILTER,
            right=True, font=FONT)
 
 # Filter stack height (full)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 50),
-           sz(F01_Z), sz(FILT_STACK_TOP),
+           sz(F03_Z), sz(FILT_STACK_TOP),
            f"{FILT_STACK_TOP}", offset=0.08, fs=4.5, color=C_DIM,
            right=True, font=FONT)
 
@@ -638,9 +640,9 @@ draw_dim_v(ax, sx(-30), sz(0), sz(PANEL_H),
            f"{PANEL_H}", offset=0.1, fs=5, color=C_DIM,
            right=False, font=FONT)
 
-# Filter gap dimension
+# Filter gap dimension (between bottom two filters)
 draw_dim_v(ax, sx(FILT_COL - FILT_OD / 2 - 20),
-           sz(F01_Z + FILT_H), sz(F02_Z),
+           sz(F03_Z + FILT_H), sz(F02_Z),
            f"{FILT_GAP}", offset=0.06, fs=3.5, color=C_DIM,
            right=False, font=FONT)
 
@@ -670,8 +672,8 @@ leader(ax,
 
 # Filter specs
 leader(ax,
-       sx(FILT_COL + FILT_OD / 2), sz(F03_Z + FILT_H / 2),
-       sx(PANEL_W + 40), sz(F03_Z + FILT_H / 2 + 30),
+       sx(FILT_COL + FILT_OD / 2), sz(F01_Z + FILT_H / 2),
+       sx(PANEL_W + 40), sz(F01_Z + FILT_H / 2 + 30),
        "4.5\"×10\" FILTER HOUSING\n1\" NPT IN/OUT\n(×3 separate, sump-down)",
        fs=4, color=C_FILTER, font=FONT)
 
@@ -791,11 +793,11 @@ notes = [
     f"1. Panel: 18mm marine ply spanning corridor Yd={PANEL_YD}–{PANEL_YD + PANEL_W} (270mm).",
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
-    "4. BOTTOM: F-01/F-02/F-03 (4.5\"×10\"), stacked vertically — easy cartridge access from walkway.",
+    "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
     "5. TOP: P-01/P-02/P-04 (3× Shurflo 2088) + ACC-01 — above filter stack.",
     "6. BV-01/BV-02 on Blue circuit. DV-02 on P-04 discharge (3-way to IBC-3 or IBC-4).",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
-    "8. Filter flow: P-02 → F-01 (50µm) → F-02 (5µm) → F-03 (GAC) → IBC-1.",
+    "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]
 draw_notes(ax, notes, 0.2, 1.6, spacing=0.13,
            fs=3.8, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)

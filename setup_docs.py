@@ -89,7 +89,6 @@ DIAG_IMAGE_FILES = [
     "water-system-sheet2.png",
     "water-system-sheet3.png",
     "water-system-sheet4.png",
-    "filter-skid-sheet1.png",
     "film-plane-sheet1.png",
     "film-plane-sheet2.png",
     "film-plane-sheet3.png",
@@ -162,7 +161,6 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet2.png",
     "shelf-sheet3.png",
     "pinhole-wall-elevation.png",
-    "pump-manifold-sheet1.png",
 ]
 
 MKDOCS_YML = """\

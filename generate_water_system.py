@@ -30,7 +30,7 @@ from tbs_constants import (
     FP_X_L, FP_X_R, PH_X,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_D,
-    EQPANEL_X, EQPANEL_W, CORRIDOR_YD_NEAR,
+    EQPANEL_X, EQPANEL_W, EQPANEL_T, CORRIDOR_YD_NEAR,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_PITCH,
     PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
@@ -1633,10 +1633,10 @@ OC_V = 1.5   # vertical offset (X baseline)
 SUMP_X = PROC_TRAY_DRAIN_X   # 4,550mm
 TRAY_X_R = PROC_TRAY_X_R     # 4,629mm
 IBC_X = IBC_COL_X             # 4,674mm
-EP_X = EQPANEL_X              # 4,800mm — equipment panel left edge
-EP_W = EQPANEL_W              # 780mm — equipment panel width in X
+EP_X = EQPANEL_X              # 5,000mm — equipment panel face X
+EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
 X_VIEW_BOT = 4350
-X_VIEW_TOP = EP_X + EP_W / 2 + 80  # ~5,270mm — includes P-04 center
+X_VIEW_TOP = EP_X + EQPANEL_T + 80  # ~5,098mm — past panel back face
 YD_VIEW_L = -30
 YD_VIEW_R = 1130
 
@@ -1697,18 +1697,18 @@ draw_pipe_end(ax4c, sc_yd_c(tube_yd), sc_x_c(SUMP_X),
               tube_r_c, tube_wall_c,
               fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
-# ── Equipment panel (Yd=1,046, vertical strip at right) ────────────────────
+# ── Equipment panel (spans corridor at X=5000, perpendicular to sealed end) ──
 ax4c.add_patch(plt.Rectangle(
     (sc_yd_c(CORRIDOR_YD_NEAR - 9), sc_x_c(EP_X)),
-    18 / SC_C, EP_W / SC_C,
+    270 / SC_C, EQPANEL_T / SC_C,
     fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR + 15), sc_x_c(EP_X + EP_W / 2),
-          "EQUIPMENT\nPANEL\n(Yd=1,046)",
+ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR + 15), sc_x_c(EP_X + EQPANEL_T / 2),
+          "EQUIPMENT\nPANEL\n(X=5,000)",
           ha="left", va="center", fontsize=5.5, color=C_PUMP,
           style="italic", zorder=4)
 
-# P-04 on equipment panel (roughly at lower quarter of panel in X)
-P04_PLAN_X = EP_X + EP_W * 0.25
+# P-04 on equipment panel — pump protrudes from panel face toward lower X
+P04_PLAN_X = EP_X - PUMP_D / 2
 ax4c.add_patch(plt.Circle(
     (sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X)),
     20 / SC_C,
@@ -1726,25 +1726,11 @@ draw_pipe_path(ax4c,
                HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 
-# Step 2: Along near rim exterior in X direction (toward tray right corner)
+# Steps 2-4: Along rim → 90° around tray corner → cross Yd → 90° at panel → to P-04
 CORNER_X = TRAY_X_R + 15   # just past tray right edge
 draw_pipe_path(ax4c,
-               [RIM_EXT_YD_C, RIM_EXT_YD_C],
-               [SUMP_X, CORNER_X],
-               HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
-               fc=C_BROWN, ec="#5A3020", zorder=6)
-
-# Step 3: Around tray corner, cross in Yd to equipment panel
-draw_pipe_path(ax4c,
-               [RIM_EXT_YD_C, CORRIDOR_YD_NEAR],
-               [CORNER_X, CORNER_X],
-               HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
-               fc=C_BROWN, ec="#5A3020", zorder=6)
-
-# Step 4: Along equipment panel face to P-04
-draw_pipe_path(ax4c,
-               [CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
-               [CORNER_X, P04_PLAN_X],
+               [RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
+               [SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
                HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 

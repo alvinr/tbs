@@ -313,7 +313,7 @@ Z_DISCH = 9    # discharge riser draws OVER suction pipes
 
 # ── Port Z positions (both ports at pump head, side by side) ──
 PORT_DROP = 30               # discharge route drops below port Z
-SUCT_RISE = 30               # suction route rises above port Z
+SUCT_RISE = 50               # suction route rises above port Z
 
 P01_PORT_Z = P01_Z + PUMP_H - 25
 P02_PORT_Z = P02_Z + PUMP_H - 25

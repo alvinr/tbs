@@ -1263,12 +1263,16 @@ ax4a.fill([sa_y(sump_yd_start + 4), sa_y(sump_yd_end - 4),
            sa_z(sump_z_floor + TRAY_T), sa_z(sump_z_floor + TRAY_T)],
           fc="#B3D9F2", ec="none", alpha=0.5, zorder=5)
 
+# ── Walkway & hose pass-through constants ────────────────────────────────────
+WK_DECK_H = 100
+WK_GRATE_T = 25
+
 # ── Pickup tube (dip tube with foot valve) ───────────────────────────────────
 # 1" tube sits in the sump, extends up past the rim
 TUBE_OD = 25.4  # 1" OD
 tube_yd = sump_yd_start + PROC_TRAY_SUMP_D / 2  # center of sump in Yd = 130mm
 tube_z_bot = sump_z_floor + 5  # 5mm above sump floor (Z=5mm)
-tube_z_top = RIM_TOP + 30  # extends above rim (70 + 30 = 100mm)
+tube_z_top = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
 
 # Foot valve / strainer at bottom
 foot_valve_h = 15
@@ -1290,19 +1294,17 @@ for sy_m in range(3):
              [sa_z(tube_z_bot), sa_z(tube_z_bot + foot_valve_h)],
              color="#999999", lw=0.4, zorder=8)
 
-# ── Walkway & hose pass-through constants ────────────────────────────────────
-WK_DECK_H = 100
-WK_GRATE_T = 25
-
 # ── Suction hose from tube top, along tray rim exterior ──────────────────────
 HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
 HOSE_WALL = 4.0  # hose wall thickness (mm)
 RIM_EXT_YD = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on exterior of rim
 HOSE_RIM_Z = TRAY_BASE_Z + rim_h / 2         # ~45mm — mid-rim height
 
-# Hose path: tube top → horizontal over rim → down to rim exterior height
-hose_pts_y = [tube_yd, RIM_EXT_YD, RIM_EXT_YD]
-hose_pts_z = [tube_z_top, tube_z_top, HOSE_RIM_Z]
+# Hose path: short vertical overlap with tube top (creates 90° elbow) →
+# horizontal above walkway → 90° elbow → down along rim exterior
+ELBOW_OVERLAP = HOSE_OD  # vertical approach length for visible elbow fitting
+hose_pts_y = [tube_yd, tube_yd, RIM_EXT_YD, RIM_EXT_YD]
+hose_pts_z = [tube_z_top - ELBOW_OVERLAP, tube_z_top, tube_z_top, HOSE_RIM_Z]
 draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
                sa_y, sa_z, fc=C_BROWN, ec="#5A3020", zorder=8)
 
@@ -1468,7 +1470,7 @@ ax4b.add_patch(plt.Rectangle((sb_y(sump_yd_b), sb_z(0)),
 # Pickup tube (simplified) — from sump floor+5 to above rim
 tube_yd_b = sump_yd_b + PROC_TRAY_SUMP_D / 2
 RIM_TOP_B = TRAY_BASE_Z + rim_h  # 70mm
-tube_z_top_b = RIM_TOP_B + 30  # tube top above rim = 100mm (matches Detail A)
+tube_z_top_b = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + clearance
 draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
                TUBE_OD, TUBE_WALL, sb_y, sb_z,
                fc="#D0D0D0", ec=C_FRAME, zorder=5)
@@ -1482,9 +1484,11 @@ PANEL_YD = 1046           # equipment panel Yd position
 RIM_EXT_YD_B = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on rim exterior
 HOSE_RIM_Z_B = TRAY_BASE_Z + rim_h / 2         # ~45mm — mid-rim height
 
-# Hose path: tube top → horizontal over rim → down to rim exterior
-hose_b_y = [tube_yd_b, RIM_EXT_YD_B, RIM_EXT_YD_B]
-hose_b_z = [tube_z_top_b, tube_z_top_b, HOSE_RIM_Z_B]
+# Hose path: short vertical overlap with tube top (creates 90° elbow) →
+# horizontal above walkway → 90° elbow → down along rim exterior
+ELBOW_OVERLAP_B = HOSE_OD
+hose_b_y = [tube_yd_b, tube_yd_b, RIM_EXT_YD_B, RIM_EXT_YD_B]
+hose_b_z = [tube_z_top_b - ELBOW_OVERLAP_B, tube_z_top_b, tube_z_top_b, HOSE_RIM_Z_B]
 draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
                sb_y, sb_z, fc=C_BROWN, ec="#5A3020", zorder=4)
 

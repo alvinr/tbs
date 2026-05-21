@@ -1123,7 +1123,7 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
              fontsize=5.5, color="white", fontweight="bold", zorder=6)
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D + 8),
              psub, ha="center", va="top",
-             fontsize=3.5, color=pcolor, fontweight="bold", zorder=6)
+             fontsize=4.0, color=pcolor, fontweight="bold", zorder=6)
     # Port indicators — circles at body edges (ports within 127mm envelope)
     p_in_x, p_in_yd, p_out_x, p_out_yd = _plan_pump_ports(pcx, pyd)
     ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)),
@@ -1132,9 +1132,9 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
                   PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
     # Port labels
     ax3.text(sp_x(p_in_x + 15), sp_y(p_in_yd), "IN", ha="left", va="center",
-             fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
+             fontsize=4.0, fontweight="bold", color=C_FRAME, zorder=8)
     ax3.text(sp_x(p_out_x - 15), sp_y(p_out_yd), "OUT", ha="right", va="center",
-             fontsize=3.5, fontweight="bold", color=C_FRAME, zorder=8)
+             fontsize=4.0, fontweight="bold", color=C_FRAME, zorder=8)
 
 # ── ACC-01 from above ───────────────────────────────────────────────────────
 ACC_PLAN_R = 57   # tank half-depth in plan (~114mm H from spec)
@@ -1351,7 +1351,7 @@ def ghost_pipe(x_pts, yd_pts, color):
 
 def ghost_label(x, yd, text, color, ha="left", va="center"):
     ax3.text(sp_x(x), sp_y(yd), text, ha=ha, va=va,
-             fontsize=3.5, color=color, fontweight="bold", alpha=0.4)
+             fontsize=4.0, color=color, fontweight="bold", alpha=0.4)
 
 # Tray drain suction: tray sump → P-04 IN (ghost) — at P-04 center X
 p04_cx = P04_X + PUMP_BODY_W / 2

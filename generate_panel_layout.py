@@ -625,8 +625,11 @@ draw_pipe_path(ax,
     [DV02_YD + BV_R, EXIT_R],
     [DV02_Z, DV02_Z],
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+ax.annotate("", xy=(sx(EXIT_R), sz(DV02_Z)),
+            xytext=(sx(EXIT_R - _AW), sz(DV02_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(DV02_Z),
-        "→ IBC-3", ha="left", va="center",
+        "TO\nIBC-3", ha="left", va="center",
         fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 # DV-02 Black output → IBC-4: exits BOTTOM from DV-02, then RIGHT
@@ -635,8 +638,11 @@ draw_pipe_path(ax,
     [DV02_YD, DV02_YD, EXIT_R],
     [DV02_Z - BV_R, _DV_IBC4_Z, _DV_IBC4_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+ax.annotate("", xy=(sx(EXIT_R), sz(_DV_IBC4_Z)),
+            xytext=(sx(EXIT_R - _AW), sz(_DV_IBC4_Z)),
+            arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
-        "→ IBC-4", ha="left", va="center",
+        "TO\nIBC-4", ha="left", va="center",
         fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
@@ -904,7 +910,7 @@ ax.add_patch(mpatches.Rectangle(
 ax.text(cs_yd((IBC_NEAR_END + CORRIDOR_FAR) / 2), cs_z(120),
         f"18mm PANEL\nSPANS CORRIDOR\n(Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H})",
         ha="center", va="center",
-        fontsize=3.5, color=C_PLY_EC, fontweight="bold", zorder=10, **FONT)
+        fontsize=4.0, color=C_PLY_EC, fontweight="bold", zorder=10, **FONT)
 
 # Corridor width dimension
 draw_dim_h(ax, cs_yd(IBC_NEAR_END), cs_yd(CORRIDOR_FAR), cs_z(Z_CS_MAX + 10),

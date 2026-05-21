@@ -36,8 +36,8 @@ WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 
 # Panel face dimensions (new orientation: spans corridor)
 PANEL_W  = 270   # face width (mm, Yd span: 1046–1316)
-PANEL_H  = 1110  # face height (mm, Z span: 900–2010)
-PANEL_Z_AFF = 900  # panel bottom Z above finished floor
+PANEL_H  = 2060  # face height (mm, Z span: 200–2260)
+PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
 PUMP_W   = 127   # front face width (mm) — port-to-port
@@ -57,24 +57,27 @@ FILT_HEAD = 70   # head section height (mm)
 
 # ── Layout on panel face (panel-relative coordinates) ────────────────────
 # Horizontal axis = Yd from left edge (0=near wall, 270=far wall)
-# Vertical axis = Z from panel bottom (0=bottom, 1110=top)
+# Vertical axis = Z from panel bottom (0=bottom, 2060=top)
+# Filters at BOTTOM (easy cartridge access), pumps at TOP.
 
-# Left column: 3 pumps stacked vertically + ACC-01 above
-PUMP_COL = PUMP_W // 2               # = 63mm from left edge (127mm zone center)
-
-P01_Z = 50                            # P-01 body bottom (panel-relative Z)
-P02_Z = P01_Z + PUMP_H + PUMP_GAP    # = 308
-P04_Z = P02_Z + PUMP_H + PUMP_GAP    # = 566
-
-ACC_YD = PUMP_COL
-ACC_Z  = P04_Z + PUMP_H + PUMP_GAP + ACC_OD // 2   # = 887
-
-# Right column: 3 filter housings stacked vertically (sump-down)
+# Right column: 3 filter housings stacked vertically (sump-down) — BOTTOM
 FILT_COL = 140 + FILT_OD // 2        # = 205mm from left edge (130mm zone center)
 
 F01_Z = 0                             # F-01 sump bottom (flush with panel bottom)
 F02_Z = FILT_H + FILT_GAP            # = 370
 F03_Z = 2 * (FILT_H + FILT_GAP)      # = 740
+FILT_STACK_TOP = F03_Z + FILT_H       # = 1080
+
+# Left column: 3 pumps stacked vertically + ACC-01 above — TOP
+PUMP_COL = PUMP_W // 2               # = 63mm from left edge (127mm zone center)
+PUMP_ZONE_BOT = FILT_STACK_TOP + 40  # = 1120 (40mm gap above filter stack)
+
+P01_Z = PUMP_ZONE_BOT                 # = 1120
+P02_Z = P01_Z + PUMP_H + PUMP_GAP    # = 1378
+P04_Z = P02_Z + PUMP_H + PUMP_GAP    # = 1636
+
+ACC_YD = PUMP_COL
+ACC_Z  = P04_Z + PUMP_H + PUMP_GAP + ACC_OD // 2   # = 1957
 
 # ── Colors ────────────────────────────────────────────────────────────────
 C_FRAME      = "#1A1A1A"
@@ -99,15 +102,15 @@ C_WALL       = "#C0C0C8"
 C_WALL_HATCH = "#999999"
 
 # ── Scale and layout ─────────────────────────────────────────────────────
-SC  = 100.0   # mm per inch (main elevation, 1:100)
-FW  = 7.5
-FH  = 17.0
+SC  = 120.0   # mm per inch (main elevation, 1:120)
+FW  = 7.0
+FH  = 22.5
 
 # Show range (panel-relative mm + margins for dims/leaders)
-X_SHOW_L = -110
-X_SHOW_R = 380
+X_SHOW_L = -130
+X_SHOW_R = 400
 Z_SHOW_L = -100
-Z_SHOW_R = 1200
+Z_SHOW_R = 2160
 
 OX = 1.3
 OZ = 3.5    # leave room for cross-section strip below
@@ -163,11 +166,11 @@ ax.text(sx(PANEL_W / 2), sz(Z_SHOW_R) + 0.15,
 rect(0, 0, PANEL_W, PANEL_H,
      C_PLY, C_PLY_EC, lw=2.0, zorder=3, alpha=0.5)
 
-# Panel label
-ax.text(sx(PANEL_W / 2), sz(PANEL_H - 20),
-        f"18mm MARINE PLY — {PANEL_W}mm × {PANEL_H}mm",
+# Panel label (near top)
+ax.text(sx(PANEL_W / 2), sz(PANEL_H - 30),
+        f"18mm MARINE PLY\n{PANEL_W}mm × {PANEL_H}mm",
         ha="center", va="top",
-        fontsize=4.5, color=C_PLY_EC, zorder=4, **FONT)
+        fontsize=4, color=C_PLY_EC, zorder=4, **FONT)
 
 # Zone separator (dashed line between pump and filter columns)
 zone_yd = PUMP_W + 6   # 133mm — midway in 13mm gap
@@ -265,20 +268,18 @@ for fname, fdesc, fz in filter_specs:
 # ═══════════════════════════════════════════════════════════════════════════
 #  5. ZONE LABELS
 # ═══════════════════════════════════════════════════════════════════════════
-# Pump zone
+# Filter zone (bottom)
+ax.text(sx(FILT_COL), sz(F01_Z - 20),
+        "FILTER SKID (×3)", ha="center", va="top",
+        fontsize=4.5, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
+ax.text(sx(FILT_COL), sz(F01_Z - 45),
+        "SUMP DOWN", ha="center", va="top",
+        fontsize=3.5, color=C_FILTER, zorder=10, **FONT)
+
+# Pump zone (top)
 ax.text(sx(PUMP_COL), sz(P01_Z - 30),
         "PUMP MANIFOLD", ha="center", va="top",
         fontsize=4.5, color=C_PUMP_EC, fontweight="bold", zorder=10, **FONT)
-
-# Filter zone
-ax.text(sx(FILT_COL), sz(F03_Z + FILT_H + 25),
-        "FILTER SKID (×3)", ha="center", va="bottom",
-        fontsize=4.5, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
-
-# "SUMP DOWN" annotation
-ax.text(sx(FILT_COL), sz(F01_Z - 20),
-        "SUMP DOWN", ha="center", va="top",
-        fontsize=3.5, color=C_FILTER, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -615,10 +616,9 @@ draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 20),
            right=True, font=FONT)
 
 # Filter stack height (full)
-filt_stack_h = F03_Z + FILT_H - F01_Z
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 50),
-           sz(F01_Z), sz(F03_Z + FILT_H),
-           f"{filt_stack_h}", offset=0.08, fs=4.5, color=C_DIM,
+           sz(F01_Z), sz(FILT_STACK_TOP),
+           f"{FILT_STACK_TOP}", offset=0.08, fs=4.5, color=C_DIM,
            right=True, font=FONT)
 
 # Pump body height
@@ -780,14 +780,13 @@ ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 0.18,
 # ═══════════════════════════════════════════════════════════════════════════
 #  NOTES
 # ═══════════════════════════════════════════════════════════════════════════
-clearance_yd = PANEL_W - (PUMP_W + 13 + FILT_OD)   # internal clearance between zones
 notes = [
     "EQUIPMENT PANEL — IBC PLUMBING CORRIDOR — ALL PIPE CONNECTIONS SHOWN",
     f"1. Panel: 18mm marine ply spanning corridor Yd={PANEL_YD}–{PANEL_YD + PANEL_W} (270mm).",
     f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
-    f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm).",
-    "4. Left column: P-01/P-02/P-04 (3× Shurflo 2088) + ACC-01, 127mm Yd zone.",
-    "5. Right column: F-01/F-02/F-03 (4.5\"×10\"), stacked vertically, 130mm Yd zone.",
+    f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
+    "4. BOTTOM: F-01/F-02/F-03 (4.5\"×10\"), stacked vertically — easy cartridge access from walkway.",
+    "5. TOP: P-01/P-02/P-04 (3× Shurflo 2088) + ACC-01 — above filter stack.",
     "6. BV-01/BV-02 on Blue circuit. DV-02 on P-04 discharge (3-way to IBC-3 or IBC-4).",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Filter flow: P-02 → F-01 (50µm) → F-02 (5µm) → F-03 (GAC) → IBC-1.",
@@ -802,7 +801,7 @@ draw_notes(ax, notes, 0.2, 1.6, spacing=0.13,
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
             subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION",
-            scale_note="ELEV SCALE 1:100 · X-SECTION NOT TO SCALE · ALL DIMS IN mm",
+            scale_note="ELEV SCALE 1:120 · X-SECTION NOT TO SCALE · ALL DIMS IN mm",
             doc_id="TBS-001 · Reorg Proposal",
             height=0.028)
 

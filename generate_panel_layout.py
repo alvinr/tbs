@@ -121,9 +121,9 @@ C_WALL       = "#C0C0C8"
 C_WALL_HATCH = "#999999"
 
 # ── Scale and layout ─────────────────────────────────────────────────────
-SC  = 120.0   # mm per inch (main elevation, 1:120)
-FW  = 10.0
-FH  = 22.5
+SC  = 80.0    # mm per inch (main elevation, 1:80)
+FW  = 13.0
+FH  = 33.0
 
 # Show range (panel-relative mm + margins for dims/leaders)
 X_SHOW_L = -130
@@ -146,7 +146,7 @@ def sz(z_mm):
 
 
 # ── Figure setup ─────────────────────────────────────────────────────────
-fig, ax = plt.subplots(1, 1, figsize=(FW, FH), dpi=150)
+fig, ax = plt.subplots(1, 1, figsize=(FW, FH), dpi=200)
 ax.set_xlim(0, FW)
 ax.set_ylim(0, FH)
 ax.set_aspect("equal")
@@ -179,7 +179,7 @@ def circ(x_c, z_c, r, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
 ax.text(sx(PANEL_W / 2), sz(Z_SHOW_R) + 0.15,
         "FRONT ELEVATION — EQUIPMENT PANEL",
         ha="center", va="bottom",
-        fontsize=6, color=C_DIM, fontweight="bold", zorder=10, **FONT)
+        fontsize=8, color=C_DIM, fontweight="bold", zorder=10, **FONT)
 
 # 1. Panel outline (18mm plywood)
 rect(0, 0, PANEL_W, PANEL_H,
@@ -189,7 +189,7 @@ rect(0, 0, PANEL_W, PANEL_H,
 ax.text(sx(PANEL_W / 2), sz(PANEL_H - 30),
         f"18mm MARINE PLY\n{PANEL_W}mm × {PANEL_H}mm",
         ha="center", va="top",
-        fontsize=4, color=C_PLY_EC, zorder=4, **FONT)
+        fontsize=5.5, color=C_PLY_EC, zorder=4, **FONT)
 
 # Zone separator (dashed line between left and right pump columns — pump zone only)
 zone_yd = PUMP_W + 6   # 133mm — between pump columns
@@ -217,10 +217,10 @@ def _draw_pump(col_yd, port_in_yd, port_out_yd, pz, pname, pdesc, pfc, pec):
              C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
     ax.text(sx(col_yd), sz(pz + PUMP_H / 2 + 15),
             pname, ha="center", va="center",
-            fontsize=6, color=pfc, fontweight="bold", zorder=8, **FONT)
+            fontsize=8, color=pfc, fontweight="bold", zorder=8, **FONT)
     ax.text(sx(col_yd), sz(pz + PUMP_H / 2 - 20),
             pdesc, ha="center", va="center",
-            fontsize=3.5, color=pec, zorder=8, **FONT)
+            fontsize=5, color=pec, zorder=8, **FONT)
 
 
 # Left column
@@ -247,10 +247,10 @@ rect(ACC_YD - ACC_OD / 2, ACC_BODY_Z, ACC_OD, ACC_LEN,
      C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.7)
 ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 + 10),
         "ACC-01", ha="center", va="center",
-        fontsize=5, color="white", fontweight="bold", zorder=8, **FONT)
+        fontsize=7, color="white", fontweight="bold", zorder=8, **FONT)
 ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 - 15),
         f"O/{ACC_OD}", ha="center", va="center",
-        fontsize=3.5, color="white", zorder=8, **FONT)
+        fontsize=5, color="white", zorder=8, **FONT)
 # Two ports at bottom (IN right, OUT left — same spacing as pump ports)
 for port_yd in [PORT_OUT_YD, PORT_IN_YD]:
     circ(port_yd, ACC_BODY_Z, 10,
@@ -292,10 +292,10 @@ for fname, fdesc, fz in filter_specs:
     # Label
     ax.text(sx(FILT_COL), sz(fz + FILT_H / 2 + 25),
             fname, ha="center", va="center",
-            fontsize=5.5, color="white", fontweight="bold", zorder=8, **FONT)
+            fontsize=7, color="white", fontweight="bold", zorder=8, **FONT)
     ax.text(sx(FILT_COL), sz(fz + FILT_H / 2 - 15),
             fdesc, ha="center", va="center",
-            fontsize=3, color="white", zorder=8, **FONT)
+            fontsize=4.5, color="white", zorder=8, **FONT)
     # Bracket at top
     rect(FILT_COL - FILT_OD / 2 - 10, fz + FILT_H,
          FILT_OD + 20, 10,
@@ -308,15 +308,15 @@ for fname, fdesc, fz in filter_specs:
 # Filter zone (bottom)
 ax.text(sx(FILT_COL), sz(F03_Z - 20),
         "FILTER SKID (×3)", ha="center", va="top",
-        fontsize=4.5, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
+        fontsize=6, color=C_FILTER, fontweight="bold", zorder=10, **FONT)
 ax.text(sx(FILT_COL), sz(F03_Z - 45),
         "SUMP DOWN", ha="center", va="top",
-        fontsize=3.5, color=C_FILTER, zorder=10, **FONT)
+        fontsize=5, color=C_FILTER, zorder=10, **FONT)
 
 # Pump zone (top — spans both columns)
 ax.text(sx(PANEL_W / 2), sz(P01_Z - 30),
         "PUMP ZONE (×5)", ha="center", va="top",
-        fontsize=4.5, color=C_PUMP_EC, fontweight="bold", zorder=10, **FONT)
+        fontsize=6, color=C_PUMP_EC, fontweight="bold", zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -492,7 +492,7 @@ def draw_ball_valve(x, z, label, color):
     ax.add_patch(plt.Polygon(list(zip(pts_x, pts_z)),
                              fc="white", ec=color, lw=1.5, zorder=12))
     ax.text(sx(x), sz(z), label, ha="center", va="center",
-            fontsize=3, color=color, fontweight="bold", zorder=13, **FONT)
+            fontsize=4.5, color=color, fontweight="bold", zorder=13, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -512,7 +512,7 @@ ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P01_SUCT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
 ax.text(sx(EXIT_L - 5), sz(_P01_SUCT_Z),
         "FROM\nIBC-1/2\n(BLUE)", ha="right", va="center",
-        fontsize=4, color=C_BLUE, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLUE, zorder=10, **FONT)
 
 # Blue discharge IN: P-01 outlet → riser → ACC-01 inlet (right port)
 draw_pipe_path(ax,
@@ -530,7 +530,7 @@ ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
 ax.text(sx(EXIT_L - 5), sz(ACC_Z),
         "TO\nSPRAY\nBAR", ha="right", va="center",
-        fontsize=4, color=C_BLUE, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLUE, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -547,7 +547,7 @@ ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P02_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(P02_PORT_Z),
         "FROM\nIBC-3\n(BROWN)", ha="left", va="center",
-        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+        fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 # Brown discharge: P-02 outlet → drop → left → down to F-01 IN
 draw_pipe_path(ax,
@@ -582,7 +582,7 @@ ax.annotate("", xy=(sx(EXIT_R), sz(F03_HEAD_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(F03_HEAD_Z),
         "FILTERED\nTO IBC-1\n(REUSE)", ha="left", va="center",
-        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+        fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -609,7 +609,7 @@ ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
         "FROM\nTRAY\nSUMP", ha="right", va="center",
-        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 # P-04 discharge: outlet (LEFT port) → up → right to DV-02 (front pipe at crossing)
 draw_pipe_path(ax,
@@ -627,7 +627,7 @@ draw_pipe_path(ax,
     PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
 ax.text(sx(EXIT_R + 5), sz(DV02_Z),
         "→ IBC-3", ha="left", va="center",
-        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+        fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 # DV-02 Black output → IBC-4: exits BOTTOM from DV-02, then RIGHT
 _DV_IBC4_Z = DV02_Z - 30
@@ -637,7 +637,7 @@ draw_pipe_path(ax,
     PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
 ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
         "→ IBC-4", ha="left", va="center",
-        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -654,7 +654,7 @@ ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P03_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(P03_PORT_Z),
         "FROM\nIBC-4\n(WASTE)", ha="left", va="center",
-        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 draw_ball_valve(BV08_YD, BV08_Z, "BV\n08", C_BLACK_EC)
 
 # P-03 discharge: outlet (left port) → drop → right to D4 bulkhead
@@ -668,7 +668,7 @@ ax.annotate("", xy=(sx(EXIT_R), sz(_P03_DISCH_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(_P03_DISCH_Z),
         "TO D4\nDRAIN\nPORT", ha="left", va="center",
-        fontsize=4, color=C_BLACK_SYS, zorder=10, **FONT)
+        fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -686,7 +686,7 @@ ax.annotate("", xy=(sx(EXIT_R - _AW), sz(P05_PORT_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(P05_PORT_Z),
         "FROM\nIBC-3\n(DRAIN)", ha="left", va="center",
-        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+        fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 # P-05 discharge: outlet (left port) → drop → right to D3 drain port
 _P05_DISCH_Z = P05_PORT_Z - PORT_DROP
@@ -699,7 +699,7 @@ ax.annotate("", xy=(sx(EXIT_R), sz(_P05_DISCH_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
         "TO D3\nDRAIN\nPORT", ha="left", va="center",
-        fontsize=4, color=C_BROWN, zorder=10, **FONT)
+        fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -708,51 +708,51 @@ ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
 
 # Panel width (Yd span)
 draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-40),
-           f"{PANEL_W}", offset=0.06, fs=5, color=C_DIM, font=FONT)
+           f"{PANEL_W}", offset=0.06, fs=7, color=C_DIM, font=FONT)
 
 # Pump body width
 draw_dim_h(ax, sx(PUMP_COL - PUMP_W / 2), sx(PUMP_COL + PUMP_W / 2),
            sz(P01_Z - 15),
-           f"{PUMP_W}", offset=0.04, fs=4, color=C_DIM, font=FONT)
+           f"{PUMP_W}", offset=0.04, fs=5.5, color=C_DIM, font=FONT)
 
 # Filter OD
 draw_dim_h(ax, sx(FILT_COL - FILT_OD / 2), sx(FILT_COL + FILT_OD / 2),
            sz(F03_Z - 15),
-           f"O/{FILT_OD}", offset=0.04, fs=4, color=C_FILTER, font=FONT)
+           f"O/{FILT_OD}", offset=0.04, fs=5.5, color=C_FILTER, font=FONT)
 
 # Filter housing height (single — bottom filter)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 20),
            sz(F03_Z), sz(F03_Z + FILT_H),
-           f"{FILT_H}", offset=0.08, fs=4.5, color=C_FILTER,
+           f"{FILT_H}", offset=0.08, fs=6, color=C_FILTER,
            right=True, font=FONT)
 
 # Filter stack height (full)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 50),
            sz(F03_Z), sz(FILT_STACK_TOP),
-           f"{FILT_STACK_TOP}", offset=0.08, fs=4.5, color=C_DIM,
+           f"{FILT_STACK_TOP}", offset=0.08, fs=6, color=C_DIM,
            right=True, font=FONT)
 
 # Pump body height
 draw_dim_v(ax, sx(PUMP_COL + PUMP_W / 2 + 15),
            sz(P01_Z), sz(P01_Z + PUMP_H),
-           f"{PUMP_H}", offset=0.06, fs=4, color=C_DIM,
+           f"{PUMP_H}", offset=0.06, fs=5.5, color=C_DIM,
            right=True, font=FONT)
 
 # Panel height
 draw_dim_v(ax, sx(-30), sz(0), sz(PANEL_H),
-           f"{PANEL_H}", offset=0.1, fs=5, color=C_DIM,
+           f"{PANEL_H}", offset=0.1, fs=7, color=C_DIM,
            right=False, font=FONT)
 
 # Filter gap dimension (between bottom two filters)
 draw_dim_v(ax, sx(FILT_COL - FILT_OD / 2 - 20),
            sz(F03_Z + FILT_H), sz(F02_Z),
-           f"{FILT_GAP}", offset=0.06, fs=3.5, color=C_DIM,
+           f"{FILT_GAP}", offset=0.06, fs=5, color=C_DIM,
            right=False, font=FONT)
 
 # Panel Z position (AFF annotation at bottom edge)
 ax.text(sx(PANEL_W + 30), sz(0),
         f"Z={PANEL_Z_AFF}\nAFF", ha="left", va="center",
-        fontsize=4, color=C_DIM, zorder=10, **FONT)
+        fontsize=5.5, color=C_DIM, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -764,21 +764,21 @@ leader(ax,
        sx(PUMP_COL - PUMP_W / 2), sz(P01_Z + PUMP_H / 2),
        sx(X_SHOW_L + 10), sz(P01_Z + PUMP_H / 2 - 60),
        "Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(×5 on SS L-brackets)",
-       fs=4, color=C_PUMP_EC, font=FONT)
+       fs=5.5, color=C_PUMP_EC, font=FONT)
 
 # ACC-01
 leader(ax,
        sx(ACC_YD + ACC_OD / 2), sz(ACC_BODY_Z + ACC_LEN / 2),
        sx(PANEL_W + 40), sz(ACC_BODY_Z + ACC_LEN / 2 + 60),
        "ACC-01: 0.75L ACCUM.\nO/127 × 150mm\n1/2\" MNPT (bottom)",
-       fs=4, color=C_BLUE_EC, font=FONT)
+       fs=5.5, color=C_BLUE_EC, font=FONT)
 
 # Filter specs
 leader(ax,
        sx(FILT_COL + FILT_OD / 2), sz(F01_Z + FILT_H / 2),
        sx(PANEL_W + 40), sz(F01_Z + FILT_H / 2 + 30),
        "4.5\"×10\" FILTER HOUSING\n1\" NPT IN/OUT\n(×3 separate, sump-down)",
-       fs=4, color=C_FILTER, font=FONT)
+       fs=5.5, color=C_FILTER, font=FONT)
 
 # Max depth annotation
 max_depth = max(PUMP_D, FILT_OD)
@@ -786,7 +786,7 @@ leader(ax,
        sx(PUMP_COL), sz(PANEL_H + 10),
        sx(X_SHOW_L + 10), sz(PANEL_H + 40),
        f"MAX PROTRUSION: {max_depth}mm\nFROM PANEL FACE (in -X)",
-       fs=4, color=C_NEW, font=FONT)
+       fs=5.5, color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -820,14 +820,14 @@ def cs_z(z_mm):
 ax.text(CS_LEFT + CS_W_IN / 2, CS_BOT + CS_H_IN + 0.2,
         "CROSS-SECTION — PANEL IN IBC CORRIDOR (looking along X axis)",
         ha="center", va="bottom",
-        fontsize=5, color=C_DIM, fontweight="bold", zorder=10, **FONT)
+        fontsize=6.5, color=C_DIM, fontweight="bold", zorder=10, **FONT)
 
 # Pinhole wall (Yd=0) — thick line
 ax.plot([cs_yd(0), cs_yd(0)], [cs_z(-20), cs_z(Z_CS_MAX)],
         color=C_WALL, lw=4.0, zorder=3)
 ax.text(cs_yd(0) - 0.05, cs_z(Z_CS_MAX / 2),
         "WALL\nYd=0", ha="right", va="center",
-        fontsize=3, color=C_WALL_HATCH, zorder=10, **FONT)
+        fontsize=4, color=C_WALL_HATCH, zorder=10, **FONT)
 
 # Floor
 ax.plot([cs_yd(0), cs_yd(YD_MAX)], [cs_z(0), cs_z(0)],
@@ -839,7 +839,7 @@ ax.add_patch(mpatches.Rectangle(
     fc=C_WALK, ec=C_NEW, lw=1.0, zorder=4, alpha=0.6))
 ax.text(cs_yd(WALKWAY_W / 2), cs_z(WALKWAY_Z / 2),
         "WALKWAY\n300mm", ha="center", va="center",
-        fontsize=3, color=C_NEW, fontweight="bold", zorder=5, **FONT)
+        fontsize=4, color=C_NEW, fontweight="bold", zorder=5, **FONT)
 
 # Near IBC column cross-section (Yd=30 to 1046)
 C_IBC_CS = "#E0D8C8"
@@ -850,7 +850,7 @@ ax.add_patch(mpatches.Rectangle(
     fc=C_IBC_CS, ec=C_IBC_CS_EC, lw=1.0, zorder=2, alpha=0.35))
 ax.text(cs_yd(IBC_NEAR_YD + IBC_D / 2), cs_z(Z_CS_MAX * 0.5),
         "NEAR IBC\nCOLUMN", ha="center", va="center",
-        fontsize=3.5, color=C_IBC_CS_EC, zorder=3, **FONT)
+        fontsize=4.5, color=C_IBC_CS_EC, zorder=3, **FONT)
 
 # Far IBC column (partial — Yd=1316 onward)
 ax.add_patch(mpatches.Rectangle(
@@ -859,7 +859,7 @@ ax.add_patch(mpatches.Rectangle(
     fc=C_IBC_CS, ec=C_IBC_CS_EC, lw=1.0, zorder=2, alpha=0.35))
 ax.text(cs_yd((CORRIDOR_FAR + YD_MAX) / 2), cs_z(Z_CS_MAX * 0.5),
         "FAR IBC\nCOLUMN", ha="center", va="center",
-        fontsize=3.5, color=C_IBC_CS_EC, zorder=3, **FONT)
+        fontsize=4.5, color=C_IBC_CS_EC, zorder=3, **FONT)
 
 # Corridor boundaries
 for yd_edge in [IBC_NEAR_END, CORRIDOR_FAR]:
@@ -876,16 +876,16 @@ ax.add_patch(mpatches.Rectangle(
 ax.text(cs_yd((IBC_NEAR_END + CORRIDOR_FAR) / 2), cs_z(120),
         f"18mm PANEL\nSPANS CORRIDOR\n(Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H})",
         ha="center", va="center",
-        fontsize=2.5, color=C_PLY_EC, fontweight="bold", zorder=10, **FONT)
+        fontsize=3.5, color=C_PLY_EC, fontweight="bold", zorder=10, **FONT)
 
 # Corridor width dimension
 draw_dim_h(ax, cs_yd(IBC_NEAR_END), cs_yd(CORRIDOR_FAR), cs_z(Z_CS_MAX + 10),
-           "270 CORRIDOR", offset=0.04, fs=4, color=C_DIM, font=FONT)
+           "270 CORRIDOR", offset=0.04, fs=5.5, color=C_DIM, font=FONT)
 
 # Yd axis
 ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 0.18,
         "Yd (mm from pinhole wall) →", ha="center", va="top",
-        fontsize=4, color=C_DIM, zorder=10, **FONT)
+        fontsize=5.5, color=C_DIM, zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -902,8 +902,8 @@ notes = [
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]
-draw_notes(ax, notes, 0.2, 1.6, spacing=0.13,
-           fs=3.8, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)
+draw_notes(ax, notes, 0.2, 1.6, spacing=0.15,
+           fs=5, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -920,15 +920,15 @@ _cut_x = sx(FILT_COL + FILT_OD / 2 + 15)
 ax.plot([_cut_x, _cut_x], [_cut_z_bot, _cut_z_top],
         color="#1A237E", lw=1.2, ls=(0, (6, 3, 1, 3)), zorder=11)
 ax.text(_cut_x + 0.06, _cut_z_top,
-        "B", fontsize=5, color="#1A237E", fontweight="bold",
+        "B", fontsize=7, color="#1A237E", fontweight="bold",
         va="bottom", ha="center", zorder=11, **FONT)
 ax.text(_cut_x + 0.06, _cut_z_bot,
-        "B", fontsize=5, color="#1A237E", fontweight="bold",
+        "B", fontsize=7, color="#1A237E", fontweight="bold",
         va="top", ha="center", zorder=11, **FONT)
 
 # ── Position and scale ──
 SC_D = 70.0       # mm per figure inch (~1:3 scale)
-DET_LEFT = 7.0    # figure x for Yd=0 (panel front face)
+DET_LEFT = 9.0    # figure x for Yd=0 (panel front face)
 DET_Z0 = 9.5      # figure y for head center (Z=0)
 
 
@@ -946,7 +946,7 @@ def det_z(z_mm):
 ax.text(det_y(80), det_z(85),
         "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (~1:3)",
         ha="center", va="bottom",
-        fontsize=5, fontweight="bold",
+        fontsize=6.5, fontweight="bold",
         color="#1A237E", zorder=10, **FONT)
 
 # ── All Z coords relative to filter head port center ──
@@ -999,7 +999,7 @@ ax.add_patch(mpatches.Rectangle(
     fc="#666666", ec=C_FRAME, lw=0.8, zorder=7))
 leader(ax, det_y(_bolt_head_yd + 3), det_z(D_BOLT_Z),
        det_y(_bolt_head_yd + 35), det_z(D_BOLT_Z - 25),
-       "M6×80 BOLT\n+ NYLOC NUT", fs=3.5, color=C_DIM, font=FONT)
+       "M6×80 BOLT\n+ NYLOC NUT", fs=4.5, color=C_DIM, font=FONT)
 
 # 5. Filter head (80mm depth × 70mm visible height)
 D_HEAD_YD = D_BRACKET_YD + D_BRACKET_T + 2   # 55 (2mm gap for clamp)
@@ -1011,7 +1011,7 @@ ax.add_patch(mpatches.Rectangle(
     fc="#555555", ec=C_FRAME, lw=1.5, zorder=5))
 ax.text(det_y(D_HEAD_YD + D_HEAD_DEPTH / 2), det_z(0),
         "HEAD", ha="center", va="center",
-        fontsize=4, color="white", fontweight="bold", zorder=6, **FONT)
+        fontsize=5.5, color="white", fontweight="bold", zorder=6, **FONT)
 
 # 6. Sump bowl (hangs below head)
 D_SUMP_H = FILT_H - FILT_HEAD               # 270
@@ -1025,12 +1025,12 @@ ax.add_patch(mpatches.Rectangle(
     fc=C_FILTER, ec=C_FRAME, lw=1.2, alpha=0.6, zorder=4))
 ax.text(det_y(_sump_cy), det_z(_sump_top_z - D_SUMP_H / 2),
         "SUMP\nBOWL", ha="center", va="center",
-        fontsize=4, color="white", fontweight="bold", zorder=6, **FONT)
+        fontsize=5.5, color="white", fontweight="bold", zorder=6, **FONT)
 
 # Sump height dimension
 draw_dim_v(ax, det_y(_sump_cy + D_SUMP_W / 2 + 10),
            det_z(_sump_bot_z), det_z(_sump_top_z),
-           f"{int(D_SUMP_H)}", offset=0.06, fs=3.5, color=C_DIM,
+           f"{int(D_SUMP_H)}", offset=0.06, fs=4.5, color=C_DIM,
            right=True, font=FONT)
 
 # Cartridge removal arrow
@@ -1041,7 +1041,7 @@ ax.annotate("", xy=(det_y(_sump_cy), det_z(_sump_bot_z - 25)),
 ax.text(det_y(_sump_cy), det_z(_sump_bot_z - 30),
         "UNSCREW SUMP\nFOR CARTRIDGE\nREPLACEMENT",
         ha="center", va="top",
-        fontsize=3.5, color="#CC4444", fontweight="bold", zorder=10, **FONT)
+        fontsize=4.5, color="#CC4444", fontweight="bold", zorder=10, **FONT)
 
 # 7. 1" NPT port with pipe stub
 D_PORT_YD = D_HEAD_YD + D_HEAD_DEPTH         # 135
@@ -1062,7 +1062,7 @@ ax.add_patch(mpatches.Rectangle(
     fc="white", ec="none", zorder=6))
 leader(ax, det_y(D_PORT_YD + D_STUB_LEN), det_z(0),
        det_y(D_PORT_YD + D_STUB_LEN + 25), det_z(18),
-       "1\" HDPE\nTO NEXT STAGE", fs=3.5, color=C_PIPE_EC, font=FONT)
+       "1\" HDPE\nTO NEXT STAGE", fs=4.5, color=C_PIPE_EC, font=FONT)
 
 # 8. Clamp band at head/sump junction
 D_CLAMP_H = 12
@@ -1076,10 +1076,10 @@ ax.add_patch(mpatches.Rectangle(
 # ── Detail dimensions ──
 _standoff = D_SPACER_T + D_BRACKET_T   # 53mm from panel face
 draw_dim_h(ax, det_y(0), det_y(D_BRACKET_YD + D_BRACKET_T),
-           det_z(-55), f"{_standoff}mm STANDOFF", offset=0.05, fs=3.5,
+           det_z(-55), f"{_standoff}mm STANDOFF", offset=0.05, fs=4.5,
            color=C_DIM, font=FONT)
 draw_dim_h(ax, det_y(-D_PANEL_T), det_y(0),
-           det_z(55), f"{int(D_PANEL_T)}", offset=0.04, fs=3,
+           det_z(55), f"{int(D_PANEL_T)}", offset=0.04, fs=4,
            color=C_DIM, font=FONT)
 
 # ── Component labels above section ──
@@ -1088,7 +1088,7 @@ for _ly, _ltxt in [(-D_PANEL_T / 2, "18mm\nPANEL"),
                     (D_SPACER_YD + D_SPACER_T / 2, "50mm\nHDPE"),
                     (D_BRACKET_YD + D_BRACKET_T / 2, "3mm\nBKT")]:
     ax.text(det_y(_ly), det_z(_lbl_z), _ltxt, ha="center", va="bottom",
-            fontsize=3, color=C_FRAME, zorder=10, **FONT)
+            fontsize=4, color=C_FRAME, zorder=10, **FONT)
     ax.plot([det_y(_ly), det_y(_ly)], [det_z(_lbl_z - 3), det_z(40)],
             color=C_DIM, lw=0.4, ls=":", zorder=2)
 
@@ -1096,7 +1096,7 @@ for _ly, _ltxt in [(-D_PANEL_T / 2, "18mm\nPANEL"),
 ax.text(det_y(80), det_z(_sump_bot_z - 50),
         "SECTION THROUGH FILTER HEAD\nPERPENDICULAR TO PANEL\nAT PORT HEIGHT\n(4.5\"×10\" BIG BLUE — SUMP-DOWN)",
         ha="center", va="top",
-        fontsize=3.5, color="#666666", style="italic", zorder=10, **FONT)
+        fontsize=4.5, color="#666666", style="italic", zorder=10, **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -1105,7 +1105,7 @@ ax.text(det_y(80), det_z(_sump_bot_z - 50),
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
             subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION + DETAIL B",
-            scale_note="ELEV 1:120 · DETAIL B ~1:3 · X-SECTION NTS · ALL DIMS IN mm",
+            scale_note="ELEV 1:80 · DETAIL B ~1:3 · X-SECTION NTS · ALL DIMS IN mm",
             doc_id="TBS-001 · Reorg Proposal",
             height=0.028)
 

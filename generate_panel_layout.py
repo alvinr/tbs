@@ -214,22 +214,25 @@ for pname, pdesc, pz, pfc, pec in pump_specs:
 
 # ═══════════════════════════════════════════════════════════════════════════
 #  3. ACC-01 — above pump stack (profile view, vertical, port at bottom)
+#     Dead-end branch off main discharge pipe via tee — NOT inline
 # ═══════════════════════════════════════════════════════════════════════════
-rect(ACC_YD - ACC_OD / 2, ACC_Z, ACC_OD, ACC_LEN,
+ACC_STUB = 25   # gap between main pipe and ACC body for tee stub
+ACC_BODY_Z = ACC_Z + ACC_STUB
+rect(ACC_YD - ACC_OD / 2, ACC_BODY_Z, ACC_OD, ACC_LEN,
      C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.7)
-ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 + 10),
+ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 + 10),
         "ACC-01", ha="center", va="center",
         fontsize=5, color="white", fontweight="bold", zorder=8, **FONT)
-ax.text(sx(ACC_YD), sz(ACC_Z + ACC_LEN / 2 - 15),
+ax.text(sx(ACC_YD), sz(ACC_BODY_Z + ACC_LEN / 2 - 15),
         f"O/{ACC_OD}", ha="center", va="center",
         fontsize=3.5, color="white", zorder=8, **FONT)
-# Port at bottom center
-circ(ACC_YD, ACC_Z, 10,
-     C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+# Port at bottom of ACC body (tee stub pipe drawn with Blue system pipes below)
+circ(ACC_YD, ACC_BODY_Z, 10,
+     C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=10)
 
 # Mounting clamp (U-bracket at top)
 clamp_w = ACC_OD + 20
-rect(ACC_YD - clamp_w / 2, ACC_Z + ACC_LEN,
+rect(ACC_YD - clamp_w / 2, ACC_BODY_Z + ACC_LEN,
      clamp_w, 8,
      C_FRAME_FILL, C_FRAME, lw=0.5, zorder=5)
 
@@ -493,6 +496,11 @@ draw_pipe_path(ax,
     [EXIT_L, DISCH_RAIL, DISCH_RAIL, PORT_OUT_YD, PORT_OUT_YD],
     [ACC_Z, ACC_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
+# ACC-01 tee stub: branch up from main pipe to accumulator body
+draw_pipe_path(ax,
+    [ACC_YD, ACC_YD],
+    [ACC_Z, ACC_BODY_Z],
+    PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
 draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
             xytext=(sx(EXIT_L + _AW), sz(ACC_Z)),
@@ -670,8 +678,8 @@ leader(ax,
 
 # ACC-01
 leader(ax,
-       sx(ACC_YD + ACC_OD / 2), sz(ACC_Z + ACC_LEN / 2),
-       sx(PANEL_W + 40), sz(ACC_Z + ACC_LEN / 2 + 60),
+       sx(ACC_YD + ACC_OD / 2), sz(ACC_BODY_Z + ACC_LEN / 2),
+       sx(PANEL_W + 40), sz(ACC_BODY_Z + ACC_LEN / 2 + 60),
        "ACC-01: 0.75L ACCUM.\nO/127 × 150mm\n1/2\" MNPT (bottom)",
        fs=4, color=C_BLUE_EC, font=FONT)
 

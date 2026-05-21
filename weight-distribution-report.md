@@ -72,8 +72,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Electrical panel | 15 | 1,600–1,900 | 0–150 | Wall-mount distribution panel |
 | Battery bank | 26 | 1,810–2,310 | 0–150 | 2× 100Ah LiFePO4 @ 13 kg each |
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
-| Pump manifold | 5 | 2,500–2,800 | 0–150 | 3× 12V diaphragm pumps + manifold |
-| Evaporative cooler | 15 | 930–1,530 | 0–350 | Portable evap cooler unit |
+| Pump manifold | 5 | 4,800–5,580 | 1,046–1,173 | 4× 12V diaphragm pumps on equipment panel |
 | Film plane carriage | 33 | 150–4,649 | 2,212–2,312 | Al angle frame (50.8×50.8×4.8mm) + 92 cam-lever clamps + 4 HGH20CA carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |

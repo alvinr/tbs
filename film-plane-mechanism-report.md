@@ -229,7 +229,7 @@ All seven configurations on a checker grid (D = 8,000 mm):
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
 
 **System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), evaporative cooler on pinhole wall face, processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack).
+The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 

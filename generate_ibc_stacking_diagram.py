@@ -40,9 +40,9 @@ from tbs_constants import (
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP,
     PROC_TRAY_RIM,
     EXT_PANEL_YD, EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
-    EQPANEL_X, EQPANEL_W, EQPANEL_T, EQPANEL_YD,
-    PUMP_D,
-    BB_OD, FSKID_YD, F1_X, F2_X, F3_X,
+    EQPANEL_X, EQPANEL_T, EQPANEL_YD,
+    PUMP_D, PUMP_YD, PUMP_YD_SPAN,
+    BB_OD, FSKID_YD,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
@@ -1525,53 +1525,62 @@ def sheet5():
             color=C_CL, lw=1.0, ls="--", zorder=4)
 
     # ── Equipment panel (pumps + filters) ────────────────────────────────
-    ep_x = EQPANEL_X
-    ep_w = EQPANEL_W
-    ep_yd = EQPANEL_YD                       # back face Yd (against near IBC column)
-    ep_front_yd = ep_yd + EQPANEL_T          # front face Yd
+    # Panel spans ACROSS corridor (Yd direction), perpendicular to sealed end wall.
+    # Panel face at X=EQPANEL_X (5000), ply extends toward sealed end.
+    # Equipment protrudes toward open end (lower X).
+    ep_face_x = EQPANEL_X                      # 5000 — equipment face
+    ep_back_x = ep_face_x + EQPANEL_T          # 5018 — plywood back face
+    ep_yd_near = EQPANEL_YD                    # 1046
+    ep_yd_far  = EQPANEL_YD + CORRIDOR_W       # 1316
 
-    # Plywood panel (thin strip in plan view)
-    ax.add_patch(Rectangle((px(ep_x), py(ep_yd)),
-                            px(ep_w), py(EQPANEL_T),
+    # Plywood panel (thin strip in X, spanning corridor in Yd)
+    ax.add_patch(Rectangle((px(ep_face_x), py(ep_yd_near)),
+                            px(EQPANEL_T), py(CORRIDOR_W),
                             fc=C_PLY, ec="#A09060", lw=1.5, zorder=6))
 
-    # Pump protrusion zone (from panel front face into corridor)
-    pump_yd_far = ep_front_yd + PUMP_D       # = 1191
-    ax.add_patch(Rectangle((px(ep_x), py(ep_front_yd)),
-                            px(ep_w), py(PUMP_D),
+    # Pump protrusion zone — near side of corridor (Yd=1046–1173)
+    # Protrudes from panel face toward open end (lower X)
+    pump_x_far = ep_face_x - PUMP_D            # 4900
+    pump_yd_near = PUMP_YD                     # 1046
+    pump_yd_far  = pump_yd_near + PUMP_YD_SPAN  # 1173
+    ax.add_patch(Rectangle((px(pump_x_far), py(pump_yd_near)),
+                            px(PUMP_D), py(PUMP_YD_SPAN),
                             fc=C_PUMP, ec=C_OUT, lw=1.0, alpha=0.25,
                             ls="--", zorder=5))
-    # Pump label — left of F1 to avoid filter circle overlap
-    ax.text(px(ep_x + 80), py(ep_front_yd + PUMP_D / 2),
-            "P-01\nP-02\nP-04",
+    ax.text(px(pump_x_far + PUMP_D / 2), py(pump_yd_near + PUMP_YD_SPAN / 2),
+            "P-01 / P-02 / P-04\n(PUMP ZONE)",
             ha="center", va="center", fontsize=5, color=C_PUMP,
             fontweight="bold", **FONT, zorder=10)
 
-    # 3x Big Blue filter housings (circles in plan view, above pumps at higher Z)
-    filt_yd = FSKID_YD                       # filter column center Yd = 1186
-    filt_r = BB_OD / 2                       # 65mm radius
-    for fx, flabel in [(F1_X, "F1"), (F2_X, "F2"), (F3_X, "F3")]:
-        ax.add_patch(Circle((px(fx), py(filt_yd)),
-                     px(filt_r), fc="#4A7A4A", ec=C_OUT, lw=1.0,
-                     alpha=0.3, zorder=7))
-        ax.text(px(fx), py(filt_yd), flabel,
-                ha="center", va="center", fontsize=5.5, color="#2A5A2A",
-                fontweight="bold", **FONT, zorder=10)
+    # Filter protrusion zone — far side of corridor (Yd=1186–1316)
+    # 3 housings stacked vertically (different Z), same plan footprint.
+    filt_x_far = ep_face_x - BB_OD             # 4870
+    filt_yd_near = FSKID_YD                    # 1186
+    filt_yd_far  = filt_yd_near + BB_OD        # 1316
+    ax.add_patch(Rectangle((px(filt_x_far), py(filt_yd_near)),
+                            px(BB_OD), py(BB_OD),
+                            fc="#4A7A4A", ec=C_OUT, lw=1.0,
+                            alpha=0.25, ls="--", zorder=5))
+    ax.text(px(filt_x_far + BB_OD / 2), py(filt_yd_near + BB_OD / 2),
+            "F1 / F2 / F3\n(3× BIG BLUE\nSTACKED)",
+            ha="center", va="center", fontsize=4.5, color="#2A5A2A",
+            fontweight="bold", **FONT, zorder=10)
 
-    # Equipment panel label — below panel toward near wall
-    ax.text(px(ep_x + ep_w / 2), py(ep_yd - 25),
-            f"EQUIPMENT PANEL  (18mm MARINE PLY, {ep_w}mm WIDE)",
+    # Equipment panel label — toward near wall side
+    ax.text(px(ep_face_x + EQPANEL_T / 2), py(ep_yd_near - 25),
+            "EQUIPMENT PANEL\n(18mm MARINE PLY, SPANS CORRIDOR)",
             ha="center", va="top", fontsize=5, color="#A09060",
             fontweight="bold", **FONT, zorder=10)
 
-    # Filter row label — above corridor, pointing down at filter row
+    # Filter zone label — above far IBC column
     filt_label_yd = corr_yd_hi + 40
-    ax.text(px(F2_X), py(filt_label_yd),
-            "3× BIG BLUE 4.5\"×10\" FILTER HOUSINGS\n(F1=50μ  F2=5μ  F3=GAC)  Z=1600–1940",
+    filt_cx = filt_x_far + BB_OD / 2
+    ax.text(px(filt_cx), py(filt_label_yd),
+            "3× BIG BLUE 4.5\"×10\" FILTER HOUSINGS\n(F1=50μ  F2=5μ  F3=GAC)  STACKED Z=900–1980",
             ha="center", va="bottom", fontsize=5, color="#2A5A2A",
             **FONT, zorder=10)
-    ax.annotate("", xy=(px(F2_X), py(filt_yd + filt_r + 5)),
-                xytext=(px(F2_X), py(filt_label_yd)),
+    ax.annotate("", xy=(px(filt_cx), py(filt_yd_far + 5)),
+                xytext=(px(filt_cx), py(filt_label_yd)),
                 arrowprops=dict(arrowstyle="-|>", color="#2A5A2A", lw=0.8),
                 zorder=10)
 
@@ -1837,7 +1846,7 @@ def sheet5():
         "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V2 on horizontal, V3/V4 on branch.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
         "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
-        f"7. Equipment panel ({EQPANEL_W}mm × 18mm marine ply) in corridor: P-01/P-02/P-04 pumps + 3× Big Blue filters.",
+        f"7. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-04 pumps + 3× Big Blue filters.",
     ]
     draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
                fs=5.5, font=FONT, width=2500)

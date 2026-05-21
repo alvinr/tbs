@@ -31,7 +31,7 @@ WALKWAY_W    = 300   # standard walkway width (mm)
 WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 
 # Panel X position in IBC zone (spans corridor perpendicular to wall)
-PANEL_WALL_X = 4800  # panel X position along container (matches EQPANEL_X)
+PANEL_WALL_X = 5000  # panel face X position along container (matches EQPANEL_X)
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
 PUMP_W   = 127   # front face width (mm) — port-to-port

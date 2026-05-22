@@ -1028,7 +1028,7 @@ ax_w.set_facecolor(C_BG)
 ax_w.axis("off")
 
 w_xl, w_xr = -21, 21
-w_yb, w_yt = -30, 25
+w_yb, w_yt = -30, 35
 ax_w.set_xlim(w_xl, w_xr)
 ax_w.set_ylim(w_yb, w_yt)
 

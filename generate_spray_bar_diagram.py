@@ -743,21 +743,57 @@ ax2.plot([dy(beam_yd), dy(beam_yd)],
          [dz(BEAM_Z_BOT - 1), dz(TRAY_FLOOR_Z + 2)],
          color=C_WATER, lw=1.0, alpha=0.5, zorder=6)
 
-# ── Carriage wheels (simplified — see Detail B for full assembly) ───────
+# ── Carriage assembly (wheels, fork brackets, L-bracket, U-clamp) ──────
+# No dimensions here — see Detail B/C for measurements.
 carriage_ctr_yd = beam_yd
 cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2
 cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2
 
+# Wheels
 for cw_yd in [cw1_yd, cw2_yd]:
     ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
                             WHEEL_DIA / 2 / SC2,
                             fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=6))
     ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
                             2 / SC2, fc=C_WHEEL, ec=C_OUT, lw=0.3, zorder=6.5))
+    # Fork brackets (vertical plates straddling wheel)
+    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        ax2.plot([dy(cw_yd + offset), dy(cw_yd + offset)],
+                 [dz(WHEEL_AXLE_Z + 6), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4)],
+                 color=C_FRAME, lw=0.8, zorder=5.5)
+    # Axle pin
+    ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2 - 4), dy(cw_yd + WHEEL_WIDTH / 2 + 4)],
+             [dz(WHEEL_AXLE_Z), dz(WHEEL_AXLE_Z)],
+             color=C_FRAME, lw=0.5, zorder=6.5)
 
-ax2.text(dy(carriage_ctr_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 8),
-         "SEE DETAIL B", ha="center", va="top",
-         fontsize=5, color="#0066AA", fontweight="bold", **FONT, zorder=15)
+# L-bracket arm (horizontal plate spanning both fork assemblies)
+brk_arm_l = cw1_yd - 18
+brk_arm_r = cw2_yd + 18
+brk_t_op = 5
+ax2.add_patch(Rectangle((dy(brk_arm_l), dz(WHEEL_AXLE_Z - brk_t_op / 2)),
+                           (brk_arm_r - brk_arm_l) / SC2, brk_t_op / SC2,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=7))
+
+# U-clamp over beam (connects carriage to beam)
+uc_l_op = carriage_ctr_yd - BEAM_W / 2 - UC_T - UC_GAP
+uc_r_op = carriage_ctr_yd + BEAM_W / 2 + UC_GAP + UC_T
+# Top plate
+ax2.add_patch(Rectangle((dy(uc_l_op), dz(BEAM_Z_TOP)),
+                           (uc_r_op - uc_l_op) / SC2, UC_T / SC2,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, zorder=10))
+# Side legs
+for u_yd in [uc_l_op, uc_r_op - UC_T]:
+    ax2.add_patch(Rectangle((dy(u_yd), dz(BEAM_Z_BOT + UC_T)),
+                               UC_T / SC2,
+                               (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / SC2,
+                               fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+# Flared feet
+ax2.add_patch(Rectangle((dy(uc_l_op - UC_FLARE), dz(BEAM_Z_BOT)),
+                           (UC_T + UC_FLARE) / SC2, UC_T / SC2,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+ax2.add_patch(Rectangle((dy(uc_r_op - UC_T), dz(BEAM_Z_BOT)),
+                           (UC_T + UC_FLARE) / SC2, UC_T / SC2,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
 
 # ── Pole from ball joint upward (~200mm shown) ─────────────────────────
 pole_yd = beam_yd
@@ -783,12 +819,7 @@ leader(ax2, dy(pole_yd + 3), dz(pole_base_z + pole_show_len / 2),
        "TELESCOPING POLE\n(TO WALKWAY SLIT)",
        fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
-leader(ax2, dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 5),
-       dy(cw1_yd - 40), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 25),
-       f"Ø{WHEEL_DIA}mm NYLON\nWHEELS (×2)",
-       fs=4.5, color=C_WHEEL, font=FONT, zorder=15)
-
-# ── Dimensions ────────────────────────────────────────────────────────────
+# ── Dimensions (contextual only — carriage dims in Detail B/C) ──────────
 draw_dim_h(ax2, dy(wk_yd_l), dy(wk_yd_r), dz(GRATE_Z_TOP + 30),
            f"{WALKWAY_W}mm WALKWAY", offset=6 / SC2, fs=5.5, font=FONT)
 
@@ -800,15 +831,8 @@ draw_dim_h(ax2, dy(wk_yd_r), dy(beam_yd), dz(BEAM_Z_TOP + 50),
            f"{beam_yd - int(wk_yd_r)}mm\n(BEAM TO\nWALKWAY EDGE)",
            offset=6 / SC2, fs=4.5, font=FONT)
 
-draw_dim_v(ax2, dy(beam_yd_l - 20), dz(BEAM_Z_BOT), dz(BEAM_Z_TOP),
-           f"{BEAM_W}mm", offset=6 / SC2, fs=5, font=FONT)
-
 draw_dim_v(ax2, dy(tray_yd_start - 20), dz(0), dz(PROC_TRAY_RIM),
            f"{PROC_TRAY_RIM}mm\nRIM",
-           offset=6 / SC2, fs=4.5, font=FONT)
-
-draw_dim_h(ax2, dy(cw1_yd), dy(cw2_yd), dz(TRAY_FLOOR_Z + WHEEL_DIA + 8),
-           f"{WHEEL_SPACING_YD}mm\nWHEEL SPACING",
            offset=6 / SC2, fs=4.5, font=FONT)
 
 # ── Notes ────────────────────────────────────────────────────────────────

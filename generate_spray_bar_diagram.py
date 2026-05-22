@@ -91,7 +91,7 @@ fig = plt.figure(figsize=(28, 26))
 fig.patch.set_facecolor(C_BG)
 gs = GridSpec(3, 2, figure=fig, width_ratios=[1.3, 1],
               height_ratios=[2.5, 1, 1],
-              wspace=0.06, hspace=0.08, bottom=0.045)
+              wspace=0.06, hspace=0.08, bottom=0.045, top=0.965)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LEFT PANEL — X-Z elevation looking along Yd, left carriage area
@@ -113,7 +113,7 @@ def sz(z_mm):
 X_LO = -80
 X_HI = 1100
 Z_LO = -50
-Z_HI = 220
+Z_HI = 250
 
 ax.set_xlim(sx(X_LO), sx(X_HI))
 ax.set_ylim(sz(Z_LO), sz(Z_HI))
@@ -379,7 +379,16 @@ notes = [
 draw_notes(ax, notes, sx(X_LO + 20), sz(Z_HI - 5), spacing=10 / V_SC,
            fs=7, font=FONT, width=155 / H_SC)
 
-ax.text(sx(-30), sz(Z_HI - 10),
+ax.text(sx((X_LO + X_HI) / 2), sz(Z_HI - 5),
+        "GANTRY ELEVATION — VIEW ALONG Yd (LEFT CARRIAGE)",
+        ha="center", va="top", fontsize=9, color=C_FRAME,
+        fontweight="bold", **FONT, zorder=15)
+ax.text(sx((X_LO + X_HI) / 2), sz(Z_HI - 20),
+        "(H 1:6 / V 1:1.5 — 4× VERT EXAG — ALL DIMS IN mm)",
+        ha="center", va="top", fontsize=5, color=C_DIM,
+        **FONT, zorder=15)
+
+ax.text(sx(-30), sz(Z_HI - 40),
         "CONTAINER\nLEFT WALL\n(X=0)", ha="right", va="top",
         fontsize=5, color=C_DIM, **FONT)
 
@@ -590,7 +599,7 @@ def dz(z_mm):
 R_YD_LO = -60
 R_YD_HI = 800
 R_Z_LO = -30
-R_Z_HI = 1900
+R_Z_HI = 2150
 
 ax2.set_xlim(dy(R_YD_LO), dy(R_YD_HI))
 ax2.set_ylim(dz(R_Z_LO), dz(R_Z_HI))

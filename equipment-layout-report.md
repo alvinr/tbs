@@ -251,7 +251,7 @@ runs through the optical zone.
 **Plumbing manifold:** 3-pump distribution header (P-01 Blue spray bar, P-02 Brown
 recycle, P-04 tray sump pickup) wall-mounted at X=2,400–2,700mm, H=200–600mm.
 P-03 (waste evacuation) is mounted separately in the IBC plumbing corridor on
-the D4 waste drain run, minimizing pipe length to the external drain port.
+the X4 waste drain run, minimizing pipe length to the external drain port.
 Hose runs drop vertically from manifold to IBCs in the right end zone. Maximum
 hose run: ~5.5m (manifold to Brown IBC at Yd=538mm — along pinhole wall then
 along right end wall).

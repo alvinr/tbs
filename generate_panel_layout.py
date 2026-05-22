@@ -691,7 +691,7 @@ ax.text(sx(EXIT_R + 5), sz(BV08_Z),
         fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 draw_ball_valve(BV08_YD, BV08_Z, "BV\n08", C_BLACK_EC)
 
-# P-03 discharge: outlet (left port) → drop → right to D4 bulkhead
+# P-03 discharge: outlet (left port) → drop → right to X4 bulkhead
 # zorder +0.5 so discharge draws in front of suction gap-break
 draw_pipe_path(ax,
     [R_PORT_OUT, R_PORT_OUT, EXIT_R],
@@ -701,7 +701,7 @@ ax.annotate("", xy=(sx(EXIT_R), sz(_P03_DISCH_Z)),
             xytext=(sx(EXIT_R - _AW), sz(_P03_DISCH_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(_P03_DISCH_Z),
-        "TO D4\nDRAIN\nPORT", ha="left", va="center",
+        "TO X4\nDRAIN\nPORT", ha="left", va="center",
         fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
 
 
@@ -722,7 +722,7 @@ ax.text(sx(EXIT_R + 5), sz(BV07_Z),
         "FROM\nIBC-3\n(DRAIN)", ha="left", va="center",
         fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
-# P-05 discharge: outlet (left port) → drop → right to D3 drain port
+# P-05 discharge: outlet (left port) → drop → right to X3 drain port
 _P05_DISCH_Z = P05_PORT_Z - PORT_DROP
 draw_pipe_path(ax,
     [R_PORT_OUT, R_PORT_OUT, EXIT_R],
@@ -732,7 +732,7 @@ ax.annotate("", xy=(sx(EXIT_R), sz(_P05_DISCH_Z)),
             xytext=(sx(EXIT_R - _AW), sz(_P05_DISCH_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
 ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
-        "TO D3\nDRAIN\nPORT", ha="left", va="center",
+        "TO X3\nDRAIN\nPORT", ha="left", va="center",
         fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
 

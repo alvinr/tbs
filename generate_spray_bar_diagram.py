@@ -6,7 +6,7 @@ generate_spray_bar_diagram.py
 Spray bar assembly detail for TBS-001 processing tray wash system.
 
 Sheet 1 — Gantry spray bar:
-  Left panel:  Yd-Z cross-section (operator view) looking along X.
+  Left panel:  Yd-Z cross-section (carriage view) looking along X.
                Equal 1:4 scale. Walkway, beam, wheels, U-clamp.
   Right panel: X-Z section viewed from film plane (along Yd).
                Centered on beam centerline. Walkway slit, pole,
@@ -642,7 +642,7 @@ draw_dim_v(ax_a, d_xl + 3, -pvc_od_h, pvc_od_h,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# LEFT PANEL — Yd-Z cross section (operator view)
+# LEFT PANEL — Yd-Z cross section (carriage view)
 # Looking along X. Equal H/V scale. Cropped to carriage/beam/walkway area.
 # ─────────────────────────────────────────────────────────────────────────────
 ax2 = fig.add_subplot(gs[0, 0])
@@ -667,7 +667,7 @@ ax2.set_xlim(dy(R_YD_LO), dy(R_YD_HI))
 ax2.set_ylim(dz(R_Z_LO), dz(R_Z_HI))
 
 ax2.text(dy((R_YD_LO + R_YD_HI) / 2), dz(R_Z_HI - 3),
-         "CROSS SECTION — OPERATOR VIEW",
+         "CROSS SECTION — CARRIAGE VIEW",
          ha="center", va="top", fontsize=9, color=C_FRAME,
          fontweight="bold", **FONT, zorder=15)
 ax2.text(dy((R_YD_LO + R_YD_HI) / 2), dz(R_Z_HI - 15),

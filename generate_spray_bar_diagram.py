@@ -212,9 +212,9 @@ brk_x_r = PROC_OPEN_X_L + 5
 ax.add_patch(Rectangle((sx(brk_x_l), sz(WHEEL_AXLE_Z - brk_t / 2)),
                          (brk_x_r - brk_x_l) / H_SC, brk_t / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
-# Vertical drop (at walkway inner edge)
+# Vertical drop (at walkway inner edge — full beam height)
 ax.add_patch(Rectangle((sx(brk_x_r - brk_t), sz(BEAM_Z_BOT)),
-                         brk_t / H_SC, (WHEEL_AXLE_Z - BEAM_Z_BOT + brk_t / 2) / V_SC,
+                         brk_t / H_SC, (BEAM_Z_TOP - BEAM_Z_BOT) / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
 
 leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2),
@@ -947,18 +947,47 @@ ax_c.add_patch(Rectangle((cy(plate_yd_l), cz(WHEEL_AXLE_Z - brk_t_c / 2)),
                            (plate_yd_r - plate_yd_l) / SC_C, brk_t_c / SC_C,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
 
-# Vertical drops flanking beam
-for side_yd in [carriage_yd_center - BEAM_W / 2 - brk_t_c,
-                carriage_yd_center + BEAM_W / 2]:
+# Vertical drop cheeks flanking beam (full beam height)
+drop_yd_l = carriage_yd_center - BEAM_W / 2 - brk_t_c
+drop_yd_r = carriage_yd_center + BEAM_W / 2
+for side_yd in [drop_yd_l, drop_yd_r]:
     ax_c.add_patch(Rectangle((cy(side_yd), cz(BEAM_Z_BOT)),
                                brk_t_c / SC_C,
-                               (WHEEL_AXLE_Z - BEAM_Z_BOT + brk_t_c / 2) / SC_C,
+                               (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
                                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, zorder=7))
 
 leader(ax_c, cy(plate_yd_r), cz(WHEEL_AXLE_Z),
        cy(plate_yd_r + 40), cz(WHEEL_AXLE_Z + 10),
-       "AL L-BRACKET\n(DROPS BEAM\nBELOW AXLE)",
+       "AL L-BRACKET\n(TIG WELDED\nWELDMENT)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
+
+# ── Bolt indicators ─────────────────────────────────────────────────────
+C_BOLT = "#808088"
+bolt_r = 2.5 / SC_C
+
+# Fork-to-arm M5 through-bolts (1 per fork, visible as bolt-head circles)
+for w_yd in [wheel1_yd, wheel2_yd]:
+    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        fork_yd = w_yd + offset
+        ax_c.add_patch(Circle((cy(fork_yd), cz(WHEEL_AXLE_Z)),
+                                bolt_r, fc=C_BOLT, ec=C_FRAME, lw=0.8, zorder=11))
+
+# Beam-to-drop M6 set screws (2 per drop, visible as socket-head circles)
+for drp in [drop_yd_l + brk_t_c / 2, drop_yd_r + brk_t_c / 2]:
+    for ss_z in [BEAM_Z_BOT + 10, BEAM_Z_TOP - 10]:
+        ax_c.add_patch(Circle((cy(drp), cz(ss_z)),
+                                bolt_r * 0.8, fc=C_BOLT, ec=C_FRAME,
+                                lw=0.6, zorder=11))
+
+leader(ax_c, cy(wheel2_yd + WHEEL_WIDTH / 2 + 2), cz(WHEEL_AXLE_Z),
+       cy(wheel2_yd + 55), cz(WHEEL_AXLE_Z - 20),
+       "M5 SS THRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
+       fs=4.5, color=C_BOLT, font=FONT, zorder=15)
+
+leader(ax_c, cy(drop_yd_r + brk_t_c / 2), cz(BEAM_Z_BOT + 10),
+       cy(carriage_yd_center + BEAM_W / 2 + 45), cz(BEAM_Z_BOT - 6),
+       "M6 SS SET SCREW\n(NYLON TIP,\n2 PER DROP)",
+       fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
 # ── Beam / spray pipe SHS cross-section ──────────────────────────────────
 c_beam_l = carriage_yd_center - BEAM_W / 2
@@ -1051,15 +1080,15 @@ ax_w.text(0, w_yt - 5,
 C_NYLON_FILL = "#E8DCC0"
 
 # ── L-bracket horizontal arm (cut — hatched) ─────────────────────────────
-ax_w.add_patch(Rectangle((-15, 13), 30, 5,
+ax_w.add_patch(Rectangle((-17, 13), 34, 5,
                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
 
-# ── Left fork arm (cut — hatched) ────────────────────────────────────────
-ax_w.add_patch(Rectangle((-15, -13), 4, 26,
+# ── Left fork arm (cut — hatched, 6mm thick for M5 bolts) ───────────────
+ax_w.add_patch(Rectangle((-17, -13), 6, 26,
                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
 
-# ── Right fork arm (cut — hatched) ───────────────────────────────────────
-ax_w.add_patch(Rectangle((11, -13), 4, 26,
+# ── Right fork arm (cut — hatched, 6mm thick) ───────────────────────────
+ax_w.add_patch(Rectangle((11, -13), 6, 26,
                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
 
 # ── Nylon wheel body (cut — dot hatch) ───────────────────────────────────
@@ -1072,7 +1101,7 @@ for gap_x in [-11, 10]:
                    fc=C_BG, ec="none", zorder=3.5))
 
 # ── Axle pin (not cut — solid fill, passes through) ─────────────────────
-ax_w.add_patch(Rectangle((-17, -5), 34, 10,
+ax_w.add_patch(Rectangle((-20, -5), 40, 10,
                fc="#D0D0D8", ec=C_FRAME, lw=1.0, zorder=5))
 
 # Clear bore through wheel (axle sits in this)
@@ -1080,11 +1109,24 @@ ax_w.add_patch(Rectangle((-10, -5), 20, 10,
                fc="#D0D0D8", ec="none", zorder=5))
 
 # ── Snap rings at axle ends (retain axle in fork) ────────────────────────
-for sr_x in [-17, 15.5]:
+for sr_x in [-20, 18.5]:
     ax_w.add_patch(Rectangle((sr_x, -7), 1.5, 2,
                    fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
     ax_w.add_patch(Rectangle((sr_x, 5), 1.5, 2,
                    fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
+
+# ── M5 through-bolts: fork-to-arm (profile view) ────────────────────────
+C_BOLT_FILL = "#D0D0D8"
+for bolt_cx in [-14, 14]:
+    # Bolt head (on top of arm)
+    ax_w.add_patch(Rectangle((bolt_cx - 4, 18), 8, 3,
+                   fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
+    # Shank through arm and into fork
+    ax_w.add_patch(Rectangle((bolt_cx - 2.5, 4), 5, 14,
+                   fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+    # Nyloc nut below fork
+    ax_w.add_patch(Rectangle((bolt_cx - 4, 0), 8, 4,
+                   fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
 _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
@@ -1102,7 +1144,7 @@ leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
        fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
 
 leader(ax_w, 13, 0, w_xr - 1, -10,
-       "4mm AL\nFORK ARM",
+       "6mm AL\nFORK ARM",
        fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
 
 ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
@@ -1116,6 +1158,10 @@ leader(ax_w, 5, 5, 5, 10,
 ax_w.text(-17.5, -10, "SNAP\nRING",
           ha="center", va="top", fontsize=5, color="#666666",
           bbox=_bbox_w, **FONT, zorder=20)
+
+leader(ax_w, -14, 20, -6, w_yt - 10,
+       "M5×16 SS\nTHRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
+       fs=5, color="#808088", font=FONT, zorder=20, bbox=_bbox_w)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax_w, -10, 10, w_yb + 3,

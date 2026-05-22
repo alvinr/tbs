@@ -104,11 +104,11 @@ WALL_T = 3
 # SHEET 1
 # ═════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(28, 32))
+fig = plt.figure(figsize=(28, 38))
 fig.patch.set_facecolor(C_BG)
 gs = GridSpec(4, 2, figure=fig, width_ratios=[1, 1.3],
               height_ratios=[2.5, 1, 1, 1],
-              wspace=0.06, hspace=0.08, bottom=0.035, top=0.97)
+              wspace=0.06, hspace=0.08, bottom=0.06, top=0.97)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # RIGHT PANEL — X-Z section viewed from film plane (looking along Yd)

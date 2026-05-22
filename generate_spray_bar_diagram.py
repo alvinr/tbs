@@ -695,55 +695,40 @@ ax2.text(dy(beam_yd + 35), dz(BEAM_Z_BOT - 8),
          ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
 # ── Operator figure on walkway ───────────────────────────────────────────
-op_yd = 170       # operator center on walkway
+# Lollipop silhouette — matches hinge-panel Sheet 3 (light-trap design)
+C_PERSON  = "#2060A0"
+C_HEAD_FC = "#70A8D8"
+C_HEAD_EC = "#1A4D80"
+PERSON_H  = 1780
+HEAD_R    = 80
+
+op_yd = 170
 op_foot_z = GRATE_Z_TOP  # 100mm (standing on deck)
-op_height = 1700  # total height (mm)
+P_body_top = op_foot_z + PERSON_H       # 1880mm
+P_head_cz  = P_body_top + HEAD_R        # 1960mm
 
-# Legs (two lines from feet to hips)
-hip_z = op_foot_z + 850
-ax2.plot([dy(op_yd - 20), dy(op_yd - 8)],
-         [dz(op_foot_z), dz(hip_z)],
-         color=C_OPER, lw=2.5, zorder=11)
-ax2.plot([dy(op_yd + 20), dy(op_yd + 8)],
-         [dz(op_foot_z), dz(hip_z)],
-         color=C_OPER, lw=2.5, zorder=11)
-
-# Torso (thick line from hips to shoulders)
-shoulder_z = op_foot_z + 1400
+# Body line
 ax2.plot([dy(op_yd), dy(op_yd)],
-         [dz(hip_z), dz(shoulder_z)],
-         color=C_OPER, lw=3.5, zorder=11)
+         [dz(op_foot_z), dz(P_body_top)],
+         color=C_PERSON, lw=3.0, zorder=8, solid_capstyle="round")
 
-# Head (circle)
-head_z = op_foot_z + 1550
-head_r = 70
-ax2.add_patch(Circle((dy(op_yd), dz(head_z)),
-                       head_r / SC2_V,
-                       fc=C_OPER, ec=C_FRAME, lw=1.0, alpha=0.6, zorder=11))
+# Head circle
+ax2.add_patch(Circle((dy(op_yd), dz(P_head_cz)),
+                       HEAD_R / SC2_V,
+                       fc=C_HEAD_FC, ec=C_HEAD_EC, lw=1.0, zorder=8))
 
-# Arms — reaching forward and down toward pole
-hand_yd = op_yd + 60
-hand_z = op_foot_z + 1050
-# Upper arms from shoulders
-ax2.plot([dy(op_yd + 10), dy(hand_yd)],
-         [dz(shoulder_z - 50), dz(hand_z)],
-         color=C_OPER, lw=2.0, zorder=11)
-ax2.plot([dy(op_yd - 5), dy(hand_yd - 10)],
-         [dz(shoulder_z - 50), dz(hand_z + 30)],
-         color=C_OPER, lw=2.0, zorder=11)
+# Label
+ax2.text(dy(op_yd - 40), dz(op_foot_z + PERSON_H / 2),
+         f"{PERSON_H}mm\nOPERATOR\n(shoes)",
+         ha="right", va="center", fontsize=5.5, color=C_HEAD_EC,
+         **FONT, zorder=15)
 
-# Feet (small rectangles)
-for foot_offset in [-20, 20]:
-    ax2.add_patch(Rectangle((dy(op_yd + foot_offset - 8), dz(op_foot_z - 5)),
-                              20 / SC2_H, 8 / SC2_V,
-                              fc=C_OPER, ec="none", alpha=0.5, zorder=11))
-
-ax2.text(dy(op_yd - 50), dz(head_z + 100),
-         "OPERATOR", ha="center", va="bottom",
-         fontsize=6, color=C_OPER, fontweight="bold", **FONT, zorder=15)
+# Pole grip point (on body line at chest height)
+hand_yd = op_yd
+hand_z = op_foot_z + 1100
 
 # ── Telescoping push pole (item 4: show attachment) ──────────────────────
-# Pole from operator's hands down to beam center
+# Pole from operator grip to beam center
 pole_top_yd = hand_yd
 pole_top_z = hand_z
 pole_bot_yd = beam_yd

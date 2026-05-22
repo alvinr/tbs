@@ -429,84 +429,33 @@ for rx in [wk_l + 30, wk_l + 150, wk_r - 30]:
                              riser_w / H_SC, (GRATE_Z_BOT - TRAY_FLOOR_Z) / V_SC,
                              fc="#B0B0B8", ec=C_FRAME, lw=0.5, zorder=7))
 
-# ── Beam end assembly — accurate cross-section ─────────────────────────
-# PVC cap protruding past beam end
-pvc_ext_x = beam_x_l - PVC_EXTEND
-cap_end_x = pvc_ext_x - CAP_CLOSED_T
-ax.add_patch(Rectangle((sx(pvc_ext_x), sz(BEAM_Z_BOT + BEAM_T + 0.3)),
-                         PVC_EXTEND / H_SC, PVC_OD / V_SC,
-                         fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=9.6))
-cap_od = PVC_OD + 2 * CAP_WALL_T
-ax.add_patch(Rectangle((sx(cap_end_x), sz(BEAM_Z_BOT + BEAM_T + 0.3 - CAP_WALL_T)),
-                         (PVC_EXTEND + CAP_CLOSED_T) / H_SC,
-                         cap_od / V_SC,
-                         fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.6, zorder=9.5))
+# ── Simplified beam end + carriage indicator ─────────────────────────
+# Beam end cap and carriage assembly are fully detailed in panels A–E.
+# This elevation shows only a simplified support indicator at the beam end.
+carriage_cx = beam_x_l + 80
 
-# Carriage at beam end — wheels on tray floor, projected through beam
-carriage_cx = beam_x_l + 80   # 80mm inside from beam end
-
-# Wheel profile (projected through beam — higher zorder, semi-transparent)
-ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
-                               WHEEL_DIA / H_SC, WHEEL_DIA / V_SC,
-                               fc=C_NYLON, ec=C_WHEEL, lw=2.0, alpha=0.5,
-                               ls="--", zorder=10.5))
-ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
-                               6 / H_SC, 6 / V_SC,
-                               fc=C_WHEEL, ec=C_OUT, lw=1.0, zorder=10.6))
-# Contact patch on tray floor
-ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2), sx(carriage_cx + WHEEL_WIDTH / 2)],
-        [sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z)],
-        color=C_WHEEL, lw=2.0, zorder=10.5)
-
-# Fork bracket (seen edge-on in X-Z: thin vertical plates in Yd)
-fork_top_z = WHEEL_AXLE_Z + 6
-fork_bot_z = WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4
-for off in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-    ax.plot([sx(carriage_cx + off), sx(carriage_cx + off)],
-            [sz(fork_top_z), sz(fork_bot_z)],
-            color=C_FRAME, lw=1.2, zorder=10.5)
-# Axle pin through wheel
-ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2 - 4), sx(carriage_cx + WHEEL_WIDTH / 2 + 4)],
-        [sz(WHEEL_AXLE_Z), sz(WHEEL_AXLE_Z)],
-        color=C_FRAME, lw=1.0, zorder=10.6)
-
-# L-bracket arm (horizontal plate at fork top, visible as line in X-Z)
-brk_half = WHEEL_WIDTH / 2 + 18
-ax.plot([sx(carriage_cx - brk_half), sx(carriage_cx + brk_half)],
-        [sz(fork_top_z), sz(fork_top_z)],
-        color=C_FRAME, lw=1.5, zorder=10.5)
-# Vertical arm from L-bracket to beam bottom
+# Carriage support point on tray floor (triangle marker — fixed screen size)
+ax.scatter([sx(carriage_cx)], [sz(TRAY_FLOOR_Z)],
+           s=250, c=C_NYLON, edgecolors=C_WHEEL, linewidths=1.5,
+           marker='v', zorder=10.5)
+# Dashed line from support point up to beam bottom
 ax.plot([sx(carriage_cx), sx(carriage_cx)],
-        [sz(fork_top_z), sz(BEAM_Z_BOT)],
-        color=C_FRAME, lw=1.2, ls="--", zorder=10.3)
+        [sz(TRAY_FLOOR_Z), sz(BEAM_Z_BOT)],
+        color=C_FRAME, lw=1.0, ls="--", zorder=10)
 
-# U-clamp top plate on beam
-uc_extent = 15
-ax.add_patch(Rectangle((sx(carriage_cx - uc_extent), sz(BEAM_Z_TOP)),
-                         2 * uc_extent / H_SC, UC_T / V_SC,
-                         fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=11))
-
-# Carriage label
-leader(ax, sx(carriage_cx), sz(TRAY_FLOOR_Z - 2),
-       sx(carriage_cx + 250), sz(TRAY_FLOOR_Z - 25),
-       "LEFT CARRIAGE\n(PROJECTED)",
+leader(ax, sx(carriage_cx + 10), sz(TRAY_FLOOR_Z - 3),
+       sx(carriage_cx + 300), sz(TRAY_FLOOR_Z - 22),
+       "CARRIAGE (SEE DETAIL B)",
        fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
-# ── Detail callouts ──────────────────────────────────────────────────────
-# Detail A — beam end with PVC cap
-ax.add_patch(mpatches.Ellipse((sx(beam_x_l), sz(BEAM_Z_BOT + BEAM_W / 2)),
-                               150 / H_SC, 80 / V_SC,
+# ── Combined detail callout ──────────────────────────────────────────────
+callout_cx = beam_x_l + 40
+callout_cz = (TRAY_FLOOR_Z + BEAM_Z_TOP) / 2
+ax.add_patch(mpatches.Ellipse((sx(callout_cx), sz(callout_cz)),
+                               300 / H_SC, 90 / V_SC,
                                fc="none", ec="#CC0000", lw=1.5, ls="--", zorder=20))
-ax.text(sx(beam_x_l), sz(BEAM_Z_BOT - 30),
-        "DETAIL A", ha="center", va="top", fontsize=7, color="#CC0000",
-        fontweight="bold", **FONT, zorder=20)
-
-# Detail B — carriage on tray floor near beam end
-ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
-                               200 / H_SC, 80 / V_SC,
-                               fc="none", ec="#0066AA", lw=1.5, ls="--", zorder=20))
-ax.text(sx(carriage_cx), sz(WHEEL_AXLE_Z + 50),
-        "DETAIL B", ha="center", va="bottom", fontsize=7, color="#0066AA",
+ax.text(sx(callout_cx), sz(BEAM_Z_TOP + 30),
+        "DETAILS A, B", ha="center", va="bottom", fontsize=7, color="#CC0000",
         fontweight="bold", **FONT, zorder=20)
 
 

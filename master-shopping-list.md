@@ -19,7 +19,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
-| 5. Print washing — water system | $3,009 | $4,600 |
+| 5. Print washing — water system | $3,135 | $4,766 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
@@ -29,7 +29,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,750** | **~$22,650** |
+| **TOTAL (base build + 50-print run)** | **~$16,876** | **~$22,816** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -235,6 +235,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Processing tray subtotal: ~$1,277–$1,992**
 
+### Spray bar assembly
+
+| Item | Spec | Qty | Supplier | Est. cost |
+|------|------|-----|----------|-----------|
+| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined for 4,459mm) | 2 | Online Metals | $36–$56 |
+| [UHMW polyethylene block](https://www.mcmaster.com/8702K74) | 100×50×30mm runner pads for walkway grating | 2 | McMaster-Carr | $16–$24 |
+| [6061-T6 aluminum angle 1"×1"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-angle) | Guide rails, 2,200mm long | 2 | Online Metals | $20–$32 |
+| [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
+| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to spray bar | 1 | Amazon | $15 |
+| Fittings (reducer, end caps, clamps, bolts, clip) | ¾" FNPT×½" barb, end caps, hose clamps, M6 hardware, pole clip | misc | Amazon / McMaster | $24 |
+
+**Spray bar subtotal: ~$126–$166**
+
 ### Water system processing consumables
 
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -249,7 +262,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Water consumables subtotal: ~$205–$240**
 
-**Section total: $3,009–$4,600**
+**Section total: $3,135–$4,766**
 
 ---
 

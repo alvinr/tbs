@@ -15,7 +15,7 @@
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
-| **5. Processing water system (incl. tray)** | $2,954 | $3,705 | $4,455 |
+| **5. Processing water system (incl. tray, spray bar)** | $3,080 | $3,851 | $4,621 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $600 | $808 | $1,015 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
@@ -232,9 +232,10 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Valves and fittings (incl. S60×6 adapters, check valves CV1/CV3/CV4) | $390 | $630 |
 | Pipe (HDPE, spray bar) | $100 | $140 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,177 | $1,857 |
+| Spray bar assembly (aluminum beam, runners, guide rails, pole, hose) | $126 | $166 |
 | Electrical (12V fuse block, wiring) | $50 | $50 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
-| **Water system total** | **$2,954** | **$4,455** |
+| **Water system total** | **$3,080** | **$4,621** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -455,14 +456,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual) | $2,200 |
-| Water system (incl. processing tray) | $2,954 |
+| Water system (incl. processing tray, spray bar) | $3,080 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $600 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$13,036** |
+| **Scenario A total** | **~$13,162** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -472,7 +473,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + electric actuation) | $3,227 |
-| Water system (incl. processing tray) | $3,705 |
+| Water system (incl. processing tray, spray bar) | $3,851 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $808 |
 | Ceiling rail suspension | $208 |
@@ -480,7 +481,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$18,430** |
+| **Scenario B total (excl. CDL)** | **~$18,576** |
 
 ### Scenario C — Full production, own transport, CDL
 

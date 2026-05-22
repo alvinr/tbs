@@ -295,13 +295,13 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 **Sheet 3 — Fastening details: D-ring lashing, anti-rotation lip, access gate, strap routing**
 ![TBS-001 IBC Stacking — Sheet 3: Fastening Details](assets/ibc-stacking-sheet3.png)
 
-**Sheet 4 — External plumbing panel elevation: View from outside the container sealed end wall. 4× 2" NPT bulkhead unions stacked vertically on container centerline — fill ports (Blue IBC-1 at 2,250mm, Blue IBC-2 at 2,150mm) above IBC tops for gravity feed, drain ports (Brown IBC-3 at 400mm, Waste IBC-4 at 200mm) at bottom. Reinforcing plate, camlock fittings, height dimensions**
+**Sheet 4 — External plumbing panel elevation: View from outside the container sealed end wall. 3× 2" NPT bulkhead unions stacked vertically on container centerline — fill port X1 (Blue IBC-1 at 2,250mm) above IBC tops for gravity feed (IBC-2 self-levels via 2" cross-connect), drain ports X3 (Brown IBC-3 at 400mm) and X4 (Waste IBC-4 at 200mm) at bottom. Reinforcing plate, camlock fittings, height dimensions**
 ![TBS-001 IBC Stacking — Sheet 4: External Plumbing Panel Elevation](assets/ibc-stacking-sheet4.png)
 
-**Sheet 5 — Internal plumbing plan view: Looking down at IBC zone showing two IBC columns with 270mm central plumbing corridor. IBC valve faces point toward corridor (DN50 butterfly valve, S60×6 thread). Pipe runs from end-wall bulkhead unions through corridor to each IBC via S60×6 to 1" NPT adapters. Ball valves (V1–V4) at each IBC connection. All internal pipes 1" HDPE SDR-11**
+**Sheet 5 — Internal plumbing plan view: Looking down at IBC zone showing two IBC columns with 270mm central plumbing corridor. IBC valve faces point toward corridor (DN50 butterfly valve, S60×6 thread). X1 fill pipe routes from end-wall bulkhead through corridor to IBC-1. 2" cross-connect between IBC-1 and IBC-2 (self-leveling, no valve). Ball valves (V1/V3/V4) at IBC connections. All internal pipes 1" HDPE SDR-11**
 ![TBS-001 IBC Stacking — Sheet 5: Internal Plumbing Plan View](assets/ibc-stacking-sheet5.png)
 
-**Sheet 6 — Internal plumbing elevation: View from inside the container looking at the sealed end wall. Shows 4 bulkhead unions on centerline with pipe routing to flanking IBCs. Fill pipes (F1/F2) route horizontally from upper bulkheads through corridor, drop through IBC fill caps (DN150, offset ~250mm from valve face). Drain pipes (D3/D4) connect at IBC DN50 butterfly valves (~185mm above floor, corridor-facing), rise to bulkhead height, route horizontally to wall. Blue outflow manifold (VB1/VB2 → tee → VB3 → P-01). P-03 waste evacuation pump on D4**
+**Sheet 6 — Internal plumbing elevation: View from inside the container looking at the sealed end wall. Shows 3 bulkhead unions (X1/X3/X4) on centerline with pipe routing to flanking IBCs. X1 fill pipe routes horizontally from upper bulkhead through corridor, drops through IBC-1 fill cap (DN150). 2" cross-connect between IBC-1 and IBC-2 at valve height (self-leveling, no valve). Drain pipes (X3/X4) connect at IBC DN50 butterfly valves (~185mm above floor, corridor-facing), rise to bulkhead height, route horizontally to wall. Blue outflow manifold (VB1/VB2 → tee → VB3 → P-01). P-03 waste evacuation pump on X4**
 ![TBS-001 IBC Stacking — Sheet 6: Internal Plumbing Elevation](assets/ibc-stacking-sheet6.png)
 
 ---

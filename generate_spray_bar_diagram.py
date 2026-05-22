@@ -1013,6 +1013,121 @@ draw_dim_v(ax_c, cy(wheel2_yd + WHEEL_DIA / 2 + 8),
            cz(TRAY_FLOOR_Z), cz(TRAY_FLOOR_Z + WHEEL_DIA),
            f"Ø{WHEEL_DIA}mm", offset=8 / SC_C, fs=5, font=FONT, right=True)
 
+# ── Detail C callout on Detail B ─────────────────────────────────────────
+ax_c.add_patch(Circle((cy(wheel1_yd), cz(WHEEL_AXLE_Z)),
+                        (WHEEL_DIA / 2 + 8) / SC_C,
+                        fc="none", ec="#008800", lw=1.5, ls="--", zorder=20))
+ax_c.text(cy(wheel1_yd), cz(WHEEL_AXLE_Z + WHEEL_DIA / 2 + 10),
+          "C", ha="center", va="bottom", fontsize=9, color="#008800",
+          fontweight="bold", **FONT, zorder=20)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DETAIL C INSET — Wheel attachment (section along axle centerline)
+# Shows fork bracket arms, nylon wheel bore, axle pin, snap-ring retention,
+# and connection to L-bracket horizontal arm.
+# ─────────────────────────────────────────────────────────────────────────────
+ax_w = ax_c.inset_axes([0.52, 0.04, 0.46, 0.85])
+ax_w.set_facecolor("#FAFAF5")
+for spine in ax_w.spines.values():
+    spine.set_edgecolor("#008800")
+    spine.set_linewidth(1.2)
+ax_w.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
+
+w_xl, w_xr = -21, 21
+w_yb, w_yt = -30, 25
+ax_w.set_xlim(w_xl, w_xr)
+ax_w.set_ylim(w_yb, w_yt)
+
+ax_w.text(0, w_yt - 1,
+          "DETAIL C — WHEEL ATTACHMENT",
+          ha="center", va="top", fontsize=5.5, color="#008800",
+          fontweight="bold", **FONT, zorder=20)
+ax_w.text(0, w_yt - 5,
+          "(SECTION ALONG AXLE — SCALE 2:1)",
+          ha="center", va="top", fontsize=4, color=C_DIM,
+          **FONT, zorder=20)
+
+# Section coordinates: X along axle, Y vertical (mm)
+# Axle center at origin.
+#   Fork arms:  X = -15..-11 (left),  +11..+15 (right), 4mm thick
+#   Wheel:      X = -10..+10, Ø50mm → Y = -25..+25
+#   Axle pin:   X = -17..+17, Ø10mm → Y = -5..+5
+#   L-bracket:  Y = +13..+18 (5mm arm above fork tops)
+
+C_NYLON_FILL = "#E8DCC0"
+
+# ── L-bracket horizontal arm (cut — hatched) ─────────────────────────────
+ax_w.add_patch(Rectangle((-15, 13), 30, 5,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+
+# ── Left fork arm (cut — hatched) ────────────────────────────────────────
+ax_w.add_patch(Rectangle((-15, -13), 4, 26,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+
+# ── Right fork arm (cut — hatched) ───────────────────────────────────────
+ax_w.add_patch(Rectangle((11, -13), 4, 26,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+
+# ── Nylon wheel body (cut — dot hatch) ───────────────────────────────────
+ax_w.add_patch(Rectangle((-10, -25), 20, 50,
+               fc=C_NYLON_FILL, ec=C_WHEEL, lw=1.5, hatch="...", zorder=3))
+
+# ── Clearance gaps fork ↔ wheel (1mm each side) ─────────────────────────
+for gap_x in [-11, 10]:
+    ax_w.add_patch(Rectangle((gap_x, -13), 1, 26,
+                   fc="#FAFAF5", ec="none", zorder=3.5))
+
+# ── Axle pin (not cut — solid fill, passes through) ─────────────────────
+ax_w.add_patch(Rectangle((-17, -5), 34, 10,
+               fc="#D0D0D8", ec=C_FRAME, lw=1.0, zorder=5))
+
+# Clear bore through wheel (axle sits in this)
+ax_w.add_patch(Rectangle((-10, -5), 20, 10,
+               fc="#D0D0D8", ec="none", zorder=5))
+
+# ── Snap rings at axle ends (retain axle in fork) ────────────────────────
+for sr_x in [-17, 15.5]:
+    ax_w.add_patch(Rectangle((sr_x, -7), 1.5, 2,
+                   fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
+    ax_w.add_patch(Rectangle((sr_x, 5), 1.5, 2,
+                   fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
+
+# ── Tray floor reference ─────────────────────────────────────────────────
+ax_w.plot([w_xl, w_xr], [-25, -25],
+          color=C_TRAY, lw=1.0, ls="--", zorder=2)
+ax_w.text(w_xr - 1, -26, "TRAY FLOOR",
+          ha="right", va="top", fontsize=4, color=C_DIM,
+          style="italic", **FONT, zorder=15)
+
+# ── Labels ────────────────────────────────────────────────────────────────
+leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
+       "L-BRACKET\nHORIZ. ARM\n(5mm AL)",
+       fs=4, color=C_FRAME, font=FONT, zorder=20)
+
+leader(ax_w, 13, 0, w_xr - 1, -10,
+       "4mm AL\nFORK ARM",
+       fs=4, color=C_FRAME, font=FONT, zorder=20)
+
+ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
+          ha="center", va="top", fontsize=4, color=C_WHEEL,
+          **FONT, zorder=20)
+
+leader(ax_w, 5, 5, 5, 10,
+       "Ø10mm SS\nAXLE PIN",
+       fs=4, color="#888888", font=FONT, zorder=20)
+
+ax_w.text(-17.5, -10, "SNAP\nRING",
+          ha="center", va="top", fontsize=4, color="#666666",
+          **FONT, zorder=20)
+
+# ── Dimensions ────────────────────────────────────────────────────────────
+draw_dim_h(ax_w, -10, 10, w_yb + 3,
+           "20mm", offset=2, fs=4.5, font=FONT)
+
+draw_dim_v(ax_w, w_xl + 2, -5, 5,
+           "Ø10", offset=2, fs=4, font=FONT)
+
 
 # ── Save ──────────────────────────────────────────────────────────────────
 os.makedirs("diagrams", exist_ok=True)

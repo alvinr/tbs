@@ -1027,15 +1027,69 @@ for w_yd in [wheel1_yd, wheel2_yd]:
                                    fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
 # Beam-to-drop M6 set screws — horizontal (Yd) through drop into beam
+# Shown with zigzag thread profile, hex socket head, and nylon tip.
+M6_DIA = 6
+M6_R = M6_DIA / 2
+SCREW_LEN = brk_t_c + 3  # 8mm total (through drop + into beam wall)
+THREAD_PITCH = 1.5  # visual pitch for clarity at 1:2 scale
+SOCKET_DEPTH = 2.5  # hex socket recess depth
+TIP_LEN = 1.5  # nylon tip pad length
+
 for ss_z in [BEAM_Z_BOT + 10, BEAM_Z_TOP - 10]:
-    # Left drop: screw enters from outer face, tip toward beam
-    ax_c.add_patch(Rectangle((cy(drop_yd_l - 2), cz(ss_z - 3)),
-                               (brk_t_c + 3) / SC_C, 6 / SC_C,
-                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-    # Right drop: screw enters from outer face, tip toward beam
-    ax_c.add_patch(Rectangle((cy(drop_yd_r - 1), cz(ss_z - 3)),
-                               (brk_t_c + 3) / SC_C, 6 / SC_C,
-                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+    # Left drop: screw enters from left (outer face), tip toward beam (right)
+    s_yd = drop_yd_l - 2  # screw start (head end)
+    # Body outline
+    ax_c.add_patch(Rectangle((cy(s_yd), cz(ss_z - M6_R)),
+                               SCREW_LEN / SC_C, M6_DIA / SC_C,
+                               fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=11))
+    # Nylon tip
+    ax_c.add_patch(Rectangle((cy(s_yd + SCREW_LEN - TIP_LEN), cz(ss_z - M6_R)),
+                               TIP_LEN / SC_C, M6_DIA / SC_C,
+                               fc="#E8E0C0", ec=C_FRAME, lw=0.4, zorder=11.2))
+    # Hex socket recess
+    ax_c.add_patch(Rectangle((cy(s_yd), cz(ss_z - 1.5)),
+                               SOCKET_DEPTH / SC_C, 3 / SC_C,
+                               fc="#606068", ec=C_FRAME, lw=0.4, zorder=11.5))
+    # Thread zigzag — top and bottom edges
+    n_teeth = int(SCREW_LEN / THREAD_PITCH)
+    zig_yds = [s_yd + i * THREAD_PITCH for i in range(n_teeth + 1)]
+    zig_yds = [y for y in zig_yds if y <= s_yd + SCREW_LEN]
+    for edge_sign in [1, -1]:  # +1 = top edge, -1 = bottom edge
+        z_base = ss_z + edge_sign * M6_R
+        tooth = 0.8 * (-edge_sign)  # teeth point inward
+        pts_y = []
+        pts_z = []
+        for i, yy in enumerate(zig_yds):
+            pts_y.append(cy(yy))
+            pts_z.append(cz(z_base + (tooth if i % 2 else 0)))
+        ax_c.plot(pts_y, pts_z, color=C_FRAME, lw=0.5, zorder=11.8)
+
+    # Right drop: screw enters from right (outer face), tip toward beam (left)
+    s_yd_r = drop_yd_r + brk_t_c + 2 - SCREW_LEN  # screw tip end
+    # Body outline
+    ax_c.add_patch(Rectangle((cy(s_yd_r), cz(ss_z - M6_R)),
+                               SCREW_LEN / SC_C, M6_DIA / SC_C,
+                               fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=11))
+    # Nylon tip (left end for right screw)
+    ax_c.add_patch(Rectangle((cy(s_yd_r), cz(ss_z - M6_R)),
+                               TIP_LEN / SC_C, M6_DIA / SC_C,
+                               fc="#E8E0C0", ec=C_FRAME, lw=0.4, zorder=11.2))
+    # Hex socket recess (right end)
+    ax_c.add_patch(Rectangle((cy(s_yd_r + SCREW_LEN - SOCKET_DEPTH), cz(ss_z - 1.5)),
+                               SOCKET_DEPTH / SC_C, 3 / SC_C,
+                               fc="#606068", ec=C_FRAME, lw=0.4, zorder=11.5))
+    # Thread zigzag — top and bottom edges
+    zig_yds_r = [s_yd_r + i * THREAD_PITCH for i in range(n_teeth + 1)]
+    zig_yds_r = [y for y in zig_yds_r if y <= s_yd_r + SCREW_LEN]
+    for edge_sign in [1, -1]:
+        z_base = ss_z + edge_sign * M6_R
+        tooth = 0.8 * (-edge_sign)
+        pts_y = []
+        pts_z = []
+        for i, yy in enumerate(zig_yds_r):
+            pts_y.append(cy(yy))
+            pts_z.append(cz(z_base + (tooth if i % 2 else 0)))
+        ax_c.plot(pts_y, pts_z, color=C_FRAME, lw=0.5, zorder=11.8)
 
 leader(ax_c, cy(wheel2_yd + WHEEL_WIDTH / 2 + 2), cz(WHEEL_AXLE_Z),
        cy(wheel2_yd + 55), cz(WHEEL_AXLE_Z - 20),
@@ -1228,6 +1282,136 @@ draw_dim_h(ax_w, -10, 10, w_yb + 3,
 draw_dim_v(ax_w, w_xl + 2, -5, 5,
            "Ø10", offset=2, fs=5, font=FONT)
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DETAIL D — Wheel attachment plan view (X-Yd, looking down)
+# Shows beam (cut), L-bracket arm, fork brackets, wheel footprints,
+# and set screw positions from above.
+# ─────────────────────────────────────────────────────────────────────────────
+ax_d = fig.add_subplot(gs[2, 1])
+ax_d.set_facecolor(C_BG)
+ax_d.axis("off")
+
+# Plan view coordinates: X horizontal (along beam length), Yd vertical (depth)
+# Center on one carriage. Beam runs left-right (X). Wheels above/below (Yd).
+# Scale 1:2 to match Detail B.
+SC_D = 2.0
+
+D_X_LO = -80
+D_X_HI = 80
+D_YD_LO = -70
+D_YD_HI = 70
+
+ax_d.set_xlim(D_X_LO / SC_D, D_X_HI / SC_D)
+ax_d.set_ylim(D_YD_LO / SC_D, D_YD_HI / SC_D)
+
+def px(x_mm):
+    return x_mm / SC_D
+
+def py_d(yd_mm):
+    return yd_mm / SC_D
+
+# Title
+ax_d.text(px(0), py_d(D_YD_HI - 2),
+          "DETAIL D — WHEEL ATTACHMENT PLAN",
+          ha="center", va="top", fontsize=8, color="#AA6600",
+          fontweight="bold", **FONT, zorder=20)
+ax_d.text(px(0), py_d(D_YD_HI - 10),
+          "(LOOKING DOWN — SCALE 1:2)",
+          ha="center", va="top", fontsize=5, color=C_DIM,
+          **FONT, zorder=20)
+
+_bbox_d = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
+
+# ── Beam / spray pipe (cut section — runs left-right in X) ──────────────
+ax_d.add_patch(Rectangle((px(-BEAM_W / 2), py_d(-BEAM_W / 2)),
+                           BEAM_W / SC_D, BEAM_W / SC_D,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=5))
+ax_d.add_patch(Rectangle((px(-BEAM_BORE / 2), py_d(-BEAM_BORE / 2)),
+                           BEAM_BORE / SC_D, BEAM_BORE / SC_D,
+                           fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=5.5))
+ax_d.text(px(0), py_d(0),
+          "40×40 SHS\n(SPRAY PIPE)",
+          ha="center", va="center", fontsize=5, color=C_FRAME,
+          bbox=_bbox_d, **FONT, zorder=15)
+
+# ── L-bracket arm (horizontal plate spanning both wheels, runs in Yd) ───
+arm_half_span = WHEEL_SPACING_YD / 2 + 18  # extends 18mm past each wheel
+arm_w_x = 20  # arm width in X direction (visible in plan)
+brk_t_plan = 5
+ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-arm_half_span)),
+                           arm_w_x / SC_D, (2 * arm_half_span) / SC_D,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
+                           hatch="///", alpha=0.7, zorder=4))
+
+# ── Drop cheeks (vertical plates flanking beam, shown as rectangles) ────
+drop_w_yd = brk_t_plan  # 5mm wide in Yd
+for side in [-1, 1]:
+    drop_yd_d = side * (BEAM_W / 2) + (0 if side > 0 else -drop_w_yd)
+    ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(drop_yd_d)),
+                               arm_w_x / SC_D, drop_w_yd / SC_D,
+                               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, zorder=6))
+
+# ── Set screws (M6, 2 per drop — shown as circles in plan) ──────────────
+ss_x_positions = [-6, 6]  # two screws per drop, spaced along X
+for side in [-1, 1]:
+    ss_yd = side * (BEAM_W / 2 + drop_w_yd / 2)
+    for ss_x in ss_x_positions:
+        ax_d.add_patch(Circle((px(ss_x), py_d(ss_yd)),
+                                M6_DIA / 2 / SC_D,
+                                fc="#606068", ec=C_FRAME, lw=0.5, zorder=8))
+        # Hex socket indication (inner hexagon)
+        ax_d.add_patch(mpatches.RegularPolygon((px(ss_x), py_d(ss_yd)),
+                                                 numVertices=6, radius=1.5 / SC_D,
+                                                 fc="#404048", ec=C_FRAME, lw=0.3, zorder=8.5))
+
+leader(ax_d, px(ss_x_positions[1] + 4), py_d(BEAM_W / 2 + drop_w_yd / 2),
+       px(D_X_HI - 15), py_d(BEAM_W / 2 + 25),
+       "M6 SET SCREW\n(TYP. 4×)",
+       fs=5, color="#606068", font=FONT, zorder=20, bbox=_bbox_d)
+
+# ── Fork brackets (vertical plates straddling each wheel) ────────────────
+fork_t = 6  # fork thickness in X
+for w_sign in [-1, 1]:  # two wheels
+    w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
+    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        fork_yd = w_yd_ctr + offset
+        ax_d.add_patch(Rectangle((px(-fork_t / 2 - 4), py_d(fork_yd - 1)),
+                                   fork_t / SC_D, 2 / SC_D,
+                                   fc=C_ALUM_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+
+# ── Wheels (footprint — rectangles in plan, width × diameter) ────────────
+for w_sign in [-1, 1]:
+    w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
+    ax_d.add_patch(Rectangle((px(-WHEEL_DIA / 2), py_d(w_yd_ctr - WHEEL_WIDTH / 2)),
+                               WHEEL_DIA / SC_D, WHEEL_WIDTH / SC_D,
+                               fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
+    # Axle pin (dot at center)
+    ax_d.add_patch(Circle((px(0), py_d(w_yd_ctr)),
+                            5 / SC_D,
+                            fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=7))
+
+# ── Wheel labels ────────────────────────────────────────────────────────
+leader(ax_d, px(WHEEL_DIA / 2), py_d(-WHEEL_SPACING_YD / 2),
+       px(D_X_HI - 10), py_d(-WHEEL_SPACING_YD / 2 - 10),
+       f"Ø{WHEEL_DIA}mm WHEEL\n({WHEEL_WIDTH}mm WIDE)",
+       fs=5, color=C_WHEEL, font=FONT, zorder=20, bbox=_bbox_d)
+
+leader(ax_d, px(-arm_w_x / 2 - 1), py_d(0),
+       px(D_X_LO + 10), py_d(25),
+       "L-BRACKET ARM\n(5mm AL PLATE)",
+       fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_d)
+
+# ── Dimensions ──────────────────────────────────────────────────────────
+draw_dim_v(ax_d, px(D_X_LO + 8),
+           py_d(-WHEEL_SPACING_YD / 2), py_d(WHEEL_SPACING_YD / 2),
+           f"{WHEEL_SPACING_YD}mm\nWHEEL\nSPACING",
+           offset=3 / SC_D, fs=5, font=FONT)
+
+draw_dim_h(ax_d, px(-WHEEL_DIA / 2), px(WHEEL_DIA / 2),
+           py_d(D_YD_LO + 12),
+           f"Ø{WHEEL_DIA}mm",
+           offset=3 / SC_D, fs=5, font=FONT)
 
 # ── Full-width title block ────────────────────────────────────────────────
 ax_tb = fig.add_axes([0.05, 0.005, 0.90, 0.04])

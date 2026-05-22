@@ -135,7 +135,7 @@ CUT_X = int(pole_x) + 300
 X_LO = -100
 X_HI = CUT_X + 150
 Z_LO = -50
-Z_HI = 1100
+Z_HI = 2050
 
 ax.set_xlim(sx(X_LO), sx(X_HI))
 ax.set_ylim(sz(Z_LO), sz(Z_HI))
@@ -392,34 +392,25 @@ notes = [
 draw_notes(ax, notes, sx(X_LO + 50), sz(250), spacing=5 / V_SC,
            fs=5.5, font=FONT, width=1800 / H_SC)
 
-# ── Operator figure (lollipop, standing on near walkway) ────────────────
-oper_x = pole_x - 150  # offset from pole for clarity
-oper_foot_z = GRATE_Z_TOP
-oper_h = 320  # total height in mm
-oper_head_r = 30
+# ── Person silhouette (same style as hinge panel diagram) ───────────────
+PERSON_H = 1780
+HEAD_R = 80
+oper_x = pole_x - 150
+P_FOOT = GRATE_Z_TOP
+P_HEAD = P_FOOT + PERSON_H
 # Body (vertical line from feet to neck)
 ax.plot([sx(oper_x), sx(oper_x)],
-        [sz(oper_foot_z), sz(oper_foot_z + oper_h - oper_head_r)],
-        color=C_OPER, lw=1.5, zorder=14)
-# Head (circle)
+        [sz(P_FOOT), sz(P_HEAD)],
+        color="#2060A0", lw=3.0, zorder=14, solid_capstyle="round")
+# Head (circle — use Ellipse to compensate for H/V scale difference)
 ax.add_patch(mpatches.Ellipse(
-    (sx(oper_x), sz(oper_foot_z + oper_h - oper_head_r)),
-    oper_head_r * 2 / H_SC, oper_head_r * 2 / V_SC,
-    fc="none", ec=C_OPER, lw=1.2, zorder=14))
-# Arms (one arm extended toward pole)
-arm_z = oper_foot_z + oper_h * 0.55
-ax.plot([sx(oper_x - 40), sx(oper_x + 80)],
-        [sz(arm_z + 20), sz(arm_z - 10)],
-        color=C_OPER, lw=1.2, zorder=14)
-# Legs (spread)
-leg_z = oper_foot_z + oper_h * 0.38
-ax.plot([sx(oper_x - 25), sx(oper_x), sx(oper_x + 25)],
-        [sz(oper_foot_z), sz(leg_z), sz(oper_foot_z)],
-        color=C_OPER, lw=1.2, zorder=14)
-
-ax.text(sx(oper_x), sz(oper_foot_z + oper_h + 15),
-        "OPERATOR", ha="center", va="bottom",
-        fontsize=5, color=C_OPER, **FONT, zorder=15)
+    (sx(oper_x), sz(P_HEAD + HEAD_R)),
+    HEAD_R * 2 / H_SC, HEAD_R * 2 / V_SC,
+    fc="#70A8D8", ec="#1A4D80", lw=1.0, zorder=14))
+# Label
+ax.text(sx(oper_x - 30), sz(P_FOOT + PERSON_H / 2),
+        f"{PERSON_H}mm\noperator\n(shoes)",
+        ha="right", va="center", fontsize=5, color="#1A4D80", **FONT, zorder=15)
 
 view_ctr_x = (X_LO + X_HI) / 2
 ax.text(sx(view_ctr_x), sz(Z_HI - 5),
@@ -752,7 +743,7 @@ ax2.plot([dy(beam_yd), dy(beam_yd)],
          [dz(BEAM_Z_BOT - 1), dz(TRAY_FLOOR_Z + 2)],
          color=C_WATER, lw=1.0, alpha=0.5, zorder=6)
 
-# ── Carriage wheels (2× Ø50mm nylon, equal scale circles) ───────────────
+# ── Carriage wheels (simplified — see Detail B for full assembly) ───────
 carriage_ctr_yd = beam_yd
 cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2
 cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2
@@ -763,42 +754,10 @@ for cw_yd in [cw1_yd, cw2_yd]:
                             fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=6))
     ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
                             2 / SC2, fc=C_WHEEL, ec=C_OUT, lw=0.3, zorder=6.5))
-    ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2), dy(cw_yd + WHEEL_WIDTH / 2)],
-             [dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z)],
-             color=C_WHEEL, lw=1.5, zorder=5)
-    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-        ax2.plot([dy(cw_yd + offset), dy(cw_yd + offset)],
-                 [dz(WHEEL_AXLE_Z + 6), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4)],
-                 color=C_FRAME, lw=0.8, zorder=5.5)
-    ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2 - 4), dy(cw_yd + WHEEL_WIDTH / 2 + 4)],
-             [dz(WHEEL_AXLE_Z), dz(WHEEL_AXLE_Z)],
-             color=C_FRAME, lw=0.5, zorder=6.5)
 
-# L-bracket arm
-brk_arm_l = cw1_yd - 18
-brk_arm_r = cw2_yd + 18
-brk_t_op = 5
-ax2.add_patch(Rectangle((dy(brk_arm_l), dz(WHEEL_AXLE_Z - brk_t_op / 2)),
-                           (brk_arm_r - brk_arm_l) / SC2, brk_t_op / SC2,
-                           fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=7))
-
-# U-clamp over beam
-uc_l_op = carriage_ctr_yd - BEAM_W / 2 - UC_T - UC_GAP
-uc_r_op = carriage_ctr_yd + BEAM_W / 2 + UC_GAP + UC_T
-ax2.add_patch(Rectangle((dy(uc_l_op), dz(BEAM_Z_TOP)),
-                           (uc_r_op - uc_l_op) / SC2, UC_T / SC2,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, zorder=10))
-for u_yd in [uc_l_op, uc_r_op - UC_T]:
-    ax2.add_patch(Rectangle((dy(u_yd), dz(BEAM_Z_BOT + UC_T)),
-                               UC_T / SC2,
-                               (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / SC2,
-                               fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
-ax2.add_patch(Rectangle((dy(uc_l_op - UC_FLARE), dz(BEAM_Z_BOT)),
-                           (UC_T + UC_FLARE) / SC2, UC_T / SC2,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
-ax2.add_patch(Rectangle((dy(uc_r_op - UC_T), dz(BEAM_Z_BOT)),
-                           (UC_T + UC_FLARE) / SC2, UC_T / SC2,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+ax2.text(dy(carriage_ctr_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 8),
+         "SEE DETAIL B", ha="center", va="top",
+         fontsize=5, color="#0066AA", fontweight="bold", **FONT, zorder=15)
 
 # ── Pole from ball joint upward (~200mm shown) ─────────────────────────
 pole_yd = beam_yd
@@ -826,7 +785,7 @@ leader(ax2, dy(pole_yd + 3), dz(pole_base_z + pole_show_len / 2),
 
 leader(ax2, dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 5),
        dy(cw1_yd - 40), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 25),
-       f"Ø{WHEEL_DIA}mm NYLON WHEELS\n(2 PER CARRIAGE,\nFORK + AXLE PIN)",
+       f"Ø{WHEEL_DIA}mm NYLON\nWHEELS (×2)",
        fs=4.5, color=C_WHEEL, font=FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
@@ -1244,7 +1203,7 @@ ax_d.axis("off")
 
 SC_D = 2.0
 BEAM_SHOW_LEN = 140  # mm of beam shown on each side of center
-CARRIAGE_OFFSET_X = -80  # shift carriage toward beam end
+CARRIAGE_OFFSET_X = -BEAM_SHOW_LEN + 20  # carriage at beam end
 
 D_X_LO = -BEAM_SHOW_LEN - 20
 D_X_HI = BEAM_SHOW_LEN + 20

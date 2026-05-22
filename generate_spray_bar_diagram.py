@@ -87,10 +87,11 @@ WALL_T = 3
 # SHEET 1
 # ═════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(22, 17))
+fig = plt.figure(figsize=(28, 26))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(2, 2, figure=fig, width_ratios=[1.3, 1], height_ratios=[3, 1],
-              wspace=0.06, hspace=0.10)
+gs = GridSpec(3, 2, figure=fig, width_ratios=[1.3, 1],
+              height_ratios=[2.5, 1, 1],
+              wspace=0.06, hspace=0.08, bottom=0.045)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LEFT PANEL — X-Z elevation looking along Yd, left carriage area
@@ -382,11 +383,6 @@ ax.text(sx(-30), sz(Z_HI - 10),
         "CONTAINER\nLEFT WALL\n(X=0)", ha="right", va="top",
         fontsize=5, color=C_DIM, **FONT)
 
-title_block(ax, "SHEET 1 OF 1",
-            drawing_title="SPRAY BAR ASSEMBLY",
-            subtitle="GANTRY ELEVATION — VIEW ALONG Yd (LEFT CARRIAGE)",
-            scale_note="H 1:6 / V 1:1.5 (4× VERT EXAG) — ALL DIMS IN mm",
-            height=0.04)
 
 # ── Detail callout circle on main view ────────────────────────────────────
 cap_cx = beam_x_start - cap_t / 2
@@ -1027,12 +1023,9 @@ ax_c.text(cy(wheel1_yd), cz(WHEEL_AXLE_Z + WHEEL_DIA / 2 + 10),
 # Shows fork bracket arms, nylon wheel bore, axle pin, snap-ring retention,
 # and connection to L-bracket horizontal arm.
 # ─────────────────────────────────────────────────────────────────────────────
-ax_w = ax_c.inset_axes([0.52, 0.04, 0.46, 0.85])
-ax_w.set_facecolor("#FAFAF5")
-for spine in ax_w.spines.values():
-    spine.set_edgecolor("#008800")
-    spine.set_linewidth(1.2)
-ax_w.tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
+ax_w = fig.add_subplot(gs[2, 0])
+ax_w.set_facecolor(C_BG)
+ax_w.axis("off")
 
 w_xl, w_xr = -21, 21
 w_yb, w_yt = -30, 25
@@ -1041,11 +1034,11 @@ ax_w.set_ylim(w_yb, w_yt)
 
 ax_w.text(0, w_yt - 1,
           "DETAIL C — WHEEL ATTACHMENT",
-          ha="center", va="top", fontsize=5.5, color="#008800",
+          ha="center", va="top", fontsize=8, color="#008800",
           fontweight="bold", **FONT, zorder=20)
 ax_w.text(0, w_yt - 5,
           "(SECTION ALONG AXLE — SCALE 2:1)",
-          ha="center", va="top", fontsize=4, color=C_DIM,
+          ha="center", va="top", fontsize=5.5, color=C_DIM,
           **FONT, zorder=20)
 
 # Section coordinates: X along axle, Y vertical (mm)
@@ -1076,7 +1069,7 @@ ax_w.add_patch(Rectangle((-10, -25), 20, 50,
 # ── Clearance gaps fork ↔ wheel (1mm each side) ─────────────────────────
 for gap_x in [-11, 10]:
     ax_w.add_patch(Rectangle((gap_x, -13), 1, 26,
-                   fc="#FAFAF5", ec="none", zorder=3.5))
+                   fc=C_BG, ec="none", zorder=3.5))
 
 # ── Axle pin (not cut — solid fill, passes through) ─────────────────────
 ax_w.add_patch(Rectangle((-17, -5), 34, 10,
@@ -1097,37 +1090,45 @@ for sr_x in [-17, 15.5]:
 ax_w.plot([w_xl, w_xr], [-25, -25],
           color=C_TRAY, lw=1.0, ls="--", zorder=2)
 ax_w.text(w_xr - 1, -26, "TRAY FLOOR",
-          ha="right", va="top", fontsize=4, color=C_DIM,
+          ha="right", va="top", fontsize=5, color=C_DIM,
           style="italic", **FONT, zorder=15)
 
 # ── Labels ────────────────────────────────────────────────────────────────
 leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
        "L-BRACKET\nHORIZ. ARM\n(5mm AL)",
-       fs=4, color=C_FRAME, font=FONT, zorder=20)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
 leader(ax_w, 13, 0, w_xr - 1, -10,
        "4mm AL\nFORK ARM",
-       fs=4, color=C_FRAME, font=FONT, zorder=20)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
 ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
-          ha="center", va="top", fontsize=4, color=C_WHEEL,
+          ha="center", va="top", fontsize=5.5, color=C_WHEEL,
           **FONT, zorder=20)
 
 leader(ax_w, 5, 5, 5, 10,
        "Ø10mm SS\nAXLE PIN",
-       fs=4, color="#888888", font=FONT, zorder=20)
+       fs=5.5, color="#888888", font=FONT, zorder=20)
 
 ax_w.text(-17.5, -10, "SNAP\nRING",
-          ha="center", va="top", fontsize=4, color="#666666",
+          ha="center", va="top", fontsize=5, color="#666666",
           **FONT, zorder=20)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax_w, -10, 10, w_yb + 3,
-           "20mm", offset=2, fs=4.5, font=FONT)
+           "20mm", offset=2, fs=5.5, font=FONT)
 
 draw_dim_v(ax_w, w_xl + 2, -5, 5,
-           "Ø10", offset=2, fs=4, font=FONT)
+           "Ø10", offset=2, fs=5, font=FONT)
 
+
+# ── Full-width title block ────────────────────────────────────────────────
+ax_tb = fig.add_axes([0.05, 0.005, 0.90, 0.04])
+title_block(ax_tb, "SHEET 1 OF 1",
+            drawing_title="SPRAY BAR ASSEMBLY",
+            subtitle="GANTRY SPRAY BAR — ELEVATION, CROSS SECTION & DETAILS",
+            scale_note="MULTIPLE SCALES — ALL DIMS IN mm",
+            height=0.75)
 
 # ── Save ──────────────────────────────────────────────────────────────────
 os.makedirs("diagrams", exist_ok=True)

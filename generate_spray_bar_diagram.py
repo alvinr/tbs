@@ -808,18 +808,26 @@ ax2.text(dy(200), dz(bv2_z - 20),
          "1/2\" FLEX HOSE\n(4m COILED)",
          ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
-# ── Carriage wheels shown as ghost (item 3: context for wheel attachment) ─
-# Wheels exist at a different X station (under left/right walkways).
-# Show as dashed outline near the walkway inner edge for context.
-ghost_w_yd = WALKWAY_W - 30   # 270mm — near inner edge of walkway
-ghost_w_z = WHEEL_AXLE_Z
-ax2.add_patch(Circle((dy(ghost_w_yd), dz(ghost_w_z)),
-                       WHEEL_DIA / 2 / SC2_V,
-                       fc="none", ec=C_WHEEL, lw=1.0, ls="--", zorder=6))
-ax2.text(dy(ghost_w_yd), dz(ghost_w_z - WHEEL_DIA / 2 - 15),
-         f"WHEEL (Ø{WHEEL_DIA})\nAT CARRIAGE\n(BEHIND SECTION)",
-         ha="center", va="top", fontsize=4, color=C_WHEEL,
-         style="italic", **FONT, zorder=15)
+# ── Carriage wheels under walkway (2× Ø50mm nylon) ──────────────────────
+carriage_ctr_yd = 200
+cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2   # 100mm
+cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2   # 300mm
+
+for cw_yd in [cw1_yd, cw2_yd]:
+    ax2.add_patch(mpatches.Ellipse((dy(cw_yd), dz(WHEEL_AXLE_Z)),
+                                     WHEEL_DIA / SC2_H, WHEEL_DIA / SC2_V,
+                                     fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=6))
+    ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
+                            1.5 / SC2_V, fc=C_WHEEL, ec=C_OUT, lw=0.3, zorder=6.5))
+    # Contact patch on tray
+    ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2), dy(cw_yd + WHEEL_WIDTH / 2)],
+             [dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z)],
+             color=C_WHEEL, lw=1.5, zorder=5)
+
+ax2.text(dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 15),
+         f"Ø{WHEEL_DIA}mm NYLON WHEELS\n(2 PER CARRIAGE,\nUNDER WALKWAY)",
+         ha="center", va="top", fontsize=4.5, color=C_WHEEL,
+         **FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax2, dy(wk_yd_l), dy(wk_yd_r), dz(GRATE_Z_TOP + 50),
@@ -970,23 +978,38 @@ leader(ax_c, cy(plate_yd_r), cz(WHEEL_AXLE_Z),
        "AL L-BRACKET\n(TIG WELDED\nWELDMENT)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
 
-# ── Bolt indicators ─────────────────────────────────────────────────────
+# ── Bolt indicators (profile view — bolts are in the Yd-Z plane) ────────
 C_BOLT = "#808088"
-bolt_r = 2.5 / SC_C
+arm_top_z = WHEEL_AXLE_Z + brk_t_c / 2
+arm_bot_z = WHEEL_AXLE_Z - brk_t_c / 2
 
-# Fork-to-arm M5 through-bolts (1 per fork, visible as bolt-head circles)
+# Fork-to-arm M5 through-bolts — vertical (Z) through arm into fork
 for w_yd in [wheel1_yd, wheel2_yd]:
     for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
         fork_yd = w_yd + offset
-        ax_c.add_patch(Circle((cy(fork_yd), cz(WHEEL_AXLE_Z)),
-                                bolt_r, fc=C_BOLT, ec=C_FRAME, lw=0.8, zorder=11))
+        # Bolt head on top of arm
+        ax_c.add_patch(Rectangle((cy(fork_yd - 4), cz(arm_top_z)),
+                                   8 / SC_C, 3 / SC_C,
+                                   fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+        # Shank through arm
+        ax_c.add_patch(Rectangle((cy(fork_yd - 2.5), cz(arm_bot_z)),
+                                   5 / SC_C, brk_t_c / SC_C,
+                                   fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
+        # Nyloc nut below arm
+        ax_c.add_patch(Rectangle((cy(fork_yd - 4), cz(arm_bot_z - 4)),
+                                   8 / SC_C, 4 / SC_C,
+                                   fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-# Beam-to-drop M6 set screws (2 per drop, visible as socket-head circles)
-for drp in [drop_yd_l + brk_t_c / 2, drop_yd_r + brk_t_c / 2]:
-    for ss_z in [BEAM_Z_BOT + 10, BEAM_Z_TOP - 10]:
-        ax_c.add_patch(Circle((cy(drp), cz(ss_z)),
-                                bolt_r * 0.8, fc=C_BOLT, ec=C_FRAME,
-                                lw=0.6, zorder=11))
+# Beam-to-drop M6 set screws — horizontal (Yd) through drop into beam
+for ss_z in [BEAM_Z_BOT + 10, BEAM_Z_TOP - 10]:
+    # Left drop: screw enters from outer face, tip toward beam
+    ax_c.add_patch(Rectangle((cy(drop_yd_l - 2), cz(ss_z - 3)),
+                               (brk_t_c + 3) / SC_C, 6 / SC_C,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+    # Right drop: screw enters from outer face, tip toward beam
+    ax_c.add_patch(Rectangle((cy(drop_yd_r - 1), cz(ss_z - 3)),
+                               (brk_t_c + 3) / SC_C, 6 / SC_C,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
 leader(ax_c, cy(wheel2_yd + WHEEL_WIDTH / 2 + 2), cz(WHEEL_AXLE_Z),
        cy(wheel2_yd + 55), cz(WHEEL_AXLE_Z - 20),

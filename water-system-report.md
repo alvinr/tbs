@@ -109,7 +109,7 @@ IBC-2 (600L) ──┘                                                      │
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
-- Spray bar: aluminum structural beam + 3/4" HDPE spray tube spanning the full processing tray width (4,459mm), riding on walkway grating. See §3.5 for full design
+- Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
 - Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
@@ -242,84 +242,221 @@ The processing tray is permanently installed — it remains in place during both
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.
 
-### 3.5 Spray Bar Assembly
+### 3.5 Spray Bar Assembly — Gantry Design
 
-The spray bar delivers Blue (clean) and Brown (recycled) water evenly across the full width of the processing tray during print washing. The operator slides the bar along the length of the print (Yd direction, from film-plane side toward the pinhole wall), flooding the surface progressively.
+The spray bar delivers Blue (clean) water evenly across the processing tray during print washing. The operator slides the bar along the tray (Yd direction, from film-plane side toward the pinhole wall), flooding the print surface progressively.
+
+**Design concept:** The beam spans the open processing area between the left and right walkway inner edges (X=470 to X=4,329, span=3,859mm). At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. The aluminum SHS beam itself serves as the spray pipe — water flows through the hollow bore and exits through drilled holes in the bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
 
 **Design constraints:**
 
-- Must span the full processing tray width (4,459mm, X=170–4,629mm) including the areas beneath both walkway gratings, to ensure the entire print receives even wash coverage
-- Single-operator use — push/pull from the near walkway
-- Must be stiff enough to avoid excessive sag over a 3.9m unsupported span
-- Must travel 2,200mm along Yd (tray depth, from near rim to far rim)
+- Beam spans the open processing area (3,859mm) between walkway inner edges — does not extend under walkway grating
+- Beam top must clear walkway grating underside (Z=75mm) to avoid contact during travel
+- Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath the walkways
+- Single-operator use — push/pull from the near walkway via telescoping pole
+- Must travel 2,200mm along Yd (tray depth, near rim to far rim)
+- Tray rim walls provide lateral guidance — no separate guide rails required
 - Must accommodate a flexible water connection that follows the bar as it moves
 
 **Assembly components:**
 
-| Component | Specification | Purpose |
-|-----------|--------------|---------|
-| Structural beam | 6061-T6 aluminum SHS, 4,459mm long (see sizing below) | Spans tray width, supports spray tube, resists sag |
-| Spray tube | 3/4" HDPE SDR-11, 4,459mm long, clamped to beam underside | Water distribution with drilled spray holes |
-| Runner pads (×2) | UHMW polyethylene blocks, ~100×50×30mm | Slide on walkway grating surface at each end |
-| Guide rail (×2) | 25×25×3mm aluminum angle, ~2,200mm long, bolted to grating | Keeps bar tracking straight along Yd axis |
-| Push pole | Telescoping aluminum pool pole, 1.2–2.4m | Operator controls bar position from near walkway |
-| Pole clip | Stainless spring clip or quick-release bracket | Attaches pole to beam center |
-| Flexible hose | 1/2" reinforced braided PVC, ~4m coiled length | Connects BV-02 to spray tube feed end |
-| Pipe clamps (×8) | Stainless steel, 3/4" hose clamp or nylon zip ties | Secure HDPE tube to aluminum beam |
-| End caps (×2) | 3/4" HDPE threaded cap | Seal spray tube ends |
-| Feed adapter | 3/4" FNPT × 1/2" barb reducer | Connects flexible hose to spray tube inlet |
+| Component | Specification | Qty | Purpose |
+|-----------|--------------|-----|---------|
+| Beam / spray pipe | 6061-T6 AL SHS, 40×40×3mm, 3,859mm long | 1 | Structural beam AND water distribution pipe |
+| Feed end cap | 6061-T6 AL plate 3mm, TIG welded to beam end | 1 | Seals beam end; carries 1/2" NPT bulkhead fitting |
+| Dead end cap | 6061-T6 AL plate 3mm, TIG welded to beam end | 1 | Seals beam end (solid) |
+| Bulkhead fitting | 1/2" NPT, brass or stainless | 1 | Connects flexible hose to beam bore |
+| Nylon wheels | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating |
+| Wheel fork brackets | 3mm galvanized steel plate, U-fork profile | 4 | Mount wheels on axle pins |
+| Axle pins | 10mm steel clevis pin with R-clip | 4 | Wheel spindles |
+| L-brackets | 6061-T6 AL plate 5mm, bent L-profile | 2 | Connect wheel carriages to beam; drop beam below axle |
+| Push pole | Telescoping aluminum pool pole, 1.2–2.4m | 1 | Operator controls bar position from near walkway |
+| Pole clip | Stainless spring clip or U-bolt | 1 | Attaches pole to beam center |
+| Flexible hose | 1/2" reinforced braided PVC, ~4m coiled | 1 | Connects BV-02 to beam feed end |
+| Hose barb fitting | 1/2" MNPT × 1/2" barb, brass | 1 | Connects hose to bulkhead fitting exterior |
 
-**Structural beam sizing:**
+#### 3.5.1 Beam / Spray Pipe
 
-The beam is supported at the inner edges of the left and right walkways (X=470 and X=4,329, span=3,859mm), with 300mm overhangs at each end resting on the walkway grating. Load includes beam self-weight, spray tube, water in tube, and hardware.
+The structural beam doubles as the water distribution pipe. A single 6061-T6 aluminum SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3,859mm between the inner edges of the left and right walkways. The internal bore (34×34mm) carries pressurized water from the feed end to all spray holes.
 
-| Beam size | I (mm⁴) | Beam mass | Total assembly | Center deflection | Span ratio |
-|-----------|---------|-----------|---------------|-------------------|------------|
-| 25×25×3mm (1"×1"×⅛") | 21,692 | 2.8 kg | 6.2 kg | 22.8mm | L/169 |
-| 30×30×3mm (1¼"×1¼"×⅛") | 39,852 | 3.6 kg | 7.1 kg | 14.1mm | L/274 |
-| **40×40×3mm (1½"×1½"×⅛")** | **101,972** | **4.9 kg** | **8.3 kg** | **6.5mm** | **L/595** |
-| **50×25×3mm (2"×1"×⅛") rect.** | **125,542** | **4.2 kg** | **7.6 kg** | **4.8mm** | **L/797** |
-| 50×50×3mm (2"×2"×⅛") | 208,492 | 6.1 kg | 9.6 kg | 3.6mm | L/1058 |
+**Beam properties:**
 
-**Recommended:** 40×40×3mm aluminum SHS (widely available as 1-1/2" × 1-1/2" × 1/8" at Home Depot, metals suppliers). Center deflection of 6.5mm (L/595) is acceptable for a spray application. Total assembly weight ~8.3kg.
+| Property | Value |
+|----------|-------|
+| Material | 6061-T6 aluminum alloy |
+| Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
+| Internal bore | 34×34mm |
+| Span | 3,859mm (X=470 to X=4,329) |
+| Second moment of area (I) | 101,972 mm⁴ |
+| Cross-sectional area | 444 mm² |
+| Linear mass (beam only) | 1.20 kg/m |
+| Beam mass (3,859mm) | 4.63 kg |
 
-**Alternative:** 50×25×3mm rectangular tube oriented tall (2" × 1" × 1/8"). Stiffer (4.8mm, L/797) and lighter (7.6kg) but less commonly stocked. Use if available.
+**Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online Metals, and metals suppliers. Two 8 ft lengths are required for the 3,859mm span; see §3.5.5 for the splice joint detail.
 
-**Runner and guide system:**
+**Spray holes:**
 
-Each end of the beam rides on a UHMW polyethylene slider pad that rests on the walkway grating surface (Z=100mm). The grating is press-locked steel mesh with ~60% open area — water from the spray tube passes through the mesh to reach the print below the walkway. The pads are bolted to the beam ends with stainless M6 bolts.
+38 holes, 3mm diameter, drilled through the bottom face centerline at 100mm centers. The pattern is centered symmetrically on the beam length (first and last holes 79.5mm from each end). Holes are deburred on both the inside and outside faces to prevent drip accumulation.
 
-A guide rail (25×25×3mm aluminum angle, 2,200mm long) is bolted to each walkway grating along the Yd direction. The UHMW pad has a groove that captures the angle's vertical leg, preventing lateral drift as the operator pushes the bar. The guide rail also defines the start and end positions of the bar's travel.
+| Property | Value |
+|----------|-------|
+| Hole diameter | 3mm |
+| Hole spacing | 100mm center-to-center |
+| Number of holes | 38 |
+| End margin | 79.5mm each end |
+| Total hole area | 268.6 mm² |
+| Bore cross-section area | 1,156 mm² |
+| Hole-to-bore area ratio | 23.2% |
+
+The 23% hole-to-bore ratio ensures reasonably uniform pressure along the beam length. At 3.5 GPM total flow, bore inlet velocity is only 0.19 m/s (Re ≈ 6,500) — friction losses along the bore are small compared to the orifice pressure drop through each 3mm hole. End-to-end flow variation is estimated at <15%.
+
+**End caps:**
+
+Each beam end is sealed with a 3mm 6061-T6 aluminum plate, cut to a 40×40mm square with radiused corners to match the SHS exterior profile. TIG welded to the beam end face with a continuous perimeter bead.
+
+- **Feed end (left, X=470):** Center-drilled and tapped for a 1/2" NPT bulkhead fitting. The fitting accepts a 1/2" hose barb adapter on the exterior for flexible hose connection.
+- **Dead end (right, X=4,329):** Solid plate, fully welded and watertight.
+
+#### 3.5.2 Wheel Carriage Assemblies
+
+Each end of the beam is supported by a wheel carriage that rolls on the processing tray floor beneath the walkway grating. There are two carriages (left and right), each carrying two wheels spaced 200mm apart in the Yd direction for stability against tipping.
+
+**Wheel specification:**
+
+| Property | Value |
+|----------|-------|
+| Type | Fixed (non-swivel) nylon wheel |
+| Diameter | 50mm |
+| Width | 20mm |
+| Bore | 10mm |
+| Load rating | ≥25 kg per wheel (actual load ~2.6 kg per wheel wet) |
+| Tread profile | Flat (rolls on flat stainless tray floor) |
+| Material | Glass-filled nylon or Delrin |
+
+The 50mm wheel diameter matches the processing tray rim height (50mm). Wheel tops sit at Z≈52mm — just above the rim — keeping the carriage mechanism entirely within the tray rim envelope. The flat tread profile suits the smooth stainless tray floor; crowned or V-groove treads are not required.
+
+**Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from 3mm galvanized steel plate. The fork straddles the wheel with ~2mm side clearance and is drilled for a 10mm clevis pin axle. The fork's base plate has two M6 through-holes for bolting to the L-bracket horizontal arm.
+
+**Vertical geometry (all dimensions mm above finished floor):**
+
+| Reference point | Z (mm AFF) |
+|-----------------|------------|
+| Container floor | 0 |
+| Tray floor (SS sheet on floor) | ~2 |
+| Beam bottom (with 17mm bracket drop) | 10 |
+| Wheel axle centerline | 27 |
+| Beam top | 50 |
+| Tray rim top | 50 |
+| Wheel top | 52 |
+| Walkway grating bottom | 75 |
+| Walkway grating top (deck surface) | 100 |
 
 **Clearances:**
 
-| Interface | Dimension | Status |
-|-----------|-----------|--------|
-| Tray rim to grating bottom | 25mm (Z=50 to Z=75) | Spray tube passes through this gap — 3/4" HDPE OD=26.7mm is tight; tube mounts flush against beam underside, clears at beam centerline height |
-| Grating surface to beam bottom | 30mm (runner pad height) | UHMW pad lifts beam above grating |
-| Beam top (Z=170mm max) to film carriage (Z=140mm max tilt) | No conflict — spray bar is in Yd=80–2,280 zone, film carriage rides on rails at Yd edges | Clear |
+| Interface | Gap | Notes |
+|-----------|-----|-------|
+| Beam top → grating bottom | 25mm | Ample clearance; no contact during travel |
+| Beam bottom → tray floor | 8mm | Reduces to ~0.5mm at midspan under full water load (see §3.5.4) |
+| Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
+| Beam top → film carriage | No conflict | Spray bar operates in Yd=80–2,280; film carriage rides on rails at Yd edges |
 
-**Spray hole pattern:**
+#### 3.5.3 L-Bracket Design
 
-The HDPE spray tube has 3mm holes drilled at 100mm intervals along the bottom centerline (45 holes total across 4,459mm). At 3.5 GPM (P-01 flow rate) and 45 PSI system pressure, each hole delivers approximately 0.08 GPM. Holes are deburred to prevent drip accumulation. Alternatively, 1/4" FNPT tee adapters at 600mm intervals (8 nozzles) with adjustable fan-spray tips provide more even distribution but add cost and assembly time.
+Each carriage uses an L-bracket to lower the beam 17mm below the wheel axle centerline. This creates 25mm clearance between beam top (Z=50mm) and walkway grating bottom (Z=75mm).
 
-**Flexible hose connection:**
+The L-bracket is formed from 5mm 6061-T6 aluminum plate, bent to an L-profile:
 
-BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at Z≈150mm, near the near-wall tray rim. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 to the spray bar feed adapter at one end (X=170, the left/near end of the bar). The hose is coiled when the bar is near the pinhole wall (Yd=80) and extends as the bar is pushed toward the far wall (Yd=2,280). The hose trails along the near tray rim, staying clear of the print surface.
+- **Horizontal arm:** Extends from the walkway inner edge outward under the walkway grating, at the wheel axle height (Z=27mm). Length ≈ 200mm — reaches from the beam end to the wheel positions. Two wheel fork brackets bolt to the top face of this arm, spaced 200mm apart in Yd.
+- **Vertical leg:** At the inboard end (walkway inner edge), the arm bends downward 17mm to Z=10mm. The beam's side face bolts to the vertical leg with 2× M6×20 stainless bolts through the beam wall.
 
-The supply path is: P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → spray bar feed adapter → 3/4" HDPE spray tube → spray holes.
+The beam's bottom face sits at Z=10mm (8mm above tray floor). The beam extends both below and above the horizontal arm — 17mm of the beam below the arm, 23mm above.
 
-**Operation:**
+**Lateral guidance:** The processing tray rim walls (50mm high, at X=170 and X=4,629) act as lateral guides. The wheel carriages roll between the tray rim and the walkway support structure, naturally constraining the bar's X position. No separate guide rails are required. The 200mm wheel spacing in Yd prevents the bar from skewing significantly during travel.
 
-1. Place the spray bar on the walkway grating at the far end of the tray (Yd≈2,280, film-plane side)
-2. Open BV-02 — water flows through the coiled hose to the spray tube
+#### 3.5.4 Structural Analysis
+
+**Loading (simply supported, uniform distributed load across 3,859mm span):**
+
+| Component | Linear mass (kg/m) | Linear weight (N/m) |
+|-----------|-------------------|---------------------|
+| Beam (6061-T6 AL, 40×40×3mm SHS) | 1.199 | 11.76 |
+| Water in bore (34×34mm filled) | 1.156 | 11.34 |
+| **Total UDL** | **2.355** | **23.10** |
+
+Water volume in bore: 34 × 34 × 3,859 = 4.46 × 10⁶ mm³ = 4.46 liters (4.46 kg).
+
+**Deflection — δ = 5wL⁴ / 384EI, E = 68,900 MPa:**
+
+| Condition | w (N/m) | δ center (mm) | Span ratio |
+|-----------|---------|---------------|------------|
+| Dry (beam self-weight only) | 11.76 | 4.8 | L/799 |
+| Wet (beam + water in bore) | 23.10 | 9.5 | L/406 |
+
+The L/406 span ratio under full water load is marginal by structural standards but acceptable for a spray bar application — the beam carries no foot traffic, precision loads, or dynamic impact. The deflection is entirely elastic and fully recoverable.
+
+**Floor clearance at midspan:** With 9.5mm center deflection, the beam bottom drops from Z=10mm to Z=0.5mm at the midspan — nearly contacting the tray floor. In practice, the bore does not fill uniformly to 100% along the full length during operation (water exits continuously through spray holes), so actual deflection is less than the worst-case calculation. If beam-to-floor contact occurs, the smooth stainless tray surface simply acts as a bearing — no functional issue. The center spray holes would be partially occluded, but adjacent holes remain unaffected.
+
+**Pre-camber recommendation:** Apply 5mm upward pre-camber during fabrication. This offsets roughly half the wet deflection, maintaining ≥5mm floor clearance at midspan under full water load. Method: during end cap welding, support the beam at both ends on blocks and apply upward pressure at center with a 5mm shim. Tack end caps in this bowed position. The residual stress in the end cap welds holds the camber permanently.
+
+**Alternative — reduced bracket drop:** If pre-cambering is impractical, reduce the L-bracket drop from 17mm to 12mm. This raises beam bottom from Z=10mm to Z=15mm, giving 5.5mm floor clearance at midspan under full water load — adequate without pre-camber. The trade-off is reduced grating clearance (20mm instead of 25mm), which is still sufficient.
+
+**Weight summary:**
+
+| Component | Mass (kg) |
+|-----------|-----------|
+| Beam (40×40×3mm × 3,859mm) | 4.63 |
+| Water in bore | 4.46 |
+| L-brackets (2×) | 0.40 |
+| Wheel assemblies (4× wheel + fork + axle) | 0.60 |
+| End caps + bulkhead fitting | 0.10 |
+| Hardware (bolts, clips) | 0.30 |
+| **Dry total** | **~6.0 kg** |
+| **Wet total (operating)** | **~10.5 kg** |
+
+Per wheel load (wet): 10.5 / 4 = 2.6 kg — well within any small nylon wheel's rating.
+
+#### 3.5.5 Beam Splice Joint
+
+Standard 8 ft (2,438mm) SHS stock is too short for the 3,859mm span. Two 8 ft lengths are joined with an internal sleeve splice at approximately midspan:
+
+- **Sleeve:** 150mm length of 30×30mm (1-1/4" × 1-1/4") solid aluminum bar stock, inserted into the 34×34mm bore. Provides 2mm clearance per side.
+- **Sealant:** Apply marine-grade RTV silicone (or epoxy) to the sleeve exterior before insertion. This seals the joint watertight while allowing future disassembly with heat if needed.
+- **Fastening:** 2× M5 set screws through the SHS wall on each side of the joint (4 total), engaging shallow dimples drilled in the sleeve. Prevents the two beam halves from sliding apart under water pressure.
+- **Location:** Position the splice at midspan (1,930mm from each end). The sleeve maintains bending stiffness across the joint — the solid 30mm bar has higher I than the hollow beam wall, so the splice is not the weak point.
+
+**Alternative:** Source a single 16 ft or 20 ft length (available from metals suppliers by special order or cut-to-length service). This eliminates the splice entirely and is preferred if available at reasonable cost.
+
+#### 3.5.6 Flow Analysis
+
+| Parameter | Value |
+|-----------|-------|
+| Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
+| Bore cross-section | 34 × 34mm = 1,156 mm² |
+| Bore inlet velocity | 0.19 m/s (at 3.5 GPM) |
+| Reynolds number (bore) | ~6,500 (transitional/low turbulent) |
+| Spray holes | 38 × Ø3mm |
+| Total hole area | 268.6 mm² |
+| Flow per hole | 0.092 GPM (0.35 L/min) |
+
+The bore is deliberately oversized relative to the total spray hole area (bore 4.3× larger). This ensures the bore acts as a low-loss plenum: pressure is nearly uniform along the bore length, and each hole delivers approximately equal flow regardless of its distance from the feed end. The Shurflo 2088's internal bypass regulation maintains 45 PSI regardless of flow demand.
+
+#### 3.5.7 Water Connection
+
+BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at Z=150mm, near the tray rim. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 to the beam's feed end cap bulkhead fitting (X=470, left end of beam). The hose is coiled when the bar is near the pinhole wall (Yd≈80) and extends as the bar is pushed toward the far wall (Yd≈2,280). The hose trails along the near tray rim, staying clear of the print surface.
+
+**Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
+
+#### 3.5.8 Operation
+
+1. Position the spray bar at the far end of the tray (Yd≈2,280, film-plane side) — wheels roll on tray floor, beam clears grating
+2. Open BV-02 — water flows through the coiled hose into the beam bore and out through the spray holes
 3. Using the telescoping pole, slowly pull the bar toward the pinhole wall (decreasing Yd), flooding the print progressively
-4. The bar travels at approximately 50mm/second — full traverse takes ~44 seconds
-5. At the near rim (Yd=80), close BV-02. One wash pass complete.
-6. For additional wash passes, push the bar back to the far end and repeat
-7. Between wash passes, switch to Brown (recycled) water by closing BV-02 and activating P-02 through the filter train
+4. Travel speed approximately 50mm/second — full traverse takes ~44 seconds
+5. At the near rim (Yd≈80), close BV-02. One wash pass complete.
+6. For additional passes, push the bar back to the far end and repeat
+7. Brown (recycled) water passes use the same bar — the operator switches by closing BV-02 and activating P-02 through the filter train
 
-**Storage:** When not in use, the spray bar rests on the walkway grating at either end of its travel, parallel to the tray rim. The flexible hose coils naturally at the near wall. The telescoping pole detaches and stores alongside the bar.
+**Storage:** When not in use, the spray bar rests at either end of its travel with wheels on the tray floor. The flexible hose coils naturally at the pinhole wall. The telescoping pole detaches and stores alongside the bar or clips to the container wall.
 
 ---
 
@@ -595,23 +732,23 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Consumables subtotal: ~$231–$278**
 
-### 8.9 Spray bar assembly
+### 8.9 Spray bar assembly (gantry design)
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. Need 2 pieces joined (or 1× 16 ft length if available) for 4,459mm total | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
-| [3/4" HDPE SDR-11 pipe](https://www.ferguson.com) | Spray tube, 4,459mm. Already in §8.5 pipe list — no additional purchase needed | — | — | — | **included** |
-| [UHMW polyethylene block 100×50×30mm](https://www.mcmaster.com/8702K74) | Runner pads for walkway grating. Machine groove for guide rail | 2 | McMaster-Carr | $8–$12 | **$16–$24** |
-| [6061-T6 aluminum angle 1"×1"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-angle) | Guide rails, 2,200mm long, bolted to walkway grating | 2 | Online Metals | $10–$16/8ft | **$20–$32** |
+| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3,859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
+| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-brackets (2×) + end caps (2×). ~300×600mm sheet, cut and bend | 1 | Online Metals | $15–$25 | **$15–$25** |
+| [30×30mm (1-1/4"×1-1/4") aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long. Cut from 1 ft minimum order | 1 | Online Metals | $8–$12 | **$8–$12** |
+| [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels — flat tread, ≥25 kg rated | 4 | Amazon / McMaster-Carr | $3–$5 | **$12–$20** |
+| [1/2" NPT bulkhead fitting, brass](https://www.amazon.com/s?k=1%2F2+NPT+brass+bulkhead+fitting) | Feed end cap — connects hose to beam bore | 1 | Amazon | $5–$10 | **$8** |
+| [1/2" MNPT × 1/2" hose barb, brass](https://www.amazon.com/s?k=1%2F2+MNPT+hose+barb+brass) | Connects hose to bulkhead fitting | 1 | Amazon | $3–$5 | **$4** |
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft (1.2–2.4m), standard pool skimmer handle | 1 | Amazon / Home Depot | $12–$20 | **$15** |
-| [1/2" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection from BV-02 to spray bar (4m coiled length) | 1 | Amazon | $12–$18 | **$15** |
-| [3/4" FNPT × 1/2" barb reducer](https://www.amazon.com/s?k=3%2F4+FNPT+1%2F2+barb+reducer+polypropylene) | Feed adapter at spray tube inlet end | 1 | Amazon | $3–$5 | **$4** |
-| [3/4" HDPE threaded end cap](https://www.amazon.com/s?k=3%2F4+HDPE+threaded+end+cap) | Seal spray tube ends | 2 | Amazon | $2–$3 | **$5** |
-| [Stainless hose clamps 3/4"](https://www.amazon.com/s?k=3%2F4+stainless+hose+clamp+pack) | Secure spray tube to beam (or nylon zip ties) | 8 | Amazon | $0.50 | **$4** |
-| [M6×20 stainless bolts + nylock nuts](https://www.mcmaster.com/92196A150) | Runner pad mounting, guide rail mounting | 12 | McMaster-Carr | $0.40 | **$5** |
-| [Stainless spring clip / quick-release](https://www.amazon.com/s?k=pool+pole+tip+clip+stainless) | Pole clip to beam center | 1 | Amazon | $5–$8 | **$6** |
+| [1/2" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection from BV-02 to beam feed end (4m coiled) | 1 | Amazon | $12–$18 | **$15** |
+| [10mm clevis pins + R-clips](https://www.mcmaster.com/97295A480) | Wheel axle pins | 4+4 | McMaster-Carr | $1–$2 | **$8** |
+| [M6×20 stainless bolts + nylock nuts](https://www.mcmaster.com/92196A150) | L-bracket to beam, fork to bracket, splice set screws | 16 | McMaster-Carr | $0.40 | **$7** |
+| [Stainless spring clip / U-bolt](https://www.amazon.com/s?k=pool+pole+tip+clip+stainless) | Pole attachment to beam center | 1 | Amazon | $5–$8 | **$6** |
 
-**Spray bar subtotal: ~$126–$166**
+**Spray bar subtotal: ~$134–$176**
 
 ---
 
@@ -625,10 +762,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Valves and fittings (incl. S60×6 adapters, check valves) | $414 | $660 |
 | Pipe | $76 | $108 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
-| Spray bar assembly | $126 | $166 |
+| Spray bar assembly (gantry: beam/pipe, wheels, L-brackets, hose) | $134 | $176 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$3,269** | **$4,886** |
+| **TOTAL** | **$3,277** | **$4,896** |
 
 *Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 

@@ -1030,7 +1030,7 @@ for w_yd in [wheel1_yd, wheel2_yd]:
 # Shown with zigzag thread profile, hex socket head, and nylon tip.
 M6_DIA = 6
 M6_R = M6_DIA / 2
-SCREW_LEN = brk_t_c + 3  # 8mm total (through drop + into beam wall)
+SCREW_LEN = brk_t_c + BEAM_T + 5  # 13mm: through drop + beam wall + 5mm into bore
 THREAD_PITCH = 1.5  # visual pitch for clarity at 1:2 scale
 SOCKET_DEPTH = 2.5  # hex socket recess depth
 TIP_LEN = 1.5  # nylon tip pad length

@@ -10,12 +10,7 @@ Sheet 1 — Cross-section elevation (looking along X toward sealed end):
   the top tier.  D-ring lashing points at frame corners.  Container
   ceiling, floor, and right walkway shown for context.
 
-Sheet 2 — Plan view (looking down):
-  Top-down view of the 4 IBCs in 2×2 arrangement within the right end
-  zone.  Frame perimeter, 270mm plumbing corridor between columns,
-  fill/drain port positions through the end wall, and walkway edges shown.
-
-Sheet 3 — Fastening details:
+Sheet 2 — Fastening details:
   Detail A: D-ring lashing point (cross-section, welded to frame).
   Detail B: Anti-rotation lip on platform perimeter (cross-section).
   Detail C: Access gate for lower IBC drain valve (front elevation).
@@ -395,13 +390,13 @@ def sheet1():
         f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm rubber anti-slip mat.",
         f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",
         f"7. 8x D-ring lashing points (4 per tier), {DRING_WLL}kg WLL each.",
-        f"8. External plumbing panel on end wall centerline (see Sheets 4-5).",
+        f"8. External plumbing panel on end wall centerline (see Sheets 3-4).",
     ]
     draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(22),
                fs=6.5, ha="left", font=FONT, width=3800)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="CROSS-SECTION ELEVATION — 2x2 STACK IN RIGHT END ZONE",
                 scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - SECTION LOOKING ALONG X",
@@ -414,251 +409,14 @@ def sheet1():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 2 — Plan View (looking down)
-#
-# Standard TBS plan view convention:
-#   Horizontal = X  (0=cargo door at left, sealed end at right)
-#   Vertical   = Yd (0=pinhole/near wall at bottom)
-# Shows 4 IBCs from above with frame, ports, and walkway context.
-# ═══════════════════════════════════════════════════════════════════════════════
-def sheet2():
-    S = 2.5
-
-    def px(mm): return mm * S   # X along horizontal
-    def py(mm): return mm * S   # Yd along vertical
-
-    # The plan view shows the area around the IBC stack
-    X_LO = IBC_COL_X - 600
-    X_HI = C_LEN + 350
-    YD_LO = -400
-    YD_HI = C_WID + 120
-
-    fig, ax = plt.subplots(figsize=(20, 17))
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(px(X_LO), px(X_HI))
-    ax.set_ylim(py(YD_LO), py(YD_HI))
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    # ── Container walls ───────────────────────────────────────────────────────
-    WALL_T = 25  # visual wall thickness (plan view)
-
-    # Near wall (pinhole, bottom of Yd range)
-    ax.add_patch(Rectangle((px(X_LO), py(-WALL_T)),
-                            px(X_HI - X_LO), py(WALL_T),
-                            fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
-    # Far wall (top of Yd range)
-    ax.add_patch(Rectangle((px(X_LO), py(C_WID)),
-                            px(X_HI - X_LO), py(WALL_T),
-                            fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
-    # End wall (sealed end, right side of X range)
-    ax.add_patch(Rectangle((px(C_LEN), py(-WALL_T)),
-                            px(WALL_T), py(C_WID + 2 * WALL_T),
-                            fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
-
-    # Interior face lines
-    ax.plot([px(X_LO), px(C_LEN)], [py(0), py(0)], color=C_OUT, lw=2.0, zorder=3)
-    ax.plot([px(X_LO), px(C_LEN)], [py(C_WID), py(C_WID)], color=C_OUT, lw=2.0, zorder=3)
-    ax.plot([px(C_LEN), px(C_LEN)], [py(0), py(C_WID)], color=C_OUT, lw=2.0, zorder=3)
-
-    # Wall labels
-    ax.text(px((X_LO + C_LEN) / 2), py(-WALL_T - 10),
-            "NEAR WALL (PINHOLE, Yd=0)", ha="center", va="top",
-            fontsize=6, color=C_DIM, **FONT)
-    ax.text(px((X_LO + C_LEN) / 2), py(C_WID + WALL_T + 10),
-            "FAR WALL (Yd=2,362)", ha="center", va="bottom",
-            fontsize=6, color=C_DIM, **FONT)
-    ax.text(px(C_LEN + WALL_T + 10), py(C_WID / 2),
-            f"SEALED END WALL (X={C_LEN}mm)", ha="left", va="center",
-            fontsize=6.5, color=C_DIM, fontweight="bold", **FONT, rotation=90)
-
-    # Arrow showing direction toward cargo door
-    ax.annotate("", xy=(px(X_LO + 20), py(C_WID / 2)),
-                xytext=(px(X_LO + 150), py(C_WID / 2)),
-                arrowprops=dict(arrowstyle="->", color=C_DIM, lw=1.5))
-    ax.text(px(X_LO + 10), py(C_WID / 2),
-            "CARGO\nDOOR\nEND", ha="right", va="center",
-            fontsize=6, color=C_DIM, **FONT)
-
-    # ── Frame (portal frame with open plumbing corridor, plan view) ─────────
-    near_col_r = BLUE_IBC_Y + IBC_D    # near column right edge
-    far_col_l  = IBC_FAR_Y             # far column left edge
-    frame_x_l = IBC_COL_X - 65  # 65mm overhang on cargo-door side
-    frame_x_r = min(IBC_COL_X + IBC_W + 65, C_LEN)  # clamp to end wall
-
-    # Corridor uprights (plan view — 4 rectangles at corridor edges)
-    for uyd in [near_col_r, far_col_l - FRAME_RHS]:
-        for ux in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle((px(ux), py(uyd)),
-                                    px(FRAME_RHS), py(FRAME_RHS),
-                                    fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=6, alpha=0.7))
-
-    # Column beams (along X, one per column side — near and far)
-    for col_yd_l, col_yd_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
-                                (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
-        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle((px(bx), py(col_yd_l)),
-                                    px(FRAME_RHS), py(col_yd_r - col_yd_l),
-                                    fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=6, alpha=0.5))
-
-    # Cross-beams across corridor (connecting the two column frames)
-    corr_beam_l = near_col_r + FRAME_RHS
-    corr_beam_r = far_col_l - FRAME_RHS
-    for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-        ax.add_patch(Rectangle((px(bx), py(corr_beam_l)),
-                                px(FRAME_RHS), py(corr_beam_r - corr_beam_l),
-                                fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6, alpha=0.35))
-
-    # Corridor shading
-    ax.add_patch(Rectangle((px(frame_x_l), py(near_col_r + FRAME_RHS)),
-                            px(frame_x_r - frame_x_l),
-                            py(corr_beam_r - corr_beam_l),
-                            fc=C_CL, ec="none", lw=0, alpha=0.06, zorder=4))
-    corr_cx = (near_col_r + far_col_l) / 2
-    ax.text(px((frame_x_l + frame_x_r) / 2), py(corr_cx),
-            f"PLUMBING CORRIDOR\n{IBC_GAP}mm",
-            ha="center", va="center", fontsize=6, color=C_CL,
-            fontweight="bold", **FONT, zorder=10)
-
-    # Wall brackets (small rectangles at near/far walls)
-    for wyd in [0, C_WID - 8]:
-        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
-            ax.add_patch(Rectangle((px(bx), py(wyd)),
-                                    px(FRAME_RHS), py(8),
-                                    fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6, alpha=0.5))
-
-    # ── 4 IBCs (plan view — looking down onto top tier) ───────────────────────
-    ibc_plan = [
-        ("IBC-1\nBLUE\n(top, near)", BLUE_IBC_Y, IBC_COL_X, C_BLUE_IBC),
-        ("IBC-2\nBLUE\n(top, far)", IBC_FAR_Y, IBC_COL_X, C_BLUE_IBC),
-        ("IBC-3 BROWN\n(bottom, near)\nBELOW IBC-1", BLUE_IBC_Y, IBC_COL_X, C_BROWN_IBC),
-        ("IBC-4 WASTE\n(bottom, far)\nBELOW IBC-2", IBC_FAR_Y, IBC_COL_X, C_WASTE_IBC),
-    ]
-
-    # Show top tier IBCs as solid, bottom tier labels only (since they're beneath)
-    for i, (label, yd, x, color) in enumerate(ibc_plan):
-        if i < 2:  # top tier — visible from above
-            ax.add_patch(Rectangle((px(x), py(yd)),
-                                    px(IBC_W), py(IBC_D),
-                                    fc=color, ec=C_OUT, lw=1.8, alpha=0.4, zorder=7))
-            # Cage grid lines (top view shows cage structure)
-            for frac in [0.25, 0.5, 0.75]:
-                ax.plot([px(x + IBC_W * frac), px(x + IBC_W * frac)],
-                        [py(yd), py(yd + IBC_D)],
-                        color=C_OUT, lw=0.4, alpha=0.3, zorder=7)
-                ax.plot([px(x), px(x + IBC_W)],
-                        [py(yd + IBC_D * frac), py(yd + IBC_D * frac)],
-                        color=C_OUT, lw=0.4, alpha=0.3, zorder=7)
-            ax.text(px(x + IBC_W / 2), py(yd + IBC_D / 2), label,
-                    ha="center", va="center", fontsize=7, color=C_OUT,
-                    fontweight="bold", **FONT, zorder=10)
-        else:  # bottom tier — hidden below, show as dashed outline
-            ax.add_patch(Rectangle((px(x), py(yd)),
-                                    px(IBC_W), py(IBC_D),
-                                    fc="none", ec=color, lw=1.0, ls="--",
-                                    alpha=0.5, zorder=4))
-            # Bottom tier label below the IBC footprint
-            ax.text(px(x + IBC_W / 2), py(yd - 30), label.split("\n")[0],
-                    ha="center", va="top", fontsize=5.5, color=color,
-                    style="italic", **FONT, zorder=10)
-
-    # ── External plumbing panel (4 ports stacked on centerline) ─────────────
-    # In plan view, all 4 ports appear as a single stack at Yd = C_WID/2
-    panel_yd = C_WID / 2
-    ax.add_patch(Circle((px(C_LEN), py(panel_yd)),
-                         px(PORT_DIA / 2), fc=C_PORT, ec=C_OUT,
-                         lw=1.5, zorder=12))
-    ax.text(px(C_LEN + 75), py(panel_yd),
-            "PLUMBING PANEL\n3x 2\" NPT\n(CENTERLINE)",
-            ha="left", va="center", fontsize=5.5, color=C_PORT,
-            fontweight="bold", **FONT, zorder=15)
-
-    # ── D-ring positions (plan view — at corridor uprights) ─────────────────
-    dring_color = "#D0A030"
-    for dyd in [near_col_r + FRAME_RHS / 2, far_col_l - FRAME_RHS / 2]:
-        for dx in [frame_x_l + FRAME_RHS / 2, frame_x_r - FRAME_RHS / 2]:
-            ax.add_patch(Circle((px(dx), py(dyd)),
-                                 px(12), fc=dring_color, ec=C_OUT,
-                                 lw=1.0, zorder=11))
-    ax.text(px(frame_x_l - 10), py(near_col_r + FRAME_RHS / 2 - 30),
-            "D-RING (TYP. 8x)", ha="right", va="top",
-            fontsize=5.5, color=dring_color, fontweight="bold", **FONT, zorder=15)
-
-    # ── Dimensions ────────────────────────────────────────────────────────────
-    # IBC footprint depth (along Yd) — vertical dimension
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(BLUE_IBC_Y), py(BLUE_IBC_Y + IBC_D),
-               f"{IBC_D}mm", offset=px(5), fs=6, font=FONT)
-
-    # Plumbing corridor between columns
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(BLUE_IBC_Y + IBC_D), py(IBC_FAR_Y),
-               f"{IBC_GAP}mm\nCORRIDOR", offset=px(5), fs=5.5, font=FONT)
-
-    # Far column depth
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
-               f"{IBC_D}mm", offset=px(5), fs=6, font=FONT)
-
-    # IBC width (along X) — horizontal dimension
-    draw_dim_h(ax, px(IBC_COL_X), px(IBC_COL_X + IBC_W),
-               py(IBC_FAR_Y + IBC_D + 120),
-               f"{IBC_W}mm IBC WIDTH", offset=py(5), fs=6, font=FONT)
-
-    # Container width (along Yd) — frame spans wall-to-wall
-    draw_dim_v(ax, px(frame_x_r + 225), py(0), py(C_WID),
-               f"{C_WID}mm (WALL TO WALL)", offset=px(10), fs=6, right=True, font=FONT)
-
-    # Distance from near wall to IBC
-    draw_dim_v(ax, px(IBC_COL_X - 120), py(0), py(BLUE_IBC_Y),
-               f"{BLUE_IBC_Y}mm", offset=px(5), fs=5.5, font=FONT)
-
-    # ── Walkway context (ghost) ───────────────────────────────────────────────
-    # Right walkway runs along the left edge of the IBC zone
-    wk_x_l = WALKWAY_RIGHT_X
-    wk_x_r = WALKWAY_RIGHT_X + WALKWAY_W
-    ax.add_patch(Rectangle((px(wk_x_l), py(0)),
-                            px(WALKWAY_W), py(C_WID),
-                            fc="#E8F0E8", ec=C_GRATE, lw=1.0, ls="--",
-                            alpha=0.3, zorder=3))
-    ax.text(px(wk_x_l + WALKWAY_W / 2), py(C_WID / 2),
-            f"RIGHT WALKWAY\n(X={wk_x_l}-{wk_x_r}mm)\nCEILING HUNG",
-            ha="center", va="center", fontsize=5.5, color=C_GRATE,
-            style="italic", **FONT, zorder=5, rotation=90)
-
-    # ── Notes ─────────────────────────────────────────────────────────────────
-    notes = [
-        "PLAN VIEW NOTES:",
-        f"1. 4x Schutz Ecobulk MX 600L IBCs in 2x2 stack. Top tier visible; bottom tier shown dashed (below).",
-        f"2. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
-        f"3. IBCs pushed to walls ({BLUE_IBC_Y}mm clearance) to maximize corridor width.",
-        f"4. External plumbing panel on end wall centerline — 3x 2\" NPT ports (X1/X3/X4).",
-        f"5. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
-        "6. See Sheets 4-5 for plumbing detail.",
-    ]
-    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 300), spacing=py(18),
-               fs=6.5, font=FONT, width=3000)
-
-    # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 6",
-                drawing_title="IBC STACKING & SECURING",
-                subtitle="PLAN VIEW — 2x2 IBC LAYOUT IN RIGHT END ZONE",
-                scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
-                height=0.05)
-
-    fig.savefig("diagrams/ibc-stacking-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-stacking-sheet2.png"), bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet2.png saved")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — Fastening Details
+# SHEET 2 — Fastening Details
 #
 # Three detail views:
 #   A — D-ring lashing point cross-section
 #   B — Anti-rotation lip on platform perimeter
 #   C — Access gate front elevation
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet3():
+def sheet2():
     S = 5.0   # scale factor for detail views
 
     def sx(mm): return mm * S
@@ -1047,30 +805,29 @@ def sheet3():
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 6",
+    title_block(ax, "SHEET 2 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="FASTENING DETAILS — D-RING - LIP - ACCESS GATE - LASHING",
                 scale_note="SCALE ~ 5:1 - ALL DIMS IN mm - DETAILS A-D",
                 height=0.06)
 
-    fig.savefig("diagrams/ibc-stacking-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-stacking-sheet3.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/ibc-stacking-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/ibc-stacking-sheet2.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet3.png saved")
+    print("  diagrams/ibc-stacking-sheet2.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — External Plumbing Panel Elevation
+# SHEET 3 — External Plumbing Panel Elevation
 #
 # View from outside the container, looking at the sealed end wall.
-# Shows 4 ports stacked vertically on the container centerline:
-#   Top:    Fill Blue IBC-1 (1,800mm)
-#           Fill Blue IBC-2 (1,600mm)
+# Shows 3 ports stacked vertically on the container centerline:
+#   Top:    Fill Blue IBC-1 (2,250mm)
 #           Drain Brown IBC-3 (400mm)
 #   Bottom: Drain Waste IBC-4 (200mm)
 # Reinforcing plate behind ports, camlock fittings, height dimensions.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet4():
+def sheet3():
     S = 3.5   # scale factor (mm → drawing units)
 
     def sx(mm): return mm * S
@@ -1273,22 +1030,22 @@ def sheet4():
         "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
         "4. X1 fill port at top (gravity + pump to IBC-1; IBC-2 self-levels via 2\" cross-connect). Drain ports at bottom (gravity drain).",
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
-        "6. Interior connections routed through plumbing corridor (see Sheet 5).",
+        "6. Interior connections routed through plumbing corridor (see Sheet 4).",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 350), spacing=sy(18),
                fs=6.5, font=FONT, width=5000)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 6",
+    title_block(ax, "SHEET 3 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="EXTERNAL PLUMBING PANEL — END WALL ELEVATION",
                 scale_note="SCALE ~ 3.5:1 - ALL DIMS IN mm - VIEW FROM OUTSIDE",
                 height=0.06)
 
-    fig.savefig("diagrams/ibc-stacking-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-stacking-sheet4.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/ibc-stacking-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/ibc-stacking-sheet3.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet4.png saved")
+    print("  diagrams/ibc-stacking-sheet3.png saved")
 
 
 # ── Shared pipe drawing helpers ───────────────────────────────────────────────
@@ -1432,15 +1189,17 @@ def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 5 — Internal Plumbing Plan View
+# SHEET 4 — Internal Plumbing Plan View + IBC Layout
 #
 # Looking down at the IBC zone from above, showing:
 #   - Two IBC columns (near/far) with central plumbing corridor
+#   - Portal frame structure, D-ring lashing points
 #   - Pipe runs from end-wall bulkhead unions through corridor to each IBC
 #   - Ball valves at each IBC connection
+#   - Equipment panel with pumps and filters
 #   - Pipe sizing and material annotations
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet5():
+def sheet4():
     S = 2.8   # scale factor
 
     def px(mm): return mm * S   # X along horizontal
@@ -1487,22 +1246,80 @@ def sheet5():
     ax.text(px((X_LO + C_LEN) / 2), py(C_WID + WALL_T + 10),
             "FAR WALL (Yd=2,362)", ha="center", va="bottom",
             fontsize=6, color=C_DIM, **FONT)
+    ax.text(px(C_LEN + WALL_T + 10), py(C_WID / 2),
+            f"SEALED END WALL (X={C_LEN}mm)", ha="left", va="center",
+            fontsize=6.5, color=C_DIM, fontweight="bold", **FONT, rotation=90)
 
-    # ── IBCs (plan view outlines) ────────────────────────────────────────────
+    # ── IBCs (plan view — top tier solid, bottom tier dashed) ──────────────
     near_col_r = BLUE_IBC_Y + IBC_D
     far_col_l  = IBC_FAR_Y
 
     ibc_plan = [
-        ("IBC-1 / IBC-3\n(NEAR COLUMN)", BLUE_IBC_Y, C_BLUE_IBC),
-        ("IBC-2 / IBC-4\n(FAR COLUMN)", IBC_FAR_Y, "#7090D0"),
+        ("IBC-3 BROWN\n(bottom, near)\nBELOW IBC-1", BLUE_IBC_Y, C_BROWN_IBC, False),
+        ("IBC-4 WASTE\n(bottom, far)\nBELOW IBC-2", IBC_FAR_Y, C_WASTE_IBC, False),
+        ("IBC-1\nBLUE\n(top, near)", BLUE_IBC_Y, C_BLUE_IBC, True),
+        ("IBC-2\nBLUE\n(top, far)", IBC_FAR_Y, C_BLUE_IBC, True),
     ]
-    for label, yd, color in ibc_plan:
-        ax.add_patch(Rectangle((px(IBC_COL_X), py(yd)),
-                                px(IBC_W), py(IBC_D),
-                                fc=color, ec=C_OUT, lw=1.5, alpha=0.2, zorder=5))
-        ax.text(px(IBC_COL_X + IBC_W / 2), py(yd + IBC_D / 2), label,
-                ha="center", va="center", fontsize=7, color=C_OUT,
-                fontweight="bold", **FONT, zorder=10)
+    for label, yd, color, is_top in ibc_plan:
+        if is_top:
+            ax.add_patch(Rectangle((px(IBC_COL_X), py(yd)),
+                                    px(IBC_W), py(IBC_D),
+                                    fc=color, ec=C_OUT, lw=1.5, alpha=0.35, zorder=5))
+            for frac in [0.25, 0.5, 0.75]:
+                ax.plot([px(IBC_COL_X + IBC_W * frac), px(IBC_COL_X + IBC_W * frac)],
+                        [py(yd), py(yd + IBC_D)],
+                        color=C_OUT, lw=0.3, alpha=0.25, zorder=5)
+                ax.plot([px(IBC_COL_X), px(IBC_COL_X + IBC_W)],
+                        [py(yd + IBC_D * frac), py(yd + IBC_D * frac)],
+                        color=C_OUT, lw=0.3, alpha=0.25, zorder=5)
+            ax.text(px(IBC_COL_X + IBC_W / 2), py(yd + IBC_D / 2), label,
+                    ha="center", va="center", fontsize=7, color=C_OUT,
+                    fontweight="bold", **FONT, zorder=10)
+        else:
+            ax.add_patch(Rectangle((px(IBC_COL_X), py(yd)),
+                                    px(IBC_W), py(IBC_D),
+                                    fc="none", ec=color, lw=1.0, ls="--",
+                                    alpha=0.4, zorder=4))
+            ax.text(px(IBC_COL_X + IBC_W / 2), py(yd - 25), label.split("\n")[0],
+                    ha="center", va="top", fontsize=5, color=color,
+                    style="italic", **FONT, zorder=10)
+
+    # ── Portal frame (corridor uprights, column beams, wall brackets) ────────
+    frame_x_l = IBC_COL_X - 65
+    frame_x_r = min(IBC_COL_X + IBC_W + 65, C_LEN)
+    for uyd in [near_col_r, far_col_l - FRAME_RHS]:
+        for ux in [frame_x_l, frame_x_r - FRAME_RHS]:
+            ax.add_patch(Rectangle((px(ux), py(uyd)),
+                                    px(FRAME_RHS), py(FRAME_RHS),
+                                    fc=C_FRAME, ec=C_OUT, lw=0.8, zorder=6, alpha=0.6))
+    for col_yd_l, col_yd_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
+                                (far_col_l - FRAME_RHS, IBC_FAR_Y + IBC_D + 5)]:
+        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
+            ax.add_patch(Rectangle((px(bx), py(col_yd_l)),
+                                    px(FRAME_RHS), py(col_yd_r - col_yd_l),
+                                    fc=C_FRAME, ec=C_OUT, lw=0.6, zorder=6, alpha=0.4))
+    corr_beam_l = near_col_r + FRAME_RHS
+    corr_beam_r = far_col_l - FRAME_RHS
+    for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
+        ax.add_patch(Rectangle((px(bx), py(corr_beam_l)),
+                                px(FRAME_RHS), py(corr_beam_r - corr_beam_l),
+                                fc=C_FRAME, ec=C_OUT, lw=0.5, zorder=6, alpha=0.3))
+    for wyd in [0, C_WID - 8]:
+        for bx in [frame_x_l, frame_x_r - FRAME_RHS]:
+            ax.add_patch(Rectangle((px(bx), py(wyd)),
+                                    px(FRAME_RHS), py(8),
+                                    fc=C_FRAME, ec=C_OUT, lw=0.5, zorder=6, alpha=0.4))
+
+    # ── D-ring lashing points ────────────────────────────────────────────────
+    dring_color = "#D0A030"
+    for dyd in [near_col_r + FRAME_RHS / 2, far_col_l - FRAME_RHS / 2]:
+        for dx in [frame_x_l + FRAME_RHS / 2, frame_x_r - FRAME_RHS / 2]:
+            ax.add_patch(Circle((px(dx), py(dyd)),
+                                 px(10), fc=dring_color, ec=C_OUT,
+                                 lw=0.8, zorder=11))
+    ax.text(px(frame_x_l - 10), py(near_col_r + FRAME_RHS / 2 - 25),
+            "D-RING (TYP. 8x)", ha="right", va="top",
+            fontsize=5, color=dring_color, fontweight="bold", **FONT, zorder=15)
 
     # ── Plumbing corridor shading ────────────────────────────────────────────
     corr_yd_lo = near_col_r
@@ -1520,6 +1337,25 @@ def sheet5():
     ax.plot([px(IBC_COL_X - 65), px(C_LEN)],
             [py(corr_cx), py(corr_cx)],
             color=C_CL, lw=1.0, ls="--", zorder=4)
+
+    # ── Walkway context (ghost outline) ──────────────────────────────────────
+    wk_x_l = WALKWAY_RIGHT_X
+    ax.add_patch(Rectangle((px(wk_x_l), py(0)),
+                            px(WALKWAY_W), py(C_WID),
+                            fc="#E8F0E8", ec=C_GRATE, lw=0.8, ls="--",
+                            alpha=0.2, zorder=3))
+    ax.text(px(wk_x_l + WALKWAY_W / 2), py(C_WID / 2),
+            f"RIGHT WALKWAY\n(X={wk_x_l}–{wk_x_l + WALKWAY_W}mm)",
+            ha="center", va="center", fontsize=5, color=C_GRATE,
+            style="italic", **FONT, zorder=5, rotation=90)
+
+    # Cargo door direction arrow
+    ax.annotate("", xy=(px(X_LO + 20), py(C_WID / 2)),
+                xytext=(px(X_LO + 120), py(C_WID / 2)),
+                arrowprops=dict(arrowstyle="->", color=C_DIM, lw=1.2))
+    ax.text(px(X_LO + 10), py(C_WID / 2),
+            "CARGO\nDOOR\nEND", ha="right", va="center",
+            fontsize=5, color=C_DIM, **FONT)
 
     # ── Equipment panel (pumps + filters) ────────────────────────────────
     # Panel spans ACROSS corridor (Yd direction), perpendicular to sealed end wall.
@@ -1581,7 +1417,7 @@ def sheet5():
                 arrowprops=dict(arrowstyle="-|>", color="#2A5A2A", lw=0.8),
                 zorder=10)
 
-    # ── Pipe fitting helpers (matching sheet 6 conventions) ────────────────
+    # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
     PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
     PIPE_WALL_T = 3.0
     PIPE_HW = PIPE_OD / 2
@@ -1635,14 +1471,14 @@ def sheet5():
                     ha="center", va="center", fontsize=5, color="white",
                     fontweight="bold", **FONT, zorder=zo + 2)
 
-    # ── Pipe system colors (matching sheet 6) ────────────────────────────────
+    # ── Pipe system colors (matching sheet 5) ────────────────────────────────
     C_PIPE_BLUE   = "#2060C0"
     C_PIPE_BROWN  = "#8D6E63"
     C_PIPE_BLACK  = "#505050"
 
     # ── Bulkhead ports at end wall ──────────────────────────────────────────
     # All 4 ports are at the same Yd (panel_yd = corridor centerline),
-    # stacked vertically at different Z heights (matching sheet 4).
+    # stacked vertically at different Z heights (matching sheet 3).
     # Looking down they project to the same point.
     panel_yd = C_WID / 2
     bh_x = C_LEN  # at end wall
@@ -1826,35 +1662,50 @@ def sheet5():
     draw_dim_v(ax, px(IBC_COL_X - 120), py(0), py(BLUE_IBC_Y),
                f"{BLUE_IBC_Y}mm", offset=px(5), fs=5.5, font=FONT)
 
+    # Far column depth
+    draw_dim_v(ax, px(IBC_COL_X - 60), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
+               f"{IBC_D}mm", offset=px(5), fs=5.5, font=FONT)
+
+    # IBC width (along X)
+    draw_dim_h(ax, px(IBC_COL_X), px(IBC_COL_X + IBC_W),
+               py(IBC_FAR_Y + IBC_D + 120),
+               f"{IBC_W}mm IBC WIDTH", offset=py(5), fs=6, font=FONT)
+
+    # Container width (wall to wall)
+    draw_dim_v(ax, px(frame_x_r + 225), py(0), py(C_WID),
+               f"{C_WID}mm (WALL TO WALL)", offset=px(10), fs=6, right=True, font=FONT)
+
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        "1. All internal pipe 1\" HDPE SDR-11 (2\" at cross-connect, 2\" NPT at bulkhead unions).",
-        "2. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
-        "3. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
-        "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V3/V4 on vertical branch at panel face.",
-        f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
-        "6. 2\" cross-connect between IBC-1 and IBC-2 valve outlets — always open, self-leveling. No valve.",
-        f"7. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-03/P-04 pumps + 3× Big Blue filters.",
+        f"1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack. Top tier visible; bottom tier shown dashed.",
+        "2. All internal pipe 1\" HDPE SDR-11 (2\" at cross-connect, 2\" NPT at bulkhead unions).",
+        "3. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
+        "4. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
+        "5. Ball valves (Banjo V100FP) at each IBC connection — V1/V3/V4 on vertical branch at panel face.",
+        f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
+        "7. 2\" cross-connect between IBC-1 and IBC-2 valve outlets — always open, self-leveling. No valve.",
+        f"8. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-03/P-04 pumps + 3× Big Blue filters.",
+        f"9. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
     draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
                fs=5.5, font=FONT, width=2500)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 6",
+    title_block(ax, "SHEET 4 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="INTERNAL PLUMBING PLAN — PIPE ROUTING & VALVES",
+                subtitle="INTERNAL PLUMBING PLAN — IBC LAYOUT, PIPE ROUTING & VALVES",
                 scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
                 height=0.04)
 
-    fig.savefig("diagrams/ibc-stacking-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-stacking-sheet5.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/ibc-stacking-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/ibc-stacking-sheet4.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet5.png saved")
+    print("  diagrams/ibc-stacking-sheet4.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 6 — Internal Plumbing Elevation
+# SHEET 5 — Internal Plumbing Elevation
 #
 # View from inside the container, looking at the sealed end wall.
 # Horizontal = Yd (0=near/pinhole wall at left), Vertical = Z.
@@ -1863,8 +1714,8 @@ def sheet5():
 # right, plumbing corridor in the center.  Ball valves, pipe drops/rises,
 # and IBC connection points all visible.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet6():
-    """Sheet 6 — Internal plumbing elevation with all water system connections.
+def sheet5():
+    """Sheet 5 — Internal plumbing elevation with all water system connections.
 
     Shows the view from inside the container looking at the sealed end wall.
     All pipe connections rendered as proper fittings: double-wall pipes,
@@ -2429,16 +2280,16 @@ def sheet6():
                fs=6, font=FONT, width=5500)
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 6",
+    title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING ELEVATION — ALL WATER SYSTEM CONNECTIONS",
                 scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW FROM INSIDE",
                 height=0.04)
 
-    fig.savefig("diagrams/ibc-stacking-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-stacking-sheet6.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig("diagrams/ibc-stacking-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/ibc-stacking-sheet5.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print("  diagrams/ibc-stacking-sheet6.png saved")
+    print("  diagrams/ibc-stacking-sheet5.png saved")
 
 
 def _draw_valve_elev(ax, sx, sy, yd, z, color, label):
@@ -2579,9 +2430,8 @@ if __name__ == "__main__":
     os.makedirs("diagrams", exist_ok=True)
     print("Generating IBC stacking diagrams...")
     sheet1()  # cross-section elevation -> ibc-stacking-sheet1.png
-    sheet2()  # plan view -> ibc-stacking-sheet2.png
-    sheet3()  # fastening details -> ibc-stacking-sheet3.png
-    sheet4()  # external plumbing panel -> ibc-stacking-sheet4.png
-    sheet5()  # internal plumbing plan -> ibc-stacking-sheet5.png
-    sheet6()  # internal plumbing elevation -> ibc-stacking-sheet6.png
+    sheet2()  # fastening details -> ibc-stacking-sheet2.png
+    sheet3()  # external plumbing panel -> ibc-stacking-sheet3.png
+    sheet4()  # internal plumbing plan -> ibc-stacking-sheet4.png
+    sheet5()  # internal plumbing elevation -> ibc-stacking-sheet5.png
     print("Done.")

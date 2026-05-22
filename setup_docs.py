@@ -148,7 +148,6 @@ DIAG_IMAGE_FILES = [
     "ibc-stacking-sheet3.png",
     "ibc-stacking-sheet4.png",
     "ibc-stacking-sheet5.png",
-    "ibc-stacking-sheet6.png",
     "ibc-frame-sheet1.png",
     "ibc-frame-sheet2.png",
     "ibc-frame-sheet3.png",

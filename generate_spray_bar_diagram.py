@@ -1461,8 +1461,8 @@ draw_dim_h(ax_d, px(-WHEEL_DIA / 2), px(WHEEL_DIA / 2),
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DETAIL E — Handle / arm attachment (section through beam at center)
-# Shows round tube arm on top of beam, water hose zip-tied to arm,
-# U-bolt clamp securing arm to beam top face.
+# Shows ball joint on beam top face, round tube arm extending upward,
+# water hose zip-tied to arm.
 # ─────────────────────────────────────────────────────────────────────────────
 ax_e = fig.add_subplot(gs[3, 0])
 ax_e.set_facecolor(C_BG)
@@ -1473,7 +1473,7 @@ SC_E = 1.5
 E_YD_LO = -60
 E_YD_HI = 90
 E_Z_LO = -10
-E_Z_HI = 140
+E_Z_HI = 175
 
 ax_e.set_xlim(E_YD_LO / SC_E, E_YD_HI / SC_E)
 ax_e.set_ylim(E_Z_LO / SC_E, E_Z_HI / SC_E)
@@ -1526,23 +1526,108 @@ ax_e.text(ey(e_beam_ctr), ez(e_beam_bot + BEAM_W / 2),
           ha="center", va="center", fontsize=4, color=C_FRAME,
           bbox=_bbox_e, **FONT, zorder=15)
 
-# ── Round tube arm (vertical, on top of beam) ─────────────────────────
+# ── Ball joint on beam top face ───────────────────────────────────────
+BALL_DIA = 20       # ball diameter (mm)
+SOCKET_OD = 36      # socket housing outer diameter
+SOCKET_H = 28       # socket housing height (base to top rim)
+FLANGE_W = 50       # mounting flange width
+FLANGE_T = 5        # flange thickness
+STUD_DIA = 12       # stud extending from ball
+STUD_EXT = 20       # stud length above socket top
+C_JOINT = "#C8B070"
+
+beam_top_z = e_beam_bot + BEAM_W
+flange_bot_z = beam_top_z
+socket_bot_z = flange_bot_z + FLANGE_T
+ball_ctr_z = socket_bot_z + SOCKET_H / 2 + 2
+socket_top_z = socket_bot_z + SOCKET_H
+stud_top_z = socket_top_z + STUD_EXT
+
+# Saddle plate between beam top and socket (load distribution)
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - FLANGE_W / 2), ez(flange_bot_z)),
+                           FLANGE_W / SC_E, FLANGE_T / SC_E,
+                           fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=7))
+
+# U-bolt wrapping over socket housing, legs through beam top face
+ubolt_gap = 2
+ubolt_t = 4
+ubolt_l = e_beam_ctr - SOCKET_OD / 2 - ubolt_gap - ubolt_t
+ubolt_r = e_beam_ctr + SOCKET_OD / 2 + ubolt_gap + ubolt_t
+
+# U-bolt arc over socket
+ub_arc = np.linspace(0, np.pi, 30)
+ub_arc_r = (ubolt_r - ubolt_l) / 2
+ub_arc_cz = socket_bot_z + SOCKET_H * 0.6
+ub_arc_yd = e_beam_ctr + ub_arc_r * np.cos(ub_arc)
+ub_arc_z = ub_arc_cz + ub_arc_r * 0.45 * np.sin(ub_arc)
+ax_e.plot([ey(y) for y in ub_arc_yd], [ez(z) for z in ub_arc_z],
+          color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
+
+# Left leg of U-bolt
+ax_e.plot([ey(ubolt_l + ubolt_t / 2), ey(ubolt_l + ubolt_t / 2)],
+          [ez(ub_arc_cz), ez(beam_top_z - BEAM_T - 5)],
+          color=C_BOLT, lw=2.5, zorder=9)
+# Right leg
+ax_e.plot([ey(ubolt_r - ubolt_t / 2), ey(ubolt_r - ubolt_t / 2)],
+          [ez(ub_arc_cz), ez(beam_top_z - BEAM_T - 5)],
+          color=C_BOLT, lw=2.5, zorder=9)
+
+# Nuts below beam top flange
+for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
+    ax_e.add_patch(Rectangle((ey(nut_yd - 5), ez(beam_top_z - BEAM_T - 8)),
+                               10 / SC_E, 4 / SC_E,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
+
+# Socket housing (sectioned — hatched)
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - SOCKET_OD / 2), ez(socket_bot_z)),
+                           SOCKET_OD / SC_E, SOCKET_H / SC_E,
+                           fc=C_JOINT, ec=C_FRAME, lw=1.5, hatch="///",
+                           zorder=6))
+# Socket bore (cavity for ball)
+bore_r = BALL_DIA / 2 + 1
+ax_e.add_patch(Circle((ey(e_beam_ctr), ez(ball_ctr_z)),
+                         bore_r / SC_E,
+                         fc=C_BG, ec=C_FRAME, lw=0.5, zorder=6.5))
+
+# Ball
+ax_e.add_patch(Circle((ey(e_beam_ctr), ez(ball_ctr_z)),
+                         BALL_DIA / 2 / SC_E,
+                         fc="#E0D8C0", ec=C_FRAME, lw=1.5, zorder=7))
+
+# Stud extending upward from ball
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - STUD_DIA / 2), ez(ball_ctr_z)),
+                           STUD_DIA / SC_E, (stud_top_z - ball_ctr_z) / SC_E,
+                           fc="#D0C8B0", ec=C_FRAME, lw=1.0, zorder=7.5))
+
+# ── Round tube arm (clamped onto stud with pinch bolt) ────────────────
 ARM_OD = 25    # 25mm OD round tube (1" nominal)
 ARM_WALL = 2   # 2mm wall thickness
 ARM_ID = ARM_OD - 2 * ARM_WALL
-arm_base_z = e_beam_bot + BEAM_W  # sits on top of beam
-arm_top_z = arm_base_z + 80       # show ~80mm of arm height in this detail
+arm_base_z = stud_top_z - STUD_EXT + 2
+arm_top_z = arm_base_z + 80
 
-# Arm tube (rectangle cross-section in elevation)
+# Arm tube
 ax_e.add_patch(Rectangle((ey(e_beam_ctr - ARM_OD / 2), ez(arm_base_z)),
                            ARM_OD / SC_E, (arm_top_z - arm_base_z) / SC_E,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=8))
-# Interior bore
+# Interior bore (stud visible inside)
 ax_e.add_patch(Rectangle((ey(e_beam_ctr - ARM_ID / 2), ez(arm_base_z)),
-                           ARM_ID / SC_E, (arm_top_z - arm_base_z) / SC_E,
+                           ARM_ID / SC_E, (stud_top_z - arm_base_z) / SC_E,
+                           fc="#D0C8B0", ec="none", zorder=8.3))
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - ARM_ID / 2), ez(stud_top_z)),
+                           ARM_ID / SC_E, (arm_top_z - stud_top_z) / SC_E,
                            fc=C_BG, ec=C_FRAME, lw=0.5, zorder=8.5))
 
-# Continuation arrow (arm extends upward)
+# Pinch bolt through arm tube wall (clamps onto stud)
+pinch_z = arm_base_z + 12
+ax_e.add_patch(Rectangle((ey(e_beam_ctr + ARM_OD / 2), ez(pinch_z - 2)),
+                           8 / SC_E, 4 / SC_E,
+                           fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=9))
+ax_e.plot([ey(e_beam_ctr + ARM_ID / 2), ey(e_beam_ctr + ARM_OD / 2 + 8)],
+          [ez(pinch_z), ez(pinch_z)],
+          color=C_BOLT, lw=1.5, zorder=9)
+
+# Continuation arrow
 ax_e.annotate("", xy=(ey(e_beam_ctr), ez(arm_top_z + 8)),
               xytext=(ey(e_beam_ctr), ez(arm_top_z)),
               arrowprops=dict(arrowstyle="->", color=C_FRAME, lw=1.5),
@@ -1552,51 +1637,40 @@ ax_e.text(ey(e_beam_ctr + 3), ez(arm_top_z + 5),
           ha="left", va="center", fontsize=4.5, color=C_DIM,
           style="italic", **FONT, zorder=15)
 
-# ── U-bolt clamping arm to beam top face ──────────────────────────────
-# Small U-bolt wraps around arm tube, legs go through beam top flange
-ubolt_gap = 2
-ubolt_t = 4    # rod diameter
-ubolt_l = e_beam_ctr - ARM_OD / 2 - ubolt_gap - ubolt_t
-ubolt_r = e_beam_ctr + ARM_OD / 2 + ubolt_gap + ubolt_t
+# Movement arcs (show ball joint articulation range)
+for arc_ang in [-25, 25]:
+    ang_rad = np.radians(arc_ang)
+    arc_len = 35
+    ax_e.annotate("",
+        xy=(ey(e_beam_ctr + arc_len * np.sin(ang_rad)),
+            ez(ball_ctr_z + arc_len * np.cos(ang_rad))),
+        xytext=(ey(e_beam_ctr), ez(ball_ctr_z)),
+        arrowprops=dict(arrowstyle="->", color="#AA0000", lw=0.8,
+                        connectionstyle=f"arc3,rad={0.3 if arc_ang > 0 else -0.3}"),
+        zorder=12)
+ax_e.text(ey(e_beam_ctr - SOCKET_OD / 2 - 5), ez(ball_ctr_z + 20),
+          "MULTI-AXIS\nARTICULATION",
+          ha="right", va="center", fontsize=4.5, color="#AA0000",
+          bbox=_bbox_e, **FONT, zorder=15)
 
-# Top arc (U-bolt over arm)
-arc_angles = np.linspace(0, np.pi, 30)
-arc_r_yd = (ubolt_r - ubolt_l) / 2
-arc_ctr_yd = e_beam_ctr
-arc_ctr_z = arm_base_z + ARM_OD / 2 + 8
-arc_yd = arc_ctr_yd + arc_r_yd * np.cos(arc_angles)
-arc_z = arc_ctr_z + arc_r_yd * 0.5 * np.sin(arc_angles)
-ax_e.plot([ey(y) for y in arc_yd], [ez(z) for z in arc_z],
-          color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
+# Leaders
+leader(ax_e, ey(e_beam_ctr + SOCKET_OD / 2), ez(ball_ctr_z),
+       ey(e_beam_ctr + SOCKET_OD / 2 + 20), ez(ball_ctr_z - 12),
+       f"Ø{BALL_DIA}mm BALL JOINT\n(SS BALL, ZINC SOCKET)\nU-BOLT TO BEAM",
+       fs=5, color=C_JOINT, font=FONT, zorder=20, bbox=_bbox_e)
 
-# Left leg of U-bolt (goes down through beam top flange)
-ax_e.plot([ey(ubolt_l + ubolt_t / 2), ey(ubolt_l + ubolt_t / 2)],
-          [ez(arc_ctr_z), ez(arm_base_z - BEAM_T - 5)],
-          color=C_BOLT, lw=2.5, zorder=9)
-# Right leg
-ax_e.plot([ey(ubolt_r - ubolt_t / 2), ey(ubolt_r - ubolt_t / 2)],
-          [ez(arc_ctr_z), ez(arm_base_z - BEAM_T - 5)],
-          color=C_BOLT, lw=2.5, zorder=9)
+leader(ax_e, ey(ubolt_r), ez(ub_arc_cz),
+       ey(ubolt_r + 15), ez(ub_arc_cz - 10),
+       "M8 SS U-BOLT\n+ NYLOC NUTS",
+       fs=4.5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_e)
 
-# Nuts below beam top flange
-for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
-    ax_e.add_patch(Rectangle((ey(nut_yd - 5), ez(arm_base_z - BEAM_T - 5)),
-                               10 / SC_E, 5 / SC_E,
-                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
+leader(ax_e, ey(e_beam_ctr + ARM_OD / 2 + 8), ez(pinch_z),
+       ey(e_beam_ctr + 35), ez(pinch_z + 15),
+       "M6 PINCH BOLT\n(CLAMPS ARM\nONTO STUD)",
+       fs=4.5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_e)
 
-# Backing plate (steel plate under beam top flange, distributes load)
-plate_w = ubolt_r - ubolt_l + 10
-ax_e.add_patch(Rectangle((ey(e_beam_ctr - plate_w / 2), ez(arm_base_z - 3)),
-                           plate_w / SC_E, 3 / SC_E,
-                           fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=7))
-
-leader(ax_e, ey(ubolt_r), ez(arc_ctr_z + arc_r_yd * 0.3),
-       ey(ubolt_r + 25), ez(arc_ctr_z + 20),
-       "M8 SS U-BOLT\n+ BACKING PLATE\n+ NYLOC NUTS",
-       fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_e)
-
-leader(ax_e, ey(e_beam_ctr + ARM_OD / 2), ez(arm_base_z + 30),
-       ey(e_beam_ctr + 35), ez(arm_base_z + 50),
+leader(ax_e, ey(e_beam_ctr + ARM_OD / 2), ez(arm_base_z + 50),
+       ey(e_beam_ctr + 35), ez(arm_base_z + 65),
        f"Ø{ARM_OD}mm AL TUBE\n(2mm WALL)\nVERTICAL ARM",
        fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_e)
 
@@ -1639,8 +1713,12 @@ draw_dim_h(ax_e, ey(e_beam_ctr - ARM_OD / 2), ey(e_beam_ctr + ARM_OD / 2),
            ez(arm_top_z - 5),
            f"Ø{ARM_OD}mm", offset=3 / SC_E, fs=5, font=FONT)
 
-draw_dim_v(ax_e, ey(e_beam_l - 8), ez(e_beam_bot), ez(arm_base_z),
+draw_dim_v(ax_e, ey(e_beam_l - 8), ez(e_beam_bot), ez(e_beam_bot + BEAM_W),
            f"{BEAM_W}mm", offset=3 / SC_E, fs=4.5, font=FONT)
+
+draw_dim_v(ax_e, ey(e_beam_l - 20), ez(e_beam_bot + BEAM_W), ez(socket_top_z),
+           f"{int(socket_top_z - beam_top_z)}mm\nJOINT",
+           offset=3 / SC_E, fs=4.5, font=FONT)
 
 # ── Full-width title block ────────────────────────────────────────────────
 ax_tb = fig.add_axes([0.05, 0.005, 0.90, 0.04])

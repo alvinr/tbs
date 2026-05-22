@@ -217,8 +217,9 @@ ax.text(sx(pole_x - 500), sz(GRATE_Z_BOT - 5),
         style="italic", **FONT, zorder=10)
 
 # ── Beam / spray bar (left end to cut line) ─────────────────────────────
-beam_x_l = PROC_OPEN_X_L
-beam_x_r = PROC_OPEN_X_R
+beam_x_l = PROC_TRAY_X_L + 30    # 30mm from tray lip — beam extends under walkway
+beam_x_r = PROC_TRAY_X_R - 30    # 30mm from right tray lip
+beam_length = beam_x_r - beam_x_l
 beam_vis_r = CUT_X  # visual right end (cut line)
 
 # Beam shown in cut section (reveals internal PVC pipe)
@@ -235,15 +236,16 @@ ax.add_patch(Rectangle((sx(beam_x_l + 20), sz(BEAM_Z_BOT + BEAM_T + 0.3 + PVC_WA
                          fc=C_WATER, ec="none", alpha=0.3, zorder=9.5))
 
 ax.text(sx((beam_x_l + pole_x) / 2), sz(BEAM_Z_TOP + 8),
-        f"40×40×3mm AL SHS — SPANS {BEAM_SPAN}mm — 1\" PVC PIPE INSIDE",
+        f"40×40×3mm AL SHS — {beam_length}mm LONG — 1\" PVC PIPE INSIDE",
         ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
         fontweight="bold", **FONT, zorder=15)
 
-# Spray apertures and droplets (only up to cut line)
+# Spray apertures and droplets (open processing area only, not under walkway)
+spray_x_l = PROC_OPEN_X_L
 n_drops = 6
 for i in range(n_drops):
     frac = (i + 0.5) / n_drops
-    drop_x = beam_x_l + 50 + (beam_vis_r - beam_x_l - 100) * frac
+    drop_x = spray_x_l + 50 + (beam_vis_r - spray_x_l - 100) * frac
     ax.plot([sx(drop_x - APERTURE_DIA / 2), sx(drop_x + APERTURE_DIA / 2)],
             [sz(BEAM_Z_BOT), sz(BEAM_Z_BOT)],
             color=C_WATER, lw=1.5, zorder=10)
@@ -366,7 +368,7 @@ ax.text(sx(pole_x), sz(Z_LO + 5), "CL BEAM CENTER",
 # ── Dimensions ────────────────────────────────────────────────────────────
 # Beam span shown with note (full span beyond cut)
 draw_dim_h(ax, sx(beam_x_l), sx(beam_vis_r), sz(BEAM_Z_BOT - 20),
-           f"{BEAM_SPAN}mm BEAM SPAN (CONTINUES →)",
+           f"{beam_length}mm BEAM (CONTINUES →)",
            offset=6 / V_SC, fs=5, font=FONT)
 
 draw_dim_v(ax, sx(beam_x_l - 30), sz(0), sz(GRATE_Z_TOP),
@@ -440,20 +442,21 @@ ax.add_patch(Rectangle((sx(cap_end_x), sz(BEAM_Z_BOT + BEAM_T + 0.3 - CAP_WALL_T
                          cap_od / V_SC,
                          fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.6, zorder=9.5))
 
-# Carriage at correct position: just inside beam, wheels on tray floor
-carriage_cx = beam_x_l + 60   # 60mm inside from beam end
+# Carriage at beam end — wheels on tray floor, projected through beam
+carriage_cx = beam_x_l + 80   # 80mm inside from beam end
 
-# Wheel profile (circle in X-Z, looking along Yd)
+# Wheel profile (projected through beam — higher zorder, semi-transparent)
 ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
                                WHEEL_DIA / H_SC, WHEEL_DIA / V_SC,
-                               fc=C_NYLON, ec=C_WHEEL, lw=1.2, alpha=0.6, zorder=8))
+                               fc=C_NYLON, ec=C_WHEEL, lw=2.0, alpha=0.5,
+                               ls="--", zorder=10.5))
 ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
-                               4 / H_SC, 4 / V_SC,
-                               fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=8.5))
+                               6 / H_SC, 6 / V_SC,
+                               fc=C_WHEEL, ec=C_OUT, lw=1.0, zorder=10.6))
 # Contact patch on tray floor
 ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2), sx(carriage_cx + WHEEL_WIDTH / 2)],
         [sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z)],
-        color=C_WHEEL, lw=1.0, zorder=8)
+        color=C_WHEEL, lw=2.0, zorder=10.5)
 
 # Fork bracket (seen edge-on in X-Z: thin vertical plates in Yd)
 fork_top_z = WHEEL_AXLE_Z + 6
@@ -461,27 +464,33 @@ fork_bot_z = WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4
 for off in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
     ax.plot([sx(carriage_cx + off), sx(carriage_cx + off)],
             [sz(fork_top_z), sz(fork_bot_z)],
-            color=C_FRAME, lw=0.6, zorder=8)
+            color=C_FRAME, lw=1.2, zorder=10.5)
 # Axle pin through wheel
 ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2 - 4), sx(carriage_cx + WHEEL_WIDTH / 2 + 4)],
         [sz(WHEEL_AXLE_Z), sz(WHEEL_AXLE_Z)],
-        color=C_FRAME, lw=0.5, zorder=8.5)
+        color=C_FRAME, lw=1.0, zorder=10.6)
 
 # L-bracket arm (horizontal plate at fork top, visible as line in X-Z)
 brk_half = WHEEL_WIDTH / 2 + 18
 ax.plot([sx(carriage_cx - brk_half), sx(carriage_cx + brk_half)],
         [sz(fork_top_z), sz(fork_top_z)],
-        color=C_FRAME, lw=1.0, zorder=8)
-# Vertical drop from L-bracket to beam bottom
+        color=C_FRAME, lw=1.5, zorder=10.5)
+# Vertical arm from L-bracket to beam bottom
 ax.plot([sx(carriage_cx), sx(carriage_cx)],
         [sz(fork_top_z), sz(BEAM_Z_BOT)],
-        color=C_FRAME, lw=0.8, ls="--", zorder=7.5)
+        color=C_FRAME, lw=1.2, ls="--", zorder=10.3)
 
-# U-clamp top plate on beam (visible from side as thin cap)
-uc_extent = 15  # visible X extent of U-clamp top plate
+# U-clamp top plate on beam
+uc_extent = 15
 ax.add_patch(Rectangle((sx(carriage_cx - uc_extent), sz(BEAM_Z_TOP)),
                          2 * uc_extent / H_SC, UC_T / V_SC,
-                         fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+                         fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=11))
+
+# Carriage label
+leader(ax, sx(carriage_cx), sz(TRAY_FLOOR_Z - 2),
+       sx(carriage_cx + 250), sz(TRAY_FLOOR_Z - 25),
+       "LEFT CARRIAGE\n(PROJECTED)",
+       fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
 # ── Detail callouts ──────────────────────────────────────────────────────
 # Detail A — beam end with PVC cap
@@ -1837,6 +1846,10 @@ draw_dim_v(ax_e, ey(e_beam_l - 20), ez(e_beam_bot + BEAM_W), ez(socket_top_z),
            offset=3 / SC_E, fs=4.5, font=FONT)
 
 # ── Full-width title block ────────────────────────────────────────────────
+ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])
+ax_tb.set_xlim(0, 1)
+ax_tb.set_ylim(0, 1)
+ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="SPRAY BAR ASSEMBLY",
             subtitle="GANTRY SPRAY BAR — ELEVATION, CROSS SECTION & DETAILS",

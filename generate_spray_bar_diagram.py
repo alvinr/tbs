@@ -814,9 +814,9 @@ cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2
 cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2
 
 for cw_yd in [cw1_yd, cw2_yd]:
-    ax2.add_patch(mpatches.Ellipse((dy(cw_yd), dz(WHEEL_AXLE_Z)),
-                                     WHEEL_DIA / SC2_H, WHEEL_DIA / SC2_V,
-                                     fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=6))
+    ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
+                            WHEEL_DIA / 2 / SC2_V,
+                            fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=6))
     ax2.add_patch(Circle((dy(cw_yd), dz(WHEEL_AXLE_Z)),
                             1.5 / SC2_V, fc=C_WHEEL, ec=C_OUT, lw=0.3, zorder=6.5))
     # Contact patch on tray

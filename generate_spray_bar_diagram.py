@@ -1086,33 +1086,36 @@ for sr_x in [-17, 15.5]:
     ax_w.add_patch(Rectangle((sr_x, 5), 1.5, 2,
                    fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
 
+_bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
+
 # ── Tray floor reference ─────────────────────────────────────────────────
 ax_w.plot([w_xl, w_xr], [-25, -25],
           color=C_TRAY, lw=1.0, ls="--", zorder=2)
 ax_w.text(w_xr - 1, -26, "TRAY FLOOR",
           ha="right", va="top", fontsize=5, color=C_DIM,
-          style="italic", **FONT, zorder=15)
+          style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
 # ── Labels ────────────────────────────────────────────────────────────────
+
 leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
        "L-BRACKET\nHORIZ. ARM\n(5mm AL)",
-       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
 
 leader(ax_w, 13, 0, w_xr - 1, -10,
        "4mm AL\nFORK ARM",
-       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
 
 ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
           ha="center", va="top", fontsize=5.5, color=C_WHEEL,
-          **FONT, zorder=20)
+          bbox=_bbox_w, **FONT, zorder=20)
 
 leader(ax_w, 5, 5, 5, 10,
        "Ø10mm SS\nAXLE PIN",
-       fs=5.5, color="#888888", font=FONT, zorder=20)
+       fs=5.5, color="#888888", font=FONT, zorder=20, bbox=_bbox_w)
 
 ax_w.text(-17.5, -10, "SNAP\nRING",
           ha="center", va="top", fontsize=5, color="#666666",
-          **FONT, zorder=20)
+          bbox=_bbox_w, **FONT, zorder=20)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax_w, -10, 10, w_yb + 3,

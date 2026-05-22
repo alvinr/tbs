@@ -239,17 +239,20 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm beam/spray pipe, 8 ft lengths (2 joined with sleeve for 3,859mm) | 2 | Online Metals | $36–$56 |
-| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-bracket weldments (TIG welded: 5mm arm + drop cheeks) + end caps — ~300×600mm sheet, cut/bend/weld | 1 | Online Metals | $15–$25 |
+| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3,859mm). 12mm aperture holes at 100mm c/c | 2 | Online Metals | $36–$56 |
+| [1" Schedule 40 PVC pipe, 10 ft](https://www.amazon.com/s?k=1+inch+schedule+40+PVC+pipe+10+ft) | Internal spray pipe (OD 33.4mm), close fit inside 34mm bore. 2mm holes drilled at each aperture | 2 | Home Depot / Amazon | $8–$12 |
+| [1" PVC end caps (Sch 40)](https://www.amazon.com/s?k=1+inch+PVC+end+cap+schedule+40) | Seal both ends of PVC spray pipe | 2 | Home Depot | $3 |
+| PVC cement + primer | Solvent-weld PVC pipe caps | 1 set | Home Depot | $8 |
+| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-bracket arm plates (5mm, no drop cheeks) + end caps — ~300×400mm sheet | 1 | Online Metals | $12–$20 |
 | [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
+| [SS U-bolt clamp, 40mm](https://www.amazon.com/s?k=stainless+steel+U+bolt+clamp+40mm) | Beam-to-carriage clamping (wraps over 40mm SHS), with wing nuts for tool-free operation | 4 | Amazon / McMaster | $12–$18 |
 | [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels, flat tread, ≥25 kg rated | 4 | Amazon / McMaster | $12–$20 |
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
-| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to beam feed end | 1 | Amazon | $15 |
+| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to center feed bulkhead | 1 | Amazon | $15 |
 | [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Fork-to-arm through-bolts (1 per fork, 4 forks per carriage) | 8 sets | McMaster-Carr | $8 |
-| [M6×12 SS nylon-tip set screw](https://www.mcmaster.com/91313A134) | Beam clamping in L-bracket drop cheeks (2 per drop, 4 drops total) | 8 | McMaster-Carr | $6 |
-| Fittings + misc hardware | ½" NPT bulkhead, barb adapter, pole clip, Ø10mm axle pins, snap rings | misc | Amazon / McMaster | $19 |
+| Fittings + misc hardware | ½" NPT bulkhead (center feed), barb adapter, pole clip, Ø10mm axle pins, snap rings | misc | Amazon / McMaster | $19 |
 
-**Spray bar subtotal: ~$134–$176**
+**Spray bar subtotal: ~$156–$208**
 
 ### Water system processing consumables
 

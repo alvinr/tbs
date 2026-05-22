@@ -334,3 +334,18 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 
 **Sheet 3 — Plan view at platform level (Z=1,060mm): Beam layout in cross-section showing longitudinal corridor beams, transverse cantilever beams, corridor opening, wall bracket positions and bolt pattern, anti-rotation lip perimeter, rubber mat positions. Detail A: typical welded corner joint (≈5:1). Detail B: D-ring lashing point mounting (≈4:1)**
 ![TBS-001 IBC Frame — Sheet 3: Plan View](assets/ibc-frame-sheet3.png)
+
+---
+
+## 18. Equipment Panel — IBC Corridor Mounting
+
+Front elevation of the 18mm marine plywood equipment panel spanning the 270mm IBC
+plumbing corridor (Yd=1,046–1,316), perpendicular to the sealed end wall at X=5,000.
+All pumps, filters, accumulator, diverter valve, and isolation valves mount on this
+panel. Full plumbing routing shown with pipe crossings, gap-breaks, and flow arrows.
+Cross-section strip shows panel/walkway/wall relationship. Detail B: filter mounting.
+
+Source reports: [Water System](water-system-report.md) §3,
+[Equipment Layout](equipment-layout-report.md) §4.
+
+![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)

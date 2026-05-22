@@ -74,6 +74,19 @@ BEAM_W = SPRAY_BAR_BEAM        # 40mm
 BEAM_T = SPRAY_BAR_BEAM_T      # 3mm
 BEAM_BORE = BEAM_W - 2 * BEAM_T  # 34mm
 
+# PVC pipe inside beam (1" Sch 40)
+PVC_OD = 33.4
+PVC_ID = 26.6
+PVC_WALL = (PVC_OD - PVC_ID) / 2  # 3.4mm
+C_PVC = "#B8B8C8"
+APERTURE_DIA = 12  # beam aperture hole diameter (mm)
+
+# U-clamp dimensions
+UC_T = 3   # clamp material thickness (mm)
+UC_GAP = 1  # clearance between clamp and beam (mm)
+C_UCLAMP = "#D0D0D8"
+C_BOLT = "#808088"
+
 GRATE_Z_BOT = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
 GRATE_Z_TOP = WALKWAY_H                     # 100mm
 
@@ -202,20 +215,28 @@ ax.plot([sx(carriage_cx - 18), sx(carriage_cx + 18)],
         [sz(WHEEL_AXLE_Z), sz(WHEEL_AXLE_Z)],
         color=C_FRAME, lw=1.0, zorder=7.5)
 
-# L-bracket: horizontal arm at axle height, vertical drop to beam
-# Item 1: shortened carriage boss
+# L-bracket: horizontal arm at axle height + U-clamp over beam
 brk_t = 5   # bracket thickness (visual)
-brk_x_l = carriage_cx - 20   # shortened from -50
+brk_x_l = carriage_cx - 20
 brk_x_r = PROC_OPEN_X_L + 5
 
-# Horizontal arm (at axle height, under walkway)
+# Horizontal arm (at axle height, under walkway — extends under beam)
 ax.add_patch(Rectangle((sx(brk_x_l), sz(WHEEL_AXLE_Z - brk_t / 2)),
                          (brk_x_r - brk_x_l) / H_SC, brk_t / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
-# Vertical drop (at walkway inner edge — full beam height)
-ax.add_patch(Rectangle((sx(brk_x_r - brk_t), sz(BEAM_Z_BOT)),
-                         brk_t / H_SC, (BEAM_Z_TOP - BEAM_Z_BOT) / V_SC,
-                         fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
+# U-clamp over beam (profile view: top plate + two side legs)
+ax.add_patch(Rectangle((sx(brk_x_r - BEAM_W / 2 - UC_T - UC_GAP),
+                          sz(BEAM_Z_TOP)),
+                         (BEAM_W + 2 * UC_T + 2 * UC_GAP) / H_SC,
+                         UC_T / V_SC,
+                         fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
+for u_side in [-1, 1]:
+    u_x = brk_x_r + u_side * (BEAM_W / 2 + UC_GAP)
+    if u_side < 0:
+        u_x -= UC_T
+    ax.add_patch(Rectangle((sx(u_x), sz(BEAM_Z_BOT)),
+                             UC_T / H_SC, (BEAM_Z_TOP - BEAM_Z_BOT) / V_SC,
+                             fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
 
 leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2),
        sx(carriage_cx - 80), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
@@ -230,9 +251,13 @@ beam_x_end = X_HI - 50
 ax.add_patch(Rectangle((sx(beam_x_start), sz(BEAM_Z_BOT)),
                          (beam_x_end - beam_x_start) / H_SC, BEAM_W / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=9))
-# Inner bore filled with water
-ax.add_patch(Rectangle((sx(beam_x_start + 20), sz(BEAM_Z_BOT + BEAM_T)),
-                         (beam_x_end - beam_x_start - 40) / H_SC, BEAM_BORE / V_SC,
+# PVC pipe inside bore (1" Sch 40, OD 33.4mm, ID 26.6mm)
+ax.add_patch(Rectangle((sx(beam_x_start + 10), sz(BEAM_Z_BOT + BEAM_T + 0.3)),
+                         (beam_x_end - beam_x_start - 20) / H_SC, PVC_OD / V_SC,
+                         fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.3))
+# Water inside PVC pipe
+ax.add_patch(Rectangle((sx(beam_x_start + 10), sz(BEAM_Z_BOT + BEAM_T + 0.3 + PVC_WALL)),
+                         (beam_x_end - beam_x_start - 20) / H_SC, PVC_ID / V_SC,
                          fc=C_WATER, ec="none", lw=0, alpha=0.3, zorder=9.5))
 
 # Beam continuation arrow
@@ -243,22 +268,24 @@ ax.annotate("", xy=(sx(X_HI - 10), arrow_y),
             zorder=15)
 
 ax.text(sx((beam_x_start + beam_x_end) / 2), sz(BEAM_Z_TOP + 12),
-        "40×40×3mm 6061-T6 AL SHS — SPRAY PIPE",
+        "40×40×3mm 6061-T6 AL SHS — STRUCTURAL BEAM",
         ha="center", va="bottom", fontsize=6.5, color=C_FRAME,
         fontweight="bold", **FONT, zorder=15)
 ax.text(sx((beam_x_start + beam_x_end) / 2), sz(BEAM_Z_TOP + 3),
-        f"(SPANS {BEAM_SPAN}mm — WATER THROUGH BORE, 3mm HOLES IN BOTTOM)",
+        f"(SPANS {BEAM_SPAN}mm — 1\" PVC PIPE INSIDE, 12mm APERTURES, CENTER FEED)",
         ha="center", va="bottom", fontsize=5, color=C_DIM,
         **FONT, zorder=15)
 
-# ── Spray holes and water droplets ────────────────────────────────────────
+# ── Spray apertures (12mm in beam, 2mm in PVC pipe) and water droplets ───
 n_drops = 6
 for i in range(n_drops):
     frac = (i + 0.5) / n_drops
     drop_x = beam_x_start + 40 + (beam_x_end - beam_x_start - 80) * frac
-    ax.plot([sx(drop_x - 3), sx(drop_x + 3)],
+    # 12mm aperture in beam bottom
+    ax.plot([sx(drop_x - APERTURE_DIA / 2), sx(drop_x + APERTURE_DIA / 2)],
             [sz(BEAM_Z_BOT), sz(BEAM_Z_BOT)],
-            color=C_WATER, lw=2.0, zorder=10)
+            color=C_WATER, lw=2.5, zorder=10)
+    # Water jet from pipe through aperture
     ax.plot([sx(drop_x), sx(drop_x)],
             [sz(BEAM_Z_BOT - 1), sz(TRAY_FLOOR_Z + 3)],
             color=C_WATER, lw=0.8, alpha=0.5, zorder=6)
@@ -270,29 +297,15 @@ ax.add_patch(Rectangle((sx(beam_x_start), sz(TRAY_FLOOR_Z)),
                          (beam_x_end - beam_x_start) / H_SC, 3 / V_SC,
                          fc=C_WATER, ec="none", alpha=0.12, zorder=4.5))
 
-# ── End cap with bulkhead fitting (item 2: show water connection) ────────
+# ── End cap (plain AL plate — PVC pipe sealed inside with PVC cap) ───────
 cap_t = 5
 ax.add_patch(Rectangle((sx(beam_x_start - cap_t), sz(BEAM_Z_BOT)),
                          cap_t / H_SC, BEAM_W / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=9.5))
 
-# Bulkhead fitting protruding from end cap
-fitting_w = 12
-fitting_h = 15
-fitting_x = beam_x_start - cap_t - fitting_w
-fitting_z = BEAM_Z_BOT + BEAM_W / 2 - fitting_h / 2
-ax.add_patch(Rectangle((sx(fitting_x), sz(fitting_z)),
-                         fitting_w / H_SC, fitting_h / V_SC,
-                         fc="#C0A860", ec=C_FRAME, lw=1.0, zorder=9.5))
-# Hose barb adapter
-barb_w = 8
-ax.add_patch(Rectangle((sx(fitting_x - barb_w), sz(fitting_z + 3)),
-                         barb_w / H_SC, (fitting_h - 6) / V_SC,
-                         fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=9.5))
-
-leader(ax, sx(fitting_x), sz(fitting_z),
-       sx(fitting_x - 40), sz(fitting_z - 25),
-       "1/2\" NPT BULKHEAD\n+ HOSE BARB",
+leader(ax, sx(beam_x_start - cap_t / 2), sz(BEAM_Z_BOT),
+       sx(beam_x_start - 50), sz(BEAM_Z_BOT - 20),
+       "AL END CAP\n(PVC PIPE CAPPED\nINSIDE)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
 
 # ── BV-02 on container wall ──────────────────────────────────────────────
@@ -318,17 +331,17 @@ ax.add_patch(Rectangle((sx(-pipe_w / 4), sz(pipe_z_bot)),
                          (pipe_w / 2) / H_SC, (pipe_z_top - pipe_z_bot) / V_SC,
                          fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=11))
 
-# ── Flex hose from pipe to beam feed end ─────────────────────────────────
+# ── Flex hose from pipe to center feed (hose exits view to the right) ────
 hose_start_x = 10
 hose_start_z = pipe_z_bot
-hose_end_x = fitting_x - barb_w
+hose_end_x = X_HI - 20  # exits view toward beam center
 hose_end_z = BEAM_Z_BOT + BEAM_W / 2
 
 n_pts = 80
 ht = np.linspace(0, 1, n_pts)
 P0 = np.array([hose_start_x, hose_start_z])
-P1 = np.array([hose_start_x + 80, hose_end_z - 5])
-P2 = np.array([hose_end_x - 120, hose_end_z - 5])
+P1 = np.array([hose_start_x + 150, hose_end_z + 10])
+P2 = np.array([hose_end_x - 200, hose_end_z])
 P3 = np.array([hose_end_x, hose_end_z])
 hose_xs = (1-ht)**3*P0[0] + 3*(1-ht)**2*ht*P1[0] + 3*(1-ht)*ht**2*P2[0] + ht**3*P3[0]
 hose_zs = (1-ht)**3*P0[1] + 3*(1-ht)**2*ht*P1[1] + 3*(1-ht)*ht**2*P2[1] + ht**3*P3[1]
@@ -337,9 +350,14 @@ hose_zs += 1.5 * np.sin(np.linspace(0, 10 * np.pi, n_pts)) * envelope
 
 ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs],
         color=C_HOSE, lw=2.5, alpha=0.7, zorder=11)
+# Continuation arrow (hose continues to center feed)
+ax.annotate("", xy=(sx(hose_end_x), sz(hose_end_z)),
+            xytext=(sx(hose_end_x - 60), sz(hose_end_z)),
+            arrowprops=dict(arrowstyle="-|>", color=C_HOSE, lw=1.5),
+            zorder=15)
 
 ax.text(sx(hose_start_x + 100), sz(hose_start_z + 20),
-        "1/2\" REINFORCED PVC\nFLEX HOSE (4m COILED)",
+        "1/2\" FLEX HOSE → CENTER\nFEED (4m COILED)",
         ha="left", va="bottom", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
@@ -370,11 +388,11 @@ draw_dim_v(ax, sx(carriage_cx + 50), sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z + WHEEL_D
 # ── Notes ─────────────────────────────────────────────────────────────────
 notes = [
     "NOTES:",
-    f"1. 40×40×3mm AL SHS beam doubles as spray pipe (water through bore).",
-    f"2. Carriages (2× Ø{WHEEL_DIA}mm wheels) ride on tray floor under grating.",
-    f"3. Beam spans {BEAM_SPAN}mm (X). Coverage: X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}mm.",
-    f"4. Travel: {SPRAY_BAR_TRAVEL}mm in Yd. Tray rim walls guide laterally.",
-    "5. Both ends capped; hose connects at one end. Right carriage mirrors left.",
+    f"1. 40×40×3mm AL SHS structural beam. 1\" PVC pipe inside carries water.",
+    f"2. 12mm apertures in beam, 2mm holes drilled through pipe at each aperture.",
+    f"3. Center feed: 1/2\" bulkhead through beam wall at X midpoint.",
+    f"4. PVC pipe swappable — change flow rate/nozzles without replacing beam.",
+    f"5. U-clamp secures beam to carriage (no beam wall penetration).",
 ]
 draw_notes(ax, notes, sx(X_LO + 250), sz(Z_HI - 25), spacing=5 / V_SC,
            fs=7, font=FONT, width=455 / H_SC)
@@ -679,19 +697,33 @@ beam_yd_r = beam_yd + BEAM_W / 2
 ax2.add_patch(Rectangle((dy(beam_yd_l), dz(BEAM_Z_BOT)),
                           BEAM_W / SC2_H, BEAM_W / SC2_V,
                           fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=9))
-# Inner bore with water
-ax2.add_patch(Rectangle((dy(beam_yd - BEAM_BORE / 2), dz(BEAM_Z_BOT + BEAM_T)),
-                          BEAM_BORE / SC2_H, BEAM_BORE / SC2_V,
-                          fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=9.5))
+# PVC pipe inside bore (cross-section circle, shown as rectangle in this view)
+ax2.add_patch(Rectangle((dy(beam_yd - PVC_OD / 2), dz(BEAM_Z_BOT + BEAM_T + 0.3)),
+                          PVC_OD / SC2_H, PVC_OD / SC2_V,
+                          fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.3))
+# Water inside PVC pipe
+ax2.add_patch(Rectangle((dy(beam_yd - PVC_ID / 2), dz(BEAM_Z_BOT + BEAM_T + 0.3 + PVC_WALL)),
+                          PVC_ID / SC2_H, PVC_ID / SC2_V,
+                          fc=C_WATER, ec="none", lw=0, alpha=0.35, zorder=9.5))
 
 ax2.text(dy(beam_yd), dz(BEAM_Z_TOP + 15),
-         f"40×40×3mm AL SHS\nSPRAY PIPE", ha="center", va="bottom",
+         f"40×40×3mm AL SHS\n+ 1\" PVC PIPE INSIDE", ha="center", va="bottom",
          fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
-# Spray hole at bottom
-hole_w = 3
-ax2.add_patch(Rectangle((dy(beam_yd - hole_w / 2), dz(BEAM_Z_BOT - 0.5)),
-                          hole_w / SC2_H, (BEAM_T + 1) / SC2_V,
+# Center feed fitting (1/2" bulkhead through beam wall — shown at this section)
+feed_fit_h = 12
+feed_fit_w = 8
+ax2.add_patch(Rectangle((dy(beam_yd_r), dz(BEAM_Z_BOT + BEAM_W / 2 - feed_fit_h / 2)),
+                          feed_fit_w / SC2_H, feed_fit_h / SC2_V,
+                          fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=10))
+leader(ax2, dy(beam_yd_r + feed_fit_w), dz(BEAM_Z_BOT + BEAM_W / 2),
+       dy(beam_yd_r + 80), dz(BEAM_Z_BOT + BEAM_W / 2 + 20),
+       "1/2\" BULKHEAD\nCENTER FEED",
+       fs=4.5, color="#C0A860", font=FONT, zorder=15)
+
+# 12mm aperture + spray hole at bottom
+ax2.add_patch(Rectangle((dy(beam_yd - APERTURE_DIA / 2), dz(BEAM_Z_BOT - 0.5)),
+                          APERTURE_DIA / SC2_H, (BEAM_T + 1) / SC2_V,
                           fc=C_WATER, ec=C_FRAME, lw=0.5, zorder=9))
 # Water stream
 for drip_offset in [-30, 0, 30]:
@@ -706,7 +738,7 @@ ax2.add_patch(Rectangle((dy(beam_yd - 80), dz(TRAY_FLOOR_Z)),
                           fc=C_WATER, ec="none", alpha=0.15, zorder=4.5))
 
 ax2.text(dy(beam_yd + 35), dz(BEAM_Z_BOT - 8),
-         f"3mm SPRAY HOLES\n@{SPRAY_BAR_HOLE_SP}mm c/c",
+         f"12mm APERTURE\n2mm PIPE HOLES\n@{SPRAY_BAR_HOLE_SP}mm c/c",
          ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
 # ── Operator figure on walkway ───────────────────────────────────────────
@@ -796,7 +828,7 @@ ht2 = np.linspace(0, 1, hose_n)
 H0 = np.array([bv2_yd + 20, bv2_z - bv_sz / 2])
 H1 = np.array([tray_yd_start + 40, BEAM_Z_BOT + BEAM_W])
 H2 = np.array([beam_yd - 80, BEAM_Z_BOT + BEAM_W])
-H3 = np.array([beam_yd_l - 10, BEAM_Z_BOT + BEAM_W / 2])
+H3 = np.array([beam_yd_r + feed_fit_w, BEAM_Z_BOT + BEAM_W / 2])
 hose_yd = (1-ht2)**3*H0[0] + 3*(1-ht2)**2*ht2*H1[0] + 3*(1-ht2)*ht2**2*H2[0] + ht2**3*H3[0]
 hose_zz = (1-ht2)**3*H0[1] + 3*(1-ht2)**2*ht2*H1[1] + 3*(1-ht2)*ht2**2*H2[1] + ht2**3*H3[1]
 env2 = np.clip(np.minimum(ht2, 1 - ht2) * 4, 0, 1)
@@ -841,14 +873,24 @@ ax2.add_patch(Rectangle((dy(brk_arm_l), dz(WHEEL_AXLE_Z - brk_t_op / 2)),
                            (brk_arm_r - brk_arm_l) / SC2_H, brk_t_op / SC2_V,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
-# Vertical drop cheeks flanking beam
-op_drop_l = carriage_ctr_yd - BEAM_W / 2 - brk_t_op
-op_drop_r = carriage_ctr_yd + BEAM_W / 2
-for side_yd in [op_drop_l, op_drop_r]:
-    ax2.add_patch(Rectangle((dy(side_yd), dz(BEAM_Z_BOT)),
-                               brk_t_op / SC2_H,
+# U-clamp over beam (profile: top plate + side legs)
+uc_t_op = 3
+uc_gap = 1
+# Top plate
+ax2.add_patch(Rectangle((dy(carriage_ctr_yd - BEAM_W / 2 - uc_t_op - uc_gap),
+                            dz(BEAM_Z_TOP)),
+                           (BEAM_W + 2 * uc_t_op + 2 * uc_gap) / SC2_H,
+                           uc_t_op / SC2_V,
+                           fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=10))
+# Side legs
+for u_sign in [-1, 1]:
+    u_yd = carriage_ctr_yd + u_sign * (BEAM_W / 2 + uc_gap)
+    if u_sign < 0:
+        u_yd -= uc_t_op
+    ax2.add_patch(Rectangle((dy(u_yd), dz(BEAM_Z_BOT)),
+                               uc_t_op / SC2_H,
                                (BEAM_Z_TOP - BEAM_Z_BOT) / SC2_V,
-                               fc=C_ALUM_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+                               fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=10))
 
 leader(ax2, dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 8),
        dy(cw1_yd - 50), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
@@ -878,9 +920,9 @@ draw_dim_v(ax2, dy(tray_yd_start - 25), dz(0), dz(PROC_TRAY_RIM),
 r_notes = [
     "OPERATOR VIEW:",
     f"1. Beam travels {SPRAY_BAR_TRAVEL}mm along Yd (push/pull with pole).",
-    "2. Tray rim walls (50mm) guide beam laterally — no rails needed.",
-    "3. Pole clips to beam top via SS U-bolt. Detaches for storage.",
-    "4. Hose coils at pinhole wall; extends as beam travels toward far rim.",
+    "2. 1\" PVC pipe inside beam carries water. Center feed via bulkhead.",
+    "3. U-clamp holds beam to carriage — no beam wall penetration.",
+    "4. PVC pipe swappable for different flow rates / nozzle patterns.",
 ]
 draw_notes(ax2, r_notes, dy(R_YD_LO + 400), dz(R_Z_HI - 120), spacing=30 / SC2_V,
            fs=5.5, font=FONT, width=350 / SC2_H)
@@ -980,153 +1022,111 @@ for w_yd in [wheel1_yd, wheel2_yd]:
               [cz(WHEEL_AXLE_Z), cz(WHEEL_AXLE_Z)],
               color=C_FRAME, lw=0.8, zorder=6.5)
 
-# ── L-bracket ────────────────────────────────────────────────────────────
+# ── L-bracket (arm only — no drop cheeks) ────────────────────────────────
 brk_t_c = 5
 plate_yd_l = wheel1_yd - 18
 plate_yd_r = wheel2_yd + 18
 
-# Horizontal arm at axle height
+# Horizontal arm at axle height (beam sits on top of this)
 ax_c.add_patch(Rectangle((cy(plate_yd_l), cz(WHEEL_AXLE_Z - brk_t_c / 2)),
                            (plate_yd_r - plate_yd_l) / SC_C, brk_t_c / SC_C,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
 
-# Vertical drop cheeks flanking beam (full beam height)
-drop_yd_l = carriage_yd_center - BEAM_W / 2 - brk_t_c
-drop_yd_r = carriage_yd_center + BEAM_W / 2
-for side_yd in [drop_yd_l, drop_yd_r]:
-    ax_c.add_patch(Rectangle((cy(side_yd), cz(BEAM_Z_BOT)),
-                               brk_t_c / SC_C,
-                               (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
-                               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, zorder=7))
-
 leader(ax_c, cy(plate_yd_r), cz(WHEEL_AXLE_Z),
        cy(plate_yd_r + 40), cz(WHEEL_AXLE_Z + 10),
-       "AL L-BRACKET\n(TIG WELDED\nWELDMENT)",
+       "AL L-BRACKET\nARM (5mm PLATE)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
 
-# ── Bolt indicators (profile view — bolts are in the Yd-Z plane) ────────
-C_BOLT = "#808088"
+# ── Fork-to-arm M5 through-bolts ────────────────────────────────────────
 arm_top_z = WHEEL_AXLE_Z + brk_t_c / 2
 arm_bot_z = WHEEL_AXLE_Z - brk_t_c / 2
 
-# Fork-to-arm M5 through-bolts — vertical (Z) through arm into fork
 for w_yd in [wheel1_yd, wheel2_yd]:
     for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
         fork_yd = w_yd + offset
-        # Bolt head on top of arm
         ax_c.add_patch(Rectangle((cy(fork_yd - 4), cz(arm_top_z)),
                                    8 / SC_C, 3 / SC_C,
                                    fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-        # Shank through arm
         ax_c.add_patch(Rectangle((cy(fork_yd - 2.5), cz(arm_bot_z)),
                                    5 / SC_C, brk_t_c / SC_C,
                                    fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
-        # Nyloc nut below arm
         ax_c.add_patch(Rectangle((cy(fork_yd - 4), cz(arm_bot_z - 4)),
                                    8 / SC_C, 4 / SC_C,
                                    fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-
-# Beam-to-drop M6 set screws — horizontal (Yd) through drop into beam
-# Shown with zigzag thread profile, hex socket head, and nylon tip.
-M6_DIA = 6
-M6_R = M6_DIA / 2
-SCREW_LEN = brk_t_c + BEAM_T + 5  # 13mm: through drop + beam wall + 5mm into bore
-THREAD_PITCH = 1.5  # visual pitch for clarity at 1:2 scale
-SOCKET_DEPTH = 2.5  # hex socket recess depth
-TIP_LEN = 1.5  # nylon tip pad length
-
-for ss_z in [BEAM_Z_BOT + 10, BEAM_Z_TOP - 10]:
-    # Left drop: screw enters from left (outer face), tip toward beam (right)
-    s_yd = drop_yd_l - 2  # screw start (head end)
-    # Body outline
-    ax_c.add_patch(Rectangle((cy(s_yd), cz(ss_z - M6_R)),
-                               SCREW_LEN / SC_C, M6_DIA / SC_C,
-                               fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=11))
-    # Nylon tip
-    ax_c.add_patch(Rectangle((cy(s_yd + SCREW_LEN - TIP_LEN), cz(ss_z - M6_R)),
-                               TIP_LEN / SC_C, M6_DIA / SC_C,
-                               fc="#E8E0C0", ec=C_FRAME, lw=0.4, zorder=11.2))
-    # Hex socket recess
-    ax_c.add_patch(Rectangle((cy(s_yd), cz(ss_z - 1.5)),
-                               SOCKET_DEPTH / SC_C, 3 / SC_C,
-                               fc="#606068", ec=C_FRAME, lw=0.4, zorder=11.5))
-    # Thread zigzag — top and bottom edges
-    n_teeth = int(SCREW_LEN / THREAD_PITCH)
-    zig_yds = [s_yd + i * THREAD_PITCH for i in range(n_teeth + 1)]
-    zig_yds = [y for y in zig_yds if y <= s_yd + SCREW_LEN]
-    for edge_sign in [1, -1]:  # +1 = top edge, -1 = bottom edge
-        z_base = ss_z + edge_sign * M6_R
-        tooth = 0.8 * (-edge_sign)  # teeth point inward
-        pts_y = []
-        pts_z = []
-        for i, yy in enumerate(zig_yds):
-            pts_y.append(cy(yy))
-            pts_z.append(cz(z_base + (tooth if i % 2 else 0)))
-        ax_c.plot(pts_y, pts_z, color=C_FRAME, lw=0.5, zorder=11.8)
-
-    # Right drop: screw enters from right (outer face), tip toward beam (left)
-    s_yd_r = drop_yd_r + brk_t_c + 2 - SCREW_LEN  # screw tip end
-    # Body outline
-    ax_c.add_patch(Rectangle((cy(s_yd_r), cz(ss_z - M6_R)),
-                               SCREW_LEN / SC_C, M6_DIA / SC_C,
-                               fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=11))
-    # Nylon tip (left end for right screw)
-    ax_c.add_patch(Rectangle((cy(s_yd_r), cz(ss_z - M6_R)),
-                               TIP_LEN / SC_C, M6_DIA / SC_C,
-                               fc="#E8E0C0", ec=C_FRAME, lw=0.4, zorder=11.2))
-    # Hex socket recess (right end)
-    ax_c.add_patch(Rectangle((cy(s_yd_r + SCREW_LEN - SOCKET_DEPTH), cz(ss_z - 1.5)),
-                               SOCKET_DEPTH / SC_C, 3 / SC_C,
-                               fc="#606068", ec=C_FRAME, lw=0.4, zorder=11.5))
-    # Thread zigzag — top and bottom edges
-    zig_yds_r = [s_yd_r + i * THREAD_PITCH for i in range(n_teeth + 1)]
-    zig_yds_r = [y for y in zig_yds_r if y <= s_yd_r + SCREW_LEN]
-    for edge_sign in [1, -1]:
-        z_base = ss_z + edge_sign * M6_R
-        tooth = 0.8 * (-edge_sign)
-        pts_y = []
-        pts_z = []
-        for i, yy in enumerate(zig_yds_r):
-            pts_y.append(cy(yy))
-            pts_z.append(cz(z_base + (tooth if i % 2 else 0)))
-        ax_c.plot(pts_y, pts_z, color=C_FRAME, lw=0.5, zorder=11.8)
 
 leader(ax_c, cy(wheel2_yd + WHEEL_WIDTH / 2 + 2), cz(WHEEL_AXLE_Z),
        cy(wheel2_yd + 55), cz(WHEEL_AXLE_Z - 20),
        "M5 SS THRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
        fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
-leader(ax_c, cy(drop_yd_r + brk_t_c / 2), cz(BEAM_Z_BOT + 10),
-       cy(carriage_yd_center + BEAM_W / 2 + 45), cz(BEAM_Z_BOT - 6),
-       "M6 SS SET SCREW\n(NYLON TIP,\n2 PER DROP)",
-       fs=4.5, color=C_BOLT, font=FONT, zorder=15)
-
-# ── Beam / spray pipe SHS cross-section ──────────────────────────────────
+# ── Beam / structural SHS cross-section with PVC pipe inside ────────────
 c_beam_l = carriage_yd_center - BEAM_W / 2
 c_beam_r = carriage_yd_center + BEAM_W / 2
 
+# AL SHS outer wall
 ax_c.add_patch(Rectangle((cy(c_beam_l), cz(BEAM_Z_BOT)),
                            BEAM_W / SC_C, BEAM_W / SC_C,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=2.5, zorder=8))
+# Square bore
 ax_c.add_patch(Rectangle((cy(carriage_yd_center - BEAM_BORE / 2),
                             cz(BEAM_Z_BOT + BEAM_T)),
                            BEAM_BORE / SC_C, BEAM_BORE / SC_C,
-                           fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=8.5))
+                           fc=C_BG, ec=C_FRAME, lw=0.8, zorder=8.5))
+# PVC pipe (circle cross-section inside square bore)
+ax_c.add_patch(Circle((cy(carriage_yd_center), cz(BEAM_Z_BOT + BEAM_W / 2)),
+                         PVC_OD / 2 / SC_C,
+                         fc=C_PVC, ec=C_FRAME, lw=1.0, alpha=0.7, zorder=8.7))
+# Water inside PVC pipe
+ax_c.add_patch(Circle((cy(carriage_yd_center), cz(BEAM_Z_BOT + BEAM_W / 2)),
+                         PVC_ID / 2 / SC_C,
+                         fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=8.8))
 
 ax_c.text(cy(carriage_yd_center), cz(BEAM_Z_TOP + 5),
-          "40×40×3mm\n6061-T6 AL SHS\n(SPRAY PIPE)",
+          "40×40×3mm AL SHS\n+ 1\" PVC PIPE",
           ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", **FONT, zorder=15)
 
-# Spray hole at bottom
-ax_c.add_patch(Rectangle((cy(carriage_yd_center - 1.5), cz(BEAM_Z_BOT - 0.5)),
-                           3 / SC_C, (BEAM_T + 1) / SC_C,
-                           fc=C_WATER, ec=C_FRAME, lw=0.5, zorder=9))
+# ── U-clamp over beam ──────────────────────────────────────────────────
+uc_l = carriage_yd_center - BEAM_W / 2 - UC_T - UC_GAP
+uc_r = carriage_yd_center + BEAM_W / 2 + UC_GAP + UC_T
+# Top plate
+ax_c.add_patch(Rectangle((cy(uc_l), cz(BEAM_Z_TOP)),
+                           (uc_r - uc_l) / SC_C, UC_T / SC_C,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
+# Left leg
+ax_c.add_patch(Rectangle((cy(uc_l), cz(BEAM_Z_BOT)),
+                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+# Right leg
+ax_c.add_patch(Rectangle((cy(uc_r - UC_T), cz(BEAM_Z_BOT)),
+                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+# Thumb screw indicators (bolts through arm below beam)
+for ts_yd in [uc_l + UC_T / 2, uc_r - UC_T / 2]:
+    # Bolt shank
+    ax_c.add_patch(Rectangle((cy(ts_yd - 2.5), cz(arm_bot_z - 4)),
+                               5 / SC_C, (arm_top_z - arm_bot_z + 4) / SC_C,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+    # Wing nut below arm
+    ax_c.add_patch(Rectangle((cy(ts_yd - 5), cz(arm_bot_z - 8)),
+                               10 / SC_C, 4 / SC_C,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+
+leader(ax_c, cy(uc_r), cz(BEAM_Z_TOP + UC_T / 2),
+       cy(uc_r + 35), cz(BEAM_Z_TOP + 15),
+       "SS U-CLAMP\n+ WING NUTS\n(TOOL-FREE)",
+       fs=4.5, color=C_BOLT, font=FONT, zorder=15)
+
+# 12mm aperture + 2mm spray hole at bottom
+ax_c.add_patch(Rectangle((cy(carriage_yd_center - APERTURE_DIA / 2), cz(BEAM_Z_BOT - 0.5)),
+                           APERTURE_DIA / SC_C, (BEAM_T + 1) / SC_C,
+                           fc=C_BG, ec=C_FRAME, lw=0.5, zorder=9))
+# Water jet through aperture
 ax_c.plot([cy(carriage_yd_center), cy(carriage_yd_center)],
           [cz(BEAM_Z_BOT - 1), cz(BEAM_Z_BOT - 16)],
           color=C_WATER, lw=1.2, alpha=0.6, zorder=6)
 ax_c.text(cy(carriage_yd_center + 8), cz(BEAM_Z_BOT - 10),
-          f"3mm SPRAY HOLE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
+          f"12mm APERTURE\n2mm PIPE HOLE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
           ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
 # ── Dimensions ───────────────────────────────────────────────────────────
@@ -1324,52 +1324,51 @@ ax_d.text(px(0), py_d(D_YD_HI - 10),
 
 _bbox_d = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
-# ── Beam / spray pipe (cut section — runs left-right in X) ──────────────
+# ── Beam (cut section — runs left-right in X) ──────────────────────────
 ax_d.add_patch(Rectangle((px(-BEAM_W / 2), py_d(-BEAM_W / 2)),
                            BEAM_W / SC_D, BEAM_W / SC_D,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=5))
+# Square bore
 ax_d.add_patch(Rectangle((px(-BEAM_BORE / 2), py_d(-BEAM_BORE / 2)),
                            BEAM_BORE / SC_D, BEAM_BORE / SC_D,
-                           fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=5.5))
+                           fc=C_BG, ec=C_FRAME, lw=0.8, zorder=5.5))
+# PVC pipe inside (circle in plan view)
+ax_d.add_patch(Circle((px(0), py_d(0)),
+                         PVC_OD / 2 / SC_D,
+                         fc=C_PVC, ec=C_FRAME, lw=0.8, alpha=0.7, zorder=5.7))
+ax_d.add_patch(Circle((px(0), py_d(0)),
+                         PVC_ID / 2 / SC_D,
+                         fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=5.8))
 ax_d.text(px(0), py_d(0),
-          "40×40 SHS\n(SPRAY PIPE)",
-          ha="center", va="center", fontsize=5, color=C_FRAME,
+          "40×40 SHS\n+ 1\" PVC",
+          ha="center", va="center", fontsize=4.5, color=C_FRAME,
           bbox=_bbox_d, **FONT, zorder=15)
 
 # ── L-bracket arm (horizontal plate spanning both wheels, runs in Yd) ───
-arm_half_span = WHEEL_SPACING_YD / 2 + 18  # extends 18mm past each wheel
-arm_w_x = 20  # arm width in X direction (visible in plan)
-brk_t_plan = 5
+arm_half_span = WHEEL_SPACING_YD / 2 + 18
+arm_w_x = 20
 ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-arm_half_span)),
                            arm_w_x / SC_D, (2 * arm_half_span) / SC_D,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
                            hatch="///", alpha=0.7, zorder=4))
 
-# ── Drop cheeks (vertical plates flanking beam, shown as rectangles) ────
-drop_w_yd = brk_t_plan  # 5mm wide in Yd
+# ── U-clamp (shown in plan as rectangle wrapping beam) ──────────────────
+uc_w_x = BEAM_W + 2 * UC_T + 2 * UC_GAP  # total width in X (covers beam + legs)
+uc_w_yd = BEAM_W + 2 * UC_GAP  # depth in Yd (top plate span)
+ax_d.add_patch(Rectangle((px(-uc_w_x / 2), py_d(-uc_w_yd / 2)),
+                           uc_w_x / SC_D, uc_w_yd / SC_D,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=1.0, alpha=0.5, zorder=6))
+# Wing nut indicators on each side
 for side in [-1, 1]:
-    drop_yd_d = side * (BEAM_W / 2) + (0 if side > 0 else -drop_w_yd)
-    ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(drop_yd_d)),
-                               arm_w_x / SC_D, drop_w_yd / SC_D,
-                               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, zorder=6))
+    wn_yd = side * (BEAM_W / 2 + UC_GAP + UC_T / 2)
+    ax_d.add_patch(Circle((px(0), py_d(wn_yd)),
+                            4 / SC_D,
+                            fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
 
-# ── Set screws (M6, 2 per drop — shown as circles in plan) ──────────────
-ss_x_positions = [-6, 6]  # two screws per drop, spaced along X
-for side in [-1, 1]:
-    ss_yd = side * (BEAM_W / 2 + drop_w_yd / 2)
-    for ss_x in ss_x_positions:
-        ax_d.add_patch(Circle((px(ss_x), py_d(ss_yd)),
-                                M6_DIA / 2 / SC_D,
-                                fc="#606068", ec=C_FRAME, lw=0.5, zorder=8))
-        # Hex socket indication (inner hexagon)
-        ax_d.add_patch(mpatches.RegularPolygon((px(ss_x), py_d(ss_yd)),
-                                                 numVertices=6, radius=1.5 / SC_D,
-                                                 fc="#404048", ec=C_FRAME, lw=0.3, zorder=8.5))
-
-leader(ax_d, px(ss_x_positions[1] + 4), py_d(BEAM_W / 2 + drop_w_yd / 2),
+leader(ax_d, px(uc_w_x / 2), py_d(0),
        px(D_X_HI - 15), py_d(BEAM_W / 2 + 25),
-       "M6 SET SCREW\n(TYP. 4×)",
-       fs=5, color="#606068", font=FONT, zorder=20, bbox=_bbox_d)
+       "U-CLAMP\n+ WING NUTS",
+       fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_d)
 
 # ── Fork brackets (vertical plates straddling each wheel) ────────────────
 fork_t = 6  # fork thickness in X

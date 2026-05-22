@@ -332,7 +332,7 @@ ax1.text(6.60, 5.3, "P-02\n12VDC\n3.5 GPM", ha="left", fontsize=6, color=C_PUMP)
 
 pipe(ax1, 6.4, 5.4 - PR, 6.4, 4.6, C_BROWN)
 
-# ── Brown drain-out — IBC-3 to exterior drain port D3 via P-05 ───────────
+# ── Brown drain-out — IBC-3 to exterior drain port X3 via P-05 ───────────
 # Separate drain circuit from left side of IBC-3 (right side feeds P-02 recirculation)
 BD_X = 5.35
 pipe(ax1, 5.7, 8.0, BD_X + VR, 8.0, C_BROWN)        # stub from IBC left edge → valve edge
@@ -421,7 +421,7 @@ pipe(ax1, W_X, 6.3 + BR,  W_X, W_Y - W_H/2,  C_BLACK)  # brown crossing to IBC b
 arrow_pipe(ax1, W_X, 3.4, W_X, 4.5,       color=C_BLACK)   # upward flow (lower)
 arrow_pipe(ax1, W_X, 6.5, W_X, W_Y - W_H/2 - 0.1, color=C_BLACK)  # upward (upper)
 
-# ── Waste drain-out — IBC-4 to exterior drain port D4 via P-03 ────────────
+# ── Waste drain-out — IBC-4 to exterior drain port X4 via P-03 ────────────
 # Separate outlet from right side of IBC-4 (left side carries waste inflow)
 WD_X = 12.6
 pipe(ax1, W_X + W_W/2, 7.8, WD_X + VR, 7.8, C_BLACK)   # stub from IBC right edge → valve

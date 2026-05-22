@@ -1647,7 +1647,7 @@ def sheet5():
     panel_yd = C_WID / 2
     bh_x = C_LEN  # at end wall
 
-    # Draw stacked port symbol — outermost ring is largest (F1, top),
+    # Draw stacked port symbol — outermost ring is largest (X1, top),
     # inner rings for lower ports
     port_r = 22
     draw_pipe_end(ax, px(bh_x), py(panel_yd),
@@ -1677,8 +1677,8 @@ def sheet5():
     fill_x  = ep_face_x
     drain_x = ep_face_x
 
-    # ── D4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
-    # D4 (Z=200) is the lowest pipe. Drawn first so D3 covers it in corridor.
+    # ── X4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
+    # X4 (Z=200) is the lowest pipe. Drawn first so X3 covers it in corridor.
     draw_pipe_path(ax,
                    [drain_x, drain_x, bh_x],
                    [far_ibc_conn_yd, panel_yd, panel_yd],
@@ -1691,8 +1691,8 @@ def sheet5():
             "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
-    # ── D3: IBC-3 (near, Brown) → bulkhead (above D4) ──────────────────────
-    # D3 (Z=400) sits above D4 (Z=200). Covers D4 in the corridor run.
+    # ── X3: IBC-3 (near, Brown) → bulkhead (above X4) ──────────────────────
+    # X3 (Z=400) sits above X4 (Z=200). Covers X4 in the corridor run.
     draw_pipe_path(ax,
                    [drain_x, drain_x, bh_x],
                    [near_ibc_conn_yd, panel_yd, panel_yd],
@@ -2139,7 +2139,7 @@ def sheet6():
             ha="center", va="top", fontsize=5, color=C_PIPE_BLUE,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── D3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
+    # ── X3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
     d3_yd = near_col_r  # corridor-facing edge of near IBC
     # L-shaped path: vertical rise → 90° elbow → horizontal to bulkhead
     draw_pipe_path(ax,
@@ -2160,7 +2160,7 @@ def sheet6():
     ax.annotate("", xy=(sx(cl_yd - 5), sy(EXT_DRAIN_3_H)),
                 xytext=(sx(cl_yd - 70), sy(EXT_DRAIN_3_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BROWN, lw=1.5))
-    # P-05 brown drain pump — on D3 vertical run below elbow
+    # P-05 brown drain pump — on X3 vertical run below elbow
     p05_z = EXT_DRAIN_3_H - 60
     _draw_pump_symbol(ax, sx, sy, d3_yd - 60, p05_z, C_PIPE_BROWN, "P-05")
     # Dashed connection from pump to pipe
@@ -2168,9 +2168,9 @@ def sheet6():
             [sy(p05_z), sy(p05_z)],
             color=C_PIPE_BROWN, lw=1.5, ls="--", zorder=7)
 
-    # ── D4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
-    # NOTE: D4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
-    # the residual ~120L below D4 height.
+    # ── X4: IBC-4 (far, bottom) → Bulkhead — WASTE drain ────────────────────
+    # NOTE: X4 at Z=200mm limits gravity drain — P-03 waste pump evacuates
+    # the residual ~120L below X4 height.
     d4_yd = far_col_l  # corridor-facing edge of far IBC
     # L-shaped path: vertical rise → 90° elbow → horizontal to bulkhead
     draw_pipe_path(ax,
@@ -2190,7 +2190,7 @@ def sheet6():
     ax.annotate("", xy=(sx(cl_yd + 5), sy(EXT_DRAIN_4_H)),
                 xytext=(sx(cl_yd + 70), sy(EXT_DRAIN_4_H)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLACK, lw=1.5))
-    # P-03 waste evacuation pump — on D4 vertical run below elbow
+    # P-03 waste evacuation pump — on X4 vertical run below elbow
     p03_z = EXT_DRAIN_4_H - 60
     _draw_pump_symbol(ax, sx, sy, d4_yd + 60, p03_z, C_PIPE_BLACK, "P-03")
     # Dashed connection from pump to pipe
@@ -2269,7 +2269,7 @@ def sheet6():
 
     # ── Brown IBC-3 outlet → P-02 pump → filter skid ────────────────────────
     # Uses IBC-3's built-in DN50 butterfly valve at corridor-facing face.
-    # Offset below D3 horizontal run at Z=400 to avoid pipe crossing.
+    # Offset below X3 horizontal run at Z=400 to avoid pipe crossing.
     brown_out_z = 250
     pipe_stub_x(ax, near_col_r, brown_out_z, C_PIPE_BROWN,
                 "TO P-02 →\nFILTER SKID", label_side="left")

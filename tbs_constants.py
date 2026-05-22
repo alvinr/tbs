@@ -231,7 +231,7 @@ PUMP_H_LO    = 1320    # pump zone bottom Z (mm) — above filter stack + 40mm g
 PUMP_H_HI    = 2220    # pump zone top Z (mm) — includes ACC-01 top
 PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of corridor
 # P-01 (Blue supply), P-02 (Brown recycle), P-04 (Tray drain) on equipment panel.
-# P-03 (waste evacuation) on D4 drain run in IBC plumbing corridor.
+# P-03 (waste evacuation) on X4 drain run in IBC plumbing corridor.
 # ACC-01 accumulator mounted adjacent to P-01 on panel.
 
 # ── Chemistry prep shelf (ceiling-suspended, right corner) ────────────────────

@@ -2325,7 +2325,7 @@ IBC-2 (600L) ──┘                                                      │
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution</li>
-<li>Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)</li>
+<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="32-brown-system-used-water-recycling">3.2 Brown System — Used Water Recycling<a class="headerlink" href="#32-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Processing tray sump (P-04 suction pickup)
@@ -2731,7 +2731,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <hr />
 <h2 id="5-plumbing-specification">5. Plumbing Specification<a class="headerlink" href="#5-plumbing-specification" title="Permanent link">&para;</a></h2>
 <h3 id="pipe-sizing">Pipe sizing<a class="headerlink" href="#pipe-sizing" title="Permanent link">&para;</a></h3>
-<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.</p>
+<p>All pump-driven internal runs use <strong>1/2" pipe</strong>, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.</p>
 <p><strong>Internal runs (1/2" HDPE Sch 40):</strong></p>
 <table>
 <thead>
@@ -2843,16 +2843,23 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>External fill lines (F1/F2 bulkhead → IBCs)</td>
+<td>External fill line (X1 bulkhead → IBC-1)</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
 <td>50 PSI min</td>
 <td>HDPE</td>
 </tr>
 <tr>
-<td>External drain lines (D3/D4 bulkhead → IBCs)</td>
+<td>External drain lines (X3/X4 bulkhead → IBCs)</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
+<td>50 PSI min</td>
+<td>HDPE</td>
+</tr>
+<tr>
+<td>IBC-1 ↔ IBC-2 cross-connect</td>
+<td>Sch 40</td>
+<td>2" nominal (OD 60mm)</td>
 <td>50 PSI min</td>
 <td>HDPE</td>
 </tr>
@@ -2958,7 +2965,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <p>See <strong>Sheet 2 — Plan View</strong> (<code>water-system-sheet2.png</code>) for the water-system-specific P&amp;ID layout. All four IBCs are in the provably shadow-free <strong>right end zone</strong> (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=150–4,649mm) contains only the processing tray and perimeter walkways at floor level.</p>
 <p><strong>Container floor plan — all systems (top-down, 1:75):</strong>
 <img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
-<p>IBCs are arranged in a <strong>2x2 stack</strong> in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).</p>
+<p>IBCs are arranged in a <strong>2x2 stack</strong> in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).</p>
 <table>
 <thead>
 <tr>
@@ -3014,7 +3021,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td>IBC plumbing corridor</td>
-<td>P-03 waste pump (on D4 drain run)</td>
+<td>P-03 waste pump (on X4 drain run)</td>
 <td>4,674–5,893</td>
 <td>1,046–1,316</td>
 <td>~200</td>
@@ -3036,8 +3043,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tbody>
 </table>
 <p>All equipment clears the optical cone at every depth — shadow-free proof in <a href="../equipment-layout-report/">Equipment Layout Report</a>.</p>
-<p><strong>Hose routing:</strong> Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the D4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).</p>
-<p><strong>External fill/drain ports:</strong> Four 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:</p>
+<p><strong>Hose routing:</strong> Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the X4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).</p>
+<p><strong>External fill/drain ports:</strong> Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:</p>
 <table>
 <thead>
 <tr>
@@ -3049,31 +3056,26 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>Fill Blue IBC-1</td>
+<td>X1 — Fill Blue</td>
 <td>Fresh water supply fill</td>
 <td>2,250</td>
 <td>IBC-1 (top, near column) — gravity feed</td>
 </tr>
 <tr>
-<td>Fill Blue IBC-2</td>
-<td>Fresh water supply fill</td>
-<td>2,150</td>
-<td>IBC-2 (top, far column) — gravity feed</td>
-</tr>
-<tr>
-<td>Drain Brown IBC-3</td>
+<td>X3 — Drain Brown</td>
 <td>Used water drain</td>
 <td>400</td>
 <td>IBC-3 (bottom, near column)</td>
 </tr>
 <tr>
-<td>Drain Waste IBC-4</td>
+<td>X4 — Drain Waste</td>
 <td>Waste water drain</td>
 <td>200</td>
 <td>IBC-4 (bottom, far column)</td>
 </tr>
 </tbody>
 </table>
+<p>A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1,195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.</p>
 <p>This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.</p>
 <hr />
 <h2 id="8-parts-list-and-shopping-list">8. Parts List and Shopping List<a class="headerlink" href="#8-parts-list-and-shopping-list" title="Permanent link">&para;</a></h2>
@@ -3101,10 +3103,10 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <tr>
 <td><a href="https://www.mcmaster.com/4464K115">2" NPT bulkhead fitting (304 SS)</a></td>
 <td>External fill/drain port, welded through container wall</td>
-<td>4</td>
+<td>3</td>
 <td>McMaster-Carr</td>
 <td>$25–$40</td>
-<td><strong>$100–$160</strong></td>
+<td><strong>$75–$120</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3131,8 +3133,8 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$110–$140</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-03 waste evacuation — <em>mounted in IBC plumbing corridor on D4 drain run</em>)</td>
-<td>12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L)</td>
+<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump</a> (P-03 waste evacuation — <em>mounted in IBC plumbing corridor on X4 drain run</em>)</td>
+<td>12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below X4 gravity-drain height (Z=200mm, ~120L)</td>
 <td>1</td>
 <td>Amazon</td>
 <td>$55–$70</td>
@@ -3236,11 +3238,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0">Banjo V100FP ball valve 1" FNPT</a></td>
-<td>Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3 (IBC fill/drain valves)</td>
-<td>7</td>
+<td>Polypropylene, full-port, quarter-turn. V1/V3/V4, VB1–VB3 (IBC fill/drain valves)</td>
+<td>6</td>
 <td>Amazon</td>
 <td>$10–$16</td>
-<td><strong>$70–$112</strong></td>
+<td><strong>$60–$96</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA">Banjo V075FP ball valve 3/4" FNPT</a></td>
@@ -3268,11 +3270,11 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair">2" polypropylene camlock pairs (M+F)</a></td>
-<td>For external bulkhead connections</td>
-<td>6 pairs</td>
+<td>For external bulkhead connections (X1/X3/X4 + spare)</td>
+<td>4 pairs</td>
 <td>Amazon</td>
 <td>$5–$8/pair</td>
-<td><strong>$35–$50</strong></td>
+<td><strong>$20–$32</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene">1/2" NPT 90° elbow polypropylene</a></td>
@@ -3331,12 +3333,12 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$64–$120</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC">1" NPT spring check valve</a> (CV1–CV4)</td>
+<td><a href="https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC">1" NPT spring check valve</a> (CV1/CV3/CV4)</td>
 <td>Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT</td>
-<td>4</td>
+<td>3</td>
 <td>Amazon</td>
 <td>$8–$14</td>
-<td><strong>$32–$56</strong></td>
+<td><strong>$24–$42</strong></td>
 </tr>
 <tr>
 <td>Thread seal tape (PTFE)</td>
@@ -3377,6 +3379,14 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>Ferguson</td>
 <td>$12–$18/stick</td>
 <td><strong>$12–$18</strong></td>
+</tr>
+<tr>
+<td><a href="https://www.ferguson.com">2" SDR-11 HDPE pipe</a></td>
+<td>IBC-1 ↔ IBC-2 cross-connect (~300mm needed, remainder spare). 20 ft stick</td>
+<td>1 stick (20 ft)</td>
+<td>Ferguson</td>
+<td>$18–$28/stick</td>
+<td><strong>$18–$28</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>

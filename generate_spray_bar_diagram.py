@@ -809,9 +809,9 @@ ax2.text(dy(200), dz(bv2_z - 20),
          ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
 # ── Carriage wheels under walkway (2× Ø50mm nylon) ──────────────────────
-carriage_ctr_yd = 200
-cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2   # 100mm
-cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2   # 300mm
+carriage_ctr_yd = beam_yd
+cw1_yd = carriage_ctr_yd - WHEEL_SPACING_YD / 2
+cw2_yd = carriage_ctr_yd + WHEEL_SPACING_YD / 2
 
 for cw_yd in [cw1_yd, cw2_yd]:
     ax2.add_patch(mpatches.Ellipse((dy(cw_yd), dz(WHEEL_AXLE_Z)),
@@ -823,11 +823,37 @@ for cw_yd in [cw1_yd, cw2_yd]:
     ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2), dy(cw_yd + WHEEL_WIDTH / 2)],
              [dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z)],
              color=C_WHEEL, lw=1.5, zorder=5)
+    # Fork brackets straddling each wheel
+    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        ax2.plot([dy(cw_yd + offset), dy(cw_yd + offset)],
+                 [dz(WHEEL_AXLE_Z + 6), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4)],
+                 color=C_FRAME, lw=0.8, zorder=5.5)
+    # Axle pin through wheel
+    ax2.plot([dy(cw_yd - WHEEL_WIDTH / 2 - 4), dy(cw_yd + WHEEL_WIDTH / 2 + 4)],
+             [dz(WHEEL_AXLE_Z), dz(WHEEL_AXLE_Z)],
+             color=C_FRAME, lw=0.5, zorder=6.5)
 
-ax2.text(dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 15),
-         f"Ø{WHEEL_DIA}mm NYLON WHEELS\n(2 PER CARRIAGE,\nUNDER WALKWAY)",
-         ha="center", va="top", fontsize=4.5, color=C_WHEEL,
-         **FONT, zorder=15)
+# L-bracket arm (horizontal plate connecting wheels to beam)
+brk_arm_l = cw1_yd - 18
+brk_arm_r = cw2_yd + 18
+brk_t_op = 5
+ax2.add_patch(Rectangle((dy(brk_arm_l), dz(WHEEL_AXLE_Z - brk_t_op / 2)),
+                           (brk_arm_r - brk_arm_l) / SC2_H, brk_t_op / SC2_V,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=7))
+
+# Vertical drop cheeks flanking beam
+op_drop_l = carriage_ctr_yd - BEAM_W / 2 - brk_t_op
+op_drop_r = carriage_ctr_yd + BEAM_W / 2
+for side_yd in [op_drop_l, op_drop_r]:
+    ax2.add_patch(Rectangle((dy(side_yd), dz(BEAM_Z_BOT)),
+                               brk_t_op / SC2_H,
+                               (BEAM_Z_TOP - BEAM_Z_BOT) / SC2_V,
+                               fc=C_ALUM_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+
+leader(ax2, dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 8),
+       dy(cw1_yd - 50), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
+       f"Ø{WHEEL_DIA}mm NYLON WHEELS\n(2 PER CARRIAGE,\nFORK + AXLE PIN)",
+       fs=4.5, color=C_WHEEL, font=FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax2, dy(wk_yd_l), dy(wk_yd_r), dz(GRATE_Z_TOP + 50),

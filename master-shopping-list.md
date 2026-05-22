@@ -235,18 +235,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Processing tray subtotal: ~$1,277–$1,992**
 
-### Spray bar assembly
+### Spray bar assembly (gantry design)
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined for 4,459mm) | 2 | Online Metals | $36–$56 |
-| [UHMW polyethylene block](https://www.mcmaster.com/8702K74) | 100×50×30mm runner pads for walkway grating | 2 | McMaster-Carr | $16–$24 |
-| [6061-T6 aluminum angle 1"×1"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-angle) | Guide rails, 2,200mm long | 2 | Online Metals | $20–$32 |
+| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm beam/spray pipe, 8 ft lengths (2 joined with sleeve for 3,859mm) | 2 | Online Metals | $36–$56 |
+| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-brackets + end caps — ~300×600mm sheet, cut and bend | 1 | Online Metals | $15–$25 |
+| [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
+| [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels, flat tread, ≥25 kg rated | 4 | Amazon / McMaster | $12–$20 |
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
-| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to spray bar | 1 | Amazon | $15 |
-| Fittings (reducer, end caps, clamps, bolts, clip) | ¾" FNPT×½" barb, end caps, hose clamps, M6 hardware, pole clip | misc | Amazon / McMaster | $24 |
+| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to beam feed end | 1 | Amazon | $15 |
+| Fittings + hardware | ½" NPT bulkhead, barb adapter, clevis pins, M6 bolts, pole clip | misc | Amazon / McMaster | $33 |
 
-**Spray bar subtotal: ~$126–$166**
+**Spray bar subtotal: ~$134–$176**
 
 ### Water system processing consumables
 

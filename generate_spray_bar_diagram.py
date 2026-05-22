@@ -32,10 +32,11 @@ from matplotlib.gridspec import GridSpec
 from tbs_constants import (
     svg_path,
     C_OUT, C_CL, C_DIM, C_ALUM,
+    C_LEN, C_WID,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W,
-    PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR,
+    PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
-    WALKWAY_LEFT_X,
+    WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD,
     PROC_OPEN_X_L, PROC_OPEN_X_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
     SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP,
@@ -109,14 +110,14 @@ gs = GridSpec(4, 2, figure=fig, width_ratios=[1, 1.3],
 
 # ─────────────────────────────────────────────────────────────────────────────
 # RIGHT PANEL — X-Z elevation looking along Yd, left carriage area
-# Horizontal 1:6, Vertical 1:1.5 (4× vertical exaggeration)
+# Horizontal 1:6, Vertical 1:2.5 (2.4× vertical exaggeration)
 # ─────────────────────────────────────────────────────────────────────────────
 ax = fig.add_subplot(gs[0, 1])
 ax.set_facecolor(C_BG)
 ax.axis("off")
 
 H_SC = 6.0
-V_SC = 1.5
+V_SC = 2.5
 
 def sx(x_mm):
     return 1.0 + x_mm / H_SC
@@ -127,7 +128,7 @@ def sz(z_mm):
 X_LO = -80
 X_HI = 1100
 Z_LO = -50
-Z_HI = 250
+Z_HI = 1050
 
 ax.set_xlim(sx(X_LO), sx(X_HI))
 ax.set_ylim(sz(Z_LO), sz(Z_HI))
@@ -326,45 +327,47 @@ leader(ax, sx(beam_x_start - cap_t / 2), sz(BEAM_Z_BOT),
        "AL END CAP\n(PVC PIPE CAPPED\nINSIDE)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
 
-# ── BV-02 on container wall ──────────────────────────────────────────────
-bv_z = BV02_Z  # 150mm
-bv_size = 25
+# ── Blue supply pipe riser on container wall ─────────────────────────────
+bv_z = BV02_Z  # 900mm
+bv_size = 30
+pipe_w = 8
 
+# Vertical pipe riser from floor up to BV-02
+pipe_z_bot = 0
+pipe_z_top = bv_z - bv_size / 2
+ax.add_patch(Rectangle((sx(-pipe_w / 2), sz(pipe_z_bot)),
+                         pipe_w / H_SC, (pipe_z_top - pipe_z_bot) / V_SC,
+                         fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.4, zorder=11))
+
+# BV-02 ball valve symbol at Z=900
 ax.add_patch(Rectangle((sx(-bv_size / 3), sz(bv_z - bv_size / 2)),
                          (bv_size / 3) / H_SC, bv_size / V_SC,
                          fc=C_BLUE, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=12))
-ax.plot([sx(0), sx(-15)], [sz(bv_z), sz(bv_z + 25)],
+# Valve handle
+ax.plot([sx(0), sx(-20)], [sz(bv_z), sz(bv_z + 20)],
         color=C_FRAME, lw=2.0, zorder=12)
 
-leader(ax, sx(-10), sz(bv_z + 30),
+leader(ax, sx(-15), sz(bv_z + 25),
        sx(-60), sz(bv_z + 60),
-       "BV-02\n(1/2\" BALL VALVE)",
+       f"BV-02 @ Z={int(bv_z)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
        fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
-# Rigid pipe from BV-02 down toward beam
-pipe_z_top = bv_z - bv_size / 2
-pipe_z_bot = GRATE_Z_TOP + 5
-pipe_w = 6
-ax.add_patch(Rectangle((sx(-pipe_w / 4), sz(pipe_z_bot)),
-                         (pipe_w / 2) / H_SC, (pipe_z_top - pipe_z_bot) / V_SC,
-                         fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=11))
-
-# ── Flex hose from pipe to center feed (hose exits view to the right) ────
-hose_start_x = 10
-hose_start_z = pipe_z_bot
-hose_end_x = X_HI - 20  # exits view toward beam center
+# ── Flex hose from BV-02 down to beam center feed ────────────────────────
+hose_start_x = 15
+hose_start_z = bv_z - bv_size / 2
+hose_end_x = X_HI - 20
 hose_end_z = BEAM_Z_BOT + BEAM_W / 2
 
 n_pts = 80
 ht = np.linspace(0, 1, n_pts)
 P0 = np.array([hose_start_x, hose_start_z])
-P1 = np.array([hose_start_x + 150, hose_end_z + 10])
-P2 = np.array([hose_end_x - 200, hose_end_z])
+P1 = np.array([hose_start_x + 80, hose_start_z - 200])
+P2 = np.array([hose_end_x - 300, hose_end_z + 50])
 P3 = np.array([hose_end_x, hose_end_z])
 hose_xs = (1-ht)**3*P0[0] + 3*(1-ht)**2*ht*P1[0] + 3*(1-ht)*ht**2*P2[0] + ht**3*P3[0]
 hose_zs = (1-ht)**3*P0[1] + 3*(1-ht)**2*ht*P1[1] + 3*(1-ht)*ht**2*P2[1] + ht**3*P3[1]
 envelope = np.clip(np.minimum(ht, 1 - ht) * 4, 0, 1)
-hose_zs += 1.5 * np.sin(np.linspace(0, 10 * np.pi, n_pts)) * envelope
+hose_zs += 2.0 * np.sin(np.linspace(0, 12 * np.pi, n_pts)) * envelope
 
 ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs],
         color=C_HOSE, lw=2.5, alpha=0.7, zorder=11)
@@ -374,9 +377,9 @@ ax.annotate("", xy=(sx(hose_end_x), sz(hose_end_z)),
             arrowprops=dict(arrowstyle="-|>", color=C_HOSE, lw=1.5),
             zorder=15)
 
-ax.text(sx(hose_start_x + 100), sz(hose_start_z + 20),
+ax.text(sx(hose_start_x + 150), sz(hose_start_z - 100),
         "1/2\" FLEX HOSE → CENTER\nFEED (4m COILED)",
-        ha="left", va="bottom", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
+        ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax, sx(wk_l), sx(wk_r), sz(GRATE_Z_TOP + 55),
@@ -451,166 +454,98 @@ ax.text(sx(carr_cx), sz(carr_cz + 55),
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# BOTTOM-LEFT PANEL — Detail A: End cap water connection
-# Longitudinal section through beam center at end cap, scale 2:1.
-# X: along beam axis, - = outside (hose side), + = inside (bore/water)
+# Detail A: Beam end cap (longitudinal section)
+# Water now feeds at center — end is simply capped (no fitting).
+# X: along beam axis, - = outside, + = inside (bore)
 # Y: perpendicular to beam axis, 0 = beam centerline
-#
-# Assembly (outside → inside):
-#   flex hose → clamp → barb → hex → boss (NPT tapped) → end cap → SHS bore
-# Boss provides 15mm thread engagement for 1/2" NPT (cap alone is too thin).
 # ─────────────────────────────────────────────────────────────────────────────
-ax_d = fig.add_subplot(gs[3, 1])
-ax_d.set_facecolor(C_BG)
-ax_d.axis("off")
+ax_a = fig.add_subplot(gs[3, 1])
+ax_a.set_facecolor(C_BG)
+ax_a.axis("off")
 
-d_xl, d_xr = -44, 50
+d_xl, d_xr = -15, 50
 d_yb, d_yt = -26, 26
-ax_d.set_xlim(d_xl, d_xr)
-ax_d.set_ylim(d_yb, d_yt)
+ax_a.set_xlim(d_xl, d_xr)
+ax_a.set_ylim(d_yb, d_yt)
 
-ax_d.text((d_xl + d_xr) / 2, d_yt - 1,
-          "DETAIL A — END CAP WATER CONNECTION",
+ax_a.text((d_xl + d_xr) / 2, d_yt - 1,
+          "DETAIL A — BEAM END CAP",
           ha="center", va="top", fontsize=8, color="#CC0000",
           fontweight="bold", **FONT, zorder=20)
-ax_d.text((d_xl + d_xr) / 2, d_yt - 5,
-          "(LONGITUDINAL SECTION THROUGH BEAM CENTER — SCALE 2:1)",
+ax_a.text((d_xl + d_xr) / 2, d_yt - 5,
+          "(LONGITUDINAL SECTION — SCALE 2:1)",
           ha="center", va="top", fontsize=5, color=C_DIM,
           **FONT, zorder=20)
 
-C_BRASS = "#C0A860"
-C_WASHER = "#5A3020"
-
-# ── Water in bore (right of cap, between SHS walls) ──────────────────────
-ax_d.add_patch(Rectangle((20, -17), d_xr - 20, 34,
-               fc=C_WATER, ec="none", alpha=0.15, zorder=1))
+_bbox_a = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
 # ── SHS top wall — cut section, hatched ──────────────────────────────────
-ax_d.add_patch(Rectangle((20, 17), d_xr - 20, 3,
+ax_a.add_patch(Rectangle((5, 17), d_xr - 5, 3,
                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-
 # ── SHS bottom wall — cut section, hatched ───────────────────────────────
-ax_d.add_patch(Rectangle((20, -20), d_xr - 20, 3,
+ax_a.add_patch(Rectangle((5, -20), d_xr - 5, 3,
                fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
 
-# ── End cap plate (X=15–20, full SHS height except fitting hole) ─────────
-ax_d.add_patch(Rectangle((15, 10.5), 5, 9.5,
-               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, hatch="///", zorder=4))
-ax_d.add_patch(Rectangle((15, -20), 5, 9.5,
-               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, hatch="///", zorder=4))
-
-# ── Boss welded to outside of cap (15mm deep, 30mm OD → Y=±15) ──────────
-ax_d.add_patch(Rectangle((0, 10.5), 15, 4.5,
-               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
-ax_d.add_patch(Rectangle((0, -15), 15, 4.5,
-               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
-
-# Weld symbols at boss-to-cap joint
-for wy in [15, -15]:
-    ax_d.plot([14.5, 15.5], [wy - 1.5, wy + 1.5],
+# ── AL end cap plate (X=0–5, full SHS height, welded to SHS) ────────────
+ax_a.add_patch(Rectangle((0, -20), 5, 40,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, hatch="///", zorder=4))
+# Weld symbols at cap-to-SHS joint
+for wy in [17, -17]:
+    ax_a.plot([4.5, 5.5], [wy - 1.5, wy + 1.5],
               color=C_FRAME, lw=1.2, zorder=6)
-    ax_d.plot([14.5, 15.5], [wy + 1.5, wy - 1.5],
+    ax_a.plot([4.5, 5.5], [wy + 1.5, wy - 1.5],
               color=C_FRAME, lw=1.2, zorder=6)
 
-# ── Fitting hex shoulder (X=-3 to 0, seats against boss face) ────────────
-ax_d.add_patch(Rectangle((-3, -12), 3, 24,
-               fc=C_BRASS, ec=C_FRAME, lw=1.2, zorder=5))
+# ── Square bore ──────────────────────────────────────────────────────────
+ax_a.add_patch(Rectangle((5, -17), d_xr - 5, 34,
+               fc=C_BG, ec=C_FRAME, lw=0.5, zorder=3.5))
 
-# ── Fitting threaded body through boss+cap (X=0 to 20) ──────────────────
-ax_d.add_patch(Rectangle((0, 6.5), 20, 4,
-               fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
-ax_d.add_patch(Rectangle((0, -10.5), 20, 4,
-               fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
+# ── PVC pipe inside bore ─────────────────────────────────────────────────
+pvc_od_h = PVC_OD / 2
+pvc_id_h = PVC_ID / 2
+# PVC pipe walls (top and bottom in section)
+ax_a.add_patch(Rectangle((5, pvc_id_h), d_xr - 5, PVC_WALL,
+               fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
+ax_a.add_patch(Rectangle((5, -pvc_od_h), d_xr - 5, PVC_WALL,
+               fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
 
-# ── NPT thread crests (zigzag on fitting OD) ────────────────────────────
-for i in range(10):
-    tx = 0.5 + i * 2.0
-    if tx + 2.0 > 20:
-        break
-    ax_d.plot([tx, tx + 1.0, tx + 2.0], [10.5, 11.8, 10.5],
-              color=C_FRAME, lw=0.6, zorder=6)
-    ax_d.plot([tx, tx + 1.0, tx + 2.0], [-10.5, -11.8, -10.5],
-              color=C_FRAME, lw=0.6, zorder=6)
+# PVC end cap (glued)
+ax_a.add_patch(Rectangle((5, -pvc_od_h), 4, PVC_OD,
+               fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=4.5))
 
-# ── PTFE tape on threads (thin white band) ───────────────────────────────
-ax_d.plot([1, 19], [11.0, 11.0], color="white", lw=1.5, alpha=0.7, zorder=5.8)
-ax_d.plot([1, 19], [-11.0, -11.0], color="white", lw=1.5, alpha=0.7, zorder=5.8)
-
-# ── Fitting through-bore (water path, 13mm ID → Y=±6.5) ─────────────────
-ax_d.add_patch(Rectangle((-3, -6.5), 25, 13,
-               fc=C_WATER, ec="none", alpha=0.12, zorder=5.5))
-
-# ── Fitting tip protrusion into bore (X=20–22) ──────────────────────────
-ax_d.add_patch(Rectangle((20, -8), 2, 16,
-               fc=C_BRASS, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=5))
-
-# ── Hose barb: stepped profile extending from hex (brass) ───────────────
-for bx, by, bw, bh in [(-8, -7, 5, 14), (-14, -6.5, 6, 13), (-21, -6, 7, 12)]:
-    ax_d.add_patch(Rectangle((bx, by), bw, bh,
-                   fc=C_BRASS, ec=C_FRAME, lw=0.7, zorder=5))
-
-# Barb through-bore
-ax_d.add_patch(Rectangle((-21, -4.5), 18, 9,
-               fc=C_WATER, ec="none", alpha=0.08, zorder=5.5))
-
-# ── Flex hose over barb (1/2" ID ≈ 13mm, 3mm wall → 19mm OD) ────────────
-ax_d.add_patch(Rectangle((-40, 6), 32, 3.5,
-               fc=C_HOSE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=4))
-ax_d.add_patch(Rectangle((-40, -9.5), 32, 3.5,
-               fc=C_HOSE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=4))
-ax_d.plot([-40, -40], [-9.5, 9.5], color=C_FRAME, lw=0.8, zorder=4)
-
-# ── Worm-drive hose clamp ────────────────────────────────────────────────
-clamp_x, clamp_w = -26, 6
-ax_d.add_patch(Rectangle((clamp_x, -10.5), clamp_w, 21,
-               fc="none", ec="#666666", lw=2.0, zorder=6))
-ax_d.add_patch(Rectangle((clamp_x + 1.5, 10.5), clamp_w - 3, 2,
-               fc="#A0A0A8", ec=C_FRAME, lw=0.5, zorder=6))
-
-# ── Flow direction arrow ─────────────────────────────────────────────────
-ax_d.annotate("", xy=(d_xr - 3, 0), xytext=(d_xr - 12, 0),
-              arrowprops=dict(arrowstyle="-|>", color=C_WATER, lw=2.0),
-              zorder=15)
-ax_d.text(d_xr - 7, 3, "WATER", ha="center", va="bottom",
-          fontsize=5, color=C_WATER, fontweight="bold", **FONT, zorder=15)
+# Water inside PVC pipe
+ax_a.add_patch(Rectangle((9, -pvc_id_h), d_xr - 9, PVC_ID,
+               fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
 
 # ── Labels ────────────────────────────────────────────────────────────────
-leader(ax_d, 7.5, 15, -8, d_yt - 9,
-       "6061-T6 AL BOSS\n(TIG WELDED TO CAP,\n1/2\" NPT TAPPED)",
-       fs=5, color=C_FRAME, font=FONT, zorder=20)
-
-leader(ax_d, 17.5, 15, 35, d_yt - 9,
+leader(ax_a, 2.5, 15, -5, d_yt - 8,
        "5mm AL END CAP\n(TIG WELDED TO SHS)",
-       fs=5, color=C_FRAME, font=FONT, zorder=20)
+       fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
 
-leader(ax_d, -5, -12, -15, d_yb + 4,
-       "1/2\" NPT BRASS\nHOSE-BARB FITTING",
-       fs=5, color="#8B6914", font=FONT, zorder=20)
+leader(ax_a, 7, pvc_od_h, 25, d_yt - 10,
+       "1\" Sch 40 PVC PIPE\n(PVC END CAP GLUED)",
+       fs=5, color=C_PVC, font=FONT, zorder=20, bbox=_bbox_a)
 
-ax_d.text(-35, 12, "1/2\" REINFORCED\nPVC FLEX HOSE", ha="center", va="bottom",
-          fontsize=5, color=C_HOSE, **FONT, zorder=20)
+ax_a.text(d_xr - 8, 0, "WATER",
+          ha="center", va="center", fontsize=5, color=C_WATER,
+          fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
-ax_d.text(clamp_x + clamp_w / 2, 15, "SS WORM-DRIVE\nHOSE CLAMP",
-          ha="center", va="bottom", fontsize=4.5, color="#666666",
-          **FONT, zorder=20)
-
-ax_d.text(10, 13.5, "PTFE TAPE\nON THREADS",
-          ha="center", va="bottom", fontsize=4.5, color="#999999",
-          style="italic", **FONT, zorder=20)
+ax_a.text((d_xl + 0) / 2, 0, "NO WATER\nCONNECTION\nAT ENDS",
+          ha="center", va="center", fontsize=4.5, color=C_DIM,
+          style="italic", bbox=_bbox_a, **FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
-draw_dim_h(ax_d, 0, 20, d_yb + 4,
-           "20mm (15mm BOSS + 5mm CAP)",
-           offset=3, fs=5, font=FONT)
+draw_dim_h(ax_a, 0, 5, d_yb + 4,
+           "5mm CAP", offset=3, fs=5, font=FONT)
 
-draw_dim_v(ax_d, d_xr - 8, 17, 20,
-           "3mm", offset=3, fs=4.5, font=FONT, right=True)
-
-draw_dim_v(ax_d, d_xr - 3, -17, 17,
+draw_dim_v(ax_a, d_xr - 3, -17, 17,
            "34mm\nBORE", offset=4, fs=5, font=FONT, right=True)
 
-draw_dim_v(ax_d, d_xl + 6, -9.5, 9.5,
-           "19mm\nHOSE OD", offset=4, fs=4.5, font=FONT)
+draw_dim_v(ax_a, d_xr - 8, 17, 20,
+           "3mm\nWALL", offset=3, fs=4.5, font=FONT, right=True)
+
+draw_dim_v(ax_a, d_xl + 3, -pvc_od_h, pvc_od_h,
+           f"{PVC_OD:.1f}mm\nPVC OD", offset=3, fs=4.5, font=FONT)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -829,32 +764,46 @@ ax2.text(dy(pole_mid_yd - 50), dz(pole_mid_z),
          ha="right", va="center",
          fontsize=5, color="#8B6914", **FONT, zorder=15)
 
-# ── BV-02 and hose on container wall (water connection context) ──────────
-bv2_yd = 10    # BV-02 near wall, on pipe
-bv2_z = BV02_Z  # 150mm
-bv_sz = 20
+# ── Blue supply pipe riser on near wall ──────────────────────────────────
+bv2_yd = 10    # BV-02 near wall, on pipe riser
+bv2_z = BV02_Z  # 900mm
+bv_sz = 25
+pipe_w_op = 6
+
+# Vertical pipe from floor to BV-02
+ax2.add_patch(Rectangle((dy(bv2_yd - pipe_w_op / 2), dz(0)),
+                          pipe_w_op / SC2_H, bv2_z / SC2_V,
+                          fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.4, zorder=11))
+
+# BV-02 valve body
 ax2.add_patch(Rectangle((dy(bv2_yd - bv_sz / 2), dz(bv2_z - bv_sz / 2)),
                           bv_sz / SC2_H, bv_sz / SC2_V,
-                          fc=C_BLUE, ec=C_FRAME, lw=1.2, alpha=0.6, zorder=12))
-ax2.text(dy(bv2_yd), dz(bv2_z + bv_sz),
-         "BV-02", ha="center", va="bottom",
+                          fc=C_BLUE, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=12))
+# Valve handle
+ax2.plot([dy(bv2_yd), dy(bv2_yd + 15)],
+         [dz(bv2_z), dz(bv2_z + 15)],
+         color=C_FRAME, lw=2.0, zorder=12)
+
+ax2.text(dy(bv2_yd + 20), dz(bv2_z + 20),
+         f"BV-02 @ Z={int(bv2_z)}mm\n(WAIST HEIGHT)",
+         ha="left", va="bottom",
          fontsize=5, color=C_BLUE, fontweight="bold", **FONT, zorder=15)
 
-# Flex hose from BV-02 along near rim to beam
+# Flex hose from BV-02 drooping down to beam center feed
 hose_n = 60
 ht2 = np.linspace(0, 1, hose_n)
-H0 = np.array([bv2_yd + 20, bv2_z - bv_sz / 2])
-H1 = np.array([tray_yd_start + 40, BEAM_Z_BOT + BEAM_W])
-H2 = np.array([beam_yd - 80, BEAM_Z_BOT + BEAM_W])
+H0 = np.array([bv2_yd + bv_sz / 2, bv2_z])
+H1 = np.array([bv2_yd + 100, bv2_z - 300])
+H2 = np.array([beam_yd - 100, BEAM_Z_BOT + BEAM_W + 50])
 H3 = np.array([beam_yd_r + feed_fit_w, BEAM_Z_BOT + BEAM_W / 2])
 hose_yd = (1-ht2)**3*H0[0] + 3*(1-ht2)**2*ht2*H1[0] + 3*(1-ht2)*ht2**2*H2[0] + ht2**3*H3[0]
 hose_zz = (1-ht2)**3*H0[1] + 3*(1-ht2)**2*ht2*H1[1] + 3*(1-ht2)*ht2**2*H2[1] + ht2**3*H3[1]
 env2 = np.clip(np.minimum(ht2, 1 - ht2) * 4, 0, 1)
-hose_zz += 1.5 * np.sin(np.linspace(0, 8 * np.pi, hose_n)) * env2
+hose_zz += 2.0 * np.sin(np.linspace(0, 10 * np.pi, hose_n)) * env2
 
 ax2.plot([dy(y) for y in hose_yd], [dz(z) for z in hose_zz],
          color=C_HOSE, lw=2.0, alpha=0.6, zorder=11)
-ax2.text(dy(200), dz(bv2_z - 20),
+ax2.text(dy(bv2_yd + 60), dz(bv2_z - 150),
          "1/2\" FLEX HOSE\n(4m COILED)",
          ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
@@ -1388,30 +1337,30 @@ ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-arm_half_span)),
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
                            hatch="///", alpha=0.7, zorder=4))
 
-# ── U-clamp with flared legs (plan view) ────────────────────────────────
-uc_w_yd_top = BEAM_W + 2 * UC_T + 2 * UC_GAP  # top plate span in Yd
-uc_w_yd_flare = uc_w_yd_top + 2 * UC_FLARE  # flared foot span
-# Top plate (visible from above)
-ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-uc_w_yd_top / 2)),
-                           arm_w_x / SC_D, uc_w_yd_top / SC_D,
+# ── U-clamp with flared legs (plan view — wraps beam in X direction) ────
+uc_span_x = BEAM_W + 2 * UC_T + 2 * UC_GAP   # top plate span in X
+uc_mat_yd = 20                                  # clamp material width in Yd
+# Top plate (visible from above — spans X across beam)
+ax_d.add_patch(Rectangle((px(-uc_span_x / 2), py_d(-uc_mat_yd / 2)),
+                           uc_span_x / SC_D, uc_mat_yd / SC_D,
                            fc=C_UCLAMP, ec=C_FRAME, lw=1.0, alpha=0.5, zorder=6))
-# Flared feet (wider, at bottom — visible beyond top plate)
+# Flared feet (extend in X beyond top plate, sit on L-bracket arm)
 for side in [-1, 1]:
-    foot_yd = side * (BEAM_W / 2 + UC_GAP + UC_T)
+    foot_x = side * (BEAM_W / 2 + UC_GAP + UC_T)
     if side < 0:
-        foot_yd -= UC_FLARE
-    ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(foot_yd)),
-                               arm_w_x / SC_D, (UC_FLARE + UC_T) / SC_D,
+        foot_x -= UC_FLARE
+    ax_d.add_patch(Rectangle((px(foot_x), py_d(-uc_mat_yd / 2)),
+                               (UC_FLARE + UC_T) / SC_D, uc_mat_yd / SC_D,
                                fc=C_UCLAMP, ec=C_FRAME, lw=0.8, alpha=0.6, zorder=6))
 
 # Bolt holes through flared feet (circles in plan = bolt going vertically)
 for side in [-1, 1]:
-    bolt_yd = side * (BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE / 2)
-    ax_d.add_patch(Circle((px(0), py_d(bolt_yd)),
+    bolt_x = side * (BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE / 2)
+    ax_d.add_patch(Circle((px(bolt_x), py_d(0)),
                             3 / SC_D,
                             fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
 
-leader(ax_d, px(arm_w_x / 2), py_d(BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE),
+leader(ax_d, px(BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE), py_d(uc_mat_yd / 2),
        px(D_X_HI - 15), py_d(BEAM_W / 2 + 30),
        "U-CLAMP\nFLARED LEGS\n+ WING NUTS",
        fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_d)
@@ -1458,6 +1407,150 @@ draw_dim_h(ax_d, px(-WHEEL_DIA / 2), px(WHEEL_DIA / 2),
            py_d(D_YD_LO + 12),
            f"Ø{WHEEL_DIA}mm",
            offset=3 / SC_D, fs=5, font=FONT)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PLAN VIEW — Container floor plan showing walkways, tray, and slit positions
+# Looking down (X horizontal, Yd vertical).  Scaled to fit panel.
+# ─────────────────────────────────────────────────────────────────────────────
+ax_p = fig.add_subplot(gs[1, 1])
+ax_p.set_facecolor(C_BG)
+ax_p.set_aspect("equal")
+ax_p.axis("off")
+
+SC_P = 80.0
+
+def ppx(x_mm):
+    return x_mm / SC_P
+
+def ppy(yd_mm):
+    return yd_mm / SC_P
+
+P_X_LO = -200
+P_X_HI = C_LEN + 200
+P_YD_LO = -200
+P_YD_HI = C_WID + 200
+
+ax_p.set_xlim(ppx(P_X_LO), ppx(P_X_HI))
+ax_p.set_ylim(ppy(P_YD_LO), ppy(P_YD_HI))
+
+# Title
+ax_p.text(ppx(C_LEN / 2), ppy(P_YD_HI - 50),
+          "PLAN VIEW — WALKWAYS & SLIT POSITIONS",
+          ha="center", va="top", fontsize=7, color="#006600",
+          fontweight="bold", **FONT, zorder=20)
+ax_p.text(ppx(C_LEN / 2), ppy(P_YD_HI - 150),
+          f"(LOOKING DOWN — SCALE 1:{int(SC_P)})",
+          ha="center", va="top", fontsize=5, color=C_DIM,
+          **FONT, zorder=20)
+
+# ── Container outline ────────────────────────────────────────────────────
+ax_p.add_patch(Rectangle((ppx(0), ppy(0)),
+                           C_LEN / SC_P, C_WID / SC_P,
+                           fc="#F0F0EA", ec=C_OUT, lw=2.0, zorder=2))
+
+# ── Processing tray ─────────────────────────────────────────────────────
+ax_p.add_patch(Rectangle((ppx(PROC_TRAY_X_L), ppy(PROC_TRAY_YD_NEAR)),
+                           PROC_TRAY_W / SC_P, PROC_TRAY_D / SC_P,
+                           fc=C_TRAY, ec=C_OUT, lw=1.0, alpha=0.5, zorder=3))
+ax_p.text(ppx((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2), ppy(C_WID / 2),
+          "PROCESSING TRAY",
+          ha="center", va="center", fontsize=5, color=C_DIM,
+          style="italic", **FONT, zorder=5)
+
+# ── Near walkway (pinhole side, Yd=0 to WALKWAY_W) ─────────────────────
+ax_p.add_patch(Rectangle((ppx(PROC_TRAY_X_L), ppy(0)),
+                           PROC_TRAY_W / SC_P, WALKWAY_W / SC_P,
+                           fc=C_GRATE, ec=C_OUT, lw=1.0, alpha=0.4, zorder=4))
+ax_p.text(ppx(C_LEN / 2), ppy(WALKWAY_W / 2),
+          "NEAR WALKWAY", ha="center", va="center",
+          fontsize=4.5, color=C_GRATE, fontweight="bold", **FONT, zorder=6)
+
+# ── Far walkway (film plane side, Yd=WALKWAY_FAR_YD to C_WID) ──────────
+ax_p.add_patch(Rectangle((ppx(PROC_TRAY_X_L), ppy(WALKWAY_FAR_YD)),
+                           PROC_TRAY_W / SC_P, WALKWAY_W / SC_P,
+                           fc=C_GRATE, ec=C_OUT, lw=1.0, alpha=0.4, zorder=4))
+ax_p.text(ppx(C_LEN / 2), ppy(WALKWAY_FAR_YD + WALKWAY_W / 2),
+          "FAR WALKWAY", ha="center", va="center",
+          fontsize=4.5, color=C_GRATE, fontweight="bold", **FONT, zorder=6)
+
+# ── Left walkway (cargo door end) ───────────────────────────────────────
+ax_p.add_patch(Rectangle((ppx(WALKWAY_LEFT_X), ppy(0)),
+                           WALKWAY_W / SC_P, C_WID / SC_P,
+                           fc=C_GRATE, ec=C_OUT, lw=1.0, alpha=0.4, zorder=4))
+ax_p.text(ppx(WALKWAY_LEFT_X + WALKWAY_W / 2), ppy(C_WID / 2),
+          "LEFT\nWALKWAY", ha="center", va="center",
+          fontsize=4, color=C_GRATE, rotation=90, **FONT, zorder=6)
+
+# ── Right walkway ──────────────────────────────────────────────────────
+ax_p.add_patch(Rectangle((ppx(WALKWAY_RIGHT_X), ppy(0)),
+                           WALKWAY_W / SC_P, C_WID / SC_P,
+                           fc=C_GRATE, ec=C_OUT, lw=1.0, alpha=0.4, zorder=4))
+ax_p.text(ppx(WALKWAY_RIGHT_X + WALKWAY_W / 2), ppy(C_WID / 2),
+          "RIGHT\nWALKWAY", ha="center", va="center",
+          fontsize=4, color=C_GRATE, rotation=90, **FONT, zorder=6)
+
+# ── Slits in near walkway (for boom arm to slide through) ───────────────
+# Left carriage slit
+slit_x_l = CARRIAGE_X_L - SLIT_WIDTH / 2
+ax_p.add_patch(Rectangle((ppx(slit_x_l), ppy(0)),
+                           SLIT_WIDTH / SC_P, WALKWAY_W / SC_P,
+                           fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
+# Right carriage slit (mirrored position in right walkway)
+carriage_x_r = WALKWAY_RIGHT_X + WALKWAY_W / 2
+slit_x_r = carriage_x_r - SLIT_WIDTH / 2
+ax_p.add_patch(Rectangle((ppx(slit_x_r), ppy(0)),
+                           SLIT_WIDTH / SC_P, WALKWAY_W / SC_P,
+                           fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
+
+# ── Slits in far walkway ────────────────────────────────────────────────
+ax_p.add_patch(Rectangle((ppx(slit_x_l), ppy(WALKWAY_FAR_YD)),
+                           SLIT_WIDTH / SC_P, WALKWAY_W / SC_P,
+                           fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
+ax_p.add_patch(Rectangle((ppx(slit_x_r), ppy(WALKWAY_FAR_YD)),
+                           SLIT_WIDTH / SC_P, WALKWAY_W / SC_P,
+                           fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
+
+# Slit labels
+leader(ax_p, ppx(slit_x_l + SLIT_WIDTH / 2), ppy(-10),
+       ppx(slit_x_l - 200), ppy(-120),
+       f"{SLIT_WIDTH}mm SLIT\n(NEAR & FAR\nWALKWAYS)",
+       fs=5, color="#CC0000", font=FONT, zorder=20)
+
+leader(ax_p, ppx(slit_x_r + SLIT_WIDTH / 2), ppy(-10),
+       ppx(slit_x_r + 250), ppy(-120),
+       f"{SLIT_WIDTH}mm SLIT\n(MIRRORED)",
+       fs=5, color="#CC0000", font=FONT, zorder=20)
+
+# ── Beam position (example — dashed line across tray) ────────────────────
+beam_example_yd = PROC_TRAY_YD_NEAR + PROC_TRAY_D / 2
+ax_p.plot([ppx(PROC_OPEN_X_L), ppx(PROC_OPEN_X_R)],
+          [ppy(beam_example_yd), ppy(beam_example_yd)],
+          color=C_FRAME, lw=1.5, ls="--", zorder=6)
+ax_p.text(ppx((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2), ppy(beam_example_yd + 80),
+          "BEAM (EXAMPLE POSITION)",
+          ha="center", va="bottom", fontsize=4.5, color=C_FRAME,
+          style="italic", **FONT, zorder=8)
+
+# Travel arrow
+ax_p.annotate("", xy=(ppx(PROC_OPEN_X_L + 400), ppy(beam_example_yd + 300)),
+              xytext=(ppx(PROC_OPEN_X_L + 400), ppy(beam_example_yd - 300)),
+              arrowprops=dict(arrowstyle="<->", color=C_BLUE, lw=1.0),
+              zorder=8)
+ax_p.text(ppx(PROC_OPEN_X_L + 500), ppy(beam_example_yd),
+          f"TRAVEL\n{SPRAY_BAR_TRAVEL}mm",
+          ha="left", va="center", fontsize=4.5, color=C_BLUE, **FONT, zorder=8)
+
+# ── Key dimensions ──────────────────────────────────────────────────────
+draw_dim_h(ax_p, ppx(0), ppx(C_LEN), ppy(-130),
+           f"{C_LEN}mm CONTAINER", offset=10 / SC_P, fs=5, font=FONT)
+draw_dim_v(ax_p, ppx(-100), ppy(0), ppy(C_WID),
+           f"{C_WID}mm", offset=10 / SC_P, fs=5, font=FONT)
+
+# ── Pinhole wall label ──────────────────────────────────────────────────
+ax_p.text(ppx(C_LEN / 2), ppy(-30),
+          "PINHOLE WALL (Yd=0)", ha="center", va="top",
+          fontsize=4, color=C_DIM, style="italic", **FONT, zorder=5)
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DETAIL E — Handle / arm attachment (section through beam at center)

@@ -357,7 +357,7 @@ PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
 
 BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0)
-BV02_Z             = 150         # BV-02 height on pinhole wall (mm AFF)
+BV02_Z             = 900         # BV-02 height on pinhole wall (mm AFF) — waist height from walkway deck
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)

@@ -36,7 +36,7 @@ from tbs_constants import (
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X,
     PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM,
     PROC_TRAY_YD_NEAR, PROC_TRAY_D, PROC_TRAY_PITCH,
-    SPRAY_BAR_FEED_Z,
+    SPRAY_BAR_FEED_Z, BV02_Z,
     RAIL_OFF,
     FAN_B_H, FAN_B_YD, FAN_DIAM,
     C_OUT, C_CL, C_DIM,
@@ -502,6 +502,39 @@ ax.text(sx(_supply_mid_x), sz(SUPPLY_Z - 30),
         "BLUE SUPPLY → SPRAY BAR (Z=75, BELOW GRATING)", ha="center", va="top",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
+# ── BV-02 — spray bar isolation valve (riser from Z=75 to Z=900) ────────
+BV02_X = WK_X_L + 200   # near left walkway, accessible from near walkway
+BV02_R = 25              # valve body radius for symbol
+
+# Riser from supply pipe up to BV-02
+draw_pipe_path(ax,
+    [BV02_X, BV02_X],
+    [SUPPLY_Z, BV02_Z],
+    OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
+
+# BV-02 valve symbol (filled circle)
+ax.add_patch(plt.Circle((sx(BV02_X), sz(BV02_Z)), BV02_R * S,
+             fc=C_BLUE, ec=C_BLUE_EC, lw=1.5, zorder=12))
+ax.text(sx(BV02_X), sz(BV02_Z), "BV\n02",
+        ha="center", va="center", fontsize=4, fontweight="bold",
+        color="white", zorder=13, **FONT)
+
+leader(ax, sx(BV02_X), sz(BV02_Z + BV02_R + 5),
+       sx(BV02_X), sz(BV02_Z + 80),
+       f"BV-02 @ Z={BV02_Z}mm\n(1/2\" BALL VALVE)\nSPRAY BAR ISOLATION\nWAIST HEIGHT",
+       fs=4, color=C_BLUE, font=FONT, zorder=15)
+
+# Flex hose stub from BV-02 (drops down to spray bar — off-wall)
+ax.annotate("", xy=(sx(BV02_X - 100), sz(BV02_Z - 50)),
+            xytext=(sx(BV02_X), sz(BV02_Z - BV02_R)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=0.8,
+                            connectionstyle="arc3,rad=0.3"),
+            zorder=10)
+ax.text(sx(BV02_X - 50), sz(BV02_Z - 80),
+        "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL)",
+        ha="center", va="top", fontsize=3.5, color=C_BLUE,
+        style="italic", zorder=10, **FONT)
+
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
 # Branch tee off the Blue supply trunk at Z=75, rises to tap height.
 TAP_OD = 25     # 3/4" branch pipe
@@ -637,7 +670,8 @@ for ix_mm, ilabel in items:
 notes = [
     "NOTES — REV 7 REORG",
     "1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z=75 (below walkway grating),",
-    "   from IBC zone to spray bar. Chemistry tap branch (¾\") rises to shelf.",
+    "   from IBC zone to spray bar. BV-02 riser to Z=900 (waist height).",
+    "   Chemistry tap branch (¾\") rises to shelf.",
     "2. Evap cooler relocated EXTERNAL — only Ø200mm duct penetration remains at X=1200, Z=2100.",
     "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02",
     "   relocated to equipment panel in IBC plumbing corridor (Yd=1046). See panel layout detail.",

@@ -570,7 +570,7 @@ def sheet2():
                          px(PORT_DIA / 2), fc=C_PORT, ec=C_OUT,
                          lw=1.5, zorder=12))
     ax.text(px(C_LEN + 75), py(panel_yd),
-            "PLUMBING PANEL\n4x 2\" NPT\n(CENTERLINE)",
+            "PLUMBING PANEL\n3x 2\" NPT\n(CENTERLINE)",
             ha="left", va="center", fontsize=5.5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
 
@@ -630,7 +630,7 @@ def sheet2():
         f"1. 4x Schutz Ecobulk MX 600L IBCs in 2x2 stack. Top tier visible; bottom tier shown dashed (below).",
         f"2. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         f"3. IBCs pushed to walls ({BLUE_IBC_Y}mm clearance) to maximize corridor width.",
-        f"4. External plumbing panel on end wall] centerline — 4x 2\" NPT ports.",
+        f"4. External plumbing panel on end wall centerline — 3x 2\" NPT ports (X1/X3/X4).",
         f"5. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
         "6. See Sheets 4-5 for plumbing detail.",
     ]
@@ -2126,14 +2126,12 @@ def sheet6():
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
     # ── Cross-connect: IBC-1 ↔ IBC-2 (2" pipe at valve height, no valve) ───
-    xconn_z = platform_z + FRAME_RHS + MAT_T + 185
+    xconn_z = platform_z + FRAME_RHS + MAT_T + 92
     draw_pipe_path(ax,
                    [near_col_r, far_col_l],
                    [xconn_z, xconn_z],
                    PIPE_OD * 1.8, PIPE_WALL * 1.5, sx, sy,
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=6)
-    draw_flange(ax, near_col_r, xconn_z, 'h', C_PIPE_BLUE)
-    draw_flange(ax, far_col_l, xconn_z, 'h', C_PIPE_BLUE)
     ax.text(sx((near_col_r + far_col_l) / 2), sy(xconn_z - 40),
             "2\" CROSS-CONNECT\n(SELF-LEVELING, NO VALVE)",
             ha="center", va="top", fontsize=5, color=C_PIPE_BLUE,

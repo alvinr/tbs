@@ -372,8 +372,6 @@ EXIT_R = 330    # past right panel edge (far wall / IBCs)
 # ── Valve positions ──
 BV01_YD = PORT_IN_YD                  # aligned with P-01 inlet port
 BV01_Z  = P01_PORT_Z + SUCT_RISE
-BV02_YD = -40
-BV02_Z  = ACC_Z   # on horizontal at ACC port Z
 DV02_YD = R_COL                      # right column — blank space above P-03
 DV02_Z  = P04_PORT_Z + 100           # 100mm rise from P-04 outlet before turn
 BV07_YD = R_COL                       # centered above P-05
@@ -519,12 +517,12 @@ draw_pipe_path(ax,
     [PORT_IN_YD, DISCH_RAIL, DISCH_RAIL, PORT_OUT_YD, PORT_OUT_YD],
     [ACC_Z, ACC_Z, P01_PORT_Z - PORT_DROP, P01_PORT_Z - PORT_DROP, P01_PORT_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-# Blue discharge OUT: ACC-01 outlet (left port) → BV-02 → spray bar
+# Blue discharge OUT: ACC-01 outlet (left port) → spray bar
+# BV-02 relocated nearer the spray bar (not on this panel)
 draw_pipe_path(ax,
     [EXIT_L, PORT_OUT_YD],
     [ACC_Z, ACC_Z],
     PIPE_OD, PIPE_WALL, fc=C_BLUE, zorder=Z_DISCH)
-draw_ball_valve(BV02_YD, BV02_Z, "BV\n02", C_BLUE)
 ax.annotate("", xy=(sx(EXIT_L), sz(ACC_Z)),
             xytext=(sx(EXIT_L + _AW), sz(ACC_Z)),
             arrowprops=dict(**_arrow_kw, color=C_BLUE), zorder=11)
@@ -932,7 +930,7 @@ notes = [
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
     "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
     "5. LEFT COL: P-01/P-04 + ACC-01. RIGHT COL: P-02/P-03 + DV-02 + P-05. All above filters.",
-    "6. BV-01/BV-02 (Blue), BV-07 (Brown drain), BV-08 (Waste drain) — manual ball valves.",
+    "6. BV-01 (Blue supply), BV-07 (Brown drain), BV-08 (Waste drain) — manual ball valves. BV-02 (Blue discharge) located near spray bar.",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]

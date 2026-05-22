@@ -1304,6 +1304,7 @@ D_YD_HI = 70
 
 ax_d.set_xlim(D_X_LO / SC_D, D_X_HI / SC_D)
 ax_d.set_ylim(D_YD_LO / SC_D, D_YD_HI / SC_D)
+ax_d.set_aspect("equal")
 
 def px(x_mm):
     return x_mm / SC_D

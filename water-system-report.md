@@ -109,7 +109,7 @@ IBC-2 (600L) ──┘                                                      │
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
-- Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
+- Spray bar: aluminum structural beam + 3/4" HDPE spray tube spanning the full processing tray width (4,459mm), riding on walkway grating. See §3.5 for full design
 - Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
@@ -233,7 +233,7 @@ Instead of a through-floor drain fitting, the tray has a shallow sump well press
 | Film plane rails at X=150 and X=4,649 (rail channel 20mm wide) | 20mm gap between tray edge and rail | Clear |
 | Container left end zone equipment (X=0–625) | Tray left edge at X=170 — extends into optical zone only | Clear |
 | Pump manifold (X=4,800–5,580, Yd=1,046, Z=900–1,400) — equipment panel | Suction hose routes over tray rim at Z=50, along rim exterior to equipment panel. No conflict | Clear |
-| Spray bar (overhead, Z=400–600 estimated) | 350mm+ above tray rim | Clear |
+| Spray bar (rides on walkway grating, Z=100mm deck) | Slides along Yd on walkway surfaces, below carriage height (Z≈140mm) | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 
 **Permanent installation:**
@@ -241,6 +241,85 @@ Instead of a through-floor drain fitting, the tray has a shallow sump well press
 The processing tray is permanently installed — it remains in place during both operational and transport modes. The two panels are positioned between the film plane rails, bolted together at the center flange. The P-04 suction pickup tube sits in the sump well permanently; the flexible suction hose routes over the near rim, along the rim exterior, and across to the equipment panel in the IBC corridor. The 50mm rim height is below all transport-mode clearance envelopes, so no removal is required for mode conversion. This eliminates the former 15–20 minute mode conversion procedure (dolly track removal, drum repositioning, tray install); mode conversion now requires only the panel slide (~5 minutes).
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.
+
+### 3.5 Spray Bar Assembly
+
+The spray bar delivers Blue (clean) and Brown (recycled) water evenly across the full width of the processing tray during print washing. The operator slides the bar along the length of the print (Yd direction, from film-plane side toward the pinhole wall), flooding the surface progressively.
+
+**Design constraints:**
+
+- Must span the full processing tray width (4,459mm, X=170–4,629mm) including the areas beneath both walkway gratings, to ensure the entire print receives even wash coverage
+- Single-operator use — push/pull from the near walkway
+- Must be stiff enough to avoid excessive sag over a 3.9m unsupported span
+- Must travel 2,200mm along Yd (tray depth, from near rim to far rim)
+- Must accommodate a flexible water connection that follows the bar as it moves
+
+**Assembly components:**
+
+| Component | Specification | Purpose |
+|-----------|--------------|---------|
+| Structural beam | 6061-T6 aluminum SHS, 4,459mm long (see sizing below) | Spans tray width, supports spray tube, resists sag |
+| Spray tube | 3/4" HDPE SDR-11, 4,459mm long, clamped to beam underside | Water distribution with drilled spray holes |
+| Runner pads (×2) | UHMW polyethylene blocks, ~100×50×30mm | Slide on walkway grating surface at each end |
+| Guide rail (×2) | 25×25×3mm aluminum angle, ~2,200mm long, bolted to grating | Keeps bar tracking straight along Yd axis |
+| Push pole | Telescoping aluminum pool pole, 1.2–2.4m | Operator controls bar position from near walkway |
+| Pole clip | Stainless spring clip or quick-release bracket | Attaches pole to beam center |
+| Flexible hose | 1/2" reinforced braided PVC, ~4m coiled length | Connects BV-02 to spray tube feed end |
+| Pipe clamps (×8) | Stainless steel, 3/4" hose clamp or nylon zip ties | Secure HDPE tube to aluminum beam |
+| End caps (×2) | 3/4" HDPE threaded cap | Seal spray tube ends |
+| Feed adapter | 3/4" FNPT × 1/2" barb reducer | Connects flexible hose to spray tube inlet |
+
+**Structural beam sizing:**
+
+The beam is supported at the inner edges of the left and right walkways (X=470 and X=4,329, span=3,859mm), with 300mm overhangs at each end resting on the walkway grating. Load includes beam self-weight, spray tube, water in tube, and hardware.
+
+| Beam size | I (mm⁴) | Beam mass | Total assembly | Center deflection | Span ratio |
+|-----------|---------|-----------|---------------|-------------------|------------|
+| 25×25×3mm (1"×1"×⅛") | 21,692 | 2.8 kg | 6.2 kg | 22.8mm | L/169 |
+| 30×30×3mm (1¼"×1¼"×⅛") | 39,852 | 3.6 kg | 7.1 kg | 14.1mm | L/274 |
+| **40×40×3mm (1½"×1½"×⅛")** | **101,972** | **4.9 kg** | **8.3 kg** | **6.5mm** | **L/595** |
+| **50×25×3mm (2"×1"×⅛") rect.** | **125,542** | **4.2 kg** | **7.6 kg** | **4.8mm** | **L/797** |
+| 50×50×3mm (2"×2"×⅛") | 208,492 | 6.1 kg | 9.6 kg | 3.6mm | L/1058 |
+
+**Recommended:** 40×40×3mm aluminum SHS (widely available as 1-1/2" × 1-1/2" × 1/8" at Home Depot, metals suppliers). Center deflection of 6.5mm (L/595) is acceptable for a spray application. Total assembly weight ~8.3kg.
+
+**Alternative:** 50×25×3mm rectangular tube oriented tall (2" × 1" × 1/8"). Stiffer (4.8mm, L/797) and lighter (7.6kg) but less commonly stocked. Use if available.
+
+**Runner and guide system:**
+
+Each end of the beam rides on a UHMW polyethylene slider pad that rests on the walkway grating surface (Z=100mm). The grating is press-locked steel mesh with ~60% open area — water from the spray tube passes through the mesh to reach the print below the walkway. The pads are bolted to the beam ends with stainless M6 bolts.
+
+A guide rail (25×25×3mm aluminum angle, 2,200mm long) is bolted to each walkway grating along the Yd direction. The UHMW pad has a groove that captures the angle's vertical leg, preventing lateral drift as the operator pushes the bar. The guide rail also defines the start and end positions of the bar's travel.
+
+**Clearances:**
+
+| Interface | Dimension | Status |
+|-----------|-----------|--------|
+| Tray rim to grating bottom | 25mm (Z=50 to Z=75) | Spray tube passes through this gap — 3/4" HDPE OD=26.7mm is tight; tube mounts flush against beam underside, clears at beam centerline height |
+| Grating surface to beam bottom | 30mm (runner pad height) | UHMW pad lifts beam above grating |
+| Beam top (Z=170mm max) to film carriage (Z=140mm max tilt) | No conflict — spray bar is in Yd=80–2,280 zone, film carriage rides on rails at Yd edges | Clear |
+
+**Spray hole pattern:**
+
+The HDPE spray tube has 3mm holes drilled at 100mm intervals along the bottom centerline (45 holes total across 4,459mm). At 3.5 GPM (P-01 flow rate) and 45 PSI system pressure, each hole delivers approximately 0.08 GPM. Holes are deburred to prevent drip accumulation. Alternatively, 1/4" FNPT tee adapters at 600mm intervals (8 nozzles) with adjustable fan-spray tips provide more even distribution but add cost and assembly time.
+
+**Flexible hose connection:**
+
+BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at Z≈150mm, near the near-wall tray rim. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 to the spray bar feed adapter at one end (X=170, the left/near end of the bar). The hose is coiled when the bar is near the pinhole wall (Yd=80) and extends as the bar is pushed toward the far wall (Yd=2,280). The hose trails along the near tray rim, staying clear of the print surface.
+
+The supply path is: P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → spray bar feed adapter → 3/4" HDPE spray tube → spray holes.
+
+**Operation:**
+
+1. Place the spray bar on the walkway grating at the far end of the tray (Yd≈2,280, film-plane side)
+2. Open BV-02 — water flows through the coiled hose to the spray tube
+3. Using the telescoping pole, slowly pull the bar toward the pinhole wall (decreasing Yd), flooding the print progressively
+4. The bar travels at approximately 50mm/second — full traverse takes ~44 seconds
+5. At the near rim (Yd=80), close BV-02. One wash pass complete.
+6. For additional wash passes, push the bar back to the far end and repeat
+7. Between wash passes, switch to Brown (recycled) water by closing BV-02 and activating P-02 through the filter train
+
+**Storage:** When not in use, the spray bar rests on the walkway grating at either end of its travel, parallel to the tray rim. The flexible hose coils naturally at the near wall. The telescoping pole detaches and stores alongside the bar.
 
 ---
 
@@ -516,9 +595,27 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Consumables subtotal: ~$231–$278**
 
+### 8.9 Spray bar assembly
+
+| Item | Spec | Qty | Supplier | Unit price | Total |
+|------|------|-----|---------|-----------|-------|
+| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. Need 2 pieces joined (or 1× 16 ft length if available) for 4,459mm total | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
+| [3/4" HDPE SDR-11 pipe](https://www.ferguson.com) | Spray tube, 4,459mm. Already in §8.5 pipe list — no additional purchase needed | — | — | — | **included** |
+| [UHMW polyethylene block 100×50×30mm](https://www.mcmaster.com/8702K74) | Runner pads for walkway grating. Machine groove for guide rail | 2 | McMaster-Carr | $8–$12 | **$16–$24** |
+| [6061-T6 aluminum angle 1"×1"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-angle) | Guide rails, 2,200mm long, bolted to walkway grating | 2 | Online Metals | $10–$16/8ft | **$20–$32** |
+| [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft (1.2–2.4m), standard pool skimmer handle | 1 | Amazon / Home Depot | $12–$20 | **$15** |
+| [1/2" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection from BV-02 to spray bar (4m coiled length) | 1 | Amazon | $12–$18 | **$15** |
+| [3/4" FNPT × 1/2" barb reducer](https://www.amazon.com/s?k=3%2F4+FNPT+1%2F2+barb+reducer+polypropylene) | Feed adapter at spray tube inlet end | 1 | Amazon | $3–$5 | **$4** |
+| [3/4" HDPE threaded end cap](https://www.amazon.com/s?k=3%2F4+HDPE+threaded+end+cap) | Seal spray tube ends | 2 | Amazon | $2–$3 | **$5** |
+| [Stainless hose clamps 3/4"](https://www.amazon.com/s?k=3%2F4+stainless+hose+clamp+pack) | Secure spray tube to beam (or nylon zip ties) | 8 | Amazon | $0.50 | **$4** |
+| [M6×20 stainless bolts + nylock nuts](https://www.mcmaster.com/92196A150) | Runner pad mounting, guide rail mounting | 12 | McMaster-Carr | $0.40 | **$5** |
+| [Stainless spring clip / quick-release](https://www.amazon.com/s?k=pool+pole+tip+clip+stainless) | Pole clip to beam center | 1 | Amazon | $5–$8 | **$6** |
+
+**Spray bar subtotal: ~$126–$166**
+
 ---
 
-### 8.9 Total cost summary
+### 8.10 Total cost summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -528,9 +625,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Valves and fittings (incl. S60×6 adapters, check valves) | $414 | $660 |
 | Pipe | $76 | $108 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
+| Spray bar assembly | $126 | $166 |
 | Electrical | $50 | $50 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$3,143** | **$4,720** |
+| **TOTAL** | **$3,269** | **$4,886** |
 
 *Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 

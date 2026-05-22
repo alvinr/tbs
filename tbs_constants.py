@@ -356,8 +356,18 @@ PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
 PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2399]
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
 
-# Spray bar — Blue supply delivery, below walkway deck (rev 7)
-SPRAY_BAR_FEED_Z   = 75         # spray bar supply line Z (mm) — below grating, above tray rim
+# Spray bar — rides on walkway grating, aluminum beam + HDPE spray tube (rev 8)
+SPRAY_BAR_LENGTH   = PROC_TRAY_W  # = 4,459mm — full tray width
+SPRAY_BAR_BEAM     = 40          # 40×40×3mm 6061-T6 aluminum SHS (1-1/2"×1-1/2"×1/8")
+SPRAY_BAR_BEAM_T   = 3           # wall thickness (mm)
+SPRAY_BAR_TUBE_OD  = 26.7        # 3/4" HDPE SDR-11 outer diameter (mm)
+SPRAY_BAR_RUNNER_H = 30          # UHMW runner pad height (mm) — lifts beam above grating
+SPRAY_BAR_Z        = 100 + SPRAY_BAR_RUNNER_H  # = 130mm — beam bottom (100 = walkway deck height)
+SPRAY_BAR_TRAVEL   = PROC_TRAY_D  # = 2,200mm (Yd travel, near rim to far rim)
+SPRAY_BAR_HOLE_SP  = 100         # spray hole spacing along tube (mm)
+SPRAY_BAR_HOSE_L   = 4000        # flexible hose length BV-02 to bar (mm)
+BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0)
+BV02_Z             = 150         # BV-02 height on pinhole wall (mm AFF)
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)

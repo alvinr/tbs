@@ -1837,7 +1837,6 @@ draw_dim_v(ax_e, ey(e_beam_l - 20), ez(e_beam_bot + BEAM_W), ez(socket_top_z),
            offset=3 / SC_E, fs=4.5, font=FONT)
 
 # ── Full-width title block ────────────────────────────────────────────────
-ax_tb = fig.add_axes([0.05, 0.005, 0.90, 0.04])
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="SPRAY BAR ASSEMBLY",
             subtitle="GANTRY SPRAY BAR — ELEVATION, CROSS SECTION & DETAILS",

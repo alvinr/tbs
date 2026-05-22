@@ -205,8 +205,8 @@ ax.add_patch(Rectangle((sx(brk_x_r - brk_t), sz(BEAM_Z_BOT)),
                          brk_t / H_SC, (WHEEL_AXLE_Z - BEAM_Z_BOT + brk_t / 2) / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
 
-leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 5),
-       sx(carriage_cx - 80), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 35),
+leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2),
+       sx(carriage_cx - 80), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
        f"Ø{WHEEL_DIA}mm NYLON WHEEL\n(2 PER CARRIAGE\nSPACED {WHEEL_SPACING_YD}mm IN Yd)",
        fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
@@ -315,48 +315,41 @@ ax.text(sx(hose_start_x + 100), sz(hose_start_z + 20),
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax, sx(wk_l), sx(wk_r), sz(GRATE_Z_TOP + 55),
-           f"{WALKWAY_W}mm WALKWAY", offset=5 / V_SC, fs=5.5, font=FONT)
+           f"{WALKWAY_W}mm WALKWAY", offset=8 / V_SC, fs=5.5, font=FONT)
 
 draw_dim_v(ax, sx(tray_x_l - 20), sz(0), sz(PROC_TRAY_RIM),
-           f"{PROC_TRAY_RIM}mm\nRIM", offset=4 / H_SC, fs=5, font=FONT)
+           f"{PROC_TRAY_RIM}mm\nRIM", offset=8 / H_SC, fs=5, font=FONT)
 
 draw_dim_v(ax, sx(wk_r + 15), sz(0), sz(GRATE_Z_TOP),
-           f"{WALKWAY_H}mm\nDECK", offset=4 / H_SC, fs=5, font=FONT, right=True)
+           f"{WALKWAY_H}mm\nDECK", offset=8 / H_SC, fs=5, font=FONT, right=True)
 
 draw_dim_v(ax, sx(beam_x_start + 500), sz(TRAY_FLOOR_Z), sz(BEAM_Z_BOT),
            f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY\nHGT",
-           offset=4 / H_SC, fs=4.5, font=FONT)
+           offset=8 / H_SC, fs=4.5, font=FONT)
 
 draw_dim_v(ax, sx(beam_x_start + 600), sz(0), sz(BEAM_Z_TOP),
            "%.0fmm\nBEAM TOP" % BEAM_Z_TOP,
-           offset=4 / H_SC, fs=5, font=FONT, right=True)
+           offset=8 / H_SC, fs=5, font=FONT, right=True)
 
 # Gap between beam top and grate bottom
 gap_to_grate = GRATE_Z_BOT - BEAM_Z_TOP
 draw_dim_v(ax, sx(wk_r - 20), sz(BEAM_Z_TOP), sz(GRATE_Z_BOT),
-           f"{gap_to_grate:.0f}mm\nCLR", offset=3 / H_SC, fs=4.5, font=FONT)
+           f"{gap_to_grate:.0f}mm\nCLR", offset=8 / H_SC, fs=4.5, font=FONT)
 
 draw_dim_v(ax, sx(carriage_cx + 50), sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z + WHEEL_DIA),
-           f"Ø{WHEEL_DIA}mm", offset=3 / H_SC, fs=5, font=FONT, right=True)
-
-# ── Scale note ────────────────────────────────────────────────────────────
-ax.text(sx(X_LO + 20), sz(Z_HI - 5),
-        f"HORIZONTAL SCALE 1:{int(H_SC)} / VERTICAL SCALE 1:{V_SC:.1f}\n"
-        "VERTICAL EXAGGERATED 4× FOR CLARITY",
-        ha="left", va="top", fontsize=5.5, color=C_DIM, style="italic",
-        **FONT, zorder=15)
+           f"Ø{WHEEL_DIA}mm", offset=8 / H_SC, fs=5, font=FONT, right=True)
 
 # ── Notes ─────────────────────────────────────────────────────────────────
 notes = [
-    "SPRAY BAR — GANTRY CONCEPT:",
-    f"1. 40×40×3mm AL SHS doubles as beam AND spray pipe (water through bore).",
+    "NOTES:",
+    f"1. 40×40×3mm AL SHS beam doubles as spray pipe (water through bore).",
     f"2. Carriages (2× Ø{WHEEL_DIA}mm nylon wheels) ride on tray floor under grating.",
-    f"3. Beam spans {BEAM_SPAN}mm (X dir). Coverage: X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}mm.",
-    f"4. Travel: {SPRAY_BAR_TRAVEL}mm along Yd. Tray rim walls guide laterally.",
-    "5. Both ends capped; hose connects at one end. RIGHT CARRIAGE MIRRORS LEFT.",
+    f"3. Beam spans {BEAM_SPAN}mm (X). Coverage: X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}mm.",
+    f"4. Travel: {SPRAY_BAR_TRAVEL}mm in Yd. Tray rim walls guide laterally.",
+    "5. Both ends capped; hose connects at one end. Right carriage mirrors left.",
 ]
-draw_notes(ax, notes, sx(X_LO + 20), sz(Z_HI), spacing=8 / V_SC,
-           fs=4.5, font=FONT, width=6000)
+draw_notes(ax, notes, sx(X_LO + 20), sz(Z_HI - 5), spacing=10 / V_SC,
+           fs=7, font=FONT, width=155 / H_SC)
 
 ax.text(sx(-30), sz(Z_HI - 10),
         "CONTAINER\nLEFT WALL\n(X=0)", ha="right", va="top",
@@ -450,7 +443,7 @@ for w_yd in [wheel1_yd, wheel2_yd]:
              [dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z)],
              color=C_WHEEL, lw=2.0, zorder=5)
 
-leader(ax2, dy(wheel1_yd - WHEEL_DIA / 2 - 3), dz(WHEEL_AXLE_Z),
+leader(ax2, dy(wheel1_yd - WHEEL_DIA / 2), dz(WHEEL_AXLE_Z),
        dy(wheel1_yd - WHEEL_DIA / 2 - 40), dz(WHEEL_AXLE_Z - 15),
        f"Ø{WHEEL_DIA}mm\nNYLON\nWHEEL",
        fs=5, color=C_WHEEL, font=FONT, zorder=15)
@@ -479,7 +472,7 @@ for w_yd in [wheel1_yd, wheel2_yd]:
                  [dz(WHEEL_AXLE_Z + brk_t2 / 2), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 3)],
                  color=C_FRAME, lw=1.0, zorder=5.5)
 
-leader(ax2, dy(plate_yd_r + 3), dz(WHEEL_AXLE_Z),
+leader(ax2, dy(plate_yd_r), dz(WHEEL_AXLE_Z),
        dy(plate_yd_r + 45), dz(WHEEL_AXLE_Z + 12),
        "ALUM. L-BRACKET\n(DROPS BEAM\nBELOW AXLE)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
@@ -518,26 +511,26 @@ ax2.text(dy(carriage_yd_center + 8), dz(BEAM_Z_BOT - 10),
 
 # ── Detail dimensions ─────────────────────────────────────────────────────
 draw_dim_v(ax2, dy(beam_yd_l - 15), dz(BEAM_Z_BOT), dz(BEAM_Z_TOP),
-           f"{BEAM_W}mm", offset=3 / SC2, fs=5.5, font=FONT)
+           f"{BEAM_W}mm", offset=10 / SC2, fs=5.5, font=FONT)
 
 draw_dim_h(ax2, dy(wheel1_yd), dy(wheel2_yd), dz(TRAY_FLOOR_Z + WHEEL_DIA + 8),
-           f"{WHEEL_SPACING_YD}mm", offset=3 / SC2, fs=5.5, font=FONT)
+           f"{WHEEL_SPACING_YD}mm", offset=10 / SC2, fs=5.5, font=FONT)
 
 draw_dim_v(ax2, dy(DET_YD_LO + 12), dz(GRATE_Z_BOT), dz(GRATE_Z_TOP),
-           f"{WALKWAY_GRATE_T}mm", offset=3 / SC2, fs=5, font=FONT)
+           f"{WALKWAY_GRATE_T}mm", offset=10 / SC2, fs=5, font=FONT)
 
 # Clearance: beam top to grate bottom
 clearance = GRATE_Z_BOT - BEAM_Z_TOP
 draw_dim_v(ax2, dy(beam_yd_r + 15), dz(BEAM_Z_TOP), dz(GRATE_Z_BOT),
-           f"{clearance:.0f}mm\nCLR", offset=3 / SC2, fs=5, font=FONT, right=True)
+           f"{clearance:.0f}mm\nCLR", offset=10 / SC2, fs=5, font=FONT, right=True)
 
 # Beam bottom to tray floor
 draw_dim_v(ax2, dy(beam_yd_l - 30), dz(TRAY_FLOOR_Z), dz(BEAM_Z_BOT),
-           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm", offset=3 / SC2, fs=5, font=FONT)
+           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm", offset=10 / SC2, fs=5, font=FONT)
 
 # Wheel diameter
 draw_dim_v(ax2, dy(wheel2_yd + WHEEL_DIA / 2 + 10), dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z + WHEEL_DIA),
-           f"Ø{WHEEL_DIA}mm", offset=3 / SC2, fs=5, font=FONT, right=True)
+           f"Ø{WHEEL_DIA}mm", offset=10 / SC2, fs=5, font=FONT, right=True)
 
 
 # ── Save ──────────────────────────────────────────────────────────────────

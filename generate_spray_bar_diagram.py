@@ -6,11 +6,11 @@ generate_spray_bar_diagram.py
 Spray bar assembly detail for TBS-001 processing tray wash system.
 
 Sheet 1 — Gantry spray bar:
-  Left panel:  Yd-Z cross-section (carriage view) looking along X.
-               Equal 1:4 scale. Walkway, beam, wheels, U-clamp.
-  Right panel: X-Z section viewed from film plane (along Yd).
+  Left panel:  X-Z section viewed from film plane (along Yd).
                Centered on beam centerline. Walkway slit, pole,
                beam (full span), BV-02, flex hose. H1:18 / V1:4.5.
+  Right panel: Yd-Z cross-section (carriage view) looking along X.
+               Equal 1:4 scale. Walkway, beam, wheels, U-clamp.
 
 Output:
   diagrams/spray-bar-sheet1.png
@@ -111,11 +111,11 @@ gs = GridSpec(4, 2, figure=fig, width_ratios=[1, 1.3],
               wspace=0.06, hspace=0.08, bottom=0.06, top=0.97)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RIGHT PANEL — X-Z section viewed from film plane (looking along Yd)
+# LEFT PANEL — X-Z section viewed from film plane (looking along Yd)
 # Centered on beam centerline.  Shows walkway slit, pole, beam, BV-02.
 # Horizontal scale 1:18, Vertical scale 1:4.5 (4× vert exaggeration)
 # ─────────────────────────────────────────────────────────────────────────────
-ax = fig.add_subplot(gs[0, 1])
+ax = fig.add_subplot(gs[0, 0])
 ax.set_facecolor(C_BG)
 ax.axis("off")
 
@@ -598,10 +598,10 @@ draw_dim_v(ax_a, d_xl + 3, -pvc_od_h, pvc_od_h,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# LEFT PANEL — Yd-Z cross section (carriage view)
+# RIGHT PANEL — Yd-Z cross section (carriage view)
 # Looking along X. Equal H/V scale. Cropped to carriage/beam/walkway area.
 # ─────────────────────────────────────────────────────────────────────────────
-ax2 = fig.add_subplot(gs[0, 0])
+ax2 = fig.add_subplot(gs[0, 1])
 ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")

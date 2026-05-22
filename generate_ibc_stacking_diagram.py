@@ -39,7 +39,7 @@ from tbs_constants import (
     WALKWAY_RIGHT_X,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP,
     PROC_TRAY_RIM,
-    EXT_PANEL_YD, EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
+    EXT_PANEL_YD, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
     EQPANEL_X, EQPANEL_T, EQPANEL_YD,
     PUMP_D, PUMP_YD, PUMP_YD_SPAN,
     BB_OD, FSKID_YD,
@@ -1212,13 +1212,11 @@ def sheet4():
 
     ports = [
         ("FILL — BLUE IBC-1\n(CLEAN SUPPLY, TOP NEAR)",
-         EXT_FILL_1_H, C_BLUE_IBC, "F1"),
-        ("FILL — BLUE IBC-2\n(CLEAN SUPPLY, TOP FAR)",
-         EXT_FILL_2_H, C_BLUE_IBC, "F2"),
+         EXT_FILL_1_H, C_BLUE_IBC, "X1"),
         ("DRAIN — BROWN IBC-3\n(RECYCLED, BOTTOM NEAR)",
-         EXT_DRAIN_3_H, C_BROWN_IBC, "D3"),
+         EXT_DRAIN_3_H, C_BROWN_IBC, "X3"),
         ("DRAIN — WASTE IBC-4\n(WASTE, BOTTOM FAR)",
-         EXT_DRAIN_4_H, C_WASTE_IBC, "D4"),
+         EXT_DRAIN_4_H, C_WASTE_IBC, "X4"),
     ]
 
     for label, port_z, color, tag in ports:
@@ -1248,7 +1246,6 @@ def sheet4():
 
     # Individual port heights from ground
     for port_z, label in [(EXT_FILL_1_H, f"{EXT_FILL_1_H}mm"),
-                           (EXT_FILL_2_H, f"{EXT_FILL_2_H}mm"),
                            (EXT_DRAIN_3_H, f"{EXT_DRAIN_3_H}mm"),
                            (EXT_DRAIN_4_H, f"{EXT_DRAIN_4_H}mm")]:
         draw_dim_v(ax, sx(dim_yd), sy(0), sy(port_z),
@@ -1271,10 +1268,10 @@ def sheet4():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "EXTERNAL PLUMBING PANEL NOTES:",
-        "1. 4x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
+        "1. 3x 2\" NPT bulkhead unions through sealed end wall on container centerline.",
         "2. 6mm mild steel reinforcing plate welded to wall interior before penetrations.",
-        "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (F1/F2) and drain hose (D3/D4).",
-        "4. Fill ports at top (gravity + pump to IBCs). Drain ports at bottom (gravity drain).",
+        "3. Type DC camlock fittings (2\" aluminum) on exterior face — quick-connect for fill hose (X1) and drain hose (X3/X4).",
+        "4. X1 fill port at top (gravity + pump to IBC-1; IBC-2 self-levels via 2\" cross-connect). Drain ports at bottom (gravity drain).",
         "5. All penetrations sealed with neoprene gaskets — light-tight and watertight.",
         "6. Interior connections routed through plumbing corridor (see Sheet 5).",
     ]
@@ -1663,9 +1660,9 @@ def sheet5():
                      px(port_r * r_frac), fc=color, ec="none",
                      zorder=13, alpha=0.8))
     ax.text(px(bh_x + 40), py(panel_yd + 60),
-            "4x BULKHEAD UNIONS\n2\" NPT, STACKED\nAT Yd=" + f"{int(panel_yd)}mm\n"
-            "F1: Z={0}  F2: Z={1}\nD3: Z={2}  D4: Z={3}".format(
-                EXT_FILL_1_H, EXT_FILL_2_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H),
+            "3x BULKHEAD UNIONS\n2\" NPT, STACKED\nAT Yd=" + f"{int(panel_yd)}mm\n"
+            "X1: Z={0}\nX3: Z={1}  X4: Z={2}".format(
+                EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H),
             ha="left", va="center", fontsize=5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
 
@@ -1691,7 +1688,7 @@ def sheet5():
     v4_yd = (far_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
     ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "D4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
+            "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
             **FONT, zorder=15)
     # ── D3: IBC-3 (near, Brown) → bulkhead (above D4) ──────────────────────
@@ -1705,23 +1702,10 @@ def sheet5():
     v3_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
     ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
-            "D3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
+            "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
             **FONT, zorder=15)
-    # ── F2: Bulkhead → corridor → IBC-2 (far, Blue) ────────────────────────
-    # Beneath F1; corridor run covered by F1 at higher zorder
-    draw_pipe_path(ax,
-                   [bh_x, fill_x, fill_x],
-                   [panel_yd, panel_yd, far_ibc_conn_yd],
-                   PIPE_OD, PIPE_WALL_T, px, py,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    flange_plan(ax, fill_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    ax.text(px(fill_x - 40), py(far_ibc_conn_yd + 200),
-            "F2 → IBC-2\n(FILL, BLUE)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLUE,
-            **FONT, zorder=15)
-
-    # ── F1: Bulkhead → corridor → IBC-1 (near, Blue) — top pipe ────────────
+    # ── X1: Bulkhead → corridor → IBC-1 (near, Blue) — single fill ────────
     draw_pipe_path(ax,
                    [bh_x, fill_x, fill_x],
                    [panel_yd, panel_yd, near_ibc_conn_yd],
@@ -1731,9 +1715,23 @@ def sheet5():
     valve_plan(ax, fill_x, v1_yd, 'v', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
     ax.text(px(fill_x - 40), py(near_ibc_conn_yd - 200),
-            "F1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
+            "X1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
             ha="right", va="center", fontsize=5.5, color=C_PIPE_BLUE,
             **FONT, zorder=15)
+
+    # ── Cross-connect: IBC-1 ↔ IBC-2 (2" pipe, self-leveling, no valve) ──
+    xconn_x = fill_x + 120
+    draw_pipe_path(ax,
+                   [xconn_x, xconn_x],
+                   [near_ibc_conn_yd, far_ibc_conn_yd],
+                   PIPE_OD * 1.8, PIPE_WALL_T * 1.5, px, py,
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=6)
+    flange_plan(ax, xconn_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
+    flange_plan(ax, xconn_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
+    ax.text(px(xconn_x + 30), py(panel_yd),
+            "2\" CROSS-CONNECT\nIBC-1 ↔ IBC-2\n(SELF-LEVELING\nNO VALVE)",
+            ha="left", va="center", fontsize=5, color=C_PIPE_BLUE,
+            fontweight="bold", **FONT, zorder=15)
 
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = px(X_LO + 30)
@@ -1831,12 +1829,12 @@ def sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        "1. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
+        "1. All internal pipe 1\" HDPE SDR-11 (2\" at cross-connect, 2\" NPT at bulkhead unions).",
         "2. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
         "3. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
         "4. Ball valves (Banjo V100FP) at each IBC connection — V1/V3/V4 on vertical branch at panel face.",
         f"5. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
-        "6. 90° elbows (Banjo LE100) at all pipe direction changes. Flanges at all connections.",
+        "6. 2\" cross-connect between IBC-1 and IBC-2 valve outlets — always open, self-leveling. No valve.",
         f"7. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-03/P-04 pumps + 3× Big Blue filters.",
     ]
     draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
@@ -1860,7 +1858,7 @@ def sheet5():
 #
 # View from inside the container, looking at the sealed end wall.
 # Horizontal = Yd (0=near/pinhole wall at left), Vertical = Z.
-# Shows the 4 bulkhead unions on the wall centerline with pipes routing
+# Shows the 3 bulkhead unions on the wall centerline with pipes routing
 # outward to each IBC.  Near-column IBCs on the left, far-column on the
 # right, plumbing corridor in the center.  Ball valves, pipe drops/rises,
 # and IBC connection points all visible.
@@ -2059,15 +2057,14 @@ def sheet6():
                             fc=C_STEEL, ec=C_OUT, lw=1.0, alpha=0.2,
                             hatch="...", zorder=5))
 
-    # ── Bulkhead unions (4 ports on wall centerline) ─────────────────────────
+    # ── Bulkhead unions (3 ports on wall centerline) ─────────────────────────
     port_r = PORT_DIA / 2
     bh_outer_r = 38   # camlock/union outer visual radius
 
     ports = [
-        ("F1", EXT_FILL_1_H, C_BLUE_IBC,   "FILL → IBC-1 (BLUE, TOP NEAR)"),
-        ("F2", EXT_FILL_2_H, C_BLUE_IBC,   "FILL → IBC-2 (BLUE, TOP FAR)"),
-        ("D3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)"),
-        ("D4", EXT_DRAIN_4_H, C_WASTE_IBC, "DRAIN ← IBC-4 (WASTE, BOTTOM FAR)"),
+        ("X1", EXT_FILL_1_H, C_BLUE_IBC,   "FILL → IBC-1 (BLUE, TOP NEAR)"),
+        ("X3", EXT_DRAIN_3_H, C_BROWN_IBC, "DRAIN ← IBC-3 (BROWN, BOTTOM NEAR)"),
+        ("X4", EXT_DRAIN_4_H, C_WASTE_IBC, "DRAIN ← IBC-4 (WASTE, BOTTOM FAR)"),
     ]
 
     for tag, port_z, color, desc in ports:
@@ -2103,11 +2100,10 @@ def sheet6():
     # ~250mm from the valve face (front) toward the corridor side.
     FILL_CAP_OFFSET = 250  # mm from valve face (corridor edge)
     f1_fill_yd = BLUE_IBC_Y + IBC_D - FILL_CAP_OFFSET   # near IBC fill cap Yd
-    f2_fill_yd = IBC_FAR_Y + FILL_CAP_OFFSET             # far IBC fill cap Yd
 
-    # ── F1: Bulkhead → over IBC-1 top → drop into IBC-1 (near, top tier) ───
+    # ── X1: Bulkhead → over IBC-1 top → drop into IBC-1 (near, top tier) ───
     # Fill enters through IBC fill cap (DN150, offset ~250mm from valve face
-    # toward corridor side). F1 at Z=2,250 is above IBC top (2,082).
+    # toward corridor side). X1 at Z=2,250 is above IBC top (2,082).
     f1_drop_yd = f1_fill_yd  # drop point at fill cap position (offset from valve face)
     # L-shaped path: horizontal from bulkhead → 90° elbow → vertical drop
     draw_pipe_path(ax,
@@ -2129,27 +2125,19 @@ def sheet6():
                 xytext=(sx(f1_drop_yd), sy(fill_conn_z + 80)),
                 arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
 
-    # ── F2: Bulkhead → over IBC-2 top → drop into IBC-2 (far, top tier) ──
-    f2_drop_yd = f2_fill_yd  # drop point at fill cap position (offset from valve face)
-    # L-shaped path: horizontal from bulkhead → 90° elbow → vertical drop
+    # ── Cross-connect: IBC-1 ↔ IBC-2 (2" pipe at valve height, no valve) ───
+    xconn_z = platform_z + FRAME_RHS + MAT_T + 185
     draw_pipe_path(ax,
-                   [cl_yd - bh_outer_r - 5, f2_drop_yd, f2_drop_yd],
-                   [EXT_FILL_2_H, EXT_FILL_2_H, fill_conn_z],
-                   PIPE_OD, PIPE_WALL, sx, sy,
-                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=7)
-    # CV2 check valve — prevents backflow from IBC-2 toward bulkhead
-    cv2_yd = cl_yd - bh_outer_r - 50
-    _draw_check_valve_h(ax, sx, sy, cv2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "CV2",
-                        flow_dir="right")
-    # V2 on horizontal run, in the corridor
-    v2_yd = (cl_yd + far_col_l) / 2
-    _draw_valve_elev_h(ax, sx, sy, v2_yd, EXT_FILL_2_H, C_PIPE_BLUE, "V2")
-    # Flange at IBC top opening
-    draw_flange(ax, f2_drop_yd, top_ibc_top, 'v', C_PIPE_BLUE)
-    # Flow arrow into IBC
-    ax.annotate("", xy=(sx(f2_drop_yd), sy(fill_conn_z + 15)),
-                xytext=(sx(f2_drop_yd), sy(fill_conn_z + 80)),
-                arrowprops=dict(arrowstyle="-|>", color=C_PIPE_BLUE, lw=1.5))
+                   [near_col_r, far_col_l],
+                   [xconn_z, xconn_z],
+                   PIPE_OD * 1.8, PIPE_WALL * 1.5, sx, sy,
+                   fc=C_PIPE_BLUE, ec="#1A4A90", zorder=6)
+    draw_flange(ax, near_col_r, xconn_z, 'h', C_PIPE_BLUE)
+    draw_flange(ax, far_col_l, xconn_z, 'h', C_PIPE_BLUE)
+    ax.text(sx((near_col_r + far_col_l) / 2), sy(xconn_z - 40),
+            "2\" CROSS-CONNECT\n(SELF-LEVELING, NO VALVE)",
+            ha="center", va="top", fontsize=5, color=C_PIPE_BLUE,
+            fontweight="bold", **FONT, zorder=15)
 
     # ── D3: IBC-3 (near, bottom) → Bulkhead — BROWN drain ───────────────────
     d3_yd = near_col_r  # corridor-facing edge of near IBC
@@ -2303,22 +2291,17 @@ def sheet6():
     # ── Pipe labels for bulkhead connections ─────────────────────────────────
     leader(ax, sx(f1_fill_yd), sy(EXT_FILL_1_H),
            sx(BLUE_IBC_Y + IBC_D * 0.7), sy(EXT_FILL_1_H - 80),
-           "F1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
+           "X1 → IBC-1 FILL CAP\n(DN150, TOP NEAR)\n1\" HDPE",
            color=C_PIPE_BLUE, fs=5.5,
            ha="right", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, sx(f2_fill_yd), sy(EXT_FILL_2_H),
-           sx(IBC_FAR_Y + IBC_D * 0.3), sy(EXT_FILL_2_H + 80),
-           "F2 → IBC-2 FILL CAP\n(DN150, TOP FAR)\n1\" HDPE",
-           color=C_PIPE_BLUE, fs=5.5,
-           ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, sx(near_col_r), sy(drain_conn_z),
            sx(BLUE_IBC_Y + IBC_D * 0.7), sy(drain_conn_z - 80),
-           "D3 ← IBC-3 VALVE\n(DN50, S60×6, BROWN\nBOTTOM NEAR)\n1\" HDPE",
+           "X3 ← IBC-3 VALVE\n(DN50, S60×6, BROWN\nBOTTOM NEAR)\n1\" HDPE",
            color=C_PIPE_BROWN, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
     leader(ax, sx(far_col_l), sy(drain_conn_z),
            sx(IBC_FAR_Y + IBC_D * 0.5), sy(drain_conn_z - 80),
-           "D4 ← IBC-4 VALVE\n(DN50, S60×6, WASTE\nBOTTOM FAR)\n1\" HDPE",
+           "X4 ← IBC-4 VALVE\n(DN50, S60×6, WASTE\nBOTTOM FAR)\n1\" HDPE",
            color=C_PIPE_BLACK, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
@@ -2413,10 +2396,9 @@ def sheet6():
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     dim_yd = cl_yd + plate_w / 2 + 40
-    for port_z, label in [(EXT_FILL_1_H, f"F1: {EXT_FILL_1_H}mm"),
-                           (EXT_FILL_2_H, f"F2: {EXT_FILL_2_H}mm"),
-                           (EXT_DRAIN_3_H, f"D3: {EXT_DRAIN_3_H}mm"),
-                           (EXT_DRAIN_4_H, f"D4: {EXT_DRAIN_4_H}mm")]:
+    for port_z, label in [(EXT_FILL_1_H, f"X1: {EXT_FILL_1_H}mm"),
+                           (EXT_DRAIN_3_H, f"X3: {EXT_DRAIN_3_H}mm"),
+                           (EXT_DRAIN_4_H, f"X4: {EXT_DRAIN_4_H}mm")]:
         draw_dim_v(ax, sx(dim_yd), sy(0), sy(port_z),
                    label, offset=sx(10), fs=5.5, right=True, font=FONT)
         dim_yd += 50
@@ -2432,17 +2414,18 @@ def sheet6():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
-        "1. View from inside container looking at sealed end wall. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions only).",
+        "1. View from inside container looking at sealed end wall. All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions and cross-connect).",
         "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
-        "3. Fill caps (DN150) offset ~250mm from valve face toward corridor. F1/F2 gravity feed above IBC tops.",
+        "3. X1 fill cap (DN150) offset ~250mm from valve face toward corridor. Single fill line — IBC-2 levels via 2\" cross-connect.",
         "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",
-        "5. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
-        "6. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
-        "7. D3 at Z=400mm / D4 at Z=200mm: P-05 and P-03 drain pumps evacuate IBCs through bulkhead ports at disposal.",
-        "8. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
-        "9. Check valves CV1–CV4 (1\" NPT spring check) on all four bulkhead lines — prevents backflow through bulkhead unions.",
-        "10. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
-        "11. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
+        "5. 2\" cross-connect between IBC-1 and IBC-2 at valve height — always open, self-leveling. No valve.",
+        "6. Blue outflow: IBC-1 valve → VB1 → tee ← VB2 ← IBC-2 valve; after tee → VB3 → P-01 → spray bar.",
+        "7. Ball valves: Banjo V100FP 1\" polypropylene full-port, quarter-turn. All hand-operated.",
+        "8. X3 at Z=400mm / X4 at Z=200mm: P-05 and P-03 drain pumps evacuate IBCs through bulkhead ports at disposal.",
+        "9. 90° elbows (Banjo LE100) at all bends. Flanges at all bulkhead and IBC connections.",
+        "10. Check valves CV1/CV3/CV4 (1\" NPT spring check) on all three bulkhead lines — prevents backflow through bulkhead unions.",
+        "11. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
+        "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 425), spacing=sy(22),
                fs=6, font=FONT, width=5500)

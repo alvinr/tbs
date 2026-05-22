@@ -376,8 +376,8 @@ notes = [
     f"4. Travel: {SPRAY_BAR_TRAVEL}mm in Yd. Tray rim walls guide laterally.",
     "5. Both ends capped; hose connects at one end. Right carriage mirrors left.",
 ]
-draw_notes(ax, notes, sx(X_LO + 20), sz(Z_HI - 5), spacing=10 / V_SC,
-           fs=7, font=FONT, width=155 / H_SC)
+draw_notes(ax, notes, sx(X_LO + 250), sz(Z_HI - 25), spacing=5 / V_SC,
+           fs=7, font=FONT, width=455 / H_SC)
 
 ax.text(sx((X_LO + X_HI) / 2), sz(Z_HI - 5),
         "GANTRY ELEVATION — VIEW ALONG Yd (LEFT CARRIAGE)",
@@ -848,8 +848,8 @@ r_notes = [
     "3. Pole clips to beam top via SS U-bolt. Detaches for storage.",
     "4. Hose coils at pinhole wall; extends as beam travels toward far rim.",
 ]
-draw_notes(ax2, r_notes, dy(R_YD_LO + 20), dz(R_Z_HI - 120), spacing=40 / SC2_V,
-           fs=5.5, font=FONT, width=700 / SC2_H)
+draw_notes(ax2, r_notes, dy(R_YD_LO + 400), dz(R_Z_HI - 120), spacing=30 / SC2_V,
+           fs=5.5, font=FONT, width=350 / SC2_H)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

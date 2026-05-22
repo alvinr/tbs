@@ -1539,9 +1539,9 @@ ax_e.axis("off")
 
 SC_E = 1.5
 
-E_YD_LO = -60
-E_YD_HI = 90
-E_Z_LO = -10
+E_YD_LO = -130
+E_YD_HI = 140
+E_Z_LO = -20
 E_Z_HI = 175
 
 ax_e.set_xlim(E_YD_LO / SC_E, E_YD_HI / SC_E)
@@ -1594,6 +1594,53 @@ ax_e.text(ey(e_beam_ctr), ez(e_beam_bot + BEAM_W / 2),
           "SHS +\nPVC",
           ha="center", va="center", fontsize=4, color=C_FRAME,
           bbox=_bbox_e, **FONT, zorder=15)
+
+# ── Processing tray floor and wheels ─────────────────────────────────
+# Map real Z to Detail E Z: offset by BEAM_Z_BOT (beam bottom = 0 here)
+tray_z_e = TRAY_FLOOR_Z - BEAM_Z_BOT              # = 2 - 10 = -8
+axle_z_e = WHEEL_AXLE_Z - BEAM_Z_BOT              # = 27 - 10 = 17
+
+# Tray floor
+ax_e.plot([ey(E_YD_LO + 5), ey(E_YD_HI - 5)], [ez(tray_z_e), ez(tray_z_e)],
+          color=C_OUT, lw=1.5, zorder=2)
+ax_e.add_patch(Rectangle((ey(E_YD_LO + 5), ez(tray_z_e - 6)),
+                           (E_YD_HI - E_YD_LO - 10) / SC_E, 6 / SC_E,
+                           fc=C_TRAY, ec=C_OUT, lw=0.5, hatch="...", zorder=1))
+ax_e.text(ey(E_YD_HI - 10), ez(tray_z_e - 2),
+          "TRAY FLOOR", ha="right", va="top",
+          fontsize=4, color=C_DIM, style="italic", bbox=_bbox_e, **FONT, zorder=15)
+
+# Wheels (2× at ±WHEEL_SPACING_YD/2 from beam center)
+for w_sign in [-1, 1]:
+    w_yd = w_sign * WHEEL_SPACING_YD / 2
+    ax_e.add_patch(Circle((ey(w_yd), ez(axle_z_e)),
+                             WHEEL_DIA / 2 / SC_E,
+                             fc=C_NYLON, ec=C_WHEEL, lw=1.5, zorder=3))
+    ax_e.add_patch(Circle((ey(w_yd), ez(axle_z_e)),
+                             2 / SC_E, fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=3.5))
+    # Fork brackets (thin vertical lines straddling wheel)
+    for off in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        fork_top_e = axle_z_e + 6
+        fork_bot_e = axle_z_e - WHEEL_DIA / 2 + 4
+        ax_e.plot([ey(w_yd + off), ey(w_yd + off)],
+                  [ez(fork_top_e), ez(fork_bot_e)],
+                  color=C_FRAME, lw=0.8, zorder=3.5)
+    # Axle pin
+    ax_e.plot([ey(w_yd - WHEEL_WIDTH / 2 - 4), ey(w_yd + WHEEL_WIDTH / 2 + 4)],
+              [ez(axle_z_e), ez(axle_z_e)],
+              color=C_FRAME, lw=0.5, zorder=3.5)
+
+# L-bracket arm spanning both wheels
+brk_half_e = WHEEL_SPACING_YD / 2 + 18
+brk_t_e = 5
+ax_e.add_patch(Rectangle((ey(-brk_half_e), ez(axle_z_e - brk_t_e / 2)),
+                           (2 * brk_half_e) / SC_E, brk_t_e / SC_E,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=4))
+
+leader(ax_e, ey(-WHEEL_SPACING_YD / 2 - WHEEL_DIA / 2), ez(axle_z_e),
+       ey(E_YD_LO + 10), ez(axle_z_e - 10),
+       f"Ø{WHEEL_DIA}mm WHEELS\n+ L-BRACKET",
+       fs=4.5, color=C_WHEEL, font=FONT, zorder=20, bbox=_bbox_e)
 
 # ── Ball joint on beam top face ───────────────────────────────────────
 BALL_DIA = 20       # ball diameter (mm)

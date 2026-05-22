@@ -87,9 +87,10 @@ WALL_T = 3
 # SHEET 1
 # ═════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(22, 14))
+fig = plt.figure(figsize=(22, 17))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(1, 2, figure=fig, width_ratios=[1.3, 1], wspace=0.06)
+gs = GridSpec(2, 2, figure=fig, width_ratios=[1.3, 1], height_ratios=[3, 1],
+              wspace=0.06, hspace=0.10)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LEFT PANEL — X-Z elevation looking along Yd, left carriage area
@@ -386,6 +387,179 @@ title_block(ax, "SHEET 1 OF 1",
             subtitle="GANTRY ELEVATION — VIEW ALONG Yd (LEFT CARRIAGE)",
             scale_note="H 1:6 / V 1:1.5 (4× VERT EXAG) — ALL DIMS IN mm",
             height=0.04)
+
+# ── Detail callout circle on main view ────────────────────────────────────
+cap_cx = beam_x_start - cap_t / 2
+cap_cz = BEAM_Z_BOT + BEAM_W / 2
+ax.add_patch(mpatches.Ellipse((sx(cap_cx), sz(cap_cz)),
+                               80 / H_SC, 80 / V_SC,
+                               fc="none", ec="#CC0000", lw=1.5, ls="--", zorder=20))
+ax.text(sx(cap_cx), sz(cap_cz - 50),
+        "DETAIL A", ha="center", va="top", fontsize=8, color="#CC0000",
+        fontweight="bold", **FONT, zorder=20)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BOTTOM-LEFT PANEL — Detail A: End cap water connection
+# Longitudinal section through beam center at end cap, scale 2:1.
+# X: along beam axis, - = outside (hose side), + = inside (bore/water)
+# Y: perpendicular to beam axis, 0 = beam centerline
+#
+# Assembly (outside → inside):
+#   flex hose → clamp → barb → hex → boss (NPT tapped) → end cap → SHS bore
+# Boss provides 15mm thread engagement for 1/2" NPT (cap alone is too thin).
+# ─────────────────────────────────────────────────────────────────────────────
+ax_d = fig.add_subplot(gs[1, 0])
+ax_d.set_facecolor(C_BG)
+ax_d.axis("off")
+
+d_xl, d_xr = -44, 50
+d_yb, d_yt = -26, 26
+ax_d.set_xlim(d_xl, d_xr)
+ax_d.set_ylim(d_yb, d_yt)
+
+ax_d.text((d_xl + d_xr) / 2, d_yt - 1,
+          "DETAIL A — END CAP WATER CONNECTION",
+          ha="center", va="top", fontsize=8, color="#CC0000",
+          fontweight="bold", **FONT, zorder=20)
+ax_d.text((d_xl + d_xr) / 2, d_yt - 5,
+          "(LONGITUDINAL SECTION THROUGH BEAM CENTER — SCALE 2:1)",
+          ha="center", va="top", fontsize=5, color=C_DIM,
+          **FONT, zorder=20)
+
+C_BRASS = "#C0A860"
+C_WASHER = "#5A3020"
+
+# ── Water in bore (right of cap, between SHS walls) ──────────────────────
+ax_d.add_patch(Rectangle((20, -17), d_xr - 20, 34,
+               fc=C_WATER, ec="none", alpha=0.15, zorder=1))
+
+# ── SHS top wall — cut section, hatched ──────────────────────────────────
+ax_d.add_patch(Rectangle((20, 17), d_xr - 20, 3,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+
+# ── SHS bottom wall — cut section, hatched ───────────────────────────────
+ax_d.add_patch(Rectangle((20, -20), d_xr - 20, 3,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+
+# ── End cap plate (X=15–20, full SHS height except fitting hole) ─────────
+ax_d.add_patch(Rectangle((15, 10.5), 5, 9.5,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, hatch="///", zorder=4))
+ax_d.add_patch(Rectangle((15, -20), 5, 9.5,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, hatch="///", zorder=4))
+
+# ── Boss welded to outside of cap (15mm deep, 30mm OD → Y=±15) ──────────
+ax_d.add_patch(Rectangle((0, 10.5), 15, 4.5,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+ax_d.add_patch(Rectangle((0, -15), 15, 4.5,
+               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+
+# Weld symbols at boss-to-cap joint
+for wy in [15, -15]:
+    ax_d.plot([14.5, 15.5], [wy - 1.5, wy + 1.5],
+              color=C_FRAME, lw=1.2, zorder=6)
+    ax_d.plot([14.5, 15.5], [wy + 1.5, wy - 1.5],
+              color=C_FRAME, lw=1.2, zorder=6)
+
+# ── Fitting hex shoulder (X=-3 to 0, seats against boss face) ────────────
+ax_d.add_patch(Rectangle((-3, -12), 3, 24,
+               fc=C_BRASS, ec=C_FRAME, lw=1.2, zorder=5))
+
+# ── Fitting threaded body through boss+cap (X=0 to 20) ──────────────────
+ax_d.add_patch(Rectangle((0, 6.5), 20, 4,
+               fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
+ax_d.add_patch(Rectangle((0, -10.5), 20, 4,
+               fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
+
+# ── NPT thread crests (zigzag on fitting OD) ────────────────────────────
+for i in range(10):
+    tx = 0.5 + i * 2.0
+    if tx + 2.0 > 20:
+        break
+    ax_d.plot([tx, tx + 1.0, tx + 2.0], [10.5, 11.8, 10.5],
+              color=C_FRAME, lw=0.6, zorder=6)
+    ax_d.plot([tx, tx + 1.0, tx + 2.0], [-10.5, -11.8, -10.5],
+              color=C_FRAME, lw=0.6, zorder=6)
+
+# ── PTFE tape on threads (thin white band) ───────────────────────────────
+ax_d.plot([1, 19], [11.0, 11.0], color="white", lw=1.5, alpha=0.7, zorder=5.8)
+ax_d.plot([1, 19], [-11.0, -11.0], color="white", lw=1.5, alpha=0.7, zorder=5.8)
+
+# ── Fitting through-bore (water path, 13mm ID → Y=±6.5) ─────────────────
+ax_d.add_patch(Rectangle((-3, -6.5), 25, 13,
+               fc=C_WATER, ec="none", alpha=0.12, zorder=5.5))
+
+# ── Fitting tip protrusion into bore (X=20–22) ──────────────────────────
+ax_d.add_patch(Rectangle((20, -8), 2, 16,
+               fc=C_BRASS, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=5))
+
+# ── Hose barb: stepped profile extending from hex (brass) ───────────────
+for bx, by, bw, bh in [(-8, -7, 5, 14), (-14, -6.5, 6, 13), (-21, -6, 7, 12)]:
+    ax_d.add_patch(Rectangle((bx, by), bw, bh,
+                   fc=C_BRASS, ec=C_FRAME, lw=0.7, zorder=5))
+
+# Barb through-bore
+ax_d.add_patch(Rectangle((-21, -4.5), 18, 9,
+               fc=C_WATER, ec="none", alpha=0.08, zorder=5.5))
+
+# ── Flex hose over barb (1/2" ID ≈ 13mm, 3mm wall → 19mm OD) ────────────
+ax_d.add_patch(Rectangle((-40, 6), 32, 3.5,
+               fc=C_HOSE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=4))
+ax_d.add_patch(Rectangle((-40, -9.5), 32, 3.5,
+               fc=C_HOSE, ec=C_FRAME, lw=0.8, alpha=0.5, zorder=4))
+ax_d.plot([-40, -40], [-9.5, 9.5], color=C_FRAME, lw=0.8, zorder=4)
+
+# ── Worm-drive hose clamp ────────────────────────────────────────────────
+clamp_x, clamp_w = -26, 6
+ax_d.add_patch(Rectangle((clamp_x, -10.5), clamp_w, 21,
+               fc="none", ec="#666666", lw=2.0, zorder=6))
+ax_d.add_patch(Rectangle((clamp_x + 1.5, 10.5), clamp_w - 3, 2,
+               fc="#A0A0A8", ec=C_FRAME, lw=0.5, zorder=6))
+
+# ── Flow direction arrow ─────────────────────────────────────────────────
+ax_d.annotate("", xy=(d_xr - 3, 0), xytext=(d_xr - 12, 0),
+              arrowprops=dict(arrowstyle="-|>", color=C_WATER, lw=2.0),
+              zorder=15)
+ax_d.text(d_xr - 7, 3, "WATER", ha="center", va="bottom",
+          fontsize=5, color=C_WATER, fontweight="bold", **FONT, zorder=15)
+
+# ── Labels ────────────────────────────────────────────────────────────────
+leader(ax_d, 7.5, 15, -8, d_yt - 9,
+       "6061-T6 AL BOSS\n(TIG WELDED TO CAP,\n1/2\" NPT TAPPED)",
+       fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+leader(ax_d, 17.5, 15, 35, d_yt - 9,
+       "5mm AL END CAP\n(TIG WELDED TO SHS)",
+       fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+leader(ax_d, -5, -12, -15, d_yb + 4,
+       "1/2\" NPT BRASS\nHOSE-BARB FITTING",
+       fs=5, color="#8B6914", font=FONT, zorder=20)
+
+ax_d.text(-35, 12, "1/2\" REINFORCED\nPVC FLEX HOSE", ha="center", va="bottom",
+          fontsize=5, color=C_HOSE, **FONT, zorder=20)
+
+ax_d.text(clamp_x + clamp_w / 2, 15, "SS WORM-DRIVE\nHOSE CLAMP",
+          ha="center", va="bottom", fontsize=4.5, color="#666666",
+          **FONT, zorder=20)
+
+ax_d.text(10, 13.5, "PTFE TAPE\nON THREADS",
+          ha="center", va="bottom", fontsize=4.5, color="#999999",
+          style="italic", **FONT, zorder=20)
+
+# ── Dimensions ────────────────────────────────────────────────────────────
+draw_dim_h(ax_d, 0, 20, d_yb + 4,
+           "20mm (15mm BOSS + 5mm CAP)",
+           offset=3, fs=5, font=FONT)
+
+draw_dim_v(ax_d, d_xr - 8, 17, 20,
+           "3mm", offset=3, fs=4.5, font=FONT, right=True)
+
+draw_dim_v(ax_d, d_xr - 3, -17, 17,
+           "34mm\nBORE", offset=4, fs=5, font=FONT, right=True)
+
+draw_dim_v(ax_d, d_xl + 6, -9.5, 9.5,
+           "19mm\nHOSE OD", offset=4, fs=4.5, font=FONT)
 
 
 # ─────────────────────────────────────────────────────────────────────────────

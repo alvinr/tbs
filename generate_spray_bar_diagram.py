@@ -8,12 +8,13 @@ Spray bar assembly detail for TBS-001 processing tray wash system.
 Sheet 1 — Gantry spray bar:
   Left panel:  X-Z elevation looking along Yd (left carriage area).
                Shows container wall, processing tray, walkway grating,
-               wheel carriage under walkway, beam/spray-pipe extending into
-               open area, BV-02, flex hose.  Vertical exaggerated 4×.
-  Right panel: Yd-Z cross-section looking along X (one carriage end view).
-               Shows both wheels, carriage plate, beam/spray-pipe (SHS with
-               water fill and spray holes), walkway grating above.
-               Uniform 1:2 scale.
+               wheel carriage with fork brackets under walkway, beam/spray-
+               pipe with water connection detail, BV-02, flex hose.
+               Vertical exaggerated 4×.
+  Right panel: Yd-Z cross-section (operator view) looking along X.
+               Shows processing tray, beam/spray pipe in open area,
+               near walkway with operator figure, telescoping push pole
+               with clip attachment.  Non-uniform scale (schematic).
 
 Output:
   diagrams/spray-bar-sheet1.png
@@ -25,15 +26,14 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle, Circle
+from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
 from matplotlib.gridspec import GridSpec
 
 from tbs_constants import (
     svg_path,
     C_OUT, C_CL, C_DIM, C_ALUM,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W,
-    PROC_TRAY_D,
-    PROC_TRAY_RIM,
+    PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_LEFT_X,
     PROC_OPEN_X_L, PROC_OPEN_X_R,
@@ -56,43 +56,40 @@ C_FRAME  = "#1A1A1A"
 C_WATER  = "#80C0E0"
 C_WHEEL  = "#606060"
 C_NYLON  = "#E8E0D0"
+C_OPER   = "#555555"
 FONT     = dict(family="monospace")
 
-# ── Gantry carriage geometry (local — not yet in tbs_constants) ──────────────
-WHEEL_DIA = 50         # 2" nylon wheel — matches tray rim height
-WHEEL_WIDTH = 20       # wheel width (mm)
+# ── Gantry carriage geometry ─────────────────────────────────────────────────
+WHEEL_DIA = 50
+WHEEL_WIDTH = 20
 N_WHEELS_PER_SIDE = 2
-WHEEL_SPACING_YD = 200 # spacing between wheels in Yd direction (mm)
-TRAY_FLOOR_Z = 2       # tray sheet metal on floor (mm)
+WHEEL_SPACING_YD = 200
+TRAY_FLOOR_Z = 2
 
 WHEEL_AXLE_Z = TRAY_FLOOR_Z + WHEEL_DIA / 2          # = 27mm
-
-# L-bracket drops beam below axle for grating clearance.
-# Target: ~25mm gap between beam top and grate bottom (75mm).
-BRACKET_DROP = 17      # mm below axle centerline to beam bottom
+BRACKET_DROP = 17
 BEAM_Z_BOT = WHEEL_AXLE_Z - BRACKET_DROP              # = 10mm
-BEAM_Z_TOP = BEAM_Z_BOT + SPRAY_BAR_BEAM              # = 72mm
+BEAM_Z_TOP = BEAM_Z_BOT + SPRAY_BAR_BEAM              # = 50mm
 BEAM_W = SPRAY_BAR_BEAM        # 40mm
 BEAM_T = SPRAY_BAR_BEAM_T      # 3mm
-BEAM_BORE = BEAM_W - 2 * BEAM_T  # 34mm internal
+BEAM_BORE = BEAM_W - 2 * BEAM_T  # 34mm
 
 GRATE_Z_BOT = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
 GRATE_Z_TOP = WALKWAY_H                     # 100mm
 
 BEAM_SPAN = PROC_OPEN_X_R - PROC_OPEN_X_L  # 3,859mm
 
-# Carriage X position (center of walkway width)
 CARRIAGE_X_L = WALKWAY_LEFT_X + WALKWAY_W / 2    # ≈ 320mm
 
-WALL_T = 3  # corrugated wall thickness (visual)
+WALL_T = 3
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 1
 # ═════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(22, 12))
+fig = plt.figure(figsize=(22, 14))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(1, 2, figure=fig, width_ratios=[1.6, 1], wspace=0.08)
+gs = GridSpec(1, 2, figure=fig, width_ratios=[1.3, 1], wspace=0.06)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LEFT PANEL — X-Z elevation looking along Yd, left carriage area
@@ -102,8 +99,8 @@ ax = fig.add_subplot(gs[0, 0])
 ax.set_facecolor(C_BG)
 ax.axis("off")
 
-H_SC = 6.0    # horizontal scale (X dimension)
-V_SC = 1.5    # vertical scale (Z dimension) — 4× exaggeration
+H_SC = 6.0
+V_SC = 1.5
 
 def sx(x_mm):
     return 1.0 + x_mm / H_SC
@@ -191,9 +188,22 @@ ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
 ax.add_patch(Circle((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
                       2 / V_SC, fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=7.5))
 
+# Fork brackets — vertical plates straddling the wheel (item 3: show attachment)
+fork_drop_top = WHEEL_AXLE_Z + 8
+fork_drop_bot = TRAY_FLOOR_Z + 5
+for fork_offset in [-15, 15]:
+    fx = carriage_cx + fork_offset
+    ax.plot([sx(fx), sx(fx)], [sz(fork_drop_bot), sz(fork_drop_top)],
+            color=C_FRAME, lw=1.5, zorder=6.5)
+# Axle pin through fork and wheel
+ax.plot([sx(carriage_cx - 18), sx(carriage_cx + 18)],
+        [sz(WHEEL_AXLE_Z), sz(WHEEL_AXLE_Z)],
+        color=C_FRAME, lw=1.0, zorder=7.5)
+
 # L-bracket: horizontal arm at axle height, vertical drop to beam
+# Item 1: shortened carriage boss
 brk_t = 5   # bracket thickness (visual)
-brk_x_l = carriage_cx - 50
+brk_x_l = carriage_cx - 20   # shortened from -50
 brk_x_r = PROC_OPEN_X_L + 5
 
 # Horizontal arm (at axle height, under walkway)
@@ -207,7 +217,7 @@ ax.add_patch(Rectangle((sx(brk_x_r - brk_t), sz(BEAM_Z_BOT)),
 
 leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2),
        sx(carriage_cx - 80), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
-       f"Ø{WHEEL_DIA}mm NYLON WHEEL\n(2 PER CARRIAGE\nSPACED {WHEEL_SPACING_YD}mm IN Yd)",
+       f"Ø{WHEEL_DIA}mm NYLON WHEEL\n(FORK BRACKET + 10mm\nAXLE PIN, 2 PER SIDE)",
        fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
 # ── Beam / spray pipe ─────────────────────────────────────────────────────
@@ -244,11 +254,9 @@ n_drops = 6
 for i in range(n_drops):
     frac = (i + 0.5) / n_drops
     drop_x = beam_x_start + 40 + (beam_x_end - beam_x_start - 80) * frac
-    # Spray hole marker on beam bottom
     ax.plot([sx(drop_x - 3), sx(drop_x + 3)],
             [sz(BEAM_Z_BOT), sz(BEAM_Z_BOT)],
             color=C_WATER, lw=2.0, zorder=10)
-    # Water stream
     ax.plot([sx(drop_x), sx(drop_x)],
             [sz(BEAM_Z_BOT - 1), sz(TRAY_FLOOR_Z + 3)],
             color=C_WATER, lw=0.8, alpha=0.5, zorder=6)
@@ -260,14 +268,30 @@ ax.add_patch(Rectangle((sx(beam_x_start), sz(TRAY_FLOOR_Z)),
                          (beam_x_end - beam_x_start) / H_SC, 3 / V_SC,
                          fc=C_WATER, ec="none", alpha=0.12, zorder=4.5))
 
-# ── End caps (visible at beam left end — aluminum plate) ──────────────────
+# ── End cap with bulkhead fitting (item 2: show water connection) ────────
 cap_t = 5
 ax.add_patch(Rectangle((sx(beam_x_start - cap_t), sz(BEAM_Z_BOT)),
                          cap_t / H_SC, BEAM_W / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=9.5))
-ax.text(sx(beam_x_start - cap_t - 3), sz(BEAM_Z_BOT + BEAM_W / 2),
-        "END\nCAP", ha="right", va="center",
-        fontsize=4, color=C_FRAME, **FONT, zorder=15)
+
+# Bulkhead fitting protruding from end cap
+fitting_w = 12
+fitting_h = 15
+fitting_x = beam_x_start - cap_t - fitting_w
+fitting_z = BEAM_Z_BOT + BEAM_W / 2 - fitting_h / 2
+ax.add_patch(Rectangle((sx(fitting_x), sz(fitting_z)),
+                         fitting_w / H_SC, fitting_h / V_SC,
+                         fc="#C0A860", ec=C_FRAME, lw=1.0, zorder=9.5))
+# Hose barb adapter
+barb_w = 8
+ax.add_patch(Rectangle((sx(fitting_x - barb_w), sz(fitting_z + 3)),
+                         barb_w / H_SC, (fitting_h - 6) / V_SC,
+                         fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=9.5))
+
+leader(ax, sx(fitting_x), sz(fitting_z),
+       sx(fitting_x - 40), sz(fitting_z - 25),
+       "1/2\" NPT BULKHEAD\n+ HOSE BARB",
+       fs=5, color=C_FRAME, font=FONT, zorder=15)
 
 # ── BV-02 on container wall ──────────────────────────────────────────────
 bv_z = BV02_Z  # 150mm
@@ -295,18 +319,21 @@ ax.add_patch(Rectangle((sx(-pipe_w / 4), sz(pipe_z_bot)),
 # ── Flex hose from pipe to beam feed end ─────────────────────────────────
 hose_start_x = 10
 hose_start_z = pipe_z_bot
-hose_end_x = beam_x_start - cap_t
+hose_end_x = fitting_x - barb_w
 hose_end_z = BEAM_Z_BOT + BEAM_W / 2
 
-n_pts = 60
-hose_xs = np.linspace(hose_start_x, hose_end_x, n_pts)
-hose_zs = np.linspace(hose_start_z, hose_end_z, n_pts)
-coil_amp = 10
-coil_freq = 5
-t = np.linspace(0, coil_freq * 2 * np.pi, n_pts)
-hose_zs_coil = hose_zs + coil_amp * np.sin(t)
+n_pts = 80
+ht = np.linspace(0, 1, n_pts)
+P0 = np.array([hose_start_x, hose_start_z])
+P1 = np.array([hose_start_x + 80, hose_end_z - 5])
+P2 = np.array([hose_end_x - 120, hose_end_z - 5])
+P3 = np.array([hose_end_x, hose_end_z])
+hose_xs = (1-ht)**3*P0[0] + 3*(1-ht)**2*ht*P1[0] + 3*(1-ht)*ht**2*P2[0] + ht**3*P3[0]
+hose_zs = (1-ht)**3*P0[1] + 3*(1-ht)**2*ht*P1[1] + 3*(1-ht)*ht**2*P2[1] + ht**3*P3[1]
+envelope = np.clip(np.minimum(ht, 1 - ht) * 4, 0, 1)
+hose_zs += 1.5 * np.sin(np.linspace(0, 10 * np.pi, n_pts)) * envelope
 
-ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs_coil],
+ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs],
         color=C_HOSE, lw=2.5, alpha=0.7, zorder=11)
 
 ax.text(sx(hose_start_x + 100), sz(hose_start_z + 20),
@@ -331,7 +358,6 @@ draw_dim_v(ax, sx(beam_x_start + 600), sz(0), sz(BEAM_Z_TOP),
            "%.0fmm\nBEAM TOP" % BEAM_Z_TOP,
            offset=8 / H_SC, fs=5, font=FONT, right=True)
 
-# Gap between beam top and grate bottom
 gap_to_grate = GRATE_Z_BOT - BEAM_Z_TOP
 draw_dim_v(ax, sx(wk_r - 20), sz(BEAM_Z_TOP), sz(GRATE_Z_BOT),
            f"{gap_to_grate:.0f}mm\nCLR", offset=8 / H_SC, fs=4.5, font=FONT)
@@ -343,7 +369,7 @@ draw_dim_v(ax, sx(carriage_cx + 50), sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z + WHEEL_D
 notes = [
     "NOTES:",
     f"1. 40×40×3mm AL SHS beam doubles as spray pipe (water through bore).",
-    f"2. Carriages (2× Ø{WHEEL_DIA}mm nylon wheels) ride on tray floor under grating.",
+    f"2. Carriages (2× Ø{WHEEL_DIA}mm wheels) ride on tray floor under grating.",
     f"3. Beam spans {BEAM_SPAN}mm (X). Coverage: X={PROC_OPEN_X_L}–{PROC_OPEN_X_R}mm.",
     f"4. Travel: {SPRAY_BAR_TRAVEL}mm in Yd. Tray rim walls guide laterally.",
     "5. Both ends capped; hose connects at one end. Right carriage mirrors left.",
@@ -359,178 +385,297 @@ title_block(ax, "SHEET 1 OF 1",
             drawing_title="SPRAY BAR ASSEMBLY",
             subtitle="GANTRY ELEVATION — VIEW ALONG Yd (LEFT CARRIAGE)",
             scale_note="H 1:6 / V 1:1.5 (4× VERT EXAG) — ALL DIMS IN mm",
-            height=0.05)
+            height=0.04)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RIGHT PANEL — Yd-Z cross-section looking along X (carriage end view)
-# Uniform 1:2 scale
+# RIGHT PANEL — Yd-Z cross section (operator view)
+# Looking along X.  Schematic — non-uniform H/V scale.
+# Shows: tray, beam, near walkway, operator, telescoping pole.
 # ─────────────────────────────────────────────────────────────────────────────
 ax2 = fig.add_subplot(gs[0, 1])
 ax2.set_facecolor(C_BG)
-ax2.set_aspect("equal")
 ax2.axis("off")
 
-SC2 = 2.0
+SC2_H = 5.0    # Yd horizontal scale
+SC2_V = 10.0   # Z vertical scale
 
 def dy(yd_mm):
-    return 3.0 + yd_mm / SC2
+    return 3.0 + yd_mm / SC2_H
 
 def dz(z_mm):
-    return 2.0 + z_mm / SC2
+    return 2.0 + z_mm / SC2_V
 
-carriage_yd_center = 200
-wheel1_yd = carriage_yd_center - WHEEL_SPACING_YD / 2  # 100mm
-wheel2_yd = carriage_yd_center + WHEEL_SPACING_YD / 2  # 300mm
+# View range
+R_YD_LO = -60
+R_YD_HI = 800
+R_Z_LO = -30
+R_Z_HI = 1900
 
-DET_YD_LO = wheel1_yd - 100
-DET_YD_HI = wheel2_yd + 120
-DET_Z_LO = -25
-DET_Z_HI = GRATE_Z_TOP + 50
+ax2.set_xlim(dy(R_YD_LO), dy(R_YD_HI))
+ax2.set_ylim(dz(R_Z_LO), dz(R_Z_HI))
 
-ax2.set_xlim(dy(DET_YD_LO), dy(DET_YD_HI))
-ax2.set_ylim(dz(DET_Z_LO), dz(DET_Z_HI))
-
-# Detail title
-ax2.text(dy((DET_YD_LO + DET_YD_HI) / 2), dz(DET_Z_HI + 5),
-         "DETAIL A — CARRIAGE END VIEW",
-         ha="center", va="bottom", fontsize=9, color=C_FRAME,
+# Panel title
+ax2.text(dy((R_YD_LO + R_YD_HI) / 2), dz(R_Z_HI - 10),
+         "CROSS SECTION — OPERATOR VIEW",
+         ha="center", va="top", fontsize=9, color=C_FRAME,
          fontweight="bold", **FONT, zorder=15)
-ax2.text(dy((DET_YD_LO + DET_YD_HI) / 2), dz(DET_Z_HI - 5),
-         "(LOOKING ALONG X — SECTION THROUGH LEFT WALKWAY)",
+ax2.text(dy((R_YD_LO + R_YD_HI) / 2), dz(R_Z_HI - 70),
+         "(LOOKING ALONG X — SCHEMATIC, NOT TO SCALE)",
          ha="center", va="top", fontsize=5, color=C_DIM,
          **FONT, zorder=15)
-ax2.text(dy((DET_YD_LO + DET_YD_HI) / 2), dz(DET_Z_HI - 15),
-         "SCALE 1:2",
-         ha="center", va="top", fontsize=5.5, color=C_DIM,
-         **FONT, zorder=15)
+
+# ── Container pinhole wall (Yd=0) ────────────────────────────────────────
+wall_w = 40  # visual wall thickness
+ax2.add_patch(Rectangle((dy(-wall_w), dz(R_Z_LO)),
+                          wall_w / SC2_H, (R_Z_HI - R_Z_LO) / SC2_V,
+                          fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=2))
+ax2.plot([dy(0), dy(0)], [dz(R_Z_LO), dz(R_Z_HI)],
+         color=C_OUT, lw=2.0, zorder=3)
 
 # ── Container floor ────────────────────────────────────────────────────────
-ax2.plot([dy(DET_YD_LO), dy(DET_YD_HI)], [dz(0), dz(0)],
+ax2.plot([dy(R_YD_LO), dy(R_YD_HI)], [dz(0), dz(0)],
          color=C_OUT, lw=2.0, zorder=3)
-ax2.add_patch(Rectangle((dy(DET_YD_LO), dz(-20)),
-                          (DET_YD_HI - DET_YD_LO) / SC2, 20 / SC2,
+ax2.add_patch(Rectangle((dy(R_YD_LO), dz(-25)),
+                          (R_YD_HI - R_YD_LO) / SC2_H, 25 / SC2_V,
                           fc="#E0E0D8", ec=C_OUT, lw=0.8, hatch="...", zorder=1))
 
-# ── Tray floor ─────────────────────────────────────────────────────────────
-ax2.add_patch(Rectangle((dy(DET_YD_LO + 10), dz(0)),
-                          (DET_YD_HI - DET_YD_LO - 20) / SC2, TRAY_FLOOR_Z / SC2,
+# ── Processing tray floor and near rim ───────────────────────────────────
+tray_yd_start = PROC_TRAY_YD_NEAR  # 80mm
+ax2.add_patch(Rectangle((dy(tray_yd_start), dz(0)),
+                          (R_YD_HI - tray_yd_start) / SC2_H, TRAY_FLOOR_Z / SC2_V,
                           fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
 
-# ── Walkway grating (above) ───────────────────────────────────────────────
-ax2.add_patch(Rectangle((dy(DET_YD_LO + 5), dz(GRATE_Z_BOT)),
-                          (DET_YD_HI - DET_YD_LO - 10) / SC2, WALKWAY_GRATE_T / SC2,
-                          fc=C_GRATE, ec=C_OUT, lw=2.0, zorder=10))
-n_mesh = 8
-for i in range(n_mesh):
-    frac = (i + 0.5) / n_mesh
-    mesh_yd = DET_YD_LO + 5 + (DET_YD_HI - DET_YD_LO - 10) * frac
-    ax2.plot([dy(mesh_yd), dy(mesh_yd)], [dz(GRATE_Z_BOT), dz(GRATE_Z_TOP)],
-             color="#888888", lw=0.5, zorder=10)
+# Near rim (vertical wall at Yd=80)
+ax2.add_patch(Rectangle((dy(tray_yd_start - 3), dz(0)),
+                          6 / SC2_H, PROC_TRAY_RIM / SC2_V,
+                          fc=C_TRAY, ec=C_OUT, lw=1.2, zorder=5))
 
-ax2.text(dy((DET_YD_LO + DET_YD_HI) / 2), dz(GRATE_Z_BOT - 4),
-         f"WALKWAY GRATING ({WALKWAY_GRATE_T}mm)", ha="center", va="top",
-         fontsize=5, color=C_GRATE, **FONT, zorder=12)
+ax2.text(dy(450), dz(TRAY_FLOOR_Z + 15),
+         "PROCESSING TRAY (304 SS)", ha="center", va="bottom",
+         fontsize=5, color=C_DIM, style="italic", **FONT, zorder=10)
 
-# ── Wheels ─────────────────────────────────────────────────────────────────
-for w_yd in [wheel1_yd, wheel2_yd]:
-    ax2.add_patch(Circle((dy(w_yd), dz(WHEEL_AXLE_Z)),
-                           WHEEL_DIA / 2 / SC2,
-                           fc=C_NYLON, ec=C_WHEEL, lw=2.0, zorder=6))
-    ax2.add_patch(Circle((dy(w_yd), dz(WHEEL_AXLE_Z)),
-                           3 / SC2, fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=6.5))
-    ax2.plot([dy(w_yd - WHEEL_WIDTH / 2), dy(w_yd + WHEEL_WIDTH / 2)],
-             [dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z)],
-             color=C_WHEEL, lw=2.0, zorder=5)
+# ── Near walkway grating (Yd=0–300) ──────────────────────────────────────
+wk_yd_l = 0
+wk_yd_r = WALKWAY_W  # 300mm
 
-leader(ax2, dy(wheel1_yd - WHEEL_DIA / 2), dz(WHEEL_AXLE_Z),
-       dy(wheel1_yd - WHEEL_DIA / 2 - 40), dz(WHEEL_AXLE_Z - 15),
-       f"Ø{WHEEL_DIA}mm\nNYLON\nWHEEL",
-       fs=5, color=C_WHEEL, font=FONT, zorder=15)
+ax2.add_patch(Rectangle((dy(wk_yd_l), dz(GRATE_Z_BOT)),
+                          (wk_yd_r - wk_yd_l) / SC2_H, WALKWAY_GRATE_T / SC2_V,
+                          fc=C_GRATE, ec=C_OUT, lw=1.5, zorder=8))
+for frac in np.linspace(0.1, 0.9, 5):
+    gyd = wk_yd_l + (wk_yd_r - wk_yd_l) * frac
+    ax2.plot([dy(gyd), dy(gyd)], [dz(GRATE_Z_BOT), dz(GRATE_Z_TOP)],
+             color="#888888", lw=0.4, zorder=8)
 
-# ── L-bracket (end view) ───────────────────────────────────────────────────
-brk_t2 = 5   # bracket thickness
-plate_yd_l = wheel1_yd - 20
-plate_yd_r = wheel2_yd + 20
+# Support bracket (wall to grating)
+brk_depth_r = 60
+ax2.plot([dy(0), dy(0)], [dz(GRATE_Z_BOT - brk_depth_r), dz(GRATE_Z_BOT)],
+         color=C_FRAME, lw=1.5, zorder=5)
+ax2.plot([dy(0), dy(wk_yd_r)], [dz(GRATE_Z_BOT), dz(GRATE_Z_BOT)],
+         color=C_FRAME, lw=1.2, zorder=5)
+ax2.plot([dy(0), dy(wk_yd_r)],
+         [dz(GRATE_Z_BOT - brk_depth_r), dz(GRATE_Z_BOT)],
+         color=C_FRAME, lw=0.8, ls="--", zorder=5)
 
-# Horizontal arm at axle height (connects wheels)
-ax2.add_patch(Rectangle((dy(plate_yd_l), dz(WHEEL_AXLE_Z - brk_t2 / 2)),
-                          (plate_yd_r - plate_yd_l) / SC2, brk_t2 / SC2,
-                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
+ax2.text(dy((wk_yd_l + wk_yd_r) / 2), dz(GRATE_Z_TOP + 20),
+         "NEAR WALKWAY", ha="center", va="bottom",
+         fontsize=5.5, color=C_GRATE, fontweight="bold", **FONT, zorder=10)
 
-# Vertical drop (both sides of beam, dropping from axle height to beam bottom)
-for side_yd in [carriage_yd_center - BEAM_W / 2 - brk_t2,
-                carriage_yd_center + BEAM_W / 2]:
-    ax2.add_patch(Rectangle((dy(side_yd), dz(BEAM_Z_BOT)),
-                              brk_t2 / SC2, (WHEEL_AXLE_Z - BEAM_Z_BOT + brk_t2 / 2) / SC2,
-                              fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, zorder=7))
-
-# Axle fork brackets (drop from horizontal arm to hold wheels)
-for w_yd in [wheel1_yd, wheel2_yd]:
-    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-        ax2.plot([dy(w_yd + offset), dy(w_yd + offset)],
-                 [dz(WHEEL_AXLE_Z + brk_t2 / 2), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 3)],
-                 color=C_FRAME, lw=1.0, zorder=5.5)
-
-leader(ax2, dy(plate_yd_r), dz(WHEEL_AXLE_Z),
-       dy(plate_yd_r + 45), dz(WHEEL_AXLE_Z + 12),
-       "ALUM. L-BRACKET\n(DROPS BEAM\nBELOW AXLE)",
-       fs=5, color=C_FRAME, font=FONT, zorder=15)
-
-# ── Beam / spray pipe cross-section (SHS with water) ─────────────────────
-beam_yd_l = carriage_yd_center - BEAM_W / 2
-beam_yd_r = carriage_yd_center + BEAM_W / 2
+# ── Beam / spray pipe (in open area, just past walkway) ──────────────────
+beam_yd = 450   # beam position (mid-travel example)
+beam_yd_l = beam_yd - BEAM_W / 2
+beam_yd_r = beam_yd + BEAM_W / 2
 
 # Outer SHS
 ax2.add_patch(Rectangle((dy(beam_yd_l), dz(BEAM_Z_BOT)),
-                          BEAM_W / SC2, BEAM_W / SC2,
-                          fc=C_ALUM_FILL, ec=C_FRAME, lw=2.5, zorder=8))
-# Inner bore with water fill
-ax2.add_patch(Rectangle((dy(carriage_yd_center - BEAM_BORE / 2), dz(BEAM_Z_BOT + BEAM_T)),
-                          BEAM_BORE / SC2, BEAM_BORE / SC2,
-                          fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=8.5))
+                          BEAM_W / SC2_H, BEAM_W / SC2_V,
+                          fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=9))
+# Inner bore with water
+ax2.add_patch(Rectangle((dy(beam_yd - BEAM_BORE / 2), dz(BEAM_Z_BOT + BEAM_T)),
+                          BEAM_BORE / SC2_H, BEAM_BORE / SC2_V,
+                          fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=9.5))
 
-ax2.text(dy(carriage_yd_center), dz(BEAM_Z_TOP + 5),
-         f"40×40×3mm\n6061-T6 AL SHS\n(SPRAY PIPE)",
-         ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
-         fontweight="bold", **FONT, zorder=15)
+ax2.text(dy(beam_yd), dz(BEAM_Z_TOP + 15),
+         f"40×40×3mm AL SHS\nSPRAY PIPE", ha="center", va="bottom",
+         fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
-# Spray hole at beam bottom center
-hole_w = 3  # 3mm drill hole
-ax2.add_patch(Rectangle((dy(carriage_yd_center - hole_w / 2), dz(BEAM_Z_BOT - 0.5)),
-                          hole_w / SC2, (BEAM_T + 1) / SC2,
+# Spray hole at bottom
+hole_w = 3
+ax2.add_patch(Rectangle((dy(beam_yd - hole_w / 2), dz(BEAM_Z_BOT - 0.5)),
+                          hole_w / SC2_H, (BEAM_T + 1) / SC2_V,
                           fc=C_WATER, ec=C_FRAME, lw=0.5, zorder=9))
+# Water stream
+for drip_offset in [-30, 0, 30]:
+    drip_yd = beam_yd + drip_offset
+    ax2.plot([dy(drip_yd), dy(drip_yd)],
+             [dz(BEAM_Z_BOT - 1), dz(TRAY_FLOOR_Z + 2)],
+             color=C_WATER, lw=0.8, alpha=0.4, zorder=6)
 
-# Water droplet below hole
-ax2.plot([dy(carriage_yd_center), dy(carriage_yd_center)],
-         [dz(BEAM_Z_BOT - 1), dz(BEAM_Z_BOT - 18)],
-         color=C_WATER, lw=1.2, alpha=0.6, zorder=6)
-ax2.text(dy(carriage_yd_center + 8), dz(BEAM_Z_BOT - 10),
-         f"3mm SPRAY\nHOLE (TYP.\n@{SPRAY_BAR_HOLE_SP}mm c/c)", ha="left", va="center",
-         fontsize=4.5, color=C_WATER, **FONT, zorder=15)
+# Water on tray
+ax2.add_patch(Rectangle((dy(beam_yd - 80), dz(TRAY_FLOOR_Z)),
+                          160 / SC2_H, 3 / SC2_V,
+                          fc=C_WATER, ec="none", alpha=0.15, zorder=4.5))
 
-# ── Detail dimensions ─────────────────────────────────────────────────────
-draw_dim_v(ax2, dy(beam_yd_l - 15), dz(BEAM_Z_BOT), dz(BEAM_Z_TOP),
-           f"{BEAM_W}mm", offset=10 / SC2, fs=5.5, font=FONT)
+ax2.text(dy(beam_yd + 35), dz(BEAM_Z_BOT - 8),
+         f"3mm SPRAY HOLES\n@{SPRAY_BAR_HOLE_SP}mm c/c",
+         ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
-draw_dim_h(ax2, dy(wheel1_yd), dy(wheel2_yd), dz(TRAY_FLOOR_Z + WHEEL_DIA + 8),
-           f"{WHEEL_SPACING_YD}mm", offset=10 / SC2, fs=5.5, font=FONT)
+# ── Operator figure on walkway ───────────────────────────────────────────
+op_yd = 170       # operator center on walkway
+op_foot_z = GRATE_Z_TOP  # 100mm (standing on deck)
+op_height = 1700  # total height (mm)
 
-draw_dim_v(ax2, dy(DET_YD_LO + 12), dz(GRATE_Z_BOT), dz(GRATE_Z_TOP),
-           f"{WALKWAY_GRATE_T}mm", offset=10 / SC2, fs=5, font=FONT)
+# Legs (two lines from feet to hips)
+hip_z = op_foot_z + 850
+ax2.plot([dy(op_yd - 20), dy(op_yd - 8)],
+         [dz(op_foot_z), dz(hip_z)],
+         color=C_OPER, lw=2.5, zorder=11)
+ax2.plot([dy(op_yd + 20), dy(op_yd + 8)],
+         [dz(op_foot_z), dz(hip_z)],
+         color=C_OPER, lw=2.5, zorder=11)
 
-# Clearance: beam top to grate bottom
-clearance = GRATE_Z_BOT - BEAM_Z_TOP
-draw_dim_v(ax2, dy(beam_yd_r + 15), dz(BEAM_Z_TOP), dz(GRATE_Z_BOT),
-           f"{clearance:.0f}mm\nCLR", offset=10 / SC2, fs=5, font=FONT, right=True)
+# Torso (thick line from hips to shoulders)
+shoulder_z = op_foot_z + 1400
+ax2.plot([dy(op_yd), dy(op_yd)],
+         [dz(hip_z), dz(shoulder_z)],
+         color=C_OPER, lw=3.5, zorder=11)
 
-# Beam bottom to tray floor
-draw_dim_v(ax2, dy(beam_yd_l - 30), dz(TRAY_FLOOR_Z), dz(BEAM_Z_BOT),
-           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm", offset=10 / SC2, fs=5, font=FONT)
+# Head (circle)
+head_z = op_foot_z + 1550
+head_r = 70
+ax2.add_patch(Circle((dy(op_yd), dz(head_z)),
+                       head_r / SC2_V,
+                       fc=C_OPER, ec=C_FRAME, lw=1.0, alpha=0.6, zorder=11))
 
-# Wheel diameter
-draw_dim_v(ax2, dy(wheel2_yd + WHEEL_DIA / 2 + 10), dz(TRAY_FLOOR_Z), dz(TRAY_FLOOR_Z + WHEEL_DIA),
-           f"Ø{WHEEL_DIA}mm", offset=10 / SC2, fs=5, font=FONT, right=True)
+# Arms — reaching forward and down toward pole
+hand_yd = op_yd + 60
+hand_z = op_foot_z + 1050
+# Upper arms from shoulders
+ax2.plot([dy(op_yd + 10), dy(hand_yd)],
+         [dz(shoulder_z - 50), dz(hand_z)],
+         color=C_OPER, lw=2.0, zorder=11)
+ax2.plot([dy(op_yd - 5), dy(hand_yd - 10)],
+         [dz(shoulder_z - 50), dz(hand_z + 30)],
+         color=C_OPER, lw=2.0, zorder=11)
+
+# Feet (small rectangles)
+for foot_offset in [-20, 20]:
+    ax2.add_patch(Rectangle((dy(op_yd + foot_offset - 8), dz(op_foot_z - 5)),
+                              20 / SC2_H, 8 / SC2_V,
+                              fc=C_OPER, ec="none", alpha=0.5, zorder=11))
+
+ax2.text(dy(op_yd - 50), dz(head_z + 100),
+         "OPERATOR", ha="center", va="bottom",
+         fontsize=6, color=C_OPER, fontweight="bold", **FONT, zorder=15)
+
+# ── Telescoping push pole (item 4: show attachment) ──────────────────────
+# Pole from operator's hands down to beam center
+pole_top_yd = hand_yd
+pole_top_z = hand_z
+pole_bot_yd = beam_yd
+pole_bot_z = BEAM_Z_BOT + BEAM_W / 2   # beam center
+
+# Draw pole as tapered line (thicker at handle, thinner at beam)
+ax2.plot([dy(pole_top_yd), dy(pole_bot_yd)],
+         [dz(pole_top_z), dz(pole_bot_z)],
+         color="#8B6914", lw=3.0, zorder=10, solid_capstyle="round")
+ax2.plot([dy(pole_top_yd), dy(pole_bot_yd)],
+         [dz(pole_top_z), dz(pole_bot_z)],
+         color="#BFA040", lw=1.5, zorder=10.5)
+
+# Pole clip / U-bolt at beam (item 4)
+clip_size = 18
+ax2.add_patch(Rectangle((dy(beam_yd - clip_size / 2), dz(BEAM_Z_TOP)),
+                          clip_size / SC2_H, clip_size / SC2_V,
+                          fc="none", ec="#8B6914", lw=2.0, zorder=10))
+ax2.add_patch(Rectangle((dy(beam_yd - clip_size / 2 + 2), dz(BEAM_Z_TOP + 2)),
+                          (clip_size - 4) / SC2_H, (clip_size - 4) / SC2_V,
+                          fc="#C0A860", ec="none", alpha=0.5, zorder=10))
+
+leader(ax2, dy(beam_yd + clip_size / 2), dz(BEAM_Z_TOP + clip_size),
+       dy(beam_yd + 120), dz(BEAM_Z_TOP + 80),
+       "U-BOLT POLE CLIP\n(SS, BOLTED TO\nBEAM TOP FACE)",
+       fs=5, color="#8B6914", font=FONT, zorder=15)
+
+# Pole label
+pole_mid_yd = (pole_top_yd + pole_bot_yd) / 2
+pole_mid_z = (pole_top_z + pole_bot_z) / 2
+ax2.text(dy(pole_mid_yd - 50), dz(pole_mid_z),
+         "TELESCOPING\nALUM. POOL\nPOLE (1.2–2.4m)",
+         ha="right", va="center",
+         fontsize=5, color="#8B6914", **FONT, zorder=15)
+
+# ── BV-02 and hose on container wall (water connection context) ──────────
+bv2_yd = 10    # BV-02 near wall, on pipe
+bv2_z = BV02_Z  # 150mm
+bv_sz = 20
+ax2.add_patch(Rectangle((dy(bv2_yd - bv_sz / 2), dz(bv2_z - bv_sz / 2)),
+                          bv_sz / SC2_H, bv_sz / SC2_V,
+                          fc=C_BLUE, ec=C_FRAME, lw=1.2, alpha=0.6, zorder=12))
+ax2.text(dy(bv2_yd), dz(bv2_z + bv_sz),
+         "BV-02", ha="center", va="bottom",
+         fontsize=5, color=C_BLUE, fontweight="bold", **FONT, zorder=15)
+
+# Flex hose from BV-02 along near rim to beam
+hose_n = 60
+ht2 = np.linspace(0, 1, hose_n)
+H0 = np.array([bv2_yd + 20, bv2_z - bv_sz / 2])
+H1 = np.array([tray_yd_start + 40, BEAM_Z_BOT + BEAM_W])
+H2 = np.array([beam_yd - 80, BEAM_Z_BOT + BEAM_W])
+H3 = np.array([beam_yd_l - 10, BEAM_Z_BOT + BEAM_W / 2])
+hose_yd = (1-ht2)**3*H0[0] + 3*(1-ht2)**2*ht2*H1[0] + 3*(1-ht2)*ht2**2*H2[0] + ht2**3*H3[0]
+hose_zz = (1-ht2)**3*H0[1] + 3*(1-ht2)**2*ht2*H1[1] + 3*(1-ht2)*ht2**2*H2[1] + ht2**3*H3[1]
+env2 = np.clip(np.minimum(ht2, 1 - ht2) * 4, 0, 1)
+hose_zz += 1.5 * np.sin(np.linspace(0, 8 * np.pi, hose_n)) * env2
+
+ax2.plot([dy(y) for y in hose_yd], [dz(z) for z in hose_zz],
+         color=C_HOSE, lw=2.0, alpha=0.6, zorder=11)
+ax2.text(dy(200), dz(bv2_z - 20),
+         "1/2\" FLEX HOSE\n(4m COILED)",
+         ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
+
+# ── Carriage wheels shown as ghost (item 3: context for wheel attachment) ─
+# Wheels exist at a different X station (under left/right walkways).
+# Show as dashed outline near the walkway inner edge for context.
+ghost_w_yd = WALKWAY_W - 30   # 270mm — near inner edge of walkway
+ghost_w_z = WHEEL_AXLE_Z
+ax2.add_patch(Circle((dy(ghost_w_yd), dz(ghost_w_z)),
+                       WHEEL_DIA / 2 / SC2_V,
+                       fc="none", ec=C_WHEEL, lw=1.0, ls="--", zorder=6))
+ax2.text(dy(ghost_w_yd), dz(ghost_w_z - WHEEL_DIA / 2 - 15),
+         f"WHEEL (Ø{WHEEL_DIA})\nAT CARRIAGE\n(BEHIND SECTION)",
+         ha="center", va="top", fontsize=4, color=C_WHEEL,
+         style="italic", **FONT, zorder=15)
+
+# ── Dimensions ────────────────────────────────────────────────────────────
+draw_dim_h(ax2, dy(wk_yd_l), dy(wk_yd_r), dz(GRATE_Z_TOP + 50),
+           f"{WALKWAY_W}mm WALKWAY", offset=10 / SC2_V, fs=5.5, font=FONT)
+
+draw_dim_v(ax2, dy(R_YD_HI - 30), dz(0), dz(GRATE_Z_TOP),
+           f"{WALKWAY_H}mm\nDECK HGT",
+           offset=10 / SC2_H, fs=5, font=FONT, right=True)
+
+draw_dim_h(ax2, dy(wk_yd_r), dy(beam_yd), dz(BEAM_Z_TOP + 120),
+           f"{beam_yd - int(wk_yd_r)}mm\n(BEAM TO\nWALKWAY\nEDGE)",
+           offset=10 / SC2_V, fs=4.5, font=FONT)
+
+draw_dim_v(ax2, dy(beam_yd_l - 30), dz(BEAM_Z_BOT), dz(BEAM_Z_TOP),
+           f"{BEAM_W}mm", offset=10 / SC2_H, fs=5, font=FONT)
+
+draw_dim_v(ax2, dy(tray_yd_start - 25), dz(0), dz(PROC_TRAY_RIM),
+           f"{PROC_TRAY_RIM}mm\nRIM",
+           offset=8 / SC2_H, fs=4.5, font=FONT)
+
+# ── Right panel notes ────────────────────────────────────────────────────
+r_notes = [
+    "OPERATOR VIEW:",
+    f"1. Beam travels {SPRAY_BAR_TRAVEL}mm along Yd (push/pull with pole).",
+    "2. Tray rim walls (50mm) guide beam laterally — no rails needed.",
+    "3. Pole clips to beam top via SS U-bolt. Detaches for storage.",
+    "4. Hose coils at pinhole wall; extends as beam travels toward far rim.",
+]
+draw_notes(ax2, r_notes, dy(R_YD_LO + 20), dz(R_Z_HI - 120), spacing=40 / SC2_V,
+           fs=5.5, font=FONT, width=700 / SC2_H)
 
 
 # ── Save ──────────────────────────────────────────────────────────────────

@@ -86,6 +86,7 @@ UC_T = 3   # clamp material thickness (mm)
 UC_GAP = 1  # clearance between clamp and beam (mm)
 C_UCLAMP = "#D0D0D8"
 C_BOLT = "#808088"
+UC_FLARE = 12  # flare extension beyond beam on each side (mm)
 
 GRATE_Z_BOT = WALKWAY_H - WALKWAY_GRATE_T  # 75mm
 GRATE_Z_TOP = WALKWAY_H                     # 100mm
@@ -100,11 +101,11 @@ WALL_T = 3
 # SHEET 1
 # ═════════════════════════════════════════════════════════════════════════════
 
-fig = plt.figure(figsize=(28, 26))
+fig = plt.figure(figsize=(28, 32))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(3, 2, figure=fig, width_ratios=[1.3, 1],
-              height_ratios=[2.5, 1, 1],
-              wspace=0.06, hspace=0.08, bottom=0.045, top=0.965)
+gs = GridSpec(4, 2, figure=fig, width_ratios=[1.3, 1],
+              height_ratios=[2.5, 1, 1, 1],
+              wspace=0.06, hspace=0.08, bottom=0.035, top=0.97)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # LEFT PANEL — X-Z elevation looking along Yd, left carriage area
@@ -179,6 +180,17 @@ for frac in np.linspace(0.1, 0.9, 5):
     ax.plot([sx(gx), sx(gx)], [sz(GRATE_Z_BOT), sz(GRATE_Z_TOP)],
             color="#888888", lw=0.4, zorder=8)
 
+# Walkway slit (for structural arm to pass through, runs in Yd)
+SLIT_WIDTH = 30  # mm width of slit in grating
+slit_x_ctr = CARRIAGE_X_L  # slit at carriage X position
+ax.add_patch(Rectangle((sx(slit_x_ctr - SLIT_WIDTH / 2), sz(GRATE_Z_BOT)),
+                         SLIT_WIDTH / H_SC, WALKWAY_GRATE_T / V_SC,
+                         fc=C_BG, ec=C_FRAME, lw=0.8, zorder=8.5))
+leader(ax, sx(slit_x_ctr), sz(GRATE_Z_TOP),
+       sx(slit_x_ctr + 60), sz(GRATE_Z_TOP + 20),
+       f"{SLIT_WIDTH}mm SLIT\n(BOTH WALKWAYS)",
+       fs=4.5, color=C_FRAME, font=FONT, zorder=15)
+
 # Walkway support bracket
 bracket_depth = 60
 ax.plot([sx(0), sx(0)], [sz(GRATE_Z_BOT - bracket_depth), sz(GRATE_Z_BOT)],
@@ -224,19 +236,25 @@ brk_x_r = PROC_OPEN_X_L + 5
 ax.add_patch(Rectangle((sx(brk_x_l), sz(WHEEL_AXLE_Z - brk_t / 2)),
                          (brk_x_r - brk_x_l) / H_SC, brk_t / V_SC,
                          fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
-# U-clamp over beam (profile view: top plate + two side legs)
-ax.add_patch(Rectangle((sx(brk_x_r - BEAM_W / 2 - UC_T - UC_GAP),
-                          sz(BEAM_Z_TOP)),
-                         (BEAM_W + 2 * UC_T + 2 * UC_GAP) / H_SC,
-                         UC_T / V_SC,
+# U-clamp over beam (profile view: top plate + flared legs)
+uc_elev_l = brk_x_r - BEAM_W / 2 - UC_T - UC_GAP
+uc_elev_r = brk_x_r + BEAM_W / 2 + UC_GAP + UC_T
+# Top plate
+ax.add_patch(Rectangle((sx(uc_elev_l), sz(BEAM_Z_TOP)),
+                         (uc_elev_r - uc_elev_l) / H_SC, UC_T / V_SC,
                          fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
-for u_side in [-1, 1]:
-    u_x = brk_x_r + u_side * (BEAM_W / 2 + UC_GAP)
-    if u_side < 0:
-        u_x -= UC_T
-    ax.add_patch(Rectangle((sx(u_x), sz(BEAM_Z_BOT)),
-                             UC_T / H_SC, (BEAM_Z_TOP - BEAM_Z_BOT) / V_SC,
+# Side legs (straight portion)
+for u_x in [uc_elev_l, uc_elev_r - UC_T]:
+    ax.add_patch(Rectangle((sx(u_x), sz(BEAM_Z_BOT + UC_T)),
+                             UC_T / H_SC, (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / V_SC,
                              fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+# Flared feet
+ax.add_patch(Rectangle((sx(uc_elev_l - UC_FLARE), sz(BEAM_Z_BOT)),
+                         (UC_T + UC_FLARE) / H_SC, UC_T / V_SC,
+                         fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+ax.add_patch(Rectangle((sx(uc_elev_r - UC_T), sz(BEAM_Z_BOT)),
+                         (UC_T + UC_FLARE) / H_SC, UC_T / V_SC,
+                         fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
 
 leader(ax, sx(carriage_cx), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2),
        sx(carriage_cx - 80), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
@@ -873,24 +891,26 @@ ax2.add_patch(Rectangle((dy(brk_arm_l), dz(WHEEL_AXLE_Z - brk_t_op / 2)),
                            (brk_arm_r - brk_arm_l) / SC2_H, brk_t_op / SC2_V,
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
-# U-clamp over beam (profile: top plate + side legs)
-uc_t_op = 3
-uc_gap = 1
+# U-clamp over beam (profile: top plate + flared legs)
+uc_l_op = carriage_ctr_yd - BEAM_W / 2 - UC_T - UC_GAP
+uc_r_op = carriage_ctr_yd + BEAM_W / 2 + UC_GAP + UC_T
 # Top plate
-ax2.add_patch(Rectangle((dy(carriage_ctr_yd - BEAM_W / 2 - uc_t_op - uc_gap),
-                            dz(BEAM_Z_TOP)),
-                           (BEAM_W + 2 * uc_t_op + 2 * uc_gap) / SC2_H,
-                           uc_t_op / SC2_V,
-                           fc="#D0D0D8", ec=C_FRAME, lw=0.6, zorder=10))
-# Side legs
-for u_sign in [-1, 1]:
-    u_yd = carriage_ctr_yd + u_sign * (BEAM_W / 2 + uc_gap)
-    if u_sign < 0:
-        u_yd -= uc_t_op
-    ax2.add_patch(Rectangle((dy(u_yd), dz(BEAM_Z_BOT)),
-                               uc_t_op / SC2_H,
-                               (BEAM_Z_TOP - BEAM_Z_BOT) / SC2_V,
-                               fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=10))
+ax2.add_patch(Rectangle((dy(uc_l_op), dz(BEAM_Z_TOP)),
+                           (uc_r_op - uc_l_op) / SC2_H, UC_T / SC2_V,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, zorder=10))
+# Side legs (straight portion)
+for u_yd in [uc_l_op, uc_r_op - UC_T]:
+    ax2.add_patch(Rectangle((dy(u_yd), dz(BEAM_Z_BOT + UC_T)),
+                               UC_T / SC2_H,
+                               (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / SC2_V,
+                               fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+# Flared feet
+ax2.add_patch(Rectangle((dy(uc_l_op - UC_FLARE), dz(BEAM_Z_BOT)),
+                           (UC_T + UC_FLARE) / SC2_H, UC_T / SC2_V,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
+ax2.add_patch(Rectangle((dy(uc_r_op - UC_T), dz(BEAM_Z_BOT)),
+                           (UC_T + UC_FLARE) / SC2_H, UC_T / SC2_V,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
 
 leader(ax2, dy(cw1_yd), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 8),
        dy(cw1_yd - 50), dz(WHEEL_AXLE_Z - WHEEL_DIA / 2 - 30),
@@ -1086,35 +1106,51 @@ ax_c.text(cy(carriage_yd_center), cz(BEAM_Z_TOP + 5),
           ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", **FONT, zorder=15)
 
-# ── U-clamp over beam ──────────────────────────────────────────────────
+# ── U-clamp over beam (with flared legs for bolting to arm) ─────────────
 uc_l = carriage_yd_center - BEAM_W / 2 - UC_T - UC_GAP
 uc_r = carriage_yd_center + BEAM_W / 2 + UC_GAP + UC_T
+flare_l = uc_l - UC_FLARE
+flare_r = uc_r + UC_FLARE
+
 # Top plate
 ax_c.add_patch(Rectangle((cy(uc_l), cz(BEAM_Z_TOP)),
                            (uc_r - uc_l) / SC_C, UC_T / SC_C,
                            fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
-# Left leg
-ax_c.add_patch(Rectangle((cy(uc_l), cz(BEAM_Z_BOT)),
-                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
+# Left leg (straight portion down beam side)
+ax_c.add_patch(Rectangle((cy(uc_l), cz(BEAM_Z_BOT + UC_T)),
+                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / SC_C,
                            fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-# Right leg
+# Right leg (straight portion)
+ax_c.add_patch(Rectangle((cy(uc_r - UC_T), cz(BEAM_Z_BOT + UC_T)),
+                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT - UC_T) / SC_C,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+# Left flared foot (extends outward at bottom)
+ax_c.add_patch(Rectangle((cy(flare_l), cz(BEAM_Z_BOT)),
+                           (uc_l + UC_T - flare_l) / SC_C, UC_T / SC_C,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+# Right flared foot
 ax_c.add_patch(Rectangle((cy(uc_r - UC_T), cz(BEAM_Z_BOT)),
-                           UC_T / SC_C, (BEAM_Z_TOP - BEAM_Z_BOT) / SC_C,
+                           (flare_r - uc_r + UC_T) / SC_C, UC_T / SC_C,
                            fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-# Thumb screw indicators (bolts through arm below beam)
-for ts_yd in [uc_l + UC_T / 2, uc_r - UC_T / 2]:
-    # Bolt shank
-    ax_c.add_patch(Rectangle((cy(ts_yd - 2.5), cz(arm_bot_z - 4)),
-                               5 / SC_C, (arm_top_z - arm_bot_z + 4) / SC_C,
+
+# Bolts through flared feet + L-bracket arm
+for bolt_yd in [flare_l + UC_FLARE / 2, flare_r - UC_FLARE / 2]:
+    # Bolt shank through foot + arm
+    ax_c.add_patch(Rectangle((cy(bolt_yd - 2.5), cz(arm_bot_z - 4)),
+                               5 / SC_C, (BEAM_Z_BOT + UC_T - arm_bot_z + 4) / SC_C,
                                fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+    # Bolt head on top of foot
+    ax_c.add_patch(Rectangle((cy(bolt_yd - 4), cz(BEAM_Z_BOT + UC_T)),
+                               8 / SC_C, 3 / SC_C,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
     # Wing nut below arm
-    ax_c.add_patch(Rectangle((cy(ts_yd - 5), cz(arm_bot_z - 8)),
+    ax_c.add_patch(Rectangle((cy(bolt_yd - 5), cz(arm_bot_z - 8)),
                                10 / SC_C, 4 / SC_C,
                                fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-leader(ax_c, cy(uc_r), cz(BEAM_Z_TOP + UC_T / 2),
-       cy(uc_r + 35), cz(BEAM_Z_TOP + 15),
-       "SS U-CLAMP\n+ WING NUTS\n(TOOL-FREE)",
+leader(ax_c, cy(flare_r), cz(BEAM_Z_BOT + UC_T / 2),
+       cy(flare_r + 25), cz(BEAM_Z_BOT - 6),
+       "SS U-CLAMP\nFLARED LEGS\n+ WING NUTS",
        fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
 # 12mm aperture + 2mm spray hole at bottom
@@ -1352,22 +1388,32 @@ ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-arm_half_span)),
                            fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
                            hatch="///", alpha=0.7, zorder=4))
 
-# ── U-clamp (shown in plan as rectangle wrapping beam) ──────────────────
-uc_w_x = BEAM_W + 2 * UC_T + 2 * UC_GAP  # total width in X (covers beam + legs)
-uc_w_yd = BEAM_W + 2 * UC_GAP  # depth in Yd (top plate span)
-ax_d.add_patch(Rectangle((px(-uc_w_x / 2), py_d(-uc_w_yd / 2)),
-                           uc_w_x / SC_D, uc_w_yd / SC_D,
+# ── U-clamp with flared legs (plan view) ────────────────────────────────
+uc_w_yd_top = BEAM_W + 2 * UC_T + 2 * UC_GAP  # top plate span in Yd
+uc_w_yd_flare = uc_w_yd_top + 2 * UC_FLARE  # flared foot span
+# Top plate (visible from above)
+ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(-uc_w_yd_top / 2)),
+                           arm_w_x / SC_D, uc_w_yd_top / SC_D,
                            fc=C_UCLAMP, ec=C_FRAME, lw=1.0, alpha=0.5, zorder=6))
-# Wing nut indicators on each side
+# Flared feet (wider, at bottom — visible beyond top plate)
 for side in [-1, 1]:
-    wn_yd = side * (BEAM_W / 2 + UC_GAP + UC_T / 2)
-    ax_d.add_patch(Circle((px(0), py_d(wn_yd)),
-                            4 / SC_D,
+    foot_yd = side * (BEAM_W / 2 + UC_GAP + UC_T)
+    if side < 0:
+        foot_yd -= UC_FLARE
+    ax_d.add_patch(Rectangle((px(-arm_w_x / 2), py_d(foot_yd)),
+                               arm_w_x / SC_D, (UC_FLARE + UC_T) / SC_D,
+                               fc=C_UCLAMP, ec=C_FRAME, lw=0.8, alpha=0.6, zorder=6))
+
+# Bolt holes through flared feet (circles in plan = bolt going vertically)
+for side in [-1, 1]:
+    bolt_yd = side * (BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE / 2)
+    ax_d.add_patch(Circle((px(0), py_d(bolt_yd)),
+                            3 / SC_D,
                             fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
 
-leader(ax_d, px(uc_w_x / 2), py_d(0),
-       px(D_X_HI - 15), py_d(BEAM_W / 2 + 25),
-       "U-CLAMP\n+ WING NUTS",
+leader(ax_d, px(arm_w_x / 2), py_d(BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE),
+       px(D_X_HI - 15), py_d(BEAM_W / 2 + 30),
+       "U-CLAMP\nFLARED LEGS\n+ WING NUTS",
        fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_d)
 
 # ── Fork brackets (vertical plates straddling each wheel) ────────────────
@@ -1412,6 +1458,189 @@ draw_dim_h(ax_d, px(-WHEEL_DIA / 2), px(WHEEL_DIA / 2),
            py_d(D_YD_LO + 12),
            f"Ø{WHEEL_DIA}mm",
            offset=3 / SC_D, fs=5, font=FONT)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DETAIL E — Handle / arm attachment (section through beam at center)
+# Shows round tube arm on top of beam, water hose zip-tied to arm,
+# U-bolt clamp securing arm to beam top face.
+# ─────────────────────────────────────────────────────────────────────────────
+ax_e = fig.add_subplot(gs[3, 0])
+ax_e.set_facecolor(C_BG)
+ax_e.axis("off")
+
+SC_E = 1.5
+
+E_YD_LO = -60
+E_YD_HI = 90
+E_Z_LO = -10
+E_Z_HI = 140
+
+ax_e.set_xlim(E_YD_LO / SC_E, E_YD_HI / SC_E)
+ax_e.set_ylim(E_Z_LO / SC_E, E_Z_HI / SC_E)
+ax_e.set_aspect("equal")
+
+def ey(yd_mm):
+    return yd_mm / SC_E
+
+def ez(z_mm):
+    return z_mm / SC_E
+
+_bbox_e = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
+
+# Title
+ax_e.text(ey((E_YD_LO + E_YD_HI) / 2), ez(E_Z_HI - 2),
+          "DETAIL E — HANDLE ARM ATTACHMENT",
+          ha="center", va="top", fontsize=8, color="#880088",
+          fontweight="bold", **FONT, zorder=20)
+ax_e.text(ey((E_YD_LO + E_YD_HI) / 2), ez(E_Z_HI - 12),
+          "(SECTION THROUGH BEAM AT CENTER — SCALE 1:1.5)",
+          ha="center", va="top", fontsize=5, color=C_DIM,
+          **FONT, zorder=20)
+
+# ── Beam cross-section (Yd-Z view at beam center) ─────────────────────
+e_beam_ctr = 0
+e_beam_l = e_beam_ctr - BEAM_W / 2
+e_beam_r = e_beam_ctr + BEAM_W / 2
+e_beam_bot = 0
+
+# AL SHS outer
+ax_e.add_patch(Rectangle((ey(e_beam_l), ez(e_beam_bot)),
+                           BEAM_W / SC_E, BEAM_W / SC_E,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=2.5, zorder=5))
+# Square bore
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - BEAM_BORE / 2),
+                            ez(e_beam_bot + BEAM_T)),
+                           BEAM_BORE / SC_E, BEAM_BORE / SC_E,
+                           fc=C_BG, ec=C_FRAME, lw=0.8, zorder=5.5))
+# PVC pipe (circle cross-section)
+ax_e.add_patch(Circle((ey(e_beam_ctr), ez(e_beam_bot + BEAM_W / 2)),
+                         PVC_OD / 2 / SC_E,
+                         fc=C_PVC, ec=C_FRAME, lw=1.0, alpha=0.7, zorder=5.7))
+# Water inside PVC
+ax_e.add_patch(Circle((ey(e_beam_ctr), ez(e_beam_bot + BEAM_W / 2)),
+                         PVC_ID / 2 / SC_E,
+                         fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=5.8))
+
+ax_e.text(ey(e_beam_ctr), ez(e_beam_bot + BEAM_W / 2),
+          "SHS +\nPVC",
+          ha="center", va="center", fontsize=4, color=C_FRAME,
+          bbox=_bbox_e, **FONT, zorder=15)
+
+# ── Round tube arm (vertical, on top of beam) ─────────────────────────
+ARM_OD = 25    # 25mm OD round tube (1" nominal)
+ARM_WALL = 2   # 2mm wall thickness
+ARM_ID = ARM_OD - 2 * ARM_WALL
+arm_base_z = e_beam_bot + BEAM_W  # sits on top of beam
+arm_top_z = arm_base_z + 80       # show ~80mm of arm height in this detail
+
+# Arm tube (rectangle cross-section in elevation)
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - ARM_OD / 2), ez(arm_base_z)),
+                           ARM_OD / SC_E, (arm_top_z - arm_base_z) / SC_E,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=8))
+# Interior bore
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - ARM_ID / 2), ez(arm_base_z)),
+                           ARM_ID / SC_E, (arm_top_z - arm_base_z) / SC_E,
+                           fc=C_BG, ec=C_FRAME, lw=0.5, zorder=8.5))
+
+# Continuation arrow (arm extends upward)
+ax_e.annotate("", xy=(ey(e_beam_ctr), ez(arm_top_z + 8)),
+              xytext=(ey(e_beam_ctr), ez(arm_top_z)),
+              arrowprops=dict(arrowstyle="->", color=C_FRAME, lw=1.5),
+              zorder=12)
+ax_e.text(ey(e_beam_ctr + 3), ez(arm_top_z + 5),
+          "ARM CONTINUES\nTO TRAY SURFACE",
+          ha="left", va="center", fontsize=4.5, color=C_DIM,
+          style="italic", **FONT, zorder=15)
+
+# ── U-bolt clamping arm to beam top face ──────────────────────────────
+# Small U-bolt wraps around arm tube, legs go through beam top flange
+ubolt_gap = 2
+ubolt_t = 4    # rod diameter
+ubolt_l = e_beam_ctr - ARM_OD / 2 - ubolt_gap - ubolt_t
+ubolt_r = e_beam_ctr + ARM_OD / 2 + ubolt_gap + ubolt_t
+
+# Top arc (U-bolt over arm)
+arc_angles = np.linspace(0, np.pi, 30)
+arc_r_yd = (ubolt_r - ubolt_l) / 2
+arc_ctr_yd = e_beam_ctr
+arc_ctr_z = arm_base_z + ARM_OD / 2 + 8
+arc_yd = arc_ctr_yd + arc_r_yd * np.cos(arc_angles)
+arc_z = arc_ctr_z + arc_r_yd * 0.5 * np.sin(arc_angles)
+ax_e.plot([ey(y) for y in arc_yd], [ez(z) for z in arc_z],
+          color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
+
+# Left leg of U-bolt (goes down through beam top flange)
+ax_e.plot([ey(ubolt_l + ubolt_t / 2), ey(ubolt_l + ubolt_t / 2)],
+          [ez(arc_ctr_z), ez(arm_base_z - BEAM_T - 5)],
+          color=C_BOLT, lw=2.5, zorder=9)
+# Right leg
+ax_e.plot([ey(ubolt_r - ubolt_t / 2), ey(ubolt_r - ubolt_t / 2)],
+          [ez(arc_ctr_z), ez(arm_base_z - BEAM_T - 5)],
+          color=C_BOLT, lw=2.5, zorder=9)
+
+# Nuts below beam top flange
+for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
+    ax_e.add_patch(Rectangle((ey(nut_yd - 5), ez(arm_base_z - BEAM_T - 5)),
+                               10 / SC_E, 5 / SC_E,
+                               fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
+
+# Backing plate (steel plate under beam top flange, distributes load)
+plate_w = ubolt_r - ubolt_l + 10
+ax_e.add_patch(Rectangle((ey(e_beam_ctr - plate_w / 2), ez(arm_base_z - 3)),
+                           plate_w / SC_E, 3 / SC_E,
+                           fc="#B0B0B8", ec=C_FRAME, lw=0.8, zorder=7))
+
+leader(ax_e, ey(ubolt_r), ez(arc_ctr_z + arc_r_yd * 0.3),
+       ey(ubolt_r + 25), ez(arc_ctr_z + 20),
+       "M8 SS U-BOLT\n+ BACKING PLATE\n+ NYLOC NUTS",
+       fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_e)
+
+leader(ax_e, ey(e_beam_ctr + ARM_OD / 2), ez(arm_base_z + 30),
+       ey(e_beam_ctr + 35), ez(arm_base_z + 50),
+       f"Ø{ARM_OD}mm AL TUBE\n(2mm WALL)\nVERTICAL ARM",
+       fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_e)
+
+# ── Water hose zip-tied to arm ────────────────────────────────────────
+hose_od = 16   # 1/2" ID hose ~ 16mm OD
+hose_ctr_yd = e_beam_ctr + ARM_OD / 2 + hose_od / 2 + 3
+
+# Hose (runs vertically alongside arm)
+ax_e.add_patch(Rectangle((ey(hose_ctr_yd - hose_od / 2), ez(arm_base_z - 5)),
+                           hose_od / SC_E, (arm_top_z - arm_base_z + 10) / SC_E,
+                           fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.6, zorder=7.5))
+
+# Zip ties (3 ties shown)
+for zt_z in [arm_base_z + 15, arm_base_z + 40, arm_base_z + 65]:
+    zt_l = e_beam_ctr - ARM_OD / 2 - 4
+    zt_r = hose_ctr_yd + hose_od / 2 + 2
+    ax_e.add_patch(Rectangle((ey(zt_l), ez(zt_z - 1.5)),
+                               (zt_r - zt_l) / SC_E, 3 / SC_E,
+                               fc="none", ec="#222222", lw=1.2, zorder=11))
+    # Zip tie nub
+    ax_e.add_patch(Rectangle((ey(zt_l - 2), ez(zt_z - 2)),
+                               2 / SC_E, 4 / SC_E,
+                               fc="#333333", ec="#222222", lw=0.5, zorder=11))
+
+leader(ax_e, ey(hose_ctr_yd), ez(arm_base_z + 55),
+       ey(hose_ctr_yd + 20), ez(arm_base_z + 70),
+       "1/2\" FLEX HOSE\n(ZIP-TIED TO ARM)",
+       fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox_e)
+
+ax_e.text(ey(e_beam_ctr - 5), ez(arm_base_z + 40),
+          "ZIP\nTIES\n(TYP.)",
+          ha="right", va="center", fontsize=4.5, color="#333333",
+          bbox=_bbox_e, **FONT, zorder=15)
+
+# ── Dimensions ────────────────────────────────────────────────────────
+draw_dim_h(ax_e, ey(e_beam_l), ey(e_beam_r), ez(e_beam_bot - 8),
+           f"{BEAM_W}mm SHS", offset=3 / SC_E, fs=5, font=FONT)
+
+draw_dim_h(ax_e, ey(e_beam_ctr - ARM_OD / 2), ey(e_beam_ctr + ARM_OD / 2),
+           ez(arm_top_z - 5),
+           f"Ø{ARM_OD}mm", offset=3 / SC_E, fs=5, font=FONT)
+
+draw_dim_v(ax_e, ey(e_beam_l - 8), ez(e_beam_bot), ez(arm_base_z),
+           f"{BEAM_W}mm", offset=3 / SC_E, fs=4.5, font=FONT)
 
 # ── Full-width title block ────────────────────────────────────────────────
 ax_tb = fig.add_axes([0.05, 0.005, 0.90, 0.04])

@@ -1363,7 +1363,7 @@ draw_dim_h(ax_d, px(-BEAM_W / 2), px(BEAM_W / 2),
 # PLAN VIEW — Container floor plan showing walkways, tray, and slit positions
 # Looking down (X horizontal, Yd vertical).  Scaled to fit panel.
 # ─────────────────────────────────────────────────────────────────────────────
-ax_p = fig.add_subplot(gs[1, 1])
+ax_p = fig.add_subplot(gs[3, 0])
 ax_p.set_facecolor(C_BG)
 ax_p.set_aspect("equal")
 ax_p.axis("off")
@@ -1504,7 +1504,7 @@ ax_p.text(ppx(C_LEN / 2), ppy(-30),
 # Shows ball joint on beam top face, round tube arm extending upward,
 # water hose zip-tied to arm.
 # ─────────────────────────────────────────────────────────────────────────────
-ax_e = fig.add_subplot(gs[3, 0])
+ax_e = fig.add_subplot(gs[1, 1])
 ax_e.set_facecolor(C_BG)
 ax_e.axis("off")
 

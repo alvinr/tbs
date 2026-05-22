@@ -983,6 +983,15 @@ ax_c.add_patch(Circle((cy(carriage_yd_center), cz(BEAM_Z_BOT + BEAM_W / 2)),
                          PVC_ID / 2 / SC_C,
                          fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=8.8))
 
+# 2mm hole drilled through PVC pipe wall at bottom (aligned with beam aperture)
+pipe_cz = BEAM_Z_BOT + BEAM_W / 2
+pipe_od_bot_z = pipe_cz - PVC_OD / 2
+pipe_id_bot_z = pipe_cz - PVC_ID / 2
+PIPE_HOLE_DIA = 2
+ax_c.add_patch(Rectangle((cy(carriage_yd_center - PIPE_HOLE_DIA / 2), cz(pipe_od_bot_z)),
+                           PIPE_HOLE_DIA / SC_C, PVC_WALL / SC_C,
+                           fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.1))
+
 ax_c.text(cy(carriage_yd_center), cz(BEAM_Z_TOP + 5),
           "40×40×3mm AL SHS\n+ 1\" PVC PIPE",
           ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
@@ -1035,16 +1044,20 @@ leader(ax_c, cy(flare_r), cz(BEAM_Z_BOT + UC_T / 2),
        "SS U-CLAMP\nFLARED LEGS\n+ WING NUTS",
        fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
-# 12mm aperture + 2mm spray hole at bottom
+# 12mm aperture in beam bottom wall
 ax_c.add_patch(Rectangle((cy(carriage_yd_center - APERTURE_DIA / 2), cz(BEAM_Z_BOT - 0.5)),
                            APERTURE_DIA / SC_C, (BEAM_T + 1) / SC_C,
                            fc=C_BG, ec=C_FRAME, lw=0.5, zorder=9))
-# Water jet through aperture
+# Water flow path: pipe interior → pipe hole → beam aperture → spray
 ax_c.plot([cy(carriage_yd_center), cy(carriage_yd_center)],
-          [cz(BEAM_Z_BOT - 1), cz(BEAM_Z_BOT - 16)],
-          color=C_WATER, lw=1.2, alpha=0.6, zorder=6)
+          [cz(pipe_id_bot_z), cz(BEAM_Z_BOT - 16)],
+          color=C_WATER, lw=1.2, alpha=0.6, zorder=9.2)
+leader(ax_c, cy(carriage_yd_center + PIPE_HOLE_DIA / 2 + 1), cz(pipe_od_bot_z + PVC_WALL / 2),
+       cy(carriage_yd_center + 30), cz(pipe_od_bot_z - 5),
+       f"2mm PIPE HOLE",
+       fs=4.5, color=C_WATER, font=FONT, zorder=15)
 ax_c.text(cy(carriage_yd_center + 8), cz(BEAM_Z_BOT - 10),
-          f"12mm APERTURE\n2mm PIPE HOLE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
+          f"12mm APERTURE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
           ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
 # ── Dimensions ───────────────────────────────────────────────────────────

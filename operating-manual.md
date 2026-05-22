@@ -32,10 +32,10 @@ Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cy
 
 ### 0.1 Water System
 
-The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through P-04 on the equipment panel in the IBC plumbing corridor), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. Check valves CV1–CV4 on each bulkhead line prevent backflow. External fill (F1/F2) and drain (D3/D4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
+The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through P-04 on the equipment panel in the IBC plumbing corridor), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. IBC-1 and IBC-2 are connected by a permanently open 2" cross-connect at valve height for self-leveling. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
-- [ ] 0.1.1 — Fill Blue IBC-1 and IBC-2 via external bulkhead ports F1/F2 (minimum 400 liters total for one print). Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
-- [ ] 0.1.2 — Open isolation valves V1, V2 (fill lines) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
+- [ ] 0.1.1 — Fill Blue IBC-1 via external bulkhead port X1 (minimum 400 liters total for one print). IBC-2 self-levels via 2" cross-connect. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
+- [ ] 0.1.2 — Open isolation valve V1 (fill line) and VB1, VB2, VB3 (Blue outflow manifold). Prime P-01 by hand-filling the filter housing wet side.
 - [ ] 0.1.3 — Switch on P-01 Blue pump (circuit C). Pressure should reach 2.5–3.5 bar within 30 seconds.
 - [ ] 0.1.4 — Check all pipe joints for drips. Tighten any fittings that are weeping.
 - [ ] 0.1.5 — Run water through the spray bar for 60 seconds. Check spray pattern is even across the full image plane width.
@@ -343,7 +343,7 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 ### 5.1 Chemistry Disposal
 
-- [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port D4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
+- [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port X4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
 - [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 

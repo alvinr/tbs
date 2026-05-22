@@ -110,7 +110,7 @@ IBC-2 (600L) ──┘                                                      │
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: 3/4" HDPE tube running the width of the processing area with 1" NPT spray inlets every 600 mm for even flood distribution
-- Fill inlet: external 2" NPT bulkhead fittings with camlock on the container end wall centerline (Yd=1,181mm) — Fill Blue IBC-1 at Z=2,250mm, Fill Blue IBC-2 at Z=2,150mm — positioned above IBC tops (Z=2,082mm) for gravity feed, no pump required for filling. Remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 3.2 Brown System — Used Water Recycling
 
@@ -307,7 +307,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 
 ### Pipe sizing
 
-All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the D4 waste drain run.
+All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The 3-stage combo filter unit has 1" NPT ports, requiring a single 1/2"→1" bushing reducer at the inlet; the outlet connects directly to DV-01 (1" FNPT). No inter-housing plumbing is needed — all filter-to-filter flow is internal to the combo unit. Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.
 
 **Internal runs (1/2" HDPE Sch 40):**
 
@@ -333,8 +333,9 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| External fill lines (F1/F2 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
-| External drain lines (D3/D4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
+| External fill line (X1 bulkhead → IBC-1) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
+| External drain lines (X3/X4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
+| IBC-1 ↔ IBC-2 cross-connect | Sch 40 | 2" nominal (OD 60mm) | 50 PSI min | HDPE |
 
 At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.
 
@@ -375,7 +376,7 @@ See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-s
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via external 2" NPT bulkhead fittings through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
@@ -385,22 +386,23 @@ IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-j
 | Right end zone | IBC-2 Blue (top, far column) | 4,674–5,893 | 1,316–2,332 | 1,010–2,020 |
 | Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
 | Pinhole wall face | Pump manifold (P-01, P-02, P-04) | 2,400–2,700 | Y=0 | 200–600 |
-| IBC plumbing corridor | P-03 waste pump (on D4 drain run) | 4,674–5,893 | 1,046–1,316 | ~200 |
+| IBC plumbing corridor | P-03 waste pump (on X4 drain run) | 4,674–5,893 | 1,046–1,316 | ~200 |
 | Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
 | Optical zone | No equipment | 625–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the D4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).
+**Hose routing:** Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the X4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).
 
-**External fill/drain ports:** Four 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:
+**External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:
 
 | Port | Function | Z (mm) | Connects to |
 |------|----------|--------|-------------|
-| Fill Blue IBC-1 | Fresh water supply fill | 2,250 | IBC-1 (top, near column) — gravity feed |
-| Fill Blue IBC-2 | Fresh water supply fill | 2,150 | IBC-2 (top, far column) — gravity feed |
-| Drain Brown IBC-3 | Used water drain | 400 | IBC-3 (bottom, near column) |
-| Drain Waste IBC-4 | Waste water drain | 200 | IBC-4 (bottom, far column) |
+| X1 — Fill Blue | Fresh water supply fill | 2,250 | IBC-1 (top, near column) — gravity feed |
+| X3 — Drain Brown | Used water drain | 400 | IBC-3 (bottom, near column) |
+| X4 — Drain Waste | Waste water drain | 200 | IBC-4 (bottom, far column) |
+
+A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1,195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
@@ -413,7 +415,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [IBC tote 600L, food-grade, used/rinsed](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | HDPE cage tote, DN50 butterfly valve (S60×6 thread), fill cap DN150 | 4 | Container Exchanger | $80–$150 | **$320–$600** |
-| [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External fill/drain port, welded through container wall | 4 | McMaster-Carr | $25–$40 | **$100–$160** |
+| [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External fill/drain port, welded through container wall | 3 | McMaster-Carr | $25–$40 | **$75–$120** |
 
 **Storage subtotal: ~$420–$760**
 
@@ -422,7 +424,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-01, P-02) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 2 | Amazon | $55–$70 | **$110–$140** |
-| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation — *mounted in IBC plumbing corridor on D4 drain run*) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below D4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
+| [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-03 waste evacuation — *mounted in IBC plumbing corridor on X4 drain run*) | 12VDC, 3.5 GPM, 45 PSI. Empties IBC-4 residual below X4 gravity-drain height (Z=200mm, ~120L) | 1 | Amazon | $55–$70 | **$65** |
 | [Shurflo 2088-554-144 pump](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI. Pumps used chemistry from tray drain to IBC-3 fill cap (~900mm lift) | 1 | Amazon | $55–$70 | **$65** |
 | [SeaFlo pressure accumulator](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) | 0.75 L (23.5 oz), 125 PSI, 1/2" MNPT | 1 | Amazon | $25–$45 | **$35** |
 | [Shurflo pump mounting bracket](https://www.amazon.com/s?k=shurflo+2088+mounting+bracket+stainless) | Stainless, for 2088 series (3× manifold + 1× IBC corridor for P-03) | 4 | Amazon | $8–$12 | **$40** |
@@ -445,11 +447,11 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.amazon.com/s?k=banjo+1%2F2+inch+ball+valve+polypropylene) | Polypropylene, full-port, quarter-turn. BV-01, BV-02, plus spares | 4 | Amazon | $6–$10 | **$24–$40** |
-| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1–V4, VB1–VB3 (IBC fill/drain valves) | 7 | Amazon | $10–$16 | **$70–$112** |
+| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1/V3/V4, VB1–VB3 (IBC fill/drain valves) | 6 | Amazon | $10–$16 | **$60–$96** |
 | [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | **$8–$12** |
 | [3-way diverter valve 1/2" FNPT](https://www.amazon.com/s?k=1%2F2+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-02 (tray drain) | 1 | Amazon | $12–$22 | **$12–$22** |
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output — matches 1" filter port) | 1 | Amazon | $18–$30 | **$18–$30** |
-| [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections | 6 pairs | Amazon | $5–$8/pair | **$35–$50** |
+| [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections (X1/X3/X4 + spare) | 4 pairs | Amazon | $5–$8/pair | **$20–$32** |
 | [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | **$28–$56** |
 | [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | **$12–$20** |
 | [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | **$12–$24** |
@@ -457,7 +459,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | For maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | **$24–$36** |
 | [1/2"×1" NPT bushing reducer](https://www.amazon.com/s?k=1%2F2+inch+to+1+inch+NPT+bushing+reducer+polypropylene) | P-02 riser to F1 filter inlet (1 required) | 1 | Amazon | $3–$5 | **$3–$5** |
 | [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 butterfly valve to 1" HDPE pipe. Polypropylene, S60×6 coarse thread male × 1" NPT female | 8 | Amazon | $8–$15 | **$64–$120** |
-| [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1–CV4) | Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT | 4 | Amazon | $8–$14 | **$32–$56** |
+| [1" NPT spring check valve](https://www.amazon.com/s?k=1+inch+NPT+spring+check+valve+PVC) (CV1/CV3/CV4) | Inline non-return valve on each bulkhead line. PVC body, EPDM seal, 1" FNPT × FNPT | 3 | Amazon | $8–$14 | **$24–$42** |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 | Home Depot | $2 | **$8** |
 
 **Valves & fittings subtotal: ~$414–$660**
@@ -468,6 +470,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|---------|-----------|-------|
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). Matches pump port size | 4 sticks (80 ft) | Ferguson | $6–$10/stick | **$24–$40** |
 | [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft stick. Filter outlet to DV-01 and IBC fill/drain lines only | 1 stick (20 ft) | Ferguson | $12–$18/stick | **$12–$18** |
+| [2" SDR-11 HDPE pipe](https://www.ferguson.com) | IBC-1 ↔ IBC-2 cross-connect (~300mm needed, remainder spare). 20 ft stick | 1 stick (20 ft) | Ferguson | $18–$28/stick | **$18–$28** |
 | [3/4" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson | $9–$14/stick | **$20–$30** |
 | [1/2" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Amazon | $8–$12/length | **$20** |
 

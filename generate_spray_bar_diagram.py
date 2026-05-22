@@ -398,10 +398,10 @@ HEAD_R = 80
 oper_x = pole_x - 150
 P_FOOT = GRATE_Z_TOP
 P_HEAD = P_FOOT + PERSON_H
-# Body (vertical line from feet to neck)
+# Body (vertical line from feet to head center — head circle overlaps the join)
 ax.plot([sx(oper_x), sx(oper_x)],
-        [sz(P_FOOT), sz(P_HEAD)],
-        color="#2060A0", lw=3.0, zorder=14, solid_capstyle="round")
+        [sz(P_FOOT), sz(P_HEAD + HEAD_R)],
+        color="#2060A0", lw=3.0, zorder=13, solid_capstyle="round")
 # Head (scatter marker — always a true circle regardless of axis scaling)
 ax.scatter([sx(oper_x)], [sz(P_HEAD + HEAD_R)],
            s=1800, c="#70A8D8", edgecolors="#1A4D80", linewidths=1.0, zorder=14)

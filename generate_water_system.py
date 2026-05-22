@@ -231,12 +231,16 @@ tank(ax1, 1.5, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
 tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
      label="IBC-2", sublabel="159 gal (600L)\nCLEAN B")
 
-# Manifold joining two tanks
+# 2" cross-connect between IBC-1 and IBC-2 (self-leveling, no valve)
 VR = 0.06 * 1.6  # standard valve circle radius = 0.096
+_xc_y = 7.65     # near bottom of IBC boxes
+pipe(ax1, 1.5 + 1.4/2, _xc_y, 3.3 - 1.4/2, _xc_y, C_BLUE, lw=3.5)
+ax1.text(2.4, _xc_y - 0.18, '2" CROSS-CONNECT\n(SELF-LEVELING)', ha="center",
+         fontsize=5.5, color=C_BLUE, style="italic")
+
+# IBC-1 drain → BV-01 (single drain point — IBC-2 drains via cross-connect)
 pipe(ax1, 1.5, 7.48, 1.5, 7.0, C_BLUE)
-pipe(ax1, 3.3, 7.48, 3.3, 7.0, C_BLUE)
-pipe(ax1, 1.5, 7.0, 2.4 - VR, 7.0, C_BLUE)   # left crossmember → valve edge
-pipe(ax1, 2.4 + VR, 7.0, 3.3, 7.0, C_BLUE)   # valve edge → right crossmember
+pipe(ax1, 1.5, 7.0, 2.4 - VR, 7.0, C_BLUE)
 
 # Valve on outlet
 valve(ax1, 2.4, 7.0, color=C_BLUE)
@@ -294,11 +298,7 @@ arrow_pipe(ax1, 1.5, 9.4, 1.5, 9.0, color=C_BLUE)               # downward fill 
 ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
 ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
          color=C_BLUE, style="italic")
-pipe(ax1, 3.3, 8.9, 3.3, 9.5, C_BLUE)
-arrow_pipe(ax1, 3.3, 9.4, 3.3, 9.0, color=C_BLUE)               # downward fill flow
-ext_port(ax1, 3.3, 9.65, color=C_BLUE, label="X2")
-ax1.text(3.3, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
-         color=C_BLUE, style="italic")
+# X2 removed — single fill via X1 to IBC-1; IBC-2 fills via cross-connect
 
 # Water level sensor labels
 ax1.text(4.8, 8.2, "LOW-LEVEL\nFLOAT SW.", ha="center",
@@ -391,16 +391,18 @@ pipe(ax1, 9.4, 3.25, 9.7 - DVR, 3.25, C_BROWN)
 valve(ax1, 9.7, 3.25, color="#777777", size=0.075)
 ax1.text(9.7, 2.9, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
-# Path back to Blue IBC — up at X=9.7, left at Y=9.2 (below F2 fill port), down to IBC-2
-RET_Y = 9.2   # return horizontal — below ext fill ports at Y=9.65
+# Path back to Blue IBC-2 — up at X=9.7, left at Y=9.2, down to IBC-2 fill cap
+RET_Y = 9.2   # return horizontal — below ext fill port at Y=9.65
 pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
 pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
 pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
 arrow_pipe(ax1, 9.7, 7.0, 9.7, 7.3, color=C_BLUE)                # short upward return arrow
-pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to X2 fill line
+pipe(ax1, 9.7, RET_Y, 3.3, RET_Y, C_BLUE, style="--")            # left to IBC-2 top
 pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
 arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
-ax1.text(6.5, RET_Y + 0.15, "RECYCLED → BLUE IBC-2 (if pH & clarity OK)",
+pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 fill cap
+arrow_pipe(ax1, 3.3, 9.1, 3.3, 8.95, color=C_BLUE)               # downward return arrow
+ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 FILL CAP (equalizes via cross-connect)",
          ha="center", fontsize=6, color=C_BLUE, style="italic")
 
 # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical

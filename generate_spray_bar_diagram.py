@@ -103,15 +103,15 @@ WALL_T = 3
 
 fig = plt.figure(figsize=(28, 32))
 fig.patch.set_facecolor(C_BG)
-gs = GridSpec(4, 2, figure=fig, width_ratios=[1.3, 1],
+gs = GridSpec(4, 2, figure=fig, width_ratios=[1, 1.3],
               height_ratios=[2.5, 1, 1, 1],
               wspace=0.06, hspace=0.08, bottom=0.035, top=0.97)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# LEFT PANEL — X-Z elevation looking along Yd, left carriage area
+# RIGHT PANEL — X-Z elevation looking along Yd, left carriage area
 # Horizontal 1:6, Vertical 1:1.5 (4× vertical exaggeration)
 # ─────────────────────────────────────────────────────────────────────────────
-ax = fig.add_subplot(gs[0, 0])
+ax = fig.add_subplot(gs[0, 1])
 ax.set_facecolor(C_BG)
 ax.axis("off")
 
@@ -460,7 +460,7 @@ ax.text(sx(carr_cx), sz(carr_cz + 55),
 #   flex hose → clamp → barb → hex → boss (NPT tapped) → end cap → SHS bore
 # Boss provides 15mm thread engagement for 1/2" NPT (cap alone is too thin).
 # ─────────────────────────────────────────────────────────────────────────────
-ax_d = fig.add_subplot(gs[1, 0])
+ax_d = fig.add_subplot(gs[3, 1])
 ax_d.set_facecolor(C_BG)
 ax_d.axis("off")
 
@@ -614,11 +614,11 @@ draw_dim_v(ax_d, d_xl + 6, -9.5, 9.5,
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RIGHT PANEL — Yd-Z cross section (operator view)
+# LEFT PANEL — Yd-Z cross section (operator view)
 # Looking along X.  Schematic — non-uniform H/V scale.
 # Shows: tray, beam, near walkway, operator, telescoping pole.
 # ─────────────────────────────────────────────────────────────────────────────
-ax2 = fig.add_subplot(gs[0, 1])
+ax2 = fig.add_subplot(gs[0, 0])
 ax2.set_facecolor(C_BG)
 ax2.axis("off")
 
@@ -949,12 +949,12 @@ draw_notes(ax2, r_notes, dy(R_YD_LO + 400), dz(R_Z_HI - 120), spacing=30 / SC2_V
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# BOTTOM-RIGHT PANEL — Detail B: Carriage end view
+# Detail B: Carriage end view
 # Yd-Z cross-section looking along X at one carriage.
 # Uniform 1:2 scale.  Shows both wheels, fork brackets, L-bracket,
 # beam/spray-pipe SHS cross-section, walkway grating above.
 # ─────────────────────────────────────────────────────────────────────────────
-ax_c = fig.add_subplot(gs[1, 1])
+ax_c = fig.add_subplot(gs[1, 0])
 ax_c.set_facecolor(C_BG)
 ax_c.set_aspect("equal")
 ax_c.axis("off")

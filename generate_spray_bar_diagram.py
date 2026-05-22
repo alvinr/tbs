@@ -422,43 +422,71 @@ ax.text(sx(view_ctr_x), sz(Z_HI - 22),
         ha="center", va="top", fontsize=5, color=C_DIM,
         **FONT, zorder=15)
 
-# ── Content at Detail A location (beam end — PVC cap visible) ───────────
-# Simplified beam end: PVC pipe extending past beam with cap
+# ── Walkway support risers (under left walkway grating) ─────────────────
+riser_w = 6   # riser width in X (mm)
+for rx in [wk_l + 30, wk_l + 150, wk_r - 30]:
+    ax.add_patch(Rectangle((sx(rx - riser_w / 2), sz(TRAY_FLOOR_Z)),
+                             riser_w / H_SC, (GRATE_Z_BOT - TRAY_FLOOR_Z) / V_SC,
+                             fc="#B0B0B8", ec=C_FRAME, lw=0.5, zorder=7))
+
+# ── Beam end assembly — accurate cross-section ─────────────────────────
+# PVC cap protruding past beam end
 pvc_ext_x = beam_x_l - PVC_EXTEND
 cap_end_x = pvc_ext_x - CAP_CLOSED_T
-# PVC extension past beam end
 ax.add_patch(Rectangle((sx(pvc_ext_x), sz(BEAM_Z_BOT + BEAM_T + 0.3)),
                          PVC_EXTEND / H_SC, PVC_OD / V_SC,
                          fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=9.6))
-# Cap on PVC end
 cap_od = PVC_OD + 2 * CAP_WALL_T
 ax.add_patch(Rectangle((sx(cap_end_x), sz(BEAM_Z_BOT + BEAM_T + 0.3 - CAP_WALL_T)),
                          (PVC_EXTEND + CAP_CLOSED_T) / H_SC,
                          cap_od / V_SC,
                          fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.6, zorder=9.5))
 
-# ── Content at Detail B location (carriage — wheels on tray floor) ──────
-carriage_cx = CARRIAGE_X_L
-# Wheel (side profile circle — looking along Yd, we see wheel as circle)
+# Carriage at correct position: just inside beam, wheels on tray floor
+carriage_cx = beam_x_l + 60   # 60mm inside from beam end
+
+# Wheel profile (circle in X-Z, looking along Yd)
 ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
                                WHEEL_DIA / H_SC, WHEEL_DIA / V_SC,
                                fc=C_NYLON, ec=C_WHEEL, lw=1.2, alpha=0.6, zorder=8))
-# Axle dot
 ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
                                4 / H_SC, 4 / V_SC,
                                fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=8.5))
-# Fork bracket lines (simplified)
+# Contact patch on tray floor
+ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2), sx(carriage_cx + WHEEL_WIDTH / 2)],
+        [sz(TRAY_FLOOR_Z), sz(TRAY_FLOOR_Z)],
+        color=C_WHEEL, lw=1.0, zorder=8)
+
+# Fork bracket (seen edge-on in X-Z: thin vertical plates in Yd)
+fork_top_z = WHEEL_AXLE_Z + 6
+fork_bot_z = WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4
 for off in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
     ax.plot([sx(carriage_cx + off), sx(carriage_cx + off)],
-            [sz(WHEEL_AXLE_Z + 6), sz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4)],
+            [sz(fork_top_z), sz(fork_bot_z)],
             color=C_FRAME, lw=0.6, zorder=8)
-# L-bracket arm across top of fork
-ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2 - 8), sx(carriage_cx + WHEEL_WIDTH / 2 + 8)],
-        [sz(WHEEL_AXLE_Z + 6), sz(WHEEL_AXLE_Z + 6)],
-        color=C_FRAME, lw=0.8, zorder=8)
+# Axle pin through wheel
+ax.plot([sx(carriage_cx - WHEEL_WIDTH / 2 - 4), sx(carriage_cx + WHEEL_WIDTH / 2 + 4)],
+        [sz(WHEEL_AXLE_Z), sz(WHEEL_AXLE_Z)],
+        color=C_FRAME, lw=0.5, zorder=8.5)
+
+# L-bracket arm (horizontal plate at fork top, visible as line in X-Z)
+brk_half = WHEEL_WIDTH / 2 + 18
+ax.plot([sx(carriage_cx - brk_half), sx(carriage_cx + brk_half)],
+        [sz(fork_top_z), sz(fork_top_z)],
+        color=C_FRAME, lw=1.0, zorder=8)
+# Vertical drop from L-bracket to beam bottom
+ax.plot([sx(carriage_cx), sx(carriage_cx)],
+        [sz(fork_top_z), sz(BEAM_Z_BOT)],
+        color=C_FRAME, lw=0.8, ls="--", zorder=7.5)
+
+# U-clamp top plate on beam (visible from side as thin cap)
+uc_extent = 15  # visible X extent of U-clamp top plate
+ax.add_patch(Rectangle((sx(carriage_cx - uc_extent), sz(BEAM_Z_TOP)),
+                         2 * uc_extent / H_SC, UC_T / V_SC,
+                         fc=C_UCLAMP, ec=C_FRAME, lw=0.5, zorder=10))
 
 # ── Detail callouts ──────────────────────────────────────────────────────
-# Detail A — beam end
+# Detail A — beam end with PVC cap
 ax.add_patch(mpatches.Ellipse((sx(beam_x_l), sz(BEAM_Z_BOT + BEAM_W / 2)),
                                150 / H_SC, 80 / V_SC,
                                fc="none", ec="#CC0000", lw=1.5, ls="--", zorder=20))
@@ -466,7 +494,7 @@ ax.text(sx(beam_x_l), sz(BEAM_Z_BOT - 30),
         "DETAIL A", ha="center", va="top", fontsize=7, color="#CC0000",
         fontweight="bold", **FONT, zorder=20)
 
-# Detail B — carriage area (near left walkway)
+# Detail B — carriage on tray floor near beam end
 ax.add_patch(mpatches.Ellipse((sx(carriage_cx), sz(WHEEL_AXLE_Z)),
                                200 / H_SC, 80 / V_SC,
                                fc="none", ec="#0066AA", lw=1.5, ls="--", zorder=20))

@@ -398,6 +398,16 @@ ax.text(sx(cap_cx), sz(cap_cz - 50),
         "DETAIL A", ha="center", va="top", fontsize=8, color="#CC0000",
         fontweight="bold", **FONT, zorder=20)
 
+# Detail B callout — carriage / wheel area
+carr_cx = carriage_cx
+carr_cz = WHEEL_AXLE_Z
+ax.add_patch(mpatches.Ellipse((sx(carr_cx), sz(carr_cz)),
+                               90 / H_SC, 90 / V_SC,
+                               fc="none", ec="#0066AA", lw=1.5, ls="--", zorder=20))
+ax.text(sx(carr_cx), sz(carr_cz + 55),
+        "DETAIL B", ha="center", va="bottom", fontsize=8, color="#0066AA",
+        fontweight="bold", **FONT, zorder=20)
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # BOTTOM-LEFT PANEL — Detail A: End cap water connection
@@ -835,6 +845,173 @@ r_notes = [
 ]
 draw_notes(ax2, r_notes, dy(R_YD_LO + 20), dz(R_Z_HI - 120), spacing=40 / SC2_V,
            fs=5.5, font=FONT, width=700 / SC2_H)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BOTTOM-RIGHT PANEL — Detail B: Carriage end view
+# Yd-Z cross-section looking along X at one carriage.
+# Uniform 1:2 scale.  Shows both wheels, fork brackets, L-bracket,
+# beam/spray-pipe SHS cross-section, walkway grating above.
+# ─────────────────────────────────────────────────────────────────────────────
+ax_c = fig.add_subplot(gs[1, 1])
+ax_c.set_facecolor(C_BG)
+ax_c.set_aspect("equal")
+ax_c.axis("off")
+
+SC_C = 2.0
+
+def cy(yd_mm):
+    return 3.0 + yd_mm / SC_C
+
+def cz(z_mm):
+    return 2.0 + z_mm / SC_C
+
+carriage_yd_center = 200
+wheel1_yd = carriage_yd_center - WHEEL_SPACING_YD / 2   # 100mm
+wheel2_yd = carriage_yd_center + WHEEL_SPACING_YD / 2   # 300mm
+
+C_YD_LO = wheel1_yd - 80
+C_YD_HI = wheel2_yd + 100
+C_Z_LO  = -20
+C_Z_HI  = GRATE_Z_TOP + 40
+
+ax_c.set_xlim(cy(C_YD_LO), cy(C_YD_HI))
+ax_c.set_ylim(cz(C_Z_LO), cz(C_Z_HI))
+
+# Title
+ax_c.text(cy((C_YD_LO + C_YD_HI) / 2), cz(C_Z_HI + 2),
+          "DETAIL B — CARRIAGE END VIEW",
+          ha="center", va="bottom", fontsize=8, color="#0066AA",
+          fontweight="bold", **FONT, zorder=15)
+ax_c.text(cy((C_YD_LO + C_YD_HI) / 2), cz(C_Z_HI - 6),
+          "(LOOKING ALONG X — SECTION THROUGH LEFT WALKWAY — SCALE 1:2)",
+          ha="center", va="top", fontsize=5, color=C_DIM,
+          **FONT, zorder=15)
+
+# ── Container floor ──────────────────────────────────────────────────────
+ax_c.plot([cy(C_YD_LO), cy(C_YD_HI)], [cz(0), cz(0)],
+          color=C_OUT, lw=2.0, zorder=3)
+ax_c.add_patch(Rectangle((cy(C_YD_LO), cz(-15)),
+                           (C_YD_HI - C_YD_LO) / SC_C, 15 / SC_C,
+                           fc="#E0E0D8", ec=C_OUT, lw=0.8, hatch="...", zorder=1))
+
+# ── Tray floor ───────────────────────────────────────────────────────────
+ax_c.add_patch(Rectangle((cy(C_YD_LO + 5), cz(0)),
+                           (C_YD_HI - C_YD_LO - 10) / SC_C, TRAY_FLOOR_Z / SC_C,
+                           fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
+
+# ── Walkway grating ─────────────────────────────────────────────────────
+ax_c.add_patch(Rectangle((cy(C_YD_LO + 5), cz(GRATE_Z_BOT)),
+                           (C_YD_HI - C_YD_LO - 10) / SC_C, WALKWAY_GRATE_T / SC_C,
+                           fc=C_GRATE, ec=C_OUT, lw=2.0, zorder=10))
+for frac in np.linspace(0.08, 0.92, 8):
+    mesh_yd = C_YD_LO + 5 + (C_YD_HI - C_YD_LO - 10) * frac
+    ax_c.plot([cy(mesh_yd), cy(mesh_yd)], [cz(GRATE_Z_BOT), cz(GRATE_Z_TOP)],
+              color="#888888", lw=0.5, zorder=10)
+
+ax_c.text(cy((C_YD_LO + C_YD_HI) / 2), cz(GRATE_Z_BOT - 4),
+          f"WALKWAY GRATING ({WALKWAY_GRATE_T}mm)",
+          ha="center", va="top", fontsize=5, color=C_GRATE, **FONT, zorder=12)
+
+# ── Wheels (2× Ø50mm nylon) ─────────────────────────────────────────────
+for w_yd in [wheel1_yd, wheel2_yd]:
+    ax_c.add_patch(Circle((cy(w_yd), cz(WHEEL_AXLE_Z)),
+                            WHEEL_DIA / 2 / SC_C,
+                            fc=C_NYLON, ec=C_WHEEL, lw=2.0, zorder=6))
+    ax_c.add_patch(Circle((cy(w_yd), cz(WHEEL_AXLE_Z)),
+                            3 / SC_C, fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=6.5))
+    # Contact patch on tray floor
+    ax_c.plot([cy(w_yd - WHEEL_WIDTH / 2), cy(w_yd + WHEEL_WIDTH / 2)],
+              [cz(TRAY_FLOOR_Z), cz(TRAY_FLOOR_Z)],
+              color=C_WHEEL, lw=2.0, zorder=5)
+
+leader(ax_c, cy(wheel1_yd - WHEEL_DIA / 2), cz(WHEEL_AXLE_Z),
+       cy(wheel1_yd - WHEEL_DIA / 2 - 35), cz(WHEEL_AXLE_Z - 12),
+       f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
+       fs=5, color=C_WHEEL, font=FONT, zorder=15)
+
+# ── Fork brackets (vertical plates straddling each wheel) ────────────────
+for w_yd in [wheel1_yd, wheel2_yd]:
+    for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
+        ax_c.plot([cy(w_yd + offset), cy(w_yd + offset)],
+                  [cz(WHEEL_AXLE_Z + 6), cz(WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4)],
+                  color=C_FRAME, lw=1.2, zorder=5.5)
+    # Axle pin
+    ax_c.plot([cy(w_yd - WHEEL_WIDTH / 2 - 4), cy(w_yd + WHEEL_WIDTH / 2 + 4)],
+              [cz(WHEEL_AXLE_Z), cz(WHEEL_AXLE_Z)],
+              color=C_FRAME, lw=0.8, zorder=6.5)
+
+# ── L-bracket ────────────────────────────────────────────────────────────
+brk_t_c = 5
+plate_yd_l = wheel1_yd - 18
+plate_yd_r = wheel2_yd + 18
+
+# Horizontal arm at axle height
+ax_c.add_patch(Rectangle((cy(plate_yd_l), cz(WHEEL_AXLE_Z - brk_t_c / 2)),
+                           (plate_yd_r - plate_yd_l) / SC_C, brk_t_c / SC_C,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
+
+# Vertical drops flanking beam
+for side_yd in [carriage_yd_center - BEAM_W / 2 - brk_t_c,
+                carriage_yd_center + BEAM_W / 2]:
+    ax_c.add_patch(Rectangle((cy(side_yd), cz(BEAM_Z_BOT)),
+                               brk_t_c / SC_C,
+                               (WHEEL_AXLE_Z - BEAM_Z_BOT + brk_t_c / 2) / SC_C,
+                               fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, zorder=7))
+
+leader(ax_c, cy(plate_yd_r), cz(WHEEL_AXLE_Z),
+       cy(plate_yd_r + 40), cz(WHEEL_AXLE_Z + 10),
+       "AL L-BRACKET\n(DROPS BEAM\nBELOW AXLE)",
+       fs=5, color=C_FRAME, font=FONT, zorder=15)
+
+# ── Beam / spray pipe SHS cross-section ──────────────────────────────────
+c_beam_l = carriage_yd_center - BEAM_W / 2
+c_beam_r = carriage_yd_center + BEAM_W / 2
+
+ax_c.add_patch(Rectangle((cy(c_beam_l), cz(BEAM_Z_BOT)),
+                           BEAM_W / SC_C, BEAM_W / SC_C,
+                           fc=C_ALUM_FILL, ec=C_FRAME, lw=2.5, zorder=8))
+ax_c.add_patch(Rectangle((cy(carriage_yd_center - BEAM_BORE / 2),
+                            cz(BEAM_Z_BOT + BEAM_T)),
+                           BEAM_BORE / SC_C, BEAM_BORE / SC_C,
+                           fc=C_WATER, ec=C_FRAME, lw=0.8, alpha=0.35, zorder=8.5))
+
+ax_c.text(cy(carriage_yd_center), cz(BEAM_Z_TOP + 5),
+          "40×40×3mm\n6061-T6 AL SHS\n(SPRAY PIPE)",
+          ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
+          fontweight="bold", **FONT, zorder=15)
+
+# Spray hole at bottom
+ax_c.add_patch(Rectangle((cy(carriage_yd_center - 1.5), cz(BEAM_Z_BOT - 0.5)),
+                           3 / SC_C, (BEAM_T + 1) / SC_C,
+                           fc=C_WATER, ec=C_FRAME, lw=0.5, zorder=9))
+ax_c.plot([cy(carriage_yd_center), cy(carriage_yd_center)],
+          [cz(BEAM_Z_BOT - 1), cz(BEAM_Z_BOT - 16)],
+          color=C_WATER, lw=1.2, alpha=0.6, zorder=6)
+ax_c.text(cy(carriage_yd_center + 8), cz(BEAM_Z_BOT - 10),
+          f"3mm SPRAY HOLE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
+          ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
+
+# ── Dimensions ───────────────────────────────────────────────────────────
+draw_dim_v(ax_c, cy(c_beam_l - 12), cz(BEAM_Z_BOT), cz(BEAM_Z_TOP),
+           f"{BEAM_W}mm", offset=8 / SC_C, fs=5.5, font=FONT)
+
+draw_dim_h(ax_c, cy(wheel1_yd), cy(wheel2_yd),
+           cz(TRAY_FLOOR_Z + WHEEL_DIA + 8),
+           f"{WHEEL_SPACING_YD}mm WHEEL SPACING",
+           offset=8 / SC_C, fs=5, font=FONT)
+
+clearance_c = GRATE_Z_BOT - BEAM_Z_TOP
+draw_dim_v(ax_c, cy(c_beam_r + 12), cz(BEAM_Z_TOP), cz(GRATE_Z_BOT),
+           f"{clearance_c:.0f}mm\nCLR", offset=8 / SC_C, fs=5, font=FONT, right=True)
+
+draw_dim_v(ax_c, cy(c_beam_l - 25), cz(TRAY_FLOOR_Z), cz(BEAM_Z_BOT),
+           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY",
+           offset=8 / SC_C, fs=4.5, font=FONT)
+
+draw_dim_v(ax_c, cy(wheel2_yd + WHEEL_DIA / 2 + 8),
+           cz(TRAY_FLOOR_Z), cz(TRAY_FLOOR_Z + WHEEL_DIA),
+           f"Ø{WHEEL_DIA}mm", offset=8 / SC_C, fs=5, font=FONT, right=True)
 
 
 # ── Save ──────────────────────────────────────────────────────────────────

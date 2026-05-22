@@ -273,7 +273,7 @@ ax.text(sx(CUT_X + 40), sz(Z_HI / 2),
         rotation=90, **FONT, zorder=25)
 
 # ── Pole through slit down to beam ──────────────────────────────────────
-pole_top_z = GRATE_Z_TOP + 80
+pole_top_z = GRATE_Z_TOP + 890   # extends to operator waist height (1780/2)
 pole_bot_z = BEAM_Z_TOP + 5
 
 ax.plot([sx(pole_x), sx(pole_x)],

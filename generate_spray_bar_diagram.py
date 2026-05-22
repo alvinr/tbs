@@ -402,11 +402,9 @@ P_HEAD = P_FOOT + PERSON_H
 ax.plot([sx(oper_x), sx(oper_x)],
         [sz(P_FOOT), sz(P_HEAD)],
         color="#2060A0", lw=3.0, zorder=14, solid_capstyle="round")
-# Head (circle — use Ellipse to compensate for H/V scale difference)
-ax.add_patch(mpatches.Ellipse(
-    (sx(oper_x), sz(P_HEAD + HEAD_R)),
-    HEAD_R * 2 / H_SC, HEAD_R * 2 / V_SC,
-    fc="#70A8D8", ec="#1A4D80", lw=1.0, zorder=14))
+# Head (scatter marker — always a true circle regardless of axis scaling)
+ax.scatter([sx(oper_x)], [sz(P_HEAD + HEAD_R)],
+           s=1800, c="#70A8D8", edgecolors="#1A4D80", linewidths=1.0, zorder=14)
 # Label
 ax.text(sx(oper_x - 30), sz(P_FOOT + PERSON_H / 2),
         f"{PERSON_H}mm\noperator\n(shoes)",

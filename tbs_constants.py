@@ -356,8 +356,8 @@ PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
 PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2399]
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
 
-# Spray bar — Blue supply delivery, below walkway deck (rev 7)
-SPRAY_BAR_FEED_Z   = 75         # spray bar supply line Z (mm) — below grating, above tray rim
+BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0)
+BV02_Z             = 900         # BV-02 height on pinhole wall (mm AFF) — waist height from walkway deck
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
@@ -458,6 +458,30 @@ PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
 PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1,962mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
                                                # = 6.42 m² open processing area
+
+# ── Spray bar — gantry design: beam-as-pipe, wheel carriages (rev 9) ────────
+# Beam spans open processing area between walkway inner edges.
+# Wheel carriages roll on tray floor beneath walkway grating.
+# Beam SHS bore carries water — no separate HDPE spray tube.
+SPRAY_BAR_SPAN       = PROC_OPEN_X_R - PROC_OPEN_X_L  # beam span between walkway inner edges (mm)
+SPRAY_BAR_BEAM       = 40          # 40×40×3mm 6061-T6 aluminum SHS (1-1/2"×1-1/2"×1/8")
+SPRAY_BAR_BEAM_T     = 3           # wall thickness (mm)
+SPRAY_BAR_BORE       = SPRAY_BAR_BEAM - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore
+SPRAY_BAR_WHEEL_DIA  = 50          # nylon wheel diameter (mm) — matches tray rim height
+SPRAY_BAR_WHEEL_W    = 20          # wheel width (mm)
+SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction)
+SPRAY_BAR_WHEEL_SP   = 200         # wheel center-to-center spacing in Yd (mm)
+SPRAY_BAR_TRAY_FLOOR = 2           # tray sheet metal thickness on container floor (mm)
+SPRAY_BAR_AXLE_Z     = SPRAY_BAR_TRAY_FLOOR + SPRAY_BAR_WHEEL_DIA // 2  # = 27mm
+SPRAY_BAR_BRACKET_DROP = 17        # L-bracket drop: axle CL to beam bottom (mm)
+SPRAY_BAR_Z_BOT      = SPRAY_BAR_AXLE_Z - SPRAY_BAR_BRACKET_DROP  # = 10mm beam bottom
+SPRAY_BAR_Z_TOP      = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM           # = 50mm beam top
+SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2,200mm (Yd travel, near rim to far rim)
+SPRAY_BAR_HOLE_DIA   = 3           # spray hole diameter (mm)
+SPRAY_BAR_HOLE_SP    = 100         # spray hole spacing along beam bottom (mm)
+SPRAY_BAR_N_HOLES    = int((SPRAY_BAR_SPAN - 2 * 79.5) / SPRAY_BAR_HOLE_SP) + 1  # = 38
+SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm)
+SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM // 2  # = 30mm — feed end cap center
 
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
@@ -574,7 +598,7 @@ if __name__ == "__main__":
     print(f"  Evap cooler:    EXTERNAL — duct Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X} Z={EVAP_DUCT_Z}")
     print(f"  EP:             X={EP_X}–{EP_X+EP_W}  Z={EP_H_LO}–{EP_H_HI} [rev7: raised]")
     print(f"  Battery:        X={BA_X}–{BA_X+BA_W}  Z={BA_H_LO}–{BA_H_HI}  depth={BA_D}mm [rev7: slim]")
-    print(f"  Spray bar feed: Z={SPRAY_BAR_FEED_Z}mm")
+    print(f"  Spray bar:      GANTRY  span={SPRAY_BAR_SPAN}mm  beam Z={SPRAY_BAR_Z_BOT}–{SPRAY_BAR_Z_TOP}  wheels Ø{SPRAY_BAR_WHEEL_DIA}  {SPRAY_BAR_N_HOLES} holes")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")
     print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")

@@ -106,7 +106,7 @@ def draw_dim_v(ax, x, y1, y2, label, *, offset=12, fs=6.5, color=C_DIM,
 
 def leader(ax, x_tip, y_tip, x_txt, y_txt, label, *, fs=6.5, color=C_OUT,
            ha="left", va="center", arrow_style="-", lw=0.7, zorder=15,
-           font=None, rotation=0):
+           font=None, rotation=0, bbox=None):
     """Leader line from a point to a text label.
 
     Parameters
@@ -124,15 +124,19 @@ def leader(ax, x_tip, y_tip, x_txt, y_txt, label, *, fs=6.5, color=C_OUT,
     zorder          : drawing order
     font            : optional dict e.g. {"fontfamily": "monospace"}
     rotation        : label text rotation in degrees (0 = horizontal)
+    bbox            : optional dict for text background box
     """
     kw = font or {}
+    ann_kw = {}
+    if bbox is not None:
+        ann_kw["bbox"] = bbox
     ax.annotate(label, xy=(x_tip, y_tip), xytext=(x_txt, y_txt),
                 fontsize=fs, color=color, ha=ha, va=va, zorder=zorder,
                 rotation=rotation,
                 arrowprops=dict(arrowstyle=arrow_style, linestyle=":",
                                 color=color, lw=lw,
                                 connectionstyle="arc3,rad=0.0"),
-                **kw)
+                **ann_kw, **kw)
 
 
 # ── Center lines ─────────────────────────────────────────────────────────────

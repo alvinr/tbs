@@ -520,24 +520,19 @@ ax_a.add_patch(Rectangle((pipe_end_x, -pvc_od_h), d_xr - pipe_end_x, PVC_WALL,
 ax_a.plot([pipe_end_x, pipe_end_x], [-pvc_od_h, pvc_od_h],
           color=C_FRAME, lw=1.0, zorder=5.5)
 
-# ── PVC socket cap (slides OVER pipe OD — engagement zone) ──────────────
-# Cap top wall (from closed end to open edge, at pipe OD + cap wall)
-ax_a.add_patch(Rectangle((cap_closed_x, pvc_od_h),
-               cap_open_x - cap_closed_x, CAP_WALL_T,
+# ── PVC socket cap (slides OVER pipe OD — single U-shaped piece) ────────
+cap_verts = [
+    (cap_open_x,                  cap_od_h),     # outer top right
+    (cap_closed_x,                cap_od_h),     # outer top left
+    (cap_closed_x,               -cap_od_h),     # outer bottom left
+    (cap_open_x,                 -cap_od_h),     # outer bottom right
+    (cap_open_x,                 -pvc_od_h),     # step in at open edge
+    (cap_closed_x + CAP_CLOSED_T, -pvc_od_h),   # inner bottom at end wall
+    (cap_closed_x + CAP_CLOSED_T,  pvc_od_h),   # inner top at end wall
+    (cap_open_x,                  pvc_od_h),     # inner top at open edge
+]
+ax_a.add_patch(mpatches.Polygon(cap_verts, closed=True,
                fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=5))
-# Cap bottom wall
-ax_a.add_patch(Rectangle((cap_closed_x, -cap_od_h),
-               cap_open_x - cap_closed_x, CAP_WALL_T,
-               fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=5))
-# Cap closed end (solid wall sealing the end)
-ax_a.add_patch(Rectangle((cap_closed_x, -cap_od_h),
-               CAP_CLOSED_T, cap_od_h * 2,
-               fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=5.5))
-# Cap open edge lines
-ax_a.plot([cap_open_x, cap_open_x], [pvc_od_h, cap_od_h],
-          color=C_FRAME, lw=0.8, zorder=5.5)
-ax_a.plot([cap_open_x, cap_open_x], [-cap_od_h, -pvc_od_h],
-          color=C_FRAME, lw=0.8, zorder=5.5)
 
 # ── Solvent weld line (where pipe OD meets cap socket bore) ─────────────
 ax_a.plot([cap_open_x, pipe_end_x], [pvc_od_h, pvc_od_h],

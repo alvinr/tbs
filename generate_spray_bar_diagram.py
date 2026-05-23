@@ -132,8 +132,8 @@ def sz(z_mm):
 pole_x = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 
 CUT_X = int(pole_x) + 300
-X_LO = -600
-X_HI = CUT_X - 350
+X_LO = -100
+X_HI = CUT_X + 150
 Z_LO = -50
 Z_HI = 2050
 

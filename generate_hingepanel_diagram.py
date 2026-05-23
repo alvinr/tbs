@@ -34,7 +34,8 @@ from tbs_constants import (
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
-                         leader as _leader_shared, hatch_rect, draw_notes)
+                         leader as _leader_shared, hatch_rect, draw_notes,
+                         draw_legend)
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -1439,21 +1440,14 @@ def sheet4():
                width=1000, font=FONT)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
-    legend_x = C_WID + 80
-    legend_top = X_LO + 122 + len(notes) * 26 + 10
-    swatches = [
+    legend_top = X_LO + 122 + len(notes) * 26 + 10 + 4 * 30 + 50
+    draw_legend(ax, [
         (C_ALUM,   0.9,  "Corner zone (40mm)"),
         (C_STEEL,  0.9,  "Center zone (120mm)"),
         (C_LT_DRUM, 0.7,  "Light trap drum"),
         (C_STEEL,  0.20, "Transport (ghost)"),
-    ]
-    for i, (c, a, lbl) in enumerate(swatches):
-        sy = legend_top - i * 30
-        ax.add_patch(Rectangle((legend_x, sy - 7), 20, 14,
-                                fc=c, ec=C_OUT, lw=0.8, alpha=a, zorder=15))
-        ax.text(legend_x + 28, sy, lbl,
-                ha="left", va="center", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=15)
+    ], C_WID + 70, legend_top, row_h=30, swatch_w=20, swatch_h=14,
+       col_w=300, fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 4",

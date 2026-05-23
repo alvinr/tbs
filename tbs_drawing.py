@@ -531,3 +531,56 @@ def draw_notes(ax, notes, x, y_top, spacing, *, fs=7, title_fs=None,
         boxstyle="square,pad=0", fc="white", ec=border_color,
         lw=border_lw, zorder=zorder)
     ax.add_patch(rect)
+
+
+# ── Legend box ──────────────────────────────────────────────────────────────
+
+def draw_legend(ax, items, x, y, *, row_h=46, swatch_w=32, swatch_h=28,
+                pad=20, title="LEGEND", title_fs=7.5, fs=6, cols=1,
+                col_w=None, font=None, zorder=14):
+    """Draw a boxed legend with color swatches.
+
+    Parameters
+    ----------
+    items : list of tuples
+        Each item is (color, label) or (color, alpha, label) or
+        (color, alpha, hatch, label).
+    x, y : float
+        Top-left corner of the legend box.
+    """
+    n = len(items)
+    rows_per_col = (n + cols - 1) // cols
+    if col_w is None:
+        col_w = swatch_w + pad + 350
+    box_w = cols * col_w + 2 * pad
+    box_h = rows_per_col * row_h + 50
+    fkw = dict(fontfamily="monospace") if font is None else font
+
+    ax.add_patch(mpatches.Rectangle((x, y - box_h), box_w, box_h,
+                                     fc="#FAFAFA", ec=C_DIM, lw=0.8,
+                                     zorder=zorder))
+    ax.text(x + box_w / 2, y - 16, title,
+            color=C_OUT, fontsize=title_fs, ha="center", va="center",
+            fontweight="bold", **fkw, zorder=zorder + 1)
+
+    for i, item in enumerate(items):
+        if len(item) == 2:
+            color, label = item
+            alpha, hatch = 1.0, None
+        elif len(item) == 3:
+            color, alpha, label = item
+            hatch = None
+        else:
+            color, alpha, hatch, label = item
+
+        c = i // rows_per_col
+        r = i % rows_per_col
+        ix = x + pad + c * col_w
+        iy = y - 50 - r * row_h
+
+        ax.add_patch(mpatches.Rectangle((ix, iy - swatch_h / 2), swatch_w,
+                                         swatch_h, fc=color, ec=C_OUT,
+                                         lw=0.8, alpha=alpha, hatch=hatch,
+                                         zorder=zorder + 1))
+        ax.text(ix + swatch_w + 10, iy, label, color=C_DIM, fontsize=fs,
+                ha="left", va="center", **fkw, zorder=zorder + 1)

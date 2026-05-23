@@ -36,7 +36,7 @@ from matplotlib.lines import Line2D
 import matplotlib.patches
 
 from tbs_constants import *
-from tbs_drawing import draw_dim_h, draw_dim_v
+from tbs_drawing import draw_dim_h, draw_dim_v, draw_legend
 
 # ── Palette (local overrides removed — equipment colors from tbs_constants) ──
 BG            = "#FFFFFF"
@@ -435,8 +435,9 @@ def floor_plan():
 #             bbox=dict(boxstyle="round,pad=0.3", fc="#E8F8E8", ec="#408040", lw=0.8),
 #             zorder=10)
 
-    # ── Legend (two-column, below container) ────────────────────────────────
-    legend_items = [
+    # ── Legend (three-column, below container) ───────────────────────────────
+    leg_y_top = -PAD_B + 250 + 5 * 46 + 50   # position top of box
+    draw_legend(ax, [
         (C_BLUE_IBC,  "Blue IBC ×2 (clean water, top tier)"),
         (C_BROWN_IBC, "Brown IBC ×1 (recycle, bottom near)"),
         (C_WASTE_IBC, "Waste IBC ×1 (bottom far)"),
@@ -451,29 +452,7 @@ def floor_plan():
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
         ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),
         (C_ALUM,     "Ext power panel (flush-mount, exterior)"),
-    ]
-    n_items = len(legend_items)
-    n_cols = 3
-    n_rows = (n_items + n_cols - 1) // n_cols  # rows per column
-    row_h = 46; col_w = 1900              # column width in mm coords
-    box_w = col_w * n_cols + 200          # total legend box width
-    box_h = n_rows * row_h + 50           # total legend box height
-    leg_x0 = 0                            # align with container left wall
-    leg_y0 = -PAD_B + 250                 # near bottom of drawing
-    ax.add_patch(Rectangle((leg_x0, leg_y0), box_w, box_h,
-                            fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=8))
-    ax.text(leg_x0 + box_w / 2, leg_y0 + box_h - 16, "LEGEND",
-            color=C_OUT, fontsize=7.5, ha="center", va="center",
-            fontweight="bold", **FONT, zorder=9)
-    for i, (col, txt) in enumerate(legend_items):
-        c = i // n_rows                   # column 0, 1, or 2
-        r = i % n_rows                    # row within column
-        ix = leg_x0 + 20 + c * col_w
-        iy = leg_y0 + box_h - 50 - r * row_h
-        ax.add_patch(Rectangle((ix, iy - 14), 32, 28,
-                                fc=col, ec=C_OUT, lw=0.8, zorder=9, alpha=0.9))
-        ax.text(ix + 42, iy, txt, color=C_DIM, fontsize=6,
-                ha="left", va="center", **FONT, zorder=9)
+    ], 0, leg_y_top, cols=3, col_w=1900, font=FONT, zorder=8)
 
     # ── Egress path annotation ─────────────────────────────────────────────────
     # With drums eliminated, the full container width (2362mm) is clear for egress.

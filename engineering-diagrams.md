@@ -346,3 +346,21 @@ Source reports: [Water System](water-system-report.md) §3,
 [Equipment Layout](equipment-layout-report.md) §4.
 
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
+
+---
+
+### 19. Spray Bar Assembly — Sheet 1
+
+Gantry spray bar detail for the processing tray wash system. Left panel: X-Z gantry
+elevation viewed from the film plane showing the full beam span (40×40×3mm AL SHS with
+1" PVC pipe inside), BV-02 ball valve on the pinhole wall at waist height, flex hose to
+center feed, telescoping pole through a 30mm walkway slit, and operator silhouette.
+Right panel: composite Yd-Z cross section at 1:2 scale combining carriage mechanics
+(Ø50mm nylon wheels, fork brackets, L-bracket, U-clamp), ball joint arm attachment,
+and handle tube with zip-tied hose. Details C and D show wheel attachment section and
+plan. Detail A shows the beam end with PVC socket cap. Plan view shows walkway slit
+positions on near and far walkways.
+
+Source report: [Water System](water-system-report.md) §6.
+
+![TBS-001 — Spray Bar Assembly](assets/spray-bar-sheet1.png)

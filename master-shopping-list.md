@@ -250,9 +250,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
 | [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to center feed bulkhead | 1 | Amazon | $15 |
 | [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Fork-to-arm through-bolts (1 per fork, 4 forks per carriage) | 8 sets | McMaster-Carr | $8 |
-| Fittings + misc hardware | ½" NPT bulkhead (center feed), barb adapter, pole clip, Ø10mm axle pins, snap rings | misc | Amazon / McMaster | $19 |
+| [6061-T6 aluminum plate ¼" (6mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | Fork bracket arms (~200×150mm offcut, 4 U-shaped forks) | 1 sheet | Online Metals | $8–$12 |
+| [20mm ball joint, SS ball + zinc socket](https://www.amazon.com/s?k=20mm+ball+joint+stud+zinc+socket) | Multi-axis arm articulation on beam top face. Ø36mm socket, 50mm flange, M12 stud | 1 | Amazon / McMaster | $8–$15 |
+| [M8 SS U-bolt, 40mm pipe size + nyloc nuts](https://www.amazon.com/s?k=M8+stainless+U+bolt+40mm) | Clamps ball joint socket housing to beam top face | 1 set | McMaster-Carr | $3–$5 |
+| [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
+| M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
+| [½" NPT bulkhead fitting, brass](https://www.amazon.com/s?k=1%2F2+NPT+bulkhead+fitting+brass) | Center feed through beam wall | 1 | Amazon | $8 |
+| [½" MNPT × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+NPT+hose+barb+brass) | Hose connection at bulkhead | 1 | Amazon | $4 |
+| [10mm × 60mm SS clevis pin + R-clip](https://www.mcmaster.com) | Wheel axle pins | 4 | McMaster-Carr | $4–$8 |
+| [E-clip / snap ring for 10mm shaft](https://www.mcmaster.com) | Axle retention (2 per axle) | 8 | McMaster-Carr | $4 |
+| SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
+| [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |
 
-**Spray bar subtotal: ~$156–$208**
+**Spray bar subtotal: ~$195–$265**
 
 ### Water system processing consumables
 

@@ -37,6 +37,7 @@ from tbs_constants import (
     SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
     SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP,
     BV02_Z,
+    SPRAY_BAR_SLIT_W,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
@@ -186,7 +187,7 @@ ax.text(sx((wk_l + wk_r) / 2), sz(GRATE_Z_TOP + 5),
 # (Right walkway omitted — beyond cut line)
 
 # ── Near walkway slit at pole_x (cross-section through walkway) ─────────
-SLIT_WIDTH = 30
+SLIT_WIDTH = SPRAY_BAR_SLIT_W
 slit_x_l = pole_x - SLIT_WIDTH / 2
 slit_x_r = pole_x + SLIT_WIDTH / 2
 

@@ -482,6 +482,7 @@ SPRAY_BAR_HOLE_SP    = 100         # spray hole spacing along beam bottom (mm)
 SPRAY_BAR_N_HOLES    = int((SPRAY_BAR_SPAN - 2 * 79.5) / SPRAY_BAR_HOLE_SP) + 1  # = 38
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM // 2  # = 30mm — feed end cap center
+SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 
 # ── External fill/drain ports — far end wall bulkhead fittings (rev 5) ───────
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).

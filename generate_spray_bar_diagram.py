@@ -36,7 +36,7 @@ from tbs_constants import (
     PROC_OPEN_X_L, PROC_OPEN_X_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
     SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP,
-    BV02_Z,
+    BV02_X, BV02_Z,
     SPRAY_BAR_SLIT_W,
 )
 from tbs_title_block import title_block
@@ -130,7 +130,6 @@ def sz(z_mm):
     return 1.0 + z_mm / V_SC
 
 pole_x = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
-BV02_X = PROC_OPEN_X_L + 200
 
 CUT_X = int(pole_x) + 300
 X_LO = -100
@@ -327,16 +326,16 @@ leader(ax, sx(BV02_X - 30), sz(bv_z + 35),
        fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
 # ── Flex hose from BV-02 to beam center feed ────────────────────────────
-hose_start_x = BV02_X + bv_size / 2
-hose_start_z = bv_z
+hose_start_x = BV02_X
+hose_start_z = bv_z - bv_size / 2
 hose_end_x = pole_x
 hose_end_z = BEAM_Z_TOP + 5
 
 n_pts = 100
 ht = np.linspace(0, 1, n_pts)
 P0 = np.array([hose_start_x, hose_start_z])
-P1 = np.array([hose_start_x + 300, hose_start_z - 300])
-P2 = np.array([hose_end_x - 500, hose_end_z + 100])
+P1 = np.array([hose_start_x + 80, hose_start_z - 300])
+P2 = np.array([hose_end_x - 80, hose_end_z + 200])
 P3 = np.array([hose_end_x, hose_end_z])
 hose_xs = (1-ht)**3*P0[0] + 3*(1-ht)**2*ht*P1[0] + 3*(1-ht)*ht**2*P2[0] + ht**3*P3[0]
 hose_zs = (1-ht)**3*P0[1] + 3*(1-ht)**2*ht*P1[1] + 3*(1-ht)*ht**2*P2[1] + ht**3*P3[1]
@@ -346,8 +345,8 @@ hose_zs += 3.0 * np.sin(np.linspace(0, 14 * np.pi, n_pts)) * envelope
 ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs],
         color=C_HOSE, lw=2.0, alpha=0.7, zorder=11)
 
-ax.text(sx(BV02_X + 500), sz(bv_z - 200),
-        "1/2\" FLEX HOSE → CENTER FEED (4m COILED)",
+ax.text(sx(BV02_X + 200), sz(bv_z - 200),
+        "1/2\" FLEX HOSE\n-> CENTER FEED\n(4m COILED)",
         ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
 # ── Center feed fitting at beam center ───────────────────────────────────
@@ -380,16 +379,16 @@ draw_dim_v(ax, sx(CUT_X - 50), sz(TRAY_FLOOR_Z), sz(BEAM_Z_BOT),
            f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY\nHGT",
            offset=6 / H_SC, fs=4.5, font=FONT, right=True)
 
-draw_dim_v(ax, sx(BV02_X + 40), sz(0), sz(bv_z),
+draw_dim_v(ax, sx(BV02_X - 60), sz(0), sz(bv_z),
            f"{int(bv_z)}mm\nBV-02",
-           offset=6 / H_SC, fs=4.5, font=FONT, right=True)
+           offset=6 / H_SC, fs=4.5, font=FONT)
 
 # ── Notes (positioned low to avoid hiding graphics) ─────────────────────
 notes = [
     "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
     f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 1\" PVC pipe inside.",
     f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
-    "3. BV-02 on pinhole wall at waist height → flex hose → center feed.",
+    "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose → center feed.",
     "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
 ]
 draw_notes(ax, notes, sx(X_LO + 50), sz(250), spacing=5 / V_SC,

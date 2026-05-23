@@ -36,7 +36,7 @@ from tbs_constants import (
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X,
     PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM,
     PROC_TRAY_YD_NEAR, PROC_TRAY_D, PROC_TRAY_PITCH,
-    SPRAY_BAR_FEED_Z, BV02_Z,
+    SPRAY_BAR_FEED_Z, BV02_X, BV02_Z,
     RAIL_OFF,
     FAN_B_H, FAN_B_YD, FAN_DIAM,
     C_OUT, C_CL, C_DIM,
@@ -503,7 +503,8 @@ ax.text(sx(_supply_mid_x), sz(SUPPLY_Z - 30),
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
 # ── BV-02 — spray bar isolation valve (riser from supply to Z=900) ───────
-BV02_X = WK_X_L + 200   # near left walkway, accessible from near walkway
+
+
 BV02_R = 25              # valve body radius for symbol
 
 # Riser from supply pipe up to BV-02
@@ -670,7 +671,7 @@ for ix_mm, ilabel in items:
 notes = [
     "NOTES — REV 7 REORG",
     f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),",
-    "   from IBC zone to spray bar. BV-02 riser to Z=900 (waist height).",
+    "   from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height).",
     "   Chemistry tap branch (¾\") rises to shelf.",
     "2. Evap cooler relocated EXTERNAL — only Ø200mm duct penetration remains at X=1200, Z=2100.",
     "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02",

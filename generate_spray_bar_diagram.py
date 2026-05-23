@@ -397,7 +397,7 @@ draw_notes(ax, notes, sx(X_LO + 50), sz(250), spacing=5 / V_SC,
 # ── Person silhouette (same style as hinge panel diagram) ───────────────
 PERSON_H = 1780
 HEAD_R = 80
-oper_x = pole_x - 150
+oper_x = pole_x - 650
 P_FOOT = GRATE_Z_TOP
 P_HEAD = P_FOOT + PERSON_H
 # Body (vertical line from feet to head center — head circle overlaps the join)

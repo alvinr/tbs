@@ -674,25 +674,25 @@ wk_yd_r = WALKWAY_W
 
 ax2.add_patch(Rectangle((cy(wk_yd_l), cz(GRATE_Z_BOT)),
                           (wk_yd_r - wk_yd_l) / SC2, WALKWAY_GRATE_T / SC2,
-                          fc=C_GRATE, ec=C_OUT, lw=2.0, zorder=10))
+                          fc=C_GRATE, ec=C_OUT, lw=0.8, alpha=0.20, zorder=10))
 for frac in np.linspace(0.08, 0.92, 8):
     mesh_yd = wk_yd_l + (wk_yd_r - wk_yd_l) * frac
     ax2.plot([cy(mesh_yd), cy(mesh_yd)], [cz(GRATE_Z_BOT), cz(GRATE_Z_TOP)],
-              color="#888888", lw=0.5, zorder=10)
+              color="#888888", lw=0.3, alpha=0.25, zorder=10)
 
 ax2.text(cy((wk_yd_l + wk_yd_r) / 2), cz(GRATE_Z_TOP + 6),
-         "NEAR WALKWAY", ha="center", va="bottom",
-         fontsize=5.5, color=C_GRATE, fontweight="bold", **FONT, zorder=10)
+         "NEAR WALKWAY (PROJECTED)", ha="center", va="bottom",
+         fontsize=5, color=C_GRATE, style="italic", **FONT, zorder=10)
 
-# Walkway support bracket
+# Walkway support bracket (ghost)
 brk_depth_r = 60
 ax2.plot([cy(0), cy(0)], [cz(GRATE_Z_BOT - brk_depth_r), cz(GRATE_Z_BOT)],
-         color=C_FRAME, lw=1.5, zorder=5)
+         color=C_FRAME, lw=0.8, alpha=0.25, zorder=5)
 ax2.plot([cy(0), cy(wk_yd_r)], [cz(GRATE_Z_BOT), cz(GRATE_Z_BOT)],
-         color=C_FRAME, lw=1.2, zorder=5)
+         color=C_FRAME, lw=0.6, alpha=0.25, zorder=5)
 ax2.plot([cy(0), cy(wk_yd_r)],
          [cz(GRATE_Z_BOT - brk_depth_r), cz(GRATE_Z_BOT)],
-         color=C_FRAME, lw=0.8, ls="--", zorder=5)
+         color=C_FRAME, lw=0.5, ls="--", alpha=0.25, zorder=5)
 
 # ── Wheels (2× Ø50mm nylon) ──────────────────────────────────────────────
 for w_yd in [wheel1_yd, wheel2_yd]:

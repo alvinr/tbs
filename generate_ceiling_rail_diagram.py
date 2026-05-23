@@ -26,7 +26,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT, WALL_T,
@@ -343,9 +343,7 @@ def sheet1():
                width=(X_HI - X_LO) * 0.95)
 
     # ── Legend ────────────────────────────────────────────────────────────────
-    legend_x = X_HI - 480
-    leg_spacing = 33
-    swatches = [
+    draw_legend(ax, [
         (C_ALUM,  0.85, "Panel (operational)"),
         (C_ALUM,  0.20, "Panel (transport)"),
         (C_RAIL,  1.0,  "HGR20 rail"),
@@ -353,31 +351,8 @@ def sheet1():
         (C_TRAY,  1.0,  "Processing tray"),
         ("#D0D0D4", 0.25, "Walkway grate (removed)"),
         (C_SEAL,  1.0,  "EPDM seal"),
-    ]
-    n_items = len(swatches)
-    legend_top = Z_HI - 350
-    leg_title_y = legend_top + leg_spacing
-
-    # Background box
-    leg_box_x = legend_x - 10
-    leg_box_top = leg_title_y + leg_spacing * 0.5
-    leg_box_bot = legend_top - n_items * leg_spacing + leg_spacing * 0.3
-    leg_box_w = 400
-    ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
-                            leg_box_top - leg_box_bot,
-                            fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))
-
-    # Title
-    ax.text(legend_x, leg_title_y, "LEGEND:", ha="left", va="center",
-            fontsize=6, fontweight="bold", color=C_DIM, **FONT, zorder=15)
-
-    for i, (c, a, lbl) in enumerate(swatches):
-        sy = legend_top - i * leg_spacing
-        ax.add_patch(Rectangle((legend_x, sy - 7), 18, 14,
-                                fc=c, ec=C_OUT, lw=0.6, alpha=a, zorder=15))
-        ax.text(legend_x + 25, sy, lbl,
-                ha="left", va="center", fontsize=5.5, color=C_DIM,
-                **FONT, zorder=15)
+    ], X_HI - 490, Z_HI - 310, row_h=33, swatch_w=18, swatch_h=14,
+       col_w=360, fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 2",

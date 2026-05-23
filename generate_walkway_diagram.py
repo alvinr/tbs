@@ -53,7 +53,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
@@ -796,8 +796,8 @@ def sheet1():
                f"{WALKWAY_BRACKET_SPACING}mm BRACKET SPACING (TYP.)",
                offset=50, fs=6, above=False, font=FONT)
 
-    # ── Legend (boxed, matching floorplan style) ────────────────────────────
-    legend_items = [
+    # ── Legend ────────────────────────────────────────────────────────────────
+    draw_legend(ax, [
         (C_WK,       WK_ALPHA, "xx",  "Walkway (grated deck)"),
         ("#E8F0FF",  0.3,      None,  "Processing tray"),
         (C_BRKT,     1.0,      None,  f"Wall bracket ({WALKWAY_BRACKET_T}mm gusset)"),
@@ -805,26 +805,7 @@ def sheet1():
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
         ("#FF0000",  0.06,     None,  "Panel transport envelope"),
         ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
-    ]
-    n_items = len(legend_items)
-    row_h = 46
-    box_w = 2200
-    box_h = n_items * row_h + 50
-    leg_x0 = C_LEN - box_w - 50
-    leg_y0 = C_WID + PAD_Y_TOP - box_h - 10
-    ax.add_patch(Rectangle((leg_x0, leg_y0), box_w, box_h,
-                            fc="#FAFAFA", ec=C_DIM, lw=0.8, zorder=14))
-    ax.text(leg_x0 + box_w / 2, leg_y0 + box_h - 16, "LEGEND",
-            color=C_OUT, fontsize=7.5, ha="center", va="center",
-            fontweight="bold", **FONT, zorder=15)
-    for i, (col, alpha, hatch, txt) in enumerate(legend_items):
-        ix = leg_x0 + 20
-        iy = leg_y0 + box_h - 50 - i * row_h
-        ax.add_patch(Rectangle((ix, iy - 14), 32, 28,
-                                fc=col, ec=C_OUT, lw=0.8, zorder=15,
-                                alpha=alpha, hatch=hatch))
-        ax.text(ix + 42, iy, txt, color=C_DIM, fontsize=6,
-                ha="left", va="center", **FONT, zorder=15)
+    ], C_LEN - 2250, C_WID + PAD_Y_TOP - 10, col_w=2160, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     n_brackets_near = len(np.arange(LXR + WALKWAY_BRACKET_SPACING / 2,

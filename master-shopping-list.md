@@ -497,10 +497,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | [12V DC evaporative cooler](https://www.portacool.com) | ~80W, ~300 CFM (Portacool Jetstream 110 12V or equiv.) | 1 | [Portacool](https://www.portacool.com) / Amazon | ~$280 |
 | 150mm duct collar + baffles (cooler intake) | Light-safe baffled intake through bottom wall | 1 lot | McMaster-Carr / local fab | ~$30 |
+| 25mm ratchet strap, 2m | Cooler transport stowage on near walkway | 2 | Amazon / Harbor Freight | ~$10 |
+| 12mm plywood base plate 600×350mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
+| 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
 
-**Cooler subtotal: ~$310**
+**Cooler subtotal: ~$329**
 
-**Section total: ~$690**  
+**Section total: ~$709**  
 *Note: fans wired to Circuits A & B, cooler to Circuit E — all from main fuse block. No separate power supply required.*
 
 ---

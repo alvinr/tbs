@@ -161,6 +161,7 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet3.png",
     "pinhole-wall-elevation.png",
     "panel-layout.png",
+    "spray-bar-sheet1.png",
 ]
 
 MKDOCS_YML = """\

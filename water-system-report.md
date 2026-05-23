@@ -246,14 +246,14 @@ The processing tray is permanently installed — it remains in place during both
 
 The spray bar delivers Blue (clean) water evenly across the processing tray during print washing. The operator slides the bar along the tray (Yd direction, from film-plane side toward the pinhole wall), flooding the print surface progressively.
 
-**Design concept:** The beam spans the open processing area between the left and right walkway inner edges (X=470 to X=4,329, span=3,859mm). At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. The aluminum SHS beam itself serves as the spray pipe — water flows through the hollow bore and exits through drilled holes in the bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
+**Design concept:** The beam spans from 30mm inside the left tray lip to 30mm inside the right tray lip (X=200 to X=4,599, span=4,399mm), extending under the walkway grating at each end. At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. A 1" PVC Sch 40 pipe inside the aluminum SHS bore serves as the spray pipe — water flows through the PVC pipe and exits through 2mm holes drilled in the pipe wall, aligned with 12mm apertures in the beam bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
 
 **Design constraints:**
 
-- Beam spans the open processing area (3,859mm) between walkway inner edges — does not extend under walkway grating
+- Beam spans 4,399mm (30mm inside each tray lip), extending under walkway grating at both ends
 - Beam top must clear walkway grating underside (Z=75mm) to avoid contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath the walkways
-- Single-operator use — push/pull from the near walkway via telescoping pole
+- Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit in the walkway grating
 - Must travel 2,200mm along Yd (tray depth, near rim to far rim)
 - Tray rim walls provide lateral guidance — no separate guide rails required
 - Must accommodate a flexible water connection that follows the bar as it moves
@@ -262,18 +262,23 @@ The spray bar delivers Blue (clean) water evenly across the processing tray duri
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam / spray pipe | 6061-T6 AL SHS, 40×40×3mm, 3,859mm long | 1 | Structural beam AND water distribution pipe |
-| Feed end cap | 6061-T6 AL plate 3mm, TIG welded to beam end | 1 | Seals beam end; carries 1/2" NPT bulkhead fitting |
-| Dead end cap | 6061-T6 AL plate 3mm, TIG welded to beam end | 1 | Seals beam end (solid) |
-| Bulkhead fitting | 1/2" NPT, brass or stainless | 1 | Connects flexible hose to beam bore |
+| Beam | 6061-T6 AL SHS, 40×40×3mm, 4,399mm long (two 8ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
+| Internal spray pipe | 1" Sch 40 PVC pipe (OD 33.4mm), close fit in 34mm bore. 2mm holes at each aperture | 1 | Water distribution — sits inside beam bore |
+| PVC socket caps | 1" Sch 40, solvent welded to pipe ends | 2 | Seal both ends of PVC spray pipe |
+| Bulkhead fitting | 1/2" NPT, brass, through beam wall at center | 1 | Center feed — connects hose to PVC pipe bore |
 | Nylon wheels | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating |
-| Wheel fork brackets | 3mm galvanized steel plate, U-fork profile | 4 | Mount wheels on axle pins |
-| Axle pins | 10mm steel clevis pin with R-clip | 4 | Wheel spindles |
-| L-brackets | 6061-T6 AL plate 5mm, bent L-profile | 2 | Connect wheel carriages to beam; drop beam below axle |
+| Wheel fork brackets | 6061-T6 AL plate 6mm, U-fork profile | 4 | Mount wheels on axle pins |
+| Axle pins | 10mm SS clevis pin + snap rings | 4 | Wheel spindles (snap ring retention both ends) |
+| L-brackets | 6061-T6 AL plate 5mm, horizontal arm | 2 | Connect wheel carriages to beam via U-clamp |
+| U-clamps | SS, flared legs, wing nuts — wraps 40mm SHS | 2 | Attach beam to L-bracket arms, tool-free adjustment |
+| Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
+| M8 U-bolt | SS, wraps over ball joint socket, nyloc nuts | 1 | Clamps ball joint to beam |
+| Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
+| M6 pinch bolt | SS hex bolt + nut | 1 | Clamps arm tube onto ball joint stud |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4m | 1 | Operator controls bar position from near walkway |
-| Pole clip | Stainless spring clip or U-bolt | 1 | Attaches pole to beam center |
-| Flexible hose | 1/2" reinforced braided PVC, ~4m coiled | 1 | Connects BV-02 to beam feed end |
+| Flexible hose | 1/2" reinforced braided PVC, ~4m coiled | 1 | Connects BV-02 to center feed bulkhead |
 | Hose barb fitting | 1/2" MNPT × 1/2" barb, brass | 1 | Connects hose to bulkhead fitting exterior |
+| Zip ties | Nylon, 200mm | ~6 | Secure flex hose to arm tube |
 
 #### 3.5.1 Beam / Spray Pipe
 
@@ -442,7 +447,7 @@ The bore is deliberately oversized relative to the total spray hole area (bore 4
 
 #### 3.5.7 Water Connection
 
-BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at Z=150mm, near the tray rim. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 to the beam's feed end cap bulkhead fitting (X=470, left end of beam). The hose is coiled when the bar is near the pinhole wall (Yd≈80) and extends as the bar is pushed toward the far wall (Yd≈2,280). The hose trails along the near tray rim, staying clear of the print surface.
+BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at Z=900mm, waist height from the walkway deck. A 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 down to the beam's center feed bulkhead fitting. The hose is coiled when the bar is near the pinhole wall (Yd≈80) and extends as the bar is pushed toward the far wall (Yd≈2,280). The hose trails along the near tray rim, staying clear of the print surface.
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 

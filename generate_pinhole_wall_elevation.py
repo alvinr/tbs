@@ -486,8 +486,8 @@ ax.text(sx(_note_x), sz(_note_z),
 
 IBC_PIPE_EXIT_X = ZONE_R_START   # pipes enter IBC stack zone
 
-# Blue supply pipe: IBC zone → full length to spray bar at Z=75
-SUPPLY_Z = SPRAY_BAR_FEED_Z  # 75mm — below walkway grating
+# Blue supply pipe: IBC zone → full length to spray bar
+SUPPLY_Z = SPRAY_BAR_FEED_Z  # 30mm — beam center, below walkway grating
 draw_pipe_path(ax,
     [IBC_PIPE_EXIT_X, WK_X_L],
     [SUPPLY_Z, SUPPLY_Z],
@@ -499,10 +499,10 @@ ax.annotate("", xy=(sx(_supply_mid_x - 200), sz(SUPPLY_Z)),
             xytext=(sx(_supply_mid_x + 200), sz(SUPPLY_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
 ax.text(sx(_supply_mid_x), sz(SUPPLY_Z - 30),
-        "BLUE SUPPLY → SPRAY BAR (Z=75, BELOW GRATING)", ha="center", va="top",
+        f"BLUE SUPPLY → SPRAY BAR (Z={SUPPLY_Z}, BELOW GRATING)", ha="center", va="top",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# ── BV-02 — spray bar isolation valve (riser from Z=75 to Z=900) ────────
+# ── BV-02 — spray bar isolation valve (riser from supply to Z=900) ───────
 BV02_X = WK_X_L + 200   # near left walkway, accessible from near walkway
 BV02_R = 25              # valve body radius for symbol
 
@@ -536,7 +536,7 @@ ax.text(sx(BV02_X - 50), sz(BV02_Z - 80),
         style="italic", zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
-# Branch tee off the Blue supply trunk at Z=75, rises to tap height.
+# Branch tee off the Blue supply trunk, rises to tap height.
 TAP_OD = 25     # 3/4" branch pipe
 TAP_WALL = 3
 TAP_BRANCH_Z = TAP_Z + 100   # 1250mm — horizontal run height
@@ -544,7 +544,7 @@ TAP_TEE_X = 3400              # tee point on Blue supply trunk
 BV06_X = 3600                 # valve position — close to shelf left edge (3729)
 BV06_R = 25                   # valve body radius for symbol
 
-# Riser from Z=75 up to TAP_BRANCH_Z, horizontal to BV-06
+# Riser from supply pipe up to TAP_BRANCH_Z, horizontal to BV-06
 draw_pipe_path(ax,
     [TAP_TEE_X, TAP_TEE_X, BV06_X - BV06_R],
     [SUPPLY_Z, TAP_BRANCH_Z, TAP_BRANCH_Z],
@@ -669,7 +669,7 @@ for ix_mm, ilabel in items:
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
     "NOTES — REV 7 REORG",
-    "1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z=75 (below walkway grating),",
+    f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),",
     "   from IBC zone to spray bar. BV-02 riser to Z=900 (waist height).",
     "   Chemistry tap branch (¾\") rises to shelf.",
     "2. Evap cooler relocated EXTERNAL — only Ø200mm duct penetration remains at X=1200, Z=2100.",

@@ -75,6 +75,7 @@ from tbs_constants import (
     LEFT_WK_BEARING_STRIP,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     EP_X, EP_W, BA_X, BA_W,
+    EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_X, EVAP_STOW_YD,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -687,6 +688,28 @@ def sheet1():
     ax.text(BA_X + BA_W / 2, 60, "BATT", ha="center", va="center",
             fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
 
+    # ── Evap cooler transport stowage (on near walkway) ───────────────────────
+    C_EVAP_STOW = "#3DAA96"
+    ax.add_patch(Rectangle((EVAP_STOW_X, EVAP_STOW_YD),
+                            EVAP_W, EVAP_D,
+                            fc=C_EVAP_STOW, ec=C_OUT, lw=1.5,
+                            alpha=0.35, zorder=7))
+    ax.plot([EVAP_STOW_X, EVAP_STOW_X + EVAP_W],
+            [EVAP_STOW_YD + EVAP_D / 2, EVAP_STOW_YD + EVAP_D / 2],
+            color=C_OUT, lw=0.5, ls="--", alpha=0.4, zorder=7)
+    ax.text(EVAP_STOW_X + EVAP_W / 2, EVAP_STOW_YD + EVAP_D / 2,
+            f"EVAP COOLER\nTRANSPORT STOW\n{EVAP_W}×{EVAP_D}mm",
+            ha="center", va="center", fontsize=5, color=C_OUT,
+            fontweight="bold", **FONT, zorder=8)
+    # Ratchet strap indicators (two lines across cooler to bracket arms)
+    for strap_x in [EVAP_STOW_X + 100, EVAP_STOW_X + EVAP_W - 100]:
+        ax.plot([strap_x, strap_x], [NY - 20, EVAP_STOW_YD + EVAP_D + 30],
+                color="#CC6600", lw=2.0, ls=(0, (3, 2)), alpha=0.7, zorder=8)
+    ax.text(EVAP_STOW_X + EVAP_W + 40, EVAP_STOW_YD + EVAP_D / 2,
+            "RATCHET\nSTRAPS (×2)\nTO WALL\nBRACKETS",
+            ha="left", va="center", fontsize=4.5, color="#CC6600",
+            **FONT, zorder=8)
+
     # ── Panel transport envelope (dashed red) ────────────────────────────────
     # Show the zone swept by the panel when sliding to transport position.
     # Left walkway must be removed before panel slides.
@@ -781,6 +804,7 @@ def sheet1():
         ("#E8F0FF",  0.3,      None,  "o", "Processing tray"),
         (C_BRKT,     1.0,      None,  "r", f"Wall bracket ({WALKWAY_BRACKET_T}mm gusset)"),
         (C_SUPPORT,  0.8,      None,  "r", f"Support cradle / bearing strip (removable)"),
+        ("#3DAA96",  0.35,     None,  "r", f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
     ]
     for i, (c, a, h, marker, lbl) in enumerate(swatches):
         sy_pos = legend_top - i * 50
@@ -815,6 +839,8 @@ def sheet1():
         f"   spans {WALKWAY_LEFT_SPAN}mm. {LEFT_WK_LEG_N} floor legs + bearing strip.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
+        f"8. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
+        f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
     ]
     draw_notes(ax, notes, C_LEN * 3 / 5 -50,
                -PAD_Y_BOT + 350 + (len(notes) - 1) * 35,

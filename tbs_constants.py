@@ -167,12 +167,14 @@ DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headr
 EVAP_DUCT_X  = 1200    # duct penetration center X (mm) — through pinhole wall
 EVAP_DUCT_Z  = 2100    # duct penetration center Z (mm)
 EVAP_DUCT_D  = 200     # duct outer diameter (mm)
-# Legacy interior constants (retained while generators are updated)
-EVAP_X     = 930     # [DEPRECATED rev7 — evap now external]
-EVAP_W     = 600     # [DEPRECATED rev7]
-EVAP_Y     = 0       # [DEPRECATED rev7]
-EVAP_D     = 350     # [DEPRECATED rev7]
-EVAP_H     = 800     # [DEPRECATED rev7]
+# Physical dimensions (used for transport stowage sizing)
+EVAP_W     = 600     # cooler width along X (mm)
+EVAP_D     = 350     # cooler depth along Yd (mm)
+EVAP_H     = 800     # cooler height (mm)
+# Transport stowage — on near walkway grating, close to cargo door end
+EVAP_STOW_X    = 500     # stowage left edge X (mm) — just past left walkway butt joint
+EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
+EVAP_STOW_Z    = 100     # sits on grating surface (Z=100mm, same as WALKWAY_H)
 
 # ── External power panel (pinhole wall exterior, near EP) ─────────────────────
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP

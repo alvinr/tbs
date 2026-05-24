@@ -1338,13 +1338,15 @@ ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
 draw_dim_v(ax4a, sa_y(tray_yd_near - 25), sa_z(0), sa_z(RIM_TOP),
            f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=1.5, fs=7, right=False)
 
-# Tray floor height above container floor
-draw_dim_v(ax4a, sa_y(sump_yd_end + 30), sa_z(0), sa_z(TRAY_BASE_Z),
-           f"{PROC_TRAY_SUMP_Z}mm\nTRAY FLOOR", offset=1.0, fs=6.5, right=True)
+# Tray floor height (20mm — too short for dim_v label, use leader)
+leader(ax4a, sa_y(sump_yd_end + 20), sa_z(TRAY_BASE_Z),
+       sa_y(sump_yd_end + 80), sa_z(TRAY_BASE_Z + 30),
+       f"{PROC_TRAY_SUMP_Z}mm TRAY FLOOR AFF", fs=6.5, color=C_DIM)
 
-# Sump depth (same as tray floor height — shows the cavity)
-draw_dim_v(ax4a, sa_y(sump_yd_end + 10), sa_z(sump_z_floor), sa_z(TRAY_BASE_Z),
-           f"{PROC_TRAY_SUMP_Z}mm\nSUMP", offset=1.0, fs=7, right=True)
+# Sump depth (20mm — too short for dim_v label, use leader)
+leader(ax4a, sa_y(sump_yd_end + 5), sa_z(sump_z_floor + TRAY_BASE_Z / 2),
+       sa_y(sump_yd_end + 80), sa_z(-15),
+       f"{PROC_TRAY_SUMP_Z}mm SUMP DEPTH", fs=6.5, color=C_DIM)
 
 # Sump width (Yd extent)
 draw_dim_h(ax4a, sa_y(sump_yd_start), sa_y(sump_yd_end),
@@ -1393,7 +1395,7 @@ leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
        f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\n{PROC_TRAY_SUMP_Z}-{PROC_TRAY_SUMP_Z + PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
 
 # Slope note
-ax4a.text(sa_y(310), sa_z(-10),
+ax4a.text(sa_y(360), sa_z(-20),
           f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D:,}mm (1:220)\n"
           f"SLOPE EXAGGERATED {SLOPE_EXAG_A:.0f}x",
           ha="center", va="center", fontsize=6, color="#0D47A1",

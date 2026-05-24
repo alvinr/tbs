@@ -930,15 +930,34 @@ ax3.text(OX + TRAY_DRAW_W + 0.15, (far_wk_y0 + far_wk_y1)/2,
          ha="left", va="center", fontsize=6, color=WK_COLOR)
 
 # ── Pipe run from drain ──────────────────────────────────────────────────────
-# 1" HDPE runs along near wall (Yd≈60) to diverter valve 3W-DV-02
-pipe_y = drain_dy - 0.8
-ax3.plot([drain_dx, drain_dx], [drain_dy - DRAIN_R, pipe_y], color=C_BROWN,
-         lw=2.5, solid_capstyle="round", zorder=5)
-ax3.annotate("", xy=(OX - 0.2, pipe_y), xytext=(drain_dx, pipe_y),
+# 1" suction hose exits sump, runs RIGHT along rim exterior to tray corner,
+# then turns NORTH toward equipment panel (Yd=1046).
+corner_local_x = PROC_TRAY_W + 15   # just past tray right edge
+pipe_rim_yd = drain_local_yd - 60    # rim exterior (below near edge)
+pipe_rim_dy = s3y(pipe_rim_yd)
+
+# Short drop from sump to rim exterior
+ax3.plot([drain_dx, drain_dx], [drain_dy - DRAIN_R, pipe_rim_dy],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
+
+# Right along rim exterior to tray corner
+corner_dx = s3x(corner_local_x)
+ax3.plot([drain_dx, corner_dx], [pipe_rim_dy, pipe_rim_dy],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
+
+# Turn north toward equipment panel (arrow indicates continuation)
+ax3.annotate("", xy=(corner_dx, pipe_rim_dy + 1.2),
+             xytext=(corner_dx, pipe_rim_dy),
              arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
                              mutation_scale=12), zorder=5)
-ax3.text(drain_dx - 1.5, pipe_y - 0.2,
-         "P-04 SUCTION HOSE (OVER RIM TO PUMP MANIFOLD)",
+
+ax3.text(corner_dx + 0.2, pipe_rim_dy + 0.6,
+         "(DRAIN → IBC SIDE)",
+         ha="left", va="center", fontsize=6.5, color=C_BROWN,
+         style="italic", zorder=8)
+
+ax3.text((drain_dx + corner_dx) / 2, pipe_rim_dy - 0.25,
+         "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
          ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
 
 # ── Notes ────────────────────────────────────────────────────────────────────

@@ -784,7 +784,7 @@ ax3.add_patch(plt.Rectangle((OX + RIM_DU, OY + RIM_DU),
 # Low point: IBC corner (near rim, right side) — drain at X=4550, Yd=80
 # High point: far-left corner (opposite diagonal)
 drain_local_x_s3 = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
-ax3.text(s3x(drain_local_x_s3), OY - 0.55, "LOW CORNER\n(DRAIN — IBC SIDE)",
+ax3.text(s3x(drain_local_x_s3), OY - 1.1, "LOW CORNER\n(DRAIN — IBC SIDE)",
          ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
 ax3.text(OX - 0.15, OY + TRAY_DRAW_H + 0.35,
          "HIGH CORNER\n(FAR-LEFT)",
@@ -850,13 +850,13 @@ ax3.plot([drain_dx, drain_dx],
          [drain_dy - DRAIN_R*0.7, drain_dy + DRAIN_R*0.7],
          color="#D32F2F", lw=1.8, zorder=7)
 
-# Drain label
-ax3.text(drain_dx + 1.55, drain_dy + 0.2, "SUMP WELL (P-04 PICKUP)",
-         ha="center", va="top", fontsize=7.5, fontweight="bold",
-         color="#D32F2F", zorder=8)
-ax3.text(drain_dx - 0.9, drain_dy + 0.1,
-         f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}\n{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
-         ha="center", va="bottom", fontsize=6.5, color="#D32F2F", zorder=8)
+# Drain label — single leader to the right (clear side)
+leader(ax3, drain_dx + DRAIN_R, drain_dy,
+       drain_dx + 1.8, drain_dy + 0.5,
+       f"SUMP WELL (P-04 PICKUP)\n"
+       f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}\n"
+       f"{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
+       fs=7, color="#D32F2F", ha="left")
 
 # ── Slope annotations ────────────────────────────────────────────────────────
 # Slope: 1:200 in both X and Yd toward drain corner (IBC side)

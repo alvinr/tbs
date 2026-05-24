@@ -804,8 +804,8 @@ def sheet1():
         (C_SUPPORT,  0.8,      None,  f"Support cradle / bearing strip (removable)"),
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
         ("#FF0000",  0.06,     None,  "Panel transport envelope"),
-        ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
-    ], C_LEN - 2250, C_WID + PAD_Y_TOP - 10, col_w=2160, font=FONT)
+        ("#CC6600",  0.7,      None,  "Ratchet trap (transport securing)"),
+    ], C_LEN - 1225, C_WID + PAD_Y_TOP - 450, col_w=1100, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     n_brackets_near = len(np.arange(LXR + WALKWAY_BRACKET_SPACING / 2,
@@ -826,9 +826,9 @@ def sheet1():
         f"8. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
     ]
-    draw_notes(ax, notes, C_LEN * 3 / 5 -50,
-               -PAD_Y_BOT + 350 + (len(notes) - 1) * 35,
-               spacing=35, fs=5.5, width=2600, font=FONT)
+    draw_notes(ax, notes, C_LEN * 0.7  -50,
+               -PAD_Y_BOT + 350 + (len(notes) - 1) * 30,
+               spacing=35, fs=5.5, width=1800, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",

@@ -792,7 +792,7 @@ ax3.text(OX - 0.15, OY + TRAY_DRAW_H + 0.35,
 
 ax3.text(OX - 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nEDGE",
          ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
-ax3.text(OX + TRAY_DRAW_W + 0.15, OY - 0.3, "LOW\nEDGE",
+ax3.text(OX + TRAY_DRAW_W + 0.15, OY - 0.2, "LOW EDGE",
          ha="left", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
 
 # ── Slope arrows (flow direction) ───────────────────────────────────────────

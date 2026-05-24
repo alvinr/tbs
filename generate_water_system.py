@@ -945,16 +945,26 @@ corner_dx = s3x(corner_local_x)
 ax3.plot([drain_dx, corner_dx], [pipe_rim_dy, pipe_rim_dy],
          color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
-# Turn north toward equipment panel (arrow indicates continuation)
-ax3.annotate("", xy=(corner_dx, pipe_rim_dy + 1.2),
-             xytext=(corner_dx, pipe_rim_dy),
-             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=2.5,
-                             mutation_scale=12), zorder=5)
+# North from tray corner to corridor level
+panel_local_yd = CORRIDOR_YD_NEAR - PROC_TRAY_YD_NEAR   # 966mm
+panel_local_x = EQPANEL_X - PROC_TRAY_X_L               # 4830mm
+panel_dy = s3y(panel_local_yd)
+panel_dx = s3x(panel_local_x)
+ax3.plot([corner_dx, corner_dx], [pipe_rim_dy, panel_dy],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
-ax3.text(corner_dx + 0.2, pipe_rim_dy + 0.6,
-         "(DRAIN → IBC SIDE)",
-         ha="left", va="center", fontsize=6.5, color=C_BROWN,
-         style="italic", zorder=8)
+# Right into equipment panel
+ax3.plot([corner_dx, panel_dx], [panel_dy, panel_dy],
+         color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
+
+# Equipment panel symbol (small rectangle at pipe terminus)
+ax3.add_patch(plt.Rectangle((panel_dx, panel_dy - 0.25),
+              0.15, 0.5,
+              fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=6))
+
+leader(ax3, panel_dx, panel_dy,
+       panel_dx + 0.8, panel_dy + 0.6,
+       "EQUIPMENT PANEL\n(P-04, FILTERS)", fs=6.5, color=C_PUMP)
 
 ax3.text((drain_dx + corner_dx) / 2, pipe_rim_dy - 0.25,
          "P-04 SUCTION HOSE ALONG RIM EXTERIOR",

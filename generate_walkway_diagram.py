@@ -804,7 +804,7 @@ def sheet1():
         (C_SUPPORT,  0.8,      None,  f"Support cradle / bearing strip (removable)"),
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
         ("#FF0000",  0.06,     None,  "Panel transport envelope"),
-        ("#CC6600",  0.7,      None,  "Ratchet trap (transport securing)"),
+        ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
     ], C_LEN - 1225, C_WID + PAD_Y_TOP - 450, col_w=1100, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────

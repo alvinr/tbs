@@ -438,7 +438,7 @@ ax.add_patch(plt.Circle((sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z)), duct_r * S,
 ax.text(sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z), f"DUCT\nØ{EVAP_DUCT_D}",
         ha="center", va="center", fontsize=4.0, color=C_OUT, zorder=9, **FONT)
 leader(ax, sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z - duct_r),
-       sx(EVAP_DUCT_X + 300), sz(EVAP_DUCT_Z - 200),
+       sx(EVAP_DUCT_X + 100), sz(EVAP_DUCT_Z - 200),
        "EVAP COOLER DUCT\n(EXTERNAL UNIT)", fs=4.5, color=C_DIM,
        ha="center", va="top", lw=0.6, zorder=10, font=FONT)
 
@@ -470,7 +470,7 @@ ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
 # Pump manifold (P-01/P-02/P-04), ACC-01, and filter housings (F1/F2/F3)
 # are now on the equipment panel in the IBC plumbing corridor (Yd=1046).
 # They are NOT on the pinhole wall — see panel layout detail diagram.
-_note_x = (PH_X + ZONE_R_START) / 2  # centered between pinhole and IBC zone
+_note_x = (PH_X + ZONE_R_START) / 2 + 100 # centered between pinhole and IBC zone
 _note_z = 450
 ax.text(sx(_note_x), sz(_note_z),
         "PUMPS · FILTERS · ACC-01\nRELOCATED TO EQUIPMENT PANEL\n(IBC CORRIDOR, Yd=1046)\nSEE PANEL LAYOUT DETAIL",
@@ -498,7 +498,7 @@ _supply_mid_x = (IBC_PIPE_EXIT_X + WK_X_L) / 2
 ax.annotate("", xy=(sx(_supply_mid_x - 200), sz(SUPPLY_Z)),
             xytext=(sx(_supply_mid_x + 200), sz(SUPPLY_Z)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.0), zorder=10)
-ax.text(sx(_supply_mid_x), sz(SUPPLY_Z - 30),
+ax.text(sx(_supply_mid_x + 500), sz(SUPPLY_Z + 5),
         f"BLUE SUPPLY → SPRAY BAR (Z={SUPPLY_Z}, BELOW GRATING)", ha="center", va="top",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
@@ -521,7 +521,7 @@ ax.text(sx(BV02_X), sz(BV02_Z), "BV\n02",
         color="white", zorder=13, **FONT)
 
 leader(ax, sx(BV02_X), sz(BV02_Z + BV02_R + 5),
-       sx(BV02_X), sz(BV02_Z + 80),
+       sx(BV02_X - 10), sz(BV02_Z + 80),
        f"BV-02 @ Z={BV02_Z}mm\n(1/2\" BALL VALVE)\nSPRAY BAR ISOLATION\nWAIST HEIGHT",
        fs=4, color=C_BLUE, font=FONT, zorder=15)
 
@@ -531,7 +531,7 @@ ax.annotate("", xy=(sx(BV02_X - 100), sz(BV02_Z - 50)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=0.8,
                             connectionstyle="arc3,rad=0.3"),
             zorder=10)
-ax.text(sx(BV02_X - 50), sz(BV02_Z - 80),
+ax.text(sx(BV02_X - 80), sz(BV02_Z - 80),
         "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL)",
         ha="center", va="top", fontsize=3.5, color=C_BLUE,
         style="italic", zorder=10, **FONT)
@@ -684,8 +684,8 @@ notes = [
     "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
-draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.012 * FH,
-           fs=4.5, width=4.75, color=C_DIM, title_color=C_DIM, font=FONT)
+draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.1,
+           fs=4.5, width=4, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS

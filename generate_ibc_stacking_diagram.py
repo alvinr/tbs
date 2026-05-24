@@ -1523,10 +1523,10 @@ def sheet4():
     flange_plan(ax, drain_x, far_ibc_conn_yd, 'v', C_PIPE_BLACK)
     v4_yd = (far_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
-    ax.text(px(drain_x - 40), py(far_ibc_conn_yd - 50),
-            "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLACK,
-            **FONT, zorder=15)
+    leader(ax, px(drain_x), py(far_ibc_conn_yd),
+           px(drain_x - 200), py(far_ibc_conn_yd - 80),
+           "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
+           fs=5.5, color=C_PIPE_BLACK, ha="right", font=FONT)
     # ── X3: IBC-3 (near, Brown) → bulkhead (above X4) ──────────────────────
     # X3 (Z=400) sits above X4 (Z=200). Covers X4 in the corridor run.
     draw_pipe_path(ax,
@@ -1537,10 +1537,10 @@ def sheet4():
     flange_plan(ax, drain_x, near_ibc_conn_yd, 'v', C_PIPE_BROWN)
     v3_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
-    ax.text(px(drain_x - 40), py(near_ibc_conn_yd + 50),
-            "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BROWN,
-            **FONT, zorder=15)
+    leader(ax, px(drain_x), py(near_ibc_conn_yd),
+           px(drain_x - 200), py(near_ibc_conn_yd + 80),
+           "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
+           fs=5.5, color=C_PIPE_BROWN, ha="right", font=FONT)
     # ── X1: Bulkhead → corridor → IBC-1 (near, Blue) — single fill ────────
     draw_pipe_path(ax,
                    [bh_x, fill_x, fill_x],
@@ -1550,10 +1550,10 @@ def sheet4():
     v1_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, fill_x, v1_yd, 'v', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    ax.text(px(fill_x - 40), py(near_ibc_conn_yd - 200),
-            "X1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
-            ha="right", va="center", fontsize=5.5, color=C_PIPE_BLUE,
-            **FONT, zorder=15)
+    leader(ax, px(fill_x), py(near_ibc_conn_yd),
+           px(fill_x - 200), py(near_ibc_conn_yd - 200),
+           "X1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
+           fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)
 
     # ── Cross-connect: IBC-1 ↔ IBC-2 (2" pipe, self-leveling, no valve) ──
     xconn_x = fill_x + 120
@@ -1564,14 +1564,14 @@ def sheet4():
                    fc=C_PIPE_BLUE, ec="#1A4A90", zorder=6)
     flange_plan(ax, xconn_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
     flange_plan(ax, xconn_x, far_ibc_conn_yd, 'v', C_PIPE_BLUE)
-    ax.text(px(xconn_x + 30), py(panel_yd),
-            "2\" CROSS-CONNECT\nIBC-1 ↔ IBC-2\n(SELF-LEVELING\nNO VALVE)",
+    ax.text(px(xconn_x + 35), py(panel_yd + 50),
+            "2\" CROSS-CONNECT\nIBC-1 ↔ IBC-2\n(SELF-LEVELING NO VALVE)",
             ha="left", va="center", fontsize=5, color=C_PIPE_BLUE,
             fontweight="bold", **FONT, zorder=15)
 
     # ── Legend ───────────────────────────────────────────────────────────────
-    leg_x = px(X_LO + 30)
-    leg_top = py(C_WID + 100)
+    leg_x = px(X_LO + 580)
+    leg_top = py(C_WID - 100)
     leg_sp = py(33)
     pipe_lw = 2.5
 
@@ -1580,7 +1580,7 @@ def sheet4():
     leg_box_x = leg_x - px(10)
     leg_box_top = leg_top + leg_sp * 0.5
     leg_box_bot = leg_top - n_leg_items * leg_sp + leg_sp * 0.3
-    leg_box_w = px(1100)
+    leg_box_w = px(800)
     ax.add_patch(Rectangle((leg_box_x, leg_box_bot), leg_box_w,
                             leg_box_top - leg_box_bot,
                             fc="#F0F0F0", ec=C_OUT, lw=0.6, zorder=14))
@@ -1651,11 +1651,11 @@ def sheet4():
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Corridor width
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(near_col_r), py(far_col_l),
+    draw_dim_v(ax, px(IBC_COL_X - 80), py(near_col_r), py(far_col_l),
                f"{CORRIDOR_W}mm\nCORRIDOR", offset=px(5), fs=6, font=FONT)
 
     # IBC depth (near column)
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(BLUE_IBC_Y), py(near_col_r),
+    draw_dim_v(ax, px(IBC_COL_X - 80), py(BLUE_IBC_Y), py(near_col_r),
                f"{IBC_D}mm", offset=px(5), fs=5.5, font=FONT)
 
     # Wall clearance
@@ -1663,7 +1663,7 @@ def sheet4():
                f"{BLUE_IBC_Y}mm", offset=px(5), fs=5.5, font=FONT)
 
     # Far column depth
-    draw_dim_v(ax, px(IBC_COL_X - 60), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
+    draw_dim_v(ax, px(IBC_COL_X - 80), py(IBC_FAR_Y), py(IBC_FAR_Y + IBC_D),
                f"{IBC_D}mm", offset=px(5), fs=5.5, font=FONT)
 
     # IBC width (along X)

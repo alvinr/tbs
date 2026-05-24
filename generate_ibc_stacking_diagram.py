@@ -1379,8 +1379,9 @@ def sheet4():
 
     # Leader with panel contents
     leader(ax, px(ep_face_x - BB_OD / 2), py(ep_yd_near),
-           px(ep_face_x - 250), py(ep_yd_near - 220),
-           "EQUIPMENT PANEL (18mm marine ply)\n"
+           px(ep_face_x - 260), py(ep_yd_near - 220),
+           "EQUIPMENT PANEL\n"
+           "Backing Board (18mm marine ply)\n"
            "P-01/P-02/P-03/P-04 pumps (Shurflo 2088)\n"
            "ACC-01 accumulator (125 PSI)\n"
            "F1 (50μ) / F2 (5μ) / F3 (GAC) filters\n"

@@ -1335,17 +1335,17 @@ ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
 
 # ── Detail dimensions ────────────────────────────────────────────────────────
 # Rim top to floor
-draw_dim_v(ax4a, sa_y(tray_yd_near - 25), sa_z(0), sa_z(RIM_TOP),
+draw_dim_v(ax4a, sa_y(tray_yd_near - 45), sa_z(0), sa_z(RIM_TOP),
            f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=1.5, fs=7, right=False)
 
 # Tray floor height (20mm — too short for dim_v label, use leader)
 leader(ax4a, sa_y(sump_yd_end + 20), sa_z(TRAY_BASE_Z),
-       sa_y(sump_yd_end + 80), sa_z(TRAY_BASE_Z + 30),
+       sa_y(sump_yd_end + 40), sa_z(TRAY_BASE_Z + 30),
        f"{PROC_TRAY_SUMP_Z}mm TRAY FLOOR AFF", fs=6.5, color=C_DIM)
 
 # Sump depth (20mm — too short for dim_v label, use leader)
 leader(ax4a, sa_y(sump_yd_end + 5), sa_z(sump_z_floor + TRAY_BASE_Z / 2),
-       sa_y(sump_yd_end + 80), sa_z(-15),
+       sa_y(sump_yd_end + 100), sa_z(-15),
        f"{PROC_TRAY_SUMP_Z}mm SUMP DEPTH", fs=6.5, color=C_DIM)
 
 # Sump width (Yd extent)
@@ -1358,11 +1358,11 @@ draw_dim_v(ax4a, sa_y(tube_yd + TUBE_OD/2 + 8), sa_z(sump_z_floor), sa_z(tube_z_
            "5mm", offset=0.6, fs=6, right=True)
 
 # Sump to wall
-draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(RIM_TOP + 30),
-           f"{sump_yd_start}mm", offset=0.8, fs=7)
+draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(FLOOR_T - 12),
+           f"{sump_yd_start}mm", offset=0.8, fs=7, above=False)
 
 # Walkway deck height
-draw_dim_v(ax4a, sa_y(WALKWAY_W + 15), sa_z(0), sa_z(WK_DECK_H),
+draw_dim_v(ax4a, sa_y(WALKWAY_W + 105), sa_z(0), sa_z(WK_DECK_H),
            f"{WK_DECK_H}mm DECK", offset=1.0, fs=6.5, right=True)
 
 # ── Detail leaders ───────────────────────────────────────────────────────────
@@ -1375,7 +1375,7 @@ leader(ax4a, sa_y(tube_yd), sa_z(tube_z_top - 5),
        "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
 leader(ax4a, sa_y(RIM_EXT_YD + 5), sa_z(HOSE_RIM_Z),
-       sa_y(RIM_EXT_YD - 40), sa_z(HOSE_RIM_Z + 60),
+       sa_y(RIM_EXT_YD - 40), sa_z(HOSE_RIM_Z - 50),
        "1\" REINFORCED SUCTION\nHOSE ALONG RIM TO P-04\n(INTO PAGE — SEE PLAN)", fs=6, color=C_BROWN)
 
 leader(ax4a, sa_y(sump_yd_start + PROC_TRAY_SUMP_D/4), sa_z(TRAY_BASE_Z / 2),
@@ -1391,11 +1391,11 @@ leader(ax4a, sa_y(150), sa_z(WK_DECK_H - WK_GRATE_T/2),
        "WALKWAY GRATING\n(WALL-CANTILEVERED)", fs=6, color="#8D6E63")
 
 leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
-       sa_y(350), sa_z(TRAY_BASE_Z + rim_h /2),
+       sa_y(350), sa_z(TRAY_BASE_Z + rim_h /2 + 10),
        f"HDPE SHIM STRIP\n({PROC_TRAY_SHIM_W}mm WIDE,\n{PROC_TRAY_SUMP_Z}-{PROC_TRAY_SUMP_Z + PROC_TRAY_SHIM_H}mm)", fs=6, color="#A09070")
 
 # Slope note
-ax4a.text(sa_y(360), sa_z(-20),
+ax4a.text(sa_y(360), sa_z(-40),
           f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D:,}mm (1:220)\n"
           f"SLOPE EXAGGERATED {SLOPE_EXAG_A:.0f}x",
           ha="center", va="center", fontsize=6, color="#0D47A1",
@@ -1469,7 +1469,7 @@ tube_z_top_b = WK_DECK_H + WK_GRATE_T + 10  # 135mm — above walkway grate + cl
 draw_pipe_path(ax4b, [tube_yd_b, tube_yd_b], [5, tube_z_top_b],
                TUBE_OD, TUBE_WALL, sb_y, sb_z,
                fc="#D0D0D0", ec=C_FRAME, zorder=5)
-ax4b.text(sb_y(tube_yd_b + 20), sb_z(RIM_TOP_B + 35), "PICKUP\nTUBE",
+ax4b.text(sb_y(tube_yd_b/2), sb_z(RIM_TOP_B + 85), "PICKUP\nTUBE",
           ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
           fontweight="bold", zorder=6)
 
@@ -1538,11 +1538,11 @@ leader(ax4b, sb_y(PANEL_YD), sb_z(EP_Z_TOP),
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Rim top above floor
-draw_dim_v(ax4b, sb_y(tray_yd_near - 30), sb_z(0), sb_z(RIM_TOP_B),
+draw_dim_v(ax4b, sb_y(tray_yd_near - 50), sb_z(0), sb_z(RIM_TOP_B),
            f"{int(RIM_TOP_B)}mm", offset=0.4, fs=6.5, right=False)
 
 # Walkway
-draw_dim_v(ax4b, sb_y(WALKWAY_W + 15), sb_z(0), sb_z(WK_DECK_H),
+draw_dim_v(ax4b, sb_y(WALKWAY_W + 265), sb_z(0), sb_z(WK_DECK_H),
            f"{WK_DECK_H}mm", offset=0.4, fs=6, right=True)
 
 # ── Labels ───────────────────────────────────────────────────────────────────
@@ -1634,7 +1634,7 @@ ax4c.add_patch(plt.Rectangle(
     (pc_x(EP_X), pc_yd(CORRIDOR_YD_NEAR - 9)),
     EQPANEL_T / SC_C, 270 / SC_C,
     fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR + 15),
+ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR - 65),
           "EQUIPMENT PANEL (X=5,000)",
           ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
           style="italic", zorder=4)
@@ -1645,9 +1645,9 @@ ax4c.add_patch(plt.Circle(
     (pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR)),
     20 / SC_C,
     fc="#E8884A", ec=C_FRAME, lw=1.2, zorder=6))
-ax4c.text(pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR),
+ax4c.text(pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR + 35),
           "P-04", ha="center", va="center", fontsize=5.5,
-          fontweight="bold", color="white", zorder=7)
+          fontweight="bold", color="#E8884A", zorder=7)
 
 # ── Hose routing along tray rim exterior ───────────────────────────────────
 RIM_EXT_YD_C = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm
@@ -1666,7 +1666,7 @@ for clip_x in range(SUMP_X, CORNER_X, 60):
 
 # ── Labels ──────────────────────────────────────────────────────────────────
 leader(ax4c, pc_x(SUMP_X - 50), pc_yd(RIM_EXT_YD_C),
-       pc_x(X_VIEW_L + 50), pc_yd(RIM_EXT_YD_C - 60),
+       pc_x(X_VIEW_L + 50), pc_yd(RIM_EXT_YD_C - 120),
        "1\" SUCTION HOSE\nALONG RIM EXTERIOR\n(P-CLIPPED TO RIM)", fs=6, color=C_BROWN)
 
 leader(ax4c, pc_x(CORNER_X), pc_yd((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
@@ -1675,12 +1675,12 @@ leader(ax4c, pc_x(CORNER_X), pc_yd((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
 # Rim-to-panel Yd distance (vertical dim)
-draw_dim_v(ax4c, pc_x(X_VIEW_L + 20), pc_yd(RIM_EXT_YD_C), pc_yd(CORRIDOR_YD_NEAR),
+draw_dim_v(ax4c, pc_x(X_VIEW_L - 5), pc_yd(RIM_EXT_YD_C), pc_yd(CORRIDOR_YD_NEAR),
            f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=0.8, fs=6)
 
 # Hose run along rim (X distance — horizontal dim)
 draw_dim_h(ax4c, pc_x(SUMP_X), pc_x(CORNER_X),
-           pc_yd(RIM_EXT_YD_C - 25),
+           pc_yd(RIM_EXT_YD_C - 50),
            f"{CORNER_X - SUMP_X}mm", offset=0.5, fs=6)
 
 # ── Notes axes (full-width strip above title block) ─────────────────────────

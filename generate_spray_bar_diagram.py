@@ -168,7 +168,7 @@ ax.add_patch(Rectangle((sx(tray_x_l - rim_w / 2), sz(0)),
                          rim_w / H_SC, PROC_TRAY_RIM / V_SC,
                          fc=C_TRAY, ec=C_OUT, lw=1.0, zorder=5))
 
-ax.text(sx((tray_x_l + pole_x) / 2), sz(TRAY_FLOOR_Z + 3),
+ax.text(sx((tray_x_l + pole_x) / 2), sz(TRAY_FLOOR_Z + 13),
         "PROCESSING TRAY (304 SS)", ha="center", va="bottom",
         fontsize=5, color=C_DIM, style="italic", **FONT, zorder=10)
 
@@ -207,7 +207,7 @@ ax.add_patch(Rectangle((sx(slit_x_l), sz(GRATE_Z_BOT)),
                          SLIT_WIDTH / H_SC, WALKWAY_GRATE_T / V_SC,
                          fc=C_BG, ec=C_FRAME, lw=1.0, zorder=8.5))
 leader(ax, sx(pole_x), sz(GRATE_Z_TOP + 3),
-       sx(pole_x + 300), sz(GRATE_Z_TOP + 50),
+       sx(pole_x - 300), sz(GRATE_Z_TOP + 50),
        f"{SLIT_WIDTH}mm SLIT\n(NEAR WALKWAY\nAT POLE POSITION)",
        fs=5, color=C_FRAME, font=FONT, zorder=15)
 
@@ -284,7 +284,7 @@ ax.plot([sx(pole_x), sx(pole_x)],
         color="#BFA040", lw=1.0, zorder=10.5)
 
 leader(ax, sx(pole_x + 5), sz(pole_top_z),
-       sx(pole_x + 400), sz(pole_top_z + 30),
+       sx(pole_x - 375), sz(pole_top_z + 30),
        "TELESCOPING POLE\n(THROUGH WALKWAY SLIT)",
        fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
@@ -321,7 +321,7 @@ ax.plot([sx(BV02_X), sx(BV02_X - 30)],
         color=C_FRAME, lw=2.0, zorder=12)
 
 leader(ax, sx(BV02_X - 30), sz(bv_z + 35),
-       sx(BV02_X - 200), sz(bv_z + 80),
+       sx(BV02_X - 375), sz(bv_z + 80),
        f"BV-02 @ Z={int(bv_z)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
        fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
@@ -345,7 +345,7 @@ hose_zs += 3.0 * np.sin(np.linspace(0, 14 * np.pi, n_pts)) * envelope
 ax.plot([sx(x) for x in hose_xs], [sz(z) for z in hose_zs],
         color=C_HOSE, lw=2.0, alpha=0.7, zorder=11)
 
-ax.text(sx(BV02_X + 200), sz(bv_z - 200),
+ax.text(sx(BV02_X + 75), sz(bv_z - 200),
         "1/2\" FLEX HOSE\n-> CENTER FEED\n(4m COILED)",
         ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
@@ -362,26 +362,26 @@ leader(ax, sx(pole_x + feed_dot_r), sz(BEAM_Z_TOP + feed_dot_r),
 # ── Centerline through beam and slit ─────────────────────────────────────
 ax.plot([sx(pole_x), sx(pole_x)], [sz(Z_LO), sz(Z_HI - 200)],
         color=C_CL, lw=0.8, ls=(0, (10, 4, 2, 4)), zorder=1.5)
-ax.text(sx(pole_x), sz(Z_LO + 5), "CL BEAM CENTER",
+ax.text(sx(pole_x-1), sz(Z_LO), "CL BEAM CENTER",
         ha="center", va="bottom", fontsize=4.5, color=C_CL, **FONT, zorder=2)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 # Beam span shown with note (full span beyond cut)
-draw_dim_h(ax, sx(beam_x_l), sx(beam_vis_r), sz(BEAM_Z_BOT - 20),
+draw_dim_h(ax, sx(beam_x_l), sx(beam_vis_r), sz(BEAM_Z_BOT - 50),
            f"{beam_length}mm BEAM (CONTINUES →)",
-           offset=6 / V_SC, fs=5, font=FONT)
+           offset=4 / V_SC, fs=5, font=FONT, above=False)
 
-draw_dim_v(ax, sx(beam_x_l - 30), sz(0), sz(GRATE_Z_TOP),
-           f"{WALKWAY_H}mm\nDECK",
+draw_dim_v(ax, sx(beam_x_l - 45), sz(0), sz(GRATE_Z_TOP),
+           f"{WALKWAY_H}mm DECK",
            offset=6 / H_SC, fs=5, font=FONT)
 
-draw_dim_v(ax, sx(CUT_X - 50), sz(TRAY_FLOOR_Z), sz(BEAM_Z_BOT),
-           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY\nHGT",
-           offset=6 / H_SC, fs=4.5, font=FONT, right=True)
+draw_dim_v(ax, sx(CUT_X + 40), sz(TRAY_FLOOR_Z), sz(BEAM_Z_BOT),
+           f"{BEAM_Z_BOT - TRAY_FLOOR_Z:.0f}mm\nSPRAY HGT",
+           offset=8 / H_SC, fs=4.5, font=FONT, right=True)
 
 draw_dim_v(ax, sx(BV02_X - 60), sz(0), sz(bv_z),
-           f"{int(bv_z)}mm\nBV-02",
-           offset=6 / H_SC, fs=4.5, font=FONT)
+           f"{int(bv_z)}mm BV-02",
+           offset=8 / H_SC, fs=4.5, font=FONT)
 
 # ── Notes (positioned low to avoid hiding graphics) ─────────────────────
 notes = [
@@ -391,8 +391,8 @@ notes = [
     "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose → center feed.",
     "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
 ]
-draw_notes(ax, notes, sx(X_LO + 50), sz(250), spacing=5 / V_SC,
-           fs=5.5, font=FONT, width=1800 / H_SC)
+draw_notes(ax, notes, sx(X_LO + 85), sz(1800), spacing=20 / V_SC,
+           fs=7, font=FONT, width=1600 / H_SC)
 
 # ── Person silhouette (same style as hinge panel diagram) ───────────────
 PERSON_H = 1780
@@ -444,7 +444,7 @@ ax.plot([sx(carriage_cx), sx(carriage_cx)],
         color=C_FRAME, lw=1.0, ls="--", zorder=10)
 
 leader(ax, sx(carriage_cx + 10), sz(TRAY_FLOOR_Z - 3),
-       sx(carriage_cx + 300), sz(TRAY_FLOOR_Z - 22),
+       sx(carriage_cx + 300), sz(TRAY_FLOOR_Z + 140),
        "CARRIAGE\n(SEE CROSS SECTION)",
        fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
@@ -550,45 +550,45 @@ leader(ax_a, beam_end_x + 5, 19, beam_end_x + 20, d_yt - 8,
        "40×40×3 AL SHS\n(OPEN END)",
        fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
 
-leader(ax_a, (cap_open_x + beam_end_x) / 2, pvc_od_h + CAP_WALL_T + 1,
-       d_xr - 15, d_yt - 12,
+leader(ax_a, (cap_open_x + beam_end_x/2)+20, pvc_od_h + CAP_WALL_T - 4,
+       d_xr - 15, d_yt - 4,
        "1\" Sch 40 PVC PIPE\n(EXTENDS PAST BEAM)",
-       fs=5, color=C_PVC, font=FONT, zorder=20, bbox=_bbox_a)
+       fs=5, color=C_PVC, font=FONT, zorder=20)
 
-leader(ax_a, cap_closed_x + CAP_CLOSED_T / 2, -cap_od_h - 1,
-       cap_closed_x - 3, d_yb + 6,
+leader(ax_a, cap_closed_x + CAP_CLOSED_T / 2, -cap_od_h,
+       cap_closed_x - 5, d_yb + 2,
        "1\" PVC SOCKET CAP\n(SOLVENT WELDED)",
-       fs=5, color=C_PVC, font=FONT, zorder=20, bbox=_bbox_a)
+       fs=5, color=C_PVC, font=FONT, zorder=20)
 
 ax_a.text(d_xr - 8, 0, "WATER",
           ha="center", va="center", fontsize=5, color=C_WATER,
           fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
-ax_a.text((pipe_end_x + cap_closed_x + CAP_CLOSED_T) / 2, 0,
+ax_a.text((pipe_end_x + cap_closed_x + CAP_CLOSED_T) / 2 + 3, -PVC_OD+PVC_ID - 8.5,
           "BUTT\nJOINT",
           ha="center", va="center", fontsize=4, color="#AA3030",
           fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
-draw_dim_h(ax_a, cap_closed_x, beam_end_x, d_yb + 3,
+draw_dim_h(ax_a, cap_closed_x, beam_end_x, d_yb + 4,
            f"{PVC_EXTEND + CAP_CLOSED_T:.0f}mm\nPROTRUSION",
-           offset=3, fs=4.5, font=FONT)
+           offset=2, fs=4.5, font=FONT)
 
-draw_dim_h(ax_a, cap_closed_x, cap_open_x, d_yb + 10,
+draw_dim_h(ax_a, cap_closed_x, cap_open_x, d_yb + 7,
            f"{CAP_SOCKET_DEPTH + CAP_CLOSED_T:.0f}mm\nCAP LENGTH",
            offset=2, fs=4.5, font=FONT)
 
-draw_dim_h(ax_a, pipe_end_x, cap_open_x, cap_od_h + 5,
+draw_dim_h(ax_a, pipe_end_x, cap_open_x, cap_od_h + 2,
            f"{CAP_SOCKET_DEPTH}mm\nENGAGEMENT",
            offset=2, fs=4, font=FONT)
 
 draw_dim_v(ax_a, d_xr - 3, -17, 17,
-           "34mm\nBORE", offset=4, fs=5, font=FONT, right=True)
+           "34mm BORE", offset=1, fs=5, font=FONT, right=True)
 
 draw_dim_v(ax_a, d_xr - 8, 17, 20,
-           "3mm\nWALL", offset=3, fs=4.5, font=FONT, right=True)
+           "3mm\nWALL", offset=2, fs=4.5, font=FONT, right=True)
 
-draw_dim_v(ax_a, d_xl + 3, -pvc_od_h, pvc_od_h,
+draw_dim_v(ax_a, d_xl + 8, -pvc_od_h, pvc_od_h,
            f"{PVC_OD:.1f}mm\nPVC OD", offset=3, fs=4.5, font=FONT)
 
 
@@ -747,7 +747,7 @@ for w_yd in [wheel1_yd, wheel2_yd]:
                                    fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
 leader(ax2, cy(wheel2_yd + WHEEL_WIDTH / 2 + 2), cz(WHEEL_AXLE_Z),
-       cy(wheel2_yd + 50), cz(WHEEL_AXLE_Z - 18),
+       cy(wheel2_yd + 50), cz(WHEEL_AXLE_Z - 10),
        "M5 SS THRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
        fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
@@ -827,11 +827,11 @@ ax2.plot([cy(carriage_yd_center), cy(carriage_yd_center)],
           [cz(pipe_id_bot_z), cz(BEAM_Z_BOT - 16)],
           color=C_WATER, lw=1.2, alpha=0.6, zorder=9.2)
 leader(ax2, cy(carriage_yd_center + PIPE_HOLE_DIA / 2 + 1), cz(pipe_od_bot_z + PVC_WALL / 2),
-       cy(carriage_yd_center + 28), cz(pipe_od_bot_z - 4),
+       cy(carriage_yd_center + 28), cz(pipe_od_bot_z - 6),
        f"2mm PIPE HOLE",
        fs=4.5, color=C_WATER, font=FONT, zorder=15)
-ax2.text(cy(carriage_yd_center + 8), cz(BEAM_Z_BOT - 12),
-          f"12mm APERTURE\n(TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
+ax2.text(cy(carriage_yd_center + 4), cz(BEAM_Z_BOT - 5),
+          f"12mm APERTURE (TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
           ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
 
 # ── Detail C callout ─────────────────────────────────────────────────────
@@ -982,29 +982,29 @@ for zt_z in [arm_base_z_bj + 15, arm_base_z_bj + 40, arm_base_z_bj + 65]:
 
 # ── Labels ────────────────────────────────────────────────────────────
 leader(ax2, cy(carriage_yd_center + SOCKET_OD / 2), cz(ball_ctr_z),
-       cy(carriage_yd_center + SOCKET_OD / 2 + 20), cz(ball_ctr_z - 10),
+       cy(carriage_yd_center + SOCKET_OD / 2 + 20), cz(ball_ctr_z - 30),
        f"Ø{BALL_DIA}mm BALL JOINT\n(U-BOLT TO BEAM)",
-       fs=5, color=C_JOINT, font=FONT, zorder=20, bbox=_bbox_cs)
+       fs=5, color=C_JOINT, font=FONT, zorder=20)
 
 leader(ax2, cy(ubolt_r), cz(ub_arc_cz),
-       cy(ubolt_r + 12), cz(ub_arc_cz - 8),
+       cy(ubolt_r + 22), cz(ub_arc_cz - 8),
        "M8 SS U-BOLT\n+ NYLOC NUTS",
-       fs=4.5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_cs)
+       fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
 leader(ax2, cy(carriage_yd_center + ARM_OD / 2 + 8), cz(pinch_z),
        cy(carriage_yd_center + 35), cz(pinch_z + 12),
        "M6 PINCH BOLT",
-       fs=4.5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_cs)
+       fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
 leader(ax2, cy(carriage_yd_center + ARM_OD / 2), cz(arm_base_z_bj + 50),
-       cy(carriage_yd_center + 35), cz(arm_base_z_bj + 62),
+       cy(carriage_yd_center + 45), cz(arm_base_z_bj + 62),
        f"Ø{ARM_OD}mm AL TUBE\n(2mm WALL)",
-       fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_cs)
+       fs=5, color=C_FRAME, font=FONT, zorder=20)
 
 leader(ax2, cy(hose_ctr_yd), cz(arm_base_z_bj + 55),
-       cy(hose_ctr_yd + 20), cz(arm_base_z_bj + 68),
+       cy(hose_ctr_yd + 20), cz(arm_base_z_bj + 75),
        "1/2\" FLEX HOSE\n(ZIP-TIED)",
-       fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox_cs)
+       fs=5, color=C_HOSE, font=FONT, zorder=20)
 
 # ── Dimensions ───────────────────────────────────────────────────────
 draw_dim_v(ax2, cy(c_beam_l - 10), cz(BEAM_Z_BOT), cz(BEAM_Z_TOP),
@@ -1041,8 +1041,8 @@ cs_notes = [
     "2. Ball joint on beam top → arm → pole through walkway slit.",
     "3. Water: PVC pipe → 2mm hole → 12mm aperture → spray.",
 ]
-draw_notes(ax2, cs_notes, cy(C_YD_LO + 10), cz(C_Z_HI - 30), spacing=5 / SC2,
-           fs=5, font=FONT, width=400 / SC2)
+draw_notes(ax2, cs_notes, cy(C_YD_LO + 10), cz(C_Z_HI - 260), spacing=5 / SC2,
+           fs=7, font=FONT, width=100 / SC2)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DETAIL C INSET — Wheel attachment (section along axle centerline)
@@ -1138,11 +1138,11 @@ ax_w.text(w_xr - 1, -26, "TRAY FLOOR",
 
 leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
        "L-BRACKET\nHORIZ. ARM\n(5mm AL)",
-       fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
 leader(ax_w, 13, 0, w_xr - 1, -10,
        "6mm AL\nFORK ARM",
-       fs=5.5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_w)
+       fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
 ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
           ha="center", va="top", fontsize=5.5, color=C_WHEEL,
@@ -1156,9 +1156,9 @@ ax_w.text(-17.5, -10, "SNAP\nRING",
           ha="center", va="top", fontsize=5, color="#666666",
           bbox=_bbox_w, **FONT, zorder=20)
 
-leader(ax_w, -14, 20, -6, w_yt - 10,
+leader(ax_w, -14, 20, -20, w_yt - 10,
        "M5×16 SS\nTHRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
-       fs=5, color="#808088", font=FONT, zorder=20, bbox=_bbox_w)
+       fs=5, color="#808088", font=FONT, zorder=20)
 
 # ── Dimensions ────────────────────────────────────────────────────────────
 draw_dim_h(ax_w, -10, 10, w_yb + 3,
@@ -1263,9 +1263,9 @@ for side in [-1, 1]:
 
 leader(ax_d, px(CARRIAGE_OFFSET_X + arm_w_x / 2),
        py_d(BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE),
-       px(D_X_HI - 30), py_d(BEAM_W / 2 + 30),
+       px(BEAM_W - 100), py_d(BEAM_W / 2 + 30),
        "U-CLAMP\nFLARED LEGS\n+ WING NUTS",
-       fs=5, color=C_BOLT, font=FONT, zorder=20, bbox=_bbox_d)
+       fs=5, color=C_BOLT, font=FONT, zorder=20)
 
 # ── Fork brackets (vertical plates straddling each wheel) ────────────────
 fork_t = 6
@@ -1293,24 +1293,19 @@ for w_sign in [-1, 1]:
 # ── Labels ──────────────────────────────────────────────────────────────
 leader(ax_d, px(CARRIAGE_OFFSET_X + WHEEL_WIDTH / 2),
        py_d(-WHEEL_SPACING_YD / 2),
-       px(D_X_HI - 25), py_d(-WHEEL_SPACING_YD / 2 - 10),
+       px(D_X_HI - 225), py_d(-WHEEL_SPACING_YD / 2 - 10),
        f"Ø{WHEEL_DIA}mm WHEEL\n({WHEEL_WIDTH}mm WIDE)",
-       fs=5, color=C_WHEEL, font=FONT, zorder=20, bbox=_bbox_d)
+       fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
 leader(ax_d, px(-arm_w_x / 2 - 1), py_d(0),
-       px(D_X_LO + 15), py_d(25),
+       px(D_X_LO + 200), py_d(45),
        "L-BRACKET ARM\n(5mm AL PLATE)",
-       fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_d)
+       fs=5, color=C_FRAME, font=FONT, zorder=20)
 
 # ── Dimensions ──────────────────────────────────────────────────────────
 draw_dim_v(ax_d, px(D_X_LO + 12),
            py_d(-WHEEL_SPACING_YD / 2), py_d(WHEEL_SPACING_YD / 2),
-           f"{WHEEL_SPACING_YD}mm\nWHEEL\nSPACING",
-           offset=3 / SC_D, fs=5, font=FONT)
-
-draw_dim_h(ax_d, px(-BEAM_W / 2), px(BEAM_W / 2),
-           py_d(D_YD_LO + 8),
-           f"{BEAM_W}mm\nBEAM",
+           f"{WHEEL_SPACING_YD}mm WHEEL SPACING",
            offset=3 / SC_D, fs=5, font=FONT)
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1357,7 +1352,7 @@ ax_p.add_patch(Rectangle((ppx(0), ppy(0)),
 ax_p.add_patch(Rectangle((ppx(PROC_TRAY_X_L), ppy(PROC_TRAY_YD_NEAR)),
                            PROC_TRAY_W / SC_P, PROC_TRAY_D / SC_P,
                            fc=C_TRAY, ec=C_OUT, lw=1.0, alpha=0.5, zorder=3))
-ax_p.text(ppx((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2), ppy(C_WID / 2),
+ax_p.text(ppx((PROC_TRAY_X_L + PROC_TRAY_X_R) / 2), ppy(C_WID / 3),
           "PROCESSING TRAY",
           ha="center", va="center", fontsize=5, color=C_DIM,
           style="italic", **FONT, zorder=5)
@@ -1410,7 +1405,7 @@ ax_p.add_patch(Rectangle((ppx(slit_x), ppy(WALKWAY_FAR_YD)),
 
 # Slit label
 leader(ax_p, ppx(pole_x), ppy(-10),
-       ppx(pole_x - 500), ppy(-120),
+       ppx(pole_x - 500), ppy(-220),
        f"{SLIT_WIDTH}mm SLIT @ BEAM\nCENTER (NEAR & FAR\nWALKWAYS — FOR POLE)",
        fs=5, color="#CC0000", font=FONT, zorder=20)
 
@@ -1427,7 +1422,7 @@ beam_example_yd = PROC_TRAY_YD_NEAR + PROC_TRAY_D / 2
 ax_p.plot([ppx(PROC_OPEN_X_L), ppx(PROC_OPEN_X_R)],
           [ppy(beam_example_yd), ppy(beam_example_yd)],
           color=C_FRAME, lw=1.5, ls="--", zorder=6)
-ax_p.text(ppx((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2), ppy(beam_example_yd + 80),
+ax_p.text(ppx((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2), ppy(beam_example_yd + 90),
           "BEAM (EXAMPLE POSITION)",
           ha="center", va="bottom", fontsize=4.5, color=C_FRAME,
           style="italic", **FONT, zorder=8)

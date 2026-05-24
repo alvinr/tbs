@@ -1550,98 +1550,100 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PANEL C — PLAN VIEW: HOSE ROUTING ALONG TRAY RIM (~1:8)
-# Looking down. Yd horizontal (wall at left, panel at right).
-# X vertical (lower X at bottom, higher X at top).
-# Shows hose along near rim exterior, around tray corner, to equipment panel.
+# Looking down (standard plan orientation matching floorplan/IBC sheets):
+#   Horizontal = X (left=cargo door, right=sealed end)
+#   Vertical   = Yd (bottom=near wall/pinhole, top=far wall)
+# Sump at bottom-right, pipe travels north to equipment panel.
 # ═════════════════════════════════════════════════════════════════════════════
 SC_C = 8.0   # mm per drawing unit
-OC_H = 1.0   # horizontal offset (Yd=0 position)
-OC_V = 1.5   # vertical offset (X baseline)
 
 SUMP_X = PROC_TRAY_DRAIN_X   # 4,550mm
 TRAY_X_R = PROC_TRAY_X_R     # 4,629mm
 IBC_X = IBC_COL_X             # 4,674mm
 EP_X = EQPANEL_X              # 5,000mm — equipment panel face X
 EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
-X_VIEW_BOT = 4350
-X_VIEW_TOP = EP_X + EQPANEL_T + 80  # ~5,098mm — past panel back face
-YD_VIEW_L = -30
-YD_VIEW_R = 1130
 
-def sc_yd_c(yd_mm):
-    return OC_H + (yd_mm - YD_VIEW_L) / SC_C
+X_VIEW_L = 4350
+X_VIEW_R = EP_X + EQPANEL_T + 80   # ~5,098mm
+YD_VIEW_BOT = -30
+YD_VIEW_TOP = 1130
 
-def sc_x_c(x_mm):
-    return OC_V + (x_mm - X_VIEW_BOT) / SC_C
+OC_X = 1.0   # screen offset for X=X_VIEW_L
+OC_Y = 1.5   # screen offset for Yd=YD_VIEW_BOT
 
-ax4c.set_xlim(sc_yd_c(YD_VIEW_L) - 0.5, sc_yd_c(YD_VIEW_R) + 0.5)
-ax4c.set_ylim(sc_x_c(X_VIEW_BOT - 30) - 0.5, sc_x_c(X_VIEW_TOP + 30) + 0.5)
+def pc_x(x_mm):
+    return OC_X + (x_mm - X_VIEW_L) / SC_C
+
+def pc_yd(yd_mm):
+    return OC_Y + (yd_mm - YD_VIEW_BOT) / SC_C
+
+ax4c.set_xlim(pc_x(X_VIEW_L) - 0.5, pc_x(X_VIEW_R) + 0.5)
+ax4c.set_ylim(pc_yd(YD_VIEW_BOT) - 0.5, pc_yd(YD_VIEW_TOP) + 0.5)
 
 # Panel C title
-ax4c.text(sc_yd_c((YD_VIEW_L + YD_VIEW_R) / 2), sc_x_c(X_VIEW_TOP + 15),
+ax4c.text(pc_x((X_VIEW_L + X_VIEW_R) / 2), pc_yd(YD_VIEW_TOP + 15),
           "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (APPROX 1:8)",
-          ha="center", va="top", fontsize=9, fontweight="bold",
+          ha="center", va="bottom", fontsize=9, fontweight="bold",
           color="#1A237E", zorder=10)
 
-# ── Container wall (Yd=0, vertical line at left) ───────────────────────────
-ax4c.add_patch(plt.Rectangle((sc_yd_c(-WALL_T), sc_x_c(X_VIEW_BOT - 20)),
-              WALL_T / SC_C, (X_VIEW_TOP - X_VIEW_BOT + 40) / SC_C,
+# ── Container near wall (Yd=0, horizontal line at bottom) ─────────────────
+ax4c.add_patch(plt.Rectangle((pc_x(X_VIEW_L - 20), pc_yd(-WALL_T)),
+              (X_VIEW_R - X_VIEW_L + 40) / SC_C, WALL_T / SC_C,
               fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=2, hatch=".."))
 
 # ── Tray outline (partial) ─────────────────────────────────────────────────
-tray_x_l_vis = max(PROC_TRAY_X_L, X_VIEW_BOT)
-ax4c.add_patch(plt.Rectangle((sc_yd_c(tray_yd_near), sc_x_c(tray_x_l_vis)),
-              (400 - tray_yd_near) / SC_C,
+tray_x_l_vis = max(PROC_TRAY_X_L, X_VIEW_L)
+ax4c.add_patch(plt.Rectangle((pc_x(tray_x_l_vis), pc_yd(tray_yd_near)),
               (TRAY_X_R - tray_x_l_vis) / SC_C,
+              (400 - tray_yd_near) / SC_C,
               fc="#E8F0F8", ec="#C8D8E8", lw=1.0, zorder=2, alpha=0.4))
-ax4c.text(sc_yd_c(200), sc_x_c((tray_x_l_vis + TRAY_X_R) / 2),
-          "PROCESSING\nTRAY", ha="center", va="center",
+ax4c.text(pc_x((tray_x_l_vis + TRAY_X_R) / 2), pc_yd(200),
+          "PROCESSING TRAY", ha="center", va="center",
           fontsize=6, color="#6A8CAF", style="italic", alpha=0.7, zorder=3)
 
-# Near rim line (Yd=80, runs along X)
-ax4c.plot([sc_yd_c(tray_yd_near), sc_yd_c(tray_yd_near)],
-         [sc_x_c(tray_x_l_vis), sc_x_c(TRAY_X_R)],
+# Near rim line (Yd=80, runs along X — horizontal)
+ax4c.plot([pc_x(tray_x_l_vis), pc_x(TRAY_X_R)],
+         [pc_yd(tray_yd_near), pc_yd(tray_yd_near)],
          color="#C8D8E8", lw=2.0, zorder=4)
 
-# Right rim line (X=4,629, runs along Yd)
-ax4c.plot([sc_yd_c(tray_yd_near), sc_yd_c(400)],
-         [sc_x_c(TRAY_X_R), sc_x_c(TRAY_X_R)],
+# Right rim line (X=4,629, runs along Yd — vertical)
+ax4c.plot([pc_x(TRAY_X_R), pc_x(TRAY_X_R)],
+         [pc_yd(tray_yd_near), pc_yd(400)],
          color="#C8D8E8", lw=2.0, zorder=4)
 
 # ── Sump (small rectangle inside tray at near rim) ─────────────────────────
 ax4c.add_patch(plt.Rectangle(
-    (sc_yd_c(PROC_TRAY_DRAIN_YD), sc_x_c(SUMP_X - PROC_TRAY_SUMP_W / 2)),
-    PROC_TRAY_SUMP_D / SC_C, PROC_TRAY_SUMP_W / SC_C,
+    (pc_x(SUMP_X - PROC_TRAY_SUMP_W / 2), pc_yd(PROC_TRAY_DRAIN_YD)),
+    PROC_TRAY_SUMP_W / SC_C, PROC_TRAY_SUMP_D / SC_C,
     fc="#B3D9F2", ec=C_FRAME, lw=1.0, zorder=5))
-ax4c.text(sc_yd_c(PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D / 2),
-          sc_x_c(SUMP_X),
+ax4c.text(pc_x(SUMP_X), pc_yd(PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D / 2),
           "SUMP", ha="center", va="center", fontsize=5.5,
           fontweight="bold", color="#0D47A1", zorder=6)
 
 # ── Pickup tube end-on (vertical tube seen from above) ─────────────────────
 tube_r_c = TUBE_OD / 2 / SC_C
 tube_wall_c = TUBE_WALL / SC_C
-draw_pipe_end(ax4c, sc_yd_c(tube_yd), sc_x_c(SUMP_X),
+draw_pipe_end(ax4c, pc_x(SUMP_X), pc_yd(tube_yd),
               tube_r_c, tube_wall_c,
               fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
 # ── Equipment panel (spans corridor at X=5000, perpendicular to sealed end) ──
 ax4c.add_patch(plt.Rectangle(
-    (sc_yd_c(CORRIDOR_YD_NEAR - 9), sc_x_c(EP_X)),
-    270 / SC_C, EQPANEL_T / SC_C,
+    (pc_x(EP_X), pc_yd(CORRIDOR_YD_NEAR - 9)),
+    EQPANEL_T / SC_C, 270 / SC_C,
     fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR + 15), sc_x_c(EP_X + EQPANEL_T / 2),
-          "EQUIPMENT\nPANEL\n(X=5,000)",
-          ha="left", va="center", fontsize=5.5, color=C_PUMP,
+ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR + 15),
+          "EQUIPMENT PANEL (X=5,000)",
+          ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
           style="italic", zorder=4)
 
 # P-04 on equipment panel — pump protrudes from panel face toward lower X
 P04_PLAN_X = EP_X - PUMP_D / 2
 ax4c.add_patch(plt.Circle(
-    (sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X)),
+    (pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR)),
     20 / SC_C,
     fc="#E8884A", ec=C_FRAME, lw=1.2, zorder=6))
-ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X),
+ax4c.text(pc_x(P04_PLAN_X), pc_yd(CORRIDOR_YD_NEAR),
           "P-04", ha="center", va="center", fontsize=5.5,
           fontweight="bold", color="white", zorder=7)
 
@@ -1649,35 +1651,35 @@ ax4c.text(sc_yd_c(CORRIDOR_YD_NEAR), sc_x_c(P04_PLAN_X),
 RIM_EXT_YD_C = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm
 CORNER_X = TRAY_X_R + 15   # just past tray right edge
 draw_pipe_path(ax4c,
-               [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
                [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
-               HOSE_OD, HOSE_WALL, sc_yd_c, sc_x_c,
+               [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
+               HOSE_OD, HOSE_WALL, pc_x, pc_yd,
                fc=C_BROWN, ec="#5A3020", zorder=6)
 
-# P-clip marks along rim run (small ticks)
+# P-clip marks along rim run (small ticks — horizontal marks along vertical pipe)
 for clip_x in range(SUMP_X, CORNER_X, 60):
-    ax4c.plot([sc_yd_c(RIM_EXT_YD_C - 8), sc_yd_c(RIM_EXT_YD_C + 8)],
-             [sc_x_c(clip_x), sc_x_c(clip_x)],
+    ax4c.plot([pc_x(clip_x), pc_x(clip_x)],
+             [pc_yd(RIM_EXT_YD_C - 8), pc_yd(RIM_EXT_YD_C + 8)],
              color="#666666", lw=0.6, zorder=5)
 
 # ── Labels ──────────────────────────────────────────────────────────────────
-leader(ax4c, sc_yd_c(RIM_EXT_YD_C), sc_x_c(SUMP_X - 50),
-       sc_yd_c(RIM_EXT_YD_C - 60), sc_x_c(X_VIEW_BOT + 50),
+leader(ax4c, pc_x(SUMP_X - 50), pc_yd(RIM_EXT_YD_C),
+       pc_x(X_VIEW_L + 50), pc_yd(RIM_EXT_YD_C - 60),
        "1\" SUCTION HOSE\nALONG RIM EXTERIOR\n(P-CLIPPED TO RIM)", fs=6, color=C_BROWN)
 
-leader(ax4c, sc_yd_c((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2), sc_x_c(CORNER_X),
-       sc_yd_c(500), sc_x_c(CORNER_X + 60),
+leader(ax4c, pc_x(CORNER_X), pc_yd((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
+       pc_x(CORNER_X + 60), pc_yd(500),
        "CROSSES TO\nEQUIPMENT PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
-# Rim-to-panel Yd distance
-draw_dim_h(ax4c, sc_yd_c(RIM_EXT_YD_C), sc_yd_c(CORRIDOR_YD_NEAR),
-           sc_x_c(X_VIEW_BOT + 20),
+# Rim-to-panel Yd distance (vertical dim)
+draw_dim_v(ax4c, pc_x(X_VIEW_L + 20), pc_yd(RIM_EXT_YD_C), pc_yd(CORRIDOR_YD_NEAR),
            f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=0.8, fs=6)
 
-# Hose run along rim (X distance)
-draw_dim_v(ax4c, sc_yd_c(RIM_EXT_YD_C - 25), sc_x_c(SUMP_X), sc_x_c(CORNER_X),
-           f"{CORNER_X - SUMP_X}mm", offset=0.5, fs=6, right=False)
+# Hose run along rim (X distance — horizontal dim)
+draw_dim_h(ax4c, pc_x(SUMP_X), pc_x(CORNER_X),
+           pc_yd(RIM_EXT_YD_C - 25),
+           f"{CORNER_X - SUMP_X}mm", offset=0.5, fs=6)
 
 # ── Notes axes (full-width strip above title block) ─────────────────────────
 ax4_notes = fig4.add_axes([0.04, 0.06, 0.92, 0.10])

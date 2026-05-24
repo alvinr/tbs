@@ -766,33 +766,38 @@ def s3y(mm):
     """Convert tray-local Yd (mm from tray near edge) to drawing units."""
     return OY + mm * TRAY_DRAW_H / PROC_TRAY_D
 
-ax3.set_xlim(-0.3, OX + TRAY_DRAW_W + 2.5)
-ax3.set_ylim(-3.5, OY + TRAY_DRAW_H + 1.8)
+def s3d(mm):
+    """Convert mm offset/size to drawing-unit offset (aspect-preserving)."""
+    return mm * TRAY_DRAW_W / PROC_TRAY_W
+
+ax3.set_xlim(s3x(-620), s3x(PROC_TRAY_W + 860))
+ax3.set_ylim(s3y(-1820), s3y(PROC_TRAY_D + 620))
 ax3.set_aspect("equal")
 
 # ── Tray outline ─────────────────────────────────────────────────────────────
-ax3.add_patch(plt.Rectangle((OX, OY), TRAY_DRAW_W, TRAY_DRAW_H,
+ax3.add_patch(plt.Rectangle((s3x(0), s3y(0)),
+              s3d(PROC_TRAY_W), s3d(PROC_TRAY_D),
               fc="#E8F5E9", ec="#388E3C", lw=2.5, zorder=1))
 
 # Rim shading (inner border)
-RIM_DU = PROC_TRAY_RIM * TRAY_DRAW_W / PROC_TRAY_W  # rim in drawing units
-ax3.add_patch(plt.Rectangle((OX + RIM_DU, OY + RIM_DU),
-              TRAY_DRAW_W - 2*RIM_DU, TRAY_DRAW_H - 2*RIM_DU,
+ax3.add_patch(plt.Rectangle((s3x(PROC_TRAY_RIM), s3y(PROC_TRAY_RIM)),
+              s3d(PROC_TRAY_W - 2*PROC_TRAY_RIM),
+              s3d(PROC_TRAY_D - 2*PROC_TRAY_RIM),
               fc="#C8E6C9", ec="none", zorder=1, alpha=0.5))
 
 # Label corners with elevation annotations (high/low)
 # Low point: IBC corner (near rim, right side) — drain at X=4550, Yd=80
 # High point: far-left corner (opposite diagonal)
 drain_local_x_s3 = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
-ax3.text(s3x(drain_local_x_s3), OY - 1.1, "LOW CORNER\n(DRAIN — IBC SIDE)",
+ax3.text(s3x(drain_local_x_s3), s3y(-380), "LOW CORNER\n(DRAIN — IBC SIDE)",
          ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
-ax3.text(OX - 0.15, OY + TRAY_DRAW_H + 0.35,
+ax3.text(s3x(-50), s3y(PROC_TRAY_D + 120),
          "HIGH CORNER\n(FAR-LEFT)",
          ha="left", fontsize=7.5, fontweight="bold", color="#1565C0")
 
-ax3.text(OX - 0.15, OY + TRAY_DRAW_H / 2, "HIGH\nEDGE",
+ax3.text(s3x(-50), s3y(PROC_TRAY_D / 2), "HIGH\nEDGE",
          ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
-ax3.text(OX + TRAY_DRAW_W + 0.15, OY - 0.2, "LOW EDGE",
+ax3.text(s3x(PROC_TRAY_W + 50), s3y(-70), "LOW EDGE",
          ha="left", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
 
 # ── Slope arrows (flow direction) ───────────────────────────────────────────
@@ -823,7 +828,7 @@ for i in range(n_cols):
         mag = math.sqrt(dx_mm**2 + dy_mm**2)
         if mag < 1:
             continue
-        arrow_len = 0.35  # drawing units
+        arrow_len = s3d(120)
         dx_du = dx_mm / mag * arrow_len
         dy_du = dy_mm / mag * arrow_len
 
@@ -839,7 +844,7 @@ for i in range(n_cols):
 # ── Drain symbol (circle + crosshair) ───────────────────────────────────────
 drain_dx = s3x(drain_local_x)
 drain_dy = s3y(drain_local_yd)
-DRAIN_R = 0.3
+DRAIN_R = s3d(100)
 
 drain_circle = plt.Circle((drain_dx, drain_dy), DRAIN_R,
                            fc="white", ec="#D32F2F", lw=2.5, zorder=6)
@@ -851,8 +856,8 @@ ax3.plot([drain_dx, drain_dx],
          color="#D32F2F", lw=1.8, zorder=7)
 
 # Drain label — single leader to the right (clear side)
-leader(ax3, drain_dx + DRAIN_R, drain_dy,
-       drain_dx + 1.8, drain_dy + 0.5,
+leader(ax3, s3x(drain_local_x + 100), s3y(drain_local_yd),
+       s3x(drain_local_x + 620), s3y(drain_local_yd + 170),
        f"SUMP WELL (P-04 PICKUP)\n"
        f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}\n"
        f"{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
@@ -882,7 +887,7 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
-draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
+draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
            f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.27, fs=6.5, above=False)
 
 
@@ -895,11 +900,11 @@ draw_dim_h(ax3, OX, OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.9,
 #          ha="center", fontsize=7, color=C_DIM)
 
 # Tray depth (Yd direction)
-draw_dim_v(ax3, OX - 0.9, OY + TRAY_DRAW_H, OY,
+draw_dim_v(ax3, s3x(-310), s3y(PROC_TRAY_D), s3y(0),
            f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.27, fs=6.5, right=False)
 
 # Drain X position dimension
-draw_dim_h(ax3, drain_dx, OX, OY - 0.5,
+draw_dim_h(ax3, s3x(drain_local_x), s3x(0), s3y(-170),
            f"{drain_local_x:,}mm from left edge", offset=0.17, fs=6.5, above=False)
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
@@ -909,11 +914,11 @@ WK_ALPHA_L = 0.4
 # Near walkway (overlaps tray near edge)
 near_wk_y0 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD)  # Yd=0 in container coords
 near_wk_y1 = s3y(-PROC_TRAY_YD_NEAR + WALKWAY_NEAR_YD + WALKWAY_W)
-ax3.add_patch(plt.Rectangle((OX, near_wk_y0),
-              TRAY_DRAW_W, near_wk_y1 - near_wk_y0,
+ax3.add_patch(plt.Rectangle((s3x(0), near_wk_y0),
+              s3d(PROC_TRAY_W), near_wk_y1 - near_wk_y0,
               fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
               alpha=WK_ALPHA_L, hatch="//", zorder=2))
-ax3.text(OX + TRAY_DRAW_W + 0.15, (near_wk_y0 + near_wk_y1)/2,
+ax3.text(s3x(PROC_TRAY_W + 50), (near_wk_y0 + near_wk_y1)/2,
          "NEAR\nWALKWAY\n(300mm)",
          ha="left", va="center", fontsize=6, color=WK_COLOR)
 
@@ -921,11 +926,11 @@ ax3.text(OX + TRAY_DRAW_W + 0.15, (near_wk_y0 + near_wk_y1)/2,
 far_wk_yd_local = WALKWAY_FAR_YD - PROC_TRAY_YD_NEAR
 far_wk_y0 = s3y(far_wk_yd_local)
 far_wk_y1 = s3y(far_wk_yd_local + WALKWAY_W)
-ax3.add_patch(plt.Rectangle((OX, far_wk_y0),
-              TRAY_DRAW_W, far_wk_y1 - far_wk_y0,
+ax3.add_patch(plt.Rectangle((s3x(0), far_wk_y0),
+              s3d(PROC_TRAY_W), far_wk_y1 - far_wk_y0,
               fc=WK_COLOR, ec=WK_COLOR, lw=1.2, ls="--",
               alpha=WK_ALPHA_L, hatch="//", zorder=2))
-ax3.text(OX + TRAY_DRAW_W + 0.15, (far_wk_y0 + far_wk_y1)/2,
+ax3.text(s3x(PROC_TRAY_W + 50), (far_wk_y0 + far_wk_y1)/2,
          "FAR\nWALKWAY\n(300mm)",
          ha="left", va="center", fontsize=6, color=WK_COLOR)
 
@@ -958,15 +963,15 @@ ax3.plot([corner_dx, panel_dx], [panel_dy, panel_dy],
          color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
 
 # Equipment panel symbol (small rectangle at pipe terminus)
-ax3.add_patch(plt.Rectangle((panel_dx, panel_dy - 0.25),
-              0.15, 0.5,
+ax3.add_patch(plt.Rectangle((s3x(panel_local_x), s3y(panel_local_yd - 85)),
+              s3d(50), s3d(170),
               fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=6))
 
-leader(ax3, panel_dx, panel_dy,
-       panel_dx + 0.8, panel_dy + 0.6,
+leader(ax3, s3x(panel_local_x), s3y(panel_local_yd),
+       s3x(panel_local_x + 275), s3y(panel_local_yd + 205),
        "EQUIPMENT PANEL\n(P-04, FILTERS)", fs=6.5, color=C_PUMP)
 
-ax3.text((drain_dx + corner_dx) / 2, pipe_rim_dy - 0.25,
+ax3.text(s3x((drain_local_x + corner_local_x) / 2), s3y(pipe_rim_yd - 85),
          "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
          ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
 
@@ -979,8 +984,9 @@ notes = [
     f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
     f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
 ]
-draw_notes(ax3, notes, 0.3, -0.8, spacing=0.2, fs=7, width=14,
-           color=C_TEXT, title_color=C_TEXT, font={"fontfamily": "monospace"})
+draw_notes(ax3, notes, s3x(-410), s3y(-890), spacing=s3d(70), fs=7,
+           width=s3d(4800), color=C_TEXT, title_color=C_TEXT,
+           font={"fontfamily": "monospace"})
 
 fig3.savefig("diagrams/water-system-sheet3.png", dpi=150, bbox_inches="tight",
              facecolor=fig3.get_facecolor())
@@ -1185,8 +1191,8 @@ def sa_y(yd_mm):
 def sa_z(z_mm):
     return OA_Y + z_mm / SC_A
 
-ax4a.set_xlim(sa_y(-40) - 0.5, sa_y(420) + 1.0)
-ax4a.set_ylim(sa_z(-55) - 0.5, sa_z(220) + 1.5)
+ax4a.set_xlim(sa_y(-41), sa_y(422))
+ax4a.set_ylim(sa_z(-56), sa_z(223))
 
 # Panel A title
 ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (APPROX 1:2)",
@@ -1446,8 +1452,8 @@ def sb_y(yd_mm):
 def sb_z(z_mm):
     return OB_Y + z_mm / SC_B
 
-ax4b.set_xlim(sb_y(-20) - 0.5, sb_y(1150) + 1.0)
-ax4b.set_ylim(sb_z(-60) - 0.5, sb_z(620) + 1.5)
+ax4b.set_xlim(sb_y(-26), sb_y(1162))
+ax4b.set_ylim(sb_z(-66), sb_z(638))
 
 # Panel B title
 ax4b.text(sb_y(550), sb_z(650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (APPROX 1:12)",
@@ -1608,8 +1614,8 @@ def pc_x(x_mm):
 def pc_yd(yd_mm):
     return OC_Y + (yd_mm - YD_VIEW_BOT) / SC_C
 
-ax4c.set_xlim(pc_x(X_VIEW_L) - 0.5, pc_x(X_VIEW_R) + 0.5)
-ax4c.set_ylim(pc_yd(YD_VIEW_BOT) - 0.5, pc_yd(YD_VIEW_TOP) + 0.5)
+ax4c.set_xlim(pc_x(X_VIEW_L - 4), pc_x(X_VIEW_R + 4))
+ax4c.set_ylim(pc_yd(YD_VIEW_BOT - 4), pc_yd(YD_VIEW_TOP + 4))
 
 # Panel C title
 ax4c.text(pc_x((X_VIEW_L + X_VIEW_R) / 2), pc_yd(YD_VIEW_TOP + 15),

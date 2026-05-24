@@ -1655,10 +1655,10 @@ def sheet4():
         "3. IBC valve faces point toward corridor.",
         "   DN50 butterfly valve (S60×6 thread) at each IBC.",
         "4. S60×6 to 1\" NPT adapters at each IBC (8× total).",
-        "5. Ball valves (Banjo V100FP) at each IBC connection.",
     ]
     notes_r = [
         "NOTES (CONTINUED):",
+        "5. Ball valves (Banjo V100FP) at each IBC connection.",
         f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor.",
         "7. 2\" cross-connect IBC-1 ↔ IBC-2 — always open,",
         "   self-leveling. No valve.",
@@ -1667,11 +1667,11 @@ def sheet4():
         f"9. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
     notes_y = py(YD_LO + 280)
-    notes_sp = py(16)
+    notes_sp = py(18)
     draw_notes(ax, notes_l, px(X_LO + 20), notes_y, spacing=notes_sp,
-               fs=5.5, font=FONT, width=1250)
-    draw_notes(ax, notes_r, px(X_LO + 20) + 1300, notes_y, spacing=notes_sp,
-               fs=5.5, font=FONT, width=1250)
+               fs=5.5, font=FONT, width=1800)
+    draw_notes(ax, notes_r, px(X_LO + 20) + 2400, notes_y, spacing=notes_sp,
+               fs=5.5, font=FONT, width=1800)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",

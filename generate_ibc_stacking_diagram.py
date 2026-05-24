@@ -1379,13 +1379,13 @@ def sheet4():
 
     # Leader with panel contents
     leader(ax, px(ep_face_x - BB_OD / 2), py(ep_yd_near),
-           px(ep_face_x - 350), py(ep_yd_near - 120),
+           px(ep_face_x - 250), py(ep_yd_near - 220),
            "EQUIPMENT PANEL (18mm marine ply)\n"
            "P-01/P-02/P-03/P-04 pumps (Shurflo 2088)\n"
            "ACC-01 accumulator (125 PSI)\n"
            "F1 (50μ) / F2 (5μ) / F3 (GAC) filters\n"
            "3× Big Blue 4.5\"×10\" housings, stacked",
-           fs=5.5, color="#A09060", ha="right", font=FONT)
+           fs=5.5, color="#A09060", ha="left", font=FONT)
 
     # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
     PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
@@ -1465,9 +1465,9 @@ def sheet4():
         ax.add_patch(Circle((px(bh_x), py(panel_yd)),
                      px(port_r * r_frac), fc=color, ec="none",
                      zorder=13, alpha=0.8))
-    ax.text(px(bh_x + 40), py(panel_yd + 60),
+    ax.text(px(bh_x + 40), py(panel_yd + 220),
             "3x BULKHEAD UNIONS\n2\" NPT, STACKED\nAT Yd=" + f"{int(panel_yd)}mm\n"
-            "X1: Z={0}\nX3: Z={1}  X4: Z={2}".format(
+            "X1: Z={0}\nX3: Z={1}\nX4: Z={2}".format(
                 EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H),
             ha="left", va="center", fontsize=5, color=C_PORT,
             fontweight="bold", **FONT, zorder=15)
@@ -1494,7 +1494,7 @@ def sheet4():
     v4_yd = (far_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v4_yd, 'v', C_PIPE_BLACK, "V4")
     leader(ax, px(drain_x), py(far_ibc_conn_yd),
-           px(drain_x - 200), py(far_ibc_conn_yd - 80),
+           px(drain_x - 180), py(far_ibc_conn_yd + 80),
            "X4 ← IBC-4\n(DRAIN, WASTE)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BLACK, ha="right", font=FONT)
     # ── X3: IBC-3 (near, Brown) → bulkhead (above X4) ──────────────────────
@@ -1508,7 +1508,7 @@ def sheet4():
     v3_yd = (near_ibc_conn_yd + panel_yd) / 2
     valve_plan(ax, drain_x, v3_yd, 'v', C_PIPE_BROWN, "V3")
     leader(ax, px(drain_x), py(near_ibc_conn_yd),
-           px(drain_x - 200), py(near_ibc_conn_yd + 80),
+           px(drain_x - 180), py(near_ibc_conn_yd - 80),
            "X3 ← IBC-3\n(DRAIN, BROWN)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BROWN, ha="right", font=FONT)
     # ── X1: Bulkhead → corridor → IBC-1 (near, Blue) — single fill ────────
@@ -1521,7 +1521,7 @@ def sheet4():
     valve_plan(ax, fill_x, v1_yd, 'v', C_PIPE_BLUE, "V1")
     flange_plan(ax, fill_x, near_ibc_conn_yd, 'v', C_PIPE_BLUE)
     leader(ax, px(fill_x), py(near_ibc_conn_yd),
-           px(fill_x - 200), py(near_ibc_conn_yd - 200),
+           px(fill_x + 250), py(near_ibc_conn_yd - 100),
            "X1 → IBC-1\n(FILL, BLUE)\n1\" HDPE",
            fs=5.5, color=C_PIPE_BLUE, ha="right", font=FONT)
 
@@ -1605,7 +1605,7 @@ def sheet4():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + px(70), y_ep,
-            "EQUIPMENT PANEL — P-01/P-02/P-03/P-04 pumps, ACC-01 (18mm marine ply)",
+            "EQUIPMENT PANEL\nP-01/P-02/P-03/P-04 pumps\nACC-01 (18mm marine ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 
@@ -1645,21 +1645,33 @@ def sheet4():
     draw_dim_v(ax, px(frame_x_r + 225), py(0), py(C_WID),
                f"{C_WID}mm (WALL TO WALL)", offset=px(10), fs=6, right=True, font=FONT)
 
-    # ── Notes ────────────────────────────────────────────────────────────────
-    notes = [
+    # ── Notes (two columns to fit above title block) ───────────────────────
+    notes_l = [
         "INTERNAL PLUMBING PLAN NOTES:",
-        f"1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack. Top tier visible; bottom tier shown dashed.",
-        "2. All internal pipe 1\" HDPE SDR-11 (2\" at cross-connect, 2\" NPT at bulkhead unions).",
-        "3. IBC valve faces point toward corridor. DN50 butterfly valve (S60×6 thread) at each IBC.",
-        "4. S60×6 to 1\" NPT adapters at each IBC valve connection (8× total).",
-        "5. Ball valves (Banjo V100FP) at each IBC connection — V1/V3/V4 on vertical branch at panel face.",
-        f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor between IBC columns.",
-        "7. 2\" cross-connect between IBC-1 and IBC-2 valve outlets — always open, self-leveling. No valve.",
-        f"8. Equipment panel (18mm marine ply, spans {CORRIDOR_W}mm corridor at X={EQPANEL_X}): P-01/P-02/P-03/P-04 pumps + 3× Big Blue filters.",
+        f"1. 4× Schutz Ecobulk MX 600L IBCs in 2×2 stack.",
+        "   Top tier visible; bottom tier shown dashed.",
+        "2. All internal pipe 1\" HDPE SDR-11",
+        "   (2\" at cross-connect, 2\" NPT at bulkhead).",
+        "3. IBC valve faces point toward corridor.",
+        "   DN50 butterfly valve (S60×6 thread) at each IBC.",
+        "4. S60×6 to 1\" NPT adapters at each IBC (8× total).",
+        "5. Ball valves (Banjo V100FP) at each IBC connection.",
+    ]
+    notes_r = [
+        "NOTES (CONTINUED):",
+        f"6. Pipes routed through {CORRIDOR_W}mm plumbing corridor.",
+        "7. 2\" cross-connect IBC-1 ↔ IBC-2 — always open,",
+        "   self-leveling. No valve.",
+        f"8. Equipment panel (18mm marine ply, {CORRIDOR_W}mm corridor",
+        f"   at X={EQPANEL_X}): pumps + 3× Big Blue filters.",
         f"9. Portal frame: wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
     ]
-    draw_notes(ax, notes, px(X_LO + 20), py(YD_LO + 280), spacing=py(18),
-               fs=5.5, font=FONT, width=2500)
+    notes_y = py(YD_LO + 280)
+    notes_sp = py(16)
+    draw_notes(ax, notes_l, px(X_LO + 20), notes_y, spacing=notes_sp,
+               fs=5.5, font=FONT, width=1250)
+    draw_notes(ax, notes_r, px(X_LO + 20) + 1300, notes_y, spacing=notes_sp,
+               fs=5.5, font=FONT, width=1250)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",

@@ -1357,7 +1357,7 @@ def sheet4():
             "CARGO\nDOOR\nEND", ha="right", va="center",
             fontsize=5, color=C_DIM, **FONT)
 
-    # ── Equipment panel (pumps + filters) ────────────────────────────────
+    # ── Equipment panel (backing board + equipment depth) ────────────────
     # Panel spans ACROSS corridor (Yd direction), perpendicular to sealed end wall.
     # Panel face at X=EQPANEL_X (5000), ply extends toward sealed end.
     # Equipment protrudes toward open end (lower X).
@@ -1365,57 +1365,27 @@ def sheet4():
     ep_back_x = ep_face_x + EQPANEL_T          # 5018 — plywood back face
     ep_yd_near = EQPANEL_YD                    # 1046
     ep_yd_far  = EQPANEL_YD + CORRIDOR_W       # 1316
+    ep_depth_x = ep_face_x - BB_OD             # 4870 — deepest protrusion (filters)
 
-    # Plywood panel (thin strip in X, spanning corridor in Yd)
+    # Full panel assembly footprint (backing board + equipment depth)
+    ax.add_patch(Rectangle((px(ep_depth_x), py(ep_yd_near)),
+                            px(ep_back_x - ep_depth_x), py(CORRIDOR_W),
+                            fc=C_PLY, ec="#A09060", lw=1.5, alpha=0.3, zorder=5))
+
+    # Plywood backing board (thin strip at back)
     ax.add_patch(Rectangle((px(ep_face_x), py(ep_yd_near)),
                             px(EQPANEL_T), py(CORRIDOR_W),
                             fc=C_PLY, ec="#A09060", lw=1.5, zorder=6))
 
-    # Pump protrusion zone — near side of corridor (Yd=1046–1173)
-    # Protrudes from panel face toward open end (lower X)
-    pump_x_far = ep_face_x - PUMP_D            # 4900
-    pump_yd_near = PUMP_YD                     # 1046
-    pump_yd_far  = pump_yd_near + PUMP_YD_SPAN  # 1173
-    ax.add_patch(Rectangle((px(pump_x_far), py(pump_yd_near)),
-                            px(PUMP_D), py(PUMP_YD_SPAN),
-                            fc=C_PUMP, ec=C_OUT, lw=1.0, alpha=0.25,
-                            ls="--", zorder=5))
-    ax.text(px(pump_x_far + PUMP_D / 2), py(pump_yd_near + PUMP_YD_SPAN / 2),
-            "P-01 / P-02 / P-03 / P-04\n(PUMP ZONE)",
-            ha="center", va="center", fontsize=5, color=C_PUMP,
-            fontweight="bold", **FONT, zorder=10)
-
-    # Filter protrusion zone — far side of corridor (Yd=1186–1316)
-    # 3 housings stacked vertically (different Z), same plan footprint.
-    filt_x_far = ep_face_x - BB_OD             # 4870
-    filt_yd_near = FSKID_YD                    # 1186
-    filt_yd_far  = filt_yd_near + BB_OD        # 1316
-    ax.add_patch(Rectangle((px(filt_x_far), py(filt_yd_near)),
-                            px(BB_OD), py(BB_OD),
-                            fc="#4A7A4A", ec=C_OUT, lw=1.0,
-                            alpha=0.25, ls="--", zorder=5))
-    ax.text(px(filt_x_far + BB_OD / 2), py(filt_yd_near + BB_OD / 2),
-            "F1 / F2 / F3\n(3× BIG BLUE\nSTACKED)",
-            ha="center", va="center", fontsize=4.5, color="#2A5A2A",
-            fontweight="bold", **FONT, zorder=10)
-
-    # Equipment panel label — toward near wall side
-    ax.text(px(ep_face_x + EQPANEL_T / 2), py(ep_yd_near - 25),
-            "EQUIPMENT PANEL\n(18mm MARINE PLY, SPANS CORRIDOR)",
-            ha="center", va="top", fontsize=5, color="#A09060",
-            fontweight="bold", **FONT, zorder=10)
-
-    # Filter zone label — above far IBC column
-    filt_label_yd = corr_yd_hi + 40
-    filt_cx = filt_x_far + BB_OD / 2
-    ax.text(px(filt_cx), py(filt_label_yd),
-            "3× BIG BLUE 4.5\"×10\" FILTER HOUSINGS\n(F1=50μ  F2=5μ  F3=GAC)  STACKED Z=900–1980",
-            ha="center", va="bottom", fontsize=5, color="#2A5A2A",
-            **FONT, zorder=10)
-    ax.annotate("", xy=(px(filt_cx), py(filt_yd_far + 5)),
-                xytext=(px(filt_cx), py(filt_label_yd)),
-                arrowprops=dict(arrowstyle="-|>", color="#2A5A2A", lw=0.8),
-                zorder=10)
+    # Leader with panel contents
+    leader(ax, px(ep_face_x - BB_OD / 2), py(ep_yd_near),
+           px(ep_face_x - 350), py(ep_yd_near - 120),
+           "EQUIPMENT PANEL (18mm marine ply)\n"
+           "P-01/P-02/P-03/P-04 pumps (Shurflo 2088)\n"
+           "ACC-01 accumulator (125 PSI)\n"
+           "F1 (50μ) / F2 (5μ) / F3 (GAC) filters\n"
+           "3× Big Blue 4.5\"×10\" housings, stacked",
+           fs=5.5, color="#A09060", ha="right", font=FONT)
 
     # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
     PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)

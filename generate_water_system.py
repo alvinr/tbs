@@ -1492,11 +1492,12 @@ draw_pipe_end(ax4b, sb_y(RIM_EXT_YD_B), sb_z(HOSE_RIM_Z_B),
               pipe_r_b, pipe_wall_b,
               fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=6)
 
-# Dashed routing indicator from rim to equipment panel
+# Dashed routing indicator from rim to equipment panel (truncated to view range)
+ROUTE_Z_TOP = 500
 ax4b.plot([sb_y(RIM_EXT_YD_B), sb_y(PANEL_YD)],
-          [sb_z(HOSE_RIM_Z_B), sb_z(P04_Z)],
+          [sb_z(HOSE_RIM_Z_B), sb_z(ROUTE_Z_TOP)],
           color=C_BROWN, lw=1.0, ls=":", zorder=3, alpha=0.6)
-ax4b.text(sb_y((RIM_EXT_YD_B + PANEL_YD) / 2), sb_z((HOSE_RIM_Z_B + P04_Z) / 2 + 30),
+ax4b.text(sb_y((RIM_EXT_YD_B + PANEL_YD) / 2), sb_z((HOSE_RIM_Z_B + ROUTE_Z_TOP) / 2 + 30),
           "HOSE ALONG RIM →\nCROSSES AT IBC CORNER\n(SEE PLAN VIEW)",
           ha="center", va="bottom", fontsize=5.5, color=C_BROWN,
           style="italic", zorder=4)
@@ -1507,95 +1508,33 @@ ax4b.add_patch(plt.Rectangle((sb_y(0), sb_z(WK_DECK_H - WK_GRATE_T)),
               fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
               alpha=0.7))
 
-# ── Equipment panel at Yd=1046 (dashed context) ─────────────────────────────
-MANIFOLD_Z_LO = PUMP_H_LO
-MANIFOLD_Z_HI = PUMP_H_HI
+# ── Equipment panel destination (schematic, within view range) ───────────────
+# The equipment panel is at Yd=1046, Z=1320–2220 — far above this view's
+# Z range (0–620).  Show a compact representation at the top of the view
+# with the plywood strip truncated and a destination leader.
+EP_Z_TOP = 580   # truncated top within view
 ax4b.add_patch(plt.Rectangle((sb_y(PANEL_YD - 9), sb_z(0)),
-              18 / SC_B, (MANIFOLD_Z_HI + 100) / SC_B,
+              18 / SC_B, EP_Z_TOP / SC_B,
               fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-ax4b.add_patch(plt.Rectangle((sb_y(PANEL_YD - 20), sb_z(MANIFOLD_Z_LO)),
-              60 / SC_B, (MANIFOLD_Z_HI - MANIFOLD_Z_LO) / SC_B,
-              fc="none", ec=C_PUMP, lw=1.5, ls="--", zorder=3))
-ax4b.text(sb_y(PANEL_YD + 50), sb_z((MANIFOLD_Z_LO + MANIFOLD_Z_HI) / 2),
-          "EQUIP\nPANEL\n(Yd=1046)",
-          ha="left", va="center", fontsize=5.5, color=C_PUMP, style="italic",
-          zorder=4)
 
-# ── P-04 pump (on equipment panel) ──────────────────────────────────────────
-pump_r_b = 25  # mm
-DV_YD_B = PANEL_YD
-ax4b.add_patch(plt.Circle((sb_y(DV_YD_B), sb_z(P04_Z)),
-              pump_r_b / SC_B,
-              fc="#E8884A", ec=C_FRAME, lw=1.5, zorder=5))
-ax4b.text(sb_y(DV_YD_B), sb_z(P04_Z), "P-04",
-          ha="center", va="center", fontsize=7, fontweight="bold",
-          color="white", zorder=6)
+# Break marks (zigzag) at truncation
+brk_z = EP_Z_TOP
+brk_w = 30
+for side in [-1, 1]:
+    bx = PANEL_YD + side * 9
+    ax4b.plot([sb_y(bx - brk_w/2), sb_y(bx), sb_y(bx + brk_w/2)],
+              [sb_z(brk_z - 8), sb_z(brk_z + 8), sb_z(brk_z - 8)],
+              color="#A09060", lw=1.2, zorder=4, clip_on=True)
 
-# ── 3W-DV-02 diverter valve (on P-04 discharge) ─────────────────────────────
-DV_Z_B = P04_Z + 100   # above pump
-dv_w_b = 60
-dv_h_b = 40
-
-# P-04 discharge to diverter
-draw_pipe_path(ax4b, [DV_YD_B, DV_YD_B],
-               [P04_Z + pump_r_b, DV_Z_B - dv_h_b/2],
-               TUBE_OD, TUBE_WALL, sb_y, sb_z,
-               fc=C_BROWN, ec="#5A3020", zorder=4)
-
-# Diverter box
-ax4b.add_patch(plt.Rectangle((sb_y(DV_YD_B - dv_w_b/2), sb_z(DV_Z_B - dv_h_b/2)),
-              dv_w_b / SC_B, dv_h_b / SC_B,
-              fc="#FFF9C4", ec=C_FRAME, lw=1.5, zorder=5))
-ax4b.text(sb_y(DV_YD_B), sb_z(DV_Z_B), "3W-DV-02",
-          ha="center", va="center", fontsize=6.5, fontweight="bold", zorder=6)
-
-# ── Discharge from diverter to IBC-3 ────────────────────────────────────────
-# IBC-3 is nearby (equipment panel is in the IBC corridor). From the diverter,
-# the pipe runs along the panel toward IBC-3. In this cross-section (looking
-# along +X), the run goes INTO the page — shown as a pipe end-on.
-IBC3_FILL_Z = IBC_H_600   # ~1,010mm
-ELBOW_Z = DV_Z_B + dv_h_b/2 + 40  # short rise above diverter
-
-# Short vertical rise from diverter to elbow
-draw_pipe_path(ax4b, [DV_YD_B, DV_YD_B],
-               [DV_Z_B + dv_h_b/2, ELBOW_Z],
-               TUBE_OD, TUBE_WALL, sb_y, sb_z,
-               fc=C_BROWN, ec="#5A3020", zorder=4)
-
-# Pipe end-on (circle with bore) — 90° elbow turns into the page toward IBC-3
-# Centered on the vertical pipe centerline (DV_YD_B) at the top of the rise
-pipe_end_r = TUBE_OD / 2 / SC_B
-pipe_end_wall = TUBE_WALL / SC_B
-draw_pipe_end(ax4b, sb_y(DV_YD_B), sb_z(ELBOW_Z),
-              pipe_end_r, pipe_end_wall,
-              fc=C_BROWN, ec=C_FRAME, zorder=6)
-
-# Label
-leader(ax4b, sb_y(DV_YD_B + 20), sb_z(ELBOW_Z),
-       sb_y(DV_YD_B + 80), sb_z(ELBOW_Z + 80),
-       f"90° ELBOW TO IBC-3\nVIA PANEL-MOUNTED 1\" LINE\n(INTO PAGE)", fs=6.5,
-       color=C_BROWN)
-
-# ── Waste branch (dashed) — IBC-4 is in the corridor (higher Yd) ────────────
-ax4b.annotate("", xy=(sb_y(DV_YD_B + dv_w_b/2 + 40), sb_z(DV_Z_B)),
-             xytext=(sb_y(DV_YD_B + dv_w_b/2), sb_z(DV_Z_B)),
-             arrowprops=dict(arrowstyle="-|>", color=C_BLACK, lw=1.5,
-                             linestyle="--", mutation_scale=10),
-             zorder=3)
-ax4b.text(sb_y(DV_YD_B + dv_w_b/2 + 55), sb_z(DV_Z_B),
-          "IBC-4\n(WASTE)",
-          ha="center", va="center", fontsize=6, color=C_BLACK,
-          style="italic", zorder=4)
+# Destination leader
+leader(ax4b, sb_y(PANEL_YD), sb_z(EP_Z_TOP),
+       sb_y(PANEL_YD + 80), sb_z(EP_Z_TOP + 30),
+       "EQUIPMENT PANEL (Yd=1,046)\n"
+       "P-04 Shurflo 2088 (Z=1,400)\n"
+       "3W-DV-02 diverter → IBC-3 / IBC-4",
+       fs=6, color=C_PUMP, ha="left")
 
 # ── Dimensions ───────────────────────────────────────────────────────────────
-# Floor to manifold bottom (near equipment panel)
-draw_dim_v(ax4b, sb_y(PANEL_YD + 60), sb_z(0), sb_z(MANIFOLD_Z_LO),
-           f"{MANIFOLD_Z_LO}mm", offset=0.5, fs=7, right=True)
-
-# Floor to manifold top
-draw_dim_v(ax4b, sb_y(PANEL_YD + 100), sb_z(0), sb_z(MANIFOLD_Z_HI),
-           f"{MANIFOLD_Z_HI}mm", offset=0.6, fs=6.5, right=True)
-
 # Rim top above floor
 draw_dim_v(ax4b, sb_y(tray_yd_near - 30), sb_z(0), sb_z(RIM_TOP_B),
            f"{int(RIM_TOP_B)}mm", offset=0.4, fs=6.5, right=False)
@@ -1608,10 +1547,6 @@ draw_dim_v(ax4b, sb_y(WALKWAY_W + 15), sb_z(0), sb_z(WK_DECK_H),
 leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
        sb_y(200), sb_z(WK_DECK_H + 40),
        "WALKWAY", fs=6.5, color="#8D6E63")
-
-leader(ax4b, sb_y(DV_YD_B), sb_z(P04_Z + pump_r_b + 5),
-       sb_y(DV_YD_B - 120), sb_z(P04_Z + 80),
-       "SHURFLO 2088\n12V DC, 3.5 GPM\nSELF-PRIMING", fs=6, color=C_PUMP)
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PANEL C — PLAN VIEW: HOSE ROUTING ALONG TRAY RIM (~1:8)

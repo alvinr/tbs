@@ -305,10 +305,8 @@ def _ghost_ibc_plan(ax, x, yd, w, d, px, py, *, label="", zo=2.5):
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet1():
     """Sheet 1 — Front elevation of IBC support frame."""
-    S = 2.8
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     YD_LO = -300
     YD_HI = FRAME_FOOTPRINT_W + 300
@@ -676,7 +674,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
-                scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW ALONG X",
+                scale_note="Axes in mm — VIEW ALONG X",
                 height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet1.png", dpi=130,
@@ -704,10 +702,8 @@ def sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
     """Sheet 2 — Side elevation of IBC support frame."""
-    S = 2.8
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     X_LO = -300
     X_HI = FRAME_FOOTPRINT_D + 300
@@ -868,7 +864,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="SIDE ELEVATION — CORRIDOR STRUCTURE & X-BRACING",
-                scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW ALONG Yd",
+                scale_note="Axes in mm — VIEW ALONG Yd",
                 height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet2.png", dpi=130,
@@ -888,10 +884,8 @@ def sheet2():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
     """Sheet 3 — Plan view of IBC support frame at platform level."""
-    S = 2.8
-
-    def px(mm): return mm * S
-    def py(mm): return mm * S
+    def px(mm): return mm
+    def py(mm): return mm
 
     X_LO = -300
     X_HI = FRAME_FOOTPRINT_D + 300
@@ -1064,30 +1058,29 @@ def sheet3():
             fontweight="bold", **FONT, zorder=13)
 
     # Draw enlarged corner joint
-    dsx = 4.0  # detail scale
+    dsx = 10 / 7  # detail magnification (was 4.0 / S where S=2.8)
     dcx = det_x + det_w * 0.4  # detail center X
     dcy = det_y + det_h * 0.45
 
     # Upright (vertical member, going up out of page — shown as cross-section)
-    u_size = FRAME_RHS * dsx
-    ax.add_patch(Rectangle((dcx - px(FRAME_RHS / 2 * dsx / S),
-                             dcy - py(FRAME_RHS / 2 * dsx / S)),
-                            px(FRAME_RHS * dsx / S),
-                            py(FRAME_RHS * dsx / S),
+    ax.add_patch(Rectangle((dcx - px(FRAME_RHS / 2 * dsx),
+                             dcy - py(FRAME_RHS / 2 * dsx)),
+                            px(FRAME_RHS * dsx),
+                            py(FRAME_RHS * dsx),
                             fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=13,
                             hatch="///", alpha=0.6))
     # Inner void
-    ax.add_patch(Rectangle((dcx - px((FRAME_RHS / 2 - FRAME_T) * dsx / S),
-                             dcy - py((FRAME_RHS / 2 - FRAME_T) * dsx / S)),
-                            px((FRAME_RHS - 2 * FRAME_T) * dsx / S),
-                            py((FRAME_RHS - 2 * FRAME_T) * dsx / S),
+    ax.add_patch(Rectangle((dcx - px((FRAME_RHS / 2 - FRAME_T) * dsx),
+                             dcy - py((FRAME_RHS / 2 - FRAME_T) * dsx)),
+                            px((FRAME_RHS - 2 * FRAME_T) * dsx),
+                            py((FRAME_RHS - 2 * FRAME_T) * dsx),
                             fc=BG, ec=C_OUT, lw=0.8, zorder=14))
 
     # Beam stub (horizontal, going right)
-    beam_l = FRAME_RHS * 2 * dsx / S
-    beam_h = FRAME_RHS * dsx / S
-    beam_x = dcx + px(FRAME_RHS / 2 * dsx / S)
-    beam_y = dcy - py(FRAME_RHS / 2 * dsx / S)
+    beam_l = FRAME_RHS * 2 * dsx
+    beam_h = FRAME_RHS * dsx
+    beam_x = dcx + px(FRAME_RHS / 2 * dsx)
+    beam_y = dcy - py(FRAME_RHS / 2 * dsx)
     ax.add_patch(Rectangle((beam_x, beam_y), px(beam_l), py(beam_h),
                             fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=13,
                             hatch="\\\\\\", alpha=0.5))
@@ -1104,7 +1097,7 @@ def sheet3():
             **FONT, zorder=15)
 
     # Labels
-    ax.text(dcx, dcy + py(FRAME_RHS / 2 * dsx / S) + py(8),
+    ax.text(dcx, dcy + py(FRAME_RHS / 2 * dsx) + py(8),
             "UPRIGHT\n(CUT SECTION)", ha="center", va="bottom",
             fontsize=4.5, color=C_DIM, **FONT, zorder=15)
     ax.text(beam_x + px(beam_l / 2), beam_y - py(8),
@@ -1124,18 +1117,18 @@ def sheet3():
             fontweight="bold", **FONT, zorder=13)
 
     # Mounting plate
-    d_dsx = 3.5
+    d_dsx = 1.25  # detail magnification (was 3.5 / S where S=2.8)
     d_cx = det2_x + det2_w * 0.5
     d_cy = det2_y + det2_h * 0.40
-    plate_w_d = (DRING_SIZE + 30) * d_dsx / S
-    plate_h_d = (DRING_SIZE + 30) * d_dsx / S
+    plate_w_d = (DRING_SIZE + 30) * d_dsx
+    plate_h_d = (DRING_SIZE + 30) * d_dsx
     ax.add_patch(Rectangle((d_cx - px(plate_w_d / 2), d_cy - py(plate_h_d / 2)),
                             px(plate_w_d), py(plate_h_d),
                             fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=13,
                             alpha=0.5))
 
     # D-ring
-    d_r = DRING_SIZE / 2 * d_dsx / S
+    d_r = DRING_SIZE / 2 * d_dsx
     theta = np.linspace(0, np.pi, 40)
     d_ring_x = [d_cx + px(d_r * np.cos(t)) for t in theta]
     d_ring_y = [d_cy + py(d_r * np.sin(t)) for t in theta]
@@ -1144,7 +1137,7 @@ def sheet3():
             color=C_OUT, lw=3.0, zorder=14)
 
     # Pin hole
-    ax.add_patch(Circle((d_cx, d_cy), px(3 * d_dsx / S),
+    ax.add_patch(Circle((d_cx, d_cy), px(3 * d_dsx),
                          fc=C_OUT, ec=C_OUT, lw=1.0, zorder=15))
 
     # Labels
@@ -1179,7 +1172,7 @@ def sheet3():
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLAN VIEW — PLATFORM BEAM LAYOUT & DETAILS",
-                scale_note="SCALE ~ 2.8:1 — ALL DIMS IN mm — VIEW LOOKING DOWN",
+                scale_note="Axes in mm — VIEW LOOKING DOWN",
                 height=0.04)
 
     fig.savefig("diagrams/ibc-frame-sheet3.png", dpi=130,

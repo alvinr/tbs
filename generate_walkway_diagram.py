@@ -103,10 +103,8 @@ FONT    = {"fontfamily": "monospace"}
 # Scale ≈ 5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-    S = 5.0   # scale factor
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Structural dimensions (mm real) ──────────────────────────────────────
     TRAY_WALL  = 3     # tray wall thickness (SS)
@@ -209,7 +207,7 @@ def sheet2():
            ha="center", va="center", arrow_style="-|>", font=FONT)
     # Sawtooth break line on tray floor (continues right)
     bx = sx(tray_floor_end)
-    z_lo, z_hi = 0, TRAY_FLOOR * S
+    z_lo, z_hi = 0, TRAY_FLOOR
     zz = np.linspace(z_lo, z_hi, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
@@ -489,7 +487,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION \u2014 NEAR WALKWAY WITH BRACKET DETAIL",
-                scale_note=f"SCALE \u2248 5:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION AT BRACKET POSITION",
+                scale_note=f"Axes in mm \u00b7 SECTION AT BRACKET POSITION",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -834,7 +832,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
-                scale_note=f"SCALE \u2248 1:25 \u00b7 ALL DIMS IN mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
+                scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
     fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -859,10 +857,8 @@ def sheet3():
     with a break in between to cut out the featureless rod section.
     Cross-section looking along Yd.  Horizontal = X, Vertical = Z.
     """
-    S = 3.0   # scale for detail zones
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Structural dimensions ────────────────────────────────────────────────
     FLOOR_T      = 3
@@ -970,7 +966,7 @@ def sheet3():
                             sx(TRAY_DX - TRAY_WALL - tray_floor_left), sy(TRAY_FLOOR_T),
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     bx_tray = sx(tray_floor_left)
-    zz_t = np.linspace(zy_bot(0) * S, zy_bot(TRAY_FLOOR_T) * S, 5)
+    zz_t = np.linspace(sy(zy_bot(0)), sy(zy_bot(TRAY_FLOOR_T)), 5)
     ax.plot([bx_tray - 3, bx_tray + 3, bx_tray - 3, bx_tray + 3, bx_tray - 3],
             zz_t, color=C_OUT, lw=1.0, zorder=5)
     leader(ax, sx(TRAY_DX - TRAY_WALL / 2), sy(zy_bot(PROC_TRAY_RIM)),
@@ -1200,7 +1196,7 @@ def sheet3():
     title_block(ax, "SHEET 3 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
-                scale_note=f"SCALE \u2248 3:1 \u00b7 ALL DIMS IN mm \u00b7 SECTION LOOKING ALONG Yd",
+                scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1219,10 +1215,8 @@ def sheet3():
 # Scale ≈ 2:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    S = 2.5   # scale factor
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Key geometry ─────────────────────────────────────────────────────────
     BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (bracket arm top = grate bottom)
@@ -1275,7 +1269,7 @@ def sheet4():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Sawtooth break line on tray floor
     bx = sx(tray_floor_end)
-    z_lo, z_hi = 0, TRAY_FLOOR_T * S
+    z_lo, z_hi = 0, TRAY_FLOOR_T
     zz = np.linspace(z_lo, z_hi, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
@@ -1548,7 +1542,7 @@ def sheet4():
     title_block(ax, "SHEET 4 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
-                scale_note=f"SCALE \u2248 2.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
+                scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.10)
 
     fig.savefig("diagrams/walkway-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1570,10 +1564,8 @@ def sheet4():
 # Scale ≈ 3.5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet5():
-    S = 3.5   # scale factor
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Key geometry ─────────────────────────────────────────────────────────
     TRAY_WALL  = 3     # tray wall thickness (SS)
@@ -1641,7 +1633,7 @@ def sheet5():
                             fc=C_TRAY, ec=C_OUT, lw=0.8, zorder=4))
     # Sawtooth break line on tray floor
     bx = sx(tray_floor_end)
-    z_lo, z_hi = 0, TRAY_FLOOR_T * S
+    z_lo, z_hi = 0, TRAY_FLOOR_T
     zz = np.linspace(z_lo, z_hi, 5)
     ax.plot([bx - 3, bx + 3, bx - 3, bx + 3, bx - 3],
             zz, color=C_OUT, lw=1.0, zorder=5)
@@ -1824,7 +1816,7 @@ def sheet5():
     title_block(ax, "SHEET 5 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
-                scale_note=f"SCALE \u2248 3.5:1 \u00b7 ALL DIMS IN mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
+                scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1853,10 +1845,8 @@ def sheet5():
 # Scale ≈ 4:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet6():
-    S = 4.0   # scale factor
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Wall / bracket structural dimensions ─────────────────────────────────
     CORR_DEPTH = 38    # corrugation depth (mm)
@@ -2149,9 +2139,9 @@ def sheet6():
     # ══════════════════════════════════════════════════════════════════════════
     PV_OX = 60
     PV_OY = BRKT_VERT + 65
-    PV_S  = 3.25   # 30% larger than original 2.5
-    def px(mm): return sx(PV_OX + mm * PV_S / S)
-    def py(mm): return sy(PV_OY + mm * PV_S / S)
+    PV_S  = 0.8125   # nested magnification (was 3.25 / S where S=4.0)
+    def px(mm): return sx(PV_OX + mm * PV_S)
+    def py(mm): return sy(PV_OY + mm * PV_S)
 
     ax.text(px(60), py(115), "VIEW B \u2014 PLAN (LOOKING DOWN)",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
@@ -2268,9 +2258,9 @@ def sheet6():
     # ══════════════════════════════════════════════════════════════════════════
     VC_OX = 300
     VC_OY = BRKT_VERT + 108   # bottom-aligned with View B
-    VC_S  = 3.9   # 30% larger than original 3.0
-    def cx(mm): return sx(VC_OX + mm * VC_S / S)
-    def cy(mm): return sy(VC_OY + mm * VC_S / S)
+    VC_S  = 0.975   # nested magnification (was 3.9 / S where S=4.0)
+    def cx(mm): return sx(VC_OX + mm * VC_S)
+    def cy(mm): return sy(VC_OY + mm * VC_S)
 
     ax.text(cx(35), cy(65), "VIEW C \u2014 LOCK DETAIL\n(SECTION ALONG Yd)",
             ha="center", va="bottom", fontsize=7, color=C_OUT,
@@ -2402,7 +2392,7 @@ def sheet6():
     title_block(ax, "SHEET 6 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
-                scale_note="SCALE \u2248 4:1 \u00b7 ALL DIMS IN mm \u00b7 VIEWS A/B/C",
+                scale_note="Axes in mm \u00b7 VIEWS A/B/C",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)

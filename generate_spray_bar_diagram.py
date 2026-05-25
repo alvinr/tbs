@@ -118,16 +118,17 @@ gs = GridSpec(3, 2, figure=fig, width_ratios=[1, 1.3],
 # ─────────────────────────────────────────────────────────────────────────────
 ax = fig.add_subplot(gs[0, 0])
 ax.set_facecolor(C_BG)
+ax.set_aspect(4.0)
 ax.axis("off")
 
-H_SC = 18.0
-V_SC = 4.5
+H_SC = 1.0
+V_SC = 1.0
 
 def sx(x_mm):
-    return 1.0 + x_mm / H_SC
+    return x_mm
 
 def sz(z_mm):
-    return 1.0 + z_mm / V_SC
+    return z_mm
 
 pole_x = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 
@@ -418,7 +419,7 @@ ax.text(sx(view_ctr_x), sz(Z_HI - 5),
         ha="center", va="top", fontsize=9, color=C_FRAME,
         fontweight="bold", **FONT, zorder=15)
 ax.text(sx(view_ctr_x), sz(Z_HI - 22),
-        "(H 1:18 / V 1:4.5 — 4× VERT EXAG — SECTION THROUGH NEAR WALKWAY)",
+        "(AXES IN mm — 4× VERT EXAG — SECTION THROUGH NEAR WALKWAY)",
         ha="center", va="top", fontsize=5, color=C_DIM,
         **FONT, zorder=15)
 
@@ -604,13 +605,13 @@ ax2.set_facecolor(C_BG)
 ax2.set_aspect("equal")
 ax2.axis("off")
 
-SC2 = 2.0
+SC2 = 1.0
 
 def cy(yd_mm):
-    return 3.0 + yd_mm / SC2
+    return yd_mm
 
 def cz(z_mm):
-    return 2.0 + z_mm / SC2
+    return z_mm
 
 carriage_yd_center = 200
 wheel1_yd = carriage_yd_center - WHEEL_SPACING_YD / 2
@@ -629,7 +630,7 @@ ax2.text(cy((C_YD_LO + C_YD_HI) / 2), cz(C_Z_HI - 3),
          ha="center", va="top", fontsize=9, color=C_FRAME,
          fontweight="bold", **FONT, zorder=15)
 ax2.text(cy((C_YD_LO + C_YD_HI) / 2), cz(C_Z_HI - 15),
-         "(COMPOSITE — LOOKING ALONG X — SCALE 1:2)",
+         "(COMPOSITE — LOOKING ALONG X — AXES IN mm)",
          ha="center", va="top", fontsize=5, color=C_DIM,
          **FONT, zorder=15)
 
@@ -1176,7 +1177,7 @@ ax_d = fig.add_subplot(gs[1, 1])
 ax_d.set_facecolor(C_BG)
 ax_d.axis("off")
 
-SC_D = 2.0
+SC_D = 1.0
 BEAM_SHOW_LEN = 140  # mm of beam shown on each side of center
 CARRIAGE_OFFSET_X = -BEAM_SHOW_LEN + 20  # carriage at beam end
 
@@ -1185,22 +1186,22 @@ D_X_HI = BEAM_SHOW_LEN + 20
 D_YD_LO = -WHEEL_SPACING_YD / 2 - 40
 D_YD_HI = WHEEL_SPACING_YD / 2 + 40
 
-ax_d.set_xlim(D_X_LO / SC_D, D_X_HI / SC_D)
-ax_d.set_ylim(D_YD_LO / SC_D, D_YD_HI / SC_D)
+ax_d.set_xlim(D_X_LO, D_X_HI)
+ax_d.set_ylim(D_YD_LO, D_YD_HI)
 ax_d.set_aspect("equal")
 
 def px(x_mm):
-    return x_mm / SC_D
+    return x_mm
 
 def py_d(yd_mm):
-    return yd_mm / SC_D
+    return yd_mm
 
 ax_d.text(px(0), py_d(D_YD_HI - 2),
           "DETAIL D — WHEEL ATTACHMENT PLAN",
           ha="center", va="top", fontsize=8, color="#AA6600",
           fontweight="bold", **FONT, zorder=20)
 ax_d.text(px(0), py_d(D_YD_HI - 10),
-          "(LOOKING DOWN — SCALE 1:2)",
+          "(LOOKING DOWN — AXES IN mm)",
           ha="center", va="top", fontsize=5, color=C_DIM,
           **FONT, zorder=20)
 
@@ -1317,13 +1318,13 @@ ax_p.set_facecolor(C_BG)
 ax_p.set_aspect("equal")
 ax_p.axis("off")
 
-SC_P = 80.0
+SC_P = 1.0
 
 def ppx(x_mm):
-    return x_mm / SC_P
+    return x_mm
 
 def ppy(yd_mm):
-    return yd_mm / SC_P
+    return yd_mm
 
 P_X_LO = -200
 P_X_HI = C_LEN + 200
@@ -1339,7 +1340,7 @@ ax_p.text(ppx(C_LEN / 2), ppy(P_YD_HI - 50),
           ha="center", va="top", fontsize=7, color="#006600",
           fontweight="bold", **FONT, zorder=20)
 ax_p.text(ppx(C_LEN / 2), ppy(P_YD_HI - 150),
-          f"(LOOKING DOWN — SCALE 1:{int(SC_P)})",
+          "(LOOKING DOWN — AXES IN mm)",
           ha="center", va="top", fontsize=5, color=C_DIM,
           **FONT, zorder=20)
 
@@ -1456,7 +1457,7 @@ ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="SPRAY BAR ASSEMBLY",
             subtitle="GANTRY SPRAY BAR — ELEVATION, CROSS SECTION & DETAILS",
-            scale_note="MULTIPLE SCALES — ALL DIMS IN mm",
+            scale_note="AXES IN mm — MULTIPLE PANELS",
             height=0.75)
 
 # ── Save ──────────────────────────────────────────────────────────────────

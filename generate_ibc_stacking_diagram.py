@@ -2139,7 +2139,7 @@ def sheet5():
 
     # ── Legend ───────────────────────────────────────────────────────────────
     leg_x = sx(YD_LO + 1720)
-    leg_top = sy(100)
+    leg_top = sy(-200)
     leg_spacing = sy(33)
 
     # Legend background box

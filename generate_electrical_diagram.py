@@ -401,65 +401,63 @@ def draw_sheet2():
         DIAGRAMS_DIR, svg_path,
     )
 
-    FW, FH = 24.0, 11.5
+    # ── mm-first coordinate system ───────────────────────────────────────────
+    # Axes show mm directly.  Interior: X 0→C_LEN, Yd 0→C_WID.
+    # Adapter variables let existing expressions (OX+wt, OY+cwid-wt, ix(),
+    # x*S_xi, etc.) evaluate to correct mm values without rewriting every line.
+    C_LEN   = TBS_C_LEN    # 5893 mm
+    C_WID   = TBS_C_WID    # 2362 mm
+    WT_MM   = 120           # mm schematic wall thickness
+    PH_X_MM = TBS_PH_X     # 2399 mm
+    ZONE_L  = ZONE_L_END
+    ZONE_R  = ZONE_R_START
+
+    OX   = -WT_MM
+    OY   = -WT_MM
+    wt   = WT_MM
+    clen = C_LEN + 2 * WT_MM
+    cwid = C_WID + 2 * WT_MM
+    S_yd = (cwid - 2 * wt) / C_WID   # = 1.0
+    S_xi = (clen - 2 * wt) / C_LEN   # = 1.0
+    def ix(x_mm):
+        return OX + wt + x_mm * S_xi  # = x_mm
+
+    PAD_X_L   = 1300
+    PAD_X_R   = 4800
+    PAD_Y_BOT = 1800
+    PAD_Y_TOP = 1350
+    X_LO = OX - PAD_X_L
+    X_HI = OX + clen + PAD_X_R
+    Y_LO = OY - PAD_Y_BOT
+    Y_HI = OY + cwid + PAD_Y_TOP
+    FIG_CX = (X_LO + X_HI) / 2
+
+    FW, FH = 24.0, 12.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
-    ax.set_xlim(0, FW)
-    ax.set_ylim(0, FH)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Y_LO, Y_HI)
     ax.set_aspect("equal")
     ax.axis("off")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
-    # ── Scale / geometry constants ────────────────────────────────────────────
-    # 1 drawing unit = 500 mm
-    S     = 1.0 / 500.0
-
-    # Container placement in figure space
-    # LEFT  short wall = X=0    = CARGO DOOR end  (hinged panel, light trap)
-    # RIGHT short wall = X=5893 = far end
-    # BOTTOM long wall = Y=0    = PINHOLE WALL  (Yd=0, optical origin)
-    # TOP   long wall  = Y=2362 = IMAGE PLANE WALL
-    OX = 2.5   # drawing x of container left edge (cargo door side)
-    OY = 3.8   # drawing y of container bottom edge (pinhole wall)
-
-    C_LEN   = TBS_C_LEN    # 5893 mm container interior length
-    C_WID   = TBS_C_WID    # 2362 mm container interior width = optical depth
-    WT_MM   = 120           # mm schematic wall thickness
-
-    PH_X_MM = TBS_PH_X     # 2399 mm — centered on active film plane
-
-    # Zone boundaries
-    ZONE_L  = ZONE_L_END   # left end zone right boundary
-    ZONE_R  = ZONE_R_START  # 4,649 mm — right end zone left boundary
-
-    clen   = C_LEN * S     # drawing units (full container length incl. walls)
-    cwid   = C_WID * S     # drawing units (full container width incl. walls)
-    wt     = WT_MM * S     # drawing units (schematic wall thickness)
-    S_yd   = (cwid - 2*wt) / C_WID  # Yd scale: maps yd=0→OY+wt, yd=C_WID→OY+cwid-wt
-
-    # Interior X scale: TBS X (0–C_LEN mm) maps to drawing interior (OX+wt … OX+clen-wt)
-    S_xi   = (clen - 2*wt) / C_LEN
-    def ix(x_mm):
-        """Map TBS interior X (mm) to drawing X coordinate."""
-        return OX + wt + x_mm * S_xi
-
-    # ── Page title — positioned just above container ─────────────────────────
-    title_y = OY + cwid + 1.10
-    ax.text(FW / 2, title_y,
+    # ── Page title — positioned above container ─────────────────────────────
+    title_y = OY + cwid + 550
+    ax.text(FIG_CX, title_y,
             "CONTAINER FLOOR PLAN & WIRING LAYOUT — TBS-001",
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
-    ax.text(FW / 2, title_y - 0.34,
-            "Top-down plan view  ·  Scale 1:500  ·  All dimensions in mm  "
+    ax.text(FIG_CX, title_y - 170,
+            "Top-down plan view  ·  All dimensions in mm  "
             "·  Pinhole on bottom long wall — optical axis crosses container width (2,362mm)",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
-    ph_x     = ix(PH_X_MM)     # pinhole x in drawing coords
-    zone_l_x = ix(ZONE_L)      # left zone boundary x
-    zone_r_x = ix(ZONE_R)      # right zone boundary x
-    fp_l_x   = ix(FP_X_L)      # film plane left edge x
-    fp_r_x   = ix(FP_X_R)      # film plane right edge x
+    ph_x     = PH_X_MM
+    zone_l_x = ZONE_L
+    zone_r_x = ZONE_R
+    fp_l_x   = FP_X_L
+    fp_r_x   = FP_X_R
 
     # ── Container shell ───────────────────────────────────────────────────────
     ax.add_patch(mpatches.Rectangle((OX, OY), clen, cwid,
@@ -474,14 +472,14 @@ def draw_sheet2():
                      fc=C_STEEL, ec=C_OUT, lw=0.5, zorder=3))
 
     # Wall labels on exterior faces
-    ax.text(OX - 0.12, OY + cwid/2,
+    ax.text(OX - 60, OY + cwid/2,
             "CARGO DOOR\n(X=0)",
             fontsize=7.0, color=C_OUT, ha="right", va="center",
             fontweight="bold")
-    ax.text(OX + clen + 0.12, OY + cwid/2,
+    ax.text(OX + clen + 60, OY + cwid/2,
             "FAR END\n(X=5,893mm)",
             fontsize=7.0, color=C_DIM, ha="left", va="center")
-    ax.text(OX + clen/2, OY + cwid - wt + 0.82,
+    ax.text(OX + clen/2, OY + cwid - wt + 410,
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
             fontsize=8.0, ha="center", va="top", color=C_DIM, style="italic")
 
@@ -503,16 +501,16 @@ def draw_sheet2():
     for zx, zlabel in [(zone_l_x, f"X={ZONE_L}mm"), (zone_r_x, f"X={ZONE_R}mm")]:
         ax.plot([zx, zx], [OY+wt, OY+cwid-wt], color=C_DIM, lw=1.2, ls="--",
                 zorder=7)
-        ax.text(zx, OY+cwid-wt+0.08, zlabel, ha="center", va="bottom",
+        ax.text(zx, OY+cwid-wt+40, zlabel, ha="center", va="bottom",
                 fontsize=6.5, color=C_DIM)
 
-    ax.text((int_left + zone_l_x)/2, OY + cwid - wt + 0.52,
+    ax.text((int_left + zone_l_x)/2, OY + cwid - wt + 260,
             "LEFT\nEND ZONE", ha="center", va="top", fontsize=7.0,
             color="#805000", fontweight="bold", zorder=5)
-    ax.text((zone_l_x + zone_r_x)/2, OY + cwid - wt + 0.52,
+    ax.text((zone_l_x + zone_r_x)/2, OY + cwid - wt + 260,
             "OPTICAL ZONE\n(film plane only)", ha="center", va="top", fontsize=7.0,
             color="#006000", fontweight="bold", zorder=5)
-    ax.text((zone_r_x + int_right)/2, OY + cwid - wt + 0.52,
+    ax.text((zone_r_x + int_right)/2, OY + cwid - wt + 260,
             "RIGHT\nEND ZONE", ha="center", va="top", fontsize=7.0,
             color="#004080", fontweight="bold", zorder=5)
 
@@ -531,17 +529,17 @@ def draw_sheet2():
 
     # ── Image plane strip — X=150–4649mm ────────────────────────────────────
     ax.add_patch(mpatches.Rectangle(
-                 (fp_l_x, OY+cwid-wt-0.15), fp_r_x - fp_l_x, 0.15,
+                 (fp_l_x, OY+cwid-wt-75), fp_r_x - fp_l_x, 75,
                  fc="#A8C8E8", ec=C_CL, lw=1.5, zorder=6))
-    ax.text((fp_l_x+fp_r_x)/2, OY + cwid - wt - 0.075,
+    ax.text((fp_l_x+fp_r_x)/2, OY + cwid - wt - 38,
             f"FILM PLANE  X={FP_X_L}–{FP_X_R}mm  ({FP_X_R-FP_X_L}mm wide × {FP_H}mm H)",
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=7)
 
     # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
-    ax.add_patch(plt.Circle((ph_x, OY + wt/2), 0.12,
+    ax.add_patch(plt.Circle((ph_x, OY + wt/2), 60,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    leader(ax, ph_x, OY + wt/2, ph_x * 1.1, OY - 0.35,
+    leader(ax, ph_x, OY + wt/2, ph_x + 350, OY - 175,
            f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}mm  f/{PH_FNO}",
            fs=7.5, ha="center")
 
@@ -560,11 +558,11 @@ def draw_sheet2():
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, ed,
                      fc=col, ec=C_OUT, lw=1.0, zorder=5, alpha=0.88))
         cy_e = ey + ed / 2
-        ax.text(ex+ew/2, cy_e + (0.10 if sublabel else 0), label,
+        ax.text(ex+ew/2, cy_e + (50 if sublabel else 0), label,
                 ha="center", va="center", fontsize=6.5, fontweight="bold",
                 color=C_OUT, zorder=6)
         if sublabel:
-            ax.text(ex+ew/2, cy_e - 0.12, sublabel,
+            ax.text(ex+ew/2, cy_e - 60, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # LEFT END ZONE (X=0–625mm) — light trap drum only (waste drums eliminated rev 5)
@@ -617,7 +615,7 @@ def draw_sheet2():
     # PINHOLE WALL — duct penetration (evap cooler now external)
     duct_cx = ix(EVAP_DUCT_X)
     duct_cy = OY + wt / 2
-    duct_r = EVAP_DUCT_D / 2 * S_xi
+    duct_r = EVAP_DUCT_D / 2
     ax.add_patch(plt.Circle((duct_cx, duct_cy), duct_r,
                  fc=C_EVAP, ec=C_OUT, lw=1.2, zorder=7))
     ax.text(duct_cx, duct_cy, "E",
@@ -672,7 +670,7 @@ def draw_sheet2():
     # Fan A — INTAKE: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner
     FA_X = OX + clen - wt/2
     FA_Y = OY + wt + FAN_A_YD * S_yd
-    ax.add_patch(plt.Circle((FA_X, FA_Y), 0.22,
+    ax.add_patch(plt.Circle((FA_X, FA_Y), 110,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FA_X, FA_Y, "A",
             ha="center", va="center", fontsize=9, fontweight="bold",
@@ -681,7 +679,7 @@ def draw_sheet2():
     # Fan B — EXHAUST: LEFT short wall = cargo door end (X=0), Yd=2287mm far-wall corner
     FB_X = OX + wt/2
     FB_Y = OY + wt + FAN_B_YD * S_yd
-    ax.add_patch(plt.Circle((FB_X, FB_Y), 0.22,
+    ax.add_patch(plt.Circle((FB_X, FB_Y), 110,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=5))
     ax.text(FB_X, FB_Y, "B",
             ha="center", va="center", fontsize=9, fontweight="bold",
@@ -699,12 +697,12 @@ def draw_sheet2():
     SL_POSITIONS = [s[0] for s in SL_STRIPS]   # for component key reference
     for sl_x_mm, sl_yd_max in SL_STRIPS:
         sl_dx = ix(sl_x_mm)
-        sl_dw = max(SL_STRIP_W * S_xi, 0.08)
-        sl_dy1 = OY + wt + 0.05
+        sl_dw = max(SL_STRIP_W * S_xi, 40)
+        sl_dy1 = OY + wt + 25
         sl_dy2 = OY + wt + sl_yd_max * S_yd
         ax.add_patch(mpatches.Rectangle((sl_dx, sl_dy1), sl_dw, sl_dy2 - sl_dy1,
                      fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
-        ax.text(sl_dx + sl_dw + 0.06, (sl_dy1 + sl_dy2) / 2, "D",
+        ax.text(sl_dx + sl_dw + 30, (sl_dy1 + sl_dy2) / 2, "D",
                 ha="left", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
     # ── White LED panels (Circuit G) — 3× ceiling-mounted ───────────────────
@@ -727,7 +725,7 @@ def draw_sheet2():
     # ── Pull-cord switches — pinhole wall side, near EP ────────────────────
     PS_X_MM = EP_X + EP_W // 2   # X position — centered near EP
     PS_YD   = 50     # just off pinhole wall
-    PS_SZ   = 0.16   # symbol size in drawing units
+    PS_SZ   = 80     # symbol radius (mm)
     C_SWITCH = "#E0E0FF"
     for si, (sw_label, sw_x_off) in enumerate([("D", -40), ("G", 40)]):
         sx = ix(PS_X_MM + sw_x_off)
@@ -740,18 +738,18 @@ def draw_sheet2():
     # Pull switch leader
     ps_mid_x = ix(PS_X_MM)
     leader(ax, ps_mid_x, OY + wt + PS_YD * S_yd,
-           ps_mid_x - 1.1, OY + cwid * 0.22,
+           ps_mid_x - 550, OY + cwid * 0.22,
            "Pull-cord switches\nD=safelight\nG=white",
            fs=6.5, color="#606080")
 
     # ── Cable trunking — pinhole wall face, full interior length ──────────────
     # Runs at Yd=0 on pinhole wall — physically on the wall, outside optical cone
-    TK_Y  = OY + wt + 0.07
-    TK_X1 = OX + wt + 0.05
-    TK_X2 = OX + clen - wt - 0.05
+    TK_Y  = OY + wt + 35
+    TK_X1 = OX + wt + 25
+    TK_X2 = OX + clen - wt - 25
     ax.plot([TK_X1, TK_X2], [TK_Y, TK_Y],
             color=C_PIPE, lw=4.5, solid_capstyle="round", zorder=6)
-    ax.text((TK_X1+TK_X2)/2 + 1.65, TK_Y + 0.24,
+    ax.text((TK_X1+TK_X2)/2 + 825, TK_Y + 120,
             "40×25mm PVC cable trunking — pinhole wall face (Yd=0)\noutside optical cone",
             ha="center", va="top", fontsize=7.0, color=C_PIPE, fontweight="bold")
 
@@ -765,9 +763,9 @@ def draw_sheet2():
         (DUCT_CX,            OY + wt / 2),                   # duct penetration (in wall)
         (PUMP_CX,            OY+wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2)*S_yd),  # equip panel
         (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
-        (FA_X,               FA_Y - 0.22),
-        (FB_X,               FB_Y - 0.22),
-    ] + [(ix(sl_x + SL_STRIP_W / 2), OY + wt + 0.05) for sl_x in SL_POSITIONS] + [
+        (FA_X,               FA_Y - 110),
+        (FB_X,               FB_Y - 110),
+    ] + [(ix(sl_x + SL_STRIP_W / 2), OY + wt + 25) for sl_x in SL_POSITIONS] + [
         (ix(PS_X_MM),        OY + wt + PS_YD * S_yd),   # pull switches
     ] + [(ix(lp + LED_W_MM/2), OY + wt + LED_YD * S_yd) for lp in LED_POSITIONS]:
         ax.plot([ddx, ddx], [TK_Y, ddy],
@@ -775,8 +773,8 @@ def draw_sheet2():
 
     # ── Component leaders — label every key item on the diagram ────────────────
     # EP — Electrical panel
-    leader(ax, EP_DX + 0.1, OY + wt + WALL_MOUNT_H,
-           EP_DX - EP_DW + 0.05, OY + cwid * 0.32,
+    leader(ax, EP_DX + 50, OY + wt + WALL_MOUNT_H,
+           EP_DX - EP_DW + 25, OY + cwid * 0.32,
            "Electrical panel (EP)\nMPPT + fuse block\nPinhole wall face",
            fs=6.5, color=C_ELEC)
     # BAT — Battery bank
@@ -785,52 +783,52 @@ def draw_sheet2():
            "Battery bank (BAT)\n2×100Ah LiFePO4",
            fs=6.5, color=C_BATT)
     # Fan A — Intake (far end wall)
-    leader(ax, FA_X + 0.1, FA_Y + 0.1,
-           FA_X + 1.2, FA_Y + 0.5,
+    leader(ax, FA_X + 50, FA_Y + 50,
+           FA_X + 600, FA_Y + 250,
            "Intake fan (A)\n6\" DC  60W",
            fs=6.5, ha="right")
     # Fan B — Exhaust (cargo door wall)
-    leader(ax, FB_X - 0.1 , FB_Y + 0.1,
-           FB_X - 1.2, FB_Y + 0.7,
+    leader(ax, FB_X - 50, FB_Y + 50,
+           FB_X - 600, FB_Y + 350,
            "Exhaust fan (B)\n6\" DC  60W",
            fs=6.5)
     # Pump — Cct C (on equipment panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
-           PUMP_CX + 0.3, OY + cwid * 0.55,
+           PUMP_CX + 150, OY + cwid * 0.55,
            "Pumps + filters (C)\n12V DC  100W\nEquipment panel",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
     sl_ldr_y = OY + cwid * 0.5
     leader(ax, sl_ldr_x, sl_ldr_y,
-           sl_ldr_x - 0.9, OY + cwid * 0.72,
+           sl_ldr_x - 450, OY + cwid * 0.72,
            "Safelight (D)\n3× red LED strips\nceiling, N–S",
            fs=6.5, color="#B8960A")
     # Evap cooler — Cct E (external, duct penetration)
     leader(ax, DUCT_CX, OY + wt / 2,
-           DUCT_CX - 0.7, OY - 0.4,
+           DUCT_CX - 350, OY - 200,
            "Evap cooler (E)\n12V DC  80W\nExternal + duct",
            fs=6.5, color=C_EVAP)
     # LED panels — Cct G (label middle panel only)
     led_mid_cx = ix(LED_POSITIONS[1] + LED_W_MM / 2)
     led_mid_cy = OY + wt + (LED_YD + LED_D_MM) * S_yd
     leader(ax, led_mid_cx, led_mid_cy,
-           led_mid_cx + 0.6, OY + cwid * 0.62,
+           led_mid_cx + 300, OY + cwid * 0.62,
            "LED panels (G)\n3×20W  4000K white",
            fs=6.5, color="#808000")
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
-           PP_DX + PP_DW * 2, PP_DY - 0.35,
+           PP_DX + PP_DW * 2, PP_DY - 175,
            "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
            fs=6.5, color="#806030", ha="center")
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
     SP_X2 = OX + clen * 0.25
-    SP_Y2 = OY - 1.15
+    SP_Y2 = OY - 575
     SP_W2 = clen * 0.50
-    SP_H2 = 0.50
+    SP_H2 = 250
     ax.add_patch(FancyBboxPatch((SP_X2, SP_Y2), SP_W2, SP_H2,
-                 boxstyle="round,pad=0.04", fc=C_SOLAR, ec=C_OUT, lw=1.8, zorder=3))
+                 boxstyle="round,pad=20", fc=C_SOLAR, ec=C_OUT, lw=1.8, zorder=3))
     ax.text(SP_X2+SP_W2/2, SP_Y2+SP_H2/2,
             "SOLAR PANELS  (3×200W)  —  EXTERIOR, SOUTH-FACING",
             ha="center", va="center", fontsize=8.5, fontweight="bold",
@@ -839,28 +837,28 @@ def draw_sheet2():
                 xytext=(SP_X2, SP_Y2+SP_H2),
                 arrowprops=dict(arrowstyle="-|>", color="#2D7A2D", lw=1.8,
                                 connectionstyle="arc3,rad=-0.15"), zorder=4)
-    ax.text(SP_X2 - 0.2, (SP_Y2+SP_H2 + PP_DY)/2,
+    ax.text(SP_X2 - 100, (SP_Y2+SP_H2 + PP_DY)/2,
             "PV cable  10 AWG / MC4\nvia ext. power panel",
             fontsize=7.0, color="#2D7A2D", ha="right", va="center")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    DIM_Y = OY - 0.60
-    DIM_X = OX - 0.42
+    DIM_Y = OY - 300
+    DIM_X = OX - 210
 
-    draw_dim_h(ax, OX, OX+clen, DIM_Y-1.20, f"{C_LEN} mm  (container interior length)",
-               above=False, offset=0.08, fs=7.5)
-    draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 0.85,
+    draw_dim_h(ax, OX, OX+clen, DIM_Y-600, f"{C_LEN} mm  (container interior length)",
+               above=False, offset=40, fs=7.5)
+    draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 425,
                f"Film plane  {FP_X_R-FP_X_L}mm",
-               above=False, offset=0.08, fs=7.5)
-    draw_dim_v(ax, DIM_X-0.5, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)",
-               offset=0.08, fs=7.5)
+               above=False, offset=40, fs=7.5)
+    draw_dim_v(ax, DIM_X-250, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)",
+               offset=40, fs=7.5)
 
     # ── Component key (right of container) ───────────────────────────────────
-    KX = OX + clen + 0.70 + FW * 0.10
-    KY = OY + cwid + 0.50
-    ax.text(KX, KY + 0.28, "COMPONENT KEY",
+    KX = C_LEN + WT_MM + 1550
+    KY = OY + cwid + 250
+    ax.text(KX, KY + 140, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.5, fontweight="bold", color=C_OUT)
-    ax.plot([KX, KX + 5.8], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
+    ax.plot([KX, KX + 2900], [KY + 25, KY + 25], color=C_OUT, lw=1.0)
 
     key_rows = [
         ("EP",    C_ELEC,    "ELECTRICAL PANEL (EP)",
@@ -885,16 +883,16 @@ def draw_sheet2():
          "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
-        ky = KY - 0.28 - j * 0.50
-        ax.add_patch(mpatches.Rectangle((KX, ky-0.20), 0.50, 0.44,
+        ky = KY - 140 - j * 250
+        ax.add_patch(mpatches.Rectangle((KX, ky-100), 250, 220,
                      fc=bc, ec=C_OUT, lw=0.9, zorder=4))
-        ax.text(KX+0.25, ky+0.01, badge,
+        ax.text(KX+125, ky+5, badge,
                 ha="center", va="center", fontsize=8.0,
                 fontweight="bold", color=C_OUT, zorder=5)
-        ax.text(KX+0.65, ky+0.04, title_k,
+        ax.text(KX+325, ky+20, title_k,
                 ha="left", va="center", fontsize=8.5,
                 fontweight="bold", color=C_OUT)
-        ax.text(KX+0.65, ky-0.12, spec,
+        ax.text(KX+325, ky-60, spec,
                 ha="left", va="center", fontsize=7.5, color=C_DIM)
 
     # ── Drawing notes ──────────────────────────────────────────────────────────
@@ -912,14 +910,14 @@ def draw_sheet2():
         "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched "
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
-    draw_notes(ax, notes, KX * 0.73, 1.85, spacing=0.20,
-               fs=7, width=11.5, font={"fontfamily": "monospace"})
+    draw_notes(ax, notes, 200, Y_LO + 1050, spacing=100,
+               fs=7, width=5750, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="CONTAINER FLOOR PLAN & WIRING LAYOUT",
                 subtitle="Top-down plan  ·  End-zone layout  ·  Optical cone clear",
-                scale_note="1:500  (1 drawing unit = 500 mm)",
+                scale_note="Axes in mm  (approx 1:500)",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
@@ -954,45 +952,48 @@ def draw_sheet3():
         DIAGRAMS_DIR, svg_path, C_LT_DRUM,
     )
 
-    FW, FH = 24.0, 9.9
+    # ── mm-first coordinate system ───────────────────────────────────────────
+    # All coordinates are in mm. wx() mirrors X for interior-view convention.
+    C_LEN = TBS_C_LEN   # 5893mm
+    C_HGT = TBS_C_HGT   # 2388mm
+    OX = 0
+    OY = 0
+    wlen = C_LEN
+    whgt = C_HGT
+
+    def wx(x_mm):
+        return C_LEN - x_mm
+    def wz(z_mm):
+        return z_mm
+
+    PAD_X_L = 800
+    PAD_X_R = 2900
+    PAD_Z_BOT = 600
+    PAD_Z_TOP = 950
+    X_LO = OX - PAD_X_L
+    X_HI = OX + wlen + PAD_X_R
+    Z_LO = OY - PAD_Z_BOT
+    Z_HI = OY + whgt + PAD_Z_TOP
+    FIG_CX = (X_LO + X_HI) / 2
+
+    FW, FH = 24.0, 10.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
-    ax.set_xlim(0, FW)
-    ax.set_ylim(0, FH)
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal")
     ax.axis("off")
     fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
-    # ── Scale ─────────────────────────────────────────────────────────────────
-    S = 1.0 / 400.0   # 1 drawing unit = 400mm (approx 1:40 at 150dpi)
-
-    # Wall placement in figure space
-    OX = 2.0    # drawing x of wall left edge
-    OY = 1.5    # drawing y of wall bottom edge (Z=0, floor)
-
-    C_LEN = TBS_C_LEN   # 5893mm
-    C_HGT = TBS_C_HGT   # 2388mm
-
-    wlen = C_LEN * S     # wall width in drawing units
-    whgt = C_HGT * S     # wall height in drawing units
-
-    def wx(x_mm):
-        """Map TBS X (mm) to drawing X coordinate (mirrored: interior view)."""
-        return OX + (C_LEN - x_mm) * S
-
-    def wz(z_mm):
-        """Map TBS Z (mm) to drawing Y coordinate."""
-        return OY + z_mm * S
-
     # ── Page title (positioned above top dimension lines) ───────────────────
-    TITLE_Y = OY + whgt + 1.30
-    ax.text(FW / 2, TITLE_Y,
+    TITLE_Y = OY + whgt + 520
+    ax.text(FIG_CX, TITLE_Y,
             "PINHOLE WALL INTERIOR ELEVATION — TBS-001",
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
-    ax.text(FW / 2, TITLE_Y - 0.34,
-            "View looking toward pinhole wall (Yd=0) from inside  ·  Scale 1:40  "
+    ax.text(FIG_CX, TITLE_Y - 136,
+            "View looking toward pinhole wall (Yd=0) from inside  "
             "·  All dimensions in mm",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
@@ -1001,21 +1002,21 @@ def draw_sheet3():
                  fc="#F8F8F4", ec=C_OUT, lw=2.5, zorder=2))
 
     # Floor line
-    ax.plot([OX - 0.3, OX + wlen + 0.3], [OY, OY],
+    ax.plot([OX - 120, OX + wlen + 120], [OY, OY],
             color=C_OUT, lw=3.0, zorder=3)
-    ax.text(OX + wlen / 2, OY - 0.20, "FLOOR (Z=0)",
+    ax.text(OX + wlen / 2, OY - 80, "FLOOR (Z=0)",
             ha="center", va="top", fontsize=7.5, color=C_DIM)
 
     # Ceiling line
-    ax.plot([OX - 0.3, OX + wlen + 0.3], [OY + whgt, OY + whgt],
+    ax.plot([OX - 120, OX + wlen + 120], [OY + whgt, OY + whgt],
             color=C_OUT, lw=3.0, zorder=3)
-    ax.text(OX + wlen / 2, OY + whgt + 0.12, "CEILING (Z=2,388mm)",
+    ax.text(OX + wlen / 2, OY + whgt + 48, "CEILING (Z=2,388mm)",
             ha="center", va="bottom", fontsize=7.5, color=C_DIM)
 
     # Wall labels
-    ax.text(OX - 0.15, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
+    ax.text(OX - 60, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
             ha="right", va="center", fontsize=7.0, color=C_DIM)
-    ax.text(OX + wlen + 0.15, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
+    ax.text(OX + wlen + 60, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
             ha="left", va="center", fontsize=7.0, color=C_OUT,
             fontweight="bold")
 
@@ -1027,7 +1028,7 @@ def draw_sheet3():
     tray_x_l = wx(PROC_TRAY_X_L)    # mirrored: right in drawing
     tray_x_r = wx(PROC_TRAY_X_R)    # mirrored: left in drawing
     tray_w = tray_x_l - tray_x_r    # positive because mirrored
-    tray_h = PROC_TRAY_RIM * S
+    tray_h = PROC_TRAY_RIM
     ax.add_patch(mpatches.Rectangle((tray_x_r, OY), tray_w, tray_h,
                  fc="#D0E8D0", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                  alpha=GHOST_ALPHA, zorder=3))
@@ -1041,7 +1042,7 @@ def draw_sheet3():
     wk_x_l = wx(WALKWAY_LEFT_X + WALKWAY_W)   # walkway starts at X=470 (left butt joint)
     wk_x_r = wx(PROC_TRAY_X_R)                # ends at tray right edge
     wk_w = wk_x_l - wk_x_r
-    wk_h = WALKWAY_H * S
+    wk_h = WALKWAY_H
     ax.add_patch(mpatches.Rectangle((wk_x_r, OY), wk_w, wk_h,
                  fc="#E0D8C8", ec=GHOST_EC, lw=1.0, ls=GHOST_LS,
                  alpha=GHOST_ALPHA, zorder=3))
@@ -1055,8 +1056,8 @@ def draw_sheet3():
     TK_W_MM = 40    # trunking depth (mm) — shown as height on elevation
     TK_Z = C_HGT - TK_H_MM   # bottom of trunking (Z=2363mm)
     tk_y = wz(TK_Z)
-    tk_h = TK_H_MM * S
-    ax.add_patch(mpatches.Rectangle((OX + 0.02, tk_y), wlen - 0.04, tk_h,
+    tk_h = TK_H_MM
+    ax.add_patch(mpatches.Rectangle((OX + 8, tk_y), wlen - 16, tk_h,
                  fc=C_PIPE, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
     ax.text(OX + wlen / 2, tk_y + tk_h / 2,
             "40×25mm PVC CABLE TRUNKING — FULL LENGTH",
@@ -1067,17 +1068,17 @@ def draw_sheet3():
     def wall_equip(x_mm, z_lo, z_hi, w_mm, label, sublabel, fc, badge=""):
         ex = wx(x_mm + w_mm)   # mirrored: right edge of component maps to left in drawing
         ey = wz(z_lo)
-        ew = w_mm * S
-        eh = (z_hi - z_lo) * S
+        ew = w_mm
+        eh = z_hi - z_lo
         ax.add_patch(mpatches.Rectangle((ex, ey), ew, eh,
                      fc=fc, ec=C_OUT, lw=1.2, zorder=5, alpha=0.88))
         cx = ex + ew / 2
         cy = ey + eh / 2
-        ax.text(cx, cy + 0.08, label,
+        ax.text(cx, cy + 32, label,
                 ha="center", va="center", fontsize=7.5, fontweight="bold",
                 color=C_OUT, zorder=6)
         if sublabel:
-            ax.text(cx, cy - 0.10, sublabel,
+            ax.text(cx, cy - 40, sublabel,
                     ha="center", va="center", fontsize=6.0, color=C_DIM, zorder=6)
         # Drop conduit from trunking
         ax.plot([cx, cx], [tk_y, ey + eh],
@@ -1090,14 +1091,14 @@ def draw_sheet3():
     PP_Z_HI = PP_Z_LO + PWR_PANEL_H
     pp_x = wx(PWR_PANEL_X + PWR_PANEL_W)   # mirrored
     pp_y = wz(PP_Z_LO)
-    pp_w = PWR_PANEL_W * S
-    pp_h = PWR_PANEL_H * S
+    pp_w = PWR_PANEL_W
+    pp_h = PWR_PANEL_H
     ax.add_patch(mpatches.Rectangle((pp_x, pp_y), pp_w, pp_h,
                  fc=C_ALUM, ec=C_OUT, lw=1.5, zorder=5))
-    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 + 0.06,
+    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 + 24,
             "EXT POWER\nPANEL", ha="center", va="center",
             fontsize=6.5, fontweight="bold", color=C_OUT, zorder=6)
-    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 - 0.14,
+    ax.text(pp_x + pp_w / 2, pp_y + pp_h / 2 - 56,
             "3×MC4 + NEMA", ha="center", va="center",
             fontsize=5.5, color=C_DIM, zorder=6)
     # Cable route from panel up to trunking
@@ -1107,7 +1108,7 @@ def draw_sheet3():
     # ── Duct penetration (evap cooler now external) ────────────────────────────
     duct_cx = wx(EVAP_DUCT_X)
     duct_cz = wz(EVAP_DUCT_Z)
-    duct_r = EVAP_DUCT_D / 2 * S
+    duct_r = EVAP_DUCT_D / 2
     ax.add_patch(plt.Circle((duct_cx, duct_cz), duct_r,
                  fc=C_EVAP, ec=C_OUT, lw=1.5, zorder=6))
     ax.text(duct_cx, duct_cz, "E",
@@ -1117,7 +1118,7 @@ def draw_sheet3():
     ax.plot([duct_cx, duct_cx], [duct_cz + duct_r, tk_y],
             color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
     leader(ax, duct_cx + duct_r, duct_cz,
-           duct_cx + 1.2, duct_cz - 0.6,
+           duct_cx + 480, duct_cz - 240,
            f"DUCT PENETRATION\nØ{EVAP_DUCT_D}mm  (Cct E)\nEvap cooler external",
            fs=6.5, color=C_EVAP)
 
@@ -1134,9 +1135,9 @@ def draw_sheet3():
     # ── Pinhole ───────────────────────────────────────────────────────────────
     ph_x = wx(TBS_PH_X)
     ph_z = wz(PH_H)
-    ax.add_patch(plt.Circle((ph_x, ph_z), 0.12,
+    ax.add_patch(plt.Circle((ph_x, ph_z), 48,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
-    leader(ax, ph_x, ph_z, ph_x, ph_z + 0.8,
+    leader(ax, ph_x, ph_z, ph_x, ph_z + 320,
            f"PINHOLE  Ø{PH_D}mm\nX={TBS_PH_X}  Z={PH_H}mm",
            fs=7.0, ha="center")
 
@@ -1152,7 +1153,7 @@ def draw_sheet3():
         sx = wx(PS_X_MM + sw_x_off)
         sz = wz(PS_Z_MM)
         # Switch body
-        sw_sz = 0.20
+        sw_sz = 80
         ax.add_patch(mpatches.Rectangle((sx - sw_sz/2, sz - sw_sz/2), sw_sz, sw_sz,
                      fc=sw_color, ec=C_OUT, lw=1.2, zorder=7))
         ax.text(sx, sz, sw_label,
@@ -1161,14 +1162,14 @@ def draw_sheet3():
         # Pull cord hanging down — parallel lines with repeating slash marks
         cord_bot = wz(CORD_HANG_Z)
         cord_top = sz - sw_sz/2
-        cord_w = 0.028  # half-width of cord (drawing units)
+        cord_w = 11.2  # half-width of cord (mm)
         # Two parallel lines
         ax.plot([sx - cord_w, sx - cord_w], [cord_top, cord_bot],
                 color=C_OUT, lw=0.9, zorder=5)
         ax.plot([sx + cord_w, sx + cord_w], [cord_top, cord_bot],
                 color=C_OUT, lw=0.9, zorder=5)
         # Repeating diagonal slash marks between the parallel lines
-        slash_spacing = 0.12  # spacing between slashes (drawing units)
+        slash_spacing = 48  # spacing between slashes (mm)
         slash_ext = cord_w * 0.3  # how far slash extends beyond cord edges
         n_slashes = int((cord_top - cord_bot) / slash_spacing)
         for j in range(n_slashes):
@@ -1177,7 +1178,7 @@ def draw_sheet3():
                     [y_mid - slash_spacing * 0.3, y_mid + slash_spacing * 0.3],
                     color=C_OUT, lw=0.7, zorder=5)
         # Small circle at cord end (pull handle)
-        ax.add_patch(plt.Circle((sx, cord_bot), 0.06,
+        ax.add_patch(plt.Circle((sx, cord_bot), 24,
                      fc="white", ec=C_OUT, lw=0.8, zorder=6))
         # Conduit from switch to trunking
         ax.plot([sx, sx], [sz + sw_sz/2, tk_y],
@@ -1185,7 +1186,7 @@ def draw_sheet3():
 
     # Pull switch label
     leader(ax, wx(PS_X_MM + sw_x_off), wz(CORD_HANG_Z),
-           wx(PS_X_MM) + 0.5, wz(CORD_HANG_Z) + 0.6,
+           wx(PS_X_MM) + 200, wz(CORD_HANG_Z) + 240,
            "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
@@ -1198,8 +1199,8 @@ def draw_sheet3():
     for lp_x in LED_POSITIONS:
         lx = wx(lp_x + LED_W_MM)   # mirrored
         lz = wz(LED_Z)
-        lw = LED_W_MM * S
-        lh = LED_H_MM * S
+        lw = LED_W_MM
+        lh = LED_H_MM
         ax.add_patch(mpatches.Rectangle((lx, lz), lw, lh,
                      fc=C_LED, ec=C_OUT, lw=1.0, zorder=5))
         ax.text(lx + lw / 2, lz + lh / 2, "G",
@@ -1212,8 +1213,8 @@ def draw_sheet3():
     # LED panel leader (label middle panel)
     mid_led_cx = wx(LED_POSITIONS[1] + LED_W_MM / 2)
     mid_led_cz = wz(LED_Z + LED_H_MM)
-    leader(ax, mid_led_cx, mid_led_cz - 0.1,
-           mid_led_cx - 1.5, mid_led_cz - 0.5,
+    leader(ax, mid_led_cx, mid_led_cz - 40,
+           mid_led_cx - 600, mid_led_cz - 200,
            "LED panels (G)\n3×20W  4000K  ceiling-mount\n300×600mm each",
            fs=6.5, color="#808000")
 
@@ -1227,8 +1228,8 @@ def draw_sheet3():
     for sl3_x in SL3_POSITIONS:
         s3x = wx(sl3_x + SL3_W_MM)   # mirrored
         s3z = wz(SL3_Z)
-        s3w = max(SL3_W_MM * S, 0.08)
-        s3h = SL3_H_MM * S
+        s3w = max(SL3_W_MM, 32)
+        s3h = SL3_H_MM
         ax.add_patch(mpatches.Rectangle((s3x, s3z), s3w, s3h,
                      fc="#FFD700", ec=C_OUT, lw=0.8, zorder=5))
         ax.text(s3x + s3w / 2, s3z + s3h / 2, "D",
@@ -1241,65 +1242,65 @@ def draw_sheet3():
     s3_ldr_x = wx(SL3_POSITIONS[0] + SL3_W_MM / 2)
     s3_ldr_z = wz(SL3_Z)
     leader(ax, s3_ldr_x, s3_ldr_z,
-           s3_ldr_x + 0.5, s3_ldr_z - 0.5,
+           s3_ldr_x + 200, s3_ldr_z - 200,
            f"Safelight (D)\n3× red LED strips\nceiling N–S\nX≈{', '.join(str(x) for x in SL3_POSITIONS)}",
            fs=6.5, color="#B8960A")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Overall wall width
-    draw_dim_h(ax, OX, OX + wlen, OY - 0.70,
+    draw_dim_h(ax, OX, OX + wlen, OY - 280,
                f"{C_LEN} mm  (interior length)",
-               above=False, offset=0.08, fs=7.5)
+               above=False, offset=32, fs=7.5)
     # Overall wall height
-    draw_dim_v(ax, OX - 0.90, OY, OY + whgt,
+    draw_dim_v(ax, OX - 360, OY, OY + whgt,
                f"{TBS_C_HGT} mm",
-               offset=0.08, fs=7.5)
+               offset=32, fs=7.5)
 
     # EP height dimensions — dim line to the left of EP (mirrored)
     ep_x_l = wx(EP_X)  # right edge in drawing (mirrored)
     draw_dim_v(ax, ep_x_l, OY, wz(EP_H_LO),
-               f"{EP_H_LO}mm", offset=0.05, fs=6.5)
-    draw_dim_v(ax, ep_x_l - 0.85, wz(EP_H_LO), wz(EP_H_HI),
-               f"{EP_H_HI - EP_H_LO}mm", offset=0.05, fs=6.5)
+               f"{EP_H_LO}mm", offset=20, fs=6.5)
+    draw_dim_v(ax, ep_x_l - 340, wz(EP_H_LO), wz(EP_H_HI),
+               f"{EP_H_HI - EP_H_LO}mm", offset=20, fs=6.5)
 
     # Battery height dimensions — dim line to the left of BAT (mirrored)
     ba_x_l = wx(BA_X)  # right edge in drawing (mirrored)
-    draw_dim_v(ax, ba_x_l + 0.15, OY, wz(BA_H_LO),
-               f"{BA_H_LO}\nmm", offset=0.05, fs=6.5)
-    draw_dim_v(ax, ba_x_l + 0.15, wz(BA_H_LO), wz(BA_H_HI),
-               f"{BA_H_HI - BA_H_LO}mm", offset=0.05, fs=6.5, right=True)
+    draw_dim_v(ax, ba_x_l + 60, OY, wz(BA_H_LO),
+               f"{BA_H_LO}\nmm", offset=20, fs=6.5)
+    draw_dim_v(ax, ba_x_l + 60, wz(BA_H_LO), wz(BA_H_HI),
+               f"{BA_H_HI - BA_H_LO}mm", offset=20, fs=6.5, right=True)
 
     # Pinhole height
-    draw_dim_v(ax, ph_x - 0.2, OY, wz(PH_H),
-               f"{PH_H}mm", offset=0.05, fs=6.5, right=True)
+    draw_dim_v(ax, ph_x - 80, OY, wz(PH_H),
+               f"{PH_H}mm", offset=20, fs=6.5, right=True)
 
     # Trunking height callout
-    draw_dim_v(ax, OX - 0.50, wz(TK_Z), OY + whgt,
-               f"Trunking\n{TK_H_MM}mm", offset=0.05, fs=6.0)
+    draw_dim_v(ax, OX - 200, wz(TK_Z), OY + whgt,
+               f"Trunking\n{TK_H_MM}mm", offset=20, fs=6.0)
 
     # Pull switch cord length
     ps_dim_x = wx(PS_X_MM - 120)  # mirrored offset
     draw_dim_v(ax, ps_dim_x, wz(CORD_HANG_Z), wz(PS_Z_MM),
-               f"Cord {PS_Z_MM - CORD_HANG_Z}mm", offset=0.05, fs=6.0, right=True)
+               f"Cord {PS_Z_MM - CORD_HANG_Z}mm", offset=20, fs=6.0, right=True)
 
     # ── Horizontal X dimensions for key equipment ─────────────────────────────
-    DIM_Z_TOP = OY + whgt + 0.40
-    draw_dim_h(ax, wx(EP_X + EP_W), wx(EP_X), DIM_Z_TOP + 0.35,
+    DIM_Z_TOP = OY + whgt + 160
+    draw_dim_h(ax, wx(EP_X + EP_W), wx(EP_X), DIM_Z_TOP + 140,
                f"EP  X={EP_X}–{EP_X+EP_W}",
-               above=True, offset=0.05, fs=6.0)
+               above=True, offset=20, fs=6.0)
     draw_dim_h(ax, wx(BA_X + BA_W), wx(BA_X), DIM_Z_TOP,
                f"BAT  X={BA_X}–{BA_X+BA_W}",
-               above=True, offset=0.05, fs=6.0)
+               above=True, offset=20, fs=6.0)
     # Duct penetration position
-    draw_dim_v(ax, duct_cx + duct_r + 0.15, OY, duct_cz,
-               f"Duct Z={EVAP_DUCT_Z}mm", offset=0.05, fs=6.0, right=True)
+    draw_dim_v(ax, duct_cx + duct_r + 60, OY, duct_cz,
+               f"Duct Z={EVAP_DUCT_Z}mm", offset=20, fs=6.0, right=True)
 
     # ── Component key (right of elevation) ────────────────────────────────────
-    KX = OX + wlen + 1.2
-    KY = OY + whgt + 1.2
-    ax.text(KX, KY + 0.25, "COMPONENT KEY",
+    KX = OX + wlen + 480
+    KY = OY + whgt + 480
+    ax.text(KX, KY + 100, "COMPONENT KEY",
             ha="left", va="center", fontsize=9.0, fontweight="bold", color=C_OUT)
-    ax.plot([KX, KX + 6.0], [KY + 0.05, KY + 0.05], color=C_OUT, lw=1.0)
+    ax.plot([KX, KX + 2400], [KY + 20, KY + 20], color=C_OUT, lw=1.0)
 
     key_items = [
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
@@ -1313,33 +1314,34 @@ def draw_sheet3():
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):
-        ky = KY - 0.25 - j * 0.55
-        ax.add_patch(mpatches.Rectangle((KX, ky - 0.16), 0.45, 0.38,
+        ky = KY - 100 - j * 220
+        ax.add_patch(mpatches.Rectangle((KX, ky - 64), 180, 152,
                      fc=fc, ec=C_OUT, lw=0.8, zorder=4))
-        ax.text(KX + 0.60, ky + 0.04, title_k,
+        ax.text(KX + 240, ky + 16, title_k,
                 ha="left", va="center", fontsize=7.5,
                 fontweight="bold", color=C_OUT)
-        ax.text(KX + 0.60, ky - 0.12, spec,
+        ax.text(KX + 240, ky - 48, spec,
                 ha="left", va="center", fontsize=6.5, color=C_DIM)
 
     # ── Drawing notes ─────────────────────────────────────────────────────────
     notes = [
         "DRAWING NOTES:",
-        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on equipment panel in IBC corridor (Yd=1,046); evap cooler external via duct.",
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on equipment panel",
+        "in IBC corridor (Yd=1,046); evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482,363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1,500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",
     ]
-    key_bottom = KY - 0.25 - (len(key_items) - 1) * 0.55 - 0.30
-    notes_y_top = key_bottom - 0.3
-    draw_notes(ax, notes, 0.2, KY + 0.3, spacing=0.22,
-               fs=7, width=8.5, font={"fontfamily": "monospace"})
+    key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120
+    notes_y_top = key_bottom - 120
+    draw_notes(ax, notes, 200, KY + 40, spacing=88,
+               fs=7, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="PINHOLE WALL INTERIOR ELEVATION",
                 subtitle="Equipment mounting  ·  Cable trunking & drop conduits  ·  Pull-cord switches  ·  LED panels",
-                scale_note="1:40  (1 drawing unit = 400 mm)",
+                scale_note="Axes in mm  (approx 1:40)",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet3.png", dpi=150, bbox_inches="tight",

@@ -687,7 +687,7 @@ notes = [
     "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
-draw_notes(ax, notes, C_LEN - 70, 1580, spacing=45,
+draw_notes(ax, notes, C_LEN - 70, 900, spacing=45,
            fs=7, width=1640, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════

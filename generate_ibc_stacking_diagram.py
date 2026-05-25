@@ -2138,8 +2138,8 @@ def sheet5():
            ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Legend ───────────────────────────────────────────────────────────────
-    leg_x = sx(YD_LO + 20)
-    leg_top = sy(C_HGT + 100)
+    leg_x = sx(YD_LO + 1720)
+    leg_top = sy(100)
     leg_spacing = sy(33)
 
     # Legend background box
@@ -2260,7 +2260,7 @@ def sheet5():
         "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(-180), spacing=sy(22),
-               fs=7, font=FONT, width=5500)
+               fs=7, font=FONT, width=4200)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 5",

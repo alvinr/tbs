@@ -622,7 +622,7 @@ def sheet1():
         # LEFT walkway: NO brackets — removable lift-out section
 
         # Section label
-        cx = wx + ww / 2
+        cx = wx + ww * 0.55
         cy = wy + wh / 2
         rot = 0 if is_x_axis else 90
         length = ww if is_x_axis else wh

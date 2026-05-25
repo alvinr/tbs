@@ -313,9 +313,9 @@ def sheet1():
     YD_LO = -300
     YD_HI = FRAME_FOOTPRINT_W + 300
     Z_LO  = -400
-    Z_HI  = TOP_Z + 300
+    Z_HI  = TOP_Z + 700
 
-    fig, ax = plt.subplots(figsize=(20, 18))
+    fig, ax = plt.subplots(figsize=(20, 22))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -324,7 +324,7 @@ def sheet1():
     ax.axis("off")
 
     # ── Title ────────────────────────────────────────────────────────────────
-    ax.text(sx(FRAME_FOOTPRINT_W * 0.5), sy(TOP_Z + 300),
+    ax.text(sx(FRAME_FOOTPRINT_W * 0.5), sy(TOP_Z + 680),
             "FRONT ELEVATION — LOOKING ALONG X TOWARD SEALED END WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -669,7 +669,7 @@ def sheet1():
         f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
         f"12. Total frame weight: ~90 kg.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 50), sy(Z_HI - 15), spacing=sy(23),
+    draw_notes(ax, notes, sx(YD_LO + 50), sy(TOP_Z + 650), spacing=sy(23),
                fs=7, font=FONT, width=sx(1400))
 
     # ── Title block ─────────────────────────────────────────────────────────

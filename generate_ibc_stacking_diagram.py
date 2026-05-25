@@ -105,10 +105,8 @@ DRAIN_PORT_Z   = 200    # drain port center height
 # Shows both near and far IBC columns with stacking frame between.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet1():
-    S = 2.5   # scale factor (mm → drawing units)
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Layout bounds ─────────────────────────────────────────────────────────
     YD_LO = -120
@@ -399,7 +397,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="CROSS-SECTION ELEVATION — 2x2 STACK IN RIGHT END ZONE",
-                scale_note=f"SCALE ~ 2.5:1 - ALL DIMS IN mm - SECTION LOOKING ALONG X",
+                scale_note="Axes in mm - SECTION LOOKING ALONG X",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -417,10 +415,8 @@ def sheet1():
 #   C — Access gate front elevation
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-    S = 5.0   # scale factor for detail views
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     fig, ax = plt.subplots(figsize=(20, 22))
     fig.patch.set_facecolor(BG)
@@ -808,7 +804,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="FASTENING DETAILS — D-RING - LIP - ACCESS GATE - LASHING",
-                scale_note="SCALE ~ 5:1 - ALL DIMS IN mm - DETAILS A-D",
+                scale_note="Axes in mm - DETAILS A-D",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -828,10 +824,8 @@ def sheet2():
 # Reinforcing plate behind ports, camlock fittings, height dimensions.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet3():
-    S = 3.5   # scale factor (mm → drawing units)
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # View bounds — looking at end wall from outside
     # Horizontal = Yd (mirrored: far wall at left, near wall at right when
@@ -1039,7 +1033,7 @@ def sheet3():
     title_block(ax, "SHEET 3 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="EXTERNAL PLUMBING PANEL — END WALL ELEVATION",
-                scale_note="SCALE ~ 3.5:1 - ALL DIMS IN mm - VIEW FROM OUTSIDE",
+                scale_note="Axes in mm - VIEW FROM OUTSIDE",
                 height=0.06)
 
     fig.savefig("diagrams/ibc-stacking-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1200,10 +1194,8 @@ def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",
 #   - Pipe sizing and material annotations
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet4():
-    S = 2.8   # scale factor
-
-    def px(mm): return mm * S   # X along horizontal
-    def py(mm): return mm * S   # Yd along vertical
+    def px(mm): return mm
+    def py(mm): return mm
 
     # Plan view of IBC zone + corridor
     X_LO = IBC_COL_X - 500
@@ -1678,7 +1670,7 @@ def sheet4():
     title_block(ax, "SHEET 4 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING PLAN — IBC LAYOUT, PIPE ROUTING & VALVES",
-                scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW LOOKING DOWN",
+                scale_note="Axes in mm - VIEW LOOKING DOWN",
                 height=0.04)
 
     fig.savefig("diagrams/ibc-stacking-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
@@ -1705,10 +1697,8 @@ def sheet5():
     curved elbows, flanges at unions, and cross-section circles for pipes
     running in the X direction (into the page).
     """
-    S = 2.8   # scale factor (mm → drawing units)
-
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     # ── Pipe fitting drawing helpers ─────────────────────────────────────────
     PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
@@ -2266,7 +2256,7 @@ def sheet5():
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="INTERNAL PLUMBING ELEVATION — ALL WATER SYSTEM CONNECTIONS",
-                scale_note="SCALE ~ 2.8:1 - ALL DIMS IN mm - VIEW FROM INSIDE",
+                scale_note="Axes in mm - VIEW FROM INSIDE",
                 height=0.04)
 
     fig.savefig("diagrams/ibc-stacking-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)

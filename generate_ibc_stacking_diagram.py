@@ -1768,10 +1768,10 @@ def sheet5():
     # ── Layout bounds ────────────────────────────────────────────────────────
     YD_LO = -200
     YD_HI = C_WID + 200
-    Z_LO  = -550
+    Z_LO  = -800
     Z_HI  = C_HGT + 150
 
-    fig, ax = plt.subplots(figsize=(20, 22))
+    fig, ax = plt.subplots(figsize=(20, 24))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -2259,7 +2259,7 @@ def sheet5():
         "11. IBC-3 (Brown) filled from top via fill cap (DN150). P-04 suction pickup draws from tray sump, pumps to IBC-3 fill cap (~900mm lift).",
         "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 425), spacing=sy(22),
+    draw_notes(ax, notes, sx(YD_LO + 30), sy(-180), spacing=sy(22),
                fs=7, font=FONT, width=5500)
 
     # ── Title block ──────────────────────────────────────────────────────────

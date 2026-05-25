@@ -74,6 +74,7 @@ from tbs_constants import (
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
+    SPRAY_BAR_SLIT_W,
     EP_X, EP_W, BA_X, BA_W,
     EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_X, EVAP_STOW_YD,
 )
@@ -686,6 +687,26 @@ def sheet1():
     ax.text(BA_X + BA_W / 2, 60, "BATT", ha="center", va="center",
             fontsize=5, color=C_EQUIP_GHOST, **FONT, zorder=6, alpha=0.6)
 
+    # ── Spray bar slit in near & far walkways ──────────────────────────────────
+    slit_cx = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
+    slit_w = SPRAY_BAR_SLIT_W
+    C_SLIT = "#CC0000"
+
+    # Near walkway slit
+    ax.add_patch(Rectangle((slit_cx - slit_w / 2, NY),
+                 slit_w, W,
+                 fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
+    # Far walkway slit
+    ax.add_patch(Rectangle((slit_cx - slit_w / 2, FY),
+                 slit_w, W,
+                 fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
+
+    leader(ax, slit_cx, NYI + 15,
+           slit_cx + 500, NYI + 300,
+           f"{slit_w}mm SLIT (NEAR + FAR)\nSPRAY BAR POLE PASSAGE\n(SEE SPRAY BAR ASSEMBLY)",
+           color=C_SLIT, fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
     # ── Evap cooler transport stowage (on near walkway) ───────────────────────
     C_EVAP_STOW = "#3DAA96"
     ax.add_patch(Rectangle((EVAP_STOW_X, EVAP_STOW_YD),
@@ -801,6 +822,7 @@ def sheet1():
         (C_BRKT,     1.0,      None,  f"Wall bracket ({WALKWAY_BRACKET_T}mm gusset)"),
         (C_SUPPORT,  0.8,      None,  f"Support cradle / bearing strip (removable)"),
         ("#3DAA96",  0.35,     None,  f"Evap cooler transport stowage ({EVAP_W}×{EVAP_D}mm)"),
+        ("#FF4444",  0.6,      None,  f"Spray bar slit ({SPRAY_BAR_SLIT_W}mm, near + far)"),
         ("#FF0000",  0.06,     None,  "Panel transport envelope"),
         ("#CC6600",  0.7,      None,  "Ratchet strap (transport securing)"),
     ], C_LEN - 1225, C_WID + PAD_Y_TOP - 2850, pad=25, col_w=1100, font=FONT)
@@ -821,7 +843,9 @@ def sheet1():
         f"   spans {WALKWAY_LEFT_SPAN}mm. {LEFT_WK_LEG_N} floor legs + bearing strip.",
         f"6. ZERO tray contact \u2014 all supports outside or above tray. Open area: {PROC_OPEN_AREA:.1f} m\u00b2.",
         f"7. ~{n_brackets_total} wall brackets (near + far). Each grating section lifts off for tray access.",
-        f"8. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
+        f"8. SPRAY BAR SLIT: {SPRAY_BAR_SLIT_W}mm slot at beam center X={int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)} in near + far walkway",
+        f"   grating for telescoping pole passage. See Spray Bar Assembly drawings.",
+        f"9. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
     ]
     draw_notes(ax, notes, 1500,

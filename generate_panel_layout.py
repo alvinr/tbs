@@ -934,8 +934,8 @@ notes = [
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]
-draw_notes(ax, notes, 0.2, 1.6, spacing=0.15,
-           fs=5, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)
+draw_notes(ax, notes, 0.2, 1.6, spacing=0.20,
+           fs=7, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

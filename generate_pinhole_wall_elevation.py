@@ -533,7 +533,7 @@ ax.annotate("", xy=(sx(BV02_X - 100), sz(BV02_Z - 50)),
             zorder=10)
 ax.text(sx(BV02_X - 80), sz(BV02_Z - 80),
         "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL)",
-        ha="center", va="top", fontsize=3.5, color=C_BLUE,
+        ha="center", va="top", fontsize=4.0, color=C_BLUE,
         style="italic", zorder=10, **FONT)
 
 # ── Chemistry tap branch (TAP-01 / BV-06) ───────────────────────────────
@@ -561,7 +561,7 @@ ax.add_patch(plt.Circle((sx(BV06_X), sz(TAP_BRANCH_Z)), BV06_R * S,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=0.8, zorder=9))
 ax.text(sx(BV06_X), sz(TAP_BRANCH_Z), "BV\n06",
-        ha="center", va="center", fontsize=3, color=C_OUT,
+        ha="center", va="center", fontsize=4, color=C_OUT,
         zorder=10, **FONT)
 
 # Tap spout symbol
@@ -684,8 +684,8 @@ notes = [
     "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
-draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.1,
-           fs=4.5, width=4, color=C_DIM, title_color=C_DIM, font=FONT)
+draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.15,
+           fs=7, width=5.5, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS
@@ -798,7 +798,7 @@ for k, (name, xl, xr, yn, yf, color, zr) in enumerate(plan_comps):
     cx = sx((xl + xr) / 2)
     cy_bot = plan_sy(yn + (yf - yn) * 0.2)
     ax2.text(cx, cy_bot, zr, ha="center", va="center",
-            fontsize=3, color="#666", zorder=6, **FONT)
+            fontsize=4, color="#666", zorder=6, **FONT)
 
 # ── Processing tray near rim (context) ──────────────────────────────────────
 ax2.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],

@@ -393,7 +393,7 @@ def sheet1():
         f"8. External plumbing panel on end wall centerline (see Sheets 3-4).",
     ]
     draw_notes(ax, notes, sx(C_WID / 2), sy(Z_LO + 480), spacing=sy(22),
-               fs=6.5, ha="left", font=FONT, width=3800)
+               fs=7, ha="left", font=FONT, width=3800)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 5",
@@ -797,7 +797,7 @@ def sheet2():
     ]
 
     draw_notes(ax, d_notes, dn_x, dn_top, spacing=22,
-               fs=6.5, font=FONT, width=425)
+               fs=7, font=FONT, width=425)
 
     # Detail D border
     ax.add_patch(Rectangle((sx(DD_OX - 5), sy(DD_OY)),
@@ -1033,7 +1033,7 @@ def sheet3():
         "6. Interior connections routed through plumbing corridor (see Sheet 4).",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 350), spacing=sy(18),
-               fs=6.5, font=FONT, width=5000)
+               fs=7, font=FONT, width=5000)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 5",
@@ -1670,9 +1670,9 @@ def sheet4():
     notes_y = py(YD_LO + 280)
     notes_sp = py(18)
     draw_notes(ax, notes_l, px(X_LO + 20), notes_y, spacing=notes_sp,
-               fs=5.5, font=FONT, width=1800)
+               fs=7, font=FONT, width=2300)
     draw_notes(ax, notes_r, px(X_LO + 20) + 2400, notes_y, spacing=notes_sp,
-               fs=5.5, font=FONT, width=1800)
+               fs=7, font=FONT, width=2300)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 5",
@@ -2260,7 +2260,7 @@ def sheet5():
         "12. IBC-4 (Waste) filled from top via fill cap (DN150). Filter skid reject/bypass line feeds into waste IBC — cannot use drain valve.",
     ]
     draw_notes(ax, notes, sx(YD_LO + 30), sy(Z_LO + 425), spacing=sy(22),
-               fs=6, font=FONT, width=5500)
+               fs=7, font=FONT, width=5500)
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 5",

@@ -79,31 +79,31 @@ fig1.patch.set_facecolor('white')
 ax1.set_facecolor('white')
 ax1.set_aspect('equal')
 ax1.axis('off')
-ax1.set_xlim(0, 700)
-ax1.set_ylim(0, 500)
+ax1.set_xlim(0, 5600)
+ax1.set_ylim(0, 4000)
 
-SC = 1/8   # 1:8 scale — 600mm plate → 75mm on drawing
+SC = 1   # mm-first — AXES IN mm
 
 def s(mm): return mm * SC
 
 # ── Border and title block ────────────────────────────────────────────────────
-draw_rect(ax1, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
-draw_rect(ax1, 5, 5, 690, 70, lw=1.0, color='black', fc='#F0F0F0')  # parts list
-draw_rect(ax1, 480, 5, 215, 70, lw=1.0, color='black', fc='#F5F5F5')  # title block
+draw_rect(ax1, 40, 40, 5520, 3920, lw=1.5, color='black', fc='white')
+draw_rect(ax1, 40, 40, 5520, 560, lw=1.0, color='black', fc='#F0F0F0')  # parts list
+draw_rect(ax1, 3840, 40, 1720, 560, lw=1.0, color='black', fc='#F5F5F5')  # title block
 
 # Title block (shared)
 title_block(ax1, "SHEET 1 OF 2",
             drawing_title="OPTICAL PLATE SYSTEM",
             subtitle="Part front views — Al 6061-T6 / S275 steel",
-            scale_note="1:8 (as noted)",
+            scale_note="AXES IN mm (views at 1:8)",
             doc_id="TBS-001 · Interchangeable Plates", height=0.04)
 
 # Parts list
-ax1.text(10, 68, 'ITEM', fontsize=6, fontweight='bold', color='black')
-ax1.text(30, 68, 'DESCRIPTION', fontsize=6, fontweight='bold', color='black')
-ax1.text(200, 68, 'MATERIAL', fontsize=6, fontweight='bold', color='black')
-ax1.text(300, 68, 'QTY', fontsize=6, fontweight='bold', color='black')
-ax1.text(320, 68, 'NOTES', fontsize=6, fontweight='bold', color='black')
+ax1.text(80, 544, 'ITEM', fontsize=6, fontweight='bold', color='black')
+ax1.text(240, 544, 'DESCRIPTION', fontsize=6, fontweight='bold', color='black')
+ax1.text(1600, 544, 'MATERIAL', fontsize=6, fontweight='bold', color='black')
+ax1.text(2400, 544, 'QTY', fontsize=6, fontweight='bold', color='black')
+ax1.text(2560, 544, 'NOTES', fontsize=6, fontweight='bold', color='black')
 
 parts = [
     ('1', 'WALL FRAME', 'S275 STEEL PLATE 6mm', '1',
@@ -126,30 +126,30 @@ parts = [
      'Ø420mm loop in 3×3 groove on wall frame face'),
 ]
 for i, (it, desc, mat, qty, note) in enumerate(parts):
-    yp = 58 - i * 4
+    yp = 464 - i * 32
     bg = '#FFFFFF' if i % 2 == 0 else '#F8F8F8'
-    draw_rect(ax1, 6, yp - 2, 468, 5.5, lw=0, fc=bg, zorder=1)
-    ax1.text(10, yp + 0.5, it, fontsize=5.5, color='black', fontweight='bold')
-    ax1.text(30, yp + 0.5, desc, fontsize=5.5, color='black')
-    ax1.text(200, yp + 0.5, mat, fontsize=5, color='black')
-    ax1.text(300, yp + 0.5, qty, fontsize=5.5, color='black')
-    ax1.text(320, yp + 0.5, note, fontsize=5, color='#333333')
-ax1.plot([6, 474], [65, 65], color='black', lw=0.5)
+    draw_rect(ax1, 48, yp - 16, 3744, 44, lw=0, fc=bg, zorder=1)
+    ax1.text(80, yp + 4, it, fontsize=5.5, color='black', fontweight='bold')
+    ax1.text(240, yp + 4, desc, fontsize=5.5, color='black')
+    ax1.text(1600, yp + 4, mat, fontsize=5, color='black')
+    ax1.text(2400, yp + 4, qty, fontsize=5.5, color='black')
+    ax1.text(2560, yp + 4, note, fontsize=5, color='#333333')
+ax1.plot([48, 3792], [520, 520], color='black', lw=0.5)
 
 # ── View titles ───────────────────────────────────────────────────────────────
 view_titles = [
-    (95, 355, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
-    (268, 355, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
-    (441, 355, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
+    (760, 2840, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
+    (2144, 2840, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
+    (3528, 2840, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
 ]
 for tx, ty, t1, t2 in view_titles:
     ax1.text(tx, ty, t1, ha='center', fontsize=7.5, fontweight='bold', color='black')
-    ax1.text(tx, ty - 7, t2, ha='center', fontsize=6, color='#555555', style='italic')
+    ax1.text(tx, ty - 56, t2, ha='center', fontsize=6, color='#555555', style='italic')
 
 # ══════════════════════════════════════════════════════════
 # ITEM 1: WALL FRAME  (centre = 95, 290)
 # ══════════════════════════════════════════════════════════
-cx1, cy1 = 95, 290
+cx1, cy1 = 760, 2320
 
 # Outer plate outline
 hw = s(PL_OD/2)
@@ -182,47 +182,47 @@ for sign in [-1, 1]:
 draw_cl(ax1, cx1, cy1, hw * 1.1)
 
 # Section cut line A-A (horizontal through centre)
-ax1.plot([cx1 - hw - 8, cx1 + hw + 8], [cy1, cy1],
+ax1.plot([cx1 - hw - 64, cx1 + hw + 64], [cy1, cy1],
          color=C_RED, lw=LW_CUT, linestyle=(0, (8, 3)))
 for sign in [-1, 1]:
-    ax1.annotate('', xy=(cx1 + sign*(hw + 8), cy1 + sign*5),
-                 xytext=(cx1 + sign*(hw + 8), cy1),
+    ax1.annotate('', xy=(cx1 + sign*(hw + 64), cy1 + sign*40),
+                 xytext=(cx1 + sign*(hw + 64), cy1),
                  arrowprops=dict(arrowstyle='->', color=C_RED, lw=1.5))
-ax1.text(cx1 - hw - 12, cy1 + 3, 'A', ha='center', fontsize=8,
+ax1.text(cx1 - hw - 96, cy1 + 24, 'A', ha='center', fontsize=8,
          fontweight='bold', color=C_RED)
-ax1.text(cx1 + hw + 12, cy1 + 3, 'A', ha='center', fontsize=8,
+ax1.text(cx1 + hw + 96, cy1 + 24, 'A', ha='center', fontsize=8,
          fontweight='bold', color=C_RED)
 
 # ── Dimensions for Wall Frame ─────────────────────────────────────────────────
-dim_y_top = cy1 + hw + 14
-dim_x_right = cx1 + hw + 18
+dim_y_top = cy1 + hw + 112
+dim_x_right = cx1 + hw + 144
 
 # Overall width
-draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600mm', above=True, fs=6, offset=8)
+draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600mm', above=True, fs=6, offset=64)
 # Overall height
-draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600mm', right=True, fs=6, offset=8)
+draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600mm', right=True, fs=6, offset=64)
 # Aperture diameter
 leader(ax1, cx1 + s(FR_APT_D/2)*0.65, cy1 + s(FR_APT_D/2)*0.65,
-       cx1 + 12, cy1 + 10, 'Ø350', fs=5.5, color=C_DIM)
+       cx1 + 96, cy1 + 80, 'Ø350', fs=5.5, color=C_DIM)
 # Bolt circle
 leader(ax1, cx1 + s(BOLT_BC/2)*0.6, cy1 - s(BOLT_BC/2)*0.6,
-       cx1 + 15, cy1 - 18, 'Ø540 B.C.\n8×Ø13', fs=5, color=C_DIM)
+       cx1 + 120, cy1 - 144, 'Ø540 B.C.\n8×Ø13', fs=5, color=C_DIM)
 # Seal groove
 leader(ax1, cx1 - s(SEAL_D/2)*0.7, cy1 + s(SEAL_D/2)*0.7,
-       cx1 - 18, cy1 + 22, 'Ø420\nSEAL GRV\n3×3 DEEP', fs=4.8, color=C_DIM)
+       cx1 - 144, cy1 + 176, 'Ø420\nSEAL GRV\n3×3 DEEP', fs=4.8, color=C_DIM)
 # Dowel hole callout
 leader(ax1, cx1 - s(DWL_OFF), cy1 - s(DWL_D/2),
-       cx1 - s(DWL_OFF) - 6, cy1 - 12,
+       cx1 - s(DWL_OFF) - 48, cy1 - 96,
        '2×Ø8 H7\nDOWEL\n(±200)', fs=4.8, color=C_DIM)
 
-ax1.text(cx1, cy1 - hw - 10, '1', ha='center', va='center', fontsize=10,
+ax1.text(cx1, cy1 - hw - 80, '1', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
          bbox=dict(boxstyle='circle,pad=0.3', fc='black', ec='black'))
 
 # ══════════════════════════════════════════════════════════
 # ITEM 2: PINHOLE PLATE  (centre = 268, 290)
 # ══════════════════════════════════════════════════════════
-cx2, cy2 = 268, 290
+cx2, cy2 = 2144, 2320
 
 draw_rect(ax1, cx2 - hw, cy2 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -250,7 +250,7 @@ draw_circle(ax1, cx2, cy2, s(PH_BORE/2), lw=LW_THICK, color=C_OUT, fc='white', f
 draw_circle(ax1, cx2, cy2, s(PH_CB_D/2), lw=LW_THIN, color=C_HID, ls='--')
 
 # Pinhole aperture (tiny — shown as dot + leader)
-draw_circle(ax1, cx2, cy2, 0.4, lw=1.5, color=C_OUT, fc=C_OUT, fill=True)
+draw_circle(ax1, cx2, cy2, 3.2, lw=1.5, color=C_OUT, fc=C_OUT, fill=True)
 
 # Bolt holes
 bolt_holes(ax1, cx2, cy2, s(BOLT_BC/2), BOLT_N, s(BOLT_D/2), color=C_OUT, lw=LW_MED)
@@ -266,30 +266,30 @@ for sign in [-1, 1]:
 draw_cl(ax1, cx2, cy2, hw * 1.1)
 
 # ── Dimensions for Pinhole Plate ──────────────────────────────────────────────
-dim_y_top2 = cy2 + hw + 14
+dim_y_top2 = cy2 + hw + 112
 
-draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=8)
-draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 6,
-           '490 (LIGHT TRAP)', above=True, fs=5, offset=8)
+draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=64)
+draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 48,
+           '490 (LIGHT TRAP)', above=True, fs=5, offset=64)
 
 # Bore callout
 leader(ax1, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
-       cx2 + 14, cy2 + 12, 'Ø90\nBORE THRU', fs=5.5, color=C_DIM)
+       cx2 + 112, cy2 + 96, 'Ø90\nBORE THRU', fs=5.5, color=C_DIM)
 leader(ax1, cx2 + s(PH_CB_D/2)*0.6, cy2 - s(PH_CB_D/2)*0.6,
-       cx2 + 16, cy2 - 10, 'Ø52×3\nC\'BORE\n(INT FACE)', fs=4.8, color=C_DIM)
+       cx2 + 128, cy2 - 80, 'Ø52×3\nC\'BORE\n(INT FACE)', fs=4.8, color=C_DIM)
 leader(ax1, cx2, cy2,
-       cx2 - 18, cy2 + 5, 'Ø2.17\nPINHOLE\n(DISC)', fs=5.0, color=C_DIM)
-leader(ax1, cx2 - trap_h, cy2 - trap_h + 2,
-       cx2 - 22, cy2 - 20, '5×5 REBATE\n(LIGHT TRAP)', fs=4.8, color=C_DIM)
+       cx2 - 144, cy2 + 40, 'Ø2.17\nPINHOLE\n(DISC)', fs=5.0, color=C_DIM)
+leader(ax1, cx2 - trap_h, cy2 - trap_h + 16,
+       cx2 - 176, cy2 - 160, '5×5 REBATE\n(LIGHT TRAP)', fs=4.8, color=C_DIM)
 
-ax1.text(cx2, cy2 - hw - 10, '2', ha='center', va='center', fontsize=10,
+ax1.text(cx2, cy2 - hw - 80, '2', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
          bbox=dict(boxstyle='circle,pad=0.3', fc='black', ec='black'))
 
 # ══════════════════════════════════════════════════════════
 # ITEM 3: LENS PLATE  (centre = 441, 290)
 # ══════════════════════════════════════════════════════════
-cx3, cy3 = 441, 290
+cx3, cy3 = 3528, 2320
 
 draw_rect(ax3 := ax1, cx3 - hw, cy3 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -314,11 +314,11 @@ for angle_deg in [90, 210, 330]:
     angle_r = np.radians(angle_deg)
     sx = cx3 + s(LB_D/2 + 5) * np.cos(angle_r)
     sy = cy3 + s(LB_D/2 + 5) * np.sin(angle_r)
-    draw_circle(ax3, sx, sy, 1.2, lw=LW_MED, color=C_OUT)
+    draw_circle(ax3, sx, sy, 9.6, lw=LW_MED, color=C_OUT)
 
 # Shutter rail mounting holes (4× on horizontal, for sliding shutter option)
 for xo in [-s(100), -s(50), s(50), s(100)]:
-    ax3.plot([cx3 + xo], [cy3 + hw - s(30)], 'x', color='#888', ms=3, lw=0.7)
+    ax3.plot([cx3 + xo], [cy3 + hw - s(30)], 'x', color='#888', ms=4, lw=0.7)
 
 # Bolt holes
 bolt_holes(ax3, cx3, cy3, s(BOLT_BC/2), BOLT_N, s(BOLT_D/2), color=C_OUT, lw=LW_MED)
@@ -332,25 +332,25 @@ for sign in [-1, 1]:
 draw_cl(ax3, cx3, cy3, hw * 1.1)
 
 # ── Dimensions for Lens Plate ─────────────────────────────────────────────────
-dim_y_top3 = cy3 + hw + 14
-draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600mm', above=True, fs=6, offset=8)
+dim_y_top3 = cy3 + hw + 112
+draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600mm', above=True, fs=6, offset=64)
 
 leader(ax3, cx3 + s(LB_D/2)*0.65, cy3 + s(LB_D/2)*0.65,
-       cx3 + 16, cy3 + 16, 'Ø175 H7\nBORE THRU', fs=5.5, color=C_DIM)
+       cx3 + 128, cy3 + 128, 'Ø175 H7\nBORE THRU', fs=5.5, color=C_DIM)
 leader(ax3, cx3 + s(LT_OD/2)*0.65, cy3 - s(LT_OD/2)*0.65,
-       cx3 + 20, cy3 - 12, 'Ø174.5 g6\nLENS TUBE\n(ITEM 6)', fs=4.8, color=C_DIM)
+       cx3 + 160, cy3 - 96, 'Ø174.5 g6\nLENS TUBE\n(ITEM 6)', fs=4.8, color=C_DIM)
 leader(ax3, cx3 + s(LB_D/2 + 5)*np.cos(np.radians(150)),
        cy3 + s(LB_D/2 + 5)*np.sin(np.radians(150)),
-       cx3 - 20, cy3 + 16, '3×M8\nSET SCREWS\n@ 120°', fs=4.8, color=C_DIM)
+       cx3 - 160, cy3 + 128, '3×M8\nSET SCREWS\n@ 120°', fs=4.8, color=C_DIM)
 leader(ax3, cx3 - s(60), cy3 + hw - s(30),
-       cx3 - 15, cy3 + hw - s(30) + 8, 'SHUTTER\nRAIL HOLES\n4×Ø6.5', fs=4.8, color=C_DIM)
+       cx3 - 120, cy3 + hw - s(30) + 64, 'SHUTTER\nRAIL HOLES\n4×Ø6.5', fs=4.8, color=C_DIM)
 
-ax3.text(cx3, cy3 - hw - 10, '3', ha='center', va='center', fontsize=10,
+ax3.text(cx3, cy3 - hw - 80, '3', ha='center', va='center', fontsize=10,
          fontweight='bold', color='white',
          bbox=dict(boxstyle='circle,pad=0.3', fc='black', ec='black'))
 
 # ── Section cut label on plate 3 ─────────────────────────────────────────────
-ax3.text(cx3, cy3 + hw + 5, '  ', fontsize=1)  # spacer
+ax3.text(cx3, cy3 + hw + 40, '  ', fontsize=1)  # spacer
 
 # ── Notes block ──────────────────────────────────────────────────────────────
 notes = [
@@ -364,7 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-draw_notes(ax1, notes, 10, 175, spacing=6, fs=7, width=680)
+draw_notes(ax1, notes, 80, 1400, spacing=48, fs=7, width=5440)
 
 plt.tight_layout(pad=0)
 
@@ -385,19 +385,19 @@ fig2.patch.set_facecolor('white')
 ax2.set_facecolor('white')
 ax2.set_aspect('equal')
 ax2.axis('off')
-ax2.set_xlim(0, 700)
-ax2.set_ylim(0, 500)
+ax2.set_xlim(0, 2800)
+ax2.set_ylim(0, 2000)
 
 # Border
-draw_rect(ax2, 5, 5, 690, 490, lw=1.5, color='black', fc='white')
-draw_rect(ax2, 5, 5, 690, 80, lw=1.0, color='black', fc='#F0F0F0')
-draw_rect(ax2, 480, 5, 215, 80, lw=1.0, color='black', fc='#F5F5F5')
+draw_rect(ax2, 20, 20, 2760, 1960, lw=1.5, color='black', fc='white')
+draw_rect(ax2, 20, 20, 2760, 320, lw=1.0, color='black', fc='#F0F0F0')
+draw_rect(ax2, 1920, 20, 860, 320, lw=1.0, color='black', fc='#F5F5F5')
 
 # Title block (shared)
 title_block(ax2, "SHEET 2 OF 2",
             drawing_title="OPTICAL PLATE SYSTEM",
             subtitle="Section A-A & details (1:4 / 2:1)",
-            scale_note="As noted",
+            scale_note="AXES IN mm (as noted)",
             doc_id="TBS-001 · Interchangeable Plates")
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -406,15 +406,15 @@ title_block(ax2, "SHEET 2 OF 2",
 # Section cut through horizontal centreline
 # ──────────────────────────────────────────────────────────────────────────────
 
-SC4 = 1/4   # 1:4 scale
+SC4 = 1   # mm-first — AXES IN mm
 def ss(mm): return mm * SC4
 
-# Section origin: centre of section at (220, 310)
-scx, scy = 160, 310
+# Section origin
+scx, scy = 640, 1240
 
-ax2.text(scx, 465, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
+ax2.text(scx, 1860, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
          fontsize=9, fontweight='bold', color='black')
-ax2.text(scx, 458, '1:4 SCALE', ha='center', fontsize=7, color='#555')
+ax2.text(scx, 1832, '1:4 SCALE', ha='center', fontsize=7, color='#555')
 
 # ── Container wall (steel, ~2mm thick) ────────────────────────────────────────
 # Container wall runs top-to-bottom; section shows it as a thin vertical band
@@ -427,8 +427,8 @@ wall_h = ss(280)
 ax2.add_patch(mpatches.Rectangle((wall_left, scy - wall_h/2), ss(WALL_T), wall_h,
               fc=C_STEEL, ec=C_OUT, lw=LW_MED, zorder=3))
 # hatch steel
-for i in range(int(wall_h/3)+1):
-    y0 = scy - wall_h/2 + i*3
+for i in range(int(wall_h/12)+1):
+    y0 = scy - wall_h/2 + i*12
     ax2.plot([wall_left, wall_left + ss(WALL_T)], [y0, y0 + ss(WALL_T)],
              color='#888', lw=0.4, clip_on=True)
 
@@ -441,13 +441,13 @@ for region in [(-wall_h/2, -apt_half), (apt_half, wall_h/2)]:
     y_top = scy + region[1]
     ax2.add_patch(mpatches.Rectangle((wall_left, y_bot), ss(WALL_T), y_top - y_bot,
                   fc=C_STEEL, ec=C_OUT, lw=LW_MED, zorder=4))
-    for i in range(int((y_top-y_bot)/3)+1):
-        y0 = y_bot + i*3
+    for i in range(int((y_top-y_bot)/12)+1):
+        y0 = y_bot + i*12
         if y_bot <= y0 <= y_top:
             ax2.plot([wall_left, wall_left + ss(WALL_T)], [y0, y0 + ss(WALL_T)],
                      color='#888', lw=0.4)
 
-ax2.text(wall_left - 3, scy-9, 'CONTAINER\nWALL\n(2mm steel)', ha='right',
+ax2.text(wall_left - 12, scy-36, 'CONTAINER\nWALL\n(2mm steel)', ha='right',
          va='center', fontsize=5, color='#444')
 
 # ── Wall Frame (steel 6mm plate, item 1) ──────────────────────────────────────
@@ -464,8 +464,8 @@ for region in [(-fr_half, -fr_apt_half), (fr_apt_half, fr_half)]:
     ax2.add_patch(mpatches.Rectangle((fr_left, y_bot), ss(FR_THICK), y_top - y_bot,
                   fc=C_STEEL, ec=C_OUT, lw=LW_MED, zorder=5))
     # steel hatch
-    for i in range(int((y_top-y_bot)/2.5)+1):
-        y0 = y_bot + i*2.5
+    for i in range(int((y_top-y_bot)/10)+1):
+        y0 = y_bot + i*10
         if y_bot <= y0 <= y_top:
             ax2.plot([fr_left, fr_right], [y0, y0 + ss(FR_THICK)],
                      color='#666', lw=0.4)
@@ -482,10 +482,10 @@ for sign in [-1, 1]:
         (fr_right - ss(SEAL_W/2), groove_y - sign*ss(SEAL_W/4) + sign*ss(1.5)),
         ss(1.5), fc=C_GASKT, ec='none', zorder=7))
 
-ax2.text(fr_right + 6, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
+ax2.text(fr_right + 24, scy + fr_half*0.6, 'ITEM 1\nWALL FRAME\n6mm STEEL', ha='left',
          va='center', fontsize=5.5, color='black')
 # dim: frame thickness
-draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 8, '6', above=True, fs=5.5, offset=1.8)
+draw_dim_h(ax2, fr_left, fr_right, scy + fr_half + 32, '6', above=True, fs=5.5, offset=7.2)
 
 # ── Pinhole Plate (aluminium, item 2) ─────────────────────────────────────────
 pl_left  = fr_right              # plate butts against frame face
@@ -510,8 +510,8 @@ for region in [(-pl_half, -bore_half_top), (bore_half_top, pl_half)]:
     ax2.add_patch(mpatches.Rectangle((pl_left, y_bot), ss(PL_THICK), y_top - y_bot,
                   fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=5))
     # Al hatch
-    for i in range(int((y_top - y_bot)/3)+1):
-        y0 = y_bot + i*3
+    for i in range(int((y_top - y_bot)/12)+1):
+        y0 = y_bot + i*12
         if y_bot <= y0 <= y_top:
             ax2.plot([pl_left, pl_right], [y0, y0 + ss(3)], color='#AAAAAA', lw=0.4)
 
@@ -545,7 +545,7 @@ ax2.add_patch(mpatches.Rectangle(
     (pl_right - ss(PH_CB_DEP), scy - ss(PH_DISC_D/2)),
     ss(PH_DISC_T * 30), ss(PH_DISC_D),   # exaggerated for visibility
     fc='#888', ec=C_OUT, lw=1.2, zorder=8))
-ax2.text(pl_right + 3, scy - ss(PH_DISC_D/2) - 5,
+ax2.text(pl_right + 12, scy - ss(PH_DISC_D/2) - 20,
          'ITEM 3\nPINHOLE DISC\n(Ø50 × 0.1mm SS)', fontsize=5, color='black',
          ha='left')
 
@@ -556,67 +556,67 @@ bolt_x_end = pl_right + ss(10)
 ax2.add_patch(mpatches.Rectangle((bolt_x_fr, bolt_y - ss(6)), ss(PL_THICK + FR_THICK + 10),
               ss(12), fc='#CCCCCC', ec=C_OUT, lw=0.8, zorder=6, alpha=0.6))
 ax2.plot([bolt_x_fr, bolt_x_end], [bolt_y, bolt_y], color='#444', lw=0.7, ls='--')
-ax2.text(bolt_x_end + 2, bolt_y + 2, 'M12×40\nITEM 8', fontsize=4.5, color='black')
+ax2.text(bolt_x_end + 8, bolt_y + 8, 'M12×40\nITEM 8', fontsize=4.5, color='black')
 
 # Dimension: plate thickness
-draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 8, '15\nmm', above=True, fs=5.5, offset=1.8)
+draw_dim_h(ax2, pl_left, pl_right, scy + pl_half + 32, '15\nmm', above=True, fs=5.5, offset=7.2)
 
 # Dim: plate height
-dim_rx = pl_right + 22
-draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600mm', right=True, fs=5.5, offset=1.8)
+dim_rx = pl_right + 88
+draw_dim_v(ax2, dim_rx, scy - pl_half, scy + pl_half, '600mm', right=True, fs=5.5, offset=7.2)
 
 # Dim: frame aperture
 ax2.annotate('', xy=(fr_left, scy + fr_apt_half),
              xytext=(fr_left, scy - fr_apt_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(fr_left - 16, scy+3, 'Ø350\nAPT', ha='center', fontsize=5, color=C_DIM)
+ax2.text(fr_left - 64, scy+12, 'Ø350\nAPT', ha='center', fontsize=5, color=C_DIM)
 
 # Dim: taper bore
 ax2.annotate('', xy=(pl_left, scy + ext_bore_half),
              xytext=(pl_left, scy - ext_bore_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_left - 10, scy, 'Ø90\nBORE', ha='center', fontsize=5, color=C_DIM)
+ax2.text(pl_left - 40, scy, 'Ø90\nBORE', ha='center', fontsize=5, color=C_DIM)
 
 # Dim counterbore
 ax2.annotate('', xy=(pl_right, scy + cb_half),
              xytext=(pl_right, scy - cb_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_right + 4, scy + 12, 'Ø52\n×3\nDEEP', ha='left', fontsize=5, color=C_DIM)
+ax2.text(pl_right + 16, scy + 48, 'Ø52\n×3\nDEEP', ha='left', fontsize=5, color=C_DIM)
 
 # Item 2 bubble
-ax2.text(pl_left + ss(PL_THICK)*0.5, scy - pl_half + 6, '2', ha='center', va='center',
+ax2.text(pl_left + ss(PL_THICK)*0.5, scy - pl_half + 24, '2', ha='center', va='center',
          fontsize=8, fontweight='bold', color='white',
          bbox=dict(boxstyle='circle,pad=0.25', fc='black', ec='black'))
 
 # Optical axis arrow (pointing right = into camera)
-ax2.annotate('', xy=(pl_right + 45, scy), xytext=(wall_left - 20, scy),
+ax2.annotate('', xy=(pl_right + 180, scy), xytext=(wall_left - 80, scy),
              arrowprops=dict(arrowstyle='->', color='#0055BB', lw=1.5))
-ax2.text(pl_right + 50, scy + 3, 'OPTICAL\nAXIS', ha='left', fontsize=6,
+ax2.text(pl_right + 200, scy + 12, 'OPTICAL\nAXIS', ha='left', fontsize=6,
          color='#0055BB', style='italic')
 
 # Interior / Exterior labels
-ax2.text(wall_left - 5, scy + pl_half*0.8, 'EXTERIOR\n(SCENE)', ha='right',
+ax2.text(wall_left - 20, scy + pl_half*0.8, 'EXTERIOR\n(SCENE)', ha='right',
          fontsize=6.5, color='#333', style='italic')
-ax2.text(pl_right + 10, scy + pl_half*0.8, 'INTERIOR\n(CAMERA)', ha='left',
+ax2.text(pl_right + 40, scy + pl_half*0.8, 'INTERIOR\n(CAMERA)', ha='left',
          fontsize=6.5, color='#333', style='italic')
 
 # Section title
-ax2.text(scx - 75, scy - pl_half - 16, 'SECTION A-A', ha='center', fontsize=8,
+ax2.text(scx - 300, scy - pl_half - 64, 'SECTION A-A', ha='center', fontsize=8,
          fontweight='bold', color=C_RED)
-ax2.text(scx - 75, scy - pl_half - 24, '1:4 scale  —  Pinhole Plate (Item 2) installed', ha='center',
+ax2.text(scx - 300, scy - pl_half - 96, '1:4 scale  —  Pinhole Plate (Item 2) installed', ha='center',
          fontsize=6, color='#555')
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DETAIL B: Pinhole disc seat  (5:1 scale)
 # ──────────────────────────────────────────────────────────────────────────────
-SC5 = 2.0   # 2:1 detail (was 5:1; reduced so plate fits within canvas height)
+SC5 = 8.0   # 2:1 detail — magnification ratio 8 relative to mm-first section
 def sb(mm): return mm * SC5
 
-dbx, dby = 490, 360  # centre of detail view
+dbx, dby = 1960, 1440  # centre of detail view
 
-ax2.text(dbx, 465, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
+ax2.text(dbx, 1860, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
          fontsize=8, fontweight='bold')
-ax2.text(dbx, 458, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
+ax2.text(dbx, 1832, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
 
 # Draw 5:1 cross-section of the counterbore region
 # Show: plate interior face (right face), counterbore Ø52×3, disc, retaining ring groove
@@ -635,8 +635,8 @@ ax2.add_patch(mpatches.Rectangle(
     fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=3))
 # Al hatch
 for i in range(30):
-    y0 = dby - sb(PH_CB_D/2 + 10) + i * 5
-    ax2.plot([plate_show_left, plate_show_right], [y0, y0 + 5],
+    y0 = dby - sb(PH_CB_D/2 + 10) + i * 20
+    ax2.plot([plate_show_left, plate_show_right], [y0, y0 + 20],
              color='#AAAAAA', lw=0.4, clip_on=True)
 
 # Counterbore recess (Ø52 × 3mm deep)
@@ -671,120 +671,119 @@ for sign in [-1, 1]:
         fc='#CCCCCC', ec=C_OUT, lw=0.8, zorder=6))
 
 # Dimensions
-draw_dim_h(ax2, face_x - sb(PH_CB_DEP), face_x, dby + cb_show_half + 6,
-           '3.0 DEEP', above=True, fs=5.5, offset=1.5)
+draw_dim_h(ax2, face_x - sb(PH_CB_DEP), face_x, dby + cb_show_half + 24,
+           '3.0 DEEP', above=True, fs=5.5, offset=6)
 ax2.annotate('', xy=(face_x, dby + cb_show_half),
              xytext=(face_x, dby - cb_show_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(face_x + 5, dby, 'Ø52.0', ha='left', fontsize=5.5, color=C_DIM)
+ax2.text(face_x + 20, dby, 'Ø52.0', ha='left', fontsize=5.5, color=C_DIM)
 
 # Disc thickness leader
 ax2.annotate('DISC t=0.10mm\n(SS-302)', xy=(face_x - sb(PH_CB_DEP) + disc_shown_t/2, dby + disc_half),
-             xytext=(face_x - sb(PH_CB_DEP) - 25, dby + disc_half + 12),
+             xytext=(face_x - sb(PH_CB_DEP) - 100, dby + disc_half + 48),
              fontsize=5.5, color='black',
              arrowprops=dict(arrowstyle='->', color='black', lw=0.7))
 
 # Pinhole leader
 ax2.annotate('Ø2.17 ±0.025\nPINHOLE', xy=(face_x - sb(PH_CB_DEP) + disc_shown_t/2, dby),
-             xytext=(face_x + 15, dby + 15),
+             xytext=(face_x + 60, dby + 60),
              fontsize=5.5, color='black',
              arrowprops=dict(arrowstyle='->', color='black', lw=0.7))
 
 # Ra callout on counterbore face
-ax2.text(face_x - sb(PH_CB_DEP)/2, dby - cb_show_half - 8,
+ax2.text(face_x - sb(PH_CB_DEP)/2, dby - cb_show_half - 32,
          '√ Ra 0.8', ha='center', fontsize=5.5, color='black')
 
-ax2.text(dbx, dby - sb(PH_CB_D/2 + 10) - 12,
+ax2.text(dbx, dby - sb(PH_CB_D/2 + 10) - 48,
          'DETAIL B — DISC SEAT (2:1)', ha='center', fontsize=6.5,
          fontweight='bold', color=C_RED)
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DETAIL C: Light trap rebate cross-section  (10:1 scale)
 # ──────────────────────────────────────────────────────────────────────────────
-SC10 = 10/1
+SC10 = 40   # 10:1 detail — magnification ratio 40 relative to mm-first section
 def sc(mm): return mm * SC10
 
-# dcx, dcy = 490, 190  # centre of detail C
-dcx, dcy = 490, 130  # centre of detail C
+dcx, dcy = 1960, 520  # centre of detail C
 
-ax2.text(dcx, 225, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
+ax2.text(dcx, 900, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
          fontsize=8, fontweight='bold')
-ax2.text(dcx, 258, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
+ax2.text(dcx, 1032, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
          fontsize=6, color='#555')
 
 # Show the step rebate in cross-section
 # Wall frame face on the left (shown as line), plate on right, step at top
-frame_face_x = dcx - 30
+frame_face_x = dcx - 120
 step_depth    = sc(TRAP_DEP)   # depth into plate = 5mm
 step_width    = sc(TRAP_W)     # height of step = 5mm
 
 # Wall frame (thin plate shown as filled region)
-ax2.add_patch(mpatches.Rectangle((frame_face_x - 12, dcy - 35), 12, 70,
+ax2.add_patch(mpatches.Rectangle((frame_face_x - 48, dcy - 140), 48, 280,
               fc=C_STEEL, ec=C_OUT, lw=LW_MED, zorder=3))
 for i in range(10):
-    ax2.plot([frame_face_x - 12, frame_face_x], [dcy - 35 + i*7, dcy - 35 + i*7 + 12],
+    ax2.plot([frame_face_x - 48, frame_face_x], [dcy - 140 + i*28, dcy - 140 + i*28 + 48],
              color='#888', lw=0.4)
 
-ax2.text(frame_face_x - 6, dcy - 35 - 6, 'ITEM 1\n(FRAME)', ha='center', fontsize=5)
+ax2.text(frame_face_x - 24, dcy - 140 - 24, 'ITEM 1\n(FRAME)', ha='center', fontsize=5)
 
 # The gap at the interface — neoprene seal area (above trap) and gap (below trap)
 # Plate body (right side of interface)
 plate_x = frame_face_x + sc(0.5)   # 0.5mm seal compression gap
-plate_body_right = plate_x + 50
+plate_body_right = plate_x + 200
 
 # Plate above the trap step (full contact zone)
-ax2.add_patch(mpatches.Rectangle((plate_x, dcy + step_width), 50, 25,
+ax2.add_patch(mpatches.Rectangle((plate_x, dcy + step_width), 200, 100,
               fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=4))
 for i in range(8):
-    y0 = dcy + step_width + i*3
-    ax2.plot([plate_x, plate_x+50], [y0, y0+3], color='#AAAAAA', lw=0.4)
+    y0 = dcy + step_width + i*12
+    ax2.plot([plate_x, plate_x+200], [y0, y0+12], color='#AAAAAA', lw=0.4)
 
 # Plate below the trap step
-ax2.add_patch(mpatches.Rectangle((plate_x + step_depth, dcy - 25), 50 - step_depth, 25,
+ax2.add_patch(mpatches.Rectangle((plate_x + step_depth, dcy - 100), 200 - step_depth, 100,
               fc=C_ALUM, ec=C_OUT, lw=LW_MED, zorder=4))
 
 # The step itself (rebate)
 step_pts_x = [plate_x, plate_x, plate_x + step_depth, plate_x + step_depth]
-step_pts_y = [dcy + step_width, dcy, dcy, dcy - 25]
+step_pts_y = [dcy + step_width, dcy, dcy, dcy - 100]
 ax2.plot(step_pts_x[:3], step_pts_y[:3], color=C_OUT, lw=LW_THICK, zorder=5)
 
 # Light trap void (the recessed area — shown light grey)
-ax2.add_patch(mpatches.Rectangle((plate_x, dcy - 25), step_depth, step_width + 25,
+ax2.add_patch(mpatches.Rectangle((plate_x, dcy - 100), step_depth, step_width + 100,
               fc='#F5F5F5', ec='none', lw=0, zorder=3))
 
 # Neoprene cord seal in wall frame groove (shown as circle in the seal groove)
-ax2.add_patch(mpatches.Circle((frame_face_x - sc(SEAL_W/2), dcy + step_width + 8),
+ax2.add_patch(mpatches.Circle((frame_face_x - sc(SEAL_W/2), dcy + step_width + 32),
               sc(1.5), fc=C_GASKT, ec='none', zorder=6))
-ax2.text(frame_face_x - 20, dcy + step_width + 25, 'NEOPRENE\nSEAL Ø4\n(ITEM 9)',
+ax2.text(frame_face_x - 80, dcy + step_width + 100, 'NEOPRENE\nSEAL Ø4\n(ITEM 9)',
          ha='center', fontsize=5, color=C_GASKT)
 
 # Light path arrow (showing no light path through the labyrinth)
-ax2.annotate('', xy=(plate_x + step_depth/2, dcy - 10),
-             xytext=(frame_face_x, dcy - 10),
+ax2.annotate('', xy=(plate_x + step_depth/2, dcy - 40),
+             xytext=(frame_face_x, dcy - 40),
              arrowprops=dict(arrowstyle='->', color='#CC0000', lw=1.0))
-ax2.text(plate_x + step_depth + 2, dcy - 10, 'NO LIGHT\nPATH', ha='left',
+ax2.text(plate_x + step_depth + 8, dcy - 40, 'NO LIGHT\nPATH', ha='left',
          fontsize=4.8, color='#CC0000')
 
 # Dimensions
-draw_dim_h(ax2, plate_x, plate_x + step_depth, dcy - 30, '5.0', above=False,
-           fs=5.5, offset=1.5)
-draw_dim_v(ax2, plate_x + step_depth + 8, dcy, dcy + step_width, '5.0',
-           right=True, fs=5.5, offset=1.5)
+draw_dim_h(ax2, plate_x, plate_x + step_depth, dcy - 120, '5.0', above=False,
+           fs=5.5, offset=6)
+draw_dim_v(ax2, plate_x + step_depth + 32, dcy, dcy + step_width, '5.0',
+           right=True, fs=5.5, offset=6)
 
-ax2.text(dcx, dcy - 38, 'DETAIL C — LIGHT TRAP (10:1)', ha='center', fontsize=6.5,
+ax2.text(dcx, dcy - 152, 'DETAIL C — LIGHT TRAP (10:1)', ha='center', fontsize=6.5,
          fontweight='bold', color=C_RED)
 
 # ──────────────────────────────────────────────────────────────────────────────
 # DETAIL D: Lens Tube in Bore (section, 1:2 scale)
 # ──────────────────────────────────────────────────────────────────────────────
-SC2 = 1/2
+SC2 = 2   # 1:2 detail — magnification ratio 2 relative to mm-first section
 def sd(mm): return mm * SC2
 
-ddx, ddy = 340, 200   # centre — moved right to avoid Section A-A overlap
+ddx, ddy = 1360, 800   # centre
 
-ax2.text(ddx+5, ddy + 130, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
+ax2.text(ddx+20, ddy + 520, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
          fontsize=8, fontweight='bold')
-ax2.text(ddx, ddy + 123, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
+ax2.text(ddx, ddy + 492, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
 
 # Lens plate cross-section (showing the Ø175 H7 bore with lens tube)
 pl_left_d = ddx - sd(PL_THICK/2)
@@ -840,36 +839,36 @@ ax2.text(ss_x + sd(10), ss_y + sd(7), 'M8 SET SCREW\n(3× AT 120°)', fontsize=5
 
 # H7/g6 fit label
 ax2.annotate('Ø175 H7/g6\nSLIDING FIT', xy=(pl_right_d, ddy - bore_half_d),
-             xytext=(pl_right_d + 12, ddy - bore_half_d - 15),
+             xytext=(pl_right_d + 48, ddy - bore_half_d - 60),
              fontsize=5.5, color='black',
              arrowprops=dict(arrowstyle='->', color='black', lw=0.7))
 
 # Optical axis
-ax2.plot([pl_left_d - tube_extend_l - 10, pl_right_d + tube_extend_r + 20],
+ax2.plot([pl_left_d - tube_extend_l - 40, pl_right_d + tube_extend_r + 80],
          [ddy, ddy], color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
 # Travel annotation
-ax2.annotate('', xy=(pl_left_d - tube_extend_l, ddy + tube_od_half + 8),
-             xytext=(pl_left_d - tube_extend_l + sd(80), ddy + tube_od_half + 8),
+ax2.annotate('', xy=(pl_left_d - tube_extend_l, ddy + tube_od_half + 32),
+             xytext=(pl_left_d - tube_extend_l + sd(80), ddy + tube_od_half + 32),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_left_d - tube_extend_l + sd(40), ddy + tube_od_half + 12,
+ax2.text(pl_left_d - tube_extend_l + sd(40), ddy + tube_od_half + 48,
          '±40mm FOCUS\nTRAVEL', ha='center', fontsize=5, color=C_DIM)
 
 # Dims
 ax2.annotate('', xy=(pl_right_d, ddy + bore_half_d),
              xytext=(pl_right_d, ddy - bore_half_d),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_right_d + 5, ddy, 'Ø175\nBORE', ha='left', fontsize=5.5, color=C_DIM)
+ax2.text(pl_right_d + 20, ddy, 'Ø175\nBORE', ha='left', fontsize=5.5, color=C_DIM)
 
 ax2.annotate('', xy=(pl_right_d, ddy + tube_od_half),
              xytext=(pl_right_d, ddy - tube_od_half),
              arrowprops=dict(arrowstyle='<->', color=C_DIM, lw=LW_DIM, mutation_scale=5))
-ax2.text(pl_right_d + 18, ddy, 'Ø174.5\nTUBE OD', ha='left', fontsize=5.5, color=C_DIM)
+ax2.text(pl_right_d + 72, ddy, 'Ø174.5\nTUBE OD', ha='left', fontsize=5.5, color=C_DIM)
 
-draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 12, '15\nmm', above=False,
-           fs=5.5, offset=1.5)
+draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 48, '15\nmm', above=False,
+           fs=5.5, offset=6)
 
-ax2.text(ddx - 30, ddy - tube_od_half - 24, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
+ax2.text(ddx - 120, ddy - tube_od_half - 96, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
          fontsize=6.5, fontweight='bold', color=C_RED)
 
 # ── Sheet 2 notes ─────────────────────────────────────────────────────────────
@@ -882,7 +881,7 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-draw_notes(ax2, notes2, 10, 70, spacing=5, fs=7, width=680)
+draw_notes(ax2, notes2, 40, 280, spacing=20, fs=7, width=2720)
 
 plt.tight_layout(pad=0)
 

@@ -52,20 +52,11 @@ C_BLUE   = "#2979B8"     # blue system color
 C_TEXT   = "#1A1A1A"     # general text
 C_BG     = "#F5F5F0"     # background
 
-# ── Scale: 1:5 ───────────────────────────────────────────────────────────────
-SC = 5.0  # mm per drawing unit
-
-# Drawing origin offsets (data units) — position the frame nicely in the figure
-OX = 3.0   # X origin offset
-OZ = 2.0   # Z origin offset
-
 def sx(x_mm):
-    """Convert X position in mm to drawing x coordinate."""
-    return OX + (x_mm - FSKID_X + 100) / SC  # 100mm margin left of frame
+    return x_mm
 
 def sz(z_mm):
-    """Convert Z position in mm to drawing y coordinate."""
-    return OZ + z_mm / SC
+    return z_mm
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -91,8 +82,8 @@ ax2.set_aspect("equal")
 ax2.axis("off")
 
 # Set axis limits — main elevation (skid Z=1600–1940, header ~2000)
-ax.set_xlim(sx(4500) - 1, sx(6100) + 1)
-ax.set_ylim(sz(1100) - 1, sz(2500) + 2)
+ax.set_xlim(4495, 6105)
+ax.set_ylim(1095, 2510)
 
 # Mirror X axis for interior view: matches combined elevation convention
 # (high X / IBC end on LEFT, low X / cargo door end on RIGHT)
@@ -115,22 +106,22 @@ ANGLE_W = 25  # angle width in mm
 
 # Bottom rail
 ax.add_patch(plt.Rectangle((sx(FSKID_X), sz(FSKID_Z_LO)),
-             FSKID_W / SC, ANGLE_W / SC,
+             FSKID_W, ANGLE_W,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Top rail
 ax.add_patch(plt.Rectangle((sx(FSKID_X), sz(FSKID_Z_HI - ANGLE_W)),
-             FSKID_W / SC, ANGLE_W / SC,
+             FSKID_W, ANGLE_W,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Left upright
 ax.add_patch(plt.Rectangle((sx(FSKID_X), sz(FSKID_Z_LO)),
-             ANGLE_W / SC, FSKID_H / SC,
+             ANGLE_W, FSKID_H,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Right upright
 ax.add_patch(plt.Rectangle((sx(FSKID_X + FSKID_W - ANGLE_W), sz(FSKID_Z_LO)),
-             ANGLE_W / SC, FSKID_H / SC,
+             ANGLE_W, FSKID_H,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Slot pattern indication (decorative dashes in uprights)
@@ -150,7 +141,7 @@ ply_w = FSKID_W - 2 * ANGLE_W
 ply_z = FSKID_Z_LO + ANGLE_W
 ply_h = FSKID_H - 2 * ANGLE_W
 ax.add_patch(plt.Rectangle((sx(ply_x), sz(ply_z)),
-             ply_w / SC, ply_h / SC,
+             ply_w, ply_h,
              fc=C_PLY, ec="#A09060", lw=1.0, alpha=0.5, zorder=2.5))
 
 # ── Wall mounting brackets ───────────────────────────────────────────────────
@@ -160,7 +151,7 @@ BRACKET_H = 80
 for bz in [FSKID_Z_LO + 50, FSKID_Z_HI - 80]:
     for bx in [FSKID_X - BRACKET_W, FSKID_X + FSKID_W]:
         ax.add_patch(plt.Rectangle((sx(bx), sz(bz)),
-                     BRACKET_W / SC, BRACKET_H / SC,
+                     BRACKET_W, BRACKET_H,
                      fc="#D0D0D0", ec=C_FRAME, lw=1.2, zorder=2))
         # Bolt symbol
         bolt_cx = bx + BRACKET_W / 2
@@ -184,21 +175,21 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
     # Sump bowl (translucent blue plastic)
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - body_w / 2), sz(body_z_bot)),
-        body_w / SC, body_h / SC,
+        body_w, body_h,
         fc=C_HOUSING, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=5))
 
     # Rounded bottom of sump
     arc_r = body_w / 2
     theta = np.linspace(180, 360, 40)
-    arc_x = sx(cx_mm) + (arc_r / SC) * np.cos(np.radians(theta))
-    arc_z = sz(body_z_bot) + (arc_r / SC) * np.sin(np.radians(theta)) + arc_r / SC
+    arc_x = sx(cx_mm) + arc_r * np.cos(np.radians(theta))
+    arc_z = sz(body_z_bot) + arc_r * np.sin(np.radians(theta)) + arc_r
     ax.plot(arc_x, arc_z, color=C_FRAME, lw=1.5, zorder=5)
 
     # Head (reinforced nylon, darker)
     head_z_bot = FILT_HEAD_Z - BB_HEAD_H
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - body_w / 2), sz(head_z_bot)),
-        body_w / SC, BB_HEAD_H / SC,
+        body_w, BB_HEAD_H,
         fc=C_HEAD, ec=C_FRAME, lw=1.8, zorder=6))
 
     # Mounting bracket — steel U-bracket screwed through backing board
@@ -210,19 +201,19 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
     # Horizontal bar across top of head
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - bracket_w / 2), sz(FILT_HEAD_Z)),
-        bracket_w / SC, bracket_h / SC,
+        bracket_w, bracket_h,
         fc="#999999", ec=C_FRAME, lw=1.2, zorder=7))
 
     # Left tab (down from bar, alongside housing)
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - bracket_w / 2), sz(FILT_HEAD_Z - bracket_tab)),
-        bracket_h / SC, (bracket_tab + bracket_h) / SC,
+        bracket_h, (bracket_tab + bracket_h),
         fc="#999999", ec=C_FRAME, lw=1.0, zorder=7))
 
     # Right tab (down from bar, alongside housing)
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm + bracket_w / 2 - bracket_h), sz(FILT_HEAD_Z - bracket_tab)),
-        bracket_h / SC, (bracket_tab + bracket_h) / SC,
+        bracket_h, (bracket_tab + bracket_h),
         fc="#999999", ec=C_FRAME, lw=1.0, zorder=7))
 
     # HDPE spacer blocks (25mm standoff between bracket and backing board)
@@ -235,7 +226,7 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
                  cx_mm + bracket_w / 2 - SPACER_W + 4]:
         ax.add_patch(plt.Rectangle(
             (sx(sp_x), sz(spacer_z)),
-            SPACER_W / SC, SPACER_H / SC,
+            SPACER_W, SPACER_H,
             fc="#E0D8B0", ec="#A09060", lw=0.8, zorder=3,
             hatch=".."))
 
@@ -250,7 +241,7 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
     clamp_h = 15
     ax.add_patch(plt.Rectangle(
         (sx(cx_mm - body_w / 2 - 8), sz(head_z_bot - clamp_h)),
-        (body_w + 16) / SC, clamp_h / SC,
+        (body_w + 16), clamp_h,
         fc="#888888", ec=C_FRAME, lw=1.0, zorder=6))
 
     # IN port (left side of head)
@@ -260,9 +251,9 @@ def draw_filter_housing(ax, cx_mm, label, filter_type):
 
     # Port circles (1" NPT)
     port_r = 12  # visual radius for port indication
-    ax.add_patch(plt.Circle((sx(in_x), sz(port_z)), port_r / SC,
+    ax.add_patch(plt.Circle((sx(in_x), sz(port_z)), port_r,
                  fc="white", ec=C_FRAME, lw=1.2, zorder=7))
-    ax.add_patch(plt.Circle((sx(out_x), sz(port_z)), port_r / SC,
+    ax.add_patch(plt.Circle((sx(out_x), sz(port_z)), port_r,
                  fc="white", ec=C_FRAME, lw=1.2, zorder=7))
 
     # Port labels
@@ -485,7 +476,7 @@ draw_pipe_path(ax,
 # Probe cap (circle at top of stub)
 cap_r = 18
 ax.add_patch(plt.Circle((sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r)),
-             cap_r / SC, fc="#FFFFCC", ec=C_FRAME, lw=1.5, zorder=8))
+             cap_r, fc="#FFFFCC", ec=C_FRAME, lw=1.5, zorder=8))
 ax.text(sx(PH_TEST_X), sz(PORT_Z + PH_STUB_H + cap_r), "pH",
         ha="center", va="center", fontsize=5.5, fontweight="bold", zorder=9)
 
@@ -549,20 +540,20 @@ ax.annotate("", xy=(sx(mid_x4 + 30), sz(PORT_Z)),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax, sx(FSKID_X), sx(FSKID_X + FSKID_W), sz(FSKID_Z_LO - 50),
-           f"{FSKID_W}mm", offset=0.44)
+           f"{FSKID_W}mm", offset=2.2)
 
 # Frame height
 draw_dim_v(ax, sx(FSKID_X - 80), sz(FSKID_Z_LO), sz(FSKID_Z_HI),
-           f"{FSKID_H}mm", offset=0.44)
+           f"{FSKID_H}mm", offset=2.2)
 
 # Filter spacing (F1 to F2)
 f_spacing = F2_X - F1_X
 draw_dim_h(ax, sx(F1_X), sx(F2_X), sz(FILT_SUMP_Z - 80),
-           f"{f_spacing}mm", offset=0.33, fs=5.5)
+           f"{f_spacing}mm", offset=1.65, fs=5.5)
 
 # Filter spacing (F2 to F3)
 draw_dim_h(ax, sx(F2_X), sx(F3_X), sz(FILT_SUMP_Z - 80),
-           f"{F3_X - F2_X}mm", offset=0.33, fs=5.5)
+           f"{F3_X - F2_X}mm", offset=1.65, fs=5.5)
 
 # Sump bottom height AFF
 ax.plot([sx(FSKID_X - 120), sx(FSKID_X + FSKID_W + 60)],
@@ -576,7 +567,7 @@ ax.text(sx(FSKID_X - 130), sz(FILT_SUMP_Z),
 CEILING_Z = 2388
 TOP_OF_PIPES = HEADER_Z + OD / 2
 draw_dim_v(ax, sx(FSKID_X + FSKID_W + 150), sz(TOP_OF_PIPES), sz(CEILING_Z),
-           f"{int(CEILING_Z - TOP_OF_PIPES)}mm\nCLEARANCE", offset=0.44)
+           f"{int(CEILING_Z - TOP_OF_PIPES)}mm\nCLEARANCE", offset=2.2)
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
 # Frame
@@ -622,24 +613,20 @@ draw_notes(ax, notes, sx(FSKID_X+FSKID_W*1.45), sz(1230), spacing=4.5, fs=7,
 #        filter head → sump bowl below → 1" NPT port with pipe
 # ═══════════════════════════════════════════════════════════════════════════════
 
-SC_B = 2.0  # mm per drawing unit for detail
-OBY = 3.0   # Yd origin
-OBZ = 4.0   # Z origin
-
 def sb_y(yd_mm):
-    return OBY + yd_mm / SC_B
+    return yd_mm
 
 def sb_z(z_mm):
-    return OBZ + z_mm / SC_B
+    return z_mm
 
 # Detail limits — Yd = -15 to 200, Z relative to head center
 # Sump bottom at Z = -35 - 460 = -495; rounded bottom adds ~65 → need Z to -510
 HEAD_CZ = 0
-ax2.set_xlim(sb_y(-25) - 0.5, sb_y(210) + 1)
-ax2.set_ylim(sb_z(-520) - 0.5, sb_z(130) + 1)
+ax2.set_xlim(-26, 212)
+ax2.set_ylim(-521, 132)
 
 # Detail title
-ax2.text(sb_y(90), sb_z(115), "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (APPROX 1:2)",
+ax2.text(sb_y(90), sb_z(115), "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (AXES IN mm)",
          ha="center", va="top", fontsize=9, fontweight="bold",
          color="#1A237E", zorder=10)
 
@@ -648,7 +635,7 @@ ax2.text(sb_y(90), sb_z(115), "DETAIL B — FILTER MOUNTING\nCROSS-SECTION (APPR
 # ── 1. Equipment panel (18mm marine ply at Yd=1046) ──────────────────────────
 PANEL_T = 18.0
 ax2.add_patch(plt.Rectangle((sb_y(-PANEL_T), sb_z(-510)),
-              PANEL_T / SC_B, 610 / SC_B,
+              PANEL_T, 610,
               fc="#D4C8A0", ec="#A09060", lw=1.8, zorder=3))
 ax2.text(sb_y(-PANEL_T / 2), sb_z(105), "EQUIP\nPANEL", ha="center", va="bottom",
          fontsize=5, color=C_FRAME, rotation=0)
@@ -657,7 +644,7 @@ ax2.text(sb_y(-PANEL_T / 2), sb_z(105), "EQUIP\nPANEL", ha="center", va="bottom"
 PLY_YD_START = 0   # flush against wall inner face
 PLY_THICK = 18
 ax2.add_patch(plt.Rectangle((sb_y(PLY_YD_START), sb_z(-510)),
-              PLY_THICK / SC_B, 610 / SC_B,
+              PLY_THICK, 610,
               fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
 # Wood grain indication
 for gz in range(-500, 100, 15):
@@ -667,27 +654,27 @@ for gz in range(-500, 100, 15):
 
 # Dimension: ply thickness
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(PLY_YD_START + PLY_THICK),
-           sb_z(-60), "18mm", offset=0.33, fs=5.5)
+           sb_z(-60), "18mm", offset=0.66, fs=5.5)
 
 # ── 3. HDPE spacer block (50mm) ─────────────────────────────────────────────
 SPACER_YD = PLY_YD_START + PLY_THICK
 SPACER_THICK = 50
 SPACER_VIS_H = 40   # visible height in section
 ax2.add_patch(plt.Rectangle((sb_y(SPACER_YD), sb_z(-SPACER_VIS_H / 2)),
-              SPACER_THICK / SC_B, SPACER_VIS_H / SC_B,
+              SPACER_THICK, SPACER_VIS_H,
               fc="#E0D8B0", ec="#A09060", lw=1.2, zorder=4,
               hatch=".."))
 
 # Dimension: spacer thickness
 draw_dim_h(ax2, sb_y(SPACER_YD), sb_y(SPACER_YD + SPACER_THICK),
-           sb_z(SPACER_YD - SPACER_THICK), f"{SPACER_THICK}mm", offset=0.5, fs=5.5)
+           sb_z(SPACER_YD - SPACER_THICK), f"{SPACER_THICK}mm", offset=1.0, fs=5.5)
 
 # ── 4. Steel bracket tab (3mm) ──────────────────────────────────────────────
 BRACKET_YD = SPACER_YD + SPACER_THICK
 BRACKET_THICK = 3
 BRACKET_VIS_H = 50
 ax2.add_patch(plt.Rectangle((sb_y(BRACKET_YD), sb_z(-BRACKET_VIS_H / 2)),
-              BRACKET_THICK / SC_B, BRACKET_VIS_H / SC_B,
+              BRACKET_THICK, BRACKET_VIS_H,
               fc="#999999", ec=C_FRAME, lw=1.2, zorder=5))
 
 # ── M6 bolt through bracket + spacer + ply ──────────────────────────────────
@@ -702,12 +689,12 @@ ax2.plot([sb_y(bolt_y_tip), sb_y(bolt_y_head)],
 
 # Bolt head (hex, simplified as small rectangle)
 ax2.add_patch(plt.Rectangle((sb_y(bolt_y_head), sb_z(BOLT_Z - 4)),
-              5 / SC_B, 8 / SC_B,
+              5, 8,
               fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
 
 # Washer + nut on back side
 ax2.add_patch(plt.Rectangle((sb_y(bolt_y_tip - 3), sb_z(BOLT_Z - 5)),
-              3 / SC_B, 10 / SC_B,
+              3, 10,
               fc="#666666", ec=C_FRAME, lw=1.0, zorder=7))
 
 # Bolt label
@@ -721,7 +708,7 @@ HEAD_DEPTH = 80   # head depth in Yd direction (front-to-back)
 HEAD_VIS_H = BB_HEAD_H  # 70mm
 
 ax2.add_patch(plt.Rectangle((sb_y(HEAD_YD), sb_z(-HEAD_VIS_H / 2)),
-              HEAD_DEPTH / SC_B, HEAD_VIS_H / SC_B,
+              HEAD_DEPTH, HEAD_VIS_H,
               fc=C_HEAD, ec=C_FRAME, lw=1.8, zorder=5))
 ax2.text(sb_y(HEAD_YD + HEAD_DEPTH / 2), sb_z(0), "HEAD",
          ha="center", va="center", fontsize=6, color="white",
@@ -734,14 +721,14 @@ sump_yd_center = HEAD_YD + HEAD_DEPTH / 2
 
 ax2.add_patch(plt.Rectangle(
     (sb_y(sump_yd_center - SUMP_W_SEC / 2), sb_z(-HEAD_VIS_H / 2 - SUMP_H)),
-    SUMP_W_SEC / SC_B, SUMP_H / SC_B,
+    SUMP_W_SEC, SUMP_H,
     fc=C_HOUSING, ec=C_FRAME, lw=1.5, alpha=0.6, zorder=4))
 
 # Rounded bottom
 arc_r_b = SUMP_W_SEC / 2
 theta_b = np.linspace(180, 360, 40)
-arc_bx = sb_y(sump_yd_center) + (arc_r_b / SC_B) * np.cos(np.radians(theta_b))
-arc_bz = sb_z(-HEAD_VIS_H / 2 - SUMP_H) + (arc_r_b / SC_B) * np.sin(np.radians(theta_b)) + arc_r_b / SC_B
+arc_bx = sb_y(sump_yd_center) + arc_r_b * np.cos(np.radians(theta_b))
+arc_bz = sb_z(-HEAD_VIS_H / 2 - SUMP_H) + arc_r_b * np.sin(np.radians(theta_b)) + arc_r_b
 ax2.plot(arc_bx, arc_bz, color=C_FRAME, lw=1.5, zorder=5)
 
 ax2.text(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H / 2), "SUMP\nBOWL",
@@ -751,7 +738,7 @@ ax2.text(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H / 2), "SUMP\nBOWL",
 # Sump height dimension
 draw_dim_v(ax2, sb_y(sump_yd_center + SUMP_W_SEC / 2 + 15),
            sb_z(-HEAD_VIS_H / 2 - SUMP_H), sb_z(-HEAD_VIS_H / 2),
-           f"{int(SUMP_H)}mm", offset=0.33, fs=5)
+           f"{int(SUMP_H)}mm", offset=0.66, fs=5)
 
 # Cartridge removal annotation — sump unscrews downward
 ax2.annotate("", xy=(sb_y(sump_yd_center), sb_z(-HEAD_VIS_H / 2 - SUMP_H - 40)),
@@ -770,19 +757,19 @@ PORT_Z_SEC = 0  # at head center
 
 # Port bore through head
 ax2.add_patch(plt.Rectangle((sb_y(PORT_YD - 15), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2)),
-              15 / SC_B, PIPE_OD_SEC / SC_B,
+              15, PIPE_OD_SEC,
               fc="white", ec=C_FRAME, lw=1.0, zorder=6))
 
 # Pipe stub (1" HDPE extending from port)
 STUB_LEN = 50
 # Outer wall
 ax2.add_patch(plt.Rectangle((sb_y(PORT_YD), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2)),
-              STUB_LEN / SC_B, PIPE_OD_SEC / SC_B,
+              STUB_LEN, PIPE_OD_SEC,
               fc=C_HDPE, ec=C_FRAME, lw=1.0, zorder=5))
 # Inner bore
 ax2.add_patch(plt.Rectangle(
     (sb_y(PORT_YD), sb_z(PORT_Z_SEC - PIPE_OD_SEC / 2 + PIPE_WALL_SEC)),
-    STUB_LEN / SC_B, (PIPE_OD_SEC - 2 * PIPE_WALL_SEC) / SC_B,
+    STUB_LEN, (PIPE_OD_SEC - 2 * PIPE_WALL_SEC),
     fc="white", ec="none", zorder=6))
 
 # Pipe label
@@ -796,13 +783,13 @@ CLAMP_YD_L = sump_yd_center - SUMP_W_SEC / 2 - 5
 CLAMP_W_SEC = SUMP_W_SEC + 10
 ax2.add_patch(plt.Rectangle(
     (sb_y(CLAMP_YD_L), sb_z(-HEAD_VIS_H / 2 - CLAMP_H_SEC)),
-    CLAMP_W_SEC / SC_B, CLAMP_H_SEC / SC_B,
+    CLAMP_W_SEC, CLAMP_H_SEC,
     fc="#888888", ec=C_FRAME, lw=1.0, zorder=6))
 
 # ── Overall standoff dimension ───────────────────────────────────────────────
 total_standoff = PLY_THICK + SPACER_THICK + BRACKET_THICK  # 18 + 50 + 3 = 71mm
 draw_dim_h(ax2, sb_y(PLY_YD_START), sb_y(BRACKET_YD + BRACKET_THICK),
-           sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.33, fs=5.5)
+           sb_z(-85), f"{total_standoff}mm STANDOFF", offset=0.66, fs=5.5)
 
 # ── Component labels along section ──────────────────────────────────────────
 label_z = 85
@@ -830,7 +817,7 @@ ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="3-STAGE FILTER SKID — PLUMBING ELEVATION",
             subtitle="VIEW FROM IBC CORRIDOR LOOKING AT EQUIPMENT PANEL (Yd=1046)",
-            scale_note="ELEVATION 1:5  |  DETAIL B ~1:2  |  ALL DIMS IN mm",
+            scale_note="AXES IN mm",
             doc_id="TBS-001 · Water System — 3-Stage Filter Skid Detail",
             height=0.75)
 

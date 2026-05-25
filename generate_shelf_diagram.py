@@ -88,15 +88,14 @@ def sheet1():
     # Tight crop centered on shelf with surrounding context.
     X_LO, X_HI = 3400, 5100
     YD_LO, YD_HI = -120, 1000
-    SC = 8.0
 
-    def px(x): return (x - X_LO) / SC      # X → horizontal
-    def py(yd): return (yd - YD_LO) / SC    # Yd → vertical (bottom=wall)
+    def px(x): return x
+    def py(yd): return yd
 
     fig, ax = plt.subplots(figsize=(18, 12), facecolor=BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(px(X_LO), px(X_HI))
-    ax.set_ylim(py(YD_LO), py(YD_HI))
+    ax.set_xlim(X_LO, X_HI)
+    ax.set_ylim(YD_LO, YD_HI)
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -232,25 +231,25 @@ def sheet1():
     # ── Dimensions ──
     # Shelf width (X direction) — horizontal
     draw_dim_h(ax, px(SHELF_X_L), px(SHELF_X_R), py(SHELF_YD_FAR + 50),
-               f"{SHELF_W}mm", offset=5, fs=7)
+               f"{SHELF_W}mm", offset=40, fs=7)
     # Shelf depth (Yd direction) — vertical
     draw_dim_v(ax, px(SHELF_X_L - 50), py(SHELF_YD_NEAR), py(SHELF_YD_FAR),
-               f"{SHELF_DEPTH}mm", offset=5, fs=7)
+               f"{SHELF_DEPTH}mm", offset=40, fs=7)
     # Distance from pinhole wall (Yd direction)
     draw_dim_v(ax, px(SHELF_X_R + 50), py(0), py(SHELF_YD_NEAR),
-               f"{SHELF_YD_NEAR}mm FROM WALL", offset=5, fs=6, right=True)
+               f"{SHELF_YD_NEAR}mm FROM WALL", offset=40, fs=6, right=True)
     # Near walkway width
     draw_dim_v(ax, px(X_LO + 80), py(0), py(WALKWAY_W),
-               "300mm\nWALKWAY", offset=5, fs=6)
+               "300mm\nWALKWAY", offset=40, fs=6)
     # Right walkway width
     draw_dim_h(ax, px(WALKWAY_RIGHT_X), px(WALKWAY_RIGHT_X + WALKWAY_RIGHT_W),
-               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=5, fs=6)
+               py(-80), f"{WALKWAY_RIGHT_W}mm", offset=40, fs=6)
 
     # ── Title block ──
     title_block(ax, "SHEET 1 OF 3",
                 drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="PLAN VIEW — CEILING-SUSPENDED, RIGHT CORNER",
-                scale_note="SCALE ~1:12",
+                scale_note="AXES IN mm",
                 doc_id="TBS-001 · Chem Prep")
 
     out = "diagrams/shelf-sheet1.png"
@@ -270,13 +269,13 @@ def sheet2():
     YD_LO, YD_HI = -100, 1100
     Z_LO, Z_HI = -50, 2500
 
-    def px(yd): return (yd - YD_LO) / 10.0
-    def pz(z): return (z - Z_LO) / 10.0
+    def px(yd): return yd
+    def pz(z): return z
 
     fig, ax = plt.subplots(figsize=(16, 18), facecolor=BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(px(YD_LO), px(YD_HI))
-    ax.set_ylim(pz(Z_LO), pz(Z_HI))
+    ax.set_xlim(YD_LO, YD_HI)
+    ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -378,28 +377,28 @@ def sheet2():
     # ── Dimensions ──
     # Shelf height above floor
     draw_dim_v(ax, px(SHELF_YD_FAR + 80), pz(0), pz(SHELF_H),
-               f"{SHELF_H}mm AFF", offset=5, fs=6, right=True)
+               f"{SHELF_H}mm AFF", offset=50, fs=6, right=True)
     # Shelf height above walkway deck
     draw_dim_v(ax, px(SHELF_YD_NEAR - 50), pz(WALKWAY_H), pz(SHELF_H),
-               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=5, fs=5.5)
+               f"{SHELF_H - WALKWAY_H}mm\nABOVE DECK", offset=50, fs=5.5)
     # Hanger rod length
     draw_dim_v(ax, px(SHELF_YD_FAR + 140), pz(SHELF_H), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm\nROD", offset=5, fs=5.5, right=True)
+               f"{int(HANGER_ROD_L)}mm\nROD", offset=50, fs=5.5, right=True)
     # Shelf depth (Yd)
     draw_dim_h(ax, px(SHELF_YD_NEAR), px(SHELF_YD_FAR), pz(shelf_z_bot - 50),
-               f"{SHELF_DEPTH}mm DEPTH", offset=5, fs=6)
+               f"{SHELF_DEPTH}mm DEPTH", offset=50, fs=6)
     # Walkway width
     draw_dim_h(ax, px(0), px(WALKWAY_W), pz(-30),
-               "300mm WALKWAY", offset=5, fs=5.5)
+               "300mm WALKWAY", offset=50, fs=5.5)
     # Gap between walkway edge and shelf
     draw_dim_h(ax, px(WALKWAY_W), px(SHELF_YD_NEAR), pz(SHELF_H + 40),
-               "0mm (FLUSH)", offset=5, fs=5)
+               "0mm (FLUSH)", offset=50, fs=5)
     # Shelf thickness
     draw_dim_v(ax, px(SHELF_YD_NEAR - 20), pz(shelf_z_bot), pz(shelf_z_top),
-               "22mm", offset=5, fs=5, right=True)
+               "22mm", offset=50, fs=5, right=True)
     # Container height
     draw_dim_v(ax, px(YD_HI - 50), pz(0), pz(C_HGT),
-               f"{C_HGT}mm", offset=5, fs=5.5, right=True)
+               f"{C_HGT}mm", offset=50, fs=5.5, right=True)
 
     # ── Leader callouts ──
     leader(ax, px(SHELF_CY), pz(shelf_z_top + 5),
@@ -449,7 +448,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 3",
                 drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="SECTION ELEVATION — CEILING-HUNG DETAIL",
-                scale_note="SCALE ~1:10",
+                scale_note="AXES IN mm",
                 doc_id="TBS-001 · Chem Prep")
 
     out = "diagrams/shelf-sheet2.png"
@@ -470,13 +469,13 @@ def sheet3():
     YD_LO, YD_HI = -120, 380
     Z_LO, Z_HI = 860, 2450
 
-    def px(yd): return (yd - YD_LO) / 5.0
-    def pz(z): return (z - Z_LO) / 5.0
+    def px(yd): return yd
+    def pz(z): return z
 
     fig, ax = plt.subplots(figsize=(18, 18), facecolor=BG)
     ax.set_facecolor(BG)
-    ax.set_xlim(px(YD_LO), px(YD_HI))
-    ax.set_ylim(pz(Z_LO), pz(Z_HI))
+    ax.set_xlim(YD_LO, YD_HI)
+    ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -607,16 +606,16 @@ def sheet3():
     # ── Key dimensions ──
     # Shelf thickness
     draw_dim_v(ax, px(-30), pz(shelf_z_bot), pz(shelf_z_top),
-               "22mm", offset=5, fs=6)
+               "22mm", offset=25, fs=6)
     # Ceiling to shelf (rod length)
     draw_dim_v(ax, px(YD_HI - 30), pz(shelf_z_top), pz(C_HGT),
-               f"{int(HANGER_ROD_L)}mm", offset=5, fs=6, right=True)
+               f"{int(HANGER_ROD_L)}mm", offset=25, fs=6, right=True)
     # Ply thickness
     draw_dim_v(ax, px(250), pz(shelf_z_top - ply_t), pz(shelf_z_top),
-               "18mm PLY", offset=5, fs=5, right=True)
+               "18mm PLY", offset=25, fs=5, right=True)
     # Frame height
     draw_dim_v(ax, px(210), pz(shelf_z_bot), pz(shelf_z_bot + frame_size),
-               "25mm SHS", offset=5, fs=5, right=True)
+               "25mm SHS", offset=25, fs=5, right=True)
 
     # ── Assembly note ──
     ax.text(px(YD_HI / 2), pz(Z_LO + 30),
@@ -631,7 +630,7 @@ def sheet3():
     title_block(ax, "SHEET 3 OF 3",
                 drawing_title="CHEMISTRY PREP SHELF",
                 subtitle="HANGER & FRAME DETAIL",
-                scale_note="SCALE ~1:5",
+                scale_note="AXES IN mm",
                 doc_id="TBS-001 · Chem Prep",
                 portrait=True, height=0.06)
 

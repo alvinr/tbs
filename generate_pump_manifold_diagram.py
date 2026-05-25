@@ -61,20 +61,11 @@ C_VALVE      = "#CC4444"     # valve symbol fill
 C_TEXT       = "#1A1A1A"     # general text
 C_BG         = "#F5F5F0"     # background
 
-# ── Scale: 1:5 ───────────────────────────────────────────────────────────────
-SC = 5.0  # mm per drawing unit
-
-# Drawing origin offsets (data units)
-OX = 3.0
-OZ = 2.0
-
 def sx(x_mm):
-    """Convert X position in mm to drawing x coordinate."""
-    return OX + (x_mm - PUMP_X + 200) / SC  # 200mm margin left of frame
+    return x_mm
 
 def sz(z_mm):
-    """Convert Z position in mm to drawing y coordinate."""
-    return OZ + z_mm / SC
+    return z_mm
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -104,8 +95,8 @@ ax3.set_aspect("equal")
 ax3.axis("off")
 
 # Axis limits — elevation panel
-ax.set_xlim(sx(PUMP_X - 500) - 1, sx(PUMP_X + PUMP_W + 1200) + 1)
-ax.set_ylim(sz(-280) - 1, sz(1200) + 2)
+ax.set_xlim(PUMP_X - 505, PUMP_X + PUMP_W + 1205)
+ax.set_ylim(-285, 1210)
 
 # Mirror X axis for interior view convention
 ax.invert_xaxis()
@@ -188,22 +179,22 @@ ax.text(sx(PUMP_X - 150), sz(WALKWAY_Z + 10), "WALKWAY DECK (Z=100)",
 
 # Bottom rail
 ax.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_LO)),
-             FRAME_W / SC, ANGLE_W / SC,
+             FRAME_W, ANGLE_W,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Top rail
 ax.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_HI - ANGLE_W)),
-             FRAME_W / SC, ANGLE_W / SC,
+             FRAME_W, ANGLE_W,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Left upright
 ax.add_patch(plt.Rectangle((sx(FRAME_X), sz(FRAME_Z_LO)),
-             ANGLE_W / SC, FRAME_H / SC,
+             ANGLE_W, FRAME_H,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 # Right upright
 ax.add_patch(plt.Rectangle((sx(FRAME_X + FRAME_W - ANGLE_W), sz(FRAME_Z_LO)),
-             ANGLE_W / SC, FRAME_H / SC,
+             ANGLE_W, FRAME_H,
              fc=C_STEEL_FILL, ec=C_FRAME, lw=FRAME_LW, zorder=3))
 
 
@@ -213,7 +204,7 @@ ply_w = FRAME_W - 2 * ANGLE_W
 ply_z = FRAME_Z_LO + ANGLE_W
 ply_h = FRAME_H - 2 * ANGLE_W
 ax.add_patch(plt.Rectangle((sx(ply_x), sz(ply_z)),
-             ply_w / SC, ply_h / SC,
+             ply_w, ply_h,
              fc=C_PLY, ec="#A09060", lw=1.0, alpha=0.5, zorder=2.5))
 
 
@@ -223,7 +214,7 @@ BRACKET_H = 60
 for bz in [FRAME_Z_LO + 40, FRAME_Z_HI - 80]:
     for bx in [FRAME_X - BRACKET_W, FRAME_X + FRAME_W]:
         ax.add_patch(plt.Rectangle((sx(bx), sz(bz)),
-                     BRACKET_W / SC, BRACKET_H / SC,
+                     BRACKET_W, BRACKET_H,
                      fc="#D0D0D0", ec=C_FRAME, lw=1.2, zorder=2))
         bolt_cx = bx + BRACKET_W / 2
         bolt_cz = bz + BRACKET_H / 2
@@ -345,7 +336,7 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
     """
     # Pump body rectangle (127mm W × 218mm H, vertical — includes ports)
     ax.add_patch(plt.Rectangle((sx(px), sz(pz)),
-                 PUMP_BODY_W / SC, PUMP_BODY_H / SC,
+                 PUMP_BODY_W, PUMP_BODY_H,
                  fc=color, ec=C_FRAME, lw=1.5, alpha=0.85, zorder=5))
 
     # Pump label inside body
@@ -363,7 +354,7 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
 
     # IN port: higher X side (right edge of 127mm body)
     in_x = px + PUMP_BODY_W
-    ax.add_patch(plt.Circle((sx(in_x), sz(port_z)), PORT_OD / 2 / SC,
+    ax.add_patch(plt.Circle((sx(in_x), sz(port_z)), PORT_OD / 2,
                  fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
     ax.text(sx(in_x + 8), sz(port_z), "IN",
             ha="left", va="center",
@@ -371,7 +362,7 @@ def draw_pump(ax, px, pz, label, sublabel, color=C_PUMP_BODY):
 
     # OUT port: lower X side (left edge of 127mm body)
     out_x = px
-    ax.add_patch(plt.Circle((sx(out_x), sz(port_z)), PORT_OD / 2 / SC,
+    ax.add_patch(plt.Circle((sx(out_x), sz(port_z)), PORT_OD / 2,
                  fc="#CCCCCC", ec=C_FRAME, lw=1.0, zorder=6))
     ax.text(sx(out_x - 8), sz(port_z), "OUT",
             ha="right", va="center",
@@ -477,7 +468,7 @@ ACC_X = FRAME_R + 40
 ACC_Z = HEADER_Z_BLUE_DISCH - ACC_H / 2 + 25   # 25mm above discharge header center
 
 ax.add_patch(plt.Rectangle((sx(ACC_X), sz(ACC_Z)),
-             ACC_W / SC, ACC_H / SC,
+             ACC_W, ACC_H,
              fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
 acc_cx = ACC_X + ACC_W / 2
 acc_top = ACC_Z + ACC_H
@@ -691,23 +682,23 @@ ax.text(sx((PIPE_EXIT_X + FRAME_R) * 0.515), sz(PORT_Z_TOP - 25),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax, sx(FRAME_X), sx(FRAME_X + FRAME_W), sz(FRAME_Z_LO - 60),
-           f"{FRAME_W}mm", offset=0.44)
+           f"{FRAME_W}mm", offset=2.2)
 
 # Frame height
 draw_dim_v(ax, sx(FRAME_X - 100), sz(FRAME_Z_LO), sz(FRAME_Z_HI),
-           f"{FRAME_H}mm", offset=0.44)
+           f"{FRAME_H}mm", offset=2.2)
 
 # Height above floor
 draw_dim_v(ax, sx(FRAME_X - 160), sz(0), sz(FRAME_Z_LO),
-           f"{FRAME_Z_LO}mm AFF", offset=0.44)
+           f"{FRAME_Z_LO}mm AFF", offset=2.2)
 
 # Pump body width (P-01)
 draw_dim_h(ax, sx(P01_X), sx(P01_X + PUMP_BODY_W), sz(P01_Z + 30),
-           f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
+           f"{PUMP_BODY_W}mm", offset=1.25, fs=5.5)
 
 # P-04 centered position
 draw_dim_h(ax, sx(P04_X), sx(P04_X + PUMP_BODY_W), sz(P04_Z + 30),
-           f"{PUMP_BODY_W}mm", offset=0.25, fs=5.5)
+           f"{PUMP_BODY_W}mm", offset=1.25, fs=5.5)
 
 
 # ── Leader callouts ──────────────────────────────────────────────────────────
@@ -768,22 +759,17 @@ draw_notes(ax, notes, sx(PIPE_EXIT_X + 150), sz(-25), spacing=4.0, fs=7,
 # Shows: equipment panel → 18mm ply → pump body → ports
 # ═══════════════════════════════════════════════════════════════════════════════
 
-SC_A = 4.5  # mm per drawing unit for detail (~1:4.5, compact for side panel)
-OAY = 1.0   # Yd origin
-OAZ = 2.0   # Z origin
-
 def sa_y(yd_mm):
-    return OAY + yd_mm / SC_A
+    return yd_mm
 
 def sa_z(z_mm):
-    return OAZ + z_mm / SC_A
+    return z_mm
 
-# Detail limits — taller to show full 218mm pump height
-ax2.set_xlim(sa_y(-25) - 0.5, sa_y(220) + 0.5)
-ax2.set_ylim(sa_z(-160) - 0.5, sa_z(180) + 0.5)
+ax2.set_xlim(-27, 222)
+ax2.set_ylim(-162, 182)
 
 # Detail title
-ax2.text(sa_y(100), sa_z(175), "DETAIL A\nPUMP MOUNTING CROSS-SECTION\nScale ~1:4.5",
+ax2.text(sa_y(100), sa_z(175), "DETAIL A\nPUMP MOUNTING CROSS-SECTION\nAXES IN mm",
          ha="center", va="top", fontsize=7, fontweight="bold",
          color="#1A237E", zorder=10)
 
@@ -792,7 +778,7 @@ ax2.text(sa_y(100), sa_z(175), "DETAIL A\nPUMP MOUNTING CROSS-SECTION\nScale ~1:
 # ── 1. Equipment panel (18mm marine ply at Yd=1046) ──────────────────────────
 PANEL_T = 18.0
 ax2.add_patch(plt.Rectangle((sa_y(-PANEL_T), sa_z(-130)),
-              PANEL_T / SC_A, 280 / SC_A,
+              PANEL_T, 280,
               fc="#D4C8A0", ec="#A09060", lw=1.8, zorder=3))
 ax2.text(sa_y(-PANEL_T / 2), sa_z(145), "EQUIP\nPANEL", ha="center", va="bottom",
          fontsize=5, color=C_FRAME)
@@ -801,7 +787,7 @@ ax2.text(sa_y(-PANEL_T / 2), sa_z(145), "EQUIP\nPANEL", ha="center", va="bottom"
 PLY_YD_START = 0
 PLY_THICK = 18
 ax2.add_patch(plt.Rectangle((sa_y(PLY_YD_START), sa_z(-130)),
-              PLY_THICK / SC_A, 280 / SC_A,
+              PLY_THICK, 280,
               fc=C_PLY, ec="#A09060", lw=1.5, zorder=3))
 # Wood grain
 for gz in range(-125, 140, 12):
@@ -810,7 +796,7 @@ for gz in range(-125, 140, 12):
              color="#C0B080", lw=0.4, zorder=3.5)
 
 draw_dim_h(ax2, sa_y(PLY_YD_START), sa_y(PLY_YD_START + PLY_THICK),
-           sa_z(-50), "18mm", offset=0.33, fs=5.5)
+           sa_z(-50), "18mm", offset=1.5, fs=5.5)
 
 # ── 3. Pump body — through-bolted directly to plywood ────────────────────────
 # No bracket. Pump base sits flat against ply face.
@@ -828,7 +814,7 @@ PUMP_SEC_Z_TOP = PUMP_SEC_H / 2    # +109mm
 
 # Pump body rectangle (full 218mm height × 113mm depth)
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD), sa_z(PUMP_SEC_Z_BOT)),
-              PUMP_DEPTH / SC_A, PUMP_SEC_H / SC_A,
+              PUMP_DEPTH, PUMP_SEC_H,
               fc=C_PUMP_BODY, ec=C_FRAME, lw=1.8, alpha=0.85, zorder=5))
 
 ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(0),
@@ -839,7 +825,7 @@ ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(0),
 chamber_cx = PUMP_YD + PUMP_DEPTH / 2
 chamber_cz = -20
 chamber_r = 30
-ax2.add_patch(plt.Circle((sa_y(chamber_cx), sa_z(chamber_cz)), chamber_r / SC_A,
+ax2.add_patch(plt.Circle((sa_y(chamber_cx), sa_z(chamber_cz)), chamber_r,
               fc="#D0A070", ec="#8B5E3C", lw=1.0, alpha=0.5, zorder=5.5))
 ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 18), "DIAPHRAGM",
          ha="center", va="top", fontsize=4, color="#8B5E3C", zorder=6)
@@ -848,7 +834,7 @@ ax2.text(sa_y(chamber_cx), sa_z(chamber_cz - 18), "DIAPHRAGM",
 HEAD_ZONE_H = 50
 head_z_bot = PUMP_SEC_Z_TOP - HEAD_ZONE_H
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 10), sa_z(head_z_bot)),
-              (PUMP_DEPTH - 20) / SC_A, HEAD_ZONE_H / SC_A,
+              (PUMP_DEPTH - 20), HEAD_ZONE_H,
               fc="#CC8844", ec=C_FRAME, lw=1.2, alpha=0.85, zorder=5))
 ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(head_z_bot + HEAD_ZONE_H / 2),
          "HEAD", ha="center", va="center",
@@ -857,7 +843,7 @@ ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(head_z_bot + HEAD_ZONE_H / 2),
 # Motor end indication (bottom ~40mm)
 MOTOR_ZONE_H = 40
 ax2.add_patch(plt.Rectangle((sa_y(PUMP_YD + 10), sa_z(PUMP_SEC_Z_BOT)),
-              (PUMP_DEPTH - 20) / SC_A, MOTOR_ZONE_H / SC_A,
+              (PUMP_DEPTH - 20), MOTOR_ZONE_H,
               fc="#CC7733", ec=C_FRAME, lw=1.0, alpha=0.6, zorder=5))
 ax2.text(sa_y(PUMP_YD + PUMP_DEPTH / 2), sa_z(PUMP_SEC_Z_BOT + MOTOR_ZONE_H / 2),
          "MOTOR", ha="center", va="center",
@@ -894,31 +880,31 @@ for bz in [bolt_z_upper, bolt_z_lower]:
     # Washer (pump side, between nut and pump mounting foot)
     ax2.add_patch(plt.Rectangle(
         (sa_y(washer_pump_yd), sa_z(bz - 5)),
-        WASHER_T / SC_A, 10 / SC_A,
+        WASHER_T, 10,
         fc="#999999", ec=C_FRAME, lw=0.5, zorder=7.5))
 
     # Nut on pump side (tightened down against washer)
     ax2.add_patch(plt.Rectangle(
         (sa_y(nut_pump_yd), sa_z(bz - BOLT_HEAD_W / 2)),
-        BOLT_HEAD_H / SC_A, BOLT_HEAD_W / SC_A,
+        BOLT_HEAD_H, BOLT_HEAD_W,
         fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
 
     # Nyloc nut on panel side (behind ply)
     ax2.add_patch(plt.Rectangle(
         (sa_y(bolt_tip_yd - NUT_H), sa_z(bz - BOLT_HEAD_W / 2)),
-        NUT_H / SC_A, BOLT_HEAD_W / SC_A,
+        NUT_H, BOLT_HEAD_W,
         fc="#666666", ec=C_FRAME, lw=1.0, zorder=8))
 
     # Washer (panel side)
     ax2.add_patch(plt.Rectangle(
         (sa_y(bolt_tip_yd - 1), sa_z(bz - 5)),
-        1 / SC_A, 10 / SC_A,
+        1, 10,
         fc="#999999", ec=C_FRAME, lw=0.5, zorder=7.5))
 
 # Bolt column spacing dimension (vertical between two bolts)
 _nut_outer_yd = nut_pump_yd + BOLT_HEAD_H
 draw_dim_v(ax2, sa_y(_nut_outer_yd + 9), sa_z(bolt_z_lower), sa_z(bolt_z_upper),
-           f"81.3mm\n(3.2\")", offset=0.37, fs=5)
+           f"81.3mm\n(3.2\")", offset=1.65, fs=5)
 
 # Bolt callout
 leader(ax2, sa_y(_nut_outer_yd + 5), sa_z(bolt_z_upper),
@@ -939,10 +925,10 @@ port_bore_r = PORT_OD_SEC / 2
 
 # Outer bore circle (port tube cross-section)
 ax2.add_patch(plt.Circle((sa_y(port_bore_yd), sa_z(PORT_Z_SEC)),
-              port_bore_r / SC_A, fc="white", ec=C_FRAME, lw=1.5, zorder=6))
+              port_bore_r, fc="white", ec=C_FRAME, lw=1.5, zorder=6))
 # Inner bore
 ax2.add_patch(plt.Circle((sa_y(port_bore_yd), sa_z(PORT_Z_SEC)),
-              (port_bore_r - PORT_WALL_SEC) / SC_A,
+              (port_bore_r - PORT_WALL_SEC),
               fc="white", ec=C_FRAME, lw=0.8, zorder=6.5))
 # Center dot (convention for a bore going into the page)
 ax2.plot(sa_y(port_bore_yd), sa_z(PORT_Z_SEC), 'o',
@@ -964,15 +950,15 @@ leader(ax2, sa_y(port_bore_yd + 25), sa_z(PORT_Z_SEC + 5),
 # Ply thickness (already drawn above)
 # Pump depth
 draw_dim_h(ax2, sa_y(PUMP_YD), sa_y(PUMP_YD + PUMP_DEPTH),
-           sa_z(PUMP_SEC_Z_BOT - 20), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=0.33, fs=5.5)
+           sa_z(PUMP_SEC_Z_BOT - 20), f"{PUMP_DEPTH}mm\nPUMP DEPTH", offset=1.5, fs=5.5)
 
 # Panel + ply total
 draw_dim_h(ax2, sa_y(-PANEL_T), sa_y(PLY_YD_START + PLY_THICK),
-           sa_z(PUMP_SEC_Z_BOT - 40), f"{PLY_THICK + int(PANEL_T)}mm\nPANEL + PLY", offset=0.33, fs=5)
+           sa_z(PUMP_SEC_Z_BOT - 40), f"{PLY_THICK + int(PANEL_T)}mm\nPANEL + PLY", offset=1.5, fs=5)
 
 # Pump height dimension (full 218mm)
 draw_dim_v(ax2, sa_y(PUMP_YD + PUMP_DEPTH + 15), sa_z(PUMP_SEC_Z_BOT), sa_z(PUMP_SEC_Z_TOP),
-           f"{PUMP_SEC_H}mm\n(8.60\")", offset=0.33, fs=5)
+           f"{PUMP_SEC_H}mm\n(8.60\")", offset=1.5, fs=5)
 
 # ── Component labels along section ──────────────────────────────────────────
 label_z_a = PUMP_SEC_Z_TOP + 20
@@ -1000,28 +986,21 @@ ax2.text(sa_y(70), sa_z(PUMP_SEC_Z_BOT - 30),
 #        direction arrows indicating where each pipe routes to
 # ═══════════════════════════════════════════════════════════════════════════════
 
-SC_B = 5.5    # mm per drawing unit (~1:5.5 — compact for side panel)
-OBX = 1.0     # X origin offset
-OBY = 0.8     # Yd origin offset
-
 def sp_x(x_mm):
-    """Convert X position (mm) to plan view x coordinate."""
-    return OBX + (x_mm - PUMP_X + 200) / SC_B
+    return x_mm
 
 def sp_y(yd_mm):
-    """Convert Yd position (mm) to plan view y coordinate (Yd=0 at top)."""
-    return OBY + (500 - yd_mm) / SC_B  # flip so panel (Yd=0) is at top
+    return yd_mm
 
-# Set axis limits — focus on pump zone
-ax3.set_xlim(sp_x(PUMP_X - 500) - 0.5, sp_x(PUMP_X + PUMP_W + 800) + 0.5)
-ax3.set_ylim(sp_y(520) - 0.5, sp_y(-100) + 0.5)
+ax3.set_xlim(PUMP_X - 503, PUMP_X + PUMP_W + 803)
+ax3.set_ylim(-103, 523)
 
-# Mirror X to match elevation convention (high X on left)
 ax3.invert_xaxis()
+ax3.invert_yaxis()
 
 # Detail title
 ax3.text(sp_x(PUMP_X + PUMP_W / 2), sp_y(-130),
-         "DETAIL B\nPUMP MANIFOLD PLAN VIEW\nLooking Down from Ceiling  |  Scale ~1:5.5",
+         "DETAIL B\nPUMP MANIFOLD PLAN VIEW\nLooking Down from Ceiling  |  AXES IN mm",
          ha="center", va="top", fontsize=7, fontweight="bold",
          color="#1A237E", zorder=10)
 
@@ -1046,7 +1025,7 @@ MANIFOLD_DEPTH = 160  # Yd depth from panel face
 # Frame perimeter
 ax3.add_patch(plt.Rectangle(
     (sp_x(FRAME_X), sp_y(MANIFOLD_DEPTH)),
-    FRAME_W / SC_B, MANIFOLD_DEPTH / SC_B,
+    FRAME_W, MANIFOLD_DEPTH,
     fc=C_PLY, ec=C_FRAME, lw=2.0, alpha=0.4, zorder=3))
 
 # Frame label
@@ -1099,7 +1078,7 @@ def _plan_pump_ports(pcx, pyd):
 for pcx, pyd, plabel, pcolor, psub in pumps_ghost:
     ax3.add_patch(plt.Rectangle(
         (sp_x(pcx - PP_W / 2), sp_y(pyd + PP_D)),
-        PP_W / SC_B, PP_D / SC_B,
+        PP_W, PP_D,
         fc=pcolor, ec=pcolor, lw=GHOST_LW, alpha=GHOST_ALPHA,
         ls=GHOST_LS, zorder=3))
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D / 2),
@@ -1107,16 +1086,16 @@ for pcx, pyd, plabel, pcolor, psub in pumps_ghost:
              fontsize=6, color=pcolor, fontweight="bold", alpha=0.4, zorder=4)
     # Ports — ghost (on LEFT and RIGHT sides in X)
     p_in_x, p_in_yd, p_out_x, p_out_yd = _plan_pump_ports(pcx, pyd)
-    ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)), PP_PORT_R / SC_B,
+    ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)), PP_PORT_R,
                   fc="white", ec=pcolor, lw=0.8, alpha=GHOST_ALPHA, zorder=3))
-    ax3.add_patch(plt.Circle((sp_x(p_out_x), sp_y(p_out_yd)), PP_PORT_R / SC_B,
+    ax3.add_patch(plt.Circle((sp_x(p_out_x), sp_y(p_out_yd)), PP_PORT_R,
                   fc="white", ec=pcolor, lw=0.8, alpha=GHOST_ALPHA, zorder=3))
 
 # Draw solid pumps on top
 for pcx, pyd, plabel, pcolor, psub in pumps_solid:
     ax3.add_patch(plt.Rectangle(
         (sp_x(pcx - PP_W / 2), sp_y(pyd + PP_D)),
-        PP_W / SC_B, PP_D / SC_B,
+        PP_W, PP_D,
         fc=pcolor, ec=C_FRAME, lw=1.2, alpha=0.8, zorder=5))
     ax3.text(sp_x(pcx), sp_y(pyd + PP_D / 2),
              plabel, ha="center", va="center",
@@ -1127,9 +1106,9 @@ for pcx, pyd, plabel, pcolor, psub in pumps_solid:
     # Port indicators — circles at body edges (ports within 127mm envelope)
     p_in_x, p_in_yd, p_out_x, p_out_yd = _plan_pump_ports(pcx, pyd)
     ax3.add_patch(plt.Circle((sp_x(p_in_x), sp_y(p_in_yd)),
-                  PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
+                  PP_PORT_R, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
     ax3.add_patch(plt.Circle((sp_x(p_out_x), sp_y(p_out_yd)),
-                  PP_PORT_R / SC_B, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
+                  PP_PORT_R, fc="#CCCCCC", ec=C_FRAME, lw=0.8, zorder=6))
     # Port labels
     ax3.text(sp_x(p_in_x + 15), sp_y(p_in_yd), "IN", ha="left", va="center",
              fontsize=4.0, fontweight="bold", color=C_FRAME, zorder=8)
@@ -1141,7 +1120,7 @@ ACC_PLAN_R = 57   # tank half-depth in plan (~114mm H from spec)
 acc_plan_cx = FRAME_R + 60             # to the right of the frame
 acc_plan_cy = PUMP_YD_START + PP_D / 2  # at pump center depth
 ax3.add_patch(plt.Circle((sp_x(acc_plan_cx), sp_y(acc_plan_cy)),
-              ACC_PLAN_R / SC_B, fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
+              ACC_PLAN_R, fc=C_ACC, ec=C_FRAME, lw=1.5, alpha=0.8, zorder=5))
 ax3.text(sp_x(acc_plan_cx), sp_y(acc_plan_cy), "ACC-01",
          ha="center", va="center", fontsize=4.5, fontweight="bold",
          color="white", zorder=6)
@@ -1330,9 +1309,9 @@ draw_pipe_path_plan(ax3,
     OD_H, WALL_H, fc=C_BROWN, zorder=4)
 # Riser symbol: concentric circles (pipe cross-section going up in Z)
 ax3.add_patch(plt.Circle((sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD)),
-              OD_H / 2 / SC_B, fc=C_BROWN, ec=C_FRAME, lw=1.5, zorder=9))
+              OD_H / 2, fc=C_BROWN, ec=C_FRAME, lw=1.5, zorder=9))
 ax3.add_patch(plt.Circle((sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD)),
-              (OD_H / 2 - WALL_H) / SC_B, fc="white", ec=C_FRAME, lw=0.8, zorder=9.5))
+              (OD_H / 2 - WALL_H), fc="white", ec=C_FRAME, lw=0.8, zorder=9.5))
 ax3.plot(sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD), '+',
          color=C_FRAME, markersize=6, mew=1.2, zorder=10)
 ax3.text(sp_x(p02_plan_out_x), sp_y(RISER_PLAN_YD - 45),
@@ -1404,11 +1383,11 @@ ax3.text(sp_x(dv02_plan_x), sp_y(dv02_plan_yd - 20), "DV-02",
 # ── Dimensions ──────────────────────────────────────────────────────────────
 # Frame width
 draw_dim_h(ax3, sp_x(FRAME_X), sp_x(FRAME_X + FRAME_W), sp_y(-40),
-           f"{FRAME_W}mm", offset=0.25, fs=5)
+           f"{FRAME_W}mm", offset=1.375, fs=5)
 
 # Frame depth from panel
 draw_dim_v(ax3, sp_x(FRAME_X - 30), sp_y(MANIFOLD_DEPTH), sp_y(0),
-           f"{MANIFOLD_DEPTH}mm\nDEPTH", offset=0.25, fs=4.5)
+           f"{MANIFOLD_DEPTH}mm\nDEPTH", offset=1.375, fs=4.5)
 
 
 # ── Title block (full-width axes spanning all columns) ───────────────────────
@@ -1419,7 +1398,7 @@ ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="PUMP MANIFOLD — PLUMBING ELEVATION",
             subtitle=f"VIEW FROM IBC CORRIDOR LOOKING AT EQUIPMENT PANEL (Yd={CORRIDOR_YD_NEAR})",
-            scale_note="ELEV 1:5  |  DETAIL A ~1:4.5  |  DETAIL B (PLAN) ~1:5.5  |  ALL DIMS IN mm",
+            scale_note="AXES IN mm",
             doc_id="TBS-001 · Water System — Pump Manifold Detail",
             height=0.75)
 

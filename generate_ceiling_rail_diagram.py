@@ -371,7 +371,7 @@ def sheet1():
 # SHEET 2 — Rail/Carriage Detail View
 #
 # Close-up of the HGR20/HGH20CA interface, suspension bracket, and panel top.
-# Scale approximately 2:1 for clarity.
+# Axes in mm.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
     import matplotlib.patches as mpatches
@@ -386,9 +386,6 @@ def sheet2():
     BRACKET_W  = 60     # bracket width
     PANEL_TOP_T = PANEL_CENTER_T  # = 120mm
 
-    # ── Scale 2:1 — drawing units are mm×2 ──────────────────────────────────
-    S = 2.0  # scale factor
-
     # Layout: ceiling at top, panel at bottom
     # Show from ceiling surface down through rail, carriage, bracket, panel top
     CEIL_Z = 0  # ceiling surface reference (top of drawing)
@@ -401,11 +398,11 @@ def sheet2():
     W_RANGE = 200  # mm real, centered on 0
     H_RANGE = 250  # mm real, from ceiling down
 
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
-    ax.set_xlim(-W_RANGE * S * 1.6, W_RANGE * S / 2)
-    ax.set_ylim(-H_RANGE * S - sy(30), 20 * S)
+    ax.set_xlim(-W_RANGE * 1.6, W_RANGE / 2)
+    ax.set_ylim(-H_RANGE - 30, 20)
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -596,7 +593,7 @@ def sheet2():
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="CEILING RAIL SUSPENSION SYSTEM",
                 subtitle="DETAIL — RAIL / CARRIAGE / BRACKET ASSEMBLY",
-                scale_note="APPROX 2:1 · ALL DIMS IN mm · SECTION THROUGH Yd CENTER ZONE")
+                scale_note="AXES IN mm · SECTION THROUGH Yd CENTER ZONE")
 
     fig.savefig("diagrams/ceiling-rail-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/ceiling-rail-sheet2.png"), bbox_inches="tight", facecolor=BG)

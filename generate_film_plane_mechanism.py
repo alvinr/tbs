@@ -936,8 +936,7 @@ def sheet5():
     ax_a.set_facecolor(BG)
     ax_a.axis("off")
 
-    S = 1.8  # reduced scale to fit full vertical chain
-    def sa(mm): return mm * S
+    def sa(mm): return mm
 
     LEG = FP_ANGLE_LEG   # 50.8mm
     T   = FP_ANGLE_T     # 4.8mm
@@ -1181,7 +1180,7 @@ def sheet5():
               ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
     ax_a.text(sa(LEG / 2), sa(ceiling_top + 6),
-              "SCALE ≈ 1.8:1 · CROSS-SECTION SHOWING FULL SUSPENSION CHAIN",
+              "AXES IN mm · CROSS-SECTION SHOWING FULL SUSPENSION CHAIN",
               ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # ── PANEL B: Open vs closed positions (top-right) ────────────────────────
@@ -1189,8 +1188,7 @@ def sheet5():
     ax_b.set_facecolor(BG)
     ax_b.axis("off")
 
-    SB = 2.5
-    def sb(mm): return mm * SB
+    def sb(mm): return mm
 
     ax_b.set_xlim(sb(-40), sb(LEG + 120))
     ax_b.set_ylim(sb(-100), sb(LEG + CLAMP_LEVER_L + 10))
@@ -1288,7 +1286,7 @@ def sheet5():
               ha="center", va="bottom", fontsize=8, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
     ax_b.text(sb(LEG / 2), sb(LEG + CLAMP_LEVER_L - 13),
-              f"SCALE ≈ 2.5:1 · TORSION SPRING BIASES CLOSED",
+              f"AXES IN mm · TORSION SPRING BIASES CLOSED",
               ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
 
     # ── PANEL C: Plan view — clamp attachment to frame edge (bottom-left) ─────
@@ -1296,8 +1294,7 @@ def sheet5():
     ax_c.set_facecolor(BG)
     ax_c.axis("off")
 
-    SP = 2.8  # scale factor for panel C
-    def sp(mm): return mm * SP
+    def sp(mm): return mm
 
     # Plan view: looking down (Z-axis). X = along frame edge, Y = across frame.
     # Frame angle in plan: pinhole-facing leg runs along X,
@@ -1386,7 +1383,7 @@ def sheet5():
               ha="center", va="bottom", fontsize=8, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
     ax_c.text(sp(frame_len / 2), sp(LEG + 35),
-              f"SCALE ≈ 2.8:1 · LOOKING DOWN (Z-AXIS) AT FRAME EDGE",
+              f"AXES IN mm · LOOKING DOWN (Z-AXIS) AT FRAME EDGE",
               ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
 
     # ── PANEL D: Elevation — 3 clamps at 150mm spacing (bottom-right) ────────
@@ -1394,8 +1391,7 @@ def sheet5():
     ax_d.set_facecolor(BG)
     ax_d.axis("off")
 
-    SC = 1.0
-    def sc(mm): return mm * SC
+    def sc(mm): return mm
 
     span = CLAMP_SPACING * 3  # show 3 spacings = 450mm
     ax_d.set_xlim(sc(-50), sc(span + 60))
@@ -1454,7 +1450,7 @@ def sheet5():
               ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
     ax_d.text(sc(span / 2), sc(T + CLAMP_JAW_H + 22),
-              f"SCALE ≈ 1:1 · {CLAMP_N_TOTAL} CLAMPS TOTAL",
+              f"AXES IN mm · {CLAMP_N_TOTAL} CLAMPS TOTAL",
               ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # Notes — placed in panel B (top-right), below diagram content

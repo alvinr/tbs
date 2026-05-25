@@ -293,19 +293,19 @@ def sheet1():
     DIM_BOT  = -350
     DIM_LEFT = -450
 
-    draw_dim_h(ax, 0, C_LEN, DIM_TOP, f"Container interior  {C_LEN}mm",
-               offset=107, fs=FS_SM)
-    draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP+220,
+    draw_dim_h(ax, 0, C_LEN, DIM_TOP - 150, f"Container interior  {C_LEN}mm",
+               offset=80, fs=FS_SM)
+    draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP,
                f"Optical zone (film plane rail span)  {ZONE_R_START-ZONE_L_END}mm",
-               offset=107, fs=FS_SM, color=C_CL)
-    draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT,
+               offset=80, fs=FS_SM, color=C_CL)
+    draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT+100,
                f"Left zone\n{ZONE_L_END}mm", offset=80, fs=FS_SM, color="#805000")
-    draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT,
+    draw_dim_h(ax, ZONE_R_START, C_LEN, DIM_BOT+100,
                f"Right zone\n{C_LEN-ZONE_R_START}mm", offset=80, fs=FS_SM, color="#004080")
     draw_dim_h(ax, 0, PH_X, DIM_BOT-220,
                f"Pinhole X={PH_X}mm", offset=80, fs=FS_SM)
-    draw_dim_v(ax, C_LEN+400, 0, C_HGT, f"H={C_HGT}mm", offset=107, fs=FS_SM)
-    draw_dim_v(ax, C_LEN+700, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm", offset=80, fs=FS_SM)
+    draw_dim_v(ax, C_LEN+200, 0, C_HGT, f"H={C_HGT}mm", offset=80, fs=FS_SM)
+    draw_dim_v(ax, C_LEN+400, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm", offset=80, fs=FS_SM)
     draw_dim_v(ax, DIM_LEFT, 0, PH_H, f"PH H={PH_H}mm", offset=80, fs=FS_SM)
 
     # ── Reference table ───────────────────────────────────────────────────────
@@ -488,7 +488,7 @@ def sheet2():
                  linestyle="--", zorder=5))
     ax.text(FAN_B_YD, FAN_B_H, "B", ha="center", va="center",
             fontsize=FS_SM-1, color=C_DIM, fontweight="bold", zorder=6)
-    ax.text(FAN_B_YD + FAN_R2 + 130, FAN_B_H,
+    ax.text(FAN_B_YD - FAN_R2 - 180, FAN_B_H,
             f"FAN B\nEXHAUST\n(HIGH H={FAN_B_H}mm)\nYd={FAN_B_YD}mm",
             ha="left", va="center", fontsize=FS_SM-1.5, color=C_DIM, zorder=6)
 
@@ -497,18 +497,18 @@ def sheet2():
     DIM_LEFT = -330
     DIM_R    = C_WID + 330
 
-    draw_dim_h(ax, 0, C_WID, DIM_TOP, f"Panel / container width  {C_WID}mm",
-               offset=107, fs=FS_SM)
-    draw_dim_h(ax, DRUM_LEFT, DRUM_RIGHT, -200,
-               f"Drum O{DRUM_D}mm", offset=80, fs=FS_SM)
-    draw_dim_h(ax, 0, DRUM_CY, DIM_TOP-250,
-               f"Drum centre  {DRUM_CY}mm (= CW/2)", offset=80, fs=FS_SM)
+    draw_dim_h(ax, 0, C_WID, DIM_TOP - 150, f"Panel / container width  {C_WID}mm",
+               offset=50, fs=FS_SM)
+    draw_dim_h(ax, DRUM_LEFT, DRUM_RIGHT, -150,
+               f"Drum O{DRUM_D}mm", offset=50, fs=FS_SM, above=False)
+    draw_dim_h(ax, 0, DRUM_CY, DIM_TOP-225,
+               f"Drum centre  {DRUM_CY}mm (= CW/2)", offset=50, fs=FS_SM)
 
-    draw_dim_v(ax, DIM_R, 0, C_HGT, f"H={C_HGT}mm", offset=107, fs=FS_SM)
-    draw_dim_v(ax, DIM_R+300, RAIL_OFF, RAIL_OFF+DRUM_H_ELV,
-               f"Drum H  {DRUM_H_ELV}mm", offset=80, fs=FS_SM)
-    draw_dim_v(ax, DIM_LEFT, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm",
-               offset=80, fs=FS_SM)
+    draw_dim_v(ax, DIM_R - 150, 0, C_HGT, f"H={C_HGT}mm", offset=50, fs=FS_SM)
+    draw_dim_v(ax, DIM_R - 50, RAIL_OFF, RAIL_OFF+DRUM_H_ELV,
+               f"Drum H  {DRUM_H_ELV}mm", offset=50, fs=FS_SM)
+    draw_dim_v(ax, DIM_LEFT+200, 0, RAIL_OFF, f"Rail offset\n{RAIL_OFF}mm",
+               offset=50, fs=FS_SM)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 2",

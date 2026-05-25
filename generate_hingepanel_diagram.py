@@ -1433,11 +1433,11 @@ def sheet4():
         "5. Panel locks: 2× Destaco 207-U toggle clamps per position.",
         "6. See ceiling-rail-sheet1/2 for rail suspension detail.",
     ]
-    notes_x = YD_LO + 30
-    notes_y_top = X_LO + 122 + (len(notes) - 1) * 26
+    notes_x = YD_LO + 50
+    notes_y_top = X_LO + 150 + (len(notes) - 1) * 26
     draw_notes(ax, notes, notes_x, notes_y_top, spacing=33,
                fs=7, title_fs=7, color=C_DIM, title_color=C_DIM,
-               width=1270, font=FONT)
+               width=1070, font=FONT)
 
     # ── Legend (right side, stacked vertically) ─────────────────────────────
     legend_top = X_LO + 122 + len(notes) * 26 + 10 + 4 * 30 + 50

@@ -96,7 +96,7 @@ title_block(ax1, "SHEET 1 OF 2",
             drawing_title="OPTICAL PLATE SYSTEM",
             subtitle="Part front views — Al 6061-T6 / S275 steel",
             scale_note="1:8 (as noted)",
-            doc_id="TBS-001 · Interchangeable Plates")
+            doc_id="TBS-001 · Interchangeable Plates", height=0.04)
 
 # Parts list
 ax1.text(10, 68, 'ITEM', fontsize=6, fontweight='bold', color='black')
@@ -126,7 +126,7 @@ parts = [
      'Ø420mm loop in 3×3 groove on wall frame face'),
 ]
 for i, (it, desc, mat, qty, note) in enumerate(parts):
-    yp = 58 - i * 4.8
+    yp = 58 - i * 4
     bg = '#FFFFFF' if i % 2 == 0 else '#F8F8F8'
     draw_rect(ax1, 6, yp - 2, 468, 5.5, lw=0, fc=bg, zorder=1)
     ax1.text(10, yp + 0.5, it, fontsize=5.5, color='black', fontweight='bold')

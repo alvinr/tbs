@@ -337,7 +337,7 @@ def sheet1():
         f"5. Panel slide travel = {PANEL_SLIDE}mm on 2× HGR20 rails (ceiling-mounted, near/far walls).",
         f"6. Left walkway (deck at {WALKWAY_H}mm) must be lifted out before panel slides to transport.",
     ]
-    draw_notes(ax, notes, X_LO + 30, Z_LO + 30 + (len(notes) - 1) * 22,
+    draw_notes(ax, notes, X_LO + 30, Z_LO + 300 + (len(notes) - 1) * 22,
                spacing=28, fs=7, title_fs=7, color=C_DIM,
                title_color=C_DIM, font=FONT,
                width=(X_HI - X_LO) * 0.95)

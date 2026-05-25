@@ -79,41 +79,52 @@ C_TRUNKING = "#808080" # cable trunking
 C_DUCT = "#3DAA96"    # evap duct penetration (reuse evap color)
 
 # ── Scale and layout ────────────────────────────────────────────────────────
-# S maps mm → figure inches.  Container 5893×2388 must fit comfortably.
-# Available drawing area ≈ 22" wide × 8" tall (in a 26×12" figure).
-S = 0.00335   # mm → inches  (≈1:7.6 at screen DPI, ≈1:20 at 300dpi print)
-FW = 26.0
-FH = 12.0                       # elevation panel height (inches)
-FH_PLAN = 5.0                   # plan view panel height (inches)
-FH_TOTAL = FH + FH_PLAN         # total figure height
-OX = 2.5    # drawing origin X offset (inches)
-OZ = 2.5    # drawing origin Z offset (inches) — room for notes below
+# All coordinates in mm.  Axis inversion handles the interior-view mirror
+# (high X / IBC end on LEFT, low X / cargo door on RIGHT).
+FIG_W = 26.0                     # figure width (inches)
+FIG_H_ELEV = 12.0                # elevation panel height (inches)
+FIG_H_PLAN = 5.0                 # plan view panel height (inches)
+FIG_H_TOTAL = FIG_H_ELEV + FIG_H_PLAN
+
+PAD_X_IBC = 750                  # margin past IBC end (left in display)
+PAD_X_CARGO = 1120               # margin past cargo door (right in display)
+PAD_Z_BOT = 750                  # below floor (notes + dims)
+PAD_Z_TOP = 450                  # above ceiling (annotations)
+
+X_LO = -PAD_X_CARGO              # -1120
+X_HI = C_LEN + PAD_X_IBC         # 6643
+Z_LO = -PAD_Z_BOT                # -750
+Z_HI = C_HGT + PAD_Z_TOP         # 2838
+
+YD_EXAG = 1.5                    # plan view Yd exaggeration factor
+PLAN_Y_LO = -240                 # plan Y range (plan_sy units)
+PLAN_Y_HI = 1260
 
 def sx(x_mm):
-    """Convert X position (mm) to drawing x coordinate.
-    Mirrored: viewing from inside container toward pinhole wall,
-    high X (IBC end) is on the LEFT, low X (cargo door) on the RIGHT."""
-    return OX + (C_LEN - x_mm) * S
+    """X position in mm — axis inversion handles interior-view mirror."""
+    return x_mm
 
 def sz(z_mm):
-    """Convert Z position (mm) to drawing y coordinate."""
-    return OZ + z_mm * S
+    """Z position in mm AFF."""
+    return z_mm
 
 # ── Figure setup ────────────────────────────────────────────────────────────
-PLAN_FRAC = FH_PLAN / FH_TOTAL
-ELEV_FRAC = FH / FH_TOTAL
+PLAN_FRAC = FIG_H_PLAN / FIG_H_TOTAL
+ELEV_FRAC = FIG_H_ELEV / FIG_H_TOTAL
 
-fig = plt.figure(figsize=(FW, FH_TOTAL), dpi=150)
+fig = plt.figure(figsize=(FIG_W, FIG_H_TOTAL), dpi=150)
 
 ax = fig.add_axes([0, PLAN_FRAC, 1, ELEV_FRAC])
-ax.set_xlim(0, FW)
-ax.set_ylim(0, FH)
+ax.set_xlim(X_LO, X_HI)
+ax.set_ylim(Z_LO, Z_HI)
+ax.invert_xaxis()
 ax.set_aspect("equal")
 ax.axis("off")
 
 ax2 = fig.add_axes([0, 0, 1, PLAN_FRAC])
-ax2.set_xlim(0, FW)
-ax2.set_ylim(0, FH_PLAN)
+ax2.set_xlim(X_LO, X_HI)
+ax2.set_ylim(PLAN_Y_LO, PLAN_Y_HI)
+ax2.invert_xaxis()
 ax2.set_aspect("equal")
 ax2.axis("off")
 
@@ -124,15 +135,11 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
                 ec=C_OUT, lw=1.0, zorder=5, ls="-", alpha=0.85,
                 label_fs=5.5, label_color=C_OUT):
     """Draw a filled rectangle with centered label."""
-    # sx() is mirrored, so sx(x_mm + w_mm) < sx(x_mm) — use the left corner
-    x_draw = sx(x_mm + w_mm)
-    w_draw = sx(x_mm) - sx(x_mm + w_mm)  # positive width in drawing space
     rect = mpatches.FancyBboxPatch(
-        (x_draw, sz(z_mm)), w_draw, h_mm * S,
+        (sx(x_mm), sz(z_mm)), w_mm, h_mm,
         boxstyle="square,pad=0", facecolor=fc, edgecolor=ec,
         linewidth=lw, linestyle=ls, alpha=alpha, zorder=zorder)
     ax.add_patch(rect)
-    # Centered label
     cx = sx(x_mm + w_mm / 2)
     cz = sz(z_mm + h_mm / 2)
     ax.text(cx, cz, label, ha="center", va="center",
@@ -246,22 +253,19 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
 # ═══════════════════════════════════════════════════════════════════════════
 # 1. CONTAINER OUTLINE
 # ═══════════════════════════════════════════════════════════════════════════
-# Outer rectangle — sx() is mirrored, so sx(C_LEN) < sx(0)
-wall_left = sx(C_LEN)   # left edge of container in drawing space
-wall_right = sx(0)       # right edge
-wall_w = wall_right - wall_left
+# Outer rectangle
 ax.add_patch(mpatches.Rectangle(
-    (wall_left, sz(0)), wall_w, C_HGT * S,
+    (0, 0), C_LEN, C_HGT,
     facecolor="white", edgecolor=C_OUT, linewidth=2.0, zorder=1))
 
 # Floor line (thicker)
-ax.plot([wall_left, wall_right], [sz(0), sz(0)], color=C_OUT, lw=2.5, zorder=2)
+ax.plot([0, C_LEN], [0, 0], color=C_OUT, lw=2.5, zorder=2)
 # Ceiling line
-ax.plot([wall_left, wall_right], [sz(C_HGT), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
-# Left wall line
-ax.plot([wall_left, wall_left], [sz(0), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
-# Right wall line
-ax.plot([wall_right, wall_right], [sz(0), sz(C_HGT)], color=C_OUT, lw=2.0, zorder=2)
+ax.plot([0, C_LEN], [C_HGT, C_HGT], color=C_OUT, lw=2.0, zorder=2)
+# Cargo door wall (X=0, right in display)
+ax.plot([0, 0], [0, C_HGT], color=C_OUT, lw=2.0, zorder=2)
+# IBC end wall (X=C_LEN, left in display)
+ax.plot([C_LEN, C_LEN], [0, C_HGT], color=C_OUT, lw=2.0, zorder=2)
 
 # ── Corrugation ribs (faint vertical dashed lines) ─────────────────────────
 rib_x = CONTAINER_RIB_SPACING
@@ -292,7 +296,7 @@ conduit_drops = [
     (PS_X_D,               PS_Z + 15),                # pull-cord switch D
     (PS_X_G,               PS_Z + 15),                # pull-cord switch G
 ]
-conduit_w = CONDUIT_OD * S   # drawing width of conduit
+conduit_w = CONDUIT_OD       # conduit width in mm
 for cx_mm, ztop_mm in conduit_drops:
     # Filled rectangle representing the conduit cross-section at true scale
     cx_draw = sx(cx_mm)
@@ -432,7 +436,7 @@ ax.text(sx(ZONE_R_START + (C_LEN - ZONE_R_START) / 2), sz(C_HGT * 0.8),
 
 # ── Evaporative cooler duct penetration (rev 7: cooler now external) ────────
 duct_r = EVAP_DUCT_D / 2
-ax.add_patch(plt.Circle((sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z)), duct_r * S,
+ax.add_patch(plt.Circle((sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z)), duct_r,
              fill=True, facecolor=C_DUCT, edgecolor=C_OUT,
              linewidth=1.2, zorder=8, alpha=0.6))
 ax.text(sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z), f"DUCT\nØ{EVAP_DUCT_D}",
@@ -457,9 +461,9 @@ equip_block(BA_X, BA_H_LO, BA_W, BA_H_HI - BA_H_LO,
 
 # ── Pinhole aperture ──────────────────────────────────────────────────────
 ph_r = 15  # drawing radius (exaggerated for visibility)
-draw_cl(ax, sx(PH_X), sz(PH_H), ph_r * S,
+draw_cl(ax, sx(PH_X), sz(PH_H), ph_r,
         horiz=True, vert=True, color=C_CL, lw=0.6, ext_factor=3.0)
-ax.add_patch(plt.Circle((sx(PH_X), sz(PH_H)), ph_r * S,
+ax.add_patch(plt.Circle((sx(PH_X), sz(PH_H)), ph_r,
              fill=True, facecolor=C_PINHOLE_EQ, edgecolor=C_OUT,
              linewidth=1.2, zorder=8))
 ax.text(sx(PH_X), sz(PH_H - 80), "PINHOLE\nØ2.17mm",
@@ -514,7 +518,7 @@ draw_pipe_path(ax,
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
 
 # BV-02 valve symbol (filled circle)
-ax.add_patch(plt.Circle((sx(BV02_X), sz(BV02_Z)), BV02_R * S,
+ax.add_patch(plt.Circle((sx(BV02_X), sz(BV02_Z)), BV02_R,
              fc=C_BLUE, ec=C_BLUE_EC, lw=1.5, zorder=12))
 ax.text(sx(BV02_X), sz(BV02_Z), "BV\n02",
         ha="center", va="center", fontsize=4, fontweight="bold",
@@ -557,7 +561,7 @@ draw_pipe_path(ax,
     TAP_OD, TAP_WALL, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=7)
 
 # BV-06 valve symbol (filled circle with label)
-ax.add_patch(plt.Circle((sx(BV06_X), sz(TAP_BRANCH_Z)), BV06_R * S,
+ax.add_patch(plt.Circle((sx(BV06_X), sz(TAP_BRANCH_Z)), BV06_R,
              fill=True, facecolor="white", edgecolor=C_OUT,
              linewidth=0.8, zorder=9))
 ax.text(sx(BV06_X), sz(TAP_BRANCH_Z), "BV\n06",
@@ -598,49 +602,48 @@ ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T + 60),
 # 5. DIMENSION LINES — key clearances and positions
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Right-side vertical dims (cargo door end = X=0 = right side after mirror)
-rx0 = sx(0) + 0.15        # first dim line
-rx1 = rx0 + 0.5           # second
+# Right-side vertical dims (cargo door end = X=0, right in display)
+# With inverted axis, lower X = further right in display
+rx0 = -45        # first dim line, 45mm right of cargo door wall
+rx1 = rx0 - 150  # second, 150mm further right
 
 # Full container height
 draw_dim_v(ax, rx0, sz(0), sz(C_HGT),
-           f"{C_HGT}mm", offset=0.2, fs=5, right=True)
+           f"{C_HGT}mm", offset=60, fs=5, right=False)
 
 # Walkway deck height
 draw_dim_v(ax, rx1, sz(0), sz(WALKWAY_H),
-           f"{WALKWAY_H}mm", offset=0.2, fs=5, right=True)
+           f"{WALKWAY_H}mm", offset=60, fs=5, right=False)
 
 # Electrical panel Z range
 draw_dim_v(ax, rx1, sz(EP_H_LO), sz(EP_H_HI),
-           f"{EP_H_HI - EP_H_LO}mm", offset=0.2, fs=5, right=True)
+           f"{EP_H_HI - EP_H_LO}mm", offset=60, fs=5, right=False)
 
-# Left-side vertical dims (IBC end = X=C_LEN = left side after mirror)
-lx0 = sx(C_LEN) - 0.15
-lx1 = lx0 - 0.5
+# Left-side vertical dims (IBC end = X=C_LEN, left in display)
+# With inverted axis, higher X = further left in display
+lx0 = C_LEN + 45
 
 # Pinhole height
 draw_dim_v(ax, lx0, sz(0), sz(PH_H),
-           f"{PH_H}mm", offset=0.2, fs=5)
+           f"{PH_H}mm", offset=60, fs=5, right=True)
 
 # ── Horizontal dims below floor ─────────────────────────────────────────────
-# Row 1: equipment widths
-row1_z = sz(0) - 0.20
-row2_z = row1_z - 0.25
+row1_z = -60     # first dim row, 60mm below floor
+row2_z = -135    # second dim row
 
-# Key gap dimensions
 ba_r = BA_X + BA_W
 
 # Duct → EP gap
 draw_dim_h(ax, sx(EVAP_DUCT_X), sx(EP_X), row1_z,
-           f"{EP_X - EVAP_DUCT_X}mm", offset=0.15, fs=4.5, above=False)
+           f"{EP_X - EVAP_DUCT_X}mm", offset=45, fs=4.5, above=False)
 
 # BAT right → Pinhole
 draw_dim_h(ax, sx(ba_r), sx(PH_X), row1_z,
-           f"{PH_X - ba_r}mm", offset=0.15, fs=4.5, above=False)
+           f"{PH_X - ba_r}mm", offset=45, fs=4.5, above=False)
 
 # Full container length (below all)
 draw_dim_h(ax, sx(0), sx(C_LEN), row2_z,
-           f"{C_LEN}mm", offset=0.15, fs=5, above=False)
+           f"{C_LEN}mm", offset=45, fs=5, above=False)
 
 # ── Clearance leaders ──────────────────────────────────────────────────────
 ep_clr = C_HGT - EP_H_HI
@@ -651,7 +654,7 @@ leader(ax, sx(EP_X + EP_W / 2), sz(EP_H_HI),
 # ═══════════════════════════════════════════════════════════════════════════
 # 6. X-POSITION ANNOTATIONS (absolute positions along top)
 # ═══════════════════════════════════════════════════════════════════════════
-ann_y = sz(C_HGT) + 0.15
+ann_y = C_HGT + 45
 items = [
     (EVAP_DUCT_X, f"DUCT\nX={EVAP_DUCT_X}"),
     (EP_X, f"EP\nX={EP_X}"),
@@ -660,9 +663,9 @@ items = [
     (TAP_X, f"TAP\nX={TAP_X}"),
 ]
 for ix_mm, ilabel in items:
-    ax.plot([sx(ix_mm), sx(ix_mm)], [sz(C_HGT), ann_y],
+    ax.plot([sx(ix_mm), sx(ix_mm)], [C_HGT, ann_y],
             color=C_DIM, lw=0.3, ls=":", zorder=1)
-    ax.text(sx(ix_mm), ann_y + 0.05, ilabel, ha="center", va="bottom",
+    ax.text(sx(ix_mm), ann_y + 15, ilabel, ha="center", va="bottom",
             fontsize=4, color=C_DIM, zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -684,8 +687,8 @@ notes = [
     "8. EP raised to Z=1600–2200 (was 900–1500) to clear widened walkway at 500mm.",
     "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
 ]
-draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.15,
-           fs=7, width=5.5, color=C_DIM, title_color=C_DIM, font=FONT)
+draw_notes(ax, notes, C_LEN - 70, 1580, spacing=45,
+           fs=7, width=1640, color=C_DIM, title_color=C_DIM, font=FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 8. PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS
@@ -698,23 +701,18 @@ draw_notes(ax, notes, 0.105 * FW, 0.65 * FH, spacing=0.15,
 EP_DEPTH_YD     = 160    # electrical panel box depth (mm)
 BA_DEPTH_YD     = BA_D   # battery bank: slim-profile (120mm)
 
-PLAN_S_YD = S * 1.5             # Yd scale ~1.5x elevation X scale
-PLAN_OYD  = 0.8                 # Y offset in ax2 data coords
-
 def plan_sy(yd_mm):
-    """Convert Yd (mm from wall) to plan view y coordinate on ax2."""
-    return PLAN_OYD + yd_mm * PLAN_S_YD
+    """Convert Yd (mm from wall) to plan view y coordinate (1.5× exag.)."""
+    return yd_mm * YD_EXAG
 
 def plan_block(xl, xr, yd_near, yd_far, label, fc, *,
                ec=C_OUT, lw=1.0, ls="-", alpha=0.75,
                label_fs=4.5, label_color=C_OUT, zorder=5):
     """Draw a component footprint rectangle on the plan view (ax2)."""
-    x_draw = sx(xr)
-    w_draw = sx(xl) - sx(xr)
     y_draw = plan_sy(yd_near)
     h_draw = plan_sy(yd_far) - plan_sy(yd_near)
     ax2.add_patch(mpatches.FancyBboxPatch(
-        (x_draw, y_draw), w_draw, h_draw,
+        (xl, y_draw), xr - xl, h_draw,
         boxstyle="square,pad=0", fc=fc, ec=ec,
         lw=lw, ls=ls, alpha=alpha, zorder=zorder))
     if label:
@@ -725,30 +723,28 @@ def plan_block(xl, xr, yd_near, yd_far, label, fc, *,
                 zorder=zorder + 1, **FONT)
 
 # ── Container wall line (Yd=0) ──────────────────────────────────────────────
-ax2.plot([sx(0), sx(C_LEN)], [plan_sy(0), plan_sy(0)],
+ax2.plot([0, C_LEN], [plan_sy(0), plan_sy(0)],
         color=C_OUT, lw=2.5, zorder=2)
-ax2.text(sx(C_LEN / 2), plan_sy(0) - 0.12,
+ax2.text(C_LEN / 2, plan_sy(0) - 36,
         "PINHOLE WALL (Yd = 0)", ha="center", va="top",
         fontsize=5, color=C_OUT, fontweight="bold", zorder=10, **FONT)
 
 # ── Walkway grating zone (X=470-4629, Yd=0-300mm) ──────────────────────────
-wk_x_draw = sx(WK_X_R)
-wk_w_draw = sx(WK_X_L) - sx(WK_X_R)
 ax2.add_patch(mpatches.FancyBboxPatch(
-    (wk_x_draw, plan_sy(0)), wk_w_draw, plan_sy(WALKWAY_W) - plan_sy(0),
+    (WK_X_L, plan_sy(0)), WK_X_R - WK_X_L, plan_sy(WALKWAY_W) - plan_sy(0),
     boxstyle="square,pad=0", fc="#F0F0F0", ec="none", alpha=0.5, zorder=1))
 for hx in range(int(WK_X_L), int(WK_X_R), 200):
-    ax2.plot([sx(hx), sx(hx + 100)],
+    ax2.plot([hx, hx + 100],
             [plan_sy(0), plan_sy(WALKWAY_W)],
             color="#D8D8D8", lw=0.2, zorder=1)
-ax2.text(sx(500), plan_sy(WALKWAY_W / 2),
+ax2.text(500, plan_sy(WALKWAY_W / 2),
         "NEAR WALKWAY\n(300mm)", ha="center", va="center",
         fontsize=5, color="#BBBBBB", style="italic", zorder=2, **FONT)
 
 # ── Walkway outer edge (Yd=300mm) ──────────────────────────────────────────
-ax2.plot([sx(0), sx(C_LEN)], [plan_sy(WALKWAY_W), plan_sy(WALKWAY_W)],
+ax2.plot([0, C_LEN], [plan_sy(WALKWAY_W), plan_sy(WALKWAY_W)],
         color=C_OUT, lw=1.0, ls="--", zorder=2)
-ax2.text(sx(50), plan_sy(WALKWAY_W) + 0.06,
+ax2.text(50, plan_sy(WALKWAY_W) + 18,
         "WALKWAY OUTER EDGE (Yd = 300)", ha="left", va="bottom",
         fontsize=4.5, color=C_DIM, zorder=10, **FONT)
 
@@ -801,22 +797,21 @@ for k, (name, xl, xr, yn, yf, color, zr) in enumerate(plan_comps):
             fontsize=4, color="#666", zorder=6, **FONT)
 
 # ── Processing tray near rim (context) ──────────────────────────────────────
-ax2.plot([sx(PROC_TRAY_X_L), sx(PROC_TRAY_X_R)],
+ax2.plot([PROC_TRAY_X_L, PROC_TRAY_X_R],
         [plan_sy(PROC_TRAY_YD_NEAR), plan_sy(PROC_TRAY_YD_NEAR)],
         color=C_TRAY_EC, lw=0.8, ls=":", zorder=4)
-ax2.text(sx(PROC_TRAY_X_R - 150), plan_sy(PROC_TRAY_YD_NEAR) + 0.04,
+ax2.text(PROC_TRAY_X_R - 150, plan_sy(PROC_TRAY_YD_NEAR) + 12,
         "PROC TRAY NEAR RIM (Yd = 80)", ha="right", va="bottom",
         fontsize=4.0, color=C_TRAY_EC, zorder=10, **FONT)
 
 # ── Widened walkway section (EP/BAT zone, 500mm) ───────────────────────────
-ww_x_draw = sx(WALKWAY_NEAR_WIDE_X_R)
-ww_w_draw = sx(WALKWAY_NEAR_WIDE_X_L) - sx(WALKWAY_NEAR_WIDE_X_R)
 ax2.add_patch(mpatches.FancyBboxPatch(
-    (ww_x_draw, plan_sy(WALKWAY_W)), ww_w_draw,
+    (WALKWAY_NEAR_WIDE_X_L, plan_sy(WALKWAY_W)),
+    WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L,
     plan_sy(WALKWAY_NEAR_WIDE_W) - plan_sy(WALKWAY_W),
     boxstyle="square,pad=0", fc="#E8FFE8", ec="#66AA66",
     lw=1.0, ls="--", alpha=0.4, zorder=2))
-ax2.text(sx((WALKWAY_NEAR_WIDE_X_L + WALKWAY_NEAR_WIDE_X_R) / 2),
+ax2.text((WALKWAY_NEAR_WIDE_X_L + WALKWAY_NEAR_WIDE_X_R) / 2,
         plan_sy((WALKWAY_W + WALKWAY_NEAR_WIDE_W) / 2),
         f"WIDENED TO {WALKWAY_NEAR_WIDE_W}mm", ha="center", va="center",
         fontsize=4, color="#448844", fontweight="bold", zorder=10, **FONT)
@@ -827,30 +822,30 @@ _dim_items = [
     (BA_X + BA_W * 0.75, BA_DEPTH_YD, f"{BA_DEPTH_YD}mm", C_BATT),
 ]
 for _dx_mm, _yd_max, _dlabel, _dcolor in _dim_items:
-    draw_dim_v(ax2, sx(_dx_mm), plan_sy(0), plan_sy(_yd_max),
-               _dlabel, offset=0.1, fs=4.5, color=_dcolor,
-               right=True, font=FONT)
+    draw_dim_v(ax2, _dx_mm, plan_sy(0), plan_sy(_yd_max),
+               _dlabel, offset=30, fs=4.5, color=_dcolor,
+               right=False, font=FONT)
 
-# ── Yd scale marks (right side) ─────────────────────────────────────────────
-_yd_scale_x = sx(0) + 0.2
+# ── Yd scale marks (right side = low X with inverted axis) ─────────────────
+_yd_scale_x = -60
 for _yd_val in range(0, 601, 100):
     _y = plan_sy(_yd_val)
-    ax2.plot([_yd_scale_x - 0.04, _yd_scale_x + 0.04], [_y, _y],
+    ax2.plot([_yd_scale_x - 12, _yd_scale_x + 12], [_y, _y],
             color=C_DIM, lw=0.4, zorder=10)
-    ax2.text(_yd_scale_x + 0.08, _y, f"{_yd_val}",
+    ax2.text(_yd_scale_x - 24, _y, f"{_yd_val}",
             ha="left", va="center", fontsize=4.0, color=C_DIM,
             zorder=10, **FONT)
-ax2.text(_yd_scale_x + 0.08, plan_sy(300) + 0.25,
+ax2.text(_yd_scale_x - 24, plan_sy(300) + 75,
         "Yd (mm)\n↑ INTO CONTAINER", ha="left", va="bottom",
         fontsize=4, color=C_DIM, fontweight="bold", zorder=10, **FONT)
 
 # ── Section title ───────────────────────────────────────────────────────────
-_plan_title_y = FH_PLAN - 0.45
-ax2.text(sx(C_LEN / 2), _plan_title_y,
+_plan_title_y = 1125
+ax2.text(C_LEN / 2, _plan_title_y,
         "PLAN VIEW — NEAR WALKWAY ACCESS ANALYSIS",
         ha="center", va="bottom", fontsize=9, color=C_OUT,
         fontweight="bold", zorder=10, **FONT)
-ax2.text(sx(C_LEN / 2), _plan_title_y - 0.12,
+ax2.text(C_LEN / 2, _plan_title_y - 36,
         "VIEW: LOOKING DOWN · Yd SCALE 1.5× EXAGGERATED"
         " · MAX-EGRESS SOLID, OTHERS GHOSTED",
         ha="center", va="top", fontsize=4.5, color=C_DIM,
@@ -865,7 +860,7 @@ title_block(ax2, "SHEET 1 OF 1",
             scale_note="ELEV ~1:20 · PLAN Yd 1.5× EXAG."
                        " · ALL DIMS IN mm",
             doc_id="TBS-001 · Pinhole Wall",
-            height=0.045 * FH / FH_PLAN)
+            height=0.045 * FIG_H_ELEV / FIG_H_PLAN)
 
 # ── Save ────────────────────────────────────────────────────────────────────
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)

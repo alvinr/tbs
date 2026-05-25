@@ -1468,9 +1468,9 @@ def sheet5():
     ]
     notes_x = sb(-LEG)
     notes_y_start = sb(-80)
-    draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(5.5),
-               fs=5.5, title_fs=6, color=DIM, title_color=ANNO, font=FONT,
-               width=sb(130))
+    draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(7),
+               fs=7, title_fs=7.5, color=DIM, title_color=ANNO, font=FONT,
+               width=sb(165))
 
     # ── Title block ───────────────────────────────────────────────────────────
     # Create a full-width axes at the bottom for the title block

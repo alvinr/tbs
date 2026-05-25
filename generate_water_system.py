@@ -1734,8 +1734,8 @@ notes4 = [
     "6. Hose runs along tray rim exterior, P-clipped to rim.",
     "7. Tray slope exaggerated for clarity in elevation panels.",
 ]
-draw_notes(ax4_notes, notes4, 42, 9, spacing=1.0,
-           fs=6.5, width=24, color=C_TEXT, title_color=C_TEXT,
+draw_notes(ax4_notes, notes4, 42, 9, spacing=1.1,
+           fs=7, width=26, color=C_TEXT, title_color=C_TEXT,
            font={"fontfamily": "monospace"})
 
 flow_notes = [
@@ -1747,8 +1747,8 @@ flow_notes = [
     "5. Default: lifts to IBC-3 (Brown, ~900mm head)",
     "6. Alt: divert to IBC-4 (Waste) when selected",
 ]
-draw_notes(ax4_notes, flow_notes, 70, 9, spacing=1.0,
-           fs=6.5, width=24, color=C_TEXT, title_color=C_TEXT,
+draw_notes(ax4_notes, flow_notes, 70, 9, spacing=1.1,
+           fs=7, width=26, color=C_TEXT, title_color=C_TEXT,
            font={"fontfamily": "monospace"})
 
 fig4.savefig("diagrams/water-system-sheet4.png", dpi=150, bbox_inches="tight",

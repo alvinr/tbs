@@ -912,8 +912,8 @@ def draw_sheet2():
         "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched "
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
-    draw_notes(ax, notes, KX * 0.73, 1.85, spacing=0.18,
-               fs=6.5, width=10.5, font={"fontfamily": "monospace"})
+    draw_notes(ax, notes, KX * 0.73, 1.85, spacing=0.20,
+               fs=7, width=11.5, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1332,8 +1332,8 @@ def draw_sheet3():
     ]
     key_bottom = KY - 0.25 - (len(key_items) - 1) * 0.55 - 0.30
     notes_y_top = key_bottom - 0.3
-    draw_notes(ax, notes, 0.2, KY + 0.3, spacing=0.20,
-               fs=6.5, width=8.0, font={"fontfamily": "monospace"})
+    draw_notes(ax, notes, 0.2, KY + 0.3, spacing=0.22,
+               fs=7, width=8.5, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

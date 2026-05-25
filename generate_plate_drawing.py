@@ -198,9 +198,9 @@ dim_y_top = cy1 + hw + 14
 dim_x_right = cx1 + hw + 18
 
 # Overall width
-draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600mm', above=True, fs=6, offset=3)
+draw_dim_h(ax1, cx1 - hw, cx1 + hw, dim_y_top, '600mm', above=True, fs=6, offset=8)
 # Overall height
-draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600mm', right=True, fs=6, offset=3)
+draw_dim_v(ax1, dim_x_right, cy1 - hw, cy1 + hw, '600mm', right=True, fs=6, offset=8)
 # Aperture diameter
 leader(ax1, cx1 + s(FR_APT_D/2)*0.65, cy1 + s(FR_APT_D/2)*0.65,
        cx1 + 12, cy1 + 10, 'Ø350', fs=5.5, color=C_DIM)
@@ -268,9 +268,9 @@ draw_cl(ax1, cx2, cy2, hw * 1.1)
 # ── Dimensions for Pinhole Plate ──────────────────────────────────────────────
 dim_y_top2 = cy2 + hw + 14
 
-draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=3)
+draw_dim_h(ax1, cx2 - hw, cx2 + hw, dim_y_top2, '600mm', above=True, fs=6, offset=8)
 draw_dim_h(ax1, cx2 - trap_h, cx2 + trap_h, dim_y_top2 - 6,
-           '490 (LIGHT TRAP)', above=True, fs=5, offset=3)
+           '490 (LIGHT TRAP)', above=True, fs=5, offset=8)
 
 # Bore callout
 leader(ax1, cx2 + s(PH_BORE/2)*0.6, cy2 + s(PH_BORE/2)*0.6,
@@ -333,7 +333,7 @@ draw_cl(ax3, cx3, cy3, hw * 1.1)
 
 # ── Dimensions for Lens Plate ─────────────────────────────────────────────────
 dim_y_top3 = cy3 + hw + 14
-draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600mm', above=True, fs=6, offset=3)
+draw_dim_h(ax3, cx3 - hw, cx3 + hw, dim_y_top3, '600mm', above=True, fs=6, offset=8)
 
 leader(ax3, cx3 + s(LB_D/2)*0.65, cy3 + s(LB_D/2)*0.65,
        cx3 + 16, cy3 + 16, 'Ø175 H7\nBORE THRU', fs=5.5, color=C_DIM)
@@ -364,7 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-draw_notes(ax1, notes, 10, 175, spacing=6, fs=6.5, width=680)
+draw_notes(ax1, notes, 10, 175, spacing=6, fs=7, width=680)
 
 plt.tight_layout(pad=0)
 
@@ -882,7 +882,7 @@ notes2 = [
     'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
     'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
 ]
-draw_notes(ax2, notes2, 10, 70, spacing=5, fs=6.5, width=680)
+draw_notes(ax2, notes2, 10, 70, spacing=5, fs=7, width=680)
 
 plt.tight_layout(pad=0)
 

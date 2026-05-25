@@ -483,7 +483,7 @@ def sheet2():
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=5.5, width=sx(110), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(140), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
@@ -828,7 +828,7 @@ def sheet1():
     ]
     draw_notes(ax, notes, C_LEN * 0.7  -50,
                -PAD_Y_BOT + 350 + (len(notes) - 1) * 30,
-               spacing=35, fs=5.5, width=1800, font=FONT)
+               spacing=44, fs=7, width=2300, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -1194,7 +1194,7 @@ def sheet3():
         f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",
         f"6. ZERO floor contact \u2014 clears IBC stack entirely.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(170), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(215), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 6",
@@ -1542,7 +1542,7 @@ def sheet4():
         f"5. {CLEARANCE}mm clearance: panel (X={PANEL_INNER}) to near walkway bracket (X={LEFT_WK_R}).",
         f"6. Remove cradles + grating before panel slides.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=5.5, width=sx(320), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 4 OF 6",
@@ -1818,7 +1818,7 @@ def sheet5():
         f"4. ZERO tray contact \u2014 all supports outside or above processing tray.",
         f"5. All supports removable \u2014 lift out with grating before panel transport.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="left", width=sx(220), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(280), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 5 OF 6",
@@ -2396,7 +2396,7 @@ def sheet6():
         f"5. Slot allows position adjustment along Yd. Spanner removal.",
         f"6. Same at both ends (near + far bracket).",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(5), fs=5.5, ha="left", width=sx(140), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(180), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 6",

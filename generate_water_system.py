@@ -746,29 +746,21 @@ ax3.axis("off")
 title_block(ax3, "SHEET 3 OF 3",
             drawing_title="PROCESSING TRAY DRAINAGE PLAN",
             subtitle="Plan view (water flow direction)",
-            scale_note="~1:20",
+            scale_note="Axes in mm",
             doc_id="TBS-001 · Water System")
 
-# ── Scale: map mm to drawing units ──────────────────────────────────────────
-# Tray is 4,459 × 2,200mm.  Fit into a ~14 × 7 drawing region.
-TRAY_DRAW_W = 13.0
-TRAY_DRAW_H = TRAY_DRAW_W * PROC_TRAY_D / PROC_TRAY_W  # maintain aspect
-
-# Origin offset (drawing units) — tray lower-left corner
-OX = 1.5
-OY = 1.8
+# ── Coordinates in mm (identity scale) ──────────────────────────────────────
+TRAY_DRAW_W = PROC_TRAY_W
+TRAY_DRAW_H = PROC_TRAY_D
 
 def s3x(mm):
-    """Convert tray-local X (mm from tray left edge) to drawing units."""
-    return OX + mm * TRAY_DRAW_W / PROC_TRAY_W
+    return mm
 
 def s3y(mm):
-    """Convert tray-local Yd (mm from tray near edge) to drawing units."""
-    return OY + mm * TRAY_DRAW_H / PROC_TRAY_D
+    return mm
 
 def s3d(mm):
-    """Convert mm offset/size to drawing-unit offset (aspect-preserving)."""
-    return mm * TRAY_DRAW_W / PROC_TRAY_W
+    return mm
 
 ax3.set_xlim(s3x(-620), s3x(PROC_TRAY_W + 860))
 ax3.set_ylim(s3y(-1820), s3y(PROC_TRAY_D + 620))
@@ -888,7 +880,7 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
 draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
-           f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=0.27, fs=6.5, above=False)
+           f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=93, fs=6.5, above=False)
 
 
 # ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
@@ -901,11 +893,11 @@ draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
 
 # Tray depth (Yd direction)
 draw_dim_v(ax3, s3x(-310), s3y(PROC_TRAY_D), s3y(0),
-           f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=0.27, fs=6.5, right=False)
+           f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=93, fs=6.5, right=False)
 
 # Drain X position dimension
 draw_dim_h(ax3, s3x(drain_local_x), s3x(0), s3y(-170),
-           f"{drain_local_x:,}mm from left edge", offset=0.17, fs=6.5, above=False)
+           f"{drain_local_x:,}mm from left edge", offset=58, fs=6.5, above=False)
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
 WK_COLOR = "#8D6E63"
@@ -1025,7 +1017,7 @@ ax4_tb.axis("off")
 title_block(ax4_tb, "SHEET 4 OF 4",
             drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
             subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X:,}mm (through sump) + plan view of rim hose routing",
-            scale_note="DETAIL ~1:2  |  PLAN ~1:8  |  ELEVATION ~1:12",
+            scale_note="AXES IN mm — MULTIPLE PANELS",
             doc_id="TBS-001 · Water System",
             height=0.75)
 
@@ -1181,21 +1173,21 @@ def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",
 # Shows: shim strips under tray, tray floor with slope, sump well,
 #         pickup tube with foot valve, suction hose over rim, walkway.
 # ═════════════════════════════════════════════════════════════════════════════
-SC_A = 2.0   # mm per drawing unit
-OA_X = 1.5   # drawing offset for Yd=0
-OA_Y = 2.5   # drawing offset for Z=0
+SC_A = 1.0
+OA_X = 0
+OA_Y = 0
 
 def sa_y(yd_mm):
-    return OA_X + yd_mm / SC_A
+    return yd_mm
 
 def sa_z(z_mm):
-    return OA_Y + z_mm / SC_A
+    return z_mm
 
 ax4a.set_xlim(sa_y(-41), sa_y(422))
 ax4a.set_ylim(sa_z(-56), sa_z(223))
 
 # Panel A title
-ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (APPROX 1:2)",
+ax4a.text(sa_y(195), sa_z(195), "DETAIL A — SUMP WELL & PICKUP (AXES IN mm)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1371,7 +1363,7 @@ ax4a.fill([sa_y(0), sa_y(0), sa_y(WALKWAY_W * 0.9)],
 # ── Detail dimensions ────────────────────────────────────────────────────────
 # Rim top to floor
 draw_dim_v(ax4a, sa_y(tray_yd_near - 45), sa_z(0), sa_z(RIM_TOP),
-           f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=1.5, fs=7, right=False)
+           f"{int(RIM_TOP)}mm\nRIM TOP AFF", offset=3, fs=7, right=False)
 
 # Tray floor height (20mm — too short for dim_v label, use leader)
 leader(ax4a, sa_y(sump_yd_end + 20), sa_z(TRAY_BASE_Z),
@@ -1386,19 +1378,19 @@ leader(ax4a, sa_y(sump_yd_end + 5), sa_z(sump_z_floor + TRAY_BASE_Z / 2),
 # Sump width (Yd extent)
 draw_dim_h(ax4a, sa_y(sump_yd_start), sa_y(sump_yd_end),
            sa_z(sump_z_floor - 8),
-           f"{PROC_TRAY_SUMP_D}mm", offset=0.8, fs=7, above=False)
+           f"{PROC_TRAY_SUMP_D}mm", offset=1.6, fs=7, above=False)
 
 # Pickup clearance from sump floor
 draw_dim_v(ax4a, sa_y(tube_yd + TUBE_OD/2 + 8), sa_z(sump_z_floor), sa_z(tube_z_bot),
-           "5mm", offset=0.6, fs=6, right=True)
+           "5mm", offset=1.2, fs=6, right=True)
 
 # Sump to wall
 draw_dim_h(ax4a, sa_y(0), sa_y(sump_yd_start), sa_z(FLOOR_T - 12),
-           f"{sump_yd_start}mm", offset=0.8, fs=7, above=False)
+           f"{sump_yd_start}mm", offset=1.6, fs=7, above=False)
 
 # Walkway deck height
 draw_dim_v(ax4a, sa_y(WALKWAY_W + 105), sa_z(0), sa_z(WK_DECK_H),
-           f"{WK_DECK_H}mm DECK", offset=1.0, fs=6.5, right=True)
+           f"{WK_DECK_H}mm DECK", offset=2, fs=6.5, right=True)
 
 # ── Detail leaders ───────────────────────────────────────────────────────────
 leader(ax4a, sa_y(tube_yd), sa_z(tube_z_bot + foot_valve_h/2),
@@ -1442,21 +1434,21 @@ ax4a.text(sa_y(360), sa_z(-40),
 # Yd = -20 to 1150mm, Z = -50 to 1,150mm
 # Shows tray, sump, suction hose routing to equipment panel (Yd=1046)
 # ═════════════════════════════════════════════════════════════════════════════
-SC_B = 12.0   # mm per drawing unit (wider view for panel routing)
-OB_X = 1.0
-OB_Y = 2.0
+SC_B = 1.0
+OB_X = 0
+OB_Y = 0
 
 def sb_y(yd_mm):
-    return OB_X + yd_mm / SC_B
+    return yd_mm
 
 def sb_z(z_mm):
-    return OB_Y + z_mm / SC_B
+    return z_mm
 
 ax4b.set_xlim(sb_y(-26), sb_y(1162))
 ax4b.set_ylim(sb_z(-66), sb_z(638))
 
 # Panel B title
-ax4b.text(sb_y(550), sb_z(650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (APPROX 1:12)",
+ax4b.text(sb_y(550), sb_z(650), "SECTION A-A — SUMP TO EQUIPMENT PANEL (AXES IN mm)",
           ha="center", va="top", fontsize=10, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1574,11 +1566,11 @@ leader(ax4b, sb_y(PANEL_YD), sb_z(EP_Z_TOP),
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Rim top above floor
 draw_dim_v(ax4b, sb_y(tray_yd_near - 50), sb_z(0), sb_z(RIM_TOP_B),
-           f"{int(RIM_TOP_B)}mm", offset=0.4, fs=6.5, right=False)
+           f"{int(RIM_TOP_B)}mm", offset=4.8, fs=6.5, right=False)
 
 # Walkway
 draw_dim_v(ax4b, sb_y(WALKWAY_W + 265), sb_z(0), sb_z(WK_DECK_H),
-           f"{WK_DECK_H}mm", offset=0.4, fs=6, right=True)
+           f"{WK_DECK_H}mm", offset=4.8, fs=6, right=True)
 
 # ── Labels ───────────────────────────────────────────────────────────────────
 leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
@@ -1592,7 +1584,7 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
 #   Vertical   = Yd (bottom=near wall/pinhole, top=far wall)
 # Sump at bottom-right, pipe travels north to equipment panel.
 # ═════════════════════════════════════════════════════════════════════════════
-SC_C = 8.0   # mm per drawing unit
+SC_C = 1.0
 
 SUMP_X = PROC_TRAY_DRAIN_X   # 4,550mm
 TRAY_X_R = PROC_TRAY_X_R     # 4,629mm
@@ -1605,21 +1597,18 @@ X_VIEW_R = EP_X + EQPANEL_T + 80   # ~5,098mm
 YD_VIEW_BOT = -30
 YD_VIEW_TOP = 1130
 
-OC_X = 1.0   # screen offset for X=X_VIEW_L
-OC_Y = 1.5   # screen offset for Yd=YD_VIEW_BOT
-
 def pc_x(x_mm):
-    return OC_X + (x_mm - X_VIEW_L) / SC_C
+    return x_mm
 
 def pc_yd(yd_mm):
-    return OC_Y + (yd_mm - YD_VIEW_BOT) / SC_C
+    return yd_mm
 
 ax4c.set_xlim(pc_x(X_VIEW_L - 4), pc_x(X_VIEW_R + 4))
 ax4c.set_ylim(pc_yd(YD_VIEW_BOT - 4), pc_yd(YD_VIEW_TOP + 4))
 
 # Panel C title
 ax4c.text(pc_x((X_VIEW_L + X_VIEW_R) / 2), pc_yd(YD_VIEW_TOP + 15),
-          "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (APPROX 1:8)",
+          "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (AXES IN mm)",
           ha="center", va="bottom", fontsize=9, fontweight="bold",
           color="#1A237E", zorder=10)
 
@@ -1711,12 +1700,12 @@ leader(ax4c, pc_x(CORNER_X), pc_yd((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
 # ── Dimensions ──────────────────────────────────────────────────────────────
 # Rim-to-panel Yd distance (vertical dim)
 draw_dim_v(ax4c, pc_x(X_VIEW_L - 5), pc_yd(RIM_EXT_YD_C), pc_yd(CORRIDOR_YD_NEAR),
-           f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=0.8, fs=6)
+           f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=6.4, fs=6)
 
 # Hose run along rim (X distance — horizontal dim)
 draw_dim_h(ax4c, pc_x(SUMP_X), pc_x(CORNER_X),
            pc_yd(RIM_EXT_YD_C - 50),
-           f"{CORNER_X - SUMP_X}mm", offset=0.5, fs=6)
+           f"{CORNER_X - SUMP_X}mm", offset=4, fs=6)
 
 # ── Notes axes (full-width strip above title block) ─────────────────────────
 ax4_notes = fig4.add_axes([0.04, 0.06, 0.92, 0.10])

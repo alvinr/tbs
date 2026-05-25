@@ -209,6 +209,11 @@ DIAG_FILES=(
     "pinhole-wall-elevation.png"
     "panel-layout.png"
     "spray-bar-sheet1.png"
+    "spray-bar-sheet2.png"
+    "spray-bar-sheet3.png"
+    "spray-bar-sheet4.png"
+    "spray-bar-sheet5.png"
+    "spray-bar-sheet6.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

@@ -349,18 +349,63 @@ Source reports: [Water System](water-system-report.md) §3,
 
 ---
 
-### 19. Spray Bar Assembly — Sheet 1
+### 19. Spray Bar Assembly — Sheet 1: Gantry Elevation
 
-Gantry spray bar detail for the processing tray wash system. Left panel: X-Z gantry
-elevation viewed from the film plane showing the full beam span (40×40×3mm AL SHS with
-1" PVC pipe inside), BV-02 ball valve on the pinhole wall at waist height, flex hose to
-center feed, telescoping pole through a 30mm walkway slit, and operator silhouette.
-Right panel: composite Yd-Z cross section at 1:2 scale combining carriage mechanics
-(Ø50mm nylon wheels, fork brackets, L-bracket, U-clamp), ball joint arm attachment,
-and handle tube with zip-tied hose. Details C and D show wheel attachment section and
-plan. Detail A shows the beam end with PVC socket cap. Plan view shows walkway slit
-positions on near and far walkways.
+X-Z gantry elevation viewed from the film plane showing the full beam span
+(40×40×3mm AL SHS with 1" PVC pipe inside), BV-02 ball valve on the pinhole
+wall at waist height, flex hose to center feed, telescoping pole through a
+30mm walkway slit, and operator silhouette. 4× vertical exaggeration.
 
 Source report: [Water System](water-system-report.md) §6.
 
-![TBS-001 — Spray Bar Assembly](assets/spray-bar-sheet1.png)
+![TBS-001 — Spray Bar Gantry Elevation](assets/spray-bar-sheet1.png)
+
+---
+
+### 20. Spray Bar Assembly — Sheet 2: Cross Section
+
+Composite Yd-Z cross section looking along X at 1:1 scale, combining carriage
+mechanics (Ø50mm nylon wheels, fork brackets, L-bracket, U-clamp), ball joint
+arm attachment, and handle tube with zip-tied hose.
+
+![TBS-001 — Spray Bar Cross Section](assets/spray-bar-sheet2.png)
+
+---
+
+### 21. Spray Bar Assembly — Sheet 3: Plan View
+
+Container floor plan (X-Yd, looking down) showing walkway positions, slit
+locations on near and far walkways for pole passage, beam example position,
+and travel range.
+
+![TBS-001 — Spray Bar Plan View](assets/spray-bar-sheet3.png)
+
+---
+
+### 22. Spray Bar Assembly — Sheet 4: Detail A — Beam End
+
+Longitudinal section at 2:1 scale through the open beam end showing 1" PVC
+pipe extending past the AL SHS, socket cap solvent-welded to pipe end, and
+engagement dimensions.
+
+![TBS-001 — Spray Bar Detail A](assets/spray-bar-sheet4.png)
+
+---
+
+### 23. Spray Bar Assembly — Sheet 5: Detail C — Wheel Attachment
+
+Section along axle centerline at 2:1 scale showing fork bracket arms, nylon
+wheel bore, Ø10mm axle pin, snap-ring retention, and M5 through-bolt
+connection to L-bracket horizontal arm.
+
+![TBS-001 — Spray Bar Detail C](assets/spray-bar-sheet5.png)
+
+---
+
+### 24. Spray Bar Assembly — Sheet 6: Detail D — Wheel Plan
+
+Plan view (X-Yd, looking down) of the carriage showing beam, L-bracket arm,
+U-clamp with flared legs, fork brackets, and Ø50mm nylon wheel footprints
+with 200mm spacing.
+
+![TBS-001 — Spray Bar Detail D](assets/spray-bar-sheet6.png)

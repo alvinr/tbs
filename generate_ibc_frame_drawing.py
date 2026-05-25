@@ -656,7 +656,6 @@ def sheet1():
     # ── Material note ───────────────────────────────────────────────────────
     notes = [
         "MATERIAL & FABRICATION NOTES:",
-        "",
         f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B.",
         f"2. All joints fillet welded (5mm leg), continuous. Grind flush where noted.",
         f"3. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
@@ -670,7 +669,7 @@ def sheet1():
         f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
         f"12. Total frame weight: ~90 kg.",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 20), sy(Z_HI - 15), spacing=sy(23),
+    draw_notes(ax, notes, sx(YD_LO + 50), sy(Z_HI - 15), spacing=sy(23),
                fs=7, font=FONT, width=sx(1400))
 
     # ── Title block ─────────────────────────────────────────────────────────
@@ -855,7 +854,6 @@ def sheet2():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "SIDE ELEVATION NOTES:",
-        "",
         "1. Three upright bays at 642mm centers. X-braces in bottom-tier bays for racking resistance.",
         f"2. Platform at Z={PLATFORM_Z}mm supports upper-tier IBCs. 12mm rubber mat on top.",
         f"3. Frame depth {FRAME_FOOTPRINT_D}mm: 65mm overhang on cargo-door side, flush to end wall.",
@@ -863,7 +861,7 @@ def sheet2():
         f"5. Access gate (300mm × 916mm clear opening) at front bay, corridor face only.",
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
     ]
-    draw_notes(ax, notes, sx(X_LO + 20), sy(Z_LO + 300), spacing=sy(23),
+    draw_notes(ax, notes, sx(X_LO + 50), sy(Z_LO + 300), spacing=sy(23),
                fs=7, font=FONT, width=sx(1150))
 
     # ── Title block ─────────────────────────────────────────────────────────
@@ -1166,13 +1164,16 @@ def sheet3():
         "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
         "3. Transverse beams (along Yd) at each upright bay: cantilever from corridor to wall bracket.",
         "4. Wall brackets bolted to container wall corrugation ribs (M12 anchor bolts, 2 per bracket).",
-        "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face. Retains IBC pallet perimeter.",
+        "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face. Retains",
+        "IBC pallet perimeter.",
         f"6. Rubber mat: 12mm anti-slip, trimmed to IBC pallet footprint ({IBC_D} × {IBC_W}mm).",
-        f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
-        "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork access direction.",
+        f"7. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner",
+        f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles).",
+        "8. Pallet runners (2 per IBC) shown as brown lines — orient perpendicular to fork",
+        "access direction.",
     ]
-    draw_notes(ax, notes, px(X_HI * 0.35), py(YD_LO + 510), spacing=py(20),
-               fs=7, font=FONT, width=px(1240))
+    draw_notes(ax, notes, px(X_HI * 0.32), py(YD_LO + 510), spacing=py(20),
+               fs=7, font=FONT, width=px(1040))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 3",

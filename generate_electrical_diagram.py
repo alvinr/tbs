@@ -900,18 +900,18 @@ def draw_sheet2():
         "DRAWING NOTES:",
         f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentered on new film plane). "
         f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm. f/1088.",
-        f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), "
+        f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), ",
         f"Right X={FP_X_R}\u20135,893mm (IBCs only). Evap cooler external via "
         f"\u00d8{EVAP_DUCT_D}mm duct at X={EVAP_DUCT_X}mm. Amber cone \u2014 keep entirely clear.",
         "3. Cable trunking (40\u00d725mm PVC) on pinhole wall face (Yd=0) \u2014 outside "
         "optical cone. Drop conduits (10mm corrugated) to each device.",
         "4. Light trap (revolving drum, \u00d8750mm vertical axis) in left end zone \u2014 "
         "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
-        "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched "
+        "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched ",
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",
     ]
-    draw_notes(ax, notes, 200, Y_LO + 1050, spacing=100,
-               fs=7, width=5750, font={"fontfamily": "monospace"})
+    draw_notes(ax, notes, 6200, Y_LO + 1250, spacing=80,
+               fs=7, width=4250, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 3",
@@ -1334,7 +1334,7 @@ def draw_sheet3():
     ]
     key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120
     notes_y_top = key_bottom - 120
-    draw_notes(ax, notes, 200, KY + 40, spacing=88,
+    draw_notes(ax, notes, -500, KY + 40, spacing=60,
                fs=7, width=3400, font={"fontfamily": "monospace"})
 
     # ── Title block ───────────────────────────────────────────────────────────

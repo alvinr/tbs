@@ -52,9 +52,9 @@ FONT          = {"fontfamily": "monospace"}
 WALL  = 40   # schematic wall thickness
 
 
-def equip_rect(ax, x, y, w, h, col, label, zorder=6, alpha=0.88):
+def equip_rect(ax, x, y, w, h, col, label, label_color="#FFFFFF", zorder=6, alpha=0.88):
     ax.add_patch(Rectangle((x, y), w, h, fc=col, ec=C_OUT, lw=1.2, alpha=alpha, zorder=zorder))
-    ax.text(x + w/2, y + h/2, label, color="#FFFFFF", fontsize=6,
+    ax.text(x + w/2, y + h/2, label, color=label_color, fontsize=6,
             ha="center", va="center", **FONT, fontweight="bold", zorder=zorder+1)
 
 def penetration(ax, x, y, r=60, col=C_OUT, label="", label_offset=(0, 80)):
@@ -212,7 +212,7 @@ def floor_plan():
 
     # ── EQUIPMENT PANEL (IBC plumbing corridor, Yd=1046) ────────────────────
     equip_rect(ax, EQPANEL_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
-               C_PUMP, "EQUIP PANEL\n(PUMPS+FILTERS)", zorder=7, alpha=0.8)
+               C_PUMP, "EQUIP PANEL\n(PUMPS+FILTERS)", label_color="#000000", zorder=7, alpha=0.8)
 
     # External power panel (flush-mount, exterior of pinhole wall)
     PP_DEPTH = 60   # schematic depth on exterior face
@@ -234,16 +234,16 @@ def floor_plan():
     equip_rect(ax, IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, C_BLUE_IBC,
                f"IBC-1 BLUE\n600L (top)\nIBC-3 BROWN\n600L (bottom)\nYd={BLUE_IBC_Y}–{BLUE_IBC_Y+IBC_D}",
                zorder=6)
-    ax.text(IBC_COL_X + IBC_W/2, BLUE_IBC_Y + IBC_D + 55,
-            "▲ 2020mm tall (2-high)", color=C_BLUE_IBC, fontsize=5.5,
+    ax.text(IBC_COL_X + IBC_W/2, BLUE_IBC_Y + IBC_D - 55,
+            "▲ 2020mm tall (2-high)", fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # Far column (Yd=1316–2332): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
     equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_WASTE_IBC,
                f"IBC-2 BLUE\n600L (top)\nIBC-4 WASTE\n600L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
                zorder=6)
-    ax.text(IBC_COL_X + IBC_W/2, IBC_FAR_Y + IBC_D + 55,
-            "▲ 2020mm tall (2-high)", color=C_WASTE_IBC, fontsize=5.5,
+    ax.text(IBC_COL_X + IBC_W/2, IBC_FAR_Y + IBC_D - 55,
+            "▲ 2020mm tall (2-high)", fontsize=5.5,
             ha="center", va="bottom", **FONT, zorder=7)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
@@ -418,9 +418,9 @@ def floor_plan():
     draw_dim_h(ax, 0, C_LEN, C_WID + 300, f"{C_LEN}mm  ({C_LEN/304.8:.1f}ft)  INTERIOR LENGTH", offset=25, font=FONT)
     draw_dim_v(ax, C_LEN + 200, 0, C_WID,
           f"{C_WID}mm\nINTERIOR\nWIDTH\n(=FOCAL\nLENGTH)", offset=55, right=True, font=FONT)
-    draw_dim_h(ax, 0, ZONE_L_END, -PAD_B + 555, f"{ZONE_L_END}mm\nLEFT ZONE", offset=25, fs=6, font=FONT)
-    draw_dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 555, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6, font=FONT)
-    draw_dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 555, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, 0, ZONE_L_END, -PAD_B + 600, f"{ZONE_L_END}mm\nLEFT ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, ZONE_L_END, ZONE_R_START, -PAD_B + 600, f"{ZONE_R_START-ZONE_L_END}mm OPTICAL ZONE", offset=25, fs=6, font=FONT)
+    draw_dim_h(ax, ZONE_R_START, C_LEN, -PAD_B + 600, f"{C_LEN-ZONE_R_START}mm RIGHT ZONE", offset=25, fs=6, font=FONT)
     draw_dim_h(ax, FP_X_L, FP_X_R, C_WID + 200, f"{FP_W}mm  FILM PLANE WIDTH", offset=25, fs=6, font=FONT)
     draw_dim_v(ax, PAD_L + 100, 0, FP_Y+100, f"Y={FP_Y}mm\nFILM PLANE\nDEPTH", offset=25, fs=6, right=True, font=FONT)
 

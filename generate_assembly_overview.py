@@ -219,7 +219,7 @@ leader(ax, EP_X + EP_W, (EP_H_LO + EP_H_HI)/2, EP_X + 500, 2000,
        ha="left", fs=FS_SM)
 leader(ax, BA_X + BA_W, BA_H_HI, BA_X + (BA_W*2), 800,
        f"Battery bank\nX={BA_X}–{BA_X+BA_W}mm", ha="left", fs=FS_SM)
-leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 700, 500,
+leader(ax, EQ_ZONE_X + EQ_ZONE_W, (EQPANEL_Z_LO + EQPANEL_Z_HI)/2, EQ_ZONE_X + 1500, 700,
        f"Equipment panel  (pumps+filters, Yd=1046–1316)\nX={EQ_ZONE_X}–{EQ_ZONE_X+EQ_ZONE_W}mm", ha="left", fs=FS_SM)
 
 # External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
@@ -258,7 +258,7 @@ ax.text(IBC_COL_X + IBC_W/2, IBC_H_STK/2,
 ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [IBC_H_600, IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
-leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK, 6300, 2750,
+leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK, 6000, 2750,
        f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
        f"Blue: 2x600L stacked H={IBC_H_STK}mm (front)\n"
        f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
@@ -334,8 +334,8 @@ draw_dim_h(ax, ZONE_L_END, ZONE_R_START, DIM_TOP + 200,
            f"Optical zone  {ZONE_R_START-ZONE_L_END}mm", offset=80, fs=FS_SM, color=C_CL)
 draw_dim_h(ax, FP_X_L, FP_X_R, DIM_TOP + 360,
            f"Film plane  {FP_X_R-FP_X_L}mm", offset=80, fs=FS_SM, color=C_CL)
-draw_dim_v(ax, DIM_RIGHT,        0, C_HGT, f"H={C_HGT}mm",     offset=100, fs=FS_SM)
-draw_dim_v(ax, DIM_RIGHT + 300,  0, PH_H,  f"PH H={PH_H}mm",   offset=100, fs=FS_SM)
+draw_dim_v(ax, DIM_RIGHT - 225,        0, C_HGT, f"H={C_HGT}mm",     offset=50, fs=FS_SM)
+draw_dim_v(ax, DIM_RIGHT - 100,  0, PH_H,  f"PH H={PH_H}mm",   offset=50, fs=FS_SM)
 
 # Left / right zone widths
 draw_dim_h(ax, 0, ZONE_L_END, DIM_BOT - 80,
@@ -554,7 +554,7 @@ ax2.plot([mx(PH_X) - 120, mx(PH_X) + 120], [PH_H, PH_H],
         color=C_PINHOLE, lw=0.7, alpha=0.55, zorder=4)
 ax2.plot([mx(PH_X), mx(PH_X)], [PH_H - 120, PH_H + 120],
         color=C_PINHOLE, lw=0.7, alpha=0.55, zorder=4)
-ldr2(PH_X, PH_H, PH_X - 600, PH_H + 500,
+ldr2(PH_X, PH_H, PH_X - 225, PH_H + 500,
     f"Pinhole  Ø2.17mm\n(X={PH_X}, H={PH_H}mm)\n[on far wall — ghost]",
     ha="right", fs=FS_SM, color=C_PINHOLE)
 ax2.text(mx(PH_X), PH_H - 320,

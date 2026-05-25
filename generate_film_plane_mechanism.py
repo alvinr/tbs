@@ -1466,9 +1466,9 @@ def sheet5():
         f"4. Torsion spring biases clamp closed at any tilt angle.",
         f"5. Over-center cam action: snap open/closed by feel in safelight conditions.",
     ]
-    notes_x = sb(-LEG)
-    notes_y_start = sb(-80)
-    draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(7),
+    notes_x = sb(-LEG+20)
+    notes_y_start = sb(-65)
+    draw_notes(ax_b, notes, notes_x, notes_y_start, spacing=sb(5),
                fs=7, title_fs=7.5, color=DIM, title_color=ANNO, font=FONT,
                width=sb(165))
 

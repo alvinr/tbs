@@ -1763,7 +1763,7 @@ def sheet5():
 
     # ── Dimension lines ──────────────────────────────────────────────────────
     # Full walkway width
-    draw_dim_h(ax, sx(LEFT_WK_L), sx(LEFT_WK_R), sy(grate_top + 30),
+    draw_dim_h(ax, sx(LEFT_WK_L), sx(LEFT_WK_R), sy(grate_top + 18),
                f"{WALKWAY_W}mm WALKWAY WIDTH",
                offset=sy(5), fs=6.5, font=FONT)
 

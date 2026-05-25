@@ -111,36 +111,37 @@ C_BELL  = '#303030'   # bellows black
 # ═══════════════════════════════════════════════════════════════════════════════
 
 FW, FH = 700, 500
-fig1, ax1 = plt.subplots(figsize=(FW/25.4*0.9, FH/25.4*0.9))
+FW1, FH1 = 5600, 4000
+fig1, ax1 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
 fig1.patch.set_facecolor('white')
 ax1.set_facecolor('white')
 ax1.set_aspect('equal')
 ax1.axis('off')
-ax1.set_xlim(0, FW)
-ax1.set_ylim(0, FH)
+ax1.set_xlim(0, FW1)
+ax1.set_ylim(0, FH1)
 
 title_block(ax1, "SHEET 1 OF 3",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Assembly overview & Outer Adapter Frame",
-            scale_note="AS NOTED",
+            scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── Section header lines ──────────────────────────────────────────────────────
 def section_label(ax, x, y, text):
     ax.text(x, y, text, fontsize=7.5, fontweight='bold', color='black')
-    ax.plot([x, x+200], [y-3, y-3], color='black', lw=0.7)
+    ax.plot([x, x+1600], [y-24, y-24], color='black', lw=0.7)
 
-section_label(ax1, 10, 490, 'PANEL A — FULL ASSEMBLY (1:8)')
-section_label(ax1, 170, 490, 'PANEL B — ICP-01 EXTERIOR FACE (1:8)')
-section_label(ax1, 330, 490, 'PANEL C — ICP-01 INTERIOR FACE (1:8)')
+section_label(ax1, 80, 3920, 'PANEL A — FULL ASSEMBLY (1:8)')
+section_label(ax1, 1360, 3920, 'PANEL B — ICP-01 EXTERIOR FACE (1:8)')
+section_label(ax1, 2640, 3920, 'PANEL C — ICP-01 INTERIOR FACE (1:8)')
 
-SC = 1/8
+SC = 1
 def s1(mm): return mm * SC
 
 # ───────────────────────────────────────────────
-# PANEL A: Full assembly front view (center 85, 340)
+# PANEL A: Full assembly front view
 # ───────────────────────────────────────────────
-cx_a, cy_a = 85, 330
+cx_a, cy_a = 680, 2640
 hw = s1(PL_OD/2)
 
 # Outer adapter frame (ICP-01) — aluminium, slightly thicker than normal plates
@@ -190,18 +191,17 @@ draw_circle(ax1, cx_a, cy_a, s1(BELL_OUT_PCD/2), lw=LW_THIN, color='#606060', ls
 draw_cl(ax1, cx_a, cy_a, hw*1.15)
 
 # Dimension: carrier OD
-draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 6,
-           'Ø320 CARRIER', above=False, fs=5, offset=3)
-draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 6, '600 mm', above=True, fs=5.5, offset=3)
+draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 48,
+           'Ø320 CARRIER', above=False, fs=5, offset=24)
+draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 48, '600 mm', above=True, fs=5.5, offset=24)
 
-ax1.text(cx_a, cy_a - hw - 25, 'PANEL A — ASSEMBLY (1:8)\nICP-01 outer frame + ICP-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
+ax1.text(cx_a, cy_a - hw - 200, 'PANEL A — ASSEMBLY (1:8)\nICP-01 outer frame + ICP-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
 # PANEL B: ICP-01 Exterior (container-wall-facing) face
-# center 255, 330
 # ───────────────────────────────────────────────
-cx_b, cy_b = 258, 330
+cx_b, cy_b = 2064, 2640
 
 p2 = mpatches.Rectangle((cx_b - hw, cy_b - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
@@ -237,26 +237,25 @@ draw_cl(ax1, cx_b, cy_b, hw*1.15)
 
 # Leaders
 leader(ax1, cx_b + s1(TSB01_BORE/2)*0.7, cy_b + s1(TSB01_BORE/2)*0.7,
-       cx_b + 30, cy_b + 45,
+       cx_b + 240, cy_b + 360,
        'Ø380 BORE\n(PANEL B VIEW)', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, cx_b + s1(SEAL_D/2)*0.65, cy_b - s1(SEAL_D/2)*0.65,
-       cx_b + 22, cy_b - 48,
+       cx_b + 176, cy_b - 384,
        'Ø420 SEAL\nGROOVE\n3×3 DEEP', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, cx_b + s1(ADJ_PCD/2) + s1(BUSH_OD/2), cy_b,
-       cx_b + s1(ADJ_PCD/2) + 14, cy_b + 4,
+       cx_b + s1(ADJ_PCD/2) + 112, cy_b + 32,
        'M22×1.0\nBUSHING\n(4 OFF)', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, cx_b + s1(BOLT_BC/2)*0.65, cy_b + s1(BOLT_BC/2)*0.65,
-       cx_b + 16, cy_b + 28,
+       cx_b + 128, cy_b + 224,
        'Ø540 B.C.\n8×M12\nCLR', fs=4.5, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_b, cy_b - hw - 25, 'PANEL B — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
+ax1.text(cx_b, cy_b - hw - 200, 'PANEL B — ICP-01 EXTERIOR (1:8)\n(Same bolt/dowel/seal interface\nas standard pinhole plate)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
 # PANEL C: ICP-01 Interior (container-facing) face
-# center 420, 330
 # ───────────────────────────────────────────────
-cx_c, cy_c = 425, 330
+cx_c, cy_c = 3400, 2640
 
 p3 = mpatches.Rectangle((cx_c - hw, cy_c - hw), s1(PL_OD), s1(PL_OD),
                          lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
@@ -288,16 +287,16 @@ for i in range(6):
 draw_cl(ax1, cx_c, cy_c, hw*1.15)
 
 leader(ax1, cx_c - s1(BRG_SEAT_D/2)*0.7, cy_c + s1(BRG_SEAT_D/2)*0.7,
-       cx_c - 18, cy_c + 12,
+       cx_c - 144, cy_c + 96,
        'Ø80 H7 BEARING\nSEAT × 50 DEEP', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, cx_c + s1(BELL_OUT_PCD/2)*0.6, cy_c + s1(BELL_OUT_PCD/2)*0.6,
-       cx_c + 25, cy_c + 28,
+       cx_c + 200, cy_c + 224,
        '6×M6 ON\nØ375 PCD\n(BELLOWS)', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, cx_c + s1(LAB_D3/2)*0.65, cy_c - s1(LAB_D3/2)*0.65,
-       cx_c + 20, cy_c - 45,
+       cx_c + 160, cy_c - 360,
        '3-STEP\nLABYRINTH\nØ382/390/400\n5 DEEP EACH', fs=4.3, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_c, cy_c - hw - 25, 'PANEL C — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
+ax1.text(cx_c, cy_c - hw - 200, 'PANEL C — ICP-01 INTERIOR (1:8)\n(Bearing pocket + labyrinth + bellows attach)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 # ───────────────────────────────────────────────
@@ -305,16 +304,16 @@ ax1.text(cx_c, cy_c - hw - 25, 'PANEL C — ICP-01 INTERIOR (1:8)\n(Bearing pock
 # Horizontal: 1:5  →  600mm = 120 units
 # Vertical:   1:1  →  40mm frame + 25mm carrier + 35mm bearing shank = 100 units
 # ───────────────────────────────────────────────
-def sx(mm): return mm / 5.0   # horizontal 1:5
-def sy(mm): return mm * 1.0   # vertical 1:1
+def sx(mm): return mm   # mm-first horizontal
+def sy(mm): return mm   # mm-first vertical
 
-ax1.text(10, 222, 'PANEL D — SECTION A-A  (HORIZ 1:5 / VERT 1:1  — thickness exaggerated for clarity)',
+ax1.text(80, 1776, 'PANEL D — SECTION A-A  (AXES IN mm  — thickness exaggerated for clarity)',
          fontsize=7, fontweight='bold')
-ax1.plot([10, 490], [219, 219], color='black', lw=0.7)
+ax1.plot([80, 3920], [1752, 1752], color='black', lw=0.7)
 
-# Centre section at x=250, top of frame at y=210
-cx_d = 250
-frame_top = 210   # top of ICP-01 frame (exterior/scene face)
+# Centre section
+cx_d = 2000
+frame_top = 1680   # top of ICP-01 frame
 
 # Heights in drawing units (1:1 vertical)
 fh = sy(TSB01_THICK)   # frame height = 40
@@ -479,43 +478,43 @@ for i in range(n_p):
     ax1.plot([bell_x_out, bell_x_in], [p_y + pleat_step*0.5, p_y + pleat_step], color=C_BELL, lw=1.5, zorder=6)
 
 # Centreline
-ax1.plot([cx_d, cx_d], [carrier_y_bot - 10, frame_y_top + 10],
+ax1.plot([cx_d, cx_d], [carrier_y_bot - 80, frame_y_top + 80],
          color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
 # Break lines on sides (zig-zag) to indicate plate continues
-for side_x in [left_x - 2, right_x + 2]:
-    for y_brk in [frame_y_top - 5, frame_y_bot + 2]:
-        ax1.plot([side_x - 3, side_x + 3, side_x - 3, side_x + 3],
-                 [y_brk, y_brk - 3, y_brk - 6, y_brk - 9],
+for side_x in [left_x - 16, right_x + 16]:
+    for y_brk in [frame_y_top - 40, frame_y_bot + 16]:
+        ax1.plot([side_x - 24, side_x + 24, side_x - 24, side_x + 24],
+                 [y_brk, y_brk - 24, y_brk - 48, y_brk - 72],
                  color='black', lw=1.0)
 
 # Dimensions
-draw_dim_h(ax1, left_x, right_x, frame_y_top + 12, '600mm (FULL WIDTH)',
-           above=True, fs=5, offset=3)
-draw_dim_v(ax1, left_x - 10, frame_y_bot, frame_y_top, '40',
-           fs=5, offset=3)
-draw_dim_v(ax1, left_x - 10, carrier_y_bot, carrier_y_top, '25',
-           fs=5, offset=3)
-draw_dim_h(ax1, cx_d - bore_hw_d, cx_d + bore_hw_d, carrier_y_bot - 10,
-           f'Ø{TSB01_BORE} BORE', above=False, fs=5, offset=3)
+draw_dim_h(ax1, left_x, right_x, frame_y_top + 96, '600mm (FULL WIDTH)',
+           above=True, fs=5, offset=24)
+draw_dim_v(ax1, left_x - 80, frame_y_bot, frame_y_top, '40',
+           fs=5, offset=24)
+draw_dim_v(ax1, left_x - 80, carrier_y_bot, carrier_y_top, '25',
+           fs=5, offset=24)
+draw_dim_h(ax1, cx_d - bore_hw_d, cx_d + bore_hw_d, carrier_y_bot - 80,
+           f'Ø{TSB01_BORE} BORE', above=False, fs=5, offset=24)
 
 # Leaders
-leader(ax1, cx_d + seat_hw + 2, frame_y_bot + seat_dep_d/2,
-       cx_d + 80, frame_y_bot + seat_dep_d/2,
+leader(ax1, cx_d + seat_hw + 16, frame_y_bot + seat_dep_d/2,
+       cx_d + 640, frame_y_bot + seat_dep_d/2,
        'Ø80 H7 BEARING\nPOCKET × 50', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax1, cx_d + carr_hw_d + 2, carrier_y_bot + ch/2,
-       cx_d + 65, carrier_y_bot + ch/2,
+leader(ax1, cx_d + carr_hw_d + 16, carrier_y_bot + ch/2,
+       cx_d + 520, carrier_y_bot + ch/2,
        'ICP-02 CARRIER\nØ320 × 25 Al', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax1, adj_x + sx(BUSH_OD/2), frame_y_bot + sy(BUSH_L)/2,
-       adj_x + 38, frame_y_bot + sy(BUSH_L)/2,
+       adj_x + 304, frame_y_bot + sy(BUSH_L)/2,
        'M8 SCREW\n+ DELRIN\nBUSHING', fs=4.5, color=C_DIM, arrow_style='->')
 leader(ax1, bell_x_out, (bell_span_top + bell_span_bot)/2.1,
-       bell_x_out + 18, (bell_span_top + bell_span_bot)/2.2,
+       bell_x_out + 144, (bell_span_top + bell_span_bot)/2.2,
        'BELLOWS\nICP-10', fs=4.5, color=C_DIM, arrow_style='->')
 
-ax1.text(cx_d, carrier_y_bot - 20, '← SCENE (EXTERIOR)    INTERIOR (CONTAINER) →',
+ax1.text(cx_d, carrier_y_bot - 160, '← SCENE (EXTERIOR)    INTERIOR (CONTAINER) →',
          ha='center', fontsize=5, color='#555555')
-ax1.text(cx_d, frame_y_top + 25, 'SECTION A-A  (HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1)',
+ax1.text(cx_d, frame_y_top + 200, 'SECTION A-A  (AXES IN mm)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = 'diagrams/tilt-swing-board-sheet1.png'
@@ -530,28 +529,29 @@ print(f'  → {out1}  Done.')
 # SHEET 2 — Carrier Plate, Bearing & Adjustment Mechanism
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig2, ax2 = plt.subplots(figsize=(FW/25.4*0.9, FH/25.4*0.9))
+FW2, FH2 = 1400, 1000
+fig2, ax2 = plt.subplots(figsize=(FW*0.9/25.4, FH*0.9/25.4))
 fig2.patch.set_facecolor('white')
 ax2.set_facecolor('white')
 ax2.set_aspect('equal')
 ax2.axis('off')
-ax2.set_xlim(0, FW)
-ax2.set_ylim(0, FH)
+ax2.set_xlim(0, FW2)
+ax2.set_ylim(0, FH2)
 
 title_block(ax2, "SHEET 2 OF 3",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Inner Carrier, Bearing & Adjustment mechanism",
-            scale_note="AS NOTED",
+            scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
-SC2 = 1/2
+SC2 = 1
 def s2(mm): return mm * SC2
 
 # ── PANEL A: ICP-02 front (exterior) face at 1:2 ──────────────────────────────
-ax2.text(15, 490, 'PANEL A — ICP-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
-ax2.plot([15, 330], [487, 487], color='black', lw=0.7)
+ax2.text(30, 980, 'PANEL A — ICP-02 FRONT FACE (1:2)', fontsize=7.5, fontweight='bold')
+ax2.plot([30, 660], [974, 974], color='black', lw=0.7)
 
-cx2a, cy2a = 120, 355
+cx2a, cy2a = 240, 710
 
 # Circular carrier plate
 carr_p = mpatches.Circle((cx2a, cy2a), s2(CARR_OD/2),
@@ -566,7 +566,7 @@ draw_circle(ax2, cx2a, cy2a, s2(PH_CB_D/2), lw=LW_MED, color=C_HID, ls='--', zor
 # Pinhole disc Ø50
 draw_circle(ax2, cx2a, cy2a, s2(PH_DISC_D/2), lw=LW_THICK, color=C_OUT, fill=True, fc='#707070', zorder=6)
 # Pinhole (tiny)
-draw_circle(ax2, cx2a, cy2a, 0.5, lw=0.5, color='white', fill=True, fc='white', zorder=7)
+draw_circle(ax2, cx2a, cy2a, 2.0, lw=0.5, color='white', fill=True, fc='white', zorder=7)
 
 # 4 × Ball socket inserts on Ø260
 for angle_deg in [90, 0, 270, 180]:
@@ -590,33 +590,33 @@ draw_cl(ax2, cx2a, cy2a, s2(CARR_OD/2)*1.2)
 
 # Dims
 draw_dim_h(ax2, cx2a - s2(CARR_OD/2), cx2a + s2(CARR_OD/2),
-           cy2a - s2(CARR_OD/2) - 14, 'Ø320', above=False, fs=5.5, offset=4.5)
+           cy2a - s2(CARR_OD/2) - 28, 'Ø320', above=False, fs=5.5, offset=9)
 draw_dim_h(ax2, cx2a - s2(PH_BORE/2), cx2a + s2(PH_BORE/2),
-           cy2a + s2(CARR_OD/2) + 10, 'Ø90 CONE', above=True, fs=5, offset=4.5)
+           cy2a + s2(CARR_OD/2) + 20, 'Ø90 CONE', above=True, fs=5, offset=9)
 
 leader(ax2, cx2a + s2(PH_CB_D/2) * 0.7, cy2a + s2(PH_CB_D/2) * 0.7,
-       cx2a + 35, cy2a + 30,
+       cx2a + 70, cy2a + 60,
        'Ø52 × 3 DEEP\nCOUNTERBORE\n(DISC SEAT)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2a + s2(SOCK_PCD/2) * np.cos(np.radians(-30)),
        cy2a + s2(SOCK_PCD/2) * np.sin(np.radians(-30)),
-       cx2a + 60, cy2a - 22,
+       cx2a + 120, cy2a - 44,
        '4×Ø16 H7\nSOCKET INSERT\nON Ø260 PCD', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2a + s2(BELL_IN_PCD/2) * np.cos(np.radians(130)),
        cy2a + s2(BELL_IN_PCD/2) * np.sin(np.radians(130)),
-       cx2a - 65, cy2a + 35,
+       cx2a - 130, cy2a + 70,
        '6×M6 ON\nØ310 PCD\n(BELLOWS)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2a - s2(PH_DISC_D/2) * 0.7, cy2a - s2(PH_DISC_D/2) * 0.7,
-       cx2a - 55, cy2a - 30,
+       cx2a - 110, cy2a - 60,
        'Ø50 PINHOLE DISC\nSS-302 SHIM\nØ2.17 APERTURE', fs=5, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 28, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
+ax2.text(cx2a, cy2a - s2(CARR_OD/2) - 56, 'PANEL A — ICP-02 FRONT FACE (1:2)\nExterior / scene-facing side',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL B: ICP-02 rear face at 1:2 ─────────────────────────────────────────
-ax2.text(340, 490, 'PANEL B — ICP-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
-ax2.plot([340, 640], [487, 487], color='black', lw=0.7)
+ax2.text(680, 980, 'PANEL B — ICP-02 REAR FACE (1:2)', fontsize=7.5, fontweight='bold')
+ax2.plot([680, 1280], [974, 974], color='black', lw=0.7)
 
-cx2b, cy2b = 490, 355
+cx2b, cy2b = 980, 710
 
 carr_p2 = mpatches.Circle((cx2b, cy2b), s2(CARR_OD/2),
                            lw=LW_THICK, edgecolor=C_OUT, facecolor='#C0C0C0', zorder=3)
@@ -642,27 +642,27 @@ draw_circle(ax2, cx2b, cy2b, s2(BELL_ID/2), lw=LW_MED, color=C_GASKT, ls='--')
 draw_cl(ax2, cx2b, cy2b, s2(CARR_OD/2)*1.2)
 
 leader(ax2, cx2b + s2(BRG_SHANK_D/2)*0.7, cy2b + s2(BRG_SHANK_D/2)*0.7,
-       cx2b + 30, cy2b + 30,
+       cx2b + 60, cy2b + 60,
        'Ø50 k5 SHANK\n× 35 LONG\n(BEARING INNER)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2b - s2(BELL_ID/2)*0.7, cy2b,
-       cx2b - 58, cy2b + 5,
+       cx2b - 116, cy2b + 10,
        'Ø290 BELLOWS\nGROOVE\n4 WIDE × 3 DEEP', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2b + s2(SOCK_PCD/2)*np.cos(np.radians(-45)),
        cy2b + s2(SOCK_PCD/2)*np.sin(np.radians(-45)),
-       cx2b + 50, cy2b - 20,
+       cx2b + 100, cy2b - 40,
        '4×Ø16 H7\nINSERT BORES\n(REAR SIDE)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2b - s2(8) * 0.7, cy2b - s2(8) * 0.7,
-       cx2b - 55, cy2b - 25,
+       cx2b - 110, cy2b - 50,
        'M16 TAPPED\nCENTRAL HOLE', fs=5, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 28, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
+ax2.text(cx2b, cy2b - s2(CARR_OD/2) - 56, 'PANEL B — ICP-02 REAR FACE (1:2)\nBearing-side / interior',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL C: Bearing section detail (1:1) ─────────────────────────────────────
-ax2.text(15, 215, 'PANEL C — GE50-DO-2RS BEARING SECTION (1:1)', fontsize=7.5, fontweight='bold')
-ax2.plot([15, 345], [212, 212], color='black', lw=0.7)
+ax2.text(30, 430, 'PANEL C — GE50-DO-2RS BEARING SECTION (1:1)', fontsize=7.5, fontweight='bold')
+ax2.plot([30, 690], [424, 424], color='black', lw=0.7)
 
-cx2c, cy2c = 145, 125
+cx2c, cy2c = 290, 250
 
 SC1 = 1.0
 def s1b(mm): return mm * SC1
@@ -729,40 +729,40 @@ for sy in [or_bot, or_top - s1b(3)]:
     ax2.add_patch(seal_p)
 
 # Centreline
-ax2.plot([cx2c, cx2c], [or_bot - 20, or_top + 20],
+ax2.plot([cx2c, cx2c], [or_bot - 40, or_top + 40],
          color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
 # Dimensions
-draw_dim_h(ax2, or_left - frame_ctx_w, or_right + frame_ctx_w, or_top + 12,
-           f'Ø{BRG_OD} OD', above=True, fs=5, offset=3.6)
-draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 18,
-           f'Ø{BRG_ID} BORE', above=False, fs=5, offset=3.6)
-draw_dim_v(ax2, or_right + frame_ctx_w + 10, or_bot, or_top, f'{BRG_W} WIDE', right=True, fs=5, offset=3.6)
+draw_dim_h(ax2, or_left - frame_ctx_w, or_right + frame_ctx_w, or_top + 24,
+           f'Ø{BRG_OD} OD', above=True, fs=5, offset=7.2)
+draw_dim_h(ax2, cx2c - s1b(BRG_ID/2), cx2c + s1b(BRG_ID/2), or_bot - 36,
+           f'Ø{BRG_ID} BORE', above=False, fs=5, offset=7.2)
+draw_dim_v(ax2, or_right + frame_ctx_w + 20, or_bot, or_top, f'{BRG_W} WIDE', right=True, fs=5, offset=7.2)
 
 leader(ax2, ptfe_right_x, cy2c,
-       cx2c + 85, cy2c + 25,
+       cx2c + 170, cy2c + 50,
        'PTFE COMPOSITE\nLINING (2RS SEALED)\n±15° MISALIGN', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_left - frame_ctx_w/2, cy2c,
-       cx2c - 75, cy2c - 35,
+       cx2c - 150, cy2c - 70,
        'ICP-01\nFRAME\nAl 6061', fs=4.8, color=C_DIM, arrow_style='->')
-leader(ax2, cx2c - 15, or_bot - s1b(8),
-       cx2c - 55, cy2c - 40,
+leader(ax2, cx2c - 30, or_bot - s1b(8),
+       cx2c - 110, cy2c - 80,
        'ICP-02\nSHANK\nØ50 k5', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, cx2c + ir_outer_r, or_bot + s1b(1.5),
-       cx2c + 75, cy2c - 45,
+       cx2c + 150, cy2c - 90,
        'RUBBER\nSEAL (2RS)', fs=4.8, color=C_DIM, arrow_style='->')
 leader(ax2, or_right - out_ring_wall/2, or_top,
-       cx2c + 85, cy2c + 42,
+       cx2c + 170, cy2c + 84,
        'OUTER RING\n(PRESS-FIT H7/r6)', fs=4.8, color=C_DIM, arrow_style='->')
 
-ax2.text(cx2c, or_bot - 28, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
+ax2.text(cx2c, or_bot - 56, 'SKF GE50-DO-2RS  (or INA / Kaydon equivalent)\nPress-fit outer ring H7/r6  •  Ø50 k5 shank',
          ha='center', fontsize=5, style='italic', color='#333333')
 
 # ── PANEL D: Adjustment screw detail (1:1) ────────────────────────────────────
-ax2.text(360, 215, 'PANEL D — ADJUSTMENT SCREW DETAIL (1:1)', fontsize=7.5, fontweight='bold')
-ax2.plot([360, 695], [212, 212], color='black', lw=0.7)
+ax2.text(720, 430, 'PANEL D — ADJUSTMENT SCREW DETAIL (1:1)', fontsize=7.5, fontweight='bold')
+ax2.plot([720, 1390], [424, 424], color='black', lw=0.7)
 
-cx2d, cy2d = 424, 130
+cx2d, cy2d = 848, 260
 
 # Frame boss (outer adapter frame wall in section)
 frame_wall_w = s1b(35)
@@ -796,7 +796,7 @@ ax2.add_patch(screw_p)
 # Thread representation (dashed lines)
 for i in range(1, 9):
     tx = cx2d + i * screw_len/9
-    ax2.plot([tx, tx], [cy2d - s1b(ADJ_D/2) - 1, cy2d + s1b(ADJ_D/2) + 1],
+    ax2.plot([tx, tx], [cy2d - s1b(ADJ_D/2) - 2, cy2d + s1b(ADJ_D/2) + 2],
              color=C_HID, lw=0.4, ls='--')
 
 # Knob at right end
@@ -831,36 +831,36 @@ ax2.plot(ball_x2 - s1b(8) + s1b(BALL_D/2)*np.cos(theta),
          color=C_HID, lw=0.8, ls='--', zorder=7)
 
 # Horizontal centerline through screw
-ax2.plot([cx2d - frame_wall_w - 5, cx2d + screw_len + s1b(KNOB_H) + 5],
+ax2.plot([cx2d - frame_wall_w - 10, cx2d + screw_len + s1b(KNOB_H) + 10],
          [cy2d, cy2d], color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
 # Dims and leaders
-draw_dim_h(ax2, cx2d, cx2d + screw_len, cy2d + s1b(KNOB_D/2) + 12,
-           'M8 × 1.0 × 80 SCREW', above=True, fs=5, offset=3.6)
+draw_dim_h(ax2, cx2d, cx2d + screw_len, cy2d + s1b(KNOB_D/2) + 24,
+           'M8 × 1.0 × 80 SCREW', above=True, fs=5, offset=7.2)
 draw_dim_h(ax2, cx2d - frame_wall_w, cx2d - frame_wall_w + bush_w,
-           cy2d - s1b(KNOB_D/2) - 12, f'BUSH L={BUSH_L}', above=False, fs=5, offset=3.6)
+           cy2d - s1b(KNOB_D/2) - 24, f'BUSH L={BUSH_L}', above=False, fs=5, offset=7.2)
 
 leader(ax2, cx2d + screw_len + s1b(KNOB_H)/2, cy2d + s1b(KNOB_D/2),
-       cx2d + screw_len + s1b(KNOB_H) + 12, cy2d + 10,
+       cx2d + screw_len + s1b(KNOB_H) + 24, cy2d + 20,
        'Ø40 KNURLED KNOB\n36-DETENT\n0.012°/CLICK', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w + bush_w/2, cy2d + s1b(BUSH_OD/2),
-       cx2d - frame_wall_w - 25, cy2d + 14,
+       cx2d - frame_wall_w - 50, cy2d + 28,
        'DELRIN/POM\nGUIDE BUSHING\nM22×1.0 OD', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - s1b(8), cy2d - s1b(BALL_D/2),
-       ball_x2 - s1b(8) - 55, cy2d - 18,
+       ball_x2 - s1b(8) - 110, cy2d - 36,
        '440C SS INSERT\nHEMI SOCKET\nRa 0.4 GROUND', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2, cy2d + s1b(BALL_D/2),
-       ball_x2 + 14, cy2d + 12,
+       ball_x2 + 28, cy2d + 24,
        'Ø8 Gr25\nCHROME\nSTEEL BALL', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, ball_x2 - carrier_rim_w/2, cy2d + s1b(CARR_THICK/2),
-       ball_x2 - carrier_rim_w - 35, cy2d + 25,
+       ball_x2 - carrier_rim_w - 70, cy2d + 50,
        'ICP-02\nCARRIER RIM', fs=5, color=C_DIM, arrow_style='->')
 leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30),
-       cx2d - frame_wall_w/2, cy2d + s1b(30) + 10,
+       cx2d - frame_wall_w/2, cy2d + s1b(30) + 20,
        'ICP-01\nFRAME WALL', fs=5, color=C_DIM, arrow_style='->')
 
 # Angular resolution table — top right of Panel D
-tbl_x, tbl_y = 580, 207
+tbl_x, tbl_y = 1160, 414
 ax2.text(tbl_x, tbl_y, 'ANGULAR RESOLUTION', fontsize=6, fontweight='bold', color='black')
 rows = [
     ('Arm radius (pivot→ball)', '130 mm'),
@@ -873,11 +873,11 @@ rows = [
     ('Hard stop travel', '±12 mm = ±5.3°'),
 ]
 for i, (k, v) in enumerate(rows):
-    ry = tbl_y - 10 - i*9
+    ry = tbl_y - 20 - i*18
     bg = '#F8F8F8' if i%2==0 else 'white'
-    draw_rect(ax2, tbl_x - 2, ry - 7, 110, 9, lw=0.15, color='#DDDDDD', fc=bg, zorder=1)
+    draw_rect(ax2, tbl_x - 4, ry - 14, 220, 18, lw=0.15, color='#DDDDDD', fc=bg, zorder=1)
     ax2.text(tbl_x, ry, k, fontsize=4.5, color='black', zorder=10)
-    ax2.text(tbl_x + 68, ry, v, fontsize=4.5, color='black', fontweight='bold', zorder=10)
+    ax2.text(tbl_x + 136, ry, v, fontsize=4.5, color='black', fontweight='bold', zorder=10)
 
 out2 = 'diagrams/tilt-swing-board-sheet2.png'
 fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
@@ -890,27 +890,28 @@ print(f'  → {out2}  Done.')
 # SHEET 3 — Bellows, Locking, Scale & Swap Procedure
 # ═══════════════════════════════════════════════════════════════════════════════
 
-FH3 = int(FH * 1.3)  # 30% taller canvas to shift content up
-fig3, ax3 = plt.subplots(figsize=(FW/25.4*0.9, FH3/25.4*0.9))
+FH3_FIG = int(FH * 1.3)
+FW3, FH3 = 1400, 1300
+fig3, ax3 = plt.subplots(figsize=(FW/25.4*0.9, FH3_FIG/25.4*0.9))
 fig3.patch.set_facecolor('white')
 ax3.set_facecolor('white')
 ax3.set_aspect('equal')
 ax3.axis('off')
-ax3.set_xlim(0, FW)
+ax3.set_xlim(0, FW3)
 ax3.set_ylim(0, FH3)
-S3_UP = FH3 - FH  # vertical shift = 150
+S3_UP = FH3 - FH2  # vertical shift = 300
 
 title_block(ax3, "SHEET 3 OF 3",
             drawing_title="TILT-SWING FRONT BOARD",
             subtitle="Bellows seal, Locking, Calibration scale & Swap procedure",
-            scale_note="AS NOTED",
+            scale_note="AXES IN mm",
             doc_id="TBS-TSB · Tilt-Swing Board")
 
 # ── PANEL A: Bellows section at 0° and 5° tilt ────────────────────────────────
-ax3.text(15, 490 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 480], [487 + S3_UP, 487 + S3_UP], color='black', lw=0.7)
+ax3.text(30, 980 + S3_UP, 'PANEL A — BELLOWS SECTION: NEUTRAL (solid) & 5° TILT (dashed) (1:2)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([30, 960], [974 + S3_UP, 974 + S3_UP], color='black', lw=0.7)
 
-cx3a, cy3a = 200, 430 + S3_UP
+cx3a, cy3a = 400, 860 + S3_UP
 
 def draw_bellows_section(ax, cx, cy, tilt_deg, lw_style='-', alpha=1.0):
     """Draw bellows accordion cross-section for given tilt angle."""
@@ -962,82 +963,82 @@ draw_bellows_section(ax3, cx3a, cy3a, 5, lw_style='--', alpha=0.7)
 
 # Context: outer frame and carrier plate in section
 frame_bar_h = s2(10)
-draw_rect(ax3, cx3a - s2(BELL_OD/2) - 15, cy3a, 15 + s2(BELL_OD) + 15, frame_bar_h,
+draw_rect(ax3, cx3a - s2(BELL_OD/2) - 30, cy3a, 30 + s2(BELL_OD) + 30, frame_bar_h,
           lw=LW_MED, color=C_OUT, fc=C_ALUM)
 ax3.text(cx3a, cy3a + frame_bar_h/2, 'ICP-01 OUTER FRAME', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 carr_bar_h = s2(10)
 # Neutral position carrier
-draw_rect(ax3, cx3a - s2(BELL_ID/2) - 10, cy3a - s2(BELL_FREE) - carr_bar_h,
-          s2(BELL_ID) + 20, carr_bar_h, lw=LW_MED, color=C_OUT, fc='#C0C0C0')
+draw_rect(ax3, cx3a - s2(BELL_ID/2) - 20, cy3a - s2(BELL_FREE) - carr_bar_h,
+          s2(BELL_ID) + 40, carr_bar_h, lw=LW_MED, color=C_OUT, fc='#C0C0C0')
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h/2,
          'ICP-02 CARRIER (NEUTRAL)', ha='center', va='center', fontsize=4.5, color='black', zorder=10)
 
 # Dimensions
-draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 15, cy3a - s2(BELL_FREE), cy3a,
-           f'{BELL_FREE} FREE LEN', right=True, fs=5, offset=4.5)
-draw_dim_h(ax3, cx3a - s2(BELL_OD/2), cx3a + s2(BELL_OD/2), cy3a + frame_bar_h + 14,
-           f'OD Ø{BELL_OD}', above=True, fs=5, offset=4.5)
+draw_dim_v(ax3, cx3a + s2(BELL_OD/2) + 30, cy3a - s2(BELL_FREE), cy3a,
+           f'{BELL_FREE} FREE LEN', right=True, fs=5, offset=9)
+draw_dim_h(ax3, cx3a - s2(BELL_OD/2), cx3a + s2(BELL_OD/2), cy3a + frame_bar_h + 28,
+           f'OD Ø{BELL_OD}', above=True, fs=5, offset=9)
 draw_dim_h(ax3, cx3a - s2(BELL_ID/2), cx3a + s2(BELL_ID/2),
-           cy3a - s2(BELL_FREE) - carr_bar_h - 14, f'ID Ø{BELL_ID}', above=False, fs=5, offset=4.5)
+           cy3a - s2(BELL_FREE) - carr_bar_h - 28, f'ID Ø{BELL_ID}', above=False, fs=5, offset=9)
 
-ax3.text(cx3a + s2(BELL_OD/2) + 52, cy3a - s2(BELL_FREE*0.5),
+ax3.text(cx3a + s2(BELL_OD/2) + 104, cy3a - s2(BELL_FREE*0.5),
          '——— NEUTRAL (0°)\n- - - - 5° TILT\n(asymmetric compression\nleft side: −13.9 mm\nright side: +13.9 mm)',
          fontsize=5, va='center', color='#333333', zorder=10)
 
-ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 30,
+ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
          'BELLOWS ICP-10: Matte black neoprene/nylon  •  0.5 mm wall  •  4 pleats  •  15 mm pleat depth\nInner+outer flanges sealed with Ø4 mm neoprene cord gaskets (same spec as wall-frame seal)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
-ax3.text(15, 245 + S3_UP, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 200], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
+ax3.text(30, 490 + S3_UP, 'PANEL B — LOCKING SET SCREW (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([30, 400], [484 + S3_UP, 484 + S3_UP], color='black', lw=0.7)
 
-cx3b, cy3b = 80, 175 + S3_UP
+cx3b, cy3b = 160, 350 + S3_UP
 
 # M8 screw shaft (horizontal)
-m8_sh = mpatches.Rectangle((cx3b - 40, cy3b - 4), 80, 8,
+m8_sh = mpatches.Rectangle((cx3b - 80, cy3b - 8), 160, 16,
                              lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL)
 ax3.add_patch(m8_sh)
 # M6 set screw (vertical, crossing M8)
-m6_sh = mpatches.Rectangle((cx3b - 4, cy3b + 4), 8, 25,
+m6_sh = mpatches.Rectangle((cx3b - 8, cy3b + 8), 16, 50,
                               lw=LW_MED, edgecolor=C_OUT, facecolor=C_STEEL, zorder=5)
 ax3.add_patch(m6_sh)
 # Nylon tip at bottom
-ny_p = mpatches.Rectangle((cx3b - 3, cy3b + 4), 6, 5,
+ny_p = mpatches.Rectangle((cx3b - 6, cy3b + 8), 12, 10,
                             lw=0.5, edgecolor=C_OUT, facecolor='#F0E080', zorder=6)
 ax3.add_patch(ny_p)
 # Hex key socket (top of M6)
-ax3.plot([cx3b - 2.5, cx3b + 2.5], [cy3b + 29, cy3b + 29], color=C_OUT, lw=2.0)
-ax3.plot([cx3b - 1.5, cx3b - 1.5], [cy3b + 27, cy3b + 29], color=C_OUT, lw=1.0)
-ax3.plot([cx3b + 1.5, cx3b + 1.5], [cy3b + 27, cy3b + 29], color=C_OUT, lw=1.0)
+ax3.plot([cx3b - 5, cx3b + 5], [cy3b + 58, cy3b + 58], color=C_OUT, lw=2.0)
+ax3.plot([cx3b - 3, cx3b - 3], [cy3b + 54, cy3b + 58], color=C_OUT, lw=1.0)
+ax3.plot([cx3b + 3, cx3b + 3], [cy3b + 54, cy3b + 58], color=C_OUT, lw=1.0)
 # Boss context (frame)
-fr3b = mpatches.Rectangle((cx3b - 40, cy3b - 12), 80, 8,
+fr3b = mpatches.Rectangle((cx3b - 80, cy3b - 24), 160, 16,
                             lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax3.add_patch(fr3b)
-fr3bt = mpatches.Rectangle((cx3b - 8, cy3b + 29), 16, 10,
+fr3bt = mpatches.Rectangle((cx3b - 16, cy3b + 58), 32, 20,
                              lw=LW_MED, edgecolor=C_OUT, facecolor=C_ALUM)
 ax3.add_patch(fr3bt)
 
-leader(ax3, cx3b + 4, cy3b + 18,
-       cx3b + 30, cy3b + 20,
+leader(ax3, cx3b + 8, cy3b + 36,
+       cx3b + 60, cy3b + 40,
        'M6×1.0\nNYLON-TIP\nSET SCREW', fs=5, color=C_DIM, arrow_style='->')
-leader(ax3, cx3b + 40, cy3b - 2,
-       cx3b + 30, cy3b - 2,
+leader(ax3, cx3b + 80, cy3b - 4,
+       cx3b + 60, cy3b - 4,
        'M8×1.0\nADJ SCREW\nSHANK', fs=5, color=C_DIM, arrow_style='->')
-leader(ax3, cx3b - 4, cy3b + 6,
-       cx3b - 40, cy3b + 10,
+leader(ax3, cx3b - 8, cy3b + 12,
+       cx3b - 80, cy3b + 20,
        'NYLON\nTIP', fs=5, color=C_DIM, arrow_style='->')
-ax3.text(cx3b + 3, cy3b + 31, '3mm HEX', fontsize=4.5, color='#333333', zorder=10)
-ax3.text(cx3b, cy3b - 28, 'Tighten set screw onto adj screw shank\nafter desired angle is set. 4 off (one per axis)',
+ax3.text(cx3b + 6, cy3b + 62, '3mm HEX', fontsize=4.5, color='#333333', zorder=10)
+ax3.text(cx3b, cy3b - 56, 'Tighten set screw onto adj screw shank\nafter desired angle is set. 4 off (one per axis)',
          ha='center', fontsize=4.8, style='italic', color='#333333', zorder=10)
 
 # ── PANEL C: Knob detail (2:1) ────────────────────────────────────────────────
-ax3.text(215, 245 + S3_UP, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([215, 420], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
+ax3.text(430, 490 + S3_UP, 'PANEL C — KNOB DETAIL (2:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([430, 840], [484 + S3_UP, 484 + S3_UP], color='black', lw=0.7)
 
-cx3c, cy3c = 305, 175 + S3_UP
-SC_knob = 2.0
+cx3c, cy3c = 610, 350 + S3_UP
+SC_knob = 4.0
 def sk(mm): return mm * SC_knob
 
 # Knob in section view
@@ -1071,39 +1072,39 @@ for ky_off in np.linspace(-sk(KNOB_D/2)*0.9, sk(KNOB_D/2)*0.9, 10):
     ax3.plot([cx3c - sk(KNOB_H/2) + sk(1), cx3c + sk(KNOB_H/2) - sk(1)],
              [cy3c + ky_off, cy3c + ky_off], color='#888888', lw=0.4)
 # Label engraved on face (top)
-ax3.text(cx3c, cy3c + sk(KNOB_D/2) + 5, '"TILT +"', fontsize=5, ha='center',
+ax3.text(cx3c, cy3c + sk(KNOB_D/2) + 10, '"TILT +"', fontsize=5, ha='center',
          color='#333333', style='italic', zorder=10)
 
 draw_dim_h(ax3, cx3c - sk(KNOB_H/2), cx3c + sk(KNOB_H/2),
-           cy3c - sk(KNOB_D/2) - 12, f'{KNOB_H} WIDE', above=False, fs=5, offset=3)
-draw_dim_v(ax3, cx3c + sk(KNOB_H/2) + 12, cy3c - sk(KNOB_D/2), cy3c + sk(KNOB_D/2),
-           f'Ø{KNOB_D}', right=True, fs=5, offset=3)
+           cy3c - sk(KNOB_D/2) - 24, f'{KNOB_H} WIDE', above=False, fs=5, offset=6)
+draw_dim_v(ax3, cx3c + sk(KNOB_H/2) + 24, cy3c - sk(KNOB_D/2), cy3c + sk(KNOB_D/2),
+           f'Ø{KNOB_D}', right=True, fs=5, offset=6)
 
 leader(ax3, det_x, cy3c + sk(KNOB_D/2) - sk(2),
-       cx3c + 55, cy3c + 12,
+       cx3c + 110, cy3c + 24,
        '36-DETENT\nSPRING BALL\n(5° PER CLICK)', fs=5, color=C_DIM, arrow_style='->')
 leader(ax3, cx3c + sk(3), cy3c + sk(ADJ_D/2 - 1.5),
-       cx3c + 55, cy3c - 10,
+       cx3c + 110, cy3c - 20,
        'FLAT/KEYWAY\n(ANTI-SPIN)', fs=5, color=C_DIM, arrow_style='->')
 
-ax3.text(cx3c, cy3c - sk(KNOB_D/2) - 28,
+ax3.text(cx3c, cy3c - sk(KNOB_D/2) - 56,
          'Black anodize = TILT axis  |  Natural anodize = SWING axis\nEngraved label on knob face: TILT+ / TILT− / SWING+ / SWING−',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL D: Angular scale layout ─────────────────────────────────────────────
-ax3.text(430, 245 + S3_UP, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([430, 695], [242 + S3_UP, 242 + S3_UP], color='black', lw=0.7)
+ax3.text(860, 490 + S3_UP, 'PANEL D — ANGULAR CALIBRATION SCALE (1:1)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([860, 1390], [484 + S3_UP, 484 + S3_UP], color='black', lw=0.7)
 
-cx3d, cy3d = 530, 175 + S3_UP
+cx3d, cy3d = 1060, 350 + S3_UP
 arm = 130  # mm arm radius
 scale_w_mm = 80  # scale total width in mm
 
-ax3.text(cx3d, 240 + S3_UP, 'Non-linear (tangent) scale: position = 80 × tan(θ)/tan(5°) mm',
+ax3.text(cx3d, 480 + S3_UP, 'Non-linear (tangent) scale: position = 80 × tan(θ)/tan(5°) mm',
          ha='center', fontsize=5, color='#333333', style='italic', zorder=10)
 
 # Draw the scale strip
-scale_strip_w = 80  # drawing units = mm at 1:1
-scale_strip_h = 12
+scale_strip_w = 160
+scale_strip_h = 24
 draw_rect(ax3, cx3d - scale_strip_w/2, cy3d - scale_strip_h/2,
           scale_strip_w, scale_strip_h, lw=LW_MED, color=C_OUT, fc='#F8F8F8')
 
@@ -1116,7 +1117,7 @@ for deg in np.arange(-5, 5.5, 0.5):
              [cy3d + scale_strip_h/2 - tick_h, cy3d + scale_strip_h/2],
              color='black', lw=1.0 if is_major else 0.5)
     if is_major:
-        ax3.text(x_pos, cy3d - scale_strip_h/2 - 3, f'{deg:+.0f}°',
+        ax3.text(x_pos, cy3d - scale_strip_h/2 - 6, f'{deg:+.0f}°',
                  ha='center', va='top', fontsize=4.5, color='black', zorder=10)
 
 ax3.text(cx3d, cy3d, '0', ha='center', va='center', fontsize=6, fontweight='bold', color=C_RED, zorder=10)
@@ -1124,19 +1125,19 @@ ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
          color=C_RED, lw=1.0)
 
 draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
-           cy3d + scale_strip_h/2 + 10, '80 mm TOTAL', above=True, fs=5, offset=3)
-ax3.text(cx3d, cy3d - scale_strip_h/2 - 20,
+           cy3d + scale_strip_h/2 + 20, '80 mm TOTAL', above=True, fs=5, offset=6)
+ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
          '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
-S3_E_DN = int(FH3 * 0.10)  # 10% drop for Panel E separation
+S3_E_DN = int(FH3 * 0.10)
 
 # ── Separator line between panels B/C/D and panel E ──────────────────────────
-ax3.plot([15, 685], [135 + S3_UP - S3_E_DN, 135 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)
+ax3.plot([30, 1370], [270 + S3_UP - S3_E_DN, 270 + S3_UP - S3_E_DN], color='#999999', lw=0.5, linestyle='--', zorder=5)
 
 # ── PANEL E: Swap sequence ────────────────────────────────────────────────────
-ax3.text(15, 125 + S3_UP - S3_E_DN, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
-ax3.plot([15, 695], [122 + S3_UP - S3_E_DN, 122 + S3_UP - S3_E_DN], color='black', lw=0.7)
+ax3.text(30, 250 + S3_UP - S3_E_DN, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY ↔ STANDARD PINHOLE PLATE)', fontsize=7.5, fontweight='bold', zorder=10)
+ax3.plot([30, 1390], [244 + S3_UP - S3_E_DN, 244 + S3_UP - S3_E_DN], color='black', lw=0.7)
 
 steps = [
     ('①', 'LOOSEN 4×\nLOCK SCREWS', '3 mm hex key\nM6 set screws'),
@@ -1146,23 +1147,23 @@ steps = [
     ('⑤', 'FIT STANDARD\nPINHOLE PLATE', 'Locate on same\ndowels — re-bolt'),
 ]
 
-step_w = 120
-step_gap = 15
+step_w = 240
+step_gap = 30
 for i, (num, title, note) in enumerate(steps):
-    sx = 20 + i * (step_w + step_gap)
-    sy = 60 + S3_UP - S3_E_DN
-    draw_rect(ax3, sx, sy, step_w, 55, lw=1.0, color='black', fc='#F0F0F0')
-    ax3.text(sx + step_w/2, sy + 48, num, ha='center', fontsize=14,
+    sx = 40 + i * (step_w + step_gap)
+    sy = 120 + S3_UP - S3_E_DN
+    draw_rect(ax3, sx, sy, step_w, 110, lw=1.0, color='black', fc='#F0F0F0')
+    ax3.text(sx + step_w/2, sy + 96, num, ha='center', fontsize=14,
              fontweight='bold', color='black', zorder=10)
-    ax3.text(sx + step_w/2, sy + 32, title, ha='center', fontsize=6.5,
+    ax3.text(sx + step_w/2, sy + 64, title, ha='center', fontsize=6.5,
              fontweight='bold', color='black', zorder=10)
-    ax3.text(sx + step_w/2, sy + 12, note, ha='center', fontsize=5.5,
+    ax3.text(sx + step_w/2, sy + 24, note, ha='center', fontsize=5.5,
              color='#555555', style='italic', zorder=10)
     if i < 4:
-        ax3.annotate('', xy=(sx + step_w + 13, sy + 27), xytext=(sx + step_w + 2, sy + 27),
+        ax3.annotate('', xy=(sx + step_w + 26, sy + 54), xytext=(sx + step_w + 4, sy + 54),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
-ax3.text(695/2, 45 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
+ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'

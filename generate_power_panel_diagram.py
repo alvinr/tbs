@@ -85,9 +85,8 @@ def draw_sheet1():
     ax_a.set_aspect("equal")
     ax_a.axis("off")
 
-    S = 2.0  # scale: 2:1
-    def sx(mm): return mm * S
-    def sy(mm): return mm * S
+    def sx(mm): return mm
+    def sy(mm): return mm
 
     pad = 80
     ax_a.set_xlim(sx(-pad), sx(PLATE_W + pad))
@@ -188,11 +187,9 @@ def draw_sheet1():
     ax_b.set_aspect("equal")
     ax_b.axis("off")
 
-    # Exaggerated scale for section detail
-    # Horizontal = depth axis, Vertical = height
-    Sb = 3.0
-    def bx(mm): return mm * Sb
-    def by(mm): return mm * Sb
+    # Depth axis values are intentionally exaggerated for readability
+    def bx(mm): return mm
+    def by(mm): return mm
 
     # All vertical dimensions use a consistent mm_unit so that the plate
     # (3mm thick on depth axis), bolts (M6 = 6mm shaft), cutout (180mm),
@@ -478,7 +475,7 @@ def draw_sheet1():
     title_block(ax_tb, "SHEET 1 OF 1",
                 drawing_title="EXTERNAL POWER PANEL — FLUSH MOUNT",
                 subtitle="FRONT ELEVATION · WALL SECTION · WIRING SCHEMATIC",
-                scale_note="VIEWS A/B APPROX. · ALL DIMS IN mm",
+                scale_note="AXES IN mm",
                 height=0.85)
 
     fig.savefig(f"{DIAGRAMS_DIR}/power-panel-sheet1.png",

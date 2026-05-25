@@ -28,7 +28,7 @@ import matplotlib.patches as mpatches
 from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PH_X, PH_H, PH_D,
-    EVAP_X, EVAP_W, EVAP_H, EVAP_D,
+    EVAP_W, EVAP_H, EVAP_D,
     EP_X, EP_W,
     BA_X, BA_W,
     PUMP_X, PUMP_W,
@@ -50,6 +50,8 @@ from tbs_constants import (
 )
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes
 from tbs_title_block import title_block
+
+EVAP_X = 930  # old evap position (removed in rev7 — shown ghosted)
 
 # ── Proposed positions ─────────────────────────────────────────────────────
 
@@ -166,35 +168,34 @@ FILT_BB_H = 530     # housing total height (mm)
 FILT_HEAD_H = 70    # head height (mm)
 
 # ── Scale and layout ───────────────────────────────────────────────────────
-S = 0.00335
-FW = 26.0
-FH_ELEV = 12.0      # elevation panel height (inches)
-FH_PLAN = 5.0       # plan view panel height (inches)
-FH_TOTAL = FH_ELEV + FH_PLAN
-FH = FH_ELEV         # alias for elevation
-OX = 2.5
-OZ = 2.5
+FW_IN = 26.0
+FH_ELEV_IN = 12.0
+FH_PLAN_IN = 5.0
+FH_TOTAL_IN = FH_ELEV_IN + FH_PLAN_IN
 
 # ── Figure setup — 3 panels ───────────────────────────────────────────────
 # Elevation (top-left, ~78% width), Detail (top-right, ~22%), Plan (bottom full)
-PLAN_FRAC = FH_PLAN / FH_TOTAL
-ELEV_FRAC = FH_ELEV / FH_TOTAL
-DETAIL_W_FRAC = 0.22   # detail panel takes 22% of figure width
+PLAN_FRAC = FH_PLAN_IN / FH_TOTAL_IN
+ELEV_FRAC = FH_ELEV_IN / FH_TOTAL_IN
+DETAIL_W_FRAC = 0.22
 ELEV_W_FRAC = 1.0 - DETAIL_W_FRAC
-ELEV_FW = FW * ELEV_W_FRAC
+
+# Elevation axis limits (mm)
+ELEV_XL, ELEV_XR = -750, 5310
+ELEV_ZB, ELEV_ZT = -750, 2840
 
 def sx(x_mm):
     """Mirrored X for elevation — works in both ax (cropped) and ax2 (full width)."""
-    return OX + (C_LEN - x_mm) * S
+    return C_LEN - x_mm
 
 def sz(z_mm):
-    return OZ + z_mm * S
+    return z_mm
 
-fig = plt.figure(figsize=(FW, FH_TOTAL), dpi=150)
+fig = plt.figure(figsize=(FW_IN, FH_TOTAL_IN), dpi=150)
 
 ax = fig.add_axes([0, PLAN_FRAC, ELEV_W_FRAC, ELEV_FRAC])
-ax.set_xlim(0, FW * ELEV_W_FRAC)
-ax.set_ylim(0, FH)
+ax.set_xlim(ELEV_XL, ELEV_XR)
+ax.set_ylim(ELEV_ZB, ELEV_ZT)
 ax.set_aspect("equal")
 ax.axis("off")
 
@@ -202,10 +203,19 @@ ax3 = fig.add_axes([ELEV_W_FRAC, PLAN_FRAC, DETAIL_W_FRAC, ELEV_FRAC])
 ax3.set_aspect("equal")
 ax3.axis("off")
 
+# Plan view: Yd reversed via subtraction (0=top); aspect auto ("NOT TO SCALE IN Yd")
+PLAN_YD_TOP = 1750
+
+def plan_sy(yd_mm):
+    return PLAN_YD_TOP - yd_mm
+
+def plan_sx(x_mm):
+    return C_LEN - x_mm
+
 ax2 = fig.add_axes([0, 0, 1, PLAN_FRAC])
-ax2.set_xlim(0, FW)
-ax2.set_ylim(0, FH_PLAN)
-ax2.set_aspect("equal")
+ax2.set_xlim(-750, 7020)
+ax2.set_ylim(0, 2750)
+ax2.set_aspect("auto")
 ax2.axis("off")
 
 FONT = {"fontfamily": "monospace"}
@@ -217,7 +227,7 @@ def equip_block(axes, x_mm, z_mm, w_mm, h_mm, label, fc, *,
     x_draw = sx(x_mm + w_mm)
     w_draw = sx(x_mm) - sx(x_mm + w_mm)
     rect = mpatches.FancyBboxPatch(
-        (x_draw, sz_fn(z_mm)), w_draw, (h_mm) * S if sz_fn == sz else (sz_fn(z_mm + h_mm) - sz_fn(z_mm)),
+        (x_draw, sz_fn(z_mm)), w_draw, h_mm if sz_fn == sz else (sz_fn(z_mm + h_mm) - sz_fn(z_mm)),
         boxstyle="square,pad=0", facecolor=fc, edgecolor=ec,
         linewidth=lw, linestyle=ls, alpha=alpha, zorder=zorder)
     axes.add_patch(rect)
@@ -245,7 +255,7 @@ wall_left = sx(C_LEN)
 wall_right = sx(0)
 wall_w = wall_right - wall_left
 ax.add_patch(mpatches.Rectangle(
-    (wall_left, sz(0)), wall_w, C_HGT * S,
+    (wall_left, sz(0)), wall_w, C_HGT,
     facecolor="white", edgecolor=C_OUT, linewidth=2.0, zorder=1))
 
 ax.plot([wall_left, wall_right], [sz(0), sz(0)], color=C_OUT, lw=2.5, zorder=2)
@@ -345,14 +355,14 @@ equip_block_elev(BA_X, BA_Z_LO_NEW, BA_W, BA_Z_HI_NEW - BA_Z_LO_NEW,
 
 # ── 6. Duct penetration (evap cooler) ────────────────────────────────────
 duct_r = DUCT_DIAM / 2
-circ = plt.Circle((sx(DUCT_X), sz(DUCT_Z)), duct_r * S,
+circ = plt.Circle((sx(DUCT_X), sz(DUCT_Z)), duct_r,
                    facecolor=C_DUCT, edgecolor=C_NEW, linewidth=2.0,
                    alpha=0.7, zorder=7)
 ax.add_patch(circ)
 ax.text(sx(DUCT_X), sz(DUCT_Z), "DUCT\n200Ø", ha="center", va="center",
         fontsize=4, color=C_OUT, fontweight="bold", zorder=8, **FONT)
-leader(ax, sx(DUCT_X) + duct_r * S + 0.05, sz(DUCT_Z),
-       sx(DUCT_X) + 0.7, sz(DUCT_Z) + 0.4,
+leader(ax, sx(DUCT_X) + duct_r + 15, sz(DUCT_Z),
+       sx(DUCT_X) + 210, sz(DUCT_Z) + 120,
        "EVAP COOLER DUCT\nTO EXTERNAL UNIT\n(200mm Ø, Z=2100)\nMOTORIZED DAMPER",
        fs=4.5, color=C_NEW, font=FONT)
 
@@ -361,25 +371,24 @@ leader(ax, sx(DUCT_X) + duct_r * S + 0.05, sz(DUCT_Z),
 ax.plot([sx(IBC_COL_X), sx(WK_X_L)],
         [sz(SPRAY_FEED_Z), sz(SPRAY_FEED_Z)],
         color=C_BLUE, lw=1.5, ls="-", zorder=6, alpha=0.6)
-ax.text(sx(3500), sz(SPRAY_FEED_Z) - 0.12,
+ax.text(sx(3500), sz(SPRAY_FEED_Z) - 36,
         "BLUE SUPPLY (½\" HDPE, Z=75, BELOW GRATING)", ha="center", va="top",
         fontsize=4.0, color=C_BLUE, zorder=10, **FONT)
 
 # ── 8. Tray sump marker (new position) ────────────────────────────────────
-sump_w_draw = PROC_TRAY_SUMP_W * S
 ax.add_patch(mpatches.Rectangle(
     (sx(SUMP_X_NEW + PROC_TRAY_SUMP_W / 2), sz(0)),
-    sump_w_draw, PROC_TRAY_SUMP_Z * S,
+    PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z,
     facecolor=C_NEW, edgecolor=C_NEW, linewidth=1.0, alpha=0.6, zorder=6))
 leader(ax, sx(SUMP_X_NEW), sz(PROC_TRAY_SUMP_Z),
-       sx(SUMP_X_NEW) + 0.5, sz(PROC_TRAY_SUMP_Z) + 0.5,
+       sx(SUMP_X_NEW) + 150, sz(PROC_TRAY_SUMP_Z) + 150,
        "SUMP (NEW)\nX=4550, Yd=80\nDIRECT TO P-04",
        fs=4, color=C_NEW, font=FONT)
 
 # ── 9. IBC zone boundary ─────────────────────────────────────────────────
 ax.plot([sx(ZONE_R_START), sx(ZONE_R_START)], [sz(0), sz(C_HGT)],
         color="#AA6600", lw=1.5, ls="-.", zorder=3, alpha=0.5)
-ax.text(sx(ZONE_R_START) + 0.08, sz(C_HGT - 100),
+ax.text(sx(ZONE_R_START) + 24, sz(C_HGT - 100),
         "IBC ZONE →", ha="left", va="top",
         fontsize=5, color="#AA6600", fontweight="bold", zorder=10, **FONT)
 
@@ -392,24 +401,24 @@ ax.text(sx((SHELF_X_L + SHELF_X_R) / 2), sz(SHELF_H - SHELF_T + 60),
         fontsize=4, color=C_SHELF_DK, zorder=10, **FONT)
 
 # ── 11. Pinhole position ─────────────────────────────────────────────────
-draw_cl(ax, sx(PH_X) - 0.15, sx(PH_X) + 0.15, sz(PH_H),
+draw_cl(ax, sx(PH_X) - 45, sx(PH_X) + 45, sz(PH_H),
         color=C_CL, lw=0.5, zorder=8)
 ax.plot(sx(PH_X), sz(PH_H), marker="+", color=C_CL, ms=8, mew=1.0, zorder=9)
-ax.text(sx(PH_X), sz(PH_H) + 0.15, f"PINHOLE\nX={PH_X}", ha="center",
+ax.text(sx(PH_X), sz(PH_H) + 45, f"PINHOLE\nX={PH_X}", ha="center",
         va="bottom", fontsize=4, color=C_CL, zorder=10, **FONT)
 
 # ── 12. Dimension lines for key positions ─────────────────────────────────
 # EP height
 draw_dim_v(ax, sx(EP_X - 40), sz(EP_Z_LO_NEW), sz(EP_Z_HI_NEW),
-           "600", offset=0.15, fs=4.5, color=C_NEW, right=False, font=FONT)
+           "600", offset=45, fs=4.5, color=C_NEW, right=False, font=FONT)
 
 # Battery height
 draw_dim_v(ax, sx(BA_X + BA_W + 40), sz(BA_Z_LO_NEW), sz(BA_Z_HI_NEW),
-           "500", offset=0.15, fs=4.5, color=C_NEW, right=True, font=FONT)
+           "500", offset=45, fs=4.5, color=C_NEW, right=True, font=FONT)
 
 # Duct Z dimension
 draw_dim_v(ax, sx(DUCT_X - 200), sz(C_HGT), sz(DUCT_Z - duct_r),
-           f"{C_HGT - DUCT_Z + int(duct_r)}", offset=0.1, fs=3.5,
+           f"{C_HGT - DUCT_Z + int(duct_r)}", offset=30, fs=3.5,
            color=C_DIM, right=False, font=FONT)
 
 # ── 13. Elevation notes ──────────────────────────────────────────────────
@@ -424,8 +433,8 @@ notes = [
     "7. Blue supply feed at Z=75 (below walkway grating).",
     "8. Walkway widened to 500mm at X=1600–2310 only (see plan view).",
 ]
-draw_notes(ax, notes, 0.105 * FW * ELEV_W_FRAC, 0.65 * FH, spacing=0.021 * FH,
-           fs=7, width=7.5, color=C_DIM, title_color=C_NEW, font=FONT)
+draw_notes(ax, notes, -110, 1580, spacing=75,
+           fs=7, width=2240, color=C_DIM, title_color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -434,8 +443,9 @@ draw_notes(ax, notes, 0.105 * FW * ELEV_W_FRAC, 0.65 * FH, spacing=0.021 * FH,
 # Simplified front elevation of the 18mm panel at Yd=600, showing all
 # relocated equipment.  Matches generate_panel_layout.py.
 
-DW = FW * DETAIL_W_FRAC
-DH = FH
+# Detail panel axis limits (mm)
+D_XL, D_XR = -60, 860
+D_ZB, D_ZT = -250, 1700
 
 # Panel-relative layout (mm) — mirrors generate_panel_layout.py
 D_PUMP_GAP = 40
@@ -460,38 +470,33 @@ D_PANEL_Z_TOP = D_ACC_Z + D_ACC_OD // 2 + D_PANEL_MARGIN + 40
 D_PANEL_W = D_PANEL_X_R
 D_PANEL_H = D_PANEL_Z_TOP - D_PANEL_Z_BOT
 
-# Scale to fit in detail panel
-D_SC = 160.0
-D_OX = 0.35
-D_OZ = 1.5
-
 def dsx(x_mm):
-    return D_OX + x_mm / D_SC
+    return x_mm
 
 def dsz(z_mm):
-    return D_OZ + z_mm / D_SC
+    return z_mm
 
-ax3.set_xlim(0, DW)
-ax3.set_ylim(0, DH)
+ax3.set_xlim(D_XL, D_XR)
+ax3.set_ylim(D_ZB, D_ZT)
 
 # ── Detail border ─────────────────────────────────────────────────────────
 ax3.add_patch(mpatches.Rectangle(
-    (0.15, 0.3), DW - 0.3, DH - 0.6,
+    (D_XL + 24, D_ZB + 48), (D_XR - D_XL) - 48, (D_ZT - D_ZB) - 96,
     fc="none", ec=C_DIM, lw=1.0, zorder=1))
 
 # ── Detail title ──────────────────────────────────────────────────────────
-ax3.text(DW / 2, DH - 0.3,
+ax3.text((D_XL + D_XR) / 2, D_ZT - 48,
         "DETAIL — EQUIPMENT PANEL",
         ha="center", va="top", fontsize=7, color=C_NEW,
         fontweight="bold", zorder=10, **FONT)
-ax3.text(DW / 2, DH - 0.8,
-        f"FRONT ELEVATION\n18mm PLY AT Yd={PANEL_YD_NEAR}\n{D_PANEL_W}mm \u00d7 {D_PANEL_H}mm\nSCALE ~1:{int(D_SC)}",
+ax3.text((D_XL + D_XR) / 2, D_ZT - 128,
+        f"FRONT ELEVATION\n18mm PLY AT Yd={PANEL_YD_NEAR}\n{D_PANEL_W}mm \u00d7 {D_PANEL_H}mm\nSCALE ~1:160",
         ha="center", va="top", fontsize=4, color=C_DIM,
         zorder=10, **FONT)
 
 # ── Panel outline (plywood) ──────────────────────────────────────────────
 ax3.add_patch(mpatches.Rectangle(
-    (dsx(0), dsz(D_PANEL_Z_BOT)), D_PANEL_W / D_SC, D_PANEL_H / D_SC,
+    (dsx(0), dsz(D_PANEL_Z_BOT)), D_PANEL_W, D_PANEL_H,
     fc=C_PLY, ec=C_PLY_EC, lw=2.0, zorder=3, alpha=0.5))
 
 # ── Floor line ────────────────────────────────────────────────────────────
@@ -508,7 +513,7 @@ d_pump_specs = [
 for pname, pdesc, pz, pcolor in d_pump_specs:
     ax3.add_patch(mpatches.Rectangle(
         (dsx(D_PUMP_COL - PUMP_BODY_W / 2), dsz(pz)),
-        PUMP_BODY_W / D_SC, PUMP_BODY_H / D_SC,
+        PUMP_BODY_W, PUMP_BODY_H,
         fc="#E0D0C0", ec="#806040", lw=1.0, zorder=6))
     ax3.text(dsx(D_PUMP_COL), dsz(pz + PUMP_BODY_H / 2 + 15),
             pname, ha="center", va="center",
@@ -519,7 +524,7 @@ for pname, pdesc, pz, pcolor in d_pump_specs:
 
 # ── ACC-01 (end-on circle) ───────────────────────────────────────────────
 ax3.add_patch(plt.Circle(
-    (dsx(D_PUMP_COL), dsz(D_ACC_Z)), D_ACC_OD / 2 / D_SC,
+    (dsx(D_PUMP_COL), dsz(D_ACC_Z)), D_ACC_OD / 2,
     fc="#5A9ACC", ec=C_BLUE, lw=1.0, zorder=6, alpha=0.7))
 ax3.text(dsx(D_PUMP_COL), dsz(D_ACC_Z),
         "ACC-01", ha="center", va="center",
@@ -535,11 +540,11 @@ d_filt_specs = [
 for fname, fx_c in d_filt_specs:
     ax3.add_patch(mpatches.Rectangle(
         (dsx(fx_c - FILT_BB_OD / 2), dsz(D_FILT_Z_BOT)),
-        FILT_BB_OD / D_SC, FILT_BB_H / D_SC,
+        FILT_BB_OD, FILT_BB_H,
         fc=C_FILTER, ec=C_OUT, lw=1.0, zorder=6, alpha=0.6))
     ax3.add_patch(mpatches.Rectangle(
         (dsx(fx_c - FILT_BB_OD / 2), dsz(D_FILT_Z_BOT + FILT_BB_H - FILT_HEAD_H)),
-        FILT_BB_OD / D_SC, FILT_HEAD_H / D_SC,
+        FILT_BB_OD, FILT_HEAD_H,
         fc="#3A70B0", ec=C_OUT, lw=0.6, zorder=6, alpha=0.7))
     ax3.text(dsx(fx_c), dsz(D_FILT_Z_BOT + FILT_BB_H / 2),
             fname, ha="center", va="center",
@@ -565,13 +570,13 @@ d_notes = [
     "3\u00d7 4.5\"\u00d720\" housings, sump-down",
     f"Max depth from panel: {max(PUMP_BODY_D, FILT_BB_OD)}mm",
 ]
-_dnx = 0.4
-_dny = dsz(0) - 0.2
+_dnx = 8
+_dny = dsz(0) - 32
 for i, line in enumerate(d_notes):
     _fs = 4 if i == 0 else 3.5
     _fc = C_NEW if i == 0 else C_DIM
     _fw = "bold" if i == 0 else "normal"
-    ax3.text(_dnx, _dny - i * 0.16, line,
+    ax3.text(_dnx, _dny - i * 26, line,
             fontsize=_fs, color=_fc, fontweight=_fw, zorder=10, **FONT)
 
 
@@ -580,17 +585,7 @@ for i, line in enumerate(d_notes):
 # PLAN VIEW — PROPOSED WALKWAY ACCESS
 # ═══════════════════════════════════════════════════════════════════════════
 
-PLAN_S_YD = S * 0.55
-PLAN_OYD_BOT = 0.8
-PLAN_OYD_TOP = PLAN_OYD_BOT + CORRIDOR_YD_FAR * PLAN_S_YD
-
-def plan_sy(yd_mm):
-    return PLAN_OYD_TOP - yd_mm * PLAN_S_YD
-
-
-def plan_sx(x_mm):
-    """Mirrored X for plan view (high X on left = IBC end)."""
-    return OX + (C_LEN - x_mm) * S
+# plan_sx and plan_sy defined above with axes setup
 
 
 def plan_block(xl, xr, yd_near, yd_far, label, fc, *,
@@ -617,7 +612,7 @@ def plan_block(xl, xr, yd_near, yd_far, label, fc, *,
 # ── Container wall line (Yd=0) ─────────────────────────────────────────────
 ax2.plot([plan_sx(0), plan_sx(C_LEN)], [plan_sy(0), plan_sy(0)],
         color=C_OUT, lw=2.5, zorder=2)
-ax2.text(plan_sx(C_LEN / 2), plan_sy(0) + 0.12,
+ax2.text(plan_sx(C_LEN / 2), plan_sy(0) + 66,
         "PINHOLE WALL (Yd = 0)", ha="center", va="bottom",
         fontsize=5, color=C_OUT, fontweight="bold", zorder=10, **FONT)
 
@@ -698,7 +693,7 @@ ax2.plot([plan_sx(WK_WIDE_X_R), plan_sx(WK_WIDE_X_R)],
 # Full-length 300mm reference line
 ax2.plot([plan_sx(0), plan_sx(C_LEN)], [plan_sy(WALKWAY_W), plan_sy(WALKWAY_W)],
         color=C_DIM, lw=0.4, ls=":", zorder=1, alpha=0.5)
-ax2.text(plan_sx(50), plan_sy(WALKWAY_W) - 0.06,
+ax2.text(plan_sx(50), plan_sy(WALKWAY_W) - 33,
         "STANDARD WALKWAY EDGE (Yd = 300)", ha="right", va="top",
         fontsize=4, color=C_DIM, zorder=10, **FONT)
 
@@ -787,14 +782,14 @@ ax2.text(plan_sx(PANEL_X), plan_sy(PANEL_YD_NEAR - 30),
 # ── Duct penetration in plan view ──────────────────────────────────────────
 # Duct passes through the wall in the Yd direction — plan view shows a
 # rectangle crossing the wall line, not a circle.
-duct_plan_w = DUCT_DIAM * S          # width in X (200mm scaled)
-duct_plan_l = 0.18                    # length in Yd (extends inside + outside)
+duct_plan_w = DUCT_DIAM
+duct_plan_l = 99
 ax2.add_patch(mpatches.Rectangle(
     (plan_sx(DUCT_X) - duct_plan_w / 2, plan_sy(0) - duct_plan_l / 2),
     duct_plan_w, duct_plan_l,
     facecolor=C_DUCT, edgecolor=C_NEW, linewidth=1.5,
     alpha=0.7, zorder=7))
-ax2.text(plan_sx(DUCT_X), plan_sy(0) - duct_plan_l / 2 - 0.06,
+ax2.text(plan_sx(DUCT_X), plan_sy(0) - duct_plan_l / 2 - 33,
         "DUCT 200Ø", ha="center", va="top",
         fontsize=4.0, color=C_NEW, fontweight="bold", zorder=8, **FONT)
 
@@ -802,7 +797,7 @@ ax2.text(plan_sx(DUCT_X), plan_sy(0) - duct_plan_l / 2 - 0.06,
 ax2.plot([plan_sx(IBC_COL_X), plan_sx(WK_X_L)],
         [plan_sy(5), plan_sy(5)],
         color=C_BLUE, lw=1.5, ls="-", zorder=6, alpha=0.5)
-ax2.text(plan_sx(3500), plan_sy(5) + 0.06,
+ax2.text(plan_sx(3500), plan_sy(5) + 33,
         "BLUE SUPPLY AT FLOOR (Z=75)", ha="center", va="bottom",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
@@ -841,7 +836,7 @@ ax2.plot([plan_sx(PROC_TRAY_X_L), plan_sx(PROC_TRAY_X_R)],
 ax2.plot([plan_sx(ZONE_R_START), plan_sx(ZONE_R_START)],
         [plan_sy(0), plan_sy(CORRIDOR_YD_FAR)],
         color="#AA6600", lw=1.5, ls="-.", zorder=3, alpha=0.5)
-ax2.text(plan_sx(ZONE_R_START) + 0.08, plan_sy(CORRIDOR_YD_FAR - 50),
+ax2.text(plan_sx(ZONE_R_START) + 24, plan_sy(CORRIDOR_YD_FAR - 50),
         "← IBC ZONE", ha="left", va="top",
         fontsize=4, color="#AA6600", fontweight="bold", zorder=10, **FONT)
 
@@ -852,7 +847,7 @@ dim_items = [
 ]
 for dx_mm, yd_max, dlabel, dcolor in dim_items:
     draw_dim_v(ax2, plan_sx(dx_mm), plan_sy(0), plan_sy(yd_max),
-               dlabel, offset=0.1, fs=4, color=dcolor,
+               dlabel, offset=30, fs=4, color=dcolor,
                right=True, font=FONT)
 
 # ── Clearance annotations ─────────────────────────────────────────────────
@@ -862,7 +857,7 @@ ax2.annotate("", xy=(plan_sx(EP_X + EP_W / 2), plan_sy(EP_DEPTH_YD)),
             xytext=(plan_sx(EP_X + EP_W / 2), plan_sy(WK_WIDE_W)),
             arrowprops=dict(arrowstyle="<->", color=C_NEW, lw=1.0),
             zorder=10)
-ax2.text(plan_sx(EP_X + EP_W / 2) - 0.08,
+ax2.text(plan_sx(EP_X + EP_W / 2) - 24,
         plan_sy((EP_DEPTH_YD + WK_WIDE_W) / 2),
         f"{ep_clear}mm\nCLEAR", ha="right", va="center",
         fontsize=4.0, color=C_NEW, fontweight="bold",
@@ -874,32 +869,32 @@ ax2.annotate("", xy=(plan_sx(BA_X + BA_W * 0.8), plan_sy(BA_DEPTH_YD_NEW)),
             xytext=(plan_sx(BA_X + BA_W * 0.8), plan_sy(WK_WIDE_W)),
             arrowprops=dict(arrowstyle="<->", color=C_NEW, lw=1.0),
             zorder=10)
-ax2.text(plan_sx(BA_X + BA_W * 0.8) - 0.08,
+ax2.text(plan_sx(BA_X + BA_W * 0.8) - 24,
         plan_sy((BA_DEPTH_YD_NEW + WK_WIDE_W) / 2),
         f"{ba_clear}mm\nCLEAR", ha="right", va="center",
         fontsize=4.0, color=C_NEW, fontweight="bold",
         zorder=10, **FONT)
 
 # ── Yd scale marks ─────────────────────────────────────────────────────────
-_yd_scale_x = plan_sx(0) + 0.2
+_yd_scale_x = plan_sx(0) + 60
 for _yd_val in [0, 100, 200, 300, 500, 1046, 1316]:
     _y = plan_sy(_yd_val)
-    ax2.plot([_yd_scale_x - 0.04, _yd_scale_x + 0.04], [_y, _y],
+    ax2.plot([_yd_scale_x - 12, _yd_scale_x + 12], [_y, _y],
             color=C_DIM, lw=0.4, zorder=10)
-    ax2.text(_yd_scale_x + 0.08, _y, f"{_yd_val}",
+    ax2.text(_yd_scale_x + 24, _y, f"{_yd_val}",
             ha="left", va="center", fontsize=4.0, color=C_DIM,
             zorder=10, **FONT)
-ax2.text(_yd_scale_x + 0.08, plan_sy(700),
+ax2.text(_yd_scale_x + 24, plan_sy(700),
         "Yd (mm)\n↓ INTO\nCONTAINER", ha="left", va="top",
         fontsize=4, color=C_DIM, fontweight="bold", zorder=10, **FONT)
 
 # ── Section title ──────────────────────────────────────────────────────────
-_plan_title_y = FH_PLAN - 0.45
+_plan_title_y = 2502
 ax2.text(plan_sx(C_LEN / 2), _plan_title_y,
         "PLAN VIEW — PROPOSED WALKWAY (REORGANIZED)",
         ha="center", va="bottom", fontsize=9, color=C_NEW,
         fontweight="bold", zorder=10, **FONT)
-ax2.text(plan_sx(C_LEN / 2), _plan_title_y - 0.12,
+ax2.text(plan_sx(C_LEN / 2), _plan_title_y - 66,
         "GREEN BORDER = NEW/MODIFIED · GRAY DASHED = REMOVED/RELOCATED"
         " · NOT TO SCALE IN Yd",
         ha="center", va="top", fontsize=4.5, color=C_DIM,
@@ -914,7 +909,7 @@ title_block(ax2, "SHEET 1 OF 1",
             scale_note="ELEV ~1:20 · PLAN Yd NOT TO SCALE"
                        " · ALL DIMS IN mm",
             doc_id="TBS-001 · Reorg Proposal",
-            height=0.045 * FH / FH_PLAN)
+            height=0.045 * FH_ELEV_IN / FH_PLAN_IN)
 
 # ── Save ───────────────────────────────────────────────────────────────────
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)

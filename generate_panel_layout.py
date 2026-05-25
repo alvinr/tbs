@@ -120,35 +120,31 @@ C_WALK       = "#A8D8A8"
 C_WALL       = "#C0C0C8"
 C_WALL_HATCH = "#999999"
 
-# ── Scale and layout ─────────────────────────────────────────────────────
-SC  = 80.0    # mm per inch (main elevation, 1:80)
+# ── Layout ───────────────────────────────────────────────────────────────
 FW  = 13.0
 FH  = 33.0
 
-# Show range (panel-relative mm + margins for dims/leaders)
 X_SHOW_L = -130
 X_SHOW_R = 400
 Z_SHOW_L = -100
 Z_SHOW_R = 2160
 
-OX = 1.3
-OZ = 3.5    # leave room for cross-section strip below
+OX = 104
+OZ = 280
 
 
 def sx(x_mm):
-    """Panel-relative Yd (mm) → figure x (inches)."""
-    return OX + (x_mm - X_SHOW_L) / SC
+    return OX + (x_mm - X_SHOW_L)
 
 
 def sz(z_mm):
-    """Panel-relative Z (mm) → figure y (inches)."""
-    return OZ + (z_mm - Z_SHOW_L) / SC
+    return OZ + (z_mm - Z_SHOW_L)
 
 
 # ── Figure setup ─────────────────────────────────────────────────────────
 fig, ax = plt.subplots(1, 1, figsize=(FW, FH), dpi=200)
-ax.set_xlim(0, FW)
-ax.set_ylim(0, FH)
+ax.set_xlim(0, FW * 80)
+ax.set_ylim(0, FH * 80)
 ax.set_aspect("equal")
 ax.axis("off")
 
@@ -158,14 +154,14 @@ FONT = {"fontfamily": "monospace"}
 def rect(x, z, w, h, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
     """Rectangle in panel coords."""
     ax.add_patch(mpatches.Rectangle(
-        (sx(x), sz(z)), w / SC, h / SC,
+        (sx(x), sz(z)), w, h,
         fc=fc, ec=ec, lw=lw, zorder=zorder, alpha=alpha))
 
 
 def circ(x_c, z_c, r, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
     """Circle in panel coords."""
     ax.add_patch(plt.Circle(
-        (sx(x_c), sz(z_c)), r / SC,
+        (sx(x_c), sz(z_c)), r,
         fc=fc, ec=ec, lw=lw, zorder=zorder, alpha=alpha))
 
 
@@ -176,7 +172,7 @@ def circ(x_c, z_c, r, fc, ec=C_FRAME, lw=1.0, zorder=5, alpha=1.0):
 # ═══════════════════════════════════════════════════════════════════════════
 
 # Title above panel
-ax.text(sx(PANEL_W / 2), sz(Z_SHOW_R) + 0.15,
+ax.text(sx(PANEL_W / 2), sz(Z_SHOW_R) + 12,
         "FRONT ELEVATION — EQUIPMENT PANEL",
         ha="center", va="bottom",
         fontsize=8, color=C_DIM, fontweight="bold", zorder=10, **FONT)
@@ -740,45 +736,45 @@ ax.text(sx(EXIT_R + 5), sz(_P05_DISCH_Z),
 
 # Panel width (Yd span)
 draw_dim_h(ax, sx(0), sx(PANEL_W), sz(-40),
-           f"{PANEL_W}", offset=0.06, fs=7, color=C_DIM, font=FONT)
+           f"{PANEL_W}", offset=4.8, fs=7, color=C_DIM, font=FONT)
 
 # Pump body width
 draw_dim_h(ax, sx(PUMP_COL - PUMP_W / 2), sx(PUMP_COL + PUMP_W / 2),
            sz(P01_Z - 15),
-           f"{PUMP_W}", offset=0.04, fs=5.5, color=C_DIM, font=FONT)
+           f"{PUMP_W}", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
 
 # Filter OD
 draw_dim_h(ax, sx(FILT_COL - FILT_OD / 2), sx(FILT_COL + FILT_OD / 2),
            sz(F03_Z - 15),
-           f"O/{FILT_OD}", offset=0.04, fs=5.5, color=C_FILTER, font=FONT)
+           f"O/{FILT_OD}", offset=3.2, fs=5.5, color=C_FILTER, font=FONT)
 
 # Filter housing height (single — bottom filter)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 20),
            sz(F03_Z), sz(F03_Z + FILT_H),
-           f"{FILT_H}", offset=0.08, fs=6, color=C_FILTER,
+           f"{FILT_H}", offset=6.4, fs=6, color=C_FILTER,
            right=True, font=FONT)
 
 # Filter stack height (full)
 draw_dim_v(ax, sx(FILT_COL + FILT_OD / 2 + 50),
            sz(F03_Z), sz(FILT_STACK_TOP),
-           f"{FILT_STACK_TOP}", offset=0.08, fs=6, color=C_DIM,
+           f"{FILT_STACK_TOP}", offset=6.4, fs=6, color=C_DIM,
            right=True, font=FONT)
 
 # Pump body height
 draw_dim_v(ax, sx(PUMP_COL + PUMP_W / 2 + 15),
            sz(P01_Z), sz(P01_Z + PUMP_H),
-           f"{PUMP_H}", offset=0.06, fs=5.5, color=C_DIM,
+           f"{PUMP_H}", offset=4.8, fs=5.5, color=C_DIM,
            right=True, font=FONT)
 
 # Panel height
 draw_dim_v(ax, sx(-30), sz(0), sz(PANEL_H),
-           f"{PANEL_H}", offset=0.1, fs=7, color=C_DIM,
+           f"{PANEL_H}", offset=8.0, fs=7, color=C_DIM,
            right=False, font=FONT)
 
 # Filter gap dimension (between bottom two filters)
 draw_dim_v(ax, sx(FILT_COL - FILT_OD / 2 - 20),
            sz(F03_Z + FILT_H), sz(F02_Z),
-           f"{FILT_GAP}", offset=0.06, fs=5, color=C_DIM,
+           f"{FILT_GAP}", offset=4.8, fs=5, color=C_DIM,
            right=False, font=FONT)
 
 # Panel Z position (AFF annotation at bottom edge)
@@ -825,11 +821,11 @@ leader(ax,
 #  CROSS-SECTION STRIP — panel position relative to walkway (Yd × Z)
 # ═══════════════════════════════════════════════════════════════════════════
 
-# Cross-section positioned at bottom of figure
-CS_LEFT  = 0.6   # inches from left
-CS_BOT   = 2.0   # inches from bottom
-CS_W_IN  = 6.0   # strip width (inches)
-CS_H_IN  = 1.0   # strip height (inches)
+# Cross-section positioned at bottom of figure (axis units = mm-like, ×80)
+CS_LEFT  = 48    # was 0.6 × 80
+CS_BOT   = 160   # was 2.0 × 80
+CS_W_IN  = 480   # was 6.0 × 80
+CS_H_IN  = 80    # was 1.0 × 80
 
 # Yd range to show (wall through corridor to far IBC edge)
 IBC_NEAR_YD = 30
@@ -849,7 +845,7 @@ def cs_z(z_mm):
 
 
 # Cross-section title
-ax.text(CS_LEFT + CS_W_IN / 2, CS_BOT + CS_H_IN + 0.2,
+ax.text(CS_LEFT + CS_W_IN / 2, CS_BOT + CS_H_IN + 16,
         "CROSS-SECTION — PANEL IN IBC CORRIDOR (looking along X axis)",
         ha="center", va="bottom",
         fontsize=6.5, color=C_DIM, fontweight="bold", zorder=10, **FONT)
@@ -857,7 +853,7 @@ ax.text(CS_LEFT + CS_W_IN / 2, CS_BOT + CS_H_IN + 0.2,
 # Pinhole wall (Yd=0) — thick line
 ax.plot([cs_yd(0), cs_yd(0)], [cs_z(-20), cs_z(Z_CS_MAX)],
         color=C_WALL, lw=4.0, zorder=3)
-ax.text(cs_yd(0) - 0.05, cs_z(Z_CS_MAX / 2),
+ax.text(cs_yd(0) - 4, cs_z(Z_CS_MAX / 2),
         "WALL\nYd=0", ha="right", va="center",
         fontsize=4, color=C_WALL_HATCH, zorder=10, **FONT)
 
@@ -912,10 +908,10 @@ ax.text(cs_yd((IBC_NEAR_END + CORRIDOR_FAR) / 2), cs_z(120),
 
 # Corridor width dimension
 draw_dim_h(ax, cs_yd(IBC_NEAR_END), cs_yd(CORRIDOR_FAR), cs_z(Z_CS_MAX + 10),
-           "270 CORRIDOR", offset=0.04, fs=5.5, color=C_DIM, font=FONT)
+           "270 CORRIDOR", offset=3.2, fs=5.5, color=C_DIM, font=FONT)
 
 # Yd axis
-ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 0.18,
+ax.text(cs_yd(YD_MAX / 2), cs_z(-15) - 14.4,
         "Yd (mm from pinhole wall) →", ha="center", va="top",
         fontsize=5.5, color=C_DIM, zorder=10, **FONT)
 
@@ -934,8 +930,8 @@ notes = [
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]
-draw_notes(ax, notes, 0.2, 1.6, spacing=0.20,
-           fs=7, width=FW - 0.4, color=C_DIM, title_color=C_NEW, font=FONT)
+draw_notes(ax, notes, 16, 128, spacing=16,
+           fs=7, width=FW * 80 - 32, color=C_DIM, title_color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -951,27 +947,26 @@ _cut_z_bot = sz(F01_Z + FILT_H - FILT_HEAD / 2 - 30)
 _cut_x = sx(FILT_COL + FILT_OD / 2 + 15)
 ax.plot([_cut_x, _cut_x], [_cut_z_bot, _cut_z_top],
         color="#1A237E", lw=1.2, ls=(0, (6, 3, 1, 3)), zorder=11)
-ax.text(_cut_x + 0.06, _cut_z_top,
+ax.text(_cut_x + 4.8, _cut_z_top,
         "B", fontsize=7, color="#1A237E", fontweight="bold",
         va="bottom", ha="center", zorder=11, **FONT)
-ax.text(_cut_x + 0.06, _cut_z_bot,
+ax.text(_cut_x + 4.8, _cut_z_bot,
         "B", fontsize=7, color="#1A237E", fontweight="bold",
         va="top", ha="center", zorder=11, **FONT)
 
 # ── Position and scale ──
-SC_D = 70.0       # mm per figure inch (~1:3 scale)
-DET_LEFT = 9.0    # figure x for Yd=0 (panel front face)
-DET_Z0 = 9.5      # figure y for head center (Z=0)
+DET_LEFT = 720    # was 9.0 × 80
+DET_Z0 = 760      # was 9.5 × 80
 
 
 def det_y(yd_mm):
-    """Detail Yd (mm from panel face) → figure x."""
-    return DET_LEFT + yd_mm / SC_D
+    """Detail Yd (mm from panel face) → axis units."""
+    return DET_LEFT + yd_mm
 
 
 def det_z(z_mm):
-    """Detail Z (mm from head center) → figure y."""
-    return DET_Z0 + z_mm / SC_D
+    """Detail Z (mm from head center) → axis units."""
+    return DET_Z0 + z_mm
 
 
 # Detail title
@@ -989,7 +984,7 @@ _dpanel_bot = -320
 _dpanel_top = 65
 ax.add_patch(mpatches.Rectangle(
     (det_y(-D_PANEL_T), det_z(_dpanel_bot)),
-    D_PANEL_T / SC_D, (_dpanel_top - _dpanel_bot) / SC_D,
+    D_PANEL_T, (_dpanel_top - _dpanel_bot),
     fc=C_PLY, ec=C_PLY_EC, lw=1.5, zorder=3))
 for _gz in range(_dpanel_bot + 5, _dpanel_top - 5, 12):
     ax.plot([det_y(-D_PANEL_T + 2), det_y(-2)],
@@ -1002,7 +997,7 @@ D_SPACER_T = 50
 D_SPACER_VIS_H = 40
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_SPACER_YD), det_z(-D_SPACER_VIS_H / 2)),
-    D_SPACER_T / SC_D, D_SPACER_VIS_H / SC_D,
+    D_SPACER_T, D_SPACER_VIS_H,
     fc="#E0D8B0", ec="#A09060", lw=1.0, zorder=4, hatch=".."))
 
 # 3. Steel bracket tab (3mm)
@@ -1011,7 +1006,7 @@ D_BRACKET_T = 3
 D_BRACKET_VIS_H = 50
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_BRACKET_YD), det_z(-D_BRACKET_VIS_H / 2)),
-    D_BRACKET_T / SC_D, D_BRACKET_VIS_H / SC_D,
+    D_BRACKET_T, D_BRACKET_VIS_H,
     fc="#999999", ec=C_FRAME, lw=1.0, zorder=5))
 
 # 4. M6×80 bolt through panel + spacer + bracket
@@ -1023,11 +1018,11 @@ ax.plot([det_y(_bolt_tip_yd), det_y(_bolt_head_yd)],
         color=C_FRAME, lw=1.2, zorder=6)
 ax.add_patch(mpatches.Rectangle(
     (det_y(_bolt_head_yd), det_z(D_BOLT_Z - 3)),
-    4 / SC_D, 6 / SC_D,
+    4, 6,
     fc="#666666", ec=C_FRAME, lw=0.8, zorder=7))
 ax.add_patch(mpatches.Rectangle(
     (det_y(_bolt_tip_yd - 2), det_z(D_BOLT_Z - 4)),
-    3 / SC_D, 8 / SC_D,
+    3, 8,
     fc="#666666", ec=C_FRAME, lw=0.8, zorder=7))
 leader(ax, det_y(_bolt_head_yd + 3), det_z(D_BOLT_Z),
        det_y(_bolt_head_yd + 35), det_z(D_BOLT_Z - 25),
@@ -1039,7 +1034,7 @@ D_HEAD_DEPTH = 80
 D_HEAD_VIS_H = FILT_HEAD                     # 70
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_HEAD_YD), det_z(-D_HEAD_VIS_H / 2)),
-    D_HEAD_DEPTH / SC_D, D_HEAD_VIS_H / SC_D,
+    D_HEAD_DEPTH, D_HEAD_VIS_H,
     fc="#555555", ec=C_FRAME, lw=1.5, zorder=5))
 ax.text(det_y(D_HEAD_YD + D_HEAD_DEPTH / 2), det_z(0),
         "HEAD", ha="center", va="center",
@@ -1053,7 +1048,7 @@ _sump_top_z = -D_HEAD_VIS_H / 2              # -35
 _sump_bot_z = _sump_top_z - D_SUMP_H         # -305
 ax.add_patch(mpatches.Rectangle(
     (det_y(_sump_cy - D_SUMP_W / 2), det_z(_sump_bot_z)),
-    D_SUMP_W / SC_D, D_SUMP_H / SC_D,
+    D_SUMP_W, D_SUMP_H,
     fc=C_FILTER, ec=C_FRAME, lw=1.2, alpha=0.6, zorder=4))
 ax.text(det_y(_sump_cy), det_z(_sump_top_z - D_SUMP_H / 2),
         "SUMP\nBOWL", ha="center", va="center",
@@ -1062,7 +1057,7 @@ ax.text(det_y(_sump_cy), det_z(_sump_top_z - D_SUMP_H / 2),
 # Sump height dimension
 draw_dim_v(ax, det_y(_sump_cy + D_SUMP_W / 2 + 10),
            det_z(_sump_bot_z), det_z(_sump_top_z),
-           f"{int(D_SUMP_H)}", offset=0.06, fs=4.5, color=C_DIM,
+           f"{int(D_SUMP_H)}", offset=4.8, fs=4.5, color=C_DIM,
            right=True, font=FONT)
 
 # Cartridge removal arrow
@@ -1082,15 +1077,15 @@ D_PIPE_WALL_D = 4
 D_STUB_LEN = 40
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_PORT_YD - 12), det_z(-D_PIPE_OD_D / 2)),
-    12 / SC_D, D_PIPE_OD_D / SC_D,
+    12, D_PIPE_OD_D,
     fc="white", ec=C_FRAME, lw=0.7, zorder=6))
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_PORT_YD), det_z(-D_PIPE_OD_D / 2)),
-    D_STUB_LEN / SC_D, D_PIPE_OD_D / SC_D,
+    D_STUB_LEN, D_PIPE_OD_D,
     fc=C_PIPE_FILL, ec=C_FRAME, lw=0.7, zorder=5))
 ax.add_patch(mpatches.Rectangle(
     (det_y(D_PORT_YD), det_z(-D_PIPE_OD_D / 2 + D_PIPE_WALL_D)),
-    D_STUB_LEN / SC_D, (D_PIPE_OD_D - 2 * D_PIPE_WALL_D) / SC_D,
+    D_STUB_LEN, (D_PIPE_OD_D - 2 * D_PIPE_WALL_D),
     fc="white", ec="none", zorder=6))
 leader(ax, det_y(D_PORT_YD + D_STUB_LEN), det_z(0),
        det_y(D_PORT_YD + D_STUB_LEN + 25), det_z(18),
@@ -1102,16 +1097,16 @@ _clamp_yd_l = _sump_cy - D_SUMP_W / 2 - 4
 _clamp_w = D_SUMP_W + 8
 ax.add_patch(mpatches.Rectangle(
     (det_y(_clamp_yd_l), det_z(_sump_top_z - D_CLAMP_H)),
-    _clamp_w / SC_D, D_CLAMP_H / SC_D,
+    _clamp_w, D_CLAMP_H,
     fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
 
 # ── Detail dimensions ──
 _standoff = D_SPACER_T + D_BRACKET_T   # 53mm from panel face
 draw_dim_h(ax, det_y(0), det_y(D_BRACKET_YD + D_BRACKET_T),
-           det_z(-55), f"{_standoff}mm STANDOFF", offset=0.05, fs=4.5,
+           det_z(-55), f"{_standoff}mm STANDOFF", offset=4.0, fs=4.5,
            color=C_DIM, font=FONT)
 draw_dim_h(ax, det_y(-D_PANEL_T), det_y(0),
-           det_z(55), f"{int(D_PANEL_T)}", offset=0.04, fs=4,
+           det_z(55), f"{int(D_PANEL_T)}", offset=3.2, fs=4,
            color=C_DIM, font=FONT)
 
 # ── Component labels above section ──
@@ -1137,7 +1132,7 @@ ax.text(det_y(80), det_z(_sump_bot_z - 50),
 title_block(ax, "SHEET 1 OF 1",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
             subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION + DETAIL B",
-            scale_note="ELEV 1:80 · DETAIL B ~1:3 · X-SECTION NTS · ALL DIMS IN mm",
+            scale_note="ELEV 1:80 · DETAIL B ~1:3 · X-SECTION NTS · AXES IN mm",
             doc_id="TBS-001 · Reorg Proposal",
             height=0.028)
 

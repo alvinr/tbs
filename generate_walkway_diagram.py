@@ -392,8 +392,8 @@ def sheet2():
                f"{WALKWAY_H}mm\nDECK TOP", offset=sx(8), fs=7, right=True, font=FONT)
 
     # Grate thickness
-    draw_dim_v(ax, sx(WALKWAY_W + 35), sy(grate_bot), sy(grate_top),
-               f"{WALKWAY_GRATE_T}mm\nDECK HEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
+    draw_dim_v(ax, sx(WALKWAY_W + 5), sy(grate_bot), sy(grate_top),
+               f"{WALKWAY_GRATE_T}mm DECK\nHEIGHT", offset=sx(8), fs=6.5, right=True, font=FONT)
 
     # Bracket vertical leg height
     draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 45), sy(0), sy(BRKT_VERT),
@@ -458,7 +458,7 @@ def sheet2():
             **FONT, zorder=15, style="italic")
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(WALKWAY_W + 60)
+    notes_x = sx(WALKWAY_W + 40)
     notes_top = sy(Z_HI - 10)
     notes = [
         "CONSTRUCTION NOTES:",
@@ -483,7 +483,7 @@ def sheet2():
         f"   no brackets (panel conflict). Rests on",
         f"   near/far butt joints. {WALKWAY_GRATE_T}mm grating.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(140), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, width=sx(130), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
@@ -513,9 +513,9 @@ def sheet1():
 
     # ── Figure ───────────────────────────────────────────────────────────────
     PAD_X = 300
-    PAD_Y_BOT = 750   # extra room below for notes + title block
+    PAD_Y_BOT = 1100  # extra room below for notes + title block
     PAD_Y_TOP = 300
-    fig, ax = plt.subplots(figsize=(18, 12))
+    fig, ax = plt.subplots(figsize=(18, 14))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(-PAD_X, C_LEN + PAD_X)
@@ -826,9 +826,9 @@ def sheet1():
         f"8. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
     ]
-    draw_notes(ax, notes, C_LEN * 0.7  -50,
-               -PAD_Y_BOT + 350 + (len(notes) - 1) * 30,
-               spacing=44, fs=7, width=2300, font=FONT)
+    draw_notes(ax, notes, 200,
+               -PAD_Y_BOT + 350 + (len(notes) - 1) * 44,
+               spacing=44, fs=7, width=4500, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 6",
@@ -1179,7 +1179,7 @@ def sheet3():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(X_HI - 180)
+    notes_x = sx(X_HI - 210)
     notes_top = sy(zy_top(C_HGT - CEIL_CORR_H + 20))
     notes = [
         "RIGHT WALKWAY \u2014 CEILING-HUNG:",
@@ -1194,7 +1194,7 @@ def sheet3():
         f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",
         f"6. ZERO floor contact \u2014 clears IBC stack entirely.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(215), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(200), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 3 OF 6",
@@ -1530,7 +1530,7 @@ def sheet4():
                color="#CC4422", font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(LEFT_WK_R + 150)
+    notes_x = sx(LEFT_WK_R + 120)
     notes_top = sy(Z_HI - 5)
     leg_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1))
     notes = [

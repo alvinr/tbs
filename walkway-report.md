@@ -69,12 +69,16 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-**Attachment:** 2× M12 through-bolts per bracket, passing through the full wall
+**Attachment:** 3× M12 through-bolts per bracket, passing through the full wall
 assembly: hex head → reinforcing plate (6mm) → exterior panel (1.6mm Corten) →
 air gap → rib interior face (1.6mm) → bracket vertical plate (8mm) → nut.
-The container corrugation ribs are hollow — the bolt bridges the air gap inside
-each rib. A 6mm reinforcing plate is welded to the exterior panel face to provide
-a bearing surface for the bolt head and washer.
+The three bolts are stacked vertically on the plate centerline: bolt 1 at
+Z=20 mm (below the gusset hypotenuse), bolt 2 at Z=85 mm (above the arm),
+and bolt 3 at Z=130 mm (above the walkway deck). The container corrugation
+ribs are hollow — each bolt bridges the air gap inside the rib. A 6mm
+reinforcing plate is welded to the exterior panel face to provide a bearing
+surface for the bolt heads and washers. See Sheet 7 for the bolt pattern
+front elevation.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
 
@@ -263,7 +267,7 @@ operator standing at the outer edge.
 
 The 8mm steel plate gusset brackets at 457mm centers provide substantial
 structural capacity. Each bracket is a rigid triangle (vertical leg + horizontal
-arm + gusset) with 2× M12 through-bolts to the container rib — a connection
+arm + gusset) with 3× M12 through-bolts to the container rib — a connection
 rated for the bolt shear capacity, not the bracket plate.
 
 The ceiling-hung right walkway is the most compliant section. Five pairs of M10
@@ -277,7 +281,7 @@ distributes load across multiple rods.
 
 ## 10. Engineering Drawings
 
-Six sheets cover the walkway system from plan view through construction details.
+Seven sheets cover the walkway system from plan view through construction details.
 See [Engineering Diagrams](engineering-diagrams.md#14-perimeter-walkway) for the
 full drawing set.
 
@@ -299,6 +303,9 @@ full drawing set.
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (~4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
+**Sheet 7 — Detail E: Cantilever bracket bolt pattern — front elevation showing 3× M12 bolt positions relative to gusset, arm, and walkway deck**
+![TBS-001 Walkway — Sheet 7: Bolt Pattern Front Elevation](assets/walkway-sheet7.png)
+
 ---
 
 ## 11. Parts List
@@ -308,7 +315,7 @@ full drawing set.
 | 1 | Press-locked galvanized steel grating | 25mm thick, 30×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
 | 2 | Cantilever bracket (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | ~18 (9 near + 9 far at 457mm centers) | $540–$900 |
 | 3 | Cantilever bracket — widened (near) | 8mm steel plate: 150mm vert leg + 500mm arm + heavier gusset | ~2 (in bump-out zone) | $80–$140 |
-| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 40 (2 per bracket) | $60–$100 |
+| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 60 (3 per bracket) | $90–$150 |
 | 5 | Reinforcing plate (exterior) | 6mm steel, ~100×180mm, welded to exterior panel at each bracket | 20 | $80–$140 |
 | 6 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
 | 7 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
@@ -323,7 +330,7 @@ full drawing set.
 | 16 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 17 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
 | 18 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$1,395–$2,315** |
+| | **Total** | | | **$1,425–$2,365** |
 
 ---
 
@@ -333,7 +340,7 @@ full drawing set.
 |----------|------|
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
 | Before each session | Check bearer beam anti-slip restraint — lock blocks secure, thumb screws tight |
-| Monthly | Inspect cantilever bracket bolts for tightness (2× M12 per bracket) |
+| Monthly | Inspect cantilever bracket bolts for tightness (3× M12 per bracket) |
 | Monthly | Check ceiling hanger nuts — ensure double-nut lock on bearer flange side |
 | Monthly | Inspect grating for corrosion, damaged bearing bars, or bent cross bars |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |

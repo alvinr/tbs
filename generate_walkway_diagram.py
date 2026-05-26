@@ -273,18 +273,18 @@ def sheet2():
             ha="center", va="top", fontsize=4.5, color="#CC4400",
             **FONT, zorder=15)
 
-    # Through-bolts (2× M12) — horizontal shanks through wall + bracket
-    # Matching sheet 3 convention: reinf plate → ext panel → air gap → rib → bracket → nut
+    # Through-bolts (3× M12) — horizontal shanks through wall + bracket
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
     BOLT_HEAD = 8    # hex head height (Yd direction)
     NUT_H     = 10   # nut height (Yd direction)
     WASHER_T  = 3
     C_BOLT    = "#505058"
-    bolt_z1   = 30
-    bolt_z2   = 120
+    bolt_z1   = 20   # below gusset hypotenuse
+    bolt_z2   = 85   # above arm/gusset
+    bolt_z3   = 130  # above walkway deck, upper vertical plate
 
-    for bz in [bolt_z1, bolt_z2]:
+    for bz in [bolt_z1, bolt_z2, bolt_z3]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
         # Bolt shank — from reinf plate through to bracket face
         ax.add_patch(Rectangle((sx(reinf_yd), sy(bz - shank_hw)),
@@ -324,7 +324,7 @@ def sheet2():
     # Bolt label
     leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z1),
            sx(reinf_yd - 30), sy(bolt_z1 + 20),
-           "2\u00d7 M12 THROUGH-\nBOLTS\nHEAD \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192\nBRACKET \u2192 NUT",
+           "3\u00d7 M12 THROUGH-\nBOLTS\nHEAD \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192\nBRACKET \u2192 NUT",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -485,7 +485,7 @@ def sheet2():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, width=sx(130), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 6",
+    title_block(ax, "SHEET 2 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION \u2014 NEAR WALKWAY WITH BRACKET DETAIL",
                 scale_note=f"Axes in mm \u00b7 SECTION AT BRACKET POSITION",
@@ -853,7 +853,7 @@ def sheet1():
                spacing=44, fs=7, width=2500, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -1217,7 +1217,7 @@ def sheet3():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(200), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 6",
+    title_block(ax, "SHEET 3 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
                 scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
@@ -1563,7 +1563,7 @@ def sheet4():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 6",
+    title_block(ax, "SHEET 4 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -1837,7 +1837,7 @@ def sheet5():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(280), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 6",
+    title_block(ax, "SHEET 5 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -2015,11 +2015,12 @@ def sheet6():
            color=C_BRKT, fs=5.5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
-    # ── Through-bolts (horizontal shanks — matching sheet 3) ─────────────────
+    # ── Through-bolts (horizontal shanks — matching sheet 2) ─────────────────
     C_BOLT = "#505058"
-    bolt_z1 = 30
-    bolt_z2 = 120
-    for bz in [bolt_z1, bolt_z2]:
+    bolt_z1 = 20
+    bolt_z2 = 85
+    bolt_z3 = 130
+    for bz in [bolt_z1, bolt_z2, bolt_z3]:
         shank_left = reinf_yd
         shank_right = BRKT_T
         shank_hw = BOLT_R * 0.4
@@ -2413,7 +2414,7 @@ def sheet6():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(180), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 6",
+    title_block(ax, "SHEET 6 OF 7",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
                 scale_note="Axes in mm \u00b7 VIEWS A/B/C",
@@ -2423,6 +2424,178 @@ def sheet6():
     fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Front Elevation: Cantilever Bracket Bolt Pattern
+#
+# View: looking in the −Yd direction (from inside container toward wall)
+# Horizontal = X (along container length)
+# Vertical   = Z (height, 0 = floor)
+# Shows the vertical mounting plate face-on with 3× M12 bolt holes,
+# the arm and gusset projections (dashed), and dimensioned bolt spacing.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet7():
+    def sx(mm): return mm
+    def sy(mm): return mm
+
+    # ── Bracket geometry ────────────────────────────────────────────────────
+    PLATE_W    = 100   # vertical plate width in X (mm)
+    PLATE_H    = WALKWAY_BRACKET_H   # = 150mm
+    BRKT_T     = WALKWAY_BRACKET_T   # = 8mm (not visible in front view)
+    ARM_Z_TOP  = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
+    ARM_DEPTH  = BRKT_T + 2          # = 10mm visual arm depth
+    ARM_Z_BOT  = ARM_Z_TOP - ARM_DEPTH  # ≈ 65mm
+    GUSSET_REACH = 70
+
+    # Bolt positions (Z only — all on plate X centerline)
+    BOLT_Z1    = 20    # below gusset hypotenuse
+    BOLT_Z2    = 85    # above arm/gusset
+    BOLT_Z3    = 130   # above walkway deck
+    BOLT_D     = 12
+    BOLT_R     = BOLT_D / 2
+    HOLE_D     = 14    # clearance hole
+    HOLE_R     = HOLE_D / 2
+
+    # Grate
+    GRATE_Z_BOT = ARM_Z_TOP          # = 75mm
+    GRATE_Z_TOP = GRATE_Z_BOT + WALKWAY_GRATE_T  # = 100mm
+
+    # ── Figure (landscape — plate left, notes right) ──────────────────────
+    X_LO = -PLATE_W - 90
+    X_HI =  PLATE_W + 250
+    Z_LO = -50
+    Z_HI =  PLATE_H + 55
+
+    fig, ax = plt.subplots(figsize=(18, 12))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(sx(X_LO), sx(X_HI))
+    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # Plate center in X
+    cx = 0
+    pl = cx - PLATE_W / 2   # plate left
+    pr = cx + PLATE_W / 2   # plate right
+
+    # ── Vertical mounting plate (solid) ─────────────────────────────────────
+    ax.add_patch(Rectangle((sx(pl), sy(0)), sx(PLATE_W), sy(PLATE_H),
+                            fc=C_BRKT, ec=C_OUT, lw=2.0, zorder=5, alpha=0.85))
+
+    # ── Arm projection (dashed outline — projects toward viewer) ────────────
+    ax.add_patch(Rectangle((sx(pl), sy(ARM_Z_BOT)), sx(PLATE_W), sy(ARM_DEPTH),
+                            fc="none", ec=C_OUT, lw=1.5, ls="--", zorder=6))
+    # Arm label (right of plate, inline with arm)
+    ax.text(sx(pr + 8), sy(ARM_Z_TOP - ARM_DEPTH / 2),
+            f"ARM Z={ARM_Z_BOT}–{ARM_Z_TOP}mm\n(PROJECTS TOWARD VIEWER)",
+            ha="left", va="center", fontsize=6, color=C_DIM,
+            **FONT, zorder=15)
+
+    # ── Gusset projection (dashed outline — triangle below arm) ─────────────
+    ax.add_patch(Rectangle((sx(pl), sy(0)), sx(PLATE_W), sy(ARM_Z_BOT),
+                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (4, 3)), zorder=4))
+    ax.plot([sx(pl + 5), sx(pr - 5)], [sy(3), sy(ARM_Z_BOT - 3)],
+            color=C_DIM, lw=0.8, ls="--", zorder=4)
+    ax.text(sx(cx), sy(ARM_Z_BOT / 2 - 12),
+            "GUSSET\n(BELOW ARM)",
+            ha="center", va="center", fontsize=5.5, color=C_DIM,
+            style="italic", **FONT, zorder=15)
+
+    # ── Grate reference lines (dashed green) ────────────────────────────────
+    grate_line_l = pl - 20
+    grate_line_r = pr + 20
+    for z in [GRATE_Z_BOT, GRATE_Z_TOP]:
+        ax.plot([sx(grate_line_l), sx(grate_line_r)], [sy(z), sy(z)],
+                color="#208020", lw=0.8, ls=(0, (6, 4)), zorder=3, alpha=0.5)
+    ax.text(sx(grate_line_r + 5), sy((GRATE_Z_BOT + GRATE_Z_TOP) / 2),
+            f"GRATE {WALKWAY_GRATE_T}mm\nDECK Z={GRATE_Z_TOP}mm",
+            ha="left", va="center", fontsize=5.5, color="#208020",
+            **FONT, zorder=15, alpha=0.7)
+
+    # ── Bolt holes (3× M12, clearance holes with crosshairs) ───────────────
+    C_BOLT = "#505058"
+    bolt_labels = [
+        (BOLT_Z1, "BOLT 1 — BELOW GUSSET"),
+        (BOLT_Z2, "BOLT 2 — ABOVE ARM"),
+        (BOLT_Z3, "BOLT 3 — ABOVE DECK"),
+    ]
+    for bz, lbl in bolt_labels:
+        ax.add_patch(Circle((sx(cx), sy(bz)), sx(HOLE_R),
+                            fc=BG, ec=C_BOLT, lw=1.5, zorder=8))
+        ch = HOLE_R + 4
+        ax.plot([sx(cx - ch), sx(cx + ch)], [sy(bz), sy(bz)],
+                color=C_BOLT, lw=0.6, zorder=9)
+        ax.plot([sx(cx), sx(cx)], [sy(bz - ch), sy(bz + ch)],
+                color=C_BOLT, lw=0.6, zorder=9)
+
+    # Bolt leader lines to labels (stacked right of plate, staggered)
+    for bz, lbl in bolt_labels:
+        leader(ax, sx(cx + HOLE_R + 2), sy(bz),
+               sx(pr + 30), sy(bz),
+               f"M12 ({HOLE_D}mm CLR)\n{lbl}",
+               color=C_BOLT, fs=6,
+               ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Dimension lines ─────────────────────────────────────────────────────
+    dim_x = pl - 45
+
+    draw_dim_v(ax, sx(dim_x), sy(0), sy(BOLT_Z1),
+               f"{BOLT_Z1}mm", offset=sx(8), fs=7, right=False, font=FONT)
+    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z1), sy(BOLT_Z2),
+               f"{BOLT_Z2 - BOLT_Z1}mm", offset=sx(8), fs=7, right=False, font=FONT)
+    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z2), sy(BOLT_Z3),
+               f"{BOLT_Z3 - BOLT_Z2}mm", offset=sx(8), fs=7, right=False, font=FONT)
+    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z3), sy(PLATE_H),
+               f"{PLATE_H - BOLT_Z3}mm", offset=sx(8), fs=7, right=False, font=FONT)
+
+    # Full plate height (far left)
+    draw_dim_v(ax, sx(dim_x - 30), sy(0), sy(PLATE_H),
+               f"{PLATE_H}mm\nVERT PLATE", offset=sx(8), fs=7, right=False, font=FONT)
+
+    # Plate width
+    draw_dim_h(ax, sx(pl), sx(pr), sy(-30),
+               f"{PLATE_W}mm PLATE WIDTH", offset=sy(8), fs=7, above=False, font=FONT)
+
+    # ── Plate label ─────────────────────────────────────────────────────────
+    ax.text(sx(cx), sy(PLATE_H + 12),
+            f"VERTICAL MOUNTING PLATE\n{WALKWAY_BRACKET_T}mm STEEL · {PLATE_W}×{PLATE_H}mm\n(FLAT AGAINST WALL RIB INTERIOR FACE)",
+            ha="center", va="bottom", fontsize=7, color=C_BRKT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # ── Notes (right side of figure) ────────────────────────────────────────
+    notes = [
+        "NOTES:",
+        "1. View looking toward wall from inside",
+        "   container (−Yd direction).",
+        "2. 3× M12 through-bolts per bracket —",
+        "   head on exterior reinforcing plate,",
+        "   nut on interior bracket face.",
+        f"3. Bolt 1 (Z={BOLT_Z1}mm) below gusset.",
+        f"4. Bolt 2 (Z={BOLT_Z2}mm) above arm.",
+        f"5. Bolt 3 (Z={BOLT_Z3}mm) above deck.",
+        f"6. All holes {HOLE_D}mm clearance for M12.",
+        f"7. See Sheet 2 for bolt cross-section.",
+    ]
+    from tbs_drawing import draw_notes
+    notes_x = pr + 150
+    draw_notes(ax, notes, sx(notes_x), sy(PLATE_H),
+               spacing=sy(12), fs=6, title_fs=6.5, color=C_DIM,
+               title_color=C_OUT, font=FONT,
+               width=sx(X_HI - notes_x - 10))
+
+    # ── Title block ─────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 7 OF 7",
+                drawing_title="PERIMETER WALKWAY SYSTEM",
+                subtitle="DETAIL E — CANTILEVER BRACKET BOLT PATTERN (FRONT ELEVATION)",
+                scale_note="AXES IN mm · VIEW LOOKING TOWARD WALL (−Yd)",
+                height=0.07)
+
+    fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet7.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet7.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2437,4 +2610,5 @@ if __name__ == "__main__":
     sheet4()  # butt joint → sheet4.png
     sheet5()  # left support → sheet5.png
     sheet6()  # bearer beam → sheet6.png
+    sheet7()  # bolt pattern → sheet7.png
     print("Done.")

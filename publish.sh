@@ -72,6 +72,7 @@ MD_FILES=(
     "processing-tray-and-spray-bar.md"
     "hinged-panel-report.md"
     "walkway-report.md"
+    "equipment-panel-report.md"
     "ibc-stacking-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"

@@ -591,7 +591,7 @@ def sheet2():
              color=C_BOLT, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
 
     leader(ax2, -BOLT_X_OFF - HOLE_R_B - 1, bolt_z_lo,
-           pl2 - 8, bolt_z_lo - 10,
+           pl2 - 8, bolt_z_lo + 20,
            f"BOLT 1\nM12 ({HOLE_D}mm CLR)",
            color=C_BOLT, fs=5.5,
            ha="right", va="top", arrow_style="-|>", font=FONT)
@@ -601,28 +601,28 @@ def sheet2():
            color=C_BOLT, fs=5.5,
            ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax2, 0, bolt_z_hi + HOLE_R_B + 1,
-           0, bolt_z_hi + 25,
+           10, bolt_z_hi + 35,
            f"BOLT 3 — M12 ({HOLE_D}mm CLR)\nON GUSSET CL",
            color=C_BOLT, fs=5.5,
            ha="center", va="bottom", arrow_style="-|>", font=FONT)
 
     dim_x2 = pl2 - 30
-    draw_dim_v(ax2, dim_x2, 0, bolt_z_lo,
-               f"{bolt_z_lo}mm", offset=8, fs=6.5, right=False, font=FONT)
-    draw_dim_v(ax2, dim_x2, bolt_z_lo, bolt_z_hi,
-               f"{bolt_z_hi - bolt_z_lo}mm", offset=8, fs=6.5, right=False, font=FONT)
-    draw_dim_v(ax2, dim_x2, bolt_z_hi, BRKT_VERT,
-               f"{BRKT_VERT - bolt_z_hi}mm", offset=8, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 10, 0, bolt_z_lo,
+               f"{bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 10, bolt_z_lo, bolt_z_hi,
+               f"{bolt_z_hi - bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 10, bolt_z_hi, BRKT_VERT,
+               f"{BRKT_VERT - bolt_z_hi}mm", offset=4, fs=6.5, right=False, font=FONT)
 
     draw_dim_h(ax2, -BOLT_X_OFF, BOLT_X_OFF, bolt_z_lo - 22,
-               f"{BOLT_X_OFF * 2}mm", offset=6, fs=6.5, above=False, font=FONT)
+               f"{BOLT_X_OFF * 2}mm", offset=4, fs=6.5, above=False, font=FONT)
 
     draw_dim_h(ax2, pl2, pr2, -28,
-               f"{REINF_W}mm PLATE", offset=6, fs=6, above=False, font=FONT)
+               f"{REINF_W}mm PLATE", offset=4, fs=6, above=False, font=FONT)
     draw_dim_v(ax2, dim_x2 - 18, 0, BRKT_VERT,
-               f"{BRKT_VERT}mm", offset=8, fs=6, right=False, font=FONT)
+               f"{BRKT_VERT}mm", offset=4, fs=6, right=False, font=FONT)
 
-    ax2.text(cx2, BRKT_VERT + 8,
+    ax2.text(cx2, BRKT_VERT + 28,
              f"MOUNTING PLATE\n{BRKT_T}mm STEEL · {REINF_W}×{BRKT_VERT}mm",
              ha="center", va="bottom", fontsize=6.5, color=C_BRKT,
              fontweight="bold", **FONT, zorder=15)
@@ -630,18 +630,14 @@ def sheet2():
     notes_b = [
         "BOLT PATTERN NOTES:",
         f"1. Triangular pattern: 2 lower + 1 upper.",
-        f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF}mm",
-        f"   from CL — centered between plate edge",
-        f"   and {BRKT_T}mm gusset.",
-        f"3. Upper bolt at Z={bolt_z_hi}mm (above grating",
-        f"   deck Z=100), centered on gusset CL.",
+        f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF}mm from CL — centered between plate edge and {BRKT_T}mm gusset.",
+        f"3. Upper bolt at Z={bolt_z_hi}mm (above grating deck Z=100), centered on gusset CL.",
         f"4. All holes {HOLE_D}mm clearance for M12.",
-        f"5. Head on exterior 6mm reinforcing plate,",
-        f"   nut on interior bracket face.",
+        f"5. Head on exterior 6mm reinforcing plate, nut on interior bracket face.",
         f"6. See View A for bolt cross-section.",
     ]
     draw_notes(ax2, notes_b, PL_X_LO + 5, -5,
-               spacing=9, fs=5.5, title_fs=6, color=C_DIM,
+               spacing=7, fs=5.5, title_fs=6, color=C_DIM,
                title_color=C_OUT, font=FONT,
                width=PL_X_HI - PL_X_LO - 10)
 
@@ -2293,8 +2289,8 @@ def sheet6():
 
     # ── Grating (ghost) ─────────────────────────────────────────────────────
     C_LEFT_WK = "#A8C8A8"
-    ax.add_patch(Rectangle((sx(-15), sy(grate_bot)),
-                            sx(WALKWAY_W + 20), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle((sx(BRKT_T), sy(grate_bot)),
+                            sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
                             alpha=0.25, zorder=4))
     # ── Grating clip (innermost edge, toward processing tray) ──────────

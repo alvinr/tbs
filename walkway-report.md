@@ -72,9 +72,9 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 **Attachment:** 3× M12 through-bolts per bracket in a triangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (8mm) → nut. Two lower bolts at Z=50 mm (1/3 plate
-height from floor) straddle the 8mm gusset plate at ±20 mm from the plate
-centerline in X. One upper bolt at Z=120 mm (above grating deck at Z=100,
+bracket vertical plate (8mm) → nut. Two lower bolts at Z=35 mm straddle
+the 8mm gusset plate at ±27 mm from the plate centerline in X (centered
+between plate edge and gusset). One upper bolt at Z=120 mm (above grating deck at Z=100,
 30 mm from plate top) is centered on the gusset centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to

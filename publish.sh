@@ -71,6 +71,7 @@ MD_FILES=(
     "chemistry-prep-shelves.md"
     "processing-tray-and-spray-bar.md"
     "hinged-panel-report.md"
+    "ibc-stacking-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )

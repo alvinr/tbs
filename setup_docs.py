@@ -68,6 +68,7 @@ MD_FILES = [
     ("chemistry-prep-shelves.md",         (".",           "Chemistry Prep Shelves")),
     ("processing-tray-and-spray-bar.md",  (".",           "Processing Tray & Spray Bar")),
     ("hinged-panel-report.md",            (".",           "Hinged Light-Trap Panel")),
+    ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
@@ -323,6 +324,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, sliding carriage, and light seal design |
+| [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 
 """
 

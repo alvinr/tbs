@@ -285,6 +285,9 @@ Mounting varies by side:
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (≈4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
+**Sheet 7 — Detail E: Cantilever bracket bolt pattern — front elevation showing 3× M12 bolt positions relative to gusset, arm, and walkway deck**
+![TBS-001 Walkway — Sheet 7: Bolt Pattern Front Elevation](assets/walkway-sheet7.png)
+
 ---
 
 ## 15. IBC Stacking & Securing

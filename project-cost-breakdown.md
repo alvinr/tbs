@@ -273,12 +273,12 @@ Four removable grated walkway sections (all 300mm wide) around all 4 sides of th
 | Press-locked steel grating, 25mm (30×3mm bars) | $260 | $325 | $390 | ~4.1 m² (all 4 sections, all 300mm); McNichols / Metal Supermarkets SoCal |
 | Wall brackets, 8mm steel plate gusset (×18) | $145 | $183 | $220 | Near/far walls only; triangular gusset, 150mm vert × 300mm arm |
 | Reinforcing plates, 80×180×6mm mild steel (×18) | $35 | $45 | $55 | Welded to wall exterior behind each bracket (near/far walls) |
-| M12×60mm hex bolts + nuts + washers (×36) | $35 | $45 | $55 | 2 per bracket, grade 8.8 galvanized |
+| M12×60mm hex bolts + nuts + washers (×54) | $55 | $68 | $80 | 3 per bracket, grade 8.8 galvanized |
 | Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2,362mm ceiling-hung bearers |
 | M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
 | Grating clips (×35) | $15 | $20 | $25 | Slide-on, removable without tools |
 | Fabrication (brackets, ceiling hangers, install) | $250 | $325 | $400 | Local metal fab shop |
-| **Perimeter walkway total** | **$840** | **$1,078** | **$1,305** | |
+| **Perimeter walkway total** | **$860** | **$1,101** | **$1,330** | |
 
 ---
 

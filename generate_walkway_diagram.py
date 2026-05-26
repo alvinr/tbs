@@ -350,19 +350,19 @@ def sheet2():
     # Grating sits on bracket arm: bottom at BRKT_ARM_H (75mm), top at WALKWAY_H (100mm)
     grate_bot = brkt_arm_z  # = 75mm
     grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm = WALKWAY_H
-    ax.add_patch(Rectangle((sx(0), sy(grate_bot)),
-                            sx(WALKWAY_W), sy(WALKWAY_GRATE_T),
+    ax.add_patch(Rectangle((sx(BRKT_T), sy(grate_bot)),
+                            sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
     # Grate pattern (vertical bars in cross-section)
     bar_spacing = 34.2  # ~34mm bearing bar pitch (standard)
     bar_w = 3           # bearing bar thickness
-    for yd in np.arange(bar_w, WALKWAY_W - bar_w, bar_spacing):
+    for yd in np.arange(BRKT_T + bar_w, WALKWAY_W - bar_w, bar_spacing):
         ax.add_patch(Rectangle((sx(yd), sy(grate_bot)),
                                 sx(bar_w), sy(WALKWAY_GRATE_T),
                                 fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
     # Cross bars (twist-locked — shown as small rectangles at mid-height)
     cross_h = 3
-    for yd in np.arange(bar_spacing / 2, WALKWAY_W, bar_spacing):
+    for yd in np.arange(BRKT_T + bar_spacing / 2, WALKWAY_W, bar_spacing):
         ax.add_patch(Rectangle((sx(yd - 1), sy(grate_bot + WALKWAY_GRATE_T / 2 - cross_h / 2)),
                                 sx(2), sy(cross_h),
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))

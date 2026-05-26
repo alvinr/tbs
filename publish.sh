@@ -73,6 +73,7 @@ MD_FILES=(
     "hinged-panel-report.md"
     "walkway-report.md"
     "equipment-panel-report.md"
+    "ceiling-rail-report.md"
     "ibc-stacking-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"

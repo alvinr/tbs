@@ -274,15 +274,15 @@ def sheet2():
             **FONT, zorder=15)
 
     # Through-bolts (3× M12) — horizontal shanks through wall + bracket
-    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=120 (centered)
-    # In this side view (along X), the two Z=50 bolts overlap — shown as one + "2×" label
+    # Triangular pattern: 2× at Z=35 (flanking gusset in X), 1× at Z=120 (centered)
+    # In this side view (along X), the two Z=35 bolts overlap — shown as one + "2×" label
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
     BOLT_HEAD = 8    # hex head height (Yd direction)
     NUT_H     = 10   # nut height (Yd direction)
     WASHER_T  = 3
     C_BOLT    = "#505058"
-    bolt_z_lo = 50   # lower pair — 1/3 from floor (2 bolts flanking gusset in X)
+    bolt_z_lo = 35   # lower pair — flanking gusset in X, ±27mm from CL
     bolt_z_hi = 120  # upper single — above grating deck (Z=100), on gusset CL
 
     for bz in [bolt_z_lo, bolt_z_hi]:
@@ -2022,10 +2022,10 @@ def sheet6():
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Through-bolts (horizontal shanks — matching sheet 2) ─────────────────
-    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=120 (centered)
-    # In this side view, the two Z=50 bolts overlap
+    # Triangular pattern: 2× at Z=35 (flanking gusset in X), 1× at Z=120 (centered)
+    # In this side view, the two Z=35 bolts overlap
     C_BOLT = "#505058"
-    bolt_z_lo = 50
+    bolt_z_lo = 35
     bolt_z_hi = 120
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_left = reinf_yd
@@ -2461,9 +2461,9 @@ def sheet7():
     WALL_T     = 1.6
 
     # Bolt positions — triangular pattern
-    BOLT_Z_LO  = 50    # lower pair — 1/3 from floor
+    BOLT_Z_LO  = 35    # lower pair — centered between plate edge and gusset in X
     BOLT_Z_HI  = 120   # upper single — above grating deck (Z=100), 30mm from plate top
-    BOLT_X_OFF = 20    # lower bolt X offset from plate center (mm)
+    BOLT_X_OFF = 27    # lower bolt X offset: midpoint of plate edge (50) and gusset edge (4)
     BOLT_D     = 12
     BOLT_R     = BOLT_D / 2
     HOLE_D     = 14    # clearance hole
@@ -2774,9 +2774,9 @@ def sheet7():
     notes = [
         "BOLT PATTERN NOTES:",
         f"1. Triangular pattern: 2 lower + 1 upper.",
-        f"2. Lower pair at Z={BOLT_Z_LO}mm (1/3 plate height",
-        f"   from floor), X=±{BOLT_X_OFF}mm from CL",
-        f"   — straddle the {BRKT_T}mm gusset plate.",
+        f"2. Lower pair at Z={BOLT_Z_LO}mm, X=±{BOLT_X_OFF}mm",
+        f"   from CL — centered between plate edge",
+        f"   and {BRKT_T}mm gusset.",
         f"3. Upper bolt at Z={BOLT_Z_HI}mm (above grating",
         f"   deck Z=100), centered on gusset CL.",
         f"4. All holes {HOLE_D}mm clearance for M12.",

@@ -274,7 +274,7 @@ def sheet2():
             **FONT, zorder=15)
 
     # Through-bolts (3× M12) — horizontal shanks through wall + bracket
-    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=100 (centered)
+    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=120 (centered)
     # In this side view (along X), the two Z=50 bolts overlap — shown as one + "2×" label
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
@@ -283,7 +283,7 @@ def sheet2():
     WASHER_T  = 3
     C_BOLT    = "#505058"
     bolt_z_lo = 50   # lower pair — 1/3 from floor (2 bolts flanking gusset in X)
-    bolt_z_hi = 100  # upper single — 1/3 from top, on gusset centerline
+    bolt_z_hi = 120  # upper single — above grating deck (Z=100), on gusset CL
 
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
@@ -2022,11 +2022,11 @@ def sheet6():
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Through-bolts (horizontal shanks — matching sheet 2) ─────────────────
-    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=100 (centered)
+    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=120 (centered)
     # In this side view, the two Z=50 bolts overlap
     C_BOLT = "#505058"
     bolt_z_lo = 50
-    bolt_z_hi = 100
+    bolt_z_hi = 120
     for bz in [bolt_z_lo, bolt_z_hi]:
         shank_left = reinf_yd
         shank_right = BRKT_T
@@ -2462,7 +2462,7 @@ def sheet7():
 
     # Bolt positions — triangular pattern
     BOLT_Z_LO  = 50    # lower pair — 1/3 from floor
-    BOLT_Z_HI  = 100   # upper single — 1/3 from top
+    BOLT_Z_HI  = 120   # upper single — above grating deck (Z=100), 30mm from plate top
     BOLT_X_OFF = 20    # lower bolt X offset from plate center (mm)
     BOLT_D     = 12
     BOLT_R     = BOLT_D / 2
@@ -2565,7 +2565,8 @@ def sheet7():
             color="#CC4400", lw=1.5, zorder=8)
 
     # ── Walkway grating (horizontal ghost) ──────────────────────────────────
-    ax.add_patch(Rectangle((-10, GRATE_Z_BOT), WALKWAY_W + 30, WALKWAY_GRATE_T,
+    # Starts at Yd=0 (wall face) — cannot extend into the corrugation zone
+    ax.add_patch(Rectangle((0, GRATE_Z_BOT), WALKWAY_W + 20, WALKWAY_GRATE_T,
                             fc="#A0C8A0", ec=C_OUT, lw=1.0, ls="--",
                             alpha=0.25, zorder=4))
     ax.text(WALKWAY_W / 2, GRATE_Z_TOP + 4,
@@ -2776,8 +2777,8 @@ def sheet7():
         f"2. Lower pair at Z={BOLT_Z_LO}mm (1/3 plate height",
         f"   from floor), X=±{BOLT_X_OFF}mm from CL",
         f"   — straddle the {BRKT_T}mm gusset plate.",
-        f"3. Upper bolt at Z={BOLT_Z_HI}mm (1/3 plate height",
-        f"   from top), centered on gusset CL.",
+        f"3. Upper bolt at Z={BOLT_Z_HI}mm (above grating",
+        f"   deck Z=100), centered on gusset CL.",
         f"4. All holes {HOLE_D}mm clearance for M12.",
         f"5. Head on exterior 6mm reinforcing plate,",
         f"   nut on interior bracket face.",

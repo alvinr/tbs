@@ -7,10 +7,7 @@ Single-operator workflow for cyanotype on cotton muslin.
 
 > **Before you begin:** Read this manual end-to-end once before your first deployment. Each phase has a time estimate and a GO/NO-GO checkpoint. Do not proceed past a checkpoint unless all conditions are met.
 
----
-
 ## Quick Reference
-
 | Phase | What | Time |
 |-------|------|------|
 | 0 | Pre-departure (home/workshop) | ~2 hours |
@@ -23,15 +20,11 @@ Single-operator workflow for cyanotype on cotton muslin.
 
 Baseline exposure is **30–45 minutes** under direct full sun (Mike Ware New Cyanotype formula on cotton muslin, ISO equivalent ~2–4; no reciprocity correction required). See the [Exposure Adjustment Table](#exposure-adjustment-table) for cloud cover and time-of-day corrections.
 
----
-
 ## Phase 0 — Pre-Departure
-
 **Time: ~2 hours. Complete the day before or morning of shoot day at your workshop/home.**
 **Lighting: normal white light throughout this phase.**
 
 ### 0.1 Water System
-
 The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through P-04 on the equipment panel in the IBC plumbing corridor), and four 600L IBC totes in a 2×2 stack. All IBCs use DN50 butterfly valves (S60×6 thread) facing the plumbing corridor, with DN150 fill caps on top. IBC-1 and IBC-2 are connected by a permanently open 2" cross-connect at valve height for self-leveling. Check valves CV1/CV3/CV4 on each bulkhead line prevent backflow. External fill (X1) and drain (X3/X4) ports on the sealed end wall allow resupply and disposal without opening the cargo doors.
 
 - [ ] 0.1.1 — Fill Blue IBC-1 via external bulkhead port X1 (minimum 400 liters total for one print). IBC-2 self-levels via 2" cross-connect. Confirm Brown IBC-3 and Waste IBC-4 are empty or have capacity.
@@ -43,7 +36,6 @@ The water system has three circuits (Blue/Brown/Black), four pumps (P-01 through
 - [ ] 0.1.7 — Confirm P-04 suction pickup tube is seated in the sump well and the suction hose is connected over the tray rim to the pump manifold. Set 3W-DV-02 (on P-04 discharge) to route toward IBC-3 (Brown). P-04 draws used wash water from the sump and lifts it to IBC-3 fill cap (~900mm head). Switch on manually after each wash cycle. (The tray and pickup tube are permanently installed between the film plane rails.)
 
 ### 0.2 Chemistry — Part A (Ammonium Iron(III) Oxalate)
-
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
 
 Prepare a concentrated solution using **warm water (50–60°C)**. AmFe does not dissolve at room temperature.
@@ -60,7 +52,6 @@ Prepare a concentrated solution using **warm water (50–60°C)**. AmFe does not
 - [ ] 0.2.5 — Label the jug **PART A — AmFe (WARE)**. Store in a sealed dark bottle.
 
 ### 0.3 Chemistry — Part B (Potassium Ferricyanide + Ammonium Dichromate)
-
 **Lighting: WHITE LIGHT — Part B is not light-sensitive on its own.**
 
 Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for contrast enhancement.
@@ -79,7 +70,6 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 > **Storage:** Part A and Part B stock solutions keep for 6–8 weeks in sealed dark bottles. Mixed together (the working sensitizer), shelf life is 4–6 hours. Mix only what you need per session.
 
 ### 0.4 Equipment Checklist
-
 - [ ] 0.4.1 — Nitrile gloves (minimum 4 pairs)
 - [ ] 0.4.2 — 18" foam roller + roller tray (two sets — one per coat pass)
 - [ ] 0.4.3 — 2 × 2-liter mixing jugs (graduated)
@@ -94,7 +84,6 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 0.4.12 — Black silicone sealant + gaffer tape (light-leak repair)
 
 ### 0.5 Container Pre-Check (if accessible)
-
 - [ ] 0.5.1 — Inspect interior: no water ingress or condensation on image plane.
 - [ ] 0.5.2 — All seals (door perimeter, neoprene cord) are intact.
 - [ ] 0.5.3 — Film plane mechanism moves freely on all four corners.
@@ -103,15 +92,11 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
 
----
-
 ## Phase 1 — Site Setup
-
 **Time: ~1.5 hours. Complete on arrival at site.**
 **Lighting: normal white light / daylight.**
 
 ### 1.1 Site Selection
-
 - [ ] 1.1.1 — Ground is level to within 5° (use a spirit level on the container floor after delivery).
 - [ ] 1.1.2 — Subject is visible from the pinhole wall — nothing blocking the view within 5m.
 - [ ] 1.1.3 — Shade structure can be erected over the container (trees, canopy, building shadow).
@@ -120,13 +105,11 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 1.1.6 — Emergency vehicle access not blocked by container placement.
 
 ### 1.2 Container Positioning
-
 - [ ] 1.2.1 — Direct the delivery driver to position the container with the **cargo doors at 90 degrees from the subject**. The pinhole wall faces the subject.
 - [ ] 1.2.2 — Once set down, check level. Use 50mm timber sleepers under corner castings to correct — up to 50mm height difference is manageable without shimming the mechanism.
 - [ ] 1.2.3 — Open cargo doors and inspect interior (if not done in Phase 0.5).
 
 ### 1.3 Light Trap — Revolving Drum Panel
-
 - [ ] 1.3.1 — Confirm the hinged drum panel is closed and all four Southco cam latches are engaged (quarter-turn, flush with panel face).
 - [ ] 1.3.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
 - [ ] 1.3.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
@@ -135,7 +118,6 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 > **Safety:** Do not attempt to reverse direction inside the drum — the baffles only clear forward rotation. If unsure of orientation, continue rotating forward until you exit on the intended side.
 
 ### 1.4 Solar Power System
-
 - [ ] 1.4.1 — Deploy solar panels on south-facing ground or roof rack, angled at 30° from horizontal (optimal for Palm Springs latitude).
 - [ ] 1.4.2 — Connect panels in parallel to the Victron SmartSolar MPPT 100/50 controller.
 - [ ] 1.4.3 — Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
@@ -146,7 +128,6 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 > **Shore power backup:** If mains power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
 ### 1.5 Ventilation and Cooling
-
 - [ ] 1.5.1 — Switch ON intake fan (circuit A) and exhaust fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
 - [ ] 1.5.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill cooler reservoir. Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
 - [ ] 1.5.3 — If using shade canopy: erect before solar noon. An 80% shade cloth over the container reduces interior temperature by 15–20°C.
@@ -154,12 +135,10 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 > **Heat safety:** Do not enter the container if the interior temperature exceeds 40°C. A digital thermometer hung inside (read through a small gap before entry) is standard practice. In Palm Springs summer without shade, the steel container body can reach 75°C — **shade and pre-cooling are not optional in these conditions.**
 
 ### 1.6 Walkway and Tray (if not done in Phase 0.5)
-
 - [ ] 1.6.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
 - [ ] 1.6.2 — Lay fresh LDPE containment liner (see 0.5.5).
 
 ### 1.7 Light-Leak Inspection
-
 - [ ] 1.7.1 — Latch the drum panel (all four Southco cam latches engaged).
 - [ ] 1.7.2 — Switch ON interior safelight (circuit D, **red LED only**). Enter through the revolving drum.
 - [ ] 1.7.3 — Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
@@ -168,15 +147,11 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 
 **GO/NO-GO checkpoint:** All leaks sealed. Interior temperature below 35°C. Battery bank above 12.4V. Water system pressure confirmed.
 
----
-
 ## Phase 2 — Loading the Image Plane
-
 **Time: ~45 minutes. Entire phase performed under RED LIGHT only (circuit D).**
 **Lighting: RED LED safelight. No white light, no daylight.**
 
 ### 2.1 Prepare Working Sensitizer
-
 **Do this step just before entering — the combined sensitizer is UV-sensitive.**
 
 | For 1 print (~116 sq ft) | Volume |
@@ -191,7 +166,6 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 > **The mixed sensitizer is UV-sensitive.** It is safe under red LED safelight but must not be exposed to daylight, blue sky light, or white LED light once mixed. Work quickly once inside.
 
 ### 2.2 Humidity Check
-
 Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 | Humidity | Action |
@@ -203,7 +177,6 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.2.1 — Check humidity and take appropriate action per table above.
 
 ### 2.3 Entering via the Light Trap
-
 **Revolving drum entry procedure (memorize this — you will do it in dim conditions):**
 
 - [ ] 2.3.1 — Confirm drum panel is latched (all four Southco cam latches engaged).
@@ -216,7 +189,6 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 > **Rule:** The drum seals automatically as it rotates — no doors to leave open. However, do not wedge equipment in the drum aperture. If a load is too large for the drum, it must be loaded during a full dark period (after sunset) with the panel unlatched and swung open.
 
 ### 2.4 Mounting the Muslin
-
 - [ ] 2.4.1 — Retrieve the pre-cut muslin from its light-safe bag.
 - [ ] 2.4.2 — Start at the **bottom edge** of the image plane frame. Flip each cam-lever clamp open, slide the muslin hem under the jaw, then flip the lever closed — the over-center cam snaps shut with tactile feedback, gripping at ~5N. Work along the bottom edge at 150mm centers (30 clamps).
 - [ ] 2.4.3 — Work upward — stretch the fabric taut and clamp the top edge (30 clamps). The torsion spring holds each clamp closed at any tilt angle.
@@ -224,7 +196,6 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.4.5 — Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.
 
 ### 2.5 Applying the Sensitizer
-
 **Lighting: RED LED safelight only. Work efficiently — aim to complete coating within 20 minutes.**
 
 - [ ] 2.5.1 — Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
@@ -234,7 +205,6 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.**
 
 ### 2.6 Tack-Drying
-
 **Lighting: RED LED safelight only.**
 
 - [ ] 2.6.1 — Run the ventilation fans (circuits A and B) on **low speed** — just enough airflow to assist drying. Avoid directed airflow directly at the coated surface.
@@ -244,22 +214,17 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 > **Do not proceed with a wet coat.** A wet coat will run during exposure and will not produce a sharp image.
 
 ### 2.7 Exiting via the Light Trap
-
 - [ ] 2.7.1 — Switch OFF safelight.
 - [ ] 2.7.2 — Step into the drum from the interior side. Rotate forward (same direction as entry) until you exit to the exterior.
 - [ ] 2.7.3 — The drum seals behind you as it rotates.
 
 **GO/NO-GO checkpoint:** Muslin fully clipped and taut. Sensitizer dry to touch. Drum panel latched.
 
----
-
 ## Phase 3 — Exposure
-
 **Time: ~30–45 minutes baseline + adjustment (Ware formula). Shutter operated entirely from outside.**
 **Lighting: N/A — operator is outside the container.**
 
 ### 3.1 Exposure Calculation
-
 Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning to mid-afternoon, summer (Mike Ware New Cyanotype formula on cotton muslin). This is 4–8× faster than the traditional Herschel formula (~2–3 hours baseline) due to the higher UV sensitivity of ammonium iron(III) oxalate.
 
 **Exposure Adjustment Table**
@@ -278,39 +243,31 @@ Baseline exposure: **30–45 minutes** in direct unobstructed sun, mid-morning t
 These factors are EV-based estimates for light level changes. Cyanotype is an iron-based process and does not exhibit Schwarzschild reciprocity failure — no additional reciprocity correction is required beyond the factors above. For critical work, run a test strip first: cut a 200mm × full-height strip of coated muslin, expose in **5-minute intervals** using a card mask, develop immediately, and compare zones.
 
 ### 3.2 Opening the Shutter
-
 - [ ] 3.2.1 — Confirm the vestibule outer door is closed and latched.
 - [ ] 3.2.2 — Set a timer for your calculated exposure time.
 - [ ] 3.2.3 — Open the pinhole shutter from the exterior operating handle.
 - [ ] 3.2.4 — **Do not open any doors, stand in front of the pinhole wall, or allow shadows to cross the pinhole during exposure.**
 
 ### 3.3 Monitoring During Exposure
-
 - [ ] 3.3.1 — Check the battery bank voltage on the MPPT controller display every 15 minutes. If voltage drops below 11.8V, switch off the evaporative cooler (non-essential during exposure).
 - [ ] 3.3.2 — Note any significant cloud cover changes. If conditions change substantially mid-exposure (e.g. sky goes from clear to heavy overcast), close the shutter, note elapsed time, wait for conditions to return, then re-open for the remaining time.
 
 ### 3.4 Closing the Shutter
-
 - [ ] 3.4.1 — At the calculated time, close the pinhole shutter using the exterior operating handle.
 - [ ] 3.4.2 — Verify the shutter indicator reads CLOSED before entering.
 
 **GO/NO-GO checkpoint:** Shutter confirmed closed. Elapsed time within ± 2 min of target.
 
----
-
 ## Phase 4 — Development
-
 **Time: ~20 minutes.**
 **Lighting: RED LED safelight on entry, then switch to WHITE LIGHT after first wash begins.**
 
 ### 4.1 Entering and Removing the Muslin
-
 - [ ] 4.1.1 — Enter via light trap (same procedure as Phase 2.3). Switch safelight ON (**red light**).
 - [ ] 4.1.2 — Flip each cam-lever clamp open to release the muslin — work top-down, supporting the fabric weight as the upper clamps release. The image is latent at this point and may be barely visible as a pale yellow ghost.
 - [ ] 4.1.3 — Lay the muslin face-up on the LDPE containment sheet on the processing zone floor (optical zone, between the film plane rails).
 
 ### 4.2 Development in Water
-
 **Lighting: switch to WHITE LIGHT (circuit D, white mode) once the first wash begins — the image is no longer UV-sensitive after initial water contact.**
 
 Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.
@@ -326,7 +283,6 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
 
 ### 4.3 Drying
-
 **Lighting: WHITE LIGHT or daylight — cyanotype is no longer light-sensitive after washing.**
 
 - [ ] 4.3.1 — After the final wash, carry the muslin outside through the light trap. Daylight exposure is safe and accelerates oxidation.
@@ -334,26 +290,20 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 - [ ] 4.3.3 — Drying time: 20–60 minutes depending on temperature and airflow. The blue intensifies as the image oxidizes in air.
 - [ ] 4.3.4 — Final color appears approximately 30 minutes after the print appears dry to the touch.
 
----
-
 ## Phase 5 — Cleanup and Close-Down
-
 **Time: ~30 minutes.**
 **Lighting: WHITE LIGHT.**
 
 ### 5.1 Chemistry Disposal
-
 - [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port X4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
 - [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
 
 ### 5.2 Container Ventilation
-
 - [ ] 5.2.1 — Open both ventilation fans to full speed (circuits A and B).
 - [ ] 5.2.2 — Leave ventilating for **30 minutes minimum** after development is complete, especially if working in hot conditions — the container interior will have accumulated heat and humidity from the wash operation.
 
 ### 5.3 Power-Down Sequence
-
 Power down in this order to avoid voltage spikes on sensitive electronics:
 
 - [ ] 5.3.1 — Evaporative cooler (circuit E)
@@ -366,14 +316,12 @@ Power down in this order to avoid voltage spikes on sensitive electronics:
 If shore charger is connected, leave it running overnight to top up the battery bank.
 
 ### 5.4 Securing the Container (Operational Mode)
-
 - [ ] 5.4.1 — Engage all four Southco cam latches on the drum panel.
 - [ ] 5.4.2 — Apply secondary locking bar across the drum panel face if the container will be unattended overnight.
 - [ ] 5.4.3 — Cap all ventilation duct stubs on the exterior.
 - [ ] 5.4.4 — Secure solar panels — if conditions allow, lay flat or fold to minimize wind load.
 
 ### 5.5 Transport Mode Conversion (Packing Up)
-
 **Time: ~5 minutes. Single-person operation.**
 
 The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 300mm inward on these rails before the container doors can close. The left walkway (cargo door end) must be removed before sliding the panel — lift it out from the miter corners. The processing tray and remaining walkway sections (near, far, right) remain in place during mode conversion.
@@ -390,7 +338,6 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 - [ ] 5.5.10 — Close and latch standard ISO container cargo doors.
 
 ### 5.6 Operational Mode Conversion (Setting Up)
-
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
 - [ ] 5.6.1 — Open container cargo doors fully.
@@ -403,10 +350,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 - [ ] 5.6.8 — Swing panel closed. Engage all 4 Southco cam latches.
 - [ ] 5.6.9 — Perform dark-adaptation check (Phase 1.3, step 1.3.4).
 
----
-
 ## Exposure Adjustment Table
-
 *Full reference table for use in Phase 3.*
 
 | Baseline | 35 min | Direct full sun, summer, 10:00–14:00 (Ware formula) |
@@ -417,8 +361,6 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 | Early/late sun | 70 min | |
 | Winter mid-latitude | 55 min | |
 | Thin haze + early sun | 105 min | Multiply factors: 1.5 × 2.0 |
-
----
 
 ## Troubleshooting
 
@@ -432,10 +374,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 | Uneven color — cool/warm zones | Humidity variation across coating | Ensure even pre-misting if in dry climate |
 | Battery low warning during session | Higher-than-expected draw or low state of charge | Switch off evaporative cooler; complete session on fans and pump only |
 
----
-
 ## See Also
-
 - [Electrical & Systems Report](electrical-report.md) — power system, light trap construction, cooling specification
 - [Film Plane Mechanism](film-plane-mechanism-report.md) — image plane adjustment and setup
 - [Tilt-Swing Front Board](tilt-swing-board-report.md) — pinhole steering and angular calibration

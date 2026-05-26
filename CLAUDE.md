@@ -44,7 +44,7 @@ site/                    ← built output — gitignored, never commit
 
 ## Drawing Style Conventions
 
-Reuse all helpers from `generate_plate_drawing.py`:
+Reuse all helpers from `tbs_drawing.py`:
 
 ```python
 draw_dim_h(ax, x1, x2, y, label, ...)   # horizontal dimension

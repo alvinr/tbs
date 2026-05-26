@@ -14,8 +14,13 @@ Each section links to the report where the drawing is discussed in full.
 
 ## 1. System Assembly Overview
 
-High-level schematic side-elevation of the container interior showing how all systems
-relate spatially. Color-coded by subsystem. Optical axis is perpendicular to the page.
+There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly these systems are:
+- [Electrical system](electrical-report.md)
+- [Water system and plumbing](water-system-report.md)
+- [Lighttrap & Hinged panel](light-trap-selection.md)
+- [Film plane mechanism](film-plane-mechanism-report.md)
+- [Processing and Spray Bar]()
+- [Pinhole construction](pinhole-optics-report.md)
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 

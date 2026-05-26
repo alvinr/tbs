@@ -6,10 +6,7 @@
 
 See also: [Operating Manual](operating-manual.md) for step-by-step operational procedures.
 
----
-
 ## 1. System Overview
-
 TBS-001 is designed for fully off-grid operation. All power comes from a rooftop/ground-mounted solar array charging a LiFePO4 battery bank. Shore power (mains) is accommodated as an optional backup charging input only — the system operates identically without it.
 
 All loads run at **12V DC**. There is no mains AC distribution inside the container.
@@ -24,10 +21,7 @@ Solar panels (3 × 200W)
 
 See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 
----
-
 ## 2. Power Budget
-
 | Circuit | Device | Peak draw | Duty cycle |
 |---------|--------|-----------|-----------|
 | A | Ventilation fan — intake (6") | 60W | Continuous during processing |
@@ -45,10 +39,7 @@ See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 
 **Solar recharge:** 600W array × 5.5 peak sun hours (Palm Springs) = 3,300 Wh/day generated → full recharge from flat within one day; maintains charge with daily single-print use.
 
----
-
 ## 3. Solar Array
-
 | Parameter | Specification |
 |-----------|--------------|
 | Panels | 3 × 200W monocrystalline, 12V nominal |
@@ -62,12 +53,9 @@ See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 
 **Siting:** deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
 
----
-
 ## 4. Charge Controller and Battery Bank
 
 ### 4.1 Charge Controller
-
 | Parameter | Specification |
 |-----------|--------------|
 | Model | Victron SmartSolar MPPT 100/50 |
@@ -80,7 +68,6 @@ See [Section 9.4](#94-electrical-diagrams) for embedded diagrams.
 The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).
 
 ### 4.2 Battery Bank
-
 | Parameter | Specification |
 |-----------|--------------|
 | Chemistry | LiFePO4 (lithium iron phosphate) |
@@ -99,7 +86,6 @@ The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. 
 - No outgassing — can be used in an enclosed space without ventilation dedicated to the battery
 
 ### 4.3 Shore Power Backup Charger
-
 | Parameter | Specification |
 |-----------|--------------|
 | Model | Victron Blue Smart IP65 12/15 |
@@ -112,7 +98,6 @@ The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. 
 Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.
 
 ### 4.4 External Power Panel
-
 The solar PV inputs and shore power inlet share a single **flush-mount power panel** set into a cutout in the pinhole wall, close to the electrical panel and battery bank inside.
 
 | Parameter | Specification |
@@ -130,16 +115,12 @@ The panel face sits flush with the exterior wall surface. A 280×180mm cutout al
 
 ![External Power Panel Detail](assets/power-panel-sheet1.png)
 
----
-
 ## 5. Light Trap — Revolving Drum
 
 ### 5.1 Function
-
 The light trap allows a single operator to enter and exit the camera in full daylight during loading and development, without admitting any UV or visible light to the interior. TBS-001 uses a **revolving drum built into a hinged panel** — the full cargo door opening clears for IBC tote loading when the panel is swung open, and light-tight personnel access is retained when the panel is closed.
 
 ### 5.2 Hinged Panel Specification
-
 | Parameter | Specification |
 |-----------|--------------|
 | Panel size | 2,362mm × 2,388mm |
@@ -151,7 +132,6 @@ The light trap allows a single operator to enter and exit the camera in full day
 | Swing clearance | 180° outward — fully clears opening for IBC tote loading |
 
 ### 5.3 Revolving Drum Specification
-
 | Parameter | Specification |
 |-----------|--------------|
 | Drum diameter | 750mm |
@@ -167,26 +147,19 @@ The light trap allows a single operator to enter and exit the camera in full day
 Operation: operator pushes the drum wall to enter, traverses one baffle sector, exits into the container interior — no tools, no light admission.
 
 ### 5.4 Fabrication Drawings
-
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
----
-
 **Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and Light Path**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
-
----
 
 **Sheet 3 — Drum Vertical Section Elevation (Section A-A)**
 ![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
 
 ### 5.5 Light-Leak Test
-
 After installation, perform the inspection in Phase 0.7 of the Operating Manual. **Target: zero light visible after 15-minute dark adaptation with drum in service position and panel latched.**
 
 ### 5.6 Commercial Light Trap Options (Reference)
-
 Custom fabrication is the recommended approach. Commercial revolving doors are not weatherproof or transport-rated for field deployment:
 
 | Option | Diameter | Price (USD) | Recommended? |
@@ -198,17 +171,13 @@ Custom fabrication is the recommended approach. Commercial revolving doors are n
 Full raw material supplier list, bearing specification, and seal specification are in the [Light Trap Selection Report](light-trap-selection.md).
 
 ### 5.7 Ventilation Diagrams
-
 **Sheet 1 — Container Ventilation Section**
 ![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
-
----
 
 **Sheet 2 — Fan & Baffle Duct Assembly**
 ![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
 
 ### 5.8 Container Floor Plan — All Systems
-
 Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all systems in their real positions. Equipment occupies provably shadow-free end zones. The optical zone (X=150–4,649mm) contains the processing tray and perimeter walkways at floor level.
 
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
@@ -232,16 +201,12 @@ Top-down schematic of the full TBS-001 interior at 1:75 scale, showing all syste
 
 All equipment clears the optical cone at every depth — no vignetting. See [Equipment Layout Report](equipment-layout-report.md) for the shadow-free proof.
 
----
-
 ## 6. Cooling System
 
 ### 6.1 The Problem
-
 A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. An operator cannot safely work under 40°C interior. Chemistry coating is impaired above 35°C.
 
 ### 6.2 Strategy
-
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
 | 80% shade cloth canopy over container | −15 to −20°C | ~$300 | None | **Yes — always** |
@@ -253,7 +218,6 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 > **Why evaporative cooling works in Hot Climates (e.g. Palm Springs):** Evaporative (swamp) cooling is most effective when ambient relative humidity is low. Palm Springs in summer averages 10–18% RH — optimal for this technology. At 15% RH and 42°C ambient, an evaporative cooler can reduce temperature by 15–18°C, bringing 42°C down to 24–27°C after the shade canopy's contribution. At the same conditions, a standard 9,000 BTU mini-split uses 900W vs. the evaporative cooler's 80W — an 11× power saving.
 
 ### 6.3 Evaporative Cooler Specification
-
 | Parameter | Specification |
 |-----------|--------------|
 | Model | Portacool Jetstream 110 (12V DC version) or equivalent |
@@ -265,7 +229,6 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 | Water source | Dedicated 20-liter reservoir, refilled from Blue circuit IBC tote |
 
 ### 6.4 Light-Safe Cooler Intake
-
 The cooler is mounted externally on the pinhole wall exterior. Cooled air enters through a Ø200mm insulated duct penetration at X=1,200mm, Z=2,100mm. The penetration includes a light-safe baffle to prevent light ingress:
 
 - **Duct size:** 200mm (8") — sized for ~300 CFM at low velocity
@@ -273,10 +236,7 @@ The cooler is mounted externally on the pinhole wall exterior. Cooled air enters
 - **Interior baffles:** two 200 × 200mm flat steel baffles, offset 100mm, mounted inside a 300mm duct stub — breaks the direct light path while allowing unrestricted airflow
 - **Exterior:** cooler unit direct-coupled to duct with weatherproof housing
 
----
-
 ## 7. Ventilation Upgrade
-
 The original construction guide specifies 2 × 4" (100mm) inline fans. For operator comfort during processing in warm conditions, upgrade to 6" (150mm):
 
 | Parameter | Original | Upgraded |
@@ -291,7 +251,6 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 **Installation:** Same light-baffle design as original — L-shaped offset baffles inside a duct stub. Fan A (intake) is low on the far end wall (X=C_LEN, draws in cooler air near floor level). Fan B (exhaust) is mounted on the hinged panel (far corner zone, Yd=2,287mm, H=1,800mm) with its baffle duct protruding from the panel exterior face. During operation the cargo doors are open (personnel access is via the revolving light trap drum), so the exhaust discharges directly into the open doorway. Fan B moves with the panel on the sliding carriage; wiring uses a flexible coiled cable from the fixed door frame (see §8.3). Cross-flow ventilation diagonal: low intake at far end → high exhaust at cargo door end.
 
 **Operating modes:**
-
 | Mode | Intake | Exhaust |
 |------|--------|---------|
 | Exposure | OFF | OFF |
@@ -299,12 +258,9 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 | Post-session ventilation | Full speed | Full speed |
 | Pre-cooling (before entry) | Full speed | Full speed |
 
----
-
 ## 8. Interior Lighting
 
 ### 8.1 Two-Circuit Lighting Design
-
 TBS-001 requires two mutually exclusive lighting modes:
 
 - **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width) at X≈600mm, X≈1,800mm, and X≈4,100mm, plus a strip on the inner drum face. Each strip runs from Yd=0 (pinhole wall) and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.
@@ -313,7 +269,6 @@ TBS-001 requires two mutually exclusive lighting modes:
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
 
 ### 8.2 White LED Panel Specification
-
 | Parameter | Specification |
 |-----------|--------------|
 | Type | 12V DC LED flat panel, 4000K neutral white |
@@ -330,7 +285,6 @@ The two circuits are independently switched — they are **not** interlocked, so
 Three panels at ~1,800 lumens each provide 5,400 lumens total across the ~14 m² floor area — approximately 385 lux, comparable to a well-lit workshop. The panels are wired in parallel from Circuit G via the ceiling cable trunking.
 
 ### 8.3 Pull-Cord Switches
-
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
 
 | Parameter | Specification |
@@ -345,12 +299,9 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 
 The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
 
----
-
 ## 9. Wiring Specification
 
 ### 9.1 Main Enclosure
-
 IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2,050–2,350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
@@ -358,7 +309,6 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 - Shore charger output terminals
 
 ### 9.2 Circuit List
-
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
 | A | Ventilation fan — intake | 5A | 16 AWG | ~3m |
@@ -371,7 +321,6 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 | — | Main battery fuse | 200A | 2/0 AWG | ~0.5m (battery to busbar) |
 
 ### 9.3 Wiring Construction
-
 **Conduit:** All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).
 
 **Connectors:**
@@ -384,33 +333,22 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 **Labelling:** Brady M210 wire labels at every terminal and every connector. Labels follow the circuit letter scheme (A–G) plus device description. Re-label after any wiring change.
 
 ### 9.4 Electrical Diagrams
-
 **Sheet 1 — System One-Line Diagram**
-
 Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labelled.
 
 ![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
 
----
-
 **Sheet 2 — Container Wiring Layout**
-
 Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.
 
 ![TBS-ELEC Sheet 2 — Container Wiring Layout](assets/electrical-sheet2.png)
 
----
-
 **Sheet 3 — Pinhole Wall Interior Elevation**
-
 Interior elevation of the pinhole wall face (Yd=0), looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.
 
 ![TBS-ELEC Sheet 3 — Pinhole Wall Interior Elevation](assets/electrical-sheet3.png)
 
----
-
 ## 10. Shopping List
-
 All US/SoCal sources. Prices approximate as of 2026.
 
 | Item | Spec | Source | Est. cost |
@@ -442,10 +380,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | **Cooling (evap cooler)** | | | **~$280** |
 | **Systems grand total** | | | **~$2,310** |
 
----
-
 ## 11. Impact on Existing Design
-
 | Existing element | Change required |
 |-----------------|----------------|
 | Ventilation fans (4") | Replace with 6" units — same baffle design, same penetration locations |

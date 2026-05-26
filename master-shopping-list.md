@@ -365,7 +365,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×300mm (right), 1× 2,362×300mm (left — removable lift-out) | ~4.1 m² | [McNichols](https://www.mcnichols.com) | ~$260–$390 |
 | Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical × 300mm horizontal, diagonal brace welded. Hot-dip galvanized. | 18 | Local fab / Metal Supermarkets | ~$145–$220 |
-| Reinforcing plates, 80×180×6mm mild steel | Welded to exterior wall face behind each bracket position | 18 | Metal Supermarkets | ~$35–$55 |
+| Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each bracket position | 18 | Metal Supermarkets | ~$40–$60 |
 | M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per bracket. | 54 | McMaster-Carr | ~$55–$80 |
 | Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
 | M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
@@ -373,7 +373,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [Grating clips](https://www.mcnichols.com/products/grating/accessories/) | Slide-on clips, removable without tools | 35 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
 | Fabrication + installation | Cut/weld/galvanize 18 brackets + reinforcing plates, drill wall ribs, hang right walkway bearers, install | 1 job | Local fab / metal shop | ~$250–$400 |
-**Walkway subtotal: ~$870–$1,345**
+**Walkway subtotal: ~$875–$1,350**
 
 *Near/far grating lifts onto bracket arms and clips in place. Right walkway grating rests on ceiling-hung bearer angles — no floor contact, clears IBC stack entirely. Left walkway is a lift-out section resting on near/far butt joint ends — must be removed before sliding the hinged panel to transport position. Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 

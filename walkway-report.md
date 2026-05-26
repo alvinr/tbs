@@ -78,8 +78,7 @@ between plate edge and gusset). One upper bolt at Z=120 mm (above grating deck a
 30 mm from plate top) is centered on the gusset centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
-provide a bearing surface for the bolt heads and washers. See Sheet 2,
-View B for the bolt pattern detail.
+provide a bearing surface for the bolt heads and washers. See View B for the bolt pattern detail.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
 
@@ -98,6 +97,8 @@ center X position, providing clearance for the spray bar telescoping pole to
 pass through the walkway during processing operations. See
 [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
+
+![TBS-001 Walkway —Positions of walkway slits](assets/spray-bar-sheet3.png)
 
 ---
 

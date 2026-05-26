@@ -622,7 +622,7 @@ def sheet2():
     draw_dim_v(ax2, dim_x2 - 18, 0, BRKT_VERT,
                f"{BRKT_VERT}mm", offset=4, fs=6, right=False, font=FONT)
 
-    ax2.text(cx2, BRKT_VERT + 28,
+    ax2.text(cx2, BRKT_VERT + 20,
              f"MOUNTING PLATE\n{BRKT_T}mm STEEL · {REINF_W}×{BRKT_VERT}mm",
              ha="center", va="bottom", fontsize=6.5, color=C_BRKT,
              fontweight="bold", **FONT, zorder=15)
@@ -2293,19 +2293,34 @@ def sheet6():
                             sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
                             alpha=0.25, zorder=4))
-    # ── Grating clip (innermost edge, toward processing tray) ──────────
-    clip_yd = WALKWAY_W - 20
-    clip_w = 8
-    clip_below = 12
-    clip_above = 5
-    clip_bot_z = grate_bot - clip_below
-    clip_top_z = grate_top + clip_above
-    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot_z)),
-                            sx(clip_w), sy(clip_top_z - clip_bot_z),
-                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
-    leader(ax, sx(clip_yd + clip_w + 2), sy(grate_top),
-           sx(clip_yd + 40), sy(grate_top + 15),
-           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+    # ── Grating clip — saddle type, hooks under bearer beam top flange ──
+    C_CLIP = "#505058"
+    clip_yd = 200
+    clip_t = BEAM_T            # 3mm clip metal thickness
+    tab_reach = 15             # upper tab extends inward over grating
+    hook_reach = 12            # lower hook extends inward under flange
+    clip_above = 5             # tab height above grate_top
+    beam_flange_bot_z = beam_top - BEAM_T  # Z=72
+
+    clip_verts = [
+        (sx(clip_yd - tab_reach), sy(grate_top + clip_above)),
+        (sx(clip_yd + clip_t),    sy(grate_top + clip_above)),
+        (sx(clip_yd + clip_t),    sy(beam_flange_bot_z)),
+        (sx(clip_yd - hook_reach), sy(beam_flange_bot_z)),
+        (sx(clip_yd - hook_reach), sy(beam_top)),
+        (sx(clip_yd),              sy(beam_top)),
+        (sx(clip_yd),              sy(grate_top)),
+        (sx(clip_yd - tab_reach), sy(grate_top)),
+    ]
+    ax.add_patch(Polygon(clip_verts, closed=True,
+                         fc=C_CLIP, ec=C_OUT, lw=1.2, zorder=10))
+    ax.plot([sx(clip_yd - hook_reach - 2), sx(clip_yd + clip_t + 2)],
+            [sy(beam_top), sy(beam_top)],
+            color=C_OUT, lw=0.6, ls=":", zorder=11)
+    leader(ax, sx(clip_yd + clip_t + 2), sy((grate_top + beam_top) / 2),
+           sx(clip_yd + 50), sy(grate_top + 18),
+           "SADDLE CLIP\nHOOKS UNDER BEAM\nTOP FLANGE (REMOVABLE)",
+           color=C_CLIP, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     ax.text(sx(WALKWAY_W / 2), sy(grate_top + 3),
             f"GRATING (GHOST) \u2014 Z={grate_bot}\u2013{grate_top}mm",
@@ -2575,6 +2590,7 @@ def sheet6():
         f"4. Lock block + M{BOLT_DIA} bolt through {SLOT_L}mm slot in plate. Washer + nut below plate.",
         f"5. Slot allows position adjustment along Yd. Spanner removal.",
         f"6. Same at both ends (near + far bracket).",
+        f"7. Saddle clips hook under beam top flange — removable.",
     ]
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(180), font=FONT)
 

@@ -70,6 +70,7 @@ MD_FILES = [
     ("hinged-panel-report.md",            (".",           "Hinged Light-Trap Panel")),
     ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
     ("walkway-report.md",                 (".",           "Perimeter Walkway")),
+    ("equipment-panel-report.md",         (".",           "Equipment Panel & Plumbing")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
@@ -327,6 +328,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, sliding carriage, and light seal design |
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section removable walkway system — wall-cantilevered, ceiling-hung, and lift-out designs with zero tray contact |
+| [Equipment Panel & Plumbing](equipment-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, 3-stage filter skid, accumulator, valves, and pipe routing |
 
 """
 

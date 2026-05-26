@@ -14,14 +14,14 @@ Each section links to the report where the drawing is discussed in full.
 
 ## 1. System Assembly Overview
 
-There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly these systems are:
+There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly these systems are and can be see in the plan view below:
 
-- [Electrical system](electrical-report.md)
-- [Water system and plumbing](water-system-report.md)
-- [Lighttrap & Hinged panel](light-trap-selection.md)
-- [Film plane mechanism](film-plane-mechanism-report.md)
-- [Processing and Spray Bar](processing-tray-and-spray-bar.md)
-- [Pinhole construction](pinhole-optics-report.md)
+- Electrical system
+- Water system and plumbing
+- Lighttrap & Hinged panel
+- Film plane mechanism
+- Processing and Spray Bar
+- Pinhole construction
 
 ![TBS-001 — Container Floor Plan](assets/container-floorplan.png)
 
@@ -29,7 +29,7 @@ The container is split into three main areas
 
 - Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md)
 - Center: [Pinhole construction](pinhole-optics-report.md), [Processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md), [walkway](walkway-report.md)
-- Right: [IBC stacking system](ibc-stacking-report.md), plumbing panel
+- Right: [IBC stacking system](ibc-stacking-report.md), [equipment panel & plumbing](equipment-panel-report.md)
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 

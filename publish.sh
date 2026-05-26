@@ -70,6 +70,7 @@ MD_FILES=(
     "weight-distribution-report.md"
     "chemistry-prep-shelves.md"
     "processing-tray-and-spray-bar.md"
+    "hinged-panel-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )

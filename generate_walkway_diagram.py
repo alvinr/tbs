@@ -115,7 +115,7 @@ def sheet2():
     BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (bracket arm top Z)
     BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
-    REINF_W    = 80    # reinforcing plate width behind wall
+    REINF_W    = 100   # reinforcing plate width (covers triangular bolt pattern)
     REINF_H    = 180   # reinforcing plate height
     REINF_T    = 6     # reinforcing plate thickness
 
@@ -274,17 +274,18 @@ def sheet2():
             **FONT, zorder=15)
 
     # Through-bolts (3× M12) — horizontal shanks through wall + bracket
+    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=100 (centered)
+    # In this side view (along X), the two Z=50 bolts overlap — shown as one + "2×" label
     BOLT_D    = 12
     BOLT_R    = BOLT_D / 2
     BOLT_HEAD = 8    # hex head height (Yd direction)
     NUT_H     = 10   # nut height (Yd direction)
     WASHER_T  = 3
     C_BOLT    = "#505058"
-    bolt_z1   = 20   # below gusset hypotenuse
-    bolt_z2   = 85   # above arm/gusset
-    bolt_z3   = 130  # above walkway deck, upper vertical plate
+    bolt_z_lo = 50   # lower pair — 1/3 from floor (2 bolts flanking gusset in X)
+    bolt_z_hi = 100  # upper single — 1/3 from top, on gusset centerline
 
-    for bz in [bolt_z1, bolt_z2, bolt_z3]:
+    for bz in [bolt_z_lo, bolt_z_hi]:
         shank_hw = BOLT_R * 0.4  # half-width of shank in Z
         # Bolt shank — from reinf plate through to bracket face
         ax.add_patch(Rectangle((sx(reinf_yd), sy(bz - shank_hw)),
@@ -321,10 +322,15 @@ def sheet2():
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
-    # Bolt label
-    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z1),
-           sx(reinf_yd - 30), sy(bolt_z1 + 20),
-           "3\u00d7 M12 THROUGH-\nBOLTS\nHEAD \u2192 REINF PLATE \u2192\nWALL \u2192 RIB \u2192\nBRACKET \u2192 NUT",
+    # Bolt labels
+    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_lo),
+           sx(reinf_yd - 30), sy(bolt_z_lo + 20),
+           "2\u00d7 M12 AT Z=50\n(STRADDLE GUSSET\nIN X \u2014 SEE SHEET 7)",
+           color=C_DIM, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_hi),
+           sx(reinf_yd - 30), sy(bolt_z_hi + 20),
+           "1\u00d7 M12 AT Z=100\n(ON GUSSET CL\nIN X \u2014 SEE SHEET 7)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -2016,11 +2022,12 @@ def sheet6():
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Through-bolts (horizontal shanks — matching sheet 2) ─────────────────
+    # Triangular pattern: 2× at Z=50 (flanking gusset in X), 1× at Z=100 (centered)
+    # In this side view, the two Z=50 bolts overlap
     C_BOLT = "#505058"
-    bolt_z1 = 20
-    bolt_z2 = 85
-    bolt_z3 = 130
-    for bz in [bolt_z1, bolt_z2, bolt_z3]:
+    bolt_z_lo = 50
+    bolt_z_hi = 100
+    for bz in [bolt_z_lo, bolt_z_hi]:
         shank_left = reinf_yd
         shank_right = BRKT_T
         shank_hw = BOLT_R * 0.4
@@ -2427,169 +2434,365 @@ def sheet6():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Front Elevation: Cantilever Bracket Bolt Pattern
+# SHEET 7 — Cantilever Bracket Bolt Pattern
 #
-# View: looking in the −Yd direction (from inside container toward wall)
-# Horizontal = X (along container length)
-# Vertical   = Z (height, 0 = floor)
-# Shows the vertical mounting plate face-on with 3× M12 bolt holes,
-# the arm and gusset projections (dashed), and dimensioned bolt spacing.
+# Two-panel layout:
+#   VIEW A (left, larger): Side elevation looking along X — gusset triangle
+#     face-on, walkway horizontal ghost, bolt positions on vertical plate.
+#     Horizontal = Yd (0 at wall, positive toward interior).
+#     Vertical   = Z (0 at floor, positive up).
+#   VIEW B (right, smaller): Plate face looking along −Yd — shows triangular
+#     bolt pattern on vertical mounting plate with gusset footprint.
+#     Horizontal = X (bracket width).
+#     Vertical   = Z (height).
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet7():
-    def sx(mm): return mm
-    def sy(mm): return mm
+    from matplotlib.gridspec import GridSpec
 
-    # ── Bracket geometry ────────────────────────────────────────────────────
-    PLATE_W    = 100   # vertical plate width in X (mm)
+    # ── Bracket geometry (mm real) ──────────────────────────────────────────
+    PLATE_W    = 100   # vertical plate width in X
     PLATE_H    = WALKWAY_BRACKET_H   # = 150mm
-    BRKT_T     = WALKWAY_BRACKET_T   # = 8mm (not visible in front view)
+    BRKT_T     = WALKWAY_BRACKET_T   # = 8mm plate thickness
     ARM_Z_TOP  = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
     ARM_DEPTH  = BRKT_T + 2          # = 10mm visual arm depth
     ARM_Z_BOT  = ARM_Z_TOP - ARM_DEPTH  # ≈ 65mm
     GUSSET_REACH = 70
+    CORR_DEPTH = 38
+    WALL_T     = 1.6
 
-    # Bolt positions (Z only — all on plate X centerline)
-    BOLT_Z1    = 20    # below gusset hypotenuse
-    BOLT_Z2    = 85    # above arm/gusset
-    BOLT_Z3    = 130   # above walkway deck
+    # Bolt positions — triangular pattern
+    BOLT_Z_LO  = 50    # lower pair — 1/3 from floor
+    BOLT_Z_HI  = 100   # upper single — 1/3 from top
+    BOLT_X_OFF = 20    # lower bolt X offset from plate center (mm)
     BOLT_D     = 12
     BOLT_R     = BOLT_D / 2
     HOLE_D     = 14    # clearance hole
     HOLE_R     = HOLE_D / 2
+    BOLT_HEAD  = 8
+    NUT_H      = 10
+    WASHER_T2  = 3
 
     # Grate
-    GRATE_Z_BOT = ARM_Z_TOP          # = 75mm
-    GRATE_Z_TOP = GRATE_Z_BOT + WALKWAY_GRATE_T  # = 100mm
+    GRATE_Z_BOT = ARM_Z_TOP
+    GRATE_Z_TOP = GRATE_Z_BOT + WALKWAY_GRATE_T
 
-    # ── Figure (landscape — plate left, notes right) ──────────────────────
-    X_LO = -PLATE_W - 90
-    X_HI =  PLATE_W + 250
-    Z_LO = -50
-    Z_HI =  PLATE_H + 55
+    # Reinforcing plate
+    REINF_T    = 6
 
-    fig, ax = plt.subplots(figsize=(18, 12))
+    # ── Figure ──────────────────────────────────────────────────────────────
+    fig = plt.figure(figsize=(20, 12))
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[2.2, 1], wspace=0.08)
+    ax  = fig.add_subplot(gs[0, 0])   # View A — side elevation
+    ax2 = fig.add_subplot(gs[0, 1])   # View B — plate face
     fig.patch.set_facecolor(BG)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW A — Side elevation looking along X
+    # Horizontal = Yd, Vertical = Z
+    # ══════════════════════════════════════════════════════════════════════════
     ax.set_facecolor(BG)
-    ax.set_xlim(sx(X_LO), sx(X_HI))
-    ax.set_ylim(sy(Z_LO), sy(Z_HI))
+
+    YD_LO = -80
+    YD_HI = WALKWAY_W + 120
+    Z_LO  = -55
+    Z_HI  = PLATE_H + 60
+    ax.set_xlim(YD_LO, YD_HI)
+    ax.set_ylim(Z_LO, Z_HI)
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # Plate center in X
-    cx = 0
-    pl = cx - PLATE_W / 2   # plate left
-    pr = cx + PLATE_W / 2   # plate right
-
-    # ── Vertical mounting plate (solid) ─────────────────────────────────────
-    ax.add_patch(Rectangle((sx(pl), sy(0)), sx(PLATE_W), sy(PLATE_H),
-                            fc=C_BRKT, ec=C_OUT, lw=2.0, zorder=5, alpha=0.85))
-
-    # ── Arm projection (dashed outline — projects toward viewer) ────────────
-    ax.add_patch(Rectangle((sx(pl), sy(ARM_Z_BOT)), sx(PLATE_W), sy(ARM_DEPTH),
-                            fc="none", ec=C_OUT, lw=1.5, ls="--", zorder=6))
-    # Arm label (right of plate, inline with arm)
-    ax.text(sx(pr + 8), sy(ARM_Z_TOP - ARM_DEPTH / 2),
-            f"ARM Z={ARM_Z_BOT}–{ARM_Z_TOP}mm\n(PROJECTS TOWARD VIEWER)",
-            ha="left", va="center", fontsize=6, color=C_DIM,
-            **FONT, zorder=15)
-
-    # ── Gusset projection (dashed outline — triangle below arm) ─────────────
-    ax.add_patch(Rectangle((sx(pl), sy(0)), sx(PLATE_W), sy(ARM_Z_BOT),
-                            fc="none", ec=C_DIM, lw=1.0, ls=(0, (4, 3)), zorder=4))
-    ax.plot([sx(pl + 5), sx(pr - 5)], [sy(3), sy(ARM_Z_BOT - 3)],
-            color=C_DIM, lw=0.8, ls="--", zorder=4)
-    ax.text(sx(cx), sy(ARM_Z_BOT / 2 - 12),
-            "GUSSET\n(BELOW ARM)",
-            ha="center", va="center", fontsize=5.5, color=C_DIM,
-            style="italic", **FONT, zorder=15)
-
-    # ── Grate reference lines (dashed green) ────────────────────────────────
-    grate_line_l = pl - 20
-    grate_line_r = pr + 20
-    for z in [GRATE_Z_BOT, GRATE_Z_TOP]:
-        ax.plot([sx(grate_line_l), sx(grate_line_r)], [sy(z), sy(z)],
-                color="#208020", lw=0.8, ls=(0, (6, 4)), zorder=3, alpha=0.5)
-    ax.text(sx(grate_line_r + 5), sy((GRATE_Z_BOT + GRATE_Z_TOP) / 2),
-            f"GRATE {WALKWAY_GRATE_T}mm\nDECK Z={GRATE_Z_TOP}mm",
-            ha="left", va="center", fontsize=5.5, color="#208020",
-            **FONT, zorder=15, alpha=0.7)
-
-    # ── Bolt holes (3× M12, clearance holes with crosshairs) ───────────────
-    C_BOLT = "#505058"
-    bolt_labels = [
-        (BOLT_Z1, "BOLT 1 — BELOW GUSSET"),
-        (BOLT_Z2, "BOLT 2 — ABOVE ARM"),
-        (BOLT_Z3, "BOLT 3 — ABOVE DECK"),
-    ]
-    for bz, lbl in bolt_labels:
-        ax.add_patch(Circle((sx(cx), sy(bz)), sx(HOLE_R),
-                            fc=BG, ec=C_BOLT, lw=1.5, zorder=8))
-        ch = HOLE_R + 4
-        ax.plot([sx(cx - ch), sx(cx + ch)], [sy(bz), sy(bz)],
-                color=C_BOLT, lw=0.6, zorder=9)
-        ax.plot([sx(cx), sx(cx)], [sy(bz - ch), sy(bz + ch)],
-                color=C_BOLT, lw=0.6, zorder=9)
-
-    # Bolt leader lines to labels (stacked right of plate, staggered)
-    for bz, lbl in bolt_labels:
-        leader(ax, sx(cx + HOLE_R + 2), sy(bz),
-               sx(pr + 30), sy(bz),
-               f"M12 ({HOLE_D}mm CLR)\n{lbl}",
-               color=C_BOLT, fs=6,
-               ha="left", va="center", arrow_style="-|>", font=FONT)
-
-    # ── Dimension lines ─────────────────────────────────────────────────────
-    dim_x = pl - 45
-
-    draw_dim_v(ax, sx(dim_x), sy(0), sy(BOLT_Z1),
-               f"{BOLT_Z1}mm", offset=sx(8), fs=7, right=False, font=FONT)
-    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z1), sy(BOLT_Z2),
-               f"{BOLT_Z2 - BOLT_Z1}mm", offset=sx(8), fs=7, right=False, font=FONT)
-    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z2), sy(BOLT_Z3),
-               f"{BOLT_Z3 - BOLT_Z2}mm", offset=sx(8), fs=7, right=False, font=FONT)
-    draw_dim_v(ax, sx(dim_x), sy(BOLT_Z3), sy(PLATE_H),
-               f"{PLATE_H - BOLT_Z3}mm", offset=sx(8), fs=7, right=False, font=FONT)
-
-    # Full plate height (far left)
-    draw_dim_v(ax, sx(dim_x - 30), sy(0), sy(PLATE_H),
-               f"{PLATE_H}mm\nVERT PLATE", offset=sx(8), fs=7, right=False, font=FONT)
-
-    # Plate width
-    draw_dim_h(ax, sx(pl), sx(pr), sy(-30),
-               f"{PLATE_W}mm PLATE WIDTH", offset=sy(8), fs=7, above=False, font=FONT)
-
-    # ── Plate label ─────────────────────────────────────────────────────────
-    ax.text(sx(cx), sy(PLATE_H + 12),
-            f"VERTICAL MOUNTING PLATE\n{WALKWAY_BRACKET_T}mm STEEL · {PLATE_W}×{PLATE_H}mm\n(FLAT AGAINST WALL RIB INTERIOR FACE)",
-            ha="center", va="bottom", fontsize=7, color=C_BRKT,
+    # View title
+    ax.text(YD_HI / 2, Z_HI - 5,
+            "VIEW A — SIDE ELEVATION (LOOKING ALONG X)",
+            ha="center", va="top", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
-    # ── Notes (right side of figure) ────────────────────────────────────────
-    notes = [
-        "NOTES:",
-        "1. View looking toward wall from inside",
-        "   container (−Yd direction).",
-        "2. 3× M12 through-bolts per bracket —",
-        "   head on exterior reinforcing plate,",
-        "   nut on interior bracket face.",
-        f"3. Bolt 1 (Z={BOLT_Z1}mm) below gusset.",
-        f"4. Bolt 2 (Z={BOLT_Z2}mm) above arm.",
-        f"5. Bolt 3 (Z={BOLT_Z3}mm) above deck.",
-        f"6. All holes {HOLE_D}mm clearance for M12.",
-        f"7. See Sheet 2 for bolt cross-section.",
+    # Container floor
+    ax.add_patch(Rectangle((YD_LO, -15), YD_HI - YD_LO, 15,
+                            fc=C_FLOOR, ec=C_OUT, lw=1.0, hatch="///", zorder=2))
+
+    # Corrugated wall (cross-section through rib)
+    ext_panel_yd = -CORR_DEPTH - WALL_T
+    reinf_yd = ext_panel_yd - REINF_T
+    ax.add_patch(Rectangle((ext_panel_yd, 0), WALL_T, Z_HI - 10,
+                            fc="#909098", ec=C_OUT, lw=1.0, zorder=3, hatch="///"))
+    ax.add_patch(Rectangle((-CORR_DEPTH, 0), WALL_T, Z_HI - 10,
+                            fc="#909098", ec=C_OUT, lw=0.8, zorder=3, hatch="///"))
+    ax.add_patch(Rectangle((-WALL_T, 0), WALL_T, Z_HI - 10,
+                            fc="#909098", ec=C_OUT, lw=1.0, zorder=3, hatch="///"))
+    ax.add_patch(Rectangle((-CORR_DEPTH, 0), CORR_DEPTH, WALL_T,
+                            fc="#909098", ec=C_OUT, lw=0.5, zorder=3, hatch="///"))
+    ax.text(-CORR_DEPTH / 2, Z_HI - 15,
+            "WALL RIB", ha="center", va="top", fontsize=5, color=C_DIM,
+            fontweight="bold", **FONT, zorder=15)
+
+    # Reinforcing plate (exterior)
+    ax.add_patch(Rectangle((reinf_yd, 0), REINF_T, 180,
+                            fc="#C08040", ec=C_OUT, lw=1.0, zorder=4))
+
+    # ── Vertical mounting plate (edge-on — thin rectangle) ──────────────────
+    ax.add_patch(Rectangle((0, 0), BRKT_T, PLATE_H,
+                            fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=6, alpha=0.85))
+
+    # ── Horizontal arm ───────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((0, ARM_Z_BOT), WALKWAY_W, ARM_DEPTH,
+                            fc=C_BRKT, ec=C_OUT, lw=1.2, zorder=6, alpha=0.85))
+    ax.plot([0, WALKWAY_W], [ARM_Z_TOP, ARM_Z_TOP],
+            color=C_OUT, lw=2.0, zorder=7)
+
+    # ── Gusset triangle (face-on) ───────────────────────────────────────────
+    gusset_verts = [
+        (0, 0),
+        (0, ARM_Z_BOT),
+        (GUSSET_REACH, ARM_Z_BOT),
     ]
-    from tbs_drawing import draw_notes
-    notes_x = pr + 150
-    draw_notes(ax, notes, sx(notes_x), sy(PLATE_H),
-               spacing=sy(12), fs=6, title_fs=6.5, color=C_DIM,
+    ax.add_patch(Polygon(gusset_verts, closed=True,
+                         fc=C_BRKT, ec=C_OUT, lw=1.5, zorder=5, alpha=0.85))
+    ax.plot([0, GUSSET_REACH], [0, ARM_Z_BOT],
+            color=C_OUT, lw=1.5, zorder=6)
+
+    # Gusset label
+    leader(ax, GUSSET_REACH / 2, ARM_Z_BOT / 2 - 5,
+           GUSSET_REACH + 20, ARM_Z_BOT / 2 - 20,
+           f"GUSSET ({GUSSET_REACH}mm REACH)\nSTOPS BEFORE TRAY RIM",
+           color=C_BRKT, fs=6,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # Weld symbol at gusset-to-arm joint
+    weld_x = GUSSET_REACH / 3
+    ax.plot([weld_x - 4, weld_x, weld_x + 4],
+            [ARM_Z_BOT, ARM_Z_BOT - 5, ARM_Z_BOT],
+            color="#CC4400", lw=1.5, zorder=8)
+
+    # ── Walkway grating (horizontal ghost) ──────────────────────────────────
+    ax.add_patch(Rectangle((-10, GRATE_Z_BOT), WALKWAY_W + 30, WALKWAY_GRATE_T,
+                            fc="#A0C8A0", ec=C_OUT, lw=1.0, ls="--",
+                            alpha=0.25, zorder=4))
+    ax.text(WALKWAY_W / 2, GRATE_Z_TOP + 4,
+            f"WALKWAY GRATING (GHOST)\n{WALKWAY_GRATE_T}mm · Z={GRATE_Z_BOT}–{GRATE_Z_TOP}mm",
+            ha="center", va="bottom", fontsize=6, color="#208020",
+            **FONT, zorder=15, alpha=0.7)
+
+    # ── Through-bolts (in this side view, 2× Z=50 overlap, 1× Z=100) ──────
+    C_BOLT_CLR = "#505058"
+    shank_hw = BOLT_R * 0.4
+    for bz in [BOLT_Z_LO, BOLT_Z_HI]:
+        ax.add_patch(Rectangle((reinf_yd, bz - shank_hw),
+                                BRKT_T - reinf_yd, shank_hw * 2,
+                                fc=C_BOLT_CLR, ec=C_OUT, lw=0.8, zorder=10))
+        ax.add_patch(Rectangle((reinf_yd - BOLT_HEAD, bz - BOLT_R),
+                                BOLT_HEAD, BOLT_D,
+                                fc=C_BOLT_CLR, ec=C_OUT, lw=1.0, zorder=10))
+        ax.add_patch(Rectangle((reinf_yd - WASHER_T2, bz - BOLT_R - 1),
+                                WASHER_T2, BOLT_D + 2,
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+        ax.add_patch(Rectangle((BRKT_T, bz - BOLT_R),
+                                NUT_H, BOLT_D,
+                                fc=C_BOLT_CLR, ec=C_OUT, lw=1.0, zorder=10))
+        ax.add_patch(Rectangle((BRKT_T, bz - BOLT_R - 1),
+                                WASHER_T2, BOLT_D + 2,
+                                fc="#808080", ec=C_OUT, lw=0.5, zorder=9))
+
+    # Bolt labels
+    leader(ax, reinf_yd - BOLT_HEAD - 2, BOLT_Z_LO,
+           reinf_yd - 35, BOLT_Z_LO - 15,
+           f"2× M12 AT Z={BOLT_Z_LO}\n(STRADDLE GUSSET IN X\n±{BOLT_X_OFF}mm FROM CL)",
+           color=C_DIM, fs=6,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, reinf_yd - BOLT_HEAD - 2, BOLT_Z_HI,
+           reinf_yd - 35, BOLT_Z_HI + 15,
+           f"1× M12 AT Z={BOLT_Z_HI}\n(ON GUSSET CL IN X)",
+           color=C_DIM, fs=6,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Dimension lines ─────────────────────────────────────────────────────
+    dim_yd = reinf_yd - BOLT_HEAD - 60
+
+    draw_dim_v(ax, dim_yd, 0, BOLT_Z_LO,
+               f"{BOLT_Z_LO}mm", offset=8, fs=7, right=False, font=FONT)
+    draw_dim_v(ax, dim_yd, BOLT_Z_LO, BOLT_Z_HI,
+               f"{BOLT_Z_HI - BOLT_Z_LO}mm", offset=8, fs=7, right=False, font=FONT)
+    draw_dim_v(ax, dim_yd, BOLT_Z_HI, PLATE_H,
+               f"{PLATE_H - BOLT_Z_HI}mm", offset=8, fs=7, right=False, font=FONT)
+
+    draw_dim_v(ax, dim_yd - 25, 0, PLATE_H,
+               f"{PLATE_H}mm\nVERT PLATE", offset=8, fs=7, right=False, font=FONT)
+
+    draw_dim_h(ax, 0, GUSSET_REACH, -30,
+               f"{GUSSET_REACH}mm GUSSET", offset=8, fs=6, above=False, font=FONT)
+    draw_dim_h(ax, 0, WALKWAY_W, -42,
+               f"{WALKWAY_W}mm ARM / WALKWAY", offset=8, fs=6, above=False, font=FONT)
+
+    # Bracket label
+    leader(ax, WALKWAY_W * 0.4, ARM_Z_TOP - 5,
+           WALKWAY_W * 0.5, ARM_Z_TOP + 45,
+           f"CANTILEVER BRACKET\n{BRKT_T}mm STEEL PLATE\n(VERT + ARM + GUSSET)",
+           color=C_BRKT, fs=6,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Axis labels
+    ax.text(YD_HI / 2, Z_LO + 5,
+            "Yd  (0 = wall, positive toward interior)  →",
+            ha="center", va="bottom", fontsize=6, color=C_DIM,
+            **FONT, zorder=15, style="italic")
+    ax.text(YD_LO + 5, Z_HI / 2,
+            "↑ Z", ha="left", va="center", fontsize=6, color=C_DIM,
+            **FONT, zorder=15, style="italic", rotation=90)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW B — Plate face (looking along −Yd, toward wall)
+    # Horizontal = X (bracket width), Vertical = Z (height)
+    # Shows triangular bolt pattern on the vertical mounting plate
+    # ══════════════════════════════════════════════════════════════════════════
+    ax2.set_facecolor(BG)
+
+    PL_X_LO = -PLATE_W / 2 - 55
+    PL_X_HI =  PLATE_W / 2 + 65
+    PL_Z_LO = -40
+    PL_Z_HI =  PLATE_H + 55
+    ax2.set_xlim(PL_X_LO, PL_X_HI)
+    ax2.set_ylim(PL_Z_LO, PL_Z_HI)
+    ax2.set_aspect("equal")
+    ax2.axis("off")
+
+    # View title
+    ax2.text(0, PL_Z_HI - 5,
+             "VIEW B — PLATE FACE (−Yd)",
+             ha="center", va="top", fontsize=8, color=C_OUT,
+             fontweight="bold", **FONT, zorder=15)
+
+    cx = 0
+    pl = cx - PLATE_W / 2
+    pr = cx + PLATE_W / 2
+
+    # Vertical mounting plate (face-on)
+    ax2.add_patch(Rectangle((pl, 0), PLATE_W, PLATE_H,
+                             fc=C_BRKT, ec=C_OUT, lw=2.0, zorder=5, alpha=0.85))
+
+    # Gusset footprint (projected — the 8mm thick gusset plate sits against
+    # the back of the vertical plate, centered in X)
+    gusset_hw = BRKT_T / 2  # half-width of gusset in X = 4mm
+    gusset_fp = [
+        (cx - gusset_hw, 0),
+        (cx - gusset_hw, ARM_Z_BOT),
+        (cx + gusset_hw, ARM_Z_BOT),
+        (cx + gusset_hw, 0),
+    ]
+    ax2.add_patch(Polygon(gusset_fp, closed=True,
+                          fc="#606870", ec=C_OUT, lw=1.0, ls="--",
+                          zorder=6, alpha=0.5))
+    ax2.text(cx, ARM_Z_BOT / 2,
+             f"GUSSET\n{BRKT_T}mm",
+             ha="center", va="center", fontsize=5, color="#E0E0E0",
+             **FONT, zorder=15)
+
+    # Arm projection (dashed rectangle spanning plate width)
+    ax2.add_patch(Rectangle((pl, ARM_Z_BOT), PLATE_W, ARM_DEPTH,
+                             fc="none", ec=C_OUT, lw=1.2, ls="--", zorder=6))
+    ax2.text(pr + 4, (ARM_Z_BOT + ARM_Z_TOP) / 2,
+             f"ARM\nZ={ARM_Z_BOT}–{ARM_Z_TOP}",
+             ha="left", va="center", fontsize=5, color=C_DIM,
+             **FONT, zorder=15)
+
+    # Grate reference lines
+    for z in [GRATE_Z_BOT, GRATE_Z_TOP]:
+        ax2.plot([pl - 10, pr + 10], [z, z],
+                 color="#208020", lw=0.8, ls=(0, (6, 4)), zorder=3, alpha=0.5)
+    ax2.text(pr + 4, (GRATE_Z_BOT + GRATE_Z_TOP) / 2,
+             f"GRATE\n{WALKWAY_GRATE_T}mm",
+             ha="left", va="center", fontsize=5, color="#208020",
+             **FONT, zorder=15, alpha=0.7)
+
+    # ── Bolt holes — triangular pattern ─────────────────────────────────────
+    # Lower pair: X = ±BOLT_X_OFF, Z = BOLT_Z_LO (flanking gusset)
+    # Upper single: X = 0 (center), Z = BOLT_Z_HI
+    bolt_positions = [
+        (-BOLT_X_OFF, BOLT_Z_LO, "BOLT 1"),
+        ( BOLT_X_OFF, BOLT_Z_LO, "BOLT 2"),
+        ( 0,          BOLT_Z_HI, "BOLT 3"),
+    ]
+
+    for bx, bz, lbl in bolt_positions:
+        ax2.add_patch(Circle((bx, bz), HOLE_R,
+                             fc=BG, ec=C_BOLT_CLR, lw=1.5, zorder=8))
+        ch = HOLE_R + 3
+        ax2.plot([bx - ch, bx + ch], [bz, bz],
+                 color=C_BOLT_CLR, lw=0.6, zorder=9)
+        ax2.plot([bx, bx], [bz - ch, bz + ch],
+                 color=C_BOLT_CLR, lw=0.6, zorder=9)
+
+    # Triangular pattern lines (connect the 3 bolts)
+    ax2.plot([-BOLT_X_OFF, BOLT_X_OFF, 0, -BOLT_X_OFF],
+             [BOLT_Z_LO, BOLT_Z_LO, BOLT_Z_HI, BOLT_Z_LO],
+             color=C_BOLT_CLR, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
+
+    # Bolt labels
+    leader(ax2, -BOLT_X_OFF - HOLE_R - 1, BOLT_Z_LO,
+           pl - 8, BOLT_Z_LO - 10,
+           f"BOLT 1\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT_CLR, fs=5.5,
+           ha="right", va="top", arrow_style="-|>", font=FONT)
+    leader(ax2, BOLT_X_OFF + HOLE_R + 1, BOLT_Z_LO,
+           pr + 8, BOLT_Z_LO - 10,
+           f"BOLT 2\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT_CLR, fs=5.5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax2, 0, BOLT_Z_HI + HOLE_R + 1,
+           0, BOLT_Z_HI + 25,
+           f"BOLT 3 — M12 ({HOLE_D}mm CLR)\nON GUSSET CL",
+           color=C_BOLT_CLR, fs=5.5,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Dimension lines (View B) ────────────────────────────────────────────
+    dim_x = pl - 30
+
+    draw_dim_v(ax2, dim_x, 0, BOLT_Z_LO,
+               f"{BOLT_Z_LO}mm", offset=8, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x, BOLT_Z_LO, BOLT_Z_HI,
+               f"{BOLT_Z_HI - BOLT_Z_LO}mm", offset=8, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x, BOLT_Z_HI, PLATE_H,
+               f"{PLATE_H - BOLT_Z_HI}mm", offset=8, fs=6.5, right=False, font=FONT)
+
+    # Bolt X spacing
+    draw_dim_h(ax2, -BOLT_X_OFF, BOLT_X_OFF, BOLT_Z_LO - 22,
+               f"{BOLT_X_OFF * 2}mm", offset=6, fs=6.5, above=False, font=FONT)
+
+    # Full plate dimensions
+    draw_dim_h(ax2, pl, pr, -28,
+               f"{PLATE_W}mm PLATE", offset=6, fs=6, above=False, font=FONT)
+    draw_dim_v(ax2, dim_x - 18, 0, PLATE_H,
+               f"{PLATE_H}mm", offset=8, fs=6, right=False, font=FONT)
+
+    # Plate label
+    ax2.text(cx, PLATE_H + 8,
+             f"MOUNTING PLATE\n{BRKT_T}mm STEEL · {PLATE_W}×{PLATE_H}mm",
+             ha="center", va="bottom", fontsize=6.5, color=C_BRKT,
+             fontweight="bold", **FONT, zorder=15)
+
+    # ── Notes (below View B) ───────────────────────────────────────────────
+    notes = [
+        "BOLT PATTERN NOTES:",
+        f"1. Triangular pattern: 2 lower + 1 upper.",
+        f"2. Lower pair at Z={BOLT_Z_LO}mm (1/3 plate height",
+        f"   from floor), X=±{BOLT_X_OFF}mm from CL",
+        f"   — straddle the {BRKT_T}mm gusset plate.",
+        f"3. Upper bolt at Z={BOLT_Z_HI}mm (1/3 plate height",
+        f"   from top), centered on gusset CL.",
+        f"4. All holes {HOLE_D}mm clearance for M12.",
+        f"5. Head on exterior 6mm reinforcing plate,",
+        f"   nut on interior bracket face.",
+        f"6. See Sheet 2 for bolt cross-section.",
+    ]
+    draw_notes(ax2, notes, PL_X_LO + 5, -5,
+               spacing=9, fs=5.5, title_fs=6, color=C_DIM,
                title_color=C_OUT, font=FONT,
-               width=sx(X_HI - notes_x - 10))
+               width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 7",
                 drawing_title="PERIMETER WALKWAY SYSTEM",
-                subtitle="DETAIL E — CANTILEVER BRACKET BOLT PATTERN (FRONT ELEVATION)",
-                scale_note="AXES IN mm · VIEW LOOKING TOWARD WALL (−Yd)",
+                subtitle="DETAIL E — CANTILEVER BRACKET BOLT PATTERN",
+                scale_note="AXES IN mm · VIEW A: ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)

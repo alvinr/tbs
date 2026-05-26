@@ -78,8 +78,8 @@ between plate edge and gusset). One upper bolt at Z=120 mm (above grating deck a
 30 mm from plate top) is centered on the gusset centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
-provide a bearing surface for the bolt heads and washers. See Sheet 7 for
-the bolt pattern detail views.
+provide a bearing surface for the bolt heads and washers. See Sheet 2,
+View B for the bolt pattern detail.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
 
@@ -289,7 +289,7 @@ full drawing set.
 **Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
-**Sheet 2 — Cross-section through near walkway: Cantilever bracket, corrugated wall rib attachment, tray rim clearance (~5:1)**
+**Sheet 2 — Cross-section + bolt pattern: Cantilever bracket, wall rib attachment, tray rim clearance (View A, ~5:1) + plate face with triangular 3× M12 bolt pattern (View B)**
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
 **Sheet 3 — Detail A: Right walkway ceiling-hung support at IBC end (~3:1)**
@@ -303,9 +303,6 @@ full drawing set.
 
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (~4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
-
-**Sheet 7 — Detail E: Cantilever bracket bolt pattern — side elevation (along X) with gusset face-on + plate face view showing triangular 3× M12 pattern**
-![TBS-001 Walkway — Sheet 7: Bolt Pattern Front Elevation](assets/walkway-sheet7.png)
 
 ---
 

@@ -194,7 +194,6 @@ DIAG_FILES=(
     "walkway-sheet4.png"
     "walkway-sheet5.png"
     "walkway-sheet6.png"
-    "walkway-sheet7.png"
     "ibc-stacking-sheet1.png"
     "ibc-stacking-sheet2.png"
     "ibc-stacking-sheet3.png"

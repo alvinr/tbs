@@ -2293,33 +2293,18 @@ def sheet6():
                             sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
                             alpha=0.25, zorder=4))
-    # ── Grating clip — saddle type, hooks under bearer beam top flange ──
+    # ── Grating clip (side elevation — simplified rectangle) ────────────
     C_CLIP = "#505058"
     clip_yd = 200
-    clip_t = BEAM_T            # 3mm clip metal thickness
-    tab_reach = 15             # upper tab extends inward over grating
-    hook_reach = 12            # lower hook extends inward under flange
-    clip_above = 5             # tab height above grate_top
-    beam_flange_bot_z = beam_top - BEAM_T  # Z=72
-
-    clip_verts = [
-        (sx(clip_yd - tab_reach), sy(grate_top + clip_above)),
-        (sx(clip_yd + clip_t),    sy(grate_top + clip_above)),
-        (sx(clip_yd + clip_t),    sy(beam_flange_bot_z)),
-        (sx(clip_yd - hook_reach), sy(beam_flange_bot_z)),
-        (sx(clip_yd - hook_reach), sy(beam_top)),
-        (sx(clip_yd),              sy(beam_top)),
-        (sx(clip_yd),              sy(grate_top)),
-        (sx(clip_yd - tab_reach), sy(grate_top)),
-    ]
-    ax.add_patch(Polygon(clip_verts, closed=True,
-                         fc=C_CLIP, ec=C_OUT, lw=1.2, zorder=10))
-    ax.plot([sx(clip_yd - hook_reach - 2), sx(clip_yd + clip_t + 2)],
-            [sy(beam_top), sy(beam_top)],
-            color=C_OUT, lw=0.6, ls=":", zorder=11)
-    leader(ax, sx(clip_yd + clip_t + 2), sy((grate_top + beam_top) / 2),
+    clip_w = 8
+    clip_bot_z = beam_top - BEAM_T   # hook extends under beam top flange
+    clip_top_z = grate_top + 5
+    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot_z)),
+                            sx(clip_w), sy(clip_top_z - clip_bot_z),
+                            fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=10))
+    leader(ax, sx(clip_yd + clip_w + 2), sy(grate_top),
            sx(clip_yd + 50), sy(grate_top + 18),
-           "SADDLE CLIP\nHOOKS UNDER BEAM\nTOP FLANGE (REMOVABLE)",
+           "GRATING CLIP\n(REMOVABLE)\nSEE VIEW D",
            color=C_CLIP, fs=5.5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
     ax.text(sx(WALKWAY_W / 2), sy(grate_top + 3),
@@ -2579,6 +2564,165 @@ def sheet6():
                             cy(PLATE_T + LOCK_H + bolt_head_h + 15) - cy(-washer_t - NUT_H_LOCK - 35),
                             fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW D — CLIP DETAIL (looking along Yd, bearer beam end-on)
+    # Horizontal = X (across beam width), Vertical = Z.
+    # Shows beam RHS cross-section, grating bars, and saddle clip.
+    # ══════════════════════════════════════════════════════════════════════════
+    VD_OX = 305
+    VD_OY = -10
+    VD_S  = 1.3
+    def vdx(mm): return sx(VD_OX + mm * VD_S)
+    def vdy(mm): return sy(VD_OY + mm * VD_S)
+
+    beam_half = BEAM_SZ / 2   # 25mm
+
+    ax.text(vdx(0), vdy(BEAM_SZ + WALKWAY_GRATE_T + 22),
+            "VIEW D — CLIP DETAIL\n(LOOKING ALONG Yd, BEAM END-ON)",
+            ha="center", va="bottom", fontsize=7, color=C_OUT,
+            fontweight="bold", **FONT, zorder=15)
+
+    # Beam RHS cross-section (centered at X=0)
+    ax.add_patch(Rectangle((vdx(-beam_half), vdy(0)),
+                            vdx(beam_half) - vdx(-beam_half),
+                            vdy(BEAM_SZ) - vdy(0),
+                            fc=C_SUPPORT, ec=C_OUT, lw=1.5, zorder=5))
+    ax.add_patch(Rectangle((vdx(-beam_half + BEAM_T), vdy(BEAM_T)),
+                            vdx(beam_half - BEAM_T) - vdx(-beam_half + BEAM_T),
+                            vdy(BEAM_SZ - BEAM_T) - vdy(BEAM_T),
+                            fc="#F0E0C8", ec=C_OUT, lw=0.5, zorder=6))
+
+    # Grating bearing bars (5 bars, 3mm wide × 25mm tall, 17mm spacing)
+    bar_w = 3
+    bar_h = WALKWAY_GRATE_T   # 25mm
+    bar_spacing = 17
+    n_bars = 5
+    bars_x = [(i - (n_bars - 1) / 2) * bar_spacing for i in range(n_bars)]
+    C_GRATE = "#A8C8A8"
+
+    for bx in bars_x:
+        ax.add_patch(Rectangle((vdx(bx - bar_w / 2), vdy(BEAM_SZ)),
+                                vdx(bx + bar_w / 2) - vdx(bx - bar_w / 2),
+                                vdy(BEAM_SZ + bar_h) - vdy(BEAM_SZ),
+                                fc=C_GRATE, ec=C_OUT, lw=0.8, zorder=7))
+
+    # Cross bar (flat strip connecting bearing bars at mid-height)
+    xbar_t = 2
+    xbar_z = BEAM_SZ + bar_h / 2
+    ax.add_patch(Rectangle((vdx(bars_x[0] - bar_w / 2), vdy(xbar_z - xbar_t / 2)),
+                            vdx(bars_x[-1] + bar_w / 2) - vdx(bars_x[0] - bar_w / 2),
+                            vdy(xbar_z + xbar_t / 2) - vdy(xbar_z - xbar_t / 2),
+                            fc=C_GRATE, ec=C_OUT, lw=0.5, zorder=7))
+
+    # Saddle clip — sits between bars[1] and bars[2]
+    clip_cx = (bars_x[1] + bars_x[2]) / 2
+    clip_metal = 2.5
+    clip_arm_gap = bar_spacing - bar_w - 1   # arms fit between bearing bars
+
+    # Clip top plate (spans across two bearing bar tops)
+    plate_hw = bar_spacing * 0.8
+    ax.add_patch(Rectangle((vdx(clip_cx - plate_hw), vdy(BEAM_SZ + bar_h)),
+                            vdx(clip_cx + plate_hw) - vdx(clip_cx - plate_hw),
+                            vdy(BEAM_SZ + bar_h + clip_metal) - vdy(BEAM_SZ + bar_h),
+                            fc=C_CLIP, ec=C_OUT, lw=1.0, zorder=9))
+
+    # Clip arms — descend between bearing bars, down to beam flange
+    arm_hw = clip_arm_gap / 2
+    for arm_sign in [-1, 1]:
+        arm_x = clip_cx + arm_sign * arm_hw
+        ax.add_patch(Rectangle((vdx(arm_x - clip_metal / 2), vdy(BEAM_SZ - BEAM_T)),
+                                vdx(arm_x + clip_metal / 2) - vdx(arm_x - clip_metal / 2),
+                                vdy(BEAM_SZ + bar_h) - vdy(BEAM_SZ - BEAM_T),
+                                fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=8))
+
+    # Hook feet — bend inward under beam top flange
+    hook_w = 5
+    hook_z_top = BEAM_SZ - BEAM_T    # Z=47 — underside of flange
+    hook_z_bot = hook_z_top - clip_metal
+    # Left hook (bends right, inward)
+    ax.add_patch(Rectangle((vdx(clip_cx - arm_hw - clip_metal / 2), vdy(hook_z_bot)),
+                            vdx(clip_cx - arm_hw + hook_w) - vdx(clip_cx - arm_hw - clip_metal / 2),
+                            vdy(hook_z_top) - vdy(hook_z_bot),
+                            fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=4))
+    # Right hook (bends left, inward)
+    ax.add_patch(Rectangle((vdx(clip_cx + arm_hw - hook_w), vdy(hook_z_bot)),
+                            vdx(clip_cx + arm_hw + clip_metal / 2) - vdx(clip_cx + arm_hw - hook_w),
+                            vdy(hook_z_top) - vdy(hook_z_bot),
+                            fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=4))
+
+    # Bolt through clip center
+    bolt_d_clip = 6
+    bolt_shank = bolt_d_clip * 0.35
+    bolt_head_w = bolt_d_clip * 1.6
+    bolt_head_h = 4
+    ax.add_patch(Rectangle((vdx(clip_cx - bolt_shank), vdy(hook_z_bot)),
+                            vdx(clip_cx + bolt_shank) - vdx(clip_cx - bolt_shank),
+                            vdy(BEAM_SZ + bar_h + clip_metal) - vdy(hook_z_bot),
+                            fc=C_CLIP, ec=C_OUT, lw=0.4, zorder=8))
+    # Bolt head
+    ax.add_patch(Rectangle((vdx(clip_cx - bolt_head_w / 2),
+                             vdy(BEAM_SZ + bar_h + clip_metal)),
+                            vdx(clip_cx + bolt_head_w / 2) - vdx(clip_cx - bolt_head_w / 2),
+                            vdy(BEAM_SZ + bar_h + clip_metal + bolt_head_h) - vdy(BEAM_SZ + bar_h + clip_metal),
+                            fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=10))
+    # Nut under hooks
+    nut_h_clip = 5
+    nut_w = bolt_d_clip * 1.5
+    ax.add_patch(Rectangle((vdx(clip_cx - nut_w / 2), vdy(hook_z_bot - nut_h_clip)),
+                            vdx(clip_cx + nut_w / 2) - vdx(clip_cx - nut_w / 2),
+                            vdy(hook_z_bot) - vdy(hook_z_bot - nut_h_clip),
+                            fc=C_CLIP, ec=C_OUT, lw=0.8, zorder=4))
+
+    # Labels
+    leader(ax, vdx(clip_cx + plate_hw + 1), vdy(BEAM_SZ + bar_h + clip_metal / 2),
+           vdx(clip_cx + plate_hw + 20), vdy(BEAM_SZ + bar_h + 15),
+           "CLIP TOP PLATE",
+           color=C_CLIP, fs=5.5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    leader(ax, vdx(clip_cx + arm_hw + clip_metal / 2 + 1), vdy(BEAM_SZ + bar_h / 2),
+           vdx(clip_cx + plate_hw + 20), vdy(BEAM_SZ + bar_h / 2),
+           "CLIP ARM\n(BETWEEN BARS)",
+           color=C_CLIP, fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax, vdx(clip_cx + arm_hw + 1), vdy((hook_z_top + hook_z_bot) / 2),
+           vdx(clip_cx + plate_hw + 20), vdy(hook_z_bot - 5),
+           f"HOOK UNDER\nBEAM FLANGE ({BEAM_T}mm)",
+           color=C_CLIP, fs=5.5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax, vdx(clip_cx + bolt_head_w / 2 + 1),
+           vdy(BEAM_SZ + bar_h + clip_metal + bolt_head_h / 2),
+           vdx(clip_cx - plate_hw - 15),
+           vdy(BEAM_SZ + bar_h + clip_metal + bolt_head_h + 8),
+           f"M{bolt_d_clip} HEX BOLT",
+           color=C_CLIP, fs=5.5,
+           ha="right", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Beam label
+    ax.text(vdx(0), vdy(BEAM_SZ / 2),
+            f"{BEAM_SZ}×{BEAM_SZ}×{BEAM_T}\nAl RHS",
+            ha="center", va="center", fontsize=6, color=C_SUPPORT,
+            fontweight="bold", **FONT, zorder=15)
+    # Grating label
+    ax.text(vdx(bars_x[-1] + bar_spacing / 2), vdy(BEAM_SZ + bar_h / 2),
+            "GRATING\nBEARING\nBARS",
+            ha="left", va="center", fontsize=5, color="#206020",
+            **FONT, zorder=15)
+
+    # Dimensions
+    draw_dim_v(ax, vdx(-beam_half - 10), vdy(0), vdy(BEAM_SZ),
+               f"{BEAM_SZ}mm", offset=vdx(3) - vdx(0), fs=5.5, right=False, font=FONT)
+    draw_dim_v(ax, vdx(-beam_half - 10), vdy(BEAM_SZ), vdy(BEAM_SZ + bar_h),
+               f"{bar_h}mm", offset=vdx(3) - vdx(0), fs=5.5, right=False, font=FONT)
+    draw_dim_v(ax, vdx(-beam_half - 3), vdy(BEAM_SZ - BEAM_T), vdy(BEAM_SZ),
+               f"{BEAM_T}", offset=vdx(2) - vdx(0), fs=5, right=False, font=FONT)
+
+    # View D border
+    vd_pad = 12
+    ax.add_patch(Rectangle((vdx(-beam_half - 18), vdy(hook_z_bot - nut_h_clip - vd_pad)),
+                            vdx(clip_cx + plate_hw + 55) - vdx(-beam_half - 18),
+                            vdy(BEAM_SZ + bar_h + clip_metal + bolt_head_h + 20) - vdy(hook_z_bot - nut_h_clip - vd_pad),
+                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=4))
+
     # ── Notes (right of View A) ─────────────────────────────────────────────
     notes_x = sx(YD_HI/2)
     notes_top = sy(BRKT_VERT + 20)
@@ -2590,7 +2734,7 @@ def sheet6():
         f"4. Lock block + M{BOLT_DIA} bolt through {SLOT_L}mm slot in plate. Washer + nut below plate.",
         f"5. Slot allows position adjustment along Yd. Spanner removal.",
         f"6. Same at both ends (near + far bracket).",
-        f"7. Saddle clips hook under beam top flange — removable.",
+        f"7. Saddle clips hook under beam top flange — see View D.",
     ]
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(180), font=FONT)
 
@@ -2598,7 +2742,7 @@ def sheet6():
     title_block(ax, "SHEET 6 OF 6",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 BEARER BEAM ANTI-SLIP RESTRAINT",
-                scale_note="Axes in mm \u00b7 VIEWS A/B/C",
+                scale_note="Axes in mm \u00b7 VIEWS A/B/C/D",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)

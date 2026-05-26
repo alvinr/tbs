@@ -69,16 +69,17 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
-**Attachment:** 3× M12 through-bolts per bracket, passing through the full wall
-assembly: hex head → reinforcing plate (6mm) → exterior panel (1.6mm Corten) →
-air gap → rib interior face (1.6mm) → bracket vertical plate (8mm) → nut.
-The three bolts are stacked vertically on the plate centerline: bolt 1 at
-Z=20 mm (below the gusset hypotenuse), bolt 2 at Z=85 mm (above the arm),
-and bolt 3 at Z=130 mm (above the walkway deck). The container corrugation
-ribs are hollow — each bolt bridges the air gap inside the rib. A 6mm
-reinforcing plate is welded to the exterior panel face to provide a bearing
+**Attachment:** 3× M12 through-bolts per bracket in a triangular pattern,
+passing through the full wall assembly: hex head → reinforcing plate (6mm) →
+exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
+bracket vertical plate (8mm) → nut. Two lower bolts at Z=50 mm (1/3 plate
+height from floor) straddle the 8mm gusset plate at ±20 mm from the plate
+centerline in X. One upper bolt at Z=100 mm (1/3 plate height from top) is
+centered on the gusset centerline. The container corrugation ribs are
+hollow — each bolt bridges the air gap inside the rib. A 6mm reinforcing
+plate (100×180mm) is welded to the exterior panel face to provide a bearing
 surface for the bolt heads and washers. See Sheet 7 for the bolt pattern
-front elevation.
+detail views.
 
 **Spacing:** Brackets mount at every container rib — 457mm (18") centers.
 
@@ -303,7 +304,7 @@ full drawing set.
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (~4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
-**Sheet 7 — Detail E: Cantilever bracket bolt pattern — front elevation showing 3× M12 bolt positions relative to gusset, arm, and walkway deck**
+**Sheet 7 — Detail E: Cantilever bracket bolt pattern — side elevation (along X) with gusset face-on + plate face view showing triangular 3× M12 pattern**
 ![TBS-001 Walkway — Sheet 7: Bolt Pattern Front Elevation](assets/walkway-sheet7.png)
 
 ---

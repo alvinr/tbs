@@ -2327,7 +2327,7 @@ def sheet6():
     # Horizontal = Yd (wall at left), Vertical = X (interior at top,
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
-    PV_OX = 60
+    PV_OX = 30
     PV_OY = BRKT_VERT + 65
     PV_S  = 0.8125   # nested magnification (was 3.25 / S where S=4.0)
     def px(mm): return sx(PV_OX + mm * PV_S)
@@ -2446,8 +2446,8 @@ def sheet6():
     # Horizontal = X, Vertical = Z.  Shows slot in plate, lock block,
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
-    VC_OX = 300
-    VC_OY = BRKT_VERT + 108   # bottom-aligned with View B
+    VC_OX = 195
+    VC_OY = BRKT_VERT + 95
     VC_S  = 0.975   # nested magnification (was 3.9 / S where S=4.0)
     def cx(mm): return sx(VC_OX + mm * VC_S)
     def cy(mm): return sy(VC_OY + mm * VC_S)
@@ -2569,9 +2569,9 @@ def sheet6():
     # Horizontal = X (across beam width), Vertical = Z.
     # Shows beam RHS cross-section, grating bars, and saddle clip.
     # ══════════════════════════════════════════════════════════════════════════
-    VD_OX = 305
-    VD_OY = -10
-    VD_S  = 1.3
+    VD_OX = 355
+    VD_OY = BRKT_VERT + 71
+    VD_S  = 0.9
     def vdx(mm): return sx(VD_OX + mm * VD_S)
     def vdy(mm): return sy(VD_OY + mm * VD_S)
 

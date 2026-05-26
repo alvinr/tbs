@@ -15,12 +15,21 @@ Each section links to the report where the drawing is discussed in full.
 ## 1. System Assembly Overview
 
 There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly these systems are:
+
 - [Electrical system](electrical-report.md)
 - [Water system and plumbing](water-system-report.md)
 - [Lighttrap & Hinged panel](light-trap-selection.md)
 - [Film plane mechanism](film-plane-mechanism-report.md)
-- [Processing and Spray Bar](processing-tray-and-spray-bar)
+- [Processing and Spray Bar](processing-tray-and-spray-bar.md)
 - [Pinhole construction](pinhole-optics-report.md)
+
+![TBS-001 — Container Floor Plan](assets/container-floorplan.png)
+
+The container is split into three main areas
+
+- Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md)
+- Center: Processing tray, film plan mechanism, electrical panels & battery pack
+- Right: IBC stacking system, plumbing panel
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 

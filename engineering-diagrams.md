@@ -19,7 +19,7 @@ There are a number of discrete systems, color-coded in the diagram below. This v
 - [Water system and plumbing](water-system-report.md)
 - [Lighttrap & Hinged panel](light-trap-selection.md)
 - [Film plane mechanism](film-plane-mechanism-report.md)
-- [Processing and Spray Bar]()
+- [Processing and Spray Bar](processing-tray-and-spray-bar)
 - [Pinhole construction](pinhole-optics-report.md)
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)

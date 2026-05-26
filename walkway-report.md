@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Perimeter Walkway System
+# Walkway System
 ## TBS-001 — Engineering Report
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
@@ -66,6 +66,8 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 | Vertical mounting plate | 8×150mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
 | Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=75mm |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim at Yd=80mm |
+
+![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
 **Attachment:** 2× M12 through-bolts per bracket, passing through the full wall
 assembly: hex head → reinforcing plate (6mm) → exterior panel (1.6mm Corten) →

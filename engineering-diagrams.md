@@ -1,20 +1,15 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Engineering Diagrams
+# Engineering Overview
 ## TBS-001 — All Construction Drawings
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
 
 ---
 
-This page collects every engineering drawing produced for TBS-001, organized by subsystem.
-Each section links to the report where the drawing is discussed in full.
-
----
-
 ## 1. System Assembly Overview
 
-There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly these systems are and can be see in the plan view below:
+There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed and used. Briefly the major systems can be seen in the plan view below:
 
 - Electrical system
 - Water system and plumbing

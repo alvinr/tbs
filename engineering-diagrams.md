@@ -28,8 +28,8 @@ There are a number of discrete systems, color-coded in the diagram below. This v
 The container is split into three main areas
 
 - Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md)
-- Center: Processing tray, film plan mechanism, electrical panels & battery pack
-- Right: IBC stacking system, plumbing panel
+- Center: [Pinhole construction](pinhole-optics-report.md), [Processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md), [walkway](walkway-report.md)
+- Right: [IBC stacking system](ibc-stacking-report.md), plumbing panel
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 

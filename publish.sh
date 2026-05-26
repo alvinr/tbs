@@ -69,6 +69,7 @@ MD_FILES=(
     "component-dependency-map.md"
     "weight-distribution-report.md"
     "chemistry-prep-shelves.md"
+    "processing-tray-and-spray-bar.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )

@@ -68,6 +68,7 @@ nav:
     - "Component Dependency Map": component-dependency-map.md
     - "Weight Distribution": weight-distribution-report.md
     - "Chemistry Prep Shelves": chemistry-prep-shelves.md
+    - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
   - Shopping:
     - "Master Shopping List": master-shopping-list.md
     - "Chem Shopping List": chemistry-shopping-list.md

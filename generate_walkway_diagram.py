@@ -2146,10 +2146,24 @@ def sheet6():
     # ── Grating (ghost) ─────────────────────────────────────────────────────
     C_LEFT_WK = "#A8C8A8"
     ax.add_patch(Rectangle((sx(-15), sy(grate_bot)),
-                            sx(BEAM_SHOW + 30), sy(WALKWAY_GRATE_T),
+                            sx(WALKWAY_W + 20), sy(WALKWAY_GRATE_T),
                             fc=C_LEFT_WK, ec=C_OUT, lw=0.8, ls="--",
                             alpha=0.25, zorder=4))
-    ax.text(sx(BEAM_SHOW / 2), sy(grate_top + 3),
+    # ── Grating clip (innermost edge, toward processing tray) ──────────
+    clip_yd = WALKWAY_W - 20
+    clip_w = 8
+    clip_below = 12
+    clip_above = 5
+    clip_bot_z = grate_bot - clip_below
+    clip_top_z = grate_top + clip_above
+    ax.add_patch(Rectangle((sx(clip_yd), sy(clip_bot_z)),
+                            sx(clip_w), sy(clip_top_z - clip_bot_z),
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, sx(clip_yd + clip_w + 2), sy(grate_top),
+           sx(clip_yd + 40), sy(grate_top + 15),
+           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
+    ax.text(sx(WALKWAY_W / 2), sy(grate_top + 3),
             f"GRATING (GHOST) \u2014 Z={grate_bot}\u2013{grate_top}mm",
             ha="center", va="bottom", fontsize=5.5, color="#206020",
             **FONT, alpha=0.5, zorder=15)
@@ -2573,6 +2587,21 @@ def sheet7():
             f"WALKWAY GRATING (GHOST)\n{WALKWAY_GRATE_T}mm · Z={GRATE_Z_BOT}–{GRATE_Z_TOP}mm",
             ha="center", va="bottom", fontsize=6, color="#208020",
             **FONT, zorder=15, alpha=0.7)
+
+    # ── Grating clip (innermost edge, toward processing tray) ──────────
+    clip_yd = WALKWAY_W - 20
+    clip_w = 8
+    clip_below = 12
+    clip_above = 5
+    clip_bot = ARM_Z_TOP - clip_below
+    clip_top = GRATE_Z_TOP + clip_above
+    ax.add_patch(Rectangle((clip_yd, clip_bot),
+                            clip_w, clip_top - clip_bot,
+                            fc="#505058", ec=C_OUT, lw=0.8, zorder=9))
+    leader(ax, clip_yd + clip_w + 2, GRATE_Z_TOP,
+           clip_yd + 40, GRATE_Z_TOP + 15,
+           "GRATING CLIP\n(REMOVABLE)", color="#505058", fs=5.5,
+           ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Through-bolts (in this side view, 2× Z=50 overlap, 1× Z=100) ──────
     C_BOLT_CLR = "#505058"

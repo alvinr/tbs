@@ -454,6 +454,8 @@ WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner ed
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_NEAR_WIDE_X_L = EP_X            # = 1600mm — starts at EP left edge
 WALKWAY_NEAR_WIDE_X_R = BA_X + BA_W     # = 2310mm — ends at battery right edge
+WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
+WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm

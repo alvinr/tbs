@@ -87,8 +87,24 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 The near walkway widens from 300mm to 500mm between X=1,600mm and X=2,310mm
 (710mm length) to provide additional standing room in front of the electrical
 panel (EP, X=1,600–1,900mm) and battery bank (X=1,810–2,310mm). These wall-mounted
-equipment items require front access for operation and maintenance. Deeper
-cantilever brackets with heavier gussets are used in this zone.
+equipment items require front access for operation and maintenance.
+
+Two brackets in this zone (at X=1,613mm and X=2,070mm) use a heavier design
+to support the 500mm cantilever arm:
+
+| Parameter | Standard bracket | Widened bracket |
+|-----------|-----------------|-----------------|
+| Plate thickness | 8mm | 10mm |
+| Vertical leg height | 150mm | 200mm |
+| Arm reach | 300mm | 500mm |
+| Gusset reach | 70mm | 70mm (tray rim constrained) |
+| Bolt pattern | 3x M12 triangular (2+1) | 4x M12 rectangular (2+2) |
+| Reinforcing plate | 100x180x6mm | 120x220x6mm |
+
+The gusset reach remains 70mm on both bracket types — limited by the processing
+tray rim at Yd=80mm. The widened bracket compensates with heavier plate, taller
+vertical leg for greater wall engagement, and the additional bolt for higher
+moment capacity. See Sheet 2, View C for the widened bracket cross-section.
 
 ### 3.3 Spray Bar Slit
 
@@ -127,6 +143,8 @@ arm structures at the butt joints.
 | All hangers at | Yd ≤ 2,057mm (clear of optical cone) |
 | Ceiling bracket plate | 100×60×6mm steel |
 | Ceiling attachment | 2× M10 through-bolts per plate, through ceiling corrugation |
+
+![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
 
 Each hanger pair consists of two M10 rods — one at each bearer (X=4,329mm and
 X=4,629mm). The rod passes through the horizontal flange of the L-angle bearer
@@ -287,10 +305,12 @@ The walkway must support an operator (~100kg) plus portable equipment. The
 critical load case is the widened near walkway section (500mm cantilever) with an
 operator standing at the outer edge.
 
-The 8mm steel plate gusset brackets at 457mm centers provide substantial
-structural capacity. Each bracket is a rigid triangle (vertical leg + horizontal
-arm + gusset) with 3× M12 through-bolts to the container rib — a connection
-rated for the bolt shear capacity, not the bracket plate.
+The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
+structural capacity. Each standard bracket is a rigid triangle (vertical leg +
+horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The two
+widened brackets in the EP/battery zone use 10mm plate with 4x M12 rectangular
+bolt patterns and 200mm vertical legs for the increased moment demand of the
+500mm cantilever arm.
 
 The ceiling-hung right walkway is the most compliant section. Five pairs of M10
 threaded rod hangers (2,313mm free length) support the two bearer angles and
@@ -310,7 +330,7 @@ full drawing set.
 **Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
-**Sheet 2 — Cross-section + bolt pattern: Cantilever bracket, wall rib attachment, tray rim clearance (View A, ~5:1) + plate face with triangular 3× M12 bolt pattern (View B)**
+**Sheet 2 — Cross-section + bolt pattern: Standard 300mm bracket (View A) + triangular 3x M12 bolt pattern (View B) + widened 500mm bracket for EP/battery zone (View C)**
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
 **Sheet 3 — Detail A: Right walkway ceiling-hung support at IBC end (~3:1)**

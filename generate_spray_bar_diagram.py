@@ -927,19 +927,22 @@ def draw_sheet3():
     pole_x = POLE_X
     slit_x = pole_x - SLIT_WIDTH / 2
 
-    near_slit_depth = PROC_TRAY_YD_NEAR          # 80mm — slit stops at tray lip
-    far_slit_depth  = PROC_TRAY_YD_FAR - WALKWAY_FAR_YD  # 218mm
+    near_slit_top = PROC_TRAY_YD_NEAR             # 80mm — tray lip
+    near_slit_bot = WALKWAY_W                     # 300mm — walkway inner edge
+    far_slit_top  = WALKWAY_FAR_YD                # 2062mm — walkway inner edge
+    far_slit_bot  = PROC_TRAY_YD_FAR              # 2280mm — tray lip
 
-    ax_p.add_patch(Rectangle((slit_x, 0),
-                   SLIT_WIDTH, near_slit_depth,
+    ax_p.add_patch(Rectangle((slit_x, near_slit_top),
+                   SLIT_WIDTH, near_slit_bot - near_slit_top,
                    fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
-    ax_p.add_patch(Rectangle((slit_x, WALKWAY_FAR_YD),
-                   SLIT_WIDTH, far_slit_depth,
+    ax_p.add_patch(Rectangle((slit_x, far_slit_top),
+                   SLIT_WIDTH, far_slit_bot - far_slit_top,
                    fc="#FF4444", ec="#CC0000", lw=1.5, alpha=0.6, zorder=7))
 
     leader(ax_p, pole_x, -10,
            pole_x - 500, -220,
-           f"{SLIT_WIDTH}mm SLIT @ BEAM CENTER\n(TO TRAY LIP ONLY —\nNEAR {near_slit_depth}mm, FAR {far_slit_depth}mm)",
+           f"{SLIT_WIDTH}mm SLIT @ BEAM CENTER\n(WALKWAY EDGE TO TRAY LIP —\n"
+           f"NEAR {near_slit_bot - near_slit_top}mm, FAR {far_slit_bot - far_slit_top}mm)",
            fs=5, color="#CC0000", font=FONT, zorder=20)
 
     ax_p.plot([pole_x, pole_x], [-5, WALKWAY_W + 5],

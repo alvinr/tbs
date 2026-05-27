@@ -631,8 +631,9 @@ def draw_sheet2():
     equip(IBC_COL_X, BLUE_IBC_Y, IBC_W, IBC_D, "IBC-1 BLUE\n+ IBC-3 BROWN",
           C_BLUE_IBC, "Near column  Yd=30–1046")
     # Far column (Yd=1316–2332): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
+    # Plan view sees top tier (Blue #2)
     equip(IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, "IBC-2 BLUE\n+ IBC-4 WASTE",
-          C_WASTE_IBC, "Far column  Yd=1316–2332")
+          C_BLUE_IBC, "Far column  Yd=1316–2332")
 
     # ── EP + BAT wall-mounted on interior face of pinhole wall (Yd=0) ────────
     WALL_MOUNT_H = wt * 0.55   # shallow depth for wall-mounted box

@@ -111,10 +111,15 @@ EQUIPMENT = [
          h_bot=0, h_top=IBC_H_600,
          color=C_BROWN_IBC, zone="right"),
 
-    dict(name="Blue IBC #2 + Waste IBC (far column)",
+    dict(name="Waste IBC-4 (bottom far)",
          x=IBC_COL_X, yd=IBC_FAR_Y, w=IBC_W, d=IBC_D,
-         h_bot=0, h_top=IBC_H_STK,
+         h_bot=0, h_top=IBC_H_600,
          color=C_WASTE_IBC, zone="right"),
+
+    dict(name="Blue IBC #2 (top far)",
+         x=IBC_COL_X, yd=IBC_FAR_Y, w=IBC_W, d=IBC_D,
+         h_bot=IBC_H_600, h_top=IBC_H_STK,
+         color=C_BLUE_IBC, zone="right"),
 
     # OPTICAL ZONE — processing tray on floor
     dict(name="Processing tray (304 SS)",

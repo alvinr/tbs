@@ -239,7 +239,8 @@ def floor_plan():
             ha="center", va="bottom", **FONT, zorder=7)
 
     # Far column (Yd=1316–2332): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
-    equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_WASTE_IBC,
+    # Plan view sees top tier (Blue #2)
+    equip_rect(ax, IBC_COL_X, IBC_FAR_Y, IBC_W, IBC_D, C_BLUE_IBC,
                f"IBC-2 BLUE\n600L (top)\nIBC-4 WASTE\n600L (bottom)\nYd={IBC_FAR_Y}–{IBC_FAR_Y+IBC_D}",
                zorder=6)
     ax.text(IBC_COL_X + IBC_W/2, IBC_FAR_Y + IBC_D - 55,

@@ -622,8 +622,9 @@ NEAR_IBC_DY = BLUE_IBC_Y * SY
 ibc_plan(ax2, IBC_COL_DX, NEAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
          "IBC-1 BLUE / IBC-3 BROWN", "Top: 600L clean\nBottom: 600L recycle")
 # Far column (Yd=1316–2332mm): Blue #2 on top, Waste on bottom — 270mm plumbing corridor between columns
+# Plan view sees top tier (Blue #2)
 FAR_IBC_DY = IBC_FAR_Y * SY
-ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#D5D5D0", C_WASTE_IBC,
+ibc_plan(ax2, IBC_COL_DX, FAR_IBC_DY, "#BBDEFB", C_BLUE_IBC,
          "IBC-2 BLUE / IBC-4 WASTE", "Top: 600L clean\nBottom: 600L waste")
 
 # Equipment panel in IBC plumbing corridor (between IBC columns)

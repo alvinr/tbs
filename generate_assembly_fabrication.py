@@ -234,19 +234,24 @@ def sheet1():
             color=C_ALUM, style="italic", fontweight="bold",
             alpha=0.7, zorder=7)
 
-    # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────
-    # Blue IBC stack x2 (front in depth, 2020mm tall)
-    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, zorder=5)
+    # ── RIGHT END ZONE — 4× IBC 2×2 stack ─────────────────────────────────────
+    # Far column (behind — dimmer): Waste bottom + Blue #2 top
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600,
+              C_WASTE_IBC, alpha=0.40, zorder=3)
+    equip_blk(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600,
+              C_BLUE_IBC, alpha=0.40, zorder=3)
+    # Near column (front): Brown bottom + Blue #1 top
+    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, zorder=5)
+    equip_blk(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, zorder=5)
     # Stacking interface line
     ax.plot([IBC_COL_X, IBC_COL_X+IBC_W], [IBC_H_600, IBC_H_600],
             color="white", lw=0.8, ls="--", alpha=0.7, zorder=6)
-    ax.text(IBC_COL_X+IBC_W/2, IBC_H_STK/2+175,
-            "BLUE IBC x2\nSTACKED (FRONT)\n2x600L H=2020mm",
+    ax.text(IBC_COL_X+IBC_W/2, IBC_H_600+IBC_H_600/2,
+            "IBC-1 BLUE\n(TOP, FRONT)",
             ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
-
-    # Brown IBC x1 (behind Blue, Y-depth stacked — draw at same X, dimmer)
-    equip_blk(ax, IBC_COL_X, 0, IBC_W, IBC_H_600,
-              C_BROWN_IBC, alpha=0.45, zorder=3)
+    ax.text(IBC_COL_X+IBC_W/2, IBC_H_600/2,
+            "IBC-3 BROWN\n(BOTTOM, FRONT)",
+            ha="center", va="center", fontsize=FS_SM-1.5, color="white", zorder=6)
 
     # (drums relocated to left zone — no drum column in right zone)
 

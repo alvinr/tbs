@@ -1366,7 +1366,6 @@ def sheet3():
     notes_top = sy(zy_top(C_HGT - CEIL_CORR_H + 20))
     notes = [
         "RIGHT WALKWAY \u2014 CEILING-HUNG:",
-        "",
         f"1. 2\u00d7 {BEARER_S}\u00d7{BEARER_S}\u00d7{BEARER_T}mm steel angle bearers",
         f"   span full container width ({C_WID}mm) along Yd.",
         f"2. Suspended from ceiling corrugations by M{HANGER_D}",
@@ -1990,7 +1989,6 @@ def sheet5():
     notes_top = sy(Z_HI - 3)
     notes = [
         "LEFT WALKWAY SUPPORT SYSTEM:",
-        "",
         f"1. BEARER BEAM ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm Al RHS) at X={LEFT_WK_R}mm spans {WALKWAY_LEFT_SPAN}mm along Yd. Bolted to near/far bracket vertical legs.",
         f"2. {LEFT_WK_LEG_N} FLOOR LEGS at X={OUTER_LEG_X}mm ({leg_spacing}mm centers) on bare floor outside processing tray.",
         f"3. BEARING STRIP (25\u00d725\u00d73mm Al angle) on tray rim at X={LEFT_WK_L}mm.",
@@ -2908,11 +2906,10 @@ def sheet7():
             **FONT, zorder=15, style="italic")
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    notes_x = sx(W_ARM_W + 40)
+    notes_x = sx(W_ARM_W + 10)
     notes_top = sy(Z_HI - 10)
     notes = [
         "WIDENED BRACKET NOTES:",
-        "",
         f"1. {W_BRKT_T}mm plate (vs {BRKT_T}mm standard).",
         f"2. {W_BRKT_VERT}mm vertical leg (vs {BRKT_VERT}mm standard).",
         f"3. 500mm arm reach for EP + battery bank access.",
@@ -2925,7 +2922,7 @@ def sheet7():
         f"   (Sheet 2).",
     ]
     draw_notes(ax, notes, notes_x, notes_top,
-               spacing=sy(6), fs=7, width=sx(130), font=FONT)
+               spacing=sy(6), fs=7, width=sx(160), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 7",

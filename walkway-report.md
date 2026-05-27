@@ -361,10 +361,10 @@ full drawing set.
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
 | 1 | Press-locked galvanized steel grating | 25mm thick, 30×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
-| 2 | Cantilever bracket (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | ~18 (9 near + 9 far at 457mm centers) | $540–$900 |
-| 3 | Cantilever bracket — widened (near) | 8mm steel plate: 150mm vert leg + 500mm arm + heavier gusset | ~2 (in bump-out zone) | $80–$140 |
-| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 60 (3 per bracket) | $90–$150 |
-| 5 | Reinforcing plate (exterior) | 6mm steel, ~100×180mm, welded to exterior panel at each bracket | 20 | $80–$140 |
+| 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | ~16 (7 near + 9 far at 457mm centers) | $480–$800 |
+| 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | ~2 (EP/battery zone) | $80–$140 |
+| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 56 (3 per std bracket + 4 per widened) | $85–$140 |
+| 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×16) + 120×220mm widened (×2) | 18 | $75–$130 |
 | 6 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
 | 7 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
 | 8 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
@@ -388,7 +388,7 @@ full drawing set.
 |----------|------|
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
 | Before each session | Check bearer beam anti-slip restraint — lock blocks secure, thumb screws tight |
-| Monthly | Inspect cantilever bracket bolts for tightness (3× M12 per bracket) |
+| Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
 | Monthly | Check ceiling hanger nuts — ensure double-nut lock on bearer flange side |
 | Monthly | Inspect grating for corrosion, damaged bearing bars, or bent cross bars |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |

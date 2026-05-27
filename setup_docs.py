@@ -72,6 +72,7 @@ MD_FILES = [
     ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
     ("walkway-report.md",                 (".",           "Perimeter Walkway")),
     ("equipment-panel-report.md",         (".",           "Equipment Panel & Plumbing")),
+    ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
@@ -174,6 +175,8 @@ DIAG_IMAGE_FILES = [
     "spray-bar-sheet4.png",
     "spray-bar-sheet5.png",
     "spray-bar-sheet6.png",
+    "filter-skid-sheet1.png",
+    "pump-manifold-sheet1.png",
 ]
 
 MKDOCS_YML = """\
@@ -332,6 +335,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section removable walkway system — wall-cantilevered, ceiling-hung, and lift-out designs with zero tray contact |
 | [Equipment Panel & Plumbing](equipment-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, 3-stage filter skid, accumulator, valves, and pipe routing |
+| [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
 
 """
 

@@ -75,6 +75,7 @@ MD_FILES=(
     "equipment-panel-report.md"
     "ceiling-rail-report.md"
     "ibc-stacking-report.md"
+    "all-diagrams.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )
@@ -221,6 +222,8 @@ DIAG_FILES=(
     "spray-bar-sheet4.png"
     "spray-bar-sheet5.png"
     "spray-bar-sheet6.png"
+    "filter-skid-sheet1.png"
+    "pump-manifold-sheet1.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

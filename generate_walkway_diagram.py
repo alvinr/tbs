@@ -3132,7 +3132,7 @@ def sheet8():
     # Show extent in Yd: -50 to ARM_LEN + 80
     YD_LO = -80
     YD_HI = ARM_LEN + 100
-    TITLE_Y = SHOW_X + 120  # title zone above diagram
+    TITLE_Y = SHOW_X + 220  # title zone above diagram
 
     # ── Figure ───────────────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(18, 18))

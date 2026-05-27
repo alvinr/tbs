@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Walkway System
-## TBS-001 — Engineering Report
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -431,3 +426,6 @@ distributes load across multiple rods.
    dimensions at cargo door end.
 9. [IBC Stacking Report](ibc-stacking-report.md) — IBC stack dimensions and
    floor zone clearance requirements.
+   
+   *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
+

@@ -641,7 +641,7 @@ def sheet2():
                width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 7",
+    title_block(ax, "SHEET 2 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — STANDARD NEAR WALKWAY BRACKET",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -718,14 +718,20 @@ def sheet1():
     FY  = WALKWAY_FAR_YD;   FYO = FY + W
     TL  = PROC_TRAY_X_L;   TR = TL + PROC_TRAY_W
 
-    # Near walkway: L-shaped polygon with bump-out at X=1600-2310
+    # Near walkway: L-shaped polygon with bump-out aligned to transition brackets
     near_len = TR - LXR   # near/far walkway length (from butt joint to tray right)
-    WXL = WALKWAY_NEAR_WIDE_X_L  # 1600
-    WXR = WALKWAY_NEAR_WIDE_X_R  # 2310
+    WXL = WALKWAY_NEAR_WIDE_X_L
+    WXR = WALKWAY_NEAR_WIDE_X_R
     WW  = WALKWAY_NEAR_WIDE_W    # 500
+    # Snap bump-out edges to actual bracket positions (ribs)
+    _all_brkt = np.arange(LXR + WALKWAY_BRACKET_SPACING / 2,
+                          TR + W, WALKWAY_BRACKET_SPACING)
+    _wide_brkt = [bx for bx in _all_brkt if WXL <= bx <= WXR]
+    WXL_B = _wide_brkt[0]  if _wide_brkt else WXL  # first widened bracket
+    WXR_B = _wide_brkt[-1] if _wide_brkt else WXR  # last widened bracket
     near_verts = [
         (LXR, NY), (TR, NY), (TR, NYI),
-        (WXR, NYI), (WXR, WW), (WXL, WW), (WXL, NYI),
+        (WXR_B, NYI), (WXR_B, WW), (WXL_B, WW), (WXL_B, NYI),
         (LXR, NYI),
     ]
     walkway_polys = [
@@ -1019,7 +1025,7 @@ def sheet1():
                spacing=44, fs=7, width=2500, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 7",
+    title_block(ax, "SHEET 1 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -1382,7 +1388,7 @@ def sheet3():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(200), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 7",
+    title_block(ax, "SHEET 3 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
                 scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
@@ -1728,7 +1734,7 @@ def sheet4():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 7",
+    title_block(ax, "SHEET 4 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -2001,7 +2007,7 @@ def sheet5():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(280), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 7",
+    title_block(ax, "SHEET 5 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -2599,7 +2605,7 @@ def sheet6():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, ha="left", width=sx(180), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 7",
+    title_block(ax, "SHEET 6 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 BEARER BEAM GUIDE TAB RESTRAINT",
                 scale_note="Axes in mm \u00b7 VIEWS A/B/C",
@@ -3077,7 +3083,7 @@ def sheet7():
                width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 7",
+    title_block(ax, "SHEET 7 OF 8",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — WIDENED BRACKET (EP/BATTERY ZONE, 500mm ARM)",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -3087,6 +3093,267 @@ def sheet7():
     fig.savefig(svg_path("diagrams/walkway-sheet7.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet7.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 8 — Width Transition Detail (Plan View)
+#
+# Plan view looking down at a transition bracket where the grating changes
+# from 500mm (widened) to 300mm (standard).  Shows bearing plate on bracket
+# arm, M saddle clips, and grating bearing bar pattern.
+# Horizontal = Yd (0 = wall, positive toward container center)
+# Vertical   = X (negative = wide side, positive = narrow side)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet8():
+    SC = 2.0  # 1:2 scale
+
+    def sx(mm): return mm / SC
+    def sy(mm): return mm / SC
+
+    # ── Dimensions ───────────────────────────────────────────────────────────
+    W_STD    = WALKWAY_W              # 300mm standard width
+    W_WIDE   = WALKWAY_NEAR_WIDE_W    # 500mm widened width
+    BRKT_T   = WALKWAY_WIDE_BRACKET_T # 10mm bracket arm plate thickness
+    ARM_LEN  = W_WIDE                 # 500mm arm (widened bracket)
+    GUSSET_R = 70                     # gusset reach from wall
+    BAR_W    = 3                      # bearing bar width
+    BAR_H    = 30                     # bearing bar depth (height of grating)
+    BAR_PITCH = 34.2                  # bearing bar spacing
+    XBAR_W   = 3                      # cross bar width
+    GRATE_T  = WALKWAY_GRATE_T        # 25mm grating thickness
+    CLIP_W   = 24                     # M saddle clip width in Yd
+    CLIP_L   = 2 * BAR_PITCH + BAR_W  # clip spans 2 bearing bars
+    BEARING_PLATE_W = 40              # bearing plate width in X
+    BEARING_PLATE_L = ARM_LEN         # bearing plate length in Yd (= arm)
+    TRAY_LIP = PROC_TRAY_YD_NEAR     # 80mm
+
+    # Show extent in X: ±350mm from bracket center (enough for grating overlap)
+    SHOW_X = 350
+    # Show extent in Yd: -50 to ARM_LEN + 80
+    YD_LO = -80
+    YD_HI = ARM_LEN + 100
+
+    # ── Figure ───────────────────────────────────────────────────────────────
+    fig, ax = plt.subplots(figsize=(16, 14))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.set_ylim(sy(-SHOW_X), sy(SHOW_X))
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    C_WIDE_GRATE = "#C8C0A8"
+    C_STD_GRATE  = "#D0C8B8"
+    C_PLATE      = "#A0A0B0"
+    C_CLIP       = "#606878"
+    C_GUSSET     = "#909098"
+
+    # Bracket center is at X=0 in local coords
+    # Wide grating on the -X side (left in diagram), std on +X side (right)
+
+    # ── Wall ─────────────────────────────────────────────────────────────────
+    ax.add_patch(Rectangle((sx(-40), sy(-SHOW_X)),
+                 sx(40), sy(2 * SHOW_X),
+                 fc="#D8D4D0", ec=C_OUT, lw=2.0, zorder=1))
+    ax.text(sx(-20), sy(0), "WALL\n(Yd=0)",
+            ha="center", va="center", fontsize=7, color=C_DIM,
+            rotation=90, **FONT, zorder=3)
+
+    # ── Processing tray rim line ─────────────────────────────────────────────
+    ax.plot([sx(TRAY_LIP), sx(TRAY_LIP)], [sy(-SHOW_X), sy(SHOW_X)],
+            color="#4A8A4A", lw=1.0, ls="--", alpha=0.5, zorder=2)
+    ax.text(sx(TRAY_LIP + 8), sy(SHOW_X - 30),
+            f"PROC. TRAY LIP\n(Yd={TRAY_LIP}mm)",
+            ha="left", va="top", fontsize=5.5, color="#4A8A4A",
+            **FONT, zorder=3)
+
+    # ── Bracket arm (10mm plate, edge-on in plan view) ───────────────────────
+    ax.add_patch(Rectangle((sx(0), sy(-BRKT_T / 2)),
+                 sx(ARM_LEN), sy(BRKT_T),
+                 fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))
+    ax.text(sx(ARM_LEN / 2), sy(-BRKT_T / 2 - 12),
+            f"BRACKET ARM\n(10mm × {ARM_LEN}mm)",
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
+            **FONT, zorder=6)
+
+    # ── Gusset (triangle in plan view, 70mm reach from wall) ─────────────────
+    gusset_verts = [
+        (sx(0), sy(-BRKT_T / 2)),
+        (sx(GUSSET_R), sy(0)),
+        (sx(0), sy(BRKT_T / 2)),
+    ]
+    ax.add_patch(Polygon(gusset_verts, closed=True,
+                         fc=C_GUSSET, ec=C_OUT, lw=1.0, zorder=4))
+
+    # ── Bearing plate (40mm × 500mm, centered on arm) ────────────────────────
+    bp_x0 = -BEARING_PLATE_W / 2
+    ax.add_patch(Rectangle((sx(0), sy(bp_x0)),
+                 sx(BEARING_PLATE_L), sy(BEARING_PLATE_W),
+                 fc=C_PLATE, ec=C_OUT, lw=1.2, ls="--", alpha=0.7,
+                 zorder=6))
+    leader(ax, sx(BEARING_PLATE_L + 5), sy(bp_x0 + BEARING_PLATE_W / 2),
+           sx(BEARING_PLATE_L + 60), sy(bp_x0 + BEARING_PLATE_W / 2 + 60),
+           f"BEARING PLATE\n{BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm\n(WELDED TO ARM)",
+           color=C_DIM, fs=5.5, ha="left", va="bottom",
+           arrow_style="-|>", font=FONT)
+
+    # ── Wide grating (−X side) ───────────────────────────────────────────────
+    # Grating extends from Yd=0 to Yd=W_WIDE (500mm), from X=-SHOW_X to X≈0
+    gw_x0 = -SHOW_X
+    gw_x1 = -BEARING_PLATE_W / 2  # ends at bearing plate edge
+    ax.add_patch(Rectangle((sx(0), sy(gw_x0)),
+                 sx(W_WIDE), sy(gw_x1 - gw_x0),
+                 fc=C_WIDE_GRATE, ec=C_OUT, lw=1.0, alpha=0.6,
+                 hatch="xx", zorder=3))
+    ax.text(sx(W_WIDE / 2), sy(gw_x0 + (gw_x1 - gw_x0) / 2 - 30),
+            f"WIDENED GRATING\n(500mm)",
+            ha="center", va="center", fontsize=7, color=C_OUT,
+            **FONT, zorder=4, alpha=0.8)
+
+    # ── Standard grating (+X side) ───────────────────────────────────────────
+    gs_x0 = BEARING_PLATE_W / 2   # starts at bearing plate edge
+    gs_x1 = SHOW_X
+    ax.add_patch(Rectangle((sx(0), sy(gs_x0)),
+                 sx(W_STD), sy(gs_x1 - gs_x0),
+                 fc=C_STD_GRATE, ec=C_OUT, lw=1.0, alpha=0.6,
+                 hatch="xx", zorder=3))
+    ax.text(sx(W_STD / 2), sy(gs_x0 + (gs_x1 - gs_x0) / 2 + 30),
+            f"STANDARD GRATING\n(300mm)",
+            ha="center", va="center", fontsize=7, color=C_OUT,
+            **FONT, zorder=4, alpha=0.8)
+
+    # ── Show outer 200mm of widened grating past standard edge ───────────────
+    # Light fill for the outer zone (Yd=300 to Yd=500) on the wide side
+    ax.add_patch(Rectangle((sx(W_STD), sy(gw_x0)),
+                 sx(W_WIDE - W_STD), sy(gw_x1 - gw_x0),
+                 fc="#E8D8B8", ec="none", lw=0, alpha=0.3, zorder=3.5))
+    ax.text(sx(W_STD + (W_WIDE - W_STD) / 2), sy(gw_x0 + 30),
+            f"EXTENDED\n200mm",
+            ha="center", va="center", fontsize=5.5, color="#8B6B3C",
+            **FONT, zorder=4, alpha=0.9)
+
+    # ── Bearing bars (representative, perpendicular to walkway length) ───────
+    # Bearing bars run in the X direction (along the walkway)
+    # Show them as thin lines spanning the grating width
+    bar_color = "#888890"
+    n_bars_show = 12
+    for i in range(-n_bars_show, n_bars_show + 1):
+        bar_x = i * BAR_PITCH
+        if abs(bar_x) > SHOW_X - 20:
+            continue
+        # Wide side bars: extend to Yd=W_WIDE
+        if bar_x < -BEARING_PLATE_W / 2:
+            ax.plot([sx(0), sx(W_WIDE)],
+                    [sy(bar_x), sy(bar_x)],
+                    color=bar_color, lw=0.4, alpha=0.5, zorder=3.5)
+        # Narrow side bars: extend to Yd=W_STD
+        elif bar_x > BEARING_PLATE_W / 2:
+            ax.plot([sx(0), sx(W_STD)],
+                    [sy(bar_x), sy(bar_x)],
+                    color=bar_color, lw=0.4, alpha=0.5, zorder=3.5)
+
+    # ── M saddle clips ───────────────────────────────────────────────────────
+    # Clips straddle 2 bearing bars, screwed to bracket arm (or bearing plate)
+    # Show 4 clips: 2 on wide side, 2 on narrow side
+
+    clip_positions = [
+        # (Yd center, X center, label_side)
+        (W_STD / 2,   -2.5 * BAR_PITCH,   "wide"),   # wide side inner
+        (W_WIDE - 60, -2.5 * BAR_PITCH,   "wide"),   # wide side outer
+        (W_STD / 2,    2.5 * BAR_PITCH,   "std"),     # std side inner
+        (W_STD / 2,    2.5 * BAR_PITCH + 4 * BAR_PITCH, "std"),  # std side second
+    ]
+
+    for yd_c, x_c, side in clip_positions:
+        # Clip rectangle — straddles 2 bars
+        cw = CLIP_W
+        cl = CLIP_L
+        ax.add_patch(Rectangle(
+            (sx(yd_c - cw / 2), sy(x_c - cl / 2)),
+            sx(cw), sy(cl),
+            fc=C_CLIP, ec=C_OUT, lw=0.8, alpha=0.8, zorder=8))
+        # TEK screw (small circle at center)
+        ax.add_patch(Circle(
+            (sx(yd_c), sy(x_c)),
+            sx(3), fc="#333333", ec=C_OUT, lw=0.5, zorder=9))
+
+    # Label one clip
+    leader(ax, sx(clip_positions[0][0]), sy(clip_positions[0][1]),
+           sx(-30), sy(-180),
+           "M SADDLE CLIP\nw/ TEK SCREW\n(TYP. BOTH SIDES)",
+           color=C_DIM, fs=5.5, ha="right", va="top",
+           arrow_style="-|>", font=FONT)
+
+    # ── Dimension: standard grating width ────────────────────────────────────
+    draw_dim_h(ax, sx(0), sx(W_STD), sy(SHOW_X - 20),
+               f"{W_STD}mm", color=C_DIM, fs=6, offset=sy(8), font=FONT)
+
+    # ── Dimension: widened grating width ─────────────────────────────────────
+    draw_dim_h(ax, sx(0), sx(W_WIDE), sy(-SHOW_X + 20),
+               f"{W_WIDE}mm", color=C_DIM, fs=6, offset=sy(8), font=FONT)
+
+    # ── Dimension: bearing plate width ───────────────────────────────────────
+    draw_dim_v(ax, sx(ARM_LEN + 40),
+               sy(-BEARING_PLATE_W / 2), sy(BEARING_PLATE_W / 2),
+               f"{BEARING_PLATE_W}mm", color=C_DIM, fs=5.5,
+               offset=sx(8), font=FONT)
+
+    # ── Dimension: tray lip to wall ──────────────────────────────────────────
+    draw_dim_h(ax, sx(0), sx(TRAY_LIP), sy(SHOW_X - 60),
+               f"{TRAY_LIP}mm", color="#4A8A4A", fs=5.5,
+               offset=sy(8), font=FONT)
+
+    # ── Edge labels ──────────────────────────────────────────────────────────
+    ax.annotate("", xy=(sx(W_STD), sy(SHOW_X - 5)),
+                xytext=(sx(W_STD), sy(SHOW_X - 40)),
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
+    ax.text(sx(W_STD + 10), sy(SHOW_X - 50),
+            "STD INNER\nEDGE", ha="left", va="top",
+            fontsize=5, color=C_DIM, **FONT)
+
+    ax.annotate("", xy=(sx(W_WIDE), sy(-SHOW_X + 5)),
+                xytext=(sx(W_WIDE), sy(-SHOW_X + 40)),
+                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
+    ax.text(sx(W_WIDE + 10), sy(-SHOW_X + 50),
+            "WIDE INNER\nEDGE", ha="left", va="bottom",
+            fontsize=5, color=C_DIM, **FONT)
+
+    # ── View label ───────────────────────────────────────────────────────────
+    ax.text(sx(W_WIDE / 2), sy(SHOW_X - 5),
+            "PLAN VIEW — WIDTH TRANSITION AT BRACKET",
+            ha="center", va="top", fontsize=8, color=C_OUT,
+            weight="bold", **FONT, zorder=15)
+    ax.text(sx(W_WIDE / 2), sy(SHOW_X - 25),
+            "LOOKING DOWN · WALL AT LEFT · Yd HORIZONTAL · X VERTICAL",
+            ha="center", va="top", fontsize=5.5, color=C_DIM,
+            **FONT, zorder=15)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes = [
+        f"1. TRANSITION BRACKET: {BRKT_T}mm ARM PLATE, {ARM_LEN}mm REACH (WIDENED DESIGN)",
+        f"2. BEARING PLATE: {BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm FLAT BAR WELDED TO ARM TOP",
+        f"3. WIDENED GRATING (500mm) ENDS AT BRACKET — STANDARD (300mm) BEGINS",
+        f"4. M SADDLE CLIPS STRADDLE 2 BEARING BARS, RETAINED BY TEK SCREW",
+        f"5. GRATING SECTIONS BUTT AT BEARING PLATE — NO OVERLAP",
+        f"6. OUTER 200mm OF BRACKET ARM EXPOSED ON STANDARD SIDE",
+        f"7. TRANSITION BRACKETS AT X≈1,156mm AND X≈2,526mm",
+    ]
+    draw_notes(ax, notes, sx(YD_LO + 10), sy(-SHOW_X + 10),
+               spacing=sy(14), fs=5.5, title_fs=6, color=C_DIM,
+               title_color=C_OUT, font=FONT,
+               width=sx(YD_HI - YD_LO - 20))
+
+    # ── Title block ──────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 8 OF 8",
+                drawing_title="PERIMETER WALKWAY",
+                subtitle="WIDTH TRANSITION DETAIL — PLAN VIEW AT BRACKET",
+                scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
+                height=0.07)
+
+    fig.savefig("diagrams/walkway-sheet8.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path("diagrams/walkway-sheet8.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet8.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -3102,4 +3369,5 @@ if __name__ == "__main__":
     sheet5()  # left support → sheet5.png
     sheet6()  # bearer beam → sheet6.png
     sheet7()  # widened bracket → sheet7.png
+    sheet8()  # width transition → sheet8.png
     print("Done.")

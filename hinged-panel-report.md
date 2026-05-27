@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Hinged Light-Trap Panel
-## TBS-001 — Cargo Door Seal & Personnel Access
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -384,3 +379,5 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |
 | Sliding carriage specification | See [Equipment Layout Report](equipment-layout-report.md) §6 for clearance analysis and light seal design |
 | Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–4 |
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

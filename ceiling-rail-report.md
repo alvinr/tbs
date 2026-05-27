@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Ceiling Rail Suspension System
-## TBS-001 — Panel Suspension & Transport Slide
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -309,3 +304,5 @@ Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §1
 | Left walkway lift-out procedure | See [Walkway System](walkway-report.md) §5 |
 | Ceiling rail construction drawings | See [Engineering Overview](engineering-diagrams.md) §13 — Sheets 1–2 |
 | Container ceiling structure | [ISO 668](https://www.iso.org/standard/76912.html) / [ISO 1496-1](https://www.iso.org/standard/59672.html) — Corten steel corrugated panel, 1.6 mm nominal |
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

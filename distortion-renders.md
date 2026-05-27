@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Distortion Renders — Film Plane & Tilt-Swing
-## TBS-001 — Compound Optical Projections
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 This page collects all ray-traced distortion renders for TBS-001. Two independent movement
 systems produce image projections — their compound effects interact non-linearly.
@@ -61,3 +56,5 @@ Individual configurations:
 | C6 | ![C6](assets/tilt-swing-combined-c6.png) |
 | C7 | ![C7](assets/tilt-swing-combined-c7.png) |
 | C8 — Full compound | ![C8](assets/tilt-swing-combined-c8.png) |
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

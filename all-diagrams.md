@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # All Engineering Diagrams
-## TBS-001 — Complete Drawing Set
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. System Assembly Overview
 
@@ -280,3 +275,5 @@
 ## 24. TBS-002 Proof of Concept
 
 ![Mini-TBS — Two-Box Design](assets/mini-tbs-sheet1.png)
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

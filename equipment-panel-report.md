@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Equipment Panel & Plumbing
-## TBS-001 — Engineering Report
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -390,3 +385,5 @@ minute to flush; check for leaks.
    frame, external bulkhead ports, internal pipe routing.
 8. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) —
    Tray sump, P-04 suction pickup, spray bar connection to BV-02.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

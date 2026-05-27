@@ -252,9 +252,9 @@ environment.
 
 ## 7. References
 
-1. ISO 668:2020 — Series 1 freight containers: Classification, dimensions and ratings
-2. Hapag-Lloyd Container Specification — 20ft Standard Dry Container
-3. McNICHOLS — Press-Locked Steel Bar Grating, 25mm depth, weight tables
-4. Schutz Ecobulk MX 600L — IBC tote specifications
+1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings
+2. [Hapag-Lloyd Container Specification](https://www.hapag-lloyd.com/en/products/fleet/container/20-foot-standard.html) — 20ft Standard Dry Container
+3. [McNICHOLS](https://www.mcnichols.com/products/bar-grating/press-locked) — Press-Locked Steel Bar Grating, 25mm depth, weight tables
+4. [Schutz Ecobulk MX 600L](https://www.schuetz.net/en/packaging/ibcs/ecobulk-mx) — IBC tote specifications
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)

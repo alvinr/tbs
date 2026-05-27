@@ -375,12 +375,12 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Source |
 |------|--------|
-| SKF 6215-2RS1 bearing specification | SKF Product Catalog, skf.com — radial load 52.7 kN static, sealed, C3 clearance |
-| Southco C2-33 cam latch | Southco catalog, southco.com — flush-mount cam compression latch |
-| Destaco 207-U toggle clamp | Destaco catalog, destaco.com — horizontal hold-down clamp, 375 lb capacity |
-| HGR20 / HGH20CA linear guide | HIWIN equivalent, generic 20 mm profile linear rail system |
-| EPDM gasket material | McMaster-Carr — closed-cell EPDM, UV-stable |
-| Neoprene wiper strip | McMaster-Carr #93855K6 — closed-cell, pressure-sensitive adhesive |
+| SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN static, sealed, C3 clearance |
+| Southco C2-33 cam latch | [Southco catalog](https://www.southco.com/en-us/c2-33) — flush-mount cam compression latch |
+| Destaco 207-U toggle clamp | [Destaco catalog](https://www.destaco.com/207-u.html) — horizontal hold-down clamp, 375 lb capacity |
+| HGR20 / HGH20CA linear guide | [HIWIN equivalent](https://www.hiwin.com/linear-guideways/hg-series/) — generic 20 mm profile linear rail system |
+| EPDM gasket material | [McMaster-Carr](https://www.mcmaster.com/epdm-rubber-sheets) — closed-cell EPDM, UV-stable |
+| Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |
 | Sliding carriage specification | See [Equipment Layout Report](equipment-layout-report.md) §6 for clearance analysis and light seal design |
 | Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–4 |

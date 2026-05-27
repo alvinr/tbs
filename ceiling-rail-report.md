@@ -301,11 +301,11 @@ Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §1
 
 | Item | Source |
 |------|--------|
-| HGR20 / HGH20CA linear guide system | HIWIN equivalent, generic 20 mm profile — 12.7 kN dynamic load rating per block |
-| Destaco 207-U toggle clamp | Destaco catalog, destaco.com — horizontal hold-down clamp, 375 lb capacity |
-| Neoprene compression pad | McMaster-Carr — closed-cell, UV-stable, pressure-sensitive adhesive |
+| HGR20 / HGH20CA linear guide system | [HIWIN equivalent](https://www.hiwin.com/linear-guideways/hg-series/) — generic 20 mm profile, 12.7 kN dynamic load rating per block |
+| Destaco 207-U toggle clamp | [Destaco catalog](https://www.destaco.com/207-u.html) — horizontal hold-down clamp, 375 lb capacity |
+| Neoprene compression pad | [McMaster-Carr](https://www.mcmaster.com/neoprene-rubber-sheets) — closed-cell, UV-stable, pressure-sensitive adhesive |
 | Panel construction and mass estimate | See [Hinged Light-Trap Panel](hinged-panel-report.md) §2 and §5 |
 | Processing tray specification | See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) §2 |
 | Left walkway lift-out procedure | See [Walkway System](walkway-report.md) §5 |
 | Ceiling rail construction drawings | See [Engineering Overview](engineering-diagrams.md) §13 — Sheets 1–2 |
-| Container ceiling structure | ISO 668 / ISO 1496-1 — Corten steel corrugated panel, 1.6 mm nominal |
+| Container ceiling structure | [ISO 668](https://www.iso.org/standard/76912.html) / [ISO 1496-1](https://www.iso.org/standard/59672.html) — Corten steel corrugated panel, 1.6 mm nominal |

@@ -374,13 +374,13 @@ minute to flush; check for leaks.
 
 ## 12. Source References
 
-1. Shurflo 2088-554-144 datasheet — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
+1. [Shurflo 2088-554-144 datasheet](https://www.shurflo.com/products/2088-series) — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
    self-priming. 127mm × 218mm × 100mm body dimensions, 1/2"-14 NPSM ports.
-2. Pentek Big Blue 4.5"×10" housing specifications — 1" NPT inlet/outlet,
+2. [Pentek Big Blue 4.5"×10" housing specifications](https://www.pentair.com/en-us/products/residential-filtration/pentek-big-blue-housings.html) — 1" NPT inlet/outlet,
    130mm OD, 340mm total height, polypropylene head.
-3. SeaFlo accumulator specifications — 0.75L capacity, 125 PSI max, 1/2" NPT
+3. [SeaFlo accumulator specifications](https://www.seaflo.com/products/accumulator-tank) — 0.75L capacity, 125 PSI max, 1/2" NPT
    port, 127mm OD × 200mm length.
-4. Purcooflow WHF2045B302 — 3-stage whole-house filter, 4.5"×20" Big Blue
+4. [Purcooflow WHF2045B302](https://www.amazon.com/dp/B0BXMQ8FHZ) — 3-stage whole-house filter, 4.5"×20" Big Blue
    cartridges, 1" NPT inlet/outlet, integrated mounting bracket.
 5. [Water System Report](water-system-report.md) — Flow circuits, valve matrix,
    processing procedure, pipe specifications.

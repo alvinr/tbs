@@ -90,7 +90,7 @@ panel (EP, X=1,600–1,900mm) and battery bank (X=1,810–2,310mm). These wall-m
 equipment items require front access for operation and maintenance.
 
 Two brackets in this zone (at X=1,613mm and X=2,070mm) use a heavier design
-to support the 500mm cantilever arm:
+to support the 500mm cantilever arm (see Sheet 7 for cross-section detail):
 
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
@@ -104,7 +104,7 @@ to support the 500mm cantilever arm:
 The gusset reach remains 70mm on both bracket types — limited by the processing
 tray rim at Yd=80mm. The widened bracket compensates with heavier plate, taller
 vertical leg for greater wall engagement, and the additional bolt for higher
-moment capacity. See Sheet 2, View C for the widened bracket cross-section.
+moment capacity. See Sheet 7 for the widened bracket cross-section.
 
 ### 3.3 Spray Bar Slit
 
@@ -330,7 +330,7 @@ full drawing set.
 **Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
-**Sheet 2 — Cross-section + bolt pattern: Standard 300mm bracket (View A) + triangular 3x M12 bolt pattern (View B) + widened 500mm bracket for EP/battery zone (View C)**
+**Sheet 2 — Cross-section + bolt pattern: Standard 300mm bracket (View A) + triangular 3x M12 bolt pattern (View B)**
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
 **Sheet 3 — Detail A: Right walkway ceiling-hung support at IBC end (~3:1)**
@@ -344,6 +344,9 @@ full drawing set.
 
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (~4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
+
+**Sheet 7 — Cross-section: Widened 500mm bracket for EP/battery zone — 10mm plate, 200mm vertical leg, 4x M12 rectangular bolt pattern (~3:1)**
+![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section](assets/walkway-sheet7.png)
 
 ---
 

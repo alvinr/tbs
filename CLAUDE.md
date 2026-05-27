@@ -83,6 +83,8 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 ## Report Style Conventions
 
 - Every engineering claim links to a citable source: peer-reviewed paper, manufacturer datasheet, or textbook.
+- **All source references must include hyperlinks** — no bare titles or catalog names without URLs. Format as `[Source Name](URL)` for standards, datasheets, catalogs, books, and papers.
+- **When any engineering drawing specification changes** (dimensions, quantities, materials, bolt patterns, etc.), always update the report's parts list, `master-shopping-list.md`, and `project-cost-breakdown.md` in the same commit.
 - Shopping lists: 2+ US/SoCal supplier options per major component; include part numbers and current prices.
 - Distortion renders: dark background (`PRU_DEEP = "#0F2D5E"`), 800×600px per configuration, 3×3 summary grid as a separate PNG.
 - Logo/favicon palette constants live in `generate_logo_final.py` and `generate_favicon.py` — reuse if needed.

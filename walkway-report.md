@@ -339,36 +339,7 @@ distributes load across multiple rods.
 
 ---
 
-## 10. Engineering Drawings
-
-Seven sheets cover the walkway system from plan view through construction details.
-See [Engineering Diagrams](engineering-diagrams.md#14-perimeter-walkway) for the
-full drawing set.
-
-**Sheet 1 — Plan view: All 4 sections with bracket positions and panel transport envelope**
-![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
-
-**Sheet 2 — Cross-section + bolt pattern: Standard 300mm bracket (View A) + triangular 3x M12 bolt pattern (View B)**
-![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
-
-**Sheet 3 — Detail A: Right walkway ceiling-hung support at IBC end (~3:1)**
-![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
-
-**Sheet 4 — Detail B: Left walkway removable lift-out at butt joint (~2:1)**
-![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
-
-**Sheet 5 — Detail C: Left walkway support system — bearer beam, floor legs, bearing strip (~3.5:1)**
-![TBS-001 Walkway — Sheet 5: Support System Detail](assets/walkway-sheet5.png)
-
-**Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (~4:1)**
-![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
-
-**Sheet 7 — Cross-section + bolt pattern: Widened 500mm bracket for EP/battery zone (View A) + rectangular 4x M12 bolt pattern (View B)**
-![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section](assets/walkway-sheet7.png)
-
----
-
-## 11. Parts List
+## 10. Parts List
 
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
@@ -394,7 +365,7 @@ full drawing set.
 
 ---
 
-## 12. Maintenance
+## 11. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -411,7 +382,7 @@ full drawing set.
 
 ---
 
-## 13. Source References
+## 12. Source References
 
 1. ISO 668:2020 — Series 1 freight containers: Classification, dimensions and ratings.
    Container rib spacing 457mm (18").

@@ -57,6 +57,7 @@ nav:
   - "Operating Manual": operating-manual.md
   - Construction:
     - "Engineering Diagrams": engineering-diagrams.md
+    - "All Diagrams": all-diagrams.md
     - "Construction Guide": pinhole-camera-construction.md
     - "Pinhole Fab": fabrication-drawings.md
     - "Processing System": water-system-report.md

@@ -3132,13 +3132,14 @@ def sheet8():
     # Show extent in Yd: -50 to ARM_LEN + 80
     YD_LO = -80
     YD_HI = ARM_LEN + 100
+    TITLE_Y = SHOW_X + 120  # title zone above diagram
 
     # ── Figure ───────────────────────────────────────────────────────────────
-    fig, ax = plt.subplots(figsize=(16, 14))
+    fig, ax = plt.subplots(figsize=(18, 18))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(-SHOW_X), sy(SHOW_X))
+    ax.set_ylim(sy(-SHOW_X), sy(TITLE_Y))
     ax.set_aspect("equal")
     ax.axis("off")
 
@@ -3157,7 +3158,7 @@ def sheet8():
                  fc="#D8D4D0", ec=C_OUT, lw=2.0, zorder=1))
     ax.text(sx(-20), sy(0), "WALL\n(Yd=0)",
             ha="center", va="center", fontsize=7, color=C_DIM,
-            rotation=90, **FONT, zorder=3)
+            rotation=90, **FONT, zorder=20)
 
     # ── Processing tray rim line ─────────────────────────────────────────────
     ax.plot([sx(TRAY_LIP), sx(TRAY_LIP)], [sy(-SHOW_X), sy(SHOW_X)],
@@ -3165,16 +3166,16 @@ def sheet8():
     ax.text(sx(TRAY_LIP + 8), sy(SHOW_X - 30),
             f"PROC. TRAY LIP\n(Yd={TRAY_LIP}mm)",
             ha="left", va="top", fontsize=5.5, color="#4A8A4A",
-            **FONT, zorder=3)
+            **FONT, zorder=20)
 
     # ── Bracket arm (10mm plate, edge-on in plan view) ───────────────────────
     ax.add_patch(Rectangle((sx(0), sy(-BRKT_T / 2)),
                  sx(ARM_LEN), sy(BRKT_T),
                  fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))
-    ax.text(sx(ARM_LEN / 2), sy(-BRKT_T / 2 - 12),
-            f"BRACKET ARM\n(10mm × {ARM_LEN}mm)",
+    ax.text(sx(ARM_LEN / 2), sy(-BRKT_T / 2 - 5),
+            f"BRACKET ARM (10mm × {ARM_LEN}mm)",
             ha="center", va="top", fontsize=5.5, color=C_DIM,
-            **FONT, zorder=6)
+            **FONT, zorder=20)
 
     # ── Gusset (triangle in plan view, 70mm reach from wall) ─────────────────
     gusset_verts = [
@@ -3207,8 +3208,8 @@ def sheet8():
                  hatch="xx", zorder=3))
     ax.text(sx(W_WIDE / 2), sy(gw_x0 + (gw_x1 - gw_x0) / 2 - 30),
             f"WIDENED GRATING\n(500mm)",
-            ha="center", va="center", fontsize=7, color=C_OUT,
-            **FONT, zorder=4, alpha=0.8)
+            ha="center", va="center", fontsize=7, color=C_OUT, backgroundcolor="#FFFFFF",
+            **FONT, zorder=20, alpha=0.8)
 
     # ── Standard grating (+X side) ───────────────────────────────────────────
     gs_x0 = BEARING_PLATE_W / 2   # starts at bearing plate edge
@@ -3219,8 +3220,8 @@ def sheet8():
                  hatch="xx", zorder=3))
     ax.text(sx(W_STD / 2), sy(gs_x0 + (gs_x1 - gs_x0) / 2 + 30),
             f"STANDARD GRATING\n(300mm)",
-            ha="center", va="center", fontsize=7, color=C_OUT,
-            **FONT, zorder=4, alpha=0.8)
+            ha="center", va="center", fontsize=7, color=C_OUT, backgroundcolor="#FFFFFF",
+            **FONT, zorder=20, alpha=0.8)
 
     # ── Show outer 200mm of widened grating past standard edge ───────────────
     # Light fill for the outer zone (Yd=300 to Yd=500) on the wide side
@@ -3230,7 +3231,7 @@ def sheet8():
     ax.text(sx(W_STD + (W_WIDE - W_STD) / 2), sy(gw_x0 + 30),
             f"EXTENDED\n200mm",
             ha="center", va="center", fontsize=5.5, color="#8B6B3C",
-            **FONT, zorder=4, alpha=0.9)
+            **FONT, zorder=20, alpha=0.9)
 
     # ── Bearing bars (representative, perpendicular to walkway length) ───────
     # Bearing bars run in the X direction (along the walkway)
@@ -3309,24 +3310,24 @@ def sheet8():
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
     ax.text(sx(W_STD + 10), sy(SHOW_X - 50),
             "STD INNER\nEDGE", ha="left", va="top",
-            fontsize=5, color=C_DIM, **FONT)
+            fontsize=5, color=C_DIM, **FONT, zorder=20)
 
     ax.annotate("", xy=(sx(W_WIDE), sy(-SHOW_X + 5)),
                 xytext=(sx(W_WIDE), sy(-SHOW_X + 40)),
                 arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.6, ls="--"))
     ax.text(sx(W_WIDE + 10), sy(-SHOW_X + 50),
             "WIDE INNER\nEDGE", ha="left", va="bottom",
-            fontsize=5, color=C_DIM, **FONT)
+            fontsize=5, color=C_DIM, **FONT, zorder=20)
 
-    # ── View label ───────────────────────────────────────────────────────────
-    ax.text(sx(W_WIDE / 2), sy(SHOW_X - 5),
+    # ── View label (in title zone, above diagram) ──────────────────────────
+    ax.text(sx(W_WIDE / 2), sy(TITLE_Y - 10),
             "PLAN VIEW — WIDTH TRANSITION AT BRACKET",
-            ha="center", va="top", fontsize=8, color=C_OUT,
-            weight="bold", **FONT, zorder=15)
-    ax.text(sx(W_WIDE / 2), sy(SHOW_X - 25),
+            ha="center", va="top", fontsize=9, color=C_OUT,
+            weight="bold", **FONT, zorder=20)
+    ax.text(sx(W_WIDE / 2), sy(TITLE_Y - 35),
             "LOOKING DOWN · WALL AT LEFT · Yd HORIZONTAL · X VERTICAL",
-            ha="center", va="top", fontsize=5.5, color=C_DIM,
-            **FONT, zorder=15)
+            ha="center", va="top", fontsize=6, color=C_DIM,
+            **FONT, zorder=20)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [

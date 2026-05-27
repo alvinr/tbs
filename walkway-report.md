@@ -108,6 +108,18 @@ tray rim at Yd=80mm. The widened bracket compensates with heavier plate, taller
 vertical leg for greater wall engagement, and the additional bolt for higher
 moment capacity.
 
+**Attachment:** 4× M12 through-bolts per bracket in a rectangular pattern,
+passing through the full wall assembly: hex head → reinforcing plate (6mm) →
+exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
+bracket vertical plate (10mm) → nut. Two lower bolts at Z=35 mm straddle
+the 10mm gusset plate at ±32 mm from the plate centerline in X (centered
+between plate edge and gusset). Two upper bolts at Z=160 mm (above grating
+deck at Z=100, 40 mm from plate top) at the same ±32 mm X offset. The
+container corrugation ribs are hollow — each bolt bridges the air gap inside
+the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
+face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
+View B for the bolt pattern detail.
+
 ### 3.3 Spray Bar Slit
 
 A 30mm wide slot is cut through both near and far walkway grating at the beam

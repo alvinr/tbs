@@ -358,12 +358,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ## 7b. Perimeter Walkway
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery/slit zone (X=1,600–2,630). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery/slit zone (X=1,155–2,384). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
 
 ### Walkway sections (4 off)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4,459×300mm (with 1,030×500mm bump-out), far 4,459×300mm, right 2,362×300mm, left 2,362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
+| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4,459×300mm (with 1,229×500mm bump-out), far 4,459×300mm, right 2,362×300mm, left 2,362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
 | Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 15 | Local fab / Metal Supermarkets | ~$120–$185 |
 | Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery/slit zone. | 3 | Local fab / Metal Supermarkets | ~$55–$85 |
 | Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 15 | Metal Supermarkets | ~$33–$52 |
@@ -378,7 +378,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Fabrication + installation | Cut/weld/galvanize 15 std + 3 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, weld guide tabs, install | 1 job | Local fab / metal shop | ~$280–$440 |
 **Walkway subtotal: ~$950–$1,470**
 
-*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X=1,600–2,630) with heavier 10mm brackets (see Sheet 7). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
+*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,384) with heavier 10mm brackets (see Sheet 7). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
 ## 7c. Ceiling Rail Suspension
 *Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*

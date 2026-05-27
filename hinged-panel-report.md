@@ -366,7 +366,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 13. Sources
+## 13. Source References
 
 | Item | Source |
 |------|--------|

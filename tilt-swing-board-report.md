@@ -2,13 +2,13 @@
 <!-- © 2026 Alvin Richards -->
 # Tilt-and-Swing Front Board Mechanism
 
-**Drawing series TBS-TSB | The Big Shoebox Project**
+## 1. Purpose
 
 The front board is the interchangeable plate that carries the pinhole disc at the scene-facing end of the container. This report specifies a new plate — the **Tilt-Swing Board (TSB)** — that replaces the flat pinhole plate and adds two axes of angular adjustment to the pinhole's pointing direction.
 
 ---
 
-## Optical Effect: Front-Board vs Film-Plane Movement
+## 2. Optical Effect: Front-Board vs Film-Plane Movement
 
 In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox has both: this mechanism controls the **front board**, and the [Film Plane Mechanism](film-plane-mechanism-report.md) controls the rear.
 
@@ -48,7 +48,7 @@ See the [Combined Distortion Renders](#combined-distortion-renders) section belo
 
 ---
 
-## Mechanism Overview
+## 3. Mechanism Overview
 
 The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:
 
@@ -83,7 +83,7 @@ WALL FRAME (fixed, welded to container)
 
 ---
 
-## Movement Specification
+## 4. Movement Specification
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
@@ -103,7 +103,7 @@ WALL FRAME (fixed, welded to container)
 
 ---
 
-## Pivot Bearing: GE50-DO-2RS
+## 5. Pivot Bearing: GE50-DO-2RS
 
 The GE50-DO-2RS was chosen over cross-flexure and Cardan arrangements:
 
@@ -115,7 +115,7 @@ The pivot is located at the plane of the pinhole disc face (40mm forward of the 
 
 ---
 
-## Adjustment Mechanism
+## 6. Adjustment Mechanism
 
 Four M8 × 1.0 fine-pitch stainless screws, each terminating in a Grade-25 Ø8mm chrome steel ball seated in a hardened 440C SS hemispherical insert pressed into the carrier plate rim.
 
@@ -140,7 +140,7 @@ Mechanical hard stop:                ±12mm travel = ±5.3°
 
 ---
 
-## Light Sealing
+## 7. Light Sealing
 
 The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
@@ -152,7 +152,7 @@ The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommoda
 
 ---
 
-## Locking for Long Exposures
+## 8. Locking for Long Exposures
 
 After setting the desired angle, tighten the 4 × M6 nylon-tip set screws (one per adjustment screw, accessed with a 3mm hex key from the exterior face). The nylon tip binds against the M8 shank without marring the threads.
 
@@ -165,7 +165,7 @@ provides robust position-holding for exposures of 20–90 minutes under ambient 
 
 ---
 
-## Plate Swap Procedure
+## 9. Plate Swap Procedure
 
 The TSB assembly swaps in/out of the same wall frame as the standard pinhole plate. No special tooling required beyond an M12 socket and 3mm hex key.
 
@@ -179,7 +179,7 @@ Swap time: approximately 10 minutes.
 
 ---
 
-## Combined Distortion Renders
+## 10. Combined Distortion Renders
 
 The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.
 
@@ -273,7 +273,7 @@ Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and sw
 
 ---
 
-## Recommended Starting Configurations
+## 11. Recommended Starting Configurations
 
 For a first shoot with the TSB mechanism, the following settings offer the clearest demonstration of each effect:
 
@@ -288,7 +288,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 ---
 
-## Machining Tolerances
+## 12. Machining Tolerances
 
 | Feature | Nominal | Tolerance | Importance |
 |---------|---------|-----------|------------|
@@ -303,7 +303,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 ---
 
-## Shopping List
+## 13. Parts List
 
 ### Structural
 
@@ -350,3 +350,32 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | **Total** | **~$1,470** | **~$2,440** |
 
 The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.
+
+---
+
+## 14. Maintenance
+
+| Interval | Task |
+|----------|------|
+| Before each session | Check all four M6 locking set screws are released before adjustment |
+| Before each session | Verify bellows (ICP-10) is intact — no tears, flange gaskets seated |
+| Before each session | Zero-check calibration scales against spirit level |
+| Monthly | Inspect M8 adjustment screw ball-socket contacts for wear |
+| Monthly | Check Delrin guide bushings for cracking or swelling |
+| Every 6 months | Inspect GE50-DO-2RS bearing for play — replace if radial slop exceeds 0.1mm |
+| Every 6 months | Check labyrinth bore steps for accumulated dust or debris |
+| Annually | Inspect bellows pleats for fatigue cracking (especially at max-angle fold lines) |
+| Annually | Verify M12 bolt torque at wall frame interface (65 Nm) |
+| Annually | Check dowel pin fit — pins should release with light pull, no binding |
+
+---
+
+## 15. Source References
+
+1. [SKF GE50-DO-2RS Spherical Plain Bearing](https://www.skf.com/group/products/plain-bearings/spherical-plain-bearings-rod-ends/spherical-plain-bearings/productid-GE50DO-2RS) — Bearing specifications, misalignment capacity, and PTFE liner properties.
+2. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).
+3. [Micro-Tools Custom Bellows](https://microtools.com/) — Custom photographic bellows fabrication.
+4. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard mechanism and combined distortion analysis.
+5. [Fabrication Drawings](fabrication-drawings.md) — Wall frame and interchangeable plate interface specification.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

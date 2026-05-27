@@ -1,14 +1,14 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Cyanotype Processing Water System
-## Remote-Operation Design for the Giant Pinhole Camera
 
-*For a camera deployed off-grid without access to running water or mains drainage.*
-*Image plane: 4,499 × 2,388 mm (~116 sq ft). Processing tray: 4,459 × 2,200 mm (~106 sq ft). Container: 20 ft standard ISO shipping container.*
+## 1. Purpose
+
+The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a 4,499 × 2,388 mm image plane inside a 20 ft ISO shipping container.
 
 ---
 
-## Executive Summary
+## 2. Executive Summary
 
 The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system that:
 
@@ -27,7 +27,7 @@ The camera operates in remote locations with no mains water or drainage. This do
 
 ---
 
-## 1. Cyanotype Wash Water — Chemistry and Constraints
+## 3. Cyanotype Wash Water — Chemistry and Constraints
 
 ### What is in the wash water?
 
@@ -62,7 +62,7 @@ It will **not**:
 
 ---
 
-## 2. Water Volume Calculations
+## 4. Water Volume Calculations
 
 ### Per-print water requirement
 
@@ -92,9 +92,9 @@ Volume per flood = 106 sq ft × (6 mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 
 ---
 
-## 3. System Architecture
+## 5. System Architecture
 
-### 3.1 Blue System — Clean Water Supply
+### 5.1 Blue System — Clean Water Supply
 
 ```
 IBC-1 (600L) ──┐
@@ -112,7 +112,7 @@ IBC-2 (600L) ──┘                                                      │
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
 - Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
 
-### 3.2 Brown System — Used Water Recycling
+### 5.2 Brown System — Used Water Recycling
 
 ```
 Processing tray sump (P-04 suction pickup)
@@ -153,7 +153,7 @@ The 20" cartridges hold roughly 2× the media volume of the previous 10" cartrid
 
 **pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
-### 3.3 Black System — Waste Containment
+### 5.3 Black System — Waste Containment
 
 ```
 FROM 3W-DV-01 (rejected filter output — pH out of range)
@@ -172,7 +172,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 - Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1,181mm, Z=200mm) — no need to open cargo doors
 - **Do not leave IBC valve open** — evaporation and UV exposure can drive ferricyanide chemistry
 
-### 3.4 Processing Tray
+### 5.4 Processing Tray
 
 Print washing takes place inside the container on a shallow processing tray that sits on the optical zone floor. Water collects at the low point and is pumped out by P-04 via a sump pickup — there is no penetration of the tray floor or container floor.
 
@@ -242,7 +242,7 @@ The processing tray is permanently installed — it remains in place during both
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session. The liner prevents direct stainless-to-print contact (avoiding metallic marks on wet cyanotype) and simplifies cleanup. Overlap the liner 50mm over the tray rims. Cut or fold the liner around the sump pickup tube.
 
-### 3.5 Spray Bar Assembly — Gantry Design
+### 5.5 Spray Bar Assembly — Gantry Design
 
 The spray bar delivers Blue (clean) water evenly across the processing tray during print washing. The operator slides the bar along the tray (Yd direction, from film-plane side toward the pinhole wall), flooding the print surface progressively.
 
@@ -465,7 +465,7 @@ BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Y
 
 ---
 
-## 4. Processing Procedure — Step by Step
+## 6. Processing Procedure — Step by Step
 
 ### Before each session
 1. Check Blue IBC levels — minimum 100 gal required per print session
@@ -524,7 +524,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 
 ---
 
-## 5. Plumbing Specification
+## 7. Plumbing Specification
 
 ### Pipe sizing
 
@@ -575,7 +575,7 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 
 ---
 
-## 6. Electrical — 12V DC Power
+## 8. Electrical — 12V DC Power
 
 | Item | Current draw | Hours/print | Wh/print |
 |------|-------------|-------------|---------|
@@ -590,7 +590,7 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump p
 
 ---
 
-## 7. Equipment Layout
+## 9. Equipment Layout
 
 See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=150–4,649mm) contains only the processing tray and perimeter walkways at floor level.
 
@@ -629,9 +629,9 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 8. Parts List and Shopping List
+## 10. Parts List
 
-### 8.1 Water storage
+### 10.1 Water storage
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -640,7 +640,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Storage subtotal: ~$420–$760**
 
-### 8.2 Pumps and pressure management
+### 10.2 Pumps and pressure management
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -652,7 +652,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Pump subtotal: ~$305–$355**
 
-### 8.3 Filter unit
+### 10.3 Filter unit
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -663,7 +663,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Filter subtotal: ~$470–$652**
 
-### 8.4 Valves and fittings
+### 10.4 Valves and fittings
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -685,7 +685,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Valves & fittings subtotal: ~$414–$660**
 
-### 8.5 Pipe
+### 10.5 Pipe
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -697,7 +697,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Pipe subtotal: ~$76–$108**
 
-### 8.6 Processing tray
+### 10.6 Processing tray
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -713,7 +713,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 *Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.*
 
-### 8.7 Electrical
+### 10.7 Electrical
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -724,7 +724,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Electrical subtotal: ~$50**
 
-### 8.8 Processing consumables
+### 10.8 Processing consumables
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -737,7 +737,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Consumables subtotal: ~$231–$278**
 
-### 8.9 Spray bar assembly (gantry design)
+### 10.9 Spray bar assembly (gantry design)
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -757,7 +757,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-### 8.10 Total cost summary
+### 10.10 Total cost summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -776,7 +776,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 9. Maintenance Schedule
+## 11. Maintenance
 
 | Task | Frequency | Notes |
 |------|-----------|-------|
@@ -790,7 +790,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 10. Safety Notes
+## 12. Safety Notes
 
 1. **Ferricyanide in alkaline conditions:** Do not allow IBC-4 waste water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH < 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.
 
@@ -804,7 +804,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 11. Schematic Diagrams
+## 13. Engineering Drawings
 
 | Drawing | File |
 |---------|------|
@@ -840,7 +840,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 12. Sources and References
+## 14. Source References
 
 **Chemistry and safety:**
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)
@@ -854,3 +854,5 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 - [Container Exchanger](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) — Used IBC totes, California
 - [Online Metals](https://www.onlinemetals.com) — 304 SS sheet for processing tray
 - [Ronaqua](https://www.ronaqua.com) — GAC carbon filter cartridges
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -3193,7 +3193,7 @@ def sheet8():
                  fc=C_PLATE, ec=C_OUT, lw=1.2, ls="--", alpha=0.7,
                  zorder=6))
     leader(ax, sx(BEARING_PLATE_L + 5), sy(bp_x0 + BEARING_PLATE_W / 2),
-           sx(BEARING_PLATE_L + 60), sy(bp_x0 + BEARING_PLATE_W / 2 + 60),
+           sx(BEARING_PLATE_L + 20), sy(bp_x0 + BEARING_PLATE_W / 2 + 60),
            f"BEARING PLATE\n{BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm\n(WELDED TO ARM)",
            color=C_DIM, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
@@ -3279,11 +3279,12 @@ def sheet8():
             sx(3), fc="#333333", ec=C_OUT, lw=0.5, zorder=9))
 
     # Label one clip
+    bbox = dict(fc="white", ec="none", pad=1.5, alpha=0.85)
     leader(ax, sx(clip_positions[0][0]), sy(clip_positions[0][1]),
-           sx(-30), sy(-180),
+           sx(80), sy(-72),
            "M SADDLE CLIP\nTEK SCREW INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
            color=C_DIM, fs=5.5, ha="right", va="top",
-           arrow_style="-|>", font=FONT)
+           arrow_style="-|>", font=FONT, bbox=bbox)
 
     # ── Dimension: standard grating width ────────────────────────────────────
     draw_dim_h(ax, sx(0), sx(W_STD), sy(SHOW_X - 20),

@@ -126,21 +126,30 @@ the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
 View B for the bolt pattern detail.
 
+**Width transition:** At the two transition brackets (X≈1,156 and X≈2,526),
+the grating changes from 300mm to 500mm width (or vice versa). Both the
+narrow and wide grating sections rest on the same 500mm bracket arm. A
+40×500×5mm flat bearing plate is welded to the bracket arm top surface at each
+transition, providing a wider landing surface so both grating sections have
+adequate bearing. The narrow section occupies the inner 300mm of the plate;
+the wide section occupies the full 500mm. M saddle clips retain each grating
+section independently on either side of the transition.
+
 ### 3.3 Spray Bar Slit
 
 A 30mm wide slot is cut through both near and far walkway grating at the beam
 center X position, providing clearance for the spray bar telescoping pole to
 pass through the walkway during processing operations.
 
-On the near walkway, the slit falls within the widened section (500mm). The
-slit extends from the inner walkway edge (Yd=500mm) inward only to the
-processing tray lip (Yd=80mm) — a depth of 420mm. The remaining 80mm of
-grating between the wall and the tray lip stays solid, maintaining structural
-continuity across the slit. This ensures the widened grating does not flex at
-the slit position despite the 500mm cantilever span.
+On both walkways, the slit extends from the inner walkway edge inward only to
+the processing tray lip — not the full walkway depth. The remaining grating
+between the tray lip and the wall stays solid, maintaining structural
+continuity across the slit.
 
-On the far walkway (300mm standard width), the slit extends the full grating
-depth.
+| Walkway | Inner edge (Yd) | Tray lip (Yd) | Slit depth | Solid remaining |
+|---------|----------------|---------------|-----------|----------------|
+| Near (widened) | 500mm | 80mm | 420mm | 80mm |
+| Far (standard) | 2,062mm | 2,280mm | 218mm | 82mm |
 
 See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
@@ -367,20 +376,21 @@ distributes load across multiple rods.
 | 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
 | 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
-| 6 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
-| 7 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
-| 8 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
-| 9 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
-| 10 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
-| 11 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1,762mm long | 1 | $25–$45 |
-| 12 | Floor support leg | 25×25×3mm aluminum SHS, 75mm tall | 3 | $10–$20 |
-| 13 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
-| 14 | Bearing strip | 25×25×3mm aluminum angle, ~1,762mm long | 1 | $15–$25 |
-| 15 | Anti-slip restraint kit | 5mm flat plate + stop lip + lock block + M8 thumb screw bolt per bearer end | 2 sets | $20–$35 |
-| 16 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
-| 17 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
-| 18 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$1,425–$2,365** |
+| 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
+| 7 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
+| 8 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
+| 9 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
+| 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
+| 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
+| 12 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1,762mm long | 1 | $25–$45 |
+| 13 | Floor support leg | 25×25×3mm aluminum SHS, 75mm tall | 3 | $10–$20 |
+| 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
+| 15 | Bearing strip | 25×25×3mm aluminum angle, ~1,762mm long | 1 | $15–$25 |
+| 16 | Anti-slip restraint kit | 5mm flat plate + stop lip + lock block + M8 thumb screw bolt per bearer end | 2 sets | $20–$35 |
+| 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
+| 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
+| 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
+| | **Total** | | | **$1,430–$2,375** |
 
 ---
 

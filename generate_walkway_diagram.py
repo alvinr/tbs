@@ -3139,7 +3139,7 @@ def sheet8():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
-    ax.set_ylim(sy(-SHOW_X), sy(TITLE_Y))
+    ax.set_ylim(sy(-SHOW_X - 150), sy(TITLE_Y))
     ax.set_aspect("equal")
     ax.axis("off")
 

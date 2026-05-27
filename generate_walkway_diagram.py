@@ -3204,7 +3204,7 @@ def sheet8():
     gw_x1 = -BEARING_PLATE_W / 2  # ends at bearing plate edge
     ax.add_patch(Rectangle((sx(0), sy(gw_x0)),
                  sx(W_WIDE), sy(gw_x1 - gw_x0),
-                 fc=C_WIDE_GRATE, ec=C_OUT, lw=1.0, alpha=0.6,
+                 fc=C_WIDE_GRATE, ec=C_OUT, lw=0.6, alpha=0.15,
                  hatch="xx", zorder=3))
     ax.text(sx(W_WIDE / 2), sy(gw_x0 + (gw_x1 - gw_x0) / 2 - 30),
             f"WIDENED GRATING\n(500mm)",
@@ -3216,7 +3216,7 @@ def sheet8():
     gs_x1 = SHOW_X
     ax.add_patch(Rectangle((sx(0), sy(gs_x0)),
                  sx(W_STD), sy(gs_x1 - gs_x0),
-                 fc=C_STD_GRATE, ec=C_OUT, lw=1.0, alpha=0.6,
+                 fc=C_STD_GRATE, ec=C_OUT, lw=0.6, alpha=0.15,
                  hatch="xx", zorder=3))
     ax.text(sx(W_STD / 2), sy(gs_x0 + (gs_x1 - gs_x0) / 2 + 30),
             f"STANDARD GRATING\n(300mm)",
@@ -3227,7 +3227,7 @@ def sheet8():
     # Light fill for the outer zone (Yd=300 to Yd=500) on the wide side
     ax.add_patch(Rectangle((sx(W_STD), sy(gw_x0)),
                  sx(W_WIDE - W_STD), sy(gw_x1 - gw_x0),
-                 fc="#E8D8B8", ec="none", lw=0, alpha=0.3, zorder=3.5))
+                 fc="#E8D8B8", ec="none", lw=0, alpha=0.10, zorder=3.5))
     ax.text(sx(W_STD + (W_WIDE - W_STD) / 2), sy(gw_x0 + 30),
             f"EXTENDED\n200mm",
             ha="center", va="center", fontsize=5.5, color="#8B6B3C",
@@ -3331,6 +3331,7 @@ def sheet8():
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
+        "NOTES:",
         f"1. TRANSITION BRACKET: {BRKT_T}mm ARM PLATE, {ARM_LEN}mm REACH (WIDENED DESIGN)",
         f"2. BEARING PLATE: {BEARING_PLATE_W}×{BEARING_PLATE_L}×5mm FLAT BAR WELDED TO ARM TOP",
         f"3. WIDENED GRATING (500mm) ENDS AT BRACKET — STANDARD (300mm) BEGINS",
@@ -3339,10 +3340,10 @@ def sheet8():
         f"6. OUTER 200mm OF BRACKET ARM EXPOSED ON STANDARD SIDE",
         f"7. TRANSITION BRACKETS AT X≈1,156mm AND X≈2,526mm",
     ]
-    draw_notes(ax, notes, sx(YD_LO + 10), sy(-SHOW_X + 10),
-               spacing=sy(14), fs=5.5, title_fs=6, color=C_DIM,
+    draw_notes(ax, notes, sx(YD_LO + 440), sy(SHOW_X - 10),
+               spacing=sy(7), fs=5.5, title_fs=6, color=C_DIM,
                title_color=C_OUT, font=FONT,
-               width=sx(YD_HI - YD_LO - 20))
+               width=sx(225))
 
     # ── Title block ──────────────────────────────────────────────────────────
     title_block(ax, "SHEET 8 OF 8",

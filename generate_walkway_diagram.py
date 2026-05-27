@@ -851,12 +851,14 @@ def sheet1():
     slit_cx = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
     slit_w = SPRAY_BAR_SLIT_W
     C_SLIT = "#CC0000"
+    tray_lip = PROC_TRAY_YD_NEAR  # Yd=80mm — slit stops at tray lip
 
-    # Near walkway slit
-    ax.add_patch(Rectangle((slit_cx - slit_w / 2, NY),
-                 slit_w, W,
+    # Near walkway slit — extends from inner edge to tray lip only
+    near_slit_inner = WW if WXL <= slit_cx <= WXR else NYI
+    ax.add_patch(Rectangle((slit_cx - slit_w / 2, tray_lip),
+                 slit_w, near_slit_inner - tray_lip,
                  fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
-    # Far walkway slit
+    # Far walkway slit — full standard width (no widened section on far wall)
     ax.add_patch(Rectangle((slit_cx - slit_w / 2, FY),
                  slit_w, W,
                  fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))

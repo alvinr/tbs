@@ -451,14 +451,15 @@ WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner ed
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)
 # Grating widened from 300mm to 500mm in the EP/battery/slit zone.
 # Deeper cantilever brackets (500mm arm) with heavier gussets in this section.
-# Zone starts at the second rib position (≈1155) and ends at the spray bar
-# slit left edge (≈2384). Three widened brackets at ribs ≈1156, 1612, 2070.
+# Zone starts at the second rib (≈1155) and extends past the spray bar slit
+# to the next rib (≈2527). Four widened brackets at ribs ≈1156, 1612, 2070, 2527.
+# The slit cuts only to the tray lip (Yd=80), not the full walkway depth.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
 _FIRST_RIB = _NX0 + CONTAINER_RIB_SPACING // 2          # first bracket ≈ 698
 WALKWAY_NEAR_WIDE_X_L = _FIRST_RIB + CONTAINER_RIB_SPACING  # second bracket ≈ 1155
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
-WALKWAY_NEAR_WIDE_X_R = _SLIT_CX - 15                       # slit left edge ≈ 2384
+WALKWAY_NEAR_WIDE_X_R = _SLIT_CX + CONTAINER_RIB_SPACING // 2 + 2  # past slit to next rib ≈ 2629
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):

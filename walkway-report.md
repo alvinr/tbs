@@ -44,7 +44,7 @@ tray's watertight seal.
 | Bracket arm height | 75mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | 500mm at X=1,155–2,384mm |
+| Near walkway widened section | 500mm at X≈1,155–2,629mm |
 | Open processing area | 3,859×1,662mm = 6.41 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
@@ -84,18 +84,19 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,384mm
-(1,229mm length), ending at the left edge of the spray bar slit. This widened
-section provides additional standing room in front of the electrical panel
-(EP, X=1,600–1,900mm), battery bank (X=1,810–2,310mm), and up to the spray bar
-slit (X≈2,400mm). These wall-mounted equipment items require front access for
-operation and maintenance, and the wider platform gives the operator full-width
-standing room during spray bar passes.
+The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,629mm
+(1,474mm length), extending past the spray bar slit to the next rib position.
+This widened section provides additional standing room in front of the
+electrical panel (EP, X=1,600–1,900mm), battery bank (X=1,810–2,310mm), and
+through the spray bar slit zone (X≈2,400mm). These wall-mounted equipment
+items require front access for operation and maintenance, and the wider
+platform gives the operator full-width standing room during spray bar passes.
 
-Three brackets in this zone (at X≈1,156mm, X≈1,612mm, and X≈2,070mm) use a
-heavier design to support the 500mm cantilever arm. The bracket positions align
-to container corrugation ribs at 457mm centers — one at the zone start, one at
-center, and one on the inside (left) of the spray bar slit.
+Four brackets in this zone (at X≈1,156mm, X≈1,612mm, X≈2,070mm, and
+X≈2,526mm) use a heavier design to support the 500mm cantilever arm. The
+bracket positions align to container corrugation ribs at 457mm centers.
+Extending the widened zone past the slit ensures 500mm-arm brackets support
+the grating on both sides of the slit, eliminating unsupported overhang.
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet7.png)
 
@@ -129,8 +130,19 @@ View B for the bolt pattern detail.
 
 A 30mm wide slot is cut through both near and far walkway grating at the beam
 center X position, providing clearance for the spray bar telescoping pole to
-pass through the walkway during processing operations. See
-[Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
+pass through the walkway during processing operations.
+
+On the near walkway, the slit falls within the widened section (500mm). The
+slit extends from the inner walkway edge (Yd=500mm) inward only to the
+processing tray lip (Yd=80mm) — a depth of 420mm. The remaining 80mm of
+grating between the wall and the tray lip stays solid, maintaining structural
+continuity across the slit. This ensures the widened grating does not flex at
+the slit position despite the 500mm cantilever span.
+
+On the far walkway (300mm standard width), the slit extends the full grating
+depth.
+
+See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
 
 ![TBS-001 Walkway —Positions of walkway slits](assets/spray-bar-sheet3.png)
@@ -332,8 +344,8 @@ operator standing at the outer edge.
 
 The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
 structural capacity. Each standard bracket is a rigid triangle (vertical leg +
-horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The three
-widened brackets (X≈1,156, 1,612, 2,070) use 10mm plate with 4x M12
+horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The four
+widened brackets (X≈1,156, 1,612, 2,070, 2,526) use 10mm plate with 4x M12
 rectangular bolt patterns and 200mm vertical legs for the increased moment
 demand of the 500mm cantilever arm.
 
@@ -351,10 +363,10 @@ distributes load across multiple rods.
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
 | 1 | Press-locked galvanized steel grating | 25mm thick, 30×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
-| 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 15 (6 near + 9 far at 457mm centers) | $450–$750 |
-| 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 3 (EP/battery/slit zone) | $120–$210 |
-| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 57 (3 per std bracket + 4 per widened) | $85–$140 |
-| 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×15) + 120×220mm widened (×3) | 18 | $75–$130 |
+| 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 14 (5 near + 9 far at 457mm centers) | $420–$700 |
+| 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
+| 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
+| 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
 | 6 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
 | 7 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
 | 8 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |

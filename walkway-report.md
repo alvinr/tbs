@@ -253,11 +253,31 @@ All four walkway sections use the same grating:
 | Bearing bar pitch | 34.2mm |
 | Cross bar type | Twist-locked at mid-height |
 | Surface finish | Hot-dip galvanized |
-| Attachment | Removable grating clips to bracket arms or bearers |
 
-The grating is not permanently fastened — it clips to the bracket arms or bearer
-structures with removable grating clips. Any section can be lifted off for full
-processing tray access during film loading and unloading.
+### 8.1 Grating Retention by Walkway Section
+
+| Walkway | Retention Method | Attachment Point | Removal |
+|---------|-----------------|------------------|---------|
+| Near (pinhole wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
+| Far (film plane wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
+| Right (IBC end) | M saddle clips + TEK screws | L-angle bearer horizontal leg | Unscrew TEK screws, lift grating |
+| Left (cargo door) | Gravity + guide tabs | Bearer beam (X=470) + bearing strip (X=170) | Lift straight up — no fasteners |
+
+**Near and far walkways** use M saddle clips that straddle two grating bearing
+bars. Each clip is secured to the bracket arm with a self-drilling TEK screw
+through the clip's center hole. Clips are spaced at every other bracket
+(~914mm centers).
+
+**Right walkway** uses the same M saddle clip design, but the TEK screws drive
+into the horizontal leg of the 25×25×5mm L-angle bearers rather than bracket
+arms.
+
+**Left walkway** uses gravity retention only. The grating sits on twin support
+lines (bearer beam at X=470mm and bearing strip at X=170mm) and is held in
+position laterally by small guide tabs — 3mm steel angle pieces welded to the
+bearer beam top surface. The twin support lines prevent rocking. No fasteners
+are used because the left walkway must be removed quickly for hinged panel
+transport mode — lift straight up and carry out.
 
 ---
 

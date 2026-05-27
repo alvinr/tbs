@@ -3132,7 +3132,7 @@ def sheet8():
     # Show extent in Yd: -50 to ARM_LEN + 80
     YD_LO = -80
     YD_HI = ARM_LEN + 100
-    TITLE_Y = SHOW_X + 220  # title zone above diagram
+    TITLE_Y = SHOW_X + 80  # title zone above diagram
 
     # ── Figure ───────────────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(18, 18))
@@ -3351,7 +3351,7 @@ def sheet8():
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="WIDTH TRANSITION DETAIL — PLAN VIEW AT BRACKET",
                 scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
-                height=0.07)
+                height=0.06)
 
     fig.savefig("diagrams/walkway-sheet8.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path("diagrams/walkway-sheet8.png"), bbox_inches="tight", facecolor=BG)

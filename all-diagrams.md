@@ -147,6 +147,8 @@
 
 ![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section + Bolt Pattern](assets/walkway-sheet7.png)
 
+![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
+
 ---
 
 ## 15. Equipment Panel & Plumbing

@@ -288,6 +288,9 @@ Mounting varies by side:
 **Sheet 7 — Cross-section + bolt pattern: Widened 500mm bracket for EP/battery zone (View A) + rectangular 4× M12 bolt pattern (View B)**
 ![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section](assets/walkway-sheet7.png)
 
+**Sheet 8 — Width transition detail: Plan view at transition bracket showing 500mm and 300mm grating sections sharing the bracket arm via bearing plate, with M saddle clips**
+![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
+
 ---
 
 ## 15. IBC Stacking & Securing

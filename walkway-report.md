@@ -135,6 +135,8 @@ adequate bearing. The narrow section occupies the inner 300mm of the plate;
 the wide section occupies the full 500mm. M saddle clips retain each grating
 section independently on either side of the transition.
 
+![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
+
 ### 3.3 Spray Bar Slit
 
 A 30mm wide slot is cut through both near and far walkway grating at the beam

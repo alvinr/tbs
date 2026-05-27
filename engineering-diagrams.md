@@ -285,6 +285,9 @@ Mounting varies by side:
 **Sheet 6 — Detail D: Bearer beam anti-slip restraint — lip pocket, lock block with slotted bolt (≈4:1)**
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
+**Sheet 7 — Cross-section: Widened 500mm bracket for EP/battery zone — 10mm plate, 200mm vertical leg, 4x M12 rectangular bolt pattern (≈3:1)**
+![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section](assets/walkway-sheet7.png)
+
 ---
 
 ## 15. IBC Stacking & Securing

@@ -449,11 +449,16 @@ LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angl
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner edge)
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)
-# Grating widened from 300mm to 500mm in EP/battery zone only.
+# Grating widened from 300mm to 500mm in the EP/battery/slit zone.
 # Deeper cantilever brackets (500mm arm) with heavier gussets in this section.
+# Zone extends from the EP left edge to past the spray bar slit, providing
+# full-width standing room for the operator during spray bar passes.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_NEAR_WIDE_X_L = EP_X            # = 1600mm — starts at EP left edge
-WALKWAY_NEAR_WIDE_X_R = BA_X + BA_W     # = 2310mm — ends at battery right edge
+_SLIT_CX = (WALKWAY_LEFT_X + WALKWAY_W + WALKWAY_RIGHT_X) // 2  # spray bar slit center X ≈ 2400
+# Extend past the slit to include the next bracket (~X=2527) so 500mm grating
+# is supported by widened brackets on both sides of the slit.
+WALKWAY_NEAR_WIDE_X_R = _SLIT_CX + CONTAINER_RIB_SPACING // 2 + 2  # ≈ 2630
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):

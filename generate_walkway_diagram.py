@@ -2642,13 +2642,17 @@ def sheet7():
     BOLT_R      = BOLT_D / 2
     C_BOLT      = "#505058"
 
-    # ── Figure ───────────────────────────────────────────────────────────────
+    # ── Figure (2-panel: View A cross-section + View B bolt pattern) ───────
     YD_LO = -100
     YD_HI = W_ARM_W + 180
     Z_LO  = -70
     Z_HI  = W_BRKT_VERT + 80
 
-    fig, ax = plt.subplots(figsize=(18, 10))
+    from matplotlib.gridspec import GridSpec
+    fig = plt.figure(figsize=(22, 12))
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[2.2, 1], wspace=0.08)
+    ax  = fig.add_subplot(gs[0, 0])
+    ax2 = fig.add_subplot(gs[0, 1])
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
@@ -2657,7 +2661,7 @@ def sheet7():
     ax.axis("off")
 
     ax.text(sx(YD_HI / 2), sy(Z_HI - 5),
-            "WIDENED BRACKET CROSS-SECTION (500mm ARM, EP/BATTERY ZONE)",
+            "VIEW A — WIDENED BRACKET CROSS-SECTION (LOOKING ALONG X)",
             ha="center", va="top", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
@@ -2806,12 +2810,12 @@ def sheet7():
     # Bolt labels
     leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_lo),
            sx(reinf_yd - 30), sy(bolt_z_lo + 20),
-           f"2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE SHEET 2\nVIEW B FOR PATTERN)",
+           f"2× M12 AT Z={bolt_z_lo}\n(STRADDLE GUSSET\nIN X — SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     leader(ax, sx(reinf_yd - BOLT_HEAD - 2), sy(bolt_z_hi),
            sx(reinf_yd - 30), sy(bolt_z_hi + 20),
-           f"2× M12 AT Z={bolt_z_hi}\n(ABOVE DECK)",
+           f"2× M12 AT Z={bolt_z_hi}\n(ABOVE DECK — SEE VIEW B)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -2924,11 +2928,155 @@ def sheet7():
     draw_notes(ax, notes, notes_x, notes_top,
                spacing=sy(6), fs=7, width=sx(160), font=FONT)
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # VIEW B — Plate face (looking along −Yd, toward wall)
+    # Horizontal = X (bracket width), Vertical = Z (height)
+    # Shows rectangular 4× M12 bolt pattern on the vertical mounting plate
+    # ══════════════════════════════════════════════════════════════════════════
+    ax2.set_facecolor(BG)
+
+    BOLT_X_OFF_W = 32
+    HOLE_D = 14
+    HOLE_R_B = HOLE_D / 2
+
+    PL_X_LO = -W_REINF_W / 2 - 55
+    PL_X_HI =  W_REINF_W / 2 + 65
+    PL_Z_LO = -40
+    PL_Z_HI =  W_BRKT_VERT + 55
+    ax2.set_xlim(PL_X_LO, PL_X_HI)
+    ax2.set_ylim(PL_Z_LO, PL_Z_HI)
+    ax2.set_aspect("equal")
+    ax2.axis("off")
+
+    ax2.text(0, PL_Z_HI - 5,
+             "VIEW B — PLATE FACE (−Yd)",
+             ha="center", va="top", fontsize=8, color=C_OUT,
+             fontweight="bold", **FONT, zorder=15)
+
+    cx2 = 0
+    pl2 = cx2 - W_REINF_W / 2
+    pr2 = cx2 + W_REINF_W / 2
+
+    ax2.add_patch(Rectangle((pl2, 0), W_REINF_W, W_BRKT_VERT,
+                             fc=C_BRKT, ec=C_OUT, lw=2.0, zorder=5, alpha=0.85))
+
+    gusset_hw = W_BRKT_T / 2
+    gusset_fp = [
+        (cx2 - gusset_hw, 0),
+        (cx2 - gusset_hw, w_arm_bot),
+        (cx2 + gusset_hw, w_arm_bot),
+        (cx2 + gusset_hw, 0),
+    ]
+    ax2.add_patch(Polygon(gusset_fp, closed=True,
+                          fc="#606870", ec=C_OUT, lw=1.0, ls="--",
+                          zorder=6, alpha=0.5))
+    ax2.text(cx2, w_arm_bot / 2,
+             f"GUSSET\n{W_BRKT_T}mm",
+             ha="center", va="center", fontsize=5, color="#E0E0E0",
+             **FONT, zorder=15)
+
+    ARM_DEPTH_B = W_ARM_DEPTH
+    ax2.add_patch(Rectangle((pl2, w_arm_bot), W_REINF_W, ARM_DEPTH_B,
+                             fc="none", ec=C_OUT, lw=1.2, ls="--", zorder=6))
+    ax2.text(pr2 + 4, (w_arm_bot + brkt_arm_z) / 2,
+             f"ARM\nZ={w_arm_bot}–{brkt_arm_z}",
+             ha="left", va="center", fontsize=5, color=C_DIM,
+             **FONT, zorder=15)
+
+    grate_bot_b = brkt_arm_z
+    grate_top_b = grate_bot_b + WALKWAY_GRATE_T
+    for z in [grate_bot_b, grate_top_b]:
+        ax2.plot([pl2 - 10, pr2 + 10], [z, z],
+                 color="#208020", lw=0.8, ls=(0, (6, 4)), zorder=3, alpha=0.5)
+    ax2.text(pr2 + 4, (grate_bot_b + grate_top_b) / 2,
+             f"GRATE\n{WALKWAY_GRATE_T}mm",
+             ha="left", va="center", fontsize=5, color="#208020",
+             **FONT, zorder=15, alpha=0.7)
+
+    bolt_positions_b = [
+        (-BOLT_X_OFF_W, bolt_z_lo, "BOLT 1"),
+        ( BOLT_X_OFF_W, bolt_z_lo, "BOLT 2"),
+        (-BOLT_X_OFF_W, bolt_z_hi, "BOLT 3"),
+        ( BOLT_X_OFF_W, bolt_z_hi, "BOLT 4"),
+    ]
+
+    for bx, bz, lbl in bolt_positions_b:
+        ax2.add_patch(Circle((bx, bz), HOLE_R_B,
+                             fc=BG, ec=C_BOLT, lw=1.5, zorder=8))
+        ch = HOLE_R_B + 3
+        ax2.plot([bx - ch, bx + ch], [bz, bz],
+                 color=C_BOLT, lw=0.6, zorder=9)
+        ax2.plot([bx, bx], [bz - ch, bz + ch],
+                 color=C_BOLT, lw=0.6, zorder=9)
+
+    ax2.plot([-BOLT_X_OFF_W, BOLT_X_OFF_W, BOLT_X_OFF_W, -BOLT_X_OFF_W, -BOLT_X_OFF_W],
+             [bolt_z_lo, bolt_z_lo, bolt_z_hi, bolt_z_hi, bolt_z_lo],
+             color=C_BOLT, lw=0.6, ls=(0, (3, 3)), zorder=7, alpha=0.5)
+
+    leader(ax2, -BOLT_X_OFF_W - HOLE_R_B - 1, bolt_z_lo,
+           pl2 - 8, bolt_z_lo + 20,
+           f"BOLT 1\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT, fs=5.5,
+           ha="right", va="top", arrow_style="-|>", font=FONT)
+    leader(ax2, BOLT_X_OFF_W + HOLE_R_B + 1, bolt_z_lo,
+           pr2 + 8, bolt_z_lo - 10,
+           f"BOLT 2\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT, fs=5.5,
+           ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(ax2, -BOLT_X_OFF_W - HOLE_R_B - 1, bolt_z_hi,
+           pl2 - 8, bolt_z_hi - 15,
+           f"BOLT 3\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT, fs=5.5,
+           ha="right", va="top", arrow_style="-|>", font=FONT)
+    leader(ax2, BOLT_X_OFF_W + HOLE_R_B + 1, bolt_z_hi,
+           pr2 + 8, bolt_z_hi + 25,
+           f"BOLT 4\nM12 ({HOLE_D}mm CLR)",
+           color=C_BOLT, fs=5.5,
+           ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
+    dim_x2 = pl2 - 30
+    draw_dim_v(ax2, dim_x2 - 10, 0, bolt_z_lo,
+               f"{bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 10, bolt_z_lo, bolt_z_hi,
+               f"{bolt_z_hi - bolt_z_lo}mm", offset=4, fs=6.5, right=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 10, bolt_z_hi, W_BRKT_VERT,
+               f"{W_BRKT_VERT - bolt_z_hi}mm", offset=4, fs=6.5, right=False, font=FONT)
+
+    draw_dim_h(ax2, -BOLT_X_OFF_W, BOLT_X_OFF_W, bolt_z_lo - 22,
+               f"{BOLT_X_OFF_W * 2}mm", offset=4, fs=6.5, above=False, font=FONT)
+
+    draw_dim_h(ax2, pl2, pr2, -28,
+               f"{W_REINF_W}mm PLATE", offset=4, fs=6, above=False, font=FONT)
+    draw_dim_v(ax2, dim_x2 - 18, 0, W_BRKT_VERT,
+               f"{W_BRKT_VERT}mm", offset=4, fs=6, right=False, font=FONT)
+
+    ax2.text(cx2, W_BRKT_VERT + 20,
+             f"MOUNTING PLATE\n{W_BRKT_T}mm STEEL · {W_REINF_W}×{W_BRKT_VERT}mm",
+             ha="center", va="bottom", fontsize=6.5, color=C_BRKT,
+             fontweight="bold", **FONT, zorder=15)
+
+    notes_b = [
+        "BOLT PATTERN NOTES:",
+        f"1. Rectangular pattern: 2 lower + 2 upper.",
+        f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF_W}mm from CL",
+        f"   — centered between plate edge and {W_BRKT_T}mm gusset.",
+        f"3. Upper pair at Z={bolt_z_hi}mm (above grating deck Z=100),",
+        f"   same X offset as lower pair.",
+        f"4. All holes {HOLE_D}mm clearance for M12.",
+        f"5. Head on exterior {REINF_T}mm reinforcing plate,",
+        f"   nut on interior bracket face.",
+        f"6. See View A for bolt cross-section.",
+    ]
+    draw_notes(ax2, notes_b, PL_X_LO + 5, -5,
+               spacing=7, fs=5.5, title_fs=6, color=C_DIM,
+               title_color=C_OUT, font=FONT,
+               width=PL_X_HI - PL_X_LO - 10)
+
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 7",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL E — WIDENED BRACKET (EP/BATTERY ZONE, 500mm ARM)",
-                scale_note="AXES IN mm · SECTION ALONG X · SEE SHEET 2 FOR BOLT PATTERN",
+                subtitle="CROSS-SECTION + BOLT PATTERN — WIDENED BRACKET (EP/BATTERY ZONE, 500mm ARM)",
+                scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
     fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)

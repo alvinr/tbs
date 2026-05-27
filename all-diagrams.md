@@ -145,7 +145,7 @@
 
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
-![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section](assets/walkway-sheet7.png)
+![TBS-001 Walkway — Sheet 7: Widened Bracket Cross-Section + Bolt Pattern](assets/walkway-sheet7.png)
 
 ---
 

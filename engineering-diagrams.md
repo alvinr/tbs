@@ -27,17 +27,19 @@ The container is split into three main areas
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)
 
+From the pinhole wall (Yd = 0mm), looking toward the film plane. You can see the orientation of equipment placed on the inside of the container wall, relative to the pinhole. The equipment is located to no interfere with the optical cone. On the left the rotating light trap can be see deployed in *camera* mode (as opposed to *transport* mode). On the right there is the stack of IBC containers for clean and waste water, stacked.
+
+![TBS-001 — Assembly: Film Plane Side Elevation](assets/assembly-overview-fp.png)
+
 Second view from the film plane wall (Yd = 2,362mm), looking toward the pinhole. X axis
 is mirrored (far end at left, cargo door at right). The optical cone, film plane rails,
 and carriage are the hero elements in this view.
 
-![TBS-001 — Assembly: Film Plane Side Elevation](assets/assembly-overview-fp.png)
+![TBS-001 — Cargo Door End Plan View: Transport vs Operational](assets/assembly-overview-plan.png)
 
 Plan view of the cargo door end showing the stepped panel position
 in both transport mode (panel retracted 300mm, ISO doors closed)
 and operational mode (panel at X=0, doors open).
-
-![TBS-001 — Cargo Door End Plan View: Transport vs Operational](assets/assembly-overview-plan.png)
 
 ---
 

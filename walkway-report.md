@@ -208,7 +208,9 @@ processing tray footprint — zero tray contact.
 ### 5.2 Bearer Beam Anti-Slip Restraint
 
 The bearer beam is restrained against sliding in the X direction by a flat plate
-and lock block system on each bracket arm:
+and lock block system on each bracket arm.
+
+![TBS-001 Walkway — Sheet 6: Bearer Beam Guide Tab Restraint](assets/walkway-sheet6.png)
 
 | Component | Specification |
 |-----------|--------------|

@@ -1627,7 +1627,7 @@ def sheet4():
             [sy(BRKT_ARM_Z), sy(BRKT_ARM_Z)],
             color="#CC4400", lw=3.0, zorder=10)
     leader(ax, sx(LEFT_WK_R - 10), sy(BRKT_ARM_Z),
-           sx(LEFT_WK_R - 120), sy(BRKT_ARM_Z - 18),
+           sx(LEFT_WK_R - 120), sy(BRKT_ARM_Z - 22),
            f"GRATING RESTS ON\nBRACKET ARM TOP\n(Z={BRKT_ARM_Z}mm)\nNO FASTENERS \u2014\nLIFT TO REMOVE",
            color="#CC4400", fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -1672,7 +1672,7 @@ def sheet4():
     # ── Butt joint line at X=470 ─────────────────────────────────────────────
     ax.plot([sx(LEFT_WK_R), sx(LEFT_WK_R)], [sy(-5), sy(grate_top + 3)],
             color=C_OUT, lw=2.0, ls=(0, (5, 3)), zorder=9)
-    ax.text(sx(LEFT_WK_R), sy(-8),
+    ax.text(sx(LEFT_WK_R), sy(-18),
             f"BUTT JOINT\nX={LEFT_WK_R}mm",
             ha="center", va="top", fontsize=6, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -1880,7 +1880,7 @@ def sheet5():
            color=C_SUPPORT, fs=5.5,
            ha="center", va="top", arrow_style="-|>", font=FONT)
     leader(ax, sx(OUTER_LEG_X), sy(RUBBER_T / 2),
-           sx(OUTER_LEG_X - 50), sy(-15),
+           sx(OUTER_LEG_X - 50), sy(15),
            "RUBBER PAD", color="#333333", fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -2342,7 +2342,7 @@ def sheet6():
     # Horizontal = Yd (wall at left), Vertical = X (interior at top,
     # door at bottom).  Beam extends one direction only (from wall inward).
     # ══════════════════════════════════════════════════════════════════════════
-    PV_OX = 30
+    PV_OX = 100
     PV_OY = BRKT_VERT + 65
     PV_S  = 0.8125   # nested magnification (was 3.25 / S where S=4.0)
     def px(mm): return sx(PV_OX + mm * PV_S)
@@ -2461,7 +2461,7 @@ def sheet6():
     # Horizontal = X, Vertical = Z.  Shows slot in plate, lock block,
     # bolt through slot, washer + nut underneath.
     # ══════════════════════════════════════════════════════════════════════════
-    VC_OX = 195
+    VC_OX = 295
     VC_OY = BRKT_VERT + 95
     VC_S  = 0.975   # nested magnification (was 3.9 / S where S=4.0)
     def cx(mm): return sx(VC_OX + mm * VC_S)
@@ -2581,7 +2581,7 @@ def sheet6():
 
     # ── Notes (right of View A) ─────────────────────────────────────────────
     notes_x = sx(YD_HI/2)
-    notes_top = sy(BRKT_VERT + 20)
+    notes_top = sy(BRKT_VERT + 40)
     notes = [
         "BEARER BEAM CONNECTION:",
         f"1. Flat plate ({PLATE_T}mm \u00d7 {PLATE_W}mm wide) welded to bracket arm.",
@@ -2590,9 +2590,10 @@ def sheet6():
         f"4. Lock block + M{BOLT_DIA} bolt through {SLOT_L}mm slot in plate. Washer + nut below plate.",
         f"5. Slot allows position adjustment along Yd. Spanner removal.",
         f"6. Same at both ends (near + far bracket).",
-        f"7. Guide tabs welded to beam prevent lateral grating slide — gravity retention, lift-out removal.",
+        f"7. Guide tabs welded to beam prevent lateral grating slide — gravity retention,",
+         "   lift-out removal.",
     ]
-    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(180), font=FONT)
+    draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, ha="left", width=sx(180), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 6 OF 7",

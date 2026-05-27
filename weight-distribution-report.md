@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Weight Distribution Analysis
-## TBS-001 — Container Load Assessment and Center-of-Gravity Study
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -258,3 +253,5 @@ environment.
 4. [Schutz Ecobulk MX 600L](https://www.schuetz.net/en/packaging/ibcs/ecobulk-mx) — IBC tote specifications
 5. [Water System Report](water-system-report.md) — Processing tray weight (§4), IBC layout (§5)
 6. [Light Trap Selection](light-trap-selection.md) — Panel + drum weight (§7)
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

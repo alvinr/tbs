@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Processing Tray & Spray Bar Assembly
-## TBS-001 — Print Washing System
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -507,3 +502,5 @@ tray drainage plan and sump cross-section).
 - [304 stainless steel sheet](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) — AK Steel Product Data Bulletin. Chemical resistance, mechanical properties per [ASTM A240](https://www.astm.org/a0240_a0240m-22a.html).
 - [HDPE chemical resistance](https://www.cpchem.com/what-we-do/solutions/polyethylene/technical-information/chemical-resistance) — Chevron Phillips Chemical Company. Flat bar available from [McMaster-Carr (catalog #8619K)](https://www.mcmaster.com/8619K).
 - **Cyanotype chemistry** — Ware, Mike. [*Cyanotype: The History, Science & Art of Photographic Printing in Prussian Blue*](https://www.mikeware.co.uk/mikeware/Cyanotype_Monograph.html) (2014). Wash water composition and pH requirements.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

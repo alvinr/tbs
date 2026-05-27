@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Equipment Layout — Shadow-Free End-Zone Design
-## TBS-001 — Film Plane Reduction Redesign
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Design Principle — Shadow-Free End Zones
 
@@ -368,3 +363,5 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 | Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=930–1,530mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

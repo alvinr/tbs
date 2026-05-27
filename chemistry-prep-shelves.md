@@ -1,10 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Chemistry Prep Shelf — TBS-001
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
+# Chemistry Prep Shelf
 
 ## 1. Purpose
 
@@ -195,3 +191,5 @@ Cross-section at X=4,029mm (shelf midpoint) looking along the X-axis. Shows the 
 Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling plate (100×60×6mm) with M8 through-bolts, M10 threaded rod with double-nut leveling, shelf SHS frame cross-section, and 15mm spill guard lip.
 
 ![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

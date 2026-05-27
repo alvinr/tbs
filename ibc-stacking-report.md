@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # IBC Stacking System
-## TBS-001 — Water Storage, Support Frame & Plumbing
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Purpose
 
@@ -364,3 +359,5 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |
 | Frame fabrication drawings | [Engineering Diagrams](engineering-diagrams.md) §15, §17 |
 | Equipment panel specification | [Engineering Diagrams](engineering-diagrams.md) §18 |
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

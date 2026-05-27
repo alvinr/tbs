@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Revolving Light Trap — Selection & Specification
-## TBS-001 Hinged Panel Integration
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. Context
 
@@ -204,3 +199,5 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 - **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1,606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
 - **Sliding carriage:** The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
 - **Transport mode conversion** (single person, ~5 minutes): release cam latches → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

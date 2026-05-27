@@ -1,8 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# TBS-001 Component Dependency Map
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
+# Component Dependency Map
 
 This document is the operational guide for maintaining consistency across all TBS-001 engineering
 diagrams. When any component changes — position, dimension, or specification — consult:
@@ -404,3 +402,5 @@ PNGs alongside the constant change.
 6. git add tbs_constants.py diagrams/*.png && git commit -m "..."
 7. bash publish.sh                   # deploy
 ```
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

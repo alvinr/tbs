@@ -1,11 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
 # Engineering Overview
-## TBS-001 — All Construction Drawings
-
-*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*
-
----
 
 ## 1. System Assembly Overview
 
@@ -425,3 +420,5 @@ U-clamp with flared legs, fork brackets, and Ø50mm nylon wheel footprints
 with 200mm spacing.
 
 ![TBS-001 — Spray Bar Detail D](assets/spray-bar-sheet6.png)
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

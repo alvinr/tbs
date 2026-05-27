@@ -3253,26 +3253,26 @@ def sheet8():
                     color=bar_color, lw=0.4, alpha=0.5, zorder=3.5)
 
     # ── M saddle clips ───────────────────────────────────────────────────────
-    # Clips straddle 2 bearing bars, screwed to bracket arm (or bearing plate)
-    # Show 4 clips: 2 on wide side, 2 on narrow side
+    # Clip sits on top of grating, centered over the bracket arm / bearing plate.
+    # TEK screw goes DOWN through clip center → between grating bars → into arm.
+    # Clip long axis spans 2 bearing bars (X direction); centered on arm (X≈0).
+    # One clip per grating section at this bracket, at different Yd positions.
 
     clip_positions = [
-        # (Yd center, X center, label_side)
-        (W_STD / 2,   -2.5 * BAR_PITCH,   "wide"),   # wide side inner
-        (W_WIDE - 60, -2.5 * BAR_PITCH,   "wide"),   # wide side outer
-        (W_STD / 2,    2.5 * BAR_PITCH,   "std"),     # std side inner
-        (W_STD / 2,    2.5 * BAR_PITCH + 4 * BAR_PITCH, "std"),  # std side second
+        # (Yd center, X center) — TEK screw at center must hit bearing plate (±20mm)
+        (120,          -BAR_PITCH / 2),   # wide-side clip, inner zone
+        (W_WIDE - 80,  -BAR_PITCH / 2),   # wide-side clip, outer zone
+        (120,           BAR_PITCH / 2),   # std-side clip, inner zone
     ]
 
-    for yd_c, x_c, side in clip_positions:
-        # Clip rectangle — straddles 2 bars
+    for yd_c, x_c in clip_positions:
         cw = CLIP_W
         cl = CLIP_L
         ax.add_patch(Rectangle(
             (sx(yd_c - cw / 2), sy(x_c - cl / 2)),
             sx(cw), sy(cl),
             fc=C_CLIP, ec=C_OUT, lw=0.8, alpha=0.8, zorder=8))
-        # TEK screw (small circle at center)
+        # TEK screw (small circle at center — directly over arm)
         ax.add_patch(Circle(
             (sx(yd_c), sy(x_c)),
             sx(3), fc="#333333", ec=C_OUT, lw=0.5, zorder=9))
@@ -3280,7 +3280,7 @@ def sheet8():
     # Label one clip
     leader(ax, sx(clip_positions[0][0]), sy(clip_positions[0][1]),
            sx(-30), sy(-180),
-           "M SADDLE CLIP\nw/ TEK SCREW\n(TYP. BOTH SIDES)",
+           "M SADDLE CLIP\nTEK SCREW INTO\nBRACKET ARM BELOW\n(TYP. BOTH SIDES)",
            color=C_DIM, fs=5.5, ha="right", va="top",
            arrow_style="-|>", font=FONT)
 

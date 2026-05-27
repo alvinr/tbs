@@ -384,12 +384,12 @@ distributes load across multiple rods.
 
 ## 12. Source References
 
-1. ISO 668:2020 — Series 1 freight containers: Classification, dimensions and ratings.
+1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
    Container rib spacing 457mm (18").
-2. ANSI/NAAMM MBG 531 — Metal bar grating manual. Press-locked grating design.
-3. AS 1657-2018 — Fixed platforms, walkways, stairways and ladders: Design,
+2. [ANSI/NAAMM MBG 531](https://www.naamm.org/publications/metal-bar-grating-manual) — Metal bar grating manual. Press-locked grating design.
+3. [AS 1657-2018](https://www.standards.org.au/standards-catalogue/sa-snz/building/me-064/as--1657-2018) — Fixed platforms, walkways, stairways and ladders: Design,
    construction and installation. 300mm minimum clear width for walkways.
-4. Shurflo 2088 Series datasheet — Pump dimensions for manifold access clearance.
+4. [Shurflo 2088 Series datasheet](https://www.shurflo.com/products/2088-series) — Pump dimensions for manifold access clearance.
 5. [Equipment Layout Report](equipment-layout-report.md) — Component positions
    and access requirements.
 6. [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md) — Tray

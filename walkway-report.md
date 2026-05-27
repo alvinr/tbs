@@ -44,7 +44,7 @@ tray's watertight seal.
 | Bracket arm height | 75mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | 500mm at X=1,600–2,630mm |
+| Near walkway widened section | 500mm at X=1,155–2,384mm |
 | Open processing area | 3,859×1,662mm = 6.41 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
@@ -84,15 +84,18 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm between X=1,600mm and X=2,630mm
-(1,030mm length) to provide additional standing room in front of the electrical
-panel (EP, X=1,600–1,900mm), battery bank (X=1,810–2,310mm), and spray bar slit
-(X≈2,400mm). These wall-mounted equipment items require front access for
+The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,384mm
+(1,229mm length), ending at the left edge of the spray bar slit. This widened
+section provides additional standing room in front of the electrical panel
+(EP, X=1,600–1,900mm), battery bank (X=1,810–2,310mm), and up to the spray bar
+slit (X≈2,400mm). These wall-mounted equipment items require front access for
 operation and maintenance, and the wider platform gives the operator full-width
 standing room during spray bar passes.
 
-Three brackets in this zone (at X≈1,612mm, X≈2,070mm, and X≈2,526mm) use a
-heavier design to support the 500mm cantilever arm.
+Three brackets in this zone (at X≈1,156mm, X≈1,612mm, and X≈2,070mm) use a
+heavier design to support the 500mm cantilever arm. The bracket positions align
+to container corrugation ribs at 457mm centers — one at the zone start, one at
+center, and one on the inside (left) of the spray bar slit.
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet7.png)
 
@@ -330,7 +333,7 @@ operator standing at the outer edge.
 The standard 8mm steel plate gusset brackets at 457mm centers provide substantial
 structural capacity. Each standard bracket is a rigid triangle (vertical leg +
 horizontal arm + gusset) with 3x M12 through-bolts to the container rib. The three
-widened brackets in the EP/battery/slit zone use 10mm plate with 4x M12
+widened brackets (X≈1,156, 1,612, 2,070) use 10mm plate with 4x M12
 rectangular bolt patterns and 200mm vertical legs for the increased moment
 demand of the 500mm cantilever arm.
 

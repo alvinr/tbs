@@ -2,7 +2,7 @@
 <!-- © 2026 Alvin Richards -->
 # Moveable Film Plane — Mechanism Design & Optical Distortion Analysis
 
-## Overview
+## 1. Purpose
 
 The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.
 
@@ -10,7 +10,7 @@ The four-corner design replaces the earlier two-beam approach: rather than two r
 
 ---
 
-## Container Reference Geometry
+## 2. Container Reference Geometry
 
 | Dimension | Value | Notes |
 |-----------|-------|-------|
@@ -23,7 +23,7 @@ The four-corner design replaces the earlier two-beam approach: rather than two r
 
 ---
 
-## Movement Axes
+## 3. Movement Axes
 
 The four-corner mechanism supports all view-camera movements. Corners are labelled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the 7 ft 10 in height direction.
 
@@ -48,7 +48,7 @@ When tilted at maximum, the film plane's physical height increases from 2,268 mm
 
 ---
 
-## Mechanism Design
+## 4. Mechanism Design
 
 ### Four-Corner Frame
 
@@ -110,7 +110,7 @@ The tilted or swung film plane creates voids where it no longer contacts the con
 
 ---
 
-## Tilt Configurations
+## 5. Tilt Configurations
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
@@ -129,7 +129,7 @@ The compound config (C7) places TL and BR at near position, TR and BL at far —
 
 ---
 
-## Optical Distortion Analysis
+## 6. Optical Distortion Analysis
 
 ### Physics of Tilted-Plane Projection
 
@@ -211,7 +211,7 @@ All seven configurations on a checker grid (D = 8,000 mm):
 
 ---
 
-## Engineering Drawings
+## 7. Engineering Drawings
 
 | Sheet | Content |
 |-------|---------|
@@ -235,7 +235,7 @@ The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–
 
 ---
 
-## Shopping List
+## 8. Parts List
 
 All items ship within the United States. Local Southern California pickup noted where available.
 
@@ -305,3 +305,32 @@ The cam-lever design provides tactile snap-open/snap-closed feedback, critical f
 - **Automation Overstock** — Gardena, CA. Industrial surplus linear motion components; walk-in available.
 - **Grainger** — branches throughout LA, Orange County, San Diego. Same-day local pickup.
 - **Roton Products** — ships from the LA area; Acme screw stock cut to length.
+
+---
+
+## 9. Maintenance
+
+| Interval | Task |
+|----------|------|
+| Before each session | Inspect muslin clamp engagement — all 92 clamps snapped closed |
+| Before each session | Verify all four locking collars are tight after repositioning |
+| Before each session | Check EPDM foam edge seal for tears or compression set |
+| Monthly | Lubricate HGR20 rails and HGH20CA carriage blocks (lithium grease) |
+| Monthly | Inspect Acme leadscrew threads and bronze nuts for wear |
+| Every 6 months | Check rod-end spherical bearings for play — replace if radial slop exceeds 0.2mm |
+| Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
+| Annually | Check ACM panel hinge pins for corrosion; replace if stiff |
+| Annually | Verify rail mounting bolts for torque at all four rail positions |
+| Before transport | Lock all four corners at matching depth; tighten locking collars |
+
+---
+
+## 10. Source References
+
+1. [HIWIN HGR20 Linear Guideway](https://www.hiwin.com/linear-guideways/hg-series/) — 20mm profile linear guide rail and HGH20CA carriage block specifications.
+2. [McMaster-Carr GIR25-DO Rod-End Bearing](https://www.mcmaster.com/rod-end-bearings) — Spherical rod-end bearing specifications (25mm bore).
+3. [Progressive Automations PA-14](https://www.progressiveautomations.com/products/linear-actuator-pa-14) — 12V linear actuator specifications (optional electric actuation).
+4. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
+5. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.
+
+*© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

@@ -146,7 +146,7 @@ The near walkway remains completely clear for transit in both directions — no 
 
 ---
 
-## 7. Shopping List
+## 7. Parts List
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
@@ -191,5 +191,26 @@ Cross-section at X=4,029mm (shelf midpoint) looking along the X-axis. Shows the 
 Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling plate (100×60×6mm) with M8 through-bolts, M10 threaded rod with double-nut leveling, shelf SHS frame cross-section, and 15mm spill guard lip.
 
 ![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
+
+---
+
+## 9. Maintenance
+
+| Interval | Task |
+|----------|------|
+| Before each session | Check shelf is level — adjust double-nut leveling if needed |
+| Before each session | Wipe shelf surface clean; inspect spill guard lip for chemical residue |
+| Monthly | Inspect M10 hanger rod threads and nuts for corrosion |
+| Monthly | Check ceiling plate bolts for tightness |
+| Before transport | Verify shelf does not interfere with panel slide travel |
+| After transport | Re-check level and tighten any loosened nuts |
+
+---
+
+## 10. Source References
+
+1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings. Ceiling corrugation rib spacing.
+2. [Walkway System Report](walkway-report.md) — Walkway deck height and clearance constraints.
+3. [Equipment Layout Report](equipment-layout-report.md) — Optical cone clearance verification and zone definitions.
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

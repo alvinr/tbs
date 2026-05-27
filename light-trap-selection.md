@@ -200,4 +200,13 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 - **Sliding carriage:** The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
 - **Transport mode conversion** (single person, ~5 minutes): release cam latches → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
+---
+
+## 8. Source References
+
+1. [SKF 6215-2RS1 datasheet](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — Sealed deep-groove ball bearing specifications.
+2. [Hinged Panel Report](hinged-panel-report.md) — Panel construction, hinge, latch, and sliding carriage specification.
+3. [Equipment Layout Report](equipment-layout-report.md) — Panel transport mode and sliding carriage clearance analysis.
+4. [Electrical Report](electrical-report.md) — Circuit D safelight specification for drum interior.
+
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

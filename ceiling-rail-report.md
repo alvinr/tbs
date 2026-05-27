@@ -292,7 +292,7 @@ Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §1
 
 ---
 
-## 12. Sources
+## 12. Source References
 
 | Item | Source |
 |------|--------|

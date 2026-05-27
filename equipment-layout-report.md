@@ -364,4 +364,16 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
 
+---
+
+## 11. Source References
+
+1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
+2. [Schutz Ecobulk MX 600L](https://www.schuetz.net/en/packaging/ibcs/ecobulk-mx) — IBC tote specifications and cage dimensions.
+3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
+4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and sliding carriage specification.
+5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.
+6. [Walkway System Report](walkway-report.md) — Perimeter walkway dimensions and cantilever bracket design.
+7. [Ceiling Rail Report](ceiling-rail-report.md) — Panel sliding carriage and HGR20 rail specification.
+
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

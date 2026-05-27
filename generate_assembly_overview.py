@@ -237,21 +237,21 @@ ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
 
 # ── RIGHT END ZONE — IBC column + drum column ─────────────────────────────────
 
-# IBC column: Blue (front, Y-stacked) and Brown (rear, Y-stacked behind Blue)
-# In this side elevation (depth into page) both occupy X=4044–5263.
-# Blue IBC stack ×2 (2020mm tall) at front; Brown IBC ×1 (1010mm tall) behind.
-# Draw Brown first (slightly dimmer / different alpha), then Blue on top.
+# IBC 2×2 stack — side elevation (depth into page): near column in front, far behind.
+# Near column: Blue #1 top + Brown bottom.  Far column: Blue #2 top + Waste bottom.
 
-# Brown IBC ×1 (behind Blue, dimmer)
-equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.60, zorder=3)
+# Far column (behind — dimmer): Waste bottom + Blue #2 top
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_WASTE_IBC, alpha=0.40, zorder=3)
+equip_rect(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.40, zorder=3)
+
+# Near column (front): Brown bottom + Blue #1 top
+equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=5)
 ax.text(IBC_COL_X + IBC_W/2, IBC_H_600/2,
-        "Brown IBC x1\n(600L, behind)",
-        ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=4)
-
-# Blue IBC stack ×2 (front, on top)
-equip_rect(ax, IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=5)
-ax.text(IBC_COL_X + IBC_W/2, IBC_H_STK/2,
-        "Blue IBC x2\nstacked (front)\n2x600L",
+        "IBC-3 Brown\n(bottom, front)",
+        ha="center", va="center", fontsize=FS_SM - 1, color="#FFFFFF", zorder=6)
+equip_rect(ax, IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.80, zorder=5)
+ax.text(IBC_COL_X + IBC_W/2, IBC_H_600 + IBC_H_600/2,
+        "IBC-1 Blue\n(top, front)",
         ha="center", va="center", fontsize=FS_SM, color="#FFFFFF",
         fontweight="bold", zorder=6)
 # Stacking line
@@ -259,9 +259,9 @@ ax.plot([IBC_COL_X, IBC_COL_X + IBC_W], [IBC_H_600, IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=7)
 
 leader(ax, IBC_COL_X + IBC_W/2, IBC_H_STK, 6000, 2750,
-       f"IBC column  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
-       f"Blue: 2x600L stacked H={IBC_H_STK}mm (front)\n"
-       f"Brown: 1x600L H={IBC_H_600}mm (behind, Y-depth)",
+       f"4× IBC 2×2 stack  X={IBC_COL_X}–{IBC_COL_X+IBC_W}mm\n"
+       f"Near: Blue #1 top + Brown bottom\n"
+       f"Far: Blue #2 top + Waste bottom (behind)",
        ha="left", fs=FS_SM)
 
 # (drums relocated to left end zone — right zone has IBCs only)
@@ -594,21 +594,19 @@ ldr2(0, RAIL_OFF + DRUM_H_ELV * 0.3, -750, 900,
     ha="left", fs=FS_SM)
 
 # ── RIGHT END ZONE (appears on LEFT in this view) — 4× IBC 2×2 stack ────────
-# Far column (behind in this view): Blue #2 top + Waste bottom
-eq2(IBC_COL_X, 0, IBC_W, IBC_H_STK, C_WASTE_IBC, alpha=0.40, zorder=4)
-ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600/2,
-        "Waste IBC\n(behind)", ha="center", va="center",
-        fontsize=FS_SM - 1, color="#FFFFFF", zorder=5)
+# Near column (behind in this view): Brown bottom + Blue #1 top
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.40, zorder=4)
+eq2(IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.40, zorder=4)
 
-# Near column (front in this view): Blue #1 top + Brown bottom
-eq2(IBC_COL_X, 0, IBC_W, IBC_H_STK, C_BLUE_IBC, alpha=0.80, zorder=6)
-ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_STK/2 + 200,
-        "IBC-1 Blue\n(top, front)", ha="center", va="center",
-        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=7)
-eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_BROWN_IBC, alpha=0.80, zorder=6)
+# Far column (front in this view): Waste bottom + Blue #2 top
+eq2(IBC_COL_X, 0, IBC_W, IBC_H_600, C_WASTE_IBC, alpha=0.80, zorder=6)
 ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600/2,
-        "IBC-3 Brown\n(bottom, front)", ha="center", va="center",
+        "IBC-4 Waste\n(bottom, front)", ha="center", va="center",
         fontsize=FS_SM - 1, color="#FFFFFF", zorder=7)
+eq2(IBC_COL_X, IBC_H_600, IBC_W, IBC_H_600, C_BLUE_IBC, alpha=0.80, zorder=6)
+ax2.text(mx(IBC_COL_X + IBC_W/2), IBC_H_600 + IBC_H_600/2,
+        "IBC-2 Blue\n(top, front)", ha="center", va="center",
+        fontsize=FS_SM, color="#FFFFFF", fontweight="bold", zorder=7)
 ax2.plot([mx(IBC_COL_X + IBC_W), mx(IBC_COL_X)],
         [IBC_H_600, IBC_H_600],
         color="#FFFFFF", lw=0.8, ls="--", alpha=0.7, zorder=8)

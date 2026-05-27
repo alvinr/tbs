@@ -369,6 +369,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 14 | Metal Supermarkets | ~$31–$49 |
 | Reinforcing plates, 120×220×6mm mild steel | Wider plates behind each widened bracket (4-bolt pattern) | 4 | Metal Supermarkets | ~$16–$24 |
 | M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per standard bracket (42) + 4 per widened bracket (16). | 58 | McMaster-Carr | ~$57–$87 |
+| Transition bearing plate, 40×500×5mm flat bar | Welded to bracket arm top at width transitions (X≈1,156 and X≈2,526). Both grating widths land on plate. | 2 | Metal Supermarkets | ~$5–$10 |
 | Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
 | M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
 | Ceiling bracket plates, 100×60×6mm steel | Galvanized. 10 plates (1 per hanger). | 10 | Local fab | ~$20–$35 |
@@ -376,9 +377,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
 | Guide tabs, 3mm steel angle | Welded to left walkway bearer beam. Prevent lateral grating slide. | 4 | Local fab | ~$5–$10 |
 | Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, weld guide tabs, install | 1 job | Local fab / metal shop | ~$280–$440 |
-**Walkway subtotal: ~$955–$1,475**
+**Walkway subtotal: ~$960–$1,485**
 
-*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slit cuts to tray lip only (420mm depth), not full walkway width. Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
+*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
 ## 7c. Ceiling Rail Suspension
 *Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*

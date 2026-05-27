@@ -858,9 +858,10 @@ def sheet1():
     ax.add_patch(Rectangle((slit_cx - slit_w / 2, tray_lip),
                  slit_w, near_slit_inner - tray_lip,
                  fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
-    # Far walkway slit — full standard width (no widened section on far wall)
+    # Far walkway slit — extends from inner edge to tray lip only
+    far_tray_lip = PROC_TRAY_YD_FAR
     ax.add_patch(Rectangle((slit_cx - slit_w / 2, FY),
-                 slit_w, W,
+                 slit_w, far_tray_lip - FY,
                  fc="#FF4444", ec=C_SLIT, lw=1.5, alpha=0.6, zorder=7))
 
     leader(ax, slit_cx, NYI + 15,

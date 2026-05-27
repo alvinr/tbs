@@ -275,12 +275,13 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
 | M12×60mm hex bolts + nuts + washers (×58) | $57 | $72 | $87 | 3 per std bracket (42) + 4 per widened (16) |
+| Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
 | Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2,362mm ceiling-hung bearers |
 | M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
 | Guide tabs, 3mm steel angle (×4) | $5 | $8 | $10 | Left walkway bearer beam — gravity retention |
 | Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 14 std + 4 widened brackets, weld guide tabs, install |
-| **Perimeter walkway total** | **$953** | **$1,220** | **$1,477** | |
+| **Perimeter walkway total** | **$958** | **$1,228** | **$1,487** | |
 
 ---
 

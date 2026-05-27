@@ -17,7 +17,7 @@
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
 | **5. Processing water system (incl. tray, spray bar)** | $3,127 | $3,899 | $4,688 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
-| **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $600 | $808 | $1,015 |
+| **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
@@ -266,19 +266,21 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections (all 300mm wide) around all 4 sides of the processing tray. 100mm deck height (75mm support + 25mm grate). No floor contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs. Right walkway: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left walkway: removable lift-out (panel conflict — no brackets). Butt joints at all corners.
+Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery zone (X=1,600–2,310). 100mm deck height (75mm support + 25mm grate). No floor contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (16 standard 8mm + 2 widened 10mm). Right walkway: ceiling-hung from M10 threaded rod hangers. Left walkway: removable lift-out with guide tabs. Butt joints at all corners.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 25mm (30×3mm bars) | $260 | $325 | $390 | ~4.1 m² (all 4 sections, all 300mm); McNichols / Metal Supermarkets SoCal |
-| Wall brackets, 8mm steel plate gusset (×18) | $145 | $183 | $220 | Near/far walls only; triangular gusset, 150mm vert × 300mm arm |
-| Reinforcing plates, 100×180×6mm mild steel (×18) | $40 | $50 | $60 | Welded to wall exterior behind each bracket (near/far walls) |
-| M12×60mm hex bolts + nuts + washers (×54) | $55 | $68 | $80 | 3 per bracket, grade 8.8 galvanized |
+| Press-locked steel grating, 25mm (30×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 710×500mm near walkway bump-out); McNichols |
+| Standard wall brackets, 8mm steel plate (×16) | $130 | $163 | $195 | Near/far walls; 150mm vert × 300mm arm |
+| Widened wall brackets, 10mm steel plate (×2) | $35 | $45 | $55 | EP/battery zone; 200mm vert × 500mm arm |
+| Reinforcing plates, std 100×180×6mm (×16) + wide 120×220×6mm (×2) | $43 | $55 | $67 | Welded to wall exterior behind each bracket |
+| M12×60mm hex bolts + nuts + washers (×56) | $55 | $70 | $85 | 3 per std bracket (48) + 4 per widened (8) |
 | Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2,362mm ceiling-hung bearers |
 | M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
-| Grating clips (×35) | $15 | $20 | $25 | Slide-on, removable without tools |
-| Fabrication (brackets, ceiling hangers, install) | $250 | $325 | $400 | Local metal fab shop |
-| **Perimeter walkway total** | **$865** | **$1,106** | **$1,335** | |
+| M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
+| Guide tabs, 3mm steel angle (×4) | $5 | $8 | $10 | Left walkway bearer beam — gravity retention |
+| Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 16 std + 2 widened brackets, weld guide tabs, install |
+| **Perimeter walkway total** | **$953** | **$1,216** | **$1,467** | |
 
 ---
 
@@ -458,7 +460,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual) | $2,200 |
 | Water system (incl. processing tray, spray bar) | $3,127 |
 | Revolving drum light trap (custom fabrication) | $950 |
-| Perimeter walkway (4 sections, wall-cantilevered) | $600 |
+| Perimeter walkway (4 sections, wall-cantilevered) | $953 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
@@ -475,7 +477,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Film plane mechanism (manual + electric actuation) | $3,227 |
 | Water system (incl. processing tray, spray bar) | $3,899 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
-| Perimeter walkway (4 sections, wall-cantilevered) | $808 |
+| Perimeter walkway (4 sections, wall-cantilevered) | $1,216 |
 | Ceiling rail suspension | $208 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |

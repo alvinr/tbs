@@ -20,7 +20,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
-| 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $850 | $1,320 |
+| 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $955 | $1,470 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $340 | $420 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
@@ -358,24 +358,27 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ## 7b. Perimeter Walkway
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections (all 300mm wide) around the processing tray. Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery zone (X=1,600–2,310). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
 
 ### Walkway sections (4 off)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: 2× 4,459×300mm (near/far), 1× 2,362×300mm (right), 1× 2,362×300mm (left — removable lift-out) | ~4.1 m² | [McNichols](https://www.mcnichols.com) | ~$260–$390 |
-| Wall brackets, 8mm steel plate gusset | Triangular gusset: 150mm vertical × 300mm horizontal, diagonal brace welded. Hot-dip galvanized. | 18 | Local fab / Metal Supermarkets | ~$145–$220 |
-| Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each bracket position | 18 | Metal Supermarkets | ~$40–$60 |
-| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per bracket. | 54 | McMaster-Carr | ~$55–$80 |
+| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4,459×300mm (with 710×500mm bump-out), far 4,459×300mm, right 2,362×300mm, left 2,362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
+| Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 16 | Local fab / Metal Supermarkets | ~$130–$195 |
+| Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery zone. | 2 | Local fab / Metal Supermarkets | ~$35–$55 |
+| Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 16 | Metal Supermarkets | ~$35–$55 |
+| Reinforcing plates, 120×220×6mm mild steel | Wider plates behind each widened bracket (4-bolt pattern) | 2 | Metal Supermarkets | ~$8–$12 |
+| M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per standard bracket (48) + 4 per widened bracket (8). | 56 | McMaster-Carr | ~$55–$85 |
 | Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
 | M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
 | Ceiling bracket plates, 100×60×6mm steel | Galvanized. 10 plates (1 per hanger). | 10 | Local fab | ~$20–$35 |
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
-| [Grating clips](https://www.mcnichols.com/products/grating/accessories/) | Slide-on clips, removable without tools | 35 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
-| Fabrication + installation | Cut/weld/galvanize 18 brackets + reinforcing plates, drill wall ribs, hang right walkway bearers, install | 1 job | Local fab / metal shop | ~$250–$400 |
-**Walkway subtotal: ~$875–$1,350**
+| [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
+| Guide tabs, 3mm steel angle | Welded to left walkway bearer beam. Prevent lateral grating slide. | 4 | Local fab | ~$5–$10 |
+| Fabrication + installation | Cut/weld/galvanize 16 std + 2 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, weld guide tabs, install | 1 job | Local fab / metal shop | ~$280–$440 |
+**Walkway subtotal: ~$955–$1,470**
 
-*Near/far grating lifts onto bracket arms and clips in place. Right walkway grating rests on ceiling-hung bearer angles — no floor contact, clears IBC stack entirely. Left walkway is a lift-out section resting on near/far butt joint ends — must be removed before sliding the hinged panel to transport position. Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
+*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery zone with heavier 10mm brackets (see Sheet 2, View C). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
 ## 7c. Ceiling Rail Suspension
 *Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*

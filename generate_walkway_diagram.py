@@ -374,7 +374,7 @@ def sheet2():
                                 fc="#808088", ec="none", zorder=9, alpha=0.7))
 
     leader(ax, sx(WALKWAY_W / 4), sy((grate_bot + grate_top) / 2),
-           sx(WALKWAY_W / 4 - 30), sy(grate_top + 40),
+           sx(WALKWAY_W / 4 - 30), sy(grate_top + 35),
            f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK \u00b7 GALVANIZED",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -411,8 +411,8 @@ def sheet2():
                f"{WALKWAY_W}mm WALKWAY WIDTH", offset=sy(8), fs=7, font=FONT)
 
     # Deck height (floor to grate top)
-    draw_dim_v(ax, sx(WALKWAY_W + 20), sy(0), sy(grate_top),
-               f"{WALKWAY_H}mm\nDECK TOP", offset=sx(8), fs=7, right=True, font=FONT)
+    draw_dim_v(ax, sx(WALKWAY_W + 22), sy(0), sy(grate_top),
+               f"{WALKWAY_H}mm DECK TOP", offset=sx(6), fs=7, right=True, font=FONT)
 
     # Grate thickness
     draw_dim_v(ax, sx(WALKWAY_W + 5), sy(grate_bot), sy(grate_top),
@@ -420,7 +420,7 @@ def sheet2():
 
     # Bracket vertical leg height
     draw_dim_v(ax, sx(reinf_yd - BOLT_HEAD - 45), sy(0), sy(BRKT_VERT),
-               f"{BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
+               f"{BRKT_VERT}mm VERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # Bracket arm height
     draw_dim_v(ax, sx(WALKWAY_W + 5), sy(0), sy(brkt_arm_z),
@@ -486,20 +486,25 @@ def sheet2():
     notes = [
         "CONSTRUCTION NOTES:",
         "",
-        f"1. Grating: {WALKWAY_GRATE_T}mm press-locked galvanized steel,",
-        f"   30\u00d73mm bearing bars at 34.2mm pitch.",
-        f"2. Cantilever brackets: {BRKT_T}mm steel plate gusset,",
-        f"   bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm centers.",
+        f"1. Grating: {WALKWAY_GRATE_T}mm press-locked galvanized",
+         "   steel, 30\u00d73mm bearing bars at 34.2mm",
+         "   pitch.",
+        f"2. Cantilever brackets: {BRKT_T}mm steel plate",
+        f"   gusset, bolted to wall ribs at {WALKWAY_BRACKET_SPACING}mm",
+         "   centers.",
         f"3. Rib is HOLLOW — bolt bridges the air gap.",
         f"   Path: head \u2192 reinf plate \u2192 ext panel",
-        f"   \u2192 air gap \u2192 rib face \u2192 bracket \u2192 nut.",
+        f"   \u2192 air gap \u2192 rib face \u2192 bracket",
+         "   \u2192 nut.",
         f"4. Reinforcing plate welded to exterior panel",
-        f"   face. Bearing surface for bolt head + washer.",
+        f"   face. Bearing surface for bolt head + ",
+         "   washer.",
         f"5. Gusset reach stops before tray rim at",
         f"   {PROC_TRAY_YD_NEAR}mm.",
         f"6. NO legs, NO beam — entire tray floor clear",
         f"   for film loading. Zero tray contact.",
-        f"7. M saddle clips + TEK screws to bracket arms.",
+        f"7. M saddle clips + TEK screws to bracket",
+         "   arms.",
         f"8. Right walkway: CEILING-HUNG from M{WALKWAY_RIGHT_HANGER_D}",
         f"   threaded rod hangers. See Sheet 3.",
         f"9. Left walkway: REMOVABLE LIFT-OUT —",
@@ -788,7 +793,7 @@ def sheet2():
 
     # Gusset label
     leader(ax3, sx(W_GUSSET / 2), sy(w_arm_bot / 2 - 5),
-           sx(W_GUSSET - 15), sy(w_arm_bot / 2 - 25),
+           sx(W_GUSSET - 15), sy(w_arm_bot / 2 - 15),
            f"GUSSET ({W_GUSSET}mm)\nSAME AS STD —\nTRAY RIM\nCONSTRAINED",
            color=C_BRKT, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
@@ -796,12 +801,12 @@ def sheet2():
     # Bolt labels
     leader(ax3, sx(w_reinf_yd - W_BOLT_HEAD - 2), sy(w_bolt_z_lo),
            sx(w_reinf_yd - 30), sy(w_bolt_z_lo + 20),
-           f"2× M12 AT Z={w_bolt_z_lo}\n(STRADDLE GUSSET IN X)",
+           f"2× M12\nAT Z={w_bolt_z_lo}\n(STRADDLE GUSSET\nIN X)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
     leader(ax3, sx(w_reinf_yd - W_BOLT_HEAD - 2), sy(w_bolt_z_hi),
            sx(w_reinf_yd - 30), sy(w_bolt_z_hi + 20),
-           f"2× M12 AT Z={w_bolt_z_hi}\n(ABOVE DECK)",
+           f"2× M12\nAT Z={w_bolt_z_hi}\n(ABOVE DECK)",
            color=C_DIM, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
@@ -817,7 +822,7 @@ def sheet2():
                                  fc="#909098", ec=C_OUT, lw=0.3, zorder=8))
 
     leader(ax3, sx(W_ARM_W / 4), sy((w_grate_bot + w_grate_top) / 2),
-           sx(W_ARM_W / 4 - 30), sy(w_grate_top + 40),
+           sx(W_ARM_W / 4 - 40), sy(w_grate_top + 20),
            f"PRESS-LOCKED STEEL GRATING\n{WALKWAY_GRATE_T}mm THICK · GALVANIZED",
            color=C_OUT, fs=6, ha="center", va="center",
            arrow_style="-|>", font=FONT)
@@ -867,14 +872,13 @@ def sheet2():
     draw_dim_v(ax3, sx(W_ARM_W + 20), sy(0), sy(w_grate_top),
                f"{WALKWAY_H}mm\nDECK TOP", offset=sx(8), fs=7, right=True, font=FONT)
     draw_dim_v(ax3, sx(w_reinf_yd - W_BOLT_HEAD - 45), sy(0), sy(W_BRKT_VERT),
-               f"{W_BRKT_VERT}mm\nVERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
+               f"{W_BRKT_VERT}mm VERT LEG", offset=sx(8), fs=6.5, right=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
-    w_notes_x = sx(W_ARM_W + 40)
-    w_notes_top = sy(WC_Z_HI - 10)
+    w_notes_x = sx(W_ARM_W - 40)
+    w_notes_top = sy(WC_Z_HI - 30)
     w_notes = [
         "WIDENED BRACKET NOTES:",
-        "",
         f"1. {W_BRKT_T}mm plate (heavier than {BRKT_T}mm standard).",
         f"2. {W_BRKT_VERT}mm vertical leg (taller than {BRKT_VERT}mm standard).",
         f"3. 500mm arm for EP + battery bank access.",
@@ -886,7 +890,7 @@ def sheet2():
         f"8. All other near/far brackets remain standard.",
     ]
     draw_notes(ax3, w_notes, w_notes_x, w_notes_top,
-               spacing=sy(6), fs=7, width=sx(130), font=FONT)
+               spacing=sy(7), fs=7, width=sx(210), font=FONT)
 
     # ── Title block (on View C axes — bottom of figure) ──────────────────────
     title_block(ax3, "SHEET 2 OF 6",

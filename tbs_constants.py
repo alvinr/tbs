@@ -411,7 +411,7 @@ WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
 # Right walkway (IBC end) — ceiling-hung design.
 # No floor contact, no box beam.  Two longitudinal steel angle bearers
-# (50×50×5mm) running full container width along Yd, suspended from ceiling
+# (25×25×5mm) running full container width along Yd, suspended from ceiling
 # corrugations by M10 threaded rod hangers at 457mm centers.  Grating spans
 # 300mm between bearers.  Near/far ends bear on adjacent walkway brackets.
 # All hangers placed at Yd < 2,025mm — clear of optical cone.

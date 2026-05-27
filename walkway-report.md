@@ -24,7 +24,7 @@ access functions:
 
 All four sections share a common 100mm deck height (75mm bracket arm or bearer
 top + 25mm grating) and 300mm standard width, creating a level perimeter walking
-surface. Every section is removable for full tray access during film loading.
+surface.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, ceiling-hung, or placed outside the tray footprint. This
@@ -90,7 +90,9 @@ panel (EP, X=1,600–1,900mm) and battery bank (X=1,810–2,310mm). These wall-m
 equipment items require front access for operation and maintenance.
 
 Two brackets in this zone (at X=1,613mm and X=2,070mm) use a heavier design
-to support the 500mm cantilever arm (see Sheet 7 for cross-section detail):
+to support the 500mm cantilever arm.
+
+![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet7.png)
 
 | Parameter | Standard bracket | Widened bracket |
 |-----------|-----------------|-----------------|
@@ -104,7 +106,7 @@ to support the 500mm cantilever arm (see Sheet 7 for cross-section detail):
 The gusset reach remains 70mm on both bracket types — limited by the processing
 tray rim at Yd=80mm. The widened bracket compensates with heavier plate, taller
 vertical leg for greater wall engagement, and the additional bolt for higher
-moment capacity. See Sheet 7 for the widened bracket cross-section.
+moment capacity.
 
 ### 3.3 Spray Bar Slit
 
@@ -123,6 +125,8 @@ assembly details.
 The right walkway at the IBC end (X=4,329–4,629mm) cannot use wall-cantilevered
 brackets because the IBC stack (X=4,674–5,893mm) occupies the floor below. Instead,
 the walkway is suspended from the container ceiling by threaded rod hangers.
+
+![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
 
 ### 4.1 Bearer Angles
 
@@ -143,8 +147,6 @@ arm structures at the butt joints.
 | All hangers at | Yd ≤ 2,057mm (clear of optical cone) |
 | Ceiling bracket plate | 100×60×6mm steel |
 | Ceiling attachment | 2× M10 through-bolts per plate, through ceiling corrugation |
-
-![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
 
 Each hanger pair consists of two M10 rods — one at each bearer (X=4,329mm and
 X=4,629mm). The rod passes through the horizontal flange of the L-angle bearer
@@ -168,6 +170,8 @@ The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantileve
 brackets because the hinged light-trap panel occupies the end wall and slides
 300mm inward (to X=420mm) for transport mode. The left walkway is therefore a
 removable lift-out section supported by three independent elements.
+
+![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
 ### 5.1 Support System
 
@@ -214,6 +218,8 @@ lift the beam out.
 | Near walkway bracket at butt joint | X=470mm |
 | Clearance | 50mm |
 | Panel bottom edge | Z=80mm (above 50mm tray rim) |
+
+![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
 The left walkway, bearer beam, support legs, and bearing strip must all be
 removed before the hinged panel can slide to transport position. The 50mm

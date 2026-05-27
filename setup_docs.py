@@ -70,7 +70,7 @@ MD_FILES = [
     ("hinged-panel-report.md",            (".",           "Hinged Light-Trap Panel")),
     ("ceiling-rail-report.md",            (".",           "Ceiling Rail Suspension")),
     ("ibc-stacking-report.md",            (".",           "IBC Stacking System")),
-    ("walkway-report.md",                 (".",           "Perimeter Walkway")),
+    ("walkway-report.md",                 (".",           "Walkway")),
     ("equipment-panel-report.md",         (".",           "Equipment Panel & Plumbing")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),

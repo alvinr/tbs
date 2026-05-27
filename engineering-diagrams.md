@@ -14,16 +14,15 @@ There are a number of discrete systems, color-coded in the diagram below. This v
 - Electrical system
 - Water system and plumbing
 - Lighttrap & Hinged panel
-- Film plane mechanism
+- Pinhole & Film plane mechanism
 - Processing and Spray Bar
-- Pinhole construction
 
 ![TBS-001 — Container Floor Plan](assets/container-floorplan.png)
 
 The container is split into three main areas
 
 - Left: [Lighttrap](light-trap-selection.md), [hinged panel](hinged-panel-report.md)
-- Center: [Pinhole construction](pinhole-optics-report.md), [Processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md), [walkway](walkway-report.md)
+- Center: [Pinhole construction](pinhole-optics-report.md), [processing tray & spray bar](processing-tray-and-spray-bar.md), [film plane mechanism](film-plane-mechanism-report.md), [electrical panels & battery pack](electrical-report.md), [walkway](walkway-report.md)
 - Right: [IBC stacking system](ibc-stacking-report.md), [equipment panel & plumbing](equipment-panel-report.md)
 
 ![TBS-001 — Assembly: Side Elevation — pinhole wall view](assets/assembly-overview.png)

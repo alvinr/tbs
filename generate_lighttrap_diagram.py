@@ -188,8 +188,10 @@ def draw_sheet1():
     ann(ax, "HIGH POSITION\n~1,800mm AFF",
         (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
 
-    # ── EVAP COOLER (floor level, with baffled intake through bottom wall) ─────
-    EC_X = CX + CW * 0.60
+    # ── EVAP COOLER (pinhole wall, X=1,200mm — left of pinhole at X=2,399mm) ──
+    # Left wall = far end (X=5,893), right wall = door end (X=0).
+    # X=1,200 → fraction from left = (5893-1200)/5893 ≈ 0.80
+    EC_X = CX + CW * 0.80
     EC_Y = CY + WT + 0.1
     EC_W, EC_H = 1.5, 0.9
     ax.add_patch(mpatches.FancyBboxPatch((EC_X, EC_Y), EC_W, EC_H,

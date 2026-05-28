@@ -31,7 +31,7 @@ from matplotlib.patches import Rectangle, Polygon, Circle, FancyBboxPatch
 from matplotlib.lines import Line2D
 
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import (
     svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
@@ -640,13 +640,15 @@ def sheet3():
                "25mm SHS", offset=25, fs=5, right=True)
 
     # ── Assembly note ──
-    ax.text(px(YD_HI / 2), pz(Z_LO + 30),
-            "NOTE: Double-nut lock on each rod allows ±10mm\n"
-            "height adjustment for leveling. Use spirit level\n"
-            "across all 4 rods during installation.",
-            fontsize=5.5, color=C_DIM, ha="center", va="bottom",
-            fontfamily="monospace",
-            bbox=dict(fc="#F8F8F0", ec=C_DIM, lw=0.5, pad=5))
+    notes = [
+        "NOTES",
+        "1. Double-nut lock on each rod allows ±10mm",
+        "   height adjustment for leveling.",
+        "2. Use spirit level across all 4 rods",
+        "   during installation.",
+    ]
+    draw_notes(ax, notes, px(YD_HI + 30), pz(Z_LO + 50), spacing=12,
+               fs=5.5, width=200, font={"fontfamily": "monospace"})
 
     # ── Title block ──
     title_block(ax, "SHEET 3 OF 3",

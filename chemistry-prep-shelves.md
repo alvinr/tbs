@@ -187,33 +187,7 @@ The near walkway remains completely clear for transit in both directions — no 
 
 ---
 
-## 8. Diagrams
-
-### Sheet 1 — Plan View
-
-Top-down view showing the shelf position (X=3,729–4,329mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
-
-![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
-
----
-
-### Sheet 2 — Section Elevation
-
-Cross-section at X=4,029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
-
-![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
-
----
-
-### Sheet 3 — Hanger Connection Detail
-
-Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling plate (100×60×6mm) with M8 through-bolts, M10 threaded rod with double-nut leveling, shelf SHS frame cross-section, and 15mm spill guard lip.
-
-![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
-
----
-
-## 9. Maintenance
+## 8. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -226,7 +200,7 @@ Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling pl
 
 ---
 
-## 10. Source References
+## 9. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings. Ceiling corrugation rib spacing.
 2. [Walkway System Report](walkway-report.md) — Walkway deck height and clearance constraints.

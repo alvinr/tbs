@@ -163,15 +163,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.amazon.com/s?k=banjo+1%2F2+inch+ball+valve+polypropylene) | Polypropylene, full-port, quarter-turn. BV-01, BV-02, plus spares | 4 | Amazon | $6–$10 | $24–$40 |
-| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/Banjo-V100FP-Polypropylene-Ball-Valve/dp/B003CF2EN0) | Polypropylene, full-port, quarter-turn. V1/V3/V4, VB1–VB3 (IBC fill/drain valves) | 6 | Amazon | $10–$16 | $60–$96 |
-| [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/Banjo-V075FP-Polypropylene-Ball-Valve/dp/B003CF2DXA) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | $8–$12 |
+| [Banjo V100FP ball valve 1" FNPT](https://www.amazon.com/s?k=Banjo+V100FP+polypropylene+ball+valve) | Polypropylene, full-port, quarter-turn. V1/V3/V4, VB1–VB3 (IBC fill/drain valves) | 6 | Amazon | $10–$16 | $60–$96 |
+| [Banjo V075FP ball valve 3/4" FNPT](https://www.amazon.com/s?k=Banjo+V075FP+polypropylene+ball+valve) | Polypropylene, full-port, quarter-turn. BV-06 (chemistry tap shut-off) | 1 | Amazon | $8–$12 | $8–$12 |
 | [3-way diverter valve 1/2" FNPT](https://www.amazon.com/s?k=1%2F2+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-02 (tray drain) | 1 | Amazon | $12–$22 | $12–$22 |
 | [3-way diverter valve 1" FNPT](https://www.amazon.com/s?k=1+inch+3+way+ball+valve+NPT) | L-port or T-port, HDPE compatible. 3W-DV-01 (filter output) | 1 | Amazon | $18–$30 | $18–$30 |
 | [2" polypropylene camlock pairs (M+F)](https://www.amazon.com/s?k=2+inch+polypropylene+camlock+fitting+pair) | For external bulkhead connections (X1/X3/X4 + spare) | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
 | [1/2" NPT 90° elbow polypropylene](https://www.amazon.com/s?k=1%2F2+NPT+90+elbow+polypropylene) | All pump-driven run bends (manifold internal + external runs) | 14 | Amazon | $2–$4 | $28–$56 |
-| [Banjo LE100 90° elbow 1" NPT](https://www.amazon.com/Banjo-LE100-Polypropylene-90-Degree-Elbow/dp/B003CF2FWI) | Polypropylene street elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | $12–$20 |
+| [Banjo EL100-90 elbow 1" NPT](https://www.amazon.com/Banjo-EL100-90-Polypropylene-Fitting-Schedule/dp/B00AB5XSZ8) | Polypropylene 90° elbow. IBC fill/drain bends, filter outlet to DV-01 | 4 | Amazon | $3–$5 | $12–$20 |
 | [1/2" NPT polypropylene tee](https://www.amazon.com/s?k=1%2F2+NPT+tee+polypropylene) | Blue suction/discharge tees, system branches | 6 | Amazon | $2–$4 | $12–$24 |
-| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/Banjo-TEE100-Polypropylene-Pipe-Fitting/dp/B003CF2FI2) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | $16–$24 |
+| [Banjo TEE100 equal tee 1" NPT](https://www.amazon.com/s?k=Banjo+TEE100+polypropylene+tee+1+inch) | Polypropylene. IBC fill/drain tees | 4 | Amazon | $4–$6 | $16–$24 |
 | [1/2" NPT polypropylene union](https://www.amazon.com/s?k=1%2F2+inch+NPT+polypropylene+union) | Maintenance disconnects on pump runs | 6 | Amazon | $4–$6 | $24–$36 |
 | [1/2"×1" NPT bushing reducer](https://www.amazon.com/s?k=1%2F2+inch+to+1+inch+NPT+bushing+reducer+polypropylene) | P-02 riser to F1 filter inlet | 1 | Amazon | $3–$5 | $3–$5 |
 | [S60×6 to 1" NPT adapter](https://www.amazon.com/s?k=IBC+S60x6+1+NPT+adapter) | IBC DN50 valve to 1" HDPE pipe | 8 | Amazon | $8–$15 | $64–$120 |
@@ -227,7 +227,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Water system processing consumables
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Apera Instruments PH20 pH meter](https://www.amazon.com/Apera-Instruments-Waterproof-Automatic-Calibration/dp/B01LZ5KCNX) | Waterproof, 0–14, ±0.1 accuracy | 1 | Amazon | $35–$55 |
+| [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | Waterproof, 0–16, ±0.01 accuracy | 1 | Amazon | $45–$65 |
 | [pH calibration solution set](https://www.amazon.com/s?k=pH+calibration+buffer+solution+4+7+sachet) | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
 | [Citric acid, food grade, 5 lb](https://www.amazon.com/s?k=citric+acid+food+grade+5+lb) | pH adjustment (acidifier) | 2 bags | Amazon | $28 |
 | [Chemical-resistant GHS labels](https://www.amazon.com/s?k=GHS+chemical+resistant+labels) | For IBC totes | 1 pack | Amazon | $20 |

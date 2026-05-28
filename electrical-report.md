@@ -422,7 +422,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 
 ## 14. Source References
 
-1. [Victron SmartSolar MPPT 100/50](https://www.victronenergy.com/solar-charge-controllers/smartsolar-mppt-100-50) — MPPT charge controller specifications.
+1. [Victron SmartSolar MPPT 100/50](https://www.victronenergy.com/solar-charge-controllers/smartsolar-100-30-100-50) — MPPT charge controller specifications.
 2. [Victron Blue Smart IP65 12/15](https://www.victronenergy.com/chargers/blue-smart-ip65-charger) — Shore power backup charger specifications.
 3. [Blue Sea 5026 ST Blade Fuse Block](https://www.bluesea.com/products/5026/ST_Blade_Fuse_Block_-_12_Circuits_with_Negative_Bus_and_Cover) — 12-circuit fuse block specifications.
 4. [Battle Born 100Ah LiFePO4](https://battlebornbatteries.com/product/100ah-12v-lifepo4-deep-cycle-battery/) — LiFePO4 battery specifications.

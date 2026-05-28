@@ -290,7 +290,7 @@ from the door frame. Light sealing is not required during transport or loading.
 
 | Item | Source |
 |------|--------|
-| HGR20 / HGH20CA linear guide system | [HIWIN equivalent](https://www.hiwin.com/linear-guideways/hg-series/) — generic 20 mm profile, 12.7 kN dynamic load rating per block |
+| HGR20 / HGH20CA linear guide system | [HIWIN equivalent](https://hiwin.com/products/linear-guideways/) — generic 20 mm profile, 12.7 kN dynamic load rating per block |
 | Destaco 207-U toggle clamp | [Destaco catalog](https://www.destaco.com/207-u.html) — horizontal hold-down clamp, 375 lb capacity |
 | Neoprene compression pad | [McMaster-Carr](https://www.mcmaster.com/neoprene-rubber-sheets) — closed-cell, UV-stable, pressure-sensitive adhesive |
 | Panel construction and mass estimate | See [Hinged Light-Trap Panel](hinged-panel-report.md) §2 and §5 |

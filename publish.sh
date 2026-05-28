@@ -256,9 +256,25 @@ case "$MODE" in
         info "Starting local preview server..."
         echo ""
         echo "  Open: http://127.0.0.1:8000"
-        echo "  Hot-reload is active — edit .md files and the browser updates."
+        echo "  Hot-reload is active — edits to root .md files auto-sync to published/."
         echo "  Press Ctrl-C to stop."
         echo ""
+        # Background loop: re-sync root .md and diagrams → published/ every 2 seconds.
+        # Uses rsync --update so only changed files trigger mkdocs hot-reload.
+        (
+            while true; do
+                for f in "${MD_FILES[@]}"; do
+                    [[ -f "$SCRIPT_DIR/$f" ]] && rsync -q --update "$SCRIPT_DIR/$f" "$DOCS_DIR/$f" 2>/dev/null || true
+                done
+                [[ -f "$SUMMARY_SRC" ]] && rsync -q --update "$SUMMARY_SRC" "$INDEX_DST" 2>/dev/null || true
+                for f in "${DIAG_FILES[@]}"; do
+                    [[ -f "$SCRIPT_DIR/$f" ]] && rsync -q --update "$SCRIPT_DIR/$f" "$ASSETS_DIR/$(basename "$f")" 2>/dev/null || true
+                done
+                sleep 2
+            done
+        ) &
+        SYNC_PID=$!
+        trap "kill $SYNC_PID 2>/dev/null" EXIT
         python3 -m mkdocs serve
         ;;
     build)

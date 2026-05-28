@@ -211,7 +211,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 
 ## 12. Source References
 
-1. [AC Infinity CLOUDLINE S6](https://www.acinfinity.com/hydroponics-growers/inline-fan-systems/cloudline-s6-quiet-inline-duct-fan-system-with-speed-controller-6-inch/) — 6" inline duct fan specifications.
+1. [AC Infinity CLOUDLINE S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/) — 6" inline duct fan specifications.
 2. [Portacool Jetstream 110](https://www.portacool.com/) — 12V DC evaporative cooler specifications.
 3. [OSHA Heat Illness Prevention](https://www.osha.gov/heat-exposure) — Workplace heat exposure guidelines and permissible limits.
 4. [Electrical Report](electrical-report.md) — Circuit assignments (A, B, E), wiring specification, and fuse block layout.

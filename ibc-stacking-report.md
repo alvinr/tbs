@@ -348,11 +348,11 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Source |
 |------|--------|
-| Schutz Ecobulk MX 640 L IBC | [Schutz GmbH product catalog](https://www.schuetz.net/en/packaging/ibcs/ecobulk-mx) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
+| Schutz Ecobulk MX 640 L IBC | [Schutz GmbH product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
 | D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25 mm, 1,100 kg WLL |
-| Banjo V100FP ball valve | [Banjo Corp catalog](https://www.banjocorp.com/product/V100FP) — 1" full-port polypropylene, quarter-turn |
-| Banjo LE100 90° elbow | [Banjo Corp catalog](https://www.banjocorp.com/product/LE100) — 1" HDPE NPT |
-| HDPE SDR-11 pipe | [Standard 1" IPS](https://www.ferguson.com/category/pipe-and-fittings/hdpe-pipe) — PE4710 resin, 200 PSI rated |
+| Banjo V100FP ball valve | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Valves/V100FP/p/2832572) — 1" full-port polypropylene, quarter-turn |
+| Banjo LE100 90° elbow | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Pipe-Fittings/EL100-90/p/2796532) — 1" HDPE NPT |
+| HDPE SDR-11 pipe | [Standard 1" IPS](https://www.ferguson.com/category/pipe-tubing/plastic-pipe-tubing/plastic-pipe/?prefn1=sku_Material_Type_ss&prefv1=HDPE) — PE4710 resin, 200 PSI rated |
 | Type DC camlock fitting | [2" aluminum, MIL-C-27487 spec](https://www.amazon.com/s?k=2+inch+aluminum+camlock+type+DC) |
 | Shurflo 2088 pump | [Pentair Shurflo catalog](https://www.shurflo.com/products/2088-series) — 12V DC, 3.5 GPM, 45 PSI, self-priming diaphragm |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |

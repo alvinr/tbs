@@ -369,7 +369,7 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 ## 11. Source References
 
 1. [ISO 668:2020](https://www.iso.org/standard/76912.html) — Series 1 freight containers: Classification, dimensions and ratings.
-2. [Schutz Ecobulk MX 600L](https://www.schuetz.net/en/packaging/ibcs/ecobulk-mx) — IBC tote specifications and cage dimensions.
+2. [Schutz Ecobulk MX 600L](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — IBC tote specifications and cage dimensions.
 3. [Light Trap Selection Report](light-trap-selection.md) — Revolving drum specification and panel integration.
 4. [Hinged Panel Report](hinged-panel-report.md) — Stepped panel construction and sliding carriage specification.
 5. [Water System Report](water-system-report.md) — IBC layout, plumbing manifold, and pump positions.

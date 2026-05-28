@@ -327,7 +327,7 @@ The cam-lever design provides tactile snap-open/snap-closed feedback, critical f
 
 ## 10. Source References
 
-1. [HIWIN HGR20 Linear Guideway](https://www.hiwin.com/linear-guideways/hg-series/) — 20mm profile linear guide rail and HGH20CA carriage block specifications.
+1. [HIWIN HGR20 Linear Guideway](https://hiwin.com/products/linear-guideways/) — 20mm profile linear guide rail and HGH20CA carriage block specifications.
 2. [McMaster-Carr GIR25-DO Rod-End Bearing](https://www.mcmaster.com/rod-end-bearings) — Spherical rod-end bearing specifications (25mm bore).
 3. [Progressive Automations PA-14](https://www.progressiveautomations.com/products/linear-actuator-pa-14) — 12V linear actuator specifications (optional electric actuation).
 4. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.

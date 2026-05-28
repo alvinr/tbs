@@ -466,13 +466,24 @@ def sheet3():
     """Detail of ceiling hanger connection and shelf frame cross-section."""
     # View: close-up cross-section at one hanger corner. Yd horizontal, Z vertical.
     # Scale 1:5.  Wide enough for title block to render cleanly.
+    # Break in threaded rod to reduce diagram height
+    CUT_LO = 1150       # Z where break starts (above shelf detail)
+    CUT_HI = 2200        # Z where break ends (below ceiling detail)
+    CUT_GAP = CUT_HI - CUT_LO   # 1050mm removed from diagram
+    BREAK_VIS = 30       # visual gap for break lines (mm in display)
+
     YD_LO, YD_HI = -120, 380
-    Z_LO, Z_HI = 860, 2450
 
     def px(yd): return yd
-    def pz(z): return z
+    def pz(z):
+        if z <= CUT_LO:
+            return z
+        return z - CUT_GAP + BREAK_VIS
 
-    fig, ax = plt.subplots(figsize=(18, 18), facecolor=BG)
+    Z_LO = 860
+    Z_HI = pz(2450)
+
+    fig, ax = plt.subplots(figsize=(18, 10), facecolor=BG)
     ax.set_facecolor(BG)
     ax.set_xlim(YD_LO, YD_HI)
     ax.set_ylim(Z_LO, Z_HI)
@@ -519,8 +530,19 @@ def sheet3():
     # ── Threaded rod (M10, from ceiling plate down to shelf) ──
     rod_z_top = plate_z_bot
     rod_z_bot = SHELF_H
-    ax.plot([px(rod_yd), px(rod_yd)], [pz(rod_z_bot), pz(rod_z_top)],
+    # Draw rod in two segments with break
+    ax.plot([px(rod_yd), px(rod_yd)], [pz(rod_z_bot), CUT_LO],
             color=C_HANGER, lw=2.5, zorder=6)
+    ax.plot([px(rod_yd), px(rod_yd)], [CUT_LO + BREAK_VIS, pz(rod_z_top)],
+            color=C_HANGER, lw=2.5, zorder=6)
+
+    # ── Break lines (zigzag across full width) ──
+    n_pts = 25
+    brk_xs = np.linspace(px(YD_LO + 5), px(YD_HI - 5), n_pts)
+    brk_amp = 10
+    for bz in [CUT_LO, CUT_LO + BREAK_VIS]:
+        brk_zs = [bz + brk_amp * (1 if i % 2 else -1) for i in range(n_pts)]
+        ax.plot(brk_xs, brk_zs, color=C_OUT, lw=1.0, zorder=25)
 
     # Rod passes through plate — nut + washer on top
     nut_h = 10
@@ -530,8 +552,8 @@ def sheet3():
                             pz(rod_z_top) - pz(rod_z_top - nut_h),
                             fc=C_HANGER, ec=C_OUT, lw=0.8, zorder=7))
 
-    leader(ax, px(rod_yd - 3), pz((rod_z_top + rod_z_bot) / 2),
-           px(rod_yd - 60), pz((rod_z_top + rod_z_bot) / 2),
+    leader(ax, px(rod_yd - 3), pz(1120),
+           px(rod_yd - 60), pz(1120),
            f"M{SHELF_HANGER_D} THREADED ROD\nL={int(HANGER_ROD_L)}mm\n(ZINC-PLATED)",
            fs=5.5, ha="right")
 

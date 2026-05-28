@@ -77,7 +77,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 | Wall entry | Via flush-mount power panel (shared with shore power) — 280×180mm wall cutout |
 | Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) |
 
-**Siting:** deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
+**Siting:** deploy panels on south-facing ground adjacent the container. For example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
 
 ## 5. Charge Controller and Battery Bank
 
@@ -91,7 +91,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 | Mounting | Interior short wall, adjacent main enclosure |
 | Approximate cost | ~$200 |
 
-The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 10).
+The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).
 
 ### 5.2 Battery Bank
 | Parameter | Specification |
@@ -191,6 +191,12 @@ IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhol
 - Battery positive and negative busbars with 200A main fuse
 - Shore charger output terminals
 
+**Sheet 2 — Container Wiring Layout**
+Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.
+
+![TBS-ELEC Sheet 2 — Container Wiring Layout](assets/electrical-sheet2.png)
+
+
 ### 7.2 Circuit List
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
@@ -263,18 +269,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | **Cooling (evap cooler)** | | | **~$280** |
 | **Systems grand total** | | | **~$2,310** |
 
-## 9. Impact on Existing Design
-| Existing element | Change required |
-|-----------------|----------------|
-| Ventilation fans (4") | Replace with 6" units — same baffle design, same penetration locations |
-| 12V fuse block ($50 item in water system BOM) | Superseded by Blue Sea 5026 — consolidates all circuits in one panel |
-| Battery-powered safelight | Wired to circuit D — no separate battery required |
-| Water pump power (P-01–P-04; P-03 relocated to IBC corridor) | Now circuit C on main fuse block — remove standalone 12V supply listed in water report. P-03 wire run is longer (~8m to IBC corridor) |
-| Container doors | Replaced by hinged drum panel — cargo doors removed from their hinges for transport |
-
----
-
-## 10. Maintenance
+## 9. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -294,7 +289,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 
 ---
 
-## 11. Source References
+## 10. Source References
 
 1. [Victron SmartSolar MPPT 100/50](https://www.victronenergy.com/solar-charge-controllers/smartsolar-100-30-100-50) — MPPT charge controller specifications.
 2. [Victron Blue Smart IP65 12/15](https://www.victronenergy.com/chargers/blue-smart-ip65-charger) — Shore power backup charger specifications.

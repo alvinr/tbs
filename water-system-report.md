@@ -717,12 +717,13 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [12V fuse block (6-way)](https://www.amazon.com/s?k=12V+6+way+blade+fuse+block) | Blade fuse, 10A per channel | 1 | Amazon | $12–$20 | **$15** |
 | [14 AWG duplex marine wire](https://www.amazon.com/s?k=14+AWG+duplex+marine+wire+tinned+copper+25+ft) | Tinned copper, 25 ft | 1 roll | Amazon | $18–$28 | **$22** |
 | [Anderson Powerpole connectors 30A](https://www.amazon.com/s?k=anderson+powerpole+30A+connector) | For pump connections | 4 pairs | Amazon | $1.50/pair | **$8** |
 | [10A blade fuses (pack)](https://www.amazon.com/s?k=10A+standard+blade+fuse+pack) | For pump circuits | 10 | Amazon | $5/pack | **$5** |
 
-**Electrical subtotal: ~$50**
+*Fuse block not listed here — pumps connect to circuits C1–C4 on the consolidated Blue Sea 5026 fuse block specified in the [Electrical Report](electrical-report.md).*
+
+**Electrical subtotal: ~$35**
 
 ### 10.8 Processing consumables
 
@@ -768,9 +769,9 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Pipe | $76 | $108 |
 | Processing tray (304 SS, fabricated) | $1,177 | $1,857 |
 | Spray bar assembly (gantry: beam/pipe, wheels, L-brackets, hose) | $134 | $176 |
-| Electrical | $50 | $50 |
+| Electrical (wiring only — fuse block in [Electrical Report](electrical-report.md)) | $35 | $35 |
 | Processing consumables | $231 | $278 |
-| **TOTAL** | **$3,277** | **$4,896** |
+| **TOTAL** | **$3,262** | **$4,881** |
 
 *Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 

@@ -277,7 +277,6 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Distribution & wiring subtotal: ~$600**
 
 **Section total: ~$1,785–$1,890**
-*Note: water pump wiring now included in this section via main fuse block — remove the standalone 12V supply listed in older versions of the water system BOM.*
 
 ## 7. Revolving Drum Light Trap — Custom Fabrication
 *Source: `light-trap-selection.md` § 3.3 & § 4. Custom-fabricated 750mm steel drum built into the hinged cargo-door panel. Replaces a fixed S-path vestibule; allows single-operator entry/exit at any time during operation without admitting daylight.*

@@ -233,9 +233,9 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Pipe (HDPE, spray bar) | $100 | $140 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,177 | $1,857 |
 | Spray bar assembly (gantry: beam/pipe, wheels, ball joint, arm, hose) | $173 | $233 |
-| Electrical (12V fuse block, wiring) | $50 | $50 |
+| Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
-| **Water system total** | **$3,127** | **$4,688** |
+| **Water system total** | **$3,112** | **$4,673** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -459,14 +459,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual) | $2,200 |
-| Water system (incl. processing tray, spray bar) | $3,127 |
+| Water system (incl. processing tray, spray bar) | $3,112 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $953 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$13,209** |
+| **Scenario A total** | **~$13,194** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -476,7 +476,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + electric actuation) | $3,227 |
-| Water system (incl. processing tray, spray bar) | $3,899 |
+| Water system (incl. processing tray, spray bar) | $3,884 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $1,216 |
 | Ceiling rail suspension | $208 |
@@ -484,17 +484,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$18,624** |
+| **Scenario B total (excl. CDL)** | **~$18,609** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $18,430 |
+| Scenario B build | $18,415 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$107,930–$137,930** |
+| **Scenario C total** | **~$107,915–$137,915** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

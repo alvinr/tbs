@@ -227,11 +227,6 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 
 ![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
 
-**Sheet 2 — Container Wiring Layout**
-Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.
-
-![TBS-ELEC Sheet 2 — Container Wiring Layout](assets/electrical-sheet2.png)
-
 **Sheet 3 — Pinhole Wall Interior Elevation**
 Interior elevation of the pinhole wall face (Yd=0), looking from inside the container. Shows equipment mounting heights, cable trunking at the ceiling corner rail, drop conduits to each device, pull-cord switch positions with cord lengths, and ceiling-mounted LED panel locations.
 

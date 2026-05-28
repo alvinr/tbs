@@ -172,32 +172,26 @@ overhang behind the container door closure plane.
 **Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
 ![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
 
-### 5.1 Rail System
+See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
 
-| Parameter | Value |
-|-----------|-------|
-| Rails | 4 × HGR20 linear guide rail, 500 mm long |
-| Carriage blocks | 8 × HGH20CA (2 per rail) |
-| Rail positions | Floor and ceiling level, both container side walls (Yd ≈ 30 mm and Yd ≈ 2,332 mm) |
-| Left (hinge) side | Vertical carriage beam (60 × 60 × 3 mm SHS, 2,400 mm tall) rides on rails; panel hinges mount to this beam |
-| Right (latch) side | Panel frame rides directly on carriage blocks — no separate beam |
-| Slide travel | 300 mm |
+### 5.1 Panel Positions
 
-### 5.2 Panel Positions
+**Sheet 4 — Sliding rail transport system: HGR20 rails, operational vs. transport positions**
+![TBS-001 Hinged Panel — Sheet 4: Transport System](assets/hingepanel-sheet4.png)
 
 | Position | Panel corner inner face X | Drum exterior edge X | Container doors clear? |
 |----------|--------------------------|---------------------|----------------------|
 | Operational | 40 mm | −295 mm | No (drum protrudes 295 mm beyond exterior face) |
 | Transport | 340 mm | −35 mm → +5 mm | Yes (drum clears exterior face by 5 mm) |
 
-### 5.3 Locking
+### 5.2 Locking
 
 | Lock position | Method |
 |--------------|--------|
 | Operational (X=0) | 2 × Destaco 207-U toggle clamps |
 | Transport (X=300) | 2 × Destaco 207-U toggle clamps |
 
-### 5.4 Floor Gap
+### 5.3 Floor Gap
 
 The panel is suspended from the ceiling HGR20 rails with an 80 mm gap between the
 panel bottom edge and the container floor. This gap clears the 50 mm processing tray
@@ -241,29 +235,9 @@ for the sliding carriage.
 
 ---
 
-## 8. Engineering Drawings
+## 8. Parts List
 
-Four construction drawings cover the panel and drum assembly:
-
-**Sheet 1 — Front elevation (1:20): Panel dimensions, drum, hinges, latches**
-![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
-
-**Sheet 2 — Plan cross-section at drum mid-height: Drum baffles, S-path light route, stepped profile**
-![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
-
-**Sheet 3 — Drum vertical section: Walking height, bearings, person silhouette, headroom**
-![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
-
-**Sheet 4 — Sliding rail transport system: HGR20 rails, operational vs. transport positions**
-![TBS-001 Hinged Panel — Sheet 4: Transport System](assets/hingepanel-sheet4.png)
-
-Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §12.
-
----
-
-## 9. Parts List
-
-### 11.1 Panel Structure
+### 8.1 Panel Structure
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
@@ -277,7 +251,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |
 | **Panel subtotal** | | | **$575–$895** |
 
-### 11.2 Revolving Drum
+### 8.2 Revolving Drum
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
@@ -292,7 +266,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Metal fabrication (rolling, welding, fitting) | 16–20 hrs labor | 1 | $800–$1,200 |
 | **Drum subtotal** | | | **$1,265–$1,865** |
 
-### 11.3 Sliding Carriage
+### 8.3 Sliding Carriage
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
@@ -305,7 +279,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | 15 mm EPDM strip (self-adhesive, per meter) | Panel edge-to-wall clearance seals — ~5 m each side | 10 m | $30–$50 |
 | **Carriage subtotal** | | | **$365–$585** |
 
-### 11.4 Fixed Door Frame
+### 8.4 Fixed Door Frame
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
@@ -313,7 +287,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
 | **Door frame subtotal** | | | **$290–$470** |
 
-### 11.5 Cost Summary
+### 8.5 Cost Summary
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
@@ -325,7 +299,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 10. Maintenance
+## 9. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -343,7 +317,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 11. Source References
+## 10. Source References
 
 | Item | Source |
 |------|--------|

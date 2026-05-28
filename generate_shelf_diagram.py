@@ -272,7 +272,7 @@ def sheet2():
     def px(yd): return yd
     def pz(z): return z
 
-    fig, ax = plt.subplots(figsize=(16, 18), facecolor=BG)
+    fig, ax = plt.subplots(figsize=(12, 13.5), facecolor=BG)
     ax.set_facecolor(BG)
     ax.set_xlim(YD_LO, YD_HI)
     ax.set_ylim(Z_LO, Z_HI)
@@ -647,7 +647,7 @@ def sheet3():
         "2. Use spirit level across all 4 rods",
         "   during installation.",
     ]
-    draw_notes(ax, notes, px(YD_HI + 30), pz(Z_LO + 50), spacing=12,
+    draw_notes(ax, notes, px(YD_HI - 250), pz(Z_LO + 120), spacing=7,
                fs=5.5, width=200, font={"fontfamily": "monospace"})
 
     # ── Title block ──

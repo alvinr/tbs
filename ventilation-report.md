@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Ventilation & Cooling System
+# Ventilation & Cooling
 
 ## 1. Purpose
 
@@ -39,16 +39,22 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 ## 4. Ventilation Fans
 
-The original construction guide specifies 2 × 4" (100mm) inline fans. For operator comfort during processing in warm conditions, upgrade to 6" (150mm):
+For operator comfort during processing in warm conditions, but also to ensure there is fresh air exchange within the space.
 
-| Parameter | Original | Upgraded |
-|-----------|---------|---------|
-| Fan diameter | 4" (100mm) | 6" (150mm) |
-| Airflow per fan | ~100 CFM | ~200 CFM |
-| Total airflow | ~200 CFM | ~400 CFM |
-| Power draw (each) | ~30W | ~60W |
-| Circuit fuse | 3A | 5A |
-| Additional cost | — | ~$60 |
+Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.
+
+**Sheet 1 — Container Ventilation Section**
+![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
+
+
+| Parameter | Specification |
+|-----------|---------|
+| Fan diameter |  6" (150mm) |
+| Airflow per fan |  ~200 CFM |
+| Total airflow | ~400 CFM |
+| Power draw (each) |  ~60W |
+| Circuit fuse | 5A |
+| Cost  | ~$60 |
 
 ### 4.1 Fan Positions
 
@@ -59,19 +65,30 @@ The original construction guide specifies 2 × 4" (100mm) inline fans. For opera
 
 Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: low intake at the far end → high exhaust at the cargo door end.
 
-### 4.2 Fan B — Panel-Mounted Exhaust
+### 4.2 Fan A — Far End Wall Intake
+
+Fan A is flush-mounted in a wall penetration at the far end wall (X=5,893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+
+**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops vertically to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
+
+### 4.3 Fan B — Panel-Mounted Exhaust
 
 Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so the exhaust baffle duct protrudes from the panel exterior face and discharges directly into the open doorway.
 
 **Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2,200mm.
 
-### 4.3 Light-Safe Baffle Ducts
+### 4.4 Light-Safe Baffle Ducts
 
 Both fan penetrations include L-shaped offset baffles inside a duct stub to prevent light ingress while allowing unrestricted airflow:
 
 - **Construction:** Black sheet metal, L-shaped offset — two 150mm × 150mm flat baffles offset 75mm inside a 300mm deep duct stub
 - **Light path:** No straight line of sight from exterior to interior at any incidence angle
 - **Airflow resistance:** Minimal — the L-path increases duct length by ~150mm but maintains full 150mm diameter cross-section at each turn
+
+**Sheet 2 — Fan & Baffle Duct Assembly**
+Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.
+
+![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
 
 The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct protrudes from the panel exterior face.
 
@@ -158,21 +175,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 
 ---
 
-## 9. Engineering Drawings
-
-**Sheet 1 — Container Ventilation Section**
-Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.
-
-![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
-
-**Sheet 2 — Fan & Baffle Duct Assembly**
-Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.
-
-![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
-
----
-
-## 10. Parts List
+## 9. Parts List
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|-----------|
@@ -191,7 +194,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 
 ---
 
-## 11. Maintenance
+## 10. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -209,7 +212,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 
 ---
 
-## 12. Source References
+## 11. Source References
 
 1. [AC Infinity CLOUDLINE S6](https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/) — 6" inline duct fan specifications.
 2. [Portacool Jetstream 110](https://www.portacool.com/) — 12V DC evaporative cooler specifications.

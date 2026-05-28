@@ -130,7 +130,7 @@ def draw_sheet1():
                 xytext=(CX - 1.6, FA_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=7)
     ax.text(CX - 1.8, FA_Y, "OUTSIDE\nAIR IN",
-            ha="right", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
+            ha="left", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
     # Short interior distribution arrow from fan into container
     ax.annotate("", xy=(pf_a_x0 + PF_T + 0.65, FA_Y),
                 xytext=(pf_a_x0 + PF_T + 0.05, FA_Y),
@@ -177,7 +177,7 @@ def draw_sheet1():
                 xytext=(CX + CW, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=2.5), zorder=7)
     ax.text(CX + CW + 1.8, FB_Y, "HOT AIR\nOUT",
-            ha="left", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
+            ha="right", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
     # Short interior collection arrow into fan
     ax.annotate("", xy=(pf_x0 - 0.05, FB_Y),
                 xytext=(pf_x0 - 0.65, FB_Y),
@@ -266,6 +266,9 @@ def draw_sheet1():
             ax.text(vx + CW/8, ry, val,
                     ha="center", va="center", fontsize=7.5,
                     color=C_OUT if ci == 0 else ("#D32F2F" if "OFF" in val else "#2E7D32"))
+
+    # Mirror so drum/door end is on the left (consistent with other elevations)
+    ax.invert_xaxis()
 
     title_block(ax, "SHEET 1 OF 2",
                 drawing_title="VENTILATION SYSTEM",

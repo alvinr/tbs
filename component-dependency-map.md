@@ -127,6 +127,10 @@ weatherproof louvre grille. Fan B has the same baffle duct protruding from the p
 face — exhausts into the open doorway during operation. Fan B moves with the panel on the
 sliding carriage; wiring via flexible coiled cable from fixed door frame (Circuit B).*
 
+*Report: [Ventilation & Cooling System](ventilation-report.md) — authoritative specification for fan system, baffle ducts, operating modes, and shade canopy.*
+
+*Diagrams: lighttrap sheet 1 combined elevation (LT), lighttrap sheet 2 ventilation details (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO).*
+
 ### 1.8 Evaporative Cooler (External)
 
 | Parameter | Value | Constant |
@@ -138,6 +142,10 @@ sliding carriage; wiring via flexible coiled cable from fixed door frame (Circui
 *Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
 water reservoir, Circuit E. Mounted externally on the pinhole wall; cooled air enters through
 Ø200mm insulated duct penetration with light-safe baffle.*
+
+*Report: [Ventilation & Cooling System](ventilation-report.md) §5 — evaporative cooler specification, light-safe intake duct, and transport stowage.*
+
+*Diagrams: lighttrap sheet 1 (LT), electrical sheet 1 wiring (ES), floor plan (FP), assembly overview (AO), assembly fabrication (AF).*
 
 ### 1.9 Electrical System
 

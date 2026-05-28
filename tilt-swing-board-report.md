@@ -44,7 +44,7 @@ When both systems operate simultaneously, the effects **stack non-linearly**. Th
 - **Opposing tilt:** the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone
 - **Full compound (both axes, both systems):** produces an image where no lines are parallel in any axis — the most complex projection the camera can make
 
-See the [Combined Distortion Renders](#combined-distortion-renders) section below.
+See the [Combined Distortion Renders](#10-combined-distortion-renders) section below.
 
 ---
 

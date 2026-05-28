@@ -354,7 +354,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
-Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion--transport-to-operational). Steps are the reverse of §5.5: open cargo doors → slide panel out → install left walkway → deploy evaporative cooler → latch panel → dark-adaptation check.
+Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → slide panel out → install left walkway → deploy evaporative cooler → latch panel → dark-adaptation check.
 
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

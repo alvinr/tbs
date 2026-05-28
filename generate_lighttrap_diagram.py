@@ -304,7 +304,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
     ax.text(FW / 2, FH - 0.72,
-            "TBS-001  ·  Longitudinal section through fan axis  ·  Interior left → Exterior right  ·  "
+            "TBS-001  ·  Longitudinal section through fan axis  ·  Exterior left → Interior right  ·  "
             "Fan & baffle duct interior-mounted — wiring inside container  ·  Schematic NTS",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
@@ -457,7 +457,7 @@ def draw_sheet2():
             color=C_PIPE, lw=2.5, solid_capstyle="round", zorder=5)
     ax.text(WR_X + 2.65, FAN_CY - PF_R * 0.35,
             "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
-            ha="right", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
+            ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
     ax.text(FAN_X + PF_BD * 6, FAN_CY + PF_R - 0.65, #FAN_CY - PF_R - 0.55,
             "150mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
@@ -478,7 +478,7 @@ def draw_sheet2():
     ax.annotate("", xy=(WX - GL_W, mid_y), xytext=(WX - GL_W - 1.8, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
     ax.text(WX - GL_W - 2.0, mid_y, "OUTSIDE\nAIR IN",
-            ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
+            ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
     # Through wall opening into duct
     ax.annotate("", xy=(DUCT_X + 0.3, mid_y), xytext=(WX + WT - 0.1, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=plw), zorder=7)
@@ -499,10 +499,10 @@ def draw_sheet2():
                 xytext=(FAN_X + PF_BD + 0.2, mid_y),
                 arrowprops=dict(arrowstyle="-|>", color=pc, lw=2.5), zorder=8)
     ax.text(FAN_X + PF_BD + 2.0, mid_y, "INTO\nCONTAINER",
-            ha="right", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
+            ha="left", va="center", fontsize=9.0, color=pc, fontweight="bold", zorder=10)
     ax.text(FAN_X + PF_BD + 2.0, mid_y - FAN_R - 0.3,
             "(exhaust: flow reversed — same assembly)",
-            ha="right", va="top", fontsize=7.0, color=C_DIM, style="italic", zorder=10)
+            ha="left", va="top", fontsize=7.0, color=C_DIM, style="italic", zorder=10)
 
     # ── Zone labels ───────────────────────────────────────────────────────────
     ax.text(WX / 2, wall_y0 - 0.3, "EXTERIOR",
@@ -526,7 +526,7 @@ def draw_sheet2():
                offset=0.33, fs=7.5, zorder=10, color=C_DIM)
 
     # ── Shadow margin / procurement note ─────────────────────────────────────
-    NX, NY = 0.3, 1.6
+    NX, NY = FW - 9.5 - 0.3, 1.6
     ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 9.5, 1.6,
                  boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=9))
     ax.text(NX + 0.20, NY + 1.35,
@@ -542,9 +542,6 @@ def draw_sheet2():
     ax.text(NX + 0.20, NY + 0.25,
             "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
             ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold", zorder=10)
-
-    # Mirror so interior (fan) is on the left, exterior on the right
-    ax.invert_xaxis()
 
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="FAN & BAFFLE DUCT — ASSEMBLY SECTION",

@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ventilation-cooling-system" class="md-skip">
+        <a href="#ventilation-cooling" class="md-skip">
           Skip to content
         </a>
       
@@ -1180,10 +1180,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-engineering-drawings" class="md-nav__link">
+  <a href="#9-parts-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Engineering Drawings
+        9. Parts List
       
     </span>
   </a>
@@ -1191,10 +1191,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-parts-list" class="md-nav__link">
+  <a href="#10-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Parts List
+        10. Maintenance
       
     </span>
   </a>
@@ -1202,21 +1202,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-maintenance" class="md-nav__link">
+  <a href="#11-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Maintenance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-source-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. Source References
+        11. Source References
       
     </span>
   </a>
@@ -2359,7 +2348,7 @@
 
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-<h1 id="ventilation-cooling-system">Ventilation &amp; Cooling System<a class="headerlink" href="#ventilation-cooling-system" title="Permanent link">&para;</a></h1>
+<h1 id="ventilation-cooling">Ventilation &amp; Cooling<a class="headerlink" href="#ventilation-cooling" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
 <p>TBS-001 requires active ventilation and cooling to maintain safe operator working conditions and acceptable chemistry coating temperatures inside a sealed steel container. This report consolidates the complete ventilation and cooling specification: thermal analysis, fan system, evaporative cooler, light-safe duct penetrations, shade canopy, and operating modes.</p>
 <p>All ventilation and cooling components run at 12V DC from the solar/battery power system. See <a href="../electrical-report/">Electrical Report</a> for circuit assignments and wiring.</p>
@@ -2430,48 +2419,18 @@
 </blockquote>
 <hr />
 <h2 id="4-ventilation-fans">4. Ventilation Fans<a class="headerlink" href="#4-ventilation-fans" title="Permanent link">&para;</a></h2>
-<p>The original construction guide specifies 2 × 4" (100mm) inline fans. For operator comfort during processing in warm conditions, upgrade to 6" (150mm):</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Original</th>
-<th>Upgraded</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Fan diameter</td>
-<td>4" (100mm)</td>
-<td>6" (150mm)</td>
-</tr>
-<tr>
-<td>Airflow per fan</td>
-<td>~100 CFM</td>
-<td>~200 CFM</td>
-</tr>
-<tr>
-<td>Total airflow</td>
-<td>~200 CFM</td>
-<td>~400 CFM</td>
-</tr>
-<tr>
-<td>Power draw (each)</td>
-<td>~30W</td>
-<td>~60W</td>
-</tr>
-<tr>
-<td>Circuit fuse</td>
-<td>3A</td>
-<td>5A</td>
-</tr>
-<tr>
-<td>Additional cost</td>
-<td>—</td>
-<td>~$60</td>
-</tr>
-</tbody>
-</table>
+<p>For operator comfort during processing in warm conditions, but also to ensure there is fresh air exchange within the space.</p>
+<p>Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.</p>
+<p><strong>Sheet 1 — Container Ventilation Section</strong>
+<img alt="TBS-001 Ventilation — Sheet 1: Container Longitudinal Section" src="../assets/lighttrap-sheet1.png" /></p>
+<p>| Parameter | Specification |
+|-----------|---------|---------|
+| Fan diameter |  6" (150mm) |
+| Airflow per fan |  ~200 CFM |
+| Total airflow | ~400 CFM |
+| Power draw (each) |  ~60W |
+| Circuit fuse | 5A |
+| Cost | — | ~$60 |</p>
 <h3 id="41-fan-positions">4.1 Fan Positions<a class="headerlink" href="#41-fan-positions" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2508,6 +2467,9 @@
 <li><strong>Light path:</strong> No straight line of sight from exterior to interior at any incidence angle</li>
 <li><strong>Airflow resistance:</strong> Minimal — the L-path increases duct length by ~150mm but maintains full 150mm diameter cross-section at each turn</li>
 </ul>
+<p><strong>Sheet 2 — Fan &amp; Baffle Duct Assembly</strong>
+Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.</p>
+<p><img alt="TBS-001 Ventilation — Sheet 2: Fan &amp; Baffle Duct Assembly" src="../assets/lighttrap-sheet2.png" /></p>
 <p>The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct protrudes from the panel exterior face.</p>
 <hr />
 <h2 id="5-evaporative-cooler">5. Evaporative Cooler<a class="headerlink" href="#5-evaporative-cooler" title="Permanent link">&para;</a></h2>
@@ -2740,15 +2702,7 @@
 </table>
 <p>All circuits originate from the Blue Sea 5026 fuse block in the main electrical enclosure. See <a href="../electrical-report/">Electrical Report</a> §10 for full wiring specification.</p>
 <hr />
-<h2 id="9-engineering-drawings">9. Engineering Drawings<a class="headerlink" href="#9-engineering-drawings" title="Permanent link">&para;</a></h2>
-<p><strong>Sheet 1 — Container Ventilation Section</strong>
-Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.</p>
-<p><img alt="TBS-001 Ventilation — Sheet 1: Container Longitudinal Section" src="../assets/lighttrap-sheet1.png" /></p>
-<p><strong>Sheet 2 — Fan &amp; Baffle Duct Assembly</strong>
-Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.</p>
-<p><img alt="TBS-001 Ventilation — Sheet 2: Fan &amp; Baffle Duct Assembly" src="../assets/lighttrap-sheet2.png" /></p>
-<hr />
-<h2 id="10-parts-list">10. Parts List<a class="headerlink" href="#10-parts-list" title="Permanent link">&para;</a></h2>
+<h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2834,7 +2788,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tbody>
 </table>
 <hr />
-<h2 id="11-maintenance">11. Maintenance<a class="headerlink" href="#11-maintenance" title="Permanent link">&para;</a></h2>
+<h2 id="10-maintenance">10. Maintenance<a class="headerlink" href="#10-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2890,7 +2844,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tbody>
 </table>
 <hr />
-<h2 id="12-source-references">12. Source References<a class="headerlink" href="#12-source-references" title="Permanent link">&para;</a></h2>
+<h2 id="11-source-references">11. Source References<a class="headerlink" href="#11-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://acinfinity.com/cloudline-s6-quiet-inline-fan-6-with-speed-controller/">AC Infinity CLOUDLINE S6</a> — 6" inline duct fan specifications.</li>
 <li><a href="https://www.portacool.com/">Portacool Jetstream 110</a> — 12V DC evaporative cooler specifications.</li>

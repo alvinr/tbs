@@ -291,7 +291,7 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 ## 9. Engineering Drawings
 
 Three diagram sheets cover the equipment panel system. See
-[Engineering Diagrams](engineering-diagrams.md#18-equipment-panel--ibc-corridor-mounting)
+[Engineering Diagrams](engineering-diagrams.md#18-equipment-panel-ibc-corridor-mounting)
 for the full drawing set.
 
 **Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**

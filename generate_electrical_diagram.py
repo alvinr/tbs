@@ -226,12 +226,14 @@ def draw_sheet1():
             fontweight="bold", color=TITLE_COL)
     ax.plot([ex + 0.1, ex + ew - 0.1], [ey + eh - 0.55, ey + eh - 0.55],
             color=C_DIM, lw=0.7)
+    # NOTE: these values must match calculate_energy_budget.py and
+    # electrical-report.md §3.1.  Update all three when specs change.
     summary = [
         ("Battery capacity",    "200Ah × 12V = 2,400Wh  (LiFePO4, 100% DoD)"),
-        ("Energy per session",  "~1.5–1.8 kWh  (one print, ~3–4h active)"),
-        ("Prints per charge",   "1.3–1.6 full prints from a full charge"),
+        ("Energy per session",  "728 Wh (0.73 kWh)  — 3.0h continuous + pumps"),
+        ("Sessions per charge", "3.3 full prints from a full charge"),
         ("Solar yield",         "600W × 5.5h = 3,300 Wh/day  (Palm Springs)"),
-        ("Solar recharge",      "~1 day from flat with 600W array"),
+        ("Solar sessions/day",  "4.5 prints/day from solar alone"),
         ("Shore recharge",      "~14h from flat  (15A charger)"),
         ("Peak load",           "~475W simultaneous  (all circuits on)"),
     ]

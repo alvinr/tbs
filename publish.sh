@@ -75,6 +75,7 @@ MD_FILES=(
     "equipment-panel-report.md"
     "ceiling-rail-report.md"
     "ibc-stacking-report.md"
+    "ventilation-report.md"
     "all-diagrams.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"

@@ -109,41 +109,55 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 1.2.2 — Once set down, check level. Use 50mm timber sleepers under corner castings to correct — up to 50mm height difference is manageable without shimming the mechanism.
 - [ ] 1.2.3 — Open cargo doors and inspect interior (if not done in Phase 0.5).
 
-### 1.3 Light Trap — Revolving Drum Panel
-- [ ] 1.3.1 — Confirm the hinged drum panel is closed and all four Southco cam latches are engaged (quarter-turn, flush with panel face).
-- [ ] 1.3.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
-- [ ] 1.3.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
-- [ ] 1.3.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 2 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
+### 1.3 Mode Conversion — Transport to Operational
+**Time: ~5 minutes. Single-person operation.**
+
+The container arrives in transport mode: the stepped hinged panel is retracted 300mm inward on its ceiling-mounted HGR20 rails, and the left walkway section has been removed. Convert to operational mode before proceeding.
+
+- [ ] 1.3.1 — Release 2 Destaco toggle clamps at the transport position.
+- [ ] 1.3.2 — Pull the panel outward 300mm on the HGR20 rails until it contacts the operational end stops. Engage 2 Destaco toggle clamps at the operational position.
+- [ ] 1.3.3 — Install the left walkway section — place grating on the near/far walkway butt joint ends.
+- [ ] 1.3.4 — Swing the panel open 180° outward.
+- [ ] 1.3.5 — Retrieve the evaporative cooler from near walkway stowage (release 2 ratchet straps). Carry out through the door opening (~20 kg dry, one person).
+- [ ] 1.3.6 — Mount the cooler on the external duct coupling on the pinhole wall exterior. Fill reservoir from the Blue circuit IBC via external port X1.
+- [ ] 1.3.7 — Swing panel closed. Engage all 4 Southco cam latches (quarter-turn, flush with panel face).
+- [ ] 1.3.8 — Perform dark-adaptation check (see step 1.4.4 below).
+
+### 1.4 Light Trap — Revolving Drum Panel
+- [ ] 1.4.1 — Confirm the hinged drum panel is closed and all four Southco cam latches are engaged (quarter-turn, flush with panel face).
+- [ ] 1.4.2 — Check the EPDM perimeter gasket is seated with no gaps or folded sections.
+- [ ] 1.4.3 — Rotate the drum one full revolution by hand — it should turn freely with no binding or scraping.
+- [ ] 1.4.4 — Verify: step into the drum entry side and rotate through to the interior. Wait 2 minutes for dark adaptation. **No light should be visible at any baffle position.** Mark any leaks with chalk and seal with black silicone before proceeding.
 
 > **Safety:** Do not attempt to reverse direction inside the drum — the baffles only clear forward rotation. If unsure of orientation, continue rotating forward until you exit on the intended side.
 
-### 1.4 Solar Power System
-- [ ] 1.4.1 — Deploy solar panels on south-facing ground or roof rack, angled at 30° from horizontal (optimal for Palm Springs latitude).
-- [ ] 1.4.2 — Connect panels in parallel to the Victron SmartSolar MPPT 100/50 controller.
-- [ ] 1.4.3 — Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
-- [ ] 1.4.4 — Connect Blue Sea fuse block to battery positive busbar.
-- [ ] 1.4.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-- [ ] 1.4.6 — Verify each circuit fuse is seated: A (intake fan), B (exhaust fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
+### 1.5 Solar Power System
+- [ ] 1.5.1 — Deploy solar panels on south-facing ground or roof rack, angled at 30° from horizontal (optimal for Palm Springs latitude).
+- [ ] 1.5.2 — Connect panels in parallel to the Victron SmartSolar MPPT 100/50 controller.
+- [ ] 1.5.3 — Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
+- [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
+- [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
+- [ ] 1.5.6 — Verify each circuit fuse is seated: A (intake fan), B (exhaust fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
 
 > **Shore power backup:** If mains power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
-### 1.5 Ventilation and Cooling
-- [ ] 1.5.1 — Switch ON intake fan (circuit A) and exhaust fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
-- [ ] 1.5.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill cooler reservoir. Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
-- [ ] 1.5.3 — If using shade canopy: erect before solar noon. An 80% shade cloth over the container reduces interior temperature by 15–20°C.
+### 1.6 Ventilation and Cooling
+- [ ] 1.6.1 — Switch ON intake fan (circuit A) and exhaust fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
+- [ ] 1.6.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill cooler reservoir. Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
+- [ ] 1.6.3 — If using shade canopy: erect before solar noon. An 80% shade cloth over the container reduces interior temperature by 15–20°C.
 
 > **Heat safety:** Do not enter the container if the interior temperature exceeds 40°C. A digital thermometer hung inside (read through a small gap before entry) is standard practice. In Palm Springs summer without shade, the steel container body can reach 75°C — **shade and pre-cooling are not optional in these conditions.**
 
-### 1.6 Walkway and Tray (if not done in Phase 0.5)
-- [ ] 1.6.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
-- [ ] 1.6.2 — Lay fresh LDPE containment liner (see 0.5.5).
+### 1.7 Walkway and Tray (if not done in Phase 0.5)
+- [ ] 1.7.1 — Install perimeter walkway grating sections (see 0.5.4 for full procedure).
+- [ ] 1.7.2 — Lay fresh LDPE containment liner (see 0.5.5).
 
-### 1.7 Light-Leak Inspection
-- [ ] 1.7.1 — Latch the drum panel (all four Southco cam latches engaged).
-- [ ] 1.7.2 — Switch ON interior safelight (circuit D, **red LED only**). Enter through the revolving drum.
-- [ ] 1.7.3 — Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
-- [ ] 1.7.4 — Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
-- [ ] 1.7.5 — Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
+### 1.8 Light-Leak Inspection
+- [ ] 1.8.1 — Latch the drum panel (all four Southco cam latches engaged).
+- [ ] 1.8.2 — Switch ON interior safelight (circuit D, **red LED only**). Enter through the revolving drum.
+- [ ] 1.8.3 — Switch OFF safelight. Stand still for **15 minutes** minimum — full dark adaptation.
+- [ ] 1.8.4 — Inspect all seams, door perimeters, and duct penetrations. Even a pinprick leak will be visible.
+- [ ] 1.8.5 — Exit. Seal any leaks found with black silicone sealant or gaffer tape. Repeat inspection.
 
 **GO/NO-GO checkpoint:** All leaks sealed. Interior temperature below 35°C. Battery bank above 12.4V. Water system pressure confirmed.
 
@@ -340,15 +354,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
-- [ ] 5.6.1 — Open container cargo doors fully.
-- [ ] 5.6.2 — Release 2 Destaco toggle clamps at transport position.
-- [ ] 5.6.3 — Pull panel outward 300mm. Engage 2 Destaco toggle clamps at operational position.
-- [ ] 5.6.4 — Install left walkway section (place on butt joints).
-- [ ] 5.6.5 — Swing panel open 180°.
-- [ ] 5.6.6 — Remove evap cooler from near walkway stowage (release ratchet straps). Carry out through door opening.
-- [ ] 5.6.7 — Mount cooler on external duct coupling. Fill reservoir from Blue circuit IBC.
-- [ ] 5.6.8 — Swing panel closed. Engage all 4 Southco cam latches.
-- [ ] 5.6.9 — Perform dark-adaptation check (Phase 1.3, step 1.3.4).
+Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion--transport-to-operational). Steps are the reverse of §5.5: open cargo doors → slide panel out → install left walkway → deploy evaporative cooler → latch panel → dark-adaptation check.
 
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

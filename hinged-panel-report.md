@@ -9,7 +9,10 @@ simultaneously allows personnel access during operation without admitting daylig
 The hinged light-trap panel fills both roles: it seals the full 2,362 × 2,388 mm
 cargo door opening as a rigid structural panel, and incorporates a revolving drum
 light trap that permits operators to enter and exit the darkened interior at any
-time without opening the panel or breaking the light seal.
+time without opening the panel or breaking the light seal. In case of emergency, or to easy loading and unloading of materials, the whole hinged panel can open fully, being locked from the inside.
+
+**Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches (interior face)**
+![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
 **Design goals:**
 
@@ -29,6 +32,9 @@ time without opening the panel or breaking the light seal.
 
 The panel has three thickness zones to accommodate the revolving drum in the center
 while keeping the corners flush with the container walls.
+
+**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and S-Path Light Route**
+![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
 | Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
@@ -61,6 +67,10 @@ provides light-tight compression on all four sides.
 ---
 
 ## 3. Revolving Light-Trap Drum
+
+**Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation**
+![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
+
 
 ### 3.1 Specification
 
@@ -159,6 +169,9 @@ The entire panel (including the drum) slides 300 mm in the X direction on linear
 rails for transport mode conversion. This slide retracts the drum's exterior
 overhang behind the container door closure plane.
 
+**Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
+![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
+
 ### 5.1 Rail System
 
 | Parameter | Value |
@@ -228,43 +241,7 @@ for the sliding carriage.
 
 ---
 
-## 8. Transport Mode Conversion
-
-Single-person operation, approximately 5 minutes.
-
-**Operational → transport:**
-
-1. Release 4 × cam latches (interior face)
-2. Swing panel open 180°
-3. Disconnect evaporative cooler from exterior duct coupling
-4. Carry cooler through door opening (~20 kg dry) and place on near walkway
-5. Secure cooler with 2 × ratchet straps
-6. Swing panel closed
-7. Release 2 × Destaco toggle clamps at operational position
-8. Slide panel inward 300 mm
-9. Lock at transport position with 2 × Destaco toggle clamps
-10. Close container doors
-
-**Transport → operational:** reverse sequence.
-
----
-
-## 9. Ventilation Integration
-
-Two ventilation fans are integrated into the panel corner zones.
-
-| Fan | Position | Function |
-|-----|----------|----------|
-| Fan A (intake) | Near corner zone, low position | Fresh air intake during processing |
-| Fan B (exhaust) | Far corner zone, high position (Z=1,800 mm) | Exhaust humid air during drying |
-
-Both fans are 6" (150 mm) diameter, 12V DC, mounted flush in the 40 mm corner
-zone panels. The fan bodies do not protrude beyond either panel face. See
-[Electrical Report](electrical-report.md) for wiring and circuit assignments.
-
----
-
-## 10. Engineering Drawings
+## 8. Engineering Drawings
 
 Four construction drawings cover the panel and drum assembly:
 
@@ -284,7 +261,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 11. Parts List
+## 9. Parts List
 
 ### 11.1 Panel Structure
 
@@ -348,7 +325,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 12. Maintenance Schedule
+## 10. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -366,7 +343,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 ---
 
-## 13. Source References
+## 11. Source References
 
 | Item | Source |
 |------|--------|

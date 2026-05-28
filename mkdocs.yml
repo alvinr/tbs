@@ -64,8 +64,9 @@ nav:
       - "Equipment Panel & Plumbing": equipment-panel-report.md
       - "IBC Stacking System": ibc-stacking-report.md
       - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
-    - Electrcial Systems:
+    - Electrical Systems:
       - "Electrical & Systems": electrical-report.md
+      - "Ventilation & Cooling": ventilation-report.md
     - Film Plane & Pinhole:
       - "Pinhole Fab": fabrication-drawings.md
       - "Film Plane Mechanism": film-plane-mechanism-report.md

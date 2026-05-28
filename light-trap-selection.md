@@ -2,13 +2,13 @@
 <!-- © 2026 Alvin Richards -->
 # Revolving Light Trap — Selection & Specification
 
-## 1. Context
+## 1. Purpose
+
+Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
 The cargo door end of TBS-001 is sealed by a stepped hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756mm and Yd=1,606–2,362mm) and 120mm thick at the center zone (Yd=756–1,606mm) where the revolving light trap drum is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
 
 The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails, 8 carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. For transport, the panel slides inward 300mm — clearing the container doors for closure. Single-person operation, ~5 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6 for sliding carriage specification.
-
-Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight.
 
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches (interior face)**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)

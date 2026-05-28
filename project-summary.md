@@ -76,7 +76,8 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |
 | [Operating Manual](operating-manual.md) | Single-operator step-by-step workflow — coating, exposure, development, cleanup |
-| [Electrical & Systems](electrical-report.md) | Power architecture, revolving drum light trap, cooling, ventilation, wiring diagrams |
+| [Electrical & Systems](electrical-report.md) | Power architecture, revolving drum light trap, lighting, wiring diagrams |
+| [Ventilation & Cooling](ventilation-report.md) | Fan system, evaporative cooler, light-safe baffle ducts, shade canopy, and operating modes |
 | [Master Shopping List](master-shopping-list.md) | All components consolidated by build area — electrical, water, chemistry, drum light trap, cooling |
 | [License](licensing.md) | GNU AGPLv3 — © 2026 Alvin Richards |
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |

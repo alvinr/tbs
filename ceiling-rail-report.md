@@ -31,6 +31,10 @@ Two HGR20 linear rails are mounted to the container ceiling, one on each side wa
 line (Yd ≈ 30 mm near wall, Yd ≈ 2,332 mm far wall). Each rail runs in the
 X direction along the ceiling surface at Z=2,388 mm.
 
+**Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
+![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
+
+
 | Parameter | Value |
 |-----------|-------|
 | Rail model | HGR20 (20 mm profile linear guide rail) |
@@ -70,6 +74,10 @@ suspension bracket.
 ### 2.4 Assembly Stack
 
 From ceiling down, the suspension assembly stacks as follows:
+
+**Sheet 2 — Detail view (≈2:1): Rail/carriage/bracket assembly, mounting plate, ball bearings, panel connection**
+![TBS-001 Ceiling Rail — Sheet 2: Rail Detail](assets/ceiling-rail-sheet2.png)
+
 
 | Layer | Component | Thickness (mm) |
 |-------|-----------|---------------|
@@ -245,21 +253,7 @@ from the door frame. Light sealing is not required during transport or loading.
 
 ---
 
-## 9. Engineering Drawings
-
-Two construction drawings cover the ceiling rail suspension system:
-
-**Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
-![TBS-001 Ceiling Rail — Sheet 1: Side Elevation](assets/ceiling-rail-sheet1.png)
-
-**Sheet 2 — Detail view (≈2:1): Rail/carriage/bracket assembly, mounting plate, ball bearings, panel connection**
-![TBS-001 Ceiling Rail — Sheet 2: Rail Detail](assets/ceiling-rail-sheet2.png)
-
-Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §13.
-
----
-
-## 10. Parts List
+## 9. Parts List
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
@@ -277,7 +271,7 @@ Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §1
 
 ---
 
-## 11. Maintenance Schedule
+## 10. Maintenance Schedule
 
 | Interval | Task |
 |----------|------|
@@ -292,7 +286,7 @@ Full drawings also appear in [Engineering Overview](engineering-diagrams.md) §1
 
 ---
 
-## 12. Source References
+## 11. Source References
 
 | Item | Source |
 |------|--------|

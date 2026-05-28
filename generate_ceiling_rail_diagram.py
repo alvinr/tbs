@@ -557,19 +557,19 @@ def sheet2():
     comp_top = sy(5)
     LINE_H = sy(6)   # tighter line spacing
 
-    comp_lines = [
-        "COMPONENT LIST (PER RAIL):",
-        "1× HGR20 rail, 500mm length",
-        "2× HGH20CA carriage blocks",
-        "2× Suspension brackets (10mm MS)",
-        "4× M8×30 hex bolts (rail→plate)",
-        "4× M8×25 hex bolts (carriage→bracket)",
-        "4× M10×35 hex bolts (bracket→panel)",
-        "1× 6mm mounting plate (welded)",
-    ]
-    draw_notes(ax, comp_lines, comp_x, comp_top, spacing=LINE_H,
-               fs=7, title_fs=7.5, color=C_DIM, title_color=C_OUT,
-               font=FONT, width=sx(W_RANGE * 0.4))
+#     comp_lines = [
+#         "COMPONENT LIST (PER RAIL):",
+#         "1× HGR20 rail, 500mm length",
+#         "2× HGH20CA carriage blocks",
+#         "2× Suspension brackets (10mm MS)",
+#         "4× M8×30 hex bolts (rail→plate)",
+#         "4× M8×25 hex bolts (carriage→bracket)",
+#         "4× M10×35 hex bolts (bracket→panel)",
+#         "1× 6mm mounting plate (welded)",
+#     ]
+#     draw_notes(ax, comp_lines, comp_x, comp_top, spacing=LINE_H,
+#                fs=7, title_fs=7.5, color=C_DIM, title_color=C_OUT,
+#                font=FONT, width=sx(W_RANGE * 0.4))
 
     note_lines = [
         "NOTES:",
@@ -578,7 +578,7 @@ def sheet2():
         f"3. Panel mass ≈ 180 kg (4 blocks)",
         f"4. Safety factor > 10×",
     ]
-    notes_top = comp_top - len(comp_lines) * LINE_H
+    notes_top = comp_top * LINE_H - 200
     draw_notes(ax, note_lines, comp_x, notes_top, spacing=LINE_H,
                fs=7, title_fs=7.5, color=C_DIM, title_color=C_OUT,
                font=FONT, width=sx(W_RANGE * 0.4))

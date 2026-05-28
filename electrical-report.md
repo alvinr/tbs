@@ -207,6 +207,8 @@ All equipment clears the optical cone at every depth — no vignetting. See [Equ
 
 ## 7. Cooling System
 
+> **Full specification:** See [Ventilation & Cooling Report](ventilation-report.md) for the complete consolidated system design, parts list, and maintenance schedule.
+
 ### 7.1 The Problem
 A 20ft ISO steel container in direct Palm Springs summer sun (ambient 40–45°C, direct irradiance 1,000 W/m²) reaches interior temperatures of 65–75°C without intervention. An operator cannot safely work under 40°C interior. Chemistry coating is impaired above 35°C.
 
@@ -241,6 +243,9 @@ The cooler is mounted externally on the pinhole wall exterior. Cooled air enters
 - **Exterior:** cooler unit direct-coupled to duct with weatherproof housing
 
 ## 8. Ventilation Upgrade
+
+> **Full specification:** See [Ventilation & Cooling Report](ventilation-report.md) for fan positions, baffle duct construction, operating modes, and panel integration details.
+
 The original construction guide specifies 2 × 4" (100mm) inline fans. For operator comfort during processing in warm conditions, upgrade to 6" (150mm):
 
 | Parameter | Original | Upgraded |

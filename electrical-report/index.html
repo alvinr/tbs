@@ -1230,10 +1230,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-impact-on-existing-design" class="md-nav__link">
+  <a href="#9-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Impact on Existing Design
+        9. Maintenance
       
     </span>
   </a>
@@ -1241,21 +1241,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-maintenance" class="md-nav__link">
+  <a href="#10-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Maintenance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-source-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Source References
+        10. Source References
       
     </span>
   </a>
@@ -2652,7 +2641,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 </tr>
 </tbody>
 </table>
-<p><strong>Siting:</strong> deploy panels on south-facing ground adjacent the container. Fro example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.</p>
+<p><strong>Siting:</strong> deploy panels on south-facing ground adjacent the container. For example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.</p>
 <h2 id="5-charge-controller-and-battery-bank">5. Charge Controller and Battery Bank<a class="headerlink" href="#5-charge-controller-and-battery-bank" title="Permanent link">&para;</a></h2>
 <h3 id="51-charge-controller">5.1 Charge Controller<a class="headerlink" href="#51-charge-controller" title="Permanent link">&para;</a></h3>
 <table>
@@ -2689,7 +2678,7 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 </tr>
 </tbody>
 </table>
-<p>The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 10).</p>
+<p>The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. The main high-current loads connect via the Blue Sea fuse block (see Section 7).</p>
 <h3 id="52-battery-bank">5.2 Battery Bank<a class="headerlink" href="#52-battery-bank" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2928,6 +2917,9 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 - Blue Sea 5026 12-circuit fuse block with busbars
 - Battery positive and negative busbars with 200A main fuse
 - Shore charger output terminals</p>
+<p><strong>Sheet 2 — Container Wiring Layout</strong>
+Top-down floor plan (1:60 scale) showing all component positions, conduit routes, penetrations, drum panel, and connection points.</p>
+<p><img alt="TBS-ELEC Sheet 2 — Container Wiring Layout" src="../assets/electrical-sheet2.png" /></p>
 <h3 id="72-circuit-list">7.2 Circuit List<a class="headerlink" href="#72-circuit-list" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -3186,39 +3178,7 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 </tr>
 </tbody>
 </table>
-<h2 id="9-impact-on-existing-design">9. Impact on Existing Design<a class="headerlink" href="#9-impact-on-existing-design" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Existing element</th>
-<th>Change required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ventilation fans (4")</td>
-<td>Replace with 6" units — same baffle design, same penetration locations</td>
-</tr>
-<tr>
-<td>12V fuse block ($50 item in water system BOM)</td>
-<td>Superseded by Blue Sea 5026 — consolidates all circuits in one panel</td>
-</tr>
-<tr>
-<td>Battery-powered safelight</td>
-<td>Wired to circuit D — no separate battery required</td>
-</tr>
-<tr>
-<td>Water pump power (P-01–P-04; P-03 relocated to IBC corridor)</td>
-<td>Now circuit C on main fuse block — remove standalone 12V supply listed in water report. P-03 wire run is longer (~8m to IBC corridor)</td>
-</tr>
-<tr>
-<td>Container doors</td>
-<td>Replaced by hinged drum panel — cargo doors removed from their hinges for transport</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="10-maintenance">10. Maintenance<a class="headerlink" href="#10-maintenance" title="Permanent link">&para;</a></h2>
+<h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -3282,7 +3242,7 @@ Interior elevation of the pinhole wall face (Yd=0), looking from inside the cont
 </tbody>
 </table>
 <hr />
-<h2 id="11-source-references">11. Source References<a class="headerlink" href="#11-source-references" title="Permanent link">&para;</a></h2>
+<h2 id="10-source-references">10. Source References<a class="headerlink" href="#10-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://www.victronenergy.com/solar-charge-controllers/smartsolar-100-30-100-50">Victron SmartSolar MPPT 100/50</a> — MPPT charge controller specifications.</li>
 <li><a href="https://www.victronenergy.com/chargers/blue-smart-ip65-charger">Victron Blue Smart IP65 12/15</a> — Shore power backup charger specifications.</li>

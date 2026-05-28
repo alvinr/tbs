@@ -22,6 +22,11 @@ A dedicated water tap (TAP-01) on the pinhole wall at X=3,729mm, Z=1,150mm provi
 
 The shelf occupies the right corner of the processing area, just inside the walkway perimeter. It sits between the near walkway outer edge (Yd=300mm) and the processing tray far side (Yd=900mm), immediately left of the right walkway (X=3,729–4,329mm). The operator accesses the shelf from the near walkway by turning 90° to face the tray side. No walkway is obstructed.
 
+
+![Chemistry Prep Shelf — Sheet 1: Plan View](assets/shelf-sheet1.png)
+
+Top-down view showing the shelf position (X=3,729–4,329mm, Yd=300–600mm) relative to the near walkway, right walkway, processing tray, and optical cone boundary. The shelf is entirely outside the optical cone and inside the walkway perimeter — no walkway overlap.
+
 ### 2.1 Optical Cone Clearance
 
 At Yd=450mm (shelf centroid), the optical cone right boundary is:
@@ -50,6 +55,13 @@ The shelf left edge (X=3,729mm) is 708mm outside the optical cone. The shelf can
 
 ### 3.1 Shelf Dimensions
 
+### Sheet 3 — Hanger Connection Detail
+
+Detail of one hanger rod connection showing: ceiling corrugation rib, ceiling plate (100×60×6mm) with M8 through-bolts, M10 threaded rod with double-nut leveling, shelf SHS frame cross-section, and 15mm spill guard lip.
+
+![Chemistry Prep Shelf — Sheet 3: Hanger Connection Detail](assets/shelf-sheet3.png)
+
+
 Single ceiling-suspended platform:
 
 | Parameter | Value |
@@ -77,6 +89,13 @@ Single ceiling-suspended platform:
 ### 3.3 Ceiling Mounting
 
 The hanger system replicates the right walkway ceiling attachment:
+
+### Sheet 2 — Section Elevation
+
+Cross-section at X=4,029mm (shelf midpoint) looking along the X-axis. Shows the ceiling-hung hanger rods (1,363mm), shelf platform at H=1,025mm, operator silhouette on the near walkway, and the processing tray at floor level below.
+
+![Chemistry Prep Shelf — Sheet 2: Section Elevation](assets/shelf-sheet2.png)
+
 
 - **Ceiling plates:** 100×60×6mm mild steel plate, one per hanger rod. Each plate spans one ceiling corrugation rib.
 - **Attachment:** 2× M8×30mm hex bolts per plate, through-bolted to the ceiling corrugation rib with backing washers on the exterior (roof side).

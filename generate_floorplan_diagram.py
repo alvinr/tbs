@@ -250,7 +250,7 @@ def floor_plan():
     # ── Wall penetrations ─────────────────────────────────────────────────────
     # Fan A — INTAKE: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), LOW (H=600mm)
     penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(130, -30))
-    # Fan B — EXHAUST: cargo door end wall (X=0), far-wall corner (Yd=FAN_B_YD=2287mm), HIGH (H=1800mm)
+    # Fan B — EXHAUST: cargo door end wall (X=0), centered between drum and far wall (Yd=FAN_B_YD=1959mm), HIGH (H=1800mm)
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-130, -30))
 
     # ── Hinged panel — transport position (ghost, slid 300mm into container) ──

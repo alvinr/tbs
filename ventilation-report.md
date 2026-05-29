@@ -61,7 +61,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan A intake at th
 | Fan | Position | Mounting | Function |
 |-----|----------|----------|----------|
 | Fan A (intake) | Far end wall (X=5,893mm), low position | Flush-mounted in wall penetration | Fresh air intake — draws cooler air near floor level |
-| Fan B (exhaust) | Hinged panel, far corner zone (Yd=2,287mm, Z=1,800mm) | Flush-mounted in 40mm corner zone panel | Exhaust humid air during processing and drying |
+| Fan B (exhaust) | Hinged panel, far corner zone (Yd=1,959mm, Z=1,800mm) | Flush-mounted in 40mm corner zone panel | Exhaust humid air during processing and drying |
 
 Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: low intake at the far end → high exhaust at the cargo door end.
 

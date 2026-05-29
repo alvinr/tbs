@@ -491,7 +491,7 @@ def sheet2():
 
     # ── Ventilation — Fan B (exhaust) only: this is the cargo door end wall (X=0) ──
     # Fan A (intake) is on the opposite end wall (X=C_LEN) — not shown in this view.
-    # Fan B: far-wall corner (Yd=FAN_B_YD=2287mm), HIGH position (H=FAN_B_H=1800mm).
+    # Fan B: centered between drum and far wall (Yd=FAN_B_YD=1959mm), HIGH position (H=FAN_B_H=1800mm).
     FAN_R2 = FAN_DIAM // 2
     ax.add_patch(plt.Circle((FAN_B_YD, FAN_B_H), FAN_R2,
                  facecolor=C_FILL_INT, edgecolor=C_DIM, linewidth=1.0,

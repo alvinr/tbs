@@ -528,7 +528,7 @@ FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
 # Yd (width) positions — cross-ventilation diagonal: intake near-wall corner,
 # exhaust far-wall corner.
 FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
-FAN_B_YD    = C_WID - FAN_DIAM // 2  # = 2287mm — far-wall corner (panel face)
+FAN_B_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1959mm — centered between drum far edge and far wall
 
 # Baffle duct (one per fan, welded galvanized steel)
 # Fan A: duct extends into container interior from wall
@@ -541,7 +541,7 @@ DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869 mm ✓
 # Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
 # Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
-# Fan at Yd=2287mm: cone at Yd=2287 is well above X=625, so no cone intrusion.
+# Fan at Yd=1959mm: cone at Yd=1959 is well above X=625, so no cone intrusion.
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40 mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────

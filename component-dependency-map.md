@@ -113,14 +113,14 @@ compression latches, Ø750mm revolving drum aperture.*
 | Fan A center height AFF (low) | 600 mm | `FAN_A_H` |
 | Fan B center height AFF (high) | 1,800 mm | `FAN_B_H` |
 | Fan A Yd position (near-wall corner) | 75 mm | `FAN_A_YD` |
-| Fan B Yd position (far-wall corner) | 2,287 mm | `FAN_B_YD` |
+| Fan B Yd position (centered drum–wall) | 1,959 mm | `FAN_B_YD` |
 | Baffle duct depth | 300 mm | `DUCT_DEPTH` |
 | Baffle duct height | 200 mm | `DUCT_HEIGHT` |
 | Fan A shadow margin (from cone) | 869 mm | `FAN_A_MARGIN` |
 | Fan B shadow margin (from cone) | 40 mm | `FAN_B_MARGIN` |
 
 *Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), intake, Circuit A,
-low position. Fan B — identical fan, mounted on hinged panel (far corner zone, Yd=2,287mm),
+low position. Fan B — identical fan, mounted on hinged panel (far corner zone, Yd=1,959mm),
 exhaust, Circuit B, high position. Fan A mounts on interior face of a 300mm deep light-safe
 baffle duct with 2 offset steel baffles (65% height each, S-path); exterior face has a passive
 weatherproof louvre grille. Fan B has the same baffle duct protruding from the panel exterior

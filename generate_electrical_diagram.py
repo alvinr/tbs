@@ -251,7 +251,7 @@ def draw_sheet1():
         ("A", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Far end wall (X=5,893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
         ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
-         "Cargo door end wall (X=0)  |  high position  |  Yd=2,287mm corner", C_ALUM),
+         "Cargo door end wall (X=0)  |  high position  |  Yd=1,959mm", C_ALUM),
         ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
          "Equipment panel, IBC corridor (Yd=1,046–1,316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
@@ -679,7 +679,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Fan B — EXHAUST: LEFT short wall = cargo door end (X=0), Yd=2287mm far-wall corner
+    # Fan B — EXHAUST: LEFT short wall = cargo door end (X=0), Yd=1959mm centered between drum and far wall
     FB_X = OX + wt/2
     FB_Y = OY + wt + FAN_B_YD * S_yd
     ax.add_patch(plt.Circle((FB_X, FB_Y), 110,
@@ -871,7 +871,7 @@ def draw_sheet2():
         ("A",     C_ALUM,    "INTAKE FAN — Cct A",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5,893mm)  |  Yd=75mm"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=2,287mm"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=1,959mm"),
         ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",
          f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR:,}–{CORRIDOR_YD_NEAR + CORRIDOR_W:,}mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",

@@ -74,20 +74,20 @@ C_RED   = '#CC0000'   # section-cut arrows
 # SHEET 1 — FRONT VIEWS
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig1, ax1 = plt.subplots(figsize=(28, 20))
+fig1, ax1 = plt.subplots(figsize=(28, 14))
 fig1.patch.set_facecolor('white')
 ax1.set_facecolor('white')
 ax1.set_aspect('equal')
 ax1.axis('off')
 ax1.set_xlim(0, 5600)
-ax1.set_ylim(0, 4000)
+ax1.set_ylim(0, 2800)
 
 SC = 1   # mm-first — AXES IN mm
 
 def s(mm): return mm * SC
 
 # ── Border and title block ────────────────────────────────────────────────────
-draw_rect(ax1, 40, 40, 5520, 3920, lw=1.5, color='black', fc='white')
+draw_rect(ax1, 40, 40, 5520, 2720, lw=1.5, color='black', fc='white')
 draw_rect(ax1, 40, 40, 5520, 560, lw=1.0, color='black', fc='#F0F0F0')  # parts list
 draw_rect(ax1, 3840, 40, 1720, 560, lw=1.0, color='black', fc='#F5F5F5')  # title block
 
@@ -138,9 +138,9 @@ ax1.plot([48, 3792], [520, 520], color='black', lw=0.5)
 
 # ── View titles ───────────────────────────────────────────────────────────────
 view_titles = [
-    (760, 2840, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
-    (2144, 2840, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
-    (3528, 2840, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
+    (760, 2320, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
+    (2144, 2320, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
+    (3528, 2320, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
 ]
 for tx, ty, t1, t2 in view_titles:
     ax1.text(tx, ty, t1, ha='center', fontsize=7.5, fontweight='bold', color='black')
@@ -149,7 +149,7 @@ for tx, ty, t1, t2 in view_titles:
 # ══════════════════════════════════════════════════════════
 # ITEM 1: WALL FRAME  (centre = 95, 290)
 # ══════════════════════════════════════════════════════════
-cx1, cy1 = 760, 2320
+cx1, cy1 = 760, 1800
 
 # Outer plate outline
 hw = s(PL_OD/2)
@@ -222,7 +222,7 @@ ax1.text(cx1, cy1 - hw - 80, '1', ha='center', va='center', fontsize=10,
 # ══════════════════════════════════════════════════════════
 # ITEM 2: PINHOLE PLATE  (centre = 268, 290)
 # ══════════════════════════════════════════════════════════
-cx2, cy2 = 2144, 2320
+cx2, cy2 = 2144, 1800
 
 draw_rect(ax1, cx2 - hw, cy2 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -289,7 +289,7 @@ ax1.text(cx2, cy2 - hw - 80, '2', ha='center', va='center', fontsize=10,
 # ══════════════════════════════════════════════════════════
 # ITEM 3: LENS PLATE  (centre = 441, 290)
 # ══════════════════════════════════════════════════════════
-cx3, cy3 = 3528, 2320
+cx3, cy3 = 3528, 1800
 
 draw_rect(ax3 := ax1, cx3 - hw, cy3 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -364,7 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-draw_notes(ax1, notes, 80, 1400, spacing=48, fs=7, width=5440)
+draw_notes(ax1, notes, 80, 1300, spacing=48, fs=7, width=5440)
 
 plt.tight_layout(pad=0)
 

@@ -88,7 +88,7 @@ Source report: [Electrical & Systems Report](electrical-report.md) §5.8.
 ## 4. Pinhole Aperture Plate
 
 Fabrication drawings for the interchangeable pinhole plate (TBS-P01).
-Source report: [Pinhole Fab](fabrication-drawings.md).
+Source report: [Pinhole Report](pinhole-report.md).
 
 **Sheet 1 — Assembly overview and plate dimensions**
 ![TBS-001 Pinhole Plate — Sheet 1](assets/plate-drawing-sheet1.png)

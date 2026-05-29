@@ -55,7 +55,7 @@ MD_FILES=(
     "water-system-report.md"
     "film-plane-mechanism-report.md"
     "project-cost-breakdown.md"
-    "fabrication-drawings.md"
+    "pinhole-report.md"
     "tilt-swing-board-report.md"
     "funding-proposal.md"
     "operating-manual.md"
@@ -288,7 +288,7 @@ case "$MODE" in
         # Check we're in a git repo with a remote before attempting deploy
         if ! git -C "$SCRIPT_DIR" rev-parse --git-dir &>/dev/null; then
             warn "Not a git repository. Falling back to --build mode."
-            warn "To deploy to GitHub Pages, initialise a git repo and add a remote:"
+            warn "To deploy to GitHub Pages, initialize a git repo and add a remote:"
             warn "  git init && git remote add origin https://github.com/you/tbs.git"
             python3 -m mkdocs build --clean
             info "Built to: $SCRIPT_DIR/site/"

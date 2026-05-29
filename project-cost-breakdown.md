@@ -250,7 +250,7 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | 3mm mild steel sheet, 1,200×2,400mm (×2) | $140 | $160 | $180 | Hot-rolled A36 — drum shell and internal baffles; Pacific Coast Steel, Santa Fe Springs CA |
-| 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service centre |
+| 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service center |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
 | Seals — 12mm neoprene wiper strip, 20mm compression strip, silicone | $50 | $60 | $70 | McMaster-Carr #93855K6, #8635K31, #7587A3 |
 | Hardware — SS grab rail (×1 interior, welded bracket), M10 stainless bolts (14 off) | $60 | $75 | $90 | McMaster-Carr / Fastenal |

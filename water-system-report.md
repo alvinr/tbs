@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Cyanotype Processing Water System
+# Water Processing Report
 
 ## 1. Purpose
 
@@ -35,10 +35,10 @@ When a cyanotype print is washed, the water picks up:
 
 | Compound | Source | Notes |
 |----------|--------|-------|
-| Ferric ammonium citrate (FAC) | Unexposed sensitiser | Water-soluble, pale yellow; low toxicity |
-| Potassium ferricyanide | Sensitiser component | Water-soluble, yellow-orange; low acute toxicity |
+| Ferric ammonium citrate (FAC) | Unexposed sensitizer | Water-soluble, pale yellow; low toxicity |
+| Potassium ferricyanide | Sensitizer component | Water-soluble, yellow-orange; low acute toxicity |
 | Prussian blue particles | Exposed image pigment wash-off | Fine blue solid particles, ~1–10 micron |
-| Iron(III) compounds | Oxidation products | Colour the water blue-grey |
+| Iron(III) compounds | Oxidation products | Color the water blue-grey |
 
 **pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH >8) must be avoided — they accelerate slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.
 
@@ -193,6 +193,9 @@ Print washing takes place inside the container on a shallow processing tray that
 
 The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded to the container floor beneath the tray. No risers, no under-tray plumbing — the tray sits directly on the shims.
 
+**Sheet 3 — Processing Tray Drainage Plan**
+![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
+
 | Parameter | Value |
 |-----------|-------|
 | Material | HDPE flat bar, 50mm wide |
@@ -205,6 +208,9 @@ The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded 
 **Sump well and pickup:**
 
 Instead of a through-floor drain fitting, the tray has a shallow sump well pressed into the floor at the low point. P-04 draws water from the sump via a suction pickup tube — no penetration of the tray floor or the container floor.
+
+**Sheet 4 — Processing Tray Drain Cross-Section Elevation**
+![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
 
 | Parameter | Value |
 |-----------|-------|
@@ -245,6 +251,8 @@ The processing tray is permanently installed — it remains in place during both
 ### 5.5 Spray Bar Assembly — Gantry Design
 
 The spray bar delivers Blue (clean) water evenly across the processing tray during print washing. The operator slides the bar along the tray (Yd direction, from film-plane side toward the pinhole wall), flooding the print surface progressively.
+
+![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
 **Design concept:** The beam spans from 30mm inside the left tray lip to 30mm inside the right tray lip (X=200 to X=4,599, span=4,399mm), extending under the walkway grating at each end. At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. A 1" PVC Sch 40 pipe inside the aluminum SHS bore serves as the spray pipe — water flows through the PVC pipe and exits through 2mm holes drilled in the pipe wall, aligned with 12mm apertures in the beam bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
 

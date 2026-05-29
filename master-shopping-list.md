@@ -78,7 +78,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Section total: ~$1,000–$1,350**
 
 ## 3. Pinhole Optics Plate
-*Source: `fabrication-drawings.md`, `pinhole-camera-construction.md`*
+*Source: `pinhole-report.md`, `pinhole-camera-construction.md`*
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
@@ -287,7 +287,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | 3mm mild steel sheet, 1,200×2,400mm | Hot-rolled A36 — drum shell and internal baffles | 2 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$160 |
 | 5mm steel plate (offcut) | Top and bottom drum caps, flanged | ~0.5m² | Pacific Coast Steel / Metal Supermarkets SoCal | ~$40 |
-| 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service centre | ~$30 |
+| 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
 
 ### Bearings
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -409,7 +409,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Shade canopy
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 80% shade cloth 20×10ft | UV-stabilised, over container roof | 1 | Amazon / Farm supply | ~$80 |
+| 80% shade cloth 20×10ft | UV-stabilized, over container roof | 1 | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + T-fittings | 1 lot | Home Depot | ~$120 |
 **Shade canopy subtotal: ~$200**
 
@@ -528,5 +528,5 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 - [Chemistry Shopping List](chemistry-shopping-list.md) — detailed chemistry quantities for all alternative processes (gum bichromate, Van Dyke Brown, salt print)
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — engineering drawings for the 4-corner actuation system
 - [Processing Water System](water-system-report.md) — three-circuit water system with filter skid design
-- [Cost Breakdown](project-cost-breakdown.md) — full itemised build cost across three deployment scenarios
+- [Cost Breakdown](project-cost-breakdown.md) — full itemized build cost across three deployment scenarios
 - [Operating Manual](operating-manual.md) — step-by-step single-operator workflow from chemistry prep to cleanup

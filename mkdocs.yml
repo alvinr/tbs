@@ -68,7 +68,7 @@ nav:
       - "Electrical": electrical-report.md
       - "Ventilation & Cooling": ventilation-report.md
     - Film Plane & Pinhole:
-      - "Pinhole Fab": fabrication-drawings.md
+      - "Pinhole Report": pinhole-report.md
       - "Film Plane Mechanism": film-plane-mechanism-report.md
       - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - Misc:

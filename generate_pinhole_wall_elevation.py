@@ -22,6 +22,7 @@ from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PH_X, PH_H, PH_D,
     EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
+    EVAP_STOW_X, EVAP_W, EVAP_H, EVAP_STOW_Z,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
@@ -445,6 +446,12 @@ leader(ax, sx(EVAP_DUCT_X), sz(EVAP_DUCT_Z - duct_r),
        sx(EVAP_DUCT_X + 100), sz(EVAP_DUCT_Z - 200),
        "EVAP COOLER DUCT\n(EXTERNAL UNIT)", fs=4.5, color=C_DIM,
        ha="center", va="top", lw=0.6, zorder=10, font=FONT)
+
+# ── Evaporative cooler — transport stowage ghost outline ───────────────────
+equip_block(EVAP_STOW_X, EVAP_STOW_Z, EVAP_W, EVAP_H,
+            "EVAP COOLER\n(TRANSPORT\nPOSITION ONLY)", C_EVAP,
+            ls="--", alpha=0.25, lw=1.0, zorder=3, label_fs=4.5,
+            label_color="#666666")
 
 # ── External power panel (flush-mount, exterior — dashed outline) ──────────
 equip_block(PWR_PANEL_X, PWR_Z_LO, PWR_PANEL_W, PWR_PANEL_H,

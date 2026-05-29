@@ -112,7 +112,7 @@ SUMP_YD = PROC_TRAY_YD_NEAR  # 80mm
 
 # Duct penetration for external evap cooler
 DUCT_X = 1200
-DUCT_Z = 600
+DUCT_Z = 2100
 DUCT_DIAM = 200
 
 # Walkway widening zone
@@ -363,7 +363,7 @@ ax.text(sx(DUCT_X), sz(DUCT_Z), "DUCT\n200Ø", ha="center", va="center",
         fontsize=4, color=C_OUT, fontweight="bold", zorder=8, **FONT)
 leader(ax, sx(DUCT_X) + duct_r + 15, sz(DUCT_Z),
        sx(DUCT_X) + 210, sz(DUCT_Z) + 120,
-       "EVAP COOLER DUCT\nTO EXTERNAL UNIT\n(200mm Ø, Z=600)\nMOTORIZED DAMPER",
+       "EVAP COOLER DUCT\nTO EXTERNAL UNIT\n(200mm Ø, Z=2100)\nMOTORIZED DAMPER",
        fs=4.5, color=C_NEW, font=FONT)
 
 # ── 7. Spray bar feed pipe (walkway level) ────────────────────────────────
@@ -424,7 +424,7 @@ draw_dim_v(ax, sx(DUCT_X - 200), sz(C_HGT), sz(DUCT_Z - duct_r),
 # ── 13. Elevation notes ──────────────────────────────────────────────────
 notes = [
     "PROPOSED CHANGES",
-    "1. Evap cooler → EXTERNAL. 200mm duct at X=1200, Z=600 with motorized damper.",
+    "1. Evap cooler → EXTERNAL. 200mm duct at X=1200, Z=2100 with motorized damper.",
     "2. EP raised from Z=900–1500 to Z=1600–2200. Same X position, same wiring.",
     "3. Battery → slim profile (120mm depth, was 220mm). Same X position.",
     f"4. Pump manifold + ACC-01 + 3× filter housings → panel in IBC corridor (Yd={PANEL_YD_NEAR}).",

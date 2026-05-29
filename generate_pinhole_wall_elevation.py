@@ -22,7 +22,7 @@ from tbs_constants import (
     C_LEN, C_WID, C_HGT,
     PH_X, PH_H, PH_D,
     EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
-    EVAP_STOW_X, EVAP_W, EVAP_H, EVAP_STOW_Z,
+    EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
@@ -683,7 +683,7 @@ notes = [
     f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),",
     "   from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height).",
     "   Chemistry tap branch (¾\") rises to shelf.",
-    "2. Evap cooler relocated EXTERNAL — only Ø200mm duct penetration remains at X=1200, Z=2100.",
+    f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
     "3. Pumps (P-01/P-02/P-04), ACC-01, filter housings (F1/F2/F3), DV-01, DV-02",
     "   relocated to equipment panel in IBC plumbing corridor (Yd=1046). See panel layout detail.",
     "4. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict.",
@@ -822,6 +822,12 @@ ax2.text((WALKWAY_NEAR_WIDE_X_L + WALKWAY_NEAR_WIDE_X_R) / 2,
         plan_sy((WALKWAY_W + WALKWAY_NEAR_WIDE_W) / 2),
         f"WIDENED TO {WALKWAY_NEAR_WIDE_W}mm", ha="center", va="center",
         fontsize=4, color="#448844", fontweight="bold", zorder=10, **FONT)
+
+# ── Evap cooler transport stowage ghost (plan view) ───────────────────────
+plan_block(EVAP_STOW_X, EVAP_STOW_X + EVAP_W, 0, EVAP_D,
+           "EVAP COOLER\n(TRANSPORT ONLY)", C_EVAP,
+           ls="--", alpha=0.25, lw=1.0, zorder=3,
+           label_fs=4, label_color="#666666")
 
 # ── Depth dimension lines ───────────────────────────────────────────────────
 _dim_items = [

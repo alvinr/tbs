@@ -180,6 +180,7 @@ EVAP_STOW_Z    = 100     # sits on grating surface (Z=100mm, same as WALKWAY_H)
 PWR_PANEL_X = 1250   # power panel left edge X (mm) — just left of EP
 PWR_PANEL_W = 340    # face plate width (mm)
 PWR_PANEL_H = 240    # face plate height (mm)
+PWR_PANEL_Z = 900    # face plate bottom Z (mm) — waist height for exterior access
 PWR_PANEL_D = 3      # face plate thickness (mm) — flush-mount, no protrusion
 PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)

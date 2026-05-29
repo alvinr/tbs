@@ -53,7 +53,7 @@ Redesign basis (2026-05-06 rev 6):
 Redesign basis (2026-05-20 rev 7 — walkway reorg):
   Near walkway (pinhole wall side) made usable by relocating wall-mounted
   equipment that blocked passage.  Evaporative cooler moved external with
-  200mm duct penetration at X=1420, Z=1390.  EP raised to Z=1600–2200.
+  200mm duct penetration at X=1000, Z=1020.  EP raised to Z=1600–2200.
   Batteries switched to 120mm slim-profile depth.  Pump manifold
   (P-01/P-02/P-04), ACC-01, and 3× filter housings relocated from pinhole
   wall to equipment panel in IBC plumbing corridor (270mm gap between
@@ -163,9 +163,9 @@ DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headr
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct
-# through pinhole wall, X-centered on ext power panel, 150mm above it.
-EVAP_DUCT_X  = 1420    # duct penetration center X (mm) — aligned with ext power panel center
-EVAP_DUCT_Z  = 1390    # duct penetration center Z (mm) — 150mm above ext power panel top
+# through pinhole wall, Z-centered with ext power panel, 150mm gap to its left.
+EVAP_DUCT_X  = 1000    # duct penetration center X (mm) — 150mm left of ext power panel edge
+EVAP_DUCT_Z  = 1020    # duct penetration center Z (mm) — Z-centered with ext power panel
 EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 # Physical dimensions (used for transport stowage sizing)
 EVAP_W     = 600     # cooler width along X (mm)

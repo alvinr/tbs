@@ -97,15 +97,15 @@ def draw_sheet1():
     # ── Parts list (notes block) ──────────────────────────────────────────────
     parts_notes = [
         'PARTS LIST:',
-        '1. WALL FRAME          — S275 steel 6mm (×1) — weld to container wall; machine face after welding',
-        '2. PINHOLE PLATE       — Al 6061-T6, 15mm (×1) — black anodize all faces; interior faces matt black',
-        '3. PINHOLE DISC        — SS-302 0.10mm, Lenox Laser (×1+) — Ø50 disc, Ø2.17 aperture ±0.025mm; order spares',
-        '4. DISC RETAINING RING — Al 6061-T6 (×1) — Ø52 bore × M52×0.75 thread; 3× M4 grub screws',
-        '5. LENS PLATE          — Al 6061-T6, 15mm (×1) — black anodize; Ø175 bore H7; interior faces matt black',
-        '6. LENS TUBE           — Al 6061-T6 (×1) — Ø174.5g6 × Ø165 bore × 100L; 3× M8 set screws at 120°',
-        '7. LOCATING DOWEL PIN  — SS-303 Ø8 m6 × 40L (×2) — press fit to wall frame (H7 reamed holes)',
-        '8. SOCKET HEAD BOLT    — M12 × 40mm grade 8.8 (×8) — with M12 flat washer each; torque to 65 Nm',
-        '9. NEOPRENE CORD SEAL  — Ø4mm neoprene, 70 Shore (×1) — Ø420mm loop in 3×3 groove on wall frame face',
+        '1. WALL FRAME          • S275 steel 6mm (×1)              • weld to container wall; machine face after welding',
+        '2. PINHOLE PLATE       • Al 6061-T6, 15mm (×1)            • black anodize all faces; interior faces matt black',
+        '3. PINHOLE DISC        • SS-302 0.10mm, Lenox Laser (×1+) • Ø50 disc, Ø2.17 aperture ±0.025mm; order spares',
+        '4. DISC RETAINING RING • Al 6061-T6 (×1)                  • Ø52 bore × M52×0.75 thread; 3× M4 grub screws',
+        '5. LENS PLATE          • Al 6061-T6, 15mm (×1)            • black anodize; Ø175 bore H7; interior faces matt black',
+        '6. LENS TUBE           • Al 6061-T6 (×1)                  • Ø174.5g6 × Ø165 bore × 100L; 3× M8 set screws at 120°',
+        '7. LOCATING DOWEL PIN  • SS-303 Ø8 m6 × 40L (×2)          • press fit to wall frame (H7 reamed holes)',
+        '8. SOCKET HEAD BOLT    • M12 × 40mm grade 8.8 (×8)        • with M12 flat washer each; torque to 65 Nm',
+        '9. NEOPRENE CORD SEAL  • Ø4mm neoprene, 70 Shore (×1)     •  Ø420mm loop in 3×3 groove on wall frame face',
     ]
     draw_notes(ax1, parts_notes, 550, 550, spacing=38, fs=7, width=1400,
                font={"fontfamily": "monospace"})
@@ -299,16 +299,16 @@ def draw_sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet2():
-    fig, ax2 = plt.subplots(figsize=(24, 17))
+    fig, ax2 = plt.subplots(figsize=(16.8, 17))
     fig.patch.set_facecolor('white')
     ax2.set_facecolor('white')
     ax2.set_aspect('equal')
     ax2.axis('off')
-    ax2.set_xlim(0, 2400)
+    ax2.set_xlim(0, 1680)
     ax2.set_ylim(0, 1700)
 
     # Border
-    draw_rect(ax2, 20, 20, 2360, 1660, lw=1.5, color='black', fc='white')
+    draw_rect(ax2, 20, 20, 1640, 1660, lw=1.5, color='black', fc='white')
 
     title_block(ax2, "SHEET 2 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",
@@ -322,7 +322,7 @@ def draw_sheet2():
     SC4 = 1
     def ss(mm): return mm * SC4
 
-    scx, scy = 500, 1100
+    scx, scy = 400, 1100
 
     ax2.text(scx, 1580, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
              fontsize=9, fontweight='bold', color='black')
@@ -482,7 +482,7 @@ def draw_sheet2():
     SC5 = 8.0
     def sb(mm): return mm * SC5
 
-    dbx, dby = 1640, 1280
+    dbx, dby = 1380, 1280
 
     ax2.text(dbx, 1620, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
              fontsize=8, fontweight='bold')
@@ -558,7 +558,7 @@ def draw_sheet2():
     SC10 = 40
     def sc(mm): return mm * SC10
 
-    dcx, dcy = 1640, 500
+    dcx, dcy = 1380, 500
 
     ax2.text(dcx, 840, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
              fontsize=8, fontweight='bold')
@@ -621,7 +621,7 @@ def draw_sheet2():
     SC2 = 2
     def sd(mm): return mm * SC2
 
-    ddx, ddy = 1100, 680
+    ddx, ddy = 820, 680
 
     ax2.text(ddx+20, ddy + 420, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
              fontsize=8, fontweight='bold')
@@ -712,7 +712,7 @@ def draw_sheet2():
         'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
         'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
     ]
-    draw_notes(ax2, notes2, 200, 280, spacing=20, fs=7, width=2120)
+    draw_notes(ax2, notes2, 200, 280, spacing=20, fs=7, width=1400)
 
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/plate-drawing-sheet2.png'

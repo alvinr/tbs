@@ -238,11 +238,6 @@ def sheet1():
         (cut_x, PP_CUT_BOT), PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H,
         facecolor="none", edgecolor=C_DIM, linewidth=0.8,
         ls=(0, (3, 2)), alpha=0.5, zorder=6))
-    ax.text(PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H,
-            "EXT PWR\nPANEL",
-            ha="center", va="center", fontsize=FS_SM - 2,
-            color=C_ALUM, style="italic", fontweight="bold",
-            alpha=0.7, zorder=7)
 
     # ── RIGHT END ZONE — 4× IBC 2×2 stack ─────────────────────────────────────
     # Far column (behind — dimmer): Waste bottom + Blue #2 top
@@ -298,7 +293,7 @@ def sheet1():
         (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
         (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
         ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
-        (PWR_PANEL_X - 120, PP_CTR_H, "12"),  # Ext power panel
+        (PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H, "12"),  # Ext power panel
     ]
     for (cx, cy, num) in callouts_s1:
         callout(ax, cx, cy, num, r=CALL_R)

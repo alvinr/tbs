@@ -234,8 +234,8 @@ replaced annually.
 
 1. Release cam latches, swing panel open 180°
 2. Disconnect flex duct from wall stub collar (release hose clamp). Replace weatherproof cap on wall stub. Drain cooler reservoir
-3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway at X=500–1,100mm. Stow flex duct alongside cooler
-4. Secure with 2× ratchet straps to wall brackets at X≈457mm and X≈914mm
+3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway wide section at X=1,200–1,800mm. Stow flex duct alongside cooler
+4. Secure with 2× ratchet straps to nearest cantilever bracket arms
 5. Release toggle clamps, slide panel inward 300mm
 6. Lock panel at transport position, close container doors
 
@@ -243,21 +243,19 @@ replaced annually.
 
 The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm, ~20 kg dry) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct. It must be stowed inside the container for transport.
 
-**Stowage position:** On the near walkway grating, X=500–1,100mm, Yd=0–350mm. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings.
+**Stowage position:** On the near walkway grating in the wide section, X=1,200–1,800mm, Yd=0–500mm. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 350mm cooler depth with 150mm clearance — no overhang into the processing tray zone.
 
-**Securing:** Two 25mm ratchet straps loop over the cooler and hook to the near walkway cantilever bracket arms at X≈457mm and X≈914mm. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
+**Securing:** Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | X=500–1,100mm, Yd=0–350mm (near walkway) |
+| Stowage zone | X=1,200–1,800mm, Yd=0–500mm (near walkway wide section) |
 | Cooler footprint | 600×350mm (long axis along X) |
 | Cooler height on grating | 800mm (top at Z=900mm) |
 | Weight (dry) | ~20 kg |
 | Securing | 2× ratchet straps to bracket arms |
 | Base plate | 12mm ply, 600×350mm |
-| Clearance to panel transport envelope | 80mm (panel max X=420, cooler starts X=500) |
-
-The 350mm cooler depth slightly exceeds the 300mm walkway width — the cooler overhangs 50mm into the processing tray zone. This is acceptable because the tray is drained and empty during transport.
+| Clearance to panel transport envelope | 780mm (panel max X=420, cooler starts X=1,200) |
 
 See [Walkway Diagram — Sheet 1](engineering-diagrams.md) for stowage position in plan view.
 

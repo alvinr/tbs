@@ -343,7 +343,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 - [ ] 5.5.1 — Stow all interior items. Retract film plane carriage to Yd=100mm.
 - [ ] 5.5.2 — Release all 4 Southco cam latches. Swing the panel open 180° outward.
 - [ ] 5.5.3 — Disconnect flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain cooler reservoir completely.
-- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway at X=500–1,100mm. Secure with 2× ratchet straps to wall brackets. Stow flex duct alongside cooler.
+- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway wide section at X=1,200–1,800mm. Secure with 2× ratchet straps to wall brackets. Stow flex duct alongside cooler.
 - [ ] 5.5.5 — Swing panel closed (do not latch).
 - [ ] 5.5.6 — Remove left walkway section (lift out from butt joints).
 - [ ] 5.5.7 — Release 2 Destaco toggle clamps at operational position.

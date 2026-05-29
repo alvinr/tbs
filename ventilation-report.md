@@ -127,12 +127,16 @@ The cooler sits on the ground outside the container, adjacent to the pinhole wal
 
 The cooler is stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for the full stowage specification.
 
+From the walkway design, the location of the cooler can be seen for transportation, secured by straps and D-rings.
+
+![TBS-001 Walkway — Sheet 1: Equipment Location](assets/walkway-sheet1.png)
+
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | Near walkway, X=500–1,100mm, Yd=0–350mm |
+| Stowage zone | Near walkway wide section, X=1,200–1,800mm, Yd=0–500mm |
 | Base plate | 12mm plywood, 600 × 350mm (load distribution) |
 | Securing | 2 × 25mm ratchet straps to cantilever bracket arms |
-| Clearance to panel transport envelope | 80mm (panel max X=420mm, cooler starts X=500mm) |
+| Clearance to panel transport envelope | 780mm (panel max X=420mm, cooler starts X=1,200mm) |
 
 ---
 

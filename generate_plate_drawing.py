@@ -299,16 +299,16 @@ def draw_sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet2():
-    fig, ax2 = plt.subplots(figsize=(14, 18))
+    fig, ax2 = plt.subplots(figsize=(14, 16))
     fig.patch.set_facecolor('white')
     ax2.set_facecolor('white')
     ax2.set_aspect('equal')
     ax2.axis('off')
     ax2.set_xlim(0, 1400)
-    ax2.set_ylim(0, 1800)
+    ax2.set_ylim(0, 1600)
 
     # Border
-    draw_rect(ax2, 20, 20, 1360, 1760, lw=1.5, color='black', fc='white')
+    draw_rect(ax2, 20, 20, 1360, 1560, lw=1.5, color='black', fc='white')
 
     title_block(ax2, "SHEET 2 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",
@@ -322,7 +322,7 @@ def draw_sheet2():
     SC4 = 1
     def ss(mm): return mm * SC4
 
-    scx, scy = 472, 1400
+    scx, scy = 472, 1200
 
     ax2.text(scx, scy + 340, 'SECTION A-A', ha='center',
              fontsize=9, fontweight='bold', color='black')
@@ -483,7 +483,7 @@ def draw_sheet2():
     SC5 = 8.0
     def sb(mm): return mm * SC5
 
-    dbx, dby = 800, 1400
+    dbx, dby = 800, 1200
 
     ax2.text(dbx, dby + 340, 'DETAIL B — DISC SEAT', ha='center',
              fontsize=8, fontweight='bold')
@@ -559,7 +559,7 @@ def draw_sheet2():
     SC10 = 40
     def sc(mm): return mm * SC10
 
-    dcx, dcy = 1120, 1400
+    dcx, dcy = 1120, 1200
 
     ax2.text(dcx, dcy + 340, 'DETAIL C — LIGHT TRAP', ha='center',
              fontsize=8, fontweight='bold')
@@ -622,7 +622,7 @@ def draw_sheet2():
     SC2 = 2
     def sd(mm): return mm * SC2
 
-    ddx, ddy = 700, 750
+    ddx, ddy = 700, 620
 
     ax2.text(ddx, ddy + 420, 'DETAIL D — LENS FOCUSER  (1:2)', ha='center',
              fontsize=8, fontweight='bold')
@@ -632,7 +632,7 @@ def draw_sheet2():
     bore_half_d = sd(LB_D/2)
     tube_od_half = sd(LT_OD/2)
     tube_id_half = sd(LT_ID/2)
-    plate_half_d = sd(PL_OD/2 * 0.4)
+    plate_half_d = sd(PL_OD/2 * 0.15)
 
     for sign in [-1, 1]:
         ax2.add_patch(mpatches.Rectangle(
@@ -643,6 +643,21 @@ def draw_sheet2():
             y0 = ddy + sign*bore_half_d + sign*i*sd(5)
             if 0 < sign*(y0 - (ddy + sign*bore_half_d)) < plate_half_d:
                 ax2.plot([pl_left_d, pl_right_d], [y0, y0 + sd(3)*sign], color='#AAAAAA', lw=0.4)
+
+    brk_amp = 8
+    brk_w = sd(PL_THICK)
+    for sign in [-1, 1]:
+        brk_y = ddy + sign * (bore_half_d + plate_half_d)
+        xs = np.array([pl_left_d - 4, pl_left_d + brk_w*0.25,
+                       pl_left_d + brk_w*0.5, pl_left_d + brk_w*0.75,
+                       pl_right_d + 4])
+        ys = np.array([brk_y, brk_y + brk_amp, brk_y - brk_amp,
+                       brk_y + brk_amp, brk_y])
+        ax2.plot(xs, ys, color=C_OUT, lw=LW_MED, zorder=10)
+        ax2.plot([pl_left_d, pl_left_d], [brk_y - brk_amp - 2, brk_y + brk_amp + 2],
+                 color='white', lw=3, zorder=9)
+        ax2.plot([pl_right_d, pl_right_d], [brk_y - brk_amp - 2, brk_y + brk_amp + 2],
+                 color='white', lw=3, zorder=9)
 
     ax2.plot([pl_left_d, pl_right_d], [ddy + bore_half_d, ddy + bore_half_d], color=C_OUT, lw=LW_THICK)
     ax2.plot([pl_left_d, pl_right_d], [ddy - bore_half_d, ddy - bore_half_d], color=C_OUT, lw=LW_THICK)

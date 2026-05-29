@@ -124,7 +124,7 @@ The SmartSolar has a built-in load output (30A) for direct low-power 12V loads. 
 Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.
 
 ### 5.4 External Power Panel
-The solar PV inputs and shore power inlet share a single **flush-mount power panel** set into a cutout in the pinhole wall, close to the electrical panel and battery bank inside.
+The solar PV inputs, shore power inlet, and evaporative cooler DC output share a single **flush-mount power panel** set into a cutout in the pinhole wall, close to the electrical panel and battery bank inside.
 
 | Parameter | Specification |
 |-----------|--------------|
@@ -133,11 +133,12 @@ The solar PV inputs and shore power inlet share a single **flush-mount power pan
 | Weatherseal | 3mm neoprene gasket between plate and wall |
 | Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
+| DC output | 1 × Deutsch DT 2-pin bulkhead connector (Circuit E — evaporative cooler) |
 | Mounting | 4 × M6 bolts through plate, gasket, and wall |
 | Location | Pinhole wall, X ≈ 1,250–1,550mm (just left of EP) |
-| Approximate cost | ~$50 (plate $15 + gasket $5 + hardware $5 + MC4 bulkheads $25) |
+| Approximate cost | ~$55 (plate $15 + gasket $5 + hardware $5 + MC4 bulkheads $25 + DT bulkhead $5) |
 
-The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; AC cable routes to the shore charger. The IP67 MC4 connectors and weatherproof NEMA inlet, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. See the power panel detail drawing below.
+The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; AC cable routes to the shore charger; the DC output connector provides 12V power to the evaporative cooler during operation (Circuit E). The IP67 MC4 connectors, weatherproof NEMA inlet, and IP67 Deutsch DT connector, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. See the power panel detail drawing below.
 
 ![External Power Panel Detail](assets/power-panel-sheet1.png)
 
@@ -216,6 +217,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
 - **Circuit B flex connector (panel-mounted exhaust fan):** Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2,200mm.
+- **Circuit E exterior connector (evaporative cooler):** The evaporative cooler operates outside the container during sessions. Circuit E (14 AWG) routes from the fuse block along the ceiling trunking, down the pinhole wall to the external power panel interior face, and terminates at a Deutsch DT 2-pin bulkhead connector mounted in the panel face plate. On the exterior, a 1.5m 14 AWG 2-conductor cable with Deutsch DT 2-pin plugs at each end connects the panel to the cooler. The cable is disconnected and stowed inside the container for transport.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.
 
@@ -251,6 +253,8 @@ All US/SoCal sources. Prices approximate as of 2026.
 | IP65 enclosure | 300 × 200 × 130mm | Polycase / Amazon | ~$60 |
 | Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
 | NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |
+| Deutsch DT 2-pin bulkhead | Panel-mount, Circuit E cooler output | Waytek Wire | ~$5 |
+| Cooler external power cable | 1.5m, 14 AWG 2-cond, DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Copper ground stake | 8ft × 5/8" diameter | Home Depot | ~$20 |
 | 4 AWG ground wire | Green/yellow, 3m | AutoZone / Amazon | ~$15 |
 | Evaporative cooler | 12V DC, ~300 CFM | Portacool / Amazon | ~$280 |
@@ -259,10 +263,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | 6" inline fans × 2 | 12V DC, ~200 CFM each | Amazon (AC Infinity S6) | ~$120 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~$1,830** |
+| **Electrical system total** | | | **~$1,855** |
 | **Shade canopy total** | | | **~$200** |
 | **Cooling (evap cooler)** | | | **~$280** |
-| **Systems grand total** | | | **~$2,310** |
+| **Systems grand total** | | | **~$2,335** |
 
 ## 9. Maintenance
 

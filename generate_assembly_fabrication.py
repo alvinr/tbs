@@ -40,7 +40,7 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI,
     PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI,
-    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
+    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     IBC_COL_X, IBC_W, IBC_H_STK, IBC_H_600,
     IBC_FAR_Y,
     PANEL_CORNER_T, PANEL_CENTER_T,
@@ -181,6 +181,17 @@ def sheet1():
             ha="center", va="center", fontsize=FS_SM-1.5, color=C_OUT,
             style="italic", zorder=6)
 
+    # Revolving drum — transport position ghost (panel slid 300mm inward)
+    DRUM_TRANSPORT_CX = DRUM_CX + 300
+    ax.add_patch(mpatches.Rectangle(
+        (DRUM_TRANSPORT_CX - DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
+        facecolor="none", edgecolor=C_OUT, linewidth=1.0,
+        ls=(0, (5, 3)), alpha=0.35, zorder=4))
+    ax.text(DRUM_TRANSPORT_CX, RAIL_OFF + DRUM_H_ELV / 2,
+            "DRUM\n(TRANSPORT)",
+            ha="center", va="center", fontsize=FS_SM - 2,
+            color=C_DIM, style="italic", alpha=0.5, zorder=5)
+
     # Duct penetration — Ø200mm through pinhole wall for external evap cooler
     duct_r = EVAP_DUCT_D / 2
     ax.add_patch(plt.Circle((EVAP_DUCT_X, EVAP_DUCT_Z), duct_r,
@@ -211,10 +222,9 @@ def sheet1():
     # Side elevation: panel is flush in the pinhole wall (bottom wall, Y=0).
     # Show the aluminum face plate as a ghost rectangle on the wall face,
     # and the cutout as a lighter dashed rectangle inside it.
-    # Height: centered at same level as electrical panel (~900–1100mm).
     from tbs_constants import PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H
-    PP_CTR_H = (EP_H_LO + EP_H_HI) / 2   # center at same height as EP
-    PP_PLATE_BOT = PP_CTR_H - PWR_PANEL_H / 2
+    PP_PLATE_BOT = PWR_PANEL_Z
+    PP_CTR_H = PWR_PANEL_Z + PWR_PANEL_H / 2
     PP_CUT_BOT   = PP_CTR_H - PWR_PANEL_CUTOUT_H / 2
 
     # Aluminum face plate (ghost outline on exterior wall face)

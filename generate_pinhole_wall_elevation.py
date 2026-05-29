@@ -23,7 +23,7 @@ from tbs_constants import (
     PH_X, PH_H, PH_D,
     EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
     EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z,
-    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
+    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PUMP_PIPE_OD, PUMP_PIPE_WALL,
@@ -72,7 +72,7 @@ TK_H = 25                   # trunking height (mm)
 TK_Z = C_HGT - TK_H        # 2363mm — trunking bottom Z
 
 # Power panel Z (flush-mount, exterior — shown as dashed outline)
-PWR_Z_LO = 900              # external power panel bottom Z (fixed, not tied to EP height)
+PWR_PANEL_Z = 900              # external power panel bottom Z (fixed, not tied to EP height)
 
 # Colors
 C_SHELF = "#C8B06A"   # chemistry shelf (warm gold)
@@ -293,7 +293,7 @@ conduit_drops = [
     (EVAP_DUCT_X,          EVAP_DUCT_Z + EVAP_DUCT_D / 2),  # evap duct — circuit E
     (EP_X + EP_W / 2,      EP_H_HI),                 # electrical panel
     (BA_X + BA_W / 2,      BA_H_HI),                 # battery bank
-    (PWR_PANEL_X + PWR_PANEL_W / 2, PWR_Z_LO + PWR_PANEL_H),  # ext power panel
+    (PWR_PANEL_X + PWR_PANEL_W / 2, PWR_PANEL_Z + PWR_PANEL_H),  # ext power panel
     (PS_X_D,               PS_Z + 15),                # pull-cord switch D
     (PS_X_G,               PS_Z + 15),                # pull-cord switch G
 ]
@@ -454,7 +454,7 @@ equip_block(EVAP_STOW_X, EVAP_STOW_Z, EVAP_W, EVAP_H,
             label_color="#666666")
 
 # ── External power panel (flush-mount, exterior — dashed outline) ──────────
-equip_block(PWR_PANEL_X, PWR_Z_LO, PWR_PANEL_W, PWR_PANEL_H,
+equip_block(PWR_PANEL_X, PWR_PANEL_Z, PWR_PANEL_W, PWR_PANEL_H,
             "EXT. POWER\nPANEL\n(FLUSH)", C_ALUM,
             ls="--", alpha=0.4, label_fs=4.5)
 

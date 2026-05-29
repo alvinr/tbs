@@ -53,7 +53,7 @@ Redesign basis (2026-05-06 rev 6):
 Redesign basis (2026-05-20 rev 7 — walkway reorg):
   Near walkway (pinhole wall side) made usable by relocating wall-mounted
   equipment that blocked passage.  Evaporative cooler moved external with
-  200mm duct penetration at X=1200, Z=2100.  EP raised to Z=1600–2200.
+  200mm duct penetration at X=1200, Z=600.  EP raised to Z=1600–2200.
   Batteries switched to 120mm slim-profile depth.  Pump manifold
   (P-01/P-02/P-04), ACC-01, and 3× filter housings relocated from pinhole
   wall to equipment panel in IBC plumbing corridor (270mm gap between

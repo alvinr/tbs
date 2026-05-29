@@ -119,7 +119,7 @@ The container arrives in transport mode: the stepped hinged panel is retracted 3
 - [ ] 1.3.3 — Install the left walkway section — place grating on the near/far walkway butt joint ends.
 - [ ] 1.3.4 — Swing the panel open 180° outward.
 - [ ] 1.3.5 — Retrieve the evaporative cooler from near walkway stowage (release 2 ratchet straps). Carry out through the door opening (~20 kg dry, one person).
-- [ ] 1.3.6 — Mount the cooler on the external duct coupling on the pinhole wall exterior. Fill reservoir from the Blue circuit IBC via external port X1.
+- [ ] 1.3.6 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration (X=1,200mm). Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
 - [ ] 1.3.7 — Swing panel closed. Engage all 4 Southco cam latches (quarter-turn, flush with panel face).
 - [ ] 1.3.8 — Perform dark-adaptation check (see step 1.4.4 below).
 
@@ -342,8 +342,8 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 
 - [ ] 5.5.1 — Stow all interior items. Retract film plane carriage to Yd=100mm.
 - [ ] 5.5.2 — Release all 4 Southco cam latches. Swing the panel open 180° outward.
-- [ ] 5.5.3 — Disconnect evaporative cooler from external duct coupling on pinhole wall exterior. Drain cooler reservoir.
-- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway at X=500–1,100mm. Secure with 2× ratchet straps to wall brackets.
+- [ ] 5.5.3 — Disconnect flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain cooler reservoir completely.
+- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway at X=500–1,100mm. Secure with 2× ratchet straps to wall brackets. Stow flex duct alongside cooler.
 - [ ] 5.5.5 — Swing panel closed (do not latch).
 - [ ] 5.5.6 — Remove left walkway section (lift out from butt joints).
 - [ ] 5.5.7 — Release 2 Destaco toggle clamps at operational position.
@@ -354,7 +354,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 ### 5.6 Operational Mode Conversion (Setting Up)
 **Time: ~5 minutes. Single-person operation. Reverse of 5.5.**
 
-Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → slide panel out → install left walkway → deploy evaporative cooler → latch panel → dark-adaptation check.
+Follow the procedure in [Phase 1.3 — Mode Conversion](#13-mode-conversion-transport-to-operational). Steps are the reverse of §5.5: open cargo doors → slide panel out → install left walkway → place cooler on ground and connect flex duct → latch panel → dark-adaptation check.
 
 ## Exposure Adjustment Table
 *Full reference table for use in Phase 3.*

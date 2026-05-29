@@ -322,7 +322,7 @@ def draw_sheet2():
     SC4 = 1
     def ss(mm): return mm * SC4
 
-    scx, scy = 440, 1650
+    scx, scy = 472, 1650
 
     ax2.text(scx, scy + 360, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
              fontsize=9, fontweight='bold', color='black')

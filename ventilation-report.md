@@ -111,7 +111,9 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 ### 5.2 Light-Safe Cooler Intake
 
-The cooler sits on the ground outside the container, adjacent to the pinhole wall. A short length of Ø200mm flexible insulated duct connects the cooler outlet to a wall penetration with light-safe baffles. This arrangement requires no permanent external mounting — the cooler is simply placed, connected, and removed each session.
+The cooler sits on the ground outside the container, adjacent to the pinhole wall. A short length of Ø200mm flexible insulated duct connects the cooler outlet to a wall penetration with light-safe baffles. Power (Circuit E, 12V DC) is supplied via a Deutsch DT 2-pin bulkhead connector on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m external cable connects the panel to the cooler; both the cable and flex duct are disconnected and stowed inside the container for transport. See [Electrical Report](electrical-report.md) §7.3 for the full wire path.
+
+This arrangement requires no permanent external mounting — the cooler is simply placed, connected (duct + power), and removed each session.
 
 | Parameter | Value |
 |-----------|-------|
@@ -127,7 +129,7 @@ The cooler sits on the ground outside the container, adjacent to the pinhole wal
 
 The cooler is stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for the full stowage specification.
 
-From the walkway design, the location of the cooler can be seen for transportation, secured by straps and D-rings.
+From the walkway design, the location of the cooler (green rectangle) can be seen for transportation, secured by straps and D-rings.
 
 ![TBS-001 Walkway — Sheet 1: Equipment Location](assets/walkway-sheet1.png)
 
@@ -196,9 +198,10 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Weatherproof duct cap | Ø200mm, removable | Home Depot | ~$8 |
 | Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | Waytek Wire (waytekwire.com) | ~$8 |
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | Amazon / Waytek Wire | ~$15 |
+| Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
 | Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~$733** |
+| **Ventilation & cooling total** | | | **~$753** |
 
 ---
 

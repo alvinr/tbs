@@ -5,7 +5,7 @@
 generate_power_panel_diagram.py — TBS-001 External Power Panel
 
 Sheet 1 — Detail drawing of the flush-mount combined solar + shore power
-input panel on the pinhole wall.  Three views:
+input panel and cooler DC output on the pinhole wall.  Three views:
 
   A  Front elevation (panel face, ~2:1 scale)
   B  Cross-section through wall (flush-mount detail)
@@ -68,6 +68,13 @@ NEMA_H   = 45             # NEMA receptacle height
 NEMA_X   = 195            # NEMA left edge from panel left edge
 NEMA_Y   = 77             # NEMA bottom edge from panel bottom edge
 NEMA_DEPTH = 45           # NEMA body protrusion behind plate (mm)
+
+# Deutsch DT 2-pin bulkhead (Circuit E — evap cooler DC output)
+DT_R     = 10             # connector body radius (mm)
+DT_X     = 230            # center X from panel left edge
+DT_Y     = 35             # center Y from panel bottom edge
+DT_DEPTH = 30             # body protrusion behind plate (mm)
+C_DT     = "#E8884A"      # orange — matches pump/cooler circuit color
 
 
 def draw_sheet1():
@@ -151,6 +158,12 @@ def draw_sheet1():
     gy = sy(nema_cy - 6) + sx(ground_r) * np.sin(theta)
     ax_a.plot(gx, gy, color=C_OUT, lw=1.0, zorder=6)
 
+    # Deutsch DT 2-pin bulkhead — Circuit E (evap cooler DC output)
+    draw_circle(ax_a, sx(DT_X), sy(DT_Y), sx(DT_R),
+                 lw=1.5, color=C_DT, fill=True, fc="#FFE0C0", zorder=5)
+    ax_a.text(sx(DT_X), sy(DT_Y), "E", ha="center", va="center",
+              fontsize=7, fontweight="bold", color=C_DT, zorder=6)
+
     # Title
     ax_a.text(sx(PLATE_W / 2), sy(PLATE_H + 55),
               "VIEW A — FRONT ELEVATION (EXTERIOR FACE)",
@@ -173,6 +186,11 @@ def draw_sheet1():
            sx(nema_cx + NEMA_W * 3), sy(NEMA_Y - 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    leader(ax_a, sx(DT_X + DT_R + 3), sy(DT_Y),
+           sx(PLATE_W + 25), sy(DT_Y - 15),
+           "DEUTSCH DT 2-PIN\nBULKHEAD (IP67)\nCIRCUIT E — COOLER",
+           fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(PLATE_W - MOUNT_INSET + MOUNT_HOLE_D),
            sy(PLATE_H - MOUNT_INSET),
@@ -292,6 +310,19 @@ def draw_sheet1():
               [by(nema_cy), by(nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
+    # Deutsch DT body through cutout (Circuit E — cooler DC output)
+    dt_cy = cut_bot + 6 * mm_v
+    draw_rect(ax_b, bx(wall_x - 5), by(dt_cy - 3 * mm_v),
+              bx(wall_thick + DT_DEPTH + 5), by(6 * mm_v),
+              fc="#FFE0C0", color=C_DT, lw=1.0, zorder=4)
+    ax_b.plot([bx(wall_x + wall_thick + DT_DEPTH),
+               bx(wall_x + wall_thick + int_pad - 30)],
+              [by(dt_cy), by(dt_cy)],
+              color=C_DT, lw=1.5, zorder=5)
+    ax_b.plot([bx(wall_x - 5), bx(-ext_pad + 10)],
+              [by(dt_cy), by(dt_cy)],
+              color=C_DT, lw=1.5, ls="--", zorder=5)
+
     # Mounting bolts (through plate + gasket + wall, nut clamped against wall)
     washer_w = 1.5 * mm_v * (plate_t_draw / (3 * mm_v))  # washer thickness
     washer_h = 12 * mm_v     # washer OD ~12mm
@@ -328,6 +359,12 @@ def draw_sheet1():
     ax_b.text(bx(int_label_x), by(nema_cy),
               "→ CHARGER", ha="left", va="center", fontsize=7,
               color=C_AC, fontweight="bold", **FONT, zorder=7)
+    ax_b.text(bx(int_label_x), by(dt_cy),
+              "← CCT E", ha="left", va="center", fontsize=7,
+              color=C_DT, fontweight="bold", **FONT, zorder=7)
+    ax_b.text(bx(-ext_pad + 8), by(dt_cy + 5),
+              "→ COOLER", ha="left", va="bottom", fontsize=7,
+              color=C_DT, fontweight="bold", **FONT, zorder=7)
 
     # Zone labels
     ax_b.text(bx(plate_x - 30), by(sec_h + 55),
@@ -380,7 +417,7 @@ def draw_sheet1():
     ax_c.set_aspect("equal")
     ax_c.axis("off")
     ax_c.set_xlim(0, 22)
-    ax_c.set_ylim(0, 4.5)
+    ax_c.set_ylim(-1.2, 4.5)
 
     ax_c.text(8.75, 4.6, "VIEW C — WIRING SCHEMATIC",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
@@ -446,19 +483,42 @@ def draw_sheet1():
     ax_c.text(bat_cx + 0.15, (row_top + row_bot) / 2 + 0.3, "12V DC\ncharge",
               fontsize=6, color=C_AC, ha="left", va="center", **FONT)
 
+    # Cooler DC output path (bottom row — reverse direction: interior → exterior)
+    row_cool = -0.4
+    sbox(ax_c, 0.5, row_cool, 2.8, 0.9,
+         "EVAP COOLER", "12V DC  80W", fc="#FFE0C0", tc=C_DT)
+    sarrow(ax_c, 4.5, row_cool + 0.45, 3.3, col=C_DT)
+    ax_c.text(3.9, row_cool + 0.65, "DT 2-pin", fontsize=6, color=C_DT,
+              ha="center", **FONT)
+
+    sbox(ax_c, 4.5, row_cool, 3.0, 0.9,
+         "FLUSH-MOUNT PANEL", "DT bulkhead ×1", fc=C_ALUM)
+    sarrow(ax_c, 10.0, row_cool + 0.45, 7.5, col=C_DT)
+    ax_c.text(8.75, row_cool + 0.65, "14 AWG Cct E", fontsize=6, color=C_DT,
+              ha="center", **FONT)
+
+    sbox(ax_c, 10.0, row_cool, 3.2, 0.9,
+         "FUSE BLOCK", "Cct E — 10A", fc="#FFF3CC", tc=C_DT)
+    sarrow(ax_c, 14.5, row_cool + 0.45, 13.2, col=C_DT)
+    ax_c.plot([14.5, bat_cx], [row_cool + 0.45, row_cool + 0.45],
+              color=C_DT, lw=1.8, zorder=3)
+    ax_c.annotate("", xy=(bat_cx, row_top - 0.3), xytext=(bat_cx, row_cool + 0.45),
+                  arrowprops=dict(arrowstyle="-|>", color=C_DT, lw=1.0,
+                                  connectionstyle="arc3,rad=0"), zorder=2)
+
     # Container wall indicator — single line (flush mount, no gland)
     wall_x_sch = 7.45
     ax_c.plot([wall_x_sch, wall_x_sch],
-              [row_bot - 0.2, row_top + 1.0],
+              [row_cool - 0.5, row_top + 1.0],
               color=C_WALL, lw=4, zorder=1)
-    ax_c.text(wall_x_sch, row_bot - 0.55, "CONTAINER\nWALL",
+    ax_c.text(wall_x_sch, row_cool - 0.7, "CONTAINER\nWALL",
               ha="center", va="top", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
-    ax_c.text(wall_x_sch + 0.15, row_bot - 0.25, "(flush-mount\n panel)",
+    ax_c.text(wall_x_sch + 0.15, row_cool - 0.45, "(flush-mount\n panel)",
               ha="left", va="top", fontsize=5, color=C_DIM, **FONT)
 
     # Zone labels
-    ax_c.text((wall_x_sch) / 2, row_top + 1.35, "EXTERIOR",
+    ax_c.text(wall_x_sch / 2, row_top + 1.35, "EXTERIOR",
               ha="center", va="bottom", fontsize=8, fontweight="bold",
               color=C_DIM, **FONT)
     ax_c.text((wall_x_sch + 22) / 2, row_top + 1.35, "CONTAINER INTERIOR",
@@ -474,7 +534,7 @@ def draw_sheet1():
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 1 OF 1",
                 drawing_title="EXTERNAL POWER PANEL — FLUSH MOUNT",
-                subtitle="FRONT ELEVATION · WALL SECTION · WIRING SCHEMATIC",
+                subtitle="SOLAR + SHORE INPUT · COOLER DC OUTPUT · WIRING SCHEMATIC",
                 scale_note="AXES IN mm",
                 height=0.85)
 

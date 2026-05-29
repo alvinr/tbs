@@ -255,7 +255,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Neoprene gasket 340×240×3mm | Weatherseal between plate and wall | 1 | McMaster-Carr | ~$6 |
 | M6 bolt + nut + washer set | Panel mounting hardware, SS | 4 | McMaster-Carr | ~$5 |
 | [MC4 bulkhead connector pairs](https://www.amazon.com/s?k=MC4+bulkhead+connector+panel+mount+IP67) | IP67 panel-mount | 3 pairs | Amazon | ~$25 |
-**Solar & battery subtotal: ~$1,640**
+| Deutsch DT 2-pin bulkhead connector | Panel-mount, IP67, Circuit E cooler output | 1 | [Waytek Wire](https://www.waytekwire.com) | ~$5 |
+**Solar & battery subtotal: ~$1,645**
 
 ### Distribution & wiring
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -420,13 +421,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Ø200mm duct collar + hose clamp | Galvanized, wall stub coupling | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20collar) | ~$12 |
 | Ø200mm weatherproof duct cap | Removable, protects wall stub when cooler disconnected | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20cap) | ~$8 |
 | 200mm baffle duct + plates | Light-safe baffled intake, 300mm stub, 2× offset baffles | 1 lot | McMaster-Carr / local fab | ~$20 |
+| Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 | [Waytek Wire](https://www.waytekwire.com) / Amazon | ~$20 |
 | 25mm ratchet strap, 2m | Cooler transport stowage on near walkway | 2 | Amazon / Harbor Freight | ~$10 |
 | 12mm plywood base plate 600×350mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
 | 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
-**Cooler subtotal: ~$359**
+**Cooler subtotal: ~$379**
 
-**Section total: ~$739**
-*Note: fans wired to Circuits A & B, cooler to Circuit E — all from main fuse block. No separate power supply required.*
+**Section total: ~$759**
+*Note: fans wired to Circuits A & B, cooler to Circuit E — all from main fuse block. Cooler power supplied via Deutsch DT bulkhead connector on external power panel.*
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)
 *Source: `chemistry-shopping-list.md`*

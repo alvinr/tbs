@@ -299,16 +299,16 @@ def draw_sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet2():
-    fig, ax2 = plt.subplots(figsize=(16.8, 21))
+    fig, ax2 = plt.subplots(figsize=(14, 18))
     fig.patch.set_facecolor('white')
     ax2.set_facecolor('white')
     ax2.set_aspect('equal')
     ax2.axis('off')
-    ax2.set_xlim(0, 1680)
-    ax2.set_ylim(0, 2100)
+    ax2.set_xlim(0, 1400)
+    ax2.set_ylim(0, 1800)
 
     # Border
-    draw_rect(ax2, 20, 20, 1640, 2060, lw=1.5, color='black', fc='white')
+    draw_rect(ax2, 20, 20, 1360, 1760, lw=1.5, color='black', fc='white')
 
     title_block(ax2, "SHEET 2 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",
@@ -322,11 +322,12 @@ def draw_sheet2():
     SC4 = 1
     def ss(mm): return mm * SC4
 
-    scx, scy = 472, 1650
+    scx, scy = 472, 1400
 
-    ax2.text(scx, scy + 360, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
+    ax2.text(scx, scy + 340, 'SECTION A-A', ha='center',
              fontsize=9, fontweight='bold', color='black')
-    ax2.text(scx, scy + 336, '1:4 SCALE', ha='center', fontsize=7, color='#555')
+    ax2.text(scx, scy + 316, '(Pinhole Plate installed)  1:4 SCALE', ha='center',
+             fontsize=7, color='#555')
 
     # Container wall
     wall_left  = scx - ss(340)
@@ -471,9 +472,9 @@ def draw_sheet2():
     ax2.text(pl_right + 40, scy + pl_half*0.8, 'INTERIOR\n(CAMERA)', ha='left',
              fontsize=6.5, color='#333', style='italic')
 
-    ax2.text(scx - 300, scy - pl_half - 64, 'SECTION A-A', ha='center', fontsize=8,
+    ax2.text(scx, scy - pl_half - 48, 'SECTION A-A', ha='center', fontsize=8,
              fontweight='bold', color=C_RED)
-    ax2.text(scx - 300, scy - pl_half - 96, '1:4 scale  —  Pinhole Plate (Item 2) installed', ha='center',
+    ax2.text(scx, scy - pl_half - 72, '1:4 scale', ha='center',
              fontsize=6, color='#555')
 
     # ──────────────────────────────────────────────────────────────────────────
@@ -482,11 +483,11 @@ def draw_sheet2():
     SC5 = 8.0
     def sb(mm): return mm * SC5
 
-    dbx, dby = 1200, 1650
+    dbx, dby = 800, 1400
 
-    ax2.text(dbx, dby + 340, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
+    ax2.text(dbx, dby + 340, 'DETAIL B — DISC SEAT', ha='center',
              fontsize=8, fontweight='bold')
-    ax2.text(dbx, dby + 316, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
+    ax2.text(dbx, dby + 316, '2:1 SCALE', ha='center', fontsize=6, color='#555')
 
     SHOWN_W = 40
     face_x = dbx
@@ -558,11 +559,11 @@ def draw_sheet2():
     SC10 = 40
     def sc(mm): return mm * SC10
 
-    dcx, dcy = 1200, 700
+    dcx, dcy = 1120, 1400
 
-    ax2.text(dcx, dcy + 340, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
+    ax2.text(dcx, dcy + 340, 'DETAIL C — LIGHT TRAP', ha='center',
              fontsize=8, fontweight='bold')
-    ax2.text(dcx, dcy + 316, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
+    ax2.text(dcx, dcy + 316, '10:1 SCALE  —  Items 2 & 3', ha='center',
              fontsize=6, color='#555')
 
     frame_face_x = dcx - 120
@@ -621,7 +622,7 @@ def draw_sheet2():
     SC2 = 2
     def sd(mm): return mm * SC2
 
-    ddx, ddy = 380, 800
+    ddx, ddy = 700, 600
 
     ax2.text(ddx+20, ddy + 420, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
              fontsize=8, fontweight='bold')
@@ -712,7 +713,7 @@ def draw_sheet2():
         'SHUTTER (LENS PLATE ONLY): SLIDE BLACK Al PANEL (175mm × 55mm × 3mm) IN GUIDE RAILS — SPRING-LOADED TO CLOSED.',
         'PROCUREMENT: LENOX LASER (lenoxlaser.com) FOR PINHOLE DISCS — SPECIFY: SS-302 Ø50mm, APERTURE Ø2.17mm ±0.025mm.',
     ]
-    draw_notes(ax2, notes2, 200, 280, spacing=20, fs=7, width=1400)
+    draw_notes(ax2, notes2, 40, 280, spacing=20, fs=7, width=1300)
 
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/plate-drawing-sheet2.png'

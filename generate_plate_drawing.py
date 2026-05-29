@@ -701,8 +701,8 @@ def draw_sheet2():
     ax2.text(pl_left_d - tube_extend_l + sd(40), ddy + tube_od_half + 48,
              '±40mm FOCUS\nTRAVEL', ha='center', fontsize=5, color=C_DIM)
 
-    draw_dim_v(ax2, pl_right_d + 40, ddy - bore_half_d, ddy + bore_half_d,
-               'Ø175 H7\nBORE', right=True, fs=5.5, offset=6)
+    draw_dim_v(ax2, pl_right_d + 40, ddy - tube_id_half, ddy + tube_id_half,
+               'Ø165\nTUBE ID', right=True, fs=5.5, offset=6)
 
     ax2.annotate('', xy=(pl_right_d, ddy + tube_od_half),
                  xytext=(pl_right_d, ddy - tube_od_half),

@@ -30,7 +30,7 @@ At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm*
 
 | | Front board tilt | Film plane tilt |
 |-|-----------------|-----------------|
-| Image shift | Yes — 207 mm per 5° | No (film moves, not image centre) |
+| Image shift | Yes — 207 mm per 5° | No (film moves, not image center) |
 | Keystone | Gentle (~1.5% at 5°) | Dramatic (Scheimpflug-style) |
 | Scale gradient | Uniform across field | Non-uniform (near edge stretched) |
 | Focus | Constant (pinhole) | Constant (pinhole) |
@@ -128,7 +128,7 @@ Linear travel ÷ arm radius:      1/130 rad/mm = 0.0077°/mm
 Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
-Full ±5° range from centre:          ~410 clicks (11.4 turns)
+Full ±5° range from center:          ~410 clicks (11.4 turns)
 Mechanical hard stop:                ±12mm travel = ±5.3°
 ```
 
@@ -136,7 +136,7 @@ Mechanical hard stop:                ±12mm travel = ±5.3°
 - Top and bottom screws → **TILT** axis → **black anodised** knobs, engraved TILT+ / TILT−
 - Left and right screws → **SWING** axis → **natural/silver anodised** knobs, engraved SWING+ / SWING−
 
-**Operation:** To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centred on the bearing at all times.
+**Operation:** To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centered on the bearing at all times.
 
 ---
 
@@ -193,13 +193,13 @@ Board tilt α and swing β rotate the effective world coordinate system:
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:  
 `t = (n·r₀)/(n·d);  F = t × d`
 
-The red cross (+) marks the projected image centre; grey cross marks the nominal centre.
+The red cross (+) marks the projected image center; grey cross marks the nominal center.
 
 ### C0 — Reference (all flat)
 
 ![C0](assets/tilt-swing-combined-c0.png)
 
-Undistorted reference. Both systems at 0°. Grid is symmetric, image centre on nominal.
+Undistorted reference. Both systems at 0°. Grid is symmetric, image center on nominal.
 
 ---
 
@@ -255,7 +255,7 @@ The board points diagonally (both up and right simultaneously). The image shifts
 
 ![C7](assets/tilt-swing-combined-c7.png)
 
-Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image centre shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.
+Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image center shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.
 
 ---
 
@@ -376,6 +376,6 @@ The mechanism costs less than the film plane mechanism (~$2,400) due to the smal
 2. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).
 3. [Micro-Tools Custom Bellows](https://microtools.com/) — Custom photographic bellows fabrication.
 4. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard mechanism and combined distortion analysis.
-5. [Fabrication Drawings](fabrication-drawings.md) — Wall frame and interchangeable plate interface specification.
+5. [Pinhole Report](pinhole-report.md) — Wall frame and interchangeable plate interface specification.
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

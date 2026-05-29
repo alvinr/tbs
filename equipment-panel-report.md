@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Equipment Panel & Plumbing
+# Equipment Panel Report
 
 ## 1. Purpose
 
@@ -45,6 +45,9 @@ The panel serves three functions:
 
 The panel face is divided into two zones: a filter skid at the bottom and a pump
 zone above, with equipment arranged in columns for pipe routing efficiency.
+
+**Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
+![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
 
 ### 3.1 Filter Skid — Z=200–1,280mm
 
@@ -296,12 +299,6 @@ for the full drawing set.
 
 **Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
-
-**Pump Manifold — Elevation detail with 3-pump layout (P-01, P-02, P-04), ACC-01, BV-01/BV-02, and pipe connections (~1:5)**
-![TBS-001 — Pump Manifold Elevation](assets/pump-manifold-sheet1.png)
-
-**Filter Skid — Elevation detail with 3-stage Big Blue housings, slotted angle frame, inter-stage piping, and mounting cross-section (~1:5)**
-![TBS-001 — Filter Skid Elevation](assets/filter-skid-sheet1.png)
 
 ---
 

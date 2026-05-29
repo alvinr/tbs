@@ -62,7 +62,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 1,120–1,720 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1,440mm |
+| Evaporative cooler | 1,120–1,720 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1,390mm |
 | Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
 | Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |

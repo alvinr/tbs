@@ -2,7 +2,7 @@
 <!-- © 2026 Alvin Richards -->
 # Fabrication Drawings
 
-Interchangeable plate system for the pinhole-end wall of the shipping container.
+Interchangeable plate system for the pinhole-side wall of the shipping container.
 The frame is fixed; the pinhole plate and lens plate swap in and out without tools.
 
 ---

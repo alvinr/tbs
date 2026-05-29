@@ -21,7 +21,7 @@ from tbs_constants import (
     FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
 )
 from tbs_drawing import (
-    draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader,
+    draw_dim_h, draw_dim_v, draw_rect, draw_circle, leader, draw_notes,
 )
 from tbs_title_block import title_block
 
@@ -49,7 +49,7 @@ def ann(ax, text, xy, xytext, size=7.5):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet1():
-    FW, FH = 24.0, 16.0
+    FW, FH = 24.0, 13.0
     fig, ax = plt.subplots(figsize=(FW, FH), dpi=150)
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
@@ -530,22 +530,15 @@ def draw_sheet2():
                offset=0.33, fs=7.5, zorder=10, color=C_DIM)
 
     # ── Shadow margin / procurement note ─────────────────────────────────────
-    NX, NY = FW - 9.5 - 0.3, 1.6
-    ax.add_patch(mpatches.FancyBboxPatch((NX, NY), 9.5, 1.6,
-                 boxstyle="round,pad=0.08", fc="#F0F8FF", ec=C_CL, lw=1.0, zorder=9))
-    ax.text(NX + 0.20, NY + 1.35,
-            "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
-            ha="left", va="center", fontsize=8.5, fontweight="bold", color=C_CL, zorder=10)
-    ax.text(NX + 0.20, NY + 1.00,
-            "Fan A (intake, right end) and Fan B (exhaust, left end) are identical.\n"
-            "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
-            ha="left", va="center", fontsize=7.5, color=C_OUT, zorder=10)
-    ax.text(NX + 0.20, NY + 0.58,
-            "Total depth from wall (each):  300mm baffle duct + 50mm fan = 350mm",
-            ha="left", va="center", fontsize=7.5, color=C_OUT, zorder=10)
-    ax.text(NX + 0.20, NY + 0.25,
-            "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
-            ha="left", va="center", fontsize=7.5, color="#2E7D32", fontweight="bold", zorder=10)
+    draw_notes(ax, [
+        "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
+        "Fan A (intake, right end) and Fan B (exhaust, left end) are identical.",
+        "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
+        "Total depth from wall (each):  300mm baffle duct + 50mm fan = 350mm",
+        "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
+    ], x=FW - 9.5 - 0.1, y_top=3.0, spacing=0.33,
+       fs=7.5, title_fs=8.5, title_color=C_CL, width=9.5,
+       border_color=C_CL, border_lw=1.0)
 
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="FAN & BAFFLE DUCT — ASSEMBLY SECTION",

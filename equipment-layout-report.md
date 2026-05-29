@@ -233,15 +233,15 @@ replaced annually.
 **Mode conversion workflow (single person, ~5 minutes — panel slide only):**
 
 1. Release cam latches, swing panel open 180°
-2. Disconnect evaporative cooler from external duct coupling on pinhole wall exterior
-3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway at X=500–1,100mm
+2. Disconnect flex duct from wall stub collar (release hose clamp). Replace weatherproof cap on wall stub. Drain cooler reservoir
+3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway at X=500–1,100mm. Stow flex duct alongside cooler
 4. Secure with 2× ratchet straps to wall brackets at X≈457mm and X≈914mm
 5. Release toggle clamps, slide panel inward 300mm
 6. Lock panel at transport position, close container doors
 
 ### 6.2 Evaporative Cooler Transport Stowage
 
-The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm, ~20 kg dry) is externally mounted during operation and must be stowed inside the container for transport.
+The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm, ~20 kg dry) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct. It must be stowed inside the container for transport.
 
 **Stowage position:** On the near walkway grating, X=500–1,100mm, Yd=0–350mm. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings.
 

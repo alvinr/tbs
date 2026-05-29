@@ -22,11 +22,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7a. Panel sliding carriage | $976 | $976 |
 | 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $955 | $1,470 |
 | 7c. Ceiling rail suspension | $208 | $208 |
-| 8. Cooling & ventilation | $340 | $420 |
+| 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,876** | **~$22,816** |
+| **TOTAL (base build + 50-print run)** | **~$16,906** | **~$22,846** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -416,13 +416,16 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [12V DC evaporative cooler](https://www.portacool.com) | ~80W, ~300 CFM (Portacool Jetstream 110 12V or equiv.) | 1 | [Portacool](https://www.portacool.com) / Amazon | ~$280 |
-| 150mm duct collar + baffles (cooler intake) | Light-safe baffled intake through bottom wall | 1 lot | McMaster-Carr / local fab | ~$30 |
+| Ø200mm insulated flex duct | ~1m, aluminum foil jacket, cooler to wall stub | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20insulated%20flex%20duct) / McMaster-Carr | ~$20 |
+| Ø200mm duct collar + hose clamp | Galvanized, wall stub coupling | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20collar) | ~$12 |
+| Ø200mm weatherproof duct cap | Removable, protects wall stub when cooler disconnected | 1 | [Home Depot](https://www.homedepot.com/s/8%20inch%20duct%20cap) | ~$8 |
+| 200mm baffle duct + plates | Light-safe baffled intake, 300mm stub, 2× offset baffles | 1 lot | McMaster-Carr / local fab | ~$20 |
 | 25mm ratchet strap, 2m | Cooler transport stowage on near walkway | 2 | Amazon / Harbor Freight | ~$10 |
 | 12mm plywood base plate 600×350mm | Load distribution on walkway grating | 1 | Offcut / local | ~$5 |
 | 25×25×3mm Al angle cleats, 100mm | Anti-slide cleats screwed to base plate | 2 | Metal Supermarkets / online | ~$4 |
-**Cooler subtotal: ~$329**
+**Cooler subtotal: ~$359**
 
-**Section total: ~$709**
+**Section total: ~$739**
 *Note: fans wired to Circuits A & B, cooler to Circuit E — all from main fuse block. No separate power supply required.*
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)

@@ -111,19 +111,21 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 ### 5.2 Light-Safe Cooler Intake
 
-The cooler is mounted externally on the pinhole wall exterior. Cooled air enters through a Ø200mm insulated duct penetration.
+The cooler sits on the ground outside the container, adjacent to the pinhole wall. A short length of Ø200mm flexible insulated duct connects the cooler outlet to a wall penetration with light-safe baffles. This arrangement requires no permanent external mounting — the cooler is simply placed, connected, and removed each session.
 
 | Parameter | Value |
 |-----------|-------|
 | Duct size | 200mm (8") — sized for ~300 CFM at low velocity |
-| Penetration location | Pinhole wall (Yd=0 face) at X=1,200mm, Z=2,100mm |
+| Penetration location | Pinhole wall (Yd=0 face) at X=1,200mm, Z=600mm |
+| Flexible duct | Ø200mm insulated flex, ~1m length, aluminum foil jacket |
 | Interior baffles | Two 200 × 200mm flat steel baffles, offset 100mm, inside a 300mm duct stub |
 | Light path | Broken by offset baffles — no direct line of sight |
-| Exterior coupling | Cooler unit direct-coupled to duct with weatherproof housing |
+| Exterior coupling | Ø200mm duct collar on wall stub; flex duct secured with hose clamp |
+| Exterior cap | Removable weatherproof cap on wall stub when cooler is not connected |
 
 ### 5.3 Transport Stowage
 
-The cooler is externally mounted during operation and must be stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for the full stowage specification.
+The cooler is stowed inside the container for transport. See [Equipment Layout Report](equipment-layout-report.md) §6.2 for the full stowage specification.
 
 | Parameter | Value |
 |-----------|-------|
@@ -185,12 +187,14 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | Local sheet metal / Home Depot | ~$30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | Local sheet metal / Home Depot | ~$20 |
-| 200mm insulated duct | Ø200mm × 500mm, foil-faced | Home Depot / McMaster-Carr | ~$25 |
+| 200mm insulated flex duct | Ø200mm × 1m, aluminum foil jacket | Home Depot / McMaster-Carr | ~$20 |
+| Duct collar + hose clamp | Ø200mm, galvanized | Home Depot | ~$12 |
+| Weatherproof duct cap | Ø200mm, removable | Home Depot | ~$8 |
 | Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | Waytek Wire (waytekwire.com) | ~$8 |
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | Amazon / Waytek Wire | ~$15 |
 | Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
 | Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~$718** |
+| **Ventilation & cooling total** | | | **~$733** |
 
 ---
 

@@ -622,7 +622,7 @@ def draw_sheet2():
     SC2 = 2
     def sd(mm): return mm * SC2
 
-    ddx, ddy = 700, 600
+    ddx, ddy = 700, 750
 
     ax2.text(ddx, ddy + 420, 'DETAIL D — LENS FOCUSER  (1:2)', ha='center',
              fontsize=8, fontweight='bold')

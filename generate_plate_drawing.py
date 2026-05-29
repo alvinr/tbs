@@ -74,22 +74,22 @@ C_RED   = '#CC0000'   # section-cut arrows
 # SHEET 1 — FRONT VIEWS
 # ═══════════════════════════════════════════════════════════════════════════════
 
-fig1, ax1 = plt.subplots(figsize=(17.92, 14))
+fig1, ax1 = plt.subplots(figsize=(12.54, 11.2))
 fig1.patch.set_facecolor('white')
 ax1.set_facecolor('white')
 ax1.set_aspect('equal')
 ax1.axis('off')
-ax1.set_xlim(0, 3584)
-ax1.set_ylim(0, 2800)
+ax1.set_xlim(0, 2509)
+ax1.set_ylim(0, 2240)
 
 SC = 1   # mm-first — AXES IN mm
 
 def s(mm): return mm * SC
 
 # ── Border and title block ────────────────────────────────────────────────────
-draw_rect(ax1, 26, 40, 3533, 2720, lw=1.5, color='black', fc='white')
-draw_rect(ax1, 26, 40, 3533, 560, lw=1.0, color='black', fc='#F0F0F0')  # parts list
-draw_rect(ax1, 2458, 40, 1101, 560, lw=1.0, color='black', fc='#F5F5F5')  # title block
+draw_rect(ax1, 18, 32, 2473, 2176, lw=1.5, color='black', fc='white')
+draw_rect(ax1, 18, 32, 2473, 448, lw=1.0, color='black', fc='#F0F0F0')  # parts list
+draw_rect(ax1, 1721, 32, 770, 448, lw=1.0, color='black', fc='#F5F5F5')  # title block
 
 # Title block (shared)
 title_block(ax1, "SHEET 1 OF 2",
@@ -99,11 +99,11 @@ title_block(ax1, "SHEET 1 OF 2",
             doc_id="TBS-001 · Interchangeable Plates", height=0.04)
 
 # Parts list
-ax1.text(51, 544, 'ITEM', fontsize=6, fontweight='bold', color='black')
-ax1.text(154, 544, 'DESCRIPTION', fontsize=6, fontweight='bold', color='black')
-ax1.text(1024, 544, 'MATERIAL', fontsize=6, fontweight='bold', color='black')
-ax1.text(1536, 544, 'QTY', fontsize=6, fontweight='bold', color='black')
-ax1.text(1638, 544, 'NOTES', fontsize=6, fontweight='bold', color='black')
+ax1.text(36, 435, 'ITEM', fontsize=6, fontweight='bold', color='black')
+ax1.text(108, 435, 'DESCRIPTION', fontsize=6, fontweight='bold', color='black')
+ax1.text(717, 435, 'MATERIAL', fontsize=6, fontweight='bold', color='black')
+ax1.text(1075, 435, 'QTY', fontsize=6, fontweight='bold', color='black')
+ax1.text(1147, 435, 'NOTES', fontsize=6, fontweight='bold', color='black')
 
 parts = [
     ('1', 'WALL FRAME', 'S275 STEEL PLATE 6mm', '1',
@@ -126,30 +126,30 @@ parts = [
      'Ø420mm loop in 3×3 groove on wall frame face'),
 ]
 for i, (it, desc, mat, qty, note) in enumerate(parts):
-    yp = 464 - i * 32
+    yp = 371 - i * 26
     bg = '#FFFFFF' if i % 2 == 0 else '#F8F8F8'
-    draw_rect(ax1, 30, yp - 16, 2397, 44, lw=0, fc=bg, zorder=1)
-    ax1.text(51, yp + 4, it, fontsize=5.5, color='black', fontweight='bold')
-    ax1.text(154, yp + 4, desc, fontsize=5.5, color='black')
-    ax1.text(1024, yp + 4, mat, fontsize=5, color='black')
-    ax1.text(1536, yp + 4, qty, fontsize=5.5, color='black')
-    ax1.text(1638, yp + 4, note, fontsize=5, color='#333333')
-ax1.plot([30, 2427], [520, 520], color='black', lw=0.5)
+    draw_rect(ax1, 21, yp - 13, 1678, 35, lw=0, fc=bg, zorder=1)
+    ax1.text(36, yp + 3, it, fontsize=5.5, color='black', fontweight='bold')
+    ax1.text(108, yp + 3, desc, fontsize=5.5, color='black')
+    ax1.text(717, yp + 3, mat, fontsize=5, color='black')
+    ax1.text(1075, yp + 3, qty, fontsize=5.5, color='black')
+    ax1.text(1147, yp + 3, note, fontsize=5, color='#333333')
+ax1.plot([21, 1699], [416, 416], color='black', lw=0.5)
 
 # ── View titles ───────────────────────────────────────────────────────────────
 view_titles = [
-    (486, 2320, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
-    (1372, 2320, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
-    (2258, 2320, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
+    (410, 2020, 'ITEM 1 — WALL FRAME (Steel)', '(Interior face shown)'),
+    (1230, 2020, 'ITEM 2 — PINHOLE PLATE (Al)', '(Interior face shown)'),
+    (2050, 2020, 'ITEM 3 — LENS PLATE (Al)', '(Interior face shown)'),
 ]
 for tx, ty, t1, t2 in view_titles:
     ax1.text(tx, ty, t1, ha='center', fontsize=7.5, fontweight='bold', color='black')
-    ax1.text(tx, ty - 56, t2, ha='center', fontsize=6, color='#555555', style='italic')
+    ax1.text(tx, ty - 45, t2, ha='center', fontsize=6, color='#555555', style='italic')
 
 # ══════════════════════════════════════════════════════════
 # ITEM 1: WALL FRAME  (centre = 95, 290)
 # ══════════════════════════════════════════════════════════
-cx1, cy1 = 486, 1800
+cx1, cy1 = 410, 1500
 
 # Outer plate outline
 hw = s(PL_OD/2)
@@ -222,7 +222,7 @@ ax1.text(cx1, cy1 - hw - 80, '1', ha='center', va='center', fontsize=10,
 # ══════════════════════════════════════════════════════════
 # ITEM 2: PINHOLE PLATE  (centre = 268, 290)
 # ══════════════════════════════════════════════════════════
-cx2, cy2 = 1372, 1800
+cx2, cy2 = 1230, 1500
 
 draw_rect(ax1, cx2 - hw, cy2 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -289,7 +289,7 @@ ax1.text(cx2, cy2 - hw - 80, '2', ha='center', va='center', fontsize=10,
 # ══════════════════════════════════════════════════════════
 # ITEM 3: LENS PLATE  (centre = 441, 290)
 # ══════════════════════════════════════════════════════════
-cx3, cy3 = 2258, 1800
+cx3, cy3 = 2050, 1500
 
 draw_rect(ax3 := ax1, cx3 - hw, cy3 - hw, s(PL_OD), s(PL_OD),
           lw=LW_THICK, color=C_OUT, fc=C_ALUM)
@@ -364,7 +364,7 @@ notes = [
     '7. INTERCHANGEABILITY: ALL BOLT AND DOWEL PATTERNS IDENTICAL ON ITEMS 2 & 3 — SWAP IN DARK WITHOUT TOOLS.',
     '8. SHUTTER PROVISION: ITEMS 2 & 3 HAVE 4×Ø6.5 HOLES AT TOP FACE FOR SLIDING SHUTTER RAIL — SEE SHEET 2.',
 ]
-draw_notes(ax1, notes, 51, 1300, spacing=48, fs=7, width=3482)
+draw_notes(ax1, notes, 36, 1040, spacing=38, fs=7, width=2438)
 
 plt.tight_layout(pad=0)
 

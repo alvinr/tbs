@@ -624,9 +624,8 @@ def draw_sheet2():
 
     ddx, ddy = 700, 600
 
-    ax2.text(ddx+20, ddy + 420, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
+    ax2.text(ddx, ddy + 420, 'DETAIL D — LENS FOCUSER  (1:2)', ha='center',
              fontsize=8, fontweight='bold')
-    ax2.text(ddx, ddy + 396, 'Shows lens tube focuser detail', ha='center', fontsize=6, color='#555')
 
     pl_left_d = ddx - sd(PL_THICK/2)
     pl_right_d = ddx + sd(PL_THICK/2)
@@ -700,7 +699,7 @@ def draw_sheet2():
     draw_dim_h(ax2, pl_left_d, pl_right_d, ddy - tube_od_half - 48, '15\nmm', above=False,
                fs=5.5, offset=6)
 
-    ax2.text(ddx - 120, ddy - tube_od_half - 96, 'DETAIL D — LENS FOCUSER (1:2)', ha='center',
+    ax2.text(ddx - 120, ddy - tube_od_half - 96, 'Ø175 H7 BORE / Ø174.5 g6 TUBE', ha='center',
              fontsize=6.5, fontweight='bold', color=C_RED)
 
     # ── Sheet 2 notes ─────────────────────────────────────────────────────────

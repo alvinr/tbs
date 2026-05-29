@@ -66,13 +66,13 @@ MC4_DEPTH = 40            # MC4 bulkhead protrusion behind plate (mm)
 NEMA_W   = 55             # NEMA receptacle width
 NEMA_H   = 45             # NEMA receptacle height
 NEMA_X   = 195            # NEMA left edge from panel left edge
-NEMA_Y   = 77             # NEMA bottom edge from panel bottom edge
+NEMA_Y   = 153            # NEMA bottom edge — center aligns with PV3 (175mm)
 NEMA_DEPTH = 45           # NEMA body protrusion behind plate (mm)
 
 # Deutsch DT 2-pin bulkhead (Circuit E — evap cooler DC output)
 DT_R     = 10             # connector body radius (mm)
 DT_X     = 230            # center X from panel left edge
-DT_Y     = 35             # center Y from panel bottom edge
+DT_Y     = 65             # center Y — aligns with PV1 (65mm)
 DT_DEPTH = 30             # body protrusion behind plate (mm)
 C_DT     = "#E8884A"      # orange — matches pump/cooler circuit color
 
@@ -183,12 +183,12 @@ def draw_sheet1():
            fs=6.5, color=C_MC4, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(NEMA_X + NEMA_W + 5), sy(NEMA_Y + NEMA_H / 2),
-           sx(nema_cx + NEMA_W * 3), sy(NEMA_Y - 10),
+           sx(PLATE_W + 25), sy(NEMA_Y + NEMA_H / 2 + 10),
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
-           fs=6.5, color=C_AC, ha="center", va="top", arrow_style="-|>", font=FONT)
+           fs=6.5, color=C_AC, ha="left", arrow_style="-|>", font=FONT)
 
     leader(ax_a, sx(DT_X + DT_R + 3), sy(DT_Y),
-           sx(PLATE_W + 25), sy(DT_Y - 15),
+           sx(PLATE_W + 25), sy(DT_Y - 25),
            "DEUTSCH DT 2-PIN\nBULKHEAD (IP67)\nCIRCUIT E — COOLER",
            fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
 
@@ -300,8 +300,8 @@ def draw_sheet1():
                   [by(cy), by(cy)],
                   color=C_MC4, lw=1.5, zorder=5)
 
-    # NEMA body through cutout
-    nema_cy = cut_bot + mc4_spacing * 3.2
+    # NEMA body through cutout — aligned with PV3
+    nema_cy = cut_bot + mc4_spacing * 2.5
     draw_rect(ax_b, bx(wall_x - 5), by(nema_cy - 5 * mm_v),
               bx(wall_thick + conn_depth + 5), by(10 * mm_v),
               fc=C_NEMA, color=C_AC, lw=1.0, zorder=4)
@@ -310,8 +310,8 @@ def draw_sheet1():
               [by(nema_cy), by(nema_cy)],
               color=C_AC, lw=1.5, ls="--", zorder=5)
 
-    # Deutsch DT body through cutout (Circuit E — cooler DC output)
-    dt_cy = cut_bot + 6 * mm_v
+    # Deutsch DT body through cutout (Circuit E — cooler DC output) — aligned with PV1
+    dt_cy = cut_bot + mc4_spacing * 0.5
     draw_rect(ax_b, bx(wall_x - 5), by(dt_cy - 3 * mm_v),
               bx(wall_thick + DT_DEPTH + 5), by(6 * mm_v),
               fc="#FFE0C0", color=C_DT, lw=1.0, zorder=4)

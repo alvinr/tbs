@@ -87,8 +87,6 @@ def draw_sheet1():
 
     # ── Border and title block ────────────────────────────────────────────────
     draw_rect(ax1, 18, 32, 2473, 2176, lw=1.5, color='black', fc='white')
-    draw_rect(ax1, 18, 32, 2473, 448, lw=1.0, color='black', fc='#F0F0F0')
-    draw_rect(ax1, 1721, 32, 770, 448, lw=1.0, color='black', fc='#F5F5F5')
 
     title_block(ax1, "SHEET 1 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",
@@ -311,8 +309,6 @@ def draw_sheet2():
 
     # Border
     draw_rect(ax2, 20, 20, 2360, 1660, lw=1.5, color='black', fc='white')
-    draw_rect(ax2, 20, 20, 2360, 280, lw=1.0, color='black', fc='#F0F0F0')
-    draw_rect(ax2, 1540, 20, 840, 280, lw=1.0, color='black', fc='#F5F5F5')
 
     title_block(ax2, "SHEET 2 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",

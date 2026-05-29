@@ -73,7 +73,7 @@ Fan A is flush-mounted in a wall penetration at the far end wall (X=5,893mm), lo
 
 ### 4.3 Fan B — Panel-Mounted Exhaust
 
-Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so the exhaust baffle duct protrudes from the panel exterior face and discharges directly into the open doorway.
+Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so exhaust air passes through the grille and discharges directly into the open doorway.
 
 **Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2,200mm.
 
@@ -90,7 +90,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 
 ![TBS-001 Ventilation — Sheet 2: Fan & Baffle Duct Assembly](assets/lighttrap-sheet2.png)
 
-The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct protrudes from the panel exterior face.
+The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct is fixed to the hinged panel interior. Both fans and ducts are fully interior-mounted — only the weatherproof louvre grille is on the exterior face.
 
 ---
 

@@ -62,7 +62,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 930–1,530 | 0–800 | 12V DC 80W; protrudes 350mm from wall into Yd=0–350mm |
+| Evaporative cooler | 930–1,530 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=600mm |
 | Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
 | Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
@@ -334,7 +334,7 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 | Light trap drum | Panel-mounted (center zone) | Moves with panel |
 | Fan B exhaust duct | Panel-mounted, Yd=2,287, H=1,800 | Moves with panel |
 | Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 300mm slide + 180° swing |
-| Evap cooler | X=930–1,530, Yd=0–350 | No — far inboard |
+| Evap cooler duct stub | X=1,200, Yd=0 (wall penetration) | No — flush with wall |
 | Electrical panel | X=2,050–2,350 | No — 1,430mm inboard |
 | Battery bank | X=2,050–2,550 | No — 1,430mm inboard |
 | Pump manifold | X=2,600–2,900 | No — 1,980mm inboard |
@@ -360,7 +360,7 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 | Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, 2×2 stack bottom near |
 | Waste IBC | — (55-gal drums) | **Right end zone, X=4,674mm, 2×2 stack bottom far** |
 | 55-gal drums | Right side, X=3,900mm | **Eliminated — waste via IBC-4 in right end zone** |
-| Evap cooler | X=1,380mm (near optical zone) | **Pinhole wall face (Yd=0), X=930–1,530mm** |
+| Evap cooler | X=1,380mm (near optical zone) | **Ground-placed outside; duct penetration at Yd=0, X=1,200mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
 | Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
 

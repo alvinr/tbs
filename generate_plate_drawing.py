@@ -97,18 +97,18 @@ def draw_sheet1():
     # ── Parts list (notes block) ──────────────────────────────────────────────
     parts_notes = [
         'PARTS LIST:',
-        '1. WALL FRAME — S275 steel 6mm (×1) — weld to container wall; machine face after welding',
-        '2. PINHOLE PLATE — Al 6061-T6, 15mm (×1) — black anodize all faces; interior faces matt black',
-        '3. PINHOLE DISC — SS-302 0.10mm, Lenox Laser (×1+) — Ø50 disc, Ø2.17 aperture ±0.025mm; order spares',
+        '1. WALL FRAME          — S275 steel 6mm (×1) — weld to container wall; machine face after welding',
+        '2. PINHOLE PLATE       — Al 6061-T6, 15mm (×1) — black anodize all faces; interior faces matt black',
+        '3. PINHOLE DISC        — SS-302 0.10mm, Lenox Laser (×1+) — Ø50 disc, Ø2.17 aperture ±0.025mm; order spares',
         '4. DISC RETAINING RING — Al 6061-T6 (×1) — Ø52 bore × M52×0.75 thread; 3× M4 grub screws',
-        '5. LENS PLATE — Al 6061-T6, 15mm (×1) — black anodize; Ø175 bore H7; interior faces matt black',
-        '6. LENS TUBE — Al 6061-T6 (×1) — Ø174.5g6 × Ø165 bore × 100L; 3× M8 set screws at 120°',
-        '7. LOCATING DOWEL PIN — SS-303 Ø8 m6 × 40L (×2) — press fit to wall frame (H7 reamed holes)',
-        '8. SOCKET HEAD BOLT — M12 × 40mm grade 8.8 (×8) — with M12 flat washer each; torque to 65 Nm',
-        '9. NEOPRENE CORD SEAL — Ø4mm neoprene, 70 Shore (×1) — Ø420mm loop in 3×3 groove on wall frame face',
+        '5. LENS PLATE          — Al 6061-T6, 15mm (×1) — black anodize; Ø175 bore H7; interior faces matt black',
+        '6. LENS TUBE           — Al 6061-T6 (×1) — Ø174.5g6 × Ø165 bore × 100L; 3× M8 set screws at 120°',
+        '7. LOCATING DOWEL PIN  — SS-303 Ø8 m6 × 40L (×2) — press fit to wall frame (H7 reamed holes)',
+        '8. SOCKET HEAD BOLT    — M12 × 40mm grade 8.8 (×8) — with M12 flat washer each; torque to 65 Nm',
+        '9. NEOPRENE CORD SEAL  — Ø4mm neoprene, 70 Shore (×1) — Ø420mm loop in 3×3 groove on wall frame face',
     ]
-    draw_notes(ax1, parts_notes, 36, 420, spacing=32, fs=5.5, width=1660,
-               border_lw=0)
+    draw_notes(ax1, parts_notes, 550, 550, spacing=38, fs=7, width=1400,
+               font={"fontfamily": "monospace"})
 
     # ── View titles ───────────────────────────────────────────────────────────
     view_titles = [

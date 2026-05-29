@@ -213,7 +213,8 @@ def draw_sheet1():
     # Curved arrow from intake Fan A (left wall, low) diagonally to exhaust Fan B (right wall, high)
     ax.annotate("", xy=(FB_X - R_PF - 0.3, FB_Y),
                 xytext=(FA_X + R_PF + 0.3, FA_Y),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2,
+                arrowprops=dict(arrowstyle="-|>", color=C_CL,
+                                lw=5, mutation_scale=20,
                                 connectionstyle="arc3,rad=-0.35",
                                 alpha=0.6), zorder=4)
     ax.text(CX + CW/2, CY + CH/2 - 0.8,

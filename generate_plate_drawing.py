@@ -299,16 +299,16 @@ def draw_sheet1():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet2():
-    fig, ax2 = plt.subplots(figsize=(16.8, 17))
+    fig, ax2 = plt.subplots(figsize=(16.8, 21))
     fig.patch.set_facecolor('white')
     ax2.set_facecolor('white')
     ax2.set_aspect('equal')
     ax2.axis('off')
     ax2.set_xlim(0, 1680)
-    ax2.set_ylim(0, 1700)
+    ax2.set_ylim(0, 2100)
 
     # Border
-    draw_rect(ax2, 20, 20, 1640, 1660, lw=1.5, color='black', fc='white')
+    draw_rect(ax2, 20, 20, 1640, 2060, lw=1.5, color='black', fc='white')
 
     title_block(ax2, "SHEET 2 OF 2",
                 drawing_title="OPTICAL PLATE SYSTEM",
@@ -322,11 +322,11 @@ def draw_sheet2():
     SC4 = 1
     def ss(mm): return mm * SC4
 
-    scx, scy = 400, 1100
+    scx, scy = 380, 1650
 
-    ax2.text(scx, 1580, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
+    ax2.text(scx, scy + 360, 'SECTION A-A  (PINHOLE PLATE INSTALLED)', ha='center',
              fontsize=9, fontweight='bold', color='black')
-    ax2.text(scx, 1556, '1:4 SCALE', ha='center', fontsize=7, color='#555')
+    ax2.text(scx, scy + 336, '1:4 SCALE', ha='center', fontsize=7, color='#555')
 
     # Container wall
     wall_left  = scx - ss(340)
@@ -482,11 +482,11 @@ def draw_sheet2():
     SC5 = 8.0
     def sb(mm): return mm * SC5
 
-    dbx, dby = 1380, 1280
+    dbx, dby = 1200, 1650
 
-    ax2.text(dbx, 1620, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
+    ax2.text(dbx, dby + 340, 'DETAIL B — PINHOLE DISC SEAT', ha='center',
              fontsize=8, fontweight='bold')
-    ax2.text(dbx, 1596, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
+    ax2.text(dbx, dby + 316, '2:1 SCALE (dimensions in mm)', ha='center', fontsize=6, color='#555')
 
     SHOWN_W = 40
     face_x = dbx
@@ -558,11 +558,11 @@ def draw_sheet2():
     SC10 = 40
     def sc(mm): return mm * SC10
 
-    dcx, dcy = 1380, 500
+    dcx, dcy = 1200, 700
 
-    ax2.text(dcx, 840, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
+    ax2.text(dcx, dcy + 340, 'DETAIL C — LIGHT TRAP REBATE', ha='center',
              fontsize=8, fontweight='bold')
-    ax2.text(dcx, 816, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
+    ax2.text(dcx, dcy + 316, '10:1 SCALE (dimensions in mm)  —  Applies to Items 2 & 3', ha='center',
              fontsize=6, color='#555')
 
     frame_face_x = dcx - 120
@@ -621,7 +621,7 @@ def draw_sheet2():
     SC2 = 2
     def sd(mm): return mm * SC2
 
-    ddx, ddy = 820, 680
+    ddx, ddy = 380, 800
 
     ax2.text(ddx+20, ddy + 420, 'DETAIL D — LENS PLATE SECTION  (1:2)', ha='center',
              fontsize=8, fontweight='bold')

@@ -162,17 +162,17 @@ DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
-# Cooler relocated outside container, connected via 200mm duct through
-# pinhole wall at X=1200, Z=2100.
+# Cooler ground-placed outside container, connected via 200mm flex duct
+# through pinhole wall at X=1200, Z=600.
 EVAP_DUCT_X  = 1200    # duct penetration center X (mm) — through pinhole wall
-EVAP_DUCT_Z  = 2100    # duct penetration center Z (mm)
+EVAP_DUCT_Z  = 600     # duct penetration center Z (mm)
 EVAP_DUCT_D  = 200     # duct outer diameter (mm)
 # Physical dimensions (used for transport stowage sizing)
 EVAP_W     = 600     # cooler width along X (mm)
 EVAP_D     = 350     # cooler depth along Yd (mm)
 EVAP_H     = 800     # cooler height (mm)
-# Transport stowage — on near walkway grating, close to cargo door end
-EVAP_STOW_X    = 500     # stowage left edge X (mm) — just past left walkway butt joint
+# Transport stowage — on near walkway grating, in widened 500mm section
+EVAP_STOW_X    = 1200    # stowage left edge X (mm) — in 500mm wide zone
 EVAP_STOW_YD   = 0       # against pinhole wall (Yd=0)
 EVAP_STOW_Z    = 100     # sits on grating surface (Z=100mm, same as WALKWAY_H)
 

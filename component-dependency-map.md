@@ -135,13 +135,13 @@ sliding carriage; wiring via flexible coiled cable from fixed door frame (Circui
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Duct penetration X | 1,200 mm | `EVAP_DUCT_X` |
-| Duct penetration Z | 2,100 mm | `EVAP_DUCT_Z` |
+| Duct penetration X | 1,420 mm | `EVAP_DUCT_X` |
+| Duct penetration Z | 1,440 mm | `EVAP_DUCT_Z` |
 | Duct diameter | 200 mm | `EVAP_DUCT_D` |
 
 *Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
 water reservoir, Circuit E. Ground-placed outside the container; cooled air enters through
-Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=2,100mm.*
+Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=1,440mm.*
 
 *Report: [Ventilation & Cooling System](ventilation-report.md) §5 — evaporative cooler specification, light-safe intake duct, and transport stowage.*
 

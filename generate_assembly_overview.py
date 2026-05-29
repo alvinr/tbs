@@ -182,7 +182,7 @@ ax.add_patch(plt.Circle((EVAP_DUCT_X, EVAP_DUCT_Z), duct_r,
 ax.text(EVAP_DUCT_X, EVAP_DUCT_Z,
         f"Ø{EVAP_DUCT_D}", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=6)
-leader(ax, EVAP_DUCT_X + duct_r + 20, EVAP_DUCT_Z, 1800, 2300,
+leader(ax, EVAP_DUCT_X + duct_r, EVAP_DUCT_Z + duct_r, 1300, 2500,
        f"Evap duct penetration\nØ{EVAP_DUCT_D}mm (external unit)",
        ha="left", fs=FS_SM)
 

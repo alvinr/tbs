@@ -188,26 +188,35 @@ def draw_sheet1():
     ann(ax, "HIGH POSITION\n~1,800mm AFF",
         (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
 
-    # ── EVAP COOLER (pinhole wall, X=1,200mm — left of pinhole at X=2,399mm) ──
+    # ── EVAP COOLER (ground-placed outside, pinhole wall at X=1,200mm) ────────
     # Left wall = far end (X=5,893), right wall = door end (X=0).
     # X=1,200 → fraction from left = (5893-1200)/5893 ≈ 0.80
-    EC_X = CX + CW * 0.80
-    EC_Y = CY + WT + 0.1
-    EC_W, EC_H = 1.5, 0.9
+    # Cooler sits on ground outside; flex duct connects to baffled wall stub.
+    EC_WALL_X = CX + CW * 0.80
+    # Baffled duct stub in floor (pinhole wall face in this section view)
+    draw_rect(ax, EC_WALL_X - 0.18, CY, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=5)
+    # Flex duct from wall stub down to cooler (outside)
+    ax.plot([EC_WALL_X, EC_WALL_X], [CY, CY - 0.45],
+            color=C_PIPE, lw=3.0, ls="--", zorder=5)
+    ax.text(EC_WALL_X + 0.25, CY - 0.22, "flex\nduct", ha="left", va="center",
+            fontsize=6.0, color=C_PIPE, style="italic", zorder=10)
+    # Cooler box — outside (below container floor)
+    EC_W, EC_H = 1.3, 0.65
+    EC_X = EC_WALL_X - EC_W / 2
+    EC_Y = CY - 0.45 - EC_H
     ax.add_patch(mpatches.FancyBboxPatch((EC_X, EC_Y), EC_W, EC_H,
                  boxstyle="round,pad=0.04", fc=C_SOLAR, ec=C_OUT, lw=1.5, zorder=5))
-    ax.text(EC_X + EC_W/2, EC_Y + EC_H/2, "EVAP\nCOOLER\n(Cct E)",
-            ha="center", va="center", fontsize=8.0, fontweight="bold",
+    ax.text(EC_X + EC_W / 2, EC_Y + EC_H / 2, "EVAP COOLER\n(Cct E)",
+            ha="center", va="center", fontsize=7.0, fontweight="bold",
             color=C_OUT, zorder=6)
-    # Baffled intake stub on floor
-    draw_rect(ax, EC_X + EC_W/2 - 0.18, CY, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=5)
-    ax.annotate("Light-safe\nbaffled intake\n(150mm dia.)",
-                xy=(EC_X + EC_W/2, CY - 0.1), xytext=(EC_X + EC_W/2, CY - 0.8),
-                fontsize=7.5, color=C_DIM, ha="center",
-                arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.9),
-                bbox=dict(fc="white", ec="none", pad=1))
-    ax.annotate("", xy=(EC_X + EC_W/2, CY - 0.1), xytext=(EC_X + EC_W/2, CY - 0.5),
+    ax.text(EC_X + EC_W / 2, EC_Y - 0.12, "OUTSIDE — on ground",
+            ha="center", va="top", fontsize=6.5, color=C_DIM, fontweight="bold", zorder=10)
+    # Airflow arrow: cooler → up through duct → into container
+    ax.annotate("", xy=(EC_WALL_X, CY + WT + 0.3),
+                xytext=(EC_WALL_X, EC_Y + EC_H),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.0), zorder=6)
+    ann(ax, "Light-safe baffled\nintake (Ø200mm)",
+        (EC_WALL_X, CY + WT / 2), (EC_WALL_X + 1.5, CY + 0.6))
 
     # ── Cross-ventilation airflow path ────────────────────────────────────────
     # Curved arrow from intake Fan A (left wall, low) diagonally to exhaust Fan B (right wall, high)
@@ -231,7 +240,7 @@ def draw_sheet1():
             ha="center", va="bottom", fontsize=7.5, color=C_PIPE, fontweight="bold")
     # Drop conduits
     for dx, dy in [(FA_X, FA_Y + R_PF), (FB_X, FB_Y + R_PF),
-                   (EC_X + EC_W/2, EC_Y + EC_H)]:
+                   (EC_WALL_X, CY + WT)]:
         ax.plot([dx, dx], [TK_Y, dy], color=C_PIPE, lw=0.9, linestyle=":", zorder=3)
 
     # Revolving drum light trap label on right (replaces old vestibule)
@@ -241,8 +250,8 @@ def draw_sheet1():
             ha="center", va="center", fontsize=7.0, color="#2D6A2D",
             fontweight="bold", rotation=90)
 
-    # Operating modes table
-    MX, MY = CX, CY - 1.1
+    # Operating modes table (shifted down to clear cooler outside container)
+    MX, MY = CX, CY - 1.6
     ax.add_patch(mpatches.FancyBboxPatch((MX - 0.1, MY - 1.45), CW + 0.2, 1.55,
                  boxstyle="round,pad=0.04", fc="#F8F9FA", ec=C_DIM, lw=0.8, zorder=2))
     ax.text(MX + CW/2, MY - 0.05, "FAN OPERATING MODES",

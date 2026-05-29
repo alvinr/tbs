@@ -116,7 +116,7 @@ The cooler sits on the ground outside the container, adjacent to the pinhole wal
 | Parameter | Value |
 |-----------|-------|
 | Duct size | 200mm (8") — sized for ~300 CFM at low velocity |
-| Penetration location | Pinhole wall (Yd=0 face) at X=1,200mm, Z=600mm |
+| Penetration location | Pinhole wall (Yd=0 face) at X=1,200mm, Z=2,100mm |
 | Flexible duct | Ø200mm insulated flex, ~1m length, aluminum foil jacket |
 | Interior baffles | Two 200 × 200mm flat steel baffles, offset 100mm, inside a 300mm duct stub |
 | Light path | Broken by offset baffles — no direct line of sight |

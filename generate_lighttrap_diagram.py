@@ -434,7 +434,7 @@ def draw_sheet2():
             "16 AWG wiring → Cct A/B\n→ electrical panel\n(all inside container)",
             ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
-    ax.text(600, FCZ + PF_R - 20,
+    ax.text(520, FCZ + PF_R - 20,
             f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
             "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
@@ -503,8 +503,8 @@ def draw_sheet2():
         "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
         f"Total depth from wall (each):  {DUCT_DEPTH}mm baffle duct + {PF_BD}mm fan = {DUCT_DEPTH + PF_BD}mm",
         "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",
-    ], x=400, y_top=80, spacing=15,
-       fs=7.5, title_fs=8.5, title_color=C_CL, width=420,
+    ], x=350, y_top=80, spacing=15,
+       fs=7.5, title_fs=8.5, title_color=C_CL, width=300,
        border_color=C_CL, border_lw=1.0)
 
     title_block(ax, "SHEET 2 OF 2",

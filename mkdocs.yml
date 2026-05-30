@@ -90,7 +90,7 @@ nav:
     - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
     - "Lens Options": lens-options.md
     - "Photosensitive Materials": photosensitive-plane-options.md
-    - "Distortion Renders": distortion-renders.md
+    - "Distortion Renders": film-plane-distortion-renders.md
     - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
     - "Light Trap Selection": light-trap-selection.md
   - "Transportation":

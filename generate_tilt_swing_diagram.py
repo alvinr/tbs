@@ -545,10 +545,10 @@ def draw_sheet2():
     draw_dim_v(ax, cr_right + 15, cy, cy + cr_half, f'{int(CR_OD/2)}',
                right=True, fs=5.5, offset=6)
 
-    # Section title
-    ax.text(cx, cy - fr_half - 55, 'SECTION A-A', ha='center', fontsize=8,
+    # Section title — at top of drawing
+    ax.text(cx, cy + fr_half + 100, 'SECTION A-A', ha='center', fontsize=8,
             fontweight='bold', color=C_RED)
-    ax.text(cx, cy - fr_half - 72, '1:2 SCALE', ha='center', fontsize=6, color='#555')
+    ax.text(cx, cy + fr_half + 83, '1:2 SCALE', ha='center', fontsize=6, color='#555')
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes2 = [

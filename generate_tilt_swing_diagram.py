@@ -108,7 +108,7 @@ def draw_sheet1():
     draw_rect(ax, 15, 15, pw - 30, ph - 30, lw=1.5, color='black', fc='white')
 
     cx = pw / 2
-    cy = ph / 2 + 30
+    cy = ph / 2 + 55
 
     def s(mm):
         return mm / SC

@@ -16,7 +16,7 @@
         <link rel="prev" href="../electrical-report/">
       
       
-        <link rel="next" href="../fabrication-drawings/">
+        <link rel="next" href="../pinhole-report/">
       
       
         
@@ -1302,14 +1302,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fabrication-drawings/" class="md-nav__link">
+      <a href="../pinhole-report/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Pinhole Fab
+    Pinhole Report
   
 
     
@@ -2487,7 +2487,7 @@
 </tr>
 <tr>
 <td>Fan B (exhaust)</td>
-<td>Hinged panel, far corner zone (Yd=2,287mm, Z=1,800mm)</td>
+<td>Hinged panel, far corner zone (Yd=1,959mm, Z=1,800mm)</td>
 <td>Flush-mounted in 40mm corner zone panel</td>
 <td>Exhaust humid air during processing and drying</td>
 </tr>
@@ -2498,7 +2498,7 @@
 <p>Fan A is flush-mounted in a wall penetration at the far end wall (X=5,893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.</p>
 <p><strong>Wiring:</strong> Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops vertically to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.</p>
 <h3 id="43-fan-b-panel-mounted-exhaust">4.3 Fan B — Panel-Mounted Exhaust<a class="headerlink" href="#43-fan-b-panel-mounted-exhaust" title="Permanent link">&para;</a></h3>
-<p>Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so the exhaust baffle duct protrudes from the panel exterior face and discharges directly into the open doorway.</p>
+<p>Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so exhaust air passes through the grille and discharges directly into the open doorway.</p>
 <p><strong>Wiring:</strong> Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2,200mm.</p>
 <h3 id="44-light-safe-baffle-ducts">4.4 Light-Safe Baffle Ducts<a class="headerlink" href="#44-light-safe-baffle-ducts" title="Permanent link">&para;</a></h3>
 <p>Both fan penetrations include L-shaped offset baffles inside a duct stub to prevent light ingress while allowing unrestricted airflow:</p>
@@ -2510,7 +2510,7 @@
 <p><strong>Sheet 2 — Fan &amp; Baffle Duct Assembly</strong>
 Detail views of the L-shaped light-safe baffle duct construction for both the 6" ventilation fans and the 8" cooler intake duct. Shows offset baffle geometry, duct stub dimensions, and light path verification.</p>
 <p><img alt="TBS-001 Ventilation — Sheet 2: Fan &amp; Baffle Duct Assembly" src="../assets/lighttrap-sheet2.png" /></p>
-<p>The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct protrudes from the panel exterior face.</p>
+<p>The baffle design is identical for both fans. Fan A's baffle duct is fixed to the end wall interior; Fan B's baffle duct is fixed to the hinged panel interior. Both fans and ducts are fully interior-mounted — only the weatherproof louvre grille is on the exterior face.</p>
 <hr />
 <h2 id="5-evaporative-cooler">5. Evaporative Cooler<a class="headerlink" href="#5-evaporative-cooler" title="Permanent link">&para;</a></h2>
 <h3 id="51-specification">5.1 Specification<a class="headerlink" href="#51-specification" title="Permanent link">&para;</a></h3>
@@ -2557,7 +2557,8 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tbody>
 </table>
 <h3 id="52-light-safe-cooler-intake">5.2 Light-Safe Cooler Intake<a class="headerlink" href="#52-light-safe-cooler-intake" title="Permanent link">&para;</a></h3>
-<p>The cooler is mounted externally on the pinhole wall exterior. Cooled air enters through a Ø200mm insulated duct penetration.</p>
+<p>The cooler sits on the ground outside the container, adjacent to the pinhole wall. A short length of Ø200mm flexible insulated duct connects the cooler outlet to a wall penetration with light-safe baffles. Power (Circuit E, 12V DC) is supplied via a Deutsch DT 2-pin bulkhead connector on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m external cable connects the panel to the cooler; both the cable and flex duct are disconnected and stowed inside the container for transport. See <a href="../electrical-report/">Electrical Report</a> §7.3 for the full wire path.</p>
+<p>This arrangement requires no permanent external mounting — the cooler is simply placed, connected (duct + power), and removed each session.</p>
 <table>
 <thead>
 <tr>
@@ -2572,7 +2573,11 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tr>
 <tr>
 <td>Penetration location</td>
-<td>Pinhole wall (Yd=0 face) at X=1,200mm, Z=2,100mm</td>
+<td>Pinhole wall (Yd=0 face) at X=1,000mm, Z=1,900mm</td>
+</tr>
+<tr>
+<td>Flexible duct</td>
+<td>Ø200mm insulated flex, ~1m length, aluminum foil jacket</td>
 </tr>
 <tr>
 <td>Interior baffles</td>
@@ -2584,12 +2589,18 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tr>
 <tr>
 <td>Exterior coupling</td>
-<td>Cooler unit direct-coupled to duct with weatherproof housing</td>
+<td>Ø200mm duct collar on wall stub; flex duct secured with hose clamp</td>
+</tr>
+<tr>
+<td>Exterior cap</td>
+<td>Removable weatherproof cap on wall stub when cooler is not connected</td>
 </tr>
 </tbody>
 </table>
 <h3 id="53-transport-stowage">5.3 Transport Stowage<a class="headerlink" href="#53-transport-stowage" title="Permanent link">&para;</a></h3>
-<p>The cooler is externally mounted during operation and must be stowed inside the container for transport. See <a href="../equipment-layout-report/">Equipment Layout Report</a> §6.2 for the full stowage specification.</p>
+<p>The cooler is stowed inside the container for transport. See <a href="../equipment-layout-report/">Equipment Layout Report</a> §6.2 for the full stowage specification.</p>
+<p>From the walkway design, the location of the cooler (green rectangle) can be seen for transportation, secured by straps and D-rings.</p>
+<p><img alt="TBS-001 Walkway — Sheet 1: Equipment Location" src="../assets/walkway-sheet1.png" /></p>
 <table>
 <thead>
 <tr>
@@ -2600,7 +2611,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <tbody>
 <tr>
 <td>Stowage zone</td>
-<td>Near walkway, X=500–1,100mm, Yd=0–350mm</td>
+<td>Near walkway wide section, X=1,200–1,800mm, Yd=0–500mm</td>
 </tr>
 <tr>
 <td>Base plate</td>
@@ -2612,7 +2623,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 </tr>
 <tr>
 <td>Clearance to panel transport envelope</td>
-<td>80mm (panel max X=420mm, cooler starts X=500mm)</td>
+<td>780mm (panel max X=420mm, cooler starts X=1,200mm)</td>
 </tr>
 </tbody>
 </table>
@@ -2790,10 +2801,22 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <td>~$20</td>
 </tr>
 <tr>
-<td>200mm insulated duct</td>
-<td>Ø200mm × 500mm, foil-faced</td>
+<td>200mm insulated flex duct</td>
+<td>Ø200mm × 1m, aluminum foil jacket</td>
 <td>Home Depot / McMaster-Carr</td>
-<td>~$25</td>
+<td>~$20</td>
+</tr>
+<tr>
+<td>Duct collar + hose clamp</td>
+<td>Ø200mm, galvanized</td>
+<td>Home Depot</td>
+<td>~$12</td>
+</tr>
+<tr>
+<td>Weatherproof duct cap</td>
+<td>Ø200mm, removable</td>
+<td>Home Depot</td>
+<td>~$8</td>
 </tr>
 <tr>
 <td>Deutsch DT 2-pin connectors</td>
@@ -2806,6 +2829,12 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <td>1m, 2-conductor (Fan B flex)</td>
 <td>Amazon / Waytek Wire</td>
 <td>~$15</td>
+</tr>
+<tr>
+<td>Cooler external power cable</td>
+<td>1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end</td>
+<td>Waytek Wire / Amazon</td>
+<td>~$20</td>
 </tr>
 <tr>
 <td>Ratchet straps, 25mm × 2</td>
@@ -2823,7 +2852,7 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <td><strong>Ventilation &amp; cooling total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~$718</strong></td>
+<td><strong>~$753</strong></td>
 </tr>
 </tbody>
 </table>

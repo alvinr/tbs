@@ -1045,14 +1045,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../fabrication-drawings/" class="md-nav__link">
+      <a href="../pinhole-report/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Pinhole Fab
+    Pinhole Report
   
 
     
@@ -1229,6 +1229,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Mechanism Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#engineering-drawings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engineering Drawings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2564,7 +2581,7 @@
 <tr>
 <td>Image shift</td>
 <td>Yes — 207 mm per 5°</td>
-<td>No (film moves, not image centre)</td>
+<td>No (film moves, not image center)</td>
 </tr>
 <tr>
 <td>Keystone</td>
@@ -2626,6 +2643,11 @@
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 </code></pre></div>
+<h3 id="engineering-drawings">Engineering Drawings<a class="headerlink" href="#engineering-drawings" title="Permanent link">&para;</a></h3>
+<p><strong>Sheet 1 — Front View</strong> (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.</p>
+<p><img alt="TSB Sheet 1 — Front View" src="../assets/tilt-swing-sheet1.png" /></p>
+<p><strong>Sheet 2 — Section A-A</strong> (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.</p>
+<p><img alt="TSB Sheet 2 — Section A-A" src="../assets/tilt-swing-sheet2.png" /></p>
 <hr />
 <h2 id="4-movement-specification">4. Movement Specification<a class="headerlink" href="#4-movement-specification" title="Permanent link">&para;</a></h2>
 <table>
@@ -2718,13 +2740,13 @@ Linear travel ÷ arm radius:      1/130 rad/mm = 0.0077°/mm
 Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
-Full ±5° range from centre:          ~410 clicks (11.4 turns)
+Full ±5° range from center:          ~410 clicks (11.4 turns)
 Mechanical hard stop:                ±12mm travel = ±5.3°
 </code></pre></div>
 <p><strong>Knob identification:</strong>
 - Top and bottom screws → <strong>TILT</strong> axis → <strong>black anodised</strong> knobs, engraved TILT+ / TILT−
 - Left and right screws → <strong>SWING</strong> axis → <strong>natural/silver anodised</strong> knobs, engraved SWING+ / SWING−</p>
-<p><strong>Operation:</strong> To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centred on the bearing at all times.</p>
+<p><strong>Operation:</strong> To tilt upward, turn TILT+ clockwise (pushes top of carrier away from frame) and TILT− counter-clockwise (releases tension on bottom) by equal amounts. This keeps the pivot point centered on the bearing at all times.</p>
 <hr />
 <h2 id="7-light-sealing">7. Light Sealing<a class="headerlink" href="#7-light-sealing" title="Permanent link">&para;</a></h2>
 <p>The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:</p>
@@ -2763,10 +2785,10 @@ Board tilt α and swing β rotate the effective world coordinate system:<br />
 <p><strong>Step 2 — Film plane intersection:</strong><br />
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:<br />
 <code>t = (n·r₀)/(n·d);  F = t × d</code></p>
-<p>The red cross (+) marks the projected image centre; grey cross marks the nominal centre.</p>
+<p>The red cross (+) marks the projected image center; grey cross marks the nominal center.</p>
 <h3 id="c0-reference-all-flat">C0 — Reference (all flat)<a class="headerlink" href="#c0-reference-all-flat" title="Permanent link">&para;</a></h3>
 <p><img alt="C0" src="../assets/tilt-swing-combined-c0.png" /></p>
-<p>Undistorted reference. Both systems at 0°. Grid is symmetric, image centre on nominal.</p>
+<p>Undistorted reference. Both systems at 0°. Grid is symmetric, image center on nominal.</p>
 <hr />
 <h3 id="c1-board-tilt-3-only">C1 — Board tilt +3° only<a class="headerlink" href="#c1-board-tilt-3-only" title="Permanent link">&para;</a></h3>
 <p><img alt="C1" src="../assets/tilt-swing-combined-c1.png" /></p>
@@ -2794,7 +2816,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 <hr />
 <h3 id="c7-full-compound-both-systems">C7 — Full compound both systems<a class="headerlink" href="#c7-full-compound-both-systems" title="Permanent link">&para;</a></h3>
 <p><img alt="C7" src="../assets/tilt-swing-combined-c7.png" /></p>
-<p>Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image centre shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.</p>
+<p>Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image center shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.</p>
 <hr />
 <h3 id="c8-opposing-compound-surrealist">C8 — Opposing compound (surrealist)<a class="headerlink" href="#c8-opposing-compound-surrealist" title="Permanent link">&para;</a></h3>
 <p><img alt="C8" src="../assets/tilt-swing-combined-c8.png" /></p>
@@ -3197,7 +3219,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 <li><a href="https://lenoxlaser.com/blog/pinholes-and-apertures/">Lenox Laser Precision Pinholes</a> — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).</li>
 <li><a href="https://microtools.com/">Micro-Tools Custom Bellows</a> — Custom photographic bellows fabrication.</li>
 <li><a href="../film-plane-mechanism-report/">Film Plane Mechanism Report</a> — Rear standard mechanism and combined distortion analysis.</li>
-<li><a href="../fabrication-drawings/">Fabrication Drawings</a> — Wall frame and interchangeable plate interface specification.</li>
+<li><a href="../pinhole-report/">Pinhole Report</a> — Wall frame and interchangeable plate interface specification.</li>
 </ol>
 <p><em>© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a></em></p>
 

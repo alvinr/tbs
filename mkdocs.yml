@@ -70,6 +70,7 @@ nav:
     - Film Plane & Pinhole:
       - "Pinhole Report": pinhole-report.md
       - "Film Plane Mechanism": film-plane-mechanism-report.md
+      - "Film Clamp Mechanism": film-clamp-mechanism-report.md
       - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - Misc:
       - "Walkway": walkway-report.md

@@ -100,8 +100,8 @@ Source report: [Pinhole Report](pinhole-report.md).
 
 ## 5. Film Plane Mechanism
 
-Four-corner independent actuation mechanism with muslin clamp system (TBS-FM01, 5 sheets).
-Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
+Four-corner independent actuation mechanism (TBS-FM01, 6 sheets).
+Source reports: [Film Plane Mechanism](film-plane-mechanism-report.md), [Film Clamp Mechanism](film-clamp-mechanism-report.md).
 
 **Sheet 1 — Assembly overview**
 ![TBS-001 Film Plane Mechanism — Sheet 1](assets/film-plane-sheet1.png)

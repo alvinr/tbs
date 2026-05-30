@@ -8,49 +8,9 @@ The front board is the interchangeable plate that carries the pinhole disc at th
 
 ---
 
-## 2. Optical Effect: Front-Board vs Film-Plane Movement
+## 2. Mechanism Overview
 
-In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox has both: this mechanism controls the **front board**, and the [Film Plane Mechanism](film-plane-mechanism-report.md) controls the rear.
-
-### What front-board tilt/swing does
-
-The pinhole is a geometric projector — it has no focal length in the lens sense. Tilting the front board **rotates the pinhole's pointing direction**. The effect on the recorded image:
-
-| Movement | Effect on image |
-|----------|----------------|
-| Board tilt up (+α) | Image shifts upward on film (~207 mm per 5°) |
-| Board swing right (+β) | Image shifts right on film (~207 mm per 5°) |
-| Compound tilt + swing | Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5° |
-
-At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm** on the film plane. On a 2,388 mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
-
-**No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
-
-### Comparison to film-plane movement
-
-| | Front board tilt | Film plane tilt |
-|-|-----------------|-----------------|
-| Image shift | Yes — 207 mm per 5° | No (film moves, not image center) |
-| Keystone | Gentle (~1.5% at 5°) | Dramatic (Scheimpflug-style) |
-| Scale gradient | Uniform across field | Non-uniform (near edge stretched) |
-| Focus | Constant (pinhole) | Constant (pinhole) |
-| Primary use | Image placement, diagonal shift | Perspective distortion, extreme stretch |
-
-### Combined movements: the interesting case
-
-When both systems operate simultaneously, the effects **stack non-linearly**. The combined projection model (see distortion renders) shows:
-
-- **Same-direction tilt (amplified):** board tilt + film tilt in the same direction amplifies the image shift and adds Scheimpflug-style keystone on top of the board-shift offset
-- **Opposing tilt:** the two effects partially cancel, producing a near-flat image with a subtle S-curve distortion at the transition zone — invisible with either system alone
-- **Full compound (both axes, both systems):** produces an image where no lines are parallel in any axis — the most complex projection the camera can make
-
-See the [Combined Distortion Renders](#10-combined-distortion-renders) section below.
-
----
-
-## 3. Mechanism Overview
-
-### 3.1 Pinhole mechaism
+### 2.1 Pinhole mechanism
 
 The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:
 
@@ -58,7 +18,7 @@ The TSB assembly is a two-part drop-in replacement for the standard flat pinhole
 
 ![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
 
-### 3.2 Tilt Mechanism
+### 2.2 Tilt Mechanism
 
 **Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
 
@@ -93,7 +53,7 @@ WALL FRAME (fixed, welded to container)
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
 
-## 4. Movement Specification
+## 3. Movement Specification
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
@@ -113,7 +73,7 @@ WALL FRAME (fixed, welded to container)
 
 ---
 
-## 5. Pivot Bearing: GE50-DO-2RS
+## 4. Pivot Bearing: GE50-DO-2RS
 
 The GE50-DO-2RS was chosen over cross-flexure and Cardan arrangements:
 
@@ -125,21 +85,21 @@ The pivot is located at the plane of the pinhole disc face (40mm forward of the 
 
 ---
 
-## 6. Adjustment Mechanism
+## 5. Adjustment Mechanism
 
 Four M8 × 1.0 fine-pitch stainless screws, each terminating in a Grade-25 Ø8mm chrome steel ball seated in a hardened 440C SS hemispherical insert pressed into the carrier plate rim.
 
 **Angular resolution:**
 
 ```
-Arm radius (pivot → ball contact):  130 mm
+Arm radius (pivot → ball contact):    130 mm
 Screw pitch:                          1.0 mm per turn
-Linear travel ÷ arm radius:      1/130 rad/mm = 0.0077°/mm
+Linear travel ÷ arm radius:           1/130 rad/mm = 0.0077°/mm
 Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36
 Resolution per click:                 0.44° / 36 = 0.012° per click
-Full ±5° range from center:          ~410 clicks (11.4 turns)
-Mechanical hard stop:                ±12mm travel = ±5.3°
+Full ±5° range from center:           ~410 clicks (11.4 turns)
+Mechanical hard stop:                 ±12mm travel = ±5.3°
 ```
 
 **Knob identification:**
@@ -150,7 +110,7 @@ Mechanical hard stop:                ±12mm travel = ±5.3°
 
 ---
 
-## 7. Light Sealing
+## 6. Light Sealing
 
 The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommodates the full angular range with no light leakage:
 
@@ -162,7 +122,7 @@ The bellows (ICP-10) is the primary seal — zero friction, zero wear, accommoda
 
 ---
 
-## 8. Locking for Long Exposures
+## 7. Locking for Long Exposures
 
 After setting the desired angle, tighten the 4 × M6 nylon-tip set screws (one per adjustment screw, accessed with a 3mm hex key from the exterior face). The nylon tip binds against the M8 shank without marring the threads.
 
@@ -175,7 +135,7 @@ provides robust position-holding for exposures of 20–90 minutes under ambient 
 
 ---
 
-## 9. Plate Swap Procedure
+## 8. Plate Swap Procedure
 
 The TSB assembly swaps in/out of the same wall frame as the standard pinhole plate. No special tooling required beyond an M12 socket and 3mm hex key.
 
@@ -189,7 +149,7 @@ Swap time: approximately 10 minutes.
 
 ---
 
-## 10. Combined Distortion Renders
+## 9. Combined Distortion Renders
 
 The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.
 
@@ -203,102 +163,15 @@ Board tilt α and swing β rotate the effective world coordinate system:
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:  
 `t = (n·r₀)/(n·d);  F = t × d`
 
-The red cross (+) marks the projected image center; grey cross marks the nominal center.
-
-### C0 — Reference (all flat)
-
-![C0](assets/tilt-swing-combined-c0.png)
-
-Undistorted reference. Both systems at 0°. Grid is symmetric, image center on nominal.
-
----
-
-### C1 — Board tilt +3° only
-
-![C1](assets/tilt-swing-combined-c1.png)
-
-The pinhole points 3° upward. The entire image shifts up ~124mm on the film. Grid lines remain parallel (no keystone from board tilt alone). The effect is equivalent to pointing the camera upward — useful for including more sky or adjusting horizon placement.
-
----
-
-### C2 — Film tilt +20° only
-
-![C2](assets/tilt-swing-combined-c2.png)
-
-Film plane tilts 20° (top edge moves toward pinhole). The near grid is compressed vertically near the top of frame; the bottom of frame is stretched. Classic Scheimpflug-style distortion without any board movement.
-
----
-
-### C3 — Board tilt +3° + film tilt +20° (amplified)
-
-![C3](assets/tilt-swing-combined-c3.png)
-
-Both tilt in the same direction. The board shift (+124mm) lands on an already-compressed region of the film plane — the upper image is dramatically compressed AND shifted. The lower frame is expanded. This is the strongest single-axis distortion this camera can produce.
-
----
-
-### C4 — Board tilt +3° + film tilt −20° (opposing)
-
-![C4](assets/tilt-swing-combined-c4.png)
-
-The board tilts up but the film tilts in the opposite direction. The two effects partially cancel: the image shift is reduced, and the keystone is inverted relative to the shift direction. A nearly flat image results, with a subtle S-curve distortion at the midpoint — invisible with either system alone.
-
----
-
-### C5 — Board swing +3° + film swing +15° (lateral amplification)
-
-![C5](assets/tilt-swing-combined-c5.png)
-
-Both systems swing right. The image shifts laterally and develops a horizontal keystone. Useful for photographing asymmetric subjects — the camera can be placed centrally in the container but the image framed toward one side.
-
----
-
-### C6 — Compound board (tilt +3° + swing +3°), flat film
-
-![C6](assets/tilt-swing-combined-c6.png)
-
-The board points diagonally (both up and right simultaneously). The image shifts diagonally on the film plane. The film plane is flat, so no Scheimpflug effect — a clean diagonal translation of the image with minimal keystone.
-
----
-
-### C7 — Full compound both systems
-
-![C7](assets/tilt-swing-combined-c7.png)
-
-Board: tilt +3°, swing +3°. Film: tilt +20°, swing +15°. The most complex projection this camera can produce. No lines are parallel in any axis. The image center shifts diagonally while independent keystone gradients run in both X and Y. Surrealist in character.
-
----
-
-### C8 — Opposing compound (surrealist)
-
-![C8](assets/tilt-swing-combined-c8.png)
-
-Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and swing are opposed in both axes simultaneously. The result is a "folding" distortion — the image appears to rotate in opposite directions about orthogonal axes. No precedent in conventional camera movements. A uniquely novel optical configuration.
-
----
-
-### Summary grid
-
 ![All configurations](assets/tilt-swing-combined-summary.png)
 
----
+The red cross (+) marks the projected image center; grey cross marks the nominal center.
 
-## 11. Recommended Starting Configurations
-
-For a first shoot with the TSB mechanism, the following settings offer the clearest demonstration of each effect:
-
-| Session | Board tilt | Board swing | Film tilt | Film swing | What to observe |
-|---------|-----------|------------|-----------|------------|----------------|
-| 1 — Baseline | 0° | 0° | 0° | 0° | Flat reference for comparison |
-| 2 — Board only | 2° | 0° | 0° | 0° | Image shifts up 83mm — subtle, elegant |
-| 3 — Film only | 0° | 0° | 15° | 0° | Scheimpflug compression at top |
-| 4 — Amplified | 2° | 0° | 15° | 0° | Clear stacking effect |
-| 5 — Opposing | 2° | 0° | −15° | 0° | Near-cancellation with S-curve residual |
-| 6 — Full compound | 3° | 3° | 20° | 15° | Maximum compound — one 90-min exposure |
+Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.md)
 
 ---
 
-## 12. Machining Tolerances
+## 10. Machining Tolerances
 
 | Feature | Nominal | Tolerance | Importance |
 |---------|---------|-----------|------------|
@@ -313,9 +186,9 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 ---
 
-## 13. Parts List
+## 11. Parts List
 
-### 13.1 Structural
+### 11.1 Structural
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
@@ -332,14 +205,14 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
 | Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
 
-### 13.2 Light Seal
+### 11.2 Light Seal
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
 | Photographic bellows (custom) | Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene | Micro-Tools (microtools.com) — custom order | Ames Camera Repair (custom bellows) | ~$80–150 |
 | Neoprene cord seal Ø4mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
 
-### 13.3 Finishing & Fabrication
+### 11.3 Finishing & Fabrication
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|----------|
@@ -349,7 +222,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | Knurled knob stock Ø40mm | Al, 4 off | Jergens (#49525) or machine from bar | ~$15 ea |
 | Angular scale engraving | Al 80×15×2mm, 2 off | LaserPros, Chatsworth CA | ~$35–50 |
 
-### 13.4 Cost Summary
+### 11.4 Cost Summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -363,7 +236,7 @@ The mechanism costs less than the film plane mechanism (~$2,400) due to the smal
 
 ---
 
-## 14. Maintenance
+## 12. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -380,7 +253,7 @@ The mechanism costs less than the film plane mechanism (~$2,400) due to the smal
 
 ---
 
-## 15. Source References
+## 13. Source References
 
 1. [SKF GE50-DO-2RS Spherical Plain Bearing](https://www.skf.com/group/products/plain-bearings/spherical-plain-bearings-rod-ends/spherical-plain-bearings/productid-GE50DO-2RS) — Bearing specifications, misalignment capacity, and PTFE liner properties.
 2. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).

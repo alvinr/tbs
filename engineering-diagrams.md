@@ -134,14 +134,11 @@ All renders are collected in the [Distortion Renders](distortion-renders.md) doc
 Spherical-pivot tilt/swing board mechanism (TBS-TS01).
 Source report: [Tilt-Swing Front Board](tilt-swing-board-report.md).
 
-**Sheet 1 — Assembly and body**
-![TBS-001 Tilt-Swing Board — Sheet 1](assets/tilt-swing-board-sheet1.png)
+**Sheet 1 — Front view (scene side, 1:2 scale)**
+![TBS-001 Tilt-Swing Board — Sheet 1: Front View](assets/tilt-swing-sheet1.png)
 
-**Sheet 2 — Pivot and adjustment detail**
-![TBS-001 Tilt-Swing Board — Sheet 2](assets/tilt-swing-board-sheet2.png)
-
-**Sheet 3 — Mounting interface and stop geometry**
-![TBS-001 Tilt-Swing Board — Sheet 3](assets/tilt-swing-board-sheet3.png)
+**Sheet 2 — Section A-A (bearing, bellows, adjustment, 1:2 scale)**
+![TBS-001 Tilt-Swing Board — Sheet 2: Section A-A](assets/tilt-swing-sheet2.png)
 
 ---
 

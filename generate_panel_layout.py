@@ -1139,6 +1139,7 @@ title_block(ax, "SHEET 1 OF 1",
 # ── Save ─────────────────────────────────────────────────────────────────
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 out = os.path.join(DIAGRAMS_DIR, "panel-layout.png")
-fig.savefig(out, dpi=150, facecolor="white", edgecolor="none")
+fig.savefig(out, dpi=150, facecolor="white", edgecolor="none",
+            bbox_inches="tight", pad_inches=0.2)
 plt.close(fig)
 print(f"Panel layout → {out}")

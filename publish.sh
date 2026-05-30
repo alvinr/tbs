@@ -57,6 +57,7 @@ MD_FILES=(
     "project-cost-breakdown.md"
     "pinhole-report.md"
     "tilt-swing-board-report.md"
+    "tilt-swing-board-analysis.md"
     "funding-proposal.md"
     "operating-manual.md"
     "electrical-report.md"

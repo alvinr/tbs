@@ -53,6 +53,7 @@ MD_FILES = [
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
     ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
+    ("tilt-swing-board-analysis.md",     (".",           "Tilt & Swing Distortion Renders")),
     ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
     ("chemistry-shopping-list.md",       (".",           "Chem Shopping List")),
     ("operating-manual.md",             (".",           "Operating Manual")),
@@ -316,6 +317,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
+| [Tilt & Swing Distortion Renders](tilt-swing-board-analysis.md) | Ray-traced projection renders for all combined board + film plane configurations |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Construction Guide](pinhole-camera-construction.md) | Light-sealing, pinhole plate fabrication, image plane loading |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |

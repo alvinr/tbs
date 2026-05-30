@@ -284,15 +284,15 @@ def draw_sheet1():
 def draw_sheet2():
     """Sheet 2: Cross-section A-A through TSB assembly at 1:2 scale."""
     SC = 2.0
-    fig_w, fig_h = 14, 10
+    fig_w, fig_h = 8, 8
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
     ax.set_aspect('equal')
     ax.axis('off')
 
-    pw = fig_w * 72
-    ph = fig_h * 72
+    pw = fig_w * 80
+    ph = fig_h * 80
     ax.set_xlim(0, pw)
     ax.set_ylim(0, ph)
 
@@ -302,7 +302,7 @@ def draw_sheet2():
         return mm / SC
 
     # Section center: carrier center / pinhole plane
-    cx = pw * 0.38
+    cx = pw * 0.42
     cy = ph / 2 + 20
 
     # Horizontal axis: depth (X direction, scene left, interior right)
@@ -556,7 +556,7 @@ def draw_sheet2():
         'BELLOWS: ZERO-FRICTION LIGHT SEAL. ±13.9mm ASYMMETRIC COMPRESSION AT ±5° TILT.',
         'LABYRINTH BORE: 3-STEP (Ø382/390/400mm, 5mm DEEP EACH) — SECONDARY LIGHT SEAL.',
     ]
-    draw_notes(ax, notes2, 30, ph * 0.18, spacing=16, fs=6, width=pw - 70)
+    draw_notes(ax, notes2, 30, ph * 0.20, spacing=14, fs=5.5, width=pw - 70)
 
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="TILT-SWING FRONT BOARD",

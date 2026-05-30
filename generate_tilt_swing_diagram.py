@@ -228,30 +228,30 @@ def draw_sheet1():
 
     # Right-side leaders (top to bottom)
     leader(ax, cx + bolt_r * 0.924, cy + bolt_r * 0.383,
-           cx + half + 40, cy + half - 10, 'Ø540 PCD\n8× M12', fs=5.5)
+           cx + 180, cy + 30, 'Ø540 PCD\n8× M12', fs=5.5)
 
     leader(ax, cx + bore_r * 0.707, cy + bore_r * 0.707,
-           cx + half + 40, cy + half - 50, 'Ø380 BORE', fs=5.5)
+           cx + 180, cy + half - 50, 'Ø380 BORE', fs=5.5)
 
     leader(ax, cx + cr_r * 0.6, cy + cr_r * 0.8,
-           cx + half + 40, cy + half - 80, 'Ø320 CARRIER (ICP-02)', fs=5.5)
+           cx + 180, cy + half - 80, 'Ø320 CARRIER (ICP-02)', fs=5.5)
 
     leader(ax, cx + s(DWL_OFF) + s(DWL_D / 2), cy + 5,
-           cx + half + 40, cy + 10, '2× Ø8 DOWEL', fs=5.5)
+           cx + 180, cy + 10, '2× Ø8 DOWEL', fs=5.5)
 
     leader(ax, cx + s(FR_BRG_SEAT / 2) * 0.707, cy - s(FR_BRG_SEAT / 2) * 0.707,
-           cx + half + 40, cy - half + 60, 'Ø80 H7 BRG SEAT', fs=5.5)
+           cx + 180, cy - half + 50, 'Ø80 H7 BRG SEAT', fs=5.5)
 
     # Left-side leaders
     leader(ax, cx - s(SEAL_D / 2) * 0.707, cy - s(SEAL_D / 2) * 0.707,
-           cx - half - 40, cy - half + 50, 'Ø420 SEAL GROOVE', fs=5.5)
+           cx - half - 80, cy - half + 50, 'Ø420 SEAL GROOVE', fs=5.5)
 
     # Bottom leaders
     leader(ax, cx + ph_r, cy - ph_r * 0.8,
-           cx + 80, cy - cr_r - 30, 'Ø50 PINHOLE DISC\nØ2.17mm APERTURE', fs=5.5)
+           cx + 180, cy - cr_r + 50, 'Ø50 PINHOLE DISC\nØ2.17mm APERTURE', fs=5.5)
 
     leader(ax, cx + adj_r * 0.383, cy - adj_r * 0.924,
-           cx + 80, cy - cr_r - 65, 'Ø260 PCD\n4× M8×1.0 ADJ SCREWS', fs=5.5)
+           cx + 180, cy - cr_r - 65, 'Ø260 PCD\n4× M8×1.0 ADJ SCREWS', fs=5.5)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes1 = [
@@ -264,7 +264,7 @@ def draw_sheet1():
         'LOCKING: 4× M6 NYLON-TIP SET SCREWS (3mm HEX KEY FROM EXTERIOR FACE).',
         'BELLOWS (ICP-10): Ø290 ID × Ø360 OD, 4-PLEAT NEOPRENE, ZERO-FRICTION LIGHT SEAL.',
     ]
-    draw_notes(ax, notes1, 30, cy - half - 60, spacing=16,
+    draw_notes(ax, notes1, 35, cy - half - 70, spacing=10,
                fs=6, width=pw - 70)
 
     title_block(ax, "SHEET 1 OF 2",

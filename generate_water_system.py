@@ -447,7 +447,7 @@ ax1.text(15.6, 8.5, "(50mm rim, 1:200 pitch, permanent)", ha="center",
 # Print on floor representation
 ax1.add_patch(plt.Rectangle((14.1, 5.0), 3.0, 3.1, fc="white", ec="#66BB6A",
                              lw=1.2, ls="--", alpha=0.8, zorder=3))
-ax1.text(15.6, 6.55, f"PRINT\n({C_LEN} × {C_HGT} mm)", ha="center", va="center",
+ax1.text(15.6, 6.55, f"PRINT\n({C_LEN} × {C_HGT}mm)", ha="center", va="center",
          fontsize=7, color="#388E3C", style="italic", zorder=4)
 
 
@@ -576,13 +576,13 @@ ax2.set_xlim(-0.5, 12.5)
 ax2.set_ylim(-0.8, 6.8)
 ax2.set_aspect("equal")
 
-# Container outline (20ft = 6096 mm; 8ft = 2438 mm → scaled ×1/25)
+# Container outline (20ft = 6096mm; 8ft = 2438mm → scaled ×1/25)
 # At 1:25: 6096/25 = 243.8 → use 12 units; 2438/25 = 97.5 → use 5 units
 CW = 12.0   # container width in drawing units
 CH = 5.0    # container depth in drawing units
 ax2.add_patch(plt.Rectangle((0, 0), CW, CH, fc="white", ec=C_FRAME, lw=3,
                              zorder=1))
-ax2.text(6.0, -0.25, "CONTAINER INTERIOR — PLAN VIEW  (6,096 × 2,438 mm interior)",
+ax2.text(6.0, -0.25, "CONTAINER INTERIOR — PLAN VIEW  (6096 × 2438mm interior)",
          ha="center", fontsize=8, color=C_FRAME)
 
 # Wall thickness (container wall ~75mm → 0.075 at 1:25, round to 0.1)
@@ -591,7 +591,7 @@ ax2.add_patch(plt.Rectangle((-WT, -WT), CW + 2*WT, CH + 2*WT,
                              fc="none", ec="#777", lw=1.2, ls="--", zorder=0))
 
 # ── Equipment placement ───────────────────────────────────────────────────────
-# IBCs in RIGHT END ZONE (X=4,649–5,893mm); drums in LEFT END ZONE (X=0–1,100mm).
+# IBCs in RIGHT END ZONE (X=4649–5893mm); drums in LEFT END ZONE (X=0–1100mm).
 # Scale: CW=12 units = 5893mm interior → 1mm = 12/5893 units
 #        CH=5  units = 2362mm interior → 1mm = 5/2362 units
 SX = 12.0 / 5893.0   # mm to drawing unit (X direction)
@@ -654,7 +654,7 @@ TRAY_Y0 = PROC_TRAY_YD_NEAR * SY  # starts at near edge
 TRAY_DY = 2200 * SY            # depth in drawing units
 ax2.add_patch(plt.Rectangle((TRAY_X0, TRAY_Y0), TRAY_X1 - TRAY_X0, TRAY_DY,
               fc=C_PROC, ec="#388E3C", lw=2, zorder=1, alpha=0.5))
-# Panel split line (two panels, each 1,992mm wide)
+# Panel split line (two panels, each 1992mm wide)
 tray_mid_x = (TRAY_X0 + TRAY_X1) / 2
 ax2.plot([tray_mid_x, tray_mid_x], [TRAY_Y0, TRAY_Y0 + TRAY_DY],
          color="#388E3C", lw=1.2, ls="--", zorder=2)
@@ -662,9 +662,9 @@ ax2.text((TRAY_X0 + TRAY_X1) / 2, TRAY_Y0 + TRAY_DY - 0.15,
          "PROCESSING TRAY (304 SS, 50mm RIM, 2 PANELS)",
          ha="center", fontsize=7, color="#2E7D32")
 ax2.text(tray_mid_x - 0.8, TRAY_Y0 + TRAY_DY / 2,
-         "PANEL A\n1,992 × 2,200mm", ha="center", fontsize=6, color="#388E3C")
+         "PANEL A\n1992 × 2200mm", ha="center", fontsize=6, color="#388E3C")
 ax2.text(tray_mid_x + 0.8, TRAY_Y0 + TRAY_DY / 2,
-         "PANEL B\n1,992 × 2,200mm", ha="center", fontsize=6, color="#388E3C")
+         "PANEL B\n1992 × 2200mm", ha="center", fontsize=6, color="#388E3C")
 
 # Tray sump at IBC corner (P-04 suction pickup to 3W-DV-02)
 drain_x = PROC_TRAY_DRAIN_X * SX
@@ -685,7 +685,7 @@ ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
 ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",
          zorder=6)
 ax2.text(ZONE_L_DX - 0.05, CH + 1,
-         f"LEFT END ZONE\nX=0–{ZONE_L_END:,}mm\n(light trap only)",
+         f"LEFT END ZONE\nX=0–{ZONE_L_END}mm\n(light trap only)",
          ha="right", va="top", fontsize=6.5, color="#805000", fontweight="bold")
 
 # Right end zone shading (X=4649–5893mm in drawing)
@@ -695,7 +695,7 @@ ax2.add_patch(plt.Rectangle((ZONE_R_DX, 0), CW - ZONE_R_DX, CH,
 ax2.plot([ZONE_R_DX, ZONE_R_DX], [0, CH], color="#004080", lw=1.5, ls="--",
          zorder=6)
 ax2.text(ZONE_R_DX + 1, CH + 1,
-         f"RIGHT END ZONE\nX={ZONE_R_START:,}–5,893mm\n(4× IBC 2×2 stack)",
+         f"RIGHT END ZONE\nX={ZONE_R_START}–5893mm\n(4× IBC 2×2 stack)",
          ha="left", va="top", fontsize=6.5, color="#004080", fontweight="bold")
 
 # Chemistry prep tap — on near wall at shelf position
@@ -712,11 +712,11 @@ ax2.text(CW / 2, -0.08, "PINHOLE WALL (FRONT — Yd = 0)",
          ha="center", va="center", fontsize=6, color="#333", zorder=6)
 
 # Dimensions — using shared helpers from tbs_drawing.
-draw_dim_h(ax2, 0, CW, -0.30, "5,893 mm (CONTAINER INTERIOR)", offset=0.21, fs=6.5, above=False)
-draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2,362 mm", offset=0.27, fs=6.5, right=False)
-draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1,219 mm", offset=0.27, fs=6.5, above=False)
-draw_dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END} mm", offset=0.27, fs=6.5, color="#805000", above=False)
-draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {C_LEN - ZONE_R_START} mm", offset=0.27, fs=6.5, color="#004080", above=False)
+draw_dim_h(ax2, 0, CW, -0.30, "5893mm (CONTAINER INTERIOR)", offset=0.21, fs=6.5, above=False)
+draw_dim_v(ax2, -0.2 - 0.1, 0, CH, "2362mm", offset=0.27, fs=6.5, right=False)
+draw_dim_h(ax2, IBC_COL_DX, IBC_COL_DX + IBC_W, 5.2 - 0.25, "IBC col: 1219mm", offset=0.27, fs=6.5, above=False)
+draw_dim_h(ax2, 0, ZONE_L_DX, 5.5, f"LEFT END ZONE: {ZONE_L_END}mm", offset=0.27, fs=6.5, color="#805000", above=False)
+draw_dim_h(ax2, ZONE_R_DX, CW, 5.5, f"RIGHT END ZONE: {C_LEN - ZONE_R_START}mm", offset=0.27, fs=6.5, color="#004080", above=False)
 
 # Orientation arrow — points toward pinhole wall (bottom, Yd=0)
 ax2.annotate("", xy=(CW + 0.3, 0.4), xytext=(CW + 0.3, 1.6),
@@ -852,7 +852,7 @@ ax3.plot([drain_dx, drain_dx],
 leader(ax3, s3x(drain_local_x + 100), s3y(drain_local_yd),
        s3x(drain_local_x + 620), s3y(drain_local_yd + 170),
        f"SUMP WELL (P-04 PICKUP)\n"
-       f"X={PROC_TRAY_DRAIN_X:,}  Yd={PROC_TRAY_DRAIN_YD}\n"
+       f"X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}\n"
        f"{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
        fs=7, color="#D32F2F", ha="left")
 
@@ -865,7 +865,7 @@ yd_fall = PROC_TRAY_D / 200  # full-depth fall (far to near)
 ann_x = s3x(PROC_TRAY_W * 0.5)
 ann_y = s3y(PROC_TRAY_D * 0.5)
 ax3.text(ann_x, ann_y,
-         f"X-SLOPE: 1:200 → IBC CORNER\n({x_fall:.1f}mm fall over {PROC_TRAY_W:,.0f}mm)",
+         f"X-SLOPE: 1:200 → IBC CORNER\n({x_fall:.1f}mm fall over {PROC_TRAY_W:.0f}mm)",
          ha="center", va="center", fontsize=7, color="#0D47A1",
          bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
          zorder=8)
@@ -873,7 +873,7 @@ ax3.text(ann_x, ann_y,
 # Yd-axis slope annotation (upper area)
 ann_y2 = s3y(PROC_TRAY_D * 0.78)
 ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
-         f"Yd-SLOPE: 1:200\n({yd_fall:.1f}mm fall over {PROC_TRAY_D:,}mm)",
+         f"Yd-SLOPE: 1:200\n({yd_fall:.1f}mm fall over {PROC_TRAY_D}mm)",
          ha="center", va="center", fontsize=7, color="#0D47A1",
          bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
          zorder=8)
@@ -881,7 +881,7 @@ ax3.text(s3x(PROC_TRAY_W * 0.5), ann_y2,
 # ── Dimensions ───────────────────────────────────────────────────────────────
 # Tray width (X direction)
 draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
-           f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=93, fs=6.5, above=False)
+           f"{PROC_TRAY_W}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})", offset=93, fs=6.5, above=False)
 
 
 # ax3.annotate("", xy=(OX + TRAY_DRAW_W, OY + TRAY_DRAW_H + 0.6),
@@ -889,16 +889,16 @@ draw_dim_h(ax3, s3x(0), s3x(PROC_TRAY_W), s3y(PROC_TRAY_D + 310),
 #              arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.2,
 #                              mutation_scale=10))
 # ax3.text(OX + TRAY_DRAW_W/2, OY + TRAY_DRAW_H + 0.75,
-#          f"{PROC_TRAY_W:,}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})",
+#          f"{PROC_TRAY_W}mm (X={PROC_TRAY_X_L}–{PROC_TRAY_X_R})",
 #          ha="center", fontsize=7, color=C_DIM)
 
 # Tray depth (Yd direction)
 draw_dim_v(ax3, s3x(-310), s3y(PROC_TRAY_D), s3y(0),
-           f"{PROC_TRAY_D:,}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=93, fs=6.5, right=False)
+           f"{PROC_TRAY_D}mm (Yd={PROC_TRAY_YD_NEAR}–{PROC_TRAY_YD_FAR})", offset=93, fs=6.5, right=False)
 
 # Drain X position dimension
 draw_dim_h(ax3, s3x(drain_local_x), s3x(0), s3y(-170),
-           f"{drain_local_x:,}mm from left edge", offset=58, fs=6.5, above=False)
+           f"{drain_local_x}mm from left edge", offset=58, fs=6.5, above=False)
 
 # ── Walkway positions (dashed outlines) ──────────────────────────────────────
 WK_COLOR = "#8D6E63"
@@ -971,7 +971,7 @@ ax3.text(s3x((drain_local_x + corner_local_x) / 2), s3y(pipe_rim_yd - 85),
 # ── Notes ────────────────────────────────────────────────────────────────────
 notes = [
     "NOTES:",
-    f"1. Dual-axis pitch 1:200 — water converges on sump at X={PROC_TRAY_DRAIN_X:,}, Yd={PROC_TRAY_DRAIN_YD}.",
+    f"1. Dual-axis pitch 1:200 — water converges on sump at X={PROC_TRAY_DRAIN_X}, Yd={PROC_TRAY_DRAIN_YD}.",
     f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to sump).",
     f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) pressed into tray floor — P-04 suction pickup lifts to IBC-3.",
     f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
@@ -1017,7 +1017,7 @@ ax4_tb.set_ylim(0, 1)
 ax4_tb.axis("off")
 title_block(ax4_tb, "SHEET 4 OF 4",
             drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
-            subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X:,}mm (through sump) + plan view of rim hose routing",
+            subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X}mm (through sump) + plan view of rim hose routing",
             scale_note="AXES IN mm — MULTIPLE PANELS",
             doc_id="TBS-001 · Water System",
             height=0.75)
@@ -1424,7 +1424,7 @@ leader(ax4a, sa_y(250), sa_z(TRAY_BASE_Z / 2),
 
 # Slope note
 ax4a.text(sa_y(360), sa_z(-40),
-          f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D:,}mm (1:220)\n"
+          f"FALL: {PROC_TRAY_PITCH}mm / {PROC_TRAY_D}mm (1:220)\n"
           f"SLOPE EXAGGERATED {SLOPE_EXAG_A:.0f}x",
           ha="center", va="center", fontsize=6, color="#0D47A1",
           bbox=dict(fc="white", ec="#0D47A1", lw=0.5, pad=2, alpha=0.9),
@@ -1432,7 +1432,7 @@ ax4a.text(sa_y(360), sa_z(-40),
 
 # ═════════════════════════════════════════════════════════════════════════════
 # PANEL B — FULL CROSS-SECTION ELEVATION (~1:15)
-# Yd = -20 to 1150mm, Z = -50 to 1,150mm
+# Yd = -20 to 1150mm, Z = -50 to 1150mm
 # Shows tray, sump, suction hose routing to equipment panel (Yd=1046)
 # ═════════════════════════════════════════════════════════════════════════════
 SC_B = 1.0
@@ -1559,8 +1559,8 @@ for side in [-1, 1]:
 # Destination leader
 leader(ax4b, sb_y(PANEL_YD), sb_z(EP_Z_TOP),
        sb_y(PANEL_YD + 80), sb_z(EP_Z_TOP + 30),
-       "EQUIPMENT PANEL (Yd=1,046)\n"
-       "P-04 Shurflo 2088 (Z=1,400)\n"
+       "EQUIPMENT PANEL (Yd=1046)\n"
+       "P-04 Shurflo 2088 (Z=1400)\n"
        "3W-DV-02 diverter → IBC-3 / IBC-4",
        fs=6, color=C_PUMP, ha="left")
 
@@ -1587,14 +1587,14 @@ leader(ax4b, sb_y(WALKWAY_W/2), sb_z(WK_DECK_H),
 # ═════════════════════════════════════════════════════════════════════════════
 SC_C = 1.0
 
-SUMP_X = PROC_TRAY_DRAIN_X   # 4,550mm
-TRAY_X_R = PROC_TRAY_X_R     # 4,629mm
-IBC_X = IBC_COL_X             # 4,674mm
-EP_X = EQPANEL_X              # 5,000mm — equipment panel face X
+SUMP_X = PROC_TRAY_DRAIN_X   # 4550mm
+TRAY_X_R = PROC_TRAY_X_R     # 4629mm
+IBC_X = IBC_COL_X             # 4674mm
+EP_X = EQPANEL_X              # 5000mm — equipment panel face X
 EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
 
 X_VIEW_L = 4350
-X_VIEW_R = EP_X + EQPANEL_T + 80   # ~5,098mm
+X_VIEW_R = EP_X + EQPANEL_T + 80   # ~5098mm
 YD_VIEW_BOT = -30
 YD_VIEW_TOP = 1130
 
@@ -1633,7 +1633,7 @@ ax4c.plot([pc_x(tray_x_l_vis), pc_x(TRAY_X_R)],
          [pc_yd(tray_yd_near), pc_yd(tray_yd_near)],
          color="#C8D8E8", lw=2.0, zorder=4)
 
-# Right rim line (X=4,629, runs along Yd — vertical)
+# Right rim line (X=4629, runs along Yd — vertical)
 ax4c.plot([pc_x(TRAY_X_R), pc_x(TRAY_X_R)],
          [pc_yd(tray_yd_near), pc_yd(400)],
          color="#C8D8E8", lw=2.0, zorder=4)
@@ -1660,7 +1660,7 @@ ax4c.add_patch(plt.Rectangle(
     EQPANEL_T / SC_C, 270 / SC_C,
     fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
 ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR - 65),
-          "EQUIPMENT PANEL (X=5,000)",
+          "EQUIPMENT PANEL (X=5000)",
           ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
           style="italic", zorder=4)
 

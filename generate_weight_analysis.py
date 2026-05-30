@@ -250,7 +250,7 @@ def _ceiling_rail_weight():
 def _ibc_stacking_frame_weight():
     """Steel tube portal frame for 2×2 IBC configuration.
     50×50×3mm RHS mild steel portal frame with open plumbing corridor,
-    wall-to-wall via brackets. Footprint: 2,187 × 1,349mm.
+    wall-to-wall via brackets. Footprint: 2187 × 1349mm.
     Weight: ~90 kg per revised equipment-layout-report.md §5.
     """
     # Portal frame redesign: open plumbing corridor, wall-to-wall via brackets
@@ -693,8 +693,8 @@ def sheet_dry(components):
             f"Container tare: 2,200 kg\n"
             f"Equipment + structure: {total_dry - 2200:,.0f} kg\n"
             f"Total dry: {total_dry:,.0f} kg\n"
-            f"CG: X={x_cg:,.0f}, Yd={yd_cg:,.0f}\n"
-            f"Z_cg: {z_cg:,.0f} mm\n"
+            f"CG: X={x_cg:.0f}, Yd={yd_cg:.0f}\n"
+            f"Z_cg: {z_cg:.0f}mm\n"
             f"ISO max gross: 24,000 kg → margin: {24000 - total_dry:,.0f} kg")
     ax.text(C_LEN + 100, C_WID * 0.5, info, fontsize=7, color=C_OUT,
             va="center", ha="left", **_FONT,
@@ -761,7 +761,7 @@ def _draw_state_diagram(ax, components, state, state_label):
     quads = compute_quadrants(active)
     splits = compute_splits(quads, total)
 
-    _draw_cg_marker(ax, x_cg, yd_cg, label=f"CG ({x_cg:,.0f}, {yd_cg:,.0f})")
+    _draw_cg_marker(ax, x_cg, yd_cg, label=f"CG ({x_cg:.0f}, {yd_cg:.0f})")
 
     # Geometric center for reference
     ax.plot(C_LEN / 2, C_WID / 2, "+", color="#AAAAAA", ms=10, mew=1.5,
@@ -784,8 +784,8 @@ def _draw_state_diagram(ax, components, state, state_label):
     # Title info
     ax.text(C_LEN + 100, C_WID * 0.7,
             f"{state_label}\nTotal: {total:,.0f} kg\n"
-            f"CG: X={x_cg:,.0f}, Yd={yd_cg:,.0f}\n"
-            f"Z_cg: {z_cg:,.0f} mm",
+            f"CG: X={x_cg:.0f}, Yd={yd_cg:.0f}\n"
+            f"Z_cg: {z_cg:.0f}mm",
             fontsize=7, color=C_OUT, va="center", ha="left", **_FONT,
             bbox=dict(fc="white", ec=C_OUT, lw=0.8, pad=6))
 
@@ -829,7 +829,7 @@ def sheet_exhausted(components):
     dz = z_ex - z_rdy
     dx = x_ex - x_rdy
     note = (f"Tray drained (−59 kg)\n"
-            f"CG shift: ΔX = {dx:+.0f}, ΔZ = {dz:+.0f} mm\n"
+            f"CG shift: ΔX = {dx:+.0f}, ΔZ = {dz:+.0f}mm\n"
             f"(water moves top → bottom tier)")
     ax.text(C_LEN + 100, C_WID * 0.3, note,
             fontsize=7, color="orange", va="center", ha="left",
@@ -957,7 +957,7 @@ def sheet_summary(components):
 
         # Summary below
         info = (f"Total: {total:,.0f} kg\n"
-                f"CG: ({x_cg:,.0f}, {yd_cg:,.0f}, Z={z_cg:,.0f})\n"
+                f"CG: ({x_cg:.0f}, {yd_cg:.0f}, Z={z_cg:.0f})\n"
                 f"F/R: {splits['front_pct']:.1f}/{splits['rear_pct']:.1f}%\n"
                 f"N/F: {splits['near_pct']:.1f}/{splits['far_pct']:.1f}%")
         ax.text(C_LEN / 2, -650, info, ha="center", va="top",
@@ -1050,7 +1050,7 @@ def main():
         splits = compute_splits(quads, total)
         print(f"\n  {label}:")
         print(f"    Total weight:     {total:,.0f} kg")
-        print(f"    CG position:      X={x_cg:,.0f} mm, Yd={yd_cg:,.0f} mm, Z={z_cg:,.0f} mm")
+        print(f"    CG position:      X={x_cg:.0f}mm, Yd={yd_cg:.0f}mm, Z={z_cg:.0f}mm")
         print(f"    Front/Rear split: {splits['front_pct']:.1f}% / "
               f"{splits['rear_pct']:.1f}%")
         print(f"    Near/Far split:   {splits['near_pct']:.1f}% / "

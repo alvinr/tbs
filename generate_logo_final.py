@@ -94,8 +94,8 @@ C_L  = 36      # interior left  (pinhole wall = 20ft long side, seen edge-on)
 C_R  = 62      # interior right (image plane  = 20ft long side, seen edge-on)
 C_B  = 44      # interior bottom (floor)  — shifted +8 to clear spec bar
 C_T  = 72      # interior top   (ceiling) — shifted +8
-# Interior: 26 units wide ≈ 2,362 mm focal length
-#           28 units tall ≈ 2,388 mm container internal height
+# Interior: 26 units wide ≈ 2362mm focal length
+#           28 units tall ≈ 2388mm container internal height
 WT   = 2.5     # wall thickness
 CY   = (C_B + C_T) / 2   # centre Y = 50
 CX   = (C_L + C_R) / 2   # centre X = 49
@@ -161,7 +161,7 @@ for ddx, ddy in [(0,2.5),(0,-2.5),(2.5,0),(-2.5,0)]:
     ax.plot([PH_X, PH_X+ddx*0.5], [CY, CY+ddy*0.5],
             color=PAPER, lw=0.8, alpha=0.6, zorder=9)
 
-ax.text(PH_X, C_B-1.5, "Ø 2.17 mm",
+ax.text(PH_X, C_B-1.5, "Ø 2.17mm",
         color=CYAN_LITE, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace", zorder=7)
 
@@ -258,7 +258,7 @@ fl_y = C_B+1.5
 ax.annotate("", xy=(C_R, fl_y), xytext=(C_L, fl_y),
             arrowprops=dict(arrowstyle="<->", color=CYAN_MID, lw=0.9,
                             mutation_scale=7), zorder=7)
-ax.text((C_L+C_R)/2, fl_y+1.2, f"FOCAL LENGTH  {C_WID:,} mm",
+ax.text((C_L+C_R)/2, fl_y+1.2, f"FOCAL LENGTH  {C_WID}mm",
         color=CYAN_MID, fontsize=5.0, ha="center", va="bottom",
         fontfamily="monospace", zorder=7)
 
@@ -308,7 +308,7 @@ def haring_upright(ax, cx, cy, sc, col=PAPER):
                 color=col, lw=1.2, alpha=0.8, solid_capstyle="round", zorder=7)
 
 haring_upright(ax, SUBJ_X, CY, sc=1.15, col=PAPER)
-ax.text(SUBJ_X, CY-22, "SUBJECT\n3,440 mm",
+ax.text(SUBJ_X, CY-22, "SUBJECT\n3440mm",
         color=CYAN_LITE, fontsize=4.8, ha="center", va="top",
         fontfamily="monospace")
 
@@ -427,11 +427,11 @@ ax.add_patch(Rectangle((12,5.5),76,7.5, fc=PRU_INK,ec=PAPER,lw=1.8,zorder=8))
 ax.add_patch(Rectangle((12,12.8),76,0.6, fc=PAPER,ec="none",zorder=9))
 ax.add_patch(Rectangle((12,12.1),76,0.4, fc=CYAN_MID,ec="none",zorder=9))
 ax.text(50, 10.6,
-        "f = 2,362 mm   ·   d = 2.17 mm   ·   f/1088   ·   λ = 550 nm",
+        "f = 2362mm   ·   d = 2.17mm   ·   f/1088   ·   λ = 550 nm",
         color=PAPER, fontsize=5.8, ha="center", va="center",
         fontfamily="monospace", fontweight="bold", zorder=9)
 ax.text(50, 7.5,
-        "IMAGE  PLANE  5,893 × 2,388 mm   ·   MIN. FOCUS DIST.  5,000 mm",
+        "IMAGE  PLANE  5893 × 2388mm   ·   MIN. FOCUS DIST.  5000mm",
         color=CYAN_LITE, fontsize=5.8, ha="center", va="center",
         fontfamily="monospace", fontweight="bold", zorder=9)
 

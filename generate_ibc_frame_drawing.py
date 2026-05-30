@@ -54,29 +54,29 @@ FONT     = {"fontfamily": "monospace"}
 # ── Frame constants ──────────────────────────────────────────────────────────
 FRAME_RHS  = 50            # section size: 50×50×3mm RHS
 FRAME_T    = 3             # RHS wall thickness
-FRAME_FOOTPRINT_W = C_WID  # 2,362mm wall-to-wall
+FRAME_FOOTPRINT_W = C_WID  # 2362mm wall-to-wall
 FRAME_FOOTPRINT_D = 1284   # depth along X
 MAT_T      = 12            # anti-slip rubber mat thickness
 
 # Derived positions (Yd, container coordinates)
-NEAR_COL_R = BLUE_IBC_Y + IBC_D       # 1,046 — near corridor edge
-FAR_COL_L  = IBC_FAR_Y                # 1,316 — far corridor edge
+NEAR_COL_R = BLUE_IBC_Y + IBC_D       # 1046 — near corridor edge
+FAR_COL_L  = IBC_FAR_Y                # 1316 — far corridor edge
 CORRIDOR_W = FAR_COL_L - NEAR_COL_R   # 270mm
 
 # Corridor post Yd positions (inner faces, where IBC column meets corridor)
-POST_NEAR_YD = NEAR_COL_R             # 1,046
-POST_FAR_YD  = FAR_COL_L - FRAME_RHS  # 1,266
+POST_NEAR_YD = NEAR_COL_R             # 1046
+POST_FAR_YD  = FAR_COL_L - FRAME_RHS  # 1266
 
 # Heights
-PLATFORM_Z = IBC_H_600                # 1,010mm
-TOP_Z      = IBC_H_STK + FRAME_RHS    # 2,070mm
+PLATFORM_Z = IBC_H_600                # 1010mm
+TOP_Z      = IBC_H_STK + FRAME_RHS    # 2070mm
 
 # Frame X positions (frame-local, 0 = front/cargo-door side)
 # Frame extends 65mm past IBC on cargo-door side, flush to end wall on back.
 # Three bays: front, mid, back uprights.
 FX_FRONT = 0
 FX_MID   = FRAME_FOOTPRINT_D // 2     # 642mm
-FX_BACK  = FRAME_FOOTPRINT_D          # 1,284mm
+FX_BACK  = FRAME_FOOTPRINT_D          # 1284mm
 FX_POSTS = [FX_FRONT, FX_MID, FX_BACK]
 
 # Anti-rotation lip
@@ -661,7 +661,7 @@ def sheet1():
         f"5. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
         f"6. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
         f"7. Surface finish: grey oxide primer + flat black powder coat.",
-        f"8. Anti-slip rubber mat: 12mm thick, 1,016 × 1,219mm (one per column on platform).",
+        f"8. Anti-slip rubber mat: 12mm thick, 1016 × 1219mm (one per column on platform).",
         f"9. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
         f"10. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",
         f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
@@ -724,7 +724,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Ghost IBC outlines (cage/pallet anatomy) ──────────────────────────────
-    # In side elevation, IBC width = IBC_W = 1,219mm along X.
+    # In side elevation, IBC width = IBC_W = 1219mm along X.
     # IBC is centered in frame depth: offset = (FRAME_FOOTPRINT_D - IBC_W)/2
     ibc_x_offset = (FRAME_FOOTPRINT_D - IBC_W) / 2  # ~32.5mm
     plat_top = PLATFORM_Z + FRAME_RHS + MAT_T
@@ -901,7 +901,7 @@ def sheet3():
     ax.axis("off")
 
     ax.text(px(FRAME_FOOTPRINT_D / 2), py(FRAME_FOOTPRINT_W + 200),
-            "PLAN VIEW — LOOKING DOWN AT PLATFORM LEVEL (Z=1,060mm)",
+            "PLAN VIEW — LOOKING DOWN AT PLATFORM LEVEL (Z=1060mm)",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 
@@ -969,7 +969,7 @@ def sheet3():
                                 fc=C_OUT, ec=C_DIM, lw=1.0, ls="--",
                                 alpha=0.1, zorder=6))
         ax.text(px(mat_x + mat_w / 2), py(mat_yd + IBC_D / 2),
-                "12mm RUBBER MAT\n1,016 × 1,219mm",
+                "12mm RUBBER MAT\n1016 × 1219mm",
                 ha="center", va="center", fontsize=5.5, color=C_DIM,
                 **FONT, zorder=10, alpha=0.7)
 
@@ -1153,7 +1153,7 @@ def sheet3():
     # ── Notes ───────────────────────────────────────────────────────────────
     notes = [
         "PLAN VIEW NOTES:",
-        "1. Plan cut at platform level (Z=1,060mm). All beams shown in cross-section (hatched).",
+        "1. Plan cut at platform level (Z=1060mm). All beams shown in cross-section (hatched).",
         "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
         "3. Transverse beams (along Yd) at each upright bay: cantilever from corridor to wall bracket.",
         "4. Wall brackets bolted to container wall corrugation ribs (M12 anchor bolts, 2 per bracket).",

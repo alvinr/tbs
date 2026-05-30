@@ -222,7 +222,7 @@ def draw_sheet1():
     gasket_t_draw = 6     # exaggerated gasket thickness (depth axis)
     conn_depth = 50       # connector body protrusion (depth axis)
 
-    # Vertical scale: 1 mm_v = real mm in the height direction
+    # Vertical scale: 1mm_v = real mm in the height direction
     mm_v = 0.7            # drawing units per real mm (height axis)
 
     # Derived vertical positions from real dimensions

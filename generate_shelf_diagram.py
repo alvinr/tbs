@@ -14,7 +14,7 @@ Sheet 1 — Plan View (1:15):
   IBC stack, and optical cone boundary.
 
 Sheet 2 — Section Elevation (1:10):
-  Cross-section looking along X axis (at shelf center X=4,479mm).
+  Cross-section looking along X axis (at shelf center X=4479mm).
   Shows ceiling hangers, shelf platform, walkway below, and tray.
 
 Sheet 3 — Detail: Hanger & Frame (1:5):
@@ -62,7 +62,7 @@ C_IBC    = "#B0D0F0"    # IBC outline
 C_ZONE   = "#E8F4E8"    # shadow-free zone fill
 
 # ── Derived constants ────────────────────────────────────────────────────────
-SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4,029mm
+SHELF_CX = (SHELF_X_L + SHELF_X_R) / 2   # shelf center X = 4029mm
 SHELF_CY = (SHELF_YD_NEAR + SHELF_YD_FAR) / 2  # shelf center Yd = 600mm
 HANGER_ROD_L = C_HGT - SHELF_H            # rod length: 2388 - 1025 = 1363mm
 # Hanger positions: 4 corners, inset 30mm from shelf edges
@@ -436,7 +436,7 @@ def sheet2():
             color="#2979B8", lw=2.5, zorder=10)
     leader(ax, px(80), pz(tap_z),
            px(180), pz(tap_z + 80),
-           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1,150mm AFF",
+           "TAP-01  3/4\" BALL VALVE\nBLUE SUPPLY (BV-06)\nH=1150mm AFF",
            fs=5.5, ha="left")
 
     # ── Section cut label ──

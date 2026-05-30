@@ -75,7 +75,7 @@ def make_logo1():
     PH_Y = CAM_Y + CAM_H / 2
     ph = Circle((PH_X, PH_Y), 0.9, fc=CYAN, ec=WHITE, lw=1.2, zorder=6)
     ax.add_patch(ph)
-    ax.text(PH_X - 1.5, PH_Y + 3, "Ø 2.17 mm", color=CYAN, fontsize=6,
+    ax.text(PH_X - 1.5, PH_Y + 3, "Ø 2.17mm", color=CYAN, fontsize=6,
             ha="right", va="bottom", fontfamily="monospace", zorder=7)
     # Leader line
     ax.plot([PH_X - 1.5, PH_X - 0.5], [PH_Y + 2.5, PH_Y + 0.5],
@@ -98,7 +98,7 @@ def make_logo1():
     ax.text(SX, PH_Y - 13.5, "SUBJECT", color=WHITE, fontsize=5.5, ha="center",
             fontfamily="monospace", alpha=0.8)
     ax.plot([SX, SX], [PH_Y - 12.5, PH_Y - 11.5], color=WHITE, lw=0.8, alpha=0.5)
-    ax.text(SX, PH_Y + 4, "3,440 mm", color=WHITE, fontsize=5.5, ha="center",
+    ax.text(SX, PH_Y + 4, "3440mm", color=WHITE, fontsize=5.5, ha="center",
             fontfamily="monospace", alpha=0.6)
 
     # ── Light rays: subject → pinhole ──
@@ -137,7 +137,7 @@ def make_logo1():
     ax.annotate("", xy=(CAM_X + CAM_W, FL_Y), xytext=(CAM_X, FL_Y),
                 arrowprops=dict(arrowstyle="<->", color=WHITE, lw=0.9,
                                 mutation_scale=8))
-    ax.text(CAM_X + CAM_W / 2, FL_Y - 2, f"f = {C_WID:,} mm", color=WHITE,
+    ax.text(CAM_X + CAM_W / 2, FL_Y - 2, f"f = {C_WID}mm", color=WHITE,
             ha="center", fontsize=6, fontfamily="monospace")
 
     # ── Rayleigh formula box ──
@@ -362,7 +362,7 @@ def make_logo2():
     ax.add_patch(FancyBboxPatch((8, 19), 84, 7,
                                 boxstyle="round,pad=0.4",
                                 fc=IBM_BLUE, ec=IBM_MID, lw=1, zorder=5, alpha=0.15))
-    specs = "f = 2,362 mm   ·   d = 2.17 mm   ·   f/1088   ·   λ = 550 nm   ·   IMAGE PLANE 5,893 × 2,388 mm"
+    specs = "f = 2362mm   ·   d = 2.17mm   ·   f/1088   ·   λ = 550 nm   ·   IMAGE PLANE 5893 × 2388mm"
     ax.text(50, 22.5, specs, color=IBM_BLUE, fontsize=6.2, ha="center", va="center",
             fontfamily="monospace", fontweight="bold", zorder=6)
 

@@ -58,7 +58,7 @@ W = 2362   # interior width = optical axis = focal length
 H = 2388   # interior height
 WALL_T = 40
 
-# Carriage travel limits (100 mm clearance each end)
+# Carriage travel limits (100mm clearance each end)
 D_NEAR = 100
 D_FAR  = W - 100   # = 2262
 
@@ -246,15 +246,15 @@ def sheet1():
                 ha="right")
 
     # Dims
-    draw_dim_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L} mm  (19 ft 4 in)",
+    draw_dim_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L}mm  (19 ft 4 in)",
                offset=10, color=DIM, fs=7.5, font=FONT)
-    draw_dim_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W} mm  (7 ft 9 in)",
+    draw_dim_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W}mm  (7 ft 9 in)",
                offset=20, color=DIM, right=True, font=FONT)
-    draw_dim_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm\n(left end zone)",
+    draw_dim_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L}mm\n(left end zone)",
                color=DIM, fs=6.5, above=False, font=FONT)
-    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L} mm",
+    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L}mm",
                color=RAIL, fs=6.5, above=False, font=FONT)
-    draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R} mm\n(right end zone)",
+    draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R}mm\n(right end zone)",
                color=DIM, fs=6.5, above=False, font=FONT)
 
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
@@ -417,14 +417,14 @@ def sheet2():
                 arrowprops=dict(arrowstyle="<->", color=C_FLAT, lw=1.0, mutation_scale=7))
     ax.plot([0, 0], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
     ax.plot([D_FAR, D_FAR], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
-    ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W} mm  (FLAT)",
+    ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W}mm  (FLAT)",
             color=C_FLAT, fontsize=7, ha="center", **FONT)
 
-    draw_dim_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
+    draw_dim_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W}mm",
                offset=15, color=DIM, font=FONT)
-    draw_dim_v(ax, W+210, 0, H, f"INTERIOR HEIGHT\n{H} mm",
+    draw_dim_v(ax, W+210, 0, H, f"INTERIOR HEIGHT\n{H}mm",
                offset=20, color=DIM, right=True, font=FONT)
-    draw_dim_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
+    draw_dim_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR}mm",
                offset=15, color=RAIL, above=False, font=FONT)
     draw_dim_h(ax, 0, D_NEAR, -100, f"{D_NEAR}mm",
                offset=20, color=DIM, fs=6, font=FONT)
@@ -517,12 +517,12 @@ def sheet2():
         ax.text(L/2, mid_y_sw + 80,
                 name, color=col, fontsize=6.5, ha="center", **FONT, zorder=zord+2)
 
-    draw_dim_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm",
+    draw_dim_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L}mm",
                offset=15, color=DIM, fs=7, font=FONT)
-    draw_dim_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm",
+    draw_dim_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W}mm",
                offset=20, color=DIM, fs=7, right=True, font=FONT)
     draw_dim_v(ax, RAIL_X_L - 120, D_NEAR, D_FAR,
-               f"RAIL\nTRAVEL\n{D_FAR-D_NEAR} mm", offset=400, color=RAIL, fs=6.5, font=FONT)
+               f"RAIL\nTRAVEL\n{D_FAR-D_NEAR}mm", offset=400, color=RAIL, fs=6.5, font=FONT)
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -652,11 +652,11 @@ def sheet3():
     for cx_, cy_ in [(-22, rl_h+15), (22, rl_h+15), (-22, rl_h+38), (22, rl_h+38)]:
         ax.add_patch(Circle((cx_, cy_), 4, fc=BG, ec=WHITE, lw=0.7, zorder=6))
 
-    draw_dim_h(ax, -rl_w/2, rl_w/2, -50, f"{rl_w} mm",
+    draw_dim_h(ax, -rl_w/2, rl_w/2, -50, f"{rl_w}mm",
                offset=15, color=DIM, above=False, font=FONT)
-    draw_dim_h(ax, -cb_w/2, cb_w/2, rl_h+cb_h+40, f"{cb_w} mm",
+    draw_dim_h(ax, -cb_w/2, cb_w/2, rl_h+cb_h+40, f"{cb_w}mm",
                offset=15, color=DIM, font=FONT)
-    draw_dim_v(ax, cb_w/2+60, rl_h, rl_h+cb_h, f"{cb_h} mm",
+    draw_dim_v(ax, cb_w/2+60, rl_h, rl_h+cb_h, f"{cb_h}mm",
                offset=15, color=MECH, right=True, font=FONT)
 
     ax.text(0, rl_h+cb_h+120, "RAIL + CARRIAGE CROSS-SECTION\nHIWIN HGR20  +  HGH20CA",
@@ -711,7 +711,7 @@ def sheet3():
                     arrowprops=dict(arrowstyle="-|>", color=C_T2, lw=0.8,
                                    mutation_scale=5), zorder=8)
 
-    draw_dim_h(ax, rod_cx-30, rod_cx+30, -80, "60 mm",
+    draw_dim_h(ax, rod_cx-30, rod_cx+30, -80, "60mm",
                offset=15, color=DIM, above=False, font=FONT)
     ax.text(200, 240, "CORNER JOINT DETAIL — BRACKET TO FILM FRAME\nROD-END SPHERICAL BEARING — ALLOWS TILT + SWING SIMULTANEOUSLY",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
@@ -737,7 +737,7 @@ def sheet3():
             fontsize=7.5, ha="center", **FONT)
     ax.text(20+panel_w/2, 50-20, "2× Dibond ACM  4mm",
             color=DIM, fontsize=6.5, ha="center", **FONT)
-    draw_dim_v(ax, 20-60, 50, 50+panel_h, f"{H} mm (schematic)",
+    draw_dim_v(ax, 20-60, 50, 50+panel_h, f"{H}mm (schematic)",
                offset=70, color=DIM, font=FONT)
 
     # Tilted panel (folded)
@@ -834,14 +834,14 @@ def sheet4():
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
     axes_rows = [
-        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y:,} mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   f"0–{FP_Y:,} mm", "4× leadscrews independently","4 locking collars"],
-        ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y:,}mm","All 4 leadscrews together", "All 4 locks"],
-        ["MAX TILT",      f"Top={FP_Y_MIN}mm, Bot={FP_Y:,}mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
-        ["MAX SWING",     f"Left={FP_Y_MIN}mm, Right={FP_Y:,}mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
+        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
+        ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   f"0–{FP_Y}mm", "4× leadscrews independently","4 locking collars"],
+        ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 leadscrews together", "All 4 locks"],
+        ["MAX TILT",      f"Top={FP_Y_MIN}mm, Bot={FP_Y}mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
+        ["MAX SWING",     f"Left={FP_Y_MIN}mm, Right={FP_Y}mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
     ]
     # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
     draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,
@@ -1660,7 +1660,7 @@ def sheet6():
             color=C_FLAT, fontsize=10, ha="center", va="center",
             fontweight="bold", **FONT, zorder=11)
     ax.text(fp_cx, fp_cz,
-            f"{RAIL_X_R - RAIL_X_L:,} mm wide  ×  {H:,} mm tall",
+            f"{RAIL_X_R - RAIL_X_L}mm wide  ×  {H}mm tall",
             color=C_FLAT, fontsize=7.5, ha="center", va="center", **FONT, zorder=11)
     ax.text(fp_cx, fp_cz - 80,
             "ROD-END BEARING each corner",
@@ -1689,7 +1689,7 @@ def sheet6():
     # Rail leader (from TR ceiling rail)
     leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
            RAIL_X_R + 450, FH - 150,
-           "HGR20 LINEAR RAIL\n2,200 mm (into page)",
+           "HGR20 LINEAR RAIL\n2200mm (into page)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Frame leader (from right side midpoint)
@@ -1701,27 +1701,27 @@ def sheet6():
     # ── Dimensions ────────────────────────────────────────────────────────────
     # Container width (outermost)
     draw_dim_h(ax, 0, FW, -180,
-               f"INTERIOR WIDTH  {L:,} mm", offset=10, color=DIM, fs=6,
+               f"INTERIOR WIDTH  {L}mm", offset=10, color=DIM, fs=6,
                above=False, font=FONT)
 
     # Rail span + end zones (inner row)
     draw_dim_h(ax, 0, RAIL_X_L, -300,
-               f"{RAIL_X_L} mm", offset=10, color=DIM, fs=6,
+               f"{RAIL_X_L}mm", offset=10, color=DIM, fs=6,
                above=False, font=FONT)
     draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -300,
-               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, color=DIM, fs=6,
+               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L}mm", offset=10, color=DIM, fs=6,
                above=False, font=FONT)
     draw_dim_h(ax, RAIL_X_R, FW, -300,
-               f"{FW - RAIL_X_R:,} mm", offset=10, color=DIM, fs=6,
+               f"{FW - RAIL_X_R}mm", offset=10, color=DIM, fs=6,
                above=False, font=FONT)
 
     # Container height (left side)
     draw_dim_v(ax, -250, 0, FH,
-               f"INTERIOR HEIGHT\n{H:,} mm", offset=150, color=DIM, fs=6.5, font=FONT)
+               f"INTERIOR HEIGHT\n{H}mm", offset=150, color=DIM, fs=6.5, font=FONT)
 
     # Frame height (right side)
     draw_dim_v(ax, FW + 250, fp_bot, fp_top,
-               f"FRAME HEIGHT\n{fp_top - fp_bot:,} mm", offset=30, color=C_FLAT,
+               f"FRAME HEIGHT\n{fp_top - fp_bot}mm", offset=30, color=C_FLAT,
                fs=6.5, right=True, font=FONT)
 
     # ── Title text ────────────────────────────────────────────────────────────

@@ -88,7 +88,7 @@ def draw_sheet1():
 
     # Interior label
     ax.text(CX + CW/2, CY + CH/2,
-            "CONTAINER INTERIOR\n5,898mm long × 2,352mm wide",
+            "CONTAINER INTERIOR\n5898mm long × 2352mm wide",
             ha="center", va="center", fontsize=9.0, color=C_DIM,
             style="italic", zorder=3)
 
@@ -185,12 +185,12 @@ def draw_sheet1():
 
     ann(ax, f"Cct B  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
         (FB_X, FB_Y + R_PF), (FB_X - 2.0, FB_Y + 2.2), size=7.5)
-    ann(ax, "HIGH POSITION\n~1,800mm AFF",
+    ann(ax, "HIGH POSITION\n~1800mm AFF",
         (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
 
-    # ── EVAP COOLER (ground-placed outside, pinhole wall at X=1,200mm) ────────
-    # Left wall = far end (X=5,893), right wall = door end (X=0).
-    # X=1,200 → fraction from left = (5893-1200)/5893 ≈ 0.80
+    # ── EVAP COOLER (ground-placed outside, pinhole wall at X=1200mm) ────────
+    # Left wall = far end (X=5893), right wall = door end (X=0).
+    # X=1200 → fraction from left = (5893-1200)/5893 ≈ 0.80
     # Cooler sits on ground outside; flex duct connects to baffled wall stub.
     EC_WALL_X = CX + CW * 0.80
     # Baffled duct stub in floor (pinhole wall face in this section view)
@@ -492,9 +492,9 @@ def draw_sheet2():
             color=C_DIM, lw=1.0, ls=":")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
-    draw_dim_h(ax, DX, DX + DD, DZ - 35, f"{DUCT_DEPTH} mm  (duct depth)",
+    draw_dim_h(ax, DX, DX + DD, DZ - 35, f"{DUCT_DEPTH}mm  (duct depth)",
                offset=10, fs=7.5, zorder=10, color=C_DIM)
-    draw_dim_v(ax, DX - 55, DZ, DZ + DH, f"{DUCT_HEIGHT} mm",
+    draw_dim_v(ax, DX - 55, DZ, DZ + DH, f"{DUCT_HEIGHT}mm",
                offset=10, fs=7.5, zorder=10, color=C_DIM)
     draw_dim_h(ax, WALL_X, WALL_X + WALL_T, DZ + DH + 25, "wall",
                offset=10, fs=7.5, zorder=10, color=C_DIM)
@@ -502,7 +502,7 @@ def draw_sheet2():
             color=C_DIM, lw=0.5, ls=":")
     ax.plot([WALL_X + WALL_T, WALL_X + WALL_T], [DZ + DH, DZ + DH + 30],
             color=C_DIM, lw=0.5, ls=":")
-    draw_dim_h(ax, FX, FX + PF_BD, DZ - 30, "~50 mm  (panel fan body)",
+    draw_dim_h(ax, FX, FX + PF_BD, DZ - 30, "~50mm  (panel fan body)",
                offset=10, fs=7.5, zorder=10, color=C_DIM)
 
     # ── Notes ─────────────────────────────────────────────────────────────────

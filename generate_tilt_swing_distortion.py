@@ -26,9 +26,9 @@ from tbs_constants import (
 from tbs_title_block import title_block
 
 # ── Camera constants ──────────────────────────────────────────────────────────
-F = C_WID         # focal length (container interior depth, mm) = 2,362
-FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4,499mm rev 6)
-FP_H = _FP_H      # film plane height (mm) = 2,388
+F = C_WID         # focal length (container interior depth, mm) = 2362
+FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4499mm rev 6)
+FP_H = _FP_H      # film plane height (mm) = 2388
 
 # ── Cyanotype palette (dark background — matches film-plane distortion renders) ─
 BG      = '#081A32'
@@ -39,9 +39,9 @@ C_HUMAN = '#F5D080'   # human silhouette — warm gold
 C_AX    = '#7ED4F2'   # annotation text
 
 # Subject depths from pinhole (mm)
-# Container interior is 2362 mm wide; subject is outside (scene side)
+# Container interior is 2362mm wide; subject is outside (scene side)
 # Distances from pinhole: near=5m, mid=20m, far=~100m
-D_NEAR  = 5_000 + F    # ~7362 mm from pinhole (5m from container exterior)
+D_NEAR  = 5_000 + F    # ~7362mm from pinhole (5m from container exterior)
 D_MID   = 20_000 + F
 D_FAR   = 100_000 + F
 
@@ -294,7 +294,7 @@ def draw_render(ax, board_tilt, board_swing, film_tilt, film_swing,
     # Image shift annotation (bottom right)
     if ref_pt:
         ax.text(W2 - 60, -H2 + 360,
-                f'Image centre:\nU={shift_u_mm:+.0f} mm\nV={shift_v_mm:+.0f} mm',
+                f'Image centre:\nU={shift_u_mm:+.0f}mm\nV={shift_v_mm:+.0f}mm',
                 color='#FF8080', fontsize=7, va='bottom', ha='right', zorder=9,
                 fontfamily='monospace')
 

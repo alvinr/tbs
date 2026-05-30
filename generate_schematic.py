@@ -25,8 +25,8 @@ COLOURS  = ['#00D8FF', '#7BFF7B', '#FFB347', '#FF6B9D']
 
 # ── Layout ────────────────────────────────────────────────────────────────────
 # Top-down view:
-#   • Container runs LEFT–RIGHT (its length = IW = 5893 mm)
-#   • Container depth = F = 2362 mm  (the focal length / camera width)
+#   • Container runs LEFT–RIGHT (its length = IW = 5893mm)
+#   • Container depth = F = 2362mm  (the focal length / camera width)
 #   • Pinhole is on the BOTTOM long wall (y = 0), centred at x = IW/2
 #   • Image plane is on the TOP long wall  (y = F)
 #   • Subjects stand BELOW the pinhole wall (y < 0) at various distances
@@ -51,7 +51,7 @@ ax.text(IW/2, F/2,
         ha='center', va='center', fontsize=12, color='#3A3530',
         fontweight='bold', zorder=3)
 ax.text(IW/2, F/2 - 250,
-        f'focal length  f = {F:.0f} mm  (7′ 9″)',
+        f'focal length  f = {F:.0f}mm  (7′ 9″)',
         ha='center', va='center', fontsize=9, color='#2E2B27', zorder=3)
 
 # Focal length dimension arrow (inside, vertical)
@@ -59,7 +59,7 @@ fl_x = IW * 0.05
 ax.annotate('', xy=(fl_x, F), xytext=(fl_x, 0),
             arrowprops=dict(arrowstyle='<->', color='#444', lw=1.5,
                             mutation_scale=9), zorder=4)
-ax.text(fl_x - 180, F/2, f'{F:.0f} mm\n= focal\nlength',
+ax.text(fl_x - 180, F/2, f'{F:.0f}mm\n= focal\nlength',
         ha='right', va='center', fontsize=8, color='#555', zorder=4)
 
 # ── Image plane (top wall) ────────────────────────────────────────────────────
@@ -68,14 +68,14 @@ ax.plot([0, IW], [F, F], color='#00D8FF', lw=5, solid_capstyle='butt',
 ax.text(IW/2, F + 200, 'IMAGE PLANE  (photosensitive surface)',
         ha='center', fontsize=10.5, color='#00D8FF', fontweight='bold', zorder=6)
 ax.text(IW/2, F + 420,
-        f'19′ 4″  ×  7′ 10″   (5,893 × 2,388 mm)',
+        f'19′ 4″  ×  7′ 10″   (5893 × 2388mm)',
         ha='center', fontsize=9, color='#00A8CC', zorder=6)
 
 # Width dimension of image plane
 ax.annotate('', xy=(IW, F + 650), xytext=(0, F + 650),
             arrowprops=dict(arrowstyle='<->', color='#336677', lw=1.3,
                             mutation_scale=9), zorder=4)
-ax.text(IW/2, F + 700, f'{IW:.0f} mm  (19′ 4″)',
+ax.text(IW/2, F + 700, f'{IW:.0f}mm  (19′ 4″)',
         ha='center', va='bottom', fontsize=8, color='#336677', zorder=4)
 
 # ── Pinhole wall (bottom wall) ────────────────────────────────────────────────
@@ -86,7 +86,7 @@ ax.text(IW/2, -320, 'PINHOLE WALL',
 # Pinhole dot
 PX = IW / 2   # pinhole x centre
 ax.add_patch(mpatches.Circle((PX, 0), 80, fc='#FF6B35', ec='#FF9900', lw=2.5, zorder=7))
-ax.text(PX + 280, 0, f' ⌀ 2.17 mm\n f/1088',
+ax.text(PX + 280, 0, f' ⌀ 2.17mm\n f/1088',
         va='center', fontsize=8.5, color='#FF9900', zorder=7)
 
 # ── FOV cone ─────────────────────────────────────────────────────────────────
@@ -162,8 +162,8 @@ for (u_m, col, sx) in zip(DISTS_M, COLOURS, SUBJ_X):
             [img_bar_y, img_bar_y],
             color=col, lw=7, solid_capstyle='butt', alpha=0.80, zorder=6)
     ax.text(img_bar_cx + min(bar_half, IW/2*0.9) + 150, img_bar_y,
-            f'  {u_m:.0f} m → height {ph:.0f} mm ({ph/304.8:.2f} ft)  '
-            f'M={M:.3f}×  Blur Ø{B:.1f} mm',
+            f'  {u_m:.0f} m → height {ph:.0f}mm ({ph/304.8:.2f} ft)  '
+            f'M={M:.3f}×  Blur Ø{B:.1f}mm',
             va='center', fontsize=8.5, color=col, zorder=7)
 
     # Dot connector: figure head → line to image bar (just visual)
@@ -184,7 +184,7 @@ ax.plot([sb_x0, sb_x1], [sb_y, sb_y], color='#666', lw=3,
 for ssx in [sb_x0, sb_x1]:
     ax.plot([ssx, ssx], [sb_y-150, sb_y+150], color='#666', lw=2, zorder=8)
 ax.text((sb_x0+sb_x1)/2, sb_y-320,
-        '1,000 mm (3.3 ft)\nscale bar',
+        '1000mm (3.3 ft)\nscale bar',
         ha='center', fontsize=8, color='#666', zorder=8)
 
 # ── North arrow / orientation note ───────────────────────────────────────────
@@ -200,7 +200,7 @@ ax.text(IW/2, F + MARGIN_TOP * 0.82,
         'OPTION B  —  TOP-DOWN SCHEMATIC  (to scale in mm)',
         ha='center', fontsize=14, color='#FFFFFF', fontweight='bold', zorder=10)
 ax.text(IW/2, F + MARGIN_TOP * 0.60,
-        'Pinhole centred on long wall  ·  102° H-FOV  ·  f = 2,362 mm  ·  Subjects outside, facing camera',
+        'Pinhole centred on long wall  ·  102° H-FOV  ·  f = 2362mm  ·  Subjects outside, facing camera',
         ha='center', fontsize=9.5, color='#777', zorder=10)
 
 # ── Axes ──────────────────────────────────────────────────────────────────────

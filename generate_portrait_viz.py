@@ -4,7 +4,7 @@
 """
 Pinhole Camera — Portrait Scale Visualization
 Option B: 20-ft container, side-to-side
-f = 2362 mm | d = 2.17 mm | f/1088 | 102° horizontal FOV
+f = 2362mm | d = 2.17mm | f/1088 | 102° horizontal FOV
 """
 import matplotlib
 matplotlib.use('Agg')
@@ -23,7 +23,7 @@ IW  = 5893.0   # image-plane width,  mm  (19′ 4″)
 IH  = 2388.0   # image-plane height, mm  (7′ 10″)
 
 # ─────────────────────────────────────────
-# Subject proportions for a 1780 mm adult
+# Subject proportions for a 1780mm adult
 # (fractions of total height)
 # ─────────────────────────────────────────
 PH   = 1780.0   # total person height mm
@@ -187,14 +187,14 @@ for u_m, col, xcx in zip(DISTS_M, COLOURS, X_CENTS):
     ax.text(xcx, ly + IH*0.21, f'{u_m:.0f} m  /  {u_m*3.28084:.0f} ft',
             ha='center', fontsize=11.5, color=col, fontweight='bold', zorder=10)
     ax.text(xcx, ly + IH*0.12,
-            f'Image height:  {ph:.0f} mm  ({ph/304.8:.2f} ft)',
+            f'Image height:  {ph:.0f}mm  ({ph/304.8:.2f} ft)',
             ha='center', fontsize=9, color='#cccccc', zorder=10)
     ax.text(xcx, ly + IH*0.04,
-            f'Width in frame: {PH*SHOULDER_W_F*M:.0f} mm  '
+            f'Width in frame: {PH*SHOULDER_W_F*M:.0f}mm  '
             f'({PH*SHOULDER_W_F*M/IW*100:.1f}% of image width)',
             ha='center', fontsize=8.5, color='#aaaaaa', zorder=10)
     ax.text(xcx, ly,
-            f'M = {M:.3f}×       Blur Ø = {B:.2f} mm',
+            f'M = {M:.3f}×       Blur Ø = {B:.2f}mm',
             ha='center', fontsize=8, color='#888888', zorder=10)
 
     # Connector dot from top of head to label
@@ -218,7 +218,7 @@ ax.text(IW*0.5, IH*0.80,
 
 # ── Image plane label ────────────────────
 ax.text(IW/2, IH - IH*0.025,
-        "IMAGE PLANE  —  19′ 4″ × 7′ 10″  (5,893 × 2,388 mm)",
+        "IMAGE PLANE  —  19′ 4″ × 7′ 10″  (5893 × 2388mm)",
         ha='center', va='top', fontsize=9, color='#444', zorder=10,
         fontfamily='monospace')
 
@@ -227,7 +227,7 @@ ax.text(IW/2, IH + IH*0.60,
         'OPTION B PINHOLE CAMERA  —  PORTRAIT RENDERING AT SCALE',
         ha='center', fontsize=14, color='#FFFFFF', fontweight='bold', zorder=10)
 ax.text(IW/2, IH + IH*0.48,
-        'Subject: 5′ 10″  (1,780 mm)  ·  f = 2,362 mm  ·  Pinhole d = 2.17 mm  ·  f/1088  ·  102° H-FOV',
+        'Subject: 5′ 10″  (1780mm)  ·  f = 2362mm  ·  Pinhole d = 2.17mm  ·  f/1088  ·  102° H-FOV',
         ha='center', fontsize=9.5, color='#888', zorder=10)
 
 # ── Inversion note ───────────────────────
@@ -287,7 +287,7 @@ ax2.add_patch(mpatches.Circle(
     (CONT_L_MM/2, 0), 60,
     fc='#FF6B35', ec='#FF9900', lw=2, zorder=5))
 ax2.text(CONT_L_MM/2, -350,
-         f'PINHOLE  ⌀ {D} mm  (f/{F/D:.0f})',
+         f'PINHOLE  ⌀ {D}mm  (f/{F/D:.0f})',
          ha='center', fontsize=9.5, color='#FF6B35', fontweight='bold', zorder=5)
 
 # Light rays from pinhole to edges of image plane
@@ -346,7 +346,7 @@ for u_m, col in zip(DISTS_M, COLOURS):
              [CONT_W_MM + 50, CONT_W_MM + 50],
              color=col, lw=3, solid_capstyle='butt', alpha=0.7, zorder=5)
     ax2.text(img_x_center, CONT_W_MM + 180 + DISTS_M.index(u_m)*150,
-             f'{u_m:.0f}m → image {ph:.0f} mm tall  ·  M = {M:.3f}×  ·  Blur Ø {B:.2f} mm',
+             f'{u_m:.0f}m → image {ph:.0f}mm tall  ·  M = {M:.3f}×  ·  Blur Ø {B:.2f}mm',
              ha='center', fontsize=8.5, color=col, zorder=10)
 
 # Title
@@ -394,7 +394,7 @@ for (ccx, ccy) in [(0,0),(IW,0),(IW,IH),(0,IH)]:
 u_opt = 3.0
 M_opt = F / (u_opt * 1000)
 B_opt = D * (1 + F/(u_opt*1000))
-ph_opt = PH * M_opt            # ~1401 mm
+ph_opt = PH * M_opt            # ~1401mm
 sw_opt = PH * SHOULDER_W_F * M_opt
 
 cx_opt = IW / 2
@@ -411,7 +411,7 @@ ax3.annotate('', xy=(hax, GY3+ph_opt), xytext=(hax, GY3),
              arrowprops=dict(arrowstyle='<->', color='#7BFF7B', lw=1.5,
                              mutation_scale=10), zorder=9)
 ax3.text(hax + IW*0.005, GY3 + ph_opt/2,
-         f'{ph_opt:.0f} mm\n({ph_opt/304.8:.2f} ft)',
+         f'{ph_opt:.0f}mm\n({ph_opt/304.8:.2f} ft)',
          va='center', fontsize=9, color='#7BFF7B', zorder=10)
 
 # Width annotation
@@ -420,7 +420,7 @@ ax3.annotate('', xy=(cx_opt+sw_opt/2, way), xytext=(cx_opt-sw_opt/2, way),
              arrowprops=dict(arrowstyle='<->', color='#7BFF7B', lw=1.5,
                              mutation_scale=9), zorder=9)
 ax3.text(cx_opt, way - IH*0.03,
-         f'Shoulder width: {sw_opt:.0f} mm  ({sw_opt/IW*100:.1f}% of image width)',
+         f'Shoulder width: {sw_opt:.0f}mm  ({sw_opt/IW*100:.1f}% of image width)',
          ha='center', fontsize=9, color='#7BFF7B', zorder=10)
 
 # Frame fills annotation
@@ -437,10 +437,10 @@ ax3.add_patch(mpatches.Circle((bx3, by3), B_opt,
 ax3.add_patch(mpatches.Circle((bx3, by3), max(B_opt*0.07, 0.5),
     fc='#7BFF7B', ec='none', zorder=7))
 ax3.text(bx3, by3 - B_opt*2.5,
-         f'Blur circle\nØ = {B_opt:.2f} mm',
+         f'Blur circle\nØ = {B_opt:.2f}mm',
          ha='center', fontsize=8, color='#7BFF7B', alpha=0.8, zorder=10)
 
-# Actual size scale bar = 500 mm on image
+# Actual size scale bar = 500mm on image
 sb3_y  = IH * 0.06
 sb3_x0 = IW * 0.03
 sb3_x1 = sb3_x0 + 500
@@ -448,7 +448,7 @@ ax3.plot([sb3_x0,sb3_x1],[sb3_y,sb3_y], color='#888', lw=2.5, solid_capstyle='bu
 for ssx3 in [sb3_x0, sb3_x1]:
     ax3.plot([ssx3,ssx3],[sb3_y-IH*0.01,sb3_y+IH*0.01], color='#888', lw=2, zorder=8)
 ax3.text((sb3_x0+sb3_x1)/2, sb3_y+IH*0.025,
-         '500 mm on image plane', ha='center', fontsize=8, color='#888', zorder=8)
+         '500mm on image plane', ha='center', fontsize=8, color='#888', zorder=8)
 
 # Image plane label
 ax3.text(IW/2, IH-IH*0.025,
@@ -461,7 +461,7 @@ ax3.text(IW/2, IH + IH*0.22,
          f'OPTIMAL PORTRAIT DISTANCE  —  3 m  ({u_opt*3.28:.1f} ft)  from pinhole wall',
          ha='center', fontsize=13, color='#FFFFFF', fontweight='bold', zorder=10)
 ax3.text(IW/2, IH + IH*0.13,
-         f'M = {M_opt:.3f}×  ·  Blur Ø = {B_opt:.2f} mm  ·  Magnification: image is {M_opt:.0%} of subject size',
+         f'M = {M_opt:.3f}×  ·  Blur Ø = {B_opt:.2f}mm  ·  Magnification: image is {M_opt:.0%} of subject size',
          ha='center', fontsize=9, color='#888', zorder=10)
 ax3.text(IW/2, -IH*0.10,
          '* Image is inverted in the camera. Shown right-side-up here.',

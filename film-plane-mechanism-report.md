@@ -63,7 +63,7 @@ The critical difference from the two-beam design: without spanning beams, the le
 
 ### Why Rod-End Spherical Bearings
 
-In the two-beam design, simple pin joints at the beam ends sufficed because the beam constrained one rotation axis. With four-corner independence, the film frame can twist — the plane through the four corners is no longer flat. A simple pin joint has only one rotational degree of freedom; a rod-end spherical bearing has ±45° freedom in all axes, accommodating any combination of tilt and swing without binding.
+With four-corner independence, the film frame can twist — the plane through the four corners is no longer flat. A simple pin joint has only one rotational degree of freedom; a rod-end spherical bearing has ±45° freedom in all axes, accommodating any combination of tilt and swing without binding.
 
 ### Actuation
 
@@ -87,28 +87,20 @@ The backing panel is two equal ACM (aluminum composite material) sections, each 
 
 For compound tilt+swing, the film plane is a ruled surface (slightly twisted, not flat). The backing panels accommodate this because the hinge allows both fore-aft fold and a small amount of left-right twist.
 
-### Light Sealing
-
-The tilted or swung film plane creates voids where it no longer contacts the container walls. These are sealed with:
-
-- **Primary seal:** 1"×½" black EPDM foam strip bonded to all four edges of the film frame — compresses against walls at low angles
-- **Secondary seal:** Rosco Duvetyne (professional blackout fabric) curtains attached to the film frame perimeter, hanging freely and weighted — drapes against the walls and floor for large angles
-- **Rail light traps:** Three overlapping strips of black felt across each rail slot opening in the ceiling and floor panels
-
 ---
 
 ## 5. Tilt Configurations
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2388mm |
-| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 11.0° | 0° | 2434mm |
-| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 31.5° | 0° | 2724mm |
-| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 42.1° | 0° | 3184mm |
-| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 6.6° | 2388mm |
-| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 20.0° | 2388mm |
-| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 28.3° | 2388mm |
-| C7 | Compound | 100 | 2,262 | 2,262 | 100 | 42.1° | 28.3° | — |
+| C0 | Flat | 2262 | 2262 | 2262 | 2262 | 0° | 0° | 2388mm |
+| C1 | Mild tilt | 1800 | 1800 | 2262 | 2262 | 11.0° | 0° | 2434mm |
+| C2 | Strong tilt | 800 | 800 | 2262 | 2262 | 31.5° | 0° | 2724mm |
+| C3 | Max tilt | 100 | 100 | 2262 | 2262 | 42.1° | 0° | 3184mm |
+| C4 | Mild swing | 2262 | 1800 | 2262 | 1800 | 0° | 6.6° | 2388mm |
+| C5 | Strong swing | 2262 | 800 | 2262 | 800 | 0° | 20.0° | 2388mm |
+| C6 | Max swing | 2262 | 100 | 2262 | 100 | 0° | 28.3° | 2388mm |
+| C7 | Compound | 100 | 2262 | 2262 | 100 | 42.1° | 28.3° | — |
 
 *All depths measured from the pinhole wall. Swing angles calculated for 4499mm rail span (arctan(Δd/span)). Rail positions: left X=150mm, right X=4649mm.*
 

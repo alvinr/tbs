@@ -489,7 +489,7 @@ def draw_sheet2():
     # ── Labels ───────────────────────────────────────────────────────────────
     # Scene / Interior arrows at top of section
     arr_y = cy + fr_half + 15
-    ax.annotate('EXTERIOR\n(SCENE)', xy=(wall_x, arr_y), xytext=(wall_x - 10, arr_y + 35),
+    ax.annotate('EXTERIOR\n(SCENE)', xy=(wall_x, arr_y), xytext=(wall_x - 30, arr_y + 35),
                 fontsize=5, color='#333', style='italic', ha='center', va='bottom',
                 arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
     ax.annotate('INTERIOR\n(CAMERA)', xy=(cr_right + disc_t, arr_y), xytext=(cr_right + disc_t + 10, arr_y + 35),
@@ -499,50 +499,50 @@ def draw_sheet2():
     # Component labels with leaders — staggered vertically
     lx_r = cr_right + 40
     leader(ax, (fr_left + fr_right) / 2, cy + fr_half - 10,
-           lx_r, cy + fr_half + 20,
+           lx_r + 20, cy + fr_half + 20,
            'ICP-01 OUTER FRAME\n600×600×40 AL', fs=5)
 
     leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5,
-           lx_r, cy + 20,
+           lx_r + 20, cy + 110,
            'ICP-02 CARRIER Ø320×25 AL', fs=5)
 
     leader(ax, brg_left + s(BRG_W / 2), cy + brg_outer_half,
-           brg_left - 10, cy + brg_outer_half + 50,
+           lx_r + 20, cy + brg_outer_half + 60,
            'ICP-03 GE50-DO-2RS\nØ50×Ø80×46', fs=5)
 
     leader(ax, cr_right + disc_t / 2, cy + disc_half + 3,
-           lx_r, cy + disc_half + 40,
+           lx_r + 20, cy + disc_half + 40,
            'PINHOLE DISC\nØ50×0.1 SS-302\nØ2.17mm APT', fs=5)
 
     leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
-           lx_r, cy - bel_outer_half - 20,
+           lx_r + 20, cy - bel_outer_half - 20,
            'ICP-10 BELLOWS Ø290–Ø360', fs=5)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Frame thickness
-    draw_dim_h(ax, fr_left, fr_right, cy + fr_half + 60, '40',
+    draw_dim_h(ax, fr_left, fr_right, cy + fr_half + 10, '40mm',
                above=True, fs=6, offset=8)
 
     # Carrier thickness
-    draw_dim_h(ax, cr_left, cr_right, cy - cr_half - 30, '25',
+    draw_dim_h(ax, cr_left, cr_right, cy - cr_half - 80, '25mm',
                above=False, fs=6, offset=8)
 
     # Bearing width
-    draw_dim_h(ax, brg_left, brg_left + s(BRG_W), cy - brg_outer_half - 20, '46',
+    draw_dim_h(ax, brg_left, brg_left + s(BRG_W), cy - brg_outer_half - 20, '46mm',
                above=False, fs=5.5, offset=6)
 
     # Frame height (half)
-    draw_dim_v(ax, fr_left - 30, cy, cy + fr_half, '300',
+    draw_dim_v(ax, fr_left - 50, cy, cy + fr_half, '300mm',
                right=False, fs=6, offset=8)
-    draw_dim_v(ax, fr_left - 30, cy - fr_half, cy, '300',
+    draw_dim_v(ax, fr_left - 50, cy - fr_half, cy, '300mm',
                right=False, fs=6, offset=8)
 
     # Bore half
-    draw_dim_v(ax, fr_right + 10, cy, cy + bore_half, f'{int(FR_BORE/2)}',
+    draw_dim_v(ax, fr_right + 30, cy, cy + bore_half, f'{int(FR_BORE/2)}mm',
                right=True, fs=5.5, offset=6)
 
     # Carrier radius
-    draw_dim_v(ax, cr_right + 15, cy, cy + cr_half, f'{int(CR_OD/2)}',
+    draw_dim_v(ax, cr_right + 30, cy, cy + cr_half, f'{int(CR_OD/2)}mm',
                right=True, fs=5.5, offset=6)
 
     # Section title — at top of drawing
@@ -553,14 +553,14 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes2 = [
         'SECTION A-A — TILT-SWING BOARD ASSEMBLY:',
-        'VERTICAL SECTION THROUGH CENTER. BEARING SHANK (ICP-02) PASSES THROUGH GE50-DO-2RS INTO FRAME POCKET.',
-        'PIVOT POINT AT PINHOLE DISC FACE — TILT ROTATES IMAGE CONE ABOUT PINHOLE, NO PARALLAX.',
+        'VERTICAL SECTION THROUGH CENTER. BEARING SHANK (ICP-02) PASSES THROUGH GE50-DO-2RS INTO FRAME',
+        'POCKET. PIVOT POINT AT PINHOLE DISC FACE — TILT ROTATES IMAGE CONE ABOUT PINHOLE, NO PARALLAX.',
         'ADJUSTMENT: OPPOSING M8×1.0 SCREW PAIRS PUSH/PULL CARRIER RIM VIA GRADE-25 Ø8mm BALL CONTACTS.',
         'ANGULAR RANGE: ±5.3° (±12mm TRAVEL AT 130mm ARM). RESOLUTION: 0.012°/CLICK (36-DETENT KNOBS).',
         'BELLOWS: ZERO-FRICTION LIGHT SEAL. ±13.9mm ASYMMETRIC COMPRESSION AT ±5° TILT.',
         'LABYRINTH BORE: 3-STEP (Ø382/390/400mm, 5mm DEEP EACH) — SECONDARY LIGHT SEAL.',
     ]
-    draw_notes(ax, notes2, 25, ph * 0.20, spacing=14, fs=5, width=pw - 50)
+    draw_notes(ax, notes2, 25, ph * 0.20, spacing=12, fs=5, width=pw - 50)
 
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="TILT-SWING FRONT BOARD",

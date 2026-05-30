@@ -5,8 +5,8 @@
 - **Project name:** The Big Shoebox Project
 - **Camera designation:** TBS-001
 - **Parts prefix:** ICP-XX (e.g. ICP-01, ICP-02…)
-- **Container:** 20ft ISO standard shipping container, 2,362mm interior focal depth
-- **Image plane:** 4,499 × 2,388 mm active (X=150–4,649mm); container interior 5,893 × 2,388 mm
+- **Container:** 20ft ISO standard shipping container, 2362mm interior focal depth
+- **Image plane:** 4499 × 2388mm active (X=150–4649mm); container interior 5893 × 2388mm
 - **Pinhole:** Ø2.17mm, SS-302 shim, f/1088 (Rayleigh formula, λ=550nm)
 - **Site:** https://alvinr.github.io/tbs/
 
@@ -96,16 +96,16 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 
 | Constant | Value | Derivation |
 |----------|-------|-----------|
-| Focal length | 2,362 mm | Container interior depth |
-| Optimal pinhole Ø | 2.17 mm | Rayleigh: d = 1.9√(fλ), λ=550nm |
+| Focal length | 2362mm | Container interior depth |
+| Optimal pinhole Ø | 2.17mm | Rayleigh: d = 1.9√(fλ), λ=550nm |
 | f-number | f/1088 | f / d |
-| Container interior | 5,893 × 2,388 mm | Full interior face |
-| Film plane (active) | 4,499 × 2,388 mm | X=150–4,649mm (shadow-free zone) |
-| Pinhole X position | 2,399 mm | Center of active film plane (150 + 4,499/2) |
-| Rail left X | 150 mm | Left rail / film plane left edge |
-| Rail right X | 4,649 mm | Right rail / film plane right edge |
-| Rail span | 4,499 mm | RAIL_X_R − RAIL_X_L |
-| Board tilt 5° → image shift | 207 mm | 2362 × tan(5°) |
+| Container interior | 5893 × 2388mm | Full interior face |
+| Film plane (active) | 4499 × 2388mm | X=150–4649mm (shadow-free zone) |
+| Pinhole X position | 2399mm | Center of active film plane (150 + 4499/2) |
+| Rail left X | 150mm | Left rail / film plane left edge |
+| Rail right X | 4649mm | Right rail / film plane right edge |
+| Rail span | 4499mm | RAIL_X_R − RAIL_X_L |
+| Board tilt 5° → image shift | 207mm | 2362 × tan(5°) |
 | Film plane max tilt | ±42° | 4-corner mechanism hard stop |
 | Film plane max swing | ±25.7° | arctan(2162/4499) — wider rail span vs same Y travel |
 | Tilt-swing board max | ±5.3° | Screw shoulder hard stop |

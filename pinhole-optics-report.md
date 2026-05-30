@@ -51,7 +51,7 @@ B_diffraction = 2.44 × λ × f / d
 ```
 
 Where:
-- `λ` = wavelength of light (0.00055 mm for green light at 550 nm)
+- `λ` = wavelength of light (0.00055mm for green light at 550 nm)
 - `f` = focal length (distance from pinhole to image plane, mm)
 - `d` = pinhole diameter (mm)
 
@@ -300,12 +300,12 @@ These sizes represent conventional large-format photography through oversized da
 
 | Format | Dimensions (mm) | Focal Length (mm) | Rayleigh d (mm) | Petzval d (mm) | f-number | Resolution (lp/mm) |
 |--------|----------------|-------------------|-----------------|-----------------|----------|-------------------|
-| 8 × 10 in | 203 × 254 | 325 | **0.80 mm** | 0.66 mm | f/406 | 1.84 |
-| 11 × 14 in | 279 × 356 | 452 | **0.95 mm** | 0.78 mm | f/476 | 1.57 |
-| 16 × 20 in | 406 × 508 | 651 | **1.14 mm** | 0.94 mm | f/571 | 1.31 |
-| 20 × 24 in | 508 × 610 | 794 | **1.26 mm** | 1.03 mm | f/630 | 1.19 |
-| 24 × 30 in | 610 × 762 | 976 | **1.40 mm** | 1.15 mm | f/697 | 1.07 |
-| 30 × 40 in | 762 × 1016 | 1270 | **1.59 mm** | 1.31 mm | f/799 | 0.94 |
+| 8 × 10 in | 203 × 254 | 325 | **0.80mm** | 0.66mm | f/406 | 1.84 |
+| 11 × 14 in | 279 × 356 | 452 | **0.95mm** | 0.78mm | f/476 | 1.57 |
+| 16 × 20 in | 406 × 508 | 651 | **1.14mm** | 0.94mm | f/571 | 1.31 |
+| 20 × 24 in | 508 × 610 | 794 | **1.26mm** | 1.03mm | f/630 | 1.19 |
+| 24 × 30 in | 610 × 762 | 976 | **1.40mm** | 1.15mm | f/697 | 1.07 |
+| 30 × 40 in | 762 × 1016 | 1270 | **1.59mm** | 1.31mm | f/799 | 0.94 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -324,10 +324,10 @@ At these scales, a single sheet of photographic paper cannot cover the image pla
 
 | Format | Dimensions (mm) | Focal Length | Rayleigh d | f-number | Resolution (lp/mm) |
 |--------|----------------|-------------|-----------|----------|-------------------|
-| 4 × 5 ft | 1219 × 1524 | 1952 mm (6.4 ft) | **1.97 mm** | f/991 | 0.76 |
-| 5 × 7 ft | 1524 × 2134 | 2625 mm (8.6 ft) | **2.28 mm** | f/1152 | 0.65 |
-| 8 × 7 ft | 2438 × 2134 | 3250 mm (10.7 ft) | **2.54 mm** | f/1280 | 0.58 |
-| 10 × 7 ft | 3048 × 2134 | 3721 mm (12.2 ft) | **2.72 mm** | f/1369 | 0.55 |
+| 4 × 5 ft | 1219 × 1524 | 1952mm (6.4 ft) | **1.97mm** | f/991 | 0.76 |
+| 5 × 7 ft | 1524 × 2134 | 2625mm (8.6 ft) | **2.28mm** | f/1152 | 0.65 |
+| 8 × 7 ft | 2438 × 2134 | 3250mm (10.7 ft) | **2.54mm** | f/1280 | 0.58 |
+| 10 × 7 ft | 3048 × 2134 | 3721mm (12.2 ft) | **2.72mm** | f/1369 | 0.55 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -344,9 +344,9 @@ At this scale, the calculated focal length (= image diagonal) requires an imprac
 
 | Format | Dimensions (mm) | Focal Length (diagonal) | Rayleigh d | f-number | Resolution (lp/mm) |
 |--------|----------------|------------------------|-----------|----------|-------------------|
-| 20 × 7 ft | 6096 × 2134 | 6459 mm (21.2 ft) | **3.58 mm** | f/1804 | 0.41 |
-| 30 × 7 ft | 9144 × 2134 | 9389 mm (30.8 ft) | **4.31 mm** | f/2181 | 0.34 |
-| 40 × 7 ft | 12192 × 2134 | 12377 mm (40.6 ft) | **4.96 mm** | f/2497 | 0.30 |
+| 20 × 7 ft | 6096 × 2134 | 6459mm (21.2 ft) | **3.58mm** | f/1804 | 0.41 |
+| 30 × 7 ft | 9144 × 2134 | 9389mm (30.8 ft) | **4.31mm** | f/2181 | 0.34 |
+| 40 × 7 ft | 12192 × 2134 | 12377mm (40.6 ft) | **4.96mm** | f/2497 | 0.30 |
 
 | Format | f-number | ISO 100 film, bright sun | Photo paper calculated | Photo paper corrected (p=0.85) |
 |--------|----------|------------------------|----------------------|-------------------------------|
@@ -362,14 +362,14 @@ At this scale, the calculated focal length (= image diagonal) requires an imprac
 
 The tables above use focal length = image diagonal for a "normal" angle of view. For large structures, a shorter focal length is often more practical. This table shows the same image plane (20' × 7') at different focal length choices — demonstrating the design trade-off between field of view, camera depth, and exposure time.
 
-**Image plane fixed at 20' × 7' (6096 × 2134 mm)**
+**Image plane fixed at 20' × 7' (6096 × 2134mm)**
 
 | Focal Length | Camera Depth | Angle of View (horizontal) | Rayleigh d | f-number | Paper exposure, calculated | Paper exposure, corrected |
 |-------------|-------------|--------------------------|-----------|----------|--------------------------|--------------------------|
-| 6459 mm (21.2 ft) | ~22 ft | 53° (normal) | 3.58 mm | f/1804 | 35 min | **1 hr 32 min** |
-| 4572 mm (15 ft) | ~15 ft | 70° (wide) | 3.01 mm | f/1519 | 25 min | **1 hr 1 min** |
-| 3048 mm (10 ft) | ~10 ft | 90° (ultra-wide) | 2.46 mm | f/1239 | 16 min | **37 min** |
-| 2134 mm (7 ft) | ~7 ft | 110° (extreme wide) | 2.06 mm | f/1036 | 11 min | **23 min** |
+| 6459mm (21.2 ft) | ~22 ft | 53° (normal) | 3.58mm | f/1804 | 35 min | **1 hr 32 min** |
+| 4572mm (15 ft) | ~15 ft | 70° (wide) | 3.01mm | f/1519 | 25 min | **1 hr 1 min** |
+| 3048mm (10 ft) | ~10 ft | 90° (ultra-wide) | 2.46mm | f/1239 | 16 min | **37 min** |
+| 2134mm (7 ft) | ~7 ft | 110° (extreme wide) | 2.06mm | f/1036 | 11 min | **23 min** |
 
 **Key insight:** Choosing a 7-foot focal length instead of a 21-foot focal length reduces the corrected paper exposure from ~1.5 hours to ~23 minutes — a 4× improvement — by shortening the camera depth from 22 feet to 7 feet. The trade-off is a dramatically wider, more distorted perspective (110° horizontal angle of view vs. 53°).
 
@@ -417,20 +417,20 @@ Based on the analysis above, the following parameters are recommended as design 
 
 | Parameter | Recommended Value | Formula / Source |
 |-----------|------------------|-----------------|
-| Image plane dimensions | 6096 × 2134 mm (20' × 7') | Project spec |
-| Focal length (normal perspective) | 6459 mm (21.2 ft) | f = image diagonal; Renner (2009) |
-| Focal length (practical wide-angle) | 2134–3048 mm (7–10 ft) | Chosen to minimize camera depth |
-| **Optimal pinhole diameter** | **2.5–3.6 mm** | d = 1.9√(fλ), Rayleigh (1891); d = 1.56√(fλ), Born & Wolf (1999) |
-| Pinhole manufacturing tolerance | ±0.05 mm | Sufficient at 3 mm scale; Lenox Laser standard spec |
+| Image plane dimensions | 6096 × 2134mm (20' × 7') | Project spec |
+| Focal length (normal perspective) | 6459mm (21.2 ft) | f = image diagonal; Renner (2009) |
+| Focal length (practical wide-angle) | 2134–3048mm (7–10 ft) | Chosen to minimize camera depth |
+| **Optimal pinhole diameter** | **2.5–3.6mm** | d = 1.9√(fλ), Rayleigh (1891); d = 1.56√(fλ), Born & Wolf (1999) |
+| Pinhole manufacturing tolerance | ±0.05mm | Sufficient at 3mm scale; Lenox Laser standard spec |
 | Pinhole material | Blackened SS-302/304 | Lenox Laser product spec |
-| f-number (7-ft camera depth) | f/1036 | f = 2134 mm, d = 2.06 mm |
-| f-number (21-ft camera depth) | f/1804 | f = 6459 mm, d = 3.58 mm |
+| f-number (7-ft camera depth) | f/1036 | f = 2134mm, d = 2.06mm |
+| f-number (21-ft camera depth) | f/1804 | f = 6459mm, d = 3.58mm |
 | **Exposure on photo paper, calculated** | **11–35 min** (depending on focal length choice) | Sunny-16 × (f/N ÷ 16)² ÷ 6; Stroebel (2009) |
 | **RC paper (ISO 6) — reciprocity-corrected** | **23 min–1.5 hr** | Schwarzschild p=0.85; test empirically |
 | **Cyanotype on muslin, Ware formula (ISO ~2–4) — no correction** | **~30–45 min** | Iron-based process; no Schwarzschild failure (see Part 5) |
 | Resolution at optimal pinhole | 0.41–0.55 lp/mm | Young (1971); Born & Wolf (1999) |
 | Max Ilford paper roll width | 127 cm (50 in) | Ilford product page (verified 2026) |
-| Panels needed to cover 20' width | 5 panels (seamed) | 6096 mm ÷ 1270 mm |
+| Panels needed to cover 20' width | 5 panels (seamed) | 6096mm ÷ 1270mm |
 | Liquid Light coverage (116 sq ft) | ~78 oz, single coat | Rockland Colloid product spec (~1.5 sq ft/oz) |
 
 ---

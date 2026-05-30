@@ -6,7 +6,7 @@
 
 TBS-001 requires a light-tight seal at the cargo door end of the container that
 simultaneously allows personnel access during operation without admitting daylight.
-The hinged light-trap panel fills both roles: it seals the full 2,362 × 2,388 mm
+The hinged light-trap panel fills both roles: it seals the full 2362 × 2388mm
 cargo door opening as a rigid structural panel, and incorporates a revolving drum
 light trap that permits operators to enter and exit the darkened interior at any
 time without opening the panel or breaking the light seal. In case of emergency, or to easy loading and unloading of materials, the whole hinged panel can open fully, being locked from the inside.
@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- 300 mm inward slide for transport mode — clears ISO container doors
+- 300mm inward slide for transport mode — clears ISO container doors
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -38,30 +38,30 @@ while keeping the corners flush with the container walls.
 
 | Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 0–756 | 756 | 40 | 18 mm ply + 4 mm steel plate + 18 mm ply |
-| Center | 756–1,606 | 850 | 120 | 18 mm ply + 84 mm RHS frame + 18 mm ply |
-| Far corner | 1,606–2,362 | 756 | 40 | 18 mm ply + 4 mm steel plate + 18 mm ply |
+| Near corner | 0–756 | 756 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
+| Center | 756–1,606 | 850 | 120 | 18mm ply + 84mm RHS frame + 18mm ply |
+| Far corner | 1,606–2,362 | 756 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
 
-The 80 mm step between corner and center zones occurs at Yd=756 mm and
-Yd=1,606 mm. The center zone houses the revolving drum; the corner zones are
+The 80mm step between corner and center zones occurs at Yd=756mm and
+Yd=1606mm. The center zone houses the revolving drum; the corner zones are
 flush-faced panels that seal against the fixed door frame.
 
 ### 2.2 Frame
 
 | Parameter | Value |
 |-----------|-------|
-| Frame material | 50 × 50 × 3 mm RHS mild steel |
-| Outer dimensions | 2,362 × 2,388 mm |
-| Skin (each face) | 18 mm exterior-grade plywood |
+| Frame material | 50 × 50 × 3mm RHS mild steel |
+| Outer dimensions | 2362 × 2388mm |
+| Skin (each face) | 18mm exterior-grade plywood |
 | Interior finish | Flat black (RAL 9005) — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitred joints |
 | Panel weight (without drum) | ~180 kg (estimated) |
 
 ### 2.3 EPDM Perimeter Seal
 
-A 20 mm closed-cell EPDM compression gasket runs the full perimeter of the panel,
+A 20mm closed-cell EPDM compression gasket runs the full perimeter of the panel,
 seated in an extruded aluminum channel. The gasket compresses against a fixed welded
-door frame (50 × 50 × 3 mm RHS) at X=0 when the four cam latches engage. The seal
+door frame (50 × 50 × 3mm RHS) at X=0 when the four cam latches engage. The seal
 provides light-tight compression on all four sides.
 
 ---
@@ -77,14 +77,14 @@ provides light-tight compression on all four sides.
 | Parameter | Value |
 |-----------|-------|
 | Type | Vertical-axis revolving drum with internal baffles |
-| Drum outer diameter | Ø750 mm |
-| Drum height | 2,200 mm (floor to upper bearing) |
-| Wall thickness | 3 mm mild steel, rolled and seam-welded |
+| Drum outer diameter | Ø750mm |
+| Drum height | 2200mm (floor to upper bearing) |
+| Wall thickness | 3mm mild steel, rolled and seam-welded |
 | Interior finish | Shot-blast + flat black powder coat (RAL 9005) |
 | Exterior finish | Grey oxide primer + grey topcoat |
-| Clear walking height | 1,910 mm (drum body between bearings) |
-| Headroom (1,780 mm operator) | 130 mm |
-| Internal baffles | 4 × 3 mm steel fins, full height, at 90° spacing |
+| Clear walking height | 1910mm (drum body between bearings) |
+| Headroom (1780mm operator) | 130mm |
+| Internal baffles | 4 × 3mm steel fins, full height, at 90° spacing |
 | Weight | ~60–80 kg (estimated) |
 
 ### 3.2 Bearings
@@ -92,15 +92,15 @@ provides light-tight compression on all four sides.
 | Item | Specification |
 |------|--------------|
 | Bearing model (×2) | SKF 6215-2RS1 sealed deep-groove ball bearing |
-| Bore | 75 mm ID, 130 mm OD, 25 mm wide |
+| Bore | 75mm ID, 130mm OD, 25mm wide |
 | Clearance | C3 |
 | Radial load rating | 52.7 kN (static) |
 | Operating temperature | 0–120°C |
-| Stub shafts | 75 mm Ø × 150 mm steel, welded to drum top and bottom caps |
+| Stub shafts | 75mm Ø × 150mm steel, welded to drum top and bottom caps |
 | Axial retention | Circlip on stub shaft each side |
 | Upper mount | Welded steel housing bolted to panel top rail (6 × M10 SS) |
 | Lower mount | Welded steel floor collar bolted to panel bottom rail (8 × M10 SS) |
-| Bearing housing height | 45 mm (each) |
+| Bearing housing height | 45mm (each) |
 
 ### 3.3 Light Path Verification
 
@@ -109,8 +109,8 @@ interior. Four radial fins at 90° spacing create quarter-circle sectors. A pers
 entering from the exterior must navigate an S-path through at least one full
 sector (minimum 45° rotation) before reaching the interior face.
 
-At Ø750 mm diameter with 4 baffles, the shortest possible S-path through the drum
-is 590 mm — significantly longer than the 120 mm panel thickness. No line of sight
+At Ø750mm diameter with 4 baffles, the shortest possible S-path through the drum
+is 590mm — significantly longer than the 120mm panel thickness. No line of sight
 is possible at any incidence angle within ±30° of normal.
 
 See [Light Trap Selection](light-trap-selection.md) §5 for full verification.
@@ -119,15 +119,15 @@ See [Light Trap Selection](light-trap-selection.md) §5 for full verification.
 
 | Location | Seal method |
 |----------|------------|
-| Top | 12 mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against ceiling mount plate |
-| Bottom | 12 mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against floor mount plate |
-| Drum-to-panel gap | 15 mm radial clearance, closed by 20 mm neoprene compression strip bonded to panel drum aperture |
+| Top | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against ceiling mount plate |
+| Bottom | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against floor mount plate |
+| Drum-to-panel gap | 15mm radial clearance, closed by 20mm neoprene compression strip bonded to panel drum aperture |
 | Weather rating | IP44 (splash and rain protection) |
 
 ### 3.5 Handle
 
-A 100 mm Ø × 400 mm stainless steel grab rail is mounted on the interior face
-only at 900 mm height. The handle is attached by a welded bracket — no through-bolt
+A 100mm Ø × 400mm stainless steel grab rail is mounted on the interior face
+only at 900mm height. The handle is attached by a welded bracket — no through-bolt
 penetration of the drum wall on the exterior face. This eliminates a potential
 light leak path. The operator enters by pushing the bare exterior drum wall, then
 uses the interior grab rail to pull the drum closed and brace during exit.
@@ -140,9 +140,9 @@ uses the interior grab rail to pull the drum closed and brace during exit.
 
 | Parameter | Value |
 |-----------|-------|
-| Type | 200 mm stainless steel ball-bearing piano hinge |
+| Type | 200mm stainless steel ball-bearing piano hinge |
 | Quantity | 3 |
-| Positions (from floor) | 220 mm, 1,190 mm, 2,158 mm |
+| Positions (from floor) | 220mm, 1190mm, 2158mm |
 | Mounting | Left edge of panel (exterior view) |
 | Swing | 180° outward — clears full door opening and all interior equipment |
 
@@ -152,7 +152,7 @@ uses the interior grab rail to pull the drum closed and brace during exit.
 |-----------|-------|
 | Model | Southco C2-33 cam compression latch |
 | Quantity | 4 (one at each corner) |
-| Positions | 210 mm and 2,152 mm from side edges, 220 mm and 2,168 mm from floor |
+| Positions | 210mm and 2152mm from side edges, 220mm and 2168mm from floor |
 | Mounting face | **Interior** — deliberate safety design for emergency egress |
 | Seal compression | Compresses EPDM perimeter gasket against fixed door frame |
 
@@ -165,7 +165,7 @@ interior equipment.
 
 ## 5. Sliding Carriage System
 
-The entire panel (including the drum) slides 300 mm in the X direction on linear
+The entire panel (including the drum) slides 300mm in the X direction on linear
 rails for transport mode conversion. This slide retracts the drum's exterior
 overhang behind the container door closure plane.
 
@@ -181,8 +181,8 @@ See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
 
 | Position | Panel corner inner face X | Drum exterior edge X | Container doors clear? |
 |----------|--------------------------|---------------------|----------------------|
-| Operational | 40 mm | −295 mm | No (drum protrudes 295 mm beyond exterior face) |
-| Transport | 340 mm | −35 mm → +5 mm | Yes (drum clears exterior face by 5 mm) |
+| Operational | 40mm | −295mm | No (drum protrudes 295mm beyond exterior face) |
+| Transport | 340mm | −35mm → +5mm | Yes (drum clears exterior face by 5mm) |
 
 ### 5.2 Locking
 
@@ -193,9 +193,9 @@ See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
 
 ### 5.3 Floor Gap
 
-The panel is suspended from the ceiling HGR20 rails with an 80 mm gap between the
-panel bottom edge and the container floor. This gap clears the 50 mm processing tray
-rim with 30 mm margin, allowing the panel to slide freely in both directions without
+The panel is suspended from the ceiling HGR20 rails with an 80mm gap between the
+panel bottom edge and the container floor. This gap clears the 50mm processing tray
+rim with 30mm margin, allowing the panel to slide freely in both directions without
 contacting the tray.
 
 ---
@@ -207,11 +207,11 @@ sealed when the panel is in the operational position.
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | Panel perimeter → door frame | 20 mm EPDM gasket in aluminum channel, compressed by 4 × Southco C2-33 cam latches against fixed door frame at X=0 |
-| 2 | Left carriage beam slot | Doubled nylon brush strip (~70 × 2,400 mm slot), bristles inward from both sides, bonded to frame slot edges |
-| 3 | Right guide slot | Matching doubled nylon brush strip (~70 × 2,400 mm slot), same treatment as left slot |
-| 4 | Rail channels at floor/ceiling (×4) | 10 mm closed-cell neoprene compression pad (50 × 30 mm) bonded to frame face around each rail penetration |
-| 5 | Panel edge-to-wall clearance gaps | 15 mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
+| 1 | Panel perimeter → door frame | 20mm EPDM gasket in aluminum channel, compressed by 4 × Southco C2-33 cam latches against fixed door frame at X=0 |
+| 2 | Left carriage beam slot | Doubled nylon brush strip (~70 × 2400mm slot), bristles inward from both sides, bonded to frame slot edges |
+| 3 | Right guide slot | Matching doubled nylon brush strip (~70 × 2400mm slot), same treatment as left slot |
+| 4 | Rail channels at floor/ceiling (×4) | 10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration |
+| 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -226,11 +226,11 @@ for the sliding carriage.
 
 | Parameter | Value |
 |-----------|-------|
-| Material | 50 × 50 × 3 mm RHS mild steel |
+| Material | 50 × 50 × 3mm RHS mild steel |
 | Position | X=0 (container end wall inner face) |
 | Function | EPDM seal landing, carriage beam slot housing, rail mounting |
 | Attachment | Welded to container end wall structural members |
-| Slots | 2 × vertical (~70 × 2,400 mm) for carriage beam and right-side guide |
+| Slots | 2 × vertical (~70 × 2400mm) for carriage beam and right-side guide |
 | Rail penetrations | 4 × (floor and ceiling, both walls) sealed by neoprene pads |
 
 ---
@@ -241,12 +241,12 @@ for the sliding carriage.
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 50 × 50 × 3 mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
-| 18 mm exterior-grade plywood (1,220 × 2,440 mm sheets) | Panel skins (both faces) | 6 | $180–$300 |
-| 4 mm steel plate (1,220 × 2,440 mm) | Corner zone core plates | 2 | $80–$120 |
-| 20 mm EPDM gasket (per meter, closed-cell) | Perimeter seal — ~10 m required | 10 m | $40–$60 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
+| 18mm exterior-grade plywood (1220 × 2440mm sheets) | Panel skins (both faces) | 6 | $180–$300 |
+| 4mm steel plate (1220 × 2440mm) | Corner zone core plates | 2 | $80–$120 |
+| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal — ~10 m required | 10 m | $40–$60 |
 | Aluminum U-channel (per meter) | Gasket retainer — ~10 m required | 10 m | $30–$50 |
-| 200 mm SS ball-bearing piano hinge | Left-edge hinges | 3 | $45–$75 |
+| 200mm SS ball-bearing piano hinge | Left-edge hinges | 3 | $45–$75 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches | 4 | $60–$100 |
 | Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |
 | **Panel subtotal** | | | **$575–$895** |
@@ -255,13 +255,13 @@ for the sliding carriage.
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 3 mm mild steel sheet (1,200 × 2,400 mm, A36) | Drum body + baffles | 2 | $140–$180 |
-| 5 mm steel plate | Top and bottom caps | 1 | $40–$60 |
+| 3mm mild steel sheet (1200 × 2400mm, A36) | Drum body + baffles | 2 | $140–$180 |
+| 5mm steel plate | Top and bottom caps | 1 | $40–$60 |
 | SKF 6215-2RS1 sealed bearing | Top and bottom bearings | 2 | $90–$130 |
-| 75 mm Ø × 150 mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
-| 12 mm closed-cell neoprene strip (3 m) | Top and bottom drum seals | 1 | $20–$25 |
+| 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
+| 12mm closed-cell neoprene strip (3 m) | Top and bottom drum seals | 1 | $20–$25 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 | $10–$15 |
-| 100 mm Ø SS grab rail | Interior handle, 400 mm cut length | 1 | $15–$25 |
+| 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 | $15–$25 |
 | Flat black powder coat (drum interior) | Local powder coat service | 1 | $120–$180 |
 | Metal fabrication (rolling, welding, fitting) | 16–20 hrs labor | 1 | $800–$1,200 |
 | **Drum subtotal** | | | **$1,265–$1,865** |
@@ -270,20 +270,20 @@ for the sliding carriage.
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| HGR20 linear guide rail (500 mm) | Floor/ceiling rails, both walls | 4 | $80–$120 |
+| HGR20 linear guide rail (500mm) | Floor/ceiling rails, both walls | 4 | $80–$120 |
 | HGH20CA carriage block | 2 per rail | 8 | $120–$200 |
-| 60 × 60 × 3 mm SHS mild steel (2,400 mm) | Left-side carriage beam | 1 | $25–$40 |
+| 60 × 60 × 3mm SHS mild steel (2400mm) | Left-side carriage beam | 1 | $25–$40 |
 | Destaco 207-U toggle clamp | Operational + transport locks | 4 | $60–$100 |
 | Nylon brush strip (doubled, per meter) | Carriage beam slot seals — ~5 m each side | 10 m | $40–$60 |
-| 10 mm closed-cell neoprene pad (50 × 30 mm) | Rail channel seals | 4 | $10–$15 |
-| 15 mm EPDM strip (self-adhesive, per meter) | Panel edge-to-wall clearance seals — ~5 m each side | 10 m | $30–$50 |
+| 10mm closed-cell neoprene pad (50 × 30mm) | Rail channel seals | 4 | $10–$15 |
+| 15mm EPDM strip (self-adhesive, per meter) | Panel edge-to-wall clearance seals — ~5 m each side | 10 m | $30–$50 |
 | **Carriage subtotal** | | | **$365–$585** |
 
 ### 8.4 Fixed Door Frame
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 50 × 50 × 3 mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
 | **Door frame subtotal** | | | **$290–$470** |
 
@@ -324,7 +324,7 @@ for the sliding carriage.
 | SKF 6215-2RS1 bearing specification | [SKF Product Catalog](https://www.skf.com/group/products/rolling-bearings/ball-bearings/deep-groove-ball-bearings/productid-6215-2RS1) — radial load 52.7 kN static, sealed, C3 clearance |
 | Southco C2-33 cam latch | [Southco catalog](https://southco.com/en_us_int/c2-33-11) — flush-mount cam compression latch |
 | Destaco 207-U toggle clamp | [Destaco catalog](https://www.destaco.com/207-u.html) — horizontal hold-down clamp, 375 lb capacity |
-| HGR20 / HGH20CA linear guide | [HIWIN equivalent](https://hiwin.com/products/linear-guideways/) — generic 20 mm profile linear rail system |
+| HGR20 / HGH20CA linear guide | [HIWIN equivalent](https://hiwin.com/products/linear-guideways/) — generic 20mm profile linear rail system |
 | EPDM gasket material | [McMaster-Carr](https://www.mcmaster.com/epdm-rubber-sheets) — closed-cell EPDM, UV-stable |
 | Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |

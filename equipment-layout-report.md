@@ -8,19 +8,19 @@ The optical cone from the pinhole narrows as it approaches the pinhole wall and
 widens as it approaches the film plane. Any equipment placed inside the cone casts
 a shadow on the film plane, producing an unexposed void in the image.
 
-**Solution:** Reduce the active film plane from the full 5,893 mm container width
-to a 4,499 mm span (X=150–4,649mm). This creates two **provably shadow-free end
+**Solution:** Reduce the active film plane from the full 5893mm container width
+to a 4499mm span (X=150–4649mm). This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone.
 
 The right end zone contains a 2×2 IBC stack (including a dedicated 600L waste
 IBC), which frees the left end zone entirely — only the light trap drum remains.
-The right zone boundary sits at X=4,649mm, giving a 4,499mm active film plane
+The right zone boundary sits at X=4649mm, giving a 4499mm active film plane
 (rev 5, 2026-05-06).
 
 ### Optical Cone (rev 6 geometry)
 
-The pinhole is centered on the film plane at X=2,399mm. At depth Y from the
+The pinhole is centered on the film plane at X=2399mm. At depth Y from the
 pinhole wall, the cone boundaries are:
 
 ```
@@ -28,23 +28,23 @@ X_left(Y)  = 2,399 − 2,249 × Y/2,262    [left cone boundary]
 X_right(Y) = 2,399 + 2,250 × Y/2,262    [right cone boundary]
 ```
 
-At the film plane (Y=2,262mm): X_left=150mm, X_right=4,649mm — exactly the
-film plane edges. The cone never extends beyond these X values at any depth ≤ 2,262mm.
+At the film plane (Y=2262mm): X_left=150mm, X_right=4649mm — exactly the
+film plane edges. The cone never extends beyond these X values at any depth ≤ 2262mm.
 
 ### Zone Definitions
 
 | Zone | X range | Shadow-free? | Equipment assigned |
 |------|---------|--------------|--------------------|
 | **Left end zone** | 0–150mm | YES at all depths | Light trap drum, hinged panel (stepped) |
-| **Optical zone** | 150–4,649mm | NO | Film plane, rails, processing tray, perimeter walkway |
-| **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
+| **Optical zone** | 150–4649mm | NO | Film plane, rails, processing tray, perimeter walkway |
+| **Right end zone** | 4649–5893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
 
 **Shadow-free proof:**
-- Left zone (X=0–150): cone left boundary ≥ 150mm at all depths Y ≤ 2,262mm.
+- Left zone (X=0–150): cone left boundary ≥ 150mm at all depths Y ≤ 2262mm.
   All left-zone equipment (light trap drum, hinged panel) stays within zone. ✓
-- Right zone (X=4,649–5,893): cone right boundary ≤ 4,649mm at all depths Y ≤ 2,262mm.
-  All right-zone equipment has X_left ≥ 4,674mm — well inside the zone. ✓
+- Right zone (X=4,649–5,893): cone right boundary ≤ 4649mm at all depths Y ≤ 2262mm.
+  All right-zone equipment has X_left ≥ 4674mm — well inside the zone. ✓
 - Pinhole wall (Y=0): cone collapses to a single point (the pinhole). ✓
 
 ---
@@ -56,23 +56,23 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). On sliding carriage (300mm travel for transport). |
-| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1,181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
+| Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
 
 | Item | X (mm) | H (mm) | Notes |
 |------|--------|--------|-------|
-| Evaporative cooler | 700–1,300 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1,900mm |
+| Evaporative cooler | 700–1,300 | ground | 12V DC 80W; ground-placed outside, flex duct to wall stub at Z=1900mm |
 | Electrical panel | 1,600–1,900 | 900–1,500 | IP65, wall-mount (moved away from pinhole) |
 | Battery bank (2× 100Ah LiFePO4) | 1,600–2,100 | 0–500 | Wall-bracket below panel |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Pump manifold (3 pumps: P-01, P-02, P-04) | 2,400–2,700 | 200–600 | Wall-bracket |
-| Cable trunking | Along wall face, H=1,800mm | — | Full length |
+| Cable trunking | Along wall face, H=1800mm | — | Full length |
 
-### 2.3 Optical Zone — X=150–4,649mm
+### 2.3 Optical Zone — X=150–4649mm
 
 Rail slots in floor/ceiling at X=150 and X=4,649. Film plane frame
-spans this zone at depth Y=2,262mm (nominal far position).
+spans this zone at depth Y=2262mm (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
@@ -81,10 +81,10 @@ spans this zone at depth Y=2,262mm (nominal far position).
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 
-### 2.4 Right End Zone — X=4,649–5,893mm (shadow-free at all depths)
+### 2.4 Right End Zone — X=4649–5893mm (shadow-free at all depths)
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
-columns at X=4,674mm (25mm clearance from zone boundary), separated by a
+columns at X=4674mm (25mm clearance from zone boundary), separated by a
 270mm plumbing corridor between near and far columns. IBC wall clearance
 is 30mm on each side.
 
@@ -120,16 +120,16 @@ cone in either the plan (top-down) or elevation (side) view.
 
 In the previous colonnade layout, IBCs were placed side-by-side in the X direction
 at shallow Yd depth. In the current layout (rev 5) the entire right end zone is
-X-clear from X=4,649mm to the end wall — all four tanks occupy the same X column
+X-clear from X=4649mm to the end wall — all four tanks occupy the same X column
 in a 2×2 arrangement (two columns along Y, two tiers high).
 
 | Arrangement | X span used | Max Y depth |
 |-------------|------------|------------|
-| Old (side-by-side X) | 2,400 mm | 1,116 mm |
-| **New (Y-stacked, right-justified)** | **1,219 mm** | **2,302 mm** |
+| Old (side-by-side X) | 2400mm | 1116mm |
+| **New (Y-stacked, right-justified)** | **1219mm** | **2302mm** |
 
-The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
-the far end wall. The zone itself is only 1,244mm wide (X=4,649–5,893mm), so the
+The 2×2 stack gives a 1219mm X footprint (= IBC cage width), right-justified to
+the far end wall. The zone itself is only 1244mm wide (X=4649–5893mm), so the
 IBCs fit with 25mm clearance on the zone boundary side. The two columns are
 separated by a 270mm plumbing corridor (replacing the former 25mm gap), with
 30mm wall clearance on each side. The four-IBC configuration eliminates the need
@@ -146,9 +146,9 @@ for transport and removable access panels for the lower IBC drain valves.
 | Item | Specification |
 |------|--------------|
 | Frame material | 50×50×3mm RHS mild steel |
-| Platform height | 1,060mm (lower IBC height 1,010mm + 50mm clearance plate) |
-| Frame footprint | 2,362mm × 1,284mm portal frame — wall-to-wall width via brackets for lateral restraint, 1,284mm depth. Corridor uprights at inner IBC edges define the 270mm plumbing corridor between columns |
-| Total loaded height | 2,020mm (IBC ×2) — 368mm ceiling clearance ✓ |
+| Platform height | 1060mm (lower IBC height 1010mm + 50mm clearance plate) |
+| Frame footprint | 2362mm × 1284mm portal frame — wall-to-wall width via brackets for lateral restraint, 1284mm depth. Corridor uprights at inner IBC edges define the 270mm plumbing corridor between columns |
+| Total loaded height | 2020mm (IBC ×2) — 368mm ceiling clearance ✓ |
 | Lashing points | 25mm D-ring, 4× per tier (8× total), welded at frame corners |
 | Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |
 | Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
@@ -161,11 +161,11 @@ for transport and removable access panels for the lower IBC drain valves.
 
 | IBC type | H (mm) | Stacked pair | Ceiling clearance | Transport safe? |
 |----------|--------|--------------|-------------------|----------------|
-| 1,000L standard | 1,163 | 2,326mm | 62mm | NO |
-| **600L** | **1,010** | **2,020mm** | **368mm** | **YES** |
-| 800L | 1,116 | 2,232mm | 156mm | Marginal |
+| 1,000L standard | 1,163 | 2326mm | 62mm | NO |
+| **600L** | **1,010** | **2020mm** | **368mm** | **YES** |
+| 800L | 1,116 | 2232mm | 156mm | Marginal |
 
-**Stacking two 600L IBCs gives 2,020mm height — 368mm ceiling clearance**, safe
+**Stacking two 600L IBCs gives 2020mm height — 368mm ceiling clearance**, safe
 for road transport with full load.
 
 **Raw material suppliers:**
@@ -187,7 +187,7 @@ The left end zone contains only the light trap drum and the hinged panel — no
 floor-mounted equipment, no dolly tracks, no bridge sections.
 
 This elimination removes all V-groove roller tracks (permanent and bridge sections)
-from the container floor, and frees the full container width (2,362mm) as
+from the container floor, and frees the full container width (2362mm) as
 unobstructed egress at the cargo door end.
 
 ### 6.1 Stepped Panel and Sliding Carriage (Transport Mode)
@@ -195,9 +195,9 @@ unobstructed egress at the cargo door end.
 The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756
 and Yd=1,606–2,362) and 120mm thick at the center zone (Yd=756–1,606) where the
 light trap drum is mounted. The entire panel slides 300mm in the X direction on
-HGR20 linear rails mounted to both container walls (Yd≈30mm and Yd≈2,332mm) at
+HGR20 linear rails mounted to both container walls (Yd≈30mm and Yd≈2332mm) at
 floor and ceiling level — 4 rails total, 8 HGH20CA carriage blocks. The left
-(hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall);
+(hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall);
 the right (latch) side rides directly on carriage blocks attached to the panel
 frame.
 
@@ -218,8 +218,8 @@ sealed when the panel is in the operational (camera-ready) position.
 | # | Light path | Seal method |
 |---|-----------|-------------|
 | 1 | **Panel perimeter → door frame** | Existing: 20mm EPDM gasket in aluminum channel, compressed by 4× Southco C2-33 cam latches against fixed door frame at X=0. Unchanged from original design. |
-| 2 | **Left carriage beam slot** | The fixed door frame has a vertical slot (~70×2,400mm) for the carriage beam. Sealed by doubled nylon brush strip (bristles inward from both sides) bonded to the frame slot edges. The brush strip wipes against the beam during sliding and provides a light-tight seal in the locked position. No straight-line path through doubled bristles. |
-| 3 | **Right guide slot** | Matching vertical slot (~70×2,400mm) on the latch side for the right-side carriage blocks and panel frame edge. Same doubled nylon brush strip treatment as the left slot. |
+| 2 | **Left carriage beam slot** | The fixed door frame has a vertical slot (~70×2400mm) for the carriage beam. Sealed by doubled nylon brush strip (bristles inward from both sides) bonded to the frame slot edges. The brush strip wipes against the beam during sliding and provides a light-tight seal in the locked position. No straight-line path through doubled bristles. |
+| 3 | **Right guide slot** | Matching vertical slot (~70×2400mm) on the latch side for the right-side carriage blocks and panel frame edge. Same doubled nylon brush strip treatment as the left slot. |
 | 4 | **Rail channels at floor/ceiling (×4)** | Each HGR20 rail passes through the fixed door frame at floor or ceiling level. A 10mm closed-cell neoprene compression pad (50×30mm) is bonded to the frame face around each rail penetration. When the panel is locked at X=0, the carriage block housing compresses against this pad, closing the rail channel. In transport position, the pads are uncompressed (light seal not required). |
 | 5 | **Panel edge-to-wall clearance gaps** | The panel requires ~10mm clearance to each container wall for sliding. Two vertical strips of 15mm closed-cell EPDM (self-adhesive, full panel height) are bonded to the fixed door frame inner face at each side, positioned to compress against the panel edge when the cam latches engage. These strips deflect during sliding and spring back to seal in the locked position. |
 
@@ -234,7 +234,7 @@ replaced annually.
 
 1. Release cam latches, swing panel open 180°
 2. Disconnect flex duct from wall stub collar (release hose clamp). Replace weatherproof cap on wall stub. Drain cooler reservoir
-3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway wide section at X=1,200–1,800mm. Stow flex duct alongside cooler
+3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway wide section at X=1200–1800mm. Stow flex duct alongside cooler
 4. Secure with 2× ratchet straps to nearest cantilever bracket arms
 5. Release toggle clamps, slide panel inward 300mm
 6. Lock panel at transport position, close container doors
@@ -243,13 +243,13 @@ replaced annually.
 
 The evaporative cooler (Portacool Jetstream 110 or equivalent, ~600×350×800mm, ~20 kg dry) sits on the ground outside the container during operation, connected to the wall penetration via Ø200mm flex duct. It must be stowed inside the container for transport.
 
-**Stowage position:** On the near walkway grating in the wide section, X=1,200–1,800mm, Yd=0–500mm. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 350mm cooler depth with 150mm clearance — no overhang into the processing tray zone.
+**Stowage position:** On the near walkway grating in the wide section, X=1200–1800mm, Yd=0–500mm. The cooler sits on a 12mm plywood base plate (600×350mm) that distributes the load across the grating and prevents the housing from catching in the grate openings. The wide section (500mm) fully contains the 350mm cooler depth with 150mm clearance — no overhang into the processing tray zone.
 
 **Securing:** Two 25mm ratchet straps loop over the cooler and hook to the nearest cantilever bracket arms. Two aluminum angle cleats (25×25×3mm, 100mm long) screwed to the base plate prevent lateral sliding.
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | X=1,200–1,800mm, Yd=0–500mm (near walkway wide section) |
+| Stowage zone | X=1200–1800mm, Yd=0–500mm (near walkway wide section) |
 | Cooler footprint | 600×350mm (long axis along X) |
 | Cooler height on grating | 800mm (top at Z=900mm) |
 | Weight (dry) | ~20 kg |
@@ -267,20 +267,20 @@ All services route along the pinhole wall face (Y=0). No conduit, pipe, or cable
 runs through the optical zone.
 
 **Plumbing manifold:** 3-pump distribution header (P-01 Blue spray bar, P-02 Brown
-recycle, P-04 tray sump pickup) wall-mounted at X=2,400–2,700mm, H=200–600mm.
+recycle, P-04 tray sump pickup) wall-mounted at X=2400–2700mm, H=200–600mm.
 P-03 (waste evacuation) is mounted separately in the IBC plumbing corridor on
 the X4 waste drain run, minimizing pipe length to the external drain port.
 Hose runs drop vertically from manifold to IBCs in the right end zone. Maximum
 hose run: ~5.5m (manifold to Brown IBC at Yd=538mm — along pinhole wall then
 along right end wall).
 
-**Electrical conduit:** 25mm PVC trunking, horizontal at H=1,800mm, along the
+**Electrical conduit:** 25mm PVC trunking, horizontal at H=1800mm, along the
 full container length on the pinhole wall face. Branch drops at each circuit
 termination. All circuits ≤ 9m — within voltage-drop budget for 12V DC with
 10 AWG wire.
 
 **Solar inlet + shore power:** NEMA 5-15R weatherproof inlet on exterior of
-pinhole wall at X=2,399mm (pinhole side), H=400mm.
+pinhole wall at X=2399mm (pinhole side), H=400mm.
 
 ---
 
@@ -302,15 +302,15 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 ## 9. Egress Safety Assessment
 
 When the hinged panel is opened 180° from the inside, the light trap drum (mounted
-in the panel center zone, Yd=806–1,556mm) swings outward with the panel. With the
+in the panel center zone, Yd=806–1556mm) swings outward with the panel. With the
 waste drums eliminated (rev 5), the entire left end zone floor is clear.
 
 ### 9.1 Egress Gap
 
 | Measurement | Value |
 |-------------|-------|
-| **Clear passage width** | **2,362mm (93") — full container width** |
-| At door frame (X=0) | ~2,362mm (full frame opening) |
+| **Clear passage width** | **2362mm (93") — full container width** |
+| At door frame (X=0) | ~2362mm (full frame opening) |
 | Obstructions in egress path | None |
 
 **Human factors reference:**
@@ -319,7 +319,7 @@ waste drums eliminated (rev 5), the entire left end zone floor is clear.
 - Standard doorway minimum (IBC/IRC): 762mm (30")
 - Emergency egress minimum: 610mm (24")
 
-The 2,362mm passage exceeds all minimums by more than 3×. No equipment narrows
+The 2362mm passage exceeds all minimums by more than 3×. No equipment narrows
 the egress path at any point. The elimination of waste drums from the left end
 zone provides completely unobstructed access to the cargo doors.
 
@@ -333,12 +333,12 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 | Fan B exhaust duct | Panel-mounted, Yd=1,959, H=1,800 | Moves with panel |
 | Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 300mm slide + 180° swing |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
-| Electrical panel | X=2,050–2,350 | No — 1,430mm inboard |
-| Battery bank | X=2,050–2,550 | No — 1,430mm inboard |
-| Pump manifold | X=2,600–2,900 | No — 1,980mm inboard |
+| Electrical panel | X=2,050–2,350 | No — 1430mm inboard |
+| Battery bank | X=2,050–2,550 | No — 1430mm inboard |
+| Pump manifold | X=2,600–2,900 | No — 1980mm inboard |
 | Water lines | Pinhole wall (Yd=0), X=2,400+ | No — far inboard |
 
-The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.
+The light trap drum (750mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.
 
 **Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
 
@@ -348,19 +348,19 @@ The light trap drum (750mm dia, center ~1,181mm from hinge axis) sweeps through 
 
 | Parameter | Old (colonnade) | New (end-zone) |
 |-----------|----------------|----------------|
-| Equipment zone concept | Yd=0–1,220mm depth band | X=0–150mm and X=4,649–5,893mm end zones |
-| Pinhole position | X=2,946mm | **X=2,399mm** (centered on active FP) |
-| Active film plane width | 5,893mm | **4,499mm** (X=150–4,649mm) |
-| Rail positions | X=200mm, X=5,693mm | **X=150mm, X=4,649mm** |
-| Rail span | 5,493mm | **4,499mm** |
+| Equipment zone concept | Yd=0–1220mm depth band | X=0–150mm and X=4649–5893mm end zones |
+| Pinhole position | X=2946mm | **X=2399mm** (centered on active FP) |
+| Active film plane width | 5893mm | **4499mm** (X=150–4649mm) |
+| Rail positions | X=200mm, X=5693mm | **X=150mm, X=4649mm** |
+| Rail span | 5493mm | **4499mm** |
 | Max swing angle | 20.3° | **25.7°** |
-| Blue IBCs (×2) | Left side, X=100–1,319mm | Right end zone, X=4,674mm, 2×2 stack top tier |
-| Brown IBC | Right side, X=4,674mm | Right end zone, X=4,674mm, 2×2 stack bottom near |
-| Waste IBC | — (55-gal drums) | **Right end zone, X=4,674mm, 2×2 stack bottom far** |
-| 55-gal drums | Right side, X=3,900mm | **Eliminated — waste via IBC-4 in right end zone** |
-| Evap cooler | X=1,380mm (near optical zone) | **Ground-placed outside; duct penetration at Yd=0, X=1,000mm** |
+| Blue IBCs (×2) | Left side, X=100–1319mm | Right end zone, X=4674mm, 2×2 stack top tier |
+| Brown IBC | Right side, X=4674mm | Right end zone, X=4674mm, 2×2 stack bottom near |
+| Waste IBC | — (55-gal drums) | **Right end zone, X=4674mm, 2×2 stack bottom far** |
+| 55-gal drums | Right side, X=3900mm | **Eliminated — waste via IBC-4 in right end zone** |
+| Evap cooler | X=1380mm (near optical zone) | **Ground-placed outside; duct penetration at Yd=0, X=1000mm** |
 | Items in optical cone | 0 (colonnade already fixed) | **0** ✓ |
-| Shadow-free proof | Depth-limited (max Yd=1,220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
+| Shadow-free proof | Depth-limited (max Yd=1220mm) | **Geometry-limited (exact cone fit at film plane edges)** |
 
 ---
 

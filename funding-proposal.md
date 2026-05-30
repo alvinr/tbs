@@ -20,7 +20,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4,499 × 2,388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (2.17mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active 4499 × 2388mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
@@ -142,7 +142,7 @@ A 12-month build and deployment program:
 Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
-50 cyanotype prints on cotton muslin, each approximately 4,499 × 2,388mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately 4499 × 2388mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
@@ -168,10 +168,10 @@ My practice since has moved between classical portraiture and abstract color in 
 ### Camera Specification Summary
 | Parameter | Value |
 |-----------|-------|
-| Container | 20ft ISO standard (6,058 × 2,438 × 2,591mm exterior) |
-| Focal length | 2,362 mm |
-| Image plane (active) | 4,499 × 2,388 mm (~14'9" × 7'10") |
-| Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
+| Container | 20ft ISO standard (6,058 × 2438 × 2591mm exterior) |
+| Focal length | 2362mm |
+| Image plane (active) | 4499 × 2388mm (~14'9" × 7'10") |
+| Container interior | 5893 × 2388mm (~19'4" × 7'10") |
 | Image area | ~116 sq ft |
 | Optimal pinhole | Ø2.17mm (Rayleigh formula, λ=550nm) |
 | f-number | f/1088 |

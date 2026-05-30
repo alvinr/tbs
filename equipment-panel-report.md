@@ -5,9 +5,9 @@
 ## 1. Purpose
 
 The equipment panel is an 18mm marine plywood board mounted vertically in the
-IBC plumbing corridor, perpendicular to the sealed end wall at X=5,000mm. It
-spans the full 270mm corridor width (Yd=1,046–1,316mm) and 2,060mm in height
-(Z=200–2,260mm). All pumps, filters, the pressure accumulator, diverter valves,
+IBC plumbing corridor, perpendicular to the sealed end wall at X=5000mm. It
+spans the full 270mm corridor width (Yd=1046–1316mm) and 2060mm in height
+(Z=200–2260mm). All pumps, filters, the pressure accumulator, diverter valves,
 and isolation valves mount on this single panel, concentrating the entire
 water-handling system in one accessible location within the IBC zone.
 
@@ -20,7 +20,7 @@ The panel serves three functions:
    connections, and valve positions are organized on one face, minimizing pipe
    runs and simplifying maintenance.
 3. **Accessibility** — the panel faces the open end of the container (-X
-   direction). The operator approaches from the right walkway (X=4,329–4,629mm)
+   direction). The operator approaches from the right walkway (X=4329–4629mm)
    and reaches into the 270mm corridor to access valves and pump switches.
 
 ---
@@ -30,12 +30,12 @@ The panel serves three functions:
 | Parameter | Value |
 |-----------|-------|
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
-| Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
+| Face dimensions | 270mm wide (Yd) × 2060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Panel face X position | 5,000mm (equipment protrudes toward cargo door, -X) |
+| Panel face X position | 5000mm (equipment protrudes toward cargo door, -X) |
 | Bottom edge Z | 200mm (100mm above walkway deck) |
-| Top edge Z | 2,260mm (128mm below ceiling at Z=2,388mm) |
-| Corridor width | 270mm (Yd=1,046–1,316mm, between near and far IBC columns) |
+| Top edge Z | 2260mm (128mm below ceiling at Z=2388mm) |
+| Corridor width | 270mm (Yd=1046–1316mm, between near and far IBC columns) |
 | Mounting | L-brackets to IBC stacking frame uprights, 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
@@ -49,7 +49,7 @@ zone above, with equipment arranged in columns for pipe routing efficiency.
 **Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
 
-### 3.1 Filter Skid — Z=200–1,280mm
+### 3.1 Filter Skid — Z=200–1280mm
 
 Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a
 slotted angle frame. The housings stack vertically with 30mm gaps between them.
@@ -84,7 +84,7 @@ integrated bracket. 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer
 connects P-02 output to the unit inlet. See
 [Water System Report](water-system-report.md) §3.2 for sizing rationale.
 
-### 3.2 Pump Zone — Z=1,120–1,960mm
+### 3.2 Pump Zone — Z=1120–1960mm
 
 Five Shurflo 2088 pumps in a 2-column layout above the filter stack:
 
@@ -107,13 +107,13 @@ the near IBC column (Blue IBC-1/IBC-2 and tray sump respectively).
 **Right column** (Yd=143–270mm, far IBC side): P-02, P-03, and P-05 serve the
 Brown and Waste circuits from the far IBC column.
 
-### 3.3 Accumulator — Z=1,746–1,896mm
+### 3.3 Accumulator — Z=1746–1896mm
 
 | Parameter | Value |
 |-----------|-------|
 | Model | SeaFlo or equivalent, 0.75L (23.5 oz) |
 | Dimensions | 127mm OD × 150mm length |
-| Position | Left column, above P-04 (Z=1,746mm) |
+| Position | Left column, above P-04 (Z=1746mm) |
 | Port | 1/2" NPT, bottom |
 | Function | Smooths P-01 pump cycling, maintains pressure when pump is off |
 
@@ -136,7 +136,7 @@ pump, providing steady flow to the spray bar.
 | BV-08 | 1/2" | P-03 suction | Waste IBC-4 drain-out isolation |
 
 BV-02 is the primary operator-controlled valve. It is mounted on the pinhole
-wall (Yd=0) at X=2,399mm, Z=900mm — waist height from the walkway deck,
+wall (Yd=0) at X=2399mm, Z=900mm — waist height from the walkway deck,
 directly in front of the operator during spray bar wash passes.
 
 ### 4.2 Diverter Valves (3-Way)
@@ -266,7 +266,7 @@ panel and allows gravity to assist with priming.
 
 The maximum protrusion is 130mm (filter housings). Combined with the 18mm panel
 thickness, the total X footprint is 148mm. The walkway inner edge is at
-X=4,329mm — leaving 653mm clear between the walkway and the nearest protruding
+X=4329mm — leaving 653mm clear between the walkway and the nearest protruding
 component.
 
 ---
@@ -284,9 +284,9 @@ Pipe crossings use the gap-break method (rear pipe broken at crossing) for pipes
 of different system colors, and the bridge-arc method for same-color crossings.
 
 Pipes enter and exit the panel zone at the left and right panel edges:
-- **Left edge** (Yd=1,046mm, near wall side) — Blue IBC suction, Blue discharge
+- **Left edge** (Yd=1046mm, near wall side) — Blue IBC suction, Blue discharge
   riser to pinhole wall
-- **Right edge** (Yd=1,316mm, far wall side) — Brown/Waste IBC connections,
+- **Right edge** (Yd=1316mm, far wall side) — Brown/Waste IBC connections,
   external drain routing
 
 ---
@@ -306,7 +306,7 @@ for the full drawing set.
 
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
-| 1 | Marine plywood panel | 18mm BS 1088, 270×2,060mm | 1 | $40–$65 |
+| 1 | Marine plywood panel | 18mm BS 1088, 270×2060mm | 1 | $40–$65 |
 | 2 | Shurflo 2088-554-144 pump | 12VDC, 3.5 GPM, 45 PSI, self-priming diaphragm | 5 | $275–$350 |
 | 3 | Shurflo pump mounting bracket | Stainless steel, for 2088 series | 5 | $40–$60 |
 | 4 | Pressure accumulator (ACC-01) | 0.75L (23.5 oz), 1/2" NPT port | 1 | $25–$40 |

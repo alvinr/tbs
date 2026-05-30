@@ -65,11 +65,11 @@ WALL FRAME (fixed, welded to container)
 
 | Board angle | Tilt image shift | Notes |
 |-------------|-----------------|-------|
-| 1° | 41 mm | Very subtle — useful for fine composition |
-| 2° | 83 mm | ~3.5% of frame height |
-| 3° | 124 mm | ~5.2% — clearly visible on print |
-| 5° | 207 mm | ~8.7% — dramatic compositional shift |
-| 5.3° (max) | 220 mm | Mechanical hard stop |
+| 1° | 41mm | Very subtle — useful for fine composition |
+| 2° | 83mm | ~3.5% of frame height |
+| 3° | 124mm | ~5.2% — clearly visible on print |
+| 5° | 207mm | ~8.7% — dramatic compositional shift |
+| 5.3° (max) | 220mm | Mechanical hard stop |
 
 ---
 
@@ -92,8 +92,8 @@ Four M8 × 1.0 fine-pitch stainless screws, each terminating in a Grade-25 Ø8mm
 **Angular resolution:**
 
 ```
-Arm radius (pivot → ball contact):    130 mm
-Screw pitch:                          1.0 mm per turn
+Arm radius (pivot → ball contact):    130mm
+Screw pitch:                          1.0mm per turn
 Linear travel ÷ arm radius:           1/130 rad/mm = 0.0077°/mm
 Resolution per full turn:             arctan(1.0/130) = 0.44°
 Detents per turn (36-detent knob):    36

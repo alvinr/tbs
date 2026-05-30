@@ -25,7 +25,7 @@ Complete itemized list for building the Mini-TBS proof-of-concept camera (two-bo
 | Item | Qty | Supplier 1 | Price | Supplier 2 | Price | Notes |
 |------|-----|-----------|-------|-----------|-------|-------|
 | Aluminum beverage can | 1 | — | Free | — | Free | Empty, clean, dry. Use flat side wall. |
-| 1/32" (0.794 mm) drill bit | 1 | Home Depot (Milwaukee) | $3.97 | Ace Hardware | $4.49 | HSS twist drill. Buy 2 in case of breakage. |
+| 1/32" (0.794mm) drill bit | 1 | Home Depot (Milwaukee) | $3.97 | Ace Hardware | $4.49 | HSS twist drill. Buy 2 in case of breakage. |
 | Pin vise (hand drill chuck) | 1 | Home Depot | $5.97 | Amazon | $6.99 | Accepts 0–1/8" bits. Not a power drill. |
 | 400-grit sandpaper, 1 sheet | 1 | Home Depot | $1.28 | Auto parts store | $1.50 | For prepping aluminum surface |
 | 600-grit sandpaper, 1 sheet | 1 | Home Depot | $1.28 | Auto parts store | $1.50 | For deburring the drilled pinhole |
@@ -159,7 +159,7 @@ The leftover chemistry is enough for extended testing, workshops, or demonstrati
 4. **Watercolor paper:** Must be 100% cotton (rag), hot-press, 140 lb (300 gsm) minimum. Arches Aquarelle is the gold standard for cyanotype — widely available at Blick Art Materials and most art supply stores. No pre-treatment needed (unlike muslin, which requires pre-washing).
 
 5. **Substitutions:**
-   - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5 mm hole — usable but slower exposure)
+   - No pin vise? Use a sewing needle pushed through from behind (produces ~0.5mm hole — usable but slower exposure)
    - No foam brushes? A natural-hair watercolor brush or small paint roller works
    - No duct tape? Multiple layers of black electrical tape, though less durable
    - No foam-core board? Stiff cardboard from another box, doubled up

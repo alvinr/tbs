@@ -18,11 +18,11 @@ The pinhole is a geometric projector — it has no focal length in the lens sens
 
 | Movement | Effect on image |
 |----------|----------------|
-| Board tilt up (+α) | Image shifts upward on film (~207 mm per 5°) |
-| Board swing right (+β) | Image shifts right on film (~207 mm per 5°) |
+| Board tilt up (+α) | Image shifts upward on film (~207mm per 5°) |
+| Board swing right (+β) | Image shifts right on film (~207mm per 5°) |
 | Compound tilt + swing | Image shifts diagonally; introduces ~1.5% anamorphic keystone at 5° |
 
-At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm** on the film plane. On a 2,388 mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
+At f = 2362mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207mm** on the film plane. On a 2388mm tall film plane this is nearly 9% of the frame height — a very significant compositional tool.
 
 **No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
 
@@ -30,7 +30,7 @@ At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm*
 
 | | Front board tilt | Film plane tilt |
 |-|-----------------|-----------------|
-| Image shift | Yes — 207 mm per 5° | No (film moves, not image center) |
+| Image shift | Yes — 207mm per 5° | No (film moves, not image center) |
 | Keystone | Gentle (~1.5% at 5°) | Dramatic (Scheimpflug-style) |
 | Scale gradient | Uniform across field | Non-uniform (near edge stretched) |
 | Focus | Constant (pinhole) | Constant (pinhole) |
@@ -60,11 +60,11 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 | Board angle | Tilt image shift | Notes |
 |-------------|-----------------|-------|
-| 1° | 41 mm | Very subtle — useful for fine composition |
-| 2° | 83 mm | ~3.5% of frame height |
-| 3° | 124 mm | ~5.2% — clearly visible on print |
-| 5° | 207 mm | ~8.7% — dramatic compositional shift |
-| 5.3° (max) | 220 mm | Mechanical hard stop |
+| 1° | 41mm | Very subtle — useful for fine composition |
+| 2° | 83mm | ~3.5% of frame height |
+| 3° | 124mm | ~5.2% — clearly visible on print |
+| 5° | 207mm | ~8.7% — dramatic compositional shift |
+| 5.3° (max) | 220mm | Mechanical hard stop |
 
 ---
 

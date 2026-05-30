@@ -20,17 +20,17 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 | Parameter | Value |
 |-----------|-------|
-| Box dimensions | 18 × 18 × 16 inches (457 × 457 × 406 mm) |
+| Box dimensions | 18 × 18 × 16 inches (457 × 457 × 406mm) |
 | Supplier | U-Haul, Home Depot, Lowe's |
 | Cost | ~$4–5 |
 
 **Quantity needed:** 2 (one camera box, one prep box).
 
-**Orientation:** Pinhole on one 18 × 16" face. Film plane on the opposite 18 × 16" face. The 18-inch (457 mm) dimension becomes the focal length. The second box attaches at the film plane face to serve as the prep/coating area.
+**Orientation:** Pinhole on one 18 × 16" face. Film plane on the opposite 18 × 16" face. The 18-inch (457mm) dimension becomes the focal length. The second box attaches at the film plane face to serve as the prep/coating area.
 
 **Why this box:**
 
-- 457 mm focal length gives a practical f-number and ~10 min exposure in full sun
+- 457mm focal length gives a practical f-number and ~10 min exposure in full sun
 - 14 × 16" usable print area is large enough to be visually compelling
 - Standard item, universally available, inexpensive
 - Rigid enough when taped and reinforced
@@ -40,9 +40,9 @@ A small-scale proof of concept for the [Big Shoebox Project](../index.md). This 
 
 | Parameter | Value |
 |-----------|-------|
-| Box dimensions | 24 × 18 × 18 inches (610 × 457 × 457 mm) |
-| Focal length | 457 mm (same — use the 18" depth) |
-| Film plane | 24 × 18" (610 × 457 mm) |
+| Box dimensions | 24 × 18 × 18 inches (610 × 457 × 457mm) |
+| Focal length | 457mm (same — use the 18" depth) |
+| Film plane | 24 × 18" (610 × 457mm) |
 | Usable area | ~20 × 16" (~2.2 sq ft) |
 | Cost | ~$6–8 |
 
@@ -56,7 +56,7 @@ All derivations use the **Lord Rayleigh formula** for optimal pinhole diameter:
 
 $$d = 1.9 \sqrt{f \lambda}$$
 
-where *f* is focal length in mm and *λ* = 0.00055 mm (550 nm green light).
+where *f* is focal length in mm and *λ* = 0.00055mm (550 nm green light).
 
 **Source:** Rayleigh, J.W.S., "On Pin-hole Photography," *Philosophical Magazine*, Ser. 5, Vol. 31, 1891, pp. 87–99. Applied identically to the TBS-001 specification in the [Pinhole Optics Report](../pinhole-optics-report.md).
 
@@ -64,13 +64,13 @@ where *f* is focal length in mm and *λ* = 0.00055 mm (550 nm green light).
 
 | Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) | Derivation |
 |-----------|---------------|---------------------|------------|
-| Focal length (f) | 457 mm | 2,362 mm | Box depth / container width |
-| Rayleigh optimal d | 0.95 mm | 2.17 mm | 1.9 × √(f × 0.00055) |
-| Drill bit used | 1/32" (0.794 mm) | Laser-drilled SS | Closest Home Depot standard |
-| Actual pinhole Ø | ~0.80 mm | 2.17 mm | Drill bit through aluminum can |
+| Focal length (f) | 457mm | 2362mm | Box depth / container width |
+| Rayleigh optimal d | 0.95mm | 2.17mm | 1.9 × √(f × 0.00055) |
+| Drill bit used | 1/32" (0.794mm) | Laser-drilled SS | Closest Home Depot standard |
+| Actual pinhole Ø | ~0.80mm | 2.17mm | Drill bit through aluminum can |
 | f-number | f/575 | f/1088 | f / d |
-| Film plane | 406 × 457 mm | 4,499 × 2,388 mm | Box face / container face |
-| Usable image area | 356 × 406 mm | 4,499 × 2,388 mm | After mounting margins |
+| Film plane | 406 × 457mm | 4499 × 2388mm | Box face / container face |
+| Usable image area | 356 × 406mm | 4499 × 2388mm | After mounting margins |
 | Angle of view (diag.) | ~53° | ~56° | 2 × arctan(half-diag / f) |
 
 **Pinhole undersizing note:** The 1/32" drill bit produces a hole 16% smaller than the Rayleigh optimal. This means slightly less light throughput (longer exposure by ~10%) but slightly sharper image — the geometric blur circle is smaller while the diffraction blur increases only marginally. At this scale, the trade is favorable. (Renner, E., *Pinhole Photography*, 4th ed., Focal Press, 2009, Ch. 2.)
@@ -170,8 +170,8 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 
 **Procedure:**
 
-1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305 mm) along the depth axis and the 16" dimension (406 mm) across the width. The tray should sit flat on the prep box floor.
-2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333 mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69 mm above the floor).
+1. Place the Paterson tray inside the prep box, against the camera-box wall. Orient it with the 12" dimension (305mm) along the depth axis and the 16" dimension (406mm) across the width. The tray should sit flat on the prep box floor.
+2. Cut a foam-core board panel: approximately 17.5 × 13 inches (443 × 333mm). The board spans from the tray rim height to the camera box ceiling interior — it does not extend to the floor because the hinge is at the tray rim (69mm above the floor).
 3. **Hinge:** Attach the bottom edge of the backing board to the near rim of the tray (the rim closest to the camera box) using a full-width strip of duct tape, applied to both sides. The tape must wrap continuously around the rim — this is a permanent working hinge that will be folded repeatedly.
 4. **Folded-down position (prep):** The board lies flat, extending from the near rim of the tray over the tray and into the remaining prep space. The board clears the tray because the hinge is at the rim height. This is the position for mounting coated paper.
 5. **Exposure position:** Fold the board up from the tray hinge so it swings into the camera box. The board stands upright inside the camera box with the paper facing the pinhole. Use a binder clip or duct tape tab at the top edge to hold it upright.
@@ -182,13 +182,13 @@ A standard Paterson 12×16" developing tray (PTP326) sits inside the prep box, a
 **Materials:**
 - Aluminum beverage can (empty, clean, dry)
 - 400-grit and 600-grit sandpaper
-- 1/32" (0.794 mm) drill bit
+- 1/32" (0.794mm) drill bit
 - Pin vise (hand-held chuck for small drill bits — ~$5 at Home Depot)
 
 **Procedure:**
 
 1. Cut a 3 × 3 inch piece from the flat side wall of an aluminum beverage can using scissors. Avoid the curved top and bottom.
-2. Sand both sides with 400-grit sandpaper to remove the printed coating and any burrs. The aluminum should be clean bare metal, approximately 0.1 mm thick.
+2. Sand both sides with 400-grit sandpaper to remove the printed coating and any burrs. The aluminum should be clean bare metal, approximately 0.1mm thick.
 3. Place the aluminum on a firm surface (hardwood or a book — not glass, which can chip the bit).
 4. Insert the 1/32" drill bit into the pin vise. Center the bit on the aluminum piece.
 5. **Drill slowly** — rotate the pin vise by hand with light pressure. Do not use a power drill (the bit will wander and the hole will be oversized or oblong).
@@ -213,7 +213,7 @@ A simple flap shutter:
 
 ### 4.6 Arm Sleeves (on Prep Box End Face)
 
-The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230 mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
+The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for coating paper in the tray, checking tack-dry, and mounting paper onto the backing board — all without opening the box or breaking the light seal. This is what makes the Mini-TBS usable in the field without a darkroom.
 
 **Materials:**
 - Black opaque fabric (cotton knit from a black t-shirt works well)
@@ -222,13 +222,13 @@ The armholes are on the prep box end face — the operator's face. They are cent
 
 **Procedure** (see armhole detail in the engineering drawing):
 
-1. Cut two armholes in the prep box end face, each approximately 4 inches (102 mm) in diameter. Space them 9 inches (230 mm) apart center-to-center, centered on the face. Use a compass to trace the circle, then cut with a box cutter. Sand or trim any rough edges — the fabric will fold over this edge.
-2. Cut two sleeve tubes from black fabric: each approximately 18 inches (450 mm) long and 6 inches in diameter (circumference ~19 inches). A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
+1. Cut two armholes in the prep box end face, each approximately 4 inches (102mm) in diameter. Space them 9 inches (230mm) apart center-to-center, centered on the face. Use a compass to trace the circle, then cut with a box cutter. Sand or trim any rough edges — the fabric will fold over this edge.
+2. Cut two sleeve tubes from black fabric: each approximately 18 inches (450mm) long and 6 inches in diameter (circumference ~19 inches). A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
 3. **Attach the sleeve to the wall (see detail cross-section):**
    - Insert the sleeve through the armhole from the outside.
-   - Pull approximately 2 inches (50 mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
+   - Pull approximately 2 inches (50mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
    - Tape the fold-back down with a full ring of 2-inch black duct tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
-   - Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25 mm). This prevents the sleeve from pulling away under tension.
+   - Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25mm). This prevents the sleeve from pulling away under tension.
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the tray, the backing board, and manipulate binder clips with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
@@ -405,8 +405,8 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 | Parameter | TBS-002 (Mini-TBS) | TBS-001 (Container) |
 |-----------|---------------|---------------------|
 | Camera body | Two moving boxes + photo tray | 20ft ISO shipping container |
-| Focal length | 457 mm | 2,362 mm |
-| Pinhole | 0.80 mm (drill bit) | 2.17 mm (laser-drilled SS) |
+| Focal length | 457mm | 2362mm |
+| Pinhole | 0.80mm (drill bit) | 2.17mm (laser-drilled SS) |
 | f-number | f/575 | f/1088 |
 | Image area | ~1.0 sq ft | ~116 sq ft |
 | Exposure (full sun) | ~10 min | ~30–45 min |

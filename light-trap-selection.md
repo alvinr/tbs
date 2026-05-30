@@ -6,9 +6,9 @@
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
-The cargo door end of TBS-001 is sealed by a stepped hinged panel (2,362mm wide × 2,388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756mm and Yd=1,606–2,362mm) and 120mm thick at the center zone (Yd=756–1,606mm) where the revolving light trap drum is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (2362mm wide × 2388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756mm and Yd=1606–2362mm) and 120mm thick at the center zone (Yd=756–1606mm) where the revolving light trap drum is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
 
-The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails, 8 carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. For transport, the panel slides inward 300mm — clearing the container doors for closure. Single-person operation, ~5 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6 for sliding carriage specification.
+The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails, 8 carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. For transport, the panel slides inward 300mm — clearing the container doors for closure. Single-person operation, ~5 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6 for sliding carriage specification.
 
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches (interior face)**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
@@ -28,7 +28,7 @@ Full drawings also appear in the [Engineering Diagrams](engineering-diagrams.md)
 | Requirement | Value |
 |-------------|-------|
 | Clear passage diameter | ≥ 700mm (minimum comfortable single-person access) |
-| Clear passage height | ≥ 1,900mm (full headroom) |
+| Clear passage height | ≥ 1900mm (full headroom) |
 | Light exclusion | 100% — no straight-line optical path from exterior to interior |
 | Durability | Repeated field deployment, transport vibration, outdoor exposure |
 | Operability | Single operator, no tools required to enter/exit |
@@ -47,7 +47,7 @@ Three categories of commercial product were reviewed against these requirements.
 |-----------|-------|
 | Typical product | Vario LT-800, Kaiser RD-800, Kindermann equivalents |
 | Clear diameter | 800mm |
-| Height | 2,000–2,200mm |
+| Height | 2000–2200mm |
 | Approximate price | USD $2,500–$3,500 (import from DE/NL; shipping +$400) |
 | Lead time | 4–8 weeks |
 
@@ -67,7 +67,7 @@ The Vario/Kaiser/Kindermann range is designed for permanent darkroom installatio
 |-----------|-------|
 | Product | Porta-Fab DK series modular panels with revolving door unit |
 | Clear diameter | 750–900mm (model-dependent) |
-| Height | 2,000mm |
+| Height | 2000mm |
 | Approximate price | USD $3,000–$4,500 (direct from supplier; custom spec required) |
 | Lead time | 6–10 weeks |
 
@@ -86,7 +86,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Parameter | Value |
 |-----------|-------|
 | Drum outer diameter | 750mm |
-| Drum height | 2,200mm (floor to upper bearing) |
+| Drum height | 2200mm (floor to upper bearing) |
 | Wall thickness | 3mm mild steel sheet, formed and welded |
 | Surface finish | Shot-blast + flat black powder coat (interior); grey oxide primer (exterior) |
 | Baffles | 4 × internal steel fins, 3mm × full height, at 45° angular offset |
@@ -113,7 +113,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | Item | Specification |
 |------|--------------|
 | Drum shell | 3mm mild steel, rolled to Ø750mm OD, seam-welded full height |
-| Drum height | 2,200mm |
+| Drum height | 2200mm |
 | Internal baffles | 4 × 3mm mild steel fins, welded radially from drum centerline to inner wall, at 22.5°/112.5°/202.5°/292.5° from horizontal — see Sheet 2 for baffle layout and light path |
 | Top cap | 5mm steel plate, flanged, welded |
 | Bottom cap | 5mm steel plate, flanged, with 75mm stub shaft for lower bearing |
@@ -148,7 +148,7 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
-| 3mm mild steel sheet (1,200 × 2,400mm) | Pacific Coast Steel — Santa Fe Springs CA | Hot-rolled A36; price ~$80/sheet; 2 sheets required |
+| 3mm mild steel sheet (1200 × 2400mm) | Pacific Coast Steel — Santa Fe Springs CA | Hot-rolled A36; price ~$80/sheet; 2 sheets required |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | ~$45–$65 each |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service centre | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back; ~$22 |
@@ -176,7 +176,7 @@ See Sheet 2 of the hinged panel engineering drawings for the baffle cross-sectio
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
 | Clear diameter | 800mm | 750–900mm | **750mm** |
-| Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
+| Height | 2000–2200mm | 2000mm | **2200mm** |
 | Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$950–$1,450** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
@@ -196,8 +196,8 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings 180° on its left-edge hinges, clearing all interior equipment. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
-- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1,606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
-- **Sliding carriage:** The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2,400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
+- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
+- **Sliding carriage:** The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
 - **Transport mode conversion** (single person, ~5 minutes): release cam latches → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 ---

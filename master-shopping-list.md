@@ -94,7 +94,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Structural & rails
 | Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
 |------|------|-----|-----------|-----------|-----------|
-| [Linear guide rail HGR20](https://www.amazon.com/s?k=HGR20+linear+rail+guide) | 2,200mm length | 4 | Amazon / Automation Overstock | [McMaster #5901T777](https://www.mcmaster.com/5901T777) | $45 |
+| [Linear guide rail HGR20](https://www.amazon.com/s?k=HGR20+linear+rail+guide) | 2200mm length | 4 | Amazon / Automation Overstock | [McMaster #5901T777](https://www.mcmaster.com/5901T777) | $45 |
 | [Rail carriage HGH20CA](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged block | 8 | Amazon / Automation Overstock | McMaster-Carr | $18 |
 | [Acme leadscrew ¾"-6](https://www.roton.com) | 8ft length | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K36](https://www.mcmaster.com/6289K36) | $95 |
 | [Acme nut, bronze ¾"-6](https://www.roton.com) | — | 4 | [Roton Products](https://www.roton.com) | [McMaster #6289K512](https://www.mcmaster.com/6289K512) | $12 |
@@ -127,7 +127,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Section total (manual): ~$2,362**
 
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5,893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Net change: +$12 for significantly greater geometric capability. Excl. fabrication, fasteners, and optional electric actuation.
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Net change: +$12 for significantly greater geometric capability. Excl. fabrication, fasteners, and optional electric actuation.
 
 ---
 
@@ -189,8 +189,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Unit price | Est. cost |
 |------|------|-----|----------|-----------|-----------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2,229×2,200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2,200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: 2229×2200mm, 50mm rims, pressed sump well (150×100×20mm) | 1 job | Local sheet metal shop | $450–$850 | $450–$850 |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for slope support, 2200mm long | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | $40–$75 |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Sump pickup, prevents debris, maintains prime | 1 | Amazon | $15–$25 | $20 |
 | [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction from sump pickup over tray rim to pump manifold | 1 | Amazon | $12–$20 | $15 |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, center flange seal | 1 roll | McMaster-Carr | $15–$25 | $20 |
@@ -200,7 +200,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Spray bar assembly (gantry design)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3,859mm). 12mm aperture holes at 100mm c/c | 2 | Online Metals | $36–$56 |
+| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3859mm). 12mm aperture holes at 100mm c/c | 2 | Online Metals | $36–$56 |
 | [1" Schedule 40 PVC pipe, 10 ft](https://www.amazon.com/s?k=1+inch+schedule+40+PVC+pipe+10+ft) | Internal spray pipe (OD 33.4mm), close fit inside 34mm bore. 2mm holes drilled at each aperture | 2 | Home Depot / Amazon | $8–$12 |
 | [1" PVC end caps (Sch 40)](https://www.amazon.com/s?k=1+inch+PVC+end+cap+schedule+40) | Seal both ends of PVC spray pipe | 2 | Home Depot | $3 |
 | PVC cement + primer | Solvent-weld PVC pipe caps | 1 set | Home Depot | $8 |
@@ -285,7 +285,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Drum body and baffles
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 3mm mild steel sheet, 1,200×2,400mm | Hot-rolled A36 — drum shell and internal baffles | 2 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$160 |
+| 3mm mild steel sheet, 1200×2400mm | Hot-rolled A36 — drum shell and internal baffles | 2 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$160 |
 | 5mm steel plate (offcut) | Top and bottom drum caps, flanged | ~0.5m² | Pacific Coast Steel / Metal Supermarkets SoCal | ~$40 |
 | 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
 
@@ -331,7 +331,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | [HGR20 linear rail, 500mm](https://www.amazon.com/s?k=HGR20+linear+rail+500mm) | Both walls, floor + ceiling, X-direction | 4 | Amazon / Automation Overstock | ~$88 |
 | [HGH20CA carriage blocks](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged, 2 per rail | 8 | Amazon / Automation Overstock | ~$144 |
-| Carriage beam, 60×60×3mm SHS | 2,400mm tall, mild steel | 1 | Metal Supermarkets | ~$35 |
+| Carriage beam, 60×60×3mm SHS | 2400mm tall, mild steel | 1 | Metal Supermarkets | ~$35 |
 | Hinge mounting plates, 6mm steel | 220×80mm | 3 | Local fab | ~$30 |
 | Rail mounting brackets, 8mm angle | Both walls, floor + ceiling | 8 | Local fab | ~$64 |
 | [Destaco 207-U toggle clamps](https://www.amazon.com/s?k=Destaco+207-U+toggle+clamp) | 2 per position × 2 positions | 4 | Amazon / McMaster-Carr | ~$100 |
@@ -343,12 +343,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|----------|-----------|
 | 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Metal Supermarkets | ~$120 |
 | Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
-| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Left carriage beam slot, 2,400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
-| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Right guide slot, 2,400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
+| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Left carriage beam slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
+| [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Right guide slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
 | [EPDM gasket 20×15mm](https://www.mcmaster.com/8635K31) | ~9.5m | 1 | McMaster-Carr #8635K31 | ~$45 |
 | Neoprene backup strip, 10×10mm | Self-adhesive, ~9.5m | 1 | McMaster-Carr | ~$22 |
 | Neoprene rail channel pads, 10mm | 50×30mm, closed-cell, 4 rail penetrations | 4 | McMaster-Carr | ~$8 |
-| EPDM edge strips, 15mm | Self-adhesive, 2,400mm × 2 sides | 2 | McMaster-Carr | ~$18 |
+| EPDM edge strips, 15mm | Self-adhesive, 2400mm × 2 sides | 2 | McMaster-Carr | ~$18 |
 | Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr | ~$60 |
 | Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
 | Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end | 1 | Waytek Wire / McMaster-Carr | ~$35 |
@@ -363,15 +363,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Walkway sections (4 off)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4,459×300mm (with 1,474×500mm bump-out), far 4,459×300mm, right 2,362×300mm, left 2,362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
+| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
 | Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 14 | Local fab / Metal Supermarkets | ~$112–$175 |
 | Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery/slit zone. | 4 | Local fab / Metal Supermarkets | ~$72–$112 |
 | Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 14 | Metal Supermarkets | ~$31–$49 |
 | Reinforcing plates, 120×220×6mm mild steel | Wider plates behind each widened bracket (4-bolt pattern) | 4 | Metal Supermarkets | ~$16–$24 |
 | M12×60mm hex bolts, nuts, flat washers | Grade 8.8, galvanized. 3 per standard bracket (42) + 4 per widened bracket (16). | 58 | McMaster-Carr | ~$57–$87 |
 | Transition bearing plate, 40×500×5mm flat bar | Welded to bracket arm top at width transitions (X≈1,156 and X≈2,526). Both grating widths land on plate. | 2 | Metal Supermarkets | ~$5–$10 |
-| Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2,362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
-| M10 threaded rod, galvanized | 2,313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
+| Steel angle bearer, 25×25×5mm L-angle | Hot-dip galvanized. 2× 2362mm lengths (right walkway). | 2 | Metal Supermarkets | ~$20–$35 |
+| M10 threaded rod, galvanized | 2313mm long, grade 8.8. 10 rods (5 hanger pairs). | 10 | McMaster-Carr | ~$40–$60 |
 | Ceiling bracket plates, 100×60×6mm steel | Galvanized. 10 plates (1 per hanger). | 10 | Local fab | ~$20–$35 |
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |

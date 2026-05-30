@@ -135,7 +135,7 @@ The solar PV inputs, shore power inlet, and evaporative cooler DC output share a
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
 | DC output | 1 × Deutsch DT 2-pin bulkhead connector (Circuit E — evaporative cooler) |
 | Mounting | 4 × M6 bolts through plate, gasket, and wall |
-| Location | Pinhole wall, X ≈ 1,250–1,550mm (just left of EP) |
+| Location | Pinhole wall, X ≈ 1250–1550mm (just left of EP) |
 | Approximate cost | ~$55 (plate $15 + gasket $5 + hardware $5 + MC4 bulkheads $25 + DT bulkhead $5) |
 
 The panel face sits flush with the exterior wall surface. A 280×180mm cutout allows all connector bodies to protrude directly into the container interior — no cable gland or junction box is needed. PV cables route to the MPPT charge controller; AC cable routes to the shore charger; the DC output connector provides 12V power to the evaporative cooler during operation (Circuit E). The IP67 MC4 connectors, weatherproof NEMA inlet, and IP67 Deutsch DT connector, combined with the perimeter neoprene gasket, provide a fully sealed exterior face. See the power panel detail drawing below.
@@ -147,7 +147,7 @@ The panel face sits flush with the exterior wall surface. A 280×180mm cutout al
 ### 6.1 Two-Circuit Lighting Design
 TBS-001 requires two mutually exclusive lighting modes:
 
-- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width) at X≈600mm, X≈1,800mm, and X≈4,100mm, plus a strip on the inner drum face. Each strip runs from Yd=0 (pinhole wall) and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1,800mm; the other two stop at Yd≈2,100mm. Used during loading and development when photosensitive material is present. 15W, always available.
+- **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width) at X≈600mm, X≈1800mm, and X≈4100mm, plus a strip on the inner drum face. Each strip runs from Yd=0 (pinhole wall) and is shortened to stay clear of the optical cone at its X position: the near-door strip (X=600) stops at Yd≈1800mm; the other two stop at Yd≈2100mm. Used during loading and development when photosensitive material is present. 15W, always available.
 - **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
@@ -160,9 +160,9 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Power per panel | 20W |
 | Total power | 60W |
 | Luminous output | ~1,800 lumens per panel (5,400 lm total) |
-| Size | ~300 × 600 mm |
-| Mounting | Ceiling-mounted, centered across container width (Yd ≈ 1,181mm) |
-| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,800mm (evenly spaced along length) |
+| Size | ~300 × 600mm |
+| Mounting | Ceiling-mounted, centered across container width (Yd ≈ 1181mm) |
+| Positions | X ≈ 1000mm, X ≈ 2900mm, X ≈ 4800mm (evenly spaced along length) |
 | Circuit | G (10A fuse, 16 AWG) |
 | Approximate cost | ~$25 each, ~$75 total |
 
@@ -175,18 +175,18 @@ Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of
 |-----------|--------------|
 | Type | 12V DC SPST pull-cord ceiling switch, 6A rated |
 | Quantity | 2 |
-| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1,750mm (near electrical panel), ceiling height |
+| Position | Pinhole wall face (Yd ≈ 0), X ≈ 1750mm (near electrical panel), ceiling height |
 | Switch 1 | Circuit D — safelight (red). Cord labeled "RED" |
 | Switch 2 | Circuit G — white light. Cord labeled "WHITE" |
 | Wire | Inline on respective circuit, between fuse block and load |
 | Approximate cost | ~$8 each, ~$16 total |
 
-The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1,500mm above the walkway deck — reachable without stretching.
+The switches are positioned near the electrical panel, accessible from the near walkway. Pull-cord length is set so the cord hangs at approximately 1500mm above the walkway deck — reachable without stretching.
 
 ## 7. Wiring Specification
 
 ### 7.1 Main Enclosure
-IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2,050–2,350mm). Contains:
+IP65 weatherproof enclosure, 300 × 200 × 130mm, mounted on the interior pinhole wall face (Y=0, X≈2050–2350mm). Contains:
 - Victron MPPT controller (or external, hardwired)
 - Blue Sea 5026 12-circuit fuse block with busbars
 - Battery positive and negative busbars with 200A main fuse
@@ -216,7 +216,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
-- **Circuit B flex connector (panel-mounted exhaust fan):** Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2,200mm.
+- **Circuit B flex connector (panel-mounted exhaust fan):** Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2200mm.
 - **Circuit E exterior connector (evaporative cooler):** The evaporative cooler operates outside the container during sessions. Circuit E (14 AWG) routes from the fuse block along the ceiling trunking, down the pinhole wall to the external power panel interior face, and terminates at a Deutsch DT 2-pin bulkhead connector mounted in the panel face plate. On the exterior, a 1.5m 14 AWG 2-conductor cable with Deutsch DT 2-pin plugs at each end connects the panel to the cooler. The cable is disconnected and stowed inside the container for transport.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.

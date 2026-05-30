@@ -1524,7 +1524,7 @@ def sheet6():
     ax.add_patch(Rectangle((-wall_t, FH), FW + 2 * wall_t, wall_t,
                             fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
     ax.text(FW / 2, FH + wall_t / 2, "CONTAINER CEILING",
-            color=BG, fontsize=6, ha="center", va="center", **FONT, zorder=4)
+            color=BG, fontsize=5, ha="center", va="center", **FONT, zorder=4)
     # Left wall
     ax.add_patch(Rectangle((-wall_t, -wall_t), wall_t, FH + 2 * wall_t,
                             fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
@@ -1673,25 +1673,25 @@ def sheet6():
     # Leadscrew leader (from TL leadscrew)
     ls_mid_z = (FH - rail_h - carr_h - 200)
     leader(ax, RAIL_X_L + 10, ls_mid_z,
-           RAIL_X_L + 450, ls_mid_z + 200,
+           RAIL_X_L + 450, ls_mid_z - 200,
            "3/4\"-6 ACME\nLEADSCREW\n(one per corner)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Rod-end bearing leader (from TL bearing)
     leader(ax, fp_left + bearing_r, fp_top - bearing_r,
-           fp_left + 450, fp_top + 100,
+           fp_left + 450, fp_top - 150,
            "GIR25-DO ROD-END\nSPHERICAL BEARING\n(±45° all axes)",
            color=MECH, ha="left", fs=6.5, font=FONT)
 
     # Carriage leader (from TR carriage)
     leader(ax, RAIL_X_R + carr_w / 2, FH - rail_h - carr_h / 2,
-           RAIL_X_R + 450, FH - rail_h - carr_h / 2 + 50,
+           RAIL_X_R + 450, FH - rail_h - carr_h / 2 - 300,
            "HGH20CA\nCARRIAGE ×2\n(per corner)",
            color=MECH, ha="left", fs=6.5, font=FONT)
 
     # Rail leader (from TR ceiling rail)
     leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
-           RAIL_X_R + 450, FH + 50,
+           RAIL_X_R + 450, FH - 150,
            "HGR20 LINEAR RAIL\n2,200 mm (into page)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
@@ -1704,14 +1704,14 @@ def sheet6():
     # ── Dimensions ────────────────────────────────────────────────────────────
     # Container width (outermost)
     dim_line_h(ax, 0, FW, -180,
-               f"INTERIOR WIDTH  {L:,} mm", offset=10, col=DIM, fs=6.5)
+               f"INTERIOR WIDTH  {L:,} mm", offset=10, col=DIM, fs=6)
 
     # Rail span + end zones (inner row)
-    dim_line_h(ax, 0, RAIL_X_L, -340,
+    dim_line_h(ax, 0, RAIL_X_L, -300,
                f"{RAIL_X_L} mm", offset=10, col=DIM, fs=6)
-    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -340,
-               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, col=DIM, fs=7)
-    dim_line_h(ax, RAIL_X_R, FW, -340,
+    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -300,
+               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, col=DIM, fs=6)
+    dim_line_h(ax, RAIL_X_R, FW, -300,
                f"{FW - RAIL_X_R:,} mm", offset=10, col=DIM, fs=6)
 
     # Container height (left side)
@@ -1735,7 +1735,8 @@ def sheet6():
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
-                doc_id="TBS-FM01 · Film Plane Mechanism")
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.05)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet6.png"), bbox_inches="tight", facecolor=BG)

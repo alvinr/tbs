@@ -5,10 +5,10 @@
 ## 1. Purpose
 
 TBS-001's three-circuit water system requires four 600 L IBC totes arranged in a
-2×2 stack in the right end zone (X=4,674–5,893 mm) of the container. Two Blue supply
+2×2 stack in the right end zone (X=4674–5893mm) of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
 (IBC-4) sit on the bottom. A welded mild steel stacking frame supports the upper tier,
-restrains all four totes for transport, and maintains a 270 mm plumbing corridor
+restrains all four totes for transport, and maintains a 270mm plumbing corridor
 between the near and far columns for internal pipe routing, valves, and the equipment
 panel.
 
@@ -19,7 +19,7 @@ panel.
 - Maintain a central plumbing corridor for pipe routing and valve access
 - Provide access gates for bottom-tier drain valves
 - Enable external fill and drain without opening cargo doors
-- Fit within the 2,388 mm container ceiling height with adequate clearance
+- Fit within the 2388mm container ceiling height with adequate clearance
 
 ---
 
@@ -31,12 +31,12 @@ panel.
 |-----------|-------|
 | Model | Schutz Ecobulk MX 640 L (or equivalent US 48×40 composite tote) |
 | Capacity | 600 L (~158 US gal) usable per tote |
-| Overall dimensions | 1,219 × 1,016 × 1,010 mm (W × D × H) |
+| Overall dimensions | 1,219 × 1016 × 1010mm (W × D × H) |
 | Pallet format | US 48" × 40" composite |
-| Pallet base height | 168 mm (includes feet/runners) |
-| Cage upright tube | Ø25 mm |
-| Cage top rail | 25 mm OD |
-| Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185 mm above IBC base |
+| Pallet base height | 168mm (includes feet/runners) |
+| Cage upright tube | Ø25mm |
+| Cage top rail | 25mm OD |
+| Drain valve | DN50 butterfly valve, S60×6 thread, at Z=185mm above IBC base |
 | Fill cap | DN150 screw cap on top |
 | Tare weight | ~55 kg per tote |
 | Full weight (600 L) | ~655 kg per tote |
@@ -55,13 +55,13 @@ panel.
 
 | Parameter | Value |
 |-----------|-------|
-| Near column Yd | 30–1,046 mm (pushed to near/pinhole wall, 30 mm clearance) |
-| Far column Yd | 1,316–2,332 mm (pushed to far wall, 30 mm clearance) |
-| Column X range | 4,674–5,893 mm (right-justified to sealed end wall) |
-| Plumbing corridor | Yd=1,046–1,316 mm (270 mm gap between columns) |
-| Single IBC height | 1,010 mm |
-| Stacked height (2 totes + frame + mat) | 2,020 mm (totes) + 50 mm (frame beam) + 12 mm (rubber mat) = 2,082 mm |
-| Ceiling clearance | 306 mm (2,388 − 2,082 mm) |
+| Near column Yd | 30–1046mm (pushed to near/pinhole wall, 30mm clearance) |
+| Far column Yd | 1316–2332mm (pushed to far wall, 30mm clearance) |
+| Column X range | 4674–5893mm (right-justified to sealed end wall) |
+| Plumbing corridor | Yd=1046–1316mm (270mm gap between columns) |
+| Single IBC height | 1010mm |
+| Stacked height (2 totes + frame + mat) | 2020mm (totes) + 50mm (frame beam) + 12mm (rubber mat) = 2082mm |
+| Ceiling clearance | 306mm (2388 − 2082mm) |
 
 ---
 
@@ -69,9 +69,9 @@ panel.
 
 ### 3.1 General Arrangement
 
-The frame is a portal spine structure running along the 270 mm plumbing corridor,
+The frame is a portal spine structure running along the 270mm plumbing corridor,
 with cantilever platform beams extending into each IBC column to support the upper
-tier. Three bays along X (front/mid/back uprights at 642 mm centers) provide the
+tier. Three bays along X (front/mid/back uprights at 642mm centers) provide the
 structural grid. Wall brackets at the near and far container walls provide lateral
 restraint. The frame has no end posts in the X direction — IBCs are loaded from
 above via the corridor when the right walkway is removed.
@@ -80,13 +80,13 @@ above via the corridor when the right walkway is removed.
 
 | Parameter | Value |
 |-----------|-------|
-| Material | 50 × 50 × 3 mm RHS mild steel |
-| Footprint (X × Yd) | 1,284 × 2,362 mm (wall-to-wall, 3 bays along X) |
-| Total height | 2,070 mm (floor to top rail) |
-| Corridor uprights | 6 total (3 per side of corridor, at X=0/642/1,284 mm) |
-| Platform level | Z=1,010 mm (top of bottom-tier IBCs) |
-| Top rail level | Z=2,070 mm (top of stacked IBC cages + frame beam) |
-| Bay spacing | 642 mm (3 bays: front, mid, back) |
+| Material | 50 × 50 × 3mm RHS mild steel |
+| Footprint (X × Yd) | 1284 × 2362mm (wall-to-wall, 3 bays along X) |
+| Total height | 2070mm (floor to top rail) |
+| Corridor uprights | 6 total (3 per side of corridor, at X=0/642/1284mm) |
+| Platform level | Z=1010mm (top of bottom-tier IBCs) |
+| Top rail level | Z=2070mm (top of stacked IBC cages + frame beam) |
+| Bay spacing | 642mm (3 bays: front, mid, back) |
 | Wall brackets | At near and far container walls, at platform and top rail levels |
 | Bracket attachment | M12 anchor bolts with gusset plates, welded to frame |
 | Frame weight | ~90 kg |
@@ -94,14 +94,14 @@ above via the corridor when the right walkway is removed.
 
 ### 3.3 Platform
 
-The platform sits at Z=1,010 mm and supports the upper-tier IBCs.
+The platform sits at Z=1010mm and supports the upper-tier IBCs.
 
 | Parameter | Value |
 |-----------|-------|
-| Platform beams | 50 × 50 × 3 mm RHS, spanning each column width |
-| Cross-beams | 50 × 50 × 3 mm RHS bridging the plumbing corridor at platform and top rail levels |
-| Anti-slip mat | 12 mm closed-cell rubber, one mat per column, placed on platform beams |
-| Anti-rotation lip | 5 mm steel plate × 40 mm height, fillet-welded to platform beam perimeter |
+| Platform beams | 50 × 50 × 3mm RHS, spanning each column width |
+| Cross-beams | 50 × 50 × 3mm RHS bridging the plumbing corridor at platform and top rail levels |
+| Anti-slip mat | 12mm closed-cell rubber, one mat per column, placed on platform beams |
+| Anti-rotation lip | 5mm steel plate × 40mm height, fillet-welded to platform beam perimeter |
 | Lip function | Engages IBC cage foot to prevent lateral movement during transport |
 
 ### 3.4 X-Bracing
@@ -119,7 +119,7 @@ corridor side of each column.
 | Parameter | Value |
 |-----------|-------|
 | Quantity | 8 total (4 per tier) |
-| Type | 25 mm welded D-ring on 6 mm mounting plate |
+| Type | 25mm welded D-ring on 6mm mounting plate |
 | Working load limit | 1,100 kg per ring |
 | Mounting | Fillet-welded to corridor-facing frame uprights |
 | Supplier | McMaster-Carr #3641T29 |
@@ -128,7 +128,7 @@ corridor side of each column.
 
 | Parameter | Value |
 |-----------|-------|
-| Type | 25 mm ratchet strap |
+| Type | 25mm ratchet strap |
 | Working load limit | 1,100 kg |
 | Routing | D-ring to D-ring, over IBC top, 1 strap per tier per side |
 | Total straps | 4 (2 per tier) |
@@ -136,7 +136,7 @@ corridor side of each column.
 
 ### 4.3 Anti-Rotation Lip
 
-The 40 mm steel lip welded around the platform perimeter engages the upper-tier IBC
+The 40mm steel lip welded around the platform perimeter engages the upper-tier IBC
 cage feet, preventing lateral sliding or rotation. Combined with the ratchet straps
 from above and the pallet sitting on the rubber mat, the upper-tier IBCs are
 positively restrained in all six degrees of freedom.
@@ -150,12 +150,12 @@ straps provide vertical and lateral restraint.
 ## 5. Access Gates
 
 Removable gate panels at the base of each column provide access to the bottom-tier
-IBC drain valves (DN50 butterfly, corridor-facing at Z=185 mm).
+IBC drain valves (DN50 butterfly, corridor-facing at Z=185mm).
 
 | Parameter | Value |
 |-----------|-------|
 | Quantity | 2 (one per column, corridor-facing) |
-| Gate height | 300 mm (Z=0–300 mm) |
+| Gate height | 300mm (Z=0–300mm) |
 | Attachment | 4 × M12 hex bolts per gate |
 | Operation | Remove gate panel to access drain valve for maintenance; re-bolt after |
 | Normal operation | Drain pipes connect permanently through gate opening — gate stays installed except for valve maintenance |
@@ -165,16 +165,16 @@ IBC drain valves (DN50 butterfly, corridor-facing at Z=185 mm).
 ## 6. External Plumbing Panel
 
 Three 2" NPT bulkhead unions penetrate the sealed end wall on the container
-centerline (Yd=1,181 mm), allowing external fill and drain without opening cargo
+centerline (Yd=1181mm), allowing external fill and drain without opening cargo
 doors.
 
 ### 6.1 Port Layout
 
 | Port | Height (Z) | Circuit | Function |
 |------|-----------|---------|----------|
-| X1 | 2,250 mm | Blue | Fill IBC-1 — above IBC tops (2,082 mm) for gravity feed; IBC-2 self-levels via 2" cross-connect |
-| X3 | 400 mm | Brown | Drain IBC-3 — bottom tier, near column |
-| X4 | 200 mm | Waste | Drain IBC-4 — bottom tier, far column |
+| X1 | 2250mm | Blue | Fill IBC-1 — above IBC tops (2082mm) for gravity feed; IBC-2 self-levels via 2" cross-connect |
+| X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
+| X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
 
 ### 6.2 Exterior Fittings
 
@@ -182,7 +182,7 @@ doors.
 |-----------|-------|
 | Bulkhead type | 2" NPT bulkhead union |
 | Exterior fittings | Type DC camlock (2" aluminum) — quick-connect for fill/drain hose |
-| Reinforcing plate | 6 mm mild steel, ~300 mm wide, welded to wall interior before penetrations |
+| Reinforcing plate | 6mm mild steel, ~300mm wide, welded to wall interior before penetrations |
 | Seal | Neoprene gasket — light-tight and watertight |
 | IBC-2 fill | No dedicated port — self-levels from IBC-1 via permanently open 2" cross-connect at valve height |
 
@@ -194,28 +194,28 @@ doors.
 
 | Parameter | Value |
 |-----------|-------|
-| Material | 1" HDPE SDR-11 (33.4 mm OD, 3 mm wall) |
+| Material | 1" HDPE SDR-11 (33.4mm OD, 3mm wall) |
 | Elbows | Banjo LE100, 1" HDPE NPT, 90° |
 | Ball valves | Banjo V100FP, 1" full-port poly, quarter-turn |
 | Cross-connect | 2" HDPE pipe, IBC-1 ↔ IBC-2 (self-leveling, permanently open, no valve) |
 
 ### 7.2 Pipe Routing
 
-All pipes route through the 270 mm plumbing corridor between the near and far IBC
+All pipes route through the 270mm plumbing corridor between the near and far IBC
 columns. IBC valve faces point toward the corridor (DN50 butterfly valve, S60×6
 thread).
 
 | Pipe | Route | Notes |
 |------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → IBC-1 fill cap (DN150, from top) | Gravity feed from Z=2,250 mm |
-| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → corridor → end wall bulkhead | Gravity drain at Z=400 mm |
-| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → corridor → end wall bulkhead | Gravity drain at Z=200 mm |
+| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → IBC-1 fill cap (DN150, from top) | Gravity feed from Z=2250mm |
+| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → corridor → end wall bulkhead | Gravity drain at Z=400mm |
+| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → corridor → end wall bulkhead | Gravity drain at Z=200mm |
 | Cross-connect | IBC-1 valve height → IBC-2 valve height | 2" pipe, self-leveling, no valve |
 
 ### 7.3 Equipment Panel
 
-An 18 mm marine plywood panel spans across the IBC plumbing corridor
-(Yd=1,046–1,316 mm) at X=5,000 mm. All pumps, filters, accumulator, and diverter
+An 18mm marine plywood panel spans across the IBC plumbing corridor
+(Yd=1046–1316mm) at X=5000mm. All pumps, filters, accumulator, and diverter
 valves mount on this panel.
 
 | Equipment | Specification |
@@ -223,7 +223,7 @@ valves mount on this panel.
 | Pumps | P-01, P-02, P-03, P-04 — Shurflo 2088 (12V DC, 3.5 GPM, 45 PSI) |
 | Accumulator | ACC-01 — 0.75 L (23.5 oz), 125 PSI |
 | Filter unit | Purcooflow WHF2045B302 3-stage (F1: 5μ sediment, F2: KDF-55, F3: GAC carbon) |
-| Panel size | 270 × ~1,110 mm (corridor width × working height) |
+| Panel size | 270 × ~1110mm (corridor width × working height) |
 
 ---
 
@@ -270,14 +270,14 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 50 × 50 × 3 mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members | 8 | $240–$360 |
-| 5 mm steel plate (flat bar) | Anti-rotation lip (perimeter, ~8 m total) | 1 | $30–$50 |
-| 12 mm closed-cell rubber mat (1,000 × 1,200 mm) | Anti-slip platform mats | 2 | $40–$60 |
-| 25 mm welded D-ring (McMaster #3641T29) | Lashing points with 6 mm mount plates | 8 | $40–$65 |
-| 25 mm ratchet strap, 1,100 kg WLL | Transport securing | 4 | $30–$50 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members | 8 | $240–$360 |
+| 5mm steel plate (flat bar) | Anti-rotation lip (perimeter, ~8 m total) | 1 | $30–$50 |
+| 12mm closed-cell rubber mat (1000 × 1200mm) | Anti-slip platform mats | 2 | $40–$60 |
+| 25mm welded D-ring (McMaster #3641T29) | Lashing points with 6mm mount plates | 8 | $40–$65 |
+| 25mm ratchet strap, 1,100 kg WLL | Transport securing | 4 | $30–$50 |
 | M12 anchor bolts + gusset plates | Wall bracket attachment | 12 | $25–$40 |
 | Flat bar X-bracing | Bottom-tier racking resistance | 4 | $20–$35 |
-| Access gate panels (300 mm high, steel) | Removable, 4 × M12 bolts each | 2 | $40–$60 |
+| Access gate panels (300mm high, steel) | Removable, 4 × M12 bolts each | 2 | $40–$60 |
 | Welding / fabrication (frame assembly) | ~20–30 hrs labor | 1 | $1,000–$1,500 |
 | Primer + paint | Anti-corrosion coating | 1 | $40–$60 |
 | **Frame subtotal** | | | **$1,505–$2,280** |
@@ -288,7 +288,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 |------|--------------|-----|----------------|
 | 2" NPT bulkhead union | End wall penetrations | 3 | $45–$75 |
 | 2" Type DC aluminum camlock | Exterior quick-connect fittings | 3 | $30–$50 |
-| 6 mm mild steel reinforcing plate (~300 × 2,100 mm) | Welded to wall interior | 1 | $40–$60 |
+| 6mm mild steel reinforcing plate (~300 × 2100mm) | Welded to wall interior | 1 | $40–$60 |
 | Neoprene gaskets | Light-tight, watertight seal | 3 | $10–$15 |
 | **External plumbing subtotal** | | | **$125–$200** |
 
@@ -334,7 +334,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Every 30 prints | Replace F-2 KDF-55 heavy metal cartridge |
 | Every 6 months | Inspect D-ring welds for cracking; load-test straps |
 | Every 6 months | Inspect rubber mats for compression set; replace if permanently deformed |
-| Every 6 months | Inspect anti-rotation lip welds; check lip height (40 mm minimum) |
+| Every 6 months | Inspect anti-rotation lip welds; check lip height (40mm minimum) |
 | Annually | Inspect frame welds (all joints) for fatigue cracking |
 | Annually | Touch up paint on frame where chipped or rusted |
 | Annually | Inspect wall bracket anchor bolts for loosening; re-torque to spec |
@@ -349,7 +349,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Item | Source |
 |------|--------|
 | Schutz Ecobulk MX 640 L IBC | [Schutz GmbH product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y |
-| D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25 mm, 1,100 kg WLL |
+| D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25mm, 1,100 kg WLL |
 | Banjo V100FP ball valve | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Valves/V100FP/p/2832572) — 1" full-port polypropylene, quarter-turn |
 | Banjo LE100 90° elbow | [Banjo Corp catalog](https://www.banjocorp.com/banjo/Pipe-Fittings/EL100-90/p/2796532) — 1" HDPE NPT |
 | HDPE SDR-11 pipe | [Standard 1" IPS](https://www.ferguson.com/category/pipe-tubing/plastic-pipe-tubing/plastic-pipe/?prefn1=sku_Material_Type_ss&prefv1=HDPE) — PE4710 resin, 200 PSI rated |

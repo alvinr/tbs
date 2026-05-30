@@ -60,14 +60,14 @@ Longitudinal section showing the cross-flow ventilation path: Fan A intake at th
 
 | Fan | Position | Mounting | Function |
 |-----|----------|----------|----------|
-| Fan A (intake) | Far end wall (X=5,893mm), low position | Flush-mounted in wall penetration | Fresh air intake — draws cooler air near floor level |
-| Fan B (exhaust) | Hinged panel, far corner zone (Yd=1,959mm, Z=1,800mm) | Flush-mounted in 40mm corner zone panel | Exhaust humid air during processing and drying |
+| Fan A (intake) | Far end wall (X=5893mm), low position | Flush-mounted in wall penetration | Fresh air intake — draws cooler air near floor level |
+| Fan B (exhaust) | Hinged panel, far corner zone (Yd=1959mm, Z=1800mm) | Flush-mounted in 40mm corner zone panel | Exhaust humid air during processing and drying |
 
 Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: low intake at the far end → high exhaust at the cargo door end.
 
 ### 4.2 Fan A — Far End Wall Intake
 
-Fan A is flush-mounted in a wall penetration at the far end wall (X=5,893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
 **Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops vertically to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 
@@ -75,7 +75,7 @@ Fan A is flush-mounted in a wall penetration at the far end wall (X=5,893mm), lo
 
 Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so exhaust air passes through the grille and discharges directly into the open doorway.
 
-**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2,200mm.
+**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm.
 
 ### 4.4 Light-Safe Baffle Ducts
 
@@ -118,7 +118,7 @@ This arrangement requires no permanent external mounting — the cooler is simpl
 | Parameter | Value |
 |-----------|-------|
 | Duct size | 200mm (8") — sized for ~300 CFM at low velocity |
-| Penetration location | Pinhole wall (Yd=0 face) at X=1,000mm, Z=1,900mm |
+| Penetration location | Pinhole wall (Yd=0 face) at X=1000mm, Z=1900mm |
 | Flexible duct | Ø200mm insulated flex, ~1m length, aluminum foil jacket |
 | Interior baffles | Two 200 × 200mm flat steel baffles, offset 100mm, inside a 300mm duct stub |
 | Light path | Broken by offset baffles — no direct line of sight |
@@ -135,10 +135,10 @@ From the walkway design, the location of the cooler (green rectangle) can be see
 
 | Parameter | Value |
 |-----------|-------|
-| Stowage zone | Near walkway wide section, X=1,200–1,800mm, Yd=0–500mm |
+| Stowage zone | Near walkway wide section, X=1200–1800mm, Yd=0–500mm |
 | Base plate | 12mm plywood, 600 × 350mm (load distribution) |
 | Securing | 2 × 25mm ratchet straps to cantilever bracket arms |
-| Clearance to panel transport envelope | 780mm (panel max X=420mm, cooler starts X=1,200mm) |
+| Clearance to panel transport envelope | 780mm (panel max X=420mm, cooler starts X=1200mm) |
 
 ---
 

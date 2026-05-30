@@ -23,9 +23,9 @@ control it. Scripts should import from `tbs_constants` rather than hardcoding th
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Interior length (long axis X) | 5,893 mm | `C_LEN` |
-| Interior width (optical depth Y) | 2,362 mm | `C_WID` |
-| Interior height Z | 2,388 mm | `C_HGT` |
+| Interior length (long axis X) | 5893mm | `C_LEN` |
+| Interior width (optical depth Y) | 2362mm | `C_WID` |
+| Interior height Z | 2388mm | `C_HGT` |
 
 *Components: corrugated steel long walls, short end walls (cargo door end / far end), roof,
 bamboo floor, corner castings, corner posts, structural corrugation ribs.*
@@ -34,11 +34,11 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X position (long axis) | 2,399 mm | `PH_X` |
-| Pinhole center height | 1,194 mm | `PH_H` |
-| Pinhole diameter | Ø2.17 mm | `PH_D` |
+| Pinhole X position (long axis) | 2399mm | `PH_X` |
+| Pinhole center height | 1194mm | `PH_H` |
+| Pinhole diameter | Ø2.17mm | `PH_D` |
 | f-number | f/1088 | `PH_FNO` |
-| Focal length | 2,362 mm | `PH_F` (= `C_WID`) |
+| Focal length | 2362mm | `PH_F` (= `C_WID`) |
 
 *Components: wall frame (600×600mm, 6mm steel), pinhole plate (ICP-02 / interchangeable
 Ø50mm SS-302 disc, 0.1mm, Lenox Laser laser-drilled), lens plate, shutter plate and channel.*
@@ -47,16 +47,16 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Film plane left edge X | 625 mm | `FP_X_L` |
-| Film plane right edge X | 4,649 mm | `FP_X_R` |
-| Film plane width | 4,499 mm | `FP_W` |
-| Film plane height | 2,388 mm | `FP_H` |
-| Nominal depth from pinhole wall | 2,262 mm | `FP_Y` |
-| Minimum carriage depth | 100 mm | `FP_Y_MIN` |
-| Left rail X | 150 mm | `RAIL_X_L` |
-| Right rail X | 4,649 mm | `RAIL_X_R` |
-| Rail span | 4,499 mm | `RAIL_SPAN` |
-| Rail length (Y travel) | 2,200 mm | `RAIL_LEN` |
+| Film plane left edge X | 625mm | `FP_X_L` |
+| Film plane right edge X | 4649mm | `FP_X_R` |
+| Film plane width | 4499mm | `FP_W` |
+| Film plane height | 2388mm | `FP_H` |
+| Nominal depth from pinhole wall | 2262mm | `FP_Y` |
+| Minimum carriage depth | 100mm | `FP_Y_MIN` |
+| Left rail X | 150mm | `RAIL_X_L` |
+| Right rail X | 4649mm | `RAIL_X_R` |
+| Rail span | 4499mm | `RAIL_SPAN` |
+| Rail length (Y travel) | 2200mm | `RAIL_LEN` |
 | Max tilt | ±42.2° | `MAX_TILT_DEG` |
 | Max swing | ±25.7° | `MAX_SWING_DEG` |
 
@@ -69,7 +69,7 @@ rail felt light-trap strips, 92× cam-lever spring clamps at 150mm centers (musl
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X (board centers here) | 2,399 mm | `PH_X` |
+| Pinhole X (board centers here) | 2399mm | `PH_X` |
 | Max tilt/swing | ±5.3° | — (hardcoded in script) |
 | Resolution | 0.012°/click | — (hardcoded in script) |
 
@@ -82,10 +82,10 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Drum center X (cargo door end wall) | 0 mm | `DRUM_CX` |
-| Drum outer diameter | 750 mm | `DRUM_D` |
-| Drum radius | 375 mm | `DRUM_R` |
-| Drum height | 2,200 mm | `DRUM_H_LT` |
+| Drum center X (cargo door end wall) | 0mm | `DRUM_CX` |
+| Drum outer diameter | 750mm | `DRUM_D` |
+| Drum radius | 375mm | `DRUM_R` |
+| Drum height | 2200mm | `DRUM_H_LT` |
 
 *Components: 3mm mild steel rolled shell, 4× internal steel baffle fins (at 22.5°/112.5°/
 202.5°/292.5°), 5mm top and bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed
@@ -96,9 +96,9 @@ top/bottom wiper seals + silicone bead, drum-to-panel neoprene compression strip
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Panel width | 2,362 mm | `C_WID` |
-| Panel height | 2,388 mm | `C_HGT` |
-| Panel thickness | 120 mm | — (hardcoded in scripts) |
+| Panel width | 2362mm | `C_WID` |
+| Panel height | 2388mm | `C_HGT` |
+| Panel thickness | 120mm | — (hardcoded in scripts) |
 
 *Components: 50×50mm RHS steel frame, 18mm plywood skins (both faces), 20mm EPDM compression
 gasket in machined channel, 3× 200mm SS ball-bearing piano hinges, 4× Southco C2-33 cam
@@ -108,19 +108,19 @@ compression latches, Ø750mm revolving drum aperture.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Fan diameter (both fans) | 150 mm | `FAN_DIAM` |
-| Panel fan body depth | 50 mm | `FAN_BODY_D` |
-| Fan A center height AFF (low) | 600 mm | `FAN_A_H` |
-| Fan B center height AFF (high) | 1,800 mm | `FAN_B_H` |
-| Fan A Yd position (near-wall corner) | 75 mm | `FAN_A_YD` |
-| Fan B Yd position (centered drum–wall) | 1,959 mm | `FAN_B_YD` |
-| Baffle duct depth | 300 mm | `DUCT_DEPTH` |
-| Baffle duct height | 200 mm | `DUCT_HEIGHT` |
-| Fan A shadow margin (from cone) | 869 mm | `FAN_A_MARGIN` |
-| Fan B shadow margin (from cone) | 40 mm | `FAN_B_MARGIN` |
+| Fan diameter (both fans) | 150mm | `FAN_DIAM` |
+| Panel fan body depth | 50mm | `FAN_BODY_D` |
+| Fan A center height AFF (low) | 600mm | `FAN_A_H` |
+| Fan B center height AFF (high) | 1800mm | `FAN_B_H` |
+| Fan A Yd position (near-wall corner) | 75mm | `FAN_A_YD` |
+| Fan B Yd position (centered drum–wall) | 1959mm | `FAN_B_YD` |
+| Baffle duct depth | 300mm | `DUCT_DEPTH` |
+| Baffle duct height | 200mm | `DUCT_HEIGHT` |
+| Fan A shadow margin (from cone) | 869mm | `FAN_A_MARGIN` |
+| Fan B shadow margin (from cone) | 40mm | `FAN_B_MARGIN` |
 
 *Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), intake, Circuit A,
-low position. Fan B — identical fan, mounted on hinged panel (far corner zone, Yd=1,959mm),
+low position. Fan B — identical fan, mounted on hinged panel (far corner zone, Yd=1959mm),
 exhaust, Circuit B, high position. Fan A mounts on interior face of a 300mm deep light-safe
 baffle duct with 2 offset steel baffles (65% height each, S-path); exterior face has a passive
 weatherproof louvre grille. Fan B has the same baffle duct protruding from the panel exterior
@@ -135,13 +135,13 @@ sliding carriage; wiring via flexible coiled cable from fixed door frame (Circui
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Duct penetration X | 1,000 mm | `EVAP_DUCT_X` |
-| Duct penetration Z | 1,900 mm | `EVAP_DUCT_Z` |
-| Duct diameter | 200 mm | `EVAP_DUCT_D` |
+| Duct penetration X | 1000mm | `EVAP_DUCT_X` |
+| Duct penetration Z | 1900mm | `EVAP_DUCT_Z` |
+| Duct diameter | 200mm | `EVAP_DUCT_D` |
 
 *Component: Portacool Jetstream 110 or equivalent, 12V DC, ~80W, ~300 CFM, dedicated 20L
 water reservoir, Circuit E. Ground-placed outside the container; cooled air enters through
-Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=1,900mm.*
+Ø200mm insulated flex duct to a wall penetration with light-safe baffle at Z=1900mm.*
 
 *Report: [Ventilation & Cooling System](ventilation-report.md) §5 — evaporative cooler specification, light-safe intake duct, and transport stowage.*
 
@@ -151,12 +151,12 @@ water reservoir, Circuit E. Ground-placed outside the container; cooled air ente
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Electrical panel left edge X | 2,050 mm | `EP_X` |
-| Panel width | 300 mm | `EP_W` |
-| Panel height range | 900–1,500 mm | `EP_H_LO`, `EP_H_HI` |
-| Battery bank left edge X | 2,050 mm | `BA_X` |
-| Battery bank width | 500 mm | `BA_W` |
-| Battery bank height range | 100–600 mm | `BA_H_LO`, `BA_H_HI` |
+| Electrical panel left edge X | 2050mm | `EP_X` |
+| Panel width | 300mm | `EP_W` |
+| Panel height range | 900–1500mm | `EP_H_LO`, `EP_H_HI` |
+| Battery bank left edge X | 2050mm | `BA_X` |
+| Battery bank width | 500mm | `BA_W` |
+| Battery bank height range | 100–600mm | `BA_H_LO`, `BA_H_HI` |
 
 *Components: 3× 200W monocrystalline solar panels (roof-mounted), Victron SmartSolar MPPT 100/50,
 2× 100Ah LiFePO4 batteries (200Ah / 2,400Wh), Victron Blue Smart IP65 shore charger,
@@ -170,11 +170,11 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left edge X | 4,800 mm | `PUMP_X` |
-| Width | 780 mm | `PUMP_W` |
-| Height range | 900–1,400 mm | `PUMP_H_LO`, `PUMP_H_HI` |
-| Depth from pinhole wall | 1,046 mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
-| Protrusion from panel | 127 mm | `PUMP_D` |
+| Left edge X | 4800mm | `PUMP_X` |
+| Width | 780mm | `PUMP_W` |
+| Height range | 900–1400mm | `PUMP_H_LO`, `PUMP_H_HI` |
+| Depth from pinhole wall | 1046mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
+| Protrusion from panel | 127mm | `PUMP_D` |
 
 *Components: 1" HDPE header + isolation valves, 4× 12V pumps on equipment panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
@@ -186,11 +186,11 @@ Mounted on 18mm marine ply equipment panel at Yd=1,046 (near IBC column face), i
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| IBC column left edge X | 4,674 mm | `IBC_COL_X` |
-| IBC footprint width | 1,219 mm | `IBC_W` |
-| IBC footprint depth | 1,016 mm | `IBC_D` |
-| Stacked height (2× Blue IBC) | 2,020 mm | `IBC_H_STK` |
-| Blue stack front depth from pinhole wall | 30 mm | `BLUE_IBC_Y` |
+| IBC column left edge X | 4674mm | `IBC_COL_X` |
+| IBC footprint width | 1219mm | `IBC_W` |
+| IBC footprint depth | 1016mm | `IBC_D` |
+| Stacked height (2× Blue IBC) | 2020mm | `IBC_H_STK` |
+| Blue stack front depth from pinhole wall | 30mm | `BLUE_IBC_Y` |
 
 *Components: 2× 600L food-grade HDPE IBC totes (Y-stacked in right end zone), stacking
 frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" HDPE,
@@ -200,7 +200,7 @@ frame (50×50×3mm RHS steel), 1" SDR-11 HDPE blue supply pipe, spray bar (¾" H
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Brown IBC front depth | 30 mm | `BROWN_IBC_Y` |
+| Brown IBC front depth | 30mm | `BROWN_IBC_Y` |
 | IBC dimensions | same as Blue | `IBC_W`, `IBC_D`, `IBC_H_600` |
 
 *Components: 1× 600L food-grade HDPE IBC (Y-stacked behind Blue stack, right end zone),
@@ -213,8 +213,8 @@ Filled via DN150 top fill cap from P-04 tray sump pickup pump.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Waste IBC front depth | 1,316 mm | `WASTE_IBC_Y` |
-| IBC far column start Y | 1,316 mm | `IBC_FAR_Y` |
+| Waste IBC front depth | 1316mm | `WASTE_IBC_Y` |
+| IBC far column start Y | 1316mm | `IBC_FAR_Y` |
 | Waste IBC color code | Black | `C_WASTE_IBC` |
 
 *Components: 1× 600L food-grade HDPE IBC tote (4th IBC in 2×2 stack, right end zone),
@@ -226,8 +226,8 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left end zone boundary (right edge) | X = 150 mm | `ZONE_L_END` |
-| Right end zone boundary (left edge) | X = 4,649 mm | `ZONE_R_START` |
+| Left end zone boundary (right edge) | X = 150mm | `ZONE_L_END` |
+| Right end zone boundary (left edge) | X = 4649mm | `ZONE_R_START` |
 | Optical cone left at depth Y | `PH_X − (PH_X − FP_X_L) × Y / FP_Y` | `cone_left(y)` |
 | Optical cone right at depth Y | `PH_X + (FP_X_R − PH_X) × Y / FP_Y` | `cone_right(y)` |
 
@@ -240,12 +240,12 @@ Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Panel slide travel | 300 mm | `PANEL_SLIDE` |
+| Panel slide travel | 300mm | `PANEL_SLIDE` |
 | Panel slide rails | HGR20 × 500mm, 4 rails | — |
 | Lock mechanism | Destaco 207-U toggle clamp (×4) | — |
 
 *Components: HGR20 linear rails (both walls, floor + ceiling), HGH20CA carriage blocks (×8),
-carriage beam (60×60×3mm SHS, 2,400mm tall), Destaco 207-U toggle clamps (×4),
+carriage beam (60×60×3mm SHS, 2400mm tall), Destaco 207-U toggle clamps (×4),
 hinge mounting plates, rail mounting brackets.*
 
 *Diagrams: container floor plan (FP), assembly overview plan view (AO), hinged panel sheet 4 (HP).*
@@ -254,17 +254,17 @@ hinge mounting plates, rail mounting brackets.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Tray left edge X | 170 mm | `PROC_TRAY_X_L` |
-| Tray right edge X | 4,629 mm | `PROC_TRAY_X_R` |
-| Tray width | 4,459 mm | `PROC_TRAY_W` |
-| Tray depth | 2,200 mm | `PROC_TRAY_D` |
-| Tray near edge Yd | 80 mm | `PROC_TRAY_YD_NEAR` |
-| Tray far edge Yd | 2,280 mm | `PROC_TRAY_YD_FAR` |
-| Rim height | 50 mm | `PROC_TRAY_RIM` |
+| Tray left edge X | 170mm | `PROC_TRAY_X_L` |
+| Tray right edge X | 4629mm | `PROC_TRAY_X_R` |
+| Tray width | 4459mm | `PROC_TRAY_W` |
+| Tray depth | 2200mm | `PROC_TRAY_D` |
+| Tray near edge Yd | 80mm | `PROC_TRAY_YD_NEAR` |
+| Tray far edge Yd | 2280mm | `PROC_TRAY_YD_FAR` |
+| Rim height | 50mm | `PROC_TRAY_RIM` |
 | Dual-axis pitch | 1:200 (10mm fall) | `PROC_TRAY_PITCH` |
-| Sump X | 2,399 mm | `PROC_TRAY_DRAIN_X` |
-| Sump Yd | 80 mm | `PROC_TRAY_DRAIN_YD` |
-| Sump dimensions | 150 x 100 x 20 mm | `PROC_TRAY_SUMP_W/D/Z` |
+| Sump X | 2399mm | `PROC_TRAY_DRAIN_X` |
+| Sump Yd | 80mm | `PROC_TRAY_DRAIN_YD` |
+| Sump dimensions | 150 x 100 x 20mm | `PROC_TRAY_SUMP_W/D/Z` |
 
 *Components: 304 SS sheet (16-ga, 1.5mm), 2 panels field-bolted at center flange,
 pressed sump well (150x100x20mm), 5x tapered HDPE shim strips (50mm wide, 0-10mm),
@@ -278,19 +278,19 @@ Permanently installed — no removal for transport mode conversion.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Walkway width | 300 mm | `WALKWAY_W` |
-| Deck height | 100 mm | `WALKWAY_H` |
-| Grate thickness (all sections) | 25 mm | `WALKWAY_GRATE_T` |
-| Bracket vertical leg | 150 mm | `WALKWAY_BRACKET_H` |
-| Bracket plate thickness | 8 mm | `WALKWAY_BRACKET_T` |
-| Bracket spacing | 457 mm | `WALKWAY_BRACKET_SPACING` |
-| Container rib spacing | 457 mm | `CONTAINER_RIB_SPACING` |
-| Angle iron mounting rail | 50×50×5 mm | `WALKWAY_ANGLE_IRON` |
-| Near walkway Yd | 0 mm | `WALKWAY_NEAR_YD` |
-| Far walkway Yd | 2,062 mm | `WALKWAY_FAR_YD` |
-| Left walkway X | 170 mm | `WALKWAY_LEFT_X` |
-| Left walkway unsupported span | 1,762 mm | `WALKWAY_LEFT_SPAN` |
-| Right walkway X | 4,329 mm | `WALKWAY_RIGHT_X` |
+| Walkway width | 300mm | `WALKWAY_W` |
+| Deck height | 100mm | `WALKWAY_H` |
+| Grate thickness (all sections) | 25mm | `WALKWAY_GRATE_T` |
+| Bracket vertical leg | 150mm | `WALKWAY_BRACKET_H` |
+| Bracket plate thickness | 8mm | `WALKWAY_BRACKET_T` |
+| Bracket spacing | 457mm | `WALKWAY_BRACKET_SPACING` |
+| Container rib spacing | 457mm | `CONTAINER_RIB_SPACING` |
+| Angle iron mounting rail | 50×50×5mm | `WALKWAY_ANGLE_IRON` |
+| Near walkway Yd | 0mm | `WALKWAY_NEAR_YD` |
+| Far walkway Yd | 2062mm | `WALKWAY_FAR_YD` |
+| Left walkway X | 170mm | `WALKWAY_LEFT_X` |
+| Left walkway unsupported span | 1762mm | `WALKWAY_LEFT_SPAN` |
+| Right walkway X | 4329mm | `WALKWAY_RIGHT_X` |
 
 *Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 Right: ceiling-hung — 2× 25×25×5mm steel angle bearers suspended from ceiling by M10
@@ -305,7 +305,7 @@ any section. 4 removable sections.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Panel floor gap | 80 mm | `PANEL_FLOOR_GAP` |
+| Panel floor gap | 80mm | `PANEL_FLOOR_GAP` |
 
 *Components: HGR20 ceiling-mounted linear rails (×2, 500mm), HGH20CA carriage blocks (×4),
 ceiling mounting brackets, drop rods / hanging brackets. Suspends hinged panel with 80mm

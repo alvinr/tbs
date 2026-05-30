@@ -98,7 +98,7 @@ TOP VIEW:
 Container doors (for loading) are on the SHORT ENDS — completely separate from the optical path.
 ```
 
-- Focal length = container interior width (7'9" = 2,362 mm for both 20 ft and 40 ft)
+- Focal length = container interior width (7'9" = 2362mm for both 20 ft and 40 ft)
 - Image plane = entire interior of one long wall
 - Image width = container interior length (~19'4" for 20 ft; ~39'5" for 40 ft)
 - Field of view = 102° horizontal for 20 ft container; 137° for 40 ft container
@@ -121,7 +121,7 @@ is the clear optical zone.
 | Zone | Long-axis span | Contents |
 |------|---------------|----------|
 | Left end zone | X = 0–150mm | Light trap drum, hinged panel |
-| Right end zone | X = 4,649–5,893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
+| Right end zone | X = 4649–5893mm | IBC totes (×4, 2×2 stack), pump manifold (equip panel), filter skid |
 | Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
 | Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
@@ -146,8 +146,8 @@ and §13 for the optical line-of-sight clearance analysis.
 | Exterior dimensions | 20 ft L × 8 ft W × 8 ft 6 in H | ISO 668; [eveoncontainers.com](https://www.eveoncontainers.com/en-US/resources/shipping-container-dimensions) |
 | Interior dimensions | 19 ft 4 in L × 7 ft 9 in W × 7 ft 10 in H | ISO 668 (confirmed) |
 | Tare weight (empty) | approx. 4,850 lbs (2,200 kg) | Hapag-Lloyd Container Spec |
-| Steel wall thickness | 1.6 mm corrugated Corten steel | Standard ISO construction |
-| Floor | 28 mm laminated bamboo or hardwood | Standard ISO construction |
+| Steel wall thickness | 1.6mm corrugated Corten steel | Standard ISO construction |
+| Floor | 28mm laminated bamboo or hardwood | Standard ISO construction |
 | Door type | Double swing on one short end | ISO standard |
 | Min. purchase grade | WWT (Wind & Watertight) | — |
 
@@ -165,12 +165,12 @@ and §13 for the optical line-of-sight clearance analysis.
 
 | Parameter | Value | Formula |
 |-----------|-------|---------|
-| Image plane dimensions | 19 ft 4 in × 7 ft 10 in (5,893 mm × 2,388 mm) | Interior long wall |
-| Focal length | 7 ft 9 in = **2,362 mm** | Interior width |
-| Rayleigh optimal pinhole | **2.17 mm** | d = 1.9 × √(2362 × 0.00055) |
-| Petzval optimal pinhole | 1.78 mm | d = 1.56 × √(2362 × 0.00055) |
-| Design pinhole range | **1.8–2.2 mm** | Sweet spot |
-| F-number (at 2.17 mm) | **f/1088** | f/d |
+| Image plane dimensions | 19 ft 4 in × 7 ft 10 in (5893mm × 2388mm) | Interior long wall |
+| Focal length | 7 ft 9 in = **2362mm** | Interior width |
+| Rayleigh optimal pinhole | **2.17mm** | d = 1.9 × √(2362 × 0.00055) |
+| Petzval optimal pinhole | 1.78mm | d = 1.56 × √(2362 × 0.00055) |
+| Design pinhole range | **1.8–2.2mm** | Sweet spot |
+| F-number (at 2.17mm) | **f/1088** | f/d |
 | Horizontal field of view | **102°** | 2 × arctan(19.3 / (2 × 7.75)) |
 | Vertical field of view | **53°** | 2 × arctan(7.83 / (2 × 7.75)) |
 | Resolution (lp/mm) | **0.69 lp/mm** | d / (2 × 1.22 × λ × f) |
@@ -228,8 +228,8 @@ The 40-foot container uses the same width (same focal length, same f-number, sam
 |-----------|-------|
 | Image plane dimensions (full) | 39 ft 5 in × 7 ft 10 in |
 | Image plane (masked to target) | **20 ft × 7 ft** (mask the rest) |
-| Focal length | **2,362 mm** (same interior width as 20 ft container) |
-| Rayleigh optimal pinhole | **2.17 mm** (identical to Proposal 1) |
+| Focal length | **2362mm** (same interior width as 20 ft container) |
+| Rayleigh optimal pinhole | **2.17mm** (identical to Proposal 1) |
 | F-number | **f/1088** (identical) |
 | Horizontal FOV (full 39' width) | **137°** — extreme panoramic |
 | Horizontal FOV (masked to 20') | **102°** — same as Proposal 1 |
@@ -253,9 +253,9 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane | 7 ft 9 in × 7 ft 10 in (2,337 mm × 2,388 mm) |
-| Focal length | **39 ft 5 in = 12,013 mm** |
-| Rayleigh optimal pinhole | **4.87 mm** |
+| Image plane | 7 ft 9 in × 7 ft 10 in (2337mm × 2388mm) |
+| Focal length | **39 ft 5 in = 12013mm** |
+| Rayleigh optimal pinhole | **4.87mm** |
 | F-number | **f/2467** |
 | Horizontal FOV | **11°** (narrow, telephoto) |
 | Calculated paper exposure (bright sun) | **1 hr 8 min** |
@@ -271,7 +271,7 @@ This is Orientation A: pinhole on one short end, image on the opposite short end
 
 Two 20-foot standard containers are positioned end-to-end or side-by-side on site:
 
-- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with 2,362 mm focal length and ~19' × 7.8' image plane.
+- **Container A (Camera):** Configured exactly as Proposal 1 — pinhole camera with 2362mm focal length and ~19' × 7.8' image plane.
 - **Container B (Darkroom):** Outfitted as a field darkroom for developing and fixing the large-format prints on-site. Equipped with processing trays/tanks, chemistry storage, ventilation, safelighting, and wash station with plumbed water.
 
 #### Advantages
@@ -342,9 +342,9 @@ Material options (in order of recommendation):
 
 | Material | Thickness | Weight (19'×8' panel) | Notes |
 |----------|-----------|----------------------|-------|
-| 3/4" Baltic birch plywood | 19 mm | ~290 lbs | Strong, flat, accepts staples/pins for material mounting |
-| 1/2" aluminum composite panel (ACM) | 12 mm | ~95 lbs | Lighter, very flat, paintable — used for large format signage |
-| 1" rigid foam board (Foamular) | 25 mm | ~35 lbs | Lightest; pins hold material; less rigid over span |
+| 3/4" Baltic birch plywood | 19mm | ~290 lbs | Strong, flat, accepts staples/pins for material mounting |
+| 1/2" aluminum composite panel (ACM) | 12mm | ~95 lbs | Lighter, very flat, paintable — used for large format signage |
+| 1" rigid foam board (Foamular) | 25mm | ~35 lbs | Lightest; pins hold material; less rigid over span |
 
 **Recommended:** ACM (Aluminum Composite Material) panels, such as Dibond or 3A Composites Alucobond. Available in 4'×8' sheets; panels can be butt-jointed and seamed. Paintable with flat black; accepts liquid emulsion directly.
 
@@ -367,9 +367,9 @@ The pinhole goes in the center of the opposite long wall.
 4. Weld or bolt a steel backing plate (6" × 6" × 1/8" steel plate) over the opening, with a centered 1/2" hole for the precision aperture insert
 
 **Precision aperture plate:**
-- 3" × 3" plate of 0.1 mm stainless steel shim stock (available from McMaster-Carr, catalog #9709K1)
-- Pinhole laser-drilled or chemically etched to target diameter (1.8–2.2 mm for Proposal 1/2)
-- Sourcing option: Lenox Laser (lenoxlaser.com) — custom pinholes in SS-302/304 with ±0.025 mm tolerance, SEM-verified. [lenoxlaser.com/blog/pinholes-and-apertures/](https://lenoxlaser.com/blog/pinholes-and-apertures/)
+- 3" × 3" plate of 0.1mm stainless steel shim stock (available from McMaster-Carr, catalog #9709K1)
+- Pinhole laser-drilled or chemically etched to target diameter (1.8–2.2mm for Proposal 1/2)
+- Sourcing option: Lenox Laser (lenoxlaser.com) — custom pinholes in SS-302/304 with ±0.025mm tolerance, SEM-verified. [lenoxlaser.com/blog/pinholes-and-apertures/](https://lenoxlaser.com/blog/pinholes-and-apertures/)
 
 **Shutter mechanism:**
 - A 1/8" steel plate (10" × 8") slides in a channel welded over the aperture backing plate
@@ -384,11 +384,11 @@ The pinhole goes in the center of the opposite long wall.
 TBS-001 replaces the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
 **Panel design (see engineering drawings below):**
-- 2,362 × 2,388mm stepped panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins
-- **Stepped profile:** 40mm thick at corner zones (Yd=0–756mm and Yd=1,606–2,362mm) and 120mm thick at center zone (Yd=756–1,606mm) where the light trap drum is mounted
+- 2362 × 2388mm stepped panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins
+- **Stepped profile:** 40mm thick at corner zones (Yd=0–756mm and Yd=1606–2362mm) and 120mm thick at center zone (Yd=756–1606mm) where the light trap drum is mounted
 - 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
-- 750mm diameter × 2,000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
+- 750mm diameter × 2000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
 - **Transport mode:** panel slides inward 300mm, clearing container doors for closure. Single-person operation, ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
@@ -425,8 +425,8 @@ For operations involving darkroom chemistry inside the container:
 | Container | 20 ft standard | 40 ft standard | 40 ft standard | Two 20 ft |
 | Orientation | Side-to-side | Side-to-side | End-to-end | Side-to-side + darkroom |
 | Image plane | 19'4" × 7'10" | Up to 39'5" × 7'10" | 7'9" × 7'10" | 19'4" × 7'10" |
-| Focal length | 7'9" (2,362 mm) | 7'9" (2,362 mm) | 39'5" (12,013 mm) | 7'9" (2,362 mm) |
-| Optimal pinhole | 2.17 mm | 2.17 mm | 4.87 mm | 2.17 mm |
+| Focal length | 7'9" (2362mm) | 7'9" (2362mm) | 39'5" (12013mm) | 7'9" (2362mm) |
+| Optimal pinhole | 2.17mm | 2.17mm | 4.87mm | 2.17mm |
 | F-number | f/1088 | f/1088 | f/2467 | f/1088 |
 | Horizontal FOV | 102° | 102°–137° | 11° | 102° |
 | RC paper exp. (Schwarzschild-corrected) | **~43 min** | **~43 min** | ~4 hr 52 min | **~43 min** |
@@ -495,7 +495,7 @@ The following order minimizes rework and avoids modifying a container that fails
 8. **Build and test shutter mechanism** — confirm full seal when closed
 9. **Install ventilation** — cut vent penetrations, install fans and light-trap baffles
 10. **Install safelight and door light-trap** — for loading operations
-11. **Test exposure** — cut a 200 mm × full-height strip of sensitised muslin, pin over the image plane centre; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
+11. **Test exposure** — cut a 200mm × full-height strip of sensitised muslin, pin over the image plane centre; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
 12. **Full-format test** — load full image plane, expose, develop
 
 ---

@@ -3,7 +3,7 @@
 # Why a Lens Changes Exposure Time
 ## A First-Principles Explanation of Aperture, Light Collection, and Reciprocity
 
-**Camera:** Option B, f = 2,362 mm, pinhole Ø 2.17 mm (f/1088)  
+**Camera:** Option B, f = 2362mm, pinhole Ø 2.17mm (f/1088)  
 **Baseline:** ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes  
 **Lens comparison:** Process lens or telescope objective at f/8–f/128
 
@@ -33,13 +33,13 @@ The amount of light arriving at P per unit time is therefore proportional to the
 
 where d is the pinhole diameter.
 
-For d = 2.17 mm:
+For d = 2.17mm:
 
 ```
-A_pinhole = π × (1.085)² = 3.70 mm²
+A_pinhole = π × (1.085)² = 3.70mm²
 ```
 
-This is the collecting area. Every photon contributing to the image at any point on the 116 sq ft image plane has passed through this 3.70 mm² opening. No others.
+This is the collecting area. Every photon contributing to the image at any point on the 116 sq ft image plane has passed through this 3.70mm² opening. No others.
 
 **Source:** Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge University Press, 1999, §8.6.1. The treatment of the pinhole as a geometric aperture stop, passing only rays within the solid angle subtended by the opening, is the foundational model for pinhole imaging. The proportionality of image irradiance to aperture area follows directly from basic radiometric principles (see also Hecht, E., *Optics*, 5th ed., Pearson, 2017, §5.1).
 
@@ -57,14 +57,14 @@ A_lens = π(D/2)²
 
 For a lens of focal length f_L at f-number N, the aperture diameter D = f_L / N.
 
-For a lens at f/16 installed in this camera (f_L = 2,362 mm):
+For a lens at f/16 installed in this camera (f_L = 2362mm):
 
 ```
-D = 2,362 / 16 = 147.6 mm
-A_lens = π × (73.8)² = 17,094 mm²
+D = 2,362 / 16 = 147.6mm
+A_lens = π × (73.8)² = 17094mm²
 ```
 
-Every ray intercepted across this 147.6 mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70 mm². The lens at f/16 collects 17,094 mm².
+Every ray intercepted across this 147.6mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70mm². The lens at f/16 collects 17094mm².
 
 **Source:** Smith, W.J., *Modern Optical Engineering*, 4th ed., McGraw-Hill, 2008, §2.1 (Radiometry and Photometry of Optical Systems). The derivation of image plane irradiance as a function of aperture area and f-number is standard: E = (π/4) × L × (1/N²) × cos⁴θ, where L is scene luminance and θ is the off-axis angle.
 
@@ -286,7 +286,7 @@ At f/32–f/64, exposure times on ISO 6 paper run 2–11 seconds. This changes t
 - Reciprocity failure is negligible — exposure is predictable and repeatable
 - Depth of field of 1.2–2.6 m provides useful control over background sharpness
 
-The trade-off is that a lens only covers a 300–600 mm diameter central circle of the 5,893 mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.
+The trade-off is that a lens only covers a 300–600mm diameter central circle of the 5893mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.
 
 ### The fundamental recommendation
 
@@ -294,7 +294,7 @@ The two modes are not competing solutions to the same problem. They are differen
 
 - **Pinhole mode:** The full 116 sq ft image plane records everything in the field of view, all at the same soft resolution, with 43-minute exposures. Best for scenes that do not move — landscapes, architecture, long-duration light painting.
 
-- **Lens mode:** A sharp central medallion (Ø 300–600 mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.
+- **Lens mode:** A sharp central medallion (Ø 300–600mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.
 
 Building the camera with the **interchangeable plate system** (see fabrication drawings, sheets 1 and 2) costs nothing beyond a few hours of machining and preserves both modes indefinitely. The plate swap takes two minutes in the dark.
 

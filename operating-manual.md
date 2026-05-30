@@ -76,7 +76,7 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 0.4.4 — Funnel and stirring rod
 - [ ] 0.4.5 — Digital scale (1g resolution)
 - [ ] 0.4.6 — Digital hygrometer
-- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, 5,900 × 2,400mm with 100mm hem allowance)
+- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, 5900 × 2400mm with 100mm hem allowance)
 - [ ] 0.4.8 — Part A bottle (sealed, labelled)
 - [ ] 0.4.9 — Part B bottle (sealed, labelled)
 - [ ] 0.4.10 — Timer (phone or dedicated)
@@ -119,7 +119,7 @@ The container arrives in transport mode: the stepped hinged panel is retracted 3
 - [ ] 1.3.3 — Install the left walkway section — place grating on the near/far walkway butt joint ends.
 - [ ] 1.3.4 — Swing the panel open 180° outward.
 - [ ] 1.3.5 — Retrieve the evaporative cooler from near walkway stowage (release 2 ratchet straps). Carry out through the door opening (~20 kg dry, one person).
-- [ ] 1.3.6 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration (X=1,200mm). Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
+- [ ] 1.3.6 — Place the cooler on the ground outside the container, adjacent to the pinhole wall near the Ø200mm duct penetration (X=1200mm). Remove the weatherproof cap from the wall stub. Connect the Ø200mm flex duct from the cooler outlet to the wall stub collar and secure with a hose clamp. Fill reservoir from the Blue circuit IBC via external port X1.
 - [ ] 1.3.7 — Swing panel closed. Engage all 4 Southco cam latches (quarter-turn, flush with panel face).
 - [ ] 1.3.8 — Perform dark-adaptation check (see step 1.4.4 below).
 
@@ -343,7 +343,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 - [ ] 5.5.1 — Stow all interior items. Retract film plane carriage to Yd=100mm.
 - [ ] 5.5.2 — Release all 4 Southco cam latches. Swing the panel open 180° outward.
 - [ ] 5.5.3 — Disconnect flex duct from the wall stub collar (release hose clamp). Replace the weatherproof cap on the wall stub. Drain cooler reservoir completely.
-- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway wide section at X=1,200–1,800mm. Secure with 2× ratchet straps to wall brackets. Stow flex duct alongside cooler.
+- [ ] 5.5.4 — Carry cooler through door opening (~20 kg, one person). Place on ply base plate on near walkway wide section at X=1200–1800mm. Secure with 2× ratchet straps to wall brackets. Stow flex duct alongside cooler.
 - [ ] 5.5.5 — Swing panel closed (do not latch).
 - [ ] 5.5.6 — Remove left walkway section (lift out from butt joints).
 - [ ] 5.5.7 — Release 2 Destaco toggle clamps at operational position.

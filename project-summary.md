@@ -18,11 +18,11 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane (active) | 4,499 × 2,388 mm (~14'9" × 7'10") |
-| Container interior | 5,893 × 2,388 mm (~19'4" × 7'10") |
+| Image plane (active) | 4499 × 2388mm (~14'9" × 7'10") |
+| Container interior | 5893 × 2388mm (~19'4" × 7'10") |
 | Image area | ~116 sq ft |
-| Focal length | 2,362 mm (container interior depth) |
-| Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
+| Focal length | 2362mm (container interior depth) |
+| Optimal pinhole | Ø2.17mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
@@ -37,7 +37,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 Two independent movement systems work in series, stacking their effects non-linearly:
 
 **Front board — tilt and swing (±5°)**
-The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207 mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
+The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
 **Film plane — 4-corner independent actuation (±42° tilt, ±28.3° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.

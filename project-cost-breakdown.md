@@ -136,13 +136,13 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 
 **Source document:** `pinhole-camera-construction.md`, `pinhole-optics-report.md`
 
-The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: **2.17 mm** (Rayleigh formula, λ = 550 nm).
+The precision aperture is the optical heart of the camera. Optimal diameter for this focal length: **2.17mm** (Rayleigh formula, λ = 550 nm).
 
 ### 3.1 Pinhole plate
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Custom laser-drilled pinhole, SS-302/304 shim, 3"×3" | $50 | $100 | $150 | Lenox Laser, lenoxlaser.com — ±0.025 mm tolerance, SEM-verified |
+| Custom laser-drilled pinhole, SS-302/304 shim, 3"×3" | $50 | $100 | $150 | Lenox Laser, lenoxlaser.com — ±0.025mm tolerance, SEM-verified |
 | Steel backing plate 6"×6"×⅛", welded frame | $20 | $30 | $40 | Houses the precision insert |
 | Shutter plate (⅛" steel, 10"×8") + slide channel | $25 | $35 | $50 | Simple sliding shutter, operated from outside |
 | **Pinhole plate total** | **$95** | **$165** | **$240** | |
@@ -155,10 +155,10 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 | Lens | f | Image circle | Used price | Notes |
 |------|---|-------------|-----------|-------|
-| Rodenstock Apo-Ronar 1200mm | f/14 | ~400 mm | $400–$1,200 | Primary recommendation — excellent on flat field |
-| Nikkor T 1200mm f/11 | f/11 | ~450 mm | $600–$1,500 | One stop faster than Rodenstock |
-| Schneider Apo-Symmar 800mm | f/14 | ~500 mm | $300–$800 | Shorter focal length; needs separate focus board |
-| Acrylic Fresnel 600×600mm @ 1,400mm | f/2.3 | ~600 mm | $40–$120 | Cheap artistic option; significant aberrations |
+| Rodenstock Apo-Ronar 1200mm | f/14 | ~400mm | $400–$1,200 | Primary recommendation — excellent on flat field |
+| Nikkor T 1200mm f/11 | f/11 | ~450mm | $600–$1,500 | One stop faster than Rodenstock |
+| Schneider Apo-Symmar 800mm | f/14 | ~500mm | $300–$800 | Shorter focal length; needs separate focus board |
+| Acrylic Fresnel 600×600mm @ 1400mm | f/2.3 | ~600mm | $40–$120 | Cheap artistic option; significant aberrations |
 
 *Lens is an optional upgrade — not required for pinhole operation. Not included in base total.*
 
@@ -174,14 +174,14 @@ View-camera-style moveable film plane with four independently actuated corners (
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
-| Linear guide rail HGR20 | 2,200 mm | 4 | $45† | $180 |
+| Linear guide rail HGR20 | 2200mm | 4 | $45† | $180 |
 | Rail carriage HGH20CA | Flanged block | 8 | $18† | $144 |
 | Acme leadscrew ¾"-6 | 8 ft length | 4 | $95† | $380 |
 | Acme nut bronze ¾"-6 | — | 4 | $12† | $48 |
 | Handwheel 8" dia | ¾" bore, cast alum. | 4 | $35† | $140 |
 | Locking collar SS316 | ¾" bore | 4 | $12† | $48 |
 | Corner bracket L-plate | ¼" alum., 6"×8" | 4 | $20† | $80 |
-| Rod-end spherical bearing | GIR25-DO, 25 mm | 8 | $22† | $176 |
+| Rod-end spherical bearing | GIR25-DO, 25mm | 8 | $22† | $176 |
 | Pivot pin SS316 | 1" dia × 8" | 8 | $8† | $64 |
 
 ### 4.2 Film plane frame & backing
@@ -251,7 +251,7 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| 3mm mild steel sheet, 1,200×2,400mm (×2) | $140 | $160 | $180 | Hot-rolled A36 — drum shell and internal baffles; Pacific Coast Steel, Santa Fe Springs CA |
+| 3mm mild steel sheet, 1200×2400mm (×2) | $140 | $160 | $180 | Hot-rolled A36 — drum shell and internal baffles; Pacific Coast Steel, Santa Fe Springs CA |
 | 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service center |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
 | Seals — 12mm neoprene wiper strip, 20mm compression strip, silicone | $50 | $60 | $70 | McMaster-Carr #93855K6, #8635K31, #7587A3 |
@@ -272,13 +272,13 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 25mm (30×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 1,474×500mm near walkway bump-out); McNichols |
+| Press-locked steel grating, 25mm (30×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols |
 | Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
 | M12×60mm hex bolts + nuts + washers (×58) | $57 | $72 | $87 | 3 per std bracket (42) + 4 per widened (16) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
-| Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2,362mm ceiling-hung bearers |
+| Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2362mm ceiling-hung bearers |
 | M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
 | Guide tabs, 3mm steel angle (×4) | $5 | $8 | $10 | Left walkway bearer beam — gravity retention |
@@ -508,7 +508,7 @@ The following costs are not covered by existing research documents and should be
 
 | Item | Status | Action |
 |------|--------|--------|
-| Lenox Laser pinhole fabrication price | Estimated | Request quote at lenoxlaser.com — specify 2.17 mm ±0.025 mm in SS-302 shim, 75 mm × 75 mm |
+| Lenox Laser pinhole fabrication price | Estimated | Request quote at lenoxlaser.com — specify 2.17mm ±0.025mm in SS-302 shim, 75mm × 75mm |
 | Grimco ACM panel pricing | Listed at ~$85† | Confirm current price; Grimco City of Industry: 626-912-9600 |
 | Rockland Liquid Light bulk pricing | Unconfirmed | Contact rockaloid.com before committing to that process |
 | Silver nitrate bulk pricing | Volatile | Get quote within 2 weeks of ordering — AgNO₃ price can shift 20–30%/month |

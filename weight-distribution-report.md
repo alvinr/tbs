@@ -26,7 +26,7 @@ changes during a photographic session.
 | Tare weight (empty container) | 2,200 kg (4,850 lbs) | Hapag-Lloyd Container Spec |
 | Max gross weight | 24,000 kg (52,910 lbs) | ISO 668 |
 | Max payload | 21,800 kg (48,060 lbs) | Gross − tare |
-| Interior dimensions | 5,893 × 2,362 × 2,388 mm | ISO 668 |
+| Interior dimensions | 5,893 × 2362 × 2388mm | ISO 668 |
 
 ---
 
@@ -50,7 +50,7 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
 | Hinged panel | 203 | 0–80 (deployed) / 300–380 (transport) | 0–2,362 | Stepped sandwich: ply+steel corners, RHS center frame. Scaled to 240 kg combined with drum per [Light Trap Selection](light-trap-selection.md) §7 |
-| Light trap drum | 37 | 0–40 (deployed) / 300–340 (transport) | 756–1,606 | 1.5mm Al shell Ø750×2,200mm + 3 baffles + bearings |
+| Light trap drum | 37 | 0–40 (deployed) / 300–340 (transport) | 756–1,606 | 1.5mm Al shell Ø750×2200mm + 3 baffles + bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 78 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 44 kg/m² grating |
 | Far walkway | 78 | 470–4,629 | 2,062–2,362 | Same as near walkway |
@@ -168,7 +168,7 @@ Quadrant weights show the rear-heavy bias from the IBC stack.
 Water has migrated from top-tier Blue IBCs to bottom-tier Brown/Waste
 IBCs. The hinged panel is retracted to transport position (X=300–380).
 Total weight is unchanged (closed water system). The vertical
-CG drops by 267mm (Z: 1,179 → 912 mm) as water moves to bottom tier.
+CG drops by 267mm (Z: 1,179 → 912mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
@@ -201,15 +201,15 @@ the far side but is offset by the tilt-swing board on the near side.
 ### 6.3 Front-Rear Balance
 
 The dry/transport state has a front-biased split (54.8/45.2%), with CG at
-X=2,665mm. This front bias comes from the cargo doors (280 kg total) being
+X=2665mm. This front bias comes from the cargo doors (280 kg total) being
 in their closed position at X≈−70mm, pulling the CG toward the cargo door
 end. The hinged panel is also retracted 300mm inward on its ceiling rails.
 
 When liquids are added and the panel and doors are deployed (camera ready),
-the CG shifts rearward to X=3,382mm (717mm past the dry CG). The doors
-swing open flat against the side walls (X=0–1,221mm), redistributing
+the CG shifts rearward to X=3382mm (717mm past the dry CG). The doors
+swing open flat against the side walls (X=0–1221mm), redistributing
 280 kg from X≈−70 to X≈610, while 1,200 kg of water loads in the IBC stack
-zone (X=4,674–5,893mm). This creates a 40.3/59.7% front/rear split.
+zone (X=4674–5893mm). This creates a 40.3/59.7% front/rear split.
 
 **Transport implication:** When loaded for transport (materials exhausted,
 doors closed), the container's CG is at 56.9% of the length from the cargo
@@ -221,9 +221,9 @@ axle(s) to balance the load.
 
 The most significant finding is the **vertical CG migration** between states:
 
-- **Camera Ready:** Z_cg = 1,179 mm (1,200 kg of water in top-tier IBCs)
-- **Materials Exhausted:** Z_cg = 912 mm (1,200 kg of water in bottom-tier IBCs)
-- **ΔZ = −267 mm** (CG drops 267mm during a session)
+- **Camera Ready:** Z_cg = 1179mm (1,200 kg of water in top-tier IBCs)
+- **Materials Exhausted:** Z_cg = 912mm (1,200 kg of water in bottom-tier IBCs)
+- **ΔZ = −267mm** (CG drops 267mm during a session)
 
 This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs

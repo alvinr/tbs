@@ -39,8 +39,8 @@ tray's watertight seal.
 | Bracket arm height | 75mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | 500mm at X≈1,155–2,629mm |
-| Open processing area | 3,859×1,662mm = 6.41 m² |
+| Near walkway widened section | 500mm at X≈1155–2629mm |
+| Open processing area | 3859×1662mm = 6.41 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
 
@@ -48,9 +48,9 @@ tray's watertight seal.
 
 ## 3. Near and Far Walkways — Wall-Cantilevered
 
-The near (pinhole wall, Yd=0) and far (film plane wall, Yd=2,362mm) walkways run
+The near (pinhole wall, Yd=0) and far (film plane wall, Yd=2362mm) walkways run
 the full length of the processing tray zone, from the left walkway butt joint at
-X=470mm to the right walkway butt joint at X=4,629mm — a span of 4,159mm.
+X=470mm to the right walkway butt joint at X=4629mm — a span of 4159mm.
 
 ### 3.1 Cantilever Bracket Design
 
@@ -67,10 +67,10 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 **Attachment:** 3× M12 through-bolts per bracket in a triangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (8mm) → nut. Two lower bolts at Z=35 mm straddle
-the 8mm gusset plate at ±27 mm from the plate centerline in X (centered
-between plate edge and gusset). One upper bolt at Z=120 mm (above grating deck at Z=100,
-30 mm from plate top) is centered on the gusset centerline. The container
+bracket vertical plate (8mm) → nut. Two lower bolts at Z=35mm straddle
+the 8mm gusset plate at ±27mm from the plate centerline in X (centered
+between plate edge and gusset). One upper bolt at Z=120mm (above grating deck at Z=100,
+30mm from plate top) is centered on the gusset centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
 provide a bearing surface for the bolt heads and washers. See View B for the bolt pattern detail.
@@ -79,16 +79,16 @@ provide a bearing surface for the bolt heads and washers. See View B for the bol
 
 ### 3.2 Near Walkway Widened Section
 
-The near walkway widens from 300mm to 500mm between X≈1,155mm and X≈2,629mm
-(1,474mm length), extending past the spray bar slit to the next rib position.
+The near walkway widens from 300mm to 500mm between X≈1155mm and X≈2629mm
+(1474mm length), extending past the spray bar slit to the next rib position.
 This widened section provides additional standing room in front of the
-electrical panel (EP, X=1,600–1,900mm), battery bank (X=1,810–2,310mm), and
-through the spray bar slit zone (X≈2,400mm). These wall-mounted equipment
+electrical panel (EP, X=1600–1900mm), battery bank (X=1810–2310mm), and
+through the spray bar slit zone (X≈2400mm). These wall-mounted equipment
 items require front access for operation and maintenance, and the wider
 platform gives the operator full-width standing room during spray bar passes.
 
-Four brackets in this zone (at X≈1,156mm, X≈1,612mm, X≈2,070mm, and
-X≈2,526mm) use a heavier design to support the 500mm cantilever arm. The
+Four brackets in this zone (at X≈1156mm, X≈1612mm, X≈2070mm, and
+X≈2526mm) use a heavier design to support the 500mm cantilever arm. The
 bracket positions align to container corrugation ribs at 457mm centers.
 Extending the widened zone past the slit ensures 500mm-arm brackets support
 the grating on both sides of the slit, eliminating unsupported overhang.
@@ -112,10 +112,10 @@ moment capacity.
 **Attachment:** 4× M12 through-bolts per bracket in a rectangular pattern,
 passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
-bracket vertical plate (10mm) → nut. Two lower bolts at Z=35 mm straddle
-the 10mm gusset plate at ±32 mm from the plate centerline in X (centered
-between plate edge and gusset). Two upper bolts at Z=160 mm (above grating
-deck at Z=100, 40 mm from plate top) at the same ±32 mm X offset. The
+bracket vertical plate (10mm) → nut. Two lower bolts at Z=35mm straddle
+the 10mm gusset plate at ±32mm from the plate centerline in X (centered
+between plate edge and gusset). Two upper bolts at Z=160mm (above grating
+deck at Z=100, 40mm from plate top) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
 the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
@@ -146,7 +146,7 @@ continuity across the slit.
 | Walkway | Inner edge (Yd) | Tray lip (Yd) | Slit depth | Solid remaining |
 |---------|----------------|---------------|-----------|----------------|
 | Near (widened) | 500mm | 80mm | 420mm | 80mm |
-| Far (standard) | 2,062mm | 2,280mm | 218mm | 82mm |
+| Far (standard) | 2062mm | 2280mm | 218mm | 82mm |
 
 See [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) for pole
 assembly details.
@@ -157,16 +157,16 @@ assembly details.
 
 ## 4. Right Walkway — Ceiling-Hung
 
-The right walkway at the IBC end (X=4,329–4,629mm) cannot use wall-cantilevered
-brackets because the IBC stack (X=4,674–5,893mm) occupies the floor below. Instead,
+The right walkway at the IBC end (X=4329–4629mm) cannot use wall-cantilevered
+brackets because the IBC stack (X=4674–5893mm) occupies the floor below. Instead,
 the walkway is suspended from the container ceiling by threaded rod hangers.
 
 ![TBS-001 Walkway — Sheet 3: Ceiling-Hung Support](assets/walkway-sheet3.png)
 
 ### 4.1 Bearer Angles
 
-Two 25×25×5mm steel L-angle bearers run the full container width (2,362mm along
-Yd) at X=4,329mm and X=4,629mm. The 300mm grating spans between these bearers.
+Two 25×25×5mm steel L-angle bearers run the full container width (2362mm along
+Yd) at X=4329mm and X=4629mm. The 300mm grating spans between these bearers.
 Near and far ends of the bearers bear on the adjacent near/far walkway bracket
 arm structures at the butt joints.
 
@@ -175,16 +175,16 @@ arm structures at the butt joints.
 | Parameter | Value |
 |-----------|-------|
 | Hanger rod | M10 threaded rod |
-| Rod length | 2,313mm (ceiling to bearer top) |
+| Rod length | 2313mm (ceiling to bearer top) |
 | Number of hanger pairs | 5 |
 | First pair position | Yd=320mm |
 | Remaining pairs spacing | 457mm centers |
-| All hangers at | Yd ≤ 2,057mm (clear of optical cone) |
+| All hangers at | Yd ≤ 2057mm (clear of optical cone) |
 | Ceiling bracket plate | 100×60×6mm steel |
 | Ceiling attachment | 2× M10 through-bolts per plate, through ceiling corrugation |
 
-Each hanger pair consists of two M10 rods — one at each bearer (X=4,329mm and
-X=4,629mm). The rod passes through the horizontal flange of the L-angle bearer
+Each hanger pair consists of two M10 rods — one at each bearer (X=4329mm and
+X=4629mm). The rod passes through the horizontal flange of the L-angle bearer
 with a nut and washer above and below the flange, then extends up to a ceiling
 bracket plate bolted through the ceiling corrugation.
 
@@ -212,14 +212,14 @@ removable lift-out section supported by three independent elements.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Bearer beam | 50×50×3mm aluminum RHS | X=470mm, spans 1,762mm along Yd between near/far bracket vertical legs |
+| Bearer beam | 50×50×3mm aluminum RHS | X=470mm, spans 1762mm along Yd between near/far bracket vertical legs |
 | Floor-standing support legs | 25×25×3mm aluminum SHS, 3 legs | X=140mm (on bare floor outside tray), 440mm spacing |
 | Foot plates | 60×60×3mm aluminum with rubber pad | At base of each floor leg |
 | Bearing strip | 25×25×3mm aluminum angle | On processing tray rim at X=170mm (removable) |
 
-The bearer beam at X=470mm is the primary structural element. It spans 1,762mm
+The bearer beam at X=470mm is the primary structural element. It spans 1762mm
 (the distance between the near and far walkway bracket vertical legs at
-Yd=300mm and Yd=1,962mm) and is bolted to those bracket vertical legs. The grating
+Yd=300mm and Yd=1962mm) and is bolted to those bracket vertical legs. The grating
 rests on the bearer beam top surface at Z=75mm.
 
 On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
@@ -276,7 +276,7 @@ intersections.
 | Corner | Butt joint X | Design |
 |--------|-------------|--------|
 | Near-left / Far-left | X=470mm | Left walkway grating rests on bracket arm top |
-| Near-right / Far-right | X=4,629mm | Right walkway grating abuts near/far grating |
+| Near-right / Far-right | X=4629mm | Right walkway grating abuts near/far grating |
 
 Butt joints are used rather than miters for two reasons:
 
@@ -291,7 +291,7 @@ Butt joints are used rather than miters for two reasons:
 ## 7. Evaporative Cooler Transport Stowage
 
 During transport, the evaporative cooler (600×350mm, ~20kg dry) is stowed on the
-near walkway grating at X=500–1,100mm, Yd=0–350mm. The cooler sits on a 12mm
+near walkway grating at X=500–1100mm, Yd=0–350mm. The cooler sits on a 12mm
 plywood base plate that distributes load across the grating and prevents the
 housing from catching in grate openings. Two 25mm ratchet straps loop over the
 cooler and hook to near walkway cantilever bracket arms at X≈457mm and X≈914mm.
@@ -356,7 +356,7 @@ rectangular bolt patterns and 200mm vertical legs for the increased moment
 demand of the 500mm cantilever arm.
 
 The ceiling-hung right walkway is the most compliant section. Five pairs of M10
-threaded rod hangers (2,313mm free length) support the two bearer angles and
+threaded rod hangers (2313mm free length) support the two bearer angles and
 grating. Rod deflection under load is proportional to length — the 2.3m rods
 will deflect more than the short cantilever brackets. However, the 300mm
 walkway width limits the moment arm, and the 5-pair hanger arrangement
@@ -374,15 +374,15 @@ distributes load across multiple rods.
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
 | 5 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 | $75–$130 |
 | 6 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 | $5–$10 |
-| 7 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2,362mm long | 2 | $40–$70 |
-| 8 | M10 threaded rod | 2,313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
+| 7 | Bearer angle (right walkway) | 25×25×5mm steel L-angle, 2362mm long | 2 | $40–$70 |
+| 8 | M10 threaded rod | 2313mm length (ceiling to bearer) | 10 (5 pairs) | $50–$80 |
 | 9 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
 | 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
 | 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
-| 12 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1,762mm long | 1 | $25–$45 |
+| 12 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1762mm long | 1 | $25–$45 |
 | 13 | Floor support leg | 25×25×3mm aluminum SHS, 75mm tall | 3 | $10–$20 |
 | 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
-| 15 | Bearing strip | 25×25×3mm aluminum angle, ~1,762mm long | 1 | $15–$25 |
+| 15 | Bearing strip | 25×25×3mm aluminum angle, ~1762mm long | 1 | $15–$25 |
 | 16 | Anti-slip restraint kit | 5mm flat plate + stop lip + lock block + M8 thumb screw bolt per bearer end | 2 sets | $20–$35 |
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |

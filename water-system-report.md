@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a 4,499 × 2,388 mm image plane inside a 20 ft ISO shipping container.
+The camera operates in remote locations with no mains water or drainage. This document specifies a self-contained three-circuit water system for off-grid cyanotype processing on a 4499 × 2388mm image plane inside a 20 ft ISO shipping container.
 
 ---
 
@@ -66,10 +66,10 @@ It will **not**:
 
 ### Per-print water requirement
 
-Processing a ~106 sq ft print in the processing tray (4,459 × 2,200 mm), flooded to 6 mm (¼ inch) depth:
+Processing a ~106 sq ft print in the processing tray (4459 × 2200mm), flooded to 6mm (¼ inch) depth:
 
 ```
-Volume per flood = 106 sq ft × (6 mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
+Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
                  = 2.09 × 7.48 = 15.6 gallons ≈ 16 gallons per wash cycle
 ```
 
@@ -109,8 +109,8 @@ IBC-2 (600L) ──┘                                                      │
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
-- Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3,859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1,181mm) at Z=2,250mm — positioned above IBC tops (Z=2,082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
+- Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 5.2 Brown System — Used Water Recycling
 
@@ -169,7 +169,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 - IBC-4 is a standard 600L HDPE cage tote with DN50 butterfly valve (S60×6 thread), identical frame to IBC-1 through IBC-3
 - IBC-4 sits in the right end zone in a 2x2 stack: bottom-far position (Yd=1,316–2,332)
 - Cap sealed before transport; label contents, date, location, UN numbers for ferricyanide/iron compounds
-- Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1,181mm, Z=200mm) — no need to open cargo doors
+- Drained remotely via external 2" NPT bulkhead fitting with camlock on the container end wall centerline (Yd=1181mm, Z=200mm) — no need to open cargo doors
 - **Do not leave IBC valve open** — evaporation and UV exposure can drive ferricyanide chemistry
 
 ### 5.4 Processing Tray
@@ -181,12 +181,12 @@ Print washing takes place inside the container on a shallow processing tray that
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; stainless resists pitting from citric acid pH adjustment |
-| Overall footprint | 4,459 × 2,200 mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side. Spans Yd=80–2,280 |
-| Panel size (each) | 2,229 × 2,200 mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280 mm) |
-| Rim height | 50 mm (all four sides) | Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm) |
-| Floor-to-rim height | 50 mm | Tray sits on tapered HDPE shim strips on the container floor (see slope support below) |
-| Fall | 1:200 dual-axis (10mm over 2,200mm Yd-axis + 11mm over 2,229mm X-axis) toward sump at near rim center | Water converges from both axes toward the sump well |
-| Sump well | 150 × 100 mm, 20mm deep, pressed into tray floor at low point (X=2,399, Yd=80) | Collects water at lowest point; P-04 suction pickup tube sits in sump |
+| Overall footprint | 4459 × 2200mm (2 panels, field-bolted) | Fits inside film plane rails (X=150–4,649) with 20mm clearance per side. Spans Yd=80–2,280 |
+| Panel size (each) | 2229 × 2200mm | Two equal panels, butted at midpoint and sealed with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2340 × 2280mm) |
+| Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin. Maximum height constrained to 75mm by film plane carriage clearance at 140mm (rail offset 100mm + carriage 40mm) |
+| Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor (see slope support below) |
+| Fall | 1:200 dual-axis (10mm over 2200mm Yd-axis + 11mm over 2229mm X-axis) toward sump at near rim center | Water converges from both axes toward the sump well |
+| Sump well | 150 × 100mm, 20mm deep, pressed into tray floor at low point (X=2,399, Yd=80) | Collects water at lowest point; P-04 suction pickup tube sits in sump |
 | Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
 
 **Slope support — tapered HDPE shim strips:**
@@ -199,8 +199,8 @@ The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded 
 | Parameter | Value |
 |-----------|-------|
 | Material | HDPE flat bar, 50mm wide |
-| Quantity | 5 strips running the full tray depth (Yd direction, 2,200mm each) |
-| Spacing | ~1,000mm apart across tray width (X direction) |
+| Quantity | 5 strips running the full tray depth (Yd direction, 2200mm each) |
+| Spacing | ~1000mm apart across tray width (X direction) |
 | Profile | Tapered: 0mm at near rim (Yd=80, drain end) → 10mm at far rim (Yd=2,280) |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
 | Function | Creates the Yd-axis slope. X-axis slope is formed into the tray panels during fabrication (pressed crown) |
@@ -215,7 +215,7 @@ Instead of a through-floor drain fitting, the tray has a shallow sump well press
 | Parameter | Value |
 |-----------|-------|
 | Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
-| Sump location | X=2,399mm (tray center), Yd=80mm (near rim, low point) |
+| Sump location | X=2399mm (tray center), Yd=80mm (near rim, low point) |
 | Sump forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" HDPE dip tube, stainless foot valve with strainer screen (prevents debris) |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75L residual) |
@@ -254,15 +254,15 @@ The spray bar delivers Blue (clean) water evenly across the processing tray duri
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
-**Design concept:** The beam spans from 30mm inside the left tray lip to 30mm inside the right tray lip (X=200 to X=4,599, span=4,399mm), extending under the walkway grating at each end. At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. A 1" PVC Sch 40 pipe inside the aluminum SHS bore serves as the spray pipe — water flows through the PVC pipe and exits through 2mm holes drilled in the pipe wall, aligned with 12mm apertures in the beam bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
+**Design concept:** The beam spans from 30mm inside the left tray lip to 30mm inside the right tray lip (X=200 to X=4,599, span=4399mm), extending under the walkway grating at each end. At each end, a two-wheel carriage rolls on the processing tray floor beneath the walkway grating. A 1" PVC Sch 40 pipe inside the aluminum SHS bore serves as the spray pipe — water flows through the PVC pipe and exits through 2mm holes drilled in the pipe wall, aligned with 12mm apertures in the beam bottom face. This eliminates the separate HDPE spray tube, pipe clamps, UHMW runner pads, and walkway-mounted guide rails of the earlier runner design.
 
 **Design constraints:**
 
-- Beam spans 4,399mm (30mm inside each tray lip), extending under walkway grating at both ends
+- Beam spans 4399mm (30mm inside each tray lip), extending under walkway grating at both ends
 - Beam top must clear walkway grating underside (Z=75mm) to avoid contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath the walkways
 - Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit in the walkway grating
-- Must travel 2,200mm along Yd (tray depth, near rim to far rim)
+- Must travel 2200mm along Yd (tray depth, near rim to far rim)
 - Tray rim walls provide lateral guidance — no separate guide rails required
 - Must accommodate a flexible water connection that follows the bar as it moves
 
@@ -270,7 +270,7 @@ The spray bar delivers Blue (clean) water evenly across the processing tray duri
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 6061-T6 AL SHS, 40×40×3mm, 4,399mm long (two 8ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
+| Beam | 6061-T6 AL SHS, 40×40×3mm, 4399mm long (two 8ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
 | Internal spray pipe | 1" Sch 40 PVC pipe (OD 33.4mm), close fit in 34mm bore. 2mm holes at each aperture | 1 | Water distribution — sits inside beam bore |
 | PVC socket caps | 1" Sch 40, solvent welded to pipe ends | 2 | Seal both ends of PVC spray pipe |
 | Bulkhead fitting | 1/2" NPT, brass, through beam wall at center | 1 | Center feed — connects hose to PVC pipe bore |
@@ -290,7 +290,7 @@ The spray bar delivers Blue (clean) water evenly across the processing tray duri
 
 #### 3.5.1 Beam / Spray Pipe
 
-The structural beam doubles as the water distribution pipe. A single 6061-T6 aluminum SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3,859mm between the inner edges of the left and right walkways. The internal bore (34×34mm) carries pressurized water from the feed end to all spray holes.
+The structural beam doubles as the water distribution pipe. A single 6061-T6 aluminum SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3859mm between the inner edges of the left and right walkways. The internal bore (34×34mm) carries pressurized water from the feed end to all spray holes.
 
 **Beam properties:**
 
@@ -299,13 +299,13 @@ The structural beam doubles as the water distribution pipe. A single 6061-T6 alu
 | Material | 6061-T6 aluminum alloy |
 | Section | 40×40×3mm SHS (1-1/2" × 1-1/2" × 1/8") |
 | Internal bore | 34×34mm |
-| Span | 3,859mm (X=470 to X=4,329) |
-| Second moment of area (I) | 101,972 mm⁴ |
-| Cross-sectional area | 444 mm² |
+| Span | 3859mm (X=470 to X=4,329) |
+| Second moment of area (I) | 101972mm⁴ |
+| Cross-sectional area | 444mm² |
 | Linear mass (beam only) | 1.20 kg/m |
-| Beam mass (3,859mm) | 4.63 kg |
+| Beam mass (3859mm) | 4.63 kg |
 
-**Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online Metals, and metals suppliers. Two 8 ft lengths are required for the 3,859mm span; see §3.5.5 for the splice joint detail.
+**Sourcing:** Standard 8 ft (2438mm) lengths are widely stocked at Home Depot, Online Metals, and metals suppliers. Two 8 ft lengths are required for the 3859mm span; see §3.5.5 for the splice joint detail.
 
 **Spray holes:**
 
@@ -317,8 +317,8 @@ The structural beam doubles as the water distribution pipe. A single 6061-T6 alu
 | Hole spacing | 100mm center-to-center |
 | Number of holes | 38 |
 | End margin | 79.5mm each end |
-| Total hole area | 268.6 mm² |
-| Bore cross-section area | 1,156 mm² |
+| Total hole area | 268.6mm² |
+| Bore cross-section area | 1156mm² |
 | Hole-to-bore area ratio | 23.2% |
 
 The 23% hole-to-bore ratio ensures reasonably uniform pressure along the beam length. At 3.5 GPM total flow, bore inlet velocity is only 0.19 m/s (Re ≈ 6,500) — friction losses along the bore are small compared to the orifice pressure drop through each 3mm hole. End-to-end flow variation is estimated at <15%.
@@ -388,7 +388,7 @@ The beam's bottom face sits at Z=10mm (8mm above tray floor). The beam extends b
 
 #### 3.5.4 Structural Analysis
 
-**Loading (simply supported, uniform distributed load across 3,859mm span):**
+**Loading (simply supported, uniform distributed load across 3859mm span):**
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
@@ -417,7 +417,7 @@ The L/406 span ratio under full water load is marginal by structural standards b
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (40×40×3mm × 3,859mm) | 4.63 |
+| Beam (40×40×3mm × 3859mm) | 4.63 |
 | Water in bore | 4.46 |
 | L-brackets (2×) | 0.40 |
 | Wheel assemblies (4× wheel + fork + axle) | 0.60 |
@@ -430,12 +430,12 @@ Per wheel load (wet): 10.5 / 4 = 2.6 kg — well within any small nylon wheel's 
 
 #### 3.5.5 Beam Splice Joint
 
-Standard 8 ft (2,438mm) SHS stock is too short for the 3,859mm span. Two 8 ft lengths are joined with an internal sleeve splice at approximately midspan:
+Standard 8 ft (2438mm) SHS stock is too short for the 3859mm span. Two 8 ft lengths are joined with an internal sleeve splice at approximately midspan:
 
 - **Sleeve:** 150mm length of 30×30mm (1-1/4" × 1-1/4") solid aluminum bar stock, inserted into the 34×34mm bore. Provides 2mm clearance per side.
 - **Sealant:** Apply marine-grade RTV silicone (or epoxy) to the sleeve exterior before insertion. This seals the joint watertight while allowing future disassembly with heat if needed.
 - **Fastening:** 2× M5 set screws through the SHS wall on each side of the joint (4 total), engaging shallow dimples drilled in the sleeve. Prevents the two beam halves from sliding apart under water pressure.
-- **Location:** Position the splice at midspan (1,930mm from each end). The sleeve maintains bending stiffness across the joint — the solid 30mm bar has higher I than the hollow beam wall, so the splice is not the weak point.
+- **Location:** Position the splice at midspan (1930mm from each end). The sleeve maintains bending stiffness across the joint — the solid 30mm bar has higher I than the hollow beam wall, so the splice is not the weak point.
 
 **Alternative:** Source a single 16 ft or 20 ft length (available from metals suppliers by special order or cut-to-length service). This eliminates the splice entirely and is preferred if available at reasonable cost.
 
@@ -444,18 +444,18 @@ Standard 8 ft (2,438mm) SHS stock is too short for the 3,859mm span. Two 8 ft le
 | Parameter | Value |
 |-----------|-------|
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
-| Bore cross-section | 34 × 34mm = 1,156 mm² |
+| Bore cross-section | 34 × 34mm = 1156mm² |
 | Bore inlet velocity | 0.19 m/s (at 3.5 GPM) |
 | Reynolds number (bore) | ~6,500 (transitional/low turbulent) |
 | Spray holes | 38 × Ø3mm |
-| Total hole area | 268.6 mm² |
+| Total hole area | 268.6mm² |
 | Flow per hole | 0.092 GPM (0.35 L/min) |
 
 The bore is deliberately oversized relative to the total spray hole area (bore 4.3× larger). This ensures the bore acts as a low-loss plenum: pressure is nearly uniform along the bore length, and each hole delivers approximately equal flow regardless of its distance from the feed end. The Shurflo 2088's internal bypass regulation maintains 45 PSI regardless of flow demand.
 
 #### 3.5.7 Water Connection
 
-BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at X=2,399mm (pinhole centerline), Z=900mm — waist height from the walkway deck, directly in front of the operator during wash passes. A 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 down to the beam's center feed bulkhead fitting. The hose is coiled when the bar is near the pinhole wall (Yd≈80) and extends as the bar is pushed toward the far wall (Yd≈2,280). The hose trails along the near tray rim, staying clear of the print surface.
+BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at X=2399mm (pinhole centerline), Z=900mm — waist height from the walkway deck, directly in front of the operator during wash passes. A 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4m length of 1/2" reinforced braided PVC hose connects from BV-02 down to the beam's center feed bulkhead fitting. The hose is coiled when the bar is near the pinhole wall (Yd≈80) and extends as the bar is pushed toward the far wall (Yd≈2,280). The hose trails along the near tray rim, staying clear of the print surface.
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
@@ -600,12 +600,12 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump p
 
 ## 9. Equipment Layout
 
-See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4,649–5,893mm), arranged in a 2x2 stack. The optical zone (X=150–4,649mm) contains only the processing tray and perimeter walkways at floor level.
+See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4649–5893mm), arranged in a 2x2 stack. The optical zone (X=150–4649mm) contains only the processing tray and perimeter walkways at floor level.
 
 **Container floor plan — all systems (top-down, 1:75):**
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
-IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
+IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-justified to the far end wall. Near column (Yd=30–1,046): IBC-1 Blue (top) + IBC-3 Brown (bottom). Far column (Yd=1,316–2,332): IBC-2 Blue (top) + IBC-4 Waste (bottom). A 270mm plumbing corridor between the two columns (Yd=1,046–1,316) carries all internal supply and return lines. Total capacity: 4x600L = 2,400L. All IBCs are loaded empty through the cargo doors and filled/drained remotely via 3x external 2" NPT bulkhead fittings (X1/X3/X4) through the container end wall. IBC wall clearance is 30mm (near wall to near column edge).
 
 | Zone | Contents | X (mm) | Yd (mm) | H (mm) |
 |------|----------|--------|---------|--------|
@@ -621,9 +621,9 @@ IBCs are arranged in a **2x2 stack** in the right end zone at X=4,674mm, right-j
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2,400–2,700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1,316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the X4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5,550mm if routed via manifold).
+**Hose routing:** Pump manifold (P-01, P-02, P-04) is wall-mounted at X=2400–2700mm on the pinhole wall (Y=0 face). Supply and return hoses run along the pinhole wall to the right end zone, then through the 270mm central plumbing corridor (Yd=1,046–1,316) between the two IBC columns. Maximum run ~5.5m (manifold to far-column IBCs at Yd=1316mm). Waste line from 3W-DV-01/3W-DV-02 routes along the pinhole wall through the corridor to IBC-4 in the far column — maximum run ~4m. P-03 (waste evacuation) is mounted in the IBC plumbing corridor directly on the X4 waste drain run, minimizing pipe length from IBC-4 to the external drain port (~700mm vs. ~5550mm if routed via manifold).
 
-**External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1,181mm), stacked vertically:
+**External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline (Yd=1181mm), stacked vertically:
 
 | Port | Function | Z (mm) | Connects to |
 |------|----------|--------|-------------|
@@ -631,7 +631,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | X3 — Drain Brown | Used water drain | 400 | IBC-3 (bottom, near column) |
 | X4 — Drain Waste | Waste water drain | 200 | IBC-4 (bottom, far column) |
 
-A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1,195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.
+A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
@@ -710,8 +710,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
 | [304 SS sheet, 16-ga (1.5mm)](https://www.onlinemetals.com/en/buy/stainless-steel/304-stainless-steel-sheet) | #4 brushed, 4'×8' sheets | 4 | Online Metals | $180–$250/sheet | **$720–$1,000** |
-| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2,229×2,200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
-| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2,200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
+| Fabrication (cut, brake, weld, press sump) | Two tray halves: each 2229×2200mm with 50mm rims, pressed sump well (150×100×20mm) in near panel, welded corners | 1 job | Local sheet metal shop | $450–$850 | **$450–$850** |
+| [HDPE flat bar 50×10mm](https://www.mcmaster.com/8619K451) | Tapered shim strips for tray slope support, 2200mm long, 5 required | 5 | McMaster-Carr / TAP Plastics | $8–$15 each | **$40–$75** |
 | [1" SS foot valve with strainer](https://www.amazon.com/s?k=1+inch+stainless+foot+valve+strainer) | Suction pickup for sump well, prevents debris and maintains prime | 1 | Amazon | $15–$25 | **$20** |
 | [1" reinforced suction hose, 6 ft](https://www.amazon.com/s?k=1+inch+reinforced+suction+hose+6+ft) | P-04 suction line from sump pickup over tray rim to pump manifold (P-04) | 1 | Amazon | $12–$20 | **$15** |
 | [Silicone gasket strip, FDA grade](https://www.mcmaster.com/1460N14) | 1/16" × 1" × 10 ft, for center flange seal | 1 roll | McMaster-Carr | $15–$25 | **$20** |
@@ -750,7 +750,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
-| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3,859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
+| [6061-T6 aluminum SHS 1-1/2"×1-1/2"×1/8"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm, 8 ft lengths. 2 pieces joined with internal sleeve for 3859mm span | 2 | Online Metals / Metal Supermarket | $18–$28/8ft | **$36–$56** |
 | [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-brackets (2×) + end caps (2×). ~300×600mm sheet, cut and bend | 1 | Online Metals | $15–$25 | **$15–$25** |
 | [30×30mm (1-1/4"×1-1/4") aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long. Cut from 1 ft minimum order | 1 | Online Metals | $8–$12 | **$8–$12** |
 | [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels — flat tread, ≥25 kg rated | 4 | Amazon / McMaster-Carr | $3–$5 | **$12–$20** |

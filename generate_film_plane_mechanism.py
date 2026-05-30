@@ -1543,17 +1543,19 @@ def sheet6():
     for rx, label in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
         ax.add_patch(Rectangle((rx - rail_len / 2, FH - rail_h), rail_len, rail_h,
                                 fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
-        ax.text(rx, FH - rail_h / 2,
-                f"CEIL RAIL — {label}", color=BG, fontsize=5,
-                ha="center", va="center", **FONT, zorder=6)
+        ldr_x = rx - 350 if label == "LEFT" else rx + 350
+        ldr_ha = "right" if label == "LEFT" else "left"
+        leader(ax, rx, FH - rail_h / 2, ldr_x, FH + 80,
+               f"CEIL RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
     # Floor rails
     for rx, label in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
         ax.add_patch(Rectangle((rx - rail_len / 2, 0), rail_len, rail_h,
                                 fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
-        ax.text(rx, rail_h / 2,
-                f"FLOOR RAIL — {label}", color=BG, fontsize=5,
-                ha="center", va="center", **FONT, zorder=6)
+        ldr_x = rx - 350 if label == "LEFT" else rx + 350
+        ldr_ha = "right" if label == "LEFT" else "left"
+        leader(ax, rx, rail_h / 2, ldr_x, -80,
+               f"FLOOR RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
     # ── Corner carriages + leadscrews + handwheels ────────────────────────────
     carr_w = 70

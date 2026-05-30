@@ -1540,7 +1540,7 @@ def sheet6():
                                 fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
         ldr_x = rx - 350 if label == "LEFT" else rx + 350
         ldr_ha = "right" if label == "LEFT" else "left"
-        leader(ax, rx, FH - rail_h / 2, ldr_x, FH + 150,
+        leader(ax, rx, FH - rail_h / 2, ldr_x, FH + 120,
                f"CEIL RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
     # Floor rails
@@ -1549,7 +1549,7 @@ def sheet6():
                                 fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
         ldr_x = rx - 350 if label == "LEFT" else rx + 350
         ldr_ha = "right" if label == "LEFT" else "left"
-        leader(ax, rx, rail_h / 2, ldr_x, -80,
+        leader(ax, rx, rail_h / 2, ldr_x, -120,
                f"FLOOR RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
     # ── Corner carriages + leadscrews + handwheels ────────────────────────────
@@ -1716,11 +1716,11 @@ def sheet6():
                above=False, font=FONT)
 
     # Container height (left side)
-    draw_dim_v(ax, -500, 0, FH,
+    draw_dim_v(ax, -250, 0, FH,
                f"INTERIOR HEIGHT\n{H:,} mm", offset=150, color=DIM, fs=6.5, font=FONT)
 
     # Frame height (right side)
-    draw_dim_v(ax, FW + 550, fp_bot, fp_top,
+    draw_dim_v(ax, FW + 250, fp_bot, fp_top,
                f"FRAME HEIGHT\n{fp_top - fp_bot:,} mm", offset=30, color=C_FLAT,
                fs=6.5, right=True, font=FONT)
 

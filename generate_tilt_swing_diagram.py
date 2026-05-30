@@ -93,7 +93,7 @@ C_BALL  = '#E0E0E0'
 def draw_sheet1():
     """Sheet 1: Front view of TSB assembly at 1:2 scale."""
     SC = 2.0
-    fig_w, fig_h = 8, 8
+    fig_w, fig_h = 8, 7.2
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')

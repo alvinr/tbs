@@ -2052,7 +2052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../distortion-renders/" class="md-nav__link">
+      <a href="../complete-distortion-renders/" class="md-nav__link">
         
   
   
@@ -2060,6 +2060,34 @@
     
   
     Distortion Renders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tilt-swing-board-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tilt & Swing Distortion Renders
   
 
     
@@ -2359,7 +2387,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="why-a-lens-changes-exposure-time">Why a Lens Changes Exposure Time<a class="headerlink" href="#why-a-lens-changes-exposure-time" title="Permanent link">&para;</a></h1>
 <h2 id="a-first-principles-explanation-of-aperture-light-collection-and-reciprocity">A First-Principles Explanation of Aperture, Light Collection, and Reciprocity<a class="headerlink" href="#a-first-principles-explanation-of-aperture-light-collection-and-reciprocity" title="Permanent link">&para;</a></h2>
-<p><strong>Camera:</strong> Option B, f = 2,362 mm, pinhole Ø 2.17 mm (f/1088)<br />
+<p><strong>Camera:</strong> Option B, f = 2362mm, pinhole Ø 2.17mm (f/1088)<br />
 <strong>Baseline:</strong> ISO 6 silver gelatin paper, full sun, Schwarzschild corrected — pinhole exposure ~43 minutes<br />
 <strong>Lens comparison:</strong> Process lens or telescope objective at f/8–f/128</p>
 <blockquote>
@@ -2377,10 +2405,10 @@
 <div class="highlight"><pre><span></span><code>Φ_pinhole ∝ A_pinhole = π(d/2)²
 </code></pre></div>
 <p>where d is the pinhole diameter.</p>
-<p>For d = 2.17 mm:</p>
-<div class="highlight"><pre><span></span><code>A_pinhole = π × (1.085)² = 3.70 mm²
+<p>For d = 2.17mm:</p>
+<div class="highlight"><pre><span></span><code>A_pinhole = π × (1.085)² = 3.70mm²
 </code></pre></div>
-<p>This is the collecting area. Every photon contributing to the image at any point on the 116 sq ft image plane has passed through this 3.70 mm² opening. No others.</p>
+<p>This is the collecting area. Every photon contributing to the image at any point on the 116 sq ft image plane has passed through this 3.70mm² opening. No others.</p>
 <p><strong>Source:</strong> Born, M. &amp; Wolf, E., <em>Principles of Optics</em>, 7th ed., Cambridge University Press, 1999, §8.6.1. The treatment of the pinhole as a geometric aperture stop, passing only rays within the solid angle subtended by the opening, is the foundational model for pinhole imaging. The proportionality of image irradiance to aperture area follows directly from basic radiometric principles (see also Hecht, E., <em>Optics</em>, 5th ed., Pearson, 2017, §5.1).</p>
 <h3 id="12-the-lens-a-concentrating-device">1.2 The Lens — A Concentrating Device<a class="headerlink" href="#12-the-lens-a-concentrating-device" title="Permanent link">&para;</a></h3>
 <p>A lens does something categorically different. It does not merely select rays that happen to be aimed correctly. It <em>bends</em> incoming rays so that all rays passing through any part of the lens aperture — regardless of their initial direction — are redirected to converge at the same image point.</p>
@@ -2389,11 +2417,11 @@
 <div class="highlight"><pre><span></span><code>A_lens = π(D/2)²
 </code></pre></div>
 <p>For a lens of focal length f_L at f-number N, the aperture diameter D = f_L / N.</p>
-<p>For a lens at f/16 installed in this camera (f_L = 2,362 mm):</p>
-<div class="highlight"><pre><span></span><code>D = 2,362 / 16 = 147.6 mm
-A_lens = π × (73.8)² = 17,094 mm²
+<p>For a lens at f/16 installed in this camera (f_L = 2362mm):</p>
+<div class="highlight"><pre><span></span><code>D = 2,362 / 16 = 147.6mm
+A_lens = π × (73.8)² = 17094mm²
 </code></pre></div>
-<p>Every ray intercepted across this 147.6 mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70 mm². The lens at f/16 collects 17,094 mm².</p>
+<p>Every ray intercepted across this 147.6mm diameter disc is redirected toward the correct image point. The pinhole collects 3.70mm². The lens at f/16 collects 17094mm².</p>
 <p><strong>Source:</strong> Smith, W.J., <em>Modern Optical Engineering</em>, 4th ed., McGraw-Hill, 2008, §2.1 (Radiometry and Photometry of Optical Systems). The derivation of image plane irradiance as a function of aperture area and f-number is standard: E = (π/4) × L × (1/N²) × cos⁴θ, where L is scene luminance and θ is the off-axis angle.</p>
 <h3 id="13-the-ratio">1.3 The Ratio<a class="headerlink" href="#13-the-ratio" title="Permanent link">&para;</a></h3>
 <p>The ratio of light per unit time delivered to any image point is simply the ratio of collecting areas:</p>
@@ -2711,7 +2739,7 @@ t_actual = 770^1.176 = 2,488 sec ≈ 41.5 min ≈ 43 min ✓
 - Cloud cover delays exposures by seconds, not tens of minutes
 - Reciprocity failure is negligible — exposure is predictable and repeatable
 - Depth of field of 1.2–2.6 m provides useful control over background sharpness</p>
-<p>The trade-off is that a lens only covers a 300–600 mm diameter central circle of the 5,893 mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.</p>
+<p>The trade-off is that a lens only covers a 300–600mm diameter central circle of the 5893mm wide image plane. The choice between pinhole (full plane, slow) and lens (central medallion, fast) is therefore also a compositional and aesthetic decision, not only a technical one.</p>
 <h3 id="the-fundamental-recommendation">The fundamental recommendation<a class="headerlink" href="#the-fundamental-recommendation" title="Permanent link">&para;</a></h3>
 <p>The two modes are not competing solutions to the same problem. They are different cameras sharing the same box:</p>
 <ul>
@@ -2719,7 +2747,7 @@ t_actual = 770^1.176 = 2,488 sec ≈ 41.5 min ≈ 43 min ✓
 <p><strong>Pinhole mode:</strong> The full 116 sq ft image plane records everything in the field of view, all at the same soft resolution, with 43-minute exposures. Best for scenes that do not move — landscapes, architecture, long-duration light painting.</p>
 </li>
 <li>
-<p><strong>Lens mode:</strong> A sharp central medallion (Ø 300–600 mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.</p>
+<p><strong>Lens mode:</strong> A sharp central medallion (Ø 300–600mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.</p>
 </li>
 </ul>
 <p>Building the camera with the <strong>interchangeable plate system</strong> (see fabrication drawings, sheets 1 and 2) costs nothing beyond a few hours of machining and preserves both modes indefinitely. The plate swap takes two minutes in the dark.</p>

@@ -81,18 +81,6 @@ WALL FRAME (fixed, welded to container)
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
 
-### Engineering Drawings
-
-**Sheet 1 — Front View** (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.
-
-![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
-
-**Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
-
-![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
-
----
-
 ## 4. Movement Specification
 
 | Axis | Control | Travel | Resolution | Image effect |
@@ -315,7 +303,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 ## 13. Parts List
 
-### Structural
+### 13.1 Structural
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
@@ -332,14 +320,14 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
 | Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
 
-### Light Seal
+### 13.2 Light Seal
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
 | Photographic bellows (custom) | Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene | Micro-Tools (microtools.com) — custom order | Ames Camera Repair (custom bellows) | ~$80–150 |
 | Neoprene cord seal Ø4mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
 
-### Finishing & Fabrication
+### 13.3 Finishing & Fabrication
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|----------|
@@ -349,7 +337,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 | Knurled knob stock Ø40mm | Al, 4 off | Jergens (#49525) or machine from bar | ~$15 ea |
 | Angular scale engraving | Al 80×15×2mm, 2 off | LaserPros, Chatsworth CA | ~$35–50 |
 
-### Cost Summary
+### 13.4 Cost Summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|

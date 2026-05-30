@@ -148,6 +148,7 @@ DIAG_FILES=(
     "film-plane-sheet3.png"
     "film-plane-sheet4.png"
     "film-plane-sheet5.png"
+    "film-plane-sheet6.png"
     "film-plane-distortion-c0.png"
     "film-plane-distortion-c1.png"
     "film-plane-distortion-c2.png"

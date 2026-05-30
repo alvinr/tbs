@@ -118,6 +118,9 @@ Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 **Sheet 5 — Muslin clamp detail: cam-lever spring clamp cross-section, open/closed positions, plan view of frame attachment, and elevation at 150mm spacing**
 ![TBS-001 Film Plane Mechanism — Sheet 5](assets/film-plane-sheet5.png)
 
+**Sheet 6 — System schematic: four-corner frame front elevation showing rails, leadscrews, handwheels, and rod-end bearings**
+![TBS-001 Film Plane Mechanism — Sheet 6](assets/film-plane-sheet6.png)
+
 ---
 
 ## 6. Film Plane Distortion Renders

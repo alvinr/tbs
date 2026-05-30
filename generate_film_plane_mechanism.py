@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """
 generate_film_plane_mechanism.py
-Moveable film plane mechanism — engineering drawings (5 sheets)
+Moveable film plane mechanism — engineering drawings (6 sheets)
 4-CORNER INDEPENDENT DESIGN: TL, TR, BL, BR each driven by its own leadscrew.
 Supports full tilt, swing, and compound tilt+swing independently.
 
@@ -12,6 +12,7 @@ Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
 Sheet 3 — Frame & hardware detail: corner bracket, universal joint, ACM panel
 Sheet 4 — Movement specification table & BOM
 Sheet 5 — Muslin clamp detail: cam-lever spring clamp
+Sheet 6 — System schematic: four-corner frame front elevation
 """
 
 import numpy as np
@@ -293,7 +294,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -545,7 +546,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 5",
+    title_block(ax_tb, "SHEET 2 OF 6",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -775,7 +776,7 @@ def sheet3():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 5",
+    title_block(ax_tb, "SHEET 3 OF 6",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Frame & hardware details — 4-corner design",
                 scale_note="As noted",
@@ -894,7 +895,7 @@ def sheet4():
             ha="center", va="center", style="italic", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 4 OF 5",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1474,7 +1475,7 @@ def sheet5():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 5 OF 5",
+    title_block(ax_tb, "SHEET 5 OF 6",
                 drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
@@ -1487,6 +1488,261 @@ def sheet5():
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet5.png")
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 6 — SYSTEM SCHEMATIC: Four-corner frame front elevation
+#
+# View: looking at the film plane from the pinhole side (interior elevation).
+# Shows ceiling/floor rail pairs, four corner carriages with leadscrews and
+# handwheels, film plane frame with rod-end bearings at each corner.
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet6():
+    fig, ax = plt.subplots(figsize=(16, 10))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.axis("off")
+
+    # Schematic coordinates (mm) — front elevation
+    # X = container width (0=left wall, L=5893=right wall)
+    # Z = height (0=floor, H=2388=ceiling)
+    FW = L       # frame width extent for drawing
+    FH = H       # frame height extent
+
+    PAD_X = 1100
+    PAD_Z = 550
+    ax.set_xlim(-PAD_X, FW + PAD_X)
+    ax.set_ylim(-PAD_Z, FH + PAD_Z)
+    ax.set_aspect("equal")
+
+    # ── Container outline (section cut) ───────────────────────────────────────
+    wall_t = 40
+    # Floor
+    ax.add_patch(Rectangle((-wall_t, -wall_t), FW + 2 * wall_t, wall_t,
+                            fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
+    ax.text(FW / 2, -wall_t / 2, "CONTAINER FLOOR",
+            color=BG, fontsize=6, ha="center", va="center", **FONT, zorder=4)
+    # Ceiling
+    ax.add_patch(Rectangle((-wall_t, FH), FW + 2 * wall_t, wall_t,
+                            fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
+    ax.text(FW / 2, FH + wall_t / 2, "CONTAINER CEILING",
+            color=BG, fontsize=6, ha="center", va="center", **FONT, zorder=4)
+    # Left wall
+    ax.add_patch(Rectangle((-wall_t, -wall_t), wall_t, FH + 2 * wall_t,
+                            fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
+    # Right wall
+    ax.add_patch(Rectangle((FW, -wall_t), wall_t, FH + 2 * wall_t,
+                            fc=STRUCT, ec=WHITE, lw=1.5, zorder=3))
+
+    # Interior fill
+    ax.add_patch(Rectangle((0, 0), FW, FH, fc=GRID, ec="none", zorder=2))
+
+    # ── Rail positions (X coords in this elevation = RAIL_X_L, RAIL_X_R) ─────
+    rail_len = 200    # schematic rail length along optical axis (shown as width here)
+    rail_h = 28       # rail profile height
+
+    # Ceiling rails
+    for rx, label in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
+        ax.add_patch(Rectangle((rx - rail_len / 2, FH - rail_h), rail_len, rail_h,
+                                fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
+        ax.text(rx, FH - rail_h / 2,
+                f"CEIL RAIL — {label}", color=BG, fontsize=5,
+                ha="center", va="center", **FONT, zorder=6)
+
+    # Floor rails
+    for rx, label in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
+        ax.add_patch(Rectangle((rx - rail_len / 2, 0), rail_len, rail_h,
+                                fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
+        ax.text(rx, rail_h / 2,
+                f"FLOOR RAIL — {label}", color=BG, fontsize=5,
+                ha="center", va="center", **FONT, zorder=6)
+
+    # ── Corner carriages + leadscrews + handwheels ────────────────────────────
+    carr_w = 70
+    carr_h = 50
+    hw_r = 45         # handwheel radius
+    ls_w = 12         # leadscrew width (visual)
+
+    corners = [
+        ("TL", RAIL_X_L, FH, "top",    "A"),
+        ("TR", RAIL_X_R, FH, "top",    "B"),
+        ("BL", RAIL_X_L, 0,  "bottom", "C"),
+        ("BR", RAIL_X_R, 0,  "bottom", "D"),
+    ]
+
+    for label, cx, rail_z, pos, ls_id in corners:
+        if pos == "top":
+            cy = rail_z - rail_h - carr_h
+            ax.add_patch(Rectangle((cx - carr_w / 2, cy), carr_w, carr_h,
+                                    fc=MECH, ec=WHITE, lw=1.2, zorder=6))
+            # Leadscrew runs vertically downward from carriage
+            ls_top = cy
+            ls_bot = cy - 400
+            ax.plot([cx, cx], [ls_top, ls_bot], color=RAIL, lw=2.5, zorder=5)
+            # Thread marks
+            for tz in np.arange(ls_bot + 15, ls_top, 18):
+                ax.plot([cx - 6, cx + 6], [tz, tz + 10], color=DIM, lw=0.6, zorder=5)
+            # Handwheel at bottom of leadscrew
+            hw_cy = ls_bot - hw_r - 5
+            ax.add_patch(Circle((cx, hw_cy), hw_r, fc=STRUCT, ec=WHITE,
+                                lw=1.2, alpha=0.85, zorder=6))
+            ax.add_patch(Circle((cx, hw_cy), 6, fc=BG, ec=WHITE, lw=0.8, zorder=7))
+            for ang_d in range(0, 360, 45):
+                ang_r = np.radians(ang_d)
+                ax.plot([cx + 8 * np.cos(ang_r), cx + (hw_r - 5) * np.cos(ang_r)],
+                        [hw_cy + 8 * np.sin(ang_r), hw_cy + (hw_r - 5) * np.sin(ang_r)],
+                        color=WHITE, lw=0.8, zorder=7)
+            # Handwheel label
+            ax.text(cx + hw_r + 30, hw_cy, f"HANDWHEEL {ls_id}",
+                    color=DIM, fontsize=5.5, ha="left", va="center", **FONT, zorder=8)
+        else:
+            cy = rail_h
+            ax.add_patch(Rectangle((cx - carr_w / 2, cy), carr_w, carr_h,
+                                    fc=MECH, ec=WHITE, lw=1.2, zorder=6))
+            # Leadscrew runs vertically upward from carriage
+            ls_bot = cy + carr_h
+            ls_top = ls_bot + 400
+            ax.plot([cx, cx], [ls_bot, ls_top], color=RAIL, lw=2.5, zorder=5)
+            for tz in np.arange(ls_bot + 15, ls_top, 18):
+                ax.plot([cx - 6, cx + 6], [tz, tz + 10], color=DIM, lw=0.6, zorder=5)
+            # Handwheel at top of leadscrew
+            hw_cy = ls_top + hw_r + 5
+            ax.add_patch(Circle((cx, hw_cy), hw_r, fc=STRUCT, ec=WHITE,
+                                lw=1.2, alpha=0.85, zorder=6))
+            ax.add_patch(Circle((cx, hw_cy), 6, fc=BG, ec=WHITE, lw=0.8, zorder=7))
+            for ang_d in range(0, 360, 45):
+                ang_r = np.radians(ang_d)
+                ax.plot([cx + 8 * np.cos(ang_r), cx + (hw_r - 5) * np.cos(ang_r)],
+                        [hw_cy + 8 * np.sin(ang_r), hw_cy + (hw_r - 5) * np.sin(ang_r)],
+                        color=WHITE, lw=0.8, zorder=7)
+            ax.text(cx + hw_r + 30, hw_cy, f"HANDWHEEL {ls_id}",
+                    color=DIM, fontsize=5.5, ha="left", va="center", **FONT, zorder=8)
+
+        # Corner label inside carriage block
+        ax.text(cx, cy + carr_h / 2, label, color=BG, fontsize=7,
+                ha="center", va="center", fontweight="bold", **FONT, zorder=7)
+
+    # ── Film plane frame ──────────────────────────────────────────────────────
+    fp_left = RAIL_X_L
+    fp_right = RAIL_X_R
+    fp_bot = rail_h + carr_h
+    fp_top = FH - rail_h - carr_h
+    frame_t = 12  # frame member thickness (visual)
+
+    # Frame outline (thick rectangle)
+    frame_style = dict(fc="none", ec=C_FLAT, lw=2.8, zorder=8, linestyle="-")
+    ax.add_patch(Rectangle((fp_left, fp_bot), fp_right - fp_left, fp_top - fp_bot,
+                            **frame_style))
+
+    # Frame member fill (thin strips along edges)
+    for rect_args in [
+        (fp_left, fp_bot, fp_right - fp_left, frame_t),               # bottom
+        (fp_left, fp_top - frame_t, fp_right - fp_left, frame_t),     # top
+        (fp_left, fp_bot, frame_t, fp_top - fp_bot),                  # left
+        (fp_right - frame_t, fp_bot, frame_t, fp_top - fp_bot),       # right
+    ]:
+        ax.add_patch(Rectangle(rect_args[:2], rect_args[2], rect_args[3],
+                                fc=STRUCT2, ec="none", lw=0, zorder=7, alpha=0.5))
+
+    # ── Rod-end bearings at each corner of the frame ──────────────────────────
+    bearing_r = 22
+    bearing_positions = [
+        (fp_left, fp_top),    # TL
+        (fp_right, fp_top),   # TR
+        (fp_left, fp_bot),    # BL
+        (fp_right, fp_bot),   # BR
+    ]
+    for bx, bz in bearing_positions:
+        ax.add_patch(Circle((bx, bz), bearing_r, fc=MECH, ec=WHITE,
+                            lw=1.0, zorder=9))
+        ax.add_patch(Circle((bx, bz), bearing_r * 0.45, fc=BG, ec=WHITE,
+                            lw=0.8, zorder=10))
+
+    # ── Central label ─────────────────────────────────────────────────────────
+    fp_cx = (fp_left + fp_right) / 2
+    fp_cz = (fp_bot + fp_top) / 2
+    ax.text(fp_cx, fp_cz + 80, "FILM PLANE FRAME",
+            color=C_FLAT, fontsize=10, ha="center", va="center",
+            fontweight="bold", **FONT, zorder=11)
+    ax.text(fp_cx, fp_cz,
+            f"{RAIL_X_R - RAIL_X_L:,} mm wide  ×  {H:,} mm tall",
+            color=C_FLAT, fontsize=7.5, ha="center", va="center", **FONT, zorder=11)
+    ax.text(fp_cx, fp_cz - 80,
+            "ROD-END BEARING each corner",
+            color=MECH, fontsize=7, ha="center", va="center", **FONT, zorder=11)
+
+    # ── Leaders ───────────────────────────────────────────────────────────────
+    # Leadscrew leader (from TL leadscrew)
+    ls_mid_z = (FH - rail_h - carr_h - 200)
+    leader(ax, RAIL_X_L + 10, ls_mid_z,
+           RAIL_X_L + 450, ls_mid_z + 200,
+           "3/4\"-6 ACME\nLEADSCREW\n(one per corner)",
+           color=RAIL, ha="left", fs=6.5, font=FONT)
+
+    # Rod-end bearing leader (from TL bearing)
+    leader(ax, fp_left + bearing_r, fp_top - bearing_r,
+           fp_left + 450, fp_top + 100,
+           "GIR25-DO ROD-END\nSPHERICAL BEARING\n(±45° all axes)",
+           color=MECH, ha="left", fs=6.5, font=FONT)
+
+    # Carriage leader (from TR carriage)
+    leader(ax, RAIL_X_R + carr_w / 2, FH - rail_h - carr_h / 2,
+           RAIL_X_R + 450, FH - rail_h - carr_h / 2 + 50,
+           "HGH20CA\nCARRIAGE ×2\n(per corner)",
+           color=MECH, ha="left", fs=6.5, font=FONT)
+
+    # Rail leader (from TR ceiling rail)
+    leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
+           RAIL_X_R + 450, FH + 50,
+           "HGR20 LINEAR RAIL\n2,200 mm (into page)",
+           color=RAIL, ha="left", fs=6.5, font=FONT)
+
+    # Frame leader (from right side midpoint)
+    leader(ax, fp_right, fp_cz,
+           fp_right + 450, fp_cz - 150,
+           "2\"×2\"×3/16\"\nALUMINUM ANGLE\n(welded frame)",
+           color=C_FLAT, ha="left", fs=6.5, font=FONT)
+
+    # ── Dimensions ────────────────────────────────────────────────────────────
+    # Container width (outermost)
+    dim_line_h(ax, 0, FW, -180,
+               f"INTERIOR WIDTH  {L:,} mm", offset=10, col=DIM, fs=6.5)
+
+    # Rail span + end zones (inner row)
+    dim_line_h(ax, 0, RAIL_X_L, -340,
+               f"{RAIL_X_L} mm", offset=10, col=DIM, fs=6)
+    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -340,
+               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, col=DIM, fs=7)
+    dim_line_h(ax, RAIL_X_R, FW, -340,
+               f"{FW - RAIL_X_R:,} mm", offset=10, col=DIM, fs=6)
+
+    # Container height (left side)
+    dim_line_v(ax, -500, 0, FH,
+               f"INTERIOR HEIGHT\n{H:,} mm", offset=-150, col=DIM, fs=6.5)
+
+    # Frame height (right side — avoids overlap with container height)
+    dim_line_v(ax, FW + 550, fp_bot, fp_top,
+               f"FRAME HEIGHT\n{fp_top - fp_bot:,} mm", offset=30, col=C_FLAT, fs=6.5)
+
+    # ── Title text ────────────────────────────────────────────────────────────
+    ax.text(FW / 2, FH + 380,
+            "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
+            color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
+    ax.text(FW / 2, FH + 290,
+            "4 INDEPENDENT CORNER CARRIAGES  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END BEARINGS AT EACH CORNER",
+            color=DIM, fontsize=7, ha="center", **FONT)
+
+    # ── Title block ───────────────────────────────────────────────────────────
+    title_block(ax, "SHEET 6 OF 6",
+                drawing_title="MOVEABLE FILM PLANE (4-CORNER)",
+                subtitle="System schematic — four-corner frame front elevation",
+                scale_note="Schematic — not to scale",
+                doc_id="TBS-FM01 · Film Plane Mechanism")
+
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet6.png"), bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
+
+
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import os; os.makedirs(SVG_DIR, exist_ok=True)
@@ -1496,4 +1752,5 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
     print("Done.")

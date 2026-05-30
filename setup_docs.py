@@ -52,6 +52,7 @@ MD_FILES = [
     ("photosensitive-plane-options.md",  (".",           "Photosensitive Materials")),
     ("water-system-report.md",           (".",           "Processing System")),
     ("film-plane-mechanism-report.md",   (".",           "Film Plane Mechanism")),
+    ("film-clamp-mechanism-report.md",   (".",           "Film Clamp Mechanism")),
     ("tilt-swing-board-report.md",       (".",           "Tilt-Swing Front Board")),
     ("tilt-swing-board-analysis.md",     (".",           "Tilt & Swing Distortion Renders")),
     ("pinhole-camera-construction.md",   (".",           "Construction Guide")),
@@ -317,6 +318,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
+| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Cam-lever spring clamp system — 92 clamps at 150mm spacing, parts list |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
 | [Tilt & Swing Distortion Renders](tilt-swing-board-analysis.md) | Ray-traced projection renders for all combined board + film plane configurations |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |

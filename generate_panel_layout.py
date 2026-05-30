@@ -926,12 +926,13 @@ notes = [
     f"3. Panel height: Z={PANEL_Z_AFF}–{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm), uses full IBC stack height.",
     "4. FILTERS: F-01 (50µm, top) → F-02 (5µm) → F-03 (GAC, bottom) — gravity-fed series flow.",
     "5. LEFT COL: P-01/P-04 + ACC-01. RIGHT COL: P-02/P-03 + DV-02 + P-05. All above filters.",
-    "6. BV-01 (Blue supply), BV-07 (Brown drain), BV-08 (Waste drain) — manual ball valves. BV-02 (Blue discharge) located near spray bar.",
+    "6. BV-01 (Blue supply), BV-07 (Brown drain), BV-08 (Waste drain) — manual ball valves.",
+    "   BV-02 (Blue discharge) located near spray bar.",
     f"7. Max protrusion: {max_depth}mm. Near IBCs LEFT, far IBCs RIGHT in this view.",
     "8. Flow: P-02 ↑ F-01 (top) ↓ F-02 ↓ F-03 (bottom) → IBC-1. Gravity assists after F-01.",
 ]
-draw_notes(ax, notes, 16, 128, spacing=16,
-           fs=7, width=FW * 80 - 32, color=C_DIM, title_color=C_NEW, font=FONT)
+draw_notes(ax, notes, 575, 300, spacing=14,
+           fs=6, width=450, color=C_DIM, title_color=C_NEW, font=FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════

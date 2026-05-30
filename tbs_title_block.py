@@ -26,9 +26,8 @@ _FONT  = {"fontfamily": "monospace"}
 
 
 def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
-                scale_note="", doc_id="", height=0.045, portrait=False,
-                top=False):
-    """Draw a standard 3-column title block at the bottom (or top) of *ax*.
+                scale_note="", doc_id="", height=0.045, portrait=False):
+    """Draw a standard 3-column title block at the bottom of *ax*.
 
     Parameters
     ----------
@@ -40,10 +39,9 @@ def title_block(ax, sheet_label, *, drawing_title="", subtitle="",
     doc_id : str            left cell middle row (e.g. "TBS-001 · Hinged Panel")
     height : float          axes-fraction box height (0.045 landscape, ≥0.07 portrait)
     portrait : bool         smaller fonts for narrow portrait figures
-    top : bool              place at the top of the axes instead of the bottom
     """
     t = ax.transAxes
-    y0 = (0.997 - height) if top else 0.003
+    y0 = 0.003
     h  = height
     y1 = y0 + h
     row_top = y0 + h * 0.80

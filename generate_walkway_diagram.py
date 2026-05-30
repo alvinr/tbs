@@ -20,9 +20,9 @@ Sheet 2 — Cross-section + bolt pattern (near walkway bracket):
 Sheet 3 — Detail A: Right walkway ceiling-hung support (IBC end):
   300mm wide, same as near/far.  No floor contact — suspended from ceiling
   corrugations by M10 threaded rod hangers at 457mm centers.  Two 50×50×5mm
-  steel angle bearers run full container width along Yd at X=4,329 and
-  X=4,629.  Grating spans 300mm between bearers at Z=75mm (deck 100mm).
-  5 hanger pairs, all at Yd < 2,025mm — clear of optical cone.  Near/far
+  steel angle bearers run full container width along Yd at X=4329 and
+  X=4629.  Grating spans 300mm between bearers at Z=75mm (deck 100mm).
+  5 hanger pairs, all at Yd < 2025mm — clear of optical cone.  Near/far
   ends bear on adjacent walkway brackets.  Zero tray contact, zero floor
   contact.
 
@@ -36,7 +36,7 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
 Sheet 5 — Detail C: Left walkway support system (removable):
   Elevation showing all support elements: floor-standing leg (X=140, on bare
   floor) with cantilever arm, bearer beam (50×50×3mm Al RHS at X=470) spanning
-  1,762mm between bracket vertical legs, and bearing strip on tray rim (X=170).
+  1762mm between bracket vertical legs, and bearing strip on tray rim (X=170).
   Zero processing tray contact.
 
 Sheet 6 — Detail D: Bearer beam to bracket connection:
@@ -942,7 +942,7 @@ def sheet1():
 
     # Bearing strip on tray rim (X=170, continuous along Yd)
     strip_yd_start = NYI   # start at near walkway inner edge (Yd=300)
-    strip_yd_end   = FY    # end at far walkway inner edge (Yd=1,962)
+    strip_yd_end   = FY    # end at far walkway inner edge (Yd=1962)
     ax.plot([LX, LX], [strip_yd_start, strip_yd_end],
             color=C_SUPPORT, lw=3.0, zorder=8, solid_capstyle="butt")
     ax.text(LX - 20, (strip_yd_start + strip_yd_end) * 0.6,
@@ -1379,7 +1379,7 @@ def sheet3():
         f"   span full container width ({C_WID}mm) along Yd.",
         f"2. Suspended from ceiling corrugations by M{HANGER_D}",
         f"   threaded rod (1st at Yd={WALKWAY_RIGHT_HANGER_Y1}mm, rest {WALKWAY_BRACKET_SPACING}mm ctr).",
-        f"3. {WALKWAY_RIGHT_HANGER_N} hanger pairs \u2014 all at Yd \u2264 2,057mm",
+        f"3. {WALKWAY_RIGHT_HANGER_N} hanger pairs \u2014 all at Yd \u2264 2057mm",
         f"   (clear of optical cone).",
         f"4. Near/far ends bear on adjacent walkway brackets.",
         f"5. Deck {DECK_H}mm \u2014 level with all 4 sides.",
@@ -1752,7 +1752,7 @@ def sheet4():
 #   (a) Floor-standing support leg (cargo door side, X=140, on bare floor)
 #       with cantilever arm to walkway edge.
 #   (b) Bearer beam (50×50×3mm Al RHS) at X=470 (processing tray side),
-#       spanning 1,762mm along Yd between near/far bracket vertical legs.
+#       spanning 1762mm along Yd between near/far bracket vertical legs.
 #   (c) Bearing strip (25×25×3mm Al angle) on tray rim at X=170.
 # View: looking along Yd (same as sheets 1, 3, 5).
 # Zero processing tray contact — all supports outside or above tray.
@@ -3339,7 +3339,7 @@ def sheet8():
         f"4. M SADDLE CLIPS STRADDLE 2 BEARING BARS, RETAINED BY TEK SCREW",
         f"5. GRATING SECTIONS BUTT AT BEARING PLATE — NO OVERLAP",
         f"6. OUTER 200mm OF BRACKET ARM EXPOSED ON STANDARD SIDE",
-        f"7. TRANSITION BRACKETS AT X≈1,156mm AND X≈2,526mm",
+        f"7. TRANSITION BRACKETS AT X≈1156mm AND X≈2526mm",
     ]
     draw_notes(ax, notes, sx(YD_LO + 440), sy(SHOW_X - 10),
                spacing=sy(7), fs=5.5, title_fs=6, color=C_DIM,

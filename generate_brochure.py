@@ -636,8 +636,8 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 10)
         self.set_text_color(*C_WHITE)
         self.cell(PAGE_W, 6,
-                  _safe("20 ft ISO Container  *  O2.17 mm Pinhole"
-                        "  *  f/1088  *  2362 mm Focal Length"),
+                  _safe("20 ft ISO Container  *  O2.17mm Pinhole"
+                        "  *  f/1088  *  2362mm Focal Length"),
                   align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.ln(4)

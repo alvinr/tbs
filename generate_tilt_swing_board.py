@@ -193,7 +193,7 @@ draw_cl(ax1, cx_a, cy_a, hw*1.15)
 # Dimension: carrier OD
 draw_dim_h(ax1, cx_a - s1(CARR_OD/2), cx_a + s1(CARR_OD/2), cy_a - hw - 48,
            'Ø320 CARRIER', above=False, fs=5, offset=24)
-draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 48, '600 mm', above=True, fs=5.5, offset=24)
+draw_dim_h(ax1, cx_a - hw, cx_a + hw, cy_a + hw + 48, '600mm', above=True, fs=5.5, offset=24)
 
 ax1.text(cx_a, cy_a - hw - 200, 'PANEL A — ASSEMBLY (1:8)\nICP-01 outer frame + ICP-02 carrier\nBlack knobs = TILT  Silver knobs = SWING',
          ha='center', fontsize=5, color='#333333', style='italic')
@@ -863,14 +863,14 @@ leader(ax2, cx2d - frame_wall_w/2, cy2d + s1b(30),
 tbl_x, tbl_y = 1160, 414
 ax2.text(tbl_x, tbl_y, 'ANGULAR RESOLUTION', fontsize=6, fontweight='bold', color='black')
 rows = [
-    ('Arm radius (pivot→ball)', '130 mm'),
-    ('Screw pitch', '1.0 mm / turn'),
+    ('Arm radius (pivot→ball)', '130mm'),
+    ('Screw pitch', '1.0mm / turn'),
     ('Linear travel ÷ arm', '1/130 rad/mm = 0.0077°/mm'),
     ('Resolution per turn', '0.44° / turn'),
     ('Detents per turn', '36'),
     ('Resolution per click', '0.012° / click'),
     ('Full ±5° range', '~410 clicks (11.4 turns)'),
-    ('Hard stop travel', '±12 mm = ±5.3°'),
+    ('Hard stop travel', '±12mm = ±5.3°'),
 ]
 for i, (k, v) in enumerate(rows):
     ry = tbl_y - 20 - i*18
@@ -983,11 +983,11 @@ draw_dim_h(ax3, cx3a - s2(BELL_ID/2), cx3a + s2(BELL_ID/2),
            cy3a - s2(BELL_FREE) - carr_bar_h - 28, f'ID Ø{BELL_ID}', above=False, fs=5, offset=9)
 
 ax3.text(cx3a + s2(BELL_OD/2) + 104, cy3a - s2(BELL_FREE*0.5),
-         '——— NEUTRAL (0°)\n- - - - 5° TILT\n(asymmetric compression\nleft side: −13.9 mm\nright side: +13.9 mm)',
+         '——— NEUTRAL (0°)\n- - - - 5° TILT\n(asymmetric compression\nleft side: −13.9mm\nright side: +13.9mm)',
          fontsize=5, va='center', color='#333333', zorder=10)
 
 ax3.text(cx3a, cy3a - s2(BELL_FREE) - carr_bar_h - 60,
-         'BELLOWS ICP-10: Matte black neoprene/nylon  •  0.5 mm wall  •  4 pleats  •  15 mm pleat depth\nInner+outer flanges sealed with Ø4 mm neoprene cord gaskets (same spec as wall-frame seal)',
+         'BELLOWS ICP-10: Matte black neoprene/nylon  •  0.5mm wall  •  4 pleats  •  15mm pleat depth\nInner+outer flanges sealed with Ø4mm neoprene cord gaskets (same spec as wall-frame seal)',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 # ── PANEL B: Locking set screw detail (1:1) ──────────────────────────────────
@@ -1125,9 +1125,9 @@ ax3.plot([cx3d, cx3d], [cy3d - scale_strip_h/2, cy3d + scale_strip_h/2],
          color=C_RED, lw=1.0)
 
 draw_dim_h(ax3, cx3d - scale_strip_w/2, cx3d + scale_strip_w/2,
-           cy3d + scale_strip_h/2 + 20, '80 mm TOTAL', above=True, fs=5, offset=6)
+           cy3d + scale_strip_h/2 + 20, '80mm TOTAL', above=True, fs=5, offset=6)
 ax3.text(cx3d, cy3d - scale_strip_h/2 - 40,
-         '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2 mm  •  Mounted on ICP-01 face adjacent to each knob pair',
+         '2 off — one for TILT, one for SWING\nLaser-engraved Al 80×15×2mm  •  Mounted on ICP-01 face adjacent to each knob pair',
          ha='center', fontsize=5, style='italic', color='#333333', zorder=10)
 
 S3_E_DN = int(FH3 * 0.10)
@@ -1140,7 +1140,7 @@ ax3.text(30, 250 + S3_UP - S3_E_DN, 'PANEL E — PLATE SWAP PROCEDURE (TSB ASSY 
 ax3.plot([30, 1390], [244 + S3_UP - S3_E_DN, 244 + S3_UP - S3_E_DN], color='black', lw=0.7)
 
 steps = [
-    ('①', 'LOOSEN 4×\nLOCK SCREWS', '3 mm hex key\nM6 set screws'),
+    ('①', 'LOOSEN 4×\nLOCK SCREWS', '3mm hex key\nM6 set screws'),
     ('②', 'ZERO ALL\n4 ADJ KNOBS', 'Return to 0°\nusing scale marks'),
     ('③', 'REMOVE 8×\nM12 BOLTS', 'M12 socket\n65 Nm torque'),
     ('④', 'PULL TSB\nASSEMBLY', 'Dowel pins\nretain alignment'),
@@ -1163,7 +1163,7 @@ for i, (num, title, note) in enumerate(steps):
         ax3.annotate('', xy=(sx + step_w + 26, sy + 54), xytext=(sx + step_w + 4, sy + 54),
                      arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
 
-ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3 mm hex key  •  Swap time: approx. 10 minutes',
+ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 socket and 3mm hex key  •  Swap time: approx. 10 minutes',
          ha='center', fontsize=5.5, color='#333333', style='italic', zorder=10)
 
 out3 = 'diagrams/tilt-swing-board-sheet3.png'

@@ -8,14 +8,14 @@ Generates diagrams/assembly-overview.png — high-level schematic side-elevation
 of the TBS-001 container interior (redesigned film-plane-reduction layout).
 
 View direction: looking at the near long wall (Y=0 face) from outside.
-  X (horizontal) = 0–5893 mm  (container long axis; left=cargo door, right=far end)
-  H (vertical)   = 0–2388 mm  (container height)
-  Yd (into page) = 0–2362 mm  (optical depth; not a diagram axis)
+  X (horizontal) = 0–5893mm  (container long axis; left=cargo door, right=far end)
+  H (vertical)   = 0–2388mm  (container height)
+  Yd (into page) = 0–2362mm  (optical depth; not a diagram axis)
 
 Zones (shadow-free proof):
-  Left end zone:   X = 0–150 mm     (light trap drum only)
-  Optical zone:    X = 150–4,649 mm   (film plane only)
-  Right end zone:  X = 4,649–5,893 mm  (IBCs only, right-justified)
+  Left end zone:   X = 0–150mm     (light trap drum only)
+  Optical zone:    X = 150–4649mm   (film plane only)
+  Right end zone:  X = 4649–5893mm  (IBCs only, right-justified)
   Pinhole wall:    Yd = 0 face  (electrical + battery + pump; flush-mount)
 
 ASPECT RATIO RULE: FIG_H = FIG_W * (Y_HI - Y_LO) / (X_HI - X_LO)
@@ -558,7 +558,7 @@ ldr2(PH_X, PH_H, PH_X - 225, PH_H + 500,
     f"Pinhole  Ø2.17mm\n(X={PH_X}, H={PH_H}mm)\n[on far wall — ghost]",
     ha="right", fs=FS_SM, color=C_PINHOLE)
 ax2.text(mx(PH_X), PH_H - 320,
-        "Optical axis (out of page)\nFocal length 2,362mm",
+        "Optical axis (out of page)\nFocal length 2362mm",
         ha="center", va="top", fontsize=FS_SM, color=C_CL, style="italic")
 
 # Rail labels

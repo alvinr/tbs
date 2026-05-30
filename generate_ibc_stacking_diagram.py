@@ -63,7 +63,7 @@ FRAME_T        = 3      # wall thickness
 FRAME_FOOTPRINT_W = C_WID  # frame footprint width (across Yd, wall-to-wall via brackets)
 FRAME_FOOTPRINT_D = 1284  # frame footprint depth (along X, 65mm overhang cargo-door side, flush to end wall)
 CORRIDOR_W = IBC_FAR_Y - (BLUE_IBC_Y + IBC_D)  # = 270mm plumbing corridor between columns
-FRAME_PLATFORM_H  = 1060  # platform height (1,010 + 50mm clearance plate)
+FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
@@ -145,12 +145,12 @@ def sheet1():
     # Floor/ceiling/wall labels
     ax.text(sx(C_WID / 2), sy(-45), "CONTAINER FLOOR",
             ha="center", va="top", fontsize=6, color=C_DIM, **FONT)
-    ax.text(sx(C_WID / 2), sy(C_HGT + 45), "CONTAINER CEILING (Z=2,388mm)",
+    ax.text(sx(C_WID / 2), sy(C_HGT + 45), "CONTAINER CEILING (Z=2388mm)",
             ha="center", va="bottom", fontsize=6, color=C_DIM, **FONT)
     ax.text(sx(-45), sy(C_HGT / 2), "NEAR\nWALL\n(Yd=0)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
-    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR\nWALL\n(Yd=2,362)",
+    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR\nWALL\n(Yd=2362)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
 
@@ -195,8 +195,8 @@ def sheet1():
     # ── Stacking frame (portal frame with open plumbing corridor) ───────────
     # Wall-side restraint via brackets; corridor uprights at inner IBC edges.
     # Platform and top beams span each column; cross-beams bridge the corridor.
-    near_col_r = BLUE_IBC_Y + IBC_D    # = 1,046mm (near column right edge)
-    far_col_l  = IBC_FAR_Y             # = 1,316mm (far column left edge)
+    near_col_r = BLUE_IBC_Y + IBC_D    # = 1046mm (near column right edge)
+    far_col_l  = IBC_FAR_Y             # = 1316mm (far column left edge)
     platform_z = IBC_H_600  # platform sits on top of bottom IBCs
 
     # Corridor uprights (4 visible as 2 near-corridor + 2 far-corridor)
@@ -818,7 +818,7 @@ def sheet2():
 #
 # View from outside the container, looking at the sealed end wall.
 # Shows 3 ports stacked vertically on the container centerline:
-#   Top:    Fill Blue IBC-1 (2,250mm)
+#   Top:    Fill Blue IBC-1 (2250mm)
 #           Drain Brown IBC-3 (400mm)
 #   Bottom: Drain Waste IBC-4 (200mm)
 # Reinforcing plate behind ports, camlock fittings, height dimensions.
@@ -875,7 +875,7 @@ def sheet3():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Centerline ───────────────────────────────────────────────────────────
-    cl_yd = C_WID / 2  # = 1,181mm
+    cl_yd = C_WID / 2  # = 1181mm
     ax.plot([sx(cl_yd), sx(cl_yd)], [sy(-80), sy(C_HGT + 80)],
             color=C_CL, lw=1.0, ls="--", zorder=4)
     ax.text(sx(cl_yd), sy(C_HGT + 90), f"CENTERLINE\nYd={cl_yd:.0f}mm",
@@ -884,11 +884,11 @@ def sheet3():
 
     # ── Ghost IBC outlines and stacking frame (behind wall) ────────────────
     # Mirrored Yd for external view: yd_ext = C_WID - yd_internal
-    platform_z = IBC_H_600                        # 1,010mm
-    top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1,072mm
+    platform_z = IBC_H_600                        # 1010mm
+    top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1072mm
 
     # Near column (internal Yd 30–1046) → external Yd 1316–2332
-    near_ext_l = C_WID - (BLUE_IBC_Y + IBC_D)     # 1,316
+    near_ext_l = C_WID - (BLUE_IBC_Y + IBC_D)     # 1316
     # Far column (internal Yd 1316–2332) → external Yd 30–1046
     far_ext_l  = C_WID - (IBC_FAR_Y + IBC_D)      # 30
 
@@ -1236,7 +1236,7 @@ def sheet4():
             "NEAR WALL (PINHOLE, Yd=0)", ha="center", va="top",
             fontsize=6, color=C_DIM, **FONT)
     ax.text(px((X_LO + C_LEN) / 2), py(C_WID + WALL_T + 10),
-            "FAR WALL (Yd=2,362)", ha="center", va="bottom",
+            "FAR WALL (Yd=2362)", ha="center", va="bottom",
             fontsize=6, color=C_DIM, **FONT)
     ax.text(px(C_LEN + WALL_T + 10), py(C_WID / 2),
             f"SEALED END WALL (X={C_LEN}mm)", ha="left", va="center",
@@ -1469,8 +1469,8 @@ def sheet4():
     # All pipes share the corridor centerline (panel_yd) from the bulkhead.
     # They separate at their branch points — fill pipes at fill_x,
     # drain pipes at drain_x.
-    near_ibc_conn_yd = near_col_r   # 1,046
-    far_ibc_conn_yd  = far_col_l    # 1,316
+    near_ibc_conn_yd = near_col_r   # 1046
+    far_ibc_conn_yd  = far_col_l    # 1316
 
     # Connection X positions — at panel face for valve accessibility
     fill_x  = ep_face_x
@@ -1803,7 +1803,7 @@ def sheet5():
     ax.text(sx(-45), sy(C_HGT / 2), "NEAR\nWALL\n(Yd=0)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
-    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR\nWALL\n(Yd=2,362)",
+    ax.text(sx(C_WID + 45), sy(C_HGT / 2), "FAR\nWALL\n(Yd=2362)",
             ha="center", va="center", fontsize=5.5, color=C_DIM, **FONT,
             rotation=90)
 
@@ -1813,9 +1813,9 @@ def sheet5():
                             fc="#F0F0F0", ec="none", lw=0, alpha=0.3, zorder=1))
 
     # ── IBCs (shown in elevation, flanking the corridor) ─────────────────────
-    near_col_r = BLUE_IBC_Y + IBC_D   # 1,046
-    far_col_l  = IBC_FAR_Y            # 1,316
-    platform_z = IBC_H_600             # 1,010
+    near_col_r = BLUE_IBC_Y + IBC_D   # 1046
+    far_col_l  = IBC_FAR_Y            # 1316
+    platform_z = IBC_H_600             # 1010
 
     ibc_data = [
         ("IBC-3\nBROWN\n(recycled)", BLUE_IBC_Y, 0, IBC_D, IBC_H_600, C_BROWN_IBC),
@@ -1927,7 +1927,7 @@ def sheet5():
 
     # ── X1: Bulkhead → over IBC-1 top → drop into IBC-1 (near, top tier) ───
     # Fill enters through IBC fill cap (DN150, offset ~250mm from valve face
-    # toward corridor side). X1 at Z=2,250 is above IBC top (2,082).
+    # toward corridor side). X1 at Z=2250 is above IBC top (2082).
     f1_drop_yd = f1_fill_yd  # drop point at fill cap position (offset from valve face)
     # L-shaped path: horizontal from bulkhead → 90° elbow → vertical drop
     draw_pipe_path(ax,

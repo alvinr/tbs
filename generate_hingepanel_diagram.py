@@ -55,10 +55,10 @@ PT = 120    # panel overall thickness (50×50 RHS frame + 18mm ply each face)
 
 # Drum
 DRUM_D  = 750          # drum outer diameter (mm)
-DRUM_R  = DRUM_D / 2  # = 375 mm
+DRUM_R  = DRUM_D / 2  # = 375mm
 DRUM_H  = 2200         # drum height (floor → top bearing, mm)
 DRUM_CX = PW / 2       # drum centre X in panel (centred horizontally)
-DRUM_CY = DRUM_H / 2  # drum centre Y = 1000 mm from floor
+DRUM_CY = DRUM_H / 2  # drum centre Y = 1000mm from floor
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
 def dim_h(ax, x0, x1, y, label, offset=70, fs=7, col=C_DIM):
@@ -80,7 +80,7 @@ def leader(ax, xy, xytext, text, col=C_DIM, fs=6.5, fw="normal"):
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 1  —  Front Elevation (Exterior View)
-# X = panel width (0 → 2362 mm),  Y = panel height (0 → 2388 mm)
+# X = panel width (0 → 2362mm),  Y = panel height (0 → 2388mm)
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet1():
     fig, ax = plt.subplots(figsize=(18, 14))
@@ -130,7 +130,7 @@ def sheet1():
             ha="center", va="top", fontweight="bold", **FONT, zorder=15, alpha=0.7)
     # Step dimension
     dim_h(ax, STEP_YD_L, STEP_YD_R, -210,
-          f"{STEP_YD_R - STEP_YD_L} mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
+          f"{STEP_YD_R - STEP_YD_L}mm CENTER ZONE (DRUM Ø{DRUM_D} + 50mm CLEARANCE EACH SIDE)", offset=20)
 
     # ── Revolving drum ────────────────────────────────────────────────────────
     DX = DRUM_CX - DRUM_R   # drum left edge in panel
@@ -340,15 +340,15 @@ def sheet1():
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Panel width
-    dim_h(ax, 0, PW, PH + 200, f"{PW} mm  (CONTAINER INTERIOR WIDTH)", offset=20)
+    dim_h(ax, 0, PW, PH + 200, f"{PW}mm  (CONTAINER INTERIOR WIDTH)", offset=20)
     # Panel height
-    dim_v(ax, PW + 75, 0, PH, f"{PH} mm", offset=-25)
+    dim_v(ax, PW + 75, 0, PH, f"{PH}mm", offset=-25)
     # Drum diameter
-    dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D} mm DRUM", offset=20)
+    dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=20)
     # Drum clear height
-    dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H} mm\nCLEAR HEIGHT", offset=25)
+    dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25)
     # Drum centre from left
-    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)} mm  (PANEL CL — CENTRED)", offset=-50)
+    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTRED)", offset=-50)
     # Hinge positions from floor
     for hy in HINGE_YS:
         ax.plot([-HINGE_W - 10, -HINGE_W - 80], [hy, hy],
@@ -706,7 +706,7 @@ def sheet2():
 
     # Drum diameter (horizontal)
     dim_h(ax, D_XL, D_XR, D_YT + PAD_YT * 0.55,
-          f"Ø{DRUM_D} mm  DRUM DIAMETER", fs=7, offset=-25)
+          f"Ø{DRUM_D}mm  DRUM DIAMETER", fs=7, offset=-25)
 
     # Container wall thickness — arrow + inline label (no leader, avoids crossing
     # the nearby CONTAINER END WALL and OUTER PLY leader lines)
@@ -732,7 +732,7 @@ def sheet2():
 #                 bbox=dict(fc="white", ec="none", pad=1.5), zorder=15)
 
     # Full panel width dimension
-    dim_h(ax, 0, PW, Y_LO + 230, f"{PW} mm  (FULL PANEL WIDTH)", fs=7, offset=-25)
+    dim_h(ax, 0, PW, Y_LO + 230, f"{PW}mm  (FULL PANEL WIDTH)", fs=7, offset=-25)
 
     # Zone width dimensions (above panel)
     zone_dim_y = D_YT + PAD_YT * 0.85
@@ -1170,11 +1170,11 @@ def sheet3():
 
     # Drum height
     dim_v(ax, DIM_R, H_DRUM_BOT, H_DRUM_TOP,
-          f"{DRUM_H} mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
+          f"{DRUM_H}mm DRUM HEIGHT\n(CLEAR WALKING HEIGHT)", offset=30, fs=7)
 
     # Drum diameter (horizontal) — placed below top bearing to avoid CL label clash
     dim_h(ax, D_DEPTH_L, D_DEPTH_R, H_DRUM_TOP + 180,
-          f"Ø{DRUM_D} mm DRUM DIAMETER", offset=15, fs=7)
+          f"Ø{DRUM_D}mm DRUM DIAMETER", offset=15, fs=7)
 
     # Panel thickness (horizontal) — offset above bearing top
     dim_h(ax, Y0_W, Y1_PL2, H_BRG_TOP + 295,

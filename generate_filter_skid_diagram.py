@@ -96,7 +96,7 @@ reset_label_registry()
 # Ceiling line
 ax.plot([sx(4600), sx(6050)], [sz(2388), sz(2388)],
         color="#888888", lw=1.0, ls="-", zorder=1)
-ax.text(sx(4700), sz(2388 + 15), "CEILING (Z=2,388mm)", ha="right", va="bottom",
+ax.text(sx(4700), sz(2388 + 15), "CEILING (Z=2388mm)", ha="right", va="bottom",
         fontsize=6, color="#888888", style="italic")
 
 # ── Slotted angle frame ──────────────────────────────────────────────────────

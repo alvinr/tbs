@@ -23,9 +23,9 @@ from tbs_constants import svg_path, SVG_DIR, FP_W, FP_H, C_WID, FP_Y_MIN
 from tbs_title_block import title_block
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
-FILM_L = FP_W    # film plane width (mm) — from tbs_constants (4,499mm rev 6)
+FILM_L = FP_W    # film plane width (mm) — from tbs_constants (4499mm rev 6)
 FILM_H = FP_H    # film plane height (container height)
-F_NOM  = C_WID   # = 2,362mm — focal length (container interior depth)
+F_NOM  = C_WID   # = 2362mm — focal length (container interior depth)
 D_NEAR = FP_Y_MIN       # = 100mm — closest carriage position
 D_FAR  = F_NOM - D_NEAR # = 2262mm
 
@@ -45,13 +45,13 @@ CONFIGS = [
     ("C1", "Mild tilt  11.0°",   1800,   D_FAR,
      "Subtle keystone. Top edge 462mm closer. Top of image gently compressed."),
     ("C2", "Strong tilt  31.5°", 800,    D_FAR,
-     "Dramatic keystone. Top 1,462mm closer. Top heavily compressed, bottom stretched."),
+     "Dramatic keystone. Top 1462mm closer. Top heavily compressed, bottom stretched."),
     ("C3", "Max tilt  42.1°",    D_NEAR, D_FAR,
-     "Extreme. Top edge 2,162mm closer than bottom. Radical perspective break."),
+     "Extreme. Top edge 2162mm closer than bottom. Radical perspective break."),
     ("C4", "Reverse max  42.1°", D_FAR,  D_NEAR,
      "Inverted max tilt. Bottom rushes forward. Ground-rush effect."),
     ("C5", "Both near  0°",      D_NEAR, D_NEAR,
-     "Flat plane 2,162mm closer than nominal. Uniform magnification boost ~2.3×."),
+     "Flat plane 2162mm closer than nominal. Uniform magnification boost ~2.3×."),
     ("C6", "Compound  42.1°+15°",D_NEAR, D_FAR,
      "Max tilt PLUS 15° swing. Diagonal perspective break — no parallel lines."),
 ]
@@ -279,7 +279,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
 
     scenes = [
         (checker_scene, "CHECKER GRID  ·  600mm cells  ·  rings @ 1m intervals"),
-        (landscape_scene, "CITYSCAPE SCENE  ·  subject @ centre, 1,800mm tall"),
+        (landscape_scene, "CITYSCAPE SCENE  ·  subject @ centre, 1800mm tall"),
     ]
 
     for ax, (sfunc, scene_name) in zip(axes, scenes):
@@ -345,7 +345,7 @@ def render_summary():
     ax_tb.axis("off")
     title_block(ax_tb, "SUMMARY",
                 drawing_title="FILM PLANE DISTORTION",
-                subtitle="All configurations — checker scene — D = 8,000 mm",
+                subtitle="All configurations — checker scene — D = 8000mm",
                 scale_note="Ray-traced projection",
                 doc_id="TBS-FM01 · Distortion Renders")
     fig.savefig("diagrams/film-plane-distortion-summary.png", dpi=120,

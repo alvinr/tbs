@@ -266,10 +266,10 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane | 5,893 × 2,388 mm (~19'4" × 7'10") |
+| Image plane | 5893 × 2388mm (~19'4" × 7'10") |
 | Image area | ~140 sq ft |
-| Focal length | 2,362 mm (container interior depth) |
-| Optimal pinhole | Ø2.17 mm (Lord Rayleigh formula, λ = 550 nm) |
+| Focal length | 2362mm (container interior depth) |
+| Optimal pinhole | Ø2.17mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |
 | Baseline exposure | ~43 min (ISO 6 paper, full sun, Schwarzschild-corrected) |
 | Process | Cyanotype — water-based, non-toxic, no silver |
@@ -283,7 +283,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 Two independent movement systems work in series, stacking their effects non-linearly:
 
 **Front board — tilt and swing (±5°)**
-The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207 mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
+The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image 207mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
 **Film plane — 4-corner independent actuation (±42° tilt, ±20° swing)**
 Four corners of the image plane move independently via handwheels, enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
@@ -339,7 +339,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Chemistry Prep Shelves](chemistry-prep-shelves.md) | Two fold-down shelves on pinhole wall for cyanotype chemistry mixing and materials staging |
 | [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) | 304 SS processing tray and telescoping spray bar gantry — construction, operation, and parts list |
 | [Hinged Light-Trap Panel](hinged-panel-report.md) | Stepped cargo-door panel with revolving drum light trap, sliding carriage, and light seal design |
-| [Ceiling Rail Suspension](ceiling-rail-report.md) | HGR20 ceiling-mounted linear rails suspending hinged panel with 80 mm floor gap for processing tray clearance |
+| [Ceiling Rail Suspension](ceiling-rail-report.md) | HGR20 ceiling-mounted linear rails suspending hinged panel with 80mm floor gap for processing tray clearance |
 | [IBC Stacking System](ibc-stacking-report.md) | 2×2 IBC stack with welded stacking frame, external plumbing panel, and internal pipe routing |
 | [Perimeter Walkway](walkway-report.md) | 4-section removable walkway system — wall-cantilevered, ceiling-hung, and lift-out designs with zero tray contact |
 | [Equipment Panel & Plumbing](equipment-panel-report.md) | Equipment panel in IBC corridor with 5 pumps, 3-stage filter skid, accumulator, valves, and pipe routing |

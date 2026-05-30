@@ -60,9 +60,9 @@ TRAY_EXT_W = 445   # mm — external width (perpendicular to cross-section)
 TRAY_RIM   = 65    # mm — rim height (~2.5")
 
 # Board dimensions (fits inside camera box, hinged at tray rim height)
-BOARD_W = BOX_W - 2 * WALL_T - 6   # ~443 mm — board width (clearance)
-HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69 mm — hinge height (tray rim on floor)
-BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333 mm — from hinge to ceiling interior
+BOARD_W = BOX_W - 2 * WALL_T - 6   # ~443mm — board width (clearance)
+HINGE_Y_ABS = WALL_T + TRAY_RIM    # 69mm — hinge height (tray rim on floor)
+BOARD_H = BOX_H - WALL_T - HINGE_Y_ABS  # ~333mm — from hinge to ceiling interior
 
 # ── Drawing palette ──────────────────────────────────────────────────────────
 BG         = "#FFFFFF"
@@ -298,23 +298,23 @@ ax.text(BOX_D + PREP_D / 2, BOX_H - WALL_T - 15, "PREP BOX", ha="center", va="to
         fontsize=FS_MD, fontweight="bold", color=C_DIM, alpha=0.5)
 
 # ── Cross-section dimensions ────────────────────────────────────────────────
-draw_dim_h(ax, 0, BOX_D, -45, f"Camera box  {BOX_D} mm  (18\"  =  focal length)", offset=15)
-draw_dim_h(ax, BOX_D, TOTAL_D, -45, f"Prep box  {PREP_D} mm  (18\")", offset=15)
-draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D} mm  (36\")", offset=15)
-draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H} mm (16\")", offset=15)
+draw_dim_h(ax, 0, BOX_D, -45, f"Camera box  {BOX_D}mm  (18\"  =  focal length)", offset=15)
+draw_dim_h(ax, BOX_D, TOTAL_D, -45, f"Prep box  {PREP_D}mm  (18\")", offset=15)
+draw_dim_h(ax, 0, TOTAL_D, -75, f"Total length  {TOTAL_D}mm  (36\")", offset=15)
+draw_dim_v(ax, -50, 0, BOX_H, f"{BOX_H}mm (16\")", offset=15)
 draw_dim_v(ax, BOX_D + 10, paper_y1, paper_y2,
-           f"Image  {int(paper_y2 - paper_y1)} mm", offset=12, color=C_CL, right=True)
+           f"Image  {int(paper_y2 - paper_y1)}mm", offset=12, color=C_CL, right=True)
 draw_dim_h(ax, tray_x, tray_x_far, -20,
-           f"Tray  {TRAY_EXT_D} mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
+           f"Tray  {TRAY_EXT_D}mm (12×16\" Paterson)", offset=10, fs=FS_SM - 0.5)
 
 # ── Cross-section leaders ───────────────────────────────────────────────────
 leader(ax, WALL_T / 2, ph_y, -PAD + 10, ph_y + 100,
-       f"Pinhole  Ø{PH_D} mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
+       f"Pinhole  Ø{PH_D}mm\nf/{F_NO}", ha="right", color=C_PINHOLE)
 leader(ax, -16, ph_y, -PAD + 10, ph_y - 60,
        "Shutter flap", ha="right")
 leader(ax, sleeve_wall_x + WALL_T + SLEEVE_PROJ / 2, arm_top_s + 3,
        TOTAL_D + SLEEVE_PROJ + 30, arm_top_s + 50,
-       f"Arm sleeves (×2) Ø{SLEEVE_D} mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
+       f"Arm sleeves (×2) Ø{SLEEVE_D}mm\n(on prep box end face)", ha="left", fs=FS_SM - 0.5)
 leader(ax, board_x, (paper_y1 + paper_y2) / 2,
        board_x - 80, ph_y + 90,
        "Paper on board\n(film plane)", ha="center", color=C_CL)
@@ -383,17 +383,17 @@ ax.text(EF_W / 2, EF_H + 12, "HINGE EDGE (extraction flap — opens upward)",
         ha="center", va="bottom", fontsize=FS_SM - 1, color=C_HINGE, fontweight="bold")
 
 # Dimensions
-draw_dim_h(ax, 0, EF_W, -60, f"End face width  {EF_W} mm  (18\")", offset=12)
-draw_dim_v(ax, EF_W + 50, 0, EF_H, f"End face height\n{EF_H} mm  (16\")", offset=12, right=True)
+draw_dim_h(ax, 0, EF_W, -60, f"End face width  {EF_W}mm  (18\")", offset=12)
+draw_dim_v(ax, EF_W + 50, 0, EF_H, f"End face height\n{EF_H}mm  (16\")", offset=12, right=True)
 draw_dim_h(ax, arm_cx1, arm_cx2, EF_H + 40,
-           f"Armhole spacing  {SLEEVE_SPACING} mm", offset=10, fs=FS_SM - 0.5)
+           f"Armhole spacing  {SLEEVE_SPACING}mm", offset=10, fs=FS_SM - 0.5)
 draw_dim_h(ax, arm_cx1 - SLEEVE_D / 2, arm_cx1 + SLEEVE_D / 2,
            arm_cy - SLEEVE_D / 2 - 45,
-           f"Ø{SLEEVE_D} mm (4\")", offset=10, fs=FS_SM - 0.5)
+           f"Ø{SLEEVE_D}mm (4\")", offset=10, fs=FS_SM - 0.5)
 
 # Leaders
 leader(ax, arm_cx1, arm_cy, -60, arm_cy + 50,
-       f"Armhole Ø{SLEEVE_D} mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
+       f"Armhole Ø{SLEEVE_D}mm\n(fabric sleeve\n+ elastic at wrist)", ha="right", fs=FS_SM - 0.5)
 leader(ax, arm_cx1 + SLEEVE_D / 2 + 5, arm_cy, EF_W + 80, arm_cy +270,
        "Gaffer tape seal", ha="left", fs=FS_SM - 0.5)
 
@@ -428,8 +428,8 @@ ax.set_ylim(-100, 140)
 
 # ── Cardboard wall cross-section ─────────────────────────────────────────
 wall_x = 0           # inner surface of wall
-wall_thick = WALL_T   # 4 mm
-hole_r = SLEEVE_D / 2  # 51 mm radius
+wall_thick = WALL_T   # 4mm
+hole_r = SLEEVE_D / 2  # 51mm radius
 wall_top = hole_r + 40   # cardboard above the hole
 wall_bot = -(hole_r + 40)  # cardboard below the hole
 
@@ -524,13 +524,13 @@ for sign in [1, -1]:
 
 # ── Dimensions ───────────────────────────────────────────────────────────
 draw_dim_v(ax, -90, -hole_r, hole_r,
-           f"Ø{SLEEVE_D} mm\n(4\")", offset=10, fs=FS_SM - 0.5)
+           f"Ø{SLEEVE_D}mm\n(4\")", offset=10, fs=FS_SM - 0.5)
 draw_dim_h(ax, -fold_back, 0, wall_top + 30,
-           f"Fold-back\n{fold_back} mm", offset=8, fs=FS_SM - 1)
+           f"Fold-back\n{fold_back}mm", offset=8, fs=FS_SM - 1)
 draw_dim_h(ax, 0, wall_thick, wall_top + 5,
-           f"{wall_thick} mm\nwall", offset=8, fs=FS_SM - 1)
+           f"{wall_thick}mm\nwall", offset=8, fs=FS_SM - 1)
 draw_dim_h(ax, wall_x + wall_thick, elastic_x, wall_bot - 25,
-           f"Sleeve ~450 mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)
+           f"Sleeve ~450mm (18\")\n(shown truncated)", offset=8, fs=FS_SM - 1)
 
 # ── Leaders ──────────────────────────────────────────────────────────────
 leader(ax, wall_x + wall_thick / 2, wall_top - 5, -60, wall_top + 35,
@@ -654,11 +654,11 @@ ax.text(TOTAL_D - WALL_T / 2 + 40, BOX_W/2, "EXTRACTION\nFLAP", ha="center", va=
         fontsize=FS_SM - 1, color=C_FLAP, fontweight="bold")
 
 # Dimensions
-draw_dim_h(ax, 0, TOTAL_D, -55, f"Total  {TOTAL_D} mm  (36\")", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, TOTAL_D, -55, f"Total  {TOTAL_D}mm  (36\")", offset=8, fs=FS_SM - 0.5)
 draw_dim_v(ax, -60, 0, BOX_W,
-           f"{BOX_W} mm", offset=-20, right=True, fs=FS_SM - 0.5)
-draw_dim_h(ax, 0, BOX_D, -30, f"Camera  {BOX_D} mm", offset=8, fs=FS_SM - 0.5)
-draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D} mm", offset=8, fs=FS_SM - 0.5)
+           f"{BOX_W}mm", offset=-20, right=True, fs=FS_SM - 0.5)
+draw_dim_h(ax, 0, BOX_D, -30, f"Camera  {BOX_D}mm", offset=8, fs=FS_SM - 0.5)
+draw_dim_h(ax, BOX_D, TOTAL_D, -30, f"Prep  {PREP_D}mm", offset=8, fs=FS_SM - 0.5)
 
 # Leaders
 leader(ax, board_plan_x, BOX_W / 2 + 90, board_plan_x - 50, BOX_W - 90,
@@ -706,10 +706,10 @@ ax.text(spec_x + BOX_W_SPEC / 2, 145, "SPECIFICATION", ha="center", va="top",
 ax.plot([spec_x + 20, spec_x + BOX_W_SPEC - 20], [137, 137], color=C_OUT, lw=0.6)
 
 specs = [
-    f"Focal length:  {FOCAL} mm (18\")",
-    f"Pinhole:  Ø{PH_D} mm (1/32\" drill bit)",
+    f"Focal length:  {FOCAL}mm (18\")",
+    f"Pinhole:  Ø{PH_D}mm (1/32\" drill bit)",
     f"f-number:  f/{F_NO}",
-    f"Film plane:  {FP_W} × {int(paper_y2 - paper_y1)} mm",
+    f"Film plane:  {FP_W} × {int(paper_y2 - paper_y1)}mm",
     f"Exposure:  ~10 min (full sun)",
     "Substrate:  Watercolor paper 300 gsm",
     "Process:  Ware New Cyanotype",

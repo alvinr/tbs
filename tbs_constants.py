@@ -8,26 +8,26 @@ All generator scripts should import from this module:
 
 Redesign basis (2026-04-23 rev 2):
   Black-water drums (2× 55-gal) relocated from right end zone to left end zone
-  (Y-stacked behind evap cooler).  IBC column right-justified to X=4,674–5,893mm.
-  Film plane widens from 2,920mm to 3,549mm (X=1,100–4,649mm).
-  Pinhole recentred to X=2,874mm.  Max swing decreases from 36.5° to 31.4°
-  (same Y travel over wider 3,549mm rail span).
+  (Y-stacked behind evap cooler).  IBC column right-justified to X=4674–5893mm.
+  Film plane widens from 2920mm to 3549mm (X=1100–4649mm).
+  Pinhole recentred to X=2874mm.  Max swing decreases from 36.5° to 31.4°
+  (same Y travel over wider 3549mm rail span).
 
 Redesign basis (2026-04-23 rev 3):
-  Evap cooler relocated to pinhole wall face (Yd=0) at X=930–1,530mm — always
+  Evap cooler relocated to pinhole wall face (Yd=0) at X=930–1530mm — always
   shadow-free at Yd=0 regardless of X position.
   Drums repositioned to X=20–600mm, Yd=25–605mm (near cargo door end wall,
-  Yd range entirely below light trap drum's Yd=806–1,556mm band — no X-clearance
-  conflict).  Zone left boundary moves from X=1,100mm to X=625mm.
-  Film plane widens from 3,549mm to 4,024mm (X=625–4,649mm).
-  Pinhole recentred to X=2,637mm.  Max swing decreases from 31.4° to 28.3°
+  Yd range entirely below light trap drum's Yd=806–1556mm band — no X-clearance
+  conflict).  Zone left boundary moves from X=1100mm to X=625mm.
+  Film plane widens from 3549mm to 4024mm (X=625–4649mm).
+  Pinhole recentred to X=2637mm.  Max swing decreases from 31.4° to 28.3°
   (wider rail span over same Y travel).
 
 Redesign basis (2026-05-03 rev 4):
   Hinged panel redesigned as stepped profile: 40mm corners (18mm ply + 4mm
   steel plate + 18mm ply) flanking 120mm center zone (unchanged RHS frame
   construction housing the light trap drum).  Step transitions at Yd=756mm
-  and Yd=1,606mm (drum 750mm + 50mm clearance each side).
+  and Yd=1606mm (drum 750mm + 50mm clearance each side).
   Panel slides on HGR20 linear rails (300mm travel) so light trap drum clears
   the container exterior face by 5mm, allowing standard ISO cargo doors to close.
   Fixed door frame with EPDM compression seal at X=0.
@@ -46,7 +46,7 @@ Redesign basis (2026-05-06 rev 5):
 Redesign basis (2026-05-06 rev 6):
   Film plane extended left from X=625mm to X=150mm (30mm clearance from panel
   center inner face at X=120mm).  Pinhole recentered on wider active plane.
-  Width increases from 4,024mm to 4,499mm (+11.8%).  Active area from 9.61 m²
+  Width increases from 4024mm to 4499mm (+11.8%).  Active area from 9.61 m²
   to 10.74 m² (103→116 sqft).  Max swing decreases from 28.3° to 25.7°
   (wider rail span, same Y travel).  Left end zone shrinks to X=0–150mm.
 
@@ -74,8 +74,8 @@ C_HGT  = 2388   # interior height Z (mm)
 # ── Film plane ────────────────────────────────────────────────────────────────
 FP_H     = 2388   # film plane height (mm)          [unchanged]
 FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
-FP_X_R   = 4649   # film plane right edge X (mm)    [was 4,019 → wider right zone]
-FP_W     = FP_X_R - FP_X_L   # = 4,499 mm          [rev6: was 4,024]
+FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
+FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
@@ -100,7 +100,7 @@ CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # = 16 per vertical edge
 CLAMP_N_TOTAL = 2 * CLAMP_N_HORIZ + 2 * CLAMP_N_VERT  # = 92
 
 # ── Pinhole (recentred on new film plane) ─────────────────────────────────────
-PH_X   = FP_X_L + FP_W // 2   # = 2,399 mm  [rev6: was 2,637]
+PH_X   = FP_X_L + FP_W // 2   # = 2399mm  [rev6: was 2637]
 PH_H   = 1194                  # height (mm) [unchanged]
 PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
 PH_F   = C_WID                 # focal length = container width [unchanged]
@@ -108,8 +108,8 @@ PH_FNO = round(PH_F / PH_D)   # f/1088 [unchanged]
 
 # ── Film plane rails ──────────────────────────────────────────────────────────
 RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
-RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4,019 → now 4,649]
-RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4,499 mm  [rev6: was 4,024]
+RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
+RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # floor/ceiling offset (mm)  [unchanged]
 
@@ -118,11 +118,11 @@ MAX_TILT_DEG  = math.degrees(math.atan((FP_Y - FP_Y_MIN) / FP_H))
 # = arctan(2162/2388) = 42.1°  [unchanged]
 
 MAX_SWING_DEG = math.degrees(math.atan((FP_Y - FP_Y_MIN) / RAIL_SPAN))
-# = arctan(2162/4499) = 25.7°  [rev6: was 28.3° with 4,024mm span]
+# = arctan(2162/4499) = 25.7°  [rev6: was 28.3° with 4024mm span]
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
-ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150 mm)  [rev6: was 625]
-ZONE_R_START = FP_X_R    # right zone left boundary X  (= 4,649 mm) [was 4,019]
+ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150mm)  [rev6: was 625]
+ZONE_R_START = FP_X_R    # right zone left boundary X  (= 4649mm) [was 4019]
 
 # ── Optical cone helper ───────────────────────────────────────────────────────
 def cone_left(y):
@@ -134,8 +134,8 @@ def cone_right(y):
     return PH_X + (FP_X_R - PH_X) * y / FP_Y
 
 # ── Hinged panel — stepped profile (rev 4) ───────────────────────────────────
-# Corner zones (Yd=0–756 and Yd=1,606–2,362): thin sandwich panel.
-# Center zone (Yd=756–1,606): full RHS frame housing light trap drum.
+# Corner zones (Yd=0–756 and Yd=1606–2362): thin sandwich panel.
+# Center zone (Yd=756–1606): full RHS frame housing light trap drum.
 PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 4mm plate + 18mm ply
 PANEL_CENTER_T    = 120   # center zone thickness (mm) — 18mm ply + 84mm RHS + 18mm ply
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
@@ -152,7 +152,7 @@ PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
 PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
                           # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
 
-# ── Left end zone (X = 0–150 mm, shadow-free at all depths) ──────────────────
+# ── Left end zone (X = 0–150mm, shadow-free at all depths) ──────────────────
 # Light trap drum in hinge panel center zone.  Zone shrunk in rev 6 as film
 # plane extended left from X=625 to X=150mm.  Only the panel thickness
 # (40/120mm) occupies this zone now.
@@ -243,8 +243,8 @@ PUMP_YD      = CORRIDOR_YD_NEAR  # pump zone near edge Yd (mm) — near side of 
 # processing area corner, just inside the right walkway and near walkway.
 # Does not overlap any walkway — all walkways clear for passage.
 # Rotated 90°: long axis along X (parallel to walkway), short axis into tray.
-# Shadow-free: cone right boundary at Yd=450 is X=3,021mm; shelf at
-# X=3,729+ is >700mm outside cone.
+# Shadow-free: cone right boundary at Yd=450 is X=3021mm; shelf at
+# X=3729+ is >700mm outside cone.
 SHELF_X_L      = 3729    # shelf left edge X (mm) — 600mm left of right walkway
 SHELF_X_R      = 4329    # shelf right edge X (mm) — flush with right walkway inner edge
 SHELF_W        = 600     # shelf width in X direction (mm) — long axis along walkway
@@ -305,12 +305,12 @@ PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)
 PUMP_PIPE_WALL = 3       # pipe wall thickness (mm)
 
 # ���─ Right end zone — 4 IBCs in 2×2 stack (rev 5) ────────────────────────────
-# Right-justified to far end wall: X=4,674–5,893mm.
+# Right-justified to far end wall: X=4674–5893mm.
 # Layout (view from pinhole wall):
 #   TOP    Blue #1 (near)     Blue #2 (far)    ← gravity feeds spray bar
 #   BOTTOM Brown   (near)     Waste   (far)    ← receives water by gravity
 # Weight migrates top→bottom during session (stability improves).
-IBC_COL_X   = ZONE_R_START + 25   # = 4,674mm  [right-justified to end wall]
+IBC_COL_X   = ZONE_R_START + 25   # = 4674mm  [right-justified to end wall]
 IBC_W       = 1219   # IBC overall width  (mm) — US 48" pallet format, includes cage
 IBC_D       = 1016   # IBC overall depth  (mm) — US 40" pallet format, includes cage
 IBC_H_600   = 1010   # 640L IBC overall height (mm) — includes pallet base + cage + bottle
@@ -325,25 +325,25 @@ IBC_CAGE_INSET  = 15     # cage tube center inset from pallet edge (mm)
 IBC_BOTTLE_INSET = 30    # bottle wall inset from pallet edge (mm)
 IBC_VALVE_Z     = 185    # DN50 butterfly valve CL above IBC base (mm)
 
-# Near column (Yd=30–1,046mm): Blue #1 on top, Brown on bottom
+# Near column (Yd=30–1046mm): Blue #1 on top, Brown on bottom
 BLUE_IBC_Y  = 30     # near column Yd start (mm) — pushed to near wall, 30mm clearance
 BROWN_IBC_Y = BLUE_IBC_Y   # Brown is directly below Blue #1 (same Y column)
 
-# Far column (Yd=1,316–2,332mm): Blue #2 on top, Waste on bottom
+# Far column (Yd=1316–2332mm): Blue #2 on top, Waste on bottom
 IBC_FAR_Y   = 1316   # far column Yd start (mm) — pushed to far wall, 30mm clearance
-# Central plumbing corridor: Yd=1,046–1,316 (270mm wide)
+# Central plumbing corridor: Yd=1046–1316 (270mm wide)
 WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 
-# IBC right edge: IBC_COL_X + IBC_W = 4,674 + 1,219 = 5,893mm = C_LEN ✓
-# Stack height: 2 × 1,010 = 2,020mm  (ceiling 2,388mm → 368mm headroom ✓)
+# IBC right edge: IBC_COL_X + IBC_W = 4674 + 1219 = 5893mm = C_LEN ✓
+# Stack height: 2 × 1010 = 2020mm  (ceiling 2388mm → 368mm headroom ✓)
 
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
 PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]
-PROC_TRAY_X_R  = FP_X_R - 20    # = 4,629mm — 20mm clearance from right rail
-PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4,459mm [rev6: was 3,984]
+PROC_TRAY_X_R  = FP_X_R - 20    # = 4629mm — 20mm clearance from right rail
+PROC_TRAY_W    = PROC_TRAY_X_R - PROC_TRAY_X_L   # = 4459mm [rev6: was 3984]
 PROC_TRAY_D    = 2200            # depth in Y direction (mm)
 PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pinhole wall
-PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2,280mm
+PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
 # Dual-axis pitch: tray slopes toward the low corner (near-pinhole, IBC end).
@@ -383,7 +383,7 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 # Mounting varies by wall type:
 #   Near/far walkways (long walls): brackets bolt to corrugated wall ribs.
 #   Right walkway (IBC end):        floor-mounted posts bolted through container
-#       floor at X≈4,640mm (just outside tray rim).  Cantilever arms reach back
+#       floor at X≈4640mm (just outside tray rim).  Cantilever arms reach back
 #       over tray rim to support walkway.  34mm clearance to IBC stack.
 #       Zero tray contact — posts on bare floor outside tray.
 #   Left walkway (cargo door end):  REMOVABLE LIFT-OUT — no wall brackets.
@@ -395,7 +395,7 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #       Supported at ends by near/far walkway bracket arms at butt joints.
 #       Processing tray side (X=470): removable bearer beam (50×50×3mm Al RHS)
 #       runs along Yd, bolted to near/far bracket vertical legs, spanning
-#       1,762mm.  Beam top flush at Z=75mm (grate bottom).
+#       1762mm.  Beam top flush at Z=75mm (grate bottom).
 #       Cargo door side (X=170): 3 floor-standing support legs at X≈140 on
 #       bare container floor (outside tray), plus a bearing strip (25×25×3mm
 #       Al angle) on the processing tray rim (Z=50→75mm).
@@ -415,7 +415,7 @@ WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway
 # (25×25×5mm) running full container width along Yd, suspended from ceiling
 # corrugations by M10 threaded rod hangers at 457mm centers.  Grating spans
 # 300mm between bearers.  Near/far ends bear on adjacent walkway brackets.
-# All hangers placed at Yd < 2,025mm — clear of optical cone.
+# All hangers placed at Yd < 2025mm — clear of optical cone.
 WALKWAY_RIGHT_W = WALKWAY_W  # 300mm — same width as near/far
 WALKWAY_RIGHT_BEARER_SIZE = 25   # bearer angle leg (mm) — 25×25×5mm steel L-angle
 WALKWAY_RIGHT_BEARER_T   = 5    # bearer angle thickness (mm)
@@ -428,17 +428,17 @@ WALKWAY_RIGHT_CEIL_PLATE  = (100, 60, 6)  # ceiling bracket plate (L×W×T mm)
 # Near walkway (pinhole side): X=tray_L to tray_R, Yd=0 to WALKWAY_W
 WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 # Far walkway (film plane side): X=tray_L to tray_R, Yd=C_WID-WALKWAY_W to C_WID
-WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1,962mm
+WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
 # REMOVABLE — must be lifted out before sliding panel to transport position.
-# Span between near/far bracket arms: C_WID - 2×WALKWAY_W = 1,762mm.
+# Span between near/far bracket arms: C_WID - 2×WALKWAY_W = 1762mm.
 # Supported by: (a) bearer beam along Yd at X=470 (processing tray side),
-# bolted to near/far bracket vertical legs, spanning 1,762mm; and
+# bolted to near/far bracket vertical legs, spanning 1762mm; and
 # (b) 3 floor-standing support legs at X≈140 (cargo door side, outside tray)
 # plus a bearing strip on the processing tray rim (X=170).
 # Zero processing tray contact — all supports outside or above tray.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
-WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1,762mm span between bracket arms
+WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm span between bracket arms
 # Left walkway intermediate support
 LEFT_WK_BEARER_SIZE  = 50    # bearer beam section (mm) — 50×50×3mm Al RHS
 LEFT_WK_BEARER_T     = 3     # bearer beam wall thickness (mm)
@@ -448,7 +448,7 @@ LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
-WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4,329mm (grating inner edge)
+WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)
 # Grating widened from 300mm to 500mm in the EP/battery/slit zone.
 # Deeper cantilever brackets (500mm arm) with heavier gussets in this section.
@@ -465,9 +465,9 @@ WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) �
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 570mm
-PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4,429mm
+PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4429mm
 PROC_OPEN_YD_N = WALKWAY_W                    # = 300mm
-PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1,962mm
+PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 1962mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
                                                # = 6.42 m² open processing area
 
@@ -488,7 +488,7 @@ SPRAY_BAR_AXLE_Z     = SPRAY_BAR_TRAY_FLOOR + SPRAY_BAR_WHEEL_DIA // 2  # = 27mm
 SPRAY_BAR_BRACKET_DROP = 17        # L-bracket drop: axle CL to beam bottom (mm)
 SPRAY_BAR_Z_BOT      = SPRAY_BAR_AXLE_Z - SPRAY_BAR_BRACKET_DROP  # = 10mm beam bottom
 SPRAY_BAR_Z_TOP      = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM           # = 50mm beam top
-SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2,200mm (Yd travel, near rim to far rim)
+SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
 SPRAY_BAR_HOLE_DIA   = 3           # spray hole diameter (mm)
 SPRAY_BAR_HOLE_SP    = 100         # spray hole spacing along beam bottom (mm)
 SPRAY_BAR_N_HOLES    = int((SPRAY_BAR_SPAN - 2 * 79.5) / SPRAY_BAR_HOLE_SP) + 1  # = 38
@@ -501,8 +501,8 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # Flat steel reinforcing plate welded over corrugation before drilling.
 # External plumbing panel — 3 ports (X1/X3/X4) stacked vertically on end wall centerline
 # IBC-2 fills via 2" cross-connect from IBC-1 (self-leveling, no valve, no X2 port)
-EXT_PANEL_YD = C_WID // 2   # = 1,181mm — panel centered on container width
-EXT_FILL_1_H = 2250    # X1: fill Blue IBC-1 port height (mm) — above top-tier IBC top (2,082mm), gravity feed
+EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
+EXT_FILL_1_H = 2250    # X1: fill Blue IBC-1 port height (mm) — above top-tier IBC top (2082mm), gravity feed
 EXT_DRAIN_3_H = 400    # X3: drain Brown IBC-3 port height (mm) — bottom tier near
 EXT_DRAIN_4_H = 200    # X4: drain Waste IBC-4 port height (mm) — bottom tier far
 # Legacy aliases for downstream code
@@ -538,11 +538,11 @@ DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 
 # Shadow margins — distance from fan assembly to nearest cone edge (at worst depth)
 # Fan A: duct extends inward from X=C_LEN wall
-FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869 mm ✓
+FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 # Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
 # Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
 # Fan at Yd=1959mm: cone at Yd=1959 is well above X=625, so no cone intrusion.
-FAN_B_MARGIN = PANEL_CORNER_T   # = 40 mm (fan flush with panel inner face)
+FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
 DIAGRAMS_DIR = "diagrams"
@@ -582,8 +582,8 @@ C_PROC_ZONE    = "#E8F5E9"   # processing tray zone
 # ── Convenience summary (printed on import in debug mode) ────────────────────
 if __name__ == "__main__":
     print("TBS-001 Constants (rev 7)")
-    print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT} mm")
-    print(f"  Film plane:     {FP_W} × {FP_H} mm  (X={FP_X_L}–{FP_X_R})")
+    print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT}mm")
+    print(f"  Film plane:     {FP_W} × {FP_H}mm  (X={FP_X_L}–{FP_X_R})")
     print(f"  Muslin clamps:  {CLAMP_N_TOTAL} cam-lever clamps at {CLAMP_SPACING}mm centers")
     print(f"  Pinhole:        X={PH_X}  H={PH_H}  Ø{PH_D}mm  f/{PH_FNO}")
     print(f"  Rails:          X={RAIL_X_L} – {RAIL_X_R}  span={RAIL_SPAN}mm")

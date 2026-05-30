@@ -249,11 +249,11 @@ def draw_sheet1():
     circuits = [
         # letter, name, fuse, wire, load, note, colour
         ("A", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
-         "Far end wall (X=5,893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
+         "Far end wall (X=5893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
         ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
-         "Cargo door end wall (X=0)  |  high position  |  Yd=1,959mm", C_ALUM),
+         "Cargo door end wall (X=0)  |  high position  |  Yd=1959mm", C_ALUM),
         ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
-         "Equipment panel, IBC corridor (Yd=1,046–1,316)", C_PUMP_TINT),
+         "Equipment panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAPORATIVE\nCOOLER  (12V DC)",      "10A", "14 AWG", "80W",
@@ -374,16 +374,16 @@ def draw_sheet1():
 # SHEET 2 — Container Floor Plan + Wiring Layout  (scale 1:500)
 #
 # ORIENTATION:
-#   Container long axis (5,893mm) = HORIZONTAL (left–right in plan)
-#   Optical depth (2,362mm)       = VERTICAL (bottom–top in plan)
+#   Container long axis (5893mm) = HORIZONTAL (left–right in plan)
+#   Optical depth (2362mm)       = VERTICAL (bottom–top in plan)
 #   LEFT short wall  = X=0   = CARGO DOOR end (hinged panel / light trap)
 #   RIGHT short wall = X=5893= FAR END
 #   BOTTOM long wall = Y=0   = PINHOLE WALL  (Yd=0)
 #   TOP long wall    = Y=2362= IMAGE PLANE WALL
-#   Pinhole: on BOTTOM long wall at X=2,399mm (centered on film plane)
+#   Pinhole: on BOTTOM long wall at X=2399mm (centered on film plane)
 #   Image plane: on TOP long wall
 #   NO vestibule shown — light trap is part of hinged-panel drawing
-#   EP + BAT on pinhole wall (Yd=0); pumps on equipment panel (Yd=1,046)
+#   EP + BAT on pinhole wall (Yd=0); pumps on equipment panel (Yd=1046)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def draw_sheet2():
@@ -407,10 +407,10 @@ def draw_sheet2():
     # Axes show mm directly.  Interior: X 0→C_LEN, Yd 0→C_WID.
     # Adapter variables let existing expressions (OX+wt, OY+cwid-wt, ix(),
     # x*S_xi, etc.) evaluate to correct mm values without rewriting every line.
-    C_LEN   = TBS_C_LEN    # 5893 mm
-    C_WID   = TBS_C_WID    # 2362 mm
+    C_LEN   = TBS_C_LEN    # 5893mm
+    C_WID   = TBS_C_WID    # 2362mm
     WT_MM   = 120           # mm schematic wall thickness
-    PH_X_MM = TBS_PH_X     # 2399 mm
+    PH_X_MM = TBS_PH_X     # 2399mm
     ZONE_L  = ZONE_L_END
     ZONE_R  = ZONE_R_START
 
@@ -452,7 +452,7 @@ def draw_sheet2():
             color=TITLE_COL)
     ax.text(FIG_CX, title_y - 170,
             "Top-down plan view  ·  All dimensions in mm  "
-            "·  Pinhole on bottom long wall — optical axis crosses container width (2,362mm)",
+            "·  Pinhole on bottom long wall — optical axis crosses container width (2362mm)",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     ph_x     = PH_X_MM
@@ -479,7 +479,7 @@ def draw_sheet2():
             fontsize=7.0, color=C_OUT, ha="right", va="center",
             fontweight="bold")
     ax.text(OX + clen + 60, OY + cwid/2,
-            "FAR END\n(X=5,893mm)",
+            "FAR END\n(X=5893mm)",
             fontsize=7.0, color=C_DIM, ha="left", va="center")
     ax.text(OX + clen/2, OY + cwid - wt + 410,
             "20FT ISO CONTAINER  —  INTERIOR  (top-down plan)",
@@ -538,7 +538,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=7)
 
-    # ── Pinhole — bottom long wall at X=2,874mm (recentred on new film plane) ─
+    # ── Pinhole — bottom long wall at X=2874mm (recentred on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 60,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     leader(ax, ph_x, OY + wt/2, ph_x + 350, OY - 175,
@@ -549,7 +549,7 @@ def draw_sheet2():
 
     # ── Colonnade equipment ───────────────────────────────────────────────────
     # x_mm  = TBS X along long axis (0 = cargo door end = LEFT in plan)
-    #          TBS coords run 0–5,893mm interior-to-interior.
+    #          TBS coords run 0–5893mm interior-to-interior.
     #          Map to drawing interior: ex = OX + wt + x_mm * S_x.
     # yd_mm = depth from pinhole wall (0 = pinhole wall = BOTTOM in plan)
     def equip(x_mm, yd_mm, w_mm, d_mm, label, col, sublabel=""):
@@ -624,9 +624,9 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold",
             color=C_OUT, zorder=8)
 
-    # EQUIPMENT PANEL (Yd=1,046) — pumps + filters in IBC corridor
+    # EQUIPMENT PANEL (Yd=1046) — pumps + filters in IBC corridor
     equip(FSKID_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
-          "C", C_PUMP, "Equip panel  Yd=1,046–1,316")
+          "C", C_PUMP, "Equip panel  Yd=1046–1316")
 
     # RIGHT END ZONE — 4× IBC in 2×2 stack
     # Near column (Yd=30–1046): Blue #1 on top, Brown on bottom
@@ -692,9 +692,9 @@ def draw_sheet2():
     # Positioned in gaps between white LED panels to avoid visual overlap
     # Each shortened to stay clear of optical cone at its X position
     SL_STRIPS = [
-        (600,  1800),   # near cargo door — cone limit at Yd≈1,889, stop at 1,800
-        (1800, 2100),   # between white panels 1 & 2 — cone limit at Yd≈2,174, stop at 2,100
-        (4100, 2100),   # between white panels 2 & 3 — cone limit at Yd≈2,730, stop at 2,100
+        (600,  1800),   # near cargo door — cone limit at Yd≈1889, stop at 1800
+        (1800, 2100),   # between white panels 1 & 2 — cone limit at Yd≈2174, stop at 2100
+        (4100, 2100),   # between white panels 2 & 3 — cone limit at Yd≈2730, stop at 2100
     ]
     SL_STRIP_W = 20    # strip width along X (mm)
     SL_POSITIONS = [s[0] for s in SL_STRIPS]   # for component key reference
@@ -848,12 +848,12 @@ def draw_sheet2():
     DIM_Y = OY - 300
     DIM_X = OX - 210
 
-    draw_dim_h(ax, OX, OX+clen, DIM_Y-600, f"{C_LEN} mm  (container interior length)",
+    draw_dim_h(ax, OX, OX+clen, DIM_Y-600, f"{C_LEN}mm  (container interior length)",
                above=False, offset=40, fs=7.5)
     draw_dim_h(ax, fp_l_x, fp_r_x, DIM_Y - 425,
                f"Film plane  {FP_X_R-FP_X_L}mm",
                above=False, offset=40, fs=7.5)
-    draw_dim_v(ax, DIM_X-250, OY, OY+cwid,  f"{C_WID} mm  (optical depth / interior width)",
+    draw_dim_v(ax, DIM_X-250, OY, OY+cwid,  f"{C_WID}mm  (optical depth / interior width)",
                offset=40, fs=7.5)
 
     # ── Component key (right of container) ───────────────────────────────────
@@ -865,19 +865,19 @@ def draw_sheet2():
 
     key_rows = [
         ("EP",    C_ELEC,    "ELECTRICAL PANEL (EP)",
-         f"IP65 enclosure  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X:,}mm"),
+         f"IP65 enclosure  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
-         f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X:,}mm"),
+         f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
         ("A",     C_ALUM,    "INTAKE FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5,893mm)  |  Yd=75mm"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5893mm)  |  Yd=75mm"),
         ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=1,959mm"),
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=1959mm"),
         ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",
-         f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR:,}–{CORRIDOR_YD_NEAR + CORRIDOR_W:,}mm"),
+         f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
-         f"12V DC 80W  |  10A / 14 AWG  |  External unit, 200mm duct at X={EVAP_DUCT_X:,}mm"),
+         f"12V DC 80W  |  10A / 14 AWG  |  External unit, 200mm duct at X={EVAP_DUCT_X}mm"),
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
          "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
@@ -902,9 +902,9 @@ def draw_sheet2():
     notes = [
         "DRAWING NOTES:",
         f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentered on new film plane). "
-        f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2,262mm. f/1088.",
+        f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2262mm. f/1088.",
         f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), ",
-        f"Right X={FP_X_R}\u20135,893mm (IBCs only). Evap cooler external via "
+        f"Right X={FP_X_R}\u20135893mm (IBCs only). Evap cooler external via "
         f"\u00d8{EVAP_DUCT_D}mm duct at X={EVAP_DUCT_X}mm. Amber cone \u2014 keep entirely clear.",
         "3. Cable trunking (40\u00d725mm PVC) on pinhole wall face (Yd=0) \u2014 outside "
         "optical cone. Drop conduits (10mm corrugated) to each device.",
@@ -1013,11 +1013,11 @@ def draw_sheet3():
     # Ceiling line
     ax.plot([OX - 120, OX + wlen + 120], [OY + whgt, OY + whgt],
             color=C_OUT, lw=3.0, zorder=3)
-    ax.text(OX + wlen / 2, OY + whgt + 48, "CEILING (Z=2,388mm)",
+    ax.text(OX + wlen / 2, OY + whgt + 48, "CEILING (Z=2388mm)",
             ha="center", va="bottom", fontsize=7.5, color=C_DIM)
 
     # Wall labels
-    ax.text(OX - 60, OY + whgt / 2, "FAR\nEND\n(X=5,893)",
+    ax.text(OX - 60, OY + whgt / 2, "FAR\nEND\n(X=5893)",
             ha="right", va="center", fontsize=7.0, color=C_DIM)
     ax.text(OX + wlen + 60, OY + whgt / 2, "CARGO\nDOOR\nEND\n(X=0)",
             ha="left", va="center", fontsize=7.0, color=C_OUT,
@@ -1190,7 +1190,7 @@ def draw_sheet3():
     # Pull switch label
     leader(ax, wx(PS_X_MM + sw_x_off), wz(CORD_HANG_Z),
            wx(PS_X_MM) + 200, wz(CORD_HANG_Z) + 240,
-           "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1,500mm\nabove walkway deck",
+           "Pull-cord switches\nD = safelight (red)\nG = white light\nCords hang to ~1500mm\nabove walkway deck",
            fs=6.5, color="#606080")
 
     # ── LED panels (ceiling-mounted, shown as rectangles at top) ──────────────
@@ -1252,11 +1252,11 @@ def draw_sheet3():
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Overall wall width
     draw_dim_h(ax, OX, OX + wlen, OY - 280,
-               f"{C_LEN} mm  (interior length)",
+               f"{C_LEN}mm  (interior length)",
                above=False, offset=32, fs=7.5)
     # Overall wall height
     draw_dim_v(ax, OX - 360, OY, OY + whgt,
-               f"{TBS_C_HGT} mm",
+               f"{TBS_C_HGT}mm",
                offset=32, fs=7.5)
 
     # EP height dimensions — dim line to the left of EP (mirrored)
@@ -1313,7 +1313,7 @@ def draw_sheet3():
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
-        ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1,500mm AFF"),
+        ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1500mm AFF"),
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
     ]
     for j, (fc, title_k, spec) in enumerate(key_items):
@@ -1330,9 +1330,9 @@ def draw_sheet3():
     notes = [
         "DRAWING NOTES:",
         "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; pumps and filters on equipment panel",
-        "in IBC corridor (Yd=1,046); evap cooler external via duct.",
-        "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482,363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
-        "3. Pull-cord switches at ceiling height, cords hang to ~1,500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
+        "in IBC corridor (Yd=1046); evap cooler external via duct.",
+        "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
+        "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",
     ]
     key_bottom = KY - 100 - (len(key_items) - 1) * 220 - 120

@@ -313,12 +313,12 @@ ax.text(C_LEN / 2, -350,
 
 ax.annotate("", xy=(C_LEN, -320), xytext=(0, -320),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_LEN / 2, -280, f"{C_LEN} mm", ha="center", va="bottom",
+ax.text(C_LEN / 2, -280, f"{C_LEN}mm", ha="center", va="bottom",
         fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(-450, C_WID), xytext=(-450, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-500, C_WID / 2, f"{C_WID} mm", ha="right", va="center",
+ax.text(-500, C_WID / 2, f"{C_WID}mm", ha="right", va="center",
         fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
 
 # Legend box
@@ -415,12 +415,12 @@ ax.text(C_WID / 2, -320,
 
 ax.annotate("", xy=(C_WID, -270), xytext=(0, -270),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(C_WID / 2, -250, f"{C_WID} mm (optical depth)",
+ax.text(C_WID / 2, -250, f"{C_WID}mm (optical depth)",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, zorder=10)
 
 ax.annotate("", xy=(-280, C_HGT), xytext=(-280, 0),
             arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=0.8))
-ax.text(-300, C_HGT / 2, f"{C_HGT} mm",
+ax.text(-300, C_HGT / 2, f"{C_HGT}mm",
         ha="right", va="center", fontsize=FS_SM, color=C_DIM, rotation=90, zorder=10)
 
 

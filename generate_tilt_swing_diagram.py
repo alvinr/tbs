@@ -284,7 +284,7 @@ def draw_sheet1():
 def draw_sheet2():
     """Sheet 2: Cross-section A-A through TSB assembly at 1:2 scale."""
     SC = 2.0
-    fig_w, fig_h = 8, 8
+    fig_w, fig_h = 5, 8
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
@@ -302,7 +302,7 @@ def draw_sheet2():
         return mm / SC
 
     # Section center: carrier center / pinhole plane
-    cx = pw * 0.42
+    cx = pw * 0.45
     cy = ph / 2 + 20
 
     # Horizontal axis: depth (X direction, scene left, interior right)
@@ -487,32 +487,36 @@ def draw_sheet2():
             color=C_CL, lw=LW_THIN, ls=(0, (8, 3, 1, 3)), zorder=2)
 
     # ── Labels ───────────────────────────────────────────────────────────────
-    # Scene / Interior labels
-    ax.text(cr_right + disc_t + 50, cy + fr_half * 0.6, 'INTERIOR\n(CAMERA)',
-            ha='left', fontsize=6, color='#333', style='italic')
-    ax.text(wall_x - 30, cy + fr_half * 0.6, 'EXTERIOR\n(SCENE)',
-            ha='right', fontsize=6, color='#333', style='italic')
+    # Scene / Interior arrows at top of section
+    arr_y = cy + fr_half + 15
+    ax.annotate('EXTERIOR\n(SCENE)', xy=(wall_x, arr_y), xytext=(wall_x - 10, arr_y + 35),
+                fontsize=5, color='#333', style='italic', ha='center', va='bottom',
+                arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
+    ax.annotate('INTERIOR\n(CAMERA)', xy=(cr_right + disc_t, arr_y), xytext=(cr_right + disc_t + 10, arr_y + 35),
+                fontsize=5, color='#333', style='italic', ha='center', va='bottom',
+                arrowprops=dict(arrowstyle='->', color='#999', lw=0.6))
 
-    # Component labels with leaders
+    # Component labels with leaders — staggered vertically
+    lx_r = cr_right + 40
     leader(ax, (fr_left + fr_right) / 2, cy + fr_half - 10,
-           fr_right + 80, cy + fr_half + 30,
-           'ICP-01\nOUTER FRAME\n600×600×40 AL', fs=5.5)
+           lx_r, cy + fr_half + 20,
+           'ICP-01 OUTER FRAME\n600×600×40 AL', fs=5)
 
     leader(ax, (cr_left + cr_right) / 2, cy + cr_half - 5,
-           cr_right + 80, cy + cr_half + 20,
-           'ICP-02\nCARRIER Ø320×25 AL', fs=5.5)
+           lx_r, cy + 20,
+           'ICP-02 CARRIER Ø320×25 AL', fs=5)
 
     leader(ax, brg_left + s(BRG_W / 2), cy + brg_outer_half,
-           brg_left - 20, cy + brg_outer_half + 40,
-           'ICP-03\nGE50-DO-2RS\nØ50×Ø80×46', fs=5.5)
+           brg_left - 10, cy + brg_outer_half + 50,
+           'ICP-03 GE50-DO-2RS\nØ50×Ø80×46', fs=5)
 
     leader(ax, cr_right + disc_t / 2, cy + disc_half + 3,
-           cr_right + 60, cy + disc_half + 45,
-           'PINHOLE DISC\nØ50×0.1 SS-302\nØ2.17mm APT', fs=5.5)
+           lx_r, cy + disc_half + 40,
+           'PINHOLE DISC\nØ50×0.1 SS-302\nØ2.17mm APT', fs=5)
 
-    leader(ax, bel_left + (bel_right - bel_left) / 2, cy + bel_outer_half - 5,
-           bel_right + 40, cy + bel_outer_half + 30,
-           'ICP-10 BELLOWS\nØ290–Ø360\n4-PLEAT NEOPRENE', fs=5.5)
+    leader(ax, bel_left + (bel_right - bel_left) / 2, cy - bel_outer_half + 5,
+           lx_r, cy - bel_outer_half - 20,
+           'ICP-10 BELLOWS Ø290–Ø360', fs=5)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
     # Frame thickness
@@ -556,13 +560,14 @@ def draw_sheet2():
         'BELLOWS: ZERO-FRICTION LIGHT SEAL. ±13.9mm ASYMMETRIC COMPRESSION AT ±5° TILT.',
         'LABYRINTH BORE: 3-STEP (Ø382/390/400mm, 5mm DEEP EACH) — SECONDARY LIGHT SEAL.',
     ]
-    draw_notes(ax, notes2, 30, ph * 0.20, spacing=14, fs=5.5, width=pw - 70)
+    draw_notes(ax, notes2, 25, ph * 0.20, spacing=14, fs=5, width=pw - 50)
 
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="TILT-SWING FRONT BOARD",
-                subtitle="SECTION A-A — BEARING, BELLOWS, ADJUSTMENT",
-                scale_note="SCALE 1:2 · AXES IN mm",
-                doc_id="TBS-001 · Interchangeable Plates")
+                subtitle="SECTION A-A",
+                scale_note="1:2 · mm",
+                doc_id="TBS-001",
+                portrait=True)
 
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/tilt-swing-sheet2.png'

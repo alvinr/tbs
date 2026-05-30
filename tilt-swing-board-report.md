@@ -1,6 +1,6 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Tilt-and-Swing Front Board Mechanism
+# Tilt-and-Swing Front Board Mechanism Report
 
 ## 1. Purpose
 
@@ -50,7 +50,19 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 ## 3. Mechanism Overview
 
+### 3.1 Pinhole
+
+**Sheet 1 — Front View** (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.
+
+![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
+
+### 3.2 Tilt & Swing Mechanism
 The TSB assembly is a two-part drop-in replacement for the standard flat pinhole plate:
+
+**Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
+
+![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
+
 
 ```
 WALL FRAME (fixed, welded to container)
@@ -80,16 +92,6 @@ WALL FRAME (fixed, welded to container)
      ├── ID Ø290mm → OD Ø360mm, free length 60mm, 4 pleats
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
-
-### Engineering Drawings
-
-**Sheet 1 — Front View** (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.
-
-![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
-
-**Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
-
-![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
 
 ---
 

@@ -93,7 +93,7 @@ C_BALL  = '#E0E0E0'
 def draw_sheet1():
     """Sheet 1: Front view of TSB assembly at 1:2 scale."""
     SC = 2.0
-    fig_w, fig_h = 8, 10
+    fig_w, fig_h = 5.5, 10
     fig, ax = plt.subplots(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor('white')
     ax.set_facecolor('white')
@@ -213,13 +213,13 @@ def draw_sheet1():
         draw_circle(ax, bx, by, s(3), lw=0.5, color=C_HID, fc='white', fill=True)
 
     # Section cut line A-A (vertical through center)
-    cut_ext = half + 50
+    cut_ext = half + 20
     for yy, arrow_dir in [(cy + cut_ext, -1), (cy - cut_ext, 1)]:
-        ax.plot([cx - 8, cx + 8], [yy, yy], color=C_RED, lw=LW_CUT, zorder=20)
-        ax.annotate('', xy=(cx + 20 * arrow_dir, yy),
+        ax.plot([cx - 6, cx + 6], [yy, yy], color=C_RED, lw=LW_CUT, zorder=20)
+        ax.annotate('', xy=(cx + 15 * arrow_dir, yy),
                     xytext=(cx, yy),
-                    arrowprops=dict(arrowstyle='->', color=C_RED, lw=1.5))
-        ax.text(cx - 15, yy, 'A', fontsize=9, fontweight='bold', color=C_RED,
+                    arrowprops=dict(arrowstyle='->', color=C_RED, lw=1.2))
+        ax.text(cx - 12, yy, 'A', fontsize=8, fontweight='bold', color=C_RED,
                 ha='center', va='center', zorder=21)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
@@ -227,31 +227,33 @@ def draw_sheet1():
     draw_dim_h(ax, cx - half, cx + half, cy - half - 30, '600', above=False, fs=6, offset=8)
 
     # Right-side leaders (top to bottom)
+    lx_r = cx + half + 25
     leader(ax, cx + bolt_r * 0.924, cy + bolt_r * 0.383,
-           cx + half + 40, cy + half - 10, 'Ø540 PCD\n8× M12', fs=5.5)
+           lx_r, cy + half - 5, 'Ø540 PCD · 8× M12', fs=5)
 
     leader(ax, cx + bore_r * 0.707, cy + bore_r * 0.707,
-           cx + half + 40, cy + half - 50, 'Ø380 BORE', fs=5.5)
+           lx_r, cy + half - 30, 'Ø380 BORE', fs=5)
 
     leader(ax, cx + cr_r * 0.6, cy + cr_r * 0.8,
-           cx + half + 40, cy + half - 80, 'Ø320 CARRIER (ICP-02)', fs=5.5)
+           lx_r, cy + half - 50, 'Ø320 CARRIER (ICP-02)', fs=5)
 
     leader(ax, cx + s(DWL_OFF) + s(DWL_D / 2), cy + 5,
-           cx + half + 40, cy + 10, '2× Ø8 DOWEL', fs=5.5)
+           lx_r, cy + 10, '2× Ø8 DOWEL', fs=5)
 
     leader(ax, cx + s(FR_BRG_SEAT / 2) * 0.707, cy - s(FR_BRG_SEAT / 2) * 0.707,
-           cx + half + 40, cy - half + 60, 'Ø80 H7 BRG SEAT', fs=5.5)
+           lx_r, cy - half + 40, 'Ø80 H7 BRG SEAT', fs=5)
 
     # Left-side leaders
+    lx_l = cx - half - 25
     leader(ax, cx - s(SEAL_D / 2) * 0.707, cy - s(SEAL_D / 2) * 0.707,
-           cx - half - 40, cy - half + 50, 'Ø420 SEAL GROOVE', fs=5.5)
+           lx_l, cy - half + 40, 'Ø420 SEAL GROOVE', fs=5)
 
     # Bottom leaders
     leader(ax, cx + ph_r, cy - ph_r * 0.8,
-           cx + 80, cy - cr_r - 30, 'Ø50 PINHOLE DISC\nØ2.17mm APERTURE', fs=5.5)
+           cx + 60, cy - cr_r - 25, 'Ø50 PINHOLE DISC\nØ2.17mm APERTURE', fs=5)
 
     leader(ax, cx + adj_r * 0.383, cy - adj_r * 0.924,
-           cx + 80, cy - cr_r - 65, 'Ø260 PCD\n4× M8×1.0 ADJ SCREWS', fs=5.5)
+           cx + 60, cy - cr_r - 55, 'Ø260 PCD\n4× M8×1.0 ADJ', fs=5)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes1 = [
@@ -269,9 +271,10 @@ def draw_sheet1():
 
     title_block(ax, "SHEET 1 OF 2",
                 drawing_title="TILT-SWING FRONT BOARD",
-                subtitle="FRONT VIEW (SCENE SIDE) — ICP-01 + ICP-02",
-                scale_note="SCALE 1:2 · AXES IN mm",
-                doc_id="TBS-001 · Interchangeable Plates")
+                subtitle="FRONT VIEW — ICP-01 + ICP-02",
+                scale_note="1:2 · mm",
+                doc_id="TBS-001",
+                portrait=True)
 
     plt.tight_layout(pad=0)
     out1 = f'{DIAGRAMS_DIR}/tilt-swing-sheet1.png'

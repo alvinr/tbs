@@ -12,7 +12,7 @@ The front board is the interchangeable plate that carries the pinhole disc at th
 
 In a conventional view camera, front-standard movements and rear-standard movements have different optical effects. The Big Shoebox has both: this mechanism controls the **front board**, and the [Film Plane Mechanism](film-plane-mechanism-report.md) controls the rear.
 
-### What front-board tilt/swing does
+### 2.1 What front-board tilt/swing does
 
 The pinhole is a geometric projector — it has no focal length in the lens sense. Tilting the front board **rotates the pinhole's pointing direction**. The effect on the recorded image:
 
@@ -26,7 +26,7 @@ At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm*
 
 **No Scheimpflug effect**: because a pinhole has no plane of focus, front-board tilt does not rotate the zone of sharpness. Instead it steers the cone of light projected onto the film.
 
-### Comparison to film-plane movement
+### 2.2 Comparison to film-plane movement
 
 | | Front board tilt | Film plane tilt |
 |-|-----------------|-----------------|
@@ -36,7 +36,7 @@ At f = 2,362 mm, a 5° board tilt shifts the image **2,362 × tan(5°) = 207 mm*
 | Focus | Constant (pinhole) | Constant (pinhole) |
 | Primary use | Image placement, diagonal shift | Perspective distortion, extreme stretch |
 
-### Combined movements: the interesting case
+### 2.3 Combined movements: the interesting case
 
 When both systems operate simultaneously, the effects **stack non-linearly**. The combined projection model (see distortion renders) shows:
 
@@ -48,7 +48,7 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 ---
 
-## 4. Movement Specification
+## 3. Movement Specification
 
 | Axis | Control | Travel | Resolution | Image effect |
 |------|---------|--------|-----------|--------------|
@@ -68,7 +68,7 @@ See the [Combined Distortion Renders](#10-combined-distortion-renders) section b
 
 ---
 
-## 10. Combined Distortion Renders
+## 4. Combined Distortion Renders
 
 The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.
 
@@ -162,7 +162,7 @@ Board: tilt −3°, swing +3°. Film: tilt +20°, swing −15°. The tilt and sw
 
 ---
 
-## 11. Recommended Starting Configurations
+## 5. Recommended Starting Configurations
 
 For a first shoot with the TSB mechanism, the following settings offer the clearest demonstration of each effect:
 
@@ -177,7 +177,7 @@ For a first shoot with the TSB mechanism, the following settings offer the clear
 
 ---
 
-## 15. Source References
+## 6. Source References
 
 1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Rear standard mechanism and combined distortion analysis.
 2. [Pinhole Report](pinhole-report.md) — Wall frame and interchangeable plate interface specification.

@@ -34,7 +34,7 @@ from tbs_constants import (
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
 )
 from tbs_title_block import title_block
-from tbs_drawing import leader, draw_notes
+from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -81,24 +81,6 @@ RAIL_X_L = FP_X_L       # left rail X position (mm) — tracks FP_X_L from const
 RAIL_X_R = FP_X_R       # right rail X position (mm) — tracks FP_X_R from constants
 RAIL_W   = 60           # rail width in plan view
 
-
-def dim_line_h(ax, x0, x1, y, text, offset=30, col=DIM, fs=7):
-    tick = max(abs(offset) * 0.3, 15)   # minimum 15mm tick
-    ax.annotate("", xy=(x1, y), xytext=(x0, y),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
-    ax.plot([x0, x0], [y - tick, y + tick], color=col, lw=0.6)
-    ax.plot([x1, x1], [y - tick, y + tick], color=col, lw=0.6)
-    ax.text((x0+x1)/2, y+offset, text, color=col, fontsize=fs,
-            ha="center", va="bottom", **FONT)
-
-def dim_line_v(ax, x, y0, y1, text, offset=30, col=DIM, fs=7):
-    tick = max(abs(offset) * 0.3, 15)   # minimum 15mm tick
-    ax.annotate("", xy=(x, y1), xytext=(x, y0),
-                arrowprops=dict(arrowstyle="<->", color=col, lw=0.9, mutation_scale=6))
-    ax.plot([x - tick, x + tick], [y0, y0], color=col, lw=0.6)
-    ax.plot([x - tick, x + tick], [y1, y1], color=col, lw=0.6)
-    ax.text(x+offset, (y0+y1)/2, text, color=col, fontsize=fs,
-            ha="left", va="center", **FONT)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -264,13 +246,16 @@ def sheet1():
                 ha="right")
 
     # Dims
-    dim_line_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L} mm  (19 ft 4 in)",
-               offset=10, col=DIM, fs=7.5)
-    dim_line_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W} mm  (7 ft 9 in)",
-               offset=20, col=DIM)
-    dim_line_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm\n(left end zone)", col=DIM, fs=6.5)
-    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L} mm", col=RAIL, fs=6.5)
-    dim_line_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R} mm\n(right end zone)", col=DIM, fs=6.5)
+    draw_dim_h(ax, 0, L, W+150, f"INTERIOR LENGTH  {L} mm  (19 ft 4 in)",
+               offset=10, color=DIM, fs=7.5, font=FONT)
+    draw_dim_v(ax, L+750, 0, W, f"OPTICAL AXIS\n{W} mm  (7 ft 9 in)",
+               offset=20, color=DIM, right=True, font=FONT)
+    draw_dim_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L} mm\n(left end zone)",
+               color=DIM, fs=6.5, above=False, font=FONT)
+    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L} mm",
+               color=RAIL, fs=6.5, above=False, font=FONT)
+    draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R} mm\n(right end zone)",
+               color=DIM, fs=6.5, above=False, font=FONT)
 
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -435,13 +420,16 @@ def sheet2():
     ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W} mm  (FLAT)",
             color=C_FLAT, fontsize=7, ha="center", **FONT)
 
-    dim_line_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
-               offset=0, col=DIM)
-    dim_line_v(ax, W+210, 0, H, f"INTERIOR HEIGHT\n{H} mm", offset=20, col=DIM)
-    dim_line_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
-               offset=0, col=RAIL)
-    dim_line_h(ax, 0, D_NEAR, -100, f"{D_NEAR}mm", offset=20, col=DIM, fs=6)
-    dim_line_h(ax, D_FAR, W, -100, f"{W-D_FAR}mm", offset=20, col=DIM, fs=6)
+    draw_dim_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W} mm",
+               offset=15, color=DIM, font=FONT)
+    draw_dim_v(ax, W+210, 0, H, f"INTERIOR HEIGHT\n{H} mm",
+               offset=20, color=DIM, right=True, font=FONT)
+    draw_dim_h(ax, D_NEAR, D_FAR, -190, f"RAIL TRAVEL  {D_FAR-D_NEAR} mm",
+               offset=15, color=RAIL, above=False, font=FONT)
+    draw_dim_h(ax, 0, D_NEAR, -100, f"{D_NEAR}mm",
+               offset=20, color=DIM, fs=6, font=FONT)
+    draw_dim_h(ax, D_FAR, W, -100, f"{W-D_FAR}mm",
+               offset=20, color=DIM, fs=6, font=FONT)
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -529,10 +517,12 @@ def sheet2():
         ax.text(L/2, mid_y_sw + 80,
                 name, color=col, fontsize=6.5, ha="center", **FONT, zorder=zord+2)
 
-    dim_line_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm", offset=0, col=DIM, fs=7)
-    dim_line_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm", offset=20, col=DIM, fs=7)
-    dim_line_v(ax, RAIL_X_L - 120, D_NEAR, D_FAR,
-               f"RAIL\nTRAVEL\n{D_FAR-D_NEAR} mm", offset=-400, col=RAIL, fs=6.5)
+    draw_dim_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L} mm",
+               offset=15, color=DIM, fs=7, font=FONT)
+    draw_dim_v(ax, L+230, 0, W, f"OPTICAL AXIS  {W} mm",
+               offset=20, color=DIM, fs=7, right=True, font=FONT)
+    draw_dim_v(ax, RAIL_X_L - 120, D_NEAR, D_FAR,
+               f"RAIL\nTRAVEL\n{D_FAR-D_NEAR} mm", offset=400, color=RAIL, fs=6.5, font=FONT)
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
@@ -662,9 +652,12 @@ def sheet3():
     for cx_, cy_ in [(-22, rl_h+15), (22, rl_h+15), (-22, rl_h+38), (22, rl_h+38)]:
         ax.add_patch(Circle((cx_, cy_), 4, fc=BG, ec=WHITE, lw=0.7, zorder=6))
 
-    dim_line_h(ax, -rl_w/2, rl_w/2, -50, f"{rl_w} mm", offset=0, col=DIM)
-    dim_line_h(ax, -cb_w/2, cb_w/2, rl_h+cb_h+40, f"{cb_w} mm", offset=0, col=DIM)
-    dim_line_v(ax, cb_w/2+60, rl_h, rl_h+cb_h, f"{cb_h} mm", offset=15, col=MECH)
+    draw_dim_h(ax, -rl_w/2, rl_w/2, -50, f"{rl_w} mm",
+               offset=15, color=DIM, above=False, font=FONT)
+    draw_dim_h(ax, -cb_w/2, cb_w/2, rl_h+cb_h+40, f"{cb_w} mm",
+               offset=15, color=DIM, font=FONT)
+    draw_dim_v(ax, cb_w/2+60, rl_h, rl_h+cb_h, f"{cb_h} mm",
+               offset=15, color=MECH, right=True, font=FONT)
 
     ax.text(0, rl_h+cb_h+120, "RAIL + CARRIAGE CROSS-SECTION\nHIWIN HGR20  +  HGH20CA",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
@@ -718,7 +711,8 @@ def sheet3():
                     arrowprops=dict(arrowstyle="-|>", color=C_T2, lw=0.8,
                                    mutation_scale=5), zorder=8)
 
-    dim_line_h(ax, rod_cx-30, rod_cx+30, -80, "60 mm", offset=0, col=DIM)
+    draw_dim_h(ax, rod_cx-30, rod_cx+30, -80, "60 mm",
+               offset=15, color=DIM, above=False, font=FONT)
     ax.text(200, 240, "CORNER JOINT DETAIL — BRACKET TO FILM FRAME\nROD-END SPHERICAL BEARING — ALLOWS TILT + SWING SIMULTANEOUSLY",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
     ax.text(200, -100,
@@ -743,7 +737,8 @@ def sheet3():
             fontsize=7.5, ha="center", **FONT)
     ax.text(20+panel_w/2, 50-20, "2× Dibond ACM  4mm",
             color=DIM, fontsize=6.5, ha="center", **FONT)
-    dim_line_v(ax, 20-60, 50, 50+panel_h, f"{H} mm (schematic)", offset=-70, col=DIM)
+    draw_dim_v(ax, 20-60, 50, 50+panel_h, f"{H} mm (schematic)",
+               offset=70, color=DIM, font=FONT)
 
     # Tilted panel (folded)
     t_ang = np.radians(30)
@@ -921,7 +916,7 @@ def sheet5():
         CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
         CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL,
     )
-    from tbs_drawing import draw_dim_h, draw_dim_v, hatch_rect
+    from tbs_drawing import hatch_rect
 
     C_ALUM    = "#C8D8E8"   # aluminum section fill
     C_CLAMP   = "#D4522A"   # clamp mechanism (burnt orange)
@@ -1545,7 +1540,7 @@ def sheet6():
                                 fc=RAIL, ec=WHITE, lw=1.2, zorder=5))
         ldr_x = rx - 350 if label == "LEFT" else rx + 350
         ldr_ha = "right" if label == "LEFT" else "left"
-        leader(ax, rx, FH - rail_h / 2, ldr_x, FH + 80,
+        leader(ax, rx, FH - rail_h / 2, ldr_x, FH + 150,
                f"CEIL RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
     # Floor rails
@@ -1705,24 +1700,29 @@ def sheet6():
 
     # ── Dimensions ────────────────────────────────────────────────────────────
     # Container width (outermost)
-    dim_line_h(ax, 0, FW, -180,
-               f"INTERIOR WIDTH  {L:,} mm", offset=10, col=DIM, fs=6)
+    draw_dim_h(ax, 0, FW, -180,
+               f"INTERIOR WIDTH  {L:,} mm", offset=10, color=DIM, fs=6,
+               above=False, font=FONT)
 
     # Rail span + end zones (inner row)
-    dim_line_h(ax, 0, RAIL_X_L, -300,
-               f"{RAIL_X_L} mm", offset=10, col=DIM, fs=6)
-    dim_line_h(ax, RAIL_X_L, RAIL_X_R, -300,
-               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, col=DIM, fs=6)
-    dim_line_h(ax, RAIL_X_R, FW, -300,
-               f"{FW - RAIL_X_R:,} mm", offset=10, col=DIM, fs=6)
+    draw_dim_h(ax, 0, RAIL_X_L, -300,
+               f"{RAIL_X_L} mm", offset=10, color=DIM, fs=6,
+               above=False, font=FONT)
+    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -300,
+               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L:,} mm", offset=10, color=DIM, fs=6,
+               above=False, font=FONT)
+    draw_dim_h(ax, RAIL_X_R, FW, -300,
+               f"{FW - RAIL_X_R:,} mm", offset=10, color=DIM, fs=6,
+               above=False, font=FONT)
 
     # Container height (left side)
-    dim_line_v(ax, -500, 0, FH,
-               f"INTERIOR HEIGHT\n{H:,} mm", offset=-150, col=DIM, fs=6.5)
+    draw_dim_v(ax, -500, 0, FH,
+               f"INTERIOR HEIGHT\n{H:,} mm", offset=150, color=DIM, fs=6.5, font=FONT)
 
-    # Frame height (right side — avoids overlap with container height)
-    dim_line_v(ax, FW + 550, fp_bot, fp_top,
-               f"FRAME HEIGHT\n{fp_top - fp_bot:,} mm", offset=30, col=C_FLAT, fs=6.5)
+    # Frame height (right side)
+    draw_dim_v(ax, FW + 550, fp_bot, fp_top,
+               f"FRAME HEIGHT\n{fp_top - fp_bot:,} mm", offset=30, color=C_FLAT,
+               fs=6.5, right=True, font=FONT)
 
     # ── Title text ────────────────────────────────────────────────────────────
     ax.text(FW / 2, FH + 380,

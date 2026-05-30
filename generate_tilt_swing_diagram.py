@@ -567,7 +567,7 @@ def draw_sheet2():
                 subtitle="SECTION A-A",
                 scale_note="1:2 · mm",
                 doc_id="TBS-001",
-                portrait=True)
+                portrait=True, top=True)
 
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/tilt-swing-sheet2.png'

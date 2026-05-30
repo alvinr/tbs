@@ -62,6 +62,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 5: Muslin Clamp Detail](assets/film-plane-sheet5.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 6: System Schematic](assets/film-plane-sheet6.png)
+
 ---
 
 ## 8. Tilt-Swing Front Board

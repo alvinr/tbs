@@ -1,12 +1,10 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Moveable Film Plane — Mechanism Design & Optical Distortion Analysis
+# Moveable Film Plane — Mechanism Design
 
 ## 1. Purpose
 
 The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.
-
-The four-corner design replaces the earlier two-beam approach: rather than two rigid 5,893 mm horizontal beams (each locking left and right ends together), each corner carriage is driven by its own leadscrew. This unlocks the swing axis, making all five classical view-camera rear movements available.
 
 ---
 
@@ -54,18 +52,7 @@ When tilted at maximum, the film plane's physical height increases from 2,268 mm
 
 Each corner of the film plane frame rides on its own independent carriage assembly:
 
-```
-CEILING ─────────────────────────────────────────────────────────
-   [CEIL RAIL — LEFT]                   [CEIL RAIL — RIGHT]
-   corner TL (leadscrew A)              corner TR (leadscrew B)
-        │                                       │
-        │            FILM PLANE FRAME           │
-        │      4,499 mm wide × 2,388 mm tall    │
-        │       ROD-END BEARING each corner     │
-   corner BL (leadscrew C)              corner BR (leadscrew D)
-   [FLOOR RAIL — LEFT]                  [FLOOR RAIL — RIGHT]
-FLOOR ───────────────────────────────────────────────────────────
-```
+![Sheet 6 — System Schematic: Four-Corner Frame Front Elevation](assets/film-plane-sheet6.png)
 
 - **4 linear rails** — HiWin HGR20 profile, 2,200 mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362 mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
@@ -129,81 +116,7 @@ The compound config (C7) places TL and BR at near position, TR and BL at far —
 
 ---
 
-## 6. Optical Distortion Analysis
-
-### Physics of Tilted-Plane Projection
-
-In a pinhole camera, every scene point projects through the pinhole aperture onto the film plane. When the film plane is flat and perpendicular to the optical axis, the projection is standard central perspective:
-
-```
-film_x = −X · f / D
-film_y = −Y · f / D
-```
-
-where f is the perpendicular distance from pinhole to film, and D is subject distance.
-
-When the film plane is **tilted** (top edge at depth d_top, bottom edge at d_bot), the effective focal length varies continuously with height on the film:
-
-```
-f(v) = d_bot + (d_top − d_bot) · v      (v = 0 bottom, v = 1 top)
-```
-
-When the film plane is **swung** (left edge at depth d_L, right edge at depth d_R), the effective focal length also varies with horizontal position:
-
-```
-f(u) = d_L + (d_R − d_L) · u            (u = 0 left, u = 1 right)
-```
-
-In the compound case (tilt + swing simultaneously), the depth varies across the entire film surface as a bilinear interpolation of all four corner depths:
-
-```
-f(u, v) = d_BL·(1−u)(1−v) + d_BR·u(1−v) + d_TL·(1−u)v + d_TR·u·v
-```
-
-This varying effective focal length is the source of all the distortion effects described below.
-
-### Distortion Effects by Configuration
-
-**C0 — Flat (reference):**
-Standard central projection. Vertical lines remain vertical, horizontal lines remain horizontal. The checker pattern is a regular perspective view.
-
-![C0 flat reference](assets/film-plane-distortion-c0.png)
-
-**C1 — Mild tilt 5.6°:**
-Subtle keystone. The top of the image is slightly compressed. Useful for compensating converging verticals when photographing tall subjects close to the camera.
-
-![C1 mild tilt](assets/film-plane-distortion-c1.png)
-
-**C2 — Strong tilt 17.5°:**
-Dramatic keystone. Top of image has f ≈ 800 mm — three times more compression than the bottom. Buildings appear to flare outward toward the base.
-
-![C2 strong tilt](assets/film-plane-distortion-c2.png)
-
-**C3 — Maximum tilt 41.6°:**
-Extreme effect. Top edge 100 mm from pinhole wall — a 22× difference in effective focal length between top and bottom. The checkerboard transforms from squares at the bottom to near-horizontal slivers at the top.
-
-**Recommended for:** wide open landscapes, aerial-perspective scenes, dramatic urban canyons.
-
-![C3 max tilt](assets/film-plane-distortion-c3.png)
-
-**C4 — Maximum tilt down (reverse) 41.6°:**
-The inverse of C3. Ground plane is compressed, sky dominates. Standing subjects elongate dramatically toward the bottom of the frame.
-
-![C4 reverse tilt](assets/film-plane-distortion-c4.png)
-
-**C5 — Both edges near (uniform close):**
-The entire film plane is 100 mm from the pinhole. Effective focal length drops from 2,362 mm to ~100 mm — a 23.6× reduction. Field of view becomes enormous.
-
-![C5 both near](assets/film-plane-distortion-c5.png)
-
-**C6 — Compound tilt + swing:**
-Maximum vertical tilt combined with 15° horizontal swing. No line in the scene remains parallel to any edge of the film. The checker pattern becomes a complex curved mesh.
-
-**Recommended for artistic use.**
-
-![C6 compound](assets/film-plane-distortion-c6.png)
-
-### Summary Comparison
+## 6. Optical Distortion Summary
 
 All seven configurations on a checker grid (D = 8,000 mm):
 
@@ -219,6 +132,8 @@ All seven configurations on a checker grid (D = 8,000 mm):
 | Sheet 2 — Elevations | Left: side elevation showing tilt; Right: ceiling cross-section showing swing |
 | Sheet 3 — Hardware detail | Corner bracket assembly, HGR20+HGH20CA cross-section, rod-end spherical bearing, ACM panel hinge |
 | Sheet 4 — Specification table | All movement axes, 4-corner config table, full bill of materials |
+| Sheet 5 — Muslin clamp detail | Cam-lever spring clamp cross-section, open/closed positions, spacing |
+| Sheet 6 — System schematic | Front elevation: four-corner frame, rails, leadscrews, handwheels, rod-end bearings |
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -227,6 +142,10 @@ All seven configurations on a checker grid (D = 8,000 mm):
 ![Sheet 3 — Hardware detail](assets/film-plane-sheet3.png)
 
 ![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
+
+![Sheet 5 — Muslin clamp detail](assets/film-plane-sheet5.png)
+
+![Sheet 6 — System schematic](assets/film-plane-sheet6.png)
 
 **System context — container floor plan:**
 The floor plan below shows the film plane rail positions (at Y=2,262mm, X=150–4,649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).

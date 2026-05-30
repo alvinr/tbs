@@ -125,7 +125,7 @@ Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 Ray-traced distortion renders showing projected image geometry for each film-plane
 configuration. Source report: [Film Plane Mechanism](film-plane-mechanism-report.md).
 
-All renders are collected in the [Distortion Renders](film-plane-distortion-renders.md) document.
+All renders are collected in the [Distortion Renders](complete-distortion-renders.md) document.
 
 ---
 
@@ -148,7 +148,7 @@ Compound optical projections when both the film plane mechanism and the tilt-swi
 front board are active simultaneously.
 Source report: [Tilt-Swing Front Board](tilt-swing-board-report.md).
 
-All renders are collected in the [Distortion Renders](film-plane-distortion-renders.md) document.
+All renders are collected in the [Distortion Renders](complete-distortion-renders.md) document.
 
 ---
 

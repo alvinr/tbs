@@ -83,5 +83,5 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Light Trap Selection](light-trap-selection.md) | Revolving light trap options, pricing, and custom fabrication specification |
 | [Engineering Diagrams](engineering-diagrams.md) | All TBS-001 construction drawings — assembly overview, fabrication, subsystems |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every engineering diagram on a single page |
-| [Distortion Renders](film-plane-distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
+| [Distortion Renders](complete-distortion-renders.md) | Ray-traced projections for all film-plane and tilt-swing configurations |
 | [Equipment Layout](equipment-layout-report.md) | Shadow-free end-zone layout — optical clearance proof, IBC Y-stacking, new rail positions |

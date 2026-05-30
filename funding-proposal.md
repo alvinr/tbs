@@ -82,7 +82,7 @@ The system was designed for remote deployments: no mains water connection requir
 The container moves by commercial hire tilt-bed truck. No CDL is required for the operator (the trucking company provides the driver). No oversize or overweight permit is required for an empty 20ft standard container on Interstate highways. Local deployment: $300–$500 per move. Short regional haul (30–100 miles): $500–$1,200.
 
 ## 6. Budget and Use of Funds
-All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Three funding levels are presented to allow partial or phased support.
+All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
 ### Level 1 — Core Build (~$13,000–14,500)
 Everything required to operate the camera for a first deployment:

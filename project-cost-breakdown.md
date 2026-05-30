@@ -5,6 +5,8 @@
 **Date:** April 2026  
 **Basis:** 20 ft standard shipping container, Orientation B (pinhole on 20ft long side), Proposal 1 configuration. All USD. Ranges given where source documents provide them; midpoints used for totals. Costs marked † are from detailed procurement research in supporting documents; others are estimates.
 
+**Related:** [Master Shopping List](master-shopping-list.md) (per-item procurement with suppliers and URLs) · [Funding Proposal](funding-proposal.md) (grant-ready summary at three funding levels)
+
 ---
 
 ## Summary — Total Project Cost

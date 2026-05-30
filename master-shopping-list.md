@@ -529,4 +529,5 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 - [Film Plane Mechanism Report](film-plane-mechanism-report.md) — engineering drawings for the 4-corner actuation system
 - [Processing Water System](water-system-report.md) — three-circuit water system with filter skid design
 - [Cost Breakdown](project-cost-breakdown.md) — full itemized build cost across three deployment scenarios
+- [Funding Proposal](funding-proposal.md) — grant-ready budget summary at three funding levels
 - [Operating Manual](operating-manual.md) — step-by-step single-operator workflow from chemistry prep to cleanup

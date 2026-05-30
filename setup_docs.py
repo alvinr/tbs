@@ -123,6 +123,8 @@ DIAG_IMAGE_FILES = [
     "tilt-swing-combined-c7.png",
     "tilt-swing-combined-c8.png",
     "tilt-swing-combined-summary.png",
+    "tilt-swing-sheet1.png",
+    "tilt-swing-sheet2.png",
     "electrical-sheet1.png",
     "electrical-sheet2.png",
     "electrical-sheet3.png",

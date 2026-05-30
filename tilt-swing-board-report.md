@@ -81,6 +81,16 @@ WALL FRAME (fixed, welded to container)
      └── Accommodates ±13.9mm asymmetric compression at ±5° tilt
 ```
 
+### Engineering Drawings
+
+**Sheet 1 — Front View** (1:2 scale, scene side). Shows ICP-01 outer frame with bolt pattern, bore, carrier plate, adjustment knobs, pinhole disc, and section cut A-A.
+
+![TSB Sheet 1 — Front View](assets/tilt-swing-sheet1.png)
+
+**Sheet 2 — Section A-A** (1:2 scale). Vertical section through center showing bearing pocket, carrier shank, bellows, adjustment screw mechanism, and pinhole disc.
+
+![TSB Sheet 2 — Section A-A](assets/tilt-swing-sheet2.png)
+
 ---
 
 ## 4. Movement Specification

@@ -694,7 +694,7 @@ def draw_sheet2():
              "C", ha="center", va="bottom", fontsize=9, color="#008800",
              fontweight="bold", **FONT, zorder=20)
 
-    # ── Ball joint on plate wing (beside beam) ─────────────────────────
+    # ── Ball joint on beam top ──────────────────────────────────────────
     BALL_DIA = 20
     SOCKET_OD = 36
     SOCKET_H = 28
@@ -704,8 +704,8 @@ def draw_sheet2():
     STUD_EXT = 20
     C_JOINT = "#C8B070"
 
-    bj_yd = (notch_l + plate_yd_l) / 2
-    flange_bot_z = plate_top_z
+    bj_yd = CARRIAGE_YD_CENTER
+    flange_bot_z = BEAM_Z_TOP
     socket_bot_z = flange_bot_z + FLANGE_T
     ball_ctr_z = socket_bot_z + SOCKET_H / 2 + 2
     socket_top_z = socket_bot_z + SOCKET_H
@@ -730,14 +730,14 @@ def draw_sheet2():
              color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
 
     ax2.plot([ubolt_l + ubolt_t / 2, ubolt_l + ubolt_t / 2],
-             [ub_arc_cz, plate_bot_z - 3],
+             [ub_arc_cz, BEAM_Z_TOP - 3],
              color=C_BOLT, lw=2.5, zorder=9)
     ax2.plot([ubolt_r - ubolt_t / 2, ubolt_r - ubolt_t / 2],
-             [ub_arc_cz, plate_bot_z - 3],
+             [ub_arc_cz, BEAM_Z_TOP - 3],
              color=C_BOLT, lw=2.5, zorder=9)
 
     for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
-        ax2.add_patch(Rectangle((nut_yd - 5, plate_bot_z - 6), 10, 4,
+        ax2.add_patch(Rectangle((nut_yd - 5, BEAM_Z_TOP - 6), 10, 4,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
 
     # Socket housing
@@ -826,7 +826,7 @@ def draw_sheet2():
     # ── Labels ───────────────────────────────────────────────────────────
     leader(ax2, bj_yd - SOCKET_OD / 2, ball_ctr_z,
            bj_yd - SOCKET_OD / 2 - 20, ball_ctr_z - 30,
-           f"Ø{BALL_DIA}mm BALL JOINT\n(U-BOLT TO PLATE)",
+           f"Ø{BALL_DIA}mm BALL JOINT\n(U-BOLT TO BEAM)",
            fs=5, color=C_JOINT, font=FONT, zorder=20)
 
     leader(ax2, ubolt_l, ub_arc_cz,
@@ -872,8 +872,8 @@ def draw_sheet2():
                f"{WALKWAY_H}mm\nDECK HGT",
                offset=6, fs=5, font=FONT, right=True)
 
-    draw_dim_v(ax2, bj_yd - SOCKET_OD / 2 - 10, plate_top_z, socket_top_z,
-               f"{int(socket_top_z - plate_top_z)}mm\nJOINT",
+    draw_dim_v(ax2, bj_yd - SOCKET_OD / 2 - 10, BEAM_Z_TOP, socket_top_z,
+               f"{int(socket_top_z - BEAM_Z_TOP)}mm\nJOINT",
                offset=6, fs=4.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────

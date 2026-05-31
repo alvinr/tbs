@@ -296,6 +296,42 @@ Cyanotype develops by oxidation — the iron salts convert to Prussian blue on c
 
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
 
+#### Valve matrix
+
+| Valve | Default | Wash 1 | Drain 1→Brown | Wash 2 (recycled) | Drain 2→Brown | Wash 3 | Drain 3 |
+|-------|---------|--------|---------------|-------------------|---------------|--------|---------|
+| BV-01 (Blue manifold) | Open | Open | Open | Open | Open | Open | Open |
+| BV-02 (Blue to floor) | Closed | **Open** | Closed | Closed | Closed | **Open** | Closed |
+| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed | Closed | Closed |
+| 3W-DV-02 (tray drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
+| P-02 (Brown pump) | Off | Off | Off | **On** | Off | Off | Off |
+| 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue | Blue | Blue |
+
+#### Diverter valve operator decisions
+
+The two 3-way diverter valves serve different roles in the water triage chain. Understanding when and why to switch each valve is critical to avoiding cross-contamination of the Blue clean supply.
+
+**3W-DV-02 — Tray drain diverter (operator judgment call)**
+
+DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
+
+- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and potential recycling back to Blue.
+- **Switch to Black:** Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.
+
+**Rule of thumb:** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.
+
+**3W-DV-01 — Filter output diverter (pH meter reading)**
+
+DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After brown water has been filtered, the operator checks the pH reading:
+
+- **Set to Blue return (default):** pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.
+- **Switch to Black:** pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.
+
+| Valve | Decision | Basis | Who decides |
+|-------|----------|-------|-------------|
+| 3W-DV-02 (tray drain) | Brown vs Black | Contamination severity at drain time | Operator — visual judgment |
+| 3W-DV-01 (filter output) | Blue vs Black | Water quality after filtering | Operator — pH meter reading |
+
 ### 4.3 Drying
 **Lighting: WHITE LIGHT or daylight — cyanotype is no longer light-sensitive after washing.**
 

@@ -291,18 +291,7 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 
 ---
 
-## 9. Engineering Drawings
-
-Three diagram sheets cover the equipment panel system. See
-[Engineering Diagrams](engineering-diagrams.md#18-equipment-panel-ibc-corridor-mounting)
-for the full drawing set.
-
-**Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
-![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
-
----
-
-## 10. Parts List
+## 9. Parts List
 
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
@@ -338,7 +327,7 @@ for the full drawing set.
 
 ---
 
-## 11. Maintenance
+## 10. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -364,7 +353,7 @@ minute to flush; check for leaks.
 
 ---
 
-## 12. Source References
+## 11. Source References
 
 1. [Shurflo 2088-554-144 datasheet](https://www.shurflo.com/products/2088-series) — 12VDC diaphragm pump, 3.5 GPM, 45 PSI,
    self-priming. 127mm × 218mm × 100mm body dimensions, 1/2"-14 NPSM ports.

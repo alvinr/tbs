@@ -41,7 +41,9 @@ full print width. Together they form the print washing subsystem of the
 
 The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded to the
 container floor beneath the tray. No risers, no under-tray plumbing — the tray sits
-directly on the shims.
+directly on the shims to flow the water into the bottom right for pickup by the sump pump.
+
+![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
 
 | Parameter | Value |
 |-----------|-------|
@@ -57,6 +59,8 @@ directly on the shims.
 Instead of a through-floor drain fitting, the tray has a shallow sump well pressed into
 the floor at the low point. P-04 draws water from the sump via a suction pickup tube —
 no penetration of the tray floor or the container floor.
+
+![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
 
 | Parameter | Value |
 |-----------|-------|

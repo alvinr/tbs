@@ -478,62 +478,9 @@ BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Y
 
 ---
 
-## 6. Processing Procedure — Step by Step
+## 6. Processing Procedure
 
-### Before each session
-1. Check Blue IBC levels — minimum 100 gal required per print session
-2. Check IBC-4 (waste) level — must have at least 55 gal headroom before starting
-3. Run Brown recycle pump for 2 minutes to verify filter flow and check pH
-4. Confirm P-04 suction pickup tube is seated in sump well and suction hose is connected (permanently installed — visual check only)
-5. Lay fresh 6-mil black LDPE containment sheet over the tray surface, overlap 50mm over rims
-6. Verify all valves in correct position (see valve matrix below)
-
-### Print processing
-1. Expose print in camera (no water involved)
-2. Transfer print to processing tray in subdued light — lay face-up on containment liner
-3. Open BV-02 (Blue supply) → flood print with 16 gal via spray bar — 5 minutes
-4. Close BV-02 → switch ON P-04 to pump sump to IBC-3 via 3W-DV-02 (set to Brown) → drain
-5. If Brown tank has filtered stock: pump filtered water via spray bar for Wash 2 — 5 minutes → drain to Brown
-6. Wash 3: open BV-02 → 16 gal clean Blue water → 5 minutes → drain
-7. Inspect print — optional brightener: 0.5% hydrogen peroxide mist, 2 minutes, water rinse
-8. Hang print to dry — use internal or external line
-9. Allow residual water to collect in sump; run P-04 to pump residual to Brown or Black as appropriate
-
-### Valve matrix
-
-| Valve | Default | Wash 1 | Drain 1→Brown | Wash 2 (recycled) | Drain 2→Brown | Wash 3 | Drain 3 |
-|-------|---------|--------|---------------|-------------------|---------------|--------|---------|
-| BV-01 (Blue manifold) | Open | Open | Open | Open | Open | Open | Open |
-| BV-02 (Blue to floor) | Closed | **Open** | Closed | Closed | Closed | **Open** | Closed |
-| BV-06 (Chem tap) | Closed | Closed | Closed | Closed | Closed | Closed | Closed |
-| 3W-DV-02 (tray drain) | Brown | Brown | **Brown** | Brown | **Brown** | Brown | **Brown** |
-| P-02 (Brown pump) | Off | Off | Off | **On** | Off | Off | Off |
-| 3W-DV-01 (filter out) | Blue return | Blue | Blue | Blue | Blue | Blue | Blue |
-
-### Diverter valve operator decisions
-
-The two 3-way diverter valves serve different roles in the water triage chain. Understanding when and why to switch each valve is critical to avoiding cross-contamination of the Blue clean supply.
-
-**3W-DV-02 — Tray drain diverter (operator judgment call)**
-
-DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:
-
-- **Set to Brown (default):** Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and potential recycling back to Blue.
-- **Switch to Black:** Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.
-
-**Rule of thumb:** If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.
-
-**3W-DV-01 — Filter output diverter (pH meter reading)**
-
-DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After brown water has been filtered, the operator checks the pH reading:
-
-- **Set to Blue return (default):** pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.
-- **Switch to Black:** pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.
-
-| Valve | Decision | Basis | Who decides |
-|-------|----------|-------|-------------|
-| 3W-DV-02 (tray drain) | Brown vs Black | Contamination severity at drain time | Operator — visual judgment |
-| 3W-DV-01 (filter output) | Blue vs Black | Water quality after filtering | Operator — pH meter reading |
+The step-by-step processing procedure, including the valve matrix and diverter valve operator decisions, is documented in the [Operating Manual — Phase 4: Development](operating-manual.md#phase-4--development).
 
 ---
 

@@ -16,24 +16,41 @@ Four-corner independent actuation of the film plane (TBS-FM01). Each corner move
 and ±25.7° swing independently, producing Scheimpflug-equivalent projections at pinhole
 focal lengths. Seven configurations are shown.
 
-**Summary grid — all 7 configurations**
+**Summary grid — Film Plane**
 ![Film Plane Distortion — Summary Grid](assets/film-plane-distortion-summary.png)
 
 Individual configurations:
 
-| Config | Render |
-|--------|--------|
-| C0 — Flat | ![C0](assets/film-plane-distortion-c0.png) |
-| C1 — Tilt +42° | ![C1](assets/film-plane-distortion-c1.png) |
-| C2 — Tilt −42° | ![C2](assets/film-plane-distortion-c2.png) |
-| C3 — Swing +20° | ![C3](assets/film-plane-distortion-c3.png) |
-| C4 — Swing −20° | ![C4](assets/film-plane-distortion-c4.png) |
-| C5 — Twisted (tilt+swing) | ![C5](assets/film-plane-distortion-c5.png) |
-| C6 — Full compound | ![C6](assets/film-plane-distortion-c6.png) |
+| Tilt | Swing | Effect | Render |
+|---|---|------|------------|
+| 0° | 0° | Reference — no shift | ![C0](assets/film-plane-distortion-c0.png) |
+| +42° | 0° | Subtle keystone | ![C1](assets/film-plane-distortion-c1.png) |
+| −42° | 0° | Dramatic keystone | ![C2](assets/film-plane-distortion-c2.png) |
+| 0° |  +20° | Radical perspective break | ![C3](assets/film-plane-distortion-c3.png) |
+| 0° | −20° | Inverted max tilt. Bottom rushes forward. Ground-rush effect | ![C4](assets/film-plane-distortion-c4.png) |
+| 0° | 0° | Flat plane 2162mm closer than nominal. Uniform magnification boost ~2.3× | ![C5](assets/film-plane-distortion-c5.png) |
+| 42.1° | 15° | Diagonal perspective break — no parallel lines | ![C6](assets/film-plane-distortion-c6.png) |
 
 ---
 
-## 2. Combined Distortion Renders (Film Plane + Tilt-Swing Board)
+## 2. Tilt-Swing Board Distortion Renders
+
+**Summary grid — Tilt & Swing Board**
+![Film Plane Distortion — Summary Grid](assets/tilt-swing-board-distortion-summary.png)
+
+| Tilt | Swing | Effect | Render |
+|---|---|------|------------|
+| 0° | 0° | Reference — no shift | ![C0](assets/tilt-swing-board-distortion-c0.png) |
+| +2° | 0° | Subtle vertical steering | ![C1](assets/tilt-swing-board-distortion-c1.png) |
+| +5.3° | 0° | Max vertical shift (+207mm) | ![C2](assets/tilt-swing-board-distortion-c2.png) |
+| -5.3° | 0° | Max downward shift (-207mm) | ![C3](assets/tilt-swing-board-distortion-c3.png) |
+| 0° | +2° | Subtle horizontal steering | ![C4](assets/tilt-swing-board-distortion-c4.png) |
+| 0° | +5.3° | Max horizontal shift | ![C5](assets/tilt-swing-board-distortion-c5.png) |
+| +3° | +3° | Compound diagonal steering | ![C6](assets/tilt-swing-board-distortion-c6.png) |
+
+---
+
+## 3. Combined Distortion Renders (Film Plane + Tilt-Swing Board)
 
 Compound optical projections when both the film plane mechanism and the tilt-swing
 front board (TBS-TS01) are active simultaneously. Nine configurations are shown.

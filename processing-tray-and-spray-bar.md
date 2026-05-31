@@ -375,31 +375,7 @@ stud to the telescoping pole. An M6 pinch bolt clamps the arm tube onto the stud
 
 ## 4. Operation
 
-### 4.1 Setup
-
-1. Lay a fresh 6-mil black LDPE liner over the tray surface; overlap 50mm over rims
-2. Position the spray bar at the far end of the tray (Yd≈2,280, film-plane side)
-3. Attach the telescoping pole to the arm tube
-
-### 4.2 Wash Pass
-
-1. Open BV-02 — water flows through the coiled hose into the beam bore and out the spray holes
-2. Using the pole, slowly pull the bar toward the pinhole wall (decreasing Yd), flooding the print progressively
-3. Travel speed approximately 50 mm/second — full traverse takes ~44 seconds
-4. At the near rim (Yd≈80), close BV-02. One wash pass complete.
-5. For additional passes, push the bar back to the far end and repeat
-
-### 4.3 Brown (Recycled) Water Passes
-
-Same spray bar — the operator switches by closing BV-02 and activating P-02 through the
-filter train. Recycled water from IBC-3 is pumped through the three-stage filter skid and
-back into the beam bore via the same supply path.
-
-### 4.4 Storage
-
-The spray bar rests at either end of its travel with wheels on the tray floor. The
-flexible hose coils naturally at the pinhole wall. The telescoping pole detaches and
-stores alongside the bar or clips to the container wall.
+The step-by-step spray bar setup, wash pass procedure, Brown water recycling passes, and storage are documented in the [Operating Manual — Phase 4: Development](operating-manual.md#42-development-in-water).
 
 ---
 

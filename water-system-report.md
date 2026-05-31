@@ -17,6 +17,9 @@ The camera operates in remote locations with no mains water or drainage. This do
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
 
+![Water System — Sheet 2: Overview](assets/water-system-sheet2.png)
+
+
 **Three circuits:**
 
 | Circuit | Color code | Purpose | Storage |
@@ -24,6 +27,8 @@ The camera operates in remote locations with no mains water or drainage. This do
 | **Blue** | Blue — clean | Fresh water supply for processing | 2× 600L IBC totes (≈316 gal total), Y-stacked in right end zone |
 | **Brown** | Brown — used | Collected wash water; filtered and recycled back to Blue | 1× 600L IBC tote, Y-stacked behind Blue IBCs |
 | **Black** | Black — waste | Heavily contaminated water; sealed IBC for off-site disposal | 1× 600L IBC tote (IBC-4, ~158 gal), Y-stacked in right end zone |
+
+![Water System — Sheet 1: System Schematic](assets/water-system-sheet1.png)
 
 ---
 

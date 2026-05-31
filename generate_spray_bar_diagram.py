@@ -93,10 +93,8 @@ UC_FLARE = 12
 GRATE_Z_BOT = WALKWAY_H - WALKWAY_GRATE_T
 GRATE_Z_TOP = WALKWAY_H
 
-# Poly pipe end plug geometry
-PLUG_DEPTH = 20
-PLUG_CAP_T = 3
-POLY_EXTEND = 20
+# Fold-back end closure
+FOLD_EXTEND = 40
 
 BEAM_SPAN = PROC_OPEN_X_R - PROC_OPEN_X_L
 WALL_T = 3
@@ -104,7 +102,7 @@ WALL_T = 3
 # Shared layout constants
 POLE_X = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 SLIT_WIDTH = SPRAY_BAR_SLIT_W
-CARRIAGE_YD_CENTER = 200
+CARRIAGE_YD_CENTER = 220
 
 TOTAL_SHEETS = 7
 
@@ -1032,9 +1030,9 @@ def draw_sheet3():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — Detail A: Beam End (Open)
-# Longitudinal section through beam end showing PVC pipe extending past beam,
-# socket cap solvent-welded to pipe.  Scale 2:1.
+# SHEET 4 — Detail A: Beam End
+# Longitudinal section through beam end showing fold-back end closure
+# with retainer clip on LDPE poly pipe.  Scale 2:1.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet4():
@@ -1042,17 +1040,29 @@ def draw_sheet4():
     fig.patch.set_facecolor(C_BG)
     ax_a = fig.add_axes([0.05, 0.08, 0.90, 0.88])
     ax_a.set_facecolor(C_BG)
+    ax_a.set_aspect("equal")
     ax_a.axis("off")
 
-    poly_od_h = POLY_OD / 2
-    poly_id_h = POLY_ID / 2
+    poly_od_h = POLY_OD / 2        # 12.5
+    poly_id_h = POLY_ID / 2        # 9.5
+    beam_half = BEAM_W / 2         # 20
+    bore_half = BEAM_BORE / 2      # 17
 
     beam_end_x = 0
-    pipe_end_x = beam_end_x - POLY_EXTEND
-    plug_end_x = pipe_end_x - PLUG_CAP_T
+    pipe_past = FOLD_EXTEND         # pipe extends 40mm past beam end
 
-    d_xl, d_xr = plug_end_x - 10, 50
-    d_yb, d_yt = -30, 30
+    # Fold geometry — pipe folds downward beneath main run
+    bend_inner_r = 8                # inner void radius at fold apex
+    bend_center_r = bend_inner_r + poly_od_h  # pipe centerline bend radius
+    fold_offset = 2 * bend_center_r  # center-to-center between main and return leg
+    fold_leg_y = -fold_offset       # center Y of folded-back leg
+    fold_apex_x = beam_end_x - pipe_past
+    fold_leg_len = pipe_past - bend_center_r  # straight portion of return leg
+
+    d_xl = fold_apex_x - bend_center_r - poly_od_h - 15
+    d_xr = 55
+    d_yb = fold_leg_y - poly_od_h - 18
+    d_yt = beam_half + 8
     ax_a.set_xlim(d_xl, d_xr)
     ax_a.set_ylim(d_yb, d_yt)
 
@@ -1067,79 +1077,155 @@ def draw_sheet4():
 
     _bbox_a = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
-    # ── SHS top wall ─────────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, 17), d_xr - beam_end_x, 3,
+    # ── SHS top wall (hatched section) ───────────────────────────────────
+    ax_a.add_patch(Rectangle((beam_end_x, bore_half), d_xr - beam_end_x, BEAM_T,
                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
     # ── SHS bottom wall ──────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, -20), d_xr - beam_end_x, 3,
+    ax_a.add_patch(Rectangle((beam_end_x, -beam_half), d_xr - beam_end_x, BEAM_T,
                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
 
     # ── Open beam end face ───────────────────────────────────────────────
-    ax_a.plot([beam_end_x, beam_end_x], [-20, 20],
+    ax_a.plot([beam_end_x, beam_end_x], [-beam_half, beam_half],
               color=C_FRAME, lw=1.5, zorder=5)
 
     # ── Square bore inside beam ──────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x, -17), d_xr - beam_end_x, 34,
-                   fc=C_BG, ec=C_FRAME, lw=0.5, zorder=3.5))
+    ax_a.add_patch(Rectangle((beam_end_x, -bore_half), d_xr - beam_end_x, BEAM_BORE,
+                   fc=C_BG, ec="none", zorder=3.5))
 
-    # ── Poly pipe walls ──────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((pipe_end_x, poly_id_h), d_xr - pipe_end_x, POLY_WALL,
-                   fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-    ax_a.add_patch(Rectangle((pipe_end_x, -poly_od_h), d_xr - pipe_end_x, POLY_WALL,
-                   fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
-    ax_a.plot([pipe_end_x, pipe_end_x], [-poly_od_h, poly_od_h],
-              color=C_FRAME, lw=1.0, zorder=5.5)
+    # ── Main pipe run — top and bottom walls as hatched sections ─────────
+    pipe_start_x = fold_apex_x
+    ax_a.add_patch(Rectangle((pipe_start_x, poly_id_h),
+                   d_xr - pipe_start_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+    ax_a.add_patch(Rectangle((pipe_start_x, -poly_od_h),
+                   d_xr - pipe_start_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
 
-    # ── Push-fit end plug ────────────────────────────────────────────────
-    plug_verts = [
-        (pipe_end_x + PLUG_DEPTH,  poly_od_h),
-        (plug_end_x,               poly_od_h),
-        (plug_end_x,              -poly_od_h),
-        (pipe_end_x + PLUG_DEPTH, -poly_od_h),
-        (pipe_end_x + PLUG_DEPTH, -poly_id_h),
-        (plug_end_x + PLUG_CAP_T, -poly_id_h),
-        (plug_end_x + PLUG_CAP_T,  poly_id_h),
-        (pipe_end_x + PLUG_DEPTH,  poly_id_h),
+    # ── Water inside main pipe ──────────────────────────────────────────
+    ax_a.add_patch(Rectangle((beam_end_x + 2, -poly_id_h),
+                   d_xr - beam_end_x - 2, POLY_ID,
+                   fc=C_WATER, ec="none", alpha=0.25, zorder=3.8))
+
+    # ── Fold-back section (sectional view showing pipe walls) ────────────
+    bend_cy = -fold_offset / 2     # midpoint between main and fold leg centers
+    bend_cx = fold_apex_x
+
+    theta = np.linspace(np.pi / 2, -np.pi / 2, 60)
+
+    # Four arcs: outer wall outer surface, outer wall inner surface,
+    #            inner wall outer surface, inner wall inner surface
+    r_oo = bend_center_r + poly_od_h   # outer wall, outer surface
+    r_oi = bend_center_r + poly_id_h   # outer wall, inner surface
+    r_ii = bend_center_r - poly_id_h   # inner wall, inner surface
+    r_io = bend_center_r - poly_od_h   # inner wall, outer surface
+
+    def arc_pts(r):
+        return bend_cx + r * np.cos(theta), bend_cy + r * np.sin(theta)
+
+    # Outer pipe wall (outer side of bend)
+    oo_x, oo_y = arc_pts(r_oo)
+    oi_x, oi_y = arc_pts(r_oi)
+    outer_wall_xs = list(oo_x) + list(oi_x[::-1])
+    outer_wall_ys = list(oo_y) + list(oi_y[::-1])
+    ax_a.add_patch(mpatches.Polygon(list(zip(outer_wall_xs, outer_wall_ys)),
+                   closed=True, fc="#404040", ec=C_FRAME, lw=0.6,
+                   hatch="...", zorder=4))
+
+    # Inner pipe wall (inner side of bend)
+    io_x, io_y = arc_pts(r_io)
+    ii_x, ii_y = arc_pts(r_ii)
+    inner_wall_xs = list(ii_x) + list(io_x[::-1])
+    inner_wall_ys = list(ii_y) + list(io_y[::-1])
+    ax_a.add_patch(mpatches.Polygon(list(zip(inner_wall_xs, inner_wall_ys)),
+                   closed=True, fc="#404040", ec=C_FRAME, lw=0.6,
+                   hatch="...", zorder=4))
+
+    # Water fill inside the bend (between inner surfaces)
+    water_xs = list(oi_x) + list(ii_x[::-1])
+    water_ys = list(oi_y) + list(ii_y[::-1])
+    ax_a.add_patch(mpatches.Polygon(list(zip(water_xs, water_ys)),
+                   closed=True, fc=C_WATER, ec="none", alpha=0.20, zorder=3.9))
+
+    # Inner void at bend center
+    void_x, void_y = arc_pts(r_io)
+    ax_a.add_patch(mpatches.Polygon(
+        list(zip(list(io_x), list(io_y))),
+        closed=False, fc="none", ec=C_FRAME, lw=0.4, zorder=4.1))
+
+    # ── Folded-back leg — top and bottom walls ──────────────────────────
+    fold_leg_right = fold_apex_x + bend_center_r  # where the bend meets the straight leg
+    # Ensure the leg starts where the bend ends
+    fold_leg_right = fold_apex_x
+    fold_leg_left = fold_leg_right + fold_leg_len
+    if fold_leg_len > 0:
+        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y + poly_id_h),
+                       fold_leg_len, POLY_WALL,
+                       fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y - poly_od_h),
+                       fold_leg_len, POLY_WALL,
+                       fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+        # Water inside return leg
+        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y - poly_id_h),
+                       fold_leg_len, POLY_ID,
+                       fc=C_WATER, ec="none", alpha=0.20, zorder=3.9))
+
+    # ── Retainer clip (holds fold closed) ────────────────────────────────
+    clip_x = fold_leg_left - 5 if fold_leg_len > 10 else beam_end_x - 10
+    clip_w = 10
+    clip_span_top = poly_od_h + 3
+    clip_span_bot = fold_leg_y - poly_od_h - 3
+    clip_t = 2.5
+
+    clip_verts = [
+        (clip_x - clip_w / 2, clip_span_top),
+        (clip_x + clip_w / 2, clip_span_top),
+        (clip_x + clip_w / 2, clip_span_bot),
+        (clip_x - clip_w / 2, clip_span_bot),
+        (clip_x - clip_w / 2, clip_span_bot + clip_t),
+        (clip_x + clip_w / 2 - clip_t, clip_span_bot + clip_t),
+        (clip_x + clip_w / 2 - clip_t, clip_span_top - clip_t),
+        (clip_x - clip_w / 2, clip_span_top - clip_t),
     ]
-    ax_a.add_patch(mpatches.Polygon(plug_verts, closed=True,
-                   fc=C_POLY, ec=C_FRAME, lw=0.8, zorder=5))
-
-    # ── Water inside poly pipe ───────────────────────────────────────────
-    ax_a.add_patch(Rectangle((pipe_end_x, -poly_id_h), d_xr - pipe_end_x, POLY_ID,
-                   fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
+    ax_a.add_patch(mpatches.Polygon(clip_verts, closed=True,
+                   fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=6))
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_a, beam_end_x + 5, 19, beam_end_x + 20, d_yt - 8,
+    leader(ax_a, beam_end_x + 8, bore_half + BEAM_T / 2,
+           beam_end_x + 25, d_yt - 6,
            "40×40×3 AL SHS\n(OPEN END)",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
 
-    leader(ax_a, pipe_end_x - 5, poly_od_h + 2,
-           d_xr - 15, d_yt - 4,
-           "3/4\" LDPE POLY PIPE\n(EXTENDS PAST BEAM)",
-           fs=5, color=C_POLY, font=FONT, zorder=20)
+    leader(ax_a, d_xr - 10, poly_od_h + 2,
+           d_xr - 5, d_yt - 3,
+           "3/4\" LDPE POLY PIPE",
+           fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
 
-    leader(ax_a, plug_end_x + PLUG_CAP_T / 2, -poly_od_h - 1,
-           plug_end_x - 3, d_yb + 2,
-           "PUSH-FIT END PLUG\n(LDPE)",
-           fs=5, color=C_POLY, font=FONT, zorder=20)
+    leader(ax_a, fold_apex_x - bend_center_r * 0.7,
+           bend_cy - bend_center_r * 0.7,
+           d_xl + 5, bend_cy - 5,
+           "180° FOLD-BACK\nEND CLOSURE",
+           fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
+
+    leader(ax_a, clip_x, clip_span_bot - 1,
+           clip_x - 12, d_yb + 3,
+           "RETAINER CLIP\n(SS OR NYLON)",
+           fs=5, color="#808080", font=FONT, zorder=20, bbox=_bbox_a)
 
     ax_a.text(d_xr - 8, 0, "WATER",
               ha="center", va="center", fontsize=5, color=C_WATER,
               fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_h(ax_a, plug_end_x, beam_end_x, d_yb + 4,
-               f"{POLY_EXTEND + PLUG_CAP_T:.0f}mm\nPROTRUSION",
+    protrusion = pipe_past + bend_center_r + poly_od_h
+    draw_dim_h(ax_a, fold_apex_x - bend_center_r - poly_od_h,
+               beam_end_x, d_yb + 5,
+               f"{protrusion:.0f}mm\nPROTRUSION",
                offset=2, fs=4.5, font=FONT)
 
-    draw_dim_h(ax_a, pipe_end_x, pipe_end_x + PLUG_DEPTH, poly_od_h + 2,
-               f"{PLUG_DEPTH}mm\nENGAGEMENT",
-               offset=2, fs=4, font=FONT)
-
-    draw_dim_v(ax_a, d_xr - 3, -17, 17,
+    draw_dim_v(ax_a, d_xr - 3, -bore_half, bore_half,
                "34mm BORE", offset=1, fs=5, font=FONT, right=True)
 
-    draw_dim_v(ax_a, d_xr - 8, 17, 20,
+    draw_dim_v(ax_a, d_xr - 8, bore_half, beam_half,
                "3mm\nWALL", offset=2, fs=4.5, font=FONT, right=True)
 
     draw_dim_v(ax_a, d_xl + 8, -poly_od_h, poly_od_h,
@@ -1150,7 +1236,7 @@ def draw_sheet4():
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 4 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL A — BEAM END (OPEN, LONGITUDINAL SECTION)",
+                subtitle="DETAIL A — BEAM END (FOLD-BACK CLOSURE)",
                 scale_note="SCALE 2:1 — AXES IN mm",
                 height=0.7)
 

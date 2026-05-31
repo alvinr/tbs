@@ -17,14 +17,14 @@
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
-| **5. Processing water system (incl. tray, spray bar)** | $3,127 | $3,899 | $4,688 |
+| **5. Processing water system (incl. tray, spray bar)** | $3,145 | $3,917 | $4,688 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$13,526** | **$17,423** | **$22,872** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$13,544** | **$17,441** | **$22,872** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -234,10 +234,10 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Valves and fittings (incl. S60×6 adapters, check valves CV1/CV3/CV4) | $390 | $630 |
 | Pipe (HDPE, spray bar) | $100 | $140 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,177 | $1,857 |
-| Spray bar assembly (gantry: beam/pipe, wheels, ball joint, arm, hose) | $173 | $233 |
+| Spray bar assembly (gantry: beam, LDPE pipe, nozzles, wheels, ball joint, arm, hose) | $191 | $233 |
 | Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
-| **Water system total** | **$3,112** | **$4,673** |
+| **Water system total** | **$3,130** | **$4,673** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -461,14 +461,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual) | $2,200 |
-| Water system (incl. processing tray, spray bar) | $3,112 |
+| Water system (incl. processing tray, spray bar) | $3,130 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $953 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$13,194** |
+| **Scenario A total** | **~$13,212** |
 
 ### Scenario B — Recommended build, regional deployment
 

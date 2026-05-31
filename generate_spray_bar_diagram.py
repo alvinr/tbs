@@ -115,7 +115,7 @@ TOTAL_SHEETS = 7
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet1():
-    fig = plt.figure(figsize=(10, 18))
+    fig = plt.figure(figsize=(10, 12))
     fig.patch.set_facecolor(C_BG)
     ax = fig.add_axes([0.08, 0.05, 0.84, 0.91])
     ax.set_facecolor(C_BG)
@@ -127,8 +127,10 @@ def draw_sheet1():
     X_LO = -100
     X_HI = CUT_X + 150
     Z_LO = -50
-    Z_HI = 1300
-    HBREAK_Z = 1100
+    PIPE_SKIP = 500
+    HBREAK2_Z = 250
+    Z_HI = 800
+    HBREAK_Z = 600
 
     ax.set_xlim(X_LO, X_HI)
     ax.set_ylim(Z_LO, Z_HI)
@@ -258,8 +260,17 @@ def draw_sheet1():
     ax.text(X_LO + 30, HBREAK_Z + 15, "CUT", ha="left", va="bottom",
             fontsize=6, color=C_DIM, **FONT, zorder=25)
 
+    # ── Second horizontal break (pipe riser compression) ────────────────
+    h2zz_xs = np.linspace(X_LO, CUT_X, 41)
+    h2zz_zs = [HBREAK2_Z + (8 if i % 2 else -8) for i in range(len(h2zz_xs))]
+    h2zz_zs[0] = HBREAK2_Z
+    h2zz_zs[-1] = HBREAK2_Z
+    ax.plot(list(h2zz_xs), h2zz_zs, color=C_FRAME, lw=1.5, zorder=25)
+    ax.text(X_LO + 30, HBREAK2_Z + 15, "CUT", ha="left", va="bottom",
+            fontsize=6, color=C_DIM, **FONT, zorder=25)
+
     # ── Pole through slit down to beam ───────────────────────────────────
-    pole_top_z = GRATE_Z_TOP + 890
+    pole_top_z = GRATE_Z_TOP + 890 - PIPE_SKIP
     pole_bot_z = BEAM_Z_TOP + 5
 
     ax.plot([pole_x, pole_x], [pole_top_z, pole_bot_z],
@@ -273,7 +284,8 @@ def draw_sheet1():
            fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
     # ── BV-02 on pinhole wall ────────────────────────────────────────────
-    bv_z = BV02_Z
+    bv_z_real = BV02_Z
+    bv_z = BV02_Z - PIPE_SKIP
     bv_size = 30
     pipe_w = 10
 
@@ -283,7 +295,7 @@ def draw_sheet1():
                  fc=C_WALL, ec=C_OUT, lw=0.5, alpha=0.2,
                  hatch="///", zorder=10.5))
 
-    for clamp_z in [bv_z * 0.3, bv_z * 0.6]:
+    for clamp_z in [GRATE_Z_TOP + 60, bv_z - 80]:
         clamp_w = pipe_w + 16
         ax.add_patch(Rectangle((BV02_X - clamp_w / 2, clamp_z - 4),
                      clamp_w, 8,
@@ -301,7 +313,7 @@ def draw_sheet1():
 
     leader(ax, BV02_X - 30, bv_z + 35,
            BV02_X - 375, bv_z + 80,
-           f"BV-02 @ Z={int(bv_z)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
+           f"BV-02 @ Z={int(bv_z_real)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
            fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
     # ── Flex hose from BV-02 to beam center feed ─────────────────────────
@@ -313,8 +325,8 @@ def draw_sheet1():
     n_pts = 100
     ht = np.linspace(0, 1, n_pts)
     P0 = np.array([hose_start_x, hose_start_z])
-    P1 = np.array([hose_start_x + 80, hose_start_z - 300])
-    P2 = np.array([hose_end_x - 80, hose_end_z + 200])
+    P1 = np.array([hose_start_x + 80, hose_start_z - 120])
+    P2 = np.array([hose_end_x - 80, hose_end_z + 80])
     P3 = np.array([hose_end_x, hose_end_z])
     hose_xs = (1-ht)**3*P0[0] + 3*(1-ht)**2*ht*P1[0] + 3*(1-ht)*ht**2*P2[0] + ht**3*P3[0]
     hose_zs = (1-ht)**3*P0[1] + 3*(1-ht)**2*ht*P1[1] + 3*(1-ht)*ht**2*P2[1] + ht**3*P3[1]
@@ -323,7 +335,7 @@ def draw_sheet1():
 
     ax.plot(hose_xs, hose_zs, color=C_HOSE, lw=2.0, alpha=0.7, zorder=11)
 
-    ax.text(BV02_X + 75, bv_z - 200,
+    ax.text(BV02_X + 75, bv_z - 60,
             "1/2\" FLEX HOSE\n-> CENTER FEED\n(4m COILED)",
             ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
@@ -356,7 +368,7 @@ def draw_sheet1():
                offset=8, fs=4.5, font=FONT, right=True)
 
     draw_dim_v(ax, BV02_X - 60, 0, bv_z,
-               f"{int(bv_z)}mm BV-02",
+               f"{int(bv_z_real)}mm BV-02",
                offset=8, fs=4.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────
@@ -368,7 +380,7 @@ def draw_sheet1():
         "   → center feed.",
         "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
     ]
-    draw_notes(ax, notes, X_LO + 155, 1020, spacing=14, fs=7, font=FONT, width=1500)
+    draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)
 
     # ── Person silhouette (with break) ─────────────────────────────────
     PERSON_H = 1780

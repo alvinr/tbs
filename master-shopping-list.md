@@ -200,29 +200,29 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Spray bar assembly (gantry design)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3859mm). 12mm aperture holes at 100mm c/c | 2 | Online Metals | $36–$56 |
-| [1" Schedule 40 PVC pipe, 10 ft](https://www.amazon.com/s?k=1+inch+schedule+40+PVC+pipe+10+ft) | Internal spray pipe (OD 33.4mm), close fit inside 34mm bore. 2mm holes drilled at each aperture | 2 | Home Depot / Amazon | $8–$12 |
-| [1" PVC end caps (Sch 40)](https://www.amazon.com/s?k=1+inch+PVC+end+cap+schedule+40) | Seal both ends of PVC spray pipe | 2 | Home Depot | $3 |
-| PVC cement + primer | Solvent-weld PVC pipe caps | 1 set | Home Depot | $8 |
+| [6061-T6 aluminum SHS 1½"×1½"×⅛"](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-tube) | 40×40×3mm structural beam, 8 ft lengths (2 joined with sleeve for 3859mm). 12mm holes drilled for nozzle fittings | 2 | Online Metals | $36–$56 |
+| [3/4" LDPE irrigation poly pipe](https://www.amazon.com/s?k=3%2F4+inch+LDPE+irrigation+poly+pipe) | Internal spray pipe (OD 25mm, ID 19mm), 15 ft length | 1 | Home Depot / Amazon | $10 |
+| [Flat-fan irrigation spray nozzles, barbed](https://www.amazon.com/s?k=flat+fan+irrigation+spray+nozzle+barbed) | 180° fan pattern, barbed inlet through beam wall | 6 | Amazon | $18 |
+| [3/4" barb × 1/2" barb adapter](https://www.amazon.com/s?k=3%2F4+barb+1%2F2+barb+adapter) | Center feed through beam top wall | 1 | Amazon | $4 |
+| [SS/nylon retainer clips for 3/4" poly pipe](https://www.amazon.com/s?k=retainer+clip+3%2F4+poly+pipe+fold+back) | Fold-back end closures | 2 | Amazon | $4 |
 | [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-bracket arm plates (5mm, no drop cheeks) + end caps — ~300×400mm sheet | 1 | Online Metals | $12–$20 |
 | [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
 | [SS U-bolt clamp, 40mm](https://www.amazon.com/s?k=stainless+steel+U+bolt+clamp+40mm) | Beam-to-carriage clamping (wraps over 40mm SHS), with wing nuts for tool-free operation | 4 | Amazon / McMaster | $12–$18 |
 | [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels, flat tread, ≥25 kg rated | 4 | Amazon / McMaster | $12–$20 |
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
-| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to center feed bulkhead | 1 | Amazon | $15 |
+| [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to center feed barbed fitting | 1 | Amazon | $15 |
 | [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Fork-to-arm through-bolts (1 per fork, 4 forks per carriage) | 8 sets | McMaster-Carr | $8 |
 | [6061-T6 aluminum plate ¼" (6mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | Fork bracket arms (~200×150mm offcut, 4 U-shaped forks) | 1 sheet | Online Metals | $8–$12 |
 | [20mm ball joint, SS ball + zinc socket](https://www.amazon.com/s?k=20mm+ball+joint+stud+zinc+socket) | Multi-axis arm articulation on beam top face. Ø36mm socket, 50mm flange, M12 stud | 1 | Amazon / McMaster | $8–$15 |
 | [M8 SS U-bolt, 40mm pipe size + nyloc nuts](https://www.amazon.com/s?k=M8+stainless+U+bolt+40mm) | Clamps ball joint socket housing to beam top face | 1 set | McMaster-Carr | $3–$5 |
 | [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
 | M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
-| [½" NPT bulkhead fitting, brass](https://www.amazon.com/s?k=1%2F2+NPT+bulkhead+fitting+brass) | Center feed through beam wall | 1 | Amazon | $8 |
-| [½" MNPT × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+NPT+hose+barb+brass) | Hose connection at bulkhead | 1 | Amazon | $4 |
+| [½" barb × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+hose+barb+brass) | Flex hose to center feed adapter | 1 | Amazon | $4 |
 | [10mm × 60mm SS clevis pin + R-clip](https://www.mcmaster.com) | Wheel axle pins | 4 | McMaster-Carr | $4–$8 |
 | [E-clip / snap ring for 10mm shaft](https://www.mcmaster.com) | Axle retention (2 per axle) | 8 | McMaster-Carr | $4 |
 | SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
 | [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |
-**Spray bar subtotal: ~$195–$265**
+**Spray bar subtotal: ~$200–$270**
 
 ### Water system processing consumables
 | Item | Spec | Qty | Supplier | Est. cost |

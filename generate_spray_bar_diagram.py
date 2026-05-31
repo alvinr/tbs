@@ -369,12 +369,20 @@ def draw_sheet1():
     ]
     draw_notes(ax, notes, X_LO + 85, 1220, spacing=20, fs=7, font=FONT, width=1600)
 
-    # ── Person silhouette (cropped at break) ────────────────────────────
+    # ── Person silhouette (with break) ─────────────────────────────────
     PERSON_H = 1780
+    HEAD_R = 80
     oper_x = pole_x - 650
     P_FOOT = GRATE_Z_TOP
-    ax.plot([oper_x, oper_x], [P_FOOT, HBREAK_Z],
+    # Body below break
+    ax.plot([oper_x, oper_x], [P_FOOT, HBREAK_Z - 10],
             color="#2060A0", lw=3.0, zorder=13, solid_capstyle="round")
+    # Head + shoulders above break
+    head_z = HBREAK_Z + 70
+    ax.plot([oper_x, oper_x], [HBREAK_Z + 15, head_z],
+            color="#2060A0", lw=3.0, zorder=13, solid_capstyle="round")
+    ax.scatter([oper_x], [head_z],
+               s=1800, c="#70A8D8", edgecolors="#1A4D80", linewidths=1.0, zorder=14)
     ax.text(oper_x - 30, (P_FOOT + HBREAK_Z) / 2,
             f"{PERSON_H}mm\noperator\n(shoes)",
             ha="right", va="center", fontsize=5, color="#1A4D80", **FONT, zorder=15)

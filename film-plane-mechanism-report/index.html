@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#moveable-film-plane-mechanism-design" class="md-skip">
+        <a href="#film-plane-mechanism-design" class="md-skip">
           Skip to content
         </a>
       
@@ -1189,6 +1189,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#mechanism-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mechanism Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#why-rod-end-spherical-bearings" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1249,26 +1260,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-engineering-drawings" class="md-nav__link">
+  <a href="#7-parts-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Engineering Drawings
+        7. Parts List
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-parts-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Parts List
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Parts List">
+    <nav class="md-nav" aria-label="7. Parts List">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1332,10 +1332,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-maintenance" class="md-nav__link">
+  <a href="#8-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Maintenance
+        8. Maintenance
       
     </span>
   </a>
@@ -1343,10 +1343,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-source-references" class="md-nav__link">
+  <a href="#9-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Source References
+        9. Source References
       
     </span>
   </a>
@@ -2426,9 +2426,12 @@
 
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-<h1 id="moveable-film-plane-mechanism-design">Moveable Film Plane — Mechanism Design<a class="headerlink" href="#moveable-film-plane-mechanism-design" title="Permanent link">&para;</a></h1>
+<h1 id="film-plane-mechanism-design">Film Plane — Mechanism Design<a class="headerlink" href="#film-plane-mechanism-design" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a <strong>view-camera-style moveable film plane</strong> — a mechanism with <strong>four independently actuated corners</strong> (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.</p>
+<p>The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a <strong>view-camera-style moveable film plane</strong> — a mechanism with <strong>four independently actuated corners</strong> (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.</p>
+<p><strong>System context — container floor plan:</strong>
+The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).</p>
+<p><img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
 <hr />
 <h2 id="2-container-reference-geometry">2. Container Reference Geometry<a class="headerlink" href="#2-container-reference-geometry" title="Permanent link">&para;</a></h2>
 <table>
@@ -2548,9 +2551,15 @@
 <li><strong>4 linear rails</strong> — HiWin HGR20 profile, 2200mm length, mounted at X=150mm (left pair) and X=4649mm (right pair) on ceiling and floor. Rails run along the 2362mm optical axis direction.</li>
 <li><strong>8 carriages</strong> — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.</li>
 <li><strong>4 leadscrews</strong> — ¾"-6 Acme, 8 ft (2438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.</li>
-<li><strong>Film plane frame</strong> — welded 2"×2"×3/16" aluminium angle, <strong>4499mm × 2388mm</strong> (rail span × container height). Connected to each corner bracket via a <strong>rod-end spherical bearing</strong> (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.</li>
+<li><strong>Film plane frame</strong> — welded 2"×2"×3/16" aluminum angle, <strong>4499mm × 2388mm</strong> (rail span × container height). Connected to each corner bracket via a <strong>rod-end spherical bearing</strong> (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted. The following diagrams show the range of movements of the film plane.</li>
 </ul>
-<p>The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800mm and TR to 2262mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.</p>
+<p><img alt="Sheet 1 — Plan view" src="../assets/film-plane-sheet1.png" /></p>
+<p>Viewed from above, the full range of swing movement can be seen above. Since both side rails allow the same range of movements, it allows the maximum range of creative control.</p>
+<p><img alt="Sheet 2 — Elevations" src="../assets/film-plane-sheet2.png" /></p>
+<p>View from the side, the full range of tilt movement can be seen above. Since both the top and bottom rails allow the same range of movements, it allows the maximum range of creative control.</p>
+<h3 id="mechanism-components">Mechanism Components<a class="headerlink" href="#mechanism-components" title="Permanent link">&para;</a></h3>
+<p>The master diagram for the components can be see in the diagram below. The following section discuss the details.</p>
+<p><img alt="Sheet 3 — Hardware detail" src="../assets/film-plane-sheet3.png" /></p>
 <h3 id="why-rod-end-spherical-bearings">Why Rod-End Spherical Bearings<a class="headerlink" href="#why-rod-end-spherical-bearings" title="Permanent link">&para;</a></h3>
 <p>With four-corner independence, the film frame can twist — the plane through the four corners is no longer flat. A simple pin joint has only one rotational degree of freedom; a rod-end spherical bearing has ±45° freedom in all axes, accommodating any combination of tilt and swing without binding.</p>
 <h3 id="actuation">Actuation<a class="headerlink" href="#actuation" title="Permanent link">&para;</a></h3>
@@ -2679,53 +2688,9 @@
 <h2 id="6-optical-distortion-summary">6. Optical Distortion Summary<a class="headerlink" href="#6-optical-distortion-summary" title="Permanent link">&para;</a></h2>
 <p>All seven configurations on a checker grid (D = 8000mm):</p>
 <p><img alt="Distortion summary" src="../assets/film-plane-distortion-summary.png" /></p>
+<p>A detailed analysis of the optical distortions can be found <a href="../complete-distortion-renders/">here</a>.</p>
 <hr />
-<h2 id="7-engineering-drawings">7. Engineering Drawings<a class="headerlink" href="#7-engineering-drawings" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Sheet</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Sheet 1 — Plan view</td>
-<td>Top-down: 4-corner rail layout, film plane quad for each config; tilt hidden (into page), swing visible as diagonal</td>
-</tr>
-<tr>
-<td>Sheet 2 — Elevations</td>
-<td>Left: side elevation showing tilt; Right: ceiling cross-section showing swing</td>
-</tr>
-<tr>
-<td>Sheet 3 — Hardware detail</td>
-<td>Corner bracket assembly, HGR20+HGH20CA cross-section, rod-end spherical bearing, ACM panel hinge</td>
-</tr>
-<tr>
-<td>Sheet 4 — Specification table</td>
-<td>All movement axes, 4-corner config table, full bill of materials</td>
-</tr>
-<tr>
-<td>Sheet 5 — Muslin clamp detail</td>
-<td>Cam-lever spring clamp cross-section, open/closed positions, spacing</td>
-</tr>
-<tr>
-<td>Sheet 6 — System schematic</td>
-<td>Front elevation: four-corner frame, rails, leadscrews, handwheels, rod-end bearings</td>
-</tr>
-</tbody>
-</table>
-<p><img alt="Sheet 1 — Plan view" src="../assets/film-plane-sheet1.png" /></p>
-<p><img alt="Sheet 2 — Elevations" src="../assets/film-plane-sheet2.png" /></p>
-<p><img alt="Sheet 3 — Hardware detail" src="../assets/film-plane-sheet3.png" /></p>
-<p><img alt="Sheet 4 — Specification table" src="../assets/film-plane-sheet4.png" /></p>
-<p><img alt="Sheet 5 — Muslin clamp detail" src="../assets/film-plane-sheet5.png" /></p>
-<p><img alt="Sheet 6 — System schematic" src="../assets/film-plane-sheet6.png" /></p>
-<p><strong>System context — container floor plan:</strong>
-The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).</p>
-<p><img alt="TBS-001 Container Floor Plan — All Systems" src="../assets/container-floorplan.png" /></p>
-<hr />
-<h2 id="8-parts-list">8. Parts List<a class="headerlink" href="#8-parts-list" title="Permanent link">&para;</a></h2>
+<h2 id="7-parts-list">7. Parts List<a class="headerlink" href="#7-parts-list" title="Permanent link">&para;</a></h2>
 <p>All items ship within the United States. Local Southern California pickup noted where available.</p>
 <h3 id="structural-rails">Structural &amp; Rails<a class="headerlink" href="#structural-rails" title="Permanent link">&para;</a></h3>
 <table>
@@ -2939,7 +2904,7 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 <li><strong>Roton Products</strong> — ships from the LA area; Acme screw stock cut to length.</li>
 </ul>
 <hr />
-<h2 id="9-maintenance">9. Maintenance<a class="headerlink" href="#9-maintenance" title="Permanent link">&para;</a></h2>
+<h2 id="8-maintenance">8. Maintenance<a class="headerlink" href="#8-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2991,7 +2956,7 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 </tbody>
 </table>
 <hr />
-<h2 id="10-source-references">10. Source References<a class="headerlink" href="#10-source-references" title="Permanent link">&para;</a></h2>
+<h2 id="9-source-references">9. Source References<a class="headerlink" href="#9-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://hiwin.com/products/linear-guideways/">HIWIN HGR20 Linear Guideway</a> — 20mm profile linear guide rail and HGH20CA carriage block specifications.</li>
 <li><a href="https://www.mcmaster.com/rod-end-bearings">McMaster-Carr GIR25-DO Rod-End Bearing</a> — Spherical rod-end bearing specifications (25mm bore).</li>

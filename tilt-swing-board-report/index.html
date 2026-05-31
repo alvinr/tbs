@@ -1305,10 +1305,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-combined-distortion-renders" class="md-nav__link">
+  <a href="#9-board-only-distortion-renders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Combined Distortion Renders
+        9. Board-Only Distortion Renders
       
     </span>
   </a>
@@ -1316,10 +1316,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-machining-tolerances" class="md-nav__link">
+  <a href="#10-combined-distortion-renders" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10. Machining Tolerances
+        10. Combined Distortion Renders
       
     </span>
   </a>
@@ -1327,22 +1327,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-parts-list" class="md-nav__link">
+  <a href="#11-machining-tolerances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Parts List
+        11. Machining Tolerances
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="11. Parts List">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-parts-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Parts List
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Parts List">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#111-structural" class="md-nav__link">
+  <a href="#121-structural" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.1 Structural
+        12.1 Structural
       
     </span>
   </a>
@@ -1350,10 +1361,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#112-light-seal" class="md-nav__link">
+  <a href="#122-light-seal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.2 Light Seal
+        12.2 Light Seal
       
     </span>
   </a>
@@ -1361,10 +1372,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#113-finishing-fabrication" class="md-nav__link">
+  <a href="#123-finishing-fabrication" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.3 Finishing &amp; Fabrication
+        12.3 Finishing &amp; Fabrication
       
     </span>
   </a>
@@ -1372,10 +1383,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#114-cost-summary" class="md-nav__link">
+  <a href="#124-cost-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11.4 Cost Summary
+        12.4 Cost Summary
       
     </span>
   </a>
@@ -1388,10 +1399,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-maintenance" class="md-nav__link">
+  <a href="#13-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12. Maintenance
+        13. Maintenance
       
     </span>
   </a>
@@ -1399,10 +1410,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-source-references" class="md-nav__link">
+  <a href="#14-source-references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        13. Source References
+        14. Source References
       
     </span>
   </a>
@@ -2592,7 +2603,67 @@ Mechanical hard stop:                 ±12mm travel = ±5.3°
 </ol>
 <p>Swap time: approximately 10 minutes.</p>
 <hr />
-<h2 id="9-combined-distortion-renders">9. Combined Distortion Renders<a class="headerlink" href="#9-combined-distortion-renders" title="Permanent link">&para;</a></h2>
+<h2 id="9-board-only-distortion-renders">9. Board-Only Distortion Renders<a class="headerlink" href="#9-board-only-distortion-renders" title="Permanent link">&para;</a></h2>
+<p>The following renders show the isolated effect of the tilt-swing front board on the projected image, with the film plane held flat at the far wall. The world scene is a regular grid at three depths (near: 7m, mid: 22m, far: 102m from pinhole) plus a human-figure reference and horizon line.</p>
+<p>The board's ±5.3° range produces up to 207mm of image shift — enough to steer composition without any film plane movement.</p>
+<table>
+<thead>
+<tr>
+<th>Config</th>
+<th>Board Tilt</th>
+<th>Board Swing</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C0</td>
+<td>0°</td>
+<td>0°</td>
+<td>Reference — no shift</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>+2°</td>
+<td>0°</td>
+<td>Subtle vertical steering</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>+5.3°</td>
+<td>0°</td>
+<td>Max vertical shift (+207mm)</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>-5.3°</td>
+<td>0°</td>
+<td>Max downward shift (-207mm)</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>0°</td>
+<td>+2°</td>
+<td>Subtle horizontal steering</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>0°</td>
+<td>+5.3°</td>
+<td>Max horizontal shift</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>+3°</td>
+<td>+3°</td>
+<td>Compound diagonal steering</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="All board-only configurations" src="../assets/tilt-swing-board-distortion-summary.png" /></p>
+<p>The red cross (+) marks the projected image center; grey cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).</p>
+<hr />
+<h2 id="10-combined-distortion-renders">10. Combined Distortion Renders<a class="headerlink" href="#10-combined-distortion-renders" title="Permanent link">&para;</a></h2>
 <p>The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.</p>
 <p>The projection model applies two sequential transformations:</p>
 <p><strong>Step 1 — Front board rotation:</strong><br />
@@ -2605,7 +2676,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 <p>The red cross (+) marks the projected image center; grey cross marks the nominal center.</p>
 <p>Detailed renders can be found <a href="../tilt-swing-board-analysis/">in the full analysis</a></p>
 <hr />
-<h2 id="10-machining-tolerances">10. Machining Tolerances<a class="headerlink" href="#10-machining-tolerances" title="Permanent link">&para;</a></h2>
+<h2 id="11-machining-tolerances">11. Machining Tolerances<a class="headerlink" href="#11-machining-tolerances" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2667,8 +2738,8 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tbody>
 </table>
 <hr />
-<h2 id="11-parts-list">11. Parts List<a class="headerlink" href="#11-parts-list" title="Permanent link">&para;</a></h2>
-<h3 id="111-structural">11.1 Structural<a class="headerlink" href="#111-structural" title="Permanent link">&para;</a></h3>
+<h2 id="12-parts-list">12. Parts List<a class="headerlink" href="#12-parts-list" title="Permanent link">&para;</a></h2>
+<h3 id="121-structural">12.1 Structural<a class="headerlink" href="#121-structural" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2766,7 +2837,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 </tbody>
 </table>
-<h3 id="112-light-seal">11.2 Light Seal<a class="headerlink" href="#112-light-seal" title="Permanent link">&para;</a></h3>
+<h3 id="122-light-seal">12.2 Light Seal<a class="headerlink" href="#122-light-seal" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2794,7 +2865,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 </tbody>
 </table>
-<h3 id="113-finishing-fabrication">11.3 Finishing &amp; Fabrication<a class="headerlink" href="#113-finishing-fabrication" title="Permanent link">&para;</a></h3>
+<h3 id="123-finishing-fabrication">12.3 Finishing &amp; Fabrication<a class="headerlink" href="#123-finishing-fabrication" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2837,7 +2908,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tr>
 </tbody>
 </table>
-<h3 id="114-cost-summary">11.4 Cost Summary<a class="headerlink" href="#114-cost-summary" title="Permanent link">&para;</a></h3>
+<h3 id="124-cost-summary">12.4 Cost Summary<a class="headerlink" href="#124-cost-summary" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2876,7 +2947,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </table>
 <p>The mechanism costs less than the film plane mechanism (~$2,400) due to the smaller scale and single bearing rather than 4 rod ends.</p>
 <hr />
-<h2 id="12-maintenance">12. Maintenance<a class="headerlink" href="#12-maintenance" title="Permanent link">&para;</a></h2>
+<h2 id="13-maintenance">13. Maintenance<a class="headerlink" href="#13-maintenance" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2928,7 +2999,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 </tbody>
 </table>
 <hr />
-<h2 id="13-source-references">13. Source References<a class="headerlink" href="#13-source-references" title="Permanent link">&para;</a></h2>
+<h2 id="14-source-references">14. Source References<a class="headerlink" href="#14-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="https://www.skf.com/group/products/plain-bearings/spherical-plain-bearings-rod-ends/spherical-plain-bearings/productid-GE50DO-2RS">SKF GE50-DO-2RS Spherical Plain Bearing</a> — Bearing specifications, misalignment capacity, and PTFE liner properties.</li>
 <li><a href="https://lenoxlaser.com/blog/pinholes-and-apertures/">Lenox Laser Precision Pinholes</a> — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).</li>

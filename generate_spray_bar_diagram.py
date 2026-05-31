@@ -1512,7 +1512,7 @@ def draw_sheet7():
 
     # ── Bulkhead fitting body (through beam wall + air gap + PVC wall) ───
     body_top = beam_top + BH_WASHER_T
-    body_bot = pvc_inner_top - 2  # body extends slightly into PVC bore
+    body_bot = pvc_inner_top - BH_INT_NUT_T - 2  # extends past lock nut inside PVC bore
     body_h = body_top - body_bot
 
     # Body (threaded cylinder through wall)
@@ -1538,8 +1538,8 @@ def draw_sheet7():
                  BH_EXT_NUT_W, BH_EXT_NUT_T,
                  fc=C_BRASS, ec=C_FRAME, lw=1.0, zorder=6))
 
-    # ── Internal lock nut (below beam, inside bore) ──────────────────────
-    int_nut_top = bore_top
+    # ── Internal lock nut (inside PVC bore, under PVC top wall) ────────
+    int_nut_top = pvc_inner_top
     ax.add_patch(Rectangle((-BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T),
                  BH_INT_NUT_W, BH_INT_NUT_T,
                  fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
@@ -1609,8 +1609,8 @@ def draw_sheet7():
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
 
     leader(ax, -BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T / 2,
-           d_xl + 5, bore_top - 6,
-           "LOCK NUT\n(INSIDE BORE)",
+           d_xl + 5, pvc_inner_top - 8,
+           "LOCK NUT\n(INSIDE PVC BORE)",
            fs=4.5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
 
     leader(ax, BARB_OD / 2 + 1.5, barb_bot + BARB_LEN / 2,

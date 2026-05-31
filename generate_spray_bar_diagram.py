@@ -115,7 +115,7 @@ TOTAL_SHEETS = 6
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet1():
-    fig = plt.figure(figsize=(10, 28))
+    fig = plt.figure(figsize=(10, 18))
     fig.patch.set_facecolor(C_BG)
     ax = fig.add_axes([0.08, 0.05, 0.84, 0.91])
     ax.set_facecolor(C_BG)
@@ -127,7 +127,8 @@ def draw_sheet1():
     X_LO = -100
     X_HI = CUT_X + 150
     Z_LO = -50
-    Z_HI = 2050
+    Z_HI = 1300
+    HBREAK_Z = 1100
 
     ax.set_xlim(X_LO, X_HI)
     ax.set_ylim(Z_LO, Z_HI)
@@ -248,6 +249,15 @@ def draw_sheet1():
     ax.text(CUT_X + 40, Z_HI / 2, "CUT", ha="left", va="center",
             fontsize=6, color=C_DIM, rotation=90, **FONT, zorder=25)
 
+    # ── Horizontal break line (zigzag at HBREAK_Z) ──────────────────────
+    hzz_xs = np.linspace(X_LO, CUT_X, 41)
+    hzz_zs = [HBREAK_Z + (8 if i % 2 else -8) for i in range(len(hzz_xs))]
+    hzz_zs[0] = HBREAK_Z
+    hzz_zs[-1] = HBREAK_Z
+    ax.plot(list(hzz_xs), hzz_zs, color=C_FRAME, lw=1.5, zorder=25)
+    ax.text(X_LO + 30, HBREAK_Z + 15, "CUT", ha="left", va="bottom",
+            fontsize=6, color=C_DIM, **FONT, zorder=25)
+
     # ── Pole through slit down to beam ───────────────────────────────────
     pole_top_z = GRATE_Z_TOP + 890
     pole_bot_z = BEAM_Z_TOP + 5
@@ -357,19 +367,15 @@ def draw_sheet1():
         "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose → center feed.",
         "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
     ]
-    draw_notes(ax, notes, X_LO + 85, 1800, spacing=20, fs=7, font=FONT, width=1600)
+    draw_notes(ax, notes, X_LO + 85, 1220, spacing=20, fs=7, font=FONT, width=1600)
 
-    # ── Person silhouette ────────────────────────────────────────────────
+    # ── Person silhouette (cropped at break) ────────────────────────────
     PERSON_H = 1780
-    HEAD_R = 80
     oper_x = pole_x - 650
     P_FOOT = GRATE_Z_TOP
-    P_HEAD = P_FOOT + PERSON_H
-    ax.plot([oper_x, oper_x], [P_FOOT, P_HEAD + HEAD_R],
+    ax.plot([oper_x, oper_x], [P_FOOT, HBREAK_Z],
             color="#2060A0", lw=3.0, zorder=13, solid_capstyle="round")
-    ax.scatter([oper_x], [P_HEAD + HEAD_R],
-               s=1800, c="#70A8D8", edgecolors="#1A4D80", linewidths=1.0, zorder=14)
-    ax.text(oper_x - 30, P_FOOT + PERSON_H / 2,
+    ax.text(oper_x - 30, (P_FOOT + HBREAK_Z) / 2,
             f"{PERSON_H}mm\noperator\n(shoes)",
             ha="right", va="center", fontsize=5, color="#1A4D80", **FONT, zorder=15)
 

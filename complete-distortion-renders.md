@@ -62,16 +62,16 @@ into a simple sum of the individual systems' projections.
 
 Individual configurations:
 
-| Config | Render |
-|--------|--------|
-| C0 — Both flat | ![C0](assets/tilt-swing-combined-c0.png) |
-| C1 | ![C1](assets/tilt-swing-combined-c1.png) |
-| C2 | ![C2](assets/tilt-swing-combined-c2.png) |
-| C3 | ![C3](assets/tilt-swing-combined-c3.png) |
-| C4 | ![C4](assets/tilt-swing-combined-c4.png) |
-| C5 | ![C5](assets/tilt-swing-combined-c5.png) |
-| C6 | ![C6](assets/tilt-swing-combined-c6.png) |
-| C7 | ![C7](assets/tilt-swing-combined-c7.png) |
-| C8 — Full compound | ![C8](assets/tilt-swing-combined-c8.png) |
+| Board/Tilt | Board/Swing | Film/Tilt | Film/Swing | Effect | Render |
+|---|---|---|---|------|------------|
+| 0° |  0° |   0° |   0° |  Reference All flat | ![C0](assets/tilt-swing-combined-c0.png) |
+| 3° |  0° |   0° |   0° |  Board tilt +3° Film flat | ![C1](assets/tilt-swing-combined-c1.png) |
+| 0° |  0° |   20° |   0° |  Film tilt +20° Board flat | ![C2](assets/tilt-swing-combined-c2.png) |
+| 3° |  0° |   20° |   0° |  Opposing tilt (partially cancelled) | ![C3](assets/tilt-swing-combined-c3.png) |
+| 3° |  0° |   -20° |   0° |  Opposing tilt (partially cancelled) | ![C4](assets/tilt-swing-combined-c4.png) |
+| 0° |  3° |   0° |   15° |  Both swing + same direction | ![C5](assets/tilt-swing-combined-c5.png) |
+| 3° |  3° |   0° |   0° |  Compound board (tilt+swing) flat film | ![C6](assets/tilt-swing-combined-c6.png) |
+| 3° |  3° |   20° |   15° |  Full compound both systems (max distortion) | ![C7](assets/tilt-swing-combined-c7.png) |
+| -3° |  3° |   20° |   -15° |  Opposing compound (surrealist) | ![C8](assets/tilt-swing-combined-c8.png) |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

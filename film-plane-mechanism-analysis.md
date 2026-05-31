@@ -1,15 +1,10 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Film Plane — Mechanism Design
+# Moveable Film Plane — Mechanism Design & Optical Distortion Analysis
 
 ## 1. Purpose
 
-The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.
-
-**System context — container floor plan:**
-The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).
-
-![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
+The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.
 
 ---
 
@@ -57,34 +52,33 @@ When tilted at maximum, the film plane's physical height increases from 2268mm t
 
 Each corner of the film plane frame rides on its own independent carriage assembly:
 
-![Sheet 6 — System Schematic: Four-Corner Frame Front Elevation](assets/film-plane-sheet6.png)
+```
+CEILING ─────────────────────────────────────────────────────────
+   [CEIL RAIL — LEFT]                   [CEIL RAIL — RIGHT]
+   corner TL (leadscrew A)              corner TR (leadscrew B)
+        │                                       │
+        │            FILM PLANE FRAME           │
+        │      4499mm wide × 2388mm tall    │
+        │       ROD-END BEARING each corner     │
+   corner BL (leadscrew C)              corner BR (leadscrew D)
+   [FLOOR RAIL — LEFT]                  [FLOOR RAIL — RIGHT]
+FLOOR ───────────────────────────────────────────────────────────
+```
 
 - **4 linear rails** — HiWin HGR20 profile, 2200mm length, mounted at X=150mm (left pair) and X=4649mm (right pair) on ceiling and floor. Rails run along the 2362mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
-- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4499mm × 2388mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×3/16" aluminium angle, **4499mm × 2388mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.
 
-![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
-
-Viewed from above, the full range of swing movement can be seen above. Since both side rails allow the same range of movements, it allows the maximum range of creative control.
-
-![Sheet 2 — Elevations](assets/film-plane-sheet2.png)
-
-View from the side, the full range of tilt movement can be seen above. Since both the top and bottom rails allow the same range of movements, it allows the maximum range of creative control.
-
-### Mechanism Components
-The master diagram for the components can be see in the diagram below. The following section discuss the details.
-
-![Sheet 3 — Hardware detail](assets/film-plane-sheet3.png)
+The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800mm and TR to 2262mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
 
 ### Why Rod-End Spherical Bearings
 
-With four-corner independence, the film frame can twist — the plane through the four corners is no longer flat. A simple pin joint has only one rotational degree of freedom; a rod-end spherical bearing has ±45° freedom in all axes, accommodating any combination of tilt and swing without binding.
+In the two-beam design, simple pin joints at the beam ends sufficed because the beam constrained one rotation axis. With four-corner independence, the film frame can twist — the plane through the four corners is no longer flat. A simple pin joint has only one rotational degree of freedom; a rod-end spherical bearing has ±45° freedom in all axes, accommodating any combination of tilt and swing without binding.
 
 ### Actuation
 
 Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" bore). One turn of the ¾"-6 screw = **4.2mm travel**. A SS316 locking collar on each screw holds position during exposure.
-
 
 **Named movement modes:**
 - **Pure tilt**: turn TL and TR handwheels together by the same amount; turn BL and BR by the same amount (different from TL/TR).
@@ -104,20 +98,28 @@ The backing panel is two equal ACM (aluminum composite material) sections, each 
 
 For compound tilt+swing, the film plane is a ruled surface (slightly twisted, not flat). The backing panels accommodate this because the hinge allows both fore-aft fold and a small amount of left-right twist.
 
+### Light Sealing
+
+The tilted or swung film plane creates voids where it no longer contacts the container walls. These are sealed with:
+
+- **Primary seal:** 1"×½" black EPDM foam strip bonded to all four edges of the film frame — compresses against walls at low angles
+- **Secondary seal:** Rosco Duvetyne (professional blackout fabric) curtains attached to the film frame perimeter, hanging freely and weighted — drapes against the walls and floor for large angles
+- **Rail light traps:** Three overlapping strips of black felt across each rail slot opening in the ceiling and floor panels
+
 ---
 
 ## 5. Tilt Configurations
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 2262 | 2262 | 2262 | 2262 | 0° | 0° | 2388mm |
-| C1 | Mild tilt | 1800 | 1800 | 2262 | 2262 | 11.0° | 0° | 2434mm |
-| C2 | Strong tilt | 800 | 800 | 2262 | 2262 | 31.5° | 0° | 2724mm |
-| C3 | Max tilt | 100 | 100 | 2262 | 2262 | 42.1° | 0° | 3184mm |
-| C4 | Mild swing | 2262 | 1800 | 2262 | 1800 | 0° | 6.6° | 2388mm |
-| C5 | Strong swing | 2262 | 800 | 2262 | 800 | 0° | 20.0° | 2388mm |
-| C6 | Max swing | 2262 | 100 | 2262 | 100 | 0° | 28.3° | 2388mm |
-| C7 | Compound | 100 | 2262 | 2262 | 100 | 42.1° | 28.3° | — |
+| C0 | Flat | 2,262 | 2,262 | 2,262 | 2,262 | 0° | 0° | 2388mm |
+| C1 | Mild tilt | 1,800 | 1,800 | 2,262 | 2,262 | 11.0° | 0° | 2434mm |
+| C2 | Strong tilt | 800 | 800 | 2,262 | 2,262 | 31.5° | 0° | 2724mm |
+| C3 | Max tilt | 100 | 100 | 2,262 | 2,262 | 42.1° | 0° | 3184mm |
+| C4 | Mild swing | 2,262 | 1,800 | 2,262 | 1,800 | 0° | 6.6° | 2388mm |
+| C5 | Strong swing | 2,262 | 800 | 2,262 | 800 | 0° | 20.0° | 2388mm |
+| C6 | Max swing | 2,262 | 100 | 2,262 | 100 | 0° | 28.3° | 2388mm |
+| C7 | Compound | 100 | 2,262 | 2,262 | 100 | 42.1° | 28.3° | — |
 
 *All depths measured from the pinhole wall. Swing angles calculated for 4499mm rail span (arctan(Δd/span)). Rail positions: left X=150mm, right X=4649mm.*
 
@@ -125,17 +127,113 @@ The compound config (C7) places TL and BR at near position, TR and BL at far —
 
 ---
 
-## 6. Optical Distortion Summary
+## 6. Optical Distortion Analysis
+
+### Physics of Tilted-Plane Projection
+
+In a pinhole camera, every scene point projects through the pinhole aperture onto the film plane. When the film plane is flat and perpendicular to the optical axis, the projection is standard central perspective:
+
+```
+film_x = −X · f / D
+film_y = −Y · f / D
+```
+
+where f is the perpendicular distance from pinhole to film, and D is subject distance.
+
+When the film plane is **tilted** (top edge at depth d_top, bottom edge at d_bot), the effective focal length varies continuously with height on the film:
+
+```
+f(v) = d_bot + (d_top − d_bot) · v      (v = 0 bottom, v = 1 top)
+```
+
+When the film plane is **swung** (left edge at depth d_L, right edge at depth d_R), the effective focal length also varies with horizontal position:
+
+```
+f(u) = d_L + (d_R − d_L) · u            (u = 0 left, u = 1 right)
+```
+
+In the compound case (tilt + swing simultaneously), the depth varies across the entire film surface as a bilinear interpolation of all four corner depths:
+
+```
+f(u, v) = d_BL·(1−u)(1−v) + d_BR·u(1−v) + d_TL·(1−u)v + d_TR·u·v
+```
+
+This varying effective focal length is the source of all the distortion effects described below.
+
+### Distortion Effects by Configuration
+
+**C0 — Flat (reference):**
+Standard central projection. Vertical lines remain vertical, horizontal lines remain horizontal. The checker pattern is a regular perspective view.
+
+![C0 flat reference](assets/film-plane-distortion-c0.png)
+
+**C1 — Mild tilt 5.6°:**
+Subtle keystone. The top of the image is slightly compressed. Useful for compensating converging verticals when photographing tall subjects close to the camera.
+
+![C1 mild tilt](assets/film-plane-distortion-c1.png)
+
+**C2 — Strong tilt 17.5°:**
+Dramatic keystone. Top of image has f ≈ 800mm — three times more compression than the bottom. Buildings appear to flare outward toward the base.
+
+![C2 strong tilt](assets/film-plane-distortion-c2.png)
+
+**C3 — Maximum tilt 41.6°:**
+Extreme effect. Top edge 100mm from pinhole wall — a 22× difference in effective focal length between top and bottom. The checkerboard transforms from squares at the bottom to near-horizontal slivers at the top.
+
+**Recommended for:** wide open landscapes, aerial-perspective scenes, dramatic urban canyons.
+
+![C3 max tilt](assets/film-plane-distortion-c3.png)
+
+**C4 — Maximum tilt down (reverse) 41.6°:**
+The inverse of C3. Ground plane is compressed, sky dominates. Standing subjects elongate dramatically toward the bottom of the frame.
+
+![C4 reverse tilt](assets/film-plane-distortion-c4.png)
+
+**C5 — Both edges near (uniform close):**
+The entire film plane is 100mm from the pinhole. Effective focal length drops from 2362mm to ~100mm — a 23.6× reduction. Field of view becomes enormous.
+
+![C5 both near](assets/film-plane-distortion-c5.png)
+
+**C6 — Compound tilt + swing:**
+Maximum vertical tilt combined with 15° horizontal swing. No line in the scene remains parallel to any edge of the film. The checker pattern becomes a complex curved mesh.
+
+**Recommended for artistic use.**
+
+![C6 compound](assets/film-plane-distortion-c6.png)
+
+### Summary Comparison
 
 All seven configurations on a checker grid (D = 8000mm):
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 
-A detailed analysis of the optical distortions can be found [here](complete-distortion-renders.md#1-film-plane-distortion-renders).
+---
+
+## 7. Engineering Drawings
+
+| Sheet | Content |
+|-------|---------|
+| Sheet 1 — Plan view | Top-down: 4-corner rail layout, film plane quad for each config; tilt hidden (into page), swing visible as diagonal |
+| Sheet 2 — Elevations | Left: side elevation showing tilt; Right: ceiling cross-section showing swing |
+| Sheet 3 — Hardware detail | Corner bracket assembly, HGR20+HGH20CA cross-section, rod-end spherical bearing, ACM panel hinge |
+| Sheet 4 — Specification table | All movement axes, 4-corner config table, full bill of materials |
+
+![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
+
+![Sheet 2 — Elevations](assets/film-plane-sheet2.png)
+
+![Sheet 3 — Hardware detail](assets/film-plane-sheet3.png)
+
+![Sheet 4 — Specification table](assets/film-plane-sheet4.png)
+
+**System context — container floor plan:**
+The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4649mm) in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold and filter skid on equipment panel).
+
+![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
 ---
 
-## 7. Parts List
+## 8. Parts List
 
 All items ship within the United States. Local Southern California pickup noted where available.
 
@@ -169,7 +267,22 @@ All items ship within the United States. Local Southern California pickup noted 
 
 ### Muslin Clamp System
 
-See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
+The photosensitive muslin is secured to the film plane frame by **92 cam-lever spring clamps** spaced at 150mm centers around the full perimeter (30 per horizontal edge, 16 per vertical edge). Each clamp uses an over-center cam mechanism with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
+
+The cam-lever design provides tactile snap-open/snap-closed feedback, critical for loading and unloading muslin in safelight (near-dark) conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
+
+**Muslin wrap path:** muslin drapes over the pinhole-facing leg of the 2"x2" angle, wraps around the outside corner, and a 100mm hem hangs down the perpendicular leg. The jaw presses the hem against the outer face of the pinhole-facing leg, ~10-15mm from the corner, providing direct tension.
+
+![Muslin clamp detail — Sheet 5](assets/film-plane-sheet5.png)
+
+| Item | Spec | Qty | Source A | Source B | Est. Unit |
+|------|------|-----|---------|---------|-----------|
+| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw | 92 | McMaster-Carr (Destaco equiv.) | Amazon (generic toggle) | $3-8 |
+| M5×16 SS socket head bolt | A2-70 stainless | 184 | McMaster-Carr #91292A128 | Bolt Depot | $0.25 |
+| M5 SS Nylock nut | A2-70 stainless | 184 | McMaster-Carr #93625A200 | Bolt Depot | $0.08 |
+| Neoprene strip 60A | 35mm × 6mm, self-adhesive | 1 roll (10m) | McMaster-Carr #8614K44 | Grainger | $15 |
+
+**Clamp system estimated cost:** $330 (generic toggle clamps) to $790 (Destaco-equivalent quality).
 
 ### Optional Electric Actuation
 
@@ -193,11 +306,11 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ---
 
-## 8. Maintenance
+## 9. Maintenance
 
 | Interval | Task |
 |----------|------|
-| Before each session | Inspect muslin clamp engagement — see [Clamp System](film-clamp-mechanism-report.md) |
+| Before each session | Inspect muslin clamp engagement — all 92 clamps snapped closed |
 | Before each session | Verify all four locking collars are tight after repositioning |
 | Before each session | Check EPDM foam edge seal for tears or compression set |
 | Monthly | Lubricate HGR20 rails and HGH20CA carriage blocks (lithium grease) |
@@ -210,7 +323,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ---
 
-## 9. Source References
+## 10. Source References
 
 1. [HIWIN HGR20 Linear Guideway](https://hiwin.com/products/linear-guideways/) — 20mm profile linear guide rail and HGH20CA carriage block specifications.
 2. [McMaster-Carr GIR25-DO Rod-End Bearing](https://www.mcmaster.com/rod-end-bearings) — Spherical rod-end bearing specifications (25mm bore).

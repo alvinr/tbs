@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±42° and any swing angle up to ±25.7°. Loading and unloading happens under safelight (near-dark) conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
+The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±42° and any swing angle up to ±25.7°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
 
 This report describes the **cam-lever spring clamp system** that secures the muslin to the aluminum angle perimeter frame.
 
@@ -28,27 +28,23 @@ This report describes the **cam-lever spring clamp system** that secures the mus
 
 Each clamp uses an **over-center cam mechanism** with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
 
-The cam-lever design provides tactile **snap-open / snap-closed** feedback, critical for loading and unloading muslin in safelight (near-dark) conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
+The cam-lever design provides tactile **snap-open / snap-closed** feedback, critical for loading and unloading muslin in safelight conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
 
-### Muslin Wrap Path
+The overall design can be seen in the diagram below and discussed in the following sections
+
+![Muslin clamp detail — Sheet 5](assets/film-plane-sheet5.png)
+
+### 3.1 Muslin Wrap Path
 
 The muslin drapes over the pinhole-facing leg of the 2"×2" angle, wraps around the outside corner, and a 100mm hem hangs down the perpendicular leg. The jaw presses the hem against the outer face of the pinhole-facing leg, ~10–15mm from the corner, providing direct tension.
 
-### Neoprene Jaw Pad
+### 3.2 Neoprene Jaw Pad
 
 Each clamp jaw is faced with a 35mm × 6mm strip of **60A neoprene**, self-adhesive backed. The neoprene provides grip without damaging the muslin fibers and compensates for slight variations in fabric thickness across the hem fold.
 
 ---
 
-## 4. Engineering Drawing
-
-![Muslin clamp detail — Sheet 5](assets/film-plane-sheet5.png)
-
-Sheet 5 of the [Film Plane Mechanism](film-plane-mechanism-report.md) drawing set shows the cam-lever spring clamp in cross-section (open and closed positions), plan view of frame attachment, and elevation at 150mm spacing.
-
----
-
-## 5. Parts List
+## 4. Parts List
 
 All items ship within the United States. Local Southern California pickup noted where available.
 
@@ -63,7 +59,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 ---
 
-## 6. Maintenance
+## 5. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -74,7 +70,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 ---
 
-## 7. Source References
+## 6. Source References
 
 1. [Film Plane Mechanism Report](film-plane-mechanism-report.md) — Parent report: four-corner independent actuation mechanism that the clamp system attaches to.
 2. [McMaster-Carr Toggle Clamps](https://www.mcmaster.com/toggle-clamps) — Destaco-equivalent cam-lever clamp specifications.

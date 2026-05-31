@@ -153,6 +153,8 @@ Swap time: approximately 10 minutes.
 
 The following renders show the isolated effect of the tilt-swing front board on the projected image, with the film plane held flat at the far wall. The world scene is a regular grid at three depths (near: 7m, mid: 22m, far: 102m from pinhole) plus a human-figure reference and horizon line.
 
+![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
+
 The board's ±5.3° range produces up to 207mm of image shift — enough to steer composition without any film plane movement.
 
 | Config | Board Tilt | Board Swing | Effect |
@@ -166,6 +168,8 @@ The board's ±5.3° range produces up to 207mm of image shift — enough to stee
 | C6 | +3° | +3° | Compound diagonal steering |
 
 ![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
+
+A detailed analysis of the optical distortions can be found [here](complete-distortion-renders.md#2-tilt-swing-board-distortion-renders).
 
 The red cross (+) marks the projected image center; grey cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).
 

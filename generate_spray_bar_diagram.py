@@ -1484,58 +1484,64 @@ def draw_sheet6():
                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
                    hatch="///", alpha=0.7, zorder=4))
 
-    # ── U-clamp top plate ────────────────────────────────────────────────
+    # ── Beam U-clamp — ghost (underneath plate) ────────────────────────
     uc_w_yd_top = BEAM_W + 2 * UC_T + 2 * UC_GAP
+    ghost_ls = (0, (4, 3))
+    ghost_c = "#888888"
     ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, -uc_w_yd_top / 2),
                    arm_w_x, uc_w_yd_top,
-                   fc=C_UCLAMP, ec=C_FRAME, lw=1.0, alpha=0.5, zorder=6))
+                   fc="none", ec=ghost_c, lw=0.8, ls=ghost_ls, zorder=6))
     for side in [-1, 1]:
         foot_yd = side * (BEAM_W / 2 + UC_GAP + UC_T)
         if side < 0:
             foot_yd -= UC_FLARE
         ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, foot_yd),
                        arm_w_x, UC_FLARE + UC_T,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, alpha=0.6, zorder=6))
+                       fc="none", ec=ghost_c, lw=0.8, ls=ghost_ls, zorder=6))
 
     for side in [-1, 1]:
         bolt_yd = side * (BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE / 2)
         ax_d.add_patch(Circle((CARRIAGE_OFFSET_X, bolt_yd), 3,
-                     fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
+                     fc="none", ec=ghost_c, lw=0.5, ls=ghost_ls, zorder=8))
 
     leader(ax_d, CARRIAGE_OFFSET_X + arm_w_x / 2,
            BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE,
            BEAM_W - 100, BEAM_W / 2 + 30,
-           "U-CLAMP\nFLARED LEGS\n+ WING NUTS",
-           fs=5, color=C_BOLT, font=FONT, zorder=20)
+           "U-CLAMP (BELOW)\nFLARED LEGS\n+ WING NUTS",
+           fs=5, color=ghost_c, font=FONT, zorder=20)
+
+    # ── Wheels — 2 pairs (2 per Yd position, spaced in X) ───────────────
+    WHEEL_PAIR_GAP = 35
+    for w_sign in [-1, 1]:
+        w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
+        for wx_off in [-WHEEL_PAIR_GAP / 2, WHEEL_PAIR_GAP / 2]:
+            wx = CARRIAGE_OFFSET_X + wx_off
+            ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2,
+                                      w_yd_ctr - WHEEL_DIA / 2),
+                           WHEEL_WIDTH, WHEEL_DIA,
+                           fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
+            ax_d.add_patch(Circle((wx, w_yd_ctr), 5,
+                         fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=7))
 
     # ── Axle retention U-clamps (plan view) ────────────────────────────
     auc_w_plan = 16
-    auc_t_plan = 2
     for w_sign in [-1, 1]:
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
-        ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - auc_w_plan / 2,
-                                  w_yd_ctr - auc_w_plan / 2),
-                       auc_w_plan, auc_w_plan,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.6, alpha=0.5, zorder=7))
-        for bolt_off in [-auc_w_plan / 2 + 3, auc_w_plan / 2 - 3]:
-            ax_d.add_patch(Circle((CARRIAGE_OFFSET_X, w_yd_ctr + bolt_off), 2,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=8))
-
-    # ── Wheels ───────────────────────────────────────────────────────────
-    for w_sign in [-1, 1]:
-        w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
-        ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - WHEEL_WIDTH / 2,
-                                  w_yd_ctr - WHEEL_DIA / 2),
-                       WHEEL_WIDTH, WHEEL_DIA,
-                       fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
-        ax_d.add_patch(Circle((CARRIAGE_OFFSET_X, w_yd_ctr), 5,
-                     fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=7))
+        for wx_off in [-WHEEL_PAIR_GAP / 2, WHEEL_PAIR_GAP / 2]:
+            wx = CARRIAGE_OFFSET_X + wx_off
+            ax_d.add_patch(Rectangle((wx - auc_w_plan / 2,
+                                      w_yd_ctr - auc_w_plan / 2),
+                           auc_w_plan, auc_w_plan,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, alpha=0.5, zorder=7))
+            for bolt_off in [-auc_w_plan / 2 + 3, auc_w_plan / 2 - 3]:
+                ax_d.add_patch(Circle((wx, w_yd_ctr + bolt_off), 2,
+                             fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=8))
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_WIDTH / 2,
+    leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_PAIR_GAP / 2 + WHEEL_WIDTH / 2,
            -WHEEL_SPACING_YD / 2,
            D_X_HI - 225, -WHEEL_SPACING_YD / 2 - 10,
-           f"Ø{WHEEL_DIA}mm WHEEL\n({WHEEL_WIDTH}mm WIDE)",
+           f"Ø{WHEEL_DIA}mm WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER SIDE",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     leader(ax_d, -arm_w_x / 2 - 1, 0,

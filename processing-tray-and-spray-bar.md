@@ -176,7 +176,7 @@ edges of the left and right walkways.
 | Beam mass (3859mm) | 4.63 kg |
 
 **Sourcing:** Standard 8 ft (2438mm) lengths are widely stocked at Home Depot, Online
-Metals, and metals suppliers. Two 8 ft lengths are required; see §3.7 for splice joint.
+Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splice joint.
 
 **Spray holes:**
 
@@ -240,7 +240,7 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Interface | Gap | Notes |
 |-----------|-----|-------|
 | Beam top → grating bottom | 25mm | Ample clearance; no contact during travel |
-| Beam bottom → tray floor | 8mm | Reduces to ~0.5mm at midspan under full water load (see §3.6) |
+| Beam bottom → tray floor | 8mm | Reduces to ~0.5mm at midspan under full water load (see §3.7) |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
 **Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
@@ -266,7 +266,81 @@ Formed from 5mm 6061-T6 aluminum plate, bent to an L-profile:
 lateral guides. The wheel carriages roll between the tray rim and the walkway support
 structure. The 200mm wheel spacing in Yd prevents significant skew.
 
-### 3.6 Structural Analysis
+### 3.6 Carriage Fabrication
+
+Each carriage is built from three sub-assemblies: two fork-and-wheel units and one
+L-bracket. Two identical carriages are required (left end and right end of beam).
+
+#### 3.6.1 Fork Bracket Fabrication (4 required)
+
+Each fork is a U-channel formed from 6mm 6061-T6 aluminum plate. The fork straddles
+one 50mm × 20mm nylon wheel with approximately 2mm side clearance per arm.
+
+**Blank:** Cut four pieces from 6mm plate, each 80mm tall × 70mm wide (developed width).
+
+| Step | Operation | Detail |
+|------|-----------|--------|
+| 1 | Mark center | Scribe a centerline along the 80mm dimension |
+| 2 | Mark bend lines | Two lines at ±12mm from center (24mm internal gap = 20mm wheel + 2mm clearance each side) |
+| 3 | Drill axle holes | Ø10.5mm through both arms simultaneously — clamp blank flat, drill 25mm from top edge, on centerline. Drilling before bending keeps both arms in perfect register |
+| 4 | Drill mounting holes | Two Ø6.5mm clearance holes (M6) in the base zone between the bend lines, spaced 16mm apart symmetrically about centerline |
+| 5 | Bend | Brake-press or vise-bend both arms up to 90° on the scribed lines, 2mm internal radius. Both bends must be parallel |
+| 6 | Deburr | Remove all burrs from edges and axle holes |
+
+**Check:** Drop a wheel into the fork channel — it should spin freely with visible
+daylight on both sides. If binding, file the inner arm faces lightly.
+
+#### 3.6.2 L-Bracket Fabrication (2 required)
+
+Each L-bracket is formed from 5mm 6061-T6 aluminum plate, bent to an L-profile. The
+horizontal arm carries two fork assemblies; the vertical leg creates the 17mm drop that
+positions the beam below the wheel axle centerline.
+
+**Blank:** Cut two pieces from 5mm plate, each 240mm long × 100mm wide (developed).
+
+| Step | Operation | Detail |
+|------|-----------|--------|
+| 1 | Mark bend line | Scribe a line 17mm from one long edge — this becomes the vertical leg |
+| 2 | Mark fork positions | On the horizontal arm face (83mm remaining width), mark two pairs of M6 holes at 200mm spacing along the 240mm length, matching the fork base hole pattern (16mm apart). Center the pair positions at 20mm and 220mm from each end |
+| 3 | Drill fork mounting holes | Four pairs of Ø6.5mm clearance holes (8 holes total), matching the fork base pattern |
+| 4 | Bend | Brake-press or vise-bend the 17mm flange down to 90° on the scribed line |
+| 5 | Deburr | Remove all burrs from edges and holes |
+
+#### 3.6.3 Wheel Assembly (4 required)
+
+| Step | Operation |
+|------|-----------|
+| 1 | Place nylon wheel (50mm × 20mm, 10mm bore) between fork arms |
+| 2 | Insert 10mm SS clevis pin through one arm, through wheel bore, out the opposite arm |
+| 3 | Install E-clip or snap ring on each exposed pin end |
+| 4 | Spin wheel by hand — confirm free rotation with no lateral wobble |
+
+#### 3.6.4 Carriage Assembly (2 required)
+
+| Step | Operation |
+|------|-----------|
+| 1 | Place L-bracket flat on bench, horizontal arm face up |
+| 2 | Position first fork-and-wheel unit over the near pair of mounting holes (wheels hanging below bench edge). Insert 2× M6×20 SS bolts through fork base and L-bracket; secure with nyloc nuts finger-tight |
+| 3 | Repeat for the second fork-and-wheel unit on the far pair of holes |
+| 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
+| 5 | Tighten all four nyloc nuts to 6 Nm |
+| 6 | Stand the carriage on a flat surface — all four wheels (across both fork units) must contact the surface simultaneously. Shim under one fork if needed before final torque |
+
+#### 3.6.5 Beam Attachment
+
+The carriages attach to the beam ends using SS U-clamps with flared legs and wing
+nuts. This provides tool-free adjustment of the carriage position along the beam.
+
+| Step | Operation |
+|------|-----------|
+| 1 | Slide one U-clamp over the beam SHS approximately 30mm from each end |
+| 2 | Position the L-bracket vertical leg against the beam side face, with the horizontal arm extending outward (toward the walkway). The vertical leg drops the beam 17mm below the wheel axle centerline |
+| 3 | Pass the U-clamp flared-leg bolts through the L-bracket horizontal arm |
+| 4 | Thread wing nuts onto each bolt and tighten by hand until the clamp grips the beam firmly |
+| 5 | Set the assembled spray bar on the processing tray floor. Confirm beam top (Z=50mm) clears walkway grating bottom (Z=75mm) — 25mm gap. Confirm all wheels roll freely on the tray floor |
+| 6 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
+
+### 3.7 Structural Analysis
 
 **Loading (simply supported, uniform distributed load across 3859mm span):**
 
@@ -310,7 +384,7 @@ camber permanently.
 
 Per wheel load (wet): 10.5 / 4 = 2.6 kg — well within any small nylon wheel's rating.
 
-### 3.7 Beam Splice Joint
+### 3.8 Beam Splice Joint
 
 Two 8 ft (2438mm) SHS lengths are joined with an internal sleeve splice at midspan:
 
@@ -322,7 +396,7 @@ Two 8 ft (2438mm) SHS lengths are joined with an internal sleeve splice at midsp
 **Alternative:** Source a single 16 ft or 20 ft length by special order to eliminate
 the splice entirely.
 
-### 3.8 Flow Analysis
+### 3.9 Flow Analysis
 
 | Parameter | Value |
 |-----------|-------|
@@ -339,7 +413,7 @@ This ensures the bore acts as a low-loss plenum: pressure is nearly uniform alon
 bore length, and each hole delivers approximately equal flow regardless of distance from
 the feed end.
 
-### 3.9 Water Connection
+### 3.10 Water Connection
 
 BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
 X=2399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
@@ -352,7 +426,7 @@ the print surface.
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 →
 coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
-### 3.10 Walkway Slit
+### 3.11 Walkway Slit
 
 The operator controls the spray bar position from the near walkway using a telescoping
 aluminum pool pole (1.2–2.4 m). The pole passes through a 30mm wide slit cut into the
@@ -360,7 +434,7 @@ walkway grating at the beam centerline X=2500mm. A matching slit is cut into the
 walkway grating at the same X position. The slit positions are shown on the
 [walkway plan view](engineering-diagrams.md#14-perimeter-walkway).
 
-### 3.11 Ball Joint and Arm
+### 3.12 Ball Joint and Arm
 
 A Ø20mm stainless steel ball joint on the beam top face provides multi-axis
 articulation between the beam and the operator's pole. The ball sits in a zinc socket

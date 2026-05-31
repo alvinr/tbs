@@ -94,7 +94,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 | 20mm gap between tray edge and rail | Clear |
-| Spray bar (rides on tray floor beneath walkway grating) | Beam top at Z=50mm, grating bottom at Z=75mm | Clear |
+| Spray bar (rides on tray floor beneath walkway grating) | Plate top at Z=42.5mm, grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (equipment panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
@@ -131,7 +131,7 @@ irrigation nozzles spaced evenly along the beam bottom face.
 
 **Design constraints:**
 
-- Beam top must clear walkway grating underside (Z=75mm) — no contact during travel
+- Carriage plate top must clear walkway grating underside (Z=75mm) — no contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath walkways
 - Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit
 - Must travel 2200mm along Yd (tray depth, near rim to far rim)
@@ -234,14 +234,14 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 |-----------------|------------|
 | Container floor | 0 |
 | Tray floor (SS sheet on floor) | ~2 |
-| Nozzle bottom (6mm body) | 6 |
-| Beam bottom (under-slung) | 12 |
+| Nozzle bottom (6mm body) | 14 |
+| Beam bottom | 20 |
 | Wheel axle centerline | 27 |
+| Carriage plate bottom | 37.5 |
+| Carriage plate top | 42.5 |
 | Tray rim top | 50 |
-| Beam top | 52 |
 | Wheel top | 52 |
-| U-clamp feet / arm plate bottom | 55 |
-| Arm plate top | 60 |
+| Beam top | 60 |
 | Walkway grating bottom | 75 |
 | Walkway grating top (deck surface) | 100 |
 
@@ -249,30 +249,32 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Arm plate top → grating bottom | 15mm | Ample clearance; no contact during travel |
-| Beam bottom → tray floor | 10mm | Reduces to ~0.5mm at midspan under full water load (see §3.7) |
-| Nozzle bottom → tray floor | 4mm | Nozzle body clears floor at all carriage positions |
+| Plate top → grating bottom | 32.5mm | Ample clearance; no contact during travel |
+| Beam bottom → tray floor | 18mm | Reduces to ~11mm at midspan under full water load (see §3.7) |
+| Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
 **Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
 6mm 6061-T6 aluminum plate. The fork straddles the wheel with ~2mm side clearance,
 drilled for a 10mm clevis pin axle. The fork extends upward from the axle to the
-L-bracket arm plate (28mm leg height). The fork's top plate has two M6 through-holes for
-bolting to the L-bracket horizontal arm.
+carriage plate (10.5mm leg height from axle to plate underside). M5 through-bolts
+connect each fork to the carriage plate.
 
-### 3.5 L-Bracket Design
+### 3.5 Carriage Plate Design
 
-Each carriage uses an L-bracket to lower the beam 17mm below the wheel axle
-centerline, creating 25mm clearance between beam top (Z=50mm) and walkway grating
-bottom (Z=75mm).
+Each carriage uses a flat aluminum plate positioned at beam center height (Z=40mm).
+The plate has a central notch that straddles the beam SHS, allowing the U-clamp to
+pass through and cradle the beam from below.
 
-Formed from 5mm 6061-T6 aluminum plate, bent to an L-profile:
+Formed from 5mm 6061-T6 aluminum plate:
 
-- **Horizontal arm:** Extends from the walkway inner edge outward under the grating at
-  wheel axle height (Z=27mm). Length ≈200mm. Two wheel fork brackets bolt to the top
-  face, spaced 200mm apart in Yd.
-- **Vertical leg:** At the inboard end, bends downward 17mm to Z=10mm. The beam's
-  side face bolts to the vertical leg with 2× M6×20 stainless bolts.
+- **Plate wings:** Two flat sections extending outward from the beam notch to the
+  wheel fork attachment points. Total plate width spans both wheel fork positions
+  plus 18mm overhang on each side.
+- **Center notch:** Cut-out slightly wider than the U-clamp outer width, allowing
+  the clamp legs to pass through the plate and grip the beam.
+- **Ball joint mount:** The ball joint flange bolts to one plate wing beside the beam,
+  keeping the socket housing below grating level (Z=75mm).
 
 **Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
 lateral guides. The wheel carriages roll between the tray rim and the walkway support
@@ -290,35 +292,36 @@ L-bracket. Two identical carriages are required (left end and right end of beam)
 Each fork is a U-channel formed from 6mm 6061-T6 aluminum plate. The fork straddles
 one 50mm × 20mm nylon wheel with approximately 2mm side clearance per arm.
 
-**Blank:** Cut four pieces from 6mm plate, each 80mm tall × 70mm wide (developed width).
+**Blank:** Cut four pieces from 6mm plate, each 60mm tall × 70mm wide (developed width).
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark center | Scribe a centerline along the 80mm dimension |
+| 1 | Mark center | Scribe a centerline along the 60mm dimension |
 | 2 | Mark bend lines | Two lines at ±12mm from center (24mm internal gap = 20mm wheel + 2mm clearance each side) |
-| 3 | Drill axle holes | Ø10.5mm through both arms simultaneously — clamp blank flat, drill 25mm from top edge, on centerline. Drilling before bending keeps both arms in perfect register |
-| 4 | Drill mounting holes | Two Ø6.5mm clearance holes (M6) in the base zone between the bend lines, spaced 16mm apart symmetrically about centerline |
+| 3 | Drill axle holes | Ø10.5mm through both arms simultaneously — clamp blank flat, drill 20mm from top edge, on centerline. Drilling before bending keeps both arms in perfect register |
+| 4 | Drill mounting holes | Two Ø5.5mm clearance holes (M5) in the base zone between the bend lines, spaced 16mm apart symmetrically about centerline |
 | 5 | Bend | Brake-press or vise-bend both arms up to 90° on the scribed lines, 2mm internal radius. Both bends must be parallel |
 | 6 | Deburr | Remove all burrs from edges and axle holes |
 
 **Check:** Drop a wheel into the fork channel — it should spin freely with visible
 daylight on both sides. If binding, file the inner arm faces lightly.
 
-#### 3.6.2 L-Bracket Fabrication (2 required)
+#### 3.6.2 Carriage Plate Fabrication (2 required)
 
-Each L-bracket is formed from 5mm 6061-T6 aluminum plate, bent to an L-profile. The
-horizontal arm carries two fork assemblies; the vertical leg creates the 17mm drop that
-positions the beam below the wheel axle centerline.
+Each carriage plate is a flat 5mm 6061-T6 aluminum plate with a central notch for the
+beam U-clamp. The plate sits at beam center height (Z=40mm), connecting the wheel
+fork brackets to the beam via the U-clamp.
 
-**Blank:** Cut two pieces from 5mm plate, each 240mm long × 100mm wide (developed).
+**Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark bend line | Scribe a line 17mm from one long edge — this becomes the vertical leg |
-| 2 | Mark fork positions | On the horizontal arm face (83mm remaining width), mark two pairs of M6 holes at 200mm spacing along the 240mm length, matching the fork base hole pattern (16mm apart). Center the pair positions at 20mm and 220mm from each end |
-| 3 | Drill fork mounting holes | Four pairs of Ø6.5mm clearance holes (8 holes total), matching the fork base pattern |
-| 4 | Bend | Brake-press or vise-bend the 17mm flange down to 90° on the scribed line |
-| 5 | Deburr | Remove all burrs from edges and holes |
+| 1 | Mark notch | Scribe center notch outline — width matches U-clamp outer span plus 1mm clearance each side |
+| 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
+| 3 | Mark fork positions | On each wing, mark two Ø5.5mm clearance holes (M5) matching each fork bracket's top bolt pattern |
+| 4 | Mark U-clamp bolt positions | Two Ø5.5mm holes on each side of the notch, aligning with U-clamp flared feet |
+| 5 | Drill all holes | Drill press for accuracy — 8 fork holes + 4 U-clamp holes total |
+| 6 | Deburr | Remove all burrs from edges, notch, and holes |
 
 #### 3.6.3 Wheel Assembly (4 required)
 
@@ -338,29 +341,30 @@ positions the beam below the wheel axle centerline.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place L-bracket flat on bench, horizontal arm face up |
-| 2 | Position first fork-and-wheel unit over the near pair of mounting holes (wheels hanging below bench edge). Insert 2× M6×20 SS bolts through fork base and L-bracket; secure with nyloc nuts finger-tight |
-| 3 | Repeat for the second fork-and-wheel unit on the far pair of holes |
+| 1 | Place carriage plate flat on bench, notch centered |
+| 2 | Position first fork-and-wheel unit under the near wing (wheels hanging below bench edge). Insert 2× M5×20 SS bolts through plate and fork top; secure with nyloc nuts finger-tight |
+| 3 | Repeat for the second fork-and-wheel unit on the far wing |
 | 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
-| 5 | Tighten all four nyloc nuts to 6 Nm |
+| 5 | Tighten all nyloc nuts to 4 Nm |
 | 6 | Stand the carriage on a flat surface — all four wheels (across both fork units) must contact the surface simultaneously. Shim under one fork if needed before final torque |
 
 #### 3.6.5 Beam Attachment
 
-The carriages attach to the beam using SS U-clamps in an under-slung configuration.
-The U-clamp wraps under the beam from below, with its flared feet pressed against the
-underside of the L-bracket arm plate. Bolts pass through the arm plate from above,
-through the U-clamp feet, and wing nuts thread on below. This provides tool-free
-adjustment of the carriage position along the beam.
+The carriages attach to the beam using SS U-clamps in a cradle configuration. The
+U-clamp wraps under the beam from below, with its legs passing up through the carriage
+plate notch and flared feet resting against the plate underside. Bolts pass through the
+plate from above, through the U-clamp feet, and wing nuts thread on below. This
+provides tool-free adjustment of the carriage position along the beam.
 
 | Step | Operation |
 |------|-----------|
 | 1 | Slide one U-clamp under the beam SHS approximately 30mm from each end |
-| 2 | Position the L-bracket arm plate above the beam, aligning the U-clamp flared feet against the arm plate underside |
-| 3 | Pass bolts through the arm plate from above, through the U-clamp feet |
-| 4 | Thread wing nuts onto each bolt below the feet and tighten by hand until the clamp grips the beam firmly |
-| 5 | Set the assembled spray bar on the processing tray floor. Confirm arm plate top (Z=60mm) clears walkway grating bottom (Z=75mm) — 15mm gap. Confirm all wheels roll freely on the tray floor |
-| 6 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
+| 2 | Lower the carriage plate over the beam so the notch straddles the U-clamp legs |
+| 3 | Align the U-clamp flared feet against the carriage plate underside |
+| 4 | Pass bolts through the plate from above, through the U-clamp feet |
+| 5 | Thread wing nuts onto each bolt below the feet and tighten by hand until the clamp grips the beam firmly |
+| 6 | Set the assembled spray bar on the processing tray floor. Confirm plate top (Z=42.5mm) clears walkway grating bottom (Z=75mm) — 32.5mm gap. Confirm all wheels roll freely on the tray floor |
+| 7 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
 
@@ -369,41 +373,46 @@ adjustment of the carriage position along the beam.
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
 | Beam (6061-T6 AL, 40×40×3mm SHS) | 1.199 | 11.76 |
-| Water in bore (34×34mm filled) | 1.156 | 11.34 |
-| **Total UDL** | **2.355** | **23.10** |
+| LDPE pipe (OD 25mm, ID 19mm, wall 3mm) | 0.193 | 1.89 |
+| Water in pipe (19mm ID bore) | 0.283 | 2.78 |
+| **Total UDL** | **1.675** | **16.43** |
 
-Water volume in bore: 34 × 34 × 3,859 = 4.46 liters (4.46 kg).
+Water volume in pipe: π × 9.5² × 3,859 = 1.09 liters (1.09 kg). The water is contained
+within the LDPE pipe bore, not the full SHS bore.
 
 **Deflection — δ = 5wL⁴ / 384EI, E = 68,900 MPa:**
 
 | Condition | w (N/m) | δ center (mm) | Span ratio |
 |-----------|---------|---------------|------------|
-| Dry (beam self-weight only) | 11.76 | 4.8 | L/799 |
-| Wet (beam + water in bore) | 23.10 | 9.5 | L/406 |
+| Dry (beam only) | 11.76 | 4.8 | L/799 |
+| Dry (beam + pipe) | 13.65 | 5.6 | L/689 |
+| Wet (beam + pipe + water) | 16.43 | 6.8 | L/568 |
 
-The L/406 span ratio under full water load is marginal by structural standards but
-acceptable for a spray bar application — no foot traffic, precision loads, or dynamic
-impact. The deflection is entirely elastic and fully recoverable.
+The L/568 span ratio under full water load is acceptable for a spray bar application —
+no foot traffic, precision loads, or dynamic impact. The deflection is entirely elastic
+and fully recoverable. With 18mm beam-to-floor clearance at the supports, midspan
+clearance under full load is approximately 11mm.
 
-**Pre-camber recommendation:** Apply 5mm upward pre-camber during fabrication to offset
-roughly half the wet deflection, maintaining ≥5mm floor clearance at midspan. Method:
-introduce the camber at the midspan splice joint (§3.8) — shim the sleeve 5mm off-axis
-during set-screw tightening so the two SHS halves meet at a shallow upward angle.
+**Pre-camber recommendation:** Apply 3mm upward pre-camber during fabrication to offset
+roughly half the wet deflection. Method: introduce the camber at the midspan splice
+joint (§3.8) — shim the sleeve 3mm off-axis during set-screw tightening so the two SHS
+halves meet at a shallow upward angle.
 
 **Weight summary:**
 
 | Component | Mass (kg) |
 |-----------|-----------|
 | Beam (40×40×3mm × 3859mm) | 4.63 |
-| Water in bore | 4.46 |
-| L-brackets (2×) | 0.40 |
+| LDPE pipe (OD 25mm × 3859mm) | 0.74 |
+| Water in pipe | 1.09 |
+| Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× wheel + fork + axle) | 0.60 |
-| LDPE pipe + nozzles + fittings | 0.25 |
-| Hardware (bolts, clips) | 0.30 |
-| **Dry total** | **~6.0 kg** |
-| **Wet total (operating)** | **~10.5 kg** |
+| Nozzles + fittings | 0.15 |
+| Hardware (bolts, clips, U-clamps) | 0.30 |
+| **Dry total** | **~6.8 kg** |
+| **Wet total (operating)** | **~7.9 kg** |
 
-Per wheel load (wet): 10.5 / 4 = 2.6 kg — well within any small nylon wheel's rating.
+Per wheel load (wet): 7.9 / 4 = 2.0 kg — well within any small nylon wheel's rating.
 
 ### 3.8 Beam Splice Joint
 

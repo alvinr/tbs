@@ -151,7 +151,7 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | Wheel fork brackets | 6061-T6 AL plate 6mm, U-fork profile | 4 | Mount wheels on axle pins |
 | Axle pins | 10mm SS clevis pin + snap rings | 4 | Wheel spindles (snap ring retention both ends) |
 | L-brackets | 6061-T6 AL plate 5mm, horizontal arm | 2 | Connect carriages to beam via U-clamp |
-| U-clamps | SS, flared legs, wing nuts — wraps 40mm SHS | 2 | Attach beam to L-bracket, tool-free adjustment |
+| U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to L-bracket arm, tool-free adjustment |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
 | M8 U-bolt | SS, wraps over ball joint socket, nyloc nuts | 1 | Clamps ball joint to beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
@@ -234,11 +234,14 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 |-----------------|------------|
 | Container floor | 0 |
 | Tray floor (SS sheet on floor) | ~2 |
-| Beam bottom (with 17mm bracket drop) | 10 |
+| Nozzle bottom (6mm body) | 6 |
+| Beam bottom (under-slung) | 12 |
 | Wheel axle centerline | 27 |
-| Beam top | 50 |
 | Tray rim top | 50 |
+| Beam top | 52 |
 | Wheel top | 52 |
+| U-clamp feet / arm plate bottom | 55 |
+| Arm plate top | 60 |
 | Walkway grating bottom | 75 |
 | Walkway grating top (deck surface) | 100 |
 
@@ -246,13 +249,15 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Beam top → grating bottom | 25mm | Ample clearance; no contact during travel |
-| Beam bottom → tray floor | 8mm | Reduces to ~0.5mm at midspan under full water load (see §3.7) |
+| Arm plate top → grating bottom | 15mm | Ample clearance; no contact during travel |
+| Beam bottom → tray floor | 10mm | Reduces to ~0.5mm at midspan under full water load (see §3.7) |
+| Nozzle bottom → tray floor | 4mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
 **Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
 6mm 6061-T6 aluminum plate. The fork straddles the wheel with ~2mm side clearance,
-drilled for a 10mm clevis pin axle. The fork's base plate has two M6 through-holes for
+drilled for a 10mm clevis pin axle. The fork extends upward from the axle to the
+L-bracket arm plate (28mm leg height). The fork's top plate has two M6 through-holes for
 bolting to the L-bracket horizontal arm.
 
 ### 3.5 L-Bracket Design
@@ -342,16 +347,19 @@ positions the beam below the wheel axle centerline.
 
 #### 3.6.5 Beam Attachment
 
-The carriages attach to the beam ends using SS U-clamps with flared legs and wing
-nuts. This provides tool-free adjustment of the carriage position along the beam.
+The carriages attach to the beam using SS U-clamps in an under-slung configuration.
+The U-clamp wraps under the beam from below, with its flared feet pressed against the
+underside of the L-bracket arm plate. Bolts pass through the arm plate from above,
+through the U-clamp feet, and wing nuts thread on below. This provides tool-free
+adjustment of the carriage position along the beam.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Slide one U-clamp over the beam SHS approximately 30mm from each end |
-| 2 | Position the L-bracket vertical leg against the beam side face, with the horizontal arm extending outward (toward the walkway). The vertical leg drops the beam 17mm below the wheel axle centerline |
-| 3 | Pass the U-clamp flared-leg bolts through the L-bracket horizontal arm |
-| 4 | Thread wing nuts onto each bolt and tighten by hand until the clamp grips the beam firmly |
-| 5 | Set the assembled spray bar on the processing tray floor. Confirm beam top (Z=50mm) clears walkway grating bottom (Z=75mm) — 25mm gap. Confirm all wheels roll freely on the tray floor |
+| 1 | Slide one U-clamp under the beam SHS approximately 30mm from each end |
+| 2 | Position the L-bracket arm plate above the beam, aligning the U-clamp flared feet against the arm plate underside |
+| 3 | Pass bolts through the arm plate from above, through the U-clamp feet |
+| 4 | Thread wing nuts onto each bolt below the feet and tighten by hand until the clamp grips the beam firmly |
+| 5 | Set the assembled spray bar on the processing tray floor. Confirm arm plate top (Z=60mm) clears walkway grating bottom (Z=75mm) — 15mm gap. Confirm all wheels roll freely on the tray floor |
 | 6 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis

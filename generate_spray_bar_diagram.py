@@ -66,7 +66,7 @@ WHEEL_SPACING_YD = 200
 TRAY_FLOOR_Z = 2
 
 WHEEL_AXLE_Z = TRAY_FLOOR_Z + WHEEL_DIA / 2
-BRACKET_DROP = 17
+BRACKET_DROP = 15
 BEAM_Z_BOT = WHEEL_AXLE_Z - BRACKET_DROP
 BEAM_Z_TOP = BEAM_Z_BOT + SPRAY_BAR_BEAM
 BEAM_W = SPRAY_BAR_BEAM
@@ -79,8 +79,8 @@ POLY_ID = 19.0
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
 N_NOZZLES = 6
-NOZZLE_BODY_W = 15
-NOZZLE_BODY_H = 12
+NOZZLE_BODY_W = 10
+NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"
 
 # U-clamp dimensions
@@ -552,33 +552,35 @@ def draw_sheet2():
            f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
            fs=5, color=C_WHEEL, font=FONT, zorder=15)
 
-    # ── Fork brackets ────────────────────────────────────────────────────
+    # ── Fork brackets (extend upward from axle to arm plate) ───────────
+    wheel_top_z = TRAY_FLOOR_Z + WHEEL_DIA
+    arm_gap = 3
+    brk_t_c = 5
+    arm_bot_z = wheel_top_z + arm_gap             # 55
+    arm_top_z = arm_bot_z + brk_t_c               # 60
+
     for w_yd in [wheel1_yd, wheel2_yd]:
         for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
             ax2.plot([w_yd + offset, w_yd + offset],
-                     [WHEEL_AXLE_Z + 6, WHEEL_AXLE_Z - WHEEL_DIA / 2 + 4],
+                     [WHEEL_AXLE_Z, arm_bot_z],
                      color=C_FRAME, lw=1.2, zorder=5.5)
         ax2.plot([w_yd - WHEEL_WIDTH / 2 - 4, w_yd + WHEEL_WIDTH / 2 + 4],
                  [WHEEL_AXLE_Z, WHEEL_AXLE_Z],
                  color=C_FRAME, lw=0.8, zorder=6.5)
 
-    # ── L-bracket arm ────────────────────────────────────────────────────
-    brk_t_c = 5
+    # ── L-bracket arm plate (above wheels) ──────────────────────────────
     plate_yd_l = wheel1_yd - 18
     plate_yd_r = wheel2_yd + 18
 
-    ax2.add_patch(Rectangle((plate_yd_l, WHEEL_AXLE_Z - brk_t_c / 2),
+    ax2.add_patch(Rectangle((plate_yd_l, arm_bot_z),
                   plate_yd_r - plate_yd_l, brk_t_c,
                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=7))
-    leader(ax2, plate_yd_r, WHEEL_AXLE_Z,
-           plate_yd_r + 35, WHEEL_AXLE_Z + 8,
+    leader(ax2, plate_yd_r, arm_bot_z + brk_t_c / 2,
+           plate_yd_r + 35, arm_bot_z + 12,
            "AL L-BRACKET\nARM (5mm PLATE)",
            fs=5, color=C_FRAME, font=FONT, zorder=15)
 
     # ── Fork-to-arm M5 through-bolts ────────────────────────────────────
-    arm_top_z = WHEEL_AXLE_Z + brk_t_c / 2
-    arm_bot_z = WHEEL_AXLE_Z - brk_t_c / 2
-
     for w_yd in [wheel1_yd, wheel2_yd]:
         for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
             fork_yd = w_yd + offset
@@ -589,8 +591,8 @@ def draw_sheet2():
             ax2.add_patch(Rectangle((fork_yd - 4, arm_bot_z - 4), 8, 4,
                          fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-    leader(ax2, wheel2_yd + WHEEL_WIDTH / 2 + 2, WHEEL_AXLE_Z,
-           wheel2_yd + 50, WHEEL_AXLE_Z - 10,
+    leader(ax2, wheel2_yd + WHEEL_WIDTH / 2 + 2, arm_bot_z,
+           wheel2_yd + 50, arm_bot_z - 20,
            "M5 SS THRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
@@ -615,40 +617,47 @@ def draw_sheet2():
                   FITTING_DIA, POLY_WALL,
                   fc=C_NOZZLE, ec=C_FRAME, lw=0.5, zorder=9.1))
 
-    ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
+    ax2.text(CARRIAGE_YD_CENTER, arm_top_z + 4,
              "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
              fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
-    # ── U-clamp over beam ────────────────────────────────────────────────
+    # ── U-clamp under beam (inverted — feet at arm underside) ──────────
     uc_l = CARRIAGE_YD_CENTER - BEAM_W / 2 - UC_T - UC_GAP
     uc_r = CARRIAGE_YD_CENTER + BEAM_W / 2 + UC_GAP + UC_T
     flare_l = uc_l - UC_FLARE
     flare_r = uc_r + UC_FLARE
 
-    ax2.add_patch(Rectangle((uc_l, BEAM_Z_TOP), uc_r - uc_l, UC_T,
+    # Bottom bar (wraps under beam)
+    ax2.add_patch(Rectangle((uc_l, BEAM_Z_BOT - UC_T), uc_r - uc_l, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
+    # Side legs (run up alongside beam)
     for u_yd in [uc_l, uc_r - UC_T]:
-        ax2.add_patch(Rectangle((u_yd, BEAM_Z_BOT + UC_T), UC_T,
-                     BEAM_Z_TOP - BEAM_Z_BOT - UC_T,
+        ax2.add_patch(Rectangle((u_yd, BEAM_Z_BOT), UC_T,
+                     BEAM_Z_TOP - BEAM_Z_BOT,
                      fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    ax2.add_patch(Rectangle((flare_l, BEAM_Z_BOT),
+    # Flared feet at top (pressed against arm underside)
+    ax2.add_patch(Rectangle((flare_l, BEAM_Z_TOP),
                   uc_l + UC_T - flare_l, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    ax2.add_patch(Rectangle((uc_r - UC_T, BEAM_Z_BOT),
+    ax2.add_patch(Rectangle((uc_r - UC_T, BEAM_Z_TOP),
                   flare_r - uc_r + UC_T, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
 
+    # Bolts from arm top, through arm and U-clamp feet
     for bolt_yd in [flare_l + UC_FLARE / 2, flare_r - UC_FLARE / 2]:
-        ax2.add_patch(Rectangle((bolt_yd - 2.5, arm_bot_z - 4), 5,
-                     BEAM_Z_BOT + UC_T - arm_bot_z + 4,
+        # Bolt shaft through arm + U-foot
+        ax2.add_patch(Rectangle((bolt_yd - 2.5, BEAM_Z_TOP), 5,
+                     arm_top_z - BEAM_Z_TOP,
                      fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 4, BEAM_Z_BOT + UC_T), 8, 3,
+        # Bolt head on arm top
+        ax2.add_patch(Rectangle((bolt_yd - 4, arm_top_z), 8, 3,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 5, arm_bot_z - 8), 10, 4,
+        # Wing nut under U-foot
+        ax2.add_patch(Rectangle((bolt_yd - 5, BEAM_Z_TOP - 4), 10, 4,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-    leader(ax2, flare_r, BEAM_Z_BOT + UC_T / 2,
-           flare_r + 20, BEAM_Z_BOT - 5,
+    leader(ax2, flare_r, BEAM_Z_TOP + UC_T / 2,
+           flare_r + 20, BEAM_Z_TOP + 15,
            "SS U-CLAMP\n+ WING NUTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
@@ -691,7 +700,7 @@ def draw_sheet2():
     STUD_EXT = 20
     C_JOINT = "#C8B070"
 
-    beam_top_z_bj = BEAM_Z_TOP
+    beam_top_z_bj = arm_top_z
     flange_bot_z = beam_top_z_bj
     socket_bot_z = flange_bot_z + FLANGE_T
     ball_ctr_z = socket_bot_z + SOCKET_H / 2 + 2
@@ -717,14 +726,14 @@ def draw_sheet2():
              color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
 
     ax2.plot([ubolt_l + ubolt_t / 2, ubolt_l + ubolt_t / 2],
-             [ub_arc_cz, beam_top_z_bj - BEAM_T - 5],
+             [ub_arc_cz, beam_top_z_bj - brk_t_c - 3],
              color=C_BOLT, lw=2.5, zorder=9)
     ax2.plot([ubolt_r - ubolt_t / 2, ubolt_r - ubolt_t / 2],
-             [ub_arc_cz, beam_top_z_bj - BEAM_T - 5],
+             [ub_arc_cz, beam_top_z_bj - brk_t_c - 3],
              color=C_BOLT, lw=2.5, zorder=9)
 
     for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
-        ax2.add_patch(Rectangle((nut_yd - 5, beam_top_z_bj - BEAM_T - 8), 10, 4,
+        ax2.add_patch(Rectangle((nut_yd - 5, beam_top_z_bj - brk_t_c - 6), 10, 4,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
 
     # Socket housing

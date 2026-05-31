@@ -547,6 +547,24 @@ def draw_sheet2():
                  [TRAY_FLOOR_Z, TRAY_FLOOR_Z],
                  color=C_WHEEL, lw=2.0, zorder=5)
 
+    # ── Axle pins (Ø10mm, visible as horizontal bars in cross-section) ──
+    axle_pin_r_cs = 5
+    for w_yd in [wheel1_yd, wheel2_yd]:
+        axle_yd_inner = w_yd + (WHEEL_WIDTH / 2 + 2) * (
+            1 if w_yd < CARRIAGE_YD_CENTER else -1)
+        axle_yd_outer = w_yd - (WHEEL_WIDTH / 2 + 2) * (
+            1 if w_yd < CARRIAGE_YD_CENTER else -1)
+        ax2.add_patch(Rectangle(
+            (min(axle_yd_inner, axle_yd_outer),
+             WHEEL_AXLE_Z - axle_pin_r_cs),
+            abs(axle_yd_inner - axle_yd_outer), 2 * axle_pin_r_cs,
+            fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=6.3))
+
+    leader(ax2, wheel2_yd, WHEEL_AXLE_Z,
+           wheel2_yd + WHEEL_DIA / 2 + 30, WHEEL_AXLE_Z - 10,
+           "Ø10mm AXLE PIN\n(CLEVIS PIN)",
+           fs=5, color=C_DIM, font=FONT, zorder=15)
+
     leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z,
            wheel1_yd - WHEEL_DIA / 2 - 30, WHEEL_AXLE_Z - 10,
            f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",

@@ -628,7 +628,7 @@ def draw_sheet2():
              "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
              fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
-    # ── U-clamp cradle under beam (feet at plate underside) ────────────
+    # ── U-clamp cradle under beam (feet on plate top) ──────────────────
     uc_l = CARRIAGE_YD_CENTER - BEAM_W / 2 - UC_GAP - UC_T
     uc_r = CARRIAGE_YD_CENTER + BEAM_W / 2 + UC_GAP + UC_T
     flare_l = uc_l - UC_FLARE
@@ -637,31 +637,31 @@ def draw_sheet2():
     # Bottom bar (wraps under beam)
     ax2.add_patch(Rectangle((uc_l, BEAM_Z_BOT - UC_T), uc_r - uc_l, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
-    # Side legs (run up from beam bottom to plate underside)
-    uc_leg_h = plate_bot_z - BEAM_Z_BOT
+    # Side legs (run up from beam bottom to plate top)
+    uc_leg_h = plate_top_z - BEAM_Z_BOT
     for u_yd in [uc_l, uc_r - UC_T]:
         ax2.add_patch(Rectangle((u_yd, BEAM_Z_BOT), UC_T, uc_leg_h,
                      fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    # Flared feet (rest against plate underside)
-    ax2.add_patch(Rectangle((flare_l, plate_bot_z - UC_T),
+    # Flared feet (sit on plate top)
+    ax2.add_patch(Rectangle((flare_l, plate_top_z),
                   uc_l + UC_T - flare_l, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    ax2.add_patch(Rectangle((uc_r - UC_T, plate_bot_z - UC_T),
+    ax2.add_patch(Rectangle((uc_r - UC_T, plate_top_z),
                   flare_r - uc_r + UC_T, UC_T,
                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
 
-    # Bolts from plate top, through plate and U-clamp feet
+    # Bolts through feet and plate, wing nuts below
     for bolt_yd in [flare_l + UC_FLARE / 2, flare_r - UC_FLARE / 2]:
-        ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z - UC_T), 5,
+        ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z), 5,
                      brk_t_c + UC_T,
                      fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 4, plate_top_z), 8, 3,
+        ax2.add_patch(Rectangle((bolt_yd - 4, plate_top_z + UC_T), 8, 3,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 5, plate_bot_z - UC_T - 4), 10, 4,
+        ax2.add_patch(Rectangle((bolt_yd - 5, plate_bot_z - 4), 10, 4,
                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-    leader(ax2, flare_r, plate_bot_z - UC_T / 2,
-           flare_r + 20, plate_bot_z - 15,
+    leader(ax2, flare_r, plate_top_z + UC_T / 2,
+           flare_r + 20, plate_top_z + 15,
            "SS U-CLAMP\n+ WING NUTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 

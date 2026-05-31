@@ -94,7 +94,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 | 20mm gap between tray edge and rail | Clear |
-| Spray bar (rides on tray floor beneath walkway grating) | Plate top at Z=42.5mm, grating bottom at Z=75mm | Clear |
+| Spray bar (rides on tray floor beneath walkway grating) | Spacer top at Z=42.5mm, grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (equipment panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
@@ -150,8 +150,9 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | Nylon wheels | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating |
 | Wheel fork brackets | 6061-T6 AL plate 6mm, U-fork profile | 4 | Mount wheels on axle pins |
 | Axle pins | 10mm SS clevis pin + snap rings | 4 | Wheel spindles (snap ring retention both ends) |
-| L-brackets | 6061-T6 AL plate 5mm, horizontal arm | 2 | Connect carriages to beam via U-clamp |
-| U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to L-bracket arm, tool-free adjustment |
+| Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheel forks to beam via spacer + U-clamp |
+| Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
+| U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to carriage plate, tool-free adjustment |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
 | M8 U-bolt | SS, wraps over ball joint socket, nyloc nuts | 1 | Clamps ball joint to beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
@@ -237,8 +238,9 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Nozzle bottom (6mm body) | 14 |
 | Beam bottom | 20 |
 | Wheel axle centerline | 27 |
-| Carriage plate bottom | 37.5 |
-| Carriage plate top | 42.5 |
+| Carriage plate bottom | 29 |
+| Carriage plate top | 34 |
+| Spacer block top / U-clamp seat | 42.5 |
 | Tray rim top | 50 |
 | Wheel top | 52 |
 | Beam top | 60 |
@@ -249,7 +251,7 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Plate top → grating bottom | 32.5mm | Ample clearance; no contact during travel |
+| Spacer top → grating bottom | 32.5mm | Ample clearance; no contact during travel |
 | Beam bottom → tray floor | 18mm | Reduces to ~11mm at midspan under full water load (see §3.7) |
 | Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
@@ -257,14 +259,15 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 **Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
 6mm 6061-T6 aluminum plate. The fork straddles the wheel with ~2mm side clearance,
 drilled for a 10mm clevis pin axle. The fork extends upward from the axle to the
-carriage plate (10.5mm leg height from axle to plate underside). M5 through-bolts
+carriage plate (2mm leg height from axle to plate underside). M5 through-bolts
 connect each fork to the carriage plate.
 
 ### 3.5 Carriage Plate Design
 
-Each carriage uses a flat aluminum plate positioned at beam center height (Z=40mm).
-The plate has a central notch that straddles the beam SHS, allowing the U-clamp to
-pass through and cradle the beam from below.
+Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle (Z=29–34mm).
+The plate has a central notch that straddles the beam U-clamp legs. Aluminum spacer
+blocks (8.5mm tall) sit on the plate wings beneath the U-clamp feet, raising the
+U-clamp seat to Z=42.5mm so the beam remains at its design height (Z=20–60mm).
 
 Formed from 5mm 6061-T6 aluminum plate:
 
@@ -273,7 +276,10 @@ Formed from 5mm 6061-T6 aluminum plate:
   plus 18mm overhang on each side.
 - **Center notch:** Cut-out slightly wider than the U-clamp outer width, allowing
   the clamp legs to pass through the plate and grip the beam.
-- **Ball joint mount:** The ball joint flange bolts to one plate wing beside the beam,
+- **Spacer blocks:** Two 8.5mm aluminum blocks, one per U-clamp foot, bolted through
+  the plate with the U-clamp bolts. Raise the effective clamp seat from plate top
+  (Z=34mm) to the beam center height (Z=42.5mm).
+- **Ball joint mount:** The ball joint flange bolts to the beam top face (Z=60mm),
   keeping the socket housing below grating level (Z=75mm).
 
 **Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
@@ -309,8 +315,8 @@ daylight on both sides. If binding, file the inner arm faces lightly.
 #### 3.6.2 Carriage Plate Fabrication (2 required)
 
 Each carriage plate is a flat 5mm 6061-T6 aluminum plate with a central notch for the
-beam U-clamp. The plate sits at beam center height (Z=40mm), connecting the wheel
-fork brackets to the beam via the U-clamp.
+beam U-clamp. The plate sits 2mm above the wheel axle (Z=29–34mm), connecting the wheel
+fork brackets to the beam via the U-clamp and spacer blocks.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
 
@@ -352,8 +358,8 @@ fork brackets to the beam via the U-clamp.
 
 The carriages attach to the beam using SS U-clamps in a cradle configuration. The
 U-clamp wraps under the beam from below, with its legs passing up through the carriage
-plate notch and flared feet resting against the plate underside. Bolts pass through the
-plate from above, through the U-clamp feet, and wing nuts thread on below. This
+plate notch and flared feet resting on top of the spacer blocks. Bolts pass through the
+U-clamp feet, spacer blocks, and carriage plate; wing nuts thread on below. This
 provides tool-free adjustment of the carriage position along the beam.
 
 | Step | Operation |
@@ -541,7 +547,7 @@ tray drainage plan and sump cross-section).
 | Item | Specification | Qty | Est. Cost |
 |------|--------------|-----|-----------|
 | 6061-T6 AL SHS 1-1/2" × 1-1/2" × 1/8", 8 ft | 40×40×3mm, joined with internal sleeve | 2 | $36–$56 |
-| 6061-T6 AL plate 3/16" (5mm) | L-brackets (~300 × 500mm sheet) | 1 | $15–$25 |
+| 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 | $15–$25 |
 | 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 | $8–$12 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 | $10 |
 | Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 6 | $18 |
@@ -552,10 +558,10 @@ tray drainage plan and sump cross-section).
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
 | 10mm clevis pins + snap rings | Wheel axle pins | 4+4 | $8 |
-| M6×20 SS bolts + nyloc nuts | L-bracket, fork, splice fasteners | 16 | $7 |
+| M6×20 SS bolts + nyloc nuts | Carriage plate, fork, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |
-| SS U-clamp, flared legs, wing nuts (40mm) | Beam to L-bracket (tool-free) | 2 | $10 |
+| SS U-clamp, flared legs, wing nuts (40mm) | Beam to carriage plate (tool-free) | 2 | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |

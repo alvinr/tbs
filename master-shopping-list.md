@@ -205,7 +205,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Flat-fan irrigation spray nozzles, barbed](https://www.amazon.com/s?k=flat+fan+irrigation+spray+nozzle+barbed) | 180° fan pattern, barbed inlet through beam wall | 6 | Amazon | $18 |
 | [3/4" barb × 1/2" barb adapter](https://www.amazon.com/s?k=3%2F4+barb+1%2F2+barb+adapter) | Center feed through beam top wall | 1 | Amazon | $4 |
 | [SS/nylon retainer clips for 3/4" poly pipe](https://www.amazon.com/s?k=retainer+clip+3%2F4+poly+pipe+fold+back) | Fold-back end closures | 2 | Amazon | $4 |
-| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | L-bracket arm plates (5mm, no drop cheeks) + end caps — ~300×400mm sheet | 1 | Online Metals | $12–$20 |
+| [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | Carriage plates (5mm, notched) + spacer blocks (8.5mm) + end caps — ~300×500mm sheet | 1 | Online Metals | $12–$20 |
 | [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
 | [SS U-bolt clamp, 40mm](https://www.amazon.com/s?k=stainless+steel+U+bolt+clamp+40mm) | Beam-to-carriage clamping (wraps over 40mm SHS), with wing nuts for tool-free operation | 4 | Amazon / McMaster | $12–$18 |
 | [Nylon fixed wheel, 50mm×20mm, 10mm bore](https://www.amazon.com/s?k=50mm+nylon+wheel+10mm+bore+fixed) | Carriage wheels, flat tread, ≥25 kg rated | 4 | Amazon / McMaster | $12–$20 |

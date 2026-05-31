@@ -909,7 +909,7 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────
     cs_notes = [
         "CROSS SECTION (COMPOSITE):",
-        f"1. Beam rides on 2× Ø50mm nylon wheels, fork brackets to plate.",
+        f"1. Beam rides on 2× Ø50mm nylon wheels, U-clamp axle retention.",
         "2. U-clamp cradles beam from below, bolted through carriage plate.",
         "3. Ball joint on plate wing → arm → pole through walkway slit.",
         "4. Water: poly pipe → barbed fitting → irrigation nozzle → spray.",
@@ -1289,8 +1289,8 @@ def draw_sheet4():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Detail C: Wheel Attachment
-# Section along axle centerline showing fork bracket arms, nylon wheel bore,
-# axle pin, snap-ring retention, and connection to L-bracket horizontal arm.
+# Section along axle centerline showing carriage plate, axle retention
+# U-clamp, nylon wheel bore, axle pin, and through-bolt retention.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet5():
@@ -1316,48 +1316,59 @@ def draw_sheet5():
 
     C_NYLON_FILL = "#E8DCC0"
 
-    # ── L-bracket horizontal arm ─────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-17, 13), 34, 5,
+    # Geometry (2:1 scale, coordinates in mm at 2:1)
+    plate_bot_y = 13
+    plate_h = 5
+    axle_r = 5
+    auc_t = 2
+    auc_gap = 1
+    auc_inner = axle_r + auc_gap
+    auc_outer = auc_inner + auc_t
+    auc_bar_top = -axle_r - auc_gap
+    auc_bar_bot = auc_bar_top - auc_t
+
+    # ── Carriage plate ───────────────────────────────────────────────────
+    ax_w.add_patch(Rectangle((-17, plate_bot_y), 34, plate_h,
                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-
-    # ── Left fork arm ────────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-17, -13), 6, 26,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
-
-    # ── Right fork arm ───────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((11, -13), 6, 26,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
 
     # ── Nylon wheel body ─────────────────────────────────────────────────
     ax_w.add_patch(Rectangle((-10, -25), 20, 50,
                    fc=C_NYLON_FILL, ec=C_WHEEL, lw=1.5, hatch="...", zorder=3))
 
-    # ── Clearance gaps fork/wheel ────────────────────────────────────────
-    for gap_x in [-11, 10]:
-        ax_w.add_patch(Rectangle((gap_x, -13), 1, 26,
-                       fc=C_BG, ec="none", zorder=3.5))
-
     # ── Axle pin ─────────────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-20, -5), 40, 10,
+    ax_w.add_patch(Rectangle((-17, -axle_r), 34, 2 * axle_r,
                    fc="#D0D0D8", ec=C_FRAME, lw=1.0, zorder=5))
-    ax_w.add_patch(Rectangle((-10, -5), 20, 10,
+    ax_w.add_patch(Rectangle((-10, -axle_r), 20, 2 * axle_r,
                    fc="#D0D0D8", ec="none", zorder=5))
 
-    # ── Snap rings ───────────────────────────────────────────────────────
-    for sr_x in [-20, 18.5]:
-        ax_w.add_patch(Rectangle((sr_x, -7), 1.5, 2,
-                       fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
-        ax_w.add_patch(Rectangle((sr_x, 5), 1.5, 2,
-                       fc="#888888", ec=C_FRAME, lw=0.8, zorder=6))
+    # ── Axle retention U-clamp ───────────────────────────────────────────
+    # Bottom bar (under axle)
+    ax_w.add_patch(Rectangle((-auc_outer, auc_bar_bot),
+                   2 * auc_outer, auc_t,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
+    # Left leg
+    ax_w.add_patch(Rectangle((-auc_outer, auc_bar_top),
+                   auc_t, plate_bot_y - auc_bar_top,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
+    # Right leg
+    ax_w.add_patch(Rectangle((auc_inner, auc_bar_top),
+                   auc_t, plate_bot_y - auc_bar_top,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
 
-    # ── M5 through-bolts ────────────────────────────────────────────────
+    # ── Clearance gaps U-clamp/wheel ─────────────────────────────────────
+    for gap_x in [-auc_outer - 0.5, auc_outer - 0.5]:
+        ax_w.add_patch(Rectangle((gap_x, auc_bar_bot), 1, plate_bot_y - auc_bar_bot,
+                       fc=C_BG, ec="none", zorder=3.5))
+
+    # ── M5 through-bolts (through U-clamp legs + plate) ──────────────────
     C_BOLT_FILL = "#D0D0D8"
-    for bolt_cx in [-14, 14]:
-        ax_w.add_patch(Rectangle((bolt_cx - 4, 18), 8, 3,
+    for bolt_cx in [-(auc_inner + auc_t / 2), auc_inner + auc_t / 2]:
+        ax_w.add_patch(Rectangle((bolt_cx - 3, auc_bar_bot - 3), 6, 3,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
-        ax_w.add_patch(Rectangle((bolt_cx - 2.5, 4), 5, 14,
+        ax_w.add_patch(Rectangle((bolt_cx - 1.5, auc_bar_bot), 3,
+                       plate_bot_y + plate_h - auc_bar_bot,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
-        ax_w.add_patch(Rectangle((bolt_cx - 4, 0), 8, 4,
+        ax_w.add_patch(Rectangle((bolt_cx - 3, plate_bot_y + plate_h), 6, 2.5,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
     _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
@@ -1370,12 +1381,12 @@ def draw_sheet5():
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_w, 13, 16, w_xr - 1, w_yt - 8,
-           "L-BRACKET\nHORIZ. ARM\n(5mm AL)",
+    leader(ax_w, 13, plate_bot_y + plate_h / 2, w_xr - 1, w_yt - 8,
+           "CARRIAGE PLATE\n(5mm AL)",
            fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, 13, 0, w_xr - 1, -10,
-           "6mm AL\nFORK ARM",
+    leader(ax_w, auc_outer + 1, auc_bar_bot + auc_t / 2, w_xr - 1, -12,
+           "SS U-CLAMP\n(AXLE RETENTION)",
            fs=5.5, color=C_FRAME, font=FONT, zorder=20)
 
     ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
@@ -1386,19 +1397,15 @@ def draw_sheet5():
            "Ø10mm SS\nAXLE PIN",
            fs=5.5, color="#888888", font=FONT, zorder=20, bbox=_bbox_w)
 
-    ax_w.text(-17.5, -10, "SNAP\nRING",
-              ha="center", va="top", fontsize=5, color="#666666",
-              bbox=_bbox_w, **FONT, zorder=20)
-
-    leader(ax_w, -14, 20, -20, w_yt - 10,
-           "M5×16 SS\nTHRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
+    leader(ax_w, -(auc_inner + auc_t / 2), plate_bot_y + plate_h + 2, -18, w_yt - 10,
+           "M5 SS\nTHRU-BOLT\n+ NYLOC NUT",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
     draw_dim_h(ax_w, -10, 10, w_yb + 3,
                "20mm", offset=2, fs=5.5, font=FONT)
 
-    draw_dim_v(ax_w, w_xl + 2, -5, 5,
+    draw_dim_v(ax_w, w_xl + 2, -axle_r, axle_r,
                "Ø10", offset=2, fs=5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
@@ -1415,7 +1422,7 @@ def draw_sheet5():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 6 — Detail D: Wheel Attachment Plan
-# X-Yd looking down.  Beam, L-bracket arm, U-clamp, fork brackets, wheels.
+# X-Yd looking down.  Beam, carriage plate, beam U-clamp, axle U-clamps, wheels.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet6():
@@ -1469,7 +1476,7 @@ def draw_sheet6():
               ha="center", va="center", fontsize=4.5, color=C_FRAME,
               bbox=_bbox_d, **FONT, zorder=15)
 
-    # ── L-bracket arm ────────────────────────────────────────────────────
+    # ── Carriage plate ──────────────────────────────────────────────────
     arm_half_span = WHEEL_SPACING_YD / 2 + 18
     arm_w_x = 20
     ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, -arm_half_span),
@@ -1501,15 +1508,18 @@ def draw_sheet6():
            "U-CLAMP\nFLARED LEGS\n+ WING NUTS",
            fs=5, color=C_BOLT, font=FONT, zorder=20)
 
-    # ── Fork brackets ────────────────────────────────────────────────────
-    fork_t = 6
+    # ── Axle retention U-clamps (plan view) ────────────────────────────
+    auc_w_plan = 16
+    auc_t_plan = 2
     for w_sign in [-1, 1]:
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
-        for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-            fork_yd = w_yd_ctr + offset
-            ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - fork_t / 2 - 4, fork_yd - 1),
-                           fork_t, 2,
-                           fc=C_ALUM_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+        ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - auc_w_plan / 2,
+                                  w_yd_ctr - auc_w_plan / 2),
+                       auc_w_plan, auc_w_plan,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.6, alpha=0.5, zorder=7))
+        for bolt_off in [-auc_w_plan / 2 + 3, auc_w_plan / 2 - 3]:
+            ax_d.add_patch(Circle((CARRIAGE_OFFSET_X, w_yd_ctr + bolt_off), 2,
+                         fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=8))
 
     # ── Wheels ───────────────────────────────────────────────────────────
     for w_sign in [-1, 1]:
@@ -1530,7 +1540,7 @@ def draw_sheet6():
 
     leader(ax_d, -arm_w_x / 2 - 1, 0,
            D_X_LO + 200, 45,
-           "L-BRACKET ARM\n(5mm AL PLATE)",
+           "CARRIAGE PLATE\n(5mm AL, NOTCHED)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────

@@ -1287,8 +1287,8 @@ def draw_sheet5():
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
 
-    w_xl, w_xr = -21, 21
-    w_yb, w_yt = -30, 35
+    w_xl, w_xr = -25, 25
+    w_yb, w_yt = -32, 38
     ax_w.set_xlim(w_xl, w_xr)
     ax_w.set_ylim(w_yb, w_yt)
 
@@ -1368,32 +1368,70 @@ def draw_sheet5():
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_w, 13, plate_bot_y + plate_h / 2, w_xr - 1, w_yt - 8,
-           "CARRIAGE PLATE\n(5mm AL)",
-           fs=5.5, color=C_FRAME, font=FONT, zorder=20)
+    bolt_r_cx = auc_inner + auc_t / 2
+    bolt_l_cx = -(auc_inner + auc_t / 2)
+    nut_top = plate_bot_y + plate_h + 2.5
 
-    leader(ax_w, auc_outer + 1, auc_bar_bot + auc_t / 2, w_xr - 1, -12,
-           "SS U-CLAMP\n(AXLE RETENTION)",
-           fs=5.5, color=C_FRAME, font=FONT, zorder=20)
+    # 1. Carriage plate
+    leader(ax_w, 14, plate_bot_y + plate_h / 2, w_xr - 1, w_yt - 6,
+           "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    ax_w.text(0, -18, "Ø50mm NYLON\nWHEEL (CUT)",
+    # 2. Nyloc nut (on top of plate)
+    leader(ax_w, bolt_l_cx, nut_top, w_xl + 1, w_yt - 6,
+           "M5 NYLOC NUT",
+           fs=5, color="#808088", font=FONT, zorder=20)
+
+    # 3. Bolt shaft (through plate + U-clamp leg)
+    leader(ax_w, bolt_r_cx + 2, plate_bot_y / 2, w_xr - 1, plate_bot_y / 2 + 8,
+           "M5 SS BOLT\nSHAFT",
+           fs=5, color="#808088", font=FONT, zorder=20)
+
+    # 4. Bolt head (below U-clamp bottom bar)
+    leader(ax_w, bolt_r_cx, auc_bar_bot - 2, w_xr - 1, auc_bar_bot - 8,
+           "BOLT HEAD",
+           fs=5, color="#808088", font=FONT, zorder=20)
+
+    # 5. U-clamp leg
+    leader(ax_w, -auc_outer - 0.5, (auc_bar_top + plate_bot_y) / 2,
+           w_xl + 1, (auc_bar_top + plate_bot_y) / 2,
+           "U-CLAMP LEG\n(2mm SS STRAP)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    # 6. U-clamp bottom bar
+    leader(ax_w, 0, auc_bar_bot, w_xl + 1, auc_bar_bot - 6,
+           "U-CLAMP\nBOTTOM BAR",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    # 7. Axle pin
+    leader(ax_w, 10.5, 0, w_xr - 1, -4,
+           "Ø10mm SS\nCLEVIS PIN",
+           fs=5, color="#888888", font=FONT, zorder=20)
+
+    # 8. Clearance gap (between U-clamp inner surface and axle)
+    leader(ax_w, auc_inner - 0.5, -axle_r - 0.5, w_xr - 1, -16,
+           "1mm GAP\n(CLEARANCE)",
+           fs=4.5, color=C_DIM, font=FONT, zorder=20)
+
+    # 9. Wheel body
+    ax_w.text(0, -20, "Ø50mm NYLON\nWHEEL (CUT)",
               ha="center", va="top", fontsize=5.5, color=C_WHEEL,
               bbox=_bbox_w, **FONT, zorder=20)
 
-    leader(ax_w, 5, 5, 5, 10,
-           "Ø10mm SS\nAXLE PIN",
-           fs=5.5, color="#888888", font=FONT, zorder=20, bbox=_bbox_w)
-
-    leader(ax_w, -(auc_inner + auc_t / 2), plate_bot_y + plate_h + 2, -18, w_yt - 10,
-           "M5 SS\nTHRU-BOLT\n+ NYLOC NUT",
-           fs=5, color="#808088", font=FONT, zorder=20)
+    # 10. Wheel bore
+    leader(ax_w, -3, -3, w_xl + 1, -16,
+           "Ø10mm\nWHEEL BORE",
+           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
     draw_dim_h(ax_w, -10, 10, w_yb + 3,
-               "20mm", offset=2, fs=5.5, font=FONT)
+               "20mm TREAD", offset=2, fs=5, font=FONT)
 
-    draw_dim_v(ax_w, w_xl + 2, -axle_r, axle_r,
+    draw_dim_v(ax_w, w_xl + 3, -axle_r, axle_r,
                "Ø10", offset=2, fs=5, font=FONT)
+
+    draw_dim_v(ax_w, w_xl + 3, plate_bot_y, plate_bot_y + plate_h,
+               "5mm", offset=2, fs=4.5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])

@@ -264,6 +264,26 @@
 
 ---
 
+## Tilt-Swing Board Distortion Renders (Board Only)
+
+![Tilt-Swing Board — C0: Reference](assets/tilt-swing-board-distortion-c0.png)
+
+![Tilt-Swing Board — C1: Mild Tilt +2°](assets/tilt-swing-board-distortion-c1.png)
+
+![Tilt-Swing Board — C2: Max Tilt +5.3°](assets/tilt-swing-board-distortion-c2.png)
+
+![Tilt-Swing Board — C3: Max Tilt -5.3°](assets/tilt-swing-board-distortion-c3.png)
+
+![Tilt-Swing Board — C4: Mild Swing +2°](assets/tilt-swing-board-distortion-c4.png)
+
+![Tilt-Swing Board — C5: Max Swing +5.3°](assets/tilt-swing-board-distortion-c5.png)
+
+![Tilt-Swing Board — C6: Compound +3° Tilt, +3° Swing](assets/tilt-swing-board-distortion-c6.png)
+
+![Tilt-Swing Board — Summary Grid](assets/tilt-swing-board-distortion-summary.png)
+
+---
+
 ## 23. Optics Visualization
 
 ![TBS-001 — Portrait Camera Schematic](assets/portrait-camera-schematic.png)

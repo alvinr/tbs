@@ -149,7 +149,29 @@ Swap time: approximately 10 minutes.
 
 ---
 
-## 9. Combined Distortion Renders
+## 9. Board-Only Distortion Renders
+
+The following renders show the isolated effect of the tilt-swing front board on the projected image, with the film plane held flat at the far wall. The world scene is a regular grid at three depths (near: 7m, mid: 22m, far: 102m from pinhole) plus a human-figure reference and horizon line.
+
+The board's ±5.3° range produces up to 207mm of image shift — enough to steer composition without any film plane movement.
+
+| Config | Board Tilt | Board Swing | Effect |
+|--------|-----------|-------------|--------|
+| C0 | 0° | 0° | Reference — no shift |
+| C1 | +2° | 0° | Subtle vertical steering |
+| C2 | +5.3° | 0° | Max vertical shift (+207mm) |
+| C3 | -5.3° | 0° | Max downward shift (-207mm) |
+| C4 | 0° | +2° | Subtle horizontal steering |
+| C5 | 0° | +5.3° | Max horizontal shift |
+| C6 | +3° | +3° | Compound diagonal steering |
+
+![All board-only configurations](assets/tilt-swing-board-distortion-summary.png)
+
+The red cross (+) marks the projected image center; grey cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).
+
+---
+
+## 10. Combined Distortion Renders
 
 The following renders show the combined projection of both systems operating simultaneously. The world scene is a regular grid at three depths (near: 7.4m, mid: 22.4m, far: 102.4m from pinhole) plus a human-figure reference and horizon line.
 
@@ -171,7 +193,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 
 ---
 
-## 10. Machining Tolerances
+## 11. Machining Tolerances
 
 | Feature | Nominal | Tolerance | Importance |
 |---------|---------|-----------|------------|
@@ -186,9 +208,9 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 
 ---
 
-## 11. Parts List
+## 12. Parts List
 
-### 11.1 Structural
+### 12.1 Structural
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
@@ -205,14 +227,14 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | Ø8 m6 SS303 dowel pins | Ø8×40mm | McMaster-Carr (#97395A437) | Fastenal | ~$9 ea |
 | Loctite 638 retaining compound | 10mL | McMaster-Carr (#1832A1) | Home Depot (local) | ~$22 |
 
-### 11.2 Light Seal
+### 12.2 Light Seal
 
 | Item | Spec | Source A | Source B | Est. cost |
 |------|------|---------|---------|----------|
 | Photographic bellows (custom) | Ø290 ID × Ø360 OD × 60mm, 4-pleat, matte black neoprene | Micro-Tools (microtools.com) — custom order | Ames Camera Repair (custom bellows) | ~$80–150 |
 | Neoprene cord seal Ø4mm | 70 Shore, 1.5m (for Ø420 loop + flange gaskets) | McMaster-Carr (#1834K22) | Grainger (LA branches) | ~$18 |
 
-### 11.3 Finishing & Fabrication
+### 12.3 Finishing & Fabrication
 
 | Item | Spec | Source | Est. cost |
 |------|------|--------|----------|
@@ -222,7 +244,7 @@ Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.m
 | Knurled knob stock Ø40mm | Al, 4 off | Jergens (#49525) or machine from bar | ~$15 ea |
 | Angular scale engraving | Al 80×15×2mm, 2 off | LaserPros, Chatsworth CA | ~$35–50 |
 
-### 11.4 Cost Summary
+### 12.4 Cost Summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -236,7 +258,7 @@ The mechanism costs less than the film plane mechanism (~$2,400) due to the smal
 
 ---
 
-## 12. Maintenance
+## 13. Maintenance
 
 | Interval | Task |
 |----------|------|
@@ -253,7 +275,7 @@ The mechanism costs less than the film plane mechanism (~$2,400) due to the smal
 
 ---
 
-## 13. Source References
+## 14. Source References
 
 1. [SKF GE50-DO-2RS Spherical Plain Bearing](https://www.skf.com/group/products/plain-bearings/spherical-plain-bearings-rod-ends/spherical-plain-bearings/productid-GE50DO-2RS) — Bearing specifications, misalignment capacity, and PTFE liner properties.
 2. [Lenox Laser Precision Pinholes](https://lenoxlaser.com/blog/pinholes-and-apertures/) — Pinhole disc fabrication (Ø2.17mm, SS-302 shim).

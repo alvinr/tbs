@@ -104,7 +104,7 @@ POLE_X = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 SLIT_WIDTH = SPRAY_BAR_SLIT_W
 CARRIAGE_YD_CENTER = 200
 
-TOTAL_SHEETS = 6
+TOTAL_SHEETS = 7
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -1414,6 +1414,265 @@ def draw_sheet6():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
+# SHEET 7 — Detail B: Center Feed Connection
+# Longitudinal section through beam at the center feed bulkhead fitting.
+# Shows: hose barb → bulkhead fitting → through beam wall → PVC pipe bore.
+# Scale 2:1.
+# ═════════════════════════════════════════════════════════════════════════════
+
+def draw_sheet7():
+    fig = plt.figure(figsize=(16, 12))
+    fig.patch.set_facecolor(C_BG)
+    ax = fig.add_axes([0.05, 0.08, 0.90, 0.88])
+    ax.set_facecolor(C_BG)
+    ax.axis("off")
+
+    _bbox = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
+
+    # Beam centered at Z=0..40 in local coords
+    BEAM = SPRAY_BAR_BEAM           # 40
+    WALL = SPRAY_BAR_BEAM_T         # 3
+    BORE = BEAM - 2 * WALL          # 34
+    pvc_od_h = PVC_OD / 2           # 16.7
+    pvc_id_h = PVC_ID / 2           # 13.3
+    pvc_wall = PVC_WALL             # 3.4
+
+    # Local Z origin at beam bottom
+    beam_bot = 0
+    beam_top = BEAM                 # 40
+    bore_bot = WALL                 # 3
+    bore_top = BEAM - WALL          # 37
+    pvc_ctr = BEAM / 2              # 20
+    pvc_top = pvc_ctr + pvc_od_h    # 36.7
+    pvc_bot = pvc_ctr - pvc_od_h    # 3.3
+    pvc_inner_top = pvc_ctr + pvc_id_h   # 33.3
+    pvc_inner_bot = pvc_ctr - pvc_id_h   # 6.7
+
+    # Bulkhead fitting dimensions (1/2" NPT brass)
+    BH_DRILL = 22           # drill hole through beam wall + PVC wall
+    BH_BODY_OD = 21         # threaded body OD
+    BH_BODY_LEN = 18        # total body length through wall
+    BH_EXT_NUT_W = 27       # external hex nut across flats
+    BH_EXT_NUT_T = 5        # external hex nut thickness
+    BH_INT_NUT_W = 25       # internal lock nut across flats
+    BH_INT_NUT_T = 5        # internal lock nut thickness
+    BH_WASHER_OD = 28       # sealing washer OD
+    BH_WASHER_T = 1.5       # washer thickness
+    BARB_OD = 16            # hose barb OD
+    BARB_LEN = 30           # hose barb length
+    HOSE_OD = 19            # 1/2" flex hose OD
+    HOSE_ID = 13            # 1/2" flex hose ID
+    HOSE_LEN = 25           # stub shown
+
+    C_BRASS = "#C0A860"
+
+    # View limits
+    d_xl, d_xr = -55, 55
+    d_yb, d_yt = -15, 75
+    ax.set_xlim(d_xl, d_xr)
+    ax.set_ylim(d_yb, d_yt)
+
+    # ── Beam SHS walls (longitudinal section) ────────────────────────────
+    # Top wall
+    ax.add_patch(Rectangle((d_xl + 5, bore_top), d_xr - d_xl - 10, WALL,
+                 fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    # Bottom wall
+    ax.add_patch(Rectangle((d_xl + 5, beam_bot), d_xr - d_xl - 10, WALL,
+                 fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    # Bore background
+    ax.add_patch(Rectangle((d_xl + 5, bore_bot), d_xr - d_xl - 10, BORE,
+                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
+
+    # Drill hole through top wall (clear opening for bulkhead)
+    ax.add_patch(Rectangle((-BH_DRILL / 2, bore_top), BH_DRILL, WALL,
+                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
+
+    # ── PVC pipe walls ───────────────────────────────────────────────────
+    # Top wall (left of hole)
+    ax.add_patch(Rectangle((d_xl + 5, pvc_inner_top),
+                 -BH_DRILL / 2 - (d_xl + 5), pvc_wall,
+                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
+    # Top wall (right of hole)
+    ax.add_patch(Rectangle((BH_DRILL / 2, pvc_inner_top),
+                 d_xr - 5 - BH_DRILL / 2, pvc_wall,
+                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
+    # Bottom wall (continuous)
+    ax.add_patch(Rectangle((d_xl + 5, pvc_bot),
+                 d_xr - d_xl - 10, pvc_wall,
+                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
+
+    # Drill hole through PVC top wall
+    ax.add_patch(Rectangle((-BH_DRILL / 2, pvc_inner_top), BH_DRILL, pvc_wall,
+                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
+
+    # ── Water inside PVC bore ────────────────────────────────────────────
+    ax.add_patch(Rectangle((d_xl + 5, pvc_inner_bot),
+                 d_xr - d_xl - 10, PVC_ID,
+                 fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
+
+    # ── Bulkhead fitting body (through beam wall + air gap + PVC wall) ───
+    body_top = beam_top + BH_WASHER_T
+    body_bot = pvc_inner_top - 2  # body extends slightly into PVC bore
+    body_h = body_top - body_bot
+
+    # Body (threaded cylinder through wall)
+    ax.add_patch(Rectangle((-BH_BODY_OD / 2, body_bot),
+                 BH_BODY_OD, body_h,
+                 fc=C_BRASS, ec=C_FRAME, lw=1.0, hatch="...", zorder=5))
+
+    # Internal bore through fitting body
+    fitting_bore = 13  # 1/2" internal passage
+    ax.add_patch(Rectangle((-fitting_bore / 2, body_bot),
+                 fitting_bore, body_h,
+                 fc=C_WATER, ec="none", alpha=0.25, zorder=5.5))
+
+    # ── External washer (on beam top face) ───────────────────────────────
+    washer_bot = beam_top
+    ax.add_patch(Rectangle((-BH_WASHER_OD / 2, washer_bot),
+                 BH_WASHER_OD, BH_WASHER_T,
+                 fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
+
+    # ── External hex nut (above washer) ──────────────────────────────────
+    ext_nut_bot = washer_bot + BH_WASHER_T
+    ax.add_patch(Rectangle((-BH_EXT_NUT_W / 2, ext_nut_bot),
+                 BH_EXT_NUT_W, BH_EXT_NUT_T,
+                 fc=C_BRASS, ec=C_FRAME, lw=1.0, zorder=6))
+
+    # ── Internal lock nut (below beam, inside bore) ──────────────────────
+    int_nut_top = bore_top
+    ax.add_patch(Rectangle((-BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T),
+                 BH_INT_NUT_W, BH_INT_NUT_T,
+                 fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
+
+    # ── Hose barb fitting (screwed into bulkhead top) ────────────────────
+    barb_bot = ext_nut_bot + BH_EXT_NUT_T
+    barb_top = barb_bot + BARB_LEN
+
+    # Barb body with ridges
+    ax.add_patch(Rectangle((-BARB_OD / 2, barb_bot),
+                 BARB_OD, BARB_LEN,
+                 fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=6))
+    # Barb ridges
+    n_ridges = 3
+    for i in range(n_ridges):
+        rz = barb_bot + 8 + i * 8
+        ax.plot([-BARB_OD / 2 - 1.5, -BARB_OD / 2],
+                [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=6.5)
+        ax.plot([BARB_OD / 2, BARB_OD / 2 + 1.5],
+                [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=6.5)
+    # Bore through barb
+    ax.add_patch(Rectangle((-fitting_bore / 2, barb_bot),
+                 fitting_bore, BARB_LEN,
+                 fc=C_WATER, ec="none", alpha=0.25, zorder=6.3))
+
+    # ── Flex hose stub ───────────────────────────────────────────────────
+    hose_bot = barb_bot + 5   # hose overlaps barb ridges
+    hose_top = barb_top + HOSE_LEN
+    # Outer wall
+    ax.add_patch(Rectangle((-HOSE_OD / 2, hose_bot),
+                 HOSE_OD, hose_top - hose_bot,
+                 fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.5, zorder=5.8))
+    # Reinforcement braid marks
+    for bz in range(int(hose_bot) + 4, int(hose_top) - 2, 5):
+        ax.plot([-HOSE_OD / 2, HOSE_OD / 2], [bz, bz + 2],
+                color=C_BLUE, lw=0.4, alpha=0.4, zorder=5.9)
+
+    # ── Water flow arrows ────────────────────────────────────────────────
+    arrow_props = dict(arrowstyle="-|>", color=C_WATER, lw=1.5, mutation_scale=12)
+    # Arrow down through fitting into PVC bore
+    ax.annotate("", xy=(0, pvc_inner_top + 1),
+                xytext=(0, barb_bot + 3),
+                arrowprops=arrow_props, zorder=8)
+    # Arrow along PVC bore (left)
+    ax.annotate("", xy=(d_xl + 10, pvc_ctr),
+                xytext=(-BH_DRILL / 2 - 3, pvc_ctr),
+                arrowprops=arrow_props, zorder=8)
+    # Arrow along PVC bore (right)
+    ax.annotate("", xy=(d_xr - 10, pvc_ctr),
+                xytext=(BH_DRILL / 2 + 3, pvc_ctr),
+                arrowprops=arrow_props, zorder=8)
+
+    # ── Labels ───────────────────────────────────────────────────────────
+    leader(ax, d_xr - 10, bore_top + WALL / 2,
+           d_xr - 5, d_yt - 8,
+           "40×40×3mm AL SHS",
+           fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, d_xr - 10, pvc_top - pvc_wall / 2,
+           d_xr - 5, pvc_ctr + 2,
+           f"1\" Sch 40 PVC\nOD {PVC_OD:.1f}mm",
+           fs=5, color=C_PVC, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, BH_EXT_NUT_W / 2, ext_nut_bot + BH_EXT_NUT_T / 2,
+           d_xr - 5, ext_nut_bot + 5,
+           "1/2\" NPT BULKHEAD\n(BRASS)",
+           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, -BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T / 2,
+           d_xl + 5, bore_top - 6,
+           "LOCK NUT\n(INSIDE BORE)",
+           fs=4.5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, BARB_OD / 2 + 1.5, barb_bot + BARB_LEN / 2,
+           d_xr - 5, barb_bot + BARB_LEN / 2 + 3,
+           "1/2\" HOSE BARB\n(BRASS)",
+           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, HOSE_OD / 2, hose_top - 5,
+           d_xr - 5, hose_top,
+           "1/2\" REINFORCED\nFLEX HOSE",
+           fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox)
+
+    leader(ax, -BH_WASHER_OD / 2, washer_bot + BH_WASHER_T / 2,
+           d_xl + 5, beam_top + 3,
+           "SEALING\nWASHER",
+           fs=4.5, color="#808080", font=FONT, zorder=20, bbox=_bbox)
+
+    ax.text(d_xl + 15, pvc_ctr, "WATER", ha="center", va="center",
+            fontsize=5, color=C_WATER, fontweight="bold",
+            bbox=_bbox, **FONT, zorder=15)
+
+    # ── Dimensions ───────────────────────────────────────────────────────
+    draw_dim_v(ax, d_xl + 8, beam_bot, beam_top,
+               f"{BEAM}mm\nSHS", offset=2, fs=5, font=FONT)
+
+    draw_dim_v(ax, d_xl + 15, bore_top, beam_top,
+               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
+
+    draw_dim_v(ax, d_xl + 15, beam_bot, bore_bot,
+               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
+
+    draw_dim_h(ax, -BH_DRILL / 2, BH_DRILL / 2, pvc_inner_top - 3,
+               f"Ø{BH_DRILL}mm HOLE",
+               offset=2, fs=4.5, font=FONT, above=False)
+
+    draw_dim_v(ax, d_xr - 8, pvc_bot, pvc_top,
+               f"{PVC_OD:.1f}mm\nPVC OD",
+               offset=2, fs=4.5, font=FONT, right=True)
+
+    # ── Title and subtitle ───────────────────────────────────────────────
+    ax.text((d_xl + d_xr) / 2, d_yt - 1,
+            "DETAIL B — CENTER FEED CONNECTION",
+            ha="center", va="top", fontsize=8, color="#CC6600",
+            fontweight="bold", **FONT, zorder=20)
+    ax.text((d_xl + d_xr) / 2, d_yt - 5,
+            "(LONGITUDINAL SECTION AT BEAM CENTER — SCALE 2:1)",
+            ha="center", va="top", fontsize=5, color=C_DIM,
+            **FONT, zorder=20)
+
+    # ── Title block ──────────────────────────────────────────────────────
+    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, f"SHEET 7 OF {TOTAL_SHEETS}",
+                drawing_title="SPRAY BAR ASSEMBLY",
+                subtitle="DETAIL B — CENTER FEED CONNECTION (LONGITUDINAL SECTION)",
+                scale_note="SCALE 2:1 — AXES IN mm",
+                height=0.7)
+
+    _save(fig, "spray-bar-sheet7")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
 # Shared helpers
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -1437,3 +1696,4 @@ if __name__ == "__main__":
     draw_sheet4()
     draw_sheet5()
     draw_sheet6()
+    draw_sheet7()

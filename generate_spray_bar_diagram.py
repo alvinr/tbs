@@ -73,12 +73,15 @@ BEAM_W = SPRAY_BAR_BEAM
 BEAM_T = SPRAY_BAR_BEAM_T
 BEAM_BORE = BEAM_W - 2 * BEAM_T
 
-# PVC pipe inside beam (1" Sch 40)
-PVC_OD = 33.4
-PVC_ID = 26.6
-PVC_WALL = (PVC_OD - PVC_ID) / 2
-C_PVC = "#B8B8C8"
-APERTURE_DIA = 12
+# 19mm (3/4") LDPE irrigation poly pipe inside beam
+POLY_OD = 25.0
+POLY_ID = 19.0
+POLY_WALL = (POLY_OD - POLY_ID) / 2
+C_POLY = "#2A2A2A"
+N_NOZZLES = 6
+NOZZLE_BODY_W = 15
+NOZZLE_BODY_H = 12
+C_NOZZLE = "#3B7A3B"
 
 # U-clamp dimensions
 UC_T = 3
@@ -90,11 +93,10 @@ UC_FLARE = 12
 GRATE_Z_BOT = WALKWAY_H - WALKWAY_GRATE_T
 GRATE_Z_TOP = WALKWAY_H
 
-# PVC socket cap geometry
-CAP_SOCKET_DEPTH = 20
-CAP_WALL_T = 3.5
-CAP_CLOSED_T = 3.5
-PVC_EXTEND = 25
+# Poly pipe end plug geometry
+PLUG_DEPTH = 20
+PLUG_CAP_T = 3
+POLY_EXTEND = 20
 
 BEAM_SPAN = PROC_OPEN_X_R - PROC_OPEN_X_L
 WALL_T = 3
@@ -210,29 +212,34 @@ def draw_sheet1():
                  beam_vis_r - beam_x_l, BEAM_W,
                  fc=C_ALUM_FILL, ec=C_FRAME, lw=1.5, zorder=9))
     ax.add_patch(Rectangle((beam_x_l + 20, BEAM_Z_BOT + BEAM_T + 0.3),
-                 beam_vis_r - beam_x_l - 20, PVC_OD,
-                 fc=C_PVC, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.3))
-    ax.add_patch(Rectangle((beam_x_l + 20, BEAM_Z_BOT + BEAM_T + 0.3 + PVC_WALL),
-                 beam_vis_r - beam_x_l - 20, PVC_ID,
+                 beam_vis_r - beam_x_l - 20, POLY_OD,
+                 fc=C_POLY, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.3))
+    ax.add_patch(Rectangle((beam_x_l + 20, BEAM_Z_BOT + BEAM_T + 0.3 + POLY_WALL),
+                 beam_vis_r - beam_x_l - 20, POLY_ID,
                  fc=C_WATER, ec="none", alpha=0.3, zorder=9.5))
 
     ax.text((beam_x_l + pole_x) / 2, BEAM_Z_TOP + 8,
-            f"40×40×3mm AL SHS — {beam_length}mm LONG — 1\" PVC PIPE INSIDE",
+            f"40×40×3mm AL SHS — {beam_length}mm LONG — 3/4\" LDPE PIPE + {N_NOZZLES} NOZZLES",
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=15)
 
-    # Spray apertures and droplets
+    # Spray nozzles (6× irrigation flat-fan)
     spray_x_l = PROC_OPEN_X_L
-    n_drops = 6
-    for i in range(n_drops):
-        frac = (i + 0.5) / n_drops
-        drop_x = spray_x_l + 50 + (beam_vis_r - spray_x_l - 100) * frac
-        ax.plot([drop_x - APERTURE_DIA / 2, drop_x + APERTURE_DIA / 2],
-                [BEAM_Z_BOT, BEAM_Z_BOT],
-                color=C_WATER, lw=1.5, zorder=10)
-        ax.plot([drop_x, drop_x],
-                [BEAM_Z_BOT - 1, TRAY_FLOOR_Z + 2],
+    for i in range(N_NOZZLES):
+        frac = (i + 0.5) / N_NOZZLES
+        nz_x = spray_x_l + 50 + (beam_vis_r - spray_x_l - 100) * frac
+        nz_w, nz_h = 6, 8
+        ax.add_patch(Rectangle((nz_x - nz_w / 2, BEAM_Z_BOT - nz_h),
+                     nz_w, nz_h,
+                     fc=C_NOZZLE, ec=C_FRAME, lw=0.8, zorder=10))
+        fan_w = 40
+        fan_bot = TRAY_FLOOR_Z + 2
+        ax.plot([nz_x, nz_x - fan_w / 2], [BEAM_Z_BOT - nz_h, fan_bot],
                 color=C_WATER, lw=0.5, alpha=0.4, zorder=6)
+        ax.plot([nz_x, nz_x + fan_w / 2], [BEAM_Z_BOT - nz_h, fan_bot],
+                color=C_WATER, lw=0.5, alpha=0.4, zorder=6)
+        ax.plot([nz_x, nz_x], [BEAM_Z_BOT - nz_h, fan_bot],
+                color=C_WATER, lw=0.5, alpha=0.3, zorder=6)
 
     # Left end cap
     ax.plot([beam_x_l, beam_x_l], [BEAM_Z_BOT, BEAM_Z_TOP],
@@ -345,7 +352,7 @@ def draw_sheet1():
                  fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=12))
     leader(ax, pole_x + feed_dot_r, BEAM_Z_TOP + feed_dot_r,
            pole_x + 350, BEAM_Z_TOP + 40,
-           "1/2\" BULKHEAD CENTER FEED",
+           "1/2\" BARBED CENTER FEED",
            fs=4.5, color="#C0A860", font=FONT, zorder=15)
 
     # ── Centerline through beam and slit ─────────────────────────────────
@@ -374,11 +381,11 @@ def draw_sheet1():
     # ── Notes ────────────────────────────────────────────────────────────
     notes = [
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
-        f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 1\" PVC pipe inside.",
+        f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly pipe inside.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
         "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
-        "   → center feed.",
-        "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
+        "   → center feed barbed fitting.",
+        f"4. {N_NOZZLES}× irrigation flat-fan nozzles, barbed into poly pipe through beam.",
     ]
     draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)
 
@@ -598,20 +605,20 @@ def draw_sheet2():
     ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - BEAM_BORE / 2, BEAM_Z_BOT + BEAM_T),
                   BEAM_BORE, BEAM_BORE,
                   fc=C_BG, ec=C_FRAME, lw=0.8, zorder=8.5))
-    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), PVC_OD / 2,
-                 fc=C_PVC, ec=C_FRAME, lw=1.0, alpha=0.7, zorder=8.7))
-    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), PVC_ID / 2,
+    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), POLY_OD / 2,
+                 fc=C_POLY, ec=C_FRAME, lw=1.0, alpha=0.7, zorder=8.7))
+    ax2.add_patch(Circle((CARRIAGE_YD_CENTER, BEAM_Z_BOT + BEAM_W / 2), POLY_ID / 2,
                  fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.4, zorder=8.8))
 
     pipe_cz = BEAM_Z_BOT + BEAM_W / 2
-    pipe_od_bot_z = pipe_cz - PVC_OD / 2
-    PIPE_HOLE_DIA = 2
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - PIPE_HOLE_DIA / 2, pipe_od_bot_z),
-                  PIPE_HOLE_DIA, PVC_WALL,
-                  fc=C_WATER, ec=C_FRAME, lw=0.5, alpha=0.5, zorder=9.1))
+    pipe_od_bot_z = pipe_cz - POLY_OD / 2
+    FITTING_DIA = 8
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - FITTING_DIA / 2, pipe_od_bot_z),
+                  FITTING_DIA, POLY_WALL,
+                  fc=C_NOZZLE, ec=C_FRAME, lw=0.5, zorder=9.1))
 
     ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
-             "40×40×3mm AL SHS\n+ 1\" PVC PIPE", ha="center", va="bottom",
+             "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
              fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
     # ── U-clamp over beam ────────────────────────────────────────────────
@@ -647,21 +654,27 @@ def draw_sheet2():
            "SS U-CLAMP\n+ WING NUTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
-    # 12mm aperture + water jet
-    pipe_id_bot_z = pipe_cz - PVC_ID / 2
-    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - APERTURE_DIA / 2, BEAM_Z_BOT - 0.5),
-                  APERTURE_DIA, BEAM_T + 1,
-                  fc=C_BG, ec=C_FRAME, lw=0.5, zorder=9))
-    ax2.plot([CARRIAGE_YD_CENTER, CARRIAGE_YD_CENTER],
-             [pipe_id_bot_z, BEAM_Z_BOT - 16],
-             color=C_WATER, lw=1.2, alpha=0.6, zorder=9.2)
-    leader(ax2, CARRIAGE_YD_CENTER + PIPE_HOLE_DIA / 2 + 1, pipe_od_bot_z + PVC_WALL / 2,
+    # Nozzle fitting through beam floor + nozzle body
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - FITTING_DIA / 2, BEAM_Z_BOT - 0.5),
+                  FITTING_DIA, BEAM_T + 1,
+                  fc=C_NOZZLE, ec=C_FRAME, lw=0.5, zorder=9))
+    nz_bot = BEAM_Z_BOT - NOZZLE_BODY_H
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - NOZZLE_BODY_W / 2, nz_bot),
+                  NOZZLE_BODY_W, NOZZLE_BODY_H,
+                  fc=C_NOZZLE, ec=C_FRAME, lw=1.0, zorder=9.2))
+    ax2.plot([CARRIAGE_YD_CENTER, CARRIAGE_YD_CENTER - 25],
+             [nz_bot, nz_bot - 20],
+             color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
+    ax2.plot([CARRIAGE_YD_CENTER, CARRIAGE_YD_CENTER + 25],
+             [nz_bot, nz_bot - 20],
+             color=C_WATER, lw=0.8, alpha=0.5, zorder=9.3)
+    leader(ax2, CARRIAGE_YD_CENTER + FITTING_DIA / 2 + 1, pipe_od_bot_z + POLY_WALL / 2,
            CARRIAGE_YD_CENTER + 28, pipe_od_bot_z - 6,
-           "2mm PIPE HOLE",
-           fs=4.5, color=C_WATER, font=FONT, zorder=15)
-    ax2.text(CARRIAGE_YD_CENTER + 4, BEAM_Z_BOT - 5,
-             f"12mm APERTURE (TYP. @{SPRAY_BAR_HOLE_SP}mm c/c)",
-             ha="left", va="center", fontsize=4.5, color=C_WATER, **FONT, zorder=15)
+           "BARBED INSERT",
+           fs=4.5, color=C_NOZZLE, font=FONT, zorder=15)
+    ax2.text(CARRIAGE_YD_CENTER + 4, nz_bot - 3,
+             f"FLAT-FAN NOZZLE (TYP. ×{N_NOZZLES})",
+             ha="left", va="center", fontsize=4.5, color=C_NOZZLE, **FONT, zorder=15)
 
     # ── Detail C callout ─────────────────────────────────────────────────
     ax2.add_patch(Circle((wheel1_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2 + 8,
@@ -857,7 +870,7 @@ def draw_sheet2():
         "CROSS SECTION (COMPOSITE):",
         f"1. Beam rides on 2× Ø50mm nylon wheels (push/pull via pole).",
         "2. Ball joint on beam top → arm → pole through walkway slit.",
-        "3. Water: PVC pipe → 2mm hole → 12mm aperture → spray.",
+        "3. Water: poly pipe → barbed fitting → irrigation nozzle → spray.",
     ]
     draw_notes(ax2, cs_notes, C_YD_LO + 10, C_Z_HI - 260, spacing=5,
                fs=7, font=FONT, width=100)
@@ -1031,22 +1044,20 @@ def draw_sheet4():
     ax_a.set_facecolor(C_BG)
     ax_a.axis("off")
 
-    pvc_od_h = PVC_OD / 2
-    pvc_id_h = PVC_ID / 2
-    cap_od_h = pvc_od_h + CAP_WALL_T
+    poly_od_h = POLY_OD / 2
+    poly_id_h = POLY_ID / 2
 
     beam_end_x = 0
-    pipe_end_x = beam_end_x - PVC_EXTEND
-    cap_open_x = pipe_end_x + CAP_SOCKET_DEPTH
-    cap_closed_x = pipe_end_x - CAP_CLOSED_T
+    pipe_end_x = beam_end_x - POLY_EXTEND
+    plug_end_x = pipe_end_x - PLUG_CAP_T
 
-    d_xl, d_xr = cap_closed_x - 10, 50
+    d_xl, d_xr = plug_end_x - 10, 50
     d_yb, d_yt = -30, 30
     ax_a.set_xlim(d_xl, d_xr)
     ax_a.set_ylim(d_yb, d_yt)
 
     ax_a.text((d_xl + d_xr) / 2, d_yt - 1,
-              "DETAIL A — BEAM END (OPEN)",
+              "DETAIL A — BEAM END",
               ha="center", va="top", fontsize=8, color="#CC0000",
               fontweight="bold", **FONT, zorder=20)
     ax_a.text((d_xl + d_xr) / 2, d_yt - 5,
@@ -1071,36 +1082,30 @@ def draw_sheet4():
     ax_a.add_patch(Rectangle((beam_end_x, -17), d_xr - beam_end_x, 34,
                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=3.5))
 
-    # ── PVC pipe walls ───────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((pipe_end_x, pvc_id_h), d_xr - pipe_end_x, PVC_WALL,
-                   fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
-    ax_a.add_patch(Rectangle((pipe_end_x, -pvc_od_h), d_xr - pipe_end_x, PVC_WALL,
-                   fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
-    ax_a.plot([pipe_end_x, pipe_end_x], [-pvc_od_h, pvc_od_h],
+    # ── Poly pipe walls ──────────────────────────────────────────────────
+    ax_a.add_patch(Rectangle((pipe_end_x, poly_id_h), d_xr - pipe_end_x, POLY_WALL,
+                   fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    ax_a.add_patch(Rectangle((pipe_end_x, -poly_od_h), d_xr - pipe_end_x, POLY_WALL,
+                   fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    ax_a.plot([pipe_end_x, pipe_end_x], [-poly_od_h, poly_od_h],
               color=C_FRAME, lw=1.0, zorder=5.5)
 
-    # ── PVC socket cap ───────────────────────────────────────────────────
-    cap_verts = [
-        (cap_open_x,                  cap_od_h),
-        (cap_closed_x,                cap_od_h),
-        (cap_closed_x,               -cap_od_h),
-        (cap_open_x,                 -cap_od_h),
-        (cap_open_x,                 -pvc_od_h),
-        (cap_closed_x + CAP_CLOSED_T, -pvc_od_h),
-        (cap_closed_x + CAP_CLOSED_T,  pvc_od_h),
-        (cap_open_x,                  pvc_od_h),
+    # ── Push-fit end plug ────────────────────────────────────────────────
+    plug_verts = [
+        (pipe_end_x + PLUG_DEPTH,  poly_od_h),
+        (plug_end_x,               poly_od_h),
+        (plug_end_x,              -poly_od_h),
+        (pipe_end_x + PLUG_DEPTH, -poly_od_h),
+        (pipe_end_x + PLUG_DEPTH, -poly_id_h),
+        (plug_end_x + PLUG_CAP_T, -poly_id_h),
+        (plug_end_x + PLUG_CAP_T,  poly_id_h),
+        (pipe_end_x + PLUG_DEPTH,  poly_id_h),
     ]
-    ax_a.add_patch(mpatches.Polygon(cap_verts, closed=True,
-                   fc=C_PVC, ec=C_FRAME, lw=0.8, zorder=5))
+    ax_a.add_patch(mpatches.Polygon(plug_verts, closed=True,
+                   fc=C_POLY, ec=C_FRAME, lw=0.8, zorder=5))
 
-    # ── Solvent weld line ────────────────────────────────────────────────
-    ax_a.plot([cap_open_x, pipe_end_x], [pvc_od_h, pvc_od_h],
-              color="#AA3030", lw=0.8, ls="--", zorder=6)
-    ax_a.plot([cap_open_x, pipe_end_x], [-pvc_od_h, -pvc_od_h],
-              color="#AA3030", lw=0.8, ls="--", zorder=6)
-
-    # ── Water inside PVC ─────────────────────────────────────────────────
-    ax_a.add_patch(Rectangle((pipe_end_x, -pvc_id_h), d_xr - pipe_end_x, PVC_ID,
+    # ── Water inside poly pipe ───────────────────────────────────────────
+    ax_a.add_patch(Rectangle((pipe_end_x, -poly_id_h), d_xr - pipe_end_x, POLY_ID,
                    fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
 
     # ── Labels ───────────────────────────────────────────────────────────
@@ -1108,36 +1113,27 @@ def draw_sheet4():
            "40×40×3 AL SHS\n(OPEN END)",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox_a)
 
-    leader(ax_a, (cap_open_x + beam_end_x / 2) + 20, pvc_od_h + CAP_WALL_T - 4,
+    leader(ax_a, pipe_end_x - 5, poly_od_h + 2,
            d_xr - 15, d_yt - 4,
-           "1\" Sch 40 PVC PIPE\n(EXTENDS PAST BEAM)",
-           fs=5, color=C_PVC, font=FONT, zorder=20)
+           "3/4\" LDPE POLY PIPE\n(EXTENDS PAST BEAM)",
+           fs=5, color=C_POLY, font=FONT, zorder=20)
 
-    leader(ax_a, cap_closed_x + CAP_CLOSED_T / 2, -cap_od_h,
-           cap_closed_x - 5, d_yb + 2,
-           "1\" PVC SOCKET CAP\n(SOLVENT WELDED)",
-           fs=5, color=C_PVC, font=FONT, zorder=20)
+    leader(ax_a, plug_end_x + PLUG_CAP_T / 2, -poly_od_h - 1,
+           plug_end_x - 3, d_yb + 2,
+           "PUSH-FIT END PLUG\n(LDPE)",
+           fs=5, color=C_POLY, font=FONT, zorder=20)
 
     ax_a.text(d_xr - 8, 0, "WATER",
               ha="center", va="center", fontsize=5, color=C_WATER,
               fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
-    ax_a.text((pipe_end_x + cap_closed_x + CAP_CLOSED_T) / 2 + 3, -PVC_OD + PVC_ID - 8.5,
-              "BUTT\nJOINT",
-              ha="center", va="center", fontsize=4, color="#AA3030",
-              fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
-
     # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_h(ax_a, cap_closed_x, beam_end_x, d_yb + 4,
-               f"{PVC_EXTEND + CAP_CLOSED_T:.0f}mm\nPROTRUSION",
+    draw_dim_h(ax_a, plug_end_x, beam_end_x, d_yb + 4,
+               f"{POLY_EXTEND + PLUG_CAP_T:.0f}mm\nPROTRUSION",
                offset=2, fs=4.5, font=FONT)
 
-    draw_dim_h(ax_a, cap_closed_x, cap_open_x, d_yb + 7,
-               f"{CAP_SOCKET_DEPTH + CAP_CLOSED_T:.0f}mm\nCAP LENGTH",
-               offset=2, fs=4.5, font=FONT)
-
-    draw_dim_h(ax_a, pipe_end_x, cap_open_x, cap_od_h + 2,
-               f"{CAP_SOCKET_DEPTH}mm\nENGAGEMENT",
+    draw_dim_h(ax_a, pipe_end_x, pipe_end_x + PLUG_DEPTH, poly_od_h + 2,
+               f"{PLUG_DEPTH}mm\nENGAGEMENT",
                offset=2, fs=4, font=FONT)
 
     draw_dim_v(ax_a, d_xr - 3, -17, 17,
@@ -1146,8 +1142,8 @@ def draw_sheet4():
     draw_dim_v(ax_a, d_xr - 8, 17, 20,
                "3mm\nWALL", offset=2, fs=4.5, font=FONT, right=True)
 
-    draw_dim_v(ax_a, d_xl + 8, -pvc_od_h, pvc_od_h,
-               f"{PVC_OD:.1f}mm\nPVC OD", offset=3, fs=4.5, font=FONT)
+    draw_dim_v(ax_a, d_xl + 8, -poly_od_h, poly_od_h,
+               f"{POLY_OD:.0f}mm\nPOLY OD", offset=3, fs=4.5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
@@ -1329,17 +1325,17 @@ def draw_sheet6():
     ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_BORE / 2),
                    2 * BEAM_SHOW_LEN, BEAM_BORE,
                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=5.5))
-    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -PVC_OD / 2),
-                   2 * BEAM_SHOW_LEN, PVC_OD,
-                   fc=C_PVC, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=5.7))
-    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -PVC_ID / 2),
-                   2 * BEAM_SHOW_LEN, PVC_ID,
+    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_OD / 2),
+                   2 * BEAM_SHOW_LEN, POLY_OD,
+                   fc=C_POLY, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=5.7))
+    ax_d.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_ID / 2),
+                   2 * BEAM_SHOW_LEN, POLY_ID,
                    fc=C_WATER, ec="none", alpha=0.3, zorder=5.8))
     for bx in [-BEAM_SHOW_LEN, BEAM_SHOW_LEN]:
         ax_d.plot([bx, bx], [-BEAM_W / 2 - 3, BEAM_W / 2 + 3],
                   color=C_FRAME, lw=1.5, ls=(0, (5, 3)), zorder=6)
 
-    ax_d.text(60, 0, "40×40 SHS\n+ 1\" PVC",
+    ax_d.text(60, 0, "40×40 SHS\n+ 3/4\" LDPE",
               ha="center", va="center", fontsize=4.5, color=C_FRAME,
               bbox=_bbox_d, **FONT, zorder=15)
 
@@ -1426,258 +1422,367 @@ def draw_sheet6():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — Detail B: Center Feed Connection
-# Longitudinal section through beam at the center feed bulkhead fitting.
-# Shows: hose barb → bulkhead fitting → through beam wall → PVC pipe bore.
+# SHEET 7 — Detail B: Center Feed & Nozzle Connections
+# Two-panel longitudinal section through beam showing:
+#   Left:  barbed center feed (flex hose → through beam top → poly pipe)
+#   Right: nozzle connection (poly pipe → through beam bottom → spray nozzle)
 # Scale 2:1.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet7():
-    fig = plt.figure(figsize=(16, 12))
+    from matplotlib.gridspec import GridSpec
+
+    fig = plt.figure(figsize=(18, 12))
     fig.patch.set_facecolor(C_BG)
-    ax = fig.add_axes([0.05, 0.08, 0.90, 0.88])
-    ax.set_facecolor(C_BG)
-    ax.axis("off")
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.2, 1], wspace=0.12)
+    ax_cf = fig.add_subplot(gs[0, 0])
+    ax_nz = fig.add_subplot(gs[0, 1])
+
+    for ax in [ax_cf, ax_nz]:
+        ax.set_facecolor(C_BG)
+        ax.axis("off")
 
     _bbox = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
+    C_BRASS = "#C0A860"
 
-    # Beam centered at Z=0..40 in local coords
+    # Shared beam / pipe geometry (local Z: beam bottom = 0)
     BEAM = SPRAY_BAR_BEAM           # 40
     WALL = SPRAY_BAR_BEAM_T         # 3
     BORE = BEAM - 2 * WALL          # 34
-    pvc_od_h = PVC_OD / 2           # 16.7
-    pvc_id_h = PVC_ID / 2           # 13.3
-    pvc_wall = PVC_WALL             # 3.4
+    poly_od_h = POLY_OD / 2         # 12.5
+    poly_id_h = POLY_ID / 2         # 9.5
+    poly_wall = POLY_WALL           # 3.0
 
-    # Local Z origin at beam bottom
     beam_bot = 0
     beam_top = BEAM                 # 40
     bore_bot = WALL                 # 3
     bore_top = BEAM - WALL          # 37
-    pvc_ctr = BEAM / 2              # 20
-    pvc_top = pvc_ctr + pvc_od_h    # 36.7
-    pvc_bot = pvc_ctr - pvc_od_h    # 3.3
-    pvc_inner_top = pvc_ctr + pvc_id_h   # 33.3
-    pvc_inner_bot = pvc_ctr - pvc_id_h   # 6.7
+    poly_ctr = BEAM / 2             # 20
+    poly_top = poly_ctr + poly_od_h # 32.5
+    poly_bot = poly_ctr - poly_od_h # 7.5
+    poly_inner_top = poly_ctr + poly_id_h  # 29.5
+    poly_inner_bot = poly_ctr - poly_id_h  # 10.5
+    gap_top = bore_top - poly_top   # 4.5 air gap above pipe
+    gap_bot = poly_bot - bore_bot   # 4.5 air gap below pipe
 
-    # Bulkhead fitting dimensions (1/2" NPT brass)
-    BH_DRILL = 22           # drill hole through beam wall + PVC wall
-    BH_BODY_OD = 21         # threaded body OD
-    BH_BODY_LEN = 18        # total body length through wall
-    BH_EXT_NUT_W = 27       # external hex nut across flats
-    BH_EXT_NUT_T = 5        # external hex nut thickness
-    BH_INT_NUT_W = 25       # internal lock nut across flats
-    BH_INT_NUT_T = 5        # internal lock nut thickness
-    BH_WASHER_OD = 28       # sealing washer OD
-    BH_WASHER_T = 1.5       # washer thickness
-    BARB_OD = 16            # hose barb OD
-    BARB_LEN = 30           # hose barb length
-    HOSE_OD = 19            # 1/2" flex hose OD
-    HOSE_ID = 13            # 1/2" flex hose ID
-    HOSE_LEN = 25           # stub shown
+    # Barbed fitting dimensions
+    BARB_OD = 10            # barbed insert OD
+    BARB_LEN = 12           # barb length into pipe
+    DRILL_DIA = 12          # drill hole through beam wall
+    FITTING_BODY_OD = 14    # threaded body through beam wall
+    FITTING_BORE = 10       # internal passage
+    HOSE_BARB_OD = 16       # 1/2" hose barb OD
+    HOSE_BARB_LEN = 25      # hose barb length
+    WASHER_OD = 22           # sealing washer OD
+    WASHER_T = 1.5
+    HOSE_OD = 19
+    HOSE_LEN = 20
 
-    C_BRASS = "#C0A860"
+    # Nozzle dimensions
+    NZ_THREAD_L = 8         # threaded stub below beam
+    NZ_BODY_OD = 18         # nozzle body OD
+    NZ_BODY_H = 12          # nozzle body height
+    NZ_ORIFICE = 3          # orifice width at bottom
 
-    # View limits
-    d_xl, d_xr = -55, 55
-    d_yb, d_yt = -15, 75
-    ax.set_xlim(d_xl, d_xr)
-    ax.set_ylim(d_yb, d_yt)
+    # ─────────────────────────────────────────────────────────────────────
+    # LEFT PANEL — CENTER FEED (barbed fitting through beam top)
+    # ─────────────────────────────────────────────────────────────────────
+    d_xl, d_xr = -50, 50
+    d_yb, d_yt = -10, 78
+    ax_cf.set_xlim(d_xl, d_xr)
+    ax_cf.set_ylim(d_yb, d_yt)
 
-    # ── Beam SHS walls (longitudinal section) ────────────────────────────
-    # Top wall
-    ax.add_patch(Rectangle((d_xl + 5, bore_top), d_xr - d_xl - 10, WALL,
-                 fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    # Bottom wall
-    ax.add_patch(Rectangle((d_xl + 5, beam_bot), d_xr - d_xl - 10, WALL,
-                 fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
-    # Bore background
-    ax.add_patch(Rectangle((d_xl + 5, bore_bot), d_xr - d_xl - 10, BORE,
-                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
+    sec_w = d_xr - d_xl - 10  # section width
 
-    # Drill hole through top wall (clear opening for bulkhead)
-    ax.add_patch(Rectangle((-BH_DRILL / 2, bore_top), BH_DRILL, WALL,
-                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
+    # Beam SHS walls
+    ax_cf.add_patch(Rectangle((d_xl + 5, bore_top), sec_w, WALL,
+                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    ax_cf.add_patch(Rectangle((d_xl + 5, beam_bot), sec_w, WALL,
+                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    ax_cf.add_patch(Rectangle((d_xl + 5, bore_bot), sec_w, BORE,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
 
-    # ── PVC pipe walls ───────────────────────────────────────────────────
-    # Top wall (left of hole)
-    ax.add_patch(Rectangle((d_xl + 5, pvc_inner_top),
-                 -BH_DRILL / 2 - (d_xl + 5), pvc_wall,
-                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
-    # Top wall (right of hole)
-    ax.add_patch(Rectangle((BH_DRILL / 2, pvc_inner_top),
-                 d_xr - 5 - BH_DRILL / 2, pvc_wall,
-                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
-    # Bottom wall (continuous)
-    ax.add_patch(Rectangle((d_xl + 5, pvc_bot),
-                 d_xr - d_xl - 10, pvc_wall,
-                 fc=C_PVC, ec=C_FRAME, lw=0.6, zorder=4))
+    # Drill hole through beam top wall
+    ax_cf.add_patch(Rectangle((-DRILL_DIA / 2, bore_top), DRILL_DIA, WALL,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
 
-    # Drill hole through PVC top wall
-    ax.add_patch(Rectangle((-BH_DRILL / 2, pvc_inner_top), BH_DRILL, pvc_wall,
-                 fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
+    # Poly pipe walls
+    ax_cf.add_patch(Rectangle((d_xl + 5, poly_inner_top),
+                    -DRILL_DIA / 2 - (d_xl + 5), poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    ax_cf.add_patch(Rectangle((DRILL_DIA / 2, poly_inner_top),
+                    d_xr - 5 - DRILL_DIA / 2, poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    ax_cf.add_patch(Rectangle((d_xl + 5, poly_bot),
+                    sec_w, poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
 
-    # ── Water inside PVC bore ────────────────────────────────────────────
-    ax.add_patch(Rectangle((d_xl + 5, pvc_inner_bot),
-                 d_xr - d_xl - 10, PVC_ID,
-                 fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
+    # Drill hole through poly pipe top wall
+    ax_cf.add_patch(Rectangle((-DRILL_DIA / 2, poly_inner_top), DRILL_DIA, poly_wall,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
 
-    # ── Bulkhead fitting body (through beam wall + air gap + PVC wall) ───
-    body_top = beam_top + BH_WASHER_T
-    body_bot = pvc_inner_top - BH_INT_NUT_T - 2  # extends past lock nut inside PVC bore
+    # Water inside poly bore
+    ax_cf.add_patch(Rectangle((d_xl + 5, poly_inner_bot),
+                    sec_w, POLY_ID,
+                    fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
+
+    # Barbed fitting body (through beam wall + air gap + into poly pipe)
+    body_top = beam_top + WASHER_T
+    body_bot = poly_inner_top - BARB_LEN
     body_h = body_top - body_bot
+    ax_cf.add_patch(Rectangle((-FITTING_BODY_OD / 2, body_bot),
+                    FITTING_BODY_OD, body_h,
+                    fc=C_BRASS, ec=C_FRAME, lw=1.0, hatch="...", zorder=5))
+    ax_cf.add_patch(Rectangle((-FITTING_BORE / 2, body_bot),
+                    FITTING_BORE, body_h,
+                    fc=C_WATER, ec="none", alpha=0.25, zorder=5.5))
 
-    # Body (threaded cylinder through wall)
-    ax.add_patch(Rectangle((-BH_BODY_OD / 2, body_bot),
-                 BH_BODY_OD, body_h,
-                 fc=C_BRASS, ec=C_FRAME, lw=1.0, hatch="...", zorder=5))
+    # Barb ridges (inside poly pipe)
+    for i in range(2):
+        rz = poly_inner_top - 4 - i * 5
+        ax_cf.plot([-FITTING_BODY_OD / 2 - 1.5, -FITTING_BODY_OD / 2],
+                   [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=5.5)
+        ax_cf.plot([FITTING_BODY_OD / 2, FITTING_BODY_OD / 2 + 1.5],
+                   [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=5.5)
 
-    # Internal bore through fitting body
-    fitting_bore = 13  # 1/2" internal passage
-    ax.add_patch(Rectangle((-fitting_bore / 2, body_bot),
-                 fitting_bore, body_h,
-                 fc=C_WATER, ec="none", alpha=0.25, zorder=5.5))
-
-    # ── External washer (on beam top face) ───────────────────────────────
+    # Sealing washer
     washer_bot = beam_top
-    ax.add_patch(Rectangle((-BH_WASHER_OD / 2, washer_bot),
-                 BH_WASHER_OD, BH_WASHER_T,
-                 fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
+    ax_cf.add_patch(Rectangle((-WASHER_OD / 2, washer_bot),
+                    WASHER_OD, WASHER_T,
+                    fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
 
-    # ── External hex nut (above washer) ──────────────────────────────────
-    ext_nut_bot = washer_bot + BH_WASHER_T
-    ax.add_patch(Rectangle((-BH_EXT_NUT_W / 2, ext_nut_bot),
-                 BH_EXT_NUT_W, BH_EXT_NUT_T,
-                 fc=C_BRASS, ec=C_FRAME, lw=1.0, zorder=6))
+    # Hose barb above beam
+    hbarb_bot = washer_bot + WASHER_T
+    ax_cf.add_patch(Rectangle((-HOSE_BARB_OD / 2, hbarb_bot),
+                    HOSE_BARB_OD, HOSE_BARB_LEN,
+                    fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=6))
+    for i in range(3):
+        rz = hbarb_bot + 5 + i * 7
+        ax_cf.plot([-HOSE_BARB_OD / 2 - 1.5, -HOSE_BARB_OD / 2],
+                   [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=6.5)
+        ax_cf.plot([HOSE_BARB_OD / 2, HOSE_BARB_OD / 2 + 1.5],
+                   [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=6.5)
+    ax_cf.add_patch(Rectangle((-FITTING_BORE / 2, hbarb_bot),
+                    FITTING_BORE, HOSE_BARB_LEN,
+                    fc=C_WATER, ec="none", alpha=0.25, zorder=6.3))
 
-    # ── Internal lock nut (inside PVC bore, under PVC top wall) ────────
-    int_nut_top = pvc_inner_top
-    ax.add_patch(Rectangle((-BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T),
-                 BH_INT_NUT_W, BH_INT_NUT_T,
-                 fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=5))
+    # Flex hose stub
+    hose_bot = hbarb_bot + 3
+    hose_top = hbarb_bot + HOSE_BARB_LEN + HOSE_LEN
+    ax_cf.add_patch(Rectangle((-HOSE_OD / 2, hose_bot),
+                    HOSE_OD, hose_top - hose_bot,
+                    fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.5, zorder=5.8))
+    for bz in range(int(hose_bot) + 3, int(hose_top) - 2, 5):
+        ax_cf.plot([-HOSE_OD / 2, HOSE_OD / 2], [bz, bz + 2],
+                   color=C_BLUE, lw=0.4, alpha=0.4, zorder=5.9)
 
-    # ── Hose barb fitting (screwed into bulkhead top) ────────────────────
-    barb_bot = ext_nut_bot + BH_EXT_NUT_T
-    barb_top = barb_bot + BARB_LEN
-
-    # Barb body with ridges
-    ax.add_patch(Rectangle((-BARB_OD / 2, barb_bot),
-                 BARB_OD, BARB_LEN,
-                 fc=C_BRASS, ec=C_FRAME, lw=0.8, zorder=6))
-    # Barb ridges
-    n_ridges = 3
-    for i in range(n_ridges):
-        rz = barb_bot + 8 + i * 8
-        ax.plot([-BARB_OD / 2 - 1.5, -BARB_OD / 2],
-                [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=6.5)
-        ax.plot([BARB_OD / 2, BARB_OD / 2 + 1.5],
-                [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=6.5)
-    # Bore through barb
-    ax.add_patch(Rectangle((-fitting_bore / 2, barb_bot),
-                 fitting_bore, BARB_LEN,
-                 fc=C_WATER, ec="none", alpha=0.25, zorder=6.3))
-
-    # ── Flex hose stub ───────────────────────────────────────────────────
-    hose_bot = barb_bot + 5   # hose overlaps barb ridges
-    hose_top = barb_top + HOSE_LEN
-    # Outer wall
-    ax.add_patch(Rectangle((-HOSE_OD / 2, hose_bot),
-                 HOSE_OD, hose_top - hose_bot,
-                 fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.5, zorder=5.8))
-    # Reinforcement braid marks
-    for bz in range(int(hose_bot) + 4, int(hose_top) - 2, 5):
-        ax.plot([-HOSE_OD / 2, HOSE_OD / 2], [bz, bz + 2],
-                color=C_BLUE, lw=0.4, alpha=0.4, zorder=5.9)
-
-    # ── Water flow arrows ────────────────────────────────────────────────
+    # Water flow arrows
     arrow_props = dict(arrowstyle="-|>", color=C_WATER, lw=1.5, mutation_scale=12)
-    # Arrow down through fitting into PVC bore
-    ax.annotate("", xy=(0, pvc_inner_top + 1),
-                xytext=(0, barb_bot + 3),
-                arrowprops=arrow_props, zorder=8)
-    # Arrow along PVC bore (left)
-    ax.annotate("", xy=(d_xl + 10, pvc_ctr),
-                xytext=(-BH_DRILL / 2 - 3, pvc_ctr),
-                arrowprops=arrow_props, zorder=8)
-    # Arrow along PVC bore (right)
-    ax.annotate("", xy=(d_xr - 10, pvc_ctr),
-                xytext=(BH_DRILL / 2 + 3, pvc_ctr),
-                arrowprops=arrow_props, zorder=8)
+    ax_cf.annotate("", xy=(0, poly_inner_top + 1),
+                   xytext=(0, hbarb_bot + 3),
+                   arrowprops=arrow_props, zorder=8)
+    ax_cf.annotate("", xy=(d_xl + 10, poly_ctr),
+                   xytext=(-DRILL_DIA / 2 - 3, poly_ctr),
+                   arrowprops=arrow_props, zorder=8)
+    ax_cf.annotate("", xy=(d_xr - 10, poly_ctr),
+                   xytext=(DRILL_DIA / 2 + 3, poly_ctr),
+                   arrowprops=arrow_props, zorder=8)
 
-    # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax, d_xr - 10, bore_top + WALL / 2,
+    # Labels
+    leader(ax_cf, d_xr - 10, bore_top + WALL / 2,
            d_xr - 5, d_yt - 8,
            "40×40×3mm AL SHS",
            fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, d_xr - 10, pvc_top - pvc_wall / 2,
-           d_xr - 5, pvc_ctr + 2,
-           f"1\" Sch 40 PVC\nOD {PVC_OD:.1f}mm",
-           fs=5, color=C_PVC, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, BH_EXT_NUT_W / 2, ext_nut_bot + BH_EXT_NUT_T / 2,
-           d_xr - 5, ext_nut_bot + 5,
-           "1/2\" NPT BULKHEAD\n(BRASS)",
+    leader(ax_cf, d_xr - 10, poly_top - poly_wall / 2,
+           d_xr - 5, poly_ctr + 2,
+           f"3/4\" LDPE POLY\nOD {POLY_OD:.0f}mm",
+           fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_cf, FITTING_BODY_OD / 2 + 2, (bore_top + poly_inner_top) / 2,
+           d_xr - 5, bore_top - 2,
+           "BARBED FITTING\n(BRASS, 1/2\" NPT)",
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, -BH_INT_NUT_W / 2, int_nut_top - BH_INT_NUT_T / 2,
-           d_xl + 5, pvc_inner_top - 8,
-           "LOCK NUT\n(INSIDE PVC BORE)",
-           fs=4.5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, BARB_OD / 2 + 1.5, barb_bot + BARB_LEN / 2,
-           d_xr - 5, barb_bot + BARB_LEN / 2 + 3,
-           "1/2\" HOSE BARB\n(BRASS)",
+    leader(ax_cf, HOSE_BARB_OD / 2 + 1.5, hbarb_bot + HOSE_BARB_LEN / 2,
+           d_xr - 5, hbarb_bot + HOSE_BARB_LEN / 2 + 3,
+           "1/2\" HOSE BARB",
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, HOSE_OD / 2, hose_top - 5,
+    leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
-           "1/2\" REINFORCED\nFLEX HOSE",
+           "1/2\" FLEX HOSE",
            fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox)
-
-    leader(ax, -BH_WASHER_OD / 2, washer_bot + BH_WASHER_T / 2,
+    leader(ax_cf, -WASHER_OD / 2, washer_bot + WASHER_T / 2,
            d_xl + 5, beam_top + 3,
            "SEALING\nWASHER",
            fs=4.5, color="#808080", font=FONT, zorder=20, bbox=_bbox)
+    ax_cf.text(d_xl + 15, poly_ctr, "WATER", ha="center", va="center",
+               fontsize=5, color=C_WATER, fontweight="bold",
+               bbox=_bbox, **FONT, zorder=15)
 
-    ax.text(d_xl + 15, pvc_ctr, "WATER", ha="center", va="center",
-            fontsize=5, color=C_WATER, fontweight="bold",
-            bbox=_bbox, **FONT, zorder=15)
-
-    # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_v(ax, d_xl + 8, beam_bot, beam_top,
+    # Dimensions
+    draw_dim_v(ax_cf, d_xl + 8, beam_bot, beam_top,
                f"{BEAM}mm\nSHS", offset=2, fs=5, font=FONT)
-
-    draw_dim_v(ax, d_xl + 15, bore_top, beam_top,
-               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
-
-    draw_dim_v(ax, d_xl + 15, beam_bot, bore_bot,
-               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
-
-    draw_dim_h(ax, -BH_DRILL / 2, BH_DRILL / 2, pvc_inner_top - 3,
-               f"Ø{BH_DRILL}mm HOLE",
+    draw_dim_h(ax_cf, -DRILL_DIA / 2, DRILL_DIA / 2, poly_inner_top - 2,
+               f"Ø{DRILL_DIA}mm",
                offset=2, fs=4.5, font=FONT, above=False)
-
-    draw_dim_v(ax, d_xr - 8, pvc_bot, pvc_top,
-               f"{PVC_OD:.1f}mm\nPVC OD",
+    draw_dim_v(ax_cf, d_xr - 8, poly_bot, poly_top,
+               f"{POLY_OD:.0f}mm\nOD",
                offset=2, fs=4.5, font=FONT, right=True)
+    draw_dim_v(ax_cf, d_xl + 15, bore_top, beam_top,
+               f"{WALL}mm", offset=2, fs=4.5, font=FONT)
+    draw_dim_v(ax_cf, d_xl + 15, poly_top, bore_top,
+               f"{gap_top:.1f}\nGAP", offset=2, fs=4, font=FONT)
 
-    # ── Title and subtitle ───────────────────────────────────────────────
-    ax.text((d_xl + d_xr) / 2, d_yt - 1,
-            "DETAIL B — CENTER FEED CONNECTION",
-            ha="center", va="top", fontsize=8, color="#CC6600",
-            fontweight="bold", **FONT, zorder=20)
-    ax.text((d_xl + d_xr) / 2, d_yt - 5,
-            "(LONGITUDINAL SECTION AT BEAM CENTER — SCALE 2:1)",
-            ha="center", va="top", fontsize=5, color=C_DIM,
-            **FONT, zorder=20)
+    ax_cf.text(0, d_yt - 1, "CENTER FEED CONNECTION",
+               ha="center", va="top", fontsize=7, color="#CC6600",
+               fontweight="bold", **FONT, zorder=20)
+    ax_cf.text(0, d_yt - 5, "(SECTION THROUGH BEAM TOP)",
+               ha="center", va="top", fontsize=5, color=C_DIM,
+               **FONT, zorder=20)
+
+    # ─────────────────────────────────────────────────────────────────────
+    # RIGHT PANEL — NOZZLE CONNECTION (barbed fitting through beam bottom)
+    # ─────────────────────────────────────────────────────────────────────
+    n_xl, n_xr = -45, 45
+    n_yb, n_yt = -35, 55
+    ax_nz.set_xlim(n_xl, n_xr)
+    ax_nz.set_ylim(n_yb, n_yt)
+
+    nsec_w = n_xr - n_xl - 10
+
+    # Beam SHS walls
+    ax_nz.add_patch(Rectangle((n_xl + 5, bore_top), nsec_w, WALL,
+                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    ax_nz.add_patch(Rectangle((n_xl + 5, beam_bot), nsec_w, WALL,
+                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    ax_nz.add_patch(Rectangle((n_xl + 5, bore_bot), nsec_w, BORE,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=2.5))
+
+    # Drill hole through beam bottom wall
+    ax_nz.add_patch(Rectangle((-DRILL_DIA / 2, beam_bot), DRILL_DIA, WALL,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4))
+
+    # Poly pipe walls
+    ax_nz.add_patch(Rectangle((n_xl + 5, poly_inner_top),
+                    nsec_w, poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    # Bottom wall (left of hole)
+    ax_nz.add_patch(Rectangle((n_xl + 5, poly_bot),
+                    -DRILL_DIA / 2 - (n_xl + 5), poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+    # Bottom wall (right of hole)
+    ax_nz.add_patch(Rectangle((DRILL_DIA / 2, poly_bot),
+                    n_xr - 5 - DRILL_DIA / 2, poly_wall,
+                    fc=C_POLY, ec=C_FRAME, lw=0.6, zorder=4))
+
+    # Drill hole through poly pipe bottom wall
+    ax_nz.add_patch(Rectangle((-DRILL_DIA / 2, poly_bot), DRILL_DIA, poly_wall,
+                    fc=C_BG, ec=C_FRAME, lw=0.5, zorder=4.5))
+
+    # Water inside poly bore
+    ax_nz.add_patch(Rectangle((n_xl + 5, poly_inner_bot),
+                    nsec_w, POLY_ID,
+                    fc=C_WATER, ec="none", alpha=0.15, zorder=3.8))
+
+    # Barbed fitting body (through beam bottom wall + air gap + into poly pipe)
+    nz_body_top = poly_inner_bot + BARB_LEN
+    nz_body_bot = beam_bot - NZ_THREAD_L
+    nz_body_h = nz_body_top - nz_body_bot
+    ax_nz.add_patch(Rectangle((-FITTING_BODY_OD / 2, nz_body_bot),
+                    FITTING_BODY_OD, nz_body_h,
+                    fc=C_BRASS, ec=C_FRAME, lw=1.0, hatch="...", zorder=5))
+    ax_nz.add_patch(Rectangle((-FITTING_BORE / 2, nz_body_bot),
+                    FITTING_BORE, nz_body_h,
+                    fc=C_WATER, ec="none", alpha=0.25, zorder=5.5))
+
+    # Barb ridges (inside poly pipe, pointing up)
+    for i in range(2):
+        rz = poly_inner_bot + 3 + i * 5
+        ax_nz.plot([-FITTING_BODY_OD / 2 - 1.5, -FITTING_BODY_OD / 2],
+                   [rz, rz + 2], color=C_FRAME, lw=0.8, zorder=5.5)
+        ax_nz.plot([FITTING_BODY_OD / 2, FITTING_BODY_OD / 2 + 1.5],
+                   [rz + 2, rz], color=C_FRAME, lw=0.8, zorder=5.5)
+
+    # Sealing washer on beam underside
+    nz_washer_top = beam_bot
+    ax_nz.add_patch(Rectangle((-WASHER_OD / 2, nz_washer_top - WASHER_T),
+                    WASHER_OD, WASHER_T,
+                    fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=5))
+
+    # Irrigation spray nozzle body
+    nz_top = nz_body_bot
+    nz_bot = nz_top - NZ_BODY_H
+    ax_nz.add_patch(Rectangle((-NZ_BODY_OD / 2, nz_bot),
+                    NZ_BODY_OD, NZ_BODY_H,
+                    fc=C_NOZZLE, ec=C_FRAME, lw=1.2, zorder=6))
+    ax_nz.add_patch(Rectangle((-NZ_ORIFICE / 2, nz_bot - 1),
+                    NZ_ORIFICE, 1.5,
+                    fc=C_WATER, ec=C_FRAME, lw=0.5, zorder=6.5))
+
+    # Spray fan pattern
+    fan_half = 20
+    fan_drop = 18
+    ax_nz.plot([0, -fan_half], [nz_bot - 1, nz_bot - fan_drop],
+               color=C_WATER, lw=1.0, alpha=0.5, zorder=6)
+    ax_nz.plot([0, fan_half], [nz_bot - 1, nz_bot - fan_drop],
+               color=C_WATER, lw=1.0, alpha=0.5, zorder=6)
+    ax_nz.plot([0, 0], [nz_bot - 1, nz_bot - fan_drop],
+               color=C_WATER, lw=0.6, alpha=0.3, zorder=6)
+    ax_nz.plot([0, -fan_half / 2], [nz_bot - 1, nz_bot - fan_drop],
+               color=C_WATER, lw=0.6, alpha=0.3, zorder=6)
+    ax_nz.plot([0, fan_half / 2], [nz_bot - 1, nz_bot - fan_drop],
+               color=C_WATER, lw=0.6, alpha=0.3, zorder=6)
+
+    # Water flow arrows
+    ax_nz.annotate("", xy=(0, nz_body_bot + 1),
+                   xytext=(0, poly_inner_bot - 1),
+                   arrowprops=arrow_props, zorder=8)
+
+    # Labels
+    leader(ax_nz, n_xr - 10, bore_top + WALL / 2,
+           n_xr - 5, n_yt - 5,
+           "40×40×3mm AL SHS",
+           fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_nz, n_xr - 10, poly_top - poly_wall / 2,
+           n_xr - 5, poly_ctr + 2,
+           f"3/4\" LDPE POLY\nOD {POLY_OD:.0f}mm",
+           fs=5, color=C_POLY, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_nz, FITTING_BODY_OD / 2 + 2, (bore_bot + poly_bot) / 2,
+           n_xr - 5, bore_bot + 2,
+           "BARBED INSERT\n(BRASS)",
+           fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_nz, NZ_BODY_OD / 2, nz_bot + NZ_BODY_H / 2,
+           n_xr - 5, nz_bot + NZ_BODY_H / 2,
+           "FLAT-FAN\nSPRAY NOZZLE",
+           fs=5, color=C_NOZZLE, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_nz, -WASHER_OD / 2, nz_washer_top - WASHER_T / 2,
+           n_xl + 5, beam_bot - 3,
+           "SEALING\nWASHER",
+           fs=4.5, color="#808080", font=FONT, zorder=20, bbox=_bbox)
+    ax_nz.text(n_xl + 12, poly_ctr, "WATER", ha="center", va="center",
+               fontsize=5, color=C_WATER, fontweight="bold",
+               bbox=_bbox, **FONT, zorder=15)
+
+    # Dimensions
+    draw_dim_v(ax_nz, n_xl + 8, beam_bot, beam_top,
+               f"{BEAM}mm\nSHS", offset=2, fs=5, font=FONT)
+    draw_dim_h(ax_nz, -DRILL_DIA / 2, DRILL_DIA / 2, bore_bot + 1,
+               f"Ø{DRILL_DIA}mm",
+               offset=2, fs=4.5, font=FONT, above=True)
+    draw_dim_v(ax_nz, n_xl + 15, poly_bot, bore_bot,
+               f"{gap_bot:.1f}\nGAP", offset=2, fs=4, font=FONT)
+
+    ax_nz.text(0, n_yt - 1, "NOZZLE CONNECTION",
+               ha="center", va="top", fontsize=7, color="#CC6600",
+               fontweight="bold", **FONT, zorder=20)
+    ax_nz.text(0, n_yt - 5, f"(SECTION THROUGH BEAM BOTTOM — TYP. ×{N_NOZZLES})",
+               ha="center", va="top", fontsize=5, color=C_DIM,
+               **FONT, zorder=20)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 7 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL B — CENTER FEED CONNECTION (LONGITUDINAL SECTION)",
+                subtitle="DETAIL B — CENTER FEED & NOZZLE CONNECTIONS",
                 scale_note="SCALE 2:1 — AXES IN mm",
                 height=0.7)
 

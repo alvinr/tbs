@@ -206,6 +206,8 @@
 
 ![TBS-001 — Spray Bar Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
 
+![TBS-001 — Spray Bar Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
+
 ---
 
 ## 20. Weight Distribution Analysis

@@ -118,12 +118,16 @@ The spray bar delivers Blue (clean) water evenly across the processing tray duri
 washing. The operator slides the bar along the tray (Yd direction, from film-plane side
 toward the pinhole wall), flooding the print surface progressively.
 
+![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
+
 The beam spans 3859mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 1" PVC
 Sch 40 pipe inside the aluminum SHS bore serves as the spray pipe — water flows through
 the PVC pipe and exits through 2mm holes drilled in the pipe wall, aligned with 12mm
 apertures in the beam bottom face.
+
+![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
 **Design constraints:**
 
@@ -274,6 +278,8 @@ structure. The 200mm wheel spacing in Yd prevents significant skew.
 Each carriage is built from three sub-assemblies: two fork-and-wheel units and one
 L-bracket. Two identical carriages are required (left end and right end of beam).
 
+![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
+
 #### 3.6.1 Fork Bracket Fabrication (4 required)
 
 Each fork is a U-channel formed from 6mm 6061-T6 aluminum plate. The fork straddles
@@ -311,6 +317,9 @@ positions the beam below the wheel axle centerline.
 
 #### 3.6.3 Wheel Assembly (4 required)
 
+![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
+
+
 | Step | Operation |
 |------|-----------|
 | 1 | Place nylon wheel (50mm × 20mm, 10mm bore) between fork arms |
@@ -319,6 +328,8 @@ positions the beam below the wheel axle centerline.
 | 4 | Spin wheel by hand — confirm free rotation with no lateral wobble |
 
 #### 3.6.4 Carriage Assembly (2 required)
+
+![Sheet 6 — Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
 
 | Step | Operation |
 |------|-----------|
@@ -436,6 +447,8 @@ walkway grating at the beam centerline X=2500mm. A matching slit is cut into the
 walkway grating at the same X position. The slit positions are shown on the
 [walkway plan view](engineering-diagrams.md#14-perimeter-walkway).
 
+![Sheet 3 — Plan View: Walkways & Slit Positions](assets/spray-bar-sheet3.png)
+
 ### 3.12 Ball Joint and Arm
 
 A Ø20mm stainless steel ball joint on the beam top face provides multi-axis
@@ -457,7 +470,7 @@ The step-by-step spray bar setup, wash pass procedure, Brown water recycling pas
 
 ## 5. Engineering Drawings
 
-Six detail sheets cover the spray bar assembly and processing tray:
+Seven detail sheets cover the spray bar assembly and processing tray:
 
 | Sheet | Title | Content |
 |-------|-------|---------|
@@ -467,6 +480,7 @@ Six detail sheets cover the spray bar assembly and processing tray:
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — PVC pipe extension, socket cap, solvent weld |
 | 5 | Detail C — Wheel Attachment | Section along axle at 2:1 — fork arms, nylon wheel, axle pin, snap rings |
 | 6 | Detail D — Wheel Plan | Plan view of carriage — beam, L-bracket arm, U-clamp, wheels |
+| 7 | Detail B — Center Feed | Longitudinal section at 2:1 — hose barb, bulkhead fitting, through beam wall to PVC pipe bore |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
@@ -479,6 +493,8 @@ Six detail sheets cover the spray bar assembly and processing tray:
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
 ![Sheet 6 — Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
+
+![Sheet 7 — Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
 
 Additional processing tray drainage detail is shown in the
 [water system drawings](engineering-diagrams.md#9-processing-water-system) (sheets 3–4:

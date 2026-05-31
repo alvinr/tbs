@@ -190,6 +190,7 @@ DIAG_IMAGE_FILES = [
     "spray-bar-sheet4.png",
     "spray-bar-sheet5.png",
     "spray-bar-sheet6.png",
+    "spray-bar-sheet7.png",
     "filter-skid-sheet1.png",
     "pump-manifold-sheet1.png",
 ]

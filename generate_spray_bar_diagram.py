@@ -1103,7 +1103,12 @@ def draw_sheet4():
     fold_apex_x = beam_end_x - pipe_past
     fold_leg_len = pipe_past - bend_center_r  # straight portion of return leg
 
-    d_xl = fold_apex_x - bend_center_r - poly_od_h - 15
+    # Pre-compute taper point for view limits
+    _clip_x_pre = (fold_apex_x + fold_leg_len - 5
+                   if fold_leg_len > 10 else beam_end_x - 10)
+    _taper_x_pre = _clip_x_pre - 10 / 2 - 22
+
+    d_xl = _taper_x_pre - 20
     d_xr = 55
     d_yb = fold_leg_y - poly_od_h - 18
     d_yt = beam_half + 8
@@ -1136,99 +1141,83 @@ def draw_sheet4():
     ax_a.add_patch(Rectangle((beam_end_x, -bore_half), d_xr - beam_end_x, BEAM_BORE,
                    fc=C_BG, ec="none", zorder=3.5))
 
-    # ── Main pipe run — top and bottom walls as hatched sections ─────────
-    pipe_start_x = fold_apex_x
-    ax_a.add_patch(Rectangle((pipe_start_x, poly_id_h),
-                   d_xr - pipe_start_x, POLY_WALL,
-                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
-    ax_a.add_patch(Rectangle((pipe_start_x, -poly_od_h),
-                   d_xr - pipe_start_x, POLY_WALL,
-                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
-
-    # ── Water inside main pipe ──────────────────────────────────────────
-    ax_a.add_patch(Rectangle((beam_end_x + 2, -poly_id_h),
-                   d_xr - beam_end_x - 2, POLY_ID,
-                   fc=C_WATER, ec="none", alpha=0.25, zorder=3.8))
-
-    # ── Fold-back section (sectional view showing pipe walls) ────────────
-    bend_cy = -fold_offset / 2     # midpoint between main and fold leg centers
-    bend_cx = fold_apex_x
-
-    theta = np.linspace(np.pi / 2, -np.pi / 2, 60)
-
-    # Four arcs: outer wall outer surface, outer wall inner surface,
-    #            inner wall outer surface, inner wall inner surface
-    r_oo = bend_center_r + poly_od_h   # outer wall, outer surface
-    r_oi = bend_center_r + poly_id_h   # outer wall, inner surface
-    r_ii = bend_center_r - poly_id_h   # inner wall, inner surface
-    r_io = bend_center_r - poly_od_h   # inner wall, outer surface
-
-    def arc_pts(r):
-        return bend_cx + r * np.cos(theta), bend_cy + r * np.sin(theta)
-
-    # Outer pipe wall (outer side of bend)
-    oo_x, oo_y = arc_pts(r_oo)
-    oi_x, oi_y = arc_pts(r_oi)
-    outer_wall_xs = list(oo_x) + list(oi_x[::-1])
-    outer_wall_ys = list(oo_y) + list(oi_y[::-1])
-    ax_a.add_patch(mpatches.Polygon(list(zip(outer_wall_xs, outer_wall_ys)),
-                   closed=True, fc="#404040", ec=C_FRAME, lw=0.6,
-                   hatch="...", zorder=4))
-
-    # Inner pipe wall (inner side of bend)
-    io_x, io_y = arc_pts(r_io)
-    ii_x, ii_y = arc_pts(r_ii)
-    inner_wall_xs = list(ii_x) + list(io_x[::-1])
-    inner_wall_ys = list(ii_y) + list(io_y[::-1])
-    ax_a.add_patch(mpatches.Polygon(list(zip(inner_wall_xs, inner_wall_ys)),
-                   closed=True, fc="#404040", ec=C_FRAME, lw=0.6,
-                   hatch="...", zorder=4))
-
-    # Water fill inside the bend (between inner surfaces)
-    water_xs = list(oi_x) + list(ii_x[::-1])
-    water_ys = list(oi_y) + list(ii_y[::-1])
-    ax_a.add_patch(mpatches.Polygon(list(zip(water_xs, water_ys)),
-                   closed=True, fc=C_WATER, ec="none", alpha=0.20, zorder=3.9))
-
-    # Inner void at bend center
-    void_x, void_y = arc_pts(r_io)
-    ax_a.add_patch(mpatches.Polygon(
-        list(zip(list(io_x), list(io_y))),
-        closed=False, fc="none", ec=C_FRAME, lw=0.4, zorder=4.1))
-
-    # ── Folded-back leg — top and bottom walls ──────────────────────────
-    fold_leg_right = fold_apex_x + bend_center_r  # where the bend meets the straight leg
-    # Ensure the leg starts where the bend ends
-    fold_leg_right = fold_apex_x
-    fold_leg_left = fold_leg_right + fold_leg_len
-    if fold_leg_len > 0:
-        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y + poly_id_h),
-                       fold_leg_len, POLY_WALL,
-                       fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
-        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y - poly_od_h),
-                       fold_leg_len, POLY_WALL,
-                       fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
-        # Water inside return leg
-        ax_a.add_patch(Rectangle((fold_leg_right, fold_leg_y - poly_id_h),
-                       fold_leg_len, POLY_ID,
-                       fc=C_WATER, ec="none", alpha=0.20, zorder=3.9))
-
-    # ── Retainer clip (holds fold closed) ────────────────────────────────
+    # ── Retainer clip position ──────────────────────────────────────────
+    fold_leg_left = fold_apex_x + fold_leg_len
     clip_x = fold_leg_left - 5 if fold_leg_len > 10 else beam_end_x - 10
     clip_w = 10
+    clip_left_x = clip_x - clip_w / 2
+    clip_right_x = clip_x + clip_w / 2
     clip_span_top = poly_od_h + 3
     clip_span_bot = fold_leg_y - poly_od_h - 3
     clip_t = 2.5
 
+    # ── Taper geometry — outside edges converge to a point left of clip ──
+    taper_len = 22
+    taper_x = clip_left_x - taper_len
+    taper_y = fold_leg_y / 2
+
+    # ── Main pipe — parallel from clip left to right edge ────────────────
+    ax_a.add_patch(Rectangle((clip_left_x, poly_id_h),
+                   d_xr - clip_left_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+    ax_a.add_patch(Rectangle((clip_left_x, -poly_od_h),
+                   d_xr - clip_left_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+    ax_a.add_patch(Rectangle((beam_end_x + 2, -poly_id_h),
+                   d_xr - beam_end_x - 2, POLY_ID,
+                   fc=C_WATER, ec="none", alpha=0.25, zorder=3.8))
+
+    # ── Fold-back leg — parallel through clip ────────────────────────────
+    ax_a.add_patch(Rectangle((clip_left_x, fold_leg_y + poly_id_h),
+                   clip_right_x - clip_left_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+    ax_a.add_patch(Rectangle((clip_left_x, fold_leg_y - poly_od_h),
+                   clip_right_x - clip_left_x, POLY_WALL,
+                   fc="#404040", ec=C_FRAME, lw=0.6, hatch="...", zorder=4))
+    ax_a.add_patch(Rectangle((clip_left_x, fold_leg_y - poly_id_h),
+                   clip_right_x - clip_left_x, POLY_ID,
+                   fc=C_WATER, ec="none", alpha=0.20, zorder=3.9))
+
+    # ── Tapered sections — left of clip, converging to point ─────────────
+    _pipe_fc = "#404040"
+    _pipe_kw = dict(fc=_pipe_fc, ec=C_FRAME, lw=0.6, hatch="...", zorder=4)
+    _water_kw = dict(fc=C_WATER, ec="none", alpha=0.20, zorder=3.9)
+
+    # Main pipe top wall taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, poly_od_h), (clip_left_x, poly_id_h),
+        (taper_x, taper_y)], closed=True, **_pipe_kw))
+    # Main pipe bottom wall taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, -poly_id_h), (clip_left_x, -poly_od_h),
+        (taper_x, taper_y)], closed=True, **_pipe_kw))
+    # Main pipe water taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, poly_id_h), (clip_left_x, -poly_id_h),
+        (taper_x, taper_y)], closed=True, **_water_kw))
+    # Fold-back top wall taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, fold_leg_y + poly_od_h), (clip_left_x, fold_leg_y + poly_id_h),
+        (taper_x, taper_y)], closed=True, **_pipe_kw))
+    # Fold-back bottom wall taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, fold_leg_y - poly_id_h), (clip_left_x, fold_leg_y - poly_od_h),
+        (taper_x, taper_y)], closed=True, **_pipe_kw))
+    # Fold-back water taper
+    ax_a.add_patch(mpatches.Polygon([
+        (clip_left_x, fold_leg_y + poly_id_h), (clip_left_x, fold_leg_y - poly_id_h),
+        (taper_x, taper_y)], closed=True, **_water_kw))
+
+    # ── Retainer clip (holds fold closed) ────────────────────────────────
     clip_verts = [
-        (clip_x - clip_w / 2, clip_span_top),
-        (clip_x + clip_w / 2, clip_span_top),
-        (clip_x + clip_w / 2, clip_span_bot),
-        (clip_x - clip_w / 2, clip_span_bot),
-        (clip_x - clip_w / 2, clip_span_bot + clip_t),
-        (clip_x + clip_w / 2 - clip_t, clip_span_bot + clip_t),
-        (clip_x + clip_w / 2 - clip_t, clip_span_top - clip_t),
-        (clip_x - clip_w / 2, clip_span_top - clip_t),
+        (clip_left_x, clip_span_top),
+        (clip_right_x, clip_span_top),
+        (clip_right_x, clip_span_bot),
+        (clip_left_x, clip_span_bot),
+        (clip_left_x, clip_span_bot + clip_t),
+        (clip_right_x - clip_t, clip_span_bot + clip_t),
+        (clip_right_x - clip_t, clip_span_top - clip_t),
+        (clip_left_x, clip_span_top - clip_t),
     ]
     ax_a.add_patch(mpatches.Polygon(clip_verts, closed=True,
                    fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=6))
@@ -1244,9 +1233,8 @@ def draw_sheet4():
            "3/4\" LDPE POLY PIPE",
            fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
 
-    leader(ax_a, fold_apex_x - bend_center_r * 0.7,
-           bend_cy - bend_center_r * 0.7,
-           d_xl + 5, bend_cy - 5,
+    leader(ax_a, taper_x + 3, taper_y - 5,
+           d_xl + 5, taper_y - 10,
            "180° FOLD-BACK\nEND CLOSURE",
            fs=5, color="#404040", font=FONT, zorder=20, bbox=_bbox_a)
 
@@ -1260,9 +1248,8 @@ def draw_sheet4():
               fontweight="bold", bbox=_bbox_a, **FONT, zorder=15)
 
     # ── Dimensions ───────────────────────────────────────────────────────
-    protrusion = pipe_past + bend_center_r + poly_od_h
-    draw_dim_h(ax_a, fold_apex_x - bend_center_r - poly_od_h,
-               beam_end_x, d_yb + 5,
+    protrusion = beam_end_x - taper_x
+    draw_dim_h(ax_a, taper_x, beam_end_x, d_yb + 5,
                f"{protrusion:.0f}mm\nPROTRUSION",
                offset=2, fs=4.5, font=FONT)
 

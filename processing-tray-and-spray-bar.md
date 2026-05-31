@@ -195,13 +195,16 @@ At 3.5 GPM total flow, bore inlet velocity is only 0.19 m/s (Re ≈ 6,500) — f
 losses along the bore are small compared to the orifice pressure drop through each 3mm
 hole. End-to-end flow variation is estimated at <15%.
 
-**End caps:**
+**Beam ends (open):**
 
-Each beam end is sealed with a 3mm 6061-T6 aluminum plate, cut to a 40×40mm square
-with radiused corners. TIG welded to the beam end face with a continuous perimeter bead.
+The aluminum SHS ends are left open — no end caps or welding. The internal 1" PVC
+pipe extends 25mm past each beam end and is sealed with a solvent-welded 1" PVC
+socket cap (see Sheet 4, Detail A). The PVC pipe and its caps provide the watertight
+enclosure for the spray water; the aluminum SHS serves only as structural housing.
 
-- **Feed end (left, X=470):** Center-drilled and tapped for a 1/2" NPT bulkhead fitting.
-- **Dead end (right, X=4,329):** Solid plate, fully welded and watertight.
+- **Feed end (left, X=470):** The 1/2" NPT bulkhead fitting is installed through
+  the beam wall at center span (X=2500), not at the end cap.
+- **Dead end (right, X=4,329):** PVC socket cap, solvent welded — fully sealed.
 
 ### 3.4 Wheel Carriage Assemblies
 
@@ -365,9 +368,8 @@ impact. The deflection is entirely elastic and fully recoverable.
 
 **Pre-camber recommendation:** Apply 5mm upward pre-camber during fabrication to offset
 roughly half the wet deflection, maintaining ≥5mm floor clearance at midspan. Method:
-support beam at both ends on blocks during end cap welding; apply 5mm upward shim at
-center; tack caps in bowed position. Residual stress in the end cap welds holds the
-camber permanently.
+introduce the camber at the midspan splice joint (§3.8) — shim the sleeve 5mm off-axis
+during set-screw tightening so the two SHS halves meet at a shallow upward angle.
 
 **Weight summary:**
 
@@ -377,7 +379,7 @@ camber permanently.
 | Water in bore | 4.46 |
 | L-brackets (2×) | 0.40 |
 | Wheel assemblies (4× wheel + fork + axle) | 0.60 |
-| End caps + bulkhead fitting | 0.10 |
+| PVC socket caps + bulkhead fitting | 0.10 |
 | Hardware (bolts, clips) | 0.30 |
 | **Dry total** | **~6.0 kg** |
 | **Wet total (operating)** | **~10.5 kg** |
@@ -506,7 +508,7 @@ tray drainage plan and sump cross-section).
 | Item | Specification | Qty | Est. Cost |
 |------|--------------|-----|-----------|
 | 6061-T6 AL SHS 1-1/2" × 1-1/2" × 1/8", 8 ft | 40×40×3mm, joined with internal sleeve | 2 | $36–$56 |
-| 6061-T6 AL plate 3/16" (5mm) | L-brackets + end caps (~300 × 600mm sheet) | 1 | $15–$25 |
+| 6061-T6 AL plate 3/16" (5mm) | L-brackets (~300 × 500mm sheet) | 1 | $15–$25 |
 | 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 | $8–$12 |
 | 1" Sch 40 PVC pipe, 10 ft | Internal spray pipe (cut to beam length) | 1 | $8 |
 | 1" PVC socket caps | Solvent welded to pipe ends | 2 | $3 |

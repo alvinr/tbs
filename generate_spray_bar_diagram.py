@@ -584,30 +584,42 @@ def draw_sheet2():
     uc_seat_z = BEAM_Z_BOT + BEAM_W / 2 + brk_t_c / 2
     spacer_h = uc_seat_z - plate_top_z
 
-    # ── Fork brackets (axle to plate level) ─────────────────────────────
-    for w_yd in [wheel1_yd, wheel2_yd]:
-        for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-            ax2.plot([w_yd + offset, w_yd + offset],
-                     [WHEEL_AXLE_Z, plate_bot_z],
-                     color=C_FRAME, lw=1.2, zorder=5.5)
-        ax2.plot([w_yd - WHEEL_WIDTH / 2 - 4, w_yd + WHEEL_WIDTH / 2 + 4],
-                 [WHEEL_AXLE_Z, WHEEL_AXLE_Z],
-                 color=C_FRAME, lw=0.8, zorder=6.5)
+    # ── Axle-retention U-clamps (underside of carriage plate) ─────────
+    axle_uc_t = 2
+    axle_pin_r = 5
+    axle_uc_gap = 1
+    axle_uc_inner = axle_pin_r + axle_uc_gap
+    axle_uc_outer = axle_uc_inner + axle_uc_t
+    axle_bot = WHEEL_AXLE_Z - axle_pin_r
+    auc_bar_top = axle_bot - axle_uc_gap
+    auc_bar_bot = auc_bar_top - axle_uc_t
+    auc_leg_h = plate_bot_z - auc_bar_top
 
-    # ── Fork-to-plate M5 through-bolts ──────────────────────────────────
     for w_yd in [wheel1_yd, wheel2_yd]:
-        for offset in [-WHEEL_WIDTH / 2 - 2, WHEEL_WIDTH / 2 + 2]:
-            fork_yd = w_yd + offset
-            ax2.add_patch(Rectangle((fork_yd - 4, plate_top_z), 8, 3,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-            ax2.add_patch(Rectangle((fork_yd - 2.5, plate_bot_z), 5, brk_t_c,
+        # Bottom bar
+        ax2.add_patch(Rectangle((w_yd - axle_uc_outer, auc_bar_bot),
+                      2 * axle_uc_outer, axle_uc_t,
+                      fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6.8))
+        # Side legs
+        for sign in [-1, 1]:
+            leg_yd = w_yd + sign * axle_uc_inner - (axle_uc_t if sign < 0 else 0)
+            ax2.add_patch(Rectangle((leg_yd, auc_bar_top),
+                          axle_uc_t, auc_leg_h,
+                          fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6.8))
+        # Through-bolts (through U-clamp legs + plate)
+        for sign in [-1, 1]:
+            bolt_yd = w_yd + sign * (axle_uc_inner + axle_uc_t / 2)
+            ax2.add_patch(Rectangle((bolt_yd - 2, auc_bar_bot - 3), 4, 3,
+                         fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+            ax2.add_patch(Rectangle((bolt_yd - 1.5, auc_bar_bot), 3,
+                         plate_top_z - auc_bar_bot,
                          fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
-            ax2.add_patch(Rectangle((fork_yd - 4, plate_bot_z - 4), 8, 4,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
+            ax2.add_patch(Rectangle((bolt_yd - 3, plate_top_z), 6, 2.5,
+                         fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
 
-    leader(ax2, wheel2_yd + WHEEL_WIDTH / 2 + 2, plate_cz,
-           wheel2_yd + 50, plate_cz - 20,
-           "M5 SS THRU-BOLT\n+ NYLOC NUT\n(1 PER FORK)",
+    leader(ax2, wheel1_yd + axle_uc_outer + 2, auc_bar_bot + axle_uc_t / 2,
+           wheel1_yd + axle_uc_outer + 30, auc_bar_bot - 8,
+           "SS U-CLAMP\n(AXLE RETENTION)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
     # ── Beam / SHS cross-section with PVC pipe ───────────────────────────

@@ -148,8 +148,8 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | Nylon wheels | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating |
-| Wheel fork brackets | 6061-T6 AL plate 6mm, U-fork profile | 4 | Mount wheels on axle pins |
-| Axle pins | 10mm SS clevis pin + snap rings | 4 | Wheel spindles (snap ring retention both ends) |
+| Axle pins | 10mm SS clevis pin | 4 | Wheel spindles |
+| Axle retention U-clamps | SS, 2mm strap, wraps under 10mm axle pin | 4 | Bolted to carriage plate underside, retains axle in position |
 | Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheel forks to beam via spacer + U-clamp |
 | Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
 | U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to carriage plate, tool-free adjustment |
@@ -256,11 +256,10 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
-**Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
-6mm 6061-T6 aluminum plate. The fork straddles the wheel with ~2mm side clearance,
-drilled for a 10mm clevis pin axle. The fork extends upward from the axle to the
-carriage plate (2mm leg height from axle to plate underside). M5 through-bolts
-connect each fork to the carriage plate.
+**Axle retention:** Each wheel axle (10mm SS clevis pin) is held by a SS U-clamp
+(2mm strap) bolted to the underside of the carriage plate. The U-clamp wraps under
+the axle pin with 1mm clearance, and through-bolts pass up through the clamp legs
+and carriage plate to secure the axle in position.
 
 ### 3.5 Carriage Plate Design
 
@@ -288,71 +287,58 @@ structure. The 200mm wheel spacing in Yd prevents significant skew.
 
 ### 3.6 Carriage Fabrication
 
-Each carriage is built from three sub-assemblies: two fork-and-wheel units and one
-L-bracket. Two identical carriages are required (left end and right end of beam).
+Each carriage is built from two sub-assemblies: a carriage plate with spacer blocks,
+and four wheel-and-axle units retained by U-clamps. Two identical carriages are
+required (left end and right end of beam).
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
-#### 3.6.1 Fork Bracket Fabrication (4 required)
-
-Each fork is a U-channel formed from 6mm 6061-T6 aluminum plate. The fork straddles
-one 50mm × 20mm nylon wheel with approximately 2mm side clearance per arm.
-
-**Blank:** Cut four pieces from 6mm plate, each 60mm tall × 70mm wide (developed width).
-
-| Step | Operation | Detail |
-|------|-----------|--------|
-| 1 | Mark center | Scribe a centerline along the 60mm dimension |
-| 2 | Mark bend lines | Two lines at ±12mm from center (24mm internal gap = 20mm wheel + 2mm clearance each side) |
-| 3 | Drill axle holes | Ø10.5mm through both arms simultaneously — clamp blank flat, drill 20mm from top edge, on centerline. Drilling before bending keeps both arms in perfect register |
-| 4 | Drill mounting holes | Two Ø5.5mm clearance holes (M5) in the base zone between the bend lines, spaced 16mm apart symmetrically about centerline |
-| 5 | Bend | Brake-press or vise-bend both arms up to 90° on the scribed lines, 2mm internal radius. Both bends must be parallel |
-| 6 | Deburr | Remove all burrs from edges and axle holes |
-
-**Check:** Drop a wheel into the fork channel — it should spin freely with visible
-daylight on both sides. If binding, file the inner arm faces lightly.
-
-#### 3.6.2 Carriage Plate Fabrication (2 required)
+#### 3.6.1 Carriage Plate Fabrication (2 required)
 
 Each carriage plate is a flat 5mm 6061-T6 aluminum plate with a central notch for the
-beam U-clamp. The plate sits 2mm above the wheel axle (Z=29–34mm), connecting the wheel
-fork brackets to the beam via the U-clamp and spacer blocks.
+beam U-clamp. The plate sits 2mm above the wheel axle (Z=29–34mm), connecting the
+wheels to the beam via spacer blocks and beam U-clamp.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark notch | Scribe center notch outline — width matches U-clamp outer span plus 1mm clearance each side |
+| 1 | Mark notch | Scribe center notch outline — width matches beam U-clamp outer span plus 1mm clearance each side |
 | 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
-| 3 | Mark fork positions | On each wing, mark two Ø5.5mm clearance holes (M5) matching each fork bracket's top bolt pattern |
-| 4 | Mark U-clamp bolt positions | Two Ø5.5mm holes on each side of the notch, aligning with U-clamp flared feet |
-| 5 | Drill all holes | Drill press for accuracy — 8 fork holes + 4 U-clamp holes total |
+| 3 | Mark axle U-clamp positions | On each wing, mark two Ø5.5mm clearance holes (M5) per wheel position for axle retention U-clamps |
+| 4 | Mark beam U-clamp bolt positions | Two Ø5.5mm holes on each side of the notch, aligning with beam U-clamp flared feet |
+| 5 | Drill all holes | Drill press for accuracy — 8 axle U-clamp holes + 4 beam U-clamp holes total |
 | 6 | Deburr | Remove all burrs from edges, notch, and holes |
 
-#### 3.6.3 Wheel Assembly (4 required)
+#### 3.6.2 Wheel Assembly (4 required)
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
+Each wheel is retained by a SS U-clamp (2mm strap) bolted to the carriage plate
+underside. The U-clamp wraps under the 10mm axle pin with 1mm clearance.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place nylon wheel (50mm × 20mm, 10mm bore) between fork arms |
-| 2 | Insert 10mm SS clevis pin through one arm, through wheel bore, out the opposite arm |
-| 3 | Install E-clip or snap ring on each exposed pin end |
-| 4 | Spin wheel by hand — confirm free rotation with no lateral wobble |
+| 1 | Place nylon wheel (50mm × 20mm, 10mm bore) in position under the carriage plate |
+| 2 | Insert 10mm SS clevis pin through wheel bore |
+| 3 | Position axle retention U-clamp under the axle, legs facing up toward plate |
+| 4 | Insert 2× M5 bolts up through U-clamp legs and carriage plate; secure with nyloc nuts on top |
+| 5 | Tighten finger-tight only until all four wheels are installed |
+| 6 | Spin wheel by hand — confirm free rotation with no lateral wobble |
 
-#### 3.6.4 Carriage Assembly (2 required)
+#### 3.6.3 Carriage Assembly (2 required)
 
 ![Sheet 6 — Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
 
 | Step | Operation |
 |------|-----------|
 | 1 | Place carriage plate flat on bench, notch centered |
-| 2 | Position first fork-and-wheel unit under the near wing (wheels hanging below bench edge). Insert 2× M5×20 SS bolts through plate and fork top; secure with nyloc nuts finger-tight |
-| 3 | Repeat for the second fork-and-wheel unit on the far wing |
-| 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
-| 5 | Tighten all nyloc nuts to 4 Nm |
-| 6 | Stand the carriage on a flat surface — all four wheels (across both fork units) must contact the surface simultaneously. Shim under one fork if needed before final torque |
+| 2 | Install first wheel-and-U-clamp unit on the near wing (wheel hanging below bench edge) — finger-tight |
+| 3 | Repeat for the second wheel on the near wing (200mm Yd spacing) |
+| 4 | Repeat for both wheels on the far wing |
+| 5 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
+| 6 | Tighten all nyloc nuts to 4 Nm |
+| 7 | Stand the carriage on a flat surface — all four wheels must contact simultaneously. Shim if needed before final torque |
 
 #### 3.6.5 Beam Attachment
 
@@ -557,8 +543,9 @@ tray drainage plan and sump cross-section).
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to center feed adapter | 1 | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
-| 10mm clevis pins + snap rings | Wheel axle pins | 4+4 | $8 |
-| M6×20 SS bolts + nyloc nuts | Carriage plate, fork, splice fasteners | 16 | $7 |
+| 10mm clevis pins | Wheel axle pins | 4 | $5 |
+| SS U-clamp, 2mm strap (10mm axle) | Axle retention, bolted to plate underside | 4 | $8 |
+| M6×20 SS bolts + nyloc nuts | Carriage plate, axle U-clamp, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |
 | SS U-clamp, flared legs, wing nuts (40mm) | Beam to carriage plate (tool-free) | 2 | $10 |

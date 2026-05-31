@@ -478,13 +478,7 @@ BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Y
 
 ---
 
-## 6. Processing Procedure
-
-The step-by-step processing procedure, including the valve matrix and diverter valve operator decisions, is documented in the [Operating Manual — Phase 4: Development](operating-manual.md#phase-4--development).
-
----
-
-## 7. Plumbing Specification
+## 6. Plumbing Specification
 
 ### Pipe sizing
 
@@ -535,7 +529,7 @@ At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s —
 
 ---
 
-## 8. Electrical — 12V DC Power
+## 7. Electrical — 12V DC Power
 
 | Item | Current draw | Hours/print | Wh/print |
 |------|-------------|-------------|---------|
@@ -550,7 +544,7 @@ A 100 Ah 12V lithium battery (1,200 Wh usable) provides **>25 prints** of pump p
 
 ---
 
-## 9. Equipment Layout
+## 8. Equipment Layout
 
 See **Sheet 2 — Plan View** (`water-system-sheet2.png`) for the water-system-specific P&ID layout. All four IBCs are in the provably shadow-free **right end zone** (X=4649–5893mm), arranged in a 2x2 stack. The optical zone (X=150–4649mm) contains only the processing tray and perimeter walkways at floor level.
 
@@ -589,9 +583,9 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 10. Parts List
+## 9. Parts List
 
-### 10.1 Water storage
+### Water storage
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -600,7 +594,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Storage subtotal: ~$420–$760**
 
-### 10.2 Pumps and pressure management
+### Pumps and pressure management
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -612,7 +606,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Pump subtotal: ~$305–$355**
 
-### 10.3 Filter unit
+### Filter unit
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -623,7 +617,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Filter subtotal: ~$470–$652**
 
-### 10.4 Valves and fittings
+### Valves and fittings
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -645,7 +639,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Valves & fittings subtotal: ~$414–$660**
 
-### 10.5 Pipe
+### Pipe
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -657,7 +651,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Pipe subtotal: ~$76–$108**
 
-### 10.6 Processing tray
+### Processing tray
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -673,7 +667,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 *Fabrication cost varies significantly by region. Get quotes from at least two local shops. For DIY builders with access to a sheet metal brake and TIG welder, material cost alone is $720–$1,000.*
 
-### 10.7 Electrical
+### Electrical
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -685,7 +679,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Electrical subtotal: ~$35**
 
-### 10.8 Processing consumables
+### Processing consumables
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -698,7 +692,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 **Consumables subtotal: ~$231–$278**
 
-### 10.9 Spray bar assembly (gantry design)
+### Spray bar assembly (gantry design)
 
 | Item | Spec | Qty | Supplier | Unit price | Total |
 |------|------|-----|---------|-----------|-------|
@@ -718,7 +712,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-### 10.10 Total cost summary
+### Total cost summary
 
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
@@ -737,7 +731,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 11. Maintenance
+## 10. Maintenance
 
 | Task | Frequency | Notes |
 |------|-----------|-------|
@@ -751,7 +745,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 12. Safety Notes
+## 11. Safety Notes
 
 1. **Ferricyanide in alkaline conditions:** Do not allow IBC-4 waste water to contact strong alkalis (sodium hydroxide, bleach). In alkaline + UV conditions, ferricyanide can release trace cyanide ions. Keep pH < 7.5 in all containers. This is a theoretical rather than acute risk at the concentrations involved, but is worth managing.
 
@@ -765,43 +759,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 
 ---
 
-## 13. Engineering Drawings
-
-| Drawing | File |
-|---------|------|
-| Sheet 1 — System flow schematic (P&ID) | `water-system-sheet1.png` |
-| Sheet 2 — Equipment layout plan + parts list | `water-system-sheet2.png` |
-| Sheet 3 — Processing tray drainage plan | `water-system-sheet3.png` |
-| Sheet 4 — Drain cross-section elevation (fitting detail + flow path) | `water-system-sheet4.png` |
-| Filter skid — plumbing elevation detail | `filter-skid-sheet1.png` |
-| Container floor plan — all systems | See [Electrical & Systems Report](electrical-report.md) Section 5.8 |
-
-**Sheet 1 — System Flow Schematic (P&ID)**
-![Water System — Sheet 1: P&ID Flow Schematic](assets/water-system-sheet1.png)
-
----
-
-**Sheet 2 — Equipment Layout Plan**
-![Water System — Sheet 2: Equipment Layout](assets/water-system-sheet2.png)
-
----
-
-**Sheet 3 — Processing Tray Drainage Plan**
-![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
-
----
-
-**Sheet 4 — Processing Tray Drain Cross-Section Elevation**
-![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
-
----
-
-**Filter Skid — Plumbing Elevation Detail (1:5)**
-![Filter Skid — Plumbing Elevation](assets/filter-skid-sheet1.png)
-
----
-
-## 14. Source References
+## 12. Source References
 
 **Chemistry and safety:**
 - [Photrio — Composition of cyanotype wash water](https://www.photrio.com/forum/threads/composition-of-cyanotype-wash-water.126234/)

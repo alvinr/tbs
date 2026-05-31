@@ -94,7 +94,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 | 20mm gap between tray edge and rail | Clear |
-| Spray bar (rides on tray floor beneath walkway grating) | Plate top at Z=42.5mm, grating bottom at Z=75mm | Clear |
+| Spray bar (rides on tray floor beneath walkway grating) | Beam top at Z=60mm, grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (equipment panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
@@ -131,7 +131,7 @@ irrigation nozzles spaced evenly along the beam bottom face.
 
 **Design constraints:**
 
-- Carriage plate top must clear walkway grating underside (Z=75mm) — no contact during travel
+- Beam top must clear walkway grating underside (Z=75mm) — no contact during travel
 - Wheels must fit within the 50mm tray rim height, rolling on the tray floor beneath walkways
 - Single-operator use — push/pull from the near walkway via telescoping pole through a 30mm slit
 - Must travel 2200mm along Yd (tray depth, near rim to far rim)
@@ -234,11 +234,11 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 |-----------------|------------|
 | Container floor | 0 |
 | Tray floor (SS sheet on floor) | ~2 |
+| Carriage plate bottom | 12 |
 | Nozzle bottom (6mm body) | 14 |
-| Beam bottom | 20 |
+| U-clamp bottom bar / carriage plate top | 17 |
+| Beam bottom (rests on U-clamp bar) | 20 |
 | Wheel axle centerline | 27 |
-| Carriage plate bottom | 37.5 |
-| Carriage plate top | 42.5 |
 | Tray rim top | 50 |
 | Wheel top | 52 |
 | Beam top | 60 |
@@ -249,31 +249,31 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Plate top → grating bottom | 32.5mm | Ample clearance; no contact during travel |
+| Beam top → grating bottom | 15mm | Adequate clearance; no contact during travel |
 | Beam bottom → tray floor | 18mm | Reduces to ~11mm at midspan under full water load (see §3.7) |
 | Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
+| Plate bottom → tray floor | 10mm | Plate clears floor at carriage ends |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
 **Wheel fork brackets:** Each wheel is held by a U-shaped fork bracket fabricated from
 6mm 6061-T6 aluminum plate. The fork straddles the wheel with ~2mm side clearance,
-drilled for a 10mm clevis pin axle. The fork extends upward from the axle to the
-carriage plate (10.5mm leg height from axle to plate underside). M5 through-bolts
-connect each fork to the carriage plate.
+drilled for a 10mm clevis pin axle. The fork extends upward from the carriage plate
+to the wheel axle (10mm leg height). M5 through-bolts connect each fork to the plate.
 
 ### 3.5 Carriage Plate Design
 
-Each carriage uses a flat aluminum plate positioned at beam center height (Z=40mm).
-The plate has a central notch that straddles the beam SHS, allowing the U-clamp to
-pass through and cradle the beam from below.
+Each carriage uses a flat aluminum plate positioned below the wheel axle (Z=12–17mm).
+The U-clamp sits on top of the plate, and the beam settles into the U-clamp from above.
 
 Formed from 5mm 6061-T6 aluminum plate:
 
-- **Plate wings:** Two flat sections extending outward from the beam notch to the
-  wheel fork attachment points. Total plate width spans both wheel fork positions
-  plus 18mm overhang on each side.
-- **Center notch:** Cut-out slightly wider than the U-clamp outer width, allowing
-  the clamp legs to pass through the plate and grip the beam.
-- **Ball joint mount:** The ball joint flange bolts to one plate wing beside the beam,
+- **Flat plate:** A single rectangle spanning both wheel fork positions plus 18mm
+  overhang on each side. No notch required — the plate sits entirely below the beam.
+- **Fork attachment:** Wheel fork brackets bolt to the plate top, extending upward
+  to the wheel axle centerline (Z=27mm).
+- **U-clamp attachment:** The U-clamp's flared feet bolt to the plate center, with
+  legs extending upward to cradle the beam.
+- **Ball joint mount:** The ball joint flange bolts to the plate beside the U-clamp,
   keeping the socket housing below grating level (Z=75mm).
 
 **Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
@@ -308,20 +308,17 @@ daylight on both sides. If binding, file the inner arm faces lightly.
 
 #### 3.6.2 Carriage Plate Fabrication (2 required)
 
-Each carriage plate is a flat 5mm 6061-T6 aluminum plate with a central notch for the
-beam U-clamp. The plate sits at beam center height (Z=40mm), connecting the wheel
-fork brackets to the beam via the U-clamp.
+Each carriage plate is a flat 5mm 6061-T6 aluminum plate. The U-clamp bolts to the
+top face; wheel fork brackets also bolt to the top face at the extremes.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark notch | Scribe center notch outline — width matches U-clamp outer span plus 1mm clearance each side |
-| 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
-| 3 | Mark fork positions | On each wing, mark two Ø5.5mm clearance holes (M5) matching each fork bracket's top bolt pattern |
-| 4 | Mark U-clamp bolt positions | Two Ø5.5mm holes on each side of the notch, aligning with U-clamp flared feet |
-| 5 | Drill all holes | Drill press for accuracy — 8 fork holes + 4 U-clamp holes total |
-| 6 | Deburr | Remove all burrs from edges, notch, and holes |
+| 1 | Mark fork positions | Mark two pairs of Ø5.5mm clearance holes (M5) matching each fork bracket's base bolt pattern, at the plate extremes |
+| 2 | Mark U-clamp bolt positions | Two Ø5.5mm holes on each side of center, aligning with U-clamp flared feet |
+| 3 | Drill all holes | Drill press for accuracy — 8 fork holes + 4 U-clamp holes total |
+| 4 | Deburr | Remove all burrs from edges and holes |
 
 #### 3.6.3 Wheel Assembly (4 required)
 
@@ -341,30 +338,27 @@ fork brackets to the beam via the U-clamp.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Place carriage plate flat on bench, notch centered |
-| 2 | Position first fork-and-wheel unit under the near wing (wheels hanging below bench edge). Insert 2× M5×20 SS bolts through plate and fork top; secure with nyloc nuts finger-tight |
-| 3 | Repeat for the second fork-and-wheel unit on the far wing |
+| 1 | Place carriage plate flat on bench |
+| 2 | Position first fork-and-wheel unit on the plate top at the near end (wheels hanging below bench edge). Insert 2× M5×20 SS bolts through fork base and plate; secure with nyloc nuts finger-tight |
+| 3 | Repeat for the second fork-and-wheel unit at the far end |
 | 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
 | 5 | Tighten all nyloc nuts to 4 Nm |
 | 6 | Stand the carriage on a flat surface — all four wheels (across both fork units) must contact the surface simultaneously. Shim under one fork if needed before final torque |
 
 #### 3.6.5 Beam Attachment
 
-The carriages attach to the beam using SS U-clamps in a cradle configuration. The
-U-clamp wraps under the beam from below, with its legs passing up through the carriage
-plate notch and flared feet resting against the plate underside. Bolts pass through the
-plate from above, through the U-clamp feet, and wing nuts thread on below. This
-provides tool-free adjustment of the carriage position along the beam.
+The carriages attach to the beam using SS U-clamps bolted to the carriage plate top.
+The U-clamp flared feet sit on the plate and bolt through it; the legs extend upward
+to form a cradle. The beam settles into the U-clamp from above. Wing nuts below the
+plate provide tool-free adjustment of the carriage position along the beam.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Slide one U-clamp under the beam SHS approximately 30mm from each end |
-| 2 | Lower the carriage plate over the beam so the notch straddles the U-clamp legs |
-| 3 | Align the U-clamp flared feet against the carriage plate underside |
-| 4 | Pass bolts through the plate from above, through the U-clamp feet |
-| 5 | Thread wing nuts onto each bolt below the feet and tighten by hand until the clamp grips the beam firmly |
-| 6 | Set the assembled spray bar on the processing tray floor. Confirm plate top (Z=42.5mm) clears walkway grating bottom (Z=75mm) — 32.5mm gap. Confirm all wheels roll freely on the tray floor |
-| 7 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
+| 1 | Bolt U-clamp to carriage plate — pass bolts through the flared feet and plate from above, thread wing nuts below |
+| 2 | Place the beam into the U-clamp cradle from above — it rests on the bottom bar |
+| 3 | Tighten wing nuts by hand until the clamp grips the beam firmly |
+| 4 | Set the assembled spray bar on the processing tray floor. Confirm beam top (Z=60mm) clears walkway grating bottom (Z=75mm) — 15mm gap. Confirm all wheels roll freely on the tray floor |
+| 5 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
 
@@ -476,12 +470,6 @@ nyloc nuts.
 A 25mm OD × 2mm wall aluminum round tube (~500mm long) connects from the ball joint
 stud to the telescoping pole. An M6 pinch bolt clamps the arm tube onto the stud. The
 1/2" flexible hose is zip-tied to the arm tube at ~200mm intervals.
-
----
-
-## 4. Operation
-
-The step-by-step spray bar setup, wash pass procedure, Brown water recycling passes, and storage are documented in the [Operating Manual — Phase 4: Development](operating-manual.md#42-development-in-water).
 
 ---
 

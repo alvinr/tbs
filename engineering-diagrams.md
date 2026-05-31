@@ -145,7 +145,16 @@ Source report: [Tilt-Swing Front Board](tilt-swing-board-report.md).
 
 ---
 
-## 8. Combined Distortion Renders (Film Plane + Tilt-Swing)
+## 8. Tilt-Swing Board Distortion Renders (Board Only)
+
+Isolated effect of the front board's ±5.3° tilt/swing on the projected image, with the film plane held flat. 7 configurations showing pure tilt, pure swing, and compound steering.
+Source report: [Tilt-Swing Front Board](tilt-swing-board-report.md).
+
+![TBS-001 Tilt-Swing Board Distortion — Summary](assets/tilt-swing-board-distortion-summary.png)
+
+---
+
+## 9. Combined Distortion Renders (Film Plane + Tilt-Swing)
 
 Compound optical projections when both the film plane mechanism and the tilt-swing
 front board are active simultaneously.
@@ -155,7 +164,7 @@ All renders are collected in the [Distortion Renders](complete-distortion-render
 
 ---
 
-## 9. Processing (Water) System
+## 10. Processing (Water) System
 
 Off-grid three-circuit chemical processing system.
 Source report: [Processing System](water-system-report.md).
@@ -174,7 +183,7 @@ Source report: [Processing System](water-system-report.md).
 
 ---
 
-## 10. Electrical & Power
+## 11. Electrical & Power
 
 12V DC power architecture, circuit layout, and system controls.
 Source report: [Electrical & Systems](electrical-report.md).
@@ -190,7 +199,7 @@ Source report: [Electrical & Systems](electrical-report.md).
 
 ---
 
-## 11. Light Trap Vestibule — Revolving Drum (Current Design)
+## 12. Light Trap Vestibule — Revolving Drum (Current Design)
 
 The TBS-001 light trap is a **revolving drum with a vertical axis** — a person
 walks through it upright, like a commercial revolving door. The drum is
@@ -205,7 +214,7 @@ For construction drawings of the hinged panel and drum, see
 
 ---
 
-## 12. Hinged Panel & Revolving Drum
+## 13. Hinged Panel & Revolving Drum
 
 Cargo-door hinged panel (2362 × 2388mm) with integrated revolving light-trap drum.
 Source report: [Light Trap Selection](light-trap-selection.md).
@@ -224,7 +233,7 @@ Source report: [Light Trap Selection](light-trap-selection.md).
 
 ---
 
-## 13. Ceiling Rail Suspension System
+## 14. Ceiling Rail Suspension System
 
 Panel suspension from HGR20 ceiling-mounted linear rails. Panel bottom edge clears
 the permanently installed processing tray (50mm rim) during transport slide.
@@ -237,7 +246,7 @@ the permanently installed processing tray (50mm rim) during transport slide.
 
 ---
 
-## 14. Perimeter Walkway
+## 15. Perimeter Walkway
 
 Removable grated walkway sections around all 4 sides of the processing tray. Provides
 dry-foot access to valves, electrical panel, film plane, and tilt-swing adjusters
@@ -289,7 +298,7 @@ Mounting varies by side:
 
 ---
 
-## 15. IBC Stacking & Securing
+## 16. IBC Stacking & Securing
 
 2×2 IBC stack in the right end zone (X=4674–5893mm). Four 600L Schutz Ecobulk
 MX totes held in a welded 50×50×3mm RHS mild steel stacking frame with D-ring
@@ -314,7 +323,7 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 
 ---
 
-## 16. Optical Line-of-Sight Clearance
+## 17. Optical Line-of-Sight Clearance
 
 Two-panel optical clearance diagram. Confirms which equipment items fall within the
 optical cone from the pinhole (X=2946mm, H=1194mm) to the film plane (depth=2262mm).
@@ -325,7 +334,7 @@ See [Construction Guide](pinhole-camera-construction.md) §4 for layout context.
 
 ---
 
-## 17. IBC Support Frame Fabrication
+## 18. IBC Support Frame Fabrication
 
 Welded 50×50×3mm RHS mild steel stacking frame for the 2×2 IBC stack in the
 right end zone. Portal spine along the 270mm plumbing corridor with cantilever
@@ -345,7 +354,7 @@ Source report: [Equipment Layout](equipment-layout-report.md) §5,
 
 ---
 
-## 18. Equipment Panel — IBC Corridor Mounting
+## 19. Equipment Panel — IBC Corridor Mounting
 
 Front elevation of the 18mm marine plywood equipment panel spanning the 270mm IBC
 plumbing corridor (Yd=1,046–1,316), perpendicular to the sealed end wall at X=5,000.

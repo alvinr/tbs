@@ -809,18 +809,18 @@ def draw_sheet2():
 
     # ── Water hose zip-tied to arm ───────────────────────────────────────
     hose_od = 16
-    hose_ctr_yd = bj_yd - ARM_OD / 2 - hose_od / 2 - 3
+    hose_ctr_yd = bj_yd + ARM_OD / 2 + hose_od / 2 + 3
 
     ax2.add_patch(Rectangle((hose_ctr_yd - hose_od / 2, arm_base_z_bj - 5),
                   hose_od, arm_top_z_bj - arm_base_z_bj + 10,
                   fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.6, zorder=7.5))
 
     for zt_z in [arm_base_z_bj + 15, arm_base_z_bj + 40, arm_base_z_bj + 65]:
-        zt_l = hose_ctr_yd - hose_od / 2 - 2
-        zt_r = bj_yd + ARM_OD / 2 + 4
+        zt_l = bj_yd - ARM_OD / 2 - 4
+        zt_r = hose_ctr_yd + hose_od / 2 + 2
         ax2.add_patch(Rectangle((zt_l, zt_z - 1.5), zt_r - zt_l, 3,
                      fc="none", ec="#222222", lw=1.2, zorder=11))
-        ax2.add_patch(Rectangle((zt_r, zt_z - 2), 2, 4,
+        ax2.add_patch(Rectangle((zt_l - 2, zt_z - 2), 2, 4,
                      fc="#333333", ec="#222222", lw=0.5, zorder=11))
 
     # ── Labels ───────────────────────────────────────────────────────────
@@ -845,7 +845,7 @@ def draw_sheet2():
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     leader(ax2, hose_ctr_yd, arm_base_z_bj + 55,
-           hose_ctr_yd - 20, arm_base_z_bj + 75,
+           hose_ctr_yd + 20, arm_base_z_bj + 75,
            "1/2\" FLEX HOSE\n(ZIP-TIED)",
            fs=5, color=C_HOSE, font=FONT, zorder=20)
 

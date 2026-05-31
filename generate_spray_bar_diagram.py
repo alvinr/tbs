@@ -704,7 +704,7 @@ def draw_sheet2():
     STUD_EXT = 20
     C_JOINT = "#C8B070"
 
-    bj_yd = (notch_r + plate_yd_r) / 2
+    bj_yd = (notch_l + plate_yd_l) / 2
     flange_bot_z = plate_top_z
     socket_bot_z = flange_bot_z + FLANGE_T
     ball_ctr_z = socket_bot_z + SOCKET_H / 2 + 2
@@ -776,9 +776,9 @@ def draw_sheet2():
 
     # Pinch bolt
     pinch_z = arm_base_z_bj + 12
-    ax2.add_patch(Rectangle((bj_yd + ARM_OD / 2, pinch_z - 2), 8, 4,
+    ax2.add_patch(Rectangle((bj_yd - ARM_OD / 2 - 8, pinch_z - 2), 8, 4,
                  fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=9))
-    ax2.plot([bj_yd + ARM_ID / 2, bj_yd + ARM_OD / 2 + 8],
+    ax2.plot([bj_yd - ARM_OD / 2 - 8, bj_yd - ARM_ID / 2],
              [pinch_z, pinch_z],
              color=C_BOLT, lw=1.5, zorder=9)
 
@@ -786,9 +786,9 @@ def draw_sheet2():
     ax2.annotate("", xy=(bj_yd, arm_top_z_bj + 8),
                  xytext=(bj_yd, arm_top_z_bj),
                  arrowprops=dict(arrowstyle="->", color=C_FRAME, lw=1.5), zorder=12)
-    ax2.text(bj_yd + 3, arm_top_z_bj + 5,
+    ax2.text(bj_yd - 3, arm_top_z_bj + 5,
              "ARM CONTINUES\nTO TRAY SURFACE",
-             ha="left", va="center", fontsize=4.5, color=C_DIM,
+             ha="right", va="center", fontsize=4.5, color=C_DIM,
              style="italic", **FONT, zorder=15)
 
     # Movement arcs
@@ -802,50 +802,50 @@ def draw_sheet2():
             arrowprops=dict(arrowstyle="->", color="#AA0000", lw=0.8,
                             connectionstyle=f"arc3,rad={0.3 if arc_ang > 0 else -0.3}"),
             zorder=12)
-    ax2.text(bj_yd - SOCKET_OD / 2 - 5, ball_ctr_z + 20,
+    ax2.text(bj_yd + SOCKET_OD / 2 + 5, ball_ctr_z + 20,
              "MULTI-AXIS\nARTICULATION",
-             ha="right", va="center", fontsize=4.5, color="#AA0000",
+             ha="left", va="center", fontsize=4.5, color="#AA0000",
              bbox=_bbox_cs, **FONT, zorder=15)
 
     # ── Water hose zip-tied to arm ───────────────────────────────────────
     hose_od = 16
-    hose_ctr_yd = bj_yd + ARM_OD / 2 + hose_od / 2 + 3
+    hose_ctr_yd = bj_yd - ARM_OD / 2 - hose_od / 2 - 3
 
     ax2.add_patch(Rectangle((hose_ctr_yd - hose_od / 2, arm_base_z_bj - 5),
                   hose_od, arm_top_z_bj - arm_base_z_bj + 10,
                   fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.6, zorder=7.5))
 
     for zt_z in [arm_base_z_bj + 15, arm_base_z_bj + 40, arm_base_z_bj + 65]:
-        zt_l = bj_yd - ARM_OD / 2 - 4
-        zt_r = hose_ctr_yd + hose_od / 2 + 2
+        zt_l = hose_ctr_yd - hose_od / 2 - 2
+        zt_r = bj_yd + ARM_OD / 2 + 4
         ax2.add_patch(Rectangle((zt_l, zt_z - 1.5), zt_r - zt_l, 3,
                      fc="none", ec="#222222", lw=1.2, zorder=11))
-        ax2.add_patch(Rectangle((zt_l - 2, zt_z - 2), 2, 4,
+        ax2.add_patch(Rectangle((zt_r, zt_z - 2), 2, 4,
                      fc="#333333", ec="#222222", lw=0.5, zorder=11))
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax2, bj_yd + SOCKET_OD / 2, ball_ctr_z,
-           bj_yd + SOCKET_OD / 2 + 20, ball_ctr_z - 30,
+    leader(ax2, bj_yd - SOCKET_OD / 2, ball_ctr_z,
+           bj_yd - SOCKET_OD / 2 - 20, ball_ctr_z - 30,
            f"Ø{BALL_DIA}mm BALL JOINT\n(U-BOLT TO PLATE)",
            fs=5, color=C_JOINT, font=FONT, zorder=20)
 
-    leader(ax2, ubolt_r, ub_arc_cz,
-           ubolt_r + 22, ub_arc_cz - 8,
+    leader(ax2, ubolt_l, ub_arc_cz,
+           ubolt_l - 22, ub_arc_cz - 8,
            "M8 SS U-BOLT\n+ NYLOC NUTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
-    leader(ax2, bj_yd + ARM_OD / 2 + 8, pinch_z,
-           bj_yd + 35, pinch_z + 12,
+    leader(ax2, bj_yd - ARM_OD / 2 - 8, pinch_z,
+           bj_yd - 35, pinch_z + 12,
            "M6 PINCH BOLT",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
-    leader(ax2, bj_yd + ARM_OD / 2, arm_base_z_bj + 50,
-           bj_yd + 45, arm_base_z_bj + 62,
+    leader(ax2, bj_yd - ARM_OD / 2, arm_base_z_bj + 50,
+           bj_yd - 45, arm_base_z_bj + 62,
            f"Ø{ARM_OD}mm AL TUBE\n(2mm WALL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     leader(ax2, hose_ctr_yd, arm_base_z_bj + 55,
-           hose_ctr_yd + 20, arm_base_z_bj + 75,
+           hose_ctr_yd - 20, arm_base_z_bj + 75,
            "1/2\" FLEX HOSE\n(ZIP-TIED)",
            fs=5, color=C_HOSE, font=FONT, zorder=20)
 

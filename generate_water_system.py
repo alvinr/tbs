@@ -849,8 +849,8 @@ ax3.plot([drain_dx, drain_dx],
          color="#D32F2F", lw=1.8, zorder=7)
 
 # Drain label — single leader to the right (clear side)
-leader(ax3, s3x(drain_local_x + 100), s3y(drain_local_yd),
-       s3x(drain_local_x + 620), s3y(drain_local_yd + 170),
+leader(ax3, s3x(drain_local_x), s3y(drain_local_yd + DRAIN_R),
+       s3x(drain_local_x + 250), s3y(drain_local_yd + 450),
        f"SUMP WELL (P-04 PICKUP)\n"
        f"X={PROC_TRAY_DRAIN_X}  Yd={PROC_TRAY_DRAIN_YD}\n"
        f"{PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm",
@@ -960,8 +960,8 @@ ax3.add_patch(plt.Rectangle((s3x(panel_local_x), s3y(panel_local_yd - 85)),
               s3d(50), s3d(170),
               fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=6))
 
-leader(ax3, s3x(panel_local_x), s3y(panel_local_yd),
-       s3x(panel_local_x + 275), s3y(panel_local_yd + 205),
+leader(ax3, s3x(panel_local_x + 50), s3y(panel_local_yd),
+       s3x(panel_local_x + 25), s3y(panel_local_yd + 205),
        "EQUIPMENT PANEL\n(P-04, FILTERS)", fs=6.5, color=C_PUMP)
 
 ax3.text(s3x((drain_local_x + corner_local_x) / 2), s3y(pipe_rim_yd - 85),

@@ -162,7 +162,7 @@ apertures in the beam bottom face.
 
 ### 3.3 Beam / Spray Pipe
 
-The structural beam doubles as the water distribution pipe. A single 6061-T6 aluminum
+The structural beam houses a 1" PVC pipe for water distribution. A single 6061-T6 aluminum
 SHS (40×40×3mm, imperial 1-1/2" × 1-1/2" × 1/8") spans 3859mm between the inner
 edges of the left and right walkways.
 
@@ -435,6 +435,8 @@ reinforced braided PVC hose connects from BV-02 down to the beam's center feed b
 fitting. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
 the print surface.
+
+![Sheet 7 — Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 →
 coiled flexible hose → bulkhead fitting → beam bore → spray holes.

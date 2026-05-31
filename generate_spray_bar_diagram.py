@@ -364,10 +364,11 @@ def draw_sheet1():
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
         f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 1\" PVC pipe inside.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
-        "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose → center feed.",
+        "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
+        "   → center feed.",
         "4. 12mm apertures in beam, 2mm holes in PVC pipe.",
     ]
-    draw_notes(ax, notes, X_LO + 85, 1220, spacing=20, fs=7, font=FONT, width=1600)
+    draw_notes(ax, notes, X_LO + 155, 1020, spacing=14, fs=7, font=FONT, width=1500)
 
     # ── Person silhouette (with break) ─────────────────────────────────
     PERSON_H = 1780

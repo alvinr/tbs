@@ -286,13 +286,18 @@ These factors are EV-based estimates for light level changes. Cyanotype is an ir
 
 Cyanotype develops by oxidation — the iron salts convert to Prussian blue on contact with water and air. The full blue color deepens over the first few minutes of drying.
 
+**Spray bar setup:**
+
+- [ ] 4.2.1 — Position the spray bar at the far end of the tray (Yd≈2280mm, film-plane side). Attach the telescoping pole to the arm tube.
+
 **Wash sequence using the Blue circuit:**
 
-- [ ] 4.2.1 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
-- [ ] 4.2.2 — Allow water to flow over the full surface of the muslin for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now** — the print is safe once washing begins.
-- [ ] 4.2.3 — Close VB3. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
-- [ ] 4.2.4 — Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
-- [ ] 4.2.5 — Final rinse: open VB3 for a 2-minute final flush. Drain via P-04 to IBC-3.
+- [ ] 4.2.2 — Switch ON P-01 Blue pump (circuit C). Confirm VB1, VB2, VB3 are open.
+- [ ] 4.2.3 — Open BV-02. Using the pole, slowly pull the spray bar toward the pinhole wall (decreasing Yd), flooding the print progressively. Travel speed ~50mm/second — full traverse takes ~44 seconds. At the near rim (Yd≈80mm), close BV-02. Push the bar back to the far end and repeat. Allow water to flow over the full surface for **5 minutes**. The wash water will run yellow-green as unreacted sensitizer clears. This is normal and non-toxic. **Switch to WHITE LIGHT now** — the print is safe once washing begins.
+- [ ] 4.2.4 — Close BV-02. Switch ON P-04 to pump wash water from the sump up to IBC-3 (Brown recovery) via 3W-DV-02. If the first rinse is heavily contaminated, set 3W-DV-02 to divert to IBC-4 (Waste) instead.
+- [ ] 4.2.5 — For the second wash pass, close BV-02 and activate P-02 through the filter train. Recycled Brown water from IBC-3 is pumped through the three-stage filter skid and back into the spray bar via the same supply path. Repeat the spray bar traverse.
+- [ ] 4.2.6 — Repeat for a total of **3 wash cycles** (15 minutes total). Subsequent rinses route to IBC-3 (Brown) for recycling via the filter skid.
+- [ ] 4.2.7 — Final rinse: open BV-02 for a 2-minute final flush with clean Blue water. Drain via P-04 to IBC-3.
 
 > **Visual check after the second wash:** The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.
 
@@ -348,6 +353,7 @@ DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After bro
 - [ ] 5.1.1 — Spent wash water (yellow-green): cyanotype wash water at this dilution is non-hazardous. It is collected in IBC-3 (Brown) for recycling through the filter skid (P-02 → F-1/F-2/F-3), or diverted to IBC-4 (Waste) if heavily contaminated. Waste IBC-4 contents are drained via external port X4 to a disposal tanker. Do not dispose into storm drains without verification of local regulations.
 - [ ] 5.1.2 — Unused sensitizer: seal and store in a dark bottle (4-week shelf life for separated A and B solutions). Mixed working sensitizer: discard — working life is 6 hours.
 - [ ] 5.1.3 — Rinse all trays, rollers, and brushes in plain water immediately. Dried sensitizer is harder to remove.
+- [ ] 5.1.4 — Stow the spray bar at either end of its travel. Detach the telescoping pole and store alongside the bar or clip to the container wall. The flexible hose coils naturally at the pinhole wall.
 
 ### 5.2 Container Ventilation
 - [ ] 5.2.1 — Open both ventilation fans to full speed (circuits A and B).

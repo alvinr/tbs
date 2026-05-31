@@ -960,6 +960,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4.2 Development in Water">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#valve-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valve matrix
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diverter-valve-operator-decisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diverter valve operator decisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3121,6 +3149,122 @@ Single-operator workflow for cyanotype on cotton muslin.</p>
 <blockquote>
 <p><strong>Visual check after the second wash:</strong> The image should be clearly visible — Prussian blue shadows against a white or off-white highlight. If the image appears flat or very faint, the print was underexposed. Allow it to complete washing and dry — images that appear pale when wet frequently darken significantly on drying. If still flat after drying, re-expose for 1.5× the original time.</p>
 </blockquote>
+<h4 id="valve-matrix">Valve matrix<a class="headerlink" href="#valve-matrix" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Valve</th>
+<th>Default</th>
+<th>Wash 1</th>
+<th>Drain 1→Brown</th>
+<th>Wash 2 (recycled)</th>
+<th>Drain 2→Brown</th>
+<th>Wash 3</th>
+<th>Drain 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BV-01 (Blue manifold)</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+<td>Open</td>
+</tr>
+<tr>
+<td>BV-02 (Blue to floor)</td>
+<td>Closed</td>
+<td><strong>Open</strong></td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td><strong>Open</strong></td>
+<td>Closed</td>
+</tr>
+<tr>
+<td>BV-06 (Chem tap)</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+<td>Closed</td>
+</tr>
+<tr>
+<td>3W-DV-02 (tray drain)</td>
+<td>Brown</td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+<td>Brown</td>
+<td><strong>Brown</strong></td>
+</tr>
+<tr>
+<td>P-02 (Brown pump)</td>
+<td>Off</td>
+<td>Off</td>
+<td>Off</td>
+<td><strong>On</strong></td>
+<td>Off</td>
+<td>Off</td>
+<td>Off</td>
+</tr>
+<tr>
+<td>3W-DV-01 (filter out)</td>
+<td>Blue return</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+<td>Blue</td>
+</tr>
+</tbody>
+</table>
+<h4 id="diverter-valve-operator-decisions">Diverter valve operator decisions<a class="headerlink" href="#diverter-valve-operator-decisions" title="Permanent link">&para;</a></h4>
+<p>The two 3-way diverter valves serve different roles in the water triage chain. Understanding when and why to switch each valve is critical to avoiding cross-contamination of the Blue clean supply.</p>
+<p><strong>3W-DV-02 — Tray drain diverter (operator judgment call)</strong></p>
+<p>DV-02 sits on the P-04 pump discharge and controls whether drain water from the processing tray goes to Brown (IBC-3, for filtering and potential recycling) or Black (IBC-4, waste for external disposal). There is no automated test at this valve — the operator decides based on what happened during the session:</p>
+<ul>
+<li><strong>Set to Brown (default):</strong> Normal processing rinse water. The water contains only trace amounts of residual cyanotype chemistry (ferric ammonium oxalate and potassium ferricyanide) from the print surface. This water is suitable for filtering and potential recycling back to Blue.</li>
+<li><strong>Switch to Black:</strong> Heavy contamination events — concentrated chemistry spills, failed sensitizer coating that washes off in bulk, or any situation where the drain water is visibly discolored beyond a pale yellow tint. This water goes directly to IBC-4 for external disposal and never enters the filter/recycle path.</li>
+</ul>
+<p><strong>Rule of thumb:</strong> If the drain water looks like rinse water (clear to pale yellow), send it to Brown. If it looks like chemistry (deep yellow, orange, or green), send it to Black.</p>
+<p><strong>3W-DV-01 — Filter output diverter (pH meter reading)</strong></p>
+<p>DV-01 sits after the filter skid (F1→F2→F3) and the pH test point. After brown water has been filtered, the operator checks the pH reading:</p>
+<ul>
+<li><strong>Set to Blue return (default):</strong> pH is between 6.5 and 8.0, indicating the filtered water is chemically neutral enough to return to IBC-2 (Blue clean supply) for reuse.</li>
+<li><strong>Switch to Black:</strong> pH is outside the acceptable range, or the water is visibly discolored after filtering. This water goes to IBC-4 (waste) rather than contaminating the clean supply.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Valve</th>
+<th>Decision</th>
+<th>Basis</th>
+<th>Who decides</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3W-DV-02 (tray drain)</td>
+<td>Brown vs Black</td>
+<td>Contamination severity at drain time</td>
+<td>Operator — visual judgment</td>
+</tr>
+<tr>
+<td>3W-DV-01 (filter output)</td>
+<td>Blue vs Black</td>
+<td>Water quality after filtering</td>
+<td>Operator — pH meter reading</td>
+</tr>
+</tbody>
+</table>
 <h3 id="43-drying">4.3 Drying<a class="headerlink" href="#43-drying" title="Permanent link">&para;</a></h3>
 <p><strong>Lighting: WHITE LIGHT or daylight — cyanotype is no longer light-sensitive after washing.</strong></p>
 <ul>

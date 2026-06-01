@@ -1529,9 +1529,8 @@ def draw_sheet6():
         ax_d.plot([bx, bx], [-BEAM_W / 2 - 3, BEAM_W / 2 + 3],
                   color=C_FRAME, lw=1.5, ls=(0, (5, 3)), zorder=6)
 
-    ax_d.text(60, 0, "40×40 SHS\n+ 3/4\" LDPE",
-              ha="center", va="center", fontsize=4.5, color=C_FRAME,
-              bbox=_bbox_d, **FONT, zorder=15)
+    ax_d.plot([-BEAM_SHOW_LEN, BEAM_SHOW_LEN], [0, 0],
+              color=C_FRAME, lw=0.3, ls="--", alpha=0.3, zorder=5.9)
 
     # ── Carriage plate ──────────────────────────────────────────────────
     arm_half_span = WHEEL_SPACING_YD / 2 + 18
@@ -1595,15 +1594,51 @@ def draw_sheet6():
                              fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=8))
 
     # ── Labels ───────────────────────────────────────────────────────────
+    # Wheels
     leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_PAIR_GAP / 2 + WHEEL_WIDTH / 2,
            -WHEEL_SPACING_YD / 2,
            D_X_HI - 225, -WHEEL_SPACING_YD / 2 - 10,
-           f"Ø{WHEEL_DIA}mm WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER SIDE",
+           f"Ø{WHEEL_DIA}mm NYLON WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER SIDE",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
-    leader(ax_d, -arm_w_x / 2 - 1, 0,
-           D_X_LO + 200, 45,
+    # Carriage plate
+    leader(ax_d, CARRIAGE_OFFSET_X + arm_w_x / 2, 45,
+           CARRIAGE_OFFSET_X + 55, 60,
            "CARRIAGE PLATE\n(5mm AL, NOTCHED)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    # Axle retention U-clamp
+    bot_right_wx = CARRIAGE_OFFSET_X + WHEEL_PAIR_GAP / 2
+    bot_w_yd = -WHEEL_SPACING_YD / 2
+    leader(ax_d, bot_right_wx + auc_w_plan / 2, bot_w_yd,
+           bot_right_wx + 50, bot_w_yd + 20,
+           "AXLE U-CLAMP\n(2mm SS)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    # Axle / clevis pin
+    top_left_wx = CARRIAGE_OFFSET_X - WHEEL_PAIR_GAP / 2
+    top_w_yd = WHEEL_SPACING_YD / 2
+    leader(ax_d, top_left_wx, top_w_yd,
+           top_left_wx + 50, top_w_yd + 15,
+           "Ø10mm AXLE\n(CLEVIS PIN)",
+           fs=5, color="#888888", font=FONT, zorder=20)
+
+    # Through-bolts (on axle U-clamp)
+    leader(ax_d, bot_right_wx, bot_w_yd + auc_w_plan / 2 - 3,
+           bot_right_wx + 50, bot_w_yd - 20,
+           "M5 THROUGH-BOLT\n(2 PER CLAMP)",
+           fs=5, color=C_BOLT, font=FONT, zorder=20)
+
+    # LDPE pipe
+    leader(ax_d, 30, POLY_OD / 2,
+           60, BEAM_W / 2 + 15,
+           "3/4\" LDPE PIPE",
+           fs=5, color=C_POLY, font=FONT, zorder=20)
+
+    # Beam
+    leader(ax_d, 100, BEAM_W / 2,
+           120, BEAM_W / 2 + 15,
+           "40×40×3mm AL SHS",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────

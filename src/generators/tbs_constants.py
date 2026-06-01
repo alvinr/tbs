@@ -65,6 +65,10 @@ Redesign basis (2026-05-20 rev 7 — walkway reorg):
 """
 
 import math
+import os
+
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.normpath(os.path.join(_THIS_DIR, "..", ".."))
 
 # ── Container interior ────────────────────────────────────────────────────────
 C_LEN  = 5893   # interior length, long axis X (mm)
@@ -545,12 +549,11 @@ FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
-DIAGRAMS_DIR = "diagrams"
-SVG_DIR      = "diagrams/svg"
+DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
+SVG_DIR      = os.path.join(PROJECT_ROOT, "diagrams", "svg")
 
 def svg_path(png_path):
     """Convert a diagrams/*.png path to diagrams/svg/*.svg."""
-    import os
     base = os.path.basename(png_path).replace(".png", ".svg")
     return os.path.join(SVG_DIR, base)
 

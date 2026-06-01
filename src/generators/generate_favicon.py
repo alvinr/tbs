@@ -6,12 +6,15 @@ generate_favicon.py — Renders the GPC badge as a 512×512 PNG favicon.
 Output: favicon.png (for docs/assets/)
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 from matplotlib.colors import LinearSegmentedColormap
+
+_PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
 # ── Cyanotype palette (matches logo) ─────────────────────────────────────────
 PRU_INK   = "#081A32"
@@ -91,7 +94,7 @@ ax.text(CX, 12, "No.1", color=CYAN_LITE, fontsize=11, ha="center", va="center",
         fontfamily="monospace", zorder=6)
 
 # ── Save ──────────────────────────────────────────────────────────────────────
-out = "assets/favicon.png"
+out = os.path.join(_PROJECT_ROOT, "assets", "favicon.png")
 fig.savefig(out, dpi=100, bbox_inches="tight", pad_inches=0,
             facecolor=PRU_DEEP)
 plt.close(fig)

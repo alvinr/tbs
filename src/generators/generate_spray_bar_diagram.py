@@ -37,11 +37,10 @@ from tbs_constants import (
     SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP,
     BV02_X, BV02_Z,
     SPRAY_BAR_SLIT_W,
+    DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
-
-DIAGRAMS_DIR = "diagrams"
 
 # ── Palette ──────────────────────────────────────────────────────────────────
 C_BG     = "#F5F5F0"

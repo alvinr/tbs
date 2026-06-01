@@ -33,11 +33,11 @@ if ! python3 -m mkdocs --version &>/dev/null; then
 fi
 
 if [[ ! -f "$SCRIPT_DIR/mkdocs.yml" ]]; then
-    error "mkdocs.yml not found. Run: python3 setup_docs.py"
+    error "mkdocs.yml not found. Run: python3 src/generators/setup_docs.py"
 fi
 
 if [[ ! -d "$DOCS_DIR" ]]; then
-    error "published/ directory not found. Run: python3 setup_docs.py"
+    error "published/ directory not found. Run: python3 src/generators/setup_docs.py"
 fi
 
 # ── Sync markdown files ───────────────────────────────────────────────────────
@@ -325,10 +325,10 @@ esac
 if [[ "$MODE" != "local" ]]; then
     if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
         info "Generating brochure PDF..."
-        if python3 "${SCRIPT_DIR}/generate_brochure.py"; then
+        if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py"; then
             info "PDF -> tbs-brochure.pdf"
         else
-            warn "PDF generation failed -- check generate_brochure.py output above"
+            warn "PDF generation failed -- check src/generators/generate_brochure.py output above"
         fi
     else
         warn "fpdf2 / markdown / pyyaml not installed -- skipping PDF generation"

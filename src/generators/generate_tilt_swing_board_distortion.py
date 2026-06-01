@@ -22,6 +22,7 @@ import os
 from tbs_constants import (
     svg_path, SVG_DIR, C_WID,
     FP_W as _FP_W, FP_H as _FP_H,
+    DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
 
@@ -266,7 +267,7 @@ if __name__ == '__main__':
                     subtitle=f"Board only (film flat) — {desc}",
                     scale_note="Ray-traced projection",
                     doc_id="TBS-TS01 · Board Distortion")
-        out = f'diagrams/tilt-swing-board-distortion-{label.lower()}.png'
+        out = os.path.join(DIAGRAMS_DIR, f'tilt-swing-board-distortion-{label.lower()}.png')
         fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
         fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
         plt.close(fig)
@@ -299,7 +300,7 @@ if __name__ == '__main__':
                 subtitle="Board only (film flat) — all 7 configurations",
                 scale_note="Ray-traced projection",
                 doc_id="TBS-TS01 · Board Distortion")
-    out_s = 'diagrams/tilt-swing-board-distortion-summary.png'
+    out_s = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-distortion-summary.png')
     fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
     fig_s.savefig(svg_path(out_s), bbox_inches="tight", facecolor=BG)
     plt.close(fig_s)

@@ -78,6 +78,7 @@ from tbs_constants import (
     SPRAY_BAR_SLIT_W,
     EP_X, EP_W, BA_X, BA_W,
     EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_X, EVAP_STOW_YD,
+    DIAGRAMS_DIR,
 )
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -647,8 +648,8 @@ def sheet2():
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet2.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet2.png saved")
 
@@ -1031,8 +1032,8 @@ def sheet1():
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
                 height=0.06)
 
-    fig.savefig("diagrams/walkway-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet1.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet1.png saved")
 
@@ -1394,8 +1395,8 @@ def sheet3():
                 scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet3.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet3.png saved")
 
@@ -1740,8 +1741,8 @@ def sheet4():
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.10)
 
-    fig.savefig("diagrams/walkway-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet4.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet4.png saved")
 
@@ -2013,8 +2014,8 @@ def sheet5():
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet5.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet5.png saved")
 
@@ -2611,8 +2612,8 @@ def sheet6():
                 scale_note="Axes in mm \u00b7 VIEWS A/B/C",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet6.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
 
@@ -3089,8 +3090,8 @@ def sheet7():
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
                 height=0.07)
 
-    fig.savefig("diagrams/walkway-sheet7.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet7.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet7.png saved")
 
@@ -3353,8 +3354,8 @@ def sheet8():
                 scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
                 height=0.06)
 
-    fig.savefig("diagrams/walkway-sheet8.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/walkway-sheet8.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet8.png saved")
 
@@ -3363,7 +3364,7 @@ def sheet8():
 # Main
 # ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
-    os.makedirs("diagrams", exist_ok=True)
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     print("Generating perimeter walkway diagrams...")
     sheet1()  # plan view → sheet1.png
     sheet2()  # cross-section → sheet2.png

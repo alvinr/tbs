@@ -40,6 +40,7 @@ from tbs_constants import (
     WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, C_WALL,
     svg_path, SVG_DIR,
+    DIAGRAMS_DIR,
 )
 import os
 from tbs_title_block import title_block
@@ -173,7 +174,6 @@ def pipe_bridge(ax, x, y, direction='h', r=0.14, color=C_FRAME, lw=LW_PIPE,
     ax.plot(bx, by, color=color, lw=lw, ls=style, zorder=zorder, solid_capstyle='round')
 
 
-DIAGRAMS_DIR = 'diagrams'
 TOTAL_SHEETS = 4
 
 

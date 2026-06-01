@@ -36,6 +36,7 @@ from tbs_constants import (
     DRUM_D, DRUM_R, DRUM_H_LT,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
+    DIAGRAMS_DIR,
 )
 
 # ── Palette (white engineering) ───────────────────────────────────────────────
@@ -361,8 +362,8 @@ def sheet1():
                 scale_note="EQUAL ASPECT · ALL DIMS IN mm · VIEW LOOKING ALONG Yd AXIS (NEAR → FAR)",
                 portrait=True, height=0.055)
 
-    fig.savefig("diagrams/ceiling-rail-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ceiling-rail-sheet1.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet1.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ceiling-rail-sheet1.png saved")
 
@@ -595,15 +596,15 @@ def sheet2():
                 subtitle="DETAIL — RAIL / CARRIAGE / BRACKET ASSEMBLY",
                 scale_note="AXES IN mm · SECTION THROUGH Yd CENTER ZONE")
 
-    fig.savefig("diagrams/ceiling-rail-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ceiling-rail-sheet2.png"), bbox_inches="tight", facecolor=BG)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet2.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ceiling-rail-sheet2.png saved")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    os.makedirs("diagrams", exist_ok=True)
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating ceiling rail suspension system diagrams...")
     sheet1()

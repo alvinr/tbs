@@ -26,7 +26,7 @@ from pathlib import Path
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-PROJECT_ROOT = Path(__file__).parent.resolve()
+PROJECT_ROOT = Path(__file__).parent.parent.parent.resolve()
 DOCS_DIR = PROJECT_ROOT / "published"
 ASSETS_DIR = DOCS_DIR / "assets"
 

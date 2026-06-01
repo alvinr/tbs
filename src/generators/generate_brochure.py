@@ -38,7 +38,7 @@ except ImportError:
     sys.exit("ERROR: fpdf2 not installed. Run: python3 -m pip install --user fpdf2")
 
 # -- Constants -----------------------------------------------------------------
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 MKDOCS_YML   = os.path.join(PROJECT_ROOT, "mkdocs.yml")
 OUTPUT_PDF   = os.path.join(PROJECT_ROOT, "tbs-brochure.pdf")
 DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")

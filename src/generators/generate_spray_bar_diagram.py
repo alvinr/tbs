@@ -1378,7 +1378,7 @@ def draw_sheet5():
                        7, washer_t,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
         # Shaft (through plate + clamp leg)
-        shaft_bot = sc_bar_bot - washer_t
+        shaft_bot = sc_bar_bot
         ax_w.add_patch(Rectangle((bolt_cx - 1.5, shaft_bot),
                        3, plate_top_y - shaft_bot,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))
@@ -1403,7 +1403,7 @@ def draw_sheet5():
 
     # ── Labels ───────────────────────────────────────────────────────────
     bolt_head_top = plate_top_y + washer_t + bolt_head_h
-    nut_bot = sc_bar_bot - washer_t - washer_t - nut_h
+    nut_bot = sc_bar_bot - washer_t - nut_h
 
     # Right side labels
     leader(ax_w, clamp_cx_r, bolt_head_top, w_xr - 10, 24,
@@ -1427,7 +1427,7 @@ def draw_sheet5():
            "FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_l - sc_hw, (sc_bar_top + plate_bot_y) / 2,
+    leader(ax_w, clamp_cx_l - sc_hw + 0.5, (sc_bar_top + plate_bot_y) / 2,
            w_xl + 5, 8,
            "SADDLE CLAMP\nLEG (1.5mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)

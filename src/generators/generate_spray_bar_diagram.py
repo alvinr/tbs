@@ -1410,21 +1410,17 @@ def draw_sheet5():
            "M5 SS BOLT\nHEAD",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    leader(ax_w, 0, plate_bot_y + plate_h / 2, w_xr - 25, 28,
+    leader(ax_w, 11, plate_bot_y + plate_h / 2, w_xr - 22, 28,
            "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, 0, 0, w_xr - 8, 5,
+    leader(ax_w, w_xr - 10, 0, w_xr - 8, 5,
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_r, sc_bar_bot, w_xr - 8, -7,
+    leader(ax_w, clamp_cx_r, sc_bar_bot, w_xr - 8, -9,
            "SADDLE CLAMP\nBAR (UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
-
-    leader(ax_w, 10, 0, w_xr - 8, -15,
-           "Ø10mm\nWHEEL BORE",
-           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # Left side labels
     leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, 28,
@@ -1436,11 +1432,11 @@ def draw_sheet5():
            "SADDLE CLAMP\nLEG (1.5mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_l, nut_bot + nut_h / 2, w_xl + 5, -8,
+    leader(ax_w, clamp_cx_l, nut_bot + nut_h / 2, w_xl + 5, -14,
            "M5 NYLOC NUT\n+ FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    leader(ax_w, -10.5, -12, w_xl + 8, -15,
+    leader(ax_w, -5.5, -12, w_xl + 8, -18,
            "Ø50mm NYLON\nWHEEL (CUT)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 

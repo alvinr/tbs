@@ -1295,9 +1295,9 @@ def draw_sheet4():
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet5():
-    fig = plt.figure(figsize=(12, 16))
+    fig = plt.figure(figsize=(10, 12))
     fig.patch.set_facecolor(C_BG)
-    ax_w = fig.add_axes([0.08, 0.06, 0.84, 0.90])
+    ax_w = fig.add_axes([0.08, 0.06, 0.84, 0.88])
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
 

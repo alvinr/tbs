@@ -21,6 +21,7 @@ from tbs_constants import (
     svg_path, SVG_DIR,
     C_WASTE_IBC, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
+    DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
@@ -363,9 +364,9 @@ def draw_sheet1():
                 scale_note="Not to scale",
                 doc_id="TBS-ELEC · Electrical & Systems")
 
-    plt.savefig("diagrams/electrical-sheet1.png", dpi=150, bbox_inches="tight",
+    plt.savefig(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png"), dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path("diagrams/electrical-sheet1.png"), bbox_inches="tight", facecolor="white")
+    plt.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png")), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
 

@@ -13,6 +13,7 @@ Changes from v2:
   • GPC badge repositioned; light-source circle bleeds off top-right corner
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
@@ -20,7 +21,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import (FancyBboxPatch, Circle, Rectangle,
                                  Ellipse, Arc)
 from matplotlib.colors import LinearSegmentedColormap
-from tbs_constants import C_WID
+from tbs_constants import C_WID, PROJECT_ROOT
 
 # ── Vibrant cyanotype palette ─────────────────────────────────────────────────
 PRU_INK   = "#081A32"
@@ -449,7 +450,8 @@ for cx_,cy_ in [(14,14),(86,14),(14,86),(86,86)]:
     ax.plot([cx_,cx_+3.5*sx_],[cy_,cy_], color=PAPER,lw=1.4,alpha=0.6,zorder=9)
     ax.plot([cx_,cx_],[cy_,cy_+3.5*sy_], color=PAPER,lw=1.4,alpha=0.6,zorder=9)
 
-fig.savefig("logo-final.png", dpi=150, bbox_inches="tight",
+_out = os.path.join(PROJECT_ROOT, "logo-final.png")
+fig.savefig(_out, dpi=150, bbox_inches="tight",
             facecolor=fig.get_facecolor())
 plt.close(fig)
-print("  → logo-final.png  Done.")
+print(f"  → {_out}  Done.")

@@ -48,6 +48,7 @@ from tbs_constants import (
     SHELF_DEPTH, SHELF_H, SHELF_T, SHELF_HANGER_D, SHELF_HANGER_N,
     ZONE_R_START, cone_right,
     C_OUT, C_DIM, C_STEEL, C_ALUM, C_CL,
+    DIAGRAMS_DIR,
 )
 
 # ── Local palette ────────────────────────────────────────────────────────────
@@ -252,7 +253,7 @@ def sheet1():
                 scale_note="AXES IN mm",
                 doc_id="TBS-001 · Chem Prep")
 
-    out = "diagrams/shelf-sheet1.png"
+    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -451,7 +452,7 @@ def sheet2():
                 scale_note="AXES IN mm",
                 doc_id="TBS-001 · Chem Prep")
 
-    out = "diagrams/shelf-sheet2.png"
+    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -658,7 +659,7 @@ def sheet3():
                 doc_id="TBS-001 · Chem Prep",
                 portrait=True, height=0.06)
 
-    out = "diagrams/shelf-sheet3.png"
+    out = os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
     fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -668,7 +669,7 @@ def sheet3():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    os.makedirs("diagrams", exist_ok=True)
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating chemistry prep shelf diagrams...")
     sheet1()

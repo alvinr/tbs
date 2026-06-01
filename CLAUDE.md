@@ -15,25 +15,27 @@
 ## Repository Structure
 
 ```
-/                        ← source: .md reports, .py generator scripts
+/                        ← project root: .md reports, config files
+src/generators/          ← all .py scripts (diagram generators, helpers, setup)
+diagrams/                ← generated PNGs and SVGs (output of generators)
 published/               ← MkDocs input — auto-populated by publish.sh (gitignored, never edit directly)
 published/assets/        ← images — auto-populated by publish.sh
 site/                    ← built output — gitignored, never commit
 .claude/                 ← Claude session files — never commit
 ```
 
-**Key config files:** `mkdocs.yml` (nav + theme), `publish.sh` (sync + deploy), `setup_docs.py` (one-time setup).
+**Key config files:** `mkdocs.yml` (nav + theme), `publish.sh` (sync + deploy), `src/generators/setup_docs.py` (one-time setup).
 
 ---
 
 ## Workflow: Adding a New Document
 
 1. Write `<name>.md` in the project root.
-2. If drawings are needed: write `generate_<name>.py` → outputs to `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc. (all generated PNGs go into `diagrams/`).
+2. If drawings are needed: write `src/generators/generate_<name>.py` → outputs to `diagrams/<name>-sheet1.png`, `diagrams/<name>-sheet2.png`, etc. (all generated PNGs go into `diagrams/`).
 3. Register the `.md` in `publish.sh` → `MD_FILES` array.
 4. Register any new `.png` files in `publish.sh` → `DIAG_FILES` array (for generated diagrams) or `IMG_FILES` (for root-only images like logos).
-5. Register the `.md` in `setup_docs.py` → `MD_FILES` list (controls nav title).
-6. Register any new `.png` files in `setup_docs.py` → `DIAG_IMAGE_FILES` list (for generated diagrams) or `ROOT_IMAGE_FILES` (for root-only images).
+5. Register the `.md` in `src/generators/setup_docs.py` → `MD_FILES` list (controls nav title).
+6. Register any new `.png` files in `src/generators/setup_docs.py` → `DIAG_IMAGE_FILES` list (for generated diagrams) or `ROOT_IMAGE_FILES` (for root-only images).
 7. Add a row to the `INDEX_MD` table in `setup_docs.py`.
 8. Add a nav entry to `mkdocs.yml` → `nav:` block.
 9. Add a row to `docs/index.md` → Documents table.

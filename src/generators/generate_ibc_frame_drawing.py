@@ -36,6 +36,7 @@ from tbs_constants import (
     BLUE_IBC_Y, IBC_FAR_Y,
     IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W,
     IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
+    DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, hatch_rect, draw_notes
@@ -677,9 +678,9 @@ def sheet1():
                 scale_note="Axes in mm — VIEW ALONG X",
                 height=0.04)
 
-    fig.savefig("diagrams/ibc-frame-sheet1.png", dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-frame-sheet1.png"),
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png")),
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet1.png saved")
@@ -867,9 +868,9 @@ def sheet2():
                 scale_note="Axes in mm — VIEW ALONG Yd",
                 height=0.04)
 
-    fig.savefig("diagrams/ibc-frame-sheet2.png", dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet2.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-frame-sheet2.png"),
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet2.png")),
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet2.png saved")
@@ -1175,9 +1176,9 @@ def sheet3():
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
                 height=0.04)
 
-    fig.savefig("diagrams/ibc-frame-sheet3.png", dpi=130,
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet3.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path("diagrams/ibc-frame-sheet3.png"),
+    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet3.png")),
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet3.png saved")
@@ -1187,7 +1188,7 @@ def sheet3():
 # Main
 # ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
-    os.makedirs("diagrams", exist_ok=True)
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     print("Generating IBC support frame drawings...")
     sheet1()
     sheet2()

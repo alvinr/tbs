@@ -40,6 +40,7 @@ from tbs_constants import (
     CORRIDOR_W, CORRIDOR_YD_NEAR,
     BLUE_IBC_Y, IBC_FAR_Y, IBC_COL_X, IBC_W, IBC_D,
     svg_path,
+    DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (
@@ -1404,10 +1405,10 @@ title_block(ax_tb, "SHEET 1 OF 1",
 
 # ── Save ─────────────────────────────────────────────────────────────────────
 import os
-os.makedirs("diagrams", exist_ok=True)
-fig.savefig("diagrams/pump-manifold-sheet1.png", dpi=150, bbox_inches="tight",
+os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+fig.savefig(os.path.join(DIAGRAMS_DIR, "pump-manifold-sheet1.png"), dpi=150, bbox_inches="tight",
             facecolor=fig.get_facecolor())
-fig.savefig(svg_path("diagrams/pump-manifold-sheet1.png"), bbox_inches="tight",
+fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "pump-manifold-sheet1.png")), bbox_inches="tight",
             facecolor=fig.get_facecolor())
 plt.close(fig)
 print("Pump manifold diagram written → diagrams/pump-manifold-sheet1.png")

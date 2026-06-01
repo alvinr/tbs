@@ -9,10 +9,13 @@ generate_logos.py — Three logo concepts for the Giant Pinhole Camera project.
   logo-option3.png  —  Haring / Bauhaus / Kodak
 """
 
+import os
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+_PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, Circle, Rectangle, Ellipse, Wedge, Arc
 from matplotlib.path import Path
@@ -174,7 +177,7 @@ def make_logo1():
                     [cy, cy + dy * (1 if cy < 50 else -1)],
                     color=WHITE, lw=1, alpha=0.4)
 
-    save(fig, "assets/logo-option1.png")
+    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option1.png"))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -366,7 +369,7 @@ def make_logo2():
     ax.text(50, 22.5, specs, color=IBM_BLUE, fontsize=6.2, ha="center", va="center",
             fontfamily="monospace", fontweight="bold", zorder=6)
 
-    save(fig, "assets/logo-option2.png")
+    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option2.png"))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -517,7 +520,7 @@ def make_logo3():
             color=BLACK, fontsize=7.5, ha="left", va="center",
             fontweight="bold", fontfamily="monospace", zorder=6)
 
-    save(fig, "assets/logo-option3.png")
+    save(fig, os.path.join(_PROJECT_ROOT, "assets", "logo-option3.png"))
 
 
 # ── Run all ───────────────────────────────────────────────────────────────────

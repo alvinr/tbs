@@ -1421,10 +1421,6 @@ def draw_sheet5():
            "SADDLE CLAMP\nBAR (UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, 3, -3, w_xr - 8, -15,
-           "Ø10mm\nWHEEL BORE",
-           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
-
     # Left side labels
     leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, 28,
            "FLAT WASHER",

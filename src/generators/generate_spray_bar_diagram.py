@@ -1418,11 +1418,11 @@ def draw_sheet5():
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_r, sc_bar_bot - 0.5, w_xr - 8, -7,
+    leader(ax_w, clamp_cx_r, sc_bar_bot, w_xr - 8, -7,
            "SADDLE CLAMP\nBAR (UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, 3, -3, w_xr - 8, -15,
+    leader(ax_w, 10, 0, w_xr - 8, -15,
            "Ø10mm\nWHEEL BORE",
            fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 

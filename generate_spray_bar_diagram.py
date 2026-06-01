@@ -1302,8 +1302,8 @@ def draw_sheet5():
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
 
-    w_xl, w_xr = -25, 25
-    w_yb, w_yt = -32, 38
+    w_xl, w_xr = -16, 16
+    w_yb, w_yt = -18, 28
     ax_w.set_xlim(w_xl, w_xr)
     ax_w.set_ylim(w_yb, w_yt)
 
@@ -1311,8 +1311,8 @@ def draw_sheet5():
               "DETAIL C — WHEEL ATTACHMENT",
               ha="center", va="top", fontsize=8, color="#008800",
               fontweight="bold", **FONT, zorder=20)
-    ax_w.text(0, w_yt - 5,
-              "(SECTION ALONG AXLE — SCALE 2:1)",
+    ax_w.text(0, w_yt - 4,
+              "(SECTION ALONG AXLE — SCALE 4:1)",
               ha="center", va="top", fontsize=5.5, color=C_DIM,
               **FONT, zorder=20)
 
@@ -1395,9 +1395,9 @@ def draw_sheet5():
     _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
     # ── Tray floor reference ─────────────────────────────────────────────
-    ax_w.plot([w_xl, w_xr], [-25, -25],
+    ax_w.plot([w_xl, w_xr], [-17, -17],
               color=C_TRAY, lw=1.0, ls="--", zorder=2)
-    ax_w.text(w_xr - 1, -26, "TRAY FLOOR",
+    ax_w.text(w_xr - 1, -17.5, "TRAY FLOOR (BELOW)",
               ha="right", va="top", fontsize=5, color=C_DIM,
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
@@ -1408,22 +1408,22 @@ def draw_sheet5():
     nut_bot = auc_bar_bot - washer_t - washer_t - nut_h
 
     # 1. Bolt head (top)
-    leader(ax_w, bolt_r_cx, bolt_head_top, w_xr - 1, w_yt - 5,
+    leader(ax_w, bolt_r_cx, bolt_head_top, w_xr - 1, w_yt - 6,
            "M5 SS BOLT\nHEAD",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     # 2. Washer (under bolt head)
-    leader(ax_w, bolt_l_cx, plate_top_y + washer_t / 2, w_xl + 1, w_yt - 5,
+    leader(ax_w, bolt_l_cx, plate_top_y + washer_t / 2, w_xl + 1, w_yt - 6,
            "FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     # 3. Carriage plate
-    leader(ax_w, 14, plate_bot_y + plate_h / 2, w_xr - 1, plate_bot_y + 8,
+    leader(ax_w, 12, plate_bot_y + plate_h / 2, w_xr - 1, plate_bot_y + 8,
            "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # 4. Axle pin
-    leader(ax_w, 11, 0, w_xr - 1, 0,
+    leader(ax_w, 11, 0, w_xr - 1, 2,
            "Ø10mm SS\nCLEVIS PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
@@ -1434,36 +1434,36 @@ def draw_sheet5():
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # 6. U-clamp bottom bar
-    leader(ax_w, 0, auc_bar_bot - 0.5, w_xl + 1, auc_bar_bot - 5,
+    leader(ax_w, 0, auc_bar_bot - 0.5, w_xl + 1, auc_bar_bot - 3,
            "U-CLAMP BAR\n(UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # 7. Washer (above nut)
     leader(ax_w, bolt_r_cx, auc_bar_bot - washer_t - washer_t / 2,
-           w_xr - 1, auc_bar_bot - 8,
+           w_xr - 1, auc_bar_bot - 6,
            "FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     # 8. Nut (bottom)
-    leader(ax_w, bolt_l_cx, nut_bot + nut_h / 2, w_xl + 1, nut_bot - 2,
+    leader(ax_w, bolt_l_cx, nut_bot + nut_h / 2, w_xl + 1, nut_bot,
            "M5 NYLOC NUT",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     # 9. Wheel body (flanking both sides)
-    leader(ax_w, -10.5, -15, w_xl + 1, -20,
+    leader(ax_w, -10.5, -12, w_xl + 1, -15,
            "Ø50mm NYLON\nWHEEL (CUT)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     # 10. Wheel bore
-    leader(ax_w, 3, -3, w_xr - 1, -15,
+    leader(ax_w, 3, -3, w_xr - 1, -8,
            "Ø10mm\nWHEEL BORE",
            fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_h(ax_w, -10, 10, w_yb + 3,
+    draw_dim_h(ax_w, -10, 10, w_yb + 2,
                "20mm TREAD", offset=2, fs=5, font=FONT)
 
-    draw_dim_v(ax_w, w_xl + 3, -axle_r, axle_r,
+    draw_dim_v(ax_w, w_xl + 2, -axle_r, axle_r,
                "Ø10", offset=2, fs=5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
@@ -1472,7 +1472,7 @@ def draw_sheet5():
     title_block(ax_tb, f"SHEET 5 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
                 subtitle="DETAIL C — WHEEL ATTACHMENT (SECTION ALONG AXLE)",
-                scale_note="SCALE 2:1 — AXES IN mm",
+                scale_note="SCALE 4:1 — AXES IN mm",
                 height=0.7)
 
     _save(fig, "spray-bar-sheet5")

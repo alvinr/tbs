@@ -1321,12 +1321,6 @@ def draw_sheet5():
     plate_bot_y = 13
     plate_h = 5
     axle_r = 5
-    auc_t = 2
-    auc_gap = 1
-    auc_inner = axle_r + auc_gap
-    auc_outer = auc_inner + auc_t
-    auc_bar_top = -axle_r - auc_gap
-    auc_bar_bot = auc_bar_top - auc_t
 
     # ── Carriage plate ───────────────────────────────────────────────────
     ax_w.add_patch(Rectangle((-17, plate_bot_y), 34, plate_h,
@@ -1342,53 +1336,59 @@ def draw_sheet5():
     ax_w.add_patch(Rectangle((-10, -axle_r), 20, 2 * axle_r,
                    fc="#D0D0D8", ec="none", zorder=5))
 
-    # ── Axle retention U-clamp ───────────────────────────────────────────
-    # Bottom bar (under axle)
-    ax_w.add_patch(Rectangle((-auc_outer, auc_bar_bot),
-                   2 * auc_outer, auc_t,
-                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
-    # Left leg
-    ax_w.add_patch(Rectangle((-auc_outer, auc_bar_top),
-                   auc_t, plate_bot_y - auc_bar_top,
-                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
-    # Right leg
-    ax_w.add_patch(Rectangle((auc_inner, auc_bar_top),
-                   auc_t, plate_bot_y - auc_bar_top,
-                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
+    # ── Saddle clamps (one per side, on axle protrusions outside wheel) ──
+    sc_t = 1.5
+    sc_gap = 0.5
+    sc_hw = 2.5
+    sc_bar_top = -axle_r - sc_gap
+    sc_bar_bot = sc_bar_top - sc_t
+    clamp_cx_r = 13.5
+    clamp_cx_l = -13.5
 
-    # ── Clearance gaps U-clamp/wheel ─────────────────────────────────────
-    for gap_x in [-auc_outer - 0.5, auc_outer - 0.5]:
-        ax_w.add_patch(Rectangle((gap_x, auc_bar_bot), 1, plate_bot_y - auc_bar_bot,
-                       fc=C_BG, ec="none", zorder=3.5))
+    for cx in [clamp_cx_r, clamp_cx_l]:
+        xl = cx - sc_hw
+        xr = cx + sc_hw
+        # Bottom bar (under axle)
+        ax_w.add_patch(Rectangle((xl, sc_bar_bot),
+                       2 * sc_hw, sc_t,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
+        # Left leg
+        ax_w.add_patch(Rectangle((xl, sc_bar_top),
+                       sc_t, plate_bot_y - sc_bar_top,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
+        # Right leg
+        ax_w.add_patch(Rectangle((xr - sc_t, sc_bar_top),
+                       sc_t, plate_bot_y - sc_bar_top,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
 
-    # ── M5 through-bolts (head on top, nut below U-clamp) ──────────────
+    # ── M5 through-bolts (one per clamp, outside wheel) ──────────────────
     C_BOLT_FILL = "#D0D0D8"
     washer_t = 1.5
     bolt_head_h = 3
     nut_h = 3
     plate_top_y = plate_bot_y + plate_h
 
-    for bolt_cx in [-(auc_inner + auc_t / 2), auc_inner + auc_t / 2]:
+    for bolt_cx in [clamp_cx_r, clamp_cx_l]:
         # Bolt head (top)
-        ax_w.add_patch(Rectangle((bolt_cx - 3.5, plate_top_y + washer_t),
-                       7, bolt_head_h,
+        ax_w.add_patch(Rectangle((bolt_cx - 3, plate_top_y + washer_t),
+                       6, bolt_head_h,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
         # Washer under bolt head
-        ax_w.add_patch(Rectangle((bolt_cx - 4, plate_top_y),
-                       8, washer_t,
+        ax_w.add_patch(Rectangle((bolt_cx - 3.5, plate_top_y),
+                       7, washer_t,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
-        # Shaft (through plate + U-clamp leg + bottom bar)
-        shaft_bot = auc_bar_bot - washer_t
+        # Shaft (through plate + clamp leg)
+        shaft_bot = sc_bar_bot - washer_t
         ax_w.add_patch(Rectangle((bolt_cx - 1.5, shaft_bot),
                        3, plate_top_y - shaft_bot,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))
         # Washer above nut
-        ax_w.add_patch(Rectangle((bolt_cx - 4, shaft_bot - washer_t),
-                       8, washer_t,
+        ax_w.add_patch(Rectangle((bolt_cx - 3.5, shaft_bot - washer_t),
+                       7, washer_t,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
         # Nut (bottom)
-        ax_w.add_patch(Rectangle((bolt_cx - 3.5, shaft_bot - washer_t - nut_h),
-                       7, nut_h,
+        ax_w.add_patch(Rectangle((bolt_cx - 3, shaft_bot - washer_t - nut_h),
+                       6, nut_h,
                        fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
     _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
@@ -1400,63 +1400,48 @@ def draw_sheet5():
               ha="right", va="top", fontsize=5, color=C_DIM,
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
-    # ── Labels — in assembly order top to bottom ─────────────────────────
-    bolt_r_cx = auc_inner + auc_t / 2
-    bolt_l_cx = -(auc_inner + auc_t / 2)
+    # ── Labels ───────────────────────────────────────────────────────────
     bolt_head_top = plate_top_y + washer_t + bolt_head_h
-    nut_bot = auc_bar_bot - washer_t - washer_t - nut_h
+    nut_bot = sc_bar_bot - washer_t - washer_t - nut_h
 
-    # 1. Bolt head (top)
-    leader(ax_w, bolt_r_cx, bolt_head_top, w_xr - 1, w_yt - 6,
+    # Right side labels
+    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr - 1, w_yt - 6,
            "M5 SS BOLT\nHEAD",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    # 2. Washer (under bolt head)
-    leader(ax_w, bolt_l_cx, plate_top_y + washer_t / 2, w_xl + 1, w_yt - 6,
-           "FLAT WASHER",
-           fs=5, color="#808088", font=FONT, zorder=20)
-
-    # 3. Carriage plate
-    leader(ax_w, 12, plate_bot_y + plate_h / 2, w_xr - 1, plate_bot_y + 8,
+    leader(ax_w, 0, plate_bot_y + plate_h / 2, w_xr - 1, 28,
            "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # 4. Axle pin
-    leader(ax_w, 11, 0, w_xr - 1, 2,
+    leader(ax_w, 0, 0, w_xr - 1, 5,
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    # 5. U-clamp leg
-    leader(ax_w, -auc_outer - 0.5, (auc_bar_top + plate_bot_y) / 2,
-           w_xl + 1, (auc_bar_top + plate_bot_y) / 2 + 3,
-           "U-CLAMP LEG\n(2mm SS)",
+    leader(ax_w, clamp_cx_r, sc_bar_bot - 0.5, w_xr - 1, -7,
+           "SADDLE CLAMP\nBAR (UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # 6. U-clamp bottom bar
-    leader(ax_w, 0, auc_bar_bot - 0.5, w_xl + 1, auc_bar_bot - 3,
-           "U-CLAMP BAR\n(UNDER AXLE)",
-           fs=5, color=C_FRAME, font=FONT, zorder=20)
+    leader(ax_w, 3, -3, w_xr - 1, -17,
+           "Ø10mm\nWHEEL BORE",
+           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
-    # 7. Washer (above nut)
-    leader(ax_w, bolt_r_cx, auc_bar_bot - washer_t - washer_t / 2,
-           w_xr - 1, auc_bar_bot - 6,
+    # Left side labels
+    leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 1, w_yt - 6,
            "FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    # 8. Nut (bottom)
-    leader(ax_w, bolt_l_cx, nut_bot + nut_h / 2, w_xl + 1, nut_bot,
-           "M5 NYLOC NUT",
+    leader(ax_w, clamp_cx_l - sc_hw, (sc_bar_top + plate_bot_y) / 2,
+           w_xl + 1, 6,
+           "SADDLE CLAMP\nLEG (1.5mm SS)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    leader(ax_w, clamp_cx_l, nut_bot + nut_h / 2, w_xl + 1, -8,
+           "M5 NYLOC NUT\n+ FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
-    # 9. Wheel body (flanking both sides)
-    leader(ax_w, -10.5, -12, w_xl + 1, -15,
+    leader(ax_w, -10.5, -12, w_xl + 1, -18,
            "Ø50mm NYLON\nWHEEL (CUT)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
-
-    # 10. Wheel bore
-    leader(ax_w, 3, -3, w_xr - 1, -8,
-           "Ø10mm\nWHEEL BORE",
-           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
     draw_dim_h(ax_w, -10, 10, w_yb + 2,

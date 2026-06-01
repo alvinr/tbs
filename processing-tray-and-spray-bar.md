@@ -147,9 +147,9 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 6 | Spray distribution through beam bottom wall |
 | Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
-| Nylon wheels | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
-| Axle pins | 10mm SS clevis pin | 8 | Wheel spindles |
-| Axle retention U-clamps | SS, 2mm strap, wraps under 10mm axle pin | 8 | Bolted to carriage plate underside, retains axle in position |
+| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
+| [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS clevis pin, flat head, single hole | 8 (2 packs) | Wheel spindles |
+| [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, 10mm, two-hole U-shaped strap | 8 | Bolted to carriage plate underside, retains axle in position |
 | Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheel forks to beam via spacer + U-clamp |
 | Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
 | U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to carriage plate, tool-free adjustment |
@@ -539,12 +539,12 @@ tray drainage plan and sump cross-section).
 | Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 6 | $18 |
 | 3/4" barb × 1/2" barb adapter | Center feed through beam top wall | 1 | $4 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 | $4 |
-| Nylon fixed wheel, 50mm × 20mm, 10mm bore | Flat tread, ≥25 kg rated (2 pairs per carriage) | 8 | $24–$40 |
+| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 pairs per carriage) | 8 | $24–$40 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to center feed adapter | 1 | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
-| 10mm clevis pins | Wheel axle pins | 8 | $10 |
-| SS U-clamp, 2mm strap (10mm axle) | Axle retention, bolted to plate underside | 8 | $16 |
+| [10mm × 60mm 304 SS clevis pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 8 (2 packs) | $10 |
+| [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, axle U-clamp, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |

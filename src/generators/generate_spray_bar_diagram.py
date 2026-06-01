@@ -1302,15 +1302,15 @@ def draw_sheet5():
     ax_w.axis("off")
 
     w_xl, w_xr = -27, 27
-    w_yb, w_yt = -30, 46
+    w_yb, w_yt = -30, 36
     ax_w.set_xlim(w_xl, w_xr)
     ax_w.set_ylim(w_yb, w_yt)
 
-    ax_w.text(0, w_yt - 10,
+    ax_w.text(0, w_yt - 2,
               "DETAIL C — WHEEL ATTACHMENT",
               ha="center", va="top", fontsize=8, color="#008800",
               fontweight="bold", **FONT, zorder=20)
-    ax_w.text(0, w_yt - 14,
+    ax_w.text(0, w_yt - 6,
               "(SECTION ALONG AXLE — SCALE 2.5:1)",
               ha="center", va="top", fontsize=5.5, color=C_DIM,
               **FONT, zorder=20)
@@ -1405,7 +1405,7 @@ def draw_sheet5():
     nut_bot = sc_bar_bot - washer_t - washer_t - nut_h
 
     # Right side labels
-    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr - 10, w_yt - 20,
+    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr + 10, 28,
            "M5 SS BOLT\nHEAD",
            fs=5, color="#808088", font=FONT, zorder=20)
 
@@ -1426,7 +1426,7 @@ def draw_sheet5():
            fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # Left side labels
-    leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, w_yt - 20,
+    leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, 28,
            "FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 

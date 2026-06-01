@@ -511,7 +511,7 @@ def draw_sheet2():
                   fc=C_TRAY, ec=C_OUT, lw=1.2, zorder=5))
     ax2.text(340, TRAY_FLOOR_Z + 6,
              "PROCESSING TRAY (304 SS)", ha="center", va="bottom",
-             fontsize=5, color=C_DIM, style="italic", **FONT, zorder=10)
+             fontsize=6, color=C_DIM, style="italic", **FONT, zorder=10)
 
     # ── Near walkway grating (Yd=0-300) ──────────────────────────────────
     wk_yd_l = 0
@@ -526,7 +526,7 @@ def draw_sheet2():
                  color="#888888", lw=0.3, alpha=0.25, zorder=10)
     ax2.text((wk_yd_l + wk_yd_r) / 2, GRATE_Z_TOP + 6,
              "NEAR WALKWAY (PROJECTED)", ha="center", va="bottom",
-             fontsize=5, color=C_GRATE, style="italic", **FONT, zorder=10)
+             fontsize=6, color=C_GRATE, style="italic", **FONT, zorder=10)
 
     # Walkway support bracket (ghost)
     brk_depth_r = 60
@@ -537,38 +537,35 @@ def draw_sheet2():
     ax2.plot([0, wk_yd_r], [GRATE_Z_BOT - brk_depth_r, GRATE_Z_BOT],
              color=C_FRAME, lw=0.5, ls="--", alpha=0.25, zorder=5)
 
-    # ── Wheels (2x O50mm nylon) ──────────────────────────────────────────
+    # ── Wheels (2× Ø50mm nylon) ────────────────────────────────────────
     for w_yd in [wheel1_yd, wheel2_yd]:
         ax2.add_patch(Circle((w_yd, WHEEL_AXLE_Z), WHEEL_DIA / 2,
                      fc=C_NYLON, ec=C_WHEEL, lw=2.0, zorder=6))
-        ax2.add_patch(Circle((w_yd, WHEEL_AXLE_Z), 3,
-                     fc=C_WHEEL, ec=C_OUT, lw=0.5, zorder=6.5))
         ax2.plot([w_yd - WHEEL_WIDTH / 2, w_yd + WHEEL_WIDTH / 2],
                  [TRAY_FLOOR_Z, TRAY_FLOOR_Z],
                  color=C_WHEEL, lw=2.0, zorder=5)
 
-    # ── Axle pins (Ø10mm, visible as horizontal bars in cross-section) ──
+    # ── Axle / clevis pin (Ø10mm, runs through wheel bore) ─────────
     axle_pin_r_cs = 5
+    axle_ext = 3
     for w_yd in [wheel1_yd, wheel2_yd]:
-        axle_yd_inner = w_yd + (WHEEL_WIDTH / 2 + 2) * (
-            1 if w_yd < CARRIAGE_YD_CENTER else -1)
-        axle_yd_outer = w_yd - (WHEEL_WIDTH / 2 + 2) * (
-            1 if w_yd < CARRIAGE_YD_CENTER else -1)
+        axle_left = w_yd - WHEEL_WIDTH / 2 - axle_ext
+        axle_right = w_yd + WHEEL_WIDTH / 2 + axle_ext
         ax2.add_patch(Rectangle(
-            (min(axle_yd_inner, axle_yd_outer),
-             WHEEL_AXLE_Z - axle_pin_r_cs),
-            abs(axle_yd_inner - axle_yd_outer), 2 * axle_pin_r_cs,
+            (axle_left, WHEEL_AXLE_Z - axle_pin_r_cs),
+            axle_right - axle_left, 2 * axle_pin_r_cs,
             fc="#D0D0D8", ec=C_FRAME, lw=0.8, zorder=6.3))
 
-    leader(ax2, wheel2_yd, WHEEL_AXLE_Z,
-           wheel2_yd + WHEEL_DIA / 2 + 30, WHEEL_AXLE_Z - 10,
-           "Ø10mm AXLE PIN\n(CLEVIS PIN)",
-           fs=5, color=C_DIM, font=FONT, zorder=15)
+    leader(ax2, wheel2_yd + WHEEL_WIDTH / 2 + axle_ext,
+           WHEEL_AXLE_Z,
+           wheel2_yd + WHEEL_DIA / 2 + 25, WHEEL_AXLE_Z - 15,
+           "Ø10mm AXLE\n(CLEVIS PIN)",
+           fs=6, color=C_DIM, font=FONT, zorder=15)
 
     leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z,
-           wheel1_yd - WHEEL_DIA / 2 - 30, WHEEL_AXLE_Z - 10,
+           wheel1_yd - WHEEL_DIA / 2 - 25, WHEEL_AXLE_Z - 15,
            f"Ø{WHEEL_DIA}mm\nNYLON WHEEL",
-           fs=5, color=C_WHEEL, font=FONT, zorder=15)
+           fs=6, color=C_WHEEL, font=FONT, zorder=15)
 
     # ── Carriage plate 2mm above wheel axle ──────────────────────────
     brk_t_c = 5
@@ -596,7 +593,7 @@ def draw_sheet2():
     leader(ax2, plate_yd_r, plate_cz,
            plate_yd_r + 35, plate_cz - 12,
            "CARRIAGE PLATE\n(5mm AL, NOTCHED)",
-           fs=5, color=C_FRAME, font=FONT, zorder=15)
+           fs=6, color=C_FRAME, font=FONT, zorder=15)
 
     # ── Spacer / U-clamp seat height (drawn after U-clamp variables below) ─
     uc_seat_z = BEAM_Z_BOT + BEAM_W / 2 + brk_t_c / 2
@@ -638,7 +635,7 @@ def draw_sheet2():
     leader(ax2, wheel1_yd + axle_uc_outer + 2, auc_bar_bot + axle_uc_t / 2,
            wheel1_yd + axle_uc_outer + 30, auc_bar_bot - 8,
            "SS U-CLAMP\n(AXLE RETENTION)",
-           fs=4.5, color=C_BOLT, font=FONT, zorder=15)
+           fs=6, color=C_BOLT, font=FONT, zorder=15)
 
     # ── Beam / SHS cross-section with PVC pipe ───────────────────────────
     ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_W,
@@ -660,7 +657,7 @@ def draw_sheet2():
 
     ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
              "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
-             fontsize=5.5, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
+             fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
     # ── U-clamp cradle under beam (feet on spacer top = uc_seat_z) ──────
     uc_l = CARRIAGE_YD_CENTER - BEAM_W / 2 - UC_GAP - UC_T
@@ -695,7 +692,7 @@ def draw_sheet2():
     leader(ax2, flare_l - 2, plate_top_z + spacer_h / 2,
            flare_l - 25, plate_top_z + spacer_h / 2 - 10,
            f"SPACER\n({spacer_h:.1f}mm AL)",
-           fs=4.5, color=C_FRAME, font=FONT, zorder=15)
+           fs=6, color=C_FRAME, font=FONT, zorder=15)
 
     # Bolts through feet + spacer + plate, wing nuts below
     for bolt_yd in [flare_l + UC_FLARE / 2, flare_r - UC_FLARE / 2]:

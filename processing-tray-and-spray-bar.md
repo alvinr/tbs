@@ -150,7 +150,7 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS clevis pin, flat head, single hole | 8 (2 packs) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, 10mm, two-hole U-shaped strap | 8 | Bolted to carriage plate underside, retains axle in position |
-| Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheel forks to beam via spacer + U-clamp |
+| Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheels to beam via spacer + U-clamp |
 | Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
 | U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to carriage plate, tool-free adjustment |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
@@ -271,8 +271,8 @@ U-clamp seat to Z=42.5mm so the beam remains at its design height (Z=20–60mm).
 Formed from 5mm 6061-T6 aluminum plate:
 
 - **Plate wings:** Two flat sections extending outward from the beam notch to the
-  wheel fork attachment points. Total plate width spans both wheel fork positions
-  plus 18mm overhang on each side.
+  wheel axle positions. Total plate width spans both wheel positions plus 18mm
+  overhang on each side.
 - **Center notch:** Cut-out slightly wider than the U-clamp outer width, allowing
   the clamp legs to pass through the plate and grip the beam.
 - **Spacer blocks:** Two 8.5mm aluminum blocks, one per U-clamp foot, bolted through
@@ -398,7 +398,7 @@ halves meet at a shallow upward angle.
 | LDPE pipe (OD 25mm × 3859mm) | 0.74 |
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
-| Wheel assemblies (4× wheel + fork + axle) | 0.60 |
+| Wheel assemblies (8× wheel + axle + saddle clamp) | 0.60 |
 | Nozzles + fittings | 0.15 |
 | Hardware (bolts, clips, U-clamps) | 0.30 |
 | **Dry total** | **~6.8 kg** |
@@ -484,11 +484,11 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 | Sheet | Title | Content |
 |-------|-------|---------|
 | 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-02, pole, walkway slit, operator silhouette |
-| 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, L-bracket, U-clamp, ball joint, arm, hose |
+| 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, U-clamp, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
-| 5 | Detail C — Wheel Attachment | Section along axle at 2:1 — fork arms, nylon wheel, axle pin, snap rings |
-| 6 | Detail D — Wheel Plan | Plan view of carriage — beam, L-bracket arm, U-clamp, wheels |
+| 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, nylon wheel, axle pin, saddle clamp |
+| 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, U-clamp, wheels |
 | 7 | Detail B — Center Feed | Longitudinal section at 2:1 — barbed center feed and nozzle connection details |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)

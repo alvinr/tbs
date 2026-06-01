@@ -148,7 +148,7 @@ irrigation nozzles spaced evenly along the beam bottom face.
 | Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
-| [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS clevis pin, flat head, single hole | 8 (2 packs) | Wheel spindles |
+| [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 8 (2 packs) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, 10mm, two-hole U-shaped strap | 8 | Bolted to carriage plate underside, retains axle in position |
 | Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheels to beam via spacer + U-clamp |
 | Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
@@ -256,7 +256,7 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
-**Axle retention:** Each wheel axle (10mm SS clevis pin) is held by a SS U-clamp
+**Axle retention:** Each wheel axle (10mm SS axle pin) is held by a SS saddle clamp
 (2mm strap) bolted to the underside of the carriage plate. The U-clamp wraps under
 the axle pin with 1mm clearance, and through-bolts pass up through the clamp legs
 and carriage plate to secure the axle in position.
@@ -320,7 +320,7 @@ underside. The U-clamp wraps under the 10mm axle pin with 1mm clearance.
 | Step | Operation |
 |------|-----------|
 | 1 | Place nylon wheel (50mm × 20mm, 10mm bore) in position under the carriage plate |
-| 2 | Insert 10mm SS clevis pin through wheel bore |
+| 2 | Insert 10mm SS axle pin through wheel bore |
 | 3 | Position axle retention U-clamp under the axle, legs facing up toward plate |
 | 4 | Insert 2× M5 bolts up through U-clamp legs and carriage plate; secure with nyloc nuts on top |
 | 5 | Tighten finger-tight only until all four wheels are installed |
@@ -543,7 +543,7 @@ tray drainage plan and sump cross-section).
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to center feed adapter | 1 | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
-| [10mm × 60mm 304 SS clevis pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 8 (2 packs) | $10 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 8 (2 packs) | $10 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, axle U-clamp, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |

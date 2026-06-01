@@ -544,7 +544,7 @@ def draw_sheet2():
                  [TRAY_FLOOR_Z, TRAY_FLOOR_Z],
                  color=C_WHEEL, lw=2.0, zorder=5)
 
-    # ── Axle / clevis pin (Ø10mm, runs through wheel bore) ─────────
+    # ── Axle pin (Ø10mm, runs through wheel bore) ──────────────────
     axle_pin_r_cs = 5
     axle_ext = 3
     for w_yd in [wheel1_yd, wheel2_yd]:
@@ -558,7 +558,7 @@ def draw_sheet2():
     leader(ax2, wheel2_yd + WHEEL_WIDTH / 2 + axle_ext,
            WHEEL_AXLE_Z,
            wheel2_yd + WHEEL_DIA / 2 + 25, WHEEL_AXLE_Z - 15,
-           "Ø10mm AXLE\n(CLEVIS PIN)",
+           "Ø10mm SS\nAXLE PIN",
            fs=6, color=C_DIM, font=FONT, zorder=15)
 
     leader(ax2, wheel1_yd - WHEEL_DIA / 2, WHEEL_AXLE_Z,
@@ -1423,7 +1423,7 @@ def draw_sheet5():
 
     # 4. Axle pin
     leader(ax_w, 11, 0, w_xr - 1, 2,
-           "Ø10mm SS\nCLEVIS PIN",
+           "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
     # 5. U-clamp leg
@@ -1615,12 +1615,12 @@ def draw_sheet6():
            "AXLE U-CLAMP\n(2mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # Axle / clevis pin
+    # Axle pin
     top_left_wx = CARRIAGE_OFFSET_X - WHEEL_PAIR_GAP / 2
     top_w_yd = WHEEL_SPACING_YD / 2
     leader(ax_d, top_left_wx, top_w_yd,
            top_left_wx + 50, top_w_yd + 15,
-           "Ø10mm AXLE\n(CLEVIS PIN)",
+           "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
     # Through-bolts (on axle U-clamp)

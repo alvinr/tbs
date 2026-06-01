@@ -1301,8 +1301,8 @@ def draw_sheet5():
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
 
-    w_xl, w_xr = -16, 16
-    w_yb, w_yt = -18, 28
+    w_xl, w_xr = -27, 27
+    w_yb, w_yt = -30, 46
     ax_w.set_xlim(w_xl, w_xr)
     ax_w.set_ylim(w_yb, w_yt)
 
@@ -1311,7 +1311,7 @@ def draw_sheet5():
               ha="center", va="top", fontsize=8, color="#008800",
               fontweight="bold", **FONT, zorder=20)
     ax_w.text(0, w_yt - 4,
-              "(SECTION ALONG AXLE — SCALE 4:1)",
+              "(SECTION ALONG AXLE — SCALE 2.5:1)",
               ha="center", va="top", fontsize=5.5, color=C_DIM,
               **FONT, zorder=20)
 
@@ -1471,7 +1471,7 @@ def draw_sheet5():
     title_block(ax_tb, f"SHEET 5 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
                 subtitle="DETAIL C — WHEEL ATTACHMENT (SECTION ALONG AXLE)",
-                scale_note="SCALE 4:1 — AXES IN mm",
+                scale_note="SCALE 2.5:1 — AXES IN mm",
                 height=0.7)
 
     _save(fig, "spray-bar-sheet5")

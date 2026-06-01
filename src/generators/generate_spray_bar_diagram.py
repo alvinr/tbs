@@ -1393,10 +1393,11 @@ def draw_sheet5():
 
     _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
-    # ── Tray floor reference ─────────────────────────────────────────────
-    ax_w.plot([w_xl, w_xr], [-17, -17],
-              color=C_TRAY, lw=1.0, ls="--", zorder=2)
-    ax_w.text(w_xr - 1, -17.5, "TRAY FLOOR (BELOW)",
+    # ── Tray floor (axle at Z=27, tray surface at Z=2 → y=-25) ─────────
+    tray_y = -25
+    ax_w.plot([w_xl, w_xr], [tray_y, tray_y],
+              color=C_TRAY, lw=1.5, zorder=8)
+    ax_w.text(w_xr - 1, tray_y - 1, "TRAY FLOOR",
               ha="right", va="top", fontsize=5, color=C_DIM,
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
@@ -1420,6 +1421,10 @@ def draw_sheet5():
     leader(ax_w, clamp_cx_r, sc_bar_bot - 0.5, w_xr - 8, -7,
            "SADDLE CLAMP\nBAR (UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    leader(ax_w, 3, -3, w_xr - 8, -15,
+           "Ø10mm\nWHEEL BORE",
+           fs=4.5, color=C_WHEEL, font=FONT, zorder=20)
 
     # Left side labels
     leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, 28,

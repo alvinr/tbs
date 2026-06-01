@@ -18,6 +18,7 @@
 /                        ← project root: .md reports, config files
 src/generators/          ← all .py scripts (diagram generators, helpers, setup)
 diagrams/                ← generated PNGs and SVGs (output of generators)
+skills/                  ← codified drawing and labeling conventions (read before creating diagrams)
 published/               ← MkDocs input — auto-populated by publish.sh (gitignored, never edit directly)
 published/assets/        ← images — auto-populated by publish.sh
 site/                    ← built output — gitignored, never commit
@@ -25,6 +26,11 @@ site/                    ← built output — gitignored, never commit
 ```
 
 **Key config files:** `mkdocs.yml` (nav + theme), `publish.sh` (sync + deploy), `src/generators/setup_docs.py` (one-time setup).
+
+**Skills** (read these before working on diagrams):
+- `skills/skill_diagram_structure.md` — coordinate system, view conventions, multi-sheet generator boilerplate, shared helper catalog
+- `skills/skill_label_placement.md` — 57 rules for leader lines, dimensions, notes blocks, and label positioning
+- `skills/skill_plumbing_drawing.md` — pipe drawing conventions, fittings, crossings, flow arrows
 
 ---
 

@@ -1405,7 +1405,7 @@ def draw_sheet5():
     nut_bot = sc_bar_bot - washer_t - washer_t - nut_h
 
     # Right side labels
-    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr + 10, 28,
+    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr - 10, 24,
            "M5 SS BOLT\nHEAD",
            fs=5, color="#808088", font=FONT, zorder=20)
 

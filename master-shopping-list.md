@@ -217,7 +217,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
 | M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
 | [½" barb × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+hose+barb+brass) | Flex hose to center feed adapter | 1 | Amazon | $4 |
-| [10mm × 60mm 304 SS clevis pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins, flat head, single hole | 8 (2 packs) | Amazon | $8–$16 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins, flat head | 8 (2 packs) | Amazon | $8–$16 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention — bolted to carriage plate underside, wraps under axle pin | 8 | Amazon | $8–$12 |
 | SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
 | [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |

@@ -60,6 +60,7 @@ from tbs_constants import (
     EQPANEL_YD, EQPANEL_YD_SPAN,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
+    DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -80,12 +81,14 @@ C_PALLET = "#3A3A3A"    # IBC pallet base
 C_IBC_BLUE = "#2E6DB4"  # Blue circuit IBC contents
 C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
 C_IBC_WASTE = "#777777" # Waste IBC contents
+C_DRUM = "#E8E0D0"      # light-trap drum shell (cream)
+C_VANE = "#778088"      # drum turnstile vanes
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
-        "IBC Stack", "IBC Rack"]
+        "IBC Stack", "IBC Rack", "Light Trap"]
 
 
 def mm(val):
@@ -646,6 +649,34 @@ def film_plane_mechanism():
     return '\n'.join(parts)
 
 
+# ── Light-trap drum (revolving entry) ────────────────────────────────────────
+
+def light_trap_drum():
+    """Revolving light-trap drum at the cargo-door end — vertical Ø750 cylinder.
+
+    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. Translucent cream
+    shell with a 4-quadrant turnstile (two crossed vanes) so it reads as a
+    revolving entry. Half sits in the doorway (X 0–375 inside; X<0 protrudes out
+    the cargo end). It deliberately overlaps the demountable left-rail segment —
+    that's why that rail segment swings clear ("drum mode").
+    """
+    parts = []
+    r, h = DRUM_R, DRUM_H_LT
+    cx, cy = DRUM_CX, DRUM_CY
+
+    parts.append(ruby_cylinder("LT Drum Shell",
+                               cx, cy, 0, r, h,
+                               color=C_DRUM, alpha=0.35, n=32))
+
+    vt = 6  # vane thickness — two crossed panels through the axis
+    parts.append(ruby_box("LT Drum Vane (X-Z)",
+                          cx - r, cy - vt / 2, 0, 2 * r, vt, h, color=C_VANE))
+    parts.append(ruby_box("LT Drum Vane (Yd-Z)",
+                          cx - vt / 2, cy - r, 0, vt, 2 * r, h, color=C_VANE))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -662,6 +693,7 @@ def generate_ruby():
         component("Equipment Panel", "Equipment Panel", equipment_panel()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("IBC Rack", "IBC Rack", ibc_rack()),
+        component("Light-Trap Drum", "Light Trap", light_trap_drum()),
     ]
     body = '\n'.join(comps)
 
@@ -720,7 +752,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

@@ -982,6 +982,8 @@ def sheet4():
         f"2. DRUM MODE: left-rail segment swung clear (Yd {BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}). Carriage parked",
         f"   at film end (Yd {CARRIAGE_PARK_Y}). Drum free to rotate for entry/exit.",
         "INTERLOCK: drum rotates only with carriage parked AND left segment cleared.",
+        "WALKWAY: frame bottom at Z=100mm (RAIL_OFF); active image = inter-rail span.",
+        "   Clears the lowered walkway deck (Z=65mm) by 35mm — film plane travels above the in-place walkway.",
     ]
     line_h = 0.030
     block_top = 0.46

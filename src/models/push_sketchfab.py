@@ -8,6 +8,13 @@ embed file(s), records the new UID in the registry, and deletes the old model.
 The Sketchfab URL changes each time, but the docs embed is updated automatically
 so site visitors always see the latest after a deploy.
 
+RUN THIS MANUALLY AND SPARINGLY. Each push (a) consumes one Sketchfab upload from
+your monthly quota, and (b) creates a brand-new model, so any viewer/display
+settings tuned in the Sketchfab editor (shadows off, background, lighting,
+camera) are RESET to defaults. Nothing auto-runs this; the model UID stays fixed
+between manual pushes — set your viewer settings on the live model and they
+persist until the next push.
+
 Registry — models/sketchfab.json — maps each logical model to its current state:
     { "overview": { "name": "...", "uid": "...", "embed_files": ["..."] }, ... }
 
@@ -53,7 +60,9 @@ def main():
     token = os.environ.get("SKETCHFAB_API_TOKEN", "").strip()
     if not token:
         sys.exit("error: SKETCHFAB_API_TOKEN not set (add it to .env.private)")
-    name = (sys.argv[1] if len(sys.argv) > 1 else "overview").strip()
+    pos = [a for a in sys.argv[1:] if not a.startswith("-")]
+    name = (pos[0] if pos else "overview").strip()
+    assume_yes = "-y" in sys.argv or "--yes" in sys.argv
 
     with open(REGISTRY) as f:
         registry = json.load(f)
@@ -62,6 +71,15 @@ def main():
                  f"(known: {', '.join(registry) or 'none'})")
     entry = registry[name]
     old_uid = (entry.get("uid") or "").strip()
+
+    # Each push consumes a Sketchfab upload and resets viewer settings, so make
+    # it a deliberate action (use -y to skip the prompt).
+    if not assume_yes:
+        print(f"Push '{name}' to Sketchfab: creates a NEW model (uses 1 upload from "
+              f"your monthly quota), deletes the old one ({old_uid or 'none'}), and "
+              f"RESETS viewer settings (shadows/background/etc.).")
+        if input("Continue? [y/N] ").strip().lower() not in ("y", "yes"):
+            sys.exit("  aborted.")
 
     # 1. Export the live SketchUp model to Collada (.dae) — the API rejects .skp.
     dae = os.path.join(ROOT, "models", f"{name}.dae")

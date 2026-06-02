@@ -455,6 +455,45 @@ def floor_plan():
         (C_ALUM,     "Ext power panel (flush-mount, exterior)"),
     ], 0, leg_y_top, cols=3, col_w=1900, font=FONT, zorder=8)
 
+    # ── Film left-rail demountable segment (drum-mode clearance) ─────────────
+    # The LEFT RAIL (X=RAIL_X_L=150mm) passes through the drum volume.
+    # The segment spanning Yd=806–1556 is DEMOUNTABLE so the drum can rotate
+    # ("drum mode"); carriage parks at Yd=2262 during drum mode.
+    # Show this segment as a dashed orange overlay on the rail line.
+    ax.plot([RAIL_X_L, RAIL_X_L],
+            [BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1],
+            color="#C07030", lw=4.0, ls=(0, (6, 3)), zorder=7, alpha=0.85,
+            solid_capstyle="round")
+    # Leader + note to the left (in the left end zone / exterior pad area)
+    NOTE_NX = -PAD_L + 120
+    NOTE_NY = (BRACE_LEFT_DEMOUNT_Y0 + BRACE_LEFT_DEMOUNT_Y1) / 2  # 1181
+    ax.annotate("",
+                xy=(RAIL_X_L, NOTE_NY),
+                xytext=(NOTE_NX + 600, NOTE_NY),
+                arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
+                zorder=10)
+    ax.text(NOTE_NX + 580, NOTE_NY + 80,
+            f"FILM LEFT-RAIL SEGMENT DEMOUNTS FOR DRUM (drum mode)\n"
+            f"X={RAIL_X_L}mm  Yd={BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}mm\n"
+            f"Swings clear for drum rotation · carriage parks at Yd={CARRIAGE_PARK_Y}",
+            ha="right", va="bottom", fontsize=6.0, color="#7A3A00",
+            fontweight="bold", **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#C07030", lw=0.9))
+
+    # ── Dropped-walkway note (film-mechanism envelope) ────────────────────────
+    # The near and far walkway strips and the left/right walkway interior portions
+    # that fall inside the film-plane mechanism envelope (X 150–4649, Yd 100–2262)
+    # are PERMANENTLY REMOVED for brace-cage clearance — see walkway drawing.
+    # The floor plan still shows the full walkway rectangles as originally drawn;
+    # this note records the design decision so the two drawings are consistent.
+    ax.text((ZONE_L_END + ZONE_R_START) / 2, -PAD_B + 480,
+            "NOTE: Walkway sections inside film-mechanism envelope\n"
+            f"(X={ZONE_L_END}–{ZONE_R_START}mm, Yd 100–{CARRIAGE_PARK_Y}mm) are DROPPED — "
+            "see walkway drawing for detail.",
+            ha="center", va="top", fontsize=6.5, color="#AA3300",
+            style="italic", **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#FFF0EE", ec="#AA3300", lw=0.8))
+
     # ── Egress path annotation ─────────────────────────────────────────────────
     # With drums eliminated, the full container width (2362mm) is clear for egress.
     # Panel opens 180° outward, light trap drum swings out with it.

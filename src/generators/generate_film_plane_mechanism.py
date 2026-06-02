@@ -26,7 +26,7 @@ import matplotlib.patheffects as pe
 from tbs_constants import (
     FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H,
     PH_X as PH_X_C, PH_H as PH_H_C,
-    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, SVG_DIR, svg_path,
+    MAX_TILT_DEG, MAX_SWING_DEG, RAIL_SPAN, DIAGRAMS_DIR, 
     FP_ANGLE_LEG, FP_ANGLE_T,
     CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T,
     CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
@@ -366,7 +366,6 @@ def sheet1():
                 height=0.05)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet1.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet1.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet1.png")
 
@@ -632,7 +631,6 @@ def sheet2():
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet2.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet2.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet2.png")
 
@@ -867,7 +865,6 @@ def sheet3():
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet3.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet3.png")
 
@@ -1016,7 +1013,6 @@ def sheet4():
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet4.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
 
@@ -1597,7 +1593,6 @@ def sheet5():
                 height=0.75)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet5.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet5.png")
 
@@ -1870,14 +1865,12 @@ def sheet6():
                 height=0.05)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/film-plane-sheet6.png"), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
 
 
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    import os; os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating film plane mechanism drawings (4-corner design)...")
     sheet1()
     sheet2()

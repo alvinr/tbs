@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os
 from tbs_constants import (
-    svg_path, SVG_DIR, C_WID,
+    C_WID,
     FP_W as _FP_W, FP_H as _FP_H,
     DIAGRAMS_DIR,
 )
@@ -337,9 +337,7 @@ for cfg in CONFIGS:
                 scale_note="Ray-traced projection",
                 doc_id="TBS-TS01 · Distortion Renders")
     out = os.path.join(DIAGRAMS_DIR, f'tilt-swing-combined-{label.lower()}.png')
-    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f'  → {out}  Done.')
 
@@ -364,7 +362,6 @@ title_block(ax_tb, "SUMMARY",
             doc_id="TBS-TS01 · Distortion Renders")
 out_s = os.path.join(DIAGRAMS_DIR, 'tilt-swing-combined-summary.png')
 fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
-fig_s.savefig(svg_path(out_s), bbox_inches="tight", facecolor=BG)
 plt.close(fig_s)
 print(f'  → {out_s}  Done.')
 print()

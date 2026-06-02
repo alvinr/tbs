@@ -51,7 +51,7 @@ from tbs_constants import (
     PANEL_SLIDE,
     RAIL_X_L, RAIL_X_R, RAIL_SPAN,
     FAN_A_H, FAN_B_H, FAN_DIAM, DUCT_HEIGHT,
-    DIAGRAMS_DIR, SVG_DIR, svg_path,
+    DIAGRAMS_DIR, 
     C_OUT, C_CL, C_DIM,
     C_WALL, C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
     C_ELEC, C_BATT, C_PUMP, C_HINGE_PANEL, C_FAN, C_ALUM,
@@ -59,7 +59,6 @@ from tbs_constants import (
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-os.makedirs(SVG_DIR, exist_ok=True)
 
 # ── Constants shared with previous session ────────────────────────────────────
 RAIL_OFF   = 100    # floor offset for all floor-standing equipment (mm)
@@ -392,7 +391,6 @@ title_block(ax, "SHEET 1 OF 3",
 out = f"{DIAGRAMS_DIR}/assembly-overview.png"
 fig.tight_layout(pad=0)
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 
@@ -741,7 +739,6 @@ title_block(ax2, "SHEET 2 OF 3",
 out2 = f"{DIAGRAMS_DIR}/assembly-overview-fp.png"
 fig2.tight_layout(pad=0)
 plt.savefig(out2, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(svg_path(out2), bbox_inches="tight", facecolor=BG)
 plt.close(fig2)
 print(f"Saved: {out2}")
 
@@ -1078,6 +1075,5 @@ title_block(ax_tb3, "SHEET 3 OF 3",
 # ── Save ──────────────────────────────────────────────────────────────────────
 out3 = f"{DIAGRAMS_DIR}/assembly-overview-plan.png"
 plt.savefig(out3, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(svg_path(out3), bbox_inches="tight", facecolor=BG)
 plt.close(fig3)
 print(f"Saved: {out3}")

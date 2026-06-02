@@ -32,7 +32,6 @@ from tbs_constants import (
     BB_OD, BB_H, BB_HEAD_H, BB_PORT_SEP,
     F1_X, F2_X, F3_X, FILT_HEAD_Z, FILT_SUMP_Z,
     FILT_PIPE_OD, FILT_PIPE_WALL,
-    svg_path,
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
@@ -826,8 +825,6 @@ title_block(ax_tb, "SHEET 1 OF 1",
 import os
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
 fig.savefig(os.path.join(DIAGRAMS_DIR, "filter-skid-sheet1.png"), dpi=150, bbox_inches="tight",
-            facecolor=fig.get_facecolor())
-fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "filter-skid-sheet1.png")), bbox_inches="tight",
             facecolor=fig.get_facecolor())
 plt.close(fig)
 print("Filter skid diagram written → diagrams/filter-skid-sheet1.png")

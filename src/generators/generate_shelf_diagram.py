@@ -33,7 +33,6 @@ from matplotlib.lines import Line2D
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
     PUMP_X, PUMP_W,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
@@ -255,7 +254,6 @@ def sheet1():
 
     out = os.path.join(DIAGRAMS_DIR, "shelf-sheet1.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  [1/3] {out}")
 
@@ -454,7 +452,6 @@ def sheet2():
 
     out = os.path.join(DIAGRAMS_DIR, "shelf-sheet2.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  [2/3] {out}")
 
@@ -661,7 +658,6 @@ def sheet3():
 
     out = os.path.join(DIAGRAMS_DIR, "shelf-sheet3.png")
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  [3/3] {out}")
 
@@ -670,7 +666,6 @@ def sheet3():
 
 if __name__ == "__main__":
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating chemistry prep shelf diagrams...")
     sheet1()
     sheet2()

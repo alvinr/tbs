@@ -25,11 +25,10 @@ import numpy as np
 import os
 
 from tbs_title_block import title_block
-from tbs_constants import DIAGRAMS_DIR, SVG_DIR, svg_path, C_OUT, C_CL, C_DIM
+from tbs_constants import DIAGRAMS_DIR,  C_OUT, C_CL, C_DIM
 from tbs_drawing import draw_dim_h, draw_dim_v, leader
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-os.makedirs(SVG_DIR, exist_ok=True)
 
 # ── Mini-TBS constants ───────────────────────────────────────────────────────
 BOX_W   = 457    # mm — box width (18")
@@ -759,6 +758,5 @@ title_block(ax_tb, "SHEET 1 OF 1",
 # ── Save ─────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/mini-tbs-sheet1.png"
 plt.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")

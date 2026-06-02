@@ -30,7 +30,6 @@ from matplotlib.patches import Rectangle, Polygon, FancyArrowPatch, Circle
 import matplotlib.patches as mpatches
 
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_H_STK,
     BLUE_IBC_Y, IBC_FAR_Y,
@@ -680,8 +679,6 @@ def sheet1():
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png"), dpi=130,
                 bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet1.png")),
-                bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet1.png saved")
 
@@ -869,8 +866,6 @@ def sheet2():
                 height=0.04)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet2.png"), dpi=130,
-                bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet2.png")),
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet2.png saved")
@@ -1177,8 +1172,6 @@ def sheet3():
                 height=0.04)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet3.png"), dpi=130,
-                bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet3.png")),
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet3.png saved")

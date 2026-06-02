@@ -18,7 +18,6 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, Arc
 import os
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_WASTE_IBC, C_BLUE_IBC, C_BROWN_IBC,
     C_EVAP, C_ELEC, C_BATT, C_PUMP,
     DIAGRAMS_DIR,
@@ -366,7 +365,6 @@ def draw_sheet1():
 
     plt.savefig(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png"), dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "electrical-sheet1.png")), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet1.png  Done.")
 
@@ -401,7 +399,7 @@ def draw_sheet2():
         BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y,
         DRUM_CX, DRUM_D, DRUM_R,
         FAN_A_YD, FAN_B_YD,
-        DIAGRAMS_DIR, svg_path,
+        DIAGRAMS_DIR, 
     )
 
     # ── mm-first coordinate system ───────────────────────────────────────────
@@ -926,7 +924,6 @@ def draw_sheet2():
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet2.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path(f"{DIAGRAMS_DIR}/electrical-sheet2.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet2.png  Done.")
 
@@ -953,7 +950,7 @@ def draw_sheet3():
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
         PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM,
         WALKWAY_W, WALKWAY_H, WALKWAY_LEFT_X,
-        DIAGRAMS_DIR, svg_path, C_LT_DRUM,
+        DIAGRAMS_DIR,  C_LT_DRUM,
     )
 
     # ── mm-first coordinate system ───────────────────────────────────────────
@@ -1350,7 +1347,6 @@ def draw_sheet3():
 
     plt.savefig(f"{DIAGRAMS_DIR}/electrical-sheet3.png", dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path(f"{DIAGRAMS_DIR}/electrical-sheet3.png"), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → electrical-sheet3.png  Done.")
 
@@ -1358,7 +1354,6 @@ def draw_sheet3():
 # ─────────────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating TBS-001 Electrical & Systems diagrams...")
     draw_sheet1()
     draw_sheet2()

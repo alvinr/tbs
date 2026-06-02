@@ -55,7 +55,6 @@ import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D,
     PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM,
@@ -649,7 +648,6 @@ def sheet2():
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet2.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet2.png saved")
 
@@ -1071,7 +1069,6 @@ def sheet1():
                 height=0.06)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet1.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet1.png saved")
 
@@ -1434,7 +1431,6 @@ def sheet3():
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet3.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet3.png saved")
 
@@ -1780,7 +1776,6 @@ def sheet4():
                 height=0.10)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet4.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet4.png saved")
 
@@ -2053,7 +2048,6 @@ def sheet5():
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet5.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet5.png saved")
 
@@ -2651,7 +2645,6 @@ def sheet6():
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet6.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet6.png saved")
 
@@ -3129,7 +3122,6 @@ def sheet7():
                 height=0.07)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet7.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet7.png saved")
 
@@ -3393,7 +3385,6 @@ def sheet8():
                 height=0.06)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet8.png saved")
 

@@ -28,7 +28,6 @@ import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_LEN, C_WID, C_HGT, WALL_T,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_SLIDE, PANEL_FLOOR_GAP,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
@@ -363,7 +362,6 @@ def sheet1():
                 portrait=True, height=0.055)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet1.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ceiling-rail-sheet1.png saved")
 
@@ -597,7 +595,6 @@ def sheet2():
                 scale_note="AXES IN mm · SECTION THROUGH Yd CENTER ZONE")
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "ceiling-rail-sheet2.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ceiling-rail-sheet2.png saved")
 
@@ -605,7 +602,6 @@ def sheet2():
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating ceiling rail suspension system diagrams...")
     sheet1()
     sheet2()

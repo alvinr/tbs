@@ -19,7 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os
-from tbs_constants import svg_path, SVG_DIR, FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
+from tbs_constants import FP_W, FP_H, C_WID, FP_Y_MIN, DIAGRAMS_DIR
 from tbs_title_block import title_block
 
 # ── Container / camera constants (mm) ────────────────────────────────────────
@@ -302,10 +302,8 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
                 scale_note="Ray-traced projection",
                 doc_id="TBS-FM01 · Distortion Renders")
     fname = os.path.join(DIAGRAMS_DIR, f"film-plane-distortion-{label.lower()}.png")
-    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(fname, dpi=120, bbox_inches="tight",
                 facecolor="white")
-    fig.savefig(svg_path(fname), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  → {fname}")
 
@@ -350,7 +348,6 @@ def render_summary():
                 doc_id="TBS-FM01 · Distortion Renders")
     fig.savefig(os.path.join(DIAGRAMS_DIR, "film-plane-distortion-summary.png"), dpi=120,
                 bbox_inches="tight", facecolor="white")
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "film-plane-distortion-summary.png")), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/film-plane-distortion-summary.png")
 

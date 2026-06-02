@@ -39,7 +39,6 @@ from tbs_constants import (
     PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, PROC_TRAY_SHIM_N,
     WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, C_WALL,
-    svg_path, SVG_DIR,
     DIAGRAMS_DIR,
 )
 import os
@@ -181,7 +180,6 @@ def _save(fig, stem):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, f'{stem}.png')
     fig.savefig(png, dpi=150, bbox_inches='tight', facecolor=fig.get_facecolor())
-    fig.savefig(svg_path(png), bbox_inches='tight', facecolor=fig.get_facecolor())
     plt.close(fig)
     print(f'  {png} saved')
 

@@ -1550,6 +1550,30 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Conduit to Equipment Panel (Cct C)
+  grp = ents.add_group
+  grp.name = "Conduit to Equipment Panel (Cct C)"
+  ge = grp.entities
+  circle = ge.add_circle([5000.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(1141.mm)
+  mat = model.materials["Conduit to Equipment Panel (Cct C)"] || model.materials.add("Conduit to Equipment Panel (Cct C)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit Drop to Pumps (Cct C)
+  grp = ents.add_group
+  grp.name = "Conduit Drop to Pumps (Cct C)"
+  face = grp.entities.add_face([4995.mm,1176.mm,2220.mm], [5005.mm,1176.mm,2220.mm], [5005.mm,1186.mm,2220.mm], [4995.mm,1186.mm,2220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(143.mm)
+  mat = model.materials["Conduit Drop to Pumps (Cct C)"] || model.materials.add("Conduit Drop to Pumps (Cct C)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Lighting & Wiring"
   inst.layer = model.layers["Lighting"]

@@ -15,3 +15,5 @@ logo-final.png
 
 # Private secrets (API tokens, etc.) — NEVER commit
 .env.private
+.env.private*
+*.swp

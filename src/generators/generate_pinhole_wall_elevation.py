@@ -61,10 +61,10 @@ WALL_H = PUMP_PIPE_WALL  # 3mm
 WK_X_L = PROC_TRAY_X_L + WALKWAY_W   # 470mm — near walkway left edge (past left walkway)
 WK_X_R = PROC_TRAY_X_R               # 4629mm — near walkway right edge
 
-# Pull-cord switches (near evap duct penetration)
-PS_X_D = EVAP_DUCT_X - 30   # 1170mm — switch D
-PS_X_G = EVAP_DUCT_X + 90   # 1290mm — switch G
-PS_Z = C_HGT - 60           # 2328mm — switch body Z
+# Pull-cord switches — ceiling-mounted, left of the electrical panel (cleared)
+PS_X_D = 1450               # switch D — left of EP (EP starts at X=1600)
+PS_X_G = 1530               # switch G
+PS_Z = C_HGT - 30           # 2358mm — ceiling-mounted switch body Z
 CORD_HANG_Z = 900           # pull cord bottom Z
 
 # Cable trunking

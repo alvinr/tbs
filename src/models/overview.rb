@@ -101,70 +101,64 @@ end
   # ═══ Walkways ═══
   defn = model.definitions.add("Walkways")
   ents = defn.entities
-  # Walkway Near left (DROPPED)
+  # Walkway Near (left section)
   grp = ents.add_group
-  grp.name = "Walkway Near left (DROPPED)"
-  face = grp.entities.add_face([470.mm,0.mm,75.mm], [1155.mm,0.mm,75.mm], [1155.mm,300.mm,75.mm], [470.mm,300.mm,75.mm])
+  grp.name = "Walkway Near (left section)"
+  face = grp.entities.add_face([470.mm,0.mm,50.mm], [1155.mm,0.mm,50.mm], [1155.mm,300.mm,50.mm], [470.mm,300.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near left (DROPPED)"] || model.materials.add("Walkway Near left (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
 
-  # Walkway Near widened (DROPPED)
+  # Walkway Near (widened)
   grp = ents.add_group
-  grp.name = "Walkway Near widened (DROPPED)"
-  face = grp.entities.add_face([1155.mm,0.mm,75.mm], [2629.mm,0.mm,75.mm], [2629.mm,500.mm,75.mm], [1155.mm,500.mm,75.mm])
+  grp.name = "Walkway Near (widened)"
+  face = grp.entities.add_face([1155.mm,0.mm,50.mm], [2629.mm,0.mm,50.mm], [2629.mm,500.mm,50.mm], [1155.mm,500.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near widened (DROPPED)"] || model.materials.add("Walkway Near widened (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (widened)"] || model.materials.add("Walkway Near (widened)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
 
-  # Walkway Near right (DROPPED)
+  # Walkway Near (right section)
   grp = ents.add_group
-  grp.name = "Walkway Near right (DROPPED)"
-  face = grp.entities.add_face([2629.mm,0.mm,75.mm], [4329.mm,0.mm,75.mm], [4329.mm,300.mm,75.mm], [2629.mm,300.mm,75.mm])
+  grp.name = "Walkway Near (right section)"
+  face = grp.entities.add_face([2629.mm,0.mm,50.mm], [4329.mm,0.mm,50.mm], [4329.mm,300.mm,50.mm], [2629.mm,300.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near right (DROPPED)"] || model.materials.add("Walkway Near right (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (right section)"] || model.materials.add("Walkway Near (right section)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
 
-  # Walkway Far (DROPPED)
+  # Walkway Far
   grp = ents.add_group
-  grp.name = "Walkway Far (DROPPED)"
-  face = grp.entities.add_face([470.mm,2062.mm,75.mm], [4329.mm,2062.mm,75.mm], [4329.mm,2362.mm,75.mm], [470.mm,2362.mm,75.mm])
+  grp.name = "Walkway Far"
+  face = grp.entities.add_face([470.mm,2062.mm,50.mm], [4329.mm,2062.mm,50.mm], [4329.mm,2362.mm,50.mm], [470.mm,2362.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Far (DROPPED)"] || model.materials.add("Walkway Far (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Far"] || model.materials.add("Walkway Far")
+  mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
 
-  # Walkway Right IBC end (DROPPED)
+  # Walkway Right (IBC end)
   grp = ents.add_group
-  grp.name = "Walkway Right IBC end (DROPPED)"
-  face = grp.entities.add_face([4329.mm,0.mm,75.mm], [4629.mm,0.mm,75.mm], [4629.mm,2362.mm,75.mm], [4329.mm,2362.mm,75.mm])
+  grp.name = "Walkway Right (IBC end)"
+  face = grp.entities.add_face([4329.mm,0.mm,50.mm], [4629.mm,0.mm,50.mm], [4629.mm,2362.mm,50.mm], [4329.mm,2362.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Right IBC end (DROPPED)"] || model.materials.add("Walkway Right IBC end (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Right (IBC end)"] || model.materials.add("Walkway Right (IBC end)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
 
-  # Walkway Left cargo door (DROPPED)
+  # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
-  grp.name = "Walkway Left cargo door (DROPPED)"
-  face = grp.entities.add_face([170.mm,0.mm,75.mm], [470.mm,0.mm,75.mm], [470.mm,2362.mm,75.mm], [170.mm,2362.mm,75.mm])
+  grp.name = "Walkway Left (REMOVABLE — transport)"
+  face = grp.entities.add_face([170.mm,0.mm,50.mm], [470.mm,0.mm,50.mm], [470.mm,2362.mm,50.mm], [170.mm,2362.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Left cargo door (DROPPED)"] || model.materials.add("Walkway Left cargo door (DROPPED)")
-  mat.color = Sketchup::Color.new(204, 68, 34)
-  mat.alpha = 0.3
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)

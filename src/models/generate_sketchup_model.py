@@ -109,6 +109,8 @@ C_FAN = "#606060"       # ventilation fans
 C_BLUE = "#2979B8"      # Blue circuit supply pipe
 C_VALVE = "#B8B840"     # valves / taps (brass)
 C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)
+C_TRAY = "#9FB8C8"      # processing tray — 304 SS basin
+C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
@@ -170,8 +172,9 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
         lines.append(f'  mat = model.materials["{name}"] || '
                      f'model.materials.add("{name}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
-        if alpha is not None:
-            lines.append(f'  mat.alpha = {alpha}')
+        # Always set alpha (default opaque) so a reused material can't keep a
+        # stale translucency from an earlier run.
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
         if both_sides:
             lines.append(f'  grp.entities.grep(Sketchup::Face).each '
@@ -249,8 +252,7 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
         lines.append(f'  mat = model.materials["{name}"] || '
                      f'model.materials.add("{name}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
-        if alpha is not None:
-            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
@@ -298,35 +300,37 @@ def container_shell():
 # ── Processing tray ──────────────────────────────────────────────────────────
 
 def processing_tray():
-    """Processing tray — simplified as a shallow box with rim."""
+    """Processing tray — 304 SS basin (floor + rim) holding a translucent
+    chemistry bath, so it reads clearly against the off-white shell."""
     tray_w = PROC_TRAY_X_R - PROC_TRAY_X_L
     tray_d = PROC_TRAY_YD_FAR - PROC_TRAY_YD_NEAR
     sheet_t = 2
+    rim_t = 2
 
     parts = []
 
     parts.append(ruby_box("Processing Tray Floor",
                           PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, 0,
-                          tray_w, tray_d, sheet_t,
-                          color=C_PROC_ZONE, alpha=0.5))
+                          tray_w, tray_d, sheet_t, color=C_TRAY))
 
-    rim_t = 2
     parts.append(ruby_box("Tray Rim Near",
                           PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, sheet_t,
-                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t,
-                          color=C_WALL))
+                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
     parts.append(ruby_box("Tray Rim Far",
                           PROC_TRAY_X_L, PROC_TRAY_YD_FAR - rim_t, sheet_t,
-                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t,
-                          color=C_WALL))
+                          tray_w, rim_t, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
     parts.append(ruby_box("Tray Rim Left",
                           PROC_TRAY_X_L, PROC_TRAY_YD_NEAR, sheet_t,
-                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t,
-                          color=C_WALL))
+                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
     parts.append(ruby_box("Tray Rim Right",
                           PROC_TRAY_X_R - rim_t, PROC_TRAY_YD_NEAR, sheet_t,
-                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t,
-                          color=C_WALL))
+                          rim_t, tray_d, PROC_TRAY_RIM - sheet_t, color=C_TRAY))
+
+    # Translucent chemistry bath inside the rims.
+    parts.append(ruby_box("Chemistry Bath",
+                          PROC_TRAY_X_L + rim_t, PROC_TRAY_YD_NEAR + rim_t, sheet_t,
+                          tray_w - 2 * rim_t, tray_d - 2 * rim_t,
+                          PROC_TRAY_RIM - sheet_t - 8, color=C_BATH, alpha=0.45))
 
     return '\n'.join(parts)
 
@@ -741,8 +745,7 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
         lines.append(f'  mat = model.materials["{name}"] || '
                      f'model.materials.add("{name}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
-        if alpha is not None:
-            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
@@ -771,8 +774,7 @@ def ruby_panel_z(name, ax_, ay, bx, by, thickness, height, color=None, alpha=Non
         lines.append(f'  mat = model.materials["{name}"] || '
                      f'model.materials.add("{name}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
-        if alpha is not None:
-            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
@@ -927,16 +929,19 @@ def lighting_wiring():
                           0, 0, cz - 25, C_LEN, 40, 25, color=C_TRUNK))
 
     # White LED panels (Cct G) — 3× 600×300, ceiling-surface, centered in Yd.
+    # Ghosted (translucent) — they read as light sources, not solid blocks.
     led_w, led_d = 600, 300
     led_yd = C_WID / 2 - led_d / 2
     for lx in (1000, 2900, 4800):
         parts.append(ruby_box("White LED Panel (Cct G)",
-                              lx, led_yd, cz - 40, led_w, led_d, 40, color=C_LED_W))
+                              lx, led_yd, cz - 40, led_w, led_d, 40,
+                              color=C_LED_W, alpha=0.4))
 
     # Red safelight strips (Cct D) — 3× N–S across the width, in the panel gaps.
     for sx in (500, 2250, 4150):
         parts.append(ruby_box("Safelight Strip (Cct D)",
-                              sx, 100, cz - 25, 40, C_WID - 200, 18, color=C_SAFE))
+                              sx, 100, cz - 25, 40, C_WID - 200, 18,
+                              color=C_SAFE, alpha=0.4))
 
     # Pull-cord switches (D, G) — CEILING-mounted, in the ~80mm clear band ahead
     # of the pinhole wall (film carriage starts at Yd=100) and left of the EP

@@ -39,6 +39,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Evap Cooler") unless model.layers["Evap Cooler"]
   model.layers.add("Water Hookups") unless model.layers["Water Hookups"]
   model.layers.add("Fans") unless model.layers["Fans"]
+  model.layers.add("Water Plumbing") unless model.layers["Water Plumbing"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -1731,12 +1732,201 @@ end
   inst.name = "Spray Bar Plumbing"
   inst.layer = model.layers["Spray Bar"]
 
+  # ═══ Water Plumbing ═══
+  defn = model.definitions.add("Water Plumbing")
+  ents = defn.entities
+  # Fill Line
+  grp = ents.add_group
+  grp.name = "Fill Line"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-609.5.mm, 0.mm, -100.mm)
+  circle = ge.add_circle([5893.mm,1181.mm,2250.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fill Line"] || model.materials.add("Fill Line")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #1
+  grp = ents.add_group
+  grp.name = "Fill → Blue #1"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -643.mm, -130.mm)
+  circle = ge.add_circle([5283.5.mm,1181.mm,2150.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fill → Blue #1"] || model.materials.add("Fill → Blue #1")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #2
+  grp = ents.add_group
+  grp.name = "Fill → Blue #2"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 643.mm, -130.mm)
+  circle = ge.add_circle([5283.5.mm,1181.mm,2150.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fill → Blue #2"] || model.materials.add("Fill → Blue #2")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Brown IBC
+  grp = ents.add_group
+  grp.name = "Drain → Brown IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-609.5.mm, -643.mm, 0.mm)
+  circle = ge.add_circle([5893.mm,1181.mm,400.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Waste IBC
+  grp = ents.add_group
+  grp.name = "Drain → Waste IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-609.5.mm, 643.mm, 0.mm)
+  circle = ge.add_circle([5893.mm,1181.mm,200.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 suction
+  grp = ents.add_group
+  grp.name = "Blue #1 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-333.5.mm, 135.mm, 185.mm)
+  circle = ge.add_circle([5283.5.mm,1046.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 suction"] || model.materials.add("Blue #1 suction")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brown suction
+  grp = ents.add_group
+  grp.name = "Brown suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-333.5.mm, 135.mm, 1195.mm)
+  circle = ge.add_circle([5283.5.mm,1046.mm,185.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Brown suction"] || model.materials.add("Brown suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 suction
+  grp = ents.add_group
+  grp.name = "Blue #2 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-333.5.mm, -135.mm, 185.mm)
+  circle = ge.add_circle([5283.5.mm,1316.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #2 suction"] || model.materials.add("Blue #2 suction")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Waste suction
+  grp = ents.add_group
+  grp.name = "Waste suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-333.5.mm, -135.mm, 1195.mm)
+  circle = ge.add_circle([5283.5.mm,1316.mm,185.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste suction"] || model.materials.add("Waste suction")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump Pickup
+  grp = ents.add_group
+  grp.name = "Tray Sump Pickup"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 240.mm)
+  circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray Sump Pickup"] || model.materials.add("Tray Sump Pickup")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pickup → pump
+  grp = ents.add_group
+  grp.name = "Pickup → pump"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(400.mm, 1101.mm, 1120.mm)
+  circle = ge.add_circle([4550.mm,80.mm,260.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Pickup → pump"] || model.materials.add("Pickup → pump")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump → filters
+  grp = ents.add_group
+  grp.name = "Pump → filters"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-15.mm, 0.mm, -680.mm)
+  circle = ge.add_circle([4950.mm,1181.mm,1380.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Pump → filters"] || model.materials.add("Pump → filters")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → spray trunk
+  grp = ents.add_group
+  grp.name = "Filters → spray trunk"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-286.mm, -1169.mm, -670.mm)
+  circle = ge.add_circle([4935.mm,1181.mm,700.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filters → spray trunk"] || model.materials.add("Filters → spray trunk")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Water Plumbing"
+  inst.layer = model.layers["Water Plumbing"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1748,7 +1938,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

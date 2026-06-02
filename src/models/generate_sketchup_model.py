@@ -68,10 +68,12 @@ from tbs_constants import (
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
     SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_HANGER_D,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
-    EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H,
+    EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD,
     FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
     BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD,
     SPRAY_BAR_FEED_Z,
+    EQPANEL_YD_FAR, IBC_VALVE_Z,
+    PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -117,7 +119,8 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
-        "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"]
+        "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
+        "Water Plumbing"]
 
 
 def mm(val):
@@ -1072,6 +1075,98 @@ def spray_bar_plumbing():
     return '\n'.join(parts)
 
 
+# ── Water / waste plumbing network ───────────────────────────────────────────
+
+def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
+    """Straight cylindrical pipe between two arbitrary points p1, p2 (mm)."""
+    x1, y1, z1 = p1
+    x2, y2, z2 = p2
+    lines = [
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  ge = grp.entities',
+        f'  vec = Geom::Vector3d.new({mm(x2 - x1)}, {mm(y2 - y1)}, {mm(z2 - z1)})',
+        f'  circle = ge.add_circle([{mm(x1)},{mm(y1)},{mm(z1)}], vec, {mm(r)}, {n})',
+        f'  pf = ge.add_face(circle)',
+        f'  pf.reverse! if pf.normal.dot(vec) < 0',
+        f'  pf.pushpull(vec.length)',
+    ]
+    if color:
+        rr, gg, bb = hex_to_rgb(color)
+        lines.append(f'  mat = model.materials["{name}"] || '
+                     f'model.materials.add("{name}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({rr}, {gg}, {bb})')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
+        lines.append(f'  grp.material = mat')
+    lines.append('')
+    return '\n'.join(lines)
+
+
+def water_plumbing():
+    """Representative water/waste plumbing: exterior hookups → IBCs, IBC valves →
+    pumps, tray-sump pickup → pumps, pumps → filters → spray-bar trunk. Colour-
+    coded: blue = fresh/process, brown = developer, gray = waste."""
+    parts = []
+    pr = 12
+    nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column X center
+    nearY = BLUE_IBC_Y + IBC_D / 2          # 538  — near column Yd center
+    farY = IBC_FAR_Y + IBC_D / 2            # 1824 — far column Yd center
+    top = 2 * IBC_H_600                     # 2020 — top tier IBC tops
+    pump = (4950, EXT_FILL_YD, PUMP_H_LO + 60)   # pump-zone node (Yd 1181)
+
+    # Exterior FILL (blue) → top Blue IBCs.
+    parts.append(ruby_pipe("Fill Line",
+                           (C_LEN, EXT_FILL_YD, EXT_FILL_H),
+                           (nearX, EXT_FILL_YD, top + 130), pr, color=C_BLUE))
+    parts.append(ruby_pipe("Fill → Blue #1",
+                           (nearX, EXT_FILL_YD, top + 130), (nearX, nearY, top),
+                           pr, color=C_BLUE))
+    parts.append(ruby_pipe("Fill → Blue #2",
+                           (nearX, EXT_FILL_YD, top + 130), (nearX, farY, top),
+                           pr, color=C_BLUE))
+
+    # Exterior DRAINS → bottom IBCs.
+    parts.append(ruby_pipe("Drain → Brown IBC",
+                           (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H),
+                           (nearX, nearY, EXT_DRAIN_3_H), pr, color=C_IBC_BROWN))
+    parts.append(ruby_pipe("Drain → Waste IBC",
+                           (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H),
+                           (nearX, farY, EXT_DRAIN_H), pr, color=C_IBC_WASTE))
+
+    # IBC valves → pump zone (suction lines).
+    parts.append(ruby_pipe("Blue #1 suction",
+                           (nearX, EQPANEL_YD, IBC_H_600 + IBC_VALVE_Z), pump,
+                           pr, color=C_BLUE))
+    parts.append(ruby_pipe("Brown suction",
+                           (nearX, EQPANEL_YD, IBC_VALVE_Z), pump,
+                           pr, color=C_IBC_BROWN))
+    parts.append(ruby_pipe("Blue #2 suction",
+                           (nearX, EQPANEL_YD_FAR, IBC_H_600 + IBC_VALVE_Z), pump,
+                           pr, color=C_BLUE))
+    parts.append(ruby_pipe("Waste suction",
+                           (nearX, EQPANEL_YD_FAR, IBC_VALVE_Z), pump,
+                           pr, color=C_IBC_WASTE))
+
+    # Processing-tray sump pickup → pump.
+    parts.append(ruby_pipe("Tray Sump Pickup",
+                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
+                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 260),
+                           pr, color=C_IBC_WASTE))
+    parts.append(ruby_pipe("Pickup → pump",
+                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 260), pump,
+                           pr, color=C_IBC_WASTE))
+
+    # Pump → filters → spray-bar Blue trunk (process line).
+    parts.append(ruby_pipe("Pump → filters", pump, (4935, EXT_FILL_YD, 700),
+                           pr, color=C_BLUE))
+    parts.append(ruby_pipe("Filters → spray trunk",
+                           (4935, EXT_FILL_YD, 700),
+                           (RAIL_X_R, 12, SPRAY_BAR_FEED_Z), pr, color=C_BLUE))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -1097,6 +1192,7 @@ def generate_ruby():
         component("Water/Waste Hookups", "Water Hookups", water_hookups()),
         component("Fans A & B", "Fans", fans()),
         component("Spray Bar Plumbing", "Spray Bar", spray_bar_plumbing()),
+        component("Water Plumbing", "Water Plumbing", water_plumbing()),
     ]
     body = '\n'.join(comps)
 
@@ -1155,7 +1251,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

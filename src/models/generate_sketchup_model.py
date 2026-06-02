@@ -1496,9 +1496,10 @@ if __name__ == "__main__":
                         help="Send the Ruby straight to the running SketchUp")
     parser.add_argument("--sketchfab", nargs="?", const="overview", default=None,
                         metavar="MODEL",
-                        help="After --send, save the .skp and push the live model to "
-                             "Sketchfab as a new model, updating the embed + registry "
-                             "(logical model name, default: overview)")
+                        help="MANUAL/opt-in: after --send, save the .skp and push the "
+                             "live model to Sketchfab as a NEW model (consumes a "
+                             "Sketchfab upload + resets viewer settings), updating the "
+                             "embed + registry. Logical model name, default: overview")
     args = parser.parse_args()
 
     ruby = generate_ruby()

@@ -12,3 +12,6 @@ logo-final.png
 
 # Claude Code session files
 .claude/
+
+# Private secrets (API tokens, etc.) — NEVER commit
+.env.private

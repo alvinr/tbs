@@ -18,5 +18,6 @@ logo-final.png
 .env.private*
 *.swp
 
-# Sketchfab push marker (local state)
+# Sketchfab: .dae export artifact (regenerated on each push) + stale marker
+models/*.dae
 .sketchfab-pushed

@@ -1070,10 +1070,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-fan-a-far-end-wall-intake" class="md-nav__link">
+  <a href="#42-fan-a-far-end-wall-exhaust" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.2 Fan A — Far End Wall Intake
+        4.2 Fan A — Far End Wall Exhaust
       
     </span>
   </a>
@@ -1081,10 +1081,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-fan-b-panel-mounted-exhaust" class="md-nav__link">
+  <a href="#43-fan-b-panel-mounted-intake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.3 Fan B — Panel-Mounted Exhaust
+        4.3 Fan B — Panel-Mounted Intake
       
     </span>
   </a>
@@ -2487,7 +2487,7 @@
 <hr />
 <h2 id="4-ventilation-fans">4. Ventilation Fans<a class="headerlink" href="#4-ventilation-fans" title="Permanent link">&para;</a></h2>
 <p>For operator comfort during processing in warm conditions, but also to ensure there is fresh air exchange within the space.</p>
-<p>Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.</p>
+<p>Longitudinal section showing the cross-flow ventilation path: Fan B intake at the cargo door panel (low position), diagonal airflow up through the container volume, Fan A exhaust at the far end wall (high position, above the IBC stack). Evaporative cooler intake duct on the pinhole wall.</p>
 <p><strong>Sheet 1 — Container Ventilation Section</strong>
 <img alt="TBS-001 Ventilation — Sheet 1: Container Longitudinal Section" src="../assets/lighttrap-sheet1.png" /></p>
 <table>
@@ -2536,26 +2536,29 @@
 </thead>
 <tbody>
 <tr>
-<td>Fan A (intake)</td>
-<td>Far end wall (X=5893mm), low position</td>
-<td>Flush-mounted in wall penetration</td>
+<td>Fan B (intake)</td>
+<td>Hinged panel, far corner zone (Yd=1959mm, Z=600mm)</td>
+<td>Flush-mounted in 40mm corner zone panel</td>
 <td>Fresh air intake — draws cooler air near floor level</td>
 </tr>
 <tr>
-<td>Fan B (exhaust)</td>
-<td>Hinged panel, far corner zone (Yd=1959mm, Z=1800mm)</td>
-<td>Flush-mounted in 40mm corner zone panel</td>
-<td>Exhaust humid air during processing and drying</td>
+<td>Fan A (exhaust)</td>
+<td>Far end wall (X=5893mm), high position (Z=2200mm, above IBC stack)</td>
+<td>Flush-mounted in wall penetration</td>
+<td>Exhaust warm, humid air during processing and drying</td>
 </tr>
 </tbody>
 </table>
-<p>Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: low intake at the far end → high exhaust at the cargo door end.</p>
-<h3 id="42-fan-a-far-end-wall-intake">4.2 Fan A — Far End Wall Intake<a class="headerlink" href="#42-fan-a-far-end-wall-intake" title="Permanent link">&para;</a></h3>
-<p>Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.</p>
-<p><strong>Wiring:</strong> Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops vertically to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.</p>
-<h3 id="43-fan-b-panel-mounted-exhaust">4.3 Fan B — Panel-Mounted Exhaust<a class="headerlink" href="#43-fan-b-panel-mounted-exhaust" title="Permanent link">&para;</a></h3>
-<p>Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so exhaust air passes through the grille and discharges directly into the open doorway.</p>
-<p><strong>Wiring:</strong> Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm.</p>
+<p>Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: <strong>low intake at the cargo door end → high exhaust at the far end</strong> — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.</p>
+<blockquote>
+<p><strong>Why this layout:</strong> The intake was relocated to the cargo door panel (low) and the exhaust to the far end wall (high) because the near IBC tote column sits flush against the far end wall up to Z=2020mm. A low fan there would drive its 300mm baffle duct straight into the tote; mounting the exhaust at Z=2200mm clears the stack top with room to spare while preserving the diagonal low-in / high-out flow.</p>
+</blockquote>
+<h3 id="42-fan-a-far-end-wall-exhaust">4.2 Fan A — Far End Wall Exhaust<a class="headerlink" href="#42-fan-a-far-end-wall-exhaust" title="Permanent link">&para;</a></h3>
+<p>Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=75mm corner) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.</p>
+<p><strong>Wiring:</strong> Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops a short distance to the fan near the ceiling. The entire run is inside the container — no flex cable or weatherproof connectors are needed.</p>
+<h3 id="43-fan-b-panel-mounted-intake">4.3 Fan B — Panel-Mounted Intake<a class="headerlink" href="#43-fan-b-panel-mounted-intake" title="Permanent link">&para;</a></h3>
+<p>Fan B is mounted low on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so fresh outside air is drawn in through the grille near floor level.</p>
+<p><strong>Wiring:</strong> Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm; the wire drops down the panel to the low fan.</p>
 <h3 id="44-light-safe-baffle-ducts">4.4 Light-Safe Baffle Ducts<a class="headerlink" href="#44-light-safe-baffle-ducts" title="Permanent link">&para;</a></h3>
 <p>Both fan penetrations include L-shaped offset baffles inside a duct stub to prevent light ingress while allowing unrestricted airflow:</p>
 <ul>
@@ -2726,8 +2729,8 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <thead>
 <tr>
 <th>Mode</th>
-<th>Intake (Fan A)</th>
-<th>Exhaust (Fan B)</th>
+<th>Intake (Fan B)</th>
+<th>Exhaust (Fan A)</th>
 <th>Evap cooler</th>
 <th>Shade</th>
 </tr>
@@ -2786,14 +2789,14 @@ Detail views of the L-shaped light-safe baffle duct construction for both the 6"
 <tbody>
 <tr>
 <td>A</td>
-<td>Ventilation fan — intake (6")</td>
+<td>Ventilation fan — exhaust (6", far end wall, high)</td>
 <td>5A</td>
 <td>16 AWG</td>
-<td>~3m</td>
+<td>~2.5m</td>
 </tr>
 <tr>
 <td>B</td>
-<td>Ventilation fan — exhaust (panel-mounted)</td>
+<td>Ventilation fan — intake (6", panel-mounted, low)</td>
 <td>5A</td>
 <td>16 AWG</td>
 <td>~8m + flex connector</td>

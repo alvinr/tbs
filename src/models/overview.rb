@@ -1006,6 +1006,16 @@ end
   mat.alpha = 0.5
   grp.material = mat
 
+  # Ext. Power Panel (interior face)
+  grp = ents.add_group
+  grp.name = "Ext. Power Panel (interior face)"
+  face = grp.entities.add_face([1250.mm,0.mm,1780.mm], [1590.mm,0.mm,1780.mm], [1590.mm,20.mm,1780.mm], [1250.mm,20.mm,1780.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(240.mm)
+  mat = model.materials["Ext. Power Panel (interior face)"] || model.materials.add("Ext. Power Panel (interior face)")
+  mat.color = Sketchup::Color.new(245, 197, 24)
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Electrical"
   inst.layer = model.layers["Electrical"]

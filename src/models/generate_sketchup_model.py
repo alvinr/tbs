@@ -790,6 +790,10 @@ def electrical():
     parts.append(ruby_box("Ext. Power Panel (exterior)",
                           PWR_PANEL_X, -WALL_T - 25, PWR_PANEL_Z,
                           PWR_PANEL_W, 25, PWR_PANEL_H, color=C_ALUM, alpha=0.5))
+    # It penetrates the wall — interior face rectangle matching the exterior.
+    parts.append(ruby_box("Ext. Power Panel (interior face)",
+                          PWR_PANEL_X, 0, PWR_PANEL_Z,
+                          PWR_PANEL_W, 20, PWR_PANEL_H, color=C_ELEC))
 
     return '\n'.join(parts)
 

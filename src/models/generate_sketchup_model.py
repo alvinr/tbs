@@ -98,10 +98,11 @@ def container_shell():
                            C_LEN, C_WID, WALL_T,
                            color=C_WALL))
 
+    # Ghosted ceiling — low alpha so the interior is visible from above.
     parts.append(ruby_box("Container Ceiling",
                            0, 0, C_HGT,
                            C_LEN, C_WID, WALL_T,
-                           color=C_WALL))
+                           color=C_WALL, alpha=0.2))
 
     parts.append(ruby_box("Pinhole Wall (Yd=0)",
                            0, -WALL_T, 0,

@@ -27,6 +27,7 @@ opts["LengthPrecision"] = 1
   face.pushpull(40.mm)
   mat = model.materials.add("Container Ceiling")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.2
   grp.material = mat
 
   # Pinhole Wall (Yd=0)

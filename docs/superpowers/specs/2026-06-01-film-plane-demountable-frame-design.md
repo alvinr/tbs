@@ -50,7 +50,7 @@ Add a rectangular **portal frame at each end** of the rail set:
 - Pinhole-end portal at Yd=100, film-end portal at Yd=2262.
 - Each portal = left vertical (X=150) + right vertical (X=4649), both spanning
   Z 100→2288, plus a **top cross-beam** (Z≈2288) and a **bottom cross-beam**
-  (under-grate, see §3) spanning X 150→4649.
+  (Z≈100, see §3) spanning X 150→4649.
 - Four rails + two portals = a torsionally rigid box, independent of the
   (corrugated, non-structural) container shell.
 - **Joints are saddles + thumbscrews / locking pins, not welds.** The frame is
@@ -77,17 +77,29 @@ the **carriage's left edge** passing through the drum zone. Resolution:
   left edge, which would shrink the image; rejected: external vestibule, which
   conflicts with the transport requirement).
 
-### 3. Walkway interface via the under-grate plenum
+### 3. Walkway interface — rail above the walking surface, walkway dropped
 
-- Run the **floor rails and bottom cross-beams at Z ≈ 0–70**, below the grating
-  (which sits at 75–100 on its brackets). The grate runs continuous over them.
-- **Notch the grate ~30–50mm only at the two frame edges** (X=150 and 4649) where
-  the cage's vertical members pass up through grate height.
-- Image height is preserved (rejected: raising the mechanism, which loses bottom
-  support; rejected: cutting walkway gaps at crossings, a trip hazard).
-- Accepted operational limit: at extreme forward travel (Yd→100) the full-height
-  carriage occupies the near-walkway band (Yd 100–300); that band is kept clear
-  during composition.
+The bottom rail **cannot** sit below the grating: the carriage and its slide/tilt
+linkage need the rail in clear space, so a buried rail stops the mechanism from
+operating. The bottom members therefore sit at/above the walking surface (rail at
+Z ≈ 100, just above the 50mm tray rim), and the **conflicting perimeter walkway
+sections are permanently removed** from the film-mechanism envelope.
+
+Four-side clearance for the moving frame (walkway dropped) is confirmed:
+
+| Side | Nearest obstacle | Clearance |
+|---|---|---|
+| Bottom | processing-tray rim Z=50 | rail Z≈100 → 50mm |
+| Top | ceiling 2388 / cargo-panel ceiling rail 2358–2388 | frame top 2288 → 70–100mm |
+| Left (X=150) | light-trap drum | demountable left-rail segment (drum mode) |
+| Right (X=4649) | IBC stack near face X=4674 | 25mm (tight) |
+
+- Image height is preserved (the frame reaches down to the tray).
+- Rejected: under-grate routing (breaks the mechanism); raising the cage (loses
+  bottom image); cutting local walkway gaps (trip hazard, and the side walkways
+  sit inside the cage footprint anyway).
+- **Operator access** in the film zone is reconfigured by this removal — see
+  Dependencies / risks.
 
 ## Scope — files to change
 
@@ -98,8 +110,8 @@ the **carriage's left edge** passing through the drum zone. Resolution:
 - `generate_film_plane_mechanism.py` — draw both end portals, saddle/thumbscrew
   joints, under-grate bottom members, swing-away left-rail segment; update notes
   and BOM; show the two operating modes.
-- `generate_walkway_diagram.py` — under-grate plenum routing + edge notches at
-  X=150/4649.
+- `generate_walkway_diagram.py` — remove the perimeter walkway sections inside
+  the film-mechanism envelope; reconcile the remaining operator access.
 - `generate_lighttrap_diagram.py` and/or `generate_floorplan_diagram.py` —
   drum-mode clearance, swing-away left rail, operational interlock note.
 
@@ -112,6 +124,16 @@ the **carriage's left edge** passing through the drum zone. Resolution:
 - Re-apply to the 3D Overview model on the `3d-models` branch (Film Plane
   Mechanism + Ceiling Rail + Walkway components).
 
+## Dependencies / risks
+
+- **Walkway-accessibility reorg.** Dropping the film-zone walkway sections
+  intersects the ongoing walkway-accessibility study. Operator standing positions
+  and egress in the film zone must be re-derived; this spec assumes access is
+  provided from the container ends and during the dry composition phase, not from
+  raised decks inside the cage footprint.
+- **Right-side clearance** to the IBC stack is only ~25mm — confirm during
+  detailing; may want to nudge the IBC column or trim the cage right margin.
+
 ## Out of scope
 
 - Detailed leadscrew/drive redesign (the corner drives are unchanged).
@@ -121,5 +143,6 @@ the **carriage's left edge** passing through the drum zone. Resolution:
 ## Open implementation details (tunable, not blocking)
 
 - Final brace member section and joint hardware spec.
-- Exact grate-notch dimensions and under-grate Z band.
+- Exact extent of walkway removal vs. retained end-access, pending the
+  accessibility reconciliation.
 - Exact carriage park Yd for drum mode (any value > 1556 clears the drum).

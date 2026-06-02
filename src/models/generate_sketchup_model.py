@@ -1157,66 +1157,153 @@ def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
     return '\n'.join(lines)
 
 
+# ── Orthogonal pipe routing with swept-torus elbow fittings ──────────────────
+def _vsub(a, b): return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
+def _vadd(a, b): return (a[0]+b[0], a[1]+b[1], a[2]+b[2])
+def _vscale(a, s): return (a[0]*s, a[1]*s, a[2]*s)
+def _vdot(a, b): return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]
+def _vcross(a, b):
+    return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+def _vlen(a): return math.sqrt(_vdot(a, a))
+def _vunit(a):
+    L = _vlen(a)
+    return (a[0]/L, a[1]/L, a[2]/L) if L > 1e-9 else (0.0, 0.0, 0.0)
+
+
+def ruby_elbow(name, A, O, Rc, normal, d_in, theta, r,
+               color=None, alpha=None, n=16, seg=8):
+    """Swept-torus elbow fitting: a pipe cross-section circle (radius r) at A is
+    swept along an arc (centerline radius Rc, center O, plane normal `normal`,
+    sweep `theta` rad) — a real 90deg/45deg elbow body, not a butt corner."""
+    xa = _vunit(_vsub(A, O))
+    out = [
+        f'  # {name}',
+        '  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        '  ge = grp.entities',
+        (f'  arc = ge.add_arc([{mm(O[0])},{mm(O[1])},{mm(O[2])}], '
+         f'[{xa[0]:.6f},{xa[1]:.6f},{xa[2]:.6f}], '
+         f'[{normal[0]:.6f},{normal[1]:.6f},{normal[2]:.6f}], '
+         f'{mm(Rc)}, 0.0, {theta:.6f}, {seg})'),
+        (f'  circle = ge.add_circle([{mm(A[0])},{mm(A[1])},{mm(A[2])}], '
+         f'[{d_in[0]:.6f},{d_in[1]:.6f},{d_in[2]:.6f}], {mm(r)}, {n})'),
+        '  f = ge.add_face(circle)',
+        '  f.followme(arc)',
+    ]
+    if color:
+        rr, gg, bb = hex_to_rgb(color)
+        mat_nm = shared_mat_name(name, color, alpha)
+        out.append(f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")')
+        out.append(f'  mat.color = Sketchup::Color.new({rr}, {gg}, {bb})')
+        out.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
+        out.append('  grp.material = mat')
+    out.append('')
+    return '\n'.join(out)
+
+
+def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
+                  elbow_r=None, n=16, seg=8):
+    """Pipe run through axis-aligned `waypoints`: straight segments joined by a
+    swept-torus elbow fitting at every interior vertex (short-radius elbow,
+    centerline radius = 1x pipe diameter per skill_plumbing_drawing). Direction
+    changes happen only at fittings — no diagonals, no butt corners."""
+    R = elbow_r if elbow_r is not None else 2.0 * r
+    V = [tuple(float(c) for c in p) for p in waypoints]
+    out = []
+    start = V[0]
+    for i in range(1, len(V)):
+        if i == len(V) - 1:
+            if _vlen(_vsub(V[i], start)) > 0.5:
+                out.append(ruby_pipe(name, start, V[i], r, color, alpha, n))
+            break
+        d_in = _vunit(_vsub(V[i], V[i-1]))
+        d_out = _vunit(_vsub(V[i+1], V[i]))
+        theta = math.acos(max(-1.0, min(1.0, _vdot(d_in, d_out))))
+        if theta < 1e-3:                 # collinear — keep running straight
+            continue
+        T = R * math.tan(theta / 2.0)
+        T = min(T, _vlen(_vsub(V[i], start)) * 0.49,
+                _vlen(_vsub(V[i+1], V[i])) * 0.49)
+        Rc = T / math.tan(theta / 2.0)
+        A = _vadd(V[i], _vscale(d_in, -T))
+        B = _vadd(V[i], _vscale(d_out, T))
+        n_in = _vunit(_vsub(d_out, _vscale(d_in, _vdot(d_out, d_in))))
+        O = _vadd(A, _vscale(n_in, Rc))
+        normal = _vunit(_vcross(d_in, d_out))
+        if _vlen(_vsub(A, start)) > 0.5:
+            out.append(ruby_pipe(name, start, A, r, color, alpha, n))
+        out.append(ruby_elbow(name + " elbow", A, O, Rc, normal, d_in, theta,
+                              r, color, alpha, n, seg))
+        start = B
+    return '\n'.join(out)
+
+
 def water_plumbing():
-    """Representative water/waste plumbing: exterior hookups → IBCs, IBC valves →
-    pumps, tray-sump pickup → pumps, pumps → filters → spray-bar trunk. Colour-
-    coded: blue = fresh/process, brown = developer, gray = waste."""
-    parts = []
+    """Water/waste plumbing routed orthogonally with swept-torus elbow fittings
+    at every bend (per skill_plumbing_drawing), kept clear of the IBC footprint
+    (X 4674-5893, Y 30-1046 & 1316-2332, Z 0-2020): fill runs over the tote tops
+    (Z>2020); drain/suction runs stay in the clear corridor (Y 1046-1316) in
+    separate lanes; the tray-pickup and spray runs drop to the floor and leave
+    the IBC zone (X<4674) before traversing. Blue=fresh/process, brown=developer,
+    gray=waste."""
     pr = 12
-    nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column X center
-    nearY = BLUE_IBC_Y + IBC_D / 2          # 538  — near column Yd center
-    farY = IBC_FAR_Y + IBC_D / 2            # 1824 — far column Yd center
-    top = 2 * IBC_H_600                     # 2020 — top tier IBC tops
-    pump = (4950, EXT_FILL_YD, PUMP_H_LO + 60)   # pump-zone node (Yd 1181)
+    nearX = IBC_COL_X + IBC_W / 2           # 5283 — IBC column center X
+    nY = BLUE_IBC_Y + IBC_D / 2            # 538  — near col center (Blue #1 fill)
+    fY = IBC_FAR_Y + IBC_D / 2            # 1824 — far col center (Blue #2 fill)
+    topZ = 2 * IBC_H_600                   # 2020 — IBC stack top
+    overZ = topZ + 230                     # 2250 — clear height over the totes
+    pumpZ = PUMP_H_LO                      # 1320 — pump inlet bottom
+    pumpX = 4950
+    cc = 1181                              # corridor centerline Y
+    floor = 60                             # floor-run height
+    upVZ = IBC_H_600 + IBC_VALVE_Z         # 1195 — upper-tier valve Z
+    loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z
+    parts = []
+    def pipe(nm, wp, col):
+        parts.append(ruby_pipe_run(nm, wp, pr, color=col))
 
-    # Exterior FILL (blue) → top Blue IBCs.
-    parts.append(ruby_pipe("Fill Line",
-                           (C_LEN, EXT_FILL_YD, EXT_FILL_H),
-                           (nearX, EXT_FILL_YD, top + 130), pr, color=C_BLUE))
-    parts.append(ruby_pipe("Fill → Blue #1",
-                           (nearX, EXT_FILL_YD, top + 130), (nearX, nearY, top),
-                           pr, color=C_BLUE))
-    parts.append(ruby_pipe("Fill → Blue #2",
-                           (nearX, EXT_FILL_YD, top + 130), (nearX, farY, top),
-                           pr, color=C_BLUE))
+    # Exterior FILL (blue) → over the tote tops → Blue IBC fill ports.
+    pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (nearX, cc, overZ)], C_BLUE)
+    pipe("Fill → Blue #1",
+         [(nearX, cc, overZ), (nearX, nY, overZ), (nearX, nY, topZ + 20)], C_BLUE)
+    pipe("Fill → Blue #2",
+         [(nearX, cc, overZ), (nearX, fY, overZ), (nearX, fY, topZ + 20)], C_BLUE)
 
-    # Exterior DRAINS → bottom IBCs.
-    parts.append(ruby_pipe("Drain → Brown IBC",
-                           (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H),
-                           (nearX, nearY, EXT_DRAIN_3_H), pr, color=C_IBC_BROWN))
-    parts.append(ruby_pipe("Drain → Waste IBC",
-                           (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H),
-                           (nearX, farY, EXT_DRAIN_H), pr, color=C_IBC_WASTE))
+    # Exterior DRAINS (corridor) → bottom-tote valves on the corridor faces.
+    pipe("Drain → Brown IBC",
+         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H), (5300, cc, EXT_DRAIN_3_H),
+          (5300, EQPANEL_YD, EXT_DRAIN_3_H), (5300, EQPANEL_YD, 300)], C_IBC_BROWN)
+    pipe("Drain → Waste IBC",
+         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H), (5300, cc, EXT_DRAIN_H),
+          (5300, EQPANEL_YD_FAR, EXT_DRAIN_H), (5300, EQPANEL_YD_FAR, 300)],
+         C_IBC_WASTE)
 
-    # IBC valves → pump zone (suction lines).
-    parts.append(ruby_pipe("Blue #1 suction",
-                           (nearX, EQPANEL_YD, IBC_H_600 + IBC_VALVE_Z), pump,
-                           pr, color=C_BLUE))
-    parts.append(ruby_pipe("Brown suction",
-                           (nearX, EQPANEL_YD, IBC_VALVE_Z), pump,
-                           pr, color=C_IBC_BROWN))
-    parts.append(ruby_pipe("Blue #2 suction",
-                           (nearX, EQPANEL_YD_FAR, IBC_H_600 + IBC_VALVE_Z), pump,
-                           pr, color=C_BLUE))
-    parts.append(ruby_pipe("Waste suction",
-                           (nearX, EQPANEL_YD_FAR, IBC_VALVE_Z), pump,
-                           pr, color=C_IBC_WASTE))
+    # IBC valves → pump (suction), each in its own corridor Y-lane.
+    pipe("Blue #1 suction",
+         [(nearX, EQPANEL_YD, upVZ), (nearX, 1160, upVZ), (pumpX, 1160, upVZ),
+          (pumpX, 1160, pumpZ)], C_BLUE)
+    pipe("Brown suction",
+         [(nearX, EQPANEL_YD, loVZ), (nearX, 1120, loVZ), (pumpX, 1120, loVZ),
+          (pumpX, 1120, pumpZ)], C_IBC_BROWN)
+    pipe("Blue #2 suction",
+         [(nearX, EQPANEL_YD_FAR, upVZ), (nearX, 1200, upVZ), (pumpX, 1200, upVZ),
+          (pumpX, 1200, pumpZ)], C_BLUE)
+    pipe("Waste suction",
+         [(nearX, EQPANEL_YD_FAR, loVZ), (nearX, 1240, loVZ), (pumpX, 1240, loVZ),
+          (pumpX, 1240, pumpZ)], C_IBC_WASTE)
 
-    # Processing-tray sump pickup → pump.
-    parts.append(ruby_pipe("Tray Sump Pickup",
-                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
-                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 260),
-                           pr, color=C_IBC_WASTE))
-    parts.append(ruby_pipe("Pickup → pump",
-                           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 260), pump,
-                           pr, color=C_IBC_WASTE))
+    # Processing-tray sump → floor → around the IBC zone → up to the pump.
+    pipe("Tray Sump → Pump",
+         [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
+          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 200),
+          (PROC_TRAY_DRAIN_X, cc, 200), (4900, cc, 200), (4900, cc, pumpZ)],
+         C_IBC_WASTE)
 
-    # Pump → filters → spray-bar Blue trunk (process line).
-    parts.append(ruby_pipe("Pump → filters", pump, (4935, EXT_FILL_YD, 700),
-                           pr, color=C_BLUE))
-    parts.append(ruby_pipe("Filters → spray trunk",
-                           (4935, EXT_FILL_YD, 700),
-                           (RAIL_X_R, 12, SPRAY_BAR_FEED_Z), pr, color=C_BLUE))
+    # Pump → filters → spray-bar Blue trunk.
+    pipe("Pump → Filters", [(pumpX, cc, pumpZ), (pumpX, cc, 700)], C_BLUE)
+    pipe("Filters → Spray Trunk",
+         [(pumpX, cc, 700), (pumpX, cc, floor), (RAIL_X_R, cc, floor),
+          (RAIL_X_R, 12, floor), (RAIL_X_R, 12, SPRAY_BAR_FEED_Z)], C_BLUE)
 
     return '\n'.join(parts)
 

@@ -1825,11 +1825,11 @@ end
   # ═══ Water Plumbing ═══
   defn = model.definitions.add("Water Plumbing")
   ents = defn.entities
-  # Fill Line
+  # Fill Trunk
   grp = ents.add_group
-  grp.name = "Fill Line"
+  grp.name = "Fill Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-609.5.mm, 0.mm, -100.mm)
+  vec = Geom::Vector3d.new(-609.5.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5893.mm,1181.mm,2250.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1843,8 +1843,35 @@ end
   grp = ents.add_group
   grp.name = "Fill → Blue #1"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -643.mm, -130.mm)
-  circle = ge.add_circle([5283.5.mm,1181.mm,2150.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -619.mm, 0.mm)
+  circle = ge.add_circle([5283.5.mm,1181.mm,2250.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #1 elbow
+  grp = ents.add_group
+  grp.name = "Fill → Blue #1 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5283.5.mm,562.mm,2226.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,562.mm,2250.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #1
+  grp = ents.add_group
+  grp.name = "Fill → Blue #1"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -186.mm)
+  circle = ge.add_circle([5283.5.mm,538.mm,2226.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1857,8 +1884,35 @@ end
   grp = ents.add_group
   grp.name = "Fill → Blue #2"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 643.mm, -130.mm)
-  circle = ge.add_circle([5283.5.mm,1181.mm,2150.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 619.mm, 0.mm)
+  circle = ge.add_circle([5283.5.mm,1181.mm,2250.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #2 elbow
+  grp = ents.add_group
+  grp.name = "Fill → Blue #2 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5283.5.mm,1800.mm,2226.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,1800.mm,2250.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fill → Blue #2
+  grp = ents.add_group
+  grp.name = "Fill → Blue #2"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -186.mm)
+  circle = ge.add_circle([5283.5.mm,1824.mm,2226.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1871,8 +1925,62 @@ end
   grp = ents.add_group
   grp.name = "Drain → Brown IBC"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-609.5.mm, -643.mm, 0.mm)
+  vec = Geom::Vector3d.new(-569.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5893.mm,1181.mm,400.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Brown IBC elbow
+  grp = ents.add_group
+  grp.name = "Drain → Brown IBC elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5324.mm,1157.mm,400.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5324.mm,1181.mm,400.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Brown IBC
+  grp = ents.add_group
+  grp.name = "Drain → Brown IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -87.mm, 0.mm)
+  circle = ge.add_circle([5300.mm,1157.mm,400.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Brown IBC elbow
+  grp = ents.add_group
+  grp.name = "Drain → Brown IBC elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5300.mm,1070.mm,376.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5300.mm,1070.mm,400.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Brown IBC
+  grp = ents.add_group
+  grp.name = "Drain → Brown IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -76.mm)
+  circle = ge.add_circle([5300.mm,1046.mm,376.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1885,8 +1993,62 @@ end
   grp = ents.add_group
   grp.name = "Drain → Waste IBC"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-609.5.mm, 643.mm, 0.mm)
+  vec = Geom::Vector3d.new(-569.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5893.mm,1181.mm,200.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Waste IBC elbow
+  grp = ents.add_group
+  grp.name = "Drain → Waste IBC elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5324.mm,1205.mm,200.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5324.mm,1181.mm,200.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Waste IBC
+  grp = ents.add_group
+  grp.name = "Drain → Waste IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 87.mm, 0.mm)
+  circle = ge.add_circle([5300.mm,1205.mm,200.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Waste IBC elbow
+  grp = ents.add_group
+  grp.name = "Drain → Waste IBC elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5300.mm,1292.mm,224.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5300.mm,1292.mm,200.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain → Waste IBC
+  grp = ents.add_group
+  grp.name = "Drain → Waste IBC"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 76.mm)
+  circle = ge.add_circle([5300.mm,1316.mm,224.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1899,8 +2061,62 @@ end
   grp = ents.add_group
   grp.name = "Blue #1 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-333.5.mm, 135.mm, 185.mm)
+  vec = Geom::Vector3d.new(0.mm, 90.mm, 0.mm)
   circle = ge.add_circle([5283.5.mm,1046.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 suction elbow
+  grp = ents.add_group
+  grp.name = "Blue #1 suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5259.5.mm,1136.mm,1195.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,1136.mm,1195.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 suction
+  grp = ents.add_group
+  grp.name = "Blue #1 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5259.5.mm,1160.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 suction elbow
+  grp = ents.add_group
+  grp.name = "Blue #1 suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4974.mm,1160.mm,1219.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4974.mm,1160.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 suction
+  grp = ents.add_group
+  grp.name = "Blue #1 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
+  circle = ge.add_circle([4950.mm,1160.mm,1219.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1913,8 +2129,62 @@ end
   grp = ents.add_group
   grp.name = "Brown suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-333.5.mm, 135.mm, 1195.mm)
+  vec = Geom::Vector3d.new(0.mm, 50.mm, 0.mm)
   circle = ge.add_circle([5283.5.mm,1046.mm,185.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brown suction elbow
+  grp = ents.add_group
+  grp.name = "Brown suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5259.5.mm,1096.mm,185.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,1096.mm,185.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brown suction
+  grp = ents.add_group
+  grp.name = "Brown suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5259.5.mm,1120.mm,185.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brown suction elbow
+  grp = ents.add_group
+  grp.name = "Brown suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4974.mm,1120.mm,209.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4974.mm,1120.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brown suction
+  grp = ents.add_group
+  grp.name = "Brown suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1111.mm)
+  circle = ge.add_circle([4950.mm,1120.mm,209.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1927,8 +2197,62 @@ end
   grp = ents.add_group
   grp.name = "Blue #2 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-333.5.mm, -135.mm, 185.mm)
+  vec = Geom::Vector3d.new(0.mm, -92.mm, 0.mm)
   circle = ge.add_circle([5283.5.mm,1316.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 suction elbow
+  grp = ents.add_group
+  grp.name = "Blue #2 suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5259.5.mm,1224.mm,1195.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,1224.mm,1195.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 suction
+  grp = ents.add_group
+  grp.name = "Blue #2 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5259.5.mm,1200.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 suction elbow
+  grp = ents.add_group
+  grp.name = "Blue #2 suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4974.mm,1200.mm,1219.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4974.mm,1200.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #2 suction
+  grp = ents.add_group
+  grp.name = "Blue #2 suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
+  circle = ge.add_circle([4950.mm,1200.mm,1219.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1941,7 +2265,7 @@ end
   grp = ents.add_group
   grp.name = "Waste suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-333.5.mm, -135.mm, 1195.mm)
+  vec = Geom::Vector3d.new(0.mm, -52.mm, 0.mm)
   circle = ge.add_circle([5283.5.mm,1316.mm,185.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1951,11 +2275,65 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Tray Sump Pickup
+  # Waste suction elbow
   grp = ents.add_group
-  grp.name = "Tray Sump Pickup"
+  grp.name = "Waste suction elbow"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 240.mm)
+  arc = ge.add_arc([5259.5.mm,1264.mm,185.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5283.5.mm,1264.mm,185.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Waste suction
+  grp = ents.add_group
+  grp.name = "Waste suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5259.5.mm,1240.mm,185.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Waste suction elbow
+  grp = ents.add_group
+  grp.name = "Waste suction elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4974.mm,1240.mm,209.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4974.mm,1240.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Waste suction
+  grp = ents.add_group
+  grp.name = "Waste suction"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1111.mm)
+  circle = ge.add_circle([4950.mm,1240.mm,209.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump → Pump
+  grp = ents.add_group
+  grp.name = "Tray Sump → Pump"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 156.mm)
   circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1965,12 +2343,25 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Pickup → pump
+  # Tray Sump → Pump elbow
   grp = ents.add_group
-  grp.name = "Pickup → pump"
+  grp.name = "Tray Sump → Pump elbow"
   ge = grp.entities
-  vec = Geom::Vector3d.new(400.mm, 1101.mm, 1120.mm)
-  circle = ge.add_circle([4550.mm,80.mm,260.mm], vec, 12.mm, 16)
+  arc = ge.add_arc([4550.mm,104.mm,176.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,80.mm,176.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump → Pump
+  grp = ents.add_group
+  grp.name = "Tray Sump → Pump"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1053.mm, 0.mm)
+  circle = ge.add_circle([4550.mm,104.mm,200.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1979,12 +2370,66 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Pump → filters
+  # Tray Sump → Pump elbow
   grp = ents.add_group
-  grp.name = "Pump → filters"
+  grp.name = "Tray Sump → Pump elbow"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.mm, 0.mm, -680.mm)
-  circle = ge.add_circle([4950.mm,1181.mm,1380.mm], vec, 12.mm, 16)
+  arc = ge.add_arc([4574.mm,1157.mm,200.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,1157.mm,200.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump → Pump
+  grp = ents.add_group
+  grp.name = "Tray Sump → Pump"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(302.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4574.mm,1181.mm,200.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump → Pump elbow
+  grp = ents.add_group
+  grp.name = "Tray Sump → Pump elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4876.mm,1181.mm,224.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4876.mm,1181.mm,200.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Sump → Pump
+  grp = ents.add_group
+  grp.name = "Tray Sump → Pump"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1096.mm)
+  circle = ge.add_circle([4900.mm,1181.mm,224.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump → Filters
+  grp = ents.add_group
+  grp.name = "Pump → Filters"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -620.mm)
+  circle = ge.add_circle([4950.mm,1181.mm,1320.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1993,12 +2438,93 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Filters → spray trunk
+  # Filters → Spray Trunk
   grp = ents.add_group
-  grp.name = "Filters → spray trunk"
+  grp.name = "Filters → Spray Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-286.mm, -1169.mm, -670.mm)
-  circle = ge.add_circle([4935.mm,1181.mm,700.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -616.mm)
+  circle = ge.add_circle([4950.mm,1181.mm,700.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk elbow
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4926.mm,1181.mm,84.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4950.mm,1181.mm,84.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-253.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4926.mm,1181.mm,60.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk elbow
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4673.mm,1157.mm,60.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4673.mm,1181.mm,60.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -1130.3.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,1157.mm,60.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk elbow
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4649.mm,26.7.mm,45.3.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4649.mm,26.7.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filters → Spray Trunk
+  grp = ents.add_group
+  grp.name = "Filters → Spray Trunk"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -15.299999999999997.mm)
+  circle = ge.add_circle([4649.mm,12.mm,45.3.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

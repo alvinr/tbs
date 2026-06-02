@@ -1942,6 +1942,13 @@ model.pages.add("Overview")
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 
+# Per-component scenes — the translucent Shell (context) + one subsystem each.
+["Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each { |t|
+  model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || l.name == t) }
+  model.pages.add(t)
+}
+model.layers.each { |l| l.visible = true }
+
 model.commit_operation
 Sketchup.active_model.active_view.zoom_extents
 { success: true, model: "Overview",

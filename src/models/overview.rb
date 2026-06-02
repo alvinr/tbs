@@ -1355,6 +1355,78 @@ end
   mat.color = Sketchup::Color.new(154, 160, 160)
   grp.material = mat
 
+  # Conduit to LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "Conduit to LED Panel (Cct G)"
+  ge = grp.entities
+  circle = ge.add_circle([1300.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(991.mm)
+  mat = model.materials["Conduit to LED Panel (Cct G)"] || model.materials.add("Conduit to LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit to LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "Conduit to LED Panel (Cct G)"
+  ge = grp.entities
+  circle = ge.add_circle([3200.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(991.mm)
+  mat = model.materials["Conduit to LED Panel (Cct G)"] || model.materials.add("Conduit to LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit to LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "Conduit to LED Panel (Cct G)"
+  ge = grp.entities
+  circle = ge.add_circle([5100.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(991.mm)
+  mat = model.materials["Conduit to LED Panel (Cct G)"] || model.materials.add("Conduit to LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit to Safelight (Cct D)
+  grp = ents.add_group
+  grp.name = "Conduit to Safelight (Cct D)"
+  ge = grp.entities
+  circle = ge.add_circle([520.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Conduit to Safelight (Cct D)"] || model.materials.add("Conduit to Safelight (Cct D)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit to Safelight (Cct D)
+  grp = ents.add_group
+  grp.name = "Conduit to Safelight (Cct D)"
+  ge = grp.entities
+  circle = ge.add_circle([2270.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Conduit to Safelight (Cct D)"] || model.materials.add("Conduit to Safelight (Cct D)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit to Safelight (Cct D)
+  grp = ents.add_group
+  grp.name = "Conduit to Safelight (Cct D)"
+  ge = grp.entities
+  circle = ge.add_circle([4170.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(60.mm)
+  mat = model.materials["Conduit to Safelight (Cct D)"] || model.materials.add("Conduit to Safelight (Cct D)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Lighting & Wiring"
   inst.layer = model.layers["Lighting"]

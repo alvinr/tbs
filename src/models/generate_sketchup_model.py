@@ -950,6 +950,17 @@ def lighting_wiring():
         parts.append(ruby_box("Conduit Drop (10mm)",
                               cxc, 8, zbot, 10, 10, (cz - 25) - zbot, color=C_TRUNK))
 
+    # Conduit runs along the ceiling from the trunking out to each fixture.
+    cr, czc = 7, cz - 38
+    for lx in (1000, 2900, 4800):    # → white LED panels (Cct G)
+        parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
+                                   lx + led_w / 2, 40, czc, cr, led_yd - 40,
+                                   color=C_TRUNK, axis="y"))
+    for sx in (500, 2250, 4150):     # → red safelight strips (Cct D)
+        parts.append(ruby_cylinder("Conduit to Safelight (Cct D)",
+                                   sx + 20, 40, czc, cr, 60,
+                                   color=C_TRUNK, axis="y"))
+
     return '\n'.join(parts)
 
 

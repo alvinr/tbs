@@ -36,6 +36,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Shelf") unless model.layers["Shelf"]
   model.layers.add("Light Seal") unless model.layers["Light Seal"]
   model.layers.add("Lighting") unless model.layers["Lighting"]
+  model.layers.add("Evap Cooler") unless model.layers["Evap Cooler"]
+  model.layers.add("Water Hookups") unless model.layers["Water Hookups"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -249,6 +251,46 @@ end
   face.pushpull(2.17.mm)
   mat = model.materials["Pinhole Aperture (Ø2.17)"] || model.materials.add("Pinhole Aperture (Ø2.17)")
   mat.color = Sketchup::Color.new(204, 102, 0)
+  grp.material = mat
+
+  # TS Base Plate (wall mount)
+  grp = ents.add_group
+  grp.name = "TS Base Plate (wall mount)"
+  face = grp.entities.add_face([2229.mm,-52.mm,1024.mm], [2569.mm,-52.mm,1024.mm], [2569.mm,-40.mm,1024.mm], [2229.mm,-40.mm,1024.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(340.mm)
+  mat = model.materials["TS Base Plate (wall mount)"] || model.materials.add("TS Base Plate (wall mount)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Pinhole Tilt-Swing Board
+  grp = ents.add_group
+  grp.name = "Pinhole Tilt-Swing Board"
+  face = grp.entities.add_face([2259.mm,-80.mm,1054.mm], [2539.mm,-80.mm,1054.mm], [2539.mm,-64.mm,1054.mm], [2259.mm,-64.mm,1054.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(280.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  grp.material = mat
+
+  # TS Tilt Knob
+  grp = ents.add_group
+  grp.name = "TS Tilt Knob"
+  face = grp.entities.add_face([2384.mm,-100.mm,1029.mm], [2414.mm,-100.mm,1029.mm], [2414.mm,-75.mm,1029.mm], [2384.mm,-75.mm,1029.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["TS Tilt Knob"] || model.materials.add("TS Tilt Knob")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # TS Swing Knob
+  grp = ents.add_group
+  grp.name = "TS Swing Knob"
+  face = grp.entities.add_face([2539.mm,-100.mm,1179.mm], [2564.mm,-100.mm,1179.mm], [2564.mm,-75.mm,1179.mm], [2539.mm,-75.mm,1179.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["TS Swing Knob"] || model.materials.add("TS Swing Knob")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -987,13 +1029,23 @@ end
   mat.color = Sketchup::Color.new(245, 197, 24)
   grp.material = mat
 
-  # Battery Bank (2x LiFePO4)
+  # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
-  grp.name = "Battery Bank (2x LiFePO4)"
-  face = grp.entities.add_face([1810.mm,0.mm,100.mm], [2310.mm,0.mm,100.mm], [2310.mm,120.mm,100.mm], [1810.mm,120.mm,100.mm])
+  grp.name = "Battery 1 (12V 100Ah LiFePO4)"
+  face = grp.entities.add_face([1810.mm,0.mm,100.mm], [2050.mm,0.mm,100.mm], [2050.mm,120.mm,100.mm], [1810.mm,120.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(500.mm)
-  mat = model.materials["Battery Bank (2x LiFePO4)"] || model.materials.add("Battery Bank (2x LiFePO4)")
+  mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
+  mat.color = Sketchup::Color.new(106, 90, 205)
+  grp.material = mat
+
+  # Battery 2 (12V 100Ah LiFePO4)
+  grp = ents.add_group
+  grp.name = "Battery 2 (12V 100Ah LiFePO4)"
+  face = grp.entities.add_face([2070.mm,0.mm,100.mm], [2310.mm,0.mm,100.mm], [2310.mm,120.mm,100.mm], [2070.mm,120.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(500.mm)
+  mat = model.materials["Battery 2 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 2 (12V 100Ah LiFePO4)")
   mat.color = Sketchup::Color.new(106, 90, 205)
   grp.material = mat
 
@@ -1301,12 +1353,76 @@ end
   inst.name = "Lighting & Wiring"
   inst.layer = model.layers["Lighting"]
 
+  # ═══ Evap Cooler & Duct ═══
+  defn = model.definitions.add("Evap Cooler & Duct")
+  ents = defn.entities
+  # Evap Cooler (exterior)
+  grp = ents.add_group
+  grp.name = "Evap Cooler (exterior)"
+  face = grp.entities.add_face([700.mm,-390.mm,1500.mm], [1300.mm,-390.mm,1500.mm], [1300.mm,-40.mm,1500.mm], [700.mm,-40.mm,1500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(800.mm)
+  mat = model.materials["Evap Cooler (exterior)"] || model.materials.add("Evap Cooler (exterior)")
+  mat.color = Sketchup::Color.new(61, 170, 150)
+  grp.material = mat
+
+  # Evap Supply Duct
+  grp = ents.add_group
+  grp.name = "Evap Supply Duct"
+  face = grp.entities.add_face([900.mm,-390.mm,1800.mm], [1100.mm,-390.mm,1800.mm], [1100.mm,150.mm,1800.mm], [900.mm,150.mm,1800.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Evap Supply Duct"] || model.materials.add("Evap Supply Duct")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Evap Cooler & Duct"
+  inst.layer = model.layers["Evap Cooler"]
+
+  # ═══ Water/Waste Hookups ═══
+  defn = model.definitions.add("Water/Waste Hookups")
+  ents = defn.entities
+  # Water Fill Hookup (2in NPT)
+  grp = ents.add_group
+  grp.name = "Water Fill Hookup (2in NPT)"
+  face = grp.entities.add_face([5898.mm,1131.mm,2200.mm], [5998.mm,1131.mm,2200.mm], [5998.mm,1231.mm,2200.mm], [5898.mm,1231.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Water Fill Hookup (2in NPT)"] || model.materials.add("Water Fill Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(46, 109, 180)
+  grp.material = mat
+
+  # Waste Drain Hookup (2in NPT)
+  grp = ents.add_group
+  grp.name = "Waste Drain Hookup (2in NPT)"
+  face = grp.entities.add_face([5898.mm,1131.mm,350.mm], [5998.mm,1131.mm,350.mm], [5998.mm,1231.mm,350.mm], [5898.mm,1231.mm,350.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  grp.material = mat
+
+  # Waste Drain Hookup (2in NPT)
+  grp = ents.add_group
+  grp.name = "Waste Drain Hookup (2in NPT)"
+  face = grp.entities.add_face([5898.mm,1131.mm,150.mm], [5998.mm,1131.mm,150.mm], [5998.mm,1231.mm,150.mm], [5898.mm,1231.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Water/Waste Hookups"
+  inst.layer = model.layers["Water Hookups"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1318,7 +1434,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

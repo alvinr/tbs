@@ -1494,9 +1494,11 @@ if __name__ == "__main__":
                         help="Write Ruby to src/models/tbs_model.rb")
     parser.add_argument("--send", action="store_true",
                         help="Send the Ruby straight to the running SketchUp")
-    parser.add_argument("--sketchfab", action="store_true",
-                        help="After --send, save models/overview.skp and push it "
-                             "to Sketchfab (updates the model in place)")
+    parser.add_argument("--sketchfab", nargs="?", const="overview", default=None,
+                        metavar="MODEL",
+                        help="After --send, save the .skp and push the live model to "
+                             "Sketchfab as a new model, updating the embed + registry "
+                             "(logical model name, default: overview)")
     args = parser.parse_args()
 
     ruby = generate_ruby()
@@ -1522,12 +1524,12 @@ if __name__ == "__main__":
         import subprocess
         from sketchup_client import send_ruby
         skp = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                           "..", "..", "models", "overview.skp"))
+                                           "..", "..", "models", f"{args.sketchfab}.skp"))
         print(f"  saving {skp} ...")
         send_ruby('m=Sketchup.active_model; "saved=#{m.save(' + repr(skp) + ')}"')
         subprocess.run([sys.executable,
                         os.path.join(os.path.dirname(__file__), "push_sketchfab.py"),
-                        "--wait"], check=True)
+                        args.sketchfab], check=True)
 
     if not args.save and not args.send:
         print(ruby)

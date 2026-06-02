@@ -29,6 +29,15 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Ceiling Rail") unless model.layers["Ceiling Rail"]
   model.layers.add("Spray Bar") unless model.layers["Spray Bar"]
   model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
+  model.layers.add("IBC Stack") unless model.layers["IBC Stack"]
+  model.layers.add("IBC Rack") unless model.layers["IBC Rack"]
+
+# Dashed line style for the optical cone wireframe (guidance, not a solid).
+begin
+  ds = model.line_styles["Dash"] || model.line_styles["Dot"]
+  model.layers["Optical Cone"].line_style = ds if ds
+rescue StandardError
+end
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Container Shell ═══
@@ -250,15 +259,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   apex = [2399.mm,0.mm,1194.mm]
   b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2388.mm]; b3 = [150.mm,2262.mm,2388.mm]
-  ge.add_face(b0, b1, b2, b3)
-  ge.add_face(apex, b0, b1)
-  ge.add_face(apex, b1, b2)
-  ge.add_face(apex, b2, b3)
-  ge.add_face(apex, b3, b0)
-  mat = model.materials["Optical Cone"] || model.materials.add("Optical Cone")
-  mat.color = Sketchup::Color.new(204, 102, 0)
-  mat.alpha = 0.05
-  ge.each { |f| next unless f.is_a?(Sketchup::Face); f.material = mat; f.back_material = mat }
+  edges = []
+  edges.concat(ge.add_edges(b0, b1, b2, b3, b0))
+  edges << ge.add_line(apex, b0)
+  edges << ge.add_line(apex, b1)
+  edges << ge.add_line(apex, b2)
+  edges << ge.add_line(apex, b3)
+  lyr = model.layers["Optical Cone"]
+  edges.each { |e| e.layer = lyr if e.is_a?(Sketchup::Edge) }
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Optical Cone"
@@ -490,22 +498,76 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.color = Sketchup::Color.new(156, 123, 77)
   grp.material = mat
 
-  # Pumps + ACC-01
+  # Pump P-01 (Blue)
   grp = ents.add_group
-  grp.name = "Pumps + ACC-01"
-  face = grp.entities.add_face([4900.mm,1046.mm,1320.mm], [5000.mm,1046.mm,1320.mm], [5000.mm,1173.mm,1320.mm], [4900.mm,1173.mm,1320.mm])
+  grp.name = "Pump P-01 (Blue)"
+  face = grp.entities.add_face([4900.mm,1045.5.mm,1320.mm], [5000.mm,1045.5.mm,1320.mm], [5000.mm,1172.5.mm,1320.mm], [4900.mm,1172.5.mm,1320.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(900.mm)
-  mat = model.materials["Pumps + ACC-01"] || model.materials.add("Pumps + ACC-01")
+  face.pushpull(218.mm)
+  mat = model.materials["Pump P-01 (Blue)"] || model.materials.add("Pump P-01 (Blue)")
   mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # Pump P-02 (Brown)
+  grp = ents.add_group
+  grp.name = "Pump P-02 (Brown)"
+  face = grp.entities.add_face([4900.mm,1189.5.mm,1320.mm], [5000.mm,1189.5.mm,1320.mm], [5000.mm,1316.5.mm,1320.mm], [4900.mm,1316.5.mm,1320.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(218.mm)
+  mat = model.materials["Pump P-02 (Brown)"] || model.materials.add("Pump P-02 (Brown)")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # Pump P-04 (Tray drain)
+  grp = ents.add_group
+  grp.name = "Pump P-04 (Tray drain)"
+  face = grp.entities.add_face([4900.mm,1045.5.mm,1578.mm], [5000.mm,1045.5.mm,1578.mm], [5000.mm,1172.5.mm,1578.mm], [4900.mm,1172.5.mm,1578.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(218.mm)
+  mat = model.materials["Pump P-04 (Tray drain)"] || model.materials.add("Pump P-04 (Tray drain)")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # Pump P-03 (Waste evac)
+  grp = ents.add_group
+  grp.name = "Pump P-03 (Waste evac)"
+  face = grp.entities.add_face([4900.mm,1189.5.mm,1578.mm], [5000.mm,1189.5.mm,1578.mm], [5000.mm,1316.5.mm,1578.mm], [4900.mm,1316.5.mm,1578.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(218.mm)
+  mat = model.materials["Pump P-03 (Waste evac)"] || model.materials.add("Pump P-03 (Waste evac)")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # Pump P-05 (Brown drain)
+  grp = ents.add_group
+  grp.name = "Pump P-05 (Brown drain)"
+  face = grp.entities.add_face([4900.mm,1189.5.mm,1946.mm], [5000.mm,1189.5.mm,1946.mm], [5000.mm,1316.5.mm,1946.mm], [4900.mm,1316.5.mm,1946.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(218.mm)
+  mat = model.materials["Pump P-05 (Brown drain)"] || model.materials.add("Pump P-05 (Brown drain)")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # ACC-01 Accumulator
+  grp = ents.add_group
+  grp.name = "ACC-01 Accumulator"
+  ge = grp.entities
+  circle = ge.add_circle([4937.mm,1109.mm,1946.mm], [0,0,1], 63.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(150.mm)
+  mat = model.materials["ACC-01 Accumulator"] || model.materials.add("ACC-01 Accumulator")
+  mat.color = Sketchup::Color.new(90, 154, 204)
   grp.material = mat
 
   # Filter F1 (50µ)
   grp = ents.add_group
   grp.name = "Filter F1 (50µ)"
-  face = grp.entities.add_face([4870.mm,1186.mm,200.mm], [5000.mm,1186.mm,200.mm], [5000.mm,1316.mm,200.mm], [4870.mm,1316.mm,200.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(340.mm)
+  ge = grp.entities
+  circle = ge.add_circle([4935.mm,1181.mm,200.mm], [0,0,1], 65.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(340.mm)
   mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
   mat.color = Sketchup::Color.new(58, 110, 165)
   grp.material = mat
@@ -513,9 +575,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Filter F2 (5µ)
   grp = ents.add_group
   grp.name = "Filter F2 (5µ)"
-  face = grp.entities.add_face([4870.mm,1186.mm,570.mm], [5000.mm,1186.mm,570.mm], [5000.mm,1316.mm,570.mm], [4870.mm,1316.mm,570.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(340.mm)
+  ge = grp.entities
+  circle = ge.add_circle([4935.mm,1181.mm,570.mm], [0,0,1], 65.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(340.mm)
   mat = model.materials["Filter F2 (5µ)"] || model.materials.add("Filter F2 (5µ)")
   mat.color = Sketchup::Color.new(58, 110, 165)
   grp.material = mat
@@ -523,9 +587,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Filter F3 (GAC)
   grp = ents.add_group
   grp.name = "Filter F3 (GAC)"
-  face = grp.entities.add_face([4870.mm,1186.mm,940.mm], [5000.mm,1186.mm,940.mm], [5000.mm,1316.mm,940.mm], [4870.mm,1316.mm,940.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(340.mm)
+  ge = grp.entities
+  circle = ge.add_circle([4935.mm,1181.mm,940.mm], [0,0,1], 65.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(340.mm)
   mat = model.materials["Filter F3 (GAC)"] || model.materials.add("Filter F3 (GAC)")
   mat.color = Sketchup::Color.new(58, 110, 165)
   grp.material = mat
@@ -534,12 +600,220 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Equipment Panel"
   inst.layer = model.layers["Equipment Panel"]
 
+  # ═══ IBC Stack ═══
+  defn = model.definitions.add("IBC Stack")
+  ents = defn.entities
+  # IBC Brown (developer) pallet
+  grp = ents.add_group
+  grp.name = "IBC Brown (developer) pallet"
+  face = grp.entities.add_face([4674.mm,30.mm,0.mm], [5893.mm,30.mm,0.mm], [5893.mm,1046.mm,0.mm], [4674.mm,1046.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # IBC Brown (developer) bottle
+  grp = ents.add_group
+  grp.name = "IBC Brown (developer) bottle"
+  face = grp.entities.add_face([4704.mm,60.mm,168.mm], [5863.mm,60.mm,168.mm], [5863.mm,1016.mm,168.mm], [4704.mm,1016.mm,168.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(822.mm)
+  mat = model.materials["IBC Brown (developer) bottle"] || model.materials.add("IBC Brown (developer) bottle")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # IBC Blue #1 pallet
+  grp = ents.add_group
+  grp.name = "IBC Blue #1 pallet"
+  face = grp.entities.add_face([4674.mm,30.mm,1010.mm], [5893.mm,30.mm,1010.mm], [5893.mm,1046.mm,1010.mm], [4674.mm,1046.mm,1010.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["IBC Blue #1 pallet"] || model.materials.add("IBC Blue #1 pallet")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # IBC Blue #1 bottle
+  grp = ents.add_group
+  grp.name = "IBC Blue #1 bottle"
+  face = grp.entities.add_face([4704.mm,60.mm,1178.mm], [5863.mm,60.mm,1178.mm], [5863.mm,1016.mm,1178.mm], [4704.mm,1016.mm,1178.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(822.mm)
+  mat = model.materials["IBC Blue #1 bottle"] || model.materials.add("IBC Blue #1 bottle")
+  mat.color = Sketchup::Color.new(46, 109, 180)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # IBC Waste pallet
+  grp = ents.add_group
+  grp.name = "IBC Waste pallet"
+  face = grp.entities.add_face([4674.mm,1316.mm,0.mm], [5893.mm,1316.mm,0.mm], [5893.mm,2332.mm,0.mm], [4674.mm,2332.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["IBC Waste pallet"] || model.materials.add("IBC Waste pallet")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # IBC Waste bottle
+  grp = ents.add_group
+  grp.name = "IBC Waste bottle"
+  face = grp.entities.add_face([4704.mm,1346.mm,168.mm], [5863.mm,1346.mm,168.mm], [5863.mm,2302.mm,168.mm], [4704.mm,2302.mm,168.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(822.mm)
+  mat = model.materials["IBC Waste bottle"] || model.materials.add("IBC Waste bottle")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # IBC Blue #2 pallet
+  grp = ents.add_group
+  grp.name = "IBC Blue #2 pallet"
+  face = grp.entities.add_face([4674.mm,1316.mm,1010.mm], [5893.mm,1316.mm,1010.mm], [5893.mm,2332.mm,1010.mm], [4674.mm,2332.mm,1010.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["IBC Blue #2 pallet"] || model.materials.add("IBC Blue #2 pallet")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # IBC Blue #2 bottle
+  grp = ents.add_group
+  grp.name = "IBC Blue #2 bottle"
+  face = grp.entities.add_face([4704.mm,1346.mm,1178.mm], [5863.mm,1346.mm,1178.mm], [5863.mm,2302.mm,1178.mm], [4704.mm,2302.mm,1178.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(822.mm)
+  mat = model.materials["IBC Blue #2 bottle"] || model.materials.add("IBC Blue #2 bottle")
+  mat.color = Sketchup::Color.new(46, 109, 180)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "IBC Stack"
+  inst.layer = model.layers["IBC Stack"]
+
+  # ═══ IBC Rack ═══
+  defn = model.definitions.add("IBC Rack")
+  ents = defn.entities
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([4734.mm,1046.mm,0.mm], [4784.mm,1046.mm,0.mm], [4784.mm,1096.mm,0.mm], [4734.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([4734.mm,1266.mm,0.mm], [4784.mm,1266.mm,0.mm], [4784.mm,1316.mm,0.mm], [4734.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([5258.5.mm,1046.mm,0.mm], [5308.5.mm,1046.mm,0.mm], [5308.5.mm,1096.mm,0.mm], [5258.5.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([5258.5.mm,1266.mm,0.mm], [5308.5.mm,1266.mm,0.mm], [5308.5.mm,1316.mm,0.mm], [5258.5.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([5783.mm,1046.mm,0.mm], [5833.mm,1046.mm,0.mm], [5833.mm,1096.mm,0.mm], [5783.mm,1096.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Upright
+  grp = ents.add_group
+  grp.name = "Rack Upright"
+  face = grp.entities.add_face([5783.mm,1266.mm,0.mm], [5833.mm,1266.mm,0.mm], [5833.mm,1316.mm,0.mm], [5783.mm,1316.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1010.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Spine
+  grp = ents.add_group
+  grp.name = "Rack Spine"
+  face = grp.entities.add_face([4734.mm,1046.mm,960.mm], [5833.mm,1046.mm,960.mm], [5833.mm,1096.mm,960.mm], [4734.mm,1096.mm,960.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Rack Spine"] || model.materials.add("Rack Spine")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Spine
+  grp = ents.add_group
+  grp.name = "Rack Spine"
+  face = grp.entities.add_face([4734.mm,1266.mm,960.mm], [5833.mm,1266.mm,960.mm], [5833.mm,1316.mm,960.mm], [4734.mm,1316.mm,960.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Rack Spine"] || model.materials.add("Rack Spine")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Platform Beam
+  grp = ents.add_group
+  grp.name = "Rack Platform Beam"
+  face = grp.entities.add_face([4734.mm,30.mm,960.mm], [4784.mm,30.mm,960.mm], [4784.mm,2332.mm,960.mm], [4734.mm,2332.mm,960.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Rack Platform Beam"] || model.materials.add("Rack Platform Beam")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Platform Beam
+  grp = ents.add_group
+  grp.name = "Rack Platform Beam"
+  face = grp.entities.add_face([5258.5.mm,30.mm,960.mm], [5308.5.mm,30.mm,960.mm], [5308.5.mm,2332.mm,960.mm], [5258.5.mm,2332.mm,960.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Rack Platform Beam"] || model.materials.add("Rack Platform Beam")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Rack Platform Beam
+  grp = ents.add_group
+  grp.name = "Rack Platform Beam"
+  face = grp.entities.add_face([5783.mm,30.mm,960.mm], [5833.mm,30.mm,960.mm], [5833.mm,2332.mm,960.mm], [5783.mm,2332.mm,960.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Rack Platform Beam"] || model.materials.add("Rack Platform Beam")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "IBC Rack"
+  inst.layer = model.layers["IBC Rack"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -551,7 +825,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

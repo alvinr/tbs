@@ -56,23 +56,31 @@ from tbs_constants import (
     FSKID_X, FSKID_YD, F1_Z, F2_Z, F3_Z,
     EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
     EQPANEL_YD, EQPANEL_YD_SPAN,
+    IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
+    BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
-C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets)
+C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
 C_FILM = "#2060A0"      # film plane / muslin screen
 C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
 C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
 C_PLY = "#9C7B4D"       # marine ply (equipment panel)
-C_PUMP = "#454552"      # pump + accumulator block
+C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
+C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
+C_PALLET = "#3A3A3A"    # IBC pallet base
+C_IBC_BLUE = "#2E6DB4"  # Blue circuit IBC contents
+C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
+C_IBC_WASTE = "#777777" # Waste IBC contents
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
-        "Ceiling Rail", "Spray Bar", "Equipment Panel"]
+        "Ceiling Rail", "Spray Bar", "Equipment Panel",
+        "IBC Stack", "IBC Rack"]
 
 
 def mm(val):
@@ -149,15 +157,15 @@ def component(defn_name, tag, body):
 '''
 
 
-def ruby_pyramid(name, apex, base, color, alpha):
-    """Generate Ruby for a translucent rectangular pyramid in `ents`.
+def ruby_cone_wire(name, apex, base, tag):
+    """Generate Ruby for a wireframe pyramid (edges only) in `ents`.
 
-    apex: (x, y, z) point. base: 4 (x, y, z) corners in order. Front and back
-    materials are both set so the ghost reads from any viewing side.
+    apex: (x, y, z). base: 4 (x, y, z) corners. The edges are assigned to
+    `tag`, whose line style is set to dashed in the main script — so the cone
+    reads as dashed guidance geometry rather than a solid system.
     """
     a = f'[{mm(apex[0])},{mm(apex[1])},{mm(apex[2])}]'
     b = [f'[{mm(p[0])},{mm(p[1])},{mm(p[2])}]' for p in base]
-    r, g, bl = hex_to_rgb(color)
     return '\n'.join([
         f'  # {name}',
         f'  grp = ents.add_group',
@@ -165,18 +173,45 @@ def ruby_pyramid(name, apex, base, color, alpha):
         f'  ge = grp.entities',
         f'  apex = {a}',
         f'  b0 = {b[0]}; b1 = {b[1]}; b2 = {b[2]}; b3 = {b[3]}',
-        f'  ge.add_face(b0, b1, b2, b3)',
-        f'  ge.add_face(apex, b0, b1)',
-        f'  ge.add_face(apex, b1, b2)',
-        f'  ge.add_face(apex, b2, b3)',
-        f'  ge.add_face(apex, b3, b0)',
-        f'  mat = model.materials["{name}"] || model.materials.add("{name}")',
-        f'  mat.color = Sketchup::Color.new({r}, {g}, {bl})',
-        f'  mat.alpha = {alpha}',
-        f'  ge.each {{ |f| next unless f.is_a?(Sketchup::Face); '
-        f'f.material = mat; f.back_material = mat }}',
+        f'  edges = []',
+        f'  edges.concat(ge.add_edges(b0, b1, b2, b3, b0))',
+        f'  edges << ge.add_line(apex, b0)',
+        f'  edges << ge.add_line(apex, b1)',
+        f'  edges << ge.add_line(apex, b2)',
+        f'  edges << ge.add_line(apex, b3)',
+        f'  lyr = model.layers["{tag}"]',
+        f'  edges.each {{ |e| e.layer = lyr if e.is_a?(Sketchup::Edge) }}',
         '',
     ])
+
+
+def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None, n=24):
+    """Generate Ruby for a vertical cylinder (axis +Z) in `ents`.
+
+    (cx, cy, cz): center of the base circle. radius/height in mm. Used for
+    round bodies (filter housings, accumulator, light-trap drum).
+    """
+    lines = [
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  ge = grp.entities',
+        f'  circle = ge.add_circle([{mm(cx)},{mm(cy)},{mm(cz)}], '
+        f'[0,0,1], {mm(radius)}, {n})',
+        f'  cface = ge.add_face(circle)',
+        f'  cface.reverse! if cface.normal.z < 0',
+        f'  cface.pushpull({mm(height)})',
+    ]
+    if color:
+        r, g, b = hex_to_rgb(color)
+        lines.append(f'  mat = model.materials["{name}"] || '
+                     f'model.materials.add("{name}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
+        if alpha is not None:
+            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  grp.material = mat')
+    lines.append('')
+    return '\n'.join(lines)
 
 
 # ── Container shell ──────────────────────────────────────────────────────────
@@ -345,7 +380,7 @@ def optical_cone():
     apex = (PH_X, 0, PH_H)
     base = [(FP_X_L, FP_Y, 0), (FP_X_R, FP_Y, 0),
             (FP_X_R, FP_Y, FP_H), (FP_X_L, FP_Y, FP_H)]
-    return ruby_pyramid("Optical Cone", apex, base, C_PINHOLE, 0.05)
+    return ruby_cone_wire("Optical Cone", apex, base, "Optical Cone")
 
 
 # ── Ceiling rail (cargo-door panel suspension) ───────────────────────────────
@@ -420,28 +455,119 @@ def spray_bar():
 # ── Equipment panel (pumps · filters · accumulator) ──────────────────────────
 
 def equipment_panel():
-    """18mm marine-ply panel in the IBC plumbing corridor carrying the wet end.
+    """18mm marine-ply panel in the IBC corridor carrying the wet end.
 
-    Panel face at X=EQPANEL_X across the corridor (Yd 1046–1316); pump +
-    accumulator block protrudes toward the open end; three Big Blue filter
-    housings stack in Z (F1 50µ, F2 5µ, F3 GAC).
+    Layout follows the panel-layout diagram: equipment mounts on the panel
+    face (X=EQPANEL_X) protruding toward the open end (-X). Two pump columns
+    (left Yd≈1109, right Yd≈1253), three rows (P-01/P-02, P-04/P-03,
+    ACC-01/P-05), and three Big Blue filters centered below the pump zone.
     """
     parts = []
+    face_x = EQPANEL_X                    # panel face — equipment hangs in -X
 
     parts.append(ruby_box("Equipment Panel (ply)",
-                          EQPANEL_X, EQPANEL_YD, EQPANEL_Z_LO,
+                          face_x, EQPANEL_YD, EQPANEL_Z_LO,
                           EQPANEL_T, EQPANEL_YD_SPAN, EQPANEL_Z_HI - EQPANEL_Z_LO,
                           color=C_PLY))
 
-    parts.append(ruby_box("Pumps + ACC-01",
-                          PUMP_X, PUMP_YD, PUMP_H_LO,
-                          PUMP_W, PUMP_YD_SPAN, PUMP_H_HI - PUMP_H_LO,
-                          color=C_PUMP))
+    # Pump grid — two columns, body 100(X) × 127(Yd) × 218(Z), 40mm row gap.
+    pump_d, pump_face, pump_h, gap = PUMP_W, PUMP_YD_SPAN, 218, 40
+    col_l = EQPANEL_YD + 63               # PUMP_COL — left column Yd center
+    col_r = EQPANEL_YD + (EQPANEL_YD_SPAN - 63)  # right column Yd center
+    z_bot = PUMP_H_LO                     # 1320 — bottom pump row
+    z_mid = z_bot + pump_h + gap          # 1578 — upper pump row
+    z_top = z_mid + pump_h + 150          # 1946 — ACC-01 / P-05 row
 
+    def pump(nm, yd_c, z):
+        return ruby_box(nm, face_x - pump_d, yd_c - pump_face / 2, z,
+                        pump_d, pump_face, pump_h, color=C_PUMP)
+
+    parts.append(pump("Pump P-01 (Blue)", col_l, z_bot))
+    parts.append(pump("Pump P-02 (Brown)", col_r, z_bot))
+    parts.append(pump("Pump P-04 (Tray drain)", col_l, z_mid))
+    parts.append(pump("Pump P-03 (Waste evac)", col_r, z_mid))
+    parts.append(pump("Pump P-05 (Brown drain)", col_r, z_top))
+
+    # ACC-01 accumulator — Ø127 × 150 vertical cylinder, left column.
+    parts.append(ruby_cylinder("ACC-01 Accumulator",
+                               face_x - 63, col_l, z_top, 127 / 2, 150,
+                               color=C_ACC))
+
+    # Three Big Blue filters, centered on the panel, stacked F3→F2→F1.
+    fr = BB_OD / 2
+    fcx = face_x - fr
+    fcy = EQPANEL_YD + EQPANEL_YD_SPAN / 2          # centered in the corridor
     for nm, fz in [("F1 (50µ)", F1_Z), ("F2 (5µ)", F2_Z), ("F3 (GAC)", F3_Z)]:
-        parts.append(ruby_box(f"Filter {nm}",
-                              FSKID_X, FSKID_YD, fz,
-                              BB_OD, BB_OD, BB_H, color=C_FILTER))
+        parts.append(ruby_cylinder(f"Filter {nm}",
+                                   fcx, fcy, fz, fr, BB_H, color=C_FILTER))
+
+    return '\n'.join(parts)
+
+
+# ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
+
+def ibc_stack():
+    """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
+
+    Near column (Yd=30): Brown developer below, Blue #1 on top.
+    Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
+    """
+    parts = []
+    pal = IBC_PALLET_H
+    inset = IBC_BOTTLE_INSET
+    bottle_h = IBC_H_600 - pal - 20   # leave 20mm for the cage top
+
+    totes = [
+        ("IBC Brown (developer)", BROWN_IBC_Y, 0, C_IBC_BROWN),
+        ("IBC Blue #1", BLUE_IBC_Y, IBC_H_600, C_IBC_BLUE),
+        ("IBC Waste", WASTE_IBC_Y, 0, C_IBC_WASTE),
+        ("IBC Blue #2", IBC_FAR_Y, IBC_H_600, C_IBC_BLUE),
+    ]
+    for nm, yd, z0, col in totes:
+        parts.append(ruby_box(f"{nm} pallet",
+                              IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,
+                              color=C_PALLET))
+        parts.append(ruby_box(f"{nm} bottle",
+                              IBC_COL_X + inset, yd + inset, z0 + pal,
+                              IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
+                              color=col, alpha=0.55))
+    return '\n'.join(parts)
+
+
+def ibc_rack():
+    """Simplified 50×50 RHS portal rack supporting the upper IBC tier.
+
+    Corridor uprights (Yd 1046/1316) at three X stations, longitudinal spine
+    beams, and cantilever platform cross-beams under the top totes at Z≈1010.
+    """
+    parts = []
+    s = 50                              # 50×50 RHS
+    plat_z = IBC_H_600                  # 1010 — top tier rests here
+    beam_z = plat_z - s                 # cross-beams top flush with 1010
+    yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
+    x_stations = [IBC_COL_X + 60,
+                  IBC_COL_X + IBC_W / 2 - s / 2,
+                  IBC_COL_X + IBC_W - 60 - s]
+
+    # Uprights at the two corridor edges, three X stations.
+    for xs in x_stations:
+        for yd in (yd_near, yd_far - s):
+            parts.append(ruby_box("Rack Upright",
+                                  xs, yd, 0, s, s, plat_z, color=C_STEEL))
+
+    # Longitudinal spine beams tying the upright tops (along X).
+    spine_len = x_stations[-1] + s - x_stations[0]
+    for yd in (yd_near, yd_far - s):
+        parts.append(ruby_box("Rack Spine",
+                              x_stations[0], yd, beam_z, spine_len, s, s,
+                              color=C_STEEL))
+
+    # Cantilever platform cross-beams under both upper totes (along Yd).
+    beam_len = (IBC_FAR_Y + IBC_D) - BLUE_IBC_Y
+    for xs in x_stations:
+        parts.append(ruby_box("Rack Platform Beam",
+                              xs, BLUE_IBC_Y, beam_z, s, beam_len, s,
+                              color=C_STEEL))
 
     return '\n'.join(parts)
 
@@ -506,6 +632,8 @@ def generate_ruby():
         component("Ceiling Rail", "Ceiling Rail", ceiling_rail()),
         component("Spray Bar", "Spray Bar", spray_bar()),
         component("Equipment Panel", "Equipment Panel", equipment_panel()),
+        component("IBC Stack", "IBC Stack", ibc_stack()),
+        component("IBC Rack", "IBC Rack", ibc_rack()),
     ]
     body = '\n'.join(comps)
 
@@ -538,6 +666,13 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Tags (layers) ──
 {tags_ruby}
 
+# Dashed line style for the optical cone wireframe (guidance, not a solid).
+begin
+  ds = model.line_styles["Dash"] || model.line_styles["Dot"]
+  model.layers["Optical Cone"].line_style = ds if ds
+rescue StandardError
+end
+
 # ── Subsystems (each a component on its tag) ──
 {body}
 
@@ -557,7 +692,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

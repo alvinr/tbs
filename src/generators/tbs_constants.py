@@ -165,6 +165,19 @@ DRUM_D     = 750     # revolving drum diameter (mm)
 DRUM_R     = DRUM_D // 2
 DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
 
+# ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
+BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
+BRACE_T     = 3                      # RHS wall thickness (mm)
+BRACE_Z_BOT = RAIL_OFF               # 100mm — bottom cross-beam Z (above tray rim)
+BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
+# End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
+
+# Light-trap drum Yd extent → the left-rail segment that must demount for the drum.
+DRUM_CY     = C_WID // 2             # 1181mm — drum centre in Yd (= container width centre)
+BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 806mm — demountable left-rail segment start
+BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1556mm — demountable left-rail segment end
+CARRIAGE_PARK_Y       = FP_Y               # 2262mm — carriage park for drum mode (> 1556 ⇒ clears drum)
+
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct
 # through pinhole wall, Z-centered with ext power panel, 150mm gap to its left.

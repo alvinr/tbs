@@ -1365,7 +1365,7 @@ end
   # White LED Panel (Cct G)
   grp = ents.add_group
   grp.name = "White LED Panel (Cct G)"
-  face = grp.entities.add_face([4800.mm,1031.mm,2348.mm], [5400.mm,1031.mm,2348.mm], [5400.mm,1331.mm,2348.mm], [4800.mm,1331.mm,2348.mm])
+  face = grp.entities.add_face([4550.mm,881.mm,2348.mm], [4850.mm,881.mm,2348.mm], [4850.mm,1481.mm,2348.mm], [4550.mm,1481.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
@@ -1502,10 +1502,10 @@ end
   grp = ents.add_group
   grp.name = "Conduit to LED Panel (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([5100.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4700.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(991.mm)
+  cface.pushpull(841.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
   mat.color = Sketchup::Color.new(154, 160, 160)
   mat.alpha = 1.0

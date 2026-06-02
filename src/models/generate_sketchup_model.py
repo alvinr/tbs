@@ -955,10 +955,18 @@ def lighting_wiring():
     # Ghosted (translucent) — they read as light sources, not solid blocks.
     led_w, led_d = 600, 300
     led_yd = C_WID / 2 - led_d / 2
-    for lx in (1000, 2900, 4800):
+    for lx in (1000, 2900):
         parts.append(ruby_box("White LED Panel (Cct G)",
                               lx, led_yd, cz - 40, led_w, led_d, 40,
                               color=C_LED_W, alpha=0.4))
+    # Right-hand panel rotated 90° (300 X × 600 Yd) and shifted clear of the
+    # equipment-panel conduits: its IBC-end edge sits 150mm left of the panel
+    # face (X=EQPANEL_X), so its feed conduit no longer crosses Circuit C.
+    rled_x0 = EQPANEL_X - 150 - led_d      # 4550 — span X 4550–4850
+    rled_y0 = C_WID / 2 - led_w / 2        # 881  — span Yd 881–1481, centered
+    parts.append(ruby_box("White LED Panel (Cct G)",
+                          rled_x0, rled_y0, cz - 40, led_d, led_w, 40,
+                          color=C_LED_W, alpha=0.4))
 
     # Red safelight strips (Cct D) — 3× N–S across the width, in the panel gaps.
     for sx in (500, 2250, 4150):
@@ -984,10 +992,15 @@ def lighting_wiring():
 
     # Conduit runs along the ceiling from the trunking out to each fixture.
     cr, czc = 7, cz - 38
-    for lx in (1000, 2900, 4800):    # → white LED panels (Cct G)
+    for lx in (1000, 2900):    # → white LED panels (Cct G)
         parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
                                    lx + led_w / 2, 40, czc, cr, led_yd - 40,
                                    color=C_TRUNK, axis="y"))
+    # → rotated right-hand LED panel: conduit to its near Yd edge (no longer
+    #   running alongside the equipment-panel / Circuit C conduits)
+    parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
+                               rled_x0 + led_d / 2, 40, czc, cr, rled_y0 - 40,
+                               color=C_TRUNK, axis="y"))
     for sx in (500, 2250, 4150):     # → red safelight strips (Cct D)
         parts.append(ruby_cylinder("Conduit to Safelight (Cct D)",
                                    sx + 20, 40, czc, cr, 60,

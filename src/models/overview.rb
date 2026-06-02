@@ -1295,42 +1295,42 @@ end
   mat.color = Sketchup::Color.new(204, 34, 34)
   grp.material = mat
 
-  # Pull Switch
+  # Pull Switch (ceiling)
   grp = ents.add_group
-  grp.name = "Pull Switch"
-  face = grp.entities.add_face([1540.mm,0.mm,2300.mm], [1580.mm,0.mm,2300.mm], [1580.mm,30.mm,2300.mm], [1540.mm,30.mm,2300.mm])
+  grp.name = "Pull Switch (ceiling)"
+  face = grp.entities.add_face([1450.mm,45.mm,2348.mm], [1490.mm,45.mm,2348.mm], [1490.mm,85.mm,2348.mm], [1450.mm,85.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pull Switch"] || model.materials.add("Pull Switch")
+  mat = model.materials["Pull Switch (ceiling)"] || model.materials.add("Pull Switch (ceiling)")
   mat.color = Sketchup::Color.new(216, 216, 240)
   grp.material = mat
 
   # Pull Cord
   grp = ents.add_group
   grp.name = "Pull Cord"
-  face = grp.entities.add_face([1557.mm,0.mm,900.mm], [1563.mm,0.mm,900.mm], [1563.mm,6.mm,900.mm], [1557.mm,6.mm,900.mm])
+  face = grp.entities.add_face([1467.mm,62.mm,900.mm], [1473.mm,62.mm,900.mm], [1473.mm,68.mm,900.mm], [1467.mm,68.mm,900.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1400.mm)
+  face.pushpull(1448.mm)
   mat = model.materials["Pull Cord"] || model.materials.add("Pull Cord")
   mat.color = Sketchup::Color.new(58, 58, 58)
   grp.material = mat
 
-  # Pull Switch
+  # Pull Switch (ceiling)
   grp = ents.add_group
-  grp.name = "Pull Switch"
-  face = grp.entities.add_face([1660.mm,0.mm,2300.mm], [1700.mm,0.mm,2300.mm], [1700.mm,30.mm,2300.mm], [1660.mm,30.mm,2300.mm])
+  grp.name = "Pull Switch (ceiling)"
+  face = grp.entities.add_face([1530.mm,45.mm,2348.mm], [1570.mm,45.mm,2348.mm], [1570.mm,85.mm,2348.mm], [1530.mm,85.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Pull Switch"] || model.materials.add("Pull Switch")
+  mat = model.materials["Pull Switch (ceiling)"] || model.materials.add("Pull Switch (ceiling)")
   mat.color = Sketchup::Color.new(216, 216, 240)
   grp.material = mat
 
   # Pull Cord
   grp = ents.add_group
   grp.name = "Pull Cord"
-  face = grp.entities.add_face([1677.mm,0.mm,900.mm], [1683.mm,0.mm,900.mm], [1683.mm,6.mm,900.mm], [1677.mm,6.mm,900.mm])
+  face = grp.entities.add_face([1547.mm,62.mm,900.mm], [1553.mm,62.mm,900.mm], [1553.mm,68.mm,900.mm], [1547.mm,68.mm,900.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1400.mm)
+  face.pushpull(1448.mm)
   mat = model.materials["Pull Cord"] || model.materials.add("Pull Cord")
   mat.color = Sketchup::Color.new(58, 58, 58)
   grp.material = mat

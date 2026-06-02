@@ -938,12 +938,16 @@ def lighting_wiring():
         parts.append(ruby_box("Safelight Strip (Cct D)",
                               sx, 100, cz - 25, 40, C_WID - 200, 18, color=C_SAFE))
 
-    # Pull-cord switches (D, G) on the pinhole wall near EP + hanging cords.
-    for swx in (1540, 1660):
-        parts.append(ruby_box("Pull Switch",
-                              swx, 0, 2300, 40, 30, 40, color=C_SWITCH))
+    # Pull-cord switches (D, G) — CEILING-mounted, in the ~80mm clear band ahead
+    # of the pinhole wall (film carriage starts at Yd=100) and left of the EP
+    # (X<1600) so they clear the electrical panel + batteries.
+    sw_yd = 45                         # off the wall, past the trunking, clear of carriage
+    for swx in (1450, 1530):
+        parts.append(ruby_box("Pull Switch (ceiling)",
+                              swx, sw_yd, cz - 40, 40, 40, 40, color=C_SWITCH))
         parts.append(ruby_box("Pull Cord",
-                              swx + 17, 0, 900, 6, 6, 1400, color=C_CORD))
+                              swx + 17, sw_yd + 17, 900, 6, 6, (cz - 40) - 900,
+                              color=C_CORD))
 
     # Conduit drops (10mm) from trunking down to EP and the battery bank.
     for cxc, zbot in ((1750, 2200), (2060, 600)):

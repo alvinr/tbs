@@ -8,7 +8,7 @@ Three-sheet fabrication drawing set for the welded 50×50×3mm RHS mild steel
 IBC stacking frame.  Shows frame structure only — no IBCs, plumbing, or
 other container equipment.
 
-Sheet 1 — Front Elevation (looking along X toward sealed end wall)
+Sheet 1 — Front Elevation (looking -X; near/pinhole wall at left, far wall at right)
 Sheet 2 — Side Elevation (looking along Yd from near wall)
 Sheet 3 — Plan View (looking down at platform level)
 
@@ -323,7 +323,7 @@ def sheet1():
 
     # ── Title ────────────────────────────────────────────────────────────────
     ax.text(sx(FRAME_FOOTPRINT_W * 0.5), sy(TOP_Z + 680),
-            "FRONT ELEVATION — LOOKING ALONG X TOWARD SEALED END WALL",
+            "FRONT ELEVATION — LOOKING -X (NEAR/PINHOLE WALL AT LEFT, FAR WALL AT RIGHT)",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
 

@@ -74,7 +74,8 @@ C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
 C_DEMOUNT = "#E0902A"   # demountable left-rail segment (swings clear for drum)
-C_DROPPED = "#CC4422"   # walkway dropped for film-mechanism clearance (ghosted)
+C_WALKWAY = "#808080"   # walkway grating (lowered deck, in place for operation)
+C_REMOVABLE = "#C06000" # left walkway — removable lift-out for transport
 C_PALLET = "#3A3A3A"    # IBC pallet base
 C_IBC_BLUE = "#2E6DB4"  # Blue circuit IBC contents
 C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
@@ -292,18 +293,16 @@ def processing_tray():
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
 def walkways():
-    """Perimeter walkway sections — DROPPED in the film-mechanism zone.
+    """Perimeter walkway sections — LOWERED deck, in place for operation.
 
-    The film mechanism's footprint (X 150–4649, Yd 100–2262) covers nearly the
-    whole interior, so the perimeter walkways conflict with the cage and its
-    travel. Per the demountable-frame design they are dropped; here they are
-    rendered ghosted ("dropped") so the overview documents the removal and the
-    cleared floor band. Access is reconfigured from the container ends.
+    The deck height comes from WALKWAY_H (lowered to 65mm: a 15mm grate at the
+    tray-rim level), so the grating sits below the film-frame bottom (Z=100) and
+    the film plane travels above the in-place walkway. The LEFT walkway (cargo-
+    door side) is a removable lift-out (shown in a distinct color) — taken out
+    for transport so the light-trap can slide back.
     """
-    grate_z = WALKWAY_H - WALKWAY_GRATE_T
-    t = WALKWAY_GRATE_T
-    color = C_DROPPED
-    a = 0.3            # ghosted — marks the dropped footprint
+    grate_z = WALKWAY_H - WALKWAY_GRATE_T   # 50mm — grate bottom at the tray rim
+    t = WALKWAY_GRATE_T                      # 15mm — thin grate
 
     near_x_l = WALKWAY_LEFT_X + WALKWAY_W
     near_x_r = WALKWAY_RIGHT_X
@@ -313,32 +312,33 @@ def walkways():
 
     if WALKWAY_NEAR_WIDE_X_L > near_x_l:
         seg_len = WALKWAY_NEAR_WIDE_X_L - near_x_l
-        parts.append(ruby_box("Walkway Near left (DROPPED)",
+        parts.append(ruby_box("Walkway Near (left section)",
                               near_x_l, 0, grate_z,
-                              seg_len, WALKWAY_W, t, color=color, alpha=a))
+                              seg_len, WALKWAY_W, t, color=C_WALKWAY))
 
     wide_len = WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L
-    parts.append(ruby_box("Walkway Near widened (DROPPED)",
+    parts.append(ruby_box("Walkway Near (widened)",
                           WALKWAY_NEAR_WIDE_X_L, 0, grate_z,
-                          wide_len, WALKWAY_NEAR_WIDE_W, t, color=color, alpha=a))
+                          wide_len, WALKWAY_NEAR_WIDE_W, t, color=C_WALKWAY))
 
     if WALKWAY_NEAR_WIDE_X_R < near_x_r:
         seg_len = near_x_r - WALKWAY_NEAR_WIDE_X_R
-        parts.append(ruby_box("Walkway Near right (DROPPED)",
+        parts.append(ruby_box("Walkway Near (right section)",
                               WALKWAY_NEAR_WIDE_X_R, 0, grate_z,
-                              seg_len, WALKWAY_W, t, color=color, alpha=a))
+                              seg_len, WALKWAY_W, t, color=C_WALKWAY))
 
-    parts.append(ruby_box("Walkway Far (DROPPED)",
+    parts.append(ruby_box("Walkway Far",
                           near_x_l, WALKWAY_FAR_YD, grate_z,
-                          near_len, WALKWAY_W, t, color=color, alpha=a))
+                          near_len, WALKWAY_W, t, color=C_WALKWAY))
 
-    parts.append(ruby_box("Walkway Right IBC end (DROPPED)",
+    parts.append(ruby_box("Walkway Right (IBC end)",
                           WALKWAY_RIGHT_X, 0, grate_z,
-                          WALKWAY_RIGHT_W, C_WID, t, color=color, alpha=a))
+                          WALKWAY_RIGHT_W, C_WID, t, color=C_WALKWAY))
 
-    parts.append(ruby_box("Walkway Left cargo door (DROPPED)",
+    # Left walkway — removable lift-out for transport (distinct color).
+    parts.append(ruby_box("Walkway Left (REMOVABLE — transport)",
                           WALKWAY_LEFT_X, 0, grate_z,
-                          WALKWAY_W, C_WID, t, color=color, alpha=a))
+                          WALKWAY_W, C_WID, t, color=C_REMOVABLE))
 
     return '\n'.join(parts)
 

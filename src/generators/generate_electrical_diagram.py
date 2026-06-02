@@ -248,10 +248,10 @@ def draw_sheet1():
     # ── CIRCUITS — right column ───────────────────────────────────────────────
     circuits = [
         # letter, name, fuse, wire, load, note, colour
-        ("A", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
-         "Far end wall (X=5893mm)  |  low position  |  Yd=75mm corner", C_ALUM),
-        ("B", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
-         "Cargo door end wall (X=0)  |  high position  |  Yd=1959mm", C_ALUM),
+        ("A", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
+         "Far end wall (X=5893mm)  |  high position  |  Yd=75mm corner", C_ALUM),
+        ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
+         "Cargo door panel (X=0)  |  low position  |  Yd=1959mm", C_ALUM),
         ("C", "EQUIP PANEL\n(PUMPS+FILTERS)",       "15A", "14 AWG", "100W",
          "Equipment panel, IBC corridor (Yd=1046–1316)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
@@ -669,7 +669,7 @@ def draw_sheet2():
             color="#808080", lw=1.2, ls=":", zorder=4)
 
     # ── Fans ──────────────────────────────────────────────────────────────────
-    # Fan A — INTAKE: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner
+    # Fan A — EXHAUST: RIGHT short wall = far end (X=C_LEN), Yd=75mm near-wall corner, HIGH (above IBC)
     FA_X = OX + clen - wt/2
     FA_Y = OY + wt + FAN_A_YD * S_yd
     ax.add_patch(plt.Circle((FA_X, FA_Y), 110,
@@ -678,7 +678,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=9, fontweight="bold",
             color=C_OUT, zorder=6)
 
-    # Fan B — EXHAUST: LEFT short wall = cargo door end (X=0), Yd=1959mm centered between drum and far wall
+    # Fan B — INTAKE: LEFT short wall = cargo door panel (X=0), Yd=1959mm centered between drum and far wall, LOW
     FB_X = OX + wt/2
     FB_Y = OY + wt + FAN_B_YD * S_yd
     ax.add_patch(plt.Circle((FB_X, FB_Y), 110,
@@ -784,15 +784,15 @@ def draw_sheet2():
            BA_DX + BA_DW * 0.6, OY + cwid * 0.3,
            "Battery bank (BAT)\n2×100Ah LiFePO4",
            fs=6.5, color=C_BATT)
-    # Fan A — Intake (far end wall)
+    # Fan A — Exhaust (far end wall)
     leader(ax, FA_X + 50, FA_Y + 50,
            FA_X + 600, FA_Y + 250,
-           "Intake fan (A)\n6\" DC  60W",
+           "Exhaust fan (A)\n6\" DC  60W",
            fs=6.5, ha="right")
-    # Fan B — Exhaust (cargo door wall)
+    # Fan B — Intake (cargo door panel)
     leader(ax, FB_X - 50, FB_Y + 50,
            FB_X - 600, FB_Y + 350,
-           "Exhaust fan (B)\n6\" DC  60W",
+           "Intake fan (B)\n6\" DC  60W",
            fs=6.5)
     # Pump — Cct C (on equipment panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
@@ -867,10 +867,10 @@ def draw_sheet2():
          f"IP65 enclosure  |  MPPT + fuse block  |  Pinhole wall face, X={EP_X}mm"),
         ("BAT",   C_BATT,    "BATTERY BANK (BAT)",
          f"2×100Ah LiFePO4 12V  |  2,400Wh  |  Pinhole wall face, X={BA_X}mm"),
-        ("A",     C_ALUM,    "INTAKE FAN — Cct A",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5893mm)  |  Yd=75mm"),
-        ("B",     C_ALUM,    "EXHAUST FAN — Cct B",
-         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door end wall (X=0)  |  Yd=1959mm"),
+        ("A",     C_ALUM,    "EXHAUST FAN — Cct A",
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Far end wall (X=5893mm), high  |  Yd=75mm"),
+        ("B",     C_ALUM,    "INTAKE FAN — Cct B",
+         "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=1959mm"),
         ("C",     C_PUMP,    "EQUIPMENT PANEL — Cct C",
          f"Pumps + filters  |  12V DC  |  15A / 14 AWG / 100W  |  IBC corridor, Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}mm"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",

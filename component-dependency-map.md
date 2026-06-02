@@ -110,8 +110,8 @@ compression latches, Ø750mm revolving drum aperture.*
 |-----------|-------|----------|
 | Fan diameter (both fans) | 150mm | `FAN_DIAM` |
 | Panel fan body depth | 50mm | `FAN_BODY_D` |
-| Fan A center height AFF (low) | 600mm | `FAN_A_H` |
-| Fan B center height AFF (high) | 1800mm | `FAN_B_H` |
+| Fan A center height AFF (high, above IBC) | 2200mm | `FAN_A_H` |
+| Fan B center height AFF (low) | 600mm | `FAN_B_H` |
 | Fan A Yd position (near-wall corner) | 75mm | `FAN_A_YD` |
 | Fan B Yd position (centered drum–wall) | 1959mm | `FAN_B_YD` |
 | Baffle duct depth | 300mm | `DUCT_DEPTH` |
@@ -119,13 +119,14 @@ compression latches, Ø750mm revolving drum aperture.*
 | Fan A shadow margin (from cone) | 869mm | `FAN_A_MARGIN` |
 | Fan B shadow margin (from cone) | 40mm | `FAN_B_MARGIN` |
 
-*Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), intake, Circuit A,
-low position. Fan B — identical fan, mounted on hinged panel (far corner zone, Yd=1959mm),
-exhaust, Circuit B, high position. Fan A mounts on interior face of a 300mm deep light-safe
-baffle duct with 2 offset steel baffles (65% height each, S-path); exterior face has a passive
-weatherproof louvre grille. Fan B has the same baffle duct protruding from the panel exterior
-face — exhausts into the open doorway during operation. Fan B moves with the panel on the
-sliding carriage; wiring via flexible coiled cable from fixed door frame (Circuit B).*
+*Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), exhaust, Circuit A,
+high position (Z=2200mm, above the 2020mm IBC stack so the baffle duct clears the totes). Fan B —
+identical fan, mounted on hinged panel (far corner zone, Yd=1959mm), intake, Circuit B, low
+position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
+steel baffles (65% height each, S-path); exterior face has a passive weatherproof louvre grille.
+Fan B has the same baffle duct protruding from the panel exterior face — draws fresh air from the
+open doorway during operation. Fan B moves with the panel on the sliding carriage; wiring via
+flexible coiled cable from fixed door frame (Circuit B).*
 
 *Report: [Ventilation & Cooling System](ventilation-report.md) — authoritative specification for fan system, baffle ducts, operating modes, and shade canopy.*
 

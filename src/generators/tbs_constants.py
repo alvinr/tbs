@@ -533,9 +533,11 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 
 # ── Ventilation fans (150mm compact axial panel fans, interior-mounted) ───────
 # Both fans are identical — one part number, same baffle duct assembly.
-# Fan A: intake, far end wall (X = C_LEN face), low position.
+# Fan A: exhaust, far end wall (X = C_LEN face), HIGH position — above the IBC
+#         stack top (2020mm) so its baffle duct clears the totes (the low corner
+#         is occupied by the near IBC column flush to the end wall).
 #         Baffle duct extends 300mm into container interior from X=C_LEN wall.
-# Fan B: exhaust, mounted on hinged panel (far corner zone), high position.
+# Fan B: intake, mounted on hinged panel (far corner zone), LOW position.
 #         Baffle duct protrudes 300mm from panel EXTERIOR face.
 #         Moves with panel on sliding carriage. In operational mode (panel at
 #         X=0) duct extends into open doorway (X=0 to -300). In transport mode
@@ -543,10 +545,10 @@ EXT_DRAIN_YD = EXT_PANEL_YD
 #         ISO doors. Wiring via flexible cable loop from fixed door frame.
 FAN_DIAM    = 150    # fan / duct diameter (mm)
 FAN_BODY_D  =  50    # panel fan body depth (mm)
-FAN_A_H     = 600    # fan A center height AFF (mm — low position)
-FAN_B_H     = 1800   # fan B center height AFF (mm — high position)
-# Yd (width) positions — cross-ventilation diagonal: intake near-wall corner,
-# exhaust far-wall corner.
+FAN_A_H     = 2200   # fan A center height AFF (mm — HIGH; clears IBC stack top 2020mm)
+FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
+# Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
+# panel) to high exhaust (far end wall), diagonally across the volume.
 FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
 FAN_B_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1959mm — centered between drum far edge and far wall
 
@@ -627,6 +629,6 @@ if __name__ == "__main__":
     print(f"  Spray bar:      GANTRY  span={SPRAY_BAR_SPAN}mm  beam Z={SPRAY_BAR_Z_BOT}–{SPRAY_BAR_Z_TOP}  wheels Ø{SPRAY_BAR_WHEEL_DIA}  {SPRAY_BAR_N_HOLES} holes")
     print(f"  Ext fill port:  H={EXT_FILL_H}mm  Yd={EXT_FILL_YD}mm")
     print(f"  Ext drain port: H={EXT_DRAIN_H}mm  Yd={EXT_DRAIN_YD}mm")
-    print(f"  Fan A (intake): far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
-    print(f"  Fan B (exhaust):door end wall H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")
+    print(f"  Fan A (exhaust):far end wall  H={FAN_A_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_A_MARGIN}mm")
+    print(f"  Fan B (intake): door panel    H={FAN_B_H}mm AFF  Ø{FAN_DIAM}mm  margin={FAN_B_MARGIN}mm")
     print(f"  Baffle duct:    {DUCT_DEPTH}mm deep × {DUCT_HEIGHT}mm H")

@@ -41,7 +41,7 @@ Combined (shade canopy + cooler + scheduling): interior temperature reaches 25�
 
 For operator comfort during processing in warm conditions, but also to ensure there is fresh air exchange within the space.
 
-Longitudinal section showing the cross-flow ventilation path: Fan A intake at the far end wall (low position), diagonal airflow through the container volume, Fan B exhaust at the cargo door panel (high position). Evaporative cooler intake duct on the pinhole wall.
+Longitudinal section showing the cross-flow ventilation path: Fan B intake at the cargo door panel (low position), diagonal airflow up through the container volume, Fan A exhaust at the far end wall (high position, above the IBC stack). Evaporative cooler intake duct on the pinhole wall.
 
 **Sheet 1 — Container Ventilation Section**
 ![TBS-001 Ventilation — Sheet 1: Container Longitudinal Section](assets/lighttrap-sheet1.png)
@@ -60,22 +60,24 @@ Longitudinal section showing the cross-flow ventilation path: Fan A intake at th
 
 | Fan | Position | Mounting | Function |
 |-----|----------|----------|----------|
-| Fan A (intake) | Far end wall (X=5893mm), low position | Flush-mounted in wall penetration | Fresh air intake — draws cooler air near floor level |
-| Fan B (exhaust) | Hinged panel, far corner zone (Yd=1959mm, Z=1800mm) | Flush-mounted in 40mm corner zone panel | Exhaust humid air during processing and drying |
+| Fan B (intake) | Hinged panel, far corner zone (Yd=1959mm, Z=600mm) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
+| Fan A (exhaust) | Far end wall (X=5893mm), high position (Z=2200mm, above IBC stack) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
 
-Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: low intake at the far end → high exhaust at the cargo door end.
+Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the far end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
 
-### 4.2 Fan A — Far End Wall Intake
+> **Why this layout:** The intake was relocated to the cargo door panel (low) and the exhaust to the far end wall (high) because the near IBC tote column sits flush against the far end wall up to Z=2020mm. A low fan there would drive its 300mm baffle duct straight into the tote; mounting the exhaust at Z=2200mm clears the stack top with room to spare while preserving the diagonal low-in / high-out flow.
 
-Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), low position (Z=600mm AFF, Yd=75mm corner). The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+### 4.2 Fan A — Far End Wall Exhaust
 
-**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops vertically to the fan. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
+Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=75mm corner) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
-### 4.3 Fan B — Panel-Mounted Exhaust
+**Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops a short distance to the fan near the ceiling. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 
-Fan B is mounted on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so exhaust air passes through the grille and discharges directly into the open doorway.
+### 4.3 Fan B — Panel-Mounted Intake
 
-**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm.
+Fan B is mounted low on the sliding hinged panel, which moves with the panel during mode conversion (300mm slide travel + 180° swing). The fan and baffle duct are interior-mounted (same as Fan A); a weatherproof louvre grille on the panel exterior face is the only external component. During operation, the cargo doors are open (personnel access is via the revolving light trap drum), so fresh outside air is drawn in through the grille near floor level.
+
+**Wiring:** Fan B's wire run routes from the fuse block along the ceiling cable trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin weatherproof connectors at each end. The coiled cable accommodates 300mm of panel slide travel plus 180° panel swing without binding. The fixed end anchors to the door frame top rail; the panel end anchors to the carriage beam. The service loop hangs in the ceiling zone above Z=2200mm; the wire drops down the panel to the low fan.
 
 ### 4.4 Light-Safe Baffle Ducts
 
@@ -159,7 +161,7 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 
 ## 7. Operating Modes
 
-| Mode | Intake (Fan A) | Exhaust (Fan B) | Evap cooler | Shade |
+| Mode | Intake (Fan B) | Exhaust (Fan A) | Evap cooler | Shade |
 |------|---------------|----------------|-------------|-------|
 | Pre-cooling (before entry) | Full speed | Full speed | ON (30 min minimum) | Erected |
 | Loading / coating (safelight) | Low speed | Low speed | ON | Erected |
@@ -175,8 +177,8 @@ The shade canopy is the most effective single mitigation — it eliminates direc
 
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
-| A | Ventilation fan — intake (6") | 5A | 16 AWG | ~3m |
-| B | Ventilation fan — exhaust (panel-mounted) | 5A | 16 AWG | ~8m + flex connector |
+| A | Ventilation fan — exhaust (6", far end wall, high) | 5A | 16 AWG | ~2.5m |
+| B | Ventilation fan — intake (6", panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
 
 All circuits originate from the Blue Sea 5026 fuse block in the main electrical enclosure. See [Electrical Report](electrical-report.md) §10 for full wiring specification.

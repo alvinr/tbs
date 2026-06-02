@@ -14,8 +14,8 @@ Run:  python3 calculate_energy_budget.py
 # ── Circuit power ratings (watts) ─────────────────────────────────────────────
 # From electrical-report.md §3 Power Budget table
 
-FAN_INTAKE_W    = 60    # Circuit A — 6" intake fan (AC Infinity S6)
-FAN_EXHAUST_W   = 60    # Circuit B — 6" exhaust fan (AC Infinity S6)
+FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC Infinity S6)
+FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
 PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time)
 SAFELIGHT_W     = 15    # Circuit D — red LED strips
 COOLER_W        = 80    # Circuit E — 12V DC evaporative cooler
@@ -67,8 +67,8 @@ phases = [
         "name":     "1.6  Cooling warmup",
         "minutes":  COOLING_WARMUP_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
         },
     },
@@ -76,8 +76,8 @@ phases = [
         "name":     "1.7–1.8  Dark adaptation",
         "minutes":  DARK_ADAPT_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
             "Safelight":        SAFELIGHT_W,
         },
@@ -86,8 +86,8 @@ phases = [
         "name":     "2  Load image plane",
         "minutes":  LOADING_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
             "Safelight":        SAFELIGHT_W,
         },
@@ -96,8 +96,8 @@ phases = [
         "name":     "3  Exposure",
         "minutes":  EXPOSURE_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
         },
     },
@@ -105,8 +105,8 @@ phases = [
         "name":     "4  Development & wash",
         "minutes":  DEVELOPMENT_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
             "White light":      WHITE_LIGHT_W,
         },
@@ -115,8 +115,8 @@ phases = [
         "name":     "5  Cleanup",
         "minutes":  CLEANUP_MIN,
         "loads": {
-            "Fan A (intake)":   FAN_INTAKE_W,
-            "Fan B (exhaust)":  FAN_EXHAUST_W,
+            "Fan A (exhaust)":  FAN_EXHAUST_W,
+            "Fan B (intake)":   FAN_INTAKE_W,
             "Evap cooler":      COOLER_W,
             "White light":      WHITE_LIGHT_W,
         },

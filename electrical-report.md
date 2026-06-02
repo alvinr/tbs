@@ -23,8 +23,8 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 ## 3. Power Budget
 | Circuit | Device | Peak draw | Duty cycle |
 |---------|--------|-----------|-----------|
-| A | Ventilation fan — intake (6") | 60W | Continuous during processing |
-| B | Ventilation fan — exhaust (6") | 60W | Continuous during processing |
+| A | Ventilation fan — exhaust (6") | 60W | Continuous during processing |
+| B | Ventilation fan — intake (6") | 60W | Continuous during processing |
 | C | Water pumps P-01–P-04 (12V DC; P-03 in IBC corridor) | 100W | Intermittent (~30 min/print) |
 | D | Safelight — interior + vestibule | 15W | Loading phase only (~45 min) |
 | E | Evaporative cooler (12V DC) | 80W | Continuous during operation |
@@ -40,12 +40,12 @@ Complete power flow from solar panels through controller, battery bank, fuse blo
 
 | Phase | Min | Active circuits | W | Wh |
 |-------|----:|-----------------|--:|---:|
-| 1.6  Cooling warmup | 30 | Fan A (intake), Fan B (exhaust), Evap cooler | 200 | 100 |
-| 1.7–1.8  Dark adaptation | 20 | Fan A (intake), Fan B (exhaust), Evap cooler, Safelight | 215 | 72 |
-| 2  Load image plane | 45 | Fan A (intake), Fan B (exhaust), Evap cooler, Safelight | 215 | 161 |
-| 3  Exposure | 37.5 | Fan A (intake), Fan B (exhaust), Evap cooler | 200 | 125 |
-| 4  Development & wash | 20 | Fan A (intake), Fan B (exhaust), Evap cooler, White light | 260 | 87 |
-| 5  Cleanup | 30 | Fan A (intake), Fan B (exhaust), Evap cooler, White light | 260 | 130 |
+| 1.6  Cooling warmup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler | 200 | 100 |
+| 1.7–1.8  Dark adaptation | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 215 | 72 |
+| 2  Load image plane | 45 | Fan A (exhaust), Fan B (intake), Evap cooler, Safelight | 215 | 161 |
+| 3  Exposure | 37.5 | Fan A (exhaust), Fan B (intake), Evap cooler | 200 | 125 |
+| 4  Development & wash | 20 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 260 | 87 |
+| 5  Cleanup | 30 | Fan A (exhaust), Fan B (intake), Evap cooler, White light | 260 | 130 |
 | **Subtotal** | **182** | | | **675** |
 
 **Intermittent loads (total runtime per print):**
@@ -201,8 +201,8 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 ### 7.2 Circuit List
 | Circuit | Device | Fuse | Wire gauge | Run length |
 |---------|--------|------|-----------|-----------|
-| A | Ventilation fan — intake | 5A | 16 AWG | ~3m |
-| B | Ventilation fan — exhaust (panel-mounted) | 5A | 16 AWG | ~8m + flex connector |
+| A | Ventilation fan — exhaust (far end wall, high) | 5A | 16 AWG | ~2.5m |
+| B | Ventilation fan — intake (panel-mounted, low) | 5A | 16 AWG | ~8m + flex connector |
 | C | Water pumps P-01–P-04 (P-03 in IBC corridor, longer run) | 15A | 14 AWG | ~5m (manifold) / ~8m (P-03) |
 | D | Safelight (3× ceiling strips + drum) | 5A | 18 AWG | ~15m (3 branches + drum) |
 | E | Evaporative cooler | 10A | 14 AWG | ~4m |
@@ -216,7 +216,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
 - Exterior penetrations (fans, cooler intake, shore inlet): Deutsch DT series 2-pin weatherproof connectors — IP67 rated
-- **Circuit B flex connector (panel-mounted exhaust fan):** Fan B is mounted on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. Service loop hangs in the ceiling zone above H=2200mm.
+- **Circuit B flex connector (panel-mounted intake fan):** Fan B is mounted low on the sliding hinged panel. The wire run from the fuse block routes along the ceiling trunking to the fixed door frame, then crosses to the panel via a 1m coiled cable (16 AWG, 2-conductor, silicone-jacketed) with Deutsch DT 2-pin connectors at each end. The coiled cable must accommodate 300mm of panel slide travel plus 180° panel swing without binding. Anchor the fixed end to the door frame top rail; anchor the panel end to the carriage beam. The service loop hangs in the ceiling zone above H=2200mm and the wire drops down the panel to the low fan.
 - **Circuit E exterior connector (evaporative cooler):** The evaporative cooler operates outside the container during sessions. Circuit E (14 AWG) routes from the fuse block along the ceiling trunking, down the pinhole wall to the external power panel interior face, and terminates at a Deutsch DT 2-pin bulkhead connector mounted in the panel face plate. On the exterior, a 1.5m 14 AWG 2-conductor cable with Deutsch DT 2-pin plugs at each end connects the panel to the cooler. The cable is disconnected and stowed inside the container for transport.
 
 **Grounding:** Bond the container steel body to the battery negative busbar using 4 AWG green/yellow wire at the main enclosure. Drive an 8-foot copper ground stake at the container foundation and connect to the main enclosure earth terminal.

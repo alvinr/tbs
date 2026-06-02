@@ -248,10 +248,10 @@ def floor_plan():
             ha="center", va="bottom", **FONT, zorder=7)
 
     # ── Wall penetrations ─────────────────────────────────────────────────────
-    # Fan A — INTAKE: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), LOW (H=600mm)
-    penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(130, -30))
-    # Fan B — EXHAUST: cargo door end wall (X=0), centered between drum and far wall (Yd=FAN_B_YD=1959mm), HIGH (H=1800mm)
-    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(-130, -30))
+    # Fan A — EXHAUST: far end wall (X=C_LEN), near-wall corner (Yd=FAN_A_YD=75mm), HIGH (H=2200mm, above IBC stack)
+    penetration(ax, C_LEN, FAN_A_YD, r=55, col=C_DIM, label="FAN\nOUT", label_offset=(130, -30))
+    # Fan B — INTAKE: cargo door panel (X=0), centered between drum and far wall (Yd=FAN_B_YD=1959mm), LOW (H=600mm)
+    penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM, label="FAN\nIN", label_offset=(-130, -30))
 
     # ── Hinged panel — transport position (ghost, slid 300mm into container) ──
     # Panel slides inward along pinhole wall (Yd=0) on HGR20 ceiling rails.
@@ -745,7 +745,7 @@ def egress_detail():
 
     # ── Fan B penetration ────────────────────────────────────────────────────
     penetration(ax, 0, FAN_B_YD, r=55, col=C_DIM,
-                label="FAN B\n(EXHAUST)", label_offset=(0, -22))
+                label="FAN B\n(INTAKE)", label_offset=(0, -22))
 
     # ── Evap duct penetration (partially visible at right edge) ──────────────
     if EVAP_DUCT_X < X_HI:

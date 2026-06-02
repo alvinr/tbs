@@ -92,14 +92,14 @@ def draw_sheet1():
             ha="center", va="center", fontsize=9.0, color=C_DIM,
             style="italic", zorder=3)
 
-    # ── INTAKE FAN A (left end wall — image plane / far end, compact axial panel fan, low position) ──
+    # ── EXHAUST FAN A (left end wall — far / IBC end, compact axial panel fan, high position) ──
     # Both fans are identical: 150mm compact axial panel fan, ~50mm body depth.
     # Same part, same mounting flange, same baffle duct — simplified procurement.
     import math
     PF_T  = 0.16   # panel fan body thickness in drawing units (~50mm, schematic)
     R_PF  = 0.38   # panel fan impeller radius (150mm dia, schematic)
     BD_W  = 0.80   # baffle duct schematic depth
-    FA_Y  = CY + WT + CH * 0.18    # low position
+    FA_Y  = CY + CH - WT - CH * 0.18    # high position (above IBC stack)
 
     # Baffle duct box — between interior face of left wall and panel fan
     bd_a_x0 = CX + WT                      # right edge of left wall = duct left face
@@ -125,25 +125,25 @@ def draw_sheet1():
         by = FA_Y + R_PF * 0.80 * math.sin(math.radians(angle))
         ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
 
-    # Airflow: exterior left → grille → baffle → fan (rightward into container)
-    ax.annotate("", xy=(CX, FA_Y),
-                xytext=(CX - 1.6, FA_Y),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=7)
-    ax.text(CX - 1.8, FA_Y, "OUTSIDE\nAIR IN",
-            ha="left", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
-    # Short interior distribution arrow from fan into container
-    ax.annotate("", xy=(pf_a_x0 + PF_T + 0.65, FA_Y),
-                xytext=(pf_a_x0 + PF_T + 0.05, FA_Y),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
+    # Airflow: container → fan → baffle → grille → exterior left (leftward, out)
+    ax.annotate("", xy=(CX - 1.6, FA_Y),
+                xytext=(CX, FA_Y),
+                arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=2.5), zorder=7)
+    ax.text(CX - 1.8, FA_Y, "HOT AIR\nOUT",
+            ha="left", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
+    # Short interior collection arrow from container into fan
+    ax.annotate("", xy=(pf_a_x0 + PF_T + 0.05, FA_Y),
+                xytext=(pf_a_x0 + PF_T + 0.65, FA_Y),
+                arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
 
     ann(ax, f"Cct A  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth",
-        (FA_X, FA_Y + R_PF), (FA_X + 1.4, FA_Y + 2.2), size=7.5)
-    ann(ax, "LOW POSITION\n~600mm AFF",
-        (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 0.8), size=7.5)
+        (FA_X, FA_Y - R_PF), (FA_X + 1.4, FA_Y - 2.2), size=7.5)
+    ann(ax, "HIGH POSITION\n~2200mm AFF",
+        (FA_X, FA_Y - R_PF), (FA_X + 1.2, FA_Y - 1.0), size=7.5)
 
-    # ── EXHAUST FAN B (right end wall — cargo door end, identical compact axial panel fan, high position)
+    # ── INTAKE FAN B (right end wall — cargo door panel, identical compact axial panel fan, low position)
     # Same fan, duct, and mounting as Fan A.
-    FB_Y  = CY + CH - WT - CH * 0.18   # high position
+    FB_Y  = CY + WT + CH * 0.18   # low position
 
     # Baffle duct box — between interior face of right wall and panel fan
     bd_b_x0 = CX + CW - WT - BD_W     # left edge of baffle duct box
@@ -172,21 +172,21 @@ def draw_sheet1():
         ax.plot([FB_X, bx], [FB_Y, by],
                 color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
 
-    # Airflow: container → fan → baffle → grille → outside (rightward)
-    ax.annotate("", xy=(CX + CW + 1.6, FB_Y),
-                xytext=(CX + CW, FB_Y),
-                arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=2.5), zorder=7)
-    ax.text(CX + CW + 1.8, FB_Y, "HOT AIR\nOUT",
-            ha="right", va="center", fontsize=8.0, color="#D32F2F", fontweight="bold")
-    # Short interior collection arrow into fan
-    ax.annotate("", xy=(pf_x0 - 0.05, FB_Y),
-                xytext=(pf_x0 - 0.65, FB_Y),
-                arrowprops=dict(arrowstyle="-|>", color="#D32F2F", lw=1.2, alpha=0.6), zorder=6)
+    # Airflow: exterior right → grille → baffle → fan (leftward into container)
+    ax.annotate("", xy=(CX + CW, FB_Y),
+                xytext=(CX + CW + 1.6, FB_Y),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.5), zorder=7)
+    ax.text(CX + CW + 1.8, FB_Y, "OUTSIDE\nAIR IN",
+            ha="right", va="center", fontsize=8.0, color=C_CL, fontweight="bold")
+    # Short interior distribution arrow from fan into container
+    ax.annotate("", xy=(pf_x0 - 0.65, FB_Y),
+                xytext=(pf_x0 - 0.05, FB_Y),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.2, alpha=0.6), zorder=6)
 
     ann(ax, f"Cct B  |  {FAN_DIAM}mm compact axial panel fan\n3A / 16AWG / 40W / 150+ CFM\n~50mm body depth  ·  275mm cone margin",
         (FB_X, FB_Y + R_PF), (FB_X - 2.0, FB_Y + 2.2), size=7.5)
-    ann(ax, "HIGH POSITION\n~1800mm AFF",
-        (FB_X, FB_Y - R_PF), (FB_X - 1.2, FB_Y - 1.5), size=7.5)
+    ann(ax, "LOW POSITION\n~600mm AFF",
+        (FB_X, FB_Y + R_PF), (FB_X - 1.2, FB_Y + 1.0), size=7.5)
 
     # ── EVAP COOLER (ground-placed outside, pinhole wall at X=1200mm) ────────
     # Left wall = far end (X=5893), right wall = door end (X=0).
@@ -219,12 +219,12 @@ def draw_sheet1():
         (EC_WALL_X, CY + WT / 2), (EC_WALL_X + 1.5, CY + 0.6))
 
     # ── Cross-ventilation airflow path ────────────────────────────────────────
-    # Curved arrow from intake Fan A (left wall, low) diagonally to exhaust Fan B (right wall, high)
-    ax.annotate("", xy=(FB_X - R_PF - 0.3, FB_Y),
-                xytext=(FA_X + R_PF + 0.3, FA_Y),
+    # Curved arrow from intake Fan B (right wall, low) diagonally to exhaust Fan A (left wall, high)
+    ax.annotate("", xy=(FA_X + R_PF + 0.3, FA_Y),
+                xytext=(FB_X - R_PF - 0.3, FB_Y),
                 arrowprops=dict(arrowstyle="-|>", color=C_CL,
                                 lw=5, mutation_scale=20,
-                                connectionstyle="arc3,rad=-0.35",
+                                connectionstyle="arc3,rad=0.35",
                                 alpha=0.6), zorder=4)
     ax.text(CX + CW/2, CY + CH/2 - 0.8,
             "cross-ventilation\npath (low → high)",
@@ -324,7 +324,7 @@ def draw_sheet1():
         ("POST-SESSION PURGE",     "Full speed", "Full speed", "OFF"),
         ("PRE-COOL (before entry)", "Full speed", "Full speed", "ON"),
     ]
-    hdrs = ["MODE", "FAN A — panel (intake)", "FAN B — panel (exhaust)", "EVAP COOLER"]
+    hdrs = ["MODE", "FAN A — end wall (exhaust)", "FAN B — panel (intake)", "EVAP COOLER"]
     for ci, hdr in enumerate(hdrs):
         hx = MX + ci * (CW / 4)
         ax.text(hx + CW/8, MY - 0.30, hdr,
@@ -504,7 +504,7 @@ def draw_sheet2():
             ha="left", va="center", fontsize=7.5, color=C_PIPE, zorder=10)
 
     ax.text(520, FCZ + PF_R - 20,
-            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (intake) and Fan B (exhaust) — identical\n"
+            f"{FAN_DIAM}mm COMPACT AXIAL PANEL FAN  ·  Fan A (exhaust) and Fan B (intake) — identical\n"
             "Cct A/B  ·  40W  ·  150+ CFM  ·  ~50mm body depth  ·  Interior-mounted",
             ha="center", va="top", fontsize=8.0, fontweight="bold", color=C_OUT, zorder=10)
 
@@ -568,7 +568,7 @@ def draw_sheet2():
     # ── Notes ─────────────────────────────────────────────────────────────────
     draw_notes(ax, [
         "BOTH FANS — 150mm COMPACT AXIAL PANEL FAN  ·  ONE PART NUMBER",
-        "Fan A (intake, right end) and Fan B (exhaust, left end) are identical.",
+        "Fan A (exhaust, far end wall) and Fan B (intake, cargo door panel) are identical.",
         "Same fan body, same mounting flange, same baffle duct — simplified fabrication and procurement.",
         f"Total depth from wall (each):  {DUCT_DEPTH}mm baffle duct + {PF_BD}mm fan = {DUCT_DEPTH + PF_BD}mm",
         "Shadow margins:  Fan A → +894mm clear of cone right edge  ·  Fan B → +275mm clear of cone left edge  ✓",

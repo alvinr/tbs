@@ -1634,11 +1634,44 @@ end
   # ═══ Fans A & B ═══
   defn = model.definitions.add("Fans A & B")
   ents = defn.entities
+  # Fan A (exhaust) baffle duct
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle duct"
+  face = grp.entities.add_face([5593.mm,200.mm,2100.mm], [5893.mm,200.mm,2100.mm], [5893.mm,400.mm,2100.mm], [5593.mm,400.mm,2100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan A (exhaust) baffle duct"] || model.materials.add("Fan A (exhaust) baffle duct")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Fan A (exhaust) baffle plate 1
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle plate 1"
+  face = grp.entities.add_face([5689.mm,225.mm,2100.mm], [5697.mm,225.mm,2100.mm], [5697.mm,375.mm,2100.mm], [5689.mm,375.mm,2100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) baffle plate 2
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle plate 2"
+  face = grp.entities.add_face([5789.mm,225.mm,2150.mm], [5797.mm,225.mm,2150.mm], [5797.mm,375.mm,2150.mm], [5789.mm,375.mm,2150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 2"] || model.materials.add("Fan A (exhaust) baffle plate 2")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Fan A (exhaust)
   grp = ents.add_group
   grp.name = "Fan A (exhaust)"
   ge = grp.entities
-  circle = ge.add_circle([5868.mm,300.mm,2200.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([5593.mm,300.mm,2200.mm], [1,0,0], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
@@ -1647,11 +1680,44 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fan B (intake) baffle duct
+  grp = ents.add_group
+  grp.name = "Fan B (intake) baffle duct"
+  face = grp.entities.add_face([0.mm,1859.mm,500.mm], [300.mm,1859.mm,500.mm], [300.mm,2059.mm,500.mm], [0.mm,2059.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle duct"] || model.materials.add("Fan B (intake) baffle duct")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Fan B (intake) baffle plate 1
+  grp = ents.add_group
+  grp.name = "Fan B (intake) baffle plate 1"
+  face = grp.entities.add_face([96.mm,1884.mm,500.mm], [104.mm,1884.mm,500.mm], [104.mm,2034.mm,500.mm], [96.mm,2034.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) baffle plate 2
+  grp = ents.add_group
+  grp.name = "Fan B (intake) baffle plate 2"
+  face = grp.entities.add_face([196.mm,1884.mm,550.mm], [204.mm,1884.mm,550.mm], [204.mm,2034.mm,550.mm], [196.mm,2034.mm,550.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 2"] || model.materials.add("Fan B (intake) baffle plate 2")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Fan B (intake)
   grp = ents.add_group
   grp.name = "Fan B (intake)"
   ge = grp.entities
-  circle = ge.add_circle([-25.mm,1959.mm,600.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([250.mm,1959.mm,600.mm], [1,0,0], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)

@@ -70,6 +70,7 @@ from tbs_constants import (
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
     EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H, EXT_DRAIN_YD,
     FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
+    DUCT_DEPTH, DUCT_HEIGHT,
     BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD,
     SPRAY_BAR_FEED_Z,
     EQPANEL_YD_FAR, IBC_VALVE_Z,
@@ -1027,18 +1028,41 @@ def water_hookups():
 # ── Ventilation fans (cargo-door end wall) ───────────────────────────────────
 
 def fans():
-    """Cross-ventilation fans on OPPOSITE end walls, diagonal low-in / high-out:
+    """Cross-ventilation fans + light-safe baffle ducts on OPPOSITE end walls,
+    diagonal low-in / high-out:
       Fan A (exhaust) — far/IBC end wall (X=C_LEN, right), high (Z=2200, above IBC stack).
-      Fan B (intake) — cargo-door panel (X=0, left), low (Z=600).
+      Fan B (intake)  — cargo-door panel (X=0, left), low (Z=600).
+
+    Each fan sits at the INTERIOR mouth of a box-section baffle duct bolted to
+    the wall interior: DUCT_DEPTH (300mm, along the fan axis) x DUCT_W (200mm,
+    Yd) x DUCT_HEIGHT (200mm, Z), translucent galvanized steel. Inside, two
+    150x150mm flat baffle plates are offset top/bottom at 1/3 and 2/3 depth to
+    break the line of sight (light-safe S-path) while passing full airflow.
     """
+    r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
+    dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
+    dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
+    bf, bft = 150, 8                          # 150x150 baffle plates, 8mm thick (exaggerated)
     parts = []
-    r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm body
-    parts.append(ruby_cylinder("Fan A (exhaust)",
-                               C_LEN - bd / 2, FAN_A_YD, FAN_A_H, r, bd,
-                               color=C_FAN, axis="x"))
-    parts.append(ruby_cylinder("Fan B (intake)",
-                               -bd / 2, FAN_B_YD, FAN_B_H, r, bd,
-                               color=C_FAN, axis="x"))
+
+    def duct(tag, x0, yc, zc, fan_x):
+        # box-section baffle duct: min corner (x0, yc-dw/2, zc-dh/2)
+        out = [ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
+                        dd, dw, dh, color=C_DUCT, alpha=0.5)]
+        # baffle plate 1 — covers BOTTOM 150 of the opening, at 1/3 depth
+        out.append(ruby_box(f"{tag} baffle plate 1", x0 + dd / 3 - bft / 2,
+                            yc - bf / 2, zc - dh / 2, bft, bf, bf, color=C_FAN))
+        # baffle plate 2 — covers TOP 150 of the opening, at 2/3 depth
+        out.append(ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
+                            yc - bf / 2, zc + dh / 2 - bf, bft, bf, bf, color=C_FAN))
+        # fan disk at the interior mouth (X=fan_x face), body inside the duct
+        out.append(ruby_cylinder(tag, fan_x, yc, zc, r, bd, color=C_FAN, axis="x"))
+        return out
+
+    # Fan A: far end wall (X=C_LEN); duct projects -X into the container.
+    parts += duct("Fan A (exhaust)", C_LEN - dd, FAN_A_YD, FAN_A_H, C_LEN - dd)
+    # Fan B: cargo-door panel (X=0); duct projects +X into the container.
+    parts += duct("Fan B (intake)", 0, FAN_B_YD, FAN_B_H, dd - bd)
     return '\n'.join(parts)
 
 

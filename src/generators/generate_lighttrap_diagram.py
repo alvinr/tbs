@@ -286,6 +286,33 @@ def draw_sheet1():
                 arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
                 zorder=12)
 
+    # ── Transport / walkway note — drum slide-back requires left walkway removal ─
+    # The walkway is LOWERED (deck Z=65mm, stays in place during camera operation;
+    # film plane travels above it).  LEFT WALKWAY (X 170–470mm) is a removable
+    # lift-out section — for transport it is taken out so the cargo panel + drum
+    # can slide back to rest position at X≈300mm.
+    TN_W  = 3.70
+    TN_H  = 0.95
+    TN_RX = 23.90
+    TN_LX = TN_RX - TN_W          # 20.20
+    TN_CX = TN_LX + TN_W / 2      # 22.05
+    TN_CY = CY - 0.55              # 3.45 — just below drum box bottom (CY=4.0)
+    ax.add_patch(mpatches.FancyBboxPatch(
+        (TN_LX, TN_CY - TN_H / 2), TN_W, TN_H,
+        boxstyle="round,pad=0.06", fc="#E8F4FD", ec="#1565C0", lw=1.0,
+        zorder=11))
+    ax.text(TN_CX, TN_CY,
+            "TRANSPORT: left walkway lift-out removed\n"
+            "→ cargo panel + drum slide back to X≈300\n"
+            "(walkway LOWERED, not removed, for operation)",
+            ha="center", va="center", fontsize=6.2, color="#0D47A1",
+            fontweight="bold", zorder=12)
+    # Leader arrow from note top to drum box bottom-centre
+    ax.annotate("", xy=(DRUM_BOX_CX, CY),
+                xytext=(TN_CX, TN_CY + TN_H / 2),
+                arrowprops=dict(arrowstyle="->", color="#1565C0", lw=1.0),
+                zorder=12)
+
     # Operating modes table (shifted down to clear cooler outside container)
     MX, MY = CX, CY - 1.6
     ax.add_patch(mpatches.FancyBboxPatch((MX - 0.1, MY - 1.45), CW + 0.2, 1.55,

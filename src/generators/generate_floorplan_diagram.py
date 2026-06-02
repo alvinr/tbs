@@ -480,47 +480,39 @@ def floor_plan():
             fontweight="bold", **FONT, zorder=10,
             bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#C07030", lw=0.9))
 
-    # ── Ghost overlays — in-envelope walkway sections (REMOVED for film-mech clearance) ──
-    # The walkway portions inside the film-plane mechanism envelope
-    # (X 150–4649, Yd 100–2262) are permanently removed.  Ghost them with the
-    # same treatment as generate_walkway_diagram.py so both drawings agree.
-    FM_YD_N = 100    # film-mechanism envelope near Yd boundary
-    FM_YD_F = 2262   # film-mechanism envelope far Yd boundary (= FP_Y / CARRIAGE_PARK_Y)
-
-    C_GHOST_WK   = "#CC4422"   # red-orange (matches walkway drawing)
-    GHOST_WK_A   = 0.18        # ghost fill alpha
-    GHOST_WK_A_E = 0.70        # ghost edge alpha
-
-    def _ghost_rect(ax, x0, y0, w, h, zorder=12):
-        """Overlay a ghosted cross-hatched rectangle to mark a removed walkway section."""
-        ax.add_patch(Rectangle((x0, y0), w, h,
-                                fc=C_GHOST_WK, ec="none", lw=0,
-                                alpha=GHOST_WK_A, zorder=zorder))
-        ax.add_patch(Rectangle((x0, y0), w, h,
-                                fc="none", ec=C_GHOST_WK, lw=1.5, ls=(0, (6, 4)),
-                                alpha=GHOST_WK_A_E, zorder=zorder + 1))
-        import matplotlib.patches as _mp
-        ax.add_patch(_mp.Rectangle((x0, y0), w, h,
-                                   fc="none", ec=C_GHOST_WK, lw=0.5,
-                                   hatch="////", alpha=0.30, zorder=zorder))
-
-    # NEAR: inner strip Yd 100–300, full span X 470–4329
-    _ghost_rect(ax, LXR, FM_YD_N, RX - LXR, NYI - FM_YD_N)
-    # FAR: inner strip Yd 2062–2262, full span X 470–4329
-    _ghost_rect(ax, LXR, FY, RX - LXR, FM_YD_F - FY)
-    # LEFT: inner Yd span 100–2262, full width X 170–470
-    _ghost_rect(ax, LX, FM_YD_N, W, FM_YD_F - FM_YD_N)
-    # RIGHT: inner Yd span 100–2262, full width X 4329–4629
-    _ghost_rect(ax, RX, FM_YD_N, W, FM_YD_F - FM_YD_N)
-
-    # ── Dropped-walkway note (film-mechanism envelope) ────────────────────────
+    # ── Walkway height note (deck lowered — stays in place for operation) ───────
+    # The walkway deck is LOWERED to Z=WALKWAY_H (65mm) so the film-plane frame
+    # travels above it.  The walkway is NOT removed; all four panels remain in
+    # place during camera operation.
     ax.text((ZONE_L_END + ZONE_R_START) / 2, -PAD_B + 480,
-            "NOTE: Walkway sections inside film-mechanism envelope\n"
-            f"(X={ZONE_L_END}–{ZONE_R_START}mm, Yd 100–{CARRIAGE_PARK_Y}mm) are DROPPED — "
-            "see walkway drawing for detail.",
-            ha="center", va="top", fontsize=6.5, color="#AA3300",
-            style="italic", **FONT, zorder=10,
-            bbox=dict(boxstyle="round,pad=0.3", fc="#FFF0EE", ec="#AA3300", lw=0.8))
+            f"WALKWAY LOWERED TO Z={WALKWAY_H}mm (clears film-plane frame) — "
+            "IN PLACE FOR OPERATION",
+            ha="center", va="top", fontsize=6.5, color="#204820",
+            fontweight="bold", **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.8))
+
+    # ── Left walkway — removable lift-out overlay + label ─────────────────────
+    # The LEFT walkway (X WALKWAY_LEFT_X–470, full Yd span) is a removable
+    # lift-out panel — removed only for transport so the light-trap cargo panel
+    # + drum can slide back to ~X=300.  Highlight with a dashed green border.
+    ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
+                            fc="none", ec="#408040", lw=2.0, ls=(0, (6, 3)),
+                            zorder=13, alpha=0.85))
+    # Leader pointing to left walkway mid-height
+    LW_MID_Y = (NY + FYO) / 2
+    LW_NOTE_X = -PAD_L + 120
+    ax.annotate("",
+                xy=(LXR, LW_MID_Y),
+                xytext=(LW_NOTE_X + 520, LW_MID_Y),
+                arrowprops=dict(arrowstyle="->", color="#408040", lw=1.0),
+                zorder=14)
+    ax.text(LW_NOTE_X + 505, LW_MID_Y + 80,
+            f"LEFT WALKWAY — REMOVABLE LIFT-OUT\n"
+            f"X={WALKWAY_LEFT_X}–{int(LXR)}mm\n"
+            "Remove for transport / light-trap slide-back",
+            ha="right", va="bottom", fontsize=6.0, color="#204820",
+            fontweight="bold", **FONT, zorder=14,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#F0FFF0", ec="#408040", lw=0.9))
 
     # ── Egress path annotation ─────────────────────────────────────────────────
     # With drums eliminated, the full container width (2362mm) is clear for egress.

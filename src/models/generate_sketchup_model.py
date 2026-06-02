@@ -144,6 +144,19 @@ def hex_to_rgb(h):
     return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
+# Web viewers (e.g. Sketchfab) cap material count at ~100. Dozens of elements
+# share a color, so materials are keyed by color+alpha and reused — the first
+# group to use a given color+alpha names the shared material. This collapses
+# ~130 per-element materials down to the number of distinct color+alpha combos.
+_MAT_BY_COLOR = {}
+
+
+def shared_mat_name(name, color, alpha):
+    """Return a material name shared by every element of the same color+alpha."""
+    key = (color, alpha if alpha is not None else 1.0)
+    return _MAT_BY_COLOR.setdefault(key, name)
+
+
 def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
     """Generate Ruby to create a named box group inside the `ents` context.
 
@@ -173,8 +186,9 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
         r, g, b = hex_to_rgb(color)
         # Reuse the material if it already exists so re-sends don't pile up
         # "Container Ceiling2", "Container Ceiling3", … duplicates.
-        lines.append(f'  mat = model.materials["{name}"] || '
-                     f'model.materials.add("{name}")')
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
         # Always set alpha (default opaque) so a reused material can't keep a
         # stale translucency from an earlier run.
@@ -253,8 +267,9 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
     ]
     if color:
         r, g, b = hex_to_rgb(color)
-        lines.append(f'  mat = model.materials["{name}"] || '
-                     f'model.materials.add("{name}")')
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
         lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
@@ -748,8 +763,9 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
     ]
     if color:
         r_, g_, b_ = hex_to_rgb(color)
-        lines.append(f'  mat = model.materials["{name}"] || '
-                     f'model.materials.add("{name}")')
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
         lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
@@ -777,8 +793,9 @@ def ruby_panel_z(name, ax_, ay, bx, by, thickness, height, color=None, alpha=Non
     ]
     if color:
         r_, g_, b_ = hex_to_rgb(color)
-        lines.append(f'  mat = model.materials["{name}"] || '
-                     f'model.materials.add("{name}")')
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
         lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
         lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')
@@ -1130,8 +1147,9 @@ def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
     ]
     if color:
         rr, gg, bb = hex_to_rgb(color)
-        lines.append(f'  mat = model.materials["{name}"] || '
-                     f'model.materials.add("{name}")')
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || '
+                     f'model.materials.add("{mat_nm}")')
         lines.append(f'  mat.color = Sketchup::Color.new({rr}, {gg}, {bb})')
         lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
         lines.append(f'  grp.material = mat')

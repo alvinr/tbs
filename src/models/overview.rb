@@ -24,10 +24,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Walkways") unless model.layers["Walkways"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
-  model.layers.add("Optical Axis") unless model.layers["Optical Axis"]
   model.layers.add("Optical Cone") unless model.layers["Optical Cone"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Ceiling Rail") unless model.layers["Ceiling Rail"]
+  model.layers.add("Spray Bar") unless model.layers["Spray Bar"]
+  model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Container Shell ═══
@@ -240,23 +241,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Pinhole Assembly"
   inst.layer = model.layers["Pinhole"]
 
-  # ═══ Optical Axis ═══
-  defn = model.definitions.add("Optical Axis")
-  ents = defn.entities
-  # Optical Axis (pinhole → film plane)
-  grp = ents.add_group
-  grp.name = "Optical Axis (pinhole → film plane)"
-  face = grp.entities.add_face([2396.mm,0.mm,1191.mm], [2402.mm,0.mm,1191.mm], [2402.mm,2262.mm,1191.mm], [2396.mm,2262.mm,1191.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Optical Axis (pinhole → film plane)"] || model.materials.add("Optical Axis (pinhole → film plane)")
-  mat.color = Sketchup::Color.new(204, 102, 0)
-  grp.material = mat
-
-  inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Optical Axis"
-  inst.layer = model.layers["Optical Axis"]
-
   # ═══ Optical Cone ═══
   defn = model.definitions.add("Optical Cone")
   ents = defn.entities
@@ -273,7 +257,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge.add_face(apex, b3, b0)
   mat = model.materials["Optical Cone"] || model.materials.add("Optical Cone")
   mat.color = Sketchup::Color.new(204, 102, 0)
-  mat.alpha = 0.12
+  mat.alpha = 0.05
   ge.each { |f| next unless f.is_a?(Sketchup::Face); f.material = mat; f.back_material = mat }
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -456,16 +440,118 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Ceiling Rail"
   inst.layer = model.layers["Ceiling Rail"]
 
+  # ═══ Spray Bar ═══
+  defn = model.definitions.add("Spray Bar")
+  ents = defn.entities
+  # Spray Bar Beam
+  grp = ents.add_group
+  grp.name = "Spray Bar Beam"
+  face = grp.entities.add_face([200.mm,1160.mm,10.mm], [4599.mm,1160.mm,10.mm], [4599.mm,1200.mm,10.mm], [200.mm,1200.mm,10.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Spray Bar Beam"] || model.materials.add("Spray Bar Beam")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  grp.material = mat
+
+  # Spray Bar Carriage
+  grp = ents.add_group
+  grp.name = "Spray Bar Carriage"
+  face = grp.entities.add_face([200.mm,1135.mm,5.mm], [250.mm,1135.mm,5.mm], [250.mm,1225.mm,5.mm], [200.mm,1225.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(55.mm)
+  mat = model.materials["Spray Bar Carriage"] || model.materials.add("Spray Bar Carriage")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.material = mat
+
+  # Spray Bar Carriage
+  grp = ents.add_group
+  grp.name = "Spray Bar Carriage"
+  face = grp.entities.add_face([4549.mm,1135.mm,5.mm], [4599.mm,1135.mm,5.mm], [4599.mm,1225.mm,5.mm], [4549.mm,1225.mm,5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(55.mm)
+  mat = model.materials["Spray Bar Carriage"] || model.materials.add("Spray Bar Carriage")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Spray Bar"
+  inst.layer = model.layers["Spray Bar"]
+
+  # ═══ Equipment Panel ═══
+  defn = model.definitions.add("Equipment Panel")
+  ents = defn.entities
+  # Equipment Panel (ply)
+  grp = ents.add_group
+  grp.name = "Equipment Panel (ply)"
+  face = grp.entities.add_face([5000.mm,1046.mm,200.mm], [5018.mm,1046.mm,200.mm], [5018.mm,1316.mm,200.mm], [5000.mm,1316.mm,200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2060.mm)
+  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  grp.material = mat
+
+  # Pumps + ACC-01
+  grp = ents.add_group
+  grp.name = "Pumps + ACC-01"
+  face = grp.entities.add_face([4900.mm,1046.mm,1320.mm], [5000.mm,1046.mm,1320.mm], [5000.mm,1173.mm,1320.mm], [4900.mm,1173.mm,1320.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(900.mm)
+  mat = model.materials["Pumps + ACC-01"] || model.materials.add("Pumps + ACC-01")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  grp.material = mat
+
+  # Filter F1 (50µ)
+  grp = ents.add_group
+  grp.name = "Filter F1 (50µ)"
+  face = grp.entities.add_face([4870.mm,1186.mm,200.mm], [5000.mm,1186.mm,200.mm], [5000.mm,1316.mm,200.mm], [4870.mm,1316.mm,200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(340.mm)
+  mat = model.materials["Filter F1 (50µ)"] || model.materials.add("Filter F1 (50µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  grp.material = mat
+
+  # Filter F2 (5µ)
+  grp = ents.add_group
+  grp.name = "Filter F2 (5µ)"
+  face = grp.entities.add_face([4870.mm,1186.mm,570.mm], [5000.mm,1186.mm,570.mm], [5000.mm,1316.mm,570.mm], [4870.mm,1316.mm,570.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(340.mm)
+  mat = model.materials["Filter F2 (5µ)"] || model.materials.add("Filter F2 (5µ)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  grp.material = mat
+
+  # Filter F3 (GAC)
+  grp = ents.add_group
+  grp.name = "Filter F3 (GAC)"
+  face = grp.entities.add_face([4870.mm,1186.mm,940.mm], [5000.mm,1186.mm,940.mm], [5000.mm,1316.mm,940.mm], [4870.mm,1316.mm,940.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(340.mm)
+  mat = model.materials["Filter F3 (GAC)"] || model.materials.add("Filter F3 (GAC)")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Equipment Panel"
+  inst.layer = model.layers["Equipment Panel"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
+
+# ── Remove stale tags from earlier generator versions ──
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel"]
+default_layer = model.layers[0]
+model.layers.to_a.each { |l|
+  next if l == default_layer || keep_tags.include?(l.name)
+  model.layers.remove(l, true) rescue nil
+}
 
 # ── Scenes ──
 model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

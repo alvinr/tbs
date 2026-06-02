@@ -32,7 +32,7 @@ TAGS = ["IBC Tanks", "IBC Frame", "Plumbing & Panel"]
 def generate_ruby():
     """Build the Ruby script for the IBC Stack model, reusing Overview parts."""
     comps = [
-        ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.4)),
+        ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
         ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
         ov.component("Equipment Panel", "Plumbing & Panel", ov.equipment_panel()),
         ov.component("Water Plumbing", "Plumbing & Panel", ov.water_plumbing()),

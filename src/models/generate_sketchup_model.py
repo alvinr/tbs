@@ -65,6 +65,8 @@ from tbs_constants import (
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
+    SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
+    SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_HANGER_D,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -89,12 +91,13 @@ C_DRUM = "#E8E0D0"      # light-trap drum shell (cream)
 C_VANE = "#778088"      # drum turnstile vanes
 C_ELEC = "#F5C518"      # electrical panel (EP)
 C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
+C_SHELF = "#C8B06A"     # chemistry prep shelf (warm gold)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
-        "IBC Stack", "IBC Rack", "Light Trap", "Electrical"]
+        "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"]
 
 
 def mm(val):
@@ -791,6 +794,31 @@ def electrical():
     return '\n'.join(parts)
 
 
+# ── Chemistry prep shelf (ceiling-hung) ──────────────────────────────────────
+
+def shelf():
+    """Chemistry prep shelf — ceiling-hung at Yd 300–600, suspended by 4 rods.
+
+    A 600×300mm board at Z=1025 near the pinhole wall (behind the near walkway),
+    hung from the ceiling by four Ø10 rods at the corners.
+    """
+    parts = []
+    parts.append(ruby_box("Chem Shelf",
+                          SHELF_X_L, SHELF_YD_NEAR, SHELF_H - SHELF_T,
+                          SHELF_W, SHELF_DEPTH, SHELF_T, color=C_SHELF))
+
+    rr = SHELF_HANGER_D / 2.0
+    rod_h = C_HGT - SHELF_H
+    inset = 20
+    for hx in (SHELF_X_L + inset, SHELF_X_R - inset):
+        for hy in (SHELF_YD_NEAR + inset, SHELF_YD_FAR - inset):
+            parts.append(ruby_cylinder("Shelf Hanger Rod",
+                                       hx, hy, SHELF_H, rr, rod_h,
+                                       color=C_STEEL, n=12))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -809,6 +837,7 @@ def generate_ruby():
         component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Electrical", "Electrical", electrical()),
+        component("Chemistry Shelf", "Shelf", shelf()),
     ]
     body = '\n'.join(comps)
 
@@ -867,7 +896,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

@@ -33,6 +33,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("IBC Rack") unless model.layers["IBC Rack"]
   model.layers.add("Light Trap") unless model.layers["Light Trap"]
   model.layers.add("Electrical") unless model.layers["Electrical"]
+  model.layers.add("Shelf") unless model.layers["Shelf"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -1009,12 +1010,77 @@ end
   inst.name = "Electrical"
   inst.layer = model.layers["Electrical"]
 
+  # ═══ Chemistry Shelf ═══
+  defn = model.definitions.add("Chemistry Shelf")
+  ents = defn.entities
+  # Chem Shelf
+  grp = ents.add_group
+  grp.name = "Chem Shelf"
+  face = grp.entities.add_face([3729.mm,300.mm,1003.mm], [4329.mm,300.mm,1003.mm], [4329.mm,600.mm,1003.mm], [3729.mm,600.mm,1003.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Chem Shelf"] || model.materials.add("Chem Shelf")
+  mat.color = Sketchup::Color.new(200, 176, 106)
+  grp.material = mat
+
+  # Shelf Hanger Rod
+  grp = ents.add_group
+  grp.name = "Shelf Hanger Rod"
+  ge = grp.entities
+  circle = ge.add_circle([3749.mm,320.mm,1025.mm], [0,0,1], 5.mm, 12)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1363.mm)
+  mat = model.materials["Shelf Hanger Rod"] || model.materials.add("Shelf Hanger Rod")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Shelf Hanger Rod
+  grp = ents.add_group
+  grp.name = "Shelf Hanger Rod"
+  ge = grp.entities
+  circle = ge.add_circle([3749.mm,580.mm,1025.mm], [0,0,1], 5.mm, 12)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1363.mm)
+  mat = model.materials["Shelf Hanger Rod"] || model.materials.add("Shelf Hanger Rod")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Shelf Hanger Rod
+  grp = ents.add_group
+  grp.name = "Shelf Hanger Rod"
+  ge = grp.entities
+  circle = ge.add_circle([4309.mm,320.mm,1025.mm], [0,0,1], 5.mm, 12)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1363.mm)
+  mat = model.materials["Shelf Hanger Rod"] || model.materials.add("Shelf Hanger Rod")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Shelf Hanger Rod
+  grp = ents.add_group
+  grp.name = "Shelf Hanger Rod"
+  ge = grp.entities
+  circle = ge.add_circle([4309.mm,580.mm,1025.mm], [0,0,1], 5.mm, 12)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1363.mm)
+  mat = model.materials["Shelf Hanger Rod"] || model.materials.add("Shelf Hanger Rod")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Chemistry Shelf"
+  inst.layer = model.layers["Shelf"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1026,7 +1092,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

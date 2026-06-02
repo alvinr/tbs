@@ -137,12 +137,12 @@ The container arrives in transport mode: the stepped hinged panel is retracted 3
 - [ ] 1.5.3 — Connect controller to battery bank (2 × 100Ah LiFePO4 in parallel). **Observe polarity.**
 - [ ] 1.5.4 — Connect Blue Sea fuse block to battery positive busbar.
 - [ ] 1.5.5 — Check controller display: battery voltage should read 12.6–13.2V (full charge). If below 12.0V, charge before proceeding — a depleted battery bank cannot power the cooler and water system simultaneously.
-- [ ] 1.5.6 — Verify each circuit fuse is seated: A (intake fan), B (exhaust fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
+- [ ] 1.5.6 — Verify each circuit fuse is seated: A (exhaust fan), B (intake fan), C (water pumps P-01–P-04), D (safelight), E (evap cooler), F (actuators, if fitted).
 
 > **Shore power backup:** If mains power is available at the site, connect the Victron IP65 charger to the NEMA 5-15 inlet on the container exterior. The charger maintains the battery bank automatically — leave it connected whenever shore power is available.
 
 ### 1.6 Ventilation and Cooling
-- [ ] 1.6.1 — Switch ON intake fan (circuit A) and exhaust fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
+- [ ] 1.6.1 — Switch ON exhaust fan (circuit A) and intake fan (circuit B). Confirm airflow — hold a piece of tissue at each duct stub; it should deflect visibly.
 - [ ] 1.6.2 — **Cooling (hot climate):** Switch ON evaporative cooler (circuit E). Fill cooler reservoir. Run cooler for a minimum of **30 minutes before any operator entry** when ambient temperature exceeds 30°C. Interior should reach below 35°C before loading.
 - [ ] 1.6.3 — If using shade canopy: erect before solar noon. An 80% shade cloth over the container reduces interior temperature by 15–20°C.
 

@@ -302,17 +302,17 @@ ax.text(PH_X, PH_H - 300, f"Optical axis (into page)\nFocal length {C_WID}mm",
 
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
-# Fan A — INTAKE: far end wall (X=C_LEN), low position (H=FAN_A_H=600mm)
-# Fan B — EXHAUST: cargo door end wall (X=0), high position (H=FAN_B_H=1800mm)
+# Fan A — EXHAUST: far end wall (X=C_LEN), high position (H=FAN_A_H=2200mm, above IBC)
+# Fan B — INTAKE: cargo door panel (X=0), low position (H=FAN_B_H=600mm)
 FAN_HH = DUCT_HEIGHT  # duct opening height (200mm) — same as hatch block height
 ax.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_A_H - FAN_HH // 2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
-ax.text(C_LEN - 30, FAN_A_H, "FAN\nIN", ha="center", va="center",
+ax.text(C_LEN - 30, FAN_A_H, "FAN\nOUT", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
 ax.add_patch(mpatches.Rectangle((0, FAN_B_H - FAN_HH // 2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.7, zorder=4))
-ax.text(30, FAN_B_H, "FAN\nOUT", ha="center", va="center",
+ax.text(30, FAN_B_H, "FAN\nIN", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=5)
 
 
@@ -642,25 +642,25 @@ ax2.text(mx((TRAY_X0 + TRAY_X1) / 2), TRAY_H / 2,
         style="italic", zorder=5)
 
 # ── Ventilation fans ──────────────────────────────────────────────────────────
-# Fan A (INTAKE) at X=C_LEN (left edge in this view), H=FAN_A_H=600
-# Fan B (EXHAUST) at X=0 (right edge), H=FAN_B_H=1800
+# Fan A (EXHAUST) at X=C_LEN (left edge in this view), H=FAN_A_H=2200 (above IBC)
+# Fan B (INTAKE) at X=0 (right edge), H=FAN_B_H=600
 FAN_HH = DUCT_HEIGHT
 ax2.add_patch(mpatches.Rectangle((0, FAN_A_H - FAN_HH//2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.8, zorder=6))
-ax2.text(30, FAN_A_H, "FAN\nIN", ha="center", va="center",
+ax2.text(30, FAN_A_H, "FAN\nOUT", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=7)
 
 ax2.add_patch(mpatches.Rectangle((C_LEN - 60, FAN_B_H - FAN_HH//2), 60, FAN_HH,
              facecolor=C_FAN, edgecolor=C_OUT, linewidth=0.6, alpha=0.8, zorder=6))
-ax2.text(C_LEN - 30, FAN_B_H, "FAN\nOUT", ha="center", va="center",
+ax2.text(C_LEN - 30, FAN_B_H, "FAN\nIN", ha="center", va="center",
         fontsize=FS_SM - 1.5, color=C_OUT, zorder=7)
 
-# Fan cross-ventilation arrow (arched, behind fans but arrow tip visible)
-ax2.annotate("", xy=(C_LEN - 60, FAN_B_H), xytext=(60, FAN_A_H),
+# Fan cross-ventilation arrow — airflow intake (low, right) → exhaust (high, left)
+ax2.annotate("", xy=(60, FAN_A_H), xytext=(C_LEN - 60, FAN_B_H),
             arrowprops=dict(arrowstyle="-|>,head_length=1.0,head_width=0.6",
                             color=C_FAN, lw=1.8,
                             linestyle=(0, (6, 3, 1, 3)),
-                            connectionstyle="arc3,rad=-0.25",
+                            connectionstyle="arc3,rad=0.25",
                             mutation_scale=15), zorder=8)
 ax2.text((C_LEN)/2 - 1200, (FAN_A_H + FAN_B_H)/2 - 200,
         "Cross-ventilation diagonal\nlow IN → high OUT", ha="center",

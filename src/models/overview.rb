@@ -1634,28 +1634,28 @@ end
   # ═══ Fans A & B ═══
   defn = model.definitions.add("Fans A & B")
   ents = defn.entities
-  # Fan A (intake)
+  # Fan A (exhaust)
   grp = ents.add_group
-  grp.name = "Fan A (intake)"
+  grp.name = "Fan A (exhaust)"
   ge = grp.entities
-  circle = ge.add_circle([5868.mm,75.mm,600.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([5868.mm,75.mm,2200.mm], [1,0,0], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Fan A (intake)"] || model.materials.add("Fan A (intake)")
+  mat = model.materials["Fan A (exhaust)"] || model.materials.add("Fan A (exhaust)")
   mat.color = Sketchup::Color.new(96, 96, 96)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Fan B (exhaust)
+  # Fan B (intake)
   grp = ents.add_group
-  grp.name = "Fan B (exhaust)"
+  grp.name = "Fan B (intake)"
   ge = grp.entities
-  circle = ge.add_circle([-25.mm,1959.mm,1800.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([-25.mm,1959.mm,600.mm], [1,0,0], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Fan B (exhaust)"] || model.materials.add("Fan B (exhaust)")
+  mat = model.materials["Fan B (intake)"] || model.materials.add("Fan B (intake)")
   mat.color = Sketchup::Color.new(96, 96, 96)
   mat.alpha = 1.0
   grp.material = mat

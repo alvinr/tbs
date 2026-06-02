@@ -272,8 +272,8 @@ def sheet1():
             style="italic", zorder=5)
 
     # ── Fans — shown on their correct end walls at correct heights ───────────────
-    # Fan B (exhaust): cargo door end wall (X=0), HIGH H=FAN_B_H=1800mm
-    # Fan A (intake):  far end wall (X=C_LEN),   LOW  H=FAN_A_H=600mm
+    # Fan B (intake):  cargo door panel (X=0),   LOW  H=FAN_B_H=600mm
+    # Fan A (exhaust): far end wall (X=C_LEN),   HIGH H=FAN_A_H=2200mm (above IBC)
     FAN_HH = DUCT_HEIGHT   # hatch block height = duct opening height (200mm)
     hatch_rect(ax, -WALL_T, FAN_B_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan B left wall
     hatch_rect(ax, C_LEN,   FAN_A_H - FAN_HH//2, WALL_T, FAN_HH, color=C_ALUM, hatch="xx", alpha=0.6)  # Fan A right wall
@@ -289,8 +289,8 @@ def sheet1():
         (DRUM_CX,                 RAIL_OFF+DRUM_H_ELV/2,  "6"),  # Drum + panel
         (IBC_COL_X+IBC_W/2,      IBC_H_STK/2,            "7"),  # IBCs (4× 2×2 stack)
         (PUMP_X+PUMP_W/2,         (PUMP_H_LO+PUMP_H_HI)/2, "8"),  # Pump
-        (-WALL_T/2, FAN_B_H,      "9"),  # Fan B exhaust (door end, HIGH)
-        (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A intake (far end, LOW)
+        (-WALL_T/2, FAN_B_H,      "9"),  # Fan B intake (door panel, LOW)
+        (C_LEN+WALL_T/2, FAN_A_H, "10"),  # Fan A exhaust (far end, HIGH)
         ((TRAY_X0+TRAY_X1)/2,     TRAY_H+180, "11"),  # Processing tray
         (PWR_PANEL_X + PWR_PANEL_W / 2, PP_CTR_H, "12"),  # Ext power panel
     ]
@@ -487,9 +487,9 @@ def sheet2():
     ax.text(C_WID/2, C_HGT-60, "Safelight strip (Circuit D)",
             ha="center", va="bottom", fontsize=FS_SM-1, color="#B8960A")
 
-    # ── Ventilation — Fan B (exhaust) only: this is the cargo door end wall (X=0) ──
-    # Fan A (intake) is on the opposite end wall (X=C_LEN) — not shown in this view.
-    # Fan B: centered between drum and far wall (Yd=FAN_B_YD=1959mm), HIGH position (H=FAN_B_H=1800mm).
+    # ── Ventilation — Fan B (intake) only: this is the cargo door panel end (X=0) ──
+    # Fan A (exhaust) is on the opposite end wall (X=C_LEN) — not shown in this view.
+    # Fan B: centered between drum and far wall (Yd=FAN_B_YD=1959mm), LOW position (H=FAN_B_H=600mm).
     FAN_R2 = FAN_DIAM // 2
     ax.add_patch(plt.Circle((FAN_B_YD, FAN_B_H), FAN_R2,
                  facecolor=C_FILL_INT, edgecolor=C_DIM, linewidth=1.0,
@@ -497,7 +497,7 @@ def sheet2():
     ax.text(FAN_B_YD, FAN_B_H, "B", ha="center", va="center",
             fontsize=FS_SM-1, color=C_DIM, fontweight="bold", zorder=6)
     ax.text(FAN_B_YD - FAN_R2 - 180, FAN_B_H,
-            f"FAN B\nEXHAUST\n(HIGH H={FAN_B_H}mm)\nYd={FAN_B_YD}mm",
+            f"FAN B\nINTAKE\n(LOW H={FAN_B_H}mm)\nYd={FAN_B_YD}mm",
             ha="left", va="center", fontsize=FS_SM-1.5, color=C_DIM, zorder=6)
 
     # ── Dimensions ────────────────────────────────────────────────────────────

@@ -407,8 +407,8 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 
 For operations involving darkroom chemistry inside the container:
 
-- **Fan A (intake):** 6" vent penetration, low position on the far end wall (X=C_LEN). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
-- **Fan B (exhaust):** 6" fan mounted on the hinged panel (far corner zone, high position). Baffle duct protrudes from the panel exterior face — exhausts into the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
+- **Fan A (exhaust):** 6" vent penetration, high position on the far end wall (X=C_LEN), above the IBC stack top (2020mm) so the baffle duct clears the totes. Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
+- **Fan B (intake):** 6" fan mounted low on the hinged panel (far corner zone). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
 - During exposure: fans off
 - During processing/loading: fans on for ventilation
 

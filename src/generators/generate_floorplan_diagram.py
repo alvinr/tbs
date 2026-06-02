@@ -485,7 +485,7 @@ def floor_plan():
     # (X 150–4649, Yd 100–2262) are permanently removed.  Ghost them with the
     # same treatment as generate_walkway_diagram.py so both drawings agree.
     FM_YD_N = 100    # film-mechanism envelope near Yd boundary
-    FM_YD_F = FYO    # = 2262 (CARRIAGE_PARK_Y = FYO)
+    FM_YD_F = 2262   # film-mechanism envelope far Yd boundary (= FP_Y / CARRIAGE_PARK_Y)
 
     C_GHOST_WK   = "#CC4422"   # red-orange (matches walkway drawing)
     GHOST_WK_A   = 0.18        # ghost fill alpha
@@ -506,7 +506,7 @@ def floor_plan():
 
     # NEAR: inner strip Yd 100–300, full span X 470–4329
     _ghost_rect(ax, LXR, FM_YD_N, RX - LXR, NYI - FM_YD_N)
-    # FAR: inner strip Yd 1962–2262, full span X 470–4329
+    # FAR: inner strip Yd 2062–2262, full span X 470–4329
     _ghost_rect(ax, LXR, FY, RX - LXR, FM_YD_F - FY)
     # LEFT: inner Yd span 100–2262, full width X 170–470
     _ghost_rect(ax, LX, FM_YD_N, W, FM_YD_F - FM_YD_N)

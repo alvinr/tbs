@@ -48,16 +48,22 @@ from tbs_constants import (
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
+    PANEL_CENTER_T, PANEL_FLOOR_GAP,
+    PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
-C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate)
+C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets)
 C_FILM = "#2060A0"      # film plane / muslin screen
-C_PINHOLE = "#CC6600"   # pinhole aperture + optical axis
+C_PINHOLE = "#CC6600"   # pinhole aperture + optical axis + cone
+C_RAIL = "#606068"      # HGR20 linear rail
+C_CARR = "#C04010"      # HGH20CA carriage block
+C_ALUM = "#C8D8E8"      # aluminum (cargo door panel)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
-        "Pinhole", "Optical Axis", "Film Plane"]
+        "Pinhole", "Optical Axis", "Optical Cone", "Film Plane",
+        "Ceiling Rail"]
 
 
 def mm(val):
@@ -132,6 +138,36 @@ def component(defn_name, tag, body):
   inst.name = "{defn_name}"
   inst.layer = model.layers["{tag}"]
 '''
+
+
+def ruby_pyramid(name, apex, base, color, alpha):
+    """Generate Ruby for a translucent rectangular pyramid in `ents`.
+
+    apex: (x, y, z) point. base: 4 (x, y, z) corners in order. Front and back
+    materials are both set so the ghost reads from any viewing side.
+    """
+    a = f'[{mm(apex[0])},{mm(apex[1])},{mm(apex[2])}]'
+    b = [f'[{mm(p[0])},{mm(p[1])},{mm(p[2])}]' for p in base]
+    r, g, bl = hex_to_rgb(color)
+    return '\n'.join([
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  ge = grp.entities',
+        f'  apex = {a}',
+        f'  b0 = {b[0]}; b1 = {b[1]}; b2 = {b[2]}; b3 = {b[3]}',
+        f'  ge.add_face(b0, b1, b2, b3)',
+        f'  ge.add_face(apex, b0, b1)',
+        f'  ge.add_face(apex, b1, b2)',
+        f'  ge.add_face(apex, b2, b3)',
+        f'  ge.add_face(apex, b3, b0)',
+        f'  mat = model.materials["{name}"] || model.materials.add("{name}")',
+        f'  mat.color = Sketchup::Color.new({r}, {g}, {bl})',
+        f'  mat.alpha = {alpha}',
+        f'  ge.each {{ |f| next unless f.is_a?(Sketchup::Face); '
+        f'f.material = mat; f.back_material = mat }}',
+        '',
+    ])
 
 
 # ── Container shell ──────────────────────────────────────────────────────────
@@ -299,6 +335,59 @@ def optical_axis():
                     color=C_PINHOLE)
 
 
+# ── Optical cone ─────────────────────────────────────────────────────────────
+
+def optical_cone():
+    """Ghosted projection cone: pinhole apex → full film-plane rectangle.
+
+    The rectangular pyramid from the pinhole (Yd=0) expanding to the film plane
+    (Yd=FP_Y) shows the light cone filling the container interior.
+    """
+    apex = (PH_X, 0, PH_H)
+    base = [(FP_X_L, FP_Y, 0), (FP_X_R, FP_Y, 0),
+            (FP_X_R, FP_Y, FP_H), (FP_X_L, FP_Y, FP_H)]
+    return ruby_pyramid("Optical Cone", apex, base, C_PINHOLE, 0.12)
+
+
+# ── Ceiling rail (cargo-door panel suspension) ───────────────────────────────
+
+def ceiling_rail():
+    """HGR20 ceiling rails + HGH20CA carriages + brackets + suspended panel.
+
+    Two rails run in X near the cargo-door end (X=0) at the carriage depths
+    Yd=756/1606, carrying the movable end panel in its operational position.
+    """
+    parts = []
+    rail_x0, rail_len = -30, 510          # rail spans X=-30..480
+    rail_h, rail_w_yd = 30, 20
+    rail_z = C_HGT - rail_h               # 2358 — hung from ceiling
+    carr_w, carr_d, carr_h = 44, 44, 28
+    carr_x = PANEL_CENTER_T / 2 - carr_w / 2   # 38 — centered on panel
+    carr_z = rail_z - carr_h              # 2330
+    brk_w, brk_d, brk_h = 60, 40, 40
+    brk_x = PANEL_CENTER_T / 2 - brk_w / 2     # 30
+    brk_z = carr_z - brk_h                # 2290 — panel hangs from here
+
+    for yd, nm in [(PANEL_CORNER_YD_L, "L"), (PANEL_CORNER_YD_R, "R")]:
+        parts.append(ruby_box(f"HGR20 Rail {nm}",
+                              rail_x0, yd - rail_w_yd / 2, rail_z,
+                              rail_len, rail_w_yd, rail_h, color=C_RAIL))
+        parts.append(ruby_box(f"Carriage {nm} (HGH20CA)",
+                              carr_x, yd - carr_d / 2, carr_z,
+                              carr_w, carr_d, carr_h, color=C_CARR))
+        parts.append(ruby_box(f"Suspension Bracket {nm}",
+                              brk_x, yd - brk_d / 2, brk_z,
+                              brk_w, brk_d, brk_h, color=C_STEEL))
+
+    # Suspended cargo-door panel, operational position (X=0), floor gap 80mm.
+    parts.append(ruby_box("Cargo Door Panel",
+                          0, 0, PANEL_FLOOR_GAP,
+                          PANEL_CENTER_T, C_WID, brk_z - PANEL_FLOOR_GAP,
+                          color=C_ALUM, alpha=0.6))
+
+    return '\n'.join(parts)
+
+
 # ── Film plane mechanism ─────────────────────────────────────────────────────
 
 def film_plane_mechanism():
@@ -355,7 +444,9 @@ def generate_ruby():
         component("Processing Tray", "Processing Tray", processing_tray()),
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
         component("Optical Axis", "Optical Axis", optical_axis()),
+        component("Optical Cone", "Optical Cone", optical_cone()),
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),
+        component("Ceiling Rail", "Ceiling Rail", ceiling_rail()),
     ]
     body = '\n'.join(comps)
 
@@ -396,8 +487,8 @@ model.materials.purge_unused
 model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
-# Optical Core: hide circulation/processing, keep shell + optical train.
-["Walkways", "Processing Tray"].each {{ |n| model.layers[n].visible = false }}
+# Optical Core: hide circulation/processing/structure, keep the optical train.
+["Walkways", "Processing Tray", "Ceiling Rail"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 
@@ -423,7 +514,7 @@ if __name__ == "__main__":
     ruby = generate_ruby()
 
     if args.save:
-        out = os.path.join(os.path.dirname(__file__), "tbs_model.rb")
+        out = os.path.join(os.path.dirname(__file__), "overview.rb")
         with open(out, "w") as f:
             f.write(ruby)
         print(f"  {out} saved ({len(ruby)} bytes)")

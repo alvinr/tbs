@@ -25,7 +25,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Optical Axis") unless model.layers["Optical Axis"]
+  model.layers.add("Optical Cone") unless model.layers["Optical Cone"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
+  model.layers.add("Ceiling Rail") unless model.layers["Ceiling Rail"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Container Shell ═══
@@ -255,6 +257,29 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Optical Axis"
   inst.layer = model.layers["Optical Axis"]
 
+  # ═══ Optical Cone ═══
+  defn = model.definitions.add("Optical Cone")
+  ents = defn.entities
+  # Optical Cone
+  grp = ents.add_group
+  grp.name = "Optical Cone"
+  ge = grp.entities
+  apex = [2399.mm,0.mm,1194.mm]
+  b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2388.mm]; b3 = [150.mm,2262.mm,2388.mm]
+  ge.add_face(b0, b1, b2, b3)
+  ge.add_face(apex, b0, b1)
+  ge.add_face(apex, b1, b2)
+  ge.add_face(apex, b2, b3)
+  ge.add_face(apex, b3, b0)
+  mat = model.materials["Optical Cone"] || model.materials.add("Optical Cone")
+  mat.color = Sketchup::Color.new(204, 102, 0)
+  mat.alpha = 0.12
+  ge.each { |f| next unless f.is_a?(Sketchup::Face); f.material = mat; f.back_material = mat }
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Optical Cone"
+  inst.layer = model.layers["Optical Cone"]
+
   # ═══ Film Plane Mechanism ═══
   defn = model.definitions.add("Film Plane Mechanism")
   ents = defn.entities
@@ -353,6 +378,84 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Film Plane Mechanism"
   inst.layer = model.layers["Film Plane"]
 
+  # ═══ Ceiling Rail ═══
+  defn = model.definitions.add("Ceiling Rail")
+  ents = defn.entities
+  # HGR20 Rail L
+  grp = ents.add_group
+  grp.name = "HGR20 Rail L"
+  face = grp.entities.add_face([-30.mm,746.mm,2358.mm], [480.mm,746.mm,2358.mm], [480.mm,766.mm,2358.mm], [-30.mm,766.mm,2358.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["HGR20 Rail L"] || model.materials.add("HGR20 Rail L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  grp.material = mat
+
+  # Carriage L (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage L (HGH20CA)"
+  face = grp.entities.add_face([38.mm,734.mm,2330.mm], [82.mm,734.mm,2330.mm], [82.mm,778.mm,2330.mm], [38.mm,778.mm,2330.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Carriage L (HGH20CA)"] || model.materials.add("Carriage L (HGH20CA)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.material = mat
+
+  # Suspension Bracket L
+  grp = ents.add_group
+  grp.name = "Suspension Bracket L"
+  face = grp.entities.add_face([30.mm,736.mm,2290.mm], [90.mm,736.mm,2290.mm], [90.mm,776.mm,2290.mm], [30.mm,776.mm,2290.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Suspension Bracket L"] || model.materials.add("Suspension Bracket L")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # HGR20 Rail R
+  grp = ents.add_group
+  grp.name = "HGR20 Rail R"
+  face = grp.entities.add_face([-30.mm,1596.mm,2358.mm], [480.mm,1596.mm,2358.mm], [480.mm,1616.mm,2358.mm], [-30.mm,1616.mm,2358.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["HGR20 Rail R"] || model.materials.add("HGR20 Rail R")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  grp.material = mat
+
+  # Carriage R (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage R (HGH20CA)"
+  face = grp.entities.add_face([38.mm,1584.mm,2330.mm], [82.mm,1584.mm,2330.mm], [82.mm,1628.mm,2330.mm], [38.mm,1628.mm,2330.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Carriage R (HGH20CA)"] || model.materials.add("Carriage R (HGH20CA)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.material = mat
+
+  # Suspension Bracket R
+  grp = ents.add_group
+  grp.name = "Suspension Bracket R"
+  face = grp.entities.add_face([30.mm,1586.mm,2290.mm], [90.mm,1586.mm,2290.mm], [90.mm,1626.mm,2290.mm], [30.mm,1626.mm,2290.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Suspension Bracket R"] || model.materials.add("Suspension Bracket R")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Cargo Door Panel
+  grp = ents.add_group
+  grp.name = "Cargo Door Panel"
+  face = grp.entities.add_face([0.mm,0.mm,80.mm], [120.mm,0.mm,80.mm], [120.mm,2362.mm,80.mm], [0.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2210.mm)
+  mat = model.materials["Cargo Door Panel"] || model.materials.add("Cargo Door Panel")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.6
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Ceiling Rail"
+  inst.layer = model.layers["Ceiling Rail"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -361,8 +464,8 @@ model.materials.purge_unused
 model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
-# Optical Core: hide circulation/processing, keep shell + optical train.
-["Walkways", "Processing Tray"].each { |n| model.layers[n].visible = false }
+# Optical Core: hide circulation/processing/structure, keep the optical train.
+["Walkways", "Processing Tray", "Ceiling Rail"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

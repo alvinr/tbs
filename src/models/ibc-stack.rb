@@ -623,20 +623,20 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([4684.mm,0.mm,810.mm], [4834.mm,0.mm,810.mm], [4834.mm,6.mm,810.mm], [4684.mm,6.mm,810.mm])
+  face = grp.entities.add_face([4684.mm,0.mm,750.mm], [4834.mm,0.mm,750.mm], [4834.mm,8.mm,750.mm], [4684.mm,8.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([4734.mm,0.mm,952.mm], [4784.mm,0.mm,952.mm], [4784.mm,30.mm,952.mm], [4734.mm,30.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([4724.mm,0.mm,950.mm], [4794.mm,0.mm,950.mm], [4794.mm,110.mm,950.mm], [4724.mm,110.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -646,33 +646,82 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -30.mm, -956.mm)
-  circle = ge.add_circle([4759.mm,30.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([4755.mm,110.mm,950.mm], [4755.mm,0.mm,950.mm], [4755.mm,0.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4704.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4704.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([4684.mm,2356.mm,810.mm], [4834.mm,2356.mm,810.mm], [4834.mm,2362.mm,810.mm], [4684.mm,2362.mm,810.mm])
+  face = grp.entities.add_face([4684.mm,2354.mm,750.mm], [4834.mm,2354.mm,750.mm], [4834.mm,2362.mm,750.mm], [4684.mm,2362.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([4734.mm,2332.mm,952.mm], [4784.mm,2332.mm,952.mm], [4784.mm,2362.mm,952.mm], [4734.mm,2362.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([4724.mm,2252.mm,950.mm], [4794.mm,2252.mm,950.mm], [4794.mm,2362.mm,950.mm], [4724.mm,2362.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -682,33 +731,82 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 30.mm, -956.mm)
-  circle = ge.add_circle([4759.mm,2332.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([4755.mm,2252.mm,950.mm], [4755.mm,2362.mm,950.mm], [4755.mm,2362.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4704.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4704.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([4814.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([5208.5.mm,0.mm,810.mm], [5358.5.mm,0.mm,810.mm], [5358.5.mm,6.mm,810.mm], [5208.5.mm,6.mm,810.mm])
+  face = grp.entities.add_face([5208.5.mm,0.mm,750.mm], [5358.5.mm,0.mm,750.mm], [5358.5.mm,8.mm,750.mm], [5208.5.mm,8.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([5258.5.mm,0.mm,952.mm], [5308.5.mm,0.mm,952.mm], [5308.5.mm,30.mm,952.mm], [5258.5.mm,30.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([5248.5.mm,0.mm,950.mm], [5318.5.mm,0.mm,950.mm], [5318.5.mm,110.mm,950.mm], [5248.5.mm,110.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -718,33 +816,82 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -30.mm, -956.mm)
-  circle = ge.add_circle([5283.5.mm,30.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([5279.5.mm,110.mm,950.mm], [5279.5.mm,0.mm,950.mm], [5279.5.mm,0.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5228.5.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5228.5.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5338.5.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5338.5.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([5208.5.mm,2356.mm,810.mm], [5358.5.mm,2356.mm,810.mm], [5358.5.mm,2362.mm,810.mm], [5208.5.mm,2362.mm,810.mm])
+  face = grp.entities.add_face([5208.5.mm,2354.mm,750.mm], [5358.5.mm,2354.mm,750.mm], [5358.5.mm,2362.mm,750.mm], [5208.5.mm,2362.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([5258.5.mm,2332.mm,952.mm], [5308.5.mm,2332.mm,952.mm], [5308.5.mm,2362.mm,952.mm], [5258.5.mm,2362.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([5248.5.mm,2252.mm,950.mm], [5318.5.mm,2252.mm,950.mm], [5318.5.mm,2362.mm,950.mm], [5248.5.mm,2362.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -754,33 +901,82 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 30.mm, -956.mm)
-  circle = ge.add_circle([5283.5.mm,2332.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([5279.5.mm,2252.mm,950.mm], [5279.5.mm,2362.mm,950.mm], [5279.5.mm,2362.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5228.5.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5228.5.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5338.5.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5338.5.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([5733.mm,0.mm,810.mm], [5883.mm,0.mm,810.mm], [5883.mm,6.mm,810.mm], [5733.mm,6.mm,810.mm])
+  face = grp.entities.add_face([5733.mm,0.mm,750.mm], [5883.mm,0.mm,750.mm], [5883.mm,8.mm,750.mm], [5733.mm,8.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([5783.mm,0.mm,952.mm], [5833.mm,0.mm,952.mm], [5833.mm,30.mm,952.mm], [5783.mm,30.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([5773.mm,0.mm,950.mm], [5843.mm,0.mm,950.mm], [5843.mm,110.mm,950.mm], [5773.mm,110.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -790,33 +986,82 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -30.mm, -956.mm)
-  circle = ge.add_circle([5808.mm,30.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([5804.mm,110.mm,950.mm], [5804.mm,0.mm,950.mm], [5804.mm,0.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5753.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5753.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5863.mm,-10.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5863.mm,-10.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 
   # Wall Bracket Plate
   grp = ents.add_group
   grp.name = "Wall Bracket Plate"
-  face = grp.entities.add_face([5733.mm,2356.mm,810.mm], [5883.mm,2356.mm,810.mm], [5883.mm,2362.mm,810.mm], [5733.mm,2362.mm,810.mm])
+  face = grp.entities.add_face([5733.mm,2354.mm,750.mm], [5883.mm,2354.mm,750.mm], [5883.mm,2362.mm,750.mm], [5733.mm,2362.mm,750.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
+  face.pushpull(270.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wall Bracket Shelf
+  # Wall Bracket Seat
   grp = ents.add_group
-  grp.name = "Wall Bracket Shelf"
-  face = grp.entities.add_face([5783.mm,2332.mm,952.mm], [5833.mm,2332.mm,952.mm], [5833.mm,2362.mm,952.mm], [5783.mm,2362.mm,952.mm])
+  grp.name = "Wall Bracket Seat"
+  face = grp.entities.add_face([5773.mm,2252.mm,950.mm], [5843.mm,2252.mm,950.mm], [5843.mm,2362.mm,950.mm], [5773.mm,2362.mm,950.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(10.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -826,13 +1071,62 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wall Bracket Gusset"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 30.mm, -956.mm)
-  circle = ge.add_circle([5808.mm,2332.mm,956.mm], vec, 9.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
+  f = ge.add_face([5804.mm,2252.mm,950.mm], [5804.mm,2362.mm,950.mm], [5804.mm,2362.mm,750.mm])
+  f.pushpull(8.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5753.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5753.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5863.mm,2344.mm,790.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bracket Anchor Bolt M12
+  grp = ents.add_group
+  grp.name = "Bracket Anchor Bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([5863.mm,2344.mm,975.mm], [0,1,0], 7.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
   grp.material = mat
 

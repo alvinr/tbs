@@ -1298,16 +1298,21 @@ def water_plumbing():
           (5300, EQPANEL_YD_FAR, EXT_DRAIN_H), (5300, EQPANEL_YD_FAR, 300)],
          C_IBC_WASTE)
 
-    # IBC valves → pump (suction), each in its own corridor Y-lane.
-    pipe("Blue #1 suction",
-         [(nearX, EQPANEL_YD, upVZ), (nearX, 1160, upVZ), (pumpX, 1160, upVZ),
-          (pumpX, 1160, pumpZ)], C_BLUE)
+    # IBC valves → pump (suction). The two Blue totes are plumbed in PARALLEL
+    # into a common suction manifold header (an elbow at each tote valve, a tee
+    # at the centre) feeding P-01 — per equipment-panel-report. Brown (P-02) and
+    # Waste (P-03) are single-source suctions, each in its own corridor lane.
+    manX = 5100                            # manifold header X (corridor, off the panel face)
+    pipe("Blue Suction Manifold",
+         [(nearX, EQPANEL_YD, upVZ), (manX, EQPANEL_YD, upVZ),
+          (manX, EQPANEL_YD_FAR, upVZ), (nearX, EQPANEL_YD_FAR, upVZ)], C_BLUE)
+    parts.append(ruby_tee("Blue Manifold Tee", (manX, cc, upVZ),
+                          (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
+    pipe("Manifold → P-01",
+         [(manX, cc, upVZ), (pumpX, cc, upVZ), (pumpX, cc, pumpZ)], C_BLUE)
     pipe("Brown suction",
          [(nearX, EQPANEL_YD, loVZ), (nearX, 1120, loVZ), (pumpX, 1120, loVZ),
           (pumpX, 1120, pumpZ)], C_IBC_BROWN)
-    pipe("Blue #2 suction",
-         [(nearX, EQPANEL_YD_FAR, upVZ), (nearX, 1200, upVZ), (pumpX, 1200, upVZ),
-          (pumpX, 1200, pumpZ)], C_BLUE)
     pipe("Waste suction",
          [(nearX, EQPANEL_YD_FAR, loVZ), (nearX, 1240, loVZ), (pumpX, 1240, loVZ),
           (pumpX, 1240, pumpZ)], C_IBC_WASTE)

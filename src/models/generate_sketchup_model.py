@@ -48,6 +48,8 @@ from tbs_constants import (
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
+    BRACE_RHS, BRACE_Z_BOT, BRACE_Z_TOP,
+    BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1,
     PANEL_CENTER_T, PANEL_FLOOR_GAP,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_Z_BOT,
@@ -71,6 +73,8 @@ C_PLY = "#9C7B4D"       # marine ply (equipment panel)
 C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
+C_DEMOUNT = "#E0902A"   # demountable left-rail segment (swings clear for drum)
+C_DROPPED = "#CC4422"   # walkway dropped for film-mechanism clearance (ghosted)
 C_PALLET = "#3A3A3A"    # IBC pallet base
 C_IBC_BLUE = "#2E6DB4"  # Blue circuit IBC contents
 C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
@@ -288,10 +292,18 @@ def processing_tray():
 # ── Walkways ─────────────────────────────────────────────────────────────────
 
 def walkways():
-    """Four perimeter walkway sections as flat plates at deck height."""
+    """Perimeter walkway sections — DROPPED in the film-mechanism zone.
+
+    The film mechanism's footprint (X 150–4649, Yd 100–2262) covers nearly the
+    whole interior, so the perimeter walkways conflict with the cage and its
+    travel. Per the demountable-frame design they are dropped; here they are
+    rendered ghosted ("dropped") so the overview documents the removal and the
+    cleared floor band. Access is reconfigured from the container ends.
+    """
     grate_z = WALKWAY_H - WALKWAY_GRATE_T
     t = WALKWAY_GRATE_T
-    color = "#808080"
+    color = C_DROPPED
+    a = 0.3            # ghosted — marks the dropped footprint
 
     near_x_l = WALKWAY_LEFT_X + WALKWAY_W
     near_x_r = WALKWAY_RIGHT_X
@@ -299,46 +311,34 @@ def walkways():
 
     parts = []
 
-    # Near walkway — standard width section (left of widened)
     if WALKWAY_NEAR_WIDE_X_L > near_x_l:
         seg_len = WALKWAY_NEAR_WIDE_X_L - near_x_l
-        parts.append(ruby_box("Walkway Near (left section)",
+        parts.append(ruby_box("Walkway Near left (DROPPED)",
                               near_x_l, 0, grate_z,
-                              seg_len, WALKWAY_W, t,
-                              color=color))
+                              seg_len, WALKWAY_W, t, color=color, alpha=a))
 
-    # Near walkway — widened section
     wide_len = WALKWAY_NEAR_WIDE_X_R - WALKWAY_NEAR_WIDE_X_L
-    parts.append(ruby_box("Walkway Near (widened)",
+    parts.append(ruby_box("Walkway Near widened (DROPPED)",
                           WALKWAY_NEAR_WIDE_X_L, 0, grate_z,
-                          wide_len, WALKWAY_NEAR_WIDE_W, t,
-                          color=color))
+                          wide_len, WALKWAY_NEAR_WIDE_W, t, color=color, alpha=a))
 
-    # Near walkway — standard width section (right of widened)
     if WALKWAY_NEAR_WIDE_X_R < near_x_r:
         seg_len = near_x_r - WALKWAY_NEAR_WIDE_X_R
-        parts.append(ruby_box("Walkway Near (right section)",
+        parts.append(ruby_box("Walkway Near right (DROPPED)",
                               WALKWAY_NEAR_WIDE_X_R, 0, grate_z,
-                              seg_len, WALKWAY_W, t,
-                              color=color))
+                              seg_len, WALKWAY_W, t, color=color, alpha=a))
 
-    # Far walkway
-    parts.append(ruby_box("Walkway Far",
+    parts.append(ruby_box("Walkway Far (DROPPED)",
                           near_x_l, WALKWAY_FAR_YD, grate_z,
-                          near_len, WALKWAY_W, t,
-                          color=color))
+                          near_len, WALKWAY_W, t, color=color, alpha=a))
 
-    # Right walkway (IBC end)
-    parts.append(ruby_box("Walkway Right (IBC end)",
+    parts.append(ruby_box("Walkway Right IBC end (DROPPED)",
                           WALKWAY_RIGHT_X, 0, grate_z,
-                          WALKWAY_RIGHT_W, C_WID, t,
-                          color=color))
+                          WALKWAY_RIGHT_W, C_WID, t, color=color, alpha=a))
 
-    # Left walkway (cargo door end)
-    parts.append(ruby_box("Walkway Left (cargo door)",
+    parts.append(ruby_box("Walkway Left cargo door (DROPPED)",
                           WALKWAY_LEFT_X, 0, grate_z,
-                          WALKWAY_W, C_WID, t,
-                          color=color))
+                          WALKWAY_W, C_WID, t, color=color, alpha=a))
 
     return '\n'.join(parts)
 
@@ -575,11 +575,13 @@ def ibc_rack():
 # ── Film plane mechanism ─────────────────────────────────────────────────────
 
 def film_plane_mechanism():
-    """Four corner rails (Y travel) + a framed translucent muslin screen.
+    """Four corner rails + demountable brace cage + framed muslin screen.
 
     Rails run in +Y (depth) from the minimum carriage depth, at the four
-    corners (left/right rail X, floor/ceiling offset RAIL_OFF). The muslin
-    screen sits at the nominal depth FP_Y with a 2" steel angle frame.
+    corners. A rigid rectangular brace cage (saddle/thumbscrew portals at each
+    end) ties the rails into a knock-down box. The left rail's drum-zone
+    segment (Yd 806–1556) is demountable so the light-trap drum can rotate.
+    The muslin screen sits at the nominal depth FP_Y with a 2" angle frame.
     """
     parts = []
     rail = 40                       # 40×40mm rail tube
@@ -588,13 +590,39 @@ def film_plane_mechanism():
     x_left = RAIL_X_L               # 150
     x_right = RAIL_X_R - rail       # 4609
     y0 = FP_Y_MIN                   # rails start at min carriage depth
+    y_end = y0 + RAIL_LEN           # 2300
+    d0, d1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 806, 1556
 
-    for rx, rz, nm in [(x_left, z_bot, "BL"), (x_right, z_bot, "BR"),
-                       (x_left, z_top, "TL"), (x_right, z_top, "TR")]:
+    # Right rails — full length, fixed.
+    for rz, nm in [(z_bot, "BR"), (z_top, "TR")]:
         parts.append(ruby_box(f"FP Rail {nm}",
-                              rx, y0, rz,
-                              rail, RAIL_LEN, rail,
+                              x_right, y0, rz, rail, RAIL_LEN, rail,
                               color=C_STEEL))
+
+    # Left rails — fixed / DEMOUNTABLE (drum zone) / fixed.
+    for rz, nm in [(z_bot, "BL"), (z_top, "TL")]:
+        parts.append(ruby_box(f"FP Rail {nm} (fixed near)",
+                              x_left, y0, rz, rail, d0 - y0, rail, color=C_STEEL))
+        parts.append(ruby_box(f"FP Rail {nm} (DEMOUNTABLE — drum mode)",
+                              x_left, d0, rz, rail, d1 - d0, rail, color=C_DEMOUNT))
+        parts.append(ruby_box(f"FP Rail {nm} (fixed far)",
+                              x_left, d1, rz, rail, y_end - d1, rail, color=C_STEEL))
+
+    # Demountable brace cage — rectangular portal at each end (50×50 RHS).
+    s = BRACE_RHS
+    for py, pn in [(FP_Y_MIN, "pinhole"), (FP_Y, "film")]:
+        parts.append(ruby_box(f"FP Brace Vert L ({pn})",
+                              RAIL_X_L, py, BRACE_Z_BOT,
+                              s, s, BRACE_Z_TOP - BRACE_Z_BOT, color=C_STEEL))
+        parts.append(ruby_box(f"FP Brace Vert R ({pn})",
+                              RAIL_X_R - s, py, BRACE_Z_BOT,
+                              s, s, BRACE_Z_TOP - BRACE_Z_BOT, color=C_STEEL))
+        parts.append(ruby_box(f"FP Brace Beam Bottom ({pn})",
+                              RAIL_X_L, py, BRACE_Z_BOT,
+                              RAIL_X_R - RAIL_X_L, s, s, color=C_STEEL))
+        parts.append(ruby_box(f"FP Brace Beam Top ({pn})",
+                              RAIL_X_L, py, BRACE_Z_TOP - s,
+                              RAIL_X_R - RAIL_X_L, s, s, color=C_STEEL))
 
     # Muslin screen — translucent panel at the nominal film-plane depth.
     board_t = 20

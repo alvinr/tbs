@@ -45,7 +45,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(822.mm)
   mat = model.materials["IBC Brown (developer) bottle"] || model.materials.add("IBC Brown (developer) bottle")
   mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 0.55
+  mat.alpha = 0.4
   grp.material = mat
 
   # IBC Blue #1 pallet
@@ -67,7 +67,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(822.mm)
   mat = model.materials["IBC Blue #1 bottle"] || model.materials.add("IBC Blue #1 bottle")
   mat.color = Sketchup::Color.new(46, 109, 180)
-  mat.alpha = 0.55
+  mat.alpha = 0.4
   grp.material = mat
 
   # IBC Waste pallet
@@ -89,7 +89,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(822.mm)
   mat = model.materials["IBC Waste bottle"] || model.materials.add("IBC Waste bottle")
   mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 0.55
+  mat.alpha = 0.4
   grp.material = mat
 
   # IBC Blue #2 pallet
@@ -111,7 +111,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(822.mm)
   mat = model.materials["IBC Blue #1 bottle"] || model.materials.add("IBC Blue #1 bottle")
   mat.color = Sketchup::Color.new(46, 109, 180)
-  mat.alpha = 0.55
+  mat.alpha = 0.4
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)

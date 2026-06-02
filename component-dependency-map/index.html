@@ -1616,6 +1616,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#31-sketchup-3d-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 SketchUp 3D models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-change-propagation-guide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2697,6 +2708,17 @@
     <span class="md-ellipsis">
       
         3. Dependency Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-sketchup-3d-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 SketchUp 3D models
       
     </span>
   </a>
@@ -4039,9 +4061,35 @@ floor gap to clear processing tray rim (50mm) during transport slide.</em></p>
 </tbody>
 </table>
 <hr />
+<h2 id="31-sketchup-3d-models">3.1 SketchUp 3D models<a class="headerlink" href="#31-sketchup-3d-models" title="Permanent link">&para;</a></h2>
+<p>Each subsystem is also built in the SketchUp 3D model(s). When a subsystem's
+constants change, <strong>re-run the model(s) that contain it</strong> (in addition to the 2D
+scripts) so the 3D models stay in sync with the drawings — see the Workflow below.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Script</th>
+<th>Output</th>
+<th>Subsystems contained</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>overview</strong></td>
+<td><code>src/models/generate_sketchup_model.py</code></td>
+<td><code>models/overview.skp</code> + <code>src/models/overview.rb</code></td>
+<td><strong>1–18 (all)</strong> — built as 20 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups)</td>
+</tr>
+</tbody>
+</table>
+<p><em>As more models are added, list them here with the subsystems each contains, so a
+constants change re-runs only the affected models.</em></p>
+<hr />
 <h2 id="4-change-propagation-guide">4. Change Propagation Guide<a class="headerlink" href="#4-change-propagation-guide" title="Permanent link">&para;</a></h2>
-<p>When a constant in <code>tbs_constants.py</code> changes, re-run all scripts listed. Then commit the updated
-PNGs alongside the constant change.</p>
+<p>When a constant in <code>tbs_constants.py</code> changes, re-run all 2D scripts listed below
+<strong>and re-run any SketchUp model (§3.1) that contains the affected subsystem.</strong>
+Then commit the updated PNGs and <code>*.skp</code>/<code>*.rb</code> alongside the constant change.</p>
 <table>
 <thead>
 <tr>
@@ -4176,11 +4224,14 @@ PNGs alongside the constant change.</p>
 <h3 id="workflow">Workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>1. Edit tbs_constants.py
 2. python3 tbs_constants.py          # verify no errors, check derived values in summary
-3. python3 generate_&lt;affected&gt;.py    # for each affected script (see table above)
-4. Visually inspect updated PNGs in diagrams/
-5. bash publish.sh --build           # verify zero MkDocs warnings
-6. git add tbs_constants.py diagrams/*.png &amp;&amp; git commit -m &quot;...&quot;
-7. bash publish.sh                   # deploy
+3. python3 generate_&lt;affected&gt;.py    # for each affected 2D script (see table above)
+4. Re-run affected SketchUp model(s) (§3.1):
+     python3 src/models/generate_sketchup_model.py --save --send
+   # regenerates overview.rb + re-sends to SketchUp; save the .skp
+5. Visually inspect updated PNGs in diagrams/ AND the SketchUp model
+6. bash publish.sh --build           # verify zero MkDocs warnings
+7. git add tbs_constants.py diagrams/*.png models/*.skp src/models/overview.rb &amp;&amp; git commit -m &quot;...&quot;
+8. bash publish.sh                   # deploy
 </code></pre></div>
 <p><em>© 2026 Alvin Richards — Released under <a href="../licensing/">GNU AGPLv3</a></em></p>
 

@@ -1013,11 +1013,14 @@ def water_hookups():
 # ── Ventilation fans (cargo-door end wall) ───────────────────────────────────
 
 def fans():
-    """Intake fan A (low) + exhaust fan B (high) on the cargo-door end (X=0)."""
+    """Cross-ventilation fans on OPPOSITE end walls:
+      Fan A (intake) — far/IBC end wall (X=C_LEN, right), low (Z=600).
+      Fan B (exhaust) — cargo-door end wall (X=0, left), high (Z=1800).
+    """
     parts = []
     r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm body
     parts.append(ruby_cylinder("Fan A (intake)",
-                               -bd / 2, FAN_A_YD, FAN_A_H, r, bd,
+                               C_LEN - bd / 2, FAN_A_YD, FAN_A_H, r, bd,
                                color=C_FAN, axis="x"))
     parts.append(ruby_cylinder("Fan B (exhaust)",
                                -bd / 2, FAN_B_YD, FAN_B_H, r, bd,

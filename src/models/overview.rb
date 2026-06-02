@@ -60,6 +60,7 @@ end
   mat = model.materials["Container Floor"] || model.materials.add("Container Floor")
   mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
   # Container Ceiling
   grp = ents.add_group
@@ -71,6 +72,7 @@ end
   mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.2
   grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
   # Pinhole Wall (Yd=0)
   grp = ents.add_group
@@ -81,6 +83,7 @@ end
   mat = model.materials["Pinhole Wall (Yd=0)"] || model.materials.add("Pinhole Wall (Yd=0)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
   # Film Plane Wall (Yd=max)
   grp = ents.add_group
@@ -91,6 +94,7 @@ end
   mat = model.materials["Film Plane Wall (Yd=max)"] || model.materials.add("Film Plane Wall (Yd=max)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
   # Far End Wall (IBC end)
   grp = ents.add_group
@@ -101,6 +105,7 @@ end
   mat = model.materials["Far End Wall (IBC end)"] || model.materials.add("Far End Wall (IBC end)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Container Shell"

@@ -138,12 +138,14 @@ def hex_to_rgb(h):
     return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
 
 
-def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None):
+def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False):
     """Generate Ruby to create a named box group inside the `ents` context.
 
     Parameters are in mm. x, y, z: origin corner (min X, min Yd, min Z).
     w, d, h: width (X), depth (Yd), height (Z). Boxes are added to `ents`,
     the entities collection of the enclosing component definition.
+    `both_sides` paints the back faces too (so interior + exterior read the
+    same — used for the container shell).
     """
     # Sum in millimeters first, then render each corner with the `.mm` suffix.
     x0, y0, z0 = mm(x), mm(y), mm(z)
@@ -171,6 +173,9 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None):
         if alpha is not None:
             lines.append(f'  mat.alpha = {alpha}')
         lines.append(f'  grp.material = mat')
+        if both_sides:
+            lines.append(f'  grp.entities.grep(Sketchup::Face).each '
+                         f'{{ |f| f.material = mat; f.back_material = mat }}')
 
     lines.append('')
     return '\n'.join(lines)
@@ -264,28 +269,28 @@ def container_shell():
     parts.append(ruby_box("Container Floor",
                           0, 0, -WALL_T,
                           C_LEN, C_WID, WALL_T,
-                          color=w))
+                          color=w, both_sides=True))
 
     # Ghosted ceiling — low alpha so the interior is visible from above.
     parts.append(ruby_box("Container Ceiling",
                           0, 0, C_HGT,
                           C_LEN, C_WID, WALL_T,
-                          color=w, alpha=0.2))
+                          color=w, alpha=0.2, both_sides=True))
 
     parts.append(ruby_box("Pinhole Wall (Yd=0)",
                           0, -WALL_T, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=w))
+                          color=w, both_sides=True))
 
     parts.append(ruby_box("Film Plane Wall (Yd=max)",
                           0, C_WID, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=w))
+                          color=w, both_sides=True))
 
     parts.append(ruby_box("Far End Wall (IBC end)",
                           C_LEN, 0, 0,
                           WALL_T, C_WID, C_HGT,
-                          color=w))
+                          color=w, both_sides=True))
 
     return '\n'.join(parts)
 

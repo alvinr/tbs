@@ -25,7 +25,6 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
 
 from tbs_constants import (
-    svg_path,
     C_OUT, C_CL, C_DIM, C_ALUM,
     C_LEN, C_WID,
     PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W,
@@ -2017,7 +2016,6 @@ def _save(fig, stem):
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     png = os.path.join(DIAGRAMS_DIR, f"{stem}.png")
     fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=C_BG)
-    fig.savefig(svg_path(png), bbox_inches="tight", facecolor=C_BG)
     plt.close(fig)
     print(f"  {png} saved")
 

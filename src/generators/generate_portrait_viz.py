@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import svg_path, SVG_DIR
 
 # ─────────────────────────────────────────
 # Camera constants
@@ -244,9 +243,7 @@ ax.axis('off')
 plt.tight_layout(pad=0.3)
 
 out1 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-scale-comparison.png'
-os.makedirs(SVG_DIR, exist_ok=True)
 plt.savefig(out1, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(svg_path(out1), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out1}')
 
@@ -361,7 +358,6 @@ plt.tight_layout(pad=0.3)
 
 out2 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-camera-schematic.png'
 plt.savefig(out2, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(svg_path(out2), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out2}')
 
@@ -476,7 +472,6 @@ plt.tight_layout(pad=0.3)
 
 out3 = '/Users/alvinrichards/dev/tbs/diagrams/portrait-optimal-3m.png'
 plt.savefig(out3, dpi=150, bbox_inches='tight', facecolor='#101010')
-plt.savefig(svg_path(out3), bbox_inches="tight", facecolor='#101010')
 plt.close()
 print(f'Saved: {out3}')
 

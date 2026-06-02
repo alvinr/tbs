@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import svg_path, SVG_DIR, DIAGRAMS_DIR
+from tbs_constants import DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes)
@@ -518,9 +518,7 @@ ax1.text(cx_d, frame_y_top + 200, 'SECTION A-A  (AXES IN mm)',
          ha='center', fontsize=5, color='#333333', style='italic')
 
 out1 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet1.png')
-os.makedirs(SVG_DIR, exist_ok=True)
 fig1.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
-fig1.savefig(svg_path(out1), bbox_inches="tight", facecolor='white')
 plt.close(fig1)
 print(f'  → {out1}  Done.')
 
@@ -881,7 +879,6 @@ for i, (k, v) in enumerate(rows):
 
 out2 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet2.png')
 fig2.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
-fig2.savefig(svg_path(out2), bbox_inches="tight", facecolor='white')
 plt.close(fig2)
 print(f'  → {out2}  Done.')
 
@@ -1168,6 +1165,5 @@ ax3.text(1390/2, 90 + S3_UP - S3_E_DN, 'No special tooling required beyond M12 s
 
 out3 = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-sheet3.png')
 fig3.savefig(out3, dpi=150, bbox_inches='tight', facecolor='white')
-fig3.savefig(svg_path(out3), bbox_inches="tight", facecolor='white')
 plt.close(fig3)
 print(f'  → {out3}  Done.')

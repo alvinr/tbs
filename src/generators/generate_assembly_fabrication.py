@@ -46,14 +46,13 @@ from tbs_constants import (
     PANEL_CORNER_T, PANEL_CENTER_T,
     RAIL_X_L, RAIL_X_R,
     FAN_A_H, FAN_B_H, FAN_A_YD, FAN_B_YD, FAN_DIAM, DUCT_HEIGHT,
-    DIAGRAMS_DIR, SVG_DIR, svg_path,
+    DIAGRAMS_DIR, 
     C_OUT, C_CL, C_DIM,
     C_WASTE_IBC, C_LT_DRUM, C_BLUE_IBC, C_BROWN_IBC,
     C_ELEC, C_BATT, C_PUMP,
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-os.makedirs(SVG_DIR, exist_ok=True)
 
 RAIL_OFF   = 100       # floor/ceiling offset for all equipment (mm)
 DRUM_H_ELV = DRUM_H_LT  # 2000mm — drum height in elevation view
@@ -364,7 +363,6 @@ def sheet1():
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet1.png"
     fig.tight_layout(pad=0)
     plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-    plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"Saved: {out}")
 
@@ -531,7 +529,6 @@ def sheet2():
     out = f"{DIAGRAMS_DIR}/assembly-fab-sheet2.png"
     fig.tight_layout(pad=0)
     plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-    plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"Saved: {out}")
 

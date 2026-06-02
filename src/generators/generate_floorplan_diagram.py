@@ -538,10 +538,8 @@ def floor_plan():
                 scale_note="1:75 (approx)",
                 doc_id="TBS-001 · Floor Plan")
 
-    import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)
     out = f"{DIAGRAMS_DIR}/container-floorplan.png"
     fig.savefig(out, dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  {out} saved")
 
@@ -804,10 +802,8 @@ def egress_detail():
                 scale_note="SCALE ~1:25  ·  ALL DIMS IN mm",
                 doc_id="TBS-001 · Floor Plan")
 
-    import os; os.makedirs(DIAGRAMS_DIR, exist_ok=True); os.makedirs(SVG_DIR, exist_ok=True)
     out = f"{DIAGRAMS_DIR}/container-floorplan-sheet2.png"
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  {out} saved")
 

@@ -976,6 +976,18 @@ def lighting_wiring():
                                    sx + 20, 40, czc, cr, 60,
                                    color=C_TRUNK, axis="y"))
 
+    # Circuit C — feed to the pump/filter equipment panel (IBC corridor).
+    # Branch off the ceiling trunking (Yd≈0) across to the panel center
+    # (Yd≈1181), then drop to the top of the pump zone (Z=PUMP_H_HI) at the
+    # panel face (X=EQPANEL_X). Runs above the IBC stack (top Z=2020).
+    pc_yd = EQPANEL_YD + EQPANEL_YD_SPAN / 2
+    parts.append(ruby_cylinder("Conduit to Equipment Panel (Cct C)",
+                               EQPANEL_X, 40, czc, cr, pc_yd - 40,
+                               color=C_TRUNK, axis="y"))
+    parts.append(ruby_box("Conduit Drop to Pumps (Cct C)",
+                          EQPANEL_X - 5, pc_yd - 5, PUMP_H_HI, 10, 10,
+                          (cz - 25) - PUMP_H_HI, color=C_TRUNK))
+
     return '\n'.join(parts)
 
 

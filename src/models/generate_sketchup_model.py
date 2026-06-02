@@ -1274,6 +1274,13 @@ def water_plumbing():
     floor = 60                             # floor-run height
     upVZ = IBC_H_600 + IBC_VALVE_Z         # 1195 — upper-tier valve Z
     loVZ = IBC_VALVE_Z                     # 185  — lower-tier valve Z
+    # Pump inlets (per equipment_panel): left col Y=1109 → P-01/P-04, right col
+    # Y=1253 → P-02/P-03; rows Z=1320 (bottom) / 1578 (upper). Two riser X-lanes
+    # per column (rxA/rxB) so the four suction risers never overlap.
+    manX = 5100                            # Blue manifold header X (corridor)
+    pyL, pyR = 1109, 1253                  # left / right pump-column Y
+    pZ1, pZ2 = PUMP_H_LO, PUMP_H_LO + 258  # bottom / upper pump-row Z
+    rxA, rxB = 4940, 4980                  # two riser X-lanes per column
     parts = []
     def pipe(nm, wp, col):
         parts.append(ruby_pipe_run(nm, wp, pr, color=col))
@@ -1298,24 +1305,24 @@ def water_plumbing():
           (5300, EQPANEL_YD_FAR, EXT_DRAIN_H), (5300, EQPANEL_YD_FAR, 300)],
          C_IBC_WASTE)
 
-    # IBC valves → pump (suction). The two Blue totes are plumbed in PARALLEL
-    # into a common suction manifold header (an elbow at each tote valve, a tee
-    # at the centre) feeding P-01 — per equipment-panel-report. Brown (P-02) and
-    # Waste (P-03) are single-source suctions, each in its own corridor lane.
-    manX = 5100                            # manifold header X (corridor, off the panel face)
+    # IBC valves → their own pumps, so circuits never share a crossing path.
+    # The two Blue totes feed a PARALLEL suction manifold header (Z=upVZ) joined
+    # by a tee → P-01 (left col). Brown (P-02) and Waste (P-03) run low (Z=loVZ)
+    # and cross cleanly UNDER the Blue header before rising to the right column.
     pipe("Blue Suction Manifold",
          [(nearX, EQPANEL_YD, upVZ), (manX, EQPANEL_YD, upVZ),
           (manX, EQPANEL_YD_FAR, upVZ), (nearX, EQPANEL_YD_FAR, upVZ)], C_BLUE)
     parts.append(ruby_tee("Blue Manifold Tee", (manX, cc, upVZ),
                           (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
     pipe("Manifold → P-01",
-         [(manX, cc, upVZ), (pumpX, cc, upVZ), (pumpX, cc, pumpZ)], C_BLUE)
-    pipe("Brown suction",
-         [(nearX, EQPANEL_YD, loVZ), (nearX, 1120, loVZ), (pumpX, 1120, loVZ),
-          (pumpX, 1120, pumpZ)], C_IBC_BROWN)
-    pipe("Waste suction",
-         [(nearX, EQPANEL_YD_FAR, loVZ), (nearX, 1240, loVZ), (pumpX, 1240, loVZ),
-          (pumpX, 1240, pumpZ)], C_IBC_WASTE)
+         [(manX, cc, upVZ), (rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)],
+         C_BLUE)
+    pipe("Brown → P-02",
+         [(nearX, EQPANEL_YD, loVZ), (rxA, EQPANEL_YD, loVZ),
+          (rxA, pyR, loVZ), (rxA, pyR, pZ1)], C_IBC_BROWN)
+    pipe("Waste → P-03",
+         [(nearX, EQPANEL_YD_FAR, loVZ), (rxB, EQPANEL_YD_FAR, loVZ),
+          (rxB, pyR, loVZ), (rxB, pyR, pZ2)], C_IBC_WASTE)
 
     # Processing-tray sump (per water-system Detail A): pickup riser UP through
     # the cantilevered near-walkway grate to the valve above deck, back DOWN
@@ -1324,13 +1331,13 @@ def water_plumbing():
     # the corridor and up to the pump. Keeps the film-plane structure clear.
     gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
     valveZ = WALKWAY_H + 65                     # 130 — valve body above the deck
-    pipe("Tray Sump → Pump",
+    pipe("Tray Sump → P-04",
          [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
           (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),
           (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, valveZ),
           (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, 30),
           (gapX, PROC_TRAY_DRAIN_YD, 30),
-          (gapX, cc, 30), (4900, cc, 30), (4900, cc, pumpZ)],
+          (gapX, cc, 30), (rxB, cc, 30), (rxB, pyL, 30), (rxB, pyL, pZ2)],
          C_IBC_WASTE)
 
     # Pump → filters → spray-bar Blue trunk.

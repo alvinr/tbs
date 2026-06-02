@@ -93,13 +93,18 @@ C_ELEC = "#F5C518"      # electrical panel (EP)
 C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
 C_SHELF = "#C8B06A"     # chemistry prep shelf (warm gold)
 C_GASKT = "#5A3020"     # EPDM perimeter light seal
+C_TRUNK = "#9AA0A0"     # PVC cable trunking + conduit
+C_LED_W = "#FFFFE0"     # white LED panel (Cct G)
+C_SAFE = "#CC2222"      # red safelight strip (Cct D)
+C_SWITCH = "#D8D8F0"    # pull-cord switch
+C_CORD = "#3A3A3A"      # pull cord
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
-        "Light Seal"]
+        "Light Seal", "Lighting"]
 
 
 def mm(val):
@@ -861,6 +866,50 @@ def light_seal():
     return '\n'.join(parts)
 
 
+# ── Lighting & wiring (trunking, LEDs, safelights, switches, conduit) ─────────
+
+def lighting_wiring():
+    """Ceiling cable trunking + white LED panels (Cct G) + red safelight strips
+    (Cct D) + pull-cord switches + conduit drops.
+
+    Trunking runs the pinhole-wall ceiling line (Yd≈0, outside the optical
+    cone); LED panels are centered across the width; safelights span the width
+    in the gaps; pull switches hang from the pinhole wall near the EP.
+    """
+    parts = []
+    cz = C_HGT                                 # ceiling
+
+    # Cable trunking — 40×25 PVC along the pinhole wall ceiling, full length.
+    parts.append(ruby_box("Cable Trunking (40x25 PVC)",
+                          0, 0, cz - 25, C_LEN, 40, 25, color=C_TRUNK))
+
+    # White LED panels (Cct G) — 3× 600×300, ceiling-surface, centered in Yd.
+    led_w, led_d = 600, 300
+    led_yd = C_WID / 2 - led_d / 2
+    for lx in (1000, 2900, 4800):
+        parts.append(ruby_box("White LED Panel (Cct G)",
+                              lx, led_yd, cz - 40, led_w, led_d, 40, color=C_LED_W))
+
+    # Red safelight strips (Cct D) — 3× N–S across the width, in the panel gaps.
+    for sx in (500, 2250, 4150):
+        parts.append(ruby_box("Safelight Strip (Cct D)",
+                              sx, 100, cz - 25, 40, C_WID - 200, 18, color=C_SAFE))
+
+    # Pull-cord switches (D, G) on the pinhole wall near EP + hanging cords.
+    for swx in (1540, 1660):
+        parts.append(ruby_box("Pull Switch",
+                              swx, 0, 2300, 40, 30, 40, color=C_SWITCH))
+        parts.append(ruby_box("Pull Cord",
+                              swx + 17, 0, 900, 6, 6, 1400, color=C_CORD))
+
+    # Conduit drops (10mm) from trunking down to EP and the battery bank.
+    for cxc, zbot in ((1750, 2200), (2060, 600)):
+        parts.append(ruby_box("Conduit Drop (10mm)",
+                              cxc, 8, zbot, 10, 10, (cz - 25) - zbot, color=C_TRUNK))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -881,6 +930,7 @@ def generate_ruby():
         component("Electrical", "Electrical", electrical()),
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
+        component("Lighting & Wiring", "Lighting", lighting_wiring()),
     ]
     body = '\n'.join(comps)
 
@@ -939,7 +989,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

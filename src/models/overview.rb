@@ -35,6 +35,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Electrical") unless model.layers["Electrical"]
   model.layers.add("Shelf") unless model.layers["Shelf"]
   model.layers.add("Light Seal") unless model.layers["Light Seal"]
+  model.layers.add("Lighting") unless model.layers["Lighting"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -1163,12 +1164,149 @@ end
   inst.name = "Light Seal & Hinges"
   inst.layer = model.layers["Light Seal"]
 
+  # ═══ Lighting & Wiring ═══
+  defn = model.definitions.add("Lighting & Wiring")
+  ents = defn.entities
+  # Cable Trunking (40x25 PVC)
+  grp = ents.add_group
+  grp.name = "Cable Trunking (40x25 PVC)"
+  face = grp.entities.add_face([0.mm,0.mm,2363.mm], [5893.mm,0.mm,2363.mm], [5893.mm,40.mm,2363.mm], [0.mm,40.mm,2363.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # White LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "White LED Panel (Cct G)"
+  face = grp.entities.add_face([1000.mm,1031.mm,2348.mm], [1600.mm,1031.mm,2348.mm], [1600.mm,1331.mm,2348.mm], [1000.mm,1331.mm,2348.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(255, 255, 224)
+  grp.material = mat
+
+  # White LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "White LED Panel (Cct G)"
+  face = grp.entities.add_face([2900.mm,1031.mm,2348.mm], [3500.mm,1031.mm,2348.mm], [3500.mm,1331.mm,2348.mm], [2900.mm,1331.mm,2348.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(255, 255, 224)
+  grp.material = mat
+
+  # White LED Panel (Cct G)
+  grp = ents.add_group
+  grp.name = "White LED Panel (Cct G)"
+  face = grp.entities.add_face([4800.mm,1031.mm,2348.mm], [5400.mm,1031.mm,2348.mm], [5400.mm,1331.mm,2348.mm], [4800.mm,1331.mm,2348.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  mat.color = Sketchup::Color.new(255, 255, 224)
+  grp.material = mat
+
+  # Safelight Strip (Cct D)
+  grp = ents.add_group
+  grp.name = "Safelight Strip (Cct D)"
+  face = grp.entities.add_face([500.mm,100.mm,2363.mm], [540.mm,100.mm,2363.mm], [540.mm,2262.mm,2363.mm], [500.mm,2262.mm,2363.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")
+  mat.color = Sketchup::Color.new(204, 34, 34)
+  grp.material = mat
+
+  # Safelight Strip (Cct D)
+  grp = ents.add_group
+  grp.name = "Safelight Strip (Cct D)"
+  face = grp.entities.add_face([2250.mm,100.mm,2363.mm], [2290.mm,100.mm,2363.mm], [2290.mm,2262.mm,2363.mm], [2250.mm,2262.mm,2363.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")
+  mat.color = Sketchup::Color.new(204, 34, 34)
+  grp.material = mat
+
+  # Safelight Strip (Cct D)
+  grp = ents.add_group
+  grp.name = "Safelight Strip (Cct D)"
+  face = grp.entities.add_face([4150.mm,100.mm,2363.mm], [4190.mm,100.mm,2363.mm], [4190.mm,2262.mm,2363.mm], [4150.mm,2262.mm,2363.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")
+  mat.color = Sketchup::Color.new(204, 34, 34)
+  grp.material = mat
+
+  # Pull Switch
+  grp = ents.add_group
+  grp.name = "Pull Switch"
+  face = grp.entities.add_face([1540.mm,0.mm,2300.mm], [1580.mm,0.mm,2300.mm], [1580.mm,30.mm,2300.mm], [1540.mm,30.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Pull Switch"] || model.materials.add("Pull Switch")
+  mat.color = Sketchup::Color.new(216, 216, 240)
+  grp.material = mat
+
+  # Pull Cord
+  grp = ents.add_group
+  grp.name = "Pull Cord"
+  face = grp.entities.add_face([1557.mm,0.mm,900.mm], [1563.mm,0.mm,900.mm], [1563.mm,6.mm,900.mm], [1557.mm,6.mm,900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1400.mm)
+  mat = model.materials["Pull Cord"] || model.materials.add("Pull Cord")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # Pull Switch
+  grp = ents.add_group
+  grp.name = "Pull Switch"
+  face = grp.entities.add_face([1660.mm,0.mm,2300.mm], [1700.mm,0.mm,2300.mm], [1700.mm,30.mm,2300.mm], [1660.mm,30.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Pull Switch"] || model.materials.add("Pull Switch")
+  mat.color = Sketchup::Color.new(216, 216, 240)
+  grp.material = mat
+
+  # Pull Cord
+  grp = ents.add_group
+  grp.name = "Pull Cord"
+  face = grp.entities.add_face([1677.mm,0.mm,900.mm], [1683.mm,0.mm,900.mm], [1683.mm,6.mm,900.mm], [1677.mm,6.mm,900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1400.mm)
+  mat = model.materials["Pull Cord"] || model.materials.add("Pull Cord")
+  mat.color = Sketchup::Color.new(58, 58, 58)
+  grp.material = mat
+
+  # Conduit Drop (10mm)
+  grp = ents.add_group
+  grp.name = "Conduit Drop (10mm)"
+  face = grp.entities.add_face([1750.mm,8.mm,2200.mm], [1760.mm,8.mm,2200.mm], [1760.mm,18.mm,2200.mm], [1750.mm,18.mm,2200.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(163.mm)
+  mat = model.materials["Conduit Drop (10mm)"] || model.materials.add("Conduit Drop (10mm)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  # Conduit Drop (10mm)
+  grp = ents.add_group
+  grp.name = "Conduit Drop (10mm)"
+  face = grp.entities.add_face([2060.mm,8.mm,600.mm], [2070.mm,8.mm,600.mm], [2070.mm,18.mm,600.mm], [2060.mm,18.mm,600.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1763.mm)
+  mat = model.materials["Conduit Drop (10mm)"] || model.materials.add("Conduit Drop (10mm)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Lighting & Wiring"
+  inst.layer = model.layers["Lighting"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1180,7 +1318,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

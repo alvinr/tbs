@@ -28,7 +28,7 @@ from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
 from matplotlib.lines import Line2D
 import os
 from tbs_constants import (
-    svg_path, SVG_DIR, C_LT_DRUM,
+    C_LT_DRUM,
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_BRACKET_H, WALKWAY_BRACKET_T,
     DIAGRAMS_DIR,
@@ -385,9 +385,7 @@ def sheet1():
                 scale_note="SCALE 1:20",
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel")
 
-    os.makedirs(SVG_DIR, exist_ok=True)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet1.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet1.png saved")
 
@@ -800,7 +798,6 @@ def sheet2():
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel", height=0.055)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet2.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet2.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet2.png saved")
 
@@ -1206,7 +1203,6 @@ def sheet3():
                 height=0.05, portrait=True)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet3.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet3.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet3.png saved")
 
@@ -1459,7 +1455,6 @@ def sheet4():
                 height=0.06)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png"), dpi=130, bbox_inches="tight", facecolor=BG)
-    fig.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet4.png")), bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/hingepanel-sheet4.png saved")
 

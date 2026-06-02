@@ -566,12 +566,6 @@ FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────
 DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
-SVG_DIR      = os.path.join(PROJECT_ROOT, "diagrams", "svg")
-
-def svg_path(png_path):
-    """Convert a diagrams/*.png path to diagrams/svg/*.svg."""
-    base = os.path.basename(png_path).replace(".png", ".svg")
-    return os.path.join(SVG_DIR, base)
 
 # ── Palette (shared drawing style) ───────────────────────────────────────────
 C_OUT   = "#1A1A1A"   # outlines

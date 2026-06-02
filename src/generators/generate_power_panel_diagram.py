@@ -23,7 +23,7 @@ from matplotlib.patches import FancyBboxPatch
 from tbs_constants import (
     PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D,
     PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H,
-    DIAGRAMS_DIR, SVG_DIR, svg_path,
+    DIAGRAMS_DIR, 
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_rect,
@@ -540,15 +540,12 @@ def draw_sheet1():
 
     fig.savefig(f"{DIAGRAMS_DIR}/power-panel-sheet1.png",
                 dpi=150, bbox_inches="tight", facecolor="white")
-    fig.savefig(svg_path(f"{DIAGRAMS_DIR}/power-panel-sheet1.png"),
-                bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → power-panel-sheet1.png  Done.")
 
 
 if __name__ == "__main__":
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating TBS-001 External Power Panel diagram...")
     draw_sheet1()
     print("Done.")

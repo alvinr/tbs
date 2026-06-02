@@ -47,7 +47,7 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_D, IBC_H_STK, IBC_H_600,
     BLUE_IBC_Y, BROWN_IBC_Y,
     IBC_FAR_Y, WASTE_IBC_Y,
-    DIAGRAMS_DIR, SVG_DIR, svg_path,
+    DIAGRAMS_DIR, 
     cone_left, cone_right,
     C_OUT, C_CL, C_DIM,
     C_LT_DRUM, C_WASTE_IBC, C_ELEC, C_BATT, C_PUMP,
@@ -55,7 +55,6 @@ from tbs_constants import (
 )
 
 os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-os.makedirs(SVG_DIR, exist_ok=True)
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG          = "#FFFFFF"
@@ -460,7 +459,6 @@ fig.text(0.5, 0.028, note, ha="center", va="bottom",
 # ── Save ──────────────────────────────────────────────────────────────────────
 out = f"{DIAGRAMS_DIR}/line-of-sight.png"
 plt.savefig(out, dpi=DPI, bbox_inches="tight", facecolor=BG, edgecolor="none")
-plt.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
 plt.close(fig)
 print(f"Saved: {out}")
 if both_flags:

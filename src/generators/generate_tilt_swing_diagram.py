@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import numpy as np
 import os
-from tbs_constants import DIAGRAMS_DIR, SVG_DIR, svg_path
+from tbs_constants import DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
                          draw_rect, leader, bolt_holes, hatch_rect, draw_notes)
@@ -276,7 +276,6 @@ def draw_sheet1():
     plt.tight_layout(pad=0)
     out1 = f'{DIAGRAMS_DIR}/tilt-swing-sheet1.png'
     fig.savefig(out1, dpi=150, bbox_inches='tight', facecolor='white')
-    fig.savefig(svg_path(out1), bbox_inches='tight', facecolor='white')
     plt.close(fig)
     print(f'  → tilt-swing-sheet1.png  Done.')
 
@@ -572,14 +571,12 @@ def draw_sheet2():
     plt.tight_layout(pad=0)
     out2 = f'{DIAGRAMS_DIR}/tilt-swing-sheet2.png'
     fig.savefig(out2, dpi=150, bbox_inches='tight', facecolor='white')
-    fig.savefig(svg_path(out2), bbox_inches='tight', facecolor='white')
     plt.close(fig)
     print(f'  → tilt-swing-sheet2.png  Done.')
 
 
 if __name__ == "__main__":
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
-    os.makedirs(SVG_DIR, exist_ok=True)
     print("Generating TBS-001 Tilt-Swing Front Board diagrams...")
     draw_sheet1()
     draw_sheet2()

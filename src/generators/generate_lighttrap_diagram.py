@@ -16,7 +16,6 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
 import os
 from tbs_constants import (
-    svg_path, SVG_DIR,
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
     FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
     DIAGRAMS_DIR,
@@ -349,10 +348,8 @@ def draw_sheet1():
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-LT · Light Trap & Ventilation")
 
-    os.makedirs(SVG_DIR, exist_ok=True)
     plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png"), dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet1.png")), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet1.png  Done.")
 
@@ -588,7 +585,6 @@ def draw_sheet2():
 
     plt.savefig(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png"), dpi=150, bbox_inches="tight",
                 pad_inches=0.10, facecolor="white")
-    plt.savefig(svg_path(os.path.join(DIAGRAMS_DIR, "lighttrap-sheet2.png")), bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print("  → diagrams/lighttrap-sheet2.png  Done.")
 

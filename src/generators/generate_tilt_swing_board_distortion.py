@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 import os
 from tbs_constants import (
-    svg_path, SVG_DIR, C_WID,
+    C_WID,
     FP_W as _FP_W, FP_H as _FP_H,
     DIAGRAMS_DIR,
 )
@@ -250,7 +250,6 @@ def draw_render(ax, board_tilt, board_swing,
 
 if __name__ == '__main__':
     print("Rendering tilt-swing board-only distortion configurations...")
-    os.makedirs(SVG_DIR, exist_ok=True)
 
     for cfg in CONFIGS:
         label, bt, bs, desc = cfg
@@ -269,7 +268,6 @@ if __name__ == '__main__':
                     doc_id="TBS-TS01 · Board Distortion")
         out = os.path.join(DIAGRAMS_DIR, f'tilt-swing-board-distortion-{label.lower()}.png')
         fig.savefig(out, dpi=120, bbox_inches='tight', facecolor=BG)
-        fig.savefig(svg_path(out), bbox_inches="tight", facecolor=BG)
         plt.close(fig)
         print(f'  → {out}')
 
@@ -302,7 +300,6 @@ if __name__ == '__main__':
                 doc_id="TBS-TS01 · Board Distortion")
     out_s = os.path.join(DIAGRAMS_DIR, 'tilt-swing-board-distortion-summary.png')
     fig_s.savefig(out_s, dpi=100, bbox_inches='tight', facecolor=BG)
-    fig_s.savefig(svg_path(out_s), bbox_inches="tight", facecolor=BG)
     plt.close(fig_s)
     print(f'  → {out_s}')
     print('Done.')

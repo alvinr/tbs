@@ -619,6 +619,29 @@ def ibc_stack(alpha=0.55):
     return '\n'.join(parts)
 
 
+def ruby_tri(name, p1, p2, p3, thick, color=None, alpha=None):
+    """Triangular plate: a face through p1,p2,p3 pushpulled by `thick` along its
+    normal (used for gusset plates)."""
+    face = ', '.join(f'[{mm(p[0])},{mm(p[1])},{mm(p[2])}]' for p in (p1, p2, p3))
+    out = [
+        f'  # {name}',
+        '  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        '  ge = grp.entities',
+        f'  f = ge.add_face({face})',
+        f'  f.pushpull({mm(thick)})',
+    ]
+    if color:
+        rr, gg, bb = hex_to_rgb(color)
+        mat_nm = shared_mat_name(name, color, alpha)
+        out.append(f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")')
+        out.append(f'  mat.color = Sketchup::Color.new({rr}, {gg}, {bb})')
+        out.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
+        out.append('  grp.material = mat')
+    out.append('')
+    return '\n'.join(out)
+
+
 def ibc_rack():
     """Simplified 50×50 RHS portal rack supporting the upper IBC tier.
 
@@ -673,25 +696,41 @@ def ibc_rack():
                                                cx + dx, cy + dy, -ft, 7, ft + 8,
                                                color=c_bolt, axis="z"))
 
-    # ── Load-bearing wall brackets: prop the platform-beam OUTER ends at the
-    # near (Yd=0) and far (Yd=C_WID) walls — this is what turns the cantilever
-    # into a simple span. Each = wall reinforcing plate (M12-bolted) + a shelf
-    # under the beam end + a diagonal gusset strut carrying load down to the
-    # wall base. ~110 kg per bracket. ──
-    wpw, wph, wpt = 150, 250, 6
+    # ── Load-bearing wall seat brackets: a welded knee bracket props each
+    # platform-beam OUTER end at the near (Yd=0) and far (Yd=C_WID) walls,
+    # turning the cantilever into a simple span. Each bracket is ONE welded
+    # fabrication (Simpson-style shelf bracket): a vertical back-plate M12-bolted
+    # to the wall, a horizontal seat the beam end lands on, and a triangular
+    # gusset web welded between the two. ~110 kg per bracket. ──
+    wpw, wpt = 150, 8                   # back-plate 150(X) × 8(thick)
+    proj, seat_t, gh = 110, 10, 200     # seat projection into container, seat thickness, gusset depth
+    sw = s + 20                         # seat width in X (beam + 10 each side)
     for xs in x_stations:
-        for wall_yd, beam_end, outward in ((0, near_end, -1), (C_WID, far_end, 1)):
-            py = wall_yd if outward < 0 else wall_yd - wpt
+        gx = xs + s / 2 - 4             # gusset web (8mm) centred on the beam
+        for wall_yd, dir_in in ((0, 1), (C_WID, -1)):
+            tip = wall_yd + dir_in * proj            # seat outer tip, under the beam end
+            seat_y0 = min(wall_yd, tip)
+            plate_y0 = wall_yd if dir_in > 0 else wall_yd - wpt
+            # vertical back-plate bolted to the wall
             parts.append(ruby_box("Wall Bracket Plate",
-                                  xs - 50, py, plat_z + s - wph, wpw, wpt, wph,
-                                  color=C_STEEL))
-            sy0 = min(wall_yd, beam_end)
-            parts.append(ruby_box("Wall Bracket Shelf",
-                                  xs, sy0, beam_z - 8, s, abs(beam_end - wall_yd), 8,
-                                  color=C_STEEL))
-            parts.append(ruby_pipe("Wall Bracket Gusset",
-                                   (xs + s / 2, beam_end, beam_z - 4),
-                                   (xs + s / 2, wall_yd, 0), 9, color=C_STEEL))
+                                  xs - 50, plate_y0, beam_z - gh - 10,
+                                  wpw, wpt, gh + seat_t + 60, color=C_STEEL))
+            # horizontal seat the beam end rests on
+            parts.append(ruby_box("Wall Bracket Seat",
+                                  xs - 10, seat_y0, beam_z - seat_t,
+                                  sw, proj, seat_t, color=C_STEEL))
+            # triangular gusset web welded between back-plate and seat tip
+            parts.append(ruby_tri("Wall Bracket Gusset",
+                                  (gx, tip, beam_z - seat_t),
+                                  (gx, wall_yd, beam_z - seat_t),
+                                  (gx, wall_yd, beam_z - seat_t - gh),
+                                  8, color=C_STEEL))
+            # 4× M12 wall anchor bolts through the back-plate (clear of the web)
+            for bx in (xs - 30, xs + 80):
+                for bz in (beam_z - gh + 30, beam_z - seat_t + 25):
+                    parts.append(ruby_cylinder("Bracket Anchor Bolt M12",
+                                               bx, plate_y0 - 10, bz, 7, wpt + 20,
+                                               color=c_bolt, axis="y"))
 
     return '\n'.join(parts)
 

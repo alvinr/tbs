@@ -62,6 +62,9 @@ from tbs_constants import (
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
+    EP_X, EP_W, EP_H_LO, EP_H_HI,
+    BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
+    PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -84,12 +87,14 @@ C_IBC_BROWN = "#6B4A2E" # Brown (developer) IBC contents
 C_IBC_WASTE = "#777777" # Waste IBC contents
 C_DRUM = "#E8E0D0"      # light-trap drum shell (cream)
 C_VANE = "#778088"      # drum turnstile vanes
+C_ELEC = "#F5C518"      # electrical panel (EP)
+C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
-        "IBC Stack", "IBC Rack", "Light Trap"]
+        "IBC Stack", "IBC Rack", "Light Trap", "Electrical"]
 
 
 def mm(val):
@@ -757,6 +762,35 @@ def light_trap_drum():
     return '\n'.join(parts)
 
 
+# ── Electrical (panel + battery, pinhole wall) ───────────────────────────────
+
+def electrical():
+    """Electrical panel (EP) + battery bank on the pinhole wall (Yd=0), plus the
+    flush-mount external power panel on the exterior face.
+
+    EP mounts high (Z 1600–2200); the slim battery bank low (Z 100–600). Both
+    protrude into the container from the pinhole wall. The external power panel
+    is flush in the exterior face (ghosted) — no interior conflict.
+    """
+    parts = []
+    ep_d = 160   # EP enclosure depth into the container (Yd)
+
+    parts.append(ruby_box("Electrical Panel (EP)",
+                          EP_X, 0, EP_H_LO,
+                          EP_W, ep_d, EP_H_HI - EP_H_LO, color=C_ELEC))
+
+    parts.append(ruby_box("Battery Bank (2x LiFePO4)",
+                          BA_X, 0, BA_H_LO,
+                          BA_W, BA_D, BA_H_HI - BA_H_LO, color=C_BATT))
+
+    # External power panel — flush in the exterior face (Yd<0), shown ghosted.
+    parts.append(ruby_box("Ext. Power Panel (exterior)",
+                          PWR_PANEL_X, -WALL_T - 25, PWR_PANEL_Z,
+                          PWR_PANEL_W, 25, PWR_PANEL_H, color=C_ALUM, alpha=0.5))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -774,6 +808,7 @@ def generate_ruby():
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
+        component("Electrical", "Electrical", electrical()),
     ]
     body = '\n'.join(comps)
 
@@ -832,7 +867,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

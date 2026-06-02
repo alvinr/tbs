@@ -32,6 +32,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("IBC Stack") unless model.layers["IBC Stack"]
   model.layers.add("IBC Rack") unless model.layers["IBC Rack"]
   model.layers.add("Light Trap") unless model.layers["Light Trap"]
+  model.layers.add("Electrical") unless model.layers["Electrical"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -970,12 +971,50 @@ end
   inst.name = "Light-Trap Drum"
   inst.layer = model.layers["Light Trap"]
 
+  # ═══ Electrical ═══
+  defn = model.definitions.add("Electrical")
+  ents = defn.entities
+  # Electrical Panel (EP)
+  grp = ents.add_group
+  grp.name = "Electrical Panel (EP)"
+  face = grp.entities.add_face([1600.mm,0.mm,1600.mm], [1900.mm,0.mm,1600.mm], [1900.mm,160.mm,1600.mm], [1600.mm,160.mm,1600.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(600.mm)
+  mat = model.materials["Electrical Panel (EP)"] || model.materials.add("Electrical Panel (EP)")
+  mat.color = Sketchup::Color.new(245, 197, 24)
+  grp.material = mat
+
+  # Battery Bank (2x LiFePO4)
+  grp = ents.add_group
+  grp.name = "Battery Bank (2x LiFePO4)"
+  face = grp.entities.add_face([1810.mm,0.mm,100.mm], [2310.mm,0.mm,100.mm], [2310.mm,120.mm,100.mm], [1810.mm,120.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(500.mm)
+  mat = model.materials["Battery Bank (2x LiFePO4)"] || model.materials.add("Battery Bank (2x LiFePO4)")
+  mat.color = Sketchup::Color.new(106, 90, 205)
+  grp.material = mat
+
+  # Ext. Power Panel (exterior)
+  grp = ents.add_group
+  grp.name = "Ext. Power Panel (exterior)"
+  face = grp.entities.add_face([1250.mm,-65.mm,1780.mm], [1590.mm,-65.mm,1780.mm], [1590.mm,-40.mm,1780.mm], [1250.mm,-40.mm,1780.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(240.mm)
+  mat = model.materials["Ext. Power Panel (exterior)"] || model.materials.add("Ext. Power Panel (exterior)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Electrical"
+  inst.layer = model.layers["Electrical"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -987,7 +1026,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

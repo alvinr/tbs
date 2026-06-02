@@ -69,7 +69,7 @@ Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bo
 
 ### 4.2 Fan A — Far End Wall Exhaust
 
-Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=75mm corner) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=300mm — set in 300mm from the pinhole wall toward the center of the end wall, off the corner) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
 **Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops a short distance to the fan near the ceiling. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 

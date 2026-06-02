@@ -13,7 +13,9 @@ Generates two-sheet assembly fabrication drawing for TBS-001
     Three zones: left end zone (shadow-free), optical zone, right end zone.
 
   Sheet 2 — End elevation, cargo door end  (1:20)
-    View from the short end wall (X=0), looking into the container (+X).
+    View from inside the container, looking -X out toward the cargo door
+    (panel interior / mounting face). Pinhole wall at left (Yd=0), film-plane
+    wall at right (Yd=2362).
     Horizontal = container width CW 0–2362mm,  vertical = height H 0–2388mm.
     Drum Ø750mm appears as a rectangle centred at CW/2.
 
@@ -373,7 +375,9 @@ def sheet1():
 
 def sheet2():
     """
-    View from X=0 short end wall, looking INTO the container (+X direction).
+    View from inside the container, looking -X OUT toward the cargo door end
+    wall (X=0) — i.e. the panel interior / mounting face. Pinhole wall (Yd=0)
+    is at left, film-plane wall (Yd=2362) at right.
       Horizontal = container width CW = 2362mm  (= optical depth Y direction)
       Vertical   = container height H = 2388mm
       Depth (into page) = container length X = 5893mm
@@ -521,7 +525,7 @@ def sheet2():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 2",
                 drawing_title="ASSEMBLY — END ELEVATION",
-                subtitle="View: from X=0, looking +X into container",
+                subtitle="View: from inside, looking -X out to cargo door (panel interior face) · pinhole wall L, film-plane wall R",
                 scale_note="1:20",
                 doc_id="TBS-001 · Assembly Fabrication")
 

@@ -1638,7 +1638,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust)"
   ge = grp.entities
-  circle = ge.add_circle([5868.mm,75.mm,2200.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([5868.mm,300.mm,2200.mm], [1,0,0], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)

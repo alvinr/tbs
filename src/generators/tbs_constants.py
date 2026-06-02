@@ -549,7 +549,7 @@ FAN_A_H     = 2200   # fan A center height AFF (mm — HIGH; clears IBC stack to
 FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
 # panel) to high exhaust (far end wall), diagonally across the volume.
-FAN_A_YD    = FAN_DIAM // 2           # = 75mm  — near-wall corner (X=C_LEN wall)
+FAN_A_YD    = 300                     # 300mm from pinhole wall — off the corner, toward center of the X=C_LEN end wall
 FAN_B_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1959mm — centered between drum far edge and far wall
 
 # Baffle duct (one per fan, welded galvanized steel)

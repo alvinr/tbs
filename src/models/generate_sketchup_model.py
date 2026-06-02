@@ -33,8 +33,17 @@ from tbs_constants import (
 
 
 def mm(val):
-    """Convert mm to inches (SketchUp default unit)."""
-    return val / 25.4
+    """Render a millimeter value as a Ruby literal carrying the `.mm` suffix.
+
+    SketchUp's geometry database is always inches internally, but the Ruby API
+    converts on input: `2362.mm` yields the correct inch value. Emitting `.mm`
+    keeps the generated Ruby readable in the project's native millimeters and
+    lets SketchUp do the conversion, rather than baking in pre-divided floats.
+    """
+    # Drop a trailing ".0" so whole numbers read as 2362.mm, not 2362.0.mm.
+    if isinstance(val, float) and val.is_integer():
+        val = int(val)
+    return f"{val}.mm"
 
 
 def hex_to_rgb(h):
@@ -50,18 +59,20 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None):
     x, y, z: origin corner (min X, min Yd, min Z).
     w, d, h: width (X), depth (Yd), height (Z).
     """
-    xi, yi, zi = mm(x), mm(y), mm(z)
-    wi, di, hi = mm(w), mm(d), mm(h)
+    # Sum in millimeters first, then render each corner with the `.mm` suffix.
+    x0, y0, z0 = mm(x), mm(y), mm(z)
+    x1, y1 = mm(x + w), mm(y + d)
+    h_mm = mm(h)
 
     lines = [
         f'  # {name}',
         f'  grp = entities.add_group',
         f'  grp.name = "{name}"',
         f'  face = grp.entities.add_face('
-        f'[{xi},{yi},{zi}], [{xi+wi},{yi},{zi}], '
-        f'[{xi+wi},{yi+di},{zi}], [{xi},{yi+di},{zi}])',
+        f'[{x0},{y0},{z0}], [{x1},{y0},{z0}], '
+        f'[{x1},{y1},{z0}], [{x0},{y1},{z0}])',
         f'  face.reverse! if face.normal.z < 0',
-        f'  face.pushpull({hi})',
+        f'  face.pushpull({h_mm})',
     ]
 
     if color:
@@ -220,6 +231,13 @@ def generate_ruby():
 model.start_operation("TBS-001 Phase 1", true)
 entities = model.active_entities
 
+# Display in millimeters (LengthUnit 2 = mm, LengthFormat 0 = decimal).
+# SketchUp stores geometry in inches internally; this only sets the UI readout.
+opts = model.options["UnitsOptions"]
+opts["LengthUnit"] = 2
+opts["LengthFormat"] = 0
+opts["LengthPrecision"] = 1
+
 {body}
 
 model.commit_operation
@@ -235,6 +253,8 @@ if __name__ == "__main__":
         description="Generate Ruby code for TBS-001 SketchUp model")
     parser.add_argument("--save", action="store_true",
                         help="Write Ruby to src/models/tbs_model.rb")
+    parser.add_argument("--send", action="store_true",
+                        help="Send the Ruby straight to the running SketchUp")
     args = parser.parse_args()
 
     ruby = generate_ruby()
@@ -244,5 +264,14 @@ if __name__ == "__main__":
         with open(out, "w") as f:
             f.write(ruby)
         print(f"  {out} saved ({len(ruby)} bytes)")
-    else:
+
+    if args.send:
+        from sketchup_client import send_ruby, SketchupError
+        try:
+            print(f"  SketchUp: {send_ruby(ruby)}")
+        except SketchupError as e:
+            print(f"  error: {e}", file=sys.stderr)
+            sys.exit(1)
+
+    if not args.save and not args.send:
         print(ruby)

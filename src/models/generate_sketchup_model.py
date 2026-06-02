@@ -693,31 +693,66 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
     return '\n'.join(lines)
 
 
+def ruby_panel_z(name, ax_, ay, bx, by, thickness, height, color=None, alpha=None):
+    """Thin vertical panel (wall) from point A to point B, extruded in +Z."""
+    dx, dy = bx - ax_, by - ay
+    length = math.hypot(dx, dy)
+    px, py = -dy / length, dx / length          # unit perpendicular
+    hw = thickness / 2.0
+    c = [(ax_ + px * hw, ay + py * hw), (bx + px * hw, by + py * hw),
+         (bx - px * hw, by - py * hw), (ax_ - px * hw, ay - py * hw)]
+    pts_ruby = ', '.join(f'[{mm(round(x, 2))},{mm(round(y, 2))},0]' for x, y in c)
+    lines = [
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  ge = grp.entities',
+        f'  face = ge.add_face([{pts_ruby}])',
+        f'  face.reverse! if face.normal.z < 0',
+        f'  face.pushpull({mm(height)})',
+    ]
+    if color:
+        r_, g_, b_ = hex_to_rgb(color)
+        lines.append(f'  mat = model.materials["{name}"] || '
+                     f'model.materials.add("{name}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
+        if alpha is not None:
+            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  grp.material = mat')
+    lines.append('')
+    return '\n'.join(lines)
+
+
 def light_trap_drum():
     """Revolving light-trap drum at the cargo-door end — hollow Ø750 drum.
 
-    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. A faint translucent
-    curved shell with a ~100° ENTRY SLOT facing −X (outside the container), plus
-    a 4-quadrant turnstile (two crossed vanes). Half sits in the doorway (X
-    0–375 inside; the entry/−X half protrudes out the cargo end). It deliberately
-    overlaps the demountable left-rail segment — that's why that segment swings
-    clear ("drum mode").
+    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. Two crossed vanes (at
+    ±45°) split it into 4 quadrant segments; the shell is walled on 3 segments
+    and OPEN on the one segment facing −X (outside the container) — the entry.
+    Half sits in the doorway (the entry/−X half protrudes out the cargo end). It
+    deliberately overlaps the demountable left-rail segment — that's why that
+    segment swings clear ("drum mode").
     """
     parts = []
     r, h = DRUM_R, DRUM_H_LT
     cx, cy = DRUM_CX, DRUM_CY
 
-    # Hollow shell with the entry slot opening toward −X (gap centred at 180°).
-    parts.append(ruby_arc_wall("LT Drum Shell (entry slot −X)",
+    # Hollow shell: open one 90° segment centred on −X (180°); walled elsewhere.
+    parts.append(ruby_arc_wall("LT Drum Shell (3 segments walled)",
                                cx, cy, r, 12, h,
-                               gap_center_deg=180, gap_deg=100,
+                               gap_center_deg=180, gap_deg=90,
                                color=C_DRUM, alpha=0.18))
 
-    vt = 6  # vane thickness — two crossed panels through the axis
-    parts.append(ruby_box("LT Drum Vane (X-Z)",
-                          cx - r, cy - vt / 2, 0, 2 * r, vt, h, color=C_VANE))
-    parts.append(ruby_box("LT Drum Vane (Yd-Z)",
-                          cx - vt / 2, cy - r, 0, vt, 2 * r, h, color=C_VANE))
+    # Two crossed vanes at ±45° so the open segment (135°–225°) faces straight −X.
+    vt = 6
+    pa = [(cx + r * math.cos(math.radians(d)), cy + r * math.sin(math.radians(d)))
+          for d in (45, 135, 225, 315)]
+    parts.append(ruby_panel_z("LT Drum Vane A",
+                              pa[0][0], pa[0][1], pa[2][0], pa[2][1],
+                              vt, h, color=C_VANE))
+    parts.append(ruby_panel_z("LT Drum Vane B",
+                              pa[1][0], pa[1][1], pa[3][0], pa[3][1],
+                              vt, h, color=C_VANE))
 
     return '\n'.join(parts)
 

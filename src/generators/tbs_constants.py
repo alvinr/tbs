@@ -419,8 +419,11 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #       Zero processing tray contact — all supports outside or above tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
-WALKWAY_H       = 100    # deck height above floor (mm) — 75mm bracket arm + 25mm grate
-WALKWAY_GRATE_T = 25     # grating thickness (mm) — standard press-locked (all 4 sections)
+WALKWAY_H       = 65     # deck height above floor (mm) — LOWERED for film-plane clearance:
+#       15mm grate resting at the tray-rim level (Z=50); top at Z=65 clears the Z=100
+#       film-frame bottom by 35mm, so the film plane travels above the in-place walkway.
+WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
+WALKWAY_H_PREV  = 100    # previous deck height (pre-lowering) — kept for reference
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets

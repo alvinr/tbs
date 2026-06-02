@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
-| 4. Film plane mechanism (4-corner, manual) | $2,200 | $2,700 |
+| 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
 | 5. Print washing — water system | $3,135 | $4,766 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$16,906** | **~$22,846** |
+| **TOTAL (base build + 50-print run)** | **~$17,506** | **~$23,446** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -125,9 +125,23 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | DPDT momentary rocker switch | Panel-mount, 20A | 4 | [Mouser](https://www.mouser.com) | $8 |
 **Electric actuation subtotal: ~$827 (optional)**
 
-**Section total (manual): ~$2,362**
+### Demountable brace cage (ICP-11 through ICP-14)
+*Two rectangular end portals of 50×50×3mm RHS brace the four-corner rail assembly; demountable joints for transport.*
 
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Net change: +$12 for significantly greater geometric capability. Excl. fabrication, fasteners, and optional electric actuation.
+| Item | ICP # | Spec | Qty | Supplier A | Supplier B | Est. unit | Est. total |
+|------|-------|------|-----|-----------|-----------|-----------|------------|
+| [Mild steel RHS square tube — structural welded](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | ICP-11 | 50×50×3mm; 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order 30 m to cover saw kerf + saddle-seat cuts (~98 ft) | 30 m | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) (Anaheim / Van Nuys / San Diego — cut to length, walk-in) | [Online Metals — 50mm×3mm carbon steel sq. tube](https://www.onlinemetals.com/en/buy/carbon-steel/50mm-x-3mm-carbon-steel-square-tube-1018-metric-60-length/pid/22489) (ships; ~$47 per 20 ft stick) | ~$7/ft est. | ~$230 est. |
+| Square tube saddle clamp, 50mm | ICP-12 | Two-piece bolt-together saddle — seats one 50×50mm RHS member over another at a demountable joint | 16 | [McMaster-Carr — steel tube clamps](https://www.mcmaster.com/products/steel-tube-clamps/) | [Amazon — 2" square tube clamps](https://www.amazon.com/2-square-tube-clamp/s?k=2%22+square+tube+clamp) | ~$8–12 est. | ~$160 est. |
+| [M8×20mm knurled thumbscrew DIN 464, SS 303](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | ICP-13 | High-type knurled head, fully threaded; 2 per saddle clamp joint; 32 working + 8 spares | 40 | [Amazon — DIN 464 M8 stainless (various sellers)](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — PN 65499225](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) (~$15–17 ea. direct; Amazon cheaper in packs) | ~$3 est. | ~$120 est. |
+| [Quick-release ball-lock pin, Ø10mm SS](https://www.mcmaster.com/products/ball-lock-pins/) | ICP-14 | 50mm usable length, stainless steel; retains demountable left-rail segment for drum-mode (4 working + 4 spares) | 8 | [McMaster-Carr — ball lock pins](https://www.mcmaster.com/products/ball-lock-pins/) | [Amazon — quick-release ball lock pins](https://www.amazon.com/quick-release-ball-lock-pins/s?k=quick+release+ball+lock+pins) | ~$6–10 est. | ~$65 est. |
+
+**Brace cage subtotal: ~$575 est.**
+
+*All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. Blue Sky Supplies (blueskysupplies.com) confirmed 2"×2"×⅛" × 20 ft at $47.43 (May 2026). M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs from various sellers run ~$2–5 ea. depending on pack size.*
+
+**Section total (manual, incl. brace cage): ~$2,937**
+
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added brace cage (ICP-11–14): +$575. Net change vs original two-beam design: +$587 for significantly greater geometric capability and integral structural rigidity. Excl. fabrication, fasteners, and optional electric actuation.
 
 ---
 

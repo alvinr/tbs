@@ -16,7 +16,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,150 | $4,300 |
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
-| **4. Film plane mechanism (4-corner)** | $2,200 | $2,400 | $2,700 |
+| **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
 | **5. Processing water system (incl. tray, spray bar)** | $3,145 | $3,917 | $4,688 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
@@ -24,7 +24,7 @@
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$13,544** | **$17,441** | **$22,872** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$14,144** | **$18,391** | **$24,072** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -199,7 +199,21 @@ View-camera-style moveable film plane with four independently actuated corners (
 | M5×16 SS bolts + Nylock nuts | Clamp mounting (2 per clamp) | 184+184 | — | $55 |
 | Neoprene strip 60A | Jaw pads, 35mm×6mm, 10m roll | 1 | $15† | $15 |
 
-### 4.3 Optional electric actuation
+### 4.3 Demountable brace cage
+
+Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demountable saddle-clamp joints for transport. Left-rail segment retains with quick-release ball-lock pins for drum-mode clearance.
+
+| Item | ICP # | Spec | Qty | Unit | Total |
+|------|-------|------|-----|------|-------|
+| Mild steel RHS sq. tube 50×50×3mm | ICP-11 | 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order 30 m | 30 m | ~$7/ft est. | ~$230 |
+| Square tube saddle clamp 50mm | ICP-12 | 4 corners per portal × 2 clamps per corner × 2 portals = 16 | 16 | ~$10 est. | ~$160 |
+| M8×20mm knurled thumbscrew DIN 464 SS | ICP-13 | 2 per clamp × 16 = 32 working + 8 spares | 40 | ~$3 est. | ~$120 |
+| Quick-release ball-lock pin Ø10mm SS | ICP-14 | Left-rail demount: 4 working + 4 spares | 8 | ~$8 est. | ~$65 |
+| **Brace cage subtotal** | | | | | **~$575** |
+
+*All brace-cage costs are estimates — pricing to be confirmed at time of procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
+
+### 4.4 Optional electric actuation
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
@@ -212,11 +226,12 @@ View-camera-style moveable film plane with four independently actuated corners (
 | Category | Total |
 |----------|-------|
 | Structural & rails | $1,260 |
-| Film frame & backing (incl. clamps) | $1,450-1,910 |
-| **Film plane mechanism (manual)** | **~$2,750-3,210** |
+| Film frame & backing (incl. clamps) | $1,450–1,910 |
+| Demountable brace cage (ICP-11–14) | ~$575 |
+| **Film plane mechanism (manual, incl. brace cage)** | **~$3,280–3,740** |
 | Electric actuation (optional add-on) | +$827 |
 
-*Includes $330-790 for muslin clamp system (92 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
+*Includes $330–790 for muslin clamp system (92 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
 
 ---
 
@@ -460,7 +475,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
-| Film plane mechanism (manual) | $2,200 |
+| Film plane mechanism (manual, incl. brace cage) | $2,800 |
 | Water system (incl. processing tray, spray bar) | $3,130 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $953 |
@@ -468,7 +483,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$13,212** |
+| **Scenario A total** | **~$13,812** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -477,7 +492,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
-| Film plane mechanism (manual + electric actuation) | $3,227 |
+| Film plane mechanism (manual + brace cage + electric actuation) | $3,797 |
 | Water system (incl. processing tray, spray bar) | $3,884 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $1,216 |
@@ -486,13 +501,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$18,609** |
+| **Scenario B total (excl. CDL)** | **~$19,179** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $18,415 |
+| Scenario B build | $18,985 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
@@ -508,6 +523,10 @@ The following costs are not covered by existing research documents and should be
 
 | Item | Status | Action |
 |------|--------|--------|
+| Brace cage RHS steel (ICP-11) | Estimated ~$7/ft | Confirm at Metal Supermarkets SoCal (walk-in) or Online Metals for 50×50×3mm metric; ~30 m (≈98 ft) needed |
+| Saddle clamps for 50mm RHS (ICP-12) | Estimated ~$10 ea. | Confirm at McMaster-Carr (steel tube clamps category) — verify fit for 50×50mm square section |
+| M8 thumbscrews DIN 464 SS (ICP-13) | Estimated ~$2–5 ea. | Amazon multi-packs typical; Maedler NA PN 65499225 confirmed at ~$15–17 ea. (May 2026) |
+| Ball-lock pins Ø10mm SS (ICP-14) | Estimated ~$6–10 ea. | Confirm at McMaster-Carr ball lock pins category; verify 50mm usable length fits joint |
 | Lenox Laser pinhole fabrication price | Estimated | Request quote at lenoxlaser.com — specify 2.17mm ±0.025mm in SS-302 shim, 75mm × 75mm |
 | Grimco ACM panel pricing | Listed at ~$85† | Confirm current price; Grimco City of Industry: 626-912-9600 |
 | Rockland Liquid Light bulk pricing | Unconfirmed | Contact rockaloid.com before committing to that process |

@@ -335,3 +335,25 @@ if [[ "$MODE" != "local" ]]; then
         warn "  Install: python3 -m pip install --user fpdf2 markdown pyyaml"
     fi
 fi
+
+# -- Push 3D model to Sketchfab (updates the embedded model in place) ----------
+# Only on a real deploy, only if the .skp changed since the last push, and never
+# fatal -- a failed/skipped push must not break the site deploy.
+if [[ "$MODE" == "deploy" ]]; then
+    SKP="${SCRIPT_DIR}/models/overview.skp"
+    MARK="${SCRIPT_DIR}/.sketchfab-pushed"
+    if [[ -f "$SKP" ]]; then
+        SKP_HASH="$(shasum -a 256 "$SKP" | awk '{print $1}')"
+        if [[ -f "$MARK" && "$(cat "$MARK")" == "$SKP_HASH" ]]; then
+            info "Sketchfab: model unchanged since last push -- skipping."
+        else
+            info "Pushing 3D model to Sketchfab..."
+            if python3 "${SCRIPT_DIR}/src/models/push_sketchfab.py"; then
+                echo "$SKP_HASH" > "$MARK"
+                info "Sketchfab: model re-uploaded (re-processing async)."
+            else
+                warn "Sketchfab push failed (token/plan/network?) -- site still deployed."
+            fi
+        fi
+    fi
+fi

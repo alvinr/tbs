@@ -2085,11 +2085,11 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue #1 suction
+  # Blue Suction Manifold
   grp = ents.add_group
-  grp.name = "Blue #1 suction"
+  grp.name = "Blue Suction Manifold"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 90.mm, 0.mm)
+  vec = Geom::Vector3d.new(-159.5.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5283.5.mm,1046.mm,1195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2099,12 +2099,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue #1 suction elbow
+  # Blue Suction Manifold elbow
   grp = ents.add_group
-  grp.name = "Blue #1 suction elbow"
+  grp.name = "Blue Suction Manifold elbow"
   ge = grp.entities
-  arc = ge.add_arc([5259.5.mm,1136.mm,1195.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5283.5.mm,1136.mm,1195.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5124.mm,1070.mm,1195.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5124.mm,1046.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
@@ -2112,12 +2112,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue #1 suction
+  # Blue Suction Manifold
   grp = ents.add_group
-  grp.name = "Blue #1 suction"
+  grp.name = "Blue Suction Manifold"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5259.5.mm,1160.mm,1195.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 222.mm, 0.mm)
+  circle = ge.add_circle([5100.mm,1070.mm,1195.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2126,12 +2126,12 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue #1 suction elbow
+  # Blue Suction Manifold elbow
   grp = ents.add_group
-  grp.name = "Blue #1 suction elbow"
+  grp.name = "Blue Suction Manifold elbow"
   ge = grp.entities
-  arc = ge.add_arc([4974.mm,1160.mm,1219.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4974.mm,1160.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5124.mm,1292.mm,1195.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5100.mm,1292.mm,1195.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
@@ -2139,12 +2139,81 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Blue #1 suction
+  # Blue Suction Manifold
   grp = ents.add_group
-  grp.name = "Blue #1 suction"
+  grp.name = "Blue Suction Manifold"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(159.5.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5124.mm,1316.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue Manifold Tee
+  grp = ents.add_group
+  grp.name = "Blue Manifold Tee"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 45.59999999999991.mm, 0.mm)
+  circle = ge.add_circle([5100.mm,1158.2.mm,1195.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue Manifold Tee
+  grp = ents.add_group
+  grp.name = "Blue Manifold Tee"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-22.800000000000182.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5100.mm,1181.mm,1195.mm], vec, 16.200000000000003.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Manifold → P-01
+  grp = ents.add_group
+  grp.name = "Manifold → P-01"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-126.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5100.mm,1181.mm,1195.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Manifold → P-01 elbow
+  grp = ents.add_group
+  grp.name = "Manifold → P-01 elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4974.mm,1181.mm,1219.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4974.mm,1181.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Manifold → P-01
+  grp = ents.add_group
+  grp.name = "Manifold → P-01"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
-  circle = ge.add_circle([4950.mm,1160.mm,1219.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4950.mm,1181.mm,1219.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2218,74 +2287,6 @@ end
   pf.pushpull(vec.length)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
   mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Blue #2 suction
-  grp = ents.add_group
-  grp.name = "Blue #2 suction"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -92.mm, 0.mm)
-  circle = ge.add_circle([5283.5.mm,1316.mm,1195.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Blue #2 suction elbow
-  grp = ents.add_group
-  grp.name = "Blue #2 suction elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5259.5.mm,1224.mm,1195.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5283.5.mm,1224.mm,1195.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Blue #2 suction
-  grp = ents.add_group
-  grp.name = "Blue #2 suction"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-285.5.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5259.5.mm,1200.mm,1195.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Blue #2 suction elbow
-  grp = ents.add_group
-  grp.name = "Blue #2 suction elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4974.mm,1200.mm,1219.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4974.mm,1200.mm,1195.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Blue #2 suction
-  grp = ents.add_group
-  grp.name = "Blue #2 suction"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
-  circle = ge.add_circle([4950.mm,1200.mm,1219.mm], vec, 12.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
-  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 

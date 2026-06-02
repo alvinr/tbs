@@ -590,11 +590,12 @@ def equipment_panel():
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
 
-def ibc_stack():
+def ibc_stack(alpha=0.55):
     """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
 
     Near column (Yd=30): Brown developer below, Blue #1 on top.
     Far column (Yd=1316): Waste below, Blue #2 on top. X spans 4674–5893.
+    `alpha` sets the bottle translucency (lower = more transparent).
     """
     parts = []
     pal = IBC_PALLET_H
@@ -614,7 +615,7 @@ def ibc_stack():
         parts.append(ruby_box(f"{nm} bottle",
                               IBC_COL_X + inset, yd + inset, z0 + pal,
                               IBC_W - 2 * inset, IBC_D - 2 * inset, bottle_h,
-                              color=col, alpha=0.55))
+                              color=col, alpha=alpha))
     return '\n'.join(parts)
 
 

@@ -1934,23 +1934,28 @@ model.layers.to_a.each { |l|
 }
 
 # ── Scenes ──
+# One consistent iso camera, shared by every scene — switching scenes only
+# toggles visibility, never the viewpoint.
 model.layers.each { |l| l.visible = true }
+bb = model.bounds
+ctr = bb.center
+dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
+eye = ctr.offset(dir, bb.diagonal * 1.5)
+model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+model.active_view.zoom_extents
+
+# Overview — everything visible.
 model.pages.add("Overview")
 
-# Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each { |n| model.layers[n].visible = false }
-model.pages.add("Optical Core")
-model.layers.each { |l| l.visible = true }
-
-# Per-component scenes — the translucent Shell (context) + one subsystem each.
-["Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each { |t|
-  model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || l.name == t) }
-  model.pages.add(t)
+# Grouped scenes — translucent Shell (context) + the group's subsystems.
+[["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Ceiling Rail"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways"]]].each { |name, tags|
+  model.layers.each { |l| l.visible = (l == default_layer || l.name == "Shell" || tags.include?(l.name)) }
+  page = model.pages.add(name)
+  page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }
 
 model.commit_operation
-Sketchup.active_model.active_view.zoom_extents
 { success: true, model: "Overview",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }.to_json

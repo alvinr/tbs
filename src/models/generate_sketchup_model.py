@@ -67,6 +67,8 @@ from tbs_constants import (
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
     SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH,
     SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_HANGER_D,
+    EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
+    EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -98,13 +100,15 @@ C_LED_W = "#FFFFE0"     # white LED panel (Cct G)
 C_SAFE = "#CC2222"      # red safelight strip (Cct D)
 C_SWITCH = "#D8D8F0"    # pull-cord switch
 C_CORD = "#3A3A3A"      # pull cord
+C_EVAP = "#3DAA96"      # evaporative cooler (teal)
+C_DUCT = "#8090A0"      # vent ducting
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
-        "Light Seal", "Lighting"]
+        "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"]
 
 
 def mm(val):
@@ -383,6 +387,24 @@ def pinhole_assembly():
                           PH_X - a / 2, t, PH_H - a / 2,
                           a, 1, a,
                           color=C_PINHOLE))
+
+    # Exterior tilt-swing front standard (holds the pinhole plate, ±5.3°).
+    ext = -WALL_T                      # exterior wall face
+    base = 340
+    parts.append(ruby_box("TS Base Plate (wall mount)",
+                          PH_X - base / 2, ext - 12, PH_H - base / 2,
+                          base, 12, base, color=C_STEEL))
+    bd = 280
+    parts.append(ruby_box("Pinhole Tilt-Swing Board",
+                          PH_X - bd / 2, ext - 40, PH_H - bd / 2,
+                          bd, 16, bd, color=C_ALUM))
+    # Tilt knob (bottom) + swing knob (right edge).
+    parts.append(ruby_box("TS Tilt Knob",
+                          PH_X - 15, ext - 60, PH_H - bd / 2 - 25,
+                          30, 25, 30, color=C_STEEL))
+    parts.append(ruby_box("TS Swing Knob",
+                          PH_X + bd / 2, ext - 60, PH_H - 15,
+                          25, 25, 30, color=C_STEEL))
 
     return '\n'.join(parts)
 
@@ -789,9 +811,12 @@ def electrical():
                           EP_X, 0, EP_H_LO,
                           EP_W, ep_d, EP_H_HI - EP_H_LO, color=C_ELEC))
 
-    parts.append(ruby_box("Battery Bank (2x LiFePO4)",
-                          BA_X, 0, BA_H_LO,
-                          BA_W, BA_D, BA_H_HI - BA_H_LO, color=C_BATT))
+    # Battery bank — 2× LiFePO4 side by side.
+    bw = (BA_W - 20) / 2
+    for i, bx in enumerate((BA_X, BA_X + bw + 20)):
+        parts.append(ruby_box(f"Battery {i + 1} (12V 100Ah LiFePO4)",
+                              bx, 0, BA_H_LO,
+                              bw, BA_D, BA_H_HI - BA_H_LO, color=C_BATT))
 
     # External power panel — flush in the exterior face (Yd<0), shown ghosted.
     parts.append(ruby_box("Ext. Power Panel (exterior)",
@@ -910,6 +935,54 @@ def lighting_wiring():
     return '\n'.join(parts)
 
 
+# ── Evaporative cooler + vent duct (exterior) ────────────────────────────────
+
+def evap_cooler():
+    """External evaporative cooler + supply duct through the pinhole wall.
+
+    The cooler sits on the exterior of the pinhole wall; a Ø200 duct passes
+    through the wall penetration (X=1000, Z=1900) into the container.
+    """
+    parts = []
+    ext = -WALL_T
+    cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 600 × 350 × 800
+    cx = EVAP_DUCT_X - cw / 2
+    cz = EVAP_DUCT_Z - ch / 2
+    parts.append(ruby_box("Evap Cooler (exterior)",
+                          cx, ext - cd, cz, cw, cd, ch, color=C_EVAP))
+
+    # Supply duct (shown square, EVAP_DUCT_D) from the cooler through the wall.
+    dd = EVAP_DUCT_D
+    parts.append(ruby_box("Evap Supply Duct",
+                          EVAP_DUCT_X - dd / 2, ext - cd, EVAP_DUCT_Z - dd / 2,
+                          dd, cd + WALL_T + 150, dd, color=C_DUCT))
+
+    return '\n'.join(parts)
+
+
+# ── Water / waste hookups (IBC-end wall, exterior) ───────────────────────────
+
+def water_hookups():
+    """Remote water-fill + waste-drain hookups on the IBC-end wall (exterior).
+
+    2" NPT bulkhead fittings centered in Yd on the X=C_LEN end wall: fill high,
+    two waste drains low. IBCs fill/drain remotely through these.
+    """
+    parts = []
+    wx = C_LEN          # IBC-end wall
+    yd = EXT_FILL_YD    # 1181 — centered
+    bw = 100
+    hooks = [("Water Fill Hookup (2in NPT)", EXT_FILL_H, C_IBC_BLUE),
+             ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_3_H, C_IBC_BROWN),
+             ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_H, C_IBC_WASTE)]
+    for nm, hz, col in hooks:
+        parts.append(ruby_box(nm,
+                              wx + 5, yd - bw / 2, hz - bw / 2,
+                              bw, bw, bw, color=col))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -931,6 +1004,8 @@ def generate_ruby():
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
+        component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
+        component("Water/Waste Hookups", "Water Hookups", water_hookups()),
     ]
     body = '\n'.join(comps)
 
@@ -989,7 +1064,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

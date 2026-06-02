@@ -24,7 +24,7 @@
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$14,144** | **$18,291** | **$24,072** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$14,144** | **$18,391** | **$24,072** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -206,10 +206,10 @@ Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demounta
 | Item | ICP # | Spec | Qty | Unit | Total |
 |------|-------|------|-----|------|-------|
 | Mild steel RHS sq. tube 50×50×3mm | ICP-11 | 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order 30 m | 30 m | ~$7/ft est. | ~$230 |
-| Square tube saddle clamp 50mm | ICP-12 | One per rail/beam intersection (8 corners × 2 portals) | 16 | ~$10 est. | ~$160 |
-| M8×20mm knurled thumbscrew DIN 464 SS | ICP-13 | 2 per clamp × 16 = 32 working + 8 spares | 40 | ~$3 est. | ~$115 |
+| Square tube saddle clamp 50mm | ICP-12 | 4 corners per portal × 2 clamps per corner × 2 portals = 16 | 16 | ~$10 est. | ~$160 |
+| M8×20mm knurled thumbscrew DIN 464 SS | ICP-13 | 2 per clamp × 16 = 32 working + 8 spares | 40 | ~$3 est. | ~$120 |
 | Quick-release ball-lock pin Ø10mm SS | ICP-14 | Left-rail demount: 4 working + 4 spares | 8 | ~$8 est. | ~$65 |
-| **Brace cage subtotal** | | | | | **~$570** |
+| **Brace cage subtotal** | | | | | **~$575** |
 
 *All brace-cage costs are estimates — pricing to be confirmed at time of procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
 
@@ -227,7 +227,7 @@ Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demounta
 |----------|-------|
 | Structural & rails | $1,260 |
 | Film frame & backing (incl. clamps) | $1,450–1,910 |
-| Demountable brace cage (ICP-11–14) | ~$570 |
+| Demountable brace cage (ICP-11–14) | ~$575 |
 | **Film plane mechanism (manual, incl. brace cage)** | **~$3,280–3,740** |
 | Electric actuation (optional add-on) | +$827 |
 

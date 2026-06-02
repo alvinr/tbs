@@ -65,10 +65,10 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# ── Idempotent rebuild: erase prior generated instances (keep 'Sree'), purge. ──
+# ── Idempotent rebuild: erase all prior groups/instances (incl. any template
+# scale figure) so this focused model frames tightly on the IBC assembly. ──
 to_erase = entities.to_a.select {{ |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)) &&
-  !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused

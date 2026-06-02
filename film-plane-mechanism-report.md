@@ -167,6 +167,19 @@ All items ship within the United States. Local Southern California pickup noted 
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 | Home Depot (local, all SoCal) | Uline | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot / Target (local) | Amazon | $12 |
 
+### Demountable Brace Cage
+
+Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews; the left-rail segment that swings clear for drum mode is retained with quick-release ball-lock pins.
+
+| Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
+|------|-------|------|-----|---------|---------|-----------|
+| Mild steel RHS square tube | ICP-11 | 50×50×3mm, cut to length — 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order ~30 m to allow saw kerf + saddle-seat cuts | 30 m | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | [Online Metals — 50mm×3mm sq. tube](https://www.onlinemetals.com/en/buy/carbon-steel/50mm-x-3mm-carbon-steel-square-tube-1018-metric-60-length/pid/22489) | ~$7/ft (~$23/m) est. |
+| Saddle clamp for 50mm RHS | ICP-12 | Two-piece bolt-together saddle — seats one tube over another at a joint; compatible with 50×50mm square tube | 16 | [McMaster-Carr — tube clamps](https://www.mcmaster.com/products/steel-tube-clamps/) | [Amazon — square tube clamps](https://www.amazon.com/2-square-tube-clamp/s?k=2%22+square+tube+clamp) | ~$8–12 est. |
+| M8 knurled thumbscrew DIN 464 | ICP-13 | M8×20mm, stainless steel 303, high-type knurled head — 2 per saddle clamp joint | 40 | [Amazon — DIN 464 M8 knurled SS](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — DIN 464 M8×20 SS](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) | ~$2–5 est. |
+| Quick-release ball-lock pin | ICP-14 | Ø10mm, 50mm usable length, stainless steel — retains demountable left-rail segment (2 joints × 2 pins = 4 off, plus 4 spares) | 8 | [McMaster-Carr — ball lock pins](https://www.mcmaster.com/products/ball-lock-pins/) | [Amazon — quick-release ball lock pins](https://www.amazon.com/quick-release-ball-lock-pins/s?k=quick+release+ball+lock+pins) | ~$6–10 est. |
+
+*Quantities basis: 4 verticals (2× portals × 2 sides, 2188mm each, Z 100–2288mm) + 4 cross-beams (2× portals × top+bottom, 4499mm each, X 150–4649mm) = 26.75 m net RHS; 30 m ordered for waste. 16 saddle clamps: 4 corners per portal × 2 clamps per corner × 2 portals = 16. 40 thumbscrews: 2 per clamp × 16 clamps = 32, plus 8 spares. 8 ball-lock pins: 2 joints on demountable left-rail segment × 2 pins + 4 spares.*
+
 ### Muslin Clamp System
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
@@ -179,9 +192,9 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation): ~$2,400**  
+**Estimated materials total (manual actuation, incl. brace cage): ~$2,900**  
 *Excludes fasteners, fabrication labour, and electric actuation option.*  
-*Net change vs two-beam design: removed 2× T-slot beams (–$416), added 2 leadscrews +$190, 2 handwheels +$70, 4 rod-end bearings +$88, 4 corner brackets +$80, 2 locking collars +$24 → net +$36.*
+*Net change vs two-beam design: removed 2× T-slot beams (–$416), added 2 leadscrews +$190, 2 handwheels +$70, 4 rod-end bearings +$88, 4 corner brackets +$80, 2 locking collars +$24, brace cage +$575 (est.) → net +$611.*
 
 ### Local SoCal Metal Sourcing
 

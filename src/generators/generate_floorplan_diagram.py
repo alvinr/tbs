@@ -455,6 +455,73 @@ def floor_plan():
         (C_ALUM,     "Ext power panel (flush-mount, exterior)"),
     ], 0, leg_y_top, cols=3, col_w=1900, font=FONT, zorder=8)
 
+    # ── Film left-rail demountable segment (drum-mode clearance) ─────────────
+    # The LEFT RAIL (X=RAIL_X_L=150mm) passes through the drum volume.
+    # The segment spanning Yd=806–1556 is DEMOUNTABLE so the drum can rotate
+    # ("drum mode"); carriage parks at Yd=2262 during drum mode.
+    # Show this segment as a dashed orange overlay on the rail line.
+    ax.plot([RAIL_X_L, RAIL_X_L],
+            [BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1],
+            color="#C07030", lw=4.0, ls=(0, (6, 3)), zorder=7, alpha=0.85,
+            solid_capstyle="round")
+    # Leader + note to the left (in the left end zone / exterior pad area)
+    NOTE_NX = -PAD_L + 120
+    NOTE_NY = (BRACE_LEFT_DEMOUNT_Y0 + BRACE_LEFT_DEMOUNT_Y1) / 2  # 1181
+    ax.annotate("",
+                xy=(RAIL_X_L, NOTE_NY),
+                xytext=(NOTE_NX + 600, NOTE_NY),
+                arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
+                zorder=10)
+    ax.text(NOTE_NX + 580, NOTE_NY + 80,
+            f"FILM LEFT-RAIL SEGMENT DEMOUNTS FOR DRUM (drum mode)\n"
+            f"X={RAIL_X_L}mm  Yd={BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}mm\n"
+            f"Swings clear for drum rotation · carriage parks at Yd={CARRIAGE_PARK_Y}",
+            ha="right", va="bottom", fontsize=6.0, color="#7A3A00",
+            fontweight="bold", **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#C07030", lw=0.9))
+
+    # ── Ghost overlays — in-envelope walkway sections (REMOVED for film-mech clearance) ──
+    # The walkway portions inside the film-plane mechanism envelope
+    # (X 150–4649, Yd 100–2262) are permanently removed.  Ghost them with the
+    # same treatment as generate_walkway_diagram.py so both drawings agree.
+    FM_YD_N = 100    # film-mechanism envelope near Yd boundary
+    FM_YD_F = 2262   # film-mechanism envelope far Yd boundary (= FP_Y / CARRIAGE_PARK_Y)
+
+    C_GHOST_WK   = "#CC4422"   # red-orange (matches walkway drawing)
+    GHOST_WK_A   = 0.18        # ghost fill alpha
+    GHOST_WK_A_E = 0.70        # ghost edge alpha
+
+    def _ghost_rect(ax, x0, y0, w, h, zorder=12):
+        """Overlay a ghosted cross-hatched rectangle to mark a removed walkway section."""
+        ax.add_patch(Rectangle((x0, y0), w, h,
+                                fc=C_GHOST_WK, ec="none", lw=0,
+                                alpha=GHOST_WK_A, zorder=zorder))
+        ax.add_patch(Rectangle((x0, y0), w, h,
+                                fc="none", ec=C_GHOST_WK, lw=1.5, ls=(0, (6, 4)),
+                                alpha=GHOST_WK_A_E, zorder=zorder + 1))
+        import matplotlib.patches as _mp
+        ax.add_patch(_mp.Rectangle((x0, y0), w, h,
+                                   fc="none", ec=C_GHOST_WK, lw=0.5,
+                                   hatch="////", alpha=0.30, zorder=zorder))
+
+    # NEAR: inner strip Yd 100–300, full span X 470–4329
+    _ghost_rect(ax, LXR, FM_YD_N, RX - LXR, NYI - FM_YD_N)
+    # FAR: inner strip Yd 2062–2262, full span X 470–4329
+    _ghost_rect(ax, LXR, FY, RX - LXR, FM_YD_F - FY)
+    # LEFT: inner Yd span 100–2262, full width X 170–470
+    _ghost_rect(ax, LX, FM_YD_N, W, FM_YD_F - FM_YD_N)
+    # RIGHT: inner Yd span 100–2262, full width X 4329–4629
+    _ghost_rect(ax, RX, FM_YD_N, W, FM_YD_F - FM_YD_N)
+
+    # ── Dropped-walkway note (film-mechanism envelope) ────────────────────────
+    ax.text((ZONE_L_END + ZONE_R_START) / 2, -PAD_B + 480,
+            "NOTE: Walkway sections inside film-mechanism envelope\n"
+            f"(X={ZONE_L_END}–{ZONE_R_START}mm, Yd 100–{CARRIAGE_PARK_Y}mm) are DROPPED — "
+            "see walkway drawing for detail.",
+            ha="center", va="top", fontsize=6.5, color="#AA3300",
+            style="italic", **FONT, zorder=10,
+            bbox=dict(boxstyle="round,pad=0.3", fc="#FFF0EE", ec="#AA3300", lw=0.8))
+
     # ── Egress path annotation ─────────────────────────────────────────────────
     # With drums eliminated, the full container width (2362mm) is clear for egress.
     # Panel opens 180° outward, light trap drum swings out with it.

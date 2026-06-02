@@ -17,3 +17,6 @@ logo-final.png
 .env.private
 .env.private*
 *.swp
+
+# Sketchfab push marker (local state)
+.sketchfab-pushed

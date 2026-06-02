@@ -33,6 +33,7 @@ Usage
 
 import os
 import sys
+import math
 import argparse
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
@@ -651,22 +652,66 @@ def film_plane_mechanism():
 
 # ── Light-trap drum (revolving entry) ────────────────────────────────────────
 
-def light_trap_drum():
-    """Revolving light-trap drum at the cargo-door end — vertical Ø750 cylinder.
+def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
+                  color=None, alpha=None, n=48):
+    """Hollow curved wall (annular sector, extruded in +Z) with a gap.
 
-    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. Translucent cream
-    shell with a 4-quadrant turnstile (two crossed vanes) so it reads as a
-    revolving entry. Half sits in the doorway (X 0–375 inside; X<0 protrudes out
-    the cargo end). It deliberately overlaps the demountable left-rail segment —
-    that's why that rail segment swings clear ("drum mode").
+    The gap (an opening of `gap_deg` centred on `gap_center_deg`) reads as a
+    doorway/entry slot in the cylinder. Built as a closed band polygon (outer
+    arc forward + inner arc back) then pushpulled to `height`.
+    """
+    ri = r - wall_t
+    a0 = math.radians(gap_center_deg + gap_deg / 2.0)
+    a1 = math.radians(gap_center_deg + 360.0 - gap_deg / 2.0)
+    pts = []
+    for i in range(n + 1):
+        a = a0 + (a1 - a0) * i / n
+        pts.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+    for i in range(n, -1, -1):
+        a = a0 + (a1 - a0) * i / n
+        pts.append((cx + ri * math.cos(a), cy + ri * math.sin(a)))
+    pts_ruby = ', '.join(f'[{mm(round(x, 2))},{mm(round(y, 2))},0]' for x, y in pts)
+
+    lines = [
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  ge = grp.entities',
+        f'  face = ge.add_face([{pts_ruby}])',
+        f'  face.reverse! if face.normal.z < 0',
+        f'  face.pushpull({mm(height)})',
+    ]
+    if color:
+        r_, g_, b_ = hex_to_rgb(color)
+        lines.append(f'  mat = model.materials["{name}"] || '
+                     f'model.materials.add("{name}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({r_}, {g_}, {b_})')
+        if alpha is not None:
+            lines.append(f'  mat.alpha = {alpha}')
+        lines.append(f'  grp.material = mat')
+    lines.append('')
+    return '\n'.join(lines)
+
+
+def light_trap_drum():
+    """Revolving light-trap drum at the cargo-door end — hollow Ø750 drum.
+
+    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. A faint translucent
+    curved shell with a ~100° ENTRY SLOT facing −X (outside the container), plus
+    a 4-quadrant turnstile (two crossed vanes). Half sits in the doorway (X
+    0–375 inside; the entry/−X half protrudes out the cargo end). It deliberately
+    overlaps the demountable left-rail segment — that's why that segment swings
+    clear ("drum mode").
     """
     parts = []
     r, h = DRUM_R, DRUM_H_LT
     cx, cy = DRUM_CX, DRUM_CY
 
-    parts.append(ruby_cylinder("LT Drum Shell",
-                               cx, cy, 0, r, h,
-                               color=C_DRUM, alpha=0.35, n=32))
+    # Hollow shell with the entry slot opening toward −X (gap centred at 180°).
+    parts.append(ruby_arc_wall("LT Drum Shell (entry slot −X)",
+                               cx, cy, r, 12, h,
+                               gap_center_deg=180, gap_deg=100,
+                               color=C_DRUM, alpha=0.18))
 
     vt = 6  # vane thickness — two crossed panels through the axis
     parts.append(ruby_box("LT Drum Vane (X-Z)",

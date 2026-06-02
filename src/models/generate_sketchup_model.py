@@ -1238,6 +1238,22 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
     return '\n'.join(out)
 
 
+def ruby_tee(name, node, run_dir, branch_dir, r, color=None, alpha=None, n=16):
+    """Tee fitting body at a branch point: a fat run-through stub (along
+    run_dir) plus a fat branch stub (along branch_dir), OD slightly larger than
+    the pipe — a real tee, not a butt junction. The three pipe runs plug into
+    its ports."""
+    rt = r * 1.35
+    L = r * 1.9
+    ru = _vunit(run_dir)
+    bu = _vunit(branch_dir)
+    a = _vadd(node, _vscale(ru, -L))
+    b = _vadd(node, _vscale(ru, L))
+    c = _vadd(node, _vscale(bu, L))
+    return '\n'.join([ruby_pipe(name, a, b, rt, color, alpha, n),
+                      ruby_pipe(name, node, c, rt, color, alpha, n)])
+
+
 def water_plumbing():
     """Water/waste plumbing routed orthogonally with swept-torus elbow fittings
     at every bend (per skill_plumbing_drawing), kept clear of the IBC footprint
@@ -1262,8 +1278,12 @@ def water_plumbing():
     def pipe(nm, wp, col):
         parts.append(ruby_pipe_run(nm, wp, pr, color=col))
 
-    # Exterior FILL (blue) → over the tote tops → Blue IBC fill ports.
+    # Exterior FILL (blue) → tee over the corridor → over the tote tops → Blue
+    # IBC fill ports. A tee fitting (run along Y, branch toward the inlet) splits
+    # the trunk to the two Blue totes.
     pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (nearX, cc, overZ)], C_BLUE)
+    parts.append(ruby_tee("Fill Tee", (nearX, cc, overZ),
+                          (0, 1, 0), (1, 0, 0), pr, color=C_BLUE))
     pipe("Fill → Blue #1",
          [(nearX, cc, overZ), (nearX, nY, overZ), (nearX, nY, topZ + 20)], C_BLUE)
     pipe("Fill → Blue #2",
@@ -1292,11 +1312,20 @@ def water_plumbing():
          [(nearX, EQPANEL_YD_FAR, loVZ), (nearX, 1240, loVZ), (pumpX, 1240, loVZ),
           (pumpX, 1240, pumpZ)], C_IBC_WASTE)
 
-    # Processing-tray sump → floor → around the IBC zone → up to the pump.
+    # Processing-tray sump (per water-system Detail A): pickup riser UP through
+    # the cantilevered near-walkway grate to the valve above deck, back DOWN
+    # through the grate, then routed UNDERNEATH at floor level (Z=30 — below the
+    # 50mm grate AND the Z=100 film-plane rails) through the tray–IBC gap into
+    # the corridor and up to the pump. Keeps the film-plane structure clear.
+    gapX = (PROC_TRAY_X_R + IBC_COL_X) / 2     # 4651.5 — centered in the 45mm gap
+    valveZ = WALKWAY_H + 65                     # 130 — valve body above the deck
     pipe("Tray Sump → Pump",
          [(PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z),
-          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, 200),
-          (PROC_TRAY_DRAIN_X, cc, 200), (4900, cc, 200), (4900, cc, pumpZ)],
+          (PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, valveZ),
+          (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, valveZ),
+          (PROC_TRAY_DRAIN_X + 70, PROC_TRAY_DRAIN_YD, 30),
+          (gapX, PROC_TRAY_DRAIN_YD, 30),
+          (gapX, cc, 30), (4900, cc, 30), (4900, cc, pumpZ)],
          C_IBC_WASTE)
 
     # Pump → filters → spray-bar Blue trunk.

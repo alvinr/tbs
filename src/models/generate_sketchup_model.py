@@ -92,12 +92,14 @@ C_VANE = "#778088"      # drum turnstile vanes
 C_ELEC = "#F5C518"      # electrical panel (EP)
 C_BATT = "#6A5ACD"      # battery bank (LiFePO4)
 C_SHELF = "#C8B06A"     # chemistry prep shelf (warm gold)
+C_GASKT = "#5A3020"     # EPDM perimeter light seal
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
-        "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"]
+        "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
+        "Light Seal"]
 
 
 def mm(val):
@@ -823,6 +825,42 @@ def shelf():
     return '\n'.join(parts)
 
 
+# ── Light sealing (EPDM perimeter seal + hinges) ─────────────────────────────
+
+def light_seal():
+    """EPDM perimeter light seal + hinges for the cargo-door light-trap panel.
+
+    The hinged panel (cargo-door end, X≈0, with the revolving drum in its
+    center) light-seals against the container opening. The EPDM gasket runs as
+    a frame around the opening perimeter (just inside the panel); the hinges
+    are on one vertical edge (Yd=0).
+    """
+    parts = []
+    gw, gt = 40, 20                    # gasket face width, thickness in X
+    x0 = PANEL_CENTER_T                # 120 — at the panel inner face
+    z_bot, z_top = PANEL_FLOOR_GAP, C_HGT   # 80 … 2388 opening
+    yd_max = C_WID                     # 2362
+
+    # Perimeter gasket frame — 4 strips around the opening (YZ plane at X≈120).
+    parts.append(ruby_box("EPDM Seal Bottom",
+                          x0, 0, z_bot, gt, yd_max, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM Seal Top",
+                          x0, 0, z_top - gw, gt, yd_max, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM Seal Left",
+                          x0, 0, z_bot, gt, gw, z_top - z_bot, color=C_GASKT))
+    parts.append(ruby_box("EPDM Seal Right",
+                          x0, yd_max - gw, z_bot, gt, gw, z_top - z_bot,
+                          color=C_GASKT))
+
+    # Hinges on the left vertical edge (Yd=0), straddling the panel exterior.
+    hw, hh, hd = 30, 120, 60
+    for hz in (300, 1184, 2050):
+        parts.append(ruby_box("Hinge",
+                              -hd / 2, 0, hz, hd, hw, hh, color=C_STEEL))
+
+    return '\n'.join(parts)
+
+
 # ── Assemble full Ruby script ────────────────────────────────────────────────
 
 def generate_ruby():
@@ -842,6 +880,7 @@ def generate_ruby():
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Electrical", "Electrical", electrical()),
         component("Chemistry Shelf", "Shelf", shelf()),
+        component("Light Seal & Hinges", "Light Seal", light_seal()),
     ]
     body = '\n'.join(comps)
 
@@ -900,7 +939,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

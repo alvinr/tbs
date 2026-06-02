@@ -34,6 +34,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Light Trap") unless model.layers["Light Trap"]
   model.layers.add("Electrical") unless model.layers["Electrical"]
   model.layers.add("Shelf") unless model.layers["Shelf"]
+  model.layers.add("Light Seal") unless model.layers["Light Seal"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -1085,12 +1086,89 @@ end
   inst.name = "Chemistry Shelf"
   inst.layer = model.layers["Shelf"]
 
+  # ═══ Light Seal & Hinges ═══
+  defn = model.definitions.add("Light Seal & Hinges")
+  ents = defn.entities
+  # EPDM Seal Bottom
+  grp = ents.add_group
+  grp.name = "EPDM Seal Bottom"
+  face = grp.entities.add_face([120.mm,0.mm,80.mm], [140.mm,0.mm,80.mm], [140.mm,2362.mm,80.mm], [120.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  grp.material = mat
+
+  # EPDM Seal Top
+  grp = ents.add_group
+  grp.name = "EPDM Seal Top"
+  face = grp.entities.add_face([120.mm,0.mm,2348.mm], [140.mm,0.mm,2348.mm], [140.mm,2362.mm,2348.mm], [120.mm,2362.mm,2348.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["EPDM Seal Top"] || model.materials.add("EPDM Seal Top")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  grp.material = mat
+
+  # EPDM Seal Left
+  grp = ents.add_group
+  grp.name = "EPDM Seal Left"
+  face = grp.entities.add_face([120.mm,0.mm,80.mm], [140.mm,0.mm,80.mm], [140.mm,40.mm,80.mm], [120.mm,40.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2308.mm)
+  mat = model.materials["EPDM Seal Left"] || model.materials.add("EPDM Seal Left")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  grp.material = mat
+
+  # EPDM Seal Right
+  grp = ents.add_group
+  grp.name = "EPDM Seal Right"
+  face = grp.entities.add_face([120.mm,2322.mm,80.mm], [140.mm,2322.mm,80.mm], [140.mm,2362.mm,80.mm], [120.mm,2362.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2308.mm)
+  mat = model.materials["EPDM Seal Right"] || model.materials.add("EPDM Seal Right")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  grp.material = mat
+
+  # Hinge
+  grp = ents.add_group
+  grp.name = "Hinge"
+  face = grp.entities.add_face([-30.mm,0.mm,300.mm], [30.mm,0.mm,300.mm], [30.mm,30.mm,300.mm], [-30.mm,30.mm,300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(120.mm)
+  mat = model.materials["Hinge"] || model.materials.add("Hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Hinge
+  grp = ents.add_group
+  grp.name = "Hinge"
+  face = grp.entities.add_face([-30.mm,0.mm,1184.mm], [30.mm,0.mm,1184.mm], [30.mm,30.mm,1184.mm], [-30.mm,30.mm,1184.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(120.mm)
+  mat = model.materials["Hinge"] || model.materials.add("Hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # Hinge
+  grp = ents.add_group
+  grp.name = "Hinge"
+  face = grp.entities.add_face([-30.mm,0.mm,2050.mm], [30.mm,0.mm,2050.mm], [30.mm,30.mm,2050.mm], [-30.mm,30.mm,2050.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(120.mm)
+  mat = model.materials["Hinge"] || model.materials.add("Hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Light Seal & Hinges"
+  inst.layer = model.layers["Light Seal"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1102,7 +1180,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

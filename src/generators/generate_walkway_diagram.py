@@ -806,6 +806,102 @@ def sheet1():
                 backgroundcolor="#FFFFFF",
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
+    # ── Film-mechanism clearance zones (ghosted "REMOVED" overlays) ────────────
+    # The film-plane mechanism occupies X 150–4649, Yd 100–2262.
+    # Perimeter walkway sections that fall INSIDE that envelope are permanently
+    # removed to give the brace-cage bottom members a clear floor band.
+    # They are rendered as ghosted dashed outlines + cross-hatch so the
+    # engineering intent is documented rather than silently deleted.
+    #
+    # In-envelope portions (plan view):
+    #   NEAR walkway  — Yd 100–300, X 470–4629  (inner 200mm of the 300mm section)
+    #   FAR walkway   — Yd 2062–2262, X 470–4629  (inner 200mm of the 300mm section)
+    #   LEFT walkway  — X 170–470, Yd 100–2262   (full width, inner Yd span)
+    #   RIGHT walkway — X 4329–4629, Yd 100–2262  (full width, inner Yd span)
+    #
+    # Out-of-envelope walkway (remains intact):
+    #   NEAR wall strip  Yd 0–100    (against pinhole wall)
+    #   FAR wall strip   Yd 2262–2362 (against far wall)
+    #   LEFT corner pads Yd 0–100 and Yd 2262–2362 (corner junction zones)
+    #   RIGHT corner pads Yd 0–100 and Yd 2262–2362 (corner junction zones)
+
+    FM_YD_N = 100   # film-mechanism envelope near Yd boundary
+    FM_YD_F = 2262  # film-mechanism envelope far Yd boundary
+
+    C_GHOST   = "#CC4422"   # red-orange for removed sections
+    GHOST_A   = 0.18        # ghost fill alpha
+    GHOST_A_E = 0.70        # ghost edge alpha
+
+    def _ghost_rect(ax, x0, y0, w, h, zorder=12):
+        """Overlay a ghosted cross-hatched rectangle to mark a removed section."""
+        # Filled ghost (very light)
+        ax.add_patch(Rectangle((x0, y0), w, h,
+                                fc=C_GHOST, ec="none", lw=0,
+                                alpha=GHOST_A, zorder=zorder))
+        # Dashed outline
+        ax.add_patch(Rectangle((x0, y0), w, h,
+                                fc="none", ec=C_GHOST, lw=1.5, ls=(0, (6, 4)),
+                                alpha=GHOST_A_E, zorder=zorder + 1))
+        # Diagonal cross-hatch lines (manual — so alpha applies correctly)
+        import matplotlib.patches as _mp
+        ax.add_patch(_mp.Rectangle((x0, y0), w, h,
+                                   fc="none", ec=C_GHOST, lw=0.5,
+                                   hatch="////", alpha=0.30, zorder=zorder))
+
+    # NEAR walkway — ghost the inner strip (Yd 100–300 × full X span LXR–TR)
+    _ghost_rect(ax, LXR, FM_YD_N, TR - LXR, NYI - FM_YD_N)
+
+    # FAR walkway — ghost the inner strip (Yd 2062–2262 × full X span LXR–TR)
+    _ghost_rect(ax, LXR, FY, TR - LXR, FM_YD_F - FY)
+
+    # LEFT walkway — ghost the inner Yd span (X 170–470, Yd 100–2262)
+    _ghost_rect(ax, LX, FM_YD_N, W, FM_YD_F - FM_YD_N)
+
+    # RIGHT walkway — ghost the inner Yd span (X 4329–4629, Yd 100–2262)
+    _ghost_rect(ax, RX, FM_YD_N, W, FM_YD_F - FM_YD_N)
+
+    # ── Film-mechanism clearance note + leaders ───────────────────────────────
+    # Centered note in the ghost zone; leaders from near/far/left/right removed strips.
+    note_cx = (LXR + TR) / 2
+    note_cy = (FM_YD_N + NYI) / 2   # center of near ghost strip
+
+    # Large centered note (inside the container, above tray label)
+    ax.text(note_cx, (FM_YD_N + FM_YD_F) / 2,
+            "WALKWAY DROPPED IN\nFILM-MECHANISM ZONE\n"
+            "— see film-plane mechanism dwg;\naccess from container ends",
+            ha="center", va="center", fontsize=7, color=C_GHOST,
+            fontweight="bold", **FONT, zorder=20, alpha=0.65,
+            bbox=dict(boxstyle="round,pad=0.4", fc="#FFFFFF", ec=C_GHOST,
+                      lw=1.2, alpha=0.80))
+
+    # Leader for near ghost strip
+    leader(ax, note_cx, NYI - 20,
+           note_cx, NYI + 220,
+           f"NEAR STRIP\nYd {FM_YD_N}–{NYI}mm REMOVED\n(film-mech clearance)",
+           color=C_GHOST, fs=5.5,
+           ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Leader for far ghost strip
+    leader(ax, note_cx, FY + 20,
+           note_cx, FY - 220,
+           f"FAR STRIP\nYd {FY}–{FM_YD_F}mm REMOVED\n(film-mech clearance)",
+           color=C_GHOST, fs=5.5,
+           ha="center", va="top", arrow_style="-|>", font=FONT)
+
+    # Leader for left ghost strip
+    leader(ax, LX + W / 2, (FM_YD_N + FM_YD_F) / 2,
+           LX - 400, (FM_YD_N + FM_YD_F) / 2,
+           f"LEFT WALKWAY INTERIOR\nYd {FM_YD_N}–{FM_YD_F}mm REMOVED\n(film-mech clearance)",
+           color=C_GHOST, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # Leader for right ghost strip
+    leader(ax, RX + W / 2, (FM_YD_N + FM_YD_F) / 2,
+           RX + W + 400, (FM_YD_N + FM_YD_F) / 2,
+           f"RIGHT WALKWAY INTERIOR\nYd {FM_YD_N}–{FM_YD_F}mm REMOVED\n(film-mech clearance)",
+           color=C_GHOST, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
     # ── Corner joints ────────────────────────────────────────────────────────
     # All corners are butt joints (same walkway width on all sides)
     # Right corners
@@ -988,6 +1084,7 @@ def sheet1():
     # ── Legend ────────────────────────────────────────────────────────────────
     draw_legend(ax, [
         (C_WK,       WK_ALPHA, "xx",  "Walkway (grated deck)"),
+        (C_GHOST,    GHOST_A,  None,  "Walkway REMOVED — film-mechanism clearance (see note 11)"),
         ("#E8F0FF",  0.3,      None,  "Processing tray"),
         (C_BRKT,     1.0,      None,  f"Wall bracket ({WALKWAY_BRACKET_T}mm std)"),
         ("#CC6644",  1.0,      None,  f"Widened bracket ({WALKWAY_WIDE_BRACKET_T}mm, 500mm arm)"),
@@ -1020,6 +1117,12 @@ def sheet1():
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
         f"10. WIDENED BRACKETS (2): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular",
         f"    pattern. 500mm arm reach for EP + battery access. See Sheet 2 View C.",
+        f"11. FILM-MECHANISM CLEARANCE (hatched red-orange zones): perimeter walkway sections",
+        f"    inside the film-plane mechanism envelope (X 150–4649, Yd 100–2262) are PERMANENTLY",
+        f"    REMOVED — the brace cage bottom members require a clear floor band in that zone.",
+        f"    Retained sections: near wall strip (Yd 0–100), far wall strip (Yd 2262–2362),",
+        f"    and corner pads at container ends (Yd 0–100 / 2262–2362). Access from container ends.",
+        f"    See film-plane mechanism drawing for cage geometry.",
     ]
     draw_notes(ax, notes, 1500,
                -PAD_Y_BOT + 350 + (len(notes) - 1) * 44,

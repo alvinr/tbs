@@ -251,6 +251,41 @@ def draw_sheet1():
             ha="center", va="center", fontsize=7.0, color="#2D6A2D",
             fontweight="bold", rotation=90)
 
+    # ── Film left-rail demountable segment — drum-mode clearance note ─────────
+    # The film-plane LEFT RAIL (X=150mm in container coords) passes through the
+    # drum volume (Yd 806–1556mm). That rail segment is demountable so the drum
+    # can rotate in "drum mode"; the carriage parks at Yd=2262 during drum mode.
+    # In this schematic longitudinal section the left rail is not drawn (it runs
+    # perpendicular to this view), but we add a callout note above the drum box
+    # so the relationship is documented on this sheet.
+    DRUM_BOX_X = CX + CW        # 21.8 — drum box left edge in drawing coords
+    DRUM_BOX_MID_Y = CY + CH / 2  # vertical centre of drum box (~7.5)
+    DRUM_BOX_TOP_Y = CY + CH      # 11.0 — top of drum box
+    # Note box — placed above the drum box, within canvas (xlim 0–24, ylim 0–13).
+    # Right-aligned to X=23.9 so it stays inside the axis xlim=24.
+    NOTE_RX = 23.90               # right edge of note box
+    NOTE_W  = 3.70                # note box width
+    NOTE_H  = 1.10                # note box height
+    NOTE_LX = NOTE_RX - NOTE_W    # left edge = 20.20
+    NOTE_CX = NOTE_LX + NOTE_W / 2  # 22.05 — centre
+    NOTE_CY = DRUM_BOX_TOP_Y + 0.90  # 11.90 — above drum box
+    ax.add_patch(mpatches.FancyBboxPatch(
+        (NOTE_LX, NOTE_CY - NOTE_H / 2), NOTE_W, NOTE_H,
+        boxstyle="round,pad=0.06", fc="#FFFBE6", ec="#C07030", lw=1.0,
+        zorder=11))
+    ax.text(NOTE_CX, NOTE_CY,
+            "FILM LEFT-RAIL SEGMENT SWINGS CLEAR FOR\n"
+            "DRUM ROTATION (drum mode)\n"
+            "Rail Yd 806–1556 demountable · carriage parks at Yd=2262",
+            ha="center", va="center", fontsize=6.5, color="#7A3A00",
+            fontweight="bold", zorder=12)
+    # Leader arrow from note bottom to drum box top-centre
+    DRUM_BOX_CX = DRUM_BOX_X + 0.75   # 22.55 — drum box horizontal centre
+    ax.annotate("", xy=(DRUM_BOX_CX, DRUM_BOX_TOP_Y),
+                xytext=(NOTE_CX, NOTE_CY - NOTE_H / 2),
+                arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
+                zorder=12)
+
     # Operating modes table (shifted down to clear cooler outside container)
     MX, MY = CX, CY - 1.6
     ax.add_patch(mpatches.FancyBboxPatch((MX - 0.1, MY - 1.45), CW + 0.2, 1.55,

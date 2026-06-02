@@ -2,12 +2,19 @@ model = Sketchup.active_model
 model.start_operation("TBS-001 Phase 1", true)
 entities = model.active_entities
 
+# Display in millimeters (LengthUnit 2 = mm, LengthFormat 0 = decimal).
+# SketchUp stores geometry in inches internally; this only sets the UI readout.
+opts = model.options["UnitsOptions"]
+opts["LengthUnit"] = 2
+opts["LengthFormat"] = 0
+opts["LengthPrecision"] = 1
+
   # Container Floor
   grp = entities.add_group
   grp.name = "Container Floor"
-  face = grp.entities.add_face([0.0,0.0,-1.5748031496062993], [232.00787401574806,0.0,-1.5748031496062993], [232.00787401574806,92.99212598425197,-1.5748031496062993], [0.0,92.99212598425197,-1.5748031496062993])
+  face = grp.entities.add_face([0.mm,0.mm,-40.mm], [5893.mm,0.mm,-40.mm], [5893.mm,2362.mm,-40.mm], [0.mm,2362.mm,-40.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.5748031496062993)
+  face.pushpull(40.mm)
   mat = model.materials.add("Container Floor")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -15,9 +22,9 @@ entities = model.active_entities
   # Container Ceiling
   grp = entities.add_group
   grp.name = "Container Ceiling"
-  face = grp.entities.add_face([0.0,0.0,94.01574803149607], [232.00787401574806,0.0,94.01574803149607], [232.00787401574806,92.99212598425197,94.01574803149607], [0.0,92.99212598425197,94.01574803149607])
+  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [5893.mm,0.mm,2388.mm], [5893.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.5748031496062993)
+  face.pushpull(40.mm)
   mat = model.materials.add("Container Ceiling")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -25,9 +32,9 @@ entities = model.active_entities
   # Pinhole Wall (Yd=0)
   grp = entities.add_group
   grp.name = "Pinhole Wall (Yd=0)"
-  face = grp.entities.add_face([0.0,-1.5748031496062993,0.0], [232.00787401574806,-1.5748031496062993,0.0], [232.00787401574806,0.0,0.0], [0.0,0.0,0.0])
+  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [5893.mm,-40.mm,0.mm], [5893.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(94.01574803149607)
+  face.pushpull(2388.mm)
   mat = model.materials.add("Pinhole Wall (Yd=0)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -35,9 +42,9 @@ entities = model.active_entities
   # Film Plane Wall (Yd=max)
   grp = entities.add_group
   grp.name = "Film Plane Wall (Yd=max)"
-  face = grp.entities.add_face([0.0,92.99212598425197,0.0], [232.00787401574806,92.99212598425197,0.0], [232.00787401574806,94.56692913385827,0.0], [0.0,94.56692913385827,0.0])
+  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm], [5893.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(94.01574803149607)
+  face.pushpull(2388.mm)
   mat = model.materials.add("Film Plane Wall (Yd=max)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -45,9 +52,9 @@ entities = model.active_entities
   # Far End Wall (IBC end)
   grp = entities.add_group
   grp.name = "Far End Wall (IBC end)"
-  face = grp.entities.add_face([232.00787401574806,0.0,0.0], [233.58267716535437,0.0,0.0], [233.58267716535437,92.99212598425197,0.0], [232.00787401574806,92.99212598425197,0.0])
+  face = grp.entities.add_face([5893.mm,0.mm,0.mm], [5933.mm,0.mm,0.mm], [5933.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(94.01574803149607)
+  face.pushpull(2388.mm)
   mat = model.materials.add("Far End Wall (IBC end)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -55,9 +62,9 @@ entities = model.active_entities
   # Processing Tray Floor
   grp = entities.add_group
   grp.name = "Processing Tray Floor"
-  face = grp.entities.add_face([6.692913385826772,3.1496062992125986,0.0], [182.244094488189,3.1496062992125986,0.0], [182.244094488189,89.76377952755905,0.0], [6.692913385826772,89.76377952755905,0.0])
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.07874015748031496)
+  face.pushpull(2.mm)
   mat = model.materials.add("Processing Tray Floor")
   mat.color = Sketchup::Color.new(232, 245, 233)
   mat.alpha = 0.5
@@ -66,9 +73,9 @@ entities = model.active_entities
   # Tray Rim Near
   grp = entities.add_group
   grp.name = "Tray Rim Near"
-  face = grp.entities.add_face([6.692913385826772,3.1496062992125986,0.07874015748031496], [182.244094488189,3.1496062992125986,0.07874015748031496], [182.244094488189,3.2283464566929134,0.07874015748031496], [6.692913385826772,3.2283464566929134,0.07874015748031496])
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,82.mm,2.mm], [170.mm,82.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.8897637795275593)
+  face.pushpull(48.mm)
   mat = model.materials.add("Tray Rim Near")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -76,9 +83,9 @@ entities = model.active_entities
   # Tray Rim Far
   grp = entities.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([6.692913385826772,89.68503937007874,0.07874015748031496], [182.244094488189,89.68503937007874,0.07874015748031496], [182.244094488189,89.76377952755905,0.07874015748031496], [6.692913385826772,89.76377952755905,0.07874015748031496])
+  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [4629.mm,2278.mm,2.mm], [4629.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.8897637795275593)
+  face.pushpull(48.mm)
   mat = model.materials.add("Tray Rim Far")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -86,9 +93,9 @@ entities = model.active_entities
   # Tray Rim Left
   grp = entities.add_group
   grp.name = "Tray Rim Left"
-  face = grp.entities.add_face([6.692913385826772,3.1496062992125986,0.07874015748031496], [6.771653543307087,3.1496062992125986,0.07874015748031496], [6.771653543307087,89.76377952755905,0.07874015748031496], [6.692913385826772,89.76377952755905,0.07874015748031496])
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [172.mm,80.mm,2.mm], [172.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.8897637795275593)
+  face.pushpull(48.mm)
   mat = model.materials.add("Tray Rim Left")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -96,9 +103,9 @@ entities = model.active_entities
   # Tray Rim Right
   grp = entities.add_group
   grp.name = "Tray Rim Right"
-  face = grp.entities.add_face([182.16535433070868,3.1496062992125986,0.07874015748031496], [182.244094488189,3.1496062992125986,0.07874015748031496], [182.244094488189,89.76377952755905,0.07874015748031496], [182.16535433070868,89.76377952755905,0.07874015748031496])
+  face = grp.entities.add_face([4627.mm,80.mm,2.mm], [4629.mm,80.mm,2.mm], [4629.mm,2280.mm,2.mm], [4627.mm,2280.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(1.8897637795275593)
+  face.pushpull(48.mm)
   mat = model.materials.add("Tray Rim Right")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
@@ -106,9 +113,9 @@ entities = model.active_entities
   # Walkway Near (left section)
   grp = entities.add_group
   grp.name = "Walkway Near (left section)"
-  face = grp.entities.add_face([18.50393700787402,0.0,2.952755905511811], [45.472440944881896,0.0,2.952755905511811], [45.472440944881896,11.811023622047244,2.952755905511811], [18.50393700787402,11.811023622047244,2.952755905511811])
+  face = grp.entities.add_face([470.mm,0.mm,75.mm], [1155.mm,0.mm,75.mm], [1155.mm,300.mm,75.mm], [470.mm,300.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Near (left section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
@@ -116,9 +123,9 @@ entities = model.active_entities
   # Walkway Near (widened)
   grp = entities.add_group
   grp.name = "Walkway Near (widened)"
-  face = grp.entities.add_face([45.47244094488189,0.0,2.952755905511811], [103.50393700787401,0.0,2.952755905511811], [103.50393700787401,19.68503937007874,2.952755905511811], [45.47244094488189,19.68503937007874,2.952755905511811])
+  face = grp.entities.add_face([1155.mm,0.mm,75.mm], [2629.mm,0.mm,75.mm], [2629.mm,500.mm,75.mm], [1155.mm,500.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Near (widened)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
@@ -126,9 +133,9 @@ entities = model.active_entities
   # Walkway Near (right section)
   grp = entities.add_group
   grp.name = "Walkway Near (right section)"
-  face = grp.entities.add_face([103.50393700787401,0.0,2.952755905511811], [170.43307086614175,0.0,2.952755905511811], [170.43307086614175,11.811023622047244,2.952755905511811], [103.50393700787401,11.811023622047244,2.952755905511811])
+  face = grp.entities.add_face([2629.mm,0.mm,75.mm], [4329.mm,0.mm,75.mm], [4329.mm,300.mm,75.mm], [2629.mm,300.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Near (right section)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
@@ -136,9 +143,9 @@ entities = model.active_entities
   # Walkway Far
   grp = entities.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([18.50393700787402,81.18110236220473,2.952755905511811], [170.43307086614175,81.18110236220473,2.952755905511811], [170.43307086614175,92.99212598425197,2.952755905511811], [18.50393700787402,92.99212598425197,2.952755905511811])
+  face = grp.entities.add_face([470.mm,2062.mm,75.mm], [4329.mm,2062.mm,75.mm], [4329.mm,2362.mm,75.mm], [470.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Far")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
@@ -146,9 +153,9 @@ entities = model.active_entities
   # Walkway Right (IBC end)
   grp = entities.add_group
   grp.name = "Walkway Right (IBC end)"
-  face = grp.entities.add_face([170.43307086614175,0.0,2.952755905511811], [182.24409448818898,0.0,2.952755905511811], [182.24409448818898,92.99212598425197,2.952755905511811], [170.43307086614175,92.99212598425197,2.952755905511811])
+  face = grp.entities.add_face([4329.mm,0.mm,75.mm], [4629.mm,0.mm,75.mm], [4629.mm,2362.mm,75.mm], [4329.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Right (IBC end)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat
@@ -156,9 +163,9 @@ entities = model.active_entities
   # Walkway Left (cargo door)
   grp = entities.add_group
   grp.name = "Walkway Left (cargo door)"
-  face = grp.entities.add_face([6.692913385826772,0.0,2.952755905511811], [18.503937007874015,0.0,2.952755905511811], [18.503937007874015,92.99212598425197,2.952755905511811], [6.692913385826772,92.99212598425197,2.952755905511811])
+  face = grp.entities.add_face([170.mm,0.mm,75.mm], [470.mm,0.mm,75.mm], [470.mm,2362.mm,75.mm], [170.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(0.984251968503937)
+  face.pushpull(25.mm)
   mat = model.materials.add("Walkway Left (cargo door)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   grp.material = mat

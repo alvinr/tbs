@@ -1200,6 +1200,9 @@ def generate_ruby():
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
 
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
+    # Per-component scenes — one per subsystem tag (Shell stays as context).
+    comp_tags_ruby = '[' + ', '.join(
+        f'"{t}"' for t in TAGS if t != "Shell") + ']'
 
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Overview", true)
@@ -1253,6 +1256,13 @@ model.pages.add("Overview")
 # Optical Core: hide circulation/processing/structure, keep the optical train.
 ["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
+model.layers.each {{ |l| l.visible = true }}
+
+# Per-component scenes — the translucent Shell (context) + one subsystem each.
+{comp_tags_ruby}.each {{ |t|
+  model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Shell" || l.name == t) }}
+  model.pages.add(t)
+}}
 model.layers.each {{ |l| l.visible = true }}
 
 model.commit_operation

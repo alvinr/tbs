@@ -725,7 +725,7 @@ def draw_sheet2():
                 color=C_OUT, zorder=6)
 
     # ── Pull-cord switches — pinhole wall side, near EP ────────────────────
-    PS_X_MM = EP_X + EP_W // 2   # X position — centered near EP
+    PS_X_MM = EP_X - 110   # X position — ceiling-mounted, left of EP (cleared)
     PS_YD   = 50     # just off pinhole wall
     PS_SZ   = 80     # symbol radius (mm)
     C_SWITCH = "#E0E0FF"
@@ -880,7 +880,7 @@ def draw_sheet2():
         ("G",     C_LED,     "WHITE LED PANELS — Cct G",
          "3×20W ceiling panels  |  10A / 16 AWG / 60W  |  Pull-cord switch, non-operational only"),
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
-         f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Near EP, X≈{PS_X_MM}mm"),
+         f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Left of EP (cleared), X≈{PS_X_MM}mm"),
         ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
          "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
     ]
@@ -1143,7 +1143,7 @@ def draw_sheet3():
            fs=7.0, ha="center")
 
     # ── Pull-cord switches ────────────────────────────────────────────────────
-    PS_X_MM = EP_X + EP_W // 2   # X position — centered near EP
+    PS_X_MM = EP_X - 110   # X position — ceiling-mounted, left of EP (cleared)
     PS_Z_MM = C_HGT - 60   # just below trunking
     CORD_HANG_Z = 900  # cord bottom hangs to ~900mm above floor (~1500mm above walkway deck at 100mm)
 

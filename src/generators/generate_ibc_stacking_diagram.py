@@ -4,8 +4,8 @@
 """
 generate_ibc_stacking_diagram.py  —  TBS-001 IBC Stacking & Securing
 
-Sheet 1 — Cross-section elevation through the IBC stack, looking -X
-          (near/pinhole wall at left, far wall at right):
+Sheet 1 — Cross-section elevation through the IBC stack, looking +X toward
+          the sealed end (near/pinhole wall at right, far wall at left):
   Side view showing the 2-tier stack in the right end zone.  Bottom tier
   IBCs sit on the container floor; the stacking frame platform supports
   the top tier.  D-ring lashing points at frame corners.  Container
@@ -99,7 +99,7 @@ DRAIN_PORT_Z   = 200    # drain port center height
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 1 — Cross-Section Elevation (looking -X; near/pinhole wall at left, far wall at right)
+# SHEET 1 — Cross-Section Elevation (looking +X toward sealed end; near/pinhole wall at right, far wall at left)
 #
 # Horizontal = Yd (0=near/pinhole wall, positive toward far wall)
 # Vertical   = Z  (0=floor, positive up)
@@ -119,6 +119,7 @@ def sheet1():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.invert_xaxis()   # match physical view orientation (see sheet header)
     ax.set_ylim(sy(Z_LO), sy(Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
@@ -382,7 +383,7 @@ def sheet1():
     # ── Notes ─────────────────────────────────────────────────────────────────
     notes = [
         "CROSS-SECTION NOTES:",
-        "1. Section through IBC stack, looking -X (near/pinhole wall at left, far wall at right).",
+        "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
         f"3. Portal frame: 50x50x3mm RHS mild steel, wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
@@ -398,7 +399,7 @@ def sheet1():
     title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC STACKING & SECURING",
                 subtitle="CROSS-SECTION ELEVATION — 2x2 STACK IN RIGHT END ZONE",
-                scale_note="Axes in mm - SECTION LOOKING -X (PINHOLE WALL AT LEFT)",
+                scale_note="Axes in mm - SECTION LOOKING +X (PINHOLE WALL AT RIGHT)",
                 height=0.06)
 
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet1.png"), dpi=130, bbox_inches="tight", facecolor=BG)
@@ -826,9 +827,10 @@ def sheet3():
     def sx(mm): return mm
     def sy(mm): return mm
 
-    # View bounds — looking at end wall from outside
-    # Horizontal = Yd (mirrored: far wall at left, near wall at right when
-    #   looking at outside face), Vertical = Z
+    # View bounds — looking -X at the sealed-end exterior face from outside.
+    # Components are drawn coordinate-mirrored (yd_ext = C_WID - yd); combined
+    # with ax.invert_xaxis() this renders the physically-correct exterior view:
+    # near/pinhole wall at LEFT, far wall at RIGHT.  Vertical = Z
     YD_LO = -300
     YD_HI = C_WID + 300
     Z_LO  = -500
@@ -838,6 +840,7 @@ def sheet3():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.invert_xaxis()   # match physical view orientation (see sheet header)
     ax.set_ylim(sy(Z_LO), sy(Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
@@ -882,7 +885,8 @@ def sheet3():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Ghost IBC outlines and stacking frame (behind wall) ────────────────
-    # Mirrored Yd for external view: yd_ext = C_WID - yd_internal
+    # yd_ext = C_WID - yd_internal; with invert_xaxis (above) this lands the
+    # near/pinhole wall at LEFT, far wall at RIGHT (correct exterior orientation)
     platform_z = IBC_H_600                        # 1010mm
     top_tier_z = platform_z + FRAME_RHS + MAT_T   # 1072mm
 
@@ -1679,9 +1683,9 @@ def sheet4():
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Internal Plumbing Elevation
 #
-# Internal plumbing on the sealed end wall, drawn near/pinhole wall at left,
-# far wall at right (looking -X).
-# Horizontal = Yd (0=near/pinhole wall at left), Vertical = Z.
+# Internal plumbing on the sealed end wall, from inside looking +X
+# (near/pinhole wall at right, far wall at left — Yd axis inverted).
+# Horizontal = Yd (0 = near/pinhole wall), Vertical = Z.
 # Shows the 3 bulkhead unions on the wall centerline with pipes routing
 # outward to each IBC.  Near-column IBCs on the left, far-column on the
 # right, plumbing corridor in the center.  Ball valves, pipe drops/rises,
@@ -1690,8 +1694,8 @@ def sheet4():
 def sheet5():
     """Sheet 5 — Internal plumbing elevation with all water system connections.
 
-    Shows the internal plumbing on the sealed end wall, near/pinhole wall at
-    left, far wall at right (looking -X).
+    Shows the internal plumbing on the sealed end wall, from inside looking +X
+    (near/pinhole wall at right, far wall at left).
     All pipe connections rendered as proper fittings: double-wall pipes,
     curved elbows, flanges at unions, and cross-section circles for pipes
     running in the X direction (into the page).
@@ -1764,6 +1768,7 @@ def sheet5():
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(YD_LO), sx(YD_HI))
+    ax.invert_xaxis()   # match physical view orientation (see sheet header)
     ax.set_ylim(sy(Z_LO), sy(Z_HI))
     ax.set_aspect("equal")
     ax.axis("off")
@@ -1796,7 +1801,7 @@ def sheet5():
     ax.text(sx(C_WID / 2), sy(-45), "CONTAINER FLOOR",
             ha="center", va="top", fontsize=6, color=C_DIM, **FONT)
     ax.text(sx(C_WID / 2), sy(C_HGT + 45),
-            "SEALED END WALL — INTERNAL PLUMBING ELEVATION (NEAR/PINHOLE WALL AT LEFT, FAR WALL AT RIGHT · LOOKING -X)",
+            "SEALED END WALL — INTERNAL PLUMBING ELEVATION (FROM INSIDE, LOOKING +X · NEAR/PINHOLE WALL AT RIGHT, FAR WALL AT LEFT)",
             ha="center", va="bottom", fontsize=8, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
     ax.text(sx(-45), sy(C_HGT / 2), "NEAR\nWALL\n(Yd=0)",
@@ -2235,7 +2240,7 @@ def sheet5():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
         "INTERNAL PLUMBING ELEVATION NOTES:",
-        "1. Sealed end wall internal plumbing, near/pinhole wall at left, far wall at right (looking -X). All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions and cross-connect).",
+        "1. Sealed end wall internal plumbing, from inside looking +X (near/pinhole wall at right, far wall at left). All internal pipe 1\" HDPE SDR-11 (2\" NPT at bulkhead unions and cross-connect).",
         "2. IBC valve faces point toward plumbing corridor. DN50 butterfly valve (S60×6 thread), ~185mm above floor.",
         "3. X1 fill cap (DN150) offset ~250mm from valve face toward corridor. Single fill line — IBC-2 levels via 2\" cross-connect.",
         "4. S60×6 to 1\" NPT adapters (e.g. IBC-S60-1NPT) at each IBC valve connection (8× total).",

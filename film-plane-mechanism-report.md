@@ -178,7 +178,7 @@ Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner 
 | M8 knurled thumbscrew DIN 464 | ICP-13 | M8×20mm, stainless steel 303, high-type knurled head — 2 per saddle clamp joint | 40 | [Amazon — DIN 464 M8 knurled SS](https://www.amazon.com/knurled-thumb-screws-din-464/s?k=knurled+thumb+screws+din+464) | [Maedler North America — DIN 464 M8×20 SS](https://maedlernorthamerica.com/partshop/knurled-thumb-screw-din-464-m8-x-20mm-long-stainless-steel-1-4305-pn-65499225/) | ~$2–5 est. |
 | Quick-release ball-lock pin | ICP-14 | Ø10mm, 50mm usable length, stainless steel — retains demountable left-rail segment (2 joints × 2 pins = 4 off, plus 4 spares) | 8 | [McMaster-Carr — ball lock pins](https://www.mcmaster.com/products/ball-lock-pins/) | [Amazon — quick-release ball lock pins](https://www.amazon.com/quick-release-ball-lock-pins/s?k=quick+release+ball+lock+pins) | ~$6–10 est. |
 
-*Quantities basis: 4 verticals (2× portals × 2 sides, 2188mm each, Z 100–2288mm) + 4 cross-beams (2× portals × top+bottom, 4499mm each, X 150–4649mm) = 26.75 m net RHS; 30 m ordered for waste. 16 saddle clamps: one at each of the 8 vertical-to-cross-beam corners per portal × 2 portals. 40 thumbscrews: 2 per clamp × 16 clamps = 32, plus 8 spares. 8 ball-lock pins: 2 joints on demountable left-rail segment × 2 pins + 4 spares.*
+*Quantities basis: 4 verticals (2× portals × 2 sides, 2188mm each, Z 100–2288mm) + 4 cross-beams (2× portals × top+bottom, 4499mm each, X 150–4649mm) = 26.75 m net RHS; 30 m ordered for waste. 16 saddle clamps: 4 corners per portal × 2 clamps per corner × 2 portals = 16. 40 thumbscrews: 2 per clamp × 16 clamps = 32, plus 8 spares. 8 ball-lock pins: 2 joints on demountable left-rail segment × 2 pins + 4 spares.*
 
 ### Muslin Clamp System
 
@@ -194,7 +194,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 **Estimated materials total (manual actuation, incl. brace cage): ~$2,900**  
 *Excludes fasteners, fabrication labour, and electric actuation option.*  
-*Net change vs two-beam design: removed 2× T-slot beams (–$416), added 2 leadscrews +$190, 2 handwheels +$70, 4 rod-end bearings +$88, 4 corner brackets +$80, 2 locking collars +$24, brace cage +$500 (est.) → net +$536.*
+*Net change vs two-beam design: removed 2× T-slot beams (–$416), added 2 leadscrews +$190, 2 handwheels +$70, 4 rod-end bearings +$88, 4 corner brackets +$80, 2 locking collars +$24, brace cage +$575 (est.) → net +$611.*
 
 ### Local SoCal Metal Sourcing
 

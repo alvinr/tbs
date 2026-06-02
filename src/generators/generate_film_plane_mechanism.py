@@ -33,6 +33,8 @@ from tbs_constants import (
     CLAMP_OPEN_GAP, CLAMP_SPRING_F,
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
     BRACE_RHS, BRACE_T, BRACE_Z_BOT, BRACE_Z_TOP,
+    BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1, CARRIAGE_PARK_Y,
+    DRUM_CY, DRUM_R, DRUM_CX,
 )
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
@@ -271,6 +273,44 @@ def sheet1():
         ax.plot([L+50, L+180], [(D_NEAR+D_FAR)/2 - i*220 + 400,
                                 (D_NEAR+D_FAR)/2 - i*220 + 400],
                 color=col, lw=2.0, ls=ls, zorder=10)
+
+    # ── DRUM FOOTPRINT — ghost circle for light-trap drum ─────────────────────
+    # Drum is a vertical cylinder at X=DRUM_CX=0, Yd=DRUM_CY=1181, radius=DRUM_R=375.
+    # In this plan view it appears as a circle centred at (DRUM_CX, DRUM_CY).
+    C_DRUM = "#C8A860"   # amber-gold ghost for drum footprint
+    ax.add_patch(Circle((DRUM_CX, DRUM_CY), DRUM_R,
+                        fc=C_DRUM, ec=C_DRUM, lw=1.2, alpha=0.18, zorder=4,
+                        linestyle="--"))
+    ax.add_patch(Circle((DRUM_CX, DRUM_CY), DRUM_R,
+                        fc="none", ec=C_DRUM, lw=1.2, alpha=0.55, zorder=4,
+                        linestyle="--"))
+    ax.text(DRUM_CX, DRUM_CY, "LIGHT-TRAP\nDRUM\n(Ø750mm)",
+            color=C_DRUM, fontsize=6, ha="center", va="center", **FONT, zorder=5,
+            alpha=0.75)
+
+    # ── DEMOUNTABLE LEFT-RAIL SEGMENT — Yd 806→1556 ───────────────────────────
+    # Overlay the left rail's removable span in a distinct dashed / highlighted style.
+    # The normal left rail runs D_NEAR(100)→D_FAR(2262) at RAIL_X_L.
+    # The demountable segment covers BRACE_LEFT_DEMOUNT_Y0(806)→BRACE_LEFT_DEMOUNT_Y1(1556).
+    C_DEMOUNT = "#CC3333"   # red — visually distinct "removable" colour
+    # Ceiling sub-rail (matches rx_ceil geometry from the loop above)
+    rx_ceil_L  = RAIL_X_L - RAIL_W // 2 - 5
+    rx_floor_L = RAIL_X_L + 5
+    seg_y0 = BRACE_LEFT_DEMOUNT_Y0
+    seg_y1 = BRACE_LEFT_DEMOUNT_Y1
+    seg_len = seg_y1 - seg_y0
+
+    for rx_d, alpha_d in [(rx_ceil_L, 0.85), (rx_floor_L, 0.70)]:
+        ax.add_patch(Rectangle((rx_d, seg_y0), RAIL_W * 0.8, seg_len,
+                               fc=C_DEMOUNT, ec=C_DEMOUNT, lw=1.4, alpha=alpha_d,
+                               linestyle="--", zorder=7))
+
+    # Leader pointing to the demountable segment
+    seg_mid_yd = (seg_y0 + seg_y1) / 2
+    leader(ax, rx_ceil_L + RAIL_W * 0.4, seg_mid_yd,
+           rx_ceil_L - 600, seg_mid_yd + 250,
+           "DEMOUNTABLE LEFT-RAIL SEGMENT\nswings clear for DRUM MODE\n(Yd 806–1556)",
+           color=C_DEMOUNT, ha="right", fs=6.5, font=FONT)
 
     # ── Annotations ───────────────────────────────────────────────────────────
     # Swing annotation arrow
@@ -932,8 +972,36 @@ def sheet4():
     draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
                [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37])
 
+    # ── Operating-modes note block ────────────────────────────────────────────
+    # draw_notes uses data coordinates; sheet4 uses transAxes for layout,
+    # so we render directly via ax.text with transAxes=True calls instead.
+    modes_lines = [
+        "OPERATING MODES (left-rail / drum interlock)",
+        "1. FILM MODE: left-rail segment locked in. Carriage free over full travel",
+        f"   (Yd 100–{CARRIAGE_PARK_Y}) for tilt/swing. Drum static.",
+        f"2. DRUM MODE: left-rail segment swung clear (Yd {BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}). Carriage parked",
+        f"   at film end (Yd {CARRIAGE_PARK_Y}). Drum free to rotate for entry/exit.",
+        "INTERLOCK: drum rotates only with carriage parked AND left segment cleared.",
+    ]
+    line_h = 0.030
+    block_top = 0.46
+    block_left = 0.05
+    # Border background
+    block_h = len(modes_lines) * line_h + 0.018
+    ax.add_patch(Rectangle((block_left - 0.005, block_top - block_h + 0.005),
+                            0.90, block_h,
+                            transform=ax.transAxes,
+                            fc=GRID, ec=DIM, lw=0.8, zorder=3, clip_on=False))
+    for li, line in enumerate(modes_lines):
+        ty = block_top - li * line_h
+        fw = "bold" if li == 0 else "normal"
+        col = WHITE if li == 0 else ANNO
+        ax.text(block_left, ty, line,
+                transform=ax.transAxes, color=col, fontsize=7,
+                ha="left", va="top", fontweight=fw, **FONT)
+
     # BOM removed — consolidated to master-shopping-list.md §4
-    ax.text(0.50, 0.35,
+    ax.text(0.50, 0.22,
             "Bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
             transform=ax.transAxes, color=DIM, fontsize=7,
             ha="center", va="center", style="italic", **FONT)

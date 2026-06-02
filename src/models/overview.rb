@@ -101,64 +101,70 @@ end
   # ═══ Walkways ═══
   defn = model.definitions.add("Walkways")
   ents = defn.entities
-  # Walkway Near (left section)
+  # Walkway Near left (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Near (left section)"
+  grp.name = "Walkway Near left (DROPPED)"
   face = grp.entities.add_face([470.mm,0.mm,75.mm], [1155.mm,0.mm,75.mm], [1155.mm,300.mm,75.mm], [470.mm,300.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Near left (DROPPED)"] || model.materials.add("Walkway Near left (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Walkway Near (widened)
+  # Walkway Near widened (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Near (widened)"
+  grp.name = "Walkway Near widened (DROPPED)"
   face = grp.entities.add_face([1155.mm,0.mm,75.mm], [2629.mm,0.mm,75.mm], [2629.mm,500.mm,75.mm], [1155.mm,500.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (widened)"] || model.materials.add("Walkway Near (widened)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Near widened (DROPPED)"] || model.materials.add("Walkway Near widened (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Walkway Near (right section)
+  # Walkway Near right (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Near (right section)"
+  grp.name = "Walkway Near right (DROPPED)"
   face = grp.entities.add_face([2629.mm,0.mm,75.mm], [4329.mm,0.mm,75.mm], [4329.mm,300.mm,75.mm], [2629.mm,300.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (right section)"] || model.materials.add("Walkway Near (right section)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Near right (DROPPED)"] || model.materials.add("Walkway Near right (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Walkway Far
+  # Walkway Far (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Far"
+  grp.name = "Walkway Far (DROPPED)"
   face = grp.entities.add_face([470.mm,2062.mm,75.mm], [4329.mm,2062.mm,75.mm], [4329.mm,2362.mm,75.mm], [470.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Far"] || model.materials.add("Walkway Far")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Far (DROPPED)"] || model.materials.add("Walkway Far (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Walkway Right (IBC end)
+  # Walkway Right IBC end (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Right (IBC end)"
+  grp.name = "Walkway Right IBC end (DROPPED)"
   face = grp.entities.add_face([4329.mm,0.mm,75.mm], [4629.mm,0.mm,75.mm], [4629.mm,2362.mm,75.mm], [4329.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Right (IBC end)"] || model.materials.add("Walkway Right (IBC end)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Right IBC end (DROPPED)"] || model.materials.add("Walkway Right IBC end (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Walkway Left (cargo door)
+  # Walkway Left cargo door (DROPPED)
   grp = ents.add_group
-  grp.name = "Walkway Left (cargo door)"
+  grp.name = "Walkway Left cargo door (DROPPED)"
   face = grp.entities.add_face([170.mm,0.mm,75.mm], [470.mm,0.mm,75.mm], [470.mm,2362.mm,75.mm], [170.mm,2362.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Left (cargo door)"] || model.materials.add("Walkway Left (cargo door)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat = model.materials["Walkway Left cargo door (DROPPED)"] || model.materials.add("Walkway Left cargo door (DROPPED)")
+  mat.color = Sketchup::Color.new(204, 68, 34)
+  mat.alpha = 0.3
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -275,16 +281,6 @@ end
   # ═══ Film Plane Mechanism ═══
   defn = model.definitions.add("Film Plane Mechanism")
   ents = defn.entities
-  # FP Rail BL
-  grp = ents.add_group
-  grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2300.mm,100.mm], [150.mm,2300.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["FP Rail BL"] || model.materials.add("FP Rail BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  grp.material = mat
-
   # FP Rail BR
   grp = ents.add_group
   grp.name = "FP Rail BR"
@@ -295,16 +291,6 @@ end
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
 
-  # FP Rail TL
-  grp = ents.add_group
-  grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,2300.mm,2248.mm], [150.mm,2300.mm,2248.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["FP Rail TL"] || model.materials.add("FP Rail TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  grp.material = mat
-
   # FP Rail TR
   grp = ents.add_group
   grp.name = "FP Rail TR"
@@ -312,6 +298,146 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["FP Rail TR"] || model.materials.add("FP Rail TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Rail BL (fixed near)
+  grp = ents.add_group
+  grp.name = "FP Rail BL (fixed near)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,806.mm,100.mm], [150.mm,806.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail BL (fixed near)"] || model.materials.add("FP Rail BL (fixed near)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Rail BL (DEMOUNTABLE — drum mode)
+  grp = ents.add_group
+  grp.name = "FP Rail BL (DEMOUNTABLE — drum mode)"
+  face = grp.entities.add_face([150.mm,806.mm,100.mm], [190.mm,806.mm,100.mm], [190.mm,1556.mm,100.mm], [150.mm,1556.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail BL (DEMOUNTABLE — drum mode)"] || model.materials.add("FP Rail BL (DEMOUNTABLE — drum mode)")
+  mat.color = Sketchup::Color.new(224, 144, 42)
+  grp.material = mat
+
+  # FP Rail BL (fixed far)
+  grp = ents.add_group
+  grp.name = "FP Rail BL (fixed far)"
+  face = grp.entities.add_face([150.mm,1556.mm,100.mm], [190.mm,1556.mm,100.mm], [190.mm,2300.mm,100.mm], [150.mm,2300.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail BL (fixed far)"] || model.materials.add("FP Rail BL (fixed far)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Rail TL (fixed near)
+  grp = ents.add_group
+  grp.name = "FP Rail TL (fixed near)"
+  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,806.mm,2248.mm], [150.mm,806.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail TL (fixed near)"] || model.materials.add("FP Rail TL (fixed near)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Rail TL (DEMOUNTABLE — drum mode)
+  grp = ents.add_group
+  grp.name = "FP Rail TL (DEMOUNTABLE — drum mode)"
+  face = grp.entities.add_face([150.mm,806.mm,2248.mm], [190.mm,806.mm,2248.mm], [190.mm,1556.mm,2248.mm], [150.mm,1556.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail TL (DEMOUNTABLE — drum mode)"] || model.materials.add("FP Rail TL (DEMOUNTABLE — drum mode)")
+  mat.color = Sketchup::Color.new(224, 144, 42)
+  grp.material = mat
+
+  # FP Rail TL (fixed far)
+  grp = ents.add_group
+  grp.name = "FP Rail TL (fixed far)"
+  face = grp.entities.add_face([150.mm,1556.mm,2248.mm], [190.mm,1556.mm,2248.mm], [190.mm,2300.mm,2248.mm], [150.mm,2300.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail TL (fixed far)"] || model.materials.add("FP Rail TL (fixed far)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Vert L (pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert L (pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2188.mm)
+  mat = model.materials["FP Brace Vert L (pinhole)"] || model.materials.add("FP Brace Vert L (pinhole)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Vert R (pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert R (pinhole)"
+  face = grp.entities.add_face([4599.mm,100.mm,100.mm], [4649.mm,100.mm,100.mm], [4649.mm,150.mm,100.mm], [4599.mm,150.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2188.mm)
+  mat = model.materials["FP Brace Vert R (pinhole)"] || model.materials.add("FP Brace Vert R (pinhole)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Beam Bottom (pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Bottom (pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [4649.mm,100.mm,100.mm], [4649.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["FP Brace Beam Bottom (pinhole)"] || model.materials.add("FP Brace Beam Bottom (pinhole)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Beam Top (pinhole)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Top (pinhole)"
+  face = grp.entities.add_face([150.mm,100.mm,2238.mm], [4649.mm,100.mm,2238.mm], [4649.mm,150.mm,2238.mm], [150.mm,150.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["FP Brace Beam Top (pinhole)"] || model.materials.add("FP Brace Beam Top (pinhole)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Vert L (film)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert L (film)"
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2188.mm)
+  mat = model.materials["FP Brace Vert L (film)"] || model.materials.add("FP Brace Vert L (film)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Vert R (film)
+  grp = ents.add_group
+  grp.name = "FP Brace Vert R (film)"
+  face = grp.entities.add_face([4599.mm,2262.mm,100.mm], [4649.mm,2262.mm,100.mm], [4649.mm,2312.mm,100.mm], [4599.mm,2312.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2188.mm)
+  mat = model.materials["FP Brace Vert R (film)"] || model.materials.add("FP Brace Vert R (film)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Beam Bottom (film)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Bottom (film)"
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [4649.mm,2262.mm,100.mm], [4649.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["FP Brace Beam Bottom (film)"] || model.materials.add("FP Brace Beam Bottom (film)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.material = mat
+
+  # FP Brace Beam Top (film)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Top (film)"
+  face = grp.entities.add_face([150.mm,2262.mm,2238.mm], [4649.mm,2262.mm,2238.mm], [4649.mm,2312.mm,2238.mm], [150.mm,2312.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["FP Brace Beam Top (film)"] || model.materials.add("FP Brace Beam Top (film)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   grp.material = mat
 

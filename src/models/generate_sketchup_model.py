@@ -50,20 +50,29 @@ from tbs_constants import (
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
     PANEL_CENTER_T, PANEL_FLOOR_GAP,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
+    SPRAY_BAR_BEAM, SPRAY_BAR_Z_BOT,
+    BB_OD, BB_H,
+    PUMP_X, PUMP_W, PUMP_H_LO, PUMP_H_HI, PUMP_YD, PUMP_YD_SPAN,
+    FSKID_X, FSKID_YD, F1_Z, F2_Z, F3_Z,
+    EQPANEL_X, EQPANEL_T, EQPANEL_Z_LO, EQPANEL_Z_HI,
+    EQPANEL_YD, EQPANEL_YD_SPAN,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets)
 C_FILM = "#2060A0"      # film plane / muslin screen
-C_PINHOLE = "#CC6600"   # pinhole aperture + optical axis + cone
+C_PINHOLE = "#CC6600"   # pinhole aperture + optical cone
 C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
-C_ALUM = "#C8D8E8"      # aluminum (cargo door panel)
+C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
+C_PLY = "#9C7B4D"       # marine ply (equipment panel)
+C_PUMP = "#454552"      # pump + accumulator block
+C_FILTER = "#3A6EA5"    # Big Blue filter housings
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
-        "Pinhole", "Optical Axis", "Optical Cone", "Film Plane",
-        "Ceiling Rail"]
+        "Pinhole", "Optical Cone", "Film Plane",
+        "Ceiling Rail", "Spray Bar", "Equipment Panel"]
 
 
 def mm(val):
@@ -324,29 +333,19 @@ def pinhole_assembly():
     return '\n'.join(parts)
 
 
-# ── Optical axis ─────────────────────────────────────────────────────────────
-
-def optical_axis():
-    """Thin tube marking the optical axis: pinhole (Yd=0) → film plane (Yd=FP_Y)."""
-    s = 6  # 6mm square tube — visible without dominating
-    return ruby_box("Optical Axis (pinhole → film plane)",
-                    PH_X - s / 2, 0, PH_H - s / 2,
-                    s, FP_Y, s,
-                    color=C_PINHOLE)
-
-
 # ── Optical cone ─────────────────────────────────────────────────────────────
 
 def optical_cone():
     """Ghosted projection cone: pinhole apex → full film-plane rectangle.
 
     The rectangular pyramid from the pinhole (Yd=0) expanding to the film plane
-    (Yd=FP_Y) shows the light cone filling the container interior.
+    (Yd=FP_Y) shows the light cone filling the container interior. Kept very
+    faint — it is guidance geometry, not a hard system.
     """
     apex = (PH_X, 0, PH_H)
     base = [(FP_X_L, FP_Y, 0), (FP_X_R, FP_Y, 0),
             (FP_X_R, FP_Y, FP_H), (FP_X_L, FP_Y, FP_H)]
-    return ruby_pyramid("Optical Cone", apex, base, C_PINHOLE, 0.12)
+    return ruby_pyramid("Optical Cone", apex, base, C_PINHOLE, 0.05)
 
 
 # ── Ceiling rail (cargo-door panel suspension) ───────────────────────────────
@@ -384,6 +383,65 @@ def ceiling_rail():
                           0, 0, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, C_WID, brk_z - PANEL_FLOOR_GAP,
                           color=C_ALUM, alpha=0.6))
+
+    return '\n'.join(parts)
+
+
+# ── Spray bar (processing-tray wash gantry) ──────────────────────────────────
+
+def spray_bar():
+    """40mm AL SHS gantry beam running along X over the tray, with end carriages.
+
+    The beam carries the spray pipe just above the tray floor (Z=10–50) and
+    travels in Yd to wash the full tray. Shown at a representative mid-tray
+    travel position.
+    """
+    parts = []
+    beam = SPRAY_BAR_BEAM               # 40mm SHS
+    bx_l = PROC_TRAY_X_L + 30           # 200
+    bx_r = PROC_TRAY_X_R - 30           # 4599
+    bz = SPRAY_BAR_Z_BOT                # 10mm above tray floor
+    yd = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2   # mid-tray (travels in Yd)
+
+    parts.append(ruby_box("Spray Bar Beam",
+                          bx_l, yd - beam / 2, bz,
+                          bx_r - bx_l, beam, beam, color=C_ALUM))
+
+    # End carriages riding the tray-edge rails (Yd travel).
+    cw, cd, ch = 50, 90, 55
+    for ex in (bx_l, bx_r - cw):
+        parts.append(ruby_box("Spray Bar Carriage",
+                              ex, yd - cd / 2, bz - 5,
+                              cw, cd, ch, color=C_CARR))
+
+    return '\n'.join(parts)
+
+
+# ── Equipment panel (pumps · filters · accumulator) ──────────────────────────
+
+def equipment_panel():
+    """18mm marine-ply panel in the IBC plumbing corridor carrying the wet end.
+
+    Panel face at X=EQPANEL_X across the corridor (Yd 1046–1316); pump +
+    accumulator block protrudes toward the open end; three Big Blue filter
+    housings stack in Z (F1 50µ, F2 5µ, F3 GAC).
+    """
+    parts = []
+
+    parts.append(ruby_box("Equipment Panel (ply)",
+                          EQPANEL_X, EQPANEL_YD, EQPANEL_Z_LO,
+                          EQPANEL_T, EQPANEL_YD_SPAN, EQPANEL_Z_HI - EQPANEL_Z_LO,
+                          color=C_PLY))
+
+    parts.append(ruby_box("Pumps + ACC-01",
+                          PUMP_X, PUMP_YD, PUMP_H_LO,
+                          PUMP_W, PUMP_YD_SPAN, PUMP_H_HI - PUMP_H_LO,
+                          color=C_PUMP))
+
+    for nm, fz in [("F1 (50µ)", F1_Z), ("F2 (5µ)", F2_Z), ("F3 (GAC)", F3_Z)]:
+        parts.append(ruby_box(f"Filter {nm}",
+                              FSKID_X, FSKID_YD, fz,
+                              BB_OD, BB_OD, BB_H, color=C_FILTER))
 
     return '\n'.join(parts)
 
@@ -443,15 +501,18 @@ def generate_ruby():
         component("Walkways", "Walkways", walkways()),
         component("Processing Tray", "Processing Tray", processing_tray()),
         component("Pinhole Assembly", "Pinhole", pinhole_assembly()),
-        component("Optical Axis", "Optical Axis", optical_axis()),
         component("Optical Cone", "Optical Cone", optical_cone()),
         component("Film Plane Mechanism", "Film Plane", film_plane_mechanism()),
         component("Ceiling Rail", "Ceiling Rail", ceiling_rail()),
+        component("Spray Bar", "Spray Bar", spray_bar()),
+        component("Equipment Panel", "Equipment Panel", equipment_panel()),
     ]
     body = '\n'.join(comps)
 
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
+
+    keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Overview", true)
@@ -483,12 +544,20 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 model.definitions.purge_unused
 model.materials.purge_unused
 
+# ── Remove stale tags from earlier generator versions ──
+keep_tags = {keep_tags_ruby}
+default_layer = model.layers[0]
+model.layers.to_a.each {{ |l|
+  next if l == default_layer || keep_tags.include?(l.name)
+  model.layers.remove(l, true) rescue nil
+}}
+
 # ── Scenes ──
 model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

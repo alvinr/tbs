@@ -38,6 +38,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Lighting") unless model.layers["Lighting"]
   model.layers.add("Evap Cooler") unless model.layers["Evap Cooler"]
   model.layers.add("Water Hookups") unless model.layers["Water Hookups"]
+  model.layers.add("Fans") unless model.layers["Fans"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -57,7 +58,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Container Floor"] || model.materials.add("Container Floor")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
 
   # Container Ceiling
@@ -67,7 +68,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Container Ceiling"] || model.materials.add("Container Ceiling")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.2
   grp.material = mat
 
@@ -78,7 +79,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Pinhole Wall (Yd=0)"] || model.materials.add("Pinhole Wall (Yd=0)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
 
   # Film Plane Wall (Yd=max)
@@ -88,7 +89,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Film Plane Wall (Yd=max)"] || model.materials.add("Film Plane Wall (Yd=max)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
 
   # Far End Wall (IBC end)
@@ -98,7 +99,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Far End Wall (IBC end)"] || model.materials.add("Far End Wall (IBC end)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(239, 237, 228)
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -1356,23 +1357,25 @@ end
   # ═══ Evap Cooler & Duct ═══
   defn = model.definitions.add("Evap Cooler & Duct")
   ents = defn.entities
-  # Evap Cooler (exterior)
+  # Evap Cooler (on ground)
   grp = ents.add_group
-  grp.name = "Evap Cooler (exterior)"
-  face = grp.entities.add_face([700.mm,-390.mm,1500.mm], [1300.mm,-390.mm,1500.mm], [1300.mm,-40.mm,1500.mm], [700.mm,-40.mm,1500.mm])
+  grp.name = "Evap Cooler (on ground)"
+  face = grp.entities.add_face([700.mm,-490.mm,0.mm], [1300.mm,-490.mm,0.mm], [1300.mm,-140.mm,0.mm], [700.mm,-140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(800.mm)
-  mat = model.materials["Evap Cooler (exterior)"] || model.materials.add("Evap Cooler (exterior)")
+  mat = model.materials["Evap Cooler (on ground)"] || model.materials.add("Evap Cooler (on ground)")
   mat.color = Sketchup::Color.new(61, 170, 150)
   grp.material = mat
 
-  # Evap Supply Duct
+  # Cold-Air Duct Inlet (Ø200)
   grp = ents.add_group
-  grp.name = "Evap Supply Duct"
-  face = grp.entities.add_face([900.mm,-390.mm,1800.mm], [1100.mm,-390.mm,1800.mm], [1100.mm,150.mm,1800.mm], [900.mm,150.mm,1800.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Evap Supply Duct"] || model.materials.add("Evap Supply Duct")
+  grp.name = "Cold-Air Duct Inlet (Ø200)"
+  ge = grp.entities
+  circle = ge.add_circle([1000.mm,-45.mm,1900.mm], [0,1,0], 100.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
   mat.color = Sketchup::Color.new(128, 144, 160)
   grp.material = mat
 
@@ -1386,9 +1389,11 @@ end
   # Water Fill Hookup (2in NPT)
   grp = ents.add_group
   grp.name = "Water Fill Hookup (2in NPT)"
-  face = grp.entities.add_face([5898.mm,1131.mm,2200.mm], [5998.mm,1131.mm,2200.mm], [5998.mm,1231.mm,2200.mm], [5898.mm,1231.mm,2200.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  ge = grp.entities
+  circle = ge.add_circle([5893.mm,1181.mm,2250.mm], [1,0,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(120.mm)
   mat = model.materials["Water Fill Hookup (2in NPT)"] || model.materials.add("Water Fill Hookup (2in NPT)")
   mat.color = Sketchup::Color.new(46, 109, 180)
   grp.material = mat
@@ -1396,9 +1401,11 @@ end
   # Waste Drain Hookup (2in NPT)
   grp = ents.add_group
   grp.name = "Waste Drain Hookup (2in NPT)"
-  face = grp.entities.add_face([5898.mm,1131.mm,350.mm], [5998.mm,1131.mm,350.mm], [5998.mm,1231.mm,350.mm], [5898.mm,1231.mm,350.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  ge = grp.entities
+  circle = ge.add_circle([5893.mm,1181.mm,400.mm], [1,0,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(120.mm)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   grp.material = mat
@@ -1406,9 +1413,11 @@ end
   # Waste Drain Hookup (2in NPT)
   grp = ents.add_group
   grp.name = "Waste Drain Hookup (2in NPT)"
-  face = grp.entities.add_face([5898.mm,1131.mm,150.mm], [5998.mm,1131.mm,150.mm], [5998.mm,1231.mm,150.mm], [5898.mm,1231.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  ge = grp.entities
+  circle = ge.add_circle([5893.mm,1181.mm,200.mm], [1,0,0], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(120.mm)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   grp.material = mat
@@ -1417,12 +1426,106 @@ end
   inst.name = "Water/Waste Hookups"
   inst.layer = model.layers["Water Hookups"]
 
+  # ═══ Fans A & B ═══
+  defn = model.definitions.add("Fans A & B")
+  ents = defn.entities
+  # Fan A (intake)
+  grp = ents.add_group
+  grp.name = "Fan A (intake)"
+  ge = grp.entities
+  circle = ge.add_circle([-25.mm,75.mm,600.mm], [1,0,0], 75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["Fan A (intake)"] || model.materials.add("Fan A (intake)")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  grp.material = mat
+
+  # Fan B (exhaust)
+  grp = ents.add_group
+  grp.name = "Fan B (exhaust)"
+  ge = grp.entities
+  circle = ge.add_circle([-25.mm,1959.mm,1800.mm], [1,0,0], 75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["Fan B (exhaust)"] || model.materials.add("Fan B (exhaust)")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Fans A & B"
+  inst.layer = model.layers["Fans"]
+
+  # ═══ Spray Bar Plumbing ═══
+  defn = model.definitions.add("Spray Bar Plumbing")
+  ents = defn.entities
+  # Blue Supply Trunk (1/2in HDPE)
+  grp = ents.add_group
+  grp.name = "Blue Supply Trunk (1/2in HDPE)"
+  ge = grp.entities
+  circle = ge.add_circle([470.mm,12.mm,30.mm], [1,0,0], 10.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(4179.mm)
+  mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  grp.material = mat
+
+  # BV-02 Riser
+  grp = ents.add_group
+  grp.name = "BV-02 Riser"
+  ge = grp.entities
+  circle = ge.add_circle([2399.mm,12.mm,30.mm], [0,0,1], 10.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(870.mm)
+  mat = model.materials["BV-02 Riser"] || model.materials.add("BV-02 Riser")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  grp.material = mat
+
+  # BV-02 (ball valve)
+  grp = ents.add_group
+  grp.name = "BV-02 (ball valve)"
+  face = grp.entities.add_face([2374.mm,-13.mm,875.mm], [2424.mm,-13.mm,875.mm], [2424.mm,37.mm,875.mm], [2374.mm,37.mm,875.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["BV-02 (ball valve)"] || model.materials.add("BV-02 (ball valve)")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  grp.material = mat
+
+  # TAP-01 Riser (3/4in)
+  grp = ents.add_group
+  grp.name = "TAP-01 Riser (3/4in)"
+  ge = grp.entities
+  circle = ge.add_circle([3729.mm,12.mm,30.mm], [0,0,1], 12.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(1120.mm)
+  mat = model.materials["TAP-01 Riser (3/4in)"] || model.materials.add("TAP-01 Riser (3/4in)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  grp.material = mat
+
+  # TAP-01 (chem tap)
+  grp = ents.add_group
+  grp.name = "TAP-01 (chem tap)"
+  face = grp.entities.add_face([3714.mm,12.mm,1150.mm], [3744.mm,12.mm,1150.mm], [3744.mm,142.mm,1150.mm], [3714.mm,142.mm,1150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["TAP-01 (chem tap)"] || model.materials.add("TAP-01 (chem tap)")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Spray Bar Plumbing"
+  inst.layer = model.layers["Spray Bar"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1434,7 +1537,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

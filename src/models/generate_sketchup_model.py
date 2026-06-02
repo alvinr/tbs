@@ -69,6 +69,9 @@ from tbs_constants import (
     SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_HANGER_D,
     EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D,
     EXT_FILL_H, EXT_FILL_YD, EXT_DRAIN_H, EXT_DRAIN_3_H,
+    FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H,
+    BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD,
+    SPRAY_BAR_FEED_Z,
 )
 
 # Material colors used only by the 3D model (not in tbs_constants).
@@ -102,13 +105,17 @@ C_SWITCH = "#D8D8F0"    # pull-cord switch
 C_CORD = "#3A3A3A"      # pull cord
 C_EVAP = "#3DAA96"      # evaporative cooler (teal)
 C_DUCT = "#8090A0"      # vent ducting
+C_FAN = "#606060"       # ventilation fans
+C_BLUE = "#2979B8"      # Blue circuit supply pipe
+C_VALVE = "#B8B840"     # valves / taps (brass)
+C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)
 
 # Subsystem → tag map (also drives tag creation order).
 TAGS = ["Shell", "Walkways", "Processing Tray",
         "Pinhole", "Optical Cone", "Film Plane",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
-        "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"]
+        "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"]
 
 
 def mm(val):
@@ -213,21 +220,23 @@ def ruby_cone_wire(name, apex, base, tag):
     ])
 
 
-def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None, n=24):
-    """Generate Ruby for a vertical cylinder (axis +Z) in `ents`.
+def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
+                  n=24, axis="z"):
+    """Generate Ruby for a cylinder in `ents`, axis along +x/+y/+z.
 
     (cx, cy, cz): center of the base circle. radius/height in mm. Used for
-    round bodies (filter housings, accumulator, light-trap drum).
+    round bodies (filters, drum, ducts, pipe stubs, fans).
     """
+    normal = {"z": "[0,0,1]", "y": "[0,1,0]", "x": "[1,0,0]"}[axis]
     lines = [
         f'  # {name}',
         f'  grp = ents.add_group',
         f'  grp.name = "{name}"',
         f'  ge = grp.entities',
         f'  circle = ge.add_circle([{mm(cx)},{mm(cy)},{mm(cz)}], '
-        f'[0,0,1], {mm(radius)}, {n})',
+        f'{normal}, {mm(radius)}, {n})',
         f'  cface = ge.add_face(circle)',
-        f'  cface.reverse! if cface.normal.z < 0',
+        f'  cface.reverse! if cface.normal.{axis} < 0',
         f'  cface.pushpull({mm(height)})',
     ]
     if color:
@@ -245,34 +254,38 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None, n=24
 # ── Container shell ──────────────────────────────────────────────────────────
 
 def container_shell():
-    """Container as 5 panels (no cargo door end wall — it's the hinged panel)."""
+    """Container as 5 panels (no cargo door end wall — it's the hinged panel).
+
+    Off-white shell so the systems and their placement read clearly against it.
+    """
+    w = C_SHELL
     parts = []
 
     parts.append(ruby_box("Container Floor",
                           0, 0, -WALL_T,
                           C_LEN, C_WID, WALL_T,
-                          color=C_WALL))
+                          color=w))
 
     # Ghosted ceiling — low alpha so the interior is visible from above.
     parts.append(ruby_box("Container Ceiling",
                           0, 0, C_HGT,
                           C_LEN, C_WID, WALL_T,
-                          color=C_WALL, alpha=0.2))
+                          color=w, alpha=0.2))
 
     parts.append(ruby_box("Pinhole Wall (Yd=0)",
                           0, -WALL_T, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=C_WALL))
+                          color=w))
 
     parts.append(ruby_box("Film Plane Wall (Yd=max)",
                           0, C_WID, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=C_WALL))
+                          color=w))
 
     parts.append(ruby_box("Far End Wall (IBC end)",
                           C_LEN, 0, 0,
                           WALL_T, C_WID, C_HGT,
-                          color=C_WALL))
+                          color=w))
 
     return '\n'.join(parts)
 
@@ -946,16 +959,16 @@ def evap_cooler():
     parts = []
     ext = -WALL_T
     cw, cd, ch = EVAP_W, EVAP_D, EVAP_H          # 600 × 350 × 800
-    cx = EVAP_DUCT_X - cw / 2
-    cz = EVAP_DUCT_Z - ch / 2
-    parts.append(ruby_box("Evap Cooler (exterior)",
-                          cx, ext - cd, cz, cw, cd, ch, color=C_EVAP))
+    # Cooler unit standing on the GROUND outside the pinhole wall.
+    parts.append(ruby_box("Evap Cooler (on ground)",
+                          EVAP_DUCT_X - cw / 2, ext - cd - 100, 0,
+                          cw, cd, ch, color=C_EVAP))
 
-    # Supply duct (shown square, EVAP_DUCT_D) from the cooler through the wall.
-    dd = EVAP_DUCT_D
-    parts.append(ruby_box("Evap Supply Duct",
-                          EVAP_DUCT_X - dd / 2, ext - cd, EVAP_DUCT_Z - dd / 2,
-                          dd, cd + WALL_T + 150, dd, color=C_DUCT))
+    # Cold-air duct inlet — a Ø200 circle through the wall (axis into container).
+    parts.append(ruby_cylinder("Cold-Air Duct Inlet (Ø200)",
+                               EVAP_DUCT_X, ext - 5, EVAP_DUCT_Z,
+                               EVAP_DUCT_D / 2, WALL_T + 10,
+                               color=C_DUCT, axis="y"))
 
     return '\n'.join(parts)
 
@@ -971,14 +984,60 @@ def water_hookups():
     parts = []
     wx = C_LEN          # IBC-end wall
     yd = EXT_FILL_YD    # 1181 — centered
-    bw = 100
+    r = 30              # ~2" NPT stub
     hooks = [("Water Fill Hookup (2in NPT)", EXT_FILL_H, C_IBC_BLUE),
              ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_3_H, C_IBC_BROWN),
              ("Waste Drain Hookup (2in NPT)", EXT_DRAIN_H, C_IBC_WASTE)]
     for nm, hz, col in hooks:
-        parts.append(ruby_box(nm,
-                              wx + 5, yd - bw / 2, hz - bw / 2,
-                              bw, bw, bw, color=col))
+        parts.append(ruby_cylinder(nm, wx, yd, hz, r, 120, color=col, axis="x"))
+
+    return '\n'.join(parts)
+
+
+# ── Ventilation fans (cargo-door end wall) ───────────────────────────────────
+
+def fans():
+    """Intake fan A (low) + exhaust fan B (high) on the cargo-door end (X=0)."""
+    parts = []
+    r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm body
+    parts.append(ruby_cylinder("Fan A (intake)",
+                               -bd / 2, FAN_A_YD, FAN_A_H, r, bd,
+                               color=C_FAN, axis="x"))
+    parts.append(ruby_cylinder("Fan B (exhaust)",
+                               -bd / 2, FAN_B_YD, FAN_B_H, r, bd,
+                               color=C_FAN, axis="x"))
+    return '\n'.join(parts)
+
+
+# ── Spray-bar plumbing (Blue supply + BV-02 + TAP-01) ────────────────────────
+
+def spray_bar_plumbing():
+    """Blue ½" supply trunk along the pinhole wall (Z=30) feeding the spray bar,
+    with the BV-02 isolation valve riser and the TAP-01 chemistry tap branch.
+    """
+    parts = []
+    yd = 12                          # just off the pinhole wall
+    fz = SPRAY_BAR_FEED_Z            # 30 — supply trunk height
+    pr = PUMP_PIPE_OD / 2            # ½" HDPE
+
+    # Blue supply trunk — horizontal along the pinhole wall.
+    x_l, x_r = PROC_TRAY_X_L + 300, RAIL_X_R
+    parts.append(ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",
+                               x_l, yd, fz, pr, x_r - x_l, color=C_BLUE, axis="x"))
+
+    # BV-02 isolation valve riser + body, at the pinhole centerline.
+    parts.append(ruby_cylinder("BV-02 Riser",
+                               BV02_X, yd, fz, pr, BV02_Z - fz, color=C_BLUE, axis="z"))
+    parts.append(ruby_box("BV-02 (ball valve)",
+                          BV02_X - 25, yd - 25, BV02_Z - 25, 50, 50, 50,
+                          color=C_VALVE))
+
+    # TAP-01 chemistry tap branch (¾") + spout.
+    tr = TAP_PIPE_OD / 2
+    parts.append(ruby_cylinder("TAP-01 Riser (3/4in)",
+                               TAP_X, yd, fz, tr, TAP_Z - fz, color=C_BLUE, axis="z"))
+    parts.append(ruby_box("TAP-01 (chem tap)",
+                          TAP_X - 15, yd, TAP_Z, 30, 130, 40, color=C_VALVE))
 
     return '\n'.join(parts)
 
@@ -1006,6 +1065,8 @@ def generate_ruby():
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
         component("Water/Waste Hookups", "Water Hookups", water_hookups()),
+        component("Fans A & B", "Fans", fans()),
+        component("Spray Bar Plumbing", "Spray Bar", spray_bar_plumbing()),
     ]
     body = '\n'.join(comps)
 
@@ -1064,7 +1125,7 @@ model.layers.each {{ |l| l.visible = true }}
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups"].each {{ |n| model.layers[n].visible = false }}
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans"].each {{ |n| model.layers[n].visible = false }}
 model.pages.add("Optical Core")
 model.layers.each {{ |l| l.visible = true }}
 

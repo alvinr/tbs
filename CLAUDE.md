@@ -100,6 +100,26 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 
 ---
 
+## Generator ↔ 3D Model Sync
+
+The 2D diagram generators (`src/generators/`) and the SketchUp 3D models
+(`src/models/`) both read spatial constants from `tbs_constants.py`, so changes
+ripple into both.
+
+- **When a change touches `tbs_constants.py` (or otherwise alters a system
+  component's geometry), re-run every SketchUp model that contains the affected
+  component** — regenerate, re-send, and re-save it:
+  `python3 src/models/generate_sketchup_model.py --save --send` (then commit the
+  updated `*.skp` + `*.rb` alongside the diagram/constant change).
+- **`component-dependency-map.md` is the source of truth** for which components
+  are drawn by which generators and present in which models (§3 diagram matrix,
+  §3.1 model list, §4 change-propagation + workflow). **Keep it updated** whenever
+  a system component, generator, or model is added or changed.
+- Today there is one model (`overview.skp`) containing nearly every component, so
+  in practice any `tbs_constants.py` change ⇒ re-run `overview`.
+
+---
+
 ## Key Optical Constants
 
 | Constant | Value | Derivation |

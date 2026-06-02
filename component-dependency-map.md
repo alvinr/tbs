@@ -367,10 +367,26 @@ Every generator script, its output PNGs, and the subsystems it renders.
 
 ---
 
+## 3.1 SketchUp 3D models
+
+Each subsystem is also built in the SketchUp 3D model(s). When a subsystem's
+constants change, **re-run the model(s) that contain it** (in addition to the 2D
+scripts) so the 3D models stay in sync with the drawings — see the Workflow below.
+
+| Model | Script | Output | Subsystems contained |
+|---|---|---|---|
+| **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 20 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups) |
+
+*As more models are added, list them here with the subsystems each contains, so a
+constants change re-runs only the affected models.*
+
+---
+
 ## 4. Change Propagation Guide
 
-When a constant in `tbs_constants.py` changes, re-run all scripts listed. Then commit the updated
-PNGs alongside the constant change.
+When a constant in `tbs_constants.py` changes, re-run all 2D scripts listed below
+**and re-run any SketchUp model (§3.1) that contains the affected subsystem.**
+Then commit the updated PNGs and `*.skp`/`*.rb` alongside the constant change.
 
 | Changed constant(s) | Re-run scripts (abbr) | Notes |
 |--------------------|----------------------|-------|
@@ -404,11 +420,14 @@ PNGs alongside the constant change.
 ```
 1. Edit tbs_constants.py
 2. python3 tbs_constants.py          # verify no errors, check derived values in summary
-3. python3 generate_<affected>.py    # for each affected script (see table above)
-4. Visually inspect updated PNGs in diagrams/
-5. bash publish.sh --build           # verify zero MkDocs warnings
-6. git add tbs_constants.py diagrams/*.png && git commit -m "..."
-7. bash publish.sh                   # deploy
+3. python3 generate_<affected>.py    # for each affected 2D script (see table above)
+4. Re-run affected SketchUp model(s) (§3.1):
+     python3 src/models/generate_sketchup_model.py --save --send
+   # regenerates overview.rb + re-sends to SketchUp; save the .skp
+5. Visually inspect updated PNGs in diagrams/ AND the SketchUp model
+6. bash publish.sh --build           # verify zero MkDocs warnings
+7. git add tbs_constants.py diagrams/*.png models/*.skp src/models/overview.rb && git commit -m "..."
+8. bash publish.sh                   # deploy
 ```
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

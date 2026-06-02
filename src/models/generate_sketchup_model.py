@@ -279,20 +279,22 @@ def container_shell():
                           C_LEN, C_WID, WALL_T,
                           color=w, alpha=0.2, both_sides=True))
 
+    # Three shell walls — translucent (like the ceiling) so the systems read
+    # through them from any side.
     parts.append(ruby_box("Pinhole Wall (Yd=0)",
                           0, -WALL_T, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=w, both_sides=True))
+                          color=w, alpha=0.2, both_sides=True))
 
     parts.append(ruby_box("Film Plane Wall (Yd=max)",
                           0, C_WID, 0,
                           C_LEN, WALL_T, C_HGT,
-                          color=w, both_sides=True))
+                          color=w, alpha=0.2, both_sides=True))
 
     parts.append(ruby_box("Far End Wall (IBC end)",
                           C_LEN, 0, 0,
                           WALL_T, C_WID, C_HGT,
-                          color=w, both_sides=True))
+                          color=w, alpha=0.2, both_sides=True))
 
     return '\n'.join(parts)
 

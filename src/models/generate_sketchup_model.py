@@ -647,12 +647,51 @@ def ibc_rack():
                               x_stations[0], yd, beam_z, spine_len, s, s,
                               color=C_STEEL))
 
-    # Cantilever platform cross-beams under both upper totes (along Yd).
-    beam_len = (IBC_FAR_Y + IBC_D) - BLUE_IBC_Y
+    # Platform cross-beams (along Yd) — now SIMPLY SUPPORTED: propped at the
+    # corridor uprights AND at the container walls (via the wall brackets below),
+    # so the upper totes are no longer cantilevered. Span wall-to-wall.
+    near_end, far_end = BLUE_IBC_Y, IBC_FAR_Y + IBC_D   # 30 .. 2332 (beam outer ends)
     for xs in x_stations:
         parts.append(ruby_box("Rack Platform Beam",
-                              xs, BLUE_IBC_Y, beam_z, s, beam_len, s,
+                              xs, near_end, beam_z, s, far_end - near_end, s,
                               color=C_STEEL))
+
+    c_bolt = "#3A3A42"
+
+    # ── Floor feet: 150×150×12 base flange plate + 4 M12 anchor bolts under each
+    # corridor upright — fixes the frame down (vertical + uplift restraint). ──
+    fp, ft, bpc = 150, 12, 50
+    for xs in x_stations:
+        for yd in (yd_near, yd_far - s):
+            cx, cy = xs + s / 2, yd + s / 2
+            parts.append(ruby_box("Foot Flange Plate",
+                                  cx - fp / 2, cy - fp / 2, -ft, fp, fp, ft,
+                                  color=C_STEEL))
+            for dx in (-bpc, bpc):
+                for dy in (-bpc, bpc):
+                    parts.append(ruby_cylinder("Foot Anchor Bolt M12",
+                                               cx + dx, cy + dy, -ft, 7, ft + 8,
+                                               color=c_bolt, axis="z"))
+
+    # ── Load-bearing wall brackets: prop the platform-beam OUTER ends at the
+    # near (Yd=0) and far (Yd=C_WID) walls — this is what turns the cantilever
+    # into a simple span. Each = wall reinforcing plate (M12-bolted) + a shelf
+    # under the beam end + a diagonal gusset strut carrying load down to the
+    # wall base. ~110 kg per bracket. ──
+    wpw, wph, wpt = 150, 250, 6
+    for xs in x_stations:
+        for wall_yd, beam_end, outward in ((0, near_end, -1), (C_WID, far_end, 1)):
+            py = wall_yd if outward < 0 else wall_yd - wpt
+            parts.append(ruby_box("Wall Bracket Plate",
+                                  xs - 50, py, plat_z + s - wph, wpw, wpt, wph,
+                                  color=C_STEEL))
+            sy0 = min(wall_yd, beam_end)
+            parts.append(ruby_box("Wall Bracket Shelf",
+                                  xs, sy0, beam_z - 8, s, abs(beam_end - wall_yd), 8,
+                                  color=C_STEEL))
+            parts.append(ruby_pipe("Wall Bracket Gusset",
+                                   (xs + s / 2, beam_end, beam_z - 4),
+                                   (xs + s / 2, wall_yd, 0), 9, color=C_STEEL))
 
     return '\n'.join(parts)
 

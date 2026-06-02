@@ -31,6 +31,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Equipment Panel") unless model.layers["Equipment Panel"]
   model.layers.add("IBC Stack") unless model.layers["IBC Stack"]
   model.layers.add("IBC Rack") unless model.layers["IBC Rack"]
+  model.layers.add("Light Trap") unless model.layers["Light Trap"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -928,12 +929,52 @@ end
   inst.name = "IBC Rack"
   inst.layer = model.layers["IBC Rack"]
 
+  # ═══ Light-Trap Drum ═══
+  defn = model.definitions.add("Light-Trap Drum")
+  ents = defn.entities
+  # LT Drum Shell
+  grp = ents.add_group
+  grp.name = "LT Drum Shell"
+  ge = grp.entities
+  circle = ge.add_circle([0.mm,1181.mm,0.mm], [0,0,1], 375.mm, 32)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(2200.mm)
+  mat = model.materials["LT Drum Shell"] || model.materials.add("LT Drum Shell")
+  mat.color = Sketchup::Color.new(232, 224, 208)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # LT Drum Vane (X-Z)
+  grp = ents.add_group
+  grp.name = "LT Drum Vane (X-Z)"
+  face = grp.entities.add_face([-375.mm,1178.mm,0.mm], [375.mm,1178.mm,0.mm], [375.mm,1184.mm,0.mm], [-375.mm,1184.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2200.mm)
+  mat = model.materials["LT Drum Vane (X-Z)"] || model.materials.add("LT Drum Vane (X-Z)")
+  mat.color = Sketchup::Color.new(119, 128, 136)
+  grp.material = mat
+
+  # LT Drum Vane (Yd-Z)
+  grp = ents.add_group
+  grp.name = "LT Drum Vane (Yd-Z)"
+  face = grp.entities.add_face([-3.mm,806.mm,0.mm], [3.mm,806.mm,0.mm], [3.mm,1556.mm,0.mm], [-3.mm,1556.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2200.mm)
+  mat = model.materials["LT Drum Vane (Yd-Z)"] || model.materials.add("LT Drum Vane (Yd-Z)")
+  mat.color = Sketchup::Color.new(119, 128, 136)
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Light-Trap Drum"
+  inst.layer = model.layers["Light Trap"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -945,7 +986,7 @@ model.layers.each { |l| l.visible = true }
 model.pages.add("Overview")
 
 # Optical Core: hide circulation/processing/structure, keep the optical train.
-["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack"].each { |n| model.layers[n].visible = false }
+["Walkways", "Processing Tray", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap"].each { |n| model.layers[n].visible = false }
 model.pages.add("Optical Core")
 model.layers.each { |l| l.visible = true }
 

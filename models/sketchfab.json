@@ -12,5 +12,12 @@
     "embed_files": [
       "processing-tray-and-spray-bar.md"
     ]
+  },
+  "ibc-stack": {
+    "name": "TBS001 - IBC Model",
+    "uid": "8d091c60e93848f38e26c9c89a08cbc8",
+    "embed_files": [
+      "ibc-stacking-report.md"
+    ]
   }
 }

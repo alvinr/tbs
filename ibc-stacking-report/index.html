@@ -983,6 +983,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#35-structural-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Structural Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2768,12 +2779,15 @@ panel.</p>
 <hr />
 <h2 id="3-stacking-frame">3. Stacking Frame<a class="headerlink" href="#3-stacking-frame" title="Permanent link">&para;</a></h2>
 <h3 id="31-general-arrangement">3.1 General Arrangement<a class="headerlink" href="#31-general-arrangement" title="Permanent link">&para;</a></h3>
-<p>The frame is a portal spine structure running along the 270mm plumbing corridor,
-with cantilever platform beams extending into each IBC column to support the upper
-tier. Three bays along X (front/mid/back uprights at 642mm centers) provide the
-structural grid. Wall brackets at the near and far container walls provide lateral
-restraint. The frame has no end posts in the X direction — IBCs are loaded from
-above via the corridor when the right walkway is removed.</p>
+<p>The frame is a portal spine structure running along the 270mm plumbing corridor.
+The platform cross-beams supporting the upper tier are <strong>simply supported
+wall-to-wall</strong> — propped at the two corridor uprights <em>and</em> at the container side
+walls by welded seat brackets. (This replaces the earlier cantilever scheme; see
+<a href="#35-structural-validation">§3.5</a>.) Three bays along X (front/mid/back uprights at
+642mm centers) provide the structural grid. Each of the six corridor uprights is
+anchored to the container floor by a flange-plate foot. The frame has no end posts
+in the X direction — IBCs are loaded from above via the corridor when the right
+walkway is removed.</p>
 <h3 id="32-frame-specification">3.2 Frame Specification<a class="headerlink" href="#32-frame-specification" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2785,7 +2799,7 @@ above via the corridor when the right walkway is removed.</p>
 <tbody>
 <tr>
 <td>Material</td>
-<td>50 × 50 × 3mm RHS mild steel</td>
+<td>50 × 50 × 3mm RHS mild steel (A500 Grade B)</td>
 </tr>
 <tr>
 <td>Footprint (X × Yd)</td>
@@ -2812,16 +2826,24 @@ above via the corridor when the right walkway is removed.</p>
 <td>642mm (3 bays: front, mid, back)</td>
 </tr>
 <tr>
-<td>Wall brackets</td>
-<td>At near and far container walls, at platform and top rail levels</td>
+<td>Floor anchorage</td>
+<td>6 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each</td>
+</tr>
+<tr>
+<td>Wall seat brackets</td>
+<td>6 (one per platform-beam outer end) — welded 8mm back-plate + 10mm seat + 8mm triangular gusset web; load-bearing</td>
 </tr>
 <tr>
 <td>Bracket attachment</td>
-<td>M12 anchor bolts with gusset plates, welded to frame</td>
+<td>4 × M12 to wall corrugation ribs per bracket; gusset web transfers the seat reaction into the back-plate</td>
+</tr>
+<tr>
+<td>Top lateral ties</td>
+<td>Light clip at each top-beam wall end (restraint only)</td>
 </tr>
 <tr>
 <td>Frame weight</td>
-<td>~90 kg</td>
+<td>~130 kg (incl. feet + seat brackets)</td>
 </tr>
 <tr>
 <td>Joints</td>
@@ -2865,6 +2887,62 @@ above via the corridor when the right walkway is removed.</p>
 <p>Bottom-tier bays include diagonal X-bracing (flat bar) for racking resistance during
 transport. The bracing runs between the front/mid and mid/back uprights on the
 corridor side of each column.</p>
+<h3 id="35-structural-validation">3.5 Structural Validation<a class="headerlink" href="#35-structural-validation" title="Permanent link">&para;</a></h3>
+<p><strong>Section.</strong> 50 × 50 × 3mm RHS, <a href="https://www.astm.org/a0500_a0500m-23.html">A500 Grade B</a>
+(minimum yield F<sub>y</sub> = 315 MPa). Second moment of area I = 20.8 cm⁴,
+elastic section modulus Z = 8.34 cm³, E = 200 GPa
+(<a href="https://www.atlassteels.com.au/documents/Atlas_Technical_Handbook_rev_Aug_2013-web.pdf">Atlas Steels — Square &amp; Rectangular Hollow Sections, dimensions &amp; properties</a>).</p>
+<p><strong>Design load.</strong> Worst case is the <em>camera-ready</em> state with the top tier holding
+two full Blue totes (water), 655 kg each. Each top tote is carried over the span
+from its container-wall seat bracket to the adjacent corridor upright (L ≈ 1046mm),
+shared across the three platform cross-beams — a governing patch of ≈ 218 kg per
+beam, modeled as a uniform load.</p>
+<p><strong>Cantilever vs. simple span.</strong> Propping the beam end at the wall (rather than
+cantilevering it off the corridor spine) is what makes the section work
+(<a href="https://www.engineeringtoolbox.com/beams-support-loads-deflection-d_1311.html">simply-supported beam</a>,
+<a href="https://www.engineeringtoolbox.com/cantilever-beams-d_1848.html">cantilever beam</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Load path</th>
+<th>Max moment</th>
+<th>Bending stress σ = M/Z</th>
+<th>Safety factor F<sub>y</sub>/σ</th>
+<th>Deflection</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cantilever (old)</td>
+<td>1.12 kN·m</td>
+<td>134 MPa</td>
+<td>2.3</td>
+<td>7.4mm (L/141)</td>
+<td>Marginal</td>
+</tr>
+<tr>
+<td><strong>Simple span (new)</strong></td>
+<td><strong>0.28 kN·m</strong></td>
+<td><strong>34 MPa</strong></td>
+<td><strong>9.3</strong></td>
+<td><strong>0.8mm (L/1300)</strong></td>
+<td><strong>Ample</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Converting to a simple span cuts bending stress ~4× and deflection ~9×.</p>
+<p><strong>Reactions &amp; securing.</strong></p>
+<ul>
+<li>Each <strong>wall seat bracket</strong> carries the simple-span end reaction ≈ <strong>110 kg
+  (1.1 kN)</strong> vertical. The 8mm back-plate bolts to the wall ribs with 4 × M12; the
+  triangular gusset web transfers the seat reaction into the back-plate. At 110 kg
+  the M12 group (≈ 11 kN shear capacity each in Grade 8.8) is loaded to a small
+  fraction of capacity.</li>
+<li>Each of the <strong>6 corridor uprights</strong> is anchored by a 150 × 150 × 12mm floor
+  flange plate with 4 × M12 anchors, restraining uplift and the lateral (transport)
+  loads carried into the bottom rail.</li>
+</ul>
 <hr />
 <h2 id="4-securing-for-transport">4. Securing for Transport<a class="headerlink" href="#4-securing-for-transport" title="Permanent link">&para;</a></h2>
 <h3 id="41-d-ring-lashing-points">4.1 D-Ring Lashing Points<a class="headerlink" href="#41-d-ring-lashing-points" title="Permanent link">&para;</a></h3>
@@ -3147,11 +3225,11 @@ valves mount on this panel.</p>
 <p><strong>Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions</strong>
 <img alt="TBS-001 IBC Stacking — Sheet 5" src="../assets/ibc-stacking-sheet5.png" /></p>
 <h3 id="ibc-support-frame-fabrication-3-sheets">IBC Support Frame Fabrication (3 sheets)<a class="headerlink" href="#ibc-support-frame-fabrication-3-sheets" title="Permanent link">&para;</a></h3>
-<p><strong>Sheet 1 — Front elevation: Corridor uprights, beams, wall brackets, D-rings, access gates</strong>
+<p><strong>Sheet 1 — Front elevation: Corridor uprights, beams, wall seat brackets, floor flange feet, D-rings, access gates</strong>
 <img alt="TBS-001 IBC Frame — Sheet 1" src="../assets/ibc-frame-sheet1.png" /></p>
-<p><strong>Sheet 2 — Side elevation: Three-bay structure, X-bracing, longitudinal beams</strong>
+<p><strong>Sheet 2 — Side elevation: Three-bay structure, X-bracing, longitudinal beams, floor flange feet</strong>
 <img alt="TBS-001 IBC Frame — Sheet 2" src="../assets/ibc-frame-sheet2.png" /></p>
-<p><strong>Sheet 3 — Plan view at platform level: Beam layout, wall brackets, lip perimeter, rubber mats</strong>
+<p><strong>Sheet 3 — Plan view at platform level: Beam layout, wall seat brackets, floor feet, lip perimeter, rubber mats</strong>
 <img alt="TBS-001 IBC Frame — Sheet 3" src="../assets/ibc-frame-sheet3.png" /></p>
 <p>Full drawings also appear in <a href="../engineering-diagrams/">Engineering Diagrams</a> §15
 (stacking) and §17 (frame fabrication).</p>
@@ -3173,6 +3251,18 @@ valves mount on this panel.</p>
 <td>Frame uprights, beams, cross-members</td>
 <td>8</td>
 <td>$240–$360</td>
+</tr>
+<tr>
+<td>12mm steel plate, 150 × 150 cut</td>
+<td>Upright floor flange feet</td>
+<td>6</td>
+<td>$25–$45</td>
+</tr>
+<tr>
+<td>8mm steel plate (back-plates, seats, gussets)</td>
+<td>6 welded wall seat brackets</td>
+<td>1 lot</td>
+<td>$50–$80</td>
 </tr>
 <tr>
 <td>5mm steel plate (flat bar)</td>
@@ -3199,10 +3289,16 @@ valves mount on this panel.</p>
 <td>$30–$50</td>
 </tr>
 <tr>
-<td>M12 anchor bolts + gusset plates</td>
-<td>Wall bracket attachment</td>
-<td>12</td>
-<td>$25–$40</td>
+<td>M12 × 40 bolt, Grade 8.8 (into wall ribs)</td>
+<td>Wall seat brackets, 4 each</td>
+<td>24</td>
+<td>$25–$45</td>
+</tr>
+<tr>
+<td>M12 floor anchor (wedge/sleeve, container floor)</td>
+<td>Upright flange feet, 4 each</td>
+<td>24</td>
+<td>$40–$70</td>
 </tr>
 <tr>
 <td>Flat bar X-bracing</td>
@@ -3218,9 +3314,9 @@ valves mount on this panel.</p>
 </tr>
 <tr>
 <td>Welding / fabrication (frame assembly)</td>
-<td>~20–30 hrs labor</td>
+<td>~26–36 hrs labor (incl. feet + seat brackets)</td>
 <td>1</td>
-<td>$1,000–$1,500</td>
+<td>$1,150–$1,650</td>
 </tr>
 <tr>
 <td>Primer + paint</td>
@@ -3232,7 +3328,7 @@ valves mount on this panel.</p>
 <td><strong>Frame subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>$1,505–$2,280</strong></td>
+<td><strong>$1,770–$2,630</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3365,8 +3461,8 @@ valves mount on this panel.</p>
 <tbody>
 <tr>
 <td>Stacking frame</td>
-<td>$1,505</td>
-<td>$2,280</td>
+<td>$1,770</td>
+<td>$2,630</td>
 </tr>
 <tr>
 <td>External plumbing panel</td>
@@ -3385,8 +3481,8 @@ valves mount on this panel.</p>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong>$1,945</strong></td>
-<td><strong>$3,265</strong></td>
+<td><strong>$2,210</strong></td>
+<td><strong>$3,615</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3446,7 +3542,7 @@ valves mount on this panel.</p>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Inspect wall bracket anchor bolts for loosening; re-torque to spec</td>
+<td>Inspect wall seat bracket bolts and upright floor-anchor bolts for loosening; re-torque to spec</td>
 </tr>
 <tr>
 <td>Annually</td>

@@ -222,8 +222,8 @@ BA_D       = 120     # battery bank depth from wall (mm) [rev7: slim-profile LiF
 # Contains pumps (P-01, P-02, P-04), ACC-01, and 3× Big Blue filter housings.
 # Pumps on near-wall side (Yd=1046–1173), filters on far-wall side (Yd=1186–1316).
 # Filters at bottom of panel (Z=200–1280), pumps at top (Z=1320–2220).
-EQPANEL_X       = 5000    # panel face X (mm) — open-end face where equipment mounts
-EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5000–5018)
+EQPANEL_X       = 5240    # panel face X (mm) — ply X=5240–5258, butts the film-plane (-X) face of the middle corridor frame station (X≈5258); equipment hangs toward -X
+EQPANEL_T       = 18      # panel thickness in X (mm) — ply extends toward sealed end (X=5240–5258)
 EQPANEL_Z_LO    = 200     # panel bottom Z (mm) — 100mm above walkway deck
 EQPANEL_Z_HI    = 2260    # panel top Z (mm) — above IBC stack (2020), below ceiling (2388)
 EQPANEL_H       = EQPANEL_Z_HI - EQPANEL_Z_LO   # = 2060mm
@@ -375,6 +375,15 @@ IBC_WBKT_SEAT_T    = 10    # seat plate thickness (mm)
 IBC_WBKT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm)
 IBC_WBKT_BOLT_D    = 12    # M12 wall anchor bolt
 IBC_WBKT_BOLT_N    = 4     # wall bolts per bracket
+
+# Equipment-panel support frame — the wet-end panel is pushed back to butt the
+# film-plane (-X) face of the MIDDLE corridor upright station, which is extended
+# up to the panel top and closed into a rectangle (two corridor uprights + top
+# rail + floor-level beam) that the panel bolts to. Mirrors ibc_rack().
+PANEL_FRAME_X      = IBC_COL_X + IBC_W // 2 - IBC_FRAME_RHS // 2  # 5258 — middle corridor X-station (RHS -X edge)
+PANEL_FRAME_TOP_Z  = EQPANEL_Z_HI   # 2260 — extended uprights / top rail level
+PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright (panel near edge)
+PANEL_FRAME_YD_F   = CORRIDOR_YD_FAR   # 1316 — far corridor upright (panel far edge)
 
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
 PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]

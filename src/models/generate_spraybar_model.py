@@ -281,20 +281,18 @@ def build_feed_pole():
     nfeed = 7
     bore_cz = ZB + S / 2
     rear = by + 30                                   # back-edge bypass lane (clear of socket + U-bolt)
+    fz = man_z + 9                                   # tube routing height
     for j in range(nfeed):
         fx = XL + (j + 0.5) / nfeed * (XR - XL)
         if j == (nfeed - 1) / 2:                     # centre slot lands on the ball joint
             fx = cx + 80                             # nudge clear of the Ø36 socket
-        if fx > cx + 30:                             # clear of the joint — route directly
-            parts.append(ov.ruby_pipe("Feed Tube",
-                         (man_cx + 14, by, man_z + 9), (fx, by, ZT + 6), 3.0, color=C_WATER))
-        else:                                        # left of the joint — go around via the back edge
-            parts.append(ov.ruby_pipe("Feed Tube",
-                         (man_cx, by + 12, man_z + 9), (man_cx, rear, man_z + 9), 3.0, color=C_WATER))
-            parts.append(ov.ruby_pipe("Feed Tube",
-                         (man_cx, rear, man_z + 9), (fx, rear, man_z + 9), 3.0, color=C_WATER))
-            parts.append(ov.ruby_pipe("Feed Tube",
-                         (fx, rear, man_z + 9), (fx, by, ZT + 6), 3.0, color=C_WATER))
+        if fx > cx + 30:                             # clear of the joint — route directly (one elbow)
+            wp = [(man_cx + 14, by, fz), (fx, by, fz), (fx, by, ZT + 6)]
+        else:                                        # left — detour around the joint via the back edge
+            wp = [(man_cx, by + 12, fz), (man_cx, rear, fz),
+                  (fx, rear, fz), (fx, by, fz), (fx, by, ZT + 6)]
+        # orthogonal run with swept-torus elbow fittings at every bend (per the rule)
+        parts.append(ov.ruby_pipe_run("Feed Tube", wp, 3.0, color=C_WATER, elbow_r=5))
         parts.append(ov.ruby_cylinder("Feed Barb Fitting",
                      fx, by, bore_cz - 2, 4, (ZT + 6) - (bore_cz - 2), color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)

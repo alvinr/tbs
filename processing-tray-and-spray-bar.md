@@ -156,8 +156,8 @@ twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bott
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
 | Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 40mm SHS | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
 | Spacer blocks | 6061-T6 AL, between top & bottom clamp plates, one each side of beam | 4 | Set clamp gap to beam height so bolts grip the beam rather than bend the plates |
-| Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
-| M8 U-bolt | SS, wraps over ball joint socket, nyloc nuts | 1 | Clamps ball joint to beam |
+| Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange base | 1 | Multi-axis arm articulation on beam top face |
+| Self-tapping screws | SS thread-forming, into 3mm SHS top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
 | M6 pinch bolt | SS hex bolt + nut | 1 | Clamps arm tube onto ball joint stud |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4 m | 1 | Operator controls bar position from walkway |
@@ -283,7 +283,7 @@ Formed from 5mm 6061-T6 aluminum plate:
   plate (over the beam, Z=60–63mm) are drawn together by bolts on each side of the
   beam. A solid aluminum spacer block beside each beam face fills the gap between the
   plates so tightening grips the beam instead of bending the plates.
-- **Ball joint mount:** The ball joint flange bolts to the beam top face (Z=60mm),
+- **Ball joint mount:** The ball joint flange is fastened to the beam top face (Z=60mm) with self-tapping screws,
   keeping the socket housing below grating level (Z=75mm).
 
 **Lateral guidance:** The tray rim walls (50mm high, at X=170 and X=4,629) act as
@@ -469,8 +469,10 @@ walkway grating at the same X position. The slit positions are shown on the
 
 A Ø20mm stainless steel ball joint on the beam top face provides multi-axis
 articulation between the beam and the operator's pole. The ball sits in a zinc socket
-housing (M12 stud, 50mm flange), clamped to the beam with an M8 stainless U-bolt and
-nyloc nuts.
+housing on a 50mm flange base. The flange is fastened to the beam top with four
+self-tapping (thread-forming) stainless screws driven into the 3mm SHS top wall — the
+beam is sealed, so there is no internal access to tighten nuts. Nothing overhangs the
+ball, so the arm articulates freely in every direction.
 
 A 25mm OD × 2mm wall aluminum round tube (~500mm long) connects from the ball joint
 stud to the telescoping pole. An M6 pinch bolt clamps the arm tube onto the stud. The
@@ -555,7 +557,7 @@ tray drainage plan and sump cross-section).
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 4 (1 pack) | $5 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle clamp, splice fasteners | 16 | $7 |
-| M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
+| Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |
 | SS beam clamp plates (top + bottom) + spacers (40mm) | Beam to carriage plate (sandwich, bolted) | 4 | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |

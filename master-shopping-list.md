@@ -248,8 +248,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
 | [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to the distribution manifold | 1 | Amazon | $15 |
 | [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Axle saddle-clamp through-bolts (2 per saddle, 8 saddles) | 16 sets | McMaster-Carr | $12 |
-| [20mm ball joint, SS ball + zinc socket](https://www.amazon.com/s?k=20mm+ball+joint+stud+zinc+socket) | Multi-axis arm articulation on beam top face. Ø36mm socket, 50mm flange, M12 stud | 1 | Amazon / McMaster | $8–$15 |
-| [M8 SS U-bolt, 40mm pipe size + nyloc nuts](https://www.amazon.com/s?k=M8+stainless+U+bolt+40mm) | Clamps ball joint socket housing to beam top face | 1 set | McMaster-Carr | $3–$5 |
+| [20mm ball joint, SS ball + zinc socket](https://www.amazon.com/s?k=20mm+ball+joint+stud+zinc+socket) | Multi-axis arm articulation on beam top face. Ø36mm socket, 50mm flange base, M12 stud | 1 | Amazon / McMaster | $8–$15 |
+| [Self-tapping SS screws, thread-forming (8-pack)](https://www.amazon.com/s?k=stainless+self+tapping+screws) | Fasten ball-joint flange to the 3mm SHS beam top wall (no internal access for nuts) | 4 | Amazon / McMaster-Carr | $3–$5 |
 | [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
 | M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
 | [½" barb × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+hose+barb+brass) | Flex hose to manifold inlet | 1 | Amazon | $4 |

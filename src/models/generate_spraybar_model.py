@@ -224,15 +224,17 @@ def build_feed_pole():
     c_bolt = "#50505A"           # bolts / U-bolt
     c_ss = "#D8D0BC"             # SS ball + M12 stud
 
-    # ── pole connection: 20mm ball joint clamped to the beam TOP face ──
-    # flange (Ø44/50mm) on the beam top
+    # ── pole connection: flange-base ball joint fastened to the beam TOP face ──
+    # flange (44×44×5) on the beam top, held by 4 self-tapping screws (no internal
+    # beam access for nuts) — nothing overhangs the ball, so the arm articulates free
     parts.append(ov.ruby_box("Pole Mount Flange",
                              cx - 22, by - 22, ZT, 44, 44, 5, color=C_STEEL))
-    # U-bolt (M8) clamping the socket housing down to the beam top
-    parts.append(ov.ruby_pipe_run("Pole U-bolt",
-                                  [(cx, by - 22, ZT - 6), (cx, by - 22, ZT + 36),
-                                   (cx, by + 22, ZT + 36), (cx, by + 22, ZT - 6)],
-                                  2.5, color=c_bolt))
+    for sxx in (cx - 16, cx + 16):
+        for syy in (by - 16, by + 16):
+            parts.append(ov.ruby_cylinder("Flange Self-Tapping Screw",
+                                          sxx, syy, ZT - 4, 1.8, 9, color=c_bolt, axis="z"))
+            parts.append(ov.ruby_cylinder("Flange Screw Head",
+                                          sxx, syy, ZT + 5, 3, 2.5, color=c_bolt, axis="z"))
     # socket housing — the ball-joint body, Ø36 × 28
     parts.append(ov.ruby_cylinder("Ball-Joint Socket (20mm)",
                                   cx, by, ZT + 5, 18, 28, color=c_joint, axis="z"))
@@ -266,14 +268,18 @@ def build_feed_pole():
     man_top = man_z + 18
     parts.append(ov.ruby_box("Feed Manifold",
                              man_cx - 18, by - 14, man_z, 36, 28, 18, color=C_WATER))
-    # hose down the pole, then a VERTICAL drop into the manifold top so it enters
-    # the box at a right angle (orthogonal connection — per pipe layout rules)
+    # hose down the pole, then a CORRUGATED FLEX CONNECTOR (horizontal -> 90° elbow
+    # -> vertical drop) into the manifold top. The flex section absorbs the handle's
+    # articulation; it enters the box at a right angle and matches the evap-duct
+    # corrugated flex visual language.
     parts.append(ov.ruby_pipe("Feed Hose (upper)",
                               (cx + 22, op_y, op_z), (cx + 22, mid_y, mid_z), 8, color=C_WATER))
     parts.append(ov.ruby_pipe("Feed Hose (lower)",
-                              (cx + 22, mid_y, mid_z), (man_cx, by, man_top + 26), 8, color=C_WATER))
-    parts.append(ov.ruby_pipe("Feed Hose Drop",
-                              (man_cx, by, man_top + 26), (man_cx, by, man_top), 8, color=C_WATER))
+                              (cx + 22, mid_y, mid_z), (man_cx, by - 35, man_top + 28), 8, color=C_WATER))
+    parts.append(ov.ruby_flex_run("Feed Flex Connector",
+                                  [(man_cx, by - 35, man_top + 28), (man_cx, by, man_top + 28),
+                                   (man_cx, by, man_top)],
+                                  7, color=C_WATER, elbow_r=10))
     # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
     # the ball joint detour along the beam BACK edge so they go AROUND the socket —
     # never through it (no pipes through objects). The centre feed is nudged clear

@@ -264,7 +264,11 @@ def _ibc_stacking_frame_weight():
                            + 0.070 * 0.110 * 0.010                 # seat
                            + 0.5 * 0.110 * 0.200 * 0.008) * RHO_STEEL  # gusset
     anchors_kg = 48 * 0.10                                          # ≈ 4.8
-    return base_kg + feet_kg + seat_bracket_kg + anchors_kg
+    # Panel support frame: mid-bay uprights extended 1010->2260mm (×2) + top
+    # rail + floor beam (each ~0.27m), 50x50x3 RHS at ~4.25 kg/m. ≈ 13 kg.
+    rhs_kg_per_m = 4.25
+    panel_frame_kg = (2 * 1.25 + 0.27 + 0.27) * rhs_kg_per_m       # ≈ 13.0
+    return base_kg + feet_kg + seat_bracket_kg + anchors_kg + panel_frame_kg
 
 
 # ═══════════════════════════════════════════════════════════════════════════

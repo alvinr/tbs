@@ -161,7 +161,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. unit | Total |
 |------|------|-----|----------|-----------|-------|
-| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Uprights, beams, cross-members (A500 Grade B) | 8 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $240–$360 |
+| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Uprights, beams, cross-members + mid-bay panel support frame (extended uprights, top rail, floor beam) (A500 Grade B) | 8 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $240–$360 |
 | [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 6 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $25–$45 |
 | Steel plate 8mm (back-plates, seats, gussets) | 6 welded wall seat brackets (cut from ~0.3 m²) | 1 lot | Metal Supermarkets SoCal | $50–$80 | $50–$80 |
 | Steel flat bar 5mm (~8 m) | Anti-rotation lip on platform perimeter | 1 | Metal Supermarkets SoCal | $30–$50 | $30–$50 |

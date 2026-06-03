@@ -78,13 +78,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Fixed Door Frame ═══
   defn = model.definitions.add("Fixed Door Frame")
   ents = defn.entities
-  # Door Frame bottom
+  # Door Frame threshold L
   grp = ents.add_group
-  grp.name = "Door Frame bottom"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  grp.name = "Door Frame threshold L"
+  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,791.mm,0.mm], [-50.mm,791.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame threshold R
+  grp = ents.add_group
+  grp.name = "Door Frame threshold R"
+  face = grp.entities.add_face([-50.mm,1571.mm,0.mm], [0.mm,1571.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -95,7 +106,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -106,7 +117,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -117,7 +128,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -206,10 +217,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # EPDM seal bottom
+  # EPDM seal bottom L
   grp = ents.add_group
-  grp.name = "EPDM seal bottom"
-  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
+  grp.name = "EPDM seal bottom L"
+  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,791.mm,80.mm], [-20.mm,791.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM seal bottom R
+  grp = ents.add_group
+  grp.name = "EPDM seal bottom R"
+  face = grp.entities.add_face([-20.mm,1571.mm,80.mm], [0.mm,1571.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
@@ -409,19 +431,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # LT Drum bottom shaft
-  grp = ents.add_group
-  grp.name = "LT Drum bottom shaft"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,-150.mm], [0,0,1], 37.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(150.mm)
-  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # LT Upper bearing (SKF 6215)
   grp = ents.add_group
   grp.name = "LT Upper bearing (SKF 6215)"
@@ -439,7 +448,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Lower bearing collar"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,-45.mm], [0,0,1], 75.mm, 24)
+  circle = ge.add_circle([0.mm,1181.mm,0.mm], [0,0,1], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
@@ -462,9 +471,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # LT Floor collar plate
   grp = ents.add_group
   grp.name = "LT Floor collar plate"
-  face = grp.entities.add_face([-120.mm,1061.mm,-40.mm], [120.mm,1061.mm,-40.mm], [120.mm,1301.mm,-40.mm], [-120.mm,1301.mm,-40.mm])
+  face = grp.entities.add_face([-120.mm,1061.mm,0.mm], [120.mm,1061.mm,0.mm], [120.mm,1301.mm,0.mm], [-120.mm,1301.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(12.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -518,7 +527,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,746.mm,2358.mm], [480.mm,746.mm,2358.mm], [480.mm,766.mm,2358.mm], [-30.mm,766.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -551,7 +560,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,1596.mm,2358.mm], [480.mm,1596.mm,2358.mm], [480.mm,1616.mm,2358.mm], [-30.mm,1616.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Door Frame bottom"] || model.materials.add("Door Frame bottom")
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat

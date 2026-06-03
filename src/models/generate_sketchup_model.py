@@ -1183,8 +1183,10 @@ def fans():
     r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
     dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
     dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
-    bf, bft = 150, 8                          # baffle plates: 150 tall (Z, offset) × FULL duct
-                                              # width (Yd) so they seal to both side walls
+    bf, bft = 125, 8                          # baffle plates: 125 tall (leaves a 75mm airflow
+                                              # gap top/bottom) × FULL duct width (Yd) so they
+                                              # seal to both side walls — light-safe S-path
+                                              # that still passes air through the offset gaps
     parts = []
 
     flo, flt = 30, 5                          # flange overhang past the duct, + plate thickness

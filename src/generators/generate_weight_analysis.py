@@ -69,7 +69,7 @@ RHO_WATER  = 1000     # fresh water at ~20°C
 # ── Grating weight ──────────────────────────────────────────────────────────
 # 25mm press-locked galvanized steel bar grating, 30×100mm bearing bar pitch.
 # Source: McNICHOLS catalog, standard industrial grating.
-GRATING_KG_PER_M2 = 44.0
+GRATING_KG_PER_M2 = 26.0   # 15mm press-locked steel grating (was 44 for 25mm)
 
 # ── IBC empty weight ────────────────────────────────────────────────────────
 # Schutz Ecobulk MX 600L steel-cage IBC: ~55 kg tare.

@@ -136,7 +136,7 @@ The shelf is permanently installed — it does not fold or detach for transport.
 
 ## 5. Operator Access
 
-The operator stands on the near walkway (deck at H=100mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1025mm (925mm above the walkway deck) — ergonomic counter height for standing prep work.
+The operator stands on the near walkway (deck at H=80mm) at approximately X=4029mm (shelf midpoint in X), turned 90° to face the processing tray side. The shelf work surface is at H=1025mm (945mm above the walkway deck) — ergonomic counter height for standing prep work.
 
 The shelf near edge (Yd=300mm) aligns with the near walkway outer edge, so the operator can reach the full 300mm shelf depth from the walkway without leaning. Items used most frequently (scale, graduated cylinders) are staged at the near edge; bulk storage (bottles, wash trays) at the far edge.
 

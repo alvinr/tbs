@@ -17,9 +17,12 @@ access functions:
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
   manifold. Ceiling-hung to clear the IBC stack below.
 
-All four sections share a common 100mm deck height (75mm bracket arm or bearer
-top + 25mm grating) and 300mm standard width, creating a level perimeter walking
-surface.
+All four sections share a common 80mm deck height (65mm bracket arm or bearer
+top + 15mm grating) and 300mm standard width, creating a level perimeter walking
+surface. The deck is lowered (from the original 100mm) so the film plane travels
+above the in-place walkway — deck top Z=80mm clears the Z=100mm film-frame bottom
+by 20mm. The cantilever bracket arm (Z=55–65mm) clears the 50mm processing-tray
+rim by 5mm where it overhangs the tray.
 
 The design enforces **zero processing tray contact** — all walkway supports are
 either wall-mounted, ceiling-hung, or placed outside the tray footprint. This
@@ -33,10 +36,10 @@ tray's watertight seal.
 | Parameter | Value |
 |-----------|-------|
 | Standard walkway width | 300mm |
-| Deck height (floor to grate top) | 100mm |
-| Grating thickness | 25mm press-locked galvanized steel |
-| Grating bearing bars | 30×3mm at 34.2mm pitch |
-| Bracket arm height | 75mm above finished floor |
+| Deck height (floor to grate top) | 80mm |
+| Grating thickness | 15mm press-locked galvanized steel (thin grate, lowered deck) |
+| Grating bearing bars | 15×3mm at 34.2mm pitch |
+| Bracket arm height | 65mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
 | Near walkway widened section | 500mm at X≈1155–2629mm |
@@ -59,7 +62,7 @@ Each bracket is a three-piece welded 8mm steel plate assembly:
 | Component | Dimensions | Function |
 |-----------|-----------|----------|
 | Vertical mounting plate | 8×150mm (height), flat against wall rib | Bolted to container corrugation rib interior face |
-| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=75mm |
+| Horizontal arm | 8mm plate, 300mm cantilever (500mm in widened zone) | Supports grating — top surface at Z=65mm |
 | Triangular gusset | Right triangle, 70mm reach from wall | Braces arm from below; reach stops before tray rim at Yd=80mm |
 
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
@@ -69,7 +72,7 @@ passing through the full wall assembly: hex head → reinforcing plate (6mm) →
 exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
 bracket vertical plate (8mm) → nut. Two lower bolts at Z=35mm straddle
 the 8mm gusset plate at ±27mm from the plate centerline in X (centered
-between plate edge and gusset). One upper bolt at Z=120mm (above grating deck at Z=100,
+between plate edge and gusset). One upper bolt at Z=120mm (above grating deck at Z=80,
 30mm from plate top) is centered on the gusset centerline. The container
 corrugation ribs are hollow — each bolt bridges the air gap inside the rib.
 A 6mm reinforcing plate (100×180mm) is welded to the exterior panel face to
@@ -115,7 +118,7 @@ exterior panel (1.6mm Corten) → air gap → rib interior face (1.6mm) →
 bracket vertical plate (10mm) → nut. Two lower bolts at Z=35mm straddle
 the 10mm gusset plate at ±32mm from the plate centerline in X (centered
 between plate edge and gusset). Two upper bolts at Z=160mm (above grating
-deck at Z=100, 40mm from plate top) at the same ±32mm X offset. The
+deck at Z=80, 60mm from plate top) at the same ±32mm X offset. The
 container corrugation ribs are hollow — each bolt bridges the air gap inside
 the rib. A 6mm reinforcing plate (120×220mm) is welded to the exterior panel
 face to provide a bearing surface for the bolt heads and washers. See Sheet 7,
@@ -195,7 +198,7 @@ The ceiling-hung design achieves three goals:
 1. **Zero floor contact** — clears the IBC stack entirely; no legs or supports
    on the container floor in the IBC zone.
 2. **Zero tray contact** — the walkway floats above the processing tray.
-3. **Level deck** — 100mm deck height matches all four walkway sections.
+3. **Level deck** — 80mm deck height matches all four walkway sections.
 
 ---
 
@@ -220,11 +223,11 @@ removable lift-out section supported by three independent elements.
 The bearer beam at X=470mm is the primary structural element. It spans 1762mm
 (the distance between the near and far walkway bracket vertical legs at
 Yd=300mm and Yd=1962mm) and is bolted to those bracket vertical legs. The grating
-rests on the bearer beam top surface at Z=75mm.
+rests on the bearer beam top surface at Z=65mm.
 
 On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
 bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip
-top at Z=75mm). Below the bearing strip, three floor-standing support legs at
+top at Z=65mm). Below the bearing strip, three floor-standing support legs at
 X=140mm provide vertical support. These legs stand on bare floor outside the
 processing tray footprint — zero tray contact.
 
@@ -368,7 +371,7 @@ distributes load across multiple rods.
 
 | # | Item | Specification | Qty | Est. Cost |
 |---|------|--------------|-----|-----------|
-| 1 | Press-locked galvanized steel grating | 25mm thick, 30×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
+| 1 | Press-locked galvanized steel grating | 15mm thick, 15×3mm bearing bars at 34.2mm pitch | ~6.5 m² (4 sections) | $350–$550 |
 | 2 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded | 14 (5 near + 9 far at 457mm centers) | $420–$700 |
 | 3 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded | 4 (EP/battery/slit zone) | $160–$280 |
 | 4 | M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 | 58 (3 per std bracket + 4 per widened) | $87–$145 |
@@ -380,7 +383,7 @@ distributes load across multiple rods.
 | 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
 | 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
 | 12 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1762mm long | 1 | $25–$45 |
-| 13 | Floor support leg | 25×25×3mm aluminum SHS, 75mm tall | 3 | $10–$20 |
+| 13 | Floor support leg | 25×25×3mm aluminum SHS, 65mm tall | 3 | $10–$20 |
 | 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
 | 15 | Bearing strip | 25×25×3mm aluminum angle, ~1762mm long | 1 | $15–$25 |
 | 16 | Anti-slip restraint kit | 5mm flat plate + stop lip + lock block + M8 thumb screw bolt per bearer end | 2 sets | $20–$35 |

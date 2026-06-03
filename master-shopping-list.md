@@ -391,12 +391,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**
 
 ## 7b. Perimeter Walkway
-*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery/slit zone (X≈1,155–2,629). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 100mm (75mm support + 25mm grate).*
+*Source: `generate_walkway_diagram.py`, `engineering-diagrams.md` §14. Four removable grated walkway sections around the processing tray. Near walkway widens from 300mm to 500mm at EP/battery/slit zone (X≈1,155–2,629). Near/far: wall-cantilevered brackets bolted to corrugated wall ribs. Right: ceiling-hung from M10 threaded rod hangers (no floor contact — clears IBC stack entirely). Left: removable lift-out (panel conflict — no brackets). Butt joints at all corners. No floor contact on any section — entire tray interior completely clear for film loading. Deck height 80mm (65mm support + 15mm grate).*
 
 ### Walkway sections (4 off)
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Press-locked steel grating, 25mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 30×3mm bars, 30mm pitch. Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
+| [Press-locked steel grating, 15mm](https://www.mcnichols.com/products/grating/bar-grating/) | Galvanized, 15×3mm bars, 34mm pitch. Cut to size: near 4459×300mm (with 1474×500mm bump-out), far 4459×300mm, right 2362×300mm, left 2362×300mm (removable) | ~4.5 m² | [McNichols](https://www.mcnichols.com) | ~$290–$430 |
 | Standard wall brackets, 8mm steel plate | Triangular gusset: 150mm vert × 300mm arm, welded. Hot-dip galvanized. | 14 | Local fab / Metal Supermarkets | ~$112–$175 |
 | Widened wall brackets, 10mm steel plate | 200mm vert × 500mm arm, 70mm gusset, welded. Hot-dip galvanized. EP/battery/slit zone. | 4 | Local fab / Metal Supermarkets | ~$72–$112 |
 | Reinforcing plates, 100×180×6mm mild steel | Welded to exterior wall face behind each standard bracket | 14 | Metal Supermarkets | ~$31–$49 |

@@ -77,7 +77,7 @@ spans this zone at depth Y=2262mm (nominal far position).
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
-| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–100 | 300mm wide, 100mm deck height. Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out on butt joints (no brackets — panel conflict), 25mm grating. Left corners: butt joint (no miter). No legs, no floor contact. |
+| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–80 | 300mm wide, 80mm deck height (65mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out on butt joints (no brackets — panel conflict), 15mm grating. Left corners: butt joint (no miter). No legs, no floor contact. Bracket arm (Z=55–65) clears the 50mm tray rim by 5mm. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 

@@ -248,13 +248,23 @@ def _ceiling_rail_weight():
 
 
 def _ibc_stacking_frame_weight():
-    """Steel tube portal frame for 2×2 IBC configuration.
-    50×50×3mm RHS mild steel portal frame with open plumbing corridor,
-    wall-to-wall via brackets. Footprint: 2187 × 1349mm.
-    Weight: ~90 kg per revised equipment-layout-report.md §5.
+    """Steel 50×50×3mm RHS frame for the 2×2 IBC stack (simple-span retrofit).
+
+    Base portal (uprights, beams, X-braces, lips, D-rings) ≈ 90 kg, PLUS the
+    structural-securing retrofit (ibc-stacking-report.md §3):
+      • 6 floor flange feet, 150×150×12mm  → ≈ 12.7 kg
+      • 6 welded wall seat brackets (8mm back-plate + 10mm seat + 8mm gusset)
+                                            → ≈ 23.0 kg
+      • 48× M12 anchor bolts (24 floor + 24 wall) → ≈ 4.8 kg
+    Total ≈ 130 kg.
     """
-    # Portal frame redesign: open plumbing corridor, wall-to-wall via brackets
-    return 90.0
+    base_kg = 90.0
+    feet_kg = 6 * (0.150 * 0.150 * 0.012) * RHO_STEEL              # ≈ 12.7
+    seat_bracket_kg = 6 * (0.150 * 0.270 * 0.008                   # back-plate
+                           + 0.070 * 0.110 * 0.010                 # seat
+                           + 0.5 * 0.110 * 0.200 * 0.008) * RHO_STEEL  # gusset
+    anchors_kg = 48 * 0.10                                          # ≈ 4.8
+    return base_kg + feet_kg + seat_bracket_kg + anchors_kg
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -429,7 +439,7 @@ def build_components():
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, IBC_FAR_Y + IBC_D,
                   IBC_H_600 - 50, IBC_H_600, color=C_STEEL,
-                  calc_note="50×50×3mm RHS mild steel frame"),
+                  calc_note="50×50×3mm RHS + feet + wall seat brackets"),
 
         # ── Liquids — Camera Ready state (water in top-tier Blue IBCs) ───
         Component("Blue IBC-1 water", "liquid", 600.0,

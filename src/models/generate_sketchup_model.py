@@ -1095,9 +1095,18 @@ def lighting_wiring():
     for swx in (1450, 1530):
         parts.append(ruby_box("Pull Switch (ceiling)",
                               swx, sw_yd, cz - 40, 40, 40, 40, color=C_SWITCH))
-        parts.append(ruby_box("Pull Cord",
-                              swx + 17, sw_yd + 17, 900, 6, 6, (cz - 40) - 900,
-                              color=C_CORD))
+        # beaded-chain pull cord: alternating bead radii read it as a flexible
+        # cord (the 3D analogue of the 2D cord hatching) + a pull knob at the end
+        cordx, cordy = swx + 20, sw_yd + 20
+        z0, z1 = 900, cz - 40
+        nb = max(8, int((z1 - z0) / 20))
+        bh = (z1 - z0) / nb
+        for k in range(nb):
+            rr = 3.5 if k % 2 == 0 else 2.0
+            parts.append(ruby_cylinder("Pull Cord", cordx, cordy, z0 + k * bh,
+                                       rr, bh, color=C_CORD, axis="z", n=8))
+        parts.append(ruby_cylinder("Pull Cord Knob", cordx, cordy, z0 - 16,
+                                   6, 16, color=C_CORD, axis="z", n=10))
 
     # Conduit drops (10mm) from trunking down to EP and the battery bank.
     for cxc, zbot in ((1750, 2200), (2060, 600)):

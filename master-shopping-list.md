@@ -242,7 +242,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [6061-T6 aluminum plate 3/16" (5mm)](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-sheet-plate) | Carriage plates (5mm, notched to meet beam) + end caps — ~300×500mm sheet | 1 | Online Metals | $12–$20 |
 | [30×30mm aluminum solid bar](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-square-bar) | Internal splice sleeve, 150mm long | 1 | Online Metals | $8–$12 |
 | [SS flat bar, ~3mm](https://www.onlinemetals.com/en/buy/stainless-steel/stainless-steel-flat-bar) | Beam clamp plates (top + bottom) sandwiching the 40mm SHS; 40mm AL offcut spacer beside each beam face | 4 plates | Online Metals / Amazon | $12–$18 |
-| [Nylon skate wheel, 50mm×20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Carriage wheels, flat tread, ≥25 kg rated (2 pairs per carriage) | 8 | McMaster-Carr | $24–$40 |
+| [Nylon skate wheel, 50mm×20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Carriage wheels, flat tread, ≥25 kg rated (2 per carriage) | 4 | McMaster-Carr | $12–$20 |
 | [Telescoping aluminum pool pole](https://www.amazon.com/s?k=telescoping+aluminum+pool+pole+8+ft) | 4–8 ft push handle | 1 | Amazon / Home Depot | $15 |
 | [½" reinforced braided PVC hose, 15 ft](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+15+ft) | Flexible connection BV-02 to center feed barbed fitting | 1 | Amazon | $15 |
 | [M5×16 SS hex bolt + nyloc nut + washers](https://www.mcmaster.com/91292A126) | Axle saddle-clamp through-bolts (2 per saddle, 8 saddles) | 16 sets | McMaster-Carr | $12 |
@@ -251,7 +251,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [25mm OD × 2mm wall 6061-T6 AL round tube](https://www.onlinemetals.com/en/buy/aluminum/6061-t6-aluminum-round-tube) | Vertical arm tube, ~500mm long, clamped to ball joint stud | 1 | Online Metals | $5–$8 |
 | M6×25 SS hex bolt + nut | Pinch bolt — clamps arm tube onto ball joint stud | 1 | McMaster-Carr | $1 |
 | [½" barb × ½" hose barb, brass](https://www.amazon.com/s?k=1%2F2+hose+barb+brass) | Flex hose to center feed adapter | 1 | Amazon | $4 |
-| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins, flat head | 8 (2 packs) | Amazon | $8–$16 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins, flat head | 4 (1 pack) | Amazon | $4–$8 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Curved conduit-style axle retention — bolted to carriage plate underside, cradles axle pin | 8 | Amazon | $8–$12 |
 | SS spring clip / pole attachment | Pole-to-arm quick-release clip | 1 | Amazon | $6 |
 | [Cable ties, 200mm, nylon](https://www.amazon.com/s?k=cable+ties+200mm+nylon) | Secure flex hose to arm tube | 1 pack | Amazon | $5 |

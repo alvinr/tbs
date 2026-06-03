@@ -1519,39 +1519,40 @@ def draw_sheet6():
            "BEAM CLAMP PLATE\n(TOP + BOTTOM)\n+ 4 BOLTS",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # ── Wheels — 2 pairs (2 per Yd position, spaced in X) ───────────────
-    WHEEL_PAIR_GAP = 35
+    # ── Wheels — one per Yd position (2 per carriage) ───────────────────
     for w_sign in [-1, 1]:
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
-        for wx_off in [-WHEEL_PAIR_GAP / 2, WHEEL_PAIR_GAP / 2]:
-            wx = CARRIAGE_OFFSET_X + wx_off
-            ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2,
-                                      w_yd_ctr - WHEEL_DIA / 2),
-                           WHEEL_WIDTH, WHEEL_DIA,
-                           fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
-            ax_d.add_patch(Circle((wx, w_yd_ctr), 5,
-                         fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=7))
+        wx = CARRIAGE_OFFSET_X
+        # axle pin running in X across the wheel + saddle clamps
+        ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2 - 18, w_yd_ctr - 5),
+                       WHEEL_WIDTH + 36, 10,
+                       fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=4))
+        # nylon wheel (axle along X → WHEEL_WIDTH in X, WHEEL_DIA in Yd)
+        ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2, w_yd_ctr - WHEEL_DIA / 2),
+                       WHEEL_WIDTH, WHEEL_DIA,
+                       fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
 
-    # ── Axle retention U-clamps (plan view) ────────────────────────────
-    auc_w_plan = 16
+    # ── Axle retention saddle clamps — one each side of each wheel ───────
+    sgap_plan = WHEEL_WIDTH / 2 + 6        # 16 — saddle offset from wheel centre (X)
+    sad_w_plan = 6                          # saddle width along the axle (X)
+    sad_half_yd = 17                        # foot half-span (Yd)
     for w_sign in [-1, 1]:
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
-        for wx_off in [-WHEEL_PAIR_GAP / 2, WHEEL_PAIR_GAP / 2]:
-            wx = CARRIAGE_OFFSET_X + wx_off
-            ax_d.add_patch(Rectangle((wx - auc_w_plan / 2,
-                                      w_yd_ctr - auc_w_plan / 2),
-                           auc_w_plan, auc_w_plan,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, alpha=0.5, zorder=7))
-            for bolt_off in [-auc_w_plan / 2 + 3, auc_w_plan / 2 - 3]:
-                ax_d.add_patch(Circle((wx, w_yd_ctr + bolt_off), 2,
+        for sx_off in [-sgap_plan, sgap_plan]:
+            sx = CARRIAGE_OFFSET_X + sx_off
+            ax_d.add_patch(Rectangle((sx - sad_w_plan / 2, w_yd_ctr - sad_half_yd),
+                           sad_w_plan, 2 * sad_half_yd,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=7))
+            for bolt_off in [-12, 12]:
+                ax_d.add_patch(Circle((sx, w_yd_ctr + bolt_off), 2,
                              fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=8))
 
     # ── Labels ───────────────────────────────────────────────────────────
     # Wheels
-    leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_PAIR_GAP / 2 + WHEEL_WIDTH / 2,
+    leader(ax_d, CARRIAGE_OFFSET_X + WHEEL_WIDTH / 2,
            -WHEEL_SPACING_YD / 2,
            D_X_HI - 225, -WHEEL_SPACING_YD / 2 - 10,
-           f"Ø{WHEEL_DIA}mm NYLON WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER SIDE",
+           f"Ø{WHEEL_DIA}mm NYLON WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER CARRIAGE",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     # Carriage plate
@@ -1560,26 +1561,26 @@ def draw_sheet6():
            "CARRIAGE PLATE\n(5mm AL, NOTCHED)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # Axle retention U-clamp
-    bot_right_wx = CARRIAGE_OFFSET_X + WHEEL_PAIR_GAP / 2
+    # Axle retention saddle clamp
+    bot_right_wx = CARRIAGE_OFFSET_X + 16
     bot_w_yd = -WHEEL_SPACING_YD / 2
-    leader(ax_d, bot_right_wx + auc_w_plan / 2, bot_w_yd,
+    leader(ax_d, bot_right_wx + 3, bot_w_yd - 14,
            bot_right_wx + 50, bot_w_yd + 20,
-           "AXLE SADDLE CLAMP\n(2mm SS)",
+           "AXLE SADDLE CLAMP\n(2mm SS, 2 EACH SIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # Axle pin
-    top_left_wx = CARRIAGE_OFFSET_X - WHEEL_PAIR_GAP / 2
+    top_left_wx = CARRIAGE_OFFSET_X
     top_w_yd = WHEEL_SPACING_YD / 2
-    leader(ax_d, top_left_wx, top_w_yd,
-           top_left_wx + 50, top_w_yd + 15,
+    leader(ax_d, top_left_wx + WHEEL_WIDTH / 2 + 18, top_w_yd,
+           top_left_wx + 60, top_w_yd + 15,
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    # Through-bolts (on axle U-clamp)
-    leader(ax_d, bot_right_wx, bot_w_yd + auc_w_plan / 2 - 3,
+    # Through-bolts (on axle saddle clamp)
+    leader(ax_d, bot_right_wx, bot_w_yd + 12,
            bot_right_wx + 50, bot_w_yd - 20,
-           "M5 THROUGH-BOLT\n(2 PER CLAMP)",
+           "M5 THROUGH-BOLT\n(2 PER SADDLE)",
            fs=5, color=C_BOLT, font=FONT, zorder=20)
 
     # LDPE pipe

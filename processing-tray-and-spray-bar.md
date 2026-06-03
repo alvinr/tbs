@@ -147,8 +147,8 @@ irrigation nozzles at 150mm pitch along the beam bottom face.
 | Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
 | Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
-| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
-| [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 8 (2 packs) | Wheel spindles |
+| [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
+| [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
 | Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 40mm SHS | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
@@ -312,7 +312,7 @@ through it, capturing the plate between the top and bottom clamp plates.
 | 5 | Drill all holes | Drill press for accuracy — 8 axle saddle holes + 4 beam clamp holes per plate |
 | 6 | Deburr | Remove all burrs from edges, notch, and holes |
 
-#### 3.6.2 Wheel Assembly (4 required)
+#### 3.6.2 Wheel Assembly (2 per carriage, 4 total)
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
@@ -335,12 +335,11 @@ carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearanc
 | Step | Operation |
 |------|-----------|
 | 1 | Place carriage plate flat on bench, notch centered |
-| 2 | Install first wheel-and-saddle unit on the near wing (wheel hanging below bench edge) — finger-tight |
-| 3 | Repeat for the second wheel on the near wing (200mm Yd spacing) |
-| 4 | Repeat for both wheels on the far wing |
-| 5 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
-| 6 | Tighten all nyloc nuts to 4 Nm |
-| 7 | Stand the carriage on a flat surface — all four wheels must contact simultaneously. Shim if needed before final torque |
+| 2 | Install the near wheel-and-saddle unit (wheel hanging below bench edge) — finger-tight |
+| 3 | Install the far wheel-and-saddle unit (200mm Yd spacing) |
+| 4 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
+| 5 | Tighten all nyloc nuts to 4 Nm |
+| 6 | Stand the carriage on a flat surface — both wheels must contact simultaneously. Shim if needed before final torque |
 
 #### 3.6.5 Beam Attachment
 
@@ -400,7 +399,7 @@ halves meet at a shallow upward angle.
 | LDPE pipe (OD 25mm × 3859mm) | 0.74 |
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
-| Wheel assemblies (8× wheel + axle + saddle clamp) | 0.60 |
+| Wheel assemblies (4× wheel + axle + 8 saddle clamps) | 0.50 |
 | Nozzles + fittings (26×) | 0.30 |
 | Hardware (bolts, clips, clamp plates) | 0.35 |
 | **Dry total** | **~6.9 kg** |
@@ -541,11 +540,11 @@ tray drainage plan and sump cross-section).
 | Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 | $30–$50 |
 | 3/4" barb × 1/2" barb adapter | Center feed through beam top wall | 1 | $4 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 | $4 |
-| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 pairs per carriage) | 8 | $24–$40 |
+| [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) | 4 | $12–$20 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to center feed adapter | 1 | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
-| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 8 (2 packs) | $10 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 4 (1 pack) | $5 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle clamp, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
@@ -554,15 +553,15 @@ tray drainage plan and sump cross-section).
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |
-| **Spray bar subtotal** | | | **$228–$300** |
+| **Spray bar subtotal** | | | **$211–$275** |
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | $1,300–$2,015 |
-| Spray bar assembly | $228–$300 |
-| **Total** | **$1,528–$2,315** |
+| Spray bar assembly | $211–$275 |
+| **Total** | **$1,511–$2,290** |
 
 ---
 

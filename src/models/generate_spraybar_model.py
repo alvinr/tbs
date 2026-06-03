@@ -28,9 +28,12 @@ from tbs_constants import (
     SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W,
     SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES,
     SPRAY_BAR_FEED_Z, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
+    PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR,
+    PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD,
+    PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z,
 )
 
-TAGS = ["Beam", "Carriages", "Feed & Pole"]
+TAGS = ["Beam", "Carriages", "Feed & Pole", "Tray"]
 
 # Representative gantry Yd position (it travels in Yd; park it mid-tray).
 GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
@@ -263,11 +266,33 @@ def build_feed_pole():
     return '\n'.join(parts)
 
 
+def build_tray():
+    """The 304 SS processing tray the gantry rolls in: floor + 50mm rim walls +
+    drain sump. Drawn translucent so the spray bar reads inside it."""
+    parts = []
+    xl, xr = PROC_TRAY_X_L, PROC_TRAY_X_R
+    yn, yf = PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR
+    w, d = xr - xl, yf - yn
+    rim, ft, wt = PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, 3   # rim height, floor + wall thickness
+    parts.append(ov.ruby_box("Tray Floor", xl, yn, 0, w, d, ft, color=C_TRAY, alpha=0.55))
+    parts.append(ov.ruby_box("Tray Rim Near", xl, yn, 0, w, wt, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Far", xl, yf - wt, 0, w, wt, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Left", xl, yn, 0, wt, d, rim, color=C_TRAY, alpha=0.3))
+    parts.append(ov.ruby_box("Tray Rim Right", xr - wt, yn, 0, wt, d, rim, color=C_TRAY, alpha=0.3))
+    # drain sump well, recessed below the floor at the near-rim low corner
+    parts.append(ov.ruby_box("Tray Sump",
+                             PROC_TRAY_DRAIN_X - PROC_TRAY_SUMP_W / 2, PROC_TRAY_DRAIN_YD,
+                             -PROC_TRAY_SUMP_Z, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D,
+                             PROC_TRAY_SUMP_Z, color=C_TRAY, alpha=0.55))
+    return '\n'.join(parts)
+
+
 def generate_ruby():
     comps = [
         ov.component("Spray Beam", "Beam", build_beam()),
         ov.component("Wheel Carriages", "Carriages", build_carriages()),
         ov.component("Feed & Push Pole", "Feed & Pole", build_feed_pole()),
+        ov.component("Processing Tray", "Tray", build_tray()),
     ]
     body = '\n'.join(comps)
     tags_ruby = '\n'.join(
@@ -277,6 +302,7 @@ def generate_ruby():
         ("Beam", ["Beam"]),
         ("Carriage Assembly", ["Beam", "Carriages"]),
         ("Pole & Ball Joint", ["Beam", "Feed & Pole"]),
+        ("Processing Tray", ["Tray", "Beam", "Carriages"]),
         ("Combined", TAGS),
     ]
     scenes_ruby = '[' + ', '.join(
@@ -314,16 +340,15 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-model.layers.each {{ |l| l.visible = true }}
-bb = model.bounds
-ctr = bb.center
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.4)
-model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-model.active_view.zoom_extents
 
 {scenes_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
+  # frame just this scene's visible geometry (the tray is much larger than the bar)
+  ctr = model.bounds.center
+  eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
+  model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+  model.active_view.zoom_extents
   page = model.pages.add(name)
   page.use_camera = true
 }}

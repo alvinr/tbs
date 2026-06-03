@@ -18,6 +18,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Beam") unless model.layers["Beam"]
   model.layers.add("Carriages") unless model.layers["Carriages"]
   model.layers.add("Feed & Pole") unless model.layers["Feed & Pole"]
+  model.layers.add("Tray") unless model.layers["Tray"]
 
   # ═══ Spray Beam ═══
   defn = model.definitions.add("Spray Beam")
@@ -1808,27 +1809,99 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Feed & Push Pole"
   inst.layer = model.layers["Feed & Pole"]
 
+  # ═══ Processing Tray ═══
+  defn = model.definitions.add("Processing Tray")
+  ents = defn.entities
+  # Tray Floor
+  grp = ents.add_group
+  grp.name = "Tray Floor"
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2.mm)
+  mat = model.materials["Tray Floor"] || model.materials.add("Tray Floor")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # Tray Rim Near
+  grp = ents.add_group
+  grp.name = "Tray Rim Near"
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,83.mm,0.mm], [170.mm,83.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Tray Rim Near"] || model.materials.add("Tray Rim Near")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Tray Rim Far
+  grp = ents.add_group
+  grp.name = "Tray Rim Far"
+  face = grp.entities.add_face([170.mm,2277.mm,0.mm], [4629.mm,2277.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Tray Rim Near"] || model.materials.add("Tray Rim Near")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Tray Rim Left
+  grp = ents.add_group
+  grp.name = "Tray Rim Left"
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [173.mm,80.mm,0.mm], [173.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Tray Rim Near"] || model.materials.add("Tray Rim Near")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Tray Rim Right
+  grp = ents.add_group
+  grp.name = "Tray Rim Right"
+  face = grp.entities.add_face([4626.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [4626.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Tray Rim Near"] || model.materials.add("Tray Rim Near")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Tray Sump
+  grp = ents.add_group
+  grp.name = "Tray Sump"
+  face = grp.entities.add_face([4475.mm,80.mm,-20.mm], [4625.mm,80.mm,-20.mm], [4625.mm,180.mm,-20.mm], [4475.mm,180.mm,-20.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Tray Floor"] || model.materials.add("Tray Floor")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Processing Tray"
+  inst.layer = model.layers["Tray"]
+
 
 model.definitions.purge_unused
 model.materials.purge_unused
 
-keep_tags = ["Beam", "Carriages", "Feed & Pole"]
+keep_tags = ["Beam", "Carriages", "Feed & Pole", "Tray"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
   model.layers.remove(l, true) rescue nil
 }
 
-model.layers.each { |l| l.visible = true }
-bb = model.bounds
-ctr = bb.center
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.4)
-model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-model.active_view.zoom_extents
 
-[["Beam", ["Beam"]], ["Carriage Assembly", ["Beam", "Carriages"]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"]], ["Combined", ["Beam", "Carriages", "Feed & Pole"]]].each { |name, tags|
+[["Beam", ["Beam"]], ["Carriage Assembly", ["Beam", "Carriages"]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"]], ["Processing Tray", ["Tray", "Beam", "Carriages"]], ["Combined", ["Beam", "Carriages", "Feed & Pole", "Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
+  # frame just this scene's visible geometry (the tray is much larger than the bar)
+  ctr = model.bounds.center
+  eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
+  model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+  model.active_view.zoom_extents
   page = model.pages.add(name)
   page.use_camera = true
 }

@@ -94,7 +94,8 @@ walkway is removed.
 | Wall seat brackets | 6 (one per platform-beam outer end) — welded 8mm back-plate + 10mm seat + 8mm triangular gusset web; load-bearing |
 | Bracket attachment | 4 × M12 to wall corrugation ribs per bracket; gusset web transfers the seat reaction into the back-plate |
 | Top lateral ties | Light clip at each top-beam wall end (restraint only) |
-| Frame weight | ~130 kg (incl. feet + seat brackets) |
+| Panel support frame | Mid-bay (X=642mm) corridor uprights extended up to the wet-end panel top (Z=2260mm) + top rail + floor-level beam = a rectangle the equipment panel butts (film-plane face) and bolts to |
+| Frame weight | ~144 kg (incl. feet + seat brackets + panel support frame) |
 | Joints | Welded (fillet weld throughout, mitred corners) |
 
 ### 3.3 Platform
@@ -256,8 +257,10 @@ thread).
 ### 7.3 Equipment Panel
 
 An 18mm marine plywood panel spans across the IBC plumbing corridor
-(Yd=1046–1316mm) at X=5000mm. All pumps, filters, accumulator, and diverter
-valves mount on this panel.
+(Yd=1046–1316mm) at X=5240mm, where it butts the film-plane face of the
+mid-bay panel support frame (see [§3.2](#32-frame-specification)) and bolts to
+it. All pumps, filters, accumulator, and diverter valves mount on the
+film-plane face of this panel.
 
 | Equipment | Specification |
 |-----------|--------------|
@@ -311,7 +314,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members | 8 | $240–$360 |
+| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members + mid-bay panel support frame (extended uprights, top rail, floor beam) | 8 | $240–$360 |
 | 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 6 | $25–$45 |
 | 8mm steel plate (back-plates, seats, gussets) | 6 welded wall seat brackets | 1 lot | $50–$80 |
 | 5mm steel plate (flat bar) | Anti-rotation lip (perimeter, ~8 m total) | 1 | $30–$50 |
@@ -322,7 +325,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 24 | $40–$70 |
 | Flat bar X-bracing | Bottom-tier racking resistance | 4 | $20–$35 |
 | Access gate panels (300mm high, steel) | Removable, 4 × M12 bolts each | 2 | $40–$60 |
-| Welding / fabrication (frame assembly) | ~26–36 hrs labor (incl. feet + seat brackets) | 1 | $1,150–$1,650 |
+| Welding / fabrication (frame assembly) | ~26–36 hrs labor (incl. feet, seat brackets, panel support frame) | 1 | $1,150–$1,650 |
 | Primer + paint | Anti-corrosion coating | 1 | $40–$60 |
 | **Frame subtotal** | | | **$1,770–$2,630** |
 

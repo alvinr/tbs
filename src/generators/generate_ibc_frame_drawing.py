@@ -22,7 +22,10 @@ Frame concept (rev 10 — simple-span retrofit):
   Each of the 6 corridor uprights is anchored to the floor by a 150×150×12
   flange plate with 4× M12 bolts.  Each platform-beam outer end lands on a
   welded wall seat bracket (back-plate + seat + triangular gusset web, 4× M12
-  to the wall).  No X-end posts — IBCs are loaded from above.
+  to the wall).  The MIDDLE bay's corridor uprights extend up to the wet-end
+  panel top (Z=2260) and close into a rectangle (top rail + floor-level beam)
+  that the equipment panel butts and bolts to.  No X-end posts — IBCs are
+  loaded from above.
 """
 
 import os
@@ -43,6 +46,7 @@ from tbs_constants import (
     IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N,
     IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ,
     IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N,
+    PANEL_FRAME_TOP_Z,
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
@@ -767,9 +771,9 @@ def sheet2():
     X_LO = -300
     X_HI = FRAME_FOOTPRINT_D + 300
     Z_LO = -400
-    Z_HI = TOP_Z + 300
+    Z_HI = PANEL_FRAME_TOP_Z + 360
 
-    fig, ax = plt.subplots(figsize=(16, 18))
+    fig, ax = plt.subplots(figsize=(16, 19))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.set_xlim(sx(X_LO), sx(X_HI))
@@ -777,7 +781,7 @@ def sheet2():
     ax.set_aspect("equal")
     ax.axis("off")
 
-    ax.text(sx(FRAME_FOOTPRINT_D / 2), sy(TOP_Z + 200),
+    ax.text(sx(FRAME_FOOTPRINT_D / 2), sy(PANEL_FRAME_TOP_Z + 200),
             "SIDE ELEVATION — LOOKING ALONG Yd FROM NEAR WALL",
             ha="center", va="bottom", fontsize=9, color=C_OUT,
             fontweight="bold", **FONT, zorder=15)
@@ -801,6 +805,18 @@ def sheet2():
     # ── Floor flange feet under each upright ─────────────────────────────────
     for fx in FX_POSTS:
         _foot_elev(ax, fx + FRAME_RHS / 2, sx, sy)
+
+    # ── Equipment-panel support frame: the MIDDLE bay corridor uprights extend
+    # up to the panel top to carry the wet-end panel (ibc-stacking-report §3.6). ──
+    _rhs_rect(ax, FX_MID, TOP_Z, FRAME_RHS, PANEL_FRAME_TOP_Z - TOP_Z, sx, sy,
+              fc=C_FRAME, alpha=0.9)
+    _rhs_rect(ax, FX_MID - 10, PANEL_FRAME_TOP_Z - FRAME_RHS, FRAME_RHS + 20,
+              FRAME_RHS, sx, sy, fc=C_FRAME, alpha=0.6)   # top rail (end-on)
+    leader(ax, sx(FX_MID + FRAME_RHS), sy((TOP_Z + PANEL_FRAME_TOP_Z) / 2),
+           sx(FX_MID + 260), sy(PANEL_FRAME_TOP_Z - 30),
+           f"PANEL SUPPORT FRAME\nMID-BAY UPRIGHTS EXTENDED TO\nPANEL TOP Z={PANEL_FRAME_TOP_Z}mm + TOP RAIL\n+ FLOOR BEAM (corridor, Z=0)",
+           color=C_OUT, fs=5.5, ha="left", va="bottom",
+           arrow_style="-|>", font=FONT)
 
     # ── Longitudinal beams (connecting uprights at 3 levels) ────────────────
     beam_levels = [0, PLATFORM_Z, TOP_Z - FRAME_RHS]
@@ -920,6 +936,7 @@ def sheet2():
         f"5. Access gate (300mm × 916mm clear opening) at front bay, corridor face only.",
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
         "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors into container floor.",
+        f"8. Panel support frame: mid-bay corridor uprights extend to Z={PANEL_FRAME_TOP_Z}mm + top rail + floor-level beam (rectangle). Wet-end equipment panel butts the film-plane face and bolts to it.",
     ]
     draw_notes(ax, notes, sx(X_LO + 50), sy(Z_LO + 300), spacing=sy(23),
                fs=7, font=FONT, width=sx(1150))
@@ -1054,6 +1071,15 @@ def sheet3():
             f"CORRIDOR OPENING\n{CORRIDOR_W - 2 * FRAME_RHS}mm CLEAR",
             ha="center", va="center", fontsize=6, color=C_CL,
             fontweight="bold", **FONT, zorder=10)
+
+    # ── Panel support frame (mid bay): top rail + floor beam span the corridor
+    # at the middle station — projected (above/below the platform cut). ──
+    ax.add_patch(Rectangle((px(FX_MID), py(POST_NEAR_YD)),
+                            px(FRAME_RHS), py(POST_FAR_YD + FRAME_RHS - POST_NEAR_YD),
+                            fc="none", ec=C_OUT, lw=1.3, ls="--", zorder=9))
+    ax.text(px(FX_MID + FRAME_RHS + 20), py((POST_NEAR_YD + POST_FAR_YD) / 2),
+            "PANEL SUPPORT FRAME\n(MID BAY): TOP RAIL\n+ FLOOR BEAM",
+            ha="left", va="center", fontsize=5, color=C_OUT, **FONT, zorder=10)
 
     # ── Wall seat brackets (at near and far walls) ──────────────────────────
     # Plan shows the seat (face-on, projecting into the container) + the wall

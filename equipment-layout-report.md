@@ -153,8 +153,9 @@ for transport and removable access panels for the lower IBC drain valves.
 | Access gates | Bolted removable panels at H=0–300mm (lower IBC drain valve access, ×2) |
 | Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
 | Center divider | 50×50×3mm RHS cross-member on platform between near/far columns |
+| Panel support frame | Mid-bay corridor uprights extended to Z=2260mm + top rail + floor beam — the wet-end equipment panel butts the film-plane face of this rectangle and bolts to it |
 | Surface finish | Grey oxide primer + flat black powder coat (interior) |
-| Approx. weight | ~130kg (frame incl. floor flange feet + wall seat brackets) |
+| Approx. weight | ~144kg (frame incl. floor flange feet + wall seat brackets + panel support frame) |
 | Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
 **Why 600L IBCs, not 1,000L:**

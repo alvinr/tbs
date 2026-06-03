@@ -510,49 +510,16 @@ def ceiling_rail():
 # ── Spray bar (processing-tray wash gantry) ──────────────────────────────────
 
 def spray_bar():
-    """40mm AL SHS gantry beam running along X over the tray, with end carriages.
-
-    The beam carries the spray pipe just above the tray floor (Z=10–50) and
-    travels in Yd to wash the full tray. Shown at a representative mid-tray
-    travel position.
-    """
-    parts = []
-    beam = SPRAY_BAR_BEAM               # 40mm SHS
-    bx_l = PROC_TRAY_X_L + 30           # 200
-    bx_r = PROC_TRAY_X_R - 30           # 4599
-    bz = SPRAY_BAR_Z_BOT                # 10mm above tray floor
-    yd = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) / 2   # mid-tray (travels in Yd)
-
-    parts.append(ruby_box("Spray Bar Beam",
-                          bx_l, yd - beam / 2, bz,
-                          bx_r - bx_l, beam, beam, color=C_ALUM))
-
-    # End carriages riding the tray-edge rails (Yd travel).
-    cw, cd, ch = 50, 90, 55
-    for ex in (bx_l, bx_r - cw):
-        parts.append(ruby_box("Spray Bar Carriage",
-                              ex, yd - cd / 2, bz - 5,
-                              cw, cd, ch, color=C_CARR))
-
-    # ── push pole + T-handle: ball joint on the beam top centre, articulated
-    #    arm + telescoping pole reaching the operator on the near walkway ──
-    cx = (bx_l + bx_r) / 2              # beam centre X
-    btop = bz + beam                    # beam top Z
-    parts.append(ruby_box("Spray Bar Pole Mount",
-                          cx - 22, yd - 22, btop, 44, 44, 5, color=C_STEEL))
-    parts.append(ruby_cylinder("Spray Bar Ball Joint",
-                               cx, yd, btop + 5, 18, 26, color="#C8B070", axis="z"))
-    op_y, op_z = PROC_TRAY_YD_NEAR + 100, btop + 910   # operator hand: near walkway, hand height
-    ball_z = btop + 21
-    mid_y, mid_z = (yd + op_y) / 2, (ball_z + op_z) / 2
-    parts.append(ruby_pipe("Spray Bar Arm Tube",
-                           (cx, yd, ball_z), (cx, mid_y, mid_z), 12.5, color=C_ALUM))
-    parts.append(ruby_pipe("Spray Bar Push Pole",
-                           (cx, mid_y, mid_z), (cx, op_y, op_z), 11, color=C_ALUM))
-    parts.append(ruby_cylinder("Spray Bar Handle",
-                               cx - 90, op_y, op_z, 9, 180, color=C_STEEL, axis="x"))
-
-    return '\n'.join(parts)
+    """Spray-bar gantry — reuses the detailed spray-bar model builders so the
+    overview stays in sync with models/spraybar.skp: 40×40 SHS beam housing a 3/4"
+    LDPE pipe + 26 flat-fan nozzles, two-wheel carriages (curved saddle axle clamps
+    + top/bottom beam clamp plates), flange-base ball joint, distribution manifold
+    + 7 irrigation feed tubes, and the push pole bound to the supply hose with
+    zip ties. The tray-floor ref patch is omitted (overview has its own tray)."""
+    import generate_spraybar_model as sb
+    return '\n'.join([sb.build_beam(),
+                      sb.build_carriages(include_floor=False),
+                      sb.build_feed_pole()])
 
 
 # ── Equipment panel (pumps · filters · accumulator) ──────────────────────────

@@ -200,15 +200,17 @@ def _carriage(xend, side, din):
     return parts
 
 
-def build_carriages():
+def build_carriages(include_floor=True):
     parts = []
     parts += _carriage(XL, "L", 1)
     parts += _carriage(XR, "R", -1)
-    # tray-floor reference patch (the wheels roll on this 2mm SS tray floor)
-    parts.append(ov.ruby_box("Tray Floor (ref)",
-                             XL - 60, GY - half_band(), 0,
-                             (XR - XL) + 120, 2 * half_band(), 2,
-                             color=C_TRAY, alpha=0.25))
+    if include_floor:
+        # tray-floor reference patch (the wheels roll on this 2mm SS tray floor).
+        # Omitted when embedded in the overview, which has its own processing tray.
+        parts.append(ov.ruby_box("Tray Floor (ref)",
+                                 XL - 60, GY - half_band(), 0,
+                                 (XR - XL) + 120, 2 * half_band(), 2,
+                                 color=C_TRAY, alpha=0.25))
     return '\n'.join(parts)
 
 

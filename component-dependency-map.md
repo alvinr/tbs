@@ -376,7 +376,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 
 | Model | Script | Output | Subsystems contained |
 |---|---|---|---|
-| **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 20 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups) |
+| **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 21 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups). Its `spray_bar()` **reuses the spray-bar model's builders** (`generate_spraybar_model.build_beam/build_carriages/build_feed_pole`), so the gantry detail stays in sync between the two models — rebuild overview whenever the spray-bar model changes. |
 | **spray-bar** | `src/models/generate_spraybar_model.py` | `models/spraybar.skp` + `src/models/spraybar.rb` | Spray-bar gantry detail — beam + housed ¾" LDPE pipe + 26 flat-fan nozzles (150mm pitch), wheel carriages (2 wheels/carriage, curved saddle axle clamps, top/bottom beam clamp plates), feed pole + ball joint with **distribution manifold + 7 irrigation feed tubes** into the poly pipe, **processing tray** (floor + rim + sump). 5 scenes (Beam, Carriage Assembly, Pole & Ball Joint, Processing Tray, Combined). Reads `SPRAY_BAR_*` and `PROC_TRAY_*` constants. |
 
 *As more models are added, list them here with the subsystems each contains, so a

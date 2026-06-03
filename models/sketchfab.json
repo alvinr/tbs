@@ -19,5 +19,12 @@
     "embed_files": [
       "ibc-stacking-report.md"
     ]
+  },
+  "lighttrap": {
+    "name": "TBS-001 Lighttrap Model",
+    "uid": "6a794d0d2ff44a4e975e021012c69666",
+    "embed_files": [
+      "hinged-panel-report.md"
+    ]
   }
 }

@@ -1157,6 +1157,12 @@ def evap_cooler():
                                EVAP_DUCT_D / 2, WALL_T + 10,
                                color=C_DUCT, axis="y"))
 
+    # Ø200 corrugated flex duct from the cooler outlet (top) up to the wall inlet.
+    cooler_top = (EVAP_DUCT_X, ext - 100 - cd / 2, ch)
+    wall_mouth = (EVAP_DUCT_X, ext - 5, EVAP_DUCT_Z)
+    parts.append(ruby_flex_duct("Evap Flex Duct", cooler_top, wall_mouth,
+                                EVAP_DUCT_D / 2, color=C_DUCT))
+
     return '\n'.join(parts)
 
 
@@ -1282,6 +1288,22 @@ def ruby_pipe(name, p1, p2, r, color=None, alpha=None, n=16):
         lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
+
+
+def ruby_flex_duct(name, p1, p2, r, color=None, alpha=None, ribs=None):
+    """Corrugated flex duct between p1 and p2 — a run of short pipe segments with
+    alternating crest/valley radii so it reads as a ribbed flexible duct."""
+    L = math.sqrt(sum((p2[i] - p1[i]) ** 2 for i in range(3)))
+    if ribs is None:
+        ribs = max(8, int(L / (r * 0.7)))            # rib pitch ≈ 0.7·r
+    out = []
+    for i in range(ribs):
+        t0, t1 = i / ribs, (i + 1) / ribs
+        a = tuple(p1[k] + (p2[k] - p1[k]) * t0 for k in range(3))
+        b = tuple(p1[k] + (p2[k] - p1[k]) * t1 for k in range(3))
+        rr = r if i % 2 == 0 else r * 0.8            # crest / valley
+        out.append(ruby_pipe(name, a, b, rr, color=color, alpha=alpha, n=14))
+    return '\n'.join(out)
 
 
 # ── Orthogonal pipe routing with swept-torus elbow fittings ──────────────────

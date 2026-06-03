@@ -261,17 +261,19 @@ def build_feed_pole():
     #    by the ball joint; a series of irrigation tubes branch from it along the
     #    beam top to feed points, each barbed through the beam wall into the
     #    internal poly pipe (per Sheet 7 connection detail) ──
+    # distribution manifold on the beam top, beside the ball joint
+    man_cx, man_z = cx + 38, ZT + 4
+    man_top = man_z + 18
+    parts.append(ov.ruby_box("Feed Manifold",
+                             man_cx - 18, by - 14, man_z, 36, 28, 18, color=C_WATER))
+    # hose down the pole, then a VERTICAL drop into the manifold top so it enters
+    # the box at a right angle (orthogonal connection — per pipe layout rules)
     parts.append(ov.ruby_pipe("Feed Hose (upper)",
                               (cx + 22, op_y, op_z), (cx + 22, mid_y, mid_z), 8, color=C_WATER))
     parts.append(ov.ruby_pipe("Feed Hose (lower)",
-                              (cx + 22, mid_y, mid_z), (cx + 22, by, ball_z + 12), 8, color=C_WATER))
-    # distribution manifold on the beam top, beside the ball joint
-    man_cx, man_z = cx + 38, ZT + 4
-    parts.append(ov.ruby_box("Feed Manifold",
-                             man_cx - 18, by - 14, man_z, 36, 28, 18, color=C_WATER))
-    parts.append(ov.ruby_pipe("Feed Hose to Manifold",
-                              (cx + 22, by, ball_z + 12), (man_cx, by, man_z + 18), 8,
-                              color=C_WATER))
+                              (cx + 22, mid_y, mid_z), (man_cx, by, man_top + 26), 8, color=C_WATER))
+    parts.append(ov.ruby_pipe("Feed Hose Drop",
+                              (man_cx, by, man_top + 26), (man_cx, by, man_top), 8, color=C_WATER))
     # irrigation tubes + barbed fittings into the poly pipe
     nfeed = 7
     bore_cz = ZB + S / 2

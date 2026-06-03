@@ -1,6 +1,6 @@
 ---
 name: Plumbing pipe drawing conventions
-description: How to draw pipes, fittings (elbows, tees, barbs), and hose runs in engineering section/elevation/plan diagrams for TBS water system
+description: How to draw and model pipes, fittings (elbows, tees, barbs), hose/duct runs, and right-angle connections to boxes/manifolds/penetrations — for both 2D TBS diagrams and the 3D SketchUp models
 type: reference
 originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 ---
@@ -13,6 +13,20 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 2. **Direction changes ONLY at fittings.** A pipe run is composed of: straight section → fitting → straight section → fitting. There are no gradual bends. Every change of direction requires a discrete fitting (elbow, tee, etc.).
 
 3. **Constant OD throughout straight runs.** The two parallel wall lines maintain exact spacing for the entire length of a straight section.
+
+4. **Connect at right angles.** A pipe, hose, tube, or duct must meet any fitting, manifold/box, appliance port, or wall penetration **perpendicular to that face**. The final segment before the connection is normal (90°) to the face it enters — never a diagonal or grazing approach. To reach a port from an off-axis source, route with orthogonal legs joined by elbows (e.g. riser → 90° elbow → horizontal stub into the port), not a single slanted segment.
+
+## Right-Angle Connections (applies to 2D diagrams AND 3D models)
+
+This is the rule most often gotten wrong — it has had to be fixed repeatedly. Whenever a line (pipe / flex hose / corrugated duct / irrigation tube) terminates at a **box, manifold, fitting, appliance, or wall penetration**, the terminating segment must be a short stub that is **perpendicular to the face it enters**.
+
+- **Orthogonal routing:** runs are axis-aligned; every change of direction is a discrete elbow fitting (2D: concentric arcs; 3D: a swept-torus elbow body). No diagonals except a genuinely flexible run following a support.
+- **Flexible runs are the one exception — but only mid-span.** A flex hose or flex duct may sag/follow a pole or rail diagonally along its length, **but the connection into a box/fitting/penetration at each end must still be a perpendicular stub** (drop straight into a top face, or come in level into a side face). Add a short normal segment / elbow at the port.
+- **3D model helpers (`src/models/generate_sketchup_model.py`):** use `ruby_pipe_run(waypoints, …)` for rigid pipe (axis-aligned waypoints + `ruby_elbow` swept-torus bends) and `ruby_flex_run(waypoints, …)` for corrugated flex duct (same elbows, ribbed straights). Do **not** draw a single `ruby_pipe`/`ruby_flex_duct` diagonally from a source straight into a port.
+
+**Recurring fixes — learn from these:**
+- **Evap cooler duct:** a single diagonal flex run was drawn from the cooler to the wall inlet. Fixed to a **vertical riser → 90° elbow → horizontal stub** into the Ø200 wall inlet, meeting both the cooler outlet and the wall at right angles.
+- **Spray-bar feed manifold:** the supply hose entered the manifold box at a shallow angle. Fixed to a **vertical drop into the manifold top** (perpendicular). The hose still follows the push-pole diagonally above that, which is fine (flexible mid-span), but the box entry is now a right angle.
 
 ## How to Draw Fittings in Section View
 
@@ -99,6 +113,7 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] All pipe sections have parallel walls (constant OD)
 - [ ] No gradual curves — only straight runs and fittings
 - [ ] Every direction change has a discrete elbow fitting drawn
+- [ ] Every connection to a box / manifold / fitting / penetration is a perpendicular stub (right-angle entry), not a diagonal — in 2D and 3D alike
 - [ ] Elbow fittings show concentric arcs (not sharp corners, not gradual bends)
 - [ ] Barb connections show ridged profile + hose clamp band
 - [ ] Pipe end-on shown as concentric circles

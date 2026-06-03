@@ -1212,7 +1212,7 @@ def sheet3():
     ax.text((bx0 + bx1) / 2, by1 + 34, "DETAIL B — PANEL BOTTOM SEAL",
             ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.text((bx0 + bx1) / 2, by1 + 10,
-            "operational / “camera” position  ·  section at corner zone  ·  enlarged ~3.3:1",
+            "operational / “camera” position  ·  corner zone  ·  enlarged ~3.3:1  ·  TOP SEAL IS THE MIRROR IMAGE",
             ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
     ax.text(DX(-90), DY(150), "EXTERIOR", fontsize=6, color="#5060A0",
             ha="left", va="center", fontweight="bold", **FONT)

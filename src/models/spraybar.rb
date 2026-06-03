@@ -2204,8 +2204,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2431.5.mm,263.3333333333333.mm,895.9166666666666.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2430.5.mm,263.3333333333333.mm,895.9166666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2218,8 +2218,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.5298162458471722.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2425.056349186104.mm,257.2258166422973.mm,889.0465691514405.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -3.98245885263799.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2426.107390870624.mm,256.8895795509672.mm,888.6683497011254.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2232,8 +2232,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.5298162458471722.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,254.6960003964501.mm,886.2008815858081.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,252.9071206983292.mm,884.1886434551884.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2246,8 +2246,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2393.943650813896.mm,257.2258166422973.mm,889.0465691514405.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 3.98245885263799.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2400.392609129376.mm,252.9071206983292.mm,884.1886434551884.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2260,8 +2260,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2387.5.mm,263.3333333333333.mm,895.9166666666666.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2388.892609129376.mm,256.8895795509672.mm,888.6683497011254.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2274,8 +2274,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.529816245847144.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2393.943650813896.mm,269.44085002436935.mm,902.7867641818927.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2384.5.mm,263.3333333333333.mm,895.9166666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2288,8 +2288,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.529816245847144.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,271.9706662702165.mm,905.6324517475251.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 3.98245885263799.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2388.892609129376.mm,269.77708711569943.mm,903.1649836322078.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2302,8 +2302,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2425.056349186104.mm,269.44085002436935.mm,902.7867641818927.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,273.7595459683374.mm,907.6446898781448.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2316,8 +2316,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2431.5.mm,430.mm,747.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -3.98245885263799.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2414.607390870624.mm,273.7595459683374.mm,907.6446898781448.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2330,8 +2330,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.529816245847144.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2425.056349186104.mm,423.89248330896396.mm,740.8799024847739.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2426.107390870624.mm,269.77708711569943.mm,903.1649836322078.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2344,8 +2344,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.529816245847144.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,421.3626670631168.mm,738.0342149191415.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2430.5.mm,430.mm,747.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2358,8 +2358,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2393.943650813896.mm,423.89248330896396.mm,740.8799024847739.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -3.98245885263799.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2426.107390870624.mm,423.5562462176339.mm,740.5016830344588.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2372,8 +2372,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2387.5.mm,430.mm,747.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,419.5737873649959.mm,736.0219767885218.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2386,8 +2386,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.529816245847144.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2393.943650813896.mm,436.10751669103604.mm,754.6200975152261.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 3.98245885263799.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2400.392609129376.mm,419.5737873649959.mm,736.0219767885218.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2400,8 +2400,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.529816245847144.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,438.6373329368832.mm,757.4657850808585.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2388.892609129376.mm,423.5562462176339.mm,740.5016830344588.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2414,8 +2414,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2425.056349186104.mm,436.10751669103604.mm,754.6200975152261.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2384.5.mm,430.mm,747.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2428,8 +2428,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2431.5.mm,596.6666666666667.mm,599.5833333333333.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 3.98245885263799.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2388.892609129376.mm,436.4437537823661.mm,754.9983169655412.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2442,8 +2442,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.5298162458472007.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2425.056349186104.mm,590.5591499756307.mm,592.7132358181071.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,440.4262126350041.mm,759.4780232114782.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2456,8 +2456,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.5298162458472007.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,588.0293337297835.mm,589.8675482524748.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -3.98245885263799.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2414.607390870624.mm,440.4262126350041.mm,759.4780232114782.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2470,8 +2470,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2393.943650813896.mm,590.5591499756307.mm,592.7132358181071.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2426.107390870624.mm,436.4437537823661.mm,754.9983169655412.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2484,8 +2484,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.1075166910360394.mm, 6.870097515226121.mm)
-  circle = ge.add_circle([2387.5.mm,596.6666666666667.mm,599.5833333333333.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2430.5.mm,596.6666666666667.mm,599.5833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2498,8 +2498,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.5298162458472007.mm, 2.8456875656323746.mm)
-  circle = ge.add_circle([2393.943650813896.mm,602.7741833577028.mm,606.4534308485594.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -3.982458852637933.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2426.107390870624.mm,590.2229128843006.mm,592.335016367792.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2512,8 +2512,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.5298162458472007.mm, -2.8456875656323746.mm)
-  circle = ge.add_circle([2409.5.mm,605.30399960355.mm,609.2991184141918.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,586.2404540316627.mm,587.855310121855.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2526,8 +2526,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.1075166910360394.mm, -6.870097515226121.mm)
-  circle = ge.add_circle([2425.056349186104.mm,602.7741833577028.mm,606.4534308485594.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 3.982458852637933.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2400.392609129376.mm,586.2404540316627.mm,587.855310121855.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2540,8 +2540,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.118264595314827.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2431.5.mm,759.3333333333334.mm,454.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2388.892609129376.mm,590.2229128843006.mm,592.335016367792.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2554,8 +2554,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.5342681735664883.mm, -2.841723558581066.mm)
-  circle = ge.add_circle([2425.056349186104.mm,753.2150687380185.mm,447.88947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.443753782366116.mm, 7.248316965541221.mm)
+  circle = ge.add_circle([2384.5.mm,596.6666666666667.mm,599.5833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2568,8 +2568,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.5342681735664883.mm, 2.841723558581066.mm)
-  circle = ge.add_circle([2409.5.mm,750.680800564452.mm,445.04774888577737.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 3.982458852637933.mm, 4.479706245936995.mm)
+  circle = ge.add_circle([2388.892609129376.mm,603.1104204490329.mm,606.8316502988745.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2582,8 +2582,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.118264595314827.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2393.943650813896.mm,753.2150687380185.mm,447.88947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,607.0928793016708.mm,611.3113565448115.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2596,8 +2596,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.118264595314827.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2387.5.mm,759.3333333333334.mm,454.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -3.982458852637933.mm, -4.479706245936995.mm)
+  circle = ge.add_circle([2414.607390870624.mm,607.0928793016708.mm,611.3113565448115.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2610,8 +2610,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.5342681735664883.mm, 2.841723558581066.mm)
-  circle = ge.add_circle([2393.943650813896.mm,765.4515979286482.mm,461.61052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.443753782366116.mm, -7.248316965541221.mm)
+  circle = ge.add_circle([2426.107390870624.mm,603.1104204490329.mm,606.8316502988745.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2624,8 +2624,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.5342681735664883.mm, -2.841723558581066.mm)
-  circle = ge.add_circle([2409.5.mm,767.9858661022147.mm,464.45225111422263.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.455093390975094.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2430.5.mm,759.3333333333334.mm,454.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2638,8 +2638,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.118264595314827.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2425.056349186104.mm,765.4515979286482.mm,461.61052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -3.989467116177366.mm, -4.473466071379107.mm)
+  circle = ge.add_circle([2426.107390870624.mm,752.8782399423583.mm,447.5117798489891.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2652,8 +2652,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.118264595314827.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2431.5.mm,918.mm,313.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,748.8887728261809.mm,443.03831377760997.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2666,8 +2666,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.5342681735664883.mm, -2.841723558581066.mm)
-  circle = ge.add_circle([2425.056349186104.mm,911.8817354046852.mm,306.38947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 3.989467116177366.mm, 4.473466071379107.mm)
+  circle = ge.add_circle([2400.392609129376.mm,748.8887728261809.mm,443.03831377760997.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2680,8 +2680,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.5342681735664883.mm, 2.841723558581066.mm)
-  circle = ge.add_circle([2409.5.mm,909.3474672311187.mm,303.54774888577737.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.455093390975094.mm, 7.238220151010921.mm)
+  circle = ge.add_circle([2388.892609129376.mm,752.8782399423583.mm,447.5117798489891.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2694,8 +2694,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.118264595314827.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2393.943650813896.mm,911.8817354046852.mm,306.38947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.455093390975094.mm, 7.238220151010921.mm)
+  circle = ge.add_circle([2384.5.mm,759.3333333333334.mm,454.75.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2708,8 +2708,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.118264595314827.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2387.5.mm,918.mm,313.25.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 3.989467116177366.mm, 4.473466071379107.mm)
+  circle = ge.add_circle([2388.892609129376.mm,765.7884267243085.mm,461.9882201510109.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2722,8 +2722,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.5342681735664883.mm, 2.841723558581066.mm)
-  circle = ge.add_circle([2393.943650813896.mm,924.1182645953148.mm,320.11052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,769.7778938404858.mm,466.46168622239003.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2736,8 +2736,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.5342681735664883.mm, -2.841723558581066.mm)
-  circle = ge.add_circle([2409.5.mm,926.6525327688813.mm,322.95225111422263.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, -3.989467116177366.mm, -4.473466071379107.mm)
+  circle = ge.add_circle([2414.607390870624.mm,769.7778938404858.mm,466.46168622239003.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2750,8 +2750,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.118264595314827.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2425.056349186104.mm,924.1182645953148.mm,320.11052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.455093390975094.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2426.107390870624.mm,765.7884267243085.mm,461.9882201510109.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2764,8 +2764,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, -6.118264595314713.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2431.5.mm,1076.6666666666667.mm,171.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.455093390975094.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2430.5.mm,918.mm,313.25.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2778,8 +2778,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, -2.5342681735667156.mm, -2.8417235585810943.mm)
-  circle = ge.add_circle([2425.056349186104.mm,1070.548402071352.mm,164.88947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, -3.989467116177366.mm, -4.473466071379107.mm)
+  circle = ge.add_circle([2426.107390870624.mm,911.5449066090249.mm,306.0117798489891.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2792,8 +2792,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-15.556349186103944.mm, 2.5342681735667156.mm, 2.8417235585810943.mm)
-  circle = ge.add_circle([2409.5.mm,1068.0141338977853.mm,162.04774888577734.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2414.607390870624.mm,907.5554394928475.mm,301.53831377760997.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2806,8 +2806,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.443650813896056.mm, 6.118264595314713.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2393.943650813896.mm,1070.548402071352.mm,164.88947244435843.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-11.5.mm, 3.989467116177366.mm, 4.473466071379107.mm)
+  circle = ge.add_circle([2400.392609129376.mm,907.5554394928475.mm,301.53831377760997.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2820,8 +2820,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, 6.118264595314713.mm, 6.860527555641568.mm)
-  circle = ge.add_circle([2387.5.mm,1076.6666666666667.mm,171.75.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.455093390975094.mm, 7.238220151010921.mm)
+  circle = ge.add_circle([2388.892609129376.mm,911.5449066090249.mm,306.0117798489891.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2834,8 +2834,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, 2.5342681735667156.mm, 2.8417235585810943.mm)
-  circle = ge.add_circle([2393.943650813896.mm,1082.7849312619815.mm,178.61052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.455093390975094.mm, 7.238220151010921.mm)
+  circle = ge.add_circle([2384.5.mm,918.mm,313.25.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2848,8 +2848,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.556349186103944.mm, -2.5342681735667156.mm, -2.8417235585810943.mm)
-  circle = ge.add_circle([2409.5.mm,1085.3191994355482.mm,181.45225111422266.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(11.5.mm, 3.989467116177366.mm, 4.473466071379107.mm)
+  circle = ge.add_circle([2388.892609129376.mm,924.4550933909751.mm,320.4882201510109.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2862,8 +2862,176 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Zip Tie"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.443650813896056.mm, -6.118264595314713.mm, -6.860527555641568.mm)
-  circle = ge.add_circle([2425.056349186104.mm,1082.7849312619815.mm,178.61052755564157.mm], vec, 1.2.mm, 6)
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.392609129376.mm,928.4445605071525.mm,324.96168622239003.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.5.mm, -3.989467116177366.mm, -4.473466071379107.mm)
+  circle = ge.add_circle([2414.607390870624.mm,928.4445605071525.mm,324.96168622239003.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.455093390975094.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2426.107390870624.mm,924.4550933909751.mm,320.4882201510109.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, -6.45509339097498.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2430.5.mm,1076.6666666666667.mm,171.75.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.5.mm, -3.989467116177593.mm, -4.473466071379107.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1070.2115732756918.mm,164.51177984898908.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, -2.842170943040401e-14.mm)
+  circle = ge.add_circle([2414.607390870624.mm,1066.2221061595142.mm,160.03831377760997.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-11.5.mm, 3.989467116177593.mm, 4.473466071379136.mm)
+  circle = ge.add_circle([2400.392609129376.mm,1066.2221061595142.mm,160.03831377760994.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4.392609129376069.mm, 6.45509339097498.mm, 7.238220151010921.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1070.2115732756918.mm,164.51177984898908.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.392609129376069.mm, 6.45509339097498.mm, 7.238220151010893.mm)
+  circle = ge.add_circle([2384.5.mm,1076.6666666666667.mm,171.75.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.5.mm, 3.989467116177593.mm, 4.473466071379136.mm)
+  circle = ge.add_circle([2388.892609129376.mm,1083.1217600576417.mm,178.9882201510109.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 2.842170943040401e-14.mm)
+  circle = ge.add_circle([2400.392609129376.mm,1087.1112271738193.mm,183.46168622239003.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(11.5.mm, -3.989467116177593.mm, -4.473466071379136.mm)
+  circle = ge.add_circle([2414.607390870624.mm,1087.1112271738193.mm,183.46168622239006.mm], vec, 1.2.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Zip Tie"] || model.materials.add("Zip Tie")
+  mat.color = Sketchup::Color.new(136, 136, 136)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Zip Tie
+  grp = ents.add_group
+  grp.name = "Zip Tie"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4.392609129376069.mm, -6.45509339097498.mm, -7.238220151010921.mm)
+  circle = ge.add_circle([2426.107390870624.mm,1083.1217600576417.mm,178.98822015101092.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

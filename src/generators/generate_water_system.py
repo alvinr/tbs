@@ -246,16 +246,18 @@ def draw_sheet1():
     tank(ax1, 3.3, 8.2, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
          label="IBC-2", sublabel="159 gal (600L)\nCLEAN B")
 
-    # 2" cross-connect between IBC-1 and IBC-2 (self-leveling, no valve)
+    # X1 fill tees to BOTH Blue totes; both supply the pump via BV-01 — the two
+    # totes are connected in parallel (no cross-connect), matching the 3D.
     VR = 0.06 * 1.6  # standard valve circle radius = 0.096
-    _xc_y = 7.65     # near bottom of IBC boxes
-    pipe(ax1, 1.5 + 1.4/2, _xc_y, 3.3 - 1.4/2, _xc_y, C_BLUE, lw=3.5)
-    ax1.text(2.4, _xc_y - 0.18, '2" CROSS-CONNECT\n(SELF-LEVELING)', ha="center",
-             fontsize=5.5, color=C_BLUE, style="italic")
 
-    # IBC-1 drain → BV-01 (single drain point — IBC-2 drains via cross-connect)
+    # IBC-1 outlet → BV-01
     pipe(ax1, 1.5, 7.48, 1.5, 7.0, C_BLUE)
     pipe(ax1, 1.5, 7.0, 2.4 - VR, 7.0, C_BLUE)
+    # IBC-2 outlet → BV-01 (parallel with IBC-1)
+    pipe(ax1, 3.3, 7.48, 3.3, 7.0, C_BLUE)
+    pipe(ax1, 3.3, 7.0, 2.4 + VR, 7.0, C_BLUE)
+    ax1.text(2.4, 7.62, 'IBC-1 & IBC-2 IN PARALLEL\n(X1 fill tee; shared BV-01 supply)',
+             ha="center", fontsize=5.5, color=C_BLUE, style="italic")
 
     # Valve on outlet
     valve(ax1, 2.4, 7.0, color=C_BLUE)
@@ -313,7 +315,9 @@ def draw_sheet1():
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
              color=C_BLUE, style="italic")
-    # X2 removed — single fill via X1 to IBC-1; IBC-2 fills via cross-connect
+    # X1 fill tees to BOTH Blue totes (parallel fill — no separate X2 port).
+    pipe(ax1, 1.5, 9.65, 3.3, 9.65, C_BLUE)   # header over both tanks
+    pipe(ax1, 3.3, 9.65, 3.3, 9.6, C_BLUE)    # drop into IBC-2
 
     # Water level sensor labels
     ax1.text(4.8, 8.2, "LOW-LEVEL\nFLOAT SW.", ha="center",
@@ -417,7 +421,7 @@ def draw_sheet1():
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
     pipe(ax1, 3.3, RET_Y, 3.3, 8.9, C_BLUE, style="--")              # down to IBC-2 fill cap
     arrow_pipe(ax1, 3.3, 9.1, 3.3, 8.95, color=C_BLUE)               # downward return arrow
-    ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 FILL CAP (equalizes via cross-connect)",
+    ax1.text(6.5, RET_Y + 0.15, "RECYCLED → IBC-2 FILL CAP (both Blue totes filled in parallel)",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
     # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical

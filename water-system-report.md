@@ -115,7 +115,7 @@ IBC-2 (600L) ──┘                                                      │
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed, no pump required. Inside, an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes, filling them in parallel — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 5.2 Brown System — Used Water Recycling
 
@@ -225,9 +225,9 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| External fill line (X1 bulkhead → IBC-1) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
+| External fill line (X1 bulkhead → tee → both Blue totes) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
 | External drain lines (X3/X4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
-| IBC-1 ↔ IBC-2 cross-connect | Sch 40 | 2" nominal (OD 60mm) | 50 PSI min | HDPE |
+| X1 fill tee (splits to IBC-1 & IBC-2) | — | 1" HDPE equal tee (Banjo TEE100) | 50 PSI min | HDPE |
 
 At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.
 
@@ -294,7 +294,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | X3 — Drain Brown | Used water drain | 400 | IBC-3 (bottom, near column) |
 | X4 — Drain Waste | Waste water drain | 200 | IBC-4 (bottom, far column) |
 
-A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.
+A single external fill port (X1) feeds an internal 1" tee set behind the panel-support-frame top rail, which splits the flow to BOTH Blue IBCs (each branch drops straight into its fill cap). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
@@ -362,7 +362,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|---------|-----------|-------|
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (IBC to manifold, manifold to spray bar, tray drain, DV outputs). Matches pump port size | 4 sticks (80 ft) | Ferguson | $6–$10/stick | **$24–$40** |
 | [1" SDR-11 HDPE pipe](https://www.ferguson.com) | Food-safe, blue-stripe, 20 ft stick. Filter outlet to DV-01 and IBC fill/drain lines only | 1 stick (20 ft) | Ferguson | $12–$18/stick | **$12–$18** |
-| [2" SDR-11 HDPE pipe](https://www.ferguson.com) | IBC-1 ↔ IBC-2 cross-connect (~300mm needed, remainder spare). 20 ft stick | 1 stick (20 ft) | Ferguson | $18–$28/stick | **$18–$28** |
+| [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.amazon.com/s?k=Banjo+TEE100+polypropylene+tee+1+inch) | X1 fill tee — splits the fill to both Blue totes (replaces the 2" cross-connect) | 1 | Amazon | $4–$6 | **$4–$6** |
 | [3/4" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20 ft sticks | 2 sticks (40 ft) | Ferguson | $9–$14/stick | **$20–$30** |
 | [1/2" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6 ft per pump | 2 lengths | Amazon | $8–$12/length | **$20** |
 

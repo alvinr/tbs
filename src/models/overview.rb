@@ -715,6 +715,71 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Spray Bar Pole Mount
+  grp = ents.add_group
+  grp.name = "Spray Bar Pole Mount"
+  face = grp.entities.add_face([2377.5.mm,1158.mm,60.mm], [2421.5.mm,1158.mm,60.mm], [2421.5.mm,1202.mm,60.mm], [2377.5.mm,1202.mm,60.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Ball Joint
+  grp = ents.add_group
+  grp.name = "Spray Bar Ball Joint"
+  ge = grp.entities
+  circle = ge.add_circle([2399.5.mm,1180.mm,65.mm], [0,0,1], 18.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(26.mm)
+  mat = model.materials["Spray Bar Ball Joint"] || model.materials.add("Spray Bar Ball Joint")
+  mat.color = Sketchup::Color.new(200, 176, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Arm Tube
+  grp = ents.add_group
+  grp.name = "Spray Bar Arm Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -500.mm, 444.5.mm)
+  circle = ge.add_circle([2399.5.mm,1180.mm,81.mm], vec, 12.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Push Pole
+  grp = ents.add_group
+  grp.name = "Spray Bar Push Pole"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -500.mm, 444.5.mm)
+  circle = ge.add_circle([2399.5.mm,680.mm,525.5.mm], vec, 11.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray Bar Handle
+  grp = ents.add_group
+  grp.name = "Spray Bar Handle"
+  ge = grp.entities
+  circle = ge.add_circle([2309.5.mm,180.mm,970.mm], [1,0,0], 9.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(180.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Spray Bar"
   inst.layer = model.layers["Spray Bar"]

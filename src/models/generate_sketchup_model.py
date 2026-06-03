@@ -534,6 +534,24 @@ def spray_bar():
                               ex, yd - cd / 2, bz - 5,
                               cw, cd, ch, color=C_CARR))
 
+    # ── push pole + T-handle: ball joint on the beam top centre, articulated
+    #    arm + telescoping pole reaching the operator on the near walkway ──
+    cx = (bx_l + bx_r) / 2              # beam centre X
+    btop = bz + beam                    # beam top Z
+    parts.append(ruby_box("Spray Bar Pole Mount",
+                          cx - 22, yd - 22, btop, 44, 44, 5, color=C_STEEL))
+    parts.append(ruby_cylinder("Spray Bar Ball Joint",
+                               cx, yd, btop + 5, 18, 26, color="#C8B070", axis="z"))
+    op_y, op_z = PROC_TRAY_YD_NEAR + 100, btop + 910   # operator hand: near walkway, hand height
+    ball_z = btop + 21
+    mid_y, mid_z = (yd + op_y) / 2, (ball_z + op_z) / 2
+    parts.append(ruby_pipe("Spray Bar Arm Tube",
+                           (cx, yd, ball_z), (cx, mid_y, mid_z), 12.5, color=C_ALUM))
+    parts.append(ruby_pipe("Spray Bar Push Pole",
+                           (cx, mid_y, mid_z), (cx, op_y, op_z), 11, color=C_ALUM))
+    parts.append(ruby_cylinder("Spray Bar Handle",
+                               cx - 90, op_y, op_z, 9, 180, color=C_STEEL, axis="x"))
+
     return '\n'.join(parts)
 
 

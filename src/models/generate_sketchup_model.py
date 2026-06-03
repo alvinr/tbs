@@ -1180,6 +1180,21 @@ def fans():
     150x150mm flat baffle plates are offset top/bottom at 1/3 and 2/3 depth to
     break the line of sight (light-safe S-path) while passing full airflow.
     """
+    # Fan A: far end wall (X=C_LEN, exterior on +X); duct projects -X into container.
+    # Fan B: cargo-door panel (X=0, exterior on -X); duct projects +X into container.
+    return '\n'.join(
+        fan_duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H) +
+        fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
+
+
+def fan_duct(tag, wall_x, ext, yc, zc):
+    """One axial panel fan + light-safe baffle duct opening into the container.
+
+    `ext` = +1 if the exterior is on +X, -1 on -X. The duct projects from the
+    wall interior face into the container; the fan sits at the interior mouth.
+    Returns a list of ruby strings. Shared single source of truth for the
+    Overview fans() and the focused Light-Trap model (Fan B on the hinge panel).
+    """
     r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
     dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
     dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
@@ -1188,14 +1203,10 @@ def fans():
                                               # gap on one SIDE; the two plates take opposite
                                               # sides so air winds left↔right (horizontal S-path)
                                               # while the overlap blocks the line of sight
-    parts = []
-
     flo, flt = 30, 5                          # flange overhang past the duct, + plate thickness
     gld, glh = 40, int(dh * 0.65)             # louvre grille depth + height
 
-    def duct(tag, wall_x, ext, yc, zc):
-        # `ext` = +1 if the exterior is on +X, -1 on -X. The duct projects from the
-        # wall interior face into the container; the fan sits at the interior mouth.
+    if True:
         mouth_x = wall_x - ext * dd
         x0 = min(wall_x, mouth_x)
         out = [ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
@@ -1253,12 +1264,6 @@ def fans():
             out.append(ruby_box(f"{tag} louvre slat", gx0 + 2, yc - dw / 2 + 4,
                                 sz - 1.5, gld - 4, dw - 8, 3, color=C_STEEL))
         return out
-
-    # Fan A: far end wall (X=C_LEN, exterior on +X); duct projects -X into container.
-    parts += duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H)
-    # Fan B: cargo-door panel (X=0, exterior on -X); duct projects +X into container.
-    parts += duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H)
-    return '\n'.join(parts)
 
 
 # ── Spray-bar plumbing (Blue supply + BV-02 + TAP-01) ────────────────────────

@@ -401,12 +401,12 @@ def draw_sheet2():
     # ── Title ─────────────────────────────────────────────────────────────────
     cx = 300
     ax.text(cx, 488,
-            "FAN & BAFFLE DUCT — ASSEMBLY SECTION",
+            "FAN & BAFFLE DUCT — PLAN (LOOKING DOWN)",
             ha="center", va="center", fontsize=13, fontweight="bold",
             color=TITLE_COL)
     ax.text(cx, 475,
-            "TBS-001  ·  Longitudinal section through fan axis  ·  Exterior left → Interior right  ·  "
-            "Fan & baffle duct interior-mounted — wiring inside container  ·  Dimensions in mm",
+            "TBS-001  ·  Horizontal section through fan axis, looking down  ·  Exterior left → Interior right  ·  "
+            "Baffles full-height (welded top+bottom), air gap on alternating sides  ·  Dimensions in mm",
             ha="center", va="center", fontsize=8.0, color=C_DIM)
 
     # ── Container wall ────────────────────────────────────────────────────────
@@ -460,10 +460,10 @@ def draw_sheet2():
     B2_Z = DZ + SK
     draw_rect(ax, B2_X, B2_Z, BF_T, B2_H, fc=C_OUT, lw=0.5, zorder=5)
 
-    ann(ax, "Baffle 1\n(from top)\n75mm AIRFLOW\ngap at bottom",
+    ann(ax, "Baffle 1 (full height,\nwelded top+bottom)\n75mm AIRFLOW gap\nnear side",
         (B1_X + BF_T / 2, B1_Z + B1_H * 0.6),
         (B1_X - 50, B1_Z + B1_H * 0.6 + 35))
-    ann(ax, "Baffle 2\n(from bottom)\n75mm AIRFLOW\ngap at top",
+    ann(ax, "Baffle 2 (full height,\nwelded top+bottom)\n75mm AIRFLOW gap\nfar side",
         (B2_X + BF_T / 2, B2_Z + B2_H * 0.4),
         (B2_X + 50, B2_Z + B2_H * 0.4 - 30))
     ax.text(DX + DD / 2, DZ + SK + int_h * 0.5,
@@ -471,8 +471,8 @@ def draw_sheet2():
             ha="center", va="center", fontsize=7.0, color="#808080",
             style="italic", alpha=0.85, zorder=9)
     ax.text(300, -70,
-            "LIGHT-TIGHT: each baffle spans the FULL duct width and is welded to BOTH side walls "
-            "(no edge gap); the top/bottom offset breaks the centre line of sight.",
+            "LIGHT-TIGHT: each baffle is FULL height, welded to the duct top & bottom (no edge gap); the two "
+            "plates take opposite sides (75mm air gap each) — air winds left↔right (horizontal S-path) while the line of sight stays blocked.",
             ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
     # ── Fan mounting flange (duct right face) ─────────────────────────────────

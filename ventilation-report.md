@@ -83,8 +83,8 @@ Fan B is mounted low on the sliding hinged panel, which moves with the panel dur
 
 Both fan penetrations include L-shaped offset baffles inside a duct stub to prevent light ingress while allowing unrestricted airflow:
 
-- **Construction:** Black sheet metal, L-shaped offset — two flat baffle plates, each the **full 200mm duct width** (welded/riveted to both duct side walls so no light can pass around them) × 125mm tall, mounted one from the top and one from the bottom so each leaves a **75mm airflow gap** at its open edge; the offset passes air on an S-path while the overlap blocks the line of sight, inside a 300mm deep duct stub
-- **Light path:** No straight line of sight from exterior to interior at any incidence angle — the full-width plates block the sides, the top/bottom offset blocks the center (S-path)
+- **Construction:** Black sheet metal, L-shaped offset — two flat baffle plates, each the **full 200mm duct height** (welded to the duct top and bottom so no light passes over or under them) × 125mm wide, set one against each side wall so each leaves a **75mm airflow gap** on the opposite side; air winds left↔right on a horizontal S-path while the overlap blocks the line of sight, inside a 300mm deep duct stub
+- **Light path:** No straight line of sight from exterior to interior at any incidence angle — the full-height plates block top/bottom, the left/right offset blocks the center (horizontal S-path)
 - **Airflow resistance:** Minimal — the L-path increases duct length by ~150mm but maintains full 150mm diameter cross-section at each turn
 
 **Sheet 2 — Fan & Baffle Duct Assembly**

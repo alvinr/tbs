@@ -22,7 +22,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from matplotlib.patches import Rectangle, Circle, FancyArrowPatch
+from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Wedge
 
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM,
@@ -76,7 +76,7 @@ POLY_OD = 25.0
 POLY_ID = 19.0
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
-N_NOZZLES = 6
+N_NOZZLES = 26          # flat-fan nozzles at 150mm pitch along the 3859mm beam span
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"
@@ -219,7 +219,7 @@ def draw_sheet1():
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=15)
 
-    # Spray nozzles (6× irrigation flat-fan)
+    # Spray nozzles (irrigation flat-fan, 150mm pitch)
     spray_x_l = PROC_OPEN_X_L
     for i in range(N_NOZZLES):
         frac = (i + 0.5) / N_NOZZLES
@@ -573,8 +573,8 @@ def draw_sheet2():
 
     c_beam_l = CARRIAGE_YD_CENTER - BEAM_W / 2
     c_beam_r = CARRIAGE_YD_CENTER + BEAM_W / 2
-    notch_l = c_beam_l - UC_GAP - UC_T
-    notch_r = c_beam_r + UC_GAP + UC_T
+    notch_l = c_beam_l          # wings extend in to meet the beam faces
+    notch_r = c_beam_r
 
     plate_yd_l = wheel1_yd - 18
     plate_yd_r = wheel2_yd + 18
@@ -597,42 +597,36 @@ def draw_sheet2():
     uc_seat_z = BEAM_Z_BOT + BEAM_W / 2 + brk_t_c / 2
     spacer_h = uc_seat_z - plate_top_z
 
-    # ── Axle-retention U-clamps (underside of carriage plate) ─────────
-    axle_uc_t = 2
+    # ── Axle-retention saddle clamps (curved conduit-style clamps; 2 either
+    #    side of each wheel — shown here straddling the axle) ────────────
     axle_pin_r = 5
-    axle_uc_gap = 1
-    axle_uc_inner = axle_pin_r + axle_uc_gap
-    axle_uc_outer = axle_uc_inner + axle_uc_t
-    axle_bot = WHEEL_AXLE_Z - axle_pin_r
-    auc_bar_top = axle_bot - axle_uc_gap
-    auc_bar_bot = auc_bar_top - axle_uc_t
-    auc_leg_h = plate_bot_z - auc_bar_top
-
+    sad_ri = axle_pin_r + 1          # 1mm clearance on the Ø10 axle
+    sad_t = 2                        # SS strap thickness
+    sad_ro = sad_ri + sad_t
+    foot_t = 2
+    foot_len = 9
     for w_yd in [wheel1_yd, wheel2_yd]:
-        # Bottom bar
-        ax2.add_patch(Rectangle((w_yd - axle_uc_outer, auc_bar_bot),
-                      2 * axle_uc_outer, axle_uc_t,
-                      fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6.8))
-        # Side legs
+        # curved hump cradling under the axle
+        ax2.add_patch(Wedge((w_yd, WHEEL_AXLE_Z), sad_ro, 180, 360, width=sad_t,
+                      fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=7))
         for sign in [-1, 1]:
-            leg_yd = w_yd + sign * axle_uc_inner - (axle_uc_t if sign < 0 else 0)
-            ax2.add_patch(Rectangle((leg_yd, auc_bar_top),
-                          axle_uc_t, auc_leg_h,
-                          fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6.8))
-        # Through-bolts (through U-clamp legs + plate)
-        for sign in [-1, 1]:
-            bolt_yd = w_yd + sign * (axle_uc_inner + axle_uc_t / 2)
-            ax2.add_patch(Rectangle((bolt_yd - 2, auc_bar_bot - 3), 4, 3,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
-            ax2.add_patch(Rectangle((bolt_yd - 1.5, auc_bar_bot), 3,
-                         plate_top_z - auc_bar_bot,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
+            # flat foot against the plate underside
+            foot_x0 = (w_yd + sad_ro) if sign > 0 else (w_yd - sad_ro - foot_len)
+            ax2.add_patch(Rectangle((foot_x0, plate_bot_z - foot_t), foot_len, foot_t,
+                          fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=7))
+            # bolt through foot + plate (head on top, nut below)
+            bolt_yd = w_yd + sign * (sad_ro + foot_len / 2)
+            ax2.add_patch(Rectangle((bolt_yd - 1.5, plate_bot_z - foot_t - 3), 3,
+                          plate_top_z - (plate_bot_z - foot_t - 3),
+                          fc=C_BOLT, ec=C_FRAME, lw=0.4, zorder=11))
             ax2.add_patch(Rectangle((bolt_yd - 3, plate_top_z), 6, 2.5,
-                         fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+                          fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+            ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z - foot_t - 3), 5, 3,
+                          fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
 
-    leader(ax2, wheel1_yd + axle_uc_outer + 2, auc_bar_bot + axle_uc_t / 2,
-           wheel1_yd + axle_uc_outer + 30, auc_bar_bot - 8,
-           "SS U-CLAMP\n(AXLE RETENTION)",
+    leader(ax2, wheel1_yd - sad_ro, WHEEL_AXLE_Z - sad_t, wheel1_yd - 30,
+           WHEEL_AXLE_Z - 18,
+           "SS SADDLE CLAMP\n(AXLE RETENTION)",
            fs=6, color=C_BOLT, font=FONT, zorder=15)
 
     # ── Beam / SHS cross-section with PVC pipe ───────────────────────────
@@ -657,55 +651,38 @@ def draw_sheet2():
              "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE", ha="center", va="bottom",
              fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15)
 
-    # ── U-clamp cradle under beam (feet on spacer top = uc_seat_z) ──────
-    uc_l = CARRIAGE_YD_CENTER - BEAM_W / 2 - UC_GAP - UC_T
-    uc_r = CARRIAGE_YD_CENTER + BEAM_W / 2 + UC_GAP + UC_T
-    flare_l = uc_l - UC_FLARE
-    flare_r = uc_r + UC_FLARE
+    # ── Beam clamp: a bottom plate under the beam + a top plate over it, drawn
+    #    together by bolts each side with a solid spacer block — sandwiches the
+    #    beam (and carriage plate) vertically ──────────────────────────────
+    clp_t = 3                                   # clamp plate thickness
+    clp_half = BEAM_W / 2 + 12                  # plate Yd half-width (32)
+    spacer_w = 8                                # spacer block Yd width
+    clamp_bolt_yd = BEAM_W / 2 + 4              # bolt just outside the beam face (24)
 
-    # Bottom bar (wraps under beam)
-    ax2.add_patch(Rectangle((uc_l, BEAM_Z_BOT - UC_T), uc_r - uc_l, UC_T,
-                  fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
-    # Side legs (run up from beam bottom to uc_seat_z)
-    uc_leg_h = uc_seat_z - BEAM_Z_BOT
-    for u_yd in [uc_l, uc_r - UC_T]:
-        ax2.add_patch(Rectangle((u_yd, BEAM_Z_BOT), UC_T, uc_leg_h,
-                     fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    # Flared feet (sit on uc_seat_z)
-    ax2.add_patch(Rectangle((flare_l, uc_seat_z),
-                  uc_l + UC_T - flare_l, UC_T,
-                  fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
-    ax2.add_patch(Rectangle((uc_r - UC_T, uc_seat_z),
-                  flare_r - uc_r + UC_T, UC_T,
-                  fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=10))
+    # bottom + top clamp plates
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - clp_half, BEAM_Z_BOT - clp_t),
+                  2 * clp_half, clp_t, fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
+    ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - clp_half, BEAM_Z_TOP),
+                  2 * clp_half, clp_t, fc=C_UCLAMP, ec=C_FRAME, lw=1.0, zorder=10))
 
-    # ── Spacer blocks (plate top to uc_seat_z) ─────────────────────────
-    ax2.add_patch(Rectangle((flare_l, plate_top_z),
-                  uc_l + UC_T - flare_l, spacer_h,
-                  fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=9.5))
-    ax2.add_patch(Rectangle((uc_r - UC_T, plate_top_z),
-                  flare_r - uc_r + UC_T, spacer_h,
-                  fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=9.5))
+    for sign in [-1, 1]:
+        # solid spacer block between the plates, just outside the beam face
+        sp_x0 = (CARRIAGE_YD_CENTER + BEAM_W / 2) if sign > 0 \
+            else (CARRIAGE_YD_CENTER - BEAM_W / 2 - spacer_w)
+        ax2.add_patch(Rectangle((sp_x0, BEAM_Z_BOT), spacer_w, BEAM_W,
+                      fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, zorder=9.5))
+        # bolt through top plate + spacer + bottom plate, nut top & bottom
+        bolt_yd = CARRIAGE_YD_CENTER + sign * clamp_bolt_yd
+        ax2.add_patch(Rectangle((bolt_yd - 2.5, BEAM_Z_BOT - clp_t - 3), 5,
+                      (BEAM_Z_TOP + clp_t + 3) - (BEAM_Z_BOT - clp_t - 3),
+                      fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
+        for nut_y in [BEAM_Z_TOP + clp_t, BEAM_Z_BOT - clp_t - 3]:
+            ax2.add_patch(Rectangle((bolt_yd - 4, nut_y), 8, 3,
+                          fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
 
-    leader(ax2, flare_l - 2, plate_top_z + spacer_h / 2,
-           flare_l - 25, plate_top_z + spacer_h / 2 - 10,
-           f"SPACER\n({spacer_h:.1f}mm AL)",
-           fs=6, color=C_FRAME, font=FONT, zorder=15)
-
-    # Bolts through feet + spacer + plate, wing nuts below
-    for bolt_yd in [flare_l + UC_FLARE / 2, flare_r - UC_FLARE / 2]:
-        bolt_stack = brk_t_c + spacer_h + UC_T
-        ax2.add_patch(Rectangle((bolt_yd - 2.5, plate_bot_z), 5,
-                     bolt_stack,
-                     fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 4, uc_seat_z + UC_T), 8, 3,
-                     fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-        ax2.add_patch(Rectangle((bolt_yd - 5, plate_bot_z - 4), 10, 4,
-                     fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=11))
-
-    leader(ax2, flare_r, uc_seat_z + UC_T / 2,
-           flare_r + 20, uc_seat_z + 15,
-           "SS U-CLAMP\n+ WING NUTS",
+    leader(ax2, CARRIAGE_YD_CENTER - clp_half, BEAM_Z_TOP + clp_t / 2,
+           CARRIAGE_YD_CENTER - clp_half - 22, BEAM_Z_TOP + 12,
+           "SS CLAMP PLATES\n(TOP + BOTTOM)\n+ SPACER + BOLTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
     # Nozzle fitting through beam floor + nozzle body
@@ -922,8 +899,8 @@ def draw_sheet2():
     # ── Notes ────────────────────────────────────────────────────────────
     cs_notes = [
         "CROSS SECTION (COMPOSITE):",
-        f"1. Beam rides on 2× Ø50mm nylon wheels, U-clamp axle retention.",
-        "2. U-clamp cradles beam from below, bolted through carriage plate.",
+        f"1. Beam rides on Ø50mm nylon wheels; saddle clamps each side retain axle.",
+        "2. Top + bottom clamp plates sandwich beam, bolted through carriage plate.",
         "3. Ball joint on plate wing → arm → pole through walkway slit.",
         "4. Water: poly pipe → barbed fitting → irrigation nozzle → spray.",
     ]
@@ -1428,7 +1405,7 @@ def draw_sheet5():
 
     leader(ax_w, clamp_cx_l - sc_hw + 0.5, (sc_bar_top + plate_bot_y) / 2,
            w_xl + 5, 8,
-           "SADDLE CLAMP\nLEG (1.5mm SS)",
+           "SADDLE CLAMP\nLEG (2mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     leader(ax_w, clamp_cx_l, nut_bot + nut_h / 2, w_xl + 5, -14,
@@ -1521,31 +1498,26 @@ def draw_sheet6():
                    fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
                    hatch="///", alpha=0.7, zorder=4))
 
-    # ── Beam U-clamp — ghost (underneath plate) ────────────────────────
-    uc_w_yd_top = BEAM_W + 2 * UC_T + 2 * UC_GAP
+    # ── Beam clamp — top plate (over beam) + 4 bolts (sandwich) ─────────
+    clp_half_d = BEAM_W / 2 + 12
+    clp_x_d = 40                    # clamp X-width (= carriage width)
     ghost_ls = (0, (4, 3))
     ghost_c = "#888888"
-    ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, -uc_w_yd_top / 2),
-                   arm_w_x, uc_w_yd_top,
-                   fc="none", ec=ghost_c, lw=0.8, ls=ghost_ls, zorder=6))
+    # top clamp plate over the beam at the carriage
+    ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - clp_x_d / 2, -clp_half_d),
+                   clp_x_d, 2 * clp_half_d,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, alpha=0.55, zorder=6))
+    # 4 clamp bolts (2 each side of the beam, fore + aft)
     for side in [-1, 1]:
-        foot_yd = side * (BEAM_W / 2 + UC_GAP + UC_T)
-        if side < 0:
-            foot_yd -= UC_FLARE
-        ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, foot_yd),
-                       arm_w_x, UC_FLARE + UC_T,
-                       fc="none", ec=ghost_c, lw=0.8, ls=ghost_ls, zorder=6))
+        for bx_off in [-clp_x_d / 2 + 9, clp_x_d / 2 - 9]:
+            ax_d.add_patch(Circle((CARRIAGE_OFFSET_X + bx_off,
+                                   side * (BEAM_W / 2 + 4)), 2.5,
+                         fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
 
-    for side in [-1, 1]:
-        bolt_yd = side * (BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE / 2)
-        ax_d.add_patch(Circle((CARRIAGE_OFFSET_X, bolt_yd), 3,
-                     fc="none", ec=ghost_c, lw=0.5, ls=ghost_ls, zorder=8))
-
-    leader(ax_d, CARRIAGE_OFFSET_X + arm_w_x / 2,
-           BEAM_W / 2 + UC_GAP + UC_T + UC_FLARE,
+    leader(ax_d, CARRIAGE_OFFSET_X + clp_x_d / 2, BEAM_W / 2 + 4,
            BEAM_W - 100, BEAM_W / 2 + 30,
-           "U-CLAMP (BELOW)\nFLARED LEGS\n+ WING NUTS",
-           fs=5, color=ghost_c, font=FONT, zorder=20)
+           "BEAM CLAMP PLATE\n(TOP + BOTTOM)\n+ 4 BOLTS",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Wheels — 2 pairs (2 per Yd position, spaced in X) ───────────────
     WHEEL_PAIR_GAP = 35
@@ -1593,7 +1565,7 @@ def draw_sheet6():
     bot_w_yd = -WHEEL_SPACING_YD / 2
     leader(ax_d, bot_right_wx + auc_w_plan / 2, bot_w_yd,
            bot_right_wx + 50, bot_w_yd + 20,
-           "AXLE U-CLAMP\n(2mm SS)",
+           "AXLE SADDLE CLAMP\n(2mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # Axle pin

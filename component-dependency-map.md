@@ -377,6 +377,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 | Model | Script | Output | Subsystems contained |
 |---|---|---|---|
 | **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 20 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups) |
+| **spray-bar** | `src/models/generate_spraybar_model.py` | `models/spraybar.skp` + `src/models/spraybar.rb` | Spray-bar gantry detail — beam + housed ¾" LDPE pipe + 26 flat-fan nozzles (150mm pitch), wheel carriages (curved saddle axle clamps, top/bottom beam clamp plates), feed pole + ball joint. Reads `SPRAY_BAR_*` constants. |
 
 *As more models are added, list them here with the subsystems each contains, so a
 constants change re-runs only the affected models.*

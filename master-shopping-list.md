@@ -19,14 +19,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,905 | $7,396 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
-| 7a. Panel sliding carriage | $1,011 | $1,011 |
+| 7a. Panel sliding carriage | $1,036 | $1,036 |
 | 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $955 | $1,470 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,311** | **~$26,111** |
+| **TOTAL (base build + 50-print run)** | **~$19,336** | **~$26,136** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -377,7 +377,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Metal Supermarkets | ~$120 |
-| 3mm steel plate/angle, ~110mm × ~2m | Bottom seal lip — threshold upstand, notched around drum (light path #6) | 1 | Metal Supermarkets | ~$35 |
+| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand + threshold upstand, each notched around drum (light paths #6–#7) | 1 | Metal Supermarkets | ~$60 |
 | Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
 | [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Left carriage beam slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
 | [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Right guide slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
@@ -388,7 +388,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Fasteners, misc | M10/M12 stainless, assorted | 1 lot | McMaster-Carr | ~$60 |
 | Flat black paint | Touch-up, 1 qt | 1 | Home Depot | ~$15 |
 | Fan B flex cable (coiled, 16AWG 2-cond, silicone) | 1m coiled, Deutsch DT 2-pin connectors each end | 1 | Waytek Wire / McMaster-Carr | ~$35 |
-**Door frame subtotal: ~$538**
+**Door frame subtotal: ~$563**
 
 **Section total (materials): ~$976**
 **Fabrication labor: ~12–16 hrs × $80–$100/hr = $960–$1,600**

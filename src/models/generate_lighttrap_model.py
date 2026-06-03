@@ -102,6 +102,18 @@ def door_frame():
                           lt, dg0, lz, color=C_RAIL))
     parts.append(ruby_box("Door Frame bottom seal lip R", -20 - lt, dg1, 0,
                           lt, C_WID - dg1, lz, color=C_RAIL))
+    # Top seal lip — the mirror of the bottom: a downstand from the frame top
+    # rail to just below the panel top edge (Z=2270), exterior of the EPDM. It
+    # closes the gap between the panel top and the frame as a continuous wall;
+    # the panel top edge recedes behind it and the EPDM top seal compresses
+    # against it under the upper cam latches. Notched around the drum (whose top
+    # cap seals separately against the ceiling mount plate).
+    tz0 = PANEL_Z_TOP - 30                 # 2270 — lip reaches 30mm past panel top
+    th = C_HGT - tz0                       # up to the frame top / ceiling
+    parts.append(ruby_box("Door Frame top seal lip L", -20 - lt, 0, tz0,
+                          lt, dg0, th, color=C_RAIL))
+    parts.append(ruby_box("Door Frame top seal lip R", -20 - lt, dg1, tz0,
+                          lt, C_WID - dg1, th, color=C_RAIL))
     return '\n'.join(parts)
 
 
@@ -134,14 +146,18 @@ def hinge_panel():
     parts.append(ruby_box("Drum aperture seal R", 0, YD_R - jw - 20, PANEL_Z_BOT,
                           tk, 20, DRUM_H, color=C_GASKT))
 
-    # EPDM perimeter gasket — 20mm strips on the exterior face, seal to door frame.
+    # EPDM perimeter gasket — 20mm strips on the panel exterior face, compressed
+    # against the door frame (and the top/bottom seal lips) by the cam latches.
     gw, gt = 40, 20
-    z0, z1 = PANEL_Z_BOT, C_HGT - PANEL_Z_BOT
+    z0, z1 = PANEL_Z_BOT, PANEL_Z_TOP
     dg0, dg1 = DRUM_CY - DRUM_R - 15, DRUM_CY + DRUM_R + 15   # clear the drum aperture
+    # bottom + top strips run on the panel edges, notched around the drum
     parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
                           color=C_GASKT))
-    parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM seal top L", -gt, 0, z1 - gw, gt, dg0, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM seal top R", -gt, dg1, z1 - gw, gt, C_WID - dg1, gw,
+                          color=C_GASKT))
     parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT))
     parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, z0, gt, gw, z1 - z0,
                           color=C_GASKT))

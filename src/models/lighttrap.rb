@@ -155,6 +155,28 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Door Frame top seal lip L
+  grp = ents.add_group
+  grp.name = "Door Frame top seal lip L"
+  face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,791.mm,2270.mm], [-32.mm,791.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(118.mm)
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame top seal lip R
+  grp = ents.add_group
+  grp.name = "Door Frame top seal lip R"
+  face = grp.entities.add_face([-32.mm,1571.mm,2270.mm], [-20.mm,1571.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(118.mm)
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Fixed Door Frame"
   inst.layer = model.layers["Door Frame"]
@@ -261,10 +283,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # EPDM seal top
+  # EPDM seal top L
   grp = ents.add_group
-  grp.name = "EPDM seal top"
-  face = grp.entities.add_face([-20.mm,0.mm,2268.mm], [0.mm,0.mm,2268.mm], [0.mm,2362.mm,2268.mm], [-20.mm,2362.mm,2268.mm])
+  grp.name = "EPDM seal top L"
+  face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,791.mm,2260.mm], [-20.mm,791.mm,2260.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EPDM seal top R
+  grp = ents.add_group
+  grp.name = "EPDM seal top R"
+  face = grp.entities.add_face([-20.mm,1571.mm,2260.mm], [0.mm,1571.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
@@ -277,7 +310,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "EPDM seal left"
   face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,40.mm,80.mm], [-20.mm,40.mm,80.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2228.mm)
+  face.pushpull(2220.mm)
   mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
@@ -288,7 +321,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "EPDM seal right"
   face = grp.entities.add_face([-20.mm,2322.mm,80.mm], [0.mm,2322.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2228.mm)
+  face.pushpull(2220.mm)
   mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0

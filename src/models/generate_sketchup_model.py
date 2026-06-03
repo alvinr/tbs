@@ -61,6 +61,7 @@ from tbs_constants import (
     EQPANEL_YD, EQPANEL_YD_SPAN,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
+    PANEL_FRAME_X,
     DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
@@ -678,6 +679,22 @@ def ibc_rack():
         parts.append(ruby_box("Rack Platform Beam",
                               xs, near_end, beam_z, s, far_end - near_end, s,
                               color=C_STEEL))
+
+    # ── Equipment-panel support frame: extend the MIDDLE corridor station up to
+    # the panel top (EQPANEL_Z_HI) and close it into a rectangle the wet-end panel
+    # bolts to — two corridor uprights + top rail + floor-level beam. The panel
+    # butts the film-plane (-X) face of this station. ──
+    mid_xs = x_stations[1]
+    for yd in (yd_near, yd_far - s):
+        parts.append(ruby_box("Panel Frame Upright",
+                              mid_xs, yd, plat_z, s, s, EQPANEL_Z_HI - plat_z,
+                              color=C_STEEL))
+    parts.append(ruby_box("Panel Frame Top Rail",
+                          mid_xs, yd_near, EQPANEL_Z_HI - s, s, yd_far - yd_near, s,
+                          color=C_STEEL))
+    parts.append(ruby_box("Panel Frame Floor Beam",
+                          mid_xs, yd_near, 0, s, yd_far - yd_near, s,
+                          color=C_STEEL))
 
     c_bolt = "#3A3A42"
 
@@ -1361,7 +1378,7 @@ def water_plumbing():
     topZ = 2 * IBC_H_600                   # 2020 — IBC stack top
     overZ = topZ + 230                     # 2250 — clear height over the totes
     pumpZ = PUMP_H_LO                      # 1320 — pump inlet bottom
-    pumpX = 4950
+    pumpX = EQPANEL_X - 50                  # pump inlet X — tracks panel
     cc = 1181                              # corridor centerline Y
     floor = 60                             # floor-run height
     upVZ = IBC_H_600 + IBC_VALVE_Z         # 1195 — upper-tier valve Z
@@ -1369,45 +1386,56 @@ def water_plumbing():
     # Pump inlets (per equipment_panel): left col Y=1109 → P-01/P-04, right col
     # Y=1253 → P-02/P-03; rows Z=1320 (bottom) / 1578 (upper). Two riser X-lanes
     # per column (rxA/rxB) so the four suction risers never overlap.
-    manX = 5100                            # Blue manifold header X (corridor)
+    manX = EQPANEL_X + 100                 # Blue manifold header X (corridor) — tracks panel
     pyL, pyR = 1109, 1253                  # left / right pump-column Y
     pZ1, pZ2 = PUMP_H_LO, PUMP_H_LO + 258  # bottom / upper pump-row Z
-    rxA, rxB = 4940, 4980                  # two riser X-lanes per column
+    rxA, rxB = EQPANEL_X - 60, EQPANEL_X - 20  # two riser X-lanes per column (track panel)
     parts = []
     def pipe(nm, wp, col):
         parts.append(ruby_pipe_run(nm, wp, pr, color=col))
 
-    # Exterior FILL (blue) → tee over the corridor → over the tote tops → Blue
-    # IBC fill ports. A tee fitting (run along Y, branch toward the inlet) splits
-    # the trunk to the two Blue totes.
-    pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (nearX, cc, overZ)], C_BLUE)
-    parts.append(ruby_tee("Fill Tee", (nearX, cc, overZ),
+    # Exterior FILL (blue): trunk runs in along the corridor centerline from the
+    # sealed wall to a tee set BACK behind the panel-frame top rail; the cross-arm
+    # runs in Yd directly over each Blue tote and drops STRAIGHT down into it.
+    # Moving the tee back clears the new top rail (X 5258-5308, Z 2210-2260) and
+    # removes the long forward over-the-top run on each side.
+    fillTeeX = PANEL_FRAME_X + 150         # 5408 — behind the top rail
+    pipe("Fill Trunk", [(C_LEN, EXT_FILL_YD, overZ), (fillTeeX, cc, overZ)], C_BLUE)
+    parts.append(ruby_tee("Fill Tee", (fillTeeX, cc, overZ),
                           (0, 1, 0), (1, 0, 0), pr, color=C_BLUE))
     pipe("Fill → Blue #1",
-         [(nearX, cc, overZ), (nearX, nY, overZ), (nearX, nY, topZ + 20)], C_BLUE)
+         [(fillTeeX, cc, overZ), (fillTeeX, nY, overZ), (fillTeeX, nY, topZ + 20)],
+         C_BLUE)
     pipe("Fill → Blue #2",
-         [(nearX, cc, overZ), (nearX, fY, overZ), (nearX, fY, topZ + 20)], C_BLUE)
+         [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, topZ + 20)],
+         C_BLUE)
 
     # Exterior DRAINS (corridor) → bottom-tote valves on the corridor faces.
+    drnX = 5400                            # drain riser X — behind the panel frame (5258-5308)
     pipe("Drain → Brown IBC",
-         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H), (5300, cc, EXT_DRAIN_3_H),
-          (5300, EQPANEL_YD, EXT_DRAIN_3_H), (5300, EQPANEL_YD, 300)], C_IBC_BROWN)
+         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H), (drnX, cc, EXT_DRAIN_3_H),
+          (drnX, EQPANEL_YD, EXT_DRAIN_3_H), (drnX, EQPANEL_YD, 300)], C_IBC_BROWN)
     pipe("Drain → Waste IBC",
-         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H), (5300, cc, EXT_DRAIN_H),
-          (5300, EQPANEL_YD_FAR, EXT_DRAIN_H), (5300, EQPANEL_YD_FAR, 300)],
+         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H), (drnX, cc, EXT_DRAIN_H),
+          (drnX, EQPANEL_YD_FAR, EXT_DRAIN_H), (drnX, EQPANEL_YD_FAR, 300)],
          C_IBC_WASTE)
 
     # IBC valves → their own pumps, so circuits never share a crossing path.
-    # The two Blue totes feed a PARALLEL suction manifold header (Z=upVZ) joined
-    # by a tee → P-01 (left col). Brown (P-02) and Waste (P-03) run low (Z=loVZ)
-    # and cross cleanly UNDER the Blue header before rising to the right column.
+    # The two Blue totes feed a PARALLEL suction manifold (Z=upVZ). The valve taps
+    # are set back 250mm toward the sealed wall — BEHIND the panel frame — so the
+    # straight header sits clear behind the uprights (no elbow in the frame); the
+    # centre feed to P-01 passes forward through the clear gap between the uprights
+    # (Yd 1096-1266). Brown (P-02) and Waste (P-03) run low (Z=loVZ) and cross
+    # cleanly UNDER the Blue header before rising to the right column.
+    blueTapX = nearX + 250                  # 5533 — Blue valve tap behind the frame, nearer the sealed wall
+    tap_in = 80                             # extend each end into the tote to meet the IBC valve/body
     pipe("Blue Suction Manifold",
-         [(nearX, EQPANEL_YD, upVZ), (manX, EQPANEL_YD, upVZ),
-          (manX, EQPANEL_YD_FAR, upVZ), (nearX, EQPANEL_YD_FAR, upVZ)], C_BLUE)
-    parts.append(ruby_tee("Blue Manifold Tee", (manX, cc, upVZ),
+         [(blueTapX, EQPANEL_YD - tap_in, upVZ),
+          (blueTapX, EQPANEL_YD_FAR + tap_in, upVZ)], C_BLUE)
+    parts.append(ruby_tee("Blue Manifold Tee", (blueTapX, cc, upVZ),
                           (0, 1, 0), (-1, 0, 0), pr, color=C_BLUE))
     pipe("Manifold → P-01",
-         [(manX, cc, upVZ), (rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)],
+         [(blueTapX, cc, upVZ), (rxA, cc, upVZ), (rxA, pyL, upVZ), (rxA, pyL, pZ1)],
          C_BLUE)
     pipe("Brown → P-02",
          [(nearX, EQPANEL_YD, loVZ), (rxA, EQPANEL_YD, loVZ),

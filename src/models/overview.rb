@@ -8318,6 +8318,135 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Fan A (exhaust) wall flange
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) wall flange"
+  face = grp.entities.add_face([5888.mm,170.mm,2070.mm], [5893.mm,170.mm,2070.mm], [5893.mm,430.mm,2070.mm], [5888.mm,430.mm,2070.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(260.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,185.mm,2085.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,185.mm,2315.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,415.mm,2085.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,415.mm,2315.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre grille
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre grille"
+  face = grp.entities.add_face([5893.mm,200.mm,2135.mm], [5933.mm,200.mm,2135.mm], [5933.mm,400.mm,2135.mm], [5893.mm,400.mm,2135.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(130.mm)
+  mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,204.mm,2146.5.mm], [5931.mm,204.mm,2146.5.mm], [5931.mm,396.mm,2146.5.mm], [5895.mm,396.mm,2146.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,204.mm,2172.5.mm], [5931.mm,204.mm,2172.5.mm], [5931.mm,396.mm,2172.5.mm], [5895.mm,396.mm,2172.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,204.mm,2198.5.mm], [5931.mm,204.mm,2198.5.mm], [5931.mm,396.mm,2198.5.mm], [5895.mm,396.mm,2198.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,204.mm,2224.5.mm], [5931.mm,204.mm,2224.5.mm], [5931.mm,396.mm,2224.5.mm], [5895.mm,396.mm,2224.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,204.mm,2250.5.mm], [5931.mm,204.mm,2250.5.mm], [5931.mm,396.mm,2250.5.mm], [5895.mm,396.mm,2250.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Fan B (intake) baffle duct
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle duct"
@@ -8361,6 +8490,135 @@ end
   cface.pushpull(50.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
   mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) wall flange
+  grp = ents.add_group
+  grp.name = "Fan B (intake) wall flange"
+  face = grp.entities.add_face([0.mm,1829.mm,470.mm], [5.mm,1829.mm,470.mm], [5.mm,2089.mm,470.mm], [0.mm,2089.mm,470.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(260.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,1844.mm,485.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,1844.mm,715.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,2074.mm,485.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,2074.mm,715.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
+  mat.color = Sketchup::Color.new(58, 58, 66)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre grille
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre grille"
+  face = grp.entities.add_face([-40.mm,1859.mm,535.mm], [0.mm,1859.mm,535.mm], [0.mm,2059.mm,535.mm], [-40.mm,2059.mm,535.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(130.mm)
+  mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,1863.mm,546.5.mm], [-2.mm,1863.mm,546.5.mm], [-2.mm,2055.mm,546.5.mm], [-38.mm,2055.mm,546.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,1863.mm,572.5.mm], [-2.mm,1863.mm,572.5.mm], [-2.mm,2055.mm,572.5.mm], [-38.mm,2055.mm,572.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,1863.mm,598.5.mm], [-2.mm,1863.mm,598.5.mm], [-2.mm,2055.mm,598.5.mm], [-38.mm,2055.mm,598.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,1863.mm,624.5.mm], [-2.mm,1863.mm,624.5.mm], [-2.mm,2055.mm,624.5.mm], [-38.mm,2055.mm,624.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,1863.mm,650.5.mm], [-2.mm,1863.mm,650.5.mm], [-2.mm,2055.mm,650.5.mm], [-38.mm,2055.mm,650.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 

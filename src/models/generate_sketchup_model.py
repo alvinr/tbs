@@ -1187,25 +1187,49 @@ def fans():
                                               # width (Yd) so they seal to both side walls
     parts = []
 
-    def duct(tag, x0, yc, zc, fan_x):
-        # box-section baffle duct: min corner (x0, yc-dw/2, zc-dh/2)
+    flo, flt = 30, 5                          # flange overhang past the duct, + plate thickness
+    gld, glh = 40, int(dh * 0.65)             # louvre grille depth + height
+
+    def duct(tag, wall_x, ext, yc, zc):
+        # `ext` = +1 if the exterior is on +X, -1 on -X. The duct projects from the
+        # wall interior face into the container; the fan sits at the interior mouth.
+        mouth_x = wall_x - ext * dd
+        x0 = min(wall_x, mouth_x)
         out = [ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
                         dd, dw, dh, color=C_DUCT, alpha=0.5)]
-        # baffle plate 1 — covers BOTTOM 150 of the opening, at 1/3 depth; spans the
-        # full duct width and attaches to both side walls (no light leak around it)
+        # baffle plates — full duct width (sealed to both side walls), offset top/bottom
         out.append(ruby_box(f"{tag} baffle plate 1", x0 + dd / 3 - bft / 2,
                             yc - dw / 2, zc - dh / 2, bft, dw, bf, color=C_FAN))
-        # baffle plate 2 — covers TOP 150 of the opening, at 2/3 depth; full width
         out.append(ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
                             yc - dw / 2, zc + dh / 2 - bf, bft, dw, bf, color=C_FAN))
-        # fan disk at the interior mouth (X=fan_x face), body inside the duct
-        out.append(ruby_cylinder(tag, fan_x, yc, zc, r, bd, color=C_FAN, axis="x"))
+        # fan disk at the interior mouth, body inside the duct
+        fan_face = mouth_x if ext > 0 else mouth_x - bd
+        out.append(ruby_cylinder(tag, fan_face, yc, zc, r, bd, color=C_FAN, axis="x"))
+        # ── wall mounting flange: 5mm plate on the interior wall face, overhanging
+        #    the duct opening, with 4 M10 bolts into the wall ──
+        out.append(ruby_box(f"{tag} wall flange",
+                            wall_x - (flt if ext > 0 else 0), yc - dw / 2 - flo,
+                            zc - dh / 2 - flo, flt, dw + 2 * flo, dh + 2 * flo,
+                            color=C_STEEL))
+        for fy in (yc - dw / 2 - flo / 2, yc + dw / 2 + flo / 2):
+            for fz in (zc - dh / 2 - flo / 2, zc + dh / 2 + flo / 2):
+                out.append(ruby_cylinder(f"{tag} flange bolt M10",
+                            wall_x - (flt + 8) / 2, fy, fz, 5, flt + 8,
+                            color="#3A3A42", axis="x"))
+        # ── weatherproof louvre grille on the exterior wall face (slatted) ──
+        gx0 = wall_x if ext > 0 else wall_x - gld
+        out.append(ruby_box(f"{tag} louvre grille", gx0, yc - dw / 2,
+                            zc - glh / 2, gld, dw, glh, color=C_DUCT, alpha=0.55))
+        for s in range(5):
+            sz = zc - glh / 2 + (s + 0.5) * glh / 5
+            out.append(ruby_box(f"{tag} louvre slat", gx0 + 2, yc - dw / 2 + 4,
+                                sz - 1.5, gld - 4, dw - 8, 3, color=C_STEEL))
         return out
 
-    # Fan A: far end wall (X=C_LEN); duct projects -X into the container.
-    parts += duct("Fan A (exhaust)", C_LEN - dd, FAN_A_YD, FAN_A_H, C_LEN - dd)
-    # Fan B: cargo-door panel (X=0); duct projects +X into the container.
-    parts += duct("Fan B (intake)", 0, FAN_B_YD, FAN_B_H, dd - bd)
+    # Fan A: far end wall (X=C_LEN, exterior on +X); duct projects -X into container.
+    parts += duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H)
+    # Fan B: cargo-door panel (X=0, exterior on -X); duct projects +X into container.
+    parts += duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H)
     return '\n'.join(parts)
 
 

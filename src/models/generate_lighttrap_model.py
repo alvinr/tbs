@@ -81,8 +81,11 @@ def door_frame():
     just exterior of the panel (X=-50..0); the EPDM gasket seals against it."""
     s = 50
     x0 = -s
+    # threshold rail is notched around the drum (it rotates down to the floor)
+    dg0, dg1 = DRUM_CY - DRUM_R - 15, DRUM_CY + DRUM_R + 15
     parts = [
-        ruby_box("Door Frame bottom", x0, 0, 0, s, C_WID, s, color=C_RAIL),
+        ruby_box("Door Frame threshold L", x0, 0, 0, s, dg0, s, color=C_RAIL),
+        ruby_box("Door Frame threshold R", x0, dg1, 0, s, C_WID - dg1, s, color=C_RAIL),
         ruby_box("Door Frame top", x0, 0, C_HGT - s, s, C_WID, s, color=C_RAIL),
         ruby_box("Door Frame left stile", x0, 0, 0, s, s, C_HGT, color=C_RAIL),
         ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
@@ -123,7 +126,10 @@ def hinge_panel():
     # EPDM perimeter gasket — 20mm strips on the exterior face, seal to door frame.
     gw, gt = 40, 20
     z0, z1 = PANEL_Z_BOT, C_HGT - PANEL_Z_BOT
-    parts.append(ruby_box("EPDM seal bottom", -gt, 0, z0, gt, C_WID, gw, color=C_GASKT))
+    dg0, dg1 = DRUM_CY - DRUM_R - 15, DRUM_CY + DRUM_R + 15   # clear the drum aperture
+    parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT))
+    parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
+                          color=C_GASKT))
     parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT))
     parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, z0, gt, gw, z1 - z0,
@@ -160,18 +166,17 @@ def drum():
     # Stub shafts (Ø75 × 150) welded to each cap.
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, DRUM_H, 37.5, 150,
                                color=C_STEEL, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom shaft", cx, cy, -150, 37.5, 150,
-                               color=C_STEEL, axis="z"))
-    # SKF 6215 bearings (Ø130 OD) + floor collar.
+    # SKF 6215 bearings (Ø130 OD) — upper in the panel header, lower in the
+    # floor collar. The drum rests ON the floor (Z=0); nothing extends below it.
     parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, DRUM_H, 65, 45,
                                color=C_STEEL, axis="z"))
-    parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, -45, 75, 45,
+    parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, 0, 75, 45,
                                color=C_STEEL, axis="z"))
-    # Upper mount plate (to panel header) + lower floor collar plate.
+    # Upper mount plate (to panel header) + lower floor collar flange (on floor).
     parts.append(ruby_box("LT Upper mount plate", cx - 110, cy - 110, DRUM_H + 45,
                           220, 220, 20, color=C_STEEL))
-    parts.append(ruby_box("LT Floor collar plate", cx - 120, cy - 120, -WALL_T,
-                          240, 240, WALL_T, color=C_STEEL))
+    parts.append(ruby_box("LT Floor collar plate", cx - 120, cy - 120, 0,
+                          240, 240, 12, color=C_STEEL))
 
     # Interior grab rail (Ø30 × 400 vertical tube, Z 700–1100) mounted on the
     # INSIDE of the drum's +X interior-face wall — operator grabs it from within

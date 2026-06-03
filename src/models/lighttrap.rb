@@ -155,21 +155,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Door Frame top seal lip L
+  # Door Frame top seal lip
   grp = ents.add_group
-  grp.name = "Door Frame top seal lip L"
-  face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,791.mm,2270.mm], [-32.mm,791.mm,2270.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(118.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Door Frame top seal lip R
-  grp = ents.add_group
-  grp.name = "Door Frame top seal lip R"
-  face = grp.entities.add_face([-32.mm,1571.mm,2270.mm], [-20.mm,1571.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
+  grp.name = "Door Frame top seal lip"
+  face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
   mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
@@ -283,21 +272,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # EPDM seal top L
+  # EPDM seal top
   grp = ents.add_group
-  grp.name = "EPDM seal top L"
-  face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,791.mm,2260.mm], [-20.mm,791.mm,2260.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
-  mat.color = Sketchup::Color.new(90, 48, 32)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # EPDM seal top R
-  grp = ents.add_group
-  grp.name = "EPDM seal top R"
-  face = grp.entities.add_face([-20.mm,1571.mm,2260.mm], [0.mm,1571.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
+  grp.name = "EPDM seal top"
+  face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Drum aperture seal L"] || model.materials.add("Drum aperture seal L")
@@ -480,7 +458,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([0.mm,1181.mm,2200.mm], [0,0,1], 37.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(150.mm)
+  cface.pushpull(65.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

@@ -377,7 +377,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 50×50×3mm RHS welded frame | Full door perimeter ~9.5m | 1 | Metal Supermarkets | ~$120 |
-| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand + threshold upstand, each notched around drum (light paths #6–#7) | 1 | Metal Supermarkets | ~$60 |
+| 3mm steel plate/angle, ~110mm × ~4m | Top + bottom seal lips — frame-top downstand (top, continuous full width) + threshold upstand (bottom, notched around drum); light paths #6–#7 | 1 | Metal Supermarkets | ~$60 |
 | Seal landing machining | Mill flat on all frame faces | 1 | Local fab | ~$80 |
 | [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Left carriage beam slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |
 | [Brush seal strip (doubled nylon bristle)](https://www.mcmaster.com/brush-seal-strip) | Right guide slot, 2400mm × 2 layers | 2 | McMaster-Carr | ~$50 |

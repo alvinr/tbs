@@ -106,14 +106,13 @@ def door_frame():
     # rail to just below the panel top edge (Z=2270), exterior of the EPDM. It
     # closes the gap between the panel top and the frame as a continuous wall;
     # the panel top edge recedes behind it and the EPDM top seal compresses
-    # against it under the upper cam latches. Notched around the drum (whose top
-    # cap seals separately against the ceiling mount plate).
+    # against it under the upper cam latches. The drum doesn't reach the top
+    # (its shaft stops below the lip), so this lip runs the FULL width as one
+    # continuous member — no notch — and meets across the center.
     tz0 = PANEL_Z_TOP - 30                 # 2270 — lip reaches 30mm past panel top
     th = C_HGT - tz0                       # up to the frame top / ceiling
-    parts.append(ruby_box("Door Frame top seal lip L", -20 - lt, 0, tz0,
-                          lt, dg0, th, color=C_RAIL))
-    parts.append(ruby_box("Door Frame top seal lip R", -20 - lt, dg1, tz0,
-                          lt, C_WID - dg1, th, color=C_RAIL))
+    parts.append(ruby_box("Door Frame top seal lip", -20 - lt, 0, tz0,
+                          lt, C_WID, th, color=C_RAIL))
     return '\n'.join(parts)
 
 
@@ -155,9 +154,8 @@ def hinge_panel():
     parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
                           color=C_GASKT))
-    parts.append(ruby_box("EPDM seal top L", -gt, 0, z1 - gw, gt, dg0, gw, color=C_GASKT))
-    parts.append(ruby_box("EPDM seal top R", -gt, dg1, z1 - gw, gt, C_WID - dg1, gw,
-                          color=C_GASKT))
+    # top strip runs continuously full-width (panel top edge is the solid header)
+    parts.append(ruby_box("EPDM seal top", -gt, 0, z1 - gw, gt, C_WID, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM seal left", -gt, 0, z0, gt, gw, z1 - z0, color=C_GASKT))
     parts.append(ruby_box("EPDM seal right", -gt, C_WID - gw, z0, gt, gw, z1 - z0,
                           color=C_GASKT))
@@ -190,8 +188,10 @@ def drum():
                                color=C_DRUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, 0, r, 5,
                                color=C_DRUM, axis="z"))
-    # Stub shafts (Ø75 × 150) welded to each cap.
-    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, DRUM_H, 37.5, 150,
+    # Top stub shaft (Ø75) — welded to the top cap, up into the upper bearing /
+    # mount plate only. It stops below the frame top seal lip (Z=2265 < 2270) so
+    # the lip can run continuously across the top (drum doesn't reach the top).
+    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, DRUM_H, 37.5, 65,
                                color=C_STEEL, axis="z"))
     # SKF 6215 bearings (Ø130 OD) — upper in the panel header, lower in the
     # floor collar. The drum rests ON the floor (Z=0); nothing extends below it.

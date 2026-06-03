@@ -1212,7 +1212,7 @@ def sheet3():
     ax.text((bx0 + bx1) / 2, by1 + 34, "DETAIL B — PANEL BOTTOM SEAL",
             ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
     ax.text((bx0 + bx1) / 2, by1 + 10,
-            "operational / “camera” position  ·  corner zone  ·  enlarged ~3.3:1  ·  TOP SEAL IS THE MIRROR IMAGE",
+            "operational / “camera” position  ·  section at corner zone  ·  enlarged ~3.3:1",
             ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
     ax.text(DX(-90), DY(150), "EXTERIOR", fontsize=6, color="#5060A0",
             ha="left", va="center", fontweight="bold", **FONT)
@@ -1266,6 +1266,71 @@ def sheet3():
     dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
     dlbl((DX(-40), DY(22)), DY(34), "Fixed door-frame\nthreshold (50×50 RHS)")
     dlbl((DX(74), DY(28)), DY(6), "50 mm tray rim —\n30 mm clearance")
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # DETAIL C — Panel top light seal (enlarged), the mirror of Detail B.
+    # The panel hangs below the ceiling rails, leaving a gap between the panel
+    # top and the frame top rail. A frame top seal lip (downstand) closes it; a
+    # 20mm EPDM strip on the panel top edge compresses against it under the upper
+    # cam latches. The drum does not reach the top, so the lip runs the full
+    # width as one continuous member (meets across the center).
+    # ══════════════════════════════════════════════════════════════════════════
+    ox2, oy2 = 980, 1760
+    def CX(d): return ox2 + k * d         # depth (mm) → sheet x  (exterior negative)
+    def CY(hh): return oy2 + k * hh       # height about panel-top edge (h=0) → sheet y
+
+    cbx0, cbx1 = CX(-98), CX(178)
+    cby0, cby1 = CY(-108), CY(102)
+    ax.add_patch(Rectangle((cbx0, cby0), cbx1 - cbx0, cby1 - cby0,
+                           fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
+    ax.text((cbx0 + cbx1) / 2, cby1 + 34, "DETAIL C — PANEL TOP SEAL",
+            ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text((cbx0 + cbx1) / 2, cby1 + 10,
+            "operational position  ·  mirror of Detail B  ·  lip runs full width (meets at center)",
+            ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
+    ax.text(CX(-90), CY(-95), "EXTERIOR", fontsize=6, color="#5060A0",
+            ha="left", va="center", fontweight="bold", **FONT)
+    ax.text(CX(170), CY(-95), "INTERIOR", fontsize=6, color="#407040",
+            ha="right", va="center", fontweight="bold", **FONT)
+
+    # ceiling / frame top + hatch above (h = +90 is the frame top / ceiling line)
+    ax.add_patch(Rectangle((cbx0, CY(90)), cbx1 - cbx0, CY(102) - CY(90),
+                           fc="#ECECEC", ec="none", hatch="////", lw=0, zorder=19))
+    ax.plot([cbx0, cbx1], [CY(90), CY(90)], color=C_OUT, lw=2.2, zorder=22)
+
+    # frame top rail, top seal lip (downstand), EPDM, panel top edge, ceiling rail
+    ax.add_patch(Rectangle((CX(-50), CY(40)), k * 50, k * 50,
+                           fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=21))      # frame top rail
+    ax.add_patch(Rectangle((CX(-32), CY(-30)), k * 12, k * 120,
+                           fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=23))      # top seal lip
+    ax.add_patch(Rectangle((CX(-20), CY(-40)), k * 20, k * 40,
+                           fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=24))      # EPDM
+    ax.add_patch(Rectangle((CX(0), CY(-100)), k * 40, k * 100,
+                           fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=22))       # panel top
+
+    # exterior light ray (in the gap above the panel top) blocked by the lip
+    ax.annotate("", xy=(CX(-33), CY(18)), xytext=(CX(-92), CY(18)),
+                arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.6), zorder=25)
+    ax.plot([CX(-30)], [CY(18)], marker="x", ms=7, mew=2.2, color="#C02020", zorder=26)
+    ax.text(CX(-92), CY(-6), "ext. light\nblocked by lip", fontsize=5.8,
+            color="#A05000", ha="left", va="center", **FONT)
+
+    # upper cam-latch compression (panel pulled onto the seal)
+    ax.annotate("", xy=(CX(2), CY(-58)), xytext=(CX(34), CY(-58)),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
+
+    def clbl(target, ty, text):
+        tx = CX(92)
+        ax.annotate("", xy=target, xytext=(tx - 6, ty),
+                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
+                                    shrinkA=1, shrinkB=1), zorder=24)
+        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
+    clbl((CX(30), CY(55)), CY(96), "Panel hangs below the ceiling\nrails — this gap is the light path")
+    clbl((CX(-40), CY(64)), CY(62), "Frame top rail (50×50 RHS)")
+    clbl((CX(-26), CY(30)), CY(28), "Top seal lip — steel downstand,\nfull width (continuous, meets at center)")
+    clbl((CX(-10), CY(-20)), CY(-10), "20 mm EPDM — panel top\nedge seals on lip")
+    clbl((CX(20), CY(-70)), CY(-58), "Upper cam latch compresses\npanel onto seal")
+    clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 4",

@@ -77,7 +77,7 @@ provides light-tight compression on all four sides.
 
 ## 3. Revolving Light-Trap Drum
 
-**Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation + Detail B (panel bottom light seal)**
+**Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation + Details B & C (panel bottom & top light seals)**
 ![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
 
 
@@ -229,7 +229,7 @@ sealed when the panel is in the operational position.
 | 4 | Rail channels at floor/ceiling (×4) | 10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration |
 | 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
 | 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the full panel-bottom width and **notched around the drum** (the drum carries its own floor seals). The lip closes the floor gap as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.) |
-| 7 | Panel top → frame gap (panel hangs below the ceiling rails) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge, across the full panel-top width and notched around the drum (whose top cap seals separately against the ceiling mount plate). A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. |
+| 7 | Panel top → frame gap (panel hangs below the ceiling rails) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -251,7 +251,7 @@ for the sliding carriage.
 | Slots | 2 × vertical (~70 × 2400mm) for carriage beam and right-side guide |
 | Rail penetrations | 4 × (floor and ceiling, both walls) sealed by neoprene pads |
 | Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, ~110mm tall, full panel-bottom width, notched around the drum — the EPDM bottom seal compresses against it (see §6 path #6) |
-| Top seal lip | Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width, notched around the drum — the EPDM top seal compresses against it (see §6 path #7) |
+| Top seal lip | Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #7) |
 
 ---
 
@@ -304,7 +304,7 @@ for the sliding carriage.
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
-| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand + frame-top downstand, each notched around drum (light paths #6–#7) | 1 | $45–$80 |
+| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand (bottom, notched around drum) + frame-top downstand (top, continuous full width); light paths #6–#7 | 1 | $45–$80 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
 | **Door frame subtotal** | | | **$335–$550** |
 

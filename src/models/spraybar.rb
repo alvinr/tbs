@@ -1781,7 +1781,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Hose (lower)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 490.mm, -432.5.mm)
+  vec = Geom::Vector3d.new(0.mm, 500.mm, -432.5.mm)
   circle = ge.add_circle([2421.5.mm,680.mm,525.5.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -1791,17 +1791,217 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Feed Hose into Pipe
+  # Feed Manifold
   grp = ents.add_group
-  grp.name = "Feed Hose into Pipe"
+  grp.name = "Feed Manifold"
+  face = grp.entities.add_face([2419.5.mm,1166.mm,64.mm], [2455.5.mm,1166.mm,64.mm], [2455.5.mm,1194.mm,64.mm], [2419.5.mm,1194.mm,64.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Hose to Manifold
+  grp = ents.add_group
+  grp.name = "Feed Hose to Manifold"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-92.mm, 10.mm, -53.mm)
-  circle = ge.add_circle([2421.5.mm,1170.mm,93.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(16.mm, 0.mm, -11.mm)
+  circle = ge.add_circle([2421.5.mm,1180.mm,93.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
   mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1691.857142857143.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1171.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([745.6428571428571.mm,1171.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1140.5714285714287.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1174.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([1296.9285714285713.mm,1174.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-589.2857142857142.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1177.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([1848.2142857142858.mm,1177.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-38.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1180.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([2399.5.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(513.2857142857147.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1183.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([2950.7857142857147.mm,1183.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1064.5714285714284.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1186.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([3502.0714285714284.mm,1186.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(1615.8571428571431.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2437.5.mm,1189.mm,73.mm], vec, 3.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Barb Fitting
+  grp = ents.add_group
+  grp.name = "Feed Barb Fitting"
+  ge = grp.entities
+  circle = ge.add_circle([4053.357142857143.mm,1189.mm,38.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
   mat.alpha = 1.0
   grp.material = mat
 

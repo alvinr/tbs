@@ -123,9 +123,10 @@ toward the pinhole wall), flooding the print surface progressively.
 The beam spans 3859mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
-irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — water
-enters through a barbed center feed fitting and exits through twenty-six barbed flat-fan
-irrigation nozzles at 150mm pitch along the beam bottom face.
+irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — the supply
+hose terminates at a distribution manifold by the ball joint, which feeds seven irrigation
+tubes that barb into the poly pipe at points along the beam; water then exits through
+twenty-six barbed flat-fan irrigation nozzles at 150mm pitch along the beam bottom face.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
@@ -145,7 +146,9 @@ irrigation nozzles at 150mm pitch along the beam bottom face.
 | Beam | 6061-T6 AL SHS, 40×40×3mm, 3859mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
 | Internal spray pipe | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution inside beam bore |
 | Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
-| Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
+| Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
+| Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
+| Barbed feed fittings | Barbed insert through beam top wall into poly pipe | 7 | Feed points (~550mm pitch) into the poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 4 | Roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
@@ -158,7 +161,7 @@ irrigation nozzles at 150mm pitch along the beam bottom face.
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
 | M6 pinch bolt | SS hex bolt + nut | 1 | Clamps arm tube onto ball joint stud |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4 m | 1 | Operator controls bar position from walkway |
-| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-02 to center feed barbed fitting |
+| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-02 to the distribution manifold |
 | Zip ties | Nylon, 200mm | ~6 | Secure flex hose to arm tube |
 
 ### 3.3 Beam / Spray Pipe
@@ -194,10 +197,10 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 | Pipe OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Bore clearance | 4.5mm per side (pipe loose in 34mm bore) |
 
-The twenty-six barbed fittings (plus the center feed fitting) pass through drilled holes
-in the beam wall and grip the LDPE pipe by their barb ridges. These twenty-seven through-wall
-fittings act as locating pins, preventing the poly pipe from sliding or rotating
-inside the oversized bore — no additional pipe restraint is needed.
+The twenty-six nozzle fittings (bottom) plus the seven feed fittings (top) pass through
+drilled holes in the beam wall and grip the LDPE pipe by their barb ridges. These
+thirty-three through-wall fittings act as locating pins, preventing the poly pipe from
+sliding or rotating inside the oversized bore — no additional pipe restraint is needed.
 
 **Beam ends (open):**
 
@@ -207,8 +210,9 @@ folds 180° back on itself and is secured with a stainless steel or nylon retain
 clip (see Sheet 4, Detail A). The fold-back and retainer clip provide a watertight
 seal; the aluminum SHS serves only as structural housing.
 
-- **Feed end (center, X=2500):** Barbed center feed fitting installed through the
-  beam top wall — connects flex hose from BV-02 to the poly pipe bore.
+- **Feed points (7, ~550mm pitch):** Barbed feed fittings installed through the beam
+  top wall — each connects an irrigation tube from the ball-joint manifold to the poly
+  pipe bore, distributing the supply evenly along the pipe.
 - **Both ends (X=470 and X=4,329):** LDPE fold-back with retainer clip — fully sealed.
 
 ### 3.4 Wheel Carriage Assemblies
@@ -400,12 +404,12 @@ halves meet at a shallow upward angle.
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× wheel + axle + 8 saddle clamps) | 0.50 |
-| Nozzles + fittings (26×) | 0.30 |
+| Nozzles (26×) + feed manifold/tubes/fittings | 0.50 |
 | Hardware (bolts, clips, clamp plates) | 0.35 |
-| **Dry total** | **~6.9 kg** |
-| **Wet total (operating)** | **~8.0 kg** |
+| **Dry total** | **~7.1 kg** |
+| **Wet total (operating)** | **~8.2 kg** |
 
-Per wheel load (wet): 8.0 / 4 = 2.0 kg — well within any small nylon wheel's rating.
+Per wheel load (wet): 8.2 / 4 = 2.1 kg — well within any small nylon wheel's rating.
 
 ### 3.8 Beam Splice Joint
 
@@ -425,29 +429,31 @@ the splice entirely.
 |-----------|-------|
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
-| Pipe inlet velocity | 0.78 m/s (at 3.5 GPM) |
+| Feed points (manifold) | 7 (~550mm pitch) — 0.5 GPM per feed tube |
 | Spray nozzles | 26 × flat-fan irrigation nozzles |
 | Flow per nozzle | 0.135 GPM (0.51 L/min) |
 
-The center feed position minimizes pipe friction losses by splitting flow equally to
-thirteen nozzles on each side. The 19mm bore provides adequate flow capacity at 3.5 GPM.
-Each irrigation nozzle delivers a 180° flat fan pattern; at 150mm pitch the fans overlap
-heavily, giving near-continuous wash coverage along the 3859mm beam span.
+Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
+than a single center feed — keeps the supply pressure uniform along the pipe, so each of
+the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
+180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
+wash coverage along the 3859mm beam span.
 
 ### 3.10 Water Connection
 
 BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
 X=2399mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
 1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
-reinforced braided PVC hose connects from BV-02 down to the beam's center feed barbed
-fitting. The hose coils when the bar is near the pinhole wall and extends as the bar is
+reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
+ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
 the print surface.
 
-![Sheet 7 — Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
+![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 →
-coiled flexible hose → barbed center feed → poly pipe bore → 26× spray nozzles.
+coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 26× spray nozzles.
 
 ### 3.11 Walkway Slit
 
@@ -490,7 +496,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
 | 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, nylon wheel, axle pin, saddle clamp |
 | 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, beam clamp plate, saddle clamps, wheels |
-| 7 | Detail B — Center Feed | Longitudinal section at 2:1 — barbed center feed and nozzle connection details |
+| 7 | Detail B — Manifold Feed | Longitudinal section at 2:1 — manifold-fed barbed feed connection (typ. ×7) and nozzle connection details |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
@@ -504,7 +510,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 
 ![Sheet 6 — Detail D: Wheel Plan](assets/spray-bar-sheet6.png)
 
-![Sheet 7 — Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
+![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
 Additional processing tray drainage detail is shown in the
 [water system drawings](engineering-diagrams.md#9-processing-water-system) (sheets 3–4:
@@ -538,10 +544,12 @@ tray drainage plan and sump cross-section).
 | 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 | $8–$12 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 | $10 |
 | Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 | $30–$50 |
-| 3/4" barb × 1/2" barb adapter | Center feed through beam top wall | 1 | $4 |
+| Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 | $12 |
+| 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 | $6 |
+| Barbed feed fittings, through beam top | Tube to poly pipe, 7 feed points | 7 | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 | $4 |
 | [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 per carriage) | 4 | $12–$20 |
-| 1/2" barb × 1/2" hose barb, brass | Flex hose to center feed adapter | 1 | $4 |
+| 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 4 (1 pack) | $5 |
@@ -553,15 +561,15 @@ tray drainage plan and sump cross-section).
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |
-| **Spray bar subtotal** | | | **$211–$275** |
+| **Spray bar subtotal** | | | **$235–$299** |
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | $1,300–$2,015 |
-| Spray bar assembly | $211–$275 |
-| **Total** | **$1,511–$2,290** |
+| Spray bar assembly | $235–$299 |
+| **Total** | **$1,535–$2,314** |
 
 ---
 

@@ -91,6 +91,17 @@ def door_frame():
         ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
                  color=C_RAIL),
     ]
+    # Bottom seal lip — an upstand rising from the threshold to just above the
+    # panel bottom edge (Z=110), exterior of the EPDM (X=-32..-20). It closes
+    # the 80mm floor gap as a continuous wall; the panel bottom edge recedes
+    # behind it and the panel's EPDM bottom seal compresses against it when the
+    # cam latches engage ("camera"/operational position only — release to slide
+    # to transport). Notched around the drum, which has its own floor seals.
+    lt, lz = 12, 110
+    parts.append(ruby_box("Door Frame bottom seal lip L", -20 - lt, 0, 0,
+                          lt, dg0, lz, color=C_RAIL))
+    parts.append(ruby_box("Door Frame bottom seal lip R", -20 - lt, dg1, 0,
+                          lt, C_WID - dg1, lz, color=C_RAIL))
     return '\n'.join(parts)
 
 

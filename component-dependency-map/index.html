@@ -4088,6 +4088,18 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td><code>models/spraybar.skp</code> + <code>src/models/spraybar.rb</code></td>
 <td>Spray-bar gantry detail — beam + housed ¾" LDPE pipe + 26 flat-fan nozzles (150mm pitch), wheel carriages (2 wheels/carriage, curved saddle axle clamps, top/bottom beam clamp plates), feed pole + ball joint with <strong>distribution manifold + 7 irrigation feed tubes</strong> into the poly pipe, <strong>processing tray</strong> (floor + rim + sump). 5 scenes (Beam, Carriage Assembly, Pole &amp; Ball Joint, Processing Tray, Combined). Reads <code>SPRAY_BAR_*</code> and <code>PROC_TRAY_*</code> constants.</td>
 </tr>
+<tr>
+<td><strong>ibc-stack</strong></td>
+<td><code>src/models/generate_ibc_model.py</code></td>
+<td><code>models/ibc-stack.skp</code> + <code>src/models/ibc-stack.rb</code></td>
+<td>IBC tote stacking arrangement.</td>
+</tr>
+<tr>
+<td><strong>lighttrap</strong></td>
+<td><code>src/models/generate_lighttrap_model.py</code></td>
+<td><code>models/lighttrap.skp</code> + <code>src/models/lighttrap.rb</code></td>
+<td>Cargo-door end assembly (detailed): revolving <strong>light-trap drum</strong> (shell + 4-baffle turnstile + caps, stub shafts, SKF 6215 bearings, floor collar, interior grab rail), <strong>hinged stepped panel</strong> (3 zones + drum aperture + EPDM perimeter seal + 3 piano hinges + 4 Southco cam latches), <strong>sliding carriage</strong> (2× HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left 60×60 SHS carriage beam + 4 Destaco toggle clamps), fixed RHS <strong>door frame</strong>, and <strong>Fan B (intake)</strong>. Fan B <strong>reuses the Overview's shared <code>fan_duct()</code> builder</strong> (same source as <code>fans()</code>), so re-run lighttrap whenever the fan changes. Reads <code>DRUM_*</code>, <code>PANEL_*</code>, <code>FAN_B_*</code> constants. 5 scenes (Overview, Light-Trap Drum, Hinge Panel &amp; Seal, Sliding Carriage, Fan B).</td>
+</tr>
 </tbody>
 </table>
 <p><em>As more models are added, list them here with the subsystems each contains, so a

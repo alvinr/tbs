@@ -272,14 +272,38 @@ def build_feed_pole():
     # -> vertical drop) into the manifold top. The flex section absorbs the handle's
     # articulation; it enters the box at a right angle and matches the evap-duct
     # corrugated flex visual language.
+    # the hose runs tangent to the pole (no gap) the full length, then a corrugated
+    # flex connector into the manifold top (right angle); zip-tie loops bind it.
+    O = (cx, op_y, op_z)
+    M = (cx, mid_y, mid_z)
+    A = (cx, by - 24, ball_z + 20)          # arm base, near the ball joint
+    hoff = 20                                # pole radius + hose radius — tangent
     parts.append(ov.ruby_pipe("Feed Hose (upper)",
-                              (cx + 22, op_y, op_z), (cx + 22, mid_y, mid_z), 8, color=C_WATER))
+                              (cx + hoff, O[1], O[2]), (cx + hoff, M[1], M[2]), 8, color=C_WATER))
     parts.append(ov.ruby_pipe("Feed Hose (lower)",
-                              (cx + 22, mid_y, mid_z), (man_cx, by - 35, man_top + 28), 8, color=C_WATER))
+                              (cx + hoff, M[1], M[2]), (cx + hoff, A[1], A[2]), 8, color=C_WATER))
     parts.append(ov.ruby_flex_run("Feed Flex Connector",
-                                  [(man_cx, by - 35, man_top + 28), (man_cx, by, man_top + 28),
-                                   (man_cx, by, man_top)],
+                                  [(cx + hoff, A[1], A[2]), (man_cx, A[1], A[2]),
+                                   (man_cx, by, A[2]), (man_cx, by, man_top)],
                                   7, color=C_WATER, elbow_r=10))
+    # grey zip-tie loops binding the hose to the pole at ~200mm intervals (report §3.12)
+    for q1, q2 in ((O, M), (M, A)):
+        dd = (0.0, q2[1] - q1[1], q2[2] - q1[2])
+        seg_l = math.sqrt(dd[1] ** 2 + dd[2] ** 2)
+        vl = math.sqrt(dd[2] ** 2 + dd[1] ** 2)
+        vh = (0.0, dd[2] / vl, -dd[1] / vl)          # in-plane axis ⟂ to pole and to X
+        nt = max(1, int(round(seg_l / 200)))
+        for s in range(nt):
+            t = (s + 0.5) / nt
+            cyz = (cx + hoff / 2, q1[1] + t * dd[1], q1[2] + t * dd[2])
+            loop = []
+            for k in range(8):
+                th = 2 * math.pi * k / 8
+                ca, sb = 22 * math.cos(th), 13 * math.sin(th)
+                loop.append((cyz[0] + ca, cyz[1] + sb * vh[1], cyz[2] + sb * vh[2]))
+            for k in range(8):
+                parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 8], 1.2,
+                                          color="#888888", n=6))
     # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
     # the ball joint detour along the beam BACK edge so they go AROUND the socket —
     # never through it (no pipes through objects). The centre feed is nudged clear

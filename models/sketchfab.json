@@ -5,5 +5,12 @@
     "embed_files": [
       "project-summary.md"
     ]
+  },
+  "spray-bar": {
+    "name": "TBS-001 Processing Model",
+    "uid": "18fb381fbf48459cac25dcaa23958387",
+    "embed_files": [
+      "processing-tray-and-spray-bar.md"
+    ]
   }
 }

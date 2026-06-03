@@ -16,6 +16,8 @@ originSessionId: 54457a84-3dd4-4b25-a419-b2a4e2f11517
 
 4. **Connect at right angles.** A pipe, hose, tube, or duct must meet any fitting, manifold/box, appliance port, or wall penetration **perpendicular to that face**. The final segment before the connection is normal (90°) to the face it enters — never a diagonal or grazing approach. To reach a port from an off-axis source, route with orthogonal legs joined by elbows (e.g. riser → 90° elbow → horizontal stub into the port), not a single slanted segment.
 
+5. **Never route a pipe THROUGH another object — route around it.** A pipe/hose/tube/duct must not pass through any solid body it does not connect to (ball joints, sockets, brackets, frames, the beam wall except at a fitting, tanks, etc.). In the 3D models, check for interpenetration: if an obstacle is in the path, detour around it (a bypass lane offset in Yd/Z, or up and over) and keep the routing orthogonal. This has been gotten wrong repeatedly (pipes drawn straight through objects).
+
 ## Right-Angle Connections (applies to 2D diagrams AND 3D models)
 
 This is the rule most often gotten wrong — it has had to be fixed repeatedly. Whenever a line (pipe / flex hose / corrugated duct / irrigation tube) terminates at a **box, manifold, fitting, appliance, or wall penetration**, the terminating segment must be a short stub that is **perpendicular to the face it enters**.
@@ -27,6 +29,7 @@ This is the rule most often gotten wrong — it has had to be fixed repeatedly. 
 **Recurring fixes — learn from these:**
 - **Evap cooler duct:** a single diagonal flex run was drawn from the cooler to the wall inlet. Fixed to a **vertical riser → 90° elbow → horizontal stub** into the Ø200 wall inlet, meeting both the cooler outlet and the wall at right angles.
 - **Spray-bar feed manifold:** the supply hose entered the manifold box at a shallow angle. Fixed to a **vertical drop into the manifold top** (perpendicular). The hose still follows the push-pole diagonally above that, which is fine (flexible mid-span), but the box entry is now a right angle.
+- **Spray-bar feed tubes through the ball joint (Rule 5):** irrigation tubes ran straight from the manifold to feed points and **passed through the ball-joint socket**. Fixed by detouring those tubes along the beam **back edge** (a bypass lane offset in Yd) so they go *around* the socket, plus nudging the centre feed clear of the socket footprint.
 
 ## How to Draw Fittings in Section View
 
@@ -114,6 +117,7 @@ draw_pipe_path(ax, [x, x], [z_cross + _gap_half, z_end], rear_OD, rear_WALL, ...
 - [ ] No gradual curves — only straight runs and fittings
 - [ ] Every direction change has a discrete elbow fitting drawn
 - [ ] Every connection to a box / manifold / fitting / penetration is a perpendicular stub (right-angle entry), not a diagonal — in 2D and 3D alike
+- [ ] No pipe/tube/duct passes through a solid object it doesn't connect to — detour around obstacles (check the 3D model for interpenetration)
 - [ ] Elbow fittings show concentric arcs (not sharp corners, not gradual bends)
 - [ ] Barb connections show ridged profile + hose clamp band
 - [ ] Pipe end-on shown as concentric circles

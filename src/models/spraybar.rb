@@ -1820,8 +1820,36 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1691.857142857143.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1171.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 18.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1192.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1691.857142857143.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -30.mm, -7.mm)
+  circle = ge.add_circle([745.6428571428571.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1834,7 +1862,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([745.6428571428571.mm,1171.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([745.6428571428571.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1847,8 +1875,36 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1140.5714285714287.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1174.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 18.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1192.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1140.5714285714287.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -30.mm, -7.mm)
+  circle = ge.add_circle([1296.9285714285713.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1861,7 +1917,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([1296.9285714285713.mm,1174.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1296.9285714285713.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1874,8 +1930,36 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-589.2857142857142.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1177.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 18.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1192.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-589.2857142857142.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2437.5.mm,1210.mm,73.mm], vec, 3.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Tube
+  grp = ents.add_group
+  grp.name = "Feed Tube"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -30.mm, -7.mm)
+  circle = ge.add_circle([1848.2142857142858.mm,1210.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1888,7 +1972,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([1848.2142857142858.mm,1177.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1848.2142857142858.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1901,8 +1985,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-38.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(28.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1915,7 +1999,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([2399.5.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2479.5.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1928,8 +2012,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(513.2857142857147.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1183.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(499.2857142857147.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1942,7 +2026,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([2950.7857142857147.mm,1183.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2950.7857142857147.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1955,8 +2039,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1064.5714285714284.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1186.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(1050.5714285714284.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1969,7 +2053,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([3502.0714285714284.mm,1186.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3502.0714285714284.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -1982,8 +2066,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Tube"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1615.8571428571431.mm, 0.mm, -7.mm)
-  circle = ge.add_circle([2437.5.mm,1189.mm,73.mm], vec, 3.5.mm, 16)
+  vec = Geom::Vector3d.new(1601.8571428571431.mm, 0.mm, -7.mm)
+  circle = ge.add_circle([2451.5.mm,1180.mm,73.mm], vec, 3.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -1996,7 +2080,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Barb Fitting"
   ge = grp.entities
-  circle = ge.add_circle([4053.357142857143.mm,1189.mm,38.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4053.357142857143.mm,1180.mm,38.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)

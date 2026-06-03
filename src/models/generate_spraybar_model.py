@@ -274,18 +274,29 @@ def build_feed_pole():
                               (cx + 22, mid_y, mid_z), (man_cx, by, man_top + 26), 8, color=C_WATER))
     parts.append(ov.ruby_pipe("Feed Hose Drop",
                               (man_cx, by, man_top + 26), (man_cx, by, man_top), 8, color=C_WATER))
-    # irrigation tubes + barbed fittings into the poly pipe
+    # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
+    # the ball joint detour along the beam BACK edge so they go AROUND the socket —
+    # never through it (no pipes through objects). The centre feed is nudged clear
+    # of the ball joint footprint.
     nfeed = 7
     bore_cz = ZB + S / 2
-    for i in range(nfeed):
-        fx = XL + (i + 0.5) / nfeed * (XR - XL)
-        ty = by + (i - (nfeed - 1) / 2) * 3          # slight Yd spread to separate tubes
-        parts.append(ov.ruby_pipe("Feed Tube",
-                                  (man_cx, ty, man_z + 9), (fx, ty, ZT + 6), 3.5,
-                                  color=C_WATER))
+    rear = by + 30                                   # back-edge bypass lane (clear of socket + U-bolt)
+    for j in range(nfeed):
+        fx = XL + (j + 0.5) / nfeed * (XR - XL)
+        if j == (nfeed - 1) / 2:                     # centre slot lands on the ball joint
+            fx = cx + 80                             # nudge clear of the Ø36 socket
+        if fx > cx + 30:                             # clear of the joint — route directly
+            parts.append(ov.ruby_pipe("Feed Tube",
+                         (man_cx + 14, by, man_z + 9), (fx, by, ZT + 6), 3.0, color=C_WATER))
+        else:                                        # left of the joint — go around via the back edge
+            parts.append(ov.ruby_pipe("Feed Tube",
+                         (man_cx, by + 12, man_z + 9), (man_cx, rear, man_z + 9), 3.0, color=C_WATER))
+            parts.append(ov.ruby_pipe("Feed Tube",
+                         (man_cx, rear, man_z + 9), (fx, rear, man_z + 9), 3.0, color=C_WATER))
+            parts.append(ov.ruby_pipe("Feed Tube",
+                         (fx, rear, man_z + 9), (fx, by, ZT + 6), 3.0, color=C_WATER))
         parts.append(ov.ruby_cylinder("Feed Barb Fitting",
-                                      fx, ty, bore_cz - 2, 4, (ZT + 6) - (bore_cz - 2),
-                                      color=C_NOZZLE, axis="z"))
+                     fx, by, bore_cz - 2, 4, (ZT + 6) - (bore_cz - 2), color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
 

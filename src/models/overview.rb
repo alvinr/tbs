@@ -8286,7 +8286,7 @@ end
   # Fan A (exhaust) baffle plate 1
   grp = ents.add_group
   grp.name = "Fan A (exhaust) baffle plate 1"
-  face = grp.entities.add_face([5689.mm,225.mm,2100.mm], [5697.mm,225.mm,2100.mm], [5697.mm,375.mm,2100.mm], [5689.mm,375.mm,2100.mm])
+  face = grp.entities.add_face([5689.mm,200.mm,2100.mm], [5697.mm,200.mm,2100.mm], [5697.mm,400.mm,2100.mm], [5689.mm,400.mm,2100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -8297,7 +8297,7 @@ end
   # Fan A (exhaust) baffle plate 2
   grp = ents.add_group
   grp.name = "Fan A (exhaust) baffle plate 2"
-  face = grp.entities.add_face([5789.mm,225.mm,2150.mm], [5797.mm,225.mm,2150.mm], [5797.mm,375.mm,2150.mm], [5789.mm,375.mm,2150.mm])
+  face = grp.entities.add_face([5789.mm,200.mm,2150.mm], [5797.mm,200.mm,2150.mm], [5797.mm,400.mm,2150.mm], [5789.mm,400.mm,2150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -8332,7 +8332,7 @@ end
   # Fan B (intake) baffle plate 1
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 1"
-  face = grp.entities.add_face([96.mm,1884.mm,500.mm], [104.mm,1884.mm,500.mm], [104.mm,2034.mm,500.mm], [96.mm,2034.mm,500.mm])
+  face = grp.entities.add_face([96.mm,1859.mm,500.mm], [104.mm,1859.mm,500.mm], [104.mm,2059.mm,500.mm], [96.mm,2059.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -8343,7 +8343,7 @@ end
   # Fan B (intake) baffle plate 2
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 2"
-  face = grp.entities.add_face([196.mm,1884.mm,550.mm], [204.mm,1884.mm,550.mm], [204.mm,2034.mm,550.mm], [196.mm,2034.mm,550.mm])
+  face = grp.entities.add_face([196.mm,1859.mm,550.mm], [204.mm,1859.mm,550.mm], [204.mm,2059.mm,550.mm], [196.mm,2059.mm,550.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")

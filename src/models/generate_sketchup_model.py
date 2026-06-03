@@ -1183,19 +1183,21 @@ def fans():
     r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
     dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
     dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
-    bf, bft = 150, 8                          # 150x150 baffle plates, 8mm thick (exaggerated)
+    bf, bft = 150, 8                          # baffle plates: 150 tall (Z, offset) × FULL duct
+                                              # width (Yd) so they seal to both side walls
     parts = []
 
     def duct(tag, x0, yc, zc, fan_x):
         # box-section baffle duct: min corner (x0, yc-dw/2, zc-dh/2)
         out = [ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
                         dd, dw, dh, color=C_DUCT, alpha=0.5)]
-        # baffle plate 1 — covers BOTTOM 150 of the opening, at 1/3 depth
+        # baffle plate 1 — covers BOTTOM 150 of the opening, at 1/3 depth; spans the
+        # full duct width and attaches to both side walls (no light leak around it)
         out.append(ruby_box(f"{tag} baffle plate 1", x0 + dd / 3 - bft / 2,
-                            yc - bf / 2, zc - dh / 2, bft, bf, bf, color=C_FAN))
-        # baffle plate 2 — covers TOP 150 of the opening, at 2/3 depth
+                            yc - dw / 2, zc - dh / 2, bft, dw, bf, color=C_FAN))
+        # baffle plate 2 — covers TOP 150 of the opening, at 2/3 depth; full width
         out.append(ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
-                            yc - bf / 2, zc + dh / 2 - bf, bft, bf, bf, color=C_FAN))
+                            yc - dw / 2, zc + dh / 2 - bf, bft, dw, bf, color=C_FAN))
         # fan disk at the interior mouth (X=fan_x face), body inside the duct
         out.append(ruby_cylinder(tag, fan_x, yc, zc, r, bd, color=C_FAN, axis="x"))
         return out

@@ -469,6 +469,10 @@ def draw_sheet2():
             "FLAT BLACK\nPOWDER COAT\nALL INTERIOR FACES",
             ha="center", va="center", fontsize=7.0, color="#808080",
             style="italic", alpha=0.85, zorder=9)
+    ax.text(300, -70,
+            "LIGHT-TIGHT: each baffle spans the FULL duct width and is welded to BOTH side walls "
+            "(no edge gap); the top/bottom offset breaks the centre line of sight.",
+            ha="center", va="center", fontsize=8.5, color=TITLE_COL, fontweight="bold", zorder=9)
 
     # ── Fan mounting flange (duct right face) ─────────────────────────────────
     draw_rect(ax, FX - FL_T, wz0, FL_T, wz1 - wz0, fc=C_ALUM, lw=1.2, zorder=6)

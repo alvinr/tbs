@@ -1157,11 +1157,14 @@ def evap_cooler():
                                EVAP_DUCT_D / 2, WALL_T + 10,
                                color=C_DUCT, axis="y"))
 
-    # Ø200 corrugated flex duct from the cooler outlet (top) up to the wall inlet.
+    # Ø200 corrugated flex duct: vertical riser off the cooler outlet, right-angle
+    # elbow, then horizontal into the wall inlet (orthogonal, per pipe convention).
     cooler_top = (EVAP_DUCT_X, ext - 100 - cd / 2, ch)
+    elbow_pt = (EVAP_DUCT_X, ext - 100 - cd / 2, EVAP_DUCT_Z)
     wall_mouth = (EVAP_DUCT_X, ext - 5, EVAP_DUCT_Z)
-    parts.append(ruby_flex_duct("Evap Flex Duct", cooler_top, wall_mouth,
-                                EVAP_DUCT_D / 2, color=C_DUCT))
+    parts.append(ruby_flex_run("Evap Flex Duct",
+                               [cooler_top, elbow_pt, wall_mouth],
+                               EVAP_DUCT_D / 2, color=C_DUCT))
 
     return '\n'.join(parts)
 
@@ -1381,6 +1384,42 @@ def ruby_pipe_run(name, waypoints, r, color=None, alpha=None,
         normal = _vunit(_vcross(d_in, d_out))
         if _vlen(_vsub(A, start)) > 0.5:
             out.append(ruby_pipe(name, start, A, r, color, alpha, n))
+        out.append(ruby_elbow(name + " elbow", A, O, Rc, normal, d_in, theta,
+                              r, color, alpha, n, seg))
+        start = B
+    return '\n'.join(out)
+
+
+def ruby_flex_run(name, waypoints, r, color=None, alpha=None,
+                  elbow_r=None, n=16, seg=8):
+    """Like ruby_pipe_run but the straight legs are corrugated flex duct
+    (ruby_flex_duct); bends use the same swept-torus elbow fitting so the run
+    stays orthogonal (per skill_plumbing_drawing) — right-angle connections."""
+    R = elbow_r if elbow_r is not None else 2.0 * r
+    V = [tuple(float(c) for c in p) for p in waypoints]
+    out = []
+    start = V[0]
+    for i in range(1, len(V)):
+        if i == len(V) - 1:
+            if _vlen(_vsub(V[i], start)) > 0.5:
+                out.append(ruby_flex_duct(name, start, V[i], r, color, alpha))
+            break
+        d_in = _vunit(_vsub(V[i], V[i-1]))
+        d_out = _vunit(_vsub(V[i+1], V[i]))
+        theta = math.acos(max(-1.0, min(1.0, _vdot(d_in, d_out))))
+        if theta < 1e-3:
+            continue
+        T = R * math.tan(theta / 2.0)
+        T = min(T, _vlen(_vsub(V[i], start)) * 0.49,
+                _vlen(_vsub(V[i+1], V[i])) * 0.49)
+        Rc = T / math.tan(theta / 2.0)
+        A = _vadd(V[i], _vscale(d_in, -T))
+        B = _vadd(V[i], _vscale(d_out, T))
+        n_in = _vunit(_vsub(d_out, _vscale(d_in, _vdot(d_out, d_in))))
+        O = _vadd(A, _vscale(n_in, Rc))
+        normal = _vunit(_vcross(d_in, d_out))
+        if _vlen(_vsub(A, start)) > 0.5:
+            out.append(ruby_flex_duct(name, start, A, r, color, alpha))
         out.append(ruby_elbow(name + " elbow", A, O, Rc, normal, d_in, theta,
                               r, color, alpha, n, seg))
         start = B

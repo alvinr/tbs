@@ -743,30 +743,15 @@ def draw_sheet2():
                   FLANGE_W, FLANGE_T,
                   fc="#B0B0B8", ec=C_FRAME, lw=1.2, zorder=7))
 
-    # U-bolt wrapping over socket housing
-    ubolt_gap = 2
-    ubolt_t = 4
-    ubolt_l = bj_yd - SOCKET_OD / 2 - ubolt_gap - ubolt_t
-    ubolt_r = bj_yd + SOCKET_OD / 2 + ubolt_gap + ubolt_t
-
-    ub_arc = np.linspace(0, np.pi, 30)
-    ub_arc_r = (ubolt_r - ubolt_l) / 2
-    ub_arc_cz = socket_bot_z + SOCKET_H * 0.6
-    ub_arc_yd = bj_yd + ub_arc_r * np.cos(ub_arc)
-    ub_arc_z = ub_arc_cz + ub_arc_r * 0.45 * np.sin(ub_arc)
-    ax2.plot(list(ub_arc_yd), list(ub_arc_z),
-             color=C_BOLT, lw=2.5, zorder=9, solid_capstyle="round")
-
-    ax2.plot([ubolt_l + ubolt_t / 2, ubolt_l + ubolt_t / 2],
-             [ub_arc_cz, BEAM_Z_TOP - 3],
-             color=C_BOLT, lw=2.5, zorder=9)
-    ax2.plot([ubolt_r - ubolt_t / 2, ubolt_r - ubolt_t / 2],
-             [ub_arc_cz, BEAM_Z_TOP - 3],
-             color=C_BOLT, lw=2.5, zorder=9)
-
-    for nut_yd in [ubolt_l + ubolt_t / 2, ubolt_r - ubolt_t / 2]:
-        ax2.add_patch(Rectangle((nut_yd - 5, BEAM_Z_TOP - 6), 10, 4,
-                     fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=10))
+    # Flange fastened with self-tapping screws into the beam top wall (no internal
+    # access for nuts) — nothing overhangs the ball, so the arm pivots freely
+    for scr_yd in (bj_yd - 19.5, bj_yd + 19.5):
+        # shank: through the flange + threaded into the beam top wall
+        ax2.add_patch(Rectangle((scr_yd - 1.6, BEAM_Z_TOP - BEAM_T), 3.2,
+                      FLANGE_T + BEAM_T, fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
+        # pan head on top of the flange
+        ax2.add_patch(Rectangle((scr_yd - 3, BEAM_Z_TOP + FLANGE_T), 6, 2.5,
+                      fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=9))
 
     # Socket housing
     ax2.add_patch(Rectangle((bj_yd - SOCKET_OD / 2, socket_bot_z),
@@ -854,12 +839,12 @@ def draw_sheet2():
     # ── Labels ───────────────────────────────────────────────────────────
     leader(ax2, bj_yd - SOCKET_OD / 2, ball_ctr_z,
            bj_yd - SOCKET_OD / 2 - 20, ball_ctr_z - 30,
-           f"Ø{BALL_DIA}mm BALL JOINT\n(U-BOLT TO BEAM)",
+           f"Ø{BALL_DIA}mm FLANGE-BASE\nBALL JOINT",
            fs=5, color=C_JOINT, font=FONT, zorder=20)
 
-    leader(ax2, ubolt_l, ub_arc_cz,
-           ubolt_l - 22, ub_arc_cz - 8,
-           "M8 SS U-BOLT\n+ NYLOC NUTS",
+    leader(ax2, bj_yd - 19.5, BEAM_Z_TOP + FLANGE_T,
+           bj_yd - 19.5 - 24, BEAM_Z_TOP - 6,
+           "4× SELF-TAPPING\nSCREW (FLANGE\n-> BEAM TOP WALL)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
     leader(ax2, bj_yd - ARM_OD / 2 - 8, pinch_z,

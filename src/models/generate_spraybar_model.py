@@ -295,14 +295,16 @@ def build_feed_pole():
         nt = max(1, int(round(seg_l / 200)))
         for s in range(nt):
             t = (s + 0.5) / nt
-            cyz = (cx + hoff / 2, q1[1] + t * dd[1], q1[2] + t * dd[2])
+            # loop centred on the combined bundle (shifted toward the larger pole),
+            # with enough perpendicular radius to clear the Ø25 arm tube
+            cyz = (cx + 8, q1[1] + t * dd[1], q1[2] + t * dd[2])
             loop = []
-            for k in range(8):
-                th = 2 * math.pi * k / 8
-                ca, sb = 22 * math.cos(th), 13 * math.sin(th)
+            for k in range(10):
+                th = 2 * math.pi * k / 10
+                ca, sb = 23 * math.cos(th), 16.5 * math.sin(th)
                 loop.append((cyz[0] + ca, cyz[1] + sb * vh[1], cyz[2] + sb * vh[2]))
-            for k in range(8):
-                parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 8], 1.2,
+            for k in range(10):
+                parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 10], 1.2,
                                           color="#888888", n=6))
     # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
     # the ball joint detour along the beam BACK edge so they go AROUND the socket —

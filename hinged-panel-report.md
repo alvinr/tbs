@@ -198,11 +198,18 @@ panel bottom edge and the container floor. This gap clears the 50mm processing t
 rim with 30mm margin, allowing the panel to slide freely in both directions without
 contacting the tray.
 
+The 80mm gap would otherwise be a straight light path, so it is light-sealed in the
+operational position by the fixed-frame bottom seal lip described in §6 (path #6) —
+a threshold upstand the panel bottom edge recedes into, with an EPDM strip compressed
+by the lower cam latches. Because the seal is a non-floor compression seal against a
+frame lip (not a contact seal to the floor), it never fouls the tray rim and lifts
+clear the moment the clamps are released for transport.
+
 ---
 
 ## 6. Light Seal Design
 
-The sliding mechanism introduces five potential light ingress paths that must be
+The sliding mechanism introduces six potential light ingress paths that must be
 sealed when the panel is in the operational position.
 
 | # | Light path | Seal method |
@@ -212,6 +219,7 @@ sealed when the panel is in the operational position.
 | 3 | Right guide slot | Matching doubled nylon brush strip (~70 × 2400mm slot), same treatment as left slot |
 | 4 | Rail channels at floor/ceiling (×4) | 10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration |
 | 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
+| 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the full panel-bottom width and **notched around the drum** (the drum carries its own floor seals). The lip closes the floor gap as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -232,6 +240,7 @@ for the sliding carriage.
 | Attachment | Welded to container end wall structural members |
 | Slots | 2 × vertical (~70 × 2400mm) for carriage beam and right-side guide |
 | Rail penetrations | 4 × (floor and ceiling, both walls) sealed by neoprene pads |
+| Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, ~110mm tall, full panel-bottom width, notched around the drum — the EPDM bottom seal compresses against it (see §6 path #6) |
 
 ---
 
@@ -284,8 +293,9 @@ for the sliding carriage.
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 | $90–$120 |
+| 3mm steel plate/angle (~110mm × ~2 m) | Bottom seal lip — threshold upstand, notched around drum (light path #6) | 1 | $25–$45 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 | $200–$350 |
-| **Door frame subtotal** | | | **$290–$470** |
+| **Door frame subtotal** | | | **$315–$515** |
 
 ### 8.5 Cost Summary
 
@@ -294,8 +304,8 @@ for the sliding carriage.
 | Panel structure | $575 | $895 |
 | Revolving drum | $1,265 | $1,865 |
 | Sliding carriage | $365 | $585 |
-| Fixed door frame | $290 | $470 |
-| **Total** | **$2,495** | **$3,815** |
+| Fixed door frame | $315 | $515 |
+| **Total** | **$2,520** | **$3,860** |
 
 ---
 

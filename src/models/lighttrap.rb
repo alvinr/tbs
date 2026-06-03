@@ -133,6 +133,28 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Door Frame bottom seal lip L
+  grp = ents.add_group
+  grp.name = "Door Frame bottom seal lip L"
+  face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,791.mm,0.mm], [-32.mm,791.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(110.mm)
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame bottom seal lip R
+  grp = ents.add_group
+  grp.name = "Door Frame bottom seal lip R"
+  face = grp.entities.add_face([-32.mm,1571.mm,0.mm], [-20.mm,1571.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(110.mm)
+  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Fixed Door Frame"
   inst.layer = model.layers["Door Frame"]

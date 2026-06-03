@@ -1763,6 +1763,17 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Feed Manifold
+  grp = ents.add_group
+  grp.name = "Feed Manifold"
+  face = grp.entities.add_face([2419.5.mm,1166.mm,64.mm], [2455.5.mm,1166.mm,64.mm], [2455.5.mm,1194.mm,64.mm], [2419.5.mm,1194.mm,64.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Feed Hose (upper)
   grp = ents.add_group
   grp.name = "Feed Hose (upper)"
@@ -1772,7 +1783,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1781,37 +1792,26 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Feed Hose (lower)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 500.mm, -432.5.mm)
+  vec = Geom::Vector3d.new(16.mm, 500.mm, -417.5.mm)
   circle = ge.add_circle([2421.5.mm,680.mm,525.5.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Feed Manifold
+  # Feed Hose Drop
   grp = ents.add_group
-  grp.name = "Feed Manifold"
-  face = grp.entities.add_face([2419.5.mm,1166.mm,64.mm], [2455.5.mm,1166.mm,64.mm], [2455.5.mm,1194.mm,64.mm], [2419.5.mm,1194.mm,64.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Hose to Manifold
-  grp = ents.add_group
-  grp.name = "Feed Hose to Manifold"
+  grp.name = "Feed Hose Drop"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.mm, 0.mm, -11.mm)
-  circle = ge.add_circle([2421.5.mm,1180.mm,93.mm], vec, 8.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -26.mm)
+  circle = ge.add_circle([2437.5.mm,1180.mm,108.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1825,7 +1825,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1852,7 +1852,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1879,7 +1879,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1906,7 +1906,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1933,7 +1933,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1960,7 +1960,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -1987,7 +1987,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat

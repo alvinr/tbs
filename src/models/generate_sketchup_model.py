@@ -1183,10 +1183,11 @@ def fans():
     r, bd = FAN_DIAM / 2, FAN_BODY_D          # Ø150, 50mm fan body
     dd, dh = DUCT_DEPTH, DUCT_HEIGHT          # 300 deep (axis), 200 tall (Z)
     dw = DUCT_HEIGHT                          # 200 wide (Yd) — square section
-    bf, bft = 125, 8                          # baffle plates: 125 tall (leaves a 75mm airflow
-                                              # gap top/bottom) × FULL duct width (Yd) so they
-                                              # seal to both side walls — light-safe S-path
-                                              # that still passes air through the offset gaps
+    bf, bft = 125, 8                          # baffle plates: FULL height (Z, welded top +
+                                              # bottom) × 125 wide (Yd) — leaves a 75mm airflow
+                                              # gap on one SIDE; the two plates take opposite
+                                              # sides so air winds left↔right (horizontal S-path)
+                                              # while the overlap blocks the line of sight
     parts = []
 
     flo, flt = 30, 5                          # flange overhang past the duct, + plate thickness
@@ -1199,11 +1200,12 @@ def fans():
         x0 = min(wall_x, mouth_x)
         out = [ruby_box(f"{tag} baffle duct", x0, yc - dw / 2, zc - dh / 2,
                         dd, dw, dh, color=C_DUCT, alpha=0.5)]
-        # baffle plates — full duct width (sealed to both side walls), offset top/bottom
+        # baffle plates — full height (welded top + bottom), offset left/right in Yd,
+        # leaving a 75mm airflow gap on one side each (horizontal S-path)
         out.append(ruby_box(f"{tag} baffle plate 1", x0 + dd / 3 - bft / 2,
-                            yc - dw / 2, zc - dh / 2, bft, dw, bf, color=C_FAN))
+                            yc - dw / 2, zc - dh / 2, bft, bf, dh, color=C_FAN))
         out.append(ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
-                            yc - dw / 2, zc + dh / 2 - bf, bft, dw, bf, color=C_FAN))
+                            yc + dw / 2 - bf, zc - dh / 2, bft, bf, dh, color=C_FAN))
         # fan disk at the interior mouth, body inside the duct
         fan_face = mouth_x if ext > 0 else mouth_x - bd
         out.append(ruby_cylinder(tag, fan_face, yc, zc, r, bd, color=C_FAN, axis="x"))

@@ -256,13 +256,33 @@ def build_feed_pole():
     parts.append(ov.ruby_cylinder("Pole Handle",
                                   cx - 90, op_y, op_z, 9, 180, color=C_STEEL, axis="x"))
 
-    # ── water feed hose, zip-tied along the pole, into the beam-centre poly pipe ──
+    # ── water feed: the blue hose runs down the pole and terminates at a manifold
+    #    by the ball joint; a series of irrigation tubes branch from it along the
+    #    beam top to feed points, each barbed through the beam wall into the
+    #    internal poly pipe (per Sheet 7 connection detail) ──
     parts.append(ov.ruby_pipe("Feed Hose (upper)",
                               (cx + 22, op_y, op_z), (cx + 22, mid_y, mid_z), 8, color=C_WATER))
     parts.append(ov.ruby_pipe("Feed Hose (lower)",
-                              (cx + 22, mid_y, mid_z), (cx + 22, by - 10, ball_z + 12), 8, color=C_WATER))
-    parts.append(ov.ruby_pipe("Feed Hose into Pipe",
-                              (cx + 22, by - 10, ball_z + 12), (cx - 70, by, ZB + S / 2), 8, color=C_WATER))
+                              (cx + 22, mid_y, mid_z), (cx + 22, by, ball_z + 12), 8, color=C_WATER))
+    # distribution manifold on the beam top, beside the ball joint
+    man_cx, man_z = cx + 38, ZT + 4
+    parts.append(ov.ruby_box("Feed Manifold",
+                             man_cx - 18, by - 14, man_z, 36, 28, 18, color=C_WATER))
+    parts.append(ov.ruby_pipe("Feed Hose to Manifold",
+                              (cx + 22, by, ball_z + 12), (man_cx, by, man_z + 18), 8,
+                              color=C_WATER))
+    # irrigation tubes + barbed fittings into the poly pipe
+    nfeed = 7
+    bore_cz = ZB + S / 2
+    for i in range(nfeed):
+        fx = XL + (i + 0.5) / nfeed * (XR - XL)
+        ty = by + (i - (nfeed - 1) / 2) * 3          # slight Yd spread to separate tubes
+        parts.append(ov.ruby_pipe("Feed Tube",
+                                  (man_cx, ty, man_z + 9), (fx, ty, ZT + 6), 3.5,
+                                  color=C_WATER))
+        parts.append(ov.ruby_cylinder("Feed Barb Fitting",
+                                      fx, ty, bore_cz - 2, 4, (ZT + 6) - (bore_cz - 2),
+                                      color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
 

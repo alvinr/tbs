@@ -339,16 +339,24 @@ def draw_sheet1():
     ax.plot(hose_xs, hose_zs, color=C_HOSE, lw=2.0, alpha=0.7, zorder=11)
 
     ax.text(BV02_X + 75, bv_z - 60,
-            "1/2\" FLEX HOSE\n-> CENTER FEED\n(4m COILED)",
+            "1/2\" FLEX HOSE\n-> MANIFOLD\n(4m COILED)",
             ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
-    # ── Center feed fitting at beam center ───────────────────────────────
-    feed_dot_r = 8
-    ax.add_patch(Circle((pole_x, BEAM_Z_TOP), feed_dot_r,
+    # ── Distribution manifold at the ball joint → irrigation feed tubes ──
+    man_w, man_h = 50, 12
+    ax.add_patch(Rectangle((pole_x - man_w / 2, BEAM_Z_TOP + 2), man_w, man_h,
                  fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=12))
-    leader(ax, pole_x + feed_dot_r, BEAM_Z_TOP + feed_dot_r,
+    # irrigation tube stubs fanning along the beam top to barbed feed points
+    for dx in (-1400, -900, -450, 450, 900, 1400):
+        fxp = pole_x + dx
+        if beam_x_l < fxp < beam_vis_r:
+            ax.plot([pole_x, fxp], [BEAM_Z_TOP + 8, BEAM_Z_TOP + 3],
+                    color=C_HOSE, lw=1.0, alpha=0.8, zorder=11)
+            ax.add_patch(Circle((fxp, BEAM_Z_TOP), 4,
+                         fc="#3B7A3B", ec=C_FRAME, lw=0.5, zorder=12))
+    leader(ax, pole_x + man_w / 2, BEAM_Z_TOP + 8,
            pole_x + 350, BEAM_Z_TOP + 40,
-           "1/2\" BARBED CENTER FEED",
+           "MANIFOLD -> 7 IRRIGATION\nFEED TUBES (see Sheet 7)",
            fs=4.5, color="#C0A860", font=FONT, zorder=15)
 
     # ── Centerline through beam and slit ─────────────────────────────────
@@ -380,7 +388,7 @@ def draw_sheet1():
         f"1. 40×40×3mm AL SHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly pipe inside.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
         "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
-        "   → center feed barbed fitting.",
+        "   → manifold at ball joint → 7 irrigation tubes → barbed into poly pipe.",
         f"4. {N_NOZZLES}× irrigation flat-fan nozzles, barbed into poly pipe through beam.",
     ]
     draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)
@@ -1795,11 +1803,11 @@ def draw_sheet7():
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_cf, HOSE_BARB_OD / 2 + 1.5, hbarb_bot + HOSE_BARB_LEN / 2,
            d_xr - 5, hbarb_bot + HOSE_BARB_LEN / 2 + 3,
-           "1/2\" HOSE BARB",
+           "TUBE BARB",
            fs=5, color=C_BRASS, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_cf, HOSE_OD / 2, hose_top - 3,
            d_xr - 5, hose_top,
-           "1/2\" FLEX HOSE",
+           "IRRIGATION TUBE\n(FROM MANIFOLD)",
            fs=5, color=C_HOSE, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_cf, -WASHER_OD / 2, washer_bot + WASHER_T / 2,
            d_xl + 5, beam_top + 3,
@@ -1823,10 +1831,10 @@ def draw_sheet7():
     draw_dim_v(ax_cf, d_xl + 15, poly_top, bore_top,
                f"{gap_top:.1f}\nGAP", offset=2, fs=4, font=FONT)
 
-    ax_cf.text(0, d_yt - 1, "CENTER FEED CONNECTION",
+    ax_cf.text(0, d_yt - 1, "FEED CONNECTION (TYP. ×7)",
                ha="center", va="top", fontsize=7, color="#CC6600",
                fontweight="bold", **FONT, zorder=20)
-    ax_cf.text(0, d_yt - 5, "(SECTION THROUGH BEAM TOP)",
+    ax_cf.text(0, d_yt - 5, "(MANIFOLD-FED — SECTION THROUGH BEAM TOP)",
                ha="center", va="top", fontsize=5, color=C_DIM,
                **FONT, zorder=20)
 
@@ -1974,7 +1982,7 @@ def draw_sheet7():
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 7 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL B — CENTER FEED & NOZZLE CONNECTIONS",
+                subtitle="DETAIL B — MANIFOLD FEED & NOZZLE CONNECTIONS",
                 scale_note="SCALE 2:1 — AXES IN mm",
                 height=0.7)
 

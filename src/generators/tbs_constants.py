@@ -551,7 +551,7 @@ SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 # 2" NPT bulkhead unions through container far end wall (X=C_LEN face).
 # Flat steel reinforcing plate welded over corrugation before drilling.
 # External plumbing panel — 3 ports (X1/X3/X4) stacked vertically on end wall centerline
-# IBC-2 fills via 2" cross-connect from IBC-1 (self-leveling, no valve, no X2 port)
+# X1 fill tees internally to BOTH Blue totes (parallel fill, no X2 port, no cross-connect)
 EXT_PANEL_YD = C_WID // 2   # = 1181mm — panel centered on container width
 EXT_FILL_1_H = 2250    # X1: fill Blue IBC-1 port height (mm) — above top-tier IBC top (2082mm), gravity feed
 EXT_DRAIN_3_H = 400    # X3: drain Brown IBC-3 port height (mm) — bottom tier near

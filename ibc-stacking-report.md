@@ -47,7 +47,7 @@ panel.
 | Tote | Position | Circuit | Function |
 |------|----------|---------|----------|
 | IBC-1 | Top tier, near column | Blue (clean supply) | Primary clean water supply for spray bar |
-| IBC-2 | Top tier, far column | Blue (clean supply) | Secondary supply, self-levels via 2" cross-connect from IBC-1 |
+| IBC-2 | Top tier, far column | Blue (clean supply) | Secondary supply, filled in parallel with IBC-1 from the X1 fill tee |
 | IBC-3 | Bottom tier, near column | Brown (recycled) | Wash water buffer — filtered and recycled back to Blue |
 | IBC-4 | Bottom tier, far column | Black (waste) | Contaminated water sealed for off-site disposal |
 
@@ -214,7 +214,7 @@ doors.
 
 | Port | Height (Z) | Circuit | Function |
 |------|-----------|---------|----------|
-| X1 | 2250mm | Blue | Fill IBC-1 — above IBC tops (2082mm) for gravity feed; IBC-2 self-levels via 2" cross-connect |
+| X1 | 2250mm | Blue | Fill — above IBC tops (2082mm) for gravity feed; an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes |
 | X3 | 400mm | Brown | Drain IBC-3 — bottom tier, near column |
 | X4 | 200mm | Waste | Drain IBC-4 — bottom tier, far column |
 
@@ -226,7 +226,7 @@ doors.
 | Exterior fittings | Type DC camlock (2" aluminum) — quick-connect for fill/drain hose |
 | Reinforcing plate | 6mm mild steel, ~300mm wide, welded to wall interior before penetrations |
 | Seal | Neoprene gasket — light-tight and watertight |
-| IBC-2 fill | No dedicated port — self-levels from IBC-1 via permanently open 2" cross-connect at valve height |
+| IBC-2 fill | No dedicated external port — fed in parallel with IBC-1 from the internal X1 fill tee (one external hose still fills both) |
 
 ---
 
@@ -239,7 +239,7 @@ doors.
 | Material | 1" HDPE SDR-11 (33.4mm OD, 3mm wall) |
 | Elbows | Banjo LE100, 1" HDPE NPT, 90° |
 | Ball valves | Banjo V100FP, 1" full-port poly, quarter-turn |
-| Cross-connect | 2" HDPE pipe, IBC-1 ↔ IBC-2 (self-leveling, permanently open, no valve) |
+| Fill tee | 1" HDPE equal tee (Banjo TEE100) behind the panel-frame top rail — splits X1 to both Blue totes |
 
 ### 7.2 Pipe Routing
 
@@ -249,10 +249,9 @@ thread).
 
 | Pipe | Route | Notes |
 |------|-------|-------|
-| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → IBC-1 fill cap (DN150, from top) | Gravity feed from Z=2250mm |
-| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → corridor → end wall bulkhead | Gravity drain at Z=400mm |
-| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → corridor → end wall bulkhead | Gravity drain at Z=200mm |
-| Cross-connect | IBC-1 valve height → IBC-2 valve height | 2" pipe, self-leveling, no valve |
+| X1 fill (Blue) | End wall bulkhead → corridor → V1 ball valve → tee (behind frame top rail) → both IBC-1 & IBC-2 fill caps (DN150, from top) | Gravity feed from Z=2250mm; fills both Blue totes in parallel |
+| X3 drain (Brown) | IBC-3 DN50 valve → V3 ball valve → behind frame → corridor → end wall bulkhead | Gravity drain at Z=400mm |
+| X4 drain (Waste) | IBC-4 DN50 valve → V4 ball valve → behind frame → corridor → end wall bulkhead | Gravity drain at Z=200mm |
 
 ### 7.3 Equipment Panel
 

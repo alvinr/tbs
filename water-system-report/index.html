@@ -2771,7 +2771,7 @@ IBC-2 (600L) ──┘                                                      │
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: gantry design — 40×40×3mm aluminum SHS beam spanning the open processing area (3859mm) between walkway inner edges, with wheel carriages rolling on the tray floor beneath walkway grating. Beam bore serves as spray pipe (no separate HDPE tube). See §3.5 for full mechanical design</li>
-<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed to IBC-1, no pump required. IBC-2 self-levels via permanently open 2" cross-connect at valve height. Remote resupply from water bowser or tanker (no cargo door access required)</li>
+<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline (Yd=1181mm) at Z=2250mm — positioned above IBC tops (Z=2082mm) for gravity feed, no pump required. Inside, an internal tee (behind the panel-support-frame top rail) splits X1 to BOTH Blue totes, filling them in parallel — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="52-brown-system-used-water-recycling">5.2 Brown System — Used Water Recycling<a class="headerlink" href="#52-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Processing tray sump (P-04 suction pickup)
@@ -2971,7 +2971,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>External fill line (X1 bulkhead → IBC-1)</td>
+<td>External fill line (X1 bulkhead → tee → both Blue totes)</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
 <td>50 PSI min</td>
@@ -2985,9 +2985,9 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>HDPE</td>
 </tr>
 <tr>
-<td>IBC-1 ↔ IBC-2 cross-connect</td>
-<td>Sch 40</td>
-<td>2" nominal (OD 60mm)</td>
+<td>X1 fill tee (splits to IBC-1 &amp; IBC-2)</td>
+<td>—</td>
+<td>1" HDPE equal tee (Banjo TEE100)</td>
 <td>50 PSI min</td>
 <td>HDPE</td>
 </tr>
@@ -3203,7 +3203,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p>A single fill port (X1) feeds IBC-1 directly. IBC-2 self-levels via a permanently open 2" cross-connect pipe between the two Blue IBCs at valve height (~Z=1195mm), running through the 270mm plumbing corridor. This eliminates the second fill port and simplifies external connections — only one hose is needed for filling.</p>
+<p>A single external fill port (X1) feeds an internal 1" tee set behind the panel-support-frame top rail, which splits the flow to BOTH Blue IBCs (each branch drops straight into its fill cap). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe. (This matches the 3D model routing.)</p>
 <p>This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.</p>
 <hr />
 <h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
@@ -3509,12 +3509,12 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td><strong>$12–$18</strong></td>
 </tr>
 <tr>
-<td><a href="https://www.ferguson.com">2" SDR-11 HDPE pipe</a></td>
-<td>IBC-1 ↔ IBC-2 cross-connect (~300mm needed, remainder spare). 20 ft stick</td>
-<td>1 stick (20 ft)</td>
-<td>Ferguson</td>
-<td>$18–$28/stick</td>
-<td><strong>$18–$28</strong></td>
+<td><a href="https://www.amazon.com/s?k=Banjo+TEE100+polypropylene+tee+1+inch">Banjo TEE100 equal tee, 1" HDPE NPT</a></td>
+<td>X1 fill tee — splits the fill to both Blue totes (replaces the 2" cross-connect)</td>
+<td>1</td>
+<td>Amazon</td>
+<td>$4–$6</td>
+<td><strong>$4–$6</strong></td>
 </tr>
 <tr>
 <td><a href="https://www.ferguson.com">3/4" SDR-11 HDPE pipe</a></td>

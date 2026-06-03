@@ -2602,6 +2602,230 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-315.mm,800.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-298.125.mm,868.75.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-281.25.mm,937.5.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-264.375.mm,1006.25.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-247.5.mm,1075.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-230.625.mm,1143.75.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-213.75.mm,1212.5.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-196.875.mm,1281.25.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-180.mm,1350.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-163.125.mm,1418.75.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-146.25.mm,1487.5.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-129.375.mm,1556.25.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-112.5.mm,1625.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-95.625.mm,1693.75.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-78.75.mm,1762.5.mm], vec, 100.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Evap Flex Duct
+  grp = ents.add_group
+  grp.name = "Evap Flex Duct"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 16.875.mm, 68.75.mm)
+  circle = ge.add_circle([1000.mm,-61.875.mm,1831.25.mm], vec, 80.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cold-Air Duct Inlet (Ø200)"] || model.materials.add("Cold-Air Duct Inlet (Ø200)")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Evap Cooler & Duct"
   inst.layer = model.layers["Evap Cooler"]

@@ -847,17 +847,17 @@ def sheet3():
     H_HANDLE   = H_BRG_BOT + DRUM_H * 0.45  # handle height = ~1000mm
 
     # ── Data range → figure size ──────────────────────────────────────────────
-    PAD_L, PAD_R = 300, 700   # depth-axis margins
+    PAD_L, PAD_R = 300, 1380  # depth-axis margins (right margin holds Detail B)
     PAD_B, PAD_T = 500, 350   # height-axis margins (bottom includes title block + rail annotations)
 
     X_LO = D_DEPTH_L - PAD_L   # = -595mm
-    X_HI = D_DEPTH_R + PAD_R   # = 1155mm  → width 1750mm
+    X_HI = D_DEPTH_R + PAD_R   # = 1835mm  → width 2430mm
     Y_LO = H_FLOOR - PAD_B     # = -150mm
     Y_HI = H_BRG_TOP + PAD_T   # = 2450mm  → height 2600mm
 
-    # Data ratio: 1750 : 2600 = 0.673 : 1
+    # Data ratio: 2430 : 2600
     FIG_H = 14.0
-    FIG_W = FIG_H * (X_HI - X_LO) / (Y_HI - Y_LO)  # = 14 * 1750/2600 = 9.42in
+    FIG_W = FIG_H * (X_HI - X_LO) / (Y_HI - Y_LO)
 
     fig, ax = plt.subplots(figsize=(FIG_W, FIG_H), dpi=130)
     fig.patch.set_facecolor(BG)
@@ -1193,6 +1193,79 @@ def sheet3():
     HANDLE_BOT = H_HANDLE - HH / 2   # bottom of handle bar
     dim_v(ax, HANDLE_DIM_X/2 + DRUM_D, H_FLOOR, HANDLE_BOT,
           f"{int(HANDLE_BOT)}mm\nHANDLE HT", offset=-60, fs=6)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # DETAIL B — Panel bottom light seal (enlarged), section at a corner zone
+    # (away from the drum). The 80mm floor gap is closed in the operational
+    # ("camera") position by a fixed-frame seal lip the panel bottom edge recedes
+    # into; a 20mm EPDM strip is compressed against it by the lower cam latches.
+    # ══════════════════════════════════════════════════════════════════════════
+    k = 3.3
+    ox, oy = 980, 300
+    def DX(d): return ox + k * d
+    def DY(h): return oy + k * h
+
+    bx0, bx1 = DX(-98), DX(178)
+    by0, by1 = DY(-28), DY(182)
+    ax.add_patch(Rectangle((bx0, by0), bx1 - bx0, by1 - by0,
+                           fc="#FBFBFD", ec=C_DIM, lw=1.0, ls=(0, (5, 3)), zorder=2))
+    ax.text((bx0 + bx1) / 2, by1 + 34, "DETAIL B — PANEL BOTTOM SEAL",
+            ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
+    ax.text((bx0 + bx1) / 2, by1 + 10,
+            "operational / “camera” position  ·  section at corner zone  ·  enlarged ~3.3:1",
+            ha="center", va="bottom", fontsize=6.4, color=C_DIM, **FONT)
+    ax.text(DX(-90), DY(150), "EXTERIOR", fontsize=6, color="#5060A0",
+            ha="left", va="center", fontweight="bold", **FONT)
+    ax.text(DX(170), DY(150), "INTERIOR", fontsize=6, color="#407040",
+            ha="right", va="center", fontweight="bold", **FONT)
+
+    # floor + hatch below
+    ax.add_patch(Rectangle((bx0, DY(-28)), bx1 - bx0, DY(0) - DY(-28),
+                           fc="#ECECEC", ec="none", hatch="////", lw=0, zorder=19))
+    ax.plot([bx0, bx1], [DY(0), DY(0)], color=C_OUT, lw=2.2, zorder=22)
+
+    # door-frame threshold (50×50 RHS), seal lip, EPDM, panel corner zone, tray rim
+    ax.add_patch(Rectangle((DX(-50), DY(0)), k * 50, k * 50,
+                           fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=21))
+    ax.add_patch(Rectangle((DX(-32), DY(0)), k * 12, k * 110,
+                           fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=23))
+    ax.add_patch(Rectangle((DX(-20), DY(80)), k * 20, k * 40,
+                           fc=C_GASKT, ec=C_OUT, lw=1.0, zorder=24))
+    ax.add_patch(Rectangle((DX(0), DY(80)), k * 40, k * 100,
+                           fc=C_ALUM, ec=C_OUT, lw=1.3, zorder=22))
+    ax.add_patch(Rectangle((DX(70), DY(0)), k * 9, k * 50,
+                           fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=21))
+
+    # exterior light ray blocked by the lip
+    ax.annotate("", xy=(DX(-33), DY(38)), xytext=(DX(-92), DY(38)),
+                arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.6), zorder=25)
+    ax.plot([DX(-30)], [DY(38)], marker="x", ms=7, mew=2.2, color="#C02020", zorder=26)
+    ax.text(DX(-92), DY(62), "ext. light\nblocked by lip", fontsize=5.8,
+            color="#A05000", ha="left", va="center", **FONT)
+
+    # cam-latch compression (panel pulled onto the seal)
+    ax.annotate("", xy=(DX(2), DY(158)), xytext=(DX(34), DY(158)),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=1.8), zorder=25)
+
+    # floor-gap dimension (interior side, clear lane)
+    ax.annotate("", xy=(DX(52), DY(0)), xytext=(DX(52), DY(80)),
+                arrowprops=dict(arrowstyle="<->", color=C_DIM, lw=1.0), zorder=25)
+    ax.text(DX(56), DY(40), "80 mm\nfloor gap", fontsize=5.8, color=C_DIM,
+            ha="left", va="center", **FONT)
+
+    # callout labels (right side, leaders pointing into the detail)
+    def dlbl(target, ty, text):
+        tx = DX(92)
+        ax.annotate("", xy=target, xytext=(tx - 6, ty),
+                    arrowprops=dict(arrowstyle="-", color=C_DIM, lw=0.8,
+                                    shrinkA=1, shrinkB=1), zorder=24)
+        ax.text(tx, ty, text, fontsize=6.0, color=C_DIM, ha="left", va="center", **FONT)
+    dlbl((DX(20), DY(165)), DY(172), "Cam latch compresses panel\nonto seal (release to slide)")
+    dlbl((DX(20), DY(120)), DY(138), "Panel bottom edge\n(40 mm corner zone)")
+    dlbl((DX(-10), DY(100)), DY(108), "20 mm EPDM — panel\nrecedes into / seals on lip")
+    dlbl((DX(-26), DY(64)), DY(74), "Frame seal lip — steel upstand\nfrom threshold (notched at drum)")
+    dlbl((DX(-40), DY(22)), DY(34), "Fixed door-frame\nthreshold (50×50 RHS)")
+    dlbl((DX(74), DY(28)), DY(6), "50 mm tray rim —\n30 mm clearance")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
     title_block(ax, "SHEET 3 OF 4",

@@ -122,7 +122,7 @@ end
   # Walkway Near (left section)
   grp = ents.add_group
   grp.name = "Walkway Near (left section)"
-  face = grp.entities.add_face([470.mm,0.mm,50.mm], [1155.mm,0.mm,50.mm], [1155.mm,300.mm,50.mm], [470.mm,300.mm,50.mm])
+  face = grp.entities.add_face([470.mm,0.mm,65.mm], [1155.mm,0.mm,65.mm], [1155.mm,300.mm,65.mm], [470.mm,300.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -133,7 +133,7 @@ end
   # Walkway Near (widened)
   grp = ents.add_group
   grp.name = "Walkway Near (widened)"
-  face = grp.entities.add_face([1155.mm,0.mm,50.mm], [2629.mm,0.mm,50.mm], [2629.mm,500.mm,50.mm], [1155.mm,500.mm,50.mm])
+  face = grp.entities.add_face([1155.mm,0.mm,65.mm], [2629.mm,0.mm,65.mm], [2629.mm,500.mm,65.mm], [1155.mm,500.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -144,7 +144,7 @@ end
   # Walkway Near (right section)
   grp = ents.add_group
   grp.name = "Walkway Near (right section)"
-  face = grp.entities.add_face([2629.mm,0.mm,50.mm], [4329.mm,0.mm,50.mm], [4329.mm,300.mm,50.mm], [2629.mm,300.mm,50.mm])
+  face = grp.entities.add_face([2629.mm,0.mm,65.mm], [4329.mm,0.mm,65.mm], [4329.mm,300.mm,65.mm], [2629.mm,300.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -155,7 +155,7 @@ end
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([470.mm,2062.mm,50.mm], [4329.mm,2062.mm,50.mm], [4329.mm,2362.mm,50.mm], [470.mm,2362.mm,50.mm])
+  face = grp.entities.add_face([470.mm,2062.mm,65.mm], [4329.mm,2062.mm,65.mm], [4329.mm,2362.mm,65.mm], [470.mm,2362.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -166,7 +166,7 @@ end
   # Walkway Right (IBC end)
   grp = ents.add_group
   grp.name = "Walkway Right (IBC end)"
-  face = grp.entities.add_face([4329.mm,0.mm,50.mm], [4629.mm,0.mm,50.mm], [4629.mm,2362.mm,50.mm], [4329.mm,2362.mm,50.mm])
+  face = grp.entities.add_face([4329.mm,0.mm,65.mm], [4629.mm,0.mm,65.mm], [4629.mm,2362.mm,65.mm], [4329.mm,2362.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -177,7 +177,7 @@ end
   # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
   grp.name = "Walkway Left (REMOVABLE — transport)"
-  face = grp.entities.add_face([170.mm,0.mm,50.mm], [470.mm,0.mm,50.mm], [470.mm,2362.mm,50.mm], [170.mm,2362.mm,50.mm])
+  face = grp.entities.add_face([170.mm,0.mm,65.mm], [470.mm,0.mm,65.mm], [470.mm,2362.mm,65.mm], [170.mm,2362.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
@@ -685,7 +685,7 @@ end
   # Spray Bar Beam
   grp = ents.add_group
   grp.name = "Spray Bar Beam"
-  face = grp.entities.add_face([200.mm,1160.mm,10.mm], [4599.mm,1160.mm,10.mm], [4599.mm,1200.mm,10.mm], [200.mm,1200.mm,10.mm])
+  face = grp.entities.add_face([200.mm,1160.mm,20.mm], [4599.mm,1160.mm,20.mm], [4599.mm,1200.mm,20.mm], [200.mm,1200.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -696,7 +696,7 @@ end
   # Spray Bar Carriage
   grp = ents.add_group
   grp.name = "Spray Bar Carriage"
-  face = grp.entities.add_face([200.mm,1135.mm,5.mm], [250.mm,1135.mm,5.mm], [250.mm,1225.mm,5.mm], [200.mm,1225.mm,5.mm])
+  face = grp.entities.add_face([200.mm,1135.mm,15.mm], [250.mm,1135.mm,15.mm], [250.mm,1225.mm,15.mm], [200.mm,1225.mm,15.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(55.mm)
   mat = model.materials["Carriage L (HGH20CA)"] || model.materials.add("Carriage L (HGH20CA)")
@@ -707,7 +707,7 @@ end
   # Spray Bar Carriage
   grp = ents.add_group
   grp.name = "Spray Bar Carriage"
-  face = grp.entities.add_face([4549.mm,1135.mm,5.mm], [4599.mm,1135.mm,5.mm], [4599.mm,1225.mm,5.mm], [4549.mm,1225.mm,5.mm])
+  face = grp.entities.add_face([4549.mm,1135.mm,15.mm], [4599.mm,1135.mm,15.mm], [4599.mm,1225.mm,15.mm], [4549.mm,1225.mm,15.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(55.mm)
   mat = model.materials["Carriage L (HGH20CA)"] || model.materials.add("Carriage L (HGH20CA)")
@@ -2693,7 +2693,7 @@ end
   grp = ents.add_group
   grp.name = "Blue Supply Trunk (1/2in HDPE)"
   ge = grp.entities
-  circle = ge.add_circle([470.mm,12.mm,30.mm], [1,0,0], 10.5.mm, 24)
+  circle = ge.add_circle([470.mm,12.mm,40.mm], [1,0,0], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(4179.mm)
@@ -2706,10 +2706,10 @@ end
   grp = ents.add_group
   grp.name = "BV-02 Riser"
   ge = grp.entities
-  circle = ge.add_circle([2399.mm,12.mm,30.mm], [0,0,1], 10.5.mm, 24)
+  circle = ge.add_circle([2399.mm,12.mm,40.mm], [0,0,1], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(870.mm)
+  cface.pushpull(860.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -2730,10 +2730,10 @@ end
   grp = ents.add_group
   grp.name = "TAP-01 Riser (3/4in)"
   ge = grp.entities
-  circle = ge.add_circle([3729.mm,12.mm,30.mm], [0,0,1], 12.5.mm, 24)
+  circle = ge.add_circle([3729.mm,12.mm,40.mm], [0,0,1], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1120.mm)
+  cface.pushpull(1110.mm)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -3267,7 +3267,7 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 86.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
   circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3281,8 +3281,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.mm,80.mm,106.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4550.mm,80.mm,106.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  arc = ge.add_arc([4574.mm,80.mm,121.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,80.mm,121.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -3295,7 +3295,7 @@ end
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
   vec = Geom::Vector3d.new(23.460000000000036.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4574.mm,80.mm,130.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4574.mm,80.mm,145.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3308,8 +3308,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4597.46.mm,80.mm,107.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4597.46.mm,80.mm,130.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4597.46.mm,80.mm,122.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4597.46.mm,80.mm,145.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Waste Drain Hookup (2in NPT)"] || model.materials.add("Waste Drain Hookup (2in NPT)")
@@ -3321,8 +3321,8 @@ end
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -62.025000000000006.mm)
-  circle = ge.add_circle([4620.mm,80.mm,107.46000000000001.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -77.025.mm)
+  circle = ge.add_circle([4620.mm,80.mm,122.46000000000001.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3538,7 +3538,7 @@ end
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -1130.3.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -1135.2.mm, 0.mm)
   circle = ge.add_circle([4649.mm,1157.mm,60.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -3552,8 +3552,8 @@ end
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk elbow"
   ge = grp.entities
-  arc = ge.add_arc([4649.mm,26.7.mm,45.3.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4649.mm,26.7.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4649.mm,21.8.mm,50.199999999999996.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4649.mm,21.8.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Blue Supply Trunk (1/2in HDPE)"] || model.materials.add("Blue Supply Trunk (1/2in HDPE)")
@@ -3565,8 +3565,8 @@ end
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -15.299999999999997.mm)
-  circle = ge.add_circle([4649.mm,12.mm,45.3.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.200000000000003.mm)
+  circle = ge.add_circle([4649.mm,12.mm,50.2.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

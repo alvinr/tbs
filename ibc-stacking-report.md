@@ -69,27 +69,32 @@ panel.
 
 ### 3.1 General Arrangement
 
-The frame is a portal spine structure running along the 270mm plumbing corridor,
-with cantilever platform beams extending into each IBC column to support the upper
-tier. Three bays along X (front/mid/back uprights at 642mm centers) provide the
-structural grid. Wall brackets at the near and far container walls provide lateral
-restraint. The frame has no end posts in the X direction — IBCs are loaded from
-above via the corridor when the right walkway is removed.
+The frame is a portal spine structure running along the 270mm plumbing corridor.
+The platform cross-beams supporting the upper tier are **simply supported
+wall-to-wall** — propped at the two corridor uprights *and* at the container side
+walls by welded seat brackets. (This replaces the earlier cantilever scheme; see
+[§3.5](#35-structural-validation).) Three bays along X (front/mid/back uprights at
+642mm centers) provide the structural grid. Each of the six corridor uprights is
+anchored to the container floor by a flange-plate foot. The frame has no end posts
+in the X direction — IBCs are loaded from above via the corridor when the right
+walkway is removed.
 
 ### 3.2 Frame Specification
 
 | Parameter | Value |
 |-----------|-------|
-| Material | 50 × 50 × 3mm RHS mild steel |
+| Material | 50 × 50 × 3mm RHS mild steel (A500 Grade B) |
 | Footprint (X × Yd) | 1284 × 2362mm (wall-to-wall, 3 bays along X) |
 | Total height | 2070mm (floor to top rail) |
 | Corridor uprights | 6 total (3 per side of corridor, at X=0/642/1284mm) |
 | Platform level | Z=1010mm (top of bottom-tier IBCs) |
 | Top rail level | Z=2070mm (top of stacked IBC cages + frame beam) |
 | Bay spacing | 642mm (3 bays: front, mid, back) |
-| Wall brackets | At near and far container walls, at platform and top rail levels |
-| Bracket attachment | M12 anchor bolts with gusset plates, welded to frame |
-| Frame weight | ~90 kg |
+| Floor anchorage | 6 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each |
+| Wall seat brackets | 6 (one per platform-beam outer end) — welded 8mm back-plate + 10mm seat + 8mm triangular gusset web; load-bearing |
+| Bracket attachment | 4 × M12 to wall corrugation ribs per bracket; gusset web transfers the seat reaction into the back-plate |
+| Top lateral ties | Light clip at each top-beam wall end (restraint only) |
+| Frame weight | ~130 kg (incl. feet + seat brackets) |
 | Joints | Welded (fillet weld throughout, mitred corners) |
 
 ### 3.3 Platform
@@ -109,6 +114,42 @@ The platform sits at Z=1010mm and supports the upper-tier IBCs.
 Bottom-tier bays include diagonal X-bracing (flat bar) for racking resistance during
 transport. The bracing runs between the front/mid and mid/back uprights on the
 corridor side of each column.
+
+### 3.5 Structural Validation
+
+**Section.** 50 × 50 × 3mm RHS, [A500 Grade B](https://www.astm.org/a0500_a0500m-23.html)
+(minimum yield F<sub>y</sub> = 315 MPa). Second moment of area I = 20.8 cm⁴,
+elastic section modulus Z = 8.34 cm³, E = 200 GPa
+([Atlas Steels — Square & Rectangular Hollow Sections, dimensions & properties](https://www.atlassteels.com.au/documents/Atlas_Technical_Handbook_rev_Aug_2013-web.pdf)).
+
+**Design load.** Worst case is the *camera-ready* state with the top tier holding
+two full Blue totes (water), 655 kg each. Each top tote is carried over the span
+from its container-wall seat bracket to the adjacent corridor upright (L ≈ 1046mm),
+shared across the three platform cross-beams — a governing patch of ≈ 218 kg per
+beam, modeled as a uniform load.
+
+**Cantilever vs. simple span.** Propping the beam end at the wall (rather than
+cantilevering it off the corridor spine) is what makes the section work
+([simply-supported beam](https://www.engineeringtoolbox.com/beams-support-loads-deflection-d_1311.html),
+[cantilever beam](https://www.engineeringtoolbox.com/cantilever-beams-d_1848.html)):
+
+| Load path | Max moment | Bending stress σ = M/Z | Safety factor F<sub>y</sub>/σ | Deflection | Verdict |
+|-----------|-----------|------------------------|-------------------------------|-----------|---------|
+| Cantilever (old) | 1.12 kN·m | 134 MPa | 2.3 | 7.4mm (L/141) | Marginal |
+| **Simple span (new)** | **0.28 kN·m** | **34 MPa** | **9.3** | **0.8mm (L/1300)** | **Ample** |
+
+Converting to a simple span cuts bending stress ~4× and deflection ~9×.
+
+**Reactions & securing.**
+
+- Each **wall seat bracket** carries the simple-span end reaction ≈ **110 kg
+  (1.1 kN)** vertical. The 8mm back-plate bolts to the wall ribs with 4 × M12; the
+  triangular gusset web transfers the seat reaction into the back-plate. At 110 kg
+  the M12 group (≈ 11 kN shear capacity each in Grade 8.8) is loaded to a small
+  fraction of capacity.
+- Each of the **6 corridor uprights** is anchored by a 150 × 150 × 12mm floor
+  flange plate with 4 × M12 anchors, restraining uplift and the lateral (transport)
+  loads carried into the bottom rail.
 
 ---
 
@@ -250,13 +291,13 @@ Eight construction drawings cover the IBC system across two drawing sets:
 
 ### IBC Support Frame Fabrication (3 sheets)
 
-**Sheet 1 — Front elevation: Corridor uprights, beams, wall brackets, D-rings, access gates**
+**Sheet 1 — Front elevation: Corridor uprights, beams, wall seat brackets, floor flange feet, D-rings, access gates**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
 
-**Sheet 2 — Side elevation: Three-bay structure, X-bracing, longitudinal beams**
+**Sheet 2 — Side elevation: Three-bay structure, X-bracing, longitudinal beams, floor flange feet**
 ![TBS-001 IBC Frame — Sheet 2](assets/ibc-frame-sheet2.png)
 
-**Sheet 3 — Plan view at platform level: Beam layout, wall brackets, lip perimeter, rubber mats**
+**Sheet 3 — Plan view at platform level: Beam layout, wall seat brackets, floor feet, lip perimeter, rubber mats**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
 
 Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §15
@@ -271,16 +312,19 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame uprights, beams, cross-members | 8 | $240–$360 |
+| 12mm steel plate, 150 × 150 cut | Upright floor flange feet | 6 | $25–$45 |
+| 8mm steel plate (back-plates, seats, gussets) | 6 welded wall seat brackets | 1 lot | $50–$80 |
 | 5mm steel plate (flat bar) | Anti-rotation lip (perimeter, ~8 m total) | 1 | $30–$50 |
 | 12mm closed-cell rubber mat (1000 × 1200mm) | Anti-slip platform mats | 2 | $40–$60 |
 | 25mm welded D-ring (McMaster #3641T29) | Lashing points with 6mm mount plates | 8 | $40–$65 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing | 4 | $30–$50 |
-| M12 anchor bolts + gusset plates | Wall bracket attachment | 12 | $25–$40 |
+| M12 × 40 bolt, Grade 8.8 (into wall ribs) | Wall seat brackets, 4 each | 24 | $25–$45 |
+| M12 floor anchor (wedge/sleeve, container floor) | Upright flange feet, 4 each | 24 | $40–$70 |
 | Flat bar X-bracing | Bottom-tier racking resistance | 4 | $20–$35 |
 | Access gate panels (300mm high, steel) | Removable, 4 × M12 bolts each | 2 | $40–$60 |
-| Welding / fabrication (frame assembly) | ~20–30 hrs labor | 1 | $1,000–$1,500 |
+| Welding / fabrication (frame assembly) | ~26–36 hrs labor (incl. feet + seat brackets) | 1 | $1,150–$1,650 |
 | Primer + paint | Anti-corrosion coating | 1 | $40–$60 |
-| **Frame subtotal** | | | **$1,505–$2,280** |
+| **Frame subtotal** | | | **$1,770–$2,630** |
 
 ### 9.2 External Plumbing Panel
 
@@ -314,11 +358,11 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame | $1,505 | $2,280 |
+| Stacking frame | $1,770 | $2,630 |
 | External plumbing panel | $125 | $200 |
 | Internal plumbing | $115 | $185 |
 | IBC totes (4×) | $200 | $600 |
-| **Total** | **$1,945** | **$3,265** |
+| **Total** | **$2,210** | **$3,615** |
 
 ---
 
@@ -337,7 +381,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Every 6 months | Inspect anti-rotation lip welds; check lip height (40mm minimum) |
 | Annually | Inspect frame welds (all joints) for fatigue cracking |
 | Annually | Touch up paint on frame where chipped or rusted |
-| Annually | Inspect wall bracket anchor bolts for loosening; re-torque to spec |
+| Annually | Inspect wall seat bracket bolts and upright floor-anchor bolts for loosening; re-torque to spec |
 | Annually | Flush all internal pipes with clean water; inspect for biofilm |
 | As needed | Replace camlock gaskets if leaking |
 | As needed | Clean IBC interiors between circuit changes (bleach rinse + water flush) |

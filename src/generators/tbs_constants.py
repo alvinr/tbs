@@ -354,6 +354,28 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # IBC right edge: IBC_COL_X + IBC_W = 4674 + 1219 = 5893mm = C_LEN ✓
 # Stack height: 2 × 1010 = 2020mm  (ceiling 2388mm → 368mm headroom ✓)
 
+# ── IBC stacking-frame structural securing (rev 10: simple-span retrofit) ─────
+# The upper-tote platform cross-beams are SIMPLY SUPPORTED wall-to-wall: propped
+# at the two corridor uprights AND at the container side walls via welded seat
+# brackets (no longer cantilevered). Floor flange feet anchor the uprights down.
+# These mirror src/models/generate_sketchup_model.py → ibc_rack().
+IBC_FRAME_RHS      = 50    # 50×50×3mm RHS section size (mm)
+IBC_FRAME_T        = 3     # RHS wall thickness (mm)
+# Floor feet — one under each of the 6 corridor uprights
+IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
+IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
+IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
+IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
+IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot
+# Welded wall seat bracket — props each platform-beam OUTER end at the side wall
+IBC_WBKT_PLATE_W   = 150   # back-plate width along X (mm)
+IBC_WBKT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
+IBC_WBKT_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
+IBC_WBKT_SEAT_T    = 10    # seat plate thickness (mm)
+IBC_WBKT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm)
+IBC_WBKT_BOLT_D    = 12    # M12 wall anchor bolt
+IBC_WBKT_BOLT_N    = 4     # wall bolts per bracket
+
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
 PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]
 PROC_TRAY_X_R  = FP_X_R - 20    # = 4629mm — 20mm clearance from right rail

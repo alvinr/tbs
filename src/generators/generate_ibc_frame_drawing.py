@@ -14,11 +14,15 @@ Sheet 3 — Plan View (looking down at platform level)
 
 Each sheet includes dimensional callouts and assembly detail insets.
 
-Frame concept:
-  A portal spine along the 270mm plumbing corridor with cantilever platform
-  beams supporting upper-tier IBCs.  Three bays along X (front/mid/back
-  uprights at 642mm centers).  Wall brackets at near and far container walls
-  provide lateral restraint.  No X-end posts — IBCs are loaded from above.
+Frame concept (rev 10 — simple-span retrofit):
+  A portal spine along the 270mm plumbing corridor.  The upper-tier platform
+  cross-beams are SIMPLY SUPPORTED wall-to-wall: propped at the two corridor
+  uprights AND at the container side walls by welded seat brackets — no longer
+  cantilevered.  Three bays along X (front/mid/back uprights at 642mm centers).
+  Each of the 6 corridor uprights is anchored to the floor by a 150×150×12
+  flange plate with 4× M12 bolts.  Each platform-beam outer end lands on a
+  welded wall seat bracket (back-plate + seat + triangular gusset web, 4× M12
+  to the wall).  No X-end posts — IBCs are loaded from above.
 """
 
 import os
@@ -35,6 +39,10 @@ from tbs_constants import (
     BLUE_IBC_Y, IBC_FAR_Y,
     IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W,
     IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z,
+    IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D,
+    IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N,
+    IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ,
+    IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N,
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
@@ -93,10 +101,22 @@ GATE_H      = 300
 GATE_BOLT_D = 12
 GATE_BOLT_N = 4
 
-# Wall bracket
-BRACKET_L   = 150   # bracket leg length along Yd
-BRACKET_T   = 8     # bracket plate thickness
-BRACKET_BOLT_D = 12 # M12 anchor bolts
+# Wall seat bracket (welded: back-plate + seat + triangular gusset web).
+# Dimensions are shared with the 3D model via tbs_constants.
+BRACKET_L      = IBC_WBKT_SEAT_PROJ   # seat projection into container along Yd (110mm)
+BRACKET_T      = IBC_WBKT_PLATE_T     # plate/gusset thickness (8mm)
+BRACKET_SEAT_T = IBC_WBKT_SEAT_T      # seat plate thickness (10mm)
+BRACKET_GUSSET_H = IBC_WBKT_GUSSET_H  # gusset web depth (200mm)
+BRACKET_PLATE_W  = IBC_WBKT_PLATE_W   # back-plate width along X (150mm)
+BRACKET_BOLT_D = IBC_WBKT_BOLT_D      # M12 wall anchor bolts
+BRACKET_BOLT_N = IBC_WBKT_BOLT_N      # 4 per bracket
+
+# Floor flange foot (under each corridor upright)
+FOOT_PLATE   = IBC_FOOT_PLATE     # 150mm square
+FOOT_PLATE_T = IBC_FOOT_PLATE_T   # 12mm thick
+FOOT_BOLT_D  = IBC_FOOT_BOLT_D    # M12
+FOOT_BOLT_PCD = IBC_FOOT_BOLT_PCD # 100mm square pitch
+FOOT_BOLT_N  = IBC_FOOT_BOLT_N    # 4 per foot
 
 # ── IBC anatomy derived heights ─────────────────────────────────────────────
 # (base constants imported from tbs_constants.py)
@@ -159,6 +179,35 @@ def _weld_tick(ax, x, y, sx, sy, *, side='right', size=8, zo=10):
                 lw=1.5, zorder=zo)
         ax.plot([sx(x), sx(x - s)], [sy(y), sy(y - s)], color=C_WELD,
                 lw=1.5, zorder=zo)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Floor flange foot helpers (anchor each corridor upright to the container floor)
+# ═══════════════════════════════════════════════════════════════════════════════
+def _foot_elev(ax, c, sx, sy, *, zo=7):
+    """Floor flange foot in elevation (edge-on): a wide thin plate just below
+    Z=0 plus two anchor-bolt stubs.  `c` = horizontal position (Yd or X)."""
+    half = FOOT_PLATE / 2
+    _rhs_rect(ax, c - half, -FOOT_PLATE_T, FOOT_PLATE, FOOT_PLATE_T, sx, sy,
+              fc=C_STEEL, lw=1.4, zo=zo)
+    for d in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
+        ax.plot([sx(c + d), sx(c + d)],
+                [sy(-FOOT_PLATE_T), sy(-FOOT_PLATE_T - 28)],
+                color=C_OUT, lw=1.8, zorder=zo + 1)
+        ax.plot(sx(c + d), sy(-FOOT_PLATE_T - 28), 'v', color=C_OUT,
+                ms=4, mew=0, zorder=zo + 1)
+
+
+def _foot_plan(ax, cx, cyd, px, py, *, zo=7):
+    """Floor flange foot in plan (face-on 150×150 square + 4 anchor bolts)."""
+    half = FOOT_PLATE / 2
+    ax.add_patch(Rectangle((px(cx - half), py(cyd - half)),
+                            px(FOOT_PLATE), py(FOOT_PLATE),
+                            fc=C_STEEL, ec=C_OUT, lw=1.2, alpha=0.5, zorder=zo))
+    for dx in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
+        for dy in (-FOOT_BOLT_PCD / 2, FOOT_BOLT_PCD / 2):
+            ax.plot(px(cx + dx), py(cyd + dy), 'o', color=C_OUT, ms=4,
+                    mfc='white', mew=1.2, zorder=zo + 1)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -360,6 +409,10 @@ def sheet1():
     _rhs_rect(ax, POST_FAR_YD, 0, FRAME_RHS, TOP_Z, sx, sy,
               alpha=0.8, hatch="///")
 
+    # ── Floor flange feet under the two front-bay corridor uprights ──────────
+    for uyd in [POST_NEAR_YD, POST_FAR_YD]:
+        _foot_elev(ax, uyd + FRAME_RHS / 2, sx, sy)
+
     # ── Behind uprights (mid & back bays — shown lighter) ───────────────────
     for uyd in [POST_NEAR_YD, POST_FAR_YD]:
         for _ in range(2):  # mid and back bays
@@ -415,46 +468,45 @@ def sheet1():
     _rhs_rect(ax, IBC_FAR_Y, mat_z,
               IBC_D, MAT_T, sx, sy, fc=C_OUT, alpha=0.3, lw=0.8)
 
-    # ── Wall brackets ───────────────────────────────────────────────────────
-    for wall_yd, side in [(0, 'near'), (FRAME_FOOTPRINT_W, 'far')]:
-        for bz in [PLATFORM_Z, top_beam_z]:
-            # Horizontal leg along wall
-            if side == 'near':
-                bx = wall_yd
-                bw = BRACKET_L
-            else:
-                bx = wall_yd - BRACKET_L
-                bw = BRACKET_L
-            _rhs_rect(ax, bx, bz, bw, BRACKET_T, sx, sy,
-                      fc=C_STEEL, alpha=0.5, lw=1.2)
-            # Vertical leg
-            if side == 'near':
-                _rhs_rect(ax, bx, bz, BRACKET_T, FRAME_RHS, sx, sy,
-                          fc=C_STEEL, alpha=0.5, lw=1.2)
-            else:
-                _rhs_rect(ax, bx + bw - BRACKET_T, bz, BRACKET_T, FRAME_RHS,
-                          sx, sy, fc=C_STEEL, alpha=0.5, lw=1.2)
-            # Gusset triangle
-            if side == 'near':
-                tri = Polygon([
-                    (sx(bx + BRACKET_T), sy(bz + FRAME_RHS)),
-                    (sx(bx + BRACKET_L), sy(bz + BRACKET_T)),
-                    (sx(bx + BRACKET_T), sy(bz + BRACKET_T)),
-                ], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8,
-                   alpha=0.4, zorder=6)
-            else:
-                tri = Polygon([
-                    (sx(bx + bw - BRACKET_T), sy(bz + FRAME_RHS)),
-                    (sx(bx), sy(bz + BRACKET_T)),
-                    (sx(bx + bw - BRACKET_T), sy(bz + BRACKET_T)),
-                ], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8,
-                   alpha=0.4, zorder=6)
-            ax.add_patch(tri)
-            # Bolt symbol
-            bolt_yd = bx + 20 if side == 'near' else bx + bw - 20
-            for bh in [bz + FRAME_RHS * 0.3, bz + FRAME_RHS * 0.7]:
-                ax.plot(sx(bolt_yd), sy(bh), 'x', color=C_OUT,
-                        ms=5, mew=1.5, zorder=8)
+    # ── Wall seat brackets (LOAD-BEARING) at platform-beam outer ends ────────
+    # Welded fabrication shown face-on: back-plate (bolted to wall) + horizontal
+    # seat the beam rests on + triangular gusset web. ~110 kg per bracket.
+    seat_top = PLATFORM_Z                      # beam bottom lands on the seat top
+    for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
+        tip = wall_yd + dir_in * BRACKET_L     # seat outer tip
+        x0 = min(wall_yd, tip)
+        gz = seat_top - BRACKET_SEAT_T         # seat underside (gusset top edge)
+        # back-plate (edge-on thin vertical strip against the wall)
+        pz0 = gz - BRACKET_GUSSET_H
+        pl_x = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
+        _rhs_rect(ax, pl_x, pz0, BRACKET_T, seat_top + 60 - pz0, sx, sy,
+                  fc=C_STEEL, alpha=0.6, lw=1.2)
+        # seat plate (horizontal — beam end rests on top)
+        _rhs_rect(ax, x0, gz, BRACKET_L, BRACKET_SEAT_T, sx, sy,
+                  fc=C_STEEL, alpha=0.6, lw=1.2)
+        # triangular gusset web (right triangle: seat proj × gusset depth)
+        tri = Polygon([
+            (sx(tip), sy(gz)),
+            (sx(wall_yd), sy(gz)),
+            (sx(wall_yd), sy(gz - BRACKET_GUSSET_H)),
+        ], closed=True, fc=C_STEEL, ec=C_OUT, lw=0.8, alpha=0.45, zorder=6)
+        ax.add_patch(tri)
+        # M12 wall bolts (4 total; the two X-columns overlap in this view)
+        bx = wall_yd + dir_in * 4
+        for bh in [seat_top + 25, pz0 + 30]:
+            ax.plot(sx(bx), sy(bh), 'x', color=C_OUT, ms=5, mew=1.5, zorder=8)
+
+    # ── Top lateral tie clips (restraint only) at top-beam outer ends ────────
+    for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
+        clip_l = 60
+        x0 = min(wall_yd, wall_yd + dir_in * clip_l)
+        _rhs_rect(ax, x0, top_beam_z, clip_l, BRACKET_T, sx, sy,
+                  fc=C_STEEL, alpha=0.4, lw=1.0)
+        plx = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
+        _rhs_rect(ax, plx, top_beam_z, BRACKET_T, FRAME_RHS, sx, sy,
+                  fc=C_STEEL, alpha=0.4, lw=1.0)
+        ax.plot(sx(wall_yd + dir_in * 4), sy(top_beam_z + FRAME_RHS / 2),
+                'x', color=C_OUT, ms=4, mew=1.2, zorder=8)
 
     # ── D-ring lashing points ───────────────────────────────────────────────
     dring_positions = []
@@ -593,10 +645,16 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="right", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, sx(0), sy(PLATFORM_Z + FRAME_RHS / 2),
+    leader(ax, sx(0), sy(PLATFORM_Z - BRACKET_SEAT_T / 2),
            sx(-100), sy(PLATFORM_Z + 200),
-           "WALL BRACKET\n8mm PLATE + GUSSET\nM12 ANCHOR BOLTS\n(×4 PER WALL, ×8 TOTAL)",
+           "WALL SEAT BRACKET (LOAD-BEARING)\n8mm BACK-PLATE + SEAT + GUSSET\n4× M12 TO WALL  (×6 BRACKETS)",
            color=C_OUT, fs=5.5, ha="right", va="bottom",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, sx(POST_NEAR_YD + FRAME_RHS / 2), sy(-FOOT_PLATE_T / 2),
+           sx(POST_NEAR_YD + 320), sy(-260),
+           "FLOOR FLANGE FOOT\n150×150×12 PLATE\n4× M12 ANCHORS\n(×6, UNDER EACH UPRIGHT)",
+           color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     leader(ax, sx(POST_NEAR_YD + FRAME_RHS - LIP_T / 2),
@@ -657,16 +715,18 @@ def sheet1():
         "MATERIAL & FABRICATION NOTES:",
         f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B.",
         f"2. All joints fillet welded (5mm leg), continuous. Grind flush where noted.",
-        f"3. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
-        f"4. Wall brackets: 8mm mild steel plate, triangular gusset. M12 anchor bolts to container wall ribs.",
-        f"5. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
-        f"6. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
-        f"7. Surface finish: grey oxide primer + flat black powder coat.",
-        f"8. Anti-slip rubber mat: 12mm thick, 1016 × 1219mm (one per column on platform).",
-        f"9. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
-        f"10. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",
-        f"11. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
-        f"12. Total frame weight: ~90 kg.",
+        f"3. LOAD PATH: upper-tier platform beams are SIMPLY SUPPORTED (propped at corridor uprights AND wall seat brackets). Not cantilevered.",
+        f"4. Wall seat brackets (load-bearing, ×6): 8mm back-plate (4× M12 to wall ribs) + 10mm seat (beam end rests on it) + 8mm triangular gusset web, all fillet welded.",
+        f"5. Floor flange feet (×6): 150×150×12mm plate fillet welded to each upright base; 4× M12 anchors into container floor (uplift + lateral restraint).",
+        f"6. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
+        f"7. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
+        f"8. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
+        f"9. Surface finish: grey oxide primer + flat black powder coat.",
+        f"10. Anti-slip rubber mat: 12mm thick, 1016 × 1219mm (one per column on platform).",
+        f"11. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
+        f"12. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",
+        f"13. IBC valve face (DN50, S60×6) points toward corridor. Valve CL at Z={IBC_VALVE_Z}mm above IBC base.",
+        f"14. Total frame weight: ~130 kg (incl. feet + seat brackets).",
     ]
     draw_notes(ax, notes, sx(YD_LO + 50), sy(TOP_Z + 650), spacing=sy(23),
                fs=7, font=FONT, width=sx(1400))
@@ -737,6 +797,10 @@ def sheet2():
     # ── Uprights (3 bays: front, mid, back) ─────────────────────────────────
     for fx in FX_POSTS:
         _rhs_rect(ax, fx, 0, FRAME_RHS, TOP_Z, sx, sy, alpha=0.8)
+
+    # ── Floor flange feet under each upright ─────────────────────────────────
+    for fx in FX_POSTS:
+        _foot_elev(ax, fx + FRAME_RHS / 2, sx, sy)
 
     # ── Longitudinal beams (connecting uprights at 3 levels) ────────────────
     beam_levels = [0, PLATFORM_Z, TOP_Z - FRAME_RHS]
@@ -855,6 +919,7 @@ def sheet2():
         "4. D-ring lashing points at front and back uprights, both tiers (4 visible this side).",
         f"5. Access gate (300mm × 916mm clear opening) at front bay, corridor face only.",
         "6. Behind: second corridor upright row (identical) at 270mm offset toward far wall.",
+        "7. Each upright base: 150×150×12mm floor flange plate, 4× M12 anchors into container floor.",
     ]
     draw_notes(ax, notes, sx(X_LO + 50), sy(Z_LO + 300), spacing=sy(23),
                fs=7, font=FONT, width=sx(1150))
@@ -990,22 +1055,28 @@ def sheet3():
             ha="center", va="center", fontsize=6, color=C_CL,
             fontweight="bold", **FONT, zorder=10)
 
-    # ── Wall brackets (at near and far walls) ───────────────────────────────
+    # ── Wall seat brackets (at near and far walls) ──────────────────────────
+    # Plan shows the seat (face-on, projecting into the container) + the wall
+    # back-plate (edge-on at the wall) + wall bolts.
     for fx in FX_POSTS:
-        for wall_yd, side in [(0, 'near'), (FRAME_FOOTPRINT_W, 'far')]:
-            if side == 'near':
-                by = wall_yd
-                bh = BRACKET_L
-            else:
-                by = wall_yd - BRACKET_L
-                bh = BRACKET_L
-            _rhs_rect(ax, fx, by, FRAME_RHS, bh, px, py,
-                      fc=C_STEEL, alpha=0.4, lw=1.2)
-            # Bolt positions
-            bolt_x = fx + FRAME_RHS / 2
-            for bolt_yd in [by + 25, by + bh - 25]:
-                ax.plot(px(bolt_x), py(bolt_yd), 'x', color=C_OUT,
-                        ms=5, mew=1.5, zorder=8)
+        for wall_yd, dir_in in [(0, 1), (FRAME_FOOTPRINT_W, -1)]:
+            # back-plate (150 wide in X, thin in Yd, against the wall)
+            bp_y = wall_yd if dir_in > 0 else wall_yd - BRACKET_T
+            _rhs_rect(ax, fx - 50, bp_y, BRACKET_PLATE_W, BRACKET_T, px, py,
+                      fc=C_STEEL, alpha=0.6, lw=1.2)
+            # seat (beam width + 20 in X, projects BRACKET_L into container)
+            seat_y0 = min(wall_yd, wall_yd + dir_in * BRACKET_L)
+            _rhs_rect(ax, fx - 10, seat_y0, FRAME_RHS + 20, BRACKET_L, px, py,
+                      fc=C_STEEL, alpha=0.35, lw=1.0)
+            # wall bolts (2 X-columns visible; 2 Z-rows overlap in plan)
+            for bolt_x in [fx - 30, fx + 80]:
+                ax.plot(px(bolt_x), py(wall_yd + dir_in * 4), 'x',
+                        color=C_OUT, ms=5, mew=1.5, zorder=8)
+
+    # ── Floor flange feet (projected, under the 6 corridor uprights) ─────────
+    for fx in FX_POSTS:
+        for post_yd in [POST_NEAR_YD, POST_FAR_YD]:
+            _foot_plan(ax, fx + FRAME_RHS / 2, post_yd + FRAME_RHS / 2, px, py)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth
@@ -1152,8 +1223,10 @@ def sheet3():
         "PLAN VIEW NOTES:",
         "1. Plan cut at platform level (Z=1060mm). All beams shown in cross-section (hatched).",
         "2. Longitudinal beams (along X) at corridor edges are continuous — front to back.",
-        "3. Transverse beams (along Yd) at each upright bay: cantilever from corridor to wall bracket.",
-        "4. Wall brackets bolted to container wall corrugation ribs (M12 anchor bolts, 2 per bracket).",
+        "3. Transverse beams (along Yd) at each upright bay: SIMPLY SUPPORTED — propped at the",
+        "corridor uprights AND the wall seat brackets (not cantilevered).",
+        "4. Wall seat brackets (×6) bolted to wall ribs — 4× M12 each. Floor flange feet (150×150×12,",
+        "dashed squares) under each of the 6 uprights, 4× M12 floor anchors each.",
         "5. Anti-rotation lip (red outline): 5mm plate fillet welded to beam top face. Retains",
         "IBC pallet perimeter.",
         f"6. Rubber mat: 12mm anti-slip, trimmed to IBC pallet footprint ({IBC_D} × {IBC_W}mm).",

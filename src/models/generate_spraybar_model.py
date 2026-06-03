@@ -115,9 +115,10 @@ def build_beam():
     margin = ((XR - XL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
     for i in range(SPRAY_BAR_N_NOZZLES):
         nx = XL + margin + i * sp
-        # threaded body: barbs the poly pipe (Z=40), down through the beam bottom
-        parts.append(ov.ruby_cylinder("Nozzle Body", nx, GY, ZB - 6, 4, 46,
-                                      color=C_NOZZLE, axis="z"))
+        # threaded body: barbs UP through the beam bottom + poly pipe BOTTOM wall,
+        # tip ending inside the bore (one wall only — does not pierce the top wall)
+        parts.append(ov.ruby_cylinder("Nozzle Body", nx, GY, ZB - 6, 4,
+                                      bore_cz - (ZB - 6), color=C_NOZZLE, axis="z"))
         # flat-fan tip below the beam
         parts.append(ov.ruby_cylinder("Nozzle Tip", nx, GY, ZB - 10, 6.5, 5,
                                       color=C_NOZZLE, axis="z"))

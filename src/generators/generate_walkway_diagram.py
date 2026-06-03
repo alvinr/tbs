@@ -21,7 +21,7 @@ Sheet 3 — Detail A: Right walkway ceiling-hung support (IBC end):
   300mm wide, same as near/far.  No floor contact — suspended from ceiling
   corrugations by M10 threaded rod hangers at 457mm centers.  Two 50×50×5mm
   steel angle bearers run full container width along Yd at X=4329 and
-  X=4629.  Grating spans 300mm between bearers at Z=75mm (deck 100mm).
+  X=4629.  Grating spans 300mm between bearers at Z=65mm (deck 80mm).
   5 hanger pairs, all at Yd < 2025mm — clear of optical cone.  Near/far
   ends bear on adjacent walkway brackets.  Zero tray contact, zero floor
   contact.
@@ -115,7 +115,7 @@ def sheet2():
     TRAY_FLOOR = 2     # tray floor thickness (SS)
     CORR_DEPTH = 38    # corrugation depth (mm)
     WALL_T     = 1.6   # wall steel thickness (mm)
-    BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm (bracket arm top Z)
+    BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T  # = 65mm (bracket arm top Z)
     BRKT_T     = WALKWAY_BRACKET_T  # 8mm plate thickness
     BRKT_VERT  = WALKWAY_BRACKET_H  # 150mm vertical leg on wall
     REINF_W    = 100   # reinforcing plate width (covers triangular bolt pattern)
@@ -240,13 +240,13 @@ def sheet2():
     # The bracket is three welded pieces:
     #   1. Vertical mounting plate: flat against wall, Z=0 to BRKT_VERT (150mm)
     #      — bolted to wall rib, does NOT project into tray zone
-    #   2. Horizontal arm: welded to vertical plate at Z=BRKT_ARM_H (75mm),
+    #   2. Horizontal arm: welded to vertical plate at Z=BRKT_ARM_H (65mm),
     #      projects inward 300mm — ABOVE the 50mm tray rim
     #   3. Gusset underneath the arm: right triangle bracing the arm from below,
     #      extends 70mm from wall (stops before tray rim at Yd=80mm).
     #      Vertices: wall/floor (0,0), wall/arm-bottom (0, arm_bot), (70, arm_bot).
 
-    brkt_arm_z = BRKT_ARM_H  # = 75mm (top of horizontal arm = grate support)
+    brkt_arm_z = BRKT_ARM_H  # = 65mm (top of horizontal arm = grate support)
     ARM_DEPTH  = BRKT_T + 2  # arm cross-section depth shown (visual thickness)
     arm_bot    = brkt_arm_z - ARM_DEPTH  # bottom of arm
     GUSSET_REACH = 70  # gusset extends 70mm from wall (< 80mm tray rim position)
@@ -348,9 +348,9 @@ def sheet2():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Grated deck ──────────────────────────────────────────────────────────
-    # Grating sits on bracket arm: bottom at BRKT_ARM_H (75mm), top at WALKWAY_H (100mm)
-    grate_bot = brkt_arm_z  # = 75mm
-    grate_top = grate_bot + WALKWAY_GRATE_T  # = 100mm = WALKWAY_H
+    # Grating sits on bracket arm: bottom at BRKT_ARM_H (65mm), top at WALKWAY_H (80mm)
+    grate_bot = brkt_arm_z  # = 65mm
+    grate_top = grate_bot + WALKWAY_GRATE_T  # = 80mm = WALKWAY_H
     ax.add_patch(Rectangle((sx(BRKT_T), sy(grate_bot)),
                             sx(WALKWAY_W - BRKT_T), sy(WALKWAY_GRATE_T),
                             fc=C_GRATE, ec=C_OUT, lw=1.2, zorder=7))
@@ -630,7 +630,7 @@ def sheet2():
         "BOLT PATTERN NOTES:",
         f"1. Triangular pattern: 2 lower + 1 upper.",
         f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF}mm from CL — centered between plate edge and {BRKT_T}mm gusset.",
-        f"3. Upper bolt at Z={bolt_z_hi}mm (above grating deck Z=100), centered on gusset CL.",
+        f"3. Upper bolt at Z={bolt_z_hi}mm (above grating deck Z={WALKWAY_H}mm), centered on gusset CL.",
         f"4. All holes {HOLE_D}mm clearance for M12.",
         f"5. Head on exterior 6mm reinforcing plate, nut on interior bracket face.",
         f"6. See View A for bolt cross-section.",
@@ -805,13 +805,14 @@ def sheet1():
                 fontweight="bold", **FONT, zorder=7, rotation=rot)
 
     # ── Lowered deck note ─────────────────────────────────────────────────────
-    # The walkway is LOWERED (not removed) — deck top at Z=WALKWAY_H (65mm),
-    # 15mm grate resting at tray-rim level (Z=50).  The film-plane frame bottom
-    # is at Z=100, giving 35mm clearance.  Walkway stays installed during operation.
+    # The walkway is LOWERED (not removed) — deck top at Z=WALKWAY_H (80mm),
+    # 15mm grate with its bottom at Z=65; the bracket arm (Z=55–65) clears the
+    # 50mm tray rim by 5mm.  The film-plane frame bottom is at Z=100, giving
+    # 20mm clearance.  Walkway stays installed during operation.
     note_cx = (LXR + TR) / 2
     ax.text(note_cx, (NYI + FY) / 2,
             f"WALKWAY DECK LOWERED TO Z={WALKWAY_H}mm\n"
-            f"({WALKWAY_GRATE_T}mm grate at tray-rim level)\n"
+            f"({WALKWAY_GRATE_T}mm grate; arm clears {PROC_TRAY_RIM}mm tray rim by 5mm)\n"
             f"— clears film-plane frame bottom (Z=100) by {100 - WALKWAY_H}mm\n"
             f"  walkway stays in place during operation",
             ha="center", va="center", fontsize=7, color="#1060A0",
@@ -1051,8 +1052,8 @@ def sheet1():
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
         f"10. WIDENED BRACKETS (2): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular",
         f"    pattern. 500mm arm reach for EP + battery access. See Sheet 2 View C.",
-        f"11. LOWERED DECK: walkway grate ({WALKWAY_GRATE_T}mm) rests at tray-rim level — deck top at",
-        f"    Z={WALKWAY_H}mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance.",
+        f"11. LOWERED DECK: deck top at Z={WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate bottom at Z=65, bracket arm",
+        f"    clears the {PROC_TRAY_RIM}mm tray rim by 5mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance.",
         f"    Walkway stays installed during camera operation.",
         f"12. LEFT WALKWAY — LIFT-OUT: remove before sliding light-trap (panel + drum) back",
         f"    to X≈300 for transport. Reinstall for operation. See Sheet 4 for support detail.",
@@ -1104,7 +1105,7 @@ def sheet3():
     HANGER_D = WALKWAY_RIGHT_HANGER_D      # M10
     HANGER_R = HANGER_D / 2
     DECK_H   = WALKWAY_H                   # 100mm
-    BEARER_TOP = DECK_H - WALKWAY_GRATE_T  # 75mm
+    BEARER_TOP = DECK_H - WALKWAY_GRATE_T  # 65mm
     BEARER_BOT = BEARER_TOP - BEARER_S     # 25mm
 
     BOLT_D   = 10
@@ -1449,7 +1450,7 @@ def sheet4():
     def sy(mm): return mm
 
     # ── Key geometry ─────────────────────────────────────────────────────────
-    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (bracket arm top = grate bottom)
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 65mm (bracket arm top = grate bottom)
     ARM_DEPTH  = WALKWAY_BRACKET_T + 2         # arm visual thickness
     arm_bot    = BRKT_ARM_Z - ARM_DEPTH
     TRAY_WALL  = 3       # tray wall thickness (SS)
@@ -1462,8 +1463,8 @@ def sheet4():
     CLEARANCE = LEFT_WK_R - PANEL_INNER           # = 50mm
     NEAR_WK_SHOW = 200   # show 200mm of near walkway past butt joint
 
-    grate_bot = BRKT_ARM_Z   # = 75mm
-    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 100mm
+    grate_bot = BRKT_ARM_Z   # = 65mm
+    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 80mm
 
     # ── Figure ───────────────────────────────────────────────────────────────
     # View: looking along Yd axis (from near wall toward far wall).
@@ -1511,9 +1512,9 @@ def sheet4():
 
     # ── Bearing strip on tray rim (25×25mm Al angle) ─────────────────────────
     C_SUPPORT = "#D08020"
-    STRIP_H = LEFT_WK_BEARING_STRIP   # = 25mm
+    STRIP_H = LEFT_WK_BEARING_STRIP   # = 15mm
     strip_bot = PROC_TRAY_RIM         # = 50mm (sits on rim top)
-    strip_top = strip_bot + STRIP_H   # = 75mm (= grate bottom)
+    strip_top = strip_bot + STRIP_H   # = 65mm (= grate bottom)
     ax.add_patch(Rectangle((sx(tray_x - TRAY_WALL), sy(strip_bot)),
                             sx(STRIP_H + TRAY_WALL), sy(STRIP_H),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=5))
@@ -1526,7 +1527,7 @@ def sheet4():
     # ── Floor-standing support leg (cargo door side, X≈140) ────────────────
     OUTER_LEG_X = tray_x - 30   # = 140mm (on bare floor, outside tray)
     LEG_W = LEFT_WK_LEG_SIZE    # = 25mm
-    LEG_TOP = strip_top          # = 75mm (cantilever arm top = grate bottom)
+    LEG_TOP = strip_top          # = 65mm (cantilever arm top = grate bottom)
     base = LEFT_WK_LEG_BASE     # 60mm
     # Leg post
     ax.add_patch(Rectangle((sx(OUTER_LEG_X - LEG_W / 2), sy(0)),
@@ -1552,7 +1553,7 @@ def sheet4():
     # In this view (along Yd), the beam extends into the page — shown as
     # a cross-section rectangle at X=470.
     BEAM_SZ = LEFT_WK_BEARER_SIZE  # = 50mm
-    beam_bot = grate_bot - BEAM_SZ   # Z = 75 - 50 = 25mm
+    beam_bot = grate_bot - BEAM_SZ   # Z = 65 - 50 = 15mm
     ax.add_patch(Rectangle((sx(LEFT_WK_R - BEAM_SZ / 2), sy(beam_bot)),
                             sx(BEAM_SZ), sy(BEAM_SZ),
                             fc=C_SUPPORT, ec=C_OUT, lw=1.2, alpha=0.5, zorder=5))
@@ -1808,25 +1809,25 @@ def sheet5():
     LEFT_WK_L = WALKWAY_LEFT_X                 # = 170mm
     LEFT_WK_R = WALKWAY_LEFT_X + WALKWAY_W     # = 470mm
 
-    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 75mm
-    grate_bot = BRKT_ARM_Z   # = 75mm
-    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 100mm
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # = 65mm
+    grate_bot = BRKT_ARM_Z   # = 65mm
+    grate_top = BRKT_ARM_Z + WALKWAY_GRATE_T  # = 80mm
 
     # Floor leg geometry (cargo door side — butts up to tray outer wall)
     RUBBER_T = 2                     # rubber pad thickness
     OUTER_LEG_X = tray_x - TRAY_WALL - BASE_W / 2  # leg centered so foot right edge = tray outer wall
-    LEG_TOP = grate_bot             # = 75mm (cantilever arm top = grate bottom)
+    LEG_TOP = grate_bot             # = 65mm (cantilever arm top = grate bottom)
 
     # Bearer beam geometry (processing tray side)
     BEAM_SZ = LEFT_WK_BEARER_SIZE   # = 50mm
     BEAM_T  = LEFT_WK_BEARER_T     # = 3mm
     beam_bot = grate_bot - BEAM_SZ  # Z = 25mm (beam bottom)
-    beam_top = grate_bot            # Z = 75mm (beam top = grate bottom)
+    beam_top = grate_bot            # Z = 65mm (beam top = grate bottom)
 
     # Bearing strip
-    STRIP_H = LEFT_WK_BEARING_STRIP  # = 25mm
+    STRIP_H = LEFT_WK_BEARING_STRIP  # = 15mm
     strip_bot = PROC_TRAY_RIM       # = 50mm
-    strip_top = strip_bot + STRIP_H  # = 75mm
+    strip_top = strip_bot + STRIP_H  # = 65mm
 
     # Cantilever arm from floor leg to walkway edge
     ARM_T = 5    # cantilever arm thickness (mm)
@@ -1966,7 +1967,7 @@ def sheet5():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Contact highlights ───────────────────────────────────────────────────
-    # Grating rests on bearer beam top (Z=75mm)
+    # Grating rests on bearer beam top (Z=65mm)
     ax.plot([sx(LEFT_WK_R - BEAM_SZ / 2 + 3), sx(LEFT_WK_R + BEAM_SZ / 2 - 3)],
             [sy(beam_top), sy(beam_top)],
             color="#CC4400", lw=3.0, zorder=12)
@@ -2104,15 +2105,15 @@ def sheet6():
     PLATE_W = LIP_T + BEAM_SZ + GAP + LOCK_W + 3   # ≈80mm
 
     # Z coordinates
-    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 75mm (arm top = beam top)
+    BRKT_ARM_Z = WALKWAY_H - WALKWAY_GRATE_T  # 65mm (arm top = beam top)
     beam_bot   = BRKT_ARM_Z - BEAM_SZ          # Z=25mm
-    beam_top   = BRKT_ARM_Z                     # Z=75mm
+    beam_top   = BRKT_ARM_Z                     # Z=65mm
     plate_top  = beam_bot                        # Z=25mm (plate supports beam)
     plate_bot  = plate_top - PLATE_T             # Z=20mm
     lip_top    = plate_top + LIP_H               # Z=45mm
     ARM_DEPTH  = BRKT_T + 2                      # 10mm arm visual depth
     arm_bot    = plate_bot - ARM_DEPTH           # arm is below plate
-    grate_bot  = beam_top                         # Z=75mm
+    grate_bot  = beam_top                         # Z=65mm
     grate_top  = grate_bot + WALKWAY_GRATE_T      # Z=100mm
 
     # Show beam extending 250mm from wall
@@ -2666,7 +2667,7 @@ def sheet7():
     TRAY_FLOOR = 2
     CORR_DEPTH = 38
     WALL_T     = 1.6
-    BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T   # 75mm
+    BRKT_ARM_H = WALKWAY_H - WALKWAY_GRATE_T   # 65mm
     BRKT_T     = WALKWAY_BRACKET_T              # 8mm (standard, for reference)
     BRKT_VERT  = WALKWAY_BRACKET_H              # 150mm (standard, for reference)
     REINF_T    = 6
@@ -3102,7 +3103,7 @@ def sheet7():
         f"1. Rectangular pattern: 2 lower + 2 upper.",
         f"2. Lower pair at Z={bolt_z_lo}mm, X=±{BOLT_X_OFF_W}mm from CL",
         f"   — centered between plate edge and {W_BRKT_T}mm gusset.",
-        f"3. Upper pair at Z={bolt_z_hi}mm (above grating deck Z=100),",
+        f"3. Upper pair at Z={bolt_z_hi}mm (above grating deck Z={WALKWAY_H}mm),",
         f"   same X offset as lower pair.",
         f"4. All holes {HOLE_D}mm clearance for M12.",
         f"5. Head on exterior {REINF_T}mm reinforcing plate,",

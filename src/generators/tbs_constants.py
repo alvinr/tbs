@@ -450,11 +450,13 @@ PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 #       Zero processing tray contact — all supports outside or above tray.
 #       Right corners use standard 45° miters (no panel conflict).
 WALKWAY_W       = 300    # walkway width (mm) — bracket arm cantilever distance
-WALKWAY_H       = 65     # deck height above floor (mm) — LOWERED for film-plane clearance:
-#       15mm grate resting at the tray-rim level (Z=50); top at Z=65 clears the Z=100
-#       film-frame bottom by 35mm, so the film plane travels above the in-place walkway.
+WALKWAY_H       = 80     # deck height above floor (mm) — LOWERED for film-plane clearance:
+#       15mm grate with its bottom at Z=65; the cantilever bracket arm (below the grate)
+#       sits at Z=55–65, clearing the 50mm tray rim by 5mm where it overhangs the tray.
+#       Deck top Z=80 clears the Z=100 film-frame bottom by 20mm, so the film plane
+#       travels above the in-place walkway. (Was 65mm — arm collided with the tray rim.)
 WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
-WALKWAY_H_PREV  = 100    # previous deck height (pre-lowering) — kept for reference
+WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — kept for reference
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
@@ -497,7 +499,7 @@ LEFT_WK_LEG_N        = 3     # number of floor-standing support legs (cargo door
 LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
-LEFT_WK_BEARING_STRIP = 25   # bearing strip height (mm) — 25×25×3mm Al angle on tray rim
+LEFT_WK_BEARING_STRIP = (WALKWAY_H - WALKWAY_GRATE_T) - PROC_TRAY_RIM  # = 15mm — fills the gap between the tray rim (Z=50) and the grate bottom; Al flat bar on tray rim (DERIVED, tracks WALKWAY_H)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)

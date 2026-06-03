@@ -193,7 +193,7 @@ This 30mm margin accommodates:
 
 ### 5.3 Left Walkway Interaction
 
-The left walkway (removable lift-out section) has a deck height of 100mm at
+The left walkway (removable lift-out section) has a deck height of 80mm at
 X=170mm — above the panel bottom edge at Z=80mm. The left walkway must be
 removed before the panel slides to the transport position; otherwise the panel
 edge would collide with the walkway grating.

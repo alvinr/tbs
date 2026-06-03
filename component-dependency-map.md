@@ -280,7 +280,7 @@ Permanently installed — no removal for transport mode conversion.*
 | Parameter | Value | Constant |
 |-----------|-------|----------|
 | Walkway width | 300mm | `WALKWAY_W` |
-| Deck height | 100mm | `WALKWAY_H` |
+| Deck height | 80mm | `WALKWAY_H` |
 | Grate thickness (all sections) | 25mm | `WALKWAY_GRATE_T` |
 | Bracket vertical leg | 150mm | `WALKWAY_BRACKET_H` |
 | Bracket plate thickness | 8mm | `WALKWAY_BRACKET_T` |
@@ -293,10 +293,10 @@ Permanently installed — no removal for transport mode conversion.*
 | Left walkway unsupported span | 1762mm | `WALKWAY_LEFT_SPAN` |
 | Right walkway X | 4329mm | `WALKWAY_RIGHT_X` |
 
-*Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
+*Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 Right: ceiling-hung — 2× 25×25×5mm steel angle bearers suspended from ceiling by M10
 threaded rod hangers (5 pairs — 1st at Yd=320mm, rest at 457mm centers). No floor contact — clears IBC stack entirely.
-Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
+Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
 panel conflict, must remove before panel slides to transport). No floor contact on
 any section. 4 removable sections.*
 

@@ -284,11 +284,11 @@ Personnel access during operation is via a 750mm steel drum built into the hinge
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 100mm deck height (75mm support + 25mm grate). No floor contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway: ceiling-hung from M10 threaded rod hangers. Left walkway: removable lift-out with guide tabs. Butt joints at all corners.
+Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629). 80mm deck height (65mm support + 15mm grate). No floor contact on any section — entire tray interior completely clear for film loading. Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm). Right walkway: ceiling-hung from M10 threaded rod hangers. Left walkway: removable lift-out with guide tabs. Butt joints at all corners.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Press-locked steel grating, 25mm (30×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols |
+| Press-locked steel grating, 15mm (15×3mm bars) | $290 | $360 | $430 | ~4.5 m² (incl. 1474×500mm near walkway bump-out); McNichols |
 | Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |

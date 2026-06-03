@@ -449,20 +449,21 @@ def draw_sheet2():
         (DX + FL_T / 2, wz0 - 5), (DX + 20, wz0 - 45))
 
     # ── Baffles ───────────────────────────────────────────────────────────────
+    AIR_GAP = 75                            # airflow gap left by each baffle (S-path)
     B1_X = DX + int_d * 0.30
-    B1_H = int_h * 0.65
+    B1_H = int_h - AIR_GAP
     B1_Z = DZ + SK + int_h - B1_H
     draw_rect(ax, B1_X, B1_Z, BF_T, B1_H, fc=C_OUT, lw=0.5, zorder=5)
 
     B2_X = DX + int_d * 0.70
-    B2_H = int_h * 0.65
+    B2_H = int_h - AIR_GAP
     B2_Z = DZ + SK
     draw_rect(ax, B2_X, B2_Z, BF_T, B2_H, fc=C_OUT, lw=0.5, zorder=5)
 
-    ann(ax, "Baffle 1\n(from top, 65%)\ngap at bottom",
+    ann(ax, "Baffle 1\n(from top)\n75mm AIRFLOW\ngap at bottom",
         (B1_X + BF_T / 2, B1_Z + B1_H * 0.6),
         (B1_X - 50, B1_Z + B1_H * 0.6 + 35))
-    ann(ax, "Baffle 2\n(from bottom, 65%)\ngap at top",
+    ann(ax, "Baffle 2\n(from bottom)\n75mm AIRFLOW\ngap at top",
         (B2_X + BF_T / 2, B2_Z + B2_H * 0.4),
         (B2_X + 50, B2_Z + B2_H * 0.4 - 30))
     ax.text(DX + DD / 2, DZ + SK + int_h * 0.5,

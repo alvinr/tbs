@@ -1206,9 +1206,33 @@ def fans():
                             yc - dw / 2, zc - dh / 2, bft, bf, dh, color=C_FAN))
         out.append(ruby_box(f"{tag} baffle plate 2", x0 + 2 * dd / 3 - bft / 2,
                             yc + dw / 2 - bf, zc - dh / 2, bft, bf, dh, color=C_FAN))
-        # fan disk at the interior mouth, body inside the duct
-        fan_face = mouth_x if ext > 0 else mouth_x - bd
-        out.append(ruby_cylinder(tag, fan_face, yc, zc, r, bd, color=C_FAN, axis="x"))
+        # ── axial panel fan at the interior mouth (matches 2D Sheet 2):
+        #    square housing frame around the Ø150 bore + motor hub + 4-blade
+        #    impeller, body set inside the duct ──
+        fan_x = mouth_x if ext > 0 else mouth_x - bd   # interior face of fan body
+        fr_y0, fr_y1 = yc - dw / 2, yc + dw / 2
+        fr_z0, fr_z1 = zc - dh / 2, zc + dh / 2
+        out.append(ruby_box(f"{tag} fan frame top", fan_x, fr_y0, zc + r,
+                            bd, dw, fr_z1 - (zc + r), color=C_FAN))
+        out.append(ruby_box(f"{tag} fan frame bottom", fan_x, fr_y0, fr_z0,
+                            bd, dw, (zc - r) - fr_z0, color=C_FAN))
+        out.append(ruby_box(f"{tag} fan frame left", fan_x, fr_y0, zc - r,
+                            bd, (yc - r) - fr_y0, 2 * r, color=C_FAN))
+        out.append(ruby_box(f"{tag} fan frame right", fan_x, yc + r, zc - r,
+                            bd, fr_y1 - (yc + r), 2 * r, color=C_FAN))
+        hub_r = r * 0.26
+        out.append(ruby_cylinder(f"{tag} fan hub", fan_x, yc, zc, hub_r, bd,
+                                 color=C_STEEL, axis="x"))
+        bt, bw = 6, 30                                 # impeller blade thickness/width
+        bx, bl = fan_x + bd * 0.45, r * 0.88 - hub_r   # blade plane + length
+        out.append(ruby_box(f"{tag} fan blade up", bx, yc - bw / 2, zc + hub_r,
+                            bt, bw, bl, color=C_ALUM))
+        out.append(ruby_box(f"{tag} fan blade down", bx, yc - bw / 2,
+                            zc - hub_r - bl, bt, bw, bl, color=C_ALUM))
+        out.append(ruby_box(f"{tag} fan blade left", bx, yc - hub_r - bl,
+                            zc - bw / 2, bt, bl, bw, color=C_ALUM))
+        out.append(ruby_box(f"{tag} fan blade right", bx, yc + hub_r,
+                            zc - bw / 2, bt, bl, bw, color=C_ALUM))
         # ── wall mounting flange: 5mm plate on the interior wall face, overhanging
         #    the duct opening, with 4 M10 bolts into the wall ──
         out.append(ruby_box(f"{tag} wall flange",

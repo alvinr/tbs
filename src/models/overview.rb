@@ -8305,16 +8305,104 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Fan A (exhaust)
+  # Fan A (exhaust) fan frame top
   grp = ents.add_group
-  grp.name = "Fan A (exhaust)"
+  grp.name = "Fan A (exhaust) fan frame top"
+  face = grp.entities.add_face([5593.mm,200.mm,2275.mm], [5643.mm,200.mm,2275.mm], [5643.mm,400.mm,2275.mm], [5593.mm,400.mm,2275.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame bottom
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame bottom"
+  face = grp.entities.add_face([5593.mm,200.mm,2100.mm], [5643.mm,200.mm,2100.mm], [5643.mm,400.mm,2100.mm], [5593.mm,400.mm,2100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame left
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame left"
+  face = grp.entities.add_face([5593.mm,200.mm,2125.mm], [5643.mm,200.mm,2125.mm], [5643.mm,225.mm,2125.mm], [5593.mm,225.mm,2125.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame right
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame right"
+  face = grp.entities.add_face([5593.mm,375.mm,2125.mm], [5643.mm,375.mm,2125.mm], [5643.mm,400.mm,2125.mm], [5593.mm,400.mm,2125.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan hub
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan hub"
   ge = grp.entities
-  circle = ge.add_circle([5593.mm,300.mm,2200.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([5593.mm,300.mm,2200.mm], [1,0,0], 19.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade up
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade up"
+  face = grp.entities.add_face([5615.5.mm,285.mm,2219.5.mm], [5621.5.mm,285.mm,2219.5.mm], [5621.5.mm,315.mm,2219.5.mm], [5615.5.mm,315.mm,2219.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade down
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade down"
+  face = grp.entities.add_face([5615.5.mm,285.mm,2134.mm], [5621.5.mm,285.mm,2134.mm], [5621.5.mm,315.mm,2134.mm], [5615.5.mm,315.mm,2134.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade left
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade left"
+  face = grp.entities.add_face([5615.5.mm,234.mm,2185.mm], [5621.5.mm,234.mm,2185.mm], [5621.5.mm,280.5.mm,2185.mm], [5615.5.mm,280.5.mm,2185.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade right
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade right"
+  face = grp.entities.add_face([5615.5.mm,319.5.mm,2185.mm], [5621.5.mm,319.5.mm,2185.mm], [5621.5.mm,366.mm,2185.mm], [5615.5.mm,366.mm,2185.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8480,16 +8568,104 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Fan B (intake)
+  # Fan B (intake) fan frame top
   grp = ents.add_group
-  grp.name = "Fan B (intake)"
+  grp.name = "Fan B (intake) fan frame top"
+  face = grp.entities.add_face([250.mm,1859.mm,675.mm], [300.mm,1859.mm,675.mm], [300.mm,2059.mm,675.mm], [250.mm,2059.mm,675.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame bottom
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame bottom"
+  face = grp.entities.add_face([250.mm,1859.mm,500.mm], [300.mm,1859.mm,500.mm], [300.mm,2059.mm,500.mm], [250.mm,2059.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame left
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame left"
+  face = grp.entities.add_face([250.mm,1859.mm,525.mm], [300.mm,1859.mm,525.mm], [300.mm,1884.mm,525.mm], [250.mm,1884.mm,525.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame right
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame right"
+  face = grp.entities.add_face([250.mm,2034.mm,525.mm], [300.mm,2034.mm,525.mm], [300.mm,2059.mm,525.mm], [250.mm,2059.mm,525.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan hub
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan hub"
   ge = grp.entities
-  circle = ge.add_circle([250.mm,1959.mm,600.mm], [1,0,0], 75.mm, 24)
+  circle = ge.add_circle([250.mm,1959.mm,600.mm], [1,0,0], 19.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat = model.materials["Pinhole Mount Plate"] || model.materials.add("Pinhole Mount Plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade up
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade up"
+  face = grp.entities.add_face([272.5.mm,1944.mm,619.5.mm], [278.5.mm,1944.mm,619.5.mm], [278.5.mm,1974.mm,619.5.mm], [272.5.mm,1974.mm,619.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade down
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade down"
+  face = grp.entities.add_face([272.5.mm,1944.mm,534.mm], [278.5.mm,1944.mm,534.mm], [278.5.mm,1974.mm,534.mm], [272.5.mm,1974.mm,534.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade left
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade left"
+  face = grp.entities.add_face([272.5.mm,1893.mm,585.mm], [278.5.mm,1893.mm,585.mm], [278.5.mm,1939.5.mm,585.mm], [272.5.mm,1939.5.mm,585.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade right
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade right"
+  face = grp.entities.add_face([272.5.mm,1978.5.mm,585.mm], [278.5.mm,1978.5.mm,585.mm], [278.5.mm,2025.mm,585.mm], [272.5.mm,2025.mm,585.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 

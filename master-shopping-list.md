@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
-| 5. Print washing — water system | $3,135 | $4,766 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,905 | $7,396 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
 | 7a. Panel sliding carriage | $976 | $976 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$17,506** | **~$23,446** |
+| **TOTAL (base build + 50-print run)** | **~$19,276** | **~$26,076** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -155,6 +155,26 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [2" NPT bulkhead fitting (304 SS)](https://www.mcmaster.com/4464K115) | External drain/fill port, welded through container wall (X1/X3/X4) | 3 | McMaster-Carr | $25–$40 | $75–$120 |
 | Reinforcing plate, 6mm A36 steel, 150×150mm | Backing plate for external bulkhead ports (one per fitting) | 3 | Metal Supermarkets SoCal | $8–$12 | $24–$36 |
 **Storage subtotal: ~$388–$698**
+
+### IBC stacking frame
+*Source: `ibc-stacking-report.md` §3, §9.1. Welded 50×50×3mm RHS frame for the 2×2 IBC stack — platform beams simply supported wall-to-wall (corridor uprights + welded wall seat brackets), uprights anchored to the floor.*
+
+| Item | Spec | Qty | Supplier | Est. unit | Total |
+|------|------|-----|----------|-----------|-------|
+| [Mild steel RHS 50×50×3mm, 6 m length](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | Uprights, beams, cross-members (A500 Grade B) | 8 | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/) / [Online Metals](https://www.onlinemetals.com) | $30–$45 | $240–$360 |
+| [Steel plate 12mm, 150×150mm cut](https://www.onlinemetals.com/en/buy/carbon-steel) | Upright floor flange feet | 6 | Metal Supermarkets SoCal / Online Metals | $4–$8 | $25–$45 |
+| Steel plate 8mm (back-plates, seats, gussets) | 6 welded wall seat brackets (cut from ~0.3 m²) | 1 lot | Metal Supermarkets SoCal | $50–$80 | $50–$80 |
+| Steel flat bar 5mm (~8 m) | Anti-rotation lip on platform perimeter | 1 | Metal Supermarkets SoCal | $30–$50 | $30–$50 |
+| Closed-cell rubber mat, 12mm (1000×1200mm) | Anti-slip platform mats (one per column) | 2 | [McMaster-Carr](https://www.mcmaster.com/) / Amazon | $20–$30 | $40–$60 |
+| [Welded D-ring, 25mm, 1,100 kg WLL](https://www.mcmaster.com/3641T29) | Lashing points on 6mm mount plates | 8 | McMaster-Carr #3641T29 | $5–$8 | $40–$65 |
+| [Ratchet strap, 25mm, 1,100 kg WLL](https://www.amazon.com/s?k=25mm+ratchet+strap+1100kg) | Transport securing (2 per tier) | 4 | Amazon / Harbor Freight | $8–$13 | $30–$50 |
+| [M12×40 hex bolt, Grade 8.8 + nut/washer](https://www.mcmaster.com/91290A655) | Wall seat brackets, 4 each into wall ribs | 24 | McMaster-Carr / Fastenal | $1–$2 | $25–$45 |
+| [M12 wedge/sleeve floor anchor](https://www.mcmaster.com/concrete-anchors) | Upright flange feet, 4 each into container floor | 24 | McMaster-Carr / Home Depot | $2–$3 | $40–$70 |
+| Steel flat bar (X-bracing) | Bottom-tier racking resistance | 4 | Metal Supermarkets SoCal | $5–$9 | $20–$35 |
+| Access gate panel, 300mm steel | Removable drain-valve access, 4× M12 each | 2 | Local fab | $20–$30 | $40–$60 |
+| Welding / fabrication | ~26–36 hrs (incl. feet + seat brackets) | 1 | Local fab shop | $1,150–$1,650 | $1,150–$1,650 |
+| Primer + flat-black powder coat | Anti-corrosion finish | 1 | Local | $40–$60 | $40–$60 |
+**IBC stacking frame subtotal: ~$1,770–$2,630**
 
 ### Pumps
 | Item | Spec | Qty | Supplier | Est. unit | Total |

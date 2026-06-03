@@ -17,14 +17,14 @@
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
-| **5. Processing water system (incl. tray, spray bar)** | $3,145 | $3,917 | $4,688 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,915 | $6,117 | $7,318 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$14,144** | **$18,391** | **$24,072** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$15,914** | **$20,591** | **$26,702** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -244,6 +244,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Category | Low† | High† |
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, cross-connect) | $395 | $720 |
+| IBC stacking frame (50×50×3mm RHS + floor flange feet + welded wall seat brackets + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,770 | $2,630 |
 | Pumps and accumulator (P-01, P-02, P-04 manifold + P-03 IBC corridor) | $305 | $355 |
 | Filter skid (3× Big Blue housings + cartridges) | $265 | $370 |
 | Valves and fittings (incl. S60×6 adapters, check valves CV1/CV3/CV4) | $390 | $630 |
@@ -252,7 +253,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Spray bar assembly (gantry: beam, LDPE pipe, nozzles, wheels, ball joint, arm, hose) | $191 | $233 |
 | Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
-| **Water system total** | **$3,130** | **$4,673** |
+| **Water system total** | **$4,900** | **$7,303** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 
@@ -476,14 +477,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
 | Film plane mechanism (manual, incl. brace cage) | $2,800 |
-| Water system (incl. processing tray, spray bar) | $3,130 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (custom fabrication) | $950 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $953 |
 | Ceiling rail suspension | $175 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$13,812** |
+| **Scenario A total** | **~$15,582** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -493,7 +494,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + brace cage + electric actuation) | $3,797 |
-| Water system (incl. processing tray, spray bar) | $3,884 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (custom fabrication) | $1,200 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $1,216 |
 | Ceiling rail suspension | $208 |
@@ -501,17 +502,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$19,179** |
+| **Scenario B total (excl. CDL)** | **~$21,379** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $18,985 |
+| Scenario B build | $21,185 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$107,915–$137,915** |
+| **Scenario C total** | **~$110,115–$140,115** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

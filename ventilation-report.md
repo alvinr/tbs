@@ -113,7 +113,7 @@ The baffle design is identical for both fans. Fan A's baffle duct is fixed to th
 
 ### 5.2 Light-Safe Cooler Intake
 
-The cooler sits on the ground outside the container, adjacent to the pinhole wall. A short length of Ø200mm flexible insulated duct connects the cooler outlet to a wall penetration with light-safe baffles. Power (Circuit E, 12V DC) is supplied via a Deutsch DT 2-pin bulkhead connector on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m external cable connects the panel to the cooler; both the cable and flex duct are disconnected and stowed inside the container for transport. See [Electrical Report](electrical-report.md) §7.3 for the full wire path.
+The cooler sits on the ground outside the container, adjacent to the pinhole wall. A Ø200mm flexible insulated duct rises vertically from the cooler outlet and turns through a 90° elbow into the wall penetration (Z=1900mm), so it meets both the cooler and the wall stub at right angles. The penetration carries light-safe baffles. Power (Circuit E, 12V DC) is supplied via a Deutsch DT 2-pin bulkhead connector on the external power panel — the same flush-mount panel that carries the solar and shore power inputs. A 1.5m external cable connects the panel to the cooler; both the cable and flex duct are disconnected and stowed inside the container for transport. See [Electrical Report](electrical-report.md) §7.3 for the full wire path.
 
 This arrangement requires no permanent external mounting — the cooler is simply placed, connected (duct + power), and removed each session.
 
@@ -121,7 +121,8 @@ This arrangement requires no permanent external mounting — the cooler is simpl
 |-----------|-------|
 | Duct size | 200mm (8") — sized for ~300 CFM at low velocity |
 | Penetration location | Pinhole wall (Yd=0 face) at X=1000mm, Z=1900mm |
-| Flexible duct | Ø200mm insulated flex, ~1m length, aluminum foil jacket |
+| Flexible duct | Ø200mm insulated flex, ~1.2m length, aluminum foil jacket |
+| Elbow | Ø200mm (8") 90° galvanized elbow — vertical riser to horizontal wall entry |
 | Interior baffles | Two 200 × 200mm flat steel baffles, offset 100mm, inside a 300mm duct stub |
 | Light path | Broken by offset baffles — no direct line of sight |
 | Exterior coupling | Ø200mm duct collar on wall stub; flex duct secured with hose clamp |
@@ -195,7 +196,8 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | Local sheet metal / Home Depot | ~$30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | Local sheet metal / Home Depot | ~$20 |
-| 200mm insulated flex duct | Ø200mm × 1m, aluminum foil jacket | Home Depot / McMaster-Carr | ~$20 |
+| 200mm insulated flex duct | Ø200mm × 1.2m, aluminum foil jacket | Home Depot / McMaster-Carr | ~$22 |
+| 200mm 90° duct elbow | Ø200mm (8") galvanized, cooler riser to wall stub | Home Depot | ~$14 |
 | Duct collar + hose clamp | Ø200mm, galvanized | Home Depot | ~$12 |
 | Weatherproof duct cap | Ø200mm, removable | Home Depot | ~$8 |
 | Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | Waytek Wire (waytekwire.com) | ~$8 |
@@ -203,7 +205,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | Waytek Wire / Amazon | ~$20 |
 | Ratchet straps, 25mm × 2 | Cooler stowage | Home Depot / Amazon | ~$12 |
 | Plywood base plate | 12mm, 600 × 350mm (cooler stowage) | Lumber yard / Home Depot | ~$8 |
-| **Ventilation & cooling total** | | | **~$753** |
+| **Ventilation & cooling total** | | | **~$769** |
 
 ---
 

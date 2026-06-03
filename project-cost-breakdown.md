@@ -17,14 +17,14 @@
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
-| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,915 | $6,117 | $7,318 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,927 | $6,139 | $7,350 |
 | **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$15,914** | **$20,591** | **$26,702** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$15,926** | **$20,613** | **$26,734** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -250,10 +250,10 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Valves and fittings (incl. S60×6 adapters, check valves CV1/CV3/CV4) | $390 | $630 |
 | Pipe (HDPE, spray bar) | $100 | $140 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,177 | $1,857 |
-| Spray bar assembly (gantry: beam, LDPE pipe, nozzles, wheels, ball joint, arm, hose) | $191 | $233 |
+| Spray bar assembly (gantry: beam, LDPE pipe, 26 nozzles, wheels, ball joint, arm, hose) | $203 | $265 |
 | Electrical (wiring only — fuse block in Electrical Report) | $35 | $35 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $231 | $278 |
-| **Water system total** | **$4,900** | **$7,303** |
+| **Water system total** | **$4,912** | **$7,335** |
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
 

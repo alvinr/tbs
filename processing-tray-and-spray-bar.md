@@ -94,7 +94,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks (Z=140mm at max tilt) | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=150 and X=4,649 | 20mm gap between tray edge and rail | Clear |
-| Spray bar (rides on tray floor beneath walkway grating) | Spacer top at Z=42.5mm, grating bottom at Z=75mm | Clear |
+| Spray bar (rides on tray floor beneath walkway grating) | Top clamp plate at Z=63mm (nut ~66mm), grating bottom at Z=75mm | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends at X=4,629 — 45mm gap | Clear |
 | Pump manifold (equipment panel at Yd=1,046) | Suction hose routes over near rim exterior | Clear |
 
@@ -124,8 +124,8 @@ The beam spans 3859mm between the inner edges of the left and right walkways
 (X=470 to X=4,329), extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE
 irrigation poly pipe inside the aluminum SHS bore serves as the spray pipe — water
-enters through a barbed center feed fitting and exits through six barbed flat-fan
-irrigation nozzles spaced evenly along the beam bottom face.
+enters through a barbed center feed fitting and exits through twenty-six barbed flat-fan
+irrigation nozzles at 150mm pitch along the beam bottom face.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
@@ -144,15 +144,15 @@ irrigation nozzles spaced evenly along the beam bottom face.
 |-----------|--------------|-----|---------|
 | Beam | 6061-T6 AL SHS, 40×40×3mm, 3859mm long (two 8 ft lengths joined with splice sleeve) | 1 | Structural beam housing internal spray pipe |
 | Internal spray pipe | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution inside beam bore |
-| Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 6 | Spray distribution through beam bottom wall |
+| Flat-fan spray nozzles | Barbed inlet, irrigation-type, 180° fan pattern | 26 | Spray distribution through beam bottom wall (150mm pitch) |
 | Barbed center feed fitting | 3/4" barb × 1/2" barb adapter, through beam top wall | 1 | Center feed — connects flex hose to poly pipe |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Nylon skate wheels](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | 50mm OD × 20mm wide, 10mm bore, flat tread | 8 | Roll on tray floor beneath walkway grating (2 pairs per carriage) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 8 (2 packs) | Wheel spindles |
-| [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, 10mm, two-hole U-shaped strap | 8 | Bolted to carriage plate underside, retains axle in position |
-| Carriage plates | 6061-T6 AL plate 5mm, notched for U-clamp | 2 | Connect wheels to beam via spacer + U-clamp |
-| Spacer blocks | 6061-T6 AL, 8.5mm thick, under U-clamp feet | 4 | Raise U-clamp seat from plate top (Z=34) to beam center height (Z=42.5) |
-| U-clamps | SS, under-slung, flared feet + wing nuts — cradles 40mm SHS from below | 2 | Attach beam to carriage plate, tool-free adjustment |
+| [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
+| Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
+| Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 40mm SHS | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
+| Spacer blocks | 6061-T6 AL, between top & bottom clamp plates, one each side of beam | 4 | Set clamp gap to beam height so bolts grip the beam rather than bend the plates |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange | 1 | Multi-axis arm articulation on beam top face |
 | M8 U-bolt | SS, wraps over ball joint socket, nyloc nuts | 1 | Clamps ball joint to beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
@@ -188,14 +188,14 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 | Property | Value |
 |----------|-------|
 | Nozzle type | Flat-fan irrigation nozzle, barbed inlet |
-| Number of nozzles | 6 |
-| Nozzle spacing | ~640mm center-to-center |
+| Number of nozzles | 26 |
+| Nozzle spacing | 150mm center-to-center |
 | Spray pattern | 180° flat fan |
 | Pipe OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Bore clearance | 4.5mm per side (pipe loose in 34mm bore) |
 
-The six barbed fittings (plus the center feed fitting) pass through drilled holes
-in the beam wall and grip the LDPE pipe by their barb ridges. These seven through-wall
+The twenty-six barbed fittings (plus the center feed fitting) pass through drilled holes
+in the beam wall and grip the LDPE pipe by their barb ridges. These twenty-seven through-wall
 fittings act as locating pins, preventing the poly pipe from sliding or rotating
 inside the oversized bore — no additional pipe restraint is needed.
 
@@ -234,16 +234,16 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 | Reference point | Z (mm AFF) |
 |-----------------|------------|
 | Container floor | 0 |
-| Tray floor (SS sheet on floor) | ~2 |
+| Bottom clamp plate (under beam) | 17–20 |
 | Nozzle bottom (6mm body) | 14 |
 | Beam bottom | 20 |
 | Wheel axle centerline | 27 |
 | Carriage plate bottom | 29 |
 | Carriage plate top | 34 |
-| Spacer block top / U-clamp seat | 42.5 |
 | Tray rim top | 50 |
 | Wheel top | 52 |
 | Beam top | 60 |
+| Top clamp plate (+ bolt nut) | 60–63 (66) |
 | Walkway grating bottom | 75 |
 | Walkway grating top (deck surface) | 100 |
 
@@ -251,33 +251,34 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 
 | Interface | Gap | Notes |
 |-----------|-----|-------|
-| Spacer top → grating bottom | 32.5mm | Ample clearance; no contact during travel |
+| Top clamp plate nut → grating bottom | ~9mm | Clears grating; the top clamp plate is now the highest carriage point |
 | Beam bottom → tray floor | 18mm | Reduces to ~11mm at midspan under full water load (see §3.7) |
 | Nozzle bottom → tray floor | 12mm | Nozzle body clears floor at all carriage positions |
 | Wheel top → grating bottom | 23mm | Wheels roll freely under grating |
 
-**Axle retention:** Each wheel axle (10mm SS axle pin) is held by a SS saddle clamp
-(2mm strap) bolted to the underside of the carriage plate. The U-clamp wraps under
-the axle pin with 1mm clearance, and through-bolts pass up through the clamp legs
-and carriage plate to secure the axle in position.
+**Axle retention:** Each wheel axle (10mm SS axle pin) is held by a curved conduit-style
+saddle clamp (2mm SS strap) bolted to the underside of the carriage plate. The saddle
+cradles the axle pin with 1mm clearance; two bolts pass up through the saddle feet and
+carriage plate to lock the axle in position.
 
 ### 3.5 Carriage Plate Design
 
 Each carriage uses a flat aluminum plate positioned 2mm above the wheel axle (Z=29–34mm).
-The plate has a central notch that straddles the beam U-clamp legs. Aluminum spacer
-blocks (8.5mm tall) sit on the plate wings beneath the U-clamp feet, raising the
-U-clamp seat to Z=42.5mm so the beam remains at its design height (Z=20–60mm).
+The plate wings extend inward to meet the beam faces; the beam is gripped by a top and
+bottom clamp plate that sandwich it vertically, with the carriage plate wing captured in
+the same bolted stack. The beam stays at its design height (Z=20–60mm).
 
 Formed from 5mm 6061-T6 aluminum plate:
 
-- **Plate wings:** Two flat sections extending outward from the beam notch to the
+- **Plate wings:** Two flat sections extending from the beam faces out to the
   wheel axle positions. Total plate width spans both wheel positions plus 18mm
-  overhang on each side.
-- **Center notch:** Cut-out slightly wider than the U-clamp outer width, allowing
-  the clamp legs to pass through the plate and grip the beam.
-- **Spacer blocks:** Two 8.5mm aluminum blocks, one per U-clamp foot, bolted through
-  the plate with the U-clamp bolts. Raise the effective clamp seat from plate top
-  (Z=34mm) to the beam center height (Z=42.5mm).
+  overhang on each side; the outer edge is flush with the beam end.
+- **Center notch:** The wings butt against the 40mm beam faces (no gap), so the
+  carriage and beam read as one continuous body.
+- **Beam clamp:** A bottom clamp plate (under the beam, Z=17–20mm) and a top clamp
+  plate (over the beam, Z=60–63mm) are drawn together by bolts on each side of the
+  beam. A solid aluminum spacer block beside each beam face fills the gap between the
+  plates so tightening grips the beam instead of bending the plates.
 - **Ball joint mount:** The ball joint flange bolts to the beam top face (Z=60mm),
   keeping the socket housing below grating level (Z=75mm).
 
@@ -287,43 +288,44 @@ structure. The 200mm wheel spacing in Yd prevents significant skew.
 
 ### 3.6 Carriage Fabrication
 
-Each carriage is built from two sub-assemblies: a carriage plate with spacer blocks,
-and four wheel-and-axle units retained by U-clamps. Two identical carriages are
+Each carriage is built from two sub-assemblies: a carriage plate, and wheel-and-axle
+units retained by curved saddle clamps. The beam is then sandwiched between a top and
+bottom clamp plate bolted through the carriage plate. Two identical carriages are
 required (left end and right end of beam).
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
 #### 3.6.1 Carriage Plate Fabrication (2 required)
 
-Each carriage plate is a flat 5mm 6061-T6 aluminum plate with a central notch for the
-beam U-clamp. The plate sits 2mm above the wheel axle (Z=29–34mm), connecting the
-wheels to the beam via spacer blocks and beam U-clamp.
+Each carriage plate is a flat 5mm 6061-T6 aluminum plate whose wings meet the beam
+faces. The plate sits 2mm above the wheel axle (Z=29–34mm); the beam clamp bolts pass
+through it, capturing the plate between the top and bottom clamp plates.
 
 **Blank:** Cut two pieces from 5mm plate, each 280mm long × 60mm wide.
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark notch | Scribe center notch outline — width matches beam U-clamp outer span plus 1mm clearance each side |
+| 1 | Mark notch | Scribe the central notch so the wings butt the 40mm beam faces (outer edge flush with beam end) |
 | 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
-| 3 | Mark axle U-clamp positions | On each wing, mark two Ø5.5mm clearance holes (M5) per wheel position for axle retention U-clamps |
-| 4 | Mark beam U-clamp bolt positions | Two Ø5.5mm holes on each side of the notch, aligning with beam U-clamp flared feet |
-| 5 | Drill all holes | Drill press for accuracy — 8 axle U-clamp holes + 4 beam U-clamp holes total |
+| 3 | Mark axle saddle positions | On each wing, mark two Ø5.5mm clearance holes (M5) per saddle clamp for axle retention |
+| 4 | Mark beam clamp bolt positions | Two Ø5.5mm holes on each side of the beam, aligning with the top/bottom clamp plate bolts |
+| 5 | Drill all holes | Drill press for accuracy — 8 axle saddle holes + 4 beam clamp holes per plate |
 | 6 | Deburr | Remove all burrs from edges, notch, and holes |
 
 #### 3.6.2 Wheel Assembly (4 required)
 
 ![Sheet 5 — Detail C: Wheel Attachment](assets/spray-bar-sheet5.png)
 
-Each wheel is retained by a SS U-clamp (2mm strap) bolted to the carriage plate
-underside. The U-clamp wraps under the 10mm axle pin with 1mm clearance.
+Each wheel axle is retained by a curved SS saddle clamp (2mm strap) bolted to the
+carriage plate underside. The saddle cradles the 10mm axle pin with 1mm clearance.
 
 | Step | Operation |
 |------|-----------|
 | 1 | Place nylon wheel (50mm × 20mm, 10mm bore) in position under the carriage plate |
 | 2 | Insert 10mm SS axle pin through wheel bore |
-| 3 | Position axle retention U-clamp under the axle, legs facing up toward plate |
-| 4 | Insert 2× M5 bolts up through U-clamp legs and carriage plate; secure with nyloc nuts on top |
-| 5 | Tighten finger-tight only until all four wheels are installed |
+| 3 | Position the saddle clamp over the axle, feet against the plate underside |
+| 4 | Insert 2× M5 bolts up through the saddle feet and carriage plate; secure with nyloc nuts on top |
+| 5 | Tighten finger-tight only until all wheels are installed |
 | 6 | Spin wheel by hand — confirm free rotation with no lateral wobble |
 
 #### 3.6.3 Carriage Assembly (2 required)
@@ -333,7 +335,7 @@ underside. The U-clamp wraps under the 10mm axle pin with 1mm clearance.
 | Step | Operation |
 |------|-----------|
 | 1 | Place carriage plate flat on bench, notch centered |
-| 2 | Install first wheel-and-U-clamp unit on the near wing (wheel hanging below bench edge) — finger-tight |
+| 2 | Install first wheel-and-saddle unit on the near wing (wheel hanging below bench edge) — finger-tight |
 | 3 | Repeat for the second wheel on the near wing (200mm Yd spacing) |
 | 4 | Repeat for both wheels on the far wing |
 | 5 | Verify 200mm wheel spacing (center-to-center, Yd direction) |
@@ -342,20 +344,20 @@ underside. The U-clamp wraps under the 10mm axle pin with 1mm clearance.
 
 #### 3.6.5 Beam Attachment
 
-The carriages attach to the beam using SS U-clamps in a cradle configuration. The
-U-clamp wraps under the beam from below, with its legs passing up through the carriage
-plate notch and flared feet resting on top of the spacer blocks. Bolts pass through the
-U-clamp feet, spacer blocks, and carriage plate; wing nuts thread on below. This
-provides tool-free adjustment of the carriage position along the beam.
+The carriages attach to the beam with a top + bottom clamp plate that sandwich the SHS
+vertically. The bottom plate sits under the beam (Z=17–20mm) and the top plate over it
+(Z=60–63mm); a solid aluminum spacer block beside each beam face fills the gap so the
+bolts grip the beam rather than bending the plates. Four bolts per carriage pass through
+the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and bottom.
 
 | Step | Operation |
 |------|-----------|
-| 1 | Slide one U-clamp under the beam SHS approximately 30mm from each end |
-| 2 | Lower the carriage plate over the beam so the notch straddles the U-clamp legs |
-| 3 | Align the U-clamp flared feet against the carriage plate underside |
-| 4 | Pass bolts through the plate from above, through the U-clamp feet |
-| 5 | Thread wing nuts onto each bolt below the feet and tighten by hand until the clamp grips the beam firmly |
-| 6 | Set the assembled spray bar on the processing tray floor. Confirm plate top (Z=42.5mm) clears walkway grating bottom (Z=75mm) — 32.5mm gap. Confirm all wheels roll freely on the tray floor |
+| 1 | Position the bottom clamp plate under the beam SHS, with its outer edge flush with the beam end |
+| 2 | Set the carriage plate over the beam so the wings butt the beam faces |
+| 3 | Place a spacer block against each beam face, between the plate wings |
+| 4 | Lay the top clamp plate over the beam, aligning the bolt holes with the bottom plate |
+| 5 | Pass four bolts down through top plate + spacer + carriage wing + bottom plate; thread nuts top and bottom and tighten evenly until the beam is gripped |
+| 6 | Set the assembled spray bar on the processing tray floor. Confirm the top clamp plate (Z=63mm, nut ~66mm) clears the walkway grating bottom (Z=75mm). Confirm all wheels roll freely on the tray floor |
 | 7 | Push the bar through its full 2200mm Yd travel to verify it tracks straight between the tray rim walls without binding |
 
 ### 3.7 Structural Analysis
@@ -399,12 +401,12 @@ halves meet at a shallow upward angle.
 | Water in pipe | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (8× wheel + axle + saddle clamp) | 0.60 |
-| Nozzles + fittings | 0.15 |
-| Hardware (bolts, clips, U-clamps) | 0.30 |
-| **Dry total** | **~6.8 kg** |
-| **Wet total (operating)** | **~7.9 kg** |
+| Nozzles + fittings (26×) | 0.30 |
+| Hardware (bolts, clips, clamp plates) | 0.35 |
+| **Dry total** | **~6.9 kg** |
+| **Wet total (operating)** | **~8.0 kg** |
 
-Per wheel load (wet): 7.9 / 4 = 2.0 kg — well within any small nylon wheel's rating.
+Per wheel load (wet): 8.0 / 4 = 2.0 kg — well within any small nylon wheel's rating.
 
 ### 3.8 Beam Splice Joint
 
@@ -425,13 +427,13 @@ the splice entirely.
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
 | Pipe inlet velocity | 0.78 m/s (at 3.5 GPM) |
-| Spray nozzles | 6 × flat-fan irrigation nozzles |
-| Flow per nozzle | 0.58 GPM (2.2 L/min) |
+| Spray nozzles | 26 × flat-fan irrigation nozzles |
+| Flow per nozzle | 0.135 GPM (0.51 L/min) |
 
 The center feed position minimizes pipe friction losses by splitting flow equally to
-three nozzles on each side. The 19mm bore provides adequate flow capacity at 3.5 GPM.
-Each irrigation nozzle delivers a 180° flat fan pattern, providing overlapping coverage
-along the 3859mm beam span.
+thirteen nozzles on each side. The 19mm bore provides adequate flow capacity at 3.5 GPM.
+Each irrigation nozzle delivers a 180° flat fan pattern; at 150mm pitch the fans overlap
+heavily, giving near-continuous wash coverage along the 3859mm beam span.
 
 ### 3.10 Water Connection
 
@@ -446,7 +448,7 @@ the print surface.
 ![Sheet 7 — Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 →
-coiled flexible hose → barbed center feed → poly pipe bore → 6× spray nozzles.
+coiled flexible hose → barbed center feed → poly pipe bore → 26× spray nozzles.
 
 ### 3.11 Walkway Slit
 
@@ -484,11 +486,11 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 | Sheet | Title | Content |
 |-------|-------|---------|
 | 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-02, pole, walkway slit, operator silhouette |
-| 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, U-clamp, ball joint, arm, hose |
+| 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, beam clamp plates, saddle clamps, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
 | 5 | Detail C — Wheel Attachment | Section along axle at 4:1 — carriage plate, nylon wheel, axle pin, saddle clamp |
-| 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, U-clamp, wheels |
+| 6 | Detail D — Wheel Plan | Plan view of carriage — beam, carriage plate, beam clamp plate, saddle clamps, wheels |
 | 7 | Detail B — Center Feed | Longitudinal section at 2:1 — barbed center feed and nozzle connection details |
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
@@ -536,7 +538,7 @@ tray drainage plan and sump cross-section).
 | 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 | $15–$25 |
 | 30×30mm AL solid bar, 150mm | Internal splice sleeve | 1 | $8–$12 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | Internal spray pipe (OD 25mm, ID 19mm) | 1 | $10 |
-| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 6 | $18 |
+| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern, barbed inlet | 26 | $30–$50 |
 | 3/4" barb × 1/2" barb adapter | Center feed through beam top wall | 1 | $4 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 | $4 |
 | [Nylon skate wheel, 50mm × 20mm, 10mm bore](https://www.mcmaster.com/products/rollers/skate-wheels-1~/) | Flat tread, ≥25 kg rated (2 pairs per carriage) | 8 | $24–$40 |
@@ -545,22 +547,22 @@ tray drainage plan and sump cross-section).
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 8 (2 packs) | $10 |
 | [304 SS saddle clamp, 10mm (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | Axle retention, bolted to plate underside | 8 | $10 |
-| M6×20 SS bolts + nyloc nuts | Carriage plate, axle U-clamp, splice fasteners | 16 | $7 |
+| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle clamp, splice fasteners | 16 | $7 |
 | M8 SS U-bolt + nyloc nuts | Ball joint to beam clamp | 1 | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 | $12 |
-| SS U-clamp, flared legs, wing nuts (40mm) | Beam to carriage plate (tool-free) | 2 | $10 |
+| SS beam clamp plates (top + bottom) + spacers (40mm) | Beam to carriage plate (sandwich, bolted) | 4 | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 | $1 |
-| **Spray bar subtotal** | | | **$216–$268** |
+| **Spray bar subtotal** | | | **$228–$300** |
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | $1,300–$2,015 |
-| Spray bar assembly | $216–$268 |
-| **Total** | **$1,516–$2,283** |
+| Spray bar assembly | $228–$300 |
+| **Total** | **$1,528–$2,315** |
 
 ---
 

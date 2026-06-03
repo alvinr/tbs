@@ -173,13 +173,18 @@ def drum():
     parts.append(ruby_box("LT Floor collar plate", cx - 120, cy - 120, -WALL_T,
                           240, 240, WALL_T, color=C_STEEL))
 
-    # Interior grab rail (Ø30 × 400 vertical tube, +X face, Z 700–1100) + 2 standoffs.
-    gx = cx + r + 60
+    # Interior grab rail (Ø30 × 400 vertical tube, Z 700–1100) mounted on the
+    # INSIDE of the drum's +X interior-face wall — operator grabs it from within
+    # the drum to pull it closed. Standoffs bridge the inner wall surface to the
+    # rail; nothing penetrates the exterior wall (no light-leak path) per report §3.5.
+    wall_t = 12                                 # drum shell wall thickness
+    inner = cx + r - wall_t                      # inner wall surface on the +X side
+    gx = cx + r - 75                             # rail sits inside the drum
     parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400,
                                color=C_STEEL, axis="z"))
     for bz in (720, 1080):
-        parts.append(ruby_box("LT Grab rail standoff", cx + r - 5, cy - 6, bz,
-                              70, 12, 12, color=C_STEEL))
+        parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
+                              inner - gx, 12, 12, color=C_STEEL))
     return '\n'.join(parts)
 
 
@@ -260,10 +265,9 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# Idempotent rebuild: erase prior generated instances (keep 'Sree'), purge defs.
+# Idempotent rebuild: erase ALL prior instances (no scale figure in this model).
 to_erase = entities.to_a.select {{ |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)) &&
-  !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused

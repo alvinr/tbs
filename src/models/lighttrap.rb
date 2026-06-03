@@ -7,10 +7,9 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# Idempotent rebuild: erase prior generated instances (keep 'Sree'), purge defs.
+# Idempotent rebuild: erase ALL prior instances (no scale figure in this model).
 to_erase = entities.to_a.select { |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)) &&
-  !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -475,7 +474,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Grab rail"
   ge = grp.entities
-  circle = ge.add_circle([435.mm,1181.mm,700.mm], [0,0,1], 15.mm, 24)
+  circle = ge.add_circle([300.mm,1181.mm,700.mm], [0,0,1], 15.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(400.mm)
@@ -487,7 +486,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # LT Grab rail standoff
   grp = ents.add_group
   grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([370.mm,1175.mm,720.mm], [440.mm,1175.mm,720.mm], [440.mm,1187.mm,720.mm], [370.mm,1187.mm,720.mm])
+  face = grp.entities.add_face([300.mm,1175.mm,720.mm], [363.mm,1175.mm,720.mm], [363.mm,1187.mm,720.mm], [300.mm,1187.mm,720.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -498,7 +497,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # LT Grab rail standoff
   grp = ents.add_group
   grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([370.mm,1175.mm,1080.mm], [440.mm,1175.mm,1080.mm], [440.mm,1187.mm,1080.mm], [370.mm,1187.mm,1080.mm])
+  face = grp.entities.add_face([300.mm,1175.mm,1080.mm], [363.mm,1175.mm,1080.mm], [363.mm,1187.mm,1080.mm], [300.mm,1187.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")

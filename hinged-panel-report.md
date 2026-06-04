@@ -47,9 +47,9 @@ while keeping the corners flush with the container walls.
 
 | Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 0–653 | 653 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
+| Near corner | 0–653 | 653 | 40 | 18mm ply + 3mm aluminum plate + 18mm ply |
 | Center | 653–1,709 | 1,056 | 120 | 18mm ply + 84mm RHS frame + 18mm ply |
-| Far corner | 1,709–2,362 | 653 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
+| Far corner | 1,709–2,362 | 653 | 40 | 18mm ply + 3mm aluminum plate + 18mm ply |
 
 The 80mm step between corner and center zones occurs at Yd=653mm and
 Yd=1709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
@@ -65,7 +65,7 @@ flush-faced panels that seal against the fixed door frame.
 | Skin (each face) | 18mm exterior-grade plywood |
 | Interior finish | Flat black (RAL 9005) — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitred joints |
-| Panel weight (sandwich + Ø900 housing, excl. drum) | ~344 kg (first-principles: 260 kg sandwich + 84 kg housing) |
+| Panel weight (sandwich + Ø900 housing, excl. drum) | ~223 kg (first-principles: 187 kg sandwich + 36 kg housing) |
 
 ### 2.3 EPDM Perimeter Seal
 
@@ -98,12 +98,12 @@ provides light-tight compression on all four sides.
 | Passage width | **~555mm** (the 80° opening) — single operator, sideways entry |
 | Height | Top at Z=2200mm (upper bearing on panel top rail) |
 | Mounting | **Suspended with the panel** — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80). |
-| Wall thickness | 3mm mild steel (housing and drum), rolled and seam-welded |
-| Interior finish | Shot-blast + flat black powder coat (RAL 9005) |
+| Wall thickness | 3mm aluminum 5052-H32 (housing and drum), rolled and seam-welded; opening edge-stiffened |
+| Interior finish | Etch-prime + flat black (RAL 9005); anodize optional |
 | Exterior finish | Grey oxide primer + grey topcoat |
 | Clear walking height | 1910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | housing ~84 kg + rotating drum ~144 kg = **~228 kg** (3mm steel, first-principles) |
+| Weight | housing ~36 kg + rotating drum ~63 kg = **~99 kg** (3mm aluminum, first-principles) |
 
 ### 3.2 Bearings
 
@@ -114,9 +114,9 @@ provides light-tight compression on all four sides.
 | Clearance | C3 |
 | Radial load rating | 52.7 kN (static) |
 | Operating temperature | 0–120°C |
-| Stub shafts | 75mm Ø × 150mm steel, welded to drum top and bottom caps |
+| Stub shafts | 75mm Ø × 150mm steel, bolted through an isolated steel hub to the aluminum drum caps (dissimilar-metal joint) |
 | Axial retention | Circlip on stub shaft each side |
-| Upper mount | Welded steel housing bolted to panel top rail (6 × M10 SS) |
+| Upper mount | Aluminum housing top ring bolted to panel top rail (6 × M10 SS, nylon-isolated) |
 | Lower mount | Welded steel floor collar bolted to panel bottom rail (8 × M10 SS) |
 | Bearing housing height | 45mm (each) |
 
@@ -340,28 +340,29 @@ for the sliding carriage.
 |------|--------------|-----|----------------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
 | 18mm exterior-grade plywood (1220 × 2440mm sheets) | Panel skins (both faces) | 6 | $180–$300 |
-| 4mm steel plate (1220 × 2440mm) | Corner zone core plates | 2 | $80–$120 |
+| 3mm aluminum plate (1220 × 2440mm) | Corner zone core plates | 2 | $360–$460 |
 | 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal — ~10 m required | 10 m | $40–$60 |
 | Aluminum U-channel (per meter) | Gasket retainer — ~10 m required | 10 m | $30–$50 |
 | 200mm SS ball-bearing piano hinge | Left-edge hinges | 3 | $45–$75 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches | 4 | $60–$100 |
 | Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |
-| **Panel subtotal** | | | **$575–$895** |
+| **Panel subtotal** | | | **$855–$1,235** |
 
 ### 8.2 Housed Revolving Door (housing + drum)
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 3mm mild steel sheet (1200 × 2400mm, A36) | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 | $280–$360 |
-| 5mm steel plate | Drum top and bottom caps | 1 | $40–$60 |
+| 3mm 5052 aluminum sheet (1220 × 2440mm) | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 | $700–$940 |
+| 4mm aluminum plate | Drum top + bottom caps + opening edge stiffeners | 1 | $60–$95 |
 | SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 | $90–$130 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 | $10–$15 |
 | 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 | $15–$25 |
-| Flat black powder coat (housing + drum interior) | Local powder coat service | 1 | $180–$260 |
-| Metal fabrication (roll 2 cylinders, weld, fit, bearings) | 22–28 hrs labor | 1 | $1,100–$1,500 |
-| **Housing + drum subtotal** | | | **$1,785–$2,460** |
+| Etch-prime + flat black (housing + drum interior) | Aluminum prep + coat | 1 | $180–$260 |
+| Galvanic isolation kit | Nylon bushings/washers + barrier tape + A2 bolts (Al↔steel joints) | 1 lot | $40–$70 |
+| Metal fabrication (roll 2 cylinders, aluminum TIG weld, fit, bearings) | 22–28 hrs labor | 1 | $1,100–$1,500 |
+| **Housing + drum subtotal** | | | **$2,300–$3,150** |
 
 ### 8.3 Sliding Carriage
 
@@ -389,11 +390,11 @@ for the sliding carriage.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure | $575 | $895 |
-| Housing + drum | $1,785 | $2,460 |
+| Panel structure | $855 | $1,235 |
+| Housing + drum | $2,300 | $3,150 |
 | Sliding carriage | $365 | $585 |
 | Fixed door frame | $335 | $550 |
-| **Total** | **$3,060** | **$4,490** |
+| **Total** | **$3,855** | **$5,520** |
 
 ---
 

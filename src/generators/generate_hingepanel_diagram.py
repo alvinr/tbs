@@ -502,9 +502,9 @@ def sheet2():
                                 fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
 
     # ── CORNER ZONES (40mm thick, Yd=0→756 and Yd=1606→2362) ─────────────────
-    # Corner zones: 18mm ply + 4mm steel plate + 18mm ply = 40mm
+    # Corner zones: 18mm ply + 3mm aluminum plate + 18mm ply (40mm envelope)
     CORN_PLY   = 18
-    CORN_PLATE = 4
+    CORN_PLATE = 3
     CORN_Y0_PL  = Y1_W                          # outer ply starts at wall inner face
     CORN_Y1_PL  = CORN_Y0_PL + CORN_PLY          # = 58
     CORN_Y0_ST  = CORN_Y1_PL                     # steel plate
@@ -517,7 +517,7 @@ def sheet2():
         ax.add_patch(Rectangle((x0, CORN_Y0_PL), w, CORN_PLY,
                                 fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
         ax.add_patch(Rectangle((x0, CORN_Y0_ST), w, CORN_PLATE,
-                                fc=C_STEEL, ec=C_OUT, lw=0.6, zorder=3))
+                                fc=C_ALUM, ec=C_OUT, lw=0.6, hatch="xx", zorder=3))
         ax.add_patch(Rectangle((x0, CORN_Y0_PL2), w, CORN_PLY,
                                 fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
 
@@ -630,7 +630,7 @@ def sheet2():
     OD = LT_OPENING_DEG                          # 80° openings
     BORE_R = LT_DRUM_OR - 3                       # ~Ø850 bore
     ax.add_patch(Circle((D_CX, D_CY), LT_DRUM_OR, fc="#F8F4EC", ec="none", zorder=8))
-    _arc(D_CX, D_CY, DR, [(90, OD), (270, OD)], 4.0, C_STEEL, z=9)      # fixed housing
+    _arc(D_CX, D_CY, DR, [(90, OD), (270, OD)], 4.0, C_ALUM, z=9)      # fixed Al housing
     _arc(D_CX, D_CY, LT_DRUM_OR, [(270, OD)], 3.0, "#9C7B4D", z=10)      # C-shell drum (ENTER)
     # daylight ray at ENTER: enters bore from exterior, blocked at interior by drum
     ax.annotate("", xy=(D_CX, D_CY + LT_DRUM_OR * 0.9), xytext=(D_CX, D_YB - 70),

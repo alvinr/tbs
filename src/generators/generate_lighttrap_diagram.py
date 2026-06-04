@@ -117,13 +117,18 @@ def draw_sheet1():
     pf_a_x0 = bd_a_x0 + BD_W              # left face of panel fan
     draw_rect(ax, pf_a_x0, FA_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
               fc=C_ALUM, lw=1.5, zorder=5)
-    draw_circle(ax, FA_X, FA_Y, R_PF, lw=1.2, zorder=6)
-    ax.text(FA_X, FA_Y, "A", ha="center", va="center",
-            fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
-    for angle in [0, 60, 120, 180, 240, 300]:
-        bx = FA_X + R_PF * 0.80 * math.cos(math.radians(angle))
-        by = FA_Y + R_PF * 0.80 * math.sin(math.radians(angle))
-        ax.plot([FA_X, bx], [FA_Y, by], color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
+    # fan EDGE-ON (axis horizontal, along the airflow): centreline + motor hub +
+    # pitched impeller blades + ID. (Was a face-on circle, which read vertical-axis.)
+    ax.plot([pf_a_x0 - 0.08, pf_a_x0 + PF_T + 0.08], [FA_Y, FA_Y],
+            color=C_CL, lw=0.7, ls=(0, (4, 3)), zorder=6)
+    draw_rect(ax, FA_X - PF_T * 0.32, FA_Y - R_PF * 0.26, PF_T * 0.64, R_PF * 0.52,
+              fc=C_STEEL, lw=0.8, zorder=7)
+    for sgn in (-1, 1):
+        ax.plot([pf_a_x0 + PF_T * 0.30, pf_a_x0 + PF_T * 0.70],
+                [FA_Y + sgn * R_PF * 0.30, FA_Y + sgn * R_PF * 0.80],
+                color=C_DIM, lw=1.0, alpha=0.5, zorder=6)
+    ax.text(FA_X, FA_Y + R_PF + 0.05, "A", ha="center", va="bottom",
+            fontsize=8.5, fontweight="bold", color=C_OUT, zorder=7)
 
     # Airflow: container → fan → baffle → grille → exterior left (leftward, out)
     ax.annotate("", xy=(CX - 1.6, FA_Y),
@@ -162,15 +167,17 @@ def draw_sheet1():
     draw_rect(ax, pf_x0, FB_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
               fc=C_ALUM, lw=1.5, zorder=5)
     # Impeller circle on face
-    draw_circle(ax, FB_X, FB_Y, R_PF, lw=1.2, zorder=6)
-    ax.text(FB_X, FB_Y, "B", ha="center", va="center",
-            fontsize=9, fontweight="bold", color=C_OUT, zorder=7)
-    # Blade lines
-    for angle in [0, 60, 120, 180, 240, 300]:
-        bx = FB_X + R_PF * 0.80 * math.cos(math.radians(angle))
-        by = FB_Y + R_PF * 0.80 * math.sin(math.radians(angle))
-        ax.plot([FB_X, bx], [FB_Y, by],
-                color=C_DIM, lw=1.2, alpha=0.5, zorder=6)
+    # fan EDGE-ON (axis horizontal) — matches Fan A, Sheet 2, and the 3D model
+    ax.plot([pf_x0 - 0.08, pf_x0 + PF_T + 0.08], [FB_Y, FB_Y],
+            color=C_CL, lw=0.7, ls=(0, (4, 3)), zorder=6)
+    draw_rect(ax, FB_X - PF_T * 0.32, FB_Y - R_PF * 0.26, PF_T * 0.64, R_PF * 0.52,
+              fc=C_STEEL, lw=0.8, zorder=7)
+    for sgn in (-1, 1):
+        ax.plot([pf_x0 + PF_T * 0.30, pf_x0 + PF_T * 0.70],
+                [FB_Y + sgn * R_PF * 0.30, FB_Y + sgn * R_PF * 0.80],
+                color=C_DIM, lw=1.0, alpha=0.5, zorder=6)
+    ax.text(FB_X, FB_Y + R_PF + 0.05, "B", ha="center", va="bottom",
+            fontsize=8.5, fontweight="bold", color=C_OUT, zorder=7)
 
     # Airflow: exterior right → grille → baffle → fan (leftward into container)
     ax.annotate("", xy=(CX + CW, FB_Y),
@@ -485,12 +492,20 @@ def draw_sheet2():
     # ── Panel fan body ────────────────────────────────────────────────────────
     draw_rect(ax, FX, FCZ - PF_R - 5, PF_BD, (PF_R + 5) * 2,
               fc=C_ALUM, lw=1.8, zorder=5)
-    draw_circle(ax, FX, FCZ, PF_R * 0.90, lw=1.5, fill=True, fc="#E8EEF4", zorder=6)
-    for angle in range(0, 360, 45):
-        bx = FX + PF_R * 0.82 * math.cos(math.radians(angle))
-        bz = FCZ + PF_R * 0.82 * math.sin(math.radians(angle))
-        ax.plot([FX, bx], [FCZ, bz], color=C_DIM, lw=1.4, alpha=0.60, zorder=7)
-    draw_circle(ax, FX, FCZ, PF_R * 0.18, lw=1.0, fill=True, fc=C_STEEL, zorder=8)
+    # Fan shown IN PROFILE (axis horizontal, air flows L→R along X) — consistent
+    # with this section and the 3D model. (Was a face-on circle, which read as a
+    # vertical axis.)
+    draw_rect(ax, FX, FCZ - PF_R, PF_BD, 2 * PF_R, fc="#E8EEF4", lw=0.8, zorder=5.5)  # bore
+    ax.plot([FX - 10, FX + PF_BD + 10], [FCZ, FCZ],
+            color=C_CL, lw=0.9, ls=(0, (6, 3)), zorder=7)                              # axis CL
+    hub_d, hub_l = PF_R * 0.40, PF_BD * 0.58                                           # motor hub
+    draw_rect(ax, FX + (PF_BD - hub_l) / 2, FCZ - hub_d / 2, hub_l, hub_d,
+              fc=C_STEEL, lw=1.0, zorder=8)
+    for sgn in (-1, 1):                                                                # impeller blades
+        for bxo in (0.32, 0.50, 0.68):                                                 # (pitched, in profile)
+            xb = FX + PF_BD * bxo
+            ax.plot([xb - 5, xb + 5], [FCZ + sgn * hub_d / 2, FCZ + sgn * (PF_R - 6)],
+                    color=C_DIM, lw=1.3, alpha=0.55, zorder=7)
     ax.text(FX, FCZ + PF_R + 10, "INLET\n(air enters)",
             ha="center", va="bottom", fontsize=7.0, color=C_CL, fontweight="bold", zorder=10)
     ax.text(FX + PF_BD, FCZ + PF_R + 10, "OUTLET\n(air exits)",

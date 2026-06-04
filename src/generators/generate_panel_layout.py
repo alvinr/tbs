@@ -382,8 +382,14 @@ _arrow_kw = dict(arrowstyle="-|>", lw=1.5, mutation_scale=8)
 
 def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
                    fc, ec=C_FRAME, bore_fc="white",
-                   elbow_r=None, zorder=8):
-    """Parallel-wall pipe run with concentric-arc elbows."""
+                   elbow_r=None, zorder=8, sxf=None, szf=None):
+    """Parallel-wall pipe run with concentric-arc elbows.
+
+    sxf/szf: optional scale functions (mm → data coords). Default to the front
+    view's global sx/sz; the backside section passes identity (it draws in mm).
+    """
+    _sx = sxf if sxf is not None else sx
+    _sz = szf if szf is not None else sz
     n = len(x_pts)
     if n < 2:
         return
@@ -431,10 +437,10 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
         })
 
     def _rect(sx0, sz0, sx1, sz1, nx, nz, half_r, color, z_ord):
-        pts = [(sx(sx0 + nx * half_r), sz(sz0 + nz * half_r)),
-               (sx(sx1 + nx * half_r), sz(sz1 + nz * half_r)),
-               (sx(sx1 - nx * half_r), sz(sz1 - nz * half_r)),
-               (sx(sx0 - nx * half_r), sz(sz0 - nz * half_r))]
+        pts = [(_sx(sx0 + nx * half_r), _sz(sz0 + nz * half_r)),
+               (_sx(sx1 + nx * half_r), _sz(sz1 + nz * half_r)),
+               (_sx(sx1 - nx * half_r), _sz(sz1 - nz * half_r)),
+               (_sx(sx0 - nx * half_r), _sz(sz0 - nz * half_r))]
         ax.fill([p[0] for p in pts], [p[1] for p in pts],
                 fc=color, ec=ec if color != bore_fc else "none",
                 lw=0.8 if color != bore_fc else 0, zorder=z_ord)
@@ -466,10 +472,10 @@ def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
 
         def _arc_ring(r_out, r_in, color, z_ord,
                       _cy=cy, _cz=cz_e, _angles=angles):
-            ox_ = [sx(_cy + r_out * math.cos(a)) for a in _angles]
-            oz_ = [sz(_cz + r_out * math.sin(a)) for a in _angles]
-            ix_ = [sx(_cy + r_in * math.cos(a)) for a in _angles]
-            iz_ = [sz(_cz + r_in * math.sin(a)) for a in _angles]
+            ox_ = [_sx(_cy + r_out * math.cos(a)) for a in _angles]
+            oz_ = [_sz(_cz + r_out * math.sin(a)) for a in _angles]
+            ix_ = [_sx(_cy + r_in * math.cos(a)) for a in _angles]
+            iz_ = [_sz(_cz + r_in * math.sin(a)) for a in _angles]
             ax.fill(ox_ + ix_[::-1], oz_ + iz_[::-1],
                     fc=color, ec=ec if color != bore_fc else "none",
                     lw=0.8 if color != bore_fc else 0, zorder=z_ord)
@@ -1187,12 +1193,16 @@ def _rect(x, z, w, h, fc, ec=C_OUT, lw=1.0, z0=5, hatch=None, alpha=1.0):
                   lw=lw, zorder=z0, hatch=hatch, alpha=alpha))
 
 
-def _vpipe(x, za, zb, fc):
-    _rect(x - POD / 2, min(za, zb), POD, abs(zb - za), fc, ec=C_OUT, lw=0.8, z0=8)
+_sid = lambda v: v          # backside section draws in true mm (identity scale)
+PWALL = 4                   # pipe wall thickness (mm) — colored wall + white bore
 
 
-def _hpipe(xa, xb, z, fc):
-    _rect(min(xa, xb), z - POD / 2, abs(xb - xa), POD, fc, ec=C_OUT, lw=0.8, z0=8)
+def _pipe(xs, zs, fc):
+    """Color-coded pipe run with parallel walls + concentric-arc elbow fittings
+    at every direction change (skill_plumbing_drawing.md). xs/zs = waypoints.
+    Reuses the panel's draw_pipe_path with identity scale (backside = true mm)."""
+    draw_pipe_path(axb, xs, zs, POD, PWALL, fc, ec=C_OUT, bore_fc="white",
+                   zorder=8, sxf=_sid, szf=_sid)
 
 
 # ── Container shell context ──────────────────────────────────────────────
@@ -1231,19 +1241,19 @@ leader(axb, (PANX + SHX1) / 2, SH_TOP, 5620, 2150,
        ha="left", va="center", arrow_style="-|>", font=FB)
 
 # ── Blue fill trunk on the shelf ─────────────────────────────────────────
-_hpipe(5408, WALLX, BLUE_Z, C_BLUEB)
+_pipe([5408, WALLX], [BLUE_Z, BLUE_Z], C_BLUEB)       # straight run to X1
 _rect(5414, SH_TOP, 36, 22, C_STEEL, lw=0.7, z0=10)   # saddle clamp
 leader(axb, 5650, BLUE_Z, 5720, 2400,
        "BLUE FILL TRUNK (to X1)\nsaddle-clamped to the shelf\n→ tees to Blue totes (out of section)",
        color=C_BLUEB, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FB)
 
 # ── Drain risers: P-05→X3 (Brown), P-03→X4 (Waste) ───────────────────────
-_hpipe(PANX - 50, RX3, Z_TOP, C_BROWNB)          # P-05 discharge stub
-_vpipe(RX3, Z_TOP, EXT_DRAIN_3_H, C_BROWNB)       # Brown riser down
-_hpipe(RX3, WALLX, EXT_DRAIN_3_H, C_BROWNB)       # out to X3 port
-_hpipe(PANX - 50, RX4, Z_MID, C_WASTEB)          # P-03 discharge stub
-_vpipe(RX4, Z_MID, EXT_DRAIN_H, C_WASTEB)         # Waste riser down
-_hpipe(RX4, WALLX, EXT_DRAIN_H, C_WASTEB)         # out to X4 port
+# Each is one run: pump discharge stub → 90° elbow → riser down → 90° elbow →
+# horizontal stub into the end-wall port (right-angle entry at both ends).
+_pipe([PANX - 50, RX3, RX3,          WALLX],
+      [Z_TOP,     Z_TOP, EXT_DRAIN_3_H, EXT_DRAIN_3_H], C_BROWNB)   # P-05 → X3
+_pipe([PANX - 50, RX4, RX4,        WALLX],
+      [Z_MID,     Z_MID, EXT_DRAIN_H, EXT_DRAIN_H], C_WASTEB)       # P-03 → X4
 # P-clips on the risers (against the spine face)
 for rx, ztop, n in [(RX3, Z_TOP, 4), (RX4, Z_MID, 3)]:
     for i in range(n):

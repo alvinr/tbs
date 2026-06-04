@@ -71,13 +71,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.16
   grp.material = mat
 
-  # Left walkway (ghost, partial)
+  # Left walkway (ghost)
   grp = ents.add_group
-  grp.name = "Left walkway (ghost, partial)"
-  face = grp.entities.add_face([170.mm,481.mm,65.mm], [470.mm,481.mm,65.mm], [470.mm,1881.mm,65.mm], [170.mm,1881.mm,65.mm])
+  grp.name = "Left walkway (ghost)"
+  face = grp.entities.add_face([170.mm,0.mm,65.mm], [470.mm,0.mm,65.mm], [470.mm,2362.mm,65.mm], [170.mm,2362.mm,65.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
-  mat = model.materials["Left walkway (ghost, partial)"] || model.materials.add("Left walkway (ghost, partial)")
+  mat = model.materials["Left walkway (ghost)"] || model.materials.add("Left walkway (ghost)")
   mat.color = Sketchup::Color.new(128, 128, 128)
   mat.alpha = 0.28
   grp.material = mat

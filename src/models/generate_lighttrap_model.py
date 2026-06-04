@@ -88,12 +88,12 @@ def context():
                  color=C_SHELL, alpha=0.16),
         ruby_box("Side Wall far (context)", x0, C_WID, 0, xlen, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.16),
-        # Ghosted PARTIAL of the removable left walkway (the surface the operator
-        # steps onto from the drum's interior opening): grating deck at X 170–470,
-        # Z 65–80, a representative span centered on the light lock.
-        ruby_box("Left walkway (ghost, partial)", ov.WALKWAY_LEFT_X,
-                 DRUM_CY - 700, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
-                 ov.WALKWAY_W, 1400, ov.WALKWAY_GRATE_T,
+        # Ghosted left walkway (the surface the operator steps onto from the
+        # drum's interior opening): grating deck at X 170–470, Z 65–80, spanning
+        # the full container width to match the ghost-container footprint.
+        ruby_box("Left walkway (ghost)", ov.WALKWAY_LEFT_X,
+                 0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
+                 ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
                  color="#808080", alpha=0.28),
     ])
 

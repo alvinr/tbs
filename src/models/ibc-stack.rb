@@ -352,7 +352,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([4684.mm,996.mm,-12.mm], [4834.mm,996.mm,-12.mm], [4834.mm,1146.mm,-12.mm], [4684.mm,1146.mm,-12.mm])
+  face = grp.entities.add_face([4684.mm,996.mm,0.mm], [4834.mm,996.mm,0.mm], [4834.mm,1146.mm,0.mm], [4684.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -364,10 +364,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4709.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4709.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -377,10 +377,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4709.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4709.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -390,10 +390,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4809.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -403,10 +403,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4809.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -415,7 +415,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([4684.mm,1216.mm,-12.mm], [4834.mm,1216.mm,-12.mm], [4834.mm,1366.mm,-12.mm], [4684.mm,1366.mm,-12.mm])
+  face = grp.entities.add_face([4684.mm,1216.mm,0.mm], [4834.mm,1216.mm,0.mm], [4834.mm,1366.mm,0.mm], [4684.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -427,10 +427,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4709.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4709.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -440,10 +440,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4709.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4709.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -453,10 +453,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4809.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -466,10 +466,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4809.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4809.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -478,7 +478,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([5208.5.mm,996.mm,-12.mm], [5358.5.mm,996.mm,-12.mm], [5358.5.mm,1146.mm,-12.mm], [5208.5.mm,1146.mm,-12.mm])
+  face = grp.entities.add_face([5208.5.mm,996.mm,0.mm], [5358.5.mm,996.mm,0.mm], [5358.5.mm,1146.mm,0.mm], [5208.5.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -490,10 +490,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5233.5.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5233.5.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -503,10 +503,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5233.5.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5233.5.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -516,10 +516,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5333.5.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5333.5.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -529,10 +529,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5333.5.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5333.5.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -541,7 +541,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([5208.5.mm,1216.mm,-12.mm], [5358.5.mm,1216.mm,-12.mm], [5358.5.mm,1366.mm,-12.mm], [5208.5.mm,1366.mm,-12.mm])
+  face = grp.entities.add_face([5208.5.mm,1216.mm,0.mm], [5358.5.mm,1216.mm,0.mm], [5358.5.mm,1366.mm,0.mm], [5208.5.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -553,10 +553,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5233.5.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5233.5.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -566,10 +566,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5233.5.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5233.5.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -579,10 +579,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5333.5.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5333.5.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -592,10 +592,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5333.5.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5333.5.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -604,7 +604,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([5733.mm,996.mm,-12.mm], [5883.mm,996.mm,-12.mm], [5883.mm,1146.mm,-12.mm], [5733.mm,1146.mm,-12.mm])
+  face = grp.entities.add_face([5733.mm,996.mm,0.mm], [5883.mm,996.mm,0.mm], [5883.mm,1146.mm,0.mm], [5733.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -616,10 +616,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5758.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5758.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -629,10 +629,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5758.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5758.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -642,10 +642,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5858.mm,1021.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5858.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -655,10 +655,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5858.mm,1121.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5858.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -667,7 +667,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Foot Flange Plate
   grp = ents.add_group
   grp.name = "Foot Flange Plate"
-  face = grp.entities.add_face([5733.mm,1216.mm,-12.mm], [5883.mm,1216.mm,-12.mm], [5883.mm,1366.mm,-12.mm], [5733.mm,1366.mm,-12.mm])
+  face = grp.entities.add_face([5733.mm,1216.mm,0.mm], [5883.mm,1216.mm,0.mm], [5883.mm,1366.mm,0.mm], [5733.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
@@ -679,10 +679,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5758.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5758.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -692,10 +692,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5758.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5758.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -705,10 +705,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5858.mm,1241.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5858.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0
@@ -718,10 +718,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Foot Anchor Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([5858.mm,1341.mm,-12.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5858.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(20.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Foot Anchor Bolt M12"] || model.materials.add("Foot Anchor Bolt M12")
   mat.color = Sketchup::Color.new(58, 58, 66)
   mat.alpha = 1.0

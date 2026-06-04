@@ -261,23 +261,26 @@ def sheet1():
            arrow_style="-|>", font=FONT)
 
     # ── Floor flange feet: a 150×150×12 plate fillet-welded to each corridor
-    # upright base, bolted down with 4× M12 anchors (uplift + lateral restraint).
+    # upright base, sitting ON the floor surface and bolted down with 4× M12
+    # anchors through the plate into the slab (uplift + lateral restraint).
     # Matches the 3D "Foot Flange Plate / Foot Anchor Bolt" parts. ──
     foot_half = IBC_FOOT_PLATE / 2
     for uyd in corridor_uprights:
         fcy = uyd + IBC_FRAME_RHS / 2               # foot centred on the upright
-        ax.add_patch(Rectangle((sx(fcy - foot_half), sy(-IBC_FOOT_PLATE_T)),
+        # flange plate sits ON the floor surface (Z 0 .. t)
+        ax.add_patch(Rectangle((sx(fcy - foot_half), sy(0)),
                                 sx(IBC_FOOT_PLATE), sy(IBC_FOOT_PLATE_T),
                                 fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
+        # 4× M12 anchors (2 visible) through the plate down into the floor slab
         for d in (-IBC_FOOT_BOLT_PCD / 2, IBC_FOOT_BOLT_PCD / 2):
             ax.plot([sx(fcy + d), sx(fcy + d)],
-                    [sy(-IBC_FOOT_PLATE_T), sy(-IBC_FOOT_PLATE_T - 28)],
+                    [sy(IBC_FOOT_PLATE_T), sy(-26)],
                     color=C_BOLT, lw=1.8, zorder=9)
-            ax.plot(sx(fcy + d), sy(-IBC_FOOT_PLATE_T - 28), 'v',
-                    color=C_BOLT, ms=4, mew=0, zorder=9)
-    leader(ax, sx(corridor_uprights[0] + IBC_FRAME_RHS / 2), sy(-IBC_FOOT_PLATE_T),
+            ax.plot(sx(fcy + d), sy(IBC_FOOT_PLATE_T), 'o',
+                    color=C_BOLT, ms=3.5, mew=0, zorder=9)
+    leader(ax, sx(corridor_uprights[0] + IBC_FRAME_RHS / 2), sy(IBC_FOOT_PLATE_T),
            sx((near_col_r + far_col_l) / 2), sy(320),
-           "FLOOR FLANGE FOOT (TYP. ×6)\n150×150×12 plate,\n4× M12 floor anchors",
+           "FLOOR FLANGE FOOT (TYP. ×6)\n150×150×12 plate on floor,\n4× M12 floor anchors",
            color=C_FRAME, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
 

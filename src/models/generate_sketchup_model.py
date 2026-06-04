@@ -733,19 +733,20 @@ def ibc_rack():
 
     c_bolt = "#3A3A42"
 
-    # ── Floor feet: 150×150×12 base flange plate + 4 M12 anchor bolts under each
-    # corridor upright — fixes the frame down (vertical + uplift restraint). ──
+    # ── Floor feet: 150×150×12 base flange plate ON the floor + 4 M12 anchor
+    # bolts through the plate into the slab under each corridor upright — fixes
+    # the frame down (vertical + uplift restraint). ──
     fp, ft, bpc = IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD // 2
     for xs in x_stations:
         for yd in (yd_near, yd_far - s):
             cx, cy = xs + s / 2, yd + s / 2
             parts.append(ruby_box("Foot Flange Plate",
-                                  cx - fp / 2, cy - fp / 2, -ft, fp, fp, ft,
+                                  cx - fp / 2, cy - fp / 2, 0, fp, fp, ft,
                                   color=C_STEEL))
             for dx in (-bpc, bpc):
                 for dy in (-bpc, bpc):
                     parts.append(ruby_cylinder("Foot Anchor Bolt M12",
-                                               cx + dx, cy + dy, -ft, 7, ft + 8,
+                                               cx + dx, cy + dy, 0, 7, ft + 4,
                                                color=c_bolt, axis="z"))
 
     # ── Load-bearing wall seat brackets: a welded knee bracket props each

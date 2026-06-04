@@ -31,6 +31,7 @@ site/                    ← built output — gitignored, never commit
 - `skills/skill_diagram_structure.md` — coordinate system, view conventions, multi-sheet generator boilerplate, shared helper catalog
 - `skills/skill_label_placement.md` — 57 rules for leader lines, dimensions, notes blocks, and label positioning
 - `skills/skill_plumbing_drawing.md` — pipe drawing conventions, fittings, crossings, flow arrows
+- `skills/skill_model_consistency.md` — find 2D↔3D↔docs drift: failure-mode taxonomy + the `check_consistency.py` audit (run after any geometry/design change)
 
 ---
 
@@ -117,6 +118,11 @@ ripple into both.
   a system component, generator, or model is added or changed.
 - Today there is one model (`overview.skp`) containing nearly every component, so
   in practice any `tbs_constants.py` change ⇒ re-run `overview`.
+- **Audit for drift** after a geometry/design change (or when asked "does this
+  diagram match the 3D model?"): `python3 src/generators/check_consistency.py`.
+  It scans for stale literals (old constant values in labels/comments), 2D↔3D
+  git divergence, import asymmetry, and part/label gaps. See
+  `skills/skill_model_consistency.md`.
 
 ---
 

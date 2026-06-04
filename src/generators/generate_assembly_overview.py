@@ -163,7 +163,7 @@ ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
              alpha=0.5, zorder=4))
 
 # Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
-# In this side elevation appears as a rectangle Ø750mm wide × 2000mm tall.
+# In this side elevation appears as a rectangle Ø900mm wide × 2000mm tall.
 ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
              facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
 # Centre line through drum

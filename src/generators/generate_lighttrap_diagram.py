@@ -252,7 +252,7 @@ def draw_sheet1():
 
     # ── Film left-rail demountable segment — drum-mode clearance note ─────────
     # The film-plane LEFT RAIL (X=150mm in container coords) passes through the
-    # drum volume (Yd 806–1556mm). That rail segment is demountable so the drum
+    # drum volume (Yd 731–1631mm). That rail segment is demountable so the drum
     # can rotate in "drum mode"; the carriage parks at Yd=2262 during drum mode.
     # In this schematic longitudinal section the left rail is not drawn (it runs
     # perpendicular to this view), but we add a callout note above the drum box
@@ -275,7 +275,7 @@ def draw_sheet1():
     ax.text(NOTE_CX, NOTE_CY,
             "FILM LEFT-RAIL SEGMENT SWINGS CLEAR FOR\n"
             "DRUM ROTATION (drum mode)\n"
-            "Rail Yd 806–1556 demountable · carriage parks at Yd=2262",
+            "Rail Yd 731–1631 demountable · carriage parks at Yd=2262",
             ha="center", va="center", fontsize=6.5, color="#7A3A00",
             fontweight="bold", zorder=12)
     # Leader arrow from note bottom to drum box top-centre

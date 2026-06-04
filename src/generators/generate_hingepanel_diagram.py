@@ -406,7 +406,7 @@ def sheet1():
 # stepped panel.  Corner zones (Yd=0-756 and Yd=1606-2362) are only 40mm
 # thick — see Sheet 1 for the step transition locations.
 #
-# The drum (Ø750mm) is much larger than the panel depth (120mm + 40mm wall).
+# The drum (Ø900mm) is much larger than the panel depth (120mm + 40mm wall).
 # In plan, the drum circle overhangs both panel faces — this is physically
 # correct: the drum is secured by top/bottom bearings, not by the panel depth.
 # The plan section shows this clearly.
@@ -434,15 +434,15 @@ def sheet2():
     # Drum geometry — axis is vertical; plan section shows horizontal circle
     D_CX = PW / 2        # drum centre X: centred in panel width = 1181mm
     D_CY = (Y_EXT + Y_INT) / 2   # drum centre Y: centre of wall+panel depth = 80mm
-    DR   = DRUM_R        # = 375mm
+    DR   = DRUM_R        # = 450mm
 
     # Drum Y extents
     D_YB = D_CY - DR     # exterior overhang bottom = 80 - 375 = -295mm
     D_YT = D_CY + DR     # interior overhang top    = 80 + 375 = 455mm
 
     # Drum X extents
-    D_XL = D_CX - DR    # = 806mm
-    D_XR = D_CX + DR    # = 1556mm
+    D_XL = D_CX - DR    # = 731mm
+    D_XR = D_CX + DR    # = 1631mm
 
     # ── View window — full panel width + margins ────────────────────────────
     # Corner zone thicknesses
@@ -798,7 +798,7 @@ def sheet3():
 
     # Drum geometry in this view
     D_CX_DEPTH = (Y0_W + Y1_PL2) / 2   # drum centre in depth = 80mm
-    D_HALF_W   = DRUM_R                 # drum radius = 375mm (in depth axis)
+    D_HALF_W   = DRUM_R                 # drum/housing radius = 450mm (in depth axis)
 
     D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = 80 - 375 = -295mm (exterior overhang)
     D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = 80 + 375 = 455mm  (interior overhang)
@@ -1328,7 +1328,7 @@ def sheet4():
     PANEL_CT = PANEL_CORNER_T   # = 40mm
     PANEL_CC = PANEL_CENTER_T   # = 120mm
     SLIDE_P  = PANEL_SLIDE      # = 300mm
-    DR       = DRUM_R           # = 375mm (light trap drum)
+    DR       = DRUM_R           # = 450mm (light trap drum)
 
     # Positions in each mode (X = depth from wall inner face)
     OP_PANEL_X = 0
@@ -1560,10 +1560,11 @@ def sheet4():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 5  —  Drum access & light-tightness analysis (design review)
-# Tests the Ø750 / 4-fin revolving drum against two questions:
-#   A. Can a person fit through a 90° sector?
+# Shows why the rev8 housed door PASSES the two questions the old
+# Ø750 / 4-fin drum failed:
+#   A. Can a person fit through the opening?
 #   B. As the drum rotates, can daylight enter the container?
-# Both currently fail — this sheet shows why.
+# (The 4-fin drum failed both; the housed door passes both.)
 # ═════════════════════════════════════════════════════════════════════════════
 
 def sheet5():

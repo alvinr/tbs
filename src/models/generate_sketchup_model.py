@@ -791,7 +791,7 @@ def film_plane_mechanism():
     Rails run in +Y (depth) from the minimum carriage depth, at the four
     corners. A rigid rectangular brace cage (saddle/thumbscrew portals at each
     end) ties the rails into a knock-down box. The left rail's drum-zone
-    segment (Yd 806–1556) is demountable so the light-trap drum can rotate.
+    segment (Yd 731–1631) is demountable so the light-trap drum can rotate.
     The muslin screen sits at the nominal depth FP_Y with a 2" angle frame.
     """
     parts = []
@@ -802,7 +802,7 @@ def film_plane_mechanism():
     x_right = RAIL_X_R - rail       # 4609
     y0 = FP_Y_MIN                   # rails start at min carriage depth
     y_end = y0 + RAIL_LEN           # 2300
-    d0, d1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 806, 1556
+    d0, d1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
 
     # Right rails — full length, fixed.
     for rz, nm in [(z_bot, "BR"), (z_top, "TR")]:

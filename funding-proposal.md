@@ -94,11 +94,11 @@ Everything required to operate the camera for a first deployment:
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $150 |
 | Film plane mechanism (4-corner, manual actuation) | $2,400 |
 | Tilt-swing front board mechanism | $1,470 |
-| Revolving drum light trap (750mm custom steel drum, bearings, seals, fabrication) | $1,200 |
+| Housed revolving-door light trap (Ø900 aluminum housing + C-shell drum, bearings, seals, fabrication) | $2,300 |
 | Processing water system | $3,705 |
 | Cyanotype chemistry + muslin substrate (50-print run) | $2,842 |
-| Contingency (10%) | ~$1,600 |
-| **Level 1 total** | **~$17,660** |
+| Contingency (10%) | ~$1,700 |
+| **Level 1 total** | **~$18,870** |
 
 ### Level 2 — First Deployment (+$1,350–2,800)
 Transport, permits, and water resupply for a single public deployment:
@@ -120,7 +120,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalogue, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~$21,010–24,460 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~$22,220–25,670 for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

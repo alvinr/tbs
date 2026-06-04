@@ -49,6 +49,15 @@ zone above, with equipment arranged in columns for pipe routing efficiency.
 **Equipment Panel Layout — Front elevation with pump zone, filter skid, valves, and full plumbing routing**
 ![TBS-001 — Equipment Panel Layout](assets/panel-layout.png)
 
+**Backside (corridor side section) — what is mounted on the *back* of the panel:**
+the drain-riser backing spine (18mm ply teed off the panel, with a lowered top
+and a capped shelf), the X3/X4 drain risers running from the P-05/P-03 discharges
+down to the sealed end-wall ports, and the Blue fill trunk resting on the shelf.
+Pumps mount on the front face; the drain/fill runs are on the back, in the
+corridor gap clear of both tote columns.
+
+![TBS-001 — Equipment Panel Backside](assets/panel-layout-back.png)
+
 ### 3.1 Filter Skid — Z=200–1280mm
 
 Three 4.5"×10" Big Blue filter housings mounted vertically (sump down) in a

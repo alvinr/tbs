@@ -948,9 +948,9 @@ def sheet_summary(components):
 
     states = [
         ("dry", "DRY\n(Transport)", "#808080"),
+        ("loaded_transport", "LOADED TRANSPORT\n(Full Blue IBCs)", "#1A6FB0"),
         ("ready", "CAMERA READY\n(Full Blue IBCs)", C_BLUE_IBC),
         ("exhausted", "MATERIALS\nEXHAUSTED (Transport)", C_BROWN_IBC),
-        ("loaded_transport", "LOADED TRANSPORT\n(Full Blue IBCs)", "#1A6FB0"),
     ]
 
     cg_points = []

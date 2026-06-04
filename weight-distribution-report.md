@@ -132,9 +132,9 @@ Brown/Waste IBCs.
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
 | Dry (Transport) | 3,386 | 2,694 | 1,167 | 1,078 | 54.6/45.4% | 50.7/49.3% |
+| Loaded Transport (Blue full) | 4,586 | 3,372 | 1,171 | 1,193 | 40.3/59.7% | 50.5/49.5% |
 | Camera Ready (Deployed) | 4,586 | 3,379 | 1,171 | 1,192 | 40.3/59.7% | 50.5/49.5% |
 | Materials Exhausted (Transport) | 4,586 | 3,372 | 1,171 | 928 | 40.3/59.7% | 50.5/49.5% |
-| Loaded Transport (Blue full) | 4,586 | 3,372 | 1,171 | 1,193 | 40.3/59.7% | 50.5/49.5% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel slid in, cargo doors

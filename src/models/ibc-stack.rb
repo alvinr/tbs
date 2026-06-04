@@ -18,11 +18,74 @@ model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
 # ── Tags (layers) ──
+  model.layers.add("Context") unless model.layers["Context"]
   model.layers.add("IBC Tanks") unless model.layers["IBC Tanks"]
   model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Plumbing & Panel") unless model.layers["Plumbing & Panel"]
 
 # ── Subsystems (each a component on its tag) ──
+  # ═══ Container (ghost) ═══
+  defn = model.definitions.add("Container (ghost)")
+  ents = defn.entities
+  # Floor (context)
+  grp = ents.add_group
+  grp.name = "Floor (context)"
+  face = grp.entities.add_face([4300.mm,0.mm,-40.mm], [5893.mm,0.mm,-40.mm], [5893.mm,2362.mm,-40.mm], [4300.mm,2362.mm,-40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Floor (context)"] || model.materials.add("Floor (context)")
+  mat.color = Sketchup::Color.new(239, 237, 228)
+  mat.alpha = 0.25
+  grp.material = mat
+
+  # Ceiling (context)
+  grp = ents.add_group
+  grp.name = "Ceiling (context)"
+  face = grp.entities.add_face([4300.mm,0.mm,2388.mm], [5893.mm,0.mm,2388.mm], [5893.mm,2362.mm,2388.mm], [4300.mm,2362.mm,2388.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Ceiling (context)"] || model.materials.add("Ceiling (context)")
+  mat.color = Sketchup::Color.new(239, 237, 228)
+  mat.alpha = 0.1
+  grp.material = mat
+
+  # Side Wall near (context)
+  grp = ents.add_group
+  grp.name = "Side Wall near (context)"
+  face = grp.entities.add_face([4300.mm,-40.mm,0.mm], [5893.mm,-40.mm,0.mm], [5893.mm,0.mm,0.mm], [4300.mm,0.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2388.mm)
+  mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
+  mat.color = Sketchup::Color.new(239, 237, 228)
+  mat.alpha = 0.16
+  grp.material = mat
+
+  # Side Wall far (context)
+  grp = ents.add_group
+  grp.name = "Side Wall far (context)"
+  face = grp.entities.add_face([4300.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm], [5893.mm,2402.mm,0.mm], [4300.mm,2402.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2388.mm)
+  mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
+  mat.color = Sketchup::Color.new(239, 237, 228)
+  mat.alpha = 0.16
+  grp.material = mat
+
+  # End Wall sealed (context)
+  grp = ents.add_group
+  grp.name = "End Wall sealed (context)"
+  face = grp.entities.add_face([5893.mm,0.mm,0.mm], [5933.mm,0.mm,0.mm], [5933.mm,2362.mm,0.mm], [5893.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2388.mm)
+  mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
+  mat.color = Sketchup::Color.new(239, 237, 228)
+  mat.alpha = 0.16
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Container (ghost)"
+  inst.layer = model.layers["Context"]
+
   # ═══ IBC Tanks ═══
   defn = model.definitions.add("IBC Tanks")
   ents = defn.entities
@@ -1430,138 +1493,192 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Brown IBC
+  # P-05 → X3 (Brown drain-out)
   grp = ents.add_group
-  grp.name = "Drain → Brown IBC"
+  grp.name = "P-05 → X3 (Brown drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-469.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5893.mm,1181.mm,400.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(156.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5220.mm,1253.mm,1946.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Brown IBC elbow
+  # P-05 → X3 (Brown drain-out) elbow
   grp = ents.add_group
-  grp.name = "Drain → Brown IBC elbow"
+  grp.name = "P-05 → X3 (Brown drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5424.mm,1157.mm,400.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5424.mm,1181.mm,400.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5376.mm,1253.mm,1922.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5376.mm,1253.mm,1946.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Brown IBC
+  # P-05 → X3 (Brown drain-out)
   grp = ents.add_group
-  grp.name = "Drain → Brown IBC"
+  grp.name = "P-05 → X3 (Brown drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -87.mm, 0.mm)
-  circle = ge.add_circle([5400.mm,1157.mm,400.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1498.mm)
+  circle = ge.add_circle([5400.mm,1253.mm,1922.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Brown IBC elbow
+  # P-05 → X3 (Brown drain-out) elbow
   grp = ents.add_group
-  grp.name = "Drain → Brown IBC elbow"
+  grp.name = "P-05 → X3 (Brown drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5400.mm,1070.mm,376.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5400.mm,1070.mm,400.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5400.mm,1229.mm,424.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5400.mm,1253.mm,424.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Brown IBC
+  # P-05 → X3 (Brown drain-out)
   grp = ents.add_group
-  grp.name = "Drain → Brown IBC"
+  grp.name = "P-05 → X3 (Brown drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -76.mm)
-  circle = ge.add_circle([5400.mm,1046.mm,376.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -24.480000000000018.mm, 0.mm)
+  circle = ge.add_circle([5400.mm,1229.mm,400.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Waste IBC
+  # P-05 → X3 (Brown drain-out) elbow
   grp = ents.add_group
-  grp.name = "Drain → Waste IBC"
+  grp.name = "P-05 → X3 (Brown drain-out) elbow"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-469.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5893.mm,1181.mm,200.mm], vec, 12.mm, 16)
+  arc = ge.add_arc([5423.52.mm,1204.52.mm,400.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 23.520000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5400.mm,1204.52.mm,400.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 → X3 (Brown drain-out)
+  grp = ents.add_group
+  grp.name = "P-05 → X3 (Brown drain-out)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(469.47999999999956.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5423.52.mm,1181.mm,400.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 → X4 (Waste drain-out)
+  grp = ents.add_group
+  grp.name = "P-03 → X4 (Waste drain-out)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(96.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5220.mm,1253.mm,1578.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Waste IBC elbow
+  # P-03 → X4 (Waste drain-out) elbow
   grp = ents.add_group
-  grp.name = "Drain → Waste IBC elbow"
+  grp.name = "P-03 → X4 (Waste drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5424.mm,1205.mm,200.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5424.mm,1181.mm,200.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5316.mm,1253.mm,1554.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5316.mm,1253.mm,1578.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Waste IBC
+  # P-03 → X4 (Waste drain-out)
   grp = ents.add_group
-  grp.name = "Drain → Waste IBC"
+  grp.name = "P-03 → X4 (Waste drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 87.mm, 0.mm)
-  circle = ge.add_circle([5400.mm,1205.mm,200.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1330.mm)
+  circle = ge.add_circle([5340.mm,1253.mm,1554.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Waste IBC elbow
+  # P-03 → X4 (Waste drain-out) elbow
   grp = ents.add_group
-  grp.name = "Drain → Waste IBC elbow"
+  grp.name = "P-03 → X4 (Waste drain-out) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5400.mm,1292.mm,224.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5400.mm,1292.mm,200.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([5340.mm,1229.mm,224.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5340.mm,1253.mm,224.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drain → Waste IBC
+  # P-03 → X4 (Waste drain-out)
   grp = ents.add_group
-  grp.name = "Drain → Waste IBC"
+  grp.name = "P-03 → X4 (Waste drain-out)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 76.mm)
-  circle = ge.add_circle([5400.mm,1316.mm,224.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -24.480000000000018.mm, 0.mm)
+  circle = ge.add_circle([5340.mm,1229.mm,200.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 → X4 (Waste drain-out) elbow
+  grp = ents.add_group
+  grp.name = "P-03 → X4 (Waste drain-out) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5363.52.mm,1204.52.mm,200.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 23.520000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5340.mm,1204.52.mm,200.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 → X4 (Waste drain-out)
+  grp = ents.add_group
+  grp.name = "P-03 → X4 (Waste drain-out)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(529.4799999999996.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5363.52.mm,1181.mm,200.mm], vec, 12.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1685,7 +1802,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -1698,7 +1815,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5204.mm,1046.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -1712,7 +1829,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -1725,7 +1842,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5180.mm,1229.mm,185.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -1739,7 +1856,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -1753,7 +1870,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1766,7 +1883,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5244.mm,1316.mm,185.mm], [-1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1780,7 +1897,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1793,7 +1910,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5220.mm,1272.11.mm,185.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1807,7 +1924,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1816,12 +1933,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 86.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 101.mm)
   circle = ge.add_circle([4550.mm,80.mm,20.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1830,11 +1947,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.mm,80.mm,106.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4550.mm,80.mm,106.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
+  arc = ge.add_arc([4574.mm,80.mm,121.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 24.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4550.mm,80.mm,121.mm], [0.000000,0.000000,1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1844,11 +1961,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
   vec = Geom::Vector3d.new(23.460000000000036.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4574.mm,80.mm,130.mm], vec, 12.mm, 16)
+  circle = ge.add_circle([4574.mm,80.mm,145.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1857,11 +1974,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04 elbow"
   ge = grp.entities
-  arc = ge.add_arc([4597.46.mm,80.mm,107.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4597.46.mm,80.mm,130.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4597.46.mm,80.mm,122.46.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 22.540000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4597.46.mm,80.mm,145.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1870,12 +1987,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tray Sump → P-04"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -62.025000000000006.mm)
-  circle = ge.add_circle([4620.mm,80.mm,107.46000000000001.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -77.025.mm)
+  circle = ge.add_circle([4620.mm,80.mm,122.46000000000001.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1888,7 +2005,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4620.mm,80.mm,45.435.mm], [0.000000,0.000000,-1.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1902,7 +2019,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1915,7 +2032,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4643.6281500000005.mm,80.mm,30.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1929,7 +2046,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1942,7 +2059,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4651.5.mm,1157.mm,30.mm], [0.000000,1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1956,7 +2073,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1969,7 +2086,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5196.mm,1181.mm,30.mm], [1.000000,0.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1983,7 +2100,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -1996,7 +2113,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([5220.mm,1132.52.mm,30.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -2010,7 +2127,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -2087,7 +2204,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -1130.3.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, -1135.2.mm, 0.mm)
   circle = ge.add_circle([4649.mm,1157.mm,60.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -2101,8 +2218,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk elbow"
   ge = grp.entities
-  arc = ge.add_arc([4649.mm,26.7.mm,45.3.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4649.mm,26.7.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
+  arc = ge.add_arc([4649.mm,21.8.mm,50.199999999999996.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4649.mm,21.8.mm,60.mm], [0.000000,-1.000000,0.000000], 12.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Fill Trunk"] || model.materials.add("Fill Trunk")
@@ -2114,8 +2231,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Filters → Spray Trunk"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -15.299999999999997.mm)
-  circle = ge.add_circle([4649.mm,12.mm,45.3.mm], vec, 12.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.200000000000003.mm)
+  circle = ge.add_circle([4649.mm,12.mm,50.2.mm], vec, 12.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -2152,7 +2269,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(120.mm)
-  mat = model.materials["Drain → Brown IBC"] || model.materials.add("Drain → Brown IBC")
+  mat = model.materials["P-05 → X3 (Brown drain-out)"] || model.materials.add("P-05 → X3 (Brown drain-out)")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -2165,7 +2282,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(120.mm)
-  mat = model.materials["Drain → Waste IBC"] || model.materials.add("Drain → Waste IBC")
+  mat = model.materials["P-03 → X4 (Waste drain-out)"] || model.materials.add("P-03 → X4 (Waste drain-out)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -2179,7 +2296,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["IBC Tanks", "IBC Frame", "Plumbing & Panel"]
+keep_tags = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -2195,8 +2312,8 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Combined", ["IBC Tanks", "IBC Frame", "Plumbing & Panel"]]].each { |name, tags|
-  model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
+[["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Combined", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]]].each { |name, tags|
+  model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true
 }

@@ -62,6 +62,10 @@ from tbs_constants import (
     EQPANEL_YD, EQPANEL_YD_SPAN,
     IBC_COL_X, IBC_W, IBC_D, IBC_H_600, IBC_PALLET_H, IBC_BOTTLE_INSET,
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
+    IBC_FRAME_RHS,
+    IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD,
+    IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ,
+    IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H,
     PANEL_FRAME_X,
     DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
     LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
@@ -681,7 +685,7 @@ def ibc_rack():
     beams, and cantilever platform cross-beams under the top totes at Z≈1010.
     """
     parts = []
-    s = 50                              # 50×50 RHS
+    s = IBC_FRAME_RHS                   # 50×50 RHS
     plat_z = IBC_H_600                  # 1010 — top tier rests here
     beam_z = plat_z - s                 # cross-beams top flush with 1010
     yd_near, yd_far = 1046, 1316        # plumbing-corridor edges
@@ -731,7 +735,7 @@ def ibc_rack():
 
     # ── Floor feet: 150×150×12 base flange plate + 4 M12 anchor bolts under each
     # corridor upright — fixes the frame down (vertical + uplift restraint). ──
-    fp, ft, bpc = 150, 12, 50
+    fp, ft, bpc = IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD // 2
     for xs in x_stations:
         for yd in (yd_near, yd_far - s):
             cx, cy = xs + s / 2, yd + s / 2
@@ -750,8 +754,8 @@ def ibc_rack():
     # fabrication (Simpson-style shelf bracket): a vertical back-plate M12-bolted
     # to the wall, a horizontal seat the beam end lands on, and a triangular
     # gusset web welded between the two. ~110 kg per bracket. ──
-    wpw, wpt = 150, 8                   # back-plate 150(X) × 8(thick)
-    proj, seat_t, gh = 110, 10, 200     # seat projection into container, seat thickness, gusset depth
+    wpw, wpt = IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T          # back-plate 150(X) × 8(thick)
+    proj, seat_t, gh = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H  # seat projection, thickness, gusset depth
     sw = s + 20                         # seat width in X (beam + 10 each side)
     for xs in x_stations:
         gx = xs + s / 2 - 4             # gusset web (8mm) centred on the beam

@@ -37,6 +37,8 @@ from tbs_constants import (
     EXT_PANEL_YD, EXT_FILL_1_H, EXT_DRAIN_3_H, EXT_DRAIN_4_H,
     EQPANEL_X, EQPANEL_T, EQPANEL_YD,
     PANEL_FRAME_X, PANEL_FRAME_TOP_Z, IBC_FRAME_RHS,
+    IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N,
+    IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H,
     PUMP_D, PUMP_YD, PUMP_YD_SPAN,
     BB_OD, FSKID_YD,
     DIAGRAMS_DIR,
@@ -221,11 +223,11 @@ def sheet1():
     # span. Matches the 3D "Wall Bracket Plate / Seat / Gusset" fabrication
     # (~110 kg each, one per X-station per wall). ──
     C_BOLT    = "#3A3A42"
-    seat_top  = platform_z          # 1010 — platform-beam end lands here
-    proj      = 110                 # seat projection into container (Yd)
-    seat_t    = 10                  # seat plate thickness
-    gh        = 200                 # gusset web depth below the seat
-    plate_t   = 8                   # back-plate thickness (against wall)
+    seat_top  = platform_z              # 1010 — platform-beam end lands here
+    proj      = IBC_WBKT_SEAT_PROJ      # seat projection into container (Yd)
+    seat_t    = IBC_WBKT_SEAT_T         # seat plate thickness
+    gh        = IBC_WBKT_GUSSET_H       # gusset web depth below the seat
+    plate_t   = IBC_WBKT_PLATE_T        # back-plate thickness (against wall)
     seat_bot  = seat_top - seat_t
     guss_bot  = seat_bot - gh
     plate_top = seat_top + 10
@@ -256,6 +258,27 @@ def sheet1():
     leader(ax, sx(45), sy(seat_bot - gh / 2), sx(-55), sy(720),
            "WALL SEAT BRACKET (TYP. ×6)\nWelded knee: back-plate + seat +\ntriangular gusset web,\n4× M12 wall anchors",
            color=C_FRAME, fs=6, ha="left", va="top",
+           arrow_style="-|>", font=FONT)
+
+    # ── Floor flange feet: a 150×150×12 plate fillet-welded to each corridor
+    # upright base, bolted down with 4× M12 anchors (uplift + lateral restraint).
+    # Matches the 3D "Foot Flange Plate / Foot Anchor Bolt" parts. ──
+    foot_half = IBC_FOOT_PLATE / 2
+    for uyd in corridor_uprights:
+        fcy = uyd + IBC_FRAME_RHS / 2               # foot centred on the upright
+        ax.add_patch(Rectangle((sx(fcy - foot_half), sy(-IBC_FOOT_PLATE_T)),
+                                sx(IBC_FOOT_PLATE), sy(IBC_FOOT_PLATE_T),
+                                fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=8))
+        for d in (-IBC_FOOT_BOLT_PCD / 2, IBC_FOOT_BOLT_PCD / 2):
+            ax.plot([sx(fcy + d), sx(fcy + d)],
+                    [sy(-IBC_FOOT_PLATE_T), sy(-IBC_FOOT_PLATE_T - 28)],
+                    color=C_BOLT, lw=1.8, zorder=9)
+            ax.plot(sx(fcy + d), sy(-IBC_FOOT_PLATE_T - 28), 'v',
+                    color=C_BOLT, ms=4, mew=0, zorder=9)
+    leader(ax, sx(corridor_uprights[0] + IBC_FRAME_RHS / 2), sy(-IBC_FOOT_PLATE_T),
+           sx((near_col_r + far_col_l) / 2), sy(320),
+           "FLOOR FLANGE FOOT (TYP. ×6)\n150×150×12 plate,\n4× M12 floor anchors",
+           color=C_FRAME, fs=6, ha="center", va="bottom",
            arrow_style="-|>", font=FONT)
 
     # Platform beams — one per column (not spanning corridor)
@@ -421,7 +444,7 @@ def sheet1():
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
-        f"3. Portal frame: 50x50x3mm RHS mild steel, welded wall seat brackets (knee + gusset web, M12 anchors) + corridor uprights. ~{FRAME_WEIGHT}kg.",
+        f"3. Portal frame: 50x50x3mm RHS mild steel, welded wall seat brackets (knee + gusset web, M12 anchors) + corridor uprights on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet ({IBC_FOOT_BOLT_N}x M12 anchors each). ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm rubber anti-slip mat.",
         f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",

@@ -188,6 +188,7 @@ DIAG_IMAGE_FILES = [
     "shelf-sheet3.png",
     "pinhole-wall-elevation.png",
     "panel-layout.png",
+    "panel-layout-back.png",
     "spray-bar-sheet1.png",
     "spray-bar-sheet2.png",
     "spray-bar-sheet3.png",

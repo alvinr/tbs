@@ -1130,7 +1130,7 @@ ax.text(det_y(80), det_z(_sump_bot_z - 50),
 # ═══════════════════════════════════════════════════════════════════════════
 #  TITLE BLOCK
 # ═══════════════════════════════════════════════════════════════════════════
-title_block(ax, "SHEET 1 OF 1",
+title_block(ax, "SHEET 1 OF 2",
             drawing_title="EQUIPMENT PANEL — IBC CORRIDOR MOUNTING",
             subtitle="FRONT ELEVATION + PIPE ROUTING + CROSS-SECTION + DETAIL B",
             scale_note="ELEV 1:80 · DETAIL B ~1:3 · X-SECTION NTS · AXES IN mm",
@@ -1144,3 +1144,149 @@ fig.savefig(out, dpi=150, facecolor="white", edgecolor="none",
             bbox_inches="tight", pad_inches=0.2)
 plt.close(fig)
 print(f"Panel layout → {out}")
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  SHEET 2 — BACKSIDE (corridor side section, looking along Yd)
+#  Shows what is mounted on the BACK of the panel (toward the sealed wall):
+#  the drain-riser spine + capped top shelf, the X3/X4 drain risers running
+#  from the P-05/P-03 discharges down to the end-wall ports, and the Blue fill
+#  trunk resting on the shelf. Absolute X/Z (mm) — matches the 3D model.
+# ═══════════════════════════════════════════════════════════════════════════
+from tbs_constants import (EQPANEL_X, EQPANEL_Z_LO, EQPANEL_Z_HI, EQPANEL_T,
+                           C_LEN, C_HGT, EXT_DRAIN_3_H, EXT_DRAIN_H, EXT_FILL_H)
+
+FB = {"fontfamily": "monospace"}
+C_PLYB   = "#D9C9A3"   # plywood (tan)
+C_BROWNB = "#7A5230"   # brown developer drain
+C_WASTEB = "#8A8A8A"   # waste/grey drain
+C_BLUEB  = "#3A78C0"   # blue fill
+C_WALLB  = "#C8C8C8"
+
+PANX  = EQPANEL_X                 # 5240 — panel face
+PANX1 = EQPANEL_X + EQPANEL_T     # 5258 — panel rear
+SPX1  = 5420                      # spine rear
+SHX1  = 5460                      # shelf rear
+WALLX = C_LEN                     # 5893 — sealed end wall
+Z_BOT, Z_MID, Z_TOP = 1320, 1578, 1946          # pump rows
+SP_TOP = 2220                     # lowered spine web top
+SH_TOP = 2238                     # shelf top (Blue trunk underside)
+BLUE_Z = EXT_FILL_H               # 2250
+RX3, RX4 = 5400, 5340             # Brown / Waste riser X
+POD = 24                          # pipe OD (mm)
+
+figb, axb = plt.subplots(figsize=(11, 15.3))
+axb.set_xlim(4600, 6620)
+axb.set_ylim(-300, 2500)
+axb.set_aspect("equal")
+axb.axis("off")
+
+
+def _rect(x, z, w, h, fc, ec=C_OUT, lw=1.0, z0=5, hatch=None, alpha=1.0):
+    axb.add_patch(mpatches.Rectangle((x, z), w, h, facecolor=fc, edgecolor=ec,
+                  lw=lw, zorder=z0, hatch=hatch, alpha=alpha))
+
+
+def _vpipe(x, za, zb, fc):
+    _rect(x - POD / 2, min(za, zb), POD, abs(zb - za), fc, ec=C_OUT, lw=0.8, z0=8)
+
+
+def _hpipe(xa, xb, z, fc):
+    _rect(min(xa, xb), z - POD / 2, abs(xb - xa), POD, fc, ec=C_OUT, lw=0.8, z0=8)
+
+
+# ── Container shell context ──────────────────────────────────────────────
+_rect(4980, -90, 5933 - 4980, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
+axb.text(5010, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
+_rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
+axb.text(WALLX + 20, C_HGT - 60, "SEALED\nEND WALL\n(X=5893)", fontsize=6,
+         ha="center", va="top", color="#555", **FB)
+axb.plot([4980, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
+axb.text(5010, C_HGT + 25, "CEILING (Z=2388)", fontsize=6, color="#777", **FB)
+
+# ── Equipment panel (edge-on) + pumps on the front (-X) ──────────────────
+_rect(PANX, EQPANEL_Z_LO, EQPANEL_T, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PLYB, lw=1.3, z0=6)
+leader(axb, PANX + EQPANEL_T / 2, 700, 5150, 560,
+       "EQUIPMENT PANEL\n18mm ply (edge-on)\nZ=200–2260", color=C_OUT, fs=6,
+       ha="center", va="top", arrow_style="-|>", font=FB)
+for zr, lbl, hot in [(Z_BOT, "P-01 /\nP-02", False),
+                     (Z_MID, "P-03 /\nP-04", True),
+                     (Z_TOP, "P-05 /\nACC-01", True)]:
+    _rect(PANX - 100, zr, 100, 218, "#E6D9F0" if hot else "#EAEAEA",
+          ec=C_OUT, lw=0.9, z0=5)
+    axb.text(PANX - 50, zr + 109, lbl, fontsize=6, ha="center", va="center",
+             color="#333", fontweight="bold", **FB)
+axb.text(PANX - 50, Z_TOP - 70, "PUMPS\n(front face)", fontsize=5.5, ha="center",
+         va="top", color="#777", style="italic", **FB)
+
+# ── Drain-riser spine + lowered top + shelf ──────────────────────────────
+_rect(PANX1, EQPANEL_Z_LO, SPX1 - PANX1, SP_TOP - EQPANEL_Z_LO, C_PLYB, lw=1.2,
+      z0=4, alpha=0.45)
+_rect(PANX, SP_TOP, SHX1 - PANX, EQPANEL_T, C_PLYB, lw=1.2, z0=9)   # top shelf
+leader(axb, (PANX1 + SPX1) / 2, 1150, 5560, 1080,
+       "DRAIN-RISER SPINE\n18mm ply, teed off the panel\n(T in plan) — web top\nLOWERED to Z=2220",
+       color=C_OUT, fs=6, ha="left", va="center", arrow_style="-|>", font=FB)
+leader(axb, (PANX + SHX1) / 2, SH_TOP, 5620, 2150,
+       "TOP SHELF (ply)\nBlue trunk rests on it\n(top Z=2238)", color=C_OUT, fs=6,
+       ha="left", va="center", arrow_style="-|>", font=FB)
+
+# ── Blue fill trunk on the shelf ─────────────────────────────────────────
+_hpipe(5408, WALLX, BLUE_Z, C_BLUEB)
+_rect(5414, SH_TOP, 36, 22, C_STEEL, lw=0.7, z0=10)   # saddle clamp
+leader(axb, 5650, BLUE_Z, 5720, 2400,
+       "BLUE FILL TRUNK (to X1)\nsaddle-clamped to the shelf\n→ tees to Blue totes (out of section)",
+       color=C_BLUEB, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FB)
+
+# ── Drain risers: P-05→X3 (Brown), P-03→X4 (Waste) ───────────────────────
+_hpipe(PANX - 50, RX3, Z_TOP, C_BROWNB)          # P-05 discharge stub
+_vpipe(RX3, Z_TOP, EXT_DRAIN_3_H, C_BROWNB)       # Brown riser down
+_hpipe(RX3, WALLX, EXT_DRAIN_3_H, C_BROWNB)       # out to X3 port
+_hpipe(PANX - 50, RX4, Z_MID, C_WASTEB)          # P-03 discharge stub
+_vpipe(RX4, Z_MID, EXT_DRAIN_H, C_WASTEB)         # Waste riser down
+_hpipe(RX4, WALLX, EXT_DRAIN_H, C_WASTEB)         # out to X4 port
+# P-clips on the risers (against the spine face)
+for rx, ztop, n in [(RX3, Z_TOP, 4), (RX4, Z_MID, 3)]:
+    for i in range(n):
+        cz = 520 + i * 400
+        if cz < ztop - 80:
+            _rect(rx + POD / 2 - 2, cz - 11, 16, 22, C_STEEL, lw=0.6, z0=11)
+leader(axb, RX3, 980, 5470, 760, "X3 BROWN DRAIN RISER\n(from P-05) — P-clips @400",
+       color=C_BROWNB, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FB)
+leader(axb, RX4, 620, 5150, 380, "X4 WASTE DRAIN RISER\n(from P-03)",
+       color="#555", fs=5.5, ha="center", va="top", arrow_style="-|>", font=FB)
+
+# ── End-wall ports ───────────────────────────────────────────────────────
+for z, lab, col in [(BLUE_Z, "X1", C_BLUEB), (EXT_DRAIN_3_H, "X3", C_BROWNB),
+                    (EXT_DRAIN_H, "X4", C_WASTEB)]:
+    axb.add_patch(mpatches.Circle((WALLX, z), 22, facecolor="white",
+                  edgecolor=col, lw=1.8, zorder=12))
+    axb.text(WALLX, z, lab, fontsize=6, ha="center", va="center",
+             fontweight="bold", color=col, zorder=13, **FB)
+
+# ── Dimensions ───────────────────────────────────────────────────────────
+draw_dim_v(axb, 5300, EXT_DRAIN_3_H, Z_TOP, "X3 riser\n400→1946", offset=6,
+           fs=5, right=False, font=FB)
+draw_dim_h(axb, PANX1, SPX1, 150, f"{SPX1 - PANX1}mm spine depth", offset=4,
+           fs=5.5, above=False, font=FB)
+
+# ── Notes (right margin) ─────────────────────────────────────────────────
+draw_notes(axb, [
+    "BACKSIDE — corridor side section (looking along Yd):",
+    "1. Pumps mount on the FRONT face (−X); the drain risers, spine, shelf and Blue fill trunk are on the BACK (+X), in the corridor gap (clear of both tote columns).",
+    "2. Drain-riser spine: 18mm ply teed perpendicular off the panel (a T in plan). Its web top is LOWERED to Z=2220 and capped with a horizontal ply shelf (top Z=2238).",
+    "3. The Blue fill trunk rests on the shelf (saddle-clamped); the X3/X4 risers clamp to the spine face on SS P-clips at ~400mm centres.",
+    "4. Risers feed from the pump discharges — P-05→X3 (Brown) @ Z=1946, P-03→X4 (Waste) @ Z=1578 — down to the sealed end-wall ports.",
+], 5985, 2380, spacing=64, fs=7, ha="left", width=600, font=FB)
+
+title_block(axb, "SHEET 2 OF 2",
+            drawing_title="EQUIPMENT PANEL — BACKSIDE",
+            subtitle="DRAIN-RISER SPINE · TOP SHELF · X3/X4 RISERS · BLUE FILL TRUNK",
+            scale_note="CORRIDOR SIDE SECTION ALONG Yd · AXES IN mm",
+            doc_id="TBS-001 · Equipment Panel",
+            height=0.05)
+
+outb = os.path.join(DIAGRAMS_DIR, "panel-layout-back.png")
+figb.savefig(outb, dpi=150, facecolor="white", edgecolor="none",
+             bbox_inches="tight", pad_inches=0.2)
+plt.close(figb)
+print(f"Panel backside → {outb}")

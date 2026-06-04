@@ -138,9 +138,13 @@ def cone_right(y):
     return PH_X + (FP_X_R - PH_X) * y / FP_Y
 
 # ── Hinged panel — stepped profile (rev 8: housed revolving-door light lock) ──
+# rev 8.1: drum, housing, and corner core plates switched from steel to 3mm
+# 5052-H32 ALUMINUM to roughly halve the panel+drum mass (~488 → ~286 kg).
+# Steel retained for the center RHS frame, seal lips, and bearing stub shafts.
+# Geometry is unchanged (3mm walls, Ø900/Ø864, 40mm corner envelope).
 # Corner zones (Yd=0–653 and Yd=1709–2362): thin sandwich panel.
 # Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
-PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 4mm plate + 18mm ply
+PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 3mm Al plate + 18mm ply
 PANEL_CENTER_T    = 120   # center zone thickness (mm) — 18mm ply + 84mm RHS + 18mm ply
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]

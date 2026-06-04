@@ -18,7 +18,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,905 | $7,396 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
-| 7. Housed revolving-door light lock (custom fabrication) | $1,785 | $2,460 |
+| 7. Housed revolving-door light lock (custom fabrication) | $2,300 | $3,150 |
 | 7a. Panel sliding carriage | $1,036 | $1,036 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,000 | $1,515 |
 | 7c. Ceiling rail suspension | $208 | $208 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,216** | **~$27,191** |
+| **TOTAL (base build + 50-print run)** | **~$20,731** | **~$27,881** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -320,8 +320,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Housing + drum body
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 3mm mild steel sheet, 1200×2400mm | Hot-rolled A36 — Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$320 |
-| 5mm steel plate (offcut) | Top and bottom drum caps, flanged | ~0.5m² | Pacific Coast Steel / Metal Supermarkets SoCal | ~$40 |
+| 3mm 5052 aluminum sheet, 1220×2440mm | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 sheets | Industrial Metal Supply (SoCal) / Online Metals | ~$175–$235/sheet → ~$700–$940 |
+| 4mm aluminum plate (offcut) | Top + bottom drum caps + opening edge stiffeners | ~0.6m² | Industrial Metal Supply / Metal Supermarkets SoCal | ~$60–$95 |
 | 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
 
 ### Bearings
@@ -344,18 +344,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [SS round grab rail, 100mm Ø × 400mm](https://www.mcmaster.com/4530T37) | Interior face only, welded bracket | 1 | McMaster-Carr #4530T37 | ~$20 |
 | M10 × 40mm hex bolt, stainless + flat washer | Lower bearing collar — 8 off | 1 lot | McMaster-Carr | ~$20 |
 | M10 × 35mm hex bolt, stainless + flat washer | Upper bearing housing — 6 off | 1 lot | McMaster-Carr | ~$15 |
+| Galvanic isolation kit — nylon shoulder bushings + isolation washers + barrier tape | Al housing/drum ↔ steel frame & bearings | 1 lot | McMaster-Carr | ~$40–$70 |
 
 ### Surface treatment
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Flat black powder coat — interior housing + drum surfaces | RAL 9005 matte; shot-blast prep + coat | 1 job | Local powder coat shop (SoCal) | ~$180–$260 |
-| Grey oxide primer + grey topcoat — exterior drum face | Standard exterior steel finish | 1 job | Included with powder coat job above, or rattle-can | ~$0–$30 |
+| Etch-prime + flat black — interior housing + drum surfaces | RAL 9005 matte; aluminum etch/abrasive prep + coat | 1 job | Local powder coat shop (SoCal) | ~$180–$260 |
+| Anodize or grey topcoat — exterior drum face | Standard exterior aluminum finish | 1 job | Included with coat job above, or rattle-can | ~$0–$30 |
 
 ### Fabrication labour
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Metal fabrication — roll 2 cylinders (housing + drum), seam weld, cap/shaft weld, bearing fit | 22–28 hrs at local metal fab shop | 1 job | Local fabrication shop (SoCal) — get 2–3 quotes | ~$1,100–$1,500 |
-**Section total: ~$1,785–$2,460**
+**Section total: ~$2,300–$3,150**
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 

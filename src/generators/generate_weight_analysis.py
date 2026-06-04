@@ -120,54 +120,58 @@ class Component:
 # ═══════════════════════════════════════════════════════════════════════════
 
 def _panel_weight():
-    """Hinged panel: stepped sandwich construction (rev 8 geometry).
-    Corner zones (2×): 18mm ply + 4mm steel + 18mm ply = 40mm thick.
-    Center zone: 50×50mm RHS frame + 18mm ply skins, PANEL_CENTER_W wide.
+    """Hinged panel: stepped sandwich construction (rev 8.1 geometry).
+    Corner zones (2×): 18mm ply + 3mm ALUMINUM + 18mm ply (40mm envelope).
+    Center zone: 50×50mm steel RHS frame + 18mm ply skins, PANEL_CENTER_W wide.
     First-principles only — no scaling pin (the fixed Ø900 housing is added
-    separately in build_components, since it is welded into the panel center).
+    separately in build_components, since it bolts into the panel center).
     """
     panel_h = C_HGT  # 2388mm
     # Corner zones (near + far are symmetric at PANEL_CORNER_YD_L each)
     corner_w_near = PANEL_CORNER_YD_L              # = 653mm
     corner_w_far = C_WID - PANEL_CORNER_YD_R       # = 653mm
-    # Each corner: 2 ply skins + 1 steel plate, near + far corners
+    # Each corner: 2 ply skins + 1 aluminum plate, near + far corners
     ply_vol_corner = 2 * ((corner_w_near + corner_w_far) * panel_h * 18e-9)
-    steel_vol_corner = (corner_w_near + corner_w_far) * panel_h * 4e-9  # 4mm plate
+    alum_vol_corner = (corner_w_near + corner_w_far) * panel_h * 3e-9  # 3mm Al
     corner_ply_kg = ply_vol_corner * RHO_PLY
-    corner_steel_kg = steel_vol_corner * RHO_STEEL
-    # Center zone: RHS frame perimeter + cross members
+    corner_plate_kg = alum_vol_corner * RHO_ALUM
+    # Center zone: steel RHS frame perimeter + cross members
     rhs_kg_per_m = 4 * (50 * 3 - 4 * 3 * 3) * 1e-6 * RHO_STEEL
     cw = PANEL_CENTER_W / 1000.0                   # = 1.056 m
     center_frame_length = 2 * (cw + 2.388) + 4 * cw
     frame_kg = center_frame_length * rhs_kg_per_m
     # Center ply skins: 2 × center_w × 2388 × 18mm
     center_ply_kg = 2 * (cw * 2.388 * 0.018) * RHO_PLY
-    return corner_ply_kg + corner_steel_kg + frame_kg + center_ply_kg
+    return corner_ply_kg + corner_plate_kg + frame_kg + center_ply_kg
 
 
 def _lighttrap_weight():
-    """Housed revolving-door light lock (rev 8): a fixed Ø900 housing plus a
-    single-opening C-shell drum, both 3mm mild steel, NO internal baffles.
-    Suspended at Z=PANEL_FLOOR_GAP so its effective height is shortened.
-    Returns (drum_kg, housing_kg) — drum rotates; housing is welded to panel.
+    """Housed revolving-door light lock (rev 8.1): a fixed Ø900 housing plus a
+    single-opening C-shell drum, both 3mm 5052-H32 ALUMINUM, NO internal
+    baffles. Suspended at Z=PANEL_FLOOR_GAP so its effective height is shorter.
+    Steel is retained only where it must be: stub shafts (bearing fit) and the
+    bolt flange that fixes the aluminum housing to the steel center frame.
+    Returns (drum_kg, housing_kg) — drum rotates; housing bolts to the panel.
     """
     H = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0     # ≈ 2.12 m tall (suspended)
     open_frac = LT_OPENING_DEG / 360.0             # 80° opening fraction
-    # Rotating drum: C-shell Ø864 (one 80° opening) + 2 C-shaped end caps
+    # Rotating drum: aluminum C-shell Ø864 (one 80° opening) + 2 C-shaped caps
     t_d = LT_DRUM_T / 1000.0
     drum_circ = np.pi * (2 * LT_DRUM_OR / 1000.0)
-    drum_shell_kg = drum_circ * (1 - open_frac) * H * t_d * RHO_STEEL
+    drum_shell_kg = drum_circ * (1 - open_frac) * H * t_d * RHO_ALUM
     cap_area = np.pi * (LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
-    drum_cap_kg = 2 * cap_area * t_d * RHO_STEEL
-    # Stub shafts (Ø75×150) + 2 sealed bearings + grab rail + brush seals
+    drum_cap_kg = 2 * cap_area * t_d * RHO_ALUM
+    # Steel stub shafts (Ø75×150, bearing fit) + 2 sealed bearings; aluminum
+    # edge stiffeners on the opening + grab rail + brush seals
     shaft_kg = 2 * np.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL
-    drum_hw_kg = shaft_kg + 2 * 1.3 + 4.0
+    edge_stiff_kg = 2 * H * 0.66            # 2× 40×40×3 Al angle (~0.66 kg/m)
+    drum_hw_kg = shaft_kg + 2 * 1.3 + edge_stiff_kg + 4.0
     drum_kg = drum_shell_kg + drum_cap_kg + drum_hw_kg
-    # Fixed housing: Ø900 cylinder minus two 80° openings (exterior + interior)
+    # Fixed aluminum housing: Ø900 cylinder minus two 80° openings
     t_h = LT_HOUSING_T / 1000.0
     house_circ = np.pi * (2 * LT_HOUSING_R / 1000.0)
-    housing_kg = house_circ * (1 - 2 * open_frac) * H * t_h * RHO_STEEL
-    housing_kg += 6.0   # top + bottom bearing mount/collar plates
+    housing_kg = house_circ * (1 - 2 * open_frac) * H * t_h * RHO_ALUM
+    housing_kg += 9.0   # steel bolt flange to frame + bearing mounts + isolation
     return drum_kg, housing_kg
 
 
@@ -344,23 +348,23 @@ def build_components():
                   PANEL_SLIDE, PANEL_SLIDE + 80, 0, C_WID, 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted"),
-                  calc_note="Stepped sandwich: ply+steel corners, RHS center + Ø900 housing"),
+                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 3mm-Al Ø900 housing"),
         Component("Light trap drum", "structure", drum_kg,
                   PANEL_SLIDE, PANEL_SLIDE + 40,
                   PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
                   states=("dry", "exhausted"),
-                  calc_note="3mm steel C-shell drum (Ø864, no baffles) + bearings"),
+                  calc_note="3mm aluminum C-shell drum (Ø864, no baffles) + steel shaft/bearings"),
         # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note="Stepped sandwich: ply+steel corners, RHS center + Ø900 housing"),
+                  calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 3mm-Al Ø900 housing"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,
                   states=("ready",),
-                  calc_note="3mm steel C-shell drum (Ø864, no baffles) + bearings"),
+                  calc_note="3mm aluminum C-shell drum (Ø864, no baffles) + steel shaft/bearings"),
         Component("Processing tray", "structure", 116.0,
                   PROC_TRAY_X_L, PROC_TRAY_X_R,
                   PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,

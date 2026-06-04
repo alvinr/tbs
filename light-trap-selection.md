@@ -87,20 +87,20 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 |-----------|-------|
 | Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
 | Height | 2200mm (floor to upper bearing) |
-| Wall thickness | 3mm mild steel sheet, formed and welded (housing + drum) |
-| Surface finish | Shot-blast + flat black powder coat (interior); grey oxide primer (exterior) |
+| Wall thickness | 3mm aluminum 5052-H32 sheet, formed and welded (housing + drum) |
+| Surface finish | Etch-prime + flat black (interior); anodize or grey topcoat (exterior) |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
-| Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm stub shaft, welded to drum |
+| Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm steel stub shaft, bolted to the aluminum drum cap via an isolated hub |
 | Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: grey oxide |
-| Approximate cost | USD $1,785–$2,460 (local metal fabrication shop) |
+| Approximate cost | USD $2,300–$3,150 (local metal fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
 
-Custom fabrication from 3mm mild steel is the correct choice for a field-deployed, transport-rated camera system. Every specification can be set to exactly what is required — clear bore, panel thickness interface, bearing grade, seal type, drum height. A 3mm steel drum is structurally rigid as a freestanding cylinder without a surrounding wall frame, and can be bolted into the panel opening on 8 × M10 flush bolts.
+Custom fabrication from 3mm aluminum (5052-H32) is the correct choice for a field-deployed, transport-rated camera system. Every specification can be set to exactly what is required — clear bore, panel thickness interface, bearing grade, seal type, drum height. A 3mm aluminum drum, edge-stiffened along the opening, is rigid as a freestanding cylinder without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated from the steel frame). Aluminum roughly halves the assembly mass versus steel; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor corrosion applies.
 
 The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at 0–120°C — far beyond any field requirement. The neoprene/silicone top seal provides IP44 protection against splash and rain ingress. The flat black powder-coat interior is optically dead at visible wavelengths.
 
@@ -116,22 +116,22 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 | Item | Specification |
 |------|--------------|
-| Fixed housing shell | 3mm mild steel, rolled to **Ø900mm OD**, seam-welded full height; built into the panel center zone |
+| Fixed housing shell | 3mm aluminum (5052-H32), rolled to **Ø900mm OD**, seam-welded full height; bolted (isolated) into the panel center zone |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
-| Rotating drum | 3mm mild steel C-shell, **Ø864mm OD** (~Ø850mm bore), single **80° opening**, rotates inside the housing on a 15mm running gap |
+| Rotating drum | 3mm aluminum C-shell, **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
 | Drum/housing height | 2200mm |
 | Top cap | 5mm steel plate, flanged, welded to the drum |
 | Bottom cap | 5mm steel plate, flanged, with 75mm stub shaft for lower bearing |
 | Upper stub shaft | 75mm Ø × 150mm steel stub, welded to drum top cap centre |
-| Surface treatment | Interior: shot-blast + flat black powder coat; exterior: grey oxide primer + grey topcoat |
+| Surface treatment | Interior: etch-prime + flat black; exterior: anodize or grey topcoat |
 
 ### 4.2 Bearings and Mounting
 
 | Item | Specification |
 |------|--------------|
 | Bearings (×2) | SKF 6215-2RS1 (75mm ID, 130mm OD, 25mm wide, sealed, C3 clearance) |
-| Upper bearing mount | Welded steel housing bolted to panel top rail |
+| Upper bearing mount | Aluminum housing top ring bolted to panel top rail (isolated) |
 | Lower bearing mount | Welded steel floor collar, 8 × M10 bolts into panel bottom rail |
 | Axial retention | Circlip on stub shaft each side |
 
@@ -154,16 +154,16 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
-| 3mm mild steel sheet (1200 × 2400mm) | Pacific Coast Steel — Santa Fe Springs CA | Hot-rolled A36; price ~$80/sheet; 2 sheets required |
+| 3mm 5052-H32 aluminum sheet (1220 × 2440mm) | Industrial Metal Supply (Irwindale / Riverside CA); or Online Metals | ~$175–$235/sheet; 4 sheets (~12 m²) |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | ~$45–$65 each |
-| 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service centre | 75mm Ø solid round bar, cut to length |
+| 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back; ~$22 |
 | Silicone bead sealant | McMaster-Carr #7587A3 or equivalent | Black, UV-stable |
 | SS grab rail 100mm Ø (×1) | McMaster-Carr #4530T37 | 1" nominal; 400mm cut to length; interior face only |
 | Flat black powder coat | Local powder coat shop | Standard service; ~$150 for drum |
 | Metal fabrication (rolling, welding, fitting) | Estimate 16–20 hrs labour at local shop | $800–$1,200 depending on shop rate |
 
-**Total custom housing+drum estimate: $1,785–$2,460.**
+**Total custom housing+drum estimate: $2,300–$3,150.**
 
 ---
 
@@ -204,10 +204,10 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2000–2200mm | 2000mm | **2200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$1,785–$2,460** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$2,300–$3,150** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
-| Transport-rated | No | No | **Yes (3mm steel, sealed bearings)** |
+| Transport-rated | No | No | **Yes (3mm aluminum, sealed bearings)** |
 | Lead time | 4–8 weeks | 6–10 weeks | **2–3 weeks** |
 | Field repairability | Low (ABS/extrusion parts) | Low | **High (standard steel + off-shelf bearings)** |
 | **Recommendation** | ✗ | ✗ | **✓** |
@@ -218,12 +218,12 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 
 ## 7. Integration Notes
 
-- The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately **490 kg** (first-principles, 3mm-steel housing/drum + 4mm-steel corner plates) — requires an engine crane or gantry hoist for hanging; this is beyond a two-person lift.
+- The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately **286 kg** (first-principles, 3mm-aluminum housing/drum + 3mm-aluminum corner plates) — still requires an engine crane or gantry hoist for hanging; this is beyond a two-person lift, but aluminum roughly halves the mass versus an all-steel build.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings 180° on its left-edge hinges, clearing all interior equipment. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
-- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
+- **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 3mm aluminum plate + 18mm ply) and 120mm at center (18mm ply + 84mm steel RHS frame + 18mm ply). The step transitions occur at Yd=653mm and Yd=1709mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
 - **Sliding carriage:** The entire panel slides ~550mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
 - **Transport mode conversion** (single person, ~5 minutes): release cam latches → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 

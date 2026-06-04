@@ -18,13 +18,13 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,934 | $6,142 | $7,349 |
-| **6. Housed revolving-door light lock (custom fabrication)** | $1,785 | $2,120 | $2,460 |
+| **6. Housed revolving-door light lock (custom fabrication)** | $2,300 | $2,750 | $3,150 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $993 | $1,271 | $1,537 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$16,808** | **$21,591** | **$27,813** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$17,323** | **$22,221** | **$28,503** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -267,14 +267,15 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| 3mm mild steel sheet, 1200×2400mm (×4) | $280 | $320 | $360 | Hot-rolled A36 — Ø900 housing + Ø864 drum shells (~12 m²); Pacific Coast Steel |
-| 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service center |
+| 3mm 5052 aluminum sheet, 1220×2440mm (×4) | $700 | $820 | $940 | Ø900 housing + Ø864 drum shells (~12 m²); Industrial Metal Supply / Online Metals |
+| 4mm aluminum plate (caps + edge stiffeners) + 75mm steel round bar (stub shafts ×2) | $65 | $80 | $95 | Aluminum supplier + steel service center |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
 | Seals — neoprene wiper, 20mm compression, silicone + brush wiper (drum↔housing rotating seal) | $90 | $110 | $130 | McMaster-Carr #93855K6, #8635K31, #7587A3, brush strip |
 | Hardware — SS grab rail (×1 interior, welded bracket), M10 stainless bolts (14 off) | $60 | $75 | $90 | McMaster-Carr / Fastenal |
-| Flat black powder coat (housing + drum interior) + grey oxide primer (exterior) | $180 | $220 | $260 | Local powder coat shop SoCal |
-| Metal fabrication — roll 2 cylinders (housing + drum), seam/cap/shaft weld, bearing fit (22–28 hrs) | $1,100 | $1,300 | $1,500 | Local metal fab shop — get 2–3 quotes |
-| **Housing + drum total** | **$1,785** | **$2,120** | **$2,460** | |
+| Galvanic isolation kit — nylon bushings/washers + barrier tape + A2 bolts | $40 | $55 | $70 | Al↔steel joints; McMaster-Carr |
+| Etch-prime + flat black (housing + drum interior) + exterior topcoat | $180 | $220 | $260 | Aluminum prep; local coat shop SoCal |
+| Metal fabrication — roll 2 cylinders (housing + drum), aluminum TIG seam/cap/shaft weld, bearing fit (22–28 hrs) | $1,100 | $1,300 | $1,500 | Local metal fab shop — get 2–3 quotes |
+| **Housing + drum total** | **$2,300** | **$2,750** | **$3,150** | |
 
 *Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 

@@ -89,7 +89,7 @@ bellows (4-pleat, Ø290 ID → Ø360 OD).*
 | Opening arc (each) | 80° | `LT_OPENING_DEG` |
 | Height | 2200mm | `DRUM_H_LT` |
 
-*Components: fixed Ø900 mild-steel housing with two 80° openings (exterior + interior-onto-walkway,
+*Components: fixed Ø900 aluminum housing with two 80° openings (exterior + interior-onto-walkway,
 180° apart); single-opening C-shell rotating drum (Ø864, ~Ø850 bore, NO internal fins) — light-tight
 by geometry; 5mm top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
 felt/brush wiper seals (opening edges + top/bottom rings), 100mm SS interior grab rail, housing-to-panel

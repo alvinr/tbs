@@ -25,7 +25,7 @@ import matplotlib.pyplot as plt
 import math
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X
+from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_title_block import title_block
 
@@ -38,7 +38,7 @@ WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 
 # Panel face dimensions (new orientation: spans corridor)
 PANEL_W  = 270   # face width (mm, Yd span: 1046–1316)
-PANEL_H  = 2060  # face height (mm, Z span: 200–2260)
+PANEL_H  = EQPANEL_H  # face height (mm, =2060; Z span: 200–2260)
 PANEL_Z_AFF = 200  # panel bottom Z above finished floor
 
 # ── Shurflo 2088 pump dimensions ─────────────────────────────────────────
@@ -1199,10 +1199,10 @@ def _hpipe(xa, xb, z, fc):
 _rect(4980, -90, 5933 - 4980, 90, C_WALLB, lw=0.8, z0=2, hatch="////")   # floor
 axb.text(5010, -45, "CONTAINER FLOOR", fontsize=6, va="center", color="#555", **FB)
 _rect(WALLX, 0, 40, C_HGT, C_WALLB, lw=0.8, z0=2, hatch="\\\\")           # sealed end wall
-axb.text(WALLX + 20, C_HGT - 60, "SEALED\nEND WALL\n(X=5893)", fontsize=6,
+axb.text(WALLX + 20, C_HGT - 60, f"SEALED\nEND WALL\n(X={int(C_LEN)})", fontsize=6,
          ha="center", va="top", color="#555", **FB)
 axb.plot([4980, WALLX], [C_HGT, C_HGT], color="#999", lw=0.8, ls=(0, (6, 4)), zorder=2)
-axb.text(5010, C_HGT + 25, "CEILING (Z=2388)", fontsize=6, color="#777", **FB)
+axb.text(5010, C_HGT + 25, f"CEILING (Z={int(C_HGT)})", fontsize=6, color="#777", **FB)
 
 # ── Equipment panel (edge-on) + pumps on the front (-X) ──────────────────
 _rect(PANX, EQPANEL_Z_LO, EQPANEL_T, EQPANEL_Z_HI - EQPANEL_Z_LO, C_PLYB, lw=1.3, z0=6)

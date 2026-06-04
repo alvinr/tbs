@@ -33,7 +33,7 @@ from tbs_constants import (
     WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD,
     PROC_OPEN_X_L, PROC_OPEN_X_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_T,
-    SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP,
+    SPRAY_BAR_TRAVEL, SPRAY_BAR_HOLE_SP, SPRAY_BAR_N_NOZZLES,
     BV02_X, BV02_Z,
     SPRAY_BAR_SLIT_W,
     DIAGRAMS_DIR,
@@ -76,7 +76,7 @@ POLY_OD = 25.0
 POLY_ID = 19.0
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
-N_NOZZLES = 26          # flat-fan nozzles at 150mm pitch along the 3859mm beam span
+N_NOZZLES = SPRAY_BAR_N_NOZZLES   # flat-fan nozzles (=26 today; tbs_constants computes from tray opening / 150mm pitch)
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"

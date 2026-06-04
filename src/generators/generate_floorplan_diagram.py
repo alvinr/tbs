@@ -498,6 +498,16 @@ def floor_plan():
     ax.add_patch(Rectangle((LX, NY), W, FYO - NY,
                             fc="none", ec="#408040", lw=2.0, ls=(0, (6, 3)),
                             zorder=13, alpha=0.85))
+    # Drum-exit punch-out — deeper landing (X 470–770) in front of the light-lock exit.
+    ax.add_patch(Rectangle((LXR, WALKWAY_LEFT_WIDE_YD_L),
+                            WALKWAY_LEFT_WIDE_W - W,
+                            WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L,
+                            fc="#DCEEDC", ec="#408040", lw=1.8, ls=(0, (5, 3)),
+                            zorder=13, alpha=0.7))
+    ax.text(LXR + (WALKWAY_LEFT_WIDE_W - W) / 2,
+            (WALKWAY_LEFT_WIDE_YD_L + WALKWAY_LEFT_WIDE_YD_R) / 2,
+            "DRUM-EXIT\nPUNCH-OUT\n600mm", ha="center", va="center", fontsize=5.5,
+            color="#204820", fontweight="bold", **FONT, zorder=14)
     # Leader pointing to left walkway mid-height
     LW_MID_Y = (NY + FYO) / 2
     LW_NOTE_X = -PAD_L + 120

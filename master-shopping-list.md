@@ -20,13 +20,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (custom fabrication) | $1,785 | $2,460 |
 | 7a. Panel sliding carriage | $1,036 | $1,036 |
-| 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $955 | $1,470 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,000 | $1,515 |
 | 7c. Ceiling rail suspension | $208 | $208 |
 | 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,171** | **~$27,146** |
+| **TOTAL (base build + 50-print run)** | **~$20,216** | **~$27,191** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -413,8 +413,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
 | Guide tabs, 3mm steel angle | Welded to left walkway bearer beam. Prevent lateral grating slide. | 4 | Local fab | ~$5–$10 |
+| Drum-exit punch-out — extra grating (~0.23 m²) + 50×50×3mm Al RHS bearer (~0.8m) + 25×25 Al SHS leg + foot | Deeper landing (600mm) at the light-lock exit | 1 lot | Metal Supermarkets / McNichols | ~$45 |
 | Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, weld guide tabs, install | 1 job | Local fab / metal shop | ~$280–$440 |
-**Walkway subtotal: ~$960–$1,485**
+**Walkway subtotal: ~$1,005–$1,530**
 
 *Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 

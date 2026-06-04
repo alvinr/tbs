@@ -510,6 +510,15 @@ LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = (WALKWAY_H - WALKWAY_GRATE_T) - PROC_TRAY_RIM  # = 15mm — fills the gap between the tray rim (Z=50) and the grate bottom; Al flat bar on tray rim (DERIVED, tracks WALKWAY_H)
+# Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
+# revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
+# landing. Deepen the walkway to 600mm over the drum-opening Yd span + stepping
+# margin. Verified clear of the optical cone (door-end; cone left edge is X≈914+
+# at this depth, punch-out reaches only X=770). Needs an extra bearer + support
+# leg under the deeper section (it cantilevers ~300mm further over the tray).
+WALKWAY_LEFT_WIDE_W    = 600    # deepened walkway width here (mm) vs 300 normal
+WALKWAY_LEFT_WIDE_YD_L = 800    # punch-out Yd start (near the drum opening)
+WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
 # Near walkway widened section (rev 7: EP raised + slim batteries free walkway)

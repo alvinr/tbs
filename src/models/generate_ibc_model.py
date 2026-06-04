@@ -26,12 +26,35 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + component builders (Overview)
 
-TAGS = ["IBC Tanks", "IBC Frame", "Plumbing & Panel"]
+TAGS = ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel"]
+
+
+def context():
+    """Low-alpha stub of the container around the IBC end zone (X≈4300–5893):
+    floor, ceiling, both side walls, and the sealed end wall the fill/drain
+    ports (X1/X3/X4) penetrate — so the stack, frame and plumbing read in place
+    without modeling the whole container (mirrors the lighttrap ghost context)."""
+    x0 = 4300
+    xlen = ov.C_LEN - x0
+    t = ov.WALL_T
+    return '\n'.join([
+        ov.ruby_box("Floor (context)", x0, 0, -t, xlen, ov.C_WID, t,
+                    color=ov.C_SHELL, alpha=0.25),
+        ov.ruby_box("Ceiling (context)", x0, 0, ov.C_HGT, xlen, ov.C_WID, t,
+                    color=ov.C_SHELL, alpha=0.10),
+        ov.ruby_box("Side Wall near (context)", x0, -t, 0, xlen, t, ov.C_HGT,
+                    color=ov.C_SHELL, alpha=0.16),
+        ov.ruby_box("Side Wall far (context)", x0, ov.C_WID, 0, xlen, t, ov.C_HGT,
+                    color=ov.C_SHELL, alpha=0.16),
+        ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID,
+                    ov.C_HGT, color=ov.C_SHELL, alpha=0.16),
+    ])
 
 
 def generate_ruby():
     """Build the Ruby script for the IBC Stack model, reusing Overview parts."""
     comps = [
+        ov.component("Container (ghost)", "Context", context()),
         ov.component("IBC Tanks", "IBC Tanks", ov.ibc_stack(alpha=0.25)),
         ov.component("IBC Frame", "IBC Frame", ov.ibc_rack()),
         ov.component("Equipment Panel", "Plumbing & Panel", ov.equipment_panel()),
@@ -101,7 +124,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 {scenes_ruby}.each {{ |name, tags|
-  model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
+  model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }}
   page = model.pages.add(name)
   page.use_camera = true
 }}

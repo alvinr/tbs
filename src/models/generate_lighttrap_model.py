@@ -95,6 +95,14 @@ def context():
                  0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
                  ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
                  color="#808080", alpha=0.28),
+        # Drum-exit PUNCH-OUT — deepened landing in front of the drum opening so
+        # the operator has somewhere to step out (the 300mm deck leaves only 20mm).
+        ruby_box("Left walkway punch-out (ghost)",
+                 ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L,
+                 ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
+                 ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
+                 ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
+                 ov.WALKWAY_GRATE_T, color="#808080", alpha=0.34),
     ])
 
 

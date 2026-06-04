@@ -45,6 +45,7 @@ from tbs_constants import (
     WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
     WALKWAY_LEFT_X,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
+    WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     C_WALL, C_PROC_ZONE,
     PH_X, PH_H, PH_D,
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
@@ -407,6 +408,12 @@ def walkways():
     parts.append(ruby_box("Walkway Left (REMOVABLE — transport)",
                           WALKWAY_LEFT_X, 0, grate_z,
                           WALKWAY_W, C_WID, t, color=C_REMOVABLE))
+    # Drum-exit punch-out — deepened landing in front of the revolving-door exit.
+    parts.append(ruby_box("Walkway Left punch-out (drum exit)",
+                          WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_LEFT_WIDE_YD_L, grate_z,
+                          WALKWAY_LEFT_WIDE_W - WALKWAY_W,
+                          WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L,
+                          t, color=C_REMOVABLE))
 
     return '\n'.join(parts)
 

@@ -82,6 +82,17 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.28
   grp.material = mat
 
+  # Left walkway punch-out (ghost)
+  grp = ents.add_group
+  grp.name = "Left walkway punch-out (ghost)"
+  face = grp.entities.add_face([470.mm,800.mm,65.mm], [770.mm,800.mm,65.mm], [770.mm,1560.mm,65.mm], [470.mm,1560.mm,65.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Left walkway punch-out (ghost)"] || model.materials.add("Left walkway punch-out (ghost)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 0.34
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Context"
   inst.layer = model.layers["Context"]

@@ -19,12 +19,12 @@
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,934 | $6,142 | $7,349 |
 | **6. Housed revolving-door light lock (custom fabrication)** | $1,785 | $2,120 | $2,460 |
-| **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $993 | $1,271 | $1,537 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$16,768** | **$21,536** | **$27,743** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$16,808** | **$21,591** | **$27,813** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -297,9 +297,10 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | Steel angle bearers, 25×25×5mm L-angle (×2) | $20 | $30 | $35 | Right walkway: 2× 2362mm ceiling-hung bearers |
 | M10 threaded rod + ceiling plates + hardware | $80 | $105 | $125 | 10 rods (5 hanger pairs) + 10 ceiling plates + nuts/washers |
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
+| Drum-exit punch-out — extra grating + bearer + support leg | $40 | $55 | $70 | 600mm-deep landing at the light-lock exit |
 | Guide tabs, 3mm steel angle (×4) | $5 | $8 | $10 | Left walkway bearer beam — gravity retention |
 | Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 14 std + 4 widened brackets, weld guide tabs, install |
-| **Perimeter walkway total** | **$958** | **$1,228** | **$1,487** | |
+| **Perimeter walkway total** | **$998** | **$1,283** | **$1,557** | |
 
 ---
 

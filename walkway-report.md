@@ -206,7 +206,7 @@ The ceiling-hung design achieves three goals:
 
 The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and slides
-300mm inward (to X=420mm) for transport mode. The left walkway is therefore a
+~550mm inward for transport mode. The left walkway is therefore a
 removable lift-out section supported by three independent elements.
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
@@ -224,6 +224,35 @@ The bearer beam at X=470mm is the primary structural element. It spans 1762mm
 (the distance between the near and far walkway bracket vertical legs at
 Yd=300mm and Yd=1962mm) and is bolted to those bracket vertical legs. The grating
 rests on the bearer beam top surface at Z=65mm.
+
+### 5.2 Drum-Exit Punch-Out (rev 8)
+
+The operator steps out of the revolving-door light lock at its interior face
+(X≈450mm), but the standard 300mm walkway ends at X=470mm — leaving only ~20mm of
+landing in front of the drum opening, with the processing-tray basin immediately
+beyond. The left walkway is therefore **deepened to 600mm (X=170–770mm) over the
+drum-opening span (Yd 800–1560mm)** — a ~600 × 760mm landing centered on the exit
+(the same approach as the near-walkway widened section on the pinhole side).
+
+| Parameter | Value | Constant |
+|-----------|-------|----------|
+| Punch-out depth | 600mm (vs 300mm) | `WALKWAY_LEFT_WIDE_W` |
+| Punch-out Yd span | 800–1560mm | `WALKWAY_LEFT_WIDE_YD_L/_YD_R` |
+| Deck height | Z=65–80mm (grating, as elsewhere) | `WALKWAY_H` |
+
+**Optical clearance.** The punch-out reaches X=770mm — inside the active image
+zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
+(Yd 800–1560mm) the cone's left boundary lies at **X≈914–1535mm** (the cone narrows
+toward the pinhole at X=2399mm), so the punch-out is entirely **left of the cone**:
+every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm clear
+of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
+the cone).
+
+**Support.** The 600mm section cantilevers ~300mm further over the tray than the
+standard 300mm deck, so it carries a second bearer (50×50×3mm Al RHS at X≈770mm,
+spanning the punch-out Yd span) and one additional floor-standing support leg
+(25×25×3mm Al SHS) on bare floor outside the tray. It lifts out with the rest of the
+left walkway for transport.
 
 On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
 bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip

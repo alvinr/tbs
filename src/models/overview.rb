@@ -185,6 +185,17 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Walkway Left punch-out (drum exit)
+  grp = ents.add_group
+  grp.name = "Walkway Left punch-out (drum exit)"
+  face = grp.entities.add_face([470.mm,800.mm,65.mm], [770.mm,800.mm,65.mm], [770.mm,1560.mm,65.mm], [470.mm,1560.mm,65.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
+  mat.color = Sketchup::Color.new(192, 96, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Walkways"
   inst.layer = model.layers["Walkways"]

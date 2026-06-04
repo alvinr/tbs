@@ -215,13 +215,48 @@ def sheet1():
                                 fc=C_WALL, ec="none", lw=0, zorder=7,
                                 alpha=0.3))
 
-    # Wall brackets (shown as small angle brackets at near and far walls)
-    for wyd, flip in [(0, False), (C_WID - 8, True)]:
-        bracket_w = 8
-        for bz in [platform_z, IBC_H_STK]:
-            ax.add_patch(Rectangle((sx(wyd), sy(bz)),
-                                    sx(bracket_w), sy(FRAME_RHS),
-                                    fc=C_FRAME, ec=C_OUT, lw=1.0, zorder=7, alpha=0.7))
+    # ── Wall seat brackets: welded knee bracket (vertical back-plate + horizontal
+    # seat + triangular gusset web + M12 wall anchors) props each platform-beam
+    # OUTER end against the container wall, turning the cantilever into a simple
+    # span. Matches the 3D "Wall Bracket Plate / Seat / Gusset" fabrication
+    # (~110 kg each, one per X-station per wall). ──
+    C_BOLT    = "#3A3A42"
+    seat_top  = platform_z          # 1010 — platform-beam end lands here
+    proj      = 110                 # seat projection into container (Yd)
+    seat_t    = 10                  # seat plate thickness
+    gh        = 200                 # gusset web depth below the seat
+    plate_t   = 8                   # back-plate thickness (against wall)
+    seat_bot  = seat_top - seat_t
+    guss_bot  = seat_bot - gh
+    plate_top = seat_top + 10
+    for wyd, dir_in in [(0, 1), (C_WID, -1)]:
+        tip      = wyd + dir_in * proj
+        plate_x0 = wyd if dir_in > 0 else wyd - plate_t
+        seat_x0  = min(wyd, tip)
+        # vertical back-plate bolted to the wall
+        ax.add_patch(Rectangle((sx(plate_x0), sy(guss_bot)),
+                                sx(plate_t), sy(plate_top - guss_bot),
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+        # horizontal seat the platform-beam end rests on
+        ax.add_patch(Rectangle((sx(seat_x0), sy(seat_bot)),
+                                sx(proj), sy(seat_t),
+                                fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))
+        # triangular gusset web welded between back-plate and seat tip
+        ax.add_patch(Polygon([(sx(tip), sy(seat_bot)),
+                              (sx(wyd), sy(seat_bot)),
+                              (sx(wyd), sy(guss_bot))],
+                             closed=True, fc=C_STEEL, ec=C_OUT, lw=1.0,
+                             hatch="\\\\", zorder=8))
+        # 2× visible M12 wall anchor bolt heads on the back-plate
+        for bz in (guss_bot + 40, seat_bot - 25):
+            ax.add_patch(Circle((sx(wyd + dir_in * plate_t / 2), sy(bz)), sy(7),
+                                fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
+
+    # Annotate the wall seat bracket (near-wall instance; typical at both walls)
+    leader(ax, sx(45), sy(seat_bot - gh / 2), sx(-55), sy(720),
+           "WALL SEAT BRACKET (TYP. ×6)\nWelded knee: back-plate + seat +\ntriangular gusset web,\n4× M12 wall anchors",
+           color=C_FRAME, fs=6, ha="left", va="top",
+           arrow_style="-|>", font=FONT)
 
     # Platform beams — one per column (not spanning corridor)
     for col_l, col_r in [(BLUE_IBC_Y - 5, near_col_r + FRAME_RHS),
@@ -386,7 +421,7 @@ def sheet1():
         "CROSS-SECTION NOTES:",
         "1. Section through IBC stack, looking +X toward sealed end (near/pinhole wall at right, far wall at left).",
         f"2. 4x 600L IBCs (Schutz Ecobulk MX). Each: 55kg tare, {IBC_W}x{IBC_D}x{IBC_H_600}mm.",
-        f"3. Portal frame: 50x50x3mm RHS mild steel, wall brackets + corridor uprights. ~{FRAME_WEIGHT}kg.",
+        f"3. Portal frame: 50x50x3mm RHS mild steel, welded wall seat brackets (knee + gusset web, M12 anchors) + corridor uprights. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
         f"5. Platform at Z={IBC_H_600}mm + {MAT_T}mm rubber anti-slip mat.",
         f"6. {FRAME_LIP_H}mm steel lip retains upper IBC cage against lateral movement.",

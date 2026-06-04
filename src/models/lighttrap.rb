@@ -89,24 +89,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Fixed Door Frame ═══
   defn = model.definitions.add("Fixed Door Frame")
   ents = defn.entities
-  # Door Frame threshold L
+  # Door Frame threshold
   grp = ents.add_group
-  grp.name = "Door Frame threshold L"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,716.mm,0.mm], [-50.mm,716.mm,0.mm])
+  grp.name = "Door Frame threshold"
+  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Door Frame threshold R
-  grp = ents.add_group
-  grp.name = "Door Frame threshold R"
-  face = grp.entities.add_face([-50.mm,1646.mm,0.mm], [0.mm,1646.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -117,7 +106,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -128,7 +117,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -139,29 +128,18 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Door Frame bottom seal lip L
+  # Door Frame bottom seal lip
   grp = ents.add_group
-  grp.name = "Door Frame bottom seal lip L"
-  face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,716.mm,0.mm], [-32.mm,716.mm,0.mm])
+  grp.name = "Door Frame bottom seal lip"
+  face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(110.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
-  mat.color = Sketchup::Color.new(96, 96, 104)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Door Frame bottom seal lip R
-  grp = ents.add_group
-  grp.name = "Door Frame bottom seal lip R"
-  face = grp.entities.add_face([-32.mm,1646.mm,0.mm], [-20.mm,1646.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(110.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -172,7 +150,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -404,9 +382,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Housing arc (near Yd)"
   ge = grp.entities
-  face = ge.add_face([[344.72.mm,1470.25.mm,0], [333.98.mm,1482.59.mm,0], [322.79.mm,1494.54.mm,0], [311.18.mm,1506.06.mm,0], [299.16.mm,1517.16.mm,0], [286.74.mm,1527.81.mm,0], [273.94.mm,1538.01.mm,0], [260.78.mm,1547.73.mm,0], [247.28.mm,1556.97.mm,0], [233.45.mm,1565.71.mm,0], [219.31.mm,1573.94.mm,0], [204.88.mm,1581.66.mm,0], [190.18.mm,1588.84.mm,0], [175.23.mm,1595.48.mm,0], [160.04.mm,1601.58.mm,0], [144.65.mm,1607.12.mm,0], [129.06.mm,1612.1.mm,0], [113.3.mm,1616.5.mm,0], [97.4.mm,1620.33.mm,0], [81.36.mm,1623.58.mm,0], [65.22.mm,1626.25.mm,0], [48.99.mm,1628.33.mm,0], [32.7.mm,1629.81.mm,0], [16.36.mm,1630.7.mm,0], [0.mm,1631.mm,0], [-16.36.mm,1630.7.mm,0], [-32.7.mm,1629.81.mm,0], [-48.99.mm,1628.33.mm,0], [-65.22.mm,1626.25.mm,0], [-81.36.mm,1623.58.mm,0], [-97.4.mm,1620.33.mm,0], [-113.3.mm,1616.5.mm,0], [-129.06.mm,1612.1.mm,0], [-144.65.mm,1607.12.mm,0], [-160.04.mm,1601.58.mm,0], [-175.23.mm,1595.48.mm,0], [-190.18.mm,1588.84.mm,0], [-204.88.mm,1581.66.mm,0], [-219.31.mm,1573.94.mm,0], [-233.45.mm,1565.71.mm,0], [-247.28.mm,1556.97.mm,0], [-260.78.mm,1547.73.mm,0], [-273.94.mm,1538.01.mm,0], [-286.74.mm,1527.81.mm,0], [-299.16.mm,1517.16.mm,0], [-311.18.mm,1506.06.mm,0], [-322.79.mm,1494.54.mm,0], [-333.98.mm,1482.59.mm,0], [-344.72.mm,1470.25.mm,0], [-342.42.mm,1468.33.mm,0], [-331.75.mm,1480.58.mm,0], [-320.64.mm,1492.45.mm,0], [-309.11.mm,1503.9.mm,0], [-297.16.mm,1514.92.mm,0], [-284.83.mm,1525.5.mm,0], [-272.12.mm,1535.63.mm,0], [-259.04.mm,1545.29.mm,0], [-245.63.mm,1554.46.mm,0], [-231.89.mm,1563.15.mm,0], [-217.85.mm,1571.32.mm,0], [-203.51.mm,1578.98.mm,0], [-188.91.mm,1586.12.mm,0], [-174.06.mm,1592.72.mm,0], [-158.98.mm,1598.77.mm,0], [-143.68.mm,1604.28.mm,0], [-128.2.mm,1609.22.mm,0], [-112.55.mm,1613.6.mm,0], [-96.75.mm,1617.4.mm,0], [-80.82.mm,1620.63.mm,0], [-64.78.mm,1623.28.mm,0], [-48.66.mm,1625.34.mm,0], [-32.48.mm,1626.82.mm,0], [-16.25.mm,1627.7.mm,0], [0.mm,1628.mm,0], [16.25.mm,1627.7.mm,0], [32.48.mm,1626.82.mm,0], [48.66.mm,1625.34.mm,0], [64.78.mm,1623.28.mm,0], [80.82.mm,1620.63.mm,0], [96.75.mm,1617.4.mm,0], [112.55.mm,1613.6.mm,0], [128.2.mm,1609.22.mm,0], [143.68.mm,1604.28.mm,0], [158.98.mm,1598.77.mm,0], [174.06.mm,1592.72.mm,0], [188.91.mm,1586.12.mm,0], [203.51.mm,1578.98.mm,0], [217.85.mm,1571.32.mm,0], [231.89.mm,1563.15.mm,0], [245.63.mm,1554.46.mm,0], [259.04.mm,1545.29.mm,0], [272.12.mm,1535.63.mm,0], [284.83.mm,1525.5.mm,0], [297.16.mm,1514.92.mm,0], [309.11.mm,1503.9.mm,0], [320.64.mm,1492.45.mm,0], [331.75.mm,1480.58.mm,0], [342.42.mm,1468.33.mm,0]])
+  face = ge.add_face([[344.72.mm,1470.25.mm,80.mm], [333.98.mm,1482.59.mm,80.mm], [322.79.mm,1494.54.mm,80.mm], [311.18.mm,1506.06.mm,80.mm], [299.16.mm,1517.16.mm,80.mm], [286.74.mm,1527.81.mm,80.mm], [273.94.mm,1538.01.mm,80.mm], [260.78.mm,1547.73.mm,80.mm], [247.28.mm,1556.97.mm,80.mm], [233.45.mm,1565.71.mm,80.mm], [219.31.mm,1573.94.mm,80.mm], [204.88.mm,1581.66.mm,80.mm], [190.18.mm,1588.84.mm,80.mm], [175.23.mm,1595.48.mm,80.mm], [160.04.mm,1601.58.mm,80.mm], [144.65.mm,1607.12.mm,80.mm], [129.06.mm,1612.1.mm,80.mm], [113.3.mm,1616.5.mm,80.mm], [97.4.mm,1620.33.mm,80.mm], [81.36.mm,1623.58.mm,80.mm], [65.22.mm,1626.25.mm,80.mm], [48.99.mm,1628.33.mm,80.mm], [32.7.mm,1629.81.mm,80.mm], [16.36.mm,1630.7.mm,80.mm], [0.mm,1631.mm,80.mm], [-16.36.mm,1630.7.mm,80.mm], [-32.7.mm,1629.81.mm,80.mm], [-48.99.mm,1628.33.mm,80.mm], [-65.22.mm,1626.25.mm,80.mm], [-81.36.mm,1623.58.mm,80.mm], [-97.4.mm,1620.33.mm,80.mm], [-113.3.mm,1616.5.mm,80.mm], [-129.06.mm,1612.1.mm,80.mm], [-144.65.mm,1607.12.mm,80.mm], [-160.04.mm,1601.58.mm,80.mm], [-175.23.mm,1595.48.mm,80.mm], [-190.18.mm,1588.84.mm,80.mm], [-204.88.mm,1581.66.mm,80.mm], [-219.31.mm,1573.94.mm,80.mm], [-233.45.mm,1565.71.mm,80.mm], [-247.28.mm,1556.97.mm,80.mm], [-260.78.mm,1547.73.mm,80.mm], [-273.94.mm,1538.01.mm,80.mm], [-286.74.mm,1527.81.mm,80.mm], [-299.16.mm,1517.16.mm,80.mm], [-311.18.mm,1506.06.mm,80.mm], [-322.79.mm,1494.54.mm,80.mm], [-333.98.mm,1482.59.mm,80.mm], [-344.72.mm,1470.25.mm,80.mm], [-342.42.mm,1468.33.mm,80.mm], [-331.75.mm,1480.58.mm,80.mm], [-320.64.mm,1492.45.mm,80.mm], [-309.11.mm,1503.9.mm,80.mm], [-297.16.mm,1514.92.mm,80.mm], [-284.83.mm,1525.5.mm,80.mm], [-272.12.mm,1535.63.mm,80.mm], [-259.04.mm,1545.29.mm,80.mm], [-245.63.mm,1554.46.mm,80.mm], [-231.89.mm,1563.15.mm,80.mm], [-217.85.mm,1571.32.mm,80.mm], [-203.51.mm,1578.98.mm,80.mm], [-188.91.mm,1586.12.mm,80.mm], [-174.06.mm,1592.72.mm,80.mm], [-158.98.mm,1598.77.mm,80.mm], [-143.68.mm,1604.28.mm,80.mm], [-128.2.mm,1609.22.mm,80.mm], [-112.55.mm,1613.6.mm,80.mm], [-96.75.mm,1617.4.mm,80.mm], [-80.82.mm,1620.63.mm,80.mm], [-64.78.mm,1623.28.mm,80.mm], [-48.66.mm,1625.34.mm,80.mm], [-32.48.mm,1626.82.mm,80.mm], [-16.25.mm,1627.7.mm,80.mm], [0.mm,1628.mm,80.mm], [16.25.mm,1627.7.mm,80.mm], [32.48.mm,1626.82.mm,80.mm], [48.66.mm,1625.34.mm,80.mm], [64.78.mm,1623.28.mm,80.mm], [80.82.mm,1620.63.mm,80.mm], [96.75.mm,1617.4.mm,80.mm], [112.55.mm,1613.6.mm,80.mm], [128.2.mm,1609.22.mm,80.mm], [143.68.mm,1604.28.mm,80.mm], [158.98.mm,1598.77.mm,80.mm], [174.06.mm,1592.72.mm,80.mm], [188.91.mm,1586.12.mm,80.mm], [203.51.mm,1578.98.mm,80.mm], [217.85.mm,1571.32.mm,80.mm], [231.89.mm,1563.15.mm,80.mm], [245.63.mm,1554.46.mm,80.mm], [259.04.mm,1545.29.mm,80.mm], [272.12.mm,1535.63.mm,80.mm], [284.83.mm,1525.5.mm,80.mm], [297.16.mm,1514.92.mm,80.mm], [309.11.mm,1503.9.mm,80.mm], [320.64.mm,1492.45.mm,80.mm], [331.75.mm,1480.58.mm,80.mm], [342.42.mm,1468.33.mm,80.mm]])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2200.mm)
+  face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.42
@@ -416,9 +394,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Housing arc (far Yd)"
   ge = grp.entities
-  face = ge.add_face([[-344.72.mm,891.75.mm,0], [-333.98.mm,879.41.mm,0], [-322.79.mm,867.46.mm,0], [-311.18.mm,855.94.mm,0], [-299.16.mm,844.84.mm,0], [-286.74.mm,834.19.mm,0], [-273.94.mm,823.99.mm,0], [-260.78.mm,814.27.mm,0], [-247.28.mm,805.03.mm,0], [-233.45.mm,796.29.mm,0], [-219.31.mm,788.06.mm,0], [-204.88.mm,780.34.mm,0], [-190.18.mm,773.16.mm,0], [-175.23.mm,766.52.mm,0], [-160.04.mm,760.42.mm,0], [-144.65.mm,754.88.mm,0], [-129.06.mm,749.9.mm,0], [-113.3.mm,745.5.mm,0], [-97.4.mm,741.67.mm,0], [-81.36.mm,738.42.mm,0], [-65.22.mm,735.75.mm,0], [-48.99.mm,733.67.mm,0], [-32.7.mm,732.19.mm,0], [-16.36.mm,731.3.mm,0], [0.mm,731.mm,0], [16.36.mm,731.3.mm,0], [32.7.mm,732.19.mm,0], [48.99.mm,733.67.mm,0], [65.22.mm,735.75.mm,0], [81.36.mm,738.42.mm,0], [97.4.mm,741.67.mm,0], [113.3.mm,745.5.mm,0], [129.06.mm,749.9.mm,0], [144.65.mm,754.88.mm,0], [160.04.mm,760.42.mm,0], [175.23.mm,766.52.mm,0], [190.18.mm,773.16.mm,0], [204.88.mm,780.34.mm,0], [219.31.mm,788.06.mm,0], [233.45.mm,796.29.mm,0], [247.28.mm,805.03.mm,0], [260.78.mm,814.27.mm,0], [273.94.mm,823.99.mm,0], [286.74.mm,834.19.mm,0], [299.16.mm,844.84.mm,0], [311.18.mm,855.94.mm,0], [322.79.mm,867.46.mm,0], [333.98.mm,879.41.mm,0], [344.72.mm,891.75.mm,0], [342.42.mm,893.67.mm,0], [331.75.mm,881.42.mm,0], [320.64.mm,869.55.mm,0], [309.11.mm,858.1.mm,0], [297.16.mm,847.08.mm,0], [284.83.mm,836.5.mm,0], [272.12.mm,826.37.mm,0], [259.04.mm,816.71.mm,0], [245.63.mm,807.54.mm,0], [231.89.mm,798.85.mm,0], [217.85.mm,790.68.mm,0], [203.51.mm,783.02.mm,0], [188.91.mm,775.88.mm,0], [174.06.mm,769.28.mm,0], [158.98.mm,763.23.mm,0], [143.68.mm,757.72.mm,0], [128.2.mm,752.78.mm,0], [112.55.mm,748.4.mm,0], [96.75.mm,744.6.mm,0], [80.82.mm,741.37.mm,0], [64.78.mm,738.72.mm,0], [48.66.mm,736.66.mm,0], [32.48.mm,735.18.mm,0], [16.25.mm,734.3.mm,0], [0.mm,734.mm,0], [-16.25.mm,734.3.mm,0], [-32.48.mm,735.18.mm,0], [-48.66.mm,736.66.mm,0], [-64.78.mm,738.72.mm,0], [-80.82.mm,741.37.mm,0], [-96.75.mm,744.6.mm,0], [-112.55.mm,748.4.mm,0], [-128.2.mm,752.78.mm,0], [-143.68.mm,757.72.mm,0], [-158.98.mm,763.23.mm,0], [-174.06.mm,769.28.mm,0], [-188.91.mm,775.88.mm,0], [-203.51.mm,783.02.mm,0], [-217.85.mm,790.68.mm,0], [-231.89.mm,798.85.mm,0], [-245.63.mm,807.54.mm,0], [-259.04.mm,816.71.mm,0], [-272.12.mm,826.37.mm,0], [-284.83.mm,836.5.mm,0], [-297.16.mm,847.08.mm,0], [-309.11.mm,858.1.mm,0], [-320.64.mm,869.55.mm,0], [-331.75.mm,881.42.mm,0], [-342.42.mm,893.67.mm,0]])
+  face = ge.add_face([[-344.72.mm,891.75.mm,80.mm], [-333.98.mm,879.41.mm,80.mm], [-322.79.mm,867.46.mm,80.mm], [-311.18.mm,855.94.mm,80.mm], [-299.16.mm,844.84.mm,80.mm], [-286.74.mm,834.19.mm,80.mm], [-273.94.mm,823.99.mm,80.mm], [-260.78.mm,814.27.mm,80.mm], [-247.28.mm,805.03.mm,80.mm], [-233.45.mm,796.29.mm,80.mm], [-219.31.mm,788.06.mm,80.mm], [-204.88.mm,780.34.mm,80.mm], [-190.18.mm,773.16.mm,80.mm], [-175.23.mm,766.52.mm,80.mm], [-160.04.mm,760.42.mm,80.mm], [-144.65.mm,754.88.mm,80.mm], [-129.06.mm,749.9.mm,80.mm], [-113.3.mm,745.5.mm,80.mm], [-97.4.mm,741.67.mm,80.mm], [-81.36.mm,738.42.mm,80.mm], [-65.22.mm,735.75.mm,80.mm], [-48.99.mm,733.67.mm,80.mm], [-32.7.mm,732.19.mm,80.mm], [-16.36.mm,731.3.mm,80.mm], [0.mm,731.mm,80.mm], [16.36.mm,731.3.mm,80.mm], [32.7.mm,732.19.mm,80.mm], [48.99.mm,733.67.mm,80.mm], [65.22.mm,735.75.mm,80.mm], [81.36.mm,738.42.mm,80.mm], [97.4.mm,741.67.mm,80.mm], [113.3.mm,745.5.mm,80.mm], [129.06.mm,749.9.mm,80.mm], [144.65.mm,754.88.mm,80.mm], [160.04.mm,760.42.mm,80.mm], [175.23.mm,766.52.mm,80.mm], [190.18.mm,773.16.mm,80.mm], [204.88.mm,780.34.mm,80.mm], [219.31.mm,788.06.mm,80.mm], [233.45.mm,796.29.mm,80.mm], [247.28.mm,805.03.mm,80.mm], [260.78.mm,814.27.mm,80.mm], [273.94.mm,823.99.mm,80.mm], [286.74.mm,834.19.mm,80.mm], [299.16.mm,844.84.mm,80.mm], [311.18.mm,855.94.mm,80.mm], [322.79.mm,867.46.mm,80.mm], [333.98.mm,879.41.mm,80.mm], [344.72.mm,891.75.mm,80.mm], [342.42.mm,893.67.mm,80.mm], [331.75.mm,881.42.mm,80.mm], [320.64.mm,869.55.mm,80.mm], [309.11.mm,858.1.mm,80.mm], [297.16.mm,847.08.mm,80.mm], [284.83.mm,836.5.mm,80.mm], [272.12.mm,826.37.mm,80.mm], [259.04.mm,816.71.mm,80.mm], [245.63.mm,807.54.mm,80.mm], [231.89.mm,798.85.mm,80.mm], [217.85.mm,790.68.mm,80.mm], [203.51.mm,783.02.mm,80.mm], [188.91.mm,775.88.mm,80.mm], [174.06.mm,769.28.mm,80.mm], [158.98.mm,763.23.mm,80.mm], [143.68.mm,757.72.mm,80.mm], [128.2.mm,752.78.mm,80.mm], [112.55.mm,748.4.mm,80.mm], [96.75.mm,744.6.mm,80.mm], [80.82.mm,741.37.mm,80.mm], [64.78.mm,738.72.mm,80.mm], [48.66.mm,736.66.mm,80.mm], [32.48.mm,735.18.mm,80.mm], [16.25.mm,734.3.mm,80.mm], [0.mm,734.mm,80.mm], [-16.25.mm,734.3.mm,80.mm], [-32.48.mm,735.18.mm,80.mm], [-48.66.mm,736.66.mm,80.mm], [-64.78.mm,738.72.mm,80.mm], [-80.82.mm,741.37.mm,80.mm], [-96.75.mm,744.6.mm,80.mm], [-112.55.mm,748.4.mm,80.mm], [-128.2.mm,752.78.mm,80.mm], [-143.68.mm,757.72.mm,80.mm], [-158.98.mm,763.23.mm,80.mm], [-174.06.mm,769.28.mm,80.mm], [-188.91.mm,775.88.mm,80.mm], [-203.51.mm,783.02.mm,80.mm], [-217.85.mm,790.68.mm,80.mm], [-231.89.mm,798.85.mm,80.mm], [-245.63.mm,807.54.mm,80.mm], [-259.04.mm,816.71.mm,80.mm], [-272.12.mm,826.37.mm,80.mm], [-284.83.mm,836.5.mm,80.mm], [-297.16.mm,847.08.mm,80.mm], [-309.11.mm,858.1.mm,80.mm], [-320.64.mm,869.55.mm,80.mm], [-331.75.mm,881.42.mm,80.mm], [-342.42.mm,893.67.mm,80.mm]])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2200.mm)
+  face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.42
@@ -428,9 +406,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum C-shell"
   ge = grp.entities
-  face = ge.add_face([[-330.93.mm,903.32.mm,0], [-301.mm,871.12.mm,0], [-267.94.mm,842.13.mm,0], [-232.11.mm,816.65.mm,0], [-193.88.mm,794.95.mm,0], [-153.64.mm,777.24.mm,0], [-111.81.mm,763.72.mm,0], [-68.82.mm,754.52.mm,0], [-25.12.mm,749.73.mm,0], [18.84.mm,749.41.mm,0], [62.61.mm,753.56.mm,0], [105.73.mm,762.14.mm,0], [147.75.mm,775.05.mm,0], [188.25.mm,792.17.mm,0], [226.79.mm,813.32.mm,0], [262.98.mm,838.27.mm,0], [296.46.mm,866.77.mm,0], [326.86.mm,898.53.mm,0], [353.87.mm,933.21.mm,0], [377.22.mm,970.46.mm,0], [396.67.mm,1009.89.mm,0], [412.01.mm,1051.1.mm,0], [423.08.mm,1093.64.mm,0], [429.76.mm,1137.09.mm,0], [432.mm,1181.mm,0], [429.76.mm,1224.91.mm,0], [423.08.mm,1268.36.mm,0], [412.01.mm,1310.9.mm,0], [396.67.mm,1352.11.mm,0], [377.22.mm,1391.54.mm,0], [353.87.mm,1428.79.mm,0], [326.86.mm,1463.47.mm,0], [296.46.mm,1495.23.mm,0], [262.98.mm,1523.73.mm,0], [226.79.mm,1548.68.mm,0], [188.25.mm,1569.83.mm,0], [147.75.mm,1586.95.mm,0], [105.73.mm,1599.86.mm,0], [62.61.mm,1608.44.mm,0], [18.84.mm,1612.59.mm,0], [-25.12.mm,1612.27.mm,0], [-68.82.mm,1607.48.mm,0], [-111.81.mm,1598.28.mm,0], [-153.64.mm,1584.76.mm,0], [-193.88.mm,1567.05.mm,0], [-232.11.mm,1545.35.mm,0], [-267.94.mm,1519.87.mm,0], [-301.mm,1490.88.mm,0], [-330.93.mm,1458.68.mm,0], [-328.63.mm,1456.76.mm,0], [-298.9.mm,1488.73.mm,0], [-266.08.mm,1517.51.mm,0], [-230.5.mm,1542.81.mm,0], [-192.53.mm,1564.37.mm,0], [-152.57.mm,1581.95.mm,0], [-111.03.mm,1595.38.mm,0], [-68.34.mm,1604.52.mm,0], [-24.94.mm,1609.27.mm,0], [18.71.mm,1609.59.mm,0], [62.18.mm,1605.47.mm,0], [104.99.mm,1596.95.mm,0], [146.73.mm,1584.13.mm,0], [186.94.mm,1567.13.mm,0], [225.21.mm,1546.13.mm,0], [261.16.mm,1521.35.mm,0], [294.4.mm,1493.04.mm,0], [324.59.mm,1461.51.mm,0], [351.42.mm,1427.06.mm,0], [374.61.mm,1390.07.mm,0], [393.91.mm,1350.92.mm,0], [409.14.mm,1310.mm,0], [420.14.mm,1267.75.mm,0], [426.78.mm,1224.6.mm,0], [429.mm,1181.mm,0], [426.78.mm,1137.4.mm,0], [420.14.mm,1094.25.mm,0], [409.14.mm,1052.mm,0], [393.91.mm,1011.08.mm,0], [374.61.mm,971.93.mm,0], [351.42.mm,934.94.mm,0], [324.59.mm,900.49.mm,0], [294.4.mm,868.96.mm,0], [261.16.mm,840.65.mm,0], [225.21.mm,815.87.mm,0], [186.94.mm,794.87.mm,0], [146.73.mm,777.87.mm,0], [104.99.mm,765.05.mm,0], [62.18.mm,756.53.mm,0], [18.71.mm,752.41.mm,0], [-24.94.mm,752.73.mm,0], [-68.34.mm,757.48.mm,0], [-111.03.mm,766.62.mm,0], [-152.57.mm,780.05.mm,0], [-192.53.mm,797.63.mm,0], [-230.5.mm,819.19.mm,0], [-266.08.mm,844.49.mm,0], [-298.9.mm,873.27.mm,0], [-328.63.mm,905.24.mm,0]])
+  face = ge.add_face([[-330.93.mm,903.32.mm,80.mm], [-301.mm,871.12.mm,80.mm], [-267.94.mm,842.13.mm,80.mm], [-232.11.mm,816.65.mm,80.mm], [-193.88.mm,794.95.mm,80.mm], [-153.64.mm,777.24.mm,80.mm], [-111.81.mm,763.72.mm,80.mm], [-68.82.mm,754.52.mm,80.mm], [-25.12.mm,749.73.mm,80.mm], [18.84.mm,749.41.mm,80.mm], [62.61.mm,753.56.mm,80.mm], [105.73.mm,762.14.mm,80.mm], [147.75.mm,775.05.mm,80.mm], [188.25.mm,792.17.mm,80.mm], [226.79.mm,813.32.mm,80.mm], [262.98.mm,838.27.mm,80.mm], [296.46.mm,866.77.mm,80.mm], [326.86.mm,898.53.mm,80.mm], [353.87.mm,933.21.mm,80.mm], [377.22.mm,970.46.mm,80.mm], [396.67.mm,1009.89.mm,80.mm], [412.01.mm,1051.1.mm,80.mm], [423.08.mm,1093.64.mm,80.mm], [429.76.mm,1137.09.mm,80.mm], [432.mm,1181.mm,80.mm], [429.76.mm,1224.91.mm,80.mm], [423.08.mm,1268.36.mm,80.mm], [412.01.mm,1310.9.mm,80.mm], [396.67.mm,1352.11.mm,80.mm], [377.22.mm,1391.54.mm,80.mm], [353.87.mm,1428.79.mm,80.mm], [326.86.mm,1463.47.mm,80.mm], [296.46.mm,1495.23.mm,80.mm], [262.98.mm,1523.73.mm,80.mm], [226.79.mm,1548.68.mm,80.mm], [188.25.mm,1569.83.mm,80.mm], [147.75.mm,1586.95.mm,80.mm], [105.73.mm,1599.86.mm,80.mm], [62.61.mm,1608.44.mm,80.mm], [18.84.mm,1612.59.mm,80.mm], [-25.12.mm,1612.27.mm,80.mm], [-68.82.mm,1607.48.mm,80.mm], [-111.81.mm,1598.28.mm,80.mm], [-153.64.mm,1584.76.mm,80.mm], [-193.88.mm,1567.05.mm,80.mm], [-232.11.mm,1545.35.mm,80.mm], [-267.94.mm,1519.87.mm,80.mm], [-301.mm,1490.88.mm,80.mm], [-330.93.mm,1458.68.mm,80.mm], [-328.63.mm,1456.76.mm,80.mm], [-298.9.mm,1488.73.mm,80.mm], [-266.08.mm,1517.51.mm,80.mm], [-230.5.mm,1542.81.mm,80.mm], [-192.53.mm,1564.37.mm,80.mm], [-152.57.mm,1581.95.mm,80.mm], [-111.03.mm,1595.38.mm,80.mm], [-68.34.mm,1604.52.mm,80.mm], [-24.94.mm,1609.27.mm,80.mm], [18.71.mm,1609.59.mm,80.mm], [62.18.mm,1605.47.mm,80.mm], [104.99.mm,1596.95.mm,80.mm], [146.73.mm,1584.13.mm,80.mm], [186.94.mm,1567.13.mm,80.mm], [225.21.mm,1546.13.mm,80.mm], [261.16.mm,1521.35.mm,80.mm], [294.4.mm,1493.04.mm,80.mm], [324.59.mm,1461.51.mm,80.mm], [351.42.mm,1427.06.mm,80.mm], [374.61.mm,1390.07.mm,80.mm], [393.91.mm,1350.92.mm,80.mm], [409.14.mm,1310.mm,80.mm], [420.14.mm,1267.75.mm,80.mm], [426.78.mm,1224.6.mm,80.mm], [429.mm,1181.mm,80.mm], [426.78.mm,1137.4.mm,80.mm], [420.14.mm,1094.25.mm,80.mm], [409.14.mm,1052.mm,80.mm], [393.91.mm,1011.08.mm,80.mm], [374.61.mm,971.93.mm,80.mm], [351.42.mm,934.94.mm,80.mm], [324.59.mm,900.49.mm,80.mm], [294.4.mm,868.96.mm,80.mm], [261.16.mm,840.65.mm,80.mm], [225.21.mm,815.87.mm,80.mm], [186.94.mm,794.87.mm,80.mm], [146.73.mm,777.87.mm,80.mm], [104.99.mm,765.05.mm,80.mm], [62.18.mm,756.53.mm,80.mm], [18.71.mm,752.41.mm,80.mm], [-24.94.mm,752.73.mm,80.mm], [-68.34.mm,757.48.mm,80.mm], [-111.03.mm,766.62.mm,80.mm], [-152.57.mm,780.05.mm,80.mm], [-192.53.mm,797.63.mm,80.mm], [-230.5.mm,819.19.mm,80.mm], [-266.08.mm,844.49.mm,80.mm], [-298.9.mm,873.27.mm,80.mm], [-328.63.mm,905.24.mm,80.mm]])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2200.mm)
+  face.pushpull(2120.mm)
   mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
   mat.color = Sketchup::Color.new(232, 224, 208)
   mat.alpha = 0.85
@@ -453,7 +431,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum bottom cap"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,0.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
@@ -492,7 +470,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Lower bearing collar"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,0.mm], [0,0,1], 75.mm, 24)
+  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
@@ -501,10 +479,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # LT Floor collar plate
+  # LT Lower bearing mount plate
   grp = ents.add_group
-  grp.name = "LT Floor collar plate"
-  face = grp.entities.add_face([-120.mm,1061.mm,0.mm], [120.mm,1061.mm,0.mm], [120.mm,1301.mm,0.mm], [-120.mm,1301.mm,0.mm])
+  grp.name = "LT Lower bearing mount plate"
+  face = grp.entities.add_face([-120.mm,1061.mm,80.mm], [120.mm,1061.mm,80.mm], [120.mm,1301.mm,80.mm], [-120.mm,1301.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -551,10 +529,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-336.6765327507908.mm,1463.505154457234.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-336.6765327507908.mm,1463.505154457234.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2200.mm)
+  cface.pushpull(2120.mm)
   mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
   mat.color = Sketchup::Color.new(126, 126, 118)
   mat.alpha = 1.0
@@ -564,10 +542,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-336.6765327507909.mm,898.4948455427659.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-336.6765327507909.mm,898.4948455427659.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(2200.mm)
+  cface.pushpull(2120.mm)
   mat = model.materials["LT Drum opening brush seal"] || model.materials.add("LT Drum opening brush seal")
   mat.color = Sketchup::Color.new(126, 126, 118)
   mat.alpha = 1.0
@@ -590,7 +568,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum bottom felt seal"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,0.mm], [0,0,1], 446.mm, 24)
+  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 446.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(8.mm)
@@ -612,7 +590,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,643.mm,2358.mm], [730.mm,643.mm,2358.mm], [730.mm,663.mm,2358.mm], [-30.mm,663.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -645,7 +623,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,1699.mm,2358.mm], [730.mm,1699.mm,2358.mm], [730.mm,1719.mm,2358.mm], [-30.mm,1719.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Door Frame threshold L"] || model.materials.add("Door Frame threshold L")
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -730,7 +708,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Destaco clamp (transport) base
   grp = ents.add_group
   grp.name = "Destaco clamp (transport) base"
-  face = grp.entities.add_face([490.mm,635.mm,2288.mm], [550.mm,635.mm,2288.mm], [550.mm,671.mm,2288.mm], [490.mm,671.mm,2288.mm])
+  face = grp.entities.add_face([540.mm,635.mm,2288.mm], [600.mm,635.mm,2288.mm], [600.mm,671.mm,2288.mm], [540.mm,671.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -741,7 +719,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Destaco clamp (transport) handle
   grp = ents.add_group
   grp.name = "Destaco clamp (transport) handle"
-  face = grp.entities.add_face([500.mm,647.mm,2312.mm], [570.mm,647.mm,2312.mm], [570.mm,659.mm,2312.mm], [500.mm,659.mm,2312.mm])
+  face = grp.entities.add_face([550.mm,647.mm,2312.mm], [620.mm,647.mm,2312.mm], [620.mm,659.mm,2312.mm], [550.mm,659.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
@@ -752,7 +730,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Destaco clamp (transport) base
   grp = ents.add_group
   grp.name = "Destaco clamp (transport) base"
-  face = grp.entities.add_face([490.mm,1691.mm,2288.mm], [550.mm,1691.mm,2288.mm], [550.mm,1727.mm,2288.mm], [490.mm,1727.mm,2288.mm])
+  face = grp.entities.add_face([540.mm,1691.mm,2288.mm], [600.mm,1691.mm,2288.mm], [600.mm,1727.mm,2288.mm], [540.mm,1727.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -763,7 +741,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Destaco clamp (transport) handle
   grp = ents.add_group
   grp.name = "Destaco clamp (transport) handle"
-  face = grp.entities.add_face([500.mm,1703.mm,2312.mm], [570.mm,1703.mm,2312.mm], [570.mm,1715.mm,2312.mm], [500.mm,1715.mm,2312.mm])
+  face = grp.entities.add_face([550.mm,1703.mm,2312.mm], [620.mm,1703.mm,2312.mm], [620.mm,1715.mm,2312.mm], [550.mm,1715.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")

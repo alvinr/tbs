@@ -152,7 +152,8 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # Panel slides inward ~500mm on HGR20 ceiling-mounted linear rails so the deeper
 # Ø900 light-trap housing clears the container exterior face, allowing ISO cargo
 # doors to close. Panel is suspended from ceiling — bottom edge clears the tray.
-PANEL_SLIDE       = 500   # panel slide travel for transport (mm) [rev8: 300→500]
+PANEL_SLIDE       = 550   # panel slide travel for transport (mm) [rev8: 300→550,
+                          # housing ext. edge -450 → +100 clears door + hardware]
 PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
                           # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
 

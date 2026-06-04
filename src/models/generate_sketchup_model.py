@@ -51,7 +51,7 @@ from tbs_constants import (
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
     BRACE_RHS, BRACE_Z_BOT, BRACE_Z_TOP,
     BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1,
-    PANEL_CENTER_T, PANEL_FLOOR_GAP,
+    PANEL_CENTER_T, PANEL_FLOOR_GAP, PANEL_SLIDE,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_Z_BOT,
     BB_OD, BB_H,
@@ -815,12 +815,12 @@ def film_plane_mechanism():
 # ── Light-trap drum (revolving entry) ────────────────────────────────────────
 
 def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
-                  color=None, alpha=None, n=48):
+                  color=None, alpha=None, n=48, z0=0):
     """Hollow curved wall (annular sector, extruded in +Z) with a gap.
 
     The gap (an opening of `gap_deg` centred on `gap_center_deg`) reads as a
     doorway/entry slot in the cylinder. Built as a closed band polygon (outer
-    arc forward + inner arc back) then pushpulled to `height`.
+    arc forward + inner arc back) at base height `z0` then pushpulled `height`.
     """
     ri = r - wall_t
     a0 = math.radians(gap_center_deg + gap_deg / 2.0)
@@ -832,7 +832,7 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
     for i in range(n, -1, -1):
         a = a0 + (a1 - a0) * i / n
         pts.append((cx + ri * math.cos(a), cy + ri * math.sin(a)))
-    pts_ruby = ', '.join(f'[{mm(round(x, 2))},{mm(round(y, 2))},0]' for x, y in pts)
+    pts_ruby = ', '.join(f'[{mm(round(x, 2))},{mm(round(y, 2))},{mm(z0)}]' for x, y in pts)
 
     lines = [
         f'  # {name}',

@@ -105,27 +105,25 @@ def door_frame():
     just exterior of the panel (X=-50..0); the EPDM gasket seals against it."""
     s = 50
     x0 = -s
-    # threshold rail is notched around the housing aperture
-    dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15
+    # threshold rail runs full width — the suspended drum no longer reaches the
+    # floor, so the doorway sill needs no notch.
     parts = [
-        ruby_box("Door Frame threshold L", x0, 0, 0, s, dg0, s, color=C_RAIL),
-        ruby_box("Door Frame threshold R", x0, dg1, 0, s, C_WID - dg1, s, color=C_RAIL),
+        ruby_box("Door Frame threshold", x0, 0, 0, s, C_WID, s, color=C_RAIL),
         ruby_box("Door Frame top", x0, 0, C_HGT - s, s, C_WID, s, color=C_RAIL),
         ruby_box("Door Frame left stile", x0, 0, 0, s, s, C_HGT, color=C_RAIL),
         ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
                  color=C_RAIL),
     ]
     # Bottom seal lip — an upstand rising from the threshold to just above the
-    # panel bottom edge (Z=110), exterior of the EPDM (X=-32..-20). It closes
-    # the 80mm floor gap as a continuous wall; the panel bottom edge recedes
-    # behind it and the panel's EPDM bottom seal compresses against it when the
-    # cam latches engage ("camera"/operational position only — release to slide
-    # to transport). Notched around the drum, which has its own floor seals.
+    # panel bottom edge (Z=110), exterior of the EPDM (X=-32..-20). It closes the
+    # 80mm floor gap as a continuous wall; the panel bottom edge recedes behind it
+    # and the EPDM bottom seal compresses against it when the cam latches engage
+    # (operational only — release to slide to transport). Now that the drum is
+    # SUSPENDED (its bottom hangs at Z=80, not on the floor), the floor gap is
+    # uniform full-width, so this lip runs CONTINUOUS with no notch — like the top.
     lt, lz = 12, 110
-    parts.append(ruby_box("Door Frame bottom seal lip L", -20 - lt, 0, 0,
-                          lt, dg0, lz, color=C_RAIL))
-    parts.append(ruby_box("Door Frame bottom seal lip R", -20 - lt, dg1, 0,
-                          lt, C_WID - dg1, lz, color=C_RAIL))
+    parts.append(ruby_box("Door Frame bottom seal lip", -20 - lt, 0, 0,
+                          lt, C_WID, lz, color=C_RAIL))
     # Top seal lip — the mirror of the bottom: a downstand from the frame top
     # rail to just below the panel top edge (Z=2270), exterior of the EPDM. It
     # closes the gap between the panel top and the frame as a continuous wall;
@@ -212,36 +210,39 @@ def drum():
     the ENTER position (drum opening at the exterior). ~Ø850 bore, ~625mm
     passage; emergency egress is the whole panel swinging open."""
     cx, cy, H = DRUM_CX, DRUM_CY, DRUM_H
-    od = OPENING_DEG
+    ZB = PANEL_Z_BOT                 # 80 — housing/drum SUSPENDED with the panel
+    od = OPENING_DEG                 # (80mm floor gap → clears the tray rim in transport)
     parts = []
 
     # Fixed HOUSING — two solid arcs (each 180−od = 100° wide) leaving two od=80°
     # openings centered on +X (interior→walkway, 0°) and −X (exterior, 180°).
+    # Suspended: spans Z 80..2200 (bottom hangs at the panel bottom rail).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
-                                  HOUSING_T, H, gap_center_deg=270, gap_deg=180 + od,
-                                  color=C_STEEL, alpha=0.42))
+                                  HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
+                                  color=C_STEEL, alpha=0.42, z0=ZB))
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
-                                  HOUSING_T, H, gap_center_deg=90, gap_deg=180 + od,
-                                  color=C_STEEL, alpha=0.42))
+                                  HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
+                                  color=C_STEEL, alpha=0.42, z0=ZB))
 
     # Rotating DRUM — single od=80° opening (C-shell). ENTER position: opening at
     # the exterior (180°); the solid 280° arc faces the interior (0°).
-    parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H,
+    parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_DRUM, alpha=0.85))
+                                  color=C_DRUM, alpha=0.85, z0=ZB))
 
-    # Drum caps, top stub shaft + SKF 6215 bearing, lower bearing collar (on floor).
+    # Drum caps (top at 2200, bottom at the suspended Z=80), top stub shaft +
+    # upper SKF 6215 bearing, lower bearing collar on the panel bottom rail (Z=80).
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
                                color=C_DRUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, 0, DRUM_OR, 5,
+    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, 5,
                                color=C_DRUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
     parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
                                color=C_STEEL, axis="z"))
-    parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, 0, 75, 45,
+    parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, ZB, 75, 45,
                                color=C_STEEL, axis="z"))
-    parts.append(ruby_box("LT Floor collar plate", cx - 120, cy - 120, 0,
+    parts.append(ruby_box("LT Lower bearing mount plate", cx - 120, cy - 120, ZB,
                           240, 240, 12, color=C_STEEL))
 
     # Interior grab rail on the drum's solid +X wall (operator pulls the drum).
@@ -262,11 +263,11 @@ def drum():
     for edge in (180 - od / 2, 180 + od / 2):               # opening edges (enter pos.)
         bx = cx + seal_r * math.cos(math.radians(edge))
         by = cy + seal_r * math.sin(math.radians(edge))
-        parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, 0, 7, H,
+        parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, ZB, 7, H - ZB,
                                    color=felt, axis="z"))
     parts.append(ruby_cylinder("LT Drum top felt seal", cx, cy, H - 8,
                                HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom felt seal", cx, cy, 0,
+    parts.append(ruby_cylinder("LT Drum bottom felt seal", cx, cy, ZB,
                                HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
     return '\n'.join(parts)
 
@@ -277,7 +278,7 @@ def drum():
 # widened center-zone step lines (NEW_YD_L/R). NB: the longer retraction carries
 # the housing into the left-walkway / near-tray zone — tray-end clearance during
 # transport is an open detail to confirm.
-TRANSPORT_SLIDE = 500
+TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 550 — from constants
 
 def sliding_carriage():
     """HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left

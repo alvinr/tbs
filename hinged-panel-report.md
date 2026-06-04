@@ -124,6 +124,11 @@ is possible at any incidence angle within ±30° of normal.
 
 See [Light Trap Selection](light-trap-selection.md) §5 for full verification.
 
+> **⚠ Design review (open issue).** The static S-path argument above does **not**
+> hold once the two operational realities are considered — *fitting a person* and
+> *rotating the drum*. Both currently fail. See §3.6 and **Sheet 5** for the
+> analysis; the drum geometry is to be revised before fabrication.
+
 ### 3.4 Drum Seals
 
 | Location | Seal method |
@@ -140,6 +145,40 @@ only at 900mm height. The handle is attached by a welded bracket — no through-
 penetration of the drum wall on the exterior face. This eliminates a potential
 light leak path. The operator enters by pushing the bare exterior drum wall, then
 uses the interior grab rail to pull the drum closed and brace during exit.
+
+### 3.6 Access & Light-Tightness Analysis (design review — both tests fail)
+
+Two questions decide whether the revolving drum actually works. The current
+Ø750mm / 4-fin geometry fails both.
+
+**Sheet 5 — Drum Access & Light-Tightness Analysis**
+![TBS-001 Hinged Panel — Sheet 5: Drum Analysis](assets/hingepanel-sheet5.png)
+
+**1. Can a person fit through a 90° sector? — No.** The four fins run from the
+bore center to the wall, dividing the Ø744mm bore into four 90° wedges. A wedge is
+~526mm across at the rim but tapers to a point at the center, leaving only
+~250–300mm of usable body space; a single person (≈520 × 330mm in plan) does not
+fit, and every fin crosses the required Ø700mm clear passage (§2 of
+[Light Trap Selection](light-trap-selection.md)). A person fits only if the bore is
+left largely unobstructed — at most a single partition (two compartments), not four
+radial fins.
+
+**2. As the drum rotates, can daylight enter? — Yes.** The same opening that passes
+the person must sweep from the exterior face to the interior face, so it crosses the
+panel plane; at the transit angles it links exterior and interior directly and
+daylight enters the darkroom. Internal fins cannot close this channel without
+blocking the person. The static S-path verification (§3.3) assumes a fixed labyrinth,
+but a revolving drum with a person-sized opening and no fixed housing has no such
+labyrinth at the transit angles.
+
+**Resolution (to be designed).** A working light-lock needs *either* a **fixed outer
+housing** with two narrow, offset openings — so the drum's solid wall always covers
+at least one side while the drum's single opening rotates between them (the standard
+commercial revolving-darkroom-door arrangement) — *or* a substantially larger drum
+with a single 2-compartment partition and a fixed surround. The current panel
+aperture is a full circle and provides no housing. This is an **open design issue**;
+the geometry, the 3D model, and the §3.3 claim will be updated once the revised
+light-trap is agreed.
 
 ---
 
@@ -350,6 +389,6 @@ for the sliding carriage.
 | Neoprene wiper strip | [McMaster-Carr #93855K6](https://www.mcmaster.com/93855K6) — closed-cell, pressure-sensitive adhesive |
 | Revolving drum light trap design | See [Light Trap Selection](light-trap-selection.md) for full commercial comparison and custom specification |
 | Sliding carriage specification | See [Equipment Layout Report](equipment-layout-report.md) §6 for clearance analysis and light seal design |
-| Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–4 |
+| Panel construction drawings | See [Engineering Diagrams](engineering-diagrams.md) §12 — Sheets 1–5 |
 
 *© 2026 Alvin Richards — Released under [GNU AGPLv3](licensing.md)*

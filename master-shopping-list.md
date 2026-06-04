@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
 | 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,905 | $7,396 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (custom fabrication) | $2,300 | $3,150 |
 | 7a. Panel sliding carriage | $1,036 | $1,036 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,731** | **~$27,881** |
+| **TOTAL (base build + 50-print run)** | **~$20,755** | **~$27,923** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -217,7 +217,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
 | [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
 | [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
-**Valves, fittings & pipe subtotal: ~$502–$815**
+| [18mm marine plywood offcut (~0.4 m²)](https://www.homedepot.com/b/Lumber-Composites-Plywood-Marine-Plywood/N-5yc1vZc6ad) | Drain-riser backing spine — teed off the equipment panel, full panel height; mounts the X3/X4 risers in the corridor | 1 | Home Depot / local lumber | $12–$20 | $12–$20 |
+| [SS 2-hole pipe straps / cushioned P-clips, ½"–¾"](https://www.mcmaster.com/products/pipe-clamps/) | Clamp the X3/X4 drain risers to the spine at ~400mm centers (+ SS screws) | 10 | McMaster-Carr | $1–$2 each | $12–$22 |
+**Valves, fittings & pipe subtotal: ~$526–$857**
 
 ### Processing tray
 | Item | Spec | Qty | Supplier | Unit price | Est. cost |

@@ -292,7 +292,7 @@ SHELF_HANGER_N = 4       # number of hanger rods (4 corners)
 TAP_X          = 3729    # tap X position (mm) — at shelf left edge
 TAP_Z          = 1150    # tap spout height AFF (mm) — 125mm above shelf surface
 TAP_PIPE_OD    = 25      # branch pipe OD (mm) — 3/4" HDPE
-TAP_WALL_T     = 3       # branch pipe wall thickness (mm)
+TAP_WALL_T     = 3       # branch pipe wall thickness (mm) — reserved (spec; not yet drawn)
 
 
 # ── Filter zone — on equipment panel (rev 7: was pinhole wall skid) ──────
@@ -375,7 +375,7 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # brackets (no longer cantilevered). Floor flange feet anchor the uprights down.
 # These mirror src/models/generate_sketchup_model.py → ibc_rack().
 IBC_FRAME_RHS      = 50    # 50×50×3mm RHS section size (mm)
-IBC_FRAME_T        = 3     # RHS wall thickness (mm)
+IBC_FRAME_T        = 3     # RHS wall thickness (mm) — reserved (spec; not yet drawn)
 # Floor feet — one under each of the 6 corridor uprights
 IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
 IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
@@ -397,8 +397,8 @@ IBC_WBKT_BOLT_N    = 4     # wall bolts per bracket
 # rail + floor-level beam) that the panel bolts to. Mirrors ibc_rack().
 PANEL_FRAME_X      = IBC_COL_X + IBC_W // 2 - IBC_FRAME_RHS // 2  # 5258 — middle corridor X-station (RHS -X edge)
 PANEL_FRAME_TOP_Z  = EQPANEL_Z_HI   # 2260 — extended uprights / top rail level
-PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright (panel near edge)
-PANEL_FRAME_YD_F   = CORRIDOR_YD_FAR   # 1316 — far corridor upright (panel far edge)
+PANEL_FRAME_YD_N   = CORRIDOR_YD_NEAR  # 1046 — near corridor upright — reserved (alias; code uses CORRIDOR_YD_NEAR)
+PANEL_FRAME_YD_F   = CORRIDOR_YD_FAR   # 1316 — far corridor upright — reserved (alias; code uses CORRIDOR_YD_FAR)
 
 # ── Processing tray — permanently installed in optical zone (rev 5) ──────────
 PROC_TRAY_X_L  = FP_X_L + 20    # = 170mm — 20mm clearance from left rail [rev6: was 645]
@@ -423,7 +423,7 @@ PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
 
 BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
-BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0)
+BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
 BV02_Z             = 900         # BV-02 height on pinhole wall (mm AFF) — waist height from walkway deck
 PROC_TRAY_SUMP_W   = 150        # sump well width in X (mm)
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
@@ -471,7 +471,7 @@ WALKWAY_H       = 80     # deck height above floor (mm) — LOWERED for film-pla
 #       Deck top Z=80 clears the Z=100 film-frame bottom by 20mm, so the film plane
 #       travels above the in-place walkway. (Was 65mm — arm collided with the tray rim.)
 WALKWAY_GRATE_T = 15     # grating thickness (mm) — thin grate (was 25) for film-plane clearance
-WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — kept for reference
+WALKWAY_H_PREV  = 100    # original deck height (pre-lowering) — reserved (history; kept for reference)
 # Container structural rib spacing (ISO standard 20ft container)
 CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 # Wall-mounted cantilever brackets
@@ -561,7 +561,7 @@ SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — 
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)
 SPRAY_BAR_WHEEL_DIA  = 50          # nylon wheel diameter (mm) — matches tray rim height
 SPRAY_BAR_WHEEL_W    = 20          # wheel width (mm)
-SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction)
+SPRAY_BAR_WHEELS_PER_SIDE = 2      # wheels per carriage (spaced in Yd direction) — reserved (spec; 2D/3D draw wheels via WHEEL_SP)
 SPRAY_BAR_WHEEL_SP   = 200         # wheel center-to-center spacing in Yd (mm)
 SPRAY_BAR_TRAY_FLOOR = 2           # tray sheet metal thickness on container floor (mm)
 SPRAY_BAR_AXLE_Z     = SPRAY_BAR_TRAY_FLOOR + SPRAY_BAR_WHEEL_DIA // 2  # = 27mm
@@ -569,11 +569,11 @@ SPRAY_BAR_BRACKET_DROP = 7         # axle CL to beam bottom (mm) — matches car
 SPRAY_BAR_Z_BOT      = SPRAY_BAR_AXLE_Z - SPRAY_BAR_BRACKET_DROP  # = 20mm beam bottom
 SPRAY_BAR_Z_TOP      = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM           # = 60mm beam top
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
-SPRAY_BAR_HOLE_DIA   = 8           # nozzle through-hole in beam wall (mm)
+SPRAY_BAR_HOLE_DIA   = 8           # nozzle through-hole in beam wall (mm) — reserved (spec; not yet drawn)
 SPRAY_BAR_NOZZLE_PITCH = 150       # nozzle center-to-center pitch along the beam (mm)
 SPRAY_BAR_N_NOZZLES  = (PROC_OPEN_X_R - PROC_OPEN_X_L) // SPRAY_BAR_NOZZLE_PITCH + 1  # = 26 @ 150mm
 SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
-SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm)
+SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM // 2  # = 40mm — feed end cap center
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 

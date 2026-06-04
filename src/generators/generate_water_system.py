@@ -1662,13 +1662,13 @@ def draw_sheet4():
                   tube_r_c, tube_wall_c,
                   fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
-    # ── Equipment panel (spans corridor at X=5240, perpendicular to sealed end) ──
+    # ── Equipment panel (spans corridor at X=EQPANEL_X, perpendicular to sealed end) ──
     ax4c.add_patch(plt.Rectangle(
         (pc_x(EP_X), pc_yd(CORRIDOR_YD_NEAR - 9)),
         EQPANEL_T / SC_C, 270 / SC_C,
         fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
     ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR - 65),
-              "EQUIPMENT PANEL (X=5240)",
+              f"EQUIPMENT PANEL (X={int(EQPANEL_X)})",
               ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
               style="italic", zorder=4)
 

@@ -7,7 +7,7 @@ check_consistency.py — 2D ↔ 3D ↔ docs consistency audit for TBS-001.
 Codifies the recurring drift we keep finding between the matplotlib diagram
 generators (src/generators/), the SketchUp model builders (src/models/), and the
 reports (*.md). You cannot diff a PNG against a .skp, but almost every real
-anomaly traces to one of four root causes, three of which are mechanical:
+anomaly traces to one of five root causes, four of which are mechanical:
 
   1. HARDCODED VALUE that should read tbs_constants.py — a literal/label/comment
      quoting a dimension. When the constant changes, the hardcode goes stale.
@@ -18,9 +18,13 @@ anomaly traces to one of four root causes, three of which are mechanical:
      → CHECK C (git divergence) + CHECK B (constant-import asymmetry).
   4. DOC / NUMBER staleness.
      → CHECK A covers docs too.
+  5. LATENT DUPLICATE — a constant nobody uses, or a bare literal equal to a
+     constant's CURRENT value. Matches today; the inverse of cause 1, waiting to
+     drift. → CHECK E (dead constants) + the --literals opt-in scan.
 
-Run:  python3 src/generators/check_consistency.py            # all checks
+Run:  python3 src/generators/check_consistency.py            # CHECK A–E
       python3 src/generators/check_consistency.py --scan 750,375   # ad-hoc values
+      python3 src/generators/check_consistency.py --literals       # latent dupes (noisy)
 See skills/skill_model_consistency.md for how to read and act on the output.
 """
 import os
@@ -250,7 +254,78 @@ def check_d_inventory():
     return 0
 
 
+def _all_constant_names():
+    """Every UPPER_CASE assignment in tbs_constants.py → is it annotated '# reserved'?
+    (Includes computed constants, unlike parse_constants which needs a literal RHS.)"""
+    out = {}
+    for line in open(CONSTS):
+        m = re.match(r"^([A-Z][A-Z0-9_]*)\s*=", line)
+        if m:
+            out[m.group(1)] = "reserved" in line.lower()
+    return out
+
+
+def check_e_dead_constants():
+    """Constants defined but referenced by no generator/model (and not used to derive
+    another constant) — a spec nobody draws, or the seed of a future hardcoded
+    duplicate. Constants annotated '# reserved' are intentional and skipped."""
+    print(f"\n{CB}── CHECK E · dead constants (defined, used by no generator/model) ──{C0}")
+    names = _all_constant_names()
+    # _files() already includes tbs_constants.py once (so a constant used only to
+    # derive another counts as used); just drop this auditor itself.
+    code = [f for f in _files((".py",), GEN_DIR, MOD_DIR) + _files((".rb",), MOD_DIR)
+            if not f.endswith("check_consistency.py")]
+    blob = "".join(open(f, errors="ignore").read() for f in code)
+    dead, reserved = [], 0
+    for name, is_res in names.items():
+        if len(re.findall(r"\b" + re.escape(name) + r"\b", blob)) <= 1:   # def line only
+            reserved += 1 if is_res else 0
+            if not is_res:
+                dead.append(name)
+    for n in sorted(dead):
+        print(f"  {C2}{n}{C0} — referenced nowhere (wire it in, or annotate '# reserved')")
+    if not dead:
+        print(f"  none unaccounted for.")
+    print(f"  ({reserved} constant(s) marked '# reserved' — intentional, skipped)")
+    print("  → a dead constant is design intent nobody draws, or the seed of a literal "
+          "that gets hand-copied later and then silently drifts.")
+    return len(dead)
+
+
+def literals_mode():
+    """Opt-in (--literals): the inverse of CHECK A. Bare numeric literals in a
+    generator/model that equal a CURRENT distinctive constant value — a latent
+    hardcoded duplicate that matches today but will silently drift on the next
+    geometry change. Noisy (distinctive == unique value, ≥200) — triage by line."""
+    from collections import defaultdict
+    cur = parse_constants()
+    val2names = defaultdict(list)
+    for k, v in cur.items():
+        val2names[v].append(k)
+    code = [f for f in _files((".py",), GEN_DIR, MOD_DIR)
+            if not f.endswith(("check_consistency.py", "tbs_constants.py"))]
+    hits = defaultdict(list)
+    for f in code:
+        for i, ln in enumerate(open(f, errors="ignore"), 1):
+            for num in re.findall(r"(?<![\w.])(\d{3,5})(?![\w.])", ln):
+                v = float(num)
+                names = val2names.get(v, [])
+                if len(names) == 1 and v >= 200 and names[0] not in ln:
+                    hits[names[0]].append((_rel(f), i, ln.strip()[:90]))
+    print(f"{CB}Bare-literal latent-drift scan (literal == a current distinctive constant){C0}")
+    for name in sorted(hits, key=lambda n: -len(hits[n])):
+        print(f"\n  {C2}{name} = {int(cur[name])}{C0}  ({len(hits[name])} hit(s)):")
+        for f, i, ln in hits[name][:6]:
+            print(f"     {f}:{i}  {ln}")
+    print(f"\n  → most are coincidental (padding, axis limits, RGB tuples, unit /1000, "
+          f"person heights). A literal that positions/sizes/labels THIS constant's "
+          f"feature should read the name instead.")
+
+
 def main():
+    if "--literals" in sys.argv:
+        literals_mode()
+        return
     if "--scan" in sys.argv:
         vals = [float(v) for v in sys.argv[sys.argv.index("--scan") + 1].split(",")]
         for path in scan_targets():
@@ -264,7 +339,8 @@ def main():
     cur = parse_constants()
     print(f"  parsed {len(cur)} numeric constants from tbs_constants.py")
     total = (check_a_stale_values(cur) + check_b_imports()
-             + check_c_divergence() + check_d_inventory())
+             + check_c_divergence() + check_d_inventory()
+             + check_e_dead_constants())
     print(f"\n{CB}Audit complete.{C0} Findings are heuristics, not failures — "
           f"triage against skills/skill_model_consistency.md.")
 

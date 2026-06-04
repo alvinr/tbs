@@ -1435,6 +1435,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#36-access-light-tightness-analysis-design-review-both-tests-fail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Access &amp; Light-Tightness Analysis (design review — both tests fail)
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2770,6 +2781,12 @@ sector (minimum 45° rotation) before reaching the interior face.</p>
 is 590mm — significantly longer than the 120mm panel thickness. No line of sight
 is possible at any incidence angle within ±30° of normal.</p>
 <p>See <a href="../light-trap-selection/">Light Trap Selection</a> §5 for full verification.</p>
+<blockquote>
+<p><strong>⚠ Design review (open issue).</strong> The static S-path argument above does <strong>not</strong>
+hold once the two operational realities are considered — <em>fitting a person</em> and
+<em>rotating the drum</em>. Both currently fail. See §3.6 and <strong>Sheet 5</strong> for the
+analysis; the drum geometry is to be revised before fabrication.</p>
+</blockquote>
 <h3 id="34-drum-seals">3.4 Drum Seals<a class="headerlink" href="#34-drum-seals" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2803,6 +2820,34 @@ only at 900mm height. The handle is attached by a welded bracket — no through-
 penetration of the drum wall on the exterior face. This eliminates a potential
 light leak path. The operator enters by pushing the bare exterior drum wall, then
 uses the interior grab rail to pull the drum closed and brace during exit.</p>
+<h3 id="36-access-light-tightness-analysis-design-review-both-tests-fail">3.6 Access &amp; Light-Tightness Analysis (design review — both tests fail)<a class="headerlink" href="#36-access-light-tightness-analysis-design-review-both-tests-fail" title="Permanent link">&para;</a></h3>
+<p>Two questions decide whether the revolving drum actually works. The current
+Ø750mm / 4-fin geometry fails both.</p>
+<p><strong>Sheet 5 — Drum Access &amp; Light-Tightness Analysis</strong>
+<img alt="TBS-001 Hinged Panel — Sheet 5: Drum Analysis" src="../assets/hingepanel-sheet5.png" /></p>
+<p><strong>1. Can a person fit through a 90° sector? — No.</strong> The four fins run from the
+bore center to the wall, dividing the Ø744mm bore into four 90° wedges. A wedge is
+~526mm across at the rim but tapers to a point at the center, leaving only
+~250–300mm of usable body space; a single person (≈520 × 330mm in plan) does not
+fit, and every fin crosses the required Ø700mm clear passage (§2 of
+<a href="../light-trap-selection/">Light Trap Selection</a>). A person fits only if the bore is
+left largely unobstructed — at most a single partition (two compartments), not four
+radial fins.</p>
+<p><strong>2. As the drum rotates, can daylight enter? — Yes.</strong> The same opening that passes
+the person must sweep from the exterior face to the interior face, so it crosses the
+panel plane; at the transit angles it links exterior and interior directly and
+daylight enters the darkroom. Internal fins cannot close this channel without
+blocking the person. The static S-path verification (§3.3) assumes a fixed labyrinth,
+but a revolving drum with a person-sized opening and no fixed housing has no such
+labyrinth at the transit angles.</p>
+<p><strong>Resolution (to be designed).</strong> A working light-lock needs <em>either</em> a <strong>fixed outer
+housing</strong> with two narrow, offset openings — so the drum's solid wall always covers
+at least one side while the drum's single opening rotates between them (the standard
+commercial revolving-darkroom-door arrangement) — <em>or</em> a substantially larger drum
+with a single 2-compartment partition and a fixed surround. The current panel
+aperture is a full circle and provides no housing. This is an <strong>open design issue</strong>;
+the geometry, the 3D model, and the §3.3 claim will be updated once the revised
+light-trap is agreed.</p>
 <hr />
 <h2 id="4-hinges-and-latches">4. Hinges and Latches<a class="headerlink" href="#4-hinges-and-latches" title="Permanent link">&para;</a></h2>
 <h3 id="41-hinges">4.1 Hinges<a class="headerlink" href="#41-hinges" title="Permanent link">&para;</a></h3>
@@ -3412,7 +3457,7 @@ for the sliding carriage.</p>
 </tr>
 <tr>
 <td>Panel construction drawings</td>
-<td>See <a href="../engineering-diagrams/">Engineering Diagrams</a> §12 — Sheets 1–4</td>
+<td>See <a href="../engineering-diagrams/">Engineering Diagrams</a> §12 — Sheets 1–5</td>
 </tr>
 </tbody>
 </table>

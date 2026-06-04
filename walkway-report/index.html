@@ -1425,6 +1425,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#52-drum-exit-punch-out-rev-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Drum-Exit Punch-Out (rev 8)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#52-bearer-beam-anti-slip-restraint" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2784,7 +2795,7 @@ bracket plate bolted through the ceiling corrugation.</p>
 <h2 id="5-left-walkway-removable-lift-out">5. Left Walkway — Removable Lift-Out<a class="headerlink" href="#5-left-walkway-removable-lift-out" title="Permanent link">&para;</a></h2>
 <p>The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and slides
-300mm inward (to X=420mm) for transport mode. The left walkway is therefore a
+~550mm inward for transport mode. The left walkway is therefore a
 removable lift-out section supported by three independent elements.</p>
 <p><img alt="TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint" src="../assets/walkway-sheet5.png" /></p>
 <h3 id="51-support-system">5.1 Support System<a class="headerlink" href="#51-support-system" title="Permanent link">&para;</a></h3>
@@ -2823,6 +2834,51 @@ removable lift-out section supported by three independent elements.</p>
 (the distance between the near and far walkway bracket vertical legs at
 Yd=300mm and Yd=1962mm) and is bolted to those bracket vertical legs. The grating
 rests on the bearer beam top surface at Z=65mm.</p>
+<h3 id="52-drum-exit-punch-out-rev-8">5.2 Drum-Exit Punch-Out (rev 8)<a class="headerlink" href="#52-drum-exit-punch-out-rev-8" title="Permanent link">&para;</a></h3>
+<p>The operator steps out of the revolving-door light lock at its interior face
+(X≈450mm), but the standard 300mm walkway ends at X=470mm — leaving only ~20mm of
+landing in front of the drum opening, with the processing-tray basin immediately
+beyond. The left walkway is therefore <strong>deepened to 600mm (X=170–770mm) over the
+drum-opening span (Yd 800–1560mm)</strong> — a ~600 × 760mm landing centered on the exit
+(the same approach as the near-walkway widened section on the pinhole side).</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Punch-out depth</td>
+<td>600mm (vs 300mm)</td>
+<td><code>WALKWAY_LEFT_WIDE_W</code></td>
+</tr>
+<tr>
+<td>Punch-out Yd span</td>
+<td>800–1560mm</td>
+<td><code>WALKWAY_LEFT_WIDE_YD_L/_YD_R</code></td>
+</tr>
+<tr>
+<td>Deck height</td>
+<td>Z=65–80mm (grating, as elsewhere)</td>
+<td><code>WALKWAY_H</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Optical clearance.</strong> The punch-out reaches X=770mm — inside the active image
+zone (X≥150mm) — so it was checked against the optical cone. At the drum-exit depth
+(Yd 800–1560mm) the cone's left boundary lies at <strong>X≈914–1535mm</strong> (the cone narrows
+toward the pinhole at X=2399mm), so the punch-out is entirely <strong>left of the cone</strong>:
+every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm clear
+of the image edge. Confirmed by <code>generate_line_of_sight.py</code> (no equipment intersects
+the cone).</p>
+<p><strong>Support.</strong> The 600mm section cantilevers ~300mm further over the tray than the
+standard 300mm deck, so it carries a second bearer (50×50×3mm Al RHS at X≈770mm,
+spanning the punch-out Yd span) and one additional floor-standing support leg
+(25×25×3mm Al SHS) on bare floor outside the tray. It lifts out with the rest of the
+left walkway for transport.</p>
 <p>On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
 bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip
 top at Z=65mm). Below the bearing strip, three floor-standing support legs at

@@ -1483,13 +1483,23 @@ def draw_sheet6():
     ax_d.plot([-BEAM_SHOW_LEN, BEAM_SHOW_LEN], [0, 0],
               color=C_FRAME, lw=0.3, ls="--", alpha=0.3, zorder=5.9)
 
-    # ── Carriage plate ──────────────────────────────────────────────────
-    arm_half_span = WHEEL_SPACING_YD / 2 + 18
-    arm_w_x = 20
-    ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, -arm_half_span),
-                   arm_w_x, 2 * arm_half_span,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
-                   hatch="///", alpha=0.7, zorder=4))
+    # ── Carriage plate — NOTCHED FORK: two wings either side of the beam ──
+    # The beam passes through the central notch; each wing carries one wheel
+    # (matches the 3D model's separate Carriage Plate L / R wings).
+    arm_half_span = WHEEL_SPACING_YD / 2 + 18    # ±118 — wing outer edge (Yd)
+    arm_w_x = BEAM_W                              # 40 — plate length in X (= beam width)
+    notch_half = BEAM_W / 2 + 2                    # ±22 — notch half-width (beam + clearance)
+    for wsgn in (-1, 1):                          # left + right wing
+        y_in, y_out = wsgn * notch_half, wsgn * arm_half_span
+        ax_d.add_patch(Rectangle((CARRIAGE_OFFSET_X - arm_w_x / 2, min(y_in, y_out)),
+                       arm_w_x, abs(y_out - y_in),
+                       fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0,
+                       hatch="///", alpha=0.7, zorder=4))
+    # notch callout — the beam runs through the fork between the wings
+    leader(ax_d, CARRIAGE_OFFSET_X, notch_half + 1,
+           CARRIAGE_OFFSET_X - 35, notch_half + 40,
+           "NOTCH\n(BEAM THROUGH FORK)",
+           fs=4.5, color="#A06000", font=FONT, zorder=20)
 
     # ── Beam clamp — top plate (over beam) + 4 bolts (sandwich) ─────────
     clp_half_d = BEAM_W / 2 + 12

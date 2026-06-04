@@ -1617,13 +1617,14 @@ def draw_sheet6():
 def draw_sheet7():
     from matplotlib.gridspec import GridSpec
 
-    fig = plt.figure(figsize=(18, 12))
+    fig = plt.figure(figsize=(21, 12))
     fig.patch.set_facecolor(C_BG)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.2, 1], wspace=0.12)
+    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.15, 0.95, 0.8], wspace=0.16)
     ax_cf = fig.add_subplot(gs[0, 0])
     ax_nz = fig.add_subplot(gs[0, 1])
+    ax_pole = fig.add_subplot(gs[0, 2])
 
-    for ax in [ax_cf, ax_nz]:
+    for ax in [ax_cf, ax_nz, ax_pole]:
         ax.set_facecolor(C_BG)
         ax.axis("off")
 
@@ -1962,12 +1963,81 @@ def draw_sheet7():
                ha="center", va="top", fontsize=5, color=C_DIM,
                **FONT, zorder=20)
 
+    # ─────────────────────────────────────────────────────────────────────
+    # RIGHT PANEL — FEED POLE: HOSE ZIP-TIE BUNDLING (elevation)
+    # The 1/2" feed hose runs tangent down the Ø25 telescoping push pole and is
+    # bound to it by grey zip-tie loops at ~200mm intervals (matches the 3D
+    # model / report §3.12). Pole shown straight; it articulates at the ball
+    # joint on the beam top.
+    # ─────────────────────────────────────────────────────────────────────
+    p_xl, p_xr = -78, 96
+    ax_pole.set_xlim(p_xl, p_xr)
+    ax_pole.set_ylim(-72, 1010)
+
+    POLE_OD = 25
+    HOSE_OD2 = 16
+    pole_z0, pole_z1 = 30, 905              # pole bottom (ball joint) → handle base
+    hose_x = POLE_OD / 2 + HOSE_OD2 / 2      # 20.5 — hose centre, tangent to the pole
+    hose_l = hose_x - HOSE_OD2 / 2           # 12.5 — hose left edge
+    hose_r = hose_x + HOSE_OD2 / 2           # 28.5 — hose right edge
+    zt_zs = [150, 350, 550, 750]             # zip-tie loops @ ~200mm
+
+    # beam-top reference strip + manifold + ball joint at the base
+    ax_pole.add_patch(Rectangle((p_xl + 5, -60), p_xr - p_xl - 10, 12,
+                      fc=C_ALUM_FILL, ec=C_FRAME, lw=0.8, hatch="///", zorder=2))
+    ax_pole.add_patch(Rectangle((hose_x - 17, -46), 36, 34,
+                      fc=C_WATER, ec=C_FRAME, lw=1.0, alpha=0.85, zorder=4))   # manifold
+    ax_pole.plot([hose_x, hose_x, hose_x + 1], [pole_z0 + 8, -10, -12],
+                 color=C_BLUE, lw=2.2, alpha=0.6, zorder=5)                    # flex into manifold
+    ax_pole.add_patch(Circle((0, pole_z0), 12, fc="#C8B070", ec=C_FRAME, lw=1.0, zorder=6))  # ball joint
+
+    # telescoping pole (Ø25 Al) + tangent feed hose
+    ax_pole.add_patch(Rectangle((-POLE_OD / 2, pole_z0), POLE_OD, pole_z1 - pole_z0,
+                      fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2, zorder=4))
+    for zz in (560, 575):                                                      # telescope break
+        ax_pole.plot([-POLE_OD / 2, POLE_OD / 2], [zz, zz + 8], color=C_FRAME, lw=0.7, zorder=4.6)
+    ax_pole.add_patch(Rectangle((hose_l, pole_z0 + 8), HOSE_OD2, (pole_z1 - 35) - (pole_z0 + 8),
+                      fc=C_HOSE, ec=C_BLUE, lw=1.0, alpha=0.6, zorder=5))
+
+    # grey zip-tie loops binding pole + hose
+    for zt in zt_zs:
+        ax_pole.add_patch(Rectangle((-POLE_OD / 2 - 5, zt - 3),
+                          (hose_r + 5) - (-POLE_OD / 2 - 5), 6,
+                          fc="#9A9A9A", ec=C_FRAME, lw=0.7, zorder=7))
+        ax_pole.add_patch(Rectangle((hose_r + 4, zt - 5), 6, 10,
+                          fc="#6E6E6E", ec=C_FRAME, lw=0.5, zorder=7.5))        # tie head
+
+    # T-handle at the operator end
+    ax_pole.add_patch(Rectangle((-POLE_OD / 2, pole_z1 - 6), POLE_OD, 12,
+                      fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, zorder=5))
+    ax_pole.add_patch(Rectangle((-55, pole_z1 + 6), 110, 12,
+                      fc="#B0B0B8", ec=C_FRAME, lw=1.0, zorder=5))
+
+    # labels + spacing dim
+    leader(ax_pole, 0, 660, p_xl + 16, 720,
+           f"Ø{POLE_OD}mm AL\nTELESCOPING POLE", fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_pole, hose_x, 470, p_xr - 4, 540,
+           "1/2\" FEED HOSE\n(TANGENT TO POLE)", fs=5, color=C_BLUE, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_pole, hose_r + 7, zt_zs[1], p_xr - 4, zt_zs[1] + 95,
+           "GREY ZIP-TIE LOOP\n(@ ~200mm)", fs=5, color="#707070", font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_pole, 0, pole_z1 + 12, p_xl + 16, pole_z1 - 30,
+           "T-HANDLE", fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
+    leader(ax_pole, 0, pole_z0, p_xl + 16, 130,
+           "BALL JOINT +\nMANIFOLD\n(BEAM TOP)", fs=5, color="#A06000", font=FONT, zorder=20, bbox=_bbox)
+    draw_dim_v(ax_pole, p_xl + 34, zt_zs[0], zt_zs[1], "~200", offset=2, fs=5, font=FONT)
+
+    ax_pole.text((p_xl + p_xr) / 2, 1002, "FEED POLE — HOSE BUNDLING",
+                 ha="center", va="top", fontsize=7, color="#CC6600",
+                 fontweight="bold", **FONT, zorder=20)
+    ax_pole.text((p_xl + p_xr) / 2, 960, "(zip-tie loops @ ~200mm · pole shown straight)",
+                 ha="center", va="top", fontsize=5, color=C_DIM, **FONT, zorder=20)
+
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 7 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL B — MANIFOLD FEED & NOZZLE CONNECTIONS",
+                subtitle="DETAIL B — CENTER FEED · NOZZLE · FEED-POLE HOSE BUNDLING",
                 scale_note="SCALE 2:1 — AXES IN mm",
                 height=0.7)
 

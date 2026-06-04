@@ -227,23 +227,23 @@ def drum():
     # Suspended: spans Z 80..2200 (bottom hangs at the panel bottom rail).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
-                                  color=C_STEEL, alpha=0.42, z0=ZB))
+                                  color=C_ALUM, alpha=0.42, z0=ZB))  # rev8.1 aluminum
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
-                                  color=C_STEEL, alpha=0.42, z0=ZB))
+                                  color=C_ALUM, alpha=0.42, z0=ZB))  # rev8.1 aluminum
 
     # Rotating DRUM — single od=80° opening (C-shell). ENTER position: opening at
     # the exterior (180°); the solid 280° arc faces the interior (0°).
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_DRUM, alpha=0.85, z0=ZB))
+                                  color=C_ALUM, alpha=0.85, z0=ZB))  # rev8.1 aluminum drum
 
     # Drum caps (top at 2200, bottom at the suspended Z=80), top stub shaft +
     # upper SKF 6215 bearing, lower bearing collar on the panel bottom rail (Z=80).
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
-                               color=C_DRUM, axis="z"))
+                               color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, 5,
-                               color=C_DRUM, axis="z"))
+                               color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
     parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,

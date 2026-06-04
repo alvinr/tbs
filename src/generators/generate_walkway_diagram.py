@@ -73,6 +73,7 @@ from tbs_constants import (
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
+    WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H,
     SPRAY_BAR_SLIT_W,
     EP_X, EP_W, BA_X, BA_W,
@@ -641,7 +642,7 @@ def sheet2():
                width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 8",
+    title_block(ax, "SHEET 2 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — STANDARD NEAR WALKWAY BRACKET",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -835,6 +836,31 @@ def sheet1():
            f"LEFT WALKWAY — LIFT-OUT SECTION\n"
            f"REMOVE FOR TRANSPORT\n(light-trap slide-back to X≈300)",
            color=C_REMOVABLE, fs=5.5,
+           ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Drum-exit punch-out ───────────────────────────────────────────────────
+    # The left walkway deepens from 300mm to WALKWAY_LEFT_WIDE_W (600mm) in +X
+    # over Yd WALKWAY_LEFT_WIDE_YD_L..R, giving a landing where an operator steps
+    # out of the light-trap drum.  Cantilever sub-frame off the main bearer (Detail E).
+    pX0 = LXR                                  # bump starts at the 470mm edge
+    pW  = WALKWAY_LEFT_WIDE_W - W               # extra depth = 300mm (→ X=770)
+    pY0 = WALKWAY_LEFT_WIDE_YD_L
+    pH  = WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L
+    ax.add_patch(Rectangle((pX0, pY0), pW, pH,
+                           fc=C_WK, ec=C_OUT, lw=1.0, hatch="xx",
+                           alpha=WK_ALPHA, zorder=5))
+    ax.add_patch(Rectangle((pX0, pY0), pW, pH,
+                           fc="none", ec="#408040", lw=1.8, ls=(0, (5, 3)),
+                           zorder=14))
+    ax.text(pX0 + pW / 2, pY0 + pH / 2,
+            f"DRUM-EXIT\nPUNCH-OUT\n{WALKWAY_LEFT_WIDE_W}mm DEEP",
+            ha="center", va="center", fontsize=5.5, color="#204820",
+            fontweight="bold", **FONT, zorder=15)
+    # Support leg under the cantilevered landing (see support detail sheet)
+    leader(ax, pX0 + pW, pY0 + pH / 2,
+           pX0 + pW + 360, pY0 + pH / 2 - 360,
+           "CANTILEVER SUB-FRAME off the\nX=470 bearer (see Detail E)",
+           color="#408040", fs=5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Corner joints ────────────────────────────────────────────────────────
@@ -1063,7 +1089,7 @@ def sheet1():
                spacing=44, fs=7, width=2500, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 8",
+    title_block(ax, "SHEET 1 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="PLAN VIEW \u2014 BRACKET LAYOUT + LEFT WALKWAY SUPPORT",
                 scale_note=f"Axes in mm \u00b7 BRACKETS AT {WALKWAY_BRACKET_SPACING}mm CENTERS",
@@ -1425,7 +1451,7 @@ def sheet3():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(200), font=FONT)
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 8",
+    title_block(ax, "SHEET 3 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL A \u2014 RIGHT WALKWAY CEILING-HUNG SUPPORT (IBC END)",
                 scale_note=f"Axes in mm \u00b7 SECTION LOOKING ALONG Yd",
@@ -1770,7 +1796,7 @@ def sheet4():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(8), fs=7, width=sx(400), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 8",
+    title_block(ax, "SHEET 4 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL B \u2014 LEFT WALKWAY BUTT JOINT AND PANEL CLEARANCE",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -2042,7 +2068,7 @@ def sheet5():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(280), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 5 OF 8",
+    title_block(ax, "SHEET 5 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL C \u2014 LEFT WALKWAY SUPPORT SYSTEM (REMOVABLE)",
                 scale_note=f"Axes in mm \u00b7 VIEW ALONG Yd (NEAR \u2192 FAR)",
@@ -2639,7 +2665,7 @@ def sheet6():
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6), fs=7, ha="left", width=sx(180), font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 8",
+    title_block(ax, "SHEET 6 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="DETAIL D \u2014 BEARER BEAM GUIDE TAB RESTRAINT",
                 scale_note="Axes in mm \u00b7 VIEWS A/B/C",
@@ -3116,7 +3142,7 @@ def sheet7():
                width=PL_X_HI - PL_X_LO - 10)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 8",
+    title_block(ax, "SHEET 7 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="CROSS-SECTION + BOLT PATTERN — WIDENED BRACKET (EP/BATTERY ZONE, 500mm ARM)",
                 scale_note="AXES IN mm · VIEW A: SECTION ALONG X / VIEW B: PLATE FACE (−Yd)",
@@ -3379,7 +3405,7 @@ def sheet8():
                width=sx(225))
 
     # ── Title block ──────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 8 OF 8",
+    title_block(ax, "SHEET 8 OF 9",
                 drawing_title="PERIMETER WALKWAY",
                 subtitle="WIDTH TRANSITION DETAIL — PLAN VIEW AT BRACKET",
                 scale_note="SCALE 1:2 · LOOKING DOWN · Yd HORIZONTAL / X VERTICAL",
@@ -3388,6 +3414,128 @@ def sheet8():
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet8.png"), dpi=130, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/walkway-sheet8.png saved")
+
+
+def sheet9():
+    """Sheet 9 — Detail E: Drum-exit punch-out support (plan).
+
+    Shows how the 600mm-deep landing in front of the light-lock exit is attached
+    and supported: a small cantilever sub-frame off the main X=470mm bearer,
+    overhanging the processing tray with zero tray contact.
+    """
+    LX = WALKWAY_LEFT_X                              # 170 — tray rim / strip line
+    BEARER_X = WALKWAY_LEFT_X + WALKWAY_W             # 470 — main bearer
+    OUTER_X = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W    # 770 — outer trim bearer
+    yL = WALKWAY_LEFT_WIDE_YD_L                       # 800
+    yR = WALKWAY_LEFT_WIDE_YD_R                       # 1560
+    BSZ = LEFT_WK_BEARER_SIZE                         # 50
+    C_SUPPORT = "#D08020"
+    C_WK = "#D0C8B8"
+
+    fig, ax = plt.subplots(figsize=(16, 11))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(20, 1580)
+    ax.set_ylim(yL - 420, yR + 460)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    # Processing tray it overhangs (ghost — everything right of the tray rim)
+    ax.add_patch(Rectangle((LX, yL - 380), 1580 - LX, (yR + 380) - (yL - 380),
+                           fc="#EAF2F8", ec="#9CC0D8", lw=0.8, ls=(0, (4, 3)),
+                           alpha=0.5, zorder=1))
+    ax.text(1555, yR + 360, "PROCESSING TRAY\n(basin below, Z<50mm)",
+            ha="right", va="top", fontsize=6, color="#5A88A8", **FONT, zorder=2)
+
+    # Normal 300mm walkway deck above & below the punch-out (ghost)
+    for ya, yb in [(yL - 380, yL), (yR, yR + 380)]:
+        ax.add_patch(Rectangle((LX, ya), WALKWAY_W, yb - ya,
+                               fc=C_WK, ec=C_OUT, lw=0.8, hatch="xx",
+                               alpha=0.35, zorder=3))
+
+    # Punch-out deck (X 170-770) over Yd 800-1560
+    ax.add_patch(Rectangle((LX, yL), WALKWAY_LEFT_WIDE_W, yR - yL,
+                           fc=C_WK, ec=C_OUT, lw=1.2, hatch="xx",
+                           alpha=0.65, zorder=4))
+    ax.text((LX + OUTER_X) / 2, (yL + yR) / 2 + 150,
+            "DRUM-EXIT PUNCH-OUT DECK\n600 × 760mm grating (lift-out)",
+            ha="center", va="center", fontsize=7.5, color="#206020",
+            fontweight="bold", **FONT, zorder=12)
+
+    # Bearing strip on tray rim (X=170)
+    ax.add_patch(Rectangle((LX - 7, yL - 380), 14, (yR + 380) - (yL - 380),
+                           fc=C_SUPPORT, ec=C_OUT, lw=1.0, zorder=6))
+    # Main bearer (X=470)
+    ax.add_patch(Rectangle((BEARER_X - BSZ / 2, yL - 380), BSZ,
+                           (yR + 380) - (yL - 380),
+                           fc=C_SUPPORT, ec=C_OUT, lw=1.4, zorder=7))
+    # Outer trim bearer (X=770) across the punch-out span only
+    ax.add_patch(Rectangle((OUTER_X - BSZ / 2, yL), BSZ, yR - yL,
+                           fc=C_SUPPORT, ec=C_OUT, lw=1.4, zorder=7))
+    # Two cantilever arms (Yd=800 & 1560) from main bearer out to trim bearer
+    for cy in (yL, yR):
+        ax.add_patch(Rectangle((BEARER_X, cy - 9), OUTER_X - BEARER_X, 18,
+                               fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=8))
+        for bx in (BEARER_X + 12, BEARER_X + 30):   # bolt marks to main bearer
+            ax.add_patch(Circle((bx, cy), 5, fc="white", ec=C_OUT, lw=0.8,
+                                zorder=9))
+
+    # Floor legs (X=140) outside the tray — ghost markers
+    leg_x = LX - 30
+    for cy in (yL - 150, (yL + yR) / 2, yR + 150):
+        ax.add_patch(Rectangle((leg_x - 12, cy - 12), 24, 24, fc="none",
+                               ec=C_SUPPORT, lw=1.0, ls=(0, (3, 2)), zorder=6))
+
+    # ── Leaders ──────────────────────────────────────────────────────────────
+    leader(ax, BEARER_X, yL - 250, BEARER_X - 250, yL - 360,
+           f"MAIN BEARER  X={BEARER_X}mm\n{BSZ}×{BSZ}×{LEFT_WK_BEARER_T}mm Al RHS\nbolted to near/far brackets",
+           color=C_SUPPORT, fs=5.5, ha="center", va="top",
+           arrow_style="-|>", font=FONT)
+    leader(ax, OUTER_X, (yL + yR) / 2, OUTER_X + 170, (yL + yR) / 2 + 230,
+           f"OUTER TRIM BEARER\nX={OUTER_X}mm ({BSZ}×{BSZ}×{LEFT_WK_BEARER_T} Al RHS)",
+           color=C_SUPPORT, fs=5.5, ha="center", va="bottom",
+           arrow_style="-|>", font=FONT)
+    leader(ax, (BEARER_X + OUTER_X) / 2, yR, (BEARER_X + OUTER_X) / 2 + 60, yR + 230,
+           "CANTILEVER ARMS ×2\nbolted to main bearer — carry the\n300mm overhang, NO tray contact",
+           color=C_SUPPORT, fs=5.5, ha="center", va="bottom",
+           arrow_style="-|>", font=FONT)
+    leader(ax, LX, (yL + yR) / 2, LX - 50, (yL + yR) / 2 - 260,
+           f"BEARING STRIP on tray rim\nX={LX}mm (25×25×3 Al angle)",
+           color=C_SUPPORT, fs=5.5, ha="center", va="top",
+           arrow_style="-|>", font=FONT)
+    leader(ax, leg_x, yR + 150, leg_x - 30, yR + 300,
+           f"FLOOR LEGS ×{LEFT_WK_LEG_N}\nX=140mm (bare floor, outside tray)",
+           color=C_SUPPORT, fs=5, ha="center", va="bottom",
+           arrow_style="-|>", font=FONT)
+
+    # ── Dimensions ───────────────────────────────────────────────────────────
+    draw_dim_h(ax, LX, OUTER_X, yL - 200,
+               f"{WALKWAY_LEFT_WIDE_W}mm PUNCH-OUT DEPTH", offset=5, fs=6.5,
+               above=False, font=FONT)
+    draw_dim_h(ax, BEARER_X, OUTER_X, yR + 90,
+               f"{OUTER_X - BEARER_X}mm OVERHANG (cantilever)", offset=4,
+               fs=5.5, font=FONT)
+
+    # ── Notes ────────────────────────────────────────────────────────────────
+    notes = [
+        "DRUM-EXIT PUNCH-OUT — ATTACHMENT & SUPPORT:",
+        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} — landing in front of the light-lock exit.",
+        f"2. The {OUTER_X - BEARER_X}mm overhang past the main X={BEARER_X}mm bearer is carried by 2 cantilever arms bolted to that bearer + an outer trim bearer at X={OUTER_X}mm.",
+        "3. The sub-frame cantilevers OVER the tray — zero tray contact (no floor leg over the basin).",
+        "4. Lifts out with the left-walkway grating before panel transport.",
+    ]
+    draw_notes(ax, notes, 850, yL + 430, spacing=58, fs=7, ha="left",
+               width=690, font=FONT)
+
+    title_block(ax, "SHEET 9 OF 9",
+                drawing_title="PERIMETER WALKWAY",
+                subtitle="DETAIL E — DRUM-EXIT PUNCH-OUT SUPPORT (PLAN)",
+                scale_note="Axes in mm · PLAN VIEW (X right, Yd up)",
+                height=0.07)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet9.png"), dpi=130,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/walkway-sheet9.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -3404,4 +3552,5 @@ if __name__ == "__main__":
     sheet6()  # bearer beam → sheet6.png
     sheet7()  # widened bracket → sheet7.png
     sheet8()  # width transition → sheet8.png
+    sheet9()  # drum-exit punch-out support → sheet9.png
     print("Done.")

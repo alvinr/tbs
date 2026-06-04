@@ -397,7 +397,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.42
   grp.material = mat
 
@@ -409,7 +409,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.42
   grp.material = mat
 
@@ -421,7 +421,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
-  mat.color = Sketchup::Color.new(232, 224, 208)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.85
   grp.material = mat
 
@@ -434,7 +434,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
-  mat.color = Sketchup::Color.new(232, 224, 208)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -447,7 +447,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
-  mat.color = Sketchup::Color.new(232, 224, 208)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -863,7 +863,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([272.5.mm,1981.mm,619.5.mm], [278.5.mm,1981.mm,619.5.mm], [278.5.mm,2011.mm,619.5.mm], [272.5.mm,2011.mm,619.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -874,7 +874,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([272.5.mm,1981.mm,534.mm], [278.5.mm,1981.mm,534.mm], [278.5.mm,2011.mm,534.mm], [272.5.mm,2011.mm,534.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -885,7 +885,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([272.5.mm,1930.mm,585.mm], [278.5.mm,1930.mm,585.mm], [278.5.mm,1976.5.mm,585.mm], [272.5.mm,1976.5.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -896,7 +896,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([272.5.mm,2015.5.mm,585.mm], [278.5.mm,2015.5.mm,585.mm], [278.5.mm,2062.mm,585.mm], [272.5.mm,2062.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Fan B (intake) fan blade up"] || model.materials.add("Fan B (intake) fan blade up")
+  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat

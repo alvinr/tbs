@@ -134,6 +134,15 @@ Brown/Waste IBCs.
 | Dry (Transport) | 3,386 | 2,694 | 1,167 | 1,078 | 54.6/45.4% | 50.7/49.3% |
 | Camera Ready (Deployed) | 4,586 | 3,379 | 1,171 | 1,192 | 40.3/59.7% | 50.5/49.5% |
 | Materials Exhausted (Transport) | 4,586 | 3,372 | 1,171 | 928 | 40.3/59.7% | 50.5/49.5% |
+| Loaded Transport (Blue full) | 4,586 | 3,372 | 1,171 | 1,193 | 40.3/59.7% | 50.5/49.5% |
+
+**Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
+1,200 kg) carried in the *transport* configuration — panel slid in, cargo doors
+closed. It shares the Materials Exhausted footprint (same X/Yd, same 40.3/59.7
+front/rear) but the water sits in the **top** tier, so its vertical CG is
+**Z=1,193mm — 265mm higher** than the exhausted state (928mm). It is therefore
+the **highest-CG transport case** and governs road-transport stability (tie-down
+and cornering), even though total mass and axle split are unchanged.
 
 ---
 
@@ -172,19 +181,30 @@ CG drops by 264mm (Z: 1,192 → 928mm) as water moves to bottom tier.
 
 ![TBS-001 — Weight Analysis: Materials Exhausted](assets/weight-analysis-sheet4.png)
 
+### 5 — Loaded Transport (Full Blue IBCs)
+
+The camera-ready water load (1,200 kg in the top-tier Blue IBCs) carried in
+transport configuration — panel slid in (X=550–630), cargo doors closed. Same
+plan footprint and 40.3/59.7 front/rear split as Materials Exhausted, but the
+water is in the **top** tier, raising the vertical CG to **Z=1,193mm** (+265mm
+vs the exhausted state). This is the worst-case transport vertical CG.
+
+![TBS-001 — Weight Analysis: Loaded Transport](assets/weight-analysis-sheet5.png)
+
 ---
 
 ## 6. Analysis and Findings
 
 ### 6.1 ISO Gross Weight Compliance
 
-All three states are well within the ISO 24,000 kg maximum gross weight:
+All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
 | Dry | 3,386 | 20,614 | 14.1% |
 | Camera Ready | 4,586 | 19,414 | 19.1% |
 | Materials Exhausted | 4,586 | 19,414 | 19.1% |
+| Loaded Transport | 4,586 | 19,414 | 19.1% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.

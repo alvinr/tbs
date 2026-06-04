@@ -248,17 +248,27 @@ every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm 
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
 
-**Support.** The 600mm section cantilevers ~300mm further over the tray than the
-standard 300mm deck, so it carries a second bearer (50×50×3mm Al RHS at X≈770mm,
-spanning the punch-out Yd span) and one additional floor-standing support leg
-(25×25×3mm Al SHS) on bare floor outside the tray. It lifts out with the rest of the
-left walkway for transport.
+**Support.** The 600mm section overhangs ~300mm past the main X=470mm bearer, out
+over the processing tray. Because a floor leg cannot stand in the tray basin, the
+overhang is carried by a small **cantilever sub-frame**: two 50×50×3mm aluminum RHS
+cantilever arms bolted to the main bearer at the punch-out's Yd ends (Yd=800 and
+1560mm), tied at their tips by an outer trim bearer at X≈770mm. The sub-frame
+cantilevers entirely over the tray with **zero tray contact**, and lifts out with
+the rest of the left walkway for transport. See **walkway Sheet 9 (Detail E)** for
+the attachment plan.
 
 On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
 bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip
 top at Z=65mm). Below the bearing strip, three floor-standing support legs at
 X=140mm provide vertical support. These legs stand on bare floor outside the
 processing tray footprint — zero tray contact.
+
+**Sheet 9 — Detail E: Drum-Exit Punch-Out Support (plan).** How the deeper
+landing attaches and is supported — the cantilever sub-frame off the main
+X=470mm bearer, the outer trim bearer at X=770mm, and the zero-tray-contact
+overhang.
+
+![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
 
 ### 5.2 Bearer Beam Anti-Slip Restraint
 

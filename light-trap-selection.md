@@ -169,6 +169,14 @@ A ray entering at any point on the exterior drum face must rotate at least 45° 
 
 See Sheet 2 of the hinged panel engineering drawings for the baffle cross-section and S-path trace.
 
+> **⚠ Design review (open issue).** This static S-path verification assumes a fixed
+> labyrinth and does not survive the two operational realities: a person cannot fit a
+> 90° sector, and the person-sized opening must rotate from the exterior face to the
+> interior face — bridging both at the transit angles and admitting daylight. Both
+> tests currently **fail**. See [Hinged Panel Report](hinged-panel-report.md) §3.6 and
+> **Sheet 5** (Drum Access & Light-Tightness Analysis). The drum geometry will be
+> revised before fabrication.
+
 ---
 
 ## 6. Comparison Summary

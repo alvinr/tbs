@@ -24,7 +24,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon
+from matplotlib.patches import Rectangle, FancyBboxPatch, Circle, Arc, Polygon, Ellipse, Wedge
 from matplotlib.lines import Line2D
 import os
 from tbs_constants import (
@@ -379,7 +379,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 4",
+    title_block(ax, "SHEET 1 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -791,7 +791,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 4",
+    title_block(ax, "SHEET 2 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1333,7 +1333,7 @@ def sheet3():
     clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 4",
+    title_block(ax, "SHEET 3 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1585,7 +1585,7 @@ def sheet4():
        col_w=300, fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 4",
+    title_block(ax, "SHEET 4 OF 5",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
                 scale_note="EQUAL ASPECT  \u00b7  ALL DIMS IN mm  \u00b7  SOLID = OPERATIONAL, GHOST = TRANSPORT",
@@ -1597,6 +1597,201 @@ def sheet4():
     print("  diagrams/hingepanel-sheet4.png saved")
 
 
+# ═════════════════════════════════════════════════════════════════════════════
+# SHEET 5  —  Drum access & light-tightness analysis (design review)
+# Tests the Ø750 / 4-fin revolving drum against two questions:
+#   A. Can a person fit through a 90° sector?
+#   B. As the drum rotates, can daylight enter the container?
+# Both currently fail — this sheet shows why.
+# ═════════════════════════════════════════════════════════════════════════════
+
+def sheet5():
+    DD, R = DRUM_D, DRUM_R            # 750, 375
+    Ri = R - 3                        # inner radius 372
+    SHO, DEP = 520, 330               # person plan footprint (shoulders × depth), mm
+    REQ = 700                         # required clear passage diameter (§2)
+
+    GREEN, RED, AMBER = "#2E8B57", "#C0202A", "#D08000"
+
+    fig, ax = plt.subplots(figsize=(20, 16.1))
+    fig.patch.set_facecolor(BG)
+    ax.set_facecolor(BG)
+    ax.set_xlim(-130, 2130)
+    ax.set_ylim(-300, 1520)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+    def zones(cx, cy, Rd, w=None):
+        w = w or (Rd + 70)
+        ax.add_patch(Rectangle((cx - w, cy - w), 2 * w, w, fc="#EEF2F8",
+                               ec="none", zorder=1))          # exterior (below)
+        ax.add_patch(Rectangle((cx - w, cy), 2 * w, w, fc="#EEF6EE",
+                               ec="none", zorder=1))           # interior (above)
+        ax.plot([cx - w, cx + w], [cy, cy], color=C_DIM, lw=0.8,
+                ls=(0, (5, 3)), zorder=2)                      # panel plane
+
+    def drum(cx, cy, ds, fins=True, opening=None, z=True):
+        Rd, Rid = R * ds, Ri * ds
+        if z:
+            zones(cx, cy, Rd)
+        if opening is None:
+            ax.add_patch(Circle((cx, cy), Rd, fc="#F8F4EC", ec=C_OUT, lw=2.2, zorder=5))
+        else:
+            oc, ow = opening
+            ax.add_patch(Circle((cx, cy), Rd, fc="#F8F4EC", ec="none", zorder=5))
+            th = np.radians(np.linspace(oc + ow / 2, oc - ow / 2 + 360, 160))
+            ax.plot(cx + Rd * np.cos(th), cy + Rd * np.sin(th),
+                    color=C_OUT, lw=2.6, zorder=6)
+        if fins:
+            for fd in (0, 90, 180, 270):
+                r = np.radians(fd)
+                ax.plot([cx, cx + Rid * np.cos(r)], [cy, cy + Rid * np.sin(r)],
+                        color=C_OUT, lw=2.6, zorder=7, solid_capstyle="round")
+        return Rd, Rid
+
+    def sun(cx, cy, s=26):
+        ax.add_patch(Circle((cx, cy), s, fc="#FFD24D", ec=AMBER, lw=1.2, zorder=8))
+        for a in range(0, 360, 45):
+            r = np.radians(a)
+            ax.plot([cx + s * 1.2 * np.cos(r), cx + s * 1.7 * np.cos(r)],
+                    [cy + s * 1.2 * np.sin(r), cy + s * 1.7 * np.sin(r)],
+                    color=AMBER, lw=1.4, zorder=8)
+
+    # ── Banner ────────────────────────────────────────────────────────────────
+    ax.text(1000, 1470, "REVOLVING DRUM — ACCESS & LIGHT-TIGHTNESS ANALYSIS",
+            ha="center", va="center", fontsize=15, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(1000, 1432,
+            "Design review of the Ø750mm / 4-fin drum against two requirements — "
+            "both currently FAIL (see verdicts)",
+            ha="center", va="center", fontsize=9, color=RED, **FONT)
+    ax.plot([-130, 2130], [720, 720], color=C_DIM, lw=1.0, ls=(0, (6, 4)), zorder=3)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # PANEL A — Person fit (plan)
+    # ══════════════════════════════════════════════════════════════════════════
+    ax.text(-110, 1380, "A.  CAN A PERSON FIT THROUGH A 90° SECTOR?",
+            ha="left", va="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
+
+    Acx, Acy, ds = 470, 1040, 0.80
+    Rd, Rid = drum(Acx, Acy, ds, fins=True)
+    ax.text(Acx, Acy - Rd - 48, "EXTERIOR (daylight)", ha="center", va="center",
+            fontsize=7.5, color="#5060A0", fontweight="bold", **FONT)
+    ax.text(Acx, Acy + Rd + 48, "INTERIOR (darkroom)", ha="center", va="center",
+            fontsize=7.5, color="#407040", fontweight="bold", **FONT)
+
+    # required Ø700 clear-passage circle — fins cut across it
+    ax.add_patch(Circle((Acx, Acy), REQ / 2 * ds, fc="none", ec=GREEN, lw=1.8,
+                        ls=(0, (5, 3)), zorder=11))
+    ax.text(Acx, Acy + REQ / 2 * ds + 16, "required Ø700 clear passage (§2)",
+            ha="center", va="bottom", fontsize=6.6, color=GREEN, **FONT, zorder=12)
+
+    # person plan footprint dropped into one 90° wedge (lower-right sector)
+    pang = np.radians(315)
+    pcx, pcy = Acx + Rd * 0.40 * np.cos(pang), Acy + Rd * 0.40 * np.sin(pang)
+    ax.add_patch(Ellipse((pcx, pcy), SHO * ds, DEP * ds, angle=45,
+                         fc=RED, ec="#7A1018", lw=1.4, alpha=0.42, hatch="xx", zorder=13))
+    ax.text(pcx + 250, pcy - 150, "person footprint\n≈520 × 330 mm\n(does not fit a wedge)",
+            ha="left", va="center", fontsize=6.8, color="#7A1018", **FONT, zorder=14)
+    ax.annotate("", xy=(pcx + 40, pcy - 40), xytext=(pcx + 250, pcy - 150),
+                arrowprops=dict(arrowstyle="-", color="#7A1018", lw=0.8), zorder=13)
+
+    # sector callout
+    ax.text(Acx - Rd * 0.42, Acy + Rd * 0.42, "90°\nwedge", ha="center", va="center",
+            fontsize=7, color=C_DIM, **FONT, zorder=12)
+    ax.text(Acx, Acy, "4 fins\nto centre", ha="center", va="center", fontsize=6.4,
+            color=C_DIM, **FONT, zorder=12)
+
+    # dimensions
+    ax.text(Acx, Acy - Rd - 18, f"Ø{DD} OD · Ø{int(2*Ri)} bore", ha="center",
+            va="top", fontsize=6.8, color=C_DIM, **FONT)
+
+    # Panel A verdict box
+    axv0, axv1, ayv0, ayv1 = 905, 2090, 800, 1300
+    ax.add_patch(FancyBboxPatch((axv0, ayv0), axv1 - axv0, ayv1 - ayv0,
+                                boxstyle="round,pad=6,rounding_size=14",
+                                fc="#FDEDED", ec=RED, lw=1.6, zorder=2))
+    ax.text(axv0 + 26, ayv1 - 34, "VERDICT  ✗  FAIL — too small",
+            ha="left", va="center", fontsize=12, fontweight="bold", color=RED, **FONT)
+    for i, line in enumerate([
+        "• The 4 fins run from the bore center to the wall, splitting the",
+        f"  Ø{int(2*Ri)}mm bore into four 90° wedges.",
+        "• A wedge is ~526mm across at the rim but tapers to a point at the",
+        "  center — the largest body space is only ≈250–300mm.",
+        f"• A single person (≈{SHO}×{DEP}mm in plan) cannot fit one wedge, and",
+        f"  every fin crosses the required Ø{REQ}mm clear passage (§2).",
+        "• A person only fits if the bore is left largely unobstructed —",
+        "  e.g. ONE partition (2 compartments), not four fins. But an open",
+        "  bore then fails the light test → Panel B.",
+    ]):
+        ax.text(axv0 + 26, ayv1 - 78 - i * 46, line, ha="left", va="center",
+                fontsize=8.4, color="#3A1010", **FONT)
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # PANEL B — Light-tightness as the drum rotates (plan sequence)
+    # ══════════════════════════════════════════════════════════════════════════
+    ax.text(-110, 648, "B.  AS THE DRUM ROTATES, CAN DAYLIGHT ENTER?",
+            ha="left", va="center", fontsize=12, fontweight="bold", color=C_OUT, **FONT)
+    ax.text(-110, 612,
+            "The opening that passes the person must sweep from the exterior face to the "
+            "interior face — shown here without fins (which would block the person).",
+            ha="left", va="center", fontsize=8, color=C_DIM, **FONT)
+
+    Bcy, bds = 390, 0.56
+    centers = [370, 1090, 1810]
+    states = [
+        (270, "1 · ENTER", "Opening faces exterior. Person\nenters; interior shell solid →\ndaylight blocked.", "ok"),
+        (0,   "2 · TRANSIT", "Opening straddles the panel plane.\nDaylight passes straight through\nthe open bore → LIGHT ENTERS.", "leak"),
+        (90,  "3 · EXIT", "Opening faces interior. Person\nexits; exterior shell solid →\ndaylight blocked.", "ok"),
+    ]
+    for bx, (oc, ttl, desc, kind) in zip(centers, states):
+        Rd, _ = drum(bx, Bcy, bds, fins=False, opening=(oc, 120))
+        ax.text(bx, Bcy + Rd + 64, ttl, ha="center", va="center", fontsize=9.5,
+                fontweight="bold", color=(RED if kind == "leak" else GREEN), **FONT)
+        ax.text(bx, Bcy - Rd - 52, desc, ha="center", va="top", fontsize=7,
+                color=C_DIM, **FONT)
+        sun(bx - Rd - 22, Bcy - Rd * 0.55)
+        if kind == "leak":
+            # straight daylight ray passes through the opening, exterior→interior
+            rx = bx + Rd * 0.6
+            ax.annotate("", xy=(rx, Bcy + Rd + 26), xytext=(rx, Bcy - Rd - 26),
+                        arrowprops=dict(arrowstyle="-|>", color=RED, lw=2.8), zorder=14)
+            ax.text(rx + 16, Bcy + Rd * 0.2, "DAYLIGHT", ha="left", va="center",
+                    fontsize=8, fontweight="bold", color=RED, rotation=90, **FONT, zorder=15)
+        elif oc == 270:           # enter — ray crosses bore, blocked at interior shell
+            ax.annotate("", xy=(bx, Bcy + Rd * 0.86), xytext=(bx, Bcy - Rd - 26),
+                        arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=2.2), zorder=14)
+            ax.plot([bx], [Bcy + Rd * 0.99], marker="x", ms=10, mew=2.6, color=GREEN, zorder=16)
+        else:                     # exit — exterior shell solid, blocked at entry
+            ax.annotate("", xy=(bx, Bcy - Rd * 0.86), xytext=(bx, Bcy - Rd - 26),
+                        arrowprops=dict(arrowstyle="-|>", color=AMBER, lw=2.2), zorder=14)
+            ax.plot([bx], [Bcy - Rd * 0.99], marker="x", ms=10, mew=2.6, color=GREEN, zorder=16)
+
+    # Panel B verdict
+    ax.add_patch(FancyBboxPatch((-110, -250), 2220, 215,
+                                boxstyle="round,pad=6,rounding_size=12",
+                                fc="#FDEDED", ec=RED, lw=1.6, zorder=2))
+    ax.text(-78, -78, "VERDICT  ✗  FAIL — daylight enters during transit",
+            ha="left", va="center", fontsize=12.5, fontweight="bold", color=RED, **FONT)
+    for i, line in enumerate([
+        "The same opening that passes the person passes the light: rotating it from the exterior face to the interior face must cross the panel",
+        "plane, so at the transit angles it links exterior and interior directly. Internal fins cannot close this channel without blocking the person.",
+        "Fix: a FIXED outer housing with two narrow, offset openings (drum's solid wall always covers one side), or a larger unobstructed bore.",
+    ]):
+        ax.text(-78, -128 - i * 42, line, ha="left", va="center",
+                fontsize=8.4, color="#3A1010", **FONT)
+
+    title_block(ax, "SHEET 5 OF 5",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="DRUM ACCESS & LIGHT-TIGHTNESS ANALYSIS — DESIGN REVIEW (BOTH TESTS FAIL)",
+                scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet5.png"), dpi=130,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet5.png saved")
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1604,4 +1799,5 @@ if __name__ == "__main__":
     sheet2()
     sheet3()
     sheet4()
+    sheet5()
     print("Done.")

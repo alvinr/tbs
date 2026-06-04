@@ -18,7 +18,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,905 | $7,396 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
-| 7. Revolving drum light trap (custom fabrication) | $950 | $1,450 |
+| 7. Housed revolving-door light lock (custom fabrication) | $1,785 | $2,460 |
 | 7a. Panel sliding carriage | $1,036 | $1,036 |
 | 7b. Perimeter walkway (4 sections, wall-cantilevered + ceiling-hung) | $955 | $1,470 |
 | 7c. Ceiling rail suspension | $208 | $208 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$19,336** | **~$26,136** |
+| **TOTAL (base build + 50-print run)** | **~$20,171** | **~$27,146** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -314,13 +314,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 **Section total: ~$1,785–$1,890**
 
-## 7. Revolving Drum Light Trap — Custom Fabrication
-*Source: `light-trap-selection.md` § 3.3 & § 4. Custom-fabricated 750mm steel drum built into the hinged cargo-door panel. Replaces a fixed S-path vestibule; allows single-operator entry/exit at any time during operation without admitting daylight.*
+## 7. Housed Revolving-Door Light Lock — Custom Fabrication
+*Source: `light-trap-selection.md` § 4 (rev 8). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*
 
-### Drum body and baffles
+### Housing + drum body
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 3mm mild steel sheet, 1200×2400mm | Hot-rolled A36 — drum shell and internal baffles | 2 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$160 |
+| 3mm mild steel sheet, 1200×2400mm | Hot-rolled A36 — Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 sheets | Pacific Coast Steel — Santa Fe Springs CA | ~$80/sheet → ~$320 |
 | 5mm steel plate (offcut) | Top and bottom drum caps, flanged | ~0.5m² | Pacific Coast Steel / Metal Supermarkets SoCal | ~$40 |
 | 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
 
@@ -333,7 +333,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Seals
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [12mm closed-cell neoprene wiper strip](https://www.mcmaster.com/93855K6) | PSA-backed, top/bottom drum cap wiper seals; 3m total | 1 pack (3m) | McMaster-Carr #93855K6 | ~$22 |
+| [12mm closed-cell neoprene wiper strip](https://www.mcmaster.com/93855K6) | PSA-backed, drum cap + top/bottom housing wiper seals; 3m | 1 pack (3m) | McMaster-Carr #93855K6 | ~$22 |
+| [Nylon/felt brush wiper strip](https://www.mcmaster.com/brush-seal-strip) | Drum↔housing rotating seal at the two opening edges (full height ×2) | ~5m | McMaster-Carr | ~$40 |
 | [20mm neoprene compression strip](https://www.mcmaster.com/8635K31) | PSA-backed, drum-to-panel gap seal | 2.4m | McMaster-Carr #8635K31 | ~$20 |
 | [Black UV-stable silicone sealant](https://www.mcmaster.com/7587A3) | Bead seal at top and bottom mount plates | 2 tubes | McMaster-Carr #7587A3 | ~$18 |
 
@@ -347,14 +348,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 ### Surface treatment
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Flat black powder coat — interior drum surfaces | RAL 9005 matte; shot-blast prep + coat | 1 job | Local powder coat shop (SoCal) | ~$120–$180 |
+| Flat black powder coat — interior housing + drum surfaces | RAL 9005 matte; shot-blast prep + coat | 1 job | Local powder coat shop (SoCal) | ~$180–$260 |
 | Grey oxide primer + grey topcoat — exterior drum face | Standard exterior steel finish | 1 job | Included with powder coat job above, or rattle-can | ~$0–$30 |
 
 ### Fabrication labour
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Metal fabrication — drum rolling, seam weld, baffle welding, cap welding, stub shaft welding | 16–20 hrs at local metal fab shop | 1 job | Local fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,200 |
-**Section total: ~$950–$1,450**
+| Metal fabrication — roll 2 cylinders (housing + drum), seam weld, cap/shaft weld, bearing fit | 22–28 hrs at local metal fab shop | 1 job | Local fabrication shop (SoCal) — get 2–3 quotes | ~$1,100–$1,500 |
+**Section total: ~$1,785–$2,460**
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 

@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- 300mm inward slide for transport mode — clears ISO container doors
+- ~500mm inward slide for transport mode — clears ISO container doors
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -42,17 +42,18 @@ time without opening the panel or breaking the light seal. In case of emergency,
 The panel has three thickness zones to accommodate the revolving drum in the center
 while keeping the corners flush with the container walls.
 
-**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and S-Path Light Route**
+**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Housed Revolving Door — Housing, Drum & Light-Tight Geometry**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
 | Zone | Yd range (mm) | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 0–756 | 756 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
-| Center | 756–1,606 | 850 | 120 | 18mm ply + 84mm RHS frame + 18mm ply |
-| Far corner | 1,606–2,362 | 756 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
+| Near corner | 0–653 | 653 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
+| Center | 653–1,709 | 1,056 | 120 | 18mm ply + 84mm RHS frame + 18mm ply |
+| Far corner | 1,709–2,362 | 653 | 40 | 18mm ply + 4mm steel plate + 18mm ply |
 
-The 80mm step between corner and center zones occurs at Yd=756mm and
-Yd=1606mm. The center zone houses the revolving drum; the corner zones are
+The 80mm step between corner and center zones occurs at Yd=653mm and
+Yd=1709mm (widened in rev 8 to frame the Ø900 housing). The center zone houses the
+light-trap housing; the corner zones are
 flush-faced panels that seal against the fixed door frame.
 
 ### 2.2 Frame
@@ -75,7 +76,12 @@ provides light-tight compression on all four sides.
 
 ---
 
-## 3. Revolving Light-Trap Drum
+## 3. Housed Revolving-Door Light Lock
+
+> **rev 8.** Replaces the earlier Ø750mm / 4-fin revolving drum, which failed both
+> personnel-fit and rotation light-tightness (see §3.6). The light lock is now a
+> **fixed cylindrical housing + single-opening C-shell drum** — the standard
+> commercial-darkroom-door arrangement — sized for a single operator.
 
 **Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation + Details B & C (panel bottom & top light seals)**
 ![TBS-001 Hinged Panel — Sheet 3: Drum Elevation](assets/hingepanel-sheet3.png)
@@ -85,16 +91,18 @@ provides light-tight compression on all four sides.
 
 | Parameter | Value |
 |-----------|-------|
-| Type | Vertical-axis revolving drum with internal baffles |
-| Drum outer diameter | Ø750mm |
-| Drum height | 2200mm (floor to upper bearing) |
-| Wall thickness | 3mm mild steel, rolled and seam-welded |
+| Type | Fixed cylindrical housing + single-opening C-shell revolving drum (no internal fins) |
+| Housing outer diameter | Ø900mm (fixed, built into the panel center zone) |
+| Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
+| Drum (rotating) | Ø864mm C-shell, single 80° opening, **~Ø850mm clear bore** |
+| Passage width | ~625mm (the 80° opening) — single operator |
+| Height | 2200mm (floor to upper bearing) |
+| Wall thickness | 3mm mild steel (housing and drum), rolled and seam-welded |
 | Interior finish | Shot-blast + flat black powder coat (RAL 9005) |
 | Exterior finish | Grey oxide primer + grey topcoat |
-| Clear walking height | 1910mm (drum body between bearings) |
-| Headroom (1780mm operator) | 130mm |
-| Internal baffles | 4 × 3mm steel fins, full height, at 90° spacing |
-| Weight | ~60–80 kg (estimated) |
+| Clear walking height | 1910mm (between bearings) |
+| Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
+| Weight | ~110–140 kg (housing + drum, estimated) |
 
 ### 3.2 Bearings
 
@@ -113,29 +121,29 @@ provides light-tight compression on all four sides.
 
 ### 3.3 Light Path Verification
 
-The 4-baffle arrangement eliminates any straight-line path from exterior to
-interior. Four radial fins at 90° spacing create quarter-circle sectors. A person
-entering from the exterior must navigate an S-path through at least one full
-sector (minimum 45° rotation) before reaching the interior face.
+The light lock is light-tight **by geometry**. The fixed housing has two openings
+(one facing the exterior, one facing the interior/walkway), each **80° of arc and
+180° apart**; the rotating drum is a C-shell with a **single 80° opening and no
+internal fins**. Because each opening is narrower than 90° and the two housing
+openings are 180° apart, the drum opening can never align with both at once — the
+housing's solid wall always covers whichever opening the drum opening is *not*
+facing. So at **no rotation angle** is there a straight-line path from exterior to
+interior: daylight entering the bore through the exterior opening is stopped by the
+drum's solid wall before it can reach the interior opening.
 
-At Ø750mm diameter with 4 baffles, the shortest possible S-path through the drum
-is 590mm — significantly longer than the 120mm panel thickness. No line of sight
-is possible at any incidence angle within ±30° of normal.
-
-See [Light Trap Selection](light-trap-selection.md) §5 for full verification.
-
-> **⚠ Design review (open issue).** The static S-path argument above does **not**
-> hold once the two operational realities are considered — *fitting a person* and
-> *rotating the drum*. Both currently fail. See §3.6 and **Sheet 5** for the
-> analysis; the drum geometry is to be revised before fabrication.
+This resolves both failure modes of the earlier Ø750 / 4-fin drum (§3.6): a single
+operator fits the open ~Ø850mm bore, and there is no transit angle that admits
+daylight. See [Light Trap Selection](light-trap-selection.md) §5 and **Sheet 5**
+(enter / transit / exit verification).
 
 ### 3.4 Drum Seals
 
 | Location | Seal method |
 |----------|------------|
-| Top | 12mm closed-cell neoprene wiper strip bonded to top cap underside + silicone bead seal against ceiling mount plate |
-| Bottom | 12mm closed-cell neoprene wiper strip bonded to bottom cap underside + silicone bead seal against floor mount plate |
-| Drum-to-panel gap | 15mm radial clearance, closed by 20mm neoprene compression strip bonded to panel drum aperture |
+| Top | 12mm closed-cell neoprene wiper ring bonded to drum top cap + silicone bead against ceiling mount plate |
+| Bottom | 12mm closed-cell neoprene wiper ring bonded to drum bottom cap + silicone bead against floor mount plate |
+| **Drum↔housing rotating seal** | Felt/brush wiper strips on the two vertical edges of the drum opening sweep against the housing inner wall as the drum turns, blocking light leaking around the opening; top + bottom felt wiper rings close the ~15mm annular running gap |
+| Housing-to-panel gap | 15mm radial clearance, closed by 20mm neoprene compression strip bonded to the panel aperture |
 | Weather rating | IP44 (splash and rain protection) |
 
 ### 3.5 Handle
@@ -146,39 +154,32 @@ penetration of the drum wall on the exterior face. This eliminates a potential
 light leak path. The operator enters by pushing the bare exterior drum wall, then
 uses the interior grab rail to pull the drum closed and brace during exit.
 
-### 3.6 Access & Light-Tightness Analysis (design review — both tests fail)
+### 3.6 Access & Light-Tightness Verification (both tests pass)
 
-Two questions decide whether the revolving drum actually works. The current
-Ø750mm / 4-fin geometry fails both.
+Two questions decide whether a revolving light lock actually works. The rev-8
+housed revolving door **passes both** — the same two questions on which the earlier
+Ø750mm / 4-fin drum failed (that failure is what drove this redesign).
 
-**Sheet 5 — Drum Access & Light-Tightness Analysis**
-![TBS-001 Hinged Panel — Sheet 5: Drum Analysis](assets/hingepanel-sheet5.png)
+**Sheet 5 — Light-lock access & light-tightness verification**
+![TBS-001 Hinged Panel — Sheet 5: Light-Lock Verification](assets/hingepanel-sheet5.png)
 
-**1. Can a person fit through a 90° sector? — No.** The four fins run from the
-bore center to the wall, dividing the Ø744mm bore into four 90° wedges. A wedge is
-~526mm across at the rim but tapers to a point at the center, leaving only
-~250–300mm of usable body space; a single person (≈520 × 330mm in plan) does not
-fit, and every fin crosses the required Ø700mm clear passage (§2 of
-[Light Trap Selection](light-trap-selection.md)). A person fits only if the bore is
-left largely unobstructed — at most a single partition (two compartments), not four
-radial fins.
+**1. Does a person fit? — Yes.** The four radial fins are gone; the drum is a
+single-opening C-shell, so the whole **~Ø850mm bore** is clear standing space. The
+80° opening gives a **~625mm passage**, enough for a single operator to enter and
+turn inside. Emergency egress remains the whole panel swinging open.
 
-**2. As the drum rotates, can daylight enter? — Yes.** The same opening that passes
-the person must sweep from the exterior face to the interior face, so it crosses the
-panel plane; at the transit angles it links exterior and interior directly and
-daylight enters the darkroom. Internal fins cannot close this channel without
-blocking the person. The static S-path verification (§3.3) assumes a fixed labyrinth,
-but a revolving drum with a person-sized opening and no fixed housing has no such
-labyrinth at the transit angles.
+**2. As the drum rotates, can daylight enter? — No.** The fixed housing's two 80°
+openings are 180° apart, so the 80° drum opening can never reach both at once: at
+**enter** the exterior opening feeds the bore but the interior opening is covered by
+the drum's solid wall; at **transit** both housing openings are covered; at **exit**
+the exterior opening is covered. There is no straight-line path at any angle.
 
-**Resolution (to be designed).** A working light-lock needs *either* a **fixed outer
-housing** with two narrow, offset openings — so the drum's solid wall always covers
-at least one side while the drum's single opening rotates between them (the standard
-commercial revolving-darkroom-door arrangement) — *or* a substantially larger drum
-with a single 2-compartment partition and a fixed surround. The current panel
-aperture is a full circle and provides no housing. This is an **open design issue**;
-the geometry, the 3D model, and the §3.3 claim will be updated once the revised
-light-trap is agreed.
+**Why the earlier 4-fin drum failed (for the record).** Four fins from the bore
+center to the wall split the Ø744mm bore into 90° wedges (~250–300mm of body space —
+a person could not fit), and a revolving drum with a person-sized opening and *no
+fixed housing* necessarily bridged exterior and interior at the transit angles. The
+fix — a **fixed housing** with two offset openings narrower than 90° — is the
+standard commercial-darkroom-door arrangement, here custom-built to the panel.
 
 ---
 
@@ -213,7 +214,7 @@ interior equipment.
 
 ## 5. Sliding Carriage System
 
-The entire panel (including the drum) slides 300mm in the X direction on linear
+The entire panel (including the housing + drum) slides ~500mm in the X direction on linear
 rails for transport mode conversion. This slide retracts the drum's exterior
 overhang behind the container door closure plane.
 
@@ -310,20 +311,20 @@ for the sliding carriage.
 | Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |
 | **Panel subtotal** | | | **$575–$895** |
 
-### 8.2 Revolving Drum
+### 8.2 Housed Revolving Door (housing + drum)
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 3mm mild steel sheet (1200 × 2400mm, A36) | Drum body + baffles | 2 | $140–$180 |
-| 5mm steel plate | Top and bottom caps | 1 | $40–$60 |
-| SKF 6215-2RS1 sealed bearing | Top and bottom bearings | 2 | $90–$130 |
+| 3mm mild steel sheet (1200 × 2400mm, A36) | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 | $280–$360 |
+| 5mm steel plate | Drum top and bottom caps | 1 | $40–$60 |
+| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 | $90–$130 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
-| 12mm closed-cell neoprene strip (3 m) | Top and bottom drum seals | 1 | $20–$25 |
+| Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 | $10–$15 |
 | 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 | $15–$25 |
-| Flat black powder coat (drum interior) | Local powder coat service | 1 | $120–$180 |
-| Metal fabrication (rolling, welding, fitting) | 16–20 hrs labor | 1 | $800–$1,200 |
-| **Drum subtotal** | | | **$1,265–$1,865** |
+| Flat black powder coat (housing + drum interior) | Local powder coat service | 1 | $180–$260 |
+| Metal fabrication (roll 2 cylinders, weld, fit, bearings) | 22–28 hrs labor | 1 | $1,100–$1,500 |
+| **Housing + drum subtotal** | | | **$1,785–$2,460** |
 
 ### 8.3 Sliding Carriage
 
@@ -352,10 +353,10 @@ for the sliding carriage.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure | $575 | $895 |
-| Revolving drum | $1,265 | $1,865 |
+| Housing + drum | $1,785 | $2,460 |
 | Sliding carriage | $365 | $585 |
 | Fixed door frame | $335 | $550 |
-| **Total** | **$2,540** | **$3,895** |
+| **Total** | **$3,060** | **$4,490** |
 
 ---
 

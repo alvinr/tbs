@@ -6,14 +6,14 @@
 
 Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight — for example, between coating of the photosensitive material, or while the exposure is being made.
 
-The cargo door end of TBS-001 is sealed by a stepped hinged panel (2362mm wide × 2388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756mm and Yd=1606–2362mm) and 120mm thick at the center zone (Yd=756–1606mm) where the revolving light trap drum is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
+The cargo door end of TBS-001 is sealed by a stepped hinged panel (2362mm wide × 2388mm tall, 50×50mm RHS steel frame, 18mm ply skins). The panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653mm and Yd=1709–2362mm) and 120mm thick at the center zone (Yd=653–1709mm) where the Ø900 housed revolving-door light lock is permanently mounted. The panel swings 180° outward to clear the full door opening for loading IBC totes and equipment. When closed it is light-sealed at the perimeter by a 20mm EPDM compression gasket against a fixed welded door frame at X=0.
 
-The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails, 8 carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. For transport, the panel slides inward 300mm — clearing the container doors for closure. Single-person operation, ~5 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6 for sliding carriage specification.
+The entire panel slides ~500mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails, 8 carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. For transport, the panel slides inward ~500mm — clearing the container doors for closure. Single-person operation, ~5 minutes per mode conversion. See [Equipment Layout Report](equipment-layout-report.md) §6 for sliding carriage specification.
 
 **Sheet 1 — Front Elevation (1:20): Panel Dimensions, Drum, Hinges, Latches (interior face)**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
-**Sheet 2 — Plan Cross-Section (1:10 horiz / 1:1 depth): Drum Baffles and S-Path Light Route**
+**Sheet 2 — Plan Cross-Section: Housed Revolving Door — Housing, Drum & Light-Tight Geometry**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
 **Sheet 3 — Drum Vertical Section Elevation (Section A-A): Walking-height orientation confirmation**
@@ -85,17 +85,17 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 
 | Parameter | Value |
 |-----------|-------|
-| Drum outer diameter | 750mm |
-| Drum height | 2200mm (floor to upper bearing) |
-| Wall thickness | 3mm mild steel sheet, formed and welded |
+| Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
+| Height | 2200mm (floor to upper bearing) |
+| Wall thickness | 3mm mild steel sheet, formed and welded (housing + drum) |
 | Surface finish | Shot-blast + flat black powder coat (interior); grey oxide primer (exterior) |
-| Baffles | 4 × internal steel fins, 3mm × full height, at 45° angular offset |
+| Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
 | Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm stub shaft, welded to drum |
 | Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: grey oxide |
-| Approximate cost | USD $800–$1,500 (local metal fabrication shop) |
+| Approximate cost | USD $1,785–$2,460 (local metal fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -106,18 +106,24 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 
 ---
 
-## 4. Recommended Specification — Custom Drum
+## 4. Recommended Specification — Custom Housed Revolving Door (rev 8)
 
-### 4.1 Drum Body
+> Replaces the earlier Ø750mm drum with **internal baffles**, which failed both
+> personnel-fit and rotation light-tightness. The light lock is now a **fixed
+> housing + single-opening C-shell drum** (no fins) — light-tight by geometry.
+
+### 4.1 Housing + Drum Body
 
 | Item | Specification |
 |------|--------------|
-| Drum shell | 3mm mild steel, rolled to Ø750mm OD, seam-welded full height |
-| Drum height | 2200mm |
-| Internal baffles | 4 × 3mm mild steel fins, welded radially from drum centerline to inner wall, at 22.5°/112.5°/202.5°/292.5° from horizontal — see Sheet 2 for baffle layout and light path |
-| Top cap | 5mm steel plate, flanged, welded |
+| Fixed housing shell | 3mm mild steel, rolled to **Ø900mm OD**, seam-welded full height; built into the panel center zone |
+| Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
+| Rotating drum | 3mm mild steel C-shell, **Ø864mm OD** (~Ø850mm bore), single **80° opening**, rotates inside the housing on a 15mm running gap |
+| Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
+| Drum/housing height | 2200mm |
+| Top cap | 5mm steel plate, flanged, welded to the drum |
 | Bottom cap | 5mm steel plate, flanged, with 75mm stub shaft for lower bearing |
-| Upper stub shaft | 75mm Ø × 150mm steel stub, welded to top cap centre |
+| Upper stub shaft | 75mm Ø × 150mm steel stub, welded to drum top cap centre |
 | Surface treatment | Interior: shot-blast + flat black powder coat; exterior: grey oxide primer + grey topcoat |
 
 ### 4.2 Bearings and Mounting
@@ -157,25 +163,37 @@ The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at
 | Flat black powder coat | Local powder coat shop | Standard service; ~$150 for drum |
 | Metal fabrication (rolling, welding, fitting) | Estimate 16–20 hrs labour at local shop | $800–$1,200 depending on shop rate |
 
-**Total custom drum estimate: $950–$1,450.**
+**Total custom housing+drum estimate: $1,785–$2,460.**
 
 ---
 
 ## 5. Light Path Verification
 
-The 4-baffle arrangement eliminates any straight-line path from exterior to interior. To verify:
+The fixed-housing geometry eliminates any straight-line path from exterior to
+interior **at every rotation angle**, and the open bore fits a single operator.
 
-A ray entering at any point on the exterior drum face must rotate at least 45° (one baffle sector) before exiting on the interior face. At 750mm drum diameter and 4 baffles at 45° offset, the shortest possible S-path through the drum is 590mm — significantly longer than the 120mm panel thickness, ensuring no line of sight is possible at any incidence angle within ±30° of normal incidence.
+**Light-tightness.** The housing has two openings, each **80° of arc and 180°
+apart**; the drum has a single **80° opening**. Because each opening is narrower
+than 90° and the two housing openings are 180° apart, the drum opening can never
+align with both housing openings simultaneously. So the housing's solid wall always
+covers whichever opening the drum opening is not facing — daylight entering the bore
+through the exterior opening is blocked by the drum's solid wall before reaching the
+interior opening. **Enter:** exterior open, interior covered → light into the bore,
+no exit. **Transit:** both housing openings covered → fully sealed. **Exit:**
+exterior covered → no daylight enters.
 
-See Sheet 2 of the hinged panel engineering drawings for the baffle cross-section and S-path trace.
+**Access.** With no internal fins, the whole **~Ø850mm bore** is clear standing
+space and the 80° opening gives a **~625mm passage** — meeting the §2 requirement
+(≥700mm clear passage diameter; the bore is Ø850). Emergency egress remains the
+whole panel swinging open.
 
-> **⚠ Design review (open issue).** This static S-path verification assumes a fixed
-> labyrinth and does not survive the two operational realities: a person cannot fit a
-> 90° sector, and the person-sized opening must rotate from the exterior face to the
-> interior face — bridging both at the transit angles and admitting daylight. Both
-> tests currently **fail**. See [Hinged Panel Report](hinged-panel-report.md) §3.6 and
-> **Sheet 5** (Drum Access & Light-Tightness Analysis). The drum geometry will be
-> revised before fabrication.
+See **Sheet 5** of the hinged-panel drawings (enter / transit / exit verification)
+and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
+
+> **Note.** This replaces the earlier Ø750 / 4-fin drum, whose static "S-path"
+> argument did not survive the two operational realities (a person could not fit a
+> 90° sector, and a finned drum with a person-sized opening bridged exterior and
+> interior at the transit angles). The fixed housing resolves both.
 
 ---
 
@@ -183,9 +201,9 @@ See Sheet 2 of the hinged panel engineering drawings for the baffle cross-sectio
 
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
-| Clear diameter | 800mm | 750–900mm | **750mm** |
+| Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~625mm passage** |
 | Height | 2000–2200mm | 2000mm | **2200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$950–$1,450** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$1,785–$2,460** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (3mm steel, sealed bearings)** |
@@ -193,7 +211,7 @@ See Sheet 2 of the hinged panel engineering drawings for the baffle cross-sectio
 | Field repairability | Low (ABS/extrusion parts) | Low | **High (standard steel + off-shelf bearings)** |
 | **Recommendation** | ✗ | ✗ | **✓** |
 
-Custom fabrication saves $1,550–$3,050 over commercial alternatives while providing superior weatherproofing, transport durability, and field repairability.
+Custom fabrication is comparable to or below commercial alternatives while providing superior weatherproofing, transport durability, and field repairability.
 
 ---
 
@@ -205,7 +223,7 @@ Custom fabrication saves $1,550–$3,050 over commercial alternatives while prov
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.
 - **Panel latches (×4 Southco C2-33 cam compression latches) are mounted on the interior face of the panel.** This is a deliberate safety design: if the revolving drum jams and prevents normal egress, an operator inside the container can release all four latches independently from the inside and push the panel open outward. The panel swings 180° on its left-edge hinges, clearing all interior equipment. Latches appear as hidden (dashed) features in the exterior elevation drawing (Sheet 1).
 - **Stepped panel construction:** The panel has three thickness zones — 40mm at corners (18mm ply + 4mm steel plate + 18mm ply) and 120mm at center (18mm ply + 84mm RHS frame + 18mm ply). The step transitions occur at Yd=756mm and Yd=1606mm. The 120mm center zone houses the drum; the 40mm corner zones are flush with the container walls.
-- **Sliding carriage:** The entire panel slides 300mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
+- **Sliding carriage:** The entire panel slides ~500mm in the X direction on HGR20 linear rails mounted to both container walls at floor and ceiling level (4 rails total, 8 HGH20CA carriage blocks). The left (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall); the right (latch) side rides directly on blocks attached to the panel frame. Locked by Destaco 207-U toggle clamps at both operational and transport positions. A fixed welded door frame (50×50×3mm RHS) at X=0 provides the EPDM seal landing — the sliding mechanism is transparent to the seal.
 - **Transport mode conversion** (single person, ~5 minutes): release cam latches → slide panel inward 300mm → lock → close container doors. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 ---

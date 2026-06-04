@@ -18,13 +18,13 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,934 | $6,142 | $7,349 |
-| **6. Revolving drum light trap (custom fabrication)** | $950 | $1,200 | $1,450 |
+| **6. Housed revolving-door light lock (custom fabrication)** | $1,785 | $2,120 | $2,460 |
 | **6a. Perimeter walkway (4 sections, wall-cantilevered)** | $953 | $1,216 | $1,467 |
 | **6b. Ceiling rail suspension** | $175 | $208 | $240 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$15,933** | **$20,616** | **$26,733** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$16,768** | **$21,536** | **$27,743** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -259,24 +259,24 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 ---
 
-## 6. Revolving Drum Light Trap — Custom Fabrication
+## 6. Housed Revolving-Door Light Lock — Custom Fabrication
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a 750mm steel drum built into the hinged cargo-door panel. The drum rotates freely on two SKF 6215 bearings; 4 internal baffles at 45° offset eliminate any straight-line optical path. Custom fabrication is recommended over commercial darkroom doors (~$2,500–$4,500) — those products are not weatherproof, not transport-rated, and cannot be adapted to a removable panel.
+Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| 3mm mild steel sheet, 1200×2400mm (×2) | $140 | $160 | $180 | Hot-rolled A36 — drum shell and internal baffles; Pacific Coast Steel, Santa Fe Springs CA |
+| 3mm mild steel sheet, 1200×2400mm (×4) | $280 | $320 | $360 | Hot-rolled A36 — Ø900 housing + Ø864 drum shells (~12 m²); Pacific Coast Steel |
 | 5mm steel plate offcut (caps) + 75mm round bar (stub shafts ×2) | $55 | $70 | $85 | Pacific Coast Steel or steel service center |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
-| Seals — 12mm neoprene wiper strip, 20mm compression strip, silicone | $50 | $60 | $70 | McMaster-Carr #93855K6, #8635K31, #7587A3 |
+| Seals — neoprene wiper, 20mm compression, silicone + brush wiper (drum↔housing rotating seal) | $90 | $110 | $130 | McMaster-Carr #93855K6, #8635K31, #7587A3, brush strip |
 | Hardware — SS grab rail (×1 interior, welded bracket), M10 stainless bolts (14 off) | $60 | $75 | $90 | McMaster-Carr / Fastenal |
-| Flat black powder coat (interior) + grey oxide primer (exterior) | $120 | $150 | $180 | Local powder coat shop SoCal |
-| Metal fabrication — rolling, seam weld, baffle weld, stub shaft weld (16–20 hrs) | $800 | $1,000 | $1,200 | Local metal fab shop — get 2–3 quotes |
-| **Revolving drum total** | **$950** | **$1,200** | **$1,450** | |
+| Flat black powder coat (housing + drum interior) + grey oxide primer (exterior) | $180 | $220 | $260 | Local powder coat shop SoCal |
+| Metal fabrication — roll 2 cylinders (housing + drum), seam/cap/shaft weld, bearing fit (22–28 hrs) | $1,100 | $1,300 | $1,500 | Local metal fab shop — get 2–3 quotes |
+| **Housing + drum total** | **$1,785** | **$2,120** | **$2,460** | |
 
-*Note: the hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Total saving vs. commercial darkroom door: $1,550–$3,050.*
+*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
 ---
 

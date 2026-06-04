@@ -2337,6 +2337,24 @@ def sheet6():
             ha="center", va="top", fontsize=6, color=C_SUPPORT,
             fontweight="bold", **FONT, zorder=15)
 
+    # \u2500\u2500 Schematic-compression note \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    # The detail draws the bearer seat hard against the wall while the tray rim
+    # is ghosted at its true 80mm offset, so the plate/lip/beam graphically cross
+    # it. In the real layout the bearer beam (X=470) runs over the OPEN tray
+    # basin (Yd 300-2062), past the near rim \u2014 no actual conflict.
+    ax.annotate(
+        "SCHEMATIC \u2014 COMPRESSED FOR THIS DETAIL:\n"
+        "the tray near rim is 80mm from the wall, but the bearer\n"
+        "seat is really at the walkway interior edge (Yd\u2248300,\n"
+        "~220mm past the rim), over the OPEN tray basin. The\n"
+        "plate, lip and beam all clear the 50mm rim \u2014 they overlap\n"
+        "the ghost rim here only because the offset is drawn\n"
+        "compressed (no actual conflict).",
+        xy=(sx(TRAY_RIM_YD), sy(22)), xytext=(sx(118), sy(210)),
+        fontsize=5.5, color="#A02020", ha="left", va="top", **FONT, zorder=22,
+        bbox=dict(boxstyle="round,pad=0.4", fc="#FFF4F4", ec="#A02020", lw=0.9),
+        arrowprops=dict(arrowstyle="-|>", color="#A02020", lw=1.0))
+
     # ── Lock block (ghost — behind beam, interior/wall side in X) ──────────────
     # The lock is behind the beam in this view.
     # Lock slides on a 50mm slot in the plate; secured with bolt + washer below.

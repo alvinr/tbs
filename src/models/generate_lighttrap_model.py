@@ -29,6 +29,7 @@ Usage
 
 import os
 import sys
+import math
 import argparse
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -51,6 +52,22 @@ C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
 PANEL_Z_TOP = 2300                            # hung from ceiling rail (rail above)
+
+# ── Option A — housed revolving-door light lock (Ø900 balanced) ───────────────
+# Fixed housing with two opposed 80° openings (exterior + interior-onto-walkway,
+# 180° apart) + a single-opening C-shell drum rotating inside. Openings <90° so
+# the drum opening can never bridge both at once → light-tight at all rotations.
+# All dimensions come from tbs_constants (via ov) — single source of truth.
+HOUSING_R = ov.LT_HOUSING_R           # 450 — fixed housing radius (Ø900 OD)
+HOUSING_T = ov.LT_HOUSING_T           # 3 — housing wall
+DRUM_OR = ov.LT_DRUM_OR               # 432 — drum outer radius (Ø864), 15mm gap
+DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~625mm passage
+OPENING_DEG = ov.LT_OPENING_DEG       # 80 — each opening arc (<90°)
+APERTURE_R = HOUSING_R + 18           # 468 — panel aperture radius around housing
+NEW_YD_L = YD_L                       # 653 — widened center-zone step lines
+NEW_YD_R = YD_R                       # 1709  (PANEL_CORNER_YD_L/R from constants)
+APER_L = DRUM_CY - APERTURE_R         # 713 — aperture edge (near)
+APER_R = DRUM_CY + APERTURE_R         # 1649 — aperture edge (far)
 
 TAGS = ["Context", "Door Frame", "Hinge Panel", "Light Trap",
         "Sliding Carriage", "Fan B"]
@@ -81,8 +98,8 @@ def door_frame():
     just exterior of the panel (X=-50..0); the EPDM gasket seals against it."""
     s = 50
     x0 = -s
-    # threshold rail is notched around the drum (it rotates down to the floor)
-    dg0, dg1 = DRUM_CY - DRUM_R - 15, DRUM_CY + DRUM_R + 15
+    # threshold rail is notched around the housing aperture
+    dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15
     parts = [
         ruby_box("Door Frame threshold L", x0, 0, 0, s, dg0, s, color=C_RAIL),
         ruby_box("Door Frame threshold R", x0, dg1, 0, s, C_WID - dg1, s, color=C_RAIL),
@@ -121,36 +138,36 @@ def door_frame():
 def hinge_panel():
     h = PANEL_Z_TOP - PANEL_Z_BOT                  # panel skin height
     tc, tk = PANEL_CORNER_T, PANEL_CENTER_T        # 40 corner, 120 center
-    jw = DRUM_CY - DRUM_R - YD_L                   # left/right jamb width (≈50)
     parts = []
 
     # Near corner (hinge side) and far corner (Fan B side) — flush 40mm zones.
+    # The center zone is WIDENED (step lines at NEW_YD_L/R) to frame the Ø900 housing.
     parts.append(ruby_box("Panel near corner (40mm)",
-                          0, 0, PANEL_Z_BOT, tc, YD_L, h, color=C_PLY))
+                          0, 0, PANEL_Z_BOT, tc, NEW_YD_L, h, color=C_PLY))
     parts.append(ruby_box("Panel far corner (40mm)",
-                          0, YD_R, PANEL_Z_BOT, tc, C_WID - YD_R, h, color=C_PLY))
+                          0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLY))
 
-    # Center zone (120mm) framed around the Ø750 drum aperture: two jambs + header.
+    # Center zone (120mm) framed around the housing aperture: two jambs + header.
     parts.append(ruby_box("Panel center jamb L (120mm)",
-                          0, YD_L, PANEL_Z_BOT, tk, jw, h, color=C_PLY))
+                          0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_PLY))
     parts.append(ruby_box("Panel center jamb R (120mm)",
-                          0, YD_R - jw, PANEL_Z_BOT, tk, jw, h, color=C_PLY))
-    parts.append(ruby_box("Panel header over drum (120mm)",
-                          0, YD_L, DRUM_H, tk, YD_R - YD_L, PANEL_Z_TOP - DRUM_H,
-                          color=C_PLY))
+                          0, APER_R, PANEL_Z_BOT, tk, NEW_YD_R - APER_R, h, color=C_PLY))
+    parts.append(ruby_box("Panel header over housing (120mm)",
+                          0, NEW_YD_L, DRUM_H, tk, NEW_YD_R - NEW_YD_L,
+                          PANEL_Z_TOP - DRUM_H, color=C_PLY))
 
-    # 20mm neoprene compression strip lining the drum aperture (jamb inner faces).
-    parts.append(ruby_box("Drum aperture seal L", 0, YD_L + jw, PANEL_Z_BOT,
+    # 20mm neoprene compression strip lining the housing aperture (jamb inner faces).
+    parts.append(ruby_box("Housing aperture seal L", 0, APER_L, PANEL_Z_BOT,
                           tk, 20, DRUM_H, color=C_GASKT))
-    parts.append(ruby_box("Drum aperture seal R", 0, YD_R - jw - 20, PANEL_Z_BOT,
+    parts.append(ruby_box("Housing aperture seal R", 0, APER_R - 20, PANEL_Z_BOT,
                           tk, 20, DRUM_H, color=C_GASKT))
 
     # EPDM perimeter gasket — 20mm strips on the panel exterior face, compressed
     # against the door frame (and the top/bottom seal lips) by the cam latches.
     gw, gt = 40, 20
     z0, z1 = PANEL_Z_BOT, PANEL_Z_TOP
-    dg0, dg1 = DRUM_CY - DRUM_R - 15, DRUM_CY + DRUM_R + 15   # clear the drum aperture
-    # bottom + top strips run on the panel edges, notched around the drum
+    dg0, dg1 = DRUM_CY - HOUSING_R - 15, DRUM_CY + HOUSING_R + 15  # clear housing aperture
+    # bottom + top strips run on the panel edges, notched around the housing
     parts.append(ruby_box("EPDM seal bottom L", -gt, 0, z0, gt, dg0, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM seal bottom R", -gt, dg1, z0, gt, C_WID - dg1, gw,
                           color=C_GASKT))
@@ -177,62 +194,95 @@ def hinge_panel():
 # ── Revolving light-trap drum (detailed) ─────────────────────────────────────
 
 def drum():
-    """Shell + 4-baffle turnstile (reused from the Overview) plus caps, stub
-    shafts, SKF 6215 bearings, mount/collar plates and the interior grab rail."""
-    cx, cy = DRUM_CX, DRUM_CY
-    r = DRUM_R
-    parts = [ov.light_trap_drum()]                 # shell (3 walled) + 2 crossed vanes
+    """Option A — housed revolving-door light lock (Ø900 balanced).
 
-    # Top + bottom caps (5mm steel plate).
-    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, DRUM_H - 5, r, 5,
+    A FIXED housing with two opposed 80° openings — one facing the exterior
+    (cargo-door side), one facing the interior/walkway, 180° apart — and a
+    single-opening C-shell DRUM rotating inside it on SKF 6215 bearings. NO
+    internal fins. Light-tight by geometry: the housing's solid wall always
+    covers whichever opening the drum opening is not aligned with, so there is
+    no straight path at any rotation (verified in the top-down renders). Shown at
+    the ENTER position (drum opening at the exterior). ~Ø850 bore, ~625mm
+    passage; emergency egress is the whole panel swinging open."""
+    cx, cy, H = DRUM_CX, DRUM_CY, DRUM_H
+    od = OPENING_DEG
+    parts = []
+
+    # Fixed HOUSING — two solid arcs (each 180−od = 100° wide) leaving two od=80°
+    # openings centered on +X (interior→walkway, 0°) and −X (exterior, 180°).
+    parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
+                                  HOUSING_T, H, gap_center_deg=270, gap_deg=180 + od,
+                                  color=C_STEEL, alpha=0.42))
+    parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
+                                  HOUSING_T, H, gap_center_deg=90, gap_deg=180 + od,
+                                  color=C_STEEL, alpha=0.42))
+
+    # Rotating DRUM — single od=80° opening (C-shell). ENTER position: opening at
+    # the exterior (180°); the solid 280° arc faces the interior (0°).
+    parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H,
+                                  gap_center_deg=180, gap_deg=od,
+                                  color=C_DRUM, alpha=0.85))
+
+    # Drum caps, top stub shaft + SKF 6215 bearing, lower bearing collar (on floor).
+    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
                                color=C_DRUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, 0, r, 5,
+    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, 0, DRUM_OR, 5,
                                color=C_DRUM, axis="z"))
-    # Top stub shaft (Ø75) — welded to the top cap, up into the upper bearing /
-    # mount plate only. It stops below the frame top seal lip (Z=2265 < 2270) so
-    # the lip can run continuously across the top (drum doesn't reach the top).
-    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, DRUM_H, 37.5, 65,
+    parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
-    # SKF 6215 bearings (Ø130 OD) — upper in the panel header, lower in the
-    # floor collar. The drum rests ON the floor (Z=0); nothing extends below it.
-    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, DRUM_H, 65, 45,
+    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
                                color=C_STEEL, axis="z"))
     parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, 0, 75, 45,
                                color=C_STEEL, axis="z"))
-    # Upper mount plate (to panel header) + lower floor collar flange (on floor).
-    parts.append(ruby_box("LT Upper mount plate", cx - 110, cy - 110, DRUM_H + 45,
-                          220, 220, 20, color=C_STEEL))
     parts.append(ruby_box("LT Floor collar plate", cx - 120, cy - 120, 0,
                           240, 240, 12, color=C_STEEL))
 
-    # Interior grab rail (Ø30 × 400 vertical tube, Z 700–1100) mounted on the
-    # INSIDE of the drum's +X interior-face wall — operator grabs it from within
-    # the drum to pull it closed. Standoffs bridge the inner wall surface to the
-    # rail; nothing penetrates the exterior wall (no light-leak path) per report §3.5.
-    wall_t = 12                                 # drum shell wall thickness
-    inner = cx + r - wall_t                      # inner wall surface on the +X side
-    gx = cx + r - 75                             # rail sits inside the drum
+    # Interior grab rail on the drum's solid +X wall (operator pulls the drum).
+    inner = cx + DRUM_OR - DRUM_T
+    gx = cx + DRUM_OR - 75
     parts.append(ruby_cylinder("LT Grab rail", gx, cy, 700, 15, 400,
                                color=C_STEEL, axis="z"))
     for bz in (720, 1080):
         parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
                               inner - gx, 12, 12, color=C_STEEL))
+
+    # ── Rotating drum↔housing light seal ──────────────────────────────────────
+    # Felt/brush wiper strips on the two vertical edges of the drum opening sweep
+    # against the housing inner wall as the drum turns, blocking light leaking
+    # around the opening; top + bottom felt wiper rings close the annular gap.
+    felt = "#7E7E76"
+    seal_r = (DRUM_OR + HOUSING_R - HOUSING_T) / 2          # mid of running gap
+    for edge in (180 - od / 2, 180 + od / 2):               # opening edges (enter pos.)
+        bx = cx + seal_r * math.cos(math.radians(edge))
+        by = cy + seal_r * math.sin(math.radians(edge))
+        parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, 0, 7, H,
+                                   color=felt, axis="z"))
+    parts.append(ruby_cylinder("LT Drum top felt seal", cx, cy, H - 8,
+                               HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
+    parts.append(ruby_cylinder("LT Drum bottom felt seal", cx, cy, 0,
+                               HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
     return '\n'.join(parts)
 
 
-# ── Sliding carriage system (transport-mode 300mm slide) ─────────────────────
+# ── Sliding carriage system (transport-mode slide) ──────────────────────────
+# Slide travel LENGTHENED to ~500mm so the deeper Ø900 housing (exterior overhang
+# ~450mm) fully retracts behind the door closure plane for transport. Rails at the
+# widened center-zone step lines (NEW_YD_L/R). NB: the longer retraction carries
+# the housing into the left-walkway / near-tray zone — tray-end clearance during
+# transport is an open detail to confirm.
+TRANSPORT_SLIDE = 500
 
 def sliding_carriage():
     """HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left
     carriage beam + Destaco toggle clamps (operational & transport locks)."""
     parts = []
-    rail_x0, rail_len = -30, 510                    # allows the 300mm transport slide
+    rail_x0, rail_len = -30, 760                    # allows the ~500mm transport slide
     rail_w, rail_h = 20, 30
     rail_z = C_HGT - rail_h                          # 2358 — hung from ceiling
     carr_w, carr_d, carr_h = 44, 44, 28
     brk_w, brk_d, brk_h = 60, 40, 30
 
-    for yd, nm in [(YD_L, "L"), (YD_R, "R")]:
+    for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
         parts.append(ruby_box(f"HGR20 rail {nm}", rail_x0, yd - rail_w / 2, rail_z,
                               rail_len, rail_w, rail_h, color=C_RAIL))
         parts.append(ruby_box(f"HGH20CA carriage {nm}", 18, yd - carr_d / 2,
@@ -245,9 +295,9 @@ def sliding_carriage():
     parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0, 0, PANEL_Z_BOT,
                           60, 60, PANEL_Z_TOP - PANEL_Z_BOT, color=C_STEEL))
 
-    # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈300).
-    for cx, lock in [(-10, "operational"), (290, "transport")]:
-        for yd in (YD_L, YD_R):
+    # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈500).
+    for cx, lock in [(-10, "operational"), (TRANSPORT_SLIDE - 10, "transport")]:
+        for yd in (NEW_YD_L, NEW_YD_R):
             parts.append(ruby_box(f"Destaco clamp ({lock}) base", cx, yd - 18,
                                   rail_z - 70, 60, 36, 24, color=C_STEEL))
             parts.append(ruby_box(f"Destaco clamp ({lock}) handle", cx + 10, yd - 6,

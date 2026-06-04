@@ -137,33 +137,42 @@ def cone_right(y):
     """X coordinate of cone right boundary at depth y from pinhole wall."""
     return PH_X + (FP_X_R - PH_X) * y / FP_Y
 
-# ── Hinged panel — stepped profile (rev 4) ───────────────────────────────────
-# Corner zones (Yd=0–756 and Yd=1606–2362): thin sandwich panel.
-# Center zone (Yd=756–1606): full RHS frame housing light trap drum.
+# ── Hinged panel — stepped profile (rev 8: housed revolving-door light lock) ──
+# Corner zones (Yd=0–653 and Yd=1709–2362): thin sandwich panel.
+# Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
 PANEL_CORNER_T    = 40    # corner zone thickness (mm) — 18mm ply + 4mm plate + 18mm ply
 PANEL_CENTER_T    = 120   # center zone thickness (mm) — 18mm ply + 84mm RHS + 18mm ply
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
-PANEL_CORNER_YD_L = 756   # corner-to-center transition, near side (mm)
-PANEL_CORNER_YD_R = 1606  # center-to-corner transition, far side (mm)
-PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 850mm center zone width
+PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
+PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
+PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
 WALL_T            = 40    # container end-wall steel thickness (mm)
 
-# ── Sliding rail system — transport mode (rev 4, updated rev 6) ──────────────
-# Panel slides inward 300mm on HGR20 ceiling-mounted linear rails so the light
-# trap drum clears the container exterior face, allowing ISO cargo doors to close.
-# Panel is suspended from ceiling — bottom edge clears floor-mounted processing tray.
-PANEL_SLIDE       = 300   # panel slide travel for transport (mm)
+# ── Sliding rail system — transport mode (rev 8) ────────────────────────────
+# Panel slides inward ~500mm on HGR20 ceiling-mounted linear rails so the deeper
+# Ø900 light-trap housing clears the container exterior face, allowing ISO cargo
+# doors to close. Panel is suspended from ceiling — bottom edge clears the tray.
+PANEL_SLIDE       = 500   # panel slide travel for transport (mm) [rev8: 300→500]
 PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
                           # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
 
-# ── Left end zone (X = 0–150mm, shadow-free at all depths) ──────────────────
-# Light trap drum in hinge panel center zone.  Zone shrunk in rev 6 as film
-# plane extended left from X=625 to X=150mm.  Only the panel thickness
-# (40/120mm) occupies this zone now.
-DRUM_CX    = 0       # light trap drum center X (mm) [unchanged]
-DRUM_D     = 750     # revolving drum diameter (mm)
-DRUM_R     = DRUM_D // 2
-DRUM_H_LT  = 2200    # light trap drum height (mm) — increased for 330mm headroom at 1780mm operator height
+# ── Left end zone — housed revolving-door light lock (rev 8) ─────────────────
+# Personnel light lock in the hinge-panel center zone: a FIXED Ø900 housing with
+# two opposed 80° openings (exterior face + interior face onto the walkway) and a
+# single-opening C-shell drum (Ø864, ~Ø850 bore) rotating inside on SKF 6215
+# bearings. No internal fins — light-tight by geometry (openings <90°, 180° apart,
+# so the drum opening can never bridge both at once). Replaces the failed Ø750
+# 4-fin drum. See light-trap-selection.md / hinged-panel-report.md §3.
+DRUM_CX    = 0       # light-lock center X (mm) [unchanged]
+DRUM_D     = 900     # fixed housing OUTER diameter (mm) [rev8: was Ø750 drum]
+                     # TODO REVISIT: passage comfort (~625mm) vs exterior overhang/transport
+DRUM_R     = DRUM_D // 2                      # 450 — housing radius (visible footprint)
+DRUM_H_LT  = 2200    # light-lock height (mm) — 330mm headroom at 1780mm operator
+LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
+LT_HOUSING_T   = 3        # housing wall (mm)
+LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
+LT_DRUM_T      = 3        # drum wall (mm) → ~Ø850 bore, ~625mm passage
+LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
@@ -172,11 +181,11 @@ BRACE_Z_BOT = RAIL_OFF               # 100mm — bottom cross-beam Z (above tray
 BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
-# Light-trap drum Yd extent → the left-rail segment that must demount for the drum.
-DRUM_CY     = C_WID // 2             # 1181mm — drum centre in Yd (= container width centre)
-BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 806mm — demountable left-rail segment start
-BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1556mm — demountable left-rail segment end
-CARRIAGE_PARK_Y       = FP_Y               # 2262mm — carriage park for drum mode (> 1556 ⇒ clears drum)
+# Light-lock Yd extent → the left-rail segment that must demount for the housing.
+DRUM_CY     = C_WID // 2             # 1181mm — light-lock centre in Yd (= container width centre)
+BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 731mm — demountable left-rail segment start
+BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1631mm — demountable left-rail segment end
+CARRIAGE_PARK_Y       = FP_Y               # 2262mm — carriage park for drum mode (> 1631 ⇒ clears housing)
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct

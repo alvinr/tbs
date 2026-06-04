@@ -185,6 +185,8 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on equipment panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
 
+**External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap (Yd 1046–1316, clear of both tote columns) and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the equipment panel and runs its full height — so the risers are supported rather than free-hanging.
+
 **Spray bar:** A 4399mm aluminum SHS beam gantry rolls on the tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-02 → 4m flexible hose → center feed bulkhead fitting → 38 × 3mm spray holes at 100mm centers.
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.

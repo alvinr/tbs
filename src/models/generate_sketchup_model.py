@@ -579,6 +579,30 @@ def equipment_panel():
         parts.append(ruby_cylinder(f"Filter {nm}",
                                    fcx, fcy, fz, fr, BB_H, color=C_FILTER))
 
+    # ── Drain-riser backing spine (rev 8.1) ──────────────────────────────────
+    # 18mm marine-ply spine teed perpendicular off the panel (a T in plan),
+    # running the full panel height into the corridor gap, so the X3/X4 drain
+    # risers (Brown @ X=5400, Waste @ X=5340, both Yd=col_r) clamp to it instead
+    # of free-hanging.  Sits in the clear corridor (Yd 1046-1316) — no tote contact.
+    sp_t  = EQPANEL_T                              # 18mm ply
+    sp_x0, sp_x1 = face_x, 5420                     # butts the panel rear → past the X3 riser
+    sp_y  = col_r - 30                              # spine board Yd (near-face just off the risers)
+    parts.append(ruby_box("Drain-riser spine (ply)", sp_x0, sp_y, EQPANEL_Z_LO,
+                          sp_x1 - sp_x0, sp_t, EQPANEL_Z_HI - EQPANEL_Z_LO,
+                          color=C_PLY))
+    # Stiffening flange along the spine's rear edge → T cross-section.
+    parts.append(ruby_box("Drain-riser spine flange (ply)", sp_x1 - sp_t,
+                          col_r - 27, EQPANEL_Z_LO, sp_t, 54,
+                          EQPANEL_Z_HI - EQPANEL_Z_LO, color=C_PLY))
+    # SS pipe clamps (P-clips) holding each riser to the spine face, ~400mm centers.
+    clamp_face = sp_y + sp_t                        # spine face the pipes sit against
+    for rx, ztop in ((5340, 1578), (5400, 1946)):   # X4 Waste, X3 Brown risers
+        cz = 500
+        while cz < ztop - 80:
+            parts.append(ruby_box("Riser pipe clamp", rx - 16, clamp_face, cz,
+                                  32, 30, 22, color=C_STEEL))
+            cz += 400
+
     return '\n'.join(parts)
 
 

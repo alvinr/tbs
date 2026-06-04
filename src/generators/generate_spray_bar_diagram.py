@@ -1259,8 +1259,9 @@ def draw_sheet4():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 5 — Detail C: Wheel Attachment
-# Section along axle centerline showing carriage plate, axle retention
-# U-clamp, nylon wheel bore, axle pin, and through-bolt retention.
+# Section along axle centerline showing carriage plate, axle-retention
+# saddle clamps (curved conduit-style), nylon wheel bore, axle pin, and
+# through-bolt retention.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet5():
@@ -1305,60 +1306,45 @@ def draw_sheet5():
     ax_w.add_patch(Rectangle((-10, -axle_r), 20, 2 * axle_r,
                    fc="#D0D0D8", ec="none", zorder=5))
 
-    # ── Saddle clamps (one per side, on axle protrusions outside wheel) ──
-    sc_t = 1.5
-    sc_gap = 0.5
-    sc_hw = 2.5
-    sc_bar_top = -axle_r - sc_gap
-    sc_bar_bot = sc_bar_top - sc_t
-    clamp_cx_r = 13.5
-    clamp_cx_l = -13.5
+    # ── Axle-retention saddle clamps (conduit-style: a curved SS strap cradles
+    #    UNDER the Ø10 axle and bolts down through the plate via a foot each side
+    #    — one clamp flanking each face of the wheel). A curved cradle, NOT a
+    #    flat U-clamp bar; matches Sheet 2 + the 3D "Axle Saddle". ──
+    C_BOLT_FILL = "#D0D0D8"
+    washer_t, bolt_head_h, nut_h = 1.5, 3, 3
+    plate_top_y = plate_bot_y + plate_h
+    sad_t  = 1.5                              # SS strap thickness
+    sad_ri = axle_r                           # cradle hugs the Ø10 axle
+    sad_ro = sad_ri + sad_t                   # cradle outer radius (6.5)
+    foot_len = 5
+    clamp_cx_r, clamp_cx_l = 14, -14
+    bolt_head_top = plate_top_y + washer_t + bolt_head_h
+    nut_bot = plate_bot_y - sad_t - nut_h
 
     for cx in [clamp_cx_r, clamp_cx_l]:
-        xl = cx - sc_hw
-        xr = cx + sc_hw
-        # Bottom bar (under axle)
-        ax_w.add_patch(Rectangle((xl, sc_bar_bot),
-                       2 * sc_hw, sc_t,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
-        # Left leg
-        ax_w.add_patch(Rectangle((xl, sc_bar_top),
-                       sc_t, plate_bot_y - sc_bar_top,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
-        # Right leg
-        ax_w.add_patch(Rectangle((xr - sc_t, sc_bar_top),
-                       sc_t, plate_bot_y - sc_bar_top,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.8, zorder=6))
-
-    # ── M5 through-bolts (one per clamp, outside wheel) ──────────────────
-    C_BOLT_FILL = "#D0D0D8"
-    washer_t = 1.5
-    bolt_head_h = 3
-    nut_h = 3
-    plate_top_y = plate_bot_y + plate_h
-
-    for bolt_cx in [clamp_cx_r, clamp_cx_l]:
-        # Bolt head (top)
-        ax_w.add_patch(Rectangle((bolt_cx - 3, plate_top_y + washer_t),
-                       6, bolt_head_h,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
-        # Washer under bolt head
-        ax_w.add_patch(Rectangle((bolt_cx - 3.5, plate_top_y),
-                       7, washer_t,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
-        # Shaft (through plate + clamp leg)
-        shaft_bot = sc_bar_bot
-        ax_w.add_patch(Rectangle((bolt_cx - 1.5, shaft_bot),
-                       3, plate_top_y - shaft_bot,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))
-        # Washer above nut
-        ax_w.add_patch(Rectangle((bolt_cx - 3.5, shaft_bot - washer_t),
-                       7, washer_t,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
-        # Nut (bottom)
-        ax_w.add_patch(Rectangle((bolt_cx - 3, shaft_bot - washer_t - nut_h),
-                       6, nut_h,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
+        # curved cradle wrapping under the axle (drawn behind the Ø10 pin, which
+        # nests into it)
+        ax_w.add_patch(Wedge((cx, 0), sad_ro, 180, 360, width=sad_t,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
+        for sgn in (-1, 1):
+            ex = cx + sgn * sad_ro                       # strap at the cradle end
+            bx = ex                                       # bolt down through the foot
+            # strap rising from the cradle to the plate underside
+            ax_w.add_patch(Rectangle((ex - sad_t / 2, 0), sad_t, plate_bot_y,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
+            # flat foot against the plate underside
+            ax_w.add_patch(Rectangle((ex - (foot_len + sad_t) / 2, plate_bot_y - sad_t),
+                           foot_len + sad_t, sad_t,
+                           fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
+            # M5 SS bolt: shaft through foot + plate, head + washer on top, nut below
+            ax_w.add_patch(Rectangle((bx - 1.5, nut_bot), 3, bolt_head_top - nut_bot,
+                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))
+            ax_w.add_patch(Rectangle((bx - 3, plate_top_y + washer_t), 6, bolt_head_h,
+                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
+            ax_w.add_patch(Rectangle((bx - 3.5, plate_top_y), 7, washer_t,
+                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
+            ax_w.add_patch(Rectangle((bx - 3, nut_bot), 6, nut_h,
+                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
 
     _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
 
@@ -1371,37 +1357,33 @@ def draw_sheet5():
               style="italic", bbox=_bbox_w, **FONT, zorder=15)
 
     # ── Labels ───────────────────────────────────────────────────────────
-    bolt_head_top = plate_top_y + washer_t + bolt_head_h
-    nut_bot = sc_bar_bot - washer_t - nut_h
+    r_outer_bx = clamp_cx_r + sad_ro
+    l_outer_bx = clamp_cx_l - sad_ro
+    l_inner_ex = clamp_cx_l + sad_ro
 
-    # Right side labels
-    leader(ax_w, clamp_cx_r, bolt_head_top, w_xr - 10, 24,
-           "M5 SS BOLT\nHEAD",
+    # Right side
+    leader(ax_w, r_outer_bx, bolt_head_top, w_xr - 5, 30,
+           "M5 SS BOLT (×2/CLAMP)\nHEAD + FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
     leader(ax_w, 11, plate_bot_y + plate_h / 2, w_xr - 22, 28,
            "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, w_xr - 10, 0, w_xr - 8, 5,
+    leader(ax_w, -3, 1, -13, 29,
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_r, sc_bar_bot, w_xr - 8, -9,
-           "SADDLE CLAMP\nBAR (UNDER AXLE)",
+    leader(ax_w, clamp_cx_r, -sad_ro, w_xr - 6, -10,
+           "SADDLE CLAMP CRADLE\n(WRAPS UNDER AXLE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # Left side labels
-    leader(ax_w, clamp_cx_l, plate_top_y + washer_t / 2, w_xl + 10, 28,
-           "FLAT WASHER",
-           fs=5, color="#808088", font=FONT, zorder=20)
-
-    leader(ax_w, clamp_cx_l - sc_hw + 0.5, (sc_bar_top + plate_bot_y) / 2,
-           w_xl + 5, 8,
-           "SADDLE CLAMP\nLEG (2mm SS)",
+    # Left side
+    leader(ax_w, l_inner_ex, plate_bot_y / 2, w_xl + 5, 10,
+           "SADDLE CLAMP STRAP\n(1.5mm SS)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_l, nut_bot + nut_h / 2, w_xl + 5, -14,
+    leader(ax_w, l_outer_bx, nut_bot + nut_h / 2, w_xl + 5, -14,
            "M5 NYLOC NUT\n+ FLAT WASHER",
            fs=5, color="#808088", font=FONT, zorder=20)
 
@@ -1430,7 +1412,7 @@ def draw_sheet5():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 6 — Detail D: Wheel Attachment Plan
-# X-Yd looking down.  Beam, carriage plate, beam U-clamp, axle U-clamps, wheels.
+# X-Yd looking down.  Beam, carriage plate, beam clamp plates, axle saddle clamps, wheels.
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet6():

@@ -1367,7 +1367,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Drain-riser spine (ply)"
   face = grp.entities.add_face([5240.mm,1223.mm,200.mm], [5420.mm,1223.mm,200.mm], [5420.mm,1241.mm,200.mm], [5240.mm,1241.mm,200.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2060.mm)
+  face.pushpull(2020.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
   mat.alpha = 1.0
@@ -1378,9 +1378,31 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Drain-riser spine flange (ply)"
   face = grp.entities.add_face([5402.mm,1226.mm,200.mm], [5420.mm,1226.mm,200.mm], [5420.mm,1280.mm,200.mm], [5402.mm,1280.mm,200.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2060.mm)
+  face.pushpull(2020.mm)
   mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
   mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drain-riser spine top shelf (ply)
+  grp = ents.add_group
+  grp.name = "Drain-riser spine top shelf (ply)"
+  face = grp.entities.add_face([5240.mm,1160.mm,2220.mm], [5460.mm,1160.mm,2220.mm], [5460.mm,1241.mm,2220.mm], [5240.mm,1241.mm,2220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Equipment Panel (ply)"] || model.materials.add("Equipment Panel (ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue fill pipe clamp
+  grp = ents.add_group
+  grp.name = "Blue fill pipe clamp"
+  face = grp.entities.add_face([5420.mm,1165.mm,2238.mm], [5456.mm,1165.mm,2238.mm], [5456.mm,1197.mm,2238.mm], [5420.mm,1197.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Rack Upright"] || model.materials.add("Rack Upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 

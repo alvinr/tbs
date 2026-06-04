@@ -217,8 +217,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [¾" SDR-11 HDPE pipe](https://www.ferguson.com) | Spray bar run, 20ft sticks | 2 sticks | Ferguson | $9–$14/stick | $20–$30 |
 | [½" ID reinforced braided PVC hose](https://www.amazon.com/s?k=1%2F2+inch+reinforced+braided+PVC+hose+6+ft) | Pump inlet flexible connection, 6ft per pump | 2 lengths | Amazon | $8–$12/length | $20 |
 | [1" polypropylene camlock (Type E)](https://www.amazon.com/s?k=1+inch+polypropylene+camlock+type+E) | Quick-disconnect at IBC and pipe stubs | 4 pairs | Amazon | $5–$8/pair | $20–$32 |
-| [18mm marine plywood offcut (~0.4 m²)](https://www.homedepot.com/b/Lumber-Composites-Plywood-Marine-Plywood/N-5yc1vZc6ad) | Drain-riser backing spine — teed off the equipment panel, full panel height; mounts the X3/X4 risers in the corridor | 1 | Home Depot / local lumber | $12–$20 | $12–$20 |
-| [SS 2-hole pipe straps / cushioned P-clips, ½"–¾"](https://www.mcmaster.com/products/pipe-clamps/) | Clamp the X3/X4 drain risers to the spine at ~400mm centers (+ SS screws) | 10 | McMaster-Carr | $1–$2 each | $12–$22 |
+| [18mm marine plywood offcut (~0.4 m²)](https://www.homedepot.com/b/Lumber-Composites-Plywood-Marine-Plywood/N-5yc1vZc6ad) | Drain-riser backing spine + capped top shelf — teed off the equipment panel; mounts the X3/X4 risers and supports the Blue fill trunk in the corridor | 1 | Home Depot / local lumber | $12–$20 | $12–$20 |
+| [SS 2-hole pipe straps / cushioned P-clips, ½"–¾"](https://www.mcmaster.com/products/pipe-clamps/) | Clamp the X3/X4 drain risers (~400mm centers) + the Blue fill trunk on the top shelf (+ SS screws) | 11 | McMaster-Carr | $1–$2 each | $12–$22 |
 **Valves, fittings & pipe subtotal: ~$526–$857**
 
 ### Processing tray

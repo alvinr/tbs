@@ -24,3 +24,6 @@ models/*.dae
 
 # SketchUp auto-save backups (e.g. overview~.skp) — never commit
 *~.skp
+
+# Brainstorming visual-companion scratch dir
+.superpowers/

@@ -693,8 +693,8 @@ def draw_sheet2():
     ax2.text(drain_x + 0.45, drain_y - 0.1, "SUMP WELL\nP-04 PICKUP", ha="center",
              fontsize=6, color="#388E3C")
 
-    # Left end zone shading (X=0–625mm — light trap only, drums removed rev 5)
-    ZONE_L_DX = ZONE_L_END * SX   # = 625mm → ≈ 1.27
+    # Left end zone shading (X=0–150mm — light trap only, drums removed rev 5)
+    ZONE_L_DX = ZONE_L_END * SX   # = 150mm
     ax2.add_patch(plt.Rectangle((0, 0), ZONE_L_DX, CH,
                   fc="#FFF3E0", ec="none", alpha=0.45, zorder=0))
     ax2.plot([ZONE_L_DX, ZONE_L_DX], [0, CH], color="#805000", lw=1.5, ls="--",
@@ -1598,7 +1598,7 @@ def draw_sheet4():
     SUMP_X = PROC_TRAY_DRAIN_X   # 4550mm
     TRAY_X_R = PROC_TRAY_X_R     # 4629mm
     IBC_X = IBC_COL_X             # 4674mm
-    EP_X = EQPANEL_X              # 5000mm — equipment panel face X
+    EP_X = EQPANEL_X              # 5240mm — equipment panel face X
     EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
 
     X_VIEW_L = 4350
@@ -1662,13 +1662,13 @@ def draw_sheet4():
                   tube_r_c, tube_wall_c,
                   fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
 
-    # ── Equipment panel (spans corridor at X=5000, perpendicular to sealed end) ──
+    # ── Equipment panel (spans corridor at X=5240, perpendicular to sealed end) ──
     ax4c.add_patch(plt.Rectangle(
         (pc_x(EP_X), pc_yd(CORRIDOR_YD_NEAR - 9)),
         EQPANEL_T / SC_C, 270 / SC_C,
         fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
     ax4c.text(pc_x(EP_X + EQPANEL_T / 2), pc_yd(CORRIDOR_YD_NEAR - 65),
-              "EQUIPMENT PANEL (X=5000)",
+              "EQUIPMENT PANEL (X=5240)",
               ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
               style="italic", zorder=4)
 

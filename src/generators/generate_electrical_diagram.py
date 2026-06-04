@@ -566,7 +566,7 @@ def draw_sheet2():
             ax.text(ex+ew/2, cy_e - 60, sublabel,
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
-    # LEFT END ZONE (X=0–625mm) — light trap drum only (waste drums eliminated rev 5)
+    # LEFT END ZONE (X=0–150mm) — light trap drum only (waste drums eliminated rev 5)
     # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
     from tbs_constants import C_LT_DRUM
     equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,

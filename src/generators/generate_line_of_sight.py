@@ -75,7 +75,7 @@ FS_LG = 10.0
 # zone: "left", "wall", "right" — used to assign expected clearance status
 
 EQUIPMENT = [
-    # LEFT END ZONE — X=0–625mm (shadow-free at all depths)
+    # LEFT END ZONE — X=0–150mm (shadow-free at all depths)
     dict(name="Light trap drum",
          x=DRUM_CX - DRUM_R, yd=C_WID//2 - DRUM_R, w=DRUM_D, d=DRUM_D,  # centred at Yd=CW/2=1181mm
          h_bot=0, h_top=DRUM_H_LT,

@@ -150,7 +150,7 @@ corrugation_marks(ax, C_HGT, 0, C_LEN, step=600)
 # Hinged panel — stepped profile (rev 4): 40mm corner zones, 120mm center zone.
 # In this side elevation (X-H plane), the stepped depth is visible.
 # Corner zones (majority of panel width) shown at 40mm depth inside X=0.
-# Center zone (drum housing, Yd=756-1606) shown at 120mm depth.
+# Center zone (drum housing, Yd=653-1709) shown at 120mm depth.
 # Container wall (40mm steel) drawn outside at X=-40 to 0.
 ax.add_patch(mpatches.Rectangle((-40, 0), 40, C_HGT,
              facecolor=C_HINGE_PANEL, edgecolor=C_OUT, linewidth=0.8, alpha=0.5, zorder=4))
@@ -192,13 +192,13 @@ leader(ax, EVAP_DUCT_X + duct_r, EVAP_DUCT_Z + duct_r, 1300, 2500,
 
 # ── PINHOLE WALL EQUIPMENT — flush-mount on near long wall (Yd=0 face) ────────
 
-# Electrical panel: X=2050-2350, H=900-1500
+# Electrical panel: X=1600-1900, H=900-1500
 equip_rect(ax, EP_X, EP_H_LO, EP_W, EP_H_HI - EP_H_LO, C_ELEC, ec=C_OUT, lw=1.0, zorder=4)
 ax.text(EP_X + EP_W/2, (EP_H_LO + EP_H_HI)/2,
         "Elec\npanel", ha="center", va="center",
         fontsize=FS_SM - 1, color=C_OUT, zorder=6)
 
-# Battery bank: X=2050-2550, H=100-600
+# Battery bank: X=1810-2310, H=100-600
 equip_rect(ax, BA_X, BA_H_LO, BA_W, BA_H_HI - BA_H_LO, C_BATT, zorder=4)
 ax.text(BA_X + BA_W/2, (BA_H_LO + BA_H_HI)/2,
         "Battery\nbank", ha="center", va="center",
@@ -630,7 +630,7 @@ for xw, yw, ww, hw, col, lbl in [
             alpha=0.6, zorder=3)
 
 # ── Processing tray (304 SS, optical zone floor) ─────────────────────────────
-TRAY_X0 = RAIL_X_L + 20     # 645mm
+TRAY_X0 = RAIL_X_L + 20     # 170mm
 TRAY_X1 = RAIL_X_R - 20     # 4629mm
 TRAY_H  = 50                # 50mm rim height
 ax2.add_patch(mpatches.FancyBboxPatch(
@@ -820,7 +820,7 @@ def draw_container_walls(ax):
     # Container interior floor area
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, PLAN_X_MAX,
                  facecolor=C_INTERIOR, edgecolor="none", alpha=0.5, zorder=0))
-    # Film plane floor rail at X=RAIL_X_L (= ZONE_L_END = 625mm)
+    # Film plane floor rail at X=RAIL_X_L (= ZONE_L_END = 150mm)
     ax.add_patch(mpatches.Rectangle((0, RAIL_X_L - 10), C_WID, 20,
                  facecolor=C_RAIL3, edgecolor=C_OUT, linewidth=0.5,
                  alpha=0.5, zorder=4))
@@ -1018,7 +1018,7 @@ draw_dim_v(ax_op, LT_DRUM_YD_CENTER, OP_PANEL_X,
            offset=60, fs=FS_SM - 1, right=True)
 
 # Cam latch indicators (4x, interior face) — label to the left with leader lines
-latch_yds = [200, 756, 1606, C_WID - 200]
+latch_yds = [200, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, C_WID - 200]
 latch_label_x = -CONT_WALL - DOOR_T - 250  # below the door closure plane
 latch_label_yd = -120  # left of container wall
 for yd in latch_yds:

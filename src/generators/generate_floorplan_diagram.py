@@ -259,7 +259,7 @@ def floor_plan():
     TR_X = PANEL_SLIDE  # = 300mm
     GHOST_LS = (0, (6, 4))
     GHOST_A  = 0.35
-    # Corner zones (Yd=0-756 and Yd=1606-2362)
+    # Corner zones (Yd=0-653 and Yd=1709-2362)
     ax.add_patch(Rectangle((TR_X, 0), PANEL_CORNER_T, PANEL_CORNER_YD_L,
                             fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
                             zorder=4, alpha=GHOST_A))
@@ -267,7 +267,7 @@ def floor_plan():
                             C_WID - PANEL_CORNER_YD_R,
                             fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
                             zorder=4, alpha=GHOST_A))
-    # Center zone (Yd=756-1606)
+    # Center zone (Yd=653-1709)
     ax.add_patch(Rectangle((TR_X, PANEL_CORNER_YD_L), PANEL_CENTER_T,
                             PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
                             fc="none", ec=C_DIM, lw=1.0, ls=GHOST_LS,
@@ -663,17 +663,17 @@ def egress_detail():
     # looking down, from +Yd toward -X), ends up at (X=-r, Yd=0).
 
     # Open panel — lies along Yd=0 in exterior space (X=0 to X=-C_WID)
-    # Corner zone near (was Yd=0–756) → now X=0 to X=-756, Yd=0 to Yd=-40
+    # Corner zone near (Yd 0–653) → swung to X=0 to X=-653, Yd=0 to Yd=-40
     ax.add_patch(Rectangle((-PANEL_CORNER_YD_L, -PANEL_CORNER_T),
                             PANEL_CORNER_YD_L, PANEL_CORNER_T,
                             fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,
                             alpha=0.6, zorder=5))
-    # Center zone (was Yd=756–1606) → X=-756 to X=-1606, Yd=0 to Yd=-120
+    # Center zone (Yd 653–1709) → X=-653 to X=-1709, Yd=0 to Yd=-120
     ax.add_patch(Rectangle((-PANEL_CORNER_YD_R, -PANEL_CENTER_T),
                             PANEL_CENTER_W, PANEL_CENTER_T,
                             fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,
                             alpha=0.6, zorder=5))
-    # Far corner zone (was Yd=1606–2362) → X=-1606 to X=-2362, Yd=0 to Yd=-40
+    # Far corner zone (Yd 1709–2362) → X=-1709 to X=-2362, Yd=0 to Yd=-40
     ax.add_patch(Rectangle((-C_WID, -PANEL_CORNER_T),
                             C_WID - PANEL_CORNER_YD_R, PANEL_CORNER_T,
                             fc="#E0D0C0", ec=C_PINHOLE, lw=1.5,

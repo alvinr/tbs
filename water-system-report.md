@@ -281,8 +281,8 @@ IBCs are arranged in a **2x2 stack** in the right end zone at X=4674mm, right-ju
 | Right end zone | IBC-4 Waste (bottom, far column) | 4,674–5,893 | 1,316–2,332 | 0–1,010 |
 | Pinhole wall face | Pump manifold (P-01, P-02, P-04) | 2,400–2,700 | Y=0 | 200–600 |
 | IBC plumbing corridor | P-03 waste pump (on X4 drain run) | 4,674–5,893 | 1,046–1,316 | ~200 |
-| Optical zone floor | Processing tray (2 panels) | 645–4,629 | 60–2,300 | 0–50 |
-| Optical zone | No equipment | 625–4,649 | — | — |
+| Optical zone floor | Processing tray (2 panels) | 170–4,629 | 60–2,300 | 0–50 |
+| Optical zone | No equipment | 150–4,649 | — | — |
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 

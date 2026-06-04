@@ -183,8 +183,9 @@ no exit. **Transit:** both housing openings covered → fully sealed. **Exit:**
 exterior covered → no daylight enters.
 
 **Access.** With no internal fins, the whole **~Ø850mm bore** is clear standing
-space and the 80° opening gives a **~625mm passage** — meeting the §2 requirement
-(≥700mm clear passage diameter; the bore is Ø850). Emergency egress remains the
+space and the 80° opening gives a **~555mm passage** (sideways entry). The Ø850 bore
+meets the §2 standing-space intent; the opening itself is tighter than the nominal
+≥700mm and was accepted (rev 8) for occasional single-operator field use. Emergency egress remains the
 whole panel swinging open.
 
 See **Sheet 5** of the hinged-panel drawings (enter / transit / exit verification)
@@ -201,7 +202,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 
 | | Vario LT-800 | Porta-Fab DK | **Custom (recommended)** |
 |---|---|---|---|
-| Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~625mm passage** |
+| Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2000–2200mm | 2000mm | **2200mm** |
 | Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **$1,785–$2,460** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |

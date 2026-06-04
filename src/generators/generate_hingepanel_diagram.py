@@ -637,7 +637,7 @@ def sheet2():
                 arrowprops=dict(arrowstyle="-|>", color="#D08000", lw=1.8), zorder=12)
     ax.plot([D_CX], [D_CY + LT_DRUM_OR], marker="x", ms=10, mew=2.4,
             color="#2E8B57", zorder=13)
-    ax.text(D_CX, D_CY, f"Ø{int(2 * BORE_R)}\nbore\n~625mm\npassage", color=C_DIM,
+    ax.text(D_CX, D_CY, f"Ø{int(2 * BORE_R)}\nbore\n~555mm\npassage", color=C_DIM,
             fontsize=6.2, ha="center", va="center", **FONT, zorder=15)
 
     # Opening labels + component leaders
@@ -1635,7 +1635,7 @@ def sheet5():
     for i, line in enumerate([
         "• The four radial fins are GONE — the drum is a single-opening",
         "  C-shell, so the whole ~Ø850 bore is clear standing space.",
-        f"• Passage ≈ 625mm (the {OD}° opening on the Ø900 housing); a single",
+        f"• Passage ≈ 555mm (the {OD}° opening on the Ø900 housing); a single",
         "  operator (~520 × 330mm in plan) enters and turns inside.",
         "• Emergency egress is still the whole panel swinging open.",
     ]):

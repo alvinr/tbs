@@ -166,13 +166,14 @@ PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
 # 4-fin drum. See light-trap-selection.md / hinged-panel-report.md §3.
 DRUM_CX    = 0       # light-lock center X (mm) [unchanged]
 DRUM_D     = 900     # fixed housing OUTER diameter (mm) [rev8: was Ø750 drum]
-                     # TODO REVISIT: passage comfort (~625mm) vs exterior overhang/transport
+                     # rev8: reviewed & KEPT — ~555mm passage (sideways entry), accepted
+                     # for occasional single-operator field use; larger Ø deferred
 DRUM_R     = DRUM_D // 2                      # 450 — housing radius (visible footprint)
 DRUM_H_LT  = 2200    # light-lock height (mm) — 330mm headroom at 1780mm operator
 LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 3        # housing wall (mm)
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
-LT_DRUM_T      = 3        # drum wall (mm) → ~Ø850 bore, ~625mm passage
+LT_DRUM_T      = 3        # drum wall (mm) → ~Ø850 bore, ~555mm passage
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────

@@ -171,6 +171,8 @@ All items ship within the United States. Local Southern California pickup noted 
 
 Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews; the left-rail segment that swings clear for drum mode is retained with quick-release ball-lock pins.
 
+**Transport vs drum mode.** In *drum mode* (operational), only the **centre segment of the left rail (Yd 731–1631)** is demounted so the light lock can rotate. For *transport*, the hinged panel slides ~550mm inward and sweeps through X=150, so the **entire film-plane left rail, the brace cage, and the muslin screen are struck first** — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence. (The left rail is therefore fully removable, not just its centre segment.)
+
 | Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
 |------|-------|------|-----|---------|---------|-----------|
 | Mild steel RHS square tube | ICP-11 | 50×50×3mm, cut to length — 4 verticals @ 2188mm + 4 cross-beams @ 4499mm = 26.75 m net; order ~30 m to allow saw kerf + saddle-seat cuts | 30 m | [Metal Supermarkets SoCal](https://www.metalsupermarkets.com/product/mild-steel-square-tube-structural-welded/) | [Online Metals — 50mm×3mm sq. tube](https://www.onlinemetals.com/en/buy/carbon-steel/50mm-x-3mm-carbon-steel-square-tube-1018-metric-60-length/pid/22489) | ~$7/ft (~$23/m) est. |

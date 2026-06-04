@@ -263,6 +263,31 @@ by the lower cam latches. Because the seal is a non-floor compression seal again
 frame lip (not a contact seal to the floor), it never fouls the tray rim and lifts
 clear the moment the clamps are released for transport.
 
+### 5.4 Transport Conversion Sequence
+
+The inward slide carries the panel to **X 550–670**, so it sweeps through **X=150**,
+where the film-plane mechanism's left edge sits. The film-plane left rail (running in
+Yd at X=150, floor + ceiling), the lengthwise brace-cage beams (X 150→4649 at Yd≈100
+and Yd≈2262), and the muslin screen are all in the slide path — and the operational
+**drum-zone demountable rail segment (Yd 731–1631) clears only the housing**, not the
+panel corners. **The film plane must therefore be struck before the panel is slid.**
+This is required regardless: the fragile muslin screen cannot travel mounted.
+
+Order of operations (single person, ~10 min):
+
+1. Remove the muslin screen from its frame and stow it (rolled).
+2. Knock down the brace cage (saddle/thumbscrew portals — it is a demountable box).
+3. **Remove the full film-plane left rail** (both floor and ceiling segments — the
+   operational drum-zone segment is extended to a fully removable left rail for
+   transport). Park the film-plane carriage clear.
+4. Lift out the left walkway.
+5. Release the four cam latches and the two operational toggle clamps.
+6. Slide the panel inward ~550mm; engage the transport toggle clamps.
+7. Close the ISO cargo doors.
+
+Re-deployment reverses the sequence. (This is *not* a regression from rev 8 — the
+panel always slid past X=150; rev 8 only deepened the slide from 300 to 550mm.)
+
 ---
 
 ## 6. Light Seal Design

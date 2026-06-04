@@ -265,6 +265,9 @@ clear the moment the clamps are released for transport.
 
 ### 5.4 Transport Conversion Sequence
 
+**Sheet 6 — Transport-slide clearance vs the film-plane left mechanism (plan)**
+![TBS-001 Hinged Panel — Sheet 6: Transport Clearance](assets/hingepanel-sheet6.png)
+
 The inward slide carries the panel to **X 550–670**, so it sweeps through **X=150**,
 where the film-plane mechanism's left edge sits. The film-plane left rail (running in
 Yd at X=150, floor + ceiling), the lengthwise brace-cage beams (X 150→4649 at Yd≈100

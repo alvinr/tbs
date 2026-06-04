@@ -21,3 +21,6 @@ logo-final.png
 # Sketchfab: .dae export artifact (regenerated on each push) + stale marker
 models/*.dae
 .sketchfab-pushed
+
+# SketchUp auto-save backups (e.g. overview~.skp) — never commit
+*~.skp

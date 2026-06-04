@@ -457,7 +457,7 @@ def floor_plan():
 
     # ── Film left-rail demountable segment (drum-mode clearance) ─────────────
     # The LEFT RAIL (X=RAIL_X_L=150mm) passes through the drum volume.
-    # The segment spanning Yd=806–1556 is DEMOUNTABLE so the drum can rotate
+    # The segment spanning Yd=731–1631 is DEMOUNTABLE so the drum can rotate
     # ("drum mode"); carriage parks at Yd=2262 during drum mode.
     # Show this segment as a dashed orange overlay on the rail line.
     ax.plot([RAIL_X_L, RAIL_X_L],
@@ -562,7 +562,7 @@ def egress_detail():
     the exterior space (X<0).
 
     Physical constraints that prevent inward opening:
-      • Light trap drum (750mm dia) would cross container wall
+      • Light trap drum (900mm dia) would cross container wall
       • Film plane rails at X=150 (floor + ceiling) block swing path
 
     Egress: with drums eliminated (rev 5), the full container width

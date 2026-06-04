@@ -17,7 +17,7 @@ Generates two-sheet assembly fabrication drawing for TBS-001
     (panel interior / mounting face). Pinhole wall at left (Yd=0), film-plane
     wall at right (Yd=2362).
     Horizontal = container width CW 0–2362mm,  vertical = height H 0–2388mm.
-    Drum Ø750mm appears as a rectangle centred at CW/2.
+    Drum Ø900mm appears as a rectangle centred at CW/2.
 
 ASPECT RATIO RULE: figsize always derived from data limits.
                    ax.set_aspect("equal") always set.
@@ -382,7 +382,7 @@ def sheet2():
       Vertical   = container height H = 2388mm
       Depth (into page) = container length X = 5893mm
 
-    Drum Ø750mm: vertical axis, centred at CW/2=1181mm, appears as rectangle.
+    Drum Ø900mm: vertical axis, centred at CW/2=1181mm, appears as rectangle.
     Equipment at depth in background (dashed outlines).
     """
     X_LO2, X_HI2 = -500, 3100
@@ -432,9 +432,9 @@ def sheet2():
 
     # ── Revolving drum (vertical axis, centred at CW/2) ───────────────────────
     # In this end elevation: horizontal axis = Y (container width = optical depth).
-    # Drum centred at CW/2=1181mm; vertical axis drum Ø750mm appears as rectangle.
-    DRUM_LEFT  = DRUM_CY - DRUM_R   # = 1181 - 375 = 806mm
-    DRUM_RIGHT = DRUM_CY + DRUM_R   # = 1181 + 375 = 1556mm
+    # Drum centred at CW/2=1181mm; vertical axis drum Ø900mm appears as rectangle.
+    DRUM_LEFT  = DRUM_CY - DRUM_R   # = 1181 - 450 = 731mm
+    DRUM_RIGHT = DRUM_CY + DRUM_R   # = 1181 + 450 = 1631mm
 
     equip_blk(ax, DRUM_LEFT, RAIL_OFF, DRUM_D, DRUM_H_ELV,
               C_LT_DRUM, ec=C_OUT, lw=1.2, alpha=0.80, zorder=6)

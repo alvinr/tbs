@@ -902,12 +902,12 @@ def draw_sheet2():
         "DRAWING NOTES:",
         f"1. Pinhole at X={TBS_PH_X}mm on bottom long wall (recentered on new film plane). "
         f"Film plane X={FP_X_L}\u2013{FP_X_R}mm ({FP_X_R-FP_X_L}mm wide) at Yd=2262mm. f/1088.",
-        f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap + 55-gal drums \u00d72), ",
+        f"2. Shadow-free end zones: Left X=0\u2013{FP_X_L}mm (light trap), ",
         f"Right X={FP_X_R}\u20135893mm (IBCs only). Evap cooler external via "
         f"\u00d8{EVAP_DUCT_D}mm duct at X={EVAP_DUCT_X}mm. Amber cone \u2014 keep entirely clear.",
         "3. Cable trunking (40\u00d725mm PVC) on pinhole wall face (Yd=0) \u2014 outside "
         "optical cone. Drop conduits (10mm corrugated) to each device.",
-        "4. Light trap (revolving drum, \u00d8750mm vertical axis) in left end zone \u2014 "
+        "4. Light trap (housed revolving door, \u00d8900mm vertical axis) in left end zone \u2014 "
         "integral to cargo-door hinged panel. See Hinged Panel drawings (\u00a712).",
         "5. Circuit G (white LED panels) and Circuit D (safelight) are independently switched ",
         "via pull-cord ceiling switches on the pinhole wall. White light must be off during operation.",

@@ -303,7 +303,7 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 ## 9. Egress Safety Assessment
 
 When the hinged panel is opened 180° from the inside, the light trap drum (mounted
-in the panel center zone, Yd=806–1556mm) swings outward with the panel. With the
+in the panel center zone, Yd=731–1631mm) swings outward with the panel. With the
 waste drums eliminated (rev 5), the entire left end zone floor is clear.
 
 ### 9.1 Egress Gap
@@ -339,7 +339,7 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 | Pump manifold | X=2,600–2,900 | No — 1980mm inboard |
 | Water lines | Pinhole wall (Yd=0), X=2,400+ | No — far inboard |
 
-The light trap drum (750mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.
+The light trap drum (900mm dia, center ~1181mm from hinge axis) sweeps through exterior space during 180° rotation. With waste drums eliminated, no interior equipment exists in the left end zone floor area.
 
 **Conclusion:** No components obstruct egress. The left end zone is entirely clear at floor level, providing unobstructed single-person egress and full swing clearance at the cargo door end.
 

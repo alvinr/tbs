@@ -42,12 +42,14 @@ from tbs_constants import (
     WALKWAY_RIGHT_W, WALKWAY_RIGHT_BEARER_SIZE, WALKWAY_RIGHT_BEARER_T,
     WALKWAY_RIGHT_HANGER_D, WALKWAY_RIGHT_HANGER_N, WALKWAY_RIGHT_HANGER_L,
     WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
+    WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T, LEFT_WK_LEG_N,
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
-    PANEL_CORNER_T, PANEL_CENTER_T,
+    PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PANEL_SLIDE,
     DRUM_D, DRUM_R, DRUM_H_LT,
+    LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     FAN_DIAM, FAN_A_YD, FAN_B_YD,
     C_OUT, C_DIM, C_STEEL, C_ALUM,
     C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC,
@@ -118,46 +120,55 @@ class Component:
 # ═══════════════════════════════════════════════════════════════════════════
 
 def _panel_weight():
-    """Hinged panel: stepped sandwich construction.
+    """Hinged panel: stepped sandwich construction (rev 8 geometry).
     Corner zones (2×): 18mm ply + 4mm steel + 18mm ply = 40mm thick.
-    Center zone: 50×50mm RHS frame + 18mm ply skins = 120mm thick.
-    Report value: 220-260 kg combined with drum (light-trap-selection.md line 199).
-    Use midpoint 240 kg for panel+drum, then split based on calculation.
+    Center zone: 50×50mm RHS frame + 18mm ply skins, PANEL_CENTER_W wide.
+    First-principles only — no scaling pin (the fixed Ø900 housing is added
+    separately in build_components, since it is welded into the panel center).
     """
     panel_h = C_HGT  # 2388mm
-    # Corner zones
-    corner_w_near = PANEL_CORNER_YD_L  # 756mm
-    corner_w_far = C_WID - PANEL_CORNER_YD_R  # 756mm
-    # Each corner: 2 ply skins + 1 steel plate
-    ply_vol_corner = 2 * (corner_w_near * panel_h * 18e-9)  # m³ per side, 2 sides
-    ply_vol_corner *= 2  # near + far corners
-    steel_vol_corner = 2 * (corner_w_near * panel_h * 4e-9)  # 4mm plate, 2 corners
+    # Corner zones (near + far are symmetric at PANEL_CORNER_YD_L each)
+    corner_w_near = PANEL_CORNER_YD_L              # = 653mm
+    corner_w_far = C_WID - PANEL_CORNER_YD_R       # = 653mm
+    # Each corner: 2 ply skins + 1 steel plate, near + far corners
+    ply_vol_corner = 2 * ((corner_w_near + corner_w_far) * panel_h * 18e-9)
+    steel_vol_corner = (corner_w_near + corner_w_far) * panel_h * 4e-9  # 4mm plate
     corner_ply_kg = ply_vol_corner * RHO_PLY
     corner_steel_kg = steel_vol_corner * RHO_STEEL
     # Center zone: RHS frame perimeter + cross members
-    # 50×50×3mm RHS: ~4.25 kg/m (steel RHS)
-    rhs_kg_per_m = 4 * (50 * 3 - 4 * 3 * 3) * 1e-6 * RHO_STEEL  # ≈ 4.25 kg/m
-    # Perimeter: 2 × (850mm + 2388mm) + ~4 cross members × 850mm
-    center_frame_length = 2 * (0.850 + 2.388) + 4 * 0.850  # ≈ 9.876 m
+    rhs_kg_per_m = 4 * (50 * 3 - 4 * 3 * 3) * 1e-6 * RHO_STEEL
+    cw = PANEL_CENTER_W / 1000.0                   # = 1.056 m
+    center_frame_length = 2 * (cw + 2.388) + 4 * cw
     frame_kg = center_frame_length * rhs_kg_per_m
-    # Center ply skins: 2 × 850 × 2388 × 18mm
-    center_ply_kg = 2 * (0.850 * 2.388 * 0.018) * RHO_PLY
-    panel_kg = corner_ply_kg + corner_steel_kg + frame_kg + center_ply_kg
-    return panel_kg
+    # Center ply skins: 2 × center_w × 2388 × 18mm
+    center_ply_kg = 2 * (cw * 2.388 * 0.018) * RHO_PLY
+    return corner_ply_kg + corner_steel_kg + frame_kg + center_ply_kg
 
 
-def _drum_weight():
-    """Revolving light-trap drum: Ø750mm × 2200mm tall.
-    1.5mm aluminum shell + 3 internal baffles (1.5mm Al) + bearings.
+def _lighttrap_weight():
+    """Housed revolving-door light lock (rev 8): a fixed Ø900 housing plus a
+    single-opening C-shell drum, both 3mm mild steel, NO internal baffles.
+    Suspended at Z=PANEL_FLOOR_GAP so its effective height is shortened.
+    Returns (drum_kg, housing_kg) — drum rotates; housing is welded to panel.
     """
-    # Shell: cylinder surface area × 1.5mm
-    shell_area = np.pi * (DRUM_D / 1000) * (DRUM_H_LT / 1000)  # m²
-    shell_kg = shell_area * 0.0015 * RHO_ALUM
-    # 3 baffles: approximate as flat plates spanning diameter × height
-    baffle_kg = 3 * (DRUM_D / 1000) * (DRUM_H_LT / 1000) * 0.0015 * RHO_ALUM
-    # Bearings + hardware
-    hardware_kg = 8.0
-    return shell_kg + baffle_kg + hardware_kg
+    H = (DRUM_H_LT - PANEL_FLOOR_GAP) / 1000.0     # ≈ 2.12 m tall (suspended)
+    open_frac = LT_OPENING_DEG / 360.0             # 80° opening fraction
+    # Rotating drum: C-shell Ø864 (one 80° opening) + 2 C-shaped end caps
+    t_d = LT_DRUM_T / 1000.0
+    drum_circ = np.pi * (2 * LT_DRUM_OR / 1000.0)
+    drum_shell_kg = drum_circ * (1 - open_frac) * H * t_d * RHO_STEEL
+    cap_area = np.pi * (LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
+    drum_cap_kg = 2 * cap_area * t_d * RHO_STEEL
+    # Stub shafts (Ø75×150) + 2 sealed bearings + grab rail + brush seals
+    shaft_kg = 2 * np.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL
+    drum_hw_kg = shaft_kg + 2 * 1.3 + 4.0
+    drum_kg = drum_shell_kg + drum_cap_kg + drum_hw_kg
+    # Fixed housing: Ø900 cylinder minus two 80° openings (exterior + interior)
+    t_h = LT_HOUSING_T / 1000.0
+    house_circ = np.pi * (2 * LT_HOUSING_R / 1000.0)
+    housing_kg = house_circ * (1 - 2 * open_frac) * H * t_h * RHO_STEEL
+    housing_kg += 6.0   # top + bottom bearing mount/collar plates
+    return drum_kg, housing_kg
 
 
 def _walkway_near_far_weight():
@@ -215,7 +226,14 @@ def _walkway_left_weight():
     leg_kg = LEFT_WK_LEG_N * leg_area * 0.075 * RHO_ALUM
     # Bearing strip: 25×25×3mm Al angle, ~2362mm
     strip_kg = (2 * 25 * 3 - 3 * 3) * 1e-6 * (C_WID / 1000) * RHO_ALUM
-    return grate_kg + bearer_kg + leg_kg + strip_kg
+    # Drum-exit punch-out (rev 8): deepens 300→600mm over Yd 800–1560.
+    # Extra grating + 1 extra cross bearer spanning the deeper zone + 1 leg.
+    punch_len = (WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L) / 1000.0
+    extra_grate_kg = ((WALKWAY_LEFT_WIDE_W - WALKWAY_W) / 1000.0) * punch_len * GRATING_KG_PER_M2
+    extra_bearer_kg = bearer_perim_area * punch_len * RHO_ALUM
+    extra_leg_kg = 1 * leg_area * 0.075 * RHO_ALUM
+    return (grate_kg + bearer_kg + leg_kg + strip_kg
+            + extra_grate_kg + extra_bearer_kg + extra_leg_kg)
 
 
 def _film_plane_carriage_weight():
@@ -278,16 +296,11 @@ def _ibc_stacking_frame_weight():
 def build_components():
     """Build the complete component list with calculated weights."""
 
-    panel_kg = _panel_weight()
-    drum_kg = _drum_weight()
-    panel_drum_total = panel_kg + drum_kg
-    # Scale to match report range (220-260 kg) if our calculation differs
-    # Use report midpoint as authoritative
-    report_midpoint = 240.0
-    if panel_drum_total > 0:
-        scale = report_midpoint / panel_drum_total
-        panel_kg *= scale
-        drum_kg *= scale
+    # First-principles weights (no scaling pin). The fixed Ø900 housing is
+    # welded into the panel center zone, so its mass is carried by the panel;
+    # only the C-shell drum rotates.
+    drum_kg, housing_kg = _lighttrap_weight()
+    panel_kg = _panel_weight() + housing_kg
 
     near_far_wk = _walkway_near_far_weight()
     right_wk = _walkway_right_weight()
@@ -326,28 +339,28 @@ def build_components():
                   calc_note="ISO door leaf ~140 kg, open against far wall"),
 
         # ── Structure ────────────────────────────────────────────────────
-        # Panel + drum: transport position (slid 300mm inward) for dry/exhausted
+        # Panel + drum: transport position (slid PANEL_SLIDE inward) for dry/exhausted
         Component("Hinged panel", "structure", panel_kg,
                   PANEL_SLIDE, PANEL_SLIDE + 80, 0, C_WID, 0, C_HGT,
                   color=C_HINGE_PANEL,
                   states=("dry", "exhausted"),
-                  calc_note="Stepped sandwich: ply+steel corners, RHS center"),
+                  calc_note="Stepped sandwich: ply+steel corners, RHS center + Ø900 housing"),
         Component("Light trap drum", "structure", drum_kg,
                   PANEL_SLIDE, PANEL_SLIDE + 40,
                   PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
-                  0, DRUM_H_LT, color=C_LT_DRUM,
+                  PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
                   states=("dry", "exhausted"),
-                  calc_note="1.5mm Al shell + 3 baffles + bearings"),
+                  calc_note="3mm steel C-shell drum (Ø864, no baffles) + bearings"),
         # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
                   0, 80, 0, C_WID, 0, C_HGT, color=C_HINGE_PANEL,
                   states=("ready",),
-                  calc_note="Stepped sandwich: ply+steel corners, RHS center"),
+                  calc_note="Stepped sandwich: ply+steel corners, RHS center + Ø900 housing"),
         Component("Light trap drum", "structure", drum_kg,
                   0, 40, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   0, DRUM_H_LT, color=C_LT_DRUM,
                   states=("ready",),
-                  calc_note="1.5mm Al shell + 3 baffles + bearings"),
+                  calc_note="3mm steel C-shell drum (Ø864, no baffles) + bearings"),
         Component("Processing tray", "structure", 116.0,
                   PROC_TRAY_X_L, PROC_TRAY_X_R,
                   PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR,
@@ -368,7 +381,7 @@ def build_components():
         Component("Left walkway", "structure", left_wk,
                   WALKWAY_LEFT_X, WALKWAY_LEFT_X + WALKWAY_W,
                   0, C_WID, 0, WALKWAY_H, color="#80C080",
-                  calc_note="Removable lift-out: grating + bearer + legs"),
+                  calc_note="Removable lift-out: grating + bearer + legs + drum-exit punch-out"),
         Component("Ceiling rails", "structure", _ceiling_rail_weight(),
                   0, C_LEN, 30, C_WID - 30,
                   C_HGT - 30, C_HGT, color=C_ALUM,
@@ -753,7 +766,7 @@ def _draw_state_diagram(ax, components, state, state_label):
     for c in panel:
         _draw_component(ax, c, alpha=0.5, show_label=False)
     for c in drum:
-        # Draw drum as circle (plan view of cylinder Ø750mm)
+        # Draw drum as circle (plan view of Ø900 housing)
         # Position: panel face + half center-zone thickness
         if state in ("dry", "exhausted"):
             cx = PANEL_SLIDE + PANEL_CENTER_T / 2  # transport

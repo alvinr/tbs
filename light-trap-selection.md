@@ -218,7 +218,7 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 
 ## 7. Integration Notes
 
-- The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately 220–260kg — requires two people and a panel hoist or engine crane for hanging.
+- The drum is installed into the hinged panel before the panel is hung. Panel + drum combined weight: approximately **490 kg** (first-principles, 3mm-steel housing/drum + 4mm-steel corner plates) — requires an engine crane or gantry hoist for hanging; this is beyond a two-person lift.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.

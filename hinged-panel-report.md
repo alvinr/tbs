@@ -65,7 +65,7 @@ flush-faced panels that seal against the fixed door frame.
 | Skin (each face) | 18mm exterior-grade plywood |
 | Interior finish | Flat black (RAL 9005) — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitred joints |
-| Panel weight (without drum) | ~180 kg (estimated) |
+| Panel weight (sandwich + Ø900 housing, excl. drum) | ~344 kg (first-principles: 260 kg sandwich + 84 kg housing) |
 
 ### 2.3 EPDM Perimeter Seal
 
@@ -103,7 +103,7 @@ provides light-tight compression on all four sides.
 | Exterior finish | Grey oxide primer + grey topcoat |
 | Clear walking height | 1910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | ~110–140 kg (housing + drum, estimated) |
+| Weight | housing ~84 kg + rotating drum ~144 kg = **~228 kg** (3mm steel, first-principles) |
 
 ### 3.2 Bearings
 

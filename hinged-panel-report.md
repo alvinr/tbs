@@ -95,7 +95,7 @@ provides light-tight compression on all four sides.
 | Housing outer diameter | Ø900mm (fixed, built into the panel center zone) |
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
 | Drum (rotating) | Ø864mm C-shell, single 80° opening, **~Ø850mm clear bore** |
-| Passage width | ~625mm (the 80° opening) — single operator |
+| Passage width | **~555mm** (the 80° opening) — single operator, sideways entry |
 | Height | Top at Z=2200mm (upper bearing on panel top rail) |
 | Mounting | **Suspended with the panel** — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80). |
 | Wall thickness | 3mm mild steel (housing and drum), rolled and seam-welded |
@@ -166,7 +166,7 @@ housed revolving door **passes both** — the same two questions on which the ea
 
 **1. Does a person fit? — Yes.** The four radial fins are gone; the drum is a
 single-opening C-shell, so the whole **~Ø850mm bore** is clear standing space. The
-80° opening gives a **~625mm passage**, enough for a single operator to enter and
+80° opening gives a **~555mm passage** (sideways entry), enough for a single operator to enter and
 turn inside. Emergency egress remains the whole panel swinging open.
 
 **2. As the drum rotates, can daylight enter? — No.** The fixed housing's two 80°

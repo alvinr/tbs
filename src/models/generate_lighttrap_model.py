@@ -61,7 +61,7 @@ PANEL_Z_TOP = 2300                            # hung from ceiling rail (rail abo
 HOUSING_R = ov.LT_HOUSING_R           # 450 — fixed housing radius (Ø900 OD)
 HOUSING_T = ov.LT_HOUSING_T           # 3 — housing wall
 DRUM_OR = ov.LT_DRUM_OR               # 432 — drum outer radius (Ø864), 15mm gap
-DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~625mm passage
+DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~555mm passage
 OPENING_DEG = ov.LT_OPENING_DEG       # 80 — each opening arc (<90°)
 APERTURE_R = HOUSING_R + 18           # 468 — panel aperture radius around housing
 NEW_YD_L = YD_L                       # 653 — widened center-zone step lines
@@ -215,8 +215,8 @@ def drum():
     internal fins. Light-tight by geometry: the housing's solid wall always
     covers whichever opening the drum opening is not aligned with, so there is
     no straight path at any rotation (verified in the top-down renders). Shown at
-    the ENTER position (drum opening at the exterior). ~Ø850 bore, ~625mm
-    passage; emergency egress is the whole panel swinging open."""
+    the ENTER position (drum opening at the exterior). ~Ø850 bore, ~555mm
+    passage (sideways entry); emergency egress is the whole panel swinging open."""
     cx, cy, H = DRUM_CX, DRUM_CY, DRUM_H
     ZB = PANEL_Z_BOT                 # 80 — housing/drum SUSPENDED with the panel
     od = OPENING_DEG                 # (80mm floor gap → clears the tray rim in transport)

@@ -9,8 +9,9 @@ Sheet 1 — Front elevation (exterior view, 1:20):
   Stepped profile: 40mm corner zones, 120mm center zone (drum housing).
 
 Sheet 2 — Plan cross-section (1:20 equal aspect):
-  Panel thickness (center zone), drum cross-section with 4 baffles, S-path
-  light route, container wall interface, EPDM gasket engagement, latch detail.
+  Panel thickness (center zone), housed revolving door (fixed Ø900 housing +
+  single-opening C-shell drum, no fins; light-tight by geometry), container
+  wall interface, EPDM gasket engagement, latch detail.
 
 Sheet 3 — Drum vertical section:
   Drum elevation showing walking height, bearings, person silhouette.
@@ -758,7 +759,7 @@ def sheet2():
     # ── Title block ────────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
-                subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
+                subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — HOUSED REVOLVING DOOR (HOUSING + C-SHELL DRUM, NO FINS)",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
                 doc_id="TBS-001 \u00b7 Hinged Light-Trap Panel", height=0.055)
 
@@ -1024,18 +1025,13 @@ def sheet3():
     ax.plot([D_DEPTH_R - DRUM_WALL_T, D_DEPTH_R - DRUM_WALL_T],
             [H_DRUM_BOT, H_DRUM_TOP], color=C_DIM, lw=0.6, ls="--", zorder=6)
 
-    # ── 4 baffles (radial fins — shown as dashed lines at mid-depth in elevation)
-    # Baffles run full height inside the drum.  In this elevation view they
-    # appear as vertical dashed lines at their mid-chord depth positions.
-    # Baffles are at 0°, 90°, 180°, 270° from horizontal (plan view).
-    # In this elevation (looking along panel width = X axis in plan), the fins
-    # at 0° and 180° appear at the drum wall, and 90° and 270° at drum centre.
-    for fin_depth in [D_DEPTH_L, D_CX_DEPTH, D_DEPTH_R]:
-        ax.plot([fin_depth, fin_depth], [H_DRUM_BOT + 20, H_DRUM_TOP - 20],
-                color=C_OUT, lw=1.2, ls=(0, (5, 3)), zorder=7, alpha=0.7)
-
-    ax.text(D_CX_DEPTH/2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
-            "4 × INTERNAL BAFFLES\n(FULL HEIGHT)\nFlat black powder coat",
+    # ── rev8: NO internal fins — single-opening C-shell + fixed housing ──────
+    # The Ø750 / 4-baffle drum was replaced (rev8) by a fixed Ø900 housing with a
+    # single-opening C-shell drum (no fins); the whole ~Ø850 bore is clear. In
+    # this elevation the bore reads as open space (light-tightness is by the
+    # housing geometry — see Sheet 2 plan and Sheet 5).
+    ax.text(D_CX_DEPTH / 2 - 150, H_DRUM_BOT + (H_DRUM_TOP - H_DRUM_BOT) * 0.5,
+            "NO INTERNAL FINS\nSingle-opening C-shell\n~Ø850 clear bore\nFlat black interior",
             ha="center", va="center", fontsize=6.5, color=C_DIM,
             **FONT, alpha=0.7, zorder=15)
 

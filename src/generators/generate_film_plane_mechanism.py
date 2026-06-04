@@ -34,7 +34,7 @@ from tbs_constants import (
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
     BRACE_RHS, BRACE_T, BRACE_Z_BOT, BRACE_Z_TOP,
     BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1, CARRIAGE_PARK_Y,
-    DRUM_CY, DRUM_R, DRUM_CX,
+    DRUM_CY, DRUM_R, DRUM_CX, DRUM_D,
 )
 from tbs_title_block import title_block
 from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
@@ -275,8 +275,8 @@ def sheet1():
                 color=col, lw=2.0, ls=ls, zorder=10)
 
     # ── DRUM FOOTPRINT — ghost circle for light-trap drum ─────────────────────
-    # Drum is a vertical cylinder at X=DRUM_CX=0, Yd=DRUM_CY=1181, radius=DRUM_R=375.
-    # In this plan view it appears as a circle centred at (DRUM_CX, DRUM_CY).
+    # Drum is a vertical cylinder at X=DRUM_CX=0, Yd=DRUM_CY=1181, radius=DRUM_R=450
+    # (rev8: Ø900 housed door). In this plan view it appears as a circle at (DRUM_CX, DRUM_CY).
     C_DRUM = "#C8A860"   # amber-gold ghost for drum footprint
     ax.add_patch(Circle((DRUM_CX, DRUM_CY), DRUM_R,
                         fc=C_DRUM, ec=C_DRUM, lw=1.2, alpha=0.18, zorder=4,
@@ -284,14 +284,14 @@ def sheet1():
     ax.add_patch(Circle((DRUM_CX, DRUM_CY), DRUM_R,
                         fc="none", ec=C_DRUM, lw=1.2, alpha=0.55, zorder=4,
                         linestyle="--"))
-    ax.text(DRUM_CX, DRUM_CY, "LIGHT-TRAP\nDRUM\n(Ø750mm)",
+    ax.text(DRUM_CX, DRUM_CY, f"LIGHT-TRAP\nDRUM\n(Ø{DRUM_D}mm)",
             color=C_DRUM, fontsize=6, ha="center", va="center", **FONT, zorder=5,
             alpha=0.75)
 
-    # ── DEMOUNTABLE LEFT-RAIL SEGMENT — Yd 806→1556 ───────────────────────────
+    # ── DEMOUNTABLE LEFT-RAIL SEGMENT — Yd 731→1631 (rev8 Ø900 drum band) ─────
     # Overlay the left rail's removable span in a distinct dashed / highlighted style.
     # The normal left rail runs D_NEAR(100)→D_FAR(2262) at RAIL_X_L.
-    # The demountable segment covers BRACE_LEFT_DEMOUNT_Y0(806)→BRACE_LEFT_DEMOUNT_Y1(1556).
+    # The demountable segment covers BRACE_LEFT_DEMOUNT_Y0(731)→BRACE_LEFT_DEMOUNT_Y1(1631).
     C_DEMOUNT = "#CC3333"   # red — visually distinct "removable" colour
     # Ceiling sub-rail (matches rx_ceil geometry from the loop above)
     rx_ceil_L  = RAIL_X_L - RAIL_W // 2 - 5
@@ -309,7 +309,7 @@ def sheet1():
     seg_mid_yd = (seg_y0 + seg_y1) / 2
     leader(ax, rx_ceil_L + RAIL_W * 0.4, seg_mid_yd,
            rx_ceil_L - 600, seg_mid_yd + 250,
-           "DEMOUNTABLE LEFT-RAIL SEGMENT\nswings clear for DRUM MODE\n(Yd 806–1556)",
+           f"DEMOUNTABLE LEFT-RAIL SEGMENT\nswings clear for DRUM MODE\n(Yd {int(seg_y0)}–{int(seg_y1)})",
            color=C_DEMOUNT, ha="right", fs=6.5, font=FONT)
 
     # ── Annotations ───────────────────────────────────────────────────────────

@@ -482,7 +482,7 @@ def ceiling_rail():
     """HGR20 ceiling rails + HGH20CA carriages + brackets + suspended panel.
 
     Two rails run in X near the cargo-door end (X=0) at the carriage depths
-    Yd=756/1606, carrying the movable end panel in its operational position.
+    Yd=653/1709, carrying the movable end panel in its operational position.
     """
     parts = []
     rail_x0, rail_len = -30, 510          # rail spans X=-30..480

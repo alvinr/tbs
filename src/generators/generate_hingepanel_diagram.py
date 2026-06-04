@@ -403,7 +403,7 @@ def sheet1():
 # Y = depth direction (0 = container exterior face, positive into container).
 #
 # NOTE: This section cuts through the CENTER ZONE (120mm thick) of the
-# stepped panel.  Corner zones (Yd=0-756 and Yd=1606-2362) are only 40mm
+# stepped panel.  Corner zones (Yd=0-653 and Yd=1709-2362) are only 40mm
 # thick — see Sheet 1 for the step transition locations.
 #
 # The drum (Ø900mm) is much larger than the panel depth (120mm + 40mm wall).
@@ -492,7 +492,7 @@ def sheet2():
     ax.add_patch(Rectangle((D_XR, Y0_W), PW - D_XR, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
 
-    # ── CENTER ZONE panel (120mm thick, Yd=756→1606) ─────────────────────────
+    # ── CENTER ZONE panel (120mm thick, Yd=653→1709) ─────────────────────────
     # Outer ply, frame, inner ply — between drum opening edges and step lines
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
         ax.add_patch(Rectangle((x, Y0_PL), w, PLY_T,
@@ -502,7 +502,7 @@ def sheet2():
         ax.add_patch(Rectangle((x, Y0_PL2), w, PLY_T,
                                 fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
 
-    # ── CORNER ZONES (40mm thick, Yd=0→756 and Yd=1606→2362) ─────────────────
+    # ── CORNER ZONES (40mm thick, Yd=0→653 and Yd=1709→2362) ─────────────────
     # Corner zones: 18mm ply + 3mm aluminum plate + 18mm ply (40mm envelope)
     CORN_PLY   = 18
     CORN_PLATE = 3

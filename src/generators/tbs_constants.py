@@ -624,7 +624,7 @@ DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 # Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
 # Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
-# Fan at Yd=1959mm: cone at Yd=1959 is well above X=625, so no cone intrusion.
+# Fan at Yd=1959mm: cone at Yd=1959 is well above X=150, so no cone intrusion.
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────

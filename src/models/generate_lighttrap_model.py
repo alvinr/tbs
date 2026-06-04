@@ -43,7 +43,7 @@ DRUM_CX, DRUM_CY, DRUM_R, DRUM_H = ov.DRUM_CX, ov.DRUM_CY, ov.DRUM_R, ov.DRUM_H_
 PANEL_CENTER_T = ov.PANEL_CENTER_T            # 120 — center-zone thickness (X)
 PANEL_CORNER_T = 40                           # corner-zone thickness (report §2.1)
 PANEL_FLOOR_GAP = ov.PANEL_FLOOR_GAP          # 80
-YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 756, 1606 step lines
+YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY

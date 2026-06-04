@@ -193,8 +193,8 @@ unobstructed egress at the cargo door end.
 
 ### 6.1 Stepped Panel and Sliding Carriage (Transport Mode)
 
-The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–756
-and Yd=1,606–2,362) and 120mm thick at the center zone (Yd=756–1,606) where the
+The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653
+and Yd=1,709–2,362) and 120mm thick at the center zone (Yd=653–1,709) where the
 light trap drum is mounted. The entire panel slides 300mm in the X direction on
 HGR20 linear rails mounted to both container walls (Yd≈30mm and Yd≈2332mm) at
 floor and ceiling level — 4 rails total, 8 HGH20CA carriage blocks. The left

@@ -385,7 +385,7 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 
 **Panel design (see engineering drawings below):**
 - 2362 × 2388mm stepped panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins
-- **Stepped profile:** 40mm thick at corner zones (Yd=0–756mm and Yd=1606–2362mm) and 120mm thick at center zone (Yd=756–1606mm) where the light trap drum is mounted
+- **Stepped profile:** 40mm thick at corner zones (Yd=0–653mm and Yd=1709–2362mm) and 120mm thick at center zone (Yd=653–1709mm) where the light trap drum is mounted
 - 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
 - Ø900 housed revolving-door light lock (fixed housing + single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry

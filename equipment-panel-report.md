@@ -5,7 +5,7 @@
 ## 1. Purpose
 
 The equipment panel is an 18mm marine plywood board mounted vertically in the
-IBC plumbing corridor, perpendicular to the sealed end wall at X=5000mm. It
+IBC plumbing corridor, perpendicular to the sealed end wall at X=5240mm. It
 spans the full 270mm corridor width (Yd=1046–1316mm) and 2060mm in height
 (Z=200–2260mm). All pumps, filters, the pressure accumulator, diverter valves,
 and isolation valves mount on this single panel, concentrating the entire
@@ -32,7 +32,7 @@ The panel serves three functions:
 | Material | 18mm marine plywood (BS 1088 or equivalent) |
 | Face dimensions | 270mm wide (Yd) × 2060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
-| Panel face X position | 5000mm (equipment protrudes toward cargo door, -X) |
+| Panel face X position | 5240mm (equipment protrudes toward cargo door, -X) |
 | Bottom edge Z | 200mm (100mm above walkway deck) |
 | Top edge Z | 2260mm (128mm below ceiling at Z=2388mm) |
 | Corridor width | 270mm (Yd=1046–1316mm, between near and far IBC columns) |

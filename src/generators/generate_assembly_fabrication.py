@@ -262,7 +262,7 @@ def sheet1():
     # (drums relocated to left zone — no drum column in right zone)
 
     # ── Processing tray (304 SS, optical zone floor) ─────────────────────────
-    TRAY_X0 = RAIL_X_L + 20     # 645mm — 20mm clearance inside rail
+    TRAY_X0 = RAIL_X_L + 20     # 170mm — 20mm clearance inside rail
     TRAY_X1 = RAIL_X_R - 20     # 4629mm
     TRAY_H  = 50                # 50mm rim height
     ax.add_patch(mpatches.Rectangle((TRAY_X0, 0), TRAY_X1 - TRAY_X0, TRAY_H,
@@ -416,8 +416,8 @@ def sheet2():
                  facecolor="none", edgecolor=C_OUT, linewidth=1.6, zorder=5))
 
     # ── Hinged panel — stepped profile (fills end opening) ──────────────────
-    # Corner zones: Yd=0-756 and Yd=1606-2362, 40mm thick
-    # Center zone: Yd=756-1606, 120mm thick (drum housing)
+    # Corner zones: Yd=0-653 and Yd=1709-2362, 40mm thick
+    # Center zone: Yd=653-1709, 120mm thick (drum housing)
     ax.add_patch(mpatches.Rectangle((0, 0), C_WID, C_HGT,
                  facecolor=C_ALUM, edgecolor=C_OUT, linewidth=1.0,
                  alpha=0.30, zorder=3))

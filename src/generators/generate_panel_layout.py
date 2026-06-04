@@ -25,14 +25,14 @@ import matplotlib.pyplot as plt
 import math
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL
+from tbs_constants import C_OUT, C_DIM, C_CL, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_title_block import title_block
 
 # ── Panel geometry ────────────────────────────────────────────────────────
 PANEL_T      = 18    # plywood thickness (mm)
 PANEL_YD     = 1046  # panel near edge Yd (mm from pinhole wall)
-PANEL_WALL_X = 5000  # panel face X position (matches EQPANEL_X)
+PANEL_WALL_X = EQPANEL_X  # panel face X position (= EQPANEL_X)
 WALKWAY_W    = 300   # standard walkway width (mm)
 WALKWAY_Z    = 100   # walkway grating top (mm AFF)
 

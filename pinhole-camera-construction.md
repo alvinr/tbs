@@ -388,7 +388,7 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 - **Stepped profile:** 40mm thick at corner zones (Yd=0–756mm and Yd=1606–2362mm) and 120mm thick at center zone (Yd=756–1606mm) where the light trap drum is mounted
 - 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
-- 750mm diameter × 2000mm tall revolving drum (3mm steel, 4 internal baffles, SKF 6215 bearings) — personnel access without opening the panel
+- Ø900 housed revolving-door light lock (fixed housing + single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
 - **Transport mode:** panel slides inward 300mm, clearing container doors for closure. Single-person operation, ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
@@ -396,7 +396,7 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 **Sheet 1 — Front Elevation (1:20):**
 ![TBS-001 Hinged Panel — Sheet 1: Front Elevation](assets/hingepanel-sheet1.png)
 
-**Sheet 2 — Plan Cross-Section showing drum baffles and S-path light route (1:10 horiz / 1:1 depth):**
+**Sheet 2 — Plan Cross-Section: housed revolving door (housing, drum & light-tight geometry) (1:10 horiz / 1:1 depth):**
 ![TBS-001 Hinged Panel — Sheet 2: Plan Cross-Section](assets/hingepanel-sheet2.png)
 
 **Interior safelight:** Install a red LED safelight (Circuit D, per [Electrical Report](electrical-report.md)) inside the container for loading operations. This also illuminates the drum interior so operators can orient themselves in darkness.

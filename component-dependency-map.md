@@ -78,19 +78,22 @@ rail felt light-trap strips, 92× cam-lever spring clamps at 150mm centers (musl
 adjustment screws, hemispherical ball-socket inserts, 36-detent knurled knobs, ICP-10 neoprene
 bellows (4-pleat, Ø290 ID → Ø360 OD).*
 
-### 1.5 Light Trap Drum
+### 1.5 Housed Revolving-Door Light Lock (rev 8)
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Drum center X (cargo door end wall) | 0mm | `DRUM_CX` |
-| Drum outer diameter | 750mm | `DRUM_D` |
-| Drum radius | 375mm | `DRUM_R` |
-| Drum height | 2200mm | `DRUM_H_LT` |
+| Light-lock center X (cargo door end wall) | 0mm | `DRUM_CX` |
+| Fixed housing outer diameter | 900mm | `DRUM_D` |
+| Housing radius | 450mm | `DRUM_R` / `LT_HOUSING_R` |
+| Drum outer radius (rotating) | 432mm | `LT_DRUM_OR` |
+| Opening arc (each) | 80° | `LT_OPENING_DEG` |
+| Height | 2200mm | `DRUM_H_LT` |
 
-*Components: 3mm mild steel rolled shell, 4× internal steel baffle fins (at 22.5°/112.5°/
-202.5°/292.5°), 5mm top and bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed
-bearings, upper and lower bearing mounts, 100mm SS interior grab rail, closed-cell neoprene
-top/bottom wiper seals + silicone bead, drum-to-panel neoprene compression strip.*
+*Components: fixed Ø900 mild-steel housing with two 80° openings (exterior + interior-onto-walkway,
+180° apart); single-opening C-shell rotating drum (Ø864, ~Ø850 bore, NO internal fins) — light-tight
+by geometry; 5mm top/bottom caps, 75mm stub shafts (×2), 2× SKF 6215-2RS1 sealed bearings, drum↔housing
+felt/brush wiper seals (opening edges + top/bottom rings), 100mm SS interior grab rail, housing-to-panel
+neoprene compression strip. Replaces the failed Ø750 4-fin drum.*
 
 ### 1.6 Hinged Cargo-Door Panel
 
@@ -102,7 +105,7 @@ top/bottom wiper seals + silicone bead, drum-to-panel neoprene compression strip
 
 *Components: 50×50mm RHS steel frame, 18mm plywood skins (both faces), 20mm EPDM compression
 gasket in machined channel, 3× 200mm SS ball-bearing piano hinges, 4× Southco C2-33 cam
-compression latches, Ø750mm revolving drum aperture.*
+compression latches, Ø900mm housed revolving-door light-lock aperture.*
 
 ### 1.7 Ventilation System
 
@@ -123,7 +126,7 @@ compression latches, Ø750mm revolving drum aperture.*
 high position (Z=2200mm, above the 2020mm IBC stack so the baffle duct clears the totes). Fan B —
 identical fan, mounted on hinged panel (far corner zone, Yd=1959mm), intake, Circuit B, low
 position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
-steel baffles (65% height each, S-path); exterior face has a passive weatherproof louvre grille.
+steel baffles (65% height each, horizontal S-path); exterior face has a passive weatherproof louvre grille.
 Fan B has the same baffle duct protruding from the panel exterior face — draws fresh air from the
 open doorway during operation. Fan B moves with the panel on the sliding carriage; wiring via
 flexible coiled cable from fixed door frame (Circuit B).*
@@ -379,7 +382,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 | **overview** | `src/models/generate_sketchup_model.py` | `models/overview.skp` + `src/models/overview.rb` | **1–18 (all)** — built as 21 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups). Its `spray_bar()` **reuses the spray-bar model's builders** (`generate_spraybar_model.build_beam/build_carriages/build_feed_pole`), so the gantry detail stays in sync between the two models — rebuild overview whenever the spray-bar model changes. |
 | **spray-bar** | `src/models/generate_spraybar_model.py` | `models/spraybar.skp` + `src/models/spraybar.rb` | Spray-bar gantry detail — beam + housed ¾" LDPE pipe + 26 flat-fan nozzles (150mm pitch), wheel carriages (2 wheels/carriage, curved saddle axle clamps, top/bottom beam clamp plates), feed pole + ball joint with **distribution manifold + 7 irrigation feed tubes** into the poly pipe, **processing tray** (floor + rim + sump). 5 scenes (Beam, Carriage Assembly, Pole & Ball Joint, Processing Tray, Combined). Reads `SPRAY_BAR_*` and `PROC_TRAY_*` constants. |
 | **ibc-stack** | `src/models/generate_ibc_model.py` | `models/ibc-stack.skp` + `src/models/ibc-stack.rb` | IBC tote stacking arrangement. |
-| **lighttrap** | `src/models/generate_lighttrap_model.py` | `models/lighttrap.skp` + `src/models/lighttrap.rb` | Cargo-door end assembly (detailed): revolving **light-trap drum** (shell + 4-baffle turnstile + caps, stub shafts, SKF 6215 bearings, floor collar, interior grab rail), **hinged stepped panel** (3 zones + drum aperture + EPDM perimeter seal + 3 piano hinges + 4 Southco cam latches), **sliding carriage** (2× HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left 60×60 SHS carriage beam + 4 Destaco toggle clamps), fixed RHS **door frame**, and **Fan B (intake)**. Fan B **reuses the Overview's shared `fan_duct()` builder** (same source as `fans()`), so re-run lighttrap whenever the fan changes. Reads `DRUM_*`, `PANEL_*`, `FAN_B_*` constants. 5 scenes (Overview, Light-Trap Drum, Hinge Panel & Seal, Sliding Carriage, Fan B). |
+| **lighttrap** | `src/models/generate_lighttrap_model.py` | `models/lighttrap.skp` + `src/models/lighttrap.rb` | Cargo-door end assembly (detailed): **housed revolving-door light lock** (fixed Ø900 housing with two 80° openings + single-opening C-shell drum, no fins, SKF 6215 bearings, drum↔housing seals, grab rail; light-tight by geometry), **hinged stepped panel** (3 zones, widened center + housing aperture + EPDM perimeter seal + 3 piano hinges + 4 Southco cam latches), **sliding carriage** (2× HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left 60×60 SHS carriage beam + 4 Destaco toggle clamps), fixed RHS **door frame**, and **Fan B (intake)**. Fan B **reuses the Overview's shared `fan_duct()` builder** (same source as `fans()`), so re-run lighttrap whenever the fan changes. Reads `DRUM_*`, `PANEL_*`, `FAN_B_*` constants. 5 scenes (Overview, Light-Trap Drum, Hinge Panel & Seal, Sliding Carriage, Fan B). |
 
 *As more models are added, list them here with the subsystems each contains, so a
 constants change re-runs only the affected models.*

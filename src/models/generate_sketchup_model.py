@@ -63,6 +63,7 @@ from tbs_constants import (
     BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y,
     PANEL_FRAME_X,
     DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT,
+    LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_OPENING_DEG,
     EP_X, EP_W, EP_H_LO, EP_H_HI,
     BA_X, BA_W, BA_H_LO, BA_H_HI, BA_D,
     PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z,
@@ -885,37 +886,16 @@ def ruby_panel_z(name, ax_, ay, bx, by, thickness, height, color=None, alpha=Non
 
 
 def light_trap_drum():
-    """Revolving light-trap drum at the cargo-door end — hollow Ø750 drum.
+    """Housed revolving-door light lock at the cargo-door end (rev 8).
 
-    Centered at (X=DRUM_CX=0, Yd=DRUM_CY=1181), Z 0–2200. Two crossed vanes (at
-    ±45°) split it into 4 quadrant segments; the shell is walled on 3 segments
-    and OPEN on the one segment facing −X (outside the container) — the entry.
-    Half sits in the doorway (the entry/−X half protrudes out the cargo end). It
-    deliberately overlaps the demountable left-rail segment — that's why that
-    segment swings clear ("drum mode").
-    """
-    parts = []
-    r, h = DRUM_R, DRUM_H_LT
-    cx, cy = DRUM_CX, DRUM_CY
-
-    # Hollow shell: open one 90° segment centred on −X (180°); walled elsewhere.
-    parts.append(ruby_arc_wall("LT Drum Shell (3 segments walled)",
-                               cx, cy, r, 12, h,
-                               gap_center_deg=180, gap_deg=90,
-                               color=C_DRUM, alpha=0.18))
-
-    # Two crossed vanes at ±45° so the open segment (135°–225°) faces straight −X.
-    vt = 6
-    pa = [(cx + r * math.cos(math.radians(d)), cy + r * math.sin(math.radians(d)))
-          for d in (45, 135, 225, 315)]
-    parts.append(ruby_panel_z("LT Drum Vane A",
-                              pa[0][0], pa[0][1], pa[2][0], pa[2][1],
-                              vt, h, color=C_VANE))
-    parts.append(ruby_panel_z("LT Drum Vane B",
-                              pa[1][0], pa[1][1], pa[3][0], pa[3][1],
-                              vt, h, color=C_VANE))
-
-    return '\n'.join(parts)
+    Reuses the detailed builder from the dedicated Light-Trap model so the two
+    models stay in sync (same pattern as spray_bar()): a FIXED Ø900 housing with
+    two opposed 80° openings (exterior + interior-onto-walkway, 180° apart) and a
+    single-opening C-shell drum (~Ø850 bore) rotating inside on SKF 6215 bearings.
+    No internal fins — light-tight by geometry. Centered at (DRUM_CX=0, DRUM_CY).
+    Replaces the failed Ø750 4-fin drum (see light-trap-selection.md §3)."""
+    import generate_lighttrap_model as lt
+    return lt.drum()
 
 
 # ── Electrical (panel + battery, pinhole wall) ───────────────────────────────

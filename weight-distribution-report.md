@@ -49,8 +49,8 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Component | Weight (kg) | X Range (mm) | Yd Range (mm) | Calculation Basis |
 |-----------|------------|-------------|---------------|-------------------|
-| Hinged panel | 203 | 0–80 (deployed) / 300–380 (transport) | 0–2,362 | Stepped sandwich: ply+steel corners, RHS center frame. Scaled to 240 kg combined with drum per [Light Trap Selection](light-trap-selection.md) §7 |
-| Light-lock housing + drum | 125 | 0–40 (deployed) / 500–540 (transport) | 653–1,709 | 3mm steel Ø900 housing + Ø864 C-shell drum (no fins) + SKF 6215 bearings |
+| Hinged panel | 203 | 0–120 (deployed) / 550–670 (transport) | 0–2,362 | Stepped sandwich: ply+steel corners, RHS center frame. Scaled to 240 kg combined with drum per [Light Trap Selection](light-trap-selection.md) §7 |
+| Light-lock housing + drum | 125 | 0–40 (deployed) / 550–590 (transport) | 653–1,709 | 3mm steel Ø900 housing + Ø864 C-shell drum (no fins, suspended with panel) + SKF 6215 bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
 | Near walkway | 56 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 26 kg/m² grating |
 | Far walkway | 56 | 470–4,629 | 2,062–2,362 | Same as near walkway |

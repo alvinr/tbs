@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- ~500mm inward slide for transport mode — clears ISO container doors
+- ~550mm inward slide for transport mode — clears ISO container doors + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -96,7 +96,8 @@ provides light-tight compression on all four sides.
 | Housing openings | Two, **80° arc each, 180° apart** — one facing exterior, one facing the interior/walkway |
 | Drum (rotating) | Ø864mm C-shell, single 80° opening, **~Ø850mm clear bore** |
 | Passage width | ~625mm (the 80° opening) — single operator |
-| Height | 2200mm (floor to upper bearing) |
+| Height | Top at Z=2200mm (upper bearing on panel top rail) |
+| Mounting | **Suspended with the panel** — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80). |
 | Wall thickness | 3mm mild steel (housing and drum), rolled and seam-welded |
 | Interior finish | Shot-blast + flat black powder coat (RAL 9005) |
 | Exterior finish | Grey oxide primer + grey topcoat |
@@ -214,7 +215,7 @@ interior equipment.
 
 ## 5. Sliding Carriage System
 
-The entire panel (including the housing + drum) slides ~500mm in the X direction on linear
+The entire panel (including the housing + drum) slides ~550mm in the X direction on linear
 rails for transport mode conversion. This slide retracts the drum's exterior
 overhang behind the container door closure plane.
 
@@ -247,6 +248,14 @@ panel bottom edge and the container floor. This gap clears the 50mm processing t
 rim with 30mm margin, allowing the panel to slide freely in both directions without
 contacting the tray.
 
+**The housing + drum hang at the same Z=80** (lower bearing on the panel bottom
+rail), so they too clear the tray rim by 30mm. This matters in transport: the ~550mm
+inward slide carries the Ø900 housing into the near-tray zone (its interior edge
+reaches ~X=1000), but because the whole assembly is suspended it passes over the tray
+basin rather than colliding with it. A floor-mounted housing would have fouled the
+tray; suspension is what makes the deeper-housing transport slide feasible. The 80mm
+floor gap is closed by the now-continuous bottom seal lip (§6 path #6).
+
 The 80mm gap would otherwise be a straight light path, so it is light-sealed in the
 operational position by the fixed-frame bottom seal lip described in §6 (path #6) —
 a threshold upstand the panel bottom edge recedes into, with an EPDM strip compressed
@@ -268,7 +277,7 @@ sealed when the panel is in the operational position.
 | 3 | Right guide slot | Matching doubled nylon brush strip (~70 × 2400mm slot), same treatment as left slot |
 | 4 | Rail channels at floor/ceiling (×4) | 10mm closed-cell neoprene compression pad (50 × 30mm) bonded to frame face around each rail penetration |
 | 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
-| 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the full panel-bottom width and **notched around the drum** (the drum carries its own floor seals). The lip closes the floor gap as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.) |
+| 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the **full panel-bottom width, continuous (no notch)** — the housing/drum is **suspended at Z=80** and no longer reaches the floor, so the floor gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.) |
 | 7 | Panel top → frame gap (panel hangs below the ceiling rails) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
@@ -290,7 +299,7 @@ for the sliding carriage.
 | Attachment | Welded to container end wall structural members |
 | Slots | 2 × vertical (~70 × 2400mm) for carriage beam and right-side guide |
 | Rail penetrations | 4 × (floor and ceiling, both walls) sealed by neoprene pads |
-| Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, ~110mm tall, full panel-bottom width, notched around the drum — the EPDM bottom seal compresses against it (see §6 path #6) |
+| Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, ~110mm tall, **full panel-bottom width (no notch — drum suspended at Z=80)** — the EPDM bottom seal compresses against it (see §6 path #6) |
 | Top seal lip | Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #7) |
 
 ---

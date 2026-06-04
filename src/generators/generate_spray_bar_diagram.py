@@ -1271,8 +1271,8 @@ def draw_sheet5():
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
 
-    w_xl, w_xr = -27, 27
-    w_yb, w_yt = -30, 36
+    w_xl, w_xr = -30, 30
+    w_yb, w_yt = -9, 66
     ax_w.set_xlim(w_xl, w_xr)
     ax_w.set_ylim(w_yb, w_yt)
 
@@ -1286,117 +1286,95 @@ def draw_sheet5():
               **FONT, zorder=20)
 
     C_NYLON_FILL = "#E8DCC0"
+    C_BOLT_FILL  = "#D0D0D8"
 
-    # Geometry (2:1 scale, coordinates in mm at 2:1)
-    plate_bot_y = 13
-    plate_h = 5
-    axle_r = 5
+    # ── Geometry (mm; the wheel HANGS BELOW the carriage plate, axle at its
+    #    centre — the beam clamps on top of the plate, so the wheel must clear it) ─
+    TRAY_Y    = 0                      # tray surface the wheel rolls on
+    WHEEL_D   = 50
+    AXLE_Z    = TRAY_Y + WHEEL_D / 2   # 25 — axle = wheel centre
+    axle_r    = 5
+    PLATE_BOT = TRAY_Y + WHEEL_D + 2   # 52 — plate just clears the wheel top
+    plate_h   = 5
+    PLATE_TOP = PLATE_BOT + plate_h    # 57
+    SGAP      = 16                     # saddle/bolt offset from the wheel centre
+    SW        = 6                      # saddle strap width along the axle
+    AXLE_HALF = 22                     # axle protrudes beyond the wheel to carry saddles
+    washer_t, bolt_head_h, nut_h = 1.5, 3, 3
+    bolt_head_top = PLATE_TOP + washer_t + bolt_head_h
 
-    # ── Carriage plate ───────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-17, plate_bot_y), 34, plate_h,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=3))
+    # ── Tray floor ──────────────────────────────────────────────────────
+    ax_w.plot([w_xl, w_xr], [TRAY_Y, TRAY_Y], color=C_TRAY, lw=1.5, zorder=2)
+    ax_w.text(w_xr - 1, TRAY_Y - 1.5, "TRAY FLOOR", ha="right", va="top",
+              fontsize=5, color=C_DIM, style="italic",
+              bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85),
+              **FONT, zorder=15)
 
-    # ── Nylon wheel body ─────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-10, -25), 20, 50,
+    # ── Nylon wheel (cut through centre — 20mm tread × Ø50, sitting on the tray) ─
+    ax_w.add_patch(Rectangle((-10, TRAY_Y), 20, WHEEL_D,
                    fc=C_NYLON_FILL, ec=C_WHEEL, lw=1.5, hatch="...", zorder=3))
 
-    # ── Axle pin ─────────────────────────────────────────────────────────
-    ax_w.add_patch(Rectangle((-17, -axle_r), 34, 2 * axle_r,
+    # ── Carriage plate above the wheel (full carriage width = 40mm) ───────
+    ax_w.add_patch(Rectangle((-20, PLATE_BOT), 40, plate_h,
+                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+
+    # ── Axle pin (Ø10, protrudes beyond the wheel to carry the saddles) ───
+    ax_w.add_patch(Rectangle((-AXLE_HALF, AXLE_Z - axle_r), 2 * AXLE_HALF, 2 * axle_r,
                    fc="#D0D0D8", ec=C_FRAME, lw=1.0, zorder=5))
-    ax_w.add_patch(Rectangle((-10, -axle_r), 20, 2 * axle_r,
+    ax_w.add_patch(Rectangle((-10, AXLE_Z - axle_r), 20, 2 * axle_r,
                    fc="#D0D0D8", ec="none", zorder=5))
 
-    # ── Axle-retention saddle clamps (conduit-style: a curved SS strap cradles
-    #    UNDER the Ø10 axle and bolts down through the plate via a foot each side
-    #    — one clamp flanking each face of the wheel). A curved cradle, NOT a
-    #    flat U-clamp bar; matches Sheet 2 + the 3D "Axle Saddle". ──
-    C_BOLT_FILL = "#D0D0D8"
-    washer_t, bolt_head_h, nut_h = 1.5, 3, 3
-    plate_top_y = plate_bot_y + plate_h
-    sad_t  = 1.5                              # SS strap thickness
-    sad_ri = axle_r                           # cradle hugs the Ø10 axle
-    sad_ro = sad_ri + sad_t                   # cradle outer radius (6.5)
-    foot_len = 5
-    clamp_cx_r, clamp_cx_l = 14, -14
-    bolt_head_top = plate_top_y + washer_t + bolt_head_h
-    nut_bot = plate_bot_y - sad_t - nut_h
-
-    for cx in [clamp_cx_r, clamp_cx_l]:
-        # curved cradle wrapping under the axle (drawn behind the Ø10 pin, which
-        # nests into it)
-        ax_w.add_patch(Wedge((cx, 0), sad_ro, 180, 360, width=sad_t,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
-        for sgn in (-1, 1):
-            ex = cx + sgn * sad_ro                       # strap at the cradle end
-            bx = ex                                       # bolt down through the foot
-            # strap rising from the cradle to the plate underside
-            ax_w.add_patch(Rectangle((ex - sad_t / 2, 0), sad_t, plate_bot_y,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
-            # flat foot against the plate underside
-            ax_w.add_patch(Rectangle((ex - (foot_len + sad_t) / 2, plate_bot_y - sad_t),
-                           foot_len + sad_t, sad_t,
-                           fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=4))
-            # M5 SS bolt: shaft through foot + plate, head + washer on top, nut below
-            ax_w.add_patch(Rectangle((bx - 1.5, nut_bot), 3, bolt_head_top - nut_bot,
-                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))
-            ax_w.add_patch(Rectangle((bx - 3, plate_top_y + washer_t), 6, bolt_head_h,
-                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
-            ax_w.add_patch(Rectangle((bx - 3.5, plate_top_y), 7, washer_t,
-                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))
-            ax_w.add_patch(Rectangle((bx - 3, nut_bot), 6, nut_h,
-                           fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))
-
-    _bbox_w = dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85)
-
-    # ── Tray floor (axle at Z=27, tray surface at Z=2 → y=-25) ─────────
-    tray_y = -25
-    ax_w.plot([w_xl, w_xr], [tray_y, tray_y],
-              color=C_TRAY, lw=1.5, zorder=8)
-    ax_w.text(w_xr - 1, tray_y - 1, "TRAY FLOOR",
-              ha="right", va="top", fontsize=5, color=C_DIM,
-              style="italic", bbox=_bbox_w, **FONT, zorder=15)
+    # ── Axle-retention saddle clamps: ONE flanking each side of the wheel, at
+    #    SGAP along the axle. Each is an SS strap that cradles UNDER the Ø10 axle
+    #    and rises beside the wheel to bolt UP through the carriage plate. In this
+    #    section-along-the-axle there is exactly ONE visible bolt each side,
+    #    through the solid plate (each saddle has 2 bolts straddling the axle into
+    #    the page — they superimpose here). ──
+    nut_bot = PLATE_BOT - nut_h - 1
+    for sx_ in (SGAP, -SGAP):
+        # strap from just under the axle up to the plate (in front of the pin so
+        # the bracket reads continuous) + a rounded cradle cupping under the axle
+        ax_w.add_patch(Rectangle((sx_ - SW / 2, AXLE_Z - axle_r), SW,
+                       PLATE_BOT - (AXLE_Z - axle_r),
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=6))
+        ax_w.add_patch(Wedge((sx_, AXLE_Z - axle_r), SW / 2, 180, 360,
+                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=6))
+        # ONE M5 SS bolt through the carriage plate into the saddle foot
+        ax_w.add_patch(Rectangle((sx_ - 1.5, nut_bot), 3, bolt_head_top - nut_bot,
+                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))      # shank
+        ax_w.add_patch(Rectangle((sx_ - 3, PLATE_TOP + washer_t), 6, bolt_head_h,
+                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))       # head
+        ax_w.add_patch(Rectangle((sx_ - 3.5, PLATE_TOP), 7, washer_t,
+                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))       # washer
+        ax_w.add_patch(Rectangle((sx_ - 2.5, nut_bot), 5, nut_h,
+                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))       # nut
 
     # ── Labels ───────────────────────────────────────────────────────────
-    r_outer_bx = clamp_cx_r + sad_ro
-    l_outer_bx = clamp_cx_l - sad_ro
-    l_inner_ex = clamp_cx_l + sad_ro
+    leader(ax_w, SGAP, bolt_head_top, w_xr - 3, PLATE_TOP + 5,
+           "M5 SS BOLT — 1 EACH SIDE\nTHROUGH CARRIAGE PLATE\n(2/saddle straddle the\n axle, superimposed here)",
+           fs=4.5, color="#808088", font=FONT, zorder=20)
 
-    # Right side
-    leader(ax_w, r_outer_bx, bolt_head_top, w_xr - 5, 30,
-           "M5 SS BOLT (×2/CLAMP)\nHEAD + FLAT WASHER",
-           fs=5, color="#808088", font=FONT, zorder=20)
-
-    leader(ax_w, 11, plate_bot_y + plate_h / 2, w_xr - 22, 28,
+    leader(ax_w, 13, PLATE_BOT + plate_h / 2, w_xr - 4, PLATE_BOT - 7,
            "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    leader(ax_w, -3, 1, -13, 29,
+    leader(ax_w, -4, AXLE_Z, w_xl + 5, AXLE_Z + 13,
            "Ø10mm SS\nAXLE PIN",
            fs=5, color="#888888", font=FONT, zorder=20)
 
-    leader(ax_w, clamp_cx_r, -sad_ro, w_xr - 6, -10,
-           "SADDLE CLAMP CRADLE\n(WRAPS UNDER AXLE)",
+    leader(ax_w, -SGAP, AXLE_Z - axle_r - SW / 2, w_xl + 5, AXLE_Z - 9,
+           "SADDLE CLAMP\n(WRAPS UNDER AXLE,\n BOLTS TO PLATE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    # Left side
-    leader(ax_w, l_inner_ex, plate_bot_y / 2, w_xl + 5, 10,
-           "SADDLE CLAMP STRAP\n(1.5mm SS)",
-           fs=5, color=C_FRAME, font=FONT, zorder=20)
-
-    leader(ax_w, l_outer_bx, nut_bot + nut_h / 2, w_xl + 5, -14,
-           "M5 NYLOC NUT\n+ FLAT WASHER",
-           fs=5, color="#808088", font=FONT, zorder=20)
-
-    leader(ax_w, -5.5, -12, w_xl + 8, -18,
+    leader(ax_w, 7, 10, w_xr - 4, 9,
            "Ø50mm NYLON\nWHEEL (CUT)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_h(ax_w, -10, 10, w_yb + 2,
-               "20mm TREAD", offset=2, fs=5, font=FONT)
+    draw_dim_h(ax_w, -10, 10, TRAY_Y - 4, "20mm TREAD", offset=2, fs=5, font=FONT)
 
-    draw_dim_v(ax_w, w_xl + 8, -axle_r, axle_r,
-               "Ø10", offset=2, fs=5, font=FONT)
+    draw_dim_v(ax_w, w_xl + 7, AXLE_Z - axle_r, AXLE_Z + axle_r, "Ø10",
+               offset=2, fs=5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])

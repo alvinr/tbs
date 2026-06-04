@@ -1511,14 +1511,21 @@ def water_plumbing():
          [(fillTeeX, cc, overZ), (fillTeeX, fY, overZ), (fillTeeX, fY, topZ + 20)],
          C_BLUE)
 
-    # Exterior DRAINS (corridor) → bottom-tote valves on the corridor faces.
-    drnX = 5400                            # drain riser X — behind the panel frame (5258-5308)
-    pipe("Drain → Brown IBC",
-         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H), (drnX, cc, EXT_DRAIN_3_H),
-          (drnX, EQPANEL_YD, EXT_DRAIN_3_H), (drnX, EQPANEL_YD, 300)], C_IBC_BROWN)
-    pipe("Drain → Waste IBC",
-         [(C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H), (drnX, cc, EXT_DRAIN_H),
-          (drnX, EQPANEL_YD_FAR, EXT_DRAIN_H), (drnX, EQPANEL_YD_FAR, 300)],
+    # Exterior DRAIN PORTS X3/X4 are fed from the DRAIN PUMPS (not straight off the
+    # totes): P-05 (Brown drain) → X3, P-03 (Waste evac) → X4.  Each run leaves the
+    # pump discharge, drops a riser behind the panel frame, and runs out to the
+    # end-wall port along the clear corridor.  Two riser X-lanes (drnA/drnB) keep
+    # the Brown and Waste runs from overlapping.
+    drnA = 5400                            # Brown riser X (behind panel frame 5258-5308)
+    drnB = 5340                            # Waste riser X (offset lane)
+    pZ3  = PUMP_H_LO + 626                  # 1946 — P-05 (Brown drain) pump row
+    pipe("P-05 → X3 (Brown drain-out)",
+         [(rxB, pyR, pZ3), (drnA, pyR, pZ3), (drnA, pyR, EXT_DRAIN_3_H),
+          (drnA, EXT_DRAIN_YD, EXT_DRAIN_3_H), (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_3_H)],
+         C_IBC_BROWN)
+    pipe("P-03 → X4 (Waste drain-out)",
+         [(rxB, pyR, pZ2), (drnB, pyR, pZ2), (drnB, pyR, EXT_DRAIN_H),
+          (drnB, EXT_DRAIN_YD, EXT_DRAIN_H), (C_LEN, EXT_DRAIN_YD, EXT_DRAIN_H)],
          C_IBC_WASTE)
 
     # IBC valves → their own pumps, so circuits never share a crossing path.

@@ -4,16 +4,17 @@
 """
 generate_weight_analysis.py — Weight distribution analysis for TBS-001.
 
-Computes total weight and center-of-gravity position for three operational
-states (Dry, Camera Ready, Materials Exhausted). Generates four diagram
-sheets showing component positions and weight distribution.
+Computes total weight and center-of-gravity position for four operational
+states (Dry, Camera Ready, Materials Exhausted, Loaded Transport). Generates
+five diagram sheets showing component positions and weight distribution.
 
 Outputs
 -------
-diagrams/weight-analysis-sheet1.png  — Summary comparison (3 states)
-diagrams/weight-analysis-sheet2.png  — Component weight map (plan view)
+diagrams/weight-analysis-sheet1.png  — Summary comparison (4 states)
+diagrams/weight-analysis-sheet2.png  — Dry, configured for transport
 diagrams/weight-analysis-sheet3.png  — Camera Ready state distribution
 diagrams/weight-analysis-sheet4.png  — Materials Exhausted state distribution
+diagrams/weight-analysis-sheet5.png  — Loaded Transport (full Blue IBCs)
 """
 
 import os
@@ -95,7 +96,7 @@ class Component:
     z_min: float = 0.0  # vertical bounds (mm) — 0 = floor
     z_max: float = 0.0  # z_max = 0 means floor-level item
     color: str = C_STEEL
-    states: tuple = ("dry", "ready", "exhausted")  # which states include this
+    states: tuple = ("dry", "ready", "exhausted", "loaded_transport")  # which states include this
     calc_note: str = ""  # brief description of weight derivation
 
     @property
@@ -322,12 +323,12 @@ def build_components():
         Component("Cargo door (near)", "container", 140.0,
                   -WALL_T - DOOR_T, -WALL_T, 0, C_WID / 2,
                   0, C_HGT, color=C_DOOR,
-                  states=("dry", "exhausted"),
+                  states=("dry", "exhausted", "loaded_transport"),
                   calc_note="ISO door leaf ~140 kg, closed position"),
         Component("Cargo door (far)", "container", 140.0,
                   -WALL_T - DOOR_T, -WALL_T, C_WID / 2, C_WID,
                   0, C_HGT, color=C_DOOR,
-                  states=("dry", "exhausted"),
+                  states=("dry", "exhausted", "loaded_transport"),
                   calc_note="ISO door leaf ~140 kg, closed position"),
         Component("Cargo door (near)", "container", 140.0,
                   0, C_WID / 2 + WALL_T,
@@ -347,13 +348,13 @@ def build_components():
         Component("Hinged panel", "structure", panel_kg,
                   PANEL_SLIDE, PANEL_SLIDE + 80, 0, C_WID, 0, C_HGT,
                   color=C_HINGE_PANEL,
-                  states=("dry", "exhausted"),
+                  states=("dry", "exhausted", "loaded_transport"),
                   calc_note="Sandwich: ply + 3mm-Al corners, steel RHS center + 3mm-Al Ø900 housing"),
         Component("Light trap drum", "structure", drum_kg,
                   PANEL_SLIDE, PANEL_SLIDE + 40,
                   PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
                   PANEL_FLOOR_GAP, DRUM_H_LT, color=C_LT_DRUM,
-                  states=("dry", "exhausted"),
+                  states=("dry", "exhausted", "loaded_transport"),
                   calc_note="3mm aluminum C-shell drum (Ø864, no baffles) + steel shaft/bearings"),
         # Panel + drum: deployed position (at cargo door end) for camera ready
         Component("Hinged panel", "structure", panel_kg,
@@ -467,13 +468,13 @@ def build_components():
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   BLUE_IBC_Y, BLUE_IBC_Y + IBC_D,
                   IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
-                  states=("ready",),
+                  states=("ready", "loaded_transport"),
                   calc_note="600L clean wash water (top tier)"),
         Component("Blue IBC-2 water", "liquid", 600.0,
                   IBC_COL_X, IBC_COL_X + IBC_W,
                   IBC_FAR_Y, IBC_FAR_Y + IBC_D,
                   IBC_H_600, IBC_H_STK, color=C_BLUE_IBC,
-                  states=("ready",),
+                  states=("ready", "loaded_transport"),
                   calc_note="600L clean wash water (top tier)"),
         # ── Liquids — Materials Exhausted (water in bottom-tier IBCs) ────
         Component("Brown IBC-3 water", "liquid", 600.0,
@@ -738,7 +739,7 @@ def sheet_dry(components):
     ax.set_ylabel("Yd (mm) — 0 = pinhole wall", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 2 OF 4",
+    title_block(ax, "SHEET 2 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — DRY (CONFIGURED FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
@@ -835,7 +836,7 @@ def sheet_ready(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 3 OF 4",
+    title_block(ax, "SHEET 3 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — CAMERA READY (PANEL DEPLOYED)",
                 scale_note="NOT TO SCALE",
@@ -874,7 +875,7 @@ def sheet_exhausted(components):
     ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
     ax.tick_params(labelsize=6)
 
-    title_block(ax, "SHEET 4 OF 4",
+    title_block(ax, "SHEET 4 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
                 subtitle="WEIGHT DISTRIBUTION — MATERIALS EXHAUSTED (FOR TRANSPORT)",
                 scale_note="NOT TO SCALE",
@@ -886,16 +887,60 @@ def sheet_exhausted(components):
     print("  Sheet 4: Materials Exhausted Distribution")
 
 
+def sheet_loaded_transport(components):
+    """Sheet 5: Loaded Transport — camera-ready water load in transport config.
+
+    Heaviest top-tier case while configured for the road: full Blue IBCs
+    (1,200 kg) with the panel slid in and the cargo doors closed.
+    """
+    fig, ax = plt.subplots(figsize=(18, 8))
+    total_lt, x_lt, yd_lt, z_lt = _draw_state_diagram(
+        ax, components, "loaded_transport", "LOADED TRANSPORT (BLUE FULL)")
+
+    # Same transport config as Materials Exhausted, but water is in the TOP
+    # tier — so the same X-CG with a much higher vertical CG (worst transport Z).
+    exh_comps = filter_state(components, "exhausted")
+    _, _, _, z_exh = compute_cg(exh_comps)
+    note = (f"Full Blue IBCs (1,200 kg, TOP tier) in\n"
+            f"transport config (panel slid in, doors closed).\n"
+            f"Highest-CG transport case — governs\n"
+            f"road-transport stability.\n"
+            f"ΔZ vs Materials Exhausted = {z_lt - z_exh:+.0f}mm\n"
+            f"(top tier vs bottom tier)")
+    ax.text(C_LEN + 100, C_WID * 0.3, note,
+            fontsize=7, color="#1A6FB0", va="center", ha="left",
+            fontweight="bold", **_FONT,
+            bbox=dict(fc="#F0F6FC", ec="#1A6FB0", lw=1, pad=6))
+
+    ax.set_xlim(-400, C_LEN + 500)
+    ax.set_ylim(-500, C_WID + 200)
+    ax.set_aspect("equal")
+    ax.set_xlabel("X (mm)", fontsize=8, **_FONT)
+    ax.set_ylabel("Yd (mm)", fontsize=8, **_FONT)
+    ax.tick_params(labelsize=6)
+
+    title_block(ax, "SHEET 5 OF 5",
+                drawing_title="WEIGHT ANALYSIS",
+                subtitle="WEIGHT DISTRIBUTION — LOADED TRANSPORT (FULL BLUE IBCs)",
+                scale_note="NOT TO SCALE",
+                doc_id="TBS-001 · Weight Distribution",
+                height=0.065)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "weight-analysis-sheet5.png"),
+                dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print("  Sheet 5: Loaded Transport (Full Blue IBCs)")
+
+
 def sheet_summary(components):
     """Sheet 1: Summary comparison — three states side by side."""
     from matplotlib.gridspec import GridSpec
 
-    fig = plt.figure(figsize=(20, 8))
-    gs = GridSpec(3, 3, figure=fig, height_ratios=[6, 2, 1],
+    fig = plt.figure(figsize=(26, 8))
+    gs = GridSpec(3, 4, figure=fig, height_ratios=[6, 2, 1],
                  hspace=0.15, wspace=0.25)
 
-    # Top row: 3 plan views
-    plan_axes = [fig.add_subplot(gs[0, i]) for i in range(3)]
+    # Top row: 4 plan views
+    plan_axes = [fig.add_subplot(gs[0, i]) for i in range(4)]
     # Middle row: summary table spanning all columns
     ax_table = fig.add_subplot(gs[1, :])
     # Bottom row: title block spanning all columns
@@ -905,6 +950,7 @@ def sheet_summary(components):
         ("dry", "DRY\n(Transport)", "#808080"),
         ("ready", "CAMERA READY\n(Full Blue IBCs)", C_BLUE_IBC),
         ("exhausted", "MATERIALS\nEXHAUSTED (Transport)", C_BROWN_IBC),
+        ("loaded_transport", "LOADED TRANSPORT\n(Full Blue IBCs)", "#1A6FB0"),
     ]
 
     cg_points = []
@@ -953,7 +999,7 @@ def sheet_summary(components):
         # Draw drum as circle
         for c in non_cont:
             if c.name == "Light trap drum":
-                if state in ("dry", "exhausted"):
+                if state in ("dry", "exhausted", "loaded_transport"):
                     cx = PANEL_SLIDE + PANEL_CENTER_T / 2
                 else:
                     cx = PANEL_CENTER_T / 2
@@ -1020,9 +1066,9 @@ def sheet_summary(components):
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 1 OF 4",
+    title_block(ax_tb, "SHEET 1 OF 5",
                 drawing_title="WEIGHT ANALYSIS",
-                subtitle="WEIGHT DISTRIBUTION SUMMARY — THREE STATES",
+                subtitle="WEIGHT DISTRIBUTION SUMMARY — FOUR STATES",
                 scale_note="NOT TO SCALE",
                 doc_id="TBS-001 · Weight Distribution",
                 height=0.75)
@@ -1074,7 +1120,8 @@ def main():
     print("STATE SUMMARIES")
     print("=" * 70)
     for state, label in [("dry", "DRY (Transport)"), ("ready", "CAMERA READY"),
-                         ("exhausted", "MATERIALS EXHAUSTED (Transport)")]:
+                         ("exhausted", "MATERIALS EXHAUSTED (Transport)"),
+                         ("loaded_transport", "LOADED TRANSPORT (Full Blue IBCs)")]:
         active = filter_state(components, state)
         total, x_cg, yd_cg, z_cg = compute_cg(active)
         quads = compute_quadrants(active)
@@ -1095,6 +1142,7 @@ def main():
     sheet_dry(components)
     sheet_ready(components)
     sheet_exhausted(components)
+    sheet_loaded_transport(components)
     print("\nDone.")
 
 

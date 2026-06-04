@@ -35,6 +35,8 @@ from tbs_constants import (
     DRUM_D as LT_HOUSING_D,                       # Ø900 fixed housing OD (rev8)
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
     LT_DRUM_OR, LT_OPENING_DEG,
+    RAIL_X_L, BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1,   # film-plane left rail
+    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -382,7 +384,7 @@ def sheet1():
             color=C_CL, fontsize=6.5, ha="center", va="bottom", **FONT, alpha=0.8, zorder=15)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="FRONT ELEVATION — EXTERIOR VIEW",
                 scale_note="SCALE 1:20",
@@ -754,7 +756,7 @@ def sheet2():
             fontweight="bold", **FONT, zorder=15)
 
     # ── Title block ────────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="PLAN CROSS-SECTION (SECTION A-A AT H=1000mm) — DRUM BAFFLES & S-PATH LIGHT ROUTE",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1296,7 +1298,7 @@ def sheet3():
     clbl((CX(20), CY(-95)), CY(-92), "Panel top edge")
 
     # ── Title block (portrait sheet — taller box, smaller fonts, clipped) ──────
-    title_block(ax, "SHEET 3 OF 5",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="DRUM ELEVATION — SECTION A-A: VERTICAL DRUM, WALKING HEIGHT",
                 scale_note="EQUAL ASPECT  \u00b7  SCALE 1:20 (APPROX)  \u00b7  ALL DIMS IN mm",
@@ -1548,7 +1550,7 @@ def sheet4():
        col_w=300, fs=5.5, font=FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 4 OF 5",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="SLIDING RAIL TRANSPORT SYSTEM — PLAN VIEW AT FLOOR LEVEL",
                 scale_note="EQUAL ASPECT  \u00b7  ALL DIMS IN mm  \u00b7  SOLID = OPERATIONAL, GHOST = TRANSPORT",
@@ -1676,7 +1678,7 @@ def sheet5():
     ]):
         ax.text(-78, -130 - i * 38, line, ha="left", va="center", fontsize=8.4, color="#16361f", **FONT)
 
-    title_block(ax, "SHEET 5 OF 5",
+    title_block(ax, "SHEET 5 OF 6",
                 drawing_title="HINGED LIGHT-TRAP PANEL",
                 subtitle="REVOLVING-DOOR LIGHT LOCK (rev 8) — ACCESS & LIGHT-TIGHTNESS VERIFICATION (BOTH PASS)",
                 scale_note="PLAN VIEWS · NOT TO SCALE · ALL DIMS IN mm",
@@ -1688,6 +1690,97 @@ def sheet5():
     print("  diagrams/hingepanel-sheet5.png saved")
 
 
+
+
+def sheet6():
+    """Transport-slide clearance vs the film-plane left mechanism (plan)."""
+    RED, GREEN = "#C0202A", "#2E8B57"
+    D0, D1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
+    RX, SL, PT_ = RAIL_X_L, PANEL_SLIDE, PANEL_CENTER_T     # 150, 550, 120
+    cyd = PW / 2                                            # 1181 light-lock Yd centre
+
+    fig, ax = plt.subplots(figsize=(17, 12))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-280, 2360); ax.set_ylim(-360, 2700)
+    ax.set_aspect("equal"); ax.axis("off")
+
+    ax.add_patch(Rectangle((0, 0), 1340, PW, fc="#EEF6EE", ec="none", zorder=0))
+    ax.plot([-280, 1340], [0, 0], color=C_OUT, lw=2, zorder=3)
+    ax.plot([-280, 1340], [PW, PW], color=C_OUT, lw=2, zorder=3)
+    ax.text(-270, -80, "near wall (Yd=0)", fontsize=7.5, color=C_DIM, **FONT)
+    ax.text(-270, PW + 35, "far wall (Yd=2362)", fontsize=7.5, color=C_DIM, **FONT)
+    ax.plot([0, 0], [0, PW], color=C_CL, lw=1.4, ls=(0, (6, 4)), zorder=3)
+    ax.text(10, PW + 95, "door plane X=0", fontsize=8, color=C_CL, **FONT)
+
+    # film-plane left rail at X=150 (fixed ends + demount centre)
+    for ya, yb, c in [(FP_Y_MIN, D0, C_STEEL), (D1, FP_Y + 38, C_STEEL), (D0, D1, C_LIGHT)]:
+        ax.add_patch(Rectangle((RX - 13, ya), 26, yb - ya, fc=c, ec=C_OUT, lw=1, zorder=6))
+    ax.text(RX, (D0 + D1) / 2, "left rail X=150\n· demount centre\n(drum zone only)",
+            fontsize=6, color="#8a5a10", **FONT, ha="center", va="center", zorder=12)
+    # brace-cage beams (run X 150->4649) at Yd 100 & 2262
+    for yy in (FP_Y_MIN, FP_Y):
+        ax.add_patch(Rectangle((RX, yy - 17), 1340 - RX, 34, fc=C_STEEL, ec=C_OUT,
+                               lw=0.7, alpha=0.85, zorder=5))
+    ax.text(1320, FP_Y_MIN - 60, "brace-cage beam (X 150→4649) →", fontsize=7, color=C_DIM, **FONT, ha="right")
+    ax.text(1320, FP_Y + 52, "brace beam + muslin screen (Yd≈2262) →", fontsize=7, color=C_DIM, **FONT, ha="right")
+    for yy in (FP_Y_MIN, FP_Y):                              # corner posts at X=150
+        ax.add_patch(Rectangle((RX - 27, yy - 27), 54, 54, fc="#5A5A62", ec=C_OUT, lw=1, zorder=7))
+
+    # hinged panel — deployed + transport ghost
+    ax.add_patch(Rectangle((0, 0), PT_, PW, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=8))
+    ax.text(PT_ / 2, -140, "panel\ndeployed", fontsize=7, color=C_DIM, **FONT, ha="center", va="top")
+    ax.add_patch(Rectangle((SL, 0), PT_, PW, fc=C_ALUM, ec=RED, lw=1.6, ls=(0, (5, 3)),
+                           alpha=0.30, zorder=9))
+    ax.text(SL + PT_ / 2, -140, f"panel TRANSPORT\n(slid +{int(SL)})", fontsize=7.5,
+            color=RED, **FONT, ha="center", va="top", fontweight="bold")
+    ax.add_patch(Circle((0, cyd), DRUM_R, fc=C_ALUM, ec="#7a5a20", lw=1.0, alpha=0.45, zorder=8))
+    ax.add_patch(Circle((SL, cyd), DRUM_R, fc=C_ALUM, ec=RED, lw=1.0, ls=(0, (4, 3)), alpha=0.16, zorder=9))
+    ax.text(SL, cyd, "housing\ndrum-zone rail\ndemounted ✓\n(clears)", fontsize=6.4,
+            color=GREEN, **FONT, ha="center", va="center", zorder=12)
+    ax.annotate("", xy=(SL - 8, 1181), xytext=(PT_ + 20, 1181),
+                arrowprops=dict(arrowstyle="-|>", color=RED, lw=2.0), zorder=11)
+    ax.text((PT_ + SL) / 2, 1240, f"{int(SL)}mm slide", fontsize=7.5, color=RED, **FONT, ha="center")
+
+    # numbered collision markers
+    def mark(x, y, n):
+        ax.add_patch(Circle((x, y), 58, fc="white", ec=RED, lw=2.2, zorder=14))
+        ax.text(x, y, str(n), fontsize=12, color=RED, **FONT, fontweight="bold",
+                ha="center", va="center", zorder=15)
+    mark(RX, 430, 1); mark(RX, 1940, 1)
+    mark(SL + PT_ / 2, FP_Y_MIN, 2); mark(SL + PT_ / 2, FP_Y, 2)
+
+    ax.text(-280, 2640, "TRANSPORT SLIDE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
+            fontsize=13, fontweight="bold", color=C_OUT, **FONT)
+    notes = ("THE ISSUE — the ~550mm transport slide sweeps the\n"
+             "panel through X=150 (the film-plane left edge).\n\n"
+             "①  Panel CORNERS hit the FIXED left-rail segments.\n"
+             "    The operational demount segment (amber) clears\n"
+             "    only the drum zone (Yd 731–1631), not the corners.\n\n"
+             "②  Panel BAND overlaps the lengthwise brace-cage\n"
+             "    beams (Yd≈100 & 2262) and the muslin screen.\n\n"
+             "The housing itself clears — its drum-zone rail is\n"
+             "demounted (green).\n\n"
+             "NOT a regression: the panel always slid past X=150\n"
+             "(rev 8 only deepened the slide 300→550mm).\n\n"
+             "RESOLUTION (Hinged Panel Report §5.4) — strike the\n"
+             "film plane FIRST: remove muslin screen → knock down\n"
+             "the brace cage → remove the FULL left rail → lift the\n"
+             "walkway → release latches → slide ~550mm → lock.")
+    ax.add_patch(FancyBboxPatch((1440, 360), 880, 2150,
+                                boxstyle="round,pad=8,rounding_size=16",
+                                fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))
+    ax.text(1470, 2440, notes, fontsize=8.6, color="#26323a", **FONT, va="top", zorder=12)
+
+    title_block(ax, "SHEET 6 OF 6",
+                drawing_title="HINGED LIGHT-TRAP PANEL",
+                subtitle="TRANSPORT-SLIDE CLEARANCE vs FILM-PLANE LEFT MECHANISM — STRIKE FILM PLANE BEFORE SLIDING",
+                scale_note="PLAN VIEW · NOT TO SCALE · ALL DIMS IN mm",
+                doc_id="TBS-001 · Hinged Light-Trap Panel", height=0.045)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "hingepanel-sheet6.png"), dpi=130,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/hingepanel-sheet6.png saved")
+
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     print("Generating hinged light-trap panel drawings...")
@@ -1696,4 +1789,5 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
     print("Done.")

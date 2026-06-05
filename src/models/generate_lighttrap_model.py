@@ -70,7 +70,8 @@ APER_L = DRUM_CY - APERTURE_R         # 713 — aperture edge (near)
 APER_R = DRUM_CY + APERTURE_R         # 1649 — aperture edge (far)
 
 TAGS = ["Context", "Door Frame", "Hinge Panel", "Light Trap",
-        "Sliding Carriage", "Fan B"]
+        "Sliding Carriage", "Fan B",
+        "Processing Tray", "Walkways", "Film Plane Rails"]
 
 
 # ── Ghosted container context (end opening only) ─────────────────────────────
@@ -375,16 +376,93 @@ def fan_b():
     return '\n'.join(ov.fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
 
 
+# ── Shared cargo-door-end context (tray + walkways + film-plane rails) ───────
+# Cropped to a common +X plane so the SAME details render in both the operating
+# (lighttrap) and transport (lighttrap-transport) models. Reuses the overview's
+# tray / walkway / rail geometry + constants via `ov`.
+PARTIAL_X = 1600        # common +X crop plane — container stub, tray, walkways and
+                        # film-plane beams all end here so their cut faces align
+
+
+def processing_tray_partial():
+    """A cropped section of the processing-tray basin at the cargo-door end."""
+    x0 = ov.PROC_TRAY_X_L
+    yN, yF = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
+    w, d = PARTIAL_X - x0, yF - yN
+    st, rt, rim = 2, 2, ov.PROC_TRAY_RIM
+    return '\n'.join([
+        ruby_box("Processing Tray Floor (partial)", x0, yN, 0, w, d, st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Near (partial)", x0, yN, st, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Far (partial)", x0, yF - rt, st, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Left (cargo end)", x0, yN, st, rt, d, rim - st, color=ov.C_TRAY),
+        ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, st,
+                 w - 2 * rt, d - 2 * rt, rim - st - 8, color=ov.C_BATH, alpha=0.45),
+    ])
+
+
+def walkways_partial():
+    """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the
+    cargo-door-end zone. (The left walkway is the removable lift-out — shown as a
+    ghost in the operating context, omitted entirely for transport.)"""
+    grate_z = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
+    t = ov.WALKWAY_GRATE_T
+    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W       # = 470 — where the long decks begin
+    w = PARTIAL_X - x0
+    return '\n'.join([
+        ruby_box("Walkway Near (partial)", x0, 0, grate_z,
+                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+        ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
+                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+    ])
+
+
+def film_plane_left():
+    """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
+
+    The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
+    pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
+    (upper + lower) + corner posts tying them at the near-wall (Yd≈100) and
+    far-wall (Yd≈2262) ends. BOTH left rails' DEMOUNTABLE drum-zone segments
+    (Yd 731–1631) are shown TAKEN OUT (a gap in each) — swung clear for drum mode
+    per the 2D film-plane diagrams. Beams cropped to PARTIAL_X. Fixed (no slide)."""
+    rail = 40
+    s = ov.BRACE_RHS                            # 50 — brace RHS
+    xL = ov.RAIL_X_L                            # 150 — left rail X
+    z_bot = ov.RAIL_OFF                         # 100 — lower rail Z
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248 — upper rail Z
+    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100 (near-wall end), 2262 (far-wall end)
+    d0, d1 = ov.BRACE_LEFT_DEMOUNT_Y0, ov.BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
+    bx = PARTIAL_X - xL                          # brace-beam length (cropped)
+    C = ov.C_STEEL
+    parts = [
+        # Both left rails — fixed near + fixed far segments; DEMOUNTABLE drum-zone
+        # middle (Yd 731–1631) REMOVED on each (swung clear for drum mode).
+        ruby_box("FP Rail BL near (lower left)", xL, yN, z_bot, rail, d0 - yN, rail, color=C),
+        ruby_box("FP Rail BL far (lower left)", xL, d1, z_bot, rail, yF - d1, rail, color=C),
+        ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
+        ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
+        # (BL + TL demountable segments Yd 731–1631 intentionally omitted = taken out.)
+    ]
+    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
+        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
+    return '\n'.join(parts)
+
+
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
 
 def generate_ruby():
     comps = [
-        component("Context", "Context", context()),
+        component("Context", "Context", context(x_far=PARTIAL_X)),
         component("Fixed Door Frame", "Door Frame", door_frame()),
         component("Hinged Light-Trap Panel", "Hinge Panel", hinge_panel()),
         component("Revolving Light-Trap Drum", "Light Trap", drum()),
         component("Sliding Carriage System", "Sliding Carriage", sliding_carriage()),
         component("Fan B (intake)", "Fan B", fan_b()),
+        component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
+        component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
+        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
     ]
     body = '\n'.join(comps)
 
@@ -397,6 +475,10 @@ def generate_ruby():
         ("Hinge Panel & Seal", ["Hinge Panel", "Door Frame"]),
         ("Sliding Carriage", ["Sliding Carriage", "Hinge Panel"]),
         ("Fan B", ["Fan B", "Hinge Panel"]),
+        ("Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage",
+                                 "Processing Tray", "Walkways"]),
+        ("Film-Plane Rails (L)", ["Film Plane Rails", "Light Trap", "Hinge Panel",
+                                  "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))

@@ -18,15 +18,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
-| 7. Housed revolving-door light lock (custom fabrication) | $2,300 | $3,150 |
-| 7a. Panel sliding carriage | $1,036 | $1,036 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
+| 7a. Panel sliding carriage (B2 — longer rails + barrel hinges + swing caster) | $1,428 | $1,428 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,000 | $1,515 |
-| 7c. Ceiling rail suspension | $208 | $208 |
+| 7c. Ceiling rail suspension (B2 longer rails) | $254 | $254 |
 | 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,755** | **~$27,923** |
+| **TOTAL (base build + 50-print run)** | **~$20,331** | **~$28,145** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -317,13 +317,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 **Section total: ~$1,785–$1,890**
 
 ## 7. Housed Revolving-Door Light Lock — Custom Fabrication
-*Source: `light-trap-selection.md` § 4 (rev 8). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*
+*Source: `light-trap-selection.md` § 4 (rev 9 / B2). Custom-fabricated Ø900 fixed housing + single-opening C-shell drum (no fins) built into the hinged cargo-door panel — light-tight by geometry. **rev 9 switches the drum/housing from 3mm aluminum to a hybrid plastic skin (5mm UV-HDPE housing, 4mm PP drum)** — cutting the drum/housing mass (~99 kg → ~60 kg), removing galvanic concerns, and lowering fabrication cost. Replaces the failed Ø750 4-fin drum. Single-operator entry/exit at any time without admitting daylight.*
 
 ### Housing + drum body
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 3mm 5052 aluminum sheet, 1220×2440mm | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 sheets | Industrial Metal Supply (SoCal) / Online Metals | ~$175–$235/sheet → ~$700–$940 |
-| 4mm aluminum plate (offcut) | Top + bottom drum caps + opening edge stiffeners | ~0.6m² | Industrial Metal Supply / Metal Supermarkets SoCal | ~$60–$95 |
+| 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | ~7 m² | [TAP Plastics (SoCal)](https://www.tapplastics.com/) / Online Metals plastics | ~$180–$280 |
+| 4mm black polypropylene sheet | Ø864 drum shell + top/bottom caps + opening edge stiffeners — LT_DRUM_T (~7 m²) | ~7 m² | TAP Plastics / Curbell Plastics (SoCal) | ~$150–$240 |
 | 75mm Ø solid round bar, cut to 150mm | Upper and lower stub shafts (×2) | 2 pieces | Pacific Coast Steel or any steel service center | ~$30 |
 
 ### Bearings
@@ -346,36 +346,37 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [SS round grab rail, 100mm Ø × 400mm](https://www.mcmaster.com/4530T37) | Interior face only, welded bracket | 1 | McMaster-Carr #4530T37 | ~$20 |
 | M10 × 40mm hex bolt, stainless + flat washer | Lower bearing collar — 8 off | 1 lot | McMaster-Carr | ~$20 |
 | M10 × 35mm hex bolt, stainless + flat washer | Upper bearing housing — 6 off | 1 lot | McMaster-Carr | ~$15 |
-| Galvanic isolation kit — nylon shoulder bushings + isolation washers + barrier tape | Al housing/drum ↔ steel frame & bearings | 1 lot | McMaster-Carr | ~$40–$70 |
+| Nylon isolation washers + stainless fasteners | Steel shaft/bearing ↔ plastic shell joints (plastic↔plastic elsewhere — no galvanic couple) | 1 lot | McMaster-Carr | ~$25–$40 |
 
 ### Surface treatment
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Etch-prime + flat black — interior housing + drum surfaces | RAL 9005 matte; aluminum etch/abrasive prep + coat | 1 job | Local powder coat shop (SoCal) | ~$180–$260 |
-| Anodize or grey topcoat — exterior drum face | Standard exterior aluminum finish | 1 job | Included with coat job above, or rattle-can | ~$0–$30 |
+| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at extrusion welds | 1 job | Rattle-can / local shop | ~$40–$70 |
 
 ### Fabrication labour
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Metal fabrication — roll 2 cylinders (housing + drum), seam weld, cap/shaft weld, bearing fit | 22–28 hrs at local metal fab shop | 1 job | Local fabrication shop (SoCal) — get 2–3 quotes | ~$1,100–$1,500 |
-**Section total: ~$2,300–$3,150**
+| Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft fit, bearing fit | 16–22 hrs at local plastic fab shop | 1 job | Local plastic fabrication shop (SoCal) — get 2–3 quotes | ~$800–$1,150 |
+**Section total: ~$1,450–$2,100**
 
 *Note: This is for the drum body only. The hinged panel that the drum mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is covered in § 2 (Interior Conversion) above. See [light-trap-selection.md](light-trap-selection.md) for full specification and supplier notes.*
 
 ## 7a. Panel Sliding Carriage
-*Source: `equipment-layout-report.md` § 6.1. Enables transport mode: panel slides inward 300mm, clearing container doors for closure. Single-person operation (~5 min, panel slide only).*
+*Source: `equipment-layout-report.md` § 6.1. Enables transport mode: panel slides inward ~880mm (rev 9 / B2 — retracts the punch-out bay behind the cargo doors), clearing container doors for closure. Single-person operation (~5 min; strike film plane + door-end walkway brackets first, then slide).*
 
 ### Panel slide system
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [HGR20 linear rail, 500mm](https://www.amazon.com/s?k=HGR20+linear+rail+500mm) | Both walls, floor + ceiling, X-direction | 4 | Amazon / Automation Overstock | ~$88 |
+| [HGR20 linear rail, 1200mm](https://www.amazon.com/s?k=HGR20+linear+rail+1200mm) | Both walls, floor + ceiling, X-direction — span the ~880mm B2 transport slide + carriage | 4 | Amazon / Automation Overstock | ~$180 |
 | [HGH20CA carriage blocks](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged, 2 per rail | 8 | Amazon / Automation Overstock | ~$144 |
 | Carriage beam, 60×60×3mm SHS | 2400mm tall, mild steel | 1 | Metal Supermarkets | ~$35 |
 | Hinge mounting plates, 6mm steel | 220×80mm | 3 | Local fab | ~$30 |
+| [Heavy-duty weld-on barrel hinge](https://www.mcmaster.com/weld-on-hinges/) | B2 panel swing hinge — carries bay + housing + drum moment (**structural sign-off**) | 3 | McMaster-Carr / local fab | ~$240 |
 | Rail mounting brackets, 8mm angle | Both walls, floor + ceiling | 8 | Local fab | ~$64 |
 | [Destaco 207-U toggle clamps](https://www.amazon.com/s?k=Destaco+207-U+toggle+clamp) | 2 per position × 2 positions | 4 | Amazon / McMaster-Carr | ~$100 |
 | Strike pins, 16mm hardened dowel | Pressed into carriage base | 4 | McMaster-Carr | ~$12 |
-**Panel slide subtotal: ~$473**
+| Retractable heavy-duty swivel caster | Free-edge swing support through the 180° arc (B2 — carries leaf weight while open) | 1 | McMaster-Carr / Grainger | ~$60 |
+**Panel slide subtotal: ~$865**
 
 ### Fixed door frame + seals
 | Item | Spec | Qty | Supplier | Est. cost |
@@ -427,12 +428,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [HGR20 linear rail, 500mm](https://www.amazon.com/s?k=HGR20+linear+rail+500mm) | Ceiling-mounted, both walls, X-direction | 2 | Amazon / Automation Overstock | ~$44 |
+| [HGR20 linear rail, 1200mm](https://www.amazon.com/s?k=HGR20+linear+rail+1200mm) | Ceiling-mounted, both walls, X-direction — span the ~880mm B2 transport slide | 2 | Amazon / Automation Overstock | ~$90 |
 | [HGH20CA carriage blocks](https://www.amazon.com/s?k=HGH20CA+carriage+block) | Flanged, 2 per rail | 4 | Amazon / Automation Overstock | ~$72 |
 | Ceiling mounting brackets, 8mm angle | Welded to container ceiling ribs | 4 | Local fab | ~$32 |
 | Drop rod / hanging bracket, 6mm steel | Connects carriage block to panel top rail | 4 | Local fab | ~$40 |
 | Fasteners, misc | M10 stainless | 1 lot | McMaster-Carr | ~$20 |
-**Ceiling rail subtotal: ~$208**
+**Ceiling rail subtotal: ~$254**
 
 *Note: The panel sliding carriage (§7a) uses 4 rails at floor + ceiling on both walls. This section covers the 2 additional ceiling rails that provide panel suspension and floor gap clearance.*
 

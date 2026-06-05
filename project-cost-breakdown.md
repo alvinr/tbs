@@ -18,13 +18,13 @@
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
 | **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
-| **6. Housed revolving-door light lock (custom fabrication)** | $2,300 | $2,750 | $3,150 |
+| **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $993 | $1,271 | $1,537 |
-| **6b. Ceiling rail suspension** | $175 | $208 | $240 |
+| **6b. Ceiling rail suspension (B2 longer rails)** | $255 | $302 | $350 |
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$17,347** | **$22,254** | **$28,545** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$16,841** | **$21,722** | **$28,048** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -263,19 +263,19 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
+Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** (no fins) built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. This replaces the earlier Ø750 4-fin drum, which could not fit a person and leaked daylight at the rotation transit angles. **rev 9 / B2 builds the drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum — instead of 3mm aluminum**, cutting the drum/housing mass (~99 kg → ~60 kg), removing the aluminum-to-steel galvanic couple, and lowering both material and fabrication cost. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| 3mm 5052 aluminum sheet, 1220×2440mm (×4) | $700 | $820 | $940 | Ø900 housing + Ø864 drum shells (~12 m²); Industrial Metal Supply / Online Metals |
-| 4mm aluminum plate (caps + edge stiffeners) + 75mm steel round bar (stub shafts ×2) | $65 | $80 | $95 | Aluminum supplier + steel service center |
+| 5mm UV-HDPE sheet (black) — Ø900 housing shell (~7 m²) | $180 | $230 | $280 | TAP Plastics (SoCal) / Online Metals plastics |
+| 4mm PP sheet — Ø864 drum shell + caps (~7 m²) + 75mm steel round bar (stub shafts ×2) | $180 | $215 | $270 | TAP / Curbell Plastics + steel service center |
 | SKF 6215-2RS1 sealed bearing (×2) | $90 | $110 | $130 | Bearing World Anaheim / Applied Industrial Technologies |
 | Seals — neoprene wiper, 20mm compression, silicone + brush wiper (drum↔housing rotating seal) | $90 | $110 | $130 | McMaster-Carr #93855K6, #8635K31, #7587A3, brush strip |
 | Hardware — SS grab rail (×1 interior, welded bracket), M10 stainless bolts (14 off) | $60 | $75 | $90 | McMaster-Carr / Fastenal |
-| Galvanic isolation kit — nylon bushings/washers + barrier tape + A2 bolts | $40 | $55 | $70 | Al↔steel joints; McMaster-Carr |
-| Etch-prime + flat black (housing + drum interior) + exterior topcoat | $180 | $220 | $260 | Aluminum prep; local coat shop SoCal |
-| Metal fabrication — roll 2 cylinders (housing + drum), aluminum TIG seam/cap/shaft weld, bearing fit (22–28 hrs) | $1,100 | $1,300 | $1,500 | Local metal fab shop — get 2–3 quotes |
-| **Housing + drum total** | **$2,300** | **$2,750** | **$3,150** | |
+| Nylon isolation washers + stainless fasteners (steel shaft/bearing ↔ plastic shell) | $25 | $32 | $40 | No galvanic couple; McMaster-Carr |
+| Matte-black interior finish (black-pigmented sheet, no etch-prime; flat-black at welds) | $40 | $55 | $70 | Rattle-can / local shop SoCal |
+| Plastic fabrication — roll 2 cylinders (housing + drum), hot-air / extrusion weld, cap/shaft + bearing fit (16–22 hrs) | $800 | $975 | $1,150 | Local plastic fab shop — get 2–3 quotes |
+| **Housing + drum total** | **$1,465** | **$1,802** | **$2,160** | |
 
 *Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 18mm ply skins, EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
@@ -313,10 +313,10 @@ HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap,
 
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| HGR20 linear rail, 500mm (×2) + HGH20CA carriage blocks (×4) | $100 | $116 | $130 | Automation Overstock, Gardena CA |
+| HGR20 linear rail, 1200mm (×2) + HGH20CA carriage blocks (×4) | $180 | $210 | $240 | Span the ~880mm B2 transport slide; Automation Overstock, Gardena CA |
 | Ceiling mounting brackets + drop rods, 6–8mm steel | $60 | $72 | $85 | Local fab |
 | Fasteners, misc | $15 | $20 | $25 | McMaster-Carr / Fastenal |
-| **Ceiling rail total** | **$175** | **$208** | **$240** | |
+| **Ceiling rail total** | **$255** | **$302** | **$350** | |
 
 ---
 
@@ -480,13 +480,13 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $95 |
 | Film plane mechanism (manual, incl. brace cage) | $2,800 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
-| Revolving drum light trap (custom fabrication) | $950 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $953 |
-| Ceiling rail suspension | $175 |
+| Ceiling rail suspension (B2 longer rails) | $255 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$15,582** |
+| **Scenario A total** | **~$16,177** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -497,24 +497,24 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Pinhole plate | $150 |
 | Film plane mechanism (manual + brace cage + electric actuation) | $3,797 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
-| Revolving drum light trap (custom fabrication) | $1,200 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, wall-cantilevered) | $1,216 |
-| Ceiling rail suspension | $208 |
+| Ceiling rail suspension (B2 longer rails) | $302 |
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$21,379** |
+| **Scenario B total (excl. CDL)** | **~$22,073** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $21,185 |
+| Scenario B build | $21,879 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$110,115–$140,115** |
+| **Scenario C total** | **~$111,379–$141,379** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

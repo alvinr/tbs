@@ -46,7 +46,7 @@ SLIDE = ov.PANEL_SLIDE                          # 550 — transport slide travel
 # beam) is handled inside lt.sliding_carriage(slide=SLIDE) by coordinate offset.
 MOVING_TAGS = ["Hinge Panel", "Light Trap", "Fan B"]
 
-TAGS = lt.TAGS + ["Cargo Doors", "Processing Tray", "Walkways"]
+TAGS = lt.TAGS + ["Cargo Doors", "Processing Tray", "Walkways", "Film Plane Rails"]
 
 
 # ── Closed ISO cargo doors (transport-only; demonstrate the clearance) ───────
@@ -121,6 +121,41 @@ def walkways_partial():
     ])
 
 
+def film_plane_left():
+    """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
+
+    The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
+    pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
+    (upper + lower) that tie them at the near-wall (Yd≈100) and far-wall (Yd≈2262)
+    ends, plus the left corner posts. The UPPER-LEFT rail's DEMOUNTABLE drum-zone
+    segment (Yd 731–1631) is shown TAKEN OUT (a gap) — swung clear for drum mode
+    per the 2D film-plane diagrams; the lower-left rail is left continuous. Beams
+    cropped in X to the cargo-door-end zone (PARTIAL_X). Fixed (does not slide)."""
+    rail = 40
+    s = ov.BRACE_RHS                            # 50 — brace RHS
+    xL = ov.RAIL_X_L                            # 150 — left rail X
+    z_bot = ov.RAIL_OFF                         # 100 — lower rail Z
+    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248 — upper rail Z
+    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100 (near-wall end), 2262 (far-wall end)
+    d0, d1 = ov.BRACE_LEFT_DEMOUNT_Y0, ov.BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
+    bx = PARTIAL_X - xL                          # brace-beam length (cropped)
+    C = ov.C_STEEL
+    parts = [
+        # Lower-left rail (BL) — continuous.
+        ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
+        # Upper-left rail (TL) — fixed near + fixed far; DEMOUNTABLE middle REMOVED.
+        ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
+        ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
+        # (TL demountable segment Yd 731–1631 intentionally omitted = taken out.)
+    ]
+    # Brace beams (upper + lower) + left corner post at the near- and far-wall ends.
+    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
+        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
+    return '\n'.join(parts)
+
+
 # ── Assemble the Ruby script (mirrors lt.generate_ruby + the transport pose) ──
 
 def generate_ruby():
@@ -139,6 +174,7 @@ def generate_ruby():
         component("Fan B (intake)", "Fan B", lt.fan_b()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
+        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
     ]
     body = '\n'.join(comps)
 
@@ -151,6 +187,8 @@ def generate_ruby():
         ("Transport — All", TAGS),
         ("Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage",
                                  "Processing Tray", "Walkways"]),
+        ("Film-Plane Rails (L)", ["Film Plane Rails", "Light Trap", "Hinge Panel",
+                                  "Processing Tray"]),
         ("Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]),
         ("Light-Trap Drum", ["Light Trap", "Hinge Panel"]),
     ]

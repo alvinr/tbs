@@ -25,6 +25,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Walkways") unless model.layers["Walkways"]
+  model.layers.add("Film Plane Rails") unless model.layers["Film Plane Rails"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Context ═══
@@ -72,28 +73,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
   mat.color = Sketchup::Color.new(239, 237, 228)
   mat.alpha = 0.16
-  grp.material = mat
-
-  # Left walkway (ghost)
-  grp = ents.add_group
-  grp.name = "Left walkway (ghost)"
-  face = grp.entities.add_face([170.mm,0.mm,65.mm], [470.mm,0.mm,65.mm], [470.mm,2362.mm,65.mm], [170.mm,2362.mm,65.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
-  mat = model.materials["Left walkway (ghost)"] || model.materials.add("Left walkway (ghost)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 0.28
-  grp.material = mat
-
-  # Left walkway punch-out (ghost)
-  grp = ents.add_group
-  grp.name = "Left walkway punch-out (ghost)"
-  face = grp.entities.add_face([470.mm,800.mm,65.mm], [770.mm,800.mm,65.mm], [770.mm,1560.mm,65.mm], [470.mm,1560.mm,65.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
-  mat = model.materials["Left walkway punch-out (ghost)"] || model.materials.add("Left walkway punch-out (ghost)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 0.34
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -1267,6 +1246,112 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Walkways (near + far, partial)"
   inst.layer = model.layers["Walkways"]
 
+  # ═══ Film-Plane Rails (left, partial) ═══
+  defn = model.definitions.add("Film-Plane Rails (left, partial)")
+  ents = defn.entities
+  # FP Rail BL (lower left)
+  grp = ents.add_group
+  grp.name = "FP Rail BL (lower left)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2262.mm,100.mm], [150.mm,2262.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail TL near (upper left)
+  grp = ents.add_group
+  grp.name = "FP Rail TL near (upper left)"
+  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,731.mm,2248.mm], [150.mm,731.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail TL far (upper left)
+  grp = ents.add_group
+  grp.name = "FP Rail TL far (upper left)"
+  face = grp.entities.add_face([150.mm,1631.mm,2248.mm], [190.mm,1631.mm,2248.mm], [190.mm,2262.mm,2248.mm], [150.mm,2262.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Lower (near wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Lower (near wall)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [1800.mm,100.mm,100.mm], [1800.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Upper (near wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Upper (near wall)"
+  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [1800.mm,100.mm,2248.mm], [1800.mm,150.mm,2248.mm], [150.mm,150.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Post L (near wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Post L (near wall)"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2148.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Lower (far wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Lower (far wall)"
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [1800.mm,2262.mm,100.mm], [1800.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Beam Upper (far wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Beam Upper (far wall)"
+  face = grp.entities.add_face([150.mm,2262.mm,2248.mm], [1800.mm,2262.mm,2248.mm], [1800.mm,2312.mm,2248.mm], [150.mm,2312.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Brace Post L (far wall)
+  grp = ents.add_group
+  grp.name = "FP Brace Post L (far wall)"
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2148.mm)
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Film-Plane Rails (left, partial)"
+  inst.layer = model.layers["Film Plane Rails"]
+
 
 # ── Transport pose: slide the panel-mounted components inward 550mm in X ──
 # (the carriage's own moving parts are already offset via lt.sliding_carriage).
@@ -1280,7 +1365,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways"]
+keep_tags = ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways", "Film Plane Rails"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1297,7 +1382,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 model.pages.add("Overview")
-[["Transport — All", ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways"]], ["Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage", "Processing Tray", "Walkways"]], ["Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]], ["Light-Trap Drum", ["Light Trap", "Hinge Panel"]]].each { |name, tags|
+[["Transport — All", ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways", "Film Plane Rails"]], ["Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage", "Processing Tray", "Walkways"]], ["Film-Plane Rails (L)", ["Film Plane Rails", "Light Trap", "Hinge Panel", "Processing Tray"]], ["Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]], ["Light-Trap Drum", ["Light Trap", "Hinge Panel"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

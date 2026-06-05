@@ -19,7 +19,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - 100% light exclusion — no straight-line optical path from exterior to interior
 - Single-operator personnel access at any time during exposure
 - 180° outward swing for full-width loading access (IBC totes, equipment)
-- ~550mm inward slide for transport mode — clears ISO container doors + hardware
+- ~880mm inward slide for transport mode — retracts the B2 punch-out bay behind the ISO container doors + hardware
 - Emergency egress operable from inside without tools
 - Weatherproof for outdoor field deployment (IP44 rated seals)
 - Single-person mode conversion (~5 minutes)
@@ -105,12 +105,12 @@ the same exterior door plane (X=0), concentric inboard of the panel-perimeter se
 | Passage width | **~555mm** (the 80° opening) — single operator, sideways entry |
 | Height | Top at Z=2200mm (upper bearing on panel top rail) |
 | Mounting | **Suspended with the panel** — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80). |
-| Wall thickness | 3mm aluminum 5052-H32 (housing and drum), rolled and seam-welded; opening edge-stiffened |
-| Interior finish | Etch-prime + flat black (RAL 9005); anodize optional |
-| Exterior finish | Grey oxide primer + grey topcoat |
+| Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 4mm PP drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
+| Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
+| Exterior finish | UV-stabilized black/grey sheet — inherent, no primer |
 | Clear walking height | 1910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | housing ~36 kg + rotating drum ~63 kg = **~99 kg** (3mm aluminum, first-principles) |
+| Weight | housing ~22 kg + rotating drum ~38 kg = **~60 kg** (plastic skin, ≈60% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
 ### 3.2 Bearings
 
@@ -197,11 +197,22 @@ standard commercial-darkroom-door arrangement, here custom-built to the panel.
 
 | Parameter | Value |
 |-----------|-------|
-| Type | 200mm stainless steel ball-bearing piano hinge |
+| Type | Heavy-duty weld-on barrel hinges — **STRUCTURAL SIGN-OFF REQUIRED** |
 | Quantity | 3 |
 | Positions (from floor) | 220mm, 1190mm, 2158mm |
-| Mounting | Left edge of panel (exterior view) |
+| Mounting | Left edge of panel (exterior view), welded to a steel hinge post |
 | Swing | 180° outward — clears full door opening and all interior equipment |
+
+Under rev 9 (B2) the panel no longer carries just plywood skins: the punch-out bay,
+the fixed Ø900 housing, and the revolving drum all hang off the swinging leaf,
+roughly tripling the cantilevered swing-out moment about the hinge line. A 200mm
+ball-bearing piano hinge is no longer adequate; the leaf is hung on three heavy-duty
+weld-on barrel hinges on a welded steel post. The plastic-skinned drum/housing
+(LT_DRUM_T = 4mm PP, LT_HOUSING_T = 5mm UV-HDPE) keeps that added mass modest — the
+core is light — but the moment arm is long, so the **hinge post, barrel hinges, and
+their weld pattern require a structural engineer's sign-off** before fabrication. A
+**retractable swing-support caster** at the free (latch) edge carries the leaf weight
+through its 180° arc so the load is not borne by the hinges alone while open.
 
 ### 4.2 Cam Latches
 
@@ -222,8 +233,8 @@ interior equipment.
 
 ## 5. Sliding Carriage System
 
-The entire panel (including the housing + drum) slides ~550mm in the X direction on linear
-rails for transport mode conversion. This slide retracts the drum's exterior
+The entire panel (including the bay, housing + drum) slides ~880mm in the X direction on linear
+rails for transport mode conversion. This slide retracts the B2 punch-out bay's exterior
 overhang behind the container door closure plane.
 
 **Sheet 1 — Side elevation cross-section: Panel suspended from ceiling rail, operational and transport positions, processing tray clearance**
@@ -238,15 +249,15 @@ See [Ceiling Rail Design](ceiling-rail-report.md) for full details.
 
 | Position | Panel corner inner face X | Drum exterior edge X | Container doors clear? |
 |----------|--------------------------|---------------------|----------------------|
-| Operational | 40mm | −295mm | No (drum protrudes 295mm beyond exterior face) |
-| Transport | 340mm | −35mm → +5mm | Yes (drum clears exterior face by 5mm) |
+| Operational | 40mm | −850mm (bay front −890mm) | No — the B2 punch-out bay protrudes ~890mm; the cargo doors stay open during operation |
+| Transport (slid +880mm) | — | +30mm | Yes — the bay retracts behind the door plane by ~30mm |
 
 ### 5.2 Locking
 
 | Lock position | Method |
 |--------------|--------|
 | Operational (X=0) | 2 × Destaco 207-U toggle clamps |
-| Transport (X=300) | 2 × Destaco 207-U toggle clamps |
+| Transport (X≈870) | 2 × Destaco 207-U toggle clamps |
 
 ### 5.3 Floor Gap
 
@@ -256,9 +267,9 @@ rim with 30mm margin, allowing the panel to slide freely in both directions with
 contacting the tray.
 
 **The housing + drum hang at the same Z=80** (lower bearing on the panel bottom
-rail), so they too clear the tray rim by 30mm. This matters in transport: the ~550mm
+rail), so they too clear the tray rim by 30mm. This matters in transport: the ~880mm
 inward slide carries the Ø900 housing into the near-tray zone (its interior edge
-reaches ~X=1000), but because the whole assembly is suspended it passes over the tray
+reaches ~X=930), but because the whole assembly is suspended it passes over the tray
 basin rather than colliding with it. A floor-mounted housing would have fouled the
 tray; suspension is what makes the deeper-housing transport slide feasible. The 80mm
 floor gap is closed by the now-continuous bottom seal lip (§6 path #6).
@@ -275,28 +286,30 @@ clear the moment the clamps are released for transport.
 **Sheet 6 — Transport-slide clearance vs the film-plane left mechanism (plan)**
 ![TBS-001 Hinged Panel — Sheet 6: Transport Clearance](assets/hingepanel-sheet6.png)
 
-The inward slide carries the panel to **X 550–670**, so it sweeps through **X=150**,
+The inward slide carries the panel to **X 880–1000**, so it sweeps through **X=150**,
 where the film-plane mechanism's left edge sits. The film-plane left rail (running in
-Yd at X=150, floor + ceiling), the lengthwise brace-cage beams (X 150→4649 at Yd≈100
-and Yd≈2262), and the muslin screen are all in the slide path — and the operational
-**drum-zone demountable rail segment (Yd 731–1631) clears only the housing**, not the
-panel corners. **The film plane must therefore be struck before the panel is slid.**
-This is required regardless: the fragile muslin screen cannot travel mounted.
+Yd at X=150, floor + ceiling) — **now continuous in operation**, since the B2 punch-out
+bay offsets the drum clear of it — plus the lengthwise brace-cage beams (X 150→4649)
+and the muslin screen are all in the slide path; the deeper slide also reaches the
+**door-end walkway brackets (X≈698, 1155)**. **The film plane and those door-end
+brackets must therefore be struck before the panel is slid.** Striking the film plane
+is required regardless: the fragile muslin screen cannot travel mounted.
 
 Order of operations (single person, ~10 min):
 
 1. Remove the muslin screen from its frame and stow it (rolled).
 2. Knock down the brace cage (saddle/thumbscrew portals — it is a demountable box).
-3. **Remove the full film-plane left rail** (both floor and ceiling segments — the
-   operational drum-zone segment is extended to a fully removable left rail for
-   transport). Park the film-plane carriage clear.
-4. Lift out the left walkway.
-5. Release the four cam latches and the two operational toggle clamps.
-6. Slide the panel inward ~550mm; engage the transport toggle clamps.
-7. Close the ISO cargo doors.
+3. **Remove the full film-plane left rail** (floor + ceiling — continuous in operation,
+   lifted out whole for transport). Park the film-plane carriage clear.
+4. **Strike the door-end near/far walkway brackets** (X≈698, 1155) — the deeper slide
+   sweeps past them.
+5. Lift out the left walkway.
+6. Release the four cam latches and the two operational toggle clamps.
+7. Slide the panel inward ~880mm; engage the transport toggle clamps.
+8. Close the ISO cargo doors.
 
-Re-deployment reverses the sequence. (This is *not* a regression from rev 8 — the
-panel always slid past X=150; rev 8 only deepened the slide from 300 to 550mm.)
+Re-deployment reverses the sequence. (rev 9 / B2 offsets the drum out via the punch-out
+bay so the left rail is continuous in operation, and deepens the slide to ~880mm.)
 
 ---
 
@@ -351,39 +364,41 @@ for the sliding carriage.
 | 3mm aluminum plate (1220 × 2440mm) | Corner zone core plates | 2 | $360–$460 |
 | 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) | 16 m | $64–$96 |
 | Aluminum U-channel (per meter) | Gasket retainer — perimeter + housing-surround ring | 16 m | $48–$80 |
-| 200mm SS ball-bearing piano hinge | Left-edge hinges | 3 | $45–$75 |
+| Heavy-duty weld-on barrel hinge + steel hinge post | Left-edge hinges — carry bay + housing + drum swing moment (**structural sign-off**) | 3 | $180–$300 |
+| Retractable heavy-duty swivel caster | Free-edge swing support through the 180° arc | 1 | $40–$80 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches | 4 | $60–$100 |
-| Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |
-| **Panel subtotal** | | | **$855–$1,235** |
+| 6mm exterior plywood + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing | 1 lot | $60–$120 |
+| Flat black paint (RAL 9005) | Interior face + bay interior | 2 qt | $20–$30 |
+| **Panel subtotal** | | | **$1,090–$1,660** |
 
 ### 8.2 Housed Revolving Door (housing + drum)
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| 3mm 5052 aluminum sheet (1220 × 2440mm) | Ø900 housing + Ø864 drum shells (rolled, ~12 m²) | 4 | $700–$940 |
-| 4mm aluminum plate | Drum top + bottom caps + opening edge stiffeners | 1 | $60–$95 |
+| 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | $180–$280 |
+| 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | $150–$240 |
 | SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 | $90–$130 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 | $10–$15 |
 | 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 | $15–$25 |
-| Etch-prime + flat black (housing + drum interior) | Aluminum prep + coat | 1 | $180–$260 |
-| Galvanic isolation kit | Nylon bushings/washers + barrier tape + A2 bolts (Al↔steel joints) | 1 lot | $40–$70 |
-| Metal fabrication (roll 2 cylinders, aluminum TIG weld, fit, bearings) | 22–28 hrs labor | 1 | $1,100–$1,500 |
-| **Housing + drum subtotal** | | | **$2,300–$3,150** |
+| Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 | $40–$70 |
+| Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple, plastic↔plastic elsewhere) | 1 lot | $30–$50 |
+| Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 | $800–$1,150 |
+| **Housing + drum subtotal** | | | **$1,385–$2,070** |
 
 ### 8.3 Sliding Carriage
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| HGR20 linear guide rail (500mm) | Floor/ceiling rails, both walls | 4 | $80–$120 |
+| HGR20 linear guide rail (1200mm) | Floor/ceiling rails, both walls — span the ~880mm transport slide + carriage | 4 | $180–$280 |
 | HGH20CA carriage block | 2 per rail | 8 | $120–$200 |
 | 60 × 60 × 3mm SHS mild steel (2400mm) | Left-side carriage beam | 1 | $25–$40 |
 | Destaco 207-U toggle clamp | Operational + transport locks | 4 | $60–$100 |
 | Nylon brush strip (doubled, per meter) | Carriage beam slot seals — ~5 m each side | 10 m | $40–$60 |
 | 10mm closed-cell neoprene pad (50 × 30mm) | Rail channel seals | 4 | $10–$15 |
 | 15mm EPDM strip (self-adhesive, per meter) | Panel edge-to-wall clearance seals — ~5 m each side | 10 m | $30–$50 |
-| **Carriage subtotal** | | | **$365–$585** |
+| **Carriage subtotal** | | | **$465–$745** |
 
 ### 8.4 Fixed Door Frame
 
@@ -398,11 +413,11 @@ for the sliding carriage.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure | $855 | $1,235 |
-| Housing + drum | $2,300 | $3,150 |
-| Sliding carriage | $365 | $585 |
+| Panel structure (incl. B2 bay) | $1,090 | $1,660 |
+| Housing + drum (plastic skin) | $1,385 | $2,070 |
+| Sliding carriage | $465 | $745 |
 | Fixed door frame | $335 | $550 |
-| **Total** | **$3,855** | **$5,520** |
+| **Total** | **$3,275** | **$5,025** |
 
 ---
 

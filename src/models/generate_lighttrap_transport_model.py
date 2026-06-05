@@ -9,13 +9,13 @@ Exactly the same details as the operating light-trap model
 (generate_lighttrap_model, reused wholesale as `lt`), but POSED for transport:
 the hinge-panel assembly — panel + Ø900 fixed housing + revolving drum + EPDM
 seals + the moving carriage parts (HGH20CA blocks, suspension brackets, left
-beam) + Fan B — is slid inward PANEL_SLIDE (550mm) on the ceiling rails so the
-housing's exterior overhang retracts behind the cargo-door plane. The carriage
+beam) + Fan B — is slid inward PANEL_SLIDE (880mm, rev 9 / B2) on the ceiling rails so the
+B2 punch-out bay's exterior overhang retracts behind the cargo-door plane. The carriage
 locks at the TRANSPORT Destaco clamp. The two ISO cargo doors are shown CLOSED
 to demonstrate the clearance.
 
 Fixed (stay put): container context, fixed RHS door frame, HGR20 rails, both
-Destaco lock-points, and the cargo doors. Moving (slid +550mm): hinge panel,
+Destaco lock-points, and the cargo doors. Moving (slid +880mm): hinge panel,
 drum, Fan B, and the carriage blocks/brackets/beam.
 
 Usage
@@ -39,7 +39,7 @@ component = ov.component
 C_WID, C_HGT = ov.C_WID, ov.C_HGT
 C_STEEL, C_CARR = ov.C_STEEL, ov.C_CARR
 
-SLIDE = ov.PANEL_SLIDE                          # 550 — transport slide travel (mm)
+SLIDE = ov.PANEL_SLIDE                          # 880 — transport slide travel (mm, rev 9 / B2)
 
 # Components that ride the panel and translate +SLIDE in X for transport. The
 # carriage is NOT here — its split (fixed rails/clamps vs moving blocks/brackets/

@@ -330,7 +330,7 @@ def drum():
 # widened center-zone step lines (NEW_YD_L/R). NB: the longer retraction carries
 # the housing into the left-walkway / near-tray zone — tray-end clearance during
 # transport is an open detail to confirm.
-TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 550 — from constants
+TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 880 — from constants (rev 9 / B2)
 
 def sliding_carriage(slide=0):
     """HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left

@@ -280,9 +280,9 @@ def draw_sheet1():
         boxstyle="round,pad=0.06", fc="#FFFBE6", ec="#C07030", lw=1.0,
         zorder=11))
     ax.text(NOTE_CX, NOTE_CY,
-            "FILM LEFT-RAIL SEGMENT SWINGS CLEAR FOR\n"
-            "DRUM ROTATION (drum mode)\n"
-            "Rail Yd 731–1631 demountable · carriage parks at Yd=2262",
+            "B2: DRUM OFFSET OUT VIA THE PANEL BAY\n"
+            "Film LEFT RAIL is CONTINUOUS (full travel)\n"
+            "no demountable segment · drum clears the X=150 rail",
             ha="center", va="center", fontsize=6.5, color="#7A3A00",
             fontweight="bold", zorder=12)
     # Leader arrow from note bottom to drum box top-centre
@@ -308,8 +308,8 @@ def draw_sheet1():
         boxstyle="round,pad=0.06", fc="#E8F4FD", ec="#1565C0", lw=1.0,
         zorder=11))
     ax.text(TN_CX, TN_CY,
-            "TRANSPORT: left walkway lift-out removed\n"
-            "→ cargo panel + drum slide back to X≈300\n"
+            "TRANSPORT: strike film plane + left rails + door-end\n"
+            "brackets → cargo panel + bay slide back ~880mm\n"
             "(walkway LOWERED, not removed, for operation)",
             ha="center", va="center", fontsize=6.2, color="#0D47A1",
             fontweight="bold", zorder=12)

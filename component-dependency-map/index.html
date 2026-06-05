@@ -4106,6 +4106,12 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td>IBC tote stacking arrangement.</td>
 </tr>
 <tr>
+<td><strong>film-plane</strong></td>
+<td><code>src/models/generate_film_plane_model.py</code></td>
+<td><code>models/film-plane.skp</code> + <code>src/models/film-plane.rb</code></td>
+<td>Film plane + <strong>4-corner tilt/swing mechanism</strong>: the framed muslin screen posed in an example tilt+swing (corners parked at depths 2262/1962/1862/1562), and per-corner hardware at TL/TR/BL/BR (HGR20 rail + HGH20CA carriage + leadscrew + drive nut + universal joint + corner bracket). <strong>Reuses</strong> <code>ov.processing_tray()</code> (tray) + the <code>ov</code> helpers/scene scaffold; ghost-container context. Reads <code>FP_*</code>, <code>RAIL_*</code>, <code>FP_ANGLE_LEG</code>, <code>PROC_TRAY_*</code>. 6 scenes (Combined, Processing Tray, Corner TL/TR/BL/BR — each zoomed). Rebuild whenever the film-plane/rail/tray constants or <code>ov</code> change; 3D companion to 2D <code>generate_film_plane_mechanism.py</code>.</td>
+</tr>
+<tr>
 <td><strong>lighttrap</strong></td>
 <td><code>src/models/generate_lighttrap_model.py</code></td>
 <td><code>models/lighttrap.skp</code> + <code>src/models/lighttrap.rb</code></td>

@@ -1223,6 +1223,35 @@ def lighting_wiring():
                           EQPANEL_X - 5, pc_yd - 5, PUMP_H_HI, 10, 10,
                           (cz - 25) - PUMP_H_HI, color=C_TRUNK))
 
+    # Conduits to the ventilation fans (orthogonal runs off the ceiling trunking,
+    # per skill_plumbing_drawing — ruby_pipe_run with elbows, right-angle entry).
+    fcr = 7                                          # conduit radius (Ø14)
+    czr = cz - 30                                    # conduit ceiling run height (2358)
+    # → Fan A (exhaust, Cct A): fixed on the far/sealed end wall, high near the
+    #   ceiling. Tap the trunking, run out in Yd over the fan, drop onto the
+    #   fan-frame top (perpendicular entry). Rigid all the way — Fan A doesn't move.
+    fa_x = (C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # fan-body center X (5618)
+    fa_top = FAN_A_H + DUCT_HEIGHT / 2               # fan-housing top Z (2300)
+    parts.append(ruby_pipe_run("Conduit to Fan A (exhaust, Cct A)",
+                               [(fa_x, 20, czr),
+                                (fa_x, FAN_A_YD, czr),
+                                (fa_x, FAN_A_YD, fa_top)],
+                               fcr, color=C_TRUNK))
+    # → Fan B (intake, Cct B): Fan B rides the SLIDING door panel, so the rigid
+    #   conduit only runs as far as the FIXED door-frame top rail; a 1m coiled
+    #   flex whip (electrical-report §Circuit B, Deutsch DT connectors — NOT
+    #   modeled) crosses to the panel and drops to the low fan, taking up the
+    #   transport slide + 180° swing. Tap the trunking, cross in Yd to the fan's
+    #   Yd, then run in -X to the frame top rail just clear of the panel.
+    fb_anchor = (60, FAN_B_YD, czr)                  # fixed end on the door-frame top rail
+    parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
+                               [(300, 20, czr),
+                                (300, FAN_B_YD, czr),
+                                fb_anchor],
+                               fcr, color=C_TRUNK))
+    parts.append(ruby_box("Fan B Flex Anchor (door-frame top rail — flex whip not shown)",
+                          40, FAN_B_YD - 25, czr - 25, 45, 50, 50, color=C_SWITCH))
+
     return '\n'.join(parts)
 
 

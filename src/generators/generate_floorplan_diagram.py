@@ -457,28 +457,21 @@ def floor_plan():
 
     # ── Film left-rail demountable segment (drum-mode clearance) ─────────────
     # The LEFT RAIL (X=RAIL_X_L=150mm) passes through the drum volume.
-    # The segment spanning Yd=731–1631 is DEMOUNTABLE so the drum can rotate
-    # ("drum mode"); carriage parks at Yd=2262 during drum mode.
-    # Show this segment as a dashed orange overlay on the rail line.
-    ax.plot([RAIL_X_L, RAIL_X_L],
-            [BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1],
-            color="#C07030", lw=4.0, ls=(0, (6, 3)), zorder=7, alpha=0.85,
-            solid_capstyle="round")
-    # Leader + note to the left (in the left end zone / exterior pad area)
+    # B2 (rev9): the left rail is CONTINUOUS — the drum is offset out (center
+    # X=DRUM_CX, via the hinge-panel punch-out bay), so no demountable segment.
     NOTE_NX = -PAD_L + 120
-    NOTE_NY = (BRACE_LEFT_DEMOUNT_Y0 + BRACE_LEFT_DEMOUNT_Y1) / 2  # 1181
+    NOTE_NY = DRUM_CY   # 1181 — light-lock Yd centre
     ax.annotate("",
                 xy=(RAIL_X_L, NOTE_NY),
                 xytext=(NOTE_NX + 600, NOTE_NY),
-                arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
+                arrowprops=dict(arrowstyle="->", color="#7A3A00", lw=1.0),
                 zorder=10)
     ax.text(NOTE_NX + 580, NOTE_NY + 80,
-            f"FILM LEFT-RAIL SEGMENT DEMOUNTS FOR DRUM (drum mode)\n"
-            f"X={RAIL_X_L}mm  Yd={BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}mm\n"
-            f"Swings clear for drum rotation · carriage parks at Yd={CARRIAGE_PARK_Y}",
+            f"FILM LEFT RAIL CONTINUOUS — full travel\n"
+            f"Drum offset to X={DRUM_CX}mm via the panel bay — clears the X={RAIL_X_L}mm rail",
             ha="right", va="bottom", fontsize=6.0, color="#7A3A00",
             fontweight="bold", **FONT, zorder=10,
-            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#C07030", lw=0.9))
+            bbox=dict(boxstyle="round,pad=0.3", fc="#FFFBE6", ec="#7A3A00", lw=0.9))
 
     # ── Walkway height note (deck lowered — stays in place for operation) ───────
     # The walkway deck is LOWERED to Z=WALKWAY_H (65mm) so the film-plane frame

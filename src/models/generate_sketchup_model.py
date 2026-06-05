@@ -44,6 +44,7 @@ from tbs_constants import (
     WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T,
     WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W,
     WALKWAY_LEFT_X,
+    WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING,
     WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     C_WALL, C_PROC_ZONE,
@@ -419,6 +420,66 @@ def walkways():
                           WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L,
                           t, color=C_REMOVABLE))
 
+    # Wall-cantilevered gusset brackets that actually hold the near & far decks up.
+    parts.append(walkway_brackets())
+
+    return '\n'.join(parts)
+
+
+def walkway_brackets():
+    """Wall-cantilevered gusset brackets carrying the NEAR and FAR walkway grates.
+
+    Triangular-gusset steel brackets (8mm) bolted to the long side-wall ribs at
+    CONTAINER_RIB_SPACING (457mm / 18") centers — the cantilevers the decks rest
+    on. Each bracket is the report's 3-piece weldment: a 150mm vertical mounting
+    leg on the wall, a 300mm horizontal arm at grate level (deck sits on top), and
+    a 70mm gusset bracing the arm from below (stops short of the tray rim). The
+    RIGHT walkway is ceiling-hung and the LEFT walkway is a removable lift-out, so
+    neither is wall-cantilevered — they get no brackets here.
+    """
+    grate_z = WALKWAY_H - WALKWAY_GRATE_T   # arm top = grate underside
+    bt = WALKWAY_BRACKET_T                    # 8 — plate thickness
+    vh = WALKWAY_BRACKET_H                    # 150 — vertical mounting leg
+    arm_d = bt + 2                            # ~10 — arm cross-section depth
+    arm_bot = grate_z - arm_d
+    plate_w = 120                             # mounting-plate footprint along the run (X)
+    gusset_reach = 70                         # gusset depth from wall (< tray rim at Yd=80)
+
+    # Bracket X stations along the long walls: 457mm centers across the near deck span.
+    near_x_l = WALKWAY_LEFT_X + WALKWAY_W
+    near_x_r = WALKWAY_RIGHT_X
+    stations = []
+    xs = near_x_l + CONTAINER_RIB_SPACING // 2
+    while xs < near_x_r:
+        stations.append(xs)
+        xs += CONTAINER_RIB_SPACING
+
+    # side: (label, wall Yd, inward sign, arm reach under that side's grate)
+    sides = [
+        ("Near", 0,     +1, WALKWAY_W),                 # grate Yd 0..300
+        ("Far",  C_WID, -1, C_WID - WALKWAY_FAR_YD),    # grate inner edge .. far wall
+    ]
+
+    parts = []
+    for label, wall_yd, sign, reach in sides:
+        for i, x in enumerate(stations, 1):
+            nm = f"Walkway {label} bracket {i}"
+            # 1. vertical mounting plate flat on the wall rib
+            y_plate = wall_yd if sign > 0 else wall_yd - bt
+            parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
+                                  plate_w, bt, vh, color=C_STEEL))
+            # 2. horizontal cantilever arm at grate level (deck rests on it)
+            y_arm = wall_yd if sign > 0 else wall_yd - reach
+            parts.append(ruby_box(f"{nm} arm", x - bt / 2, y_arm, arm_bot,
+                                  bt, reach, arm_d, color=C_STEEL))
+            # 3. gusset triangle bracing the arm from below (wall→70mm out)
+            xg = x - bt / 2
+            y_far = wall_yd + sign * gusset_reach
+            parts.append(ruby_tri(f"{nm} gusset",
+                                  (xg, wall_yd, 0),
+                                  (xg, wall_yd, arm_bot),
+                                  (xg, y_far, arm_bot),
+                                  bt, color=C_STEEL))
     return '\n'.join(parts)
 
 

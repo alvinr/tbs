@@ -306,9 +306,14 @@ def drum():
 # transport is an open detail to confirm.
 TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 550 — from constants
 
-def sliding_carriage():
+def sliding_carriage(slide=0):
     """HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left
-    carriage beam + Destaco toggle clamps (operational & transport locks)."""
+    carriage beam + Destaco toggle clamps (operational & transport locks).
+
+    slide: X offset (mm) applied to the MOVING parts only (carriage blocks,
+    suspension brackets, left beam); the rails and both Destaco lock-points stay
+    fixed. Default 0 = operating pose (byte-identical). The transport model
+    (generate_lighttrap_transport_model.py) passes PANEL_SLIDE."""
     parts = []
     rail_x0, rail_len = -30, 760                    # allows the ~500mm transport slide
     rail_w, rail_h = 20, 30
@@ -319,14 +324,14 @@ def sliding_carriage():
     for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
         parts.append(ruby_box(f"HGR20 rail {nm}", rail_x0, yd - rail_w / 2, rail_z,
                               rail_len, rail_w, rail_h, color=C_RAIL))
-        parts.append(ruby_box(f"HGH20CA carriage {nm}", 18, yd - carr_d / 2,
+        parts.append(ruby_box(f"HGH20CA carriage {nm}", 18 + slide, yd - carr_d / 2,
                               rail_z - carr_h, carr_w, carr_d, carr_h, color=C_CARR))
-        parts.append(ruby_box(f"Suspension bracket {nm}", 15, yd - brk_d / 2,
+        parts.append(ruby_box(f"Suspension bracket {nm}", 15 + slide, yd - brk_d / 2,
                               PANEL_Z_TOP, brk_w, brk_d, rail_z - carr_h - PANEL_Z_TOP,
                               color=C_STEEL))
 
     # Left-side carriage beam — vertical 60×60 SHS in the fixed-frame slot.
-    parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0, 0, PANEL_Z_BOT,
+    parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0 + slide, 0, PANEL_Z_BOT,
                           60, 60, PANEL_Z_TOP - PANEL_Z_BOT, color=C_STEEL))
 
     # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈500).

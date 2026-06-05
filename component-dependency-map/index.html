@@ -4091,7 +4091,7 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td><strong>overview</strong></td>
 <td><code>src/models/generate_sketchup_model.py</code></td>
 <td><code>models/overview.skp</code> + <code>src/models/overview.rb</code></td>
-<td><strong>1–18 (all)</strong> — built as 21 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups). Its <code>spray_bar()</code> <strong>reuses the spray-bar model's builders</strong> (<code>generate_spraybar_model.build_beam/build_carriages/build_feed_pole</code>), so the gantry detail stays in sync between the two models — rebuild overview whenever the spray-bar model changes.</td>
+<td><strong>1–18 (all)</strong> — built as 22 tagged components (incl. lighting/wiring, spray-bar plumbing, fans, water hookups). Its <code>spray_bar()</code> <strong>reuses the spray-bar model's builders</strong> (<code>generate_spraybar_model.build_beam/build_carriages/build_feed_pole</code>), and <code>light_trap_drum()</code> + <code>light_trap_frame()</code> <strong>reuse the light-trap model's <code>lt.drum()</code> + <code>lt.door_frame()</code></strong> (the door frame + top/bottom seal lips that block light) — so all stay in sync; rebuild overview whenever the spray-bar <strong>or</strong> light-trap model changes.</td>
 </tr>
 <tr>
 <td><strong>spray-bar</strong></td>

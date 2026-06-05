@@ -38,6 +38,7 @@ from tbs_title_block import title_block
 from tbs_drawing import (
     draw_dim_h, draw_dim_v, leader, draw_rect, hatch_rect,
     place_label, register_pipe, reset_label_registry, draw_notes,
+    draw_pipe_path as _tbs_pipe_path,
 )
 
 # ── Color palette ─────────────────────────────────────────────────────────────
@@ -284,119 +285,11 @@ f3_in, f3_out, _        = draw_filter_housing(ax, F3_X, "F3", "CTO CARBON")
 def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
                    fc=C_HDPE, ec=C_FRAME, bore_fc="white",
                    elbow_r=None, zorder=8):
-    """Draw a pipe run with parallel walls — adapted for this diagram's scale.
-
-    x_pts, z_pts: waypoint coordinates in mm (before scaling)
-    """
-    n = len(x_pts)
-    if n < 2:
-        return
-    half_od = od_mm / 2.0
-    half_id = half_od - wall_mm
-    if elbow_r is None:
-        elbow_r = od_mm * 1.0
-
-    # Segment directions
-    segs = []
-    for i in range(n - 1):
-        dx = x_pts[i + 1] - x_pts[i]
-        dz = z_pts[i + 1] - z_pts[i]
-        length = max(math.hypot(dx, dz), 1e-6)
-        segs.append((dx / length, dz / length, length))
-
-    # Elbow geometry at each intermediate waypoint
-    elbows = []
-    for i in range(1, n - 1):
-        d1x, d1z, _ = segs[i - 1]
-        d2x, d2z, _ = segs[i]
-        cos_a = max(-1.0, min(1.0, d1x * d2x + d1z * d2z))
-        alpha = math.acos(cos_a)
-        turn = math.pi - alpha
-        if turn < 0.01:
-            elbows.append(None)
-            continue
-
-        tangent = elbow_r * math.tan(turn / 2)
-        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
-        if tangent > max_t:
-            tangent = max_t
-
-        cross = d1x * d2z - d1z * d2x
-        if cross > 0:
-            nx, nz = -d1z, d1x
-        else:
-            nx, nz = d1z, -d1x
-
-        tp_x = x_pts[i] - d1x * tangent
-        tp_z = z_pts[i] - d1z * tangent
-        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
-        cy = tp_x + nx * r_eff
-        cz = tp_z + nz * r_eff
-
-        start_a = math.atan2(tp_z - cz, tp_x - cy)
-        sweep = turn if cross > 0 else -turn
-
-        elbows.append({
-            'tangent': tangent,
-            'r': r_eff,
-            'center': (cy, cz),
-            'start': start_a,
-            'sweep': sweep,
-        })
-
-    # Draw straight sections
-    def _rect(sx0, sz0, sx1, sz1, nx, nz, half_r, color, z_ord):
-        pts = [(sx(sx0 + nx * half_r), sz(sz0 + nz * half_r)),
-               (sx(sx1 + nx * half_r), sz(sz1 + nz * half_r)),
-               (sx(sx1 - nx * half_r), sz(sz1 - nz * half_r)),
-               (sx(sx0 - nx * half_r), sz(sz0 - nz * half_r))]
-        ax.fill([p[0] for p in pts], [p[1] for p in pts],
-                fc=color, ec=ec if color != bore_fc else "none",
-                lw=0.8 if color != bore_fc else 0,
-                zorder=z_ord)
-
-    for i in range(len(segs)):
-        dx, dz, seg_len = segs[i]
-        nx, nz = -dz, dx
-
-        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
-        trim_e = elbows[i]['tangent'] if (i < len(elbows) and elbows[i]) else 0
-
-        p0x = x_pts[i] + dx * trim_s
-        p0z = z_pts[i] + dz * trim_s
-        p1x = x_pts[i + 1] - dx * trim_e
-        p1z = z_pts[i + 1] - dz * trim_e
-
-        remaining = seg_len - trim_s - trim_e
-        if remaining < 0.5:
-            continue
-
-        _rect(p0x, p0z, p1x, p1z, nx, nz, half_od, fc, zorder)
-        _rect(p0x, p0z, p1x, p1z, nx, nz, half_id, bore_fc, zorder + 1)
-
-    # Draw elbow fittings
-    for elb in elbows:
-        if elb is None:
-            continue
-        cy, cz_e = elb['center']
-        r_eff = elb['r']
-        sa = elb['start']
-        sw = elb['sweep']
-        n_arc = max(20, int(abs(sw) / 0.04))
-        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
-
-        def _arc_ring(r_out, r_in, color, z_ord, _cy=cy, _cz=cz_e, _angles=angles):
-            ox = [sx(_cy + r_out * math.cos(a)) for a in _angles]
-            oz = [sz(_cz + r_out * math.sin(a)) for a in _angles]
-            ix = [sx(_cy + r_in * math.cos(a)) for a in _angles]
-            iz = [sz(_cz + r_in * math.sin(a)) for a in _angles]
-            ax.fill(ox + ix[::-1], oz + iz[::-1],
-                    fc=color, ec=ec if color != bore_fc else "none",
-                    lw=0.8 if color != bore_fc else 0,
-                    zorder=z_ord)
-
-        _arc_ring(r_eff + half_od, max(r_eff - half_od, 0.5), fc, zorder)
-        _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
+    """Thin wrapper → tbs_drawing.draw_pipe_path (canonical body); injects the
+    global sx()/sz() scale funcs.  See skills/skill_plumbing_drawing.md."""
+    _tbs_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm, fc, ec=ec,
+                   bore_fc=bore_fc, elbow_r=elbow_r, zorder=zorder,
+                   sx=sx, sz=sz)
 
 
 # ── P-02 supply riser ────────────────────────────────────────────────────────

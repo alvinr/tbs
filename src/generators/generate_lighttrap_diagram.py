@@ -203,8 +203,11 @@ def draw_sheet1():
     EC_WALL_X = CX + CW * 0.80
     # Duct penetrates HIGH on the wall face at Z=EVAP_DUCT_Z (not the floor).
     ec_z = CY + WT + (CH - 2 * WT) * (EVAP_DUCT_Z / C_HGT)   # high penetration Z
-    # Baffled duct stub on the wall face, high up (the duct pierces the side wall).
-    draw_rect(ax, EC_WALL_X - 0.18, ec_z - WT / 2, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=6)
+    # Baffled duct stub on the wall face, high up — Ø200 duct seen end-on (round).
+    ax.add_patch(mpatches.Circle((EC_WALL_X, ec_z), 0.20,
+                                 fc="#A8D8B0", ec=C_OUT, lw=1.2, zorder=6))
+    ax.add_patch(mpatches.Circle((EC_WALL_X, ec_z), 0.12,
+                                 fc="none", ec=C_OUT, lw=0.7, zorder=7))   # bore
     # Cooler box — outside, on the ground (below the container floor).
     EC_W, EC_H = 1.3, 0.65
     EC_X = EC_WALL_X - EC_W / 2

@@ -948,6 +948,17 @@ def light_trap_drum():
     return lt.drum()
 
 
+def light_trap_frame():
+    """Cargo-door RHS frame (50×50×3 RHS) + the top & bottom seal lips.
+
+    Reused from the Light-Trap model (same pattern as light_trap_drum) so the
+    overview stays in sync. The bottom seal lip closes the 80mm floor gap and the
+    top seal lip closes the panel-top gap — together they block light top and
+    bottom; the EPDM perimeter seal (light_seal) compresses against them."""
+    import generate_lighttrap_model as lt
+    return lt.door_frame()
+
+
 # ── Electrical (panel + battery, pinhole wall) ───────────────────────────────
 
 def electrical():
@@ -1639,6 +1650,7 @@ def generate_ruby():
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Electrical", "Electrical", electrical()),
         component("Chemistry Shelf", "Shelf", shelf()),
+        component("Light-Trap Door Frame", "Light Seal", light_trap_frame()),
         component("Light Seal & Hinges", "Light Seal", light_seal()),
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),

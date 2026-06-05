@@ -5968,6 +5968,79 @@ end
   inst.name = "Chemistry Shelf"
   inst.layer = model.layers["Shelf"]
 
+  # ═══ Light-Trap Door Frame ═══
+  defn = model.definitions.add("Light-Trap Door Frame")
+  ents = defn.entities
+  # Door Frame threshold
+  grp = ents.add_group
+  grp.name = "Door Frame threshold"
+  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame top
+  grp = ents.add_group
+  grp.name = "Door Frame top"
+  face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame left stile
+  grp = ents.add_group
+  grp.name = "Door Frame left stile"
+  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2388.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame right stile
+  grp = ents.add_group
+  grp.name = "Door Frame right stile"
+  face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2388.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame bottom seal lip
+  grp = ents.add_group
+  grp.name = "Door Frame bottom seal lip"
+  face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(110.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame top seal lip
+  grp = ents.add_group
+  grp.name = "Door Frame top seal lip"
+  face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(118.mm)
+  mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Light-Trap Door Frame"
+  inst.layer = model.layers["Light Seal"]
+
   # ═══ Light Seal & Hinges ═══
   defn = model.definitions.add("Light Seal & Hinges")
   ents = defn.entities

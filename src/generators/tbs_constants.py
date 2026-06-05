@@ -156,8 +156,8 @@ WALL_T            = 40    # container end-wall steel thickness (mm)
 # Panel slides inward ~500mm on HGR20 ceiling-mounted linear rails so the deeper
 # Ø900 light-trap housing clears the container exterior face, allowing ISO cargo
 # doors to close. Panel is suspended from ceiling — bottom edge clears the tray.
-PANEL_SLIDE       = 550   # panel slide travel for transport (mm) [rev8: 300→550,
-                          # housing ext. edge -450 → +100 clears door + hardware]
+PANEL_SLIDE       = 880   # panel slide travel for transport (mm) [rev9 B2: 550→880,
+                          # bay housing ext. face -890 → ~+30 clears the door plane]
 PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
                           # Must exceed PROC_TRAY_RIM (50mm) for transport clearance
 
@@ -168,17 +168,26 @@ PANEL_FLOOR_GAP   = 80    # gap between panel bottom edge and floor (mm)
 # bearings. No internal fins — light-tight by geometry (openings <90°, 180° apart,
 # so the drum opening can never bridge both at once). Replaces the failed Ø750
 # 4-fin drum. See light-trap-selection.md / hinged-panel-report.md §3.
-DRUM_CX    = 0       # light-lock center X (mm) [unchanged]
+DRUM_CX    = -400    # light-lock center X (mm) [rev9 B2: 0→-400 — offset out via the
+                     # hinge-panel punch-out bay so the housing interior edge (+50)
+                     # clears the X=150 film-plane left rail by ~100mm]
 DRUM_D     = 900     # fixed housing OUTER diameter (mm) [rev8: was Ø750 drum]
                      # rev8: reviewed & KEPT — ~555mm passage (sideways entry), accepted
                      # for occasional single-operator field use; larger Ø deferred
 DRUM_R     = DRUM_D // 2                      # 450 — housing radius (visible footprint)
 DRUM_H_LT  = 2200    # light-lock height (mm) — 330mm headroom at 1780mm operator
 LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
-LT_HOUSING_T   = 3        # housing wall (mm)
+LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
-LT_DRUM_T      = 3        # drum wall (mm) → ~Ø850 bore, ~555mm passage
+LT_DRUM_T      = 4        # drum wall (mm) [rev9 B2: 3mm Al → 4mm PP plastic skin]
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
+
+# ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
+# enclosing the offset housing, so the film-plane rails stay internal.
+# See docs/superpowers/specs/2026-06-05-lighttrap-punchout-bay-design.md.
+BAY_FRONT_X = DRUM_CX - DRUM_R - 40   # -890 — bay outer (exterior) face
+BAY_BACK_X  = 0                        # bay meets the panel side-zone door plane
+BAY_WALL_T  = 6                        # bay box wall thickness (mm)
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
@@ -187,11 +196,14 @@ BRACE_Z_BOT = RAIL_OFF               # 100mm — bottom cross-beam Z (above tray
 BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
-# Light-lock Yd extent → the left-rail segment that must demount for the housing.
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock centre in Yd (= container width centre)
-BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 731mm — demountable left-rail segment start
-BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1631mm — demountable left-rail segment end
-CARRIAGE_PARK_Y       = FP_Y               # 2262mm — carriage park for drum mode (> 1631 ⇒ clears housing)
+# B2 (rev9): the drum is offset clear of the X=150 rail, so the left rail is now
+# CONTINUOUS in operating mode — the demountable segment is obsolete. These three
+# are SLATED FOR REMOVAL and kept only until the referencing generators are updated
+# (lighttrap-punchout-bay plan, Tasks 2–9), then deleted in the final cleanup.
+BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 731mm — [obsolete: demountable segment start]
+BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1631mm — [obsolete: demountable segment end]
+CARRIAGE_PARK_Y       = FP_Y               # 2262mm — [obsolete: carriage park for drum mode]
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct
@@ -478,6 +490,10 @@ CONTAINER_RIB_SPACING = 457   # mm (18 inches) — vertical corrugation flanges
 WALKWAY_BRACKET_H = 150  # bracket vertical leg height on wall (mm)
 WALKWAY_BRACKET_T = 8    # bracket plate thickness (mm)
 WALKWAY_BRACKET_SPACING = CONTAINER_RIB_SPACING  # bracket spacing along walkway (mm)
+# B2 (rev9): the panel slides to ~X=1000 for transport (deeper than the old ~670),
+# so the first near/far door-end brackets must be DEMOUNTABLE for transport — struck
+# with the film plane + left rails so the panel clears them.
+WALKWAY_BRACKET_DEMOUNT_X = (698, 1155)   # bracket X-stations struck for transport
 # Right walkway (IBC end) — ceiling-hung design.
 # No floor contact, no box beam.  Two longitudinal steel angle bearers
 # (25×25×5mm) running full container width along Yd, suspended from ceiling

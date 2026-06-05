@@ -59,6 +59,7 @@ Shared answer: a **torsionally stiff bay box** continuous with the panel frame, 
 ### 4.6 Transport
 - Sequence: strike the film plane (brace cage + left rails out) → slide panel+bay deep (**~850–900 mm**) so the bay clears behind the door plane → **cargo doors close**.
 - `PANEL_SLIDE` **550 → ~880**.
+- **Transport-envelope interference check** (panel+bay slid to X≈30–1000, Z 80–2300, full Yd; housing central Yd 731–1631). Cleared: batteries / electrical / solar (all X≥1600, past the envelope), processing tray + near/far walkway gratings (housing passes *over* them on the 80 mm floor gap, as today), evap-cooler duct penetration (X≈1200). **One conflict:** the near/far **walkway cantilever brackets** — first legs at **X=698** (Z 0–150). The *current* slide stops at X≈670, deliberately just shy of them; B2's deeper slide passes them, so the panel's lower wall-edge corners would clip the bracket legs. **Resolution:** make the door-end near/far brackets (X≈698, possibly 1155) **demountable for transport** — a small addition to the existing transport teardown (film plane + left rails + left walkway already come out). Alternative: notch the panel's lower wall corners (Z 80–150) — rejected unless the bracket-removal proves awkward, because it complicates the panel bottom seal.
 
 ### 4.7 Sealing
 - Light-tight + IP44 weather wrap follows the deeper bay; the fixed door-frame and the interface-1 (panel-perimeter) + interface-2 (housing-surround) EPDM seals re-map onto the bay geometry.
@@ -72,11 +73,12 @@ Shared answer: a **torsionally stiff bay box** continuous with the panel frame, 
 3. **Hinge sizing + swing-support caster** for the ~316 kg leaf and tipping couple; optional strut assist.
 4. **Plastic skin** — thickness, grade (UV + FR), hoop spacing, **thermal running-clearance** (CTE ~10× aluminum across Ø900), light-tight joints + **darkroom light-tightness test**.
 5. **Re-run weight/CG** with the bay + lighter core + heavier hinges/caster.
+6. **Transport-envelope interference** — make the door-end near/far walkway brackets (X≈698, possibly 1155) demountable for transport (see §4.6); confirm no clip against the panel's lower wall corners across the full slide.
 
 ## 6. Change footprint (implementation scope)
 - **Constants (`tbs_constants.py`):** `DRUM_CX` 0→−400, `PANEL_SLIDE` 550→~880, **delete `BRACE_LEFT_DEMOUNT_Y0/Y1`**, add bay-geometry constants (and possibly drum/housing material + thickness), seal positions.
 - **3D models:** `lighttrap`, `lighttrap-transport`, `overview` (bay, continuous left rails, deeper slide, lighter material).
-- **2D diagrams:** `film-plane-mechanism` (continuous rails), `hingepanel` (the bay), `lighttrap`, `floorplan`.
+- **2D diagrams:** `film-plane-mechanism` (continuous rails), `hingepanel` (the bay), `lighttrap`, `floorplan`, `walkway` (door-end brackets demountable for transport).
 - **Reports / lists:** `hinged-panel-report`, `light-trap-selection`, `weight-distribution-report` (re-run CG), a structural note on the bay cantilever + hinge, `master-shopping-list` + `project-cost-breakdown` (plastic skin, heavy hinges, caster).
 
 ## 7. Verification

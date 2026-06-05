@@ -33,7 +33,6 @@ from tbs_constants import (
     CLAMP_OPEN_GAP, CLAMP_SPRING_F,
     CLAMP_N_HORIZ, CLAMP_N_VERT, CLAMP_N_TOTAL,
     BRACE_RHS, BRACE_T, BRACE_Z_BOT, BRACE_Z_TOP,
-    BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1, CARRIAGE_PARK_Y,
     DRUM_CY, DRUM_R, DRUM_CX, DRUM_D,
 )
 from tbs_title_block import title_block
@@ -288,29 +287,12 @@ def sheet1():
             color=C_DRUM, fontsize=6, ha="center", va="center", **FONT, zorder=5,
             alpha=0.75)
 
-    # ── DEMOUNTABLE LEFT-RAIL SEGMENT — Yd 731→1631 (rev8 Ø900 drum band) ─────
-    # Overlay the left rail's removable span in a distinct dashed / highlighted style.
-    # The normal left rail runs D_NEAR(100)→D_FAR(2262) at RAIL_X_L.
-    # The demountable segment covers BRACE_LEFT_DEMOUNT_Y0(731)→BRACE_LEFT_DEMOUNT_Y1(1631).
-    C_DEMOUNT = "#E0902A"   # amber — unified with the 3D models' ov.C_DEMOUNT ("removable")
-    # Ceiling sub-rail (matches rx_ceil geometry from the loop above)
-    rx_ceil_L  = RAIL_X_L - RAIL_W // 2 - 5
-    rx_floor_L = RAIL_X_L + 5
-    seg_y0 = BRACE_LEFT_DEMOUNT_Y0
-    seg_y1 = BRACE_LEFT_DEMOUNT_Y1
-    seg_len = seg_y1 - seg_y0
-
-    for rx_d, alpha_d in [(rx_ceil_L, 0.85), (rx_floor_L, 0.70)]:
-        ax.add_patch(Rectangle((rx_d, seg_y0), RAIL_W * 0.8, seg_len,
-                               fc=C_DEMOUNT, ec=C_DEMOUNT, lw=1.4, alpha=alpha_d,
-                               linestyle="--", zorder=7))
-
-    # Leader pointing to the demountable segment
-    seg_mid_yd = (seg_y0 + seg_y1) / 2
-    leader(ax, rx_ceil_L + RAIL_W * 0.4, seg_mid_yd,
-           rx_ceil_L - 600, seg_mid_yd + 250,
-           f"DEMOUNTABLE LEFT-RAIL SEGMENT\nswings clear for DRUM MODE\n(Yd {int(seg_y0)}–{int(seg_y1)})",
-           color=C_DEMOUNT, ha="right", fs=6.5, font=FONT)
+    # B2 (rev9): the drum is offset clear of the X=150 rail (via the hinge-panel
+    # punch-out bay), so the LEFT RAIL IS CONTINUOUS — no demountable segment.
+    leader(ax, RAIL_X_L, DRUM_CY,
+           RAIL_X_L - 600, DRUM_CY + 250,
+           "LEFT RAIL CONTINUOUS\n(drum offset out via panel bay —\nno demountable segment)",
+           color=RAIL, ha="right", fs=6.5, font=FONT)
 
     # ── Annotations ───────────────────────────────────────────────────────────
     # Swing annotation arrow
@@ -973,12 +955,11 @@ def sheet4():
     # draw_notes uses data coordinates; sheet4 uses transAxes for layout,
     # so we render directly via ax.text with transAxes=True calls instead.
     modes_lines = [
-        "OPERATING MODES (left-rail / drum interlock)",
-        "1. FILM MODE: left-rail segment locked in. Carriage free over full travel",
-        f"   (Yd 100–{CARRIAGE_PARK_Y}) for tilt/swing. Drum static.",
-        f"2. DRUM MODE: left-rail segment swung clear (Yd {BRACE_LEFT_DEMOUNT_Y0}–{BRACE_LEFT_DEMOUNT_Y1}). Carriage parked",
-        f"   at film end (Yd {CARRIAGE_PARK_Y}). Drum free to rotate for entry/exit.",
-        "INTERLOCK: drum rotates only with carriage parked AND left segment cleared.",
+        "FILM-PLANE TRAVEL (rev9 B2 — continuous left rail)",
+        f"FILM MODE: carriage free over the FULL travel (Yd 100–{FP_Y}) for tilt/swing,",
+        "   both rails continuous — no demountable segment, no drum interlock.",
+        f"DRUM: offset out via the hinge-panel punch-out bay (centre X={DRUM_CX}mm),",
+        "   so the Ø900 housing clears the X=150 left rail entirely.",
         "WALKWAY: frame bottom at Z=100mm (RAIL_OFF); active image = inter-rail span.",
         "   Clears the lowered walkway deck (Z=65mm) by 35mm — film plane travels above the in-place walkway.",
     ]

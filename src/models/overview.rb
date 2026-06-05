@@ -6037,6 +6037,50 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Housing surround seal bottom
+  grp = ents.add_group
+  grp.name = "Housing surround seal bottom"
+  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal top
+  grp = ents.add_group
+  grp.name = "Housing surround seal top"
+  face = grp.entities.add_face([-20.mm,713.mm,2160.mm], [0.mm,713.mm,2160.mm], [0.mm,1649.mm,2160.mm], [-20.mm,1649.mm,2160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal left
+  grp = ents.add_group
+  grp.name = "Housing surround seal left"
+  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,753.mm,80.mm], [-20.mm,753.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal right
+  grp = ents.add_group
+  grp.name = "Housing surround seal right"
+  face = grp.entities.add_face([-20.mm,1609.mm,80.mm], [0.mm,1609.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Light-Trap Door Frame"
   inst.layer = model.layers["Light Seal"]
@@ -6047,7 +6091,7 @@ end
   # EPDM Seal Bottom
   grp = ents.add_group
   grp.name = "EPDM Seal Bottom"
-  face = grp.entities.add_face([120.mm,0.mm,80.mm], [140.mm,0.mm,80.mm], [140.mm,2362.mm,80.mm], [120.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
@@ -6058,7 +6102,7 @@ end
   # EPDM Seal Top
   grp = ents.add_group
   grp.name = "EPDM Seal Top"
-  face = grp.entities.add_face([120.mm,0.mm,2348.mm], [140.mm,0.mm,2348.mm], [140.mm,2362.mm,2348.mm], [120.mm,2362.mm,2348.mm])
+  face = grp.entities.add_face([-20.mm,0.mm,2348.mm], [0.mm,0.mm,2348.mm], [0.mm,2362.mm,2348.mm], [-20.mm,2362.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
@@ -6069,7 +6113,7 @@ end
   # EPDM Seal Left
   grp = ents.add_group
   grp.name = "EPDM Seal Left"
-  face = grp.entities.add_face([120.mm,0.mm,80.mm], [140.mm,0.mm,80.mm], [140.mm,40.mm,80.mm], [120.mm,40.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,40.mm,80.mm], [-20.mm,40.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2308.mm)
   mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")
@@ -6080,7 +6124,7 @@ end
   # EPDM Seal Right
   grp = ents.add_group
   grp.name = "EPDM Seal Right"
-  face = grp.entities.add_face([120.mm,2322.mm,80.mm], [140.mm,2322.mm,80.mm], [140.mm,2362.mm,80.mm], [120.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([-20.mm,2322.mm,80.mm], [0.mm,2322.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2308.mm)
   mat = model.materials["EPDM Seal Bottom"] || model.materials.add("EPDM Seal Bottom")

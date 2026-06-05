@@ -143,6 +143,24 @@ def door_frame():
     th = C_HGT - tz0                       # up to the frame top / ceiling
     parts.append(ruby_box("Door Frame top seal lip", -20 - lt, 0, tz0,
                           lt, C_WID, th, color=C_RAIL))
+
+    # ── Interface 2: fixed drum-housing surround → frame EPDM ring. The Ø900
+    # housing is FIXED; this gasket seals its surround to the frame ALL THE WAY
+    # AROUND the aperture it passes through — concentric INBOARD of the panel-
+    # perimeter seal (interface 1, on the hinge panel). Exterior door plane
+    # (X=-gt_h..0, same plane as interface 1), around the housing footprint
+    # (Yd APER_L..APER_R, Z floor-gap..housing-top). ──
+    gw_h, gt_h = 40, 20                    # gasket face width, X-thickness
+    hx0 = -gt_h                            # exterior face (X=-20..0)
+    hz0, hz1 = PANEL_FLOOR_GAP, DRUM_H     # housing footprint Z (80..2200)
+    parts.append(ruby_box("Housing surround seal bottom", hx0, APER_L, hz0,
+                          gt_h, APER_R - APER_L, gw_h, color=C_GASKT))
+    parts.append(ruby_box("Housing surround seal top", hx0, APER_L, hz1 - gw_h,
+                          gt_h, APER_R - APER_L, gw_h, color=C_GASKT))
+    parts.append(ruby_box("Housing surround seal left", hx0, APER_L, hz0,
+                          gt_h, gw_h, hz1 - hz0, color=C_GASKT))
+    parts.append(ruby_box("Housing surround seal right", hx0, APER_R - gw_h, hz0,
+                          gt_h, gw_h, hz1 - hz0, color=C_GASKT))
     return '\n'.join(parts)
 
 

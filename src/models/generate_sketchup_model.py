@@ -1027,16 +1027,20 @@ def light_seal():
 
     The hinged panel (cargo-door end, X≈0, with the revolving drum in its
     center) light-seals against the container opening. The EPDM gasket runs as
-    a frame around the opening perimeter (just inside the panel); the hinges
+    a frame around the opening perimeter on the panel's EXTERIOR face,
+    SANDWICHED against the fixed door frame (interface 1 — hinge panel → frame,
+    compressed by the cam latches); matches the light-trap model. The hinges
     are on one vertical edge (Yd=0).
     """
     parts = []
     gw, gt = 40, 20                    # gasket face width, thickness in X
-    x0 = PANEL_CENTER_T                # 120 — at the panel inner face
+    x0 = -gt                           # -20 — panel EXTERIOR face, gasket X=-20..0,
+                                       # sandwiched against the door frame (X=-50..0)
     z_bot, z_top = PANEL_FLOOR_GAP, C_HGT   # 80 … 2388 opening
     yd_max = C_WID                     # 2362
 
-    # Perimeter gasket frame — 4 strips around the opening (YZ plane at X≈120).
+    # Perimeter gasket frame — 4 strips around the opening (YZ plane at X≈0,
+    # panel exterior face).
     parts.append(ruby_box("EPDM Seal Bottom",
                           x0, 0, z_bot, gt, yd_max, gw, color=C_GASKT))
     parts.append(ruby_box("EPDM Seal Top",

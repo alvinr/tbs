@@ -75,11 +75,15 @@ TAGS = ["Context", "Door Frame", "Hinge Panel", "Light Trap",
 
 # ── Ghosted container context (end opening only) ─────────────────────────────
 
-def context():
+def context(left_walkway=True):
     """Low-alpha stub of floor, ceiling and both side walls near X=0 so the
-    assembly reads in place without modeling the whole container."""
+    assembly reads in place without modeling the whole container.
+
+    left_walkway: include the ghosted left walkway deck + drum-exit punch-out
+    (default True = operating; byte-identical). The transport model passes False —
+    the left walkway is the removable lift-out, taken out for transport."""
     x0, xlen = -400, 2000
-    return '\n'.join([
+    parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
                  color=C_SHELL, alpha=0.25),
         ruby_box("Ceiling (context)", x0, 0, C_HGT, xlen, C_WID, WALL_T,
@@ -88,22 +92,24 @@ def context():
                  color=C_SHELL, alpha=0.16),
         ruby_box("Side Wall far (context)", x0, C_WID, 0, xlen, WALL_T, C_HGT,
                  color=C_SHELL, alpha=0.16),
+    ]
+    if left_walkway:
         # Ghosted left walkway (the surface the operator steps onto from the
         # drum's interior opening): grating deck at X 170–470, Z 65–80, spanning
         # the full container width to match the ghost-container footprint.
-        ruby_box("Left walkway (ghost)", ov.WALKWAY_LEFT_X,
-                 0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
-                 ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
-                 color="#808080", alpha=0.28),
+        parts.append(ruby_box("Left walkway (ghost)", ov.WALKWAY_LEFT_X,
+                     0, ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
+                     ov.WALKWAY_W, C_WID, ov.WALKWAY_GRATE_T,
+                     color="#808080", alpha=0.28))
         # Drum-exit PUNCH-OUT — deepened landing in front of the drum opening so
         # the operator has somewhere to step out (the 300mm deck leaves only 20mm).
-        ruby_box("Left walkway punch-out (ghost)",
-                 ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L,
-                 ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
-                 ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
-                 ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
-                 ov.WALKWAY_GRATE_T, color="#808080", alpha=0.34),
-    ])
+        parts.append(ruby_box("Left walkway punch-out (ghost)",
+                     ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L,
+                     ov.WALKWAY_H - ov.WALKWAY_GRATE_T,
+                     ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,
+                     ov.WALKWAY_LEFT_WIDE_YD_R - ov.WALKWAY_LEFT_WIDE_YD_L,
+                     ov.WALKWAY_GRATE_T, color="#808080", alpha=0.34))
+    return '\n'.join(parts)
 
 
 # ── Fixed RHS door frame (seal landing, X just outboard of the panel) ────────

@@ -125,7 +125,7 @@ def walkways_partial():
 
 def generate_ruby():
     comps = [
-        component("Context", "Context", lt.context()),
+        component("Context", "Context", lt.context(left_walkway=False)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Closed Cargo Doors", "Cargo Doors", cargo_doors()),
         component("Hinged Light-Trap Panel", "Hinge Panel", lt.hinge_panel()),

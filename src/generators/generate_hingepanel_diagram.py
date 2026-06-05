@@ -37,7 +37,7 @@ from tbs_constants import (
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
     LT_DRUM_OR, LT_OPENING_DEG,
     RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
-    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X,
+    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X, BAY_WALL_T,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -433,12 +433,14 @@ def sheet2():
 
     # Drum geometry — axis is vertical; plan section shows horizontal circle
     D_CX = PW / 2        # drum centre X: centred in panel width = 1181mm
-    D_CY = (Y_EXT + Y_INT) / 2   # drum centre Y: centre of wall+panel depth = 80mm
+    # B2: housing centre offset out in DEPTH to the container DRUM_CX (= BAY_FRONT_X
+    # + DRUM_R + 40 = -400mm), carried past the door plane by the punch-out bay.
+    D_CY = BAY_FRONT_X + DRUM_R + 40   # = -400mm (container DRUM_CX)
     DR   = DRUM_R        # = 450mm
 
-    # Drum Y extents
-    D_YB = D_CY - DR     # exterior overhang bottom = 80 - 375 = -295mm
-    D_YT = D_CY + DR     # interior overhang top    = 80 + 375 = 455mm
+    # Drum Y (depth) extents
+    D_YB = D_CY - DR     # exterior overhang = -400 - 450 = -850mm
+    D_YT = D_CY + DR     # interior overhang = -400 + 450 = +50mm
 
     # Drum X extents
     D_XL = D_CX - DR    # = 731mm
@@ -492,15 +494,19 @@ def sheet2():
     ax.add_patch(Rectangle((D_XR, Y0_W), PW - D_XR, WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=3))
 
-    # ── CENTER ZONE panel (120mm thick, Yd=653→1709) ─────────────────────────
-    # Outer ply, frame, inner ply — between drum opening edges and step lines
+    # ── CENTER ZONE = B2 PUNCH-OUT BAY ───────────────────────────────────────
+    # The center zone is a rigid box protruding forward (depth from the panel
+    # interior face Y_INT out to BAY_FRONT_X) that encloses the offset Ø900
+    # housing. Side walls run the bay depth; a front face closes the exterior end.
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
-        ax.add_patch(Rectangle((x, Y0_PL), w, PLY_T,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
-        ax.add_patch(Rectangle((x, Y0_FR), w, FRAME_T,
-                                fc=C_STEEL, ec=C_OUT, lw=0.8, hatch="\\\\", zorder=3))
-        ax.add_patch(Rectangle((x, Y0_PL2), w, PLY_T,
-                                fc=C_ALUM, ec=C_OUT, lw=0.8, zorder=3))
+        ax.add_patch(Rectangle((x, BAY_FRONT_X), w, Y_INT - BAY_FRONT_X,
+                                fc=C_ALUM, ec=C_OUT, lw=1.0, hatch="\\\\",
+                                zorder=3, alpha=0.85))
+    ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T,
+                            fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=4))
+    ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
+            color=C_OUT, fontsize=8.5, ha="center", va="top", **FONT,
+            fontweight="bold", zorder=15)
 
     # ── CORNER ZONES (40mm thick, Yd=0→653 and Yd=1709→2362) ─────────────────
     # Corner zones: 18mm ply + 3mm aluminum plate + 18mm ply (40mm envelope)
@@ -797,11 +803,11 @@ def sheet3():
     Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel interior face)
 
     # Drum geometry in this view
-    D_CX_DEPTH = (Y0_W + Y1_PL2) / 2   # drum centre in depth = 80mm
+    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth centre = -400mm (DRUM_CX)
     D_HALF_W   = DRUM_R                 # drum/housing radius = 450mm (in depth axis)
 
-    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = 80 - 375 = -295mm (exterior overhang)
-    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = 80 + 375 = 455mm  (interior overhang)
+    D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -400 - 450 = -850mm (exterior overhang)
+    D_DEPTH_R  = D_CX_DEPTH + D_HALF_W   # = -400 + 450 = +50mm  (interior overhang)
 
     # Height positions (vertical axis in this view)
     H_FLOOR    = 0

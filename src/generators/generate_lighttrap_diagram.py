@@ -18,6 +18,7 @@ import os
 from tbs_constants import (
     C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL,
     FAN_DIAM, DUCT_DEPTH, DUCT_HEIGHT,
+    EVAP_DUCT_Z, C_HGT,
     DIAGRAMS_DIR,
 )
 from tbs_drawing import (
@@ -200,17 +201,14 @@ def draw_sheet1():
     # X=1200 → fraction from left = (5893-1200)/5893 ≈ 0.80
     # Cooler sits on ground outside; flex duct connects to baffled wall stub.
     EC_WALL_X = CX + CW * 0.80
-    # Baffled duct stub in floor (pinhole wall face in this section view)
-    draw_rect(ax, EC_WALL_X - 0.18, CY, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=5)
-    # Flex duct from wall stub down to cooler (outside)
-    ax.plot([EC_WALL_X, EC_WALL_X], [CY, CY - 0.45],
-            color=C_PIPE, lw=3.0, ls="--", zorder=5)
-    ax.text(EC_WALL_X + 0.25, CY - 0.22, "flex\nduct", ha="left", va="center",
-            fontsize=6.0, color=C_PIPE, style="italic", zorder=10)
-    # Cooler box — outside (below container floor)
+    # Duct penetrates HIGH on the wall face at Z=EVAP_DUCT_Z (not the floor).
+    ec_z = CY + WT + (CH - 2 * WT) * (EVAP_DUCT_Z / C_HGT)   # high penetration Z
+    # Baffled duct stub on the wall face, high up (the duct pierces the side wall).
+    draw_rect(ax, EC_WALL_X - 0.18, ec_z - WT / 2, 0.36, WT, fc="#A8D8B0", lw=1.0, zorder=6)
+    # Cooler box — outside, on the ground (below the container floor).
     EC_W, EC_H = 1.3, 0.65
     EC_X = EC_WALL_X - EC_W / 2
-    EC_Y = CY - 0.45 - EC_H
+    EC_Y = CY - 0.55 - EC_H
     ax.add_patch(mpatches.FancyBboxPatch((EC_X, EC_Y), EC_W, EC_H,
                  boxstyle="round,pad=0.04", fc=C_SOLAR, ec=C_OUT, lw=1.5, zorder=5))
     ax.text(EC_X + EC_W / 2, EC_Y + EC_H / 2, "EVAP COOLER\n(Cct E)",
@@ -218,12 +216,18 @@ def draw_sheet1():
             color=C_OUT, zorder=6)
     ax.text(EC_X + EC_W / 2, EC_Y - 0.12, "OUTSIDE — on ground",
             ha="center", va="top", fontsize=6.5, color=C_DIM, fontweight="bold", zorder=10)
-    # Airflow arrow: cooler → up through duct → into container
-    ax.annotate("", xy=(EC_WALL_X, CY + WT + 0.3),
-                xytext=(EC_WALL_X, EC_Y + EC_H),
-                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.0), zorder=6)
-    ann(ax, "Light-safe baffled\nintake (Ø200mm)",
-        (EC_WALL_X, CY + WT / 2), (EC_WALL_X + 1.5, CY + 0.6))
+    # Flex duct — rises up the EXTERIOR wall from the cooler to the high penetration.
+    dx = EC_X - 0.30   # routed just outside the container, clear of the interior
+    ax.plot([EC_X, dx, dx, EC_WALL_X],
+            [EC_Y + EC_H / 2, EC_Y + EC_H / 2, ec_z, ec_z],
+            color=C_PIPE, lw=3.0, ls="--", zorder=4)
+    ax.text(dx - 0.1, (EC_Y + ec_z) / 2, "flex duct\n(up exterior wall)", ha="right",
+            va="center", fontsize=6.0, color=C_PIPE, style="italic", zorder=10)
+    # Airflow arrow: duct → into the container at the high penetration.
+    ax.annotate("", xy=(EC_WALL_X - 0.6, ec_z), xytext=(EC_WALL_X, ec_z),
+                arrowprops=dict(arrowstyle="-|>", color=C_CL, lw=2.0), zorder=7)
+    ann(ax, f"Light-safe baffled intake\n(Ø200mm, HIGH — Z={EVAP_DUCT_Z}mm)",
+        (EC_WALL_X, ec_z), (EC_WALL_X - 2.0, ec_z + 0.9))
 
     # ── Cross-ventilation airflow path ────────────────────────────────────────
     # Curved arrow from intake Fan B (right wall, low) diagonally to exhaust Fan A (left wall, high)

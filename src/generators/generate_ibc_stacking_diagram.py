@@ -44,7 +44,9 @@ from tbs_constants import (
     DIAGRAMS_DIR,
 )
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
+                         draw_pipe_path as _tbs_pipe_path,
+                         draw_pipe_end as _tbs_pipe_end)
 
 # ── Palette ───────────────────────────────────────────────────────────────────
 BG      = "#FFFFFF"
@@ -1111,139 +1113,17 @@ def sheet3():
 def draw_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, sy, sz,
                    fc="#B0B0B8", ec="#333333", bore_fc="white",
                    elbow_r=None, zorder=5):
-    """Draw a pipe run with parallel-sided straight sections and elbow fittings.
-
-    Pipes have constant OD with parallel walls.  Direction changes are drawn
-    as discrete elbow fittings (concentric arcs), never as gradual curves.
-
-    y_pts, z_pts : waypoint coordinates in mm (before scaling)
-    od_mm        : pipe outer diameter in mm
-    wall_mm      : pipe wall thickness in mm
-    sy, sz       : scale functions  mm -> data coordinates
-    elbow_r      : elbow centerline bend radius in mm (default 1.0 x od_mm)
-    """
-    n = len(y_pts)
-    if n < 2:
-        return
-    half_od = od_mm / 2.0
-    half_id = half_od - wall_mm
-    if elbow_r is None:
-        elbow_r = od_mm
-
-    # ── segment directions ──────────────────────────────────────────────
-    segs = []
-    for i in range(n - 1):
-        dy = y_pts[i + 1] - y_pts[i]
-        dz = z_pts[i + 1] - z_pts[i]
-        length = max(math.hypot(dy, dz), 1e-6)
-        segs.append((dy / length, dz / length, length))
-
-    # ── elbow geometry at each intermediate waypoint ────────────────────
-    elbows = []
-    for i in range(1, n - 1):
-        d1y, d1z, _ = segs[i - 1]
-        d2y, d2z, _ = segs[i]
-
-        cos_a = max(-1.0, min(1.0, d1y * d2y + d1z * d2z))
-        alpha = math.acos(cos_a)
-        turn  = math.pi - alpha
-
-        if turn < 0.01:
-            elbows.append(None)
-            continue
-
-        tangent = elbow_r * math.tan(turn / 2)
-        max_t = 0.4 * min(segs[i - 1][2], segs[i][2])
-        if tangent > max_t:
-            tangent = max_t
-
-        cross = d1y * d2z - d1z * d2y
-
-        if cross > 0:
-            ny, nz = -d1z, d1y
-        else:
-            ny, nz = d1z, -d1y
-
-        tp_y = y_pts[i] - d1y * tangent
-        tp_z = z_pts[i] - d1z * tangent
-        r_eff = tangent / math.tan(turn / 2) if turn > 0.01 else elbow_r
-        cy = tp_y + ny * r_eff
-        cz = tp_z + nz * r_eff
-
-        start_a = math.atan2(tp_z - cz, tp_y - cy)
-        sweep   = turn if cross > 0 else -turn
-
-        elbows.append({
-            'tangent': tangent,
-            'r': r_eff,
-            'center': (cy, cz),
-            'start': start_a,
-            'sweep': sweep,
-        })
-
-    # ── helper: filled rectangle (one straight section) ─────────────────
-    def _rect(sy0, sz0, sy1, sz1, nx, nz, half_r, color, z_ord):
-        pts = [(sy(sy0 + nx * half_r), sz(sz0 + nz * half_r)),
-               (sy(sy1 + nx * half_r), sz(sz1 + nz * half_r)),
-               (sy(sy1 - nx * half_r), sz(sz1 - nz * half_r)),
-               (sy(sy0 - nx * half_r), sz(sz0 - nz * half_r))]
-        ax.fill([p[0] for p in pts], [p[1] for p in pts],
-                fc=color, ec=ec if color != bore_fc else "none",
-                lw=0.8 if color != bore_fc else 0,
-                zorder=z_ord)
-
-    # ── draw straight sections (trimmed by tangent lengths) ─────────────
-    for i in range(len(segs)):
-        dy, dz, seg_len = segs[i]
-        nx, nz = -dz, dy
-
-        trim_s = elbows[i - 1]['tangent'] if (i > 0 and elbows[i - 1]) else 0
-        trim_e = elbows[i]['tangent']     if (i < len(elbows) and elbows[i]) else 0
-
-        p0y = y_pts[i]     + dy * trim_s
-        p0z = z_pts[i]     + dz * trim_s
-        p1y = y_pts[i + 1] - dy * trim_e
-        p1z = z_pts[i + 1] - dz * trim_e
-
-        remaining = seg_len - trim_s - trim_e
-        if remaining < 0.5:
-            continue
-
-        _rect(p0y, p0z, p1y, p1z, nx, nz, half_od, fc, zorder)
-        _rect(p0y, p0z, p1y, p1z, nx, nz, half_id, bore_fc, zorder + 1)
-
-    # ── draw elbow fittings (concentric arcs) ───────────────────────────
-    for elb in elbows:
-        if elb is None:
-            continue
-        cy, cz = elb['center']
-        r_eff  = elb['r']
-        sa     = elb['start']
-        sw     = elb['sweep']
-        n_arc  = max(20, int(abs(sw) / 0.04))
-        angles = [sa + sw * t / n_arc for t in range(n_arc + 1)]
-
-        def _arc_ring(r_out, r_in, color, z_ord):
-            oy = [sy(cy + r_out * math.cos(a)) for a in angles]
-            oz = [sz(cz + r_out * math.sin(a)) for a in angles]
-            iy = [sy(cy + r_in  * math.cos(a)) for a in angles]
-            iz = [sz(cz + r_in  * math.sin(a)) for a in angles]
-            ax.fill(oy + iy[::-1], oz + iz[::-1],
-                    fc=color,
-                    ec=ec if color != bore_fc else "none",
-                    lw=0.8 if color != bore_fc else 0,
-                    zorder=z_ord)
-
-        _arc_ring(r_eff + half_od, max(r_eff - half_od, 0.5), fc,      zorder)
-        _arc_ring(r_eff + half_id, max(r_eff - half_id, 0.5), bore_fc, zorder + 1)
+    """Thin wrapper → tbs_drawing.draw_pipe_path (canonical body)."""
+    _tbs_pipe_path(ax, y_pts, z_pts, od_mm, wall_mm, fc, ec=ec,
+                   bore_fc=bore_fc, elbow_r=elbow_r, zorder=zorder,
+                   sx=sy, sz=sz)
 
 
 def draw_pipe_end(ax, cy, cz, r_data, wall_data, fc="#B0B0B8", ec="#333333",
                   bore_fc="white", zorder=5):
-    """Draw pipe end-on at data coords (cy, cz) with radius r_data."""
-    ax.add_patch(plt.Circle((cy, cz), r_data, fc=fc, ec=ec, lw=1.0, zorder=zorder))
-    ax.add_patch(plt.Circle((cy, cz), r_data - wall_data,
-                 fc=bore_fc, ec="none", zorder=zorder + 1))
+    """Thin wrapper → tbs_drawing.draw_pipe_end."""
+    _tbs_pipe_end(ax, cy, cz, r_data, wall_data, fc=fc, ec=ec,
+                  bore_fc=bore_fc, zorder=zorder)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

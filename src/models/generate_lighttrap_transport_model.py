@@ -82,12 +82,11 @@ def cargo_doors():
     return '\n'.join(parts)
 
 
-# ── Partial cargo-door-end context (tray + far walkway) ──────────────────────
+# ── Partial cargo-door-end context (tray + near/far walkways) ────────────────
 # Reuses the overview's tray/walkway geometry + constants, cropped to the
-# cargo-door-end zone. The NEAR walkway is intentionally OMITTED (it would sit
-# between the near-side iso camera and the light trap); the LEFT walkway is the
-# removable lift-out and is already taken out for transport — so only the FAR
-# deck + a tray section are shown for context.
+# cargo-door-end zone: a processing-tray section + the NEAR (pinhole-wall side,
+# Yd 0) and FAR walkway decks. The LEFT walkway is the removable lift-out and is
+# already taken out for transport — so it is not shown.
 PARTIAL_X = 1800        # context extends from the cargo-door end to here (mm)
 
 def processing_tray_partial():
@@ -106,15 +105,20 @@ def processing_tray_partial():
     ]
     return '\n'.join(p)
 
-def walkway_partial():
-    """The FAR walkway deck, cropped to the cargo-door-end zone (near walkway
-    omitted for the view; left walkway removed for transport)."""
+def walkways_partial():
+    """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the
+    cargo-door-end zone. The left walkway (removable lift-out) is out for
+    transport, so it is not shown."""
     grate_z = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
     t = ov.WALKWAY_GRATE_T
     x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W       # = 470 — where the long decks begin
     w = PARTIAL_X - x0
-    return ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
-                    w, ov.WALKWAY_W, t, color=ov.C_WALKWAY)
+    return '\n'.join([
+        ruby_box("Walkway Near (partial)", x0, 0, grate_z,
+                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+        ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
+                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
+    ])
 
 
 # ── Assemble the Ruby script (mirrors lt.generate_ruby + the transport pose) ──
@@ -122,15 +126,19 @@ def walkway_partial():
 def generate_ruby():
     comps = [
         component("Context", "Context", lt.context()),
-        component("Fixed Door Frame", "Door Frame", lt.door_frame()),
+        component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Closed Cargo Doors", "Cargo Doors", cargo_doors()),
         component("Hinged Light-Trap Panel", "Hinge Panel", lt.hinge_panel()),
-        component("Revolving Light-Trap Drum", "Light Trap", lt.drum()),
+        # The housing-surround EPDM (interface 2) rides the housing, so it goes in
+        # the Light Trap component and retracts +SLIDE with it (panel-perimeter
+        # EPDM / interface 1 is already inside hinge_panel() → also moves).
+        component("Revolving Light-Trap Drum", "Light Trap",
+                  lt.drum() + "\n" + lt.housing_surround_seal()),
         component("Sliding Carriage System", "Sliding Carriage",
                   lt.sliding_carriage(slide=SLIDE)),
         component("Fan B (intake)", "Fan B", lt.fan_b()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
-        component("Walkway (far, partial)", "Walkways", walkway_partial()),
+        component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
     ]
     body = '\n'.join(comps)
 

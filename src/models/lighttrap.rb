@@ -166,6 +166,50 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Housing surround seal bottom
+  grp = ents.add_group
+  grp.name = "Housing surround seal bottom"
+  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal top
+  grp = ents.add_group
+  grp.name = "Housing surround seal top"
+  face = grp.entities.add_face([-20.mm,713.mm,2160.mm], [0.mm,713.mm,2160.mm], [0.mm,1649.mm,2160.mm], [-20.mm,1649.mm,2160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal left
+  grp = ents.add_group
+  grp.name = "Housing surround seal left"
+  face = grp.entities.add_face([-20.mm,713.mm,80.mm], [0.mm,713.mm,80.mm], [0.mm,753.mm,80.mm], [-20.mm,753.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Housing surround seal right
+  grp = ents.add_group
+  grp.name = "Housing surround seal right"
+  face = grp.entities.add_face([-20.mm,1609.mm,80.mm], [0.mm,1609.mm,80.mm], [0.mm,1649.mm,80.mm], [-20.mm,1649.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2120.mm)
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
+  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Fixed Door Frame"
   inst.layer = model.layers["Door Frame"]
@@ -234,7 +278,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([0.mm,713.mm,80.mm], [120.mm,713.mm,80.mm], [120.mm,733.mm,80.mm], [0.mm,733.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2200.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -245,7 +289,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([0.mm,1629.mm,80.mm], [120.mm,1629.mm,80.mm], [120.mm,1649.mm,80.mm], [0.mm,1649.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2200.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -256,7 +300,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,716.mm,80.mm], [-20.mm,716.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -267,7 +311,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-20.mm,1646.mm,80.mm], [0.mm,1646.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -278,7 +322,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-20.mm,0.mm,2260.mm], [0.mm,0.mm,2260.mm], [0.mm,2362.mm,2260.mm], [-20.mm,2362.mm,2260.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -289,7 +333,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-20.mm,0.mm,80.mm], [0.mm,0.mm,80.mm], [0.mm,40.mm,80.mm], [-20.mm,40.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2220.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -300,7 +344,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-20.mm,2322.mm,80.mm], [0.mm,2322.mm,80.mm], [0.mm,2362.mm,80.mm], [-20.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2220.mm)
-  mat = model.materials["Housing aperture seal L"] || model.materials.add("Housing aperture seal L")
+  mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
   mat.color = Sketchup::Color.new(90, 48, 32)
   mat.alpha = 1.0
   grp.material = mat
@@ -553,7 +597,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-336.6765327507909.mm,898.4948455427659.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-336.67653275079084.mm,898.4948455427659.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)

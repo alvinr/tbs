@@ -331,7 +331,7 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 | Component | Position | In swing path? |
 |-----------|----------|---------------|
 | Light trap drum | Panel-mounted (center zone) | Moves with panel |
-| Fan B intake duct | Panel-mounted, Yd=1,959, H=600 | Moves with panel |
+| Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with panel |
 | Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 300mm slide + 180° swing |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
 | Electrical panel | X=2,050–2,350 | No — 1430mm inboard |

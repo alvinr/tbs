@@ -9716,7 +9716,7 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan A (exhaust, Cct A)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 266.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 1962.mm, 0.mm)
   circle = ge.add_circle([5618.mm,20.mm,2358.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9730,8 +9730,8 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan A (exhaust, Cct A) elbow"
   ge = grp.entities
-  arc = ge.add_arc([5618.mm,286.mm,2344.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5618.mm,286.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([5618.mm,1982.mm,2344.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5618.mm,1982.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
@@ -9744,7 +9744,7 @@ end
   grp.name = "Conduit to Fan A (exhaust, Cct A)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -44.mm)
-  circle = ge.add_circle([5618.mm,300.mm,2344.mm], vec, 7.mm, 16)
+  circle = ge.add_circle([5618.mm,1996.mm,2344.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9757,7 +9757,7 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan B (intake, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1962.mm, 0.mm)
+  vec = Geom::Vector3d.new(-226.mm, 0.mm, 0.mm)
   circle = ge.add_circle([300.mm,20.mm,2358.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -9771,8 +9771,8 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan B (intake, Cct B) elbow"
   ge = grp.entities
-  arc = ge.add_arc([286.mm,1982.mm,2358.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([300.mm,1982.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([74.mm,34.mm,2358.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([74.mm,20.mm,2358.mm], [-1.000000,0.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
@@ -9784,8 +9784,8 @@ end
   grp = ents.add_group
   grp.name = "Conduit to Fan B (intake, Cct B)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-226.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([286.mm,1996.mm,2358.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 331.mm, 0.mm)
+  circle = ge.add_circle([60.mm,34.mm,2358.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9797,7 +9797,7 @@ end
   # Fan B Flex Anchor (door-frame top rail — flex whip not shown)
   grp = ents.add_group
   grp.name = "Fan B Flex Anchor (door-frame top rail — flex whip not shown)"
-  face = grp.entities.add_face([40.mm,1971.mm,2333.mm], [85.mm,1971.mm,2333.mm], [85.mm,2021.mm,2333.mm], [40.mm,2021.mm,2333.mm])
+  face = grp.entities.add_face([40.mm,340.mm,2333.mm], [85.mm,340.mm,2333.mm], [85.mm,390.mm,2333.mm], [40.mm,390.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Pull Switch (ceiling)"] || model.materials.add("Pull Switch (ceiling)")
@@ -10199,7 +10199,7 @@ end
   # Fan A (exhaust) baffle duct
   grp = ents.add_group
   grp.name = "Fan A (exhaust) baffle duct"
-  face = grp.entities.add_face([5593.mm,200.mm,2100.mm], [5893.mm,200.mm,2100.mm], [5893.mm,400.mm,2100.mm], [5593.mm,400.mm,2100.mm])
+  face = grp.entities.add_face([5593.mm,1896.mm,2100.mm], [5893.mm,1896.mm,2100.mm], [5893.mm,2096.mm,2100.mm], [5593.mm,2096.mm,2100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle duct"] || model.materials.add("Fan A (exhaust) baffle duct")
@@ -10210,7 +10210,7 @@ end
   # Fan A (exhaust) baffle plate 1
   grp = ents.add_group
   grp.name = "Fan A (exhaust) baffle plate 1"
-  face = grp.entities.add_face([5689.mm,200.mm,2100.mm], [5697.mm,200.mm,2100.mm], [5697.mm,325.mm,2100.mm], [5689.mm,325.mm,2100.mm])
+  face = grp.entities.add_face([5689.mm,1896.mm,2100.mm], [5697.mm,1896.mm,2100.mm], [5697.mm,2021.mm,2100.mm], [5689.mm,2021.mm,2100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10221,7 +10221,7 @@ end
   # Fan A (exhaust) baffle plate 2
   grp = ents.add_group
   grp.name = "Fan A (exhaust) baffle plate 2"
-  face = grp.entities.add_face([5789.mm,275.mm,2100.mm], [5797.mm,275.mm,2100.mm], [5797.mm,400.mm,2100.mm], [5789.mm,400.mm,2100.mm])
+  face = grp.entities.add_face([5789.mm,1971.mm,2100.mm], [5797.mm,1971.mm,2100.mm], [5797.mm,2096.mm,2100.mm], [5789.mm,2096.mm,2100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10232,7 +10232,7 @@ end
   # Fan A (exhaust) fan frame top
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan frame top"
-  face = grp.entities.add_face([5593.mm,200.mm,2275.mm], [5643.mm,200.mm,2275.mm], [5643.mm,400.mm,2275.mm], [5593.mm,400.mm,2275.mm])
+  face = grp.entities.add_face([5593.mm,1896.mm,2275.mm], [5643.mm,1896.mm,2275.mm], [5643.mm,2096.mm,2275.mm], [5593.mm,2096.mm,2275.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10243,7 +10243,7 @@ end
   # Fan A (exhaust) fan frame bottom
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan frame bottom"
-  face = grp.entities.add_face([5593.mm,200.mm,2100.mm], [5643.mm,200.mm,2100.mm], [5643.mm,400.mm,2100.mm], [5593.mm,400.mm,2100.mm])
+  face = grp.entities.add_face([5593.mm,1896.mm,2100.mm], [5643.mm,1896.mm,2100.mm], [5643.mm,2096.mm,2100.mm], [5593.mm,2096.mm,2100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10254,7 +10254,7 @@ end
   # Fan A (exhaust) fan frame left
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan frame left"
-  face = grp.entities.add_face([5593.mm,200.mm,2125.mm], [5643.mm,200.mm,2125.mm], [5643.mm,225.mm,2125.mm], [5593.mm,225.mm,2125.mm])
+  face = grp.entities.add_face([5593.mm,1896.mm,2125.mm], [5643.mm,1896.mm,2125.mm], [5643.mm,1921.mm,2125.mm], [5593.mm,1921.mm,2125.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10265,7 +10265,7 @@ end
   # Fan A (exhaust) fan frame right
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan frame right"
-  face = grp.entities.add_face([5593.mm,375.mm,2125.mm], [5643.mm,375.mm,2125.mm], [5643.mm,400.mm,2125.mm], [5593.mm,400.mm,2125.mm])
+  face = grp.entities.add_face([5593.mm,2071.mm,2125.mm], [5643.mm,2071.mm,2125.mm], [5643.mm,2096.mm,2125.mm], [5593.mm,2096.mm,2125.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10277,7 +10277,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan hub"
   ge = grp.entities
-  circle = ge.add_circle([5593.mm,300.mm,2200.mm], [1,0,0], 19.5.mm, 24)
+  circle = ge.add_circle([5593.mm,1996.mm,2200.mm], [1,0,0], 19.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
@@ -10289,7 +10289,7 @@ end
   # Fan A (exhaust) fan blade up
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan blade up"
-  face = grp.entities.add_face([5615.5.mm,285.mm,2219.5.mm], [5621.5.mm,285.mm,2219.5.mm], [5621.5.mm,315.mm,2219.5.mm], [5615.5.mm,315.mm,2219.5.mm])
+  face = grp.entities.add_face([5615.5.mm,1981.mm,2219.5.mm], [5621.5.mm,1981.mm,2219.5.mm], [5621.5.mm,2011.mm,2219.5.mm], [5615.5.mm,2011.mm,2219.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10300,7 +10300,7 @@ end
   # Fan A (exhaust) fan blade down
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan blade down"
-  face = grp.entities.add_face([5615.5.mm,285.mm,2134.mm], [5621.5.mm,285.mm,2134.mm], [5621.5.mm,315.mm,2134.mm], [5615.5.mm,315.mm,2134.mm])
+  face = grp.entities.add_face([5615.5.mm,1981.mm,2134.mm], [5621.5.mm,1981.mm,2134.mm], [5621.5.mm,2011.mm,2134.mm], [5615.5.mm,2011.mm,2134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10311,7 +10311,7 @@ end
   # Fan A (exhaust) fan blade left
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan blade left"
-  face = grp.entities.add_face([5615.5.mm,234.mm,2185.mm], [5621.5.mm,234.mm,2185.mm], [5621.5.mm,280.5.mm,2185.mm], [5615.5.mm,280.5.mm,2185.mm])
+  face = grp.entities.add_face([5615.5.mm,1930.mm,2185.mm], [5621.5.mm,1930.mm,2185.mm], [5621.5.mm,1976.5.mm,2185.mm], [5615.5.mm,1976.5.mm,2185.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10322,7 +10322,7 @@ end
   # Fan A (exhaust) fan blade right
   grp = ents.add_group
   grp.name = "Fan A (exhaust) fan blade right"
-  face = grp.entities.add_face([5615.5.mm,319.5.mm,2185.mm], [5621.5.mm,319.5.mm,2185.mm], [5621.5.mm,366.mm,2185.mm], [5615.5.mm,366.mm,2185.mm])
+  face = grp.entities.add_face([5615.5.mm,2015.5.mm,2185.mm], [5621.5.mm,2015.5.mm,2185.mm], [5621.5.mm,2062.mm,2185.mm], [5615.5.mm,2062.mm,2185.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10333,7 +10333,7 @@ end
   # Fan A (exhaust) wall flange
   grp = ents.add_group
   grp.name = "Fan A (exhaust) wall flange"
-  face = grp.entities.add_face([5888.mm,170.mm,2070.mm], [5893.mm,170.mm,2070.mm], [5893.mm,430.mm,2070.mm], [5888.mm,430.mm,2070.mm])
+  face = grp.entities.add_face([5888.mm,1866.mm,2070.mm], [5893.mm,1866.mm,2070.mm], [5893.mm,2126.mm,2070.mm], [5888.mm,2126.mm,2070.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(260.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10345,7 +10345,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,185.mm,2085.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([5886.5.mm,1881.mm,2085.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10358,7 +10358,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,185.mm,2315.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([5886.5.mm,1881.mm,2315.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10371,7 +10371,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,415.mm,2085.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([5886.5.mm,2111.mm,2085.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10384,7 +10384,7 @@ end
   grp = ents.add_group
   grp.name = "Fan A (exhaust) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,415.mm,2315.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([5886.5.mm,2111.mm,2315.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10396,7 +10396,7 @@ end
   # Fan A (exhaust) louvre grille
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre grille"
-  face = grp.entities.add_face([5893.mm,200.mm,2135.mm], [5933.mm,200.mm,2135.mm], [5933.mm,400.mm,2135.mm], [5893.mm,400.mm,2135.mm])
+  face = grp.entities.add_face([5893.mm,1896.mm,2135.mm], [5933.mm,1896.mm,2135.mm], [5933.mm,2096.mm,2135.mm], [5893.mm,2096.mm,2135.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(130.mm)
   mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
@@ -10407,7 +10407,7 @@ end
   # Fan A (exhaust) louvre slat
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,204.mm,2146.5.mm], [5931.mm,204.mm,2146.5.mm], [5931.mm,396.mm,2146.5.mm], [5895.mm,396.mm,2146.5.mm])
+  face = grp.entities.add_face([5895.mm,1900.mm,2146.5.mm], [5931.mm,1900.mm,2146.5.mm], [5931.mm,2092.mm,2146.5.mm], [5895.mm,2092.mm,2146.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10418,7 +10418,7 @@ end
   # Fan A (exhaust) louvre slat
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,204.mm,2172.5.mm], [5931.mm,204.mm,2172.5.mm], [5931.mm,396.mm,2172.5.mm], [5895.mm,396.mm,2172.5.mm])
+  face = grp.entities.add_face([5895.mm,1900.mm,2172.5.mm], [5931.mm,1900.mm,2172.5.mm], [5931.mm,2092.mm,2172.5.mm], [5895.mm,2092.mm,2172.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10429,7 +10429,7 @@ end
   # Fan A (exhaust) louvre slat
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,204.mm,2198.5.mm], [5931.mm,204.mm,2198.5.mm], [5931.mm,396.mm,2198.5.mm], [5895.mm,396.mm,2198.5.mm])
+  face = grp.entities.add_face([5895.mm,1900.mm,2198.5.mm], [5931.mm,1900.mm,2198.5.mm], [5931.mm,2092.mm,2198.5.mm], [5895.mm,2092.mm,2198.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10440,7 +10440,7 @@ end
   # Fan A (exhaust) louvre slat
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,204.mm,2224.5.mm], [5931.mm,204.mm,2224.5.mm], [5931.mm,396.mm,2224.5.mm], [5895.mm,396.mm,2224.5.mm])
+  face = grp.entities.add_face([5895.mm,1900.mm,2224.5.mm], [5931.mm,1900.mm,2224.5.mm], [5931.mm,2092.mm,2224.5.mm], [5895.mm,2092.mm,2224.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10451,7 +10451,7 @@ end
   # Fan A (exhaust) louvre slat
   grp = ents.add_group
   grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,204.mm,2250.5.mm], [5931.mm,204.mm,2250.5.mm], [5931.mm,396.mm,2250.5.mm], [5895.mm,396.mm,2250.5.mm])
+  face = grp.entities.add_face([5895.mm,1900.mm,2250.5.mm], [5931.mm,1900.mm,2250.5.mm], [5931.mm,2092.mm,2250.5.mm], [5895.mm,2092.mm,2250.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10462,7 +10462,7 @@ end
   # Fan B (intake) baffle duct
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle duct"
-  face = grp.entities.add_face([0.mm,1896.mm,500.mm], [300.mm,1896.mm,500.mm], [300.mm,2096.mm,500.mm], [0.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([0.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [0.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle duct"] || model.materials.add("Fan A (exhaust) baffle duct")
@@ -10473,7 +10473,7 @@ end
   # Fan B (intake) baffle plate 1
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 1"
-  face = grp.entities.add_face([96.mm,1896.mm,500.mm], [104.mm,1896.mm,500.mm], [104.mm,2021.mm,500.mm], [96.mm,2021.mm,500.mm])
+  face = grp.entities.add_face([96.mm,265.mm,500.mm], [104.mm,265.mm,500.mm], [104.mm,390.mm,500.mm], [96.mm,390.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10484,7 +10484,7 @@ end
   # Fan B (intake) baffle plate 2
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 2"
-  face = grp.entities.add_face([196.mm,1971.mm,500.mm], [204.mm,1971.mm,500.mm], [204.mm,2096.mm,500.mm], [196.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([196.mm,340.mm,500.mm], [204.mm,340.mm,500.mm], [204.mm,465.mm,500.mm], [196.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10495,7 +10495,7 @@ end
   # Fan B (intake) fan frame top
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame top"
-  face = grp.entities.add_face([250.mm,1896.mm,675.mm], [300.mm,1896.mm,675.mm], [300.mm,2096.mm,675.mm], [250.mm,2096.mm,675.mm])
+  face = grp.entities.add_face([250.mm,265.mm,675.mm], [300.mm,265.mm,675.mm], [300.mm,465.mm,675.mm], [250.mm,465.mm,675.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10506,7 +10506,7 @@ end
   # Fan B (intake) fan frame bottom
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame bottom"
-  face = grp.entities.add_face([250.mm,1896.mm,500.mm], [300.mm,1896.mm,500.mm], [300.mm,2096.mm,500.mm], [250.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([250.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [250.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10517,7 +10517,7 @@ end
   # Fan B (intake) fan frame left
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame left"
-  face = grp.entities.add_face([250.mm,1896.mm,525.mm], [300.mm,1896.mm,525.mm], [300.mm,1921.mm,525.mm], [250.mm,1921.mm,525.mm])
+  face = grp.entities.add_face([250.mm,265.mm,525.mm], [300.mm,265.mm,525.mm], [300.mm,290.mm,525.mm], [250.mm,290.mm,525.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10528,7 +10528,7 @@ end
   # Fan B (intake) fan frame right
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame right"
-  face = grp.entities.add_face([250.mm,2071.mm,525.mm], [300.mm,2071.mm,525.mm], [300.mm,2096.mm,525.mm], [250.mm,2096.mm,525.mm])
+  face = grp.entities.add_face([250.mm,440.mm,525.mm], [300.mm,440.mm,525.mm], [300.mm,465.mm,525.mm], [250.mm,465.mm,525.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
@@ -10540,7 +10540,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B (intake) fan hub"
   ge = grp.entities
-  circle = ge.add_circle([250.mm,1996.mm,600.mm], [1,0,0], 19.5.mm, 24)
+  circle = ge.add_circle([250.mm,365.mm,600.mm], [1,0,0], 19.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
@@ -10552,7 +10552,7 @@ end
   # Fan B (intake) fan blade up
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade up"
-  face = grp.entities.add_face([272.5.mm,1981.mm,619.5.mm], [278.5.mm,1981.mm,619.5.mm], [278.5.mm,2011.mm,619.5.mm], [272.5.mm,2011.mm,619.5.mm])
+  face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10563,7 +10563,7 @@ end
   # Fan B (intake) fan blade down
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade down"
-  face = grp.entities.add_face([272.5.mm,1981.mm,534.mm], [278.5.mm,1981.mm,534.mm], [278.5.mm,2011.mm,534.mm], [272.5.mm,2011.mm,534.mm])
+  face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10574,7 +10574,7 @@ end
   # Fan B (intake) fan blade left
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade left"
-  face = grp.entities.add_face([272.5.mm,1930.mm,585.mm], [278.5.mm,1930.mm,585.mm], [278.5.mm,1976.5.mm,585.mm], [272.5.mm,1976.5.mm,585.mm])
+  face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10585,7 +10585,7 @@ end
   # Fan B (intake) fan blade right
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade right"
-  face = grp.entities.add_face([272.5.mm,2015.5.mm,585.mm], [278.5.mm,2015.5.mm,585.mm], [278.5.mm,2062.mm,585.mm], [272.5.mm,2062.mm,585.mm])
+  face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Pinhole Tilt-Swing Board"] || model.materials.add("Pinhole Tilt-Swing Board")
@@ -10596,7 +10596,7 @@ end
   # Fan B (intake) wall flange
   grp = ents.add_group
   grp.name = "Fan B (intake) wall flange"
-  face = grp.entities.add_face([0.mm,1866.mm,470.mm], [5.mm,1866.mm,470.mm], [5.mm,2126.mm,470.mm], [0.mm,2126.mm,470.mm])
+  face = grp.entities.add_face([0.mm,235.mm,470.mm], [5.mm,235.mm,470.mm], [5.mm,495.mm,470.mm], [0.mm,495.mm,470.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(260.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10608,7 +10608,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,1881.mm,485.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,250.mm,485.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10621,7 +10621,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,1881.mm,715.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,250.mm,715.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10634,7 +10634,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,2111.mm,485.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,480.mm,485.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10647,7 +10647,7 @@ end
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,2111.mm,715.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,480.mm,715.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -10659,7 +10659,7 @@ end
   # Fan B (intake) louvre grille
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre grille"
-  face = grp.entities.add_face([-40.mm,1896.mm,535.mm], [0.mm,1896.mm,535.mm], [0.mm,2096.mm,535.mm], [-40.mm,2096.mm,535.mm])
+  face = grp.entities.add_face([-40.mm,265.mm,535.mm], [0.mm,265.mm,535.mm], [0.mm,465.mm,535.mm], [-40.mm,465.mm,535.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(130.mm)
   mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
@@ -10670,7 +10670,7 @@ end
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,546.5.mm], [-2.mm,1900.mm,546.5.mm], [-2.mm,2092.mm,546.5.mm], [-38.mm,2092.mm,546.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,546.5.mm], [-2.mm,269.mm,546.5.mm], [-2.mm,461.mm,546.5.mm], [-38.mm,461.mm,546.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10681,7 +10681,7 @@ end
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,572.5.mm], [-2.mm,1900.mm,572.5.mm], [-2.mm,2092.mm,572.5.mm], [-38.mm,2092.mm,572.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,572.5.mm], [-2.mm,269.mm,572.5.mm], [-2.mm,461.mm,572.5.mm], [-38.mm,461.mm,572.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10692,7 +10692,7 @@ end
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,598.5.mm], [-2.mm,1900.mm,598.5.mm], [-2.mm,2092.mm,598.5.mm], [-38.mm,2092.mm,598.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,598.5.mm], [-2.mm,269.mm,598.5.mm], [-2.mm,461.mm,598.5.mm], [-38.mm,461.mm,598.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10703,7 +10703,7 @@ end
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,624.5.mm], [-2.mm,1900.mm,624.5.mm], [-2.mm,2092.mm,624.5.mm], [-38.mm,2092.mm,624.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,624.5.mm], [-2.mm,269.mm,624.5.mm], [-2.mm,461.mm,624.5.mm], [-38.mm,461.mm,624.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -10714,7 +10714,7 @@ end
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,650.5.mm], [-2.mm,1900.mm,650.5.mm], [-2.mm,2092.mm,650.5.mm], [-38.mm,2092.mm,650.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,650.5.mm], [-2.mm,269.mm,650.5.mm], [-2.mm,461.mm,650.5.mm], [-38.mm,461.mm,650.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")

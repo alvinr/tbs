@@ -622,8 +622,12 @@ FAN_A_H     = 2200   # fan A center height AFF (mm — HIGH; clears IBC stack to
 FAN_B_H     = 600    # fan B center height AFF (mm — LOW; intake near floor)
 # Yd (width) positions — cross-ventilation diagonal: low intake (cargo-door
 # panel) to high exhaust (far end wall), diagonally across the volume.
-FAN_A_YD    = 300                     # 300mm from pinhole wall — off the corner, toward center of the X=C_LEN end wall
-FAN_B_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1959mm — centered between drum far edge and far wall
+# rev 9 / B2: Fan A and Fan B SWAP sides (mirror about the centerline) so the
+# intake fan (Fan B, on the sliding panel) sits in the NEAR corner by the pinhole
+# wall — its conduit then runs along that wall and never crosses the ceiling
+# suspension rails (Yd=653/1709); only a flex whip bridges to the moving panel.
+FAN_A_YD    = (C_WID // 2 + DRUM_R + C_WID) // 2  # = 1996mm — far side, off the corner of the X=C_LEN end wall (moved from the pinhole side)
+FAN_B_YD    = (C_WID // 2 - DRUM_R) // 2          # = 365mm — near the pinhole wall, in the near corner zone clear of the drum (near edge Yd≈731)
 
 # Baffle duct (one per fan, welded galvanized steel)
 # Fan A: duct extends into container interior from wall
@@ -636,7 +640,9 @@ DUCT_HEIGHT = 200    # baffle duct opening height (mm)
 FAN_A_MARGIN = C_LEN - ZONE_R_START - FAN_DIAM // 2 - DUCT_DEPTH   # = 869mm ✓
 # Fan B: mounted on panel — intake grille on panel inner face, no duct on interior side.
 # Shadow margin is panel inner face to ZONE_L_END = 40mm (corner zone thickness).
-# Fan at Yd=1959mm: cone at Yd=1959 is well above X=150, so no cone intrusion.
+# Fan at Yd=365mm (rev9/B2 swap, near pinhole wall): still at X=0, behind the
+# X=150–4649 active image-plane zone, so no cone intrusion (and still in a 40mm
+# corner zone — now the NEAR corner instead of the far one).
 FAN_B_MARGIN = PANEL_CORNER_T   # = 40mm (fan flush with panel inner face)
 
 # ── Output directories ────────────────────────────────────────────────────────

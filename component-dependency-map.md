@@ -116,8 +116,8 @@ sign-off) + free-edge swing-support caster, 4× Southco C2-33 cam compression la
 | Panel fan body depth | 50mm | `FAN_BODY_D` |
 | Fan A center height AFF (high, above IBC) | 2200mm | `FAN_A_H` |
 | Fan B center height AFF (low) | 600mm | `FAN_B_H` |
-| Fan A Yd position (off corner, toward end-wall center) | 300mm | `FAN_A_YD` |
-| Fan B Yd position (centered drum–wall) | 1959mm | `FAN_B_YD` |
+| Fan A Yd position (far side, off corner — rev9/B2 swap) | 1996mm | `FAN_A_YD` |
+| Fan B Yd position (near pinhole wall, near corner — rev9/B2 swap) | 365mm | `FAN_B_YD` |
 | Baffle duct depth | 300mm | `DUCT_DEPTH` |
 | Baffle duct height | 200mm | `DUCT_HEIGHT` |
 | Fan A shadow margin (from cone) | 869mm | `FAN_A_MARGIN` |
@@ -125,8 +125,9 @@ sign-off) + free-edge swing-support caster, 4× Southco C2-33 cam compression la
 
 *Components: Fan A — 150mm compact axial panel fan, far end wall (X=C_LEN), exhaust, Circuit A,
 high position (Z=2200mm, above the 2020mm IBC stack so the baffle duct clears the totes). Fan B —
-identical fan, mounted on hinged panel (far corner zone, Yd=1959mm), intake, Circuit B, low
-position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
+identical fan, mounted on hinged panel (near corner zone by the pinhole wall, Yd=365mm — rev9/B2
+swap so its conduit runs along the pinhole wall without crossing the suspension rails), intake,
+Circuit B, low position. Fan A mounts on interior face of a 300mm deep light-safe baffle duct with 2 offset
 steel baffles (65% height each, horizontal S-path); exterior face has a passive weatherproof louvre grille.
 Fan B has the same baffle duct protruding from the panel exterior face — draws fresh air from the
 open doorway during operation. Fan B moves with the panel on the sliding carriage; wiring via

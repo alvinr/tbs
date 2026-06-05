@@ -36,8 +36,8 @@ from tbs_constants import (
     DRUM_D as LT_HOUSING_D,                       # Ø900 fixed housing OD (rev8)
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,         # widened center-zone step lines
     LT_DRUM_OR, LT_OPENING_DEG,
-    RAIL_X_L, BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1,   # film-plane left rail
-    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T,
+    RAIL_X_L,                                    # film-plane left rail (now continuous, B2)
+    FP_Y_MIN, FP_Y, PANEL_SLIDE, PANEL_CENTER_T, DRUM_CY, BAY_FRONT_X,
 )
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v,
@@ -217,7 +217,7 @@ def sheet1():
 
     leader(ax, (-HINGE_W / 2, HINGE_YS[1]),
            (-HINGE_W - 280, HINGE_YS[1] + 300),
-           "3 × 200mm S.S.\nBALL-BEARING PIANO HINGE")
+           "HEAVY-DUTY WELD-ON BARREL HINGES\n(sized for the bay leaf + tipping\ncouple — STRUCTURAL SIGN-OFF)")
 
     # ── Sliding carriage system ─────────────────────────────────────────────
     # The entire panel slides 300mm in the X direction (into the container)
@@ -1692,13 +1692,12 @@ def sheet5():
 def sheet6():
     """Transport-slide clearance vs the film-plane left mechanism (plan)."""
     RED, GREEN = "#C0202A", "#2E8B57"
-    D0, D1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
-    RX, SL, PT_ = RAIL_X_L, PANEL_SLIDE, PANEL_CENTER_T     # 150, 550, 120
+    RX, SL, PT_ = RAIL_X_L, PANEL_SLIDE, PANEL_CENTER_T     # 150, 880, 120
     cyd = PW / 2                                            # 1181 light-lock Yd centre
 
     fig, ax = plt.subplots(figsize=(17, 12))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
-    ax.set_xlim(-280, 2360); ax.set_ylim(-360, 2700)
+    ax.set_xlim(-980, 2360); ax.set_ylim(-360, 2700)
     ax.set_aspect("equal"); ax.axis("off")
 
     ax.add_patch(Rectangle((0, 0), 1340, PW, fc="#EEF6EE", ec="none", zorder=0))
@@ -1709,10 +1708,11 @@ def sheet6():
     ax.plot([0, 0], [0, PW], color=C_CL, lw=1.4, ls=(0, (6, 4)), zorder=3)
     ax.text(10, PW + 95, "door plane X=0", fontsize=8, color=C_CL, **FONT)
 
-    # film-plane left rail at X=150 (fixed ends + demount centre)
-    for ya, yb, c in [(FP_Y_MIN, D0, C_STEEL), (D1, FP_Y + 38, C_STEEL), (D0, D1, C_LIGHT)]:
-        ax.add_patch(Rectangle((RX - 13, ya), 26, yb - ya, fc=c, ec=C_OUT, lw=1, zorder=6))
-    ax.text(RX, (D0 + D1) / 2, "left rail X=150\n· demount centre\n(drum zone only)",
+    # film-plane left rail at X=150 — CONTINUOUS (drum offset out via the bay, B2);
+    # the whole left rail is struck for transport (panel slides past it).
+    ax.add_patch(Rectangle((RX - 13, FP_Y_MIN), 26, (FP_Y + 38) - FP_Y_MIN,
+                           fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))
+    ax.text(RX, DRUM_CY, "left rail X=150\nCONTINUOUS\n(struck for transport)",
             fontsize=6, color="#8a5a10", **FONT, ha="center", va="center", zorder=12)
     # brace-cage beams (run X 150->4649) at Yd 100 & 2262
     for yy in (FP_Y_MIN, FP_Y):
@@ -1723,16 +1723,27 @@ def sheet6():
     for yy in (FP_Y_MIN, FP_Y):                              # corner posts at X=150
         ax.add_patch(Rectangle((RX - 27, yy - 27), 54, 54, fc="#5A5A62", ec=C_OUT, lw=1, zorder=7))
 
-    # hinged panel — deployed + transport ghost
+    # hinged panel side zones — deployed + transport ghost
     ax.add_patch(Rectangle((0, 0), PT_, PW, fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=8))
     ax.text(PT_ / 2, -140, "panel\ndeployed", fontsize=7, color=C_DIM, **FONT, ha="center", va="top")
     ax.add_patch(Rectangle((SL, 0), PT_, PW, fc=C_ALUM, ec=RED, lw=1.6, ls=(0, (5, 3)),
                            alpha=0.30, zorder=9))
+    # B2 punch-out bay — center zone protrudes forward to BAY_FRONT_X (deployed),
+    # and retracts +PANEL_SLIDE for transport (ghost) so the cargo doors close.
+    bw = -BAY_FRONT_X        # 890 — bay depth past the door plane
+    ax.add_patch(Rectangle((BAY_FRONT_X, PANEL_CORNER_YD_L), bw,
+                           PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
+                           fc="#C8D8E8", ec=C_OUT, lw=1.2, hatch="////", zorder=8))
+    ax.text(BAY_FRONT_X + bw / 2, cyd, "PUNCH-OUT BAY\n(Ø900 housing)",
+            fontsize=6.5, color=C_DIM, **FONT, ha="center", va="center", zorder=12)
+    ax.add_patch(Rectangle((BAY_FRONT_X + SL, PANEL_CORNER_YD_L), bw,
+                           PANEL_CORNER_YD_R - PANEL_CORNER_YD_L,
+                           fc="#C8D8E8", ec=RED, lw=1.4, ls=(0, (5, 3)), alpha=0.30, zorder=9))
     ax.text(SL + PT_ / 2, -140, f"panel TRANSPORT\n(slid +{int(SL)})", fontsize=7.5,
             color=RED, **FONT, ha="center", va="top", fontweight="bold")
     ax.add_patch(Circle((0, cyd), DRUM_R, fc=C_ALUM, ec="#7a5a20", lw=1.0, alpha=0.45, zorder=8))
     ax.add_patch(Circle((SL, cyd), DRUM_R, fc=C_ALUM, ec=RED, lw=1.0, ls=(0, (4, 3)), alpha=0.16, zorder=9))
-    ax.text(SL, cyd, "housing\ndrum-zone rail\ndemounted ✓\n(clears)", fontsize=6.4,
+    ax.text(SL, cyd, "housing slid in\n(left rail struck\nfor transport)", fontsize=6.4,
             color=GREEN, **FONT, ha="center", va="center", zorder=12)
     ax.annotate("", xy=(SL - 8, 1181), xytext=(PT_ + 20, 1181),
                 arrowprops=dict(arrowstyle="-|>", color=RED, lw=2.0), zorder=11)
@@ -1748,21 +1759,21 @@ def sheet6():
 
     ax.text(-280, 2640, "TRANSPORT SLIDE vs FILM-PLANE LEFT MECHANISM  (plan, looking down)",
             fontsize=13, fontweight="bold", color=C_OUT, **FONT)
-    notes = ("THE ISSUE — the ~550mm transport slide sweeps the\n"
-             "panel through X=150 (the film-plane left edge).\n\n"
-             "①  Panel CORNERS hit the FIXED left-rail segments.\n"
-             "    The operational demount segment (amber) clears\n"
-             "    only the drum zone (Yd 731–1631), not the corners.\n\n"
-             "②  Panel BAND overlaps the lengthwise brace-cage\n"
-             "    beams (Yd≈100 & 2262) and the muslin screen.\n\n"
-             "The housing itself clears — its drum-zone rail is\n"
-             "demounted (green).\n\n"
-             "NOT a regression: the panel always slid past X=150\n"
-             "(rev 8 only deepened the slide 300→550mm).\n\n"
-             "RESOLUTION (Hinged Panel Report §5.4) — strike the\n"
-             "film plane FIRST: remove muslin screen → knock down\n"
-             "the brace cage → remove the FULL left rail → lift the\n"
-             "walkway → release latches → slide ~550mm → lock.")
+    notes = ("B2 TRANSPORT (rev9) — the bay slides ~880mm inward so the\n"
+             "punch-out bay retracts behind the door plane and the\n"
+             "cargo doors close.\n\n"
+             "①  The panel sweeps past X=150, so the WHOLE left rail\n"
+             "    (top + bottom) is struck for transport. It is\n"
+             "    CONTINUOUS in operating — the drum is offset clear of\n"
+             "    the rail via the bay (no demountable segment).\n\n"
+             "②  The deeper slide also reaches the brace-cage beams and\n"
+             "    the door-end walkway brackets (X≈698, 1155) — both are\n"
+             "    struck / demountable for transport.\n\n"
+             "Operating: full symmetric film-plane travel is restored.\n\n"
+             "TEARDOWN (Hinged Panel Report §5) — strike the film plane\n"
+             "first: remove muslin → knock down brace cage → remove the\n"
+             "full left rail → strike the door-end brackets → lift the\n"
+             "left walkway → release latches → slide ~880mm → lock.")
     ax.add_patch(FancyBboxPatch((1440, 360), 880, 2150,
                                 boxstyle="round,pad=8,rounding_size=16",
                                 fc="#FBFBFD", ec=C_DIM, lw=1.0, zorder=2))

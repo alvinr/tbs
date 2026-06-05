@@ -868,7 +868,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) baffle duct
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle duct"
-  face = grp.entities.add_face([0.mm,1896.mm,500.mm], [300.mm,1896.mm,500.mm], [300.mm,2096.mm,500.mm], [0.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([0.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [0.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan B (intake) baffle duct"] || model.materials.add("Fan B (intake) baffle duct")
@@ -879,7 +879,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) baffle plate 1
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 1"
-  face = grp.entities.add_face([96.mm,1896.mm,500.mm], [104.mm,1896.mm,500.mm], [104.mm,2021.mm,500.mm], [96.mm,2021.mm,500.mm])
+  face = grp.entities.add_face([96.mm,265.mm,500.mm], [104.mm,265.mm,500.mm], [104.mm,390.mm,500.mm], [96.mm,390.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -890,7 +890,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) baffle plate 2
   grp = ents.add_group
   grp.name = "Fan B (intake) baffle plate 2"
-  face = grp.entities.add_face([196.mm,1971.mm,500.mm], [204.mm,1971.mm,500.mm], [204.mm,2096.mm,500.mm], [196.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([196.mm,340.mm,500.mm], [204.mm,340.mm,500.mm], [204.mm,465.mm,500.mm], [196.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -901,7 +901,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan frame top
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame top"
-  face = grp.entities.add_face([250.mm,1896.mm,675.mm], [300.mm,1896.mm,675.mm], [300.mm,2096.mm,675.mm], [250.mm,2096.mm,675.mm])
+  face = grp.entities.add_face([250.mm,265.mm,675.mm], [300.mm,265.mm,675.mm], [300.mm,465.mm,675.mm], [250.mm,465.mm,675.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -912,7 +912,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan frame bottom
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame bottom"
-  face = grp.entities.add_face([250.mm,1896.mm,500.mm], [300.mm,1896.mm,500.mm], [300.mm,2096.mm,500.mm], [250.mm,2096.mm,500.mm])
+  face = grp.entities.add_face([250.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [250.mm,465.mm,500.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -923,7 +923,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan frame left
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame left"
-  face = grp.entities.add_face([250.mm,1896.mm,525.mm], [300.mm,1896.mm,525.mm], [300.mm,1921.mm,525.mm], [250.mm,1921.mm,525.mm])
+  face = grp.entities.add_face([250.mm,265.mm,525.mm], [300.mm,265.mm,525.mm], [300.mm,290.mm,525.mm], [250.mm,290.mm,525.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -934,7 +934,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan frame right
   grp = ents.add_group
   grp.name = "Fan B (intake) fan frame right"
-  face = grp.entities.add_face([250.mm,2071.mm,525.mm], [300.mm,2071.mm,525.mm], [300.mm,2096.mm,525.mm], [250.mm,2096.mm,525.mm])
+  face = grp.entities.add_face([250.mm,440.mm,525.mm], [300.mm,440.mm,525.mm], [300.mm,465.mm,525.mm], [250.mm,465.mm,525.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
@@ -946,7 +946,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B (intake) fan hub"
   ge = grp.entities
-  circle = ge.add_circle([250.mm,1996.mm,600.mm], [1,0,0], 19.5.mm, 24)
+  circle = ge.add_circle([250.mm,365.mm,600.mm], [1,0,0], 19.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
@@ -958,7 +958,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan blade up
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade up"
-  face = grp.entities.add_face([272.5.mm,1981.mm,619.5.mm], [278.5.mm,1981.mm,619.5.mm], [278.5.mm,2011.mm,619.5.mm], [272.5.mm,2011.mm,619.5.mm])
+  face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
@@ -969,7 +969,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan blade down
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade down"
-  face = grp.entities.add_face([272.5.mm,1981.mm,534.mm], [278.5.mm,1981.mm,534.mm], [278.5.mm,2011.mm,534.mm], [272.5.mm,2011.mm,534.mm])
+  face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
@@ -980,7 +980,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan blade left
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade left"
-  face = grp.entities.add_face([272.5.mm,1930.mm,585.mm], [278.5.mm,1930.mm,585.mm], [278.5.mm,1976.5.mm,585.mm], [272.5.mm,1976.5.mm,585.mm])
+  face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
@@ -991,7 +991,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) fan blade right
   grp = ents.add_group
   grp.name = "Fan B (intake) fan blade right"
-  face = grp.entities.add_face([272.5.mm,2015.5.mm,585.mm], [278.5.mm,2015.5.mm,585.mm], [278.5.mm,2062.mm,585.mm], [272.5.mm,2062.mm,585.mm])
+  face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
@@ -1002,7 +1002,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) wall flange
   grp = ents.add_group
   grp.name = "Fan B (intake) wall flange"
-  face = grp.entities.add_face([0.mm,1866.mm,470.mm], [5.mm,1866.mm,470.mm], [5.mm,2126.mm,470.mm], [0.mm,2126.mm,470.mm])
+  face = grp.entities.add_face([0.mm,235.mm,470.mm], [5.mm,235.mm,470.mm], [5.mm,495.mm,470.mm], [0.mm,495.mm,470.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(260.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -1014,7 +1014,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,1881.mm,485.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,250.mm,485.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -1027,7 +1027,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,1881.mm,715.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,250.mm,715.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -1040,7 +1040,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,2111.mm,485.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,480.mm,485.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -1053,7 +1053,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Fan B (intake) flange bolt M10"
   ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,2111.mm,715.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-6.5.mm,480.mm,715.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(13.mm)
@@ -1065,7 +1065,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre grille
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre grille"
-  face = grp.entities.add_face([-40.mm,1896.mm,535.mm], [0.mm,1896.mm,535.mm], [0.mm,2096.mm,535.mm], [-40.mm,2096.mm,535.mm])
+  face = grp.entities.add_face([-40.mm,265.mm,535.mm], [0.mm,265.mm,535.mm], [0.mm,465.mm,535.mm], [-40.mm,465.mm,535.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(130.mm)
   mat = model.materials["Fan B (intake) louvre grille"] || model.materials.add("Fan B (intake) louvre grille")
@@ -1076,7 +1076,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,546.5.mm], [-2.mm,1900.mm,546.5.mm], [-2.mm,2092.mm,546.5.mm], [-38.mm,2092.mm,546.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,546.5.mm], [-2.mm,269.mm,546.5.mm], [-2.mm,461.mm,546.5.mm], [-38.mm,461.mm,546.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -1087,7 +1087,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,572.5.mm], [-2.mm,1900.mm,572.5.mm], [-2.mm,2092.mm,572.5.mm], [-38.mm,2092.mm,572.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,572.5.mm], [-2.mm,269.mm,572.5.mm], [-2.mm,461.mm,572.5.mm], [-38.mm,461.mm,572.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -1098,7 +1098,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,598.5.mm], [-2.mm,1900.mm,598.5.mm], [-2.mm,2092.mm,598.5.mm], [-38.mm,2092.mm,598.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,598.5.mm], [-2.mm,269.mm,598.5.mm], [-2.mm,461.mm,598.5.mm], [-38.mm,461.mm,598.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -1109,7 +1109,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,624.5.mm], [-2.mm,1900.mm,624.5.mm], [-2.mm,2092.mm,624.5.mm], [-38.mm,2092.mm,624.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,624.5.mm], [-2.mm,269.mm,624.5.mm], [-2.mm,461.mm,624.5.mm], [-38.mm,461.mm,624.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
@@ -1120,7 +1120,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Fan B (intake) louvre slat
   grp = ents.add_group
   grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,1900.mm,650.5.mm], [-2.mm,1900.mm,650.5.mm], [-2.mm,2092.mm,650.5.mm], [-38.mm,2092.mm,650.5.mm])
+  face = grp.entities.add_face([-38.mm,269.mm,650.5.mm], [-2.mm,269.mm,650.5.mm], [-2.mm,461.mm,650.5.mm], [-38.mm,461.mm,650.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")

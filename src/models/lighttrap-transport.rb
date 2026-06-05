@@ -23,6 +23,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Sliding Carriage") unless model.layers["Sliding Carriage"]
   model.layers.add("Fan B") unless model.layers["Fan B"]
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
+  model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
+  model.layers.add("Walkways") unless model.layers["Walkways"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Context ═══
@@ -226,7 +228,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2388.mm)
   mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  mat.alpha = 0.2
   grp.material = mat
 
   # Locking bar R3
@@ -237,7 +239,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2268.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   # Locking bar R7
@@ -248,7 +250,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2268.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   # Door handle R
@@ -259,7 +261,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(240.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   # Cargo door leaf L
@@ -270,7 +272,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2388.mm)
   mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  mat.alpha = 0.2
   grp.material = mat
 
   # Locking bar L3
@@ -281,7 +283,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2268.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   # Locking bar L7
@@ -292,7 +294,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(2268.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   # Door handle L
@@ -303,7 +305,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face.pushpull(240.mm)
   mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
   mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
+  mat.alpha = 0.55
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
@@ -451,7 +453,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,0.mm,220.mm], [30.mm,0.mm,220.mm], [30.mm,30.mm,220.mm], [-30.mm,30.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -462,7 +464,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,0.mm,1190.mm], [30.mm,0.mm,1190.mm], [30.mm,30.mm,1190.mm], [-30.mm,30.mm,1190.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -473,7 +475,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-30.mm,0.mm,2158.mm], [30.mm,0.mm,2158.mm], [30.mm,30.mm,2158.mm], [-30.mm,30.mm,2158.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -599,7 +601,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(65.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -612,7 +614,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -625,7 +627,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -636,7 +638,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-120.mm,1061.mm,80.mm], [120.mm,1061.mm,80.mm], [120.mm,1301.mm,80.mm], [-120.mm,1301.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -649,7 +651,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(400.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -660,7 +662,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([357.mm,1175.mm,720.mm], [429.mm,1175.mm,720.mm], [429.mm,1187.mm,720.mm], [357.mm,1187.mm,720.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -671,7 +673,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([357.mm,1175.mm,1080.mm], [429.mm,1175.mm,1080.mm], [429.mm,1187.mm,1080.mm], [357.mm,1187.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -752,7 +754,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([568.mm,631.mm,2330.mm], [612.mm,631.mm,2330.mm], [612.mm,675.mm,2330.mm], [568.mm,675.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -763,7 +765,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([565.mm,633.mm,2300.mm], [625.mm,633.mm,2300.mm], [625.mm,673.mm,2300.mm], [565.mm,673.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -785,7 +787,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([568.mm,1687.mm,2330.mm], [612.mm,1687.mm,2330.mm], [612.mm,1731.mm,2330.mm], [568.mm,1731.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -796,7 +798,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([565.mm,1689.mm,2300.mm], [625.mm,1689.mm,2300.mm], [625.mm,1729.mm,2300.mm], [565.mm,1729.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -807,7 +809,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([550.mm,0.mm,80.mm], [610.mm,0.mm,80.mm], [610.mm,60.mm,80.mm], [550.mm,60.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2220.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -818,7 +820,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-10.mm,635.mm,2288.mm], [50.mm,635.mm,2288.mm], [50.mm,671.mm,2288.mm], [-10.mm,671.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -829,7 +831,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([0.mm,647.mm,2312.mm], [70.mm,647.mm,2312.mm], [70.mm,659.mm,2312.mm], [0.mm,659.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -840,7 +842,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-10.mm,1691.mm,2288.mm], [50.mm,1691.mm,2288.mm], [50.mm,1727.mm,2288.mm], [-10.mm,1727.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -851,7 +853,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([0.mm,1703.mm,2312.mm], [70.mm,1703.mm,2312.mm], [70.mm,1715.mm,2312.mm], [0.mm,1715.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -862,7 +864,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([540.mm,635.mm,2288.mm], [600.mm,635.mm,2288.mm], [600.mm,671.mm,2288.mm], [540.mm,671.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -873,7 +875,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([550.mm,647.mm,2312.mm], [620.mm,647.mm,2312.mm], [620.mm,659.mm,2312.mm], [550.mm,659.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -884,7 +886,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([540.mm,1691.mm,2288.mm], [600.mm,1691.mm,2288.mm], [600.mm,1727.mm,2288.mm], [540.mm,1727.mm,2288.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -895,7 +897,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([550.mm,1703.mm,2312.mm], [620.mm,1703.mm,2312.mm], [620.mm,1715.mm,2312.mm], [550.mm,1715.mm,2312.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Locking bar R3"] || model.materials.add("Locking bar R3")
+  mat = model.materials["HGH20CA carriage L"] || model.materials.add("HGH20CA carriage L")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -992,7 +994,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(50.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1047,7 +1049,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([0.mm,1866.mm,470.mm], [5.mm,1866.mm,470.mm], [5.mm,2126.mm,470.mm], [0.mm,2126.mm,470.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(260.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1121,7 +1123,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-38.mm,1900.mm,546.5.mm], [-2.mm,1900.mm,546.5.mm], [-2.mm,2092.mm,546.5.mm], [-38.mm,2092.mm,546.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1132,7 +1134,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-38.mm,1900.mm,572.5.mm], [-2.mm,1900.mm,572.5.mm], [-2.mm,2092.mm,572.5.mm], [-38.mm,2092.mm,572.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1143,7 +1145,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-38.mm,1900.mm,598.5.mm], [-2.mm,1900.mm,598.5.mm], [-2.mm,2092.mm,598.5.mm], [-38.mm,2092.mm,598.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1154,7 +1156,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-38.mm,1900.mm,624.5.mm], [-2.mm,1900.mm,624.5.mm], [-2.mm,2092.mm,624.5.mm], [-38.mm,2092.mm,624.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1165,7 +1167,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-38.mm,1900.mm,650.5.mm], [-2.mm,1900.mm,650.5.mm], [-2.mm,2092.mm,650.5.mm], [-38.mm,2092.mm,650.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
-  mat = model.materials["Cargo door leaf R"] || model.materials.add("Cargo door leaf R")
+  mat = model.materials["Piano hinge"] || model.materials.add("Piano hinge")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1173,6 +1175,86 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Fan B (intake)"
   inst.layer = model.layers["Fan B"]
+
+  # ═══ Processing Tray (partial) ═══
+  defn = model.definitions.add("Processing Tray (partial)")
+  ents = defn.entities
+  # Processing Tray Floor (partial)
+  grp = ents.add_group
+  grp.name = "Processing Tray Floor (partial)"
+  face = grp.entities.add_face([170.mm,80.mm,0.mm], [1800.mm,80.mm,0.mm], [1800.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2.mm)
+  mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Rim Near (partial)
+  grp = ents.add_group
+  grp.name = "Tray Rim Near (partial)"
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [1800.mm,80.mm,2.mm], [1800.mm,82.mm,2.mm], [170.mm,82.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Rim Far (partial)
+  grp = ents.add_group
+  grp.name = "Tray Rim Far (partial)"
+  face = grp.entities.add_face([170.mm,2278.mm,2.mm], [1800.mm,2278.mm,2.mm], [1800.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Tray Rim Left (cargo end)
+  grp = ents.add_group
+  grp.name = "Tray Rim Left (cargo end)"
+  face = grp.entities.add_face([170.mm,80.mm,2.mm], [172.mm,80.mm,2.mm], [172.mm,2280.mm,2.mm], [170.mm,2280.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
+  mat.color = Sketchup::Color.new(159, 184, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Chemistry Bath (partial)
+  grp = ents.add_group
+  grp.name = "Chemistry Bath (partial)"
+  face = grp.entities.add_face([172.mm,82.mm,2.mm], [1798.mm,82.mm,2.mm], [1798.mm,2278.mm,2.mm], [172.mm,2278.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Chemistry Bath (partial)"] || model.materials.add("Chemistry Bath (partial)")
+  mat.color = Sketchup::Color.new(46, 111, 160)
+  mat.alpha = 0.45
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Processing Tray (partial)"
+  inst.layer = model.layers["Processing Tray"]
+
+  # ═══ Walkway (far, partial) ═══
+  defn = model.definitions.add("Walkway (far, partial)")
+  ents = defn.entities
+  # Walkway Far (partial)
+  grp = ents.add_group
+  grp.name = "Walkway Far (partial)"
+  face = grp.entities.add_face([470.mm,2062.mm,65.mm], [1800.mm,2062.mm,65.mm], [1800.mm,2362.mm,65.mm], [470.mm,2362.mm,65.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Far (partial)"] || model.materials.add("Walkway Far (partial)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Walkway (far, partial)"
+  inst.layer = model.layers["Walkways"]
 
 
 # ── Transport pose: slide the panel-mounted components inward 550mm in X ──
@@ -1187,7 +1269,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors"]
+keep_tags = ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -1204,7 +1286,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 model.pages.add("Overview")
-[["Transport — All", ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors"]], ["Slid-back Assembly", ["Hinge Panel", "Light Trap", "Sliding Carriage"]], ["Doors Closed", ["Cargo Doors", "Door Frame"]], ["Light-Trap Drum", ["Light Trap", "Hinge Panel"]]].each { |name, tags|
+[["Transport — All", ["Context", "Door Frame", "Hinge Panel", "Light Trap", "Sliding Carriage", "Fan B", "Cargo Doors", "Processing Tray", "Walkways"]], ["Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage", "Processing Tray", "Walkways"]], ["Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]], ["Light-Trap Drum", ["Light Trap", "Hinge Panel"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

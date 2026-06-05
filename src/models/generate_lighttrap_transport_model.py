@@ -46,7 +46,7 @@ SLIDE = ov.PANEL_SLIDE                          # 550 — transport slide travel
 # beam) is handled inside lt.sliding_carriage(slide=SLIDE) by coordinate offset.
 MOVING_TAGS = ["Hinge Panel", "Light Trap", "Fan B"]
 
-TAGS = lt.TAGS + ["Cargo Doors"]
+TAGS = lt.TAGS + ["Cargo Doors", "Processing Tray", "Walkways"]
 
 
 # ── Closed ISO cargo doors (transport-only; demonstrate the clearance) ───────
@@ -54,7 +54,13 @@ TAGS = lt.TAGS + ["Cargo Doors"]
 def cargo_doors():
     """Two corrugated steel ISO cargo-door leaves shown CLOSED over the end
     opening, just outside the fixed door frame (frame at X=-50..0). With the
-    housing retracted to X≈+100, the leaves at X≈-115..-55 shut freely."""
+    housing retracted to X≈+100, the leaves at X≈-115..-55 shut freely.
+
+    GHOSTED (translucent) so they read as the doors — distinct from the
+    container shell — while you see straight through them to the slid-back
+    light-trap details behind. Leaves go lightest; the locking hardware is a
+    touch more opaque so it still reads."""
+    LEAF_A, HW_A = 0.20, 0.55                   # ghost alphas: leaf vs hardware
     parts = []
     dt = 60                                     # leaf thickness in X
     x0 = -115                                   # exterior face of the closed leaf
@@ -63,17 +69,52 @@ def cargo_doors():
     for nm, y0 in [("R", 0.0), ("L", half + gap)]:
         # right leaf closes first (Yd 0..half), left leaf laps over center
         parts.append(ruby_box(f"Cargo door leaf {nm}", x0, y0, 0,
-                              dt, half - gap, C_HGT, color=C_STEEL))
+                              dt, half - gap, C_HGT, color=C_STEEL, alpha=LEAF_A))
         # two vertical locking bars per leaf, on the exterior face
         for f in (0.30, 0.70):
             by = y0 + (half - gap) * f
             parts.append(ruby_box(f"Locking bar {nm}{int(f*10)}", x0 - 18, by - 14,
-                                  60, 28, 28, C_HGT - 120, color=C_CARR))
+                                  60, 28, 28, C_HGT - 120, color=C_CARR, alpha=HW_A))
         # cam handle near the center stile
         hy = y0 + (half - gap) * (0.92 if nm == "R" else 0.08)
         parts.append(ruby_box(f"Door handle {nm}", x0 - 30, hy - 12,
-                              1050, 26, 24, 240, color=C_CARR))
+                              1050, 26, 24, 240, color=C_CARR, alpha=HW_A))
     return '\n'.join(parts)
+
+
+# ── Partial cargo-door-end context (tray + far walkway) ──────────────────────
+# Reuses the overview's tray/walkway geometry + constants, cropped to the
+# cargo-door-end zone. The NEAR walkway is intentionally OMITTED (it would sit
+# between the near-side iso camera and the light trap); the LEFT walkway is the
+# removable lift-out and is already taken out for transport — so only the FAR
+# deck + a tray section are shown for context.
+PARTIAL_X = 1800        # context extends from the cargo-door end to here (mm)
+
+def processing_tray_partial():
+    """A cropped section of the processing-tray basin at the cargo-door end."""
+    x0 = ov.PROC_TRAY_X_L
+    yN, yF = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
+    w, d = PARTIAL_X - x0, yF - yN
+    st, rt, rim = 2, 2, ov.PROC_TRAY_RIM
+    p = [
+        ruby_box("Processing Tray Floor (partial)", x0, yN, 0, w, d, st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Near (partial)", x0, yN, st, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Far (partial)", x0, yF - rt, st, w, rt, rim - st, color=ov.C_TRAY),
+        ruby_box("Tray Rim Left (cargo end)", x0, yN, st, rt, d, rim - st, color=ov.C_TRAY),
+        ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, st,
+                 w - 2 * rt, d - 2 * rt, rim - st - 8, color=ov.C_BATH, alpha=0.45),
+    ]
+    return '\n'.join(p)
+
+def walkway_partial():
+    """The FAR walkway deck, cropped to the cargo-door-end zone (near walkway
+    omitted for the view; left walkway removed for transport)."""
+    grate_z = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
+    t = ov.WALKWAY_GRATE_T
+    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W       # = 470 — where the long decks begin
+    w = PARTIAL_X - x0
+    return ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
+                    w, ov.WALKWAY_W, t, color=ov.C_WALKWAY)
 
 
 # ── Assemble the Ruby script (mirrors lt.generate_ruby + the transport pose) ──
@@ -88,6 +129,8 @@ def generate_ruby():
         component("Sliding Carriage System", "Sliding Carriage",
                   lt.sliding_carriage(slide=SLIDE)),
         component("Fan B (intake)", "Fan B", lt.fan_b()),
+        component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
+        component("Walkway (far, partial)", "Walkways", walkway_partial()),
     ]
     body = '\n'.join(comps)
 
@@ -98,8 +141,9 @@ def generate_ruby():
 
     scene_groups = [
         ("Transport — All", TAGS),
-        ("Slid-back Assembly", ["Hinge Panel", "Light Trap", "Sliding Carriage"]),
-        ("Doors Closed", ["Cargo Doors", "Door Frame"]),
+        ("Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage",
+                                 "Processing Tray", "Walkways"]),
+        ("Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]),
         ("Light-Trap Drum", ["Light Trap", "Hinge Panel"]),
     ]
     scene_groups_ruby = '[' + ', '.join(

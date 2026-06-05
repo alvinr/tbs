@@ -292,7 +292,7 @@ def sheet1():
     # Overlay the left rail's removable span in a distinct dashed / highlighted style.
     # The normal left rail runs D_NEAR(100)→D_FAR(2262) at RAIL_X_L.
     # The demountable segment covers BRACE_LEFT_DEMOUNT_Y0(731)→BRACE_LEFT_DEMOUNT_Y1(1631).
-    C_DEMOUNT = "#CC3333"   # red — visually distinct "removable" colour
+    C_DEMOUNT = "#E0902A"   # amber — unified with the 3D models' ov.C_DEMOUNT ("removable")
     # Ceiling sub-rail (matches rx_ceil geometry from the loop above)
     rx_ceil_L  = RAIL_X_L - RAIL_W // 2 - 5
     rx_floor_L = RAIL_X_L + 5

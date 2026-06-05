@@ -52,7 +52,7 @@ from tbs_constants import (
     FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN,
     RAIL_X_L, RAIL_X_R, RAIL_LEN, RAIL_OFF, FP_ANGLE_LEG,
     BRACE_RHS, BRACE_Z_BOT, BRACE_Z_TOP,
-    BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1,
+    BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T,
     PANEL_CENTER_T, PANEL_FLOOR_GAP, PANEL_SLIDE,
     PANEL_CORNER_YD_L, PANEL_CORNER_YD_R,
     SPRAY_BAR_BEAM, SPRAY_BAR_Z_BOT,
@@ -868,22 +868,12 @@ def film_plane_mechanism():
     x_right = RAIL_X_R - rail       # 4609
     y0 = FP_Y_MIN                   # rails start at min carriage depth
     y_end = y0 + RAIL_LEN           # 2300
-    d0, d1 = BRACE_LEFT_DEMOUNT_Y0, BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
-
-    # Right rails — full length, fixed.
-    for rz, nm in [(z_bot, "BR"), (z_top, "TR")]:
+    # All four corner rails CONTINUOUS, full length (rev9 B2: the drum is offset
+    # clear of the X=150 left rail via the panel bay — no demountable segment).
+    for rz, nm in [(z_bot, "BR"), (z_top, "TR"), (z_bot, "BL"), (z_top, "TL")]:
+        x = x_right if nm.endswith("R") else x_left
         parts.append(ruby_box(f"FP Rail {nm}",
-                              x_right, y0, rz, rail, RAIL_LEN, rail,
-                              color=C_STEEL))
-
-    # Left rails — fixed / DEMOUNTABLE (drum zone) / fixed.
-    for rz, nm in [(z_bot, "BL"), (z_top, "TL")]:
-        parts.append(ruby_box(f"FP Rail {nm} (fixed near)",
-                              x_left, y0, rz, rail, d0 - y0, rail, color=C_STEEL))
-        parts.append(ruby_box(f"FP Rail {nm} (DEMOUNTABLE — drum mode)",
-                              x_left, d0, rz, rail, d1 - d0, rail, color=C_DEMOUNT))
-        parts.append(ruby_box(f"FP Rail {nm} (fixed far)",
-                              x_left, d1, rz, rail, y_end - d1, rail, color=C_STEEL))
+                              x, y0, rz, rail, RAIL_LEN, rail, color=C_STEEL))
 
     # Demountable brace cage — rectangular portal at each end (50×50 RHS).
     s = BRACE_RHS
@@ -1018,6 +1008,12 @@ def light_trap_frame():
     bottom; the EPDM perimeter seal (light_seal) compresses against them."""
     import generate_lighttrap_model as lt
     return lt.door_frame()
+
+
+def light_trap_bay():
+    """B2 punch-out bay — reused from the Light-Trap model so it stays in sync."""
+    import generate_lighttrap_model as lt
+    return lt.bay()
 
 
 # ── Electrical (panel + battery, pinhole wall) ───────────────────────────────
@@ -1713,6 +1709,7 @@ def generate_ruby():
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("IBC Rack", "IBC Rack", ibc_rack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
+        component("Light-Trap Bay", "Light Trap", light_trap_bay()),
         component("Electrical", "Electrical", electrical()),
         component("Chemistry Shelf", "Shelf", shelf()),
         component("Light-Trap Door Frame", "Light Seal", light_trap_frame()),

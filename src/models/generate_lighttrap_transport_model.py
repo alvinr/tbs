@@ -46,7 +46,8 @@ SLIDE = ov.PANEL_SLIDE                          # 550 — transport slide travel
 # beam) is handled inside lt.sliding_carriage(slide=SLIDE) by coordinate offset.
 MOVING_TAGS = ["Hinge Panel", "Light Trap", "Fan B"]
 
-TAGS = lt.TAGS + ["Cargo Doors"]
+# Film-plane rails are struck for transport — drop that tag from lt.TAGS.
+TAGS = [t for t in lt.TAGS if t != "Film Plane Rails"] + ["Cargo Doors"]
 
 
 # ── Closed ISO cargo doors (transport-only; demonstrate the clearance) ───────
@@ -90,6 +91,7 @@ def generate_ruby():
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Closed Cargo Doors", "Cargo Doors", cargo_doors()),
         component("Hinged Light-Trap Panel", "Hinge Panel", lt.hinge_panel()),
+        component("Punch-Out Bay", "Hinge Panel", lt.bay()),
         # The housing-surround EPDM (interface 2) rides the housing, so it goes in
         # the Light Trap component and retracts +SLIDE with it (panel-perimeter
         # EPDM / interface 1 is already inside hinge_panel() → also moves).
@@ -100,7 +102,7 @@ def generate_ruby():
         component("Fan B (intake)", "Fan B", lt.fan_b()),
         component("Processing Tray (partial)", "Processing Tray", lt.processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", lt.walkways_partial()),
-        component("Film-Plane Rails (left, partial)", "Film Plane Rails", lt.film_plane_left()),
+        # Film-plane rails are STRUCK for transport (panel slides past X=150) — not built.
     ]
     body = '\n'.join(comps)
 
@@ -113,8 +115,6 @@ def generate_ruby():
         ("Transport — All", TAGS),
         ("Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage",
                                  "Processing Tray", "Walkways"]),
-        ("Film-Plane Rails (L)", ["Film Plane Rails", "Light Trap", "Hinge Panel",
-                                  "Processing Tray"]),
         ("Through the Doors", ["Cargo Doors", "Hinge Panel", "Light Trap", "Door Frame"]),
         ("Light-Trap Drum", ["Light Trap", "Hinge Panel"]),
     ]

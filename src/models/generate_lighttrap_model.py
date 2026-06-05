@@ -416,48 +416,51 @@ def walkways_partial():
     ])
 
 
-def film_plane_left(demount=False):
+def film_plane_left():
     """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
 
     The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
-    pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
-    (upper + lower) + corner posts tying them at the near-wall (Yd≈100) and
-    far-wall (Yd≈2262) ends.
-
-    demount: controls the removable drum-zone rail segments (Yd 731–1631, upper +
-    lower). When True (operating pose) they are shown IN PLACE in the demountable
-    color (`ov.C_DEMOUNT`, amber — same marker the overview 3D model uses for this
-    segment; the 2D film-plane diagrams use red). When False (default, drum/
-    transport mode) they are TAKEN OUT — a gap in each rail. Beams cropped to
-    PARTIAL_X. Fixed (no slide)."""
+    pair — upper (TL) and lower (BL) at X=RAIL_X_L, now CONTINUOUS (rev9 B2: the
+    drum is offset clear of the X=150 rail via the panel bay, so there is no
+    demountable segment) — plus the brace-cage beams (upper + lower) + corner posts
+    tying them at the near-wall (Yd≈100) and far-wall (Yd≈2262) ends. Fixed (no
+    slide); the whole left rails are struck for transport (transport model)."""
     rail = 40
     s = ov.BRACE_RHS                            # 50 — brace RHS
     xL = ov.RAIL_X_L                            # 150 — left rail X
     z_bot = ov.RAIL_OFF                         # 100 — lower rail Z
     z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248 — upper rail Z
     yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100 (near-wall end), 2262 (far-wall end)
-    d0, d1 = ov.BRACE_LEFT_DEMOUNT_Y0, ov.BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
     bx = PARTIAL_X - xL                          # brace-beam length (cropped)
     C = ov.C_STEEL
     parts = [
-        # Both left rails — fixed near + fixed far segments.
-        ruby_box("FP Rail BL near (lower left)", xL, yN, z_bot, rail, d0 - yN, rail, color=C),
-        ruby_box("FP Rail BL far (lower left)", xL, d1, z_bot, rail, yF - d1, rail, color=C),
-        ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
-        ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
+        ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
+        ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
     ]
-    if demount:
-        # Removable drum-zone segments IN PLACE, in the demountable marker color.
-        parts.append(ruby_box("FP Rail BL DEMOUNTABLE (removable, lower left)",
-                              xL, d0, z_bot, rail, d1 - d0, rail, color=ov.C_DEMOUNT))
-        parts.append(ruby_box("FP Rail TL DEMOUNTABLE (removable, upper left)",
-                              xL, d0, z_top, rail, d1 - d0, rail, color=ov.C_DEMOUNT))
-    # (When demount=False the Yd 731–1631 middle of each rail is a gap = taken out.)
     for py, pn in [(yN, "near wall"), (yF, "far wall")]:
         parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
         parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
         parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
     return '\n'.join(parts)
+
+
+def bay():
+    """B2 punch-out bay — the hinge-panel center zone as a forward box (X from
+    BAY_FRONT_X to the panel face) enclosing the offset Ø900 housing. A 4-wall
+    rectangular tube (Yd = center-zone step lines, Z = floor-gap..panel-top), open
+    at the exterior end (entrance) and the interior end (exit onto the walkway)."""
+    yL, yR = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709
+    z0, z1 = PANEL_FLOOR_GAP, PANEL_Z_TOP                 # 80, 2300
+    xf = ov.BAY_FRONT_X                                    # -890
+    t = ov.BAY_WALL_T                                      # 6
+    depth = ov.BAY_BACK_X - xf                             # 890 — bay X span
+    h = z1 - z0
+    return '\n'.join([
+        ruby_box("Bay wall near (Yd)", xf, yL, z0, depth, t, h, color=C_PLY),
+        ruby_box("Bay wall far (Yd)", xf, yR - t, z0, depth, t, h, color=C_PLY),
+        ruby_box("Bay wall top", xf, yL, z1 - t, depth, yR - yL, t, color=C_PLY),
+        ruby_box("Bay wall bottom", xf, yL, z0, depth, yR - yL, t, color=C_PLY),
+    ])
 
 
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
@@ -468,11 +471,12 @@ def generate_ruby():
         component("Fixed Door Frame", "Door Frame", door_frame()),
         component("Hinged Light-Trap Panel", "Hinge Panel", hinge_panel()),
         component("Revolving Light-Trap Drum", "Light Trap", drum()),
+        component("Punch-Out Bay", "Hinge Panel", bay()),
         component("Sliding Carriage System", "Sliding Carriage", sliding_carriage()),
         component("Fan B (intake)", "Fan B", fan_b()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left(demount=True)),
+        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
     ]
     body = '\n'.join(comps)
 

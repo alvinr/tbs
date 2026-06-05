@@ -921,10 +921,10 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail BL (fixed near)
+  # FP Rail BL
   grp = ents.add_group
-  grp.name = "FP Rail BL (fixed near)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,731.mm,100.mm], [150.mm,731.mm,100.mm])
+  grp.name = "FP Rail BL"
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2300.mm,100.mm], [150.mm,2300.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -932,54 +932,10 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail BL (DEMOUNTABLE — drum mode)
+  # FP Rail TL
   grp = ents.add_group
-  grp.name = "FP Rail BL (DEMOUNTABLE — drum mode)"
-  face = grp.entities.add_face([150.mm,731.mm,100.mm], [190.mm,731.mm,100.mm], [190.mm,1631.mm,100.mm], [150.mm,1631.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["FP Rail BL (DEMOUNTABLE — drum mode)"] || model.materials.add("FP Rail BL (DEMOUNTABLE — drum mode)")
-  mat.color = Sketchup::Color.new(224, 144, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail BL (fixed far)
-  grp = ents.add_group
-  grp.name = "FP Rail BL (fixed far)"
-  face = grp.entities.add_face([150.mm,1631.mm,100.mm], [190.mm,1631.mm,100.mm], [190.mm,2300.mm,100.mm], [150.mm,2300.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail TL (fixed near)
-  grp = ents.add_group
-  grp.name = "FP Rail TL (fixed near)"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,731.mm,2248.mm], [150.mm,731.mm,2248.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail TL (DEMOUNTABLE — drum mode)
-  grp = ents.add_group
-  grp.name = "FP Rail TL (DEMOUNTABLE — drum mode)"
-  face = grp.entities.add_face([150.mm,731.mm,2248.mm], [190.mm,731.mm,2248.mm], [190.mm,1631.mm,2248.mm], [150.mm,1631.mm,2248.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["FP Rail BL (DEMOUNTABLE — drum mode)"] || model.materials.add("FP Rail BL (DEMOUNTABLE — drum mode)")
-  mat.color = Sketchup::Color.new(224, 144, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail TL (fixed far)
-  grp = ents.add_group
-  grp.name = "FP Rail TL (fixed far)"
-  face = grp.entities.add_face([150.mm,1631.mm,2248.mm], [190.mm,1631.mm,2248.mm], [190.mm,2300.mm,2248.mm], [150.mm,2300.mm,2248.mm])
+  grp.name = "FP Rail TL"
+  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,2300.mm,2248.mm], [150.mm,2300.mm,2248.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Walkway Near bracket 1 plate"] || model.materials.add("Walkway Near bracket 1 plate")
@@ -6165,7 +6121,7 @@ end
   grp = ents.add_group
   grp.name = "LT Housing arc (near Yd)"
   ge = grp.entities
-  face = ge.add_face([[344.72.mm,1470.25.mm,80.mm], [333.98.mm,1482.59.mm,80.mm], [322.79.mm,1494.54.mm,80.mm], [311.18.mm,1506.06.mm,80.mm], [299.16.mm,1517.16.mm,80.mm], [286.74.mm,1527.81.mm,80.mm], [273.94.mm,1538.01.mm,80.mm], [260.78.mm,1547.73.mm,80.mm], [247.28.mm,1556.97.mm,80.mm], [233.45.mm,1565.71.mm,80.mm], [219.31.mm,1573.94.mm,80.mm], [204.88.mm,1581.66.mm,80.mm], [190.18.mm,1588.84.mm,80.mm], [175.23.mm,1595.48.mm,80.mm], [160.04.mm,1601.58.mm,80.mm], [144.65.mm,1607.12.mm,80.mm], [129.06.mm,1612.1.mm,80.mm], [113.3.mm,1616.5.mm,80.mm], [97.4.mm,1620.33.mm,80.mm], [81.36.mm,1623.58.mm,80.mm], [65.22.mm,1626.25.mm,80.mm], [48.99.mm,1628.33.mm,80.mm], [32.7.mm,1629.81.mm,80.mm], [16.36.mm,1630.7.mm,80.mm], [0.mm,1631.mm,80.mm], [-16.36.mm,1630.7.mm,80.mm], [-32.7.mm,1629.81.mm,80.mm], [-48.99.mm,1628.33.mm,80.mm], [-65.22.mm,1626.25.mm,80.mm], [-81.36.mm,1623.58.mm,80.mm], [-97.4.mm,1620.33.mm,80.mm], [-113.3.mm,1616.5.mm,80.mm], [-129.06.mm,1612.1.mm,80.mm], [-144.65.mm,1607.12.mm,80.mm], [-160.04.mm,1601.58.mm,80.mm], [-175.23.mm,1595.48.mm,80.mm], [-190.18.mm,1588.84.mm,80.mm], [-204.88.mm,1581.66.mm,80.mm], [-219.31.mm,1573.94.mm,80.mm], [-233.45.mm,1565.71.mm,80.mm], [-247.28.mm,1556.97.mm,80.mm], [-260.78.mm,1547.73.mm,80.mm], [-273.94.mm,1538.01.mm,80.mm], [-286.74.mm,1527.81.mm,80.mm], [-299.16.mm,1517.16.mm,80.mm], [-311.18.mm,1506.06.mm,80.mm], [-322.79.mm,1494.54.mm,80.mm], [-333.98.mm,1482.59.mm,80.mm], [-344.72.mm,1470.25.mm,80.mm], [-342.42.mm,1468.33.mm,80.mm], [-331.75.mm,1480.58.mm,80.mm], [-320.64.mm,1492.45.mm,80.mm], [-309.11.mm,1503.9.mm,80.mm], [-297.16.mm,1514.92.mm,80.mm], [-284.83.mm,1525.5.mm,80.mm], [-272.12.mm,1535.63.mm,80.mm], [-259.04.mm,1545.29.mm,80.mm], [-245.63.mm,1554.46.mm,80.mm], [-231.89.mm,1563.15.mm,80.mm], [-217.85.mm,1571.32.mm,80.mm], [-203.51.mm,1578.98.mm,80.mm], [-188.91.mm,1586.12.mm,80.mm], [-174.06.mm,1592.72.mm,80.mm], [-158.98.mm,1598.77.mm,80.mm], [-143.68.mm,1604.28.mm,80.mm], [-128.2.mm,1609.22.mm,80.mm], [-112.55.mm,1613.6.mm,80.mm], [-96.75.mm,1617.4.mm,80.mm], [-80.82.mm,1620.63.mm,80.mm], [-64.78.mm,1623.28.mm,80.mm], [-48.66.mm,1625.34.mm,80.mm], [-32.48.mm,1626.82.mm,80.mm], [-16.25.mm,1627.7.mm,80.mm], [0.mm,1628.mm,80.mm], [16.25.mm,1627.7.mm,80.mm], [32.48.mm,1626.82.mm,80.mm], [48.66.mm,1625.34.mm,80.mm], [64.78.mm,1623.28.mm,80.mm], [80.82.mm,1620.63.mm,80.mm], [96.75.mm,1617.4.mm,80.mm], [112.55.mm,1613.6.mm,80.mm], [128.2.mm,1609.22.mm,80.mm], [143.68.mm,1604.28.mm,80.mm], [158.98.mm,1598.77.mm,80.mm], [174.06.mm,1592.72.mm,80.mm], [188.91.mm,1586.12.mm,80.mm], [203.51.mm,1578.98.mm,80.mm], [217.85.mm,1571.32.mm,80.mm], [231.89.mm,1563.15.mm,80.mm], [245.63.mm,1554.46.mm,80.mm], [259.04.mm,1545.29.mm,80.mm], [272.12.mm,1535.63.mm,80.mm], [284.83.mm,1525.5.mm,80.mm], [297.16.mm,1514.92.mm,80.mm], [309.11.mm,1503.9.mm,80.mm], [320.64.mm,1492.45.mm,80.mm], [331.75.mm,1480.58.mm,80.mm], [342.42.mm,1468.33.mm,80.mm]])
+  face = ge.add_face([[-55.28.mm,1470.25.mm,80.mm], [-66.02.mm,1482.59.mm,80.mm], [-77.21.mm,1494.54.mm,80.mm], [-88.82.mm,1506.06.mm,80.mm], [-100.84.mm,1517.16.mm,80.mm], [-113.26.mm,1527.81.mm,80.mm], [-126.06.mm,1538.01.mm,80.mm], [-139.22.mm,1547.73.mm,80.mm], [-152.72.mm,1556.97.mm,80.mm], [-166.55.mm,1565.71.mm,80.mm], [-180.69.mm,1573.94.mm,80.mm], [-195.12.mm,1581.66.mm,80.mm], [-209.82.mm,1588.84.mm,80.mm], [-224.77.mm,1595.48.mm,80.mm], [-239.96.mm,1601.58.mm,80.mm], [-255.35.mm,1607.12.mm,80.mm], [-270.94.mm,1612.1.mm,80.mm], [-286.7.mm,1616.5.mm,80.mm], [-302.6.mm,1620.33.mm,80.mm], [-318.64.mm,1623.58.mm,80.mm], [-334.78.mm,1626.25.mm,80.mm], [-351.01.mm,1628.33.mm,80.mm], [-367.3.mm,1629.81.mm,80.mm], [-383.64.mm,1630.7.mm,80.mm], [-400.mm,1631.mm,80.mm], [-416.36.mm,1630.7.mm,80.mm], [-432.7.mm,1629.81.mm,80.mm], [-448.99.mm,1628.33.mm,80.mm], [-465.22.mm,1626.25.mm,80.mm], [-481.36.mm,1623.58.mm,80.mm], [-497.4.mm,1620.33.mm,80.mm], [-513.3.mm,1616.5.mm,80.mm], [-529.06.mm,1612.1.mm,80.mm], [-544.65.mm,1607.12.mm,80.mm], [-560.04.mm,1601.58.mm,80.mm], [-575.23.mm,1595.48.mm,80.mm], [-590.18.mm,1588.84.mm,80.mm], [-604.88.mm,1581.66.mm,80.mm], [-619.31.mm,1573.94.mm,80.mm], [-633.45.mm,1565.71.mm,80.mm], [-647.28.mm,1556.97.mm,80.mm], [-660.78.mm,1547.73.mm,80.mm], [-673.94.mm,1538.01.mm,80.mm], [-686.74.mm,1527.81.mm,80.mm], [-699.16.mm,1517.16.mm,80.mm], [-711.18.mm,1506.06.mm,80.mm], [-722.79.mm,1494.54.mm,80.mm], [-733.98.mm,1482.59.mm,80.mm], [-744.72.mm,1470.25.mm,80.mm], [-740.89.mm,1467.04.mm,80.mm], [-730.27.mm,1479.24.mm,80.mm], [-719.21.mm,1491.05.mm,80.mm], [-707.72.mm,1502.45.mm,80.mm], [-695.83.mm,1513.43.mm,80.mm], [-683.55.mm,1523.96.mm,80.mm], [-670.9.mm,1534.04.mm,80.mm], [-657.89.mm,1543.66.mm,80.mm], [-644.53.mm,1552.79.mm,80.mm], [-630.85.mm,1561.44.mm,80.mm], [-616.87.mm,1569.58.mm,80.mm], [-602.6.mm,1577.2.mm,80.mm], [-588.07.mm,1584.31.mm,80.mm], [-573.28.mm,1590.88.mm,80.mm], [-558.26.mm,1596.91.mm,80.mm], [-543.04.mm,1602.38.mm,80.mm], [-527.63.mm,1607.31.mm,80.mm], [-512.05.mm,1611.66.mm,80.mm], [-496.32.mm,1615.45.mm,80.mm], [-480.46.mm,1618.67.mm,80.mm], [-464.49.mm,1621.3.mm,80.mm], [-448.45.mm,1623.36.mm,80.mm], [-432.33.mm,1624.82.mm,80.mm], [-416.18.mm,1625.71.mm,80.mm], [-400.mm,1626.mm,80.mm], [-383.82.mm,1625.71.mm,80.mm], [-367.67.mm,1624.82.mm,80.mm], [-351.55.mm,1623.36.mm,80.mm], [-335.51.mm,1621.3.mm,80.mm], [-319.54.mm,1618.67.mm,80.mm], [-303.68.mm,1615.45.mm,80.mm], [-287.95.mm,1611.66.mm,80.mm], [-272.37.mm,1607.31.mm,80.mm], [-256.96.mm,1602.38.mm,80.mm], [-241.74.mm,1596.91.mm,80.mm], [-226.72.mm,1590.88.mm,80.mm], [-211.93.mm,1584.31.mm,80.mm], [-197.4.mm,1577.2.mm,80.mm], [-183.13.mm,1569.58.mm,80.mm], [-169.15.mm,1561.44.mm,80.mm], [-155.47.mm,1552.79.mm,80.mm], [-142.11.mm,1543.66.mm,80.mm], [-129.1.mm,1534.04.mm,80.mm], [-116.45.mm,1523.96.mm,80.mm], [-104.17.mm,1513.43.mm,80.mm], [-92.28.mm,1502.45.mm,80.mm], [-80.79.mm,1491.05.mm,80.mm], [-69.73.mm,1479.24.mm,80.mm], [-59.11.mm,1467.04.mm,80.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
@@ -6177,7 +6133,7 @@ end
   grp = ents.add_group
   grp.name = "LT Housing arc (far Yd)"
   ge = grp.entities
-  face = ge.add_face([[-344.72.mm,891.75.mm,80.mm], [-333.98.mm,879.41.mm,80.mm], [-322.79.mm,867.46.mm,80.mm], [-311.18.mm,855.94.mm,80.mm], [-299.16.mm,844.84.mm,80.mm], [-286.74.mm,834.19.mm,80.mm], [-273.94.mm,823.99.mm,80.mm], [-260.78.mm,814.27.mm,80.mm], [-247.28.mm,805.03.mm,80.mm], [-233.45.mm,796.29.mm,80.mm], [-219.31.mm,788.06.mm,80.mm], [-204.88.mm,780.34.mm,80.mm], [-190.18.mm,773.16.mm,80.mm], [-175.23.mm,766.52.mm,80.mm], [-160.04.mm,760.42.mm,80.mm], [-144.65.mm,754.88.mm,80.mm], [-129.06.mm,749.9.mm,80.mm], [-113.3.mm,745.5.mm,80.mm], [-97.4.mm,741.67.mm,80.mm], [-81.36.mm,738.42.mm,80.mm], [-65.22.mm,735.75.mm,80.mm], [-48.99.mm,733.67.mm,80.mm], [-32.7.mm,732.19.mm,80.mm], [-16.36.mm,731.3.mm,80.mm], [0.mm,731.mm,80.mm], [16.36.mm,731.3.mm,80.mm], [32.7.mm,732.19.mm,80.mm], [48.99.mm,733.67.mm,80.mm], [65.22.mm,735.75.mm,80.mm], [81.36.mm,738.42.mm,80.mm], [97.4.mm,741.67.mm,80.mm], [113.3.mm,745.5.mm,80.mm], [129.06.mm,749.9.mm,80.mm], [144.65.mm,754.88.mm,80.mm], [160.04.mm,760.42.mm,80.mm], [175.23.mm,766.52.mm,80.mm], [190.18.mm,773.16.mm,80.mm], [204.88.mm,780.34.mm,80.mm], [219.31.mm,788.06.mm,80.mm], [233.45.mm,796.29.mm,80.mm], [247.28.mm,805.03.mm,80.mm], [260.78.mm,814.27.mm,80.mm], [273.94.mm,823.99.mm,80.mm], [286.74.mm,834.19.mm,80.mm], [299.16.mm,844.84.mm,80.mm], [311.18.mm,855.94.mm,80.mm], [322.79.mm,867.46.mm,80.mm], [333.98.mm,879.41.mm,80.mm], [344.72.mm,891.75.mm,80.mm], [342.42.mm,893.67.mm,80.mm], [331.75.mm,881.42.mm,80.mm], [320.64.mm,869.55.mm,80.mm], [309.11.mm,858.1.mm,80.mm], [297.16.mm,847.08.mm,80.mm], [284.83.mm,836.5.mm,80.mm], [272.12.mm,826.37.mm,80.mm], [259.04.mm,816.71.mm,80.mm], [245.63.mm,807.54.mm,80.mm], [231.89.mm,798.85.mm,80.mm], [217.85.mm,790.68.mm,80.mm], [203.51.mm,783.02.mm,80.mm], [188.91.mm,775.88.mm,80.mm], [174.06.mm,769.28.mm,80.mm], [158.98.mm,763.23.mm,80.mm], [143.68.mm,757.72.mm,80.mm], [128.2.mm,752.78.mm,80.mm], [112.55.mm,748.4.mm,80.mm], [96.75.mm,744.6.mm,80.mm], [80.82.mm,741.37.mm,80.mm], [64.78.mm,738.72.mm,80.mm], [48.66.mm,736.66.mm,80.mm], [32.48.mm,735.18.mm,80.mm], [16.25.mm,734.3.mm,80.mm], [0.mm,734.mm,80.mm], [-16.25.mm,734.3.mm,80.mm], [-32.48.mm,735.18.mm,80.mm], [-48.66.mm,736.66.mm,80.mm], [-64.78.mm,738.72.mm,80.mm], [-80.82.mm,741.37.mm,80.mm], [-96.75.mm,744.6.mm,80.mm], [-112.55.mm,748.4.mm,80.mm], [-128.2.mm,752.78.mm,80.mm], [-143.68.mm,757.72.mm,80.mm], [-158.98.mm,763.23.mm,80.mm], [-174.06.mm,769.28.mm,80.mm], [-188.91.mm,775.88.mm,80.mm], [-203.51.mm,783.02.mm,80.mm], [-217.85.mm,790.68.mm,80.mm], [-231.89.mm,798.85.mm,80.mm], [-245.63.mm,807.54.mm,80.mm], [-259.04.mm,816.71.mm,80.mm], [-272.12.mm,826.37.mm,80.mm], [-284.83.mm,836.5.mm,80.mm], [-297.16.mm,847.08.mm,80.mm], [-309.11.mm,858.1.mm,80.mm], [-320.64.mm,869.55.mm,80.mm], [-331.75.mm,881.42.mm,80.mm], [-342.42.mm,893.67.mm,80.mm]])
+  face = ge.add_face([[-744.72.mm,891.75.mm,80.mm], [-733.98.mm,879.41.mm,80.mm], [-722.79.mm,867.46.mm,80.mm], [-711.18.mm,855.94.mm,80.mm], [-699.16.mm,844.84.mm,80.mm], [-686.74.mm,834.19.mm,80.mm], [-673.94.mm,823.99.mm,80.mm], [-660.78.mm,814.27.mm,80.mm], [-647.28.mm,805.03.mm,80.mm], [-633.45.mm,796.29.mm,80.mm], [-619.31.mm,788.06.mm,80.mm], [-604.88.mm,780.34.mm,80.mm], [-590.18.mm,773.16.mm,80.mm], [-575.23.mm,766.52.mm,80.mm], [-560.04.mm,760.42.mm,80.mm], [-544.65.mm,754.88.mm,80.mm], [-529.06.mm,749.9.mm,80.mm], [-513.3.mm,745.5.mm,80.mm], [-497.4.mm,741.67.mm,80.mm], [-481.36.mm,738.42.mm,80.mm], [-465.22.mm,735.75.mm,80.mm], [-448.99.mm,733.67.mm,80.mm], [-432.7.mm,732.19.mm,80.mm], [-416.36.mm,731.3.mm,80.mm], [-400.mm,731.mm,80.mm], [-383.64.mm,731.3.mm,80.mm], [-367.3.mm,732.19.mm,80.mm], [-351.01.mm,733.67.mm,80.mm], [-334.78.mm,735.75.mm,80.mm], [-318.64.mm,738.42.mm,80.mm], [-302.6.mm,741.67.mm,80.mm], [-286.7.mm,745.5.mm,80.mm], [-270.94.mm,749.9.mm,80.mm], [-255.35.mm,754.88.mm,80.mm], [-239.96.mm,760.42.mm,80.mm], [-224.77.mm,766.52.mm,80.mm], [-209.82.mm,773.16.mm,80.mm], [-195.12.mm,780.34.mm,80.mm], [-180.69.mm,788.06.mm,80.mm], [-166.55.mm,796.29.mm,80.mm], [-152.72.mm,805.03.mm,80.mm], [-139.22.mm,814.27.mm,80.mm], [-126.06.mm,823.99.mm,80.mm], [-113.26.mm,834.19.mm,80.mm], [-100.84.mm,844.84.mm,80.mm], [-88.82.mm,855.94.mm,80.mm], [-77.21.mm,867.46.mm,80.mm], [-66.02.mm,879.41.mm,80.mm], [-55.28.mm,891.75.mm,80.mm], [-59.11.mm,894.96.mm,80.mm], [-69.73.mm,882.76.mm,80.mm], [-80.79.mm,870.95.mm,80.mm], [-92.28.mm,859.55.mm,80.mm], [-104.17.mm,848.57.mm,80.mm], [-116.45.mm,838.04.mm,80.mm], [-129.1.mm,827.96.mm,80.mm], [-142.11.mm,818.34.mm,80.mm], [-155.47.mm,809.21.mm,80.mm], [-169.15.mm,800.56.mm,80.mm], [-183.13.mm,792.42.mm,80.mm], [-197.4.mm,784.8.mm,80.mm], [-211.93.mm,777.69.mm,80.mm], [-226.72.mm,771.12.mm,80.mm], [-241.74.mm,765.09.mm,80.mm], [-256.96.mm,759.62.mm,80.mm], [-272.37.mm,754.69.mm,80.mm], [-287.95.mm,750.34.mm,80.mm], [-303.68.mm,746.55.mm,80.mm], [-319.54.mm,743.33.mm,80.mm], [-335.51.mm,740.7.mm,80.mm], [-351.55.mm,738.64.mm,80.mm], [-367.67.mm,737.18.mm,80.mm], [-383.82.mm,736.29.mm,80.mm], [-400.mm,736.mm,80.mm], [-416.18.mm,736.29.mm,80.mm], [-432.33.mm,737.18.mm,80.mm], [-448.45.mm,738.64.mm,80.mm], [-464.49.mm,740.7.mm,80.mm], [-480.46.mm,743.33.mm,80.mm], [-496.32.mm,746.55.mm,80.mm], [-512.05.mm,750.34.mm,80.mm], [-527.63.mm,754.69.mm,80.mm], [-543.04.mm,759.62.mm,80.mm], [-558.26.mm,765.09.mm,80.mm], [-573.28.mm,771.12.mm,80.mm], [-588.07.mm,777.69.mm,80.mm], [-602.6.mm,784.8.mm,80.mm], [-616.87.mm,792.42.mm,80.mm], [-630.85.mm,800.56.mm,80.mm], [-644.53.mm,809.21.mm,80.mm], [-657.89.mm,818.34.mm,80.mm], [-670.9.mm,827.96.mm,80.mm], [-683.55.mm,838.04.mm,80.mm], [-695.83.mm,848.57.mm,80.mm], [-707.72.mm,859.55.mm,80.mm], [-719.21.mm,870.95.mm,80.mm], [-730.27.mm,882.76.mm,80.mm], [-740.89.mm,894.96.mm,80.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Housing arc (near Yd)"] || model.materials.add("LT Housing arc (near Yd)")
@@ -6189,7 +6145,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum C-shell"
   ge = grp.entities
-  face = ge.add_face([[-330.93.mm,903.32.mm,80.mm], [-301.mm,871.12.mm,80.mm], [-267.94.mm,842.13.mm,80.mm], [-232.11.mm,816.65.mm,80.mm], [-193.88.mm,794.95.mm,80.mm], [-153.64.mm,777.24.mm,80.mm], [-111.81.mm,763.72.mm,80.mm], [-68.82.mm,754.52.mm,80.mm], [-25.12.mm,749.73.mm,80.mm], [18.84.mm,749.41.mm,80.mm], [62.61.mm,753.56.mm,80.mm], [105.73.mm,762.14.mm,80.mm], [147.75.mm,775.05.mm,80.mm], [188.25.mm,792.17.mm,80.mm], [226.79.mm,813.32.mm,80.mm], [262.98.mm,838.27.mm,80.mm], [296.46.mm,866.77.mm,80.mm], [326.86.mm,898.53.mm,80.mm], [353.87.mm,933.21.mm,80.mm], [377.22.mm,970.46.mm,80.mm], [396.67.mm,1009.89.mm,80.mm], [412.01.mm,1051.1.mm,80.mm], [423.08.mm,1093.64.mm,80.mm], [429.76.mm,1137.09.mm,80.mm], [432.mm,1181.mm,80.mm], [429.76.mm,1224.91.mm,80.mm], [423.08.mm,1268.36.mm,80.mm], [412.01.mm,1310.9.mm,80.mm], [396.67.mm,1352.11.mm,80.mm], [377.22.mm,1391.54.mm,80.mm], [353.87.mm,1428.79.mm,80.mm], [326.86.mm,1463.47.mm,80.mm], [296.46.mm,1495.23.mm,80.mm], [262.98.mm,1523.73.mm,80.mm], [226.79.mm,1548.68.mm,80.mm], [188.25.mm,1569.83.mm,80.mm], [147.75.mm,1586.95.mm,80.mm], [105.73.mm,1599.86.mm,80.mm], [62.61.mm,1608.44.mm,80.mm], [18.84.mm,1612.59.mm,80.mm], [-25.12.mm,1612.27.mm,80.mm], [-68.82.mm,1607.48.mm,80.mm], [-111.81.mm,1598.28.mm,80.mm], [-153.64.mm,1584.76.mm,80.mm], [-193.88.mm,1567.05.mm,80.mm], [-232.11.mm,1545.35.mm,80.mm], [-267.94.mm,1519.87.mm,80.mm], [-301.mm,1490.88.mm,80.mm], [-330.93.mm,1458.68.mm,80.mm], [-328.63.mm,1456.76.mm,80.mm], [-298.9.mm,1488.73.mm,80.mm], [-266.08.mm,1517.51.mm,80.mm], [-230.5.mm,1542.81.mm,80.mm], [-192.53.mm,1564.37.mm,80.mm], [-152.57.mm,1581.95.mm,80.mm], [-111.03.mm,1595.38.mm,80.mm], [-68.34.mm,1604.52.mm,80.mm], [-24.94.mm,1609.27.mm,80.mm], [18.71.mm,1609.59.mm,80.mm], [62.18.mm,1605.47.mm,80.mm], [104.99.mm,1596.95.mm,80.mm], [146.73.mm,1584.13.mm,80.mm], [186.94.mm,1567.13.mm,80.mm], [225.21.mm,1546.13.mm,80.mm], [261.16.mm,1521.35.mm,80.mm], [294.4.mm,1493.04.mm,80.mm], [324.59.mm,1461.51.mm,80.mm], [351.42.mm,1427.06.mm,80.mm], [374.61.mm,1390.07.mm,80.mm], [393.91.mm,1350.92.mm,80.mm], [409.14.mm,1310.mm,80.mm], [420.14.mm,1267.75.mm,80.mm], [426.78.mm,1224.6.mm,80.mm], [429.mm,1181.mm,80.mm], [426.78.mm,1137.4.mm,80.mm], [420.14.mm,1094.25.mm,80.mm], [409.14.mm,1052.mm,80.mm], [393.91.mm,1011.08.mm,80.mm], [374.61.mm,971.93.mm,80.mm], [351.42.mm,934.94.mm,80.mm], [324.59.mm,900.49.mm,80.mm], [294.4.mm,868.96.mm,80.mm], [261.16.mm,840.65.mm,80.mm], [225.21.mm,815.87.mm,80.mm], [186.94.mm,794.87.mm,80.mm], [146.73.mm,777.87.mm,80.mm], [104.99.mm,765.05.mm,80.mm], [62.18.mm,756.53.mm,80.mm], [18.71.mm,752.41.mm,80.mm], [-24.94.mm,752.73.mm,80.mm], [-68.34.mm,757.48.mm,80.mm], [-111.03.mm,766.62.mm,80.mm], [-152.57.mm,780.05.mm,80.mm], [-192.53.mm,797.63.mm,80.mm], [-230.5.mm,819.19.mm,80.mm], [-266.08.mm,844.49.mm,80.mm], [-298.9.mm,873.27.mm,80.mm], [-328.63.mm,905.24.mm,80.mm]])
+  face = ge.add_face([[-730.93.mm,903.32.mm,80.mm], [-701.mm,871.12.mm,80.mm], [-667.94.mm,842.13.mm,80.mm], [-632.11.mm,816.65.mm,80.mm], [-593.88.mm,794.95.mm,80.mm], [-553.64.mm,777.24.mm,80.mm], [-511.81.mm,763.72.mm,80.mm], [-468.82.mm,754.52.mm,80.mm], [-425.12.mm,749.73.mm,80.mm], [-381.16.mm,749.41.mm,80.mm], [-337.39.mm,753.56.mm,80.mm], [-294.27.mm,762.14.mm,80.mm], [-252.25.mm,775.05.mm,80.mm], [-211.75.mm,792.17.mm,80.mm], [-173.21.mm,813.32.mm,80.mm], [-137.02.mm,838.27.mm,80.mm], [-103.54.mm,866.77.mm,80.mm], [-73.14.mm,898.53.mm,80.mm], [-46.13.mm,933.21.mm,80.mm], [-22.78.mm,970.46.mm,80.mm], [-3.33.mm,1009.89.mm,80.mm], [12.01.mm,1051.1.mm,80.mm], [23.08.mm,1093.64.mm,80.mm], [29.76.mm,1137.09.mm,80.mm], [32.mm,1181.mm,80.mm], [29.76.mm,1224.91.mm,80.mm], [23.08.mm,1268.36.mm,80.mm], [12.01.mm,1310.9.mm,80.mm], [-3.33.mm,1352.11.mm,80.mm], [-22.78.mm,1391.54.mm,80.mm], [-46.13.mm,1428.79.mm,80.mm], [-73.14.mm,1463.47.mm,80.mm], [-103.54.mm,1495.23.mm,80.mm], [-137.02.mm,1523.73.mm,80.mm], [-173.21.mm,1548.68.mm,80.mm], [-211.75.mm,1569.83.mm,80.mm], [-252.25.mm,1586.95.mm,80.mm], [-294.27.mm,1599.86.mm,80.mm], [-337.39.mm,1608.44.mm,80.mm], [-381.16.mm,1612.59.mm,80.mm], [-425.12.mm,1612.27.mm,80.mm], [-468.82.mm,1607.48.mm,80.mm], [-511.81.mm,1598.28.mm,80.mm], [-553.64.mm,1584.76.mm,80.mm], [-593.88.mm,1567.05.mm,80.mm], [-632.11.mm,1545.35.mm,80.mm], [-667.94.mm,1519.87.mm,80.mm], [-701.mm,1490.88.mm,80.mm], [-730.93.mm,1458.68.mm,80.mm], [-727.87.mm,1456.11.mm,80.mm], [-698.21.mm,1488.01.mm,80.mm], [-665.46.mm,1516.73.mm,80.mm], [-629.96.mm,1541.97.mm,80.mm], [-592.09.mm,1563.47.mm,80.mm], [-552.22.mm,1581.02.mm,80.mm], [-510.77.mm,1594.42.mm,80.mm], [-468.18.mm,1603.53.mm,80.mm], [-424.89.mm,1608.28.mm,80.mm], [-381.33.mm,1608.59.mm,80.mm], [-337.97.mm,1604.48.mm,80.mm], [-295.25.mm,1595.98.mm,80.mm], [-253.62.mm,1583.19.mm,80.mm], [-213.5.mm,1566.23.mm,80.mm], [-175.31.mm,1545.28.mm,80.mm], [-139.45.mm,1520.56.mm,80.mm], [-106.29.mm,1492.32.mm,80.mm], [-76.17.mm,1460.85.mm,80.mm], [-49.4.mm,1426.49.mm,80.mm], [-26.27.mm,1389.59.mm,80.mm], [-7.mm,1350.52.mm,80.mm], [8.19.mm,1309.7.mm,80.mm], [19.16.mm,1267.55.mm,80.mm], [25.78.mm,1224.5.mm,80.mm], [28.mm,1181.mm,80.mm], [25.78.mm,1137.5.mm,80.mm], [19.16.mm,1094.45.mm,80.mm], [8.19.mm,1052.3.mm,80.mm], [-7.mm,1011.48.mm,80.mm], [-26.27.mm,972.41.mm,80.mm], [-49.4.mm,935.51.mm,80.mm], [-76.17.mm,901.15.mm,80.mm], [-106.29.mm,869.68.mm,80.mm], [-139.45.mm,841.44.mm,80.mm], [-175.31.mm,816.72.mm,80.mm], [-213.5.mm,795.77.mm,80.mm], [-253.62.mm,778.81.mm,80.mm], [-295.25.mm,766.02.mm,80.mm], [-337.97.mm,757.52.mm,80.mm], [-381.33.mm,753.41.mm,80.mm], [-424.89.mm,753.72.mm,80.mm], [-468.18.mm,758.47.mm,80.mm], [-510.77.mm,767.58.mm,80.mm], [-552.22.mm,780.98.mm,80.mm], [-592.09.mm,798.53.mm,80.mm], [-629.96.mm,820.03.mm,80.mm], [-665.46.mm,845.27.mm,80.mm], [-698.21.mm,873.99.mm,80.mm], [-727.87.mm,905.89.mm,80.mm]])
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["LT Drum C-shell"] || model.materials.add("LT Drum C-shell")
@@ -6201,7 +6157,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top cap"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,2195.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2195.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
@@ -6214,7 +6170,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum bottom cap"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,80.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(5.mm)
@@ -6227,7 +6183,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top shaft"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,2200.mm], [0,0,1], 37.5.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2200.mm], [0,0,1], 37.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(65.mm)
@@ -6240,7 +6196,7 @@ end
   grp = ents.add_group
   grp.name = "LT Upper bearing (SKF 6215)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,2200.mm], [0,0,1], 65.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2200.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
@@ -6253,7 +6209,7 @@ end
   grp = ents.add_group
   grp.name = "LT Lower bearing collar"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 75.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,80.mm], [0,0,1], 75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(45.mm)
@@ -6265,7 +6221,7 @@ end
   # LT Lower bearing mount plate
   grp = ents.add_group
   grp.name = "LT Lower bearing mount plate"
-  face = grp.entities.add_face([-120.mm,1061.mm,80.mm], [120.mm,1061.mm,80.mm], [120.mm,1301.mm,80.mm], [-120.mm,1301.mm,80.mm])
+  face = grp.entities.add_face([-520.mm,1061.mm,80.mm], [-280.mm,1061.mm,80.mm], [-280.mm,1301.mm,80.mm], [-520.mm,1301.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Pole Mount Flange"] || model.materials.add("Pole Mount Flange")
@@ -6277,7 +6233,7 @@ end
   grp = ents.add_group
   grp.name = "LT Grab rail"
   ge = grp.entities
-  circle = ge.add_circle([357.mm,1181.mm,700.mm], [0,0,1], 15.mm, 24)
+  circle = ge.add_circle([-43.mm,1181.mm,700.mm], [0,0,1], 15.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(400.mm)
@@ -6289,7 +6245,7 @@ end
   # LT Grab rail standoff
   grp = ents.add_group
   grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([357.mm,1175.mm,720.mm], [429.mm,1175.mm,720.mm], [429.mm,1187.mm,720.mm], [357.mm,1187.mm,720.mm])
+  face = grp.entities.add_face([-43.mm,1175.mm,720.mm], [28.mm,1175.mm,720.mm], [28.mm,1187.mm,720.mm], [-43.mm,1187.mm,720.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Pole Mount Flange"] || model.materials.add("Pole Mount Flange")
@@ -6300,7 +6256,7 @@ end
   # LT Grab rail standoff
   grp = ents.add_group
   grp.name = "LT Grab rail standoff"
-  face = grp.entities.add_face([357.mm,1175.mm,1080.mm], [429.mm,1175.mm,1080.mm], [429.mm,1187.mm,1080.mm], [357.mm,1187.mm,1080.mm])
+  face = grp.entities.add_face([-43.mm,1175.mm,1080.mm], [28.mm,1175.mm,1080.mm], [28.mm,1187.mm,1080.mm], [-43.mm,1187.mm,1080.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Pole Mount Flange"] || model.materials.add("Pole Mount Flange")
@@ -6312,7 +6268,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-336.6765327507908.mm,1463.505154457234.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,1462.8623668475475.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -6325,7 +6281,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-336.67653275079084.mm,898.4948455427659.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-735.9104883076718.mm,899.1376331524525.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -6338,7 +6294,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top felt seal"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,2192.mm], [0,0,1], 446.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2192.mm], [0,0,1], 444.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(8.mm)
@@ -6351,7 +6307,7 @@ end
   grp = ents.add_group
   grp.name = "LT Drum bottom felt seal"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,1181.mm,80.mm], [0,0,1], 446.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,80.mm], [0,0,1], 444.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(8.mm)
@@ -6362,6 +6318,57 @@ end
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Light-Trap Drum"
+  inst.layer = model.layers["Light Trap"]
+
+  # ═══ Light-Trap Bay ═══
+  defn = model.definitions.add("Light-Trap Bay")
+  ents = defn.entities
+  # Bay wall near (Yd)
+  grp = ents.add_group
+  grp.name = "Bay wall near (Yd)"
+  face = grp.entities.add_face([-890.mm,653.mm,80.mm], [0.mm,653.mm,80.mm], [0.mm,659.mm,80.mm], [-890.mm,659.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2220.mm)
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bay wall far (Yd)
+  grp = ents.add_group
+  grp.name = "Bay wall far (Yd)"
+  face = grp.entities.add_face([-890.mm,1703.mm,80.mm], [0.mm,1703.mm,80.mm], [0.mm,1709.mm,80.mm], [-890.mm,1709.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2220.mm)
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bay wall top
+  grp = ents.add_group
+  grp.name = "Bay wall top"
+  face = grp.entities.add_face([-890.mm,653.mm,2294.mm], [0.mm,653.mm,2294.mm], [0.mm,1709.mm,2294.mm], [-890.mm,1709.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bay wall bottom
+  grp = ents.add_group
+  grp.name = "Bay wall bottom"
+  face = grp.entities.add_face([-890.mm,653.mm,80.mm], [0.mm,653.mm,80.mm], [0.mm,1709.mm,80.mm], [-890.mm,1709.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Bay wall near (Yd)"] || model.materials.add("Bay wall near (Yd)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Light-Trap Bay"
   inst.layer = model.layers["Light Trap"]
 
   # ═══ Electrical ═══

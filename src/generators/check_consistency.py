@@ -292,6 +292,43 @@ def check_e_dead_constants():
     return len(dead)
 
 
+def check_f_inlined_pipe_helpers():
+    """The pipe-run geometry (parallel walls + concentric-arc elbow fittings) lives in
+    ONE canonical helper in tbs_drawing.py; generators must keep only a thin wrapper
+    that delegates (injecting their own scale funcs/style). Flag any generator that has
+    re-inlined the algorithm — a copy that silently drifts from the plumbing skill —
+    detected by elbow-math markers inside a local draw_pipe_* def (top-level or nested).
+    See skills/skill_plumbing_drawing.md."""
+    print(f"\n{CB}── CHECK F · re-inlined pipe-path copies (should delegate to tbs_drawing) ──{C0}")
+    markers = ("math.atan2(", "_arc_ring", "def _rect")
+    hits = []
+    for path in _files((".py",), GEN_DIR):
+        base = os.path.basename(path)
+        if base in ("tbs_drawing.py", "check_consistency.py"):
+            continue
+        lines = open(path, errors="ignore").read().splitlines()
+        for i, ln in enumerate(lines):
+            m = re.match(r"([ \t]*)def (draw_pipe_path|draw_pipe_end|draw_pipe_path_plan)\b", ln)
+            if not m:
+                continue
+            indent = len(m.group(1))
+            body = []
+            for ln2 in lines[i + 1:]:
+                if ln2.strip() and (len(ln2) - len(ln2.lstrip())) <= indent:
+                    break
+                body.append(ln2)
+            if any(k in "\n".join(body) for k in markers):
+                hits.append((base, i + 1, m.group(2)))
+    for base, line, fn in hits:
+        print(f"  {C1}{base}:{line}{C0}  {fn}() re-inlines the elbow geometry — "
+              f"replace with a thin wrapper onto tbs_drawing.{fn}")
+    if not hits:
+        print("  none — every generator delegates to the canonical helper.")
+    print("  → one copy of the pipe algorithm; a fresh copy drifts from the plumbing skill "
+          "(and CHECK A/E can't see representation drift).")
+    return len(hits)
+
+
 def literals_mode():
     """Opt-in (--literals): the inverse of CHECK A. Bare numeric literals in a
     generator/model that equal a CURRENT distinctive constant value — a latent
@@ -340,7 +377,7 @@ def main():
     print(f"  parsed {len(cur)} numeric constants from tbs_constants.py")
     total = (check_a_stale_values(cur) + check_b_imports()
              + check_c_divergence() + check_d_inventory()
-             + check_e_dead_constants())
+             + check_e_dead_constants() + check_f_inlined_pipe_helpers())
     print(f"\n{CB}Audit complete.{C0} Findings are heuristics, not failures — "
           f"triage against skills/skill_model_consistency.md.")
 

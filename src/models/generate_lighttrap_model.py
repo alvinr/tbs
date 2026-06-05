@@ -75,14 +75,18 @@ TAGS = ["Context", "Door Frame", "Hinge Panel", "Light Trap",
 
 # ── Ghosted container context (end opening only) ─────────────────────────────
 
-def context(left_walkway=True):
+def context(left_walkway=True, x_far=None):
     """Low-alpha stub of floor, ceiling and both side walls near X=0 so the
     assembly reads in place without modeling the whole container.
 
     left_walkway: include the ghosted left walkway deck + drum-exit punch-out
     (default True = operating; byte-identical). The transport model passes False —
-    the left walkway is the removable lift-out, taken out for transport."""
-    x0, xlen = -400, 2000
+    the left walkway is the removable lift-out, taken out for transport.
+    x_far: far (+X) edge of the stub (default None = operating extent, X=1600,
+    byte-identical). The transport model passes a value so the container crops to
+    the same plane as its tray / walkway / rail partials."""
+    x0 = -400
+    xlen = (x_far - x0) if x_far is not None else 2000
     parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
                  color=C_SHELL, alpha=0.25),

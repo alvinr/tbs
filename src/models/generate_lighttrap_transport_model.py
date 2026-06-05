@@ -87,7 +87,8 @@ def cargo_doors():
 # cargo-door-end zone: a processing-tray section + the NEAR (pinhole-wall side,
 # Yd 0) and FAR walkway decks. The LEFT walkway is the removable lift-out and is
 # already taken out for transport — so it is not shown.
-PARTIAL_X = 1800        # context extends from the cargo-door end to here (mm)
+PARTIAL_X = 1600        # common +X crop plane — container stub, tray, walkways and
+                        # film-plane beams all end here so their cut faces align
 
 def processing_tray_partial():
     """A cropped section of the processing-tray basin at the cargo-door end."""
@@ -127,10 +128,10 @@ def film_plane_left():
     The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
     pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
     (upper + lower) that tie them at the near-wall (Yd≈100) and far-wall (Yd≈2262)
-    ends, plus the left corner posts. The UPPER-LEFT rail's DEMOUNTABLE drum-zone
-    segment (Yd 731–1631) is shown TAKEN OUT (a gap) — swung clear for drum mode
-    per the 2D film-plane diagrams; the lower-left rail is left continuous. Beams
-    cropped in X to the cargo-door-end zone (PARTIAL_X). Fixed (does not slide)."""
+    ends, plus the left corner posts. BOTH left rails' DEMOUNTABLE drum-zone
+    segments (Yd 731–1631) are shown TAKEN OUT (a gap in each) — swung clear for
+    drum mode per the 2D film-plane diagrams. Beams cropped in X to the common
+    crop plane (PARTIAL_X). Fixed (does not slide)."""
     rail = 40
     s = ov.BRACE_RHS                            # 50 — brace RHS
     xL = ov.RAIL_X_L                            # 150 — left rail X
@@ -141,12 +142,13 @@ def film_plane_left():
     bx = PARTIAL_X - xL                          # brace-beam length (cropped)
     C = ov.C_STEEL
     parts = [
-        # Lower-left rail (BL) — continuous.
-        ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
-        # Upper-left rail (TL) — fixed near + fixed far; DEMOUNTABLE middle REMOVED.
+        # Both left rails — fixed near + fixed far segments; DEMOUNTABLE drum-zone
+        # middle (Yd 731–1631) REMOVED on each (swung clear for drum mode).
+        ruby_box("FP Rail BL near (lower left)", xL, yN, z_bot, rail, d0 - yN, rail, color=C),
+        ruby_box("FP Rail BL far (lower left)", xL, d1, z_bot, rail, yF - d1, rail, color=C),
         ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
         ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
-        # (TL demountable segment Yd 731–1631 intentionally omitted = taken out.)
+        # (BL + TL demountable segments Yd 731–1631 intentionally omitted = taken out.)
     ]
     # Brace beams (upper + lower) + left corner post at the near- and far-wall ends.
     for py, pn in [(yN, "near wall"), (yF, "far wall")]:
@@ -160,7 +162,7 @@ def film_plane_left():
 
 def generate_ruby():
     comps = [
-        component("Context", "Context", lt.context(left_walkway=False)),
+        component("Context", "Context", lt.context(left_walkway=False, x_far=PARTIAL_X)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Closed Cargo Doors", "Cargo Doors", cargo_doors()),
         component("Hinged Light-Trap Panel", "Hinge Panel", lt.hinge_panel()),

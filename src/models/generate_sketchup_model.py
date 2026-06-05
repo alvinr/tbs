@@ -1227,9 +1227,10 @@ def lighting_wiring():
     # per skill_plumbing_drawing — ruby_pipe_run with elbows, right-angle entry).
     fcr = 7                                          # conduit radius (Ø14)
     czr = cz - 30                                    # conduit ceiling run height (2358)
-    # → Fan A (exhaust, Cct A): fixed on the far/sealed end wall, high near the
-    #   ceiling. Tap the trunking, run out in Yd over the fan, drop onto the
-    #   fan-frame top (perpendicular entry). Rigid all the way — Fan A doesn't move.
+    # → Fan A (exhaust, Cct A): fixed on the far/sealed end wall (now far-Yd side,
+    #   rev9/B2 swap), high near the ceiling. Tap the trunking, cross in Yd over the
+    #   IBC stack (no moving parts at the sealed end), drop onto the fan-frame top
+    #   (perpendicular entry). Rigid all the way — Fan A doesn't move.
     fa_x = (C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # fan-body center X (5618)
     fa_top = FAN_A_H + DUCT_HEIGHT / 2               # fan-housing top Z (2300)
     parts.append(ruby_pipe_run("Conduit to Fan A (exhaust, Cct A)",
@@ -1237,16 +1238,18 @@ def lighting_wiring():
                                 (fa_x, FAN_A_YD, czr),
                                 (fa_x, FAN_A_YD, fa_top)],
                                fcr, color=C_TRUNK))
-    # → Fan B (intake, Cct B): Fan B rides the SLIDING door panel, so the rigid
-    #   conduit only runs as far as the FIXED door-frame top rail; a 1m coiled
-    #   flex whip (electrical-report §Circuit B, Deutsch DT connectors — NOT
-    #   modeled) crosses to the panel and drops to the low fan, taking up the
-    #   transport slide + 180° swing. Tap the trunking, cross in Yd to the fan's
-    #   Yd, then run in -X to the frame top rail just clear of the panel.
+    # → Fan B (intake, Cct B): now in the NEAR corner by the pinhole wall (rev9/B2
+    #   swap), so the rigid conduit RUNS ALONG THE PINHOLE WALL (Yd≈20) to the door
+    #   end and then hops a short distance in +Yd to a fixed anchor on the
+    #   door-frame top rail — staying in the near corner zone (Yd<653), so it never
+    #   crosses the ceiling suspension rails (Yd=653/1709). A 1m coiled flex whip
+    #   (electrical-report §Circuit B, Deutsch DT connectors — NOT modeled) drops
+    #   from the anchor down the moving panel to the low fan, taking up the
+    #   transport slide + 180° swing.
     fb_anchor = (60, FAN_B_YD, czr)                  # fixed end on the door-frame top rail
     parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
                                [(300, 20, czr),
-                                (300, FAN_B_YD, czr),
+                                (60, 20, czr),
                                 fb_anchor],
                                fcr, color=C_TRUNK))
     parts.append(ruby_box("Fan B Flex Anchor (door-frame top rail — flex whip not shown)",

@@ -60,7 +60,7 @@ Longitudinal section showing the cross-flow ventilation path: Fan B intake at th
 
 | Fan | Position | Mounting | Function |
 |-----|----------|----------|----------|
-| Fan B (intake) | Hinged panel, far corner zone (Yd=1959mm, Z=600mm) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
+| Fan B (intake) | Hinged panel, near corner zone by the pinhole wall (Yd=365mm, Z=600mm — rev9/B2 swap) | Flush-mounted in 40mm corner zone panel | Fresh air intake — draws cooler air near floor level |
 | Fan A (exhaust) | Far end wall (X=5893mm), high position (Z=2200mm, above IBC stack) | Flush-mounted in wall penetration | Exhaust warm, humid air during processing and drying |
 
 Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bodies do not protrude beyond either panel face. Cross-flow ventilation runs diagonally: **low intake at the cargo door end → high exhaust at the far end** — fresh air enters near the floor, sweeps the working volume, and warm air discharges high.
@@ -69,7 +69,7 @@ Both fans are 6" (150mm) diameter, 12V DC (AC Infinity S6 or equivalent). Fan bo
 
 ### 4.2 Fan A — Far End Wall Exhaust
 
-Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=300mm — set in 300mm from the pinhole wall toward the center of the end wall, off the corner) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
+Fan A is flush-mounted in a wall penetration at the far end wall (X=5893mm), high position (Z=2200mm AFF, Yd=1996mm — far side, off the corner; rev9/B2 swapped it to the far side so Fan B's conduit can run along the pinhole wall) — above the 2020mm-tall IBC stack so its baffle duct projects into clear space above the totes. The fan body sits inside a light-safe baffle duct (see §4.4) bolted to the interior face of the wall. A weatherproof louvre grille on the exterior face protects the penetration from rain and debris. The fan, duct, and grille are permanently installed — no removal is required for mode conversion or transport.
 
 **Wiring:** Fan A's wire run routes from the fuse block along the ceiling cable trunking to the far end wall, then drops a short distance to the fan near the ceiling. The entire run is inside the container — no flex cable or weatherproof connectors are needed.
 

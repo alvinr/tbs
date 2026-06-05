@@ -9712,6 +9712,99 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
+  # Conduit to Fan A (exhaust, Cct A)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 266.mm, 0.mm)
+  circle = ge.add_circle([5618.mm,20.mm,2358.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan A (exhaust, Cct A) elbow
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5618.mm,286.mm,2344.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5618.mm,286.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan A (exhaust, Cct A)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -44.mm)
+  circle = ge.add_circle([5618.mm,300.mm,2344.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan B (intake, Cct B)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan B (intake, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1962.mm, 0.mm)
+  circle = ge.add_circle([300.mm,20.mm,2358.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan B (intake, Cct B) elbow
+  grp = ents.add_group
+  grp.name = "Conduit to Fan B (intake, Cct B) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([286.mm,1982.mm,2358.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([300.mm,1982.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan B (intake, Cct B)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan B (intake, Cct B)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-226.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([286.mm,1996.mm,2358.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
+  mat.color = Sketchup::Color.new(154, 160, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B Flex Anchor (door-frame top rail — flex whip not shown)
+  grp = ents.add_group
+  grp.name = "Fan B Flex Anchor (door-frame top rail — flex whip not shown)"
+  face = grp.entities.add_face([40.mm,1971.mm,2333.mm], [85.mm,1971.mm,2333.mm], [85.mm,2021.mm,2333.mm], [40.mm,2021.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Pull Switch (ceiling)"] || model.materials.add("Pull Switch (ceiling)")
+  mat.color = Sketchup::Color.new(216, 216, 240)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Lighting & Wiring"
   inst.layer = model.layers["Lighting"]

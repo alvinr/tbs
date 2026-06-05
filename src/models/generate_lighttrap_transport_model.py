@@ -46,7 +46,7 @@ SLIDE = ov.PANEL_SLIDE                          # 550 — transport slide travel
 # beam) is handled inside lt.sliding_carriage(slide=SLIDE) by coordinate offset.
 MOVING_TAGS = ["Hinge Panel", "Light Trap", "Fan B"]
 
-TAGS = lt.TAGS + ["Cargo Doors", "Processing Tray", "Walkways", "Film Plane Rails"]
+TAGS = lt.TAGS + ["Cargo Doors"]
 
 
 # ── Closed ISO cargo doors (transport-only; demonstrate the clearance) ───────
@@ -82,87 +82,11 @@ def cargo_doors():
     return '\n'.join(parts)
 
 
-# ── Partial cargo-door-end context (tray + near/far walkways) ────────────────
-# Reuses the overview's tray/walkway geometry + constants, cropped to the
-# cargo-door-end zone: a processing-tray section + the NEAR (pinhole-wall side,
-# Yd 0) and FAR walkway decks. The LEFT walkway is the removable lift-out and is
-# already taken out for transport — so it is not shown.
-PARTIAL_X = 1600        # common +X crop plane — container stub, tray, walkways and
-                        # film-plane beams all end here so their cut faces align
-
-def processing_tray_partial():
-    """A cropped section of the processing-tray basin at the cargo-door end."""
-    x0 = ov.PROC_TRAY_X_L
-    yN, yF = ov.PROC_TRAY_YD_NEAR, ov.PROC_TRAY_YD_FAR
-    w, d = PARTIAL_X - x0, yF - yN
-    st, rt, rim = 2, 2, ov.PROC_TRAY_RIM
-    p = [
-        ruby_box("Processing Tray Floor (partial)", x0, yN, 0, w, d, st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Near (partial)", x0, yN, st, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Far (partial)", x0, yF - rt, st, w, rt, rim - st, color=ov.C_TRAY),
-        ruby_box("Tray Rim Left (cargo end)", x0, yN, st, rt, d, rim - st, color=ov.C_TRAY),
-        ruby_box("Chemistry Bath (partial)", x0 + rt, yN + rt, st,
-                 w - 2 * rt, d - 2 * rt, rim - st - 8, color=ov.C_BATH, alpha=0.45),
-    ]
-    return '\n'.join(p)
-
-def walkways_partial():
-    """The NEAR (pinhole-wall side, Yd 0) and FAR walkway decks, cropped to the
-    cargo-door-end zone. The left walkway (removable lift-out) is out for
-    transport, so it is not shown."""
-    grate_z = ov.WALKWAY_H - ov.WALKWAY_GRATE_T
-    t = ov.WALKWAY_GRATE_T
-    x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W       # = 470 — where the long decks begin
-    w = PARTIAL_X - x0
-    return '\n'.join([
-        ruby_box("Walkway Near (partial)", x0, 0, grate_z,
-                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
-        ruby_box("Walkway Far (partial)", x0, ov.WALKWAY_FAR_YD, grate_z,
-                 w, ov.WALKWAY_W, t, color=ov.C_WALKWAY),
-    ])
-
-
-def film_plane_left():
-    """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
-
-    The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
-    pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
-    (upper + lower) that tie them at the near-wall (Yd≈100) and far-wall (Yd≈2262)
-    ends, plus the left corner posts. BOTH left rails' DEMOUNTABLE drum-zone
-    segments (Yd 731–1631) are shown TAKEN OUT (a gap in each) — swung clear for
-    drum mode per the 2D film-plane diagrams. Beams cropped in X to the common
-    crop plane (PARTIAL_X). Fixed (does not slide)."""
-    rail = 40
-    s = ov.BRACE_RHS                            # 50 — brace RHS
-    xL = ov.RAIL_X_L                            # 150 — left rail X
-    z_bot = ov.RAIL_OFF                         # 100 — lower rail Z
-    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248 — upper rail Z
-    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100 (near-wall end), 2262 (far-wall end)
-    d0, d1 = ov.BRACE_LEFT_DEMOUNT_Y0, ov.BRACE_LEFT_DEMOUNT_Y1   # 731, 1631
-    bx = PARTIAL_X - xL                          # brace-beam length (cropped)
-    C = ov.C_STEEL
-    parts = [
-        # Both left rails — fixed near + fixed far segments; DEMOUNTABLE drum-zone
-        # middle (Yd 731–1631) REMOVED on each (swung clear for drum mode).
-        ruby_box("FP Rail BL near (lower left)", xL, yN, z_bot, rail, d0 - yN, rail, color=C),
-        ruby_box("FP Rail BL far (lower left)", xL, d1, z_bot, rail, yF - d1, rail, color=C),
-        ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
-        ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
-        # (BL + TL demountable segments Yd 731–1631 intentionally omitted = taken out.)
-    ]
-    # Brace beams (upper + lower) + left corner post at the near- and far-wall ends.
-    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
-        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
-    return '\n'.join(parts)
-
-
 # ── Assemble the Ruby script (mirrors lt.generate_ruby + the transport pose) ──
 
 def generate_ruby():
     comps = [
-        component("Context", "Context", lt.context(left_walkway=False, x_far=PARTIAL_X)),
+        component("Context", "Context", lt.context(left_walkway=False, x_far=lt.PARTIAL_X)),
         component("Fixed Door Frame", "Door Frame", lt.door_frame(include_seal=False)),
         component("Closed Cargo Doors", "Cargo Doors", cargo_doors()),
         component("Hinged Light-Trap Panel", "Hinge Panel", lt.hinge_panel()),
@@ -174,9 +98,9 @@ def generate_ruby():
         component("Sliding Carriage System", "Sliding Carriage",
                   lt.sliding_carriage(slide=SLIDE)),
         component("Fan B (intake)", "Fan B", lt.fan_b()),
-        component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
-        component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
+        component("Processing Tray (partial)", "Processing Tray", lt.processing_tray_partial()),
+        component("Walkways (near + far, partial)", "Walkways", lt.walkways_partial()),
+        component("Film-Plane Rails (left, partial)", "Film Plane Rails", lt.film_plane_left()),
     ]
     body = '\n'.join(comps)
 

@@ -197,13 +197,9 @@ BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock centre in Yd (= container width centre)
-# B2 (rev9): the drum is offset clear of the X=150 rail, so the left rail is now
-# CONTINUOUS in operating mode — the demountable segment is obsolete. These three
-# are SLATED FOR REMOVAL and kept only until the referencing generators are updated
-# (lighttrap-punchout-bay plan, Tasks 2–9), then deleted in the final cleanup.
-BRACE_LEFT_DEMOUNT_Y0 = DRUM_CY - DRUM_R   # 731mm — [obsolete: demountable segment start]
-BRACE_LEFT_DEMOUNT_Y1 = DRUM_CY + DRUM_R   # 1631mm — [obsolete: demountable segment end]
-CARRIAGE_PARK_Y       = FP_Y               # 2262mm — [obsolete: carriage park for drum mode]
+# B2 (rev9): the drum is offset clear of the X=150 rail (via the punch-out bay), so
+# the left film-plane rail is CONTINUOUS — the old demountable-segment constants
+# (BRACE_LEFT_DEMOUNT_Y0/Y1, CARRIAGE_PARK_Y) are removed.
 
 # Evaporative cooler — external mount (rev 7: was interior on pinhole wall)
 # Cooler ground-placed outside container, connected via 200mm flex duct

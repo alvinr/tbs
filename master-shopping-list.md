@@ -110,12 +110,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|------|-----|-----------|-----------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8ft lengths | 10 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $22 |
 | [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
-| [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls | 3 | McMaster-Carr #8614K84 | — | $28 |
+| [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls — panel perimeter seal + housing-surround ring (Ø900 aperture) | 4 | McMaster-Carr #8614K84 | — | $37 |
 | [Rosco Duvetyne blackout fabric](https://www.rosebrand.com) | 60" wide, 10 yd | 1 | [Rose Brand](https://www.rosebrand.com) (Burbank CA) | B&H Photo | $95 |
 | [Aluminum piano hinge 72"](https://www.mcmaster.com/1580A51) | 2" wide, 1/16" leaf | 2 | McMaster-Carr #1580A51 | — | $28 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | Home Depot | — | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot | Amazon | $12 |
-**Frame subtotal: ~$1,102**
+**Frame subtotal: ~$1,111**
 
 ### Optional: electric actuation (add-on)
 | Item | Spec | Qty | Supplier | Est. unit |

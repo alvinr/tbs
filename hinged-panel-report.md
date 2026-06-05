@@ -74,6 +74,13 @@ seated in an extruded aluminum channel. The gasket compresses against a fixed we
 door frame (50 × 50 × 3mm RHS) at X=0 when the four cam latches engage. The seal
 provides light-tight compression on all four sides.
 
+A **second** 20mm EPDM gasket — the **housing-surround seal** — runs as a ring around
+the Ø900 light-trap housing aperture. Because the housing is **fixed** (only the drum
+rotates inside it), this gasket seals the fixed surround to the frame independently of
+the moving panel, all the way around the opening the housing passes through. It sits in
+the same exterior door plane (X=0), concentric inboard of the panel-perimeter seal (see
+§6, light-path #8).
+
 ---
 
 ## 3. Housed Revolving-Door Light Lock
@@ -307,6 +314,7 @@ sealed when the panel is in the operational position.
 | 5 | Panel edge-to-wall clearance gaps | 15mm closed-cell EPDM strips (self-adhesive, full panel height) bonded to fixed door frame inner face at each side |
 | 6 | Panel bottom → 80mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising ~110mm (above the panel bottom edge at Z=80) across the **full panel-bottom width, continuous (no notch)** — the housing/drum is **suspended at Z=80** and no longer reaches the floor, so the floor gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip** and is compressed by the lower pair of Southco cam latches in the operational ("camera") position. The clamps are released to lift the seal and slide the panel to transport. (Sheet 3, Detail B.) |
 | 7 | Panel top → frame gap (panel hangs below the ceiling rails) | Fixed-frame **top seal lip** — the mirror of #6: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum does not reach the top (its stub shaft stops below the lip), so unlike the bottom lip this one runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released to slide to transport. (Sheet 3, Detail C.) |
+| 8 | Fixed housing surround → door frame | The Ø900 light-trap housing is **fixed** (only the drum rotates inside it). A **second 20mm EPDM gasket** runs as a **ring around the housing aperture** (Yd 713–1649, floor-gap up to the housing top at Z=2200), concentric **inboard** of the panel-perimeter seal (#1), in the exterior door plane (X=0). It seals the fixed surround to the frame all the way around the opening the housing passes through — light-tight independent of the moving panel. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
 dark-adaptation check inside the container with all seals engaged. Any visible light
@@ -341,8 +349,8 @@ for the sliding carriage.
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 | $120–$160 |
 | 18mm exterior-grade plywood (1220 × 2440mm sheets) | Panel skins (both faces) | 6 | $180–$300 |
 | 3mm aluminum plate (1220 × 2440mm) | Corner zone core plates | 2 | $360–$460 |
-| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal — ~10 m required | 10 m | $40–$60 |
-| Aluminum U-channel (per meter) | Gasket retainer — ~10 m required | 10 m | $30–$50 |
+| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) | 16 m | $64–$96 |
+| Aluminum U-channel (per meter) | Gasket retainer — perimeter + housing-surround ring | 16 m | $48–$80 |
 | 200mm SS ball-bearing piano hinge | Left-edge hinges | 3 | $45–$75 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches | 4 | $60–$100 |
 | Flat black paint (RAL 9005) | Interior face | 2 qt | $20–$30 |

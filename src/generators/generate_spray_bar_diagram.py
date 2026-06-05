@@ -1258,131 +1258,128 @@ def draw_sheet4():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# SHEET 5 — Detail C: Wheel Attachment
-# Section along axle centerline showing carriage plate, axle-retention
-# saddle clamps (curved conduit-style), nylon wheel bore, axle pin, and
-# through-bolt retention.
+# SHEET 5 — Detail C: Wheel Attachment Plan (LOOKING DOWN)
+# Top-down plan: the carriage plate (notched fork) is in front; each wheel pokes
+# up through a slot in its wing (shown as the 20×50 footprint + axle pin); only
+# the C-clamp retaining bolt HEADS show (the axle + clamp are below the plate).
+# The mirror of Sheet 6 (Detail D, looking UP — wheels whole, in front).
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet5():
-    fig = plt.figure(figsize=(10, 12))
+    fig = plt.figure(figsize=(14, 14))
     fig.patch.set_facecolor(C_BG)
-    ax_w = fig.add_axes([0.08, 0.06, 0.84, 0.88])
+    ax_w = fig.add_axes([0.05, 0.06, 0.90, 0.90])
     ax_w.set_facecolor(C_BG)
     ax_w.axis("off")
+    ax_w.set_aspect("equal")
 
-    w_xl, w_xr = -30, 30
-    w_yb, w_yt = -9, 66
-    ax_w.set_xlim(w_xl, w_xr)
-    ax_w.set_ylim(w_yb, w_yt)
+    BEAM_SHOW_LEN = 140
+    cox = -BEAM_SHOW_LEN + 20             # -120 — carriage centre X
+    C_X_LO, C_X_HI = -165, 165
+    C_YD_LO, C_YD_HI = -150, 150
+    ax_w.set_xlim(C_X_LO, C_X_HI)
+    ax_w.set_ylim(C_YD_LO, C_YD_HI)
 
-    ax_w.text(0, w_yt - 2,
-              "DETAIL C — WHEEL ATTACHMENT",
+    ax_w.text(0, C_YD_HI - 3, "DETAIL C — WHEEL ATTACHMENT PLAN",
               ha="center", va="top", fontsize=8, color="#008800",
               fontweight="bold", **FONT, zorder=20)
-    ax_w.text(0, w_yt - 6,
-              "(SECTION ALONG AXLE — SCALE 2.5:1)",
-              ha="center", va="top", fontsize=5.5, color=C_DIM,
-              **FONT, zorder=20)
+    ax_w.text(0, C_YD_HI - 12, "(LOOKING DOWN FROM ABOVE — AXES IN mm)",
+              ha="center", va="top", fontsize=5, color=C_DIM, **FONT, zorder=20)
 
-    C_NYLON_FILL = "#E8DCC0"
-    C_BOLT_FILL  = "#D0D0D8"
+    C_BOLT_FILL = "#D0D0D8"
+    notch_half  = BEAM_W / 2 + 2              # 22 — beam notch half-width (Yd)
+    arm_half    = WHEEL_SPACING_YD / 2 + 18   # 118 — wing outer edge (Yd)
+    arm_w       = BEAM_W                       # 40 — plate length in X
+    wh_x, wh_y  = WHEEL_WIDTH / 2, WHEEL_DIA / 2   # 10, 25 — wheel footprint halves
+    sgap        = WHEEL_WIDTH / 2 + 6          # 16 — clamp offset from wheel centre
 
-    # ── Geometry (mm; the wheel HANGS BELOW the carriage plate, axle at its
-    #    centre — the beam clamps on top of the plate, so the wheel must clear it) ─
-    TRAY_Y    = 0                      # tray surface the wheel rolls on
-    WHEEL_D   = 50
-    AXLE_Z    = TRAY_Y + WHEEL_D / 2   # 25 — axle = wheel centre
-    axle_r    = 5
-    PLATE_BOT = TRAY_Y + WHEEL_D + 2   # 52 — plate just clears the wheel top
-    plate_h   = 5
-    PLATE_TOP = PLATE_BOT + plate_h    # 57
-    SGAP      = 16                     # saddle/bolt offset from the wheel centre
-    SW        = 6                      # saddle strap width along the axle
-    AXLE_HALF = 22                     # axle protrudes beyond the wheel to carry saddles
-    washer_t, bolt_head_h, nut_h = 1.5, 3, 3
-    bolt_head_top = PLATE_TOP + washer_t + bolt_head_h
+    # ── Beam through the central notch (along X) ──
+    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_W / 2), 2 * BEAM_SHOW_LEN,
+                   BEAM_W, fc=C_ALUM_FILL, ec=C_FRAME, lw=2.0, zorder=5))
+    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_OD / 2), 2 * BEAM_SHOW_LEN,
+                   POLY_OD, fc=C_POLY, ec=C_FRAME, lw=0.6, alpha=0.6, zorder=5.5))
+    ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -POLY_ID / 2), 2 * BEAM_SHOW_LEN,
+                   POLY_ID, fc=C_WATER, ec="none", alpha=0.3, zorder=5.6))
+    ax_w.plot([-BEAM_SHOW_LEN, BEAM_SHOW_LEN], [0, 0], color=C_FRAME, lw=0.3,
+              ls="--", alpha=0.3, zorder=5.9)
 
-    # ── Tray floor ──────────────────────────────────────────────────────
-    ax_w.plot([w_xl, w_xr], [TRAY_Y, TRAY_Y], color=C_TRAY, lw=1.5, zorder=2)
-    ax_w.text(w_xr - 1, TRAY_Y - 1.5, "TRAY FLOOR", ha="right", va="top",
-              fontsize=5, color=C_DIM, style="italic",
-              bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="none", alpha=0.85),
-              **FONT, zorder=15)
+    # ── Carriage plate — notched fork (two wings), drawn IN FRONT (we look DOWN
+    #    on it). Each wheel pokes UP through a slot in its wing. ──
+    for wsgn in (-1, 1):
+        y_in, y_out = wsgn * notch_half, wsgn * arm_half
+        ax_w.add_patch(Rectangle((cox - arm_w / 2, min(y_in, y_out)), arm_w,
+                       abs(y_out - y_in), fc=C_ALUM_FILL, ec=C_FRAME, lw=1.2,
+                       hatch="///", zorder=6))
+        wyd = wsgn * WHEEL_SPACING_YD / 2
+        # slot cut in the wing (clears the plate hatch where the wheel comes through)
+        ax_w.add_patch(Rectangle((cox - wh_x, wyd - wh_y), 2 * wh_x, 2 * wh_y,
+                       fc=C_BG, ec="none", zorder=6.3))
+        # wheel seen through the slot — its 20×50 footprint (tread × Ø50, end-on)
+        ax_w.add_patch(Rectangle((cox - wh_x, wyd - wh_y), 2 * wh_x, 2 * wh_y,
+                       fc=C_NYLON, ec=C_WHEEL, lw=1.4, hatch="...", alpha=0.85,
+                       zorder=6.5))
+        # axle pin across the wheel, sticking out each side (same length as Detail D)
+        ax_w.add_patch(Rectangle((cox - WHEEL_WIDTH / 2 - 18, wyd - 5),
+                       WHEEL_WIDTH + 36, 10,
+                       fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=6.6))
+        # slot edge (the cut in the carriage)
+        ax_w.add_patch(Rectangle((cox - wh_x, wyd - wh_y), 2 * wh_x, 2 * wh_y,
+                       fc="none", ec="#A06000", lw=1.1, ls=(0, (4, 2)), zorder=6.7))
 
-    # ── Nylon wheel (cut through centre — 20mm tread × Ø50, sitting on the tray) ─
-    ax_w.add_patch(Rectangle((-10, TRAY_Y), 20, WHEEL_D,
-                   fc=C_NYLON_FILL, ec=C_WHEEL, lw=1.5, hatch="...", zorder=3))
+    # notch callout
+    leader(ax_w, cox, notch_half + 1, cox - 35, notch_half + 40,
+           "NOTCH\n(BEAM THROUGH FORK)", fs=5, color="#A06000", font=FONT, zorder=20)
 
-    # ── Carriage plate above the wheel (full carriage width = 40mm) ───────
-    ax_w.add_patch(Rectangle((-20, PLATE_BOT), 40, plate_h,
-                   fc=C_ALUM_FILL, ec=C_FRAME, lw=1.0, hatch="///", zorder=4))
+    # ── Beam clamp top plate (over the beam) + 4 bolt heads ──
+    clp_half = BEAM_W / 2 + 12
+    ax_w.add_patch(Rectangle((cox - BEAM_W / 2, -clp_half), BEAM_W, 2 * clp_half,
+                   fc=C_UCLAMP, ec=C_FRAME, lw=0.8, alpha=0.55, zorder=6.1))
+    for side in (-1, 1):
+        for bx_off in (-BEAM_W / 2 + 9, BEAM_W / 2 - 9):
+            ax_w.add_patch(Circle((cox + bx_off, side * (BEAM_W / 2 + 4)), 2.5,
+                           fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=8))
 
-    # ── Axle pin (Ø10, protrudes beyond the wheel to carry the saddles) ───
-    ax_w.add_patch(Rectangle((-AXLE_HALF, AXLE_Z - axle_r), 2 * AXLE_HALF, 2 * axle_r,
-                   fc="#D0D0D8", ec=C_FRAME, lw=1.0, zorder=5))
-    ax_w.add_patch(Rectangle((-10, AXLE_Z - axle_r), 20, 2 * axle_r,
-                   fc="#D0D0D8", ec="none", zorder=5))
-
-    # ── Axle-retention saddle clamps: ONE flanking each side of the wheel, at
-    #    SGAP along the axle. Each is an SS strap that cradles UNDER the Ø10 axle
-    #    and rises beside the wheel to bolt UP through the carriage plate. In this
-    #    section-along-the-axle there is exactly ONE visible bolt each side,
-    #    through the solid plate (each saddle has 2 bolts straddling the axle into
-    #    the page — they superimpose here). ──
-    nut_bot = PLATE_BOT - nut_h - 1
-    for sx_ in (SGAP, -SGAP):
-        # strap from just under the axle up to the plate (in front of the pin so
-        # the bracket reads continuous) + a rounded cradle cupping under the axle
-        ax_w.add_patch(Rectangle((sx_ - SW / 2, AXLE_Z - axle_r), SW,
-                       PLATE_BOT - (AXLE_Z - axle_r),
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=6))
-        ax_w.add_patch(Wedge((sx_, AXLE_Z - axle_r), SW / 2, 180, 360,
-                       fc=C_UCLAMP, ec=C_FRAME, lw=0.9, zorder=6))
-        # ONE M5 SS bolt through the carriage plate into the saddle foot
-        ax_w.add_patch(Rectangle((sx_ - 1.5, nut_bot), 3, bolt_head_top - nut_bot,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.5, zorder=7))      # shank
-        ax_w.add_patch(Rectangle((sx_ - 3, PLATE_TOP + washer_t), 6, bolt_head_h,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))       # head
-        ax_w.add_patch(Rectangle((sx_ - 3.5, PLATE_TOP), 7, washer_t,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.6, zorder=7))       # washer
-        ax_w.add_patch(Rectangle((sx_ - 2.5, nut_bot), 5, nut_h,
-                       fc=C_BOLT_FILL, ec=C_FRAME, lw=0.8, zorder=7))       # nut
+    # ── C-clamp retaining bolt HEADS (the axle clamps, seen from above — the
+    #    axle + clamp body are BELOW the plate, so only the heads show) ──
+    for wsgn in (-1, 1):
+        wyd = wsgn * WHEEL_SPACING_YD / 2
+        for sx_off in (-sgap, sgap):
+            for bolt_off in (-12, 12):
+                ax_w.add_patch(Circle((cox + sx_off, wyd + bolt_off), 2.8,
+                               fc=C_BOLT_FILL, ec=C_FRAME, lw=0.7, zorder=8))
+                ax_w.add_patch(Circle((cox + sx_off, wyd + bolt_off), 1.3,
+                               fc="#6E6E78", ec="none", zorder=8.1))
 
     # ── Labels ───────────────────────────────────────────────────────────
-    leader(ax_w, SGAP, bolt_head_top, w_xr - 3, PLATE_TOP + 5,
-           "M5 SS BOLT — 1 EACH SIDE\nTHROUGH CARRIAGE PLATE\n(2/saddle straddle the\n axle, superimposed here)",
-           fs=4.5, color="#808088", font=FONT, zorder=20)
-
-    leader(ax_w, 13, PLATE_BOT + plate_h / 2, w_xr - 4, PLATE_BOT - 7,
-           "CARRIAGE PLATE\n(5mm 6061-T6 AL)",
-           fs=5, color=C_FRAME, font=FONT, zorder=20)
-
-    leader(ax_w, -4, AXLE_Z, w_xl + 5, AXLE_Z + 13,
-           "Ø10mm SS\nAXLE PIN",
-           fs=5, color="#888888", font=FONT, zorder=20)
-
-    leader(ax_w, -SGAP, AXLE_Z - axle_r - SW / 2, w_xl + 5, AXLE_Z - 9,
-           "SADDLE CLAMP\n(WRAPS UNDER AXLE,\n BOLTS TO PLATE)",
-           fs=5, color=C_FRAME, font=FONT, zorder=20)
-
-    leader(ax_w, 7, 10, w_xr - 4, 9,
-           "Ø50mm NYLON\nWHEEL (CUT)",
+    leader(ax_w, cox + wh_x, WHEEL_SPACING_YD / 2 + wh_y - 4,
+           cox + 70, WHEEL_SPACING_YD / 2 + 32,
+           f"Ø{WHEEL_DIA} WHEEL THROUGH SLOT\nIN CARRIAGE ({WHEEL_WIDTH}mm TREAD)",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
 
-    # ── Dimensions ───────────────────────────────────────────────────────
-    draw_dim_h(ax_w, -10, 10, TRAY_Y - 4, "20mm TREAD", offset=2, fs=5, font=FONT)
+    leader(ax_w, cox + sgap, -WHEEL_SPACING_YD / 2 - 12,
+           cox + 70, -WHEEL_SPACING_YD / 2 - 34,
+           "C-CLAMP RETAINING BOLTS (HEADS)\n2 each side of the wheel —\naxle + clamp are below the plate",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
 
-    draw_dim_v(ax_w, w_xl + 7, AXLE_Z - axle_r, AXLE_Z + axle_r, "Ø10",
-               offset=2, fs=5, font=FONT)
+    leader(ax_w, cox + arm_w / 2, 62, cox + 60, 86,
+           "CARRIAGE PLATE\n(5mm AL, NOTCHED FORK)",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    leader(ax_w, 95, BEAM_W / 2, 115, BEAM_W / 2 + 18,
+           "40×40×3mm AL SHS\n+ 3/4\" LDPE PIPE",
+           fs=5, color=C_FRAME, font=FONT, zorder=20)
+
+    # ── Dimensions ───────────────────────────────────────────────────────
+    draw_dim_v(ax_w, C_X_LO + 14, -WHEEL_SPACING_YD / 2, WHEEL_SPACING_YD / 2,
+               f"{WHEEL_SPACING_YD}mm WHEEL SPACING", offset=3, fs=5, font=FONT)
 
     # ── Title block ──────────────────────────────────────────────────────
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.045])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 5 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL C — WHEEL ATTACHMENT (SECTION ALONG AXLE)",
-                scale_note="SCALE 2.5:1 — AXES IN mm",
+                subtitle="DETAIL C — WHEEL ATTACHMENT PLAN (LOOKING DOWN)",
+                scale_note="AXES IN mm",
                 height=0.7)
 
     _save(fig, "spray-bar-sheet5")
@@ -1390,7 +1387,8 @@ def draw_sheet5():
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 6 — Detail D: Wheel Attachment Plan
-# X-Yd looking down.  Beam, carriage plate, beam clamp plates, axle saddle clamps, wheels.
+# X-Yd looking UP from the tray.  Beam, carriage plate, beam clamp plates,
+# axle C-clamps, wheels drawn WHOLE (in front, passing through the carriage).
 # ═════════════════════════════════════════════════════════════════════════════
 
 def draw_sheet6():
@@ -1417,7 +1415,7 @@ def draw_sheet6():
               ha="center", va="top", fontsize=8, color="#AA6600",
               fontweight="bold", **FONT, zorder=20)
     ax_d.text(0, D_YD_HI - 10,
-              "(LOOKING DOWN — AXES IN mm)",
+              "(LOOKING UP FROM THE TRAY — AXES IN mm)",
               ha="center", va="top", fontsize=5, color=C_DIM,
               **FONT, zorder=20)
 
@@ -1490,10 +1488,13 @@ def draw_sheet6():
         ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2 - 18, w_yd_ctr - 5),
                        WHEEL_WIDTH + 36, 10,
                        fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=4))
-        # nylon wheel (axle along X → WHEEL_WIDTH in X, WHEEL_DIA in Yd)
+        # WHOLE nylon wheel, drawn IN FRONT of the carriage — this view looks UP
+        # from the tray, so the wheel is nearest and clearly passes THROUGH the
+        # carriage (no notch shown in this view). Ø50 × 20mm tread.
         ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2, w_yd_ctr - WHEEL_DIA / 2),
                        WHEEL_WIDTH, WHEEL_DIA,
-                       fc=C_NYLON, ec=C_WHEEL, lw=1.5, alpha=0.6, zorder=3))
+                       fc=C_NYLON, ec=C_WHEEL, lw=1.8, hatch="...",
+                       alpha=0.85, zorder=9))
 
     # ── Axle retention saddle clamps — one each side of each wheel ───────
     sgap_plan = WHEEL_WIDTH / 2 + 6        # 16 — saddle offset from wheel centre (X)
@@ -1529,7 +1530,7 @@ def draw_sheet6():
     bot_w_yd = -WHEEL_SPACING_YD / 2
     leader(ax_d, bot_right_wx + 3, bot_w_yd - 14,
            bot_right_wx + 50, bot_w_yd + 20,
-           "AXLE SADDLE CLAMP\n(2mm SS, 2 EACH SIDE)",
+           "AXLE C-CLAMP\n(2mm SS, 2 EACH SIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # Axle pin
@@ -1543,7 +1544,7 @@ def draw_sheet6():
     # Through-bolts (on axle saddle clamp)
     leader(ax_d, bot_right_wx, bot_w_yd + 12,
            bot_right_wx + 50, bot_w_yd - 20,
-           "M5 THROUGH-BOLT\n(2 PER SADDLE)",
+           "M5 THROUGH-BOLT\n(2 PER C-CLAMP)",
            fs=5, color=C_BOLT, font=FONT, zorder=20)
 
     # LDPE pipe
@@ -1569,7 +1570,7 @@ def draw_sheet6():
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, f"SHEET 6 OF {TOTAL_SHEETS}",
                 drawing_title="SPRAY BAR ASSEMBLY",
-                subtitle="DETAIL D — WHEEL ATTACHMENT PLAN (LOOKING DOWN)",
+                subtitle="DETAIL D — WHEEL ATTACHMENT PLAN (LOOKING UP FROM TRAY)",
                 scale_note="AXES IN mm",
                 height=0.7)
 

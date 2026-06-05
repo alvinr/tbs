@@ -696,7 +696,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 rail L
   grp = ents.add_group
   grp.name = "HGR20 rail L"
-  face = grp.entities.add_face([-30.mm,643.mm,2358.mm], [730.mm,643.mm,2358.mm], [730.mm,663.mm,2358.mm], [-30.mm,663.mm,2358.mm])
+  face = grp.entities.add_face([-30.mm,643.mm,2358.mm], [1070.mm,643.mm,2358.mm], [1070.mm,663.mm,2358.mm], [-30.mm,663.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
@@ -729,7 +729,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # HGR20 rail R
   grp = ents.add_group
   grp.name = "HGR20 rail R"
-  face = grp.entities.add_face([-30.mm,1699.mm,2358.mm], [730.mm,1699.mm,2358.mm], [730.mm,1719.mm,2358.mm], [-30.mm,1719.mm,2358.mm])
+  face = grp.entities.add_face([-30.mm,1699.mm,2358.mm], [1070.mm,1699.mm,2358.mm], [1070.mm,1719.mm,2358.mm], [-30.mm,1719.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")

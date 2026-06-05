@@ -341,7 +341,8 @@ def sliding_carriage(slide=0):
     fixed. Default 0 = operating pose (byte-identical). The transport model
     (generate_lighttrap_transport_model.py) passes PANEL_SLIDE."""
     parts = []
-    rail_x0, rail_len = -30, 760                    # allows the ~500mm transport slide
+    rail_x0, rail_len = -30, TRANSPORT_SLIDE + 220  # spans the full B2 transport slide:
+                                                    # carriage (18+slide+44=942) stays on rail
     rail_w, rail_h = 20, 30
     rail_z = C_HGT - rail_h                          # 2358 — hung from ceiling
     carr_w, carr_d, carr_h = 44, 44, 28

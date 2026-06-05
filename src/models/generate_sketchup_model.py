@@ -468,6 +468,13 @@ def walkway_brackets():
             y_plate = wall_yd if sign > 0 else wall_yd - bt
             parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
                                   plate_w, bt, vh, color=C_STEEL))
+            # 4× M12 anchor bolts through the mounting plate (2×2 pattern), like the
+            # IBC wall-seat brackets — drawn as Ø12 shanks through the plate.
+            for bx in (x - 35, x + 35):
+                for bz in (40, vh - 40):
+                    parts.append(ruby_cylinder(f"{nm} bolt M12",
+                                  bx, y_plate - 6, bz, 6, bt + 12,
+                                  color="#505058", axis="y"))
             # 2. horizontal cantilever arm at grate level (deck rests on it)
             y_arm = wall_yd if sign > 0 else wall_yd - reach
             parts.append(ruby_box(f"{nm} arm", x - bt / 2, y_arm, arm_bot,
@@ -570,12 +577,18 @@ def ceiling_rail():
         parts.append(ruby_box(f"Suspension Bracket {nm}",
                               brk_x, yd - brk_d / 2, brk_z,
                               brk_w, brk_d, brk_h, color=C_STEEL))
+        # Ø12 suspension rods — hangers up to the ceiling at each carriage.
+        for rx in (20, PANEL_CENTER_T - 20):
+            parts.append(ruby_cylinder(f"Suspension Rod {nm} (X{rx})",
+                                       rx, yd, brk_z, 6, C_HGT - brk_z,
+                                       color=C_STEEL, axis="z"))
 
     # Suspended cargo-door panel, operational position (X=0), floor gap 80mm.
+    # Ply sandwich — match the bay + hinge-panel ply color (was C_ALUM blue).
     parts.append(ruby_box("Cargo Door Panel",
                           0, 0, PANEL_FLOOR_GAP,
                           PANEL_CENTER_T, C_WID, brk_z - PANEL_FLOOR_GAP,
-                          color=C_ALUM, alpha=0.6))
+                          color=C_PLY, alpha=0.6))
 
     return '\n'.join(parts)
 

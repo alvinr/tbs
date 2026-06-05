@@ -416,15 +416,20 @@ def walkways_partial():
     ])
 
 
-def film_plane_left():
+def film_plane_left(demount=False):
     """Partial of the film-plane rail mechanism at the LEFT (cargo-door) end.
 
     The film plane rides 4 corner rails running in Yd (depth). This shows the LEFT
     pair — upper (TL) and lower (BL) at X=RAIL_X_L — and the brace-cage beams
     (upper + lower) + corner posts tying them at the near-wall (Yd≈100) and
-    far-wall (Yd≈2262) ends. BOTH left rails' DEMOUNTABLE drum-zone segments
-    (Yd 731–1631) are shown TAKEN OUT (a gap in each) — swung clear for drum mode
-    per the 2D film-plane diagrams. Beams cropped to PARTIAL_X. Fixed (no slide)."""
+    far-wall (Yd≈2262) ends.
+
+    demount: controls the removable drum-zone rail segments (Yd 731–1631, upper +
+    lower). When True (operating pose) they are shown IN PLACE in the demountable
+    color (`ov.C_DEMOUNT`, amber — same marker the overview 3D model uses for this
+    segment; the 2D film-plane diagrams use red). When False (default, drum/
+    transport mode) they are TAKEN OUT — a gap in each rail. Beams cropped to
+    PARTIAL_X. Fixed (no slide)."""
     rail = 40
     s = ov.BRACE_RHS                            # 50 — brace RHS
     xL = ov.RAIL_X_L                            # 150 — left rail X
@@ -435,14 +440,19 @@ def film_plane_left():
     bx = PARTIAL_X - xL                          # brace-beam length (cropped)
     C = ov.C_STEEL
     parts = [
-        # Both left rails — fixed near + fixed far segments; DEMOUNTABLE drum-zone
-        # middle (Yd 731–1631) REMOVED on each (swung clear for drum mode).
+        # Both left rails — fixed near + fixed far segments.
         ruby_box("FP Rail BL near (lower left)", xL, yN, z_bot, rail, d0 - yN, rail, color=C),
         ruby_box("FP Rail BL far (lower left)", xL, d1, z_bot, rail, yF - d1, rail, color=C),
         ruby_box("FP Rail TL near (upper left)", xL, yN, z_top, rail, d0 - yN, rail, color=C),
         ruby_box("FP Rail TL far (upper left)", xL, d1, z_top, rail, yF - d1, rail, color=C),
-        # (BL + TL demountable segments Yd 731–1631 intentionally omitted = taken out.)
     ]
+    if demount:
+        # Removable drum-zone segments IN PLACE, in the demountable marker color.
+        parts.append(ruby_box("FP Rail BL DEMOUNTABLE (removable, lower left)",
+                              xL, d0, z_bot, rail, d1 - d0, rail, color=ov.C_DEMOUNT))
+        parts.append(ruby_box("FP Rail TL DEMOUNTABLE (removable, upper left)",
+                              xL, d0, z_top, rail, d1 - d0, rail, color=ov.C_DEMOUNT))
+    # (When demount=False the Yd 731–1631 middle of each rail is a gap = taken out.)
     for py, pn in [(yN, "near wall"), (yF, "far wall")]:
         parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, bx, s, s, color=C))
         parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, bx, s, s, color=C))
@@ -462,7 +472,7 @@ def generate_ruby():
         component("Fan B (intake)", "Fan B", fan_b()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
-        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
+        component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left(demount=True)),
     ]
     body = '\n'.join(comps)
 

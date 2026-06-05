@@ -1219,6 +1219,28 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # FP Rail BL DEMOUNTABLE (removable, lower left)
+  grp = ents.add_group
+  grp.name = "FP Rail BL DEMOUNTABLE (removable, lower left)"
+  face = grp.entities.add_face([150.mm,731.mm,100.mm], [190.mm,731.mm,100.mm], [190.mm,1631.mm,100.mm], [150.mm,1631.mm,100.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail BL DEMOUNTABLE (removable, lower left)"] || model.materials.add("FP Rail BL DEMOUNTABLE (removable, lower left)")
+  mat.color = Sketchup::Color.new(224, 144, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail TL DEMOUNTABLE (removable, upper left)
+  grp = ents.add_group
+  grp.name = "FP Rail TL DEMOUNTABLE (removable, upper left)"
+  face = grp.entities.add_face([150.mm,731.mm,2248.mm], [190.mm,731.mm,2248.mm], [190.mm,1631.mm,2248.mm], [150.mm,1631.mm,2248.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["FP Rail BL DEMOUNTABLE (removable, lower left)"] || model.materials.add("FP Rail BL DEMOUNTABLE (removable, lower left)")
+  mat.color = Sketchup::Color.new(224, 144, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # FP Brace Beam Lower (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (near wall)"

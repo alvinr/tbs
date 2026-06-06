@@ -646,8 +646,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 # ── Film Plane (Dynamic Component — click to tilt+swing) ──
 
 # ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
-fp_defn = model.definitions.add("Film Plane")
-ents = fp_defn.entities
+# Child: the flat framed screen, built in LOCAL coords (TL at the child origin).
+fp_screen_defn = model.definitions.add("Film Plane Screen")
+ents = fp_screen_defn.entities
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
@@ -714,23 +715,32 @@ ents = fp_defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
+# Parent: empty driver placed at the TL pivot; the child is nested at the parent
+# origin so its RotX/RotZ pivot on the fixed TL corner.
+fp_defn = model.definitions.add("Film Plane")
+fp_screen_inst = fp_defn.entities.add_instance(fp_screen_defn, Geom::Transformation.new)
+fp_screen_inst.name = "Film Plane Screen"
 fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([150.mm, 2262.mm, 2388.mm]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
+fp_screen_inst.layer = model.layers["Film Plane"]
 fda = "dynamic_attributes"
 [fp_defn, fp_inst].each do |e|
   e.set_attribute(fda, "_name", "FilmPlane")
   e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
   e.set_attribute(fda, "pose", 0.0)
-  e.set_attribute(fda, "rotx", 0.0)
-  e.set_attribute(fda, "rotz", 0.0)
 end
 fp_inst.set_attribute(fda, "_pose_access", "VIEW")
 fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
-fp_inst.set_attribute(fda, "_rotx_formula", "9.51*pose")
-fp_inst.set_attribute(fda, "_rotz_formula", "-3.81*pose")
 fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
 fp_inst.set_attribute(fda, "_onclick_access", "NONE")
+# Child rotation formulas read the parent's pose (updates during the animation).
+fp_screen_inst.set_attribute(fda, "_name", "FilmPlaneScreen")
+fp_screen_inst.set_attribute(fda, "_lengthunits", "MILLIMETERS")
+fp_screen_inst.set_attribute(fda, "rotx", 0.0)
+fp_screen_inst.set_attribute(fda, "rotz", 0.0)
+fp_screen_inst.set_attribute(fda, "_rotx_formula", "9.51*FilmPlane!pose")
+fp_screen_inst.set_attribute(fda, "_rotz_formula", "-3.81*FilmPlane!pose")
 
 
 model.definitions.purge_unused

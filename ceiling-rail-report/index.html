@@ -1459,10 +1459,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-panel-mass" class="md-nav__link">
+  <a href="#41-suspended-mass" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.1 Panel Mass
+        4.1 Suspended Mass
       
     </span>
   </a>
@@ -2510,7 +2510,7 @@ ceiling-mounted HGR20 linear rails, maintaining an 80mm gap between the panel bo
 edge and the container floor — clearing the 50mm tray rim with 30mm margin.</p>
 <p><strong>Design goals:</strong></p>
 <ul>
-<li>Support the full panel mass (~180 kg) from the ceiling</li>
+<li>Support the full suspended mass (~279 kg: panel + housed drum) from the ceiling</li>
 <li>Provide 880mm X-direction slide travel for transport mode conversion</li>
 <li>Maintain 80mm floor gap — clearing the 50mm processing tray rim at all positions</li>
 <li>Zero floor contact — the panel never touches the tray or walkway during slide</li>
@@ -2761,7 +2761,12 @@ panel frame top rail.</p>
 </table>
 <hr />
 <h2 id="4-load-analysis">4. Load Analysis<a class="headerlink" href="#4-load-analysis" title="Permanent link">&para;</a></h2>
-<h3 id="41-panel-mass">4.1 Panel Mass<a class="headerlink" href="#41-panel-mass" title="Permanent link">&para;</a></h3>
+<h3 id="41-suspended-mass">4.1 Suspended Mass<a class="headerlink" href="#41-suspended-mass" title="Permanent link">&para;</a></h3>
+<p>The ceiling rails carry the full hinged-panel assembly, including the housed
+revolving drum (the drum rotates on bearings within the housing, so its weight
+transfers through the housing to the panel). Figures are the first-principles
+values from the <a href="../weight-distribution-report/">Weight Distribution Report</a> §3.2
+(rev 9 / B2).</p>
 <table>
 <thead>
 <tr>
@@ -2771,16 +2776,16 @@ panel frame top rail.</p>
 </thead>
 <tbody>
 <tr>
-<td>Panel structure (frame + plywood skins)</td>
-<td>~100</td>
+<td>Hinged panel (sandwich + Ø900 housing + B2 bay/hinges/caster)</td>
+<td>241</td>
 </tr>
 <tr>
-<td>Revolving drum + baffles + bearings</td>
-<td>~60–80</td>
+<td>Light-trap drum (Ø864 C-shell, PP plastic skin, 2× SKF 6215 bearings)</td>
+<td>38</td>
 </tr>
 <tr>
-<td><strong>Total panel mass</strong></td>
-<td><strong>~180</strong></td>
+<td><strong>Total suspended mass</strong></td>
+<td><strong>~279</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2796,11 +2801,11 @@ panel frame top rail.</p>
 <tbody>
 <tr>
 <td>Total gravitational load</td>
-<td>180 kg × 9.81 m/s² = 1,766 N</td>
+<td>279 kg × 9.81 m/s² = 2,737 N</td>
 </tr>
 <tr>
 <td>Load per block</td>
-<td>1,766 / 4 = 441 N</td>
+<td>2,737 / 4 = 684 N</td>
 </tr>
 <tr>
 <td>HGH20CA dynamic rating</td>
@@ -2808,20 +2813,20 @@ panel frame top rail.</p>
 </tr>
 <tr>
 <td><strong>Safety factor per block</strong></td>
-<td><strong>12,700 / 441 = 28.8×</strong></td>
+<td><strong>12,700 / 684 = 18.6×</strong></td>
 </tr>
 </tbody>
 </table>
-<p>Even with unequal loading (worst case: 2 blocks carrying 70% of the load), the
-safety factor remains above 15×. The HGR20/HGH20CA system is conservatively
-oversized for this application.</p>
+<p>Even with unequal loading (worst case: 2 blocks carrying 70% of the load = 958 N
+each), the safety factor remains above <strong>13×</strong>. The HGR20/HGH20CA system is
+conservatively oversized for this application.</p>
 <h3 id="43-ceiling-plate-weld">4.3 Ceiling Plate Weld<a class="headerlink" href="#43-ceiling-plate-weld" title="Permanent link">&para;</a></h3>
 <p>The 4mm continuous fillet weld along both long edges of each 1200mm mounting
-plate has a throat area of approximately 2800mm². At a conservative 100 MPa
-shear allowable for E70XX electrode on A36 plate, each plate sustains ~280 kN —
-far exceeding the 883 N half-panel load it carries. The Corten ceiling itself
-is stiffened by corrugation ribs at 100–150mm spacing, preventing local
-buckling under the distributed plate load.</p>
+plate has a throat area of approximately 6,800mm² (2 × 1200mm × 2.83mm throat).
+At a conservative 100 MPa shear allowable for E70XX electrode on A36 plate, each
+plate sustains ~680 kN — far exceeding the 1,369 N half-panel load it carries
+(279 kg ÷ 2 × 9.81). The Corten ceiling itself is stiffened by corrugation ribs
+at 100–150mm spacing, preventing local buckling under the distributed plate load.</p>
 <hr />
 <h2 id="5-clearance-analysis">5. Clearance Analysis<a class="headerlink" href="#5-clearance-analysis" title="Permanent link">&para;</a></h2>
 <h3 id="51-critical-dimensions">5.1 Critical Dimensions<a class="headerlink" href="#51-critical-dimensions" title="Permanent link">&para;</a></h3>
@@ -2909,25 +2914,26 @@ procedure.</p>
 <tr>
 <td>Operational (X=0)</td>
 <td>40</td>
-<td>see note</td>
+<td>−850</td>
 <td>N/A — panel outboard of tray</td>
-<td>No (drum protrudes)</td>
+<td>No (drum/bay protrudes ~850mm out the open door)</td>
 </tr>
 <tr>
 <td>Transport (X=880)</td>
 <td>920</td>
-<td>see note</td>
+<td>+30</td>
 <td>30mm vertical gap</td>
-<td>Yes (drum offsets out via the bay)</td>
+<td>Yes (drum retracted inside the closure plane by 30mm)</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Note — drum-exit geometry pending B2 update.</strong> The "Drum exterior edge X" column
-reflects the pre-B2 Ø750 inline drum and is superseded by the rev 9 / B2 design,
-where the Ø900 drum is offset (<code>DRUM_CX = −400</code>) and exits through the hinge-panel
-punch-out bay rather than protruding inline. See <a href="../hinged-panel-report/">Hinged Panel Report</a> §3.</p>
-</blockquote>
+<p>The Ø900 drum is offset within the hinge-panel punch-out bay at <code>DRUM_CX = −400</code>
+(rev 9 / B2), so its outermost point sits at X = −400 − 450 = <strong>−850mm</strong> when the
+panel is at the operational position (the bay protrudes through the open cargo
+door — <code>BAY_FRONT_X = −890</code>). Sliding the panel <strong>880mm</strong> inward carries that edge
+to X = −850 + 880 = <strong>+30mm</strong> — just inside the X=0 door closure plane, so the
+cargo doors clear the drum by 30mm. (This is what sizes the slide: ~850mm to clear
+the door + 30mm margin = 880mm.) See <a href="../hinged-panel-report/">Hinged Panel Report</a> §3.</p>
 <h3 id="61-locking">6.1 Locking<a class="headerlink" href="#61-locking" title="Permanent link">&para;</a></h3>
 <table>
 <thead>

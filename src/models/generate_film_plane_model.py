@@ -49,6 +49,21 @@ CORNERS = [
 ]
 CPT = {cid: (cx, d, cz) for cid, cx, cz, d, rz in CORNERS}   # muslin corner points
 
+import math
+# ── Film plane as a DYNAMIC COMPONENT ────────────────────────────────────────
+# Click (Interact tool) animates the framed screen between FLAT (pose=0, neutral
+# plane at Y=FP_Y) and the example TILT+SWING (pose=1). The real mechanism warps
+# the plane (each corner parked at its own depth), which a DC cannot deform — so
+# this is the equivalent RIGID rotation about the fixed TL corner: tilt (RotX,
+# bottom edge swings forward) + swing (RotZ, right edge swings forward), driven by
+# one "pose" attribute (RotX=TILT*pose, RotZ=SWING*pose).
+PIVOT = (ov.FP_X_L, D_TL, ov.FP_H)          # TL corner — the Y=2262 corner that stays put
+TILT_DEG  =  round(math.degrees(math.atan(((D_TL + D_TR) / 2 - (D_BL + D_BR) / 2) / ov.FP_H)), 2)
+SWING_DEG = -round(math.degrees(math.atan(((D_TL + D_BL) / 2 - (D_TR + D_BR) / 2) / ov.FP_W)), 2)
+# Flat (neutral) corner points in LOCAL coords relative to the TL pivot.
+LOCAL = {"TL": (0, 0, 0), "TR": (ov.FP_W, 0, 0),
+         "BL": (0, 0, -ov.FP_H), "BR": (ov.FP_W, 0, -ov.FP_H)}
+
 
 def ruby_quad(name, pts, color, alpha):
     """A single planar quad face through 4 points (the posed muslin screen)."""
@@ -103,6 +118,53 @@ def posed_film_plane():
         parts.append(ov.ruby_pipe(f"FP Frame {nm}", P[a], P[b], leg_r,
                                   color=ov.C_STEEL))
     return '\n'.join(parts)
+
+
+def flat_film_plane_local():
+    """The framed muslin screen built FLAT in LOCAL coords relative to the TL
+    pivot (TL at the component origin). The DC rotates this about its TL axes to
+    reach the tilt+swing pose, so the geometry here is the neutral rectangle."""
+    P = LOCAL
+    parts = [
+        ruby_quad("Film Plane Screen (muslin)",
+                  [P["TL"], P["TR"], P["BR"], P["BL"]], ov.C_FILM, 0.3),
+    ]
+    leg_r = ov.FP_ANGLE_LEG / 2
+    for a, b, nm in [("TL", "TR", "Top"), ("BR", "BL", "Bottom"),
+                     ("TL", "BL", "Left"), ("TR", "BR", "Right")]:
+        parts.append(ov.ruby_pipe(f"FP Frame {nm}", P[a], P[b], leg_r,
+                                  color=ov.C_STEEL))
+    return '\n'.join(parts)
+
+
+def dc_film_plane_block():
+    """Ruby that builds the Film Plane DYNAMIC COMPONENT: a definition holding the
+    flat geometry, instanced at the TL pivot, with a `pose` attribute that drives
+    RotX (tilt) + RotZ (swing). Click with the Interact tool → ANIMATE pose 0↔1."""
+    tlx, tly, tlz = (ov.mm(v) for v in PIVOT)
+    return f'''
+# ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
+fp_defn = model.definitions.add("Film Plane")
+ents = fp_defn.entities
+{flat_film_plane_local()}
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([{tlx}, {tly}, {tlz}]))
+fp_inst.name = "Film Plane"
+fp_inst.layer = model.layers["Film Plane"]
+fda = "dynamic_attributes"
+[fp_defn, fp_inst].each do |e|
+  e.set_attribute(fda, "_name", "FilmPlane")
+  e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(fda, "pose", 0.0)
+  e.set_attribute(fda, "rotx", 0.0)
+  e.set_attribute(fda, "rotz", 0.0)
+end
+fp_inst.set_attribute(fda, "_pose_access", "VIEW")
+fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
+fp_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*pose")
+fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*pose")
+fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
+fp_inst.set_attribute(fda, "_onclick_access", "NONE")
+'''
 
 
 def corner_mechanism():
@@ -161,10 +223,10 @@ def generate_ruby():
     comps = [
         ov.component("Container (ghost)", "Context", context()),
         ov.component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        ov.component("Film Plane (posed)", "Film Plane", posed_film_plane()),
         ov.component("Corner Mechanism", "Corner Mechanism", corner_mechanism()),
     ]
     body = '\n'.join(comps)
+    dc_block = dc_film_plane_block()   # the Film Plane Dynamic Component
 
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
@@ -211,6 +273,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Subsystems (each a component on its tag) ──
 {body}
 
+# ── Film Plane (Dynamic Component — click to tilt+swing) ──
+{dc_block}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
@@ -246,6 +311,13 @@ model.active_view.zoom_extents
   page.use_camera = true
 }}
 model.layers.each {{ |l| l.visible = true }}
+
+# Register the Dynamic Component so its formulas evaluate (else pose/RotX/RotZ
+# stay inert until first opened in the DC editor).
+if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
+  cls = $dc_observers.get_latest_class
+  cls.redraw_with_undo(fp_inst) rescue nil if cls
+end
 
 model.commit_operation
 {{ success: true, model: "Film Plane",

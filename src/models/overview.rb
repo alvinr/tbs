@@ -11469,7 +11469,7 @@ end
   inst.layer = model.layers["Water Plumbing"]
 
 
-# ── Major-component callouts (Labels tag — shown only in "Overview (Labeled)") ──
+# ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole Assembly" }
 if inst
   bb = inst.bounds
@@ -11496,7 +11496,7 @@ inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Spray Ba
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(250.mm, 0.mm, 1450.mm))
+  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(450.mm, -2700.mm, 1300.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways" }
@@ -11598,9 +11598,9 @@ model.active_view.zoom_extents
 model.layers["Labels"].visible = false if model.layers["Labels"]
 ovp = model.pages.add("Overview"); ovp.use_camera = true
 
-# Overview (Labeled) — same view + callouts on the major system components.
+# Labeled — same view + callouts on the major system components.
 model.layers["Labels"].visible = true if model.layers["Labels"]
-olp = model.pages.add("Overview (Labeled)"); olp.use_camera = true
+olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.

@@ -3631,15 +3631,15 @@ floor gap to clear processing tray rim (50mm) during transport slide.</em></p>
 <td>1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13</td>
 </tr>
 <tr>
-<td><strong>FPM</strong> ⚠️</td>
+<td><strong>FPM</strong></td>
 <td><code>generate_film_plane_mechanism.py</code></td>
 <td><code>diagrams/film-plane-sheet1.png</code><br><code>diagrams/film-plane-sheet2.png</code><br><code>diagrams/film-plane-sheet3.png</code><br><code>diagrams/film-plane-sheet4.png</code></td>
 <td>1, 2, 3</td>
 </tr>
 <tr>
-<td><strong>FPD</strong> ⚠️</td>
+<td><strong>FPD</strong></td>
 <td><code>generate_film_plane_distortion.py</code></td>
-<td><code>diagrams/film-plane-distortion-c0.png</code> – <code>c6.png</code><br><code>diagrams/film-plane-distortion-summary.png</code></td>
+<td><code>diagrams/film-plane-distortion-c0.png</code> – <code>c5.png</code><br><code>diagrams/film-plane-distortion-summary.png</code></td>
 <td>3 (optical simulation)</td>
 </tr>
 <tr>
@@ -3705,7 +3705,7 @@ floor gap to clear processing tray rim (50mm) during transport slide.</em></p>
 </tbody>
 </table>
 <blockquote>
-<p>⚠️ <strong>FPM / FPD pending Option-A redraw (2026-06-06):</strong> the film-plane mechanism sheets and optical-distortion renders still depict the earlier <em>stretching</em> four-corner kinematic (independent corner depths, ±42° tilt, compound twist, growing plane). Option A is a <strong>fixed-size rigid plane on floating-corner cross-slides</strong> (tilt ±40° / swing ±28°, no twist) — propagated to <code>tbs_constants.py</code> (<code>MAX_TILT_DEG</code>=40, <code>MAX_SWING_DEG</code>=28, new <code>XSLIDE_*</code>), <code>film-plane-mechanism-report.md</code>, <code>master-shopping-list.md</code>, <code>project-cost-breakdown.md</code>, and <code>models/film-plane.skp</code>. The 2D redraw is <strong>deferred</strong> — it needs the projection geometry redone (a rigid plane <em>foreshortens</em> rather than grows; <code>generate_film_plane_mechanism.py</code> also has multiple angle-computation sites to reconcile), and the FPD summary must drop the C7 compound-twist config. Until then the <strong>report text governs</strong>.</p>
+<p><strong>FPM / FPD redrawn for Option A (2026-06-06):</strong> the film-plane mechanism sheets and optical-distortion renders now show the <strong>fixed-size rigid plane on floating-corner cross-slides</strong> — <strong>axis tilt/swing</strong> about the plane centre (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). <code>generate_film_plane_mechanism.py</code> uses <code>rigid_corners3d</code>/<code>tilt_edge</code>/<code>swing_edge</code> (asin, not atan) and reads <code>MAX_TILT_DEG</code>/<code>MAX_SWING_DEG</code> from <code>tbs_constants.py</code>. Consistent with <code>film-plane-mechanism-report.md</code>, <code>master-shopping-list.md</code>, <code>project-cost-breakdown.md</code>, and <code>models/film-plane.skp</code>.</p>
 </blockquote>
 <hr />
 <h2 id="3-dependency-matrix">3. Dependency Matrix<a class="headerlink" href="#3-dependency-matrix" title="Permanent link">&para;</a></h2>

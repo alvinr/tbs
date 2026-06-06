@@ -33,7 +33,7 @@ from tbs_constants import (
     PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z,
 )
 
-TAGS = ["Beam", "Carriages", "Feed & Pole", "Tray"]
+TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 
 # Representative gantry Yd position (it travels in Yd; park it mid-tray).
 GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
@@ -218,6 +218,55 @@ def half_band():
     return SPRAY_BAR_WHEEL_SP / 2 + 60                    # 160 — patch half-width in Yd
 
 
+def build_carriage_one(xend, side, din):
+    """One wheel carriage on its own tag (so a scene can show just one)."""
+    return '\n'.join(_carriage(xend, side, din))
+
+
+def tray_ref_patch():
+    """The small tray-floor reference patch the wheels roll on — its OWN tag, shown
+    only in the carriage-only scenes (the Combined / Processing Tray scenes have the
+    REAL tray, so the ref patch would double up under the beam)."""
+    return ov.ruby_box("Tray Floor (ref)",
+                       XL - 60, GY - half_band(), 0,
+                       (XR - XL) + 120, 2 * half_band(), 2,
+                       color=C_TRAY, alpha=0.25)
+
+
+# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
+SPRAYBAR_LABELS = [   # (instance name, text, leader Δx,Δy,Δz mm)
+    ("Processing Tray", "PROCESSING TRAY", 500, -700, 700),
+]
+SPRAYBAR_POINT_LABELS = [   # (x,y,z,text,Δx,Δy,Δz)
+    (1400, 1180,  60, "SPRAY BEAM\n(40 RHS + 3/4-in LDPE bore)", 0, -900,  650),
+    ( 470, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
+    ( 950, 1180,  18, "SPRAY NOZZLES\n(26 flat-fan @ 150mm)",   250, -950,  380),
+    (2399, 1180, 360, "FEED POLE + BALL JOINT",                 650, -300,  450),
+    (2399, 1320, 110, "DISTRIBUTION MANIFOLD\n(7 feed tubes)", -550, -750,  650),
+]
+
+
+def spraybar_labels():
+    """Ruby that adds in-model text callouts (with leaders) on the major parts, on
+    the 'Labels' tag — instance-anchored at bounds top-centre + point-anchored."""
+    rows = []
+    for name, text, dx, dy, dz in SPRAYBAR_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    for x, y, z, text, dx, dy, dz in SPRAYBAR_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
+    return '\n'.join(rows)
+
+
 def build_feed_pole():
     parts = []
     cx = (XL + XR) / 2          # pole/joint X — beam center (POLE_X)
@@ -356,7 +405,9 @@ def build_tray():
 def generate_ruby():
     comps = [
         ov.component("Spray Beam", "Beam", build_beam()),
-        ov.component("Wheel Carriages", "Carriages", build_carriages()),
+        ov.component("Wheel Carriage L", "Carriage L", build_carriage_one(XL, "L", 1)),
+        ov.component("Wheel Carriage R", "Carriage R", build_carriage_one(XR, "R", -1)),
+        ov.component("Tray Floor Ref", "Tray Ref", tray_ref_patch()),
         ov.component("Feed & Push Pole", "Feed & Pole", build_feed_pole()),
         ov.component("Processing Tray", "Tray", build_tray()),
     ]
@@ -364,16 +415,24 @@ def generate_ruby():
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
+    full = ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"]  # no Tray Ref
+    # (name, visible tags, optional close-up target [x,y,z,standoff] mm or None)
     scenes = [
-        ("Beam", ["Beam"]),
-        ("Carriage Assembly", ["Beam", "Carriages"]),
-        ("Pole & Ball Joint", ["Beam", "Feed & Pole"]),
-        ("Processing Tray", ["Tray", "Beam", "Carriages"]),
-        ("Combined", TAGS),
+        ("Beam", ["Beam"], None),
+        ("Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], None),
+        ("One Carriage", ["Beam", "Carriage L", "Tray Ref"], (XL + 120, GY, 60, 520)),
+        ("Pole & Ball Joint", ["Beam", "Feed & Pole"], None),
+        ("Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], None),
+        ("Combined", full, None),
+        ("Labeled", full + ["Labels"], None),
     ]
-    scenes_ruby = '[' + ', '.join(
-        '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
-        for n, tags in scenes) + ']'
+
+    def scene_lit(n, tags, tgt):
+        tg = '[' + ', '.join(f'"{t}"' for t in tags) + ']'
+        cam = 'nil' if tgt is None else \
+            f'[{ov.mm(tgt[0])}, {ov.mm(tgt[1])}, {ov.mm(tgt[2])}, {ov.mm(tgt[3])}]'
+        return f'["{n}", {tg}, {cam}]'
+    scenes_ruby = '[' + ', '.join(scene_lit(*s) for s in scenes) + ']'
 
     return f'''model = Sketchup.active_model
 model.start_operation("TBS-001 Spray-Bar Gantry", true)
@@ -386,7 +445,7 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase all prior groups/instances.
 to_erase = entities.to_a.select {{ |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -395,6 +454,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 {tags_ruby}
 
 {body}
+
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+{spraybar_labels()}
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -408,13 +470,22 @@ model.layers.to_a.each {{ |l|
 
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
 
-{scenes_ruby}.each {{ |name, tags|
+{scenes_ruby}.each {{ |name, tags, tgt|
   model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
-  # frame just this scene's visible geometry (the tray is much larger than the bar)
-  ctr = model.bounds.center
-  eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
-  model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-  model.active_view.zoom_extents
+  if tgt
+    # close-up: aim at the target with a tight standoff (no zoom_extents); use a
+    # direction nearly PERPENDICULAR to the beam (mostly −Y) so the carriage reads
+    # rather than the beam vanishing down the line of sight.
+    t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
+    cdir = Geom::Vector3d.new(0.18, -0.88, 0.44); cdir.normalize!
+    model.active_view.camera = Sketchup::Camera.new(t.offset(cdir, tgt[3]), t, Z_AXIS)
+  else
+    # frame just this scene's visible geometry (the tray is much larger than the bar)
+    ctr = model.bounds.center
+    eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
+    model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+    model.active_view.zoom_extents
+  end
   page = model.pages.add(name)
   page.use_camera = true
 }}

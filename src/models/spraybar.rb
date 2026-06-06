@@ -9,16 +9,19 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase all prior groups/instances.
 to_erase = entities.to_a.select { |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
   model.layers.add("Beam") unless model.layers["Beam"]
-  model.layers.add("Carriages") unless model.layers["Carriages"]
+  model.layers.add("Carriage L") unless model.layers["Carriage L"]
+  model.layers.add("Carriage R") unless model.layers["Carriage R"]
+  model.layers.add("Tray Ref") unless model.layers["Tray Ref"]
   model.layers.add("Feed & Pole") unless model.layers["Feed & Pole"]
   model.layers.add("Tray") unless model.layers["Tray"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
   # ═══ Spray Beam ═══
   defn = model.definitions.add("Spray Beam")
@@ -762,8 +765,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Spray Beam"
   inst.layer = model.layers["Beam"]
 
-  # ═══ Wheel Carriages ═══
-  defn = model.definitions.add("Wheel Carriages")
+  # ═══ Wheel Carriage L ═══
+  defn = model.definitions.add("Wheel Carriage L")
   ents = defn.entities
   # Carriage Plate L L
   grp = ents.add_group
@@ -1175,6 +1178,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Wheel Carriage L"
+  inst.layer = model.layers["Carriage L"]
+
+  # ═══ Wheel Carriage R ═══
+  defn = model.definitions.add("Wheel Carriage R")
+  ents = defn.entities
   # Carriage Plate L R
   grp = ents.add_group
   grp.name = "Carriage Plate L R"
@@ -1585,6 +1595,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Wheel Carriage R"
+  inst.layer = model.layers["Carriage R"]
+
+  # ═══ Tray Floor Ref ═══
+  defn = model.definitions.add("Tray Floor Ref")
+  ents = defn.entities
   # Tray Floor (ref)
   grp = ents.add_group
   grp.name = "Tray Floor (ref)"
@@ -1597,8 +1614,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Wheel Carriages"
-  inst.layer = model.layers["Carriages"]
+  inst.name = "Tray Floor Ref"
+  inst.layer = model.layers["Tray Ref"]
 
   # ═══ Feed & Push Pole ═══
   defn = model.definitions.add("Feed & Push Pole")
@@ -3658,10 +3675,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.layer = model.layers["Tray"]
 
 
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(500.mm, -700.mm, 700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+anc = Geom::Point3d.new(1400.mm, 1180.mm, 60.mm)
+txt = entities.add_text("SPRAY BEAM
+(40 RHS + 3/4-in LDPE bore)", anc, Geom::Vector3d.new(0.mm, -900.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(470.mm, 1180.mm, 60.mm)
+txt = entities.add_text("WHEEL CARRIAGE
+(saddle clamp + 2 wheels)", anc, Geom::Vector3d.new(-750.mm, -350.mm, 600.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(950.mm, 1180.mm, 18.mm)
+txt = entities.add_text("SPRAY NOZZLES
+(26 flat-fan @ 150mm)", anc, Geom::Vector3d.new(250.mm, -950.mm, 380.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2399.mm, 1180.mm, 360.mm)
+txt = entities.add_text("FEED POLE + BALL JOINT", anc, Geom::Vector3d.new(650.mm, -300.mm, 450.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2399.mm, 1320.mm, 110.mm)
+txt = entities.add_text("DISTRIBUTION MANIFOLD
+(7 feed tubes)", anc, Geom::Vector3d.new(-550.mm, -750.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
-keep_tags = ["Beam", "Carriages", "Feed & Pole", "Tray"]
+keep_tags = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -3670,13 +3715,22 @@ model.layers.to_a.each { |l|
 
 dir = Geom::Vector3d.new(0.5, -0.78, 0.38); dir.normalize!
 
-[["Beam", ["Beam"]], ["Carriage Assembly", ["Beam", "Carriages"]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"]], ["Processing Tray", ["Tray", "Beam", "Carriages"]], ["Combined", ["Beam", "Carriages", "Feed & Pole", "Tray"]]].each { |name, tags|
+[["Beam", ["Beam"], nil], ["Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], nil], ["One Carriage", ["Beam", "Carriage L", "Tray Ref"], [590.mm, 1180.mm, 60.mm, 520.mm]], ["Pole & Ball Joint", ["Beam", "Feed & Pole"], nil], ["Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], nil], ["Combined", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray"], nil], ["Labeled", ["Beam", "Carriage L", "Carriage R", "Feed & Pole", "Tray", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
-  # frame just this scene's visible geometry (the tray is much larger than the bar)
-  ctr = model.bounds.center
-  eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
-  model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-  model.active_view.zoom_extents
+  if tgt
+    # close-up: aim at the target with a tight standoff (no zoom_extents); use a
+    # direction nearly PERPENDICULAR to the beam (mostly −Y) so the carriage reads
+    # rather than the beam vanishing down the line of sight.
+    t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
+    cdir = Geom::Vector3d.new(0.18, -0.88, 0.44); cdir.normalize!
+    model.active_view.camera = Sketchup::Camera.new(t.offset(cdir, tgt[3]), t, Z_AXIS)
+  else
+    # frame just this scene's visible geometry (the tray is much larger than the bar)
+    ctr = model.bounds.center
+    eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
+    model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+    model.active_view.zoom_extents
+  end
   page = model.pages.add(name)
   page.use_camera = true
 }

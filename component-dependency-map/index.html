@@ -4108,6 +4108,12 @@ scripts) so the 3D models stay in sync with the drawings — see the Workflow be
 <td>IBC tote stacking arrangement.</td>
 </tr>
 <tr>
+<td><strong>walkway</strong></td>
+<td><code>src/models/generate_walkway_model.py</code></td>
+<td><code>models/walkway.skp</code> + <code>src/models/walkway.rb</code></td>
+<td>Processing-tray <strong>perimeter walkway + how it's held up</strong>, separated so the structure reads apart from the decks. 5 tagged components: <strong>Walkways</strong> (the 4 removable grated "gate" sections — near + widened, far, right, left + drum-exit punch-out); <strong>Cantilevers</strong> (near/far wall-cantilevered gusset brackets carrying the near/far decks, with the <strong>exterior</strong> detail — reinforcing plate + 3× M12 through-bolts, hex heads outside); <strong>Right Hangers</strong> (ceiling-hung right walkway — 2 bearer angles + 5 rod-pairs of M10 rod to ceiling plates); <strong>Left Support</strong> (removable lift-out — a <strong>full-width steel edge beam</strong> on <strong>bolt-through wall seats</strong> [IBC-style, see <a href="docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md"><code>spec</code></a>] + bearing strip + 3 floor legs); <strong>Processing Tray</strong> (reuses <code>ov.processing_tray()</code>). Container is a low-alpha ghost so the exterior braces + bolt-throughs show. 6 scenes separating gates / cantilevers / right hangers / left support / tray. Reads <code>WALKWAY_*</code>, <code>PROC_TRAY_*</code>, <code>LEFT_WK_*</code>. The edge-beam-on-wall-seats design is fully propagated to the 2D <code>generate_walkway_diagram.py</code> (Sheets 1/4/5/6/9), walkway-report §5, master-shopping-list, and project-cost-breakdown.</td>
+</tr>
+<tr>
 <td><strong>film-plane</strong></td>
 <td><code>src/models/generate_film_plane_model.py</code></td>
 <td><code>models/film-plane.skp</code> + <code>src/models/film-plane.rb</code></td>

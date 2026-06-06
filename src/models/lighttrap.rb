@@ -1279,14 +1279,6 @@ if inst
   txt = entities.add_text("DOOR FRAME", anc, Geom::Vector3d.new(-500.mm, -200.mm, 800.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Carriage Rails + Locks" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("CARRIAGE RAILS
-+ Destaco locks", anc, Geom::Vector3d.new(200.mm, -300.mm, 1050.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Panel Slide" }
 if inst
   bb = inst.bounds
@@ -1309,26 +1301,22 @@ if inst
   txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(950.mm, 500.mm, 300.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways (near + far, partial)" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(300.mm, -500.mm, 480.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film-Plane Rails (left, partial)" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("FILM-PLANE RAILS", anc, Geom::Vector3d.new(700.mm, 0.mm, 900.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 anc = Geom::Point3d.new(-400.mm, 1181.mm, 1700.mm)
 txt = entities.add_text("LIGHT-TRAP DRUM
 (revolving door)", anc, Geom::Vector3d.new(-750.mm, 0.mm, 650.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(150.mm, 365.mm, 700.mm)
 txt = entities.add_text("FAN B (intake)", anc, Geom::Vector3d.new(-200.mm, -650.mm, 1000.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(520.mm, 653.mm, 2373.mm)
+txt = entities.add_text("CARRIAGE RAILS
++ Destaco locks", anc, Geom::Vector3d.new(100.mm, -450.mm, 850.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(1035.mm, 150.mm, 73.mm)
+txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(250.mm, -750.mm, 900.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(170.mm, 1181.mm, 2268.mm)
+txt = entities.add_text("FILM-PLANE RAILS", anc, Geom::Vector3d.new(1400.mm, 0.mm, 300.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

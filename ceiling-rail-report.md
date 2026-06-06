@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The hinged light-trap panel must slide 300mm in the X direction for transport mode
+The hinged light-trap panel must slide 880mm in the X direction for transport mode
 conversion (retracting the revolving drum behind the container door closure plane).
 The permanently installed processing tray (304 SS, 50mm rim) occupies the floor of
 the optical zone from X=170 to X=4629mm and cannot be removed for each conversion.
@@ -15,7 +15,7 @@ edge and the container floor — clearing the 50mm tray rim with 30mm margin.
 **Design goals:**
 
 - Support the full panel mass (~180 kg) from the ceiling
-- Provide 300mm X-direction slide travel for transport mode conversion
+- Provide 880mm X-direction slide travel for transport mode conversion
 - Maintain 80mm floor gap — clearing the 50mm processing tray rim at all positions
 - Zero floor contact — the panel never touches the tray or walkway during slide
 - Single-person operation (~5 minutes for full mode conversion)
@@ -38,7 +38,7 @@ X direction along the ceiling surface at Z=2388mm.
 | Parameter | Value |
 |-----------|-------|
 | Rail model | HGR20 (20mm profile linear guide rail) |
-| Rail length | 500mm |
+| Rail length | 1200mm (spans the 880mm slide + carriage overhang) |
 | Quantity | 2 (near wall + far wall) |
 | Mounting height | Z=2388mm (container ceiling surface) |
 | Rail profile height | 30mm |
@@ -55,7 +55,7 @@ X direction along the ceiling surface at Z=2388mm.
 | Block width | 44mm |
 | Dynamic load rating | 12.7 kN per block |
 | Static load rating | 26.5 kN per block |
-| Travel | 300mm (operational ↔ transport) |
+| Travel | 880mm (operational ↔ transport) |
 
 ### 2.3 Suspension Brackets
 
@@ -107,7 +107,7 @@ two corrugation ribs. The rail bolts to this plate.
 | Parameter | Value |
 |-----------|-------|
 | Plate material | 6mm A36 mild steel |
-| Plate dimensions | 80 × 500mm (width × length, matching rail) |
+| Plate dimensions | 80 × 1200mm (width × length, matching rail) |
 | Weld | Continuous 4mm fillet weld on both long edges to ceiling |
 | Rail fasteners | 4× M8 × 30mm hex bolts per rail, through plate into ceiling structure |
 | Thread engagement | M8 tapped into plate (min. 12mm engagement) |
@@ -153,7 +153,7 @@ oversized for this application.
 
 ### 4.3 Ceiling Plate Weld
 
-The 4mm continuous fillet weld along both long edges of each 500mm mounting
+The 4mm continuous fillet weld along both long edges of each 1200mm mounting
 plate has a throat area of approximately 2800mm². At a conservative 100 MPa
 shear allowable for E70XX electrode on A36 plate, each plate sustains ~280 kN —
 far exceeding the 883 N half-panel load it carries. The Corten ceiling itself
@@ -173,16 +173,16 @@ buckling under the distributed plate load.
 | Processing tray rim top (Z) | 50 | PROC_TRAY_RIM |
 | **Clearance: panel bottom to tray rim** | **30** | 80 − 50 |
 | Tray left edge (X) | 170 | PROC_TRAY_X_L |
-| Panel outer face in transport (X) | 300 | PANEL_SLIDE |
-| Panel inner face in transport (X) | 420 | 300 + 120 (PANEL_CENTER_T) |
+| Panel outer face in transport (X) | 880 | PANEL_SLIDE |
+| Panel inner face in transport (X) | 1000 | 880 + 120 (PANEL_CENTER_T) |
 
 ### 5.2 Overlap Zone
 
-In the transport position (panel slid 300mm inward), the panel center zone
-(120mm thick) occupies X=300–420mm. The processing tray starts at X=170mm.
-The horizontal overlap is therefore 250mm (420 − 170). In this overlap zone,
-the vertical clearance between the panel bottom edge (Z=80mm) and the tray
-rim (Z=50mm) is the critical 30mm gap.
+In the transport position (panel slid 880mm inward), the panel center zone
+(120mm thick) occupies X=880–1000mm. The processing tray runs X=170–4629mm, so
+the slid panel center zone sits fully over the tray. Throughout the slide, the
+vertical clearance between the panel bottom edge (Z=80mm) and the tray rim
+(Z=50mm) is the critical 30mm gap.
 
 This 30mm margin accommodates:
 
@@ -209,15 +209,20 @@ procedure.
 
 | Position | Panel corner inner face X (mm) | Drum exterior edge X (mm) | Tray clearance | Container doors clear? |
 |----------|-------------------------------|--------------------------|---------------|----------------------|
-| Operational (X=0) | 40 | −295 | N/A — panel outboard of tray | No (drum protrudes 295mm) |
-| Transport (X=300) | 340 | +5 | 30mm vertical gap | Yes (drum clears by 5mm) |
+| Operational (X=0) | 40 | see note | N/A — panel outboard of tray | No (drum protrudes) |
+| Transport (X=880) | 920 | see note | 30mm vertical gap | Yes (drum offsets out via the bay) |
+
+> **Note — drum-exit geometry pending B2 update.** The "Drum exterior edge X" column
+> reflects the pre-B2 Ø750 inline drum and is superseded by the rev 9 / B2 design,
+> where the Ø900 drum is offset (`DRUM_CX = −400`) and exits through the hinge-panel
+> punch-out bay rather than protruding inline. See [Hinged Panel Report](hinged-panel-report.md) §3.
 
 ### 6.1 Locking
 
 | Lock position | Method | Quantity |
 |--------------|--------|---------|
 | Operational (X=0) | Destaco 207-U toggle clamp | 2 |
-| Transport (X=300) | Destaco 207-U toggle clamp | 2 |
+| Transport (X=880) | Destaco 207-U toggle clamp | 2 |
 
 The toggle clamps are mounted to the fixed door frame and engage keepers on
 the panel frame at both end-of-travel positions.
@@ -248,7 +253,7 @@ providing a light-tight seal. The ceiling rail suspension allows the panel to
 float on the carriage blocks, self-aligning against the seal landing surface
 as the cam latches draw the panel tight.
 
-The seal is not engaged during transport mode — the panel is retracted 300mm
+The seal is not engaged during transport mode — the panel is retracted 880mm
 from the door frame. Light sealing is not required during transport or loading.
 
 ---
@@ -257,9 +262,9 @@ from the door frame. Light sealing is not required during transport or loading.
 
 | Item | Specification | Qty | Est. cost (USD) |
 |------|--------------|-----|----------------|
-| HGR20 linear guide rail, 500mm | 20mm profile, hardened steel | 2 | $40–$55 |
+| HGR20 linear guide rail, 1200mm | 20mm profile, hardened steel | 2 | $90–$130 |
 | HGH20CA carriage block | Flanged, sealed, preloaded | 4 | $60–$90 |
-| 6mm A36 steel plate (80 × 500mm) | Mounting plate, welded to ceiling | 2 | $15–$25 |
+| 6mm A36 steel plate (80 × 1200mm) | Mounting plate, welded to ceiling | 2 | $35–$55 |
 | 10mm mild steel plate | Suspension bracket blanks (cut + fold) | 4 | $20–$30 |
 | M8 × 30 hex bolt (grade 8.8) | Rail-to-plate fasteners | 8 | $8–$12 |
 | M8 × 25 hex bolt (grade 8.8) | Carriage-to-bracket fasteners | 8 | $8–$12 |
@@ -267,7 +272,7 @@ from the door frame. Light sealing is not required during transport or loading.
 | Destaco 207-U toggle clamp | Position locks (operational + transport) | 4 | $60–$100 |
 | 10mm neoprene pad (50 × 30mm) | Rail penetration light seals | 4 | $8–$12 |
 | Welding (fillet weld, mounting plates to ceiling) | 2× 1 m continuous fillet weld | — | $60–$100 |
-| **Total** | | | **$291–$454** |
+| **Total** | | | **$361–$559** |
 
 ---
 

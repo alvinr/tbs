@@ -63,7 +63,7 @@ CONFIGS = [
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def checker_scene(P_X, P_Y, cell_mm=600):
-    """Alternating checker pattern with centre cross."""
+    """Alternating checker pattern with center cross."""
     cx = (np.floor(P_X / cell_mm) % 2).astype(int)
     cy = (np.floor(P_Y / cell_mm) % 2).astype(int)
     checker = (cx ^ cy).astype(float)
@@ -79,13 +79,13 @@ def checker_scene(P_X, P_Y, cell_mm=600):
     line_mask = (lx < 0.04) | (ly < 0.04)
     img[line_mask] = PRU_MID
 
-    # Horizon line (Y=0) and vertical centre (X=0)
+    # Horizon line (Y=0) and vertical center (X=0)
     h_line = np.abs(P_Y) < 80
     v_line = np.abs(P_X) < 80
     img[h_line] = PAPER_W
     img[v_line] = PAPER_W
 
-    # Concentric rings from centre for scale reference
+    # Concentric rings from center for scale reference
     r = np.sqrt(P_X**2 + P_Y**2)
     for ring_r in [1000, 2000, 3000, 4000, 5000, 7000, 10000]:
         ring_mask = np.abs(r - ring_r) < 60
@@ -98,7 +98,7 @@ def landscape_scene(P_X, P_Y):
     """
     Cityscape + person silhouette scene.
     Sky above horizon (Y>0), ground below (Y<0).
-    Several buildings, a person at centre.
+    Several buildings, a person at center.
     """
     img = np.zeros((*P_X.shape, 3), dtype=np.float32)
 
@@ -120,7 +120,7 @@ def landscape_scene(P_X, P_Y):
     hor_mask = np.abs(P_Y) < 120
     img[hor_mask] = CYAN_MID * 0.6
 
-    # Buildings (defined as x_centre, width, height, each in mm)
+    # Buildings (defined as x_center, width, height, each in mm)
     buildings = [
         (-8000, 2800, 6500),
         (-4500, 2000, 8000),
@@ -173,7 +173,7 @@ def landscape_scene(P_X, P_Y):
 
     # Ground perspective lines converging to horizon
     for ang in np.radians(np.arange(-75, 76, 15)):
-        # Lines radiating from centre of horizon
+        # Lines radiating from center of horizon
         dist = P_X - P_Y * np.tan(ang) if np.cos(ang) != 0 else np.inf
         pline = (np.abs(dist) < 60) & (P_Y < 0)
         img[pline] = PRU_MID * 0.8
@@ -232,7 +232,7 @@ def project_onto_tilted_plane(d_top, d_bot, scene_func, D,
     # Mask invalid regions
     img[~valid] = PRU_INK
 
-    # Subtle vignette: nearer film → slightly elevated brightness at image centre
+    # Subtle vignette: nearer film → slightly elevated brightness at image center
     mag = np.where(valid, F_NOM / np.maximum(F_Z, 1), 0)
     vig = np.clip(1.0 - (mag - 1.0) * 0.06, 0.3, 1.0)
     img = img * vig[..., np.newaxis]
@@ -279,7 +279,7 @@ def render_config(cfg_id, label, name, d_top, d_bot, desc,
 
     scenes = [
         (checker_scene, "CHECKER GRID  ·  600mm cells  ·  rings @ 1m intervals"),
-        (landscape_scene, "CITYSCAPE SCENE  ·  subject @ centre, 1800mm tall"),
+        (landscape_scene, "CITYSCAPE SCENE  ·  subject @ center, 1800mm tall"),
     ]
 
     for ax, (sfunc, scene_name) in zip(axes, scenes):

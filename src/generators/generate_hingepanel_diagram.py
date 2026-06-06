@@ -47,9 +47,9 @@ from tbs_drawing import (draw_dim_h, draw_dim_v,
 # ── Palette (white engineering) ───────────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
 C_OUT   = "#1A1A1A"   # outlines
-C_CL    = "#2060A0"   # centre lines (blue, dashed)
+C_CL    = "#2060A0"   # center lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions / annotation text
-C_ALUM  = "#C8D8E8"   # aluminium / ply fill
+C_ALUM  = "#C8D8E8"   # aluminum / ply fill
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # EPDM gasket fill
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
@@ -64,8 +64,8 @@ PT = 120    # panel overall thickness (50×50 RHS frame + 18mm ply each face)
 DRUM_D  = LT_HOUSING_D  # = 900mm fixed housing outer diameter
 DRUM_R  = DRUM_D / 2   # = 450mm housing radius
 DRUM_H  = 2200          # housing/drum height (floor → top bearing, mm)
-DRUM_CX = PW / 2        # light-lock centre X in panel (centred horizontally)
-DRUM_CY = DRUM_H / 2   # light-lock centre Y
+DRUM_CX = PW / 2        # light-lock center X in panel (centerd horizontally)
+DRUM_CY = DRUM_H / 2   # light-lock center Y
 
 # ── Drawing helpers (wrappers around tbs_drawing shared functions) ────────────
 def dim_h(ax, x0, x1, y, label, offset=70, fs=7, col=C_DIM):
@@ -166,7 +166,7 @@ def sheet1():
                   color=C_OUT, lw=1.2, zorder=7)
         ax.add_patch(arc)
 
-    # Drum centre line (vertical)
+    # Drum center line (vertical)
     ax.plot([DRUM_CX, DRUM_CX], [DY_BOT - 80, DY_TOP + 80],
             color=C_CL, lw=0.9, ls="--", zorder=6)
     ax.text(DRUM_CX, DY_TOP + 110, "CL", color=C_CL, fontsize=7,
@@ -188,7 +188,7 @@ def sheet1():
     # Handle bar — interior face only, shown as hidden (dashed) line inside drum body.
     # The handle is on the inner curved surface of the drum; from the exterior elevation
     # it is fully hidden behind the exterior drum wall — shown dashed per convention.
-    HY = DY_BOT + DRUM_H * 0.45   # handle Y centre (~900mm)
+    HY = DY_BOT + DRUM_H * 0.45   # handle Y center (~900mm)
     HW = 110; HH = 42  # handle footprint
     # Place handle inside the drum body rectangle, 20mm clear of the interior drum wall.
     hx_handle = DX + DRUM_D - HW - 20
@@ -354,7 +354,7 @@ def sheet1():
     dim_h(ax, DX, DX + DRUM_D, DY_TOP + 170, f"Ø{DRUM_D}mm DRUM", offset=20)
     # Drum clear height
     dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25)
-    # Drum centre from left
+    # Drum center from left
     dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTRED)", offset=-50)
     # Hinge positions from floor
     for hy in HINGE_YS:
@@ -432,8 +432,8 @@ def sheet2():
     Y_INT = Y1_PL2       # interior face = 160
 
     # Drum geometry — axis is vertical; plan section shows horizontal circle
-    D_CX = PW / 2        # drum centre X: centred in panel width = 1181mm
-    # B2: housing centre offset out in DEPTH to the container DRUM_CX (= BAY_FRONT_X
+    D_CX = PW / 2        # drum center X: centerd in panel width = 1181mm
+    # B2: housing center offset out in DEPTH to the container DRUM_CX (= BAY_FRONT_X
     # + DRUM_R + 40 = -400mm), carried past the door plane by the punch-out bay.
     D_CY = BAY_FRONT_X + DRUM_R + 40   # = -400mm (container DRUM_CX)
     DR   = DRUM_R        # = 450mm
@@ -619,7 +619,7 @@ def sheet2():
            "GUIDE SLOT\n+ BRUSH SEAL\n(DOUBLED NYLON)", col=C_CARR, fs=6)
 
     # ── Drum: draw filled circle on top to cut out the drum hole ─────────────
-    # First stamp BG colour over wall/panel where drum sits, then draw drum ring
+    # First stamp BG color over wall/panel where drum sits, then draw drum ring
     drum_bg = Circle((D_CX, D_CY), DR, fc=BG, ec="none", zorder=7)
     ax.add_patch(drum_bg)
 
@@ -657,7 +657,7 @@ def sheet2():
            f"FIXED HOUSING Ø{int(DRUM_D)} (2 × {OD}° openings)\n"
            f"+ C-SHELL DRUM, 1 opening, no fins\nlight-tight by geometry", fs=6.3)
 
-    # ── Centre lines ──────────────────────────────────────────────────────────
+    # ── Center lines ──────────────────────────────────────────────────────────
     CL_EXT = 55
     ax.plot([D_CX - DR - CL_EXT, D_CX + DR + CL_EXT], [D_CY, D_CY],
             color=C_CL, lw=0.8, ls="--", zorder=7, alpha=0.6)
@@ -803,7 +803,7 @@ def sheet3():
     Y1_PL2 = Y0_PL2 + PLY_T  # = 160  (panel interior face)
 
     # Drum geometry in this view
-    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth centre = -400mm (DRUM_CX)
+    D_CX_DEPTH = BAY_FRONT_X + DRUM_R + 40   # B2: housing depth center = -400mm (DRUM_CX)
     D_HALF_W   = DRUM_R                 # drum/housing radius = 450mm (in depth axis)
 
     D_DEPTH_L  = D_CX_DEPTH - D_HALF_W   # = -400 - 450 = -850mm (exterior overhang)
@@ -1054,7 +1054,7 @@ def sheet3():
     # ── Person silhouette — standing inside drum, feet at drum floor (H_DRUM_BOT) ──
     PERSON_H = 1780   # mm — operator height with shoes
     HEAD_R   = 80     # head circle radius
-    # Place person inside drum toward the interior wall, clear of centreline text
+    # Place person inside drum toward the interior wall, clear of centerline text
     PERSON_X = D_DEPTH_R - 130
     P_FOOT   = H_DRUM_BOT          # feet on drum floor (145mm above container floor)
     P_HEAD   = P_FOOT + PERSON_H   # head top = 145 + 1780 = 1925mm
@@ -1102,7 +1102,7 @@ def sheet3():
             ha="left", va="top", fontsize=7, color=C_CL, **FONT,
             fontweight="bold", zorder=15)
 
-    # ── Centre line (vertical drum axis) ──────────────────────────────────────
+    # ── Center line (vertical drum axis) ──────────────────────────────────────
     ax.plot([D_CX_DEPTH, D_CX_DEPTH], [H_FLOOR - 80, H_BRG_TOP + 120],
             color=C_CL, lw=0.9, ls="--", zorder=6)
     ax.text(D_CX_DEPTH - 75, H_BRG_TOP - 240, "CL\nDRUM AXIS\n(VERTICAL)",
@@ -1699,7 +1699,7 @@ def sheet6():
     """Transport-slide clearance vs the film-plane left mechanism (plan)."""
     RED, GREEN = "#C0202A", "#2E8B57"
     RX, SL, PT_ = RAIL_X_L, PANEL_SLIDE, PANEL_CENTER_T     # 150, 880, 120
-    cyd = PW / 2                                            # 1181 light-lock Yd centre
+    cyd = PW / 2                                            # 1181 light-lock Yd center
 
     fig, ax = plt.subplots(figsize=(17, 12))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)

@@ -94,7 +94,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Bottom bearing | SKF 6215 sealed, stub shaft into floor-mount collar, panel-bolted |
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
-| Finish | Interior: flat black RAL 9005; exterior drum face: grey oxide |
+| Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
 | Approximate cost | USD $1,465–$2,160 (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 

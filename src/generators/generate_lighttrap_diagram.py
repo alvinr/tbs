@@ -114,11 +114,11 @@ def draw_sheet1():
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
     # Panel fan body — thin rectangle immediately right of baffle duct
-    FA_X   = bd_a_x0 + BD_W + PF_T / 2    # fan centre (impeller plane)
+    FA_X   = bd_a_x0 + BD_W + PF_T / 2    # fan center (impeller plane)
     pf_a_x0 = bd_a_x0 + BD_W              # left face of panel fan
     draw_rect(ax, pf_a_x0, FA_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
               fc=C_ALUM, lw=1.5, zorder=5)
-    # fan EDGE-ON (axis horizontal, along the airflow): centreline + motor hub +
+    # fan EDGE-ON (axis horizontal, along the airflow): centerline + motor hub +
     # pitched impeller blades + ID. (Was a face-on circle, which read vertical-axis.)
     ax.plot([pf_a_x0 - 0.08, pf_a_x0 + PF_T + 0.08], [FA_Y, FA_Y],
             color=C_CL, lw=0.7, ls=(0, (4, 3)), zorder=6)
@@ -163,7 +163,7 @@ def draw_sheet1():
             fontsize=6.0, color=C_GND, fontweight="bold", zorder=6)
 
     # Panel fan body — thin rectangle immediately left of baffle duct
-    FB_X  = bd_b_x0 - PF_T / 2           # fan centre (impeller plane)
+    FB_X  = bd_b_x0 - PF_T / 2           # fan center (impeller plane)
     pf_x0 = bd_b_x0 - PF_T               # left face of panel fan
     draw_rect(ax, pf_x0, FB_Y - R_PF - 0.08, PF_T, (R_PF + 0.08) * 2,
               fc=C_ALUM, lw=1.5, zorder=5)
@@ -272,7 +272,7 @@ def draw_sheet1():
     # perpendicular to this view), but we add a callout note above the drum box
     # so the relationship is documented on this sheet.
     DRUM_BOX_X = CX + CW        # 21.8 — drum box left edge in drawing coords
-    DRUM_BOX_MID_Y = CY + CH / 2  # vertical centre of drum box (~7.5)
+    DRUM_BOX_MID_Y = CY + CH / 2  # vertical center of drum box (~7.5)
     DRUM_BOX_TOP_Y = CY + CH      # 11.0 — top of drum box
     # Note box — placed above the drum box, within canvas (xlim 0–24, ylim 0–13).
     # Right-aligned to X=23.9 so it stays inside the axis xlim=24.
@@ -280,7 +280,7 @@ def draw_sheet1():
     NOTE_W  = 3.70                # note box width
     NOTE_H  = 1.10                # note box height
     NOTE_LX = NOTE_RX - NOTE_W    # left edge = 20.20
-    NOTE_CX = NOTE_LX + NOTE_W / 2  # 22.05 — centre
+    NOTE_CX = NOTE_LX + NOTE_W / 2  # 22.05 — center
     NOTE_CY = DRUM_BOX_TOP_Y + 0.90  # 11.90 — above drum box
     ax.add_patch(mpatches.FancyBboxPatch(
         (NOTE_LX, NOTE_CY - NOTE_H / 2), NOTE_W, NOTE_H,
@@ -292,8 +292,8 @@ def draw_sheet1():
             "no demountable segment · drum clears the X=150 rail",
             ha="center", va="center", fontsize=6.5, color="#7A3A00",
             fontweight="bold", zorder=12)
-    # Leader arrow from note bottom to drum box top-centre
-    DRUM_BOX_CX = DRUM_BOX_X + 0.75   # 22.55 — drum box horizontal centre
+    # Leader arrow from note bottom to drum box top-center
+    DRUM_BOX_CX = DRUM_BOX_X + 0.75   # 22.55 — drum box horizontal center
     ax.annotate("", xy=(DRUM_BOX_CX, DRUM_BOX_TOP_Y),
                 xytext=(NOTE_CX, NOTE_CY - NOTE_H / 2),
                 arrowprops=dict(arrowstyle="->", color="#C07030", lw=1.0),
@@ -320,7 +320,7 @@ def draw_sheet1():
             "(walkway LOWERED, not removed, for operation)",
             ha="center", va="center", fontsize=6.2, color="#0D47A1",
             fontweight="bold", zorder=12)
-    # Leader arrow from note top to drum box bottom-centre
+    # Leader arrow from note top to drum box bottom-center
     ax.annotate("", xy=(DRUM_BOX_CX, CY),
                 xytext=(TN_CX, TN_CY + TN_H / 2),
                 arrowprops=dict(arrowstyle="->", color="#1565C0", lw=1.0),

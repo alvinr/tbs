@@ -35,7 +35,7 @@ At f/1088, even the fastest non-film material (ISO 6 silver gelatin paper) requi
 
 ### Spectral response: the portrait problem
 
-None of the practical, affordable processes record red wavelengths. All historic processes (cyanotype, gum, salt, Van Dyke) are UV/blue-only — warm skin tones record darker than expected and green foliage goes near-black. Modern silver gelatin paper (Ilford Multigrade, Liquid Light on some formulations) adds green sensitivity, producing more natural skin modelling but still absent in the red. Only panchromatic film covers the full visible spectrum.
+None of the practical, affordable processes record red wavelengths. All historic processes (cyanotype, gum, salt, Van Dyke) are UV/blue-only — warm skin tones record darker than expected and green foliage goes near-black. Modern silver gelatin paper (Ilford Multigrade, Liquid Light on some formulations) adds green sensitivity, producing more natural skin modeling but still absent in the red. Only panchromatic film covers the full visible spectrum.
 
 For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrade RC paper > Van Dyke Brown > salt print > cyanotype ≈ Liquid Light > gum bichromate**.
 
@@ -87,7 +87,7 @@ Processes are ordered from lowest to highest per-image cost. Film is included at
 
 Invented by Sir John Herschel in 1842 and documented in *Philosophical Transactions of the Royal Society of London* (1842). One of the oldest surviving photographic processes. Used by Anna Atkins to produce the world's first photographically illustrated book (1843). The iron-based chemistry contains no silver, requires no darkroom for processing, and develops in plain water.
 
-**Source:** Herschel, J.F.W., "On the Action of the Rays of the Solar Spectrum on Vegetable Colours," *Philosophical Transactions of the Royal Society of London*, 1842. Modern technical analysis: Getty Conservation Institute, *Atlas of Analytical Signatures of Photographic Processes — Cyanotype*, 2013 (available: getty.edu).
+**Source:** Herschel, J.F.W., "On the Action of the Rays of the Solar Spectrum on Vegetable Colors," *Philosophical Transactions of the Royal Society of London*, 1842. Modern technical analysis: Getty Conservation Institute, *Atlas of Analytical Signatures of Photographic Processes — Cyanotype*, 2013 (available: getty.edu).
 
 ### Chemistry
 
@@ -128,7 +128,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 |---|---|---|---|
 | Unbleached muslin (100% cotton) | ~$0.50–0.80 | **$70–112** | Best absorption; flexible; same as The Great Picture substrate |
 | Pre-washed cotton canvas | ~$0.80–1.20 | $112–168 | Heavier; more dimensional stability; good for large panels |
-| Heavyweight cartridge/watercolour paper | ~$1.50–2.50 | $210–350 | Requires taping joins; difficult to handle at this scale |
+| Heavyweight cartridge/watercolor paper | ~$1.50–2.50 | $210–350 | Requires taping joins; difficult to handle at this scale |
 | Hanji/Japanese tissue on backing | ~$2.00–4.00 | $280–560 | Exceptional tonal range; fragile at scale |
 
 **Recommended substrate: unbleached muslin.** This matches the documented approach used in The Great Picture (2006) for their gelatin emulsion application; muslin absorbs cyanotype sensitiser evenly and is manageable as a continuous panel at 13-foot widths.
@@ -136,17 +136,17 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 ### Mounting and Preparation Method
 
 1. **Pre-wash substrate** twice in hot water without detergent; dry fully. This removes sizing (starch filler) that repels sensitiser.
-2. **Cut panels** to slightly oversize (e.g., 5950 × 2450mm). For full coverage, one continuous roll of 60" (1524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at centre.
+2. **Cut panels** to slightly oversize (e.g., 5950 × 2450mm). For full coverage, one continuous roll of 60" (1524mm) wide muslin folded/overlapped at join, or two lengths of 120" wide drop cloth fabric joined with a single flat seam at center.
 3. **Coat in subdued indoor light.** Lay fabric flat on clean plastic sheeting. Apply sensitiser with a foam roller or large Japanese hake brush. Work in two passes (horizontal, then vertical crossing) for even coverage.
 4. **Dry completely** in a dark or very dimly lit space before loading. A fan speeds drying; heat is acceptable (sensitiser is stable when dry).
-5. **Mount in camera:** Stretch fabric over a rigid backing panel — ACM (aluminium composite) sheet or plywood — using a staple gun or binder clips on a timber batten frame. The backing panel attaches to the structural ribs of the container interior. Fabric must be taut and flat; wrinkles will show in the final image.
+5. **Mount in camera:** Stretch fabric over a rigid backing panel — ACM (aluminum composite) sheet or plywood — using a staple gun or binder clips on a timber batten frame. The backing panel attaches to the structural ribs of the container interior. Fabric must be taut and flat; wrinkles will show in the final image.
 6. **After exposure:** Remove panel in complete darkness or in the dark camera itself. Carry to a water source. Submerge or sluice with running water 5–10 minutes. No chemicals required. Image appears as deep Prussian blue on white/cream background.
 7. **Dry flat** on clean surface. Cyanotype on fabric can be displayed as a hanging textile, stretched on a frame, or backed with rigid board.
 
 ### Important Constraints
 
 - **UV sensitivity:** Cyanotype requires UV light (300–400 nm range). Direct sunlight provides adequate UV. The long exposure times this camera produces (30–60+ minutes at f/1088) are well within the range needed for cyanotype in full outdoor sunlight — this is actually the **most compatible process** with the camera's exposure characteristics.
-- **Colour:** Result is Prussian blue only. Cannot be converted to neutral or warm tone without toning chemistry (tannin toning produces a warm olive/black).
+- **Color:** Result is Prussian blue only. Cannot be converted to neutral or warm tone without toning chemistry (tannin toning produces a warm olive/black).
 - **Moisture sensitivity when wet:** During processing, avoid excessive agitation which can lift sensitiser from poorly prepared fabric.
 
 ### Total Per-Image Cost (cyanotype on muslin)
@@ -167,7 +167,7 @@ Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft
 
 ### Background
 
-Developed in the 1850s–1890s as a pictorialist alternative to silver processes. Uses chromate salts to harden gum arabic (a natural tree resin) in proportion to UV exposure; unexposed gum is washed away with water. Any watercolour pigment can be used, producing images in any hue.
+Developed in the 1850s–1890s as a pictorialist alternative to silver processes. Uses chromate salts to harden gum arabic (a natural tree resin) in proportion to UV exposure; unexposed gum is washed away with water. Any watercolor pigment can be used, producing images in any hue.
 
 **Source:** Crawford, W., *The Keepers of Light: A History and Working Guide to Early Photographic Processes*, Morgan & Morgan, 1979, pp. 143–167. ISBN: 0871000725. This is the standard practitioner reference for historic processes.
 
@@ -175,14 +175,14 @@ Developed in the 1850s–1890s as a pictorialist alternative to silver processes
 
 - Solution A: 15 g ammonium or potassium dichromate dissolved in 100 ml water (sensitiser)
 - Solution B: gum arabic solution, 1:1 water to 14° Baumé gum arabic syrup (binder)
-- Pigment: watercolour, mixed into gum solution at 1–3% by volume
+- Pigment: watercolor, mixed into gum solution at 1–3% by volume
 - Combine A + B + pigment immediately before coating
 - Develop: warm water wash, 5–15 min; unexposed areas lift and rinse away
 - No fixer required — the process creates a stable, non-light-sensitive chromium-oxide/gum matrix
 
 ### Key Considerations
 
-Gum bichromate is a **pigment process** — the image is formed by watercolour pigment embedded in hardened gum. It is **not a silver process** and requires no darkroom for development. It is, however, significantly lower in contrast than silver processes and requires multiple coats (4–8 passes) to build density and shadow detail.
+Gum bichromate is a **pigment process** — the image is formed by watercolor pigment embedded in hardened gum. It is **not a silver process** and requires no darkroom for development. It is, however, significantly lower in contrast than silver processes and requires multiple coats (4–8 passes) to build density and shadow detail.
 
 For in-camera capture at f/1088 and the exposure times this camera produces, gum bichromate is viable — ammonium dichromate is approximately 2–3× more UV-sensitive than the standard potassium version.
 
@@ -194,7 +194,7 @@ For in-camera capture at f/1088 and the exposure times this camera produces, gum
 |---|---|---|---|
 | Ammonium dichromate | 200–250 g | ~$8–12/100 g | ~$20 |
 | Gum arabic powder (makes syrup) | 500–750 g | ~$12–18/lb (~$28–40/kg) | ~$15–25 |
-| Watercolour pigment (tube or powder) | 50–100 ml/g | Varies widely; ~$15–30 | ~$20–30 |
+| Watercolor pigment (tube or powder) | 50–100 ml/g | Varies widely; ~$15–30 | ~$20–30 |
 | **Chemistry total (single coat)** | | | **~$55–75** |
 
 For 4-coat image: multiply chemistry by 4 = ~$220–300 chemistry alone. **Caution: costs escalate sharply with multiple coats.**
@@ -233,7 +233,7 @@ Invented by William Henry Fox Talbot, 1834–1840. The first negative-positive p
 2. **Sensitising bath:** 10–15% silver nitrate (w/v) in water. Brush onto salted substrate in subdued red/orange light or near-darkness. Silver chloride forms in situ.
 3. **Exposure:** Printing-out process — image appears during exposure without development. No developer required.
 4. **Fix:** 20–25% sodium thiosulfate ("hypo") solution, 5–10 minutes. Rinse thoroughly in running water, 30 minutes minimum.
-5. **Optional:** Gold toner (sodium gold chloride, 0.1%) applied between exposure and fixation significantly improves archival stability and shifts colour to red-brown/neutral.
+5. **Optional:** Gold toner (sodium gold chloride, 0.1%) applied between exposure and fixation significantly improves archival stability and shifts color to red-brown/neutral.
 
 ### Chemistry Quantities and Costs for 116 sq ft
 
@@ -356,9 +356,9 @@ Floor-tray or in-camera processing required; standard silver gelatin chemistry.
 
 | Chemical | Volume needed | Product | Approx. cost |
 |---|---|---|---|
-| Developer (Dektol 1:2 dilution) | 12–15 litres | Kodak Dektol 1.8 kg powder (makes 37L stock) | ~$45 |
-| Stop bath (1% acetic acid) | 5 litres | Kodak indicator stop bath, diluted | ~$10 |
-| Rapid fixer | 15–20 litres | Ilford Rapid Fixer, diluted 1:4 | ~$30 |
+| Developer (Dektol 1:2 dilution) | 12–15 liters | Kodak Dektol 1.8 kg powder (makes 37L stock) | ~$45 |
+| Stop bath (1% acetic acid) | 5 liters | Kodak indicator stop bath, diluted | ~$10 |
+| Rapid fixer | 15–20 liters | Ilford Rapid Fixer, diluted 1:4 | ~$30 |
 | **Chemistry total** | | | **~$85** |
 
 *Chemistry can be reused across multiple images with replenishment; per-image cost drops significantly at volume.*
@@ -425,7 +425,7 @@ This is the most expensive material option and is primarily justified by the uni
 | Substrate | Aesthetic | Cost per sq ft | Total (116 sq ft) |
 |---|---|---|---|
 | Pre-primed canvas (artist canvas roll) | Neutral; flexible | ~$0.80–1.20 | $112–168 |
-| ACM aluminium composite panel | Industrial; rigid; planar | ~$2.00–3.00 | $280–420 |
+| ACM aluminum composite panel | Industrial; rigid; planar | ~$2.00–3.00 | $280–420 |
 | Plywood (birch, sanded) | Wood grain visible through image | ~$0.50–0.80 | $70–112 |
 | Reclaimed barn board planks | Strong texture; art object | Variable; often free–$1/sq ft | $0–140 |
 | Cement board (Hardiebacker) | Concrete surface texture | ~$0.60–0.80 | $84–112 |
@@ -468,7 +468,7 @@ Industrial and medical X-ray film is available in very large sheet formats, unli
 |---|---|
 | Available sizes | Up to 14"×17" (355×432mm) standard medical; industrial film to 36"×48" (914×1219mm) and larger |
 | ISO equivalent | Approximately ISO 400–800 (much faster than paper) |
-| Base | Polyester; dimensionally stable; blue-grey tint |
+| Base | Polyester; dimensionally stable; blue-gray tint |
 | Emulsion | Double-sided silver halide; blue/green sensitive |
 
 At approximately $5–8 per 14"×17" sheet, covering 116 sq ft would require roughly 150–200 sheets depending on layout, at a material cost of $750–$1,600. Large-format industrial X-ray film in continuous rolls is available from medical/NDT suppliers, but ordering in custom widths is typical.
@@ -510,10 +510,10 @@ Regardless of process, the image plane requires a flat rigid backing. Corrugated
 
 ### Recommended Backing System
 
-**Aluminium Composite Material (ACM / Dibond) panels, 3mm thick:**
+**Aluminum Composite Material (ACM / Dibond) panels, 3mm thick:**
 - Available in 4×8 ft (1220×2440mm) sheets; approximately 18 sheets needed to tile 116 sq ft
 - ACM is completely flat, dimensionally stable, lightweight (~3 lb/sq ft), and mounts by bolting through panel edge to timber battens or directly to container rib flanges
-- Chemical-resistant (developer, fixer do not damage aluminium face)
+- Chemical-resistant (developer, fixer do not damage aluminum face)
 - Cost: ~$40–60 per 4×8 sheet × 18 sheets = **$720–1,080 for the backing system** (one-time infrastructure cost, reusable)
 
 **Alternative: 3/4" plywood sheets** — cheaper (~$40–50 per 4×8 sheet), but heavier and requires sealing against moisture before use with chemistry.
@@ -542,7 +542,7 @@ Timber battens (2×4 lumber) are bolted to the container's internal structural r
 | **Richest tonal range, conventional photograph look** | Ilford RC paper | Industry-standard; predictable; support widely available; ~$420 per image |
 | **Most unique physical artefact** | Liquid Light on reclaimed wood or concrete | Surface texture merges with image; unrepeatable object; highest cost |
 | **Fastest exposure time** | X-ray film | ~ISO 400–800 vs ISO 6 for paper; 5–10 min exposures possible; operationally complex |
-| **Cheapest repeated experimentaion** | Gum bichromate on muslin | ~$135 single coat; fully repeatable; any colour; no silver |
+| **Cheapest repeated experimentation** | Gum bichromate on muslin | ~$135 single coat; fully repeatable; any color; no silver |
 | **Historic authenticity** | Salt print or Van Dyke on cotton rag | Talbot-era processes; warm brown tones; moderate cost |
 
 ---
@@ -574,7 +574,7 @@ The central variable is the **spectral sensitivity** of each photosensitive mate
 | Blue sky (high UV + blue content) | **Very bright — prone to overexposure** |
 | White clouds | Bright — similar to sky, low separation |
 | Green foliage | **Very dark — near black** |
-| Human skin (warm tones) | Dark to mid-grey — red/yellow components not recorded |
+| Human skin (warm tones) | Dark to mid-gray — red/yellow components not recorded |
 | Red objects | **Black** |
 | Yellow/orange | Near-black |
 | White surfaces | Bright |
@@ -608,7 +608,7 @@ Cyanotype has a relatively compressed tonal range (short scale). It produces str
 
 Identical spectral blindness to cyanotype — both processes are sensitised by the same chromate/iron UV absorption mechanism. The tonal rendering table is the same: blue sky overexposes, foliage goes dark, warm skin tones flatten.
 
-**One important difference from cyanotype:** gum bichromate renders in whatever watercolour pigment is chosen. A portrait done in raw umber or sepia pigment will have a warm brown palette regardless of what wavelengths the process responds to. The *colour* of the image is decoupled from the *tonal scale*. This means the alien quality of missing warm skin tones can be partially compensated by choosing a warm pigment — the shadows and mid-tones read as "warm" even though the exposure was UV-only.
+**One important difference from cyanotype:** gum bichromate renders in whatever watercolor pigment is chosen. A portrait done in raw umber or sepia pigment will have a warm brown palette regardless of what wavelengths the process responds to. The *color* of the image is decoupled from the *tonal scale*. This means the alien quality of missing warm skin tones can be partially compensated by choosing a warm pigment — the shadows and mid-tones read as "warm" even though the exposure was UV-only.
 
 #### Contrast
 
@@ -635,7 +635,7 @@ Salt print is a printing-out process — the image forms during exposure without
 | Subject | Rendered tone |
 |---|---|
 | Blue sky | Very bright — overexposes readily |
-| Green foliage | Dark mid-grey to near-black |
+| Green foliage | Dark mid-gray to near-black |
 | Human skin | **Noticeably darker/flatter than expected** — critical issue for portraits |
 | Red objects | Black |
 | Blue eyes | Light — the one feature that renders distinctively well |
@@ -644,13 +644,13 @@ Salt print is a printing-out process — the image forms during exposure without
 
 #### Portrait Implications
 
-Salt prints of people made in the 1840s–1860s have a characteristic look that is often described as "ghostly" — subjects with warm complexions appear much darker than we would expect, and the subtlety of facial modelling (warm highlights vs. cooler shadows) is compressed. This was the era's technical reality; it is now a historical aesthetic. For this project, whether this quality is desirable depends on the artistic intent.
+Salt prints of people made in the 1840s–1860s have a characteristic look that is often described as "ghostly" — subjects with warm complexions appear much darker than we would expect, and the subtlety of facial modeling (warm highlights vs. cooler shadows) is compressed. This was the era's technical reality; it is now a historical aesthetic. For this project, whether this quality is desirable depends on the artistic intent.
 
 **Critical practical issue:** Subjects must remain absolutely still during exposure. Salt prints are slower than cyanotype (silver chloride is marginally faster than the iron process but both require minutes at f/1088). At 30–60 minutes exposure time, any movement will produce blur. This is not a process for candid portraiture.
 
 #### Contrast and Tone
 
-Salt prints have a characteristic warm red-brown image tone (silver image colour depends on particle size and fixing). With standard sodium thiosulfate fixing, the tone is warm red-brown. Gold toning before fixation shifts the image to a purple-black or neutral, and significantly improves permanence.
+Salt prints have a characteristic warm red-brown image tone (silver image color depends on particle size and fixing). With standard sodium thiosulfate fixing, the tone is warm red-brown. Gold toning before fixation shifts the image to a purple-black or neutral, and significantly improves permanence.
 
 ---
 
@@ -673,12 +673,12 @@ Van Dyke Brown is the fastest of the iron/silver UV processes. The two-stage mec
 Identical spectral response to salt print. The tonal rendering table is the same. Van Dyke Brown will produce:
 - Blue sky: bright, potentially blown out
 - Green foliage: dark
-- Warm skin: darker than expected, flattened modelling
+- Warm skin: darker than expected, flattened modeling
 - Red objects: black
 
 **Difference from salt print:** Van Dyke Brown has a longer tonal scale (more mid-tone separation) than either cyanotype or salt print. It handles the transition from shadows to mid-tones more gracefully, making it somewhat better suited to outdoor portraiture despite the same spectral limitations.
 
-The image colour is warm red-brown (similar to, and named after, Van Dyck paintings). Fixed with sodium thiosulfate.
+The image color is warm red-brown (similar to, and named after, Van Dyck paintings). Fixed with sodium thiosulfate.
 
 ---
 
@@ -702,17 +702,17 @@ This is the most broadly sensitive of the iron/UV processes and significantly be
 |---|---|
 | Blue sky | **Bright — still prone to overexposure** vs. panchromatic film |
 | White clouds | Good separation from sky (cloud diffuses UV, sky transmits it) |
-| Green foliage | **Mid-grey to light grey — recorded naturally** |
+| Green foliage | **Mid-gray to light gray — recorded naturally** |
 | Human skin | **Better than UV-only processes, but warm reds still absent** — slight pallor |
-| Red objects | Dark grey to near-black (no red sensitivity) |
-| Yellow | Mid-grey (only blue component registers) |
+| Red objects | Dark gray to near-black (no red sensitivity) |
+| Yellow | Mid-gray (only blue component registers) |
 | Blue eyes | Light |
 | Brown/dark hair | Dark — better than UV-only processes |
 | Deep blue sky with clouds | Limited separation — both read bright |
 
 #### Portrait Implications
 
-For outdoor portraiture, Ilford Multigrade paper is markedly better than cyanotype, gum, salt, or Van Dyke. The green sensitivity captures the green component of skin tones, which provides natural-looking mid-tone modelling. However, red is still absent — warm rosy cheeks, warm-toned skin in golden-hour light, and red clothing all render darker than they would on panchromatic film.
+For outdoor portraiture, Ilford Multigrade paper is markedly better than cyanotype, gum, salt, or Van Dyke. The green sensitivity captures the green component of skin tones, which provides natural-looking mid-tone modeling. However, red is still absent — warm rosy cheeks, warm-toned skin in golden-hour light, and red clothing all render darker than they would on panchromatic film.
 
 The practical effect in a portrait: faces look natural in shade or overcast light where the illumination is cool/neutral. In warm directional sunlight (golden hour), the image will flatten — the warmth that makes the scene beautiful to the eye does not register.
 
@@ -742,10 +742,10 @@ This is the critical distinction between Liquid Light and Ilford Multigrade pape
 
 | Subject | Liquid Light | Ilford Multigrade |
 |---|---|---|
-| Green foliage | Dark (near UV-process) | Mid-grey (green-sensitised) |
+| Green foliage | Dark (near UV-process) | Mid-gray (green-sensitised) |
 | Skin tones | Flatter/darker | More natural |
 | Blue sky | Very bright | Bright |
-| Red | Near-black | Dark grey |
+| Red | Near-black | Dark gray |
 
 For outdoor portraits, Liquid Light will produce a more graphic, higher-contrast, slightly alien rendering compared to Ilford paper. This may be desirable or not depending on the artistic intent — applied to wood grain or concrete, the graphic high-contrast quality may complement the substrate texture.
 
@@ -764,7 +764,7 @@ Equivalent to approximately Grade 3 (manufacturer specification). Higher inheren
 **ISO equivalent:** ~50–200 (blue-sensitive, direct exposure); ~200–800 (orthochromatic/green-sensitive screen-type).  
 **Corrected exposure at f/1088, full sun:** ~2–10 min (blue-sensitive); ~20 sec–2 min (orthochromatic).
 
-The speed range within X-ray film is wider than across all the other materials combined. Screen-type orthochromatic X-ray film is designed to expose via the light emitted by a rare-earth intensifying screen (which fluoresces green) and is therefore optimised for that narrow spectral band — but it still responds to broadband daylight. At ISO 200–800, exposures at f/1088 drop below 2 minutes, which transforms the operational challenge entirely: a subject can hold still for 90 seconds far more reliably than for 43 minutes, and camera vibration from wind is not a meaningful concern over that duration.
+The speed range within X-ray film is wider than across all the other materials combined. Screen-type orthochromatic X-ray film is designed to expose via the light emitted by a rare-earth intensifying screen (which fluoresces green) and is therefore optimized for that narrow spectral band — but it still responds to broadband daylight. At ISO 200–800, exposures at f/1088 drop below 2 minutes, which transforms the operational challenge entirely: a subject can hold still for 90 seconds far more reliably than for 43 minutes, and camera vibration from wind is not a meaningful concern over that duration.
 
 The trade-off is product specificity: **not all X-ray film is the same**. Medical green-sensitive film (e.g. Fujifilm HR-T, Agfa Curix Ortho) is orthochromatic and fast. Medical blue-sensitive film (older type, some still available as NDT/industrial film) is slower. Direct-exposure X-ray film (no screen required, used for dental or industrial NDT) is slower still (~ISO 25–100) and better suited to this application because it is designed for direct light exposure rather than screen fluorescence.
 

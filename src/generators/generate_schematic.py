@@ -26,7 +26,7 @@ COLOURS  = ['#00D8FF', '#7BFF7B', '#FFB347', '#FF6B9D']
 # Top-down view:
 #   • Container runs LEFT–RIGHT (its length = IW = 5893mm)
 #   • Container depth = F = 2362mm  (the focal length / camera width)
-#   • Pinhole is on the BOTTOM long wall (y = 0), centred at x = IW/2
+#   • Pinhole is on the BOTTOM long wall (y = 0), centerd at x = IW/2
 #   • Image plane is on the TOP long wall  (y = F)
 #   • Subjects stand BELOW the pinhole wall (y < 0) at various distances
 
@@ -83,7 +83,7 @@ ax.text(IW/2, -320, 'PINHOLE WALL',
         ha='center', fontsize=9, color='#FF6B35', fontweight='bold', zorder=6)
 
 # Pinhole dot
-PX = IW / 2   # pinhole x centre
+PX = IW / 2   # pinhole x center
 ax.add_patch(mpatches.Circle((PX, 0), 80, fc='#FF6B35', ec='#FF9900', lw=2.5, zorder=7))
 ax.text(PX + 280, 0, f' ⌀ 2.17mm\n f/1088',
         va='center', fontsize=8.5, color='#FF9900', zorder=7)
@@ -151,8 +151,8 @@ for (u_m, col, sx) in zip(DISTS_M, COLOURS, SUBJ_X):
             va='center', fontsize=9, color=col, fontweight='bold', zorder=10)
 
     # ── Image result bar (on image plane, showing projected height) ───────────
-    # The projected image of the subject is centred on the image plane
-    img_bar_cx = IW/2   # image is always centred (pinhole is centred)
+    # The projected image of the subject is centerd on the image plane
+    img_bar_cx = IW/2   # image is always centerd (pinhole is centerd)
     img_bar_y  = F + 900 + DISTS_M.index(u_m) * 230
     bar_half   = ph / 2
     # Clamp bar to IW/2 for display
@@ -199,7 +199,7 @@ ax.text(IW/2, F + MARGIN_TOP * 0.82,
         'OPTION B  —  TOP-DOWN SCHEMATIC  (to scale in mm)',
         ha='center', fontsize=14, color='#FFFFFF', fontweight='bold', zorder=10)
 ax.text(IW/2, F + MARGIN_TOP * 0.60,
-        'Pinhole centred on long wall  ·  102° H-FOV  ·  f = 2362mm  ·  Subjects outside, facing camera',
+        'Pinhole centerd on long wall  ·  102° H-FOV  ·  f = 2362mm  ·  Subjects outside, facing camera',
         ha='center', fontsize=9.5, color='#777', zorder=10)
 
 # ── Axes ──────────────────────────────────────────────────────────────────────

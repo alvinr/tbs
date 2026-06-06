@@ -287,7 +287,7 @@ These must be satisfied before enrolling in skills training or sitting any DMV t
 | Requirement | Details |
 |-------------|---------|
 | **Age** | 18+ for intrastate (within California only); **21+ for interstate** (crossing state lines) |
-| **Existing driver's licence** | Valid California Class C (standard) driver's license |
+| **Existing driver's license** | Valid California Class C (standard) driver's license |
 | **DOT medical examination** | Physical exam by a FMCSA-certified Medical Examiner; produces a Medical Examiner's Certificate (MEC). Cost: ~$75–$150 at most clinics. Valid 2 years (or less if a medical condition requires it). As of January 10, 2026, paper MEC waivers have expired — results are submitted electronically to the FMCSA. |
 | **Social Security Number** | Required for DMV identity verification |
 | **Proof of California residency** | Two documents (utility bill, bank statement, lease, etc.) if no existing CA DL/ID |
@@ -403,7 +403,7 @@ Scored on observation, lane control, intersections, turns, and speed management:
 | Fee | Amount |
 |-----|--------|
 | CLP (Learner's Permit) application | ~$74 |
-| CDL licence fee | ~$82 |
+| CDL license fee | ~$82 |
 | Knowledge test fee | ~$12 per test |
 | Skills test fee | ~$37 |
 | **Estimated total DMV fees** | **~$170–$220** |
@@ -430,7 +430,7 @@ Scored on observation, lane control, intersections, turns, and speed management:
 
 | School | Location | Class A cost | Duration | Notes |
 |--------|----------|-------------|---------|-------|
-| [El Camino College](https://www.elcamino.edu/academics/community/rapid-job-training/truck-driver.php) | Torrance, CA (South Bay) | **$5,995 all-inclusive** | 168 hours / ~10.5 weeks | Includes truck use, materials, DMV permit and licence fees; financial aid available |
+| [El Camino College](https://www.elcamino.edu/academics/community/rapid-job-training/truck-driver.php) | Torrance, CA (South Bay) | **$5,995 all-inclusive** | 168 hours / ~10.5 weeks | Includes truck use, materials, DMV permit and license fees; financial aid available |
 | [Victor Valley College](https://www.vvc.edu/cdl) | Victorville, CA (High Desert) | ~$3,500–$4,500 | ~3 weeks | Community college pricing; serves High Desert / Inland Empire |
 
 *Community colleges may qualify for WIOA (Workforce Innovation and Opportunity Act) funding, which can cover **full tuition** for eligible adults — unemployed workers, veterans, and career changers. Contact the school's financial aid office.*

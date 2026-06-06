@@ -40,16 +40,16 @@ LEG_W_F      = 0.090
 NECK_W_F     = 0.056
 HEAD_W_F     = 0.107
 
-# Distances and presentation colours
+# Distances and presentation colors
 DISTS_M  = [2.0, 3.0, 5.0, 10.0]
 COLOURS  = ['#00D8FF', '#7BFF7B', '#FFB347', '#FF6B9D']
-X_CENTS  = [620, 1820, 3200, 5050]   # silhouette centres on image plane
+X_CENTS  = [620, 1820, 3200, 5050]   # silhouette centers on image plane
 
 
 # ─────────────────────────────────────────
 # Helper: draw one silhouette
 # ─────────────────────────────────────────
-def draw_person(ax, cx, y_foot, M, colour, alpha=0.88, z=5):
+def draw_person(ax, cx, y_foot, M, color, alpha=0.88, z=5):
     ph = PH * M
 
     def h(f): return ph * f
@@ -64,24 +64,24 @@ def draw_person(ax, cx, y_foot, M, colour, alpha=0.88, z=5):
     gap  = hipw * 0.14
     ax.add_patch(mpatches.FancyBboxPatch(
         (cx - hipw/2, y), lw, lh,
-        boxstyle="round,pad=0", fc=colour, ec='none', alpha=alpha, zorder=z))
+        boxstyle="round,pad=0", fc=color, ec='none', alpha=alpha, zorder=z))
     ax.add_patch(mpatches.FancyBboxPatch(
         (cx + hipw/2 - lw, y), lw, lh,
-        boxstyle="round,pad=0", fc=colour, ec='none', alpha=alpha, zorder=z))
+        boxstyle="round,pad=0", fc=color, ec='none', alpha=alpha, zorder=z))
     y += lh
 
     # ── hips ──────────────────────────────
     hiph = h(HIP_H_F)
     ax.add_patch(mpatches.FancyBboxPatch(
         (cx - hipw/2, y), hipw, hiph,
-        boxstyle="round,pad=0", fc=colour, ec='none', alpha=alpha, zorder=z))
+        boxstyle="round,pad=0", fc=color, ec='none', alpha=alpha, zorder=z))
     y += hiph
 
     # ── lower torso ───────────────────────
     lth = h(LTORC_H_F)
     ax.add_patch(mpatches.FancyBboxPatch(
         (cx - hipw/2, y), hipw, lth,
-        boxstyle="round,pad=0", fc=colour, ec='none', alpha=alpha, zorder=z))
+        boxstyle="round,pad=0", fc=color, ec='none', alpha=alpha, zorder=z))
     y += lth
 
     # ── upper torso (trapezoid) ────────────
@@ -89,7 +89,7 @@ def draw_person(ax, cx, y_foot, M, colour, alpha=0.88, z=5):
     sw   = w(SHOULDER_W_F)
     tx = [cx - hipw/2, cx + hipw/2, cx + sw/2, cx - sw/2]
     ty = [y,           y,           y + uth,   y + uth  ]
-    ax.fill(tx, ty, color=colour, alpha=alpha, zorder=z)
+    ax.fill(tx, ty, color=color, alpha=alpha, zorder=z)
     y += uth
 
     # ── neck ──────────────────────────────
@@ -97,7 +97,7 @@ def draw_person(ax, cx, y_foot, M, colour, alpha=0.88, z=5):
     nw = w(NECK_W_F)
     ax.add_patch(mpatches.FancyBboxPatch(
         (cx - nw/2, y), nw, nh,
-        boxstyle="round,pad=0", fc=colour, ec='none', alpha=alpha, zorder=z))
+        boxstyle="round,pad=0", fc=color, ec='none', alpha=alpha, zorder=z))
     y += nh
 
     # ── head (ellipse) ────────────────────
@@ -105,7 +105,7 @@ def draw_person(ax, cx, y_foot, M, colour, alpha=0.88, z=5):
     head_w = w(HEAD_W_F)
     ax.add_patch(mpatches.Ellipse(
         (cx, y + head_h/2), head_w, head_h,
-        fc=colour, ec='none', alpha=alpha, zorder=z))
+        fc=color, ec='none', alpha=alpha, zorder=z))
     y += head_h
 
     return y           # top of head
@@ -288,7 +288,7 @@ ax2.text(CONT_L_MM/2, -350,
          ha='center', fontsize=9.5, color='#FF6B35', fontweight='bold', zorder=5)
 
 # Light rays from pinhole to edges of image plane
-ray_colour = '#FF6B3518'
+ray_color = '#FF6B3518'
 for iy in np.linspace(0, CONT_L_MM, 8):
     ax2.plot([CONT_L_MM/2, iy],[0, CONT_W_MM],
              color='#FF6B3530', lw=0.8, zorder=1)
@@ -386,7 +386,7 @@ for (ccx, ccy) in [(0,0),(IW,0),(IW,IH),(0,IH)]:
     ax3.plot([ccx,ccx+sx2],[ccy,ccy], color='#888', lw=1.5, zorder=2)
     ax3.plot([ccx,ccx],[ccy,ccy+sy2], color='#888', lw=1.5, zorder=2)
 
-# Draw person at 3 m, centred horizontally
+# Draw person at 3 m, centerd horizontally
 u_opt = 3.0
 M_opt = F / (u_opt * 1000)
 B_opt = D * (1 + F/(u_opt*1000))
@@ -394,7 +394,7 @@ ph_opt = PH * M_opt            # ~1401mm
 sw_opt = PH * SHOULDER_W_F * M_opt
 
 cx_opt = IW / 2
-GY3    = (IH - ph_opt) / 2    # vertically centre the figure
+GY3    = (IH - ph_opt) / 2    # vertically center the figure
 
 top3 = draw_person(ax3, cx_opt, GY3, M_opt, '#7BFF7B', alpha=0.92)
 

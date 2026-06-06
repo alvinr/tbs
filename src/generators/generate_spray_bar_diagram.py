@@ -1274,7 +1274,7 @@ def draw_sheet5():
     ax_w.set_aspect("equal")
 
     BEAM_SHOW_LEN = 140
-    cox = -BEAM_SHOW_LEN + 20             # -120 — carriage centre X
+    cox = -BEAM_SHOW_LEN + 20             # -120 — carriage center X
     C_X_LO, C_X_HI = -165, 165
     C_YD_LO, C_YD_HI = -150, 150
     ax_w.set_xlim(C_X_LO, C_X_HI)
@@ -1291,7 +1291,7 @@ def draw_sheet5():
     arm_half    = WHEEL_SPACING_YD / 2 + 18   # 118 — wing outer edge (Yd)
     arm_w       = BEAM_W                       # 40 — plate length in X
     wh_x, wh_y  = WHEEL_WIDTH / 2, WHEEL_DIA / 2   # 10, 25 — wheel footprint halves
-    sgap        = WHEEL_WIDTH / 2 + 6          # 16 — clamp offset from wheel centre
+    sgap        = WHEEL_WIDTH / 2 + 6          # 16 — clamp offset from wheel center
 
     # ── Beam through the central notch (along X) ──
     ax_w.add_patch(Rectangle((-BEAM_SHOW_LEN, -BEAM_W / 2), 2 * BEAM_SHOW_LEN,
@@ -1497,7 +1497,7 @@ def draw_sheet6():
                        alpha=0.85, zorder=9))
 
     # ── Axle retention saddle clamps — one each side of each wheel ───────
-    sgap_plan = WHEEL_WIDTH / 2 + 6        # 16 — saddle offset from wheel centre (X)
+    sgap_plan = WHEEL_WIDTH / 2 + 6        # 16 — saddle offset from wheel center (X)
     sad_w_plan = 6                          # saddle width along the axle (X)
     sad_half_yd = 17                        # foot half-span (Yd)
     for w_sign in [-1, 1]:
@@ -1948,7 +1948,7 @@ def draw_sheet7():
     POLE_OD = 25
     HOSE_OD2 = 16
     pole_z0, pole_z1 = 30, 905              # pole bottom (ball joint) → handle base
-    hose_x = POLE_OD / 2 + HOSE_OD2 / 2      # 20.5 — hose centre, tangent to the pole
+    hose_x = POLE_OD / 2 + HOSE_OD2 / 2      # 20.5 — hose center, tangent to the pole
     hose_l = hose_x - HOSE_OD2 / 2           # 12.5 — hose left edge
     hose_r = hose_x + HOSE_OD2 / 2           # 28.5 — hose right edge
     zt_zs = [150, 350, 550, 750]             # zip-tie loops @ ~200mm

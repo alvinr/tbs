@@ -67,8 +67,8 @@ Individual configurations:
 | 0° |  0° |   0° |   0° |  Reference All flat | ![C0](assets/tilt-swing-combined-c0.png) |
 | 3° |  0° |   0° |   0° |  Board tilt +3° Film flat | ![C1](assets/tilt-swing-combined-c1.png) |
 | 0° |  0° |   20° |   0° |  Film tilt +20° Board flat | ![C2](assets/tilt-swing-combined-c2.png) |
-| 3° |  0° |   20° |   0° |  Opposing tilt (partially cancelled) | ![C3](assets/tilt-swing-combined-c3.png) |
-| 3° |  0° |   -20° |   0° |  Opposing tilt (partially cancelled) | ![C4](assets/tilt-swing-combined-c4.png) |
+| 3° |  0° |   20° |   0° |  Opposing tilt (partially canceled) | ![C3](assets/tilt-swing-combined-c3.png) |
+| 3° |  0° |   -20° |   0° |  Opposing tilt (partially canceled) | ![C4](assets/tilt-swing-combined-c4.png) |
 | 0° |  3° |   0° |   15° |  Both swing + same direction | ![C5](assets/tilt-swing-combined-c5.png) |
 | 3° |  3° |   0° |   0° |  Compound board (tilt+swing) flat film | ![C6](assets/tilt-swing-combined-c6.png) |
 | 3° |  3° |   20° |   15° |  Full compound both systems (max distortion) | ![C7](assets/tilt-swing-combined-c7.png) |

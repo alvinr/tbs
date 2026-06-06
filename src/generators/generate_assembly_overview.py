@@ -162,11 +162,11 @@ ax.add_patch(mpatches.Rectangle((0, 0), PANEL_CENTER_T, C_HGT,
              facecolor="none", edgecolor=C_OUT, linewidth=0.6, ls=(0, (4, 3)),
              alpha=0.5, zorder=4))
 
-# Revolving drum: centre at X=0 (outside edge of container), bottom at Y=RAIL_OFF
+# Revolving drum: center at X=0 (outside edge of container), bottom at Y=RAIL_OFF
 # In this side elevation appears as a rectangle Ø900mm wide × 2000mm tall.
 ax.add_patch(mpatches.Rectangle((-DRUM_R, RAIL_OFF), DRUM_D, DRUM_H_ELV,
              facecolor=C_LT_DRUM, edgecolor=C_OUT, linewidth=0.8, alpha=0.9, zorder=5))
-# Centre line through drum
+# Center line through drum
 ax.plot([DRUM_CX, DRUM_CX], [RAIL_OFF, RAIL_OFF + DRUM_H_ELV + 100],
         color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)
 leader(ax, DRUM_CX, RAIL_OFF + DRUM_H_ELV + 60, -200, PH_H + 1250,
@@ -516,7 +516,7 @@ for rx in [RAIL_X_L, RAIL_X_R]:
         (mx(rx) - RAIL_T, RAIL_OFF), RAIL_T * 2, C_HGT - 2 * RAIL_OFF,
         facecolor=C_ALUM2, edgecolor=RAIL_CLR, linewidth=1.2, alpha=0.9, zorder=5))
 
-# Rail centre lines
+# Rail center lines
 for rx in [RAIL_X_L, RAIL_X_R]:
     ax2.plot([mx(rx), mx(rx)], [0, C_HGT + 150],
             color=C_CL, lw=0.7, ls="--", dashes=(6, 3), zorder=6)

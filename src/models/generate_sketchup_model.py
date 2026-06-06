@@ -133,7 +133,7 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
         "Water Plumbing", "Labels"]
 
 
-# Major system components to call out in the "Overview (Labeled)" scene.
+# Major system components to call out in the "Labeled" scene.
 # (component instance name, label text, leader Δx mm, leader Δz mm) — the leader is
 # anchored at the component's bounds top-centre and fanned out so labels don't pile up.
 # (component name, text, leader Δx, Δy, Δz mm). Δy pulls the label OUT of a wall
@@ -142,7 +142,7 @@ OVERVIEW_LABELS = [
     ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                 -200, -1600,  900),
     ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",   400,     0, 1250),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
-    ("Spray Bar",             "SPRAY BAR",                         250,     0, 1450),
+    ("Spray Bar",             "SPRAY BAR",                         450, -2700, 1300),
     ("Walkways",              "WALKWAYS",                         -550,     0,  480),
     ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",    500,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
@@ -1887,7 +1887,7 @@ end
 # ── Subsystems (each a component on its tag) ──
 {body}
 
-# ── Major-component callouts (Labels tag — shown only in "Overview (Labeled)") ──
+# ── Major-component callouts (Labels tag — shown only in the "Labeled" scene) ──
 {overview_labels()}
 
 model.definitions.purge_unused
@@ -1916,9 +1916,9 @@ model.active_view.zoom_extents
 model.layers["Labels"].visible = false if model.layers["Labels"]
 ovp = model.pages.add("Overview"); ovp.use_camera = true
 
-# Overview (Labeled) — same view + callouts on the major system components.
+# Labeled — same view + callouts on the major system components.
 model.layers["Labels"].visible = true if model.layers["Labels"]
-olp = model.pages.add("Overview (Labeled)"); olp.use_camera = true
+olp = model.pages.add("Labeled"); olp.use_camera = true
 model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.

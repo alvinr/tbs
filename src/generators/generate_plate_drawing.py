@@ -21,7 +21,7 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, draw_cl, draw_circle,
 
 # ── Real dimensions (mm) ─────────────────────────────────────────────────────
 PL_OD      = 600      # plate outer dimension (square)
-PL_THICK   = 15       # aluminium plate thickness
+PL_THICK   = 15       # aluminum plate thickness
 FR_THICK   = 6        # wall frame steel thickness
 FR_APT_D   = 350      # wall frame circular aperture diameter
 BOLT_BC    = 540      # bolt circle diameter

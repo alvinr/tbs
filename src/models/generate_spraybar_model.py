@@ -38,7 +38,7 @@ TAGS = ["Beam", "Carriages", "Feed & Pole", "Tray"]
 # Representative gantry Yd position (it travels in Yd; park it mid-tray).
 GY = (PROC_TRAY_YD_NEAR + PROC_TRAY_YD_FAR) // 2        # 1180
 
-# Colours
+# Colors
 C_ALUM   = "#C8D8E8"   # aluminum SHS beam + pole
 C_STEEL  = "#B0B0B8"   # carriage plate / clamps
 C_NYLON  = "#33343A"   # nylon wheels
@@ -56,8 +56,8 @@ ZB, ZT = SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP               # 20 .. 60
 
 def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
     """Curved saddle / conduit-style clamp: an annular band (inner radius `ri`,
-    thickness `t`) wrapping from `a0_deg` to `a1_deg` around a Yd-Z circle centred
-    at (cy, cz), extruded along X by `sw` (centred on `xc`). Cradles under the
+    thickness `t`) wrapping from `a0_deg` to `a1_deg` around a Yd-Z circle centerd
+    at (cy, cz), extruded along X by `sw` (centerd on `xc`). Cradles under the
     axle and rises up both sides toward the plate where the bolts pass through."""
     ro = ri + t
     x0 = xc - sw / 2.0
@@ -92,7 +92,7 @@ def ruby_saddle(name, xc, sw, cy, cz, ri, t, a0_deg, a1_deg, color, n=24):
 
 def build_beam():
     parts = []
-    bore_cz = ZB + S / 2                   # bore / poly-pipe centre Z (= 40)
+    bore_cz = ZB + S / 2                   # bore / poly-pipe center Z (= 40)
     # 40x40 SHS beam — translucent so the internal irrigation pipe reads
     parts.append(ov.ruby_box("Spray Beam 40x40x3 Al SHS",
                              XL, GY - S / 2, ZB, XR - XL, S, S,
@@ -110,7 +110,7 @@ def build_beam():
                                   XL, GY, bore_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
                                   color=C_WATER, axis="x", alpha=0.55))
     # flat-fan nozzles barbed into the poly pipe, spraying down through the beam
-    # (true 150mm pitch, centred on the span)
+    # (true 150mm pitch, centerd on the span)
     sp = 150
     margin = ((XR - XL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
     for i in range(SPRAY_BAR_N_NOZZLES):
@@ -139,7 +139,7 @@ def _carriage(xend, side, din):
     plate_top = plate_z + plate_t           # 34
     CW = S                                  # carriage width in X (= beam width, 40)
     cx0 = xend if din > 0 else xend - CW    # outer X edge flush with the beam end
-    cxc = cx0 + CW / 2                       # carriage / wheel centre X
+    cxc = cx0 + CW / 2                       # carriage / wheel center X
     notch = S / 2                            # 20 — wings extend in to meet the beam faces
 
     # ── notched 5mm Al carriage plate — two wings either side of the beam ──
@@ -150,12 +150,12 @@ def _carriage(xend, side, din):
                              cx0, GY + notch, plate_z,
                              CW, (GY + half + 18) - (GY + notch), plate_t, color=C_ALUM))
 
-    # ── each wheel: Ø50 nylon on a Ø10 through-axle (centred on the wing). The
+    # ── each wheel: Ø50 nylon on a Ø10 through-axle (centerd on the wing). The
     # axle is retained by a curved saddle clamp on EACH side of the wheel (like a
     # conduit/pipe saddle), each bolted down through the plate with two bolts
     # straddling the axle — two bolts either side of the wheel. ──
     sw = 6                                    # saddle width along the axle
-    sgap = ww / 2 + 6                         # saddle offset from wheel centre (flanks the wheel)
+    sgap = ww / 2 + 6                         # saddle offset from wheel center (flanks the wheel)
     for dy in (-half, half):
         cy = GY + dy
         parts.append(ov.ruby_cylinder(f"Wheel {side}",
@@ -220,7 +220,7 @@ def half_band():
 
 def build_feed_pole():
     parts = []
-    cx = (XL + XR) / 2          # pole/joint X — beam centre (POLE_X)
+    cx = (XL + XR) / 2          # pole/joint X — beam center (POLE_X)
     by = GY                      # gantry Yd
     c_joint = "#C8B070"          # zinc/brass ball-joint socket
     c_bolt = "#50505A"           # bolts / U-bolt
@@ -243,7 +243,7 @@ def build_feed_pole():
 
     # ── articulated stud + arm tube + telescoping pole to the operator ──
     op_y, op_z = 180, 80 + 890         # operator hand: near walkway, ~890 above grate
-    ball_z = ZT + 5 + 14 + 2           # ≈ 71 — ball centre inside the socket
+    ball_z = ZT + 5 + 14 + 2           # ≈ 71 — ball center inside the socket
     mid_y, mid_z = (by + op_y) / 2, (ball_z + op_z) / 2
     # M12 stud emerging from the socket, angled toward the operator (articulated)
     parts.append(ov.ruby_pipe("Ball-Joint Stud (M12)",
@@ -297,7 +297,7 @@ def build_feed_pole():
         nt = max(1, int(round(seg_l / 200)))
         for s in range(nt):
             t = (s + 0.5) / nt
-            # loop centred on the combined bundle (shifted toward the larger pole),
+            # loop centerd on the combined bundle (shifted toward the larger pole),
             # with enough perpendicular radius to clear the Ø25 arm tube
             cyz = (cx + 8, q1[1] + t * dd[1], q1[2] + t * dd[2])
             loop = []
@@ -310,7 +310,7 @@ def build_feed_pole():
                                           color="#888888", n=6))
     # 7 irrigation tubes + barbed fittings into the poly pipe. Tubes that must pass
     # the ball joint detour along the beam BACK edge so they go AROUND the socket —
-    # never through it (no pipes through objects). The centre feed is nudged clear
+    # never through it (no pipes through objects). The center feed is nudged clear
     # of the ball joint footprint.
     nfeed = 7
     bore_cz = ZB + S / 2
@@ -318,7 +318,7 @@ def build_feed_pole():
     fz = man_z + 9                                   # tube routing height
     for j in range(nfeed):
         fx = XL + (j + 0.5) / nfeed * (XR - XL)
-        if j == (nfeed - 1) / 2:                     # centre slot lands on the ball joint
+        if j == (nfeed - 1) / 2:                     # center slot lands on the ball joint
             fx = cx + 80                             # nudge clear of the Ø36 socket
         if fx > cx + 30:                             # clear of the joint — route directly (one elbow)
             wp = [(man_cx + 14, by, fz), (fx, by, fz), (fx, by, ZT + 6)]

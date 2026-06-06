@@ -98,8 +98,8 @@ C_T  = 72      # interior top   (ceiling) — shifted +8
 # Interior: 26 units wide ≈ 2362mm focal length
 #           28 units tall ≈ 2388mm container internal height
 WT   = 2.5     # wall thickness
-CY   = (C_B + C_T) / 2   # centre Y = 50
-CX   = (C_L + C_R) / 2   # centre X = 49
+CY   = (C_B + C_T) / 2   # center Y = 50
+CX   = (C_L + C_R) / 2   # center X = 49
 PH_X = C_L                # pinhole x (left long-side wall inner face)
 IP_X = C_R                # image plane x (right long-side wall inner face)
 
@@ -154,7 +154,7 @@ for r_, a_ in [(5.5,0.12),(4.0,0.20),(2.8,0.35),(1.8,0.60)]:
 # The aperture ring
 ax.add_patch(Circle((PH_X, CY), 1.8,
                      fc=PRU_LIGHT, ec=PAPER, lw=1.8, zorder=8))
-# The actual hole (dark centre)
+# The actual hole (dark center)
 ax.add_patch(Circle((PH_X, CY), 0.7,
                      fc=PRU_INK, ec=PAPER_W, lw=0.8, zorder=9))
 # Crosshair
@@ -204,7 +204,7 @@ def haring_inverted(ax, cx, cy, sc):
             color=col, lw=lw*1.3, solid_capstyle="round",
             solid_joinstyle="round", zorder=11)
     # Legs pointing UP  (was pointing down to cy-8.5 → now up to cy+8.5)
-    # Both legs start at body centre cx — same as upright figure hip point
+    # Both legs start at body center cx — same as upright figure hip point
     for lx in [-2*sc, 2*sc]:
         ax.plot([cx, cx+lx*1.3], [cy+3.5*sc, cy+8.5*sc],
                 color=PAPER, lw=lw*2.0, solid_capstyle="round", zorder=10)
@@ -227,7 +227,7 @@ SUBJ_H = 9.0   # subject half-height for ray origin points (spans ~2/3 container
 # Three source points on subject, three inverted destination points on image plane
 ray_pairs = [
     ((SUBJ_X, CY+SUBJ_H), (IP_X+0.5, CY-SUBJ_H*0.65)),  # top→bottom (inverted)
-    ((SUBJ_X, CY),         (IP_X+0.5, CY)),               # centre→centre
+    ((SUBJ_X, CY),         (IP_X+0.5, CY)),               # center→center
     ((SUBJ_X, CY-SUBJ_H), (IP_X+0.5, CY+SUBJ_H*0.65)),  # bottom→top (inverted)
 ]
 for (sx,sy),(ix,iy) in ray_pairs:
@@ -249,7 +249,7 @@ for ang in np.linspace(-45, 45, 7):
             color=PAPER_W, lw=0.7, alpha=0.25, zorder=6,
             solid_capstyle="round")
 
-# Camera tripod — centred under container at CX=49
+# Camera tripod — centerd under container at CX=49
 for tx,ty in [(43,30),(49,29),(55,30)]:
     ax.plot([CX,tx],[EX_B,ty], color=PAPER, lw=LW_D*1.4, solid_capstyle="round", zorder=5)
 ax.plot([40,58],[29.5,29.5], color=PAPER, lw=LW_D, zorder=5)
@@ -263,7 +263,7 @@ ax.text((C_L+C_R)/2, fl_y+1.2, f"FOCAL LENGTH  {C_WID}mm",
         color=CYAN_MID, fontsize=5.0, ha="center", va="bottom",
         fontfamily="monospace", zorder=7)
 
-# ── GPC BADGE — lower centre, below tripod ────────────────────────────────────
+# ── GPC BADGE — lower center, below tripod ────────────────────────────────────
 ax.add_patch(Circle((CX, 21), 6.0, fc=PRU_MID, ec=PAPER, lw=2.2, zorder=8))
 ax.add_patch(Circle((CX, 21), 5.0, fc=PRU_LIGHT, ec=CYAN_MID, lw=0.9, zorder=9))
 ax.text(CX, 21.5, "TBS", color=PAPER, fontsize=8.5, ha="center", va="center",

@@ -66,7 +66,7 @@ def project_point(W, board_tilt_deg, board_swing_deg,
     Step 1: Rotate world by inverse of board angles (front-board tilt α and swing β)
             W' = Ry(-β) · Rx(-α) · W
     Step 2: Cast ray from pinhole (origin) through W' and intersect tilted film plane.
-            Film plane is centred at r0=(0,0,F), tilted by film_tilt θ (about X) and
+            Film plane is centerd at r0=(0,0,F), tilted by film_tilt θ (about X) and
             film_swing φ (about Y).
             Film plane normal: n = Ry(φ)·Rx(θ)·[0,0,-1]
             (normal points toward subject, i.e. in -Z direction from film)
@@ -75,7 +75,7 @@ def project_point(W, board_tilt_deg, board_swing_deg,
             The film's own local axes: u_film = Ry(φ)·[1,0,0],
                                        v_film = Rx(θ)·Ry(φ)·[0,1,0] ≈ [0,1,0] for small θ
 
-    Returns (u, v) in mm on the film plane, with (0,0) at film centre.
+    Returns (u, v) in mm on the film plane, with (0,0) at film center.
     Returns None if the ray misses (behind pinhole or parallel to film).
     """
     W = np.asarray(W, dtype=float)
@@ -98,7 +98,7 @@ def project_point(W, board_tilt_deg, board_swing_deg,
     phi   = np.radians(film_swing_deg)
     # Film plane normal (pointing toward subject = -Z in film-plane local frame)
     n = Ry(phi) @ Rx(theta) @ np.array([0, 0, -1.0])
-    # Anchor point at film plane centre
+    # Anchor point at film plane center
     r0 = np.array([0.0, 0.0, F])
 
     denom = np.dot(n, d)
@@ -264,12 +264,12 @@ def draw_render(ax, board_tilt, board_swing, film_tilt, film_swing,
             m = 'o' if kind == 'head' else '.'
             ax.plot(u, v, marker='.', color=C_HUMAN, ms=lw_h, zorder=6)
 
-    # Compute image-centre shift for annotation
+    # Compute image-center shift for annotation
     ref_pt = project_point((0, 0, D_MID), board_tilt, board_swing, film_tilt, film_swing)
     if ref_pt:
         shift_u_mm = ref_pt[0]
         shift_v_mm = ref_pt[1]
-        # Mark image centre
+        # Mark image center
         ax.plot(shift_u_mm, shift_v_mm, '+', color='#FF4040', ms=10, lw=1.5, zorder=8)
         ax.plot(0, 0, '+', color='#808080', ms=8, lw=1.0, zorder=7)
 
@@ -295,7 +295,7 @@ def draw_render(ax, board_tilt, board_swing, film_tilt, film_swing,
     # Image shift annotation (bottom right)
     if ref_pt:
         ax.text(W2 - 60, -H2 + 360,
-                f'Image centre:\nU={shift_u_mm:+.0f}mm\nV={shift_v_mm:+.0f}mm',
+                f'Image center:\nU={shift_u_mm:+.0f}mm\nV={shift_v_mm:+.0f}mm',
                 color='#FF8080', fontsize=7, va='bottom', ha='right', zorder=9,
                 fontfamily='monospace')
 

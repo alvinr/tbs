@@ -246,8 +246,8 @@ Equipment in the IBC corridor (X > ZONE_R_START) at any Yd is shadow-free.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Panel slide travel | 300mm | `PANEL_SLIDE` |
-| Panel slide rails | HGR20 × 500mm, 4 rails | — |
+| Panel slide travel | 880mm | `PANEL_SLIDE` |
+| Panel slide rails | HGR20 × 1200mm, 2 rails (B2 — span the 880mm slide) | — |
 | Lock mechanism | Destaco 207-U toggle clamp (×4) | — |
 
 *Components: HGR20 linear rails (both walls, floor + ceiling), HGH20CA carriage blocks (×8),

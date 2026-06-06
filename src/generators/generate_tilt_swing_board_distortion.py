@@ -57,7 +57,7 @@ def project_point(W, board_tilt_deg, board_swing_deg):
     """
     Project a world point through board rotation only (film plane flat).
     Board tilts/swings the pinhole direction; film plane stays at Z=F, flat.
-    Returns (u, v) in mm on film plane, (0,0) at centre. None if missed.
+    Returns (u, v) in mm on film plane, (0,0) at center. None if missed.
     """
     W = np.asarray(W, dtype=float)
     if W[2] <= 0:
@@ -225,7 +225,7 @@ def draw_render(ax, board_tilt, board_swing,
 
     if ref_pt:
         ax.text(W2 - 60, -H2 + 360,
-                f'Image centre:\nU={shift_u_mm:+.0f}mm\nV={shift_v_mm:+.0f}mm',
+                f'Image center:\nU={shift_u_mm:+.0f}mm\nV={shift_v_mm:+.0f}mm',
                 color='#FF8080', fontsize=7, va='bottom', ha='right', zorder=9,
                 fontfamily='monospace')
 

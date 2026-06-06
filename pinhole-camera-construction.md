@@ -125,7 +125,7 @@ is the clear optical zone.
 | Pinhole wall (Yd=0) | Full length | Electrical panel, battery bank, evap duct penetration (cooler external) |
 | Optical zone | X = 2700–5893mm | Clear — no equipment; optical cone from pinhole traverses this area unobstructed |
 | Cargo door end | X = 0mm | Hinged panel with integrated revolving light-trap drum |
-| Pinhole wall | X = 2946mm (centre) | Aperture Ø2.17mm at Y_depth=0 |
+| Pinhole wall | X = 2946mm (center) | Aperture Ø2.17mm at Y_depth=0 |
 | Film plane | Y_depth = 2262mm | Muslin sensitised surface, spanning full 5893mm × 2388mm |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
@@ -386,10 +386,10 @@ TBS-001 replaces the original cargo doors with a purpose-built stepped hinged pa
 **Panel design (see engineering drawings below):**
 - 2362 × 2388mm stepped panel, 50×50mm RHS steel frame, 18mm exterior-grade ply skins
 - **Stepped profile:** 40mm thick at corner zones (Yd=0–653mm and Yd=1709–2362mm) and 120mm thick at center zone (Yd=653–1709mm) where the light trap drum is mounted
-- 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 300mm inward slide for transport
+- 3 × 200mm stainless ball-bearing piano hinges at left edge, mounted to a vertical carriage beam (60×60×3mm SHS) on HGR20 linear rails — 180° outward swing for access, 880mm inward slide for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing 20mm EPDM perimeter gasket against a fixed welded door frame (50×50×3mm RHS) at X=0
 - Ø900 housed revolving-door light lock (fixed housing + single-opening C-shell drum, no fins, SKF 6215 bearings) — personnel access without opening the panel; light-tight by geometry
-- **Transport mode:** panel slides inward 300mm, clearing container doors for closure. Single-person operation, ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
+- **Transport mode:** panel slides inward 880mm, clearing container doors for closure. Single-person operation, ~5 minutes. See [Equipment Layout Report](equipment-layout-report.md) §6 for full specification.
 
 **Commercial light trap options and custom fabrication specification:** [Light Trap Selection Report](light-trap-selection.md)
 
@@ -495,7 +495,7 @@ The following order minimizes rework and avoids modifying a container that fails
 8. **Build and test shutter mechanism** — confirm full seal when closed
 9. **Install ventilation** — cut vent penetrations, install fans and light-trap baffles
 10. **Install safelight and door light-trap** — for loading operations
-11. **Test exposure** — cut a 200mm × full-height strip of sensitised muslin, pin over the image plane centre; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
+11. **Test exposure** — cut a 200mm × full-height strip of sensitised muslin, pin over the image plane center; expose for 20-minute intervals using a card mask, develop in plain water, compare zones to verify image formation and correct exposure time
 12. **Full-format test** — load full image plane, expose, develop
 
 ---

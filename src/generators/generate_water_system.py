@@ -47,7 +47,7 @@ from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
                          draw_pipe_path as _tbs_pipe_path,
                          draw_pipe_end as _tbs_pipe_end)
 
-# ── Colour palette ────────────────────────────────────────────────────────────
+# ── Color palette ────────────────────────────────────────────────────────────
 C_BLUE   = "#2979B8"   # clean water — Blue system
 C_BROWN  = "#8B5E3C"   # used / grey water — Brown system
 C_BLACK  = "#222222"   # waste water — Black system

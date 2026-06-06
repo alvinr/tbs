@@ -325,14 +325,16 @@ model.active_view.zoom_extents
 }}
 model.layers.each {{ |l| l.visible = true }}
 
-# Register the Dynamic Component so its formulas evaluate (else pose/RotX/RotZ
-# stay inert until first opened in the DC editor).
+model.commit_operation
+
+# Register the Dynamic Component AFTER committing the build operation — redraw_with_undo
+# opens its OWN operation, so it must run outside the main one (a nested operation
+# fails silently and the DC never compiles, leaving the Interact tool inert).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   cls.redraw_with_undo(fp_inst) rescue nil if cls
 end
 
-model.commit_operation
 {{ success: true, model: "Film Plane",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }}.to_json

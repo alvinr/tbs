@@ -11474,7 +11474,7 @@ inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole 
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-400.mm, 0, 900.mm))
+  txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-200.mm, -1600.mm, 900.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane Mechanism" }
@@ -11482,28 +11482,28 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("FILM PLANE
-4-corner tilt/swing", anc, Geom::Vector3d.new(400.mm, 0, 1250.mm))
+4-corner tilt/swing", anc, Geom::Vector3d.new(400.mm, 0.mm, 1250.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0, 650.mm))
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0.mm, 650.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Spray Bar" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(250.mm, 0, 1450.mm))
+  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(250.mm, 0.mm, 1450.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-550.mm, 0, 480.mm))
+  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-550.mm, 0.mm, 480.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
@@ -11511,7 +11511,7 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("EQUIPMENT PANEL
-pump / filter", anc, Geom::Vector3d.new(500.mm, 0, 820.mm))
+pump / filter", anc, Geom::Vector3d.new(500.mm, 0.mm, 820.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Stack" }
@@ -11519,7 +11519,7 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("IBC WATER STORAGE
-4x tote", anc, Geom::Vector3d.new(600.mm, 0, 1300.mm))
+4x tote", anc, Geom::Vector3d.new(600.mm, 0.mm, 1300.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Light-Trap Drum" }
@@ -11527,28 +11527,28 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("LIGHT-TRAP DRUM
-(entry)", anc, Geom::Vector3d.new(-650.mm, 0, 1050.mm))
+(entry)", anc, Geom::Vector3d.new(-650.mm, 0.mm, 1050.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Electrical" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("ELECTRICAL PANEL", anc, Geom::Vector3d.new(500.mm, 0, 560.mm))
+  txt = entities.add_text("ELECTRICAL PANEL", anc, Geom::Vector3d.new(500.mm, 0.mm, 560.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-350.mm, 0, 1550.mm))
+  txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-350.mm, 0.mm, 1550.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Evap Cooler & Duct" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0, 1700.mm))
+  txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0.mm, 1700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Ceiling Rail" }
@@ -11556,20 +11556,20 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("CEILING RAIL
-(panel suspension)", anc, Geom::Vector3d.new(150.mm, 0, 1950.mm))
+(panel suspension)", anc, Geom::Vector3d.new(150.mm, 0.mm, 1950.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 anc = Geom::Point3d.new(5618.mm, 1996.mm, 2250.mm)
 txt = entities.add_text("FAN A
-(exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0, 450.mm))
+(exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0.mm, 450.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(275.mm, 365.mm, 680.mm)
 txt = entities.add_text("FAN B
-(intake, door end)", anc, Geom::Vector3d.new(-350.mm, 0, 1250.mm))
+(intake, door end)", anc, Geom::Vector3d.new(-350.mm, 0.mm, 1250.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
 txt = entities.add_text("BATTERY BANK
-(LiFePO4)", anc, Geom::Vector3d.new(-300.mm, 0, 900.mm))
+(LiFePO4)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

@@ -1990,7 +1990,7 @@ def draw_sheet7():
     leader(ax_pole, hose_x, 470, p_xr - 4, 540,
            "1/2\" FEED HOSE\n(TANGENT TO POLE)", fs=5, color=C_BLUE, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_pole, hose_r + 7, zt_zs[1], p_xr - 4, zt_zs[1] + 95,
-           "GREY ZIP-TIE LOOP\n(@ ~200mm)", fs=5, color="#707070", font=FONT, zorder=20, bbox=_bbox)
+           "GRAY ZIP-TIE LOOP\n(@ ~200mm)", fs=5, color="#707070", font=FONT, zorder=20, bbox=_bbox)
     leader(ax_pole, 0, pole_z1 + 12, p_xl + 16, pole_z1 - 30,
            "T-HANDLE", fs=5, color=C_FRAME, font=FONT, zorder=20, bbox=_bbox)
     leader(ax_pole, 0, pole_z0, p_xl + 16, 130,

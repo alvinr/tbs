@@ -343,7 +343,7 @@ def sheet1():
     # ── EPDM seal leader ─────────────────────────────────────────────────────
     leader(ax, (PW - S, PH / 2),
            (PW + 320, PH / 2 + 300),
-           "20mm EPDM GASKET\nIN ALUMINIUM CHANNEL\n(PERIMETER, ALL SIDES)")
+           "20mm EPDM GASKET\nIN ALUMINUM CHANNEL\n(PERIMETER, ALL SIDES)")
 
     # ── Dimension lines ───────────────────────────────────────────────────────
     # Panel width
@@ -355,7 +355,7 @@ def sheet1():
     # Drum clear height
     dim_v(ax, DX - 200, DY_BOT, DY_TOP, f"{DRUM_H}mm\nCLEAR HEIGHT", offset=25)
     # Drum center from left
-    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTRED)", offset=-50)
+    dim_h(ax, 0, DRUM_CX, DY_BOT - 180, f"{int(DRUM_CX)}mm  (PANEL CL — CENTERED)", offset=-50)
     # Hinge positions from floor
     for hy in HINGE_YS:
         ax.plot([-HINGE_W - 10, -HINGE_W - 80], [hy, hy],

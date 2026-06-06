@@ -53,7 +53,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ## 4. Mechanism Design
 
-> **Note (Option A, 2026-06-06):** the text below describes the current **fixed-size rigid plane on floating-corner cross-slides**. The engineering drawings (Sheets 1–6) and optical-distortion renders still depict the earlier *stretching* four-corner kinematic (independent corner depths, ±42° tilt, compound twist) and are **pending a redraw** for Option A — the projection geometry differs (a rigid plane foreshortens rather than grows). Where text and drawings disagree, the **text governs**. The interactive 3D model `models/film-plane.skp` already reflects Option A.
+> **Note (Option A, 2026-06-06):** this describes the **fixed-size rigid plane on floating-corner cross-slides**. The drawings (Sheets 1–6) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its centre and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane.skp` also reflects Option A.
 
 ### Four-Corner Frame
 

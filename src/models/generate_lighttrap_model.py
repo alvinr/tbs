@@ -81,17 +81,19 @@ TAGS = ["Context", "Door Frame", "Carriage Rails",
 # callout OUT toward the viewer (camera looks from −X/−Y); keep Δz modest.
 LIGHTTRAP_LABELS = [
     ("Fixed Door Frame",                "DOOR FRAME",                    -500, -200,  800),
-    ("Carriage Rails + Locks",          "CARRIAGE RAILS\n+ Destaco locks", 200, -300, 1050),
     ("Panel Slide",                     "HINGE PANEL\n(slides for transport)", 550, -100, 1250),
     ("Cargo Doors",                     "CARGO DOORS",                   -100, -1600,  150),
     ("Processing Tray (partial)",       "PROCESSING TRAY",                950,  500,  300),
-    ("Walkways (near + far, partial)",  "WALKWAYS",                       300, -500,  480),
-    ("Film-Plane Rails (left, partial)","FILM-PLANE RAILS",               700,    0,  900),
 ]
-# Point-anchored (x,y,z,text,Δx,Δy,Δz) — drum + Fan B are nested in the Panel Slide DC.
+# Point-anchored (x,y,z,text,Δx,Δy,Δz). Used for parts nested in a DC (drum, Fan B)
+# AND for components whose bounds-CENTRE lands between paired parts (carriage rails,
+# walkways) or off the rail (film-plane rails) — anchor on the actual near member.
 LIGHTTRAP_POINT_LABELS = [
     (-400, 1181, 1700, "LIGHT-TRAP DRUM\n(revolving door)", -750,    0,  650),
     ( 150,  365,  700, "FAN B (intake)",                    -200, -650, 1000),
+    ( 520,  653, 2373, "CARRIAGE RAILS\n+ Destaco locks",    100, -450,  850),   # near HGR20 rail
+    (1035,  150,   73, "WALKWAYS",                           250, -750,  900),    # near walkway strip
+    ( 170, 1181, 2268, "FILM-PLANE RAILS",                  1400,    0,  300),    # top-left FP rail
 ]
 
 

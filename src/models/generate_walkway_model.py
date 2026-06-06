@@ -137,13 +137,15 @@ def walkway_decks():
 # ── Wall cantilever brackets, with the EXTERIOR brace + bolt-throughs ────────
 
 def cantilevers():
-    """Near + far wall-cantilevered gusset brackets (8mm), each shown with its
-    full through-wall detail: interior mounting plate + arm + gusset, an EXTERIOR
-    reinforcing plate on the outside wall face, and 3× M12 through-bolts (hex
-    heads outside) — all visible through the ghosted side walls."""
-    bt, vh = BRK_T, BRK_H
-    arm_d = bt + 2
-    arm_bot = GRATE_Z - arm_d
+    """Near + far wall-cantilevered gusset brackets, each shown with its full
+    through-wall detail: interior mounting plate + arm + gusset, an EXTERIOR
+    reinforcing plate, and the through-bolts (hex heads outside) — all visible
+    through the ghosted side walls. STANDARD brackets are 8mm plate / 150mm leg /
+    300mm arm with 3× M12 in a triangular pattern; the four WIDENED brackets in
+    the near EP/battery zone (X 1155–2629) are 10mm plate / 200mm leg / 500mm arm
+    with 4× M12 in a rectangular pattern (matching walkway Sheet 7)."""
+    bt, vh = BRK_T, BRK_H                                   # standard 8mm / 150mm
+    btw, vhw = k.WALKWAY_WIDE_BRACKET_T, k.WALKWAY_WIDE_BRACKET_H   # widened 10mm / 200mm
     plate_w = 120
     gusset_reach = 70
 
@@ -159,37 +161,48 @@ def cantilevers():
     sides = [("Near", 0, +1, WK_W),
              ("Far", C_WID, -1, C_WID - WK_FAR_YD)]
 
-    # 3× M12 through-bolts in a triangular pattern (X offset, Z).
-    bolt_pat = [(0, vh - 30), (-32, 42), (32, 42)]
-    shank_len = WALL_T + REINF_T + bt        # 54 — reinf face → interior plate inner face
-    reinf_z0 = max(0, (vh - REINF_H) // 2)
+    # Bolt patterns (X offset, Z): standard 3 (triangular); widened 4 (rectangular,
+    # per Sheet 7: lower pair Z=35, upper pair Z=160, both ±32mm from CL).
+    bolt_pat_std  = [(0, vh - 30), (-32, 42), (32, 42)]
+    bolt_pat_wide = [(-32, 35), (32, 35), (-32, 160), (32, 160)]
 
     parts = []
     for label, wall_yd, sign, reach in sides:
         for i, x in enumerate(stations, 1):
-            nm = f"Cantilever {label} {i}"
+            wide = (label == "Near" and WK_NEAR_WIDE_XL <= x <= WK_NEAR_WIDE_XR)
+            b   = btw if wide else bt                       # plate/arm/gusset thickness
+            v   = vhw if wide else vh                       # vertical leg height
+            arm_d = b + 2
+            arm_bot = GRATE_Z - arm_d
+            rch = WK_NEAR_WIDE_W if wide else reach         # arm reach (500mm widened deck)
+            rw  = 120 if wide else REINF_W                  # exterior reinf plate W
+            rh  = 220 if wide else REINF_H                  #                       H
+            bolt_pat = bolt_pat_wide if wide else bolt_pat_std
+            shank_len = WALL_T + REINF_T + b
+            reinf_z0 = max(0, (v - rh) // 2)
+            nm = f"Cantilever {label} {i}" + (" (widened)" if wide else "")
             # interior mounting plate, flat on the wall inner face
-            y_plate = wall_yd if sign > 0 else wall_yd - bt
+            y_plate = wall_yd if sign > 0 else wall_yd - b
             parts.append(ruby_box(f"{nm} plate", x - plate_w / 2, y_plate, 0,
-                                  plate_w, bt, vh, color=C_STEEL))
+                                  plate_w, b, v, color=C_STEEL))
             # horizontal cantilever arm at grate level (deck rests on it)
-            y_arm = wall_yd if sign > 0 else wall_yd - reach
-            parts.append(ruby_box(f"{nm} arm", x - bt / 2, y_arm, arm_bot,
-                                  bt, reach, arm_d, color=C_STEEL))
+            y_arm = wall_yd if sign > 0 else wall_yd - rch
+            parts.append(ruby_box(f"{nm} arm", x - b / 2, y_arm, arm_bot,
+                                  b, rch, arm_d, color=C_STEEL))
             # gusset triangle bracing the arm from below
-            xg = x - bt / 2
+            xg = x - b / 2
             y_far = wall_yd + sign * gusset_reach
             parts.append(ruby_tri(f"{nm} gusset",
                                   (xg, wall_yd, 0), (xg, wall_yd, arm_bot),
-                                  (xg, y_far, arm_bot), bt, color=C_STEEL))
+                                  (xg, y_far, arm_bot), b, color=C_STEEL))
             # EXTERIOR reinforcing plate on the outside wall face
             reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
-            parts.append(ruby_box(f"{nm} ext reinf plate", x - REINF_W / 2, reinf_y0,
-                                  reinf_z0, REINF_W, REINF_T, REINF_H, color=C_STEEL))
-            # 3× M12 through-bolts + exterior hex heads
+            parts.append(ruby_box(f"{nm} ext reinf plate", x - rw / 2, reinf_y0,
+                                  reinf_z0, rw, REINF_T, rh, color=C_STEEL))
+            # M12 through-bolts (3× std / 4× widened) + exterior hex heads
             for dx, bz in bolt_pat:
                 bx = x + dx
-                shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - bt)
+                shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - b)
                 parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz,
                                            6, shank_len, color=C_BOLT, axis="y"))
                 hy = (-WALL_T - REINF_T - 6) if sign > 0 else (C_WID + WALL_T + REINF_T)

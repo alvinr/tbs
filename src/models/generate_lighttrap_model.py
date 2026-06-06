@@ -217,11 +217,8 @@ def hinge_panel():
                           0, NEW_YD_L, DRUM_H, tk, NEW_YD_R - NEW_YD_L,
                           PANEL_Z_TOP - DRUM_H, color=C_PLY))
 
-    # 20mm neoprene compression strip lining the housing aperture (jamb inner faces).
-    parts.append(ruby_box("Housing aperture seal L", 0, APER_L, PANEL_Z_BOT,
-                          tk, 20, DRUM_H, color=C_GASKT))
-    parts.append(ruby_box("Housing aperture seal R", 0, APER_R - 20, PANEL_Z_BOT,
-                          tk, 20, DRUM_H, color=C_GASKT))
+    # (Housing-aperture neoprene lining strips omitted in this model — they read
+    # as distracting brown bands flanking the drum opening.)
 
     # EPDM perimeter gasket — 20mm strips on the panel exterior face, compressed
     # against the door frame (and the top/bottom seal lips) by the cam latches.
@@ -254,53 +251,51 @@ def hinge_panel():
 
 # ── Revolving light-trap drum (detailed) ─────────────────────────────────────
 
-def drum():
-    """Option A — housed revolving-door light lock (Ø900 balanced).
-
-    A FIXED housing with two opposed 80° openings — one facing the exterior
-    (cargo-door side), one facing the interior/walkway, 180° apart — and a
-    single-opening C-shell DRUM rotating inside it on SKF 6215 bearings. NO
-    internal fins. Light-tight by geometry: the housing's solid wall always
-    covers whichever opening the drum opening is not aligned with, so there is
-    no straight path at any rotation (verified in the top-down renders). Shown at
-    the ENTER position (drum opening at the exterior). ~Ø850 bore, ~555mm
-    passage (sideways entry); emergency egress is the whole panel swinging open."""
-    cx, cy, H = DRUM_CX, DRUM_CY, DRUM_H
-    ZB = PANEL_Z_BOT                 # 80 — housing/drum SUSPENDED with the panel
-    od = OPENING_DEG                 # (80mm floor gap → clears the tray rim in transport)
+def drum_housing(cx, cy):
+    """FIXED part of the housed revolving door: the Ø900 housing (two opposed
+    80° openings — exterior + interior/walkway, 180° apart) + SKF 6215 bearings
+    + lower bearing mount plate + top/bottom annular felt rings. Translates with
+    the panel but does NOT revolve, so it sits in the moving assembly OUTSIDE the
+    rotating Drum Rotor sub-component."""
+    H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
     parts = []
-
-    # Fixed HOUSING — two solid arcs (each 180−od = 100° wide) leaving two od=80°
-    # openings centered on +X (interior→walkway, 0°) and −X (exterior, 180°).
-    # Suspended: spans Z 80..2200 (bottom hangs at the panel bottom rail).
+    # Fixed HOUSING — two solid arcs leaving two od=80° openings (exterior 180° +
+    # interior 0°). Suspended: spans Z 80..2200 (bottom at the panel bottom rail).
     parts.append(ov.ruby_arc_wall("LT Housing arc (near Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=270, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.42, z0=ZB))  # rev8.1 aluminum
+                                  color=C_ALUM, alpha=0.42, z0=ZB))
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
-                                  color=C_ALUM, alpha=0.42, z0=ZB))  # rev8.1 aluminum
+                                  color=C_ALUM, alpha=0.42, z0=ZB))
+    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
+                               color=C_STEEL, axis="z"))
+    # (Lower bearing collar + mount plate omitted in this model — the drum is
+    # top-suspended, and the bottom hardware read as a plate sitting on the floor
+    # as the panel slides. Below the drum is just floor.)
+    # (Top/bottom annular felt gap-seal rings omitted too — the bottom ring read
+    # as a grey bar cutting across the drum bottom.)
+    return '\n'.join(parts)
 
-    # Rotating DRUM — single od=80° opening (C-shell). ENTER position: opening at
-    # the exterior (180°); the solid 280° arc faces the interior (0°).
+
+def drum_rotor(cx=0, cy=0):
+    """ROTATING part of the revolving door: the single-opening C-shell drum +
+    caps + top stub shaft + interior grab rail + opening brush seals. Built
+    relative to (cx, cy) so it can live in a NESTED Dynamic Component whose RotZ
+    revolves it (the revolving-door action). Pass (0,0) for the DC sub-component
+    (origin on the drum axis); drum() passes the absolute drum center for the
+    static overview build. Shown at the ENTER position (opening at exterior 180°)."""
+    H, ZB, od = DRUM_H, PANEL_Z_BOT, OPENING_DEG
+    felt = "#7E7E76"
+    parts = []
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
-                                  color=C_ALUM, alpha=0.85, z0=ZB))  # rev8.1 aluminum drum
-
-    # Drum caps (top at 2200, bottom at the suspended Z=80), top stub shaft +
-    # upper SKF 6215 bearing, lower bearing collar on the panel bottom rail (Z=80).
+                                  color=C_ALUM, alpha=0.85, z0=ZB))
     parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
                                color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, 5,
                                color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))
-    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
-                               color=C_STEEL, axis="z"))
-    parts.append(ruby_cylinder("LT Lower bearing collar", cx, cy, ZB, 75, 45,
-                               color=C_STEEL, axis="z"))
-    parts.append(ruby_box("LT Lower bearing mount plate", cx - 120, cy - 120, ZB,
-                          240, 240, 12, color=C_STEEL))
-
     # Interior grab rail on the drum's solid +X wall (operator pulls the drum).
     inner = cx + DRUM_OR - DRUM_T
     gx = cx + DRUM_OR - 75
@@ -309,23 +304,21 @@ def drum():
     for bz in (720, 1080):
         parts.append(ruby_box("LT Grab rail standoff", gx, cy - 6, bz,
                               inner - gx, 12, 12, color=C_STEEL))
-
-    # ── Rotating drum↔housing light seal ──────────────────────────────────────
-    # Felt/brush wiper strips on the two vertical edges of the drum opening sweep
-    # against the housing inner wall as the drum turns, blocking light leaking
-    # around the opening; top + bottom felt wiper rings close the annular gap.
-    felt = "#7E7E76"
-    seal_r = (DRUM_OR + HOUSING_R - HOUSING_T) / 2          # mid of running gap
-    for edge in (180 - od / 2, 180 + od / 2):               # opening edges (enter pos.)
+    # Felt/brush wiper strips on the two vertical edges of the drum opening.
+    seal_r = (DRUM_OR + HOUSING_R - HOUSING_T) / 2
+    for edge in (180 - od / 2, 180 + od / 2):
         bx = cx + seal_r * math.cos(math.radians(edge))
         by = cy + seal_r * math.sin(math.radians(edge))
         parts.append(ruby_cylinder("LT Drum opening brush seal", bx, by, ZB, 7, H - ZB,
                                    color=felt, axis="z"))
-    parts.append(ruby_cylinder("LT Drum top felt seal", cx, cy, H - 8,
-                               HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom felt seal", cx, cy, ZB,
-                               HOUSING_R - HOUSING_T - 1, 8, color=felt, axis="z"))
     return '\n'.join(parts)
+
+
+def drum():
+    """Full housed revolving door = fixed housing + rotating C-shell drum, at the
+    absolute drum center (DRUM_CX, DRUM_CY). Used by the overview (static). The
+    light-trap model uses drum_housing() + a rotating Drum Rotor DC instead."""
+    return drum_housing(DRUM_CX, DRUM_CY) + "\n" + drum_rotor(DRUM_CX, DRUM_CY)
 
 
 # ── Sliding carriage system (transport-mode slide) ──────────────────────────
@@ -519,16 +512,19 @@ def generate_ruby():
     dc_body = '\n'.join([
         hinge_panel(),
         bay(),
-        drum(),
-        housing_surround_seal(),
+        drum_housing(DRUM_CX, DRUM_CY),   # fixed housing (the rotor is a nested DC, below)
+        # housing_surround_seal() omitted — the interface-2 EPDM ring read as a
+        # distracting band flanking the drum opening; not needed in this view.
         fan_b(),
         carriage_moving(),
     ])
+    rotor_body = drum_rotor(0, 0)         # local-origin geometry for the revolve DC
 
     # Cargo-door leaves (local-origin geometry for the swing DC).
     near_leaf = door_leaf_local("near")
     far_leaf = door_leaf_local("far")
     cwid = ov.C_WID
+    drum_cx, drum_cy = DRUM_CX, DRUM_CY
 
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
@@ -563,12 +559,21 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 defn = model.definitions.add("Panel Slide")
 ents = defn.entities
 {dc_body}
+
+# Drum Rotor geometry nested INSIDE Panel Slide so it travels with the slide.
+rotor_defn = model.definitions.add("Drum Rotor")
+ents = rotor_defn.entities
+{rotor_body}
+rotor_inst = defn.entities.add_instance(rotor_defn, Geom::Transformation.translation([{drum_cx}.mm, {drum_cy}.mm, 0]))
+rotor_inst.name = "Drum Rotor"
+rotor_inst.layer = model.layers["Sliding Assembly"]
+
 inst = entities.add_instance(defn, Geom::Transformation.new)
 inst.name = "Panel Slide"
 inst.layer = model.layers["Sliding Assembly"]
 da = "dynamic_attributes"
 [defn, inst].each do |e|
-  e.set_attribute(da, "_name", "Panel Slide")
+  e.set_attribute(da, "_name", "PanelSlide")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
   e.set_attribute(da, "x", 0.0)
 end
@@ -577,6 +582,17 @@ inst.set_attribute(da, "_x_label", "Slide")
 inst.set_attribute(da, "onclick", 'ANIMATE("x", 0, {TRANSPORT_SLIDE})')
 inst.set_attribute(da, "_onclick_access", "NONE")
 dc_inst = inst
+
+# Drum Rotor — nested, so it travels with the slide. Its RotZ is DRIVEN by the
+# slide via a formula on the parent's x (the same child-reads-parent pattern the
+# cargo doors use, which DOES update during the parent's animation): as the panel
+# slides 0→{TRANSPORT_SLIDE}mm the drum revolves 0→180° so the opening swings from
+# the exterior round to face the INTERIOR (open on the inside in transport). No
+# onclick on the drum, so clicking it still cleanly slides the panel.
+rotor_inst.set_attribute(da, "_name", "DrumRotor")
+rotor_inst.set_attribute(da, "_lengthunits", "MILLIMETERS")
+rotor_inst.set_attribute(da, "rotz", 0.0)
+rotor_inst.set_attribute(da, "_rotz_formula", "180*PanelSlide!x/{TRANSPORT_SLIDE}")
 
 # ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
 # Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the

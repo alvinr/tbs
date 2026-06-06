@@ -1,29 +1,20 @@
 model = Sketchup.active_model
-model.start_operation("TBS-001 Film Plane", true)
+model.start_operation("TBS-001 Film Plane (Option A)", true)
 entities = model.active_entities
+opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0; opts["LengthPrecision"]=1
 
-# Display in millimeters (UI readout only).
-opts = model.options["UnitsOptions"]
-opts["LengthUnit"] = 2
-opts["LengthFormat"] = 0
-opts["LengthPrecision"] = 1
-
-# ── Idempotent rebuild: erase all prior groups/instances so the model frames
-# tightly on the film-plane assembly. ──
-to_erase = entities.to_a.select { |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
-}
+to_erase = entities.to_a.select { |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Tags (layers) ──
   model.layers.add("Context") unless model.layers["Context"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Corner Mechanism") unless model.layers["Corner Mechanism"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
+  model.layers.add("Corner Detail") unless model.layers["Corner Detail"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
-# ── Subsystems (each a component on its tag) ──
   # ═══ Container (ghost) ═══
   defn = model.definitions.add("Container (ghost)")
   ents = defn.entities
@@ -168,7 +159,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,100.mm,2280.mm], [162.mm,100.mm,2280.mm], [162.mm,2300.mm,2280.mm], [138.mm,2300.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["HGR20 Rail TL"] || model.materials.add("HGR20 Rail TL")
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -177,106 +168,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Leadscrew TL"
   ge = grp.entities
-  circle = ge.add_circle([176.mm,100.mm,2288.mm], [0,1,0], 8.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(2200.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Drive Nut TL
-  grp = ents.add_group
-  grp.name = "Drive Nut TL"
-  face = grp.entities.add_face([165.mm,2251.mm,2277.mm], [187.mm,2251.mm,2277.mm], [187.mm,2273.mm,2277.mm], [165.mm,2273.mm,2277.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage TL (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage TL (HGH20CA)"
-  face = grp.entities.add_face([128.mm,2240.mm,2274.mm], [172.mm,2240.mm,2274.mm], [172.mm,2284.mm,2274.mm], [128.mm,2284.mm,2274.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Corner Bracket TL
-  grp = ents.add_group
-  grp.name = "Corner Bracket TL"
-  face = grp.entities.add_face([142.mm,2232.mm,2288.mm], [158.mm,2232.mm,2288.mm], [158.mm,2292.mm,2288.mm], [142.mm,2292.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
-  mat = model.materials["Corner Bracket TL"] || model.materials.add("Corner Bracket TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.9
-  grp.material = mat
-
-  # UJoint Yoke TL
-  grp = ents.add_group
-  grp.name = "UJoint Yoke TL"
-  face = grp.entities.add_face([136.mm,2246.mm,2324.mm], [164.mm,2246.mm,2324.mm], [164.mm,2252.mm,2324.mm], [136.mm,2252.mm,2324.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Yoke TL
-  grp = ents.add_group
-  grp.name = "UJoint Yoke TL"
-  face = grp.entities.add_face([136.mm,2272.mm,2324.mm], [164.mm,2272.mm,2324.mm], [164.mm,2278.mm,2324.mm], [136.mm,2278.mm,2324.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Cross Pin TL
-  grp = ents.add_group
-  grp.name = "UJoint Cross Pin TL"
-  ge = grp.entities
-  circle = ge.add_circle([134.mm,2262.mm,2338.mm], [1,0,0], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(32.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Spider TL
-  grp = ents.add_group
-  grp.name = "UJoint Spider TL"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2262.mm,2338.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Link TL
-  grp = ents.add_group
-  grp.name = "UJoint Link TL"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 50.mm)
-  circle = ge.add_circle([150.mm,2262.mm,2338.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([184.mm,100.mm,2288.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -287,7 +184,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4637.mm,100.mm,2280.mm], [4661.mm,100.mm,2280.mm], [4661.mm,2300.mm,2280.mm], [4637.mm,2300.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["HGR20 Rail TL"] || model.materials.add("HGR20 Rail TL")
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -296,106 +193,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Leadscrew TR"
   ge = grp.entities
-  circle = ge.add_circle([4675.mm,100.mm,2288.mm], [0,1,0], 8.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(2200.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Drive Nut TR
-  grp = ents.add_group
-  grp.name = "Drive Nut TR"
-  face = grp.entities.add_face([4664.mm,1951.mm,2277.mm], [4686.mm,1951.mm,2277.mm], [4686.mm,1973.mm,2277.mm], [4664.mm,1973.mm,2277.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage TR (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage TR (HGH20CA)"
-  face = grp.entities.add_face([4627.mm,1940.mm,2274.mm], [4671.mm,1940.mm,2274.mm], [4671.mm,1984.mm,2274.mm], [4627.mm,1984.mm,2274.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Corner Bracket TR
-  grp = ents.add_group
-  grp.name = "Corner Bracket TR"
-  face = grp.entities.add_face([4641.mm,1932.mm,2288.mm], [4657.mm,1932.mm,2288.mm], [4657.mm,1992.mm,2288.mm], [4641.mm,1992.mm,2288.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
-  mat = model.materials["Corner Bracket TL"] || model.materials.add("Corner Bracket TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.9
-  grp.material = mat
-
-  # UJoint Yoke TR
-  grp = ents.add_group
-  grp.name = "UJoint Yoke TR"
-  face = grp.entities.add_face([4635.mm,1946.mm,2324.mm], [4663.mm,1946.mm,2324.mm], [4663.mm,1952.mm,2324.mm], [4635.mm,1952.mm,2324.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Yoke TR
-  grp = ents.add_group
-  grp.name = "UJoint Yoke TR"
-  face = grp.entities.add_face([4635.mm,1972.mm,2324.mm], [4663.mm,1972.mm,2324.mm], [4663.mm,1978.mm,2324.mm], [4635.mm,1978.mm,2324.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Cross Pin TR
-  grp = ents.add_group
-  grp.name = "UJoint Cross Pin TR"
-  ge = grp.entities
-  circle = ge.add_circle([4633.mm,1962.mm,2338.mm], [1,0,0], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(32.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Spider TR
-  grp = ents.add_group
-  grp.name = "UJoint Spider TR"
-  ge = grp.entities
-  circle = ge.add_circle([4649.mm,1962.mm,2338.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Link TR
-  grp = ents.add_group
-  grp.name = "UJoint Link TR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 50.mm)
-  circle = ge.add_circle([4649.mm,1962.mm,2338.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([4683.mm,100.mm,2288.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -406,7 +209,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,100.mm,92.mm], [162.mm,100.mm,92.mm], [162.mm,2300.mm,92.mm], [138.mm,2300.mm,92.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["HGR20 Rail TL"] || model.materials.add("HGR20 Rail TL")
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -415,106 +218,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Leadscrew BL"
   ge = grp.entities
-  circle = ge.add_circle([176.mm,100.mm,100.mm], [0,1,0], 8.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(2200.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Drive Nut BL
-  grp = ents.add_group
-  grp.name = "Drive Nut BL"
-  face = grp.entities.add_face([165.mm,1851.mm,89.mm], [187.mm,1851.mm,89.mm], [187.mm,1873.mm,89.mm], [165.mm,1873.mm,89.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage BL (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage BL (HGH20CA)"
-  face = grp.entities.add_face([128.mm,1840.mm,86.mm], [172.mm,1840.mm,86.mm], [172.mm,1884.mm,86.mm], [128.mm,1884.mm,86.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Corner Bracket BL
-  grp = ents.add_group
-  grp.name = "Corner Bracket BL"
-  face = grp.entities.add_face([142.mm,1832.mm,0.mm], [158.mm,1832.mm,0.mm], [158.mm,1892.mm,0.mm], [142.mm,1892.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
-  mat = model.materials["Corner Bracket TL"] || model.materials.add("Corner Bracket TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.9
-  grp.material = mat
-
-  # UJoint Yoke BL
-  grp = ents.add_group
-  grp.name = "UJoint Yoke BL"
-  face = grp.entities.add_face([136.mm,1846.mm,36.mm], [164.mm,1846.mm,36.mm], [164.mm,1852.mm,36.mm], [136.mm,1852.mm,36.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Yoke BL
-  grp = ents.add_group
-  grp.name = "UJoint Yoke BL"
-  face = grp.entities.add_face([136.mm,1872.mm,36.mm], [164.mm,1872.mm,36.mm], [164.mm,1878.mm,36.mm], [136.mm,1878.mm,36.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Cross Pin BL
-  grp = ents.add_group
-  grp.name = "UJoint Cross Pin BL"
-  ge = grp.entities
-  circle = ge.add_circle([134.mm,1862.mm,50.mm], [1,0,0], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(32.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Spider BL
-  grp = ents.add_group
-  grp.name = "UJoint Spider BL"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,1862.mm,50.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Link BL
-  grp = ents.add_group
-  grp.name = "UJoint Link BL"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -50.mm)
-  circle = ge.add_circle([150.mm,1862.mm,50.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([184.mm,100.mm,100.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -525,7 +234,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4637.mm,100.mm,92.mm], [4661.mm,100.mm,92.mm], [4661.mm,2300.mm,92.mm], [4637.mm,2300.mm,92.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["HGR20 Rail TL"] || model.materials.add("HGR20 Rail TL")
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
   mat.color = Sketchup::Color.new(96, 96, 104)
   mat.alpha = 1.0
   grp.material = mat
@@ -534,106 +243,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Leadscrew BR"
   ge = grp.entities
-  circle = ge.add_circle([4675.mm,100.mm,100.mm], [0,1,0], 8.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(2200.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Drive Nut BR
-  grp = ents.add_group
-  grp.name = "Drive Nut BR"
-  face = grp.entities.add_face([4664.mm,1551.mm,89.mm], [4686.mm,1551.mm,89.mm], [4686.mm,1573.mm,89.mm], [4664.mm,1573.mm,89.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage BR (HGH20CA)
-  grp = ents.add_group
-  grp.name = "Carriage BR (HGH20CA)"
-  face = grp.entities.add_face([4627.mm,1540.mm,86.mm], [4671.mm,1540.mm,86.mm], [4671.mm,1584.mm,86.mm], [4627.mm,1584.mm,86.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Drive Nut TL"] || model.materials.add("Drive Nut TL")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Corner Bracket BR
-  grp = ents.add_group
-  grp.name = "Corner Bracket BR"
-  face = grp.entities.add_face([4641.mm,1532.mm,0.mm], [4657.mm,1532.mm,0.mm], [4657.mm,1592.mm,0.mm], [4641.mm,1592.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
-  mat = model.materials["Corner Bracket TL"] || model.materials.add("Corner Bracket TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.9
-  grp.material = mat
-
-  # UJoint Yoke BR
-  grp = ents.add_group
-  grp.name = "UJoint Yoke BR"
-  face = grp.entities.add_face([4635.mm,1546.mm,36.mm], [4663.mm,1546.mm,36.mm], [4663.mm,1552.mm,36.mm], [4635.mm,1552.mm,36.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Yoke BR
-  grp = ents.add_group
-  grp.name = "UJoint Yoke BR"
-  face = grp.entities.add_face([4635.mm,1572.mm,36.mm], [4663.mm,1572.mm,36.mm], [4663.mm,1578.mm,36.mm], [4635.mm,1578.mm,36.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Cross Pin BR
-  grp = ents.add_group
-  grp.name = "UJoint Cross Pin BR"
-  ge = grp.entities
-  circle = ge.add_circle([4633.mm,1562.mm,50.mm], [1,0,0], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(32.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Spider BR
-  grp = ents.add_group
-  grp.name = "UJoint Spider BR"
-  ge = grp.entities
-  circle = ge.add_circle([4649.mm,1562.mm,50.mm], [0,0,1], 7.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(1.mm)
-  mat = model.materials["UJoint Cross Pin TL"] || model.materials.add("UJoint Cross Pin TL")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # UJoint Link BR
-  grp = ents.add_group
-  grp.name = "UJoint Link BR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -50.mm)
-  circle = ge.add_circle([4649.mm,1562.mm,50.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([4683.mm,100.mm,100.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -642,18 +257,138 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Corner Mechanism"
   inst.layer = model.layers["Corner Mechanism"]
 
+  # ═══ Corner Detail (TR) ═══
+  defn = model.definitions.add("Corner Detail (TR)")
+  ents = defn.entities
+  # Detail Rail TR
+  grp = ents.add_group
+  grp.name = "Detail Rail TR"
+  face = grp.entities.add_face([4637.mm,100.mm,2280.mm], [4661.mm,100.mm,2280.mm], [4661.mm,2300.mm,2280.mm], [4637.mm,2300.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  mat.color = Sketchup::Color.new(96, 96, 104)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Leadscrew TR
+  grp = ents.add_group
+  grp.name = "Detail Leadscrew TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
+  circle = ge.add_circle([4683.mm,100.mm,2288.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Carriage TR
+  grp = ents.add_group
+  grp.name = "Detail Carriage TR"
+  face = grp.entities.add_face([4623.mm,1369.792939991129.mm,2270.mm], [4675.mm,1369.792939991129.mm,2270.mm], [4675.mm,1433.792939991129.mm,2270.mm], [4623.mm,1433.792939991129.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Drive Nut TR
+  grp = ents.add_group
+  grp.name = "Detail Drive Nut TR"
+  face = grp.entities.add_face([4669.mm,1387.792939991129.mm,2276.mm], [4697.mm,1387.792939991129.mm,2276.mm], [4697.mm,1415.792939991129.mm,2276.mm], [4669.mm,1415.792939991129.mm,2276.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail X cross-slide TR (SWING)
+  grp = ents.add_group
+  grp.name = "Detail X cross-slide TR (SWING)"
+  face = grp.entities.add_face([4633.mm,1385.792939991129.mm,2294.mm], [4685.192477867366.mm,1385.792939991129.mm,2294.mm], [4685.192477867366.mm,1417.792939991129.mm,2294.mm], [4633.mm,1417.792939991129.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail X slider TR
+  grp = ents.add_group
+  grp.name = "Detail X slider TR"
+  face = grp.entities.add_face([4653.192477867366.mm,1381.792939991129.mm,2292.mm], [4685.192477867366.mm,1381.792939991129.mm,2292.mm], [4685.192477867366.mm,1421.792939991129.mm,2292.mm], [4653.192477867366.mm,1421.792939991129.mm,2292.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Z cross-slide TR (TILT)
+  grp = ents.add_group
+  grp.name = "Detail Z cross-slide TR (TILT)"
+  face = grp.entities.add_face([4660.192477867366.mm,1386.792939991129.mm,2206.0237271397837.mm], [4678.192477867366.mm,1386.792939991129.mm,2206.0237271397837.mm], [4678.192477867366.mm,1416.792939991129.mm,2206.0237271397837.mm], [4660.192477867366.mm,1416.792939991129.mm,2206.0237271397837.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(97.97627286021634.mm)
+  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
+  mat.color = Sketchup::Color.new(44, 160, 44)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Z slider TR
+  grp = ents.add_group
+  grp.name = "Detail Z slider TR"
+  face = grp.entities.add_face([4656.192477867366.mm,1383.792939991129.mm,2206.0237271397837.mm], [4682.192477867366.mm,1383.792939991129.mm,2206.0237271397837.mm], [4682.192477867366.mm,1419.792939991129.mm,2206.0237271397837.mm], [4656.192477867366.mm,1419.792939991129.mm,2206.0237271397837.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Rod-End TR
+  grp = ents.add_group
+  grp.name = "Detail Rod-End TR"
+  face = grp.entities.add_face([4652.192477867366.mm,1384.792939991129.mm,2205.0237271397837.mm], [4686.192477867366.mm,1384.792939991129.mm,2205.0237271397837.mm], [4686.192477867366.mm,1418.792939991129.mm,2205.0237271397837.mm], [4652.192477867366.mm,1418.792939991129.mm,2205.0237271397837.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(34.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Detail Flat-corner ghost TR
+  grp = ents.add_group
+  grp.name = "Detail Flat-corner ghost TR"
+  face = grp.entities.add_face([4636.mm,1388.792939991129.mm,2275.mm], [4662.mm,1388.792939991129.mm,2275.mm], [4662.mm,1414.792939991129.mm,2275.mm], [4636.mm,1414.792939991129.mm,2275.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
+  mat.color = Sketchup::Color.new(154, 166, 178)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Corner Detail (TR)"
+  inst.layer = model.layers["Corner Detail"]
+
 
 # ── Film Plane (Dynamic Component — click to tilt+swing) ──
 
 # ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
-# Child: the flat framed screen, built in LOCAL coords (TL at the child origin).
-fp_screen_defn = model.definitions.add("Film Plane Screen")
-ents = fp_screen_defn.entities
+fp_defn = model.definitions.add("Film Plane")
+ents = fp_defn.entities
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
-  ge = grp.entities
-  f = ge.add_face([0.mm,0.mm,0.mm], [4499.mm,0.mm,0.mm], [4499.mm,0.mm,-2388.mm], [0.mm,0.mm,-2388.mm])
+  face = grp.entities.add_face([-2249.5.mm,-6.mm,-1094.mm], [2249.5.mm,-6.mm,-1094.mm], [2249.5.mm,6.mm,-1094.mm], [-2249.5.mm,6.mm,-1094.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2188.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
@@ -664,11 +399,11 @@ ents = fp_screen_defn.entities
   grp.name = "FP Frame Top"
   ge = grp.entities
   vec = Geom::Vector3d.new(4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([0.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -678,11 +413,11 @@ ents = fp_screen_defn.entities
   grp.name = "FP Frame Bottom"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4499.mm,0.mm,-2388.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([2249.5.mm,0.mm,-1094.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -691,12 +426,12 @@ ents = fp_screen_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Left"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2388.mm)
-  circle = ge.add_circle([0.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2188.mm)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -705,90 +440,212 @@ ents = fp_screen_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Right"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2388.mm)
-  circle = ge.add_circle([4499.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2188.mm)
+  circle = ge.add_circle([2249.5.mm,0.mm,1094.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-# Parent: empty driver placed at the TL pivot; the child is nested at the parent
-# origin so its RotX/RotZ pivot on the fixed TL corner.
-fp_defn = model.definitions.add("Film Plane")
-fp_screen_inst = fp_defn.entities.add_instance(fp_screen_defn, Geom::Transformation.new)
-fp_screen_inst.name = "Film Plane Screen"
-fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([150.mm, 2262.mm, 2388.mm]))
+  # Carriage TL (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage TL (HGH20CA)"
+  face = grp.entities.add_face([-2275.5.mm,-32.mm,1082.mm], [-2223.5.mm,-32.mm,1082.mm], [-2223.5.mm,32.mm,1082.mm], [-2275.5.mm,32.mm,1082.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drive Nut TL
+  grp = ents.add_group
+  grp.name = "Drive Nut TL"
+  face = grp.entities.add_face([-2229.5.mm,-14.mm,1081.mm], [-2201.5.mm,-14.mm,1081.mm], [-2201.5.mm,14.mm,1081.mm], [-2229.5.mm,14.mm,1081.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rod-End TL
+  grp = ents.add_group
+  grp.name = "Rod-End TL"
+  face = grp.entities.add_face([-2265.5.mm,-16.mm,1078.mm], [-2233.5.mm,-16.mm,1078.mm], [-2233.5.mm,16.mm,1078.mm], [-2265.5.mm,16.mm,1078.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage TR (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage TR (HGH20CA)"
+  face = grp.entities.add_face([2223.5.mm,-32.mm,1082.mm], [2275.5.mm,-32.mm,1082.mm], [2275.5.mm,32.mm,1082.mm], [2223.5.mm,32.mm,1082.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drive Nut TR
+  grp = ents.add_group
+  grp.name = "Drive Nut TR"
+  face = grp.entities.add_face([2269.5.mm,-14.mm,1081.mm], [2297.5.mm,-14.mm,1081.mm], [2297.5.mm,14.mm,1081.mm], [2269.5.mm,14.mm,1081.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rod-End TR
+  grp = ents.add_group
+  grp.name = "Rod-End TR"
+  face = grp.entities.add_face([2233.5.mm,-16.mm,1078.mm], [2265.5.mm,-16.mm,1078.mm], [2265.5.mm,16.mm,1078.mm], [2233.5.mm,16.mm,1078.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage BL (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage BL (HGH20CA)"
+  face = grp.entities.add_face([-2275.5.mm,-32.mm,-1106.mm], [-2223.5.mm,-32.mm,-1106.mm], [-2223.5.mm,32.mm,-1106.mm], [-2275.5.mm,32.mm,-1106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drive Nut BL
+  grp = ents.add_group
+  grp.name = "Drive Nut BL"
+  face = grp.entities.add_face([-2229.5.mm,-14.mm,-1107.mm], [-2201.5.mm,-14.mm,-1107.mm], [-2201.5.mm,14.mm,-1107.mm], [-2229.5.mm,14.mm,-1107.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rod-End BL
+  grp = ents.add_group
+  grp.name = "Rod-End BL"
+  face = grp.entities.add_face([-2265.5.mm,-16.mm,-1110.mm], [-2233.5.mm,-16.mm,-1110.mm], [-2233.5.mm,16.mm,-1110.mm], [-2265.5.mm,16.mm,-1110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage BR (HGH20CA)
+  grp = ents.add_group
+  grp.name = "Carriage BR (HGH20CA)"
+  face = grp.entities.add_face([2223.5.mm,-32.mm,-1106.mm], [2275.5.mm,-32.mm,-1106.mm], [2275.5.mm,32.mm,-1106.mm], [2223.5.mm,32.mm,-1106.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Drive Nut BR
+  grp = ents.add_group
+  grp.name = "Drive Nut BR"
+  face = grp.entities.add_face([2269.5.mm,-14.mm,-1107.mm], [2297.5.mm,-14.mm,-1107.mm], [2297.5.mm,14.mm,-1107.mm], [2269.5.mm,14.mm,-1107.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(26.mm)
+  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rod-End BR
+  grp = ents.add_group
+  grp.name = "Rod-End BR"
+  face = grp.entities.add_face([2233.5.mm,-16.mm,-1110.mm], [2265.5.mm,-16.mm,-1110.mm], [2265.5.mm,16.mm,-1110.mm], [2233.5.mm,16.mm,-1110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([2399.5.mm, 1181.mm, 1194.mm]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
-fp_screen_inst.layer = model.layers["Film Plane"]
 fda = "dynamic_attributes"
 [fp_defn, fp_inst].each do |e|
   e.set_attribute(fda, "_name", "FilmPlane")
   e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
   e.set_attribute(fda, "pose", 0.0)
+  e.set_attribute(fda, "rotx", 0.0)
+  e.set_attribute(fda, "rotz", 0.0)
 end
 fp_inst.set_attribute(fda, "_pose_access", "VIEW")
 fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
+fp_inst.set_attribute(fda, "_rotx_formula", "20.0*pose")
+fp_inst.set_attribute(fda, "_rotz_formula", "15.0*pose")
 fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
 fp_inst.set_attribute(fda, "_onclick_access", "NONE")
-# Child rotation formulas read the parent's pose (updates during the animation).
-fp_screen_inst.set_attribute(fda, "_name", "FilmPlaneScreen")
-fp_screen_inst.set_attribute(fda, "_lengthunits", "MILLIMETERS")
-fp_screen_inst.set_attribute(fda, "rotx", 0.0)
-fp_screen_inst.set_attribute(fda, "rotz", 0.0)
-fp_screen_inst.set_attribute(fda, "_rotx_formula", "9.51*FilmPlane!pose")
-fp_screen_inst.set_attribute(fda, "_rotz_formula", "-3.81*FilmPlane!pose")
 
+
+# ── Corner-detail callouts (Labels tag — shown only in the corner-detail scene) ──
+t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(4649.mm,1151.792939991129.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(4683.mm,701.7929399911291.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Carriage + drive nut", Geom::Point3d.new(4629.mm,1401.792939991129.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(4659.096238933683.mm,1401.792939991129.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(4669.192477867366.mm,1401.792939991129.mm,2255.011863569892.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(4669.192477867366.mm,1401.792939991129.mm,2222.0237271397837.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Labels"] rescue nil
+t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(4649.mm,1401.792939991129.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused
+keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Corner Detail", "Labels"]; dl = model.layers[0]
+model.layers.to_a.each { |l| next if l==dl||keep_tags.include?(l.name); model.layers.remove(l,true) rescue nil }
 
-# ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"]
-default_layer = model.layers[0]
-model.layers.to_a.each { |l|
-  next if l == default_layer || keep_tags.include?(l.name)
-  model.layers.remove(l, true) rescue nil
-}
-
-# ── Scenes ── Combined/Tray use one iso extents camera; each corner scene zooms
-# its own iso camera onto that corner's mechanism.
 model.layers.each { |l| l.visible = true }
-bb = model.bounds
-ctr = bb.center
-dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.5)
+bb = model.bounds; ctr = bb.center
+dir = Geom::Vector3d.new(0.6, -0.74, 0.42); dir.normalize!
+eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil], ["Processing Tray", ["Processing Tray"], nil], ["Corner TL", ["Film Plane", "Corner Mechanism"], [150.mm, 2262.mm, 2388.mm]], ["Corner TR", ["Film Plane", "Corner Mechanism"], [4649.mm, 1962.mm, 2388.mm]], ["Corner BL", ["Film Plane", "Corner Mechanism"], [150.mm, 1862.mm, 0.mm]], ["Corner BR", ["Film Plane", "Corner Mechanism"], [4649.mm, 1562.mm, 0.mm]]].each { |name, tags, tgt|
-  model.layers.each { |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Processing Tray", ["Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4669.192477867366.mm, 1401.792939991129.mm, 2222.0237271397837.mm], 95]].each { |name, tags, tgt, so|
+  model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
-    e = t.offset(dir, 70.0)        # ~1.8m iso standoff (inches)
-    model.active_view.camera = Sketchup::Camera.new(e, t, Z_AXIS)
+    cam = Sketchup::Camera.new(t.offset(dir, so), t, Z_AXIS); cam.fov = 35
+    model.active_view.camera = cam
   else
     model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
     model.active_view.zoom_extents
   end
-  page = model.pages.add(name)
-  page.use_camera = true
+  page = model.pages.add(name); page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }
+model.layers["Corner Detail"].visible = false
+model.layers["Labels"].visible = false
 
 model.commit_operation
 
-# Register the Dynamic Component AFTER committing the build operation — redraw_with_undo
-# opens its OWN operation, so it must run outside the main one (a nested operation
-# fails silently and the DC never compiles, leaving the Interact tool inert).
+# Register the DC AFTER committing (redraw_with_undo opens its own operation).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
   cls.redraw_with_undo(fp_inst) rescue nil if cls
 end
 
-{ success: true, model: "Film Plane",
+{ success: true, model: "film-plane", scenes: model.pages.count,
    components: model.entities.grep(Sketchup::ComponentInstance).length,
-   tags: model.layers.count, scenes: model.pages.count }.to_json
+   tilt: 20.0, swing: 15.0 }.to_json

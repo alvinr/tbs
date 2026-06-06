@@ -513,20 +513,23 @@ WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1962mm
 # REMOVABLE — must be lifted out before sliding panel to transport position.
 # Supported by (rev 2026-06-05 — edge beam on bolt-through wall seats; see
 # docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md):
-#  (a) INNER edge — a full-width STEEL 50×50×3 SHS EDGE BEAM at X≈470 standing in
-#      the bath→film-frame envelope (Z≈45..95, ~15mm proud of the deck as a
+#  (a) INNER edge — a full-width STEEL 40×40×3 SHS EDGE BEAM at X≈470 standing in
+#      the bath→film-frame envelope (Z≈52..92, ~12mm proud of the deck as a
 #      toe-board), SIMPLY SUPPORTED wall-to-wall on IBC-style seat brackets BOLTED
 #      THROUGH the corrugated wall at each end (demountable — the panel slides
-#      through X≈470). Replaces the old cantilevered Al bearer (couldn't fit the
-#      15mm rim→grate clearance and overstressed the bracket-arm tip).
+#      through X≈470). The 40mm section (not 50mm) so the beam bottom (Z52) clears
+#      the tray rim (Z50) by 2mm where it crosses the near/far rims (Yd≈80/2280) —
+#      a 50mm beam at Z45 fouled them. Replaces the old cantilevered Al bearer.
 #  (b) OUTER edge — a bearing strip on the tray rim (X=170) + 3 floor legs at
 #      X≈140 (cargo-door side, on bare floor outside the tray).
 # Zero processing tray contact — all supports outside or above the tray/bath.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
 WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm — floor-leg span (outer edge)
 # Left walkway support
-LEFT_WK_BEARER_SIZE  = 50    # edge-beam section (mm) — 50×50×3mm STEEL SHS (rev: was Al RHS)
+LEFT_WK_BEARER_SIZE  = 40    # edge-beam section (mm) — 40×40×3mm STEEL SHS (rev: 50→40 to clear tray rim; was Al RHS)
 LEFT_WK_BEARER_T     = 3     # edge-beam wall thickness (mm)
+LEFT_WK_BEAM_Z0      = PROC_TRAY_RIM + 2   # = 52mm — beam underside (2mm above the tray rim where it crosses near/far rims)
+LEFT_WK_BEAM_Z1      = LEFT_WK_BEAM_Z0 + LEFT_WK_BEARER_SIZE  # = 92mm — beam top (kerb, ~12mm proud; clears film-frame bottom Z100 by 8mm)
 LEFT_WK_LEG_N        = 3     # number of floor-standing support legs (cargo door side)
 LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)

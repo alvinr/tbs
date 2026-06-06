@@ -36,8 +36,8 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
 
 Sheet 5 — Detail C: Left walkway support system (removable):
   Elevation showing all support elements: floor-standing leg (X=140, on bare
-  floor) with cantilever arm, the full-width steel edge beam (50×50×3mm steel
-  SHS at X=470, Z45-95, kerb proud of the deck) on bolt-through wall seats, and
+  floor) with cantilever arm, the full-width steel edge beam (40×40×3mm steel
+  SHS at X=470, Z52-92, kerb proud of the deck) on bolt-through wall seats, and
   bearing strip on tray rim (X=170). Zero processing tray contact.
 
 Sheet 6 — Detail D: Left edge-beam wall-seat bracket (IBC-style bolt-through):
@@ -73,6 +73,7 @@ from tbs_constants import (
     PROC_OPEN_AREA,
     PANEL_SLIDE, PANEL_CENTER_T, PANEL_FLOOR_GAP,
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T,
+    LEFT_WK_BEAM_Z0, LEFT_WK_BEAM_Z1,
     LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
     LEFT_WK_BEARING_STRIP,
     LEFT_WK_SEAT_BOLT_N, LEFT_WK_SEAT_BOLT_D, LEFT_WK_SEAT_PLATE,
@@ -1589,12 +1590,12 @@ def sheet4():
            ha="center", va="top", arrow_style="-|>", font=FONT)
 
     # ── Steel edge beam cross-section at X=470 (the butt-joint support) ───────
-    # Full-width steel SHS standing in the Z45-95 envelope (kerb proud of the
-    # Z80 deck). Both the left grating and the near/far door-end grating bear
-    # on its Z65 ledges; simply supported wall-to-wall on wall seats (Sheet 6).
-    BEAM_SZ = LEFT_WK_BEARER_SIZE  # = 50mm
-    beam_top = grate_top + 15        # Z = 95mm (kerb top)
-    beam_bot = beam_top - BEAM_SZ    # Z = 45mm
+    # Full-width 40x40 steel SHS in the Z52-92 envelope (kerb proud of the Z80
+    # deck; bottom clears the tray rim Z50 by 2mm). Both the left grating and the
+    # near/far door-end grating bear on its Z65 ledges; simply supported on seats.
+    BEAM_SZ = LEFT_WK_BEARER_SIZE  # = 40mm
+    beam_bot = LEFT_WK_BEAM_Z0       # Z = 52mm
+    beam_top = LEFT_WK_BEAM_Z1       # Z = 92mm (kerb top)
     beam_l = LEFT_WK_R - BEAM_SZ / 2
     ax.add_patch(Rectangle((sx(beam_l), sy(beam_bot)),
                             sx(BEAM_SZ), sy(BEAM_SZ),
@@ -1613,7 +1614,7 @@ def sheet4():
            sx(LEFT_WK_R + BEAM_SZ / 2 + 40), sy(beam_top + 18),
            f"STEEL EDGE BEAM\n{BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{LEFT_WK_BEARER_T}mm STEEL SHS\n"
            f"FULL WIDTH \u00b7 ON WALL SEATS\n(SEE SHEET 6 \u00b7 REMOVABLE)\n"
-           f"TOP ~15mm PROUD = KERB",
+           f"TOP ~12mm PROUD = KERB",
            color="#404048", fs=5,
            ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
@@ -1756,9 +1757,9 @@ def sheet4():
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
-        f"2. Inner edge (X={LEFT_WK_R}): full-width steel edge beam {LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm SHS, simply supported on wall seats (sheet 6). Top ~15mm proud = kerb.",
+        f"2. Inner edge (X={LEFT_WK_R}): full-width steel edge beam {LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_SIZE}\u00d7{LEFT_WK_BEARER_T}mm SHS, simply supported on wall seats (sheet 6). Top ~12mm proud = kerb.",
         f"3. Cargo door side (X={LEFT_WK_L}): bearing strip + {LEFT_WK_LEG_N} floor legs at {leg_spacing}mm ctrs.",
-        f"4. ZERO tray contact \u2014 supports outside or above tray; beam bottom (Z45) clears the bath (Z\u224842).",
+        f"4. ZERO tray contact \u2014 supports outside or above tray; beam bottom (Z52) clears the tray rim (Z50) by 2mm and the bath (Z\u224842) by 10mm.",
         f"5. Panel slides {PANEL_SLIDE}mm; front face reaches X={PANEL_INNER} — sweeps {SLIDE_OVER}mm past the X={LEFT_WK_R} butt joint through the vacated left-walkway zone.",
         f"6. Remove edge beam + seat plates + grating before panel slides (backing plates stay on wall).",
     ]
@@ -1781,14 +1782,15 @@ def sheet4():
 # Elevation cross-section showing the support elements for the left walkway:
 #   (a) Floor-standing support leg (cargo door side, X=140, on bare floor)
 #       with cantilever arm to walkway edge.
-#   (b) Steel edge beam (50×50×3mm steel SHS) at X=470 (processing tray side),
-#       standing in the Z45–95 envelope (top ~15mm proud as a toe-board kerb),
+#   (b) Steel edge beam (40×40×3mm steel SHS) at X=470 (processing tray side),
+#       standing in the Z52–92 envelope (top ~12mm proud as a toe-board kerb),
 #       simply supported wall-to-wall on bolt-through wall seats (see Sheet 6).
 #       The grating bears on a ledge at Z65; the kerb stops it sliding tray-ward.
 #   (c) Bearing strip (15mm Al flat bar) on tray rim at X=170.
 # View: looking along Yd (same as sheets 1, 3, 5).
 # Zero processing tray contact — all supports outside or above tray; the edge
-# beam bottom (Z45) clears the bath working level (Z≈42) by ~3mm.
+# beam bottom (Z52) clears the bath (Z≈42) by 10mm and the near/far tray rims
+# (Z50, crossed at Yd≈80/2280) by 2mm.
 # Scale ≈ 3.5:1 for clarity.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet5():
@@ -1817,11 +1819,12 @@ def sheet5():
     LEG_TOP = grate_bot             # = 65mm (cantilever arm top = grate bottom)
 
     # Steel edge beam geometry (processing tray side, X=470)
-    # Stands in the Z45–95 envelope: top ~15mm proud of the Z80 deck as a kerb.
-    BEAM_SZ = LEFT_WK_BEARER_SIZE   # = 50mm
+    # 40x40 SHS in the Z52–92 envelope: bottom clears the tray rim (Z50) by 2mm,
+    # top ~12mm proud of the Z80 deck as a kerb.
+    BEAM_SZ = LEFT_WK_BEARER_SIZE   # = 40mm
     BEAM_T  = LEFT_WK_BEARER_T     # = 3mm
-    beam_top = grate_top + 15       # Z = 95mm (kerb top, 15mm proud of deck)
-    beam_bot = beam_top - BEAM_SZ   # Z = 45mm (clears the Z≈42 bath level)
+    beam_bot = LEFT_WK_BEAM_Z0      # Z = 52mm (2mm above rim, 10mm above bath)
+    beam_top = LEFT_WK_BEAM_Z1      # Z = 92mm (kerb top, ~12mm proud of deck)
     ledge_z  = grate_bot            # Z = 65mm — grating bears on a ledge here
     bath_top = PROC_TRAY_RIM - 8    # Z = 42mm — fluid working level
 
@@ -1930,7 +1933,7 @@ def sheet5():
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Steel edge beam (processing tray side, X=470) ────────────────────────
-    # Cross-section of 50x50x3mm STEEL SHS at X=470, Z45-95 (kerb proud of deck)
+    # Cross-section of 40x40x3mm STEEL SHS at X=470, Z52-92 (kerb proud of deck)
     beam_l = LEFT_WK_R - BEAM_SZ / 2
     ax.add_patch(Rectangle((sx(beam_l), sy(beam_bot)),
                             sx(BEAM_SZ), sy(BEAM_SZ),
@@ -1945,7 +1948,7 @@ def sheet5():
                             sx(ledge_w + 1), sy(3),
                             fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=9))
     # Kerb call-out (the portion proud of the Z80 deck)
-    ax.annotate("TOE-BOARD\nKERB (~15mm)",
+    ax.annotate("TOE-BOARD\nKERB (~12mm)",
                 xy=(sx(LEFT_WK_R), sy((grate_top + beam_top) / 2)),
                 xytext=(sx(LEFT_WK_R + BEAM_SZ / 2 + 55), sy(beam_top + 6)),
                 ha="left", va="bottom", fontsize=5, color="#404048",
@@ -2004,7 +2007,7 @@ def sheet5():
             ha="left", va="top", fontsize=4.5, color="#3A7AB0",
             fontfamily="monospace", zorder=6)
     gap_x = (tray_x + 50 + LEFT_WK_R - BEAM_SZ / 2) / 2
-    ax.annotate("ZERO TRAY\nCONTACT\n(BEAM BOT Z45\nCLEARS BATH)",
+    ax.annotate(f"ZERO TRAY CONTACT\n(BEAM BOT Z{int(beam_bot)} CLEARS\nBATH Z42 +10 & RIM Z50 +2)",
                 xy=(sx(LEFT_WK_R - BEAM_SZ / 2), sy(beam_bot + 1)),
                 xytext=(sx(gap_x - 10), sy(TRAY_FLOOR_T + 22)),
                 ha="center", va="bottom", fontsize=5.5, color="#208020",
@@ -2054,10 +2057,10 @@ def sheet5():
     notes_top = sy(Z_HI - 3)
     notes = [
         "LEFT WALKWAY SUPPORT SYSTEM:",
-        f"1. STEEL EDGE BEAM ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm steel SHS) at X={LEFT_WK_R}mm, full width ({C_WID}mm) along Yd. Simply supported wall-to-wall on bolt-through wall seats (Sheet 6). Top ~15mm proud = toe-board kerb.",
+        f"1. STEEL EDGE BEAM ({BEAM_SZ}\u00d7{BEAM_SZ}\u00d7{BEAM_T}mm steel SHS) at X={LEFT_WK_R}mm, full width ({C_WID}mm) along Yd. Simply supported wall-to-wall on bolt-through wall seats (Sheet 6). Top ~12mm proud = toe-board kerb; bottom Z52 clears the near/far tray rims it crosses.",
         f"2. {LEFT_WK_LEG_N} FLOOR LEGS at X={int(OUTER_LEG_X)}mm ({leg_spacing}mm centers) on bare floor outside processing tray.",
         f"3. BEARING STRIP (15mm Al flat bar) on tray rim at X={LEFT_WK_L}mm.",
-        f"4. ZERO tray contact \u2014 supports outside or above tray; beam bottom (Z45) clears the bath (Z\u224842).",
+        f"4. ZERO tray contact \u2014 supports outside or above tray; beam bottom (Z52) clears the tray rim (Z50) by 2mm and the bath (Z\u224842) by 10mm.",
         f"5. All removable \u2014 edge beam + interior seat plates + grating lift out before panel transport (backing plates stay on wall).",
     ]
     draw_notes(ax, notes, notes_x, notes_top, spacing=sy(6.5), fs=7, ha="left", width=sx(280), font=FONT)
@@ -2083,7 +2086,7 @@ def sheet5():
 #
 # VIEW A — Section along the beam axis (Yd-Z plane at X=470):
 #   Wall at Yd=0 (exterior to the left). Interior seat plate forms a pocket; the
-#   beam end drops onto its Z45 ledge. 3x M12 bolts run through the wall to an
+#   beam end drops onto its Z52 ledge. 3x M12 bolts run through the wall to an
 #   exterior backing plate (heads outside). Grating bears on the Z65 ledge.
 #
 # VIEW B — Exterior elevation of the backing plate (X-Z plane, from outside):
@@ -2108,8 +2111,8 @@ def sheet6():
     # Beam vertical envelope (matches sheets 4/5)
     grate_bot = WALKWAY_H - WALKWAY_GRATE_T   # 65 (ledge)
     grate_top = WALKWAY_H                       # 80 (deck)
-    beam_top = grate_top + 15                   # 95 (kerb top)
-    beam_bot = beam_top - BEAM_SZ               # 45
+    beam_bot = LEFT_WK_BEAM_Z0                   # 52
+    beam_top = LEFT_WK_BEAM_Z1                   # 92 (kerb top)
 
     fig, (axA, axB) = plt.subplots(1, 2, figsize=(18, 10),
                                    gridspec_kw={"width_ratios": [1.5, 1.0]})
@@ -2181,8 +2184,7 @@ def sheet6():
              fontfamily="monospace", zorder=12)
 
     # 3x M12 through-bolts (run horizontally along Yd through wall + plates)
-    bolt_zs = [beam_bot + 8, beam_bot + 8, beam_bot + 40]
-    bolt_xs_note = "triangular"
+    bolt_zs = [beam_bot + 8, beam_bot + 8, beam_bot + 30]   # triangular pattern projected
     for k, bz in enumerate(sorted(set(bolt_zs))):
         axA.plot([ext_x - 6, seat_reach - 6], [bz, bz], color=C_BOLT,
                  lw=2.2, zorder=10, solid_capstyle="butt")

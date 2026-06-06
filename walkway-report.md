@@ -218,20 +218,22 @@ seats** — the same load path as the IBC platform beams, not a cantilever.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Inner-edge edge beam | 50×50×3mm **steel** SHS, full width 2362mm | X=470mm, spans wall-to-wall (Yd 0→2362), top at Z≈95mm |
+| Inner-edge edge beam | 40×40×3mm **steel** SHS, full width 2362mm | X=470mm, spans wall-to-wall (Yd 0→2362), Z52–92 (top at Z≈92mm) |
 | Wall-seat bracket (×2) | 6mm steel seat plate + exterior backing plate (100×180×6mm) + 3× M12 through-bolts, each end | Near (Yd≈0) and far (Yd≈2362) container walls at X=470mm |
 | Floor-standing support legs | 25×25×3mm aluminum SHS, 3 legs | X=140mm (on bare floor outside tray), 440mm spacing |
 | Foot plates | 60×60×3mm aluminum with rubber pad | At base of each floor leg |
 | Bearing strip | 15mm aluminum flat bar | On processing tray rim at X=170mm (removable) |
 
 The inner edge at X=470mm is the load-critical line (it overhangs the tray). It is
-carried by a **steel 50×50×3mm SHS edge beam** standing in the only available
-envelope — **Z≈45–95mm**, above the tray fluid (rim Z=50mm) and clear below the
-film-frame bottom (Z=100mm). The beam stands ~15mm proud of the Z=80mm deck, so it
-doubles as a **toe-board / safety kerb** along the tray edge. Steel (not aluminum)
-is used for stiffness over the full-width span; the grating's inner edge rests on a
-ledge along the beam and is located laterally by the proud kerb (no fasteners, so it
-lifts straight out).
+carried by a **steel 40×40×3mm SHS edge beam** standing in the envelope
+**Z≈52–92mm**. The 40mm section (not 50mm) and the Z52 underside are deliberate: the
+beam runs the full container width and **crosses the tray's near and far perimeter
+rims** (Z0–50, at Yd≈80 and 2280), so its bottom must sit above Z50 — Z52 clears the
+rim by 2mm, the bath (Z42) by 10mm, and the film-frame bottom (Z=100mm) by 8mm, and
+keeps all load on the wall seats (the thin SS tray rim carries nothing). The beam
+stands ~12mm proud of the Z=80mm deck, so it doubles as a **toe-board / safety
+kerb**. The grating's inner edge rests on a Z65 ledge along the beam and is located
+laterally by the proud kerb (no fasteners, so it lifts straight out).
 
 The edge beam is **simply supported wall-to-wall** on a seat bracket bolted through
 the corrugated container wall at each end — an interior seat plate, an exterior
@@ -245,9 +247,11 @@ exterior backing plates stay on the wall. The full-width beam also picks up the
 near/far walkways' door-end grate edges at X=470mm, so no separate X=470mm
 cantilever bracket is needed.
 
-**Structural check** (≈1kN operator at midspan, span = full width 2362mm): bending
-≈71MPa vs ~250MPa yield → **FoS ≈3.5**; deflection ≈6.6mm = **L/358** (stiff, not
-bouncy); beam mass ≈10.5kg (liftable). Each wall reaction ≈0.5kN — the IBC-style
+**Structural check** (≈1kN operator at midspan, span = full width 2362mm): for the
+40×40×3 SHS (I ≈ 1.02×10⁵mm⁴, Z ≈ 5.1×10³mm³) bending ≈116MPa vs ~250MPa yield →
+**FoS ≈2.2**; deflection ≈13mm = **L/175** (springy but serviceable for occasional
+single-person access — a midspan stiffener is the fallback if bounce is an issue);
+beam mass ≈8.2kg (liftable). Each wall reaction ≈0.5kN — the IBC-style
 wall seats carry ~50× that in the tote application. This is a hand-check, not a
 signed analysis. See the [edge-beam design spec](https://github.com/alvinr/tbs/blob/main/docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md)
 for the full rationale and the ruled-out alternatives (rod suspension fouls the
@@ -409,7 +413,7 @@ arms.
 
 **Left walkway** uses gravity retention only. The grating sits on twin support
 lines (edge beam at X=470mm and bearing strip at X=170mm) and is held in
-position laterally by the edge beam's **proud kerb**, which stands ~15mm above the
+position laterally by the edge beam's **proud kerb**, which stands ~12mm above the
 deck and stops the grating sliding tray-ward. The twin support lines prevent
 rocking. No fasteners are used because the left walkway must be removed quickly
 for hinged panel transport mode — lift straight up and carry out.
@@ -453,7 +457,7 @@ distributes load across multiple rods.
 | 9 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
 | 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
 | 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
-| 12 | Edge beam (left walkway inner edge) | 50×50×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
+| 12 | Edge beam (left walkway inner edge) | 40×40×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
 | 12a | Wall-seat bracket (left edge beam) | 6mm steel seat plate + 100×180×6mm exterior backing plate, each end | 2 | $30–$55 |
 | 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 6 (3 per seat) | $9–$15 |
 | 13 | Floor support leg | 25×25×3mm aluminum SHS, 65mm tall | 3 | $10–$20 |

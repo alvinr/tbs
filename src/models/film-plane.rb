@@ -159,79 +159,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Processing Tray"
   inst.layer = model.layers["Processing Tray"]
 
-  # ═══ Film Plane (posed) ═══
-  defn = model.definitions.add("Film Plane (posed)")
-  ents = defn.entities
-  # Film Plane Screen (muslin)
-  grp = ents.add_group
-  grp.name = "Film Plane Screen (muslin)"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2262.mm,2388.mm], [4649.mm,1962.mm,2388.mm], [4649.mm,1562.mm,0.mm], [150.mm,1862.mm,0.mm])
-  mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
-  mat.color = Sketchup::Color.new(32, 96, 160)
-  mat.alpha = 0.3
-  grp.material = mat
-
-  # FP Frame Top
-  grp = ents.add_group
-  grp.name = "FP Frame Top"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(4499.mm, -300.mm, 0.mm)
-  circle = ge.add_circle([150.mm,2262.mm,2388.mm], vec, 25.4.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Bottom
-  grp = ents.add_group
-  grp.name = "FP Frame Bottom"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-4499.mm, 300.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,1562.mm,0.mm], vec, 25.4.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Left
-  grp = ents.add_group
-  grp.name = "FP Frame Left"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -400.mm, -2388.mm)
-  circle = ge.add_circle([150.mm,2262.mm,2388.mm], vec, 25.4.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Right
-  grp = ents.add_group
-  grp.name = "FP Frame Right"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -400.mm, -2388.mm)
-  circle = ge.add_circle([4649.mm,1962.mm,2388.mm], vec, 25.4.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Film Plane (posed)"
-  inst.layer = model.layers["Film Plane"]
-
   # ═══ Corner Mechanism ═══
   defn = model.definitions.add("Corner Mechanism")
   ents = defn.entities
@@ -254,7 +181,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(2200.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -298,7 +225,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,2246.mm,2324.mm], [164.mm,2246.mm,2324.mm], [164.mm,2252.mm,2324.mm], [136.mm,2252.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -309,7 +236,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,2272.mm,2324.mm], [164.mm,2272.mm,2324.mm], [164.mm,2278.mm,2324.mm], [136.mm,2278.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -349,7 +276,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -373,7 +300,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(2200.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -417,7 +344,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4635.mm,1946.mm,2324.mm], [4663.mm,1946.mm,2324.mm], [4663.mm,1952.mm,2324.mm], [4635.mm,1952.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -428,7 +355,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4635.mm,1972.mm,2324.mm], [4663.mm,1972.mm,2324.mm], [4663.mm,1978.mm,2324.mm], [4635.mm,1978.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -468,7 +395,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -492,7 +419,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(2200.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -536,7 +463,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,1846.mm,36.mm], [164.mm,1846.mm,36.mm], [164.mm,1852.mm,36.mm], [136.mm,1852.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -547,7 +474,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,1872.mm,36.mm], [164.mm,1872.mm,36.mm], [164.mm,1878.mm,36.mm], [136.mm,1878.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -587,7 +514,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -611,7 +538,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(2200.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -655,7 +582,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4635.mm,1546.mm,36.mm], [4663.mm,1546.mm,36.mm], [4663.mm,1552.mm,36.mm], [4635.mm,1552.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -666,7 +593,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4635.mm,1572.mm,36.mm], [4663.mm,1572.mm,36.mm], [4663.mm,1578.mm,36.mm], [4635.mm,1578.mm,36.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -706,7 +633,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["FP Frame Top"] || model.materials.add("FP Frame Top")
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -714,6 +641,96 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corner Mechanism"
   inst.layer = model.layers["Corner Mechanism"]
+
+
+# ── Film Plane (Dynamic Component — click to tilt+swing) ──
+
+# ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
+fp_defn = model.definitions.add("Film Plane")
+ents = fp_defn.entities
+  # Film Plane Screen (muslin)
+  grp = ents.add_group
+  grp.name = "Film Plane Screen (muslin)"
+  ge = grp.entities
+  f = ge.add_face([0.mm,0.mm,0.mm], [4499.mm,0.mm,0.mm], [4499.mm,0.mm,-2388.mm], [0.mm,0.mm,-2388.mm])
+  mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
+  mat.color = Sketchup::Color.new(32, 96, 160)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # FP Frame Top
+  grp = ents.add_group
+  grp.name = "FP Frame Top"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(4499.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([0.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Frame Bottom
+  grp = ents.add_group
+  grp.name = "FP Frame Bottom"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-4499.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4499.mm,0.mm,-2388.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Frame Left
+  grp = ents.add_group
+  grp.name = "FP Frame Left"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2388.mm)
+  circle = ge.add_circle([0.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Frame Right
+  grp = ents.add_group
+  grp.name = "FP Frame Right"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2388.mm)
+  circle = ge.add_circle([4499.mm,0.mm,0.mm], vec, 25.4.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Leadscrew TL"] || model.materials.add("Leadscrew TL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([150.mm, 2262.mm, 2388.mm]))
+fp_inst.name = "Film Plane"
+fp_inst.layer = model.layers["Film Plane"]
+fda = "dynamic_attributes"
+[fp_defn, fp_inst].each do |e|
+  e.set_attribute(fda, "_name", "FilmPlane")
+  e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(fda, "pose", 0.0)
+  e.set_attribute(fda, "rotx", 0.0)
+  e.set_attribute(fda, "rotz", 0.0)
+end
+fp_inst.set_attribute(fda, "_pose_access", "VIEW")
+fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
+fp_inst.set_attribute(fda, "_rotx_formula", "9.51*pose")
+fp_inst.set_attribute(fda, "_rotz_formula", "-3.81*pose")
+fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
+fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 
 
 model.definitions.purge_unused
@@ -751,6 +768,13 @@ model.active_view.zoom_extents
   page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }
+
+# Register the Dynamic Component so its formulas evaluate (else pose/RotX/RotZ
+# stay inert until first opened in the DC editor).
+if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
+  cls = $dc_observers.get_latest_class
+  cls.redraw_with_undo(fp_inst) rescue nil if cls
+end
 
 model.commit_operation
 { success: true, model: "Film Plane",

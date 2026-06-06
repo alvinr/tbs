@@ -236,8 +236,6 @@
 
 ![Film Plane Distortion — Configuration 5](assets/film-plane-distortion-c5.png)
 
-![Film Plane Distortion — Configuration 6](assets/film-plane-distortion-c6.png)
-
 ![Film Plane Distortion — Summary Grid](assets/film-plane-distortion-summary.png)
 
 ---

@@ -69,9 +69,10 @@ NEW_YD_R = YD_R                       # 1709  (PANEL_CORNER_YD_L/R from constant
 APER_L = DRUM_CY - APERTURE_R         # 713 — aperture edge (near)
 APER_R = DRUM_CY + APERTURE_R         # 1649 — aperture edge (far)
 
-TAGS = ["Context", "Door Frame", "Hinge Panel", "Light Trap",
-        "Sliding Carriage", "Fan B",
-        "Processing Tray", "Walkways", "Film Plane Rails"]
+TAGS = ["Context", "Door Frame", "Carriage Rails",
+        "Processing Tray", "Walkways", "Film Plane Rails",
+        "Sliding Assembly",   # dynamic-component moving group (panel slide)
+        "Cargo Doors"]        # dynamic-component swing doors (click to close)
 
 
 # ── Ghosted container context (end opening only) ─────────────────────────────
@@ -86,7 +87,10 @@ def context(left_walkway=True, x_far=None):
     x_far: far (+X) edge of the stub (default None = operating extent, X=1600,
     byte-identical). The transport model passes a value so the container crops to
     the same plane as its tray / walkway / rail partials."""
-    x0 = -400
+    # The container's cargo-door end is at X=0, so the ghost stub starts there.
+    # The B2 punch-out bay, drum and cargo doors protrude BEYOND it (X<0) — the
+    # stub must NOT extend past the door plane or it reads as a misalignment.
+    x0 = 0
     xlen = (x_far - x0) if x_far is not None else 2000
     parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
@@ -332,36 +336,19 @@ def drum():
 # transport is an open detail to confirm.
 TRANSPORT_SLIDE = ov.PANEL_SLIDE        # 880 — from constants (rev 9 / B2)
 
-def sliding_carriage(slide=0):
-    """HGR20 ceiling rails + HGH20CA blocks + suspension brackets + left
-    carriage beam + Destaco toggle clamps (operational & transport locks).
-
-    slide: X offset (mm) applied to the MOVING parts only (carriage blocks,
-    suspension brackets, left beam); the rails and both Destaco lock-points stay
-    fixed. Default 0 = operating pose (byte-identical). The transport model
-    (generate_lighttrap_transport_model.py) passes PANEL_SLIDE."""
+def carriage_fixed():
+    """FIXED part of the sliding carriage: the two HGR20 ceiling rails + both
+    Destaco toggle-clamp lock points (operational X≈0 + transport X≈TRANSPORT_SLIDE).
+    These do NOT travel with the panel, so they live outside the dynamic-component
+    moving group."""
     parts = []
-    rail_x0, rail_len = -30, TRANSPORT_SLIDE + 220  # spans the full B2 transport slide:
-                                                    # carriage (18+slide+44=942) stays on rail
+    rail_x0, rail_len = -30, TRANSPORT_SLIDE + 220  # spans the full B2 transport slide
     rail_w, rail_h = 20, 30
     rail_z = C_HGT - rail_h                          # 2358 — hung from ceiling
-    carr_w, carr_d, carr_h = 44, 44, 28
-    brk_w, brk_d, brk_h = 60, 40, 30
-
     for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
         parts.append(ruby_box(f"HGR20 rail {nm}", rail_x0, yd - rail_w / 2, rail_z,
                               rail_len, rail_w, rail_h, color=C_RAIL))
-        parts.append(ruby_box(f"HGH20CA carriage {nm}", 18 + slide, yd - carr_d / 2,
-                              rail_z - carr_h, carr_w, carr_d, carr_h, color=C_CARR))
-        parts.append(ruby_box(f"Suspension bracket {nm}", 15 + slide, yd - brk_d / 2,
-                              PANEL_Z_TOP, brk_w, brk_d, rail_z - carr_h - PANEL_Z_TOP,
-                              color=C_STEEL))
-
-    # Left-side carriage beam — vertical 60×60 SHS in the fixed-frame slot.
-    parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0 + slide, 0, PANEL_Z_BOT,
-                          60, 60, PANEL_Z_TOP - PANEL_Z_BOT, color=C_STEEL))
-
-    # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈500).
+    # Destaco 207-U toggle clamps — operational lock (X≈0) + transport lock (X≈TRANSPORT_SLIDE).
     for cx, lock in [(-10, "operational"), (TRANSPORT_SLIDE - 10, "transport")]:
         for yd in (NEW_YD_L, NEW_YD_R):
             parts.append(ruby_box(f"Destaco clamp ({lock}) base", cx, yd - 18,
@@ -371,6 +358,50 @@ def sliding_carriage(slide=0):
     return '\n'.join(parts)
 
 
+def carriage_moving(slide=0):
+    """MOVING part of the sliding carriage: the HGH20CA blocks + suspension
+    brackets + left 60×60 SHS carriage beam. These travel with the hinge panel,
+    so in the dynamic-component model they go INSIDE the moving group (slide=0,
+    the DC handles the translation)."""
+    parts = []
+    rail_h = 30
+    rail_z = C_HGT - rail_h
+    carr_w, carr_d, carr_h = 44, 44, 28
+    brk_w, brk_d, brk_h = 60, 40, 30
+    for yd, nm in [(NEW_YD_L, "L"), (NEW_YD_R, "R")]:
+        parts.append(ruby_box(f"HGH20CA carriage {nm}", 18 + slide, yd - carr_d / 2,
+                              rail_z - carr_h, carr_w, carr_d, carr_h, color=C_CARR))
+        parts.append(ruby_box(f"Suspension bracket {nm}", 15 + slide, yd - brk_d / 2,
+                              PANEL_Z_TOP, brk_w, brk_d, rail_z - carr_h - PANEL_Z_TOP,
+                              color=C_STEEL))
+    parts.append(ruby_box("Left carriage beam (60×60 SHS)", 0 + slide, 0, PANEL_Z_BOT,
+                          60, 60, PANEL_Z_TOP - PANEL_Z_BOT, color=C_STEEL))
+    return '\n'.join(parts)
+
+
+def sliding_carriage(slide=0):
+    """Full carriage = fixed rails/clamps + moving blocks/brackets/beam."""
+    return carriage_fixed() + "\n" + carriage_moving(slide)
+
+
+# Cargo-door hinge X (vertical hinge axis, at the leaf-thickness centerline just
+# outside the door frame). Each leaf is built in LOCAL coords with its origin at
+# this hinge so a Dynamic-Component RotZ swings it open/closed.
+DOOR_HINGE_X = -85
+
+
+def door_leaf_local(side):
+    """One ghosted ISO cargo-door leaf in LOCAL coords, origin at its vertical
+    hinge. side 'near' (extends +Yd from the Yd=0 corner) or 'far' (extends -Yd
+    from the Yd=C_WID corner). At RotZ=0 the leaf lies CLOSED across the opening;
+    the DC swings it to ±180° (fully open, flat in the door-frame plane)."""
+    dt = 60                                   # leaf thickness (X at closed)
+    leaf_len = ov.C_WID / 2 - 3               # half width minus the center meeting gap
+    y0 = 0 if side == "near" else -leaf_len
+    return ruby_box(f"Cargo door leaf {side}", -dt / 2, y0, 0,
+                    dt, leaf_len, ov.C_HGT, color=C_STEEL, alpha=0.25)
+
+
 # ── Fan B on the hinge panel (reused from Overview's shared builder) ─────────
 
 def fan_b():
@@ -378,9 +409,9 @@ def fan_b():
 
 
 # ── Shared cargo-door-end context (tray + walkways + film-plane rails) ───────
-# Cropped to a common +X plane so the SAME details render in both the operating
-# (lighttrap) and transport (lighttrap-transport) models. Reuses the overview's
-# tray / walkway / rail geometry + constants via `ov`.
+# Cropped to a common +X plane so the static context reads in place around the
+# moving Dynamic-Component assembly. Reuses the overview's tray / walkway / rail
+# geometry + constants via `ov`.
 PARTIAL_X = 1600        # common +X crop plane — container stub, tray, walkways and
                         # film-plane beams all end here so their cut faces align
 
@@ -467,40 +498,44 @@ def bay():
 # ── Assemble the Ruby script ─────────────────────────────────────────────────
 
 def generate_ruby():
-    comps = [
+    # Fixed subsystems (do not travel with the panel).
+    static_comps = [
         component("Context", "Context", context(x_far=PARTIAL_X)),
-        component("Fixed Door Frame", "Door Frame", door_frame()),
-        component("Hinged Light-Trap Panel", "Hinge Panel", hinge_panel()),
-        component("Revolving Light-Trap Drum", "Light Trap", drum()),
-        component("Punch-Out Bay", "Hinge Panel", bay()),
-        component("Sliding Carriage System", "Sliding Carriage", sliding_carriage()),
-        component("Fan B (intake)", "Fan B", fan_b()),
+        # include_seal=False — the housing-surround EPDM ring is bonded to the
+        # moving housing (built in the DC below via housing_surround_seal()), so it
+        # must NOT also be drawn on the fixed frame or a copy is left behind on slide.
+        component("Fixed Door Frame", "Door Frame", door_frame(include_seal=False)),
+        component("Carriage Rails + Locks", "Carriage Rails", carriage_fixed()),
         component("Processing Tray (partial)", "Processing Tray", processing_tray_partial()),
         component("Walkways (near + far, partial)", "Walkways", walkways_partial()),
         component("Film-Plane Rails (left, partial)", "Film Plane Rails", film_plane_left()),
     ]
-    body = '\n'.join(comps)
+    static_body = '\n'.join(static_comps)
+
+    # Moving assembly → the Dynamic Component. Click it with the Interact tool to
+    # slide between operating (X=0) and transport (X=TRANSPORT_SLIDE). Everything
+    # that travels with the panel lives here: panel + bay + drum + housing seal +
+    # Fan B + the carriage blocks/brackets/beam (all at slide=0; the DC translates).
+    dc_body = '\n'.join([
+        hinge_panel(),
+        bay(),
+        drum(),
+        housing_surround_seal(),
+        fan_b(),
+        carriage_moving(),
+    ])
+
+    # Cargo-door leaves (local-origin geometry for the swing DC).
+    near_leaf = door_leaf_local("near")
+    far_leaf = door_leaf_local("far")
+    cwid = ov.C_WID
 
     tags_ruby = '\n'.join(
         f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    scene_groups = [
-        ("Light-Trap Drum", ["Light Trap", "Hinge Panel"]),
-        ("Hinge Panel & Seal", ["Hinge Panel", "Door Frame"]),
-        ("Sliding Carriage", ["Sliding Carriage", "Hinge Panel"]),
-        ("Fan B", ["Fan B", "Hinge Panel"]),
-        ("Over Tray & Walkway", ["Hinge Panel", "Light Trap", "Sliding Carriage",
-                                 "Processing Tray", "Walkways"]),
-        ("Film-Plane Rails (L)", ["Film Plane Rails", "Light Trap", "Hinge Panel",
-                                  "Processing Tray"]),
-    ]
-    scene_groups_ruby = '[' + ', '.join(
-        '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
-        for n, tags in scene_groups) + ']'
-
     return f'''model = Sketchup.active_model
-model.start_operation("TBS-001 Light Trap", true)
+model.start_operation("TBS-001 Light Trap (dynamic slide)", true)
 entities = model.active_entities
 
 opts = model.options["UnitsOptions"]
@@ -508,7 +543,7 @@ opts["LengthUnit"] = 2
 opts["LengthFormat"] = 0
 opts["LengthPrecision"] = 1
 
-# Idempotent rebuild: erase ALL prior instances (no scale figure in this model).
+# Idempotent rebuild: erase ALL prior instances.
 to_erase = entities.to_a.select {{ |e|
   e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
 }}
@@ -519,8 +554,66 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Tags (layers) ──
 {tags_ruby}
 
-# ── Subsystems (each a component on its tag) ──
-{body}
+# ── Fixed subsystems ──
+{static_body}
+
+# ═══ Panel Slide — DYNAMIC COMPONENT (the moving assembly) ═══
+# Interact tool → click to ANIMATE the panel between operating (0) and
+# transport ({TRANSPORT_SLIDE}mm).
+defn = model.definitions.add("Panel Slide")
+ents = defn.entities
+{dc_body}
+inst = entities.add_instance(defn, Geom::Transformation.new)
+inst.name = "Panel Slide"
+inst.layer = model.layers["Sliding Assembly"]
+da = "dynamic_attributes"
+[defn, inst].each do |e|
+  e.set_attribute(da, "_name", "Panel Slide")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "x", 0.0)
+end
+inst.set_attribute(da, "_x_access", "VIEW")
+inst.set_attribute(da, "_x_label", "Slide")
+inst.set_attribute(da, "onclick", 'ANIMATE("x", 0, {TRANSPORT_SLIDE})')
+inst.set_attribute(da, "_onclick_access", "NONE")
+dc_inst = inst
+
+# ═══ Cargo Doors — DYNAMIC COMPONENT (click to close) ═══
+# Parent "Cargo Doors" holds two leaf children whose RotZ is driven by the
+# parent's "shut" attribute (0 = open / ±180°, 1 = closed / 0°). Click the parent
+# with the Interact tool → ANIMATE shut 0↔1 swings both leaves together.
+doors_defn = model.definitions.add("Cargo Doors")
+doors_ents = doors_defn.entities
+
+near_defn = model.definitions.add("Cargo Door Leaf Near")
+ents = near_defn.entities
+{near_leaf}
+near_inst = doors_ents.add_instance(near_defn, Geom::Transformation.translation([{DOOR_HINGE_X}.mm, 0, 0]))
+near_inst.name = "Leaf Near"
+
+far_defn = model.definitions.add("Cargo Door Leaf Far")
+ents = far_defn.entities
+{far_leaf}
+far_inst = doors_ents.add_instance(far_defn, Geom::Transformation.translation([{DOOR_HINGE_X}.mm, {cwid}.mm, 0]))
+far_inst.name = "Leaf Far"
+
+doors_inst = entities.add_instance(doors_defn, Geom::Transformation.new)
+doors_inst.name = "Cargo Doors"
+doors_inst.layer = model.layers["Cargo Doors"]
+
+dda = "dynamic_attributes"
+doors_inst.set_attribute(dda, "_name", "CargoDoors")
+doors_inst.set_attribute(dda, "shut", 0.0)
+doors_inst.set_attribute(dda, "_shut_access", "VIEW")
+doors_inst.set_attribute(dda, "_shut_label", "Shut")
+doors_inst.set_attribute(dda, "onclick", 'ANIMATE("shut", 0, 1)')
+doors_inst.set_attribute(dda, "_onclick_access", "NONE")
+near_inst.set_attribute(dda, "_name", "LeafNear")
+near_inst.set_attribute(dda, "rotz", 180.0)
+near_inst.set_attribute(dda, "_rotz_formula", "180*(1-CargoDoors!shut)")
+far_inst.set_attribute(dda, "_name", "LeafFar")
+far_inst.set_attribute(dda, "rotz", -180.0)
+far_inst.set_attribute(dda, "_rotz_formula", "-180*(1-CargoDoors!shut)")
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -533,7 +626,7 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-# ── Scenes — one shared iso camera; scenes only toggle visibility ──
+# ── Camera + one scene (the slide is interactive, not scene-based) ──
 model.layers.each {{ |l| l.visible = true }}
 bb = model.bounds
 ctr = bb.center
@@ -541,18 +634,25 @@ dir = Geom::Vector3d.new(-0.6, -0.72, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
-
-model.pages.add("Overview")
-{scene_groups_ruby}.each {{ |name, tags|
-  model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }}
-  page = model.pages.add(name)
-  page.use_camera = true
-}}
-model.layers.each {{ |l| l.visible = true }}
+page = model.pages.add("Light Trap — click panel to slide")
+page.use_camera = true
 
 model.commit_operation
-{{ success: true, model: "Light Trap",
+
+# Register the DC attributes with the Dynamic Components engine so the Interact
+# tool drives the slide (skipped if the extension isn't loaded).
+dc_ready = false
+if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
+  cls = $dc_observers.get_latest_class
+  if cls
+    [dc_inst, doors_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }}
+    dc_ready = true
+  end
+end
+
+{{ success: true, model: "Light Trap (dynamic slide)",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
+   dynamic_engine: dc_ready, slide_mm: {TRANSPORT_SLIDE},
    tags: model.layers.count, scenes: model.pages.count }}.to_json
 '''
 

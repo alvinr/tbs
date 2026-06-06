@@ -11499,13 +11499,6 @@ if inst
   txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(450.mm, -2700.mm, 1300.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-550.mm, 0.mm, 480.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
 if inst
   bb = inst.bounds
@@ -11551,14 +11544,6 @@ if inst
   txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0.mm, 1700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Ceiling Rail" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("CEILING RAIL
-(panel suspension)", anc, Geom::Vector3d.new(150.mm, 0.mm, 1950.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 anc = Geom::Point3d.new(5618.mm, 1996.mm, 2250.mm)
 txt = entities.add_text("FAN A
 (exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0.mm, 450.mm))
@@ -11570,6 +11555,13 @@ txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
 txt = entities.add_text("BATTERY BANK
 (LiFePO4)", anc, Geom::Vector3d.new(-300.mm, -600.mm, 900.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2400.mm, 150.mm, 65.mm)
+txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-200.mm, -850.mm, 750.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(225.mm, 653.mm, 2370.mm)
+txt = entities.add_text("CEILING RAIL
+(panel suspension)", anc, Geom::Vector3d.new(200.mm, -400.mm, 800.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused

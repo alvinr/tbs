@@ -11534,7 +11534,7 @@ inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Electric
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("ELECTRICAL", anc, Geom::Vector3d.new(500.mm, 0, 560.mm))
+  txt = entities.add_text("ELECTRICAL PANEL", anc, Geom::Vector3d.new(500.mm, 0, 560.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
@@ -11551,13 +11551,6 @@ if inst
   txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0, 1700.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Fans A & B" }
-if inst
-  bb = inst.bounds
-  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("VENT FANS A & B", anc, Geom::Vector3d.new(-200.mm, 0, 1750.mm))
-  txt.layer = model.layers["Labels"] rescue nil
-end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Ceiling Rail" }
 if inst
   bb = inst.bounds
@@ -11566,6 +11559,18 @@ if inst
 (panel suspension)", anc, Geom::Vector3d.new(150.mm, 0, 1950.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
+anc = Geom::Point3d.new(5618.mm, 1996.mm, 2250.mm)
+txt = entities.add_text("FAN A
+(exhaust, IBC end)", anc, Geom::Vector3d.new(400.mm, 0, 450.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(275.mm, 365.mm, 680.mm)
+txt = entities.add_text("FAN B
+(intake, door end)", anc, Geom::Vector3d.new(-350.mm, 0, 1250.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2060.mm, 60.mm, 600.mm)
+txt = entities.add_text("BATTERY BANK
+(LiFePO4)", anc, Geom::Vector3d.new(-300.mm, 0, 900.mm))
+txt.layer = model.layers["Labels"] rescue nil
 
 model.definitions.purge_unused
 model.materials.purge_unused

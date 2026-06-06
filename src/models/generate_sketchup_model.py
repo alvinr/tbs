@@ -145,18 +145,29 @@ OVERVIEW_LABELS = [
     ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",     500,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",         600, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",          -650, 1050),
-    ("Electrical",            "ELECTRICAL",                         500,  560),
+    ("Electrical",            "ELECTRICAL PANEL",                   500,  560),
     ("Chemistry Shelf",       "CHEMISTRY SHELF",                   -350, 1550),
     ("Evap Cooler & Duct",    "EVAP COOLER",                        300, 1700),
-    ("Fans A & B",            "VENT FANS A & B",                   -200, 1750),
     ("Ceiling Rail",          "CEILING RAIL\n(panel suspension)",   150, 1950),
+]
+
+# Labels anchored at an explicit point (mm) — for items NOT represented by a single
+# component instance: the two fans live in one "Fans A & B" component that spans both
+# ends of the container (so its bounds-centre lands in the empty middle), and the
+# battery bank lives inside the "Electrical" component.
+# (x, y, z, text, leader Δx mm, leader Δz mm)
+OVERVIEW_POINT_LABELS = [
+    (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,  450),
+    (275,   365,  680, "FAN B\n(intake, door end)", -350, 1250),
+    (2060,   60,  600, "BATTERY BANK\n(LiFePO4)",    -300,  900),
 ]
 
 
 def overview_labels():
     """Ruby that adds an in-model text callout (with leader) for each major system
-    component, on the 'Labels' tag. Anchors at the component's bounds top-centre so
-    it tracks the real geometry; the leader fans the text out above the model."""
+    component, on the 'Labels' tag. Component labels anchor at the instance's bounds
+    top-centre (tracking the geometry); point labels anchor at an explicit coordinate.
+    Leaders fan the text out above the model."""
     rows = []
     for name, text, dx, dz in OVERVIEW_LABELS:
         rows.append(
@@ -167,6 +178,11 @@ def overview_labels():
             f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({mm(dx)}, 0, {mm(dz)}))\n'
             f'  txt.layer = model.layers["Labels"] rescue nil\n'
             f'end')
+    for x, y, z, text, dx, dz in OVERVIEW_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({mm(x)}, {mm(y)}, {mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({mm(dx)}, 0, {mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
     return '\n'.join(rows)
 
 

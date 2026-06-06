@@ -12,7 +12,7 @@ opts["LengthPrecision"] = 1
 # ── Idempotent rebuild: erase prior generated instances (keep 'Sree'), then
 # purge their now-unused definitions so names don't collide on re-add.
 to_erase = entities.to_a.select { |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)) &&
+  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)) &&
   !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
@@ -40,6 +40,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Water Hookups") unless model.layers["Water Hookups"]
   model.layers.add("Fans") unless model.layers["Fans"]
   model.layers.add("Water Plumbing") unless model.layers["Water Plumbing"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
 # Dashed line style for the optical cone wireframe (guidance, not a solid).
 begin
@@ -11468,11 +11469,109 @@ end
   inst.layer = model.layers["Water Plumbing"]
 
 
+# ── Major-component callouts (Labels tag — shown only in "Overview (Labeled)") ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole Assembly" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PINHOLE  Ø2.17mm", anc, Geom::Vector3d.new(-400.mm, 0, 900.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane Mechanism" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("FILM PLANE
+4-corner tilt/swing", anc, Geom::Vector3d.new(400.mm, 0, 1250.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(-250.mm, 0, 650.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Spray Bar" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("SPRAY BAR", anc, Geom::Vector3d.new(250.mm, 0, 1450.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(-550.mm, 0, 480.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Equipment Panel" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("EQUIPMENT PANEL
+pump / filter", anc, Geom::Vector3d.new(500.mm, 0, 820.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "IBC Stack" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("IBC WATER STORAGE
+4x tote", anc, Geom::Vector3d.new(600.mm, 0, 1300.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Light-Trap Drum" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("LIGHT-TRAP DRUM
+(entry)", anc, Geom::Vector3d.new(-650.mm, 0, 1050.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Electrical" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("ELECTRICAL", anc, Geom::Vector3d.new(500.mm, 0, 560.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Chemistry Shelf" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("CHEMISTRY SHELF", anc, Geom::Vector3d.new(-350.mm, 0, 1550.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Evap Cooler & Duct" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("EVAP COOLER", anc, Geom::Vector3d.new(300.mm, 0, 1700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Fans A & B" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("VENT FANS A & B", anc, Geom::Vector3d.new(-200.mm, 0, 1750.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Ceiling Rail" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("CEILING RAIL
+(panel suspension)", anc, Geom::Vector3d.new(150.mm, 0, 1950.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing"]
+keep_tags = ["Shell", "Walkways", "Processing Tray", "Pinhole", "Optical Cone", "Film Plane", "Ceiling Rail", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf", "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans", "Water Plumbing", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -11490,8 +11589,14 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-# Overview — everything visible.
-model.pages.add("Overview")
+# Overview — everything visible, Labels OFF.
+model.layers["Labels"].visible = false if model.layers["Labels"]
+ovp = model.pages.add("Overview"); ovp.use_camera = true
+
+# Overview (Labeled) — same view + callouts on the major system components.
+model.layers["Labels"].visible = true if model.layers["Labels"]
+olp = model.pages.add("Overview (Labeled)"); olp.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
 [["Film Plane & Pinhole", ["Pinhole", "Optical Cone", "Film Plane"]], ["Water Systems", ["Processing Tray", "Spray Bar", "Equipment Panel", "IBC Stack", "IBC Rack", "Shelf", "Water Hookups", "Water Plumbing"]], ["Electrical Systems", ["Electrical", "Lighting"]], ["Hinge Panel & Drum", ["Light Trap", "Light Seal", "Ceiling Rail"]], ["Ventilation", ["Evap Cooler", "Fans"]], ["Walkways", ["Walkways"]]].each { |name, tags|

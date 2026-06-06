@@ -130,7 +130,44 @@ TAGS = ["Shell", "Walkways", "Processing Tray",
         "Ceiling Rail", "Spray Bar", "Equipment Panel",
         "IBC Stack", "IBC Rack", "Light Trap", "Electrical", "Shelf",
         "Light Seal", "Lighting", "Evap Cooler", "Water Hookups", "Fans",
-        "Water Plumbing"]
+        "Water Plumbing", "Labels"]
+
+
+# Major system components to call out in the "Overview (Labeled)" scene.
+# (component instance name, label text, leader Δx mm, leader Δz mm) — the leader is
+# anchored at the component's bounds top-centre and fanned out so labels don't pile up.
+OVERVIEW_LABELS = [
+    ("Pinhole Assembly",      "PINHOLE  Ø2.17mm",                  -400,  900),
+    ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",    400, 1250),
+    ("Processing Tray",       "PROCESSING TRAY",                   -250,  650),
+    ("Spray Bar",             "SPRAY BAR",                          250, 1450),
+    ("Walkways",              "WALKWAYS",                          -550,  480),
+    ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",     500,  820),
+    ("IBC Stack",             "IBC WATER STORAGE\n4x tote",         600, 1300),
+    ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",          -650, 1050),
+    ("Electrical",            "ELECTRICAL",                         500,  560),
+    ("Chemistry Shelf",       "CHEMISTRY SHELF",                   -350, 1550),
+    ("Evap Cooler & Duct",    "EVAP COOLER",                        300, 1700),
+    ("Fans A & B",            "VENT FANS A & B",                   -200, 1750),
+    ("Ceiling Rail",          "CEILING RAIL\n(panel suspension)",   150, 1950),
+]
+
+
+def overview_labels():
+    """Ruby that adds an in-model text callout (with leader) for each major system
+    component, on the 'Labels' tag. Anchors at the component's bounds top-centre so
+    it tracks the real geometry; the leader fans the text out above the model."""
+    rows = []
+    for name, text, dx, dz in OVERVIEW_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({mm(dx)}, 0, {mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    return '\n'.join(rows)
 
 
 def mm(val):
@@ -1812,7 +1849,7 @@ opts["LengthPrecision"] = 1
 # ── Idempotent rebuild: erase prior generated instances (keep 'Sree'), then
 # purge their now-unused definitions so names don't collide on re-add.
 to_erase = entities.to_a.select {{ |e|
-  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)) &&
+  (e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)) &&
   !(e.is_a?(Sketchup::ComponentInstance) && e.definition.name == "Sree")
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
@@ -1831,6 +1868,9 @@ end
 
 # ── Subsystems (each a component on its tag) ──
 {body}
+
+# ── Major-component callouts (Labels tag — shown only in "Overview (Labeled)") ──
+{overview_labels()}
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -1854,8 +1894,14 @@ eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-# Overview — everything visible.
-model.pages.add("Overview")
+# Overview — everything visible, Labels OFF.
+model.layers["Labels"].visible = false if model.layers["Labels"]
+ovp = model.pages.add("Overview"); ovp.use_camera = true
+
+# Overview (Labeled) — same view + callouts on the major system components.
+model.layers["Labels"].visible = true if model.layers["Labels"]
+olp = model.pages.add("Overview (Labeled)"); olp.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 # Grouped scenes — translucent Shell (context) + the group's subsystems.
 {scene_groups_ruby}.each {{ |name, tags|

@@ -143,14 +143,12 @@ OVERVIEW_LABELS = [
     ("Film Plane Mechanism",  "FILM PLANE\n4-corner tilt/swing",   400,     0, 1250),
     ("Processing Tray",       "PROCESSING TRAY",                  -250,     0,  650),
     ("Spray Bar",             "SPRAY BAR",                         450, -2700, 1300),
-    ("Walkways",              "WALKWAYS",                         -550,     0,  480),
     ("Equipment Panel",       "EQUIPMENT PANEL\npump / filter",    500,     0,  820),
     ("IBC Stack",             "IBC WATER STORAGE\n4x tote",        600,     0, 1300),
     ("Light-Trap Drum",       "LIGHT-TRAP DRUM\n(entry)",         -650,     0, 1050),
     ("Electrical",            "ELECTRICAL PANEL",                  500,     0,  560),
     ("Chemistry Shelf",       "CHEMISTRY SHELF",                  -350,     0, 1550),
     ("Evap Cooler & Duct",    "EVAP COOLER",                       300,     0, 1700),
-    ("Ceiling Rail",          "CEILING RAIL\n(panel suspension)",  150,     0, 1950),
 ]
 
 # Labels anchored at an explicit point (mm) — for items NOT represented by a single
@@ -162,6 +160,10 @@ OVERVIEW_POINT_LABELS = [
     (5618, 1996, 2250, "FAN A\n(exhaust, IBC end)",  400,    0,  450),
     (275,   365,  680, "FAN B\n(intake, door end)", -350,    0, 1250),
     (2060,   60,  600, "BATTERY BANK\n(LiFePO4)",    -300, -600,  900),
+    # Walkways + Ceiling Rail span paired/perimeter parts, so their bounds-centre
+    # would land in the empty middle — anchor on the actual NEAR member instead.
+    (2400,  150,   65, "WALKWAYS",                   -200, -850,  750),  # near walkway strip
+    ( 225,  653, 2370, "CEILING RAIL\n(panel suspension)", 200, -400, 800),  # near ceiling rail
 ]
 
 

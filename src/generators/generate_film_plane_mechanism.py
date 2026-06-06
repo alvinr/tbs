@@ -831,7 +831,7 @@ def sheet3():
 
     ax.text(260, 310, "ACM BACKING PANEL ARRANGEMENT\nHINGED AT MIDPOINT — ACCOMMODATES TILT UP TO 42°",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(260, -60, "PANEL: DIBOND 4mm  ·  HINGE: 2\" ALUMINIUM PIANO HINGE  ·  FULL WIDTH",
+    ax.text(260, -60, "PANEL: DIBOND 4mm  ·  HINGE: 2\" ALUMINUM PIANO HINGE  ·  FULL WIDTH",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (4-CORNER INDEPENDENT DESIGN)",

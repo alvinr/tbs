@@ -100,7 +100,7 @@ C_ALUM  = '#D8D8D8'
 C_GASKT = '#404040'
 C_RED   = '#CC0000'
 C_DELR  = '#E8D8A0'   # Delrin/POM color
-C_BEAR  = '#C0C8D8'   # bearing / steel blue-grey
+C_BEAR  = '#C0C8D8'   # bearing / steel blue-gray
 C_BELL  = '#303030'   # bellows black
 
 

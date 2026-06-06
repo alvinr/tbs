@@ -725,7 +725,7 @@ def sheet1():
         f"6. Anti-rotation lip: 5mm × 40mm flat plate, fillet welded to platform beam top face. Retains IBC pallet perimeter.",
         f"7. D-ring mounting: 6mm plate fillet welded to upright face. D-ring 25mm, WLL 1,100 kg (McMaster #3641T29).",
         f"8. Access gates: 300mm × 916mm clear, M12 bolts (×4 per gate). Two gates — one per column, corridor face.",
-        f"9. Surface finish: grey oxide primer + flat black powder coat.",
+        f"9. Surface finish: gray oxide primer + flat black powder coat.",
         f"10. Anti-slip rubber mat: 12mm thick, 1016 × 1219mm (one per column on platform).",
         f"11. IBC anatomy: US 48\"×40\" composite tote — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
         f"12. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is highest point. Lashing straps bear on cage rail, hook to D-rings.",

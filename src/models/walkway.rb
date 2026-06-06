@@ -2367,12 +2367,12 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Left Walkway Support ═══
   defn = model.definitions.add("Left Walkway Support")
   ents = defn.entities
-  # Left edge beam (50x50x3 steel SHS, full width)
+  # Left edge beam (40x40x3 steel SHS, full width)
   grp = ents.add_group
-  grp.name = "Left edge beam (50x50x3 steel SHS, full width)"
-  face = grp.entities.add_face([470.mm,0.mm,45.mm], [520.mm,0.mm,45.mm], [520.mm,2362.mm,45.mm], [470.mm,2362.mm,45.mm])
+  grp.name = "Left edge beam (40x40x3 steel SHS, full width)"
+  face = grp.entities.add_face([470.mm,0.mm,52.mm], [510.mm,0.mm,52.mm], [510.mm,2362.mm,52.mm], [470.mm,2362.mm,52.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(40.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2381,9 +2381,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat plate near
   grp = ents.add_group
   grp.name = "Left wall-seat plate near"
-  face = grp.entities.add_face([460.mm,0.mm,30.mm], [530.mm,0.mm,30.mm], [530.mm,8.mm,30.mm], [460.mm,8.mm,30.mm])
+  face = grp.entities.add_face([460.mm,0.mm,30.mm], [520.mm,0.mm,30.mm], [520.mm,8.mm,30.mm], [460.mm,8.mm,30.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(65.mm)
+  face.pushpull(62.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2392,7 +2392,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat ext plate near
   grp = ents.add_group
   grp.name = "Left wall-seat ext plate near"
-  face = grp.entities.add_face([445.mm,-46.mm,-20.mm], [545.mm,-46.mm,-20.mm], [545.mm,-40.mm,-20.mm], [445.mm,-40.mm,-20.mm])
+  face = grp.entities.add_face([440.mm,-46.mm,-18.mm], [540.mm,-46.mm,-18.mm], [540.mm,-40.mm,-18.mm], [440.mm,-40.mm,-18.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2404,7 +2404,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt near"
   ge = grp.entities
-  circle = ge.add_circle([495.mm,-46.mm,92.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([490.mm,-46.mm,94.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2416,7 +2416,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head near
   grp = ents.add_group
   grp.name = "Left wall-seat head near"
-  face = grp.entities.add_face([486.mm,-52.mm,83.mm], [504.mm,-52.mm,83.mm], [504.mm,-46.mm,83.mm], [486.mm,-46.mm,83.mm])
+  face = grp.entities.add_face([481.mm,-52.mm,85.mm], [499.mm,-52.mm,85.mm], [499.mm,-46.mm,85.mm], [481.mm,-46.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2428,7 +2428,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt near"
   ge = grp.entities
-  circle = ge.add_circle([467.mm,-46.mm,54.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([462.mm,-46.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2440,7 +2440,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head near
   grp = ents.add_group
   grp.name = "Left wall-seat head near"
-  face = grp.entities.add_face([458.mm,-52.mm,45.mm], [476.mm,-52.mm,45.mm], [476.mm,-46.mm,45.mm], [458.mm,-46.mm,45.mm])
+  face = grp.entities.add_face([453.mm,-52.mm,47.mm], [471.mm,-52.mm,47.mm], [471.mm,-46.mm,47.mm], [453.mm,-46.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2452,7 +2452,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt near"
   ge = grp.entities
-  circle = ge.add_circle([523.mm,-46.mm,54.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([518.mm,-46.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2464,7 +2464,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head near
   grp = ents.add_group
   grp.name = "Left wall-seat head near"
-  face = grp.entities.add_face([514.mm,-52.mm,45.mm], [532.mm,-52.mm,45.mm], [532.mm,-46.mm,45.mm], [514.mm,-46.mm,45.mm])
+  face = grp.entities.add_face([509.mm,-52.mm,47.mm], [527.mm,-52.mm,47.mm], [527.mm,-46.mm,47.mm], [509.mm,-46.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2475,9 +2475,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat plate far
   grp = ents.add_group
   grp.name = "Left wall-seat plate far"
-  face = grp.entities.add_face([460.mm,2354.mm,30.mm], [530.mm,2354.mm,30.mm], [530.mm,2362.mm,30.mm], [460.mm,2362.mm,30.mm])
+  face = grp.entities.add_face([460.mm,2354.mm,30.mm], [520.mm,2354.mm,30.mm], [520.mm,2362.mm,30.mm], [460.mm,2362.mm,30.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(65.mm)
+  face.pushpull(62.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2486,7 +2486,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat ext plate far
   grp = ents.add_group
   grp.name = "Left wall-seat ext plate far"
-  face = grp.entities.add_face([445.mm,2402.mm,-20.mm], [545.mm,2402.mm,-20.mm], [545.mm,2408.mm,-20.mm], [445.mm,2408.mm,-20.mm])
+  face = grp.entities.add_face([440.mm,2402.mm,-18.mm], [540.mm,2402.mm,-18.mm], [540.mm,2408.mm,-18.mm], [440.mm,2408.mm,-18.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2498,7 +2498,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt far"
   ge = grp.entities
-  circle = ge.add_circle([495.mm,2354.mm,92.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([490.mm,2354.mm,94.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2510,7 +2510,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head far
   grp = ents.add_group
   grp.name = "Left wall-seat head far"
-  face = grp.entities.add_face([486.mm,2408.mm,83.mm], [504.mm,2408.mm,83.mm], [504.mm,2414.mm,83.mm], [486.mm,2414.mm,83.mm])
+  face = grp.entities.add_face([481.mm,2408.mm,85.mm], [499.mm,2408.mm,85.mm], [499.mm,2414.mm,85.mm], [481.mm,2414.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2522,7 +2522,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt far"
   ge = grp.entities
-  circle = ge.add_circle([467.mm,2354.mm,54.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([462.mm,2354.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2534,7 +2534,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head far
   grp = ents.add_group
   grp.name = "Left wall-seat head far"
-  face = grp.entities.add_face([458.mm,2408.mm,45.mm], [476.mm,2408.mm,45.mm], [476.mm,2414.mm,45.mm], [458.mm,2414.mm,45.mm])
+  face = grp.entities.add_face([453.mm,2408.mm,47.mm], [471.mm,2408.mm,47.mm], [471.mm,2414.mm,47.mm], [453.mm,2414.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2546,7 +2546,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Left wall-seat bolt far"
   ge = grp.entities
-  circle = ge.add_circle([523.mm,2354.mm,54.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([518.mm,2354.mm,56.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2558,7 +2558,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Left wall-seat head far
   grp = ents.add_group
   grp.name = "Left wall-seat head far"
-  face = grp.entities.add_face([514.mm,2408.mm,45.mm], [532.mm,2408.mm,45.mm], [532.mm,2414.mm,45.mm], [514.mm,2414.mm,45.mm])
+  face = grp.entities.add_face([509.mm,2408.mm,47.mm], [527.mm,2408.mm,47.mm], [527.mm,2414.mm,47.mm], [509.mm,2414.mm,47.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")

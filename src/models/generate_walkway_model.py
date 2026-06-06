@@ -68,7 +68,7 @@ C_STEEL, C_TRAY, C_SHELL = ov.C_STEEL, ov.C_TRAY, ov.C_SHELL
 C_WALKWAY, C_REMOVABLE, C_ALUM = ov.C_WALKWAY, ov.C_REMOVABLE, ov.C_ALUM
 C_BOLT, C_HEX = "#505058", "#3C3C44"
 
-# Left lift-out support dimensions (50×50×3 Al RHS bearer + 25×25×3 SHS legs).
+# Left lift-out support dimensions (40×40×3 steel SHS edge beam + 25×25×3 Al SHS legs).
 L_BEARER, L_LEG, L_LEG_BASE = k.LEFT_WK_BEARER_SIZE, k.LEFT_WK_LEG_SIZE, k.LEFT_WK_LEG_BASE
 L_LEG_N, L_STRIP = k.LEFT_WK_LEG_N, k.LEFT_WK_BEARING_STRIP
 
@@ -229,9 +229,11 @@ def right_hangers():
 
 def left_support():
     """The LEFT walkway is a removable lift-out. Its INNER edge is carried by a
-    full-width STEEL 50×50×3 SHS EDGE BEAM at X≈470 that stands in the bath→
-    film-frame envelope (Z≈45..95, ~15mm proud of the deck as a toe-board/kerb) so
-    it clears both the chemistry bath (top Z≈42) and the film-frame bottom (Z=100).
+    full-width STEEL 40×40×3 SHS EDGE BEAM at X≈470 that stands in the bath→
+    film-frame envelope (Z≈52..92, ~12mm proud of the deck as a toe-board/kerb) so
+    it clears the chemistry bath (top Z≈42), the film-frame bottom (Z=100), AND the
+    near/far tray rims (Z50) it crosses at Yd≈80/2280 — the 40mm section sits 2mm
+    above the rim (a 50mm beam at Z45 fouled it).
     It is SIMPLY SUPPORTED wall-to-wall on IBC-style seat brackets BOLTED THROUGH
     the corrugated wall at each end (not cantilevered) — demountable for transport
     (the through-bolt + exterior plate can stay; the interior seat lifts off). The
@@ -244,13 +246,14 @@ def left_support():
     span_legs = fy - nyi
     leg_yds = [round(nyi + span_legs / (L_LEG_N + 1) * (i + 1)) for i in range(L_LEG_N)]
     bath_top = k.PROC_TRAY_RIM - 8             # 42
-    bz0, bz1 = bath_top + 3, 95                # 45..95 — 50mm deep, clears bath + film frame (Z=100)
-    beam_w = L_BEARER                          # 50 — section
+    bz0, bz1 = k.LEFT_WK_BEAM_Z0, k.LEFT_WK_BEAM_Z1   # 52..92 — 40mm deep; bottom clears tray rim (Z50) by 2mm, top clears film frame (Z100) by 8mm
+    beam_w = L_BEARER                          # 40 — section
     bt = 8                                     # seat plate thickness
 
     parts = []
     # Full-width STEEL edge beam (kerb), simply supported wall-to-wall.
-    parts.append(ruby_box("Left edge beam (50x50x3 steel SHS, full width)",
+    # 40x40 (not 50) + raised to Z52 so it clears the near/far tray rims it crosses.
+    parts.append(ruby_box("Left edge beam (40x40x3 steel SHS, full width)",
                           lxr, 0, bz0, beam_w, C_WID, bz1 - bz0, color=C_STEEL))
 
     # IBC-style wall-seat brackets (bolt-through), one at each wall end.

@@ -23,12 +23,21 @@ whole image zone X 150–4649 above Z=100 — unlike the right walkway at the fa
 ## Decision
 Two changes:
 
-1. **Edge beam, not a buried bearer.** Stand a **steel 50×50×3 SHS** on the deck's
-   inner edge, occupying the full usable envelope **Z≈45–95** — above the bath
-   (Z≈42) and below the film-frame bottom (Z=100). It is ~15 mm proud of the deck,
+1. **Edge beam, not a buried bearer.** Stand a **steel 40×40×3 SHS** on the deck's
+   inner edge, occupying the envelope **Z≈52–92**. It is ~12 mm proud of the deck,
    which doubles as a **toe-board / safety kerb** at the tray edge. Steel (not
    aluminum) for stiffness over the span. Full width, X≈470, Yd 0→2362; the grate
-   inner edge bolts to it.
+   inner edge rests on a Z65 ledge and is located by the proud kerb.
+
+   *Section sizing (rev 2026-06-05).* The first cut was a 50×50 SHS at Z≈45–95. But
+   the beam crosses the tray's **near and far perimeter rims** (Z0–50, at Yd≈80 and
+   2280) on its way wall-to-wall, and a beam bottom at Z45 **fouled those rims by
+   5 mm**. Dropping to a **40 mm** section and raising the underside to **Z52** gives
+   a 2 mm clearance over the rim (Z50), still clears the bath (Z42) by 10 mm and the
+   film-frame bottom (Z100) by 8 mm, and keeps the load entirely on the wall seats
+   (the thin SS tray rim carries nothing). Trade-off: ~half the second moment of
+   area, so the beam is springier (see below) — accepted for occasional single-person
+   access.
 
 2. **Bolt-through wall seats, not a cantilever** (the IBC load path). The edge
    beam is **simply supported wall-to-wall** on a seat bracket **bolted through the
@@ -40,10 +49,14 @@ The beam also picks up the near/far walkways' door-end grate edges (it sits at
 their X=470 start), so the X=470 cantilever bracket is removed.
 
 ## Why it's sound (hand-check, ≈1 kN person at midspan, span = full width 2362 mm)
-- Bending ≈71 MPa vs ~250 MPa yield → **FoS ≈3.5**.
-- Deflection ≈6.6 mm = **L/358** (stiff; not bouncy).
-- Beam mass ≈10.5 kg → liftable for the lift-out.
+40×40×3 SHS: I ≈ 1.02×10⁵ mm⁴, Z ≈ 5.1×10³ mm³.
+- Bending ≈116 MPa vs ~250 MPa yield → **FoS ≈2.2**.
+- Deflection ≈13 mm = **L/175** (springy but serviceable for occasional single-person
+  access; a midspan stiffener or the notched-50×50 alternative is the fallback if
+  the bounce is objectionable).
+- Beam mass ≈8.2 kg → liftable for the lift-out.
 - Each wall reaction ≈0.5 kN — the IBC wall seats carry ~50× that (4×600 L water).
+- Bottom clears the tray rim (Z50) by 2 mm, so it never loads the SS rim.
 
 ## Transport
 Unlike the IBC seats (permanent, sealed end), these sit at **X≈470 — in the cargo-

@@ -111,7 +111,6 @@ DIAG_IMAGE_FILES = [
     "film-plane-distortion-c3.png",
     "film-plane-distortion-c4.png",
     "film-plane-distortion-c5.png",
-    "film-plane-distortion-c6.png",
     "film-plane-distortion-summary.png",
     "tilt-swing-board-sheet1.png",
     "tilt-swing-board-sheet2.png",

@@ -196,16 +196,11 @@ The entire film plane is 100mm from the pinhole. Effective focal length drops fr
 
 ![C5 both near](assets/film-plane-distortion-c5.png)
 
-**C6 — Compound tilt + swing:**
-Maximum vertical tilt combined with 15° horizontal swing. No line in the scene remains parallel to any edge of the film. The checker pattern becomes a complex curved mesh.
-
-**Recommended for artistic use.**
-
-![C6 compound](assets/film-plane-distortion-c6.png)
+**C6 — Compound tilt + swing (superseded):** under the original stretching design this was a diagonal twist (a ruled surface). Option A's fixed-size rigid plane cannot form a twisted surface, so this configuration is **dropped** — see [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).
 
 ### Summary Comparison
 
-All seven configurations on a checker grid (D = 8000mm):
+The six achievable flat configurations on a checker grid (D = 8000mm):
 
 ![Distortion summary](assets/film-plane-distortion-summary.png)
 

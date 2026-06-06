@@ -138,32 +138,45 @@ def flat_film_plane_local():
 
 
 def dc_film_plane_block():
-    """Ruby that builds the Film Plane DYNAMIC COMPONENT: a definition holding the
-    flat geometry, instanced at the TL pivot, with a `pose` attribute that drives
-    RotX (tilt) + RotZ (swing). Click with the Interact tool → ANIMATE pose 0↔1."""
+    """Ruby for the Film Plane DYNAMIC COMPONENT. Proven cargo-door pattern: a
+    PARENT ("Film Plane") holds the `pose` attribute + onclick; a NESTED CHILD
+    ("Film Plane Screen") carries the rotation formulas that READ the parent's
+    pose (a child reading its parent's animated attribute DOES update during the
+    parent's animation — a same-component formula does not). Click with the
+    Interact tool → ANIMATE pose 0↔1 → child tilts (RotX) + swings (RotZ)."""
     tlx, tly, tlz = (ov.mm(v) for v in PIVOT)
     return f'''
 # ═══ Film Plane — DYNAMIC COMPONENT (click to tilt+swing) ═══
-fp_defn = model.definitions.add("Film Plane")
-ents = fp_defn.entities
+# Child: the flat framed screen, built in LOCAL coords (TL at the child origin).
+fp_screen_defn = model.definitions.add("Film Plane Screen")
+ents = fp_screen_defn.entities
 {flat_film_plane_local()}
+# Parent: empty driver placed at the TL pivot; the child is nested at the parent
+# origin so its RotX/RotZ pivot on the fixed TL corner.
+fp_defn = model.definitions.add("Film Plane")
+fp_screen_inst = fp_defn.entities.add_instance(fp_screen_defn, Geom::Transformation.new)
+fp_screen_inst.name = "Film Plane Screen"
 fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([{tlx}, {tly}, {tlz}]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
+fp_screen_inst.layer = model.layers["Film Plane"]
 fda = "dynamic_attributes"
 [fp_defn, fp_inst].each do |e|
   e.set_attribute(fda, "_name", "FilmPlane")
   e.set_attribute(fda, "_lengthunits", "MILLIMETERS")
   e.set_attribute(fda, "pose", 0.0)
-  e.set_attribute(fda, "rotx", 0.0)
-  e.set_attribute(fda, "rotz", 0.0)
 end
 fp_inst.set_attribute(fda, "_pose_access", "VIEW")
 fp_inst.set_attribute(fda, "_pose_label", "Pose (0 flat / 1 tilt+swing)")
-fp_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*pose")
-fp_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*pose")
 fp_inst.set_attribute(fda, "onclick", 'ANIMATE("pose", 0, 1)')
 fp_inst.set_attribute(fda, "_onclick_access", "NONE")
+# Child rotation formulas read the parent's pose (updates during the animation).
+fp_screen_inst.set_attribute(fda, "_name", "FilmPlaneScreen")
+fp_screen_inst.set_attribute(fda, "_lengthunits", "MILLIMETERS")
+fp_screen_inst.set_attribute(fda, "rotx", 0.0)
+fp_screen_inst.set_attribute(fda, "rotz", 0.0)
+fp_screen_inst.set_attribute(fda, "_rotx_formula", "{TILT_DEG}*FilmPlane!pose")
+fp_screen_inst.set_attribute(fda, "_rotz_formula", "{SWING_DEG}*FilmPlane!pose")
 '''
 
 

@@ -16,7 +16,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,150 | $4,300 |
 | **2. Interior conversion** | $970 | $1,140 | $1,310 |
 | **3. Optics — pinhole plate** | $80 | $150 | $280 |
-| **4. Film plane mechanism (4-corner, incl. brace cage)** | $2,800 | $3,350 | $3,900 |
+| **4. Film plane mechanism (4-corner Option A, incl. brace cage + cross-slides)** | $3,100 | $3,650 | $4,200 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $4,958 | $6,175 | $7,391 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,465 | $1,802 | $2,160 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,067 | $1,378 | $1,677 |
@@ -24,7 +24,7 @@
 | **7. Printmaking — 50 prints (cyanotype)** | $2,500 | $2,842 | $3,200 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licences & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$16,915** | **$21,829** | **$28,188** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$17,215** | **$22,129** | **$28,488** |
 
 *Optional additions that may apply — see individual sections:*
 
@@ -168,7 +168,7 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 **Source document:** `film-plane-mechanism-report.md`
 
-View-camera-style moveable film plane with four independently actuated corners (TL, TR, BL, BR), enabling full tilt (42°), swing (20°), and compound movements.
+View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane on floating-corner cross-slides) with four independently actuated corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
 
 ### 4.1 Structural & rails
 
@@ -181,6 +181,9 @@ View-camera-style moveable film plane with four independently actuated corners (
 | Handwheel 8" dia | ¾" bore, cast alum. | 4 | $35† | $140 |
 | Locking collar SS316 | ¾" bore | 4 | $12† | $48 |
 | Corner bracket L-plate | ¼" alum., 6"×8" | 4 | $20† | $80 |
+| Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 | $25† | $200 |
+| Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 | $12† | $96 |
+| Cross-slide intermediate plate (Option A) | ¼" alum. | 4 | $15† | $60 |
 | Rod-end spherical bearing | GIR25-DO, 25mm | 8 | $22† | $176 |
 | Pivot pin SS316 | 1" dia × 8" | 8 | $8† | $64 |
 
@@ -192,7 +195,7 @@ View-camera-style moveable film plane with four independently actuated corners (
 | Dibond ACM panel 4mm | 4'×8' sheets | 6 | $85† | $510 |
 | Black EPDM foam tape | 1"×½", 50 ft rolls | 3 | $28† | $84 |
 | Rosco Duvetyne (light seal) | 60" wide, 10 yd | 1 | $95† | $95 |
-| Aluminum piano hinge | 2" wide, 72" | 2 | $28† | $56 |
+| Dibond ACM backing — single rigid panel (Option A: no folding hinge) | included above | — | — | — |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
 | Cam-lever spring clamps (muslin) | Over-center cam, neoprene jaw | 92 | $3-8† | $276-736 |
@@ -225,10 +228,10 @@ Two rectangular end portals (50×50×3mm RHS) provide lateral rigidity; demounta
 
 | Category | Total |
 |----------|-------|
-| Structural & rails | $1,260 |
-| Film frame & backing (incl. clamps) | $1,450–1,910 |
+| Structural & rails (incl. Option A cross-slides +$356) | $1,616 |
+| Film frame & backing (incl. clamps; folding hinge removed –$56) | $1,394–1,854 |
 | Demountable brace cage (ICP-11–14) | ~$575 |
-| **Film plane mechanism (manual, incl. brace cage)** | **~$3,280–3,740** |
+| **Film plane mechanism (manual, incl. brace cage + cross-slides)** | **~$3,585–4,045** |
 | Electric actuation (optional add-on) | +$827 |
 
 *Includes $330–790 for muslin clamp system (92 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
@@ -480,7 +483,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $95 |
-| Film plane mechanism (manual, incl. brace cage) | $2,800 |
+| Film plane mechanism (manual Option A, incl. brace cage + cross-slides) | $3,100 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $4,900 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,465 |
 | Perimeter walkway (4 sections, removable) | $1,022 |
@@ -488,7 +491,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$16,579** |
+| **Scenario A total** | **~$16,879** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -497,7 +500,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,140 |
 | Pinhole plate | $150 |
-| Film plane mechanism (manual + brace cage + electric actuation) | $3,797 |
+| Film plane mechanism (manual Option A + brace cage + cross-slides + electric actuation) | $4,097 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,084 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,800 |
 | Perimeter walkway (4 sections, removable) | $1,311 |
@@ -506,17 +509,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$22,576** |
+| **Scenario B total (excl. CDL)** | **~$22,876** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $21,676 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $21,976 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$111,176–$141,176** |
+| **Scenario C total** | **~$111,476–$141,476** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

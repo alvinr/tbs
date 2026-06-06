@@ -117,12 +117,25 @@ RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
 RAIL_OFF  = 100       # floor/ceiling offset (mm)  [unchanged]
 
-# ── Movement ranges ───────────────────────────────────────────────────────────
-MAX_TILT_DEG  = math.degrees(math.atan((FP_Y - FP_Y_MIN) / FP_H))
-# = arctan(2162/2388) = 42.1°  [unchanged]
+# ── Movement ranges (OPTION A: fixed-size rigid plane on floating-corner slides) ──
+# rev7 / Option A (2026-06-06): the film plane is a FIXED-SIZE rigid rectangle that
+# rotates RIGIDLY about its centre — it no longer stretches/twists. Each corner's
+# depth carriage gains a 2-axis X-Z cross-slide + rod-end that absorbs the rigid-
+# rotation arc travel. The earlier ±42°/±25.7° figures were the *stretching*
+# mechanism's stops; a rigid plane's limits are different:
+#   tilt  — rails allow ~65° (asin(1081/(FP_H/2))); capped at 40° by cross-slide Z.
+#   swing — rail-depth limited to asin(1081/(FP_W/2)) ≈ 28.7°; set to 28°.
+#   combined tilt+swing is limited (the old C7 compound twist is DROPPED — a rigid
+#   plane cannot form a ruled surface, and its corners would sweep ~3.4m of depth).
+# (1081 = half the rail travel about the mid-rail centre: (FP_Y - FP_Y_MIN)/2.)
+MAX_TILT_DEG  = 40.0   # design max single-axis tilt (cross-slide-Z limited)
+MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7°)
 
-MAX_SWING_DEG = math.degrees(math.atan((FP_Y - FP_Y_MIN) / RAIL_SPAN))
-# = arctan(2162/4499) = 25.7°  [rev6: was 28.3° with 4024mm span]
+# Cross-slide strokes that absorb the rigid-rotation arc travel at the corners:
+XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 280mm (tilt)
+XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing)
+XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin
+XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
 ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150mm)  [rev6: was 625]

@@ -233,7 +233,6 @@ def generate_ruby():
     noghost = ["Film Plane", "Corner Mechanism", "Processing Tray"]
     scenes = [("Combined", main, None, 0),
               ("No Container", noghost, None, 0),
-              ("Processing Tray", ["Processing Tray"], None, 0),
               ("Corner detail (TR)", ["Corner Detail", "Labels"], tr_world, 95)]
 
     def slit(s):

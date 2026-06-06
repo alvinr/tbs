@@ -622,7 +622,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Processing Tray", ["Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4669.192477867366.mm, 1401.792939991129.mm, 2222.0237271397837.mm], 95]].each { |name, tags, tgt, so|
+[["Combined", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail", "Labels"], [4669.192477867366.mm, 1401.792939991129.mm, 2222.0237271397837.mm], 95]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

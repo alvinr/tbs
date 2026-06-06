@@ -2501,7 +2501,7 @@
 <!-- © 2026 Alvin Richards -->
 <h1 id="ceiling-rail-suspension-system">Ceiling Rail Suspension System<a class="headerlink" href="#ceiling-rail-suspension-system" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>The hinged light-trap panel must slide 300mm in the X direction for transport mode
+<p>The hinged light-trap panel must slide 880mm in the X direction for transport mode
 conversion (retracting the revolving drum behind the container door closure plane).
 The permanently installed processing tray (304 SS, 50mm rim) occupies the floor of
 the optical zone from X=170 to X=4629mm and cannot be removed for each conversion.
@@ -2511,7 +2511,7 @@ edge and the container floor — clearing the 50mm tray rim with 30mm margin.</p
 <p><strong>Design goals:</strong></p>
 <ul>
 <li>Support the full panel mass (~180 kg) from the ceiling</li>
-<li>Provide 300mm X-direction slide travel for transport mode conversion</li>
+<li>Provide 880mm X-direction slide travel for transport mode conversion</li>
 <li>Maintain 80mm floor gap — clearing the 50mm processing tray rim at all positions</li>
 <li>Zero floor contact — the panel never touches the tray or walkway during slide</li>
 <li>Single-person operation (~5 minutes for full mode conversion)</li>
@@ -2539,7 +2539,7 @@ X direction along the ceiling surface at Z=2388mm.</p>
 </tr>
 <tr>
 <td>Rail length</td>
-<td>500mm</td>
+<td>1200mm (spans the 880mm slide + carriage overhang)</td>
 </tr>
 <tr>
 <td>Quantity</td>
@@ -2598,7 +2598,7 @@ X direction along the ceiling surface at Z=2388mm.</p>
 </tr>
 <tr>
 <td>Travel</td>
-<td>300mm (operational ↔ transport)</td>
+<td>880mm (operational ↔ transport)</td>
 </tr>
 </tbody>
 </table>
@@ -2717,7 +2717,7 @@ two corrugation ribs. The rail bolts to this plate.</p>
 </tr>
 <tr>
 <td>Plate dimensions</td>
-<td>80 × 500mm (width × length, matching rail)</td>
+<td>80 × 1200mm (width × length, matching rail)</td>
 </tr>
 <tr>
 <td>Weld</td>
@@ -2816,7 +2816,7 @@ panel frame top rail.</p>
 safety factor remains above 15×. The HGR20/HGH20CA system is conservatively
 oversized for this application.</p>
 <h3 id="43-ceiling-plate-weld">4.3 Ceiling Plate Weld<a class="headerlink" href="#43-ceiling-plate-weld" title="Permanent link">&para;</a></h3>
-<p>The 4mm continuous fillet weld along both long edges of each 500mm mounting
+<p>The 4mm continuous fillet weld along both long edges of each 1200mm mounting
 plate has a throat area of approximately 2800mm². At a conservative 100 MPa
 shear allowable for E70XX electrode on A36 plate, each plate sustains ~280 kN —
 far exceeding the 883 N half-panel load it carries. The Corten ceiling itself
@@ -2861,22 +2861,22 @@ buckling under the distributed plate load.</p>
 </tr>
 <tr>
 <td>Panel outer face in transport (X)</td>
-<td>300</td>
+<td>880</td>
 <td>PANEL_SLIDE</td>
 </tr>
 <tr>
 <td>Panel inner face in transport (X)</td>
-<td>420</td>
-<td>300 + 120 (PANEL_CENTER_T)</td>
+<td>1000</td>
+<td>880 + 120 (PANEL_CENTER_T)</td>
 </tr>
 </tbody>
 </table>
 <h3 id="52-overlap-zone">5.2 Overlap Zone<a class="headerlink" href="#52-overlap-zone" title="Permanent link">&para;</a></h3>
-<p>In the transport position (panel slid 300mm inward), the panel center zone
-(120mm thick) occupies X=300–420mm. The processing tray starts at X=170mm.
-The horizontal overlap is therefore 250mm (420 − 170). In this overlap zone,
-the vertical clearance between the panel bottom edge (Z=80mm) and the tray
-rim (Z=50mm) is the critical 30mm gap.</p>
+<p>In the transport position (panel slid 880mm inward), the panel center zone
+(120mm thick) occupies X=880–1000mm. The processing tray runs X=170–4629mm, so
+the slid panel center zone sits fully over the tray. Throughout the slide, the
+vertical clearance between the panel bottom edge (Z=80mm) and the tray rim
+(Z=50mm) is the critical 30mm gap.</p>
 <p>This 30mm margin accommodates:</p>
 <ul>
 <li>Container floor deflection under load (±3mm typical)</li>
@@ -2909,19 +2909,25 @@ procedure.</p>
 <tr>
 <td>Operational (X=0)</td>
 <td>40</td>
-<td>−295</td>
+<td>see note</td>
 <td>N/A — panel outboard of tray</td>
-<td>No (drum protrudes 295mm)</td>
+<td>No (drum protrudes)</td>
 </tr>
 <tr>
-<td>Transport (X=300)</td>
-<td>340</td>
-<td>+5</td>
+<td>Transport (X=880)</td>
+<td>920</td>
+<td>see note</td>
 <td>30mm vertical gap</td>
-<td>Yes (drum clears by 5mm)</td>
+<td>Yes (drum offsets out via the bay)</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p><strong>Note — drum-exit geometry pending B2 update.</strong> The "Drum exterior edge X" column
+reflects the pre-B2 Ø750 inline drum and is superseded by the rev 9 / B2 design,
+where the Ø900 drum is offset (<code>DRUM_CX = −400</code>) and exits through the hinge-panel
+punch-out bay rather than protruding inline. See <a href="../hinged-panel-report/">Hinged Panel Report</a> §3.</p>
+</blockquote>
 <h3 id="61-locking">6.1 Locking<a class="headerlink" href="#61-locking" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -2938,7 +2944,7 @@ procedure.</p>
 <td>2</td>
 </tr>
 <tr>
-<td>Transport (X=300)</td>
+<td>Transport (X=880)</td>
 <td>Destaco 207-U toggle clamp</td>
 <td>2</td>
 </tr>
@@ -2985,7 +2991,7 @@ perimeter gasket on the panel compresses against the fixed door frame,
 providing a light-tight seal. The ceiling rail suspension allows the panel to
 float on the carriage blocks, self-aligning against the seal landing surface
 as the cam latches draw the panel tight.</p>
-<p>The seal is not engaged during transport mode — the panel is retracted 300mm
+<p>The seal is not engaged during transport mode — the panel is retracted 880mm
 from the door frame. Light sealing is not required during transport or loading.</p>
 <hr />
 <h2 id="9-parts-list">9. Parts List<a class="headerlink" href="#9-parts-list" title="Permanent link">&para;</a></h2>
@@ -3000,10 +3006,10 @@ from the door frame. Light sealing is not required during transport or loading.<
 </thead>
 <tbody>
 <tr>
-<td>HGR20 linear guide rail, 500mm</td>
+<td>HGR20 linear guide rail, 1200mm</td>
 <td>20mm profile, hardened steel</td>
 <td>2</td>
-<td>$40–$55</td>
+<td>$90–$130</td>
 </tr>
 <tr>
 <td>HGH20CA carriage block</td>
@@ -3012,10 +3018,10 @@ from the door frame. Light sealing is not required during transport or loading.<
 <td>$60–$90</td>
 </tr>
 <tr>
-<td>6mm A36 steel plate (80 × 500mm)</td>
+<td>6mm A36 steel plate (80 × 1200mm)</td>
 <td>Mounting plate, welded to ceiling</td>
 <td>2</td>
-<td>$15–$25</td>
+<td>$35–$55</td>
 </tr>
 <tr>
 <td>10mm mild steel plate</td>
@@ -3063,7 +3069,7 @@ from the door frame. Light sealing is not required during transport or loading.<
 <td><strong>Total</strong></td>
 <td></td>
 <td></td>
-<td><strong>$291–$454</strong></td>
+<td><strong>$361–$559</strong></td>
 </tr>
 </tbody>
 </table>

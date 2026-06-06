@@ -420,7 +420,7 @@ def generate_ruby():
     scenes = [
         ("Beam", ["Beam"], None),
         ("Carriage Assembly", ["Beam", "Carriage L", "Carriage R", "Tray Ref"], None),
-        ("One Carriage", ["Beam", "Carriage L", "Tray Ref"], (XL + 120, GY, 60, 520)),
+        ("One Carriage", ["Carriage L"], (XL, GY, 55, 480)),
         ("Pole & Ball Joint", ["Beam", "Feed & Pole"], None),
         ("Processing Tray", ["Tray", "Beam", "Carriage L", "Carriage R"], None),
         ("Combined", full, None),

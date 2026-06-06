@@ -74,8 +74,48 @@ L_LEG_N, L_STRIP = k.LEFT_WK_LEG_N, k.LEFT_WK_BEARING_STRIP
 
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
-TAGS = ["Container", "Processing Tray", "Walkways", "Cantilevers",
-        "Right Hangers", "Left Support"]
+TAGS = ["Container", "Processing Tray", "Walkways", "Walkway Right", "Cantilevers",
+        "Right Hangers", "Left Support", "Labels"]
+
+
+# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
+# (instance name, text, leader Δx,Δy,Δz mm). Δy pulls toward the viewer (−Y).
+WALKWAY_LABELS = [
+    ("Processing Tray", "PROCESSING TRAY", 400, -700, 700),
+]
+# Point-anchored — the decks, cantilevers, hangers and support are paired/perimeter
+# parts whose bounds-centre lands in the empty middle, so anchor on a real member.
+WALKWAY_POINT_LABELS = [
+    (2400,  150,   73, "NEAR WALKWAY",                    0, -900,  550),
+    (2400, 2212,   73, "FAR WALKWAY",                   300,  500,  900),
+    (4479, 1181,   73, "RIGHT WALKWAY",                 750, -200,  650),
+    ( 320, 1181,   73, "LEFT WALKWAY\n(removable)",    -800, -300,  800),
+    (2298,   30,  150, "NEAR/FAR CANTILEVERS",         -300, -1000, 450),
+    (4479,  400, 2100, "RIGHT HANGERS\n(ceiling-hung)", 800, -200,  350),
+    ( 170, 1181,   72, "LEFT SUPPORT\n(edge beam+legs)", -850, -200, 600),
+]
+
+
+def walkway_labels():
+    """Ruby that adds an in-model text callout (with leader) for each major part on
+    the 'Labels' tag — instance-anchored at bounds top-centre, plus point-anchored
+    for paired/perimeter parts (decks, cantilevers, hangers, support)."""
+    rows = []
+    for name, text, dx, dy, dz in WALKWAY_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    for x, y, z, text, dx, dy, dz in WALKWAY_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
+    return '\n'.join(rows)
 
 
 # ── Ghost container (floor + ceiling + both long walls) ──────────────────────
@@ -121,9 +161,7 @@ def walkway_decks():
     parts.append(ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
                           near_x_r - near_x_l, WK_W, t, color=C_WALKWAY))
 
-    # Right deck (IBC end, ceiling-hung — spans the full width).
-    parts.append(ruby_box("Walkway Right (IBC end)", WK_RIGHT_X, 0, GRATE_Z,
-                          R_W, C_WID, t, color=C_WALKWAY))
+    # (Right deck is its own component/tag — see walkway_right_deck().)
 
     # Left deck — removable lift-out (distinct color) + drum-exit punch-out.
     parts.append(ruby_box("Walkway Left (removable)", WK_LEFT_X, 0, GRATE_Z,
@@ -132,6 +170,13 @@ def walkway_decks():
                           GRATE_Z, WK_LEFT_WIDE_W - WK_W, WK_LEFT_WIDE_YR - WK_LEFT_WIDE_YL,
                           t, color=C_REMOVABLE))
     return '\n'.join(parts)
+
+
+def walkway_right_deck():
+    """The right (IBC-end) ceiling-hung deck — its own component/tag so the
+    'Right Hangers' scene can show it alone (near/far/left decks off)."""
+    return ruby_box("Walkway Right (IBC end)", WK_RIGHT_X, 0, GRATE_Z,
+                    R_W, C_WID, GRATE_T, color=C_WALKWAY)
 
 
 # ── Wall cantilever brackets, with the EXTERIOR brace + bolt-throughs ────────
@@ -311,7 +356,8 @@ def generate_ruby():
     comps = [
         component("Container (ghost)", "Container", container_ghost()),
         component("Processing Tray", "Processing Tray", ov.processing_tray()),
-        component("Walkway Decks (gates)", "Walkways", walkway_decks()),
+        component("Walkway Decks (near/far/left)", "Walkways", walkway_decks()),
+        component("Walkway Right (IBC end)", "Walkway Right", walkway_right_deck()),
         component("Wall Cantilevers", "Cantilevers", cantilevers()),
         component("Right Walkway Hangers", "Right Hangers", right_hangers()),
         component("Left Walkway Support", "Left Support", left_support()),
@@ -324,11 +370,11 @@ def generate_ruby():
 
     # Scenes — Container stays on as context; scenes toggle the rest.
     scene_groups = [
-        ("Gates (walkway decks)", ["Walkways", "Processing Tray"]),
-        ("Cantilevers (+ exterior braces/bolts)", ["Cantilevers", "Processing Tray"]),
-        ("Right Hangers", ["Right Hangers", "Walkways", "Processing Tray"]),
-        ("Left Support (bearer + legs)", ["Left Support", "Cantilevers", "Processing Tray"]),
-        ("Processing Tray", ["Processing Tray"]),
+        ("Walkway", ["Walkways", "Walkway Right", "Processing Tray"]),
+        ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
+        # Right Hangers — only the RIGHT deck (near/far/left "Walkways" tag off).
+        ("Right Hangers", ["Right Hangers", "Walkway Right", "Processing Tray"]),
+        ("Left Support", ["Left Support", "Cantilevers", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))
@@ -345,7 +391,7 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase ALL prior instances.
 to_erase = entities.to_a.select {{ |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -356,6 +402,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
 # ── Subsystems (each a component on its tag) ──
 {body}
+
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+{walkway_labels()}
 
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -370,14 +419,21 @@ model.layers.to_a.each {{ |l|
 
 # ── Scenes — one shared iso camera; scenes only toggle visibility ──
 model.layers.each {{ |l| l.visible = true }}
+model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.55, -0.7, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
+model.active_view.zoom(0.72)   # pull back so callouts have margin (and read larger)
 
+# Combined — all subsystems, Labels OFF.
 model.pages.add("Combined")
+# Labeled — same view + callouts on the major parts.
+model.layers.each {{ |l| l.visible = true }}
+model.pages.add("Labeled")
+model.layers["Labels"].visible = false if model.layers["Labels"]
 {scene_groups_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }}
   page = model.pages.add(name)

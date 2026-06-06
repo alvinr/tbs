@@ -14,7 +14,7 @@ edge and the container floor — clearing the 50mm tray rim with 30mm margin.
 
 **Design goals:**
 
-- Support the full panel mass (~180 kg) from the ceiling
+- Support the full suspended mass (~279 kg: panel + housed drum) from the ceiling
 - Provide 880mm X-direction slide travel for transport mode conversion
 - Maintain 80mm floor gap — clearing the 50mm processing tray rim at all positions
 - Zero floor contact — the panel never touches the tray or walkway during slide
@@ -128,13 +128,19 @@ panel frame top rail.
 
 ## 4. Load Analysis
 
-### 4.1 Panel Mass
+### 4.1 Suspended Mass
+
+The ceiling rails carry the full hinged-panel assembly, including the housed
+revolving drum (the drum rotates on bearings within the housing, so its weight
+transfers through the housing to the panel). Figures are the first-principles
+values from the [Weight Distribution Report](weight-distribution-report.md) §3.2
+(rev 9 / B2).
 
 | Component | Mass (kg) |
 |-----------|----------|
-| Panel structure (frame + plywood skins) | ~100 |
-| Revolving drum + baffles + bearings | ~60–80 |
-| **Total panel mass** | **~180** |
+| Hinged panel (sandwich + Ø900 housing + B2 bay/hinges/caster) | 241 |
+| Light-trap drum (Ø864 C-shell, PP plastic skin, 2× SKF 6215 bearings) | 38 |
+| **Total suspended mass** | **~279** |
 
 ### 4.2 Carriage Load Distribution
 
@@ -142,23 +148,23 @@ The panel hangs from 4 carriage blocks (2 per rail). Assuming equal load sharing
 
 | Parameter | Value |
 |-----------|-------|
-| Total gravitational load | 180 kg × 9.81 m/s² = 1,766 N |
-| Load per block | 1,766 / 4 = 441 N |
+| Total gravitational load | 279 kg × 9.81 m/s² = 2,737 N |
+| Load per block | 2,737 / 4 = 684 N |
 | HGH20CA dynamic rating | 12,700 N per block |
-| **Safety factor per block** | **12,700 / 441 = 28.8×** |
+| **Safety factor per block** | **12,700 / 684 = 18.6×** |
 
-Even with unequal loading (worst case: 2 blocks carrying 70% of the load), the
-safety factor remains above 15×. The HGR20/HGH20CA system is conservatively
-oversized for this application.
+Even with unequal loading (worst case: 2 blocks carrying 70% of the load = 958 N
+each), the safety factor remains above **13×**. The HGR20/HGH20CA system is
+conservatively oversized for this application.
 
 ### 4.3 Ceiling Plate Weld
 
 The 4mm continuous fillet weld along both long edges of each 1200mm mounting
-plate has a throat area of approximately 2800mm². At a conservative 100 MPa
-shear allowable for E70XX electrode on A36 plate, each plate sustains ~280 kN —
-far exceeding the 883 N half-panel load it carries. The Corten ceiling itself
-is stiffened by corrugation ribs at 100–150mm spacing, preventing local
-buckling under the distributed plate load.
+plate has a throat area of approximately 6,800mm² (2 × 1200mm × 2.83mm throat).
+At a conservative 100 MPa shear allowable for E70XX electrode on A36 plate, each
+plate sustains ~680 kN — far exceeding the 1,369 N half-panel load it carries
+(279 kg ÷ 2 × 9.81). The Corten ceiling itself is stiffened by corrugation ribs
+at 100–150mm spacing, preventing local buckling under the distributed plate load.
 
 ---
 
@@ -209,13 +215,16 @@ procedure.
 
 | Position | Panel corner inner face X (mm) | Drum exterior edge X (mm) | Tray clearance | Container doors clear? |
 |----------|-------------------------------|--------------------------|---------------|----------------------|
-| Operational (X=0) | 40 | see note | N/A — panel outboard of tray | No (drum protrudes) |
-| Transport (X=880) | 920 | see note | 30mm vertical gap | Yes (drum offsets out via the bay) |
+| Operational (X=0) | 40 | −850 | N/A — panel outboard of tray | No (drum/bay protrudes ~850mm out the open door) |
+| Transport (X=880) | 920 | +30 | 30mm vertical gap | Yes (drum retracted inside the closure plane by 30mm) |
 
-> **Note — drum-exit geometry pending B2 update.** The "Drum exterior edge X" column
-> reflects the pre-B2 Ø750 inline drum and is superseded by the rev 9 / B2 design,
-> where the Ø900 drum is offset (`DRUM_CX = −400`) and exits through the hinge-panel
-> punch-out bay rather than protruding inline. See [Hinged Panel Report](hinged-panel-report.md) §3.
+The Ø900 drum is offset within the hinge-panel punch-out bay at `DRUM_CX = −400`
+(rev 9 / B2), so its outermost point sits at X = −400 − 450 = **−850mm** when the
+panel is at the operational position (the bay protrudes through the open cargo
+door — `BAY_FRONT_X = −890`). Sliding the panel **880mm** inward carries that edge
+to X = −850 + 880 = **+30mm** — just inside the X=0 door closure plane, so the
+cargo doors clear the drum by 30mm. (This is what sizes the slide: ~850mm to clear
+the door + 30mm margin = 880mm.) See [Hinged Panel Report](hinged-panel-report.md) §3.
 
 ### 6.1 Locking
 

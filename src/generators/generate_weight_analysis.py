@@ -45,6 +45,7 @@ from tbs_constants import (
     WALKWAY_RIGHT_X, WALKWAY_LEFT_X, WALKWAY_LEFT_SPAN,
     WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R,
     LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T, LEFT_WK_LEG_N,
+    LEFT_WK_SEAT_BOLT_N, LEFT_WK_SEAT_PLATE,
     EP_X, EP_W, BA_X, BA_W, PUMP_X, PUMP_W,
     PUMP_D, PUMP_H_LO, PUMP_H_HI, CORRIDOR_YD_NEAR,
     PANEL_CORNER_T, PANEL_CENTER_T, PANEL_CENTER_W, PANEL_FLOOR_GAP,
@@ -222,25 +223,35 @@ def _walkway_right_weight():
 
 
 def _walkway_left_weight():
-    """Left walkway (removable lift-out): grating + bearer beam + legs."""
+    """Left walkway (removable lift-out): grating + STEEL edge beam on wall seats
+    + legs + strip + drum-exit punch-out (rev 2026-06-05 — edge beam, not Al bearer)."""
     # Grating: 300mm × 2362mm
     grate_area = (WALKWAY_W / 1000) * (C_WID / 1000)
     grate_kg = grate_area * GRATING_KG_PER_M2
-    # Bearer beam: 50×50×3mm Al RHS, 1762mm
-    bearer_perim_area = (2 * (50 + 50) * 3 - 4 * 3 * 3) * 1e-6  # m²
-    bearer_kg = bearer_perim_area * (WALKWAY_LEFT_SPAN / 1000) * RHO_ALUM
+    # Inner-edge STEEL edge beam: 40×40×3mm SHS, FULL WIDTH (wall-to-wall).
+    S, T = LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T
+    beam_perim_area = (4 * S * T - 4 * T * T) * 1e-6  # m²
+    beam_kg = beam_perim_area * (C_WID / 1000) * RHO_STEEL
+    # 2 IBC-style wall-seat brackets: interior seat plate (~100×100×6) + exterior
+    # backing plate (LEFT_WK_SEAT_PLATE) + 3× M12 through-bolts, each end.
+    seat_plate_kg = (0.10 * 0.10 * LEFT_WK_SEAT_PLATE[2] / 1000) * RHO_STEEL
+    backing_kg = (LEFT_WK_SEAT_PLATE[0] / 1000 * LEFT_WK_SEAT_PLATE[1] / 1000
+                  * LEFT_WK_SEAT_PLATE[2] / 1000) * RHO_STEEL
+    bolts_kg = LEFT_WK_SEAT_BOLT_N * 0.07  # M12×80 ≈ 70 g each
+    wall_seats_kg = 2 * (seat_plate_kg + backing_kg + bolts_kg)
     # 3 support legs: 25×25×3mm Al SHS, ~75mm tall each + base plates
     leg_area = (4 * 25 * 3 - 4 * 3 * 3) * 1e-6
     leg_kg = LEFT_WK_LEG_N * leg_area * 0.075 * RHO_ALUM
-    # Bearing strip: 25×25×3mm Al angle, ~2362mm
-    strip_kg = (2 * 25 * 3 - 3 * 3) * 1e-6 * (C_WID / 1000) * RHO_ALUM
+    # Bearing strip: 15mm Al flat bar (15×3 section), ~2362mm
+    strip_kg = (15 * 3) * 1e-6 * (C_WID / 1000) * RHO_ALUM
     # Drum-exit punch-out (rev 8): deepens 300→600mm over Yd 800–1560.
-    # Extra grating + 1 extra cross bearer spanning the deeper zone + 1 leg.
+    # Extra grating + an Al 50×50×3 cantilever sub-frame bearer + 1 leg.
+    subframe_perim_area = (2 * (50 + 50) * 3 - 4 * 3 * 3) * 1e-6  # 50×50×3 Al RHS
     punch_len = (WALKWAY_LEFT_WIDE_YD_R - WALKWAY_LEFT_WIDE_YD_L) / 1000.0
     extra_grate_kg = ((WALKWAY_LEFT_WIDE_W - WALKWAY_W) / 1000.0) * punch_len * GRATING_KG_PER_M2
-    extra_bearer_kg = bearer_perim_area * punch_len * RHO_ALUM
+    extra_bearer_kg = subframe_perim_area * punch_len * RHO_ALUM
     extra_leg_kg = 1 * leg_area * 0.075 * RHO_ALUM
-    return (grate_kg + bearer_kg + leg_kg + strip_kg
+    return (grate_kg + beam_kg + wall_seats_kg + leg_kg + strip_kg
             + extra_grate_kg + extra_bearer_kg + extra_leg_kg)
 
 

@@ -55,10 +55,10 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 | Near walkway | 56 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 26 kg/m² grating |
 | Far walkway | 56 | 470–4,629 | 2,062–2,362 | Same as near walkway |
 | Right walkway | 46 | 4,329–4,629 | 0–2,362 | Ceiling-hung: 2× 25×25×5 bearers + M10 hangers + grating |
-| Left walkway | 29 | 170–470 | 0–2,362 | Removable lift-out: grating + 50×50×3 Al bearer beam + 3 legs + drum-exit punch-out (deeper grating + bearer + leg) |
+| Left walkway | 37 | 170–470 | 0–2,362 | Removable lift-out: grating + 40×40×3 steel edge beam (full width) on 2 bolt-through wall seats + 3 legs + bearing strip + drum-exit punch-out (deeper grating + Al sub-frame + leg) |
 | Ceiling rails | 48 | 0–5,893 | 30–2,332 | 2× HGR20 @ 3.7 kg/m + 8 carriage blocks |
 | Container mods | 65 | Distributed | Distributed | Light seal foam + reinforcement plates (estimate) |
-| **Structure subtotal** | **695** | | | |
+| **Structure subtotal** | **702** | | | |
 
 ### 3.3 Equipment
 
@@ -83,10 +83,10 @@ marine plywood 600 kg/m³, water 1,000 kg/m³.
 
 | Category | Weight (kg) | % of Dry Total |
 |----------|------------|---------------|
-| Container (shell + doors) | 2,200 | 65.1% |
-| Structure | 695 | 20.6% |
+| Container (shell + doors) | 2,200 | 65.0% |
+| Structure | 702 | 20.7% |
 | Equipment | 484 | 14.3% |
-| **Total dry** | **3,378** | **100%** |
+| **Total dry** | **3,386** | **100%** |
 
 **Grating weight assumption:** 15mm press-locked galvanized steel bar grating
 at 34mm bearing bar pitch weighs approximately 26 kg/m² (McNICHOLS
@@ -109,7 +109,7 @@ during processing, not pre-loaded).
 | Blue IBC-2 water | 600 | 600 | X=4,674–5,893, Yd=1,316–2,332 | Top (Z=1,010–2,020) |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,578 kg** (3,378 dry + 1,200 liquid)
+**Total loaded weight: 4,586 kg** (3,386 dry + 1,200 liquid)
 
 ### 4.2 Materials Exhausted (Ready for Resupply)
 
@@ -125,16 +125,16 @@ Brown/Waste IBCs.
 | Processing tray | — | 0 | Drained | — |
 | **Total liquid** | **1,200** | **1,200** | | |
 
-**Total loaded weight: 4,578 kg** (3,378 dry + 1,200 liquid)
+**Total loaded weight: 4,586 kg** (3,386 dry + 1,200 liquid)
 
 ### 4.3 State Comparison
 
 | State | Total (kg) | X_cg (mm) | Yd_cg (mm) | Z_cg (mm) | Front/Rear | Near/Far |
 |-------|-----------|-----------|------------|-----------|------------|----------|
-| Dry (Transport) | 3,378 | 2,727 | 1,167 | 1,079 | 54.5/45.5% | 50.7/49.3% |
-| Loaded Transport (Blue full) | 4,578 | 3,397 | 1,171 | 1,193 | 40.2/59.8% | 50.5/49.5% |
-| Camera Ready (Deployed) | 4,578 | 3,385 | 1,171 | 1,193 | 40.2/59.8% | 50.5/49.5% |
-| Materials Exhausted (Transport) | 4,578 | 3,397 | 1,171 | 928 | 40.2/59.8% | 50.5/49.5% |
+| Dry (Transport) | 3,386 | 2,721 | 1,167 | 1,076 | 54.6/45.4% | 50.7/49.3% |
+| Loaded Transport (Blue full) | 4,586 | 3,391 | 1,171 | 1,191 | 40.3/59.7% | 50.5/49.5% |
+| Camera Ready (Deployed) | 4,586 | 3,380 | 1,171 | 1,191 | 40.3/59.7% | 50.5/49.5% |
+| Materials Exhausted (Transport) | 4,586 | 3,391 | 1,171 | 927 | 40.3/59.7% | 50.5/49.5% |
 
 **Loaded Transport** is the camera-ready water load (full top-tier Blue IBCs,
 1,200 kg) carried in the *transport* configuration — panel slid in, cargo doors
@@ -201,10 +201,10 @@ All four states are well within the ISO 24,000 kg maximum gross weight:
 
 | State | Total (kg) | Margin (kg) | Utilization |
 |-------|-----------|------------|-------------|
-| Dry | 3,378 | 20,622 | 14.1% |
-| Camera Ready | 4,578 | 19,422 | 19.1% |
-| Materials Exhausted | 4,578 | 19,422 | 19.1% |
-| Loaded Transport | 4,578 | 19,422 | 19.1% |
+| Dry | 3,386 | 20,614 | 14.1% |
+| Camera Ready | 4,586 | 19,414 | 19.1% |
+| Materials Exhausted | 4,586 | 19,414 | 19.1% |
+| Loaded Transport | 4,586 | 19,414 | 19.1% |
 
 The container operates at less than 20% of its rated capacity in all states.
 There is no structural concern from a gross weight perspective.
@@ -249,7 +249,7 @@ This is an inherent self-stabilizing feature of the 2×2 IBC stack design.
 The water system is closed — 1,200 kg of water is loaded into the Blue IBCs
 and redistributed during processing. No water is added or lost; it simply
 migrates from top-tier Blue IBCs through the processing tray into bottom-tier
-Brown/Waste IBCs. Total mass remains constant at 4,578 kg throughout a
+Brown/Waste IBCs. Total mass remains constant at 4,586 kg throughout a
 session, but the vertical redistribution of 1,200 kg from top tier to
 bottom tier drops the center of gravity by 265mm, improving stability.
 

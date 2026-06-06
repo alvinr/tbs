@@ -17,8 +17,8 @@ access functions:
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
   manifold. Ceiling-hung to clear the IBC stack below.
 
-All four sections share a common 80mm deck height (65mm bracket arm or bearer
-top + 15mm grating) and 300mm standard width, creating a level perimeter walking
+All four sections share a common 80mm deck height (65mm bracket arm, L-angle, or
+edge-beam ledge + 15mm grating) and 300mm standard width, creating a level perimeter walking
 surface. The deck is lowered (from the original 100mm) so the film plane travels
 above the in-place walkway — deck top Z=80mm clears the Z=100mm film-frame bottom
 by 20mm. The cantilever bracket arm (Z=55–65mm) clears the 50mm processing-tray
@@ -206,8 +206,11 @@ The ceiling-hung design achieves three goals:
 
 The left walkway at the cargo door end (X=170–470mm) cannot use wall-cantilevered
 brackets because the hinged light-trap panel occupies the end wall and slides
-~550mm inward for transport mode. The left walkway is therefore a
-removable lift-out section supported by three independent elements.
+~880mm inward for transport mode. Its **inner edge (X=470mm) sits over the
+processing tray**, so it cannot be supported from below either. The left walkway
+is therefore a removable lift-out section whose inner edge is carried by a
+**full-width steel edge beam simply supported wall-to-wall on bolt-through wall
+seats** — the same load path as the IBC platform beams, not a cantilever.
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet5.png)
 
@@ -215,15 +218,44 @@ removable lift-out section supported by three independent elements.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Bearer beam | 50×50×3mm aluminum RHS | X=470mm, spans 1762mm along Yd between near/far bracket vertical legs |
+| Inner-edge edge beam | 40×40×3mm **steel** SHS, full width 2362mm | X=470mm, spans wall-to-wall (Yd 0→2362), Z52–92 (top at Z≈92mm) |
+| Wall-seat bracket (×2) | 6mm steel seat plate + exterior backing plate (100×180×6mm) + 3× M12 through-bolts, each end | Near (Yd≈0) and far (Yd≈2362) container walls at X=470mm |
 | Floor-standing support legs | 25×25×3mm aluminum SHS, 3 legs | X=140mm (on bare floor outside tray), 440mm spacing |
 | Foot plates | 60×60×3mm aluminum with rubber pad | At base of each floor leg |
-| Bearing strip | 25×25×3mm aluminum angle | On processing tray rim at X=170mm (removable) |
+| Bearing strip | 15mm aluminum flat bar | On processing tray rim at X=170mm (removable) |
 
-The bearer beam at X=470mm is the primary structural element. It spans 1762mm
-(the distance between the near and far walkway bracket vertical legs at
-Yd=300mm and Yd=1962mm) and is bolted to those bracket vertical legs. The grating
-rests on the bearer beam top surface at Z=65mm.
+The inner edge at X=470mm is the load-critical line (it overhangs the tray). It is
+carried by a **steel 40×40×3mm SHS edge beam** standing in the envelope
+**Z≈52–92mm**. The 40mm section (not 50mm) and the Z52 underside are deliberate: the
+beam runs the full container width and **crosses the tray's near and far perimeter
+rims** (Z0–50, at Yd≈80 and 2280), so its bottom must sit above Z50 — Z52 clears the
+rim by 2mm, the bath (Z42) by 10mm, and the film-frame bottom (Z=100mm) by 8mm, and
+keeps all load on the wall seats (the thin SS tray rim carries nothing). The beam
+stands ~12mm proud of the Z=80mm deck, so it doubles as a **toe-board / safety
+kerb**. The grating's inner edge rests on a Z65 ledge along the beam and is located
+laterally by the proud kerb (no fasteners, so it lifts straight out).
+
+The edge beam is **simply supported wall-to-wall** on a seat bracket bolted through
+the corrugated container wall at each end — an interior seat plate, an exterior
+backing plate, and 3× M12 through-bolts, mirroring the IBC wall-seat brackets and
+the walkway-cantilever reinforcing plates. An operator's load travels grating →
+edge beam → wall as a clean end reaction, **not** a cantilever moment dumped on a
+bracket-arm tip. Because the seats sit at X=470mm — inside the panel's transport-
+slide path — the **edge beam and interior seat plates are demountable** (a few
+bolts) and lift out with the walkway before the panel slides; the through-bolts and
+exterior backing plates stay on the wall. The full-width beam also picks up the
+near/far walkways' door-end grate edges at X=470mm, so no separate X=470mm
+cantilever bracket is needed.
+
+**Structural check** (≈1kN operator at midspan, span = full width 2362mm): for the
+40×40×3 SHS (I ≈ 1.02×10⁵mm⁴, Z ≈ 5.1×10³mm³) bending ≈116MPa vs ~250MPa yield →
+**FoS ≈2.2**; deflection ≈13mm = **L/175** (springy but serviceable for occasional
+single-person access — a midspan stiffener is the fallback if bounce is an issue);
+beam mass ≈8.2kg (liftable). Each wall reaction ≈0.5kN — the IBC-style
+wall seats carry ~50× that in the tote application. This is a hand-check, not a
+signed analysis. See the [edge-beam design spec](https://github.com/alvinr/tbs/blob/main/docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md)
+for the full rationale and the ruled-out alternatives (rod suspension fouls the
+film plane).
 
 ### 5.2 Drum-Exit Punch-Out (rev 8)
 
@@ -248,63 +280,67 @@ every pinhole sight line through it lands at X≤37mm on the film plane, ~113mm 
 of the image edge. Confirmed by `generate_line_of_sight.py` (no equipment intersects
 the cone).
 
-**Support.** The 600mm section overhangs ~300mm past the main X=470mm bearer, out
+**Support.** The 600mm section overhangs ~300mm past the X=470mm edge beam, out
 over the processing tray. Because a floor leg cannot stand in the tray basin, the
 overhang is carried by a small **cantilever sub-frame**: two 50×50×3mm aluminum RHS
-cantilever arms bolted to the main bearer at the punch-out's Yd ends (Yd=800 and
+cantilever arms bolted to the edge beam at the punch-out's Yd ends (Yd=800 and
 1560mm), tied at their tips by an outer trim bearer at X≈770mm. The sub-frame
 cantilevers entirely over the tray with **zero tray contact**, and lifts out with
 the rest of the left walkway for transport. See **walkway Sheet 9 (Detail E)** for
 the attachment plan.
 
-On the cargo door side (X=170mm), the grating rests on a 25×25×3mm aluminum angle
+On the cargo door side (X=170mm), the grating rests on a 15mm aluminum flat-bar
 bearing strip placed on top of the processing tray rim (rim top at Z=50mm, strip
 top at Z=65mm). Below the bearing strip, three floor-standing support legs at
 X=140mm provide vertical support. These legs stand on bare floor outside the
 processing tray footprint — zero tray contact.
 
 **Sheet 9 — Detail E: Drum-Exit Punch-Out Support (plan).** How the deeper
-landing attaches and is supported — the cantilever sub-frame off the main
-X=470mm bearer, the outer trim bearer at X=770mm, and the zero-tray-contact
+landing attaches and is supported — the cantilever sub-frame off the
+X=470mm edge beam, the outer trim bearer at X=770mm, and the zero-tray-contact
 overhang.
 
 ![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
 
-### 5.2 Bearer Beam Anti-Slip Restraint
+### 5.3 Wall-Seat Bracket Detail
 
-The bearer beam is restrained against sliding in the X direction by a flat plate
-and lock block system on each bracket arm.
+The edge beam lands in a **seat bracket bolted through the container wall** at each
+end (the IBC wall-seat load path). The beam is located in X and Z by the seat
+pocket — no separate anti-slip restraint is needed.
 
-![TBS-001 Walkway — Sheet 6: Bearer Beam Guide Tab Restraint](assets/walkway-sheet6.png)
+![TBS-001 Walkway — Sheet 6: Wall-Seat Bracket Detail](assets/walkway-sheet6.png)
 
 | Component | Specification |
 |-----------|--------------|
-| Flat plate | 5mm thick × 80mm wide, on bracket arm top |
-| Stop lip | 5×20mm, bent up from plate — forms pocket with base |
-| Lock block | 20×20mm, on far side of beam |
-| Lock bolt | M8 through 50mm slot in plate — adjustable, hand-tightenable |
+| Interior seat plate | 6mm steel, formed seat pocket, drops the beam end ~50mm onto a horizontal ledge |
+| Exterior backing plate | 100×180×6mm steel — spreads the bolt reaction across the corrugated wall |
+| Through-bolts | 3× M12×80mm grade 8.8, triangular pattern, into the wall rib |
+| End reaction | ≈0.5kN per seat (1kN operator at midspan) |
 
-The beam drops into the pocket formed between the stop lip and lock block. The
-M8 bolt through the slotted hole secures the lock block in position. No tools
-required for removal — loosen the thumb-screw bolt, slide the lock block, and
-lift the beam out.
+The beam end drops into the seat-plate pocket — located in X and Z, free to lift
+straight out. **Demountable for transport:** the seat plate is on a few bolts and
+comes off with the beam before the panel slides; the through-bolts and exterior
+backing plate remain on the wall. No tools beyond a wrench for the 3 bolts.
 
-### 5.3 Panel Transport Clearance
+### 5.4 Panel Transport Clearance
 
-| Clearance | Value |
+| Parameter | Value |
 |-----------|-------|
-| Panel transport inner face | X=420mm (300mm slide + 120mm center thickness) |
-| Near walkway bracket at butt joint | X=470mm |
-| Clearance | 50mm |
-| Panel bottom edge | Z=80mm (above 50mm tray rim) |
+| Panel slide travel (B2) | 880mm |
+| Panel front face when slid | X≈1000mm |
+| Butt joint / edge beam / near-far walkway start | X=470mm |
+| Panel reach past butt joint | ≈530mm (into the vacated left-walkway zone) |
+| Panel bottom edge | Z=80mm (above the 50mm tray rim) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-The left walkway, bearer beam, support legs, and bearing strip must all be
-removed before the hinged panel can slide to transport position. The 50mm
-clearance between the panel transport envelope (X=420mm) and the first near/far
-walkway bracket (X=470mm) ensures the panel never contacts the permanent walkway
-structure.
+The left walkway grating, **edge beam, interior seat plates**, support legs, and
+bearing strip must all be removed before the hinged panel can slide to transport
+position (the exterior backing plates and through-bolts stay on the wall). The
+panel slides 880mm — its front face reaches X≈1000mm, **sweeping ≈530mm past the
+X=470mm butt joint through the zone the removable left walkway has vacated**. The
+relevant standing clearance is vertical: the panel bottom edge (Z=80mm) rides above
+the tray rim (Z=50mm).
 
 ---
 
@@ -317,7 +353,7 @@ intersections.
 
 | Corner | Butt joint X | Design |
 |--------|-------------|--------|
-| Near-left / Far-left | X=470mm | Left walkway grating rests on bracket arm top |
+| Near-left / Far-left | X=470mm | Left walkway grating bolts to the full-width edge beam |
 | Near-right / Far-right | X=4629mm | Right walkway grating abuts near/far grating |
 
 Butt joints are used rather than miters for two reasons:
@@ -364,7 +400,7 @@ All four walkway sections use the same grating:
 | Near (pinhole wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
 | Far (film plane wall) | M saddle clips + TEK screws | Bracket arm top surface | Unscrew TEK screws, lift grating |
 | Right (IBC end) | M saddle clips + TEK screws | L-angle bearer horizontal leg | Unscrew TEK screws, lift grating |
-| Left (cargo door) | Gravity + guide tabs | Bearer beam (X=470) + bearing strip (X=170) | Lift straight up — no fasteners |
+| Left (cargo door) | Gravity + proud kerb | Edge beam (X=470) + bearing strip (X=170) | Lift straight up — no fasteners |
 
 **Near and far walkways** use M saddle clips that straddle two grating bearing
 bars. Each clip is secured to the bracket arm with a self-drilling TEK screw
@@ -376,11 +412,11 @@ into the horizontal leg of the 25×25×5mm L-angle bearers rather than bracket
 arms.
 
 **Left walkway** uses gravity retention only. The grating sits on twin support
-lines (bearer beam at X=470mm and bearing strip at X=170mm) and is held in
-position laterally by small guide tabs — 3mm steel angle pieces welded to the
-bearer beam top surface. The twin support lines prevent rocking. No fasteners
-are used because the left walkway must be removed quickly for hinged panel
-transport mode — lift straight up and carry out.
+lines (edge beam at X=470mm and bearing strip at X=170mm) and is held in
+position laterally by the edge beam's **proud kerb**, which stands ~12mm above the
+deck and stops the grating sliding tray-ward. The twin support lines prevent
+rocking. No fasteners are used because the left walkway must be removed quickly
+for hinged panel transport mode — lift straight up and carry out.
 
 ---
 
@@ -421,15 +457,16 @@ distributes load across multiple rods.
 | 9 | Ceiling bracket plate | 100×60×6mm steel | 10 | $30–$50 |
 | 10 | M10 bolt kit (ceiling) | Through-bolt + nut + washer (ceiling attachment) | 20 (2 per plate) | $20–$35 |
 | 11 | M10 nut + washer set (bearer) | Nut + washer above and below bearer flange, per rod | 20 sets | $15–$25 |
-| 12 | Bearer beam (left walkway) | 50×50×3mm aluminum RHS, 1762mm long | 1 | $25–$45 |
+| 12 | Edge beam (left walkway inner edge) | 40×40×3mm **steel** SHS, 2362mm long (full width) | 1 | $35–$60 |
+| 12a | Wall-seat bracket (left edge beam) | 6mm steel seat plate + 100×180×6mm exterior backing plate, each end | 2 | $30–$55 |
+| 12b | M12×80mm through-bolt kit (wall seats) | Hex bolt + 2× washers + nut, grade 8.8 | 6 (3 per seat) | $9–$15 |
 | 13 | Floor support leg | 25×25×3mm aluminum SHS, 65mm tall | 3 | $10–$20 |
 | 14 | Foot plate | 60×60×3mm aluminum + 2mm rubber pad | 3 | $10–$15 |
-| 15 | Bearing strip | 25×25×3mm aluminum angle, ~1762mm long | 1 | $15–$25 |
-| 16 | Anti-slip restraint kit | 5mm flat plate + stop lip + lock block + M8 thumb screw bolt per bearer end | 2 sets | $20–$35 |
+| 15 | Bearing strip | 15mm aluminum flat bar, ~2362mm long | 1 | $15–$25 |
 | 17 | Grating clips | Removable spring clips, stainless | ~30 | $30–$50 |
 | 18 | Plywood base plate (evap cooler stowage) | 12mm plywood, 600×350mm | 1 | $5–$10 |
 | 19 | Ratchet strap (evap cooler) | 25mm×3m, 500kg WLL | 2 | $15–$25 |
-| | **Total** | | | **$1,430–$2,375** |
+| | **Total** | | | **$1,460–$2,425** |
 
 ---
 
@@ -438,13 +475,13 @@ distributes load across multiple rods.
 | Interval | Task |
 |----------|------|
 | Before each session | Inspect all grating clips are seated; test left walkway lift-out for freedom of movement |
-| Before each session | Check bearer beam anti-slip restraint — lock blocks secure, thumb screws tight |
+| Before each session | Check edge-beam wall-seat bolts are tight; beam seated fully in both pockets |
 | Monthly | Inspect cantilever bracket bolts for tightness (3× M12 std, 4× M12 widened) |
 | Monthly | Check ceiling hanger nuts — ensure double-nut lock on bearer flange side |
 | Monthly | Inspect grating for corrosion, damaged bearing bars, or bent cross bars |
 | Quarterly | Inspect reinforcing plates (exterior) for corrosion — touch up paint if needed |
 | Quarterly | Check right walkway hanger rods for straightness and thread condition |
-| Before transport | Remove left walkway: lift grating, remove bearing strip and floor legs, unbolt bearer beam |
+| Before transport | Remove left walkway: lift grating, remove bearing strip and floor legs, unbolt edge beam + interior seat plates (backing plates stay on wall) |
 | Before transport | Verify evap cooler ratchet straps to bracket arms; check anti-slide cleats |
 | After transport | Reinstall left walkway in reverse order; check all sections for level deck |
 

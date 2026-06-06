@@ -511,22 +511,31 @@ WALKWAY_NEAR_YD = 0                          # near edge against pinhole wall
 WALKWAY_FAR_YD  = C_WID - WALKWAY_W         # = 1962mm
 # Left walkway (cargo door end): X=tray_L to tray_L+WALKWAY_W, Yd=0 to C_WID
 # REMOVABLE — must be lifted out before sliding panel to transport position.
-# Span between near/far bracket arms: C_WID - 2×WALKWAY_W = 1762mm.
-# Supported by: (a) bearer beam along Yd at X=470 (processing tray side),
-# bolted to near/far bracket vertical legs, spanning 1762mm; and
-# (b) 3 floor-standing support legs at X≈140 (cargo door side, outside tray)
-# plus a bearing strip on the processing tray rim (X=170).
-# Zero processing tray contact — all supports outside or above tray.
+# Supported by (rev 2026-06-05 — edge beam on bolt-through wall seats; see
+# docs/superpowers/specs/2026-06-05-left-walkway-edge-beam-support.md):
+#  (a) INNER edge — a full-width STEEL 50×50×3 SHS EDGE BEAM at X≈470 standing in
+#      the bath→film-frame envelope (Z≈45..95, ~15mm proud of the deck as a
+#      toe-board), SIMPLY SUPPORTED wall-to-wall on IBC-style seat brackets BOLTED
+#      THROUGH the corrugated wall at each end (demountable — the panel slides
+#      through X≈470). Replaces the old cantilevered Al bearer (couldn't fit the
+#      15mm rim→grate clearance and overstressed the bracket-arm tip).
+#  (b) OUTER edge — a bearing strip on the tray rim (X=170) + 3 floor legs at
+#      X≈140 (cargo-door side, on bare floor outside the tray).
+# Zero processing tray contact — all supports outside or above the tray/bath.
 WALKWAY_LEFT_X  = PROC_TRAY_X_L             # = 170mm (starts at tray left edge)
-WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm span between bracket arms
-# Left walkway intermediate support
-LEFT_WK_BEARER_SIZE  = 50    # bearer beam section (mm) — 50×50×3mm Al RHS
-LEFT_WK_BEARER_T     = 3     # bearer beam wall thickness (mm)
+WALKWAY_LEFT_SPAN = C_WID - 2 * WALKWAY_W   # = 1762mm — floor-leg span (outer edge)
+# Left walkway support
+LEFT_WK_BEARER_SIZE  = 50    # edge-beam section (mm) — 50×50×3mm STEEL SHS (rev: was Al RHS)
+LEFT_WK_BEARER_T     = 3     # edge-beam wall thickness (mm)
 LEFT_WK_LEG_N        = 3     # number of floor-standing support legs (cargo door side)
 LEFT_WK_LEG_SIZE     = 25    # support leg tube size (mm) — 25×25×3mm Al SHS
 LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = (WALKWAY_H - WALKWAY_GRATE_T) - PROC_TRAY_RIM  # = 15mm — fills the gap between the tray rim (Z=50) and the grate bottom; Al flat bar on tray rim (DERIVED, tracks WALKWAY_H)
+# Edge-beam wall seats (IBC-style, bolt-through corrugated wall, demountable) — 1 per wall end.
+LEFT_WK_SEAT_BOLT_N  = 3     # M12 through-bolts per seat (triangular pattern)
+LEFT_WK_SEAT_BOLT_D  = 12    # M12
+LEFT_WK_SEAT_PLATE   = (100, 180, 6)   # exterior backing plate L×H×T (mm) — as the wall-cantilever reinforcing plates
 # Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
 # revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
 # landing. Deepen the walkway to 600mm over the drum-opening Yd span + stepping

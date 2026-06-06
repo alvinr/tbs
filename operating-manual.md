@@ -77,8 +77,8 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 0.4.5 — Digital scale (1g resolution)
 - [ ] 0.4.6 — Digital hygrometer
 - [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, 5900 × 2400mm with 100mm hem allowance)
-- [ ] 0.4.8 — Part A bottle (sealed, labelled)
-- [ ] 0.4.9 — Part B bottle (sealed, labelled)
+- [ ] 0.4.8 — Part A bottle (sealed, labeled)
+- [ ] 0.4.9 — Part B bottle (sealed, labeled)
 - [ ] 0.4.10 — Timer (phone or dedicated)
 - [ ] 0.4.11 — Spirit level
 - [ ] 0.4.12 — Black silicone sealant + gaffer tape (light-leak repair)
@@ -87,7 +87,7 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 - [ ] 0.5.1 — Inspect interior: no water ingress or condensation on image plane.
 - [ ] 0.5.2 — All seals (door perimeter, neoprene cord) are intact.
 - [ ] 0.5.3 — Film plane mechanism moves freely on all four corners.
-- [ ] 0.5.4 — Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — it rests on the near/far walkway butt joint ends with no brackets (the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start at X=470, entirely past the panel transport envelope. The left walkway must be removed before sliding the panel to transport position. No legs contact the tray floor.
+- [ ] 0.5.4 — Install perimeter walkway grating sections onto wall-cantilevered brackets around all 4 sides of the processing tray. Near, far, and right grating panels lift onto bracket arms and are secured with grating clips. The left walkway (cargo door end) is a removable lift-out section — its inner edge is carried by a full-width steel edge beam on bolt-through wall seats, the outer edge on a bearing strip + 3 floor legs (the hinged panel occupies this end wall). Left corners use butt joints (no miter) so near/far walkways start at X=470, entirely past the panel transport envelope. The left walkway must be removed before sliding the panel to transport position. No legs contact the tray floor.
 - [ ] 0.5.5 — Lay fresh 6-mil black LDPE containment liner over the tray surface, overlapping 50mm over the rims.
 
 **GO/NO-GO checkpoint:** Water system tested and IBCs filled. Part A and Part B prepared and sealed. All equipment packed. Container interior inspected (if accessible).
@@ -112,10 +112,10 @@ Prepare an 8% solution by weight. Add a small amount of ammonium dichromate for 
 ### 1.3 Mode Conversion — Transport to Operational
 **Time: ~5 minutes. Single-person operation.**
 
-The container arrives in transport mode: the stepped hinged panel is retracted 300mm inward on its ceiling-mounted HGR20 rails, and the left walkway section has been removed. Convert to operational mode before proceeding.
+The container arrives in transport mode: the stepped hinged panel is retracted 880mm inward on its ceiling-mounted HGR20 rails, and the left walkway section has been removed. Convert to operational mode before proceeding.
 
 - [ ] 1.3.1 — Release 2 Destaco toggle clamps at the transport position.
-- [ ] 1.3.2 — Pull the panel outward 300mm on the HGR20 rails until it contacts the operational end stops. Engage 2 Destaco toggle clamps at the operational position.
+- [ ] 1.3.2 — Pull the panel outward 880mm on the HGR20 rails until it contacts the operational end stops. Engage 2 Destaco toggle clamps at the operational position.
 - [ ] 1.3.3 — Install the left walkway section — place grating on the near/far walkway butt joint ends.
 - [ ] 1.3.4 — Swing the panel open 180° outward.
 - [ ] 1.3.5 — Retrieve the evaporative cooler from near walkway stowage (release 2 ratchet straps). Carry out through the door opening (~20 kg dry, one person).
@@ -380,7 +380,7 @@ If shore charger is connected, leave it running overnight to top up the battery 
 ### 5.5 Transport Mode Conversion (Packing Up)
 **Time: ~5 minutes. Single-person operation.**
 
-The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 300mm inward on these rails before the container doors can close. The left walkway (cargo door end) must be removed before sliding the panel — lift it out from the miter corners. The processing tray and remaining walkway sections (near, far, right) remain in place during mode conversion.
+The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails with 80mm floor gap (clearing the 50mm processing tray rim). The panel slides 880mm inward on these rails before the container doors can close. The left walkway (cargo door end) must be removed before sliding the panel — lift it straight out (butt-joint corners, no fasteners). The processing tray and remaining walkway sections (near, far, right) remain in place during mode conversion.
 
 - [ ] 5.5.1 — Stow all interior items. Retract film plane carriage to Yd=100mm.
 - [ ] 5.5.2 — Release all 4 Southco cam latches. Swing the panel open 180° outward.
@@ -389,7 +389,7 @@ The stepped hinged panel is suspended from ceiling-mounted HGR20 linear rails wi
 - [ ] 5.5.5 — Swing panel closed (do not latch).
 - [ ] 5.5.6 — Remove left walkway section (lift out from butt joints).
 - [ ] 5.5.7 — Release 2 Destaco toggle clamps at operational position.
-- [ ] 5.5.8 — Push panel inward 300mm on HGR20 rails. Carriage contacts transport end stops.
+- [ ] 5.5.8 — Push panel inward 880mm on HGR20 rails. Carriage contacts transport end stops.
 - [ ] 5.5.9 — Engage 2 Destaco toggle clamps at transport position.
 - [ ] 5.5.10 — Close and latch standard ISO container cargo doors.
 

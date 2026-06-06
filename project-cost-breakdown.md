@@ -188,11 +188,11 @@ View-camera-style moveable film plane with four independently actuated corners (
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
-| Aluminium angle 2"×2"×3/16" | 8 ft lengths | 10 | $22† | $220 |
+| Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 | $22† | $220 |
 | Dibond ACM panel 4mm | 4'×8' sheets | 6 | $85† | $510 |
 | Black EPDM foam tape | 1"×½", 50 ft rolls | 3 | $28† | $84 |
 | Rosco Duvetyne (light seal) | 60" wide, 10 yd | 1 | $95† | $95 |
-| Aluminium piano hinge | 2" wide, 72" | 2 | $28† | $56 |
+| Aluminum piano hinge | 2" wide, 72" | 2 | $28† | $56 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
 | Cam-lever spring clamps (muslin) | Over-center cam, neoprene jaw | 92 | $3-8† | $276-736 |
@@ -488,7 +488,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $2,842 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$16,246** |
+| **Scenario A total** | **~$16,579** |
 
 ### Scenario B — Recommended build, regional deployment
 
@@ -506,17 +506,17 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$22,168** |
+| **Scenario B total (excl. CDL)** | **~$22,576** |
 
 ### Scenario C — Full production, own transport, CDL
 
 | Item | Cost |
 |------|------|
-| Scenario B build | $21,879 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $21,676 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$111,379–$141,379** |
+| **Scenario C total** | **~$111,176–$141,176** |
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*
 

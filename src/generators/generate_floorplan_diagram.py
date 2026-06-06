@@ -184,7 +184,7 @@ def floor_plan():
             color=C_PINHOLE, fontsize=6.5, ha="right", va="center", **FONT, zorder=5)
 
     # Drum footprint in plan (semicircle inside container)
-    DRUM_FP_CY = C_WID / 2   # centred on container Y
+    DRUM_FP_CY = C_WID / 2   # centerd on container Y
     drum_fp = matplotlib.patches.Wedge(
         (0, DRUM_FP_CY), DRUM_R, -90, 90,
         fc="#FFE8D0", ec=C_PINHOLE, lw=1.2, alpha=0.6, zorder=5)
@@ -460,7 +460,7 @@ def floor_plan():
     # B2 (rev9): the left rail is CONTINUOUS — the drum is offset out (center
     # X=DRUM_CX, via the hinge-panel punch-out bay), so no demountable segment.
     NOTE_NX = -PAD_L + 120
-    NOTE_NY = DRUM_CY   # 1181 — light-lock Yd centre
+    NOTE_NY = DRUM_CY   # 1181 — light-lock Yd center
     ax.annotate("",
                 xy=(RAIL_X_L, NOTE_NY),
                 xytext=(NOTE_NX + 600, NOTE_NY),

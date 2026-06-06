@@ -4,7 +4,7 @@
 Focused on the IBC tote stack, its steel support frame, and the plumbing +
 equipment panel. REUSES the helpers and component builders from the Overview
 generator (generate_sketchup_model.py) — same component/tag/scene structure,
-shared iso camera, and material-sharing-by-colour. Three subsystem tags grouped
+shared iso camera, and material-sharing-by-color. Three subsystem tags grouped
 into four scenes:
     1. IBC Tanks            (the four totes)
     2. IBC Frame            (the steel stacking frame/rack)

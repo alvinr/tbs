@@ -181,7 +181,7 @@ def check_b_imports():
             if not os.path.exists(p2):
                 continue
             tw = _imports(p2)
-            # flag geometry-ish constants present on one side only (skip C_* colours)
+            # flag geometry-ish constants present on one side only (skip C_* colors)
             only3 = sorted(c for c in (td - tw) if not c.startswith("C_"))
             only2 = sorted(c for c in (tw - td) if not c.startswith("C_"))
             if only3 or only2:

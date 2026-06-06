@@ -10,7 +10,7 @@ the container are included for context.
 
 REUSES the helpers + builders from the Overview generator
 (generate_sketchup_model.py) — same component/tag/scene structure, shared iso
-camera, and material-sharing-by-colour. The 3D companion to the 2D
+camera, and material-sharing-by-color. The 3D companion to the 2D
 generate_film_plane_mechanism.py (Sheet 3 = corner bracket + universal joint).
 
 Usage (build into a SketchUp document — see --send note):
@@ -114,9 +114,9 @@ def corner_mechanism():
     y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN          # rail span in depth (Yd)
     rail_w, rail_h = 24, 16                       # HGR20 profile
     cw, cd, ch = 44, 44, 28                       # HGH20CA carriage block
-    ls_off = 26                                   # leadscrew offset from rail centre (Yd-perp = X)
+    ls_off = 26                                   # leadscrew offset from rail center (Yd-perp = X)
     for cid, cx, cz, d, rz in CORNERS:
-        zc = rz - rail_h / 2                       # rail sits centred on the rail Z
+        zc = rz - rail_h / 2                       # rail sits centerd on the rail Z
         # HGR20 linear rail — runs in +Y (depth) at the corner X, near floor/ceiling
         parts.append(ov.ruby_box(f"HGR20 Rail {cid}",
                                  cx - rail_w / 2, y0, zc, rail_w, rlen, rail_h,

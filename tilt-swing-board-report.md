@@ -171,7 +171,7 @@ The board's ±5.3° range produces up to 207mm of image shift — enough to stee
 
 A detailed analysis of the optical distortions can be found [here](complete-distortion-renders.md#2-tilt-swing-board-distortion-renders).
 
-The red cross (+) marks the projected image center; grey cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).
+The red cross (+) marks the projected image center; gray cross marks the nominal center. Note the grid remains rectilinear — the board translates the image cone without introducing geometric distortion. Distortion only appears when combined with film plane tilt/swing (§10).
 
 ---
 
@@ -191,7 +191,7 @@ The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r
 
 ![All configurations](assets/tilt-swing-combined-summary.png)
 
-The red cross (+) marks the projected image center; grey cross marks the nominal center.
+The red cross (+) marks the projected image center; gray cross marks the nominal center.
 
 Detailed renders can be found [in the full analysis](tilt-swing-board-analysis.md)
 

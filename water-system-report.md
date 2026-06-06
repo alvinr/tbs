@@ -43,7 +43,7 @@ When a cyanotype print is washed, the water picks up:
 | Ferric ammonium citrate (FAC) | Unexposed sensitizer | Water-soluble, pale yellow; low toxicity |
 | Potassium ferricyanide | Sensitizer component | Water-soluble, yellow-orange; low acute toxicity |
 | Prussian blue particles | Exposed image pigment wash-off | Fine blue solid particles, ~1–10 micron |
-| Iron(III) compounds | Oxidation products | Color the water blue-grey |
+| Iron(III) compounds | Oxidation products | Color the water blue-gray |
 
 **pH:** Wash water starts slightly acidic to neutral (pH 6–7) and may drift alkaline as iron compounds accumulate. Alkaline conditions (pH >8) must be avoided — they accelerate slow breakdown of ferricyanide to ferrocyanide and trace cyanide ions.
 
@@ -141,7 +141,7 @@ Processing tray sump (P-04 suction pickup)
         │
    3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-2 (Blue)
         │
-        └──→ pH drift / discoloured: FORWARD TO IBC-4 (waste)
+        └──→ pH drift / discolored: FORWARD TO IBC-4 (waste)
 ```
 
 **Filter train sizing:**
@@ -156,7 +156,7 @@ The filter train uses a single 3-stage whole-house filter unit (e.g. [Purcooflow
 
 The 20" cartridges hold roughly 2× the media volume of the previous 10" cartridges, extending service life proportionally. The unit includes triple drain valves for flushing individual stages without disassembly. Equivalent 3-stage Big Blue units are available from iSpring (WGB32B), Express Water, and other vendors — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.
 
-**pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 litre water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
+**pH management:** If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
 
 ### 5.3 Black System — Waste Containment
 
@@ -166,7 +166,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
         │
    IBC-4 (600L waste)
         │
-   Sealed, labelled per GHS/OSHA
+   Sealed, labeled per GHS/OSHA
         │
    TRANSPORT to licensed liquid waste disposal facility
 ```
@@ -233,7 +233,7 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 
 At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.
 
-**Why HDPE, not PVC?** Standard grey PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
+**Why HDPE, not PVC?** Standard gray PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
 
 ### Fittings and connections
 

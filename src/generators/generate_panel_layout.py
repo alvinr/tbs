@@ -1191,7 +1191,7 @@ draw_notes(axb, [
     "BACKSIDE — corridor side section (looking along Yd):",
     "1. Pumps mount on the FRONT face (−X); the drain risers, spine, shelf and Blue fill trunk are on the BACK (+X), in the corridor gap (clear of both tote columns).",
     "2. Drain-riser spine: 18mm ply teed perpendicular off the panel (a T in plan). Its web top is LOWERED to Z=2220 and capped with a horizontal ply shelf (top Z=2238).",
-    "3. The Blue fill trunk rests on the shelf (saddle-clamped); the X3/X4 risers clamp to the spine face on SS P-clips at ~400mm centres.",
+    "3. The Blue fill trunk rests on the shelf (saddle-clamped); the X3/X4 risers clamp to the spine face on SS P-clips at ~400mm centers.",
     "4. Risers feed from the pump discharges — P-05→X3 (Brown) @ Z=1946, P-03→X4 (Waste) @ Z=1578 — down to the sealed end-wall ports.",
 ], 5985, 2380, spacing=64, fs=7, ha="left", width=600, font=FB)
 

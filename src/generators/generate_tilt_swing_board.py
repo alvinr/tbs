@@ -144,7 +144,7 @@ def s1(mm): return mm * SC
 cx_a, cy_a = 680, 2640
 hw = s1(PL_OD/2)
 
-# Outer adapter frame (ICP-01) — aluminium, slightly thicker than normal plates
+# Outer adapter frame (ICP-01) — aluminum, slightly thicker than normal plates
 p = mpatches.Rectangle((cx_a - hw, cy_a - hw), s1(PL_OD), s1(PL_OD),
                         lw=LW_THICK, edgecolor=C_OUT, facecolor=C_ALUM, zorder=3)
 ax1.add_patch(p)
@@ -311,7 +311,7 @@ ax1.text(80, 1776, 'PANEL D — SECTION A-A  (AXES IN mm  — thickness exaggera
          fontsize=7, fontweight='bold')
 ax1.plot([80, 3920], [1752, 1752], color='black', lw=0.7)
 
-# Centre section
+# Center section
 cx_d = 2000
 frame_top = 1680   # top of ICP-01 frame
 
@@ -477,7 +477,7 @@ for i in range(n_p):
     ax1.plot([bell_x_in, bell_x_out], [p_y, p_y + pleat_step*0.5], color=C_BELL, lw=1.5, zorder=6)
     ax1.plot([bell_x_out, bell_x_in], [p_y + pleat_step*0.5, p_y + pleat_step], color=C_BELL, lw=1.5, zorder=6)
 
-# Centreline
+# Centerline
 ax1.plot([cx_d, cx_d], [carrier_y_bot - 80, frame_y_top + 80],
          color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 
@@ -726,7 +726,7 @@ for sy in [or_bot, or_top - s1b(3)]:
                                   lw=0.5, edgecolor=C_OUT, facecolor=C_GASKT)
     ax2.add_patch(seal_p)
 
-# Centreline
+# Centerline
 ax2.plot([cx2c, cx2c], [or_bot - 40, or_top + 40],
          color=C_CL, lw=LW_THIN, linestyle=(0, (6, 2, 1, 2)))
 

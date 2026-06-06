@@ -81,7 +81,7 @@ def wlabel(ax, x, y, text, ha="left", size=7.5):
 # SHEET 1 — System One-Line Diagram
 # Layout:
 #   Left column  (x=0.7–7.0):  power chain top-to-bottom
-#   Centre-right (x=7.5–13.0): shore charger branch + ground + legend + summary
+#   Center-right (x=7.5–13.0): shore charger branch + ground + legend + summary
 #   Right column (x=8.5–20.0): 6 circuits fanning off vertical spine
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -106,7 +106,7 @@ def draw_sheet1():
 
     # ── LEFT COLUMN: power chain ──────────────────────────────────────────────
     LX, LW = 0.7, 6.2
-    CX = LX + LW / 2   # centreline
+    CX = LX + LW / 2   # centerline
 
     # 1. Solar array  y=12.0–13.1
     rbox(ax, LX, 12.0, LW, 1.1,
@@ -164,7 +164,7 @@ def draw_sheet1():
             "CHASSIS EARTH\n8ft copper ground stake\n+ container body bond",
             ha="left", va="center", fontsize=7.5, color=C_GND, zorder=5)
 
-    # ── SHORE CHARGER BRANCH (centre-top, same row as battery) ───────────────
+    # ── SHORE CHARGER BRANCH (center-top, same row as battery) ───────────────
     SC_X = LX + LW + 1.0
     SC_W = 5.8
     SC_Y = 8.4
@@ -247,7 +247,7 @@ def draw_sheet1():
 
     # ── CIRCUITS — right column ───────────────────────────────────────────────
     circuits = [
-        # letter, name, fuse, wire, load, note, colour
+        # letter, name, fuse, wire, load, note, color
         ("A", "VENTILATION FAN\nEXHAUST  (6\")",  "5A",  "16 AWG", "60W",
          "Far end wall (X=5893mm)  |  high position  |  Yd=1996mm", C_ALUM),
         ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
@@ -537,7 +537,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=7.5, color=TITLE_COL,
             fontweight="bold", zorder=7)
 
-    # ── Pinhole — bottom long wall at X=2874mm (recentred on new film plane) ─
+    # ── Pinhole — bottom long wall at X=2874mm (recenterd on new film plane) ─
     ax.add_patch(plt.Circle((ph_x, OY + wt/2), 60,
                  fc="black", ec=C_OUT, lw=1.0, zorder=8))
     leader(ax, ph_x, OY + wt/2, ph_x + 350, OY - 175,
@@ -567,7 +567,7 @@ def draw_sheet2():
                     ha="center", va="center", fontsize=5.5, color=C_DIM, zorder=6)
 
     # LEFT END ZONE (X=0–150mm) — light trap drum only (waste drums eliminated rev 5)
-    # Drum centred at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
+    # Drum centerd at X=0 (spans cargo door wall); only draw interior half X=0–DRUM_R
     from tbs_constants import C_LT_DRUM
     equip(0, C_WID//2 - DRUM_R, DRUM_R, DRUM_D, "LT DRUM\n(partial)", C_LT_DRUM,
           f"Ø{DRUM_D}mm vertical axis  Yd={C_WID//2 - DRUM_R}–{C_WID//2 + DRUM_R}mm")
@@ -764,7 +764,7 @@ def draw_sheet2():
         (EP_DX + EP_DW/2,    OY + wt),
         (DUCT_CX,            OY + wt / 2),                   # duct penetration (in wall)
         (PUMP_CX,            OY+wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2)*S_yd),  # equip panel
-        (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column centre
+        (IBC_CX,             OY+wt + BLUE_IBC_Y*S_yd),      # IBC column center
         (FA_X,               FA_Y - 110),
         (FB_X,               FB_Y - 110),
     ] + [(ix(sl_x + SL_STRIP_W / 2), OY + wt + 25) for sl_x in SL_POSITIONS] + [

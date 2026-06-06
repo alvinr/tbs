@@ -10,7 +10,7 @@ Redesign basis (2026-04-23 rev 2):
   Black-water drums (2× 55-gal) relocated from right end zone to left end zone
   (Y-stacked behind evap cooler).  IBC column right-justified to X=4674–5893mm.
   Film plane widens from 2920mm to 3549mm (X=1100–4649mm).
-  Pinhole recentred to X=2874mm.  Max swing decreases from 36.5° to 31.4°
+  Pinhole recenterd to X=2874mm.  Max swing decreases from 36.5° to 31.4°
   (same Y travel over wider 3549mm rail span).
 
 Redesign basis (2026-04-23 rev 3):
@@ -20,7 +20,7 @@ Redesign basis (2026-04-23 rev 3):
   Yd range entirely below light trap drum's Yd=806–1556mm band — no X-clearance
   conflict).  Zone left boundary moves from X=1100mm to X=625mm.
   Film plane widens from 3549mm to 4024mm (X=625–4649mm).
-  Pinhole recentred to X=2637mm.  Max swing decreases from 31.4° to 28.3°
+  Pinhole recenterd to X=2637mm.  Max swing decreases from 31.4° to 28.3°
   (wider rail span over same Y travel).
 
 Redesign basis (2026-05-03 rev 4):
@@ -103,7 +103,7 @@ CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # = 30 per horizontal edge
 CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # = 16 per vertical edge
 CLAMP_N_TOTAL = 2 * CLAMP_N_HORIZ + 2 * CLAMP_N_VERT  # = 92
 
-# ── Pinhole (recentred on new film plane) ─────────────────────────────────────
+# ── Pinhole (recenterd on new film plane) ─────────────────────────────────────
 PH_X   = FP_X_L + FP_W // 2   # = 2399mm  [rev6: was 2637]
 PH_H   = 1194                  # height (mm) [unchanged]
 PH_D   = 2.17                  # diameter (mm) — Rayleigh, f=2362, λ=550nm [unchanged]
@@ -196,7 +196,7 @@ BRACE_Z_BOT = RAIL_OFF               # 100mm — bottom cross-beam Z (above tray
 BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
-DRUM_CY     = C_WID // 2             # 1181mm — light-lock centre in Yd (= container width centre)
+DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= container width center)
 # B2 (rev9): the drum is offset clear of the X=150 rail (via the punch-out bay), so
 # the left film-plane rail is CONTINUOUS — the old demountable-segment constants
 # (BRACE_LEFT_DEMOUNT_Y0/Y1, CARRIAGE_PARK_Y) are removed.
@@ -662,9 +662,9 @@ DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
 
 # ── Palette (shared drawing style) ───────────────────────────────────────────
 C_OUT   = "#1A1A1A"   # outlines
-C_CL    = "#2060A0"   # centre lines
+C_CL    = "#2060A0"   # center lines
 C_DIM   = "#404040"   # dimensions
-C_ALUM  = "#C8D8E8"   # aluminium fill
+C_ALUM  = "#C8D8E8"   # aluminum fill
 C_STEEL = "#B0B0B8"   # steel fill
 C_GASKT = "#5A3020"   # gasket/neoprene
 

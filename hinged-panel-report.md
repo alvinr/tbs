@@ -64,7 +64,7 @@ flush-faced panels that seal against the fixed door frame.
 | Outer dimensions | 2362 × 2388mm |
 | Skin (each face) | 18mm exterior-grade plywood |
 | Interior finish | Flat black (RAL 9005) — optically dead at visible wavelengths |
-| Frame perimeter | Welded corners, mitred joints |
+| Frame perimeter | Welded corners, mitered joints |
 | Panel weight (sandwich + Ø900 housing, excl. drum) | ~223 kg (first-principles: 187 kg sandwich + 36 kg housing) |
 
 ### 2.3 EPDM Perimeter Seal
@@ -107,7 +107,7 @@ the same exterior door plane (X=0), concentric inboard of the panel-perimeter se
 | Mounting | **Suspended with the panel** — bottom hangs at Z=80 on the panel bottom rail (80mm floor gap → clears the 50mm tray rim during the transport slide). Operator steps up ~80mm over the threshold to enter; exits level onto the walkway deck (also Z=80). |
 | Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 4mm PP drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
-| Exterior finish | UV-stabilized black/grey sheet — inherent, no primer |
+| Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
 | Clear walking height | 1910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
 | Weight | housing ~22 kg + rotating drum ~38 kg = **~60 kg** (plastic skin, ≈60% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |

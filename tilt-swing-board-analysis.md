@@ -82,7 +82,7 @@ Board tilt α and swing β rotate the effective world coordinate system:
 The tilted film plane (film tilt θ, film swing φ) is defined by anchor point r₀=(0,0,2362) and normal n = Ry(φ)·Rx(θ)·[0,0,−1]. The image point is:  
 `t = (n·r₀)/(n·d);  F = t × d`
 
-The red cross (+) marks the projected image center; grey cross marks the nominal center.
+The red cross (+) marks the projected image center; gray cross marks the nominal center.
 
 ### C0 — Reference (all flat)
 

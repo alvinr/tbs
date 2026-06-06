@@ -16,7 +16,7 @@ TBS-001 is designed for fully off-grid operation. All power comes from a rooftop
 All loads run at **12V DC**. There is no mains AC distribution inside the container.
 
 **Sheet 1 — System One-Line Diagram**
-Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labelled.
+Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.
 
 ![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
 
@@ -211,7 +211,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 | — | Main battery fuse | 200A | 2/0 AWG | ~0.5m (battery to busbar) |
 
 ### 7.3 Wiring Construction
-**Conduit:** All DC wiring in grey corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).
+**Conduit:** All DC wiring in gray corrugated conduit (Panduit or equivalent). Route in flat-profile cable trunking along the top corner rail of the container (40 × 25mm PVC trunking, UV-stabilized).
 
 **Connectors:**
 - Interior connections: Anderson Powerpole 30A (red/black) — tool-free, industry standard for 12V DC
@@ -225,7 +225,7 @@ Top-down floor plan (1:60 scale) showing all component positions, conduit routes
 
 ### 7.4 Electrical Diagrams
 **Sheet 1 — System One-Line Diagram**
-Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labelled.
+Complete power flow from solar panels through controller, battery bank, fuse block, and out to each circuit. Wire gauges, fuse ratings, and component models labeled.
 
 ![TBS-ELEC Sheet 1 — System One-Line Diagram](assets/electrical-sheet1.png)
 
@@ -245,11 +245,11 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shore backup charger | Victron Blue Smart IP65 12/15 | altE Store | ~$150 |
 | Fuse block | Blue Sea 5026 ST Blade 12-circuit | West Marine (Torrance CA) / Amazon | ~$55 |
 | 200A main fuse + holder | Blue Sea ANL fuse block | Amazon | ~$30 |
-| Wiring kit | 14/16/18 AWG, 50ft each colour | Amazon / Waytek Wire (waytekwire.com) | ~$80 |
+| Wiring kit | 14/16/18 AWG, 50ft each color | Amazon / Waytek Wire (waytekwire.com) | ~$80 |
 | Anderson Powerpole connectors | 30A kit, 50 pairs | Powerwerx (powerwerx.com) | ~$40 |
 | Deutsch DT connectors | DT 2-pin, 10 sets | Waytek Wire | ~$30 |
 | Cable trunking | 40 × 25mm PVC, 5m lengths × 4 | Lowe's / McMaster-Carr | ~$40 |
-| Corrugated conduit | Grey, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
+| Corrugated conduit | Gray, 10mm ID, 10m | McMaster-Carr 7828K48 | ~$30 |
 | IP65 enclosure | 300 × 200 × 130mm | Polycase / Amazon | ~$60 |
 | Brady label kit | M210 with wire label cartridge | McMaster-Carr / Amazon | ~$80 |
 | NEMA 5-15R inlet | Weatherproof outlet box | Leviton / Amazon | ~$25 |

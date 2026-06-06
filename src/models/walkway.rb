@@ -9,7 +9,7 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase ALL prior instances.
 to_erase = entities.to_a.select { |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -19,9 +19,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Container") unless model.layers["Container"]
   model.layers.add("Processing Tray") unless model.layers["Processing Tray"]
   model.layers.add("Walkways") unless model.layers["Walkways"]
+  model.layers.add("Walkway Right") unless model.layers["Walkway Right"]
   model.layers.add("Cantilevers") unless model.layers["Cantilevers"]
   model.layers.add("Right Hangers") unless model.layers["Right Hangers"]
   model.layers.add("Left Support") unless model.layers["Left Support"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
 # ── Subsystems (each a component on its tag) ──
   # ═══ Container (ghost) ═══
@@ -148,8 +150,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Processing Tray"
   inst.layer = model.layers["Processing Tray"]
 
-  # ═══ Walkway Decks (gates) ═══
-  defn = model.definitions.add("Walkway Decks (gates)")
+  # ═══ Walkway Decks (near/far/left) ═══
+  defn = model.definitions.add("Walkway Decks (near/far/left)")
   ents = defn.entities
   # Walkway Near (left)
   grp = ents.add_group
@@ -195,17 +197,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Walkway Right (IBC end)
-  grp = ents.add_group
-  grp.name = "Walkway Right (IBC end)"
-  face = grp.entities.add_face([4329.mm,0.mm,65.mm], [4629.mm,0.mm,65.mm], [4629.mm,2362.mm,65.mm], [4329.mm,2362.mm,65.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(15.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(128, 128, 128)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Walkway Left (removable)
   grp = ents.add_group
   grp.name = "Walkway Left (removable)"
@@ -229,8 +220,26 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Walkway Decks (gates)"
+  inst.name = "Walkway Decks (near/far/left)"
   inst.layer = model.layers["Walkways"]
+
+  # ═══ Walkway Right (IBC end) ═══
+  defn = model.definitions.add("Walkway Right (IBC end)")
+  ents = defn.entities
+  # Walkway Right (IBC end)
+  grp = ents.add_group
+  grp.name = "Walkway Right (IBC end)"
+  face = grp.entities.add_face([4329.mm,0.mm,65.mm], [4629.mm,0.mm,65.mm], [4629.mm,2362.mm,65.mm], [4329.mm,2362.mm,65.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat.color = Sketchup::Color.new(128, 128, 128)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Walkway Right (IBC end)"
+  inst.layer = model.layers["Walkway Right"]
 
   # ═══ Wall Cantilevers ═══
   defn = model.definitions.add("Wall Cantilevers")
@@ -2777,11 +2786,44 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.layer = model.layers["Left Support"]
 
 
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(400.mm, -700.mm, 700.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+anc = Geom::Point3d.new(2400.mm, 150.mm, 73.mm)
+txt = entities.add_text("NEAR WALKWAY", anc, Geom::Vector3d.new(0.mm, -900.mm, 550.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2400.mm, 2212.mm, 73.mm)
+txt = entities.add_text("FAR WALKWAY", anc, Geom::Vector3d.new(300.mm, 500.mm, 900.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4479.mm, 1181.mm, 73.mm)
+txt = entities.add_text("RIGHT WALKWAY", anc, Geom::Vector3d.new(750.mm, -200.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(320.mm, 1181.mm, 73.mm)
+txt = entities.add_text("LEFT WALKWAY
+(removable)", anc, Geom::Vector3d.new(-800.mm, -300.mm, 800.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(2298.mm, 30.mm, 150.mm)
+txt = entities.add_text("NEAR/FAR CANTILEVERS", anc, Geom::Vector3d.new(-300.mm, -1000.mm, 450.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(4479.mm, 400.mm, 2100.mm)
+txt = entities.add_text("RIGHT HANGERS
+(ceiling-hung)", anc, Geom::Vector3d.new(800.mm, -200.mm, 350.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(170.mm, 1181.mm, 72.mm)
+txt = entities.add_text("LEFT SUPPORT
+(edge beam+legs)", anc, Geom::Vector3d.new(-850.mm, -200.mm, 600.mm))
+txt.layer = model.layers["Labels"] rescue nil
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Right Hangers", "Left Support"]
+keep_tags = ["Container", "Processing Tray", "Walkways", "Walkway Right", "Cantilevers", "Right Hangers", "Left Support", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -2790,15 +2832,22 @@ model.layers.to_a.each { |l|
 
 # ── Scenes — one shared iso camera; scenes only toggle visibility ──
 model.layers.each { |l| l.visible = true }
+model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.55, -0.7, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
+model.active_view.zoom(0.72)   # pull back so callouts have margin (and read larger)
 
+# Combined — all subsystems, Labels OFF.
 model.pages.add("Combined")
-[["Gates (walkway decks)", ["Walkways", "Processing Tray"]], ["Cantilevers (+ exterior braces/bolts)", ["Cantilevers", "Processing Tray"]], ["Right Hangers", ["Right Hangers", "Walkways", "Processing Tray"]], ["Left Support (bearer + legs)", ["Left Support", "Cantilevers", "Processing Tray"]], ["Processing Tray", ["Processing Tray"]]].each { |name, tags|
+# Labeled — same view + callouts on the major parts.
+model.layers.each { |l| l.visible = true }
+model.pages.add("Labeled")
+model.layers["Labels"].visible = false if model.layers["Labels"]
+[["Walkway", ["Walkways", "Walkway Right", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Hangers", ["Right Hangers", "Walkway Right", "Processing Tray"]], ["Left Support", ["Left Support", "Cantilevers", "Processing Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

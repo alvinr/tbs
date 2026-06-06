@@ -20,7 +20,7 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 | Interior length | 5893mm (19 ft 4 in) | Film plane spans this direction |
 | Interior width | 2362mm (7 ft 9 in) | **Optical axis = focal length** |
 | Interior height | 2388mm (7 ft 10 in) | Film plane height |
-| Pinhole position | Centre of one 20ft long-side wall | |
+| Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
 
@@ -28,7 +28,7 @@ The floor plan below shows the film plane rail positions (at Y=2262mm, X=150–4
 
 ## 3. Movement Axes
 
-The four-corner mechanism supports all view-camera movements. Corners are labelled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the 7 ft 10 in height direction.
+The four-corner mechanism supports all view-camera movements. Corners are labeled TL (top-left), TR (top-right), BL (bottom-left), BR (bottom-right) — where left/right refers to the rail span direction and top/bottom to the 7 ft 10 in height direction.
 
 | Axis | Corners Controlled | Max Travel | Effect |
 |------|--------------------|-----------|--------|
@@ -92,7 +92,7 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 - **Back focus**: turn all four handwheels by the same amount.
 - **Compound**: turn all four independently.
 
-**Optional electric actuation:** replace the handwheels with **Progressive Automations PA-14** 12V linear actuators (20" / 508mm stroke, 150 lb force rating). Four actuators, one per corner, each controlled by a panel-mount DPDT momentary switch. A labelled panel outside the container allows full repositioning without entry.
+**Optional electric actuation:** replace the handwheels with **Progressive Automations PA-14** 12V linear actuators (20" / 508mm stroke, 150 lb force rating). Four actuators, one per corner, each controlled by a panel-mount DPDT momentary switch. A labeled panel outside the container allows full repositioning without entry.
 
 ### Variable Geometry Accommodation
 
@@ -169,9 +169,9 @@ All items ship within the United States. Local Southern California pickup noted 
 
 ### Demountable Brace Cage
 
-Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews; the left-rail segment that swings clear for drum mode is retained with quick-release ball-lock pins.
+Two rectangular end portals of 50×50×3mm RHS mild steel brace the four-corner rail assembly, giving lateral rigidity while remaining fully demountable for transport. Joints use saddle clamps tightened by M8 thumbscrews.
 
-**Transport vs drum mode.** In *drum mode* (operational), only the **centre segment of the left rail (Yd 731–1631)** is demounted so the light lock can rotate. For *transport*, the hinged panel slides ~550mm inward and sweeps through X=150, so the **entire film-plane left rail, the brace cage, and the muslin screen are struck first** — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence. (The left rail is therefore fully removable, not just its centre segment.)
+**Transport mode.** The film-plane left rail is now **continuous** — there is no demountable center segment. Under rev 9 / B2 the light lock (Ø900 housing + drum) is offset (`DRUM_CX = −400`) and exits through the hinge-panel punch-out bay rather than rotating within the rail span, so the rail no longer has to part for drum operation. For *transport*, the hinged panel slides **~880mm** inward and sweeps through X=150, so the **entire film-plane left rail, the brace cage, and the muslin screen are struck first** — see [Hinged Panel Report](hinged-panel-report.md) §5.4 for the conversion sequence.
 
 | Item | ICP # | Spec | Qty | Source A | Source B | Est. Unit |
 |------|-------|------|-----|---------|---------|-----------|

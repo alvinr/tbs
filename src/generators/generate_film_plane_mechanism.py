@@ -42,7 +42,7 @@ from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
 BG      = "#FFFFFF"   # white background
 GRID    = "#FFFFFF"   # container interior (white)
 STRUCT  = "#B0B0B8"   # steel section fill (walls)
-STRUCT2 = "#C8D8E8"   # aluminium / secondary structure
+STRUCT2 = "#C8D8E8"   # aluminum / secondary structure
 DIM     = "#404040"   # dimension lines and text (dark grey)
 ANNO    = "#1A1A1A"   # annotation text (near black)
 WHITE   = "#1A1A1A"   # outlines / text (was white-on-dark; now dark-on-white)
@@ -149,7 +149,7 @@ def sheet1():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (X=2874mm in new layout, recentred on new film plane)
+    # Pinhole (X=2874mm in new layout, recenterd on new film plane)
     ph_x = PH_X_C
     ax.add_patch(Circle((ph_x, 0), 60, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((ph_x, 0), 20, fc=BG, ec=WHITE, lw=1.0, zorder=7))
@@ -354,7 +354,7 @@ def sheet1():
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # SHEET 2 — TWO ELEVATION VIEWS
-# Left panel:  SIDE ELEVATION (section through container centreline)
+# Left panel:  SIDE ELEVATION (section through container centerline)
 #              X = optical axis depth, Y = height → shows TILT
 # Right panel: PLAN CROSS-SECTION AT CEILING HEIGHT
 #              X = container length, Y = optical axis depth → shows SWING
@@ -503,7 +503,7 @@ def sheet2():
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(W/2, H+215, "Section through centreline  ·  each corner carriage moves independently",
+    ax.text(W/2, H+215, "Section through centerline  ·  each corner carriage moves independently",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── RIGHT PANEL: PLAN CROSS-SECTION — SWING ───────────────────────────────
@@ -528,7 +528,7 @@ def sheet2():
         ax.add_patch(Rectangle((xw[0], xw[1]), xw[2], xw[3],
                                fc=STRUCT, ec=WHITE, lw=1.0, zorder=4))
 
-    # Pinhole (recentred at X=2874 on new film plane)
+    # Pinhole (recenterd at X=2874 on new film plane)
     ax.add_patch(Circle((PH_X_C, 0), 55, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=6))
     ax.add_patch(Circle((PH_X_C, 0), 18, fc=BG, ec=WHITE, lw=1.0, zorder=7))
 
@@ -958,7 +958,7 @@ def sheet4():
         "FILM-PLANE TRAVEL (rev9 B2 — continuous left rail)",
         f"FILM MODE: carriage free over the FULL travel (Yd 100–{FP_Y}) for tilt/swing,",
         "   both rails continuous — no demountable segment, no drum interlock.",
-        f"DRUM: offset out via the hinge-panel punch-out bay (centre X={DRUM_CX}mm),",
+        f"DRUM: offset out via the hinge-panel punch-out bay (center X={DRUM_CX}mm),",
         "   so the Ø900 housing clears the X=150 left rail entirely.",
         "WALKWAY: frame bottom at Z=100mm (RAIL_OFF); active image = inter-rail span.",
         "   Clears the lowered walkway deck (Z=65mm) by 35mm — film plane travels above the in-place walkway.",

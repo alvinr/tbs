@@ -98,7 +98,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 |---|---|---|---|
 | Ammonium dichromate | 186 g | **9.3 kg** | 10 kg |
 | Gum arabic powder | 586 g | **29.3 kg** | 30 kg |
-| Dry watercolour pigment | 45 g | **2.25 kg** | 2.5 kg |
+| Dry watercolor pigment | 45 g | **2.25 kg** | 2.5 kg |
 
 ### Shopping list
 
@@ -235,7 +235,7 @@ Slower (4–8× longer exposures), but simpler preparation — FAC dissolves at 
 | Developer, Fixer | As Ilford section | — | — | — | — | ~$900 |
 | Muslin substrate | Fabric Direct | As above | 150-yd roll | 9 | ~$100 | ~$900 |
 
-**Procurement note:** At 7,900 oz (~234 litres / ~62 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 247 bottles at $55 each. **Contact Rockland Colloid directly** (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.
+**Procurement note:** At 7,900 oz (~234 liters / ~62 US gallons), this volume of Liquid Light has no listed retail path that is commercially sane — 247 bottles at $55 each. **Contact Rockland Colloid directly** (rockaloid.com) before purchasing. Rockland does offer bulk supply to institutions and studios; the per-oz price drops significantly at this volume. A phone or email enquiry before ordering is essential for this process.
 
 ---
 
@@ -287,7 +287,7 @@ Ammonium dichromate is a UN Class 5.1 oxidiser. Cannot be shipped by air. UPS Gr
 Silver nitrate is 63–68% silver by weight. The silver spot price (approximately $30–35/troy oz as of early 2026) directly sets the floor for AgNO₃ cost. A 20% increase in silver price increases salt print chemistry cost by approximately $4,950 on a 50-print run. Lock in pricing before committing to this process.
 
 ### 4. Liquid Light — contact Rockland before ordering retail
-At the volume required for 50 prints (7,900 oz / ~234 litres), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.
+At the volume required for 50 prints (7,900 oz / ~234 liters), retail ordering is impractical. Rockland Colloid's website (rockaloid.com) is the primary source. Email or call before ordering — they have supplied institutions with bulk quantities before. The per-oz price at volume is lower than the retail 8-oz and 32-oz bottle pricing.
 
 ### 5. Cyanotype AmFe — preparation notes
 Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissolve fully. Prepare Part A by adding AmFe to warm water and stirring until completely clear — a pale green-yellow solution. Do not use boiling water. Allow to cool before mixing with Part B. AmFe has a shelf life of 6–12 months in a sealed dark bottle at room temperature. If the traditional FAC formula is substituted: use only the **green grade** of ferric ammonium citrate (Fe³⁺, light-sensitive) — the brown grade (Fe²⁺) is not light-sensitive for cyanotype.

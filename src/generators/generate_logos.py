@@ -286,7 +286,7 @@ def make_logo2():
             color=IBM_BLUE, fontsize=6, ha="center", va="center",
             fontfamily="monospace", fontweight="bold")
 
-    # ── CAMERA BODY (centre) ──
+    # ── CAMERA BODY (center) ──
     CX, CY = 50, 52
     # Body
     ax.add_patch(FancyBboxPatch((CX - 9, CY - 7), 18, 14,
@@ -468,7 +468,7 @@ def make_logo3():
             ax.plot(pts[:, 0], pts[:, 1], color=body_col, lw=lw*1.2,
                     solid_capstyle="round", zorder=6)
 
-    # Main figure — centred, KODAK red body
+    # Main figure — centerd, KODAK red body
     haring_person(ax, 42, 45, scale=1.1, body_col=BAUHAUS_R, head_col=BAUHAUS_R)
 
     # ── HARING-STYLE CAMERA at right arm endpoint ──

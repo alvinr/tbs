@@ -35,7 +35,7 @@ ax.set_aspect("equal")
 ax.axis("off")
 fig.subplots_adjust(left=0, right=1, top=1, bottom=0)
 
-CX, CY = 50, 50  # centre of canvas
+CX, CY = 50, 50  # center of canvas
 
 # ── Tonal wash ────────────────────────────────────────────────────────────────
 np.random.seed(7)

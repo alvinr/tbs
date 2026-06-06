@@ -833,7 +833,7 @@ def ibc_rack():
     proj, seat_t, gh = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H  # seat projection, thickness, gusset depth
     sw = s + 20                         # seat width in X (beam + 10 each side)
     for xs in x_stations:
-        gx = xs + s / 2 - 4             # gusset web (8mm) centred on the beam
+        gx = xs + s / 2 - 4             # gusset web (8mm) centerd on the beam
         for wall_yd, dir_in in ((0, 1), (C_WID, -1)):
             tip = wall_yd + dir_in * proj            # seat outer tip, under the beam end
             seat_y0 = min(wall_yd, tip)
@@ -932,7 +932,7 @@ def ruby_arc_wall(name, cx, cy, r, wall_t, height, gap_center_deg, gap_deg,
                   color=None, alpha=None, n=48, z0=0):
     """Hollow curved wall (annular sector, extruded in +Z) with a gap.
 
-    The gap (an opening of `gap_deg` centred on `gap_center_deg`) reads as a
+    The gap (an opening of `gap_deg` centerd on `gap_center_deg`) reads as a
     doorway/entry slot in the cylinder. Built as a closed band polygon (outer
     arc forward + inner arc back) at base height `z0` then pushpulled `height`.
     """
@@ -1692,7 +1692,7 @@ def water_plumbing():
     # The two Blue totes feed a PARALLEL suction manifold (Z=upVZ). The valve taps
     # are set back 250mm toward the sealed wall — BEHIND the panel frame — so the
     # straight header sits clear behind the uprights (no elbow in the frame); the
-    # centre feed to P-01 passes forward through the clear gap between the uprights
+    # center feed to P-01 passes forward through the clear gap between the uprights
     # (Yd 1096-1266). Brown (P-02) and Waste (P-03) run low (Z=loVZ) and cross
     # cleanly UNDER the Blue header before rising to the right column.
     blueTapX = nearX + 250                  # 5533 — Blue valve tap behind the frame, nearer the sealed wall

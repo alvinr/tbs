@@ -105,7 +105,7 @@ walkway is removed.
 | Top lateral ties | Light clip at each top-beam wall end (restraint only) |
 | Panel support frame | Mid-bay (X=642mm) corridor uprights extended up to the wet-end panel top (Z=2260mm) + top rail + floor-level beam = a rectangle the equipment panel butts (film-plane face) and bolts to |
 | Frame weight | ~144 kg (incl. feet + seat brackets + panel support frame) |
-| Joints | Welded (fillet weld throughout, mitred corners) |
+| Joints | Welded (fillet weld throughout, mitered corners) |
 
 ### 3.3 Platform
 

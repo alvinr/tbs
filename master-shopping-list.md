@@ -518,7 +518,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Cam-lever spring clamps](https://www.amazon.com/s?k=over+center+cam+toggle+clamp+small) | Muslin attachment — over-center cam, neoprene jaw, ~5N | 92 | Amazon / McMaster-Carr | ~$3–8 ea |
 | [M5×16 SS socket head bolt + Nylock nut](https://www.mcmaster.com/91292A128) | Clamp base plate mounting (2 per clamp) | 184 + 184 | McMaster-Carr #91292A128 | ~$55 |
 | [Neoprene strip 60A, 35mm × 6mm](https://www.mcmaster.com/8614K44) | Jaw pads (self-adhesive, cut to 35×12mm) | 1 roll (10m) | McMaster-Carr #8614K44 | ~$15 |
-| Spray bottle (1 litre) | Humidity/misting in low-RH conditions | 2 | Amazon / garden supply | ~$15 |
+| Spray bottle (1 liter) | Humidity/misting in low-RH conditions | 2 | Amazon / garden supply | ~$15 |
 | pH test strips | Quick wash water check | 1 pack | Amazon | ~$10 |
 | 6-mil black poly sheeting, 10'×100' | Container floor protection during development | 1 roll | Home Depot / Uline | ~$80 |
 **Section total: ~$650–1,100** (range depends on generic vs Destaco-equivalent clamps)

@@ -55,7 +55,7 @@ film plane edges. The cone never extends beyond these X values at any depth ≤ 
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). On sliding carriage (300mm travel for transport). |
+| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–2,388 | Stepped profile: 40mm corners, 120mm center (drum housing). On sliding carriage (880mm travel for transport). |
 | Light trap drum | −375–375 | 806–1,556 (centered at CW/2=1181mm) | 0–2,200 | Centered at X=0 (spans container wall); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face — Y=0 surface (shadow-free)
@@ -77,7 +77,7 @@ spans this zone at depth Y=2262mm (nominal far position).
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
-| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–80 | 300mm wide, 80mm deck height (65mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out on butt joints (no brackets — panel conflict), 15mm grating. Left corners: butt joint (no miter). No legs, no floor contact. Bracket arm (Z=55–65) clears the 50mm tray rim by 5mm. |
+| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–80 | 300mm wide, 80mm deck height (65mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out — full-width steel edge beam on bolt-through wall seats + bearing strip + 3 floor legs (the panel occupies this end wall), 15mm grating. Left corners: butt joint (no miter). No legs, no floor contact. Bracket arm (Z=55–65) clears the 50mm tray rim by 5mm. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 42° tilt), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels at X=150 and X=4,649.
 
@@ -154,7 +154,7 @@ for transport and removable access panels for the lower IBC drain valves.
 | Anti-rotation | 40mm steel lip on platform perimeter retains upper IBC cage |
 | Center divider | 50×50×3mm RHS cross-member on platform between near/far columns |
 | Panel support frame | Mid-bay corridor uprights extended to Z=2260mm + top rail + floor beam — the wet-end equipment panel butts the film-plane face of this rectangle and bolts to it |
-| Surface finish | Grey oxide primer + flat black powder coat (interior) |
+| Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~144kg (frame incl. floor flange feet + wall seat brackets + panel support frame) |
 | Approx. cost | USD $500–$800 (local mild steel fabrication) |
 
@@ -195,7 +195,7 @@ unobstructed egress at the cargo door end.
 
 The hinged panel has a stepped profile: 40mm thick at the corner zones (Yd=0–653
 and Yd=1,709–2,362) and 120mm thick at the center zone (Yd=653–1,709) where the
-light trap drum is mounted. The entire panel slides 300mm in the X direction on
+light trap drum is mounted. The entire panel slides 880mm in the X direction on
 HGR20 linear rails mounted to both container walls (Yd≈30mm and Yd≈2332mm) at
 floor and ceiling level — 4 rails total, 8 HGH20CA carriage blocks. The left
 (hinge) side rides via a vertical carriage beam (60×60×3mm SHS, 2400mm tall);
@@ -237,7 +237,7 @@ replaced annually.
 2. Disconnect flex duct from wall stub collar (release hose clamp). Replace weatherproof cap on wall stub. Drain cooler reservoir
 3. Carry cooler through door opening (~20 kg dry, one person) and place on ply base plate on near walkway wide section at X=1200–1800mm. Stow flex duct alongside cooler
 4. Secure with 2× ratchet straps to nearest cantilever bracket arms
-5. Release toggle clamps, slide panel inward 300mm
+5. Release toggle clamps, slide panel inward 880mm
 6. Lock panel at transport position, close container doors
 
 ### 6.2 Evaporative Cooler Transport Stowage
@@ -303,7 +303,7 @@ See [Processing System Report](water-system-report.md) for full water circuit de
 ## 9. Egress Safety Assessment
 
 When the hinged panel is opened 180° from the inside, the light trap drum (mounted
-in the panel center zone, Yd=731–1631mm) swings outward with the panel. With the
+in the panel center zone, Yd=653–1709mm) swings outward with the panel. With the
 waste drums eliminated (rev 5), the entire left end zone floor is clear.
 
 ### 9.1 Egress Gap
@@ -332,7 +332,7 @@ The panel swings 180° outward (exterior, negative X). All interior equipment is
 |-----------|----------|---------------|
 | Light trap drum | Panel-mounted (center zone) | Moves with panel |
 | Fan B intake duct | Panel-mounted, Yd=365, H=600 (rev9/B2 swap — near pinhole wall) | Moves with panel |
-| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 300mm slide + 180° swing |
+| Fan B cable | 1m coiled cable, ceiling service loop | Accommodates 880mm slide + 180° swing |
 | Evap cooler duct stub | X=1,000, Yd=0 (wall penetration) | No — flush with wall |
 | Electrical panel | X=2,050–2,350 | No — 1430mm inboard |
 | Battery bank | X=2,050–2,550 | No — 1430mm inboard |

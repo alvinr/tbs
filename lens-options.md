@@ -204,13 +204,13 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **For this camera**, the most practical option is the **Rodenstock Apo-Ronar 1200mm or Nikkor T 1200mm** — both focus sharply near 2.4 m (d_i = 2362mm) with a single fixed lens. A 1400mm process lens (custom made or a rare large-format aerial lens) would focus at 3.4 m — more appropriate for portraits.
 
-**What the image looks like:** A sharp circular disk in the centre of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
+**What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
 **Coverage as percentage of image plane:** 400mm circle / 4499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~116 sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilised by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
-**Chromatic aberration:** Apochromatic design (three-wavelength correction). Negligible colour fringing in normal use.
+**Chromatic aberration:** Apochromatic design (three-wavelength correction). Negligible color fringing in normal use.
 
 **Exposure at portrait distance (f/14 nominal, bellows factor 2.87):**
 Effective f-number = f/14 × 1.695 = f/24
@@ -263,15 +263,15 @@ A full-width solution would require a 4499 × 2388mm Fresnel element — this do
 
 **Optical qualities of Fresnel lenses:**
 
-1. **Chromatic aberration — severe.** A single-element Fresnel has no colour correction. The focal point for blue light is shorter than for red by approximately f_L / V where V = Abbe number of acrylic (~57): Δf = 1,400 / 57 ≈ 25mm. Visible as colour fringing — a rainbow halo on high-contrast edges, most prominent at the image periphery. On silver gelatin paper (blue/green sensitive), this manifests as softer blue channel focus vs. green, producing a slightly warm-tinted blur. On panchromatic film, coloured fringes would be fully visible.
+1. **Chromatic aberration — severe.** A single-element Fresnel has no color correction. The focal point for blue light is shorter than for red by approximately f_L / V where V = Abbe number of acrylic (~57): Δf = 1,400 / 57 ≈ 25mm. Visible as color fringing — a rainbow halo on high-contrast edges, most prominent at the image periphery. On silver gelatin paper (blue/green sensitive), this manifests as softer blue channel focus vs. green, producing a slightly warm-tinted blur. On panchromatic film, colored fringes would be fully visible.
 
 2. **Zone diffraction artifacts.** The stepped Fresnel ring structure creates diffraction rings around point sources. In a portrait, this appears as a soft halo or glow around specular highlights (eyes, jewellery, white clothing). Can be aesthetically pleasant or distracting.
 
-3. **Edge image quality.** Fresnel lenses perform best on-axis and deteriorate rapidly toward the edges due to zone spacing errors and oblique incidence effects. A 600mm Fresnel covering a 600mm field: the centre 200mm may be acceptable; the outer zone will be softer and more aberrant.
+3. **Edge image quality.** Fresnel lenses perform best on-axis and deteriorate rapidly toward the edges due to zone spacing errors and oblique incidence effects. A 600mm Fresnel covering a 600mm field: the center 200mm may be acceptable; the outer zone will be softer and more aberrant.
 
 4. **Scatter and flare.** The stepped surface scatters more light than a smooth lens, reducing contrast and producing a slight veiling flare across the image. Characteristic of the aesthetic.
 
-**Aesthetic character:** A Fresnel lens portrait would have a soft, glowing, impressionistic quality — sharp in the centre, dissolving to aberrant chromatic softness toward the edges, with subtle diffraction haloes. This is a strong, distinctive look — reminiscent of early 20th-century soft-focus portrait lenses or Pictorialist photography. Whether it is desirable is an artistic decision, not a technical one.
+**Aesthetic character:** A Fresnel lens portrait would have a soft, glowing, impressionistic quality — sharp in the center, dissolving to aberrant chromatic softness toward the edges, with subtle diffraction haloes. This is a strong, distinctive look — reminiscent of early 20th-century soft-focus portrait lenses or Pictorialist photography. Whether it is desirable is an artistic decision, not a technical one.
 
 **Exposure:** At a Fresnel lens aperture of f/7 (600mm lens / ~85mm working aperture at f/7):
 Effective at 3.4 m: f/7 × 1.695 = f/12
@@ -290,7 +290,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 - Aperture required: at f/16, d = 1,400/16 = 87.5mm. At f/8: 175mm.
 - Physical diameter: 200–300mm is practical for fabrication; covers ~250–400mm image circle
 
-**To cover the full 4499mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 metre diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
+**To cover the full 4499mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 meter diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
 
 **Realistic custom singlet:** A 200–300mm diameter, 1400mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately **$2,000–$8,000** depending on surface quality specification. This covers a ~300–500mm circle.
 
@@ -316,21 +316,21 @@ The corner is **1112mm further from the lens than the center.** The left/right m
 
 **A lens focused on the center (d_i = 2362mm) is focused on a subject at ~3.4 m. At the left/right edges of the active image plane, the equivalent focused subject distance would be ~3.4 × (3,262/2,362) = 4.7 m. At the corners, ~3.4 × (3,474/2,362) = 5.0 m.**
 
-This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the centre of the camera would be rendered sharply in the centre and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:
+This is not a focus error in the traditional sense — it is the geometric consequence of projecting a wide-angle perspective onto a flat plane. A person standing 3.4 m in front of the center of the camera would be rendered sharply in the center and soft in the corners, because at the corners the image plane is optically further from the lens. The only way to have the full image plane in sharp focus simultaneously would be:
 
 1. Stop down to a very small aperture (deep depth of focus on the image side)
 2. Curve the image plane to match the focal surface (discussed below)
 3. Use a telephoto lens design that manages field curvature over this extreme angular range
 
-**This is not a problem unique to adding a lens.** The cos⁴ illumination falloff and field geometry are intrinsic to the camera's 102° × 45° field of view. The pinhole avoids the focus problem entirely because its resolution is low enough that the field geometry doesn't create a *visible* focus variation — the centre and corners are both equally soft. A lens makes the focus variation visible precisely because it is sharp in the first place.
+**This is not a problem unique to adding a lens.** The cos⁴ illumination falloff and field geometry are intrinsic to the camera's 102° × 45° field of view. The pinhole avoids the focus problem entirely because its resolution is low enough that the field geometry doesn't create a *visible* focus variation — the center and corners are both equally soft. A lens makes the focus variation visible precisely because it is sharp in the first place.
 
 ### 6.1 Illumination Falloff — cos⁴ Law
 
 Both the pinhole and any lens suffer the same physical law: illumination falls as the fourth power of the cosine of the off-axis angle.
 
-| Image position | Angle from axis | cos⁴ factor | Illumination vs. centre | Stops darker |
+| Image position | Angle from axis | cos⁴ factor | Illumination vs. center | Stops darker |
 |---|---|---|---|---|
-| Centre | 0° | 1.000 | 100% | 0 |
+| Center | 0° | 1.000 | 100% | 0 |
 | Mid-height edge | 26.8° | 0.634 | 63% | 0.7 stops |
 | Mid-width edge | 43.6° | 0.273 | 27% | 1.9 stops |
 | Corner | 47.1° | 0.215 | 22% | 2.2 stops |
@@ -341,7 +341,7 @@ On silver gelatin paper, 2.2 stops of underexposure in the corners means the cor
 
 ### 6.2 The Curved Image Plane Option
 
-If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2362mm centred on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
+If the photosensitive substrate is mounted on a concave backing panel curved to match the focal surface (a sphere of radius 2362mm centerd on the lens), the field geometry problem is eliminated. Every point on the curved surface is equidistant from the lens. The image plane would need to curve forward (toward the lens) at the edges by approximately:
 
 ```
 Δz at mid-width edge = 3,262 − 2,362 = 900mm
@@ -350,7 +350,7 @@ If the photosensitive substrate is mounted on a concave backing panel curved to 
 
 This is still substantial curvature — the active image plane would bow forward at the sides by ~900mm. Constructing this with ACM panel is not feasible, but constructing it with fabric (canvas or muslin) stretched over a curved timber frame absolutely is. The curved frame would need to be CNC-machined or steam-bent to a precise 2362mm radius sphere section. Note: the bow is significantly more manageable than for a full-container-width image plane (which would require 1414mm of forward bow at the mid-width edge).
 
-For a process lens or telescope objective (covering only a 300–600mm circle in the centre), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
+For a process lens or telescope objective (covering only a 300–600mm circle in the center), this is irrelevant — the field curvature is only noticeable at extreme field angles beyond the lens's image circle. Only relevant if full-field coverage is attempted with a large Fresnel or custom element.
 
 ---
 
@@ -380,9 +380,9 @@ For the image areas covered by each option (central circle, 300–600mm diameter
 
 | Lens type | Longitudinal CA | Lateral CA | On image | Remedy |
 |---|---|---|---|---|
-| Singlet crown glass, f_L = 1400mm | ~25mm | Significant | Colour fringing on edges | Achromatic doublet |
+| Singlet crown glass, f_L = 1400mm | ~25mm | Significant | Color fringing on edges | Achromatic doublet |
 | Singlet flint glass | ~18mm | Significant | Less than crown | Achromatic doublet |
-| Achromatic doublet (crown + flint) | ~1–3mm | Minimal | Very slight colour fringing | — or APO |
+| Achromatic doublet (crown + flint) | ~1–3mm | Minimal | Very slight color fringing | — or APO |
 | Apochromatic triplet (telescope APO) | <0.5mm | Negligible | Invisible in practice | — |
 | Process lens (Apo-Ronar, G-Claron) | <0.3mm | Negligible | Invisible | — |
 
@@ -398,7 +398,7 @@ The most interesting option for this camera may be to combine a lens with the pi
 
 ### 9A: Central Lens, Peripheral Pinhole Array
 
-Mount a 300mm process lens in the centre of the pinhole wall. Drill a series of 2.17mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1000mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.
+Mount a 300mm process lens in the center of the pinhole wall. Drill a series of 2.17mm pinholes at regular intervals across the remainder of the wall (e.g., a 5 × 2 grid of pinholes spaced 1000mm apart). Each pinhole projects a complete, soft image of the full scene onto the image plane, overlapping with each other and with the lens image.
 
 Result: a central sharp-focus portrait medallion surrounded by a web of overlapping, offset soft pinhole images — a unique artefact that could not be produced any other way.
 
@@ -437,11 +437,11 @@ If a lens is added for portrait work with the goal of maximising image quality:
 
 - f/14 maximum aperture → effective f/24 at 3.4 m → 0.4 second exposure on ISO 6 paper
 - <0.1% distortion (designed for reprographic work)
-- Apochromatic correction — no visible colour fringing
-- Ø ~400mm image circle — a large, centred medallion portrait
+- Apochromatic correction — no visible color fringing
+- Ø ~400mm image circle — a large, centerd medallion portrait
 - Extremely well-documented optical performance
 
-**For broader coverage at the cost of aberrant character:** A **600 × 600mm acrylic Fresnel lens at 1400mm focal length** (available from Edmund Optics or solar optics suppliers for $40–$120). Covers a 600mm circle with characteristic soft-centre/chromatic-edge quality. Interesting artistic choice; very cheap to test.
+**For broader coverage at the cost of aberrant character:** A **600 × 600mm acrylic Fresnel lens at 1400mm focal length** (available from Edmund Optics or solar optics suppliers for $40–$120). Covers a 600mm circle with characteristic soft-center/chromatic-edge quality. Interesting artistic choice; very cheap to test.
 
 **For maximum sharpness in the smallest area:** A **150mm aperture apochromatic telescope doublet** (1200–1500mm focal length). Sky-Watcher or William Optics 150mm f/8–f/10 APO objectives, purchased as bare objectives without focuser from surplus telescope suppliers. These deliver the finest image quality available at this price point ($800–$2,000) and can be experimentally swapped with the pinhole plate.
 

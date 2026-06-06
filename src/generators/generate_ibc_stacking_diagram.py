@@ -268,7 +268,7 @@ def sheet1():
     # Matches the 3D "Foot Flange Plate / Foot Anchor Bolt" parts. ──
     foot_half = IBC_FOOT_PLATE / 2
     for uyd in corridor_uprights:
-        fcy = uyd + IBC_FRAME_RHS / 2               # foot centred on the upright
+        fcy = uyd + IBC_FRAME_RHS / 2               # foot centerd on the upright
         # flange plate sits ON the floor surface (Z 0 .. t)
         ax.add_patch(Rectangle((sx(fcy - foot_half), sy(0)),
                                 sx(IBC_FOOT_PLATE), sy(IBC_FOOT_PLATE_T),
@@ -1429,8 +1429,8 @@ def sheet4():
     # matching the 3D so the pipes clear the frame uprights (X=5258-5308).
     fill_tee_x  = PANEL_FRAME_X + 150          # 5408 — fill tee behind the top rail
     drain_x     = PANEL_FRAME_X + 142          # 5400 — drains behind the frame
-    near_tote_c = BLUE_IBC_Y + IBC_D / 2       # 538  — tote centre (fill drop)
-    far_tote_c  = IBC_FAR_Y + IBC_D / 2        # 1824 — tote centre (fill drop)
+    near_tote_c = BLUE_IBC_Y + IBC_D / 2       # 538  — tote center (fill drop)
+    far_tote_c  = IBC_FAR_Y + IBC_D / 2        # 1824 — tote center (fill drop)
 
     # ── X4: IBC-4 (far, Waste) → bulkhead (lowest, drawn first) ───────────
     # X4 (Z=200) is the lowest pipe. Drawn first so X3 covers it in corridor.

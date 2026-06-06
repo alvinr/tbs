@@ -20,13 +20,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
 | 7a. Panel sliding carriage (B2 — longer rails + barrel hinges + swing caster) | $1,428 | $1,428 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,000 | $1,515 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,070 | $1,650 |
 | 7c. Ceiling rail suspension (B2 longer rails) | $254 | $254 |
 | 8. Cooling & ventilation | $370 | $450 |
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,331** | **~$28,145** |
+| **TOTAL (base build + 50-print run)** | **~$20,401** | **~$28,280** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -416,12 +416,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Ceiling bracket plates, 100×60×6mm steel | Galvanized. 10 plates (1 per hanger). | 10 | Local fab | ~$20–$35 |
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
-| Guide tabs, 3mm steel angle | Welded to left walkway bearer beam. Prevent lateral grating slide. | 4 | Local fab | ~$5–$10 |
+| Left edge beam, 50×50×3mm steel SHS | Full width 2362mm — left-walkway inner edge (X=470). Simply supported wall-to-wall; ~15mm proud as a toe-board kerb. Hot-dip galvanized. | 1 | Metal Supermarkets | ~$35–$60 |
+| Left edge-beam wall-seat brackets | 6mm steel seat plate + 100×180×6mm exterior backing plate, each end (IBC-style bolt-through). | 2 | Local fab / Metal Supermarkets | ~$30–$55 |
+| [M12×80mm hex bolts, nuts, washers](https://www.mcmaster.com/91290A655) | Grade 8.8, galvanized. 3 per wall seat (through the corrugated wall). | 6 | McMaster-Carr | ~$9–$15 |
 | Drum-exit punch-out — extra grating (~0.23 m²) + 50×50×3mm Al RHS bearer (~0.8m) + 25×25 Al SHS leg + foot | Deeper landing (600mm) at the light-lock exit | 1 lot | Metal Supermarkets / McNichols | ~$45 |
-| Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, weld guide tabs, install | 1 job | Local fab / metal shop | ~$280–$440 |
-**Walkway subtotal: ~$1,005–$1,530**
+| Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, fit left edge beam + 2 wall seats, install | 1 job | Local fab / metal shop | ~$280–$440 |
+**Walkway subtotal: ~$1,070–$1,650**
 
-*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention with guide tabs welded to bearer beam — lift straight up to remove (no fasteners). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
+*Near/far grating secured with M saddle clips + TEK screws to bracket arms. Right walkway grating secured with M saddle clips + TEK screws to L-angle bearer horizontal leg. Left walkway uses gravity retention — the grating rests on the full-width steel edge beam (X=470) and a bearing strip (X=170) and is located by the edge beam's proud kerb; lift straight up to remove (no fasteners). The edge beam is simply supported wall-to-wall on IBC-style bolt-through wall seats (demountable for transport — beam + interior seat plates lift out, backing plates stay on the wall). Near walkway widens to 500mm at EP/battery/slit zone (X≈1,155–2,629) with heavier 10mm brackets (see Sheet 7). Slits cut to tray lip only (near: 420mm, far: 218mm), not full walkway depth. Transition bearing plates at width change brackets (X≈1,156 and X≈2,526). Butt joints at all corners. No floor contact on any section — entire tray interior clear.*
 
 ## 7c. Ceiling Rail Suspension
 *Source: `generate_ceiling_rail_diagram.py`, `engineering-diagrams.md` §13. HGR20 ceiling-mounted linear rails suspend the hinged panel with 80mm floor gap, clearing the 50mm processing tray rim during transport slide.*

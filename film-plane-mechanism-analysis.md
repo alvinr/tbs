@@ -2,6 +2,8 @@
 <!-- © 2026 Alvin Richards -->
 # Moveable Film Plane — Mechanism Design & Optical Distortion Analysis
 
+> **Superseded by Option A (2026-06-06).** This internal analysis still describes the earlier *stretching* four-corner kinematic (independent corner depths, ±42° tilt / ±25.7° swing, compound twist, growing plane + folding backing). The current design is a **fixed-size rigid plane on floating-corner cross-slides** (tilt ±40° / swing ±28°, no twist, single rigid backing) — see [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md) for the governing text. This doc is unpublished and retained for its distortion-physics derivation; its mechanism + envelope figures are out of date pending a rewrite.
+
 ## 1. Purpose
 
 The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight body. In the default configuration the photosensitive film plane is flush against one of the 20ft long-side walls. This report describes a **view-camera-style moveable film plane** — a mechanism with **four independently actuated corners** (TL, TR, BL, BR), allowing full tilt, swing, and compound tilt+swing movements comparable to a large-format view camera's rear standard.

@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $95 | $240 |
-| 4. Film plane mechanism (4-corner, manual, incl. brace cage) | $2,800 | $3,300 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. brace cage + cross-slides) | $3,100 | $3,600 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $4,929 | $7,438 |
 | 6. Electrical — power, circuits, wiring | $1,785 | $1,890 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,450 | $2,100 |
@@ -26,7 +26,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints | $2,500 | $3,200 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$20,401** | **~$28,280** |
+| **TOTAL (base build + 50-print run)** | **~$20,701** | **~$28,580** |
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
@@ -101,21 +101,23 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | [Handwheel 8" dia](https://www.mcmaster.com/6440K64) | ¾" bore, cast aluminum | 4 | McMaster-Carr | McMaster #6440K64 | $35 |
 | [Locking collar SS316](https://www.mcmaster.com/6436K12) | ¾" bore | 4 | McMaster-Carr | McMaster #6436K12 | $12 |
 | Corner bracket L-plate | ¼" aluminum plate, 6"×8" | 4 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $20 |
+| Cross-slide rail HGR15 (Option A) | 300mm — X-Z floating stage | 8 | Amazon / Automation Overstock | McMaster-Carr | $25 |
+| Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 | Amazon / Automation Overstock | McMaster-Carr | $12 |
+| Cross-slide intermediate plate (Option A) | ¼" aluminum, joins X slide to Z slide | 4 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $15 |
 | [Rod-end spherical bearing](https://www.mcmaster.com/60645K73) | GIR25-DO or equiv., 25mm bore | 8 | McMaster-Carr | McMaster #60645K73 | $22 |
 | [Pivot pin SS316](https://www.mcmaster.com/98173A150) | 1" dia × 8" long | 8 | McMaster-Carr | McMaster #98173A150 | $8 |
-**Rails & structural subtotal: ~$1,260**
+**Rails & structural subtotal: ~$1,616** *(incl. Option A cross-slides +$356)*
 
 ### Film plane frame & backing
 | Item | Spec | Qty | Supplier A | Supplier B | Est. unit |
 |------|------|-----|-----------|-----------|-----------|
 | Aluminum angle 2"×2"×3/16" | 8ft lengths | 10 | Metal Supermarkets SoCal | [Online Metals](https://www.onlinemetals.com) | $22 |
-| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
+| [Dibond ACM panel 4mm](https://www.grimco.com) | 4'×8' sheets — **single rigid backing** (Option A), 4499×2388mm | 6 | Grimco, City of Industry CA | Signwarehouse | $85 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8614K84) | 50ft rolls — panel perimeter seal + housing-surround ring (Ø900 aperture) | 4 | McMaster-Carr #8614K84 | — | $37 |
 | [Rosco Duvetyne blackout fabric](https://www.rosebrand.com) | 60" wide, 10 yd | 1 | [Rose Brand](https://www.rosebrand.com) (Burbank CA) | B&H Photo | $95 |
-| [Aluminum piano hinge 72"](https://www.mcmaster.com/1580A51) | 2" wide, 1/16" leaf | 2 | McMaster-Carr #1580A51 | — | $28 |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | Home Depot | — | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | Home Depot | Amazon | $12 |
-**Frame subtotal: ~$1,111**
+**Frame subtotal: ~$1,055** *(Option A: single rigid ACM backing — folding piano hinge removed, –$56)*
 
 ### Optional: electric actuation (add-on)
 | Item | Spec | Qty | Supplier | Est. unit |
@@ -139,9 +141,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 
 *All prices estimated — Metal Supermarkets and McMaster-Carr do not publish per-unit pricing online; call or add to cart for a current quote. Blue Sky Supplies (blueskysupplies.com) confirmed 2"×2"×⅛" × 20 ft at $47.43 (May 2026). M8 thumbscrew pricing confirmed at ~$15–17 each from Maedler North America (PN 65499225, May 2026); Amazon multi-packs from various sellers run ~$2–5 ea. depending on pack size.*
 
-**Section total (manual, incl. brace cage): ~$2,937**
+**Section total (manual, incl. brace cage + Option A cross-slides): ~$3,237**
 
-> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added brace cage (ICP-11–14): +$575. Net change vs original two-beam design: +$587 for significantly greater geometric capability and integral structural rigidity. Excl. fabrication, fasteners, and optional electric actuation.
+> **Option A delta (2026-06-06):** the film plane is now a **fixed-size rigid** rectangle posed by **8 corner cross-slides** (2-axis X-Z stage per corner) that absorb the rigid-rotation arc travel. Added 8 cross-slide rails +$200, 8 carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → **net +$300**. Single rigid ACM backing replaces the hinged two-panel system; the achievable envelope is tilt ±40° / swing ±28° single-axis (combined limited; the old compound-twist config is dropped).
+>
+> **4-corner vs original 2-beam design delta:** Removed 2× 80/20 T-slot beams (5893mm) — saves $416. Added: 2× extra leadscrews +$190, 2× extra handwheels +$70, 4× rod-end spherical bearings +$88, 4× corner L-brackets +$80. Added brace cage (ICP-11–14): +$575. Excl. fabrication, fasteners, and optional electric actuation.
 
 ---
 

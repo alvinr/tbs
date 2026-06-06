@@ -9,8 +9,9 @@ For each pixel on the tilted film plane, ray-traces back through the pinhole
 to find the corresponding scene point. The result shows what the tilted film
 records, presented as a flattened image.
 
-Outputs: film-plane-distortion-c0.png … film-plane-distortion-c6.png
+Outputs: film-plane-distortion-c0.png … film-plane-distortion-c5.png
          film-plane-distortion-summary.png
+         (Option A: flat tilt/swing only — the compound twist config is dropped.)
 """
 
 import numpy as np
@@ -39,21 +40,22 @@ CYAN_LITE = np.array([0.494, 0.831, 0.949])
 PAPER_W   = np.array([0.941, 0.980, 1.000])
 
 # Tilt configurations: (label, d_top, d_bot, description)
+# Option A: the plane is a FIXED-SIZE rigid rectangle, so every achievable config
+# is a FLAT tilt or swing — the old compound TWIST (a ruled surface) is impossible
+# and has been dropped. Max tilt capped at the 40° design envelope.
 CONFIGS = [
     ("C0", "Flat  0°",           D_FAR,  D_FAR,
      "Reference — no distortion. Film plane flush to far wall."),
     ("C1", "Mild tilt  11.0°",   1800,   D_FAR,
      "Subtle keystone. Top edge 462mm closer. Top of image gently compressed."),
-    ("C2", "Strong tilt  31.5°", 800,    D_FAR,
-     "Dramatic keystone. Top 1462mm closer. Top heavily compressed, bottom stretched."),
-    ("C3", "Max tilt  42.1°",    D_NEAR, D_FAR,
-     "Extreme. Top edge 2162mm closer than bottom. Radical perspective break."),
-    ("C4", "Reverse max  42.1°", D_FAR,  D_NEAR,
+    ("C2", "Strong tilt  30°",   860,    D_FAR,
+     "Dramatic keystone. Top heavily compressed, bottom stretched."),
+    ("C3", "Max tilt  40°",      258,    D_FAR,
+     "Extreme (Option A design max). Top edge ~2000mm closer than bottom."),
+    ("C4", "Reverse max  40°",   D_FAR,  258,
      "Inverted max tilt. Bottom rushes forward. Ground-rush effect."),
     ("C5", "Both near  0°",      D_NEAR, D_NEAR,
      "Flat plane 2162mm closer than nominal. Uniform magnification boost ~2.3×."),
-    ("C6", "Compound  42.1°+15°",D_NEAR, D_FAR,
-     "Max tilt PLUS 15° swing. Diagonal perspective break — no parallel lines."),
 ]
 
 

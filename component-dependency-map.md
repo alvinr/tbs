@@ -331,8 +331,8 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **LOS** | `generate_line_of_sight.py` | `diagrams/line-of-sight.png` | 1, 2, 3, 5, 8, 9, 10, 11, 12, 13, 14 |
 | **AO** | `generate_assembly_overview.py` | `diagrams/assembly-overview.png`<br>`diagrams/assembly-overview-fp.png`<br>`diagrams/assembly-overview-plan.png` | 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13 |
 | **AF** | `generate_assembly_fabrication.py` | `diagrams/assembly-fab-sheet1.png`<br>`diagrams/assembly-fab-sheet2.png` | 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13 |
-| **FPM** ⚠️ | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
-| **FPD** ⚠️ | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c6.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
+| **FPM** | `generate_film_plane_mechanism.py` | `diagrams/film-plane-sheet1.png`<br>`diagrams/film-plane-sheet2.png`<br>`diagrams/film-plane-sheet3.png`<br>`diagrams/film-plane-sheet4.png` | 1, 2, 3 |
+| **FPD** | `generate_film_plane_distortion.py` | `diagrams/film-plane-distortion-c0.png` – `c5.png`<br>`diagrams/film-plane-distortion-summary.png` | 3 (optical simulation) |
 | **ES** | `generate_electrical_diagram.py` | `diagrams/electrical-sheet1.png`<br>`diagrams/electrical-sheet2.png` | 1, 7, 8, 9, 10 |
 | **WS** | `generate_water_system.py` | `diagrams/water-system-sheet1.png`<br>`diagrams/water-system-sheet2.png` | 1, 10, 11, 12, 13 |
 | **HP** | `generate_hingepanel_diagram.py` | `diagrams/hingepanel-sheet1.png`<br>`diagrams/hingepanel-sheet2.png`<br>`diagrams/hingepanel-sheet3.png`<br>`diagrams/hingepanel-sheet4.png` | 1, 5, 6, 17 |
@@ -344,7 +344,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **CR** | `generate_ceiling_rail_diagram.py` | `diagrams/ceiling-rail-sheet1.png`<br>`diagrams/ceiling-rail-sheet2.png` | 1, 6, 15, 16, 17, 18 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
-> ⚠️ **FPM / FPD pending Option-A redraw (2026-06-06):** the film-plane mechanism sheets and optical-distortion renders still depict the earlier *stretching* four-corner kinematic (independent corner depths, ±42° tilt, compound twist, growing plane). Option A is a **fixed-size rigid plane on floating-corner cross-slides** (tilt ±40° / swing ±28°, no twist) — propagated to `tbs_constants.py` (`MAX_TILT_DEG`=40, `MAX_SWING_DEG`=28, new `XSLIDE_*`), `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`. The 2D redraw is **deferred** — it needs the projection geometry redone (a rigid plane *foreshortens* rather than grows; `generate_film_plane_mechanism.py` also has multiple angle-computation sites to reconcile), and the FPD summary must drop the C7 compound-twist config. Until then the **report text governs**.
+> **FPM / FPD redrawn for Option A (2026-06-06):** the film-plane mechanism sheets and optical-distortion renders now show the **fixed-size rigid plane on floating-corner cross-slides** — **axis tilt/swing** about the plane centre (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`.
 
 ---
 

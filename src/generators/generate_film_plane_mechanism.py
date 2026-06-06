@@ -63,17 +63,17 @@ WALL_T = 40
 # Carriage travel limits (100mm clearance each end)
 D_NEAR = 100
 D_FAR  = W - 100   # = 2262
+D_CTR  = (D_NEAR + D_FAR) / 2   # = 1181 — mid-rail; Option A rotates the plane about here
 
-# ── 4-corner configs (d_TL, d_TR, d_BL, d_BR) — depths from pinhole wall ─────
-# TL=top-left, TR=top-right, BL=bottom-left, BR=bottom-right
-# Angle labels computed from geometry so they stay correct after rail span changes.
-_tilt_deg  = round(np.degrees(np.arctan2(D_FAR - 800, H)), 1)
-_swing_deg = round(np.degrees(np.arctan2(D_FAR - 800, FP_X_R - FP_X_L)), 1)
+# ── Option A configs (angle-based) — the rigid plane rotates about its centre ──
+# (name, tilt_deg, swing_deg, colour, linestyle). The corner depths/positions are
+# DERIVED from the rigid rotation (see rigid_corners3d), foreshortening rather than
+# stretching. Combined tilt+swing stays well inside the rails (no C7 twist).
 CONFIGS = [
-    ("Flat  0°",                   D_FAR,  D_FAR,  D_FAR,  D_FAR,  C_FLAT, "-"),
-    (f"Tilt  {_tilt_deg}°",        800,    800,    D_FAR,  D_FAR,  C_T1,   "--"),
-    (f"Swing  {_swing_deg}°",      800,    D_FAR,  800,    D_FAR,  C_T2,   "-."),
-    ("Compound\ntilt+swing",       D_NEAR, D_FAR,  D_FAR,  D_NEAR, C_T3,   ":"),
+    ("Flat  0°",            0.0,  0.0,  C_FLAT, "-"),
+    ("Tilt  20°",          20.0,  0.0,  C_T1,   "--"),
+    ("Swing 14°",           0.0, 14.0,  C_T2,   "-."),
+    ("Tilt+Swing\n(comb.)", 14.0, 10.0, C_T3,   ":"),
 ]
 
 FONT = {"fontfamily": "monospace"}
@@ -82,6 +82,48 @@ FONT = {"fontfamily": "monospace"}
 RAIL_X_L = FP_X_L       # left rail X position (mm) — tracks FP_X_L from constants
 RAIL_X_R = FP_X_R       # right rail X position (mm) — tracks FP_X_R from constants
 RAIL_W   = 60           # rail width in plan view
+
+# ── Option A rigid-plane geometry ────────────────────────────────────────────
+# The film plane is a FIXED-SIZE rigid rectangle that rotates about its CENTRE
+# (axis tilt / axis swing). A corner-depth difference Δd maps to the angle by
+# asin (not the old stretching-model atan), and the projected edge FORESHORTENS
+# (the corners move in Z for tilt, in X for swing) — it never grows. The plane is
+# illustrated about the rail-travel centre (mid-rail depth) so the symmetric
+# rotation fits inside the container; the film back-focuses along the rail.
+CX_PLANE = (RAIL_X_L + RAIL_X_R) / 2     # plane centre X (width)
+
+
+def tilt_edge(tilt_deg, d_c):
+    """Rigid axis-tilt about the plane centre. Returns ((d_top,z_top),(d_bot,z_bot))
+    in the side elevation (X=depth, Y=height). Edge length stays FP_H (foreshortens
+    in Z); the cross-slide takes up H/2·(1−cos t) at each corner."""
+    t = np.radians(tilt_deg); hh = FP_H / 2; zc = FP_H / 2
+    return ((d_c - hh * np.sin(t), zc + hh * np.cos(t)),
+            (d_c + hh * np.sin(t), zc - hh * np.cos(t)))
+
+
+def swing_edge(swing_deg, d_c):
+    """Rigid axis-swing about the plane centre. Returns ((x_L,d_L),(x_R,d_R)) in
+    plan (X=length, Y=depth). Edge length stays FP_W (foreshortens in X)."""
+    s = np.radians(swing_deg); hw = FP_W / 2
+    return ((CX_PLANE - hw * np.cos(s), d_c - hw * np.sin(s)),
+            (CX_PLANE + hw * np.cos(s), d_c + hw * np.sin(s)))
+
+
+def rigid_corners3d(tilt_deg, swing_deg, d_c=D_CTR):
+    """The four rigid-plane corners {cid:(x, y, z)} for tilt (about the X/width axis)
+    then swing (about the Z/height axis), centred at (CX_PLANE, d_c, FP_H/2).
+    x=length, y=optical depth, z=height. Edge lengths are preserved (no stretch)."""
+    t = np.radians(tilt_deg); s = np.radians(swing_deg); zc = FP_H / 2
+    out = {}
+    for cid, (sw, sh) in (("TL", (-1, 1)), ("TR", (1, 1)),
+                          ("BL", (-1, -1)), ("BR", (1, -1))):
+        w = sw * FP_W / 2; h = sh * FP_H / 2
+        x1, y1, z1 = w, -h * np.sin(t), h * np.cos(t)      # tilt about X
+        x2 = x1 * np.cos(s) - y1 * np.sin(s)               # swing about Z
+        y2 = x1 * np.sin(s) + y1 * np.cos(s)
+        out[cid] = (CX_PLANE + x2, d_c + y2, zc + z1)
+    return out
 
 
 # ── Brace cage drawing helpers ────────────────────────────────────────────────
@@ -241,37 +283,36 @@ def sheet1():
         ax.text(cx, cy + 60, lbl, color=ANNO, fontsize=8, ha="center",
                 fontweight="bold", **FONT, zorder=9)
 
-    # ── FILM PLANE POSITIONS — shown as quadrilateral for each config ──────────
-    for i, (name, d_TL, d_TR, d_BL, d_BR, col, ls) in enumerate(CONFIGS):
+    # ── FILM PLANE POSITIONS — rigid plane projected to plan for each config ──
+    # Option A: the rigid plane rotates about its centre. SWING foreshortens the
+    # X-span (corners move inboard of the fixed rails) and shifts left/right corners
+    # in depth; TILT is hidden here (height axis is into the page). The carriage
+    # stays on the rail; an X cross-slide bridges to the (foreshortened) corner.
+    order = ["TL", "TR", "BR", "BL"]
+    for i, (name, tilt_deg, swing_deg, col, ls) in enumerate(CONFIGS):
         lw = 2.2 if i == 0 else 1.8
         alpha = 1.0 if i == 0 else 0.88
         z = 8 + i
+        C = rigid_corners3d(tilt_deg, swing_deg)
 
-        # Corners in plan (X, Y=depth)
-        pts = [
-            (RAIL_X_L, d_TL),  # TL
-            (RAIL_X_R, d_TR),  # TR
-            (RAIL_X_R, d_BR),  # BR
-            (RAIL_X_L, d_BL),  # BL
-        ]
-        xs = [p[0] for p in pts] + [pts[0][0]]
-        ys = [p[1] for p in pts] + [pts[0][1]]
-
+        xs = [C[c][0] for c in order] + [C["TL"][0]]
+        ys = [C[c][1] for c in order] + [C["TL"][1]]
         ax.plot(xs, ys, color=col, lw=lw, ls=ls, alpha=alpha, zorder=z,
                 solid_capstyle="round")
-        # Corner carriage markers
-        for (px, py) in pts:
-            ax.add_patch(Circle((px, py), 55, fc=col, ec=WHITE, lw=0.7,
+        # carriages on the fixed rails + X cross-slide bridge to each corner
+        for c in order:
+            cxc, cyc = C[c][0], C[c][1]
+            rail_x = RAIL_X_L if c in ("TL", "BL") else RAIL_X_R
+            ax.add_patch(Circle((rail_x, cyc), 55, fc=col, ec=WHITE, lw=0.7,
                                 alpha=0.55, zorder=z))
-
-        # Label
-        cx_label = (RAIL_X_L + RAIL_X_R) / 2
-        cy_label = (d_TL + d_TR + d_BL + d_BR) / 4
-        ax.text(L + 200, (D_NEAR + D_FAR)/2 - i*220 + 400, name,
+            if abs(rail_x - cxc) > 8:
+                ax.plot([rail_x, cxc], [cyc, cyc], color=col, lw=1.0,
+                        alpha=0.5, zorder=z)
+        # inline legend label on the right
+        ly = (D_NEAR + D_FAR)/2 - i*220 + 400
+        ax.text(L + 200, ly, name.replace("\n", " "),
                 color=col, fontsize=7, va="center", **FONT, zorder=10)
-        ax.plot([L+50, L+180], [(D_NEAR+D_FAR)/2 - i*220 + 400,
-                                (D_NEAR+D_FAR)/2 - i*220 + 400],
-                color=col, lw=2.0, ls=ls, zorder=10)
+        ax.plot([L+50, L+180], [ly, ly], color=col, lw=2.0, ls=ls, zorder=10)
 
     # ── DRUM FOOTPRINT — ghost circle for light-trap drum ─────────────────────
     # Drum is a vertical cylinder at X=DRUM_CX=0, Yd=DRUM_CY=1181, radius=DRUM_R=450
@@ -332,11 +373,11 @@ def sheet1():
     leg_y = -250
     ax.text(leg_x + 500, leg_y + 160, "LEGEND", color=WHITE,
             fontsize=8, fontweight="bold", ha="center", **FONT)
-    for i, (name, d_TL, d_TR, d_BL, d_BR, col, ls) in enumerate(CONFIGS):
+    for i, (name, tilt_deg, swing_deg, col, ls) in enumerate(CONFIGS):
         ly = leg_y - i * 160
         ax.plot([leg_x, leg_x + 400], [ly, ly], color=col, lw=2.0, ls=ls)
-        corner_str = f"TL={d_TL}  TR={d_TR}  BL={d_BL}  BR={d_BR}"
-        ax.text(leg_x + 440, ly, f"{name}\n  {corner_str}",
+        ang_str = f"tilt={tilt_deg:g}°  swing={swing_deg:g}°"
+        ax.text(leg_x + 440, ly, f"{name.replace(chr(10), ' ')}\n  {ang_str}",
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
@@ -420,59 +461,53 @@ def sheet2():
     PH_Y = H / 2
 
     # Tilt configs: use TL for top, BL for bottom (left-side section)
+    # Option A: rigid AXIS tilt about the plane centre (mid-rail depth D_CTR). The
+    # plane edge stays length FP_H and FORESHORTENS in Z; the carriage stays on the
+    # rail and a Z cross-slide bridges the H/2·(1−cos t) gap to the corner.
     tilt_configs = [
-        ("Flat  0°",    D_FAR,  D_FAR,  C_FLAT, "-"),
-        ("Tilt  31.5°", 800,    D_FAR,  C_T1,   "--"),
-        ("Tilt  42.1°", D_NEAR, D_FAR,  C_T3,   ":"),
+        ("Flat  0°",  0.0,  C_FLAT, "-"),
+        ("Tilt 20°", 20.0,  C_T1,   "--"),
+        ("Tilt 40°", 40.0,  C_T3,   ":"),
     ]
 
-    for i, (name, d_top, d_bot, col, ls) in enumerate(tilt_configs):
+    for i, (name, tdeg, col, ls) in enumerate(tilt_configs):
         lw = 2.6 if i == 0 else 2.0
         alpha = 1.0 if i == 0 else 0.88
         zord = 10 + i
+        (d_top, z_top), (d_bot, z_bot) = tilt_edge(tdeg, D_CTR)
 
-        tc_x = d_top - CARRIAGE_W/2
-        tc_y = H - RAIL_H - CARRIAGE_H
-        ax.add_patch(Rectangle((tc_x, tc_y), CARRIAGE_W, CARRIAGE_H,
-                               fc=col, ec=WHITE, lw=0.8, alpha=0.45, zorder=zord))
-        ax.text(d_top, tc_y + CARRIAGE_H/2, f"T", color=col,
-                fontsize=5.5, ha="center", va="center", **FONT, zorder=zord+1)
+        # ceiling carriage (on top rail) + Z cross-slide down to the top corner
+        ax.add_patch(Rectangle((d_top - CARRIAGE_W/2, H - RAIL_H - CARRIAGE_H),
+                               CARRIAGE_W, CARRIAGE_H, fc=col, ec=WHITE, lw=0.8,
+                               alpha=0.45, zorder=zord))
+        ax.text(d_top, H - RAIL_H - CARRIAGE_H/2, "T", color=col, fontsize=5.5,
+                ha="center", va="center", **FONT, zorder=zord+1)
+        ax.plot([d_top, d_top], [H - RAIL_H, z_top], color=col, lw=1.6,
+                alpha=0.7, zorder=zord)
+        # floor carriage (on bottom rail) + Z cross-slide up to the bottom corner
+        ax.add_patch(Rectangle((d_bot - CARRIAGE_W/2, RAIL_H),
+                               CARRIAGE_W, CARRIAGE_H, fc=col, ec=WHITE, lw=0.8,
+                               alpha=0.45, zorder=zord))
+        ax.text(d_bot, RAIL_H + CARRIAGE_H/2, "B", color=col, fontsize=5.5,
+                ha="center", va="center", **FONT, zorder=zord+1)
+        ax.plot([d_bot, d_bot], [RAIL_H, z_bot], color=col, lw=1.6,
+                alpha=0.7, zorder=zord)
+        # rigid (foreshortened) plane edge, top corner → bottom corner
+        ax.plot([d_top, d_bot], [z_top, z_bot], color=col, lw=lw, ls=ls,
+                alpha=alpha, zorder=zord+1, solid_capstyle="round")
 
-        bc_x = d_bot - CARRIAGE_W/2
-        bc_y = RAIL_H
-        ax.add_patch(Rectangle((bc_x, bc_y), CARRIAGE_W, CARRIAGE_H,
-                               fc=col, ec=WHITE, lw=0.8, alpha=0.45, zorder=zord))
-        ax.text(d_bot, bc_y + CARRIAGE_H/2, f"B", color=col,
-                fontsize=5.5, ha="center", va="center", **FONT, zorder=zord+1)
-
-        fp_top_y = tc_y
-        fp_bot_y = bc_y + CARRIAGE_H
-        ax.plot([d_top, d_bot], [fp_top_y, fp_bot_y],
-                color=col, lw=lw, ls=ls, alpha=alpha, zorder=zord+1,
-                solid_capstyle="round")
-
-        # Tilt angle arc — from vertical (flat) to tilt line
-        if d_top != d_bot:
-            theta = np.degrees(np.arctan2(abs(d_top - d_bot), fp_top_y - fp_bot_y))
-            # Stagger radii so arcs don't overlap: i=1 → 200, i=2 → 350
-            arc_r = 200 + (i - 1) * 150
-            # Arc from 90° (vertical/flat) to 90°+theta (line tilts left)
-            ax.add_patch(Arc((d_bot, fp_bot_y), arc_r*2, arc_r*2,
-                             angle=0, theta1=90, theta2=90 + theta,
-                             color=col, lw=1.2, alpha=0.8, zorder=zord))
-            # Label at the midpoint of the arc
-            mid_ang = np.radians(90 + theta / 2)
-            ax.text(d_bot + (arc_r + 30) * np.cos(mid_ang),
-                    fp_bot_y + (arc_r + 30) * np.sin(mid_ang),
-                    f"{theta:.1f}°",
-                    color=col, fontsize=7, ha="center", va="center",
-                    **FONT, zorder=zord+2)
-
-        # Label — to the left of the line at its vertical midpoint
-        mid_x = (d_top + d_bot) / 2
-        mid_y = (fp_top_y + fp_bot_y) / 2
-        ax.text(mid_x - 80, mid_y, name,
-                color=col, fontsize=6.5, va="center", ha="right", **FONT, zorder=zord+2)
+        # tilt angle arc at the plane centre
+        if tdeg > 0:
+            arc_r = 230 + (i - 1) * 150
+            ax.add_patch(Arc((D_CTR, H/2), arc_r*2, arc_r*2, angle=0,
+                             theta1=90, theta2=90 + tdeg, color=col, lw=1.2,
+                             alpha=0.8, zorder=zord))
+            ma = np.radians(90 + tdeg/2)
+            ax.text(D_CTR + (arc_r+35)*np.cos(ma), H/2 + (arc_r+35)*np.sin(ma),
+                    f"{tdeg:.0f}°", color=col, fontsize=7, ha="center",
+                    va="center", **FONT, zorder=zord+2)
+        ax.text(d_top - 60, z_top, name, color=col, fontsize=6.5,
+                va="center", ha="right", **FONT, zorder=zord+2)
 
     # Pinhole
     ax.add_patch(Circle((0, PH_Y), 38, fc=PINHOLE, ec=WHITE, lw=1.5, zorder=12))
@@ -483,12 +518,13 @@ def sheet2():
     # Focal-length arrow
     fl_y = 50
     fl_tick = 15
-    ax.annotate("", xy=(D_FAR, fl_y), xytext=(0, fl_y),
+    ax.annotate("", xy=(D_CTR, fl_y), xytext=(0, fl_y),
                 arrowprops=dict(arrowstyle="<->", color=C_FLAT, lw=1.0, mutation_scale=7))
     ax.plot([0, 0], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
-    ax.plot([D_FAR, D_FAR], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
-    ax.text(D_FAR/2, fl_y+35, f"FOCAL LENGTH  {W}mm  (FLAT)",
-            color=C_FLAT, fontsize=7, ha="center", **FONT)
+    ax.plot([D_CTR, D_CTR], [fl_y - fl_tick, fl_y + fl_tick], color=C_FLAT, lw=0.6)
+    ax.text(D_CTR/2, fl_y+35,
+            f"FLAT shown at mid-rail (axis tilt)  ·  back-focus 100–{D_FAR}mm  ·  max f = {W}mm at far wall",
+            color=C_FLAT, fontsize=6, ha="center", **FONT)
 
     draw_dim_h(ax, 0, W, H+100, f"INTERIOR WIDTH (OPTICAL AXIS)  {W}mm",
                offset=15, color=DIM, font=FONT)
@@ -544,48 +580,43 @@ def sheet2():
             color=BG, fontsize=5.5, ha="center", va="center", rotation=90,
             **FONT, zorder=7)
 
-    # Swing configs (using ceiling level: TL and TR)
+    # Swing configs — Option A rigid AXIS swing about the plane centre. The edge
+    # stays length FP_W and FORESHORTENS in X (corners move inboard of the fixed
+    # rails); an X cross-slide bridges the W/2·(1−cos s) gap.
     swing_configs = [
-        ("Flat  0°",         D_FAR,  D_FAR,  C_FLAT, "-"),
-        ("Swing  22.4°",     800,    D_FAR,  C_T2,   "-."),
-        ("Swing  31.3°",     D_NEAR, D_FAR,  C_T3,   ":"),
-        ("Swing  symmetric", D_NEAR, D_NEAR, C_T1,   "--"),
+        ("Flat  0°",  0.0,  C_FLAT, "-"),
+        ("Swing 14°", 14.0, C_T2,   "-."),
+        ("Swing 28°", 28.0, C_T3,   ":"),
     ]
 
-    for i, (name, d_L, d_R, col, ls) in enumerate(swing_configs):
+    for i, (name, sdeg, col, ls) in enumerate(swing_configs):
         lw = 2.4 if i == 0 else 1.9
         alpha = 1.0 if i == 0 else 0.85
         zord = 8 + i
+        (x_L, d_L), (x_R, d_R) = swing_edge(sdeg, D_CTR)
 
-        # Film plane line at ceiling level: from (RAIL_X_L, d_L) to (RAIL_X_R, d_R)
-        ax.plot([RAIL_X_L, RAIL_X_R], [d_L, d_R],
-                color=col, lw=lw, ls=ls, alpha=alpha, zorder=zord+1,
-                solid_capstyle="round")
-        # Carriage markers
-        for (rx, dy) in [(RAIL_X_L, d_L), (RAIL_X_R, d_R)]:
-            ax.add_patch(Rectangle((rx-40, dy-40), 80, 80,
-                                   fc=col, ec=WHITE, lw=0.7, alpha=0.5, zorder=zord))
+        # rigid foreshortened plane edge
+        ax.plot([x_L, x_R], [d_L, d_R], color=col, lw=lw, ls=ls, alpha=alpha,
+                zorder=zord+1, solid_capstyle="round")
+        # carriages on the fixed rails + X cross-slide bridge to each corner
+        for (rx, dc, xc) in [(RAIL_X_L, d_L, x_L), (RAIL_X_R, d_R, x_R)]:
+            ax.add_patch(Rectangle((rx-40, dc-40), 80, 80, fc=col, ec=WHITE,
+                                   lw=0.7, alpha=0.5, zorder=zord))
+            if abs(rx - xc) > 8:
+                ax.plot([rx, xc], [dc, dc], color=col, lw=1.4, alpha=0.6, zorder=zord)
 
-        # Swing angle arc — from horizontal (flat) to swing line
-        if d_L != d_R:
-            ang = np.degrees(np.arctan2(abs(d_L - d_R), RAIL_X_R - RAIL_X_L))
-            # Stagger radii: i=1 → 600, i=2 → 900
-            arc_r = 600 + (i - 1) * 300
-            # Arc at right rail pivot; flat line goes left (180°),
-            # swing line goes left-and-down, so sweep from 180°+ang to 180°
-            ax.add_patch(Arc((RAIL_X_R, D_FAR), arc_r*2, arc_r*2,
-                             angle=0, theta1=180, theta2=180 + ang,
-                             color=col, lw=1.2, alpha=0.8, zorder=zord))
-            mid_ang = np.radians(180 + ang / 2)
-            ax.text(RAIL_X_R + (arc_r + 40) * np.cos(mid_ang),
-                    D_FAR + (arc_r + 40) * np.sin(mid_ang),
-                    f"{ang:.1f}°",
-                    color=col, fontsize=7, ha="center", va="center",
-                    **FONT, zorder=zord+2)
-
-        mid_y_sw = (d_L + d_R) / 2
-        ax.text(L/2, mid_y_sw + 80,
-                name, color=col, fontsize=6.5, ha="center", **FONT, zorder=zord+2)
+        # swing angle arc at the plane centre
+        if sdeg > 0:
+            arc_r = 700 + (i - 1) * 320
+            ax.add_patch(Arc((CX_PLANE, D_CTR), arc_r*2, arc_r*2, angle=0,
+                             theta1=0, theta2=sdeg, color=col, lw=1.2,
+                             alpha=0.8, zorder=zord))
+            ma = np.radians(sdeg/2)
+            ax.text(CX_PLANE + (arc_r+45)*np.cos(ma), D_CTR + (arc_r+45)*np.sin(ma),
+                    f"{sdeg:.0f}°", color=col, fontsize=7, ha="center",
+                    va="center", **FONT, zorder=zord+2)
+        ax.text(L/2, (d_L + d_R)/2 + 90, name, color=col, fontsize=6.5,
+                ha="center", **FONT, zorder=zord+2)
 
     draw_dim_h(ax, 0, L, W+180, f"INTERIOR LENGTH  {L}mm",
                offset=15, color=DIM, fs=7, font=FONT)
@@ -782,56 +813,37 @@ def sheet3():
 
     draw_dim_h(ax, rod_cx-30, rod_cx+30, -80, "60mm",
                offset=15, color=DIM, above=False, font=FONT)
-    ax.text(200, 240, "CORNER JOINT DETAIL — BRACKET TO FILM FRAME\nROD-END SPHERICAL BEARING — ALLOWS TILT + SWING SIMULTANEOUSLY",
+    ax.text(200, 240, "CORNER JOINT DETAIL — CROSS-SLIDE TO FILM FRAME\nROD-END (angular freedom) + 2-AXIS X-Z CROSS-SLIDE (translation)",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
     ax.text(200, -100,
-            "REPLACES SIMPLE PIN JOINT — 3-AXIS FREEDOM NEEDED FOR COMPOUND TILT+SWING",
+            "OPTION A: rod-end gives ±45° any axis; the cross-slide absorbs the rigid-rotation arc travel",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
-    # ── BR: ACM panel arrangement ─────────────────────────────────────────────
+    # ── BR: single rigid ACM backing (Option A — no fold) ────────────────────
     ax = ax_acm
     ax.set_xlim(-100, 650); ax.set_ylim(-130, 350); ax.set_aspect("equal")
 
-    panel_h = 200; panel_w = 250
-    # Flat panel
-    ax.add_patch(Rectangle((20, 50), panel_w, panel_h, fc=ANNO, ec=WHITE,
-                           lw=1.5, zorder=3, alpha=0.7))
-    ax.add_patch(Rectangle((20, 50), panel_w, panel_h/2, fc=DIM, ec=WHITE,
-                           lw=1.0, zorder=4, alpha=0.5))
-    ax.add_patch(Rectangle((20-5, 50+panel_h/2-6), panel_w+10, 12,
-                           fc=RAIL, ec=WHITE, lw=1.0, zorder=5))
-    ax.text(20+panel_w/2, 50+panel_h/2, "HINGE", color=BG,
-            fontsize=6, ha="center", va="center", **FONT)
-    ax.text(20+panel_w/2, 50+panel_h+20, "FLAT  (0°)", color=C_FLAT,
-            fontsize=7.5, ha="center", **FONT)
-    ax.text(20+panel_w/2, 50-20, "2× Dibond ACM  4mm",
-            color=DIM, fontsize=6.5, ha="center", **FONT)
-    draw_dim_v(ax, 20-60, 50, 50+panel_h, f"{H}mm (schematic)",
-               offset=70, color=DIM, font=FONT)
+    panel_h = 240; panel_w = 300
+    px0, py0 = 130, 40
+    ax.add_patch(Rectangle((px0, py0), panel_w, panel_h, fc=ANNO, ec=WHITE,
+                           lw=1.8, zorder=3, alpha=0.75))
+    for (bx, by) in [(px0, py0), (px0+panel_w, py0),
+                     (px0, py0+panel_h), (px0+panel_w, py0+panel_h)]:
+        ax.add_patch(Circle((bx, by), 13, fc=MECH, ec=WHITE, lw=0.8, zorder=5))
+    ax.text(px0+panel_w/2, py0+panel_h/2, "SINGLE RIGID\nACM BACKING",
+            color=BG, fontsize=8, ha="center", va="center", **FONT, zorder=6)
+    ax.text(px0+panel_w/2, py0+panel_h+22, "FIXED-SIZE — rotates rigidly (no fold)",
+            color=C_FLAT, fontsize=7, ha="center", **FONT)
+    ax.text(px0+panel_w/2, py0-22,
+            f"Dibond ACM 4mm · {RAIL_X_R-RAIL_X_L+0}×{H}mm · bonded to angle frame",
+            color=DIM, fontsize=6, ha="center", **FONT)
+    draw_dim_v(ax, px0-55, py0, py0+panel_h, f"{H}mm (fixed)",
+               offset=60, color=DIM, font=FONT)
 
-    # Tilted panel (folded)
-    t_ang = np.radians(30)
-    tx0, ty0 = 400, 50
-    ax.add_patch(Rectangle((tx0, ty0), panel_w*0.7, panel_h/2,
-                           fc=DIM, ec=WHITE, lw=1.5, alpha=0.5, zorder=3))
-    fold_len = panel_h / 2
-    fold_dx = fold_len * np.sin(t_ang)
-    fold_dy = fold_len * np.cos(t_ang)
-    pts = np.array([[tx0, ty0+panel_h/2],
-                    [tx0+panel_w*0.7, ty0+panel_h/2],
-                    [tx0+panel_w*0.7+fold_dx, ty0+panel_h/2+fold_dy],
-                    [tx0+fold_dx, ty0+panel_h/2+fold_dy]])
-    ax.add_patch(Polygon(pts, fc=ANNO, ec=WHITE, lw=1.5, alpha=0.7, zorder=4))
-    ax.add_patch(Rectangle((tx0-5, ty0+panel_h/2-6), panel_w*0.7+10, 12,
-                           fc=RAIL, ec=WHITE, lw=1.0, zorder=5))
-    ax.text(tx0+panel_w*0.35+fold_dx/2, ty0+panel_h/2+fold_dy/2+20,
-            "30° fold", color=C_T2, fontsize=6.5, ha="center", **FONT)
-    ax.text(tx0+panel_w*0.35, ty0+panel_h+fold_dy+25, "TILTED (upper folds back)",
-            color=C_T2, fontsize=7.5, ha="center", **FONT)
-
-    ax.text(260, 310, "ACM BACKING PANEL ARRANGEMENT\nHINGED AT MIDPOINT — ACCOMMODATES TILT UP TO 42°",
+    ax.text(280, 310, "ACM BACKING PANEL (OPTION A)\nSINGLE RIGID SHEET — FIXED SIZE, NO HINGE",
             color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(260, -60, "PANEL: DIBOND 4mm  ·  HINGE: 2\" ALUMINUM PIANO HINGE  ·  FULL WIDTH",
+    ax.text(280, -95,
+            "PANEL: DIBOND 4mm  ·  the plane never grows, so no folding two-panel system is needed",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS  (4-CORNER INDEPENDENT DESIGN)",
@@ -906,10 +918,10 @@ def sheet4():
         ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
         ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
         ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["COMPOUND",      "Any/all 4 corners independently",   "TL, TR, BL, BR",   f"0–{FP_Y}mm", "4× leadscrews independently","4 locking collars"],
+        ["COMPOUND",      "Limited tilt+swing — plane stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4× leadscrews independently","4 locking collars"],
         ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 leadscrews together", "All 4 locks"],
-        ["MAX TILT",      f"Top={FP_Y_MIN}mm, Bot={FP_Y}mm (or rev.)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.1f}deg",  "Top+top / Bot+bot",        "All 4 locks"],
-        ["MAX SWING",     f"Left={FP_Y_MIN}mm, Right={FP_Y}mm (or rev.)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.1f}deg", "Left+left / Right+right",  "All 4 locks"],
+        ["MAX TILT",      "Top=414mm, Bot=1948mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (xslide-lim.)",  "Top+top / Bot+bot",        "All 4 locks"],
+        ["MAX SWING",     "Left=125mm, Right=2237mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 locks"],
     ]
     # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
     draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,
@@ -928,25 +940,28 @@ def sheet4():
 
     eff_H = H - 120
 
+    # Option A (rigid axis tilt/swing about the mid-rail centre). Corner depths are
+    # DERIVED from the rotation; the plane stays a flat fixed-size rectangle, so no
+    # compound TWIST and no growth. Combined tilt+swing is limited (corners on rails).
     config_defs = [
-        ("Flat",              D_FAR,  D_FAR,  D_FAR,  D_FAR,  "Reference"),
-        ("Tilt mild",         1800,   1800,   D_FAR,  D_FAR,  "5.6° tilt, subtle keystone"),
-        ("Tilt strong",       800,    800,    D_FAR,  D_FAR,  "31.5° tilt, strong keystone"),
-        ("Tilt max",          D_NEAR, D_NEAR, D_FAR,  D_FAR,  "42.1° tilt, extreme"),
-        ("Swing mild",        D_FAR,  1800,   D_FAR,  1800,   "swing, diagonal slant"),
-        ("Swing strong",      D_FAR,  800,    D_FAR,  800,    "swing (short span = larger angle)"),
-        ("Swing max",         D_FAR,  D_NEAR, D_FAR,  D_NEAR, f"{MAX_SWING_DEG:.1f}deg max swing"),
-        ("Compound tilt+sw.", D_NEAR, D_FAR,  D_FAR,  D_NEAR, "Both max — twisted plane"),
+        ("Flat",            0.0,  0.0,  "Reference (flat, fixed size)"),
+        ("Tilt mild",      11.0,  0.0,  "subtle keystone"),
+        ("Tilt strong",    30.0,  0.0,  "strong keystone"),
+        ("Tilt max",       40.0,  0.0,  "max tilt (cross-slide-Z limited)"),
+        ("Swing mild",      0.0, 11.0,  "diagonal slant"),
+        ("Swing strong",    0.0, 22.0,  "strong left-right skew"),
+        ("Swing max",       0.0, 28.0,  "max swing (rail-depth limited)"),
+        ("Tilt+Swing",     14.0, 10.0,  "combined — plane stays FLAT"),
     ]
 
     cfg_headers = ["CONFIG", "TL mm", "TR mm", "BL mm", "BR mm",
                    "TILT ANG.", "SWING ANG.", "PRINCIPAL EFFECT"]
     cfg_rows = []
-    for (name, d_TL, d_TR, d_BL, d_BR, effect) in config_defs:
-        tilt = tilt_angle(d_TL, d_BL, eff_H)  # top vs bottom on same side
-        swing = tilt_angle(d_TL, d_TR, RAIL_X_R - RAIL_X_L)  # left vs right — use rail span
-        cfg_rows.append([name, d_TL, d_TR, d_BL, d_BR,
-                         f"{tilt:.1f}°", f"{swing:.1f}°", effect])
+    for (name, tdeg, sdeg, effect) in config_defs:
+        C = rigid_corners3d(tdeg, sdeg, D_CTR)
+        d = {k: round(C[k][1]) for k in ("TL", "TR", "BL", "BR")}
+        cfg_rows.append([name, d["TL"], d["TR"], d["BL"], d["BR"],
+                         f"{tdeg:.0f}°", f"{sdeg:.0f}°", effect])
 
     draw_table(ax, 0.05, 0.656, cfg_headers, cfg_rows,
                [0.13, 0.07, 0.07, 0.07, 0.07, 0.08, 0.09, 0.37])
@@ -1768,7 +1783,7 @@ def sheet6():
             f"{RAIL_X_R - RAIL_X_L}mm wide  ×  {H}mm tall",
             color=C_FLAT, fontsize=7.5, ha="center", va="center", **FONT, zorder=11)
     ax.text(fp_cx, fp_cz - 80,
-            "ROD-END BEARING each corner",
+            "ROD-END + cross-slide each corner",
             color=MECH, fontsize=7, ha="center", va="center", **FONT, zorder=11)
 
     # ── Leaders ───────────────────────────────────────────────────────────────
@@ -1834,7 +1849,7 @@ def sheet6():
             "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 INDEPENDENT CORNER CARRIAGES  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END BEARINGS AT EACH CORNER",
+            "4 INDEPENDENT CORNER CARRIAGES  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER (Option A)",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────

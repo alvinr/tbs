@@ -72,7 +72,49 @@ APER_R = DRUM_CY + APERTURE_R         # 1649 — aperture edge (far)
 TAGS = ["Context", "Door Frame", "Carriage Rails",
         "Processing Tray", "Walkways", "Film Plane Rails",
         "Sliding Assembly",   # dynamic-component moving group (panel slide)
-        "Cargo Doors"]        # dynamic-component swing doors (click to close)
+        "Cargo Doors",        # dynamic-component swing doors (click to close)
+        "Labels"]             # add_text callouts — shown only in the "Labeled" scene
+
+
+# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
+# (top-level component instance name, text, leader Δx, Δy, Δz mm). Δy pulls a
+# callout OUT toward the viewer (camera looks from −X/−Y); keep Δz modest.
+LIGHTTRAP_LABELS = [
+    ("Fixed Door Frame",                "DOOR FRAME",                    -500, -200,  800),
+    ("Carriage Rails + Locks",          "CARRIAGE RAILS\n+ Destaco locks", 200, -300, 1050),
+    ("Panel Slide",                     "HINGE PANEL\n(slides for transport)", 550, -100, 1250),
+    ("Cargo Doors",                     "CARGO DOORS",                   -100, -1600,  150),
+    ("Processing Tray (partial)",       "PROCESSING TRAY",                950,  500,  300),
+    ("Walkways (near + far, partial)",  "WALKWAYS",                       300, -500,  480),
+    ("Film-Plane Rails (left, partial)","FILM-PLANE RAILS",               700,    0,  900),
+]
+# Point-anchored (x,y,z,text,Δx,Δy,Δz) — drum + Fan B are nested in the Panel Slide DC.
+LIGHTTRAP_POINT_LABELS = [
+    (-400, 1181, 1700, "LIGHT-TRAP DRUM\n(revolving door)", -750,    0,  650),
+    ( 150,  365,  700, "FAN B (intake)",                    -200, -650, 1000),
+]
+
+
+def lighttrap_labels():
+    """Ruby that adds an in-model text callout (with leader) for each major component
+    on the 'Labels' tag — instance-anchored at bounds top-centre, plus point-anchored
+    for parts nested inside a DC."""
+    rows = []
+    for name, text, dx, dy, dz in LIGHTTRAP_LABELS:
+        rows.append(
+            f'inst = entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "{name}" }}\n'
+            f'if inst\n'
+            f'  bb = inst.bounds\n'
+            f'  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)\n'
+            f'  txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'  txt.layer = model.layers["Labels"] rescue nil\n'
+            f'end')
+    for x, y, z, text, dx, dy, dz in LIGHTTRAP_POINT_LABELS:
+        rows.append(
+            f'anc = Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)})\n'
+            f'txt = entities.add_text("{text}", anc, Geom::Vector3d.new({ov.mm(dx)}, {ov.mm(dy)}, {ov.mm(dz)}))\n'
+            f'txt.layer = model.layers["Labels"] rescue nil')
+    return '\n'.join(rows)
 
 
 # ── Ghosted container context (end opening only) ─────────────────────────────
@@ -541,7 +583,7 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase ALL prior instances.
 to_erase = entities.to_a.select {{ |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -631,6 +673,9 @@ far_inst.set_attribute(dda, "_name", "LeafFar")
 far_inst.set_attribute(dda, "rotz", -180.0)
 far_inst.set_attribute(dda, "_rotz_formula", "-180*(1-CargoDoors!shut)")
 
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+{lighttrap_labels()}
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
@@ -642,16 +687,23 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-# ── Camera + one scene (the slide is interactive, not scene-based) ──
+# ── Camera + scenes (the slide is interactive; plus a "Labeled" callout scene) ──
 model.layers.each {{ |l| l.visible = true }}
+model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.6, -0.72, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
+model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
+# Main interactive scene — Labels OFF.
 page = model.pages.add("Light Trap — click panel to slide")
 page.use_camera = true
+# Labeled — same view + component callouts.
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 

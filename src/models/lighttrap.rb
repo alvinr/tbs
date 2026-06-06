@@ -9,7 +9,7 @@ opts["LengthPrecision"] = 1
 
 # Idempotent rebuild: erase ALL prior instances.
 to_erase = entities.to_a.select { |e|
-  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance)
+  e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text)
 }
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
@@ -24,6 +24,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Film Plane Rails") unless model.layers["Film Plane Rails"]
   model.layers.add("Sliding Assembly") unless model.layers["Sliding Assembly"]
   model.layers.add("Cargo Doors") unless model.layers["Cargo Doors"]
+  model.layers.add("Labels") unless model.layers["Labels"]
 
 # ── Fixed subsystems ──
   # ═══ Context ═══
@@ -1174,7 +1175,7 @@ ents = rotor_defn.entities
   grp = ents.add_group
   grp.name = "LT Drum opening brush seal"
   ge = grp.entities
-  circle = ge.add_circle([-335.91048830767187.mm,-281.86236684754743.mm,80.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([-335.9104883076719.mm,-281.86236684754743.mm,80.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
@@ -1270,27 +1271,94 @@ far_inst.set_attribute(dda, "_name", "LeafFar")
 far_inst.set_attribute(dda, "rotz", -180.0)
 far_inst.set_attribute(dda, "_rotz_formula", "-180*(1-CargoDoors!shut)")
 
+# ── "Labeled" scene callouts (Labels tag — shown only in the "Labeled" scene) ──
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Fixed Door Frame" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("DOOR FRAME", anc, Geom::Vector3d.new(-500.mm, -200.mm, 800.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Carriage Rails + Locks" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("CARRIAGE RAILS
++ Destaco locks", anc, Geom::Vector3d.new(200.mm, -300.mm, 1050.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Panel Slide" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("HINGE PANEL
+(slides for transport)", anc, Geom::Vector3d.new(550.mm, -100.mm, 1250.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Cargo Doors" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("CARGO DOORS", anc, Geom::Vector3d.new(-100.mm, -1600.mm, 150.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Processing Tray (partial)" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("PROCESSING TRAY", anc, Geom::Vector3d.new(950.mm, 500.mm, 300.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Walkways (near + far, partial)" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("WALKWAYS", anc, Geom::Vector3d.new(300.mm, -500.mm, 480.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film-Plane Rails (left, partial)" }
+if inst
+  bb = inst.bounds
+  anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
+  txt = entities.add_text("FILM-PLANE RAILS", anc, Geom::Vector3d.new(700.mm, 0.mm, 900.mm))
+  txt.layer = model.layers["Labels"] rescue nil
+end
+anc = Geom::Point3d.new(-400.mm, 1181.mm, 1700.mm)
+txt = entities.add_text("LIGHT-TRAP DRUM
+(revolving door)", anc, Geom::Vector3d.new(-750.mm, 0.mm, 650.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(150.mm, 365.mm, 700.mm)
+txt = entities.add_text("FAN B (intake)", anc, Geom::Vector3d.new(-200.mm, -650.mm, 1000.mm))
+txt.layer = model.layers["Labels"] rescue nil
+
 model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Context", "Door Frame", "Carriage Rails", "Processing Tray", "Walkways", "Film Plane Rails", "Sliding Assembly", "Cargo Doors"]
+keep_tags = ["Context", "Door Frame", "Carriage Rails", "Processing Tray", "Walkways", "Film Plane Rails", "Sliding Assembly", "Cargo Doors", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
   model.layers.remove(l, true) rescue nil
 }
 
-# ── Camera + one scene (the slide is interactive, not scene-based) ──
+# ── Camera + scenes (the slide is interactive; plus a "Labeled" callout scene) ──
 model.layers.each { |l| l.visible = true }
+model.layers["Labels"].visible = false if model.layers["Labels"]  # frame geometry, not labels
 bb = model.bounds
 ctr = bb.center
 dir = Geom::Vector3d.new(-0.6, -0.72, 0.45); dir.normalize!
 eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
+model.active_view.zoom(0.62)   # pull back so callouts have margin (and read larger)
+# Main interactive scene — Labels OFF.
 page = model.pages.add("Light Trap — click panel to slide")
 page.use_camera = true
+# Labeled — same view + component callouts.
+model.layers["Labels"].visible = true if model.layers["Labels"]
+lpage = model.pages.add("Labeled"); lpage.use_camera = true
+model.layers["Labels"].visible = false if model.layers["Labels"]
 
 model.commit_operation
 

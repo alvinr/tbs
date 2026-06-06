@@ -35,7 +35,7 @@ FP_H = _FP_H      # film plane height (mm) = 2388
 BG      = '#081A32'
 C_NEAR  = '#45B0E8'   # near depth grid — cyan
 C_MID   = '#E4F4FD'   # mid depth grid — paper white
-C_FAR   = '#6080A0'   # far / horizon — grey-blue
+C_FAR   = '#6080A0'   # far / horizon — gray-blue
 C_HUMAN = '#F5D080'   # human silhouette — warm gold
 C_AX    = '#7ED4F2'   # annotation text
 

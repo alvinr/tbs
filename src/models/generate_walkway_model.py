@@ -276,56 +276,6 @@ def cantilevers():
 CT_SEAT_X, CT_STD_X, CT_WIDE_X = 2400, 3400, 4400
 
 
-def _wall_seat_parts(nm, lxr, wall_yd, sign, beam_w, bz0, bz1):
-    """Drop-in pocket wall seat for the edge-beam end (redesign per Sheet 6 / Detail
-    D): a cradle = a FLOOR piece + two TRIANGULAR GUSSET sides (parallel to the beam,
-    triangular in side view, tapering down to the floor outboard) welded to an
-    INTERIOR mounting plate. That plate is bolted THROUGH the wall with **4x M12 at
-    the plate CORNERS — clear of the pocket** so the nuts are reachable — to a
-    MATCHING exterior backing plate. `sign`=+1 near wall (+Yd) / -1 far wall (-Yd)."""
-    st = k.LEFT_WK_SEAT_POCKET_T                        # 6mm pocket steel
-    reach = 80                                          # pocket depth into container (Yd)
-    pw, ph, pt = k.LEFT_WK_SEAT_PLATE                   # 100 x 135 x 6 plate (interior + exterior)
-    pz0 = 5                                             # mounting-plate Z start (straddles the pocket)
-    cxm = lxr + beam_w / 2
-    s = 1 if sign > 0 else -1
-    floorz = bz0 - st                                   # floor: top at bz0
-    yw = wall_yd                                        # pocket wall (Yd=0) end
-    yb = wall_yd + s * pt                               # interior plate's container face (gusset butts here)
-    yo = wall_yd + s * reach                            # pocket outboard end
-    fy = min(yb, yo)                                    # floor Yd start (butts plate front)
-    iy = wall_yd if s > 0 else wall_yd - pt             # interior plate Yd
-    ey = (wall_yd - WALL_T - pt) if s > 0 else (wall_yd + WALL_T)   # exterior plate Yd
-    parts = [
-        # interior mounting plate + matching exterior backing plate (bolted through wall)
-        ruby_box(f"{nm} interior plate", cxm - pw / 2, iy, pz0, pw, pt, ph, color=C_STEEL),
-        ruby_box(f"{nm} exterior plate", cxm - pw / 2, ey, pz0, pw, pt, ph, color=C_STEEL),
-        # floor piece — the beam end drops onto it (floor top at Z=bz0); its back
-        # edge butts the plate front too (length reach−pt)
-        ruby_box(f"{nm} pocket floor", cxm - (beam_w / 2 + st), fy, floorz,
-                 beam_w + 2 * st, reach - pt, st, color=C_STEEL),
-    ]
-    # two triangular gusset sides — in the 6mm gaps at the POCKET'S OUTER EDGES
-    # (flush with the floor's outer edges, beside the beam — not overlapping it),
-    # tapering from full height at the wall down to the floor outboard; their back
-    # edge butts the interior plate's face (yb) so the gusset→plate joint reads clean
-    for gx, push in ((lxr, st), (lxr + beam_w, -st)):
-        parts.append(ruby_tri(f"{nm} pocket gusset",
-                              (gx, yb, floorz), (gx, yb, bz1), (gx, yo, floorz),
-                              push, color=C_STEEL))
-    # 4x M12 through-bolts at the plate corners (clear of the pocket) + hex heads
-    ext_outer = (wall_yd - WALL_T - pt) if s > 0 else (wall_yd + WALL_T + pt)
-    int_inner = (wall_yd + pt) if s > 0 else (wall_yd - pt)
-    shank_y0 = min(ext_outer, int_inner)
-    shank_len = WALL_T + 2 * pt
-    for bx in (cxm - 32, cxm + 32):
-        for bz in (pz0 + 25, pz0 + ph - 25):
-            parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz, 6, shank_len, color=C_BOLT, axis="y"))
-            hy = (ext_outer - 6) if s > 0 else ext_outer
-            parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, bz - 9, 18, 6, 18, color=C_HEX))
-    return parts
-
-
 def _floor_cant_type_parts():
     """The LEFT removable walkway's FLOOR-LEG CANTILEVER bracket for the type-catalog —
     one standard bracket (foot plate + 50x50 post to the grate bottom + arm at Z75-115

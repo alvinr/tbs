@@ -34,13 +34,13 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   shown as ghost — the panel sweeps ~530mm past the butt joint through the
   vacated left-walkway zone. Bearing strip and floor leg shown in cross-section.
 
-Sheet 5 — Detail C: Left walkway support system (removable):
+Sheet 5 — Detail C: Left walkway support system (floor-leg cantilevers, plan):
   Elevation showing all support elements: floor-standing leg (X=140, on bare
   floor) with cantilever arm, the full-width steel edge beam (40×40×3mm steel
   SHS at X=470, Z52-92, kerb proud of the deck) on bolt-through wall seats, and
   bearing strip on tray rim (X=170). Zero processing tray contact.
 
-Sheet 6 — Detail D: Left edge-beam wall-seat bracket (IBC-style bolt-through):
+Sheet 6 — Detail D: Left walkway floor-leg cantilever bracket (section + foot plate):
   Two views of how the steel edge beam is simply supported at each end — an
   interior seat plate (drop-in pocket) + 3× M12 bolts through the corrugated
   wall to an exterior backing plate. Same load path as the IBC wall seats;
@@ -72,11 +72,6 @@ from tbs_constants import (
     PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F,
     PROC_OPEN_AREA,
     PANEL_SLIDE, PANEL_CENTER_T, PANEL_FLOOR_GAP,
-    LEFT_WK_BEARER_SIZE, LEFT_WK_BEARER_T,
-    LEFT_WK_BEAM_Z0, LEFT_WK_BEAM_Z1,
-    LEFT_WK_LEG_N, LEFT_WK_LEG_SIZE, LEFT_WK_LEG_T, LEFT_WK_LEG_BASE,
-    LEFT_WK_BEARING_STRIP,
-    LEFT_WK_SEAT_BOLT_N, LEFT_WK_SEAT_BOLT_D, LEFT_WK_SEAT_PLATE,
     LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T,
     LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N,
     LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE,
@@ -1670,7 +1665,6 @@ def sheet4():
     # ── Notes ────────────────────────────────────────────────────────────────
     notes_x = sx(LEFT_WK_R + 120)
     notes_top = sy(Z_HI - 5)
-    leg_spacing = int(WALKWAY_LEFT_SPAN / (LEFT_WK_LEG_N + 1))
     notes = [
         "LEFT WALKWAY \u2014 REMOVABLE LIFT-OUT:",
         f"1. NO wall brackets \u2014 panel occupies end wall.",
@@ -2700,7 +2694,6 @@ def sheet9():
     OUTER_X = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W    # 770 — outer trim bearer
     yL = WALKWAY_LEFT_WIDE_YD_L                       # 800
     yR = WALKWAY_LEFT_WIDE_YD_R                       # 1560
-    BSZ = LEFT_WK_BEARER_SIZE                         # 40
     C_SUPPORT = "#D08020"
     C_WK = "#D0C8B8"
 
@@ -2795,8 +2788,8 @@ if __name__ == "__main__":
     sheet2()  # cross-section → sheet2.png
     sheet3()  # ceiling-hung → sheet3.png
     sheet4()  # butt joint → sheet4.png
-    sheet5()  # left support → sheet5.png
-    sheet6()  # edge-beam wall-seat detail → sheet6.png
+    sheet5()  # left support (floor-leg plan) → sheet5.png
+    sheet6()  # floor-leg bracket detail → sheet6.png
     sheet7()  # widened bracket → sheet7.png
     sheet8()  # width transition → sheet8.png
     sheet9()  # drum-exit punch-out support → sheet9.png

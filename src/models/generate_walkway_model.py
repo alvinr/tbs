@@ -264,16 +264,26 @@ def cantilevers():
 
 
 # Near-wall X positions for the isolated type-catalog ("Cantilevers" scene).
-CT_STD_X, CT_WIDE_X = 2700, 3600
+CT_STD_X, CT_WIDE_X, CT_BEARER_X = 2400, 3400, 4400
 
 
 def cantilever_types():
     """ONE of each UNIQUE bracket type, isolated side-by-side for the "Cantilevers"
-    scene — the STANDARD bracket and the WIDENED EP/battery-zone bracket. Same
-    geometry as the in-situ brackets, placed on the near wall in clear positions."""
+    scene. Same geometry as the in-situ brackets, placed on the near wall in clear
+    positions:
+      • STANDARD — 8mm/150/300, 3× M12 (the typical near/far deck bracket);
+      • WIDENED  — 10mm/200/500, 4× M12 (the four EP/battery-zone brackets);
+      • BEARER-SUPPORT — a standard bracket carrying a stub of the right-walkway
+        25×25×5 L-angle bearer (the IBC-end butt joints at X=4329/4629, where the
+        ceiling-hung right deck's bearer bears on the near/far bracket arm)."""
     parts = []
     parts += _cantilever_parts("Type Standard", CT_STD_X, 0, +1, WK_W, False)
     parts += _cantilever_parts("Type Widened", CT_WIDE_X, 0, +1, WK_NEAR_WIDE_W, True)
+    parts += _cantilever_parts("Type Bearer", CT_BEARER_X, 0, +1, WK_W, False)
+    # a 450mm stub of the L-angle bearer resting along the bracket arm (+Y)
+    parts.append(ruby_box("Type Bearer L-angle bearer",
+                          CT_BEARER_X - R_BEARER / 2, -50, GRATE_Z - R_BEARER,
+                          R_BEARER, 500, R_BEARER, color=C_STEEL))
     return '\n'.join(parts)
 
 
@@ -283,10 +293,13 @@ def cantilever_type_labels():
     labels = [
         (CT_STD_X, 0, BRK_H,
          "STANDARD CANTILEVER\n8mm plate / 150 leg / 300 arm\n3x M12 (triangular)",
-         -150, -300, 700),
+         -200, -300, 720),
         (CT_WIDE_X, 0, k.WALKWAY_WIDE_BRACKET_H,
          "WIDENED CANTILEVER (EP / battery zone)\n10mm plate / 200 leg / 500 arm\n4x M12 (rectangular)",
-         150, -300, 700),
+         0, -300, 850),
+        (CT_BEARER_X, 0, BRK_H,
+         "BEARER-SUPPORT CANTILEVER\nstandard bracket carrying the right-walkway\n25x25x5 L-angle bearer (butt joint, X=4329/4629)",
+         200, -300, 700),
     ]
     rows = []
     for x, y, z, text, dx, dy, dz in labels:
@@ -491,12 +504,12 @@ model.layers["Labels"].visible = false if model.layers["Labels"]
 #    close-up camera (the only scene showing the Cantilever Types catalog tag; the
 #    wall is hidden so the full bracket — plate, arm, gusset, bolts — reads) ──
 model.layers.each {{ |l| l.visible = (l.name == "Cantilever Types") }}
-ct_tgt = Geom::Point3d.new({ov.mm(3150)}, {ov.mm(-150)}, {ov.mm(450)})
-ct_dir = Geom::Vector3d.new(-0.26, -0.80, 0.42); ct_dir.normalize!
-ct_eye = ct_tgt.offset(ct_dir, {ov.mm(3000)})
+ct_tgt = Geom::Point3d.new({ov.mm(3400)}, {ov.mm(-100)}, {ov.mm(450)})
+ct_dir = Geom::Vector3d.new(-0.22, -0.82, 0.40); ct_dir.normalize!
+ct_eye = ct_tgt.offset(ct_dir, {ov.mm(3900)})
 ct_cam = Sketchup::Camera.new(ct_eye, ct_tgt, Z_AXIS)
 ct_cam.perspective = true
-ct_cam.fov = 35
+ct_cam.fov = 40
 model.active_view.camera = ct_cam
 ctp = model.pages.add("Cantilevers")
 ctp.use_camera = true

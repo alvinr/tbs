@@ -27,3 +27,6 @@ models/*.dae
 
 # Brainstorming visual-companion scratch dir
 .superpowers/
+
+# Python Virtual Environment
+.venv/

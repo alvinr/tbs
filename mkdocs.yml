@@ -56,7 +56,6 @@ nav:
   - "Operating Manual": operating-manual.md
   - Construction:
     - "Overview": engineering-diagrams.md
-    - "Construction Guide": pinhole-camera-construction.md
     - "Equipment Layout": equipment-layout-report.md
     - Water System:
       - "Processing System": water-system-report.md
@@ -72,6 +71,7 @@ nav:
       - "Film Clamp Mechanism": film-clamp-mechanism-report.md
       - "Tilt-Swing Front Board": tilt-swing-board-report.md
     - Misc:
+      - "Container": container-report.md
       - "Walkway": walkway-report.md
       - "Hinged Light-Trap Panel": hinged-panel-report.md
       - "Ceiling Rail Suspension": ceiling-rail-report.md

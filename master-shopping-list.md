@@ -421,8 +421,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | M10 nuts, flat washers, lock washers | Galvanized. 4 per hanger rod. | 40+40 | McMaster-Carr | ~$20–$30 |
 | [M saddle clips + TEK screws](https://www.mcnichols.com/products/grating/accessories/) | M saddle clips straddle 2 bearing bars, TEK screw through bracket arm or L-angle. Near/far/right walkways. | ~20 | [McNichols](https://www.mcnichols.com) | ~$15–$25 |
 | Left edge beam, 40×40×3mm steel SHS | Full width 2362mm — left-walkway inner edge (X=470), Z52–92 (clears the tray rim it crosses). Simply supported wall-to-wall; ~12mm proud as a toe-board kerb. Hot-dip galvanized. | 1 | Metal Supermarkets | ~$35–$60 |
-| Left edge-beam wall-seat brackets | 6mm steel seat plate + 100×180×6mm exterior backing plate, each end (IBC-style bolt-through). | 2 | Local fab / Metal Supermarkets | ~$30–$55 |
-| [M12×80mm hex bolts, nuts, washers](https://www.mcmaster.com/91290A655) | Grade 8.8, galvanized. 3 per wall seat (through the corrugated wall). | 6 | McMaster-Carr | ~$9–$15 |
+| Left edge-beam wall-seat brackets | 6mm drop-in pocket (floor + 2 triangular gussets) on a 100×135×6mm interior mounting plate + matching 100×135×6mm exterior plate, each end (IBC-style bolt-through). | 2 | Local fab / Metal Supermarkets | ~$30–$55 |
+| [M12×80mm hex bolts, nuts, washers](https://www.mcmaster.com/91290A655) | Grade 8.8, galvanized. 4 per wall seat at the plate corners (through the corrugated wall). | 8 | McMaster-Carr | ~$9–$15 |
 | Drum-exit punch-out — extra grating (~0.23 m²) + 50×50×3mm Al RHS bearer (~0.8m) + 25×25 Al SHS leg + foot | Deeper landing (600mm) at the light-lock exit | 1 lot | Metal Supermarkets / McNichols | ~$45 |
 | Fabrication + installation | Cut/weld/galvanize 14 std + 4 widened brackets, reinforcing plates, drill wall ribs, hang right walkway bearers, fit left edge beam + 2 wall seats, install | 1 job | Local fab / metal shop | ~$280–$440 |
 **Walkway subtotal: ~$1,070–$1,650**

@@ -549,9 +549,13 @@ LEFT_WK_LEG_T        = 3     # support leg wall thickness (mm)
 LEFT_WK_LEG_BASE     = 60    # foot plate size (mm) — 60×60×3mm with rubber pad
 LEFT_WK_BEARING_STRIP = (WALKWAY_H - WALKWAY_GRATE_T) - PROC_TRAY_RIM  # = 15mm — fills the gap between the tray rim (Z=50) and the grate bottom; Al flat bar on tray rim (DERIVED, tracks WALKWAY_H)
 # Edge-beam wall seats (IBC-style, bolt-through corrugated wall, demountable) — 1 per wall end.
-LEFT_WK_SEAT_BOLT_N  = 3     # M12 through-bolts per seat (triangular pattern)
+# Drop-in POCKET (floor piece + two triangular gusset sides, 6mm) welded to an interior
+# MOUNTING plate, bolted through the wall to a MATCHING exterior plate with 4× M12 at the
+# plate CORNERS (clear of the pocket so the nuts are reachable) — see Sheet 6 / Detail D.
+LEFT_WK_SEAT_BOLT_N  = 4     # M12 through-bolts per seat (4 corners, clear of the pocket)
 LEFT_WK_SEAT_BOLT_D  = 12    # M12
-LEFT_WK_SEAT_PLATE   = (100, 180, 6)   # exterior backing plate L×H×T (mm) — as the wall-cantilever reinforcing plates
+LEFT_WK_SEAT_PLATE   = (100, 135, 6)   # mounting/backing plate L×H×T (mm) — interior + matching exterior
+LEFT_WK_SEAT_POCKET_T = 6   # pocket floor + gusset plate thickness (mm)
 # Left walkway DRUM-EXIT punch-out (rev 8): the operator steps out of the
 # revolving drum at X=450, but the 300mm walkway ends at X=470 — only 20mm of
 # landing. Deepen the walkway to 600mm over the drum-opening Yd span + stepping

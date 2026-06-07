@@ -303,8 +303,8 @@ Four removable grated walkway sections around all 4 sides of the processing tray
 | M saddle clips + TEK screws (×20) | $15 | $20 | $25 | Near/far/right walkway grating retention |
 | Drum-exit punch-out — extra grating + bearer + support leg | $40 | $55 | $70 | 600mm-deep landing at the light-lock exit |
 | Left edge beam, 40×40×3mm steel SHS (full width 2362mm) | $35 | $48 | $60 | Left walkway inner edge (X=470), Z52–92; simply supported wall-to-wall; ~12mm proud kerb |
-| Left edge-beam wall-seat brackets (×2) | $30 | $43 | $55 | 6mm seat plate + 100×180×6mm exterior backing plate, IBC-style bolt-through |
-| M12×80mm through-bolts + nuts + washers (×6) | $9 | $12 | $15 | 3 per wall seat, grade 8.8 |
+| Left edge-beam wall-seat brackets (×2) | $30 | $43 | $55 | 6mm drop-in pocket (floor + 2 triangular gussets) on a 100×135×6mm interior mounting plate + matching 100×135×6mm exterior plate, IBC-style bolt-through |
+| M12×80mm through-bolts + nuts + washers (×8) | $9 | $12 | $15 | 4 per wall seat at the plate corners, grade 8.8 |
 | Fabrication (brackets, ceiling hangers, install) | $280 | $360 | $440 | 14 std + 4 widened brackets, fit left edge beam + 2 wall seats, install |
 | **Perimeter walkway total** | **$1,067** | **$1,378** | **$1,677** | |
 
